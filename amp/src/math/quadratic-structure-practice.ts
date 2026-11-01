@@ -454,7 +454,7 @@ function parabolaShift(r: Random): Case {
     const choices = options(eq(h, k), [
       {
         label: eq(-h, k),
-        feedback: `This moves the graph the wrong way sideways. For a move ${h > 0 ? "right" : "left"} of ${Math.abs(h)}: subtract ${n(h)} from $x$ inside the square.`,
+        feedback: `This moves the graph the wrong way sideways. For a move ${h > 0 ? "right" : "left"} of ${Math.abs(h)}: ${h > 0 ? `subtract ${n(h)} from` : `add ${n(-h)} to`} $x$ inside the square.`,
       },
       {
         label: eq(k, h),
@@ -527,7 +527,7 @@ function areaModelProduct(r: Random): Case {
       },
       {
         label: polyText([a * b, a * u - b * s, s * u]),
-        feedback: `This has a sign error in one $x$-region. Recheck ${termText(a, "x")} × ${p(u)} and ${n(s)} × ${termText(b, "x")}: a negative times a positive is negative.`,
+        feedback: `This has a sign error in one $x$-region. Recheck ${termText(a, "x")} × ${p(u)} and ${n(s)} × ${termText(b, "x")}. Keep the sign of each product: a negative times a positive is negative, and two of the same sign give a positive.`,
       },
       {
         label: polyText([a * b, mid, -s * u]),

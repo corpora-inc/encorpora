@@ -585,7 +585,7 @@ export const growthModelRewrite = chainFamily({
         {
           label: `$V(t)=${P}\\left(${growth ? "1+" : "1-"}\\dfrac{${(m.pct / 100).toFixed(2)}}{12}\\right)^{12t}$`,
           feedback:
-            "This divides the yearly rate by 12. That gives a different, slightly larger, yearly change after 12 months. Split the yearly factor with a 12th root so that 12 months give the yearly factor exactly.",
+            "This divides the yearly rate by 12. Compounded over 12 months, that gives a slightly different yearly factor, not the stated one. Split the yearly factor with a 12th root so that 12 months give it exactly.",
         },
         {
           label: `$V(t)=${P}\\left(${fs}^{12}\\right)^{12t}$`,

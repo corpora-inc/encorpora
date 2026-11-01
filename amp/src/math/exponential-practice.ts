@@ -947,7 +947,7 @@ function logEquation(r: Rand): Draft {
         `A logarithm is an exponent, so rewrite it as a power: $x(x + ${d}) = ${b}^{${n}} = ${b ** n}$.`,
         `Multiply out and move ${b ** n} to the left: $x^2 + ${d === 1 ? "" : d}x - ${b ** n} = 0$.`,
         `This factors as $(x - ${x})(x + ${x + d}) = 0$. A product is 0 only when a factor is 0, so $x = ${x}$ or $x = ${s(other)}$.`,
-        `A logarithm needs a positive input, so $${lg(b)} x$ needs $x > 0$. That rejects $x = ${s(other)}$.`,
+        `A logarithm needs a positive input, so $${lg(b)} x$ needs $x > 0$. So $x = ${s(other)}$ is rejected.`,
         `The solution is $x = ${x}$.`,
       ],
     };
@@ -1092,7 +1092,9 @@ function logRules(r: Rand): Draft {
         `So $${lg(b)} ${p} - ${lg(b)} ${q} = ${lg(b)} \\frac{${p}}{${q}} = ${lg(b)} ${ftex(p, q)}$.`,
         flip
           ? `$${q / p} = ${b}^{${k}}$, and a negative exponent means "one over". So $${ftex(p, q)} = ${b}^{-${k}}$.`
-          : `Multiply ${b} by itself: $${b}^{${k}} = ${p / q}$.`,
+          : k === 1
+            ? `${b} to the power 1 is just ${b}: $${b}^{1} = ${p / q}$.`
+            : `Multiply ${b} by itself: $${b}^{${k}} = ${p / q}$.`,
         `So the power of ${b} is ${s(flip ? -k : k)}. The value of $${lg(b)} ${p} - ${lg(b)} ${q}$ is ${s(flip ? -k : k)}.`,
       ],
     };
@@ -1240,7 +1242,7 @@ function changeOfBase(r: Rand): Draft {
       answer: exact(q, p),
       hint: `Write ${b ** p} and $${arg}$ as powers of one base, then divide: $\\log_{${b ** p}} ${arg} = \\frac{\\log ${arg}}{\\log ${b ** p}}$ in any base.`,
       explanation: [
-        `$\\log_{${b ** p}} ${arg}$ asks: ${b ** p} to what power gives $${arg}$? Neither is a simple power of the other, so use a smaller base, ${b}.`,
+        `$\\log_{${b ** p}} ${arg}$ asks: ${b ** p} to what power gives $${arg}$? Write both as powers of the smaller base, ${b}.`,
         `Write both as powers of ${b}: $${b ** p} = ${b}^{${p}}$ and $${arg} = ${b}^{${q}}$.${q < 0 ? ` A negative exponent means "one over".` : ""}`,
         `The change-of-base rule says a log equals a quotient of logs in any one base: $\\log_{${b ** p}} ${arg} = \\frac{\\log_{${b}} ${arg}}{\\log_{${b}} ${b ** p}}$.`,
         `In base ${b} those logs are just the exponents ${q} and ${p}, so the value is $${eqFrac(q, p)}$.`,

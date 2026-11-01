@@ -159,7 +159,7 @@ export function rationalExpressionCase(id: string, seed: string) {
             excluded.length === 1
               ? `Both factors give the same value, so it is listed once.`
               : `Both values make the bottom 0, so both are excluded.`,
-            `The numerator, the top, can be 0: that only makes the value 0. So it adds no excluded values.`,
+            `A zero in the numerator, the top, does not by itself make the expression undefined. Only the denominator decides which values are excluded.`,
             `The excluded values are ${setText(excluded)}.`,
           ]
         : [

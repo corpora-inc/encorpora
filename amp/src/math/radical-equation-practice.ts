@@ -74,7 +74,7 @@ export function radicalEquationCase(id: string, seed: string) {
                 `First get the square root alone. ${c > 0 ? "Subtract" : "Add"} ${Math.abs(c)} ${c > 0 ? "from" : "to"} both sides: $\\sqrt{${radicand}} = ${n(k)}$.`,
               ]),
           `Squaring undoes a square root. Both sides are zero or positive, so squaring keeps the equation true and adds no false answers: $${radicand} = ${k * k}$.`,
-          `Now solve the linear equation. ${b === 0 ? "" : `${b > 0 ? "Subtract" : "Add"} ${Math.abs(b)} ${b > 0 ? "from" : "to"} both sides: $${linearText(a, 0)} = ${k * k - b}$. `}Divide by ${n(a)}: $x = ${tex(answer)}$.`,
+          `Now solve the linear equation. ${b === 0 ? "" : `${b > 0 ? "Subtract" : "Add"} ${Math.abs(b)} ${b > 0 ? "from" : "to"} both sides: $${linearText(a, 0)} = ${k * k - b}$. `}${a === 1 ? "So" : `Divide by ${n(a)}:`} $x = ${tex(answer)}$.`,
           `Check in the original equation. At this $x$, $${n(a)}\\left(${tex(answer)}\\right)${constText(b)} = ${k * k}$, and $\\sqrt{${k * k}}${constText(c)} = ${k}${constText(c)} = ${n(d)}$. It works.`,
           `The solution is $x = ${tex(answer)}$.`,
         ],
@@ -146,7 +146,9 @@ export function radicalEquationCase(id: string, seed: string) {
                     ? `This rejects every candidate, but at least one works. Put each candidate into $\\sqrt{${radicand}} = ${right}$: keep it when the right side is zero or positive.`
                     : accepted.length === 2
                       ? `This drops a candidate that works. Check both in the original equation: each gives a right side that is zero or positive, so both are solutions.`
-                      : `This keeps the wrong candidate. A square root is never negative, so the right side $${right}$ must be zero or positive. Check each candidate in the original equation.`,
+                      : accepted.length === 0
+                        ? `This keeps a candidate that fails: it makes $${right}$ negative, and a square root is never negative. Neither candidate works.`
+                        : `This keeps the wrong candidate. A square root is never negative, so the right side $${right}$ must be zero or positive. Check each candidate in the original equation.`,
             }),
       })),
       hint: `In $\\sqrt{${radicand}} = ${right}$, require both $${radicand} \\ge 0$ and $${right} \\ge 0$. Squaring gives candidates; keep only those that satisfy the original equation.`,
