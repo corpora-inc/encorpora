@@ -40,7 +40,7 @@ export const partWholeLessons: Lesson[] = [
         paragraphs: [
           "Look at one sandwich. It is one whole. Cut it into 2 pieces that are the same size. Each piece is called a half. 2 halves make the whole sandwich.",
           "Now cut each half into 2 equal pieces. You get 4 pieces, all the same size. Each piece is called a quarter. 4 quarters make the whole sandwich. The pieces got smaller, but together they are still one sandwich.",
-          "A square is a flat shape like a sticky note. Its 4 sides are all equally long. When some parts of a shape are shaded, they are colored in. You count the shaded parts.",
+          "A square is a flat shape like a sticky note. Its 4 sides are all equally long, and its corners are square, like the corner of a page. When some parts of a shape are shaded, they are colored in. You count the shaded parts.",
         ],
       },
       wholeAndParts,
@@ -49,7 +49,7 @@ export const partWholeLessons: Lesson[] = [
         paragraphs: [
           "First check that the parts are the same size. Look at the picture. The square is cut into 2 parts that are the same size. So each part is a half.",
           "The rectangle is cut into 2 parts too. But one part is bigger than the other. So those parts are not halves, even though there are 2 of them.",
-          "The circle is cut into 4 parts that are the same size. So each part is a quarter. Then count: 3 of the 4 equal parts are three quarters.",
+          "The circle is cut into 4 parts that are the same size. So each part is a quarter. 1 of the 4 equal parts is shaded: one quarter. If 3 were shaded, that would be three quarters.",
         ],
         illustration: "equal-shares",
       },
@@ -117,7 +117,7 @@ export const partWholeLessons: Lesson[] = [
         title: "Compare pieces of the same whole",
         paragraphs: [
           "A part is a piece of a whole. When a whole is cut into 2 equal parts, each part is called a half. When it is cut into 3 equal parts, each part is called a third. When it is cut into 4 equal parts, each part is called a quarter.",
-          "A square is a flat shape like a sticky note. Its 4 sides are all equally long. Shaded parts are the parts that are colored in.",
+          "A square is a flat shape like a sticky note. Its 4 sides are all equally long, and its corners are square, like the corner of a page. Shaded parts are the parts that are colored in.",
           "Fold a paper square in half. Then fold it in half again. 1 half covers the same paper as 2 quarters. The names are different because the square was cut in a different way. Equal parts can even have different shapes. Keep the whole the same when you compare parts.",
         ],
       },

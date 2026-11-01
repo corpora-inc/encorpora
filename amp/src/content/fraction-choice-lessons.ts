@@ -1,4 +1,5 @@
 import type { FacetMapping } from "./coverage";
+import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
@@ -33,7 +34,7 @@ export const fractionChoicePrinciples: Record<string, string> = {
     "When $b$ and $d$ are greater than 0, $\\frac{a}{b}>\\frac{c}{d}$ exactly when $a \\times d > c \\times b$. Over the common denominator $b \\times d$, the numerators are $a \\times d$ and $c \\times b$. A whole number $w$ is $\\frac{w \\times d}{d}$. Mixed numbers with the same whole number compare by their fraction parts.",
 };
 
-export const fractionChoiceLessons = [
+export const fractionChoiceLessons: Lesson[] = [
   {
     ...chainLesson({
       id: "fraction-choice-compare-lesson",

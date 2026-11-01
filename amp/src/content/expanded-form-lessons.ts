@@ -1,4 +1,5 @@
 import type { FacetMapping } from "./coverage";
+import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
@@ -48,7 +49,7 @@ export const expandedFormPrinciples: Record<string, string> = {
     "Each place is 10 times the place to its right: $\\ldots,1{,}000,100,10,1,0.1,0.01,0.001,\\ldots$. The expanded form of a number is the sum of digit times place value, for each digit that is not 0.",
 };
 
-export const expandedFormLessons = [
+export const expandedFormLessons: Lesson[] = [
   {
     ...chainLesson({
       id: "expanded-sum-to-standard-lesson",

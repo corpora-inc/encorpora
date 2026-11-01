@@ -90,6 +90,8 @@ const entries: FormatLessonEntry[] = [
     ],
     parentGuide:
       "Shade a bar cut into 10 equal parts and a square grid of 100 small squares. Use them to show your child 0.7 and 0.25 as fractions of one whole.",
+    senses: { whole: "whole", part: "part", square: "square-shape" },
+    noLink: ["mean", "means"],
   },
   {
     id: "inequality-solution-blanks",
@@ -285,28 +287,9 @@ const entries: FormatLessonEntry[] = [
   },
 ];
 
-/** How each lesson and its practice screen read ambiguous words. */
-const glossaryContext: Record<
-  string,
-  { senses?: Record<string, string>; noLink?: string[] }
-> = {
-  "decimal-mixed-number-blanks": {
-    senses: { whole: "whole", part: "part", square: "square-shape" },
-    noLink: ["mean", "means"],
-  },
-};
-
 const built = formatLessons(entries);
-export const formBlanksLessons = built.lessons.map((lesson) => ({
-  ...lesson,
-  ...glossaryContext[lesson.id],
-}));
-export const formBlanksMethods = Object.fromEntries(
-  Object.entries(built.methods).map(([id, method]) => [
-    id,
-    { ...method, ...glossaryContext[id] },
-  ]),
-);
+export const formBlanksLessons = built.lessons;
+export const formBlanksMethods = built.methods;
 export const formBlanksPrinciples = built.principles;
 
 const partial = (

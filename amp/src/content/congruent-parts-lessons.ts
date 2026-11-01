@@ -1,4 +1,5 @@
 import type { FacetMapping } from "./coverage";
+import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
@@ -32,7 +33,7 @@ export const congruentPartsPrinciples: Record<string, string> = {
     "A unit fraction is a fraction with 1 on top, such as $\\frac{1}{4}$. $\\frac{1}{n}$ of a whole is one of $n$ parts with equal area. So $\\frac{1}{4}$ of a figure is the same area in any figure of the same size, however the parts are shaped. Shading 2 of 4 equal parts shows $\\frac{2}{4}$, and shading 1 of 3 equal parts shows $\\frac{1}{3}$.",
 };
 
-export const congruentPartsLessons = [
+export const congruentPartsLessons: Lesson[] = [
   {
     ...chainLesson({
       id: "congruent-fourths-lesson",

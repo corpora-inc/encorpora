@@ -1,4 +1,5 @@
 import type { FacetMapping } from "./coverage";
+import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
@@ -57,7 +58,7 @@ export const shareRemainderPrinciples: Record<string, string> = {
     "$p\\%$ of a total $N$ is $N\\times p\\div100$. When the groups cover everyone exactly once, their percents add to 100%. So the percent left is 100 minus the named percents. The difference between two groups is the difference of their counts. That equals $N$ times the difference of their percents, divided by 100.",
 };
 
-export const shareRemainderLessons = [
+export const shareRemainderLessons: Lesson[] = [
   {
     ...chainLesson({
       id: "share-remainder-chain",

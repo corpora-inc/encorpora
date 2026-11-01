@@ -1,4 +1,5 @@
 import type { FacetMapping } from "./coverage";
+import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
@@ -29,10 +30,10 @@ export const benchmarkEstimateMethods: Record<string, ProblemMethod> = {
 
 export const benchmarkEstimatePrinciples: Record<string, string> = {
   "benchmark-fraction-estimate":
-    "A fraction $\\frac{a}{b}$ is close to 0 when $a$ is much smaller than $\\frac{b}{2}$, close to $\\frac{1}{2}$ when $a$ is about $\\frac{b}{2}$, and close to 1 when $a$ is about $b$. In these problems each fraction is within $\\frac{1}{10}$ of its benchmark. So a sum or difference of two of them is within $\\frac{2}{10}$ of the estimate.",
+    "A fraction $\\frac{a}{b}$ is close to 0 when $a$ is much smaller than $\\frac{b}{2}$, close to $\\frac{1}{2}$ when $a$ is about $\\frac{b}{2}$, and close to 1 when $a$ is about $b$. In these problems each fraction is within $\\frac{1}{9}$ of its benchmark. So a sum or difference of two of them is within $\\frac{2}{9}$ of the estimate.",
 };
 
-export const benchmarkEstimateLessons = [
+export const benchmarkEstimateLessons: Lesson[] = [
   {
     ...chainLesson({
       id: "benchmark-fraction-estimate-lesson",
@@ -68,7 +69,7 @@ export const benchmarkEstimateLessons = [
       formalTitle: "How close the estimate is",
       formal: [
         "$\\frac{a}{b}$ is closest to 0, to $\\frac{1}{2}$ or to 1 when $a$ is nearest to 0, to $\\frac{b}{2}$ or to $b$.",
-        "The gap between a fraction and its benchmark is how far off the estimate can be. In these problems, each fraction is within $\\frac{1}{10}$ of its benchmark. So a sum or difference of two of them is within $\\frac{2}{10}$ of the estimate.",
+        "The gap between a fraction and its benchmark is how far off the estimate can be. In these problems, each fraction is within $\\frac{1}{9}$ of its benchmark. So a sum or difference of two of them is within $\\frac{2}{9}$ of the estimate.",
       ],
       pitfalls: [
         "Giving the amount used when the question asks for the amount left. Subtract the amount used from 1.",

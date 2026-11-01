@@ -1,4 +1,5 @@
 import type { FacetMapping } from "./coverage";
+import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
@@ -119,7 +120,7 @@ export const multiTermChainPrinciples: Record<string, string> = {
     "Integers are the whole numbers and their negatives. When you add integers, the order and the grouping do not change the total. So the sum of all the changes equals the sum of the gains plus the sum of the losses. The final count is the start plus that net change.",
 };
 
-export const multiTermChainLessons = [
+export const multiTermChainLessons: Lesson[] = [
   {
     ...chainLesson({
       id: "fraction-term-chain",
