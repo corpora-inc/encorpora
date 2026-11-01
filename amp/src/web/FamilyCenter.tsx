@@ -1,4 +1,5 @@
 import { SatMathFocus } from "./features/practice/SatMathFocus";
+import { WorkbookEntry } from "./features/workbooks/WorkbookEntry";
 import { PurchaseMeasurement } from "./features/privacy/PurchaseMeasurement";
 import { Toast } from "./ui/Toast";
 import { useLoggedError, requestMessage } from "./feedback";
@@ -604,6 +605,9 @@ export function FamilyCenter({
                             onSaved={refresh}
                           />
                         )}
+                      {section === "learners" &&
+                        !learner.deletedAt &&
+                        !nativeRuntime && <WorkbookEntry learner={learner} />}
                       {learner.deletedAt ? (
                         <p>
                           Learning data was deleted. Billing records are
