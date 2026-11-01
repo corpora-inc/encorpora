@@ -203,7 +203,7 @@ export const regentsGeometryCoordinateLessons = [
       id: "regents-geometry-circle-general-form",
       title: "Center and radius from an expanded circle equation",
       summary:
-        "A circle's center is the point in its middle, and its radius is the distance from the center to the circle. A circle's equation can be written to show both: $(x-3)^2+(y+2)^2=25$ has center $(3,-2)$ and radius 5. Multiplied out, the same equation hides them: $x^2+y^2-6x+4y-12=0$. Completing the square means adding the right number to make a perfect square, such as $(x-3)^2$. It gets the center and radius back.",
+        "A circle's center is the point in its middle, and its radius is the distance from the center to the circle. A circle's equation can be written to show both: $(x-3)^2+(y+2)^2=25$ has center $(3,-2)$ and radius 5. Multiplied out, the same equation hides them: $x^2+y^2-6x+4y-12=0$. Completing the square means adding the right number to make a perfect square: a quantity times itself, such as $(x-3)^2$. It gets the center and radius back.",
       templateIds: ["geo-circle-general-form"],
       objectives: [
         "Complete the square in both $x$ and $y$ to rewrite a circle's equation.",
