@@ -18,6 +18,9 @@ const GEO_SENSES = {
   solid: "solid-shape",
   unit: "unit",
   tangent: "tangent-line",
+  population: "population",
+  "opposite leg": "opposite-side-angle",
+  squaring: "square-number",
 } as const;
 const GEO_NOLINK = [
   "opposite",
@@ -44,6 +47,7 @@ const GEO_NOLINK = [
   "one third",
   "prime",
   "opposite side",
+  "mode",
 ];
 
 export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
@@ -82,7 +86,7 @@ export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "When a line crosses two parallel lines, angles in matching spots are equal. Angles at a shared corner are equal, and so are angles across from each other where two segments cross. So the two triangles have the same angles, which makes them similar: the same shape. Similar triangles have proportional sides, each side the same multiple of its partner. Having the same angles does not make them the same size.",
+      "When a line crosses two parallel lines, angles in matching spots are equal. Angles at a shared corner are equal, and so are angles across from each other where two straight lines cross. Alternate interior angles are the angles between the parallel lines on opposite sides of the crossing line, and they are equal too. So the two triangles have the same angles, which makes them similar: the same shape. Similar triangles have proportional sides, each side the same multiple of its partner. Having the same angles does not make them the same size.",
     terms: ["alternate-interior-angles", "aa-similarity"],
     method: [
       "Find the equal angles: from the parallel lines, and from a shared angle or angles across a crossing.",
@@ -90,14 +94,14 @@ export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
       "Any claim of equal sides, congruence (same size and shape) or equal area needs more information.",
     ],
     watch:
-      "Similar does not mean congruent. Equal sides appear only in special cases, such as a segment through the midpoints or a crossing at the middle.",
+      "Similar does not mean congruent. Equal sides appear only in special cases, such as a line through the middle points of two sides, or a crossing at the middle.",
   },
   "geo-equal-legs-radical": {
     goal: "Find a leg or a hypotenuse of a similar triangle with equal legs, using a factor of $\\sqrt{2}$.",
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "In a right triangle, the two sides that form the square corner are the legs, and the longest side is the hypotenuse. A right triangle with equal legs has two $45^\\circ$ angles, and every such triangle has the same shape. The Pythagorean theorem, $a^2+b^2=c^2$, gives $c^2=a^2+a^2=2a^2$. So the hypotenuse is always the leg times $\\sqrt{2}$, the positive number that times itself makes 2, about 1.41.",
+      "In a right triangle, the two sides that form the square corner are the legs, and the longest side is the hypotenuse. A right triangle with equal legs has two $45^\\circ$ angles, and every such triangle has the same shape. The Pythagorean theorem is the rule $a^2+b^2=c^2$. It gives $c^2=a^2+a^2=2a^2$. So the hypotenuse is always the leg times $\\sqrt{2}$, the positive number that times itself makes 2, about 1.41.",
     terms: ["45-45-90-triangle", "radical"],
     method: [
       "Note that the similar triangle also has equal legs.",
@@ -112,7 +116,7 @@ export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
     senses: { ...GEO_SENSES, tangent: "tangent-trig" },
     noLink: GEO_NOLINK,
     intuition:
-      "A horizontal line through the viewing point splits the object's height in two. The angle of elevation is how far you look up from that line. It makes a right triangle above the line. The angle of depression is how far you look down from it, making a right triangle below. Both triangles share the same horizontal leg, the distance to the object. In each, the tangent of the angle is the vertical leg divided by the horizontal leg.",
+      "A horizontal line through the viewing point splits the object's height in two. The angle of elevation is how far you look up from that line. It makes a right triangle above the line. The angle of depression is how far you look down from it, making a right triangle below. Both triangles share the same horizontal leg, the distance to the object. In each, the tangent is the ratio of the vertical leg to the horizontal leg.",
     terms: ["angle-of-elevation", "angle-of-depression"],
     method: [
       "Draw the horizontal line through the point, and mark both angles from it.",
@@ -166,7 +170,7 @@ export const regentsGeometrySimilarityLessons = [
       id: "regents-geometry-altitude-ratio",
       title: "Trigonometric ratios with an altitude",
       summary:
-        "In a right triangle, a line from the square corner that meets the longest side at a right angle is called an altitude. It splits the triangle into two smaller right triangles with the same angles as the whole. So the sine, cosine or tangent of an angle can be read in a small triangle too, and the value is the same.",
+        "In a right triangle, a line from the square corner that meets the longest side at a right angle is called an altitude. It splits the triangle into two smaller right triangles with the same angles as the whole. Sine, cosine and tangent are ratios of a right triangle's sides, so they can be read in a small triangle too, with the same value.",
       templateIds: ["geo-altitude-ratio"],
       objectives: [
         "Find the small right triangle that contains a given angle.",
@@ -174,7 +178,7 @@ export const regentsGeometrySimilarityLessons = [
       ],
       openingTitle: "One angle, several right triangles",
       opening: [
-        "A right triangle has one right angle, a square corner. The side across from it is the hypotenuse, the longest side. For one of the sharp angles, the leg across from it is the opposite side, and the leg touching it is the adjacent side.",
+        "A right triangle has one right angle, a square corner. The side across from it is the hypotenuse, the longest side. The other two sides are called the legs. For one of the sharp angles, the leg across from it is the opposite side, and the leg touching it is the adjacent side.",
         "The sine of the angle is opposite divided by hypotenuse. The cosine is adjacent divided by hypotenuse. The tangent is opposite divided by adjacent. These are called trigonometric ratios.",
         "An altitude is a segment from a corner that meets the side across from it at a right angle. The altitude from the right angle splits the triangle into two smaller right triangles. Each one has the same sharp angle as the whole triangle at one end of the hypotenuse. So a ratio of that angle can be computed in the small triangle as well as in the big one, and the two ways give the same number.",
       ],
@@ -196,7 +200,7 @@ export const regentsGeometrySimilarityLessons = [
       ],
       formalTitle: "Why the ratios agree",
       formal: [
-        "Triangle $ACD$ has a right angle at $D$ and shares angle $A$ with $ABC$. So it is similar to $ABC$ by AA, two equal angles. Matching ratios of sides are equal, so a trigonometric ratio of angle $A$ is the same in both triangles.",
+        "Triangle $ACD$ has a right angle at $D$ and shares angle $A$ with $ABC$. Two triangles are called similar when they have the same shape. Triangle $ACD$ is similar to $ABC$ by AA: two equal angles. Matching ratios of sides are equal, so a trigonometric ratio of angle $A$ is the same in both triangles.",
       ],
       pitfalls: [
         "Opposite and adjacent depend on the angle and on the triangle you use.",
@@ -244,7 +248,7 @@ export const regentsGeometrySimilarityLessons = [
       ],
       formalTitle: "AA similarity",
       formal: [
-        "If $\\overline{DE}\\parallel\\overline{BC}$, then $\\angle ADE\\cong\\angle ABC$, because they are corresponding angles, and $\\angle A$ is shared. So $\\triangle ADE\\sim\\triangle ABC$ by AA (two equal angles), and corresponding sides are proportional.",
+        "If $\\overline{DE}\\parallel\\overline{BC}$, then $\\angle ADE\\cong\\angle ABC$, because they sit in matching positions where line $AB$ crosses the parallel lines, and $\\angle A$ is shared. So $\\triangle ADE\\sim\\triangle ABC$ by AA, the angle-angle test, and corresponding sides are proportional.",
         "Congruence needs a pair of corresponding sides to be equal as well.",
       ],
       pitfalls: [
@@ -271,9 +275,9 @@ export const regentsGeometrySimilarityLessons = [
       ],
       openingTitle: "One shape, one ratio",
       opening: [
-        "In a right triangle, the two sides that form the right angle are the legs, and the side across from it is the hypotenuse. The Pythagorean theorem says $a^2+b^2=c^2$, where $a$ and $b$ are the legs and $c$ is the hypotenuse. Here $a^2$ means $a\\times a$.",
-        "If the two legs are equal, each sharp angle is $45^\\circ$. Every such triangle has the same shape, so the hypotenuse divided by a leg is the same number in all of them. That number is $\\sqrt{2}$, the square root of 2: the positive number that times itself makes 2.",
-        "A similar triangle, a scaled copy, also has equal legs. So you can find its sides from this one ratio.",
+        "In a right triangle, the two sides that form the right angle are the legs, and the side across from it is the hypotenuse. The Pythagorean theorem is the rule $a^2+b^2=c^2$, where $a$ and $b$ are the legs and $c$ is the hypotenuse. Here $a^2$ means $a\\times a$.",
+        "If the two legs are equal, each sharp angle is $45^\\circ$. Every such triangle has the same shape, so the hypotenuse divided by a leg is the same number in all of them. That number is $\\sqrt{2}$. A square root is a number that times itself gives a given number, and $\\sqrt{2}$ is the positive one for 2.",
+        "Similar triangles are scaled copies of each other, so a similar triangle also has equal legs. So you can find its sides from this one ratio.",
       ],
       example: {
         prompt:
@@ -296,7 +300,7 @@ export const regentsGeometrySimilarityLessons = [
         "For legs $a$ and $a$, $c^2=a^2+a^2=2a^2$, so $c=a\\sqrt{2}$. Dividing both sides by $\\sqrt{2}$ gives $a=\\frac{c}{\\sqrt{2}}=\\frac{c\\sqrt{2}}{2}$.",
       ],
       pitfalls: [
-        "The factor $\\sqrt{3}$ belongs to a triangle with angles of 30, 60 and 90 degrees, not to equal legs.",
+        "The factor $\\sqrt{3}$ belongs to a triangle with angles of $30^\\circ$, $60^\\circ$ and $90^\\circ$, not to equal legs.",
         "A leg is not half of the hypotenuse here.",
         "The hypotenuse is longer than either leg.",
       ],
@@ -311,7 +315,7 @@ export const regentsGeometrySimilarityLessons = [
       id: "regents-geometry-elevation-depression",
       title: "Elevation and depression from the same point",
       summary:
-        "From a lookout, a level line through your eyes splits a tower's height into a part above and a part below. Looking up to the top makes one right triangle, and looking down to the base makes another. Both share the same level distance to the tower. Find each height with the tangent of its angle, then add them.",
+        "From a lookout, a level line through your eyes splits a tower's height into a part above and a part below. Looking up to the top makes one right triangle, and looking down to the base makes another. Both share the same level distance to the tower. In a right triangle, the tangent is the side across from an angle divided by the side next to it. Find each height with the tangent of its angle, then add the heights.",
       templateIds: ["geo-elevation-depression"],
       objectives: [
         "Draw the two right triangles from one horizontal line.",
@@ -340,7 +344,7 @@ export const regentsGeometrySimilarityLessons = [
       ],
       formalTitle: "Tangent in a right triangle",
       formal: [
-        "In a right triangle, $\\tan\\theta=\\frac{\\text{opposite}}{\\text{adjacent}}$, where $\\theta$ (theta) is the angle. So the opposite leg is the adjacent leg times $\\tan\\theta$. A calculator must be in degree mode for angles in degrees.",
+        "In a right triangle, $\\tan\\theta=\\frac{\\text{opposite}}{\\text{adjacent}}$, where $\\theta$ (theta) is the angle. So the opposite leg is the adjacent leg times $\\tan\\theta$. A degree is the usual unit for angles. A calculator must be in degree mode for angles in degrees.",
       ],
       pitfalls: [
         "Angles of elevation and depression are measured from the horizontal.",
@@ -358,7 +362,7 @@ export const regentsGeometrySimilarityLessons = [
       id: "regents-geometry-density-rank",
       title: "Ranking by density",
       summary:
-        "A county with many people can still be less crowded than a small one. Population density measures crowding: the number of people for each square mile of land. Divide each population by its area, then compare the results.",
+        "A population is the number of people living in a place. A county with many people can still be less crowded than a small one. Population density measures crowding: the number of people for each square mile of land. Divide each population by its area, then compare the results.",
       templateIds: ["geo-density-rank"],
       objectives: [
         "Find population density as people per square mile.",
