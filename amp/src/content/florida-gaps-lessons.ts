@@ -608,7 +608,7 @@ export const floridaGapLessons: Lesson[] = [
           "Write the factor as “1 of one unit = $k$ of the other.” Here $k$ stands for the number in the factor, such as 2.54.",
           "Going from the unit with the 1 to the other unit, multiply by $k$. Each one of the first unit becomes $k$ of the second.",
           "Going the other way, divide by $k$. For example, 50.8 centimeters is $50.8 \\div 2.54 = 20$ inches.",
-          "Area is counted in square units, the little squares 1 unit on each side, such as square inches. For area, use a factor between square units, such as $1\\text{ square inch} \\approx 6.45\\text{ square centimeters}$. The sign $\\approx$ means “is about,” because 6.45 is rounded. Money works the same way with a stated exchange rate, such as 1 dollar = 0.9 euro.",
+          "Area is counted in square units, the little squares 1 unit on each side, such as square inches. For area, use a factor between square units, such as $1\\text{ square inch} \\approx 6.45\\text{ square centimeters}$. The sign $\\approx$ means “is about,” because 6.45 is a close, shortened value. Money works the same way with a stated exchange rate, such as 1 dollar = 0.9 euro.",
         ],
       },
       {

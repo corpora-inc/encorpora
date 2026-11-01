@@ -155,7 +155,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "To add or subtract, line up the points. Write a whole number such as 6 as 6.0.",
     ],
     watch:
-      "Write 6 as 6.0 before subtracting 2.4. Lining up the decimal points keeps tenths (the first digit after the point) under tenths: $6.0 - 2.4 = 3.6$.",
+      "Write 6 as 6.0 before subtracting 2.4. A tenth is one of 10 equal parts. Lining up the decimal points keeps tenths under tenths: $6.0 - 2.4 = 3.6$.",
   },
   "staar-salary-percent": {
     goal: "Find a percent raise of a salary, the new salary, or how much more one job earns than another over several years.",
@@ -346,7 +346,7 @@ export const staarGapPrinciples: Record<string, string> = {
   "staar-rename-percent-fraction-decimal":
     "For any number $p$, $p\\%=\\frac{p}{100}$. A fraction $\\frac{a}{b}$ with $b\\neq0$ ($b$ is not 0) means $a\\div b$, and its percent form is $100\\times(a\\div b)$ percent. A decimal 0 or greater with $n$ digits after the point is its whole-number part plus those digits over $10^{n}$. Here $10^{n}$ is 1 followed by $n$ zeros. So $4.58=4\\frac{58}{100}$.",
   "staar-ratio-statements":
-    "For positive amounts $a$ and $b$, the ratios $a:b$ and $ka:kb$ are equivalent for any number $k\\neq0$ ($k$ is not 0). If two parts are in the ratio $a:b$ and the total is $T$, the first part is $\\frac{a}{a+b}\\times T$. A unit rate is $a\\div b$, the amount of the first quantity for 1 unit of the second.",
+    "For positive amounts $a$ and $b$, the ratios $a:b$ and $ka:kb$ are equivalent for any number $k>0$ ($k$ greater than 0). If two parts are in the ratio $a:b$ and the total is $T$, the first part is $\\frac{a}{a+b}\\times T$. A unit rate is $a\\div b$, the amount of the first quantity for 1 unit of the second.",
   "staar-story-model-choice":
     "If $g$ equal groups of $n$ make a total $T$, then $gn=T$, $T\\div g=n$ and $T\\div n=g$. If parts $a$, $b$ and $f$ make a total $T$, then $a+b+f=T$. An equation models a story exactly when it is true for the story's values.",
   "staar-rate-equation-choice":
@@ -356,7 +356,7 @@ export const staarGapPrinciples: Record<string, string> = {
   "staar-order-mixed-forms":
     "Real numbers are ordered by their position on the number line. Fractions, percents and roots can be compared through their decimal values. For $a>0$, $\\sqrt{a}$ is the positive number whose square is $a$, so $n<\\sqrt{a}<n+1$ when $n^2<a<(n+1)^2$.",
   "staar-decimal-operations":
-    "Hundredths times a whole number are hundredths: $0.01m\\times n=0.01(mn)$, where $mn$ means $m$ times $n$. So the answer has two digits after the point. A unit fraction $\\frac1q$, with $q$ a counting number, equals $1\\div q$. Sharing a total $T$ equally among $n$ groups gives $T\\div n$ in each.",
+    "Hundredths times a whole number are hundredths: $0.01m\\times n=0.01(mn)$, where $mn$ means $m$ times $n$. So the answer has two digits after the point. A unit fraction $\\frac1q$, with $q$ one of the numbers 1, 2, 3 and so on, equals $1\\div q$. Sharing a total $T$ equally among $n$ groups gives $T\\div n$ in each.",
   "staar-salary-percent":
     "$p$ percent of an amount $S$ is $\\frac{p}{100}\\times S$. After a raise of $p$ percent, the new amount is $S+\\frac{p}{100}\\times S$. If one salary is $d$ dollars more every year, then over $n$ years it earns $n\\times d$ dollars more.",
   "staar-measure-chains":
@@ -575,7 +575,7 @@ export const staarGapLessons: Lesson[] = [
         "For a unit rate, divide the first amount by the second. Say the units in the order asked: miles per hour means miles for each 1 hour.",
       ]),
       formal("Equivalent ratios", [
-        "Let $a$ and $b$ be positive numbers, and $k$ a number other than 0. Then $a:b$ and $ka:kb$ are equivalent ratios, which are ratios that make the same comparison. Here $ka$ means $k$ times $a$.",
+        "Let $a$ and $b$ be positive numbers, and $k$ a number greater than 0. Then $a:b$ and $ka:kb$ are equivalent ratios, which are ratios that make the same comparison. Here $ka$ means $k$ times $a$.",
         "If two parts are in the ratio $a:b$ and the total is $T$, the first part is $\\frac{a}{a+b} \\times T$.",
         "A unit rate is $a \\div b$, the amount of the first quantity for 1 unit of the second.",
       ]),
@@ -712,7 +712,7 @@ export const staarGapLessons: Lesson[] = [
       ]),
       formal("Decimal arithmetic", [
         "Hundredths times a whole number are still hundredths: $m$ hundredths times $n$ is $m \\times n$ hundredths.",
-        "A unit fraction $\\frac{1}{q}$, where $q$ is a counting number (1, 2, 3 and so on), equals $1 \\div q$.",
+        "A unit fraction $\\frac{1}{q}$, where $q$ is one of the numbers 1, 2, 3 and so on, equals $1 \\div q$.",
         "Sharing a total $T$ equally among $n$ groups gives $T \\div n$ in each group.",
       ]),
     ],

@@ -90,7 +90,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
   "exponential-domain-range": {
     goal: "Write the domain (allowed inputs) and range (possible outputs) of an exponential function or model as inequalities.",
     intuition:
-      "In $2^x$, the base, the number being multiplied, is 2. The exponent is the small raised $x$. When it is a counting number, it says how many times: $2^3 = 2 \\times 2 \\times 2$. A positive base can be raised to any real power, so every input is allowed unless a situation limits it. The outputs creep toward a boundary line, called the horizontal asymptote, but never reach it. For $a \\cdot b^x + k$, the boundary is $y = k$.",
+      "In $2^x$, the base, the number being multiplied, is 2. The exponent is the small raised $x$. When it is a counting number, it says how many times: $2^3 = 2 \\times 2 \\times 2$. A positive base can be raised to any real power, so every input is allowed unless a situation limits it. Take the base positive and not 1 (a base of 1 always gives 1). The outputs creep toward a boundary line, called the horizontal asymptote, but never reach it. For $a \\cdot b^x + k$, the boundary is $y = k$.",
     senses: {
       term: "term-expression",
       boundary: "boundary",
@@ -714,7 +714,7 @@ export const texasHsLessons: Lesson[] = [
     id: "equations-from-situations",
     title: "Write equations from situations",
     summary:
-      "Some stories turn into special equations. A number line is a line with numbers marked in order, 0 in the middle. The absolute value of a number is its distance from 0 on the number line, so the absolute value of $-3$ is 3. We write $|x - c|$, read “the absolute value of $x$ minus $c$,” for the distance between $x$ and $c$. So $|x - 5| = 3$ means “3 away from 5,” which is 2 or 8. Work and travel stories turn into equations with the unknown in the bottom of a fraction, such as $\\frac{1}{3} + \\frac{1}{6} = \\frac{1}{x}$.",
+      "Some stories turn into special equations. A number line is a line with numbers marked in order, evenly spaced. The absolute value of a number is its distance from 0 on the number line, so the absolute value of $-3$ is 3. We write $|x - c|$, read “the absolute value of $x$ minus $c$,” for the distance between $x$ and $c$. So $|x - 5| = 3$ means “3 away from 5,” which is 2 or 8. Work and travel stories turn into equations with the unknown in the bottom of a fraction, such as $\\frac{1}{3} + \\frac{1}{6} = \\frac{1}{x}$.",
     senses: {
       unit: "unit",
       difference: "difference-subtract",

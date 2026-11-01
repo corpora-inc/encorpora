@@ -130,7 +130,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       "A statement “every $X$ is a $Y$” is true only when the ring for $X$ lies inside the ring for $Y$.",
     ],
     watch:
-      "Zero is whole but not natural. Negative whole amounts, like $-3$, are integers but not whole numbers. A fraction that simplifies to an integer is an integer.",
+      "Zero is whole but not natural. Negative integers, like $-3$, are integers but not whole numbers. A fraction that simplifies to an integer is an integer.",
   },
   "reciprocal-division-choice": {
     goal: "Choose the multiplication that equals a division by a fraction or whole number, using the reciprocal.",
@@ -381,7 +381,7 @@ export const texas38Principles: Record<string, string> = {
   "decimal-area-model":
     "A square of side 1 has area 1. A rectangle $\\frac{a}{10}$ tall and $\\frac{b}{10}$ wide has area $\\frac{ab}{100}$. If the area $A$ and one side $d$ are known, the other side is $A\\div d$, since $d\\times(A\\div d)=A$.",
   "number-set-venn":
-    "Write $\\mathbb N$, $\\mathbb W$, $\\mathbb Z$ and $\\mathbb Q$ for the natural numbers, whole numbers, integers and rational numbers. Each is a subset of the next (every member of one is in the next): $\\mathbb N\\subset\\mathbb W\\subset\\mathbb Z\\subset\\mathbb Q$. An integer $n$ is rational because $n=n/1$. A number such as $12/4$ is named by its simplified value, so it belongs to the smallest set holding that value.",
+    "Write $\\mathbb N$, $\\mathbb W$, $\\mathbb Z$ and $\\mathbb Q$ for the natural numbers, whole numbers, integers and rational numbers. Each is a subset of the next (every member of one is in the next): $\\mathbb N\\subset\\mathbb W\\subset\\mathbb Z\\subset\\mathbb Q$. An integer $n$ is rational because $n=n/1$. A number such as $12/4$ is named by its simplified value, so it is placed in the smallest set holding that value (it also belongs to every larger set).",
   "reciprocal-division-choice":
     "For nonzero $b$ and $c$, $\\dfrac{a}{b}\\div\\dfrac{c}{d}=\\dfrac{a}{b}\\times\\dfrac{d}{c}$, because multiplying a number by $\\dfrac{c}{d}\\cdot\\dfrac{d}{c}=1$ does not change the quotient.",
   "scaling-direction-choice":
@@ -787,6 +787,7 @@ export const texas38Lessons: Lesson[] = [
     title: "Nested sets of numbers",
     summary:
       "Numbers come in families, and each family fits inside a bigger one. The counting numbers 1, 2, 3, … are the natural numbers; the dots mean “and so on.” Add 0 and you get the whole numbers. Add the negatives of those, numbers below 0 like $-3$, and you get the integers. Add the fractions of integers, like $\\frac{1}{2}$, and decimals that end or repeat, like 0.75, and you get the rational numbers. To place a number, first simplify it, which means work out its simplest value: $12/4$ is 3, a natural number.",
+    senses: { opposite: "opposite-number" },
     noLink: ["whole", "sort", "mean"],
     templateIds: ["number-set-venn"],
     objectives: [
@@ -812,7 +813,7 @@ export const texas38Lessons: Lesson[] = [
       steps: [
         "Simplify first, because a fraction can equal an integer. The slash / means divide: $-9/3 = -9 \\div 3 = -3$.",
         "Check the rings from the inside out. $-3$ is not a counting number, so it is not natural. It is negative, so it is not whole.",
-        "It is a negative whole-number amount, so it is an integer. The smallest set that holds it is the integers.",
+        "It is the opposite of the whole number 3, so it is an integer. The smallest set that holds it is the integers.",
       ],
       answer: "Integers",
     },

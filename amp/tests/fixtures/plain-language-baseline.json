@@ -999,7 +999,6 @@
       "terms": [
         "bearing",
         "cosine",
-        "right-triangle",
         "sine"
       ],
       "long": []
@@ -18406,7 +18405,6 @@
     "practice:staar-decimal-operations": {
       "terms": [
         "decimal",
-        "equal-groups",
         "hundredth",
         "numerator",
         "unit-fraction",
