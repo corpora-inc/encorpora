@@ -14,21 +14,12 @@ const r2aSenses = {
   square: "square-number",
   squared: "square-number",
   degree: "degree-polynomial",
-  opposite: "opposite-number",
-  unit: "unit",
-  units: "unit",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
-  opposites: "opposite-number",
   identity: "identity-equation",
   "standard form": "standard-form-polynomial",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
-  rule: "rule",
-  rules: "rule",
 };
 const r2aNoLink = [
   "part",
@@ -58,6 +49,19 @@ const r2aNoLink = [
   "quarters",
   "one quarter",
   "mirror image",
+  "rule",
+  "rules",
+  "opposite",
+  "opposites",
+  "unit",
+  "units",
+  "average",
+  "decreasing",
+  "increasing",
+  "model",
+  "models",
+  "pattern",
+  "patterns",
 ];
 
 export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
@@ -122,14 +126,14 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   "trinomial-product": {
     goal: "Multiply two three-term expressions term by term, then combine the terms with the same power of $x$.",
     intuition:
-      "In $x^2 + x + 1$, the parts joined by $+$ or $-$ are called terms, and an expression with three terms is called a trinomial. To multiply two trinomials, multiply each term of the first by each term of the second. That makes $3 \\times 3 = 9$ products. Products with the same power of $x$, such as $-x^3$ and $x^3$, are called like terms, and they are added. Multiplying powers adds their exponents: $x^2 \\times x = x^3$.",
+      "An expression is a calculation written with numbers and letters. In $x^2 + x + 1$, the parts joined by $+$ or $-$ are called terms, and an expression with three terms is called a trinomial. To multiply two trinomials, multiply each term of the first by each term of the second. Each result is called a product, so that makes $3 \\times 3 = 9$ products. Products with the same power of $x$, such as $-x^3$ and $x^3$, are called like terms, and they are added. The number in front of a power of $x$ is called its coefficient. The degree is the highest power of $x$. Multiplying powers adds their exponents: $x^2 \\times x = x^3$.",
     terms: ["trinomial", "like-terms"],
     senses: r2aSenses,
     noLink: r2aNoLink,
     method: [
       "Multiply the first term of one trinomial by all three terms of the other. Repeat for the second and third terms.",
       "Group the products by power: $x^4$, $x^3$, $x^2$, $x$ and the number with no $x$. Add each group.",
-      "Check by putting a small value such as $x = 1$ into the two factors and into your answer.",
+      "Check by putting a small value such as $x = 1$ into the two brackets and into your answer.",
     ],
     watch:
       "The $x^2$ terms come from three different products, and the $x^3$ terms from two. It is easy to miss one.",
@@ -185,7 +189,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   "absolute-value-linear": {
     goal: "Solve $|x - p| = qx + r$ in two cases, and keep only the answers that make the original equation true.",
     intuition:
-      "The absolute value $|u|$ is the distance of $u$ from 0, so it is never negative: $|3| = 3$ and $|-3| = 3$. So $|u| = w$ means $u = w$ or $u = -w$, and $w$ must be 0 or more. That splits the equation into two cases. Each case gives an answer, but an answer can fail if it makes the right side negative. An answer that comes out of the work but does not fit the original equation is called extraneous.",
+      "The absolute value $|u|$ is the distance of $u$ from 0, so it is never negative: $|3| = 3$ and $|-3| = 3$. So $|u| = w$ means $u = w$ or $u = -w$, and $w$ must be 0 or more. That splits the equation into two cases. An equation has two sides: the parts left and right of the equals sign. Each case usually gives an answer, but an answer can fail if it makes the right side negative. An answer that comes out of the work but does not fit the original equation is called extraneous. Extraneous answers often appear after squaring, which means multiplying something by itself.",
     terms: ["absolute-value", "extraneous-solution"],
     senses: r2aSenses,
     noLink: r2aNoLink,
@@ -195,12 +199,12 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
       "Put each answer into the original equation. The right side must not be negative.",
     ],
     watch:
-      "An absolute value can never equal a negative number, so check both answers in the original equation.",
+      "An absolute value can never equal a negative number, one less than 0. So check both answers in the original equation.",
   },
   "shifted-trinomial-factor": {
     goal: "Factor a three-term expression written with $x - k$, then write its factors using $x$.",
     intuition:
-      "In $(x - 4)^2 - 5(x - 4) - 14$, the bracket $x - 4$ appears twice. Calling it $u$ turns the expression into $u^2 - 5u - 14$, a quadratic in $u$ ($u^2$ means $u$ times $u$). Factor it as usual: find two numbers that multiply to $-14$ and add to $-5$. Then put $x - 4$ back in place of $u$ and combine the numbers in each bracket. Factors are the parts being multiplied.",
+      "In $(x - 4)^2 - 5(x - 4) - 14$, the bracket $x - 4$ appears twice. Calling it $u$ turns the expression into $u^2 - 5u - 14$, where $u^2$ means $u$ times $u$. An expression like this is called a quadratic. Factoring means writing it as parts multiplied together, called factors. Factor it as usual: find two numbers that multiply to $-14$ and add to $-5$. Then put $x - 4$ back in place of $u$ and combine the numbers in each bracket. A product is the result of multiplying.",
     terms: [
       [
         "substitute",
@@ -243,7 +247,7 @@ export const regentsAlgebraTwoAlgebraPrinciples: Record<string, string> = {
   "rational-two-denominators":
     "Multiplying both sides by a nonzero common denominator gives an equivalent equation only for $x$ values that keep every denominator nonzero. Roots that make a denominator zero are rejected.",
   "trinomial-product":
-    "By the distributive property, each of the three terms of one factor multiplies each of the three terms of the other, giving nine products. Like terms are then added. The product of two quadratics has degree 4.",
+    "By the distributive property, each of the three terms of one bracket multiplies each of the three terms of the other, giving nine products. Like terms are then added. The product of two quadratics has degree 4.",
   "cubic-quotient-remainder":
     "For a polynomial $p$ and divisor $x-c$, $p(x)=(x-c)q(x)+p(c)$, so $\\dfrac{p(x)}{x-c}=q(x)+\\dfrac{p(c)}{x-c}$ for $x\\ne c$.",
   "powers-of-i-sum":
@@ -432,7 +436,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
       id: "regents-trinomial-product",
       title: "Multiplying trinomials",
       summary:
-        "An expression with three parts joined by $+$ or $-$, like $x^2 + x + 1$, is called a trinomial. To multiply two of them, multiply each part of the first by each part of the second. That makes nine small products. Then add the ones with the same power of $x$.",
+        "An expression is a calculation written with numbers and letters. One with three parts joined by $+$ or $-$, like $x^2 + x + 1$, is called a trinomial. To multiply two of them, multiply each part of the first by each part of the second. Each result is called a product, so that makes nine products. Then add the ones with the same power of $x$.",
       templateIds: ["trinomial-product"],
       objectives: [
         "Multiply each term of one trinomial by each term of the other.",
@@ -450,7 +454,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
         steps: [
           "Multiply $x^2$ by each term of the second trinomial: $x^4 - x^3 + 2x^2$. Multiply $x$ by each: $x^3 - x^2 + 2x$. Multiply 1 by each: $x^2 - x + 2$.",
           "Add like terms. $x^4$: just $x^4$. $x^3$: $-x^3 + x^3 = 0$. $x^2$: $2x^2 - x^2 + x^2 = 2x^2$. $x$: $2x - x = x$. Numbers: 2.",
-          "The product is $x^4 + 2x^2 + x + 2$. Check with $x = 1$: the factors give $3 \\times 2 = 6$, and the answer gives $1 + 2 + 1 + 2 = 6$.",
+          "The product is $x^4 + 2x^2 + x + 2$. Check with $x = 1$: the two brackets give $3 \\times 2 = 6$, and the answer gives $1 + 2 + 1 + 2 = 6$.",
         ],
         answer: "$x^4+2x^2+x+2$",
       },
@@ -458,11 +462,11 @@ export const regentsAlgebraTwoAlgebraLessons = [
       method: [
         "Multiply the first term by all three terms, then the second, then the third.",
         "Group the products by exponent and add their coefficients (the numbers in front).",
-        "Check with $x = 1$: the two factors multiplied should equal the sum of the answer's coefficients.",
+        "Check with $x = 1$: the two brackets multiplied should equal the sum of the answer's coefficients.",
       ],
       formalTitle: "Degree and check",
       formal: [
-        "The degree of a polynomial is its highest power of $x$. The degree of a product is the sum of the degrees: $2 + 2 = 4$.",
+        "The degree is the highest power of $x$ in a polynomial. The degree of a product is the sum of the degrees: $2 + 2 = 4$.",
         "At $x = 1$, every power of $x$ is 1. So the value of the product there is the sum of its coefficients.",
       ],
       pitfalls: [
@@ -602,7 +606,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
       id: "regents-absolute-value-linear",
       title: "Absolute value equal to a linear function",
       summary:
-        "The absolute value of a number is its distance from 0, written with bars: $|-5| = 5$ and $|5| = 5$. A distance is never negative. So when $|x - 1|$ equals something, the inside is either that something or its opposite. Solve both cases, then check each answer, because one may make the other side negative.",
+        "The absolute value of a number is its distance from 0, written with bars: $|-5| = 5$ and $|5| = 5$. A distance is never negative. So when $|x - 1|$ equals something, the inside is either that something or its opposite. An equation has two sides: the parts left and right of the equals sign. Solve both cases, then check each answer, because one may make the other side negative.",
       templateIds: ["absolute-value-linear"],
       objectives: [
         "Split an absolute-value equation into two cases.",
@@ -612,7 +616,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
       opening: [
         "The absolute value $|u|$ is the distance of $u$ from 0, so it is never negative. Both 3 and $-3$ are 3 away from 0.",
         "So $|u| = w$ means $u = w$ or $u = -w$. And $w$ must be 0 or more, because a distance cannot be negative.",
-        "In this lesson, the right side is a straight-line expression in $x$, like $2x - 4$. Each case gives one answer. But an answer can make the right side negative, and then it does not work.",
+        "In this lesson, the right side is a straight-line expression in $x$, like $2x - 4$. Each case usually gives one answer. But an answer can make the right side negative, and then it does not work.",
         "An answer that comes out of the steps but does not make the original equation true is called extraneous. It is thrown away.",
       ],
       example: {
@@ -638,7 +642,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
       ],
       pitfalls: [
         "Do not skip the check. One case often gives an extraneous answer.",
-        "In Case 2, take the opposite of the whole right side, not just its first term.",
+        "In Case 2, take the opposite of the whole right side, not just its first term (its first part).",
       ],
       parentGuide:
         "Ask your learner whether the right side is negative at each answer, and what that means.",
@@ -651,7 +655,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
       id: "regents-shifted-trinomial-factor",
       title: "Factoring in terms of a binomial",
       summary:
-        "In $(x - 4)^2 - 5(x - 4) - 14$, the bracket $x - 4$ shows up twice. Give it a nickname, $u$, and the expression becomes $u^2 - 5u - 14$, which is easier to factor. Factoring means writing it as parts multiplied together: $(u - 7)(u + 2)$. Then put $x - 4$ back in place of $u$ and tidy up.",
+        "In $(x - 4)^2 - 5(x - 4) - 14$, the bracket $x - 4$ shows up twice. Give it a nickname, $u$, and the expression becomes $u^2 - 5u - 14$, which is easier to factor, or write as parts multiplied together. Factoring means writing it as parts multiplied together: $(u - 7)(u + 2)$. Then put $x - 4$ back in place of $u$ and tidy up.",
       templateIds: ["shifted-trinomial-factor"],
       objectives: [
         "Name the repeated bracket $u$, and factor the expression in $u$.",
@@ -674,7 +678,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
       methodTitle: "Substitute, factor, substitute back",
       method: [
         "Let $u$ stand for the repeated bracket.",
-        "Factor in $u$: find two numbers with the right product (result of multiplying) and sum.",
+        "Factor in $u$: find two numbers with the right product (the result of multiplying) and sum.",
         "Put the whole bracket back in place of $u$, and simplify each factor.",
       ],
       formalTitle: "Why it works",

@@ -12,20 +12,11 @@ const parabolaSenses: Lesson["senses"] = {
   product: "product-multiply",
   side: "side",
   "standard form": "standard-form-polynomial",
-  unit: "unit",
-  units: "unit",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
-  opposite: "opposite-number",
-  opposites: "opposite-number",
   identity: "identity-equation",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
-  rule: "rule",
-  rules: "rule",
 };
 const structureSenses: Lesson["senses"] = {
   term: "term-expression",
@@ -41,21 +32,12 @@ const structureSenses: Lesson["senses"] = {
   side: "side",
   sides: "side",
   root: "root-radical",
-  unit: "unit",
-  units: "unit",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
-  opposite: "opposite-number",
-  opposites: "opposite-number",
   identity: "identity-equation",
   "standard form": "standard-form-polynomial",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
-  rule: "rule",
-  rules: "rule",
 };
 
 /** Quadratic and polynomial structure: parabola features, reading
@@ -65,7 +47,7 @@ export const quadraticStructureLessons: Lesson[] = [
     id: "parabola-features",
     title: "Parabolas: vertex, axis and translations",
     summary:
-      "The graph of $y = x^2$ ($x$ times $x$) is a U-shaped curve called a parabola. Its lowest point, $(0, 0)$, is where it turns around. That turning point is called the vertex. The curve is a mirror image on either side of the vertical line through the vertex. Changing the equation slides the curve, and the equation tells you exactly where the vertex goes.",
+      "The graph of $y = x^2$ ($x$ times $x$) is a U-shaped curve called a parabola. Its lowest point, $(0, 0)$, is where it turns around. That turning point is called the vertex. The curve is a mirror image on either side of the vertical line through the vertex. Changing some numbers in the equation slides the curve, and the equation tells you exactly where the vertex goes.",
     templateIds: ["parabola-vertex", "parabola-axis", "parabola-shift"],
     includeGeneratedRepresentation: false,
     senses: parabolaSenses,
@@ -97,6 +79,19 @@ export const quadraticStructureLessons: Lesson[] = [
       "quarters",
       "one quarter",
       "mirror image",
+      "rule",
+      "rules",
+      "opposite",
+      "opposites",
+      "unit",
+      "units",
+      "average",
+      "decreasing",
+      "increasing",
+      "model",
+      "models",
+      "pattern",
+      "patterns",
     ],
     objectives: [
       "Find the vertex (the turning point) of a parabola from vertex form, from standard form, or from its graph.",
@@ -111,8 +106,8 @@ export const quadraticStructureLessons: Lesson[] = [
           "Start with $y = x^2$. The raised 2 means $x$ times $x$. Make a table: $x = -2, -1, 0, 1, 2$ give $y = 4, 1, 0, 1, 4$. Plot the points $(x, y)$ and join them. The result is a U-shaped curve called a parabola.",
           "The lowest point, $(0, 0)$, is where the curve turns around. The turning point of a parabola is called its vertex. If the curve opens downward, like a hill, the vertex is its highest point instead.",
           "Look at the table again: $x = -2$ and $x = 2$ give the same height, 4. Points the same distance left and right of the vertex have the same height. So the vertical line through the vertex splits the parabola into two mirror-image halves. That line is called the axis of symmetry.",
-          "Now look at $y = a(x - h)^2 + k$, where $a$, $h$ and $k$ are fixed numbers and $a \\ne 0$ ($\\ne$ means is not equal to). The square $(x - h)^2$ is 0 when $x = h$ and positive for every other $x$. So when $a$ is positive, $y$ is smallest at $x = h$, where $y = k$. When $a$ is negative, $y$ is largest there. Either way, the vertex is $(h, k)$ and the axis of symmetry is the line $x = h$.",
-          "Two points at the same height are the same distance from the axis, one on each side. So the axis is halfway between them. The two places where the curve crosses the $x$-axis (its zeros) are one such pair.",
+          "Now look at $y = a(x - h)^2 + k$, where $a$, $h$ and $k$ are fixed numbers and $a \\ne 0$ ($\\ne$ means is not equal to). Squaring means multiplying a number by itself, so a square is never negative. Here $(x - h)^2$ is 0 when $x = h$ and positive for every other $x$. So when $a$ is positive, $y$ is smallest at $x = h$, where $y = k$. When $a$ is negative, $y$ is largest there. Either way, the vertex is $(h, k)$ and the axis of symmetry is the line $x = h$.",
+          "Two points at the same height are the same distance from the axis, one on each side. So the axis is halfway between them. When the curve crosses the $x$-axis twice, those two crossing points are one such pair.",
         ],
         illustration: "parabola-features",
       },
@@ -149,7 +144,7 @@ export const quadraticStructureLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "For real numbers $a$, $h$ and $k$ with $a \\ne 0$, the graph of $y = a(x - h)^2 + k$ has vertex $(h, k)$. That is the lowest point if $a > 0$ ($>$ means greater than) and the highest point if $a < 0$ ($<$ means less than).",
+          "Real numbers are the numbers on the number line. For real numbers $a$, $h$ and $k$ with $a \\ne 0$, the graph of $y = a(x - h)^2 + k$ has vertex $(h, k)$. That is the lowest point if $a > 0$ ($>$ means greater than) and the highest point if $a < 0$ ($<$ means less than).",
           "For every number $d$, the inputs $h - d$ and $h + d$ give the same output, so the axis of symmetry is $x = h$. In standard form $y = ax^2 + bx + c$, the same axis is $x = -\\frac{b}{2a}$.",
           "Replacing $x$ with $x - h$ moves a graph $h$ units right, and adding $k$ to the output moves it $k$ units up.",
         ],
@@ -157,7 +152,7 @@ export const quadraticStructureLessons: Lesson[] = [
     ],
     pitfalls: [
       "Flip the sign you see inside the bracket: $y = (x + 2)^2 - 1$ has its vertex at $(-2, -1)$.",
-      "The number $c$ in standard form is where the curve crosses the $y$-axis, not the height of the vertex. Put the vertex's $x$ into the equation instead.",
+      "The number $c$ in standard form is the height where the curve crosses the $y$-axis. It is the vertex height only when the vertex is on the $y$-axis, so put the vertex's $x$ into the equation instead.",
       "Keep the minus sign in $x = -\\frac{b}{2a}$.",
     ],
     parentGuide:
@@ -167,7 +162,7 @@ export const quadraticStructureLessons: Lesson[] = [
     id: "expression-structure",
     title: "Reading an expression by its structure",
     summary:
-      "An expression is a calculation written with numbers and letters, like $(x + 3)(x + 2)$. Its pieces each mean something. Two brackets multiplied can be drawn as the area of a rectangle with those side lengths. In a formula like $C = 40 + 15h$, the 40 is a fixed starting amount and the 15 is added for each $h$. Some expressions also have a shape you can spot and rewrite as a product, the result of multiplying.",
+      "An expression is a calculation written with numbers and letters, like $(x + 3)(x + 2)$. Its pieces each mean something. Two brackets multiplied can be drawn as a rectangle with those side lengths. Its area, the space inside it, is what you get by multiplying them. In a formula like $C = 40 + 15h$, the 40 is a fixed starting amount and the 15 is added for each $h$. Some expressions also have a shape you can spot and rewrite as a product, the result of multiplying.",
     templateIds: [
       "binomial-area-product",
       "structure-meaning",
@@ -203,6 +198,19 @@ export const quadraticStructureLessons: Lesson[] = [
       "quarters",
       "one quarter",
       "mirror image",
+      "rule",
+      "rules",
+      "opposite",
+      "opposites",
+      "unit",
+      "units",
+      "average",
+      "decreasing",
+      "increasing",
+      "model",
+      "models",
+      "pattern",
+      "patterns",
     ],
     objectives: [
       "Multiply out two binomials (two-term expressions) as the four pieces of an area model.",
@@ -226,7 +234,7 @@ export const quadraticStructureLessons: Lesson[] = [
         paragraphs: [
           "In a formula about a real situation, each number has a meaning. To find a starting amount, set the input to 0. In $C = 40 + 15h$ for the cost $C$ of $h$ hours, $h = 0$ gives $C = 40$. So 40 is a fixed fee paid even for zero hours. Each extra hour adds 15, so 15 is the cost per hour.",
           "In $P = 2400(1.05)^t$, the raised $t$ means 1.05 is multiplied $t$ times. At $t = 0$, $P = 2400$, the starting population. Each year multiplies the population by 1.05, which is a 5% increase.",
-          "In $h = -16t^2 + 48t + 5$ for the height of a ball after $t$ seconds, $t = 0$ gives $h = 5$, the height when it was thrown. The 48 is how fast it starts rising, but the $-16t^2$ term keeps slowing it down. So 48 is not a constant speed.",
+          "In $h = -16t^2 + 48t + 5$ for the height of a ball after $t$ seconds, $t = 0$ gives $h = 5$, the height when it was thrown. The 48 is how fast it starts rising, in feet per second, but the $-16t^2$ term changes how fast it moves as time passes. So 48 is not a rate that stays the same.",
         ],
       },
       {
@@ -241,7 +249,7 @@ export const quadraticStructureLessons: Lesson[] = [
     workedExample: {
       prompt: "Which product equals (x − 1)² − 25?",
       steps: [
-        "Spot two squares. The first part is $(x - 1)^2$, and $25 = 5^2$. So let $A = x - 1$ and $B = 5$. The expression is $A^2 - B^2$.",
+        "Spot two squares, which are things multiplied by themselves. The first part is $(x - 1)^2$, and $25 = 5^2$. So let $A = x - 1$ and $B = 5$. The expression is $A^2 - B^2$.",
         "Use the difference of squares: $A^2 - B^2 = (A - B)(A + B)$. Put back $A = x - 1$: $(x - 1 - 5)(x - 1 + 5)$.",
         "Combine the numbers in each bracket: $-1 - 5 = -6$ and $-1 + 5 = 4$. So the product is $(x - 6)(x + 4)$.",
         "Check by multiplying out: $(x - 6)(x + 4) = x^2 - 2x - 24$, and $(x - 1)^2 - 25 = x^2 - 2x + 1 - 25 = x^2 - 2x - 24$.",
@@ -253,7 +261,7 @@ export const quadraticStructureLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "The distributive property says each term of one factor multiplies each term of the other, just as the pieces of a rectangle add up to its area.",
+          "The distributive property is the rule that each term of one factor multiplies each term of the other, just as the pieces of a rectangle add up to its area.",
           "If a formula gives an output for input 0, that output is the starting value. In a straight-line rule $y = mx + b$, $b$ is the starting value and $m$ is the fixed change in $y$ for each 1 added to $x$. In other kinds of rule, a coefficient need not be a fixed rate.",
           "For any expressions $A$ and $B$: $A^2 - B^2 = (A - B)(A + B)$ and $A^2 + 2AB + B^2 = (A + B)^2$.",
         ],
@@ -394,7 +402,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   "parabola-vertex": {
     goal: "Find the vertex $(h, k)$, the turning point of the parabola, from its equation or its graph.",
     intuition:
-      "A parabola is the U-shaped graph of a rule with an $x^2$ part ($x$ times $x$). Its turning point, the lowest point or the highest if it opens downward, is called the vertex. In vertex form $y = a(x - h)^2 + k$, with $a \\ne 0$, the square $(x - h)^2$ is 0 at $x = h$ and positive everywhere else. So the vertex is $(h, k)$. In standard form $y = ax^2 + bx + c$, the vertex is at $x = -\\frac{b}{2a}$.",
+      "Squaring means multiplying a number by itself. A parabola is the U-shaped graph of a rule like $y = ax^2 + bx + c$, where $x^2$ means $x$ times $x$ and $a \\ne 0$. Its turning point, the lowest point or the highest if it opens downward, is called the vertex. In vertex form $y = a(x - h)^2 + k$, with $a \\ne 0$, the square $(x - h)^2$ is 0 at $x = h$ and positive everywhere else. So the vertex is $(h, k)$. In the form $y = ax^2 + bx + c$, the vertex is at $x = -\\frac{b}{2a}$.",
     terms: ["vertex-parabola", "vertex-form"],
     senses: parabolaSenses,
     noLink: [
@@ -425,10 +433,23 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
       "quarters",
       "one quarter",
       "mirror image",
+      "rule",
+      "rules",
+      "opposite",
+      "opposites",
+      "unit",
+      "units",
+      "average",
+      "decreasing",
+      "increasing",
+      "model",
+      "models",
+      "pattern",
+      "patterns",
     ],
     method: [
       "Vertex form: $h$ is the $x$ that makes the squared bracket 0, and $k$ is the number added after the square.",
-      "Standard form $y = ax^2 + bx + c$: find $x = -\\frac{b}{2a}$, then put it into the equation to find $y$.",
+      "The form $y = ax^2 + bx + c$ is called standard form. For it, find $x = -\\frac{b}{2a}$, then put it into the equation to find $y$.",
       "Graph: find the turning point and read its coordinates from the axes.",
     ],
     watch:
@@ -437,7 +458,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   "parabola-axis": {
     goal: "Find the axis of symmetry: the vertical line that splits the parabola into two mirror halves.",
     intuition:
-      "A parabola is the U-shaped graph of a rule with an $x^2$ part. The vertical line through its turning point (the vertex) splits it into two mirror-image halves. That line is called the axis of symmetry. It is written as an equation like $x = 3$, meaning every point on it has $x$-value 3. Two points at the same height sit the same distance from it, one on each side, so the axis is halfway between them. The zeros, where the curve crosses the $x$-axis, are one such pair.",
+      "A parabola is the U-shaped graph of a rule like $y = ax^2 + bx + c$ with $a \\ne 0$. The vertex is the turning point of the parabola. The vertical line through the vertex splits it into two mirror-image halves. That line is called the axis of symmetry. It is written as an equation like $x = 3$, meaning every point on it has $x$-value 3. Two points at the same height sit the same distance from it, one on each side, so the axis is halfway between them. If the curve crosses the $x$-axis twice, those two zeros are one such pair.",
     terms: ["axis-of-symmetry"],
     senses: parabolaSenses,
     noLink: [
@@ -468,6 +489,19 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
       "quarters",
       "one quarter",
       "mirror image",
+      "rule",
+      "rules",
+      "opposite",
+      "opposites",
+      "unit",
+      "units",
+      "average",
+      "decreasing",
+      "increasing",
+      "model",
+      "models",
+      "pattern",
+      "patterns",
     ],
     method: [
       "From two points at the same height, such as the two zeros, take the $x$ halfway between them: add the two $x$-values and divide by 2.",
@@ -480,7 +514,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   "parabola-shift": {
     goal: "Match a slide of the graph of $y = x^2$ with its equation $y = (x - h)^2 + k$.",
     intuition:
-      "The graph of $y = x^2$ ($x$ times $x$) is a U-shaped curve called a parabola, with its turning point (the vertex) at $(0, 0)$. Sliding a graph without turning or stretching it is called a translation. Adding $k$ after the square moves the graph $k$ units up. Writing $x - h$ inside the square moves it $h$ units right, because the square is now 0 at $x = h$. So $y = (x - h)^2 + k$ has its vertex at $(h, k)$.",
+      "The graph of $y = x^2$ ($x$ times $x$) is a U-shaped curve called a parabola, and its turning point is called the vertex, at $(0, 0)$. Sliding a graph without turning or stretching it is called a translation. Adding $k$ after the square moves the graph $k$ units up. Writing $x - h$ inside the square moves it $h$ units right, because the square is now 0 at $x = h$. So $y = (x - h)^2 + k$ has its vertex at $(h, k)$.",
     terms: ["vertex-parabola", "vertex-form"],
     senses: parabolaSenses,
     noLink: [
@@ -511,6 +545,19 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
       "quarters",
       "one quarter",
       "mirror image",
+      "rule",
+      "rules",
+      "opposite",
+      "opposites",
+      "unit",
+      "units",
+      "average",
+      "decreasing",
+      "increasing",
+      "model",
+      "models",
+      "pattern",
+      "patterns",
     ],
     method: [
       "Follow the vertex: $(0, 0)$ moves to $(h, k)$.",
@@ -523,7 +570,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   "binomial-area-product": {
     goal: "Multiply out two binomials (two-term brackets) and add like terms.",
     intuition:
-      "In $x + 3$, the parts joined by $+$ or $-$ are called terms, and a two-term expression is called a binomial. Two brackets written next to each other are multiplied. Picture $(x + 3)(x + 2)$ as a rectangle $x + 3$ wide and $x + 2$ tall. Cutting each length into its terms splits it into four pieces: $x^2$, $3x$, $2x$ and 6. Adding the pieces gives $x^2 + 5x + 6$. Like terms, such as $3x$ and $2x$, have the same power of $x$ and can be added.",
+      "In $x + 3$, the parts joined by $+$ or $-$ are called terms, and a two-term expression is called a binomial. Two brackets written next to each other are multiplied. Picture $(x + 3)(x + 2)$ as a rectangle $x + 3$ wide and $x + 2$ tall. Cutting each length into its terms splits it into four pieces: $x^2$, $3x$, $2x$ and 6. Adding the pieces gives $x^2 + 5x + 6$. Terms with the same power of $x$, such as $3x$ and $2x$, are called like terms, and they can be added.",
     terms: [
       [
         "area-model",
@@ -559,9 +606,22 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
       "quarters",
       "one quarter",
       "mirror image",
+      "rule",
+      "rules",
+      "opposite",
+      "opposites",
+      "unit",
+      "units",
+      "average",
+      "decreasing",
+      "increasing",
+      "model",
+      "models",
+      "pattern",
+      "patterns",
     ],
     method: [
-      "Multiply each term of the first bracket by each term of the second. That makes four products. Keep each sign with its term.",
+      "Multiply each term of the first bracket by each term of the second. Each result is called a product, so that makes four products. Keep each sign with its term.",
       "Add the two $x$ terms. Keep the $x^2$ term and the number term as they are.",
       "Check by putting a number, such as $x = 1$, into both the brackets and your answer.",
     ],
@@ -571,7 +631,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   "structure-meaning": {
     goal: "Say what a number in a formula means in its real situation: a starting value, a rate or a growth factor.",
     intuition:
-      "A formula connects an input, like hours $h$, to an output, like cost $C$. In $C = 40 + 15h$, putting $h = 0$ leaves $C = 40$: a fixed amount you pay at the start. Each extra hour adds 15, so 15 is the rate, the change for each 1 added to the input. In $P = 2400(1.05)^t$, the raised $t$ means 1.05 is multiplied $t$ times. So each step multiplies by 1.05, called the growth factor. A coefficient is the number multiplying a variable.",
+      "A formula connects a starting value, called the input, to a result, called the output. For example, hours $h$ can give a cost $C$. In $C = 40 + 15h$, putting $h = 0$ leaves $C = 40$: a fixed amount you pay at the start. Each extra hour adds 15, so 15 is the rate, the change for each 1 added to the input. In $P = 2400(1.05)^t$, the raised $t$ means 1.05 is multiplied $t$ times. So each step multiplies by 1.05, called the growth factor. A variable is a letter that stands for a number. A coefficient is the number multiplying a variable in a term (one part of the formula).",
     terms: ["coefficient", "constant"],
     senses: structureSenses,
     noLink: [
@@ -602,6 +662,19 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
       "quarters",
       "one quarter",
       "mirror image",
+      "rule",
+      "rules",
+      "opposite",
+      "opposites",
+      "unit",
+      "units",
+      "average",
+      "decreasing",
+      "increasing",
+      "model",
+      "models",
+      "pattern",
+      "patterns",
     ],
     method: [
       "Set the input to 0. What is left is the starting value.",
@@ -609,12 +682,12 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
       "Match those meanings to the numbers in the formula, with their units.",
     ],
     watch:
-      "A coefficient is the change for each one unit, not the total after one unit. In $C = 40 + 15h$, one hour costs 55, not 15.",
+      "In a straight-line formula like $C = 40 + 15h$, the coefficient 15 is the change for each extra hour, not the total after one hour. One hour costs 55, not 15.",
   },
   "structure-rewrite": {
     goal: "Rewrite an expression as a product by spotting a difference of squares or a perfect square in it.",
     intuition:
-      "A square is something times itself: $x^2 = x \\times x$ and $49 = 7 \\times 7$. Multiplying out $(A - B)(A + B)$ gives $A^2 - B^2$, one square minus another, called a difference of squares. Multiplying out $(A + B)(A + B)$ gives $A^2 + 2AB + B^2$, called a perfect square. Here $A$ and $B$ stand for numbers or whole expressions. Spotting these shapes lets you rewrite a sum as a product, the result of multiplying.",
+      "A square is a number or expression times itself: $x^2 = x \\times x$ and $49 = 7 \\times 7$. Multiplying out $(A - B)(A + B)$ gives $A^2 - B^2$, one square minus another, called a difference of squares. Multiplying out $(A + B)(A + B)$ gives $A^2 + 2AB + B^2$, called a perfect square. Here $A$ and $B$ stand for numbers or whole expressions. Spotting these shapes lets you rewrite a sum as a product, the result of multiplying. The parts being multiplied are called factors. A two-term expression is called a binomial.",
     terms: ["difference-of-squares", "perfect-square-trinomial"],
     senses: structureSenses,
     noLink: [
@@ -645,11 +718,24 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
       "quarters",
       "one quarter",
       "mirror image",
+      "rule",
+      "rules",
+      "opposite",
+      "opposites",
+      "unit",
+      "units",
+      "average",
+      "decreasing",
+      "increasing",
+      "model",
+      "models",
+      "pattern",
+      "patterns",
     ],
     method: [
       "Name $A$ and $B$: what is being squared in each square part. $A$ can be $x^2$, or a bracket like $x + 3$.",
       "Write the matching product: $(A - B)(A + B)$ or $(A + B)^2$.",
-      "Simplify inside each bracket. For a perfect square, check that the middle term is $2AB$.",
+      "Simplify inside each bracket. For a perfect square, check that the middle term, the middle part, is $2AB$.",
     ],
     watch:
       "$B$ is the square root of the number, the number that times itself gives it: in $x^2 - 49$, $B = 7$, not 49.",
@@ -705,11 +791,11 @@ export const quadraticStructurePrinciples: Record<string, string> = {
   "parabola-vertex":
     "A square is never negative, and it is 0 only when the thing squared is 0. So $a(x - h)^2 + k$ reaches its lowest or highest value, $k$, exactly at $x = h$.",
   "parabola-axis":
-    "$a(x - h)^2 + k$ has the same value at $h - d$ and $h + d$ for every number $d$, so the parabola is symmetric about the line $x = h$. In standard form, $h = -\\frac{b}{2a}$.",
+    "$a(x - h)^2 + k$ has the same value at $h - d$ and $h + d$ for every number $d$, so the parabola is symmetric about the line $x = h$. In the form $y = ax^2 + bx + c$, $h = -\\frac{b}{2a}$.",
   "parabola-shift":
     "Replacing $x$ with $x - h$ moves a graph $h$ units right, and adding $k$ to the output moves it $k$ units up. So the vertex of $y = x^2$ moves from $(0, 0)$ to $(h, k)$.",
   "binomial-area-product":
-    "The distributive property: each term of one factor multiplies each term of the other, just as the pieces of a rectangle add up to its area. So $(a + b)(c + d) = ac + ad + bc + bd$.",
+    "The distributive property: each term of one factor (a part being multiplied) multiplies each term of the other. Area is the space a shape covers, and the pieces of a rectangle add up to its area. So $(a + b)(c + d) = ac + ad + bc + bd$.",
   "structure-meaning":
     "In a formula, the output at input 0 is the starting value. In $y = mx + b$, the starting value is $b$ and each 1 added to $x$ adds $m$, the rate. In $y = a \\times b^x$, each step multiplies by $b$.",
   "structure-rewrite":

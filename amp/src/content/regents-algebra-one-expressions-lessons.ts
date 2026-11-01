@@ -18,17 +18,10 @@ const r1Senses = {
   terms: "term-expression",
   degree: "degree-polynomial",
   balance: "balance-scale",
-  unit: "unit",
-  units: "unit",
-  opposite: "opposite-number",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
-  opposites: "opposite-number",
   identity: "identity-equation",
   "standard form": "standard-form-polynomial",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
   scale: "balance-scale",
@@ -63,6 +56,17 @@ const r1NoLink = [
   "mirror image",
   "rule",
   "rules",
+  "opposite",
+  "opposites",
+  "unit",
+  "units",
+  "average",
+  "decreasing",
+  "increasing",
+  "model",
+  "models",
+  "pattern",
+  "patterns",
 ];
 
 export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
@@ -80,12 +84,12 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
         "Read what is left: the top unit “per” the bottom unit.",
       ],
       watch:
-        "A speed has a length on top and a time on the bottom. Each factor cancels one unit and brings in another, so check which unit each one cancels.",
+        "A speed has a length on top and a time on the bottom. Each conversion factor cancels one unit and brings in another, so check which unit each one cancels.",
     },
     "negative-monomial-power": {
       goal: "Raise a single term with a negative number in front to a power, by raising each part to that power.",
       intuition:
-        "A power counts repeated multiplying: $(-2x^2)^3$ means $(-2x^2) \\times (-2x^2) \\times (-2x^2)$. A single term like $-2x^2$ is called a monomial, and its number, $-2$, is its coefficient. The power goes to every part: $(-2)^3 \\times (x^2)^3$. The minus sign belongs to the coefficient, so it is raised too. An odd number of negatives multiplied gives a negative; an even number gives a positive. And $(x^2)^3 = x^2 \\times x^2 \\times x^2 = x^6$, so the exponents multiply.",
+        "A power counts repeated multiplying: $(-2x^2)^3$ means $(-2x^2) \\times (-2x^2) \\times (-2x^2)$. An expression is a calculation written with numbers and letters, and a term is one part of it joined to others by $+$ or $-$. A single term like $-2x^2$ is called a monomial, and its number, $-2$, is its coefficient. The power goes to every part: $(-2)^3 \\times (x^2)^3$. The minus sign belongs to the coefficient, so it is raised too. An odd number of negatives multiplied gives a negative; an even number gives a positive. And $(x^2)^3 = x^2 \\times x^2 \\times x^2 = x^6$, so the exponents multiply.",
       terms: ["monomial", "coefficient"],
       senses: r1Senses,
       noLink: r1NoLink,
@@ -100,14 +104,14 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
     "combine-unlike-radicals": {
       goal: "Simplify a square root so it matches another one, add the matching roots, and keep the different one separate.",
       intuition:
-        "A square root of a number is a number that times itself gives it, so $\\sqrt{9} = 3$. The number under the root sign is called the radicand. Square roots with the same radicand add like objects: $3\\sqrt{5} + 2\\sqrt{5} = 5\\sqrt{5}$, just as 3 fives plus 2 fives is 5 fives. Roots with different radicands, like $\\sqrt{5}$ and $\\sqrt{3}$, stay separate. A root like $\\sqrt{45}$ can hide a matching one: $\\sqrt{45} = \\sqrt{9 \\times 5} = 3\\sqrt{5}$.",
+        "A square root of a number is a number that times itself gives it, so $\\sqrt{9} = 3$. The $\\sqrt{\\ }$ symbol is called the root sign, and the number under it is called the radicand. Square roots with the same radicand add like objects: $3\\sqrt{5} + 2\\sqrt{5} = 5\\sqrt{5}$, just as 3 fives plus 2 fives is 5 fives. Roots with different radicands, like $\\sqrt{5}$ and $\\sqrt{3}$, stay separate. A root like $\\sqrt{45}$ can hide a matching one: $\\sqrt{45} = \\sqrt{9 \\times 5} = 3\\sqrt{5}$.",
       terms: ["radicand", "like-radicals"],
       senses: r1Senses,
       noLink: r1NoLink,
       method: [
-        "Take out any perfect-square factor (like 4, 9 or 25): $\\sqrt{45} = \\sqrt{9 \\times 5} = 3\\sqrt{5}$.",
+        "Take out any perfect-square factor, a number like 4, 9 or 25 that divides the radicand: $\\sqrt{45} = \\sqrt{9 \\times 5} = 3\\sqrt{5}$.",
         "Add the numbers in front of the roots that now have the same radicand.",
-        "Write a root with a different radicand as its own term.",
+        "Write a root with a different radicand as its own term, a separate part of the sum.",
       ],
       watch:
         "Never add the numbers under the root signs. Simplify each root before deciding two roots do not match.",
@@ -115,7 +119,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
     "complete-square-equation": {
       goal: "Complete the square on an equation that starts with $x^2$, keeping both sides equal.",
       intuition:
-        "A perfect square is something times itself: $(x + 3)^2 = (x + 3)(x + 3) = x^2 + 6x + 9$. So $x^2 + bx$ becomes a perfect square when you add half of $b$, squared: $\\left(\\frac{b}{2}\\right)^2$. For $x^2 + 6x$, half of 6 is 3 and $3^2 = 9$. Adding a number to only one side would make the equation false, so add it to both sides.",
+        "A perfect square is something times itself: $(x + 3)^2 = (x + 3)(x + 3) = x^2 + 6x + 9$. So $x^2 + bx$ becomes a perfect square when you add half of $b$, squared: $\\left(\\frac{b}{2}\\right)^2$. For $x^2 + 6x$, half of 6 is 3 and $3^2 = 9$. An equation has two sides: the parts left and right of the equals sign. Adding a number other than 0 to only one side would make the sides unequal, so add it to both sides.",
       terms: ["perfect-square-trinomial", "completing-the-square"],
       senses: r1Senses,
       noLink: r1NoLink,
@@ -145,7 +149,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
     "polynomial-structure": {
       goal: "Read the degree, leading coefficient and constant term of a polynomial whose terms are out of order.",
       intuition:
-        "A polynomial is a sum of terms like $3x^4$, $-x$ and $-5$. The degree is the largest exponent (small raised number) on $x$. The leading coefficient is the number multiplying that highest power, wherever it is written. The constant term is the term with no $x$. Each term keeps the sign in front of it.",
+        "A polynomial is a sum of terms like $3x^4$, $-x$ and $-5$. The degree is the largest exponent (small raised number) on $x$ after like terms are combined. The leading coefficient is the number multiplying that highest power, wherever it is written. The constant term is the term with no $x$. Each term keeps the sign in front of it.",
       terms: ["degree-polynomial", "leading-coefficient", "constant-term"],
       senses: r1Senses,
       noLink: r1NoLink,
@@ -160,15 +164,15 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
   };
 export const regentsAlgebraOneExpressionPrinciples: Record<string, string> = {
   "rate-unit-chain":
-    "Multiplying a quantity by a conversion factor, a fraction equal to 1, changes its unit and not its amount. In a product of fractions, a unit on top and the same unit on the bottom cancel, leaving the units that appear only once.",
+    "Multiplying a quantity by a conversion factor, a fraction equal to 1, changes its unit and not its amount. When fractions are multiplied, a unit on top and the same unit on the bottom cancel, leaving the units that are not cancelled.",
   "negative-monomial-power":
-    "For a counting number $k$, $(ax^m)^k = a^k x^{mk}$: raise the coefficient and multiply the exponents. If $a < 0$, then $a^k$ is negative when $k$ is odd and positive when $k$ is even.",
+    "Take $k$ to be a counting number (one of 1, 2, 3, …). Then $(ax^m)^k = a^k x^{mk}$: raise the coefficient and multiply the exponents. If $a < 0$, then $a^k$ is negative when $k$ is odd and positive when $k$ is even.",
   "combine-unlike-radicals":
-    "For numbers $a$ and $b$ that are 0 or more, $\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$. And $p\\sqrt{n} + q\\sqrt{n} = (p + q)\\sqrt{n}$ by the distributive property. Roots of different fully simplified radicands do not combine into one root.",
+    "For numbers $a$ and $b$ that are 0 or more, $\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$. And $p\\sqrt{n} + q\\sqrt{n} = (p + q)\\sqrt{n}$ by the distributive property. Roots with different simplified radicands cannot be combined by adding the numbers in front.",
   "complete-square-equation":
     "Since $(x + h)^2 = x^2 + 2hx + h^2$, adding $\\left(\\frac{b}{2}\\right)^2$ to $x^2 + bx$ gives $\\left(x + \\frac{b}{2}\\right)^2$. Adding the same number to both sides of an equation keeps the same solutions.",
   "complete-square-step-property":
-    "Addition property of equality: if $a = b$, then $a + c = b + c$. Multiplication property of equality: if $a = b$, then $ac = bc$, and for $c \\ne 0$ also $\\frac{a}{c} = \\frac{b}{c}$. Both keep the same solutions.",
+    "Addition property of equality: if $a = b$, then $a + c = b + c$. Multiplication property of equality: if $a = b$, then $ac = bc$, and for $c \\ne 0$ also $\\frac{a}{c} = \\frac{b}{c}$. Adding any number, or multiplying or dividing by a number other than 0, keeps the same solutions, the values that make the equation true.",
   "polynomial-structure":
     "A polynomial in $x$ is a sum of terms, each a number times a whole-number power of $x$. Its degree is the largest power with a coefficient other than 0, its leading coefficient is that coefficient, and its constant term is the term with no $x$.",
 };
@@ -209,12 +213,12 @@ export const regentsAlgebraOneExpressionLessons = [
       formalTitle: "Why unit cancellation is valid",
       formal: [
         "A conversion factor equals 1, because its top and bottom are the same amount written in two units. Multiplying by 1 does not change a quantity.",
-        "Units behave like factors (parts being multiplied) in a product: miles per hour times hours per second gives miles per second, because the hours cancel.",
+        "Units behave like factors (the parts being multiplied) in a product: miles per hour times hours per second gives miles per second, because the hours cancel.",
       ],
       pitfalls: [
         "A speed has a length on top and a time on the bottom. Do not turn it upside down.",
-        "A factor that cancels one unit brings in another, so the original unit is gone.",
-        "Cancel only a unit that appears once on top and once on the bottom.",
+        "A conversion fraction that cancels one unit brings in another, so the original unit is gone.",
+        "Cancel units in pairs: one on top with a matching one on the bottom.",
       ],
       parentGuide:
         "Ask your learner to cross out matching units one pair at a time, and to say what is left.",
@@ -227,7 +231,7 @@ export const regentsAlgebraOneExpressionLessons = [
       id: "regents-powers-and-radicals",
       title: "Powers of monomials and sums of square roots",
       summary:
-        "Raising to a power means multiplying something by itself: $(-2x)^2 = (-2x) \\times (-2x) = 4x^2$. The power applies to the number and to the letter, and the minus sign comes along. Square roots can be added only when the numbers under the root sign match: three square roots of 5 plus two square roots of 5 make five square roots of 5. Sometimes a root must be simplified first to show that it matches.",
+        "Raising to a power means multiplying something by itself: $(-2x)^2 = (-2x) \\times (-2x) = 4x^2$. The power applies to the number and to the letter, and the minus sign comes along. A square root is a number that times itself gives another number, like $\\sqrt{9} = 3$. Square roots can be combined into one only when the numbers under the $\\sqrt{\\ }$ sign match: three square roots of 5 plus two square roots of 5 make five square roots of 5. Sometimes a square root must be simplified first to show that it matches.",
       templateIds: ["negative-monomial-power", "combine-unlike-radicals"],
       objectives: [
         "Apply a power to both the number and the letter part of a single term, keeping the sign.",
@@ -235,10 +239,10 @@ export const regentsAlgebraOneExpressionLessons = [
       ],
       openingTitle: "Handle each factor separately",
       opening: [
-        "A single term such as $-2x^2$ is called a monomial. Its number, $-2$, is called its coefficient. The small raised number is an exponent, and it counts repeated multiplying: $x^2 = x \\times x$.",
-        "A power of a product goes to every factor (every part being multiplied): $(-2x^2)^3 = (-2)^3 \\times (x^2)^3$. The minus sign belongs to the coefficient, so it is raised too. Three negatives multiplied make a negative, so $(-2)^3 = -8$.",
+        "An expression is a calculation written with numbers and letters, and a term is one part of it joined to others by $+$ or $-$. A single term such as $-2x^2$ is called a monomial. Its number, $-2$, is called its coefficient. The small raised number is an exponent, and it counts repeated multiplying: $x^2 = x \\times x$.",
+        "A product is the result of multiplying. A power of a product goes to every factor (every part being multiplied): $(-2x^2)^3 = (-2)^3 \\times (x^2)^3$. The minus sign belongs to the coefficient, so it is raised too. Three negatives multiplied make a negative, so $(-2)^3 = -8$.",
         "A power of a power multiplies the exponents: $(x^2)^3 = x^2 \\times x^2 \\times x^2 = x^6$, which is $x^{2 \\times 3}$.",
-        "A square root of a number is a number that times itself gives it: $\\sqrt{9} = 3$. The number under the root sign is called the radicand. Roots with the same radicand are called like radicals, and they add like objects: $3\\sqrt{5} + 2\\sqrt{5} = 5\\sqrt{5}$. Roots with different radicands, like $\\sqrt{5} + \\sqrt{3}$, stay as they are.",
+        "A square root of a number is a number that times itself gives it: $\\sqrt{9} = 3$. The $\\sqrt{\\ }$ symbol is called the root sign, and the number under it is called the radicand. Roots with the same radicand are called like radicals, and they add like objects: $3\\sqrt{5} + 2\\sqrt{5} = 5\\sqrt{5}$. Roots with different radicands, like $\\sqrt{5} + \\sqrt{3}$, stay as they are.",
         "A root can hide a like radical. Since $45 = 9 \\times 5$ and $\\sqrt{9} = 3$, $\\sqrt{45} = 3\\sqrt{5}$.",
       ],
       example: {
@@ -259,11 +263,11 @@ export const regentsAlgebraOneExpressionLessons = [
       ],
       formalTitle: "The rules behind the steps",
       formal: [
-        "$(ab)^k = a^k b^k$ and $(x^m)^k = x^{mk}$ for whole-number exponents $m$ and $k$. A negative number to an odd power is negative.",
+        "$(ab)^k = a^k b^k$ and $(x^m)^k = x^{mk}$ for whole-number exponents $m$ and $k$. A negative number, one less than 0, to an odd power is negative.",
         "$\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$ when $a$ and $b$ are 0 or more. And $p\\sqrt{n} + q\\sqrt{n} = (p + q)\\sqrt{n}$, by the distributive property.",
       ],
       pitfalls: [
-        "Multiply the exponents for a power of a power. Adding exponents is for multiplying, like $x^2 \\times x^3 = x^5$.",
+        "Multiply the exponents for a power of a power. Adding exponents is for multiplying powers of the same letter, like $x^2 \\times x^3 = x^5$.",
         "Raise the coefficient to the power. Do not multiply it by the power.",
         "Do not add the numbers under the root signs.",
       ],
@@ -278,7 +282,7 @@ export const regentsAlgebraOneExpressionLessons = [
       id: "regents-complete-the-square-steps",
       title: "Completing the square and why each step is allowed",
       summary:
-        "Multiplying $x + 3$ by itself gives $x^2 + 6x + 9$. So adding 9 to $x^2 + 6x$ makes it a perfect square, something times itself. Completing the square uses this idea to rewrite an equation as a square equal to a number, like $(x - 3)^2 = 14$. Each step does the same thing to both sides of the equation, which keeps it true. This lesson also names the rule that allows each step.",
+        "Multiplying $x + 3$ by itself gives $x^2 + 6x + 9$. Something times itself is called a perfect square, so adding 9 to $x^2 + 6x$ makes a perfect square. Squaring means multiplying by itself. Completing the square uses this idea to rewrite an equation as a square equal to a number, like $(x - 3)^2 = 14$. An equation has two sides: the parts left and right of the equals sign. Each step does the same thing to both sides, which keeps the equation true. This lesson also names the rule that allows each step.",
       templateIds: [
         "complete-square-equation",
         "complete-square-step-property",
@@ -331,7 +335,7 @@ export const regentsAlgebraOneExpressionLessons = [
       id: "regents-polynomial-structure",
       title: "Degree, leading coefficient and constant term",
       summary:
-        "In $-5 + 2x^2 + 3x^4 - x$, the parts joined by $+$ and $-$ are called terms. The highest power of $x$ is 4, in $3x^4$, so the expression has degree 4. The number in front of that term, 3, is the leading coefficient. The term with no $x$, $-5$, is the constant term. The terms can be written in any order, so look at every one.",
+        "In $-5 + 2x^2 + 3x^4 - x$, the parts joined by $+$ and $-$ are called terms. The highest power of $x$ is 4, in $3x^4$. The highest power is called the degree, so the degree is 4. The number in front of that term, 3, is the leading coefficient. The term with no $x$, $-5$, is the constant term. The terms can be written in any order, so look at every one.",
       templateIds: ["polynomial-structure"],
       objectives: [
         "Find the degree as the largest exponent on $x$ anywhere in the expression.",
@@ -340,7 +344,7 @@ export const regentsAlgebraOneExpressionLessons = [
       openingTitle: "Look for the highest power, not the first term",
       opening: [
         "A polynomial is a sum of terms like $3x^4$, $-x$ and $-5$. Each term keeps the sign in front of it. The small raised number on $x$ is its exponent, so $x^4 = x \\times x \\times x \\times x$.",
-        "The degree of a polynomial is the largest exponent on $x$. The number multiplying a term's power of $x$ is called its coefficient. The leading coefficient is the coefficient of the term with the largest exponent. The constant term is the term with no $x$.",
+        "The degree of a polynomial is the largest exponent on $x$ after like terms are combined. The number multiplying a term's power of $x$ is called its coefficient. The leading coefficient is the coefficient of the term with the largest exponent. The constant term is the term with no $x$.",
         "Terms can be written in any order. So the first term written is not always the leading term.",
       ],
       example: {
@@ -361,7 +365,7 @@ export const regentsAlgebraOneExpressionLessons = [
       ],
       formalTitle: "Standard form of a polynomial",
       formal: [
-        "A polynomial in standard form lists its terms from the highest power down: $a_nx^n + \\dots + a_1x + a_0$, with $a_n \\ne 0$. The small numbers written low are labels. Rearranging the terms does not change the polynomial.",
+        "Listing the terms from the highest power down is called standard form: $a_nx^n + \\dots + a_1x + a_0$, with $a_n \\ne 0$. The small numbers written low are labels. Rearranging the terms does not change the polynomial.",
         "A term such as $-5x$ has coefficient $-5$ and degree 1, not 0, so it is not the constant term.",
       ],
       pitfalls: [

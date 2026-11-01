@@ -19,21 +19,12 @@ const senses: Lesson["senses"] = {
   square: "square-number",
   squared: "square-number",
   hole: "hole",
-  unit: "unit",
-  units: "unit",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
-  opposite: "opposite-number",
-  opposites: "opposite-number",
   identity: "identity-equation",
   "standard form": "standard-form-polynomial",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
-  rule: "rule",
-  rules: "rule",
 };
 const noLink = [
   "part",
@@ -63,12 +54,25 @@ const noLink = [
   "quarters",
   "one quarter",
   "mirror image",
+  "rule",
+  "rules",
+  "opposite",
+  "opposites",
+  "unit",
+  "units",
+  "average",
+  "decreasing",
+  "increasing",
+  "model",
+  "models",
+  "pattern",
+  "patterns",
 ];
 export const rationalExpressionMethods: Record<string, ProblemMethod> = {
   "rational-expression-domain": {
     goal: "Find every value of $x$ that makes the bottom of the fraction equal to 0. Those inputs are not allowed.",
     intuition:
-      "A rational expression is a fraction with an expression in $x$ on top and below, like $\\frac{x - 3}{(x - 2)(x - 4)}$. The top is the numerator and the bottom is the denominator. Dividing by 0 has no answer, so an input that makes the denominator 0 is not allowed. The allowed inputs are called the domain. The parts being multiplied in the denominator are its factors. A product is 0 when any one of its factors is 0, so each factor gives an excluded input.",
+      "An expression is a calculation written with numbers and letters. A rational expression is a fraction with a polynomial (a sum of parts like $x^2$, $5x$ and 6) on top and on the bottom, like $\\frac{x - 3}{(x - 2)(x - 4)}$. The top is the numerator and the bottom is the denominator. Dividing by 0 has no answer. A value put in for $x$ is called an input, and an input that makes the denominator 0 is not allowed. The allowed inputs are called the domain. The parts being multiplied in the denominator are its factors. A product, the result of multiplying, is 0 when any one of its factors is 0, so each factor with $x$ in it gives an excluded input.",
     terms,
     senses,
     noLink,
@@ -82,7 +86,7 @@ export const rationalExpressionMethods: Record<string, ProblemMethod> = {
   "rational-expression-simplify": {
     goal: "Simplify the fraction, and keep every input the original fraction did not allow.",
     intuition:
-      "A rational expression is a fraction with an expression in $x$ on top (the numerator) and below (the denominator). The parts being multiplied in each are called factors. Just as $\\frac{6}{10} = \\frac{3}{5}$ because 6 and 10 share a factor 2, you may divide the top and bottom by a shared factor that is not 0. But any input that made the original bottom 0 is still not allowed. The allowed inputs are called the domain.",
+      "A rational expression is a fraction with a polynomial (a sum of parts like $x^2$, $5x$ and 6) on top, called the numerator, and on the bottom, called the denominator. The parts being multiplied in each are called factors. The result of multiplying them is called a product. Just as $\\frac{6}{10} = \\frac{3}{5}$ because 6 and 10 share a factor 2, you may divide the top and bottom by a shared factor that is not 0. But any input that made the original bottom 0 is still not allowed. The allowed inputs are called the domain.",
     terms,
     senses,
     noLink,
@@ -92,7 +96,7 @@ export const rationalExpressionMethods: Record<string, ProblemMethod> = {
       "Check that top and bottom have not swapped places, and that the cancelled factor's zero is still listed as excluded.",
     ],
     watch:
-      "Cancel factors that are multiplied, never terms that are added or subtracted. Factor first so the factors are visible.",
+      "Cancel factors that are multiplied. Never cancel terms, the parts being added together. Factor first so the factors are visible.",
   },
 };
 export const rationalExpressionPrinciples: Record<string, string> = {
@@ -120,10 +124,10 @@ export const rationalExpressionLessons: Lesson[] = [
         stage: "intuition",
         title: "Which inputs are allowed?",
         paragraphs: [
-          "You will need to solve small equations like $x - 2 = 0$ and to factor quadratics. A variable, like $x$, stands for a number. An expression such as $x^2 - 5x + 6$, made of whole-number powers of $x$ times numbers, added together, is called a polynomial.",
+          "A variable is a letter, like $x$, that stands for a number. An expression is a calculation written with numbers and variables. Factoring means writing an expression as parts multiplied together, which are called factors. You will need to solve small equations like $x - 2 = 0$ and to factor quadratics. An expression such as $x^2 - 5x + 6$, made of whole-number powers of $x$ times numbers, added together, is called a polynomial.",
           "A rational expression is a fraction with a polynomial on top and a polynomial on the bottom. The top is called the numerator. The bottom is called the denominator.",
           "Dividing by 0 has no answer. So a fraction only makes sense when its denominator is not 0. The inputs where it makes sense are called its domain. To find the inputs that are not allowed (the excluded inputs), ask which values of $x$ make the original denominator 0. A numerator of 0 is fine, as long as the denominator is not 0.",
-          "A factor is a part that is multiplied by another part. In $(x - 2)(x - 4)$, the factors are $x - 2$ and $x - 4$. A product is 0 when any one factor is 0, so this is 0 at $x = 2$ and at $x = 4$.",
+          "A factor is a part that is multiplied by another part. In $(x - 2)(x - 4)$, the factors are $x - 2$ and $x - 4$. A product, the result of multiplying, is 0 when any one factor is 0, so this is 0 at $x = 2$ and at $x = 4$.",
           "Fractions can be simplified by dividing top and bottom by a shared factor: $\\frac{6}{10} = \\frac{3}{5}$, dividing both by 2. A rational expression works the same way. But a factor with $x$ in it can be 0 for some input. So write down the excluded inputs before you simplify.",
         ],
       },
@@ -160,8 +164,8 @@ export const rationalExpressionLessons: Lesson[] = [
     ],
     pitfalls: [
       "Find the excluded inputs from the original bottom before cancelling anything.",
-      "Cancel factors that are multiplied. Never cross out terms that are added or subtracted.",
-      "A cancelled factor from the bottom still gives an excluded input.",
+      "Cancel factors that are multiplied. Never cross out terms, the parts being added together.",
+      "A cancelled factor with $x$ in it, like $x - 2$, still gives an excluded input.",
     ],
     parentGuide:
       "Ask which inputs make the original bottom 0, and why the simplified fraction can sometimes accept more inputs. Have the learner try the cancelled input, $x = 2$, in both forms.",

@@ -669,8 +669,6 @@
       "terms": [
         "at-least",
         "compound-inequality",
-        "equivalent",
-        "midpoint",
         "negative-number",
         "radius",
         "segment",
@@ -1494,20 +1492,9 @@
     },
     "lesson:complete-square-monic": {
       "terms": [
-        "coefficient",
-        "constant-term",
         "denominator",
-        "distribute",
-        "division",
-        "exponent",
-        "general-form",
-        "input",
-        "integer",
-        "leading-coefficient",
-        "multiplication",
         "negative-number",
         "numerator",
-        "quadratic",
         "real-number",
         "whole-number"
       ],
@@ -1515,22 +1502,9 @@
     },
     "lesson:complete-square-nonmonic": {
       "terms": [
-        "coefficient",
-        "constant-term",
         "denominator",
-        "distribute",
-        "division",
-        "exponent",
-        "general-form",
-        "input",
-        "integer",
-        "leading-coefficient",
-        "multiplication",
         "negative-number",
         "numerator",
-        "parentheses",
-        "perfect-square-trinomial",
-        "quadratic",
         "real-number",
         "whole-number"
       ],
@@ -1539,24 +1513,10 @@
     "lesson:complete-square-term": {
       "terms": [
         "area",
-        "area-model",
-        "coefficient",
         "completing-the-square",
-        "constant-term",
         "denominator",
-        "distribute",
-        "division",
-        "exponent",
-        "expression",
-        "general-form",
-        "input",
-        "leading-coefficient",
-        "multiplication",
         "negative-number",
         "numerator",
-        "parentheses",
-        "perfect-square-trinomial",
-        "quadratic",
         "real-number",
         "whole-number"
       ],
@@ -1758,9 +1718,6 @@
         "decimal",
         "deposit",
         "exponent",
-        "growth-factor",
-        "interest",
-        "percent",
         "rate"
       ],
       "long": []
@@ -2877,17 +2834,6 @@
       ],
       "long": []
     },
-    "lesson:exponential-models": {
-      "terms": [
-        "exponential-function",
-        "half-life",
-        "input",
-        "linear-function",
-        "output",
-        "pattern"
-      ],
-      "long": []
-    },
     "lesson:exponential-parameters-blanks": {
       "terms": [
         "exponential-decay",
@@ -2933,16 +2879,10 @@
     },
     "lesson:expression-structure": {
       "terms": [
-        "coefficient",
-        "difference-of-squares",
-        "expression",
-        "function",
         "height",
         "input",
         "output",
-        "quadratic",
-        "rate",
-        "variable"
+        "rate"
       ],
       "long": []
     },
@@ -3327,10 +3267,7 @@
     "lesson:geometric-rule-forms": {
       "terms": [
         "arithmetic-sequence",
-        "common-ratio",
         "explicit-rule",
-        "exponent",
-        "multiplication",
         "ratio",
         "recursive-rule"
       ],
@@ -3338,12 +3275,8 @@
     },
     "lesson:geometric-sequences": {
       "terms": [
-        "exponent",
         "geometric-sequence",
-        "multiplication",
-        "ratio",
-        "recursive-rule",
-        "sequence"
+        "ratio"
       ],
       "long": []
     },
@@ -3531,17 +3464,10 @@
       "terms": [
         "at-least",
         "common-factor",
-        "distribution",
-        "distributive-property",
-        "exponent",
-        "expression",
         "factor-out",
         "greatest-common-factor",
-        "leading-coefficient",
         "multiplication",
-        "parentheses",
-        "remainder",
-        "variable"
+        "remainder"
       ],
       "long": []
     },
@@ -4584,20 +4510,8 @@
     },
     "lesson:monic-quadratic-factorization": {
       "terms": [
-        "complex-conjugate",
         "constant",
-        "difference-of-squares",
-        "distributive-property",
-        "exponent",
-        "expression",
-        "factor-pair",
-        "greatest-common-factor",
-        "leading-coefficient",
-        "magnitude",
-        "monic",
-        "multiplication",
-        "negative-number",
-        "variable"
+        "expression"
       ],
       "long": []
     },
@@ -4782,20 +4696,8 @@
       "terms": [
         "at-least",
         "common-factor",
-        "constant",
-        "distribution",
-        "distributive-property",
-        "exponent",
-        "expression",
-        "factor-out",
-        "factor-pair",
         "greatest-common-factor",
-        "leading-coefficient",
-        "linear-factor",
-        "multiplication",
-        "quadratic",
-        "remainder",
-        "variable"
+        "remainder"
       ],
       "long": []
     },
@@ -4980,26 +4882,11 @@
     "lesson:parabola-features": {
       "terms": [
         "coefficient",
-        "coordinate",
         "height",
         "input",
-        "intercept",
-        "maximum",
-        "minimum",
         "output",
         "quadratic",
-        "symmetry",
-        "turning-point",
-        "vertex-form",
         "vertical-line"
-      ],
-      "long": []
-    },
-    "lesson:parabola-focus-directrix": {
-      "terms": [
-        "coefficient",
-        "directrix",
-        "substitute"
       ],
       "long": []
     },
@@ -5388,10 +5275,8 @@
     },
     "lesson:polynomial-addition": {
       "terms": [
-        "distributive-property",
         "exponent",
-        "expression",
-        "variable"
+        "expression"
       ],
       "long": []
     },
@@ -5437,18 +5322,10 @@
     },
     "lesson:polynomial-factoring-patterns": {
       "terms": [
-        "binomial",
-        "difference-of-squares",
         "discriminant",
-        "factor-out",
         "integer",
-        "linear-factor",
-        "polynomial",
         "quadratic",
-        "substitute",
-        "sum-or-difference-of-cubes",
-        "trinomial",
-        "variable"
+        "sum-or-difference-of-cubes"
       ],
       "long": []
     },
@@ -5475,13 +5352,7 @@
     },
     "lesson:polynomial-multiplication": {
       "terms": [
-        "constant",
-        "distribute",
-        "distributive-property",
-        "exponent",
-        "integer",
-        "partial-product",
-        "variable"
+        "distributive-property"
       ],
       "long": []
     },
@@ -5489,10 +5360,8 @@
       "terms": [
         "binomial",
         "like-terms",
-        "partial-product",
         "polynomial",
-        "proof",
-        "trinomial"
+        "proof"
       ],
       "long": []
     },
@@ -5516,12 +5385,7 @@
     },
     "lesson:polynomial-subtraction": {
       "terms": [
-        "constant",
-        "distribute",
-        "integer",
-        "multiplication",
-        "parentheses",
-        "variable"
+        "constant"
       ],
       "long": []
     },
@@ -5723,15 +5587,8 @@
     },
     "lesson:quadratic-expanded-solutions": {
       "terms": [
-        "coefficient",
         "completing-the-square",
-        "distributive-property",
-        "factor-out",
-        "factored-form",
-        "integer",
         "quadratic",
-        "rational-number",
-        "substitute",
         "zero-product-property"
       ],
       "long": []
@@ -5745,28 +5602,21 @@
     "lesson:quadratic-form-conversion": {
       "terms": [
         "at-most",
-        "axis-of-symmetry",
         "completing-the-square",
         "factored-form",
-        "function",
         "input",
-        "intercept",
         "maximum",
         "minimum",
         "output",
-        "parentheses",
-        "quadratic",
         "vertex-form"
       ],
       "long": []
     },
     "lesson:quadratic-from-data": {
       "terms": [
-        "parabola",
         "quadratic",
         "second-difference",
-        "slope",
-        "substitute"
+        "slope"
       ],
       "long": []
     },
@@ -5785,24 +5635,10 @@
     },
     "lesson:quadratic-irrational-solutions": {
       "terms": [
-        "coefficient",
-        "common-factor",
-        "coordinate",
         "decimal",
-        "denominator",
-        "discriminant",
-        "expression",
-        "integer",
-        "numerator",
-        "parentheses",
-        "quadratic",
-        "radical",
         "repeated-root",
         "round",
-        "solution",
         "square-root",
-        "substitute",
-        "symmetry",
         "vertical-line"
       ],
       "long": []
@@ -5838,26 +5674,15 @@
     },
     "lesson:quadratic-real-solution-count": {
       "terms": [
-        "coefficient",
-        "parentheses",
-        "quadratic",
-        "repeated-root",
-        "solution",
-        "substitute",
-        "variable"
+        "quadratic"
       ],
       "long": []
     },
     "lesson:quadratic-root-relations": {
       "terms": [
-        "coefficient",
-        "constant-term",
         "discriminant",
         "expression",
-        "leading-coefficient",
-        "multiplicity",
-        "quadratic",
-        "substitute"
+        "quadratic"
       ],
       "long": []
     },
@@ -5969,8 +5794,6 @@
         "concentration",
         "constant",
         "liter",
-        "rate",
-        "solution",
         "volume"
       ],
       "long": []
@@ -6067,11 +5890,8 @@
     },
     "lesson:rational-expressions-and-excluded-inputs": {
       "terms": [
-        "constant",
-        "denominator",
         "excluded-value",
         "input",
-        "numerator",
         "open-circle",
         "quadratic"
       ],
@@ -6273,19 +6093,14 @@
     },
     "lesson:regents-absolute-value-linear": {
       "terms": [
-        "absolute-value",
-        "substitute"
+        "absolute-value"
       ],
       "long": []
     },
     "lesson:regents-arithmetic-distant-term": {
       "terms": [
-        "arithmetic-sequence",
         "at-least",
-        "common-difference",
-        "constant",
-        "decimal",
-        "sequence"
+        "decimal"
       ],
       "long": []
     },
@@ -6358,15 +6173,8 @@
     },
     "lesson:regents-complete-the-square-steps": {
       "terms": [
-        "binomial",
         "coefficient",
-        "completing-the-square",
-        "constant",
-        "monic",
-        "multiplication",
-        "perfect-square-trinomial",
-        "property-of-equality",
-        "quadratic"
+        "completing-the-square"
       ],
       "long": []
     },
@@ -6416,18 +6224,13 @@
     "lesson:regents-depreciation-recursion": {
       "terms": [
         "geometric-sequence",
-        "multiplication",
-        "percent",
         "percent-change",
-        "rate",
-        "ratio",
-        "recursive-rule"
+        "ratio"
       ],
       "long": []
     },
     "lesson:regents-event-complement-set": {
       "terms": [
-        "outcome",
         "sample-space",
         "union"
       ],
@@ -6469,7 +6272,6 @@
     "lesson:regents-exponential-target-time": {
       "terms": [
         "exponent",
-        "logarithm",
         "round"
       ],
       "long": []
@@ -6512,9 +6314,6 @@
     },
     "lesson:regents-geometric-signed-term": {
       "terms": [
-        "common-ratio",
-        "exponent",
-        "geometric-sequence",
         "ratio"
       ],
       "long": []
@@ -6768,8 +6567,6 @@
     "lesson:regents-growth-model-rewrite": {
       "terms": [
         "exponent",
-        "exponential-decay",
-        "half-life",
         "rate"
       ],
       "long": []
@@ -6819,9 +6616,7 @@
     },
     "lesson:regents-nonlinear-recursion-term": {
       "terms": [
-        "parentheses",
-        "recursive-rule",
-        "sequence"
+        "recursive-rule"
       ],
       "long": []
     },
@@ -6883,14 +6678,6 @@
       ],
       "long": []
     },
-    "lesson:regents-parabola-vertex-distance": {
-      "terms": [
-        "directrix",
-        "parabola",
-        "perpendicular"
-      ],
-      "long": []
-    },
     "lesson:regents-point-slope-two-points": {
       "terms": [
         "coordinate",
@@ -6901,23 +6688,14 @@
     },
     "lesson:regents-polynomial-structure": {
       "terms": [
-        "coefficient",
-        "constant",
-        "polynomial",
         "variable"
       ],
       "long": []
     },
     "lesson:regents-powers-and-radicals": {
       "terms": [
-        "coefficient",
         "distributive-property",
-        "exponent",
-        "like-radicals",
-        "monomial",
-        "perfect-square",
-        "radical",
-        "square-root"
+        "perfect-square"
       ],
       "long": []
     },
@@ -6965,7 +6743,6 @@
     },
     "lesson:regents-rate-unit-chain": {
       "terms": [
-        "conversion-factor",
         "rate"
       ],
       "long": []
@@ -7039,11 +6816,7 @@
     },
     "lesson:regents-shifted-trinomial-factor": {
       "terms": [
-        "binomial",
-        "constant",
-        "expression",
-        "leading-coefficient",
-        "trinomial"
+        "expression"
       ],
       "long": []
     },
@@ -7146,13 +6919,8 @@
     },
     "lesson:regents-trinomial-product": {
       "terms": [
-        "coefficient",
-        "constant",
         "corresponding-terms",
-        "exponent",
-        "like-terms",
-        "polynomial",
-        "trinomial"
+        "polynomial"
       ],
       "long": []
     },
@@ -7253,18 +7021,6 @@
       "terms": [
         "pattern",
         "remainder"
-      ],
-      "long": []
-    },
-    "lesson:residual-function-fit": {
-      "terms": [
-        "constant",
-        "input",
-        "parabola",
-        "pattern",
-        "quadratic",
-        "ratio",
-        "residual"
       ],
       "long": []
     },
@@ -7870,13 +7626,7 @@
     },
     "lesson:sequence-as-function": {
       "terms": [
-        "arithmetic-sequence",
-        "domain",
-        "function",
-        "geometric-sequence",
-        "natural-number",
-        "ratio",
-        "substitute"
+        "natural-number"
       ],
       "long": []
     },
@@ -7900,13 +7650,8 @@
     },
     "lesson:series-recursion": {
       "terms": [
-        "arithmetic-sequence",
-        "coefficient",
-        "common-difference",
         "explicit-rule",
-        "recursive-rule",
-        "sequence",
-        "substitute"
+        "recursive-rule"
       ],
       "long": []
     },
@@ -8279,10 +8024,8 @@
     },
     "lesson:solve-by-completing-square": {
       "terms": [
-        "coefficient",
         "completing-the-square",
         "expression",
-        "leading-coefficient",
         "square-root"
       ],
       "long": []
@@ -8802,14 +8545,6 @@
         "line-of-symmetry",
         "parallelogram",
         "rhombus"
-      ],
-      "long": []
-    },
-    "lesson:system-expression-value": {
-      "terms": [
-        "coefficient",
-        "multiplier",
-        "proportional-relationship"
       ],
       "long": []
     },
@@ -9542,9 +9277,7 @@
         "constant",
         "gram",
         "input",
-        "inverse-variation",
         "mass",
-        "proportional-relationship",
         "ratio",
         "speed",
         "volume"
@@ -9674,14 +9407,11 @@
         "absolute-value",
         "at-least",
         "compound-inequality",
-        "equivalent",
         "inequality",
-        "midpoint",
         "negative-number",
         "radius",
         "real-number",
-        "solution",
-        "union"
+        "solution"
       ],
       "long": []
     },
@@ -9716,9 +9446,7 @@
     },
     "practice:absolute-value-linear": {
       "terms": [
-        "absolute-value",
-        "solution",
-        "substitute"
+        "absolute-value"
       ],
       "long": []
     },
@@ -9947,23 +9675,10 @@
       ],
       "long": []
     },
-    "practice:arithmetic-distant-term": {
-      "terms": [
-        "arithmetic-sequence",
-        "common-difference",
-        "pattern"
-      ],
-      "long": []
-    },
     "practice:arithmetic-sequence-as-function": {
       "terms": [
-        "common-ratio",
-        "exponent",
         "integer",
-        "natural-number",
-        "negative-number",
-        "pattern",
-        "substitute"
+        "natural-number"
       ],
       "long": []
     },
@@ -10115,16 +9830,6 @@
     "practice:better-buy": {
       "terms": [
         "unit-price"
-      ],
-      "long": []
-    },
-    "practice:binomial-area-product": {
-      "terms": [
-        "coefficient",
-        "constant",
-        "difference-of-squares",
-        "expression",
-        "substitute"
       ],
       "long": []
     },
@@ -10517,12 +10222,10 @@
     },
     "practice:combine-unlike-radicals": {
       "terms": [
-        "coefficient",
         "distributive-property",
         "expression",
         "like-terms",
         "radical",
-        "radicand",
         "square-root"
       ],
       "long": []
@@ -10719,8 +10422,6 @@
       "terms": [
         "binomial",
         "coefficient",
-        "constant",
-        "expression",
         "perfect-square",
         "solution",
         "trinomial"
@@ -10739,8 +10440,6 @@
     "practice:complete-square-monic": {
       "terms": [
         "binomial",
-        "coefficient",
-        "constant",
         "function",
         "trinomial",
         "variable"
@@ -10750,31 +10449,17 @@
     "practice:complete-square-nonmonic": {
       "terms": [
         "binomial",
-        "coefficient",
         "completing-the-square",
-        "constant",
         "function",
-        "perfect-square-trinomial",
         "trinomial",
         "variable"
-      ],
-      "long": []
-    },
-    "practice:complete-square-step-property": {
-      "terms": [
-        "reciprocal",
-        "solution-set"
       ],
       "long": []
     },
     "practice:complete-square-term": {
       "terms": [
         "binomial",
-        "coefficient",
-        "constant",
-        "expression",
         "function",
-        "perfect-square-trinomial",
         "trinomial",
         "variable"
       ],
@@ -10975,9 +10660,7 @@
       "terms": [
         "decimal",
         "deposit",
-        "equivalent",
         "exponential-decay",
-        "growth-factor",
         "interest",
         "percent-change",
         "rate"
@@ -11686,7 +11369,6 @@
     "practice:depreciation-recursion": {
       "terms": [
         "decimal",
-        "geometric-sequence",
         "percent",
         "ratio",
         "sequence"
@@ -12234,9 +11916,6 @@
     "practice:exponential-model-rule": {
       "terms": [
         "function",
-        "input",
-        "output",
-        "pattern",
         "percent-change"
       ],
       "long": []
@@ -12244,9 +11923,6 @@
     "practice:exponential-model-value": {
       "terms": [
         "function",
-        "input",
-        "output",
-        "pattern",
         "percent",
         "percent-change"
       ],
@@ -12303,7 +11979,6 @@
     "practice:exponential-target-time": {
       "terms": [
         "exponential-decay",
-        "isolate",
         "logarithm"
       ],
       "long": []
@@ -13327,42 +13002,27 @@
     },
     "practice:geometric-rule-forms": {
       "terms": [
-        "common-ratio",
         "explicit-rule",
-        "exponent",
-        "geometric-sequence",
-        "integer",
-        "multiplication",
-        "recursive-rule",
-        "sequence"
+        "recursive-rule"
       ],
       "long": []
     },
     "practice:geometric-sequence": {
       "terms": [
-        "ratio",
-        "sequence"
+        "ratio"
       ],
       "long": []
     },
     "practice:geometric-sequence-as-function": {
       "terms": [
-        "common-ratio",
-        "exponent",
         "integer",
-        "natural-number",
-        "negative-number",
-        "pattern",
-        "substitute"
+        "natural-number"
       ],
       "long": []
     },
     "practice:geometric-sequence-rule": {
       "terms": [
-        "geometric-sequence",
-        "quotient",
-        "ratio",
-        "sequence"
+        "ratio"
       ],
       "long": []
     },
@@ -13385,10 +13045,6 @@
     },
     "practice:geometric-signed-term": {
       "terms": [
-        "common-ratio",
-        "exponent",
-        "geometric-sequence",
-        "parentheses",
         "ratio"
       ],
       "long": []
@@ -13593,15 +13249,9 @@
     },
     "practice:greatest-monomial-factor": {
       "terms": [
-        "coefficient",
-        "common-factor",
-        "constant-term",
         "distributive-property",
-        "exponent",
         "expression",
-        "greatest-common-factor",
         "monomial",
-        "multiplication",
         "parentheses",
         "variable"
       ],
@@ -13678,8 +13328,7 @@
         "exponent",
         "exponential-decay",
         "gram",
-        "rate",
-        "substitute"
+        "rate"
       ],
       "long": []
     },
@@ -14866,11 +14515,9 @@
       "terms": [
         "coefficient",
         "constant",
-        "expression",
         "integer",
         "leading-coefficient",
-        "polynomial",
-        "variable"
+        "polynomial"
       ],
       "long": []
     },
@@ -15063,9 +14710,7 @@
     },
     "practice:negative-monomial-power": {
       "terms": [
-        "coefficient",
-        "exponent",
-        "integer"
+        "exponent"
       ],
       "long": []
     },
@@ -15109,14 +14754,6 @@
         "speed",
         "square-root",
         "substitute"
-      ],
-      "long": []
-    },
-    "practice:nonlinear-recursion-term": {
-      "terms": [
-        "parentheses",
-        "pattern",
-        "sequence"
       ],
       "long": []
     },
@@ -15182,14 +14819,8 @@
     "practice:nonmonic-quadratic-factorization": {
       "terms": [
         "binomial",
-        "coefficient",
-        "common-factor",
-        "constant",
-        "distribution",
         "expression",
-        "factor-out",
-        "integer",
-        "leading-coefficient"
+        "factor-out"
       ],
       "long": []
     },
@@ -15460,11 +15091,7 @@
         "coordinate",
         "factored-form",
         "height",
-        "parabola",
-        "quadratic",
         "symmetry",
-        "turning-point",
-        "vertex-form",
         "vertical-line"
       ],
       "long": []
@@ -15494,39 +15121,25 @@
     },
     "practice:parabola-focus-directrix": {
       "terms": [
-        "axis-of-symmetry",
-        "coefficient",
-        "directrix"
+        "axis-of-symmetry"
       ],
       "long": []
     },
     "practice:parabola-shift": {
       "terms": [
-        "output",
-        "parentheses",
-        "quadratic",
-        "turning-point",
-        "vertex-form"
+        "output"
       ],
       "long": []
     },
     "practice:parabola-vertex": {
       "terms": [
         "coordinate",
-        "parabola",
-        "quadratic",
-        "substitute",
-        "turning-point",
         "vertex-form"
       ],
       "long": []
     },
     "practice:parabola-vertex-distance": {
       "terms": [
-        "axis-of-symmetry",
-        "directrix",
-        "equidistant",
-        "origin",
         "perpendicular",
         "vertical-line"
       ],
@@ -15904,10 +15517,7 @@
     },
     "practice:polynomial-addition": {
       "terms": [
-        "coefficient",
-        "distributive-property",
-        "like-terms",
-        "variable"
+        "distributive-property"
       ],
       "long": []
     },
@@ -15929,17 +15539,11 @@
     "practice:polynomial-factoring-patterns": {
       "terms": [
         "binomial",
-        "common-factor",
-        "constant",
         "difference-of-squares",
         "expression",
         "factor-out",
         "function",
-        "integer",
-        "pattern",
         "quadratic",
-        "substitute",
-        "trinomial",
         "variable"
       ],
       "long": []
@@ -15978,27 +15582,20 @@
     },
     "practice:polynomial-multiplication": {
       "terms": [
-        "coefficient",
         "distributive-property",
         "exponent",
-        "integer",
-        "parentheses",
-        "partial-product",
-        "variable"
+        "parentheses"
       ],
       "long": []
     },
     "practice:polynomial-product-steps": {
       "terms": [
-        "binomial",
         "coefficient",
         "constant-term",
         "distributive-property",
         "expression",
-        "like-terms",
         "polynomial",
         "quadratic",
-        "trinomial",
         "variable"
       ],
       "long": []
@@ -16031,18 +15628,6 @@
     "practice:polynomial-structure": {
       "terms": [
         "coefficient",
-        "constant",
-        "variable"
-      ],
-      "long": []
-    },
-    "practice:polynomial-subtraction": {
-      "terms": [
-        "coefficient",
-        "constant",
-        "like-terms",
-        "parentheses",
-        "polynomial",
         "variable"
       ],
       "long": []
@@ -16306,13 +15891,8 @@
       "terms": [
         "distributive-property",
         "expression",
-        "factor-out",
         "factored-form",
-        "factoring-by-grouping",
         "function",
-        "integer",
-        "multiplication",
-        "polynomial",
         "quadratic",
         "variable",
         "zero-product-property"
@@ -16330,18 +15910,11 @@
     },
     "practice:quadratic-form-conversion": {
       "terms": [
-        "axis-of-symmetry",
         "completing-the-square",
-        "equivalent",
         "expression",
-        "factor-out",
         "factored-form",
         "function",
         "input",
-        "intercept",
-        "maximum",
-        "parabola",
-        "parentheses",
         "polynomial",
         "quadratic",
         "vertex-form",
@@ -16369,12 +15942,8 @@
         "expression",
         "input",
         "output",
-        "parabola",
         "polynomial",
-        "second-difference",
-        "substitute",
-        "turning-point",
-        "vertex-form"
+        "second-difference"
       ],
       "long": []
     },
@@ -16393,19 +15962,11 @@
     },
     "practice:quadratic-irrational-solutions": {
       "terms": [
-        "coefficient",
         "common-factor",
-        "completing-the-square",
-        "denominator",
-        "discriminant",
         "expression",
         "function",
-        "numerator",
         "quadratic",
         "round",
-        "solution",
-        "square-root",
-        "substitute",
         "variable"
       ],
       "long": []
@@ -16456,9 +16017,7 @@
     },
     "practice:quadratic-real-solution-count": {
       "terms": [
-        "discriminant",
         "inequality",
-        "parentheses",
         "solution",
         "square-root",
         "variable"
@@ -16467,14 +16026,8 @@
     },
     "practice:quadratic-root-relations": {
       "terms": [
-        "coefficient",
-        "expression",
         "inequality",
-        "multiplicity",
         "quadratic",
-        "solution",
-        "substitute",
-        "symmetry",
         "variable"
       ],
       "long": []
@@ -16654,10 +16207,8 @@
       "terms": [
         "average-speed",
         "concentration",
-        "constant",
         "liter",
         "percent",
-        "rate",
         "speed",
         "volume"
       ],
@@ -16665,11 +16216,7 @@
     },
     "practice:rate-unit-chain": {
       "terms": [
-        "common-factor",
-        "denominator",
-        "numerator",
-        "rate",
-        "speed"
+        "rate"
       ],
       "long": []
     },
@@ -16795,11 +16342,8 @@
     "practice:rational-expression-domain": {
       "terms": [
         "at-least",
-        "denominator",
         "excluded-value",
         "function",
-        "numerator",
-        "polynomial",
         "remainder",
         "variable"
       ],
@@ -16822,15 +16366,10 @@
     },
     "practice:rational-expression-simplify": {
       "terms": [
-        "common-factor",
-        "denominator",
         "excluded-value",
         "expression",
-        "fraction-bar",
         "function",
         "input",
-        "numerator",
-        "polynomial",
         "remainder",
         "variable"
       ],
@@ -17212,14 +16751,10 @@
     },
     "practice:residual-function-fit": {
       "terms": [
-        "constant",
         "expression",
         "function",
         "input",
-        "pattern",
         "quadratic",
-        "ratio",
-        "residual",
         "residual-plot",
         "variable"
       ],
@@ -17939,9 +17474,6 @@
     },
     "practice:series-recursion": {
       "terms": [
-        "arithmetic-sequence",
-        "common-difference",
-        "equivalent",
         "explicit-rule",
         "recursive-rule"
       ],
@@ -18015,13 +17547,8 @@
     },
     "practice:shifted-trinomial-factor": {
       "terms": [
-        "binomial",
-        "constant",
         "expression",
-        "leading-coefficient",
         "remainder",
-        "substitute",
-        "trinomial",
         "variable"
       ],
       "long": []
@@ -18391,12 +17918,9 @@
       "terms": [
         "coefficient",
         "constant",
-        "equivalent",
-        "leading-coefficient",
         "perfect-square",
         "perfect-square-trinomial",
         "quadratic",
-        "radical",
         "square-root"
       ],
       "long": []
@@ -18889,22 +18413,8 @@
       ],
       "long": []
     },
-    "practice:structure-meaning": {
-      "terms": [
-        "coefficient",
-        "difference-of-squares",
-        "expression",
-        "function",
-        "growth-factor",
-        "input"
-      ],
-      "long": []
-    },
     "practice:structure-rewrite": {
       "terms": [
-        "coefficient",
-        "difference-of-squares",
-        "expression",
         "trinomial"
       ],
       "long": []
@@ -19038,14 +18548,6 @@
         "slope",
         "solution",
         "variable"
-      ],
-      "long": []
-    },
-    "practice:system-expression-value": {
-      "terms": [
-        "coefficient",
-        "multiplier",
-        "proportional-relationship"
       ],
       "long": []
     },
@@ -19571,11 +19073,7 @@
     },
     "practice:trinomial-product": {
       "terms": [
-        "constant",
-        "like-terms",
         "polynomial",
-        "substitute",
-        "trinomial",
         "variable"
       ],
       "long": []
@@ -19830,13 +19328,10 @@
     },
     "practice:variation-constant": {
       "terms": [
-        "common-ratio",
         "constant",
-        "constant-of-proportionality",
         "inverse-variation",
         "origin",
-        "proportional-relationship",
-        "ratio"
+        "proportional-relationship"
       ],
       "long": []
     },

@@ -7,7 +7,7 @@ const foundations: Lesson["sections"] = [
     paragraphs: [
       "A variable is a letter, like $x$, that stands for a number. An expression is a calculation written with numbers and variables, like $x^2 + 6x + 5$. It does not have an equals sign, so there is nothing to solve. We only rewrite it.",
       "In $x^2 + 6x + 5$, the small raised 2 means $x$ times $x$, read “$x$ squared”. Writing $6x$ means 6 times $x$. The parts joined by $+$ or $-$ signs are called terms, so the terms are $x^2$, $6x$ and $5$.",
-      "The number that multiplies a term's variable is called its coefficient. Here 1 multiplies $x^2$ and 6 multiplies $x$. The term 5 has no variable, so it is called the constant term. A missing term has coefficient 0.",
+      "The number that multiplies a term's variable is called its coefficient. Here 1 multiplies $x^2$ and 6 multiplies $x$. The term 5 has no variable. A constant is a fixed number like this, so 5 is called the constant term. A missing term has coefficient 0.",
       "An expression with an $x^2$ term and no higher power, like $x^3$, is called a quadratic. We write it as $ax^2 + bx + c$, where $a$, $b$ and $c$ are fixed numbers and $a \\ne 0$ ($\\ne$ means is not equal to). The number $a$ in front of $x^2$ is called the leading coefficient. When $a = 1$, the quadratic is called monic.",
       "A binomial is an expression with two terms, like $x + 3$. Squaring a binomial means multiplying the whole binomial by itself: $(x + 3)^2 = (x + 3)(x + 3)$. Two brackets written next to each other are multiplied.",
     ],
@@ -19,7 +19,7 @@ const foundations: Lesson["sections"] = [
       "To square a fraction, square the top and square the bottom: $\\left(\\frac{3}{2}\\right)^2 = \\frac{3 \\times 3}{2 \\times 2} = \\frac{9}{4}$.",
       "To multiply a fraction by a whole number, multiply its top: $2 \\times \\frac{3}{4} = \\frac{6}{4} = \\frac{3}{2}$. To divide a fraction by a whole number other than 0, multiply its bottom: $\\frac{3}{2} \\div 2 = \\frac{3}{4}$.",
       "To subtract, first write both numbers with the same bottom number: $1 - \\frac{9}{4} = \\frac{4}{4} - \\frac{9}{4} = -\\frac{5}{4}$.",
-      "A negative number times a negative number is positive, so $(-3) \\times (-3) = 9$. A product with exactly one negative number is negative, so $(-2) \\times 3 = -6$.",
+      "A product is the result of multiplying. A negative number times a negative number is positive, so $(-3) \\times (-3) = 9$. A product with exactly one negative number is negative, so $(-2) \\times 3 = -6$.",
     ],
   },
   {
@@ -36,7 +36,7 @@ const finish: Lesson["sections"] = [
   {
     title: "Add a square without changing the value",
     paragraphs: [
-      "Completing the square means rewriting a quadratic as a squared binomial plus a number. For a monic quadratic $x^2 + bx + c$, halve $b$ to get $h$. A perfect square $(x + h)^2$ needs the constant $h^2$.",
+      "A squared binomial is a two-term expression times itself, like $(x + h)^2$. Completing the square means rewriting a quadratic as a squared binomial plus a number, or as a number times a squared binomial plus a number. Something times itself is called a perfect square. For a monic quadratic $x^2 + bx + c$, halve $b$ to get $h$. The perfect square $(x + h)^2$ needs the constant $h^2$.",
       "Adding a number changes the value, so add $h^2$ and also subtract $h^2$. Together they add 0: $x^2 + bx + c = (x^2 + bx + h^2) + (c - h^2)$.",
       "The first group is exactly $(x + h)^2$. Call the leftover number $k$, so $k = c - h^2$. Then $x^2 + bx + c = (x + h)^2 + k$. If $k$ is negative, write it as a subtraction. If $h$ or $k$ is 0, leave that part out.",
       "When $b$ is odd, $h$ is a fraction. Keep it exact: $x^2 + 3x + 1 = \\left(x + \\frac{3}{2}\\right)^2 - \\frac{5}{4}$, because $1 - \\frac{9}{4} = -\\frac{5}{4}$. When $b$ is negative, $h$ is negative: $x^2 - 6x + 5 = (x - 3)^2 - 4$.",
@@ -55,21 +55,12 @@ const senses: Lesson["senses"] = {
   product: "product-multiply",
   side: "side",
   sides: "side",
-  unit: "unit",
-  units: "unit",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
-  opposite: "opposite-number",
-  opposites: "opposite-number",
   identity: "identity-equation",
   "standard form": "standard-form-polynomial",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
-  rule: "rule",
-  rules: "rule",
 };
 const noLink = [
   "part",
@@ -99,13 +90,26 @@ const noLink = [
   "quarters",
   "one quarter",
   "mirror image",
+  "rule",
+  "rules",
+  "opposite",
+  "opposites",
+  "unit",
+  "units",
+  "average",
+  "decreasing",
+  "increasing",
+  "model",
+  "models",
+  "pattern",
+  "patterns",
 ];
 export const completingSquareLessons: Lesson[] = [
   {
     id: "complete-square-term",
     title: "Find the term that completes a square",
     summary:
-      "When you multiply $x + 3$ by itself, you get $x^2 + 6x + 9$. The middle number, 6, is twice 3, and the last number, 9, is 3 times 3. So to make $x^2 + bx + c$ a perfect square, halve $b$ and then square the result to find $c$. For $x^2 + 10x + c$, half of 10 is 5 and 5 squared is 25, so $c = 25$ and $x^2 + 10x + 25 = (x + 5)^2$.",
+      "When you multiply $x + 3$ by itself, you get $x^2 + 6x + 9$. Something times itself is called a perfect square. The middle number, 6, is twice 3, and the last number, 9, is 3 times 3. Squaring means multiplying a number by itself. So to make $x^2 + bx + c$ a perfect square, halve $b$ and then square the result to find $c$. For $x^2 + 10x + c$, half of 10 is 5 and 5 squared is 25, so $c = 25$ and $x^2 + 10x + 25 = (x + 5)^2$.",
     templateIds: ["complete-square-term"],
     includeGeneratedRepresentation: false,
     senses,
@@ -142,7 +146,7 @@ export const completingSquareLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "For all real numbers $x$ and $h$ (numbers on the number line), $(x + h)^2 = x^2 + 2hx + h^2$. So $x^2 + bx + c$ is a squared binomial exactly when $c = h^2$ with $h = \\frac{b}{2}$. That is, $c = \\frac{b^2}{4}$.",
+          "For all real numbers $x$ and $h$ (the numbers on the number line), $(x + h)^2 = x^2 + 2hx + h^2$. So $x^2 + bx + c$ is a squared binomial exactly when $c = h^2$ with $h = \\frac{b}{2}$. That is, $c = \\frac{b^2}{4}$.",
         ],
       },
     ],
@@ -158,7 +162,7 @@ export const completingSquareLessons: Lesson[] = [
     id: "complete-square-monic",
     title: "Complete the square with leading coefficient one",
     summary:
-      "Completing the square rewrites an expression like $x^2 + 6x + 5$ as a square plus a number. Squaring $x + 3$ gives $x^2 + 6x + 9$, which has the right $x^2$ and $6x$ but the constant 9 instead of 5. Since 5 is 4 less than 9, subtract 4: $x^2 + 6x + 5 = (x + 3)^2 - 4$. The 3 is half of 6. Every step keeps the value the same.",
+      "An expression is a calculation written with numbers and letters, like $x^2 + 6x + 5$. Squaring means multiplying something by itself, so squaring $x + 3$ gives $x^2 + 6x + 9$. That has the right $x^2$ and $6x$, but its constant, the number with no $x$, is 9 instead of 5. Since 5 is 4 less than 9, subtract 4: $x^2 + 6x + 5 = (x + 3)^2 - 4$. Rewriting an expression as a square plus a number like this is called completing the square. The 3 is half of 6, and every step keeps the value the same.",
     templateIds: ["complete-square-monic"],
     includeGeneratedRepresentation: false,
     senses,
@@ -210,7 +214,7 @@ export const completingSquareLessons: Lesson[] = [
     id: "complete-square-nonmonic",
     title: "Complete the square with any leading coefficient",
     summary:
-      "Sometimes a number other than 1 multiplies $x^2$, as in $2x^2 + 12x + 5$. Take that number out of the first two terms: $2(x^2 + 6x) + 5$. Complete the square inside the bracket by adding 9, which is 3 squared. The 2 outside multiplies that 9 too, so you really added 18. Subtract 18 to keep the value: $2(x + 3)^2 - 13$.",
+      "Sometimes a number other than 1 multiplies $x^2$, as in $2x^2 + 12x + 5$. Take that number out of the first two terms: $2(x^2 + 6x) + 5$. Squaring means multiplying a number by itself. Rewriting the inside as a square plus a number is called completing the square. Here you add 9, because 9 is 3 squared, $3 \\times 3$. The 2 outside multiplies that 9 too, so you really added 18. Subtract 18 to keep the value: $2(x + 3)^2 - 13$.",
     templateIds: ["complete-square-nonmonic"],
     includeGeneratedRepresentation: false,
     senses,
@@ -275,24 +279,15 @@ const methodSenses: ProblemMethod["senses"] = {
   terms: "term-expression",
   factor: "factor-number",
   product: "product-multiply",
-  unit: "unit",
-  units: "unit",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
-  opposite: "opposite-number",
-  opposites: "opposite-number",
   identity: "identity-equation",
   "standard form": "standard-form-polynomial",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
-  rule: "rule",
-  rules: "rule",
 };
 const intuitionBase =
-  "In $x^2 + bx + c$, $x^2$ ($x$ squared) means $x$ times $x$, and $bx$ means $b$ times $x$. The parts joined by $+$ or $-$ are called terms. The number multiplying a term's variable is its coefficient, and $c$, with no variable, is the constant. A squared binomial is a two-term expression times itself: $(x + h)^2 = (x + h)(x + h) = x^2 + 2hx + h^2$. Its middle coefficient is twice $h$, and its constant is $h$ squared.";
+  "Squaring means multiplying a number by itself. In $x^2 + bx + c$, $x^2$ is $x$ squared, $x$ times $x$, and $bx$ means $b$ times $x$. The parts joined by $+$ or $-$ are called terms. The number multiplying a term's variable is its coefficient, and $c$, with no variable, is the constant. A squared binomial is a two-term expression times itself: $(x + h)^2 = (x + h)(x + h) = x^2 + 2hx + h^2$. Its middle coefficient is twice $h$, and its constant is $h$ squared.";
 export const completingSquareMethods: Record<string, ProblemMethod> = {
   "complete-square-term": {
     goal: "Find the constant $c$ that makes $x^2 + bx + c$ a squared binomial, a two-term expression times itself.",
@@ -341,7 +336,7 @@ export const completingSquareMethods: Record<string, ProblemMethod> = {
 };
 export const completingSquarePrinciples: Record<string, string> = {
   "complete-square-term":
-    "Multiplying out $(x + h)^2$ gives $x^2 + 2hx + h^2$: the product $hx$ appears twice, and the constant is $h^2$. So the constant that completes $x^2 + bx$ is $\\left(\\frac{b}{2}\\right)^2$.",
+    "Multiplying out $(x + h)^2$ gives $x^2 + 2hx + h^2$: the result $hx$ appears twice, and the constant is $h^2$. So the constant that completes $x^2 + bx$ is $\\left(\\frac{b}{2}\\right)^2$.",
   "complete-square-monic":
     "Adding and subtracting the same number adds 0, so $x^2 + bx + c = \\left(x + \\frac{b}{2}\\right)^2 + c - \\frac{b^2}{4}$ for every $x$.",
   "complete-square-nonmonic":

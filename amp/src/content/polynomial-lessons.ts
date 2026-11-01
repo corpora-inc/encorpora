@@ -17,17 +17,10 @@ const senses: Lesson["senses"] = {
   squared: "square-number",
   degree: "degree-polynomial",
   difference: "difference-subtract",
-  opposite: "opposite-number",
-  opposites: "opposite-number",
-  unit: "unit",
-  units: "unit",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
   identity: "identity-equation",
   "standard form": "standard-form-polynomial",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
 };
@@ -61,9 +54,20 @@ const noLink = [
   "mirror image",
   "rule",
   "rules",
+  "opposite",
+  "opposites",
+  "unit",
+  "units",
+  "average",
+  "decreasing",
+  "increasing",
+  "model",
+  "models",
+  "pattern",
+  "patterns",
 ];
 const intuitionBase =
-  "A variable is a letter, like $x$, that stands for a number. In $3x^2 - 2x + 5$, $x^2$ ($x$ squared) means $x$ times $x$, and $2x$ means 2 times $x$. The parts joined by $+$ or $-$ are called terms, and each term keeps the sign in front of it. The number multiplying a term's power of $x$ is its coefficient: here 3, $-2$ and 5. A sum of terms like this is called a polynomial. Like terms have the same power of $x$, such as $3x^2$ and $4x^2$.";
+  "A variable is a letter, like $x$, that stands for a number. Squaring means multiplying a number by itself. In $3x^2 - 2x + 5$, $x^2$ is $x$ squared, $x$ times $x$, and $2x$ means 2 times $x$. The parts joined by $+$ or $-$ are called terms, and each term keeps the sign in front of it. The number multiplying a term's power of $x$ is its coefficient: here 3, $-2$ and 5. A sum of terms like this is called a polynomial. Like terms have the same power of $x$, such as $3x^2$ and $4x^2$.";
 export const polynomialMethods: Record<string, ProblemMethod> = {
   "polynomial-addition": {
     goal: "Add the polynomials by combining like terms, the terms with the same power of $x$.",
@@ -103,7 +107,7 @@ export const polynomialMethods: Record<string, ProblemMethod> = {
     method: [
       "Multiply each term of the first bracket by every term of the second.",
       "For each pair, multiply the coefficients and add the exponents of $x$: $x^m \\times x^n = x^{m+n}$. Keep track of signs.",
-      "Add all the products, combining only terms with the same power of $x$.",
+      "Each result of multiplying is a product. Add all the products, combining only terms with the same power of $x$.",
       "Write the result from the highest power down, leaving out zero terms.",
     ],
     watch:
@@ -116,7 +120,7 @@ export const polynomialPrinciples: Record<string, string> = {
   "polynomial-subtraction":
     "Subtracting a sum means adding the opposite of each of its terms: $P - (A + B) = P + (-A) + (-B)$. Then combine like terms.",
   "polynomial-multiplication":
-    "The distributive property multiplies every term of one factor by every term of the other. For whole-number exponents $m$ and $n$, $x^m \\times x^n = x^{m+n}$.",
+    "The distributive property multiplies every term of one factor (a part being multiplied) by every term of the other. For whole-number exponents $m$ and $n$, $x^m \\times x^n = x^{m+n}$.",
 };
 
 export const polynomialLessons: Lesson[] = [
@@ -181,7 +185,7 @@ export const polynomialLessons: Lesson[] = [
     id: "polynomial-subtraction",
     title: "Subtract polynomials",
     summary:
-      "Taking away a debt of 3 is like gaining 3, because $5 - (-3) = 5 + 3$. In the same way, subtracting a whole bracket flips the sign of every term (part) inside it: $-(2x^2 - 3x + 4) = -2x^2 + 3x - 4$. Flip every sign first. Then add the terms that have the same power of $x$.",
+      "Taking away a debt of 3 is like gaining 3, because $5 - (-3) = 5 + 3$. In the same way, subtracting a whole bracket flips the sign of every term (a part) inside it: $-(2x^2 - 3x + 4) = -2x^2 + 3x - 4$. Flip every sign first. Then add the terms that have the same power of $x$.",
     templateIds: ["polynomial-subtraction"],
     senses,
     noLink,
@@ -204,7 +208,7 @@ export const polynomialLessons: Lesson[] = [
         title: "Combine after changing signs",
         paragraphs: [
           "After flipping the signs, add like terms. Like terms have the same power of $x$, and you add their coefficients. A missing power has coefficient 0.",
-          "The degree of a polynomial is its highest power of $x$ with a coefficient other than 0. A difference can have a lower degree than either polynomial you started with: $(x^2 + 5) - (x^2 + 2) = 3$. A polynomial minus itself is 0.",
+          "The degree is the highest power of $x$ in a polynomial with a coefficient other than 0. A difference can have a lower degree than either polynomial you started with: $(x^2 + 5) - (x^2 + 2) = 3$. A polynomial minus itself is 0.",
         ],
       },
     ],
@@ -213,7 +217,7 @@ export const polynomialLessons: Lesson[] = [
       steps: [
         "Flip the sign of every term in the second bracket, because the minus sign reaches all of them: $-(-2x^2 + 5x - 7) = 2x^2 - 5x + 7$.",
         "Rewrite the problem as a sum: $(4x^2 - x + 3) + (2x^2 - 5x + 7)$.",
-        "Add the coefficients of like terms. The term $-x$ has coefficient $-1$: $(4 + 2)x^2 + (-1 - 5)x + (3 + 7) = 6x^2 - 6x + 10$.",
+        "Add the coefficients of like terms, the terms with the same power of $x$. The term $-x$ has coefficient $-1$: $(4 + 2)x^2 + (-1 - 5)x + (3 + 7) = 6x^2 - 6x + 10$.",
       ],
       answer: "6x² − 6x + 10",
     },
@@ -237,7 +241,7 @@ export const polynomialLessons: Lesson[] = [
     id: "polynomial-multiplication",
     title: "Multiply polynomials",
     summary:
-      "Think of $(x + 2)(x + 3)$ as the area of a rectangle $x + 2$ wide and $x + 3$ tall. Two brackets written next to each other are multiplied. Cutting each length into its parts splits the rectangle into four pieces: $x \\times x$, $x \\times 3$, $2 \\times x$ and $2 \\times 3$. So multiply every part of the first bracket by every part of the second. Then add the pieces that have the same power of $x$.",
+      "Area is the space a shape covers, and a rectangle\'s area is its length times its width. Think of $(x + 2)(x + 3)$ as the area of a rectangle $x + 2$ wide and $x + 3$ tall. Two brackets written next to each other are multiplied. Cutting each length into its parts splits the rectangle into four pieces: $x \\times x$, $x \\times 3$, $2 \\times x$ and $2 \\times 3$. So multiply every part of the first bracket by every part of the second. Then add the pieces that have the same power of $x$.",
     templateIds: ["polynomial-multiplication"],
     senses,
     noLink,
@@ -259,8 +263,8 @@ export const polynomialLessons: Lesson[] = [
       {
         title: "Add the partial products",
         paragraphs: [
-          "Each term of the first polynomial gives one row of products, called a partial product. After finding them all, add like terms, which have the same power of $x$. Adding changes their coefficients, never their exponents.",
-          "Squares follow the same rule. $(x + 3)^2$ means $(x + 3)(x + 3) = x^2 + 3x + 3x + 9 = x^2 + 6x + 9$. In $(x + 3)(x - 3)$, the middle terms cancel: $x^2 - 3x + 3x - 9 = x^2 - 9$.",
+          "A product is the result of multiplying. Each term of the first polynomial gives one row of these, called a partial product. After finding them all, add like terms, which have the same power of $x$. Adding changes their coefficients, never their exponents.",
+          "Squares, which are things multiplied by themselves, follow the same rule. $(x + 3)^2$ means $(x + 3)(x + 3) = x^2 + 3x + 3x + 9 = x^2 + 6x + 9$. In $(x + 3)(x - 3)$, the middle terms cancel: $x^2 - 3x + 3x - 9 = x^2 - 9$.",
         ],
       },
     ],
@@ -270,7 +274,7 @@ export const polynomialLessons: Lesson[] = [
         "Multiply the first term, $2x$, by every term of the second bracket: $2x \\times (x^2 + 4x - 1) = 2x^3 + 8x^2 - 2x$.",
         "Multiply the second term, $-3$, by every term, keeping its minus sign: $-3 \\times (x^2 + 4x - 1) = -3x^2 - 12x + 3$.",
         "Add the two rows and group like terms: $2x^3 + (8 - 3)x^2 + (-2 - 12)x + 3$.",
-        "Add the coefficients: $2x^3 + 5x^2 - 14x + 3$. That is $2 \\times 3 = 6$ products in all, combined into four terms.",
+        "Add the coefficients: $2x^3 + 5x^2 - 14x + 3$. That is $2 \\times 3 = 6$ multiplications in all, combined into four terms.",
       ],
       answer: "2x³ + 5x² − 14x + 3",
     },
@@ -279,7 +283,7 @@ export const polynomialLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "The distributive property multiplies every term of one factor by every term of the other. For whole-number exponents $m$ and $n$, $x^m \\times x^n = x^{m+n}$.",
+          "The distributive property multiplies every term of one factor (a part being multiplied) by every term of the other. For whole-number exponents $m$ and $n$, $x^m \\times x^n = x^{m+n}$.",
         ],
       },
     ],

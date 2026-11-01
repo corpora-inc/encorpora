@@ -6,13 +6,13 @@ const entries: WorkEntry[] = [
     id: "polynomial-product-steps",
     title: "Multiply polynomials term by term",
     summary:
-      "Multiply every term (part) of one factor by every term of the other. Add like terms, and write the highest power first.",
+      "Multiply every term (a part) of one factor (a bracket) by every term of the other. Add like terms, highest power first.",
     objectives: [
       "Multiply two binomials (two-term expressions), square a binomial, or multiply a binomial by a trinomial (three terms), forming every product of one term from each.",
       "Add like terms (terms with the same power of $x$) and write the answer with the highest power first.",
     ],
     intuition:
-      "In $x + 2$, the parts joined by $+$ or $-$ are called terms, and each term keeps its sign. Two brackets written next to each other are multiplied, and each bracket is called a factor. Think of $(x + 2)(x + 3)$ as the area of a rectangle $x + 2$ wide and $x + 3$ tall. Cut each length into its two terms, and the rectangle splits into four pieces: $x \\times x$, $x \\times 3$, $2 \\times x$ and $2 \\times 3$. Each term of the first factor meets each term of the second. So two terms times two terms gives 4 products, and two terms times three terms gives 6. Like terms have the same power of $x$, so they can be added: $3x + 2x = 5x$. Standard form lists the terms from the highest power of $x$ down.",
+      "In $x + 2$, the parts joined by $+$ or $-$ are called terms, and each term keeps its sign. Two brackets written next to each other are multiplied, and each bracket is called a factor. Area is the space a shape covers. Think of $(x + 2)(x + 3)$ as the area of a rectangle $x + 2$ wide and $x + 3$ tall. Cut each length into its two terms, and the rectangle splits into four pieces: $x \\times x$, $x \\times 3$, $2 \\times x$ and $2 \\times 3$. Each term of the first factor meets each term of the second. Each result of multiplying is called a product. So two terms times two terms gives 4 products, and two terms times three terms gives 6. Like terms have the same power of $x$, so they can be added: $3x + 2x = 5x$. Writing the terms from the highest power of $x$ down is called standard form.",
     terms: ["term-expression", "like-terms", "standard-form-polynomial"],
     method: [
       "Count the terms in each factor. The number of products is those two counts multiplied.",
@@ -21,7 +21,7 @@ const entries: WorkEntry[] = [
       "Write the sum from the highest power down. Check by putting $x = 1$ into both the factors and your answer.",
     ],
     watch:
-      "A sign belongs to the term after it: in $x - 5$ the second term is $-5$. Squaring a bracket is not squaring each term: $(x + 3)^2 = x^2 + 6x + 9$, not $x^2 + 9$.",
+      "A sign belongs to the term after it: in $x - 5$ the second term is $-5$. Squaring, which means multiplying by itself, works on the whole bracket, not on each term: $(x + 3)^2 = x^2 + 6x + 9$, not $x^2 + 9$.",
     principle:
       "Using the distributive property twice gives $(a + b)(c + d) = ac + ad + bc + bd$. In general, each of the $m$ terms of one factor multiplies each of the $n$ terms of the other, giving $m \\times n$ products. Then the like terms are added.",
     example: {
@@ -42,7 +42,7 @@ const entries: WorkEntry[] = [
       "Write each row of products on its own line. Then a dropped sign stays in one line and is easy to find.",
     ],
     formal:
-      "Multiplying polynomials uses the distributive property term by term. The degree of a polynomial is its highest power of $x$. The degree of a product is the sum of the degrees of the factors, so a binomial (degree 1) times a trinomial (degree 2) has degree 3. Its leading coefficient, the number in front of the highest power, is the product of the factors' leading coefficients.",
+      "The distributive property is the rule $a(b + c) = ab + ac$, and multiplying polynomials uses it term by term. The degree is the highest power of $x$ in a polynomial. The degree of a product is the sum of the degrees of the factors, so a binomial of degree 1, like $x + 4$, times a trinomial of degree 2, like $x^2 - 2x + 3$, has degree 3. Its leading coefficient, the number in front of the highest power, is the product of the factors' leading coefficients.",
     pitfalls: [
       "Multiply every term by every term. Leaving out one product leaves out part of the answer.",
       "Keep each term's sign when multiplying: a negative times a negative is positive.",
@@ -66,21 +66,12 @@ const senses = {
   squaring: "square-number",
   degree: "degree-polynomial",
   degrees: "degree-polynomial",
-  unit: "unit",
-  units: "unit",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
-  opposite: "opposite-number",
-  opposites: "opposite-number",
   identity: "identity-equation",
   "standard form": "standard-form-polynomial",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
-  rule: "rule",
-  rules: "rule",
 };
 const noLink = [
   "part",
@@ -110,6 +101,19 @@ const noLink = [
   "quarters",
   "one quarter",
   "mirror image",
+  "rule",
+  "rules",
+  "opposite",
+  "opposites",
+  "unit",
+  "units",
+  "average",
+  "decreasing",
+  "increasing",
+  "model",
+  "models",
+  "pattern",
+  "patterns",
 ];
 for (const lesson of built.lessons) Object.assign(lesson, { senses, noLink });
 for (const method of Object.values(built.methods))

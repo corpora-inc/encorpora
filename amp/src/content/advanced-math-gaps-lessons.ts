@@ -12,25 +12,14 @@ const amgSenses = {
   squares: "square-number",
   difference: "difference-subtract",
   differences: "difference-subtract",
-  rule: "rule",
-  rules: "rule",
-  model: "model",
-  models: "model",
   root: "root-radical",
   roots: "root-radical",
   balance: "balance-account",
   side: "side-of-equation",
-  unit: "unit",
-  units: "unit",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
-  opposite: "opposite-number",
-  opposites: "opposite-number",
   identity: "identity-equation",
   "standard form": "standard-form-polynomial",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
 };
@@ -64,26 +53,35 @@ const amgNoLink = [
   "quarters",
   "one quarter",
   "mirror image",
+  "rule",
+  "rules",
+  "opposite",
+  "opposites",
+  "unit",
+  "units",
+  "average",
+  "decreasing",
+  "increasing",
+  "model",
+  "models",
+  "pattern",
+  "patterns",
 ];
+const compoundSenses = {
+  ...amgSenses,
+  factor: "growth-factor",
+  factors: "growth-factor",
+};
 const patternSenses = {
   ...amgSenses,
   term: "term-expression",
   terms: "term-expression",
-  unit: "unit",
-  units: "unit",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
-  opposite: "opposite-number",
-  opposites: "opposite-number",
   identity: "identity-equation",
   "standard form": "standard-form-polynomial",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
-  rule: "rule",
-  rules: "rule",
   balance: "balance-account",
 };
 
@@ -106,7 +104,7 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
   "compound-growth": {
     goal: "Find a balance with compound interest, or switch between a yearly growth rate and the rate for one shorter period.",
     intuition:
-      "Interest is money a bank adds to a balance. With compound interest, interest already added earns interest too. A growth factor is the number the balance is multiplied by each period: 5% interest multiplies by 1.05. Compounding $n$ times a year splits the yearly rate $r$ (as a decimal) into $n$ equal parts, $\\frac{r}{n}$. Each period then multiplies the balance by $1 + \\frac{r}{n}$. So after $t$ years, $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$, where $P$ is the starting amount.",
+      "Interest is money a bank adds to a balance. Compound interest means interest already added earns interest too. A growth factor is the number the balance is multiplied by each period: 5% interest multiplies by 1.05. Compounding $n$ times a year splits the yearly rate $r$ (as a decimal) into $n$ equal parts, $\\frac{r}{n}$. Each period then multiplies the balance by $1 + \\frac{r}{n}$. So after $t$ years, $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$, where $P$ is the starting amount.",
     terms: [
       [
         "compound-interest",
@@ -121,7 +119,7 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
         "Compounding more and more often approaches continuous compounding, $A=Pe^{rt}$, with the rate $r$ as a decimal.",
       ],
     ],
-    senses: amgSenses,
+    senses: compoundSenses,
     noLink: amgNoLink,
     method: [
       "Write the yearly rate as a decimal. For $n$ compoundings a year, use $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$. For continuous compounding, use $A = Pe^{rt}$.",
@@ -129,12 +127,12 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
       "Round only at the end, as the problem says. To turn a yearly factor into a percent change, subtract 1.",
     ],
     watch:
-      "Do not divide a yearly factor by the number of periods, or multiply a period rate by it. Matching factors come from powers and roots.",
+      "To match growth over a different time step, use powers and roots (which undo powers) of the growth factor. Dividing a yearly growth factor by 12 does not give the monthly one.",
   },
   "polynomial-factoring-patterns": {
     goal: "Choose the complete factorization of a polynomial with an $x^3$ or $x^4$ term, using whole-number coefficients.",
     intuition:
-      "Factoring writes an expression as factors, parts multiplied together. Some expressions follow a pattern that factors them. A cube is something times itself three times: $8x^3 = (2x)^3$. A sum or difference of two cubes factors into a two-term bracket times a three-term bracket. Four terms can often be split into two pairs that share a bracket. An expression with only $x^4$, $x^2$ and a number acts like a quadratic in $x^2$. The factoring is complete when no factor can be split again using whole numbers.",
+      "Factoring writes an expression as factors, the parts multiplied together. Some expressions follow a pattern that factors them. A cube is something times itself three times: $8x^3 = (2x)^3$. A cube sum or cube difference, like $x^3 + 8$ or $x^3 - 8$, factors into a two-term bracket times a three-term bracket. The parts joined by $+$ or $-$ are called terms. Four terms can often be split into two pairs that share a bracket. An expression with only $x^4$, $x^2$ and a number acts like a quadratic in $x^2$. The factoring is complete when no factor can be split again using integers, which are the numbers 0, 1, 2, 3, … and their negatives.",
     terms: [
       "sum-or-difference-of-cubes",
       "factoring-by-grouping",
@@ -156,13 +154,13 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
   "residual-function-fit": {
     goal: "Use a residual plot or a table to choose a model type, or find and explain a residual from a curved model.",
     intuition:
-      "A model is a rule that predicts a value, like $\\hat{y} = 3 \\times 2^x$ (the hat on $y$ marks a prediction). A residual is how far off one prediction is: the observed value minus the predicted value. A positive residual means the real point is above the model. A negative residual means it is below. A residual plot graphs the residuals. If the model has the right shape, the residuals scatter above and below 0 with no pattern. A curve in the residuals shows a bend the model missed.",
+      "A model is a rule that predicts a value, like $\\hat{y} = 3 \\times 2^x$ (the hat on $y$ marks a prediction). A residual is how far off one prediction is: the observed value minus the predicted value. A positive residual means the real point is above the model. A negative residual means it is below. A residual plot graphs the residuals. If the model fits well, the residuals scatter above and below 0 with no pattern. A curve in the residuals shows a bend the model missed.",
     terms: [
       "residual",
       "residual-plot",
       [
         "linear-function",
-        "Linear data show equal differences, quadratic data equal second differences, exponential data equal ratios.",
+        "Linear data show equal differences, quadratic data equal second differences, and exponential data multiply by the same number each step.",
       ],
       "quadratic",
       "exponential-function",
@@ -171,7 +169,7 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
     noLink: amgNoLink,
     method: [
       "For a residual plot, read from left to right. Random scatter means keep the model. Positive, then negative, then positive means the data bend upward away from the line. Negative, positive, negative means they bend downward.",
-      "For a table with equally spaced inputs, find the differences between neighbouring values, then the differences of those, then the ratios (one value divided by the one before). Equal first differences mean linear, equal second differences mean quadratic, and equal ratios mean exponential.",
+      "For a table with equally spaced inputs, find the differences between neighbouring values, then the differences of those, called second differences, then the ratios (one value divided by the one before). Equal first differences mean linear, equal second differences (not 0) mean quadratic, and equal positive ratios mean exponential.",
       "For a residual, work out the model's prediction at the input, then subtract: observed minus predicted. Negative means the model predicted too high. Positive means it predicted too low.",
     ],
     watch:
@@ -198,7 +196,7 @@ export const advancedMathGapPrinciples: Record<string, string> = {
   "compound-growth":
     "With yearly rate $r$ (a decimal) compounded $n$ times a year for $t$ years, a deposit $P$ grows to $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$. Continuous compounding gives $A = Pe^{rt}$. A yearly factor $F$ equals a factor $F^{1/n}$ for each of $n$ equal periods, and a period factor $G$ equals $G^n$ per year.",
   "polynomial-factoring-patterns":
-    "$u^3 + v^3 = (u + v)(u^2 - uv + v^2)$ and $u^3 - v^3 = (u - v)(u^2 + uv + v^2)$. If two pairs of terms share a bracket, it factors out. $x^4 + bx^2 + c$ equals $u^2 + bu + c$ with $u = x^2$. With whole numbers, $x^2 - c^2$ factors and $x^2 + c$ with $c > 0$ does not.",
+    "$u^3 + v^3 = (u + v)(u^2 - uv + v^2)$ and $u^3 - v^3 = (u - v)(u^2 + uv + v^2)$. If two pairs of terms share a bracket, it factors out. $x^4 + bx^2 + c$ equals $u^2 + bu + c$ with $u = x^2$. Using integers, $x^2 - c^2$ factors and $x^2 + c$ with $c > 0$ does not.",
   "residual-function-fit":
     "For a model $\\hat{y} = f(x)$ and a data point $(x, y)$, the residual is $y - f(x)$, observed minus predicted. Equally spaced exact data are linear when first differences are equal, quadratic when second differences are equal and not 0, and exponential when neighbouring ratios are equal. A pattern in the residuals shows the model type misses something in the data.",
   "function-graph-features":
@@ -247,7 +245,7 @@ export const advancedMathGapLessons: Lesson[] = [
         paragraphs: [
           "To turn the recursive rule $a_1 = A$, $a_{n+1} = a_n + d$ into an explicit rule, count $n - 1$ steps: $a_n = A + (n - 1)d$, which is $dn + (A - d)$. Check that $n = 1$ gives $A$. To go back, put $n = 1$ to find $a_1$, and read $d$ as the number multiplying $n$.",
           "From a table with two terms $a_i$ and $a_j$ (terms in positions $i$ and $j$), the common difference is the change in value divided by the number of steps: $d = \\frac{a_j - a_i}{j - i}$.",
-          "Some step rules are not arithmetic, such as $a_{n+1} = 2a_n - 1$. It doubles and then subtracts, so the steps are not equal. Work it one term at a time. No shortcut formula applies.",
+          "Some step rules are not arithmetic, such as $a_{n+1} = 2a_n - 1$. It doubles and then subtracts, so the steps are not equal, and the arithmetic formulas do not apply. Work it one term at a time.",
         ],
       },
       {
@@ -271,9 +269,9 @@ export const advancedMathGapLessons: Lesson[] = [
     id: "compound-growth",
     title: "Compound interest and growth rates",
     summary:
-      "A bank pays interest: extra money added to your balance. With compound interest, the interest already added earns interest too. At 10% a year, 100 dollars becomes 110, then 121, not 120. Each year multiplies the balance by the same number, 1.1. To change the time step, such as from years to months, use powers and roots of that number, never division.",
+      "A balance is the amount of money in a bank account. A bank pays interest: extra money added to your balance. With compound interest, the interest already added earns interest too. At 10% a year, 100 dollars becomes 110, then 121, not 120. Each year multiplies the balance by the same number, 1.1. To change the time step, such as from years to months, use powers and roots (the reverse of powers) of that number. Dividing 1.1 by 12 does not give the monthly multiplier, the number each month multiplies by.",
     templateIds: ["compound-growth"],
-    senses: amgSenses,
+    senses: compoundSenses,
     noLink: amgNoLink,
     objectives: [
       "Find a balance with interest added a set number of times a year, or continuously, rounded as stated.",
@@ -299,7 +297,7 @@ export const advancedMathGapLessons: Lesson[] = [
         "Monthly means 12 periods a year, so $n = 12$. Write 6% as 0.06. The rate per month is $0.06 \\div 12 = 0.005$, so each month multiplies the balance by 1.005.",
         "Count the periods: 3 years of 12 months is $12 \\times 3 = 36$ months.",
         "Multiply 2,000 by 1.005 thirty-six times: $A = 2000 \\times 1.005^{36} \\approx 2000 \\times 1.19668 = 2393.36$. The sign $\\approx$ means approximately equal.",
-        "Round at the end: 2,393 dollars. For comparison, a yearly factor of 1.06 would give $2000 \\times 1.06^3 \\approx 2382$, so monthly compounding earns more.",
+        "Round at the end: 2,393 dollars. For comparison, a yearly growth factor of 1.06 would give $2000 \\times 1.06^3 \\approx 2382$, so monthly compounding earns more.",
       ],
       answer: "2,393 dollars",
     },
@@ -309,8 +307,8 @@ export const advancedMathGapLessons: Lesson[] = [
         title: "Choose the formula, then convert units with powers",
         paragraphs: [
           "Interest added $n$ times a year: $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$. Continuous: $A = Pe^{rt}$. Always write $r$ as a decimal.",
-          "A yearly factor $F$ and a monthly factor $G$ describe the same growth when $G^{12} = F$, that is, twelve months of $G$ make one year of $F$. So $F = 1.12$ gives a monthly factor $1.12^{1/12} \\approx 1.0095$, the 12th root of 1.12. That can be written $V = V_0(1.12)^{m/12}$ for $m$ months.",
-          "In the other direction, 2% a month gives a yearly factor $1.02^{12} \\approx 1.268$. That is a yearly increase of 26.8%, not $12 \\times 2\\% = 24\\%$.",
+          "A yearly growth factor $F$ and a monthly growth factor $G$ describe the same growth when $G^{12} = F$, that is, twelve months of $G$ make one year of $F$. So $F = 1.12$ gives a monthly growth factor $1.12^{1/12} \\approx 1.0095$, the 12th root of 1.12. That can be written $V = V_0(1.12)^{m/12}$ for $m$ months.",
+          "In the other direction, 2% a month gives a yearly growth factor $1.02^{12} \\approx 1.268$. That is a yearly increase of 26.8%, not $12 \\times 2\\% = 24\\%$.",
           "In a formula such as $B(t) = 4000(1.015)^{4t}$, the $4t$ shows 4 periods a year, and 1.015 shows 1.5% a period. So the yearly rate is $4 \\times 1.5\\% = 6\\%$, compounded quarterly.",
         ],
       },
@@ -318,14 +316,14 @@ export const advancedMathGapLessons: Lesson[] = [
         stage: "formal",
         title: "Why continuous compounding uses Euler's number",
         paragraphs: [
-          "With $n$ periods a year, the yearly factor is $\\left(1 + \\frac{r}{n}\\right)^n$. As $n$ grows without end, this gets closer and closer to $e^r$, because $\\left(1 + \\frac{x}{n}\\right)^n$ approaches $e^x$. Over $t$ years the factor is $e^{rt}$, so $A = Pe^{rt}$.",
+          "With $n$ periods a year, the yearly growth factor is $\\left(1 + \\frac{r}{n}\\right)^n$. As $n$ grows without end, this gets closer and closer to $e^r$, because $\\left(1 + \\frac{x}{n}\\right)^n$ approaches $e^x$. Over $t$ years the factor is $e^{rt}$, so $A = Pe^{rt}$.",
         ],
       },
     ],
     pitfalls: [
       "Divide the yearly rate by $n$ before compounding, and multiply $n$ by $t$ for the exponent.",
-      "Do not divide a yearly factor by 12 to get a monthly factor. Take its 12th root.",
-      "Do not multiply a monthly percent by 12 to get the yearly percent. Raise the monthly factor to the 12th power and subtract 1.",
+      "Do not divide a yearly growth factor by 12 to get a monthly one. Take its 12th root.",
+      "Do not multiply a monthly percent by 12 to get the yearly percent. Raise the monthly growth factor to the 12th power and subtract 1.",
     ],
     parentGuide:
       "Have the learner work out 1,000 dollars at 12% for one year, added once (1,120), and added monthly at 1% (about 1,126.83). Ask them to explain why the two differ.",
@@ -334,7 +332,7 @@ export const advancedMathGapLessons: Lesson[] = [
     id: "polynomial-factoring-patterns",
     title: "Factoring patterns beyond trinomials",
     summary:
-      "Factoring means writing an expression as parts multiplied together. Some longer expressions follow patterns that factor them. For example, $x^4 - 5x^2 + 4$ acts like $u^2 - 5u + 4$ if you let $u = x^2$. That factors as $(u - 1)(u - 4)$, which is $(x^2 - 1)(x^2 - 4)$. Then keep checking each part until none splits any further.",
+      "An expression is a calculation written with numbers and letters. Factoring means writing an expression as parts multiplied together, called factors. Some longer expressions follow patterns that make them easy to factor. For example, $x^4 - 5x^2 + 4$ acts like $u^2 - 5u + 4$ if you let $u = x^2$. That factors as $(u - 1)(u - 4)$, which is $(x^2 - 1)(x^2 - 4)$. Then keep checking each part until none splits any further.",
     templateIds: ["polynomial-factoring-patterns"],
     senses: patternSenses,
     noLink: amgNoLink,
@@ -348,9 +346,9 @@ export const advancedMathGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Match the expression to a pattern",
         paragraphs: [
-          "You will need to factor quadratics, such as $u^2 - 5u + 4 = (u - 1)(u - 4)$. A factor is a part being multiplied. A difference of squares is one square minus another, and it factors as $A^2 - B^2 = (A - B)(A + B)$.",
+          "You will need to factor quadratics, such as $u^2 - 5u + 4 = (u - 1)(u - 4)$. A factor is a part being multiplied. A square is a number or expression times itself, like $x^2 = x \\times x$. A difference of squares is one square minus another, and it factors as $A^2 - B^2 = (A - B)(A + B)$.",
           "A cube is something multiplied by itself three times: $8x^3 = 2x \\times 2x \\times 2x = (2x)^3$. A sum of two cubes, $u^3 + v^3$, and a difference, $u^3 - v^3$, each factor into a two-term bracket times a three-term bracket.",
-          "An expression with four terms can often be split into two pairs that share the same bracket. Then that bracket can be taken out.",
+          "The parts of an expression joined by $+$ or $-$ are called terms. An expression with four terms can often be split into two pairs that share the same bracket. Then that bracket can be taken out.",
           "An expression with only $x^4$, $x^2$ and a number is a quadratic in disguise. Since $x^4 = (x^2)^2$, writing $u = x^2$ turns it into an ordinary quadratic in $u$.",
           "Factoring is complete when no factor can be split again into smaller factors with whole-number coefficients (the numbers multiplying the powers of $x$).",
         ],
@@ -388,7 +386,7 @@ export const advancedMathGapLessons: Lesson[] = [
     pitfalls: [
       "In a cube pattern, the middle term of the three-term bracket is $uv$, not $2uv$, and its sign is opposite to the two-term bracket's sign.",
       "After grouping or writing $u = x^2$, test each bracket for a difference of squares.",
-      "A sum of squares $x^2 + c$ with $c > 0$ does not factor using whole numbers.",
+      "A sum of squares $x^2 + c$ with $c > 0$ does not factor. It is never 0, so it has no bracket like $x - r$.",
     ],
     parentGuide:
       "Ask the learner to multiply out $(x + 2)(x^2 - 2x + 4)$ to see the middle terms cancel. Then ask why $(x^2 - 4)(x^2 - 1)$ is not finished.",
@@ -397,7 +395,7 @@ export const advancedMathGapLessons: Lesson[] = [
     id: "residual-function-fit",
     title: "Residuals and choosing a model type",
     summary:
-      "A model is a rule that predicts values, like a line or a curve drawn through data. A residual is how far off one prediction is: the real value minus the predicted value. If a model predicts 48 and the real value is 45, the residual is $45 - 48 = -3$. A pattern in many residuals, or in the gaps between values in a table, shows whether a line, a U-shaped curve or a fast-growing curve fits best.",
+      "A model is a rule that predicts values, like a line or a curve drawn through data. A residual is how far off one prediction is: the real value minus the predicted value. If a model predicts 48 and the real value is 45, the residual is $45 - 48 = -3$. A pattern in many residuals, or in the gaps between values in a table, gives clues about which kind of model fits: a line, a U-shaped curve or an exponential curve.",
     templateIds: ["residual-function-fit"],
     senses: amgSenses,
     noLink: amgNoLink,
@@ -411,9 +409,9 @@ export const advancedMathGapLessons: Lesson[] = [
         stage: "intuition",
         title: "What a model leaves behind",
         paragraphs: [
-          "A model is a rule that predicts an output from an input. We write $\\hat{y}$, read “$y$ hat”, for the predicted value, and $y$ for the observed (real) value.",
+          "A model is a rule that predicts a result from a starting number. The starting number is called the input, and the predicted result is called the output. We write $\\hat{y}$, read “$y$ hat”, for the predicted value, and $y$ for the observed (real) value.",
           "A residual is the observed value minus the predicted value: $y - \\hat{y}$. If the real point is above the model, the residual is positive. If it is below, the residual is negative.",
-          "A residual plot graphs every residual against its input. When a model has the right shape, the residuals fall above and below 0 at random. When they follow a curve, the data bend in a way the model cannot.",
+          "A graph of every residual against its input is called a residual plot. When a model fits well, the residuals fall above and below 0 at random. When they follow a curve, the data bend in a way the model cannot.",
           "For example, residuals that are positive at both ends and negative in the middle mean the data sit above a line at the ends and below it in the middle. So the data curve upward, and a straight line is the wrong shape.",
         ],
       },
@@ -433,10 +431,10 @@ export const advancedMathGapLessons: Lesson[] = [
         stage: "method",
         title: "Choosing the type from a table",
         paragraphs: [
-          "Take $y$-values at equally spaced $x$-values. The first differences are each value minus the one before. If they are equal, the data are linear (a straight line). If not, find the differences of the differences, called second differences. If those are equal, the data are quadratic (a U-shaped curve).",
-          "The ratios are each value divided by the one before. If they are equal, the data are exponential: they multiply by the same number each step.",
+          "Take $y$-values at equally spaced $x$-values. The first differences are each value minus the one before. If they are equal, the data are linear (a straight line). If not, find the differences of the differences, called second differences. If those are equal and not 0, the data fit a quadratic (a U-shaped curve, which may open downward).",
+          "The ratios are each value divided by the one before. If they are equal and positive, the data fit an exponential model: they multiply by the same number each step.",
           "For the values 2, 6, 18, 54, the differences are 4, 12 and 36, which are not equal. The ratios are all 3, so the data are exponential.",
-          "A cubic, such as $x^3 + c$, has equal third differences only, so it matches none of these three types.",
+          "A cubic, such as $x^3 + c$, has equal third differences but not equal first or second differences, so it matches none of these three types.",
         ],
       },
       {
@@ -454,7 +452,7 @@ export const advancedMathGapLessons: Lesson[] = [
       "Check second differences and ratios only after the first differences turn out unequal.",
     ],
     parentGuide:
-      "Have the learner plot the data 1, 4, 9, 16, 25 with a straight line through them. Mark the misses above and below the line, and ask the learner to describe their shape.",
+      "Have the learner plot the points $(1, 1)$, $(2, 4)$, $(3, 9)$, $(4, 16)$ and $(5, 25)$ with a straight line drawn near them. Mark the misses above and below the line, and ask the learner to describe their shape.",
   },
   {
     id: "function-graph-features",

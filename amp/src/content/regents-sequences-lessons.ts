@@ -7,19 +7,10 @@ const seqSenses = {
   terms: "term-sequence",
   difference: "difference-subtract",
   product: "product-multiply",
-  rule: "rule",
-  rules: "rule",
-  unit: "unit",
-  units: "unit",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
-  opposite: "opposite-number",
-  opposites: "opposite-number",
   identity: "identity-equation",
   "standard form": "standard-form-polynomial",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
 };
@@ -51,6 +42,19 @@ const seqNoLink = [
   "quarters",
   "one quarter",
   "mirror image",
+  "rule",
+  "rules",
+  "opposite",
+  "opposites",
+  "unit",
+  "units",
+  "average",
+  "decreasing",
+  "increasing",
+  "model",
+  "models",
+  "pattern",
+  "patterns",
 ];
 
 export const regentsSequenceMethods: Record<string, ProblemMethod> = {
@@ -91,7 +95,7 @@ export const regentsSequenceMethods: Record<string, ProblemMethod> = {
     method: [
       "Divide a term by the term before it, later over earlier, to find the ratio $r$ with its sign.",
       "Term $n$ is $n - 1$ steps from term 1, so work out $a_1 r^{n-1}$.",
-      "Decide the sign first. A negative number multiplied an odd number of times is negative. Multiplied an even number of times, it is positive.",
+      "Decide the sign first. A negative number, one less than 0, multiplied an odd number of times is negative. Multiplied an even number of times, it is positive.",
     ],
     watch:
       "The power is $n - 1$, not $n$. Keep a negative ratio in brackets when you raise it to a power: $(-2)^4 = 16$, but $-2^4 = -16$.",
@@ -136,7 +140,7 @@ export const regentsSequenceLessons = [
       },
       methodTitle: "Difference, steps, then add",
       method: [
-        "Find $d$ by subtracting a term from the one after it. A decreasing list gives a negative $d$, and decimal terms give a decimal $d$.",
+        "Find $d$ by subtracting a term from the one after it. A decreasing list gives a negative $d$, and decimal terms can give a decimal $d$.",
         "Multiply $d$ by $n - 1$, the number of steps, and add the result to $a_1$.",
       ],
       formalTitle: "The term formula",
@@ -160,7 +164,7 @@ export const regentsSequenceLessons = [
       id: "regents-geometric-signed-term",
       title: "Geometric sequences with negative terms",
       summary:
-        "In the list $-3$, 6, $-12$, 24, each number is the one before times $-2$. Multiplying by a negative number flips the sign every time, so the numbers switch between negative and positive. To find a later number, multiply by $-2$ once for each step. Then use the number of flips to check the sign.",
+        "In the list $-3$, 6, $-12$, 24, each number is the one before times $-2$. A negative number is a number less than 0. Multiplying by a negative number flips the sign every time, so the numbers switch between negative and positive. To find a later number, multiply by $-2$ once for each step. Then use the number of flips to check the sign.",
       templateIds: ["geometric-signed-term"],
       objectives: [
         "Find the common ratio (the number each term is multiplied by), including a negative ratio.",

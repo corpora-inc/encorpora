@@ -10,21 +10,12 @@ const focusSenses = {
   side: "side",
   squared: "square-number",
   squaring: "square-number",
-  unit: "unit",
-  units: "unit",
-  average: "mean-average",
   base: "base-exponent",
   bases: "base-exponent",
-  opposite: "opposite-number",
-  opposites: "opposite-number",
   identity: "identity-equation",
   "standard form": "standard-form-polynomial",
-  decreasing: "decreasing",
-  increasing: "increasing",
   "left side": "side-of-equation",
   "right side": "side-of-equation",
-  rule: "rule",
-  rules: "rule",
 };
 
 export const complexConicsMethods: Record<string, ProblemMethod> = {
@@ -155,7 +146,7 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
   },
   "parabola-focus-directrix": {
     goal: "From a focus and directrix, or from a parabola's equation, find the vertex, the equation, the focus or the directrix.",
-    intuition: r`A parabola is a U-shaped curve. It is every point that is the same distance from a fixed point, called the focus, and a fixed line, called the directrix. The turning point of the curve, called the vertex, is halfway between the focus and the directrix. Let $p$ be the distance from the vertex to the focus, with a minus sign if the focus is below (or left of) the vertex. A parabola that opens up or down with vertex $(h, k)$ has the equation $(x - h)^2 = 4p(y - k)$.`,
+    intuition: r`A parabola is a U-shaped curve. It is every point that is the same distance from a fixed point, called the focus, and a fixed line that does not pass through it, called the directrix. The vertex is the turning point of the curve, and it is halfway between the focus and the directrix. Let $p$ be the distance from the vertex to the focus, with a minus sign if the focus is below (or left of) the vertex. A parabola that opens up or down with vertex $(h, k)$ has the equation $(x - h)^2 = 4p(y - k)$.`,
     terms: [
       "focus",
       "directrix",
@@ -193,6 +184,19 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
       "quarters",
       "one quarter",
       "mirror image",
+      "rule",
+      "rules",
+      "opposite",
+      "opposites",
+      "unit",
+      "units",
+      "average",
+      "decreasing",
+      "increasing",
+      "model",
+      "models",
+      "pattern",
+      "patterns",
     ],
     method: [
       r`The vertex is halfway between the focus and the nearest point of the directrix. The number $p$ is the distance from the vertex to the focus: positive if the parabola opens up (or right), negative if it opens down (or left).`,
@@ -628,7 +632,7 @@ export const complexConicsLessons: Lesson[] = [
         title: "Equal distance to a point and a line",
         paragraphs: [
           r`Pick a point, called the focus, and a line that does not pass through it, called the directrix. The distance from a point to a line is measured straight across, at a right angle (a square corner) to the line. All the points that are the same distance from the focus as from the directrix form a parabola.`,
-          r`The turning point of the parabola is called the vertex. It is the point of the curve nearest the directrix, and it sits exactly halfway between the focus and the directrix.`,
+          r`The vertex is the turning point of the parabola. It is the point of the curve nearest the directrix, and it sits exactly halfway between the focus and the directrix.`,
           r`Let $p$ be the distance from the vertex to the focus. Give it a minus sign if the focus is below the vertex. A parabola that opens up or down, with vertex $(h, k)$, has the equation $(x - h)^2 = 4p(y - k)$. The closing section shows where this comes from.`,
           r`For example, with vertex $(0, 0)$ and $p = 1$, the equation is $x^2 = 4y$. The point $(2, 1)$ is on it, because $2^2 = 4 = 4 \times 1$.`,
         ],
@@ -636,7 +640,7 @@ export const complexConicsLessons: Lesson[] = [
       example: {
         prompt: r`Find the equation of the parabola with focus $(1,5)$ and directrix $y=1$.`,
         steps: [
-          r`Find the vertex. The directrix $y = 1$ is horizontal, so measure straight up from it, along $x = 1$, to the focus at height 5. Halfway between heights 1 and 5 is 3, so the vertex is $(1, 3)$.`,
+          r`Find the vertex. The directrix $y = 1$ is horizontal, so measure straight up from it, along $x = 1$, to the focus at $y = 5$. Halfway between $y = 1$ and $y = 5$ is $y = 3$, so the vertex is $(1, 3)$.`,
           r`Find $p$, the distance from the vertex up to the focus: $p = 5 - 3 = 2$. It is positive because the focus is above the vertex. So $4p = 8$.`,
           r`Put $h = 1$, $k = 3$ and $4p = 8$ into $(x - h)^2 = 4p(y - k)$: $(x - 1)^2 = 8(y - 3)$.`,
           r`Check with the point $(5, 5)$. Its distance to the focus $(1, 5)$ is $5 - 1 = 4$, and its distance down to the line $y = 1$ is $5 - 1 = 4$. They match. The equation agrees: $(5 - 1)^2 = 16$ and $8(5 - 3) = 16$.`,
@@ -654,8 +658,8 @@ export const complexConicsLessons: Lesson[] = [
       formal: {
         title: "Derivation",
         paragraphs: [
-          r`Put the focus at $(h, k + p)$ and the directrix at $y = k - p$, so the vertex $(h, k)$ is halfway between. A point $(x, y)$ is on the parabola when its distance to the focus equals its distance to the line: $\sqrt{(x - h)^2 + (y - k - p)^2} = |y - k + p|$. The left side uses the distance formula, and the bars mean the distance is never negative.`,
-          r`Squaring both sides and multiplying out, the $(y - k)^2$ and $p^2$ parts cancel. What is left is $(x - h)^2 = 4p(y - k)$.`,
+          r`Put the focus at $(h, k + p)$ and the directrix at $y = k - p$, so the vertex $(h, k)$ is halfway between. A point $(x, y)$ is on the parabola when its distance to the focus equals its distance to the line: $\sqrt{(x - h)^2 + (y - k - p)^2} = |y - k + p|$. The left side, the part before the equals sign, uses the distance formula. The bars mean the distance is never negative.`,
+          r`Squaring means multiplying something by itself. Square both sides and multiply out, and the $(y - k)^2$ and $p^2$ parts cancel. What is left is $(x - h)^2 = 4p(y - k)$.`,
         ],
       },
       pitfalls: [
@@ -694,6 +698,19 @@ export const complexConicsLessons: Lesson[] = [
       "quarters",
       "one quarter",
       "mirror image",
+      "rule",
+      "rules",
+      "opposite",
+      "opposites",
+      "unit",
+      "units",
+      "average",
+      "decreasing",
+      "increasing",
+      "model",
+      "models",
+      "pattern",
+      "patterns",
     ],
   },
 ];
