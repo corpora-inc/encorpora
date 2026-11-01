@@ -476,7 +476,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
       "Count places in the factors first. Drop zeros at the end only after placing the point: 0.420 = 0.42.",
   },
   "multidigit-decimal-quotient": {
-    noLink: ["whole", "changes", "leaves"],
+    noLink: ["change", "whole", "changes", "leaves"],
     goal: "Divide a decimal by a decimal, by first making the divisor a whole number.",
     terms: ["divisor"],
     senses: { quotient: "quotient" },
