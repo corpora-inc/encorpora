@@ -11,7 +11,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
       product: "product-multiply",
     },
     intuition:
-      "An exponent is the small raised number that says how many times to multiply: $0.5^2$ means $0.5 \\times 0.5 = 0.25$. Any nonzero number to the power 0 is 1. An exponential model such as $C(t) = 320(0.5)^t$ starts with 320 and multiplies by the factor 0.5 for each 1 that $t$ goes up. The initial value is the value when $t = 0$. If the exponent is $t + 2$, then at $t = 0$ it is 2, not 0.",
+      "An exponent is the small raised number that says how many times to multiply: $0.5^2$ means $0.5 \\times 0.5 = 0.25$. Any nonzero number to the power 0 is 1. An exponential model is a formula that multiplies by the same number again and again. That number is called the factor. For example, $C(t) = 320(0.5)^t$ starts with 320 and multiplies by the factor 0.5 for each 1 that $t$ goes up. The initial value is the value when $t = 0$. If the exponent is $t + 2$, then at $t = 0$ it is 2, not 0.",
     terms: ["initial-value", "growth-factor"],
     method: [
       "Put $t = 0$ into the exponent and work out what the exponent becomes.",
@@ -31,7 +31,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["third"],
     intuition:
-      "Exponential decay means the values are multiplied by the same number at each equal step, and that number is between 0 and 1. For example, 81, 27, 9, 3 is multiplied by $\\frac{1}{3}$ each time. The quotient of two values is what you get when you divide them. A linear pattern instead adds or subtracts the same amount at each step.",
+      "Exponential decay means the values are multiplied by the same number at each equal step, and that number is between 0 and 1. For example, 81, 27, 9, 3 is multiplied by $\\frac{1}{3}$ each time. A quotient is the answer when you divide one number by another. A linear pattern instead adds or subtracts the same amount at each step.",
     terms: [
       [
         "common-ratio",
@@ -58,10 +58,10 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
       changes: "change",
     },
     intuition:
-      "$f(x)$, read “$f$ of $x$”, is the value of function $f$ at input $x$. A linear function such as $g(x) = 6x + 14$ adds the same amount for each step in $x$. An exponential function such as $f(x) = 2(1.8)^x$ multiplies by the same factor each step. With a positive starting value and a factor greater than 1, the exponential gains more and more each step. So it passes the line eventually, even if the line starts ahead. $f(x) > g(x)$ means $f(x)$ is greater than $g(x)$.",
+      "$f(x)$, read “$f$ of $x$”, is the value of function $f$ at input $x$. A linear function such as $g(x) = 6x + 14$ adds the same amount for each step in $x$. An exponential function is a function that multiplies by the same number at each step, such as $f(x) = 2(1.8)^x$. That number is called the factor. With a positive starting value and a factor greater than 1, the exponential gains more and more each step. So it passes the line eventually, even if the line starts ahead. $f(x) > g(x)$ means $f(x)$ is greater than $g(x)$.",
     terms: ["exponential-function", "linear-function"],
     method: [
-      "Make a table of $f(x)$ and $g(x)$ for whole numbers $x = 0, 1, 2, \\dots$",
+      "Make a table of $f(x)$ and $g(x)$ for $x = 0, 1, 2, \\dots$",
       "Find the first row where $f(x) > g(x)$.",
       "Check the row before it, where $f(x)$ should be less than or equal to $g(x)$.",
     ],
@@ -72,7 +72,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     goal: "Choose the right total to divide by in a two-way table and round the percent.",
     senses: { whole: "whole", part: "part" },
     intuition:
-      "A two-way table counts one group of people two ways at once, such as grade and whether they have a job. A percent is a part out of a whole, so first name the whole. “Percent of everyone” uses the table total. “Percent of the juniors” uses the juniors' row total. “Of those who have a job” uses that column's total.",
+      "A two-way table counts one group of people two ways at once, such as grade and whether they have a job. A percent is a part out of a whole, so first name the whole. A joint percent is a cell count divided by the table total, as in “percent of everyone”. “Percent of the juniors” uses the juniors' row total. “Of those who have a job” uses that column's total.",
     terms: ["joint-relative-frequency", "conditional-relative-frequency"],
     method: [
       "Find the count of the people the question asks about.",
@@ -91,7 +91,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
       "more than": "more-than",
     },
     intuition:
-      "The median is the middle value once the data are in order. It splits the ordered data into a lower half and an upper half. The lower quartile, $Q_1$, is the median of the lower half. The upper quartile, $Q_3$, is the median of the upper half. In a half with an even number of values, the median is the mean of the two middle values: add them and divide by 2.",
+      "The median is the middle value once the data are in order. It splits the ordered data into a lower half and an upper half. The lower quartile is the median of the lower half, written $Q_1$. The upper quartile is the median of the upper half, written $Q_3$. In a half with an even number of values, the median is the mean of the two middle values: add them and divide by 2.",
     terms: ["quartile", "median"],
     method: [
       "Order the data from least to greatest, keeping repeated values.",
@@ -106,15 +106,15 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     senses: {
       change: "change",
       changes: "change",
-      population: "population",
       unit: "unit",
       interval: "interval",
       difference: "difference-subtract",
       decreasing: "decreasing",
       average: "mean-average",
     },
+    noLink: ["population"],
     intuition:
-      "An average rate of change tells how much an amount changes, on average, for each 1 unit of the input, such as people per year. Find it from two rows: the change in the amount divided by the change in the input. The rows of a table do not have to be evenly spaced, so use the actual input values.",
+      "An average rate of change tells how much an amount changes for each 1 unit of the input, such as people per year. On a graph, it is the slope, the steepness, of the line through the two points. Find it from two rows: the change in the amount divided by the change in the input. The rows of a table do not have to be evenly spaced, so use the actual input values.",
     terms: ["average-rate-of-change", "interval"],
     method: [
       "Pick the two rows at the ends of the stretch the question names.",
@@ -143,7 +143,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     goal: "Find the greatest whole number of items affordable after a fixed cost.",
     noLink: ["whole", "part", "multiple"],
     intuition:
-      "A fixed cost is paid once, whatever you buy, such as an entry fee. Take it off the budget first. The money left buys items, and you cannot buy part of an item. So the answer is the number of whole times the price fits into the money left. $6.16n \\le 97.93$ means $6.16n$ is less than or equal to 97.93.",
+      "A fixed cost is paid once, whatever you buy, such as an entry fee. Take it off the budget first. The money left buys items, and you cannot buy part of an item. A whole number is one of 0, 1, 2, 3 and so on. So the answer is the number of whole times the price fits into the money left. $6.16n \\le 97.93$ means $6.16n$ is less than or equal to 97.93.",
     terms: [
       "fixed-cost",
       [
@@ -167,7 +167,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
       rules: "rule",
     },
     intuition:
-      "The absolute value of a number is its distance from 0, written with bars: $|-3| = 3$ and $|3| = 3$. So $|x - 6|$ equals $x - 6$ when $x - 6$ is 0 or positive, and its opposite, $-(x - 6)$, when $x - 6$ is negative. An equation with an absolute value splits into these two cases. Each case's answer must be checked, because it may not fit its case.",
+      "The absolute value of a number is its distance from 0, written with bars: $|-3| = 3$ and $|3| = 3$. The opposite is the same number with the other sign: the opposite of 3 is −3. An equation has two sides: the expressions left and right of the = sign. So $|x - 6|$ equals $x - 6$ when $x - 6$ is 0 or positive, and its opposite, $-(x - 6)$, when $x - 6$ is negative. An equation with an absolute value splits into these two cases. Each case's answer must be checked, because it may not fit its case.",
     terms: ["absolute-value", "extraneous-solution"],
     method: [
       "Get the absolute value alone on one side of the equation.",
@@ -181,7 +181,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
 
 export const regentsAlgebraOneDataPrinciples: Record<string, string> = {
   "exponential-initial-value":
-    "For $f(t) = a \\cdot b^{t+k}$ with $b > 0$, the initial value is $f(0) = a \\cdot b^{k}$. A growth rate $r$ per step, written as a decimal, multiplies by $1 + r$. A decay rate $r$ multiplies by $1 - r$.",
+    "For $f(t) = a \\cdot b^{t+k}$ with $b > 0$, the initial value is $f(0) = a \\cdot b^{k}$. A growth rate $r$ per step, such as $r = 0.05$ for 5%, multiplies by $1 + r$. A decay rate $r$ multiplies by $1 - r$.",
   "exponential-decay-table":
     "Values $y_0, y_1, y_2, \\dots$ at equally spaced inputs are exponential when each quotient $y_{i+1} \\div y_i$ is the same number $b$. They show decay when $0 < b < 1$. They are linear when each difference $y_{i+1} - y_i$ is the same.",
   "exponential-passes-linear":
@@ -195,7 +195,7 @@ export const regentsAlgebraOneDataPrinciples: Record<string, string> = {
   "correlation-causation-choice":
     "A correlation is positive when larger values of one amount tend to go with larger values of the other, and negative when they go with smaller values. A correlation alone does not show a cause: a third variable may affect both.",
   "budget-whole-items":
-    "With budget $B$, fixed cost $F$ and price $p$ per item, the number $n$ of items must satisfy $F + pn \\le B$, so $n \\le \\frac{B-F}{p}$. The answer is the greatest whole number that is at most $\\frac{B-F}{p}$.",
+    "With budget $B$, fixed cost $F$ and price $p$ per item, the number $n$ of items must satisfy $F + pn \\le B$, so $n \\le \\frac{B-F}{p}$. The answer is the greatest whole number less than or equal to $\\frac{B-F}{p}$.",
   "abs-equals-linear-unique":
     "$|u| = v$ needs $v \\ge 0$, and then $u = v$ or $u = -v$. For $k|x-a| + b = cx + d$ with $|c| > k > 0$, the two sides' graphs cross exactly once, so there is exactly one solution.",
 };
@@ -205,7 +205,7 @@ export const regentsAlgebraOneDataLessons = [
       id: "regents-exponential-models",
       title: "Exponential models: starting value, decay tables and overtaking",
       summary:
-        "An exponential model multiplies by the same number, called the factor, at each step. For example, 90, 135, 202.5 multiplies by 1.5 each time. The starting value is the value at step 0. If the factor is between 0 and 1, the values shrink: this is called decay. If the factor is greater than 1 and the start is positive, the values grow faster and faster, and they eventually pass any straight line.",
+        "An exponential model is a formula that multiplies by the same number, called the factor, at each step. For example, 90, 135, 202.5 multiplies by 1.5 each time. The starting value is the value at step 0. If the factor is between 0 and 1, the values shrink: this is called decay. If the factor is greater than 1 and the start is positive, the values grow faster and faster, and they eventually pass any straight line.",
       templateIds: [
         "exponential-initial-value",
         "exponential-decay-table",
@@ -314,7 +314,7 @@ export const regentsAlgebraOneDataLessons = [
       id: "regents-quartile-list",
       title: "Quartiles of a listed data set",
       summary:
-        "Quartiles split ordered data into four parts of equal size. Put the values in order. The median, the middle value, splits them into a lower half and an upper half. The lower quartile is the median of the lower half, and the upper quartile is the median of the upper half.",
+        "Quartiles are the values that split ordered data into four parts of equal size. Put the values in order. The median, the middle value, splits them into a lower half and an upper half. The lower quartile is the median of the lower half, and the upper quartile is the median of the upper half.",
       templateIds: ["quartile-list"],
       objectives: [
         "Order a data set that has repeated values.",
@@ -340,7 +340,7 @@ export const regentsAlgebraOneDataLessons = [
       method: [
         "Order the values and keep every repeat.",
         "Split them into two equal halves.",
-        "Take the median of the half you need. If that half has an even count, average its two middle values.",
+        "Take the median of the half you need. If that half has an even count, add its two middle values and divide by 2.",
       ],
       formalTitle: "Quartiles and the interquartile range",
       formal: [
@@ -350,7 +350,7 @@ export const regentsAlgebraOneDataLessons = [
       pitfalls: [
         "Order the data before splitting.",
         "Count a repeated value each time it appears.",
-        "In a half with an even count, average the two middle values.",
+        "In a half with an even count, add the two middle values and divide by 2.",
       ],
       parentGuide:
         "Ask the learner to cross out values in pairs from both ends of the ordered list and see where the middle is.",
@@ -363,7 +363,7 @@ export const regentsAlgebraOneDataLessons = [
       id: "regents-average-rate-table",
       title: "Average rate of change from a table",
       summary:
-        "An average rate of change tells how much an amount changes, on average, for each 1 unit of the input, such as people per year. Pick two rows. Divide the change in the amount by the change in the input. Use the actual input values, even when the rows are not evenly spaced.",
+        "An average rate of change tells how much an amount changes for each 1 unit of the input, such as people per year, across a stretch of a table. Pick two rows. Divide the change in the amount by the change in the input. Use the actual input values, even when the rows are not evenly spaced.",
       templateIds: ["average-rate-table-rounded"],
       objectives: [
         "Compute an average rate of change over a stated stretch of the input.",
@@ -371,7 +371,7 @@ export const regentsAlgebraOneDataLessons = [
       ],
       openingTitle: "Change in output per unit change in input",
       opening: [
-        "A table pairs an input, such as a year, with an output, such as a population. The average rate of change between two rows tells how much the output changes, on average, for each 1 unit of the input.",
+        "A table pairs an input, such as a year, with an output, such as a population. The average rate of change between two rows tells how much the output changes for each 1 unit of the input, taken across that stretch.",
         "It is the change in the output divided by the change in the input. On a graph, it is the slope (steepness) of the straight line through the two points.",
         "The rows of a table do not have to be evenly spaced. Use the actual input values, not the number of rows.",
       ],
@@ -407,12 +407,11 @@ export const regentsAlgebraOneDataLessons = [
       change: "change",
       changes: "change",
       unit: "unit",
-      population: "population",
       difference: "difference-subtract",
       decreasing: "decreasing",
       average: "mean-average",
     },
-    noLink: ["opposite", "interval"],
+    noLink: ["opposite", "interval", "population"],
   },
   {
     ...chainLesson({
@@ -477,14 +476,14 @@ export const regentsAlgebraOneDataLessons = [
       opening: [
         "A fixed cost is paid once, no matter how many items you buy. The money left after it is what you can spend on items.",
         "Dividing that money by the price tells how many items it would buy. But you can only buy whole items, so drop any part of an item. That means rounding down.",
-        "An inequality compares two amounts. The sign $\\le$ means “is less than or equal to”. So $3.50n \\le 65$ says the cost of $n$ tickets is at most 65 dollars.",
+        "An inequality is a statement that compares two amounts. The sign $\\le$ means “is less than or equal to”. So $3.50n \\le 65$ says the cost of $n$ tickets is 65 dollars or less.",
       ],
       example: {
         prompt:
           "A group has $85$ dollars. After a $20$ dollar entry fee, tickets cost $3.50$ dollars each. How many tickets can it buy?",
         steps: [
           "Pay the fixed cost first. Money left: $85 - 20 = 65$ dollars.",
-          "Let $n$ be the number of tickets. They cost $3.50n$ dollars, which must be at most 65: $3.50n \\le 65$. Divide both sides by 3.50: $n \\le 18.57\\ldots$",
+          "Let $n$ be the number of tickets. They cost $3.50n$ dollars, which must be 65 or less: $3.50n \\le 65$. Divide both sides by 3.50: $n \\le 18.57\\ldots$",
           "Only whole tickets can be bought, so round down to 18. Check: 18 tickets cost $63$ dollars, which fits, but 19 cost $66.50$ dollars, which does not.",
         ],
         answer: "18 tickets",
@@ -498,7 +497,7 @@ export const regentsAlgebraOneDataLessons = [
       formalTitle: "The inequality",
       formal: [
         "With budget $B$, fixed cost $F$ and price $p$ per item, buying $n$ items costs $F + pn$. That must not be more than the budget: $F + pn \\le B$.",
-        "Solving gives $n \\le \\frac{B-F}{p}$. The answer is the greatest whole number that is at most $\\frac{B-F}{p}$.",
+        "Solving gives $n \\le \\frac{B-F}{p}$. The answer is the greatest whole number less than or equal to $\\frac{B-F}{p}$.",
       ],
       pitfalls: [
         "Round down. Rounding up goes over the budget.",
@@ -508,8 +507,8 @@ export const regentsAlgebraOneDataLessons = [
       parentGuide:
         "Ask the learner to check the answer by finding the total cost for that many items and for one more.",
     }),
-    senses: { "more than": "more-than", sides: "side-of-equation" },
-    noLink: ["whole", "part", "multiple"],
+    senses: { "more than": "more-than" },
+    noLink: ["whole", "part", "multiple", "sides"],
   },
   {
     ...chainLesson({
@@ -525,7 +524,7 @@ export const regentsAlgebraOneDataLessons = [
       openingTitle: "Two cases, then check",
       opening: [
         "The absolute value of a number is its distance from 0, so it is never negative. We write it with bars: $|-4| = 4$ and $|4| = 4$.",
-        "For an expression $u$, $|u|$ equals $u$ when $u$ is 0 or positive. It equals $-u$, the opposite of $u$, when $u$ is negative. So an equation with an absolute value splits into two equations, one for each case.",
+        "For an expression $u$, $|u|$ equals $u$ when $u$ is 0 or positive. The opposite is the same number with the other sign: the opposite of 4 is −4. So $|u|$ equals $-u$, the opposite of $u$, when $u$ is negative. So an equation with an absolute value splits into two equations, one for each case.",
         "Solving a case can give a number that does not belong to that case. A solution is a value that makes the equation true. So check every answer in the original equation.",
       ],
       example: {

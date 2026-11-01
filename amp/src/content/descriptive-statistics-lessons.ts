@@ -39,7 +39,7 @@ const medianDefinition: Lesson["sections"][number] = {
     "With an odd number of values, one value is in the middle. It has the same number of values on each side. For 1, 2, 2, 7, 9, the third value is the median, 2. Two values come before it and two come after it.",
     "With an even number of values, two values share the middle. The median is the number halfway between them: add the two and divide by 2. For six values, the middle positions are third and fourth. For eight values, they are fourth and fifth.",
     "Positions count from 1. A repeated value takes up one position each time it appears.",
-    "The median and the mean can differ. The mean, also called the average, adds every value and divides by how many there are. The median uses only the order. The median is also not always halfway between the least and greatest values.",
+    "The mean is a different typical value: add every value and divide by how many there are. It is also called the average. The median and the mean can differ, because the median uses only the order. The median is also not always halfway between the least and greatest values.",
   ],
 };
 
@@ -160,7 +160,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
       {
         title: "See the full span",
         paragraphs: [
-          "A dot plot puts one dot above a number line for each value. Dots for a repeated value stack up. Left and right show size, and the height of a stack shows repeats.",
+          "A dot plot puts one dot above a number line for each value. Dots for a repeated value stack up. Left and right show size, and how tall a stack is shows repeats.",
           "For −2, −1, 1, 3, 3, 8, the leftmost value is −2 and the rightmost is 8. The bracket spans 10 equal steps of 1 unit. There are six values, but their range is $8 - (-2) = 10$. A repeated value in the middle does not move either end.",
         ],
         illustration: "descriptive-range",
@@ -179,7 +179,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
         stage: "formal",
         title: "Distance between endpoints",
         paragraphs: [
-          "For a data set with at least one number value, the minimum is the least value and the maximum is the greatest. The range is maximum minus minimum. It is a distance that is never negative, in the same unit as the data.",
+          "For a data set with one or more number values, the minimum is the least value and the maximum is the greatest. The range is maximum minus minimum. It is a distance that is never negative, in the same unit as the data.",
         ],
       },
     ],
@@ -266,7 +266,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
       {
         title: "Measure the distance between the quartiles",
         paragraphs: [
-          "The interquartile range, written IQR, is the upper quartile minus the lower quartile: $Q_3 - Q_1$. It measures spread, not a typical value. Unlike the full range, it does not depend only on the least and greatest values.",
+          "The interquartile range, written IQR, is the upper quartile minus the lower quartile: $Q_3 - Q_1$. It measures spread, not a typical value. The full range is the greatest value minus the least value. The IQR, unlike the range, does not depend only on those two values.",
           "In the dot plot, the ordered data are −4, −2, −2, 0, 1, 3, 4, 6, 8. There are nine values, so leave out the middle value, 1.",
           "The lower half is −4, −2, −2, 0. Its middle pair is −2 and −2, so $Q_1 = -2$. The upper half is 3, 4, 6, 8. Its middle pair is 4 and 6, so $Q_3 = (4 + 6) \\div 2 = 5$. A quartile does not have to be a recorded value: 5 lies between 4 and 6.",
           "Subtract: $5 - (-2) = 5 + 2 = 7$. The bracket shows this distance of 7 units. Both −2s stay in the data as separate values. The full range is $8 - (-4) = 12$, which answers a different question.",
@@ -325,7 +325,7 @@ export const descriptiveStatisticsMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["third", "fourth"],
     intuition:
-      "The median is the middle value once the numbers are in order from least to greatest. Keep every repeat. With an odd number of values, one value is in the middle. With an even number, two values share the middle, and the median is halfway between them: add the two and divide by 2. A negative number, such as −6, is less than 0, and it is smaller the farther it is from 0.",
+      "The median is the middle value once the numbers are in order from least to greatest. Keep every repeat. With an odd number of values, one value is in the middle. With an even number, two values share the middle, and the median is halfway between them: add the two and divide by 2. A negative number is a number less than 0, such as −6. It is smaller the farther it is from 0.",
     terms: [
       "median",
       [
@@ -373,7 +373,7 @@ export const descriptiveStatisticsMethods: Record<string, ProblemMethod> = {
     method: [
       "Order every value from least to greatest, keeping repeats.",
       "Split into two equal halves. With an odd count, leave the one middle value out of both halves.",
-      "Find each half's median. Average its two middle values when the half has an even count.",
+      "Find each half's median. When the half has an even count, add its two middle values and divide by 2.",
       "Subtract the lower quartile from the upper quartile. Keep the exact answer.",
     ],
     watch: "Leave out one middle position, not every value equal to it.",

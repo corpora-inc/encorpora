@@ -5,7 +5,7 @@ const stages: Lesson["sections"][number] = {
   stage: "intuition",
   title: "Stages, options and outcomes",
   paragraphs: [
-    "This lesson uses multiplying whole numbers. Picture getting dressed. First you choose a shirt, then you choose pants. Each of these choices is called a stage. The things you can pick from at a stage are its options.",
+    "This lesson uses multiplying, such as $3 \\times 2 = 6$. Picture getting dressed. First you choose a shirt, then you choose pants. Each of these choices is called a stage. The things you can pick from at a stage are its options.",
     "An outcome is one complete result: one choice at every stage. Shirt $A$ with pants 1 is one outfit. Shirt $A$ with pants 2 is a different outfit. Two outcomes are different when at least one stage has a different choice.",
     "Counting outcomes means counting complete outfits, not counting the shirts and pants on the lists.",
   ],
@@ -23,10 +23,10 @@ const probabilityBasics: Lesson["sections"][number] = {
   stage: "intuition",
   title: "Probability from equally likely outcomes",
   paragraphs: [
-    "An experiment is something with a result you cannot know ahead of time, such as rolling a number cube. A number cube is a die with 6 faces numbered 1 to 6. Each possible result is called an outcome.",
+    "An experiment is an action whose result you cannot know ahead of time, such as rolling a number cube. A number cube is a die with 6 faces numbered 1 to 6. Each possible result is called an outcome.",
     "Outcomes are equally likely when each has the same chance. Each face of a fair cube is equally likely. An event is a group of outcomes you ask about, such as “an even number”: 2, 4 or 6.",
     "When the outcomes are equally likely, the probability of an event is the number of outcomes in it divided by the number of all outcomes. For an even number on a cube, that is $\\frac{3}{6} = \\frac{1}{2}$. A probability is between 0 and 1. A probability of 0 means the event cannot happen, and 1 means it must.",
-    "The complement of an event is every outcome not in it. For “even”, the complement is “odd”: 1, 3 or 5. Every outcome is in exactly one of the two, so their probabilities add to 1. So the probability that an event does not happen is 1 minus its probability: $1 - \\frac{1}{2} = \\frac{1}{2}$.",
+    "For an event, the complement is every outcome not in it. For “even”, the complement is “odd”: 1, 3 or 5. Every outcome is in exactly one of the two, so their probabilities add to 1. So the probability that an event does not happen is 1 minus its probability: $1 - \\frac{1}{2} = \\frac{1}{2}$.",
   ],
 };
 const groups: Lesson["sections"][number] = {
@@ -435,7 +435,7 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
       product: "product-multiply",
     },
     intuition:
-      "A stage is one choice in a process, such as choosing a sandwich. Its options are the things you can pick. An outcome is one complete result, with one choice at every stage. When every option at one stage can go with every option at the others, the outcomes form equal groups. So multiply: 8 sandwiches and 5 soups make $8 \\times 5 = 40$ lunches.",
+      "A stage is one choice in a process, such as choosing a sandwich. Its options are the things you can pick. An outcome is one complete result, with one choice at every stage. When every option at one stage can go with every option at the others, the outcomes form groups of the same size. So multiply: 8 sandwiches and 5 soups make $8 \\times 5 = 40$ lunches.",
     terms: [
       [
         "outcome",

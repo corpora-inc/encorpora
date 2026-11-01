@@ -61,9 +61,9 @@ export const dataDisplayStateMethods: Record<string, ProblemMethod> = {
       change: "change",
       center: "center",
     },
-    noLink: ["edges"],
+    noLink: ["edges", "units"],
     intuition:
-      "A circle graph shows how one whole splits into parts. Each part is a sector, a slice of the circle. A sector's central angle is the angle at the center of the circle between its two straight edges, measured in degrees (°). The whole circle is 100% of the data, 360°, and the total count. A sector with 25% of the data takes a quarter of the circle, which is 90°.",
+      "A circle graph shows how one whole splits into parts. Each part is a sector, a slice of the circle. Angles are measured in degrees, the units for measuring turns, written °. The center is the middle point of the circle. A sector's central angle is the angle at the center between its two straight edges. The whole circle is 100% of the data, 360°, and the total count. A sector with 25% of the data takes a quarter of the circle, which is 90°.",
     terms: [
       ["sector", "In a circle graph, each sector stands for one category."],
       "central-angle",
@@ -89,7 +89,7 @@ export const dataDisplayStateMethods: Record<string, ProblemMethod> = {
       intervals: "interval",
     },
     intuition:
-      "A data display is a picture of data. Each kind is built for one job. Ask two things: are the data categories (groups such as kinds of pets) or numbers (such as heights)? And what do you want to see? It may be parts of a whole, a count for each category, change over time, the spread of many numbers, a link between two measures, or every value in a small set.",
+      "A data display is a picture of data. Each kind is built for one job. Ask two things: are the data categories (groups such as kinds of pets) or numbers (such as heights)? And what do you want to see? It may be parts of a whole, a count for each category, change over time, the spread of many numbers, a link between two measures, or every value in a small set. A circle graph is a circle cut into slices, one for each part of a whole. A bar graph is a graph of bars whose lengths compare categories. A line graph is a graph of points joined by lines to show change over time. A histogram is a bar graph that counts numbers in stretches of equal width. A scatterplot is a graph with one dot for each person or thing, placed by two measures. A dot plot is a number line with a dot for each value.",
     terms: [
       "circle-graph",
       "bar-graph",
@@ -151,7 +151,7 @@ export const dataDisplayStateLessons: Lesson[] = [
     id: "stem-leaf-construct",
     title: "Build a stem-and-leaf plot",
     summary:
-      "A stem-and-leaf plot is a way to list data in order. Each value is split in two. The leaf is its last digit, and the stem is the digit or digits in front. For 27, the stem is 2 and the leaf is 7. Every stem gets a row, even an empty one, and every value gets its own leaf. A key says how to read a row.",
+      "A stem-and-leaf plot is a way to list data in order. Each value is split in two. The leaf is the last digit, and the stem is the digit or digits in front. For 27, the stem is 2 and the leaf is 7. Every stem gets a row, even an empty one, and every value gets its own leaf. A key is a note that says how to read a row.",
     templateIds: ["stem-leaf-construct"],
     senses: {
       stem: "stem",
@@ -276,7 +276,7 @@ export const dataDisplayStateLessons: Lesson[] = [
     id: "circle-graph-read",
     title: "Read a circle graph",
     summary:
-      "A circle graph shows how one whole splits into parts. Each part is a slice of the circle, called a sector. The whole circle stands for 100% of the data, for 360 degrees and for the total count. So a sector can be described three ways: by its percent, by its angle in degrees, or by its count. Each one can be found from the others.",
+      "A circle graph shows how one whole splits into parts. Each part is a slice of the circle, called a sector. A full turn around a circle measures 360 degrees, the units for measuring turns. The whole circle stands for 100% of the data, for 360 degrees and for the total count. So a sector can be described three ways: by its percent, by its angle in degrees, or by its count. Each one can be found from the others.",
     templateIds: ["circle-graph-read"],
     senses: {
       whole: "whole",
@@ -287,7 +287,7 @@ export const dataDisplayStateLessons: Lesson[] = [
       change: "change",
       center: "center",
     },
-    noLink: ["edges"],
+    noLink: ["edges", "units"],
     objectives: [
       "Change a percent to a central angle and back.",
       "Find the count in a sector from its percent or angle and the total.",
@@ -299,7 +299,7 @@ export const dataDisplayStateLessons: Lesson[] = [
         title: "One whole, cut into sectors",
         paragraphs: [
           "A circle graph shows how a whole splits into parts. Each part is a sector, a slice of the circle. Each sector stands for one category, such as one kind of lunch.",
-          "A sector's central angle is the angle at the center of the circle between the sector's two straight edges. Angles are measured in degrees, written °. A full turn around the circle is 360°.",
+          "The center is the middle point of the circle. A sector's central angle is the angle at the center between the sector's two straight edges. Angles are measured in degrees, written °, and a full turn around the circle is 360°.",
           "The whole circle stands for all of the data: 100%, 360° and the total count. A sector with a quarter of the data takes a quarter of the circle. That is 25% and 90°.",
           "Problems here list each sector in a table. You can work from its percent, its angle or its count.",
         ],

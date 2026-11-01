@@ -35,7 +35,7 @@ export const likelihoodMethods: Record<string, ProblemMethod> = {
       faces: "face-solid",
     },
     intuition:
-      "An outcome is one thing that can happen, like one spin landing on one section. A success is an outcome that makes your event happen. The chance of the event is the successes out of all the outcomes, written as a fraction. This works when every outcome is equally likely, meaning each has the same chance. The chance is 0 when the event is impossible and 1 when it is certain. A number line from 0 to 1, cut into one equal space per outcome, has a mark for each possible chance.",
+      "An outcome is one thing that can happen, like one spin landing on one section. An event is the result you ask about, such as landing on red. A success is an outcome that makes the event happen. The chance of the event is the successes out of all the outcomes, written as a fraction. This works when every outcome is equally likely, meaning each has the same chance. Impossible means the event cannot happen, and its chance is 0. Certain means it must happen, and its chance is 1. A number line from 0 to 1, cut into one equal space per outcome, has a mark for each possible chance.",
     terms: ["probability", "equally-likely"],
     method: [
       "Count the successes and all the outcomes. The chance is successes over all outcomes, such as $\\frac{3}{8}$.",
@@ -82,7 +82,7 @@ export const likelihoodLessons = [
       id: "likelihood-words-lesson",
       title: "How likely is it?",
       summary:
-        "An outcome is one thing that can happen, like one marble coming out of a bag. An event is the result you ask about, such as picking a red marble. A success is an outcome that makes the event happen. Compare the number of successes with none, with half and with all of the outcomes. That tells you whether the event is impossible, unlikely, as likely as not, likely or certain.",
+        "An outcome is one thing that can happen, like one marble coming out of a bag. An event is the result you ask about, such as picking a red marble. A success is an outcome that makes the event happen. Compare the number of successes with none, with half and with all of the outcomes. Impossible means no outcome is a success, so the event cannot happen. Certain means every outcome is a success, so it must happen. In between, the event is unlikely, as likely as not, or likely.",
       templateIds: ["likelihood-in-words", "equal-chance-choice"],
       objectives: [
         "Count the successes and all the outcomes for a bag, a spinner or a number cube.",
@@ -140,7 +140,7 @@ export const likelihoodLessons = [
       id: "probability-line-lesson",
       title: "A chance on a number line",
       summary:
-        "An outcome is one thing that can happen, such as a spinner landing on one section. A success is an outcome that makes your event happen. The chance of the event is the number of successes out of all the outcomes, written as a fraction such as $\\frac{3}{8}$. The chance is always between 0 and 1, so it has a place on a number line from 0 to 1.",
+        "An outcome is one thing that can happen, such as a spinner landing on one section. An event is the result you ask about, such as landing on red. A success is an outcome that makes the event happen. The chance of the event is the number of successes out of all the outcomes, written as a fraction such as $\\frac{3}{8}$. The chance is always between 0 and 1, so it has a place on a number line from 0 to 1.",
       templateIds: ["probability-on-number-line"],
       objectives: [
         "Write a chance as the number of successes over the number of all outcomes.",
@@ -150,7 +150,7 @@ export const likelihoodLessons = [
       opening: [
         "A spinner has 8 equal sections, and 3 of them are red. Each section is an outcome, so there are 8 outcomes. The sections are the same size, so each outcome has the same chance. We say the outcomes are equally likely.",
         "Landing on red is the event. The 3 red sections are the successes. The chance of red is 3 out of 8, written $\\frac{3}{8}$. The top number counts the successes and the bottom number counts all the outcomes.",
-        "An impossible event (one that cannot happen) has 0 successes, so its chance is 0. A certain event (one that must happen) has every outcome as a success, so its chance is 1. Every other chance is a fraction between 0 and 1.",
+        "Impossible means an event cannot happen: it has 0 successes, so its chance is 0. Certain means an event must happen: every outcome is a success, so its chance is 1. Every other chance is a fraction between 0 and 1.",
         "Cut a number line from 0 to 1 into 8 equal spaces, one for each outcome. Each space is $\\frac{1}{8}$. So $\\frac{3}{8}$ is the mark 3 spaces from 0.",
       ],
       example: {

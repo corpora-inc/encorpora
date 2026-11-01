@@ -45,7 +45,7 @@ export const algebraStatisticsLessons: Lesson[] = [
           "The shape of a set of data is how its values are spread out. It is skewed right when the right whisker and the right part of the box are much longer. That long side, stretching toward higher values, is called a tail. It is skewed left when the long side is on the left. It is roughly symmetric when the two sides match.",
           "A long tail tends to pull the mean toward it. The standard deviation is a measure of how far values usually are from the mean. Extreme values can make it larger too.",
           "The interquartile range is $\\text{IQR} = Q_3 - Q_1$, the width of the box. It measures how spread out the middle half is. For skewed data or data with outliers, compare medians and IQRs. For roughly symmetric data without outliers, means and standard deviations work well too.",
-          "The range is maximum − minimum, so it uses only the two most extreme values. One long tail can give a group the larger range even when its middle half is narrower.",
+          "The range is the maximum minus the minimum, so it uses only the two most extreme values. One long tail can give a group the larger range even when its middle half is narrower.",
         ],
         illustration: "scene-skewed-box-plots",
       },
@@ -141,7 +141,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "A percent from a two-way table is a part divided by a whole that is not 0. The question's “of” names that whole. A conditional percent uses one row or one column as its whole.",
-          "Compare the same answer's conditional percents across groups whose totals are not 0. Different percents show an association in the data collected. Before claiming the same for a larger group, consider how big the difference is and how much samples vary.",
+          "Compare the same answer's conditional percents across groups whose totals are not 0. Different percents show an association in the data collected. Before claiming the same for a larger group, consider how big the difference is and how much results could vary by chance.",
         ],
       },
     ],
@@ -156,7 +156,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     id: "regression-interpretation",
     title: "Slope and intercept of a fitted line",
     summary:
-      "A fitted line is a straight line drawn through a scatter plot to predict one amount from another, such as test score from hours of practice. Its slope is how much the prediction changes for each 1 more unit of the input. Its intercept is the prediction when the input is 0. That prediction makes sense only when 0 is a sensible input inside the data.",
+      "A scatter plot is a graph with one dot for each person or thing, placed by two measurements. A fitted line is a straight line drawn through it to predict one amount from another, such as test score from hours of practice. Its slope is how much the prediction changes for each 1 more unit of the input. Its intercept is the prediction when the input is 0. That prediction makes sense only when 0 is a sensible input inside the data.",
     templateIds: ["regression-coefficient-meaning", "regression-line-predict"],
     senses: {
       change: "change",
@@ -178,7 +178,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         stage: "intuition",
         title: "The slope is a rate",
         paragraphs: [
-          "A scatter plot shows one dot per student: $x$ (the amount across) is hours of practice, and $y$ (the amount up) is test score. A fitted line follows the dots. The usual one is the least-squares line. It is the line that makes the dots' vertical gaps from it as small as possible overall. (It makes the sum of the squared gaps smallest.)",
+          "A scatter plot shows one dot per student: $x$ (the amount across) is hours of practice, and $y$ (the amount up) is test score. A fitted line follows the dots. The usual one is the least-squares line. It is the line that makes the dots' vertical gaps from it as small as possible overall.",
           "Software writes the line as $\\hat{y} = mx + b$. The hat on $\\hat{y}$ (read “$y$ hat”) means a predicted value, not a measured one. The number $m$ multiplying $x$ is the slope. The number $b$ added at the end is the $y$-intercept.",
           "For practice and score, the line $\\hat{y} = 4x + 42$ has slope 4. Each extra hour of practice goes with a predicted score 4 points higher. Its units are points per hour: units of $y$ for each unit of $x$.",
           "The slope describes a trend across students. It is not a promise for one student. Real scores scatter above and below the line.",
@@ -191,7 +191,7 @@ export const algebraStatisticsLessons: Lesson[] = [
           "To predict, put the input in place of $x$. A student who practices 7 hours has a predicted score of $\\hat{y} = 4(7) + 42 = 70$. Here $4(7)$ means 4 times 7.",
           "To find the input for a prediction, solve an equation. A predicted score of 62 needs $4x + 42 = 62$. Subtract 42 from both sides: $4x = 20$. Divide both sides by 4: $x = 5$ hours.",
           "The intercept, 42, is the prediction at $x = 0$. A student who practices 0 hours has a predicted score of 42. That makes sense here because the data include students who practiced 0 hours.",
-          "When $x = 0$ is far outside the data, the intercept has no real meaning. Predicting outside the data is called extrapolation. A line for adults' height in cm and mass in kg might be $\\hat{y} = 0.9x - 85$. But no adult is 0 cm tall, and a mass of −85 kg is impossible.",
+          "When $x = 0$ is far outside the data, the intercept has no real meaning. Predicting outside the data is called extrapolation. A line for adults' height in cm and mass in kg might be $\\hat{y} = 0.9x - 85$. But no adult is 0 cm tall, and a mass of −85 kg cannot happen.",
         ],
         illustration: "scene-predict-on-line",
       },
@@ -219,7 +219,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     ],
     pitfalls: [
       "The slope is a rate. The intercept is a single prediction, the one at $x = 0$.",
-      "Keep the variables straight: the slope is the change in $y$ for each 1 more of $x$.",
+      "Keep $x$ and $y$ straight: the slope is the change in $y$ for each 1 more of $x$.",
       "An intercept far outside the data has no meaning in the situation.",
     ],
     parentGuide:
@@ -339,7 +339,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         title: "Experiments: assign the treatment at random",
         paragraphs: [
           "In an experiment, the researcher decides who gets the treatment, the thing being tested. Random assignment means deciding by chance, such as a coin flip or a random list.",
-          "Random assignment makes the groups alike on average in everything else: age, effort, health, and even things no one thought to measure.",
+          "Random assignment makes the groups alike overall in everything else: age, effort, health, and even things no one thought to measure.",
           "Then a difference in results can support a claim that the treatment caused it. First consider whether chance alone could explain it, and whether the groups were treated alike apart from the treatment.",
           "Compare percents when the groups differ in size. For example, 90% of the app group passed, against 20% of the others.",
           "Without random assignment, people who chose the treatment may differ in other ways. Then the same difference shows only an association.",
@@ -353,7 +353,7 @@ export const algebraStatisticsLessons: Lesson[] = [
       steps: [
         "Comparing students who already use the app with those who do not is an observational study. The app users may study more in general, which is a lurking variable.",
         "Giving everyone the app and comparing before and after has no comparison group. Scores might rise anyway, for example from regular classes.",
-        "Randomly assign students either to use the app or to study as usual, then compare their scores. Random assignment balances other influences on average, though chance differences can remain. This design can show whether the app raises scores.",
+        "Randomly assign students either to use the app or to study as usual, then compare their scores. Random assignment balances other influences overall, though chance differences can remain. This design can show whether the app raises scores.",
       ],
       answer:
         "Randomly assign students to use the app or to study as usual, then compare their quiz scores.",
@@ -365,7 +365,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         paragraphs: [
           "An association in observed data can come from a lurking variable or from reverse causation. So it does not show a cause.",
           "A well-run experiment, with random assignment of the treatment and a comparison group, can support a claim of cause for the people in it.",
-          "Random assignment balances other influences on average, but chance differences are still possible. A difference alone does not prove a cause without considering chance and how the study was run.",
+          "Random assignment balances other influences overall, but chance differences are still possible. A difference alone is not enough to claim a cause without considering chance and how the study was run.",
         ],
       },
     ],
@@ -412,7 +412,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["side", "sides", "center"],
     intuition:
-      "A box plot's box runs from the lower quartile ($Q_1$) to the upper quartile ($Q_3$), the middles of the lower and upper halves. The line inside is the median, the middle value. The whiskers reach the least and greatest values. If one side is much longer, that long side is a tail. A tail to the right means skewed right, and a tail to the left means skewed left. The IQR, $Q_3 - Q_1$, is the box's width.",
+      "A box plot's box runs from the lower quartile ($Q_1$) to the upper quartile ($Q_3$), the middles of the lower and upper halves. The line inside is the median, the middle value. The whiskers reach the least and greatest values. If one side is much longer, that long side is a tail. A tail to the right means skewed right, and a tail to the left means skewed left. The IQR, $Q_3 - Q_1$, is the box's width. The range is the greatest value minus the least value. The mean is the total divided by the number of values.",
     terms: [
       "interquartile-range",
       [
@@ -433,7 +433,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     senses: { whole: "whole", part: "part" },
     noLink: ["edges"],
     intuition:
-      "A two-way table counts people by two questions at once, with totals at the edges. A percent is a part divided by a whole, times 100. A joint or marginal percent uses everyone surveyed as the whole. A conditional percent uses only one row or column: the group named after “of”.",
+      "A two-way table counts people by two questions at once, with totals at the edges. A percent is a part divided by a whole, times 100. A joint percent is one cell divided by everyone surveyed. A marginal percent is a row or column total divided by everyone surveyed. A conditional percent is a count divided by the total of one row or one column: the group named after “of”.",
     terms: [
       "joint-relative-frequency",
       "marginal-relative-frequency",
@@ -456,7 +456,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["mean"],
     intuition:
-      "A conditional percent uses one row or one column of a two-way table as its whole: the group named after “of”. Two questions are associated when the same answer is much more common in one group than in another. So compare the percent giving that answer within each group.",
+      "A conditional percent is a count divided by the total of one row or one column of a two-way table: the group named after “of”. Two questions are associated when the same answer is much more common in one group than in another. So compare the percent giving that answer within each group.",
     terms: ["conditional-relative-frequency"],
     method: [
       "For a percent, find the group named after “of”. Its row or column total is what you divide by.",
@@ -479,7 +479,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["mean"],
     intuition:
-      "A least-squares line is the straight line that best follows the dots of a scatter plot. It is written $\\hat{y} = mx + b$, and $\\hat{y}$ (read “$y$ hat”) means a predicted value. The slope $m$, the number multiplying $x$, is how much the prediction changes for each 1 more unit of $x$. The $y$-intercept $b$ is the prediction when $x = 0$. It means something only when $x = 0$ is a sensible value inside the data.",
+      "A scatter plot is a graph with one dot for each person or thing. A least-squares line is the straight line that best follows those dots. It is written $\\hat{y} = mx + b$, and $\\hat{y}$ (read “$y$ hat”) means a predicted value. The slope is the number multiplying $x$, written $m$. It is how much the prediction changes for each 1 more unit of $x$. The $y$-intercept is the number added at the end, written $b$. It is the prediction when $x = 0$. It means something only when $x = 0$ is a sensible value inside the data.",
     terms: ["slope", "y-intercept"],
     method: [
       "The slope is the number multiplying $x$. Say it as: each extra unit of $x$ goes with a predicted $y$ that much higher, or lower if negative.",
@@ -497,7 +497,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
       difference: "difference-subtract",
     },
     intuition:
-      "A least-squares line is the straight line that best follows the dots of a scatter plot. It is written $\\hat{y} = mx + b$, where $\\hat{y}$ (read “$y$ hat”) is the predicted value. To predict, put the input in place of $x$. Something like $-1.5(9)$ means $-1.5$ times 9. Multiply first, then add $b$.",
+      "A scatter plot is a graph with one dot for each person or thing. A least-squares line is the straight line that best follows those dots. It is written $\\hat{y} = mx + b$, where $\\hat{y}$ (read “$y$ hat”) is the predicted value. The slope is the number multiplying $x$, written $m$. To predict, put the input in place of $x$. Something like $-1.5(9)$ means $-1.5$ times 9. Multiply first, then add $b$.",
     terms: ["slope", "y-intercept"],
     method: [
       "To predict, put the input in place of $x$ and work it out.",
@@ -510,7 +510,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
   "residual-value": {
     goal: "Find a residual, or a measured value from its residual.",
     intuition:
-      "A least-squares line is written $\\hat{y} = mx + b$, and $\\hat{y}$ (read “$y$ hat”) is the value it predicts. The observed value is the one actually measured. A residual is observed minus predicted: how far the point is above the line (positive) or below it (negative).",
+      "A least-squares line is written $\\hat{y} = mx + b$, and $\\hat{y}$ (read “$y$ hat”) is the value it predicts. The observed value is the one actually measured. A residual is the observed value minus the predicted value: how far the point is above the line (positive) or below it (negative).",
     terms: [
       [
         "residual",
@@ -529,7 +529,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     senses: { model: "model" },
     noLink: ["jump", "rules"],
     intuition:
-      "The correlation coefficient $r$ is a number from −1 to 1 that tells how closely the dots of a scatter plot follow a straight line. Its sign gives the direction: positive when the dots rise from left to right, negative when they fall. The closer $r$ is to 1 or −1, the tighter the dots hug a line. A residual is a point's measured value minus the line's prediction, and a residual plot shows those gaps.",
+      "A scatter plot is a graph with one dot for each person or thing. The correlation coefficient $r$ is a number from −1 to 1 that tells how closely those dots follow a straight line. Its sign gives the direction: positive when the dots rise from left to right, negative when they fall. The closer $r$ is to 1 or −1, the tighter the dots hug a line. A residual is a point's measured value minus the line's prediction. A residual plot is a graph of those gaps.",
     terms: ["correlation-coefficient"],
     method: [
       "Direction: dots rising from left to right give a positive $r$. Falling dots give a negative $r$.",
@@ -568,7 +568,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["balances"],
     intuition:
-      "In an experiment, the researcher decides who gets the treatment, the thing being tested. Random assignment decides it by chance, such as a coin flip. That makes the groups alike on average in everything else, so a difference in results can show a cause. In an observational study, people choose for themselves, so a difference shows only association.",
+      "In an experiment, the researcher decides who gets the treatment, the thing being tested. Random assignment decides it by chance, such as a coin flip. That makes the groups alike overall in everything else, so a difference in results can show a cause. An observational study is one where researchers only record what people already do. There people choose for themselves, so a difference shows only association.",
     terms: ["experiment", "observational-study"],
     method: [
       "Find who decided which people got the treatment: the researcher at random, or the people themselves.",

@@ -20,7 +20,7 @@ export const probabilityRulesLessons: Lesson[] = [
       sample: "sample-space",
       "more than": "more-than",
     },
-    noLink: ["rule", "face", "part"],
+    noLink: ["rule", "face", "part", "prime"],
     objectives: [
       "Read “or”, “and” and “not” about events, in words or symbols, as regions of a Venn diagram.",
       "Find the probability of “$A$ or $B$” with the addition rule, and solve the rule for the overlap.",
@@ -41,7 +41,7 @@ export const probabilityRulesLessons: Lesson[] = [
         title: "Or, and, not",
         paragraphs: [
           "“$A$ or $B$” holds every outcome in $A$, in $B$, or in both. It is written $A \\cup B$ and read “$A$ union $B$”. Here that is $12 + 6 + 9 = 27$ students.",
-          "“$A$ and $B$” holds only the outcomes in both, the overlap. It is written $A \\cap B$ and read “$A$ intersect $B$”. Here that is 6 students.",
+          "“$A$ and $B$” holds only the outcomes in both, the overlap. This overlap is called the intersection. It is written $A \\cap B$ and read “$A$ intersect $B$”. Here that is 6 students.",
           "“Not $A$” holds every outcome outside $A$. It is called the complement of $A$, written $A'$ and read “$A$ prime”. Here it is the music-only region and the outside: $9 + 13 = 22$ students, which is $40 - 18$.",
           "“Neither” means in no circle at all. It is the complement of “$A$ or $B$”, written $(A \\cup B)'$. It is the same set as “not $A$ and not $B$”, written $A' \\cap B'$.",
         ],
@@ -90,7 +90,7 @@ export const probabilityRulesLessons: Lesson[] = [
     id: "conditional-and-multiplication-rule",
     title: "Conditional probability and the multiplication rule",
     summary:
-      "An event is a group of possible outcomes, and its probability says how likely it is, from 0 to 1. Knowing that one event happened leaves fewer possible outcomes. So find the next chance inside that smaller group. For two events in a row, multiply the first chance by the second chance found that way.",
+      "An event is a group of possible outcomes, and its probability says how likely it is, from 0 to 1. Knowing that one event happened leaves fewer possible outcomes. So find the next chance inside that smaller group. For two events in a row, multiply the first chance by the second chance found that way. Multiplying this way is called the multiplication rule.",
     templateIds: [
       "conditional-probability-value",
       "multiplication-rule-probability",
@@ -210,8 +210,9 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
       complement: "complement-probability",
       sort: "sort",
     },
+    noLink: ["prime"],
     intuition:
-      "An event is a group of outcomes, such as the customers who bought coffee. A Venn diagram draws two events as overlapping circles. The union $A \\cup B$ means “$A$ or $B$”: everything in either circle. The intersection $A \\cap B$ means “$A$ and $B$”: only the overlap. The complement $A'$ (read “$A$ prime”) means “not $A$”: everything outside circle $A$. A probability is a count divided by the total.",
+      "An event is a group of outcomes, such as the customers who bought coffee. A Venn diagram draws two events as overlapping circles. The union $A \\cup B$ means “$A$ or $B$”: everything in either circle. The intersection $A \\cap B$ means “$A$ and $B$”: only the overlap. The complement is all of the outcomes outside circle $A$, written $A'$ and read “$A$ prime”. It means “not $A$”. A probability is a count divided by the total.",
     terms: terms.sets,
     method: [
       "Translate the symbols into words: $\\cup$ is or, $\\cap$ is and, and $'$ is not.",
@@ -230,7 +231,7 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["rule", "face"],
     intuition:
-      "$P(A)$ means the probability of event $A$, a number from 0 to 1. “$A$ or $B$” includes the outcomes in $A$, in $B$, or in both. Adding $P(A)$ and $P(B)$ counts the overlap, “$A$ and $B$”, twice. So subtract it once: $P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$. This is called the addition rule.",
+      "An event is a group of outcomes you ask about. $P(A)$ means the probability of event $A$, a number from 0 to 1. “$A$ or $B$” includes the outcomes in $A$, in $B$, or in both. Adding $P(A)$ and $P(B)$ counts the overlap, “$A$ and $B$”, twice. So subtract it once: $P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$. This is called the addition rule.",
     terms: terms.addition,
     method: [
       "Write the addition rule: $P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$.",
@@ -253,7 +254,7 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
       "$P(A \\mid B)$ is read “the probability of $A$ given $B$”. The bar means “given”. It is the chance of $A$ when we already know $B$ happened. Knowing $B$ leaves only the outcomes in $B$. So count the outcomes in $B$, then count how many of those are also in $A$, and divide.",
     terms: terms.conditional,
     method: [
-      "Find the given event $B$: a row, a column, a circle or a list of outcomes.",
+      "The given event is the group of outcomes you know happened, here $B$. Find it: a row, a column, a circle or a list of outcomes.",
       "Count the outcomes in $B$. Then count the outcomes in $B$ that are also in $A$.",
       "Divide the second count by the first. With probabilities, $P(A \\mid B) = P(A \\text{ and } B) \\div P(B)$.",
     ],
@@ -270,7 +271,7 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["rule"],
     intuition:
-      "For two events in a row to both happen, the first must happen, and then the second must happen given the first. So multiply: the first event's probability times the second's probability once the first has happened. A tree diagram shows each path as branches, and a path's probability is the product of its branches. When an event can happen along several paths, add those paths.",
+      "An event is a result you ask about. For two events in a row to both happen, the first must happen, and then the second must happen given the first. So multiply: the first event's probability times the second's probability once the first has happened. A tree diagram shows each path as branches, and a path's probability is the product of its branches. When an event can happen along several paths, add those paths.",
     terms: terms.multiplication,
     method: [
       "Find the probability of the first event.",

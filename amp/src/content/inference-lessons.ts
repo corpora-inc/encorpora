@@ -48,7 +48,7 @@ export const inferenceLessons: Lesson[] = [
           "A lake has 1,200 fish. In a random sample of 40 of them, 6 are trout. So $\\frac{6}{40}$ of the sample are trout.",
           "A random sample tends to look like the population. So expect about $\\frac{6}{40}$ of all the fish to be trout: $\\frac{6}{40} \\times 1200 = 180$ trout.",
           "Ten random samples of 20 students gave the counts in this dot plot, one dot per sample. The counts vary from 6 to 10. So one sample alone could estimate anywhere from 240 to 400 of 800 students.",
-          "The mean of the ten counts, their total divided by 10, is 8 out of 20. That gives $\\frac{8}{20} \\times 800 = 320$ students. The mean of many samples is a steadier estimate than any one sample.",
+          "The mean is the total divided by the number of values. For the ten counts, the mean is 8 out of 20. That gives $\\frac{8}{20} \\times 800 = 320$ students. The mean of many samples is a steadier estimate than any one sample.",
         ],
         illustration: "data-sample-counts",
       },
@@ -87,7 +87,7 @@ export const inferenceLessons: Lesson[] = [
     id: "compare-distributions",
     title: "Comparing two groups",
     summary:
-      "To compare two groups, compare a typical value and a spread. The mean is the total divided by the number of values. The mean absolute deviation (MAD) is the average distance of the values from their mean. Measure the gap between two means in MADs. On box plots, compare the middle values and the box widths, one at a time.",
+      "To compare two groups, compare a typical value and a spread. The mean is the total divided by the number of values. The mean absolute deviation is the average distance of the values from their mean, written MAD. Measure the gap between two means in MADs. On box plots, compare the middle values and the box widths, one at a time.",
     templateIds: [
       "means-in-mads",
       "double-box-compare",
@@ -176,7 +176,7 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
       part: "part",
     },
     intuition:
-      "The population is the whole group a question is about. A sample is the part of it you actually ask. A sample is representative when it looks like the whole population. Choosing at random from the whole population gives every member the same chance. A method that favors one group, such as volunteers, gives a biased sample.",
+      "The population is the whole group a question is about. A sample is the part of it you actually ask. A sample is representative when it looks like the whole population. Choosing at random from the whole population gives every member the same chance. A sample from a method that favors one group, such as volunteers, is called a biased sample.",
     terms: ["random-sample", "biased-sample"],
     method: [
       "Name the population the question is about.",
@@ -194,7 +194,7 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
       part: "part",
     },
     intuition:
-      "The population is the whole group, such as all 4,000 bulbs. A sample is the part you check, such as 80 bulbs. A random sample, chosen by chance from the whole group, tends to look like the population. So the fraction in the sample estimates the fraction in the whole group.",
+      "The population is the whole group, such as all 4,000 bulbs. A sample is the part you check, such as 80 bulbs. A random sample is one chosen by chance from the whole group. It tends to look like the population. So the fraction in the sample estimates the fraction in the whole group.",
     terms: ["population", "sample"],
     method: [
       "Write the sample's fraction: count ÷ sample size.",
@@ -213,7 +213,7 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
       part: "part",
     },
     intuition:
-      "The population is the whole group. A sample is a part of it that is checked. Here many random samples were taken, and each dot shows one sample's count. Samples vary, so one sample alone may be far off. The mean of the counts, their total divided by how many there are, gives a steadier estimate.",
+      "The population is the whole group. A sample is a part of it that is checked. A random sample is one chosen by chance. Here many random samples were taken, and each dot shows one sample's count. Samples vary, so one sample alone may be far off. The mean is the total of the counts divided by how many there are. It gives a steadier estimate.",
     terms: ["population", "sample", "mean-average"],
     method: [
       "Find the mean of the sample counts: add them and divide by the number of samples.",
@@ -226,7 +226,7 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
     senses: { mean: "mean-average", difference: "difference-subtract" },
     noLink: ["centers"],
     intuition:
-      "The mean is the total divided by the number of values. The mean absolute deviation (MAD) is the average distance of the values from their mean. When two groups have the same MAD, divide the gap between their means by it. The answer says how many MADs apart the groups are. More MADs apart means less overlap.",
+      "The mean is the total divided by the number of values. The mean absolute deviation is the average distance of the values from their mean, written MAD. When two groups have the same MAD, divide the gap between their means by it. The answer says how many MADs apart the groups are. More MADs apart means less overlap.",
     terms: ["mean-average", "mean-absolute-deviation"],
     method: [
       "Find the mean of each group: total ÷ number of values.",
@@ -240,7 +240,7 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
     senses: { scale: "scale-axis" },
     noLink: ["center", "centers"],
     intuition:
-      "A box plot's median, the line inside the box, is its middle value. The box runs from the lower quartile to the upper quartile, so it holds the middle half of the data. The box's length is the interquartile range (IQR). Compare medians to compare typical values. Compare box lengths to compare spreads.",
+      "A box plot's median, the line inside the box, is its middle value. The lower quartile is the middle of the lower half of the data, and the upper quartile is the middle of the upper half. The box runs between them, so it holds the middle half of the data. The box's length is the interquartile range (IQR). Compare medians to compare typical values. Compare box lengths to compare spreads.",
     terms: ["median", "interquartile-range"],
     method: [
       "Read the median line and the two box ends of each plot.",
@@ -253,7 +253,7 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
     goal: "Choose the true comparison of two box plots.",
     noLink: ["center"],
     intuition:
-      "A box plot's median, the line inside the box, is its middle value. The box's length is the interquartile range (IQR), the spread of the middle half of the data. One group can have a higher median and still have a shorter box.",
+      "A box plot is a graph of data drawn around a box. The line inside the box is the median, the middle value. The lower quartile is the middle of the lower half of the data, and the upper quartile is the middle of the upper half. The box runs between them. The box's length is the interquartile range (IQR), the spread of the middle half of the data. One group can have a higher median and still have a shorter box.",
     terms: ["median", "interquartile-range"],
     method: [
       "Compare the median lines. Which is farther right?",

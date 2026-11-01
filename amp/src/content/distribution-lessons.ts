@@ -143,7 +143,7 @@ export const distributionLessons: Lesson[] = [
     id: "distribution-plots",
     title: "Histograms and box plots",
     summary:
-      "A histogram is a bar graph for number data. Each bar covers a stretch of numbers, called an interval, and its height counts the values in that stretch. A box plot draws five numbers: the least value, the greatest value, the median (middle value) and the middle of each half, called the quartiles. These five numbers split the data into four parts of about equal size.",
+      "A histogram is a bar graph for number data. Each bar covers a stretch of numbers, called an interval. How tall the bar is shows how many values fall in that stretch. A box plot draws five numbers: the least value, the greatest value, the median (middle value) and the middle of each half, called the quartiles. These five numbers split the data into four parts of about equal size.",
     templateIds: ["histogram-read", "box-plot-read"],
     senses: {
       interval: "interval",
@@ -163,7 +163,7 @@ export const distributionLessons: Lesson[] = [
         stage: "intuition",
         title: "Choose what the picture should show",
         paragraphs: [
-          "An interval is a stretch of numbers, such as all the numbers from 20 up to 30. A histogram shows how many values fall into each interval. The height of a bar is that count.",
+          "An interval is a stretch of numbers, such as all the numbers from 20 up to 30. A histogram shows how many values fall into each interval. How tall a bar is shows that count.",
           "A box plot shows five numbers. The least value is called the minimum, and the greatest is the maximum. The median is the middle value once the data are in order.",
           "The median splits the data into a lower half and an upper half. The middle of the lower half is the lower quartile. The middle of the upper half is the upper quartile.",
           "The range is the maximum minus the minimum. The interquartile range is the upper quartile minus the lower quartile. It is the width of the middle half of the data.",
@@ -217,7 +217,7 @@ export const distributionLessons: Lesson[] = [
     id: "variability",
     title: "Measuring spread",
     summary:
-      "Spread tells how far the data values are from each other. Two groups can have the same mean (fair share) but very different spreads. One measure of spread is the mean absolute deviation: the average distance of the values from the mean. Another is the interquartile range: the width of the middle half of the data.",
+      "Spread tells how far the data values are from each other. Two groups can have the same mean (the fair share) but very different spreads. One measure of spread is the mean absolute deviation: the average distance of the values from the mean. Another is the interquartile range: the width of the middle half of the data.",
     templateIds: ["dot-plot-mad", "dot-plot-iqr", "typical-value-choice"],
     senses: {
       mean: "mean-average",
@@ -257,7 +257,7 @@ export const distributionLessons: Lesson[] = [
         paragraphs: [
           "Put the values in order: 1, 2, 2, 3, 7. The median, the middle value, is 2. Leave it out to make two halves.",
           "The lower half is 1, 2, and its middle is $(1 + 2) \\div 2 = 1.5$. That is the lower quartile, written Q1. The upper half is 3, 7, and its middle is $(3 + 7) \\div 2 = 5$. That is the upper quartile, written Q3.",
-          "The interquartile range, or IQR, is $Q3 - Q1 = 5 - 1.5 = 3.5$. It is the width of the middle half of the data.",
+          "The interquartile range, or IQR, is $Q3 - Q1 = 5 - 1.5 = 3.5$. It is the width of the middle half of the data. The range is the greatest value minus the least value, here $7 - 1 = 6$.",
           "An outlier is a value far from the rest. Here one student read 12 books and the others read 1 to 4. The mean is $30 \\div 8 = 3.75$, greater than 7 of the 8 values. The median, 3, stays among the typical values. So the median describes a typical student better.",
         ],
         illustration: "data-dot-plot-outlier",
@@ -268,7 +268,7 @@ export const distributionLessons: Lesson[] = [
         stage: "formal",
         title: "Distances from the center",
         paragraphs: [
-          "For a data set with at least one value, the mean absolute deviation is the mean of the distances from the mean. The interquartile range is the upper quartile minus the lower quartile, using a stated rule for the quartiles.",
+          "For a data set with one or more values, the mean absolute deviation is the mean of the distances from the mean. The interquartile range is the upper quartile minus the lower quartile, using a stated rule for the quartiles.",
           "Both measure spread. The MAD uses every value. The IQR uses only the two ends of the middle half.",
         ],
       },
@@ -296,7 +296,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     goal: "Choose the question whose answers would vary across a group.",
     noLink: ["multiple", "center"],
     intuition:
-      "A statistical question is one you answer by collecting data, facts or numbers, that you expect to vary, meaning they differ from one member of a group to the next. “How tall is this sunflower?” has one answer. “How tall are the sunflowers in our garden?” collects many heights that differ.",
+      "A statistical question is one you answer by collecting data, facts or numbers, that you expect to vary, meaning they differ from one member of a group to the next. “How tall is this sunflower?” has one answer. “How tall are the sunflowers in our garden?” collects many measurements that differ.",
     terms: ["statistical-question"],
     method: [
       "Imagine collecting the answer to each question.",
@@ -309,7 +309,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     goal: "Find the exact mean of the values in a dot plot.",
     senses: { mean: "mean-average", balance: "balance-scale" },
     intuition:
-      "A dot plot puts one dot above a number line for each value. Three dots above 7 mean the value 7 appears three times. The mean is the fair share: add all the values to get the total, then divide by how many values there are.",
+      "A dot plot puts one dot above a number line for each value. Three dots above 7 show that the value 7 appears three times. The mean is the fair share: add all the values to get the total, then divide by how many values there are.",
     terms: ["mean-average"],
     method: [
       "Multiply each value by the number of dots above it. Add the results to get the total.",
@@ -348,7 +348,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Find the bars the question covers. “At least 30” starts at the bar beginning at 30. “Fewer than 30” stops at the bar ending at 30.",
-      "Read each bar's height on the count scale, then add the heights.",
+      "Read each bar's count from the numbers beside the graph, then add the counts.",
     ],
     watch:
       "A value exactly where two bars meet belongs to the bar on its right.",
@@ -370,7 +370,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     terms: ["quartile", "interquartile-range"],
     method: [
       "Read the five numbers: the whisker ends, the box ends and the median line.",
-      "For the range, subtract minimum from maximum. For the interquartile range, subtract the lower quartile from the upper quartile.",
+      "The range is the maximum minus the minimum. The interquartile range is the upper quartile minus the lower quartile.",
       "For a share of the data, count parts: each of the four parts holds about 25%.",
     ],
     watch: "A long part of the plot means spread-out values, not more values.",
@@ -396,7 +396,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     goal: "Find the interquartile range of dot-plot data.",
     senses: { average: "mean-average" },
     intuition:
-      "Put the values in order. The median, the middle value, splits them into a lower half and an upper half. The middle of the lower half is the lower quartile, Q1. The middle of the upper half is the upper quartile, Q3. The interquartile range is Q3 minus Q1, the width of the middle half of the data.",
+      "Put the values in order. The median, the middle value, splits them into a lower half and an upper half. The middle of the lower half is the lower quartile, Q1. The middle of the upper half is the upper quartile, Q3. The interquartile range is the upper quartile minus the lower quartile: Q3 minus Q1. It is the width of the middle half of the data. A box plot is a graph that draws this middle half as a box.",
     terms: ["quartile", "interquartile-range"],
     method: [
       "Read the values in order, left to right. A stack of dots is several values.",

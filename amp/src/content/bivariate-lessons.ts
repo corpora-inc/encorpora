@@ -145,7 +145,7 @@ export const bivariateLessons: Lesson[] = [
           "Every row and column of a two-way table adds to its total. So a row or column with only one blank tells you that blank.",
           "A percent within a row compares a count with the row total. It describes that group alone.",
           "For rows whose totals are not 0, compare the share giving the same answer in each row. Different shares show an association in this table. Equal shares show none.",
-          "A sample is the part of a larger group that was actually asked. A difference in a sample does not prove the same difference in the whole group, because samples vary.",
+          "A sample is the part of a larger group that was actually asked. A difference in a sample does not settle that the whole group differs the same way, because samples vary.",
         ],
       },
     ],
@@ -187,8 +187,7 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
       "Count the steps in $x$ from a marked point to the new $x$.",
       "Add slope × steps to that point's $y$-value.",
     ],
-    watch:
-      "Moving left means negative steps, so the change has the opposite sign.",
+    watch: "Moving left counts as negative steps: −1, −2 and so on.",
   },
   "trend-slope-meaning": {
     goal: "Explain what a trend line's slope means in the situation.",
@@ -199,7 +198,7 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
       degree: "degree-temperature",
     },
     intuition:
-      "A trend line is a straight line that follows the dots of a scatter plot. Its slope is how much $y$ (the amount up) changes for each 1 more of $x$ (the amount across). Find it as the change in $y$ divided by the change in $x$ between two points on the line. In words, the slope is a rate, such as 2 more cups sold for each extra degree.",
+      "A trend line is a straight line that follows the dots of a scatter plot. Its slope is how much $y$ (the amount up) changes for each 1 more of $x$ (the amount across). Find it as the change in $y$ divided by the change in $x$ between two points on the line. In words, the slope is a rate, such as 4 more points for each extra hour of study.",
     terms: ["slope"],
     method: [
       "Find the slope from the two marked points: change in $y$ ÷ change in $x$.",
@@ -244,7 +243,7 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
       samples: "sample",
     },
     intuition:
-      "A categorical variable is a question whose answers are groups, such as dog owner or not. Two of them are associated when one answer is more common in one group than another. Compare the same answer within each group as a percent: divide the count by the group's total and multiply by 100. If 60% of people without dogs and 24% of dog owners walk daily, the two are associated in this table. That does not show what caused it.",
+      "A categorical variable is a question whose answers are groups, such as dog owner or not. An association means one answer is more common in one group than in another. Compare the same answer within each group as a percent: divide the count by the group's total and multiply by 100. If 60% of people without dogs and 24% of dog owners walk daily, the two are associated in this table. That does not show what caused it.",
     terms: ["two-way-table", "percent"],
     method: [
       "Find the “Yes” percent within each row.",
@@ -266,5 +265,5 @@ export const bivariatePrinciples: Record<string, string> = {
   "two-way-row-percent":
     "A percent within a row compares a count with the row total, so it describes that group alone.",
   "two-way-association-choice":
-    "For rows whose totals are not 0, different shares giving the same answer in each row show an association in the table, and equal shares show none. A claim about a larger group must allow for samples varying.",
+    "For rows whose totals are not 0, different shares giving the same answer in each row show an association in the table, and equal shares show none. A claim about a larger group must allow for chance.",
 };
