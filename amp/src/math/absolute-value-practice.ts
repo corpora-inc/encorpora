@@ -288,7 +288,9 @@ function generateCase(
           .filter((v) => v.label !== correct)
           .map((v) => [
             v.id,
-            "This set misses a solution or includes a wrong one. Get the bars alone first: a negative value means no solutions, 0 means one, and a positive value means two, one for each sign.",
+            kind === "constant-interior" || kind === "zero-factor"
+              ? "Here the left side is the same number for every $x$. Compare that number with the right side: if they are equal every $x$ works, otherwise none does."
+              : "This set misses a solution or includes a wrong one. Get the bars alone first: a negative value means no solutions, 0 means one, and a positive value means two, one for each sign.",
           ]),
       ),
     },

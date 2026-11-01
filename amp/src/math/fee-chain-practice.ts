@@ -352,7 +352,7 @@ export const feeRule = chainFamily({
           `The first ${h0} hours are covered by the flat fee, so the extra hours number $h-${h0}$.`,
           `The extra hours cost ${rate} dollars each: $${rate}(h-${h0})$.`,
           `Add the flat fee, paid once: $C=${F}+${rate}(h-${h0})$${a["rule-form"] === "expanded" ? `, which expands to $C=${rate}h${signed(F - rate * h0)}$` : ""}.`,
-          `The rule only makes sense for bookings longer than ${h0} hours, where $h-${h0}$ is not negative.`,
+          `The rule is for bookings of at least ${h0} hours, where $h-${h0}$ is not negative.`,
         ],
       });
     const rateFound = rate;
