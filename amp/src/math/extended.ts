@@ -361,9 +361,15 @@ export function generateExtendedProblem(
           ? `Both equations have $${b}y$. Subtract one equation from the other to remove $y$.`
           : `To remove $y$, make its coefficients match: multiply the first equation by ${d} and the second by ${b}, then subtract.`;
       explanation = [
-        `Multiply the first equation by ${d} and the second by ${b}.`,
-        `Subtract: (${a * d} − ${b * c})x = ${e * d} − (${b * f}).`,
-        `${a * d - b * c}x = ${e * d - b * f}, so x = ${answer}.`,
+        `A system is two equations that share the same $x$ and $y$. The solution is the pair that makes both true.`,
+        `To find $x$, remove $y$ first. This method is called elimination: make the $y$ terms equal, then subtract one equation from the other.`,
+        b === d
+          ? `Both equations already have $${b === 1 ? "" : b}y$, so no multiplying is needed.`
+          : `Multiply every term of the first equation by ${d}: ${a * d}x + ${b * d}y = ${e * d}. Multiply every term of the second by ${b}: ${b * c}x + ${b * d}y = ${b * f}.`,
+        `Now both have $${b * d === 1 ? "" : b * d}y$. Subtract the second equation from the first, left side from left side and right from right. The $y$ terms cancel.`,
+        `That leaves (${a * d} − ${b * c})x = ${e * d} − (${b * f}), so ${a * d - b * c}x = ${e * d - b * f}.`,
+        `Divide both sides by ${a * d - b * c}: x = ${answer}.`,
+        `The solution has x = ${answer}.`,
       ];
       break;
     }
@@ -402,8 +408,12 @@ export function generateExtendedProblem(
       answer = `${a * x * x + b * x + c}`;
       hint = `Replace every $x$ with (${x}): f(${x}) = ${a}(${x})² + ${b}(${x}) + ${c}. Square first${x < 0 ? `; (${x})² is positive` : ""}.`;
       explanation = [
+        `$f(${x})$, read "$f$ of ${x}", is the output of the rule when the input $x$ is ${x}. So replace every $x$ with ${x}.`,
         `f(${x}) = ${a} × (${x})² + ${b} × (${x}) + ${c}.`,
-        `${a * x * x} + (${b * x}) + ${c} = ${answer}.`,
+        `Follow the order of operations: powers first. (${x})² = ${x * x}${x < 0 ? ", because a negative times a negative is positive" : ""}.`,
+        `Then multiply: ${a} × ${x * x} = ${a * x * x} and ${b} × (${x}) = ${b * x}.`,
+        `Then add: ${a * x * x} + (${b * x}) + ${c} = ${answer}.`,
+        `So f(${x}) = ${answer}.`,
       ];
       break;
     }

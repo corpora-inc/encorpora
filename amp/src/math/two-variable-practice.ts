@@ -230,10 +230,16 @@ function systemModelValue(r: Random): Case {
     prompt: story,
     answer: rat(ans),
     explanation: [
-      `Let $a$ be the number of ${names[0]} and $b$ the number of ${names[1]}. Counting gives $a + b = ${total}$; the ${what} give $${pa}a + ${pb}b = ${value}$.`,
-      `Substitute b = ${total} − a into the second equation: ${pa}a + ${pb}(${total} − a) = ${value}, so ${pa - pb}a + ${pb * total} = ${value} and ${pa - pb}a = ${value - pb * total}.`,
-      `a = ${quotient(value - pb * total, pa - pb)}, and b = ${total} − ${a} = ${b}.`,
-      `Check: ${pa} × ${a} + ${pb} × ${b} = ${value}. So there are ${ans} ${names[askFirst ? 0 : 1]}.`,
+      `There are two unknown counts, so use two variables, letters that stand for unknown numbers. Let $a$ be the number of ${names[0]} and $b$ the number of ${names[1]}.`,
+      `The story gives two facts, so write two equations. Counting items gives $a + b = ${total}$.`,
+      `Each of the $a$ items is worth ${pa} and each of the $b$ items is worth ${pb}. The ${what} give $${pa}a + ${pb}b = ${value}$.`,
+      `From the first equation, b = ${total} − a. Substitute, meaning replace $b$ with ${total} − a in the second equation: ${pa}a + ${pb}(${total} − a) = ${value}.`,
+      `Multiply ${pb} by each term in the brackets: ${pa}a + ${pb * total} − ${pb}a = ${value}. Combine the $a$ terms: ${pa - pb}a + ${pb * total} = ${value}.`,
+      `Subtract ${pb * total} from both sides: ${pa - pb}a = ${value - pb * total}. Divide by ${pa - pb}: a = ${quotient(value - pb * total, pa - pb)}.`,
+      `Then b = ${total} − ${a} = ${b}. Check: ${pa} × ${a} + ${pb} × ${b} = ${value}, the total ${what}.`,
+      kind === "test"
+        ? `There are ${ans} questions worth ${askFirst ? pa : pb} points.`
+        : `There are ${ans} ${names[askFirst ? 0 : 1]}.`,
     ],
     hint: `Use one equation for the count and one for the ${what}: a + b = ${total} and ${pa}a + ${pb}b = ${value}. Replace $b$ with ${total} − a.`,
     tags: [kind, askFirst ? "first" : "second"],
@@ -309,9 +315,12 @@ function constraintFeasible(r: Random): Case {
       ],
       scene,
       explanation: [
-        `A combination works when it makes both inequalities true: it lies in the shaded region or on its solid edges.`,
-        `For ${pair(...right)}: ${right[0]} + ${right[1]} = ${right[0] + right[1]} ≤ ${cap}, and ${p1} × ${right[0]} + ${p2} × ${right[1]} = ${p1 * right[0] + p2 * right[1]} ≥ ${goal}.`,
+        `Each inequality is a condition, or constraint, the plan must meet. The sign ≤ means "at most" and ≥ means "at least".`,
+        `x + y ≤ ${cap} says the total ${kind === "bakery" ? "boxes" : "hours"} is at most ${cap}. ${p1}x + ${p2}y ≥ ${goal} says the money is at least ${goal} dollars.`,
+        `A pair $(x, y)$ works only when it makes both inequalities true. On the graph, it lies in the shaded region or on its solid edges.`,
+        `Test ${pair(...right)}: ${right[0]} + ${right[1]} = ${right[0] + right[1]} ≤ ${cap}, true. ${p1} × ${right[0]} + ${p2} × ${right[1]} = ${p1 * right[0] + p2 * right[1]} ≥ ${goal}, true.`,
         `Each other option breaks one condition: too many ${kind === "bakery" ? "boxes" : "hours"} in all, or too little money.`,
+        `The pair that meets both conditions is ${pair(...right)}.`,
       ],
       hint: `Test each pair in both inequalities, x + y ≤ ${cap} and ${p1}x + ${p2}y ≥ ${goal}. The answer makes both true.`,
       tags: [kind],
@@ -344,7 +353,7 @@ function halfDistractors(h: Half, kind: string): Choice[] {
   const out: Choice[] = [
     {
       label: rebuild(h, kind, flip[h.op]),
-      feedback: `The boundary is right, but this is the other side. Test a shaded point: it must make the inequality true.`,
+      feedback: `The boundary is right, but the sign points to the other side, as if the inequality were reversed. Test a shaded point: it must make the inequality true.`,
     },
     {
       label: rebuild(h, kind, swapStrict[h.op]),
@@ -354,7 +363,7 @@ function halfDistractors(h: Half, kind: string): Choice[] {
     },
     {
       label: rebuild(h, kind, swapStrict[flip[h.op]]),
-      feedback: `Check both the side that is shaded and whether the boundary is solid or dashed.`,
+      feedback: `This gets two things wrong: it names the unshaded side, and it mixes up solid and dashed. Test a shaded point, and match solid with ≤ or ≥.`,
     },
   ];
   const other =
@@ -429,19 +438,19 @@ function halfPlaneInequality(r: Random): Case {
         [
           {
             label: join(rebuild(h1, "slope", flip[h1.op]), h2.text),
-            feedback: `Check the side of the slanted boundary that is shaded.`,
+            feedback: `This shades the wrong side of the slanted line: the inequality sign is reversed. Test a shaded point in it; a true statement means the right side.`,
           },
           {
             label: join(h1.text, rebuild(h2, "axis", flip[h2.op])),
-            feedback: `Check the side of the ${h2.a ? "vertical" : "horizontal"} boundary that is shaded.`,
+            feedback: `This shades the wrong side of the ${h2.a ? "vertical" : "horizontal"} line: the inequality sign is reversed. Test a shaded point to see which side is meant.`,
           },
           {
             label: join(rebuild(h1, "slope", swapStrict[h1.op]), h2.text),
-            feedback: `Check whether the slanted boundary is solid (included) or dashed (not included).`,
+            feedback: `The side is right, but the sign mixes up solid and dashed. A solid line means "or equal to" (≤ or ≥); a dashed line means strictly < or >.`,
           },
           {
             label: join(h1.text, rebuild(h2, "axis", swapStrict[h2.op])),
-            feedback: `Check whether the ${h2.a ? "vertical" : "horizontal"} boundary is solid or dashed.`,
+            feedback: `The side is right, but the sign mixes up solid and dashed for the ${h2.a ? "vertical" : "horizontal"} line. Solid means ≤ or ≥; dashed means < or >.`,
           },
         ].filter((_, i) => keep[i]),
       );
@@ -454,9 +463,12 @@ function halfPlaneInequality(r: Random): Case {
           .shade(plane(h1), plane(h2))
           .scene({ title: "A region bounded by two lines" }),
         explanation: [
-          `The region lies on one side of each boundary. The slanted line is ${formula(h1.text.replace(/[<>≤≥]/, "="))}, with ${boundaryWords(h1)}; the other is ${formula(h2.text.replace(/[<>≤≥]/, "="))}, with ${boundaryWords(h2)}.`,
-          `Test the shaded point ${pair(px, py)}: it makes both ${formula(h1.text)} and ${formula(h2.text)} true.`,
-          `So the region is ${correct}.`,
+          `Each inequality shades one side of a boundary line, the edge of its region. A system of two inequalities shades only where both sides overlap.`,
+          `The slanted line is ${formula(h1.text.replace(/[<>≤≥]/, "="))}. It is ${boundaryWords(h1)}.`,
+          `The other line is ${formula(h2.text.replace(/[<>≤≥]/, "="))}. It is ${boundaryWords(h2)}.`,
+          `A solid line goes with ≤ or ≥, which include "equal to". A dashed line goes with < or >, which do not.`,
+          `To find each side, test a point inside the shaded region. ${pair(px, py)} makes both ${formula(h1.text)} and ${formula(h2.text)} true.`,
+          `The shaded region shows ${correct}.`,
         ],
         hint: `Name each boundary line and whether it is solid or dashed, then test a shaded point such as ${pair(px, py)} in each inequality.`,
         tags: [kind],
@@ -483,9 +495,11 @@ function halfPlaneInequality(r: Random): Case {
         .shade(plane(h))
         .scene({ title: "A shaded half-plane" }),
       explanation: [
-        `The boundary is the line ${formula(line)}, drawn with ${boundaryWords(h)}.`,
-        `Test the shaded point ${pair(px, py)}: substituting it makes ${formula(h.text)} true, so the shaded side is the ${sym[h.op]} side.`,
-        `So the region is ${formula(h.text)}.`,
+        `An inequality in $x$ and $y$ shades every point that makes it true. The shaded part is on one side of a boundary line, its edge.`,
+        `The boundary is the line ${formula(line)}. It is drawn as ${boundaryWords(h)}.`,
+        `A solid line goes with ≤ or ≥, which include "equal to". A dashed line goes with < or >, which do not.`,
+        `To find the side, test a shaded point. Substituting ${pair(px, py)} makes ${formula(h.text)} true, so the shaded side is the ${sym[h.op]} side.`,
+        `The shaded region shows ${formula(h.text)}.`,
       ],
       hint: `Find the boundary line from two of its grid points and note whether it is solid or dashed. Then substitute a shaded point, such as ${pair(px, py)}, into each option.`,
       tags: [kind, strict(h.op) ? "strict" : "inclusive"],
@@ -594,9 +608,11 @@ function inequalitySolutionPoint(r: Random): Case {
         steps: walk,
       }),
       explanation: [
-        `A point solves the inequality when its coordinates make it true. The boundary is ${boundaryWords(h)}.`,
+        `A point is a solution of an inequality when its coordinates make it true. Substitute the first number for $x$ and the second for $y$.`,
+        `The boundary line is ${boundaryWords(h)}. A dashed line goes with < or >; a solid line goes with ≤ or ≥.`,
         `For ${pair(...right!)}: ${check(right!)}.`,
         `Each other point makes the inequality false${strict(h.op) ? ", including the point on the dashed line" : ""}.`,
+        `The point that is a solution is ${pair(...right!)}.`,
       ],
       hint: `Substitute each point into ${formula(h.text)}. A point on a solid boundary is a solution; a point on a dashed boundary is not.`,
       tags: [
@@ -648,8 +664,10 @@ function literalEquationSolve(r: Random): Case {
         },
       ],
       explanation: [
-        `Treat $${k}$ as a fixed nonzero number. ${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: ${k}x = ${n(d)}.`,
-        `Divide both sides by $${k}$, allowed because ${k} ≠ 0: x = ${n(d)}/${k}.`,
+        `A letter such as $${k}$ that stands for a fixed but unknown number is called a constant, or parameter. Solve for $x$ as if $${k}$ were an ordinary number.`,
+        `Undo the ${b < 0 ? `− ${-b}` : `+ ${b}`} first. ${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides, which keeps them equal: ${k}x = ${n(d)}.`,
+        `${k}x means $${k}$ times $x$, so divide both sides by $${k}$. This is allowed because ${k} ≠ 0, and dividing by 0 is undefined.`,
+        `The solution is x = ${n(d)}/${k}.`,
       ],
       hint: `Undo the ${b < 0 ? `− ${-b}` : `+ ${b}`} first, so that ${k}x stands alone, then divide by $${k}$.`,
       tags: [frame],
@@ -679,9 +697,12 @@ function literalEquationSolve(r: Random): Case {
         },
       ],
       explanation: [
-        `Subtract ${q}x from both sides: $(${k} − ${q})x${constText(b)} = ${n(d)}$.`,
+        `A letter such as $${k}$ that stands for a fixed but unknown number is called a constant, or parameter. Solve for $x$ as if $${k}$ were an ordinary number.`,
+        `Gather the $x$ terms on the left. Subtract ${q}x from both sides: ${k}x − ${q}x${constText(b)} = ${n(d)}.`,
+        `${k}x − ${q}x is $x$ taken (${k} − ${q}) times, so it is (${k} − ${q})x. This step pulls out the common factor $x$.`,
         `${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: (${k} − ${q})x = ${n(top)}.`,
-        `Divide by ${k} − ${q}, which is not 0 because ${k} ≠ ${q}: x = ${n(top)}/(${k} − ${q}).`,
+        `Divide both sides by ${k} − ${q}. That is allowed because ${k} ≠ ${q}, so ${k} − ${q} is not 0.`,
+        `The solution is x = ${n(top)}/(${k} − ${q}).`,
       ],
       hint: `Collect the $x$-terms on one side: subtract ${q}x from both sides, so the $x$-term becomes (${k} − ${q})x.`,
       tags: [frame],
@@ -709,8 +730,11 @@ function literalEquationSolve(r: Random): Case {
         },
       ],
       explanation: [
-        `$${k}$ multiplies all of ${inner}. Divide both sides by $${k}$, allowed because ${k} ≠ 0: ${inner} = ${n(c)}/${k}.`,
-        `${h < 0 ? `Subtract ${-h} from` : `Add ${h} to`} both sides: x = ${n(c)}/${k}${constText(h)}.`,
+        `A letter such as $${k}$ that stands for a fixed but unknown number is called a constant, or parameter. Solve for $x$ as if $${k}$ were an ordinary number.`,
+        `The brackets mean $${k}$ multiplies all of ${inner}, not just $x$. So undo that multiplication first.`,
+        `Divide both sides by $${k}$, allowed because ${k} ≠ 0: ${inner} = ${n(c)}/${k}.`,
+        `${h < 0 ? `Subtract ${-h} from` : `Add ${h} to`} both sides to leave $x$ alone: x = ${n(c)}/${k}${constText(h)}.`,
+        `The solution is x = ${n(c)}/${k}${constText(h)}.`,
       ],
       hint: `$${k}$ multiplies the whole group ${inner}: divide both sides by $${k}$ first, then undo the ${h < 0 ? `+ ${-h}` : `− ${h}`}.`,
       tags: [frame],
@@ -743,10 +767,12 @@ function literalEquationSolve(r: Random): Case {
       },
     ],
     explanation: [
-      `${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: ${k}x ${sym[op]} ${n(d)}.`,
+      `A letter such as $${k}$ that stands for a fixed but unknown number is called a constant, or parameter. Solve for $x$ as if $${k}$ were an ordinary number. The only new rule is about signs.`,
+      `${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: ${k}x ${sym[op]} ${n(d)}. Adding or subtracting never changes the inequality's direction.`,
       positive
-        ? `Divide by $${k}$. Because ${k} > 0, the direction stays: x ${sym[res]} ${n(d)}/${k}.`
-        : `Divide by $${k}$. Because ${k} < 0, the direction reverses: x ${sym[res]} ${n(d)}/${k}.`,
+        ? `Divide by $${k}$. Because ${k} > 0, dividing keeps the order of the two sides, so the direction stays.`
+        : `Divide by $${k}$. Because ${k} < 0, dividing by a negative number flips the order. For example, 2 < 3 but −2 > −3. So the direction reverses.`,
+      `The solution is x ${sym[res]} ${n(d)}/${k}.`,
     ],
     hint: `Isolate $${k}x$ first, then divide by $${k}$. Since $${k} ${positive ? ">" : "<"} 0$, decide whether the ${sym[op]} sign keeps or reverses its direction.`,
     tags: [frame],
@@ -770,9 +796,12 @@ function parameterSolutionCount(r: Random): Case {
       prompt: `For what value of a does the equation ax${constText(b)} = ${termText(q, "x")}${constText(d)} have no solution?`,
       answer: rat(q),
       explanation: [
-        `Subtract ${termText(q, "x")} from both sides: $(a − ${q < 0 ? `(${n(q)})` : q})x${constText(b)} = ${n(d)}$.`,
-        `If a = ${n(q)}, the $x$-terms cancel and ${n(b)} is left on the left side and ${n(d)} on the right. Their difference is ${n(b)} − ${p1(d)} = ${n(b - d)}, not 0, so no $x$ is a solution.`,
-        `For any other $a$, $x = (${n(d)} − ${b < 0 ? `(${n(b)})` : b}) ÷ (a − ${q < 0 ? `(${n(q)})` : q})$ is a solution. So a = ${n(q)}.`,
+        `An equation has no solution when no value of $x$ makes it true. That happens when the $x$ terms cancel and leave a false statement such as 3 = 5.`,
+        `Gather the $x$ terms. Subtract ${termText(q, "x")} from both sides: $(a − ${q < 0 ? `(${n(q)})` : q})x${constText(b)} = ${n(d)}$.`,
+        `The number in front of $x$, its coefficient, is $a − ${q < 0 ? `(${n(q)})` : q}$. It is 0 exactly when a = ${n(q)}.`,
+        `If a = ${n(q)}, the $x$ terms vanish, leaving ${n(b)} = ${n(d)}. That is false, so no $x$ works.`,
+        `For any other $a$, you could divide by the coefficient and get one solution. So $a = ${n(q)}$ is the only value with no solution.`,
+        `The equation has no solution when a = ${n(q)}.`,
       ],
       hint: `Collect the $x$-terms: ax − ${q < 0 ? `(${n(q)})` : q}x. When does that coefficient become 0, and what is left of ${n(b)} and ${n(d)}?`,
       tags: [frame],
@@ -785,9 +814,11 @@ function parameterSolutionCount(r: Random): Case {
       prompt: `For what value of $c$ does the equation $${m}(x${constText(h)}) = ${m}x + c$ have infinitely many solutions?`,
       answer: rat(m * h),
       explanation: [
-        `Distribute, ${m} × ${p1(h)} = ${n(m * h)}: $${m}x${constText(m * h)} = ${m}x + c$.`,
-        `The $x$-terms match on both sides, so subtracting ${m}x leaves ${n(m * h)} = c.`,
-        `If c = ${n(m * h)}, the two sides are identical and every $x$ is a solution; otherwise there is none. So c = ${n(m * h)}.`,
+        `An equation has infinitely many solutions when both sides are exactly the same expression. Then every value of $x$ makes it true.`,
+        `Distribute, meaning multiply ${m} by each term in the brackets: ${m} × x = ${m}x and ${m} × ${p1(h)} = ${n(m * h)}. The left side is $${m}x${constText(m * h)}$.`,
+        `Now compare $${m}x${constText(m * h)}$ with $${m}x + c$. The $x$ terms already match.`,
+        `The sides are identical only if the plain numbers match too, so $c$ must be ${n(m * h)}. Any other $c$ gives a false statement and no solution.`,
+        `The equation has infinitely many solutions when c = ${n(m * h)}.`,
       ],
       hint: `Distribute ${m} over (x${constText(h)}) and compare the two sides term by term.`,
       tags: [frame],
@@ -800,9 +831,11 @@ function parameterSolutionCount(r: Random): Case {
       prompt: `For what value of a does the equation ax${constText(m * h)} = ${m < 0 ? `−${-m}` : m}(x${constText(h)}) have infinitely many solutions?`,
       answer: rat(m),
       explanation: [
-        `Distribute on the right, ${n(m)} × ${p1(h)} = ${n(m * h)}: ${m < 0 ? `−${-m}` : m}(x${constText(h)}) = ${termText(m, "x")}${constText(m * h)}.`,
-        `The constants already match: ${n(m * h)} on each side. The equation holds for every $x$ exactly when the $x$-coefficients match too.`,
-        `So a = ${n(m)}.`,
+        `An equation has infinitely many solutions when both sides are exactly the same expression. Then every value of $x$ makes it true.`,
+        `Distribute on the right, multiplying ${n(m)} by each term in the brackets: ${n(m)} × ${p1(h)} = ${n(m * h)}. So ${m < 0 ? `−${-m}` : m}(x${constText(h)}) = ${termText(m, "x")}${constText(m * h)}.`,
+        `The constants, the plain numbers, already match: ${n(m * h)} on each side.`,
+        `The coefficient of $x$ is the number multiplying $x$. It is $a$ on the left and ${n(m)} on the right, so they match only when a = ${n(m)}.`,
+        `The equation has infinitely many solutions when a = ${n(m)}.`,
       ],
       hint: `Distribute the ${n(m)} on the right side over (x${constText(h)}), then compare the coefficient of $x$ and the constant on each side.`,
       tags: [frame],
@@ -821,9 +854,12 @@ function parameterSolutionCount(r: Random): Case {
       prompt: `For what value of $k$ does the system kx${b1 < 0 ? " − " : " + "}${Math.abs(b1) === 1 ? "" : Math.abs(b1)}y = ${n(c1)} and ${twoTerm(a2, b2)} = ${n(c2)} have no solution?`,
       answer: rat(k),
       explanation: [
-        `Two lines have no common point when they are parallel and different: same slope, different intercept. The first equation's $y$-coefficient is ${p1(t)} times the second's, ${n(b2)} × ${p1(t)} = ${n(b1)}, so $k$ must be ${n(a2)} × ${p1(t)} = ${n(k)}.`,
-        `Multiply the second equation by ${n(t)}: ${twoTerm(a2 * t, b2 * t)} = ${n(c2 * t)}. Its $y$-coefficient now matches the first equation's.`,
-        `With k = ${n(k)}, the left sides are equal but ${n(c1)} ≠ ${n(c2 * t)}, so no $(x, y)$ satisfies both. So k = ${n(k)}.`,
+        `A system's solution is a point on both lines. Two lines share no point when they are parallel, meaning same steepness, but not the same line.`,
+        `Parallel lines have equations whose left sides are matching multiples of each other. Compare the $y$ terms: ${n(b2)} × ${p1(t)} = ${n(b1)}, so the first is ${n(t)} times the second.`,
+        `Multiply every term of the second equation by ${n(t)}: ${twoTerm(a2 * t, b2 * t)} = ${n(c2 * t)}. Its $y$ term now matches the first equation's.`,
+        `For the $x$ terms to match as well, $k$ must be ${n(a2)} × ${p1(t)} = ${n(k)}.`,
+        `With k = ${n(k)}, the left sides are equal but the right sides are ${n(c1)} and ${n(c2 * t)}. One expression cannot equal two different numbers, so no $(x, y)$ works.`,
+        `The system has no solution when k = ${n(k)}.`,
       ],
       hint: `Make the $y$-coefficients match: multiply ${twoTerm(a2, b2)} = ${n(c2)} by the number that turns $${termText(b2, "y")}$ into $${termText(b1, "y")}$.`,
       tags: [frame],
@@ -1004,9 +1040,14 @@ function equationStepProperty(r: Random): Case {
         { header: "none", rules: "rows", align: ["left", "left"] },
       ).scene({ title: `Steps solving ${ch.lines[0]}` }),
       explanation: [
+        `Each step of a solution needs a reason, a rule that keeps the equation true. Find the reason by comparing the two lines.`,
         `From ${ch.lines[i - 1]} to ${ch.lines[i]}, the step is to ${ch.did[i - 1]}.`,
-        `That is the ${PROPS[right].charAt(0).toLowerCase()}${PROPS[right].slice(1)}: it ${WHY[right]}, so the new equation has the same solutions.`,
-        `Every step keeps the equation equivalent, so ${ch.lines[0]} is solved by x = ${ch.solution}.`,
+        right === "combine"
+          ? `That step is called combining like terms. It ${WHY[right]}; like terms are terms with the same variable part, such as $3x$ and $2x$.`
+          : `That rule is the ${PROPS[right].charAt(0).toLowerCase()}${PROPS[right].slice(1)}. It ${WHY[right]}.`,
+        `Doing this keeps the new equation equivalent, meaning it has exactly the same solutions as the line before.`,
+        `Because every step keeps the solutions, ${ch.lines[0]} is solved by x = ${ch.solution}.`,
+        `The reason for this step is: ${PROPS[right]}.`,
       ],
       hint: `Compare ${ch.lines[i - 1]} with ${ch.lines[i]}: what was done, and was it done to both sides or to one side only?`,
       tags: [frame, form, right],
@@ -1042,9 +1083,16 @@ function equationStepProperty(r: Random): Case {
       { header: "column", rules: "rows", align: ["left", "left"] },
     ).scene({ title: `A solution of ${ch.lines[0]} with one wrong step` }),
     explanation: [
-      `Redo each step from the line above it and compare.`,
-      `Step ${bad} should ${ch.did[bad - 1]}, which turns ${lines[bad - 1]} into ${ch.lines[bad]}, not ${lines[bad]}.`,
-      `Done correctly, the steps end at x = ${ch.solution}.`,
+      `Each correct step changes the equation in a way that keeps its solutions the same. To find an error, redo each step yourself from the line above it.`,
+      ...ch.did
+        .slice(0, bad - 1)
+        .map(
+          (did, j) =>
+            `Step ${j + 1} should ${did}. That turns ${ch.lines[j]} into ${ch.lines[j + 1]}, as written, so it is correct.`,
+        ),
+      `Step ${bad} should ${ch.did[bad - 1]}. That turns ${lines[bad - 1]} into ${ch.lines[bad]}, but the written line is ${lines[bad]}.`,
+      `Every step after a mistake carries it forward. Done correctly, the steps end at x = ${ch.solution}.`,
+      `The error is in Step ${bad}.`,
     ],
     hint: `Check the steps in order, starting from ${ch.lines[0]}: redo each move yourself and compare it with the line written.`,
     tags: ["error", form, `step-${bad}`],
@@ -1157,11 +1205,14 @@ function eliminationEquivalent(r: Random): Case {
         choices: [{ label: sum, correct: true }, ...wrong],
         scene: stacked,
         explanation: [
+          `Adding two equations means adding their left sides together and their right sides together. Equal amounts added to equal amounts stay equal.`,
           k === 1
-            ? `Add the left sides and the right sides.`
-            : `Multiplied by ${n(k)}, the second equation is ${eqText(k * a2, k * b2, k * c2)}.`,
-          `The $y$-terms cancel: $${termText(b1, "y")} + ${pt(k * b2, "y")} = 0$. The $x$-terms give $${termText(a1, "x")} + ${pt(k * a2, "x")} = ${termText(sa, "x")}$, and the right sides give ${n(c1)} + ${p1(k * c2)} = ${n(sc)}.`,
-          `So ${sum}. Any $(x, y)$ that makes both equations true makes this one true too.`,
+            ? `Line up like terms, terms with the same letter, in columns.`
+            : `First multiply every term of the second equation by ${n(k)}, both sides: ${eqText(k * a2, k * b2, k * c2)}.`,
+          `The $y$ terms are opposites, so they cancel: $${termText(b1, "y")} + ${pt(k * b2, "y")} = 0$. That is the point of this method, called elimination.`,
+          `The $x$ terms give $${termText(a1, "x")} + ${pt(k * a2, "x")} = ${termText(sa, "x")}$.`,
+          `The right sides give ${n(c1)} + ${p1(k * c2)} = ${n(sc)}.`,
+          `The resulting equation is ${sum}.`,
         ],
         hint: `${k === 1 ? "Line up like terms" : `Multiply every term of the second equation by ${n(k)} first`}: $${termText(b1, "y")}$ and $${termText(k * b2, "y")}$ cancel. Add the $x$-terms, then add the right sides, ${n(c1)} and ${n(k * c2)}.`,
         tags: [frame],
@@ -1193,9 +1244,11 @@ function eliminationEquivalent(r: Random): Case {
         choices: [{ label: correct, correct: true }, ...wrong],
         scene: stacked,
         explanation: [
-          `Replacing one equation by the sum of both keeps every solution: a pair that satisfies both equations satisfies their sum, and subtracting the first equation from the sum gives back the second.`,
-          `The sum of ${e1} and ${e2} is ${sum}.`,
-          `So ${correct} has the same solutions; both systems are solved by ${pair(x, y)}.`,
+          `A system's solutions are the pairs $(x, y)$ that make every equation in it true. We want a new system with exactly the same solutions.`,
+          `Adding two true equations gives a true equation, because equal amounts added to equal amounts stay equal.`,
+          `Add the left sides and the right sides: the sum of ${e1} and ${e2} is ${sum}.`,
+          `Keep one original equation beside the sum. Then you can get the other back by subtracting, so nothing is lost or gained.`,
+          `Both systems are solved by ${pair(x, y)}. The system with the same solutions is ${correct}.`,
         ],
         hint: `Add the two equations side by side: ${n(c1)} + ${p1(c2)} on the right. Keep one original equation beside the sum.`,
         tags: [frame],
@@ -1224,9 +1277,11 @@ function eliminationEquivalent(r: Random): Case {
       choices: reasons,
       scene: stacked,
       explanation: [
-        `If $(x, y)$ makes both equations true, adding equal amounts to equal amounts keeps them equal, so it makes ${sum} true.`,
-        `Back the other way: if $(x, y)$ satisfies ${e1} and ${sum}, subtracting the first from the sum gives ${e2}. So no solution is gained or lost.`,
-        `Both systems are solved by ${pair(x, y)}.`,
+        `Two systems have the same solutions when every pair that solves one also solves the other, in both directions.`,
+        `Forward: if $(x, y)$ makes both equations true, adding equal amounts to equal amounts keeps them equal. So it makes ${sum} true.`,
+        `Backward: if $(x, y)$ satisfies ${e1} and ${sum}, subtract the first from the sum. That gives back ${e2}.`,
+        `So no solution is gained or lost. Both systems are solved by ${pair(x, y)}.`,
+        `The reason is that a solution of both equations solves their sum, and subtracting the first from the sum gives back the second.`,
       ],
       hint: `Take the solution of the first system, ${pair(x, y)}, and check it in ${sum}. Then ask how to get ${e2} back from the new system.`,
       tags: [frame],

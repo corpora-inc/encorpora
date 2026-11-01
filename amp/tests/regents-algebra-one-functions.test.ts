@@ -219,3 +219,16 @@ test("factor large trinomial", () => {
     }
   }
 });
+
+test("negative output: the factoring step names numbers that add to the middle coefficient", () => {
+  for (let i = 0; i < 200; i++) {
+    const p = generateProblem("quadratic-negative-output", `sum:${i}`);
+    const text = p.explanation.join(" ");
+    const zero = /\$x\^2 ([+-]) (\d+)x ([+-]) (\d+) = 0\$/.exec(text);
+    if (!zero) continue;
+    const b = Number(zero[2]) * (zero[1] === "-" ? -1 : 1);
+    const claim = /add to \$(-?\d+)\$/.exec(text);
+    assert.ok(claim, text);
+    assert.equal(Number(claim![1]), b, text);
+  }
+});

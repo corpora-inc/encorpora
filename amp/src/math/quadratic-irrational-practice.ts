@@ -53,15 +53,15 @@ export function quadraticIrrationalCase(seed: string) {
   const wrong = [
     {
       roots: reduced(-roots.p, roots.q, s, roots.d),
-      feedback: `Use the opposite of the signed coefficient $b = ${b}$ in the numerator. The numerator begins with $-b$.`,
+      feedback: `This uses $b$ instead of $-b$, a sign error. The formula starts with the opposite of $b = ${b}$.`,
     },
     {
       roots: reduced(roots.p, roots.q * 2, s, roots.d),
-      feedback: `Extract square factors without changing the value of $\\sqrt{${D}}$. Check the coefficient outside the radical.`,
+      feedback: `The number outside the root is doubled, so this changes the value of $\\sqrt{${D}}$. When you pull out a square factor, only its square root comes outside.`,
     },
     {
       roots: reduced(roots.p, roots.q, s, roots.d * 2),
-      feedback: `The quadratic formula divides the entire numerator by $2a = ${2 * a}$. Reducing the result must preserve that fraction's value.`,
+      feedback: `The bottom is doubled, as if $2a$ were divided by 2 only in part or applied twice. The whole top is divided by $2a = ${2 * a}$, once.`,
     },
   ];
   const equation = polynomial(a, b, c);
@@ -76,14 +76,17 @@ export function quadraticIrrationalCase(seed: string) {
       answer: "",
       hint: `For $${equation} = 0$, first record $a = ${a}$, $b = ${b}$, and $c = ${c}$ with their signs. Substitute them into $b^2 - 4ac$ before taking a square root.`,
       explanation: [
-        `In $ax^2 + bx + c = 0$, the signed coefficients are $a = ${a}$, $b = ${b}$, and $c = ${c}$.`,
-        `The discriminant is $D = (${b})^2 - 4(${a})(${c}) = ${b * b} - (${4 * a * c}) = ${D}$. It is positive and not a perfect square, so there are two distinct irrational real solutions.`,
-        `Apply the formula: $x = \\frac{-b \\pm \\sqrt{D}}{2a} = \\frac{${-b} \\pm \\sqrt{${D}}}{${2 * a}}$. The symbol $\\pm$ means use both plus and minus.`,
+        `Read the coefficients, the numbers in front of each term, with their signs. In $ax^2 + bx + c = 0$: $a = ${a}$, $b = ${b}$, and $c = ${c}$.`,
+        `The discriminant $D$ is the part under the square root in the quadratic formula: $D = b^2 - 4ac$.`,
+        `$D = (${b})^2 - 4(${a})(${c}) = ${b * b} - (${4 * a * c}) = ${D}$. It is positive, so there are two real solutions.`,
+        `${D} is not a perfect square (a whole number times itself), so its root is irrational: a decimal that never ends or repeats. Keep it exact as a root.`,
+        `The quadratic formula is $x = \\frac{-b \\pm \\sqrt{D}}{2a}$. The sign $\\pm$ means "plus or minus", one solution each. Here $x = \\frac{${-b} \\pm \\sqrt{${D}}}{${2 * a}}$.`,
         q === 1
-          ? `$\\sqrt{${D}}$ has no square factor greater than 1 to extract.`
-          : `Since $${D} = ${q * q} \\cdot ${s}$, $\\sqrt{${D}} = ${q}\\sqrt{${s}}$.`,
-        `Keep both solutions, make the denominator positive, and cancel only factors common to the entire numerator and denominator: $x = ${result}$.`,
-        `Check the pair: its sum is $-b/a = \\frac{${-b}}{${a}}$ and its product is $c/a = \\frac{${c}}{${a}}$, as required by the original quadratic.`,
+          ? `Simplified radical form pulls any square factor out of the root. ${D} has no square factor greater than 1, so $\\sqrt{${D}}$ stays as it is.`
+          : `Simplified radical form pulls any square factor out of the root. $${D} = ${q * q} \\cdot ${s}$, and $\\sqrt{${q * q}} = ${q}$, so $\\sqrt{${D}} = ${q}\\sqrt{${s}}$.`,
+        `Divide out only a factor shared by every part of the top and the bottom, and keep the bottom positive.`,
+        `Check: the two solutions should add to $-\\frac{b}{a} = \\frac{${-b}}{${a}}$ and multiply to $\\frac{c}{a} = \\frac{${c}}{${a}}$. They do.`,
+        `The complete set of real solutions is $x = ${result}$.`,
       ],
       choices: [
         { label: `$x = ${result}$`, correct: true },

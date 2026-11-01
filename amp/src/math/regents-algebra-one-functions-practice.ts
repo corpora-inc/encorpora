@@ -163,11 +163,17 @@ export const functionMissingInput = chainFamily({
       ],
       hint: `A function gives each input one output. The given inputs are ${used.join(", ")}, with outputs ${m.pairs.map(([, y]) => y).join(", ")}; the pair with $k$ has output ${m.newOut}. Compare $k$ with the inputs already used.`,
       explanation: [
-        `The pairs already use the inputs ${used.join(", ")}.`,
+        `A relation is a set of pairs (input, output). It is a function when each input has exactly one output.`,
+        `The pairs already use the inputs ${used.join(", ")}. The pair with $k$ has the output ${m.newOut}, which no other pair has.`,
         makes
-          ? `If $k$ equals one of them, that input would have the output ${m.newOut} and also its own output, so the relation would not be a function. A value that is not already an input adds a new input with one output.`
-          : `If $k$ is a new input, every input has exactly one output. If $k$ repeats a used input, that input has the output ${m.newOut} and also its own output, which differs.`,
-        `So $k=${answerK}$ ${makes ? "makes" : "keeps"} the relation ${makes ? "a function" : "from being a function"}.`,
+          ? `If $k$ equals a used input, that input gets two outputs: its own and ${m.newOut}. That breaks the rule.`
+          : `If $k$ repeats a used input, that input gets two outputs: its own and ${m.newOut}. That breaks the rule.`,
+        makes
+          ? `A value that is not already an input just adds a new input with one output. So $k$ must be a new input.`
+          : `If $k$ is a new input instead, every input still has one output, and the relation stays a function.`,
+        makes
+          ? `$k=${answerK}$ is not among the used inputs, so it makes the relation a function.`
+          : `$k=${answerK}$ is already an input, so it keeps the relation from being a function.`,
       ],
     });
   },
@@ -227,9 +233,11 @@ export const shiftFunctionNotation = chainFamily({
         ],
         hint: `Treat the two moves separately. The horizontal move (${dirH}, ${Math.abs(m.h)}) changes the input $x$. The vertical move (${dirK}, ${Math.abs(m.k)}) changes the output. Decide which part sits inside the parentheses.`,
         explanation: [
-          `To shift ${dirH} by ${Math.abs(m.h)}, replace $x$ with $${xShift(-m.h)}$: the graph of $f(${xShift(-m.h)})$ is $f$ moved ${dirH}.`,
-          `To shift ${dirK} by ${Math.abs(m.k)}, ${m.k > 0 ? "add" : "subtract"} ${Math.abs(m.k)} ${m.k > 0 ? "to" : "from"} the output.`,
-          `Together: ${rule(m.h, m.k)}.`,
+          `$f(x)$, read "$f$ of $x$", is the output of $f$ for the input $x$. A shift slides the whole graph without changing its shape.`,
+          `A sideways shift changes the input, so it goes inside the brackets with $x$. An up or down shift changes the output, so it goes outside.`,
+          `Inside, the sign works backwards. $f(${xShift(-m.h)})$ reaches each output when $x$ is ${Math.abs(m.h)} ${m.h > 0 ? "larger" : "smaller"} than before, so the graph moves ${dirH}.`,
+          `Outside, the sign matches the move. To shift ${dirK} by ${Math.abs(m.k)}, ${m.k > 0 ? "add" : "subtract"} ${Math.abs(m.k)} ${m.k > 0 ? "to" : "from"} every output.`,
+          `Putting both together, the equation that defines $g$ is ${rule(m.h, m.k)}.`,
         ],
       });
     }
@@ -262,9 +270,11 @@ export const shiftFunctionNotation = chainFamily({
       ],
       hint: `In $f(x) = ${f}$ the number inside the parentheses sets the horizontal position and the constant sets the vertical position. Change each by the matching shift, remembering the horizontal direction is reversed inside.`,
       explanation: [
-        `Replace $x$ by $${xShift(-m.h)}$ to move ${dirH} by ${Math.abs(m.h)}: the squared part becomes $${vertexForm(-m.p - m.h, 0)}$.`,
-        `Change the constant by ${m.k > 0 ? "+" : "-"}${Math.abs(m.k)} for the vertical shift of ${Math.abs(m.k)} ${dirK}.`,
-        `${rule(m.h, m.k)}.`,
+        `$f(x) = ${f}$ is in vertex form. The number with $x$ inside the brackets sets the left-right position, and the constant outside sets the height.`,
+        `A sideways shift changes the input. Inside the brackets the sign works backwards, so moving ${dirH} by ${Math.abs(m.h)} unit${Math.abs(m.h) === 1 ? "" : "s"} means replacing $x$ by $${xShift(-m.h)}$.`,
+        `The squared part becomes $${vertexForm(-m.p - m.h, 0)}$.`,
+        `An up or down shift changes the output, and its sign matches the move. ${m.k > 0 ? "Add" : "Subtract"} ${Math.abs(m.k)} ${m.k > 0 ? "to" : "from"} the constant for ${Math.abs(m.k)} ${dirK}.`,
+        `The equation that defines $g$ is ${rule(m.h, m.k)}.`,
       ],
     });
   },
@@ -305,9 +315,12 @@ export const radicalFunctionValue = chainFamily({
       label: "Answer",
       hint: `Replace $x$ with ${x} inside the radicand $${xShift(m.b)}$ and simplify the radicand first, before taking the square root.`,
       explanation: [
+        `$f(${x})$, read "$f$ of ${x}", is the output when the input $x$ is ${x}. So replace every $x$ in the rule with ${x}.`,
         `Substitute: $f(${x}) = ${m.a === 1 ? "" : m.a}\\sqrt{${par(x)} ${sgn(m.b)} ${Math.abs(m.b)}}${m.c === 0 ? "" : ` ${sgn(m.c)} ${Math.abs(m.c)}`}$.`,
-        `The radicand is $${x + m.b}$, and $\\sqrt{${x + m.b}} = ${m.s}$.`,
-        `$f(${x}) = ${m.a === 1 ? "" : `${m.a}\\cdot`}${m.s}${m.c === 0 ? "" : ` ${sgn(m.c)} ${Math.abs(m.c)}`} = ${value}$.`,
+        `The radicand is the expression under the square root sign. Simplify it first, because the root applies to all of it: $${par(x)} ${sgn(m.b)} ${Math.abs(m.b)} = ${x + m.b}$.`,
+        `The square root of a number is the number that, multiplied by itself, gives it. $\\sqrt{${x + m.b}} = ${m.s}$ because $${m.s} \\times ${m.s} = ${x + m.b}$.`,
+        `${m.a === 1 ? "Then" : `Multiply by ${m.a}, then`} ${m.c === 0 ? "finish" : m.c > 0 ? `add ${m.c}` : `subtract ${-m.c}`}: $f(${x}) = ${m.a === 1 ? "" : `${m.a}\\cdot`}${m.s}${m.c === 0 ? "" : ` ${sgn(m.c)} ${Math.abs(m.c)}`} = ${value}$.`,
+        `So $f(${x}) = ${value}$.`,
       ],
     });
   },
@@ -395,9 +408,12 @@ export const zerosOfFactoredProduct = chainFamily({
       ],
       hint: `A product is zero when a factor is zero. Set ${m.m === 0 ? "$x$" : `$x ${sgn(m.m)} ${m.m}$`} equal to zero, then factor $x^2 - ${sq}$ as a difference of squares and set each factor equal to zero.`,
       explanation: [
-        `Factor the difference of squares: $x^2 - ${sq} = (x - ${m.k})(x + ${m.k})$, so $f(x) = ${lead}${first}(x - ${m.k})(x + ${m.k})$.`,
-        `Each factor gives a zero: ${m.m === 0 ? "$x=0$" : `$x=${-m.m}$`}, $x=${m.k}$ and $x=-${m.k}$.`,
-        `The zeros are $${setTex(correct)}$.`,
+        `A zero of $f$ is an input $x$ that makes the output $f(x)$ equal 0. Factored form makes zeros easy to read.`,
+        `A product is 0 only when one of its factors is 0. So each factor that contains $x$ gives a zero${m.lead === 1 ? "" : `; the number ${m.lead} in front never equals 0`}.`,
+        `$x^2 - ${sq}$ is a difference of squares, one square minus another: $x^2 - ${m.k}^2$. It factors as $(x - ${m.k})(x + ${m.k})$.`,
+        `So $f(x) = ${lead}${first}(x - ${m.k})(x + ${m.k})$.`,
+        `Set each factor equal to 0: ${m.m === 0 ? "$x = 0$" : `$x ${sgn(m.m)} ${m.m} = 0$ gives $x=${-m.m}$`}, $x - ${m.k} = 0$ gives $x=${m.k}$, and $x + ${m.k} = 0$ gives $x=-${m.k}$.`,
+        `The zeros of $f$ are $${setTex(correct)}$.`,
       ],
     });
   },
@@ -463,9 +479,12 @@ export const quadraticNegativeOutput = chainFamily({
       ],
       hint: `Write the equation $${f} = -${m.n}$ and add ${m.n} to both sides so the right side is 0. Then factor the trinomial that results.`,
       explanation: [
-        `Set $${f} = -${m.n}$ and add ${m.n}: $${quad(1, b, c + m.n)} = 0$.`,
-        `Factor: $(${xShift(-m.p)})(${xShift(-m.q)}) = 0$, because $${m.p}$ and $${m.q}$ multiply to $${m.p * m.q}$ and add to $${m.p + m.q}$.`,
-        `The inputs are $x=${m.p}$ and $x=${m.q}$.`,
+        `$f(x) = -${m.n}$ asks for the inputs $x$ whose output is $-${m.n}$. So set the rule equal to $-${m.n}$: $${f} = -${m.n}$.`,
+        `To factor, one side must be 0. Add ${m.n} to both sides: $${quad(1, b, c + m.n)} = 0$.`,
+        `To factor $x^2 + bx + c$, find two numbers that multiply to $c$ and add to $b$, the number multiplying $x$.`,
+        `$${-m.p}$ and $${-m.q}$ multiply to $${m.p * m.q}$ and add to $${-(m.p + m.q)}$. So the equation is $(${xShift(-m.p)})(${xShift(-m.q)}) = 0$.`,
+        `A product is 0 only when a factor is 0. $${xShift(-m.p)} = 0$ gives $x=${m.p}$, and $${xShift(-m.q)} = 0$ gives $x=${m.q}$.`,
+        `The inputs that give $f(x) = -${m.n}$ are $x=${m.p}$ and $x=${m.q}$.`,
       ],
     });
   },
@@ -516,9 +535,11 @@ export const parabolaAxisRule = chainFamily({
       ],
       hint: `For $y = ax^2 + bx + c$ the axis of symmetry is $x = -\\frac{b}{2a}$. Work out which $b$ gives $x = ${m.h}$ when the leading coefficient is ${m.a}.`,
       explanation: [
-        `For a rule $y = ax^2 + bx + c$ the axis is $x = -\\frac{b}{2a}$.`,
-        `With $a = ${m.a}$ and the axis $x = ${m.h}$: $-\\frac{b}{${2 * m.a}} = ${m.h}$, so $b = ${b}$.`,
-        `The function is ${rule(b)}.`,
+        `The graph of $y = ax^2 + bx + c$ is a parabola, a U-shaped curve. Its axis of symmetry is the vertical line that splits it into mirror halves.`,
+        `The axis is at $x = -\\frac{b}{2a}$. Here $a$ is the number multiplying $x^2$ and $b$ is the number multiplying $x$.`,
+        `Every option has $a = ${m.a}$, so $2a = ${2 * m.a}$. We need $-\\frac{b}{${2 * m.a}} = ${m.h}$.`,
+        `Multiply both sides by $${-2 * m.a}$ to undo the division and the minus sign: $b = ${m.h} \\times ${par(-2 * m.a)} = ${b}$.`,
+        `The function with axis of symmetry $x = ${m.h}$ is ${rule(b)}.`,
       ],
     });
   },
@@ -594,11 +615,14 @@ export const quadraticFormulaPositive = chainFamily({
           ? `Identify $a=${a}$, $b=${b}$ and $c=${c}$ in $${eq}$, then put them in $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$, taking care with the signs.`
           : `First move ${-c} to the left side so the equation equals 0, then read $a=${a}$, $b=${b}$ and the new constant, and use the quadratic formula.`,
       explanation: [
+        `The quadratic formula solves any equation $ax^2 + bx + c = 0$: $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$. The sign $\\pm$, "plus or minus", gives two solutions.`,
         ax.form === "zero-form"
-          ? `Here $a=${a}$, $b=${b}$ and $c=${c}$.`
-          : `Move ${-c} to the left: $${quad(a, b, c)} = 0$, so $a=${a}$, $b=${b}$ and $c=${c}$.`,
-        `The discriminant is $b^2-4ac = ${b * b} - 4(${a})(${par(c)}) = ${d}$.`,
-        `$x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a} = \\frac{${-b} \\pm \\sqrt{${d}}}{${2 * a}}$.`,
+          ? `The equation already equals 0. Read the coefficients, the numbers in front: $a=${a}$ multiplies $x^2$, $b=${b}$ multiplies $x$, and $c=${c}$ stands alone.`
+          : `The formula needs the equation to equal 0. ${c < 0 ? `Subtract ${-c} from` : `Add ${c} to`} both sides: $${quad(a, b, c)} = 0$. So $a=${a}$, $b=${b}$ and $c=${c}$.`,
+        `The discriminant is the part under the square root, $b^2-4ac$. Here it is $${b * b} - 4(${a})(${c}) = ${d}$.`,
+        `$${d}$ is not a perfect square, so the square root stays as $\\sqrt{${d}}$ and the solutions are not whole numbers.`,
+        `$-b$ is the opposite of $b$, so $-b = ${-b}$. The bottom is $2a = ${2 * a}$.`,
+        `The solutions are $x = \\frac{${-b} \\pm \\sqrt{${d}}}{${2 * a}}$.`,
       ],
     });
   },
@@ -680,11 +704,16 @@ export const factorLargeTrinomial = chainFamily({
         ? `Look for two numbers whose product is $-${prod}$ and whose sum is $-${m.m - m.n}$. List the factor pairs of ${prod} and check which pair differs by ${m.m - m.n}.`
         : `Look for two numbers whose product is $${prod}$ and whose sum is $-${m.m + m.n}$. List the factor pairs of ${prod} and check which pair adds to ${m.m + m.n}.`,
       explanation: [
+        `Factoring means writing the expression as a product, here two brackets multiplied: $(x + p)(x + q)$.`,
+        `Multiplying out $(x + p)(x + q)$ gives $x^2 + (p + q)x + pq$. So we need two numbers $p$ and $q$ that multiply to the constant and add to the number multiplying $x$.`,
         neg
-          ? `Find two numbers with product $-${prod}$ and sum $-${m.m - m.n}$. The factor pair ${m.m} and ${m.n} differs by ${m.m - m.n}, so the numbers are $-${m.m}$ and $${m.n}$.`
-          : `Find two numbers with product $${prod}$ and sum $-${m.m + m.n}$. The pair ${m.m} and ${m.n} adds to ${m.m + m.n}, so both numbers are negative: $-${m.m}$ and $-${m.n}$.`,
-        `Then $${trinomial} = ${key}$.`,
-        `Check by expanding: the product of the constants is ${neg ? "-" : ""}${prod} and their sum is ${neg ? -(m.m - m.n) : -(m.m + m.n)}.`,
+          ? `The product must be $-${prod}$. A negative product means one number is negative and one is positive.`
+          : `The product must be $${prod}$, which is positive, and the sum $-${m.m + m.n}$ is negative. So both numbers are negative.`,
+        neg
+          ? `The sum must be $-${m.m - m.n}$. List factor pairs of ${prod}: ${m.m} and ${m.n} differ by ${m.m - m.n}. The larger one gets the minus sign: $-${m.m}$ and $${m.n}$.`
+          : `List factor pairs of ${prod}: ${m.m} and ${m.n} add to ${m.m + m.n}. So the numbers are $-${m.m}$ and $-${m.n}$.`,
+        `Check: they multiply to ${neg ? "-" : ""}${prod} and add to ${neg ? -(m.m - m.n) : -(m.m + m.n)}, as needed.`,
+        `The expression equivalent to $${trinomial}$ is $${key}$.`,
       ],
     });
   },
