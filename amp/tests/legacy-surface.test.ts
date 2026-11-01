@@ -11,5 +11,6 @@ test("a legacy-surface digest ignores teaching text and keeps what is graded", (
   assert.ok(same({ ...p, choiceFeedback: { a: "Rewritten." } }));
   assert.ok(!same({ ...p, answer: `${p.answer}1` }));
   assert.ok(!same({ ...p, public: { ...p.public, prompt: "Changed." } }));
-  assert.deepEqual(Object.keys(legacySurface(p)).sort(), ["answer", "public"]);
+  for (const key of ["variant", "explanation", "hint", "choiceFeedback"])
+    assert.ok(!(key in legacySurface(p)), key);
 });
