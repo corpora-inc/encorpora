@@ -18,8 +18,9 @@ import {
   type SweepId,
 } from "../src/math/number-domain-axes";
 
-/** Digests of the pre-axis output (before this change), seeds legacy:0..299,
- * over canonical JSON (sorted keys, floats to 9 decimals) and without the private `variant`. */
+/** Digests of the pre-axis surface, seeds legacy:0..299, over canonical JSON
+ * (sorted keys, floats to 9 decimals) of the legacy surface
+ * (fixtures/legacy-surface.ts: no `variant`, no teaching text). */
 const golden = JSON.parse(
   readFileSync(
     new URL("./fixtures/number-domain-sweep-digests.json", import.meta.url),

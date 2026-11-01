@@ -7,9 +7,10 @@ import { generatedProblemSchema } from "../src/math/contracts";
 import { generateProblem, gradeAnswer } from "../src/math/engine";
 import { revealsAnswer } from "./fixtures/hint-rules";
 
-/** Digests of the pre-axis output of the three families that gained a unit
- * axis, seeds legacy:0..299, over the public and private problem without the
- * recorded `variant`. */
+/** Digests of the three families that gained a unit axis, seeds
+ * legacy:0..299, over the legacy surface (fixtures/legacy-surface.ts: the
+ * public and private problem without `variant` or teaching text). Only seeds
+ * on the legacy axis value are asserted; they hold the pre-axis surface. */
 const golden = JSON.parse(
   readFileSync(
     new URL("./fixtures/unit-axes-legacy-digests.json", import.meta.url),
