@@ -1409,8 +1409,12 @@ function generateRawProblem(
       answer = `${k}`;
       hint = `$(x − ${h})²$ is never negative, and it is 0 when $x = ${h}$. What is $f(${h})$?`;
       explanation = [
-        `${a}(x − ${h})² is at least zero because ${a} is positive.`,
-        `At x = ${h}, it equals zero, so the minimum is ${k}.`,
+        `The minimum value is the smallest output $f(x)$ can ever reach.`,
+        `A square is never negative: $(x − ${h})²$ is 0 or more for every $x$. Multiplying by the positive number ${a} keeps it 0 or more.`,
+        `So $f(x)$ is ${k} plus something that is never negative. It can never be less than ${k}.`,
+        `It reaches ${k} exactly when the square is 0, which happens at $x = ${h}$: $f(${h}) = ${a}(0)² + ${k} = ${k}$.`,
+        `That point, (${h}, ${k}), is the vertex, the lowest point of the parabola.`,
+        `The minimum value of $f(x)$ is ${k}.`,
       ];
       break;
     }

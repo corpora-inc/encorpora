@@ -387,7 +387,21 @@ export function factoringPrintCase(id: string, seed: string) {
       },
     },
     answer,
-    explanation,
+    explanation: [
+      ...(extraction
+        ? [
+            "Factoring means writing an expression as a product, things multiplied together. A common factor is a number or power of $x$ that divides every term.",
+            "The greatest common monomial factor is the largest such factor: the biggest number that divides every coefficient (the numbers in front), times the highest power of $x$ that divides every term, the smallest exponent among the terms.",
+          ]
+        : [
+            "Factoring means writing an expression as a product, here two brackets multiplied together. Multiplying the brackets back out must give the original.",
+            id === "monic-quadratic-factorization"
+              ? "For $x^2 + bx + c$, find two numbers that multiply to $c$ and add to $b$. They go in the brackets, because multiplying out two brackets adds the numbers for the $x$ term and multiplies them for the constant."
+              : "First take out any number that divides every coefficient, the numbers in front of each term. Then split the middle term into two pieces and factor in pairs, called grouping.",
+          ]),
+      ...explanation,
+      `The complete factorization is ${selected.label}.`,
+    ],
     choiceFeedback,
     hint,
     walkthrough,
