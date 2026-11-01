@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { legacySurface } from "./fixtures/legacy-surface";
 import { readFileSync } from "node:fs";
 import {
   generateProblem,
@@ -17,8 +18,9 @@ import {
   type SweepId,
 } from "../src/math/number-domain-axes";
 
-/** Digests of the pre-axis output (before this change), seeds legacy:0..299,
- * over canonical JSON (sorted keys, floats to 9 decimals) and without the private `variant`. */
+/** Digests of the pre-axis surface, seeds legacy:0..299, over canonical JSON
+ * (sorted keys, floats to 9 decimals) of the legacy surface
+ * (fixtures/legacy-surface.ts: no `variant`, no teaching text). */
 const golden = JSON.parse(
   readFileSync(
     new URL("./fixtures/number-domain-sweep-digests.json", import.meta.url),
@@ -41,8 +43,7 @@ const canonical = (value: unknown): unknown =>
           Number(value.toFixed(9))
         : value;
 const digest = (problem: GeneratedProblem) => {
-  const { variant, ...rest } = problem;
-  void variant;
+  const rest = legacySurface(problem);
   return createHash("sha256")
     .update(JSON.stringify(canonical(rest)))
     .digest("hex")
