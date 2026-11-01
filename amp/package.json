@@ -35,6 +35,7 @@
     "production:queue": "tsx scripts/production-queue.ts",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"scripts/**/*.ts\" \"infra/**/*.ts\"",
     "review:plain": "tsx scripts/plain-language-review.ts",
+    "plain:baseline": "tsx scripts/plain-language-baseline.ts",
     "review:math": "mkdir -p artifacts && tsx scripts/publications.ts && tsx scripts/export-math-cases.ts > artifacts/math-review.jsonl && python3 scripts/independent-math-review.py < artifacts/math-review.jsonl",
     "privacy:retention": "tsx scripts/privacy-retention.ts",
     "report:campaign": "tsx scripts/report-campaign.ts",
