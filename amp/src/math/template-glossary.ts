@@ -1,4 +1,5 @@
 import type { TemplateMetadata } from "./contracts";
+import { k8TemplateGlossary } from "./template-glossary-k8";
 
 /** Which glossary entry each ambiguous word means in a template's
  * generated hints and explanations, and which words are ordinary prose there
@@ -3123,13 +3124,27 @@ const glossary: Record<
 export function withTemplateGlossary(
   template: TemplateMetadata,
 ): TemplateMetadata {
-  const g = glossary[template.id];
-  if (!g) return template;
+  const hs = glossary[template.id],
+    k8 = k8TemplateGlossary[template.id];
+  if (!hs && !k8) return template;
+  // The K–8 table decides for K–8 templates: its ordinary words are never linked.
+  const senses = { ...hs?.senses, ...k8?.senses };
+  for (const form of k8?.noLink ?? []) delete senses[form];
   return {
     ...template,
-    glossarySenses: { ...g.senses, ...template.glossarySenses },
+    glossarySenses: { ...senses, ...template.glossarySenses },
     glossaryNoLink: [
-      ...new Set([...(g.noLink ?? []), ...(template.glossaryNoLink ?? [])]),
+      ...new Set([
+        ...(k8?.noLink ?? []),
+        ...(hs?.noLink ?? []),
+        ...(template.glossaryNoLink ?? []),
+      ]),
     ],
   };
 }
+
+/** Every template's sense map: 9–12 here, K–8 in `template-glossary-k8.ts`. */
+export const templateGlossary: Readonly<typeof glossary> = {
+  ...glossary,
+  ...k8TemplateGlossary,
+};
