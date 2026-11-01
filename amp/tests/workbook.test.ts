@@ -6,8 +6,12 @@ import { estimateFrontier, initialLevel } from "../src/learning/frontier";
 import { generatedProblemSchema } from "../src/math/contracts";
 import { generateProblem, templates } from "../src/math/engine";
 import type { SkillEvidence } from "../src/server/evidence";
+import { templateRole } from "../src/learning/placement";
+import { challengePool } from "../src/workbook/challenge-pool";
+import { workbookResultsUrl } from "../src/workbook/links";
 import {
   composeWorkbook,
+  printable,
   workbookCode,
   workbookMinutes,
   type WorkbookMinutes,
@@ -170,16 +174,21 @@ test("the printed workbook numbers every problem and keeps the key after them", 
   const html = workbookHtml(spec, { lessons, skillTitle });
   const count = items(spec).length;
   const lastItem = html.lastIndexOf('class="exercise wb-item');
-  const key = html.indexOf('class="wb-key"');
+  const key = html.indexOf('data-flow="key"');
   assert.ok(key > lastItem, "answer key follows every student problem");
   assert.equal(
-    (html.match(/class="wb-key-item"/g) ?? []).length,
+    (html.match(/class="wb-key-item /g) ?? []).length,
     count,
     "one key entry per problem",
   );
   assert.ok(html.includes(workbookCode(spec)));
   for (let n = 1; n <= count; n++)
-    assert.ok(html.includes(`<h2>${n}. `), `problem ${n}`);
+    assert.ok(
+      html.includes(
+        `<h2><span class="wb-num" aria-label="Problem ${n}">${n}</span>`,
+      ),
+      `problem ${n}`,
+    );
 });
 
 test("no workbook prints the same problem twice", () => {
@@ -208,4 +217,65 @@ test("no workbook prints the same problem twice", () => {
 test("invalid requests are rejected", () => {
   assert.throws(() => compose("third-grade", { minutes: 20 as never }));
   assert.throws(() => compose("third-grade", { number: 0 }));
+});
+
+test("the results page links to the learner's results with a QR code", () => {
+  assert.equal(
+    workbookResultsUrl({
+      baseUrl: "https://amp.corpora.inc/",
+      learnerId: "learner 1",
+      workbookId: "wb/2",
+    }),
+    "https://amp.corpora.inc/learners/learner%201/workbooks/wb%2F2/results",
+  );
+  assert.throws(() =>
+    workbookResultsUrl({
+      baseUrl: "http://example.com",
+      learnerId: "a",
+      workbookId: "b",
+    }),
+  );
+  const spec = compose("third-grade");
+  const plain = workbookHtml(spec, { lessons, skillTitle });
+  assert.ok(!plain.includes('class="wb-qr"'), "no link, no code");
+  const linked = workbookHtml(spec, {
+    lessons,
+    skillTitle,
+    results: {
+      baseUrl: "https://amp.corpora.inc",
+      learnerId: "l1",
+      workbookId: "w1",
+    },
+  });
+  assert.ok(linked.includes('class="wb-qr"'));
+  assert.ok(linked.includes(workbookCode(spec)));
+});
+
+test("the challenge comes from the curated pool, which is printable", () => {
+  for (const id of challengePool) {
+    const t = templates.find((x) => x.id === id);
+    assert.ok(t, `${id} exists`);
+    assert.ok(printable(t), `${id} prints`);
+    assert.equal(templateRole(id), "assessment", id);
+  }
+  for (const id of learners.keys())
+    for (const date of ["2026-11-01", "2026-11-02", "2026-11-03"]) {
+      const { frontier, evidence } = learners.get(id)!;
+      const spec = composeWorkbook({
+        templates,
+        skills,
+        lessons,
+        frontier,
+        evidence,
+        date,
+        learnerKey: id,
+        now,
+      });
+      const challenge = spec.sections.at(-1)!;
+      assert.equal(challenge.kind, "challenge");
+      assert.ok(
+        challengePool.has(challenge.items[0]!.templateId),
+        `${id} ${date}: ${challenge.items[0]!.templateId}`,
+      );
+    }
 });

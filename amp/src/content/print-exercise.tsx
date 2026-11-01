@@ -363,16 +363,20 @@ export function PrintExerciseBody({
   problem,
   solutions,
   workspace,
+  numberLabel,
 }: {
   number: number;
   problem: GeneratedProblem;
   solutions: boolean;
   workspace?: ReactNode;
+  /** Replaces the default "7. " prefix; lesson editions never pass it. */
+  numberLabel?: ReactNode;
 }) {
   return (
     <>
       <h2>
-        {number}. <PrintMathText text={problem.public.prompt} />
+        {numberLabel ?? <>{number}. </>}
+        <PrintMathText text={problem.public.prompt} />
       </h2>
       {problem.public.figure && <Figure figure={problem.public.figure} />}
       {problem.public.response.kind === "point-plot" && (

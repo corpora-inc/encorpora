@@ -7,6 +7,7 @@ import { generateProblem } from "../math/engine";
 import type { Lesson } from "../content/lessons";
 import type { SkillEvidence } from "../server/evidence";
 import { templateGrade } from "../server/mixed-practice";
+import { challengePool } from "./challenge-pool";
 import { paperExclusions } from "./paper-exclusions";
 
 /** A daily workbook: about 30, 45 or 60 minutes of printed work chosen from
@@ -365,29 +366,43 @@ export function composeWorkbook(options: {
       ).map((t) => item(t, "review")),
     );
 
-  // Challenge: just beyond reach, in the strand with the most independent
-  // evidence, preferring problems with several steps or a figure to reason about.
+  // Challenge: just beyond reach, from the curated pool of problems with
+  // several steps or a figure to reason about, in the strand with the most
+  // independent evidence. The band widens step by step at the ends of the
+  // catalog; only if the pool has nothing near the learner does any
+  // template serve.
   const confident = [...new Set(pool.map(strandOf))].sort(
     (a, b) =>
       strandEstimate(options.frontier, b).independent -
         strandEstimate(options.frontier, a).independent || rank(a) - rank(b),
   );
-  const rich = (t: TemplateMetadata) =>
-    !!t.requiredResponseCapability || !!t.requiredFigureCapability;
+  // The three most practiced strands share the challenge, so it changes
+  // from day to day instead of repeating one template.
+  const byConfidence = (a: TemplateMetadata, b: TemplateMetadata) =>
+    Number(confident.indexOf(strandOf(a)) >= 3) -
+      Number(confident.indexOf(strandOf(b)) >= 3) || rank(a.id) - rank(b.id);
+  const inPool = (t: TemplateMetadata) => challengePool.has(t.id);
   const challengePick = (() => {
+    // Gather pool problems from the nearest bands until there are a few to
+    // choose from, so the challenge varies from day to day.
+    const near: TemplateMetadata[] = [];
     for (const [lo, hi] of [
       [0.5, 1.3],
+      [0.2, 1.6],
+      [0, 2],
+      [-1.5, 2.5],
+      [-2.5, 2.5],
+    ] as const) {
+      for (const t of band(lo, hi, inPool)) if (!near.includes(t)) near.push(t);
+      if (near.length >= 4) break;
+    }
+    if (near.length) return near.sort(byConfidence)[0];
+    for (const [lo, hi] of [
       [0.3, 2],
       [0, 13],
     ] as const) {
       const candidates = band(lo, hi);
-      if (!candidates.length) continue;
-      return candidates.sort(
-        (a, b) =>
-          confident.indexOf(strandOf(a)) - confident.indexOf(strandOf(b)) ||
-          Number(rich(b)) - Number(rich(a)) ||
-          rank(a.id) - rank(b.id),
-      )[0];
+      if (candidates.length) return candidates.sort(byConfidence)[0];
     }
     return band(-13, 13).sort(
       (a, b) => gradeOf.get(b.id)! - gradeOf.get(a.id)!,

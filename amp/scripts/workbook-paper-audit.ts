@@ -17,6 +17,7 @@ import { templates } from "../src/math/engine";
 import { templateGrade } from "../src/server/mixed-practice";
 import type { WorkbookItem, WorkbookSpec } from "../src/workbook/compose";
 import { paperExclusions } from "../src/workbook/paper-exclusions";
+import { waitForWorkbookLayout } from "../src/workbook/pdf";
 import { workbookHtml } from "../src/workbook/render";
 
 const nodes = new Map(skills.map((s) => [s.id, s]));
@@ -49,8 +50,9 @@ try {
       level: 6,
       sections: [{ kind: "practice", items }],
     };
-    await page.setContent(workbookHtml(spec, { lessons, skillTitle }));
     await page.emulateMedia({ media: "print" });
+    await page.setContent(workbookHtml(spec, { lessons, skillTitle }));
+    await waitForWorkbookLayout(page, 120_000);
     const found = await page.evaluate(() => {
       const width = document.documentElement.clientWidth;
       return [...document.querySelectorAll(".wb-item")].map((item) => {
