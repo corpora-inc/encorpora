@@ -13,6 +13,7 @@ import {
   type TemplateMetadata,
 } from "../math/contracts.js";
 import { generateProblemFor, templates } from "../math/engine.js";
+import { responseForClient } from "../math/multi-part-choice.js";
 import { hasEntryPolicy } from "../math/sat-numeric-entry-practice.js";
 import { hasFunctionFormsEntryPolicy } from "../math/sat-function-forms-practice.js";
 import { skills } from "../curriculum/catalog.js";
@@ -221,6 +222,10 @@ export class OfflineRepository {
               `offline-v1:${packId}:${variant}:${choice.template.id}`,
               input.figureCapabilities,
             ),
+          );
+          problem.public = responseForClient(
+            problem.public,
+            input.responseCapabilities,
           );
           originals.push(problem);
           items.push({

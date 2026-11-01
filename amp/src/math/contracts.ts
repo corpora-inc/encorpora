@@ -266,6 +266,7 @@ export const responseCapabilities = [
   "multi-part-choice-v1",
   "figure-choice-v1",
   "structured-work-v1",
+  "multi-part-cards-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */

@@ -5,6 +5,7 @@ import type { GeneratedProblem } from "../math/contracts";
 import { answerText } from "../math/selection-response";
 import { plotPoints, pointPlotScene } from "../math/point-plot";
 import {
+  cardRows,
   draftChoices,
   type MultiPartChoiceResponse,
 } from "../math/multi-part-choice";
@@ -59,8 +60,29 @@ function PrintFigureChoice({
   );
 }
 /** A worked list can replace repeated choices only when it quotes every label in order. */
+const printBox = {
+  display: "inline-block",
+  minWidth: "40px",
+  minHeight: "1.5em",
+  margin: "0 4px",
+  padding: "0 6px",
+  border: "1.5px solid #18332f",
+  borderRadius: "6px",
+  textAlign: "center",
+  verticalAlign: "middle",
+  lineHeight: 1.5,
+} as const;
+const printCard = {
+  display: "inline-block",
+  margin: "2px 4px",
+  padding: "0 10px",
+  border: "1px solid #6f8a85",
+  borderRadius: "6px",
+  lineHeight: 1.6,
+} as const;
 /** A multi-part item on paper: the sentence, table or slots with a box per
- * option. Solutions tick the correct box in each part. */
+ * option, or an equation with empty boxes over its cards. Solutions tick the
+ * correct box in each part, or write each card in its box. */
 function PrintMultiPart({
   response,
   answer,
@@ -100,6 +122,55 @@ function PrintMultiPart({
           ))}
         </tbody>
       </table>
+    );
+  }
+  if (response.layout === "cards") {
+    // Styled inline: the shared publication stylesheet stays unchanged.
+    const rows = cardRows(response);
+    return (
+      <>
+        <p
+          className="print-sentence"
+          style={{ textAlign: "center", fontSize: "13pt" }}
+        >
+          {(response.sentence ?? []).map((part, i) => {
+            if ("text" in part)
+              return part.text.split(/\s*\n\s*/).map((line, j) => (
+                <span key={`${i}-${j}`}>
+                  {j > 0 && <br />}
+                  {line && <PrintMathText text={line} />}
+                </span>
+              ));
+            const blank = response.blanks.find((b) => b.id === part.blank)!;
+            const placed = blank.options.find((o) => o.id === key[blank.id]);
+            return (
+              <span key={i} className="print-box" style={printBox}>
+                {placed ? <PrintMathText text={placed.label} /> : "\u00a0"}
+              </span>
+            );
+          })}
+        </p>
+        {!answer && (
+          <p className="print-tray" style={{ textAlign: "center" }}>
+            {rows.map((row, r) => (
+              <span
+                key={r}
+                style={{ display: "inline-block", margin: "0 8px" }}
+              >
+                {row.options.map((o) => (
+                  <span key={o.id} className="print-card" style={printCard}>
+                    <PrintMathText text={o.label} />
+                  </span>
+                ))}
+              </span>
+            ))}
+            <br />
+            {response.reuse
+              ? "A card can fill more than one box."
+              : "Each card fills one box."}
+          </p>
+        )}
+      </>
     );
   }
   return (

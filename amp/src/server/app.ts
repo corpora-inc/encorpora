@@ -58,6 +58,7 @@ import {
   multiPartFeedback,
   multiPartMarks,
   normalizeMultiPart,
+  responseForClient,
 } from "../math/multi-part-choice";
 import {
   markStructuredWork,
@@ -565,6 +566,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
             randomUUID(),
             input.figureCapabilities,
           ),
+        );
+        problem.public = responseForClient(
+          problem.public,
+          input.responseCapabilities,
         );
         problem.practiceEpoch = practice.epoch;
         problem.practiceRevision = practice.revision;

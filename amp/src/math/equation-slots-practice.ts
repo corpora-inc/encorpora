@@ -1,7 +1,10 @@
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
-import { lineTable } from "./scene/author";
+import { array, lineTable } from "./scene/author";
 import { defineAxis } from "./variation/axes";
 import {
+  cardSlot,
+  cardTray,
+  cardValue,
   defineGenerate,
   entry,
   frac,
@@ -16,10 +19,11 @@ import {
 } from "./multi-part-support";
 
 /** Build an equation, inequality, rule or sentence by choosing the piece for
- * each slot (multi-part-choice-v1): the accessible form of dragging numbers,
- * symbols and words into place. Every blank offers the numbers of the story
- * a learner could mistake for its role. */
-const tables = { requiredFigureCapability: "scenes-v1" as const };
+ * each slot (multi-part-choice-v1). An equation is built from cards, the
+ * tap-to-place form of dragging numbers and symbols into place: its tray
+ * holds the numbers of the story and the ones a learner could mistake for a
+ * role, so every box asks which number plays which part. */
+const drawn = { requiredFigureCapability: "scenes-v1" as const };
 export const equationSlotsTemplates: readonly TemplateMetadata[] = [
   {
     id: "booth-equation-slots",
@@ -58,8 +62,9 @@ export const equationSlotsTemplates: readonly TemplateMetadata[] = [
     skillId: "division-facts",
     gradeBand: "3–5",
     ...multiPartCapability,
+    ...drawn,
     description:
-      "Complete a division equation that fits an array with up to 12 rows and 9 columns, choosing the total, the divisor and the quotient, finding either the number of rows or the number in each row.",
+      "Complete a division equation for a drawn array with up to 12 rows and 9 columns by placing number cards for the total, the divisor and the quotient, finding either the number of rows or the number in each row.",
   },
   {
     id: "story-operations-slots",
@@ -88,7 +93,7 @@ export const equationSlotsTemplates: readonly TemplateMetadata[] = [
     skillId: "dependent-variables",
     gradeBand: "6–8",
     ...multiPartCapability,
-    ...tables,
+    ...drawn,
     description:
       "Complete $y = ax + b$ or $y = ax - b$ for a table of four or five pairs by choosing the multiplier, the operation and the constant.",
   },
@@ -99,7 +104,7 @@ export const equationSlotsTemplates: readonly TemplateMetadata[] = [
     skillId: "rule-patterns",
     gradeBand: "3–5",
     ...multiPartCapability,
-    ...tables,
+    ...drawn,
     description:
       "Use a stated rule ($y = x + k$, $y = x - k$ or $y = kx$) to choose the two missing outputs and two missing inputs of a table.",
   },
@@ -183,6 +188,21 @@ const opTex: Record<string, string> = {
   "/": OPS[3],
 };
 const sig = (n: number) => (n < 0 ? `−${-n}` : String(n));
+/** A rational n/d in lowest terms as a card: −3, $\frac{1}{2}$. */
+const ratioCard = (n: number, d: number) => {
+  const g = gcd(n, d) || 1;
+  const [a, b] = [n / g, d / g];
+  return b === 1 ? sig(a) : `$${frac(a, b)}$`;
+};
+/** The first `count` labels of different values: the tray of one row. */
+const distinctCards = (labels: readonly string[], count: number) => {
+  const out: string[] = [];
+  for (const l of labels)
+    if (out.length < count && !out.some((o) => cardValue(o) === cardValue(l)))
+      out.push(l);
+  return out;
+};
+const CARDS_LABEL = "Put a card in each box";
 /** Pool minus the correct label: the other values a learner could pick. */
 const slotOf = (
   id: string,
@@ -392,39 +412,30 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       "distinct amounts",
     );
     need(new Set([rate, one, total, count]).size === 4, "distinct values");
+    // The cost of the items alone is the slip: it leaves out the fee.
+    need(
+      new Set([rate, one, total, rate * count]).size === 4,
+      "distinct cards",
+    );
     const opLabel = fee ? OPS[0] : OPS[1];
-    const a = slotOf("rate", `The amount for each ${unit}`, String(rate), [
-      one,
-      total,
-      count,
-      rate + one,
-    ]);
-    const op = {
-      id: "op",
-      label: "The operation",
-      correct: opLabel,
-      fixed: [OPS[0], OPS[1]],
-    } as Slot;
-    const c = slotOf(
+    const tray = cardTray([rate, one, total, rate * count]);
+    const a = cardSlot("rate", `The amount for each ${unit}`, rate, tray);
+    const op = cardSlot("op", "The operation", opLabel, [OPS[0], OPS[1]]);
+    const c = cardSlot(
       "once",
       fee ? "The fixed fee" : "The discount",
-      String(one),
-      [rate, total, count, total - rate],
-    );
-    const t = slotOf("total", "The total", String(total), [
-      total - one,
-      total + one,
-      rate * count,
       one,
-    ]);
+      tray,
+    );
+    const t = cardSlot("total", "The total", total, tray);
     const built =
       axes.form === "expression-first"
         ? inlineSentence([a, ` $${v}$ `, op, " ", c, " $=$ ", t])
         : inlineSentence([t, ` $=$ `, a, ` $${v}$ `, op, " ", c]);
     return multiPartProblem(meta, seed, r, {
       prompt: `A fair charges ${rate} dollars for each ${unit} and ${fee ? `a fixed fee of ${one} dollars` : `gives a discount of ${one} dollars`}. A group pays ${total} dollars in all for $${v}$ ${units}. Complete the equation.`,
-      layout: "inline",
-      label: "Choose the number or symbol for each gap",
+      layout: "cards",
+      label: CARDS_LABEL,
       slots: built.slots,
       sentence: built.sentence,
       hint: `${rate} dollars is charged for each ${unit}, so it is multiplied by $${v}$. Ask whether the ${one} dollars changes with $${v}$ or is paid only once.`,
@@ -458,31 +469,28 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       : strict
         ? "more than"
         : "at least";
-    const k = slotOf(
+    need(limit - known !== known, "distinct cards");
+    const tray = cardTray([known, limit, limit - known, limit + known]);
+    const k = cardSlot(
       "known",
       spend ? "The ticket price" : "The amount saved",
-      String(known),
-      [limit, limit - known, limit + known],
+      known,
+      tray,
     );
-    const sym = {
-      id: "sym",
-      label: "The inequality symbol",
-      correct: symbol,
-      fixed: bank,
-    } as Slot;
-    const l = slotOf(
+    const sym = cardSlot("sym", "The inequality symbol", symbol, bank);
+    const l = cardSlot(
       "limit",
       spend ? "The money to spend" : "The goal",
-      String(limit),
-      [known, limit - known, limit + known],
+      limit,
+      tray,
     );
     const built = inlineSentence([k, ` $+ ${v}$ `, sym, " ", l]);
     return multiPartProblem(meta, seed, r, {
       prompt: spend
         ? `Jo has ${limit} dollars. A ticket costs ${known} dollars. Jo will spend $s$ dollars on snacks, and the ticket and the snacks together must cost ${wording} the ${limit} dollars Jo has. Complete the inequality.`
         : `Lena has saved ${known} dollars toward a bike that costs ${limit} dollars. She will save $d$ dollars more, and she wants to have ${wording} ${limit} dollars. Complete the inequality.`,
-      layout: "inline",
-      label: "Choose the number or symbol for each gap",
+      layout: "cards",
+      label: CARDS_LABEL,
       slots: built.slots,
       sentence: built.sentence,
       hint: `The words "${wording}" name the inequality symbol: ask whether the amounts can be equal to ${limit} dollars. The ${known} dollars is added to $${v}$.`,
@@ -505,19 +513,13 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         const d = r(3, 8);
         const g = r(2, 5);
         need(g !== d, "different numbers");
-        const pool = [
-          f(1, d),
-          String(g),
-          f(1, d * g),
-          f(g, d),
-          String(d),
-          String(d * g),
-          f(1, d + g),
-        ];
+        // Multiplying instead of dividing gives g/d; d is the other number
+        // in sight.
+        const tray = cardTray([f(1, d), g, f(1, d * g), ratioCard(g, d), d]);
         const parts = [
-          slotOf("whole", "The amount shared", f(1, d), pool),
-          slotOf("by", "The number of people", String(g), pool),
-          slotOf("each", "Each person's share", f(1, d * g), pool),
+          cardSlot("whole", "The amount shared", f(1, d), tray),
+          cardSlot("by", "The number of people", g, tray),
+          cardSlot("each", "Each person's share", f(1, d * g), tray),
         ];
         const built = inlineSentence([
           parts[0]!,
@@ -528,8 +530,8 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         ]);
         return multiPartProblem(meta, seed, r, {
           prompt: `A baker has $${frac(1, d)}$ of a ${food} left and shares it equally among ${g} people. Complete the equation that finds each person's share.`,
-          layout: "inline",
-          label: "Choose a number for each gap",
+          layout: "cards",
+          label: CARDS_LABEL,
           slots: built.slots,
           sentence: built.sentence,
           hint: `Sharing $${frac(1, d)}$ equally among ${g} people cuts each of those parts into ${g} smaller equal parts. Decide which operation does that.`,
@@ -543,19 +545,11 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         const d = r(2, 6);
         const w = r(2, 6);
         need(w !== d, "different numbers");
-        const pool = [
-          String(w),
-          f(1, d),
-          String(w * d),
-          f(1, w * d),
-          f(w, d),
-          String(d),
-          String(w + d),
-        ];
+        const tray = cardTray([w, f(1, d), w * d, d, w + d]);
         const parts = [
-          slotOf("whole", "The total distance", String(w), pool),
-          slotOf("piece", "The length of one lap", f(1, d), pool),
-          slotOf("count", "The number of laps", String(w * d), pool),
+          cardSlot("whole", "The total distance", w, tray),
+          cardSlot("piece", "The length of one lap", f(1, d), tray),
+          cardSlot("count", "The number of laps", w * d, tray),
         ];
         const built = inlineSentence([
           parts[0]!,
@@ -566,8 +560,8 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         ]);
         return multiPartProblem(meta, seed, r, {
           prompt: `A trail is ${w} miles long, and one lap of a track is $${frac(1, d)}$ mile. Complete the equation that finds how many laps make ${w} miles.`,
-          layout: "inline",
-          label: "Choose a number for each gap",
+          layout: "cards",
+          label: CARDS_LABEL,
           slots: built.slots,
           sentence: built.sentence,
           hint: `Each mile holds $${d}$ laps of $${frac(1, d)}$ mile. To count how many laps of $${frac(1, d)}$ mile fit in ${w} miles, decide whether to divide or multiply.`,
@@ -580,21 +574,10 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       const d = r(2, 6);
       const g = r(2, 6);
       need(g !== d, "different numbers");
+      const tray = cardTray([g, d, d * g, d + g]);
       const parts = [
-        slotOf("by", "The number of people", String(g), [
-          g,
-          d,
-          d * g,
-          d + g,
-          g + 1,
-        ]),
-        slotOf("den", "The denominator of each share", String(d * g), [
-          d,
-          g,
-          d + g,
-          d * g + 1,
-          d * g - 1,
-        ]),
+        cardSlot("by", "The number of people", g, tray),
+        cardSlot("den", "The denominator of each share", d * g, tray),
       ];
       const built = inlineSentence([
         `Each person gets $${frac(1, d)}\\div$ `,
@@ -605,8 +588,8 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       ]);
       return multiPartProblem(meta, seed, r, {
         prompt: `A jug holds $${frac(1, d)}$ liter of juice. It is shared equally among ${g} people. Complete the sentence.`,
-        layout: "inline",
-        label: "Choose a number for each gap",
+        layout: "cards",
+        label: CARDS_LABEL,
         slots: built.slots,
         sentence: built.sentence,
         hint: `The jug is $${frac(1, d)}$ liter, and each of its parts is cut into as many smaller parts as there are people. Count how many of the smaller parts make a whole liter.`,
@@ -625,20 +608,21 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
     const total = rows * cols;
     const divisor = axes.ask === "rows" ? cols : rows;
     const quotient = axes.ask === "rows" ? rows : cols;
-    const pool = [rows, cols, total, rows + cols, total - rows, total + cols];
+    // Adding the sides instead of multiplying them is the slip.
+    const tray = cardTray([rows, cols, total, rows + cols]);
     const parts = [
-      slotOf("total", "The number of counters", String(total), pool),
-      slotOf(
+      cardSlot("total", "The number of counters", total, tray),
+      cardSlot(
         "by",
         axes.ask === "rows" ? "The number in each row" : "The number of rows",
-        String(divisor),
-        pool,
+        divisor,
+        tray,
       ),
-      slotOf(
+      cardSlot(
         "quot",
         axes.ask === "rows" ? "The number of rows" : "The number in each row",
-        String(quotient),
-        pool,
+        quotient,
+        tray,
       ),
     ];
     const built = inlineSentence([
@@ -649,11 +633,17 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       parts[2]!,
     ]);
     return multiPartProblem(meta, seed, r, {
-      prompt: `Counters are arranged in an array of ${rows} rows with ${cols} counters in each row. Complete the division equation that ${axes.ask === "rows" ? "uses the number in each row to find the number of rows" : "uses the number of rows to find the number in each row"}.`,
-      layout: "inline",
-      label: "Choose a number for each gap",
+      prompt: `The array has ${rows} rows with ${cols} counters in each row. Complete the division that ${axes.ask === "rows" ? "uses the number in each row to find the number of rows" : "uses the number of rows to find the number in each row"}.`,
+      layout: "cards",
+      label: CARDS_LABEL,
       slots: built.slots,
       sentence: built.sentence,
+      figure: {
+        kind: "scene",
+        scene: array(rows, cols, { shape: "dot" }).scene({
+          title: `An array of counters in ${rows} rows with ${cols} in each row`,
+        }),
+      },
       hint: `The array has ${rows} rows and ${cols} counters in each row. First find how many counters there are in all, then ask which of the two numbers you divide by.`,
       explanation: [
         `The array holds $${rows}\\times ${cols}=${total}$ counters.`,
@@ -703,8 +693,9 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
     ]);
     return multiPartProblem(meta, seed, r, {
       prompt: story,
-      layout: "inline",
-      label: "Choose an operation for each gap",
+      layout: "cards",
+      reuse: true,
+      label: CARDS_LABEL,
       slots: built.slots,
       sentence: built.sentence,
       hint: `Think about what ${nums[0]} and ${nums[1]} stand for in the story, and whether they are groups of the same size or amounts to combine.`,
@@ -760,8 +751,9 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       ]);
       return multiPartProblem(meta, seed, r, {
         prompt: story,
-        layout: "inline",
-        label: "Choose an operation for each gap",
+        layout: "cards",
+        reuse: true,
+        label: CARDS_LABEL,
         slots: built.slots,
         sentence: built.sentence,
         hint: `Start from ${nums[0]} tulips and read the story in order. For each number that follows, ask whether it adds tulips to the shop or takes them away.`,
@@ -785,27 +777,19 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       const xs = Array.from({ length: n }, (_, i) => start + i * step);
       const ys = xs.map((x) => a * x + (minus ? -b : b));
       need(ys.every((y) => y > 0) && b !== a, "a table of positive outputs");
+      // The change in y for a step of x, the first y and the sum of the two
+      // numbers are the slips.
+      const tray = cardTray(
+        distinctCards([a, b, ys[1]! - ys[0]!, ys[0]!, a + b].map(String), 4),
+      );
+      need(tray.length === 4, "four cards");
       const slotsList = [
-        slotOf("mult", "The number multiplied by $x$", String(a), [
-          b,
-          ys[0]!,
-          xs[0]! + 1,
-          a + b,
-          ys[1]! - ys[0]!,
+        cardSlot("mult", "The number multiplied by $x$", a, tray),
+        cardSlot("op", "The operation", minus ? OPS[1] : OPS[0], [
+          OPS[0],
+          OPS[1],
         ]),
-        {
-          id: "op",
-          label: "The operation",
-          correct: minus ? OPS[1] : OPS[0],
-          fixed: [OPS[0], OPS[1]],
-        } as Slot,
-        slotOf("const", "The constant", String(b), [
-          a,
-          ys[0]!,
-          xs[0]!,
-          a + b,
-          ys[0]! - a,
-        ]),
+        cardSlot("const", "The constant", b, tray),
       ];
       const built = inlineSentence([
         "$y=$ ",
@@ -818,8 +802,8 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       return multiPartProblem(meta, seed, r, {
         prompt:
           "The table shows pairs of $x$ and $y$ values that follow one equation. Complete the equation.",
-        layout: "inline",
-        label: "Choose a number or symbol for each gap",
+        layout: "cards",
+        label: CARDS_LABEL,
         slots: built.slots,
         sentence: built.sentence,
         figure: tableFigure(
@@ -937,25 +921,18 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       const u = unit / 100;
       const money = (v: number) =>
         cents ? v.toFixed(2) : String(Math.round(v));
+      need(u !== count, "distinct cards");
+      // Multiplying the total by the count instead of dividing is the slip.
+      const tray = cardTray([
+        money(total),
+        String(count),
+        money(u),
+        money(total * count),
+      ]);
       const parts = [
-        slotOf(
-          "total",
-          "The total cost in dollars",
-          money(total),
-          [u, total + count, total - u, total + 1].map(money),
-        ),
-        slotOf(
-          "count",
-          "The number of pairs",
-          String(count),
-          [count + 1, count - 1, count + 2, Math.round(u)].map(String),
-        ),
-        slotOf(
-          "unit",
-          "The price of one pair in dollars",
-          money(u),
-          [total, total / (count + 1), total / 2, u + 1].map(money),
-        ),
+        cardSlot("total", "The total cost in dollars", money(total), tray),
+        cardSlot("count", "The number of pairs", count, tray),
+        cardSlot("unit", "The price of one pair in dollars", money(u), tray),
       ];
       const built = inlineSentence([
         parts[0]!,
@@ -967,8 +944,8 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       ]);
       return multiPartProblem(meta, seed, r, {
         prompt: `${count} ${item} cost ${show(total)} dollars in all, and every pair costs the same. Complete the sentence that finds the price of one pair.`,
-        layout: "inline",
-        label: "Choose a number for each gap",
+        layout: "cards",
+        label: CARDS_LABEL,
         slots: built.slots,
         sentence: built.sentence,
         hint: `The price of one pair is the ${show(total)} dollars shared equally among the ${count} pairs. Decide which number is divided and which number it is divided by.`,
@@ -989,18 +966,12 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
     );
     const diameter = radius * 2;
     const shown = axes.given === "diameter" ? diameter : radius;
-    const pool = [
-      radius,
-      diameter,
-      depth,
-      radius * 2 + depth,
-      radius + depth,
-      depth * 2,
-    ];
+    // Using the diameter as the radius is the slip.
+    const tray = cardTray([radius, diameter, depth]);
     const parts = [
-      slotOf("r1", "The first radius", String(radius), pool),
-      slotOf("r2", "The second radius", String(radius), pool),
-      slotOf("h", "The height", String(depth), pool),
+      cardSlot("r1", "The first radius", radius, tray),
+      cardSlot("r2", "The second radius", radius, tray),
+      cardSlot("h", "The height", depth, tray),
     ];
     const built = inlineSentence([
       "$V=\\pi\\times$ ",
@@ -1012,8 +983,9 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
     ]);
     return multiPartProblem(meta, seed, r, {
       prompt: `A round pool is ${shown} feet ${axes.given === "diameter" ? "across" : "from its center to its edge"} and ${depth} feet deep. Complete the equation for the volume $V$ of the pool in cubic feet.`,
-      layout: "inline",
-      label: "Choose a number for each gap",
+      layout: "cards",
+      reuse: true,
+      label: CARDS_LABEL,
       slots: built.slots,
       sentence: built.sentence,
       hint: `The base of the pool is a circle with area $\\pi r^2$. The pool is ${shown} feet ${axes.given === "diameter" ? "across" : "from center to edge"}: decide whether that length is the radius $r$ before you use it.`,
@@ -1034,18 +1006,25 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
     need(x0 !== y0, "different coordinates");
     const x1 = (x0 * k[0]) / k[1];
     const y1 = (y0 * k[0]) / k[1];
-    const label = (n: number, d: number) =>
-      d === 1 ? String(n) : `$${frac(n, d)}$`;
-    const correct = label(k[0], k[1]);
-    const pool = [
-      label(k[1], k[0]),
-      label(k[0] + 1, 1),
-      label(k[0] * k[0], 1),
-      label(-k[0], k[1]),
-    ];
+    const correct = ratioCard(k[0], k[1]);
+    // The reciprocal, the opposite, and the differences of the coordinates
+    // (adding instead of multiplying) are the slips.
+    const tray = cardTray(
+      distinctCards(
+        [
+          correct,
+          ratioCard(k[1], k[0]),
+          ratioCard(-k[0], k[1]),
+          sig(x1 - x0),
+          sig(y1 - y0),
+        ],
+        5,
+      ),
+    );
+    need(tray.length === 5, "five cards");
     const parts = [
-      slotOf("kx", "The multiplier of $x$", correct, pool),
-      slotOf("ky", "The multiplier of $y$", correct, pool),
+      cardSlot("kx", "The multiplier of $x$", correct, tray),
+      cardSlot("ky", "The multiplier of $y$", correct, tray),
     ];
     const built = inlineSentence([
       "$(x, y)\\to ($",
@@ -1056,8 +1035,9 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
     ]);
     return multiPartProblem(meta, seed, r, {
       prompt: `A dilation centered at the origin takes the vertex $A(${x0}, ${y0})$ to its image $A'(${x1}, ${y1})$. Complete the rule of the dilation.`,
-      layout: "inline",
-      label: "Choose the multiplier for each coordinate",
+      layout: "cards",
+      reuse: true,
+      label: CARDS_LABEL,
       slots: built.slots,
       sentence: built.sentence,
       hint: `Compare the $x$-coordinate ${x0} of $A$ with the $x$-coordinate ${x1} of $A'$: by what number is ${x0} multiplied to get ${x1}? Check it on the $y$-coordinates.`,
@@ -1172,25 +1152,21 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       const center = minus ? h : -h;
       const low = center - k;
       const high = center + k;
-      const pool = [
-        center - k,
-        center + k,
-        -center - k,
-        -center + k,
-        k,
-        -k,
-        k + h,
-        h - k,
-      ].map(sig);
+      // Opposite signs (solving with the wrong sign of h) and the square
+      // roots themselves are the slips.
+      const tray = cardTray(
+        distinctCards([low, high, -low, -high, k, -k].map(sig), 6),
+      );
+      need(tray.length === 6, "six cards");
       const sol = [
-        slotOf("low", "The lesser solution", sig(low), pool),
-        slotOf("high", "The greater solution", sig(high), pool),
+        cardSlot("low", "The lesser solution", sig(low), tray),
+        cardSlot("high", "The greater solution", sig(high), tray),
       ];
       const built = inlineSentence(["$x=$ ", sol[0]!, " or $x=$ ", sol[1]!]);
       return multiPartProblem(meta, seed, r, {
-        prompt: `Solve $(x ${minus ? "-" : "+"} ${h})^2 = ${k * k}$. Choose the lesser and the greater solution.`,
-        layout: "inline",
-        label: "Choose the two solutions",
+        prompt: `Solve $(x ${minus ? "-" : "+"} ${h})^2 = ${k * k}$. Put the lesser solution first.`,
+        layout: "cards",
+        label: CARDS_LABEL,
         slots: built.slots,
         sentence: built.sentence,
         hint: `The square of $x ${minus ? "-" : "+"} ${h}$ is ${k * k}. Take the square root of both sides, remembering that there are two square roots of ${k * k}, then solve for $x$.`,

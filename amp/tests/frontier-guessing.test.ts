@@ -9,6 +9,7 @@ import {
   problemGuessChance,
 } from "../src/math/guess-chance";
 import { skills } from "../src/curriculum/catalog";
+import { multiPartGuessChance } from "../src/math/multi-part-choice";
 import { templateGrade } from "../src/server/mixed-practice";
 
 const nodes = new Map(skills.map((skill) => [skill.id, skill]));
@@ -175,12 +176,11 @@ test("guess chance comes from each family's answer schema and is never understat
           `${template.id} seed ${i}: ${response.options.length} options, chance ${chance}`,
         );
       if (response.kind === "multi-part-choice")
-        // One combination of one option per blank among all combinations.
+        // One combination among all: one option per blank, and for cards
+        // used once, one fewer card for each later box of a tray row.
         assert.ok(
-          chance >=
-            1 / response.blanks.reduce((n, b) => n * b.options.length, 1) -
-              1e-12,
-          template.id,
+          chance >= multiPartGuessChance(response) - 1e-12,
+          `${template.id} seed ${i}: ${multiPartGuessChance(response)} > ${chance}`,
         );
       if (response.kind === "multi-select") {
         // Enumerate permitted sets independently of the binomial implementation.

@@ -1,7 +1,8 @@
-/* Multi-part choice: blanks in a sentence, labeled slots, or a match table.
-   Each blank is as wide as its widest option from the first frame, menus
-   open over the page, and review marks draw inside the controls, so
-   choosing, checking and feedback never move anything. */
+/* Multi-part choice: blanks in a sentence, labeled slots, a match table, or
+   an equation filled from a tray of cards. Each blank is as wide as its
+   widest option from the first frame, menus open over the page, a placed
+   card leaves its outline in the tray, and review marks draw inside the
+   controls, so choosing, checking and feedback never move anything. */
 .multi-part {
   flex: none;
   width: 100%;
@@ -13,6 +14,9 @@
   margin: 0;
   font-size: var(--text-body);
   line-height: 1.6;
+  /* Under the centered question. */
+  text-align: center;
+  text-wrap: balance;
 }
 .multi-part-blank {
   position: relative;
@@ -462,5 +466,118 @@
     font-weight: 600;
     line-height: 1.25;
     text-align: start;
+  }
+}
+
+/* ---------- cards: an equation with boxes, and a tray of cards ---------- */
+.multi-part[data-layout="cards"] {
+  display: grid;
+  gap: var(--space-5);
+}
+.multi-part[data-layout="cards"] .multi-part-sentence {
+  font-size: clamp(20px, 2.6vw, 26px);
+  line-height: 1.9;
+}
+/* A line breaks between a formula and a box, never inside a formula. */
+.multi-part[data-layout="cards"] .multi-part-sentence .katex {
+  white-space: nowrap;
+}
+.multi-part-box {
+  min-width: 64px;
+  min-height: 56px;
+  padding: 0 var(--space-3);
+  font-size: inherit;
+  line-height: 1.15;
+  vertical-align: middle;
+}
+/* The box the next card goes to. */
+.multi-part-box[data-current] {
+  border-color: var(--color-primary);
+  background: var(--color-surface-raised-active);
+  color: var(--color-on-surface-raised);
+}
+.multi-part-tray {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+}
+.multi-part-tray-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+}
+.multi-part-card {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
+  min-width: 64px;
+  min-height: 56px;
+  margin: 0;
+  padding: var(--space-1) var(--space-3);
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  box-shadow: 0 2px 0 var(--color-border-strong);
+  font: inherit;
+  font-size: clamp(20px, 2.6vw, 24px);
+  font-weight: 600;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.multi-part-card:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background: var(--color-surface-raised-hover);
+  color: var(--color-on-surface-raised);
+}
+.multi-part-card:active:not(:disabled) {
+  background: var(--color-surface-raised-active);
+  color: var(--color-on-surface-raised);
+}
+.multi-part-card:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+/* No box can take this card now; it stays legible. */
+.multi-part-card:disabled {
+  opacity: 1;
+  cursor: default;
+}
+/* A placed card leaves its outline, the same size, in the tray. */
+.multi-part-card[data-used] {
+  border-style: dashed;
+  background: transparent;
+  box-shadow: none;
+}
+.multi-part-card[data-used] .multi-part-card-label {
+  visibility: hidden;
+}
+/* Phones: an equation of four boxes stays on one line, and four cards in
+   one row of the tray. */
+@media (max-width: 479px) {
+  .multi-part[data-layout="cards"] {
+    gap: var(--space-4);
+  }
+  .multi-part-box {
+    min-width: var(--target-size);
+    min-height: var(--target-size);
+    margin: 3px 1px;
+    padding: 0 var(--space-2);
+  }
+  .multi-part-tray {
+    padding: var(--space-2);
+  }
+  .multi-part-card {
+    min-width: 56px;
+    min-height: var(--target-size);
+    padding: var(--space-1) var(--space-2);
   }
 }
