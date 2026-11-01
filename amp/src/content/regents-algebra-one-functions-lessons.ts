@@ -216,7 +216,7 @@ export const regentsAlgebraOneFunctionLessons = [
       ],
       example: {
         prompt:
-          "The relation $\\{(-2,3),(0,5),(4,-1),(k,7)\\}$ is a function. Which of $k=-2$, $0$, $4$, $1$ is possible?",
+          "The relation made of the pairs $(-2,3)$, $(0,5)$, $(4,-1)$ and $(k,7)$ is a function. Which of $k=-2$, $0$, $4$, $1$ is possible?",
         steps: [
           "List the inputs used so far: $-2$, 0 and 4, with outputs 3, 5 and $-1$.",
           "$k=-2$ would give the input $-2$ two outputs, 3 and 7, which is not allowed. The same problem happens for $k=0$ and $k=4$.",

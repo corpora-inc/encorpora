@@ -530,14 +530,7 @@ const noLink = [
 
 const stripFormat = (e: Entry): ProblemMethod => ({
   goal: e.goal ?? e.summary,
-  senses: {
-    side: "side-of-equation",
-    sides: "side-of-equation",
-    term: "term-expression",
-    terms: "term-expression",
-    ...senses,
-    ...e.senses,
-  },
+  senses: { ...senses, ...e.senses },
   noLink,
   intuition: e.intuition,
   terms: e.terms,
@@ -556,14 +549,7 @@ export const pointPlotLessons: Lesson[] = entries.map((e) => ({
   id: e.id,
   title: e.title,
   summary: e.summary,
-  senses: {
-    side: "side-of-equation",
-    sides: "side-of-equation",
-    term: "term-expression",
-    terms: "term-expression",
-    ...senses,
-    ...e.senses,
-  },
+  senses: { ...senses, ...e.senses },
   noLink,
   templateIds: [e.id],
   objectives: [...e.objectives],
