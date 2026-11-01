@@ -63,6 +63,11 @@ export function TermCard({
 
   useLayoutEffect(() => {
     const element = dialog.current!;
+    // The word holds focus as the dialog opens, so a browser that restores
+    // focus itself when the dialog closes (WebKit, after a tap that does not
+    // focus buttons) restores it to the word too.
+    if (origin.isConnected && document.activeElement !== origin)
+      origin.focus({ preventScroll: true });
     if (!element.open) element.showModal();
     return () => {
       if (element.open) element.close();
