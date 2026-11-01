@@ -512,7 +512,7 @@ test("fraction rates agree with distance divided by time", () => {
       t: readonly [number, number];
       d: readonly [number, number];
     }[];
-    const m = /^(\w+): \$(.+)\$ miles per hour$/.exec(label)!;
+    const m = /^(\w+): \$(.+)\$ miles? per hour$/.exec(label)!;
     const row = rows.find((r) => r.day === m[1])!;
     return near(tex(m[2]!), row.d[0] / row.d[1] / (row.t[0] / row.t[1]));
   });

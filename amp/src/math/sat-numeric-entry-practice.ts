@@ -1,4 +1,4 @@
-import { nounFor } from "./agreement";
+import { nounFor, article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, random } from "./distribution-practice";
 import { defineAxis } from "./variation/axes";
@@ -1048,7 +1048,7 @@ function rateNumeric(r: R): Case {
     if (!terminating(answer)) continue;
     return {
       variant: "mixture",
-      prompt: `How many liters of a ${p2}% acid solution must be added to ${A} liters of a ${p1}% acid solution to make a ${pt}% acid solution?`,
+      prompt: `How many liters of ${article(p2)} ${p2}% acid solution must be added to ${A} liters of ${article(p1)} ${p1}% acid solution to make ${article(pt)} ${pt}% acid solution?`,
       answer,
       hint: `Let $z$ be the liters added. The acid before mixing and after mixing must be equal: ${p1}% of ${A} liters plus ${p2}% of $z$ liters equals ${pt}% of $(${A}+z)$ liters.`,
       explanation: [

@@ -1,4 +1,4 @@
-import { nounFor } from "./agreement";
+import { nounFor, article } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -1927,7 +1927,7 @@ function aaSimilarity(r: Random): Built {
     ),
     wrong: [
       {
-        label: `Similar by AA: both triangles have a ${kept}° angle`,
+        label: `Similar by AA: both triangles have ${article(kept)} ${kept}° angle`,
         feedback:
           "One pair of equal angles is not enough. AA needs two pairs of equal angles.",
       },

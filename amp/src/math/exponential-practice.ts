@@ -1,4 +1,4 @@
-import { count as plural } from "./agreement";
+import { count as plural, article } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -324,7 +324,7 @@ function modelValue(r: Rand, axes: Record<string, string> = {}): Draft {
       h = pick(r, [2, 3, 4, 5, 6, 8, 12]),
       m = 2 ** t * r(5, 50);
     return {
-      prompt: `A patient takes a ${m} mg dose of a medicine. The amount in the body halves every ${h} hours. How many milligrams remain after ${h * t} hours?`,
+      prompt: `A patient takes ${article(m)} ${m} mg dose of a medicine. The amount in the body halves every ${h} hours. How many milligrams remain after ${h * t} hours?`,
       answer: `${m / 2 ** t}`,
       hint: `First count the halvings: ${h * t} hours ÷ ${h} hours. Then halve ${m} mg that many times.`,
       explanation: [
@@ -581,7 +581,7 @@ function linearOrExponential(r: Rand): Draft {
       kind === "linear"
         ? `Here the same ${plant ? `${step} cm` : `${step} dollars`} is added each ${period}. The difference from one ${period} to the next never changes.`
         : kind === "exponential"
-          ? `Here a ${pct}% increase keeps the whole amount and adds ${pct}% of it. That multiplies by ${factor(pct)} each ${period}, so the ratio never changes.`
+          ? `Here ${article(pct)} ${pct}% increase keeps the whole amount and adds ${pct}% of it. That multiplies by ${factor(pct)} each ${period}, so the ratio never changes.`
           : `Here the amount added grows each ${period}, so the differences change. The ratios change too, because no single factor gives this pattern.`,
       kind === "linear"
         ? `So ${what} is modeled by a linear function.`

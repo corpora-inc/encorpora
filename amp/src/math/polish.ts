@@ -1,5 +1,3 @@
-import { article } from "./agreement";
-
 /** Final copy-edit for generated text. Generators build sentences from
  * numbers; this pass makes them read correctly for every number, including 1. */
 /** Words after a bare 1 that keep their final s (not plural nouns). */
@@ -125,27 +123,6 @@ export function polish(text: string): string {
       // "1x²" → "x²"
       .replace(/(^|[^\d./])1([a-z])(?![a-z])/g, "$1$2")
   );
-}
-
-/** "a 8-foot ladder" → "an 8-foot ladder", "an 5" → "a 5": the article
- * before a number follows how its whole part is said (`article`; "an 8.5",
- * "a 0.8"). Typeset math
- * (`$…$`) is left alone. Safe for any generated text, algebra included. */
-export function articles(text: string): string {
-  return text
-    .split("$")
-    .map((part, i) =>
-      i % 2
-        ? part
-        : part.replace(
-            /(^|[^\p{L}\p{N}])([Aa])n? (?=(\d{1,3}(?:,\d{3})+|\d+)(?!\d))/gu,
-            (match, before: string, a: string, digits: string) => {
-              const word = article(digits);
-              return `${before}${a === "A" ? word[0]!.toUpperCase() + word.slice(1) : word} `;
-            },
-          ),
-    )
-    .join("$");
 }
 
 /** Shows tenths, hundredths and thousandths as decimals: 8379/100 → 83.79.

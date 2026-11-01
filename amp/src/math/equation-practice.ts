@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -404,7 +405,7 @@ const oneStepStories: Story[] = [
     form: "sub",
     v: "r",
     text: (p, left) =>
-      `A ${p}-centimeter piece was cut from a ribbon, leaving ${left} centimeters. Let $r$ be the ribbon's original length, in centimeters.`,
+      `${article(p, true)} ${p}-centimeter piece was cut from a ribbon, leaving ${left} centimeters. Let $r$ be the ribbon's original length, in centimeters.`,
   },
   {
     key: "tickets",
@@ -753,7 +754,7 @@ function twoStepStory(r: Random): TwoStepStory {
       key: "gym",
       model: "plain",
       v: "m",
-      story: `A gym charges a ${fee}-dollar sign-up fee plus ${rate} dollars per month. Ravi has paid ${rate * x + fee} dollars in all.`,
+      story: `A gym charges ${article(fee)} ${fee}-dollar sign-up fee plus ${rate} dollars per month. Ravi has paid ${rate * x + fee} dollars in all.`,
       define: "Let $m$ be the number of months Ravi has paid for.",
       question: "For how many months has Ravi paid?",
       label: "Number of months",

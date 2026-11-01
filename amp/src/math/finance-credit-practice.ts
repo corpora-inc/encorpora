@@ -1,4 +1,4 @@
-import { count } from "./agreement";
+import { count, article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, random } from "./distribution-practice";
 
@@ -662,7 +662,7 @@ export function loanTotalCostCase(seed: string): FinanceCase {
         ],
         [
           c(p * (months + 12)),
-          `A ${years}-year loan has ${months} monthly payments.`,
+          `${article(years, true)} ${years}-year loan has ${months} monthly payments.`,
         ],
       ]),
     }),
@@ -1144,7 +1144,7 @@ export function creditCostConceptsCase(seed: string): FinanceCase {
         given: { B, apr, minimum: min },
         value: i,
         problem: finish(m, seed, r, {
-          prompt: `${who}'s statement balance is ${usd(B)} on a card with a ${apr}% APR, so the monthly rate is ${mr}. Paying the full balance by the due date costs no interest. If ${who} instead pays only the ${usd(min * 100)} minimum, interest for the month is charged on the unpaid part of the balance, rounded to the nearest cent. How much more interest does ${who} pay by paying only the minimum than by paying in full?`,
+          prompt: `${who}'s statement balance is ${usd(B)} on a card with ${article(apr)} ${apr}% APR, so the monthly rate is ${mr}. Paying the full balance by the due date costs no interest. If ${who} instead pays only the ${usd(min * 100)} minimum, interest for the month is charged on the unpaid part of the balance, rounded to the nearest cent. How much more interest does ${who} pay by paying only the minimum than by paying in full?`,
           hint: `Paying in full costs 0 interest, so the extra interest is the whole interest charge. The unpaid part is ${usd(B)} minus the ${usd(min * 100)} payment; take ${mr} of that.`,
           explanation: [
             `Unpaid part: ${usd(B)} − ${usd(min * 100)} = ${usd(unpaid)}.`,
@@ -1188,7 +1188,7 @@ export function creditCostConceptsCase(seed: string): FinanceCase {
         given: { B, apr1: apr, apr2 },
         value: diff,
         problem: finish(m, seed, r, {
-          prompt: `${who} carries a balance of ${usd(B)} for one month. Card X has a ${apr}% APR and Card Y has a ${apr2}% APR. Each card's monthly rate is its APR ÷ 12, and each month's interest is rounded to the nearest cent. How much less interest does Card X charge for the month?`,
+          prompt: `${who} carries a balance of ${usd(B)} for one month. Card X has ${article(apr)} ${apr}% APR and Card Y has ${article(apr2)} ${apr2}% APR. Each card's monthly rate is its APR ÷ 12, and each month's interest is rounded to the nearest cent. How much less interest does Card X charge for the month?`,
           hint: `Find each card's monthly rate by dividing its APR by 12. Take that percent of ${usd(B)} for each card, round each to the cent, then subtract.`,
           explanation: [
             `Card X: ${pctText(apr / 12)} of ${usd(B)} = ${usd(i1)}.`,

@@ -399,7 +399,7 @@ import { extendedTemplates, generateExtendedProblem } from "./extended";
 import { familyRegistry } from "../families/registry";
 import { createHash } from "node:crypto";
 import { makeTenHops } from "./scene/explanations";
-import { articles, mathLabel, polish } from "./polish";
+import { mathLabel, polish } from "./polish";
 import type {
   GeneratedProblem,
   ProblemVariant,
@@ -933,28 +933,16 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
       problem.public.templateId,
     ) ||
     familyRegistry.preserveAlgebra.has(problem.public.templateId);
-  // Articles before numbers ("an 8-foot ladder") are safe in any text,
-  // authored algebra included.
-  const text = (value: string) =>
-    articles(keepAuthored ? value : polish(value));
-  const response = problem.public.response;
+  const text = (value: string) => (keepAuthored ? value : polish(value));
   return {
     ...problem,
     public: {
       ...problem.public,
       prompt: text(problem.public.prompt),
       response: {
-        ...response,
-        label: mathLabel(response.label),
-        // Choices are labels the learner reads; grading uses their ids.
-        ...((response.kind === "choice" ||
-          response.kind === "multi-select") && {
-          options: response.options.map((o) => ({
-            ...o,
-            label: articles(o.label),
-          })),
-        }),
-      } as typeof response,
+        ...problem.public.response,
+        label: mathLabel(problem.public.response.label),
+      },
     },
     explanation: problem.explanation.map(text),
     hint: text(problem.hint),

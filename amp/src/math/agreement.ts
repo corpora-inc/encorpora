@@ -48,11 +48,12 @@ export function count(n: number, noun: string, many = plural(noun)): string {
   return `${n} ${n === 1 ? noun : many}`;
 }
 
-/** "a" or "an" before a number as it is said: an 8, an 11, an 18, an 80,
+/** "a" or "an" before a number as it is said (`capital`: "A" or "An"): an 8, an 11, an 18, an 80,
  * an 800, an 8,000, an 11,000 and an 18,000; a for every other number. */
-export function article(n: number | string): "a" | "an" {
+export function article(n: number | string, capital = false): string {
   const digits = String(n).replace(/[,\s]/g, "").replace(/^\$/, "");
-  return /^8/.test(digits) || /^1[18](\d{3})*(?!\d)/.test(digits) ? "an" : "a";
+  const an = /^8/.test(digits) || /^1[18](\d{3})*(?!\d)/.test(digits);
+  return capital ? (an ? "An" : "A") : an ? "an" : "a";
 }
 
 /** The noun alone, in agreement with a count written elsewhere (a typeset

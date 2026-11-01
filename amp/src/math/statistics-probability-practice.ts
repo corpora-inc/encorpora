@@ -1,4 +1,4 @@
-import { nounFor, isAre } from "./agreement";
+import { nounFor, isAre, article } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -1310,7 +1310,7 @@ function strategyCase(r: Random): Built {
         draft: {
           prompt: `Four games are offered. ${lines} Which game has the greatest expected net gain per play (prize chance times prize, minus the cost)?`,
           answer: correct,
-          hint: `For one game, such as the one with a ${games[0]!.w}-dollar prize at probability $${frac(games[0]!.k, games[0]!.d)}$ and cost ${games[0]!.c}, multiply the prize by its probability and subtract the cost. Do that for each game and compare.`,
+          hint: `For one game, such as the one with ${article(games[0]!.w)} ${games[0]!.w}-dollar prize at probability $${frac(games[0]!.k, games[0]!.d)}$ and cost ${games[0]!.c}, multiply the prize by its probability and subtract the cost. Do that for each game and compare.`,
           explanation: [
             `${EXPECTED} For each game: prize times its chance, minus the cost you always pay.`,
           ]
@@ -1354,7 +1354,7 @@ function strategyCase(r: Random): Built {
     return {
       variant,
       draft: {
-        prompt: `A warranty costs ${price} dollars. Without it, there is a probability of $${frac(k, d)}$ that you pay a ${R}-dollar repair bill and otherwise pay nothing. Which statement is justified by comparing expected costs?`,
+        prompt: `A warranty costs ${price} dollars. Without it, there is a probability of $${frac(k, d)}$ that you pay ${article(R)} ${R}-dollar repair bill and otherwise pay nothing. Which statement is justified by comparing expected costs?`,
         answer: correct,
         hint: `Expected repair cost without the warranty = repair bill × probability of needing it: ${R} × $${frac(k, d)}$. Compare that expected cost with the ${price}-dollar price.`,
         explanation: [

@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { templates, generateProblem } from "../src/math/engine";
 import { article, count, nounFor, plural } from "../src/math/agreement";
-import { articles, keptAfterOne } from "../src/math/polish";
+import { keptAfterOne } from "../src/math/polish";
 import {
   agreementIssues,
   NounLexicon,
@@ -215,9 +215,4 @@ test("count, plural, nounFor and article build agreeing phrases", () => {
     [1100, "a"],
   ] as const)
     assert.equal(article(n), a, String(n));
-  assert.equal(
-    articles("A 8-foot ladder and an 5 cm side"),
-    "An 8-foot ladder and a 5 cm side",
-  );
-  assert.equal(articles("Solve $a 8$."), "Solve $a 8$.");
 });

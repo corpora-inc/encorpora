@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { act, graph, scene, step, triangle } from "./scene/author";
@@ -897,7 +898,7 @@ function trigCase(r: Random): Case {
   // Ground leg x (foot to wall), height y, ladder hyp; angle with the ground at A.
   const v = { sin: q(y, hyp), cos: q(x, hyp), tan: q(y, x) }[f];
   return {
-    prompt: `A ${hyp}-foot ladder leans against a vertical wall. Its foot is ${x} feet from the wall, and its top is ${y} feet above the ground. What is ${math(`${f} θ`)}, where θ is the angle between the ladder and the ground?`,
+    prompt: `${article(hyp, true)} ${hyp}-foot ladder leans against a vertical wall. Its foot is ${x} feet from the wall, and its top is ${y} feet above the ground. What is ${math(`${f} θ`)}, where θ is the angle between the ladder and the ground?`,
     answer: v,
     explanation: [
       "In a right triangle, the hypotenuse is the longest side, across from the right angle. Sine is opposite ÷ hypotenuse, cosine is adjacent ÷ hypotenuse, and tangent is opposite ÷ adjacent.",

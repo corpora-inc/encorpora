@@ -1,4 +1,4 @@
-import { count } from "./agreement";
+import { count, article } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -420,14 +420,14 @@ const trendContexts = [
     intercepts: [-110, -40],
     noise: 5,
     ask: (x: number) =>
-      `Use the trend line to predict how many cups sell on a ${x}°F day.`,
+      `Use the trend line to predict how many cups sell on ${article(x)} ${x}°F day.`,
     xUnit: ["degree", "degrees"],
     rate: (k: number, up: boolean) =>
       `Each additional degree goes with about ${k} ${up ? "more" : "fewer"} ${k === 1 ? "cup" : "cups"} sold.`,
     reversed: (k: number, up: boolean) =>
       `Each additional cup sold goes with about ${k} ${up ? "more" : "fewer"} ${k === 1 ? "degree" : "degrees"}.`,
     zero: (b: number, x: number, y: number) =>
-      `On a ${x}°F day about ${y} cups sell.`,
+      `On ${article(x)} ${x}°F day about ${y} cups sell.`,
     intercept: false,
   },
 ] as const;
