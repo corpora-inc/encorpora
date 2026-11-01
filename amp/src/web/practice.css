@@ -148,7 +148,6 @@ nav button {
    justify-content would push the prompt's first line above the scroll origin,
    where no scrolling can reach it. */
 .problem-content {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -160,16 +159,14 @@ nav button {
   min-height: 0;
 }
 /* While a feedback sheet rises above the dock it replaces, the stage scrolls
-   that much further (PracticeWorkspace sets --feedback-overlap). Out of flow,
-   so a centred problem does not move. */
-.problem-content::after {
-  content: "";
+   that much further: PracticeWorkspace places this spacer below the problem
+   at the overlap's height. Out of flow, so a centred problem does not move. */
+.feedback-spacer {
   position: absolute;
-  top: 100%;
   left: 0;
   width: 1px;
-  height: var(--feedback-overlap, 0px);
   pointer-events: none;
+  visibility: hidden;
 }
 .problem-content .question {
   flex: none;

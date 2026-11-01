@@ -467,15 +467,15 @@ export function PracticeWorkspace(props: Props) {
   // problem itself (plotted points, marked parts, steps) scrolls into view
   // above the sheet instead of staying hidden under it.
   const sheet = useRef<HTMLDivElement>(null);
+  const spacer = useRef<HTMLDivElement>(null);
   const reviewInProblem = !!(plot || parts || figures || work);
   useLayoutEffect(() => {
     const host = stage.current;
     const cover = sheet.current;
-    if (!host) return;
-    if (!outcome || !cover || sideBySide) {
-      host.style.removeProperty("--feedback-overlap");
-      return;
-    }
+    const room = spacer.current;
+    if (!host || !room) return;
+    room.style.height = "0px";
+    if (!outcome || !cover || sideBySide) return;
     // Layout offsets, not client rects: the sheet's entrance transform
     // must not shorten the overlap. A fixed sheet (very short screens)
     // has no shared offset parent, so it is measured on screen.
@@ -489,11 +489,13 @@ export function PracticeWorkspace(props: Props) {
                 cover.getBoundingClientRect().top,
         ),
       );
-    const update = () =>
-      host.style.setProperty("--feedback-overlap", `${overlap()}px`);
+    const content = host.querySelector<HTMLElement>(".problem-content");
+    const update = () => {
+      room.style.top = `${content ? content.offsetTop + content.offsetHeight : 0}px`;
+      room.style.height = `${overlap()}px`;
+    };
     update();
     if (reviewInProblem && !outcome.correct) {
-      const content = host.querySelector<HTMLElement>(".problem-content");
       const hidden = content
         ? content.offsetTop +
           content.offsetHeight -
@@ -508,11 +510,17 @@ export function PracticeWorkspace(props: Props) {
             : "smooth",
         });
     }
-    if (typeof ResizeObserver === "undefined") return;
-    const observer = new ResizeObserver(update);
-    observer.observe(cover);
-    observer.observe(host);
-    return () => observer.disconnect();
+    // A fixed sheet is measured on screen: again once its entrance ends.
+    cover.addEventListener("animationend", update);
+    const observer =
+      typeof ResizeObserver === "undefined" ? null : new ResizeObserver(update);
+    observer?.observe(cover);
+    observer?.observe(host);
+    if (content) observer?.observe(content);
+    return () => {
+      cover.removeEventListener("animationend", update);
+      observer?.disconnect();
+    };
   }, [outcome?.id, sideBySide]);
   const locked = busy || pending || !!outcome;
   // AMP's keypad is always present for typed answers; touch devices never
@@ -1135,6 +1143,7 @@ export function PracticeWorkspace(props: Props) {
   const skipped = !!outcome?.skipped;
   const longAnswer =
     !!outcome &&
+    !outcome.correct &&
     ((!!work && skipped) ||
       (!plot &&
         !(work && !skipped) &&
@@ -1353,6 +1362,7 @@ export function PracticeWorkspace(props: Props) {
               />
             )}
           </div>
+          <div className="feedback-spacer" ref={spacer} aria-hidden="true" />
           {celebrate && (
             <div className="practice-celebration" aria-hidden="true">
               <span>✓</span>
@@ -1451,7 +1461,7 @@ export function PracticeWorkspace(props: Props) {
           </button>
         </div>
       )}
-      {lessonError && (
+      {lessonError && !(outcome && props.error) && (
         <div className="feedback-navigation-error" role="alert">
           <span>{lessonError}</span>
           <button onClick={() => setLessonError("")} aria-label="Dismiss error">

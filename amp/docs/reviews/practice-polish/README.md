@@ -53,6 +53,24 @@ a WebKit `ResizeObserver loop` page error on the two-column proof. The most
 serious problems only showed up in the screenshots, so the verifier now
 asserts each of them.
 
+## Verify matrix: before and after
+
+`npm run test:practice-polish-ui` checks 720 states: 8 response surfaces, at
+320×568, 390×844, 768×1024 and 1280×800, in light and dark, with the trial
+flow included. It fails on any finding above, on any layout shift on a
+problem state, on any axe violation and on any invisible focus.
+
+| | main (035fc054f) | this branch |
+| --- | ---: | ---: |
+| feedback controls clipped by the sheet | 114 | 0 |
+| raw TeX in visible text | 92 | 0 |
+| text under 12 px | 84 | 0 |
+| hint as a full-screen page | 54 | 0 |
+| marked answer hidden under the sheet | 24 | 0 |
+| action labels wrapping | 10 | 0 |
+| primary action off screen | 4 | 0 |
+| **total failures** | **382** | **0** |
+
 ## Findings, by severity
 
 ### High
@@ -85,63 +103,81 @@ asserts each of them.
 
 ### Medium
 
-5. **A two-line hint opened as a full-screen page** on phones and tablets up
+5. **A skip marked multi-part answers as misses.** Every blank showed a
+    red ✕, against the rule that a skip is neutral. **Fixed:** a skipped
+    multi-part choice fills in the worked answer with no marks, and the sheet
+    reads "The answer is filled in". Asserted: `skip-miss-mark`.
+
+6. **A two-line hint opened as a full-screen page** on phones and tablets up
    to 840 px, covering the problem it explains. **Fixed:** on those widths
    the hint is a sheet sized to its content, rising from the bottom edge,
    with a lighter, unblurred scrim so the problem stays readable. Asserted:
    `full-screen-hint`.
-6. **Check fell below the fold in the compact answer sheet** (320×568,
+7. **Check fell below the fold in the compact answer sheet** (320×568,
    a choice with a figure). **Fixed:** Check stays pinned at the bottom of
    the sheet while the figure and options scroll. Asserted:
    `offscreen-action`.
-7. **"Try easier" wrapped onto two lines** in the four-tool row after a
+8. **"Try easier" wrapped onto two lines** in the four-tool row after a
    skip at 320 px. **Fixed:** tools never wrap, and the narrowest phones
    tighten the row's gap, padding and type. Asserted: `wrapped-label`.
-8. **Hover stuck on touch.** The tool that appears under the finger (Skip
+9. **Hover stuck on touch.** The tool that appears under the finger (Skip
    becomes Try easier, Check becomes Lesson) kept the hover pill. **Fixed:**
    the pill only appears on devices that really hover.
-9. **A lesson that failed to open was neither logged nor shown in the error
+10. **A lesson that failed to open was neither logged nor shown in the error
    pattern.** It appeared as an unstyled paragraph pinned to the bottom of
    the workspace. **Fixed:** the failure is logged and shown in the fixed,
    dismissible toast already used for practice navigation errors.
 
 ### Low
 
-10. **Text under 12 px:** choice letters and the answer label were 11 px on
+11. **Text under 12 px:** choice letters and the answer label were 11 px on
     phones. **Fixed** (12 px and 13 px). Asserted: `tiny-text`.
-11. **"You entered" for a chosen statement.** **Fixed:** a chosen statement
+12. **"You entered" for a chosen statement.** **Fixed:** a chosen statement
     now reads "You chose".
-12. **See why grows the sheet upward** (CLS 0.17 when input-driven shifts
+13. **See why grows the sheet upward** (CLS 0.17 when input-driven shifts
     are counted). **Kept.** It is a disclosure the learner asks for, Next
     stays fixed (`verify-answer-feedback-ui.ts`), and the problem does not
     move. The verifier excludes this one state from its shift assertion.
-13. **The first lesson open shifts 0.017–0.032** when the lazy animation
+14. **The first lesson open shifts 0.017–0.032** when the lazy animation
     chunk replaces its fixed 460 px placeholder. **Deferred:** this sits
     inside `ProblemLesson.tsx` while the glossary work (#1781 G2) is changing
     it. The fix is to reserve the model's measured height, or to preload the
     chunk when Lesson is pressed.
-14. **WebKit reports `ResizeObserver loop completed with undelivered
+15. **WebKit reports `ResizeObserver loop completed with undelivered
     notifications`** on the two-column proof (320 to 768 px). It is
     harmless, but it is noise in error logs. **Deferred:** needs a trace of
     which observer re-enters.
-15. **Skill and topic titles disagree on case** ("Multiplication Facts"
+16. **Skill and topic titles disagree on case** ("Multiplication Facts"
     beside "Multiplication facts"). **Deferred** to the curriculum catalog
     owners.
-16. **The correct-answer sheet keeps the full dock height.** Above a tall
+17. **The correct-answer sheet keeps the full dock height.** Above a tall
     dock (multi-select) this leaves an empty band between progress and Next.
     **Deferred:** the sheet's top edge never jumping is the more important
     rule.
-17. **Check's enable transition (0.12 s) runs under reduced motion.**
+18. **Check's enable transition (0.12 s) runs under reduced motion.**
     **Deferred:** a shared theme rule, out of this scope.
-18. **Safe areas.** `index.html` does not opt into `viewport-fit=cover`, so
+19. **Safe areas.** `index.html` does not opt into `viewport-fit=cover`, so
     browser `env()` insets are zero. Practice CSS already pads the shell,
     feedback sheet, calculator and dialogs with `env(safe-area-inset-*)` for
     surfaces that opt in. **No change.**
 
 ## Screenshots
 
-`before/` and `after/` hold the same states at the same sizes, from main and
-from this branch. Each file is named `<browser>-<size>-<theme>-<case>-<state>.png`.
+`before/` and `after/` hold the same seeded states at the same sizes, from
+main and from this branch. Each file is named
+`<browser>-<size>-<theme>-<case>-<state>.png`:
+
+- `choice-scene-incorrect`, `parts-inline-incorrect` and `point-plot-skipped`
+  (320×568): connections no longer clipped; marks visible above the sheet.
+- `parts-cards-skipped` (320×568): a skip fills in the answer, with no ✕ on
+  boxes the learner never filled.
+- `choice-scene-filled` (320×568): Check is pinned in the answer sheet.
+- `figure-choice-skipped` (320×568): Try easier stays on one line.
+- `number-hint` (390×844 light, 768×1024 dark): the hint is a sheet over a
+  visible problem.
+- `work-steps-skipped` (768×1024) and `multi-select-figure-skipped`
+  (390×844 dark): long answers at body size, listed one value per line.
+- `scientific-notation/` (#1786): typeset scientific notation.
 
 ## Running it
 
