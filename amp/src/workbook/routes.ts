@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { createHash, randomUUID } from "node:crypto";
+import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import { skills } from "../curriculum/catalog.js";
 import { lessons } from "../content/lessons.js";
@@ -357,9 +357,9 @@ export function registerWorkbookRoutes(
     },
   );
 
-  /** The printed workbook as a PDF, rendered on first request and kept
-   * briefly (RETENTION.workbookPdfHours). Rendering happens outside the
-   * learner transaction; a renderer that is down answers 503. */
+  /** The printed workbook as a PDF, rendered for each request and never
+   * stored. Rendering happens outside the learner transaction; a renderer
+   * that is down answers 503. */
   app.get(
     "/api/v1/learners/:learnerId/workbooks/:workbookId/pdf",
     async (request, reply) => {
@@ -372,7 +372,7 @@ export function registerWorkbookRoutes(
       const learnerName = (await options.repository.list(accountId)).find(
         (l) => l.id === learnerId,
       )?.name;
-      const lookup = await options.repository.transaction(
+      const page = await options.repository.transaction(
         accountId,
         learnerId,
         async (tx) => {
@@ -390,69 +390,41 @@ export function registerWorkbookRoutes(
             paper: format === "A4" ? "a4" : "letter",
             results: results(record, learnerId),
           });
-          const footer = workbookFooter(record.spec);
-          const key = {
-            workbookId,
-            format,
-            documentSha256: createHash("sha256")
-              .update(`${html}\u0000${footer}`)
-              .digest("hex"),
-          } as const;
-          return {
-            record,
-            html,
-            footer,
-            key,
-            cached: await tx.workbookPdf(key),
-          };
+          return { record, html, format, footer: workbookFooter(record.spec) };
         },
       );
-      let pdf = lookup.cached;
-      if (!pdf) {
-        const started = Date.now();
-        try {
-          if (!options.renderer)
-            throw new RendererUnavailable("No workbook renderer configured");
-          pdf = await options.renderer.render({
-            html: lookup.html,
-            format: lookup.key.format,
-            footer: lookup.footer,
-          });
-        } catch (error) {
-          request.log.error(
-            {
-              err: error instanceof Error ? error.message : String(error),
-              durationMs: Date.now() - started,
-            },
-            "Workbook PDF render failed",
-          );
-          throw new ApiError(
-            503,
-            "Your workbook is being prepared; try again in a minute.",
-          );
-        }
-        request.log.info(
-          { durationMs: Date.now() - started, bytes: pdf.length },
-          "Workbook PDF rendered",
+      const started = Date.now();
+      let pdf: Buffer;
+      try {
+        if (!options.renderer)
+          throw new RendererUnavailable("No workbook renderer configured");
+        pdf = await options.renderer.render({
+          html: page.html,
+          format: page.format,
+          footer: page.footer,
+        });
+      } catch (error) {
+        request.log.error(
+          {
+            err: error instanceof Error ? error.message : String(error),
+            durationMs: Date.now() - started,
+          },
+          "Workbook PDF render failed",
         );
-        const rendered = pdf;
-        // The cache is optional: a failed save still sends the PDF.
-        await options.repository
-          .transaction(accountId, learnerId, (tx) =>
-            tx.saveWorkbookPdf(lookup.key, rendered),
-          )
-          .catch((error) =>
-            request.log.error(
-              { err: error instanceof Error ? error.message : String(error) },
-              "Workbook PDF cache save failed",
-            ),
-          );
+        throw new ApiError(
+          503,
+          "Your workbook is being prepared; try again in a minute.",
+        );
       }
+      request.log.info(
+        { durationMs: Date.now() - started, bytes: pdf.length },
+        "Workbook PDF rendered",
+      );
       return reply
         .type("application/pdf")
         .header(
           "Content-Disposition",
-          `attachment; filename="amp-workbook-${lookup.record.date}-${lookup.record.number}-${lookup.key.format}.pdf"`,
+          `attachment; filename="amp-workbook-${page.record.date}-${page.record.number}-${page.format}.pdf"`,
         )
         .send(pdf);
     },

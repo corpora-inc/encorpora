@@ -89,8 +89,6 @@ const repository = {
       ) => {
         rows.find((r) => r.id === workbookId)!.paper = paper;
       },
-      workbookPdf: async () => undefined,
-      saveWorkbookPdf: async () => undefined,
       workbookByCode: async (code: string) => rows.find((r) => r.code === code),
       recentWorkbooks: async () => rows,
       practiceSettings: async () => defaultPracticeSettings(),
