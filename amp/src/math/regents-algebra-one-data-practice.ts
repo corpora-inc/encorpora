@@ -284,14 +284,18 @@ export const exponentialInitialValue = chainFamily({
       explanation:
         ax.form === "shifted-exponent"
           ? [
-              `Set $t=0$: $${body.name}(0) = ${m.a}\\cdot${bText}^{${m.k}}$.`,
+              `The initial value is the amount at the start, when no time has passed: $t = 0$.`,
+              `Set $t=0$: $${body.name}(0) = ${m.a}\\cdot${bText}^{${m.k}}$. The exponent here is not 0, so the factor does not drop out.`,
               `$${bText}^{${m.k}} = ${decimalText(Math.round(1000 * (m.b[0] / m.b[1]) ** m.k), 1000)}$.`,
               `$${body.name}(0) = ${m.a}\\cdot${decimalText(Math.round(1000 * (m.b[0] / m.b[1]) ** m.k), 1000)} = ${correctText.slice(1, -1)}$.`,
+              `The initial value is ${correctText}.`,
             ]
           : [
+              `The initial value is the amount at the start, when no time has passed: $t = 0$.`,
               `Set $t=0$: $${body.name}(0) = ${m.a}(${ax.form === "factor" ? bText : `1 ${m.decay ? "-" : "+"} ${rateText}`})^0$.`,
-              "Any nonzero number to the power 0 is 1, so the factor disappears.",
-              `$${body.name}(0) = ${m.a}$.`,
+              "The exponent, the small raised number, counts how many times to multiply by the factor. A power of 0 means multiply zero times, so it equals 1.",
+              `So $${body.name}(0) = ${m.a} \\cdot 1 = ${m.a}$. In $a\\cdot b^t$ form, the number in front is always the starting amount.`,
+              `The initial value is ${m.a}.`,
             ],
     });
   },
@@ -373,9 +377,11 @@ export const exponentialDecayTable = chainFamily({
       ],
       hint: `Exponential decay has a constant ratio less than 1 between values at equal steps. Several lists start at ${start}, for $x = ${xs}$: for each list, divide the second value by the first and the third by the second, and look for equal quotients less than 1.`,
       explanation: [
-        `Exponential decay means each value is the same fraction of the one before it, and that fraction is less than 1.`,
-        `In ${csv(decay)} the ratios are $${decay[1]}\\div${decay[0]}$, $${decay[2]}\\div${decay[1]}$ and $${decay[3]}\\div${decay[2]}$, all equal to $\\frac{${m.num}}{${m.den}}$.`,
-        `The other lists have a constant difference, a changing ratio, or values that increase.`,
+        `Exponential decay means the values shrink by the same factor at each equal step. Each value is the same fraction of the one before, less than 1.`,
+        `So divide each value by the one before it. That quotient is called the ratio.`,
+        `In ${csv(decay)} the ratios are $${decay[1]}\\div${decay[0]}$, $${decay[2]}\\div${decay[1]}$ and $${decay[3]}\\div${decay[2]}$. All equal $\\frac{${m.num}}{${m.den}}$, which is less than 1.`,
+        `Compare the others. A constant difference, the same amount subtracted each time, is linear. Values that grow are not decay.`,
+        `The list that shows exponential decay is ${csv(decay)}.`,
       ],
     });
   },
@@ -439,9 +445,12 @@ export const exponentialPassesLinear = chainFamily({
       label: "Least whole number",
       hint: `Make a table of both rules, $${m.a}\\cdot${base}^x$ and $${m.c}x + ${m.d}$, for increasing whole values of $x$. The exponential multiplies by ${base} each step while the line adds ${m.c}; find the first row where the exponential is greater.`,
       explanation: [
+        `$f$ is exponential: it multiplies by the same factor each step. $g$ is linear: it adds the same amount each step.`,
+        `Multiplying eventually beats adding, so $f$ will pass $g$. Find the first whole number where it does by checking values in a table.`,
         `At $x=${m.n - 1}$: $f \\approx ${roundText(fv(m.n - 1), 2)}$ and $g = ${lv(m.n - 1)}$, so $f(x) \\le g(x)$ there.`,
         `At $x=${m.n}$: $f \\approx ${roundText(fv(m.n), 2)}$ and $g = ${lv(m.n)}$, so $f(x) > g(x)$.`,
-        `Because $f - g$ keeps growing, the exponential stays above the line from then on. The least whole number is ${m.n}.`,
+        `After that, the gap $f - g$ keeps growing, so $f$ stays above $g$.`,
+        `The least whole number $x$ with $f(x) > g(x)$ is ${m.n}.`,
       ],
     });
   },
@@ -600,9 +609,13 @@ export const twoWayShare = chainFamily({
           ? `Find the count for ${rowName} who ${colPhrase}: it is ${cell}. Divide it by the number of all ${c.who} in the table, ${n}, then convert to a percent.`
           : `In the table of ${n} ${c.who}, find the count for ${rowName} who ${colPhrase}: it is ${cell}. Divide it by the total of the group the question is about (${ax.kind === "conditional-row" ? `the ${rowName} row, ${row[m.i]}` : `the column of ${c.who} who ${colPhrase}, ${col[m.j]}`}), then convert to a percent.`,
       explanation: [
-        `The count in the cell is ${cell}.`,
-        `The group the percent is taken of has ${den} ${c.who}${ax.kind === "joint" ? " (everyone surveyed)" : ""}.`,
-        `$${cell}\\div${den} \\approx ${roundText(p / 100, 4)}$, which is ${roundText(p, 1)}%, so about ${rounded}%.`,
+        `A two-way table counts people by two features at once. Each cell holds the count that has both features.`,
+        `A percent is a part out of a whole. The part is the cell for the people asked about: ${cell}.`,
+        ax.kind === "joint"
+          ? `The whole is everyone surveyed, the table total: ${den} ${c.who}.`
+          : `The whole is only the group named after "of": ${den} ${c.who}. Use that row or column total, not the table total.`,
+        `Divide part by whole: $${cell}\\div${den} \\approx ${roundText(p / 100, 4)}$. Multiply by 100 to get a percent: ${roundText(p, 1)}%.`,
+        `Rounded to the nearest percent, the answer is ${rounded}%.`,
       ],
     });
     return surface && { ...surface, figure: { kind: "scene", scene } };
@@ -640,11 +653,13 @@ export const quartileList = chainFamily({
       label: upper ? "Upper quartile" : "Lower quartile",
       hint: `Put the ${m.values.length} values in order from least, ${sorted[0]}, to greatest, ${sorted[sorted.length - 1]}, repeating any value that appears more than once. Split the list into two halves of ${half} values and look at the ${upper ? "upper" : "lower"} half.`,
       explanation: [
-        `Ordered: ${sorted.join(", ")}.`,
-        `The ${upper ? "upper" : "lower"} half is ${part.join(", ")}.`,
+        `The median is the middle value of an ordered list. Quartiles split the data into quarters; the ${upper ? "upper" : "lower"} quartile is the median of the ${upper ? "upper" : "lower"} half.`,
+        `Order the values from least to greatest: ${sorted.join(", ")}.`,
+        `Split the list into two equal halves${sorted.length % 2 ? ", leaving out the middle value" : ""}. The ${upper ? "upper" : "lower"} half is ${part.join(", ")}.`,
         part.length % 2
-          ? `The median of ${part.length} values is the middle one, ${q}.`
-          : `The median of ${part.length} values is the mean of the two middle values, $(${part[part.length / 2 - 1]}+${part[part.length / 2]})\\div2=${q}$.`,
+          ? `This half has ${part.length} values, an odd number, so its median is the middle one: ${q}.`
+          : `This half has ${part.length} values, an even number, so its median is the mean (average) of the two middle values: $(${part[part.length / 2 - 1]}+${part[part.length / 2]})\\div2=${q}$.`,
+        `The ${upper ? "upper" : "lower"} quartile is ${q}.`,
       ],
     });
   },
@@ -717,9 +732,11 @@ export const averageRateTable = chainFamily({
           : "Average rate (dollars per year)",
         hint: `Subtract the value in ${pop ? "" : "year "}${m.years[m.i]} (${group(m.values[m.i]!)}) from the value in ${pop ? "" : "year "}${m.years[m.j]} (${group(m.values[m.j]!)}), and divide by the number of years between ${m.years[m.i]} and ${m.years[m.j]}.`,
         explanation: [
-          `The change in the ${pop ? "population" : "value"} is $${m.values[m.j]}-${m.values[m.i]}=${dv}$.`,
+          `The average rate of change is the total change divided by the time it took. It tells how much the ${pop ? "population" : "value"} changed per year, on average.`,
+          `The change in the ${pop ? "population" : "value"} is end minus start: $${m.values[m.j]}-${m.values[m.i]}=${dv}$.`,
           `The change in time is $${m.years[m.j]}-${m.years[m.i]}=${dy}$ years.`,
-          `$${dv}\\div${dy} \\approx ${answer}$ ${pop ? "people" : "dollars"} per year.`,
+          `Divide: $${dv}\\div${dy} \\approx ${answer}$, rounded to the nearest whole number.`,
+          `The average rate of change is about ${answer} ${pop ? "people" : "dollars"} per year.`,
         ],
       }),
       figure: { kind: "scene" as const, scene },
@@ -813,10 +830,13 @@ export const correlationCausation = chainFamily({
       ],
       hint: `Picture a scatter plot of ${rel.text}. Ask two separate questions: when one goes up, does the other go up or down? And does a change in one directly produce a change in the other, or could something else drive both?`,
       explanation: [
-        `The two quantities move ${rel.sign === "positive" ? "in the same direction" : "in opposite directions"}, so the correlation is ${rel.sign}.`,
+        `A correlation is a pattern where two quantities change together. It is positive when both rise together and negative when one rises as the other falls.`,
+        `Here the two quantities move ${rel.sign === "positive" ? "in the same direction" : "in opposite directions"}, so the correlation is ${rel.sign}.`,
+        `Causation means a change in one quantity directly produces the change in the other. A correlation alone does not prove that.`,
         rel.cause
-          ? "One quantity directly produces the change in the other, so the relationship is causal."
-          : "Something else explains why they move together, so correlation does not show that one causes the other.",
+          ? "In this situation one quantity directly produces the change in the other, so the relationship is causal."
+          : "Here a third factor drives both, so neither causes the other. They only move together.",
+        `The best description is: ${rel.sign} correlation; ${rel.cause ? "one causes the other" : "neither causes the other"}.`,
       ],
     });
   },
@@ -876,9 +896,12 @@ export const budgetWholeItems = chainFamily({
       label: `Greatest number of ${c.plural}`,
       hint: `First find how much is left after the fixed cost of $${dollars(m.fixedCents)}$ dollars. Then ask how many whole times $${dollars(m.priceCents)}$ dollars fits into what is left.`,
       explanation: [
+        `Pay the fixed cost first, because it is paid once no matter how many ${c.plural} are bought.`,
         `Money left after ${c.fixed}: $${dollars(m.budget)}-${dollars(m.fixedCents)}=${dollars(left)}$ dollars.`,
-        `Write $${dollars(m.priceCents)}n \\le ${dollars(left)}$, so $n \\le ${roundText(left / m.priceCents, 3)}$.`,
-        `Only whole ${c.plural} can be bought, so the greatest number is ${m.items}.`,
+        `Let $n$ be the number of ${c.plural}. They cost $${dollars(m.priceCents)}n$, and that may be at most what is left: $${dollars(m.priceCents)}n \\le ${dollars(left)}$.`,
+        `Divide both sides by ${dollars(m.priceCents)}: $n \\le ${roundText(left / m.priceCents, 3)}$.`,
+        `Only whole ${c.plural} can be bought, so round down, never up. Rounding up would cost more than the money left.`,
+        `The greatest whole number is ${m.items}.`,
       ],
     });
   },
@@ -916,10 +939,13 @@ export const absEqualsLinear = chainFamily({
       label: "Answer",
       hint: `Set the two rules equal, $${f.slice(7)} = ${g.slice(7)}$. The absolute value equals $${inside}$ when that expression is positive and its opposite when it is negative, so solve both cases and check each solution in the original equation.`,
       explanation: [
-        `Isolate the absolute value: $${m.k === 1 ? "" : m.k}|${inside}| = ${coefX}x${rest === 0 ? "" : ` ${sgn(rest)} ${Math.abs(rest)}`}$.`,
+        `The absolute value $|a|$ is the distance of $a$ from 0, so it is never negative. $|5| = 5$ and $|-5| = 5$.`,
+        `Set the rules equal, then get the absolute value alone: $${m.k === 1 ? "" : m.k}|${inside}| = ${coefX}x${rest === 0 ? "" : ` ${sgn(rest)} ${Math.abs(rest)}`}$.`,
+        `$|${inside}|$ equals $${inside}$ when that is 0 or more, and its opposite when it is negative. So solve two cases and check each.`,
         `If $${inside}\\ge0$ the absolute value is $${inside}$: $${m.k === 1 ? "" : m.k}(${inside}) = ${coefX}x${rest === 0 ? "" : ` ${sgn(rest)} ${Math.abs(rest)}`}$ gives $x = ${frac(m.d - m.b + m.k * m.a, m.k - m.c)}$, which ${xA >= m.a ? "satisfies" : "does not satisfy"} $x \\ge ${m.a}$.`,
         `If $${inside}<0$ the absolute value is the opposite, $-(${inside})$: this gives $x = ${frac(m.d - m.b - m.k * m.a, -m.k - m.c)}$, which ${xB < m.a ? "satisfies" : "does not satisfy"} $x < ${m.a}$.`,
-        `Only $x=${m.x0}$ is a valid solution. Check: $f(${m.x0}) = ${m.k * Math.abs(inner) + m.b}$ and $g(${m.x0}) = ${m.c * m.x0 + m.d}$.`,
+        `A case's answer counts only if it fits that case's condition. Check: $f(${m.x0}) = ${m.k * Math.abs(inner) + m.b}$ and $g(${m.x0}) = ${m.c * m.x0 + m.d}$.`,
+        `So $f(x) = g(x)$ when $x=${m.x0}$.`,
       ],
     });
   },

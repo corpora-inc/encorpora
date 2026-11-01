@@ -17,23 +17,36 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
       "A cosine relates the adjacent leg to the hypotenuse; a sine relates the opposite leg. Use the hypotenuse of the same right triangle, and keep the cosine term in the law of cosines subtracted.",
   },
   "model-quantity-roles": {
-    goal: "Given a situation to model, choose the variable definitions with units, the rate, a unit that matches the rate, or which quantities vary.",
+    goal: "Read a situation and choose the right variable definitions and units, the rate, a matching unit, or which quantities vary.",
     intuition:
-      "A model relates quantities that can be measured. Before writing any equation, decide what each letter measures and in what unit. The quantity you choose or change is independent; the quantity that responds is dependent. A rate says how much the dependent quantity changes for each one unit of the independent quantity.",
+      "A model is an equation that stands for a real situation. A variable is a letter for a quantity that can vary, measured in a unit such as hours or dollars. The quantity you choose is the independent quantity. The quantity that results from it is the dependent quantity. A rate, such as 6 dollars per hour, says how much the dependent quantity changes for each one unit of the independent quantity.",
+    senses: { model: "model", unit: "unit" },
+    noLink: ["change", "changes", "sort", "leaves"],
     terms: ["independent-variable", "dependent-variable", "rate"],
     method: [
-      "Name the quantity the question asks you to predict. It is the dependent quantity.",
-      "Name the quantity that changes it. It is the independent quantity.",
-      "Write each definition with its unit, and put the rate as dependent unit per independent unit.",
-      "Convert any amount you substitute into the unit of the independent quantity before using the rate.",
+      "Find the quantity the model predicts. It responds to the other one, so it is the dependent quantity.",
+      "Find the quantity you choose or set. It is the independent quantity.",
+      "Define each letter with what it measures and its unit. Write the rate as dependent unit per independent unit.",
+      "Before substituting, convert the amount to the unit the rate uses, such as minutes to hours.",
     ],
     watch:
-      "A fixed rate or starting amount is a number in the model, not a variable. A definition without a unit leaves it unclear what a value such as 90 means.",
+      "A fixed fee or fixed rate is a number in the model, not a variable. Give every variable a unit, or a value such as 90 has no clear meaning.",
   },
   "stem-leaf-read": {
-    goal: "Given a stem-and-leaf plot and its key, read a value or a summary such as the range, median, mode, a count above a value or a difference.",
+    goal: "Read a stem-and-leaf plot with its key to find a value, the range, median or mode, a count above a value, or a difference.",
     intuition:
-      "A stem-and-leaf plot writes each data value in two pieces. The stem holds the leading digits and the leaf holds the last digit. The key tells you what a stem and leaf mean together, including where the decimal point goes. The values increase down the plot and from left to right, so the plot is already in order.",
+      "A stem-and-leaf plot lists data values in two pieces. The stem is the first digit or digits, on the left. The leaf is the last digit, on the right, and each leaf is one value. The key is the note that says how to join them, for example $3 \\mid 5$ means 35 or 3.5. Values grow down the plot and left to right, so they are already in order.",
+    senses: {
+      key: "key",
+      stem: "stem",
+      leaf: "leaf",
+      mode: "mode-statistics",
+      range: "range-statistics",
+      mean: "mean-average",
+      difference: "difference-subtract",
+      "more than": "more-than",
+    },
+    noLink: ["part", "increasing"],
     terms: [
       "stem",
       "leaf",
@@ -43,13 +56,13 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Read the key first and decide whether leaves are ones, tens or tenths of the stem.",
-      "Read each value as stem then leaf. Repeat a leaf for each time the value occurs.",
-      "Use the order: the first leaf is the least, the last leaf is the greatest, and the median is the middle leaf or the mean of the two middle leaves.",
-      "Count leaves, not rows, when you need the number of values or how many exceed a given value.",
+      "Read the key first. Decide whether each leaf is the ones digit or the tenths digit.",
+      "Join each leaf to its stem to read a value. A leaf written twice is a value that appears twice.",
+      "Use the order. The first leaf is the least value and the last is the greatest. The median is the middle value. With two middle values, it is their mean, which means their sum divided by 2.",
+      "Count leaves, not rows, to find how many values there are or how many are greater than a number.",
     ],
     watch:
-      "A leaf alone is only the last digit. Combine it with its stem and apply the key, especially when the key shows a decimal point.",
+      "A leaf alone is only the last digit. Join it to its stem and read it with the key, especially when the key has a decimal point.",
   },
   "budget-category-balance": {
     goal: "Given an income and categorized expenses in dollars and cents, find a missing category, the surplus or deficit, or the change that balances.",
@@ -84,9 +97,9 @@ export const remainingGapPrinciples: Record<string, string> = {
   "triangle-law-reasoning":
     "In a triangle with sides $a,b,c$ opposite angles $A,B,C$, an altitude $h$ from $C$ gives $h=b\\sin A=a\\sin B$, so $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}$. An altitude from $A$ with foot $D$ between $B$ and $C$ and $x=CD=b\\cos C$ gives $c^2=a^2+b^2-2ab\\cos C$. For angle $A$ with sides $a$ opposite and $b$ adjacent: if $A$ is acute, $a<b\\sin A$ gives no triangle, $a=b\\sin A$ one, $b\\sin A<a<b$ two and $a\\ge b$ one.",
   "model-quantity-roles":
-    "A quantitative model names each quantity, its unit and its role. For a linear model $y=mx+b$, $x$ is the independent quantity in unit $X$, $y$ the dependent quantity in unit $Y$, the rate $m$ has unit $Y$ per $X$, and $b$ is the value of $y$ when $x=0$ in unit $Y$.",
+    "A model names each quantity, its unit and its role. In a linear model $y=mx+b$ ($mx$ means $m$ times $x$), $x$ is the independent quantity, measured in a unit $X$, and $y$ is the dependent quantity, measured in a unit $Y$. The rate $m$ has unit $Y$ per $X$, and $b$ is the value of $y$ when $x=0$, in unit $Y$.",
   "stem-leaf-read":
-    "In a stem-and-leaf plot, each value is its stem followed by its leaf, read according to the key. The values are arranged in increasing order, with each leaf repeated for each occurrence of its value. The median of $n$ ordered values is the value in position $\\frac{n+1}{2}$ when $n$ is odd and the mean of the values in positions $\\frac{n}{2}$ and $\\frac{n}{2}+1$ when $n$ is even.",
+    "In a stem-and-leaf plot, each value is its stem followed by its leaf, read with the key. The values are listed from least to greatest, and a leaf is repeated once for each time its value occurs. For $n$ ordered values, the median is the value in position $\\frac{n+1}{2}$ when $n$ is odd, and the mean of the values in positions $\\frac{n}{2}$ and $\\frac{n}{2}+1$ when $n$ is even.",
   "budget-category-balance":
     "For income $I$ and expenses $E_1,\\dots,E_k$, the balance is $I-(E_1+\\dots+E_k)$. A positive balance is a surplus and a negative balance is a deficit of its absolute value. The budget balances exactly when the balance is $0$.",
   "gross-net-pay":
@@ -164,20 +177,25 @@ export const remainingGapLessons: Lesson[] = [
     id: "model-quantity-roles",
     title: "Define the quantities before the model",
     summary:
-      "Name what each variable measures and its unit, which quantity depends on which, and what the rate means.",
+      "A model is an equation that describes a real situation. Before writing one, say what each letter stands for and its unit, such as hours or dollars. A bike rental costs 6 dollars per hour plus a 4-dollar fee. Let $h$ be the hours rented and $C$ the total cost in dollars. The cost depends on the hours, and 6 dollars per hour is the rate.",
+    senses: { model: "model", unit: "unit" },
+    noLink: ["change", "changes", "sort", "leaves", "part"],
     templateIds: ["model-quantity-roles"],
     objectives: [
-      "Define variables with units.",
-      "Tell independent from dependent quantities and constants from variables.",
-      "Match the unit of the independent quantity to the unit of the rate.",
+      "Define each variable (a letter that stands for an amount) with what it measures and its unit.",
+      "Tell the independent quantity, the one you choose, from the dependent quantity, the one that results.",
+      "Tell numbers that stay fixed from quantities that vary, and match units to the rate before substituting.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "A model starts with measurable quantities",
         paragraphs: [
-          "A quantity is something you can measure with a unit, such as hours, dollars or liters. In a situation, some quantities change and some stay fixed. The quantity you choose or change is the independent quantity. The quantity that responds is the dependent quantity.",
-          "A rate compares the two: dollars per hour says how many dollars the total changes for each added hour. Writing the variables with units keeps every later step honest.",
+          "A quantity is something you can measure or count with a unit. Hours, dollars and liters are units. “Rental time in hours” and “total cost in dollars” are quantities.",
+          "A model is an equation, graph or table that stands for a real situation, so you can predict with it. A variable is a letter, such as $h$, that stands for a quantity that can vary.",
+          "In a situation, one quantity is chosen or set first. It is called the independent quantity. Another quantity responds to it. It is called the dependent quantity, because its value depends on the first. At the bike shop, you choose how many hours to rent. The cost follows from that, so cost is dependent.",
+          "Some numbers do not vary. A 4-dollar helmet fee is the same for every customer. It is a fixed number in the model, not a variable.",
+          "A rate compares two quantities. “6 dollars per hour” means the cost grows by 6 dollars for each added hour. Its unit is the dependent unit per the independent unit: dollars per hour.",
         ],
       },
     ],
@@ -185,10 +203,10 @@ export const remainingGapLessons: Lesson[] = [
       prompt:
         "A bike shop charges 6 dollars for each hour a bike is rented, plus a 4-dollar helmet fee. Define variables for a model of the total rental cost.",
       steps: [
-        "The model predicts the total rental cost, so that is the dependent quantity, measured in dollars.",
-        "The cost changes with the time a bike is rented, the independent quantity, measured in hours.",
-        "Let $h$ be the time a bike is rented, in hours, and $C$ the total rental cost, in dollars.",
-        "The rate 6 is dollars per hour. The helmet fee, 4 dollars, is the fixed starting amount. Both are numbers, not variables.",
+        "Find what the model predicts: the total rental cost. It responds to the other quantity, so it is the dependent quantity. Its unit is dollars.",
+        "Find what the cost depends on: the time the bike is rented. You choose it, so it is the independent quantity. Its unit is hours.",
+        "Give each a letter, what it measures and its unit. Let $h$ be the time a bike is rented, in hours. Let $C$ be the total rental cost, in dollars.",
+        "Sort out the fixed numbers. The rate, 6 dollars per hour, and the helmet fee, 4 dollars, are the same for everyone. They are numbers in the model, not variables. The model is $C = 6h + 4$.",
       ],
       answer: "$h$ = time rented, in hours; $C$ = total cost, in dollars",
     },
@@ -197,43 +215,61 @@ export const remainingGapLessons: Lesson[] = [
         stage: "method",
         title: "Match units before substituting",
         paragraphs: [
-          "If the rate is dollars per hour and a customer rents a bike for 90 minutes, first convert: 90 minutes is 1.5 hours. Then $h=1.5$. Substituting 90 into an hourly rate would multiply the rate by minutes and give a cost 60 times too large.",
+          "Substituting means putting a number in place of a letter. The number must be in the letter's unit.",
+          "The rate is dollars per hour, so $h$ is in hours. A customer rents a bike for 90 minutes. First convert: 60 minutes make an hour, so 90 minutes is 90 ÷ 60 = 1.5 hours. Then $h = 1.5$ and $C = 6 \\times 1.5 + 4 = 13$ dollars.",
+          "Putting 90 in for $h$ would treat 90 minutes as 90 hours. The rental part would be 60 times too large.",
         ],
       },
       {
         stage: "formal",
         title: "Linear model roles",
         paragraphs: [
-          "In $y=mx+b$, $x$ is the independent quantity in unit $X$ and $y$ is the dependent quantity in unit $Y$. The rate $m$ has unit $Y$ per $X$, and $b$ has unit $Y$: it is the value of $y$ when $x=0$.",
+          "A linear model has the form $y = mx + b$. Here $mx$ means $m$ times $x$.",
+          "The letter $x$ is the independent quantity, measured in some unit. The letter $y$ is the dependent quantity, in its own unit.",
+          "The rate $m$ has the unit of $y$ per unit of $x$. The number $b$ is the value of $y$ when $x = 0$, in the unit of $y$. In the bike model, $m = 6$ dollars per hour and $b = 4$ dollars.",
         ],
       },
     ],
     pitfalls: [
-      'A variable needs a unit; "the cost" alone does not say dollars or cents.',
-      "A rate is dependent unit per independent unit, not the other way around.",
-      "Convert time and other amounts to the unit of the rate before you substitute.",
+      "Give every variable a unit. “The cost” alone does not say whether it is dollars or cents.",
+      "Write a rate as the dependent unit per the independent unit: dollars per hour, not hours per dollar.",
+      "Convert an amount to the rate's unit, such as minutes to hours, before you substitute it.",
+      "A fixed fee or a fixed rate is a number, not a variable.",
     ],
     parentGuide:
-      "Ask the learner what changes and what stays the same in a situation from daily life, and in what unit each quantity is measured.",
+      "Pick a daily situation, such as filling a tank or paying for a taxi. Ask what you choose, what follows from it, which numbers stay fixed, and the unit of each.",
   },
   {
     id: "stem-leaf-read",
     title: "Read a stem-and-leaf plot",
     summary:
-      "Use the key to turn stems and leaves into values, then read the least, greatest, range, median, mode and counts.",
+      "A stem-and-leaf plot is a way to list numbers in order. Each number is split in two. The stem is the first digit or digits, written on the left. The leaf is the last digit, written on the right. A key is a note, such as “2 | 4 means 24,” that tells how to join them. Once you can read the numbers, you can find the smallest, the largest and the middle. You can also find the range: the largest minus the smallest.",
+    senses: {
+      key: "key",
+      stem: "stem",
+      leaf: "leaf",
+      mode: "mode-statistics",
+      range: "range-statistics",
+      mean: "mean-average",
+      difference: "difference-subtract",
+      "more than": "more-than",
+    },
+    noLink: ["part", "increasing"],
     templateIds: ["stem-leaf-read"],
     objectives: [
-      "Decode a key, including a key with a decimal point.",
-      "Read ordered values to find extremes, range, median and mode.",
-      "Count values above a given value.",
+      "Use the key to turn each stem and leaf into a number, including keys with a decimal point.",
+      "Find the least and greatest values, the range, the median and the mode.",
+      "Count how many values are greater than a given value.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "A list of values written in two pieces",
         paragraphs: [
-          "A stem-and-leaf plot writes each value as a stem and a leaf. The stem is the leading digit or digits and the leaf is the last digit. When the key says $2\\mid 4$ means $24$, the stem 2 stands for tens, so row 2 contains the values 20 to 29. When the key says $2\\mid 4$ means $2.4$, the leaf counts tenths.",
-          "The values increase down the plot and from left to right in each row, so the list is already in order. A leaf written twice in a row means that value occurs twice.",
+          "Data are numbers collected about something, such as how tall some plants are. Each number is one value.",
+          "A stem-and-leaf plot writes each value in two pieces. The stem is the leading digit or digits, on the left of the line. The leaf is the last digit, on the right. Each leaf in a row is one value.",
+          "The key is the note that tells how to read the pieces together. If the key says $2 \\mid 4$ means 24, the stem 2 is the tens digit. So row 2 holds values from 20 to 29. If the key says $2 \\mid 4$ means 2.4, the leaf is the tenths digit, the first digit after the decimal point.",
+          "The values go from smallest to largest. They grow down the plot and from left to right along each row. If a leaf is written twice in a row, that value appears twice in the data.",
         ],
       },
     ],
@@ -241,9 +277,9 @@ export const remainingGapLessons: Lesson[] = [
       prompt:
         "$\\begin{array}{r|l}\\mathtt{1}&\\mathtt{2\\ 5\\ 8}\\\\\\mathtt{2}&\\mathtt{0\\ 0\\ 3\\ 6}\\\\\\mathtt{3}&\\mathtt{1}\\end{array}$ Key: $1\\mid 2$ means $1.2$ meters. Find the median and the range.",
       steps: [
-        "Read the key: the stem is the whole-number part and the leaf is tenths. The values in order are 1.2, 1.5, 1.8, 2.0, 2.0, 2.3, 2.6, 3.1.",
-        "There are 8 values, an even count. The middle values are the 4th and 5th, 2.0 and 2.0, so the median is 2.0.",
-        "The greatest value is 3.1 and the least is 1.2. The range is $3.1-1.2=1.9$.",
+        "Read the key first. The stem is the whole-number part and the leaf is the tenths digit. Join each leaf to its stem: 1.2, 1.5, 1.8, 2.0, 2.0, 2.3, 2.6, 3.1. The plot already lists them in order.",
+        "The median is the middle value of the ordered list. Count the leaves: there are 8 values. With an even count, there are two middle values, the 4th and the 5th. Both are 2.0, so the median is 2.0.",
+        "The range is the greatest value minus the least value. It shows how spread out the data are. The least is the first leaf, 1.2. The greatest is the last leaf, 3.1. So the range is $3.1 - 1.2 = 1.9$.",
       ],
       answer: "median 2.0 meters, range 1.9 meters",
       answerUnit: "meters",
@@ -253,24 +289,29 @@ export const remainingGapLessons: Lesson[] = [
         stage: "method",
         title: "Which summary to read",
         paragraphs: [
-          "The least value is the first leaf of the top row and the greatest is the last leaf of the bottom row. The mode is a value whose stem and leaf both repeat. To count values greater than a given value, count the leaves in its row that are larger than its leaf and all leaves in later rows. A repeat of the given value is not greater.",
+          "The least value is the first leaf in the top row. The greatest value is the last leaf in the bottom row.",
+          "The mode is the value that appears most often. In a plot, look for a leaf repeated in the same row.",
+          "To count values greater than a given value, find its row. Count the leaves in that row that are larger than its leaf. Then add every leaf in the rows below. A value equal to the given value is not greater, so do not count it.",
+          "When two middle values differ, the median is their mean: their sum divided by 2. For 2.0 and 2.3, it is (2.0 + 2.3) ÷ 2 = 2.15.",
         ],
       },
       {
         stage: "formal",
         title: "Median position",
         paragraphs: [
-          "For $n$ ordered values, the median is the value in position $\\frac{n+1}{2}$ when $n$ is odd. When $n$ is even, it is the mean of the values in positions $\\frac{n}{2}$ and $\\frac{n}{2}+1$. The range is the greatest value minus the least value.",
+          "Let $n$ be the number of values, listed in order. If $n$ is odd, the median is the value in position $\\frac{n+1}{2}$. For 7 values, that is position 4.",
+          "If $n$ is even, the median is the mean of the values in positions $\\frac{n}{2}$ and $\\frac{n}{2}+1$. For 8 values, those are positions 4 and 5.",
+          "The range is the greatest value minus the least value.",
         ],
       },
     ],
     pitfalls: [
-      "Combine each leaf with its stem and the key; a leaf alone is a single digit.",
-      "Count leaves, not rows, when finding the middle or a total.",
-      "When the key has a decimal point, a range or difference keeps the same decimal places.",
+      "Join every leaf to its stem and read it with the key. A leaf alone is only one digit.",
+      "Count leaves, not rows, to find how many values there are or where the middle is.",
+      "When the key has a decimal point, keep it in your answers. A range of 1.9 meters is not 19.",
     ],
     parentGuide:
-      "Ask the learner to read the key aloud and say what the first and last values in the plot are.",
+      "Ask the learner to read the key aloud first. Then ask for the first and last values in the plot and what each one means.",
   },
   {
     id: "budget-category-balance",
