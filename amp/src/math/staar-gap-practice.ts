@@ -305,6 +305,7 @@ function nestedGrouping(r: Random): Built {
       answer: String(product - e * f),
       hint: `Work from the inside out. Start with the two parenthesized groups, $${a}+${b}$ and $${c}-${d}$, then use the bracket, then multiplication before subtraction.`,
       explanation: [
+        `The order of operations: parentheses first, then exponents, then multiply and divide, then add and subtract, each from left to right.`,
         `Inside the bracket, find each group: $${a}+${b}=${a + b}$ and $${c}-${d}=${c - d}$.`,
         `Multiply the groups inside the bracket: $${a + b}\\times${c - d}=${product}$.`,
         `Multiply before subtracting: $${e}\\times${f}=${e * f}$.`,
@@ -326,6 +327,7 @@ function nestedGrouping(r: Random): Built {
       answer: String(a + q),
       hint: `The bracket is one group, so finish it before the division. Inside it, do the parentheses $${b}\\times${c}$ first, then subtract $${d}$.`,
       explanation: [
+        `The order of operations: parentheses first, then exponents, then multiply and divide, then add and subtract, each from left to right.`,
         `Parentheses first: $${b}\\times${c}=${b * c}$.`,
         `Finish the bracket: $${b * c}-${d}=${b * c - d}$.`,
         `Divide before adding: $${b * c - d}\\div${e}=${q}$.`,
@@ -344,6 +346,7 @@ function nestedGrouping(r: Random): Built {
     answer: String(big * inner),
     hint: `The words “the ${word} of ${b} and ${c}” name one group. Find that group's value first, then multiply it by ${big}.`,
     explanation: [
+      `The ${word} of two numbers is the answer when you ${variant === "verbal-sum" ? "add" : "subtract"} them, and the product is the answer when you multiply. Find the inside part first.`,
       `The ${word} of ${b} and ${c} is $${b}${variant === "verbal-sum" ? "+" : "-"}${c}=${inner}$.`,
       `The product of ${big} and that ${word} is $${big}\\times${inner}=${big * inner}$.`,
     ],
@@ -371,6 +374,7 @@ function signedExponentOrder(r: Random): Built {
       answer: String(value),
       hint: `Do the parentheses first. $${b}-${c}$ is a negative number, so the product $-${a}\\times(${b}-${c})$ multiplies two negatives.`,
       explanation: [
+        `The order of operations: parentheses first, then exponents, then multiply and divide, then add and subtract, each from left to right.`,
         `Parentheses: $${b}-${c}=${diff}$.`,
         `Multiply: $-${a}\\times${par(diff)}=${-a * diff}$, because two negatives make a positive.`,
         `Multiply the other product: $${d}\\times${e}=${d * e}$.`,
@@ -390,6 +394,7 @@ function signedExponentOrder(r: Random): Built {
       answer: String(value),
       hint: `Exponents come before multiplication. Square $${c}$ first, then multiply by $${b}$, then subtract and add from left to right.`,
       explanation: [
+        `The order of operations: parentheses first, then exponents, then multiply and divide, then add and subtract, each from left to right.`,
         `Exponent: $${c}^{2}=${c * c}$.`,
         `Multiply: $${b}\\times${c * c}=${b * c * c}$.`,
         `Subtract: $${a}-${b * c * c}=${a - b * c * c}$.`,
@@ -408,6 +413,7 @@ function signedExponentOrder(r: Random): Built {
       answer: String(value),
       hint: `In $-${c}^{2}$ the exponent applies only to $${c}$. Square $${c}$ first, then take the opposite.`,
       explanation: [
+        `The order of operations: parentheses first, then exponents, then multiply and divide, then add and subtract, each from left to right.`,
         `The exponent applies to ${c}, not to the minus sign: $-${c}^{2}=-(${c}\\times${c})=-${c * c}$.`,
         `Multiply: $${d}\\times${e}=${d * e}$.`,
         `Add: $-${c * c}+${d * e}=${value}$.`,
@@ -426,6 +432,7 @@ function signedExponentOrder(r: Random): Built {
     answer: String(value),
     hint: `Start inside the parentheses: $${a}-${b}$ is negative. Square that result, then subtract the product.`,
     explanation: [
+      `The order of operations: parentheses first, then exponents, then multiply and divide, then add and subtract, each from left to right.`,
       `Parentheses: $${a}-${b}=${a - b}$.`,
       `Exponent: $${par(a - b)}^{2}=${sq}$, because a negative times a negative is positive.`,
       `Multiply: $${c}\\times${d}=${c * d}$.`,
@@ -889,7 +896,7 @@ function renameForms(r: Random, axes?: Record<string, string>): Built {
         ]
       : [
           `$\\frac{${n}}{${d}}=${n}\\div${d}=${dec(thousandths, 3)}$.`,
-          `Multiply by 100 to write the decimal as a percent: ${dec(thousandths, 3)} is ${dec(thousandths, 1)}%.`,
+          `Percent means "out of 100", so multiply by 100 to count hundredths: ${dec(thousandths, 3)} is ${dec(thousandths, 1)}%.`,
         ],
     choices: choicesFrom(r, correct, wrongs),
   };
@@ -1171,9 +1178,9 @@ function storyModelChoice(r: Random): Built {
       answer: "",
       hint: `Say each equation in words and compare it with the story: ${b} equal ${holder} with $m$ in each. Two of them are different ways to write the same division or multiplication.`,
       explanation: [
-        `${b} ${holder} with $m$ in each hold $${b}\\times m=${total}$, and the same facts give $${total}\\div${b}=m$ and $${total}\\div m=${b}$.`,
-        `The equation that can not be used is the one that does not follow from these.`,
-        `With $m=${m}$ every other equation is true.`,
+        `${b} equal ${holder} with $m$ in each hold $${b}\\times m=${total}$ in all.`,
+        `Multiplication and division undo each other, so the same fact can also be written $${total}\\div${b}=m$ or $${total}\\div m=${b}$.`,
+        `Check each choice with the real value, $m=${m}$: the equations that come from the story are true, and the one that cannot be used is false.`,
       ],
       choices: equationChoices(r, false, [
         eq(`${b}\\times m`, `${total}`, b * m === total),
@@ -1336,8 +1343,8 @@ function orderDecimals(r: Random): Built {
       answer: "",
       hint: `Write each number with three decimal places, such as ${text(items[0]!)} as ${fixed(items[0]!.v, 3)}. Then compare the tenths digits first, then the hundredths, then the thousandths.`,
       explanation: [
-        `With three decimal places: ${items.map((d) => fixed(d.v, 3)).join(", ")}.`,
-        `Compare from the left: the tenths digit decides first, and ties go to the hundredths.`,
+        `Give every number three decimal places, so each has the same places to compare. Zeros added at the right end do not change a value: ${items.map((d) => fixed(d.v, 3)).join(", ")}.`,
+        `Compare from the left, because the tenths place is worth the most: the tenths digit decides first, and ties go to the hundredths.`,
         `${ascending ? "Least to greatest" : "Greatest to least"}: ${ordered.map((d) => fixed(d.v, 3)).join(", ")}, which is ${ordered.map(text).join(", ")}.`,
       ],
       choices: choicesFrom(
@@ -2071,9 +2078,10 @@ function lineFromPoints(r: Random): Built {
     answer: "",
     hint: `The rate of change is the slope. Solve $${eq}$ for $y$: move the $x$ term to the other side, then divide every term by ${B}.`,
     explanation: [
-      `Subtract $${A}x$ from both sides: $${B}y=-${A}x+${C}$.`,
-      `Divide every term by ${B}: $y=${fracTex(-A, B)}x+${fracTex(C, B)}$.`,
-      `The rate of change is the coefficient of $x$, $${fracTex(-A, B)}$.`,
+      `The rate of change of $y$ with respect to $x$ is how much $y$ changes for each 1 that $x$ increases: the slope.`,
+      `To read it, solve for $y$. Subtract $${A}x$ from both sides, so they stay equal: $${B}y=-${A}x+${C}$.`,
+      `Divide every term by ${B}: $y=${fracTex(-A, B)}x${fracTex(C, B).startsWith("-") ? "" : "+"}${fracTex(C, B)}$.`,
+      `In $y = mx + b$, the number multiplying $x$ (its coefficient) is the slope. The rate of change is $${fracTex(-A, B)}$.`,
     ],
     choices: choicesFrom(r, tex(fracTex(-A, B)), [
       {

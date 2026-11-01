@@ -112,8 +112,9 @@ export const walletPurchase = chainFamily({
         answer: dollarsShort(pay),
         hint: `Add the two prices first: ${dollars(m.first)} + ${dollars(m.second)}. The coupon of ${dollars(m.third)} comes off that total.`,
         explanation: [
-          `The total before the coupon is $${dollars(m.first)}+${dollars(m.second)}=${dollars(subtotal)}$ dollars.`,
-          `The coupon takes ${dollars(m.third)} dollars off: $${dollars(subtotal)}-${dollars(m.third)}=${dollars(pay)}$ dollars.`,
+          `The coupon comes off the total, so find the total first.`,
+          `Add the two prices: $${dollars(m.first)}+${dollars(m.second)}=${dollars(subtotal)}$ dollars.`,
+          `The coupon takes ${dollars(m.third)} dollars off, so subtract: $${dollars(subtotal)}-${dollars(m.third)}=${dollars(pay)}$ dollars.`,
           `Mia pays ${dollars(pay)} dollars.`,
         ],
         label: "Answer (dollars)",
@@ -127,10 +128,12 @@ export const walletPurchase = chainFamily({
       answer: dollarsShort(left),
       hint: `Start with the bills: ${m.fives} five-dollar bills are worth ${5 * m.fives} dollars. Add the one-dollar bills, then the coins, before you subtract the price of ${dollars(m.third)}.`,
       explanation: [
-        `Bills: $${m.fives}\\times5+${m.ones}\\times1=${bills / 100}$ dollars.`,
-        `Coins in cents: $${m.quarters}\\times25+${m.dimes}\\times10+${m.nickels}\\times5=${coins}$ cents, which is ${dollars(coins)} dollars.`,
-        `The wallet holds $${bills / 100}+${dollars(coins)}=${dollars(m.first)}$ dollars.`,
-        `After the ${dollars(m.third)} dollar purchase: $${dollars(m.first)}-${dollars(m.third)}=${dollars(left)}$ dollars.`,
+        `First find how much money is in the wallet, then take away the price of the book.`,
+        `Bills: each five-dollar bill is 5 dollars and each one-dollar bill is 1 dollar. $${m.fives}\\times5+${m.ones}\\times1=${bills / 100}$ dollars.`,
+        `Coins: a quarter is 25 cents, a dime is 10 cents and a nickel is 5 cents. $${m.quarters}\\times25+${m.dimes}\\times10+${m.nickels}\\times5=${coins}$ cents.`,
+        `100 cents make 1 dollar, so ${coins} cents is ${dollars(coins)} dollars. The wallet holds $${bills / 100}+${dollars(coins)}=${dollars(m.first)}$ dollars.`,
+        `Subtract the price of the book: $${dollars(m.first)}-${dollars(m.third)}=${dollars(left)}$ dollars.`,
+        `Sam has ${dollars(left)} dollars left.`,
       ],
       label: "Answer (dollars)",
     });
@@ -206,11 +209,13 @@ export const mixedQuantityDiscount = chainFamily({
       answer: dollarsShort(m.after),
       hint: `Find the cost before the discount first: multiply ${amount} ${m.good.unit}s by ${dollars(m.cents)} dollars per ${m.good.unit}. The discount applies to that total, not to the price per ${m.good.unit}.`,
       explanation: [
-        `Cost before the discount: $${decimalQuantity}\\times${dollars(m.cents)}=${dollars(m.before)}$ dollars.`,
+        `The discount comes off the total, so find the total cost first.`,
+        `${amount} is ${decimalQuantity} as a decimal. Multiply by the price per ${m.good.unit}: $${decimalQuantity}\\times${dollars(m.cents)}=${dollars(m.before)}$ dollars.`,
         a["discount-form"] === "fraction"
-          ? `The discount is ${fractionOff} of ${dollars(m.before)} dollars, which is $${dollars(m.before)}\\div${m.discount.d}=${dollars(m.before / m.discount.d)}$ dollars.`
-          : `The discount is ${m.discount.percent}% of ${dollars(m.before)} dollars, which is $${dollars(m.before)}\\times${m.discount.percent / 100}=${dollars((m.before * m.discount.percent) / 100)}$ dollars.`,
-        `Dara pays $${dollars(m.before)}-${dollars(m.before - m.after)}=${dollars(m.after)}$ dollars.`,
+          ? `The discount is ${fractionOff} of ${dollars(m.before)} dollars. Taking one of ${m.discount.d} equal parts means dividing by ${m.discount.d}: $${dollars(m.before)}\\div${m.discount.d}=${dollars(m.before / m.discount.d)}$ dollars.`
+          : `The discount is ${m.discount.percent}% of ${dollars(m.before)} dollars. ${m.discount.percent}% means ${m.discount.percent} hundredths, or ${m.discount.percent / 100}: $${dollars(m.before)}\\times${m.discount.percent / 100}=${dollars((m.before * m.discount.percent) / 100)}$ dollars.`,
+        `Subtract the discount from the total: $${dollars(m.before)}-${dollars(m.before - m.after)}=${dollars(m.after)}$ dollars.`,
+        `Dara pays ${dollars(m.after)} dollars.`,
       ],
       label: "Answer (dollars)",
     });

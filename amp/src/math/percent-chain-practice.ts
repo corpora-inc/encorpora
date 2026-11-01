@@ -146,8 +146,11 @@ const percentChain = chainFamily({
         answer: String(start),
         hint: `Work backward from the last change. The final price of ${end} dollars is the sale price plus ${rise}% of the sale price, so it equals ${factor(rise)} times the sale price. Find the sale price first.`,
         explanation: [
-          `The increase of ${rise}% multiplies the sale price by ${factor(rise)}. So $${end} = ${factor(rise)} \\times \\text{sale price}$, and the sale price is $${end} \\div ${factor(rise)} = ${middle}$ dollars.`,
-          `The sale reduced the original price by ${cut}%, which multiplies it by ${keep(cut)}. So $${middle} = ${keep(cut)} \\times \\text{original price}$, and the original price is $${middle} \\div ${keep(cut)} = ${start}$ dollars.`,
+          `Work backward: undo the last change first, because the final price is the only price you know.`,
+          `Raising a price by ${rise}% keeps all of it and adds ${rise}%, so it multiplies the price by ${factor(rise)}. So $${end} = ${factor(rise)} \\times \\text{sale price}$.`,
+          `Undo multiplying by dividing: the sale price is $${end} \\div ${factor(rise)} = ${middle}$ dollars.`,
+          `Cutting a price by ${cut}% keeps ${100 - cut}% of it, so it multiplies the price by ${keep(cut)}. So $${middle} = ${keep(cut)} \\times \\text{original price}$.`,
+          `Divide again: the original price is $${middle} \\div ${keep(cut)} = ${start}$ dollars.`,
           `Check forward: $${start} \\times ${keep(cut)} = ${middle}$ and $${middle} \\times ${factor(rise)} = ${end}$. The price before the sale was ${start} dollars.`,
         ],
         label: "Answer (dollars)",
@@ -164,12 +167,13 @@ const percentChain = chainFamily({
       return numberSurface({
         prompt: `A store marks a ${m.noun} at ${money(marked * 100)} and then lowers the price by ${cut}%. The new price is ${rise}% more than the price the store paid for the ${m.noun}. What did the store pay? Enter the number of dollars.`,
         answer: String(paid),
-        hint: `Find the new price first: lowering ${marked} dollars by ${cut}% keeps ${100 - cut}% of it, so multiply ${marked} by ${keep(cut)}. The ${rise}% comparison comes after that.`,
+        hint: `Find the new price first: lowering ${marked} dollars by ${cut}% means multiplying ${marked} by ${keep(cut)}. The ${rise}% comparison comes after that.`,
         explanation: [
-          `Lowering the price by ${cut}% keeps ${100 - cut}% of it, so the new price is $${marked}\\times${keep(cut)}=${sale}$ dollars.`,
-          `The new price is ${rise}% more than what the store paid, so it is $${factor(rise)}$ times that price: $${sale}=${factor(rise)}\\times\\text{price paid}$.`,
-          `The store paid $${sale}\\div${factor(rise)}=${paid}$ dollars.`,
-          `Check: $${paid}\\times${factor(rise)}=${sale}$ and $${marked}\\times${keep(cut)}=${sale}$.`,
+          `Lowering the price by ${cut}% keeps ${100 - cut}% of it. As a decimal, ${100 - cut}% is ${keep(cut)}.`,
+          `So the new price is $${marked}\\times${keep(cut)}=${sale}$ dollars.`,
+          `"${rise}% more than what the store paid" means the price paid plus ${rise}% of it, which is $${factor(rise)}$ times the price paid. So $${sale}=${factor(rise)}\\times\\text{price paid}$.`,
+          `Undo multiplying by dividing: the price paid is $${sale}\\div${factor(rise)}=${paid}$ dollars.`,
+          `Check: $${paid}\\times${factor(rise)}=${sale}$ and $${marked}\\times${keep(cut)}=${sale}$. The store paid ${paid} dollars.`,
         ],
         label: "Answer (dollars)",
       });
@@ -182,9 +186,11 @@ const percentChain = chainFamily({
         answer: total,
         hint: `Each increase multiplies the current amount by 1 plus its rate as a decimal. Start with the first year: a ${first}% rise multiplies by ${factor(first)}.`,
         explanation: [
-          `The first rise of ${first}% multiplies the fee by $${factor(first)}$.`,
-          `The second rise of ${second}% applies to the new fee, so it multiplies by $${factor(second)}$ as well.`,
-          `The single factor is $${factor(first)} \\times ${factor(second)} = ${total}$. It is not $${factor(first + second)}$, because the second percent is taken of a larger amount.`,
+          `A rise of ${first}% keeps the whole fee and adds ${first}% of it. That is 100% + ${first}%, so it multiplies the fee by $${factor(first)}$.`,
+          `The second rise of ${second}% is taken of the new fee, so it multiplies the new fee by $${factor(second)}$.`,
+          `Two multiplications in a row are the same as one multiplication by their product: $${factor(first)} \\times ${factor(second)} = ${total}$.`,
+          `It is not $${factor(first + second)}$, because the second percent is taken of a larger amount than the first.`,
+          `The fee after two years is the original fee times ${total}.`,
         ],
         label: "Answer (decimal factor)",
       });
@@ -195,9 +201,11 @@ const percentChain = chainFamily({
       answer: String(end),
       hint: `The first change is an increase of ${rise}% on ${start}, so multiply ${start} by ${factor(rise)}. Use that new amount, not ${start}, for the ${cut}% decrease.`,
       explanation: [
-        `A ${rise}% increase multiplies by ${factor(rise)}: $${start} \\times ${factor(rise)} = ${middle}$.`,
-        `A ${cut}% decrease keeps ${100 - cut}% of the new amount, so it multiplies by ${keep(cut)}: $${middle} \\times ${keep(cut)} = ${end}$.`,
-        `At the end of the second month the amount is ${end}.`,
+        `An increase of ${rise}% keeps the whole amount and adds ${rise}% of it. That is 100% + ${rise}%, so multiply by ${factor(rise)}.`,
+        `After the first month: $${start} \\times ${factor(rise)} = ${middle}$.`,
+        `The ${cut}% decrease is taken of this new amount, ${middle}, not of ${start}. Losing ${cut}% keeps ${100 - cut}%, so multiply by ${keep(cut)}.`,
+        `After the second month: $${middle} \\times ${keep(cut)} = ${end}$.`,
+        `At the end of the second month the ${m.noun} is ${end}.`,
       ],
     });
   },
