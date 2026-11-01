@@ -881,9 +881,20 @@ header {
   line-height: 1.05;
 }
 .intro p {
-  max-width: 40ch;
+  max-width: 46ch;
   font-size: 17px;
   color: var(--color-muted-text);
+}
+/* The brand line is a label above the headline, not body text. */
+.intro > div > p:first-child {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+/* The card's heading sits under the page headline in the type scale. */
+.shell.app-shell.flow > section.welcome h2 {
+  font-size: clamp(24px, 5vw, 30px);
 }
 .card {
   border: 1px solid var(--color-border);

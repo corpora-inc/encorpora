@@ -211,14 +211,24 @@ export async function startShellFixture({
     trial.state = await context.storageState();
     await context.close();
   }
-  await setup.close();
-
   const states: Record<ShellState, StorageState | undefined> = {
     guest: undefined,
     new: fresh.state,
     trial: trial.state,
     paid: paidParent.state,
   };
+  // Sign-in endpoints allow 60 requests a minute per address, which a sweep
+  // of hundreds of page loads exceeds. Each state's real session response is
+  // read once here and replayed, so every screen still gets its real session.
+  const sessions = {} as Record<ShellState, unknown>;
+  for (const state of Object.keys(states) as ShellState[]) {
+    const context = await setup.newContext({ storageState: states[state] });
+    sessions[state] = await (
+      await context.request.get(`${origin}/api/auth/get-session`)
+    ).json();
+    await context.close();
+  }
+  await setup.close();
   return {
     origin,
     pool,
@@ -237,6 +247,9 @@ export async function startShellFixture({
         storageState: states[state],
       });
       await context.addInitScript(shiftRecorder);
+      await context.route("**/api/auth/get-session*", (route) =>
+        route.fulfill({ json: sessions[state] }),
+      );
       if (state === "paid")
         await context.addInitScript(
           `localStorage.setItem('amp.learner', JSON.stringify({state:{learnerId:${JSON.stringify(jordan.id)}},version:1}))`,
@@ -359,7 +372,7 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "pathway-skill",
       path: `/pathways/${f.practisedSkill}`,
       state: "paid",
-      ready: (p) => p.locator("h1").first().waitFor(),
+      ready: (p) => p.getByRole("button", { name: "Close skill" }).waitFor(),
     },
     {
       id: "inventory",

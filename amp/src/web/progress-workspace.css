@@ -414,6 +414,10 @@
     padding: 14px;
     gap: 7px;
   }
+  /* A tighter gap lets a phone page hold one more card. */
+  .progress-cards {
+    gap: 10px;
+  }
   .progress-card-title {
     font-size: 1.125rem;
   }

@@ -190,7 +190,8 @@ export function ProgressWorkspace({
     observer.observe(target);
     measure();
     return () => observer.disconnect();
-  }, [view.skillId, !!snapshot, largeText]);
+    // Re-measure once cards exist: the catalog can arrive after the snapshot.
+  }, [view.skillId, !!snapshot, largeText, skills.length, view.filter]);
   // The estimate above cannot know how card text wraps; if a page still
   // overflows, show one row fewer so cards never scroll inside the stage.
   useLayoutEffect(() => {
