@@ -14,18 +14,17 @@ const entries: WorkEntry[] = [
     intuition:
       "A density says how much one unit of volume weighs. If soil weighs 90 pounds per cubic foot, 2 cubic feet weigh $2\\times90=180$ pounds. So every weight problem has two parts: the volume, then the density. The unit of the volume must match the unit in the density.",
     terms: [
+      "density",
       [
-        "density",
-        "The mass or weight of one unit of volume, such as 90 pounds per cubic foot or 2.5 grams per cubic centimeter.",
+        "volume",
+        "$V = \\pi r^2 h$, where $r$ is the radius and $h$ is the height.",
       ],
+      "cylinder",
       [
-        "volume of a cylinder",
-        "$V=\\pi r^2h$, where $r$ is the radius, half the diameter, and $h$ is the height.",
+        "volume",
+        "$V = \\tfrac{1}{3}Bh$, where $B$ is the base area and $h$ the height: one third of the matching prism.",
       ],
-      [
-        "volume of a pyramid",
-        "$V=\\frac13Bh$, where $B$ is the area of the base and $h$ is the height; one third of a prism with the same base and height.",
-      ],
+      "pyramid",
     ],
     method: [
       "Find the radius from a diameter, or the area of the base, and write the volume formula.",
@@ -74,13 +73,10 @@ const entries: WorkEntry[] = [
     intuition:
       "A triangle with base $b$ and height $h$ has area $\\frac12bh$. If you know side $a$ and the angle $C$ between $a$ and $b$, the height above $b$ is $a\\sin C$. So the area is $\\frac12b\\,(a\\sin C)$.",
     terms: [
+      "included-angle",
       [
-        "included angle",
-        "The angle formed by the two given sides, with its vertex where they meet.",
-      ],
-      [
-        "$\\sin C$",
-        "The sine of angle $C$; for an obtuse angle it is positive and equals the sine of its supplement.",
+        "sine",
+        "For an obtuse angle $C$, $\\sin C$ is positive and equals $\\sin(180^\\circ-C)$.",
       ],
     ],
     method: [
@@ -128,16 +124,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "In a right triangle the ratio of the leg opposite an angle to the hypotenuse depends only on the angle. That ratio is the sine. For $30^\\circ$ it is 0.5, so a hypotenuse of 10 gives an opposite leg of 5.",
-    terms: [
-      [
-        "opposite leg",
-        "The leg across the triangle from the angle; it does not touch the angle.",
-      ],
-      [
-        "adjacent leg",
-        "The leg that touches the angle and is not the hypotenuse.",
-      ],
-    ],
+    terms: ["opposite-side-angle", "adjacent-leg"],
     method: [
       "Mark the angle, the hypotenuse and the leg you want.",
       "Use sine if the leg is opposite the angle and cosine if it is adjacent.",
@@ -183,16 +170,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "From a lookout, look up to the top and down to the base. The horizontal line at your eye splits the object into an upper part and a lower part. Each part is the opposite side of a right triangle whose adjacent side is the same horizontal distance.",
-    terms: [
-      [
-        "angle of elevation",
-        "The angle above the horizontal when you look up at something.",
-      ],
-      [
-        "angle of depression",
-        "The angle below the horizontal when you look down at something.",
-      ],
-    ],
+    terms: ["angle-of-elevation", "angle-of-depression"],
     method: [
       "Draw the horizontal line through the lookout and the two right triangles.",
       "Upper part: horizontal distance times the tangent of the angle of elevation.",
@@ -239,10 +217,14 @@ const entries: WorkEntry[] = [
     intuition:
       "In an isosceles triangle the altitude from the apex is also the angle bisector and the median. It makes two matching right triangles, each with half the apex angle at the top, the altitude as one leg and half the base as the other.",
     terms: [
-      ["apex angle", "The angle between the two equal sides."],
       [
-        "altitude from the apex",
-        "The segment from the apex perpendicular to the base; it halves the apex angle and the base.",
+        "angle",
+        "The apex angle of an isosceles triangle is the angle between its two equal sides.",
+      ],
+      "isosceles",
+      [
+        "altitude",
+        "From the apex of an isosceles triangle, it halves the apex angle and the base.",
       ],
     ],
     method: [
@@ -290,10 +272,10 @@ const entries: WorkEntry[] = [
     intuition:
       "A walkway around a pool is the space inside the outer circle but outside the pool. Its area is the area of the big circle minus the area of the pool: $\\pi R^2-\\pi r^2$.",
     terms: [
-      ["ring", "The region between two circles that share a center."],
+      "ring",
       [
-        "border width",
-        "The distance between the circles; it is added to the inner radius to get the outer radius.",
+        "ring",
+        "The border width is the distance between the two circles: inner radius plus border width gives the outer radius.",
       ],
     ],
     method: [
@@ -339,13 +321,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "A segment perpendicular to a side makes a right angle. In the triangle it forms, the other two angles add to $90^\\circ$. If you know one of them, subtract it from 90 to get the other.",
-    terms: [
-      [
-        "supplementary angles",
-        "Two angles on a straight line; they add to $180^\\circ$.",
-      ],
-      ["perpendicular", "Meeting at a right angle, $90^\\circ$."],
-    ],
+    terms: ["supplementary", "perpendicular"],
     method: [
       "Find the angle of the right triangle at the vertex: the parallelogram's angle if the point is on the side, or $180^\\circ$ minus it if the point is on the extended line.",
       "The triangle's right angle is $90^\\circ$.",
@@ -390,14 +366,12 @@ const entries: WorkEntry[] = [
     intuition:
       "If $\\overline{DE}\\parallel\\overline{BC}$, the small triangle $ADE$ is a scaled copy of $ABC$. Every part of $\\overline{AB}$ cut by $D$ matches a part of $\\overline{AC}$ cut by $E$, scaled by the same factor.",
     terms: [
+      "scale-factor",
       [
-        "scale factor",
-        "The number that multiplies each length of one figure to give the matching length of the other.",
+        "proportion",
+        "Proportional segments have lengths in equal ratios, such as $\\frac{AD}{DB} = \\frac{AE}{EC}$.",
       ],
-      [
-        "proportional segments",
-        "Segments with equal ratios, such as $\\frac{AD}{DB}=\\frac{AE}{EC}$.",
-      ],
+      "segment",
     ],
     method: [
       "Write the ratio $\\frac{AE}{AD}$ from the two known parts that start at $A$.",
@@ -443,14 +417,8 @@ const entries: WorkEntry[] = [
     intuition:
       "Squaring both sides turns $\\sqrt{u}$ into $u$, but it also turns a false statement like $-3=3$ into $9=9$. So squaring can create solutions that do not satisfy the original equation. The check at the end is part of the solution.",
     terms: [
-      [
-        "extraneous solution",
-        "A value that solves the equation after squaring but not the original equation.",
-      ],
-      [
-        "radicand",
-        "The expression under a square root sign; it must not be negative.",
-      ],
+      "extraneous-solution",
+      ["radicand", "For a real square root it must not be negative."],
     ],
     method: [
       "Write the equation with one radical on each side of the equal sign.",
@@ -497,16 +465,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "The group $3(x+2)$ means three copies of $x+2$, which is $3x+6$. After removing the parentheses the equation has $x$ terms and numbers on both sides, and each step moves one kind of term across the equal sign by adding or subtracting.",
-    terms: [
-      [
-        "distribute",
-        "Multiply each term inside parentheses by the number outside: $a(x+b)=ax+ab$.",
-      ],
-      [
-        "like terms",
-        "Terms with the same variable part, such as $5x$ and $2x$, which can be added.",
-      ],
-    ],
+    terms: ["distribute", "like-terms"],
     method: [
       "Distribute the number over the group and combine like terms on that side.",
       "Add or subtract $x$ terms so all are on one side.",
@@ -550,16 +509,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "In $N(t)=100\\cdot2^t$ the unknown time is in the exponent. A logarithm undoes the exponent: if $2^t=8$ then $t=\\frac{\\ln8}{\\ln2}=3$. First get the exponential alone, then take the logarithm of both sides.",
-    terms: [
-      [
-        "natural logarithm",
-        "$\\ln x$, the exponent to which $e$ is raised to give $x$; $\\ln(e^k)=k$.",
-      ],
-      [
-        "growth factor",
-        "The base $b$ in $A\\cdot b^t$; each time unit multiplies the amount by $b$.",
-      ],
-    ],
+    terms: ["natural-logarithm", "growth-factor"],
     method: [
       "Set the model equal to the target.",
       "Divide both sides by the starting amount.",

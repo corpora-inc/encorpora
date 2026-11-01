@@ -8,13 +8,10 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
     intuition:
       "A quadratic with a negative discriminant has no real solutions. The quadratic formula still gives two solutions, written with $i=\\sqrt{-1}$, and the denominator is $2a$ even when $a$ is not 1.",
     terms: [
+      "discriminant",
       [
-        "discriminant",
-        "The number $b^2-4ac$ under the square root of the quadratic formula.",
-      ],
-      [
-        "nonreal solution",
-        "A solution that contains $i$ and is not a real number.",
+        "complex-number",
+        "A nonreal solution has $b\\ne0$, so it contains $i$.",
       ],
     ],
     method: [
@@ -29,10 +26,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
     goal: "Swap $x$ and $y$ and solve for $y$ to write the inverse of an exponential, or recover $f$ from a cube-root inverse.",
     intuition:
       "An inverse function undoes the original. Exponentials are undone by logarithms, and cubing is undone by a cube root. To find an inverse, swap the roles of input and output and solve for the new output.",
-    terms: [
-      ["inverse function", "The function $f^{-1}$ with $f^{-1}(f(x))=x$."],
-      ["logarithm base $b$", "$\\log_b y$ is the exponent $k$ with $b^k=y$."],
-    ],
+    terms: ["inverse-function", "logarithm"],
     method: [
       "Write $y=f(x)$ and swap $x$ and $y$.",
       "Undo operations in reverse order: first isolate the power, then take the logarithm; or first cube, then add or subtract.",
@@ -45,13 +39,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
     goal: "Find where a line meets a circle centered at the origin, or decide what kind of numbers the intersections are.",
     intuition:
       "A solution of a system lies on both graphs, so it satisfies both equations. A line can cross a circle twice, touch it once, or miss it; when it misses, the algebra gives nonreal solutions.",
-    terms: [
-      ["tangent", "A line that touches a circle at exactly one point."],
-      [
-        "rational number",
-        "A number that can be written as a fraction of integers.",
-      ],
-    ],
+    terms: ["tangent-line", "rational-number"],
     method: [
       "Test or solve: substitute a variable from the line into the circle equation.",
       "For a vertical line $x=c$, the circle equation leaves a square of the $y$-part equal to a number.",
@@ -64,16 +52,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
     goal: "Multiply by the common denominator, solve, and reject any value that makes a denominator zero.",
     intuition:
       "Multiplying an equation by its common denominator removes the fractions, but the new equation can have a root that makes an original denominator zero. Such a value cannot be a solution of the original equation.",
-    terms: [
-      [
-        "excluded value",
-        "A value of $x$ that makes a denominator equal to zero.",
-      ],
-      [
-        "extraneous solution",
-        "A root of the cleared equation that is not a solution of the original one.",
-      ],
-    ],
+    terms: ["excluded-value", "extraneous-solution"],
     method: [
       "List the excluded values from every denominator.",
       "Multiply both sides by the common denominator and simplify; this may give a quadratic.",
@@ -86,10 +65,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
     goal: "Multiply two trinomials term by term and combine terms with the same power.",
     intuition:
       "Each term of the first trinomial multiplies each term of the second, so there are nine products. Products with the same power of $x$ are like terms and are added.",
-    terms: [
-      ["trinomial", "A polynomial with three terms."],
-      ["like terms", "Terms with the same power of $x$."],
-    ],
+    terms: ["trinomial", "like-terms"],
     method: [
       "Multiply the first term of one trinomial by all three terms of the other, then repeat for the second and third terms.",
       "Collect like terms by power: $x^4$, $x^3$, $x^2$, $x$ and the constant.",
@@ -103,10 +79,13 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
     intuition:
       "Dividing like long division gives a quotient and a remainder: $\\frac{p(x)}{d(x)}=q(x)+\\frac{R}{d(x)}$. The remainder stays over the divisor because it was never divided.",
     terms: [
-      ["quotient", "The polynomial $q(x)$ that results from the division."],
+      [
+        "quotient",
+        "Here the quotient is the polynomial $q(x)$ that results from the division.",
+      ],
       [
         "remainder",
-        "What is left after the last step; for a linear divisor it is a number.",
+        "When a polynomial is divided by $x - r$, the remainder is a number.",
       ],
     ],
     method: [
@@ -121,10 +100,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
     goal: "Reduce each power of $i$ using the four-step cycle and collect real and imaginary parts.",
     intuition:
       "The powers of $i$ repeat in a cycle of four: $i,-1,-i,1$. Divide the exponent by 4 and use the remainder to replace each power, then add like terms.",
-    terms: [
-      ["imaginary unit", "The number $i$ with $i^2=-1$."],
-      ["real part", "The part of $a+bi$ without $i$, here $a$."],
-    ],
+    terms: ["imaginary-unit", "real-part"],
     method: [
       "Reduce each exponent: remainder 0 gives 1, 1 gives $i$, 2 gives $-1$, 3 gives $-i$.",
       "Multiply by each term's coefficient and collect real terms and terms with $i$.",
@@ -137,13 +113,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
     goal: "Solve an equation with two square roots by isolating and squaring twice, then test every candidate.",
     intuition:
       "Squaring removes a square root but can create solutions that do not fit the original equation. With two radicals you square twice, so you must check each candidate in the original equation.",
-    terms: [
-      ["radicand", "The expression under a square root."],
-      [
-        "extraneous solution",
-        "A candidate produced by squaring that does not satisfy the original equation.",
-      ],
-    ],
+    terms: ["radicand", "extraneous-solution"],
     method: [
       "Isolate one radical and square both sides, expanding the square of the right side carefully.",
       "Isolate the remaining radical, square again and solve the resulting quadratic.",
@@ -156,13 +126,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
     goal: "Solve $|x-p|=qx+r$ in two cases and keep only the solutions that satisfy the original equation.",
     intuition:
       "The absolute value $|u|$ equals $u$ when $u\\ge0$ and $-u$ when $u<0$. So an equation with an absolute value splits into two cases, and each case's answer must be checked because it might not fit its own case.",
-    terms: [
-      ["absolute value", "The distance of a number from 0, written $|u|$."],
-      [
-        "extraneous solution",
-        "A solution of one case that does not satisfy the original equation.",
-      ],
-    ],
+    terms: ["absolute-value", "extraneous-solution"],
     method: [
       "Case 1: set the inside equal to the right side. Case 2: set the inside equal to the opposite of the right side.",
       "Solve each case.",
@@ -177,10 +141,10 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
       "A trinomial such as $(x-4)^2-5(x-4)-14$ has the form $u^2-5u-14$ with $u=x-4$. Factor it as you would factor in $u$, then put $x-4$ back and simplify.",
     terms: [
       [
-        "substitution",
-        "Replacing a repeated expression by one letter to see structure.",
+        "substitute",
+        "Here a repeated expression is replaced by one letter, such as $u = x + 1$, to show the structure.",
       ],
-      ["factor", "One of the expressions whose product is the original."],
+      "factor-number",
     ],
     method: [
       "Let $u$ stand for the repeated binomial.",
@@ -194,16 +158,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
     goal: "Write roots as rational exponents and combine powers of one variable by adding and subtracting exponents.",
     intuition:
       "A cube root is the exponent $\\frac13$. Multiplying powers of the same variable adds exponents and dividing subtracts them, so a root, a product and a quotient can all be written as one power.",
-    terms: [
-      [
-        "rational exponent",
-        "An exponent that is a fraction, where $a^{m/n}=\\sqrt[n]{a^m}$.",
-      ],
-      [
-        "perfect cube",
-        "A number such as 8 or 27 that is the cube of an integer.",
-      ],
-    ],
+    terms: ["rational-exponent", "perfect-cube"],
     method: [
       "Rewrite each radical as a power: $\\sqrt[3]{a}=a^{1/3}$ and $\\sqrt[3]{d^3x^m}=d\\,x^{m/3}$.",
       "Multiply: add exponents of the same base. Divide: subtract exponents. Multiply coefficients separately.",

@@ -7,6 +7,7 @@ import { generateProblem } from "../math/engine";
 import type { Lesson } from "../content/lessons";
 import type { SkillEvidence } from "../server/evidence";
 import { templateGrade } from "../server/mixed-practice";
+import { challengePool } from "./challenge-pool";
 import { paperExclusions } from "./paper-exclusions";
 
 /** A daily workbook: about 30, 45 or 60 minutes of printed work chosen from
@@ -101,6 +102,8 @@ const budgets: Record<
   45: { warmUp: 6, review: 3, guided: 2, practiceMax: 10 },
   60: { warmUp: 8, review: 4, guided: 3, practiceMax: 14 },
 };
+/** How far above the learner's level the Challenge sits, in grades. */
+export const CHALLENGE_WINDOW = [0.5, 1.3] as const;
 /** Reading a lesson card and its worked example. */
 export const LESSON_READING_MINUTES = 5;
 
@@ -365,32 +368,51 @@ export function composeWorkbook(options: {
       ).map((t) => item(t, "review")),
     );
 
-  // Challenge: just beyond reach, in the strand with the most independent
-  // evidence, preferring problems with several steps or a figure to reason about.
+  // Challenge: just beyond reach, from the curated pool of problems with
+  // several steps or a figure to reason about, in the strand with the most
+  // independent evidence. The band widens step by step at the ends of the
+  // catalog; only if the pool has nothing near the learner does any
+  // template serve.
   const confident = [...new Set(pool.map(strandOf))].sort(
     (a, b) =>
       strandEstimate(options.frontier, b).independent -
         strandEstimate(options.frontier, a).independent || rank(a) - rank(b),
   );
-  const rich = (t: TemplateMetadata) =>
-    !!t.requiredResponseCapability || !!t.requiredFigureCapability;
+  // The three most practiced strands share the challenge, so it changes
+  // from day to day instead of repeating one template.
+  const byConfidence = (a: TemplateMetadata, b: TemplateMetadata) =>
+    Number(confident.indexOf(strandOf(a)) >= 3) -
+      Number(confident.indexOf(strandOf(b)) >= 3) || rank(a.id) - rank(b.id);
+  const inPool = (t: TemplateMetadata) => challengePool.has(t.id);
   const challengePick = (() => {
-    for (const [lo, hi] of [
-      [0.5, 1.3],
-      [0.3, 2],
-      [0, 13],
-    ] as const) {
-      const candidates = band(lo, hi);
-      if (!candidates.length) continue;
-      return candidates.sort(
-        (a, b) =>
-          confident.indexOf(strandOf(a)) - confident.indexOf(strandOf(b)) ||
-          Number(rich(b)) - Number(rich(a)) ||
-          rank(a.id) - rank(b.id),
-      )[0];
+    // The challenge sits 0.5 to 1.3 grades above the learner: above its
+    // strand's level, and never more than 1.3 above the overall level (a
+    // strand estimate can run ahead of a learner with little evidence).
+    // Pool problems first, chosen among the three most practiced strands so
+    // it changes from day to day; then any template in the window.
+    const [lo, hi] = CHALLENGE_WINDOW;
+    const capped = (t: TemplateMetadata) =>
+      gradeOf.get(t.id)! <= options.frontier.overall.level + hi;
+    for (const extra of [
+      (t: TemplateMetadata) => inPool(t) && capped(t),
+      capped,
+      inPool,
+      undefined,
+    ]) {
+      const candidates = band(lo, hi, extra);
+      if (candidates.length) return candidates.sort(byConfidence)[0];
     }
+    // Nothing in the window (the ends of the catalog): the template closest
+    // to it, from the pool when the pool has one as close.
+    const distance = (t: TemplateMetadata) => {
+      const offset = gradeOf.get(t.id)! - levelOf(strandOf(t));
+      return offset < lo ? lo - offset : offset > hi ? offset - hi : 0;
+    };
     return band(-13, 13).sort(
-      (a, b) => gradeOf.get(b.id)! - gradeOf.get(a.id)!,
+      (a, b) =>
+        Math.round(distance(a) * 10) - Math.round(distance(b) * 10) ||
+        Number(inPool(b)) - Number(inPool(a)) ||
+        byConfidence(a, b),
     )[0];
   })();
 
@@ -448,11 +470,27 @@ export function workbookMinutes(spec: WorkbookSpec): number {
   );
 }
 
+/** JSON with object keys sorted, so a spec read back from storage (JSONB
+ * reorders keys) hashes the same as the one composed. */
+export function canonicalJson(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
+  if (value && typeof value === "object")
+    return `{${Object.keys(value)
+      .filter((k) => (value as Record<string, unknown>)[k] !== undefined)
+      .sort()
+      .map(
+        (k) =>
+          `${JSON.stringify(k)}:${canonicalJson((value as Record<string, unknown>)[k])}`,
+      )
+      .join(",")}}`;
+  return JSON.stringify(value);
+}
+
 /** A short code printed on the workbook so results can be entered against
  * exactly these problems later. */
 export function workbookCode(spec: WorkbookSpec): string {
   const alphabet = "ABCDEFGHJKMNPQRSTVWXYZ23456789";
-  const digest = createHash("sha256").update(JSON.stringify(spec)).digest();
+  const digest = createHash("sha256").update(canonicalJson(spec)).digest();
   const chars = Array.from(
     digest.subarray(0, 8),
     (b) => alphabet[b % alphabet.length],

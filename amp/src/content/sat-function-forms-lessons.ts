@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -10,7 +11,7 @@ type Entry = {
   summary: string;
   objectives: [string, string];
   intuition: string;
-  terms: [string, string][];
+  terms: MethodTerm[];
   method: string[];
   watch: string;
   principle: string;
@@ -34,17 +35,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "A function is a rule that gives exactly one output for each input. The symbol $f(x)$ names the output for input $x$, so $f(5)$ is the output when the input is 5. In a context the rule often has a fixed amount plus a rate times the input, such as a fee plus a charge per hour.",
-    terms: [
-      ["input", "The number you put into the rule; here the value of $x$."],
-      [
-        "output",
-        "The number the rule produces; $f(x)$ is the output for input $x$.",
-      ],
-      [
-        "constant term",
-        "The part of a linear rule that does not change with the input.",
-      ],
-    ],
+    terms: ["input", "output", "constant-term"],
     method: [
       "To evaluate $f(a)$, replace every $x$ in the rule with $a$ and simplify, putting a negative input in parentheses.",
       "To find the input for an output $v$, write $f(x)=v$ and solve the equation for $x$.",
@@ -92,13 +83,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "A line is the graph of $y=mx+b$. The slope $m$ is the change in $y$ for each increase of 1 in $x$, and $b$ is the value of $y$ when $x=0$. If a point is not on the $y$-axis, its coordinates still make the equation true, which determines $b$.",
-    terms: [
-      ["slope", "The constant change in $y$ per 1 unit increase in $x$."],
-      [
-        "$y$-intercept",
-        "The value of $y$ when $x=0$; the point where the line crosses the $y$-axis.",
-      ],
-    ],
+    terms: ["slope", "y-intercept"],
     method: [
       "Write $y=mx+b$ with the given slope $m$.",
       "If the point is $(0,b)$, read $b$ directly. Otherwise substitute the point's $x$ and $y$ and solve $y=mx+b$ for $b$.",
@@ -145,13 +130,10 @@ const entries: Entry[] = [
     intuition:
       "A total is built by adding contributions. If each small item costs $a$ and you buy $x$ of them, they contribute $ax$. Two kinds of items contribute $ax$ and $by$, and together they make the total $c$. Distance works the same way: speed times time.",
     terms: [
+      "rate",
       [
-        "rate",
-        "An amount per one unit, such as dollars per item or kilometers per hour.",
-      ],
-      [
-        "two-variable equation",
-        "An equation with two unknowns, such as $ax+by=c$.",
+        "equation",
+        "A two-variable equation, such as $ax + by = c$, has two unknowns.",
       ],
     ],
     method: [
@@ -198,11 +180,11 @@ const entries: Entry[] = [
     intuition:
       "An exponential model multiplies by the same factor each step. If a quantity grows by 20% each hour, it becomes 120% of itself, so the factor is 1.2. If it doubles every 3 years, the factor 2 is used once per 3 years, so after $t$ years it is used $\\frac{t}{3}$ times.",
     terms: [
+      "growth-factor",
       [
-        "growth factor",
-        "The number each value is multiplied by to get the next value.",
+        "growth-factor",
+        "Here a period is the length of time over which the factor is applied once.",
       ],
-      ["period", "The length of time over which the factor is applied once."],
     ],
     method: [
       "Convert the change to a factor: increase by $p$% gives $1+\\frac{p}{100}$.",
@@ -250,8 +232,8 @@ const entries: Entry[] = [
       "If an amount doubles every 3 years, then after 12 years it has doubled 4 times, so it is 16 times the start. Going back to the start means dividing by 16. If $f(x)=a\\cdot b^{x}$, moving the input up by 1 multiplies the output by $b$.",
     terms: [
       [
-        "base",
-        "The number $b$ in $a\\cdot b^{x}$ that multiplies the output for each increase of 1 in $x$.",
+        "base-exponent",
+        "In $a \\cdot b^{x}$, the base $b$ multiplies the output each time $x$ increases by 1.",
       ],
     ],
     method: [
@@ -299,13 +281,10 @@ const entries: Entry[] = [
       "A question may ask for $x-4$ when the equation is $5x-20=35$. Since $5x-20=5(x-4)$, the equation already says $5(x-4)=35$, so $x-4=7$ without finding $x$. Equations stay true when both sides are multiplied or divided by the same nonzero number.",
     terms: [
       [
-        "related expression",
-        "A combination of the variables, such as $x-4$ or $3x+4y$, whose value the question asks for.",
+        "expression",
+        "Here, a combination of the variables, such as $3x + 4y$, whose value the question asks for.",
       ],
-      [
-        "group",
-        "An expression in parentheses that is treated as one quantity.",
-      ],
+      "parentheses",
     ],
     method: [
       "Compare the asked expression with the equation. Factor a common number out of the equation, or scale the whole equation, so the asked expression appears.",

@@ -1,18 +1,9 @@
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 const terms: NonNullable<ProblemMethod["terms"]> = [
-  [
-    "absolute value",
-    "Distance from zero on the number line. The bars |$t$| mean the absolute value of $t$.",
-  ],
-  [
-    "solution set",
-    "Every value of the variable that makes an equation true, with no extra values.",
-  ],
-  [
-    "coefficient",
-    "A number multiplying a variable or expression. In −2x, the coefficient of $x$ is −2.",
-  ],
+  "absolute-value",
+  "solution-set",
+  "coefficient",
 ];
 export const absoluteValueMethods: Record<string, ProblemMethod> = {
   "absolute-value-direct-equation": {

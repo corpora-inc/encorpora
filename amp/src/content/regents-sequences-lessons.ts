@@ -8,13 +8,10 @@ export const regentsSequenceMethods: Record<string, ProblemMethod> = {
     intuition:
       "An arithmetic sequence adds the same number at every step. To reach a term far down the list you do not write every term: you take the steps all at once. Term 20 is 19 steps after term 1, not 20.",
     terms: [
+      "common-difference",
       [
-        "common difference",
-        "The fixed amount added to get from one term to the next.",
-      ],
-      [
-        "term number",
-        "The position $n$ of a term in the list, counted from 1.",
+        "term-sequence",
+        "Its term number is its position $n$ in the list, counted from 1.",
       ],
     ],
     method: [
@@ -30,13 +27,10 @@ export const regentsSequenceMethods: Record<string, ProblemMethod> = {
     intuition:
       "A geometric sequence multiplies by the same number at every step. A negative ratio flips the sign at each step, so the terms alternate between negative and positive. The sign of a term depends on how many times it has been flipped.",
     terms: [
+      "common-ratio",
       [
-        "common ratio",
-        "The fixed number each term is multiplied by to get the next.",
-      ],
-      [
-        "alternating sequence",
-        "A sequence whose terms switch sign at every step.",
+        "sequence",
+        "An alternating sequence switches between positive and negative at every step, as a geometric sequence with a negative common ratio does.",
       ],
     ],
     method: [

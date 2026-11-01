@@ -7,16 +7,7 @@ export const timeUnitChoiceMethods: Record<string, ProblemMethod> = {
     goal: "Find an end time, a start time or the hours and minutes between two times by counting hours and minutes separately.",
     intuition:
       "Time moves in hours of 60 minutes. To add or subtract a length of time, move the hours first and then the minutes, and carry or borrow 60 minutes when the minutes pass the hour.",
-    terms: [
-      [
-        "elapsed time",
-        "The time that passes between a start time and an end time.",
-      ],
-      [
-        "a.m. and p.m.",
-        "a.m. names the hours from midnight to noon and p.m. the hours from noon to midnight.",
-      ],
-    ],
+    terms: ["elapsed-time", "a-m", "p-m"],
     method: [
       "Write the known time from the clock or the text, with a.m. or p.m.",
       "End time: add the hours, then the minutes. Start time: subtract the hours, then the minutes. When the minutes pass 60 they carry into the next hour; counting back past an hour borrows 60.",
@@ -29,12 +20,7 @@ export const timeUnitChoiceMethods: Record<string, ProblemMethod> = {
     goal: "Choose the object whose mass or capacity matches a stated measure.",
     intuition:
       "A benchmark is a familiar amount to compare with: a bag of sugar is about 1 kilogram and a water bottle about 1 liter. Picture the measure, then rule out objects that are many times larger or smaller.",
-    terms: [
-      [
-        "benchmark",
-        "A familiar object whose measure you remember, used to judge other measures.",
-      ],
-    ],
+    terms: ["benchmark"],
     method: [
       "Rename the measure in a smaller unit if that helps: 1 kilogram is 1000 grams, 1 liter is 1000 milliliters, 1 pound is 16 ounces.",
       "Order the objects from the smallest to the largest by what you know about them.",
@@ -47,12 +33,7 @@ export const timeUnitChoiceMethods: Record<string, ProblemMethod> = {
     goal: "Convert a measure to another unit with a decimal conversion factor and choose the closest estimate.",
     intuition:
       "If one unit is about a certain number of the other, the smaller unit has the bigger count. Converting to the smaller unit multiplies and converting to the larger unit divides.",
-    terms: [
-      [
-        "conversion factor",
-        "The number of smaller units that make one larger unit, such as 3.28 feet in 1 meter.",
-      ],
-    ],
+    terms: ["conversion-factor"],
     method: [
       "Write the factor as a sentence: one larger unit is about this many smaller units.",
       "Going to the smaller unit, multiply by the factor. Going to the larger unit, divide by it.",

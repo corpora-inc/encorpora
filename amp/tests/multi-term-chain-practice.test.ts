@@ -35,3 +35,14 @@ test("every axis value is reachable and hints never state the answer", () => {
       assert.ok(seen.has(combo), `${id} missing ${combo}`);
   }
 });
+test("a worked fraction result names its mixed number in lowest terms", () => {
+  const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
+  for (let i = 0; i < SEEDS; i++) {
+    const p = multiTermChainGenerate("fraction-term-chain", `k:${i}`);
+    for (const step of p.explanation)
+      for (const [, , n, d] of step.matchAll(
+        /(?<![\d}])(\d+)\\frac\{(\d+)\}\{(\d+)\}/g,
+      ))
+        assert.equal(gcd(Number(n), Number(d)), 1, `k:${i} ${step}`);
+  }
+});

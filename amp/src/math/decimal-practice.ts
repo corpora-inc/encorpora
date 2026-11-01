@@ -160,15 +160,19 @@ function compareDraft(r: Random, max: 2 | 3): Draft {
   const place = i < pb.indexOf(".") ? "ones" : PLACE[i - pb.indexOf(".")]!;
   const steps: string[] = [];
   const short = [x!, y!].filter((v) => placesOf(v.text) < max);
+  steps.push(
+    "Line the decimals up by the decimal point, so ones sit under ones and tenths under tenths.",
+  );
   if (short.length)
     steps.push(
-      `Write both with ${PLACE[max]}; zeros added on the right change nothing: ${short.map((v) => `${v.text} = ${padded(v.text)}`).join(" and ")}.`,
+      `Give both the same number of places. A zero added at the right end changes nothing: ${short.map((v) => `${v.text} = ${padded(v.text)}`).join(" and ")}.`,
     );
   steps.push(
     place === "ones"
-      ? `Compare from the left. The ones differ: ${pb[i]} is greater than ${ps[i]}.`
-      : `Compare from the left. The places before the ${place} match; in the ${place}, ${pb[i]} is greater than ${ps[i]}.`,
-    `So ${big.text} > ${small.text}, and the ${ask === "greater" ? "greater" : "lesser"} decimal is ${ask === "greater" ? big.text : small.text}.`,
+      ? `Compare from the left, because the left places are worth the most. The ones differ: ${pb[i]} is greater than ${ps[i]}.`
+      : `Compare from the left, because the left places are worth the most. The places before the ${place} match; in the ${place}, ${pb[i]} is greater than ${ps[i]}.`,
+    `The first place that differs decides, so ${big.text} > ${small.text}.${placesOf(big.text) < placesOf(small.text) ? " Having more digits does not make a decimal greater." : ""}`,
+    `The ${ask === "greater" ? "greater" : "lesser"} decimal is ${ask === "greater" ? big.text : small.text}.`,
   );
   const split = (s: string) => {
     const [whole, decimals = ""] = s.split(".");
@@ -198,8 +202,11 @@ function draft(templateId: string, r: Random, seed: string): Draft {
             "The strip is one whole, cut into 10 equal parts. What decimal names the shaded part?",
           hint: "The strip has 10 equal parts, so each part is one tenth. Count the shaded parts: that count is the tenths digit.",
           explanation: [
-            "The whole is cut into 10 equal parts, so each part is 1/10, written 0.1.",
-            `${count(k, "part is", "parts are")} shaded: ${k}/10 = 0.${k}.`,
+            "A decimal names part of a whole using tenths, hundredths and so on. The first place after the decimal point counts tenths.",
+            "The whole strip is cut into 10 equal parts, so each part is one tenth: 1/10, written 0.1.",
+            `${count(k, "part is", "parts are")} shaded, so the shaded amount is ${count(k, "tenth", "tenths")}: ${k}/10.`,
+            `${k}/10 is written 0.${k}, with ${k} in the tenths place.`,
+            `The decimal 0.${k} names the shaded part.`,
           ],
           answer: `0.${k}`,
           label: "Decimal",
@@ -214,13 +221,15 @@ function draft(templateId: string, r: Random, seed: string): Draft {
           "The large square is one whole, cut into 100 equal squares. What decimal names the shaded part?",
         hint: "The 100 squares make 10 columns, and each full column is one tenth. Count the full columns for the tenths digit, then the extra squares for the hundredths digit.",
         explanation: [
-          "Each small square is 1/100 of the whole, written 0.01. Each full column of 10 squares is 1/10.",
+          "A decimal names part of a whole: the first place after the point counts tenths, the second counts hundredths.",
+          "Each small square is 1/100 of the whole, written 0.01. A full column of 10 squares is 1/10, written 0.1.",
           t && h
             ? `${count(k, "square is", "squares are")} shaded: ${count(t, "full column", "full columns")} (${count(t, "tenth", "tenths")}) and ${h} more (${count(h, "hundredth", "hundredths")}).`
             : t
               ? `${k} squares are shaded: ${count(t, "full column", "full columns")}, so ${count(t, "tenth", "tenths")}.`
               : `${count(k, "square is", "squares are")} shaded: ${count(h, "hundredth", "hundredths")} and no full column.`,
           `${k}/100 = ${fixed(k, 2)}${k % 10 ? "" : ` = ${decimal(k, 2)}`}.`,
+          `The decimal ${fixed(k, 2)} names the shaded part.`,
         ],
         answer: fixed(k, 2),
         label: "Decimal",
@@ -236,8 +245,10 @@ function draft(templateId: string, r: Random, seed: string): Draft {
           prompt: `${a}/10 + ${b}/100 = □/100. What number belongs in the box?`,
           hint: `${a}/10 is ${count(a, "tenth", "tenths")}, and each tenth is ten hundredths. Rename ${a}/10 in hundredths, then add the ${b}/100.`,
           explanation: [
-            `One tenth is 10 hundredths, so ${a}/10 = ${a * 10}/100.`,
-            `${a * 10}/100 + ${b}/100 = ${a * 10 + b}/100.`,
+            `You can only add the top numbers when the bottom numbers match, so rename the tenths as hundredths.`,
+            `One tenth is 10 hundredths, because cutting each tenth into 10 parts makes hundredths. So ${a}/10 = ${a * 10}/100.`,
+            `Now both count hundredths: ${a * 10}/100 + ${b}/100 = ${a * 10 + b}/100.`,
+            `The number in the box is ${a * 10 + b}.`,
           ],
           answer: `${a * 10 + b}`,
           label: "Number",
@@ -247,8 +258,10 @@ function draft(templateId: string, r: Random, seed: string): Draft {
           prompt: `0.${a} = □/100. What number belongs in the box?`,
           hint: `0.${a} is ${a} ${a === 1 ? "tenth" : "tenths"}, and each tenth is ten hundredths. How many hundredths is that?`,
           explanation: [
-            `0.${a} is ${count(a, "tenth", "tenths")}: ${a}/10.`,
-            `Each tenth is 10 hundredths, so ${a}/10 = ${a * 10}/100. That is why 0.${a} = 0.${a}0.`,
+            `The first place after the decimal point counts tenths, so 0.${a} is ${count(a, "tenth", "tenths")}: ${a}/10.`,
+            `Each tenth is 10 hundredths, because cutting a tenth into 10 equal parts makes hundredths.`,
+            `So ${a}/10 = ${a} × 10 hundredths = ${a * 10}/100. That is why 0.${a} = 0.${a}0.`,
+            `The number in the box is ${a * 10}.`,
           ],
           answer: `${a * 10}`,
           label: "Number",
@@ -257,8 +270,11 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         prompt: `What is ${a}/10 + ${b}/100 written as a decimal?`,
         hint: `The first place after the decimal point counts tenths and the second counts hundredths. Which digit goes in each place for ${a}/10 + ${b}/100?`,
         explanation: [
-          `${a}/10 + ${b}/100 = ${a * 10}/100 + ${b}/100 = ${a * 10 + b}/100.`,
-          `${count(a, "tenth", "tenths")} and ${count(b, "hundredth", "hundredths")} is 0.${a}${b}.`,
+          `In a decimal, the first place after the point counts tenths and the second counts hundredths.`,
+          `${a}/10 is ${count(a, "tenth", "tenths")}, so the tenths place holds ${a}.`,
+          `${b}/100 is ${count(b, "hundredth", "hundredths")}, so the hundredths place holds ${b}.`,
+          `Check: ${a}/10 + ${b}/100 = ${a * 10}/100 + ${b}/100 = ${a * 10 + b}/100, which is 0.${a}${b}.`,
+          `As a decimal, ${a}/10 + ${b}/100 is 0.${a}${b}.`,
         ],
         answer: `0.${a}${b}`,
         label: "Decimal",
@@ -273,8 +289,10 @@ function draft(templateId: string, r: Random, seed: string): Draft {
           prompt: "What decimal is at point $P$?",
           hint: `From ${w} to ${w + 1} is cut into 10 equal steps, so each step is one tenth. Count the steps from ${w} to $P$.`,
           explanation: [
-            `The whole from ${w} to ${w + 1} is cut into 10 equal intervals, so each is 1/10 = 0.1.`,
-            `$P$ is ${count(point, "interval", "intervals")} past ${w}: ${w} + ${point} × 0.1 = ${answer}.`,
+            `The whole from ${w} to ${w + 1} is cut into 10 equal steps, so each step is one tenth: 1/10 = 0.1.`,
+            `Count the steps from ${w} to $P$: $P$ is ${count(point, "step", "steps")} past ${w}.`,
+            `${count(point, "step", "steps")} of 0.1 ${point === 1 ? "is" : "are"} ${count(point, "tenth", "tenths")}, so $P$ is at ${w} + 0.${point} = ${answer}.`,
+            `The decimal at point $P$ is ${answer}.`,
           ],
           answer,
           label: "Decimal",
@@ -294,8 +312,10 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         prompt: "What decimal is at point $P$?",
         hint: `From ${left} to ${right} is one tenth, cut into 10 equal steps, so each step is one hundredth. Count the steps from ${left} to $P$.`,
         explanation: [
-          `From ${left} to ${right} is one tenth, cut into 10 equal intervals, so each is 1/100 = 0.01.`,
-          `$P$ is ${count(point, "interval", "intervals")} past ${left}: ${left} + ${point} × 0.01 = ${answer}.`,
+          `From ${left} to ${right} is one tenth. It is cut into 10 equal steps, so each step is one hundredth: 1/100 = 0.01.`,
+          `Count the steps from ${left} to $P$: $P$ is ${count(point, "step", "steps")} past ${left}.`,
+          `${count(point, "step", "steps")} of 0.01 ${point === 1 ? "is" : "are"} ${count(point, "hundredth", "hundredths")}, so $P$ is at ${left} + 0.0${point} = ${answer}.`,
+          `The decimal at point $P$ is ${answer}.`,
         ],
         answer,
         label: "Decimal",
@@ -326,8 +346,10 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         prompt: `In ${number}, what is the value of the digit ${d}?`,
         hint: `Find the ${d} in ${number} and count how many places after the decimal point it sits: the first place is tenths. Its value is ${d} of that place.`,
         explanation: [
-          `${d} is in the ${PLACE[place]} place, ${place === 1 ? "the first" : place === 2 ? "the second" : "the third"} place after the decimal point.`,
-          `Its value is ${d} × ${UNIT[place]} = ${answer}.`,
+          `Places after the decimal point are tenths, then hundredths, then thousandths. Each is 10 times smaller than the one before.`,
+          `In ${number}, the ${d} is ${place === 1 ? "the first" : place === 2 ? "the second" : "the third"} digit after the point, so it is in the ${PLACE[place]} place.`,
+          `A digit in the ${PLACE[place]} place counts pieces of size ${UNIT[place]}, so its value is ${d} × ${UNIT[place]} = ${answer}.`,
+          `The digit ${d} has the value ${answer}.`,
         ],
         answer,
         label: "Value",
@@ -349,10 +371,11 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         prompt: `What decimal is ${terms.join(" + ")}?`,
         hint: `${terms.slice(1).join(" + ")} fill the places after the decimal point. Write ${ones} in the ones place, then one digit each for tenths, hundredths and thousandths, in order.${empty.length ? ` There are no ${empty.join(" and no ")}: write 0 there.` : ""}`,
         explanation: [
-          `Ones: ${ones}. Tenths: ${places[0]}. Hundredths: ${places[1]}. Thousandths: ${places[2]}.`,
+          `Expanded form adds the value of each place: ones (× 1), tenths (× 1/10), hundredths (× 1/100) and thousandths (× 1/1000).`,
+          `Read off one digit per place. Ones: ${ones}. Tenths: ${places[0]}. Hundredths: ${places[1]}. Thousandths: ${places[2]}.`,
           empty.length
-            ? `There are no ${empty.join(" and no ")}, so ${empty.length === 1 ? "that place holds" : "those places hold"} 0.`
-            : "Every place has a digit.",
+            ? `There are no ${empty.join(" and no ")}, so write 0 there. The 0 holds the place, so the later digits stay in their own places.`
+            : "Every place has a digit, so write them in order after the decimal point.",
           `The decimal is ${answer}.`,
         ],
         answer,
@@ -376,7 +399,8 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         prompt: `Round ${text} to the nearest ${name}.`,
         hint: `To round ${text} to the nearest ${name}, look at the ${PLACE[target + 1]} digit, just to its right: five or more rounds up, four or less rounds down.`,
         explanation: [
-          `${text} lies between ${decimal(low, 3)} and ${decimal(high, 3)}.`,
+          `Rounding to the nearest ${name} means finding the ${name} that ${text} is closest to.`,
+          `${text} lies between the ${name}s ${decimal(low, 3)} and ${decimal(high, 3)}.`,
           n === half
             ? `It is exactly halfway, at ${decimal(half, 3)}. By convention, halfway rounds up.`
             : `The halfway point is ${decimal(half, 3)}. ${text} is ${up ? "above" : "below"} it, so it is closer to ${answer}.`,
@@ -416,9 +440,11 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         prompt: `Which decimal rounds to ${target} to the nearest ${name}? Round halfway values up.`,
         hint: `Start with ${target}. Find the halfway points between it and the adjacent ${name}s, ${neighbor(rounded - unit)} and ${neighbor(rounded + unit)}. Then compare each choice with those points.`,
         explanation: [
-          `The neighboring ${name}s are ${neighbor(rounded - unit)}, ${target}, and ${neighbor(rounded + unit)}.`,
+          `A number rounds to ${target} when ${target} is the nearest ${name} to it.`,
+          `The ${name}s next to ${target} are ${neighbor(rounded - unit)} and ${neighbor(rounded + unit)}.`,
           `The halfway points beside ${target} are ${fixed(lower, 3)} and ${fixed(upper, 3)}. Halfway rounds up, so the lower point belongs to ${target}, but the upper point belongs to ${neighbor(rounded + unit)}.`,
-          `${fixed(good, 3)} lies from ${fixed(lower, 3)} up to, but not including, ${fixed(upper, 3)}. It rounds to ${target}.`,
+          `So a number rounds to ${target} if it is at least ${fixed(lower, 3)} and less than ${fixed(upper, 3)}.`,
+          `${fixed(good, 3)} is in that stretch, so ${fixed(good, 3)} rounds to ${target}.`,
         ],
         answer: fixed(good, 3),
         label: "Choose one decimal",
@@ -426,9 +452,11 @@ function draft(templateId: string, r: Random, seed: string): Draft {
           value: fixed(value, 3),
           feedback:
             value < lower
-              ? `${fixed(value, 3)} is below the lower halfway point ${fixed(lower, 3)}; it rounds to ${neighbor(rounded - unit)}.`
+              ? `${fixed(value, 3)} is below the halfway point ${fixed(lower, 3)}, so it is closer to ${neighbor(rounded - unit)} and rounds to ${neighbor(rounded - unit)}. Look for a number from ${fixed(lower, 3)} up to just under ${fixed(upper, 3)}.`
               : value >= upper
-                ? `${fixed(value, 3)} is at or above the upper halfway point ${fixed(upper, 3)}; it rounds to ${neighbor(rounded + unit)}.`
+                ? value === upper
+                  ? `${fixed(value, 3)} is exactly halfway, and halfway rounds up, to ${neighbor(rounded + unit)}. Look for a number from ${fixed(lower, 3)} up to just under ${fixed(upper, 3)}.`
+                  : `${fixed(value, 3)} is above the halfway point ${fixed(upper, 3)}, so it is closer to ${neighbor(rounded + unit)} and rounds to ${neighbor(rounded + unit)}. Look for a number from ${fixed(lower, 3)} up to just under ${fixed(upper, 3)}.`
                 : "",
         })),
       };
@@ -461,13 +489,15 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         prompt: `What is ${sx} ${op} ${sy}?`,
         hint: `Line up ${sx} and ${sy} by the decimal point${pad.length ? ` and fill empty places with zeros: ${pad.join(" and ")}` : ""}. Then ${subtract ? "subtract" : "add"} place by place from the right.`,
         explanation: [
+          "Line up the decimal points, so you only ever combine digits worth the same amount: tenths with tenths, hundredths with hundredths.",
           pad.length
-            ? `Line up the decimal points and fill empty places with zeros: ${pad.join(" and ")}.`
-            : "Line up the decimal points; both numbers have the same places.",
-          `${fixed(X, p)} ${op} ${fixed(Y, p)} = ${fixed(result, p)}${fixed(result, p) === answer ? "" : ` = ${answer}`}, regrouping between places as with whole numbers.`,
+            ? `Fill empty places with zeros so both numbers have the same places. A zero at the right end changes nothing: ${pad.join(" and ")}.`
+            : "Both numbers already have the same number of places.",
+          `${subtract ? "Subtract" : "Add"} place by place from the right, regrouping as with whole numbers: ${fixed(X, p)} ${op} ${fixed(Y, p)} = ${fixed(result, p)}${fixed(result, p) === answer ? "" : ` = ${answer}`}.`,
           subtract
             ? `Check by adding back: ${answer} + ${sy} = ${sx}.`
             : `Check by subtracting: ${answer} − ${sy} = ${sx}.`,
+          `So ${sx} ${op} ${sy} = ${answer}.`,
         ],
         answer,
         label: "Decimal",
@@ -489,9 +519,11 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         prompt: `What is ${sa} × ${sb}?`,
         hint: `Multiply ${a} × ${b} as whole numbers. ${sa} and ${sb} have ${pa + pb} decimal places between them, so the product needs that many.`,
         explanation: [
-          `Multiply the whole numbers: ${a} × ${b} = ${product}.`,
-          `${sa} has ${count(pa, "decimal place", "decimal places")} and ${sb} has ${pb}, so the product has ${p}: ${fixed(product, p)}${fixed(product, p) === answer ? "" : ` = ${answer}`}.`,
-          `This works because ${sa} = ${a}/${10 ** pa} and ${sb} = ${b}/${10 ** pb}, so the product is ${product}/${10 ** p}.`,
+          `Ignore the decimal points for now and multiply the whole numbers: ${a} × ${b} = ${product}.`,
+          `Decimal places are the digits after the point. ${sa} has ${count(pa, "decimal place", "decimal places")} and ${sb} has ${pb}.`,
+          `${sa} = ${a}/${10 ** pa} and ${sb} = ${b}/${10 ** pb}, so the answer is ${product}/${10 ** p}. That is why it needs ${pa} + ${pb} = ${p} decimal places.`,
+          `Put the point ${p} places from the right: ${fixed(product, p)}${fixed(product, p) === answer ? "" : ` = ${answer}`}.`,
+          `So ${sa} × ${sb} = ${answer}.`,
         ],
         answer,
         label: "Decimal",
@@ -531,8 +563,10 @@ function draft(templateId: string, r: Random, seed: string): Draft {
           prompt: `What is $${shownDividend} \\div ${shownDivisor}$?`,
           hint: `${negative ? "Different signs give a negative quotient" : "Equal signs give a positive quotient"}. Divide the sizes ${sn} and ${sd} first: multiply both by ${scale} so the divisor is whole, then divide by ${d}.`,
           explanation: [
-            `${reason}. Divide the sizes: ${sn} ÷ ${sd}.`,
-            `Multiply both by ${scale}: ${sn} ÷ ${sd} = ${scaled} ÷ ${d} = ${answer}.`,
+            `The quotient is the answer to a division. ${reason}.`,
+            `Divide the sizes without signs first: ${sn} ÷ ${sd}.`,
+            `Dividing by a whole number is easier, so multiply both numbers by ${scale}. Scaling both by the same number keeps the quotient the same.`,
+            `${sn} ÷ ${sd} = ${scaled} ÷ ${d} = ${answer}.`,
             `Apply the sign: the quotient is ${value}.`,
           ],
           answer: value,
@@ -544,9 +578,11 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         prompt: `What is ${sn} ÷ ${sd}?`,
         hint: `Make the divisor whole: multiply both ${sn} and ${sd} by ${scale}. The quotient stays the same; then divide by ${d}.`,
         explanation: [
-          `Multiply both numbers by ${scale}: ${sn} ÷ ${sd} = ${scaled} ÷ ${d}. Scaling both by the same number keeps the quotient.`,
+          `Dividing by a whole number is easier than dividing by a decimal, so make the divisor ${sd} whole.`,
+          `Multiply both numbers by ${scale}: ${sn} ÷ ${sd} = ${scaled} ÷ ${d}. Scaling both by the same number keeps the answer the same, like 6 ÷ 2 = 60 ÷ 20.`,
           `Divide: ${scaled} ÷ ${d} = ${answer}.`,
-          `Check: ${answer} × ${sd} = ${sn}.`,
+          `Check by multiplying back: ${answer} × ${sd} = ${sn}.`,
+          `So ${sn} ÷ ${sd} = ${answer}.`,
         ],
         answer,
         label: "Decimal",

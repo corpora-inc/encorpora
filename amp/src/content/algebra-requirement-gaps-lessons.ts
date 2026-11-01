@@ -8,13 +8,13 @@ const sequenceFunctionMethod: ProblemMethod = {
   terms: [
     [
       "domain",
-      "The set of inputs a function accepts. For a sequence starting at position 1 it is the positive integers $1,2,3,\\ldots$.",
+      "For a sequence starting at position 1, it is the positive integers 1, 2, 3, …",
     ],
-    ["$a(n)$", "The term in position $n$, read “$a$ of $n$”."],
     [
-      "discrete graph",
-      "A graph made of separate points, with nothing between them.",
+      "term-sequence",
+      "Written $a(n)$ and read “$a$ of $n$”, it is the term in position $n$.",
     ],
+    "discrete-graph",
   ],
   method: [
     "Read $n$ as a position. Only whole-number positions from the first one on are inputs.",
@@ -95,17 +95,7 @@ const geometricRuleFormsMethod: ProblemMethod = {
   goal: "Translate a geometric sequence between its recursive rule and its explicit rule, from a rule, a description or two consecutive terms.",
   intuition:
     "In a geometric sequence each term is the previous term times the same number, the common ratio. A recursive rule says where the list starts and how to get from one term to the next. An explicit rule jumps straight to any term from its position.",
-  terms: [
-    ["common ratio", "The constant $r$ with $a_{n+1}=r\\,a_n$."],
-    [
-      "recursive rule",
-      "A starting term plus a rule for each term in terms of the one before, such as $a_1=2$ and $a_{n+1}=3a_n$.",
-    ],
-    [
-      "explicit rule",
-      "A formula for $a_n$ in terms of $n$, such as $a_n=2\\cdot 3^{n-1}$.",
-    ],
-  ],
+  terms: ["common-ratio", "recursive-rule", "explicit-rule"],
   method: [
     "Find the first term $a_1$ and the common ratio $r$. From two consecutive terms, $r$ is the later term divided by the earlier one; undo one multiplication to get $a_1$.",
     "Recursive form: $a_1$ and $a_{n+1}=r\\,a_n$.",
@@ -181,13 +171,10 @@ const solveByCompletingSquareMethod: ProblemMethod = {
   intuition:
     "A quadratic with an $x$ term is hard to undo directly. Rewriting one side as a perfect square, $(x+h)^2$, lets you undo it with a square root.",
   terms: [
+    "completing-the-square",
     [
-      "completing the square",
-      "Adding the number $\\left(\\frac b2\\right)^2$ to $x^2+bx$ so that it factors as $\\left(x+\\frac b2\\right)^2$.",
-    ],
-    [
-      "$\\pm$",
-      "Plus or minus: a positive number has two square roots, one of each sign.",
+      "plus-or-minus",
+      "A positive number has two square roots, one of each sign: $x^2 = 9$ gives $x = \\pm 3$.",
     ],
   ],
   method: [
@@ -264,17 +251,7 @@ const complexQuadraticSolveMethod: ProblemMethod = {
   goal: "Solve a quadratic equation with real coefficients whose solutions are not real, or write such an equation from its solutions.",
   intuition:
     "Squaring a real number never gives a negative result, so $x^2=-9$ has no real solution. The number $i$ is defined by $i^2=-1$, which gives $x^2=-9$ the solutions $3i$ and $-3i$. A quadratic with real coefficients can have such solutions.",
-  terms: [
-    ["$i$", "The number with $i^2=-1$."],
-    [
-      "complex number",
-      "A number $a+bi$ with real $a$ and $b$. The solutions of these equations have this form.",
-    ],
-    [
-      "complex conjugates",
-      "Two numbers $p+qi$ and $p-qi$. The nonreal solutions of a real-coefficient quadratic come as a conjugate pair.",
-    ],
-  ],
+  terms: ["imaginary-unit", "complex-number", "complex-conjugate"],
   method: [
     "If the leading coefficient is not 1, divide by it.",
     "Complete the square: $(x+h)^2=h^2-q$ where the equation is $x^2+2hx+q=0$. The right side is negative.",
@@ -349,14 +326,11 @@ const complexPartsMethod: ProblemMethod = {
   intuition:
     "Every complex number is written $a+bi$: a real number $a$ plus a real multiple $b$ of $i$, where $i^2=-1$. The two real numbers $a$ and $b$ tell you everything about it.",
   terms: [
-    ["real part", "The number $a$ in $a+bi$."],
+    "real-part",
+    "imaginary-part",
     [
-      "imaginary part",
-      "The real number $b$ in $a+bi$, the coefficient of $i$.",
-    ],
-    [
-      "power of $i$",
-      "$i^n$ for a whole number $n$; the values repeat in a cycle of four.",
+      "imaginary-unit",
+      "Its powers repeat in a cycle of four: $i$, −1, $-i$, 1.",
     ],
   ],
   method: [
@@ -429,49 +403,68 @@ const complexPartsLesson: Lesson = {
 };
 
 const interpretLinearParametersMethod: ProblemMethod = {
-  goal: "Say what the slope and the initial value of a linear model mean in its context, with units.",
+  goal: "A linear model describes a real situation. Say what its slope and its initial value mean there, with units.",
+  senses: {
+    rule: "rule",
+    balance: "balance-account",
+    change: "change",
+    model: "model",
+    unit: "unit",
+    term: "term-expression",
+  },
+  noLink: ["mean", "population"],
   intuition:
-    "In a linear model $y=mx+b$, the number $m$ says how much $y$ changes for each one-unit increase in $x$. The number $b$ is the value of $y$ when $x$ is 0, where the model starts.",
+    "A linear model is a rule in which each extra 1 of input changes the output by the same amount, like $C = 39h + 63$. In general it is written $y = mx + b$. You choose the input $x$, and the rule gives the output $y$. The slope $m$, the number multiplying $x$, says how much $y$ changes each time $x$ goes up by 1. The initial value $b$, the number standing alone, is the output when $x$ is 0. That 0 may stand for a starting moment, such as the year 2018 or the moment a drain opens.",
   terms: [
     [
-      "rate of change",
-      "How much the output changes per one unit of input; here the slope $m$, with units of output per input.",
+      "rate-of-change",
+      "Here it is the slope $m$, in units of output per unit of input.",
     ],
     [
-      "initial value",
-      "The output when the input is 0; here the constant $b$. When the input is measured from a starting point (such as years after 2018), 0 means that starting point.",
+      "initial-value",
+      "Here it is the constant $b$. If the input counts from a start, such as years after 2018, 0 means that start.",
     ],
   ],
   method: [
-    "Identify the input and output with their units.",
-    "Slope: say that the output increases (positive $m$) or decreases (negative $m$) by $|m|$ output units for each additional input unit.",
-    "Initial value: substitute input 0. State the output at that starting input, with units.",
-    "Check that the units of the slope are output per input and that the initial value has the output’s units.",
+    "Name the input and the output, and the unit of each: what it counts or measures, such as dollars, hours or liters.",
+    "Slope: as the input goes up, a positive $m$ (greater than 0) means the output goes up, and a negative $m$ means it goes down. If $m$ is 0, the output stays the same. Give the size without the sign, in output units per input unit.",
+    "Initial value: put 0 in for the input. Give the output at that starting point, in the output's units.",
+    "Check the units: the slope is output units per input unit, and the initial value is in output units.",
   ],
   watch:
-    "The slope is the change per unit, not the value after one unit; the value after one unit is $m+b$. The initial value is the value at input 0, which is not always at year 0 or time 0 of the calendar.",
+    "The slope is the change for each 1 of input. It is not the output after one unit, which is $m + b$. An input of 0 means the starting point the problem names, such as the moment a drain opens or the year 2018.",
 };
 
 const interpretLinearParametersPrinciple =
-  "For the linear model $y=mx+b$, equal changes in $x$ give equal changes in $y$: increasing $x$ by 1 changes $y$ by exactly $m$. The value at $x=0$ is $b$. Both interpretations apply within the domain where the model is valid and use the units of the context.";
+  "In the linear model $y = mx + b$, each increase of 1 in $x$ changes $y$ by exactly $m$, the slope. When $x = 0$, $y = b$, the initial value. These meanings hold only for inputs that make sense in the situation, and both numbers carry the situation's units.";
 
 const interpretLinearParametersLesson: Lesson = {
   id: "interpret-linear-parameters",
   title: "What the slope and starting value mean",
   summary:
-    "The slope is the change in the output for each one-unit change in the input; the constant is the output at input 0. State both with units.",
+    "A linear model is a rule, like $C = 39h + 63$, in which each extra 1 of input changes the output by the same amount. Here the input $h$ is hours worked, and the output $C$ is the charge in dollars. The 39 is the slope: each extra hour adds 39 dollars. The 63 is the starting value: the charge when $h = 0$. Always say what each number means, with its units, such as dollars or hours.",
   templateIds: ["interpret-linear-parameters"],
+  senses: {
+    balance: "balance-account",
+    change: "change",
+    model: "model",
+    unit: "unit",
+    rule: "rule",
+  },
+  noLink: ["mean", "parts", "whole"],
   objectives: [
-    "Interpret the slope as a rate of change with units, including a decrease.",
-    "Interpret the constant as the value at input 0, including when 0 means a starting year.",
+    "Explain the slope as the change in the output for each increase of 1 in the input, with units, including a decrease.",
+    "Explain the starting value as the output when the input is 0, including when 0 stands for a starting year.",
   ],
   sections: [
     {
       stage: "intuition",
       title: "A rate and a starting amount",
       paragraphs: [
-        "A plumber charges a fixed fee for coming plus an amount for each hour of work. The model $C=39h+63$ gives the total charge $C$ in dollars for $h$ hours. Each extra hour adds the same 39 dollars: that is the rate of change. Even with 0 hours the charge is $39(0)+63=63$ dollars: that is the starting amount.",
-        "Always say what each number means in the situation and attach its units: 39 dollars per hour and 63 dollars.",
+        "A plumber charges a fee just for coming, plus the same amount for each hour of work. A model is a rule, written as an equation, that describes a real situation. The model $C = 39h + 63$ gives the total charge $C$, in dollars, for $h$ hours of work. Here $39h$ means 39 times $h$.",
+        "The input is the number you choose: here, the hours $h$. The output is the result the rule gives: here, the charge $C$. Try a few inputs. For 1 hour, $C = 39 \\times 1 + 63 = 102$. For 2 hours, $C = 39 \\times 2 + 63 = 141$. For 3 hours, $C = 39 \\times 3 + 63 = 180$. Each extra hour adds the same 39 dollars.",
+        "That steady change for each extra 1 of input is called the rate of change. A model like this is called linear: equal steps in the input give equal steps in the output. Its graph, a picture of the input and output pairs as points, is a straight line. In a linear model the rate of change is the slope, the number multiplying the input. Its units are output units per input unit: 39 dollars per hour.",
+        "Now try 0 hours: $C = 39 \\times 0 + 63 = 63$. So 63 dollars is the charge before any work, just for coming. The output when the input is 0 is called the initial value, or starting value. It has the output's units: 63 dollars.",
       ],
     },
   ],
@@ -479,10 +472,11 @@ const interpretLinearParametersLesson: Lesson = {
     prompt:
       "The balance on a gift card is modeled by $B=150-12w$, where $B$ is in dollars and $w$ is the number of weeks after purchase. What do 12 and 150 mean?",
     steps: [
-      "Compare two inputs one week apart: $B(1)=138$ and $B(2)=126$. The balance drops by 12 dollars each week.",
-      "The slope is $-12$: the balance decreases by 12 dollars for each additional week (12 dollars per week).",
-      "Put $w=0$: $B=150$. The initial value is the balance at purchase.",
-      "So 12 is the weekly decrease and 150 dollars is the starting balance. After one week the balance is 138, not 12.",
+      "Name the input and the output. The input $w$ is the number of weeks after purchase. The output $B$ is the balance, the money left on the card, in dollars.",
+      "Find the change for one more week. At $w = 1$, $B = 150 - 12 \\times 1 = 138$. At $w = 2$, $B = 150 - 12 \\times 2 = 126$. The balance drops by 12 dollars from one week to the next.",
+      "So the slope is $-12$. The minus sign means a decrease: the balance goes down 12 dollars per week.",
+      "Put in $w = 0$, the moment of purchase: $B = 150 - 12 \\times 0 = 150$. The initial value is 150 dollars, the balance when the card is bought.",
+      "So 12 is how much the balance falls each week, and 150 dollars is the starting balance. After one week the balance is 138 dollars, not 12.",
     ],
     answer:
       "The balance decreases by 12 dollars each week; it starts at 150 dollars",
@@ -492,42 +486,34 @@ const interpretLinearParametersLesson: Lesson = {
       stage: "method",
       title: "When 0 is not the beginning of time",
       paragraphs: [
-        "In $N=1200+85t$, where $N$ is the number of subscribers and $t$ is the number of years after 2018, the input 0 means 2018. So 1200 is the number of subscribers in 2018, not at the year 0 of the calendar, and 85 is the number of subscribers added per year.",
-        "A decreasing model has a negative slope. In $D=240-55t$, where $D$ is the distance remaining in miles and $t$ is the hours driven, the distance remaining shrinks by 55 miles per hour, and 240 miles is the distance at the start of the trip.",
+        "Sometimes the input counts from a chosen starting point. In $N = 1200 + 85t$, $N$ is the number of subscribers and $t$ is the number of years after 2018. Then $t = 0$ means the year 2018 itself. So 1200 is the number of subscribers in 2018. The 85 means 85 more subscribers each year.",
+        "A model that goes down has a negative slope. In $D = 240 - 55t$, $D$ is the distance left to drive, in miles, and $t$ is the number of hours driven. The slope is $-55$: the distance left shrinks by 55 miles for each hour driven. The initial value, 240 miles, is the distance left at the start of the trip.",
+        "If the slope is 0, the output never changes. For example, $C = 0h + 63$ is always 63 dollars, however long the job takes.",
       ],
     },
     {
       stage: "formal",
       title: "Slope and intercept as changes and values",
       paragraphs: [
-        "For $f(x)=mx+b$, $f(x+1)-f(x)=m$ for every $x$, so $m$ is the constant rate of change. Also $f(0)=b$. A rate of change has the units of the output divided by the units of the input.",
+        "Mathematicians often name the output $f(x)$, read “$f$ of $x$”: the output when the input is $x$. So $f(0)$ means the output when the input is 0. It does not mean $f$ times 0. With this name, a linear model is written $f(x) = mx + b$.",
+        "Increase the input by 1. The new output is $f(x + 1) = m(x + 1) + b$. Here $m(x + 1)$ means $m$ times the whole of $x + 1$, which is $mx + m$. So $f(x + 1) = mx + m + b$. The change is the new output minus the old one: $(mx + m + b) - (mx + b)$. The $mx$ and $b$ parts cancel, leaving $m$. So the output changes by exactly $m$ whenever the input goes up by 1. For the plumber, $m = 39$.",
+        "Also $f(0) = m \\times 0 + b = b$, the initial value. On a graph, the vertical axis is the up-and-down number line where the input is 0. The line crosses it at the point $(0, b)$, so $b$ is also called the $y$-intercept. A rate of change has the output's units divided by the input's units.",
       ],
     },
   ],
   pitfalls: [
-    "The slope is the change per unit of input, not the output after one unit.",
-    "Say increase or decrease according to the sign of the slope.",
-    "State the units of both numbers, and say what an input of 0 means when the input is measured from a starting point.",
+    "The slope is the change for each 1 of input, not the output after one unit. In $C = 39h + 63$, the output after 1 hour is 39 + 63 = 102 dollars, not 39.",
+    "A positive slope (greater than 0) means the output goes up as the input goes up. A negative slope (less than 0) means the output goes down as the input goes up. Say which, and give the size without the sign: decreases by 12 dollars per week.",
+    "Give the units of both numbers. When the input counts from a starting point, such as years after 2018, say what an input of 0 means.",
   ],
   parentGuide:
-    "Ask what the charge is for a 0-hour job and how much it grows with each extra hour, then connect those answers to 63 and 39.",
+    "Ask what the charge is for a 0-hour job, and how much it grows with each extra hour. Then connect those answers to the 63 and the 39 in $C = 39h + 63$.",
 };
-
 const quadraticFormConversionMethod: ProblemMethod = {
   goal: "Rewrite a quadratic in factored or vertex form and read its zeros, axis of symmetry, vertex or extreme value.",
   intuition:
     "One quadratic can be written in several equivalent forms. Each form makes a different feature visible: the factored form shows the zeros, the vertex form shows the vertex and the extreme value, and the standard form shows the $y$-intercept.",
-  terms: [
-    ["zero", "An input where the function equals 0."],
-    [
-      "vertex form",
-      "$y=a(x-h)^2+k$; the vertex is $(h,k)$ and the extreme value is $k$.",
-    ],
-    [
-      "axis of symmetry",
-      "The vertical line $x=h$ through the vertex that splits the parabola into mirror halves.",
-    ],
-  ],
+  terms: ["zero-of-a-function", "vertex-form", "axis-of-symmetry"],
   method: [
     "To see zeros: factor, then set each factor to 0. The axis of symmetry is halfway between the zeros.",
     "To see the vertex or extreme value: complete the square. Factor out $a$ from the $x$ terms, add and subtract the needed square, remember the added amount is multiplied by $a$.",
@@ -601,16 +587,7 @@ const rationalExtraneousSingleMethod: ProblemMethod = {
   goal: "Solve a rational equation with one variable denominator, check whether the candidate is allowed, and explain a disallowed one.",
   intuition:
     "To clear a fraction you multiply both sides by its denominator. That step assumes the denominator is not zero. A candidate that makes the original denominator zero is not a solution; it only appears because the multiplication ignored that condition.",
-  terms: [
-    [
-      "excluded value",
-      "An input that makes a denominator zero, so the original equation is undefined there.",
-    ],
-    [
-      "extraneous solution",
-      "A candidate that satisfies the cleared equation but not the original equation.",
-    ],
-  ],
+  terms: ["excluded-value", "extraneous-solution"],
   method: [
     "Find the excluded value: set the denominator equal to 0 and solve.",
     "Multiply both sides by the denominator and solve the resulting equation.",
@@ -684,16 +661,7 @@ const squareRootExtraneousMethod: ProblemMethod = {
   goal: "Solve a square-root equation by squaring, identify the extraneous candidate, and explain why squaring creates it.",
   intuition:
     "A principal square root is never negative. Squaring both sides also keeps the case where the right side is the negative of the square root, so the squared equation can have a candidate that the original equation does not.",
-  terms: [
-    [
-      "principal square root",
-      "The nonnegative number whose square is the radicand; $\\sqrt{25}=5$, not $-5$.",
-    ],
-    [
-      "extraneous solution",
-      "A candidate that satisfies the squared equation but not the original equation.",
-    ],
-  ],
+  terms: ["principal-square-root", "extraneous-solution"],
   method: [
     "Isolate the square root on one side.",
     "Square both sides, then solve the resulting equation. Quadratics give up to two candidates.",

@@ -3,50 +3,74 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const geometryProofMethods: Record<string, ProblemMethod> = {
   "geometry-proof-step": {
-    goal: "Match a proof statement to a theorem whose conditions follow from the givens.",
+    goal: "A proof step makes a claim about angles. Choose the rule (theorem) that proves it from the given facts.",
+    senses: {
+      degrees: "degree-angle",
+      "corresponding angles": "corresponding-angles",
+      side: "side",
+    },
+    noLink: ["rule", "opposite", "plane", "parts"],
     intuition:
-      "A proof explains why a conclusion follows from given facts. Each step states a claim and gives a reason. A theorem is a proved rule you may use when its conditions hold. For angles, equal measures mean congruent angles; measures adding to $180^\\circ$ mean supplementary angles.",
-    terms: [
-      [
-        "proof",
-        "A chain of justified statements showing why a conclusion follows from given facts.",
-      ],
-      ["theorem", "A mathematical statement established by a proof."],
-      ["congruent angles", "Angles with equal measures."],
-      ["supplementary angles", "Two angles whose measures add to 180 degrees."],
-    ],
+      "A proof explains why a conclusion, the claim being proved, follows from facts you are given, called givens. Each step states a claim and gives a reason. A theorem is a rule already proved. You may use it when its conditions, the things it needs, are known to be true. An angle is formed by two rays (parts of a line that start at one point and go on in one direction) with the same starting point. Its measure is its size in degrees (°), and a straight line makes 180°. Angles with equal measures are congruent. Two angles whose measures add to $180^\\circ$ are supplementary.",
+    terms: ["proof", "theorem", "congruent", "supplementary"],
     method: [
-      "Read the exact target: does it assert equal angle measures or a sum? Identify every angle named in it.",
-      "Check the givens for a crossing, a straight angle, parallel lines, or a triangle. Choose the theorem whose conditions and conclusion both match.",
+      "Read the claim exactly. Does it say two angle measures are equal, or that measures add to a total? Find every angle it names.",
+      "Look in the givens for crossing lines, points on one straight line, parallel lines (lines that never meet), or a triangle.",
+      "Choose the rule whose conditions are known to be true, from the givens or from earlier steps, and whose conclusion is the claim.",
     ],
     watch:
-      "A true theorem is useful only when its conditions hold and its conclusion matches the step being justified.",
+      "A true rule proves a step only when its conditions are already known. They can come from the givens or from earlier steps. Its conclusion must also be exactly the claim.",
   },
 };
 export const geometryProofPrinciples: Record<string, string> = {
   "geometry-proof-step":
-    "A proof step follows from its stated givens and an applicable definition or theorem. A drawing's appearance alone does not establish the required conditions.",
+    "A proof step follows from the givens and a definition or theorem whose conditions they make true. How a drawing looks does not prove those conditions.",
 };
 export const geometryProofLessons: Lesson[] = [
   {
     id: "reasons-in-angle-proofs",
     title: "Give each angle step a reason",
     summary:
-      "Use the stated geometry to explain why an angle relationship must hold.",
+      "A proof shows, step by step, why something must be true. Each step makes a claim and gives a reason, such as a rule that has already been proved. A rule fits a step only when two things hold. What the rule needs must already be known, from the given facts or from earlier steps. And what the rule says must match the claim.",
     templateIds: ["geometry-proof-step"],
+    senses: {
+      degrees: "degree-angle",
+      side: "side",
+      vertex: "vertex",
+      "corresponding angles": "corresponding-angles",
+    },
+    noLink: ["argument", "part", "rule", "rules", "third", "opposite"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Distinguish a proof statement from its reason.",
-      "Check the conditions of four common angle theorems.",
+      "Tell apart a proof step's statement (its claim) and its reason (why the claim is true).",
+      "Check the conditions of four common angle rules before using them.",
     ],
     sections: [
       {
         stage: "intuition",
-        title: "What makes a reason fit?",
+        title: "Angles and how to name them",
         paragraphs: [
-          "An angle is the opening between two rays with the same endpoint, called its vertex. Its measure describes the size of that opening. The notation $m\\angle ABC$ means the measure of the angle with vertex $B$ and rays toward $A$ and $C$. You need to recognize straight lines, rays and triangles and add angle measures.",
-          "A proof explains why a conclusion follows from stated facts, called givens. Each step has a statement and a reason. A theorem is a mathematical statement already established by proof; it can justify a new step when its conditions hold. Congruent angles have equal measures. Supplementary angles have measures adding to $180^\\circ$.",
-          "First read what the step claims. Then identify its configuration from the givens. A line crossing two other lines is a transversal. Corresponding angles occupy matching positions at its two crossings. They need not have equal measures unless the crossed lines are parallel.",
+          "A ray is part of a line that starts at one point and goes on forever in one direction. An angle is formed by two rays that start at the same point, called the vertex. The size of the opening between the rays is the angle's measure, given in degrees (°). One degree is a tiny turn: a full turn is 360 degrees, and a straight line makes a half-turn, 180°.",
+          "The symbol $\\angle$ means angle. An angle is named by three points, with the vertex in the middle: $\\angle ABC$ is the angle at vertex $B$, with one ray toward $A$ and one toward $C$. A ray is named by its starting point first, so ray $BC$ starts at $B$ and passes through $C$. Writing $m\\angle ABC$ means the measure of that angle in degrees. When only one angle sits at a corner, the vertex alone can name it, as in $\\angle A$.",
+          "Two angles are congruent when they have equal measures. Two angles are supplementary when their measures add to 180°, like 110° and 70°.",
+        ],
+      },
+      {
+        stage: "intuition",
+        title: "Statements, reasons and givens",
+        paragraphs: [
+          "A proof explains why a conclusion, the statement you want to prove, must follow from facts you are told at the start. Those starting facts are called the givens. Each step of a proof has a statement, which is the claim, and a reason, which says why the claim is true.",
+          "A theorem is a math rule that has already been proved, so it may be used as a reason. Every theorem has conditions (what must be true before you can use it) and a conclusion (what it then tells you). Use a theorem only when its conditions are already known, from the givens or from earlier steps, and its conclusion is the step's claim.",
+        ],
+      },
+      {
+        stage: "intuition",
+        title: "Four rules about angles",
+        paragraphs: [
+          "Two angles that sit next to each other and together fill a straight line form a linear pair. For example, points $A$, $B$ and $D$ lie on one straight line, in that order, and ray $BC$ points off the line. Then $\\angle ABC$ and $\\angle CBD$ form a linear pair. Their measures add to 180°, so they are supplementary. If one is 110°, the other is 70°.",
+          "When two straight lines cross, they make four angles. Two angles across from each other are called vertical angles, and they have equal measures. For example, if one angle is 40°, its neighbor is 180° − 40° = 140°. The angle across from the first is 180° − 140° = 40° again, because both form a linear pair with the same neighbor.",
+          "Two lines are parallel when they run alongside each other and never meet, like train rails. A third line crossing both is called a transversal. At each crossing it makes four angles. Angles in the same position at the two crossings, such as both upper right, are called corresponding angles. They are equal when the two crossed lines are parallel. If the crossed lines are not parallel, they are not equal.",
+          "The three angles inside a triangle are called its interior angles. Their sum, the total you get by adding them, is always 180°, as in 50° + 60° + 70° = 180°. This is the triangle angle-sum rule.",
         ],
       },
     ],
@@ -54,36 +78,39 @@ export const geometryProofLessons: Lesson[] = [
       prompt:
         "Triangle $ABC$ has interior angles $\\angle A$, $\\angle B$ and $\\angle C$. A proof writes $m\\angle A + m\\angle B + m\\angle C = 180^\\circ$. What justifies this statement?",
       steps: [
-        "The statement adds the three interior angle measures, rather than equating two angles.",
-        "The givens say these are exactly the interior angles of one triangle. That is the condition needed for the triangle angle-sum theorem.",
-        "The theorem says the interior angles of a triangle in a Euclidean plane sum to $180^\\circ$. Its conclusion matches the proof statement.",
+        "Read the claim. It adds three angle measures and says the total is $180^\\circ$. It does not say that two angles are equal.",
+        "Read the givens. The three angles are the interior angles of one triangle, $ABC$. That is exactly the condition of the triangle angle-sum rule.",
+        "That rule says the interior angles of a triangle add to $180^\\circ$. Its conclusion is the claim, so it is the reason.",
       ],
       answer: "The interior angles of a triangle sum to 180 degrees.",
     },
     closingSections: [
       {
         stage: "method",
-        title: "Why the triangle sum is a straight angle",
+        title: "Why the angles of a triangle add to 180 degrees",
         paragraphs: [
-          "The picture illustrates the same theorem with $50^\\circ$, $60^\\circ$ and $70^\\circ$. A line through $C$ parallel to $AB$ lets us copy the angles at $A$ and $B$ beside the angle at $C$, using equal angles made by a transversal of parallel lines. Together they fill a straight angle: $50^\\circ + 70^\\circ + 60^\\circ = 180^\\circ$. The proof works for every triangle, not just these example measures.",
+          "Here is why the triangle rule is true. The picture shows a triangle with angles $50^\\circ$, $60^\\circ$ and $70^\\circ$. Through corner $C$, draw a line parallel to side $AB$, the side joining $A$ and $B$.",
+          "Side $AC$ crosses both parallel lines, so it is a transversal. A transversal makes equal angles on opposite sides of itself, between the two parallel lines; these are called alternate interior angles. So side $AC$ makes an angle at $C$ equal to the angle at $A$. In the same way, side $BC$ makes an angle at $C$ equal to the angle at $B$.",
+          "The copies of the angles at $A$ and $B$ now sit on either side of the angle at $C$. Together the three fill the straight line, a straight angle of 180°: $50^\\circ + 70^\\circ + 60^\\circ = 180^\\circ$. Nothing depended on these numbers, so the same argument works for every triangle.",
         ],
         illustration: "triangle-sum-line",
       },
       {
         title: "The precise statements",
         paragraphs: [
-          "In Euclidean plane geometry, opposite angles at the intersection of two straight lines are vertical angles and are congruent. Each is supplementary to the same adjacent angle, so subtracting that adjacent angle's measure from $180^\\circ$ gives equal measures.",
-          "Two adjacent angles form a linear pair when they share one ray and their other rays are opposite. They are supplementary because they fill a straight angle. Corresponding angles formed by a transversal crossing two distinct parallel lines are congruent. Without parallel lines, corresponding positions alone do not establish equality.",
-          "The three interior angles of a nondegenerate triangle in a Euclidean plane sum to $180^\\circ$. Nondegenerate means that its three vertices are not on one straight line. In each theorem, verify the stated conditions before using its conclusion.",
+          "Vertical angles, the angles across from each other where two straight lines cross, are congruent: their measures are equal.",
+          "Two angles that share a vertex and one ray, without overlapping, are called adjacent. Two adjacent angles form a linear pair when their other two rays point in opposite directions along one line. The angles of a linear pair are supplementary: their measures add to 180°.",
+          "Corresponding angles formed by a transversal (a line crossing two others) are congruent when the two crossed lines are parallel. Without parallel lines, matching positions alone prove nothing.",
+          "The three interior angles of a triangle add to $180^\\circ$, provided its three corners do not all lie on one straight line. These facts hold in ordinary flat geometry, called Euclidean geometry. Before using any of them, check that its conditions are true.",
         ],
       },
     ],
     pitfalls: [
-      "Match the theorem to the stated angle relationship, not just a familiar word.",
-      "Check that parallel lines are given before claiming corresponding angles are equal.",
-      "Use stated point order to determine whether rays are opposite.",
+      "Pick the rule that matches what the step claims: equal measures, or a total of 180°. A familiar word in the problem is not enough.",
+      "Check that the lines are given as parallel before saying corresponding angles are equal. Lines that only look parallel in a drawing do not count.",
+      "Use the stated order of points to decide whether two rays point in opposite directions along one line.",
     ],
     parentGuide:
-      "Ask the learner to name the conclusion and then identify the given fact that allows the chosen theorem. Ask why another true theorem does not justify this particular step.",
+      "Ask the learner to say the step's claim first. Then ask which given fact allows the chosen rule. Finally, ask why a different true rule does not prove this particular step.",
   },
 ];

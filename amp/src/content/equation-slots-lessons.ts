@@ -13,14 +13,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A charge for each item grows with the number of items, so it is multiplied by the unknown count. A fee or a discount is paid once, so it is added or subtracted a single time. The total is what the group pays in all. If a fair charges 15 dollars for each booth and a fee of 40 dollars, then $b$ booths cost $15b+40$ dollars. Because equal things can be written on either side, $15b+40=190$ and $190=15b+40$ say the same thing.",
-    terms: [
-      [
-        "rate",
-        "An amount charged for each one item, such as 15 dollars for each booth.",
-      ],
-      ["fixed fee", "An amount paid once, however many items there are."],
-      ["equation", "A statement that two expressions have the same value."],
-    ],
+    terms: ["rate", "fixed-cost", "equation"],
     method: [
       "Name the unknown count with a letter. Multiply the amount charged for each item by that letter.",
       "Decide whether the one-time amount is a fee (add it) or a discount (subtract it).",
@@ -65,20 +58,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "An inequality compares two amounts that need not be equal. If Jo has 60 dollars and a ticket costs 24 dollars, the ticket plus the snacks, $24+s$, must not be more than 60. Words say which symbol to use: at most means less than or equal to, and at least means greater than or equal to. Less than and more than leave out the equal case.",
-    terms: [
-      [
-        "at most",
-        "The amount can be equal to the limit or below it: use $\\le$.",
-      ],
-      [
-        "at least",
-        "The amount can be equal to the goal or above it: use $\\ge$.",
-      ],
-      [
-        "inequality",
-        "A statement that one amount is less than, greater than, or the same as another, using a symbol such as $<$ or $\\ge$.",
-      ],
-    ],
+    terms: ["at-most", "at-least", "inequality"],
     method: [
       "Write the total of the known amount and the unknown amount, such as $24+s$.",
       "Find the words that compare it with the limit or goal and choose the symbol: at most $\\le$, at least $\\ge$, less than $<$, more than $>$.",
@@ -123,10 +103,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A unit fraction names one of $d$ equal parts of a whole, like $\\frac{1}{4}$. If you share $\\frac{1}{4}$ of a pan equally among 3 people, each part of the pan is cut into 3 smaller pieces, so a whole pan has $4\\times 3=12$ of the small pieces, and each share is $\\frac{1}{12}$. If you ask how many $\\frac{1}{4}$ mile laps make 3 miles, each mile holds 4 laps, so 3 miles hold $3\\times 4=12$ laps.",
-    terms: [
-      ["unit fraction", "A fraction with numerator 1, such as $\\frac{1}{5}$."],
-      ["quotient", "The result of a division."],
-    ],
+    terms: ["unit-fraction", "quotient"],
     method: [
       "Decide which story it is: sharing an amount among groups (the amount is divided by the number of groups), or counting how many small pieces fit in a larger amount (the larger amount is divided by the piece).",
       "Write the division with the amount first and what it is divided by second.",
@@ -171,10 +148,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "An array is objects arranged in equal rows. If there are 7 rows with 8 counters in each, there are $7\\times 8=56$ counters. Division undoes multiplication: if you know the total and the number in each row, $56\\div 8$ tells how many rows. If you know the total and the number of rows, $56\\div 7$ tells how many are in each row.",
-    terms: [
-      ["array", "Objects arranged in equal rows and equal columns."],
-      ["total", "The number of objects in all."],
-    ],
+    terms: ["array", "sum"],
     method: [
       "Multiply the number of rows by the number in each row to find the total.",
       "Write the total first, then divide by the known number: the number in a row, or the number of rows.",
@@ -219,16 +193,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A story combines quantities in a few ways. Equal groups are multiplied: 4 bags with 6 balls in each is $4\\times 6$. Extra items are added, and items given away are subtracted. When groups are made of groups, such as courts with bags with balls, the sizes multiply again. Read the story in order and decide what each number does to the total.",
-    terms: [
-      [
-        "equal groups",
-        "Several groups with the same number in each, combined by multiplying.",
-      ],
-      [
-        "order of operations",
-        "Multiply and divide first, then add and subtract, working from left to right.",
-      ],
-    ],
+    terms: ["equal-groups", "order-of-operations"],
     method: [
       "Find the numbers in the story and what each one counts.",
       "For each pair, choose the operation: multiply for equal groups, add for more, subtract for fewer.",
@@ -274,8 +239,11 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "A starting amount changes step by step. Items that arrive are added to what you have, and items that leave are subtracted. Reading the story in order gives the equation in order: 18 tulips, plus 25 from one farm, plus 14 from another, minus 30 sold. The amount left is the result of those steps.",
     terms: [
-      ["delivery", "Items that arrive and increase the amount."],
-      ["change", "An amount that is added to or subtracted from the total."],
+      [
+        "change",
+        "A delivery is items arriving, a change that increases the amount.",
+      ],
+      "change",
     ],
     method: [
       "Write the starting amount first.",
@@ -321,10 +289,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A table can follow an equation such as $y=9x+3$. When $x$ goes up by 1, $y$ goes up by 9, the number multiplied by $x$. After you multiply $x$ by that number, the rest is the number you add or subtract to reach $y$: for $x=1$, $9\\cdot1=9$ and $y=12$, so you add 3. Always test the equation with another pair.",
-    terms: [
-      ["multiplier", "The number $x$ is multiplied by in the equation."],
-      ["constant", "The number added or subtracted after multiplying."],
-    ],
+    terms: ["multiplier", "constant-term"],
     method: [
       "Find the change in $y$ for each change of 1 in $x$. If $x$ changes by 2, divide the change in $y$ by 2.",
       "Multiply the first $x$ by that number and compare with the first $y$ to find the constant and whether to add or subtract.",
@@ -369,14 +334,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A rule such as $y=x+7$ tells how to get the output $y$ from the input $x$: add 7. To fill a missing output, put the input into the rule. To fill a missing input, work backward: if $y=15$ and the rule added 7, then $x$ was $15-7=8$. Addition and subtraction undo each other, and so do multiplication and division.",
-    terms: [
-      ["input", "The number $x$ that the rule starts from."],
-      ["output", "The number $y$ that the rule produces."],
-      [
-        "inverse operation",
-        "The operation that undoes another: subtraction undoes addition.",
-      ],
-    ],
+    terms: ["input", "output", "inverse-operation"],
     method: [
       "For a missing $y$, replace $x$ in the rule by the given number and compute.",
       "For a missing $x$, undo the rule: subtract if the rule adds, add if it subtracts, divide if it multiplies.",
@@ -420,10 +378,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A unit price is the cost of one item. If 4 pairs of gloves cost 68 dollars and every pair costs the same, sharing the 68 dollars equally among the 4 pairs gives the price of one: $68\\div 4=17$ dollars. The total is divided, and the number of items is the divisor.",
-    terms: [
-      ["unit price", "The price of one item or one unit."],
-      ["divisor", "The number you divide by."],
-    ],
+    terms: ["unit-price", "divisor"],
     method: [
       "Identify the total cost and the number of items.",
       "Divide the total cost by the number of items.",
@@ -467,17 +422,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A cylinder is a circle stretched up by its height. The circle has area $\\pi r^2$, which is $\\pi\\times r\\times r$, with $r$ the radius, the distance from the center to the edge. The volume is that area times the height. A length across a round pool through the center is the diameter, which is twice the radius, so it must be halved first.",
-    terms: [
-      ["radius", "The distance from the center of a circle to its edge."],
-      [
-        "diameter",
-        "The distance across a circle through its center; it is twice the radius.",
-      ],
-      [
-        "cylinder",
-        "A solid with two equal circles as bases and straight sides.",
-      ],
-    ],
+    terms: ["radius", "diameter", "cylinder"],
     method: [
       "Find the radius: if the length across the circle is given, divide it by 2.",
       "Write $V=\\pi\\times r\\times r\\times h$ with the radius twice and the height once.",
@@ -522,17 +467,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A dilation stretches or shrinks a figure from a center. When the center is the origin, every point moves along the line through the origin and its distance from the origin is multiplied by the scale factor $k$. Each coordinate is multiplied by $k$. If the point $(2,3)$ goes to $(8,12)$, then $8\\div2=4$ and $12\\div3=4$, so $k=4$ and the rule is $(x,y)\\to(4x,4y)$. A scale factor less than 1 shrinks the figure.",
-    terms: [
-      [
-        "dilation",
-        "A transformation that enlarges or reduces a figure by a scale factor from a center.",
-      ],
-      [
-        "scale factor",
-        "The number $k$ that multiplies every distance from the center.",
-      ],
-      ["image", "The point or figure after a transformation."],
-    ],
+    terms: ["dilation", "scale-factor", "image-transformation"],
     method: [
       "Divide the $x$-coordinate of the image by the $x$-coordinate of the original point.",
       "Divide the $y$-coordinates the same way. Both quotients must give the same number $k$.",
@@ -577,14 +512,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "Each transformation sends a point $(x,y)$ to an image. Reflecting across the $x$-axis flips the sign of $y$: $(x,-y)$. Reflecting across the $y$-axis flips the sign of $x$: $(-x,y)$. A rotation of 180 degrees about the origin flips both signs. A reflection across the line $y=x$ swaps the coordinates. A 90 degree turn counterclockwise sends $(x,y)$ to $(-y,x)$. A test point such as $(2,3)$ shows each rule quickly.",
-    terms: [
-      [
-        "reflection",
-        "A flip across a line; each point goes to the point the same distance on the other side.",
-      ],
-      ["rotation", "A turn about a point by a given angle."],
-      ["image", "The point after a transformation."],
-    ],
+    terms: ["reflection", "rotation", "image-transformation"],
     method: [
       "Choose a test point with different positive coordinates, such as $(2,3)$.",
       "Find where each transformation sends it by picturing it on a coordinate plane.",
@@ -629,17 +557,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A power such as $x^7$ means $x$ multiplied by itself 7 times. In $\\frac{x^2}{x^7}$, two of the factors in the numerator cancel two in the denominator, leaving five factors of $x$ in the denominator, which is written $x^{-5}$. The exponent is the exponent on top minus the exponent on the bottom: $2-7=-5$. The coefficients are divided like ordinary numbers.",
-    terms: [
-      [
-        "coefficient",
-        "The number multiplying the variable, such as 15 in $15w^2$.",
-      ],
-      [
-        "exponent",
-        "The small raised number that says how many times the base is a factor.",
-      ],
-      ["negative exponent", "$x^{-n}$ means $\\frac{1}{x^{n}}$."],
-    ],
+    terms: ["coefficient", "exponent", "negative-exponent"],
     method: [
       "Divide the coefficient in the numerator by the coefficient in the denominator.",
       "Subtract the exponents: numerator minus denominator.",
@@ -683,13 +601,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "If a number squared is 25, the number is 5 or $-5$, because both square to 25. So $(x-3)^2=25$ means $x-3=5$ or $x-3=-5$, which gives $x=8$ or $x=-2$. Solve each equation separately; there are two solutions. Check each in the original equation.",
-    terms: [
-      ["binomial", "An expression with two terms, such as $x-3$."],
-      [
-        "square root",
-        "A number whose square is a given number; every positive number has two.",
-      ],
-    ],
+    terms: ["binomial", "square-root"],
     method: [
       "Take the square root of both sides, writing $\\pm$ before the root of the right side.",
       "Solve $x\\pm h=k$ and $x\\pm h=-k$ separately.",
@@ -732,10 +644,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "The graph of $f$ is every point $(x,f(x))$. In $g(x)=f(x-6)+2$, the output is the value of $f$ at $x-6$, so $g$ at $x=6$ has the value $f$ had at $0$: the graph has moved to the right by 6. Adding 2 outside raises every output by 2. So the graph of $g$ is the graph of $f$ shifted right 6 and up 2. A plus sign inside, $f(x+6)$, moves it left.",
-    terms: [
-      ["shift", "Moving a graph without turning or resizing it."],
-      ["function notation", "$f(x)$ is the output of $f$ for the input $x$."],
-    ],
+    terms: ["translation", "function-notation"],
     method: [
       "Look inside the parentheses: $x-h$ shifts right by $h$, $x+h$ shifts left by $h$.",
       "Look outside: $+k$ shifts up by $k$, $-k$ shifts down by $k$.",

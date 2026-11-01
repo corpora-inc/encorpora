@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -189,19 +190,13 @@ export const shapeLessons: Lesson[] = [
 ];
 
 const terms = {
-  flat: [
-    ["side", "A straight edge of a flat shape."],
-    ["corner", "Where two sides meet. Also called a vertex."],
-  ],
-  solid: [
-    ["solid shape", "A shape that takes up space, like a block or a ball."],
-    ["face", "A flat surface of a solid shape."],
-  ],
+  flat: ["side", "corner"],
+  solid: ["solid-shape", "face-solid"],
   compose: [
-    ["seam", "A line inside where two pieces meet."],
-    ["outside edge", "The boundary of the whole joined shape."],
+    ["decompose", "A seam is a line inside the shape where two pieces meet."],
+    ["decompose", "The outside edge is the outline of the whole joined shape."],
   ],
-} satisfies Record<string, [string, string][]>;
+} satisfies Record<string, MethodTerm[]>;
 export const shapeMethods: Record<string, ProblemMethod> = {
   "name-flat-shape": {
     goal: "Given one flat shape, name it.",

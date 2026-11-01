@@ -190,13 +190,10 @@ export const completingSquareLessons: Lesson[] = [
   },
 ];
 const terms: NonNullable<ProblemMethod["terms"]> = [
-  [
-    "Quadratic",
-    "An expression whose highest variable power is 2, with a nonzero coefficient on that power.",
-  ],
-  ["Coefficient", "A number multiplying a variable term."],
-  ["Constant", "A fixed number that does not change when $x$ changes."],
-  ["Squared binomial", "Two identical factors, such as (x + h)(x + h)."],
+  "quadratic",
+  "coefficient",
+  "constant",
+  "perfect-square-trinomial",
 ];
 export const completingSquareMethods: Record<string, ProblemMethod> = {
   "complete-square-term": {
@@ -223,7 +220,7 @@ export const completingSquareMethods: Record<string, ProblemMethod> = {
   },
   "complete-square-nonmonic": {
     goal: "Rewrite ax² + bx + c as a(x + h)² + k, with a nonzero.",
-    terms: [...terms, ["Leading coefficient", "The number multiplying x²."]],
+    terms: [...terms, "leading-coefficient"],
     method: [
       "Factor a out of both variable terms, leaving x² + (b/a)x inside.",
       "Halve b/a to find h = b/(2a), then square $h$.",

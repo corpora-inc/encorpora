@@ -10,12 +10,12 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
         "In a normal distribution the share of values between two numbers is the area under the bell curve between them. A calculator or table gives the area below any value once you know how many standard deviations it is from the mean.",
       terms: [
         [
-          "$z$-score",
-          "The number of standard deviations a value is above (positive) or below (negative) the mean: $z=\\frac{x-\\mu}{\\sigma}$.",
+          "z-score",
+          "$z = \\frac{x - \\mu}{\\sigma}$, with mean $\\mu$ and standard deviation $\\sigma$.",
         ],
         [
-          "normal distribution",
-          "A symmetric bell-shaped distribution described by its mean $\\mu$ and standard deviation $\\sigma$.",
+          "normal-distribution",
+          "The mean is written $\\mu$ and the standard deviation $\\sigma$.",
         ],
       ],
       method: [
@@ -32,13 +32,10 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
         "The tangent is opposite over adjacent, so it gives the two legs of a reference triangle. The hypotenuse follows from the Pythagorean theorem, and the quadrant tells whether cosine, the horizontal coordinate, is positive or negative.",
       terms: [
         [
-          "reference triangle",
-          "The right triangle formed with the $x$-axis and the terminal side of the angle.",
+          "reference-angle",
+          "The reference triangle is the right triangle the terminal side forms with the $x$-axis.",
         ],
-        [
-          "rationalize",
-          "Rewrite a fraction so that no square root is in the denominator.",
-        ],
+        "rationalize",
       ],
       method: [
         "Take opposite $=|\\tan\\theta|$ numerator and adjacent $=$ denominator (1 for an integer).",
@@ -53,13 +50,10 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
       intuition:
         "An obtuse angle has the same sine as its reference angle and the opposite cosine. The sine of an angle also equals the cosine of its complement. Together these let you rewrite one expression in many equal ways.",
       terms: [
+        "reference-angle",
         [
-          "reference angle",
-          "The acute angle between the terminal side and the $x$-axis.",
-        ],
-        [
-          "cofunction identity",
-          "$\\sin\\theta=\\cos\\left(\\frac{\\pi}{2}-\\theta\\right)$.",
+          "cofunction-identity",
+          "In radians: $\\sin\\theta=\\cos\\left(\\frac{\\pi}{2}-\\theta\\right)$.",
         ],
       ],
       method: [
@@ -75,10 +69,10 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
       intuition:
         "An odd function is symmetric about the origin: its graph passes through $(0,0)$ and turns into itself when rotated half a turn. Sine has this symmetry; moving the graph up or sideways usually destroys it.",
       terms: [
-        ["odd function", "A function with $f(-x)=-f(x)$ for every $x$."],
+        "odd-function",
         [
-          "phase shift",
-          "A horizontal shift of a sinusoid, $C$ in $\\sin(Bx-C)$.",
+          "phase-shift",
+          "For $\\sin(Bx-C)$ with $B>0$, the graph moves $\\frac{C}{B}$ to the right.",
         ],
       ],
       method: [
@@ -94,13 +88,10 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
       intuition:
         "A parabola is the set of points equally far from the focus and the directrix. The vertex is the point of the parabola closest to both, so it sits exactly halfway between them on the axis of symmetry.",
       terms: [
+        "directrix",
         [
-          "directrix",
-          "The fixed line each point of the parabola is as far from as it is from the focus.",
-        ],
-        [
-          "axis of symmetry",
-          "The line through the focus perpendicular to the directrix.",
+          "axis-of-symmetry",
+          "It also passes through the focus and is perpendicular to the directrix.",
         ],
       ],
       method: [
@@ -115,16 +106,7 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
       goal: "List the members of a complement, or the complement of a union or intersection, in a sample space.",
       intuition:
         "The complement of an event contains everything in the sample space that is not in the event. A union contains outcomes in either event and an intersection contains outcomes in both, so their complements are found by listing what is left over.",
-      terms: [
-        [
-          "complement $A'$",
-          "The outcomes of the sample space that are not in $A$.",
-        ],
-        [
-          "union and intersection",
-          "$A\\cup B$ is in $A$ or $B$ (or both); $A\\cap B$ is in both.",
-        ],
-      ],
+      terms: ["complement-probability", "union", "intersection"],
       method: [
         "Write the union or intersection first if the question asks for its complement.",
         "Go through the sample space in order and keep the members that are not in it.",

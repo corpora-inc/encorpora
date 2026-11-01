@@ -109,20 +109,15 @@ export const slopeTriangleStatementsMethod: ProblemMethod = {
   intuition:
     "A point such as $A(0,1)$ gives horizontal position first and vertical position second. A horizontal move and a vertical move make a right triangle with one square corner beside a line; those sides are legs, and the slanted side is its hypotenuse. Slope is signed vertical change divided by rightward horizontal change. A length ratio such as $BC/AB$ divides the length of $BC$ by the length of $AB$. Matching parts are corresponding; triangles with the same shape are similar, and triangles that also match in size are congruent.",
   terms: [
-    ["right triangle", "A three-sided shape with one square, 90-degree angle."],
+    "right-triangle",
     [
-      "run and rise",
-      "Horizontal change and signed vertical change between two line points.",
+      "slope",
+      "The run is the change in $x$ and the rise is the change in $y$ from one point to another.",
     ],
-    ["slope", "Signed rise divided by nonzero run."],
-    [
-      "corresponding vertices",
-      "Corners paired by the same role in two triangles; pair the right angles first.",
-    ],
-    [
-      "similar and congruent",
-      "Similar triangles have matching angles and one side-length scale factor; congruent triangles also have equal matching side lengths.",
-    ],
+    "slope",
+    ["corresponding", "In right triangles, pair the right angles first."],
+    "similar-figures",
+    "congruent",
   ],
   method: [
     "Read each triangle from its left line point to its right line point. Find the positive run and signed rise, then divide rise by run for slope.",

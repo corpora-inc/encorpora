@@ -7,13 +7,7 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
     goal: "Find an arc as a fraction of the circumference when the central angle is not a friendly part of a full turn.",
     intuition:
       "A full turn is 360 degrees and the whole circle has length $2\\pi r$. A central angle of $\\theta$ degrees takes the fraction $\\frac{\\theta}{360}$ of the turn, so its arc takes the same fraction of the circumference.",
-    terms: [
-      ["central angle", "An angle whose vertex is the center of the circle."],
-      [
-        "arc length",
-        "The distance along the circle between the two ends of an arc.",
-      ],
-    ],
+    terms: ["central-angle", "arc-length"],
     method: [
       "If a diameter is given, halve it to get the radius $r$.",
       "Compute the fraction $\\frac{\\theta}{360}$ and the circumference $2\\pi r$.",
@@ -27,10 +21,10 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
     intuition:
       "A walkway around a pool is the large circle with the pool removed. The large circle's radius is the pool's radius plus the walkway width, because the walkway extends outward from the edge on every side.",
     terms: [
-      ["ring", "The region between two circles that share a center."],
+      "ring",
       [
-        "border width",
-        "The distance from the inner circle to the outer circle.",
+        "ring",
+        "The border width is the distance between the two circles: inner radius plus border width gives the outer radius.",
       ],
     ],
     method: [
@@ -45,16 +39,7 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
     goal: "Solve the sphere volume formula backward for the radius, then report the radius or the diameter.",
     intuition:
       "The volume formula $V=\\frac43\\pi r^3$ turns a radius into a volume. To go backward, undo each operation in reverse order: divide by $\\frac43\\pi$, then take a cube root.",
-    terms: [
-      [
-        "cube root",
-        "The number that, multiplied by itself three times, gives the original.",
-      ],
-      [
-        "diameter",
-        "A segment through the center joining two points of the sphere; it is twice the radius.",
-      ],
-    ],
+    terms: ["cube-root", "diameter"],
     method: [
       "Write $\\frac43\\pi r^3=V$ and isolate $r^3=\\frac{3V}{4\\pi}$.",
       "Take the cube root with a calculator to get $r$.",
@@ -67,13 +52,7 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
     goal: "Choose sine or cosine to find a leg of a right triangle from the hypotenuse and an angle given in degrees.",
     intuition:
       "In a right triangle, the ratio of the side opposite an acute angle to the hypotenuse depends only on the angle. That ratio is the sine. The ratio of the adjacent leg to the hypotenuse is the cosine.",
-    terms: [
-      ["opposite leg", "The leg across the triangle from the angle."],
-      [
-        "adjacent leg",
-        "The leg that touches the angle (the hypotenuse is the other side that touches it).",
-      ],
-    ],
+    terms: ["opposite-side-angle", "adjacent-leg"],
     method: [
       "Mark the angle, the hypotenuse, and the leg you need as opposite or adjacent.",
       "Opposite and hypotenuse use sine; adjacent and hypotenuse use cosine.",
@@ -86,13 +65,7 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
     goal: "Use two sides and the angle between them to find the area, including for an obtuse angle.",
     intuition:
       "A triangle's area is half its base times its height. With two sides and the angle between them, the height of one side over the other is the other side times the sine of the angle, so no separate height is needed.",
-    terms: [
-      ["included angle", "The angle between two given sides."],
-      [
-        "sine",
-        "The ratio opposite over hypotenuse; it also works for obtuse angles with a calculator.",
-      ],
-    ],
+    terms: ["included-angle", "sine"],
     method: [
       "Identify the two sides and confirm the angle sits between them.",
       "Compute $\\frac12ab\\sin C$ with the calculator in degree mode.",
@@ -106,11 +79,12 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
     intuition:
       "The altitude from the apex of an isosceles triangle splits it into two matching right triangles. It halves the apex angle and halves the base. Each right triangle has the altitude as one leg.",
     terms: [
-      ["apex angle", "The angle between the two equal sides."],
       [
-        "base angle",
-        "An angle at either end of the base; the two base angles are equal.",
+        "angle",
+        "The apex angle of an isosceles triangle is the angle between its two equal sides.",
       ],
+      "isosceles",
+      "base-angle",
     ],
     method: [
       "Draw the altitude and label the half-angle and half-base.",
@@ -124,13 +98,7 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
     goal: "Turn dimensions into a decimal volume, then apply a density or load size and round appropriately.",
     intuition:
       "Volume says how much space a solid fills. Density multiplies volume into weight or mass, and a load size divides volume into trips. Which operation to use depends on the units: pounds per cubic foot multiplies cubic feet.",
-    terms: [
-      ["density", "Mass or weight per unit of volume."],
-      [
-        "composite solid",
-        "A solid made of two simpler solids joined together.",
-      ],
-    ],
+    terms: ["density", "composite-figure"],
     method: [
       "Choose each formula: cylinder $\\pi r^2h$, pyramid or cone one third of base area times height, prism base area times height.",
       "Add volumes of the joined solids; use the radius, not the diameter.",

@@ -1,0 +1,262 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  /* The frame keeps one size from first paint through every state. */
+  min-height: min(720px, calc(100dvh - 160px));
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  min-height: var(--target-size);
+}
+.eyebrow {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+  padding: 0 var(--space-2);
+  margin-right: calc(-1 * var(--space-2));
+  border-radius: var(--radius-control);
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+/* The link's padding is a touch area, not an indent: its text lines up
+   with the eyebrow when the two wrap onto separate lines. */
+.head .textLink {
+  margin-inline: calc(-1 * var(--space-2));
+}
+.textLink:hover {
+  background: var(--color-surface-sunken);
+}
+.textLink:focus-visible,
+.rowTitle:focus-visible,
+.retry:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.title {
+  margin: 0;
+  font-size: clamp(var(--text-title-min), 6vw, var(--text-title-max));
+  line-height: 1.15;
+  /* Relative to the title's size: words keep their spaces at 320 px. */
+  letter-spacing: -0.01em;
+}
+.lede {
+  margin: 0;
+  color: var(--color-muted-text);
+}
+.controls {
+  display: grid;
+  gap: var(--space-3);
+}
+.actions {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: var(--space-3);
+}
+/* Both labels fit their widest state, so nothing moves while a file is
+   prepared or another workbook is made. */
+.download,
+.another,
+.today {
+  min-height: var(--target-size);
+  white-space: nowrap;
+}
+.today {
+  align-self: stretch;
+  text-align: center;
+}
+/* History rows: a reserved line for a load or download error. */
+.message {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: calc(var(--target-size) + var(--space-2));
+  margin: calc(-1 * var(--space-2)) 0;
+  color: var(--color-danger-accent);
+  font-size: var(--text-small);
+}
+.failure {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  color: var(--color-on-surface);
+}
+.failure p {
+  margin: 0;
+}
+.failure .retry {
+  margin-inline: calc(-1 * var(--space-2));
+}
+.retry {
+  min-height: var(--target-size);
+  padding: 0 var(--space-2);
+  border: none;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.contents {
+  min-height: 300px;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-sunken);
+  transition: opacity var(--motion-fast) var(--ease-standard);
+}
+/* Focus moves here only to keep a retry's place; it is not a control. */
+.contents:focus {
+  outline: none;
+}
+.stale {
+  opacity: 0.6;
+}
+.contentsHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.contentsHead h2 {
+  margin: 0;
+  font-size: var(--text-label);
+}
+.code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: var(--text-small);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.summary {
+  margin: var(--space-1) 0 var(--space-3);
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+}
+.sections {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sections li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--color-border);
+}
+.sectionName {
+  display: grid;
+  min-width: 0;
+  font-weight: 700;
+}
+.sectionTitle {
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  font-weight: 400;
+  overflow-wrap: break-word;
+}
+.count {
+  flex: 0 0 auto;
+  color: var(--color-muted-text);
+  font-variant-numeric: tabular-nums;
+}
+.list {
+  display: grid;
+  margin: calc(-1 * var(--space-2)) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+}
+.rowText {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+.rowTitle {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+  border-radius: var(--radius-control);
+  color: var(--color-on-surface);
+  font-weight: 700;
+  text-decoration: none;
+}
+.rowTitle:hover {
+  text-decoration: underline;
+}
+.rowMeta {
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+}
+.rowDownload {
+  flex: 0 0 auto;
+  min-width: 128px;
+  min-height: var(--target-size);
+  white-space: nowrap;
+}
+.empty {
+  margin: 0;
+  color: var(--color-muted-text);
+}
+.notice {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+}
+.notice p {
+  margin: 0;
+}
+.skeleton {
+  display: grid;
+  gap: var(--space-3);
+}
+.skeleton span {
+  display: block;
+  height: var(--target-size);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-hover);
+}
+/* The narrowest phones: less padding around the nested controls, so the
+   choices get the width. */
+@media (max-width: 360px) {
+  .card {
+    --frame-card-padding: var(--space-3);
+  }
+}
+@media (max-width: 380px) {
+  .actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .row {
+    flex-wrap: wrap;
+  }
+  .rowDownload {
+    width: 100%;
+  }
+}

@@ -6,14 +6,21 @@ import { estimateFrontier, initialLevel } from "../src/learning/frontier";
 import { generatedProblemSchema } from "../src/math/contracts";
 import { generateProblem, templates } from "../src/math/engine";
 import type { SkillEvidence } from "../src/server/evidence";
+import { templateRole } from "../src/learning/placement";
+import { challengePool } from "../src/workbook/challenge-pool";
+import { workbookResultsUrl } from "../src/workbook/links";
+import { strandEstimate } from "../src/learning/frontier";
+import { templateGrade } from "../src/server/mixed-practice";
 import {
+  CHALLENGE_WINDOW,
   composeWorkbook,
+  printable,
   workbookCode,
   workbookMinutes,
   type WorkbookMinutes,
   type WorkbookSpec,
 } from "../src/workbook/compose";
-import { workbookHtml } from "../src/workbook/render";
+import { cardWords, workbookHtml } from "../src/workbook/render";
 import { sampleLearners, simulateLearner } from "../src/workbook/synthetic";
 
 const now = Date.parse("2026-10-31T13:00:00Z");
@@ -55,6 +62,18 @@ test("the same learner, date and number print the same workbook; another number 
     items(a).map((i) => i.seed),
   );
   assert.notEqual(workbookCode(b), workbookCode(a));
+  // Storage (JSONB) reorders object keys; the printed code must not change.
+  const reorder = (value: unknown): unknown =>
+    Array.isArray(value)
+      ? value.map(reorder)
+      : value && typeof value === "object"
+        ? Object.fromEntries(
+            Object.entries(value)
+              .reverse()
+              .map(([k, v]) => [k, reorder(v)]),
+          )
+        : value;
+  assert.equal(workbookCode(reorder(a) as WorkbookSpec), workbookCode(a));
 });
 
 test("every workbook has the full structure at every level and length", () => {
@@ -170,16 +189,21 @@ test("the printed workbook numbers every problem and keeps the key after them", 
   const html = workbookHtml(spec, { lessons, skillTitle });
   const count = items(spec).length;
   const lastItem = html.lastIndexOf('class="exercise wb-item');
-  const key = html.indexOf('class="wb-key"');
+  const key = html.indexOf('data-flow="key"');
   assert.ok(key > lastItem, "answer key follows every student problem");
   assert.equal(
-    (html.match(/class="wb-key-item"/g) ?? []).length,
+    (html.match(/class="wb-key-item /g) ?? []).length,
     count,
     "one key entry per problem",
   );
   assert.ok(html.includes(workbookCode(spec)));
   for (let n = 1; n <= count; n++)
-    assert.ok(html.includes(`<h2>${n}. `), `problem ${n}`);
+    assert.ok(
+      html.includes(
+        `<h2><span class="wb-num" aria-label="Problem ${n}">${n}</span>`,
+      ),
+      `problem ${n}`,
+    );
 });
 
 test("no workbook prints the same problem twice", () => {
@@ -208,4 +232,157 @@ test("no workbook prints the same problem twice", () => {
 test("invalid requests are rejected", () => {
   assert.throws(() => compose("third-grade", { minutes: 20 as never }));
   assert.throws(() => compose("third-grade", { number: 0 }));
+});
+
+test("the results page links to the learner's results with a QR code", () => {
+  assert.equal(
+    workbookResultsUrl({
+      baseUrl: "https://amp.corpora.inc/",
+      learnerId: "learner 1",
+      workbookId: "wb/2",
+    }),
+    "https://amp.corpora.inc/learners/learner%201/workbooks/wb%2F2/results",
+  );
+  assert.throws(() =>
+    workbookResultsUrl({
+      baseUrl: "http://example.com",
+      learnerId: "a",
+      workbookId: "b",
+    }),
+  );
+  const spec = compose("third-grade");
+  const plain = workbookHtml(spec, { lessons, skillTitle });
+  assert.ok(!plain.includes('class="wb-qr"'), "no link, no code");
+  const linked = workbookHtml(spec, {
+    lessons,
+    skillTitle,
+    results: {
+      baseUrl: "https://amp.corpora.inc",
+      learnerId: "l1",
+      workbookId: "w1",
+    },
+  });
+  assert.ok(linked.includes('class="wb-qr"'));
+  assert.ok(linked.includes(workbookCode(spec)));
+});
+
+test("the challenge comes from the curated pool, which is printable", () => {
+  for (const id of challengePool) {
+    const t = templates.find((x) => x.id === id);
+    assert.ok(t, `${id} exists`);
+    assert.ok(printable(t), `${id} prints`);
+    assert.equal(templateRole(id), "assessment", id);
+  }
+  for (const id of learners.keys())
+    for (const date of ["2026-11-01", "2026-11-02", "2026-11-03"]) {
+      const { frontier, evidence } = learners.get(id)!;
+      const spec = composeWorkbook({
+        templates,
+        skills,
+        lessons,
+        frontier,
+        evidence,
+        date,
+        learnerKey: id,
+        now,
+      });
+      const challenge = spec.sections.at(-1)!;
+      assert.equal(challenge.kind, "challenge");
+      assert.ok(
+        challengePool.has(challenge.items[0]!.templateId),
+        `${id} ${date}: ${challenge.items[0]!.templateId}`,
+      );
+    }
+});
+
+test("the lesson card defines up to six glossary words its own text uses", () => {
+  let carded = 0;
+  for (const lesson of lessons) {
+    const words = cardWords(lesson);
+    assert.ok(words.length <= 6, lesson.id);
+    assert.equal(new Set(words.map((w) => w.id)).size, words.length);
+    for (const w of words)
+      assert.ok(w.plain.length > 0, `${lesson.id} ${w.id}`);
+    if (words.length) carded++;
+  }
+  assert.ok(carded > lessons.length / 2, `${carded} cards have words to know`);
+  const interest = lessons.find((l) => l.id === "simple-interest-blanks")!;
+  assert.ok(cardWords(interest).some((w) => w.term === "principal"));
+  const spec = compose("algebra-two");
+  const lessonId = spec.sections.find((s) => s.kind === "lesson")!.lessonId!;
+  const html = workbookHtml(spec, { lessons, skillTitle });
+  const words = cardWords(lessons.find((l) => l.id === lessonId)!);
+  if (words.length) {
+    assert.ok(html.includes("Words to know"));
+    for (const w of words)
+      assert.ok(html.includes(`<dt>${w.term}</dt>`), w.term);
+  }
+});
+
+test("the challenge sits 0.5 to 1.3 grades above the learner wherever the catalog allows", () => {
+  const nodes = new Map(skills.map((s) => [s.id, s]));
+  const [lo, hi] = CHALLENGE_WINDOW;
+  // The shared learners plus the top of the catalog, where the window can
+  // run past the last template.
+  const precalculus = sampleLearners.find((l) => l.id === "precalculus")!;
+  const all = new Map(learners);
+  all.set("precalculus", {
+    learner: precalculus,
+    ...simulateLearner(precalculus, now),
+  });
+  for (const id of all.keys()) {
+    const { frontier, evidence } = all.get(id)!;
+    const offset = (t: (typeof templates)[number]) =>
+      templateGrade(t, nodes) -
+      strandEstimate(frontier, nodes.get(t.skillId)?.strand ?? t.skillId).level;
+    const reachable = templates.some(
+      (t) =>
+        nodes.has(t.skillId) &&
+        printable(t) &&
+        templateRole(t.id) === "assessment" &&
+        offset(t) >= lo &&
+        offset(t) <= hi,
+    );
+    for (const date of [
+      "2026-11-01",
+      "2026-11-02",
+      "2026-11-03",
+      "2026-11-04",
+    ]) {
+      const day = composeWorkbook({
+        templates,
+        skills,
+        lessons,
+        frontier,
+        evidence,
+        date,
+        learnerKey: id,
+        now,
+      });
+      {
+        const item = day.sections.at(-1)!.items[0]!;
+        const t = templates.find((x) => x.id === item.templateId)!;
+        const off = offset(t);
+        if (reachable) {
+          assert.ok(
+            off >= lo - 1e-9 && off <= hi + 1e-9,
+            `${id} ${date}: offset ${off.toFixed(2)}`,
+          );
+          assert.ok(
+            item.grade <= frontier.overall.level + hi + 1e-9 ||
+              !templates.some(
+                (x) =>
+                  nodes.has(x.skillId) &&
+                  printable(x) &&
+                  templateRole(x.id) === "assessment" &&
+                  offset(x) >= lo &&
+                  offset(x) <= hi &&
+                  templateGrade(x, nodes) <= frontier.overall.level + hi,
+              ),
+            `${id} ${date}: grade ${item.grade} above overall ${frontier.overall.level.toFixed(2)} + ${hi}`,
+          );
+        } else assert.ok(off < lo, `${id}: top of the catalog`);
+      }
+    }
+  }
 });

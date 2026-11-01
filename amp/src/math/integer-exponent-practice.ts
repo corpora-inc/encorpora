@@ -96,7 +96,7 @@ export function integerExponentPrintCase(
       "−",
     );
     explanation = [
-      `The base is nonzero. The exponent ${signed(-magnitude)} means the reciprocal of the ${magnitude === 1 ? "first" : magnitude === 2 ? "second" : magnitude === 3 ? "third" : "fourth"} power.`,
+      `The base is the number being raised to a power, and it is not 0. The reciprocal of a fraction is the fraction flipped upside down. A negative exponent, here ${signed(-magnitude)}, means: take the reciprocal, then raise it to the ${magnitude === 1 ? "first" : magnitude === 2 ? "second" : magnitude === 3 ? "third" : "fourth"} power.`,
       `Take the reciprocal and make the exponent positive: ${power(base, -magnitude)} = ${power(reciprocal, magnitude)}.`,
       `Raise the numerator and denominator to that power: ${power(reciprocal, magnitude)} = ${answer.replace("-", "−")}.`,
       n < 0
@@ -142,12 +142,12 @@ export function integerExponentPrintCase(
           : `A power of a power multiplies the exponents: ${signed(a)} × ${operand(b)}, not ${signed(a)} + ${operand(b)}.`;
     const calculation = `${signed(a)} ${operation === "product" ? "+" : operation === "quotient" ? "−" : "×"} ${operand(b)} = ${signed(result)}`;
     explanation = [
-      "The letter $x$ represents the same nonzero real number throughout. The letter $k$ is the exponent to find.",
+      "A positive exponent counts how many times the base is used as a factor: $x^3$ means three factors of $x$ multiplied together. A negative exponent means the reciprocal (1 over the power): $x^{-3} = \\frac{1}{x^3}$. Here $x$ is the same nonzero number throughout, and $k$ is the exponent to find.",
       operation === "product"
-        ? "For powers with the same base, multiplication adds the exponents. This rule also includes zero exponents and reciprocal factors from negative exponents."
+        ? "When powers with the same base are multiplied, the factors of $x$ just join together, so the exponents add. A negative exponent counts factors that divide instead, so add it with its sign."
         : operation === "quotient"
-          ? "Dividing by a power is multiplying by its reciprocal. Negate the denominator's exponent, then add; this is subtraction of exponents."
-          : "Raising a power to an integer power multiplies the exponents. A negative outer exponent takes the reciprocal; a zero outer exponent gives 1.",
+          ? "When powers with the same base are divided, subtract the bottom exponent from the top one. With positive exponents, each factor of $x$ on the bottom cancels one on the top; the same rule works for negative exponents too."
+          : "Raising a power to a power repeats the same group of factors, so the exponents multiply. A negative outer exponent also flips the result into its reciprocal.",
       `Calculate the exponent: ${calculation}.`,
       `Therefore ${expression} = ${power("x", result)}, so k = ${signed(result)}.`,
       ...(result === 0

@@ -45,14 +45,8 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     intuition:
       "Every United States coin has a name and a value. The value is how many cents the coin is worth. The cent symbol ¢ goes after the number: 5¢ means five cents.",
     terms: [
-      [
-        "cent",
-        "The smallest unit of United States money. One cent is written 1¢.",
-      ],
-      [
-        "cent symbol",
-        "The mark ¢, written right after a number to show cents, as in 10¢.",
-      ],
+      "cent",
+      ["cent", "The cent symbol ¢ goes right after the number, as in 10¢."],
     ],
     method: [
       "Read the number of cents on the coin, or in the question. If the picture shows no value, name the coin by how it looks: the penny is the only copper coin; of the silver coins, the dime is the smallest, the nickel has a smooth edge and the quarter is the largest, with a ridged edge.",
@@ -66,10 +60,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Given a solid standing on a table, name the flat shape of the face that touches the table.",
     intuition:
       "A solid is a shape you can hold, such as a box, a can or a ball. A face is a flat side of a solid. When a solid stands on a face, that face touches the table and is the bottom face.",
-    terms: [
-      ["face", "A flat side of a solid."],
-      ["corner", "A point where two sides of a flat shape meet."],
-    ],
+    terms: ["face-solid", "corner"],
     method: [
       "Look at the face on the table. If it is round with no corners, it is a circle.",
       "If it has straight sides, count them. Three sides make a triangle.",
@@ -82,11 +73,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Given a question or a goal about an object, name the attribute (length, capacity or weight) that should be measured.",
     intuition:
       "An attribute is something about an object that you can measure with a unit. How long, how tall and how wide are about length. How much a container can hold is capacity. How heavy something is tells its weight.",
-    terms: [
-      ["length", "How long, how tall or how wide something is."],
-      ["capacity", "How much a container can hold."],
-      ["weight", "How heavy something is."],
-    ],
+    terms: ["length", "capacity", "weight"],
     method: [
       "Find the key words in the question: long, tall or wide; hold; heavy.",
       "Match the key words to the attribute: length, capacity or weight.",
@@ -99,11 +86,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Given groups of up to 20 dots, find the group that has more than, fewer than or the same number as a given number or group.",
     intuition:
       "To compare a group with a number, count the group, then ask: is my count more than, fewer than or the same as that number? More means a greater number. Fewer means a lesser number.",
-    terms: [
-      ["more than", "A greater number. 9 is more than 7."],
-      ["fewer than", "A lesser number. 5 is fewer than 7."],
-      ["the same as", "Equal. 7 is the same as 7."],
-    ],
+    terms: ["more-than", "less-than", "equal"],
     method: [
       "Count the dots in each group. Touch each dot once.",
       "Compare each count with the number in the question.",
@@ -117,11 +100,11 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     intuition:
       "A number sentence tells a story with numbers. In these problems a box □ stands for the number we want to find. To match a story with a sentence, ask what happens in the story, and which number is not known.",
     terms: [
+      "number-sentence",
       [
-        "number sentence",
-        "Numbers and signs that say something is equal, such as 8 + 5 = 13.",
+        "unknown",
+        "Here a box $\\square$ holds the place of the unknown number.",
       ],
-      ["box □", "A box that stands for the number we do not know yet."],
     ],
     method: [
       "Decide what happens: things are put together, some are taken away, or two groups are compared.",
@@ -137,11 +120,11 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     intuition:
       "A number sentence tells a story with numbers, and the numbers can be as large as 1,000. A box □ stands for the number we want to find. The match depends on what happens in the story and which number is not known, not on how big the numbers are.",
     terms: [
+      "number-sentence",
       [
-        "number sentence",
-        "Numbers and signs that say something is equal, such as 267 + 469 = 736.",
+        "unknown",
+        "Here a box $\\square$ holds the place of the unknown number.",
       ],
-      ["box □", "A box that stands for the number we do not know yet."],
     ],
     method: [
       "Decide what happens: things are put together, some are taken away, or two groups are compared.",
@@ -157,11 +140,11 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     intuition:
       "A number line has tick marks that are the same distance apart. Often only a few ticks have numbers. You can still find every other number, because each tick adds the same amount to the one before it.",
     terms: [
+      "tick-mark",
       [
-        "tick mark",
-        "A short line on a number line that stands for one number.",
+        "tick-mark",
+        "The step is how much each tick mark adds to the one before it.",
       ],
-      ["step", "How much each tick mark adds to the one before it."],
     ],
     method: [
       "Pick two labeled numbers next to each other. Count the steps between their ticks.",
@@ -176,11 +159,11 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     intuition:
       "A number line has tick marks that are the same distance apart. Often only three ticks have numbers. You can still find every other number, because each tick adds the same amount to the one before it.",
     terms: [
+      "tick-mark",
       [
-        "tick mark",
-        "A short line on a number line that stands for one number.",
+        "tick-mark",
+        "The step is how much each tick mark adds to the one before it.",
       ],
-      ["step", "How much each tick mark adds to the one before it."],
     ],
     method: [
       "Pick two labeled numbers next to each other. Count the steps between their ticks.",
@@ -194,11 +177,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Name shaded eighths, find how many equal parts make one whole, and describe shaded parts that go past one whole.",
     intuition:
       "A whole can be cut into equal parts. When there are 8 equal parts, each part is one eighth. Eight eighths fill one whole. If more than 8 eighths are shaded, you have shaded one whole and some more.",
-    terms: [
-      ["equal parts", "Parts that are the same size."],
-      ["eighth", "One of 8 equal parts of a whole."],
-      ["whole", "All of one bar, shape or object."],
-    ],
+    terms: ["equal-parts", "eighth", "whole"],
     method: [
       "Count all the equal parts in one whole. That number gives the name: 2 halves, 3 thirds, 4 fourths, 8 eighths.",
       "Count the shaded parts. Say the number and the name: 3 eighths.",
@@ -211,13 +190,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Given a square or rectangle cut into equal parts, say how many parts there are and name the shape of the parts.",
     intuition:
       "To decompose a shape means to cut it into smaller shapes. Count the parts the cuts make. Then name one part by counting its sides and corners.",
-    terms: [
-      ["decompose", "To break a shape into smaller shapes."],
-      [
-        "diagonal",
-        "A straight line from one corner of a shape to the opposite corner.",
-      ],
-    ],
+    terms: ["decompose", "diagonal"],
     method: [
       "Count the parts the cuts make.",
       "Pick one part and count its sides. Three sides: triangle. Four sides with all sides equal: square. Four sides with two longer sides: rectangle.",
@@ -231,8 +204,8 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     intuition:
       "To measure a length, you cover it with copies of a unit, end to end, with no gaps. A longer unit covers more each time, so you need fewer copies. A shorter unit covers less each time, so you need more copies.",
     terms: [
-      ["unit", "A length used to measure, such as a paper clip or a block."],
-      ["copies", "How many times the unit is laid end to end."],
+      "unit",
+      ["unit", "Copies counts how many times the unit is laid end to end."],
     ],
     method: [
       "Compare the size of one unit in each row. Which is longer?",
@@ -246,10 +219,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Estimate a length by repeating a benchmark length, and choose the reasonable estimate for a familiar object.",
     intuition:
       "A benchmark is a length you know well, such as a ruler that is 12 inches long. To estimate, compare a new length with the benchmark. If something is about 3 benchmarks long, repeat the benchmark length 3 times.",
-    terms: [
-      ["benchmark", "A length you know, used to estimate other lengths."],
-      ["estimate", "A careful guess that is close to the real amount."],
-    ],
+    terms: ["benchmark", "estimate"],
     method: [
       "Find the benchmark length in the problem or think of one you know.",
       "To estimate a length that is a number of benchmarks long, add the benchmark length that many times, or multiply.",
@@ -262,10 +232,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Read an analog clock to the minute and match it with a digital time, or find the clock that matches a digital time.",
     intuition:
       "The short hand shows the hour. The long hand shows the minutes after the hour. Each numeral is 5 minutes, and the small tick marks between numerals are single minutes.",
-    terms: [
-      ["minute hand", "The long hand. It shows the minutes after the hour."],
-      ["hour hand", "The short hand. It shows the hour it has passed."],
-    ],
+    terms: ["minute-hand", "hour-hand"],
     method: [
       "Read the hour: the numeral the short hand has passed.",
       "Read the minutes: count by fives to the numeral before the long hand, then count single tick marks.",
@@ -278,16 +245,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Read a tally chart to find a count, a difference or a total, and choose the T-chart that organizes a list of answers.",
     intuition:
       "A tally chart records counts with marks. The T-chart has two columns, one for the name of each choice and one for its count. Tally marks come in groups of five: four lines and one line across them.",
-    terms: [
-      [
-        "tally mark",
-        "A line that stands for one count. A group of five has a line across four lines.",
-      ],
-      [
-        "T-chart",
-        "A chart with two columns and a line down the middle that lists each choice with its count.",
-      ],
-    ],
+    terms: ["tally-mark", "t-chart"],
     method: [
       "Count each group of five as 5. Add the lines left over.",
       "To find how many more, subtract the smaller count from the greater. For a total, add all the counts.",
@@ -301,10 +259,13 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     intuition:
       "Money you earn by working is income. Money someone gives you without work is a gift. You can spend money to buy something now, or save it to use later. A bank account has deposits that put money in and withdrawals that take money out.",
     terms: [
-      ["income", "Money earned by working."],
-      ["gift", "Something given to you without work, such as birthday money."],
-      ["producer", "A person who makes goods or services to sell."],
-      ["consumer", "A person who buys and uses goods or services."],
+      "income",
+      [
+        "income",
+        "A gift is something given to you without working for it, such as birthday money.",
+      ],
+      "producer",
+      "consumer",
     ],
     method: [
       "Ask what the question is about: pay for work, buying or keeping, putting in or taking out, making or buying.",

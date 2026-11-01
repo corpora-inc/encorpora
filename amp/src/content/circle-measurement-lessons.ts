@@ -298,13 +298,7 @@ export const circleMeasurementMethods: Record<string, ProblemMethod> =
           lesson.sections
             .find((section) => section.stage === "intuition")
             ?.paragraphs.join(" ") ?? lesson.summary,
-        terms: [
-          ["radius", "The distance from the center to the circle."],
-          [
-            "coefficient",
-            "The number multiplying $\\pi$; $a$ names the number requested.",
-          ],
-        ],
+        terms: ["radius", "coefficient"],
         method:
           lesson.id === "circle-circumference-coefficient"
             ? [
