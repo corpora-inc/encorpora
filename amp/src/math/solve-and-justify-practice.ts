@@ -138,6 +138,20 @@ const quadraticLine: ParseOptions = {
   powers: true,
 };
 
+/** What each reason does, in a short plain clause (issue #1781). */
+const MEANING: Record<string, string> = {
+  ad: "the same amount was added to both sides",
+  su: "the same amount was subtracted from both sides",
+  mu: "both sides were multiplied by the same nonzero number",
+  di: "both sides were divided by the same nonzero number",
+  dp: "a number outside brackets was multiplied by each term inside",
+  cl: "terms with the same variable part were added together",
+  co: "two terms swapped places, which never changes a sum",
+  sy: "the two sides swapped places, which keeps them equal",
+  fa: "the expression was rewritten as a product of brackets",
+  zp: "a product is 0 only when one of its factors is 0",
+};
+
 /** Shared rendering of a derivation: prompt by mode, worked explanation. */
 function render(
   m: DerivationModel & { bank: readonly { id: string; label: string }[] },
@@ -167,10 +181,11 @@ function render(
     mode === "order" ? "Order the steps" : "Your solution",
   );
   const explanation = [
+    "Each line of a solution must follow from the line before it by a rule that keeps it true. The rule is the line's reason.",
     `Start from ${startTex}.`,
     ...m.path.map(
       ([line, reason]) =>
-        `$${tex(line, m.line)}$ — ${reasonLabel(m.bank, reason)}.`,
+        `$${tex(line, m.line)}$ — ${reasonLabel(m.bank, reason)}: ${MEANING[reason] ?? "this rule keeps the statement true"}.`,
     ),
     copy.check,
     "Other valid orders of steps are also correct: each line must follow from the line before it by the reason you name.",

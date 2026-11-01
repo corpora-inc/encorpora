@@ -110,7 +110,9 @@ function generateCase(
     e: Q,
     correct: string,
     candidates: string[];
-  const explanation: string[] = [];
+  const explanation: string[] = [
+    "The absolute value of a number, written with bars like $|a|$, is its distance from 0 on the number line. A distance is never negative, so |3| = 3 and |−3| = 3.",
+  ];
   if (kind === "constant-interior" || kind === "zero-factor") {
     if (kind === "constant-interior") a = 0;
     else k = 0;
@@ -180,19 +182,28 @@ function generateCase(
       const remaining = add(e, q(-d));
       explanation.push(
         `${d < 0 ? "Add" : "Subtract"} ${Math.abs(d)} ${d < 0 ? "to" : "from"} both sides: ${factor(k)}|${inner(a, b)}| = ${fmt(e)} ${d < 0 ? "+" : "−"} ${Math.abs(d)} = ${fmt(remaining)}.`,
-        `Divide both sides by ${fmt(q(k))}: |${inner(a, b)}| = ${operand(remaining)} ÷ ${operand(q(k))} = ${fmt(c)}.`,
+        ...(k === 1
+          ? []
+          : [
+              `Divide both sides by ${fmt(q(k))}: |${inner(a, b)}| = ${operand(remaining)} ÷ ${operand(q(k))} = ${fmt(c)}.`,
+            ]),
+      );
+      explanation.splice(
+        1,
+        0,
+        "First get the absolute value alone on one side, by undoing what is done to it. Only then split into cases.",
       );
     }
     if (c.n < 0)
       explanation.push(
-        `An absolute value is a distance from zero and cannot be negative. Therefore |${inner(a, b)}| = ${fmt(c)} has no real solutions.`,
+        `A distance cannot be negative, so no number has an absolute value of ${fmt(c)}. Therefore |${inner(a, b)}| = ${fmt(c)} has no real solutions.`,
       );
     else {
       const targets = c.n === 0 ? [q(0)] : [c, neg(c)];
       explanation.push(
         c.n === 0
           ? `Only 0 has distance 0 from zero, so ${inner(a, b)} = 0.`
-          : `The two numbers at distance ${fmt(c)} from zero are ${fmt(c)} and ${fmt(neg(c))}. Therefore ${inner(a, b)} = ${fmt(c)} or ${inner(a, b)} = ${fmt(neg(c))}.`,
+          : `Two numbers are ${fmt(c)} away from zero: ${fmt(c)} and ${fmt(neg(c))}, one on each side. So the inside, $${inner(a, b)}$, equals ${fmt(c)} or ${fmt(neg(c))}. Solve each case.`,
       );
       for (const target of targets) {
         const remaining = add(target, q(-b)),
@@ -277,7 +288,7 @@ function generateCase(
           .filter((v) => v.label !== correct)
           .map((v) => [
             v.id,
-            "Check the isolated distance and include every sign branch that is possible. Substitute each proposed value into the original equation; a complete solution set must include all solutions and no extra values.",
+            "This set misses a solution or includes a wrong one. Get the bars alone first: a negative value means no solutions, 0 means one, and a positive value means two, one for each sign.",
           ]),
       ),
     },

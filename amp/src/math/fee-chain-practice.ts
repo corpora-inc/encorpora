@@ -193,7 +193,8 @@ export const feePlan = chainFamily({
           `The flat fee covers the first ${m.allowance} hours, so the booking of ${m.booked} hours has $${m.booked}-${m.allowance}=${extra}$ extra hours.`,
           `The extra hours cost $${dollars(m.total)}-${dollars(m.flat)}=${dollars(m.total - m.flat)}$ dollars, so one extra hour costs $${dollars(m.total - m.flat)}\\div${extra}=${dollars(m.rate)}$ dollars.`,
           `A booking of ${m.next} hours has $${m.next}-${m.allowance}=${extraNext}$ extra hours, costing $${extraNext}\\times${dollars(m.rate)}=${dollars(m.rate * extraNext)}$ dollars.`,
-          `The total is $${dollars(m.flat)}+${dollars(m.rate * extraNext)}=${dollars(answerCents)}$ dollars.`,
+          `Add the flat fee, which every booking pays once: $${dollars(m.flat)}+${dollars(m.rate * extraNext)}=${dollars(answerCents)}$ dollars.`,
+          `A booking of ${m.next} hours costs ${dollars(answerCents)} dollars.`,
         ],
         label: "Answer (dollars)",
       });
@@ -208,7 +209,8 @@ export const feePlan = chainFamily({
         explanation: [
           `Harbor Bank: $${m.months}\\times${dollars(m.a[0])}+${m.a[2]}\\times${dollars(m.a[1])}=${dollars(m.months * m.a[0])}+${dollars(m.a[1] * m.a[2])}=${dollars(ta)}$ dollars.`,
           `Summit Bank: $${m.months}\\times${dollars(m.b[0])}+${m.b[2]}\\times${dollars(m.b[1])}=${dollars(m.months * m.b[0])}+${dollars(m.b[1] * m.b[2])}=${dollars(tb)}$ dollars.`,
-          `The difference is $${dollars(tb)}-${dollars(ta)}=${dollars(tb - ta)}$ dollars more at Summit Bank.`,
+          `Subtract to compare: $${dollars(tb)}-${dollars(ta)}=${dollars(tb - ta)}$.`,
+          `Summit Bank costs ${dollars(tb - ta)} dollar${tb - ta === 100 ? "" : "s"} more.`,
         ],
         label: "Answer (dollars)",
       });
@@ -222,7 +224,7 @@ export const feePlan = chainFamily({
       answer: time,
       hint: `Find how far it dropped first: ${tenths(m.start)} - ${tenths(m.end)}. Each ${c.unit} of drop takes ${m.per} ${c.time}.`,
       explanation: [
-        `The drop is $${tenths(m.start)}-${tenths(m.end)}=${tenths(drop)}$ ${c.units}.`,
+        `First find how much it changed: start minus end. The drop is $${tenths(m.start)}-${tenths(m.end)}=${tenths(drop)}$ ${c.units}.`,
         `Each ${c.unit} takes ${m.per} ${c.time}, so the time is $${tenths(drop)}\\times${m.per}=${time}$ ${c.time}.`,
         `${time} ${c.time} pass.`,
       ],
@@ -349,7 +351,8 @@ export const feeRule = chainFamily({
         explanation: [
           `The first ${h0} hours are covered by the flat fee, so the extra hours number $h-${h0}$.`,
           `The extra hours cost ${rate} dollars each: $${rate}(h-${h0})$.`,
-          `Add the flat fee: $C=${F}+${rate}(h-${h0})$${a["rule-form"] === "expanded" ? `, which expands to $C=${rate}h${signed(F - rate * h0)}$` : ""}.`,
+          `Add the flat fee, paid once: $C=${F}+${rate}(h-${h0})$${a["rule-form"] === "expanded" ? `, which expands to $C=${rate}h${signed(F - rate * h0)}$` : ""}.`,
+          `The rule only makes sense for bookings longer than ${h0} hours, where $h-${h0}$ is not negative.`,
         ],
       });
     const rateFound = rate;
@@ -499,7 +502,8 @@ export const feeBudget = chainFamily({
       explanation: [
         `Write the cost condition: $${m.fee}+${m.rate}x${sym}${budget}$.`,
         `Subtract ${m.fee} from both sides: $${m.rate}x${sym}${budget - m.fee}$.`,
-        `Divide both sides by ${m.rate}, which is positive so the symbol stays: $x${sym}${m.limit}$.`,
+        `Divide both sides by ${m.rate}. Dividing by a positive number keeps the inequality sign the same way: $x${sym}${m.limit}$.`,
+        `So the number of ${c.unit} must satisfy $x${sym}${m.limit}$.`,
       ],
     });
   },
