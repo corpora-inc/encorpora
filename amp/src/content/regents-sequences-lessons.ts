@@ -95,7 +95,7 @@ export const regentsSequenceMethods: Record<string, ProblemMethod> = {
     method: [
       "Divide a term by the term before it, later over earlier, to find the ratio $r$ with its sign.",
       "Term $n$ is $n - 1$ steps from term 1, so work out $a_1 r^{n-1}$.",
-      "Decide the sign first. A negative number, one less than 0, multiplied an odd number of times is negative. Multiplied an even number of times, it is positive.",
+      "Decide the sign of $r^{n-1}$ first. A negative number, one less than 0, to an odd power is negative, and to an even power is positive. Then multiply by $a_1$, which has its own sign.",
     ],
     watch:
       "The power is $n - 1$, not $n$. Keep a negative ratio in brackets when you raise it to a power: $(-2)^4 = 16$, but $-2^4 = -16$.",

@@ -201,7 +201,7 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
     method: [
       r`The vertex is halfway between the focus and the nearest point of the directrix. The number $p$ is the distance from the vertex to the focus: positive if the parabola opens up (or right), negative if it opens down (or left).`,
       r`Write $(x - h)^2 = 4p(y - k)$ for a parabola that opens up or down, or $(y - k)^2 = 4p(x - h)$ for one that opens sideways.`,
-      r`To read an equation, match it to the form. The vertex is $(h, k)$ and the number in front of the bracket is $4p$. The focus is $p$ from the vertex, and the directrix is $p$ on the other side.`,
+      r`To read an equation, match it to the form. The vertex is $(h, k)$ and the number in front of the bracket is $4p$. The focus is $|p|$ units from the vertex, in the direction the parabola opens, and the directrix is $|p|$ units away on the other side. Here $|p|$ means the size of $p$ without its sign.`,
     ],
     watch: r`The number in front of the bracket is $4p$, not $p$. The vertex is halfway between the focus and the directrix, not at the focus.`,
   },
@@ -623,7 +623,7 @@ export const complexConicsLessons: Lesson[] = [
     ...lesson({
       id: "parabola-focus-directrix",
       title: "Parabolas from focus and directrix",
-      summary: r`Pick a point and a line. Mark every spot that is exactly as far from the point as from the line. Those spots form a U-shaped curve called a parabola. The point is called the focus and the line is called the directrix. This lesson turns a focus and directrix into the parabola's equation, and back again.`,
+      summary: r`Pick a point and a line that does not pass through it. Mark every spot that is exactly as far from the point as from the line. Those spots form a U-shaped curve called a parabola. The point is called the focus and the line is called the directrix. This lesson turns a focus and directrix into the parabola's equation, and back again.`,
       objectives: [
         "Find the vertex, the number $p$ and the equation from a focus and a directrix.",
         "Find the focus and the directrix from an equation, including a parabola that opens sideways.",
@@ -651,7 +651,7 @@ export const complexConicsLessons: Lesson[] = [
         title: "Vertex, focal distance, equation",
         paragraphs: [
           r`From a focus and directrix: find the vertex first, then $p$ (positive if the focus is above the vertex), then write the equation.`,
-          r`From an equation: the vertex is $(h, k)$, and the number in front of the bracket is $4p$, so divide it by 4 to get $p$. The focus is $p$ from the vertex, and the directrix is $p$ away on the other side.`,
+          r`From an equation: the vertex is $(h, k)$, and the number in front of the bracket is $4p$, so divide it by 4 to get $p$. The focus is $|p|$ units from the vertex, in the direction the parabola opens, and the directrix is $|p|$ units away on the other side. Here $|p|$ means the size of $p$ without its sign.`,
           r`For $(y - k)^2 = 4p(x - h)$, the roles of $x$ and $y$ swap. The parabola opens sideways, and the focus is $(h + p, k)$.`,
         ],
       },

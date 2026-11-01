@@ -172,7 +172,7 @@ const sequenceFunctionLesson: Lesson = {
       paragraphs: [
         "To graph a sequence, plot the points $(n, a(n))$: the position goes across and the term goes up. For the example the points are $(1, 5)$, $(2, 8)$, $(3, 11)$, $(4, 14)$ and so on.",
         "Only counting numbers are inputs, so there are no points between them. Do not join the points with a line. A graph made of separate points like this is called a discrete graph.",
-        "In an arithmetic sequence, each step adds the same number, so the separate points lie along one straight line. In a geometric sequence, each step multiplies by the same number, called the ratio, so the points usually curve. Only multiplying by 1 gives points on a flat line.",
+        "In an arithmetic sequence, each step adds the same number, so the separate points lie along one straight line. In a geometric sequence, each step multiplies by the same number, called the ratio, so the points usually curve. Multiplying by 1, or starting at 0, gives points on a flat line.",
       ],
     },
     {
@@ -209,7 +209,7 @@ const geometricSenses = {
 const geometricRuleFormsMethod: ProblemMethod = {
   goal: "Write a geometric sequence's step-by-step rule and its direct formula, from a rule, a description or two terms in a row.",
   intuition:
-    "A sequence is a list of numbers in order, and each number is a term. In a geometric sequence, each term is the one before times the same number, called the common ratio $r$. We write $a_n$ for the term in position $n$, so $a_1$ is the first term. A recursive rule gives the first term and the step: $a_{n+1} = r a_n$ means the next term is $r$ times this one. An explicit rule, $a_n = a_1 r^{n-1}$, jumps straight to any position. Here $r^{n-1}$ means $n - 1$ copies of $r$ multiplied together, and $r^0 = 1$.",
+    "A sequence is a list of numbers in order, and each number is a term. In a geometric sequence, each term is the one before times the same number, called the common ratio $r$. We write $a_n$ for the term in position $n$, so $a_1$ is the first term. A recursive rule gives the first term and the step: $a_{n+1} = r a_n$ means the next term is $r$ times this one. An explicit rule, $a_n = a_1 r^{n-1}$, jumps straight to any position. Here $r^{n-1}$ means $n - 1$ copies of $r$ multiplied together, and $r^0 = 1$ when $r \\ne 0$.",
   terms: ["common-ratio", "recursive-rule", "explicit-rule"],
   senses: geometricSenses,
   noLink: [
@@ -539,7 +539,7 @@ const solveByCompletingSquareLesson: Lesson = {
       stage: "method",
       title: "Irrational solutions and other coefficients",
       paragraphs: [
-        "If the right side has no exact square root, as with 5, keep the $\\sqrt{\\ }$ sign. For $x^2 + 4x - 1 = 0$: add 1 to both sides, then add 4, to get $(x + 2)^2 = 5$. So $x + 2 = \\pm\\sqrt{5}$ and $x = -2 \\pm \\sqrt{5}$. Here $\\sqrt{5}$ is the positive number that times itself makes 5. These answers are exact. Writing $\\sqrt{5}$ as about 2.24 would not be.",
+        "If the right side is a number like 5, keep the $\\sqrt{\\ }$ sign, because no fraction equals $\\sqrt{5}$ exactly, and its digits after the point never end. For $x^2 + 4x - 1 = 0$: add 1 to both sides, then add 4, to get $(x + 2)^2 = 5$. So $x + 2 = \\pm\\sqrt{5}$ and $x = -2 \\pm \\sqrt{5}$. Here $\\sqrt{5}$ is the positive number that times itself makes 5. These answers are exact. Writing $\\sqrt{5}$ as about 2.24 would not be.",
         "If the number in front of $x^2$ is not 1, divide every term by it first. Dividing both sides by a number other than 0 keeps the same solutions, the values of $x$ that make the equation true. So $2x^2 + 12x + 10 = 0$ becomes $x^2 + 6x + 5 = 0$.",
         "When the number in front of $x$ is odd, half of it is a fraction. For $x^2 + 3x - 1 = 0$: move the 1, then add $\\left(\\tfrac{3}{2}\\right)^2 = \\tfrac{9}{4}$ to both sides. That gives $\\left(x + \\tfrac{3}{2}\\right)^2 = \\tfrac{13}{4}$, so $x = \\frac{-3 \\pm \\sqrt{13}}{2}$.",
       ],

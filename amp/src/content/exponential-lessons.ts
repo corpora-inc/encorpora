@@ -99,7 +99,7 @@ export const exponentialLessons: Lesson[] = [
         paragraphs: [
           "Percent means out of 100, so 20% is $\\frac{20}{100} = 0.2$. Growing by 20% keeps the whole amount (1) and adds 0.2 of it. So the growth factor is $1 + 0.2 = 1.2$.",
           "Losing 20% keeps $1 - 0.2 = 0.8$ of the amount, so the factor is 0.8. A half-life is the time it takes for an amount to halve, so each half-life multiplies by $\\frac{1}{2}$.",
-          "When the factor is more than 1, multiplying gives bigger and bigger jumps: 1, 2, 4, 8, 16, 32. So doubling soon passes any pattern that adds a fixed amount each step.",
+          "When the factor is more than 1 and the start is positive, multiplying gives bigger and bigger jumps: 1, 2, 4, 8, 16, 32. So doubling soon passes any pattern that adds a fixed amount each step.",
         ],
         illustration: "doubling-race-bars",
       },
@@ -467,7 +467,7 @@ export const exponentialLessons: Lesson[] = [
     ],
     pitfalls: [
       "Using the power $n$ instead of $n - 1$ goes one term too far.",
-      "Adding the common ratio each time does not make a geometric sequence. You must multiply.",
+      "Each step multiplies by the common ratio. Adding it instead gives a different list.",
     ],
     parentGuide:
       "Write each term with its position underneath. Draw an arrow marked “times 2” between neighbouring terms, and count the arrows to see why term 5 needs only four of them.",

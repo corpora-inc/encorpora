@@ -631,7 +631,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   "structure-meaning": {
     goal: "Say what a number in a formula means in its real situation: a starting value, a rate or a growth factor.",
     intuition:
-      "A formula connects a starting value, called the input, to a result, called the output. For example, hours $h$ can give a cost $C$. In $C = 40 + 15h$, putting $h = 0$ leaves $C = 40$: a fixed amount you pay at the start. Each extra hour adds 15, so 15 is the rate, the change for each 1 added to the input. In $P = 2400(1.05)^t$, the raised $t$ means 1.05 is multiplied $t$ times. So each step multiplies by 1.05, called the growth factor. A variable is a letter that stands for a number. A coefficient is the number multiplying a variable in a term (one part of the formula).",
+      "A formula turns a number you choose, called the input, into a result, called the output. For example, hours $h$ can give a cost $C$. In $C = 40 + 15h$, putting $h = 0$ leaves $C = 40$: a fixed amount you pay at the start. Each extra hour adds 15, so 15 is the rate, the change for each 1 added to the input. In $P = 2400(1.05)^t$, the raised $t$ means 1.05 is multiplied $t$ times. So each step multiplies by 1.05, called the growth factor. A variable is a letter that stands for a number. A coefficient is the number multiplying a variable in a term (one part of the formula).",
     terms: ["coefficient", "constant"],
     senses: structureSenses,
     noLink: [
@@ -678,7 +678,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Set the input to 0. What is left is the starting value.",
-      "Increase the input by 1. What is added each time is the rate, and what it is multiplied by each time is the growth factor.",
+      "Increase the input by 1. If the same amount is added each time, that amount is the rate. If it is multiplied by the same number each time, that number is the growth factor.",
       "Match those meanings to the numbers in the formula, with their units.",
     ],
     watch:

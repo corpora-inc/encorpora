@@ -146,7 +146,7 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
     method: [
       "Take out any shared factor first. Then count terms. Two terms suggest cubes or a difference of squares. Four terms suggest grouping. Only $x^4$, $x^2$ and a number suggest writing $u = x^2$.",
       "Use the pattern: $u^3 + v^3 = (u + v)(u^2 - uv + v^2)$ and $u^3 - v^3 = (u - v)(u^2 + uv + v^2)$. Or group in pairs, or factor the quadratic in $u$ and put $x^2$ back.",
-      "Test every factor again. A difference of squares $x^2 - c^2$ splits further. A sum $x^2 + c$ with $c > 0$ does not, and neither does the three-term bracket from a cube pattern.",
+      "Test every factor again. A difference of squares $x^2 - c^2$ splits further. A sum $x^2 + c$ with $c > 0$ does not, and the three-term bracket from a cube pattern in $x$, like $x^2 - 2x + 4$, does not either.",
     ],
     watch:
       "Stopping at $(x^2 - 4)(x^2 - 9)$ is not complete, because each bracket is a difference of squares. In a cube pattern, the middle term is $uv$, not $2uv$, with the opposite sign.",
@@ -168,12 +168,12 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
     senses: amgSenses,
     noLink: amgNoLink,
     method: [
-      "For a residual plot, read from left to right. Random scatter means keep the model. Positive, then negative, then positive means the data bend upward away from the line. Negative, positive, negative means they bend downward.",
+      "For a residual plot, read from left to right. Random scatter close to 0 means the model type fits. Positive, then negative, then positive means the data bend upward away from the line. Negative, positive, negative means they bend downward.",
       "For a table with equally spaced inputs, find the differences between neighbouring values, then the differences of those, called second differences, then the ratios (one value divided by the one before). Equal first differences mean linear, equal second differences (not 0) mean quadratic, and equal positive ratios mean exponential.",
       "For a residual, work out the model's prediction at the input, then subtract: observed minus predicted. Negative means the model predicted too high. Positive means it predicted too low.",
     ],
     watch:
-      "Residuals of both signs are normal. The shape of the pattern, not the signs, shows whether the model type is wrong. Always subtract observed minus predicted.",
+      "Residuals of both signs are normal. The shape of the pattern, not the signs, is the clue that the model type may be wrong. Always subtract observed minus predicted.",
   },
   "function-graph-features": {
     goal: "Read the intercept, asymptote, domain, range or end behavior of an exponential or logarithmic function from its equation or graph.",
@@ -198,7 +198,7 @@ export const advancedMathGapPrinciples: Record<string, string> = {
   "polynomial-factoring-patterns":
     "$u^3 + v^3 = (u + v)(u^2 - uv + v^2)$ and $u^3 - v^3 = (u - v)(u^2 + uv + v^2)$. If two pairs of terms share a bracket, it factors out. $x^4 + bx^2 + c$ equals $u^2 + bu + c$ with $u = x^2$. Using integers, $x^2 - c^2$ factors and $x^2 + c$ with $c > 0$ does not.",
   "residual-function-fit":
-    "For a model $\\hat{y} = f(x)$ and a data point $(x, y)$, the residual is $y - f(x)$, observed minus predicted. Equally spaced exact data are linear when first differences are equal, quadratic when second differences are equal and not 0, and exponential when neighbouring ratios are equal. A pattern in the residuals shows the model type misses something in the data.",
+    "For a model $\\hat{y} = f(x)$ and a data point $(x, y)$, the residual is $y - f(x)$, observed minus predicted. Equally spaced exact data are linear when first differences are equal, quadratic when second differences are equal and not 0, and exponential when neighbouring ratios are equal and positive, not 1. A pattern in the residuals shows the model type misses something in the data.",
   "function-graph-features":
     "For $f(x)=a\\,b^x+k$ with $a\\ne0$, $b>0$, $b\\ne1$, the line $y=k$ is a horizontal asymptote and the range is $y>k$ if $a>0$, $y<k$ if $a<0$. For $g(x)=a\\log_b(x-h)+k$, the domain is $x>h$ and $x=h$ is a vertical asymptote.",
 };
@@ -245,7 +245,7 @@ export const advancedMathGapLessons: Lesson[] = [
         paragraphs: [
           "To turn the recursive rule $a_1 = A$, $a_{n+1} = a_n + d$ into an explicit rule, count $n - 1$ steps: $a_n = A + (n - 1)d$, which is $dn + (A - d)$. Check that $n = 1$ gives $A$. To go back, put $n = 1$ to find $a_1$, and read $d$ as the number multiplying $n$.",
           "From a table with two terms $a_i$ and $a_j$ (terms in positions $i$ and $j$), the common difference is the change in value divided by the number of steps: $d = \\frac{a_j - a_i}{j - i}$.",
-          "Some step rules are not arithmetic, such as $a_{n+1} = 2a_n - 1$. It doubles and then subtracts, so the steps are not equal, and the arithmetic formulas do not apply. Work it one term at a time.",
+          "Some step rules are not arithmetic, such as $a_{n+1} = 2a_n - 1$ starting at $a_1 = 2$: 2, 3, 5, 9. The steps are not equal, so the arithmetic formulas do not apply. Work it one term at a time.",
         ],
       },
       {
@@ -284,7 +284,7 @@ export const advancedMathGapLessons: Lesson[] = [
         title: "Interest on interest",
         paragraphs: [
           "Percent means out of 100, so 5% is 0.05. A balance that earns 5% a year keeps the whole amount (1) and adds 0.05 of it. So each year multiplies it by 1.05. The number a balance is multiplied by each period is called the growth factor.",
-          "Now share the 5% across 12 months. Each month earns $\\frac{5\\%}{12}$, about 0.4167%. That month's interest is added before the next month's is worked out, so later months earn interest on a slightly bigger balance. The monthly plan ends the year with a little more. Adding interest this way is called compounding, and each month is a compounding period.",
+          "Now take a different plan: 5% a year shared across 12 months. Each month earns $\\frac{5\\%}{12}$, about 0.4167%. That month's interest is added before the next month's is worked out, so later months earn interest on a slightly bigger balance. The monthly plan ends the year with a little more. Adding interest this way is called compounding, and each month is a compounding period.",
           "If interest is added $n$ times a year at a yearly rate $r$ (as a decimal), each period multiplies by $1 + \\frac{r}{n}$. Over $t$ years there are $nt$ periods. So a starting amount $P$ grows to $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$, where the raised $nt$ means multiply that many times.",
           "Compounding more often gives more money, but each extra step gains less. Compounding more and more often, without end, is called continuous compounding. Its formula uses a special number $e$, about 2.718: $A = Pe^{rt}$.",
         ],
@@ -350,7 +350,7 @@ export const advancedMathGapLessons: Lesson[] = [
           "A cube is something multiplied by itself three times: $8x^3 = 2x \\times 2x \\times 2x = (2x)^3$. A sum of two cubes, $u^3 + v^3$, and a difference, $u^3 - v^3$, each factor into a two-term bracket times a three-term bracket.",
           "The parts of an expression joined by $+$ or $-$ are called terms. An expression with four terms can often be split into two pairs that share the same bracket. Then that bracket can be taken out.",
           "An expression with only $x^4$, $x^2$ and a number is a quadratic in disguise. Since $x^4 = (x^2)^2$, writing $u = x^2$ turns it into an ordinary quadratic in $u$.",
-          "Factoring is complete when no factor can be split again into smaller factors with whole-number coefficients (the numbers multiplying the powers of $x$).",
+          "Integers are 0, 1, 2, 3, … and their negatives. Factoring is complete when no factor can be split again into smaller factors whose coefficients, the numbers in front of each part, are integers.",
         ],
       },
     ],

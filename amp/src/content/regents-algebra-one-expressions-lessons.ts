@@ -104,7 +104,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
     "combine-unlike-radicals": {
       goal: "Simplify a square root so it matches another one, add the matching roots, and keep the different one separate.",
       intuition:
-        "A square root of a number is a number that times itself gives it, so $\\sqrt{9} = 3$. The $\\sqrt{\\ }$ symbol is called the root sign, and the number under it is called the radicand. Square roots with the same radicand add like objects: $3\\sqrt{5} + 2\\sqrt{5} = 5\\sqrt{5}$, just as 3 fives plus 2 fives is 5 fives. Roots with different radicands, like $\\sqrt{5}$ and $\\sqrt{3}$, stay separate. A root like $\\sqrt{45}$ can hide a matching one: $\\sqrt{45} = \\sqrt{9 \\times 5} = 3\\sqrt{5}$.",
+        "A square root of a number is a number that times itself gives it, so $\\sqrt{9} = 3$. The $\\sqrt{\\ }$ symbol is called the root sign, and the number under it is called the radicand. Square roots with the same radicand add like objects: $3\\sqrt{5} + 2\\sqrt{5} = 5\\sqrt{5}$, just as 3 fives plus 2 fives is 5 fives. After simplifying, roots with different radicands, like $\\sqrt{5}$ and $\\sqrt{3}$, stay separate. A root like $\\sqrt{45}$ can hide a matching one: $\\sqrt{45} = \\sqrt{9 \\times 5} = 3\\sqrt{5}$.",
       terms: ["radicand", "like-radicals"],
       senses: r1Senses,
       noLink: r1NoLink,
@@ -154,7 +154,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
       senses: r1Senses,
       noLink: r1NoLink,
       method: [
-        "Find the largest exponent on $x$ anywhere. That is the degree.",
+        "Combine like terms first. Then find the largest exponent on $x$. That is the degree.",
         "Read the coefficient of that term, with its sign. That is the leading coefficient.",
         "Find the term with no $x$, and read it with its sign. That is the constant term.",
       ],
@@ -242,7 +242,7 @@ export const regentsAlgebraOneExpressionLessons = [
         "An expression is a calculation written with numbers and letters, and a term is one part of it joined to others by $+$ or $-$. A single term such as $-2x^2$ is called a monomial. Its number, $-2$, is called its coefficient. The small raised number is an exponent, and it counts repeated multiplying: $x^2 = x \\times x$.",
         "A product is the result of multiplying. A power of a product goes to every factor (every part being multiplied): $(-2x^2)^3 = (-2)^3 \\times (x^2)^3$. The minus sign belongs to the coefficient, so it is raised too. Three negatives multiplied make a negative, so $(-2)^3 = -8$.",
         "A power of a power multiplies the exponents: $(x^2)^3 = x^2 \\times x^2 \\times x^2 = x^6$, which is $x^{2 \\times 3}$.",
-        "A square root of a number is a number that times itself gives it: $\\sqrt{9} = 3$. The $\\sqrt{\\ }$ symbol is called the root sign, and the number under it is called the radicand. Roots with the same radicand are called like radicals, and they add like objects: $3\\sqrt{5} + 2\\sqrt{5} = 5\\sqrt{5}$. Roots with different radicands, like $\\sqrt{5} + \\sqrt{3}$, stay as they are.",
+        "A square root of a number is a number that times itself gives it: $\\sqrt{9} = 3$. The $\\sqrt{\\ }$ symbol is called the root sign, and the number under it is called the radicand. Roots with the same radicand are called like radicals, and they add like objects: $3\\sqrt{5} + 2\\sqrt{5} = 5\\sqrt{5}$. After simplifying, roots with different radicands, like $\\sqrt{5} + \\sqrt{3}$, stay as they are.",
         "A root can hide a like radical. Since $45 = 9 \\times 5$ and $\\sqrt{9} = 3$, $\\sqrt{45} = 3\\sqrt{5}$.",
       ],
       example: {
@@ -359,7 +359,7 @@ export const regentsAlgebraOneExpressionLessons = [
       },
       methodTitle: "Highest exponent first",
       method: [
-        "Look at every exponent and find the largest.",
+        "Combine any like terms, then look at every exponent and find the largest.",
         "Read that term's coefficient, with its sign.",
         "Find the term with no variable, with its sign.",
       ],

@@ -129,7 +129,10 @@ export const regentsAlgebraTwoExponentialMethods: Record<
       "A growth factor is the number an amount is multiplied by in each time step. If a value is multiplied by 1.06 each year, twelve equal monthly steps must multiply together to make 1.06. So each month multiplies by $1.06^{1/12}$, the number that, multiplied by itself 12 times, gives 1.06. That number is called the twelfth root of 1.06. A half-life is the time it takes an amount to halve. After time $t$, an amount with half-life $h$ has halved $\\frac{t}{h}$ times.",
     terms: [
       "half-life",
-      ["growth-factor", "Here the time period is one month."],
+      [
+        "growth-factor",
+        "It can be for a year or for a month; match it to the time unit in the exponent.",
+      ],
     ],
     senses: r2eSenses,
     noLink: [

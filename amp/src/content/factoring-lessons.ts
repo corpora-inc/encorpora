@@ -287,7 +287,7 @@ export const factoringLessons: Lesson[] = [
           "Equal factors make a perfect square: $4x^2 + 12x + 9 = (2x + 3)^2$. Check the middle: $2x \\times 3 + 3 \\times 2x = 6x + 6x = 12x$.",
           "Factors that differ only in the sign between their terms make a difference of squares: $4x^2 - 9 = (2x - 3)(2x + 3)$. The middle products $-6x$ and $6x$ cancel.",
           "A negative outside number stays outside the square: $-x^2 + 4x - 4 = -(x^2 - 4x + 4) = -(x - 2)^2$. The minus sign multiplies the whole square by $-1$.",
-          "When a quadratic can be split this way, factoring is complete when the outside number is kept and each bracket is linear (has no $x^2$) with numbers that share only 1. Multiply everything back together to check every sign and coefficient.",
+          "When a quadratic can be split this way, factoring is complete when the outside number is kept and each bracket is linear (like $3x + 1$, with no power of $x$ above 1) with numbers that share only 1. Multiply everything back together to check every sign and coefficient.",
         ],
       },
     ],

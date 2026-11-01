@@ -106,7 +106,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
       "If the equations describe one line, the expression may be the left side times a number. Then multiply the right side by the same number, even though $x$ and $y$ are not fixed.",
     ],
     watch:
-      "Multiply the right side by the same number as the left side, and use each multiplier on its own equation only. Adding the right sides without the multipliers gives a wrong value unless both multipliers are 1.",
+      "Multiply the right side by the same number as the left side, and use each multiplier on its own equation only. Multiply each right side by its own multiplier before adding.",
   },
   "variation-constant": {
     goal: "For direct or inverse variation, find the constant, predict a value, pick the matching equation or table, or find a change.",
@@ -134,7 +134,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
   "rate-combination-model": {
     goal: "Combine steady rates: shared work, filling while draining, mixing solutions, average speed over equal distances, or a rate that changes.",
     intuition:
-      "A rate is an amount per unit of time. A painter who finishes a fence in 4 hours paints $\\frac{1}{4}$ of it each hour. Rates working together add, and a rate working against another subtracts. Times and speeds do not add or average like that, so change them into rates or totals first. The concentration of a mixture is the amount of pure substance divided by the total amount.",
+      "A rate is an amount per unit of time. A painter who finishes a fence in 4 hours paints $\\frac{1}{4}$ of it each hour. Rates working together add, and a rate working against another subtracts. Times for sharing one job do not combine like that, so change them into rates or totals first. The concentration of a mixture is the amount of pure substance divided by the total amount.",
     terms: ["rate", "concentration", "average-speed"],
     senses: satSenses,
     noLink: satNoLink,
@@ -161,12 +161,12 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
       "To go from a number line to $|x - m|$, use the middle point as $m$ and its distance to either endpoint as the radius.",
     ],
     watch:
-      "Check the sign of $c$ first. If $c < 0$, $|E| < c$ has no solutions and $|E| > c$ is true for every number. For $|E| > c$, “or” joins the two outer pieces. It does not mean the numbers between them.",
+      "Check the sign of $c$ first. If $c < 0$, $|E| < c$ has no solutions and $|E| > c$ is true for every number. For $|E| > c$ with $c > 0$, “or” joins the two outer pieces. It does not mean the numbers between them.",
   },
   "quadratic-from-data": {
     goal: "Choose the quadratic equation fixed by two zeros and a point, a vertex and a point, an evenly spaced table, or three points.",
     intuition:
-      "A rule like $y = ax^2 + bx + c$, with $a \\ne 0$, is called a quadratic. It has three unknown numbers, so it takes three separate facts to fix it. Its graph is a U-shaped curve called a parabola. A zero is an $x$-value where $y = 0$. Two zeros $p$ and $q$ give the form $y = a(x - p)(x - q)$. The vertex is the turning point; a vertex $(h, k)$ gives $y = a(x - h)^2 + k$. One more point, other than the zeros or the vertex, then fixes $a$, which sets how steep and which way up the curve is.",
+      "A rule like $y = ax^2 + bx + c$, with $a \\ne 0$, is called a quadratic. It has three unknown numbers, so it usually takes three facts that fit together to fix it. Its graph is a U-shaped curve called a parabola. A zero is an $x$-value where $y = 0$. Two zeros $p$ and $q$ give the form $y = a(x - p)(x - q)$. The vertex is the turning point; a vertex $(h, k)$ gives $y = a(x - h)^2 + k$. One more point, other than the zeros or the vertex, then fixes $a$, which sets how steep and which way up the curve is.",
     terms: ["zero-of-a-function", "vertex-parabola", "second-difference"],
     senses: satSenses,
     noLink: satNoLink,
@@ -201,7 +201,7 @@ export const satAlgebraStructureLessons: Lesson[] = [
     id: "quadratic-root-relations",
     title: "Solutions of a quadratic from its coefficients",
     summary:
-      "The values of $x$ that make an equation true are called its solutions. The equation $x^2 - 5x + 6 = 0$ has solutions 2 and 3. Their sum is 5 and their product (the result of multiplying) is 6. The sum is the opposite of the $-5$ in front of $x$, and the product is the 6 at the end. When the number in front of $x^2$ is 1, that always happens. With other numbers you divide by it first, so you can still find the sum and product without solving.",
+      "The values of $x$ that make an equation true are called its solutions. The equation $x^2 - 5x + 6 = 0$ has solutions 2 and 3. Their sum is 5 and their product (the result of multiplying) is 6. The sum is the opposite of the $-5$ in front of $x$, and the product is the 6 at the end. When the number in front of $x^2$ is 1 and the solutions are on the number line, that always happens (a repeated solution counts twice). With other numbers you divide by it first, so you can still find the sum and product without solving.",
     templateIds: ["quadratic-root-relations"],
     senses: satSenses,
     noLink: satNoLink,
@@ -406,8 +406,8 @@ export const satAlgebraStructureLessons: Lesson[] = [
         paragraphs: [
           "A rate is an amount per unit of time. A worker who finishes a job in 4 hours does $\\frac{1}{4}$ of the job each hour. A second worker who takes 6 hours does $\\frac{1}{6}$ of it each hour.",
           "Working together, they each do their share in the same hour, so their rates add. The time for the whole job is then 1 divided by the combined rate.",
-          "Times do not add or average. Together the workers must be faster than either one alone, so the answer is less than 4 hours, not 5 or 10.",
-          "The same idea works for mixtures. The concentration of a salt solution is the amount of salt divided by the total amount. To mix two solutions, add their amounts of salt. Do not add or average the two concentrations.",
+          "For two workers sharing one job, their times do not simply add or average. Together the workers must be faster than either one alone, so the answer is less than 4 hours, not 5 or 10.",
+          "The same idea works for mixtures. The concentration of a salt solution is the amount of salt divided by the total amount. To mix two solutions, add their amounts of salt. Do not simply add or average the two concentrations unless the amounts are equal.",
         ],
       },
     ],
@@ -473,7 +473,7 @@ export const satAlgebraStructureLessons: Lesson[] = [
           "The absolute value $|E|$ is how far $E$ is from 0 on the number line, so it is never negative. The sign $<$ means less than, and $>$ means greater than. A statement that uses one of these signs is called an inequality.",
           "So $|E| < 7$ says $E$ is less than 7 away from 0: $E$ is between $-7$ and $7$. We write that as the chain $-7 < E < 7$. And $|E| > 7$ says $E$ is more than 7 away: $E$ is below $-7$ or above $7$.",
           "A compound inequality joins two conditions. A chain such as $2 < 3x + 1 < 10$ means both conditions are true at once, so it describes the overlap. “$x < -1$ or $x > 4$” means at least one is true, so it describes both outer pieces.",
-          "To solve an inequality, do the same thing to every part, as with an equation. There is one extra rule: multiplying or dividing by a negative number flips the inequality sign. For example, $2 < 3$ but $-2 > -3$.",
+          "To solve an inequality means to find every number that makes it true. As with an equation, you may add or subtract the same number on every part, or multiply or divide every part by the same number other than 0. There is one extra rule: multiplying or dividing by a negative number flips the inequality sign. For example, $2 < 3$ but $-2 > -3$.",
         ],
       },
     ],
@@ -508,7 +508,7 @@ export const satAlgebraStructureLessons: Lesson[] = [
       },
     ],
     pitfalls: [
-      "For $|E| > c$, the answer is the two outer pieces joined by “or”, not the numbers between them. For $|E| < c$, it is the numbers between.",
+      "For $|E| > c$ with $c > 0$, the answer is the two outer pieces joined by “or”, not the numbers between them. For $|E| < c$, it is the numbers between.",
       "Flip the sign when you multiply or divide by a negative number.",
       "Check the sign of the right side before solving.",
     ],
@@ -519,7 +519,7 @@ export const satAlgebraStructureLessons: Lesson[] = [
     id: "quadratic-from-data",
     title: "Write a quadratic from given facts",
     summary:
-      "The graph of a rule with an $x^2$ part is a U-shaped curve called a parabola. Its equation has three unknown numbers, so it takes three separate facts to fix it. For example, knowing where it crosses the $x$-axis gives the equation's shape. One more point, not on the $x$-axis, then fixes how steep the curve is and which way up it opens.",
+      "The graph of a rule with an $x^2$ part is a U-shaped curve called a parabola. Its equation has three unknown numbers, so it usually takes three facts that fit together to fix it. For example, knowing where it crosses the $x$-axis gives the equation's shape. One more point, not on the $x$-axis, then fixes how steep the curve is and which way up it opens.",
     templateIds: ["quadratic-from-data"],
     senses: satSenses,
     noLink: satNoLink,

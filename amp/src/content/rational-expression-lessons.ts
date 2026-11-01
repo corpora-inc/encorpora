@@ -72,7 +72,7 @@ export const rationalExpressionMethods: Record<string, ProblemMethod> = {
   "rational-expression-domain": {
     goal: "Find every value of $x$ that makes the bottom of the fraction equal to 0. Those inputs are not allowed.",
     intuition:
-      "An expression is a calculation written with numbers and letters. A rational expression is a fraction with a polynomial (a sum of parts like $x^2$, $5x$ and 6) on top and on the bottom, like $\\frac{x - 3}{(x - 2)(x - 4)}$. The top is the numerator and the bottom is the denominator. Dividing by 0 has no answer. A value put in for $x$ is called an input, and an input that makes the denominator 0 is not allowed. The allowed inputs are called the domain. The parts being multiplied in the denominator are its factors. A product, the result of multiplying, is 0 when any one of its factors is 0, so each factor with $x$ in it gives an excluded input.",
+      "An expression is a calculation written with numbers and letters. A rational expression is a fraction with a polynomial (a sum of parts like $x^2$, $5x$ and 6) on top and on the bottom, like $\\frac{x - 3}{(x - 2)(x - 4)}$. The top is the numerator and the bottom is the denominator. Dividing by 0 has no answer. A value put in for $x$ is called an input, and an input that makes the denominator 0 is not allowed. The allowed inputs are called the domain. The parts being multiplied in the denominator are its factors. A product, the result of multiplying, is 0 when any one of its factors is 0, so each factor that can be 0, like $x - 2$, gives an excluded input.",
     terms,
     senses,
     noLink,
@@ -165,7 +165,7 @@ export const rationalExpressionLessons: Lesson[] = [
     pitfalls: [
       "Find the excluded inputs from the original bottom before cancelling anything.",
       "Cancel factors that are multiplied. Never cross out terms, the parts being added together.",
-      "A cancelled factor with $x$ in it, like $x - 2$, still gives an excluded input.",
+      "A cancelled factor like $x - 2$, which is 0 for some input, still gives an excluded input.",
     ],
     parentGuide:
       "Ask which inputs make the original bottom 0, and why the simplified fraction can sometimes accept more inputs. Have the learner try the cancelled input, $x = 2$, in both forms.",

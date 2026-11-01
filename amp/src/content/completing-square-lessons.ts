@@ -8,7 +8,7 @@ const foundations: Lesson["sections"] = [
       "A variable is a letter, like $x$, that stands for a number. An expression is a calculation written with numbers and variables, like $x^2 + 6x + 5$. It does not have an equals sign, so there is nothing to solve. We only rewrite it.",
       "In $x^2 + 6x + 5$, the small raised 2 means $x$ times $x$, read “$x$ squared”. Writing $6x$ means 6 times $x$. The parts joined by $+$ or $-$ signs are called terms, so the terms are $x^2$, $6x$ and $5$.",
       "The number that multiplies a term's variable is called its coefficient. Here 1 multiplies $x^2$ and 6 multiplies $x$. The term 5 has no variable. A constant is a fixed number like this, so 5 is called the constant term. A missing term has coefficient 0.",
-      "An expression with an $x^2$ term and no higher power, like $x^3$, is called a quadratic. We write it as $ax^2 + bx + c$, where $a$, $b$ and $c$ are fixed numbers and $a \\ne 0$ ($\\ne$ means is not equal to). The number $a$ in front of $x^2$ is called the leading coefficient. When $a = 1$, the quadratic is called monic.",
+      "An expression of the form $ax^2 + bx + c$ is called a quadratic. Its highest power is $x^2$, so it has nothing like $x^3$. Here $a$, $b$ and $c$ are fixed numbers and $a \\ne 0$ ($\\ne$ means is not equal to). The number $a$ in front of $x^2$ is called the leading coefficient. When $a = 1$, the quadratic is called monic.",
       "A binomial is an expression with two terms, like $x + 3$. Squaring a binomial means multiplying the whole binomial by itself: $(x + 3)^2 = (x + 3)(x + 3)$. Two brackets written next to each other are multiplied.",
     ],
   },
@@ -241,7 +241,7 @@ export const completingSquareLessons: Lesson[] = [
       steps: [
         "Take $-2$ out of the two terms with $x$. Dividing each by $-2$ gives $x^2$ and $-3x$: $-2x^2 + 6x + 1 = -2(x^2 - 3x) + 1$.",
         "Halve the coefficient inside the bracket: half of $-3$ is $h = -\\frac{3}{2}$. Its square is $h^2 = \\frac{9}{4}$.",
-        "Add and subtract $\\frac{9}{4}$ inside the bracket, which adds 0: $-2\\left(x^2 - 3x + \\frac{9}{4} - \\frac{9}{4}\\right) + 1$. The first three terms inside form the square $\\left(x - \\frac{3}{2}\\right)^2$.",
+        "Add and subtract $\\frac{9}{4}$ inside the bracket, which adds 0. Inside, that gives $x^2 - 3x + \\frac{9}{4} - \\frac{9}{4}$. The first three terms form the square $\\left(x - \\frac{3}{2}\\right)^2$.",
         "Move the $-\\frac{9}{4}$ out of the bracket. It is multiplied by $-2$ on the way: $-2 \\times \\left(-\\frac{9}{4}\\right) = \\frac{9}{2}$. So the expression is $-2\\left(x - \\frac{3}{2}\\right)^2 + \\frac{9}{2} + 1 = -2\\left(x - \\frac{3}{2}\\right)^2 + \\frac{11}{2}$.",
         "Check by multiplying out. The $x$ term is $-2 \\times 2 \\times \\left(-\\frac{3}{2}\\right) = 6$, so $6x$. The constant is $-2 \\times \\frac{9}{4} + \\frac{11}{2} = -\\frac{9}{2} + \\frac{11}{2} = 1$. The $x^2$ coefficient is still $-2$.",
       ],
