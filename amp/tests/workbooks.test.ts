@@ -7,6 +7,11 @@ import {
   type Repository,
 } from "../src/server/repository.js";
 import type { WorkbookRecord } from "../src/workbook/contracts.js";
+import type { WorkbookPdfKey } from "../src/server/repository.js";
+import {
+  RendererUnavailable,
+  type WorkbookRenderer,
+} from "../src/workbook/pdf.js";
 import { composableDate } from "../src/workbook/routes.js";
 import { sampleLearners, simulateLearner } from "../src/workbook/synthetic.js";
 
@@ -21,6 +26,9 @@ function memoryRepository(
   options: { access?: boolean; learner?: typeof third } = {},
 ) {
   const rows: (WorkbookRecord & { learnerId: string })[] = [];
+  const pdfs = new Map<string, Buffer>();
+  const pdfKey = (k: WorkbookPdfKey) =>
+    `${k.workbookId}:${k.format}:${k.documentSha256}`;
   const simulated = simulateLearner(options.learner ?? third, Date.now());
   const repository = {
     hasConsent: async () => true,
@@ -72,22 +80,40 @@ function memoryRepository(
         ) => {
           mine().find((r) => r.id === workbookId)!.paper = paper;
         },
+        workbookPdf: async (key: WorkbookPdfKey) => pdfs.get(pdfKey(key)),
+        saveWorkbookPdf: async (key: WorkbookPdfKey, pdf: Buffer) => {
+          pdfs.set(pdfKey(key), pdf);
+        },
       } as unknown as LearnerTransaction;
       return run(tx);
     },
   } as unknown as Repository;
-  return { repository, rows };
+  return { repository, rows, pdfs };
+}
+/** Records each document it is asked to print. */
+function fakeRenderer(fail = false) {
+  const calls: { html: string; format: string; footer?: string }[] = [];
+  const renderer: WorkbookRenderer = {
+    async render(input) {
+      calls.push(input);
+      if (fail) throw new RendererUnavailable("Render service unreachable");
+      return Buffer.from(`%PDF-1.7 ${input.format} ${calls.length}`);
+    },
+  };
+  return { renderer, calls };
 }
 function app(
   repository: Repository,
   development = true,
   authenticate = async (request: { headers: Record<string, unknown> }) =>
     String(request.headers.authorization ?? "").replace(/^Bearer /, ""),
+  workbookRenderer: WorkbookRenderer | null = fakeRenderer().renderer,
 ) {
   return buildApp({
     repository,
     development,
     authenticate: authenticate as never,
+    workbookRenderer,
   });
 }
 const headers = { authorization: "Bearer parent" };
@@ -268,8 +294,12 @@ test("workbooks require the learner's parent, a license and a full account", asy
   assert.equal(trial.statusCode, 403);
 });
 
-test("the printable document reprints the stored workbook", async () => {
-  const server = app(memoryRepository().repository);
+test("the PDF is rendered once per paper size from the stored workbook, then served from the cache", async () => {
+  const { repository, pdfs } = memoryRepository();
+  const { renderer, calls } = fakeRenderer();
+  const auth = async (request: { headers: Record<string, unknown> }) =>
+    String(request.headers.authorization ?? "").replace(/^Bearer /, "");
+  const server = app(repository, true, auth, renderer);
   const made = (
     await server.inject({
       method: "POST",
@@ -278,28 +308,85 @@ test("the printable document reprints the stored workbook", async () => {
       payload: { date: today, minutes: 30, paper: "a4" },
     })
   ).json();
-  const document = await server.inject({
-    url: `${url}/${made.id}/document`,
-    headers,
-  });
-  assert.equal(document.statusCode, 200);
-  assert.match(document.headers["content-type"] as string, /text\/html/);
+  const pdf = await server.inject({ url: `${url}/${made.id}/pdf`, headers });
+  assert.equal(pdf.statusCode, 200);
+  assert.equal(pdf.headers["content-type"], "application/pdf");
   assert.match(
-    document.headers["content-disposition"] as string,
-    new RegExp(`amp-workbook-${today}-1\\.html`),
+    pdf.headers["content-disposition"] as string,
+    new RegExp(`amp-workbook-${today}-1-A4\\.pdf`),
   );
-  assert.ok(document.body.includes(made.code));
-  assert.ok(document.body.includes("size:A4"));
+  assert.equal(pdf.body, "%PDF-1.7 A4 1");
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0]!.format, "A4");
+  assert.ok(calls[0]!.html.includes("size:A4"));
+  assert.ok(calls[0]!.html.includes(made.code));
+  assert.ok(calls[0]!.html.includes("Sample learner"));
+  assert.ok(calls[0]!.footer?.includes(made.code));
+  // Cached: the same document is not rendered again.
+  const again = await server.inject({ url: `${url}/${made.id}/pdf`, headers });
+  assert.equal(again.body, "%PDF-1.7 A4 1");
+  assert.equal(calls.length, 1);
   const letter = await server.inject({
-    url: `${url}/${made.id}/document?paper=letter`,
+    url: `${url}/${made.id}/pdf?format=Letter`,
     headers,
   });
-  assert.ok(letter.body.includes("size:letter"));
-  const missing = await server.inject({
-    url: `${url}/${other}/document`,
-    headers,
-  });
+  assert.equal(letter.body, "%PDF-1.7 Letter 2");
+  assert.ok(calls[1]!.html.includes("size:letter"));
+  assert.equal(pdfs.size, 2);
+  for (const bad of ["format=letter", "format=Legal", "paper=a4"]) {
+    const response = await server.inject({
+      url: `${url}/${made.id}/pdf?${bad}`,
+      headers,
+    });
+    assert.equal(response.statusCode, 400, bad);
+  }
+  const missing = await server.inject({ url: `${url}/${other}/pdf`, headers });
   assert.equal(missing.statusCode, 404);
+});
+
+test("a renderer that is down or missing answers 503 with a next step, and is logged", async () => {
+  const auth = async (request: { headers: Record<string, unknown> }) =>
+    String(request.headers.authorization ?? "").replace(/^Bearer /, "");
+  for (const renderer of [fakeRenderer(true).renderer, null]) {
+    const { repository, pdfs } = memoryRepository();
+    const lines: string[] = [];
+    const server = buildApp({
+      repository,
+      development: true,
+      authenticate: auth as never,
+      workbookRenderer: renderer,
+    });
+    server.addHook("onRequest", async (request) => {
+      request.log.error = ((obj: unknown, msg?: string) => {
+        lines.push(`error ${JSON.stringify(obj)} ${msg ?? ""}`);
+      }) as never;
+    });
+    const made = (
+      await server.inject({
+        method: "POST",
+        url,
+        headers,
+        payload: { date: today, minutes: 30, paper: "letter" },
+      })
+    ).json();
+    const failed = await server.inject({
+      url: `${url}/${made.id}/pdf`,
+      headers,
+    });
+    assert.equal(failed.statusCode, 503);
+    assert.equal(
+      failed.json().error,
+      "Your workbook is being prepared; try again in a minute.",
+    );
+    assert.equal(pdfs.size, 0);
+    const logged = lines.find((l) => l.includes("Workbook PDF render failed"));
+    assert.ok(logged, "the failure is logged");
+    assert.match(logged!, /^error /);
+    assert.match(
+      logged!,
+      renderer ? /Render service unreachable/ : /No workbook renderer/,
+    );
+  }
 });
 
 test("a workbook whose templates changed version is not reprinted as if unchanged", async () => {
@@ -314,12 +401,9 @@ test("a workbook whose templates changed version is not reprinted as if unchange
     })
   ).json();
   rows[0]!.spec.sections[0]!.items[0]!.templateVersion -= 1;
-  const document = await server.inject({
-    url: `${url}/${made.id}/document`,
-    headers,
-  });
-  assert.equal(document.statusCode, 410);
-  assert.match(document.json().error, /Make today's workbook/);
+  const pdf = await server.inject({ url: `${url}/${made.id}/pdf`, headers });
+  assert.equal(pdf.statusCode, 410);
+  assert.match(pdf.json().error, /Make today's workbook/);
   const history = await server.inject({
     url: `${url}?date=0000-01-01`,
     headers,

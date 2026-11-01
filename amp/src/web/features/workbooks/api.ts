@@ -65,7 +65,7 @@ export function anotherWorkbook(
   });
 }
 
-/** Saves the printable workbook. */
+/** Saves the workbook PDF in the chosen paper size. */
 export async function downloadWorkbook(
   session: AuthSession,
   learnerId: string,
@@ -75,7 +75,7 @@ export async function downloadWorkbook(
   let response: Response;
   try {
     response = await fetch(
-      `/api/v1${workbookPath(learnerId)}/${encodeURIComponent(workbook.id)}/document?paper=${paper}`,
+      `/api/v1${workbookPath(learnerId)}/${encodeURIComponent(workbook.id)}/pdf?format=${paper === "a4" ? "A4" : "Letter"}`,
       { headers: { Authorization: `Bearer ${session.token}` } },
     );
   } catch {
@@ -95,7 +95,7 @@ export async function downloadWorkbook(
         : "";
     const error = new AppError(
       response.status >= 500 ? "unavailable" : "validation",
-      response.status === 503 && message
+      [404, 410, 503].includes(response.status) && message
         ? message
         : "The workbook didn't download. Try again in a moment.",
       response.status >= 500,
@@ -110,7 +110,7 @@ export async function downloadWorkbook(
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `amp-workbook-${workbook.date}-${workbook.number}.html`;
+  link.download = `amp-workbook-${workbook.date}-${workbook.number}.pdf`;
   document.body.append(link);
   link.click();
   link.remove();
