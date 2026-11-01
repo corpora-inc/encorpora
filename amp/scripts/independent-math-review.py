@@ -156,9 +156,13 @@ def read_plainly(check):
             result = check(*args, **kwargs)
             if result is not False or not retry:
                 return result
-        except (ValueError, TypeError, KeyError, AttributeError, StopIteration):
+        except (ValueError, TypeError, KeyError, AttributeError, StopIteration) as original:
             if not retry:
                 raise
+            try:
+                return check(*readings, **kwargs)
+            except (ValueError, TypeError, KeyError, AttributeError, StopIteration) as fallback:
+                raise original from fallback
         return check(*readings, **kwargs)
     check_typeset.__wrapped__ = check
     return check_typeset
@@ -245,11 +249,14 @@ def solve(public):
     with its plain reading (see plain_reading)."""
     try:
         return solve_family(public)
-    except ValueError:
+    except ValueError as original:
         reading = plain_reading(public)
         if reading == public:
             raise
-        return solve_family(reading)
+        try:
+            return solve_family(reading)
+        except ValueError as fallback:
+            raise original from fallback
 
 
 def solve_family(public):
@@ -584,6 +591,26 @@ def solve_family(public):
     raise ValueError(f'No independent solver for {template}')
 
 
+def check_generated_case(problem, check):
+    """Record once after validation; retain the original error if both readings fail."""
+    public = problem['public']
+    try:
+        try:
+            check(problem, record=False)
+        except (ValueError, TypeError, KeyError, AttributeError, StopIteration) as original:
+            reading = plain_reading(problem)
+            if reading == problem:
+                raise
+            try:
+                check(reading, record=False)
+            except (ValueError, TypeError, KeyError, AttributeError, StopIteration) as fallback:
+                raise original from fallback
+            problem = reading
+        check(problem)
+    except (ValueError, TypeError, KeyError, AttributeError, StopIteration, ZeroDivisionError, OverflowError) as error:
+        raise ValueError(f"{public['templateId']}/{public['seed']}: {error}") from error
+
+
 def review(stream):
     first_line = next(stream, None)
     require(first_line is not None, 'Missing manifest')
@@ -766,17 +793,7 @@ def review(stream):
         identity = (template, seed)
         require(identity not in seen, f'Duplicate case {identity}')
         seen.add(identity)
-        try:
-            check_case(problem, record=False)
-        except (ValueError, TypeError, KeyError, AttributeError, StopIteration):
-            # A variable or point typeset as $x$ reads as x. A family oracle that
-            # parses the plain wording reviews the plain reading instead; every
-            # check runs once without recording first, so nothing counts twice.
-            reading = plain_reading(problem)
-            if reading == problem:
-                raise
-            problem = reading
-        check_case(problem)
+        check_generated_case(problem, check_case)
         counts[template] += 1
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     # Reject invalid input before the expensive authored-content fixtures. Every

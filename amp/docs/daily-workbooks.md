@@ -10,7 +10,7 @@ A daily workbook is a printable document of about 30, 45 or 60 minutes of work, 
 | Today's idea | One lesson, taught | A lesson card (summary, one method section with its diagram, worked example, one pitfall), then guided problems from the lesson's own templates. Started-but-unsecured skills come first, then new skills near the frontier |
 | Practice | Moderate challenge | 0.8 below to 0.2 above, at most two per strand, round-robin across strands, filling the remaining time |
 | Review | Spaced retrieval | Skills whose `reviewDueAt` has passed, oldest first, on a different template than last time when possible |
-| Challenge | Just beyond reach | One problem from the curated challenge pool (several steps or a figure to reason about), from the nearest bands at or above the strand level (0.5–1.3 first), shared among the three strands with the most independent evidence so it changes day to day. Then any template above the level; a pool problem below the level only at the top of the catalog |
+| Challenge | Just beyond reach | One problem 0.5–1.3 grades above the learner (`CHALLENGE_WINDOW`): above its strand's level and never more than 1.3 above the overall level. From the curated challenge pool (several steps or a figure to reason about) when it has one in that window, shared among the three strands with the most independent evidence so it changes day to day; then any template in the window. Only at the ends of the catalog, where the window is empty, the closest template |
 
 A detachable answer key (answer plus worked steps for every problem, and the lesson's parent note) and a results page (a Right / Not yet box per problem, the workbook code, and a QR code that opens the results entry) follow the student pages.
 

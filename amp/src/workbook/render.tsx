@@ -1022,6 +1022,8 @@ background-image:linear-gradient(var(--grid-line) 0.7px,transparent 0.7px),linea
 .wb-lesson-idea p{margin:0 0 5px}
 .wb-lesson-visual{display:flex;justify-content:center;min-width:0}
 .wb .wb-lesson [data-trimmed]{display:none}
+.wb-lesson--stacked .wb-lesson-grid{grid-template-columns:minmax(0,1fr)!important}
+.wb-lesson--stacked .wb-example{margin-top:0.08in}
 .wb-lesson--visual:has(.wb-lesson-visual[data-trimmed]) .wb-lesson-grid{grid-template-columns:minmax(0,1fr)}
 .wb-lesson-visual svg,.wb-lesson-visual .figure{max-width:100%;max-height:2.3in;margin:0 auto}
 .wb-example{border:1px solid var(--rule-strong);border-radius:var(--radius);padding:0.1in 0.13in}
