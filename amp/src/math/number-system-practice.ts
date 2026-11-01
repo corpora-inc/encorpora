@@ -635,7 +635,7 @@ function signedQuantityCase(r: Random): Case {
     answer: String(negative ? -v : v),
     hint: `${c.rule} Is this quantity of ${v} in the positive direction or the opposite one?`,
     explanation: [
-      `${c.rule} The opposite direction is negative: a negative number has a − sign and is less than 0.`,
+      `${c.rule} The opposite direction is negative: a negative number has a minus sign and is less than 0.`,
       negative
         ? `The quantity is ${v} in the negative direction, ${v} units from 0: ${signed(-v)}.`
         : `The quantity is ${v} in the positive direction, ${v} units from 0: ${v}.`,

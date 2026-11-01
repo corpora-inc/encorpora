@@ -373,9 +373,9 @@ export function generateFractionPracticeProblem(
       hint = `Count the steps between $A$ and $B$ on the line, not from 0. Each meter has ${d} steps, so write that count over ${d}.`;
       explanation = [
         `Each meter is split into ${d} equal steps, so one step is 1/${d} meter.`,
-        `$A$ is ${count(a, "step")} from 0, at ${a}/${d}. $B$ is ${count(b, "step")} from 0, at ${b}/${d}.`,
+        `${a === 0 ? "$A$ is at 0." : `$A$ is ${count(a, "step")} from 0, at ${a}/${d}.`} $B$ is ${count(b, "step")} from 0, at ${b}/${d}.`,
         `The distance between them is the steps from $A$ to $B$: ${b} − ${a} = ${b - a}.`,
-        `${b - a} steps of 1/${d} meter make ${simplified(b - a, d)} ${unitAfter(answer, "meter")}.`,
+        `${count(b - a, "step")} of 1/${d} meter ${b - a === 1 ? "is" : "make"} ${simplified(b - a, d)} ${unitAfter(answer, "meter")}.`,
         `$A$ and $B$ are ${answer} ${unitAfter(answer, "meter")} apart.`,
       ];
       break;

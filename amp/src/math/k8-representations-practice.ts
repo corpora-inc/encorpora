@@ -685,7 +685,7 @@ function storyGraphMatch(r: Random): Built {
           "All four parts last the same time, so the steeper the line, the faster the quantity changes. A level part does not change.",
           `Slope means steepness: how much the line rises or falls in each part.`,
           `${slow ? "The gentlest slope that is not level" : "The steepest slope"} is on ${partName(answerIndex)}.`,
-          `So the ${ctx.quantity} changes ${slow ? "most slowly" : "most quickly"} ${partName(answerIndex)}.`,
+          `So the ${ctx.quantity} changes ${slow ? "most slowly" : "most quickly"} on ${partName(answerIndex)}.`,
         ]
       : [
           `Read the graph from left to right, the way time passes. Going up is increasing, level is constant, and going down is decreasing.`,
@@ -1644,7 +1644,7 @@ function percentApplications(r: Random): Built {
         choices: options(pct(e, 1), wrong),
         explanation: [
           `Percent error tells how far off a measurement is, compared with the true amount, as a percent.`,
-          `The error is the size of the difference, ignoring sign: ${measured} − ${actual} gives ${d} ${d === 1 ? g.slice(0, -1) : g}.`,
+          `The error is the size of the gap between ${measured} and ${actual}, ignoring which is bigger: ${d} ${d === 1 ? g.slice(0, -1) : g}.`,
           `Divide by the true amount, because that is the standard: ${d} ÷ ${actual} = ${d / actual}, which is ${pct(e, 1)}.`,
           `The percent error is ${pct(e, 1)}.`,
         ],
