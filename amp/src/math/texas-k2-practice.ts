@@ -483,8 +483,9 @@ function coinNameAndValue(
 
 const SHAPE_DESC: Record<string, string> = {
   triangle: "3 straight sides and 3 corners",
-  square: "4 equal sides and 4 corners",
-  rectangle: "4 corners and two different side lengths",
+  square: "4 equal sides and 4 square corners",
+  rectangle:
+    "4 square corners, with its long sides longer than its short sides",
   circle: "no corners and no straight sides",
   hexagon: "6 straight sides and 6 corners",
 };
