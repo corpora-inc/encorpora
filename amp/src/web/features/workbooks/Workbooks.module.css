@@ -78,6 +78,17 @@
   align-self: stretch;
   text-align: center;
 }
+/* History rows: a reserved line for a load or download error. */
+.message {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: calc(var(--target-size) + var(--space-2));
+  margin: calc(-1 * var(--space-2)) 0;
+  color: var(--color-danger-accent);
+  font-size: var(--text-small);
+}
 .failure {
   display: grid;
   justify-items: start;
@@ -108,6 +119,10 @@
   border-radius: var(--radius-panel);
   background: var(--color-surface-sunken);
   transition: opacity var(--motion-fast) var(--ease-standard);
+}
+/* Focus moves here only to keep a retry's place; it is not a control. */
+.contents:focus {
+  outline: none;
 }
 .stale {
   opacity: 0.6;

@@ -68,7 +68,7 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
     method: [
       "Write the cost as the fee plus the cost per item times $x$.",
       "Compare the cost with the budget. Use $\\le$ for at most and $<$ for under.",
-      "To solve, subtract the fee from both sides (the parts on each side of the sign). Then divide both sides by the cost per item, a positive number.",
+      "To solve, subtract the fee from both sides (the two parts of the inequality). Then divide both sides by the cost per item, a positive number.",
     ],
     watch:
       "Subtract the fee from the budget before you divide by the cost per item. Dividing the budget alone ignores the fee.",
@@ -121,7 +121,7 @@ export const feeChainLessons = [
       method: [
         "Find the extra hours: the hours booked minus the hours the flat fee covers. Find the rate: the charge beyond the flat fee divided by the extra hours.",
         "A budget is the most money you plan to spend. Call the budget $B$, the fee $F$, and the cost per item $r$. Then $x$ items cost $F+rx$, meaning $F$ plus $r$ times $x$.",
-        "The sign $\\le$ means is less than or equal to, so use it for at most. The sign $<$ means is less than, so use it for under. Subtract $F$ from both sides (the parts on each side of the sign), then divide both sides by $r$. That shows which counts fit. If the question asks for the most items, it is the largest whole number allowed. Otherwise, every whole number from 0 up to that limit fits. With $<$, the boundary, the number where the allowed counts stop, is not allowed itself.",
+        "The sign $\\le$ means is less than or equal to, so use it for at most. The sign $<$ means is less than, so use it for under. Subtract $F$ from both sides (the two parts of the inequality), then divide both sides by $r$. That shows which counts fit. If the question asks for the most items, it is the largest whole number allowed. Otherwise, every whole number from 0 up to that limit fits. With $<$, the boundary, the number where the allowed counts stop, is not allowed itself.",
       ],
       formalTitle: "The line behind the charge",
       formal: [

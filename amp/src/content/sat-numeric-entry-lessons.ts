@@ -624,7 +624,7 @@ const entries: Entry[] = [
       "Find the greatest or least integer solution, or count the positive integer solutions.",
     ],
     intuition:
-      "An inequality such as $x<4$ is true for a whole range of numbers. The sign $<$ means is less than, and $\\le$ means is less than or equal to. An integer is a whole number or its negative. The boundary is the number where the solutions stop, such as 4 in $x<4$. A strict sign ($<$ or $>$) leaves out the boundary itself, so 4 does not count for $x<4$. Dividing both sides (the parts on each side of the sign) by a negative number (a number below 0) flips the sign.",
+      "An inequality such as $x<4$ is true for a whole range of numbers. The sign $<$ means is less than, and $\\le$ means is less than or equal to. An integer is a whole number or its negative. The boundary is the number where the solutions stop, such as 4 in $x<4$. A strict sign ($<$ or $>$) leaves out the boundary itself, so 4 does not count for $x<4$. Dividing both sides (the two parts of the inequality) by a negative number (a number below 0) flips the sign.",
     terms: ["strict-inequality", "integer"],
     method: [
       "Solve for $x$ as you would an equation. Flip the sign when you multiply or divide both sides by a negative number.",

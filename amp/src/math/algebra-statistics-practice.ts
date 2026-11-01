@@ -2630,6 +2630,45 @@ const labels: Record<string, string> = {
   "residual-value": "Answer",
 };
 
+/** A plain opening for each template: the terms its worked steps rest on,
+ * each defined at first use (issue #1781). */
+const OPENERS: Record<string, string[]> = {
+  "outlier-center-shift": [
+    "The mean is the total divided by the number of values. The median is the middle value once the values are put in order.",
+    "An outlier is a value far from the rest. It changes the total a lot but the order only a little.",
+  ],
+  "skewed-box-compare": [
+    "A box plot marks five numbers: the minimum, the first quartile Q1, the median, the third quartile Q3 and the maximum. Each of the four pieces holds about a quarter of the data.",
+    "A distribution is skewed toward the side with the long tail, where the values spread farther. If both sides match, it is roughly symmetric.",
+  ],
+  "relative-frequency-percent": [
+    "A two-way table counts people by two features at once. A percent is a part out of a whole, times 100.",
+    "A joint percent uses one cell out of the table total. A marginal percent uses a row or column total out of the table total. A conditional percent uses a cell out of its own row or column total.",
+  ],
+  "conditional-frequency-choice": [
+    "A percent is a part divided by a whole. The number you divide by, the whole, names the group the percent describes.",
+  ],
+  "regression-coefficient-meaning": [
+    'The least-squares line $\\hat{y} = mx + b$ is the line that best fits the points. $\\hat{y}$, read "$y$-hat", is a predicted value, not a measured one.',
+    "The slope $m$ is the predicted change in $\\hat{y}$ for each 1 more unit of $x$. The intercept $b$ is the prediction when $x = 0$.",
+  ],
+  "regression-line-predict": [
+    'The least-squares line is the line that best fits the points. $\\hat{y}$, read "$y$-hat", is its prediction for a given $x$.',
+  ],
+  "residual-value": [
+    "A residual measures how far a real data point is from the line's prediction: residual = observed value − predicted value.",
+  ],
+  "correlation-choice": [
+    "The correlation coefficient $r$ is a number from −1 to 1 that measures how closely points follow a straight line. Its sign gives the direction: positive means rising, negative means falling.",
+  ],
+  "causal-claim-choice": [
+    "An association means two quantities tend to change together. That alone does not show that one causes the other.",
+  ],
+  "study-design-choice": [
+    "Random assignment means chance, like a coin flip, decides who gets the treatment. Then the groups are alike on average, so a difference in results points to the treatment as the cause.",
+  ],
+};
+
 export function algebraStatisticsCase(
   id: string,
   seed: string,
@@ -2686,7 +2725,7 @@ export function algebraStatisticsCase(
         : {}),
     },
     answer,
-    explanation: c.explanation,
+    explanation: [...(OPENERS[id] ?? []), ...c.explanation],
     hint: c.hint,
     ...(c.hintCue ? { hintCue: c.hintCue } : {}),
     ...(c.walkthrough ? { walkthrough: c.walkthrough } : {}),
