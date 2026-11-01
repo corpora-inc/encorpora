@@ -222,7 +222,7 @@ const entries: Entry[] = [
     title: "Enter a sum or product of quadratic solutions",
     goal: "Find the sum or product of a quadratic's two solutions straight from its numbers, without solving it.",
     summary:
-      "A quadratic equation has an $x^2$ part ($x$ times $x$) and no higher power, like $3x^2-8x+2=0$. Call its two solutions $p$ and $q$. Their sum $p+q$ and their product (the result of multiplying), $pq$, can be read straight from the numbers in the equation. So some questions can be answered without finding $p$ and $q$ at all.",
+      "A quadratic equation has an $x^2$ part ($x$ times $x$) and no higher power, like $3x^2-8x+2=0$. A solution is a value of $x$ that makes the equation true. When it has two, call them $p$ and $q$. Their sum $p+q$ and their product (the result of multiplying), $pq$, can be read straight from the numbers in the equation. So some questions can be answered without finding $p$ and $q$ at all.",
     objectives: [
       "Use $p+q=-\\frac ba$ and $pq=\\frac ca$ for the solutions of $ax^2+bx+c=0$.",
       "Rewrite $\\frac1p+\\frac1q$ or $p^2+q^2$ using only $p+q$ and $pq$.",

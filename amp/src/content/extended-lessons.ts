@@ -655,7 +655,7 @@ export const extendedLessons: Lesson[] = [
         title: "Interpret the probability",
         paragraphs: [
           "A probability is always from 0 to 1. A probability of 0 means the event is impossible, which means it cannot happen, such as drawing green from this bag. A probability of 1 means it is certain, which means sure to happen, such as drawing a counter that is red or blue.",
-          "A probability of $\\tfrac{3}{8}$ does not promise exactly 3 reds in every 8 draws. It describes the chance on each single draw, under the stated conditions.",
+          "Suppose you put the counter back after each draw. A probability of $\\tfrac{3}{8}$ does not promise exactly 3 reds in every 8 draws. It describes the chance on each single draw.",
         ],
       },
     ],

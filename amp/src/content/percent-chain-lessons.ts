@@ -26,7 +26,7 @@ export const percentChainMethods: Record<string, ProblemMethod> = {
     method: [
       "Turn each percent change into its factor, in the order the changes happen. For example, a 20% decrease is 0.8.",
       "Forward: multiply the amount by the first factor, then by the second. For one overall factor, multiply the two factors.",
-      "Backward from a final amount: divide by the last factor first, then by the earlier factor.",
+      "Backward from a final amount: divide by the last factor first, then by the earlier factor. This works when no change is a 100% decrease, whose factor is 0.",
       "Check by applying both factors forward to your answer.",
     ],
     watch:
@@ -45,7 +45,7 @@ export const percentChainLessons = [
       id: "percent-chain",
       title: "Chain two percent changes",
       summary:
-        "Percent means per hundred. A percent change is a change by some percent of an amount. It multiplies the amount by one number, called the factor: a 20% decrease multiplies by 0.8, because 80% is left. When two changes happen in a row, the second one acts on the new amount. So multiply by both factors in order. To go backward, divide by them in reverse order.",
+        "Percent means per hundred. A percent change is a change by some percent of an amount. It multiplies the amount by one number, called the factor: a 20% decrease multiplies by 0.8, because 80% is left. When two changes happen in a row, the second one acts on the new amount. So multiply by both factors in order. To go backward, divide by them in reverse order (no change can be a 100% decrease, which would make the factor 0).",
       templateIds: ["percent-chain"],
       objectives: [
         "Write each percent change as a factor, and apply the factors in order, each to the amount it changes.",
