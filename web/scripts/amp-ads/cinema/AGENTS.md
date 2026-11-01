@@ -43,3 +43,5 @@ Creative direction learned from founder review (October 2026):
 - Voices: Paul and Madeline. Natural reads; no hype, fake emotion or trailer
   voice. Verify every take's wording against the script.
 - Product shots must be smooth: frame-by-frame captures, no jerks, no flashes.
+
+8. **Complete paid delivery.** Every concept includes `wide`, `square` and `portrait` at Full HD or higher; `feed` does not replace square. Run `delivery-check` on the exact exports before upload. Review every orientation and follow the shared policy for live eligibility, Excellent ad strength and recommendation resolution within approved budgets.

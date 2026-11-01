@@ -144,7 +144,7 @@ header {
 }
 .app-shell > nav button {
   flex: 1;
-  min-height: 38px;
+  min-height: 44px;
   padding: 6px 12px;
   border: 0;
   border-radius: 9px;
@@ -910,9 +910,20 @@ header {
   line-height: 1.05;
 }
 .intro p {
-  max-width: 40ch;
+  max-width: 46ch;
   font-size: 17px;
   color: var(--color-muted-text);
+}
+/* The brand line is a label above the headline, not body text. */
+.intro > div > p:first-child {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+/* The card's heading sits under the page headline in the type scale. */
+.shell.app-shell.flow > section.welcome h2 {
+  font-size: clamp(24px, 5vw, 30px);
 }
 .card {
   border: 1px solid var(--color-border);
@@ -1013,6 +1024,23 @@ header {
   border: 1px solid var(--color-border);
   border-radius: 20px;
   background: var(--color-surface-raised);
+}
+.home-level-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: var(--color-muted-text);
+}
+/* Tablets and desktops: who and where on the left, the one action on the
+   right, so the button keeps a button's proportions. */
+@media (min-width: 768px) {
+  .home-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(200px, 240px);
+    align-items: end;
+    column-gap: 32px;
+  }
 }
 .home-hero h1 {
   margin: 0;
@@ -1311,6 +1339,16 @@ html:has(.shell.flow)::-webkit-scrollbar {
 .lesson-sheet-bar .text-button {
   padding: 10px 14px;
 }
+/* Quiet actions outside practice are still full-size targets. */
+.home-birth-year,
+.lesson-sheet-bar .text-button,
+.lesson-reader .card-top .text-button,
+.book-list .text-button,
+.birth-year > .text-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
 
 /* Content starts the same distance below the tabs on every section. */
 .app-shell > main.progress-workspace {
@@ -1345,6 +1383,7 @@ html[data-input="pointer"] :focus-visible {
 
 /* Where you are: age-centred grade-level estimates with estimated uncertainty ranges. */
 .home-level {
+  position: relative;
   margin: 6px 0 0;
   font-size: 15px;
   font-weight: 600;
@@ -1433,6 +1472,28 @@ html[data-input="pointer"] :focus-visible {
 .frontier-axis span:nth-child(3) {
   right: 0;
 }
+/* The dot is centred on its value: inset the track by its radius so a value
+   at either end stays inside the card, and the end labels with it. */
+.frontier-track {
+  margin-inline: 8px;
+}
+.frontier-axis span:nth-child(1) {
+  left: 8px;
+}
+.frontier-axis span:nth-child(3) {
+  right: 8px;
+}
+/* Three labels need about 240px of track; below that the heading explains
+   the centre line and the two end labels stay clear of each other. */
+.frontier-map {
+  container-type: inline-size;
+}
+@container (max-width: 420px) {
+  .frontier-axis span:nth-child(2) {
+    display: none;
+  }
+}
+
 .answer-dock > div > .practice-tools {
   margin-top: 8px;
 }
@@ -1769,7 +1830,7 @@ html[data-input="pointer"] :focus-visible {
   background: var(--color-surface-sunken);
 }
 .shell .family-tabs button {
-  min-height: 38px;
+  min-height: 44px;
   padding: 6px 8px;
   border-radius: 9px;
   font-size: 14px;
@@ -1891,9 +1952,32 @@ html[data-input="pointer"] :focus-visible {
     display: none;
   }
 }
-/* Signed out: the welcome card sits in the app column. */
+/* Signed out: the welcome card sits in the app column, on the hero's edges,
+   and both of its actions share one control size. */
 .shell.app-shell.flow > section.welcome {
+  max-width: none;
   margin-bottom: 32px;
+}
+.welcome .go-button + .secondary {
+  min-height: 56px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 16px;
+  font-size: 17px;
+}
+/* Brand mark and name read as one unit beside the menu. */
+.shell > header > .brand {
+  min-height: 44px;
+  margin-right: auto;
+}
+.landing-footer {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+}
+.landing-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
 }
 /* Choose how to pay */
 .shell.purchase-shell > .choose-pay {
@@ -2293,5 +2377,22 @@ html[data-input="pointer"] :focus-visible {
     min-height: 0;
     max-height: calc(100dvh - 88px);
     overflow: auto;
+  }
+}
+/* The narrowest cards (a 320px phone inside the assessment card) leave the
+   track under 120px beside the names, too little for its end labels. There
+   each name sits above a full-width track. Last in the file, so it wins over
+   the 360px viewport rule. */
+@container (max-width: 300px) {
+  .frontier-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+  .frontier-axis,
+  .frontier-detail {
+    margin-left: 0;
+  }
+  .frontier-axis span:nth-child(2) {
+    display: block;
   }
 }
