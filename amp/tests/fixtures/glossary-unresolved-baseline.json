@@ -123,14 +123,6 @@
     "multiples": 1,
     "one fourth": 4
   },
-  "best-display-choice": {
-    "change": 5,
-    "changes": 3,
-    "interval": 1,
-    "intervals": 4,
-    "parts": 4,
-    "whole": 7
-  },
   "booth-equation-slots": {
     "changes": 20,
     "side": 2
@@ -153,16 +145,6 @@
     "sides": 1,
     "units": 2
   },
-  "box-plot-read": {
-    "intervals": 1,
-    "one quarter": 16,
-    "parts": 16,
-    "quarter": 2,
-    "quarters": 16,
-    "range": 3,
-    "scale": 4,
-    "third": 1
-  },
   "budget-category-balance": {
     "balance": 6,
     "balances": 9,
@@ -172,10 +154,6 @@
   },
   "budget-inequality-slots": {
     "more than": 26
-  },
-  "budget-percent-share": {
-    "change": 1,
-    "more than": 10
   },
   "cancelled-linear-inequality": {
     "sides": 61,
@@ -197,10 +175,6 @@
     "change": 1,
     "difference": 8
   },
-  "check-register-blanks": {
-    "balance": 116,
-    "balances": 1
-  },
   "choose-the-plot": {
     "boundary": 1,
     "interval": 12,
@@ -217,14 +191,6 @@
   },
   "circle-estimate-blanks": {
     "square": 6
-  },
-  "circle-graph-read": {
-    "change": 3,
-    "degrees": 7,
-    "part": 3,
-    "parts": 1,
-    "quarter": 1,
-    "whole": 19
   },
   "classify-real-number": {
     "cube": 2,
@@ -267,9 +233,6 @@
   },
   "compare-decimals-thousandths": {
     "mean": 1
-  },
-  "compare-distributions-choice": {
-    "center": 1
   },
   "compare-fractions-reason-blanks": {
     "eighths": 1,
@@ -481,23 +444,6 @@
   "count-on-back": {
     "jump": 17
   },
-  "counting-principle": {
-    "factor": 1,
-    "factors": 8,
-    "product": 1
-  },
-  "credit-card-balance": {
-    "balance": 61
-  },
-  "credit-cost-concepts": {
-    "balance": 4,
-    "balances": 1,
-    "changes": 1,
-    "difference": 4,
-    "leaves": 1,
-    "part": 10,
-    "whole": 4
-  },
   "cross-section-area": {
     "center": 8,
     "edge": 5,
@@ -619,11 +565,6 @@
     "factors": 1,
     "product": 23
   },
-  "decimal-rename-chain": {
-    "difference": 1,
-    "rename": 1,
-    "term": 1
-  },
   "decompose-flat-shape": {
     "part": 12,
     "parts": 19,
@@ -708,30 +649,8 @@
     "range": 3,
     "scale": 5
   },
-  "dot-plot-iqr": {
-    "average": 1
-  },
-  "dot-plot-mad": {
-    "average": 7,
-    "differences": 1,
-    "mean": 50
-  },
-  "dot-plot-mean": {
-    "balance": 2,
-    "mean": 3
-  },
   "dot-plot-statement-select": {
     "more than": 12
-  },
-  "double-box-compare": {
-    "center": 1,
-    "centers": 7,
-    "scale": 2
-  },
-  "double-number-line-missing": {
-    "change": 1,
-    "factor": 1,
-    "unit": 1
   },
   "early-money-decisions": {
     "balance": 4,
@@ -1031,11 +950,6 @@
   "fraction-unit-count": {
     "change": 5
   },
-  "fraction-unit-rate": {
-    "part": 6,
-    "unit": 4,
-    "units": 2
-  },
   "fraction-whole-as-parts": {
     "fourths": 3
   },
@@ -1118,12 +1032,6 @@
   "hierarchy-statement": {
     "square": 21
   },
-  "histogram-read": {
-    "edge": 2,
-    "interval": 4,
-    "intervals": 1,
-    "scale": 3
-  },
   "hundred-chart-missing": {
     "part": 1
   },
@@ -1176,17 +1084,6 @@
   },
   "integer-power": {
     "square": 3
-  },
-  "interest-table-type": {
-    "balances": 3,
-    "changes": 7,
-    "differences": 2
-  },
-  "interquartile-range-data": {
-    "average": 1,
-    "fourth": 3,
-    "mean": 15,
-    "third": 3
   },
   "inverse-round-decimal": {
     "side": 1
@@ -1413,16 +1310,6 @@
     "units": 2,
     "whole": 1
   },
-  "lesson:arithmetic-sequence-terms": {
-    "decreasing": 1,
-    "difference": 2,
-    "fourth": 1,
-    "jump": 1,
-    "jumps": 5,
-    "term": 19,
-    "terms": 4,
-    "whole": 1
-  },
   "lesson:array-division-slots": {
     "factor": 2
   },
@@ -1489,21 +1376,6 @@
     "multiples": 1,
     "one fourth": 1
   },
-  "lesson:best-display-choice": {
-    "change": 4,
-    "intervals": 3,
-    "parts": 4,
-    "rule": 1,
-    "whole": 4
-  },
-  "lesson:better-buy": {
-    "more than": 1,
-    "parts": 3,
-    "product": 1,
-    "scale": 1,
-    "unit": 1,
-    "units": 1
-  },
   "lesson:binomial-coefficient": {
     "factor": 2,
     "factors": 3,
@@ -1549,13 +1421,6 @@
   "lesson:budget-items-steps": {
     "leaves": 1
   },
-  "lesson:budget-percent-share": {
-    "change": 1,
-    "more than": 3,
-    "part": 6,
-    "parts": 1,
-    "whole": 6
-  },
   "lesson:buy-enough-compare-the-bills": {
     "change": 1,
     "leaves": 1,
@@ -1576,26 +1441,8 @@
     "term": 1,
     "terms": 3
   },
-  "lesson:categorical-association": {
-    "changes": 2,
-    "difference": 1,
-    "part": 1,
-    "population": 1,
-    "sorts": 1,
-    "whole": 6,
-    "wholes": 1
-  },
   "lesson:categorical-summaries": {
     "mode": 6
-  },
-  "lesson:causal-claims": {
-    "average": 3,
-    "balance": 1,
-    "balances": 1,
-    "difference": 3,
-    "differences": 2,
-    "mean": 1,
-    "third": 1
   },
   "lesson:cavalieri-volume-reasoning": {
     "base": 1,
@@ -1615,12 +1462,6 @@
     "cubes": 1,
     "multiple": 1,
     "whole": 3
-  },
-  "lesson:check-register-blanks": {
-    "balance": 17,
-    "balances": 3,
-    "difference": 1,
-    "rule": 1
   },
   "lesson:check-registers": {
     "balance": 12,
@@ -1676,14 +1517,6 @@
   },
   "lesson:circle-estimate-blanks": {
     "square": 3
-  },
-  "lesson:circle-graph-read": {
-    "change": 1,
-    "degrees": 10,
-    "part": 1,
-    "parts": 1,
-    "quarter": 2,
-    "whole": 4
   },
   "lesson:circle-segment-lengths": {
     "plane": 1
@@ -1754,14 +1587,6 @@
     "rename": 1,
     "unit": 1,
     "whole": 3
-  },
-  "lesson:compare-distributions": {
-    "average": 3,
-    "center": 6,
-    "centers": 2,
-    "difference": 3,
-    "mean": 7,
-    "multiple": 1
   },
   "lesson:compare-fractions-reason-blanks": {
     "eighths": 4,
@@ -2074,16 +1899,6 @@
     "unit": 5,
     "units": 5
   },
-  "lesson:conditional-and-multiplication-rule": {
-    "changes": 2,
-    "event": 8,
-    "events": 1,
-    "product": 1,
-    "products": 1,
-    "rule": 1,
-    "trials": 1,
-    "whole": 1
-  },
   "lesson:conditional-everyday-reasoning": {
     "change": 2,
     "event": 3,
@@ -2239,12 +2054,6 @@
   "lesson:coordinate-terms-slots": {
     "plane": 2
   },
-  "lesson:count-relation-chain": {
-    "difference": 3,
-    "leaves": 1,
-    "more than": 1,
-    "term": 2
-  },
   "lesson:count-to-100": {
     "changes": 1,
     "jump": 1,
@@ -2259,28 +2068,11 @@
     "change": 2,
     "whole": 1
   },
-  "lesson:counting-principle": {
-    "factor": 3,
-    "product": 2,
-    "third": 1,
-    "whole": 1
-  },
   "lesson:counting-steps": {
     "change": 1,
     "changes": 2,
     "rule": 1,
     "term": 4,
-    "whole": 1
-  },
-  "lesson:credit-card-balance": {
-    "balance": 20,
-    "balances": 1,
-    "changes": 1,
-    "part": 3
-  },
-  "lesson:credit-cost-concepts": {
-    "balance": 8,
-    "part": 5,
     "whole": 1
   },
   "lesson:cross-representation-comparison": {
@@ -2388,14 +2180,6 @@
     "side": 2,
     "unit": 1,
     "whole": 2
-  },
-  "lesson:decimal-rename-chain": {
-    "difference": 1,
-    "differences": 1,
-    "mean": 1,
-    "products": 1,
-    "rename": 3,
-    "terms": 1
   },
   "lesson:decimal-tenth-hundredth-step": {
     "change": 6,
@@ -2507,31 +2291,12 @@
     "vertex": 2,
     "vertices": 1
   },
-  "lesson:distribution-plots": {
-    "edge": 3,
-    "interval": 4,
-    "intervals": 4,
-    "parts": 1,
-    "quarter": 1,
-    "quarters": 1,
-    "range": 1
-  },
   "lesson:divide-by-one-digit": {
     "part": 1
   },
   "lesson:divide-by-two-digit": {
     "part": 1,
     "product": 3
-  },
-  "lesson:dividing-fractions": {
-    "changes": 1,
-    "eighth": 2,
-    "eighths": 3,
-    "fourths": 5,
-    "parts": 1,
-    "rename": 1,
-    "units": 1,
-    "whole": 1
   },
   "lesson:divisibility-rules": {
     "change": 1,
@@ -2570,13 +2335,6 @@
   "lesson:dot-plot-statement-select-lesson": {
     "cube": 1,
     "more than": 3
-  },
-  "lesson:double-number-line-missing": {
-    "change": 1,
-    "factor": 1,
-    "factors": 1,
-    "scale": 2,
-    "unit": 1
   },
   "lesson:early-money-decisions": {
     "balance": 5,
@@ -2653,11 +2411,6 @@
     "squares": 1,
     "squaring": 1
   },
-  "lesson:equally-likely-probability": {
-    "certain": 1,
-    "event": 3,
-    "impossible": 1
-  },
   "lesson:equation-reasoning": {
     "changes": 1,
     "left side": 1,
@@ -2721,12 +2474,6 @@
     "quarters": 1,
     "whole": 2
   },
-  "lesson:equivalent-ratios": {
-    "changes": 2,
-    "factor": 2,
-    "inverse": 1,
-    "scale": 1
-  },
   "lesson:equivalent-ratios-select-lesson": {
     "factor": 1,
     "multiple": 2,
@@ -2750,18 +2497,6 @@
     "changes": 3,
     "whole": 1
   },
-  "lesson:events-and-addition-rule": {
-    "complement": 2,
-    "complements": 1,
-    "event": 5,
-    "events": 3,
-    "face": 3,
-    "intersection": 1,
-    "intersections": 1,
-    "more than": 1,
-    "rule": 3,
-    "sample": 1
-  },
   "lesson:expanded-decimal-slots": {
     "index": 1,
     "part": 1,
@@ -2777,9 +2512,6 @@
     "part": 2,
     "parts": 2,
     "term": 1
-  },
-  "lesson:expected-count-blanks": {
-    "trials": 2
   },
   "lesson:expected-value": {
     "average": 7,
@@ -2900,12 +2632,6 @@
   "lesson:fair-random-decisions": {
     "multiple": 1,
     "rule": 1
-  },
-  "lesson:fee-chain": {
-    "parts": 1,
-    "sides": 2,
-    "unit": 1,
-    "units": 1
   },
   "lesson:first-quadrant-coordinates": {
     "changes": 4,
@@ -3035,16 +2761,6 @@
     "term": 3,
     "thirds": 4
   },
-  "lesson:fraction-unit-rate": {
-    "more than": 1,
-    "part": 2,
-    "parts": 1,
-    "quarter": 1,
-    "quarters": 2,
-    "unit": 6,
-    "units": 4,
-    "whole": 4
-  },
   "lesson:fractions": {
     "change": 1,
     "changes": 1,
@@ -3093,13 +2809,6 @@
     "range": 6,
     "side": 3,
     "whole": 1
-  },
-  "lesson:function-input-output": {
-    "mean": 1,
-    "rule": 6,
-    "squared": 2,
-    "term": 1,
-    "terms": 2
   },
   "lesson:function-shift-sentence": {
     "opposite": 1,
@@ -3357,19 +3066,6 @@
     "unit": 1,
     "units": 2
   },
-  "lesson:independent-events-probability": {
-    "change": 3,
-    "changes": 2,
-    "complement": 2,
-    "complements": 2,
-    "cube": 13,
-    "event": 8,
-    "events": 3,
-    "face": 1,
-    "faces": 1,
-    "mean": 1,
-    "product": 1
-  },
   "lesson:inequality-from-context": {
     "boundaries": 1,
     "boundary": 10,
@@ -3421,43 +3117,6 @@
   "lesson:intercept-point-lesson": {
     "rule": 2,
     "sides": 1
-  },
-  "lesson:interest-compare-years": {
-    "balance": 14,
-    "balances": 4,
-    "changes": 1,
-    "mean": 2
-  },
-  "lesson:interest-table-type": {
-    "balance": 10,
-    "balances": 3,
-    "change": 1,
-    "differences": 4,
-    "mean": 2
-  },
-  "lesson:interquartile-range-data": {
-    "arithmetic mean": 1,
-    "average": 4,
-    "boundary": 2,
-    "center": 3,
-    "centers": 1,
-    "changes": 1,
-    "fourth": 3,
-    "leaves": 2,
-    "mean": 6,
-    "more than": 1,
-    "one quarter": 1,
-    "opposite": 1,
-    "part": 1,
-    "parts": 4,
-    "range": 4,
-    "side": 2,
-    "sort": 1,
-    "sorting": 2,
-    "third": 2,
-    "unit": 1,
-    "units": 1,
-    "whole": 5
   },
   "lesson:inverse-decimal-rounding": {
     "boundaries": 2,
@@ -3519,14 +3178,6 @@
   "lesson:lifetime-income": {
     "change": 1,
     "difference": 3
-  },
-  "lesson:likelihood-words-lesson": {
-    "certain": 5,
-    "cube": 2,
-    "event": 5,
-    "faces": 1,
-    "impossible": 3,
-    "more than": 3
   },
   "lesson:line-angle-proof-reasons": {
     "corresponding angles": 1,
@@ -3677,24 +3328,6 @@
     "right side": 2,
     "sides": 2,
     "terms": 2
-  },
-  "lesson:loan-compare-options": {
-    "change": 1,
-    "changes": 1,
-    "difference": 1,
-    "part": 1,
-    "term": 1
-  },
-  "lesson:loan-offer-compare-blanks": {
-    "difference": 3,
-    "increasing": 1,
-    "product": 1,
-    "term": 1
-  },
-  "lesson:loan-total-cost": {
-    "difference": 2,
-    "term": 4,
-    "terms": 1
   },
   "lesson:logarithm-properties": {
     "base": 9,
@@ -3859,33 +3492,10 @@
     "change": 1,
     "changes": 1
   },
-  "lesson:mean-median": {
-    "average": 1,
-    "balance": 1,
-    "center": 1,
-    "leaves": 1,
-    "mean": 14,
-    "side": 1
-  },
-  "lesson:mean-median-blanks": {
-    "fourth": 1,
-    "mean": 10,
-    "sort": 1,
-    "sorting": 1,
-    "squared": 1,
-    "third": 1
-  },
   "lesson:measurable-attribute-choice": {
     "key": 2,
     "unit": 2,
     "units": 3
-  },
-  "lesson:measure-meaning-lesson": {
-    "center": 1,
-    "difference": 2,
-    "mean": 6,
-    "mode": 8,
-    "range": 9
   },
   "lesson:measure-with-equal-units": {
     "changes": 1,
@@ -3934,32 +3544,6 @@
     "vertex": 1,
     "whole": 2
   },
-  "lesson:median-data": {
-    "arithmetic mean": 3,
-    "average": 2,
-    "center": 5,
-    "changes": 2,
-    "difference": 1,
-    "fourth": 4,
-    "leaves": 3,
-    "mean": 4,
-    "more than": 1,
-    "opposite": 1,
-    "parts": 3,
-    "side": 1,
-    "sort": 1,
-    "sorting": 2,
-    "third": 4,
-    "unit": 1,
-    "units": 1,
-    "whole": 4
-  },
-  "lesson:median-mode-compare-blanks": {
-    "center": 1,
-    "mode": 8,
-    "modes": 6,
-    "sort": 2
-  },
   "lesson:mental-ten-hundred": {
     "changes": 4
   },
@@ -3978,10 +3562,6 @@
     "jumps": 2,
     "product": 3,
     "whole": 1
-  },
-  "lesson:mode-of-data-lesson": {
-    "mode": 9,
-    "modes": 1
   },
   "lesson:model-quantity-roles": {
     "change": 2,
@@ -4148,12 +3728,6 @@
     "side": 4,
     "solid": 3,
     "square": 10
-  },
-  "lesson:net-worth-statement": {
-    "change": 2,
-    "changes": 3,
-    "more than": 1,
-    "sort": 1
   },
   "lesson:nonlinear-data-model": {
     "changes": 1,
@@ -4408,75 +3982,14 @@
     "term": 4,
     "terms": 4
   },
-  "lesson:payroll-property-tax": {
-    "rule": 1,
-    "units": 1
-  },
-  "lesson:percent-amounts-blanks": {
-    "more than": 2,
-    "squares": 1,
-    "whole": 4
-  },
   "lesson:percent-applications": {
     "base": 7,
     "scale": 1
-  },
-  "lesson:percent-chain": {
-    "base": 1,
-    "bases": 1,
-    "change": 8,
-    "changes": 4,
-    "factor": 10,
-    "factors": 5,
-    "product": 1
-  },
-  "lesson:percent-change-final": {
-    "base": 4,
-    "change": 8,
-    "leaves": 3,
-    "one quarter": 1,
-    "parts": 5,
-    "unit": 2,
-    "units": 12,
-    "whole": 1
-  },
-  "lesson:percent-change-original": {
-    "base": 7,
-    "change": 8,
-    "changes": 1,
-    "one quarter": 1,
-    "opposite": 1,
-    "parts": 3,
-    "quarter": 3,
-    "unit": 2,
-    "units": 7,
-    "whole": 3
-  },
-  "lesson:percent-change-rate": {
-    "base": 9,
-    "bases": 1,
-    "change": 8,
-    "changes": 2,
-    "difference": 3,
-    "leaves": 1,
-    "one fourth": 1,
-    "parts": 1,
-    "unit": 4,
-    "units": 14,
-    "whole": 1
   },
   "lesson:percent-grids-conversions": {
     "part": 9,
     "squares": 2,
     "whole": 8
-  },
-  "lesson:percent-quantity": {
-    "changes": 2,
-    "one fourth": 3,
-    "part": 1,
-    "parts": 2,
-    "whole": 11,
-    "wholes": 1
   },
   "lesson:perimeter-area-chain": {
     "side": 13,
@@ -4754,12 +4267,6 @@
     "factors": 1,
     "product": 1
   },
-  "lesson:probability-line-lesson": {
-    "certain": 1,
-    "event": 7,
-    "image": 1,
-    "impossible": 1
-  },
   "lesson:probability-missing-count": {
     "event": 2
   },
@@ -4947,41 +4454,12 @@
     "mean": 1,
     "significant": 6
   },
-  "lesson:range-data": {
-    "center": 1,
-    "change": 1,
-    "changes": 1,
-    "difference": 1,
-    "intervals": 1,
-    "leaves": 1,
-    "more than": 1,
-    "opposite": 2,
-    "parts": 3,
-    "range": 15,
-    "scale": 1,
-    "sorting": 1,
-    "unit": 2,
-    "units": 4,
-    "whole": 2
-  },
   "lesson:rate-combination-model": {
     "average": 3,
     "changes": 1,
     "net": 1,
     "unit": 2,
     "whole": 1
-  },
-  "lesson:ratio-pair-blanks": {
-    "part": 7,
-    "parts": 7,
-    "terms": 1,
-    "whole": 4
-  },
-  "lesson:ratio-table-missing": {
-    "changes": 2,
-    "factor": 2,
-    "parts": 1,
-    "third": 1
   },
   "lesson:rational-area-volume-equations": {
     "base": 1,
@@ -5139,16 +4617,6 @@
     "terms": 1,
     "third": 2
   },
-  "lesson:regents-abs-equals-linear": {
-    "change": 1,
-    "decreasing": 1,
-    "difference": 1,
-    "increasing": 1,
-    "side": 1,
-    "sides": 2,
-    "term": 1,
-    "whole": 1
-  },
   "lesson:regents-absolute-value-linear": {
     "right side": 5,
     "whole": 1
@@ -5162,17 +4630,6 @@
     "term": 15,
     "terms": 7
   },
-  "lesson:regents-average-rate-table": {
-    "average": 1,
-    "change": 6,
-    "changes": 1,
-    "decreasing": 1,
-    "difference": 1,
-    "interval": 4,
-    "opposite": 1,
-    "population": 1,
-    "unit": 1
-  },
   "lesson:regents-both-sides-equations": {
     "balance": 1,
     "factor": 2,
@@ -5181,9 +4638,6 @@
     "sides": 5,
     "term": 6,
     "terms": 1
-  },
-  "lesson:regents-budget-whole-items": {
-    "whole": 2
   },
   "lesson:regents-circle-line-system": {
     "intersections": 1,
@@ -5220,10 +4674,6 @@
     "square": 4,
     "squared": 1
   },
-  "lesson:regents-correlation-causation": {
-    "factor": 2,
-    "third": 1
-  },
   "lesson:regents-cubic-graph-statement": {
     "decreasing": 2,
     "increasing": 3,
@@ -5248,14 +4698,6 @@
     "complements": 1,
     "events": 1,
     "intersection": 3
-  },
-  "lesson:regents-exponential-models": {
-    "decreasing": 1,
-    "differences": 1,
-    "factor": 3,
-    "mean": 2,
-    "model": 1,
-    "multiple": 1
   },
   "lesson:regents-exponential-parameter-log": {
     "factor": 2,
@@ -5564,10 +5006,6 @@
     "opposite": 1,
     "squares": 1
   },
-  "lesson:regents-quartile-list": {
-    "average": 2,
-    "quarter": 2
-  },
   "lesson:regents-radical-function-value": {
     "root": 8,
     "rule": 4,
@@ -5690,19 +5128,6 @@
     "squaring": 3,
     "term": 3
   },
-  "lesson:regents-two-way-share": {
-    "sorts": 1,
-    "whole": 3,
-    "wholes": 1
-  },
-  "lesson:regression-interpretation": {
-    "change": 3,
-    "changes": 1,
-    "impossible": 1,
-    "squared": 1,
-    "unit": 1,
-    "units": 5
-  },
   "lesson:regression-prediction-select-lesson": {
     "change": 4,
     "range": 1,
@@ -5762,14 +5187,6 @@
     "differences": 7,
     "model": 12,
     "third": 1
-  },
-  "lesson:residuals-correlation": {
-    "leaves": 1,
-    "model": 2,
-    "rule": 1
-  },
-  "lesson:return-claim-check": {
-    "scale": 1
   },
   "lesson:right-triangle-missing-leg": {
     "difference": 3,
@@ -5895,17 +5312,6 @@
     "sample": 6,
     "samples": 2
   },
-  "lesson:sampling": {
-    "average": 1,
-    "mean": 2,
-    "more than": 1,
-    "part": 1,
-    "population": 5,
-    "sample": 13,
-    "samples": 3,
-    "scale": 1,
-    "whole": 3
-  },
   "lesson:sas-area-steps": {
     "base": 1,
     "degree": 2,
@@ -5923,11 +5329,6 @@
     "leaves": 2,
     "rule": 1,
     "third": 1,
-    "whole": 1
-  },
-  "lesson:sat-entry-absolute-equation": {
-    "right side": 2,
-    "squaring": 1,
     "whole": 1
   },
   "lesson:sat-entry-fn-exponential": {
@@ -5952,12 +5353,6 @@
     "term": 2,
     "whole": 1
   },
-  "lesson:sat-entry-inequality-integer": {
-    "boundary": 5,
-    "range": 3,
-    "side": 1,
-    "whole": 1
-  },
   "lesson:sat-entry-polynomial-zeros": {
     "factor": 8,
     "factors": 2,
@@ -5968,12 +5363,6 @@
     "average": 1,
     "factor": 1,
     "vertex": 1
-  },
-  "lesson:sat-entry-quadratic-solution": {
-    "factor": 5,
-    "factors": 1,
-    "product": 1,
-    "term": 2
   },
   "lesson:sat-entry-radian-conversion": {
     "degree": 2,
@@ -5989,37 +5378,8 @@
     "squared": 2,
     "squaring": 3
   },
-  "lesson:sat-entry-rate-numeric": {
-    "average": 1,
-    "balance": 2,
-    "net": 1,
-    "unit": 1,
-    "units": 1
-  },
   "lesson:sat-entry-rational-equation": {
     "factor": 3,
-    "terms": 1
-  },
-  "lesson:sat-entry-root-relations": {
-    "product": 2,
-    "terms": 2
-  },
-  "lesson:sat-entry-system-expression": {
-    "combination": 2,
-    "difference": 1,
-    "left side": 3,
-    "multiple": 1,
-    "multiples": 1,
-    "right side": 1,
-    "scale": 1,
-    "side": 2,
-    "sides": 9
-  },
-  "lesson:sat-entry-system-solve": {
-    "leaves": 1,
-    "opposite": 1,
-    "opposites": 2,
-    "right side": 1,
     "terms": 1
   },
   "lesson:sat-fn-constraint-choice": {
@@ -6069,11 +5429,6 @@
     "vertices": 2,
     "whole": 1
   },
-  "lesson:savings-plan-growth": {
-    "balance": 8,
-    "difference": 1,
-    "whole": 2
-  },
   "lesson:scale-drawing-work": {
     "change": 1,
     "factor": 2,
@@ -6094,17 +5449,6 @@
     "unit": 3,
     "units": 2
   },
-  "lesson:scale-factor-effects-blanks": {
-    "change": 1,
-    "factor": 1,
-    "image": 1,
-    "one quarter": 1,
-    "rule": 1,
-    "scales": 2,
-    "sides": 1,
-    "square": 2,
-    "units": 4
-  },
   "lesson:scaled-graphs": {
     "interval": 1,
     "intervals": 1,
@@ -6112,11 +5456,6 @@
     "more than": 1,
     "scale": 3,
     "whole": 1
-  },
-  "lesson:scatterplots": {
-    "change": 4,
-    "unit": 1,
-    "units": 1
   },
   "lesson:scientific-notation": {
     "change": 1,
@@ -6235,12 +5574,6 @@
     "more than": 1,
     "side": 1,
     "sides": 1
-  },
-  "lesson:signed-changes-sum": {
-    "change": 9,
-    "changes": 5,
-    "net": 7,
-    "terms": 3
   },
   "lesson:signed-context-order": {
     "balance": 7,
@@ -6678,11 +6011,6 @@
     "product": 1,
     "products": 1
   },
-  "lesson:statistical-questions": {
-    "center": 2,
-    "multiple": 1,
-    "whole": 1
-  },
   "lesson:statistical-report-critique": {
     "certain": 1,
     "change": 1,
@@ -6691,32 +6019,11 @@
     "samples": 1,
     "whole": 2
   },
-  "lesson:statistical-summary-comparison": {
-    "average": 4,
-    "center": 3,
-    "change": 5,
-    "changes": 2,
-    "difference": 1,
-    "mean": 16,
-    "part": 1,
-    "range": 6,
-    "side": 1,
-    "sides": 1,
-    "tail": 4
-  },
   "lesson:statistics-mean": {
     "arithmetic mean": 3,
     "mean": 10,
     "model": 1,
     "units": 1
-  },
-  "lesson:stem-leaf-construct": {
-    "key": 6,
-    "leaf": 8,
-    "leaves": 11,
-    "sort": 1,
-    "stem": 16,
-    "stems": 3
   },
   "lesson:stem-leaf-match-select-lesson": {
     "leaf": 2,
@@ -6905,11 +6212,6 @@
     "squares": 1,
     "tangent": 13,
     "tangents": 2
-  },
-  "lesson:tax-bracket-owed": {
-    "boundary": 1,
-    "increasing": 1,
-    "part": 1
   },
   "lesson:tens-and-extra-ones": {
     "cubes": 1,
@@ -7209,14 +6511,6 @@
     "side": 1,
     "solid": 1
   },
-  "lesson:two-way-tables": {
-    "combination": 1,
-    "difference": 1,
-    "eighth": 4,
-    "population": 1,
-    "sample": 1,
-    "sorts": 1
-  },
   "lesson:unit-chain-conversion": {
     "change": 1,
     "changes": 1,
@@ -7233,12 +6527,6 @@
   "lesson:unit-circle-coordinate": {
     "degrees": 2,
     "side": 1
-  },
-  "lesson:unit-cost": {
-    "model": 1,
-    "scale": 1,
-    "unit": 3,
-    "units": 1
   },
   "lesson:unit-fraction-cube-packing": {
     "cube": 15,
@@ -7265,9 +6553,6 @@
   "lesson:unit-price-sentence-slots": {
     "whole": 1
   },
-  "lesson:unit-rate-pair-blanks": {
-    "unit": 2
-  },
   "lesson:unit-size-and-count": {
     "change": 1,
     "changes": 1,
@@ -7285,17 +6570,6 @@
     "parts": 1,
     "scale": 1,
     "whole": 3
-  },
-  "lesson:variability": {
-    "average": 3,
-    "averages": 1,
-    "boundaries": 1,
-    "center": 1,
-    "change": 1,
-    "differences": 1,
-    "mean": 15,
-    "more than": 1,
-    "range": 1
   },
   "lesson:variable-in-situation-lesson": {
     "change": 1,
@@ -7348,9 +6622,6 @@
     "squares": 1,
     "unit": 3
   },
-  "lesson:wage-and-cost-blanks": {
-    "change": 5
-  },
   "lesson:whole-add-subtract": {
     "mean": 1,
     "unit": 2,
@@ -7386,13 +6657,6 @@
   },
   "like-fraction-missing-part": {
     "inverse": 1
-  },
-  "likelihood-in-words": {
-    "certain": 5,
-    "event": 15,
-    "faces": 6,
-    "impossible": 4,
-    "more than": 2
   },
   "line-from-point-steps": {
     "change": 28
@@ -7453,20 +6717,6 @@
     "period": 6,
     "periods": 5,
     "whole": 23
-  },
-  "loan-compare-options": {
-    "change": 1,
-    "term": 1
-  },
-  "loan-offer-compare-blanks": {
-    "difference": 2
-  },
-  "loan-total-cost": {
-    "difference": 11,
-    "more than": 3,
-    "part": 1,
-    "term": 3,
-    "terms": 1
   },
   "long-division-quotient": {
     "more than": 34,
@@ -7578,48 +6828,12 @@
   "mcas-true-quotient-equations": {
     "product": 1
   },
-  "mean-median-blanks": {
-    "fourth": 1,
-    "mean": 58,
-    "sort": 1,
-    "sorting": 1,
-    "third": 1
-  },
-  "mean-missing-value": {
-    "mean": 22
-  },
-  "means-in-mads": {
-    "centers": 9,
-    "difference": 2,
-    "mean": 6
-  },
   "measurable-attribute-choice": {
     "third": 1,
     "unit": 3
   },
-  "measure-meaning-choice": {
-    "center": 1,
-    "difference": 14,
-    "mean": 8,
-    "mode": 14,
-    "range": 12
-  },
   "measure-with-units": {
     "units": 5
-  },
-  "median-data": {
-    "arithmetic mean": 1,
-    "average": 1,
-    "fourth": 7,
-    "mean": 4,
-    "sorting": 1,
-    "third": 7
-  },
-  "median-mode-compare-blanks": {
-    "mode": 67,
-    "modes": 8,
-    "more than": 1,
-    "sort": 2
   },
   "mental-ten-hundred": {
     "change": 2,
@@ -7659,11 +6873,6 @@
     "change": 1,
     "unit": 8,
     "units": 1
-  },
-  "mode-of-data": {
-    "mode": 34,
-    "modes": 1,
-    "more than": 9
   },
   "money-left-story": {
     "quarter": 21,
@@ -7773,13 +6982,6 @@
     "side": 7,
     "solid": 1,
     "square": 27
-  },
-  "net-worth-statement": {
-    "balance": 1,
-    "change": 12,
-    "changes": 22,
-    "side": 1,
-    "sort": 2
   },
   "number-between-bounds": {
     "mean": 1,
@@ -7894,39 +7096,10 @@
   "pay-exact-coins": {
     "changes": 1
   },
-  "payroll-property-tax": {
-    "unit": 1,
-    "units": 5
-  },
-  "percent-amounts-blanks": {
-    "more than": 14,
-    "part": 13,
-    "whole": 2
-  },
   "percent-applications": {
     "changes": 1,
     "difference": 2,
     "part": 2
-  },
-  "percent-chain": {
-    "changes": 4,
-    "factor": 7,
-    "factors": 6,
-    "more than": 5
-  },
-  "percent-change-final": {
-    "change": 4,
-    "factor": 2,
-    "leaves": 3
-  },
-  "percent-change-original": {
-    "base": 1,
-    "change": 24,
-    "leaves": 1
-  },
-  "percent-change-rate": {
-    "change": 82,
-    "difference": 1
   },
   "percent-forms-and-parts": {
     "change": 2,
@@ -8042,12 +7215,6 @@
     "factors": 1,
     "product": 6
   },
-  "probability-on-number-line": {
-    "certain": 1,
-    "event": 6,
-    "faces": 12,
-    "impossible": 1
-  },
   "product-of-powers-exponent": {
     "product": 1,
     "rule": 1
@@ -8105,20 +7272,10 @@
     "sides": 7,
     "square": 4
   },
-  "range-data": {
-    "opposite": 1,
-    "range": 17,
-    "unit": 1
-  },
   "ratio-missing": {
     "factor": 32,
     "parts": 1,
     "scale": 20
-  },
-  "ratio-pair-blanks": {
-    "part": 55,
-    "parts": 58,
-    "whole": 19
   },
   "rational-area-volume-equation": {
     "base": 23,
@@ -8204,14 +7361,6 @@
     "square": 27,
     "whole": 1
   },
-  "representative-sample-choice": {
-    "population": 11,
-    "sample": 8,
-    "whole": 2
-  },
-  "return-claim-check": {
-    "scale": 12
-  },
   "right-triangle-missing-leg": {
     "difference": 1,
     "opposite": 19,
@@ -8286,23 +7435,6 @@
     "whole": 6,
     "wholes": 1
   },
-  "sample-estimates-plot": {
-    "mean": 41,
-    "population": 2,
-    "sample": 37,
-    "samples": 31,
-    "whole": 1
-  },
-  "sample-proportion-estimate": {
-    "population": 37,
-    "sample": 42
-  },
-  "savings-plan-growth": {
-    "balance": 11,
-    "balances": 1,
-    "difference": 1,
-    "whole": 3
-  },
   "scale-drawing": {
     "scale": 32,
     "side": 14,
@@ -8316,15 +7448,6 @@
     "scale": 39,
     "scales": 2,
     "square": 21
-  },
-  "scale-factor-effects-blanks": {
-    "changes": 1,
-    "image": 19,
-    "product": 8,
-    "side": 1,
-    "sides": 20,
-    "square": 1,
-    "squared": 1
   },
   "scaled-bar-graph": {
     "scale": 14,
@@ -8385,10 +7508,6 @@
   },
   "show-work-rental-plans": {
     "more than": 7
-  },
-  "signed-changes-sum": {
-    "net": 33,
-    "terms": 2
   },
   "signed-context-order": {
     "balance": 17,
@@ -8627,16 +7746,6 @@
   "standard-to-scientific": {
     "standard form": 1
   },
-  "stem-leaf-construct": {
-    "key": 6,
-    "leaf": 16,
-    "leaves": 76,
-    "part": 1,
-    "sorts": 1,
-    "stem": 132,
-    "stems": 30,
-    "units": 1
-  },
   "stem-leaf-match-select": {
     "leaf": 3,
     "leaves": 20,
@@ -8790,10 +7899,6 @@
     "jump": 1,
     "part": 1
   },
-  "tax-bracket-owed": {
-    "increasing": 1,
-    "whole": 4
-  },
   "ten-frame-complement": {
     "complements": 1
   },
@@ -8844,17 +7949,6 @@
     "degrees": 4,
     "image": 21,
     "rule": 22
-  },
-  "trend-line-predict": {
-    "change": 42,
-    "changes": 20,
-    "opposite": 1
-  },
-  "trend-slope-meaning": {
-    "change": 58,
-    "changes": 1,
-    "degree": 4,
-    "units": 1
   },
   "triangle-angle-sum": {
     "sides": 14
@@ -8915,22 +8009,6 @@
     "sides": 44,
     "unit": 1
   },
-  "two-way-association-choice": {
-    "difference": 1,
-    "population": 1
-  },
-  "two-way-missing": {
-    "combination": 1,
-    "eighth": 9,
-    "sorts": 1
-  },
-  "two-way-row-percent": {
-    "eighth": 5
-  },
-  "typical-value-choice": {
-    "jump": 4,
-    "mean": 13
-  },
   "unequal-step-rate": {
     "change": 62,
     "rule": 1
@@ -8962,10 +8040,6 @@
   "unit-price-sentence-slots": {
     "unit": 2
   },
-  "unit-rate-pair-blanks": {
-    "unit": 4,
-    "units": 2
-  },
   "unit-relative-size": {
     "more than": 2,
     "unit": 27,
@@ -8995,11 +8069,6 @@
     "opposite": 1,
     "product": 3,
     "whole": 1
-  },
-  "wage-and-cost-blanks": {
-    "change": 25,
-    "changes": 20,
-    "difference": 1
   },
   "wallet-purchase-chain": {
     "unit": 1
