@@ -224,7 +224,7 @@ export const reasonableMeasure = chainFamily({
       hint: `Picture ${thing.phrase}. Then test the number ${fmt(n)} with the units: could it really be ${measure(m.wrong[0]!)}, or ${measure(m.wrong[1]!)}? Decide which unit gives an amount that fits.`,
       explanation: [
         `A unit is the size of one step of measuring. The same thing needs a big number of small units, or a small number of big units.`,
-        `${an(one(unit))[0]!.toUpperCase()}${an(one(unit)).slice(1)} ${one(unit)} suits ${sizeNote(thing.attr, unit)}, and ${thing.phrase} is about that size.`,
+        `${an(one(unit))[0]!.toUpperCase()}${an(one(unit)).slice(1)} ${one(unit)} is a good unit for ${sizeNote(thing.attr, unit)}, so ${measure(unit)} is a sensible amount for ${thing.phrase}.`,
         ...m.wrong.map(
           (u) =>
             `${measure(u)} would be ${n * size[thing.attr][u]! > n * size[thing.attr][unit]! ? `far too much, because ${an(one(u))} ${one(u)} is much bigger than ${an(one(unit))} ${one(unit)}` : `far too little, because ${an(one(u))} ${one(u)} is much smaller than ${an(one(unit))} ${one(unit)}`}.`,

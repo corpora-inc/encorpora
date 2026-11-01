@@ -1015,7 +1015,7 @@ function compositePrismCase(r: Random, surface: boolean): Case {
     const qd = shape.face[(i + 1) % shape.face.length]!;
     return Math.abs(qd[0] - p[0]) + Math.abs(qd[1] - p[1]);
   });
-  const findSides = `Every corner of the front face is a right angle, so opposite edges line up. ${hidden.map((h) => `${h.text[0]!.toUpperCase()}${h.text.slice(1)}.`).join(" ")}`;
+  const findSides = `Every corner of the front face is a square corner (a right angle), whether it turns in or out, so opposite edges line up. ${hidden.map((h) => `${h.text[0]!.toUpperCase()}${h.text.slice(1)}.`).join(" ")}`;
   const faceStep = `Split the front face into rectangles: ${list(partsText(shape))}. Its area is ${shape.parts.map(([, w, h]) => w * h).join(" + ")} = ${face}.`;
   const intro = `A right prism has the ${describe[shape.name]} front face shown and is ${len(depth, u)} deep. All angles are right angles. Lengths are in ${unitWords[u][1]}.`;
   if (!surface)
