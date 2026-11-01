@@ -156,7 +156,7 @@ export const transformationLessons: Lesson[] = [
         stage: "intuition",
         title: "A right triangle under every segment",
         paragraphs: [
-          "A right triangle has one right angle, a square corner. The two sides that form the right angle are the legs, and the longest side, opposite the right angle, is the hypotenuse. The Pythagorean theorem says that for every right triangle, leg² + leg² = hypotenuse².",
+          "A right triangle has one right angle, a square corner. The two sides that form the right angle are the legs, and the longest side, opposite the right angle, is the hypotenuse. Squared means multiplied by itself: $8^2=8\\times8=64$. The Pythagorean theorem says that for every right triangle, leg² + leg² = hypotenuse².",
           "From $A(−3, −1)$, move horizontally to (5, −1), then vertically to $B(5, 5)$. These moves are the legs of a right triangle whose hypotenuse is $AB$. The horizontal leg is the change in x: 5 − (−3) = 8. The vertical leg is the change in y: 5 − (−1) = 6. So $AB^2 = 8^2 + 6^2 = 64 + 36 = 100$, and $AB = 10$, because 10 × 10 = 100.",
         ],
         illustration: "distance-triangle",

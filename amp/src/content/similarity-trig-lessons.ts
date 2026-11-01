@@ -2,13 +2,59 @@ import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
+const GEO_SENSES = {
+  side: "side",
+  vertex: "vertex",
+  degrees: "degree-angle",
+  "corresponding angles": "corresponding-angles",
+  similar: "similar-figures",
+  image: "image-transformation",
+  center: "center",
+  radius: "radius",
+  plane: "plane",
+  base: "base-shape",
+  face: "face-solid",
+  edge: "edge",
+  solid: "solid-shape",
+  unit: "unit",
+  tangent: "tangent-trig",
+} as const;
+const GEO_NOLINK = [
+  "opposite",
+  "part",
+  "parts",
+  "rule",
+  "rules",
+  "third",
+  "whole",
+  "change",
+  "changes",
+  "square",
+  "squares",
+  "factor",
+  "factors",
+  "more than",
+  "leaves",
+  "mean",
+  "product",
+  "term",
+  "terms",
+  "scale",
+  "multiple",
+  "one third",
+  "prime",
+  "opposite side",
+];
+
 export const similarityTrigLessons: Lesson[] = [
   {
     id: "dilations-and-similar-triangles",
     title: "Dilations and similar triangles",
     summary:
-      "A dilation resizes a figure by one positive scale factor, multiplying every length by it while keeping angles. Triangles with two pairs of equal angles are similar: matching sides share one ratio.",
+      "A dilation resizes a figure from a fixed point, called the center: every length is multiplied by the same positive number, the scale factor, and every angle stays the same. Two triangles are called similar when one is a resized copy of the other, maybe moved or flipped. Two pairs of equal angles are enough to show it. Then every side divided by its matching side gives the same number.",
     templateIds: ["dilation-measure", "similar-triangle-side"],
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     includeGeneratedRepresentation: false,
     objectives: [
       "Use a dilation's center and scale factor to find image lengths and image points, and name what a dilation keeps.",
@@ -19,7 +65,7 @@ export const similarityTrigLessons: Lesson[] = [
         stage: "intuition",
         title: "A dilation scales every length",
         paragraphs: [
-          "A dilation with center $O$ and scale factor $k$ moves each point $P$ along the ray from $O$ through $P$, to the point $k$ times as far from $O$. With k > 1 the figure grows; with 0 < k < 1 it shrinks.",
+          "A dilation with center $O$ and scale factor $k$ moves each point $P$ along the ray from $O$ through $P$, to the point $k$ times as far from $O$. When $k>1$ the figure grows, and when $0<k<1$ it shrinks.",
           "Every length is multiplied by $k$, wherever the center is. Angles keep their measure. A line that misses the center maps to a parallel line, so slopes are kept too. With a center $C$ other than the origin, scale the step from $C$ to $P$, then add it back to $C$: $P'$ = $C$ + $k(P - C)$.",
         ],
         illustration: "similarity-dilation",
@@ -36,7 +82,7 @@ export const similarityTrigLessons: Lesson[] = [
         title: "Parallel lines, shadows, perimeter and area",
         paragraphs: [
           "A segment $DE$ parallel to side $BC$, with $D$ on $AB$ and $E$ on $AC$, cuts off a small triangle $ADE$ similar to $ABC$: the angles at $D$ and $B$ are equal, and so are those at $E$ and $C$. Its side $AD$ matches all of $AB$, not $DB$.",
-          "Shadows cast at the same moment make similar right triangles: height matches height and shadow matches shadow. When lengths scale by $k$, a perimeter scales by $k$ and an area scales by k × k.",
+          "A right triangle has one square corner. Upright objects on flat ground, lit by the sun at the same moment, cast shadows that make similar right triangles. Height matches height, and shadow matches shadow. When lengths scale by $k$, a perimeter scales by $k$ and an area scales by $k\\times k$.",
         ],
       },
     ],
@@ -66,14 +112,16 @@ export const similarityTrigLessons: Lesson[] = [
       "Area scales by the square of the scale factor, not by the factor itself.",
     ],
     parentGuide:
-      "Hold a coin between a lamp and a wall and move it closer to the lamp: the shadow grows, but stays a circle. Measure the coin and its shadow, and check that the shadow is the same number of times wider as it is taller.",
+      "On a sunny day, measure the height and shadow of a person and of a pole at the same moment. Check that height divided by shadow length is about the same for both.",
   },
   {
     id: "right-triangle-trigonometry",
     title: "Right-triangle trigonometry",
     summary:
-      "Right triangles with the same acute angle share the same ratios of side lengths. Those ratios can find a missing side without a scale drawing.",
+      "A right triangle has one square corner. All right triangles with the same other angle have the same shape, so the ratios of their sides match. These ratios depend only on the angle. With them you can find a missing side from one side and an angle, without drawing to scale.",
     templateIds: ["special-right-triangle", "trig-ratio", "complementary-trig"],
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     includeGeneratedRepresentation: false,
     objectives: [
       "Write sin, cos and tan of an acute angle as exact ratios of sides, and find a side from a ratio.",
@@ -141,7 +189,7 @@ export const similarityTrigLessons: Lesson[] = [
       "In a 30°-60°-90° triangle the shorter leg is opposite 30°, and the hypotenuse is twice it.",
     ],
     parentGuide:
-      "Lean a ruler against a wall at different angles. Measure the height it reaches and divide by its length, then compare with a calculator's sine of the angle you measure with a protractor.",
+      "Lean a ruler against a wall. Measure the height it reaches and divide by the ruler's length. Then measure the angle between the ruler and the floor with a protractor, and compare with a calculator's sine of that angle.",
   },
 ];
 
@@ -155,6 +203,10 @@ const terms = {
 export const similarityTrigMethods: Record<string, ProblemMethod> = {
   "dilation-measure": {
     goal: "Use a dilation's scale factor and center to find lengths, the factor, image points or what is kept.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "A dilation resizes a figure from a fixed point, called the center. Each point moves along the ray (a half-line) from the center through it, to $k$ times as far away. The number $k$, which is positive, is the scale factor. So every length is multiplied by $k$, and every angle stays the same. A scale factor above 1 enlarges, and one between 0 and 1 shrinks. To dilate point $P$ about center $C$, multiply the step from $C$ to $P$ by $k$, then add it back to $C$.",
     terms: terms.dilation,
     method: [
       "Lengths: multiply by the scale factor; the factor is image length ÷ original length.",
@@ -166,6 +218,10 @@ export const similarityTrigMethods: Record<string, ProblemMethod> = {
   },
   "similar-triangle-side": {
     goal: "Find a missing length from similar triangles.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "Two triangles are called similar when they have the same shape: one is a resized copy of the other. Every side of one is the same number, the scale factor, times its matching side in the other. Two pairs of equal angles are enough to make triangles similar, because the third angles then match too. A perimeter, the distance around, grows by the scale factor. An area grows by the scale factor times itself.",
     terms: terms.similar,
     method: [
       "Match the sides by the order of the names, or by the equal angles.",
@@ -177,6 +233,10 @@ export const similarityTrigMethods: Record<string, ProblemMethod> = {
   },
   "special-right-triangle": {
     goal: "Find a side of a 45°-45°-90° or 30°-60°-90° triangle from another side.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "A right triangle has one square corner. Its longest side, across from that corner, is the hypotenuse, and the other two sides are the legs. A triangle with angles of $45^\\circ$, $45^\\circ$ and $90^\\circ$ has legs $s$ and $s$ and hypotenuse $s\\sqrt2$, where $\\sqrt2$ is the positive number that times itself makes 2. A triangle with angles $30^\\circ$, $60^\\circ$ and $90^\\circ$ has a shorter leg $s$, across from $30^\\circ$. Its longer leg is $s\\sqrt3$, and its hypotenuse is $2s$.",
     terms: terms.special,
     method: [
       "Name the given side: a leg, the hypotenuse, the shorter leg or the longer leg.",
@@ -188,6 +248,10 @@ export const similarityTrigMethods: Record<string, ProblemMethod> = {
   },
   "trig-ratio": {
     goal: "Write sin, cos or tan of an angle as an exact ratio, or find a side from one.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "In a right triangle, the longest side, across from the square corner, is the hypotenuse, and the other two sides are the legs. Pick one of the other angles, $A$. The leg across from $A$ is the opposite side, and the leg touching $A$ is the adjacent side. The sine is the opposite side divided by the hypotenuse, written $\\sin A$. The cosine is the adjacent side divided by the hypotenuse, written $\\cos A$. The tangent is the opposite side divided by the adjacent side, written $\\tan A$.",
     terms: terms.trig,
     method: [
       "Find any missing side with the Pythagorean theorem.",
@@ -199,13 +263,17 @@ export const similarityTrigMethods: Record<string, ProblemMethod> = {
   },
   "complementary-trig": {
     goal: "Use $\\sin A = \\cos(90° - A)$ to find an angle, a variable or a ratio.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "In a right triangle, the two angles other than the square corner add to $90^\\circ$. Angles that add to $90^\\circ$ are called complementary. The longest side, across from the square corner, is called the hypotenuse, and the other two are called the legs. The leg across from one of these angles is the leg next to the other. So the sine of one angle (opposite over hypotenuse) equals the cosine of the other (adjacent over hypotenuse). That is why $\\sin A=\\cos(90^\\circ-A)$.",
     terms: terms.complement,
     method: [
       "Recognize a sine and a cosine of two angles that must be complementary.",
       "Set the two angles' sum to 90 and solve, or read the other ratio directly.",
     ],
     watch:
-      "sin $A$ = cos $A$ only when A = 45°; the cosine that matches sin $A$ belongs to the other angle.",
+      "$\\sin A=\\cos A$ only when $A=45^\\circ$. The cosine that matches $\\sin A$ belongs to the other angle.",
   },
 };
 export const similarityTrigPrinciples: Record<string, string> = {
