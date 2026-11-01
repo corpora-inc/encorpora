@@ -24,6 +24,7 @@ import {
   workbookTemplateIds,
 } from "../src/workbook/results.js";
 import { defaultPracticeSettings } from "../src/learning/practice-settings.js";
+import { shortResultLabels as shortLabels } from "../src/workbook/result-labels.js";
 import { sampleLearners, simulateLearner } from "../src/workbook/synthetic.js";
 
 const learnerId = "3c2b1a0f-9e8d-4c7b-8a6f-5e4d3c2b1a0f";
@@ -118,6 +119,16 @@ test("results are graded by the app's grader, stored as paper evidence, and idem
   const generated = workbookProblems(rows[0]!.spec);
   assert.equal(body.rows.length, generated.length);
   assert.ok(body.rows.every((r: { recorded: unknown }) => r.recorded === null));
+  const specItems = rows[0]!.spec.sections.flatMap((s) => s.items);
+  assert.deepEqual(
+    body.rows.map((r: { label: string }) => r.label),
+    specItems.map(
+      (i) =>
+        templates.find((t) => t.id === i.templateId)!.title.length > 0 &&
+        (shortLabels[i.templateId] ??
+          templates.find((t) => t.id === i.templateId)!.title),
+    ),
+  );
   const typed = body.rows.findIndex(
     (r: { entry: string }) => r.entry === "number",
   );
@@ -376,4 +387,27 @@ test("a paper mark weighs half in the estimate and never confirms a band alone",
   assert.ok(evidence.every((e) => e.independentCorrect === 0));
   assert.ok(evidence.every((e) => e.recentIndependentCorrect === 0));
   void generateProblem;
+});
+
+test("results rows are named by the problem type's authored title, never a de-slugged id", async () => {
+  const { resultLabel, shortResultLabels } =
+    await import("../src/workbook/result-labels.js");
+  const { printable } = await import("../src/workbook/compose.js");
+  const byId = new Map(templates.map((t) => [t.id, t]));
+  for (const [id, short] of Object.entries(shortResultLabels)) {
+    const template = byId.get(id);
+    assert.ok(template, `${id} is a real problem type`);
+    assert.ok(short.length < template.title.length, `${id} label is shorter`);
+    assert.match(short, /^[A-Z]/, `${id} label is sentence case`);
+  }
+  for (const t of templates.filter(printable)) {
+    const label = resultLabel(t.id);
+    assert.equal(label, shortResultLabels[t.id] ?? t.title);
+    assert.notEqual(label, t.id);
+  }
+  // The skill names this replaces read like ids.
+  assert.equal(
+    resultLabel("read-clock-five-minutes"),
+    "Read a clock to five minutes",
+  );
 });

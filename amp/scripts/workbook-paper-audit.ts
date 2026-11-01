@@ -20,12 +20,16 @@ import type { WorkbookItem, WorkbookSpec } from "../src/workbook/compose";
 import { paperExclusions } from "../src/workbook/paper-exclusions";
 import { waitForWorkbookLayout } from "../src/workbook/pdf";
 import { workbookHtml } from "../src/workbook/render";
+import { composeWorkbook, printable } from "../src/workbook/compose";
+import { resultLabel } from "../src/workbook/result-labels";
+import { sampleLearners, simulateLearner } from "../src/workbook/synthetic";
 
 const nodes = new Map(skills.map((s) => [s.id, s]));
 const skillTitle = (id: string) => nodes.get(id)?.title ?? id;
 const chunk = Number(process.env.AUDIT_CHUNK) || 40;
 const only = process.env.AUDIT_ONLY?.split(",");
 const failures: { templateId: string; reasons: string[] }[] = [];
+const longLabels: string[] = [];
 const browser = await chromium.launch({ headless: true });
 try {
   const page = await browser.newPage();
@@ -127,6 +131,44 @@ try {
       });
       process.stdout.write(`${Math.min(start + chunk, pass.list.length)} `);
     }
+  // Results-page labels: every printable problem type's label in the
+  // narrowest results tile (the 4-column grid of a 60-minute workbook).
+  const labelPage = await browser.newPage();
+  const sample = sampleLearners.find((l) => l.id === "eighth-grade")!;
+  const simulated = simulateLearner(sample, Date.parse("2026-11-01T12:00:00Z"));
+  const dense = composeWorkbook({
+    templates,
+    skills,
+    lessons,
+    frontier: simulated.frontier,
+    evidence: simulated.evidence,
+    date: "2026-11-01",
+    minutes: 60,
+    learnerKey: sample.id,
+  });
+  await labelPage.setContent(
+    workbookHtml(dense, { lessons, skillTitle, paper: "letter" }),
+    { waitUntil: "load" },
+  );
+  await waitForWorkbookLayout(labelPage);
+  const labels = templates
+    .filter((t) => printable(t))
+    .map((t) => ({ id: t.id, label: resultLabel(t.id) }));
+  const tooLong = await labelPage.evaluate((labels) => {
+    if (!document.querySelector(".wb-results-grid--dense"))
+      return ["the sample results grid is not the dense one"];
+    const tile = document.querySelector(".wb-tile-skill") as HTMLElement;
+    const line = parseFloat(getComputedStyle(tile).lineHeight);
+    return labels
+      .filter((l) => {
+        tile.textContent = l.label;
+        return Math.round(tile.getBoundingClientRect().height / line) > 3;
+      })
+      .map((l) => l.id);
+  }, labels);
+  await labelPage.close();
+  longLabels.push(...tooLong);
+  console.log(`\n${labels.length} results labels measured`);
 } finally {
   await browser.close();
 }
@@ -147,6 +189,12 @@ const unlisted = [...new Set(failures.map((f) => f.templateId))].filter(
 if (unlisted.length) {
   console.error(
     `Not in paper-exclusions.ts: ${unlisted.join(", ")}. Fix their print or list them.`,
+  );
+  process.exit(1);
+}
+if (longLabels.length) {
+  console.error(
+    `Results labels longer than three lines in the narrowest tile: ${longLabels.join(", ")}. Add a short label in src/workbook/result-labels.ts.`,
   );
   process.exit(1);
 }
