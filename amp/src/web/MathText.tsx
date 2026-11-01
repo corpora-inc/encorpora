@@ -1,5 +1,10 @@
 import katex from "katex";
+import { useContext } from "react";
 import { segments } from "../content/math-segments";
+import { linkProse } from "../glossary/scan";
+import type { TermId } from "../glossary/types";
+import { GlossaryBlockContext, GlossaryContext } from "./ui/glossary-context";
+import { Term } from "./ui/Term";
 
 export { segments, toTex } from "../content/math-segments";
 
@@ -9,6 +14,27 @@ export { segments, toTex } from "../content/math-segments";
  * and anything KaTeX cannot parse falls back to the original text. */
 export function MathText({ text }: { text: string }) {
   const parts = segments(text);
+  const glossary = useContext(GlossaryContext);
+  const block = useContext(GlossaryBlockContext);
+  // Inside a glossary block, prose links the block's first use of each term
+  // to its card; formulas are never linked. Elsewhere, text is unchanged.
+  const index = glossary && block ? block.texts.indexOf(text) : -1;
+  const linked = new Set<TermId>();
+  const prose = (run: string) => {
+    if (!glossary || !block || index < 0) return run;
+    return linkProse(run, glossary.lexicon).map((piece, j) => {
+      const id = piece.id;
+      if (
+        !id ||
+        linked.has(id) ||
+        !glossary.cards.has(id) ||
+        block.first.get(id) !== index
+      )
+        return piece.text;
+      linked.add(id);
+      return <Term key={j} id={id} text={piece.text} />;
+    });
+  };
   return (
     <>
       {parts.map((segment, i) => {
@@ -19,7 +45,7 @@ export function MathText({ text }: { text: string }) {
             prev?.math && !BARE_SYMBOL.test(prev.text)
               ? segment.text.replace(CLOSING, "")
               : segment.text;
-          return text ? <span key={i}>{text}</span> : null;
+          return text ? <span key={i}>{prose(text)}</span> : null;
         }
         const next = parts[i + 1];
         // Closing punctuation is set with its formula so a line never starts

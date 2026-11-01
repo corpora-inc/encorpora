@@ -1,0 +1,349 @@
+/* Glossary terms and their cards (Term.tsx, KeyWords.tsx, TermCard.tsx).
+   Tokens only; a term never changes the line it sits in. */
+
+/* A word in running text: reads as text, with a dotted underline and a small
+   raised "?". Its 44 px hit area is a pseudo-element, so the line box is the
+   same as plain text. */
+.glossary-term {
+  position: relative;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--color-primary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.24em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--motion-fast) ease;
+}
+.glossary-term::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100%, 44px);
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
+.glossary-term:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+  text-decoration-style: solid;
+}
+.glossary-term:active:not(:disabled) {
+  transform: none;
+}
+.glossary-term:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+/* A small badge set above the x-height. Inline-flex at the baseline with a
+   relative offset: it moves visually, never the line. */
+.glossary-term-mark {
+  position: relative;
+  top: -0.55em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4em;
+  height: 1.4em;
+  margin-left: 0.15em;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+  font-size: 0.6em;
+  font-style: normal;
+  font-weight: 750;
+  line-height: 1;
+  vertical-align: baseline;
+  text-decoration: none;
+}
+
+/* Key words: the lesson's terms, first use first. */
+.key-words h3 {
+  margin: 0 0 var(--space-2);
+}
+.key-words ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.problem-lesson .key-words li {
+  margin: 0;
+}
+.key-word {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 44px;
+  margin: 0;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.key-word:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-secondary-hover);
+}
+.key-word:active:not(:disabled) {
+  transform: none;
+  background: var(--color-secondary-active);
+}
+.key-word:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.key-word .glossary-term-mark {
+  top: 0;
+  margin-left: 0;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font-size: 0.72em;
+}
+
+/* The card's dialog covers the viewport and is transparent, so a step
+   (open, drill down, back) only ever replaces the panel inside it: nothing
+   that stays on screen moves. */
+.term-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: transparent;
+  color: var(--color-on-surface-raised);
+}
+.term-dialog::backdrop {
+  background: var(--color-scrim);
+}
+.term-card {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: min(85dvh, 640px);
+  padding: 0 var(--space-5) calc(var(--space-5) + env(safe-area-inset-bottom));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  box-shadow: var(--shadow-overlay);
+}
+/* Grab area: the whole 44 px band, not only the pill. */
+.term-card-grab {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  margin: 0 calc(-1 * var(--space-5));
+  cursor: grab;
+  touch-action: none;
+}
+.term-card-grab span {
+  width: 40px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--color-border-strong);
+}
+.term-card-header {
+  display: flex;
+  flex: none;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+.term-card-titles {
+  flex: 1;
+  min-width: 0;
+  padding-top: var(--space-2);
+}
+.term-card-trail {
+  margin: 0 0 2px;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  line-height: 1.3;
+}
+.term-card-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+}
+.term-card-header h2:focus {
+  outline: none;
+}
+.term-card-header h2:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.term-card-back,
+.term-card-close {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+}
+.term-card-back:hover:not(:disabled),
+.term-card-close:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-surface-raised-active);
+}
+.term-card-back:focus-visible,
+.term-card-close:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.term-card-back svg,
+.term-card-close svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.term-card-body {
+  flex: none;
+}
+.term-card-plain {
+  margin: var(--space-3) 0 0;
+  font-size: 18px;
+  line-height: 1.55;
+}
+.term-card-example {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.term-card-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--color-muted-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.term-card-figure {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+.term-card-figure svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Beside the term from tablet width up: a card, placed by TermCard. */
+@media (min-width: 768px) {
+  .term-dialog::backdrop {
+    background: color-mix(in srgb, var(--color-scrim) 35%, transparent);
+  }
+  .term-card {
+    right: auto;
+    bottom: auto;
+    width: min(400px, calc(100vw - 32px));
+    max-height: calc(100dvh - 32px);
+    padding: var(--space-4) var(--space-5) var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+  }
+  .term-card-grab {
+    display: none;
+  }
+}
+
+/* Motion: the sheet rises, a card settles, a step slides its content. */
+.term-card[data-motion="open"] {
+  animation: term-sheet-in 280ms var(--ease-standard);
+}
+.term-card[data-motion="forward"] > * {
+  animation: term-step-forward 220ms var(--ease-standard);
+}
+.term-card[data-motion="back"] > * {
+  animation: term-step-back 220ms var(--ease-standard);
+}
+@media (min-width: 768px) {
+  .term-card[data-motion="open"] {
+    animation-name: term-card-in;
+    animation-duration: 180ms;
+  }
+}
+@keyframes term-sheet-in {
+  from {
+    transform: translateY(48px);
+    opacity: 0;
+  }
+}
+@keyframes term-card-in {
+  from {
+    transform: translateY(-4px) scale(0.98);
+    opacity: 0;
+  }
+}
+@keyframes term-step-forward {
+  from {
+    transform: translateX(16px);
+    opacity: 0;
+  }
+}
+@keyframes term-step-back {
+  from {
+    transform: translateX(-16px);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .term-card[data-motion],
+  .term-card[data-motion] > * {
+    animation: none;
+  }
+  .glossary-term {
+    transition: none;
+  }
+}

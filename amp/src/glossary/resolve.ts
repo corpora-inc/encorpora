@@ -1,7 +1,18 @@
 import { glossaryFigure } from "./figures";
 import { glossaryEntry } from "./index";
-import { termsIn, type LinkContext } from "./link";
-import type { GlossaryCard, GlossaryEntry, MethodTerm, TermId } from "./types";
+import {
+  entryContext,
+  glossaryLexicon,
+  termsIn,
+  type LinkContext,
+} from "./link";
+import type {
+  GlossaryCard,
+  GlossaryEntry,
+  GlossaryPayload,
+  MethodTerm,
+  TermId,
+} from "./types";
 
 /** The entries a set of texts uses, in first-use order, then every entry
  * reachable through `uses`, so a client can drill down without another
@@ -22,14 +33,39 @@ export function glossaryFor(
   return ids.map(glossaryEntry);
 }
 
+const cards = new Map<TermId, GlossaryCard>();
+/** The wire card for an entry: its figure built, and the lexicon its own
+ * definition and example link with. Cards are built once and never mutated. */
 export function glossaryCard(entry: GlossaryEntry): GlossaryCard {
-  return {
+  const cached = cards.get(entry.id);
+  if (cached) return cached;
+  const lexicon = glossaryLexicon(
+    [entry.plain, entry.example ?? ""],
+    entryContext(entry),
+  );
+  const card: GlossaryCard = {
     id: entry.id,
     term: entry.term,
     plain: entry.plain,
     ...(entry.example ? { example: entry.example } : {}),
     ...(entry.figure ? { figure: glossaryFigure(entry.figure) } : {}),
     uses: [...entry.uses],
+    ...(Object.keys(lexicon).length ? { lexicon } : {}),
+  };
+  cards.set(entry.id, card);
+  return card;
+}
+
+/** A payload's term cards: the entries its texts use and everything they
+ * reach through `uses`, with the lexicon that links the texts. */
+export function glossaryPayload(
+  texts: readonly string[],
+  context: LinkContext = {},
+  extra: readonly TermId[] = [],
+): Required<GlossaryPayload> {
+  return {
+    glossary: glossaryFor(texts, context, extra).map(glossaryCard),
+    glossaryLexicon: glossaryLexicon(texts, context),
   };
 }
 

@@ -2,6 +2,7 @@ import { prepareTrialIntroduction } from "./introduction";
 import { accessSession, authConfig } from "../../auth";
 import { queryOptions } from "@tanstack/react-query";
 import { problemHintSchema, withProblemHints } from "../../lib/problem-hints";
+import { glossaryPayloadShape } from "../../lib/glossary-payload";
 import { z } from "zod";
 import {
   figureCapabilities,
@@ -96,6 +97,7 @@ export const outcomeSchema = z.object({
   mastered: z.object({ skillId: z.string(), title: z.string() }).optional(),
   skipped: z.literal(true).optional(),
   parts: z.array(z.boolean()).max(6).optional(),
+  ...glossaryPayloadShape,
 });
 export type TrialOutcome = z.infer<typeof outcomeSchema>;
 

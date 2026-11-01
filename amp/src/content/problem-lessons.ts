@@ -23,12 +23,12 @@ import { answerText } from "../math/selection-response";
 import { lessonVideoFor, type LessonVideo } from "./lesson-videos";
 import type {
   GlossaryCard,
+  GlossaryLexicon,
   GlossarySenses,
   MethodTerm,
 } from "../glossary/types";
 import {
-  glossaryCard,
-  glossaryFor,
+  glossaryPayload,
   methodTermDefinitions,
   methodTermId,
 } from "../glossary/resolve";
@@ -50,6 +50,8 @@ export type ProblemLessonView = {
   /** Every glossary entry the lesson's text and terms use, with the terms
    * their definitions use, for term cards and drill-down. */
   glossary: GlossaryCard[];
+  /** How the lesson's texts link their words (`GlossaryLexicon`). */
+  glossaryLexicon: GlossaryLexicon;
   method: string[];
   watch: string | null;
   example: {
@@ -236,7 +238,7 @@ export function problemLesson(
         )
       : example.explanation;
   const terms = methodTermDefinitions(methodTerms);
-  const glossary = glossaryFor(
+  const { glossary, glossaryLexicon } = glossaryPayload(
     [
       goal,
       intuition,
@@ -248,7 +250,7 @@ export function problemLesson(
     ],
     lessonGlossaryContext(lessonTemplateId, template),
     methodTerms.map(methodTermId),
-  ).map(glossaryCard);
+  );
   return {
     templateId,
     ...(video ? { video } : {}),
@@ -258,6 +260,7 @@ export function problemLesson(
     principle,
     terms: terms.map(({ term, meaning }) => ({ term, meaning })),
     glossary,
+    glossaryLexicon,
     method,
     watch,
     example: {
