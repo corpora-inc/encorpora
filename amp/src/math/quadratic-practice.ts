@@ -144,13 +144,16 @@ export function generateQuadraticProblem(
     response = { kind: "number", label: "Number of distinct real solutions" };
     hint = `Here a = ${a}, b = ${b} and c = ${c}. Work out the discriminant b² − 4ac and look at its sign: positive, zero or negative.`;
     explanation = [
-      `The coefficients are a = ${a}, b = ${b}, and c = ${c}.`,
+      `A quadratic equation has the form ax² + bx + c = 0. The coefficients, the numbers in front, are a = ${a}, b = ${b}, and c = ${c}.`,
+      `The quadratic formula, x = (−b ± √(b² − 4ac)) ÷ 2a, gives every solution. The sign ± means "plus or minus", one solution for each.`,
+      `The discriminant is the part under the square root, b² − 4ac. Its sign tells how many real solutions there are, without solving.`,
       `The discriminant is (${b})² − 4 × (${a}) × (${c}) = ${b * b} − (${4 * a * c}) = ${discriminant}.`,
       discriminant > 0
-        ? "A positive discriminant gives two different square-root branches in the quadratic formula, so there are 2 distinct real solutions."
+        ? "It is positive, so its square root is a real number. Adding it and subtracting it give two different solutions."
         : discriminant === 0
-          ? "A zero discriminant makes the two branches of the quadratic formula equal, so there is 1 distinct real solution: a repeated root."
-          : "A negative discriminant has no real square root, so there are 0 real solutions.",
+          ? "It is zero, and adding or subtracting 0 gives the same value. So both branches give one repeated solution."
+          : "It is negative. No real number times itself is negative, so the square root is not real and there are no real solutions.",
+      `The equation has ${discriminant > 0 ? 2 : discriminant === 0 ? 1 : 0} distinct real solution${discriminant === 0 ? "" : "s"}.`,
     ];
   } else {
     const a = nz(4),
@@ -216,11 +219,17 @@ export function generateQuadraticProblem(
     const solvedLeft = polynomial(0, la, lb),
       solvedRight = polynomial(0, ra, rb);
     explanation = [
+      templateId === "quadratic-expanded-solutions"
+        ? `To solve, first factor the left side: write it as a product of two brackets. Then each bracket gives a solution.`
+        : `The left side is already factored: it is a product of two brackets.`,
       ...factoring,
-      `By the zero-product property, ${solvedLeft} = 0${solvedLeft === solvedRight ? "" : ` or ${solvedRight} = 0`}.`,
+      `The zero-product property says a product is 0 only when one of its factors is 0. So ${solvedLeft} = 0${solvedLeft === solvedRight ? "" : ` or ${solvedRight} = 0`}.`,
       solveFactor(la, lb),
       ...(solvedLeft === solvedRight ? [] : [solveFactor(ra, rb)]),
-      `${correct}. ${fraction(-b, a) === fraction(-d, c) ? "Both factors give the same root, so list it once." : "Each root makes one factor zero; both belong in the solution set."}`,
+      fraction(-b, a) === fraction(-d, c)
+        ? "Both factors give the same root, a value that makes the equation true. List it once."
+        : "Each root, a value that makes the equation true, makes one factor zero. Both belong in the solution set.",
+      `The complete set of real solutions is ${correct.replace(/^The solution set is /, "")}.`,
     ];
     const options = [{ label: correct, feedback: "" }];
     // Exact shifts preserve distinctness and avoid equivalent duplicate choices.
@@ -230,17 +239,17 @@ export function generateQuadraticProblem(
           i === index ? { n: root.n + root.d, d: root.d } : root,
         ),
         feedback:
-          "Check every listed value. One correct root is not enough: the choice must contain every root and no extra values.",
+          "One value here is right but the other is not. Set each factor equal to 0 and solve both; the set must hold every root and nothing else.",
       })),
       {
         roots: roots.map(({ n, d }) => ({ n: -n, d })),
         feedback:
-          "Solving ax + b = 0 requires subtracting $b$ before dividing by $a$. Check the sign of each root.",
+          "These have the wrong signs, a common slip. In ax + b = 0, subtract $b$ first, then divide by $a$: (x + 3) = 0 gives x = −3, not 3.",
       },
       ...[1, -1, 2, -2].map((shift) => ({
         roots: roots.map(({ n, d }) => ({ n: n + shift * d, d })),
         feedback:
-          "Substitute each proposed root into the original equation. Every listed value must make a factor zero, and every root must be included.",
+          "These values are off from the roots, as if a factor were solved with an arithmetic slip. Substitute each one: a true root makes one factor equal 0.",
       })),
     ];
     for (const candidate of candidates) {

@@ -281,9 +281,15 @@ function polynomialProblem(
       : `Multiply ${termsA === 1 ? format(a) : `each of the ${termsA} terms of ${format(a)}`} by ${termsB === 1 ? format(b) : `each of the ${termsB} terms of ${format(b)}`}: ${termsA * termsB} products. Then combine like terms.`;
     const partials: Polynomial[] = [];
     explanation = [
+      "A term is a number times a power of $x$, such as $3x^2$. The number in front is the coefficient, and the small raised number is the exponent.",
       singleTermProduct
-        ? "Multiply the coefficients. The product of powers property adds exponents when multiplying powers with the same base, $x$."
-        : "Use the distributive property. In each term product, multiply coefficients and add exponents of powers with the same base, $x$.",
+        ? "To multiply two terms, multiply the coefficients. Then add the exponents: $x^2 \\cdot x^3$ is five factors of $x$, so it is $x^5$."
+        : "Use the distributive property: multiply every term of the first bracket by every term of the second. Missing a pair is the most common slip.",
+      ...(singleTermProduct
+        ? []
+        : [
+            "For each pair, multiply the coefficients and add the exponents, since $x^2 \\cdot x^3$ is five factors of $x$, or $x^5$.",
+          ]),
     ];
     for (let k = a.length - 1; k >= 0; k--) {
       if (!a[k]) continue;
@@ -333,12 +339,14 @@ function polynomialProblem(
       : `Match the terms of ${format(a, t)} and ${format(b, t)} by their power of $x$ and add the coefficients; a missing power has coefficient 0.`;
     const signedB = b.map((c) => (subtract ? -c : c));
     explanation = [
+      "A polynomial is a sum of terms, each a number times a power of $x$. Like terms have the same power of $x$, such as $3x^2$ and $5x^2$.",
       subtract
-        ? `Distribute −1 to every term of the second polynomial: −(${format(b, t)}) = ${format(signedB, t)}.`
-        : "Group like terms: terms with the same power of $x$. Add their coefficients without changing the power.",
+        ? `Subtracting a bracket subtracts every term inside it, so the minus sign flips every sign. Changing only the first sign is the common slip.`
+        : "Only like terms can be added. Add their coefficients, the numbers in front, and keep the power of $x$ the same.",
     ];
     if (subtract)
       explanation.push(
+        `So −(${format(b, t)}) = ${format(signedB, t)}.`,
         `Rewrite the difference as a sum: (${format(a, t)}) + (${format(signedB, t)}).`,
       );
     explanation.push(...combineSteps(a, signedB, "polynomial", t));

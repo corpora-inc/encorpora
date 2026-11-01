@@ -1475,7 +1475,7 @@ function absoluteCompoundInequality(r: Random): Built {
             : `Since ${c} is positive, $|${expression}|${symbol}${c}$ says $${expression}$ is at least ${c} away from 0. Write the two separate cases, $${expression}$ below $-${c}$ or above $${c}$, and solve each.`,
         explanation: [
           reading,
-          `Subtract ${b} from every part: the endpoints for $${linear(a, 0)}$ are $${-c - b}$ and $${c - b}$.`,
+          `${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} every part, which keeps the order: the endpoints for $${linear(a, 0)}$ are $${-c - b}$ and $${c - b}$.`,
           `Divide by ${a}.${flip} The endpoints are $${tex(lo)}$ and $${tex(hi)}$.`,
           variant === 0
             ? `The solution set is ${insideCorrect}.`
@@ -1675,8 +1675,13 @@ function absoluteCompoundInequality(r: Random): Built {
         hint: `Find the midpoint of ${lo} and ${hi}, and the distance from that midpoint to each endpoint. Then decide whether the set is the points within that distance of the midpoint or the points at least that far from it.`,
         explanation: [
           `The midpoint of ${lo} and ${hi} is $\\frac{${lo}+${paren(hi)}}{2}=${center}$, and each endpoint is $${radius}$ from it.`,
-          `So the set is described by the distance from $x$ to ${center}, written $|x-${paren(center)}|$, ${isInside ? "being at most/less than" : "being at least/more than"} ${radius}.`,
-          `${closed ? "Endpoints are included, so the sign has equality" : "Endpoints are excluded, so the sign is strict"}: ${absolute(center, radius, rel)}.`,
+          isInside
+            ? `The set is every point within ${radius} of ${center}: the distance from $x$ to ${center}, written $|x-${paren(center)}|$, is ${closed ? "at most" : "less than"} ${radius}.`
+            : `The set is every point more than ${radius} from ${center}${closed ? ", or exactly that far" : ""}: the distance $|x-${paren(center)}|$ is ${closed ? "at least" : "more than"} ${radius}.`,
+          closed
+            ? `The endpoints are included, so the sign includes "or equal to": ≤ or ≥.`
+            : `The endpoints are left out, so the sign is strict: < or >.`,
+          `The inequality with exactly this solution set is ${absolute(center, radius, rel)}.`,
         ],
         choices: choices(absolute(center, radius, rel), [
           {
@@ -1981,9 +1986,10 @@ function quadraticFromData(r: Random): Built {
         answer: "",
         hint: `Write $f(x)=ax^2+bx+c$ and substitute each point, for example $f(${x1})=${ys[0]}$. Subtract equations in pairs to eliminate $c$.`,
         explanation: [
-          `For $f(x)=ax^2+bx+c$, subtracting two points gives the slope between them: $\\frac{${ys[1]}-${paren(ys[0])}}{${x2}-${paren(x1)}}=${s1}=a(${x1}+${paren(x2)})+b$ and $\\frac{${ys[2]}-${paren(ys[1])}}{${x3}-${paren(x2)}}=${s2}=a(${x2}+${paren(x3)})+b$.`,
+          `Subtracting the equations of two points cancels $c$ and gives the slope between them, the change in $y$ over the change in $x$: $\\frac{${ys[1]}-${paren(ys[0])}}{${x2}-${paren(x1)}}=${s1}=a(${x1}+${paren(x2)})+b$ and $\\frac{${ys[2]}-${paren(ys[1])}}{${x3}-${paren(x2)}}=${s2}=a(${x2}+${paren(x3)})+b$.`,
           `Subtract those: $${s2 - s1}=a(${x3}-${paren(x1)})$, so $a=${a}$. Then $b=${s1}-${paren(a)}(${x1}+${paren(x2)})=${b}$.`,
-          `$c=${ys[0]}-${paren(a)}(${x1})^2-${paren(b)}(${x1})=${c}$. The equation is $${standard(a, b, c)}$.`,
+          `Put $a$ and $b$ back into the first point's equation to find $c$, the constant: $c=${ys[0]}-${paren(a)}(${x1})^2-${paren(b)}(${x1})=${c}$.`,
+          `The equation that defines $f$ is $${standard(a, b, c)}$.`,
         ],
         choices: choices(`$${standard(a, b, c)}$`, [
           wrong([a, -b, c], "Check the sign of the $x$ coefficient."),
@@ -2017,6 +2023,27 @@ const builders: Record<
   "quadratic-from-data": quadraticFromData,
 };
 
+/** A plain opening for each 9–12 template: the idea its worked steps rest
+ * on, with every term defined at first use (issue #1781). */
+const OPENERS: Record<string, string[]> = {
+  "quadratic-root-relations": [
+    "For $ax^2 + bx + c = 0$, the two solutions add to $-\\frac{b}{a}$ and multiply to $\\frac{c}{a}$. Here $a$, $b$ and $c$ are the coefficients, the numbers in front of $x^2$, $x$ and the constant.",
+    "This works because a quadratic with solutions $p$ and $q$ factors as $a(x-p)(x-q)$, which multiplies out to $ax^2 - a(p+q)x + apq$.",
+  ],
+  "system-expression-value": [
+    "You can find the expression without solving for $x$ and $y$. Multiplying whole equations by numbers and adding them keeps them true, because equal amounts added to equal amounts stay equal.",
+  ],
+  "rate-combination-model": [
+    "A rate is an amount per unit, such as liters per minute or grams of salt per liter. Work out what each part contributes, then combine.",
+  ],
+  "absolute-compound-inequality": [
+    "The absolute value $|x - c|$ is the distance between $x$ and $c$ on the number line. So $|x - c| \\le r$ means $x$ is within $r$ of $c$.",
+  ],
+  "quadratic-from-data": [
+    "A quadratic function has the form $f(x)=ax^2+bx+c$. Each point on the graph, put into this form, gives one equation in $a$, $b$ and $c$.",
+  ],
+};
+
 /** Private exact model; only the prompt and shuffled choices reach the learner. */
 export function satAlgebraStructureCase(
   templateId: string,
@@ -2037,7 +2064,10 @@ export function satAlgebraStructureCase(
   for (let attempt = 0; attempt < 50; attempt++) {
     try {
       const { variant, draft } = build(r, axes);
-      const problem = assemble(meta, seed, r, draft);
+      const problem = assemble(meta, seed, r, {
+        ...draft,
+        explanation: [...(OPENERS[templateId] ?? []), ...draft.explanation],
+      });
       return {
         variant,
         problem: axes
