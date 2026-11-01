@@ -134,7 +134,7 @@ const entries: WorkEntry[] = [
       "Multiply the hypotenuse by the ratio to find the leg, with the calculator in degree mode.",
     ],
     intuition:
-      "A degree is a small unit for measuring angles. A right triangle has one right angle, a square corner of 90 degrees, written $90^\\circ$. The longest side, across from the right angle, is called the hypotenuse. The other two sides are called legs. Pick one of the other angles, say angle $A$. The leg across from $A$, not touching it, is the opposite leg. The leg that touches $A$ and is not the hypotenuse is the adjacent leg. For a given angle, the opposite leg divided by the hypotenuse is the same number in every right triangle, big or small. That number is called the sine of the angle, written $\\sin A$. The adjacent leg divided by the hypotenuse is called the cosine, written $\\cos A$. For $30^\\circ$ the sine is 0.5, so a hypotenuse of 10 gives an opposite leg of $10\\times0.5=5$. A calculator finds sine and cosine. It must be in degree mode, the setting that measures angles in degrees. In a problem, $m\\angle A$ means the size of angle $A$, and $\\approx$ means “is about”.",
+      "A degree is a small unit for measuring angles. A right triangle has one right angle, a square corner, written $90^\\circ$. The longest side, across from the right angle, is called the hypotenuse. The other two sides are called legs. Pick one of the other angles, say angle $A$. The leg across from $A$, not touching it, is the opposite leg. The leg that touches $A$ and is not the hypotenuse is the adjacent leg. For a given angle, the opposite leg divided by the hypotenuse is the same number in every right triangle, big or small. That number is called the sine of the angle, written $\\sin A$. The adjacent leg divided by the hypotenuse is called the cosine, written $\\cos A$. For $30^\\circ$ the sine is 0.5, so a hypotenuse of 10 gives an opposite leg of $10\\times0.5=5$. A calculator finds sine and cosine. It must be in degree mode, the setting for angles measured this way. In a problem, $m\\angle A$ means the size of angle $A$, and $\\approx$ means “is about”.",
     terms: ["opposite-side-angle", "adjacent-leg"],
     method: [
       "Mark the given angle, the hypotenuse and the leg you want.",
@@ -223,7 +223,11 @@ const entries: WorkEntry[] = [
     ],
     parentGuide:
       "Ask your learner to draw the horizontal line and name the two right triangles.",
-    senses: { tangent: "tangent-trig", "opposite side": "opposite-side-angle" },
+    senses: {
+      tangent: "tangent-trig",
+      "opposite side": "opposite-side-angle",
+      "more than": "more-than",
+    },
     noLink: ["part", "base", "opposite", "parts", "square", "whole"],
   },
   {

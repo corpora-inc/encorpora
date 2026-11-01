@@ -164,7 +164,7 @@ const entries: FormatLessonEntry[] = [
       steps: [
         "The conversion factor is 1 yard to 0.9 meter, yards first: $1:0.9$.",
         "The amount to convert is 50 yards, and $x$ is its length in meters. Keep yards first: $50:x$.",
-        "Set the ratios equal: $1:0.9=50:x$. Since 50 yards is 50 times 1 yard, $x=0.9\\times50=45$ meters.",
+        "Set the ratios equal: $1:0.9=50:x$. Since 50 yards is 50 times 1 yard, $x$ is about $0.9\\times50=45$ meters.",
       ],
       answer: "$1:0.9=50:x$.",
     },
@@ -174,7 +174,7 @@ const entries: FormatLessonEntry[] = [
       "The unknown always sits in the place of its unit.",
     ],
     formal:
-      "Equal ratios are ratios with the same value. Two equal ratios $\\frac{a}{b}=\\frac{c}{d}$, with $a$, $b$ and $d$ not 0, give $d=\\frac{bc}{a}$. So a unit conversion is multiplying by the same fixed number, $\\frac{b}{a}$, every time.",
+      "Equal ratios are ratios with the same value. Two equal ratios $\\frac{a}{b}=\\frac{c}{d}$, with $a$, $b$ and $d$ not 0, give $d=\\frac{bc}{a}$. So a conversion like yards to meters, where 0 of one unit is 0 of the other, multiplies by the same fixed number, $\\frac{b}{a}$, every time.",
     pitfalls: [
       "Do not put the meters of one ratio against the yards of the other.",
       "Do not leave out the unknown. It takes the place of the converted amount.",
