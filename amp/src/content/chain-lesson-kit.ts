@@ -7,6 +7,9 @@ export interface ChainLessonSpec {
   id: string;
   title: string;
   summary: string;
+  /** Glossary senses and ordinary-word forms for this lesson (`Lesson.senses`). */
+  senses?: Lesson["senses"];
+  noLink?: Lesson["noLink"];
   templateIds: string[];
   objectives: string[];
   openingTitle: string;
@@ -25,6 +28,8 @@ export function chainLesson(spec: ChainLessonSpec): Lesson {
     id: spec.id,
     title: spec.title,
     summary: spec.summary,
+    ...(spec.senses ? { senses: spec.senses } : {}),
+    ...(spec.noLink ? { noLink: spec.noLink } : {}),
     templateIds: spec.templateIds,
     objectives: spec.objectives,
     sections: [

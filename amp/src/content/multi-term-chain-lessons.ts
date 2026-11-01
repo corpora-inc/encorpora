@@ -1,21 +1,38 @@
 import type { FacetMapping } from "./coverage";
+import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
+
+const fractionChainSenses = {
+  whole: "whole",
+  part: "part",
+  third: "third",
+  quarter: "fourth",
+  term: "term-expression",
+  multiple: "multiple",
+  unit: "unit",
+  rename: "rename",
+};
+const fractionChainNoLink = ["change", "changes", "leaves"];
+const priceSenses = { unit: "unit", "more than": "more-than" };
+const priceNoLink = ["whole", "part", "scale"];
 
 export const multiTermChainMethods: Record<string, ProblemMethod> = {
   "fraction-term-chain": {
     goal: "Combine three or four fractions, mixed numbers or decimals with different denominators by writing every term over one common denominator.",
+    senses: fractionChainSenses,
+    noLink: fractionChainNoLink,
     intuition:
-      "Pieces can be added or taken away only when they are the same size. With three or four amounts, find one piece size that fits all of them, rewrite every amount in those pieces, and then just count pieces.",
+      "A fraction names equal parts of a whole. Its denominator, the bottom number, says how many equal parts make the whole. Its numerator, the top number, counts the parts. You can add or take away parts only when they are the same size. Each amount in the problem is called a term. A common denominator is a bottom number that every term can share. A whole number is one of 0, 1, 2, 3 and so on. A mixed number is a whole number and a fraction together, such as $1\\frac{1}{2}$. A decimal is a number with a decimal point, such as 0.5.",
     terms: ["common-denominator", "improper-fraction"],
     method: [
-      "List the denominators and choose a common denominator that all of them divide into.",
-      "Rewrite every term, including a whole number or a decimal, as a fraction over that denominator.",
-      "Add the numerators of the terms that are added and subtract the numerators of the terms that are taken away.",
-      "Write the result in lowest terms and check that it is reasonable: less than the starting amount when amounts are taken away.",
+      "List the denominators. Choose a common denominator: a number that each denominator divides into evenly.",
+      "Rewrite every term as a fraction over that denominator, including a whole number or a decimal. Multiply the top and bottom by the same number.",
+      "Add the numerators of the terms that are added. Subtract the numerators of the terms that are taken away.",
+      "Lowest terms means that no number bigger than 1 divides both the top and the bottom. Write the answer in lowest terms, and check that it makes sense: taking amounts away leaves less than the start.",
     ],
     watch:
-      "Change the numerators when you change a denominator. Rewriting $\\frac{3}{4}$ as $\\frac{3}{12}$ instead of $\\frac{9}{12}$ changes its size.",
+      "When you change a denominator, change the numerator the same way. Rewriting $\\frac{3}{4}$ as $\\frac{3}{12}$ instead of $\\frac{9}{12}$ changes its size.",
   },
   "decimal-rename-chain": {
     senses: {
@@ -39,29 +56,33 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
   },
   "price-count-chain": {
     goal: "Find the total cost of a group by adding two prices and multiplying by the people, or multiplying each price by its own count.",
+    senses: priceSenses,
+    noLink: priceNoLink,
     intuition:
-      "A group spends money in two kinds of things. If everyone buys the same pair, find the cost of one pair and multiply by the number of people. If the counts are different, find the cost of each kind and add.",
+      "A group buys two kinds of things, such as tickets and drinks. If everyone buys the same pair, find the cost of one pair, then multiply by the number of people. If the counts are different, find the cost of each kind, then add. Prices are decimals: numbers with a decimal point, like 4.50 dollars.",
     method: [
-      "Decide whether every person buys the same things or the counts differ.",
+      "Decide whether every person buys the same things or the counts are different.",
       "Same things: add the two prices for one person, then multiply by the number of people.",
       "Different counts: multiply each price by its count, then add the two totals.",
-      "Write the answer with dollars and cents and check that it is larger than either part.",
+      "Write the answer in dollars and cents. Check that it is more than either part.",
     ],
     watch:
-      "Multiply the sum of the prices by the people, not just one price. A person who buys a ticket and a drink spends both prices.",
+      "When everyone buys the same pair, multiply the two prices added together by the number of people, not just one price. A person who buys a ticket and a drink pays both prices.",
   },
   "dollar-rate-scale": {
     goal: "Use a table of charges for two numbers of hours at one price per hour to find another charge, or the hours for a charge.",
+    senses: priceSenses,
+    noLink: priceNoLink,
     intuition:
-      "When every hour costs the same, the charge for any number of hours is that many hourly prices. A table gives the price of two stays. Dividing one of them by its hours shows the price of one hour.",
+      "A rate is a comparison of two amounts with different units, such as dollars and hours. The unit rate is the amount for exactly 1 unit, such as the price of 1 hour. When every hour costs the same, the charge is the unit rate times the number of hours. A table gives the charges for two numbers of hours. Division means sharing an amount out evenly. Divide a charge by its hours to find the price of 1 hour.",
     terms: ["unit-rate"],
     method: [
-      "Divide a charge in the table by its hours to find the price of 1 hour, and check it against the other column.",
+      "Divide a charge in the table by its hours to find the price of 1 hour. Check it against the other column.",
       "To find a charge, multiply the unit rate by the new number of hours.",
       "To find the hours for a charge, divide the charge by the unit rate.",
     ],
     watch:
-      "Check the unit rate against both table columns. If it does not fit, the division was wrong.",
+      "Check the unit rate against both columns of the table. If it does not fit, the division was wrong.",
   },
   "signed-changes-sum": {
     senses: { change: "change", changes: "change" },
@@ -88,63 +109,70 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
 
 export const multiTermChainPrinciples: Record<string, string> = {
   "fraction-term-chain":
-    "Fractions with denominators $d_1,\\dots,d_k$ can all be written over any common multiple $D$ of them, since $\\frac{n}{d}=\\frac{n\\cdot D/d}{D}$. Then $\\pm\\frac{n_1}{D}\\pm\\cdots\\pm\\frac{n_k}{D}=\\frac{\\pm n_1\\pm\\cdots\\pm n_k}{D}$, because quantities counted in the same unit add as counts.",
+    "A common multiple is a number that each denominator divides into evenly. Fractions with denominators $d_1,\\dots,d_k$ can all be written over any common multiple $D$ of them that is greater than 0. Here $d_1$ is the first denominator, $d_2$ the second, and so on. This works because $\\frac{n}{d}=\\frac{n\\times (D\\div d)}{D}$. Then the numerators add and subtract as counts of parts of the same size: $\\frac{n_1}{D}+\\frac{n_2}{D}=\\frac{n_1+n_2}{D}$.",
   "decimal-rename-chain":
     "A power of ten is 10, 100, 1000 and so on, written $10^k$ for $k$ tens multiplied together. If the bottom number $q$ of a fraction divides a power of ten evenly, the fraction is a decimal that stops: $\\frac{p}{q}=\\frac{p\\cdot 10^k/q}{10^k}$, where $\\cdot$ means times. Multiplication is done before addition and subtraction. A difference is negative when the amount taken away is larger.",
   "price-count-chain":
-    "The distributive property gives $n(a+b)=na+nb$: one pair costing $a+b$ bought $n$ times costs the same as $n$ copies of $a$ and $n$ copies of $b$. When the counts differ the total is $ma+nb$.",
+    "Adding the prices first and then multiplying gives the same total as multiplying each price and then adding. This is called the distributive property: $n\\times(a+b)=n\\times a+n\\times b$. One pair costing $a+b$, bought $n$ times, costs the same as $n$ of $a$ and $n$ of $b$. When the counts are different, the total is $m\\times a+n\\times b$.",
   "dollar-rate-scale":
-    "If the charge is proportional to the hours, charge $=r\\times$ hours with unit rate $r=\\frac{\\text{charge}}{\\text{hours}}$, the same for every column of the table. The hours for a charge are $\\frac{\\text{charge}}{r}$.",
+    "When every hour costs the same, the charge is $r\\times$ hours. Here $r$ is the unit rate: $r=\\text{charge}\\div\\text{hours}$, the same for every column of the table. The hours for a charge are $\\text{charge}\\div r$.",
   "signed-changes-sum":
     "Integers are the whole numbers and their negatives. When you add integers, the order and the grouping do not change the total. So the sum of all the changes equals the sum of the gains plus the sum of the losses. The final count is the start plus that net change.",
 };
 
-export const multiTermChainLessons = [
-  chainLesson({
-    id: "fraction-term-chain",
-    title: "Three or four fractions with one common denominator",
-    summary:
-      "Add and subtract several fractions, mixed numbers and decimals by writing each one in the same size pieces.",
-    templateIds: ["fraction-term-chain"],
-    objectives: [
-      "Find one common denominator for three or four unlike fractions.",
-      "Rewrite mixed numbers, whole numbers and decimals as fractions over that denominator.",
-      "Add and subtract the numerators and write the result in lowest terms.",
-    ],
-    openingTitle: "Same size pieces, then count",
-    opening: [
-      "You can add thirds to thirds, but not thirds to fourths: the pieces are different sizes. With three or four amounts, choose one size of piece that fits every amount. Twelfths fit thirds, fourths and sixths.",
-      "A whole number such as 10 is 120 twelfths. A decimal such as 0.5 is the fraction $\\frac{1}{2}$. Write every amount as a count of the same piece, then add the counts of amounts that are added and subtract the counts of amounts that are taken away.",
-    ],
-    example: {
-      prompt:
-        "A hiker walked $1\\frac{1}{2}$ miles, $\\frac{3}{4}$ mile and $2\\frac{1}{3}$ miles. How many miles in all?",
-      steps: [
-        "The denominators are 2, 4 and 3. All of them divide into 12.",
-        "Rewrite: $1\\frac{1}{2}=\\frac{18}{12}$, $\\frac{3}{4}=\\frac{9}{12}$, $2\\frac{1}{3}=\\frac{28}{12}$.",
-        "Add the numerators: $18+9+28=55$, so the total is $\\frac{55}{12}$.",
-        "In mixed form, $\\frac{55}{12}=4\\frac{7}{12}$.",
+export const multiTermChainLessons: Lesson[] = [
+  {
+    ...chainLesson({
+      id: "fraction-term-chain",
+      title: "Three or four fractions with one common denominator",
+      summary:
+        "A fraction names equal parts of a whole. To add or take away several fractions, the parts must be the same size. So rewrite every amount over one common denominator, a bottom number they all share. Then add and subtract the top numbers, which count the parts.",
+      templateIds: ["fraction-term-chain"],
+      objectives: [
+        "Find one common denominator for three or four fractions with different denominators.",
+        "Rewrite mixed numbers, whole numbers and decimals as fractions over that denominator.",
+        "Add and subtract the numerators, and write the answer in lowest terms.",
       ],
-      answer: "$\\frac{55}{12}$ miles, or $4\\frac{7}{12}$ miles",
-    },
-    methodTitle: "List, rewrite, count",
-    method: [
-      "List the denominators. Choose a number they all divide into. Rewrite every term over it, changing numerator and denominator together.",
-      "Add or subtract the numerators in the order the story gives. Check the result against the story: amounts taken away from a start leave less than the start.",
-    ],
-    formalTitle: "Why one denominator works for every term",
-    formal: [
-      "Multiplying the top and bottom of a fraction by the same number does not change its value: $\\frac{n}{d}=\\frac{n\\cdot k}{d\\cdot k}$. If $D=d\\cdot k$ is a multiple of $d$, then $\\frac{n}{d}=\\frac{n\\cdot (D/d)}{D}$.",
-      "Once every term is a count of $\\frac{1}{D}$-pieces, adding and subtracting the counts gives the count of pieces in the result.",
-    ],
-    pitfalls: [
-      "Multiply the numerator by the same number as the denominator when you rename a fraction.",
-      "Rename a whole number too: 10 is $\\frac{120}{12}$ when the denominator is 12.",
-      "Subtract the amounts that are taken away. Do not add them.",
-    ],
-    parentGuide:
-      "Ask your learner which denominator all of the fractions divide into, and have them write each term over it before they add.",
-  }),
+      openingTitle: "Parts of the same size, then count",
+      opening: [
+        "A fraction such as $\\frac{3}{4}$ has a numerator, the top number 3, and a denominator, the bottom number 4. The denominator says how many equal parts make the whole. The numerator counts the parts.",
+        "You can add thirds to thirds. But you cannot add thirds to fourths straight away, because the parts are different sizes. With three or four amounts, choose one size of part that fits every amount. Twelfths fit thirds, fourths and sixths, because 3, 4 and 6 all divide 12 evenly. A bottom number like this is called a common denominator.",
+        "Each amount in the problem is called a term. A whole number is one of 0, 1, 2, 3 and so on. The whole number 10 is 120 twelfths, because each whole is 12 twelfths. A decimal is a number with a decimal point: 0.5 is the fraction $\\frac{1}{2}$. A mixed number is a whole number and a fraction together, such as $1\\frac{1}{2}$, which means 1 and $\\frac{1}{2}$ more.",
+        "Write every term as a count of parts of the same size. Then add the counts for amounts that are added, and subtract the counts for amounts that are taken away. Lowest terms is the form of a fraction where no number bigger than 1 divides both the top and the bottom.",
+      ],
+      example: {
+        prompt:
+          "A hiker walked $1\\frac{1}{2}$ miles, $\\frac{3}{4}$ mile and $2\\frac{1}{3}$ miles. How many miles in all?",
+        steps: [
+          "The denominators are 2, 4 and 3. Each one divides 12 evenly, so use 12 as the common denominator.",
+          "Rewrite each amount in twelfths. $1\\frac{1}{2}$ is $\\frac{3}{2}$, and $\\frac{3}{2}=\\frac{18}{12}$. Next, $\\frac{3}{4}=\\frac{9}{12}$. Last, $2\\frac{1}{3}$ is $\\frac{7}{3}$, and $\\frac{7}{3}=\\frac{28}{12}$.",
+          "All three walks are added, so add the numerators: $18+9+28=55$. The total is $\\frac{55}{12}$.",
+          "12 twelfths make 1 whole, and $55=4\\times12+7$. So $\\frac{55}{12}=4\\frac{7}{12}$.",
+        ],
+        answer: "$\\frac{55}{12}$ miles, or $4\\frac{7}{12}$ miles",
+      },
+      methodTitle: "List, rewrite, count",
+      method: [
+        "List the denominators. Choose a number they all divide into evenly. Rewrite every term over it, multiplying the top and bottom by the same number.",
+        "Add or subtract the numerators, as the story says. Check the result against the story: taking amounts away from a start leaves less than the start.",
+      ],
+      formalTitle: "Why one denominator works for every term",
+      formal: [
+        "Multiplying the top and bottom of a fraction by the same number, other than 0, does not change its value: $\\frac{n}{d}=\\frac{n\\times k}{d\\times k}$.",
+        "Suppose $D=d\\times k$ for a whole number $k$ other than 0. A number made this way is called a multiple of $d$. Then $\\frac{n}{d}=\\frac{n\\times (D\\div d)}{D}$.",
+        "Once every term is a count of parts of size $\\frac{1}{D}$, adding and subtracting the counts gives the count of parts in the answer.",
+      ],
+      pitfalls: [
+        "When you change the denominator, multiply the numerator by the same number.",
+        "Rewrite a whole number too: 10 is $\\frac{120}{12}$ when the denominator is 12.",
+        "Subtract the amounts that are taken away. Do not add them.",
+      ],
+      parentGuide:
+        "Ask your child which number all of the denominators divide into evenly. Have them write each amount over that number before they add.",
+    }),
+    senses: fractionChainSenses,
+    noLink: fractionChainNoLink,
+  },
   {
     ...chainLesson({
       id: "decimal-rename-chain",
@@ -198,48 +226,53 @@ export const multiTermChainLessons = [
     },
     noLink: ["mean"],
   },
-  chainLesson({
-    id: "price-and-rate-chain",
-    title: "Prices for a group and rates from a table",
-    summary:
-      "Find group costs from two prices, and scale one hourly price read from a table.",
-    templateIds: ["price-count-chain", "dollar-rate-scale"],
-    objectives: [
-      "Add two prices and multiply by the number of people, or multiply each price by its own count.",
-      "Find the price of one hour from a table and scale it to a new number of hours.",
-    ],
-    openingTitle: "Find the cost of one, then scale",
-    opening: [
-      "If everyone buys a ticket and a drink, one person spends the two prices together. For 18 people, multiply that amount by 18. If the group buys 18 tickets and 16 drinks, multiply each price by its own count and then add.",
-      "A table can show the charge for two stays. If every hour costs the same, dividing a charge by its hours gives the price of one hour. Multiply that price by any number of hours.",
-    ],
-    example: {
-      prompt:
-        "A ticket costs 4.50 dollars and a drink costs 1.25 dollars. Each of 12 people buys one of each. How much do they spend?",
-      steps: [
-        "One person spends $4.50+1.25=5.75$ dollars.",
-        "Twelve people spend $12\\times 5.75=69$ dollars.",
+  {
+    ...chainLesson({
+      id: "price-and-rate-chain",
+      title: "Prices for a group and rates from a table",
+      summary:
+        "To find what a group spends, find the cost for one person and multiply. Or multiply each price by its own count and add. A rate is a comparison of two amounts, such as dollars and hours. The unit rate is the amount for exactly 1, such as the price of 1 hour.",
+      templateIds: ["price-count-chain", "dollar-rate-scale"],
+      objectives: [
+        "Add two prices and multiply by the number of people, or multiply each price by its own count.",
+        "Find the price of one hour from a table, and use it for a new number of hours.",
       ],
-      answer: "$69$ dollars",
-    },
-    methodTitle: "One first, then many",
-    method: [
-      "Same things for everyone: add the prices, then multiply by the number of people. Different counts: multiply each price by its count, then add.",
-      "For a rate table, divide a charge by its hours to get the unit rate, check it against the other column, then multiply or divide by it.",
-    ],
-    formalTitle: "Why both orders give the same total",
-    formal: [
-      "The distributive property says $n(a+b)=na+nb$, so multiplying the pair's cost by $n$ matches multiplying each price by $n$ and adding.",
-      "If the charge is proportional to the hours, the ratio $\\frac{\\text{charge}}{\\text{hours}}$ is the same in every column of the table. That constant is the unit rate.",
-    ],
-    pitfalls: [
-      "Multiply the whole pair's cost by the people, not just one price.",
-      "Check the unit rate against both columns of the table.",
-      "To find hours from a charge, divide the charge by the hourly price.",
-    ],
-    parentGuide:
-      "Ask what one person spends, or what one hour costs, before multiplying.",
-  }),
+      openingTitle: "Find the cost of one, then multiply",
+      opening: [
+        "If everyone buys a ticket and a drink, one person spends both prices added together. For 18 people, multiply that amount by 18. If the group buys 18 tickets and 16 drinks, multiply each price by its own count, then add.",
+        "A rate is a comparison of two amounts with different units, such as dollars and hours. The unit rate is the amount for exactly 1 unit, such as the price of 1 hour.",
+        "A table can show the charge for two stays. If every hour costs the same, divide a charge by its hours to get the unit rate. Then multiply the unit rate by any number of hours.",
+      ],
+      example: {
+        prompt:
+          "A ticket costs 4.50 dollars and a drink costs 1.25 dollars. Each of 12 people buys one of each. How much do they spend?",
+        steps: [
+          "Each person buys one ticket and one drink. So one person spends $4.50+1.25=5.75$ dollars.",
+          "All 12 people spend the same, so multiply: $12\\times 5.75=69$ dollars.",
+        ],
+        answer: "$69$ dollars",
+      },
+      methodTitle: "One first, then many",
+      method: [
+        "Same things for everyone: add the prices, then multiply by the number of people. Different counts: multiply each price by its count, then add.",
+        "For a rate table, divide a charge by its hours to get the unit rate. Check it against the other column. Then multiply or divide by it.",
+      ],
+      formalTitle: "Why both orders give the same total",
+      formal: [
+        "Adding first and then multiplying gives the same total as multiplying each price first and then adding. This is called the distributive property: $n\\times(a+b)=n\\times a+n\\times b$.",
+        "When every hour costs the same, charge ÷ hours is the same number in every column of the table. That number is the unit rate.",
+      ],
+      pitfalls: [
+        "When everyone buys the same pair, multiply the cost of the pair by the number of people, not just one price.",
+        "Check the unit rate against both columns of the table.",
+        "To find hours from a charge, divide the charge by the price of 1 hour.",
+      ],
+      parentGuide:
+        "Before your child multiplies, ask what one person spends, or what one hour costs.",
+    }),
+    senses: priceSenses,
+    noLink: priceNoLink,
+  },
   {
     ...chainLesson({
       id: "signed-changes-sum",

@@ -79,11 +79,25 @@ def review_problem(problem):
 
 def check_explanation(public, steps):
     start, p, q, first, final = givens(public)
-    require(len(steps) == 4, "Four complete explanation steps required")
+    answer = Fraction(solve(public))
+    require(len(steps) == 6, "Six complete explanation steps required")
     number = r"(\d+(?:\.\d+)?)"
+    definition = re.fullmatch(
+        r"A change of " + number + r"% (adds|removes) " + number
+        + r" hundredths of the price\. Multiplying by \$1 ([+-]) " + number
+        + r"/100\$ does that in one step\.",
+        steps[0],
+    )
+    require(
+        definition is not None
+        and Fraction(definition[1]) == Fraction(definition[3]) == Fraction(definition[5]) == abs(p)
+        and definition[2] == ("adds" if p > 0 else "removes")
+        and definition[4] == ("+" if p > 0 else "-"),
+        "Incorrect percent-multiplier explanation",
+    )
     for index, heading, base, rate, result in [
-        (0, "First", start, p, first),
-        (2, "Second", first, q, final),
+        (1, "First", start, p, first),
+        (3, "Second", first, q, final),
     ]:
         pattern = (
             heading
@@ -108,28 +122,34 @@ def check_explanation(public, steps):
             "Wrong or prematurely rounded intermediate",
         )
     base_statement = re.fullmatch(
-        r"The second change uses the exact "
-        + number
-        + r" dollar price after the first change as its base\.",
-        steps[1],
+        r"The " + number + r"% is taken of the new price, " + number
+        + r" dollars, not the starting price\. Keep it exact, because rounding early can change the cents\.",
+        steps[2],
     )
     require(
-        base_statement is not None and Fraction(base_statement[1]) == first,
+        base_statement is not None
+        and Fraction(base_statement[1]) == abs(q)
+        and Fraction(base_statement[2]) == first,
         "Incorrect second-base explanation",
     )
-    rounded_statement = re.fullmatch(
-        r"Round only the final "
-        + number
-        + r" dollars to the nearest cent, with halfway amounts rounded up: "
-        + number
-        + r" dollars\.",
-        steps[3],
+    exact = re.fullmatch(
+        number + r" dollars is already a whole number of cents, so no rounding is needed\.",
+        steps[4],
     )
-    require(rounded_statement is not None, "Missing final rounding explanation")
+    rounded = re.fullmatch(
+        r"A cent is 0\.01 dollar\. Round " + number
+        + r" to two decimal places, with halfway amounts rounded up: " + number + r"\.",
+        steps[4],
+    )
     require(
-        Fraction(rounded_statement[1]) == final
-        and Fraction(rounded_statement[2]) == Fraction(solve(public)),
+        (exact is not None and Fraction(exact[1]) == final == answer)
+        or (rounded is not None and Fraction(rounded[1]) == final and Fraction(rounded[2]) == answer),
         "Incorrect final rounding explanation",
+    )
+    conclusion = re.fullmatch(r"The final price is " + number + r" dollars\.", steps[5])
+    require(
+        conclusion is not None and Fraction(conclusion[1]) == answer,
+        "Incorrect final price conclusion",
     )
 
 
@@ -164,10 +184,16 @@ def fixture(start, first, second, answer):
 
     a, b = decimal(intermediate), decimal(final)
     result["explanation"] = [
+        f"A change of {p}% {'adds' if p_signed > 0 else 'removes'} {p} hundredths of the price. "
+        f"Multiplying by $1 {'+' if p_signed > 0 else '-'} {p}/100$ does that in one step.",
         f"First change: ${start} \\times (1 {'+' if p_signed > 0 else '-'} {p}/100) = {a}$ dollars.",
-        f"The second change uses the exact {a} dollar price after the first change as its base.",
+        f"The {q}% is taken of the new price, {a} dollars, not the starting price. "
+        "Keep it exact, because rounding early can change the cents.",
         f"Second change: ${a} \\times (1 {'+' if q_signed > 0 else '-'} {q}/100) = {b}$ dollars.",
-        f"Round only the final {b} dollars to the nearest cent, with halfway amounts rounded up: {answer} dollars.",
+        f"{b} dollars is already a whole number of cents, so no rounding is needed."
+        if Fraction(b) == Fraction(answer)
+        else f"A cent is 0.01 dollar. Round {b} to two decimal places, with halfway amounts rounded up: {answer}.",
+        f"The final price is {answer} dollars.",
     ]
     return result
 
@@ -208,18 +234,22 @@ def self_test():
         raise AssertionError("Accepted corrupted monetary case")
     explained = fixture("1.00", "-12.5", "12.5", "0.98")
     explained["explanation"] = [
+        "A change of 12.5% removes 12.5 hundredths of the price. Multiplying by $1 - 12.5/100$ does that in one step.",
         "First change: $1.00 \\times (1 - 12.5/100) = 0.875$ dollars.",
-        "The second change uses the exact 0.875 dollar price after the first change as its base.",
+        "The 12.5% is taken of the new price, 0.875 dollars, not the starting price. Keep it exact, because rounding early can change the cents.",
         "Second change: $0.875 \\times (1 + 12.5/100) = 0.984375$ dollars.",
-        "Round only the final 0.984375 dollars to the nearest cent, with halfway amounts rounded up: 0.98 dollars.",
+        "A cent is 0.01 dollar. Round 0.984375 to two decimal places, with halfway amounts rounded up: 0.98.",
+        "The final price is 0.98 dollars.",
     ]
     review_problem(explained)
     for index, before, after in [
-        (0, "0.875", "0.88"),
-        (1, "0.875", "1.00"),
-        (2, "$0.875", "$1.00"),
-        (2, " + ", " - "),
-        (3, "0.98 dollars", "0.99 dollars"),
+        (0, "removes", "adds"),
+        (1, "0.875", "0.88"),
+        (2, "0.875", "1.00"),
+        (3, "$0.875", "$1.00"),
+        (3, " + ", " - "),
+        (4, "0.98.", "0.99."),
+        (5, "0.98 dollars", "0.99 dollars"),
     ]:
         bad = copy.deepcopy(explained)
         bad["explanation"][index] = bad["explanation"][index].replace(before, after)
@@ -229,4 +259,4 @@ def self_test():
         except ValueError:
             continue
         raise AssertionError("Accepted corrupted intermediate explanation")
-    return {"fixtures": len(cases) + 1, "mutations": len(mutants) + 5}
+    return {"fixtures": len(cases) + 1, "mutations": len(mutants) + 7}
