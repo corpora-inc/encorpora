@@ -37,14 +37,14 @@ export const regentsAlgebraTwoReasoningMethods: Record<string, ProblemMethod> =
     ),
     "cubic-quotient-factored": m(
       "Divide a cubic by one of its linear factors and factor the quotient.",
-      "If $(ax+b)$ is a factor of the cubic, the quotient is the product of the other two linear factors, with leading coefficient 1 once $a$ cancels. Dividing undoes the multiplication that built the cubic.",
+      "A cubic is a polynomial whose highest power is $x^3$. If a linear factor $(ax+b)$, one with no higher power of $x$, divides the cubic, the quotient is what is left: here, the product of the other two linear factors. Dividing undoes the multiplication that built the cubic.",
       ["quotient", "linear-factor"],
       [
         "Divide the cubic by the linear factor with long division or synthetic division.",
-        "Factor the quadratic quotient.",
+        "Factor the quadratic quotient into two factors.",
         "Check by multiplying back.",
       ],
-      "The coefficient $a$ of the divisor cancels the leading coefficient of the cubic. A factor $(x-r)$ has a zero at $r$.",
+      "The quotient's first coefficient is the cubic's first coefficient divided by the divisor's. A factor $(x-r)$ has a zero at $r$.",
     ),
     "complete-square-first-steps": m(
       "Tell which first steps of solving a quadratic keep the solutions unchanged.",
@@ -70,14 +70,14 @@ export const regentsAlgebraTwoReasoningMethods: Record<string, ProblemMethod> =
     ),
     "rational-abs-solution-count": m(
       "Count the solutions of an equation by counting the points where two graphs meet.",
-      "Each solution of $f(x)=g(x)$ is an input where the two graphs have the same height. Counting meeting points counts solutions, but each must be counted once, and no solution can sit on a vertical asymptote.",
+      "Each solution of $f(x)=g(x)$ is an input where the two graphs have the same height, so counting meeting points counts solutions. Count each point once. No solution can sit on a vertical asymptote, a vertical line the rational graph runs beside where its bottom is 0. The absolute value $|x|$, the distance from 0, makes a V-shaped graph with one corner.",
       ["asymptote", "intersection-graphs"],
       [
         "Draw or read both graphs.",
-        "Count the points on each side of the asymptote and of the corner of the absolute value.",
+        "Count the meeting points on each side of the asymptote and of the corner of the absolute value, including points where the graphs only touch.",
         "Check by splitting the absolute value into its two cases.",
       ],
-      "Branches that look close may not touch. Count only true crossings, and count each once.",
+      "Branches that look close may not meet. Count only real meeting points, and count each once.",
     ),
   };
 
@@ -204,37 +204,38 @@ export const regentsAlgebraTwoReasoningLessons = [
   lesson(
     "regents-cubic-quotient-factored",
     "Dividing a cubic by a linear factor",
-    "Divide a cubic by one of its factors and factor the quotient.",
+    "A cubic is a polynomial whose highest power is $x^3$. When a cubic is built by multiplying three factors, dividing by one of them gives back the product of the other two. Then factor that quadratic, the part whose highest power is $x^2$, to finish.",
     ["cubic-quotient-factored"],
     [
-      "Divide a cubic by a linear binomial that is one of its factors.",
-      "Write the quotient in factored form.",
+      "Divide a cubic by one of its linear factors, a factor like $3x - 2$ with no higher power of $x$.",
+      "Factor the quadratic quotient, and check by multiplying back.",
     ],
     [
-      "If a cubic is built as $(3x-2)(x-5)(x+1)$, dividing by $3x-2$ gives back $(x-5)(x+1)$.",
-      "The leading coefficient 3 of the divisor cancels the 3 at the front of the cubic.",
+      "If a cubic is built as $(3x - 2)(x - 5)(x + 1)$, dividing by $3x - 2$ gives back $(x - 5)(x + 1)$, as long as $3x - 2$ is not 0. Dividing undoes the multiplication that built the cubic.",
+      "Here the cubic starts with $3x^3$. The factor $3x - 2$ supplies the 3, so the quotient, the result of the division, starts with $x^2$.",
+      "To factor a quadratic $x^2 + bx + c$, find two numbers that multiply to $c$ and add to $b$.",
     ],
     {
       prompt: "Write $\\frac{3x^3-14x^2-7x+10}{3x-2}$ in factored form.",
       steps: [
-        "Dividing gives $x^2-4x-5$.",
-        "Factor: numbers with product $-5$ and sum $-4$ are $-5$ and $1$.",
-        "The quotient is $(x-5)(x+1)$.",
+        "Divide by $3x - 2$, with long or synthetic division. The quotient is $x^2 - 4x - 5$ with remainder 0, so $3x - 2$ is a factor. Check: $(3x - 2)(x^2 - 4x - 5) = 3x^3 - 12x^2 - 15x - 2x^2 + 8x + 10 = 3x^3 - 14x^2 - 7x + 10$.",
+        "Factor $x^2 - 4x - 5$: we need two numbers that multiply to $-5$ and add to $-4$. They are $-5$ and 1.",
+        "So the quotient is $(x - 5)(x + 1)$, for every $x$ where $3x - 2 \\ne 0$ ($\\ne$ means is not equal to).",
       ],
       answer: "$(x-5)(x+1)$",
     },
     [
-      "Divide the cubic by the divisor.",
-      "Factor the quadratic quotient.",
-      "Multiply back to check.",
+      "Divide the cubic by the given factor, with long division or synthetic division.",
+      "Factor the quadratic quotient into two factors.",
+      "Multiply back to check that you get the cubic again.",
     ],
     [
-      "For $ax+b\\ne0$, $\\frac{(ax+b)q(x)}{ax+b}=q(x)$. The quotient is defined wherever the divisor is not zero.",
+      "For $ax + b \\ne 0$, $\\dfrac{(ax + b)q(x)}{ax + b} = q(x)$. The factored quotient equals the original expression wherever the divisor is not zero.",
     ],
     [
-      "A factor $(x-r)$ has zero $r$, so check the signs.",
-      "The divisor's coefficient cancels; it does not stay in the quotient.",
-      "Check by multiplication.",
+      "A factor $(x - r)$ has the zero $r$, so check the signs.",
+      "The quotient's first coefficient is the cubic's first coefficient divided by the divisor's: here $3 \\div 3 = 1$.",
+      "Check by multiplying back.",
     ],
     "Have your learner multiply the quotient by the divisor to get the cubic back.",
   ),
@@ -314,37 +315,38 @@ export const regentsAlgebraTwoReasoningLessons = [
   lesson(
     "regents-rational-abs-solution-count",
     "Counting solutions from two graphs",
-    "Count the points where a rational graph meets an absolute-value graph.",
+    "A solution of $f(x) = g(x)$ is an input where the two graphs have the same height. So counting solutions means counting the points where the graphs meet. Here one graph is a rational function, a fraction with $x$ in the bottom, and the other is an absolute-value graph, a V shape.",
     ["rational-abs-solution-count"],
     [
-      "Interpret solutions of $f(x)=g(x)$ as meeting points of two graphs.",
-      "Split an absolute value into two cases to check a count.",
+      "Count the points where a rational graph meets an absolute-value graph.",
+      "Confirm the count by solving the two cases of the absolute value.",
     ],
     [
-      "A solution of $f(x)=g(x)$ is an input where the graphs have the same height. So counting solutions means counting meeting points.",
-      "A rational graph has a vertical asymptote that no solution can touch, and an absolute-value graph has a corner.",
+      "A solution of $f(x) = g(x)$ is an input where both functions give the same output, so the graphs meet there. Counting solutions means counting meeting points, each one once.",
+      "A rational function such as $y = \\tfrac{1}{x}$ is undefined where its bottom is 0. Near that input its graph runs beside a vertical line, called a vertical asymptote, which no solution can lie on.",
+      "The absolute value $|x|$ is the distance of $x$ from 0, so it is never negative: $|3| = 3$ and $|-3| = 3$. The graph of $y = |x| - 2$ is a V with its corner at $(0, -2)$. To solve with it, split into two cases: $|x| = x$ when $x$ is 0 or more, and $|x| = -x$ when $x < 0$.",
     ],
     {
       prompt:
         "The graphs of $y=\\frac{1}{x}$ and $y=|x|-2$ are drawn. How many solutions does $\\frac{1}{x}=|x|-2$ have?",
       steps: [
-        "For $x>0$: $\\frac{1}{x}=x-2$ gives $x^2-2x-1=0$, and the root $1+\\sqrt{2}$ is positive.",
-        "For $x<0$: $\\frac{1}{x}=-x-2$ gives $x^2+2x+1=0$, with the root $x=-1$, which is negative.",
-        "There are two solutions.",
+        "For $x > 0$, $|x| = x$, so $\\tfrac{1}{x} = x - 2$. Multiply both sides by $x$: $1 = x^2 - 2x$, so $x^2 - 2x - 1 = 0$. Its roots are $1 \\pm \\sqrt{2}$ ($\\pm$ means plus or minus), and only $1 + \\sqrt{2}$, about 2.41, is positive.",
+        "For $x < 0$, $|x| = -x$, so $\\tfrac{1}{x} = -x - 2$. Multiply both sides by $x$: $1 = -x^2 - 2x$, so $x^2 + 2x + 1 = 0$, which is $(x + 1)^2 = 0$. Its root $x = -1$ is negative, so it counts.",
+        "There are two solutions, $1 + \\sqrt{2}$ and $-1$: one for each point where the graphs meet.",
       ],
       answer: "2",
     },
     [
-      "Look at where the graphs cross.",
-      "Count each crossing once.",
-      "Confirm with the two cases of the absolute value.",
+      "Look at where the graphs meet, on each side of the asymptote and of the corner.",
+      "Count each meeting point once, including a point where the graphs only touch.",
+      "Confirm by solving the two cases of the absolute value. Keep roots that fit their case and are not on the asymptote.",
     ],
     [
-      "The solution set of $f(x)=g(x)$ is the set of $x$-coordinates of the intersection points, restricted to inputs where both functions are defined.",
+      "The solutions of $f(x) = g(x)$ are the $x$-coordinates of the points where the graphs meet, using only inputs where both functions are defined.",
     ],
     [
-      "Graphs that approach each other need not meet.",
-      "No solution can lie on the asymptote.",
+      "Graphs that come close need not meet.",
+      "No solution can lie on a vertical asymptote.",
       "Count each meeting point once.",
     ],
     "Ask your learner to say where the asymptote and the corner are before counting.",

@@ -74,7 +74,7 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
   "shifted-polynomial-features": {
     goal: "Find an extreme point, the $x$-intercepts or a value of a polynomial whose graph is shifted.",
     intuition:
-      "In $g(x)=f(x+c)$ the input is changed first, so the graph moves the opposite way from the sign: $f(x+3)$ moves 3 units left. In $g(x)=f(x)+k$ the output is changed, so the graph moves $k$ units up.",
+      "Shifting a graph slides it without changing its shape. In $g(x)=f(x+c)$, read “$f$ of $x$ plus $c$”, the input is changed first, so the graph moves the opposite way from the sign: $f(x+3)$ moves 3 units left. In $g(x)=f(x)+k$ the output is changed, so the graph moves $k$ units up. Every feature, such as an $x$-intercept (where the graph meets the $x$-axis) or the vertex (the turning point of a parabola), moves with it.",
     terms: [
       "x-intercept",
       ["vertex-parabola", "For $ax^2+bx+c$ it is at $x=-\\frac{b}{2a}$."],
@@ -82,10 +82,10 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
     method: [
       "Find the feature of the original function $f$: its vertex $x$-value, its intercepts, or $f$ at a given input.",
       "For $f(x+c)$ subtract $c$ from every $x$-value of the feature. For $f(x-c)$ add $c$. For $f(x)+k$ add $k$ to every output.",
-      "Sum, evaluate or report as asked.",
+      "Add, evaluate or report the moved feature as the question asks.",
     ],
     watch:
-      "A horizontal shift moves every intercept, so the sum of three intercepts moves by three times the shift.",
+      "A horizontal shift moves each $x$-intercept the same distance, so the sum of three $x$-intercepts moves by three times the shift.",
   },
   "radical-side-entry": {
     goal: "Find a hypotenuse in simplest radical form and report its radicand or coefficient, or find a leg of a decimal right triangle.",
@@ -317,18 +317,26 @@ export const satGeometryAdvancedLessons: Lesson[] = [
     id: "sat-shifted-polynomials",
     title: "Features of shifted polynomials",
     summary:
-      "A horizontal shift moves every feature along the $x$-axis; a vertical shift adds the same amount to every output.",
+      "Shifting a graph slides it without changing its shape. A horizontal shift moves every point left or right, so every feature, such as a zero or a highest point, moves by the same amount. A vertical shift adds the same number to every output, so the graph moves up or down. The sign inside the brackets works backward: $f(x - 2)$ moves the graph 2 units right.",
+    senses: {
+      unit: "unit",
+      factor: "factor-number",
+      vertex: "vertex-parabola",
+    },
+    noLink: ["opposite"],
     templateIds: ["shifted-polynomial-features"],
     objectives: [
-      "Find the extreme point of a shifted quadratic from the original's vertex.",
-      "Find the sum of $x$-intercepts of a shifted factored cubic and a value after a vertical shift.",
+      "Tell how $f(x - c)$, $f(x + c)$ and $f(x) + k$ move the graph of $f$.",
+      "Find a shifted graph's $x$-intercepts, the $x$-value of its highest or lowest point, or one of its values.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Change the input or change the output",
         paragraphs: [
-          "In $g(x)=f(x-2)$ the function $g$ takes the value of $f$ two units earlier, so every point of the graph of $f$ moves 2 units right. In $g(x)=f(x)+2$ every output is 2 greater, so the graph moves up 2. The sign inside the parentheses works backward.",
+          "We write $f(x)$, read “$f$ of $x$”, for the output of the function $f$ at input $x$. In $g(x) = f(x - 2)$, the function $g$ gives at $x$ what $f$ gave 2 units earlier, at $x - 2$. So every point of the graph of $f$ moves 2 units right.",
+          "In $g(x) = f(x) + 2$, every output is 2 greater, so the graph moves up 2. Changing the input moves the graph sideways, the opposite way from the sign; changing the output moves it up or down.",
+          "An $x$-intercept is a point where a graph meets the $x$-axis. For $f(x) = (x - 1)(x + 2)(x - 4)$, a polynomial written as factors multiplied together, the $x$-intercepts are at $x = 1$, $-2$ and 4, because each makes one factor 0.",
         ],
       },
     ],
@@ -336,9 +344,9 @@ export const satGeometryAdvancedLessons: Lesson[] = [
       prompt:
         "$f(x)=(x-1)(x+2)(x-4)$ and $g(x)=f(x-3)$. What is the sum of the $x$-intercepts of $g$?",
       steps: [
-        "The $x$-intercepts of $f$ are 1, $-2$ and 4, because each makes one factor zero.",
-        "$g(x)=0$ when $x-3$ is one of those, so each intercept of $g$ is 3 greater: 4, 1 and 7.",
-        "The sum is $4+1+7=12$. Check: the sum for $f$ is 3, plus 3 intercepts times 3 gives 12.",
+        "The $x$-intercepts of $f$ are at 1, $-2$ and 4, because each makes one factor zero.",
+        "$g(x) = f(x - 3)$ is 0 when $x - 3$ is one of those numbers, so $x$ is 3 greater. The intercepts of $g$ are at 4, 1 and 7.",
+        "Add them: $4 + 1 + 7 = 12$. Check: the sum for $f$ is $1 - 2 + 4 = 3$, and each of the three intercepts moved 3, so $3 + 3 \\times 3 = 12$.",
       ],
       answer: "$12$",
     },
@@ -347,23 +355,23 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         stage: "method",
         title: "Vertex of a shifted quadratic",
         paragraphs: [
-          "For $f(x)=x^2-8x+19$ the vertex is at $x=-\\frac{-8}{2}=4$. For $g(x)=f(x+3)$ the graph moves 3 units left, so the minimum is at $x=4-3=1$.",
-          "For a vertical shift evaluate first: if $f(0)=-6$ and $g(x)=f(x)+4$, then $g(0)=-2$.",
+          "A quadratic like $f(x) = x^2 - 8x + 19$ has a U-shaped graph called a parabola. Its turning point is called the vertex. For $ax^2 + bx + c$, the vertex is at $x = -\\tfrac{b}{2a}$, so here it is at $x = -\\tfrac{-8}{2} = 4$. For $g(x) = f(x + 3)$ the graph moves 3 units left, so the lowest point is at $x = 4 - 3 = 1$.",
+          "For a vertical shift, work out the original value first: if $f(0) = -6$ and $g(x) = f(x) + 4$, then $g(0) = -6 + 4 = -2$.",
         ],
       },
       {
         stage: "formal",
         title: "Why the sign works backward",
         paragraphs: [
-          "$g(x)=f(x-c)$ equals $f(u)$ at $x=u+c$. So the point $(u,f(u))$ of the graph of $f$ appears on the graph of $g$ at $(u+c,f(u))$, which is $c$ units to the right.",
+          "$g(x) = f(x - c)$ equals $f(u)$ when $x = u + c$. So the point $(u, f(u))$ of the graph of $f$ appears on the graph of $g$ at $(u + c, f(u))$, which is $c$ units to the right.",
         ],
       },
     ],
     pitfalls: [
-      "The graph of $f(x+3)$ moves left, not right.",
-      "Shifting a cubic by $c$ moves all three intercepts, so their sum moves by $3c$.",
+      "The graph of $f(x + 3)$ moves left, not right.",
+      "Shifting a graph $c$ units right moves each of its $x$-intercepts $c$ units right. If there are three, their sum grows by $3c$.",
     ],
     parentGuide:
-      "Ask the learner to say in words whether $f(x+2)$ moves a graph left or right and why.",
+      "Ask the learner to say in words whether $f(x + 2)$ moves a graph left or right, and why.",
   },
 ];

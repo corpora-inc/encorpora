@@ -144,29 +144,38 @@ export const quadraticStructureLessons: Lesson[] = [
     id: "polynomial-zeros",
     title: "Zeros of polynomials",
     summary:
-      "When an expression is a product, any input that makes one factor zero makes the whole product zero. Such an input is a zero of the expression.",
+      "A polynomial is a sum of terms like $x^3$, $-2x$ and $5$. When it is written as factors, parts multiplied together, any input that makes one factor 0 makes the whole product 0. Such an input is called a zero of the polynomial. On the graph, the zeros are where the curve meets the $x$-axis.",
+    senses: {
+      term: "term-expression",
+      factor: "factor-number",
+      product: "product-multiply",
+      opposite: "opposite-number",
+      squared: "square-number",
+      side: "side",
+    },
+    noLink: ["parts", "whole", "changes"],
     templateIds: ["zeros-from-factors", "zero-multiplicity"],
-    includeGeneratedRepresentation: false,
     objectives: [
-      "Find the zeros of a polynomial in factored form, and write a polynomial with given zeros.",
-      "Match a graph's $x$-intercepts to factors, and its right end to the sign of the leading coefficient.",
-      "Tell from a factor's exponent whether the graph crosses or touches the $x$-axis.",
+      "Find the zeros of a factored polynomial, and build a polynomial from given zeros.",
+      "Use each factor's exponent to tell whether the graph crosses or touches the $x$-axis.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Each factor gives a zero",
         paragraphs: [
-          "A product is 0 exactly when one of its factors is 0. So y = (x + 2)(x − 1)(x − 4) is 0 at x = −2, x = 1 and x = 4, and its graph crosses the $x$-axis there. The factor x − r is 0 at x = r, the number with the opposite sign of the one written.",
-          "Changing one factor moves one zero: as $r$ changes in (x − r), its $x$-intercept slides along the axis while the others stay.",
+          "A product, the result of a multiplication, is 0 exactly when one of its factors is 0. So $y = (x + 2)(x - 1)(x - 4)$ is 0 at $x = -2$, $x = 1$ and $x = 4$. Its graph meets the $x$-axis, the line $y = 0$, at those three inputs.",
+          "The factor $x - r$ is 0 at $x = r$. So the zero has the opposite sign of the number written in the factor: $(x + 2)$ gives the zero $-2$, because $-2 + 2 = 0$.",
+          "Changing one factor moves one zero. As $r$ changes in $(x - r)$, that $x$-intercept, the point where the graph meets the $x$-axis, slides along the axis while the others stay.",
         ],
         illustration: "zero-slide",
       },
       {
         title: "Crossing or touching",
         paragraphs: [
-          "Near x = r, the factor (x − r) is negative on one side and positive on the other, so $y$ changes sign and the graph crosses the axis. (x − r)² is positive on both sides, so $y$ keeps its sign: the graph touches the axis at $r$ and turns back.",
-          "For large $x$ every factor is positive, so $y$ has the sign of the leading coefficient: the graph rises to the right when it is positive and falls when it is negative.",
+          "The exponent on a factor, the small raised number, counts its copies. Close to a zero $r$, the other factors keep their sign. A single factor $(x - r)$ is negative on one side of $r$ and positive on the other, so $y$ changes sign and the graph crosses the axis.",
+          "A squared factor $(x - r)^2$, meaning $(x - r)(x - r)$, is positive on both sides of $r$. So $y$ keeps its sign there, and the graph touches the axis at $r$ and turns back.",
+          "For large $x$, every factor $(x - r)$ is positive. So $y$ has the sign of the leading coefficient, the number in front: the graph rises to the right when it is positive and falls when it is negative.",
         ],
         illustration: "multiplicity-touch",
       },
@@ -174,9 +183,9 @@ export const quadraticStructureLessons: Lesson[] = [
     workedExample: {
       prompt: "Which polynomial has zeros at x = −3, 0 and 2 and nowhere else?",
       steps: [
-        "A zero at x = r comes from the factor (x − r).",
-        "x = −3 gives (x + 3); x = 0 gives $x$; x = 2 gives (x − 2).",
-        "So y = x(x + 3)(x − 2).",
+        "A zero at $x = r$ comes from the factor $(x - r)$, because that factor is 0 exactly when $x = r$.",
+        "$x = -3$ gives $(x - (-3)) = (x + 3)$. $x = 0$ gives $(x - 0)$, which is just $x$. $x = 2$ gives $(x - 2)$.",
+        "Multiply the three factors: $y = x(x + 3)(x - 2)$. It has no other zeros, because no other input makes a factor 0.",
       ],
       answer: "y = x(x + 3)(x − 2)",
     },
@@ -185,52 +194,59 @@ export const quadraticStructureLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "A product of real numbers is 0 exactly when one of its factors is 0, so the zeros of a factored polynomial are the zeros of its factors.",
-          "If $p(x)=(x-r)^m q(x)$ for a positive integer $m$ and a polynomial $q$ with $q(r)\\ne0$, then $p$ changes sign at $r$ when $m$ is odd and keeps its sign there when $m$ is even. Its graph crosses the $x$-axis at odd multiplicity and touches it at even multiplicity.",
+          "A product of real numbers, any numbers on the number line, is 0 exactly when one of its factors is 0. So the zeros of a factored polynomial are the zeros of its factors.",
+          "If $p(x) = (x - r)^m q(x)$ for a positive whole number $m$ and a polynomial $q$ with $q(r) \\ne 0$ ($\\ne$ means is not equal to), then $p$ changes sign at $r$ when $m$ is odd and keeps its sign there when $m$ is even. The number $m$ of copies is called the multiplicity. The graph crosses the $x$-axis at odd multiplicity and touches it at even multiplicity.",
         ],
       },
     ],
     pitfalls: [
-      "(x + 4) is 0 at x = −4, not 4.",
+      "$(x + 4)$ is 0 at $x = -4$, not 4.",
       "A squared factor touches the axis; it does not cross.",
       "Check the right end of a graph for the sign of the leading coefficient.",
     ],
     parentGuide:
-      "Substitute each claimed zero into the factored form and watch one factor become 0. Then pick a number just left and just right of a zero and compare the signs of $y$.",
+      "Put each claimed zero into the factored form and watch one factor become 0. Then pick a number just left and just right of a zero, and compare the signs of $y$.",
   },
   {
     id: "polynomial-division",
     title: "Dividing by a linear factor",
     summary:
-      "When a sum of powers is divided by $x-a$, the leftover constant is its remainder. Substituting $x=a$ into the original expression finds it.",
+      "Dividing a polynomial by $x - a$ gives a quotient, the main answer, and a remainder, the number left over. The remainder equals the polynomial's value at $x = a$. So to find the remainder, put $x = a$ into the original polynomial.",
+    senses: {
+      term: "term-expression",
+      factor: "factor-number",
+      product: "product-multiply",
+      degree: "degree-polynomial",
+    },
+    noLink: ["whole", "part"],
     templateIds: ["remainder-theorem", "polynomial-quotient"],
-    includeGeneratedRepresentation: false,
     objectives: [
-      "Find the remainder of p(x) ÷ (x − a) as $p(a)$.",
-      "Find a coefficient that makes $x-a$ a factor.",
-      "Divide a cubic by x − a with the synthetic-division layout.",
+      "Find the remainder of a division by $x - a$ by working out the polynomial's value at $a$.",
+      "Divide by $x - a$ with synthetic division to find the quotient and the remainder.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "The remainder is a value of the polynomial",
         paragraphs: [
-          "A polynomial is a sum of nonnegative whole-number powers of a variable with number coefficients; $p(x)$ names its value at input $x$. Dividing by $x-a$ means finding a quotient polynomial plus a constant remainder. At $x=a$, the factor $x-a$ becomes zero, so only the remainder is left. This is why substituting $a$ into $p$ finds the remainder.",
+          "A polynomial is a sum of terms like $2x^3$, $-3x^2$ and $-4$: numbers times whole-number powers of $x$. We write $p(x)$, read “$p$ of $x$”, for its value when the input is $x$.",
+          "Dividing $p(x)$ by $x - a$ means writing $p(x) = (x - a)q(x) + R$. Here $q(x)$ is the quotient, another polynomial, and $R$ is the remainder, a number.",
+          "At $x = a$, the factor $x - a$ becomes 0, so the whole first part is 0 and only the remainder is left: $p(a) = R$. That is why putting $a$ into $p$ finds the remainder.",
         ],
       },
       {
         title: "Synthetic division",
         paragraphs: [
-          "Write $a$, the zero of the divisor, then the coefficients of $p$, highest power first (with 0 for any missing power). Bring down the first coefficient. Multiply it by $a$, write the product under the next coefficient, and add. Repeat across.",
-          "The bottom row holds the quotient's coefficients, one degree lower than $p$, and its last number is the remainder. Dividing x³ − 2x² − 5x + 6 by x − 3: bring down 1; 1 × 3 = 3, −2 + 3 = 1; 1 × 3 = 3, −5 + 3 = −2; −2 × 3 = −6, 6 − 6 = 0. So the quotient is x² + x − 2 and the remainder is 0.",
+          "Synthetic division is a short way to divide by $x - a$. Write $a$, the input that makes $x - a$ zero. Then write the coefficients of $p$, the numbers in front of each power, from the highest power down, with 0 for any missing power. Bring down the first coefficient. Multiply it by $a$, write the product under the next coefficient, and add. Repeat across.",
+          "The bottom row holds the quotient's coefficients, one power lower than $p$, and its last number is the remainder. To divide $x^3 - 2x^2 - 5x + 6$ by $x - 3$: bring down 1; $1 \\times 3 = 3$ and $-2 + 3 = 1$; $1 \\times 3 = 3$ and $-5 + 3 = -2$; $-2 \\times 3 = -6$ and $6 - 6 = 0$. So the quotient is $x^2 + x - 2$ and the remainder is 0.",
         ],
         illustration: "synthetic-layout",
       },
       {
         title: "The remainder theorem",
         paragraphs: [
-          "Put x = a into p(x) = (x − a)q(x) + R: the first term is 0, so p(a) = R. The remainder is the value of $p$ at the zero of the divisor.",
-          "So x − a is a factor exactly when $p(a) = 0$ (the factor theorem). For x³ + kx − 6 to have the factor x − 2, 8 + 2k − 6 = 0, so k = −1.",
+          "Put $x = a$ into $p(x) = (x - a)q(x) + R$. The first part is 0, so $p(a) = R$. This is called the remainder theorem: the remainder is the value of $p$ at the input that makes the divisor 0.",
+          "So $x - a$ is a factor exactly when $p(a) = 0$; this is called the factor theorem. For $x^3 + kx - 6$ to have the factor $x - 2$, we need $8 + 2k - 6 = 0$, so $k = -1$.",
         ],
       },
     ],
@@ -238,8 +254,9 @@ export const quadraticStructureLessons: Lesson[] = [
       prompt:
         "What is the remainder when p(x) = 2x³ − 3x² + x − 4 is divided by x + 2?",
       steps: [
-        "x + 2 = x − (−2), so the remainder is p(−2).",
-        "p(−2) = 2 × (−2)³ − 3 × (−2)² + (−2) − 4 = −16 − 12 − 2 − 4 = −34.",
+        "Write the divisor as $x - a$: $x + 2 = x - (-2)$, so $a = -2$. By the remainder theorem, the remainder is $p(-2)$.",
+        "Work out each term at $x = -2$: $2 \\times (-2)^3 = -16$, $-3 \\times (-2)^2 = -12$, then $-2$ and $-4$.",
+        "Add them: $-16 - 12 - 2 - 4 = -34$. That is the remainder.",
       ],
       answer: "−34",
     },
@@ -248,18 +265,18 @@ export const quadraticStructureLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "p(x) = (x − a)q(x) + R, so p(a) = R: the remainder is the value at $a$, and x − a is a factor exactly when p(a) = 0.",
-          "For a nonconstant polynomial $p$, division by $x-a$ writes $p(x)=(x-a)q(x)+R$ with $q$ one degree lower; synthetic division computes $q$ and $R$ by repeated multiplying and adding.",
+          "$p(x) = (x - a)q(x) + R$, so $p(a) = R$: the remainder is the value at $a$, and $x - a$ is a factor exactly when $p(a) = 0$.",
+          "For a polynomial $p$ of degree at least 1, dividing by $x - a$ writes $p(x) = (x - a)q(x) + R$, with $q$ one degree lower. Synthetic division finds $q$ and $R$ by repeated multiplying and adding.",
         ],
       },
     ],
     pitfalls: [
-      "Divide by x + 2 using −2, the zero of the divisor.",
+      "Divide by $x + 2$ using $-2$, the input that makes the divisor zero.",
       "Write 0 for a missing power before dividing.",
       "The quotient is one degree lower than $p$.",
     ],
     parentGuide:
-      "Check a division by multiplying back: (x − a) times the quotient, plus the remainder, must give $p(x)$ again. Then compare the remainder with $p(a)$.",
+      "Check a division by multiplying back: $(x - a)$ times the quotient, plus the remainder, must give $p(x)$ again. Then compare the remainder with $p(a)$.",
   },
 ];
 
@@ -334,36 +351,45 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   },
   "zeros-from-factors": {
     goal: "Connect the factors of a polynomial with its zeros and $x$-intercepts.",
+    intuition:
+      "A zero of a polynomial is an input that makes it 0. On a graph, it is where the curve meets the $x$-axis. When the polynomial is written as factors multiplied together, a product is 0 exactly when one factor is 0, so each factor $(x - r)$ gives the zero $r$.",
     terms: ["zero-of-a-function"],
     method: [
-      "Each factor (x − r) is 0 at x = r; set each factor equal to 0.",
-      "To build a polynomial, turn each zero $r$ into the factor (x − r).",
-      "On a graph, read the $x$-intercepts, and check the right end for the sign of the leading coefficient.",
+      "Each factor $(x - r)$ is 0 at $x = r$. Set each factor equal to 0 to find the zeros.",
+      "To build a polynomial, turn each zero $r$ into the factor $(x - r)$; the zero 0 gives the factor $x$.",
+      "On a graph, read the $x$-intercepts, where the curve meets the $x$-axis. Then check the right end for the sign of the leading coefficient, the number in front.",
     ],
-    watch: "(x + 4) gives the zero −4, the number with the opposite sign.",
+    watch: "$(x + 4)$ gives the zero $-4$, the number with the opposite sign.",
   },
   "zero-multiplicity": {
     goal: "Use a factor's exponent to decide whether the graph crosses or touches the $x$-axis.",
+    senses: { factor: "factor-number", square: "square-number" },
+    intuition:
+      "A zero is an input where the graph meets the $x$-axis. The exponent on its factor, the small raised number, counts how many copies of the factor are multiplied. Close to the zero, the other factors keep their sign. One copy changes sign at the zero, so the graph crosses. Two copies, a squared factor, never go negative, so the graph touches the axis and turns back.",
     method: [
-      "A factor to the first power changes sign at its zero: the graph crosses there.",
-      "A squared factor stays positive on both sides: the graph touches the axis and turns back.",
-      "Match each zero's behavior to its factor, then check the right end for the leading sign.",
+      "A factor to the first power changes sign at its zero, so the graph crosses there.",
+      "A squared factor is positive on both sides, so the graph touches the axis and turns back.",
+      "Match each zero's behavior to its factor, then check the right end for the sign of the leading coefficient.",
     ],
     watch:
-      "Touching is not crossing twice: a touching zero comes from one squared factor.",
+      "A touching zero comes from an even power of its factor, here a square. It is not two separate crossings.",
   },
   "remainder-theorem": {
-    goal: "Find the remainder of p(x) ÷ (x − a), or a coefficient that makes $x - a a$ factor.",
+    goal: "Find the remainder of $p(x) \\div (x - a)$, or a coefficient that makes $x - a$ a factor.",
+    intuition:
+      "When a polynomial $p(x)$ is divided by $x - a$, the number left over is called the remainder. The remainder theorem says it equals $p(a)$, the polynomial's value at $x = a$, because the divisor $x - a$ is 0 there. Synthetic division, a short layout for dividing, gives the same number as its last entry.",
     terms: ["remainder-theorem"],
     method: [
-      "Read a from the divisor: x − a uses $a$, and x + a uses −a.",
-      "Evaluate $p(a)$, or carry out synthetic division and read its last number.",
-      "For a factor, set p(a) = 0 and solve for the unknown coefficient.",
+      "Find $a$ from the divisor: $x - a$ uses $a$, and $x + a$ uses $-a$, the input that makes the divisor zero.",
+      "Work out $p(a)$, or carry out synthetic division and read its last number.",
+      "For a factor, set $p(a) = 0$ and solve for the unknown coefficient.",
     ],
-    watch: "Dividing by x + 3 means evaluating at −3.",
+    watch: "Dividing by $x + 3$ means working out $p(-3)$.",
   },
   "polynomial-quotient": {
-    goal: "Divide a cubic by x − a to get its quotient and remainder.",
+    goal: "Divide a cubic by $x - a$ to get its quotient and remainder.",
+    intuition:
+      "Dividing a polynomial $p(x)$ by $x - a$ gives a quotient $q(x)$, the main result, and a remainder $R$, the number left over: $p(x) = (x - a)q(x) + R$. Synthetic division is a short way to find both. It uses $a$, the input that makes $x - a$ zero, and the coefficients of $p$, the numbers in front of each power.",
     terms: [
       [
         "quotient",
@@ -371,11 +397,12 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write $a$ and the coefficients of $p$, with 0 for a missing power.",
-      "Bring down the first coefficient; multiply by $a$, add to the next, and repeat.",
-      "The bottom row gives the quotient's coefficients (one degree lower) and, last, the remainder.",
+      "Write $a$ and the coefficients of $p$, highest power first, with 0 for a missing power.",
+      "Bring down the first coefficient. Multiply by $a$, add to the next coefficient, and repeat.",
+      "The bottom row gives the quotient's coefficients, one power lower, and, last, the remainder.",
     ],
-    watch: "Use the zero of the divisor: for x + 2, multiply by −2.",
+    watch:
+      "Use the input that makes the divisor zero: for $x + 2$, multiply by $-2$.",
   },
 };
 
