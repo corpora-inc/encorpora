@@ -279,7 +279,7 @@ export const trigPrecalcEntries: GlossaryEntry[] = [
     term: "opposite side",
     forms: ["opposite side", "opposite leg", "opposite legs"],
     plain:
-      "The side of a triangle across from a given angle, not touching it. In a right triangle, the side across from an acute angle is the opposite leg.",
+      "The side of a triangle across from a given angle, not touching it. In a right triangle, the side across from an acute angle is called the opposite leg.",
     example:
       "In triangle $ABC$, side $a$ is opposite angle $A$; it joins $B$ and $C$.",
     uses: ["side", "triangle", "angle", "right-triangle", "leg", "acute-angle"],

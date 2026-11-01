@@ -7044,8 +7044,6 @@
       "terms": [
         "constant",
         "decimal",
-        "equivalent",
-        "mixed-number",
         "multiplier",
         "polynomial",
         "quadratic"
@@ -7057,9 +7055,7 @@
         "axis-of-symmetry",
         "completing-the-square",
         "decimal",
-        "equivalent",
         "maximum",
-        "mixed-number",
         "parabola",
         "substitute"
       ],
@@ -7075,8 +7071,6 @@
     "lesson:sat-entry-radian-conversion": {
       "terms": [
         "decimal",
-        "equivalent",
-        "mixed-number",
         "radian"
       ],
       "long": []
@@ -7085,7 +7079,6 @@
       "terms": [
         "decimal",
         "equivalent",
-        "mixed-number",
         "quadratic",
         "radical",
         "radicand",
@@ -7107,9 +7100,7 @@
         "denominator",
         "division",
         "domain",
-        "equivalent",
         "excluded-value",
-        "mixed-number",
         "numerator",
         "solution"
       ],
@@ -9262,8 +9253,7 @@
     },
     "practice:arithmetic-term": {
       "terms": [
-        "arithmetic-sequence",
-        "common-difference"
+        "arithmetic-sequence"
       ],
       "long": []
     },
@@ -10547,7 +10537,6 @@
       "terms": [
         "credit-card",
         "decimal",
-        "loan",
         "round"
       ],
       "long": []
@@ -10646,7 +10635,6 @@
         "base-area",
         "composite-number",
         "height",
-        "pyramid",
         "radius",
         "slant-height"
       ],
@@ -10988,8 +10976,7 @@
     "practice:divide-fractions": {
       "terms": [
         "denominator",
-        "numerator",
-        "reciprocal"
+        "numerator"
       ],
       "long": []
     },
@@ -11981,10 +11968,7 @@
     "practice:function-evaluation": {
       "terms": [
         "coefficient",
-        "function",
-        "input",
         "multiplication",
-        "output",
         "parentheses",
         "substitute"
       ],
@@ -14474,8 +14458,7 @@
         "quadratic",
         "symmetry",
         "turning-point",
-        "vertex-form",
-        "vertical-line"
+        "vertex-form"
       ],
       "long": []
     },
@@ -14537,8 +14520,7 @@
         "directrix",
         "equidistant",
         "origin",
-        "perpendicular",
-        "vertical-line"
+        "perpendicular"
       ],
       "long": []
     },
@@ -14706,12 +14688,6 @@
     "practice:percent-grid-model": {
       "terms": [
         "decimal"
-      ],
-      "long": []
-    },
-    "practice:percent-of": {
-      "terms": [
-        "percent"
       ],
       "long": []
     },
@@ -15288,8 +15264,7 @@
         "parentheses",
         "polynomial",
         "quadratic",
-        "vertex-form",
-        "vertical-line"
+        "vertex-form"
       ],
       "long": []
     },
@@ -16497,10 +16472,8 @@
       "terms": [
         "constant",
         "decimal",
-        "equivalent",
         "expression",
         "function",
-        "mixed-number",
         "multiplicity",
         "polynomial"
       ],
@@ -16510,14 +16483,11 @@
       "terms": [
         "axis-of-symmetry",
         "decimal",
-        "equivalent",
         "height",
-        "mixed-number",
         "parabola",
         "substitute",
         "symmetry",
-        "turning-point",
-        "vertical-line"
+        "turning-point"
       ],
       "long": []
     },
@@ -16538,8 +16508,6 @@
         "arc",
         "coefficient",
         "decimal",
-        "equivalent",
-        "mixed-number",
         "radian",
         "radius"
       ],
@@ -16548,9 +16516,7 @@
     "practice:sat-entry-radical-equation": {
       "terms": [
         "decimal",
-        "equivalent",
         "isolate",
-        "mixed-number",
         "quadratic",
         "square-root",
         "substitute"
@@ -16577,7 +16543,6 @@
         "excluded-value",
         "expression",
         "input",
-        "mixed-number",
         "numerator",
         "solution"
       ],
@@ -18201,7 +18166,6 @@
         "obtuse-angle",
         "ray",
         "right-angle",
-        "right-triangle",
         "ssa"
       ],
       "long": []

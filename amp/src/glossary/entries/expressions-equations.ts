@@ -705,7 +705,7 @@ export const expressionsEquationsEntries: GlossaryEntry[] = [
     term: "negative reciprocal",
     forms: ["negative reciprocal", "negative reciprocals"],
     plain:
-      "The reciprocal with the opposite sign. Perpendicular lines have slopes that are negative reciprocals.",
+      "The reciprocal with the opposite sign. Two perpendicular lines that are neither horizontal nor vertical have slopes that are negative reciprocals.",
     example:
       "The negative reciprocal of $\\frac{2}{3}$ is $-\\frac{3}{2}$; their product is −1.",
     uses: [
@@ -1068,7 +1068,7 @@ export const expressionsEquationsEntries: GlossaryEntry[] = [
     term: "standard form",
     forms: ["standard form"],
     plain:
-      "A line's equation written as $Ax + By = C$, with integers $A$, $B$ and $C$ sharing no common factor, usually with $A$ positive.",
+      "A line's equation as $Ax + By = C$, with $A$ and $B$ not both 0. Usually $A$, $B$ and $C$ are integers with no common factor above 1.",
     example: "$y = \\frac{2}{3}x + 1$ in standard form is $2x - 3y = -3$.",
     uses: ["line", "equation", "integer", "common-factor"],
     band: "algebra-1",

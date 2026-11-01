@@ -174,10 +174,10 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "center of dilation",
     forms: ["center of dilation", "centers of dilation", "dilation center"],
     plain:
-      "The one point a dilation keeps fixed. Every other point moves straight toward or away from it.",
+      "The fixed point a dilation stretches or shrinks from. Each other point moves straight toward or away from it, and its distance from it is multiplied by the scale factor.",
     example:
       "With center (0, 0) and scale factor 2, the point (1, 3) moves to (2, 6).",
-    uses: ["point", "dilation", "center", "scale-factor"],
+    uses: ["point", "dilation", "center", "scale-factor", "distance"],
     band: "8",
   },
   {
@@ -1348,9 +1348,9 @@ export const geometryEntries: GlossaryEntry[] = [
       "rigid transformations",
     ],
     plain:
-      "A transformation that slides, flips or turns a figure without changing any length or angle.",
+      "A transformation that keeps every length and angle the same, such as a slide, a flip or a turn. The figure's size and shape do not change.",
     example:
-      "A slide, a reflection and a rotation are rigid motions; a dilation is not.",
+      "A slide, a reflection and a rotation are rigid motions; a dilation that enlarges a figure is not.",
     uses: [
       "transformation",
       "length",
@@ -1359,6 +1359,7 @@ export const geometryEntries: GlossaryEntry[] = [
       "rotation",
       "dilation",
     ],
+    noLink: ["change"],
     band: "8",
   },
   {
@@ -1549,8 +1550,16 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "slant height",
     forms: ["slant height", "slant heights"],
     plain:
-      "For a cone, the distance from the tip along its side to the edge of the base. For a regular pyramid, the height of one triangular side face.",
-    uses: ["distance", "cone", "pyramid", "base-shape", "height", "face-solid"],
+      "The distance from the tip down the middle of a sloping face to the base edge. On a cone, it runs from the tip to the base circle.",
+    uses: [
+      "distance",
+      "cone",
+      "pyramid",
+      "base-shape",
+      "height",
+      "face-solid",
+      "circle",
+    ],
     band: "geometry",
     noLink: ["side", "edge"],
   },
@@ -1587,7 +1596,8 @@ export const geometryEntries: GlossaryEntry[] = [
     id: "sphere",
     term: "sphere",
     forms: ["sphere", "spheres"],
-    plain: "A perfectly round solid shape, like a ball.",
+    plain:
+      "A solid shape like a ball, round in every direction: every spot on its outside is just as far from its middle as every other spot.",
     example: "A basketball is a sphere.",
     uses: ["solid-shape"],
     band: "K",

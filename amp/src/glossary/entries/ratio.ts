@@ -18,7 +18,7 @@ export const ratioEntries: GlossaryEntry[] = [
     term: "APR",
     forms: ["apr", "annual percentage rate"],
     plain:
-      "Annual percentage rate: the yearly cost of borrowing, as a percent. Dividing the APR by 12 gives a monthly rate.",
+      "Annual percentage rate: the yearly interest rate on money owed, as a percent. Dividing the APR by 12 gives a monthly rate.",
     example: "An APR of 18% is a monthly rate of 18% ÷ 12 = 1.5%.",
     uses: ["interest", "rate", "loan", "credit-card", "percent"],
     band: "7",

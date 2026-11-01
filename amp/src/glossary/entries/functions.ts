@@ -39,7 +39,7 @@ export const functionsEntries: GlossaryEntry[] = [
     term: "axis of symmetry",
     forms: ["axis of symmetry", "axes of symmetry"],
     plain:
-      "The line through a parabola's vertex that splits it into two mirror-image halves. For a parabola $y=ax^2+bx+c$, it is vertical.",
+      "The line through a parabola's vertex that splits it into two mirror-image halves. For a parabola $y=ax^2+bx+c$, it runs straight up and down.",
     example: "For $y=(x-3)^2+1$, the axis of symmetry is the line $x=3$.",
     uses: ["vertical-line", "line", "vertex-parabola", "parabola", "half"],
     band: "algebra-1",
