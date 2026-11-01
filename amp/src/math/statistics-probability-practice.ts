@@ -214,7 +214,7 @@ const NORMAL =
 const RULE =
   "The 68–95–99.7 rule says that in a normal distribution about 68% of values lie within 1 SD of the mean, 95% within 2 SD, and 99.7% within 3 SD.";
 const RANDOM_VARIABLE =
-  "A random variable, such as $X$, is a number decided by chance. $P(X=k)$, read \"the probability that $X$ equals $k$\", is the chance it takes the value $k$.";
+  'A random variable, such as $X$, is a number decided by chance. $P(X=k)$, read "the probability that $X$ equals $k$", is the chance it takes the value $k$.';
 const EXPECTED =
   "The expected value is the long-run average: multiply each possible value by its probability and add the results.";
 const inside: Record<number, number> = { 1: 68, 2: 95, 3: 99.7 };
@@ -488,7 +488,7 @@ function normalCase(r: Random): Built {
         answer: correct,
         hint: `Raw scores ${xA} and ${xB} come from different exams. Convert each to the number of standard deviations from its own mean: subtract the mean, then divide by the standard deviation.`,
         explanation: [
-          "The exams have different averages, called means, and different typical spreads, called standard deviations. So raw scores cannot be compared directly.",
+          "Each exam has its own average, called the mean, and its own typical spread, called the standard deviation. So raw scores cannot be compared directly.",
           "A $z$-score puts them on one scale: how many standard deviations a score is above or below its own mean.",
           `${nameA}: $z=(${xA}-${mA})\\div${sA}=${zs(zA)}$.`,
           `${nameB}: $z=(${xB}-${mB})\\div${sB}=${zs(zB)}$.`,
@@ -807,8 +807,7 @@ function randomVariableCase(r: Random): Built {
           },
           {
             label: f(c + 1, total),
-            feedback:
-              "The count is one too high. Add the bar heights exactly.",
+            feedback: "The count is one too high. Add the bar heights exactly.",
           },
         ]),
       },
@@ -967,7 +966,7 @@ function theoreticalCase(r: Random): Built {
           EXPECTED,
           `${ev.text.charAt(0).toUpperCase()}${ev.text.slice(1)} in ${ev.ways} of the 36 equally likely pairs. So $P(\\text{win})=\\frac{${ev.ways}}{36}$ and $P(\\text{lose})=\\frac{${36 - ev.ways}}{36}$.`,
           `$E(X)=${w}\\cdot\\frac{${ev.ways}}{36}+(-${l})\\cdot\\frac{${36 - ev.ways}}{36}=\\frac{${ev.ways * w}-${(36 - ev.ways) * l}}{36}=\\frac{${num}}{36}$.`,
-          `In lowest terms, $E(X)=${frac(num, 36)}$. On average you ${num >= 0 ? "gain" : "lose"} that many dollars per game over many games.`,
+          `In lowest terms, $E(X)=${frac(num, 36)}$. ${num === 0 ? "On average you break even over many games." : `On average you ${num > 0 ? "gain" : "lose"} $${frac(Math.abs(num), 36)}$ dollars per game over many games.`}`,
         ],
         choices: options(r, correct, [
           {
@@ -1757,7 +1756,9 @@ function simulationCase(r: Random): Built {
       hint: `Under the model the expected count is 10, and the observed ${x} is ${Math.abs(x - 10)} from it. Add the heights of the bars ${variant === "one-sided" ? `from ${x} upward` : `that are that far or farther from 10 on both sides`}, then compare that percent with ${cutoff}%.`,
       explanation: [
         "A simulation runs the model many times by chance, to show which results the model usually produces.",
-        "If few simulated runs are at least as extreme (at least as far from the expected value) as the real result, the result is unusual for the model.",
+        variant === "one-sided"
+          ? `If few simulated runs reach the real result or beyond it (${x} or more), the result is unusual for the model.`
+          : "If few simulated runs are at least as extreme (at least as far from 10, on either side) as the real result, the result is unusual for the model.",
         `Add the bar heights for counts that are at least as extreme as the observed ${x}: ${T}.`,
         `That is ${T} of 100 simulated sets, or ${T}%.`,
         `${T}% is ${inconsistent(T) ? "less than" : cutoff === T ? "equal to" : "not less than"} the ${cutoff}% cutoff, so the result is ${inconsistent(T) ? "not consistent" : "consistent"} with the model.`,
@@ -1774,7 +1775,12 @@ const trialContexts = [
     measure: "mean quiz score",
     unit: "points",
   },
-  { a: "plant food $A$", b: "plant food $B$", measure: "mean growth", unit: "cm" },
+  {
+    a: "plant food $A$",
+    b: "plant food $B$",
+    measure: "mean growth",
+    unit: "cm",
+  },
   {
     a: "the warm-up routine",
     b: "no warm-up",
