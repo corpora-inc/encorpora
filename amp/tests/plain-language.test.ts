@@ -69,6 +69,14 @@ test("a defining sentence says what the term means", () => {
     ["Find the slope from two points.", "slope"],
     ["The quotient is 4 here.", "quotient"],
     ["Find the slope, the intercept and the vertex.", "slope"],
+    [
+      "A term is a number, a variable, or numbers and variables multiplied together.",
+      "variable",
+    ],
+    [
+      "It cuts a triangle into right triangles, where sine and cosine are ratios of sides.",
+      "right triangles",
+    ],
   ] as const)
     assert.ok(
       !defines(sentence, term),

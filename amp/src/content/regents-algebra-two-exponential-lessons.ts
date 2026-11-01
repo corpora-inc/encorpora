@@ -152,13 +152,12 @@ export const regentsAlgebraTwoExponentialLessons = [
     id: "regents-geometric-series-total",
     title: "Totals of geometric series",
     summary:
-      "A geometric sequence is a list where each term, each number in the list, is the one before it times the same number, called the common ratio. For 4, 2, 1, each term is half the one before, so the common ratio is $\\tfrac{1}{2}$. The sum of the first few terms is called a geometric series. A formula adds them all at once. It also handles payments that grow each year by the same percent, a number out of 100.",
+      "A geometric sequence is a list where each term, each number in the list, is the one before it times the same number, called the common ratio. For 4, 2, 1, each term is half the one before, so the common ratio is $\\tfrac{1}{2}$. The sum of the first few terms is called a geometric series. A formula adds them all at once. It also handles payments that grow each year by the same percent, meaning a number of parts out of 100.",
     senses: {
       term: "term-sequence",
       side: "side-of-equation",
-      change: "change",
     },
-    noLink: ["whole", "period", "mean"],
+    noLink: ["change", "parts", "whole", "period", "mean"],
     templateIds: ["geometric-series-total"],
     objectives: [
       "Find the first term $a_1$ (read “$a$ sub 1”), the ratio $r$ and the number of terms $n$, from a list or from a yearly percent increase.",
@@ -168,7 +167,7 @@ export const regentsAlgebraTwoExponentialLessons = [
     opening: [
       "In a geometric sequence, every term is the term before it times a fixed number $r$, the common ratio. The first term is written $a_1$: the small 1 is a label for position 1. The sum of the first $n$ terms is called a geometric series, written $S_n$.",
       "When the first term is positive, a common ratio between 0 and 1, like $\\tfrac{3}{4}$, makes the terms shrink. A common ratio above 1 makes them grow. Percent (%) means out of 100. A payment that rises 8% each year keeps the whole amount and adds 0.08 of it, so each payment is 1.08 times the last: $r = 1.08$.",
-      "The sum formula is $S_n = \\tfrac{a_1(1 - r^n)}{1 - r}$, for any common ratio $r$ that is not 1. Here $r^n$ means $r$ multiplied by itself $n$ times. That exponent, the small raised $n$, is the number of terms.",
+      "The sum formula is $S_n = \\tfrac{a_1(1 - r^n)}{1 - r}$, for any common ratio $r$ that is not 1. Here $r^n$ means $n$ copies of $r$ multiplied together. That exponent, the small raised $n$, is the number of terms.",
     ],
     example: {
       prompt:

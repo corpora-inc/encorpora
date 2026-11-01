@@ -31,7 +31,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
     terms: ["inverse-function", "logarithm"],
     method: [
       "Write $y = f(x)$ and swap $x$ and $y$.",
-      "Undo the steps in reverse order. For an exponential, get the power alone, then take the logarithm with the same base. For a cube root, cube both sides, meaning the left and the right of the equals sign, then add or subtract.",
+      "Undo the steps in reverse order. For an exponential, get the power alone, then take the logarithm with the same base. For a cube root, first multiply away any number it is divided by, then cube both sides, meaning the left and the right of the equals sign, then add or subtract.",
       "Check with a number: apply $f$, then the inverse, and see that you return to the start.",
     ],
     watch:
@@ -271,7 +271,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
     method: [
       "Swap $x$ and $y$.",
       "Divide or subtract so the power stands alone, undoing the last step first.",
-      "Apply the logarithm with the same base as the power. For a cube root, cube both sides instead.",
+      "Apply the logarithm with the same base as the power. For a cube root, multiply away any number it is divided by, then cube both sides instead.",
     ],
     formalTitle: "Definition",
     formal: [

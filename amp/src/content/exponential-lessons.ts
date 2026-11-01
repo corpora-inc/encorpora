@@ -78,10 +78,10 @@ export const exponentialLessons: Lesson[] = [
       "A pattern, a list of numbers made by repeating one step, can grow by adding or by multiplying. Linear growth adds the same amount each step, like 10, 20, 30, 40. Exponential growth multiplies by the same number each step, like 1, 2, 4, 8. If the multiplying pattern starts above 0 and multiplies by more than 1, it passes the adding pattern in the end, however far behind it starts.",
     senses: {
       difference: "difference-subtract",
-      change: "change",
+
       rule: "rule",
     },
-    noLink: ["more than", "whole"],
+    noLink: ["change", "changes", "more than", "whole"],
     templateIds: ["linear-or-exponential", "exponential-overtakes"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -283,7 +283,7 @@ export const exponentialLessons: Lesson[] = [
     ],
     pitfalls: [
       "$n$ counts terms, not the exponent of the last term. In 1, 2, 4, …, the term $2^5 = 32$ is the sixth term, because the first term is $2^0$.",
-      "Use $r^n$ in the sum formula, not $r^{n-1}$. The formula needs the term just after the last one.",
+      "Use $r^n$ in the sum formula, not $r^{n-1}$, because $a_1 r^n$ is the term just after the last one.",
     ],
     parentGuide:
       "Put 1 coin in a jar on day 1, 2 coins on day 2 and 4 on day 3, doubling each day. Before adding up the week, ask the learner to predict the total from the next day's amount: it is one less. Then add the coins to check.",
@@ -299,10 +299,10 @@ export const exponentialLessons: Lesson[] = [
       product: "product-multiply",
       argument: "argument",
       difference: "difference-subtract",
-      multiple: "multiple",
+
       factor: "factor-number",
     },
-    noLink: ["change"],
+    noLink: ["multiple", "multiples", "change"],
     templateIds: ["log-rules-evaluate", "log-expand", "change-of-base"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -445,7 +445,7 @@ export const exponentialLessons: Lesson[] = [
         stage: "intuition",
         title: "Three parts of a power",
         paragraphs: [
-          "In $3^4 = 81$, 3 is the base, 4 is the exponent, and 81 is the result. The exponent counts how many times the base is multiplied: $3 \\times 3 \\times 3 \\times 3 = 81$. A logarithm asks for the exponent when the base and the result are known.",
+          "In $3^4 = 81$, 3 is the base, 4 is the exponent, and 81 is the result. The exponent counts how many copies of the base are multiplied together: $3 \\times 3 \\times 3 \\times 3 = 81$. A logarithm asks for the exponent when the base and the result are known.",
           "The statement $\\log_3 81 = 4$ means exactly the same as $3^4 = 81$. It does not mean 81 divided by 3. The base must be positive and different from one. The number inside the logarithm, called the argument, must be positive.",
         ],
       },
@@ -517,9 +517,8 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     senses: {
       factor: "factor-number",
       difference: "difference-subtract",
-      change: "change",
     },
-    noLink: ["model", "balance", "whole"],
+    noLink: ["changes", "change", "model", "balance", "whole"],
     intuition:
       "An input is a number you start with, and an output is the number you get from it. A linear relationship adds the same amount to the output each step, like 5, 8, 11, 14 (add 3 each time). An exponential relationship multiplies the output by the same number each step, like 3, 6, 12, 24 (times 2 each time). One that does neither is called neither.",
     method: [
@@ -616,9 +615,10 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       base: "base-exponent",
       rule: "rule",
       product: "product-multiply",
-      multiple: "multiple",
+
       argument: "argument",
     },
+    noLink: ["multiple"],
     intuition:
       "A logarithm is an exponent, and the base is the number being raised to a power. $\\log_b m$, read “log base $b$ of $m$”, is the power of $b$ that gives $m$. Adding logarithms with the same base multiplies their arguments, the numbers inside. Subtracting divides them. A number in front, as in $2\\log_3 6$, can move inside as an exponent.",
     terms: [terms.logarithm],
@@ -638,10 +638,10 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       difference: "difference-subtract",
       rule: "rule",
       root: "root-radical",
-      multiple: "multiple",
+
       base: "base-exponent",
     },
-    noLink: ["part", "combination"],
+    noLink: ["multiple", "multiples", "part", "combination"],
     intuition:
       "A logarithm is an exponent, so it follows the same laws as exponents. The base is the number being raised to a power. The logarithm of a product (a multiplication) is a sum of logarithms, and the logarithm of a quotient (a division) is a difference. The logarithm of a power is a multiple: $\\log(x^3) = 3\\log x$. A square root is the power $\\tfrac{1}{2}$, so $\\log\\sqrt{x} = \\tfrac{1}{2}\\log x$.",
     terms: [terms.logarithm],
