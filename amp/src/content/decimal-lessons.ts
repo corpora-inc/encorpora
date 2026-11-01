@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -334,10 +335,7 @@ export const decimalLessons: Lesson[] = [
   },
 ];
 
-const placeTerms: [string, string][] = [
-  ["Tenth", "One of 10 equal parts of one whole: 0.1."],
-  ["Hundredth", "One of 100 equal parts of one whole: 0.01."],
-];
+const placeTerms: MethodTerm[] = ["tenth", "hundredth"];
 const compareMethod = [
   "Line up the decimal points; fill empty places on the right with 0.",
   "Compare digits from the left; the first place that differs decides.",
@@ -367,7 +365,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
   "decimal-line-point": {
     goal: "Read a point on a number line cut into tenths or hundredths.",
     terms: [
-      ["Interval", "The space between two neighboring tick marks."],
+      ["interval", "Here, the space between two neighboring tick marks."],
       ...placeTerms,
     ],
     method: [
@@ -385,10 +383,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
   },
   "decimal-digit-value": {
     goal: "Name the value of one digit of a decimal.",
-    terms: [
-      ...placeTerms,
-      ["Thousandth", "One of 1000 equal parts of one whole: 0.001."],
-    ],
+    terms: [...placeTerms, "thousandth"],
     method: [
       "Name the digit's place: tenths, hundredths or thousandths.",
       "Multiply the digit by that place: 7 × 0.01 = 0.07.",
@@ -397,10 +392,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
   },
   "expanded-decimal": {
     goal: "Write a decimal from ones, tenths, hundredths and thousandths.",
-    terms: [
-      ...placeTerms,
-      ["Thousandth", "One of 1000 equal parts of one whole: 0.001."],
-    ],
+    terms: [...placeTerms, "thousandth"],
     method: [
       "List the count for each place: ones, tenths, hundredths, thousandths.",
       "Write 0 for a place with nothing in it.",
@@ -410,19 +402,13 @@ export const decimalMethods: Record<string, ProblemMethod> = {
   },
   "compare-decimals-thousandths": {
     goal: "Choose the greater or lesser of two decimals to thousandths.",
-    terms: [
-      ...placeTerms,
-      ["Thousandth", "One of 1000 equal parts of one whole: 0.001."],
-    ],
+    terms: [...placeTerms, "thousandth"],
     method: compareMethod,
     watch: "More digits does not mean greater: 0.3 > 0.299.",
   },
   "round-decimal": {
     goal: "Round a decimal to the nearest whole number, tenth or hundredth.",
-    terms: [
-      ["Round", "Replace a number with the nearer of two neighbors."],
-      ["Halfway point", "The number exactly between the two neighbors."],
-    ],
+    terms: ["round", "halfway-point"],
     method: [
       "Find the two neighbors with the target number of places.",
       "Find the halfway point between them.",
@@ -432,16 +418,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
   },
   "inverse-round-decimal": {
     goal: "Choose one original decimal that rounds to a given tenth or hundredth.",
-    terms: [
-      [
-        "Halfway point",
-        "A number equally far from two neighboring rounded values.",
-      ],
-      [
-        "Round up",
-        "Choose the greater rounded value when a number is exactly halfway.",
-      ],
-    ],
+    terms: ["halfway-point", "round"],
     method: [
       "Find the rounded values immediately below and above the target.",
       "Find the halfway point on each side of the target.",
@@ -452,7 +429,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
   },
   "multidigit-decimal-sum": {
     goal: "Add or subtract decimals with different numbers of places.",
-    terms: [["Regroup", "Trade 10 of one place for 1 of the next place left."]],
+    terms: ["regroup"],
     method: [
       "Line up the decimal points; fill empty places with 0.",
       "Add or subtract place by place from the right, regrouping as needed.",
@@ -462,7 +439,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
   },
   "multidigit-decimal-product": {
     goal: "Multiply two decimals.",
-    terms: [["Decimal places", "Digits after the decimal point."]],
+    terms: ["decimal-places"],
     method: [
       "Multiply the digits as whole numbers.",
       "Count the decimal places in both factors together.",
@@ -473,7 +450,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
   },
   "multidigit-decimal-quotient": {
     goal: "Divide a decimal by a decimal.",
-    terms: [["Divisor", "The number being divided by."]],
+    terms: ["divisor"],
     method: [
       "Multiply both numbers by the power of ten that makes the divisor whole.",
       "Divide by the whole-number divisor.",

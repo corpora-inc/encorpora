@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 import {
@@ -56,7 +57,7 @@ type Entry = {
   summary: string;
   objectives: [string, string];
   intuition: string;
-  terms: [string, string][];
+  terms: MethodTerm[];
   method: string[];
   watch: string;
   principle: string;
@@ -80,13 +81,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "The coordinate plane has two number lines that cross at the origin, $(0, 0)$. The horizontal one is the $x$-axis and the vertical one is the $y$-axis. In $(3, -2)$, the first number says move 3 right and the second says move 2 down. A zero means no move in that direction, so the point lands on an axis.",
-    terms: [
-      [
-        "ordered pair",
-        "Two numbers $(x, y)$ that locate a point: $x$ across, then $y$ up or down.",
-      ],
-      ["quadrant", "One of the four regions the axes cut the plane into."],
-    ],
+    terms: ["ordered-pair", "quadrant"],
     method: [
       "Start at the origin. Move along the $x$-axis by the first coordinate: right if positive, left if negative.",
       "From there, move up for a positive second coordinate or down for a negative one, and place the point.",
@@ -139,16 +134,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "An equation in $x$ and $y$ describes a set of points: all the pairs that make it true. For a linear equation those points lie on a line. The slope says how much $y$ changes for each step in $x$, so from one point of the line you can walk to the next.",
-    terms: [
-      [
-        "slope",
-        "Rise over run: the change in $y$ divided by the change in $x$ between two points of the line.",
-      ],
-      [
-        "$y$-intercept",
-        "Where the line crosses the $y$-axis, the point where $x = 0$.",
-      ],
-    ],
+    terms: ["slope", "y-intercept"],
     method: [
       "Find one point: in $y = mx + b$ it is $(0, b)$; in $y - y_1 = m(x - x_1)$ it is $(x_1, y_1)$; a proportional relationship passes through $(0, 0)$; in $ax + by = c$ substitute an $x$-value that makes $y$ whole.",
       "From that point use the slope $\\frac{\\text{rise}}{\\text{run}}$: move right by the run and up by the rise (down if the rise is negative) to a second point.",
@@ -200,16 +186,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "A rigid motion moves a figure without stretching or bending it. Each original point, or vertex, has one image point, named with a prime: $A$ moves to $A'$ (said “A prime”). Find each image with the motion's coordinate rule.",
-    terms: [
-      [
-        "image",
-        "The point a motion moves an original point to, written with a prime.",
-      ],
-      [
-        "rigid motion",
-        "A translation, reflection or rotation: it keeps every length and angle.",
-      ],
-    ],
+    terms: ["image-transformation", "rigid-motion"],
     method: [
       "Write the rule: a translation adds the same amounts, $(x, y) \\to (x + h, y + k)$; a reflection over the $x$-axis gives $(x, -y)$ and over the $y$-axis $(-x, y)$.",
       "For rotations about the origin: 90° counterclockwise gives $(-y, x)$, 90° clockwise $(y, -x)$ and 180° gives $(-x, -y)$.",
@@ -285,16 +262,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "A quadratic function $y = ax^2 + bx + c$ graphs as a parabola, a curve with a turning point called the vertex. The two sides mirror each other across the vertical line through the vertex, so $x$-values the same distance on either side of it give the same $y$. Unlike a line, a parabola has no constant slope: a few points do not fix it until you know the vertex and the direction it opens.",
-    terms: [
-      [
-        "vertex",
-        "The turning point of a parabola: its lowest point if $a > 0$ and its highest if $a < 0$.",
-      ],
-      [
-        "axis of symmetry",
-        "The vertical line through the vertex that maps the parabola onto itself.",
-      ],
-    ],
+    terms: ["vertex-parabola", "axis-of-symmetry"],
     method: [
       "Find the vertex. In $y = a(x - h)^2 + k$ it is $(h, k)$. In $y = ax^2 + bx + c$ it has $x = -\\frac{b}{2a}$; substitute that $x$ to get $y$.",
       "Substitute whole-number $x$-values next to the vertex's $x$ and compute $y$. By symmetry, $x = h + 1$ and $x = h - 1$ give the same $y$.",
@@ -348,16 +316,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "The absolute value $|x - h|$ is the distance from $x$ to $h$, so it is 0 at $x = h$ and grows by 1 for each unit moved in either direction. Multiplying by $a$ and adding $k$ stretches the distance and lifts it: the graph is two rays that meet at the vertex $(h, k)$.",
-    terms: [
-      [
-        "absolute value",
-        "The distance of a number from 0, written $|x|$, never negative.",
-      ],
-      [
-        "vertex",
-        "The point where the two rays of the graph meet: the lowest point if $a > 0$ and the highest if $a < 0$.",
-      ],
-    ],
+    terms: ["absolute-value", "vertex-parabola"],
     method: [
       "Find the $x$ that makes the inside of the absolute value 0: that is $h$. Then $y = k$ there, so the vertex is $(h, k)$.",
       "Substitute $x$-values on each side: $|x - h|$ is the distance from $h$, so $x = h + d$ and $x = h - d$ give the same $y = ad + k$.",
@@ -411,16 +370,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "An exponential function multiplies by the same factor $b$ for every step of 1 in $x$. Starting from $y = a$ at $x = 0$, moving right multiplies by $b$ and moving left divides by $b$. The graph bends because equal steps in $x$ multiply $y$, rather than adding to it, and it approaches the $x$-axis but never touches it.",
-    terms: [
-      [
-        "growth factor",
-        "The number $b$ that $y$ is multiplied by when $x$ increases by 1.",
-      ],
-      [
-        "asymptote",
-        "A line the graph gets closer to without touching: here the $x$-axis, $y = 0$.",
-      ],
-    ],
+    terms: ["growth-factor", "asymptote"],
     method: [
       "Start at $x = 0$: $y = a \\cdot b^0 = a$.",
       "Move right by multiplying by $b$, and left by dividing by $b$ (equivalent to $b^{-1} = \\frac{1}{b}$). Make a table.",
@@ -476,11 +426,8 @@ const entries: Entry[] = [
     intuition:
       "A square root is defined only when what is under it is 0 or positive, so the graph of $y = a\\sqrt{x - h} + k$ begins at $x = h$ and goes right. It rises or falls steeply at first and then flattens. To land on grid points, make $x - h$ equal 0, 1, 4 or 9, whose square roots are the whole numbers 0, 1, 2 and 3.",
     terms: [
-      ["radicand", "The expression under the square root sign, here $x - h$."],
-      [
-        "domain",
-        "The $x$-values for which the function is defined: here $x \\ge h$.",
-      ],
+      "radicand",
+      ["domain", "Here it is $x\\ge h$, where the radicand is not negative."],
     ],
     method: [
       "Set the radicand to 0: $x = h$. Then $y = k$, so the graph starts at $(h, k)$ and no point lies to its left.",

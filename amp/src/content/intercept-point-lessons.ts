@@ -7,20 +7,7 @@ export const interceptPointMethods: Record<string, ProblemMethod> = {
     goal: "Find where a line meets an axis, and give it as an ordered pair, as a zero, or as a sum of coordinates.",
     intuition:
       "A line meets the $x$-axis where its height is 0 and the $y$-axis where it is 0 steps from the vertical axis. Each meeting point is one ordered pair with a 0 in it, and its other coordinate is the number to find.",
-    terms: [
-      [
-        "$y$-intercept",
-        "The point where a graph meets the $y$-axis. Its $x$-coordinate is 0, so it is written $(0, b)$.",
-      ],
-      [
-        "$x$-intercept",
-        "The point where a graph meets the $x$-axis. Its $y$-coordinate is 0, so it is written $(a, 0)$.",
-      ],
-      [
-        "zero of a function",
-        "An input $x$ whose output $f(x)$ is 0. It is the $x$-coordinate of an $x$-intercept.",
-      ],
-    ],
+    terms: ["y-intercept", "x-intercept", "zero-of-a-function"],
     method: [
       "For the $y$-intercept, set $x = 0$ and solve for $y$. For the $x$-intercept, set $y = 0$ and solve for $x$. On a graph, read the value where the line meets that axis.",
       "Solve the one-variable equation exactly. A fraction stays a fraction: divide the constant by the coefficient.",

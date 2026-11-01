@@ -14,13 +14,10 @@ const entries: WorkEntry[] = [
     intuition:
       "A recursive rule is a recipe applied again and again. With $a_1=3$ and $a_n=(a_{n-1})^2+1$, the second term is $3^2+1=10$. To get the third term, use 10, not 3: $10^2+1=101$. Each term is the input for the next.",
     terms: [
+      "recursive-rule",
       [
-        "recursive rule",
-        "A rule that gives each term from the term before it, such as $a_n=2a_{n-1}+3$, together with the first term.",
-      ],
-      [
-        "term $a_n$",
-        "The number in position $n$ of the sequence; $a_{n-1}$ is the term just before it.",
+        "term-sequence",
+        "$a_n$ is the term in position $n$, and $a_{n-1}$ is the term just before it.",
       ],
     ],
     method: [
@@ -70,11 +67,11 @@ const entries: WorkEntry[] = [
     terms: [
       [
         "remainder",
-        "The number left over when a polynomial is divided by $x-r$; it has degree 0.",
+        "When a polynomial is divided by $x - r$, the remainder is a number.",
       ],
       [
-        "zero of the divisor",
-        "The value of $x$ that makes the divisor 0: $x=r$ for $x-r$, and $x=-r$ for $x+r$.",
+        "zero-of-a-function",
+        "For the divisor $x-r$ it is $x=r$; for $x+r$ it is $x=-r$.",
       ],
     ],
     method: [
@@ -124,13 +121,10 @@ const entries: WorkEntry[] = [
     intuition:
       "If 58% speak English and 24% speak Mandarin, the sum 82% counts every person who speaks both twice, once in each percent. If 16% speak both, taking 16% away once leaves each person counted once: 66% speak English or Mandarin.",
     terms: [
+      ["union", "A person in both groups counts once."],
       [
-        "or (in probability)",
-        "In either group or in both. A person in both groups is in the group.",
-      ],
-      [
-        "overlap",
-        "The people in both groups, counted once in each group's percent.",
+        "intersection",
+        "Here, the people in both groups; each group's percent counts them, so subtract them once.",
       ],
     ],
     method: [
@@ -178,12 +172,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "If a town grew from 1,000 people to 1,600 people over 20 years, it gained 600 people in all, or on average $\\frac{600}{20}=30$ people each year. The actual growth may have been uneven; the average rate says how fast the town would have grown at a steady pace.",
-    terms: [
-      [
-        "average rate of change",
-        "The change in the output divided by the change in the input between two inputs: $\\frac{f(b)-f(a)}{b-a}$.",
-      ],
-    ],
+    terms: ["average-rate-of-change"],
     method: [
       "Find the two years named in the question in the table; ignore the other rows.",
       "Subtract the earlier value from the later value for the change in the quantity.",
@@ -229,16 +218,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "Abby has 20 dollars and spends 8.50 first. That leaves 11.50 for tickets at 2.25 each. Five tickets cost 11.25, which fits; six cost 13.50, which does not. The answer is a count of tickets, so it is a whole number, and 5.11 tickets means 5.",
-    terms: [
-      [
-        "inequality",
-        "A statement that one amount is less than, greater than, at most or at least another, such as $8.5+2.25n\\le20$.",
-      ],
-      [
-        "whole number",
-        "A count of items with no fractional part: 0, 1, 2, 3, and so on.",
-      ],
-    ],
+    terms: ["inequality", "whole-number"],
     method: [
       "Write the total as the fixed amount plus the price times $n$.",
       "Compare it with the budget (at most) or the goal (at least).",

@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -9,7 +10,7 @@ export type FormatLessonEntry = {
   summary: string;
   objectives: [string, string];
   intuition: string;
-  terms: [string, string][];
+  terms: MethodTerm[];
   method: string[];
   watch: string;
   principle: string;

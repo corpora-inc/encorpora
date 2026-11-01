@@ -7,16 +7,7 @@ export const tableFitsMethods: Record<string, ProblemMethod> = {
     goal: "Check each table against the totals and the number of choices a survey fixes, and choose the one that fits.",
     intuition:
       "A survey fixes some facts before any results are in: how many people answered and how many choices there were. A table that could show the results must obey those facts. Check them one at a time and rule out a table as soon as one fails.",
-    terms: [
-      [
-        "survey",
-        "A question asked of a group of people, with the answers counted.",
-      ],
-      [
-        "two-way table",
-        "A table that sorts the same people in two ways at once, such as grade and boy or girl.",
-      ],
-    ],
+    terms: ["survey", "two-way-table"],
     method: [
       "Write down what the story fixes: the total number of people, the number of choices, or the total of each row and column.",
       "Add the counts in each table, and for a two-way table add each row and the matching column.",

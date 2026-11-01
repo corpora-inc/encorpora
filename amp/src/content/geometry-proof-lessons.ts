@@ -6,15 +6,7 @@ export const geometryProofMethods: Record<string, ProblemMethod> = {
     goal: "A proof step makes a claim about angles. Choose the rule (theorem) that proves it from the given facts.",
     intuition:
       "A proof explains why a conclusion, the claim being proved, follows from facts you are given, called givens. Each step states a claim and gives a reason. A theorem is a rule already proved. You may use it when its conditions, the things it needs, are known to be true. An angle is formed by two rays (lines that start at a point and go on in one direction) with the same starting point. Its measure is its size in degrees (°), and a straight line makes 180°. Angles with equal measures are congruent. Two angles whose measures add to $180^\\circ$ are supplementary.",
-    terms: [
-      [
-        "proof",
-        "A chain of justified statements showing why a conclusion follows from given facts.",
-      ],
-      ["theorem", "A mathematical statement established by a proof."],
-      ["congruent angles", "Angles with equal measures."],
-      ["supplementary angles", "Two angles whose measures add to 180 degrees."],
-    ],
+    terms: ["proof", "theorem", "congruent", "supplementary"],
     method: [
       "Read the claim exactly. Does it say two angle measures are equal, or that measures add to a total? Find every angle it names.",
       "Look in the givens for crossing lines, points on one straight line, parallel lines (lines that never meet), or a triangle.",

@@ -226,7 +226,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "number-bond-missing": {
     goal: "Given a whole and one part, find the other part.",
-    terms: [["part", "One of the amounts that join to make the whole."]],
+    terms: ["part"],
     method: [
       "Start at the known part.",
       "Count up to the whole.",
@@ -236,7 +236,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "ten-frame-complement": {
     goal: "Given a ten-frame with some counters, find how many more fill it.",
-    terms: [["ten-frame", "A grid of 10 places, 2 rows of 5."]],
+    terms: ["ten-frame"],
     method: [
       "A ten-frame has 10 places, in two rows of 5.",
       "Count the empty places; each one needs one counter.",
@@ -254,7 +254,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "add-within-20": {
     goal: "Given two numbers, find their sum.",
-    terms: [["sum", "The result of adding."]],
+    terms: ["sum"],
     method: [
       "If the sum is 10 or less, count on from the larger number.",
       "If the sum passes 10, first move enough from one number to make the other a 10.",
@@ -264,7 +264,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "subtract-within-20": {
     goal: "Given two numbers, find what remains when the second is taken from the first.",
-    terms: [["difference", "The result of subtracting."]],
+    terms: ["difference-subtract"],
     method: [
       "Count up from the smaller number to the larger number.",
       "How many you counted is the difference.",
@@ -316,12 +316,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "balanced-addition": {
     goal: "Given an equation with a box, find the number that makes both sides equal.",
-    terms: [
-      [
-        "=",
-        "Both sides have the same value. It does not mean “write the answer next.”",
-      ],
-    ],
+    terms: ["equal-sign"],
     method: [
       "Find the value of the complete side.",
       "On the other side, find what the box must add to the known number to reach that value.",
@@ -340,8 +335,8 @@ const legacyMethods: Record<string, ProblemMethod> = {
   "tens-ones-model": {
     goal: "Given rods and small cubes, find the number shown.",
     terms: [
-      ["rod", "A ten: ten ones joined together."],
-      ["cube", "A one."],
+      ["base-ten-blocks", "A rod stands for 10: ten cubes joined together."],
+      ["base-ten-blocks", "A cube stands for 1."],
     ],
     method: [
       "Count the rods. That is the tens digit.",
@@ -381,9 +376,9 @@ const legacyMethods: Record<string, ProblemMethod> = {
   "hundreds-model": {
     goal: "Given flats, rods and cubes, find the number shown.",
     terms: [
-      ["flat", "A hundred: ten rods."],
-      ["rod", "A ten."],
-      ["cube", "A one."],
+      ["base-ten-blocks", "A flat stands for 100: ten rods side by side."],
+      ["base-ten-blocks", "A rod stands for 10: ten cubes joined together."],
+      ["base-ten-blocks", "A cube stands for 1."],
     ],
     method: [
       "Count flats for the hundreds digit, rods for the tens digit, cubes for the ones digit.",
@@ -394,12 +389,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "place-value-digit": {
     goal: "Given a number and a place, find the value of the digit in that place.",
-    terms: [
-      [
-        "place value",
-        "What a digit is worth because of its position: ones, tens, hundreds…",
-      ],
-    ],
+    terms: ["place-value"],
     method: [
       "Find the digit in the named place.",
       "Multiply it by that place: tens × 10, hundreds × 100.",
@@ -408,12 +398,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "expanded-form-missing": {
     goal: "Given a number written as hundreds + □ + ones, find the missing value.",
-    terms: [
-      [
-        "expanded form",
-        "A number written as the sum of its place values: 916 = 900 + 10 + 6.",
-      ],
-    ],
+    terms: ["expanded-form"],
     method: [
       "Find the tens digit: the middle digit of a three-digit number.",
       "Its value is the tens digit × 10.",
@@ -472,7 +457,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     intuition:
       "Equal rows let you count a picture quickly. Count the squares in one row, then count that same amount for every row. Multiplication is a shorter way to combine those equal groups.",
     goal: "Given an array of squares, find how many there are.",
-    terms: [["array", "Objects arranged in equal rows."]],
+    terms: ["array"],
     method: [
       "Count the squares in one row.",
       "Multiply by the number of rows; every row has the same number of squares.",
@@ -597,7 +582,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     intuition:
       "A two-digit number has a tens part and a ones part. To find the tens contribution to a multiplication, use the value of all the tens. Nine tens means ninety, rather than nine.",
     goal: "Given a product split by place value, find the tens partial product.",
-    terms: [["partial product", "The product of one part of a factor."]],
+    terms: ["partial-product"],
     method: [
       "Take the tens part of the split number: in 91 that is 90.",
       "Multiply it by the other factor.",
@@ -716,7 +701,12 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "metric-length-rename": {
     goal: "Given a length in a larger unit, write it in a smaller unit.",
-    terms: [["metric lengths", "1 km = 1000 m; 1 m = 100 cm; 1 cm = 10 mm."]],
+    terms: [
+      [
+        "metric-units",
+        "For length: 1 km = 1000 m, 1 m = 100 cm, and 1 cm = 10 mm.",
+      ],
+    ],
     method: [
       "Find how many small units make one large unit: 1 m = 100 cm, 1 km = 1000 m.",
       "Multiply. A smaller unit needs a larger count.",
@@ -751,7 +741,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "rectangle-border-length": {
     goal: "Given a rectangle's side lengths, find its perimeter.",
-    terms: [["perimeter", "The total length around a shape."]],
+    terms: ["perimeter"],
     method: [
       "A rectangle has two sides of each length.",
       "Perimeter = 2 × (length + width): a 5 by 3 rectangle has 2 × 8 = 16.",
@@ -770,7 +760,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "rectangle-area": {
     goal: "Given a rectangle's width and height, find its area.",
-    terms: [["area", "The number of unit squares that cover a shape."]],
+    terms: ["area"],
     method: [
       "Unit squares fill the rectangle in rows: one row for each unit of height, one square in each row for each unit of width.",
       "Area = width × height, the number of squares.",
@@ -866,9 +856,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "mean-data": {
     goal: "Given a list of numbers, find their mean.",
-    terms: [
-      ["mean", "The sum of the values divided by how many values there are."],
-    ],
+    terms: ["mean-average"],
     method: [
       "Add all the values to get the total.",
       "Count the values.",
@@ -879,12 +867,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "simple-probability": {
     goal: "Given counts of each color in a bag, find the probability of drawing one color.",
-    terms: [
-      [
-        "probability",
-        "Favorable outcomes ÷ total equally likely outcomes, from 0 to 1.",
-      ],
-    ],
+    terms: ["probability"],
     method: [
       "Count the favorable items: the color asked for.",
       "Count all items in the bag.",
@@ -897,12 +880,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     intuition:
       "A fraction can name just one piece of a whole. If the whole is cut into equal pieces, the bottom number counts all the pieces and the top number counts the one piece you are naming.",
     goal: "Given a whole cut into equal pieces, find the fraction one piece is.",
-    terms: [
-      [
-        "denominator",
-        "The bottom number: how many equal pieces make one whole.",
-      ],
-    ],
+    terms: ["denominator"],
     method: [
       "Count the equal pieces in the whole.",
       "One piece is 1 over that number: a whole in 6 equal pieces has pieces of 1/6.",
@@ -912,13 +890,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "fraction-model": {
     goal: "Given a shaded shape, find the fraction shaded.",
-    terms: [
-      [
-        "denominator",
-        "The bottom number: how many equal parts make the whole.",
-      ],
-      ["numerator", "The top number: how many of those parts are counted."],
-    ],
+    terms: ["denominator", "numerator"],
     method: [
       "Count all equal parts. That is the denominator.",
       "Count the shaded parts. That is the numerator.",
@@ -963,7 +935,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     intuition:
       "Cutting every piece into smaller equal pieces does not change the amount you have. It changes how many pieces you count. Both numbers in the fraction grow by the same factor, so it keeps the same value.",
     goal: "Given a fraction and a new denominator, find the matching numerator.",
-    terms: [["equivalent fractions", "Fractions that name the same amount."]],
+    terms: ["equivalent-fractions"],
     method: [
       "Find what the denominator was multiplied by.",
       "Multiply the numerator by the same number.",
@@ -1025,10 +997,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     intuition:
       "A mixed number counts some whole units and some extra pieces. To write it as one fraction, turn each whole into pieces of that same size, then include the extra pieces. The total amount does not change.",
     goal: "Given a mixed number, find the numerator of the equal improper fraction.",
-    terms: [
-      ["mixed number", "A whole number and a fraction: 2 1/3."],
-      ["improper fraction", "A fraction with numerator ≥ denominator: 7/3."],
-    ],
+    terms: ["mixed-number", "improper-fraction"],
     method: [
       "Each whole holds denominator-many pieces: 2 wholes in fifths are 10 fifths.",
       "Multiply the whole number by the denominator.",
@@ -1075,17 +1044,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Given two fractions, find their sum.",
     intuition:
       "To add fractions, first make their pieces the same size. The bottom number, called the denominator, tells how many equal pieces make one whole. The top number, called the numerator, counts the pieces you have. Once both fractions use the same-sized pieces, add their counts.",
-    terms: [
-      [
-        "denominator",
-        "The number of equal parts per whole; it determines the part size.",
-      ],
-      ["numerator", "The number of those parts being counted."],
-      [
-        "common denominator",
-        "One denominator used to express both fractions without changing either value.",
-      ],
-    ],
+    terms: ["denominator", "numerator", "common-denominator"],
     method: [
       "Choose a common multiple of the denominators. Multiplying them always gives one; a smaller common multiple can reduce the work.",
       "Rename each fraction with that denominator, multiplying its top and bottom numbers by the same factor so its value stays unchanged.",
@@ -1164,15 +1123,9 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "A whole is one complete unit. To share whole units equally, cut each whole into equal pieces, one per person. Each person gets one piece from each whole. The fraction's top number (numerator) counts that person's pieces; its bottom number (denominator) says how many equal pieces make one whole.",
     goal: "Given a written fraction, choose an expression with the same value.",
     terms: [
-      ["whole", "One complete unit, such as one sandwich."],
-      [
-        "numerator",
-        "The top number: how many equal parts are counted. In this sharing model, it also counts the wholes shared.",
-      ],
-      [
-        "denominator",
-        "The bottom number: how many equal parts make one whole. In this sharing model, it also counts the people.",
-      ],
+      "whole",
+      ["numerator", "In this sharing model, it also counts the wholes shared."],
+      ["denominator", "In this sharing model, it also counts the people."],
     ],
     method: [
       "Read the numerator as the total number of whole units being shared.",
@@ -1228,9 +1181,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "divide-fractions": {
     goal: "Given a fraction divided by a fraction, find the quotient.",
-    terms: [
-      ["reciprocal", "A fraction flipped: the reciprocal of 3/4 is 4/3."],
-    ],
+    terms: ["reciprocal"],
     method: [
       "Keep the first fraction.",
       "Change ÷ to × and flip the second fraction to its reciprocal: 3/4 becomes 4/3.",
@@ -1261,12 +1212,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "ratio-missing": {
     goal: "Given a ratio and one new amount, find the matching amount.",
-    terms: [
-      [
-        "ratio",
-        "A fixed comparison between two amounts, like 4 blue for every 3 white.",
-      ],
-    ],
+    terms: ["ratio"],
     method: [
       "Find the scale factor: new amount ÷ its ratio number.",
       "Multiply the other ratio number by the same factor.",
@@ -1276,7 +1222,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "unit-price": {
     goal: "Given the cost of several items, find the cost of a different number.",
-    terms: [["unit price", "The cost of one item."]],
+    terms: ["unit-price"],
     method: [
       "Unit price = total cost ÷ number of items.",
       "Multiply the unit price by the new number of items.",
@@ -1287,7 +1233,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "percent-of": {
     goal: "Given a percent and an amount, find that percent of the amount.",
-    terms: [["percent", "Per hundred: 19% = 19/100."]],
+    terms: ["percent"],
     method: [
       "Write the percent as a fraction over 100: 35% = 35/100.",
       "Multiply that fraction by the amount.",
@@ -1298,9 +1244,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "proportional-rule-choice": {
     goal: "Given several rules, choose the proportional one.",
-    terms: [
-      ["proportional", "y = kx for a constant $k$: doubling $x$ doubles $y$."],
-    ],
+    terms: ["proportional-relationship"],
     method: [
       "A proportional rule is y = kx: one multiplier, no added constant.",
       "Check: it gives y = 0 when x = 0.",
@@ -1333,10 +1277,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "integer-power": {
     goal: "Given a base and an exponent, find the power's value.",
-    terms: [
-      ["base", "The repeated factor."],
-      ["exponent", "How many factors of the base are multiplied."],
-    ],
+    terms: ["base-exponent", "exponent"],
     method: [
       "Write the factors: $b^n$ is $n$ factors of $b$.",
       "Group them into powers you know: $3^4 = 3^2 \\cdot 3^2$, $2^7 = 2^5 \\cdot 2^2$.",
@@ -1382,10 +1323,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Combine like terms in an expression, then find the coefficient of $x$: the number multiplying $x$.",
     intuition:
       "An expression is a math phrase made of numbers, letters (variables) and operations, such as $6x - 8x + 3$. The parts joined by + or − are called terms. Like terms have the same letter part, such as $6x$ and $-8x$. The coefficient is the number multiplying the letter: in $6x$ it is 6. A constant is a term with no letter, such as 3. Think of $x$ as one kind of item: adding 6 of them and subtracting 8 of them is the same as subtracting 2 in all, because $6 - 8 = -2$.",
-    terms: [
-      ["coefficient", "The number multiplying $x$."],
-      ["like terms", "Terms with the same variable part, like −2x and −6x."],
-    ],
+    terms: ["coefficient", "like-terms"],
     method: [
       "Find the $x$ terms. Each coefficient keeps the sign in front of it: $5x - 2x$ has coefficients 5 and $-2$.",
       "Add those coefficients: $5 + (-2) = 3$, so $5x - 2x = 3x$.",
@@ -1477,7 +1415,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Given a point on a grid, find one of its coordinates.",
     terms: [
       [
-        "coordinates $(x, y)$",
+        "coordinate",
         "$x$ is the distance across from the $y$-axis; $y$ is the distance up from the $x$-axis.",
       ],
     ],
@@ -1492,7 +1430,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Find the slope of the line through two given points.",
     intuition:
       "A point such as $(3, 0)$ gives two numbers called coordinates. The first, the $x$-coordinate, says how far right of the starting point $(0, 0)$ to go; a negative number means left. The second, the $y$-coordinate, says how far up; a negative number means down. Slope measures how steep a line is: the change in $y$ divided by the change in $x$ between two points on the line.",
-    terms: [["slope", "Change in $y$ divided by change in $x$."]],
+    terms: ["slope"],
     method: [
       "Call one point point 1 and the other point 2. In each, the first number is $x$ and the second is $y$.",
       "Change in $y$: subtract point 1's $y$ from point 2's $y$.",
@@ -1521,7 +1459,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "recover-linear-intercept": {
     goal: "Given the rate of a linear rule and one point, find the output at input 0.",
-    terms: [["intercept $b$", "The output when the input is 0 in y = mx + b."]],
+    terms: [["y-intercept", "In $y = mx + b$, it is $b$."]],
     method: [
       "Substitute the point into y = mx + b.",
       "Solve for $b$: subtract m × x from $y$.",
@@ -1533,21 +1471,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Explain the starting amount in a linear model.",
     intuition:
       "A model is a rule linking an input, such as time, to an output, such as an amount of water. The changing part depends on the input. At input zero, that part contributes nothing, so the remaining number is the starting amount. On the graph, it is the amount where the line meets the vertical axis.",
-    terms: [
-      [
-        "input",
-        "The number put into the model, such as minutes since filling began.",
-      ],
-      [
-        "output",
-        "The amount the model gives for an input, such as liters of water.",
-      ],
-      [
-        "initial value",
-        "The output when the input is zero, if zero belongs to the situation.",
-      ],
-      ["rate", "How much the output changes for each one unit of input."],
-    ],
+    terms: ["input", "output", "initial-value", "rate"],
     method: [
       "Read what the input measures and identify the moment or distance represented by zero.",
       "Set the input to zero in the model. Its multiplied term becomes zero; read the remaining output with its units.",
@@ -1577,9 +1501,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "relation-function-choice": {
     goal: "Given lists of input-output pairs, choose the one that is a function.",
-    terms: [
-      ["function", "A rule that gives exactly one output for each input."],
-    ],
+    terms: ["function"],
     method: [
       "Look for an input that appears with two different outputs.",
       "If none does, it is a function.",
@@ -1588,9 +1510,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "relation-point-removal": {
     goal: "Find all single-point removals that make a plotted relation a function.",
-    terms: [
-      ["function", "A relation that assigns exactly one output to each input."],
-    ],
+    terms: ["function"],
     method: [
       "Find any two plotted points with the same $x$-coordinate and different $y$-coordinates.",
       "Test removing each labeled point in turn; keep every removal that leaves at most one output for each remaining input.",
@@ -1636,7 +1556,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "arithmetic-term": {
     goal: "Given the first term and common difference, find term $n$.",
-    terms: [["arithmetic sequence", "Each term adds the same difference $d$."]],
+    terms: ["arithmetic-sequence"],
     method: [
       "Each term adds the common difference $d$ to the term before.",
       "Term $n$ is $n - 1$ steps after term 1.",
@@ -1646,9 +1566,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "geometric-sequence": {
     goal: "Given the first term and common ratio, find term $n$.",
-    terms: [
-      ["geometric sequence", "Each term multiplies by the same ratio $r$."],
-    ],
+    terms: ["geometric-sequence"],
     method: [
       "Each term is the term before it times the ratio $r$.",
       "From term 1 to term $n$ there are n − 1 steps, so multiply by $r$ that many times.",
@@ -1667,7 +1585,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "logarithm-integer": {
     goal: "Given log base $b$ of $N$, find its value.",
-    terms: [["logarithm", "log_b N is the exponent $p$ with b^p = N."]],
+    terms: ["logarithm"],
     method: [
       "log_b N asks: $b$ to what power is $N$?",
       "Multiply $b$ by itself, counting the factors: $b$, b², b³, …",
