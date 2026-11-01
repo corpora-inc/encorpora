@@ -26,6 +26,7 @@ export const workbookLayoutScript = String.raw`(function () {
     // through CSS page breaks rather than half composed.
     var wb = document.querySelector(".wb");
     if (backup && wb) wb.parentNode.replaceChild(backup, wb);
+    else if (wb) wb.style.display = "";
     root.setAttribute("data-layout", "error");
     console.error("Workbook layout failed:", error && error.stack ? error.stack : error);
   }
@@ -106,7 +107,7 @@ export const workbookLayoutScript = String.raw`(function () {
       // A single block taller than a page stays; the layout check reports it.
     }
     // A lesson card must fit one page with its heading. A long one drops,
-    // in order, its extra paragraphs, its diagram and its pitfall, then
+    // in order, its extra paragraphs, its pitfall and its diagram, then
     // prints slightly smaller (never below 75%).
     var probe = newPage("student");
     var pageHeight = height(probe.body);
@@ -268,7 +269,9 @@ export const workbookLayoutScript = String.raw`(function () {
     wb.style.display = "none";
     var faces = [];
     document.fonts.forEach(function (face) { faces.push(face.load()); });
-    Promise.all(faces).then(function () {
+    // Embedded fonts load in well under a second; never wait forever.
+    var patience = new Promise(function (resolve) { setTimeout(resolve, 8000); });
+    Promise.race([Promise.all(faces), patience]).then(function () {
       wb.style.display = "";
       try { layout(); } catch (e) { fail(e); }
     }, function (error) {

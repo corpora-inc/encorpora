@@ -401,12 +401,13 @@ export function composeWorkbook(options: {
       [0.3, 2, undefined],
       [0, 13, undefined],
       [-1.5, 0, inPool],
-      [-13, 13, undefined],
     ] as const) {
       const candidates = band(lo, hi, extra);
       if (candidates.length) return candidates.sort(byConfidence)[0];
     }
-    return undefined;
+    return band(-13, 13).sort(
+      (a, b) => gradeOf.get(b.id)! - gradeOf.get(a.id)!,
+    )[0];
   })();
 
   const challengeSection: WorkbookSection = {

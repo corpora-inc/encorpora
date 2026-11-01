@@ -278,7 +278,7 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
         <>
           <div className="wb-lesson-grid">
             {idea}
-            <div className="wb-lesson-visual" data-trim="2">
+            <div className="wb-lesson-visual" data-trim="3">
               <LessonIllustration kind={visual} print />
             </div>
           </div>
@@ -291,7 +291,7 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
         </div>
       )}
       {lesson.pitfalls[0] && (
-        <p className="wb-watch" data-trim="3">
+        <p className="wb-watch" data-trim="2">
           <span className="wb-watch-label">Watch for</span>{" "}
           <PrintMathText text={lesson.pitfalls[0]} />
         </p>
