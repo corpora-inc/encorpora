@@ -36,7 +36,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     terms: ["negative-reciprocal", "horizontal-line", "vertical-line"],
     method: [
       "Read the slope of the given line. For $Ax+By=C$ with $B$ not 0, solve for $y$: $By = -Ax + C$, so $y = -\\frac{A}{B}x + \\frac{C}{B}$ and the slope is $-\\frac{A}{B}$.",
-      "Use the same slope for a parallel line, or the negative reciprocal for a perpendicular line.",
+      "Use the same slope for a parallel line, or the negative reciprocal for a perpendicular line. If the given line is horizontal or vertical, use the last step instead.",
       "Put the given point into $y=mx+b$ and solve for $b$, the value of $y$ at $x = 0$.",
       "A horizontal line is a flat line; a vertical line is an upright one. For a line parallel or perpendicular to one of these, decide which kind the new line is. Then keep the matching coordinate of the point.",
     ],
@@ -90,7 +90,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
   "exponential-domain-range": {
     goal: "Write the domain (allowed inputs) and range (possible outputs) of an exponential function or model as inequalities.",
     intuition:
-      "In $2^x$, the base, the number being multiplied, is 2. The exponent, the small raised $x$, says how many times: $2^3 = 2 \\times 2 \\times 2$. A positive base can be raised to any real power, so every input is allowed unless a situation limits it. The outputs creep toward a boundary line, called the horizontal asymptote, but never reach it. For $a \\cdot b^x + k$, the boundary is $y = k$.",
+      "In $2^x$, the base, the number being multiplied, is 2. The exponent is the small raised $x$. When it is a counting number, it says how many times: $2^3 = 2 \\times 2 \\times 2$. A positive base can be raised to any real power, so every input is allowed unless a situation limits it. The outputs creep toward a boundary line, called the horizontal asymptote, but never reach it. For $a \\cdot b^x + k$, the boundary is $y = k$.",
     senses: {
       term: "term-expression",
       boundary: "boundary",
@@ -261,7 +261,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     method: [
       "List the outside surfaces: flat circles, curved walls and any dome. Leave out any part of a surface that is covered where two solids touch.",
       "Use $\\pi r^2$ for a circle, $2\\pi rh$ for a cylinder's wall, $\\pi r\\ell$ for a cone's wall and $2\\pi r^2$ for a hemisphere's dome.",
-      "For a cone, use the slant height. If you know the radius $r$ and height $h$ but not $\\ell$, find it from $\\ell=\\sqrt{r^2+h^2}$. A square root is the positive number that times itself gives the number under the sign.",
+      "For a cone, use the slant height. If you know the radius $r$ and height $h$ but not $\\ell$, find it from $\\ell=\\sqrt{r^2+h^2}$. The sign $\\sqrt{\\ }$ means square root: the number, 0 or greater, that times itself gives the number under the sign.",
       "Add the areas.",
     ],
     watch:
@@ -458,9 +458,9 @@ export const texasHsPrinciples: Record<string, string> = {
   "line-equation-forms":
     "The line through the point $(x_1, y_1)$ with slope $m$ is $y-y_1=m(x-x_1)$. Through two points, $m=\\frac{y_2-y_1}{x_2-x_1}$ when $x_1\\ne x_2$ (the $x$-values differ). The standard form $Ax+By=C$ has slope $-\\frac{A}{B}$ when $B\\ne0$.",
   "line-relationship-equations":
-    "Two lines that are not vertical (upright) are parallel when their slopes are equal, and perpendicular when their slopes multiply to $-1$. A horizontal line is a flat line $y=c$. It has slope 0 and is perpendicular to every vertical line $x=k$. A vertical line has undefined slope.",
+    "Two different lines that are not vertical (upright) are parallel when their slopes are equal. They are perpendicular when their slopes multiply to $-1$. A horizontal line is a flat line $y=c$. It has slope 0 and is perpendicular to every vertical line $x=k$. A vertical line has undefined slope.",
   "system-equation-choice":
-    "An amount that changes at a steady rate $m$ from a starting value $b$ is modeled by $y=mx+b$. A pair $(x, y)$ that makes both equations true is called a solution of the system: both amounts are equal at the same $x$. Two lines with the same rate and different starting values never meet, so that system has no solution. Two counts $x$ and $y$ with total $T$, priced $p$ and $c$ each, with total value $V$, give $x+y=T$ and $px+cy=V$.",
+    "An amount that changes at a steady rate $m$ from a starting value $b$ is modeled by $y=mx+b$. A pair $(x, y)$ that makes both equations true is called a solution of the system. When both equations give $y$ from $x$, it is where the two amounts are equal at the same $x$. Two lines with the same rate and different starting values never meet, so that system has no solution. Two counts $x$ and $y$ with total $T$, priced $p$ and $c$ each, with total value $V$, give $x+y=T$ and $px+cy=V$.",
   "graph-estimate-system-solution":
     "A solution of a system is an ordered pair $(x, y)$ that makes both equations true. For two lines that are not parallel, it is the single point where their graphs meet, and its coordinates can be read approximately from a graph.",
   "exponential-domain-range":
@@ -482,7 +482,7 @@ export const texasHsPrinciples: Record<string, string> = {
   "curved-solid-surface-area":
     "A right circular cone (tip straight above the middle of its base) with radius $r$, height $h$ and slant height $\\ell=\\sqrt{r^2+h^2}$ has side area $\\pi r\\ell$ and base area $\\pi r^2$. A cylinder has side area $2\\pi rh$, and a hemisphere's curved surface is $2\\pi r^2$. The surface area of a joined (composite) solid counts only the outside surfaces.",
   "area-probability":
-    "If a point is chosen at random, every spot equally likely, in a region of area $A$, the probability that it lies in a part of area $B$ is $\\frac{B}{A}$. The probability that it lies outside the part is $1-\\frac{B}{A}$.",
+    "If a point is chosen at random, every spot equally likely, in a region of positive area $A$, the probability that it lies in a part of area $B$ is $\\frac{B}{A}$. The probability that it lies outside the part is $1-\\frac{B}{A}$.",
   "composition-order-choice":
     "$(f\\circ g)(x)=f(g(x))$ applies $g$ first. In general $f(g(x))\\ne g(f(x))$; for example, if $f(x)=2x$ and $g(x)=x+1$, then $f(g(x))=2x+2$ but $g(f(x))=2x+1$.",
   "one-sided-behavior-choice":
@@ -560,7 +560,7 @@ export const texasHsLessons: Lesson[] = [
     ],
     intuition: [
       "A point $(x, y)$ names a place on a grid: first how far across, then how far up. The slope of a line is the change in $y$ divided by the change in $x$ between two of its points. From $(1, 2)$ to $(3, 6)$, $y$ changes by 4 and $x$ changes by 2, so the slope is $4 \\div 2 = 2$. We call the slope $m$.",
-      "A line is fixed by one point on it and its slope. Its equation can be written three ways. Slope-intercept form is $y = mx + b$, where $mx$ means $m$ times $x$ and $b$ is the $y$-intercept, the value of $y$ when $x = 0$. The form $y - y_1 = m(x - x_1)$ is called point-slope form, where $(x_1, y_1)$ (read “$x$ one, $y$ one”) is a known point. The form $Ax + By = C$ is called standard form. Here $A$, $B$ and $C$ are integers (the numbers 0, 1, 2, 3, … and their negatives).",
+      "A line is fixed by one point on it and its slope. Its equation can be written three ways. Slope-intercept form is $y = mx + b$, where $mx$ means $m$ times $x$ and $b$ is the $y$-intercept, the value of $y$ when $x = 0$. The form $y - y_1 = m(x - x_1)$ is called point-slope form, where $(x_1, y_1)$ (read “$x$ one, $y$ one”) is a known point. The form $Ax + By = C$ is called standard form. Here $A$, $B$ and $C$ are numbers, with $A$ and $B$ not both 0. They are usually integers (the numbers 0, 1, 2, 3, … and their negatives).",
       "Parallel lines point the same way and never meet. Two different lines that are not vertical are parallel exactly when they have the same slope. Perpendicular lines cross at a right angle, a square corner. If neither is vertical, their slopes are negative reciprocals: flip the fraction and change its sign. The negative reciprocal of 2 (which is $\\frac{2}{1}$) is $-\\frac{1}{2}$.",
       "A horizontal line is a line that runs flat, like the floor. It has slope 0 because $y$ never changes. A vertical line is a line that runs straight up and down. It has no slope (we say it is undefined), because $x$ does not change and we cannot divide by 0.",
     ],
@@ -587,7 +587,7 @@ export const texasHsLessons: Lesson[] = [
     formal: {
       title: "Slope conditions",
       paragraphs: [
-        "Let two lines that are not vertical have slopes $m_1$ and $m_2$. They are parallel exactly when $m_1 = m_2$. They are perpendicular exactly when $m_1 m_2 = -1$, which means the two slopes multiply to $-1$.",
+        "Let two lines that are not vertical have slopes $m_1$ and $m_2$. Two different such lines are parallel exactly when $m_1 = m_2$. They are perpendicular exactly when $m_1 m_2 = -1$, which means the two slopes multiply to $-1$.",
         "The line $y = c$, for a number $c$, is horizontal. The line $x = k$ is vertical. Every horizontal line is perpendicular to every vertical line.",
       ],
     },
@@ -692,7 +692,7 @@ export const texasHsLessons: Lesson[] = [
         "The domain is all real numbers, unless the situation limits the input.",
         "The boundary of the range is the number added at the end, $k$. The sign of the number in front of the power picks the side: positive means above $k$, negative means below.",
         "The boundary is never reached, so use $<$ or $>$, not $\\le$ or $\\ge$.",
-        "A model is an equation that stands for a real situation. In a model of time that starts at $t = 0$, the domain is $t \\ge 0$ (“$t$ is greater than or equal to 0”). The starting value $f(0)$ is then a real output, so the range starts at $f(0)$ and includes it. If the outputs shrink toward the boundary, the range lies between $f(0)$ and the boundary. If they grow away from it, the range goes from $f(0)$ outward without end.",
+        "A model is an equation that stands for a real situation. In a model of time that starts at $t = 0$, the domain is usually $t \\ge 0$, read “$t$ is greater than or equal to 0.” A situation that ends at some time also limits $t$ from above. The starting value $f(0)$ is then a real output, so the range starts at $f(0)$ and includes it. If the outputs shrink toward the boundary, the range lies between $f(0)$ and the boundary. If they grow away from it, the range goes from $f(0)$ outward without end.",
       ],
     },
     formal: {
@@ -853,7 +853,7 @@ export const texasHsLessons: Lesson[] = [
     formal: {
       title: "Dilation formula",
       paragraphs: [
-        "A dilation with center $C$ and scale factor $k > 0$ sends each point $P$ to the point $P'$ on ray $CP$ (the half-line from $C$ through $P$). Its distance from the center is $CP' = k \\times CP$. In coordinates, $P' = C + k(P - C)$.",
+        "A dilation with center $C$ and scale factor $k > 0$ keeps $C$ fixed and sends each other point $P$ to the point $P'$ on ray $CP$ (the half-line from $C$ through $P$). Its distance from the center is $CP' = k \\times CP$. In coordinates, $P' = C + k(P - C)$.",
         "A dilation keeps every angle the same and multiplies every length by $k$. A rigid motion keeps both angles and lengths the same.",
       ],
     },
@@ -996,7 +996,7 @@ export const texasHsLessons: Lesson[] = [
       "The center is the point in the middle, the same distance from every corner. A corner is called a vertex (plural vertices). Draw a line from the center to each vertex. That cuts the polygon into identical triangles, one for each side.",
       "The apothem is the distance from the center straight to the midpoint (middle) of a side. It meets the side at a right angle, a square corner of $90^\\circ$. So it is the height of each triangle, with the side as the triangle's bottom.",
       "A triangle's area is $\\frac{1}{2}$ × bottom × height. Each triangle is $\\frac12 \\times$ side $\\times$ apothem. Add all of them: $\\frac12 \\times$ apothem $\\times$ (all the sides together), which is $\\frac12 \\times$ apothem $\\times$ perimeter.",
-      "A square root is the positive number that times itself gives a chosen number. The symbol $\\sqrt{3}$ means the square root of 3. So $\\sqrt{3}$ times $\\sqrt{3}$ is 3, and $\\sqrt{3}$ is about 1.73.",
+      "For a number 0 or greater, its square root is the number, 0 or greater, that times itself gives it. The symbol $\\sqrt{3}$ means the square root of 3. So $\\sqrt{3}$ times $\\sqrt{3}$ is 3, and $\\sqrt{3}$ is about 1.73.",
     ],
     example: {
       prompt: "Find the area of a regular hexagon with side 4 cm.",
@@ -1051,7 +1051,7 @@ export const texasHsLessons: Lesson[] = [
     intuition: [
       "A cylinder is a can shape: two circles joined by a curved wall. A cone is a party-hat shape: a circle base with a curved wall rising to a point. A hemisphere is half of a ball, a dome.",
       "Each piece has an area formula. Here $r$ is the radius, the distance from the center of the circle to its edge, and $\\pi$ (pi) is about 3.14. A circle has area $\\pi r^2$, where $r^2$ ($r$ squared) means $r$ times $r$. A cylinder's curved wall, $h$ tall, has area $2\\pi rh$. A hemisphere's curved surface has area $2\\pi r^2$, half of a ball's $4\\pi r^2$.",
-      "The slant height is the distance from a cone's tip down its wall to the edge of the base. Call it $\\ell$. For a right circular cone, one whose tip is straight above the center of its circle base, the curved wall has area $\\pi r\\ell$. If you only know the straight-up height $h$, the radius, height and slant height form a triangle with a square corner. A triangle with a $90^\\circ$ corner is called a right triangle. So $\\ell = \\sqrt{r^2 + h^2}$. The sign $\\sqrt{\\ }$ means square root: the positive number that times itself gives the number under the sign.",
+      "The slant height is the distance from a cone's tip down its wall to the edge of the base. Call it $\\ell$. For a right circular cone, one whose tip is straight above the center of its circle base, the curved wall has area $\\pi r\\ell$. If you only know the straight-up height $h$, the radius, height and slant height form a triangle with a square corner. A triangle with a $90^\\circ$ corner is called a right triangle. So $\\ell = \\sqrt{r^2 + h^2}$. The sign $\\sqrt{\\ }$ means square root: the number, 0 or greater, that times itself gives the number under the sign.",
       "When solids are joined, the surfaces that touch are covered. A dome sitting on a cylinder covers the cylinder's top circle, and the dome's own flat bottom is hidden too.",
     ],
     example: {
@@ -1136,8 +1136,8 @@ export const texasHsLessons: Lesson[] = [
     formal: {
       title: "Geometric probability",
       paragraphs: [
-        "Choose a point uniformly at random in a region of area $A$. Uniformly means every spot is equally likely.",
-        "The probability that the point lies in a smaller region of area $B$ inside it is $\\frac{B}{A}$, where $0 \\le B \\le A$. The probability it lies outside is $1 - \\frac{B}{A}$.",
+        "Choose a point uniformly at random in a region of area $A$, where $A$ is greater than 0. Uniformly means every spot is equally likely.",
+        "The probability that the point lies in a part of area $B$ inside the region is $\\frac{B}{A}$, where $0 \\le B \\le A$. The probability it lies outside is $1 - \\frac{B}{A}$.",
       ],
     },
     pitfalls: [
@@ -1307,7 +1307,7 @@ export const texasHsLessons: Lesson[] = [
       "The unit for measuring angles is the degree, written $^\\circ$. A full turn is $360^\\circ$, and a right angle, a square corner, is $90^\\circ$. Clockwise means turning the way clock hands move.",
       "A bearing is a direction measured clockwise from north, written with three digits. North is $000^\\circ$, east is $090^\\circ$, south is $180^\\circ$ and west is $270^\\circ$.",
       "Another style names a starting direction, an angle, and which way to turn. $\\mathrm{N}\\,60^\\circ\\,\\mathrm{W}$ means start facing north and turn $60^\\circ$ toward west. That is the three-digit bearing $360^\\circ - 60^\\circ = 300^\\circ$. Likewise $\\mathrm{N}\\,60^\\circ\\,\\mathrm{E}$ is $060^\\circ$, $\\mathrm{S}\\,60^\\circ\\,\\mathrm{E}$ is $120^\\circ$ and $\\mathrm{S}\\,60^\\circ\\,\\mathrm{W}$ is $240^\\circ$.",
-      "A trip along a bearing, its north-south part and its east-west part form a right triangle. The trip is the hypotenuse, the longest side, across from the $90^\\circ$ corner. The other two sides are the legs.",
+      "Unless the trip goes straight north, south, east or west, the trip, its north-south part and its east-west part form a right triangle, a triangle with a square corner. The trip is the hypotenuse, the longest side, across from the $90^\\circ$ corner. The other two sides are the legs.",
       "In a right triangle, pick one of the other angles. The leg touching that angle is the adjacent leg, and the leg across from it is the opposite leg. A ratio is a comparison of two numbers by dividing. Sine and cosine are fixed ratios for each angle: opposite leg = hypotenuse × sine of the angle, and adjacent leg = hypotenuse × cosine of the angle. We write them $\\sin$ and $\\cos$.",
     ],
     example: {

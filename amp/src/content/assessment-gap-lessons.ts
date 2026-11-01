@@ -20,7 +20,7 @@ export const assessmentGapMethods: Record<string, ProblemMethod> = {
       "“At most” allows the error to equal the limit, so both ends of the range count.",
     ],
     watch:
-      "A percent error is a limit given as a percent of the reading. Turn it into grams (g) before you add or subtract it. An error of 2% of 80 g is 1.6 g, not 2 g.",
+      "A percent error is a limit given as a percent of the reading. Turn it into grams before you add or subtract it. An error of 2% of 80 g is 1.6 g, not 2 g.",
   },
   "margin-of-error-interval": {
     goal: "Find the interval centered on an estimate with a stated margin of error.",
@@ -72,7 +72,7 @@ export const assessmentGapLessons: Lesson[] = [
         paragraphs: [
           "You need addition, subtraction and percents. A percent means “out of 100,” so 2.5% means 2.5 out of every 100.",
           "Put a bag on a kitchen scale and it shows 80 g. That shown number is the reported value. The real mass of the bag is the actual value. The two may not match exactly.",
-          "The error limit is the largest difference allowed between them. It is measured in the same unit as the reading. Here the unit is grams (the gram is a small unit of mass, how heavy something is), written g. “The error is at most 2 g” means the actual mass is no more than 2 g below the reading and no more than 2 g above it.",
+          "The error limit is the largest difference allowed between them. It is measured in the same unit as the reading. Here the unit is grams (the gram is a small unit of mass, how heavy something is). We write 80 grams as 80 g. “The error is at most 2 g” means the actual mass is no more than 2 g below the reading and no more than 2 g above it.",
           "So the actual mass sits in a range around the reading. The range reaches the same distance down as up.",
         ],
       },

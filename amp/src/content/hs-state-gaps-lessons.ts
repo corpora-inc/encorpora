@@ -21,7 +21,7 @@ export const hsStateGapMethods: Record<string, ProblemMethod> = {
       "Use one equation to cancel $x$ from the other two. Compare the $x$ coefficients to choose the multiplier, the number to multiply by, such as 2 for $2x$ and $x$.",
       "Use one of the two new equations to cancel $y$ from the other. The last equation has only $z$.",
       "Solve for $z$, then put it back to find $y$, then $x$. Check all three original equations.",
-      "If any row becomes $0=c$ with $c$ not 0, there is no solution. If a row becomes $0=0$ and no row is false, there are infinitely many solutions.",
+      "Finish the elimination. If any row becomes $0=c$ with $c$ not 0, there is no solution. If no row is false and a row became $0=0$, there are infinitely many solutions.",
     ],
     watch:
       "Do each step to the number on the right too, not only to the letters. When a row cancels completely, check its right-hand number. Any false row like $0 = 5$ means no solution. A row $0 = 0$, with no false row, means infinitely many.",
@@ -173,7 +173,7 @@ export const hsStateGapLessons: Lesson[] = [
         paragraphs: [
           "An equation says two amounts are equal, like $x + y + z = 6$. The letters $x$, $y$ and $z$ stand for unknown numbers. Writing $2x$ means 2 times $x$. The number in front of a letter is called its coefficient, so in $2x - y$ the coefficient of $y$ is $-1$.",
           "A system is a set of equations that must all be true at the same time. A solution is a set of values, one for each letter, that makes every equation true. We write it as an ordered triple $(x, y, z)$: the value of $x$, then $y$, then $z$.",
-          "One equation with three letters has many answers. For $x + y + z = 6$, both $(1, 2, 3)$ and $(6, 0, 0)$ work. Each new equation rules out more answers. Three equations that each add new information can leave exactly one answer.",
+          "One equation with three letters has many answers. For $x + y + z = 6$, both $(1, 2, 3)$ and $(6, 0, 0)$ work. Each new equation that adds new information rules out more answers. Three equations that each add new information can leave exactly one answer.",
           "The main tool is this. In an equation, the part before the equals sign is called the left side, and the part after it is the right side. If two equations are both true, you can add their left sides and add their right sides, and the result is still true. You can also multiply every number in an equation by the same number other than 0 first. Choose the numbers so that one letter cancels. Its coefficients add to zero, so that letter disappears.",
         ],
       },
@@ -204,7 +204,7 @@ export const hsStateGapLessons: Lesson[] = [
         stage: "method",
         title: "When there is not exactly one solution",
         paragraphs: [
-          "Sometimes every letter cancels. If one row becomes $0 = 0$, that equation added no new information. If no other row becomes false, there are infinitely many solutions.",
+          "Sometimes every letter in a row cancels. A row $0 = 0$ means that equation added no new information. Finish the elimination before deciding. If no row is false and a row became $0 = 0$, there are infinitely many solutions.",
           "If you get something false, like $0 = 5$, the equations disagree. No values make them all true, so there is no solution.",
         ],
       },

@@ -169,14 +169,6 @@
     "terms": 20,
     "whole": 1
   },
-  "both-sides-situation-equation": {
-    "decreasing": 3,
-    "increasing": 1,
-    "more than": 1,
-    "side": 7,
-    "sides": 1,
-    "units": 2
-  },
   "box-plot-read": {
     "intervals": 1,
     "one quarter": 16,
@@ -218,11 +210,6 @@
     "right side": 21,
     "sides": 4,
     "whole": 1
-  },
-  "check-register-balance": {
-    "balance": 81,
-    "change": 1,
-    "difference": 8
   },
   "check-register-blanks": {
     "balance": 116,
@@ -619,15 +606,6 @@
     "unit": 9,
     "units": 8
   },
-  "cylinder-prism-surface-area": {
-    "base": 6,
-    "bases": 25,
-    "faces": 6,
-    "parts": 1,
-    "side": 48,
-    "square": 5,
-    "terms": 1
-  },
   "cylinder-volume": {
     "base": 31,
     "center": 2,
@@ -900,11 +878,6 @@
     "products": 1,
     "term": 1
   },
-  "experimental-probability-predict": {
-    "event": 14,
-    "scale": 5,
-    "trials": 40
-  },
   "exponent-quotient-slots": {
     "base": 18,
     "factors": 2
@@ -914,9 +887,6 @@
     "leaves": 2,
     "product": 1,
     "whole": 2
-  },
-  "expression-or-equation": {
-    "product": 1
   },
   "fact-equation-truth-select": {
     "product": 17,
@@ -1017,18 +987,6 @@
   "fl-expression-description-match": {
     "product": 5,
     "rules": 11
-  },
-  "fl-integer-multiply-divide": {
-    "factor": 1,
-    "inverse": 1,
-    "opposite": 1,
-    "product": 3,
-    "rules": 1
-  },
-  "fl-metric-customary-conversion": {
-    "factor": 4,
-    "square": 30,
-    "unit": 9
   },
   "fl-two-step-story-equation": {
     "models": 1
@@ -1227,10 +1185,6 @@
   },
   "improper-fractional-part": {
     "part": 3
-  },
-  "independent-dependent-roles": {
-    "side": 5,
-    "square": 9
   },
   "inequality-context-bound": {
     "boundary": 5,
@@ -1484,12 +1438,6 @@
     "unit": 2,
     "units": 2
   },
-  "lesson:area-probability": {
-    "part": 2,
-    "square": 2,
-    "squared": 1,
-    "whole": 1
-  },
   "lesson:area-tiling-distributive": {
     "leaves": 1,
     "part": 7,
@@ -1560,10 +1508,6 @@
     "scales": 1,
     "unit": 1
   },
-  "lesson:bearings": {
-    "opposite": 2,
-    "parts": 1
-  },
   "lesson:benchmark-fraction-estimate-lesson": {
     "difference": 3,
     "differences": 1,
@@ -1615,13 +1559,6 @@
     "side": 9,
     "sides": 7,
     "square": 8,
-    "units": 1
-  },
-  "lesson:both-sides-situations": {
-    "changes": 1,
-    "decreasing": 1,
-    "more than": 1,
-    "sides": 1,
     "units": 1
   },
   "lesson:budget-category-balance": {
@@ -1710,10 +1647,6 @@
     "balances": 3,
     "difference": 1,
     "rule": 1
-  },
-  "lesson:check-registers": {
-    "balance": 12,
-    "balances": 1
   },
   "lesson:choose-the-plot": {
     "changes": 1,
@@ -2053,10 +1986,6 @@
     "squares": 2,
     "squaring": 1
   },
-  "lesson:compose-transformations": {
-    "center": 10,
-    "image": 1
-  },
   "lesson:composing-shapes": {
     "boundary": 4,
     "edge": 5,
@@ -2110,14 +2039,6 @@
     "right side": 1,
     "solid": 4,
     "unit": 2
-  },
-  "lesson:composite-surface-area": {
-    "base": 2,
-    "faces": 6,
-    "part": 1,
-    "side": 7,
-    "solids": 3,
-    "square": 1
   },
   "lesson:composition-and-one-sided-behavior": {
     "factor": 1,
@@ -2178,11 +2099,6 @@
     "event": 3,
     "events": 6,
     "product": 1
-  },
-  "lesson:conditional-statements": {
-    "inverse": 4,
-    "parts": 1,
-    "sides": 1
   },
   "lesson:cone-section-name": {
     "changes": 2,
@@ -2339,11 +2255,6 @@
     "jump": 1,
     "square": 4
   },
-  "lesson:counterexamples": {
-    "parts": 1,
-    "sides": 3,
-    "square": 3
-  },
   "lesson:counting": {
     "change": 2,
     "whole": 1
@@ -2417,14 +2328,6 @@
     "square": 5,
     "squares": 1,
     "whole": 2
-  },
-  "lesson:cylinder-prism-surface-area": {
-    "bases": 3,
-    "faces": 1,
-    "side": 4,
-    "solid": 1,
-    "square": 1,
-    "terms": 2
   },
   "lesson:cylinder-volume": {
     "base": 4,
@@ -2775,11 +2678,6 @@
     "side": 4,
     "sides": 7
   },
-  "lesson:equations-from-situations": {
-    "center": 4,
-    "parts": 1,
-    "unit": 1
-  },
   "lesson:equations-preserve-equality": {
     "changes": 1,
     "left side": 1,
@@ -2874,11 +2772,6 @@
     "average": 7,
     "balance": 1
   },
-  "lesson:experimental-probability": {
-    "scale": 1,
-    "side": 1,
-    "trials": 8
-  },
   "lesson:exponent-quotient-slots": {
     "base": 1,
     "factors": 5,
@@ -2895,13 +2788,6 @@
     "population": 2,
     "unit": 1,
     "units": 1
-  },
-  "lesson:exponential-domain-and-range": {
-    "base": 1,
-    "boundary": 5,
-    "model": 2,
-    "range": 5,
-    "side": 2
   },
   "lesson:exponential-equations": {
     "argument": 1,
@@ -2963,9 +2849,6 @@
     "terms": 3,
     "unit": 1,
     "whole": 1
-  },
-  "lesson:expressions-and-equations": {
-    "more than": 1
   },
   "lesson:factor-completely-squares": {
     "change": 1,
@@ -3202,11 +3085,6 @@
   "lesson:functions-and-graph-meaning": {
     "mean": 1,
     "rule": 5
-  },
-  "lesson:gauss-3x3-solve": {
-    "multiple": 5,
-    "sides": 2,
-    "terms": 1
   },
   "lesson:geometric-design-constraint": {
     "cube": 1,
@@ -3499,14 +3377,6 @@
     "vertex": 4,
     "vertices": 3
   },
-  "lesson:integer-multiply-divide": {
-    "changes": 1,
-    "inverse": 1,
-    "opposite": 1,
-    "product": 2,
-    "products": 1,
-    "rules": 2
-  },
   "lesson:intercept-point-lesson": {
     "rule": 2,
     "sides": 1
@@ -3605,10 +3475,6 @@
     "scale": 1,
     "unit": 3
   },
-  "lesson:lifetime-income": {
-    "change": 1,
-    "difference": 3
-  },
   "lesson:likelihood-words-lesson": {
     "certain": 5,
     "cube": 2,
@@ -3623,11 +3489,6 @@
     "opposite": 1,
     "side": 2,
     "sides": 1
-  },
-  "lesson:line-equations-from-conditions": {
-    "change": 3,
-    "right side": 1,
-    "standard form": 3
   },
   "lesson:line-from-point-steps": {
     "multiple": 1,
@@ -3985,14 +3846,6 @@
     "unit": 3,
     "units": 5
   },
-  "lesson:measurement-error-bound": {
-    "base": 3,
-    "difference": 1,
-    "range": 2,
-    "scale": 1,
-    "unit": 1,
-    "units": 2
-  },
   "lesson:measurement-formula-justifications": {
     "argument": 3,
     "base": 3,
@@ -4057,11 +3910,6 @@
     "parts": 1,
     "whole": 1
   },
-  "lesson:metric-customary-conversion": {
-    "factor": 6,
-    "factors": 1,
-    "unit": 7
-  },
   "lesson:missing-factor": {
     "factor": 5,
     "jumps": 2,
@@ -4071,13 +3919,6 @@
   "lesson:mode-of-data-lesson": {
     "mode": 9,
     "modes": 1
-  },
-  "lesson:model-quantity-roles": {
-    "change": 2,
-    "changes": 3,
-    "model": 2,
-    "unit": 13,
-    "units": 2
   },
   "lesson:model-validation": {
     "model": 10,
@@ -4221,10 +4062,6 @@
     "product": 2,
     "third": 2,
     "whole": 2
-  },
-  "lesson:nested-number-sets": {
-    "sort": 1,
-    "whole": 1
   },
   "lesson:net-surface-area": {
     "base": 9,
@@ -4554,11 +4391,6 @@
     "units": 14,
     "whole": 1
   },
-  "lesson:percent-grids-conversions": {
-    "part": 9,
-    "squares": 2,
-    "whole": 8
-  },
   "lesson:percent-quantity": {
     "changes": 2,
     "one fourth": 3,
@@ -4579,10 +4411,6 @@
     "more than": 1,
     "product": 2,
     "third": 3
-  },
-  "lesson:pi-ratio": {
-    "center": 1,
-    "change": 1
   },
   "lesson:picture-graphs-one-to-one": {
     "difference": 2,
@@ -4936,14 +4764,6 @@
     "standard form": 1,
     "vertex": 5
   },
-  "lesson:quadratic-inequality-interval": {
-    "changes": 1,
-    "factor": 1,
-    "opposite": 1,
-    "side": 1,
-    "square": 1,
-    "term": 1
-  },
   "lesson:quadratic-irrational-solutions": {
     "changes": 2,
     "factor": 2,
@@ -5071,12 +4891,6 @@
     "factor": 2,
     "parts": 1,
     "third": 1
-  },
-  "lesson:rational-area-volume-equations": {
-    "base": 1,
-    "change": 1,
-    "edges": 2,
-    "factor": 1
   },
   "lesson:rational-equations-and-original-domain": {
     "difference": 1,
@@ -5797,16 +5611,6 @@
     "range": 1,
     "unit": 2,
     "units": 1
-  },
-  "lesson:regular-polygon-area": {
-    "base": 1,
-    "center": 4,
-    "side": 8,
-    "sides": 2,
-    "square": 1,
-    "vertex": 1,
-    "vertices": 1,
-    "whole": 1
   },
   "lesson:related-facts-sentences": {
     "factor": 3,
@@ -6617,16 +6421,6 @@
     "tangent": 6,
     "whole": 1
   },
-  "lesson:spherical-geometry": {
-    "center": 2,
-    "change": 2,
-    "more than": 1,
-    "opposite": 1,
-    "plane": 3,
-    "quarter": 2,
-    "vertex": 1,
-    "vertices": 1
-  },
   "lesson:square-cube-equations": {
     "cube": 4,
     "opposite": 1,
@@ -6664,14 +6458,6 @@
     "square": 2,
     "squared": 1
   },
-  "lesson:staar-decimal-stories": {
-    "factors": 1,
-    "product": 1
-  },
-  "lesson:staar-experimental-probability": {
-    "change": 1,
-    "trials": 3
-  },
   "lesson:staar-grouped-expressions": {
     "differences": 1,
     "part": 1,
@@ -6680,24 +6466,10 @@
     "square": 1,
     "squared": 2
   },
-  "lesson:staar-lines-from-data": {
-    "changes": 1,
-    "standard form": 2
-  },
   "lesson:staar-money-words": {
     "change": 2,
     "mean": 1,
     "period": 1
-  },
-  "lesson:staar-multistep-linear": {
-    "factor": 1,
-    "side": 1,
-    "sides": 2,
-    "term": 3,
-    "terms": 2
-  },
-  "lesson:staar-number-sets": {
-    "part": 1
   },
   "lesson:staar-number-words": {
     "change": 1,
@@ -6716,28 +6488,12 @@
     "square": 5,
     "squares": 1
   },
-  "lesson:staar-raises-and-earnings": {
-    "difference": 3
-  },
-  "lesson:staar-ratio-forms": {
-    "part": 5,
-    "parts": 2,
-    "unit": 1,
-    "units": 2,
-    "whole": 2
-  },
   "lesson:staar-read-plots": {
     "key": 3,
     "leaf": 3,
     "leaves": 1,
     "stem": 2,
     "stems": 1
-  },
-  "lesson:staar-rename-forms": {
-    "more than": 2,
-    "part": 1,
-    "rename": 2,
-    "whole": 1
   },
   "lesson:staar-rule-tables": {
     "rule": 6,
@@ -6813,18 +6569,6 @@
     "parts": 1,
     "stem": 3,
     "stems": 2
-  },
-  "lesson:stem-leaf-read": {
-    "difference": 1,
-    "key": 10,
-    "leaf": 11,
-    "leaves": 4,
-    "mean": 1,
-    "mode": 3,
-    "part": 1,
-    "range": 7,
-    "stem": 6,
-    "stems": 1
   },
   "lesson:story-equations-strips": {
     "part": 2,
@@ -6956,11 +6700,6 @@
     "side": 2,
     "standard form": 1
   },
-  "lesson:systems-from-representations": {
-    "change": 2,
-    "changes": 1,
-    "mean": 1
-  },
   "lesson:table-equation-slots": {
     "change": 2,
     "changes": 1
@@ -7089,13 +6828,6 @@
     "side": 2,
     "similar": 1,
     "vertex": 5
-  },
-  "lesson:trapezoid-consequences": {
-    "average": 3,
-    "base": 3,
-    "bases": 8,
-    "side": 1,
-    "sides": 1
   },
   "lesson:triangle-angle-theorems": {
     "corresponding angles": 1,
@@ -7461,12 +7193,6 @@
     "product": 6,
     "terms": 3,
     "whole": 1
-  },
-  "lifetime-income-salary": {
-    "change": 1,
-    "difference": 13,
-    "period": 1,
-    "periods": 1
   },
   "like-fraction-difference": {
     "change": 1,
@@ -7931,9 +7657,6 @@
     "difference": 1,
     "jumps": 20
   },
-  "number-set-venn": {
-    "whole": 15
-  },
   "object-for-measure": {
     "factor": 1,
     "quarter": 1,
@@ -8069,26 +7792,10 @@
     "change": 101,
     "difference": 1
   },
-  "percent-forms-and-parts": {
-    "change": 2,
-    "part": 10,
-    "whole": 13
-  },
-  "percent-grid-model": {
-    "part": 14,
-    "square": 1,
-    "squares": 32,
-    "whole": 2
-  },
   "perimeter-area-chain": {
     "side": 60,
     "sides": 23,
     "square": 21
-  },
-  "pi-as-ratio": {
-    "center": 3,
-    "more than": 1,
-    "scales": 1
   },
   "picture-graph-questions": {
     "difference": 16,
@@ -8282,12 +7989,6 @@
   },
   "ratio-table-missing": {
     "part": 1
-  },
-  "rational-area-volume-equation": {
-    "base": 23,
-    "change": 1,
-    "edges": 7,
-    "faces": 1
   },
   "rational-coefficient-equation": {
     "inverse": 1,
@@ -8722,21 +8423,6 @@
     "squares": 23,
     "whole": 1
   },
-  "staar-decimal-operations": {
-    "factors": 1,
-    "product": 1,
-    "tan": 6
-  },
-  "staar-experiment-probability": {
-    "product": 1,
-    "trials": 7
-  },
-  "staar-line-from-points": {
-    "change": 16,
-    "side": 6,
-    "sides": 6,
-    "term": 18
-  },
   "staar-measure-chains": {
     "side": 36,
     "sides": 15,
@@ -8748,14 +8434,6 @@
     "mean": 1,
     "period": 2
   },
-  "staar-multistep-equations": {
-    "changes": 1,
-    "left side": 5,
-    "side": 7,
-    "sides": 27,
-    "term": 17,
-    "terms": 23
-  },
   "staar-multistep-stories": {
     "change": 3,
     "unit": 3,
@@ -8766,10 +8444,6 @@
     "part": 1,
     "product": 17,
     "whole": 1
-  },
-  "staar-number-sets": {
-    "opposites": 4,
-    "part": 3
   },
   "staar-number-word-form": {
     "change": 5,
@@ -8791,22 +8465,6 @@
   "staar-rate-equation-choice": {
     "unit": 6,
     "units": 10
-  },
-  "staar-ratio-statements": {
-    "part": 17,
-    "parts": 8,
-    "unit": 1,
-    "units": 2,
-    "whole": 14
-  },
-  "staar-rename-percent-fraction-decimal": {
-    "more than": 2,
-    "part": 1,
-    "rename": 1,
-    "whole": 1
-  },
-  "staar-salary-percent": {
-    "difference": 14
   },
   "staar-signed-exponent-order": {
     "difference": 1,
@@ -8866,18 +8524,6 @@
     "parts": 1,
     "stem": 23,
     "stems": 1
-  },
-  "stem-leaf-read": {
-    "difference": 1,
-    "increasing": 1,
-    "key": 34,
-    "leaf": 72,
-    "leaves": 7,
-    "mean": 5,
-    "mode": 6,
-    "more than": 10,
-    "range": 7,
-    "stem": 45
   },
   "story-equation-choice": {
     "change": 5,

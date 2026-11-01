@@ -119,7 +119,7 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
   "fl-metric-customary-conversion": {
     goal: "Use a given conversion factor to change a measurement or an amount of money from one unit to another.",
     intuition:
-      "A conversion factor such as $1\\text{ inch}=2.54\\text{ centimeters}$ says how many of one unit match one of the other. Converting does not change the amount, only the unit you count with. A smaller unit takes more of itself to cover the same amount, so its number is larger.",
+      "A conversion factor such as $1\\text{ inch}=2.54\\text{ centimeters}$ says how many of one unit match one of the other. Converting does not change the amount, only the unit you count with. For any amount above 0, a smaller unit takes more of itself to cover it, so its number is larger.",
     senses: { unit: "unit" },
     noLink: ["factor", "factors", "square", "squares", "change"],
     terms: ["conversion-factor", "customary-units", "metric-units"],
@@ -565,7 +565,7 @@ export const floridaGapLessons: Lesson[] = [
     id: "metric-customary-conversion",
     title: "Convert between customary and metric units",
     summary:
-      "The same length can be measured in inches or in centimeters. A conversion factor tells how the two units compare, such as “1 inch = 2.54 centimeters.” To change inches into centimeters, multiply by 2.54. To change centimeters back into inches, divide by 2.54. The smaller unit always needs the bigger number.",
+      "The same length can be measured in inches or in centimeters. A conversion factor tells how the two units compare, such as “1 inch = 2.54 centimeters.” To change inches into centimeters, multiply by 2.54. To change centimeters back into inches, divide by 2.54. For any amount above 0, the smaller unit needs the bigger number.",
     senses: { unit: "unit", "more than": "more-than" },
     noLink: [
       "factor",
@@ -608,7 +608,7 @@ export const floridaGapLessons: Lesson[] = [
           "Write the factor as “1 of one unit = $k$ of the other.” Here $k$ stands for the number in the factor, such as 2.54.",
           "Going from the unit with the 1 to the other unit, multiply by $k$. Each one of the first unit becomes $k$ of the second.",
           "Going the other way, divide by $k$. For example, 50.8 centimeters is $50.8 \\div 2.54 = 20$ inches.",
-          "Area is counted in square units, the little squares 1 unit on each side, such as square inches. For area, use a factor between square units, such as $1\\text{ square inch} = 6.45\\text{ square centimeters}$. Money works the same way with a stated exchange rate, such as 1 dollar = 0.9 euro.",
+          "Area is counted in square units, the little squares 1 unit on each side, such as square inches. For area, use a factor between square units, such as $1\\text{ square inch} \\approx 6.45\\text{ square centimeters}$. The sign $\\approx$ means “is about,” because 6.45 is rounded. Money works the same way with a stated exchange rate, such as 1 dollar = 0.9 euro.",
         ],
       },
       {
@@ -650,7 +650,7 @@ export const floridaGapLessons: Lesson[] = [
       [
         "You need to multiply and divide whole numbers and know what negative numbers are. A negative number is less than 0, like $-4$. It is written with a minus sign.",
         "An integer is a whole number, its negative, or 0. Two numbers the same distance from 0 in different directions are called opposites. So the opposite of 4 is $-4$.",
-        "Multiplication is a way of adding equal groups, which are groups of the same size. $3 \\times (-4)$ means 3 groups of $-4$: $-4 + (-4) + (-4) = -12$. One negative number gives a negative answer.",
+        "Multiplication is a way of adding equal groups, which are groups of the same size. $3 \\times (-4)$ means 3 groups of $-4$: $-4 + (-4) + (-4) = -12$. So a positive number times a negative number gives a negative answer.",
         "Now look at a pattern, a list that changes the same way each step. $3 \\times (-4) = -12$, $2 \\times (-4) = -8$, $1 \\times (-4) = -4$, $0 \\times (-4) = 0$. Each time the first number goes down by 1, the answer goes up by 4. Keep going: $(-1) \\times (-4) = 4$ and $(-2) \\times (-4) = 8$. Two negatives give a positive answer.",
         "Division is the reverse of multiplication: it undoes it. Since $(-6) \\times 8 = -48$, we know $(-48) \\div (-6) = 8$. So division follows the same sign rule as multiplication.",
       ],

@@ -149,7 +149,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     noLink: ["tan"],
     terms: ["unit-fraction"],
     method: [
-      "Choose the operation from the story: equal shares divide, equal groups multiply, how much more or how much is left subtracts.",
+      "Choose the operation from the story. Sharing a total equally: divide. Total of equal groups: multiply. How much more, or how much is left: subtract.",
       "To multiply, ignore the points, then give the answer as many digits after the point as both numbers have together.",
       "To divide a decimal by a whole number, keep the decimal point straight above the one in the number being divided.",
       "To add or subtract, line up the points. Write a whole number such as 6 as 6.0.",
@@ -344,7 +344,7 @@ export const staarGapPrinciples: Record<string, string> = {
   "staar-number-word-form":
     "A number is the sum of each digit times its place value, so $305{,}062=300{,}000+5{,}000+60+2$. A decimal $0.d_1d_2d_3$ with $n$ digits is the whole number $d_1d_2d_3$ divided by $10^{n}$, read with the place name of the last digit.",
   "staar-rename-percent-fraction-decimal":
-    "For any number $p$, $p\\%=\\frac{p}{100}$. A fraction $\\frac{a}{b}$ with $b\\neq0$ ($b$ is not 0) means $a\\div b$, and its percent form is $100\\times(a\\div b)$ percent. A decimal with $n$ digits after the point is its whole-number part plus those digits over $10^{n}$ (1 followed by $n$ zeros), so $4.58=4\\frac{58}{100}$.",
+    "For any number $p$, $p\\%=\\frac{p}{100}$. A fraction $\\frac{a}{b}$ with $b\\neq0$ ($b$ is not 0) means $a\\div b$, and its percent form is $100\\times(a\\div b)$ percent. A decimal 0 or greater with $n$ digits after the point is its whole-number part plus those digits over $10^{n}$. Here $10^{n}$ is 1 followed by $n$ zeros. So $4.58=4\\frac{58}{100}$.",
   "staar-ratio-statements":
     "For positive amounts $a$ and $b$, the ratios $a:b$ and $ka:kb$ are equivalent for any number $k\\neq0$ ($k$ is not 0). If two parts are in the ratio $a:b$ and the total is $T$, the first part is $\\frac{a}{a+b}\\times T$. A unit rate is $a\\div b$, the amount of the first quantity for 1 unit of the second.",
   "staar-story-model-choice":
@@ -356,7 +356,7 @@ export const staarGapPrinciples: Record<string, string> = {
   "staar-order-mixed-forms":
     "Real numbers are ordered by their position on the number line. Fractions, percents and roots can be compared through their decimal values. For $a>0$, $\\sqrt{a}$ is the positive number whose square is $a$, so $n<\\sqrt{a}<n+1$ when $n^2<a<(n+1)^2$.",
   "staar-decimal-operations":
-    "Hundredths times a whole number are hundredths: $0.01m\\times n=0.01(mn)$, where $mn$ means $m$ times $n$. So the answer has two digits after the point. A unit fraction $\\frac1q$ ($q$ not 0) equals $1\\div q$. Sharing a total $T$ equally among $n$ groups gives $T\\div n$ in each.",
+    "Hundredths times a whole number are hundredths: $0.01m\\times n=0.01(mn)$, where $mn$ means $m$ times $n$. So the answer has two digits after the point. A unit fraction $\\frac1q$, with $q$ a counting number, equals $1\\div q$. Sharing a total $T$ equally among $n$ groups gives $T\\div n$ in each.",
   "staar-salary-percent":
     "$p$ percent of an amount $S$ is $\\frac{p}{100}\\times S$. After a raise of $p$ percent, the new amount is $S+\\frac{p}{100}\\times S$. If one salary is $d$ dollars more every year, then over $n$ years it earns $n\\times d$ dollars more.",
   "staar-measure-chains":
@@ -521,7 +521,7 @@ export const staarGapLessons: Lesson[] = [
       formal("Equivalent forms", [
         "Let $p$ be any number. Then $p\\% = \\frac{p}{100}$.",
         "A fraction $\\frac{a}{b}$, with $b$ not 0, means $a \\div b$. Its percent is $100 \\times (a \\div b)$ percent.",
-        "A decimal with $n$ digits after the point is its whole-number part plus those digits over $10^{n}$, which means 1 followed by $n$ zeros. So $0.58 = \\frac{58}{100}$ and $4.58 = 4\\frac{58}{100}$.",
+        "Take a decimal 0 or greater with $n$ digits after the point. It equals its whole-number part plus those digits over $10^{n}$, which means 1 followed by $n$ zeros. So $0.58 = \\frac{58}{100}$ and $4.58 = 4\\frac{58}{100}$.",
       ]),
     ],
     pitfalls: [
@@ -554,7 +554,7 @@ export const staarGapLessons: Lesson[] = [
       [
         "You need to multiply and divide whole numbers. A ratio compares two amounts in a set order. With 12 red beads and 18 blue beads, the ratio of red to blue is $12:18$. The colon : is read “to.”",
         "Picture the beads in groups of 6, all the same size. There are 2 groups of red and 3 groups of blue. So for every 2 red there are 3 blue, and $12:18$ is the same comparison as $2:3$. Dividing both numbers by the same number keeps the ratio the same, just like simplifying a fraction.",
-        "A ratio in simplest form cannot be divided further by any whole number larger than 1. The largest number that divides both is called the greatest common factor. For 12 and 18 it is 6.",
+        "A ratio of whole numbers is in simplest form when no whole number larger than 1 divides both numbers evenly. The largest number that divides both is called the greatest common factor. For 12 and 18 it is 6.",
         "A unit rate says how much of the first amount goes with 1 of the second. If a car goes 63 miles in 7 hours, its unit rate is $63 \\div 7 = 9$ miles per hour on average, which means as if every hour were the same.",
       ],
     ],
@@ -675,7 +675,7 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-decimal-stories",
     title: "Solve decimal stories",
     summary:
-      "Money and measurements often use decimals, numbers with a point such as 7.40. First read the story to choose the operation: equal shares mean divide, equal groups mean multiply, and “how much is left” means subtract. Then work as with whole numbers, and put the decimal point in the right place. For example, 44.40 dollars shared over 6 weeks is $44.40 \\div 6 = 7.4$ dollars a week.",
+      "Money and measurements often use decimals, numbers with a point such as 7.40. First read the story to choose the operation. Sharing a total equally means divide. Finding the total of equal groups means multiply. “How much is left” means subtract. Then work as with whole numbers, and put the decimal point in the right place. For example, 44.40 dollars shared over 6 weeks is $44.40 \\div 6 = 7.4$ dollars a week.",
     senses: { product: "product-multiply", factor: "factor-number" },
     noLink: ["tan", "mean"],
     templateIds: ["staar-decimal-operations"],
@@ -712,7 +712,7 @@ export const staarGapLessons: Lesson[] = [
       ]),
       formal("Decimal arithmetic", [
         "Hundredths times a whole number are still hundredths: $m$ hundredths times $n$ is $m \\times n$ hundredths.",
-        "A unit fraction $\\frac{1}{q}$, with $q$ not 0, equals $1 \\div q$.",
+        "A unit fraction $\\frac{1}{q}$, where $q$ is a counting number (1, 2, 3 and so on), equals $1 \\div q$.",
         "Sharing a total $T$ equally among $n$ groups gives $T \\div n$ in each group.",
       ]),
     ],

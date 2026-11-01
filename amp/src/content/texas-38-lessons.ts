@@ -405,7 +405,7 @@ export const texas38Principles: Record<string, string> = {
   "pi-as-ratio":
     "For every circle, the circumference $C$ divided by the diameter $d$ is the same number: $\\dfrac{C}{d}=\\pi\\approx3.14159$ ($\\approx$ means “is about”). So $C=\\pi d=2\\pi r$, where $r$ is the radius. Because the ratio is the same for all circles, enlarging a circle multiplies $C$ and $d$ by the same number.",
   "experimental-probability-predict":
-    "If an event happens $s$ times in $n$ trials, its experimental probability is $s\\div n$. A prediction for $N$ trials is $N\\times s\\div n$. As $n$ grows, the experimental probability tends to get closer to the theoretical probability (this is called the law of large numbers).",
+    "If an event happens $s$ times in $n$ trials, its experimental probability is $s\\div n$. A prediction for $N$ trials is $N\\times s\\div n$. As $n$ grows, the experimental probability tends to get closer to the true probability; that is the theoretical probability when the setup is fair as assumed. This is called the law of large numbers.",
   "cylinder-prism-surface-area":
     "A cylinder of radius $r$ and height $h$ has lateral area $2\\pi rh$ and total surface area $2\\pi r^2+2\\pi rh$. A triangular prism whose end triangles have a square corner between legs $p$ and $q$, and longest side $c$, with length $L$, has total surface area $2\\times\\tfrac12pq+(p+q+c)L$.",
   "both-sides-situation-equation":
@@ -1413,13 +1413,13 @@ export const texas38Lessons: Lesson[] = [
         title: "Larger samples",
         paragraphs: [
           "If an event happens $s$ times in $n$ trials, its experimental probability is $s \\div n$. A prediction for $N$ trials is $N \\times s \\div n$.",
-          "As the number of trials grows, the experimental probability tends to get closer to the theoretical probability. So an experiment with more trials is usually more trustworthy.",
+          "As the number of trials grows, the experimental probability tends to get closer to the true probability. When the setup really is fair, that is the theoretical probability. So a careful experiment with more trials is usually more trustworthy.",
         ],
       },
     ],
     pitfalls: [
       "A prediction is an estimate, not a promise. Real results vary around it.",
-      "A few trials can be far from the true probability. Trust the experiment with more trials.",
+      "A few trials can be far from the true probability. If two experiments were run the same careful way, trust the one with more trials.",
       "Divide by the number of trials, not by the number of times something else happened.",
     ],
     parentGuide:
