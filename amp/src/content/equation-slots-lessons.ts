@@ -89,11 +89,12 @@ const entries: FormatLessonEntry[] = [
       "For real numbers, $a\\le b$ means $a<b$ or $a=b$. The inequality $k+s\\le L$ has solutions, the values of $s$ that make it true. They are all $s\\le L-k$: every number up to and including $L-k$.",
     pitfalls: [
       "Do not use $<$ for at most. Equal amounts are allowed, so the sign needs the line under it, $\\le$.",
-      "Keep the total first and the limit after the sign. Writing $80\\le35+d$ also works, because it means the same thing, but $35+d\\le80$ does not.",
+      "The limit may come first or last, as long as the sign points the right way: $35+d\\ge80$ and $80\\le35+d$ mean the same thing, but $35+d\\le80$ does not.",
     ],
     parentGuide:
       "Ask what happens if the amounts are exactly equal, and whether the words in the story allow that.",
     senses: { "more than": "more-than", side: "side-of-equation" },
+    noLink: ["mean"],
   },
   {
     id: "unit-fraction-division-slots",

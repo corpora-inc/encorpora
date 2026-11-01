@@ -403,7 +403,7 @@ const entries: WorkEntry[] = [
     title:
       "Find the length that makes a segment parallel to a side of a triangle",
     summary:
-      "A segment parallel to one side of a triangle cuts the other two sides in the same ratio, so one scale factor gives the missing length.",
+      "A segment parallel to one side of a triangle cuts the other two sides in the same ratio, so one side ratio gives the missing length.",
     objectives: [
       "Divide the two pieces that start at the shared corner to get the side ratio.",
       "Multiply the remaining piece by that ratio, and add pieces for a whole side.",
