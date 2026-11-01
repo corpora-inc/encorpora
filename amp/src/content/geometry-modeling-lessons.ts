@@ -640,7 +640,7 @@ export const geometryModelingLessons: Lesson[] = [
         title: "Mass, volume and units",
         paragraphs: [
           "If steel has a density of 8 g/cm³, a 250 cm³ rod has mass $8\\times250=2000$ g. To report kilograms, divide by 1000, because 1 kg is 1000 g: 2 kg. If you know the mass and want the volume, divide: $2000\\div8=250$ cm³.",
-          "To find a density from a shape, first find its area or volume from its measurements. A 3 km by 4 km reserve has area $3 \\times 4 = 12$ km². Adding $3 + 4 = 7$ km gives half the distance around, which is not an area.",
+          "To find a density from a shape, first find its area or volume from its measurements. A rectangular reserve 3 km by 4 km has area $3 \\times 4 = 12$ km². Adding $3 + 4 = 7$ km gives half the distance around, which is not an area.",
         ],
       },
       {
@@ -1148,7 +1148,7 @@ export const geometryModelingLessons: Lesson[] = [
         title: "Two relations to set up",
         paragraphs: [
           "Side splitter: suppose $DE\\parallel BC$, read “$DE$ is parallel to $BC$”, with $D$ on $AB$ and $E$ on $AC$. Then $\\tfrac{AD}{DB}=\\tfrac{AE}{EC}$. For $AD=8$, $DB=4$ and $AE=2$: $\\tfrac84=\\tfrac2{EC}$. Cross-multiplying gives $8 \\cdot EC = 8$, so $EC=1$.",
-          "Altitude: with the altitude $CD$ to the hypotenuse, $CD^2=AD\\cdot DB$, $AC^2=AD\\cdot AB$ and $BC^2=DB\\cdot AB$. In each, the length on the left is the geometric mean of the two lengths on the right.",
+          "Altitude: with the altitude $CD$ to the hypotenuse, $CD^2=AD\\cdot DB$, $AC^2=AD\\cdot AB$ and $BC^2=DB\\cdot AB$. In each, the length squared on the left is the geometric mean of the two lengths multiplied on the right.",
         ],
       },
       {
