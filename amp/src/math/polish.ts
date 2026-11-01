@@ -2,6 +2,10 @@
  * numbers; this pass makes them read correctly for every number, including 1. */
 const invariant = new Set([
   "is",
+  "as",
+  "us",
+  "its",
+  "thus",
   "has",
   "was",
   "plus",

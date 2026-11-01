@@ -62,6 +62,14 @@ test("a word ending in ss is not a plural noun", () => {
   assert.equal(plural.test("1 liters"), true);
 });
 
+test("polish keeps short words that end in s after 1", async () => {
+  const { polish } = await import("../src/math/polish");
+  assert.equal(
+    polish("it uses the slope 1 as the intercept"),
+    "it uses the slope 1 as the intercept",
+  );
+});
+
 test("a describing word between 1 and its noun does not hide the plural", () => {
   const plural = rules[3]![0];
   // Founder report from a printed workbook (join-within-10).
