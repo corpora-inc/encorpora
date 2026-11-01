@@ -397,7 +397,7 @@ function piecewiseEvaluate(r: Random): Case {
       answer: rat(value),
       explanation: [
         `This is a piecewise function: a different rule for each range of ${M("x")}. ${M(fx)} means the output when ${M(`x = ${tn(a)}`)}.`,
-        `First find which condition ${n(a)} meets. ${why}`,
+        `First check which condition holds for the input ${n(a)}. ${why}`,
         `Substitute ${n(a)} into that rule only: ${M(`${fx} = ${worked(p.m, p.b, a)}`)}.`,
         `So ${M(`${fx} = ${tn(value)}`)}.`,
       ],
@@ -1028,7 +1028,7 @@ function transformPoint(r: Random): Case {
       prompt: `${given} The graph of ${M(`y = ${kind}`)} passes through ${M(`\\left(${target[0]}, ${target[1]}\\right)`)}. What is ${M(unknown)}?`,
       answer,
       explanation: [
-        `The given point says ${M(`f(${tn(x0)}) = ${tn(y0)}`)}: input ${n(x0)} gives output ${n(y0)}.`,
+        `The given point says ${M(`f(${tn(x0)}) = ${tn(y0)}`)}: the input ${n(x0)} has the output ${n(y0)}.`,
         kind === "-f(x)"
           ? `${M("y = -f(x)")} has the opposite height at every ${M("x")}: a reflection across the ${M("x")}-axis.`
           : kind === "f(-x)"
