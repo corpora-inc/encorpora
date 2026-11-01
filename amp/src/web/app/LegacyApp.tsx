@@ -1498,8 +1498,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         </section>
       ) : !familySummary ? (
         <section className="card welcome" aria-busy={busy}>
-          <h2>{error ? "Let’s reconnect." : "Getting your family ready…"}</h2>
-          {error && (
+          <h2>
+            {error || loadFailed
+              ? "Let’s reconnect."
+              : "Getting your family ready…"}
+          </h2>
+          {(error || loadFailed) && (
             <button onClick={() => void action(loadFamily)}>Try again</button>
           )}
           <button className="secondary" onClick={openFamily}>

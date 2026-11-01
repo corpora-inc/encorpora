@@ -58,7 +58,9 @@ async function open(
   page.setDefaultTimeout(30000);
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto(origin + scenario.path);
+  // The load event can wait on slow third-party-free assets under load; the
+  // ready check below is what decides the screen has settled.
+  await page.goto(origin + scenario.path, { waitUntil: "domcontentloaded" });
   try {
     await scenario.ready?.(page);
   } catch (error) {
@@ -312,8 +314,8 @@ try {
         json: { error: "temporarily_unavailable" },
       }),
     );
-    await page.goto(origin + scenario.path);
-    await page.getByRole("alert").waitFor();
+    await page.goto(origin + scenario.path, { waitUntil: "domcontentloaded" });
+    await page.getByRole("alert").first().waitFor();
     await page.getByRole("button", { name: "Dismiss message" }).click();
     await page.waitForTimeout(500);
     check(
