@@ -1373,7 +1373,7 @@ function logValue(r: Rand): Draft {
     explanation: [
       `$\\log$ with no base written means base 10. So $\\log ${value}$ asks: 10 to what power is ${value}?`,
       k < 0
-        ? `${value} has ${-k} places after the decimal point, so it is $\\frac{1}{${10 ** -k}}$.`
+        ? `${value} has ${-k} place${-k === 1 ? "" : "s"} after the decimal point, so it is $\\frac{1}{${10 ** -k}}$.`
         : `${value} is 1 followed by ${k} zeros, so it is ${k} tens multiplied together.`,
       k < 0
         ? `A negative exponent means "one over": $\\frac{1}{${10 ** -k}} = 10^{${k}}$.`
