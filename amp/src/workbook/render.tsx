@@ -757,7 +757,7 @@ function documentHtml(options: {
   return (
     "<!doctype html>" +
     renderToStaticMarkup(
-      <html lang="en">
+      <html lang="en" data-compose="">
         <head>
           <meta charSet="utf-8" />
           <title>{options.title}</title>
@@ -828,7 +828,7 @@ export function lessonCardProofHtml(
 /** Footers are composed into each page by the layout; a browser footer
  * template would print a second one. Kept for callers that still pass it. */
 export function workbookFooter(_spec: WorkbookSpec): string {
-  return "<span></span>";
+  return "";
 }
 
 const workbookCss = `
