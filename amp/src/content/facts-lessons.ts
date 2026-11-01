@@ -47,7 +47,7 @@ export const factsLessons: Lesson[] = [
         title: "Adding and take-away facts",
         paragraphs: [
           "The whole is all of the counters together. Split the whole into two parts that share no counters. The two parts add up to the whole: 3 + 2 = 5.",
-          "Take one part away from the whole, and the other part is left: 5 − 2 = 3 and 5 − 3 = 2. So each pair of parts gives two adding facts and two take-away facts.",
+          "Take one part away from the whole, and the other part is left: 5 − 2 = 3 and 5 − 3 = 2. So two different parts give two adding facts and two take-away facts.",
         ],
       },
     ],
@@ -133,8 +133,6 @@ export const factsLessons: Lesson[] = [
     title: "Make ten to add and subtract within twenty",
     summary:
       "A ten-frame is a frame of 10 boxes, in 2 rows of 5. One counter fits in each box. A full ten-frame shows 10, and adding to 10 is easy. So fill the ten first, then add what is left. This way of adding is called making a ten.",
-    senses: { part: "part", parts: "part" },
-    noLink: ["change"],
     templateIds: ["make-ten-fact", "related-subtraction"],
     objectives: [
       "Add two numbers below 10 by making a ten first.",
@@ -171,7 +169,7 @@ export const factsLessons: Lesson[] = [
         title: "Making a ten",
         paragraphs: [
           "A number you add is called an addend. You can split an addend into two smaller numbers, and its value stays the same: 5 = 2 + 3. Use one of them to fill up to 10. Then add the other one to 10: 8 + 5 = 8 + 2 + 3 = 10 + 3 = 13.",
-          "To take away within 20, count up from the smaller number to 10. Then count up from 10 to the bigger number. The two counts together are the answer.",
+          "To take a number below 10 away from a number from 11 to 20, count up from the smaller number to 10. Then count up from 10 to the bigger number. The two counts together are the answer.",
         ],
       },
     ],
@@ -265,8 +263,8 @@ export const factsMethods: Record<string, ProblemMethod> = {
     senses: { part: "part", parts: "part", whole: "whole" },
     noLink: ["changes", "leaves"],
     method: [
-      "Think of two parts that make the bigger number. 2 and 3 make 5.",
-      "To add, put the parts together: 2 + 3 = 5. To take away, remove one part. The other part is the answer: 5 − 2 = 3.",
+      "To add, the two numbers are the parts. Put them together: in 2 + 3, 2 and 3 make 5.",
+      "To take away, the first number is the whole. Think of two parts that make it: 2 and 3 make 5. Take one part away, and the other part is the answer: 5 − 2 = 3.",
     ],
     watch:
       "Adding 0 or taking away 0 changes nothing: 4 + 0 = 4 and 4 − 0 = 4.",
@@ -323,7 +321,7 @@ export const factsMethods: Record<string, ProblemMethod> = {
   "mental-ten-hundred": {
     goal: "Add or take away 10 or 100 in your head, starting from a number from 100 to 900.",
     intuition:
-      "A digit is one of the symbols 0 to 9. Its place tells what it counts: hundreds, tens or ones. In 470, the 4 means 4 hundreds, the 7 means 7 tens and the 0 means 0 ones. Adding 10 adds one ten, so the tens digit goes up by 1. Adding 100 adds one hundred, so the hundreds digit goes up by 1.",
+      "A digit is one of the symbols 0 to 9. Its place tells what it counts: hundreds, tens or ones. In 470, the 4 means 4 hundreds, the 7 means 7 tens and the 0 means 0 ones. Adding 10 adds one ten, so the tens digit goes up by 1. If the tens digit is 9, the 10 tens make 1 more hundred: 396 + 10 = 406. Adding 100 adds one hundred, so the hundreds digit goes up by 1. From 900 up, 10 hundreds make 1 thousand: 950 + 100 = 1,050.",
     noLink: ["change", "changes", "leaves"],
     method: [
       "For 10, change the tens digit by 1. For 100, change the hundreds digit by 1.",

@@ -8,7 +8,6 @@ export const addSubtractLessons: Lesson[] = [
     title: "Add within 100 by place",
     summary:
       "A ten is a group of 10 ones. 47 is 4 tens and 7 ones. To add, put ones with ones and tens with tens. If the ones make 10 or more, swap 10 of them for 1 ten. Then add the tens.",
-    noLink: ["base"],
     templateIds: ["add-two-digit-regroup", "make-hundred"],
     objectives: [
       "Add two numbers from 10 to 99, swapping 10 ones for 1 ten when needed.",
@@ -84,7 +83,7 @@ export const addSubtractLessons: Lesson[] = [
       difference: "difference-subtract",
       cube: "cube",
     },
-    noLink: ["change", "leaves"],
+    noLink: ["change"],
     templateIds: ["subtract-two-digit-regroup"],
     objectives: [
       "Take a number from 10 to 99 away from a number up to 100.",
@@ -147,9 +146,9 @@ export const addSubtractLessons: Lesson[] = [
     id: "add-subtract-thousands",
     title: "Add and subtract within 1000",
     summary:
-      "Numbers up to 1,000 have hundreds, tens and ones. A ten is 10 ones, and a hundred is 10 tens. A digit is one of the symbols 0 to 9, and its place tells what it counts: ones, tens or hundreds. Adding and taking away use the same trades as smaller numbers. Trading 10 of one place for 1 of the next place to the left is called regrouping. It works the other way too, and it never changes the number.",
+      "Numbers below 1,000 have hundreds, tens and ones. A ten is 10 ones, a hundred is 10 tens, and 1,000 is 10 hundreds. A digit is one of the symbols 0 to 9, and its place tells what it counts: ones, tens or hundreds. Adding and taking away use the same trades as smaller numbers. Trading 10 of one place for 1 of the next place to the left is called regrouping. It works the other way too, and it never changes the number.",
     senses: { difference: "difference-subtract" },
-    noLink: ["base", "changes"],
+    noLink: ["changes"],
     templateIds: ["add-three-digit", "subtract-three-digit"],
     objectives: [
       "Add three-digit numbers, regrouping in any place.",
@@ -204,7 +203,7 @@ export const addSubtractLessons: Lesson[] = [
       answer: "346",
     },
     pitfalls: [
-      "A zero has nothing to give. Regroup from the hundreds first, and then the tens can give to the ones.",
+      "A zero has nothing to give. Keep going left to the first place that is not 0 and regroup from there. Then the tens can give to the ones.",
       "The place that gives away 1 goes down by 1. The place that gets it goes up by 10.",
     ],
     parentGuide:
@@ -216,7 +215,7 @@ export const addSubtractLessons: Lesson[] = [
     summary:
       "A whole number is one of 0, 1, 2, 3 and so on. A digit is one of the symbols 0 to 9. Long whole numbers are added and subtracted the same way as short ones. Write one number under the other, with the ones digits lined up. Then each column holds one place: ones, tens, hundreds, thousands and so on. Work on each column from right to left, regrouping when needed.",
     senses: { difference: "difference-subtract" },
-    noLink: ["leaves", "line", "mean", "unit", "units"],
+    noLink: ["line"],
     templateIds: ["add-multidigit", "subtract-multidigit"],
     objectives: [
       "Add whole numbers up to 999,999 using columns.",
@@ -336,13 +335,13 @@ export const addSubtractMethods: Record<string, ProblemMethod> = {
   "subtract-three-digit": {
     goal: "Take one number within 1,000 away from another, and find the difference.",
     intuition:
-      "A ten is 10 ones, and a hundred is 10 tens. A digit's place tells what it counts: ones, tens or hundreds. Subtract the ones, then the tens, then the hundreds. If a place has too few, trade 1 from the next place to the left for 10. This is called regrouping. If that next place is 0, trade from the hundreds first.",
+      "A ten is 10 ones, and a hundred is 10 tens. A digit's place tells what it counts: ones, tens or hundreds. Subtract the ones, then the tens, then the hundreds. If a place has too few, trade 1 from the next place to the left for 10. This is called regrouping. If that place is 0 too, keep going left to the first place that is not 0. For 1,000, start with the thousand.",
     senses: { difference: "difference-subtract" },
     terms,
     method: [
       "Start at the ones and subtract place by place, moving left.",
       "If a place has too few, regroup: take 1 from the next place to the left and add 10 to this place.",
-      "If the next place is 0, regroup from the hundreds first. The 0 gets 10, then gives 1 away, so it becomes 9.",
+      "If the next place is 0, keep going left to the first place that is not 0, and regroup from there. Each 0 on the way gets 10, then gives 1 away, so it becomes 9.",
     ],
     watch: "A 0 has nothing to give. Regroup from the place to its left first.",
   },

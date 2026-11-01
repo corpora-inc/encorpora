@@ -17,7 +17,7 @@ export const operationSentenceMethods: Record<string, ProblemMethod> = {
       "To find the sentence that cannot work, test every sentence the same way.",
     ],
     watch:
-      "Adding the number of groups to the group size counts one group only once. Check that the sentence uses the group size once for each group.",
+      "Adding the number of groups to the group size uses the group size only once, not once for each group. Check that the sentence uses the group size once for each group.",
   },
   "related-division-sentence": {
     goal: "Choose the division sentence a multiplication fact helps solve, or the multiplication sentence that helps solve a division, including tens.",

@@ -131,7 +131,7 @@ export const numberLineGapLessons: Lesson[] = [
       formalTitle: "Jumps, adding and taking away",
       formal: [
         "A jump to the right adds its length. A jump to the left takes its length away.",
-        "After two jumps, you land on the start with both changes made, in order. The story must have the same start, the same actions and the same amounts, in the same order.",
+        "After two jumps, you land on the start with both jumps made, in order. The story must have the same start, the same actions and the same amounts, in the same order.",
       ],
       pitfalls: [
         "Check the order. A story that does the two actions the other way round does not match.",
@@ -142,7 +142,7 @@ export const numberLineGapLessons: Lesson[] = [
         "Draw a number line on the floor with chalk or tape. Have your learner walk the jumps while telling the story out loud.",
     }),
     senses: { jump: "jump", jumps: "jump" },
-    noLink: ["change", "changes"],
+    noLink: ["mean"],
   },
 ];
 

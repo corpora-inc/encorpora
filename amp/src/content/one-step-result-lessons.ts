@@ -18,7 +18,7 @@ export const oneStepResultMethods: Record<string, ProblemMethod> = {
       "Change both sides, and every term. Doing the step to one side only, or to only one term, gives an equation with a different solution.",
   },
   "expression-after-first-step": {
-    goal: "Choose the expression that results from only the first step of the order of operations, or find the first line that skips a bracket.",
+    goal: "Choose the expression that results from only the first step of the order of operations, or find the first line with a mistake.",
     intuition:
       "An expression is a mix of numbers joined by operations such as +, −, × and ÷, with no equal sign. The order of operations is the agreed order for working one out. Work inside parentheses, the curved marks $(\\;)$, first. Then multiply and divide, from left to right. Then add and subtract, from left to right. Doing only the first step works out one operation and copies the rest unchanged.",
     senses: {
@@ -83,7 +83,7 @@ export const oneStepResultPrinciples: Record<string, string> = {
   "expression-after-first-step":
     "Work out parentheses first, then multiply and divide from left to right, then add and subtract from left to right. Each step replaces one operation with its value. The value of the expression stays the same.",
   "factor-out-choice":
-    "A number before parentheses multiplies each term inside: $g(p + q) = gp + gq$, where $gp$ means $g$ times $p$. This is called the distributive property. Read backwards, $gp + gq = g(p + q)$ for any $g$ that is not 0. Factoring divides each term by $g$. A negative $g$ flips the sign of each answer.",
+    "A number before parentheses multiplies each term inside: $g(p + q) = gp + gq$, where $gp$ means $g$ times $p$. This is called the distributive property. Read backwards, $gp + gq = g(p + q)$. Factoring divides each term by $g$, so $g$ must not be 0. A negative $g$ flips the sign of each answer.",
   "step-reason-table":
     "The addition, subtraction, multiplication and division properties of equality state that equal operations on both sides preserve equality, with division and multiplication by a nonzero number. The distributive property $a(b+c)=ab+ac$ rewrites a product. A justified solution names one such property for each step.",
 };
@@ -168,8 +168,8 @@ export const oneStepResultLessons: Lesson[] = [
       formalTitle: "The order of operations and factoring",
       formal: [
         "Work out parentheses first, then multiply and divide, then add and subtract. Each step keeps the value of the whole expression the same.",
-        "A number before parentheses multiplies each term inside: $g(p + q) = gp + gq$. Here the letters stand for numbers, and $gp$ means $g$ times $p$. This rule is called the distributive property.",
-        "Read backwards, $gp + gq = g(p + q)$, which is factoring out $g$. A negative $g$ gives the terms inside the opposite signs, as in $-4x + 12 = -4(x - 3)$.",
+        "A number before parentheses multiplies each term inside: $g(p + q) = gp + gq$. Here the letters stand for numbers, and $gp$ means $g$ times $p$. This is called the distributive property.",
+        "Read backwards, $gp + gq = g(p + q)$, which is factoring out $g$. A negative $g$ flips the sign of each term inside, as in $-4x + 12 = -4(x - 3)$.",
       ],
       pitfalls: [
         "When the question asks for one step, do only that step. Do not work out everything inside the parentheses.",
@@ -185,7 +185,7 @@ export const oneStepResultLessons: Lesson[] = [
       terms: "term-expression",
       factor: "factor-number",
     },
-    noLink: ["change", "opposite", "part", "rule", "whole"],
+    noLink: ["change", "part", "whole"],
   },
 ];
 

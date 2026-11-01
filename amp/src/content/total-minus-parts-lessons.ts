@@ -19,7 +19,7 @@ export const totalMinusPartsMethods: Record<string, ProblemMethod> = {
       "Check by adding back: the answer plus what was taken away gives the amount you subtracted from.",
     ],
     watch:
-      "Add the two parts before subtracting. Taking them away one at a time also works. When a column has too few, regroup. Never swap the two digits.",
+      "Add the two parts before subtracting. Taking them away one at a time also works. When a column has too few, regroup. Never take the top digit away from the bottom digit instead.",
   },
   "fraction-total-minus-parts": {
     goal: "Add two measures given as mixed numbers with unlike denominators, or as a fraction and a decimal, and subtract the sum from a total.",
