@@ -49,6 +49,8 @@ A stored spec never changes when evidence changes later; the next number is comp
 
 Results come back from paper through `/learners/:id/workbooks/:workbookId/results`. The QR code on a workbook's results page links there; parents can also reach it with "Enter results" on the workbook or in history, or by typing the printed code in history.
 
+Rows on the printed results page and on the screen are named by the problem type's authored title (`resultLabel`, `src/workbook/result-labels.ts`). A title longer than two lines in the narrowest results tile uses a short authored label from that file; `npm run workbook:audit` measures every label.
+
 The screen has one row per problem.
 - **Typed answers.** Numbers and fractions can be typed, and printed choices picked by letter. The app's exact grader checks them (`gradeAnswer`), and they count as independent attempts.
 - **Marks.** Every row can instead be marked right or not yet, at half weight. Responses that don't type well are always marked: several choices, plotted points, multi-part answers and shown work.

@@ -162,7 +162,7 @@ try {
     return labels
       .filter((l) => {
         tile.textContent = l.label;
-        return Math.round(tile.getBoundingClientRect().height / line) > 3;
+        return Math.round(tile.getBoundingClientRect().height / line) > 2;
       })
       .map((l) => l.id);
   }, labels);
@@ -194,7 +194,7 @@ if (unlisted.length) {
 }
 if (longLabels.length) {
   console.error(
-    `Results labels longer than three lines in the narrowest tile: ${longLabels.join(", ")}. Add a short label in src/workbook/result-labels.ts.`,
+    `Results labels longer than two lines in the narrowest tile: ${longLabels.join(", ")}. Add a short label in src/workbook/result-labels.ts.`,
   );
   process.exit(1);
 }
