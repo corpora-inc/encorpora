@@ -274,7 +274,11 @@ function Today({
           </button>
         )}
       </p>
-      <Contents workbook={workbook.data} stale={!current} />
+      <Contents
+        workbook={workbook.data}
+        stale={!current}
+        learnerId={learner.id}
+      />
     </>
   );
 }
@@ -282,9 +286,11 @@ function Today({
 function Contents({
   workbook,
   stale,
+  learnerId,
 }: {
   workbook?: WorkbookSummary;
   stale: boolean;
+  learnerId: string;
 }) {
   return (
     <div
@@ -316,6 +322,13 @@ function Contents({
               </li>
             ))}
           </ol>
+          <Link
+            to="/learners/$learnerId/workbooks/$workbookId/results"
+            params={{ learnerId, workbookId: workbook.id }}
+            className={styles.resultsLink}
+          >
+            Enter results
+          </Link>
         </>
       ) : (
         <div className={styles.skeleton} aria-hidden="true">
