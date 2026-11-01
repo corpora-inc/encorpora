@@ -24,6 +24,9 @@ import {
 } from "../lib/family-cache";
 import { consumeInitialConsentChallenge } from "../consent-entry";
 import { useLoggedError, requestMessage } from "../feedback";
+import { Toast } from "../ui/Toast";
+import { AccountSessionChanged } from "../lib/account-session";
+import { loadFrontier } from "../lib/frontier-load";
 import { Navigate } from "@tanstack/react-router";
 import { useAppRoute } from "../app-routes";
 import { Select } from "../PremiumControls";
@@ -216,6 +219,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const token = session?.token ?? null;
   const accountId = session?.accountId ?? null;
   const [catalog, setCatalog] = useState<Catalog | null>(null);
+  // A failed first load. Unlike `error`, dismissing the message does not
+  // clear it, so the screen never falls back to an endless loading frame.
+  const [loadFailed, setLoadFailed] = useState(false);
   const familySummary = useFamilyCache(accountId);
   const setFamilySummary = (summary: FamilySummary | null) =>
     setNativeFamilySnapshot(accountRef.current, summary);
@@ -351,7 +357,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const bookPositions = useRef<Record<string, number>>({});
   const readerHeading = useRef<HTMLHeadingElement>(null);
   const readerTriggerId = useRef<string | null>(null);
-  const libraryScroll = useRef(0);
+  const libraryReturn = useRef({ search: "", scroll: 0 });
   useEffect(() => {
     if (readingLesson && tab === "library")
       readerHeading.current?.focus({ preventScroll: true });
@@ -489,8 +495,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     const epoch = authEpoch.current;
     const result = await learningRequest(path, tokenRef.current, body);
     const data = await result.json();
-    if (epoch !== authEpoch.current)
-      throw new Error("Your account session changed.");
+    if (epoch !== authEpoch.current) throw new AccountSessionChanged();
     if (!result.ok)
       throw new HttpError(
         result.status,
@@ -524,16 +529,21 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   useEffect(() => {
     void learningCatalog()
       .then(setCatalog)
-      .catch((e) => setError(String(e)));
+      .catch((e) => {
+        setError(String(e));
+        setLoadFailed(true);
+      });
   }, []);
   useEffect(() => {
     if (!token) return;
     const epoch = authEpoch.current;
     void loadFamily(false).catch(() => {
-      if (epoch === authEpoch.current)
+      if (epoch === authEpoch.current) {
         setError(
           "Family details could not be refreshed. Check your connection and try again.",
         );
+        setLoadFailed(true);
+      }
     });
   }, [accountId, route.location.pathname]);
   useEffect(() => {
@@ -673,6 +683,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   }
   function acceptFamily(summary: FamilySummary) {
     familyRequest.current++;
+    setLoadFailed(false);
     setFamilySummary(summary);
     const available = summary.learners.filter((entry) => !entry.deletedAt);
 
@@ -708,7 +719,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     !!token &&
     route.location.pathname === "/" &&
     (!familySummary
-      ? !error
+      ? !error && !loadFailed
       : !learners.length ||
         (!learningAllowed && familySummary.consent.status !== "withdrawn"));
   // Once leaving, this screen stays the skeleton until the destination
@@ -1158,18 +1169,26 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   useEffect(() => {
     if (!learner || tab !== "practice" || !exploring) return;
     const id = learner.id;
-    api<FrontierMap>(`/learners/${id}/frontier`)
-      .then((map) => {
-        if (learnerRef.current === id) setFrontierMap(map);
-      })
-      .catch((error) => console.error("Frontier map failed to load", error));
+    let active = true;
+    void loadFrontier(
+      () => api<FrontierMap>(`/learners/${id}/frontier`),
+      () => active && learnerRef.current === id,
+      setFrontierMap,
+    );
+    return () => {
+      active = false;
+    };
   }, [learner?.id, learner?.birthYear, tab, exploring]);
   // Practice is immersive: no header or tabs, one exit back to everything else.
   // `/?sign-in` (or a password-reset link) shows AMP's own sign-in screen.
   // Development sign-in has no session to end, so it offers no sign-out.
   const [authMode, setAuthMode] = useState<AuthConfig["mode"]>();
   useEffect(() => {
-    void authConfig().then((config) => setAuthMode(config.mode));
+    void authConfig()
+      .then((config) => setAuthMode(config.mode))
+      .catch((failure) =>
+        console.error("Sign-in configuration could not be loaded", failure),
+      );
   }, []);
   const signingIn =
     route.signingIn &&
@@ -1194,8 +1213,16 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     firstRunHome ||
     leavingHome.current ||
     // The welcome states the configured free allowance: paint it once.
-    (!token && !nativeRuntime && !catalog && !error) ||
-    (starting && token && !familySummary)
+    (!token && !nativeRuntime && !catalog && !error && !loadFailed) ||
+    (starting && token && !familySummary) ||
+    // Signed in, the family loads behind the same first-paint frame: never
+    // the signed-out welcome or a placeholder card in between.
+    (!!token &&
+      !nativeRuntime &&
+      !familySummary &&
+      !error &&
+      !loadFailed &&
+      !familyOpen)
   )
     return (
       <LoadingScreen
@@ -1298,7 +1325,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           )}
         </div>
       </header>
-      {!learner && !familyOpen && !nativeRuntime && !(signingIn && !token) && (
+      {!token && !familyOpen && !nativeRuntime && !signingIn && (
         <div className="intro">
           <div>
             <p>
@@ -1334,11 +1361,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           ))}
         </nav>
       )}
-      {error && !immersive && (
-        <div role="alert" className="error">
-          {error}
-        </div>
-      )}
+      {/* One error pattern: a fixed toast that never moves the screen.
+          Practice shows its own errors beside the problem. */}
+      <Toast message={immersive ? "" : error} onDismiss={() => setError("")} />
       {familyOpen && token && nativeRuntime ? (
         <NativeFamily
           onClose={() => {
@@ -1405,7 +1430,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         />
       ) : familyOpen && token ? (
         <FamilyCenter
-          accountsEnabled={authMode === "accounts"}
+          // Until the sign-in mode is known, keep the Security tab's place:
+          // hosted AMP always uses accounts, so the tabs never reflow.
+          accountsEnabled={authMode === undefined || authMode === "accounts"}
           onConsentEnrollment={() => openConsent()}
           onContinueSetup={
             nativeRuntime ? undefined : () => navigate("/start/plan")
@@ -1471,8 +1498,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         </section>
       ) : !familySummary ? (
         <section className="card welcome" aria-busy={busy}>
-          <h2>{error ? "Let’s reconnect." : "Getting your family ready…"}</h2>
-          {error && (
+          <h2>
+            {error || loadFailed
+              ? "Let’s reconnect."
+              : "Getting your family ready…"}
+          </h2>
+          {(error || loadFailed) && (
             <button onClick={() => void action(loadFamily)}>Try again</button>
           )}
           <button className="secondary" onClick={openFamily}>
@@ -1742,65 +1773,45 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                 practice={(templateId) =>
                   void action(() => loadBatch(templateId))
                 }
+                references={catalog?.lessons ?? []}
+                openReference={(reference) => {
+                  readerTriggerId.current = reference.id;
+                  // Back returns to these results at this scroll position.
+                  libraryReturn.current = {
+                    search: route.location.search,
+                    scroll: window.scrollY,
+                  };
+                  void action(() => openReferenceLesson(reference, null));
+                }}
               />
-              {!new URLSearchParams(route.location.search).has("topic") && (
-                <>
-                  <details
-                    className="book-list"
-                    aria-labelledby="reference-materials"
-                  >
-                    <summary>
-                      <h2 id="reference-materials">Lessons and worksheets</h2>
-                    </summary>
-                    <p>
-                      Open a lesson for its printable workbook and solution key.
-                    </p>
-                    <ul>
-                      {(catalog?.lessons ?? []).map((reference) => (
-                        <li key={reference.id}>
-                          <button
-                            className="text-button"
-                            data-lesson-id={reference.id}
-                            disabled={busy}
-                            onClick={(event) => {
-                              readerTriggerId.current = reference.id;
-                              libraryScroll.current =
-                                event.currentTarget.closest("main")
-                                  ?.scrollTop ?? 0;
-                              void action(() =>
-                                openReferenceLesson(reference, null),
-                              );
-                            }}
-                          >
-                            {reference.title}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-                  <section className="book-list" aria-label="Printable books">
-                    <h2>Printable books</h2>
-                    <ul>
-                      {books.map((book) => (
-                        <li key={book.id}>
-                          <span>
-                            {book.title}
-                            <small>{book.pages} pages</small>
-                          </span>
-                          <button
-                            className="text-button"
-                            disabled={busy}
-                            data-book-id={book.id}
-                            onClick={() => void action(() => openBook(book.id))}
-                          >
-                            Open book
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                </>
-              )}
+              {!new URLSearchParams(route.location.search).has("topic") &&
+                !new URLSearchParams(route.location.search).get("q") && (
+                  <>
+                    <section className="book-list" aria-label="Printable books">
+                      <h2>Printable books</h2>
+                      <ul>
+                        {books.map((book) => (
+                          <li key={book.id}>
+                            <span>
+                              {book.title}
+                              <small>{book.pages} pages</small>
+                            </span>
+                            <button
+                              className="text-button"
+                              disabled={busy}
+                              data-book-id={book.id}
+                              onClick={() =>
+                                void action(() => openBook(book.id))
+                              }
+                            >
+                              Open book
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  </>
+                )}
             </>
           )}
           {readingLesson && (
@@ -1810,7 +1821,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                 <button
                   className="text-button"
                   onClick={() => {
-                    navigate("/lessons");
+                    navigate(
+                      progressLessonReturn.current
+                        ? "/lessons"
+                        : `/lessons${libraryReturn.current.search}`,
+                    );
                     if (progressLessonReturn.current) {
                       const skillId = progressLessonReturn.current;
                       progressLessonReturn.current = null;
@@ -1828,10 +1843,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                       const trigger = document.querySelector<HTMLButtonElement>(
                         `[data-lesson-id="${CSS.escape(readerTriggerId.current ?? "")}"]`,
                       );
-                      const details = trigger?.closest("details");
-                      if (details) details.open = true;
-                      const library = trigger?.closest("main");
-                      if (library) library.scrollTop = libraryScroll.current;
+                      window.scrollTo({
+                        top: libraryReturn.current.scroll,
+                        behavior: "instant",
+                      });
                       trigger?.focus({ preventScroll: true });
                     });
                   }}
@@ -1852,6 +1867,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               <h2 ref={readerHeading} tabIndex={-1}>
                 {readingLesson.title}
               </h2>
+              <ReferenceLesson lesson={readingLesson} />
+              {/* The lesson comes first; its printable copies follow it. */}
               {!nativeRuntime && (
                 <section
                   className="reader-downloads"
@@ -1874,7 +1891,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                   </div>
                 </section>
               )}
-              <ReferenceLesson lesson={readingLesson} />
             </article>
           )}
         </main>
@@ -1907,27 +1923,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         />
       )}
       {!learner && !familyOpen && !nativeRuntime && (
-        <footer>
+        <footer className="landing-footer">
           <span>
             {brand.name} · {brand.expansion} · {brand.company}
-            {" · "}
-            <a
-              href="mailto:support@corpora.inc"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                minHeight: "var(--target-size)",
-              }}
-            >
-              support@corpora.inc
-            </a>
           </span>
-          <span>
-            {catalog?.mode === "development"
-              ? "Local development · sample practice"
-              : "Selected curriculum preview"}{" "}
-            · English
-          </span>
+          <a href="mailto:support@corpora.inc">support@corpora.inc</a>
         </footer>
       )}
     </div>

@@ -24,6 +24,9 @@ import {
   type WorkbookItem,
   type WorkbookSpec,
 } from "./compose";
+import { glossaryEntry } from "../glossary/index";
+import { termsIn } from "../glossary/link";
+import type { GlossaryEntry } from "../glossary/types";
 import { workbookFontCss } from "./fonts";
 import { workbookLayoutScript } from "./layout-script";
 import { workbookResultsUrl } from "./links";
@@ -184,6 +187,7 @@ function Workspace({
       className={`wb-work wb-work--${item.space}`}
       aria-label="Space to show your work"
     >
+      <div className="wb-work-grid" />
       {boxed(problem) && (
         <span className="wb-answer">
           <span className="wb-answer-label">Answer</span>
@@ -221,9 +225,32 @@ function cardParagraphs(section: Section): string[] {
   return out;
 }
 
+/** Glossary words the card's own text uses, in first-use order, at most
+ * six: the lesson's senses decide ambiguous words. */
+export function cardWords(lesson: Lesson): GlossaryEntry[] {
+  const section = cardSection(lesson);
+  const example = lesson.workedExample;
+  const texts = [
+    lesson.title,
+    lesson.summary,
+    ...(section ? cardParagraphs(section) : []),
+    example.prompt,
+    ...example.steps,
+    example.answer,
+    lesson.pitfalls[0] ?? "",
+  ];
+  const context = { senses: lesson.senses, noLink: lesson.noLink };
+  const ids: string[] = [];
+  for (const text of texts)
+    for (const id of termsIn(text, context))
+      if (!ids.includes(id)) ids.push(id);
+  return ids.slice(0, 6).map(glossaryEntry);
+}
+
 function LessonCard({ lesson }: { lesson: Lesson }) {
   const section = cardSection(lesson);
   const example = lesson.workedExample;
+  const words = cardWords(lesson);
   const visual = section?.illustration;
   const idea = section && (
     <div className="wb-lesson-idea">
@@ -288,6 +315,21 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
         <div className="wb-lesson-grid">
           {idea}
           {worked}
+        </div>
+      )}
+      {words.length > 0 && (
+        <div className="wb-words" data-trim="4">
+          <h4 className="wb-lesson-label">Words to know</h4>
+          <dl>
+            {words.map((w) => (
+              <div key={w.id}>
+                <dt>{w.term}</dt>
+                <dd>
+                  <PrintMathText text={w.plain} />
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       )}
       {lesson.pitfalls[0] && (
@@ -832,8 +874,9 @@ export function workbookFooter(_spec: WorkbookSpec): string {
 }
 
 const workbookCss = `
-/* Tokens by band. */
-.wb{--ink:var(--color-on-surface);--muted:var(--color-muted-text);--rule:var(--color-border);--rule-strong:var(--color-border-strong);--accent:var(--color-primary);
+/* Tokens by band. Paper is plain white: figures and answer boxes never
+   carry a cream tint. */
+.wb{--color-figure-paper:var(--color-answer);--color-figure-empty:var(--color-answer);--ink:var(--color-on-surface);--muted:var(--color-muted-text);--rule:var(--color-border);--rule-strong:var(--color-border-strong);--accent:var(--color-primary);
 --body:11pt;--prompt:11.5pt;--small:9pt;--h-section:17pt;--h-card:15pt;--num:0.27in;--gutter:0.4in;--gap:0.3in;--radius:7px;--soft:30;--display-weight:560;
 --work-answer:0.48in;--work-standard:1.2in;--work-roomy:2.4in;--answer-w:1.15in;--answer-h:0.4in;
 --grid:0.25in;--grid-line:color-mix(in srgb,var(--color-figure-grid) 80%,transparent);
@@ -860,7 +903,7 @@ body{margin:0}
 .wb-page-content{display:flow-root}
 .wb-page-foot{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid var(--rule);padding-top:5px;margin-top:4px;font-family:"WB Reading",Arial,sans-serif;font-size:8pt;line-height:1.3;color:var(--muted)}
 .wb-foot-page{font-weight:700;color:var(--ink);white-space:nowrap}
-@media screen{html{background:var(--color-surface-sunken)}.wb-pages{padding:24px 0}.wb-page{margin:0 auto 24px;background:var(--color-figure-paper);box-shadow:0 1px 4px var(--color-border-strong)}}
+@media screen{html{background:var(--color-surface-sunken)}.wb-pages{padding:24px 0}.wb-page{margin:0 auto 24px;background:var(--color-answer);box-shadow:0 1px 4px var(--color-border-strong)}}
 /* Badges, grids and answer boxes print even with a browser's background
    graphics turned off. */
 .wb,.wb *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -957,16 +1000,17 @@ body{margin:0}
 
 /* Workspace: a quiet grid sized to the work; spare page height is added by
    the layout (--wb-grow). Answer boxes sit at the bottom of the row. */
-.wb-work{position:relative;flex:1 0 auto;margin-top:6px;min-height:calc(var(--work-standard) + var(--wb-grow,0px));border-radius:calc(var(--radius) * 0.6);
+.wb-work{position:relative;flex:1 0 auto;display:flex;flex-direction:column;gap:6px;margin-top:6px;min-height:calc(var(--work-standard) + var(--wb-grow,0px))}
+.wb-work-grid{flex:1 1 auto;min-height:0;border-radius:calc(var(--radius) * 0.6);
 background-image:linear-gradient(var(--grid-line) 0.7px,transparent 0.7px),linear-gradient(90deg,var(--grid-line) 0.7px,transparent 0.7px);background-size:var(--grid) var(--grid);background-position:-0.35px -0.35px}
 .wb-work--answer{min-height:calc(var(--work-answer) + var(--wb-grow,0px))}
 .wb-work--roomy{min-height:calc(var(--work-roomy) + var(--wb-grow,0px))}
-.wb--high .wb-work{background-image:radial-gradient(circle,var(--color-border-strong) 0.6px,transparent 0.9px);background-size:var(--grid) var(--grid);background-position:center}
-.wb--early .wb-work{background-image:radial-gradient(circle,var(--grid-line) 1.3px,transparent 1.6px);background-size:0.36in 0.36in}
-.wb .wb-row:not(.wb-row--roomy) .wb-work--answer{background:none}
-.wb-answer{position:absolute;right:0;bottom:0;display:flex;align-items:center;gap:7px;padding:3px 0 0 8px;background:var(--color-figure-paper);border-radius:6px}
+.wb--high .wb-work-grid{background-image:radial-gradient(circle,var(--color-border-strong) 0.6px,transparent 0.9px);background-size:var(--grid) var(--grid);background-position:center}
+.wb--early .wb-work-grid{background-image:radial-gradient(circle,var(--grid-line) 1.3px,transparent 1.6px);background-size:0.36in 0.36in}
+.wb .wb-row:not(.wb-row--roomy) .wb-work--answer .wb-work-grid{background:none}
+.wb-answer{flex:none;align-self:flex-end;display:flex;align-items:center;gap:7px}
 .wb-answer-label{font-size:var(--small);font-weight:700;color:var(--muted)}
-.wb-answer-box{display:inline-block;width:var(--answer-w);height:var(--answer-h);border:1.5px solid var(--ink);border-radius:calc(var(--radius) * 0.6);background:var(--color-figure-paper)}
+.wb-answer-box{display:inline-block;width:var(--answer-w);height:var(--answer-h);border:1.5px solid var(--ink);border-radius:calc(var(--radius) * 0.6);background:var(--color-answer)}
 
 /* Today's idea. */
 .wb-lesson{border:1.5px solid var(--accent);border-radius:calc(var(--radius) * 1.3);padding:0.15in 0.18in 0.14in;margin:0.08in 0 0.04in;break-inside:avoid}
@@ -978,9 +1022,11 @@ background-image:linear-gradient(var(--grid-line) 0.7px,transparent 0.7px),linea
 .wb-lesson-idea p{margin:0 0 5px}
 .wb-lesson-visual{display:flex;justify-content:center;min-width:0}
 .wb .wb-lesson [data-trimmed]{display:none}
+.wb-lesson--stacked .wb-lesson-grid{grid-template-columns:minmax(0,1fr)!important}
+.wb-lesson--stacked .wb-example{margin-top:0.08in}
 .wb-lesson--visual:has(.wb-lesson-visual[data-trimmed]) .wb-lesson-grid{grid-template-columns:minmax(0,1fr)}
 .wb-lesson-visual svg,.wb-lesson-visual .figure{max-width:100%;max-height:2.3in;margin:0 auto}
-.wb-example{background:color-mix(in srgb,var(--accent) 6%,transparent);border-radius:var(--radius);padding:0.1in 0.13in}
+.wb-example{border:1px solid var(--rule-strong);border-radius:var(--radius);padding:0.1in 0.13in}
 .wb-lesson--visual .wb-example{margin-top:0.1in}
 .wb-example p{margin:0 0 4px}
 .wb-example .figure{max-height:1.8in;margin:4px auto}
@@ -992,10 +1038,17 @@ background-image:linear-gradient(var(--grid-line) 0.7px,transparent 0.7px),linea
 .wb-example-answer{margin:6px 0 0!important;font-weight:700}
 .wb-example-answer-label,.wb-watch-label{display:inline-block;margin-right:6px;padding:1px 7px;border-radius:999px;font-size:var(--small);font-weight:800;letter-spacing:0.05em;text-transform:uppercase;line-height:1.5}
 .wb-example-answer-label{background:var(--accent);color:var(--color-on-primary)}
+.wb-words{margin:0.1in 0 0;padding:0.08in 0.12in 0.06in;border:1px solid var(--rule-strong);border-radius:var(--radius)}
+.wb-words dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:0.22in;row-gap:3px;margin:2px 0 0}
+.wb-words dl>div{display:block;min-width:0;font-size:calc(var(--body) * 0.9);line-height:1.38}
+.wb-words dt{display:inline;font-weight:700;margin-right:5px}
+.wb-words dd{display:inline;margin:0}
+.wb--early .wb-words dl{grid-template-columns:minmax(0,1fr)}
 .wb-watch{margin:0.1in 0 0;padding:0.06in 0 0.02in 0.12in;border-left:3px solid var(--color-danger-accent);font-size:calc(var(--body) * 0.96)}
 .wb-watch-label{border:1.3px solid var(--color-danger-accent);color:var(--color-danger-accent)}
 
 .wb-try{border-bottom:none}
+.wb .wb-try .wb-work{min-height:calc(0.6in + var(--wb-grow,0px))}
 .wb-try-inner{flex:1 1 auto;display:flex;flex-direction:column;padding:0.12in 0 0.04in}
 .wb-try-label{margin:0 0 2px;font-size:var(--small);color:var(--muted)}
 .wb-try-label .wb-lesson-label{display:inline;margin-right:6px}
@@ -1027,7 +1080,7 @@ background-image:linear-gradient(var(--grid-line) 0.7px,transparent 0.7px),linea
 .wb-results-steps{margin:0;padding-left:20px;font-size:11pt;line-height:1.6}
 .wb-results-code{flex:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0.1in 0.14in;border:1.5px solid var(--ink);border-radius:var(--radius)}
 .wb-qr{width:1.25in;height:1.25in;display:block;margin:0 0 4px}
-.wb-qr-paper{fill:var(--color-figure-paper)}
+.wb-qr-paper{fill:var(--color-answer)}
 .wb-qr-ink{fill:var(--ink)}
 .wb-code-label{margin:0;font-size:7.5pt;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}
 .wb-code{margin:0;font-family:"WB Reading",Arial,sans-serif;font-size:15pt;font-weight:800;letter-spacing:0.08em;font-variant-numeric:tabular-nums}

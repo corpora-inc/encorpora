@@ -208,8 +208,13 @@ function LearnerMap({ session }: { session: AuthSession }) {
       learnerName={learner?.name}
       controls={
         <>
-          {learners.length > 0 && (
-            <div className="pathways-learner">
+          {/* The learner row holds its place while the family loads. */}
+          {(me.isPending || learners.length > 0) && (
+            <div
+              className="pathways-learner"
+              aria-hidden={me.isPending || undefined}
+              style={me.isPending ? { visibility: "hidden" } : undefined}
+            >
               <span aria-hidden="true">Learner</span>
               <ListboxDisclosure
                 label="Learner"

@@ -106,13 +106,21 @@ def answer(public, truths):
     return json.dumps(sorted(correct), separators=(',', ':'))
 
 
-def review(problem, verdicts):
+def review(problem, verdicts, explanation_frame=None):
     public = problem['public']
     truths = verdicts(public)
     expected = answer(public, truths)
     require(problem['answer'] == expected, 'Wrong or noncanonical answer set')
     options = options_of(public)
     explanations = problem['explanation']
+    expected_lines = len(options) // 2 if pair_count(public) else len(options)
+    if explanation_frame is not None and len(explanations) != expected_lines:
+        lead, tail = explanation_frame(public)
+        require(len(explanations) == len(lead) + expected_lines + len(tail),
+                'Recognized teaching prose and one explanation per statement')
+        require(explanations[:len(lead)] == lead and (not tail or explanations[-len(tail):] == tail),
+                'Teaching prose disagrees with prompt or figure givens')
+        explanations = explanations[len(lead):len(lead) + expected_lines]
     if pair_count(public):
         require(len(explanations) == len(options) // 2, 'One explanation per statement')
         for i, text in enumerate(explanations):
