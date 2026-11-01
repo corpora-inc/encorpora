@@ -1,6 +1,6 @@
 # Daily workbooks
 
-A daily workbook is a printable document of about 30, 45 or 60 minutes of work, chosen for one learner from their practice evidence. Each workbook is new and they never run out. The layout and structure are the same at every level; only the problems change. Issue [#1776](https://github.com/corpora-inc/encorpora/issues/1776) tracks the feature. Parent entry points stay off until release: `workbooksEnabled` in `src/web/features/workbooks/config.ts` is the one switch. The routes work by URL either way.
+A daily workbook is a printable document of about 30, 45 or 60 minutes of work, chosen for one learner from their practice evidence. Each workbook is new and they never run out. The layout and structure are the same at every level; only the problems change. Issue [#1776](https://github.com/corpora-inc/encorpora/issues/1776) tracks the feature. Parents reach workbooks from Family → Learners; `workbooksEnabled` in `src/web/features/workbooks/config.ts` switches those entry points off again if needed. The routes work by URL either way.
 
 ## Structure
 
@@ -73,7 +73,7 @@ The weights are in [adaptive evidence](adaptive-evidence.md).
 
 - `/learners/:id/workbooks/:date` (today): length and paper size as segmented controls, Download and Another one. Length, paper and number live in the URL (`?minutes=&paper=&number=`), so Back, reload and shared links restore the screen. Opening it makes today's first workbook, from the starting estimate when the learner has no answers yet. Other dates list that day's workbooks.
 - `/learners/:id/workbooks`: every workbook, newest first, each downloadable again.
-- Family → Learners shows "Download today's workbook" and "Past workbooks" when `workbooksEnabled` is on and the learner can practice.
+- Family → Learners shows "Download today's workbook" and "Past workbooks" when the learner can practice (and `workbooksEnabled` is on).
 
 `npm run test:workbooks-ui` runs the real routes (in memory) in Chromium at 320, 390, 768 and 1280 px, light and dark: overflow, touch targets, controls that never move while workbooks load, change, fail or download, Back and reload, and the unlicensed state. Screenshots: `docs/reviews/workbooks/`.
 
