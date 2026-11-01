@@ -98,7 +98,8 @@ export const modeOfData = chainFamily({
             answer: String(m.mode),
             hint: `The mode is the number that appears most often. Start with ${first} and count how many times it appears in the list, then do the same for each other number.`,
             explanation: [
-              `Count each number: ${sorted.map((v) => `${v} has a count of ${counts.get(v)}`).join(", ")}.`,
+              `The mode is the number that appears most often in a list.`,
+              `Count how many times each number appears: ${sorted.map((v) => `${v} is listed ${counts.get(v)} ${counts.get(v) === 1 ? "time" : "times"}`).join(", ")}.`,
               `${m.mode} has the greatest count, ${m.modeCount}, more than any other number.`,
               `The mode is ${m.mode}.`,
             ],
@@ -109,8 +110,9 @@ export const modeOfData = chainFamily({
             answer: String(m.mode),
             hint: `The mode is the number recorded the most times. Read the second row for each number, starting with ${sorted[0]}, and find the greatest count.`,
             explanation: [
-              `The second row tells how many times each number was recorded: ${sorted.map((v) => `${v} was recorded ${counts.get(v)}`).join(", ")}.`,
-              `The greatest count is ${m.modeCount}, for the number ${m.mode}.`,
+              `The mode is the number that appears most often. In this table, the second row already counts each number for you.`,
+              `Read the counts: ${sorted.map((v) => `${v} was recorded ${counts.get(v)} ${counts.get(v) === 1 ? "time" : "times"}`).join(", ")}.`,
+              `The greatest count is ${m.modeCount}, for the number ${m.mode}. The mode is the number, not its count.`,
               `The mode is ${m.mode}.`,
             ],
             label: "Answer (the mode)",
@@ -214,6 +216,22 @@ function measureModel(r: R, a: { ask: MeasureModel["ask"] }): MeasureModel {
   }
   throw new Error("Need three retries");
 }
+/** The computation of one measure for this list, in plain steps. */
+const work = (m: MeasureModel, k: Measure) => {
+  const sorted = [...m.values].sort((x, y) => x - y),
+    n = sorted.length,
+    sum = sorted.reduce((a, b) => a + b, 0);
+  switch (k) {
+    case "mean":
+      return `Add them: ${m.values.join(" + ")} = ${sum}. Share the total ${n} ways: ${sum} ÷ ${n} = ${m.value.mean}.`;
+    case "median":
+      return `In order: ${sorted.join(", ")}. The middle one, number ${(n + 1) / 2} of ${n}, is ${m.value.median}.`;
+    case "mode":
+      return `${m.value.mode} is listed ${sorted.filter((v) => v === m.value.mode).length} times, more often than any other number.`;
+    case "range":
+      return `The greatest is ${sorted[n - 1]} and the least is ${sorted[0]}: ${sorted[n - 1]} − ${sorted[0]} = ${m.value.range}.`;
+  }
+};
 const nameWhy: Record<Measure, string> = {
   mean: "the fair share: the total divided equally",
   median: "the middle number in order",
@@ -250,8 +268,10 @@ export const measureMeaning = chainFamily({
         ),
         hint: `Use the numbers ${list}: put them in order from least to greatest and check ${m.values.length} values. Which measure matches what the question describes: the fair share, the middle, the most often, or the difference between greatest and least?`,
         explanation: [
+          `The mean is the fair share, the total divided equally. The median is the middle number in order.`,
+          `The mode is the number that appears most often. The range is the greatest number minus the least.`,
           `The question describes ${nameWhy[m.measure]}.`,
-          `For ${list}, that is ${m.value[m.measure]}.`,
+          work(m, m.measure),
           `That measure is the ${m.measure}.`,
         ],
       });
@@ -269,8 +289,8 @@ export const measureMeaning = chainFamily({
       hint: `Put ${list} in order first. The ${m.measure} is ${nameWhy[m.measure]}; check each sentence against that meaning, not only against the numbers.`,
       explanation: [
         `The ${m.measure} is ${nameWhy[m.measure]}.`,
-        `For ${list}, the ${m.measure} is ${m.value[m.measure]}.`,
-        `The sentence about ${m.value[m.measure]} that says "${measureSentence(m, m.measure)!.split(":")[0]!.toLowerCase()}" is the one that matches.`,
+        work(m, m.measure),
+        `So the matching sentence is: "${measureSentence(m, m.measure)}".`,
       ],
     });
   },

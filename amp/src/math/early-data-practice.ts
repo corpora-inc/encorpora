@@ -181,9 +181,10 @@ function sortCount(r: Random): Draft {
     answer: counts[target]!,
     hint: `Put the shapes into three groups by kind. Count only the ${many}, touching each one once.`,
     explanation: [
-      `Sort into groups: ${kinds.map((k, i) => plural(counts[i]!, ...shapeNames[k])).join(", ")}.`,
-      `Check: ${counts.join(" + ")} = ${shapes.length}, the number of shapes in the picture.`,
-      `The group of ${many} has ${counts[target]}.`,
+      `To sort means to put things that are alike into the same group. Here the groups are kinds of shape.`,
+      `Sort and count each group: ${kinds.map((k, i) => plural(counts[i]!, ...shapeNames[k])).join(", ")}.`,
+      `Check that no shape was missed: ${counts.join(" + ")} = ${shapes.length}, the number of shapes in the picture.`,
+      `There ${counts[target] === 1 ? "is" : "are"} ${plural(counts[target]!, ...shapeNames[kinds[target]!])}.`,
     ],
   };
 }
@@ -213,16 +214,17 @@ function sortMost(r: Random): Draft {
     answer: winner,
     hint: `Sort the shapes into ${kinds.map((_, i) => name(i)).join(", ")}, counting each group. Then find the ${most ? "largest" : "smallest"} count.`,
     explanation: [
+      `Sort the shapes into groups by kind, then count each group, so you compare numbers instead of guessing by looking.`,
       `Count each group: ${kinds.map((k, i) => plural(counts[i]!, ...shapeNames[k])).join(", ")}.`,
       `${extreme} is the ${most ? "greatest" : "least"} of ${counts.join(", ")}.`,
-      `The ${name(winner)} group has the ${word}.`,
+      `The ${name(winner)} group has the ${word} shapes.`,
     ],
     choices: kinds.map((_, i) =>
       i === winner
         ? { label: title(i), correct: true }
         : {
             label: title(i),
-            feedback: `There ${counts[i] === 1 ? "is" : "are"} ${plural(counts[i]!, ...shapeNames[kinds[i]!])} and ${plural(extreme, ...shapeNames[kinds[winner]!])}. Count every group before comparing.`,
+            feedback: `There ${counts[i] === 1 ? "is" : "are"} ${plural(counts[i]!, ...shapeNames[kinds[i]!])} and ${plural(extreme, ...shapeNames[kinds[winner]!])}, so the ${name(i)} do not have the ${word}. Count every group before comparing; shapes that are spread out can look like more.`,
           },
     ),
   };
@@ -253,8 +255,10 @@ function pictureGraph(r: Random): Draft {
       answer: total,
       hint: "Each symbol is one student. Count the symbols in each row, then add the three rows.",
       explanation: [
-        `Each symbol stands for 1 student: ${read}.`,
-        `Add the rows: ${counts.join(" + ")} = ${total}.`,
+        `In a picture graph, each symbol stands for something. Here each symbol stands for 1 student.`,
+        `Count each row: ${read}.`,
+        `"In all" means every row together, so add the rows: ${counts.join(" + ")} = ${total}.`,
+        `${total} students are shown in all.`,
       ],
     };
   }
@@ -271,8 +275,9 @@ function pictureGraph(r: Random): Draft {
     answer: diff,
     hint: `Line up the ${big} and ${small} rows symbol by symbol. Count the symbols that have no partner.`,
     explanation: [
-      `${big} has ${plural(counts[i!]!, "student")}; ${small} has ${plural(counts[j!]!, "student")}.`,
-      `Match them one to one. The unmatched symbols show the difference: ${counts[i!]} − ${counts[j!]} = ${diff}.`,
+      `Each symbol stands for 1 student. ${big} has ${plural(counts[i!]!, "student")}; ${small} has ${plural(counts[j!]!, "student")}.`,
+      `"How many ${question === 1 ? "more" : "fewer"}" asks for the difference between the two rows.`,
+      `Match the symbols one to one. The unmatched symbols show the difference: ${counts[i!]} − ${counts[j!]} = ${diff}.`,
       question === 1
         ? `${diff} more ${diff === 1 ? "student" : "students"} chose ${big}.`
         : `${diff} fewer ${diff === 1 ? "student" : "students"} chose ${small}.`,
@@ -304,7 +309,7 @@ function scaledPicture(r: Random): Draft {
       ? `${labels[i]}: ${whole} whole symbol${whole === 1 ? "" : "s"} and a half symbol, ${whole} × ${key} + ${key / 2} = ${counts[i]}`
       : `${labels[i]}: ${whole} symbol${whole === 1 ? "" : "s"}, ${whole} × ${key} = ${counts[i]}`;
   };
-  const keyLine = `The key shows that each symbol stands for ${key} students${key % 2 === 0 ? `, so half a symbol stands for ${key / 2}` : ""}.`;
+  const keyLine = `The key tells what one symbol stands for. Here each symbol stands for ${key} students${key % 2 === 0 ? `, so half a symbol stands for ${key / 2}` : ""}.`;
   const question = r(0, 2);
   if (question === 0) {
     const order = pick(r, [0, 1, 2, 3], 4);
@@ -314,7 +319,11 @@ function scaledPicture(r: Random): Draft {
       figure,
       answer: counts[i]!,
       hint: "Read the key first. Multiply the number of whole symbols by the key, then add half the key for a half symbol.",
-      explanation: [keyLine, `${readRow(i)}.`],
+      explanation: [
+        keyLine,
+        `Multiply the symbols by ${key}, not count them as 1 each. ${readRow(i)}.`,
+        `${counts[i]} students chose ${labels[i]}.`,
+      ],
     };
   }
   if (question === 1) {
@@ -331,7 +340,8 @@ function scaledPicture(r: Random): Draft {
         keyLine,
         `${readRow(i!)}.`,
         `${readRow(j!)}.`,
-        `${counts[i!]} − ${counts[j!]} = ${diff}.`,
+        `"How many more" asks for the difference, so subtract: ${counts[i!]} − ${counts[j!]} = ${diff}.`,
+        `${diff} more ${diff === 1 ? "student" : "students"} chose ${labels[i!]} than ${labels[j!]}.`,
       ],
     };
   }
@@ -351,7 +361,9 @@ function scaledPicture(r: Random): Draft {
       `${readRow(a)}.`,
       `${readRow(b)}.`,
       `${readRow(c)}.`,
-      `Together: ${counts[a]} + ${counts[b]} = ${sum}. Compare: ${sum} − ${counts[c]} = ${diff}.`,
+      `"${labels[a]} or ${labels[b]}" means both rows together: ${counts[a]} + ${counts[b]} = ${sum}.`,
+      `"How many more" asks for the difference: ${sum} − ${counts[c]} = ${diff}.`,
+      `${diff} more ${diff === 1 ? "student" : "students"} chose ${labels[a]} or ${labels[b]} than chose ${labels[c]}.`,
     ],
   };
 }
@@ -379,7 +391,8 @@ function scaledBar(r: Random): Draft {
       ? `${labels[i]}’s bar ends on the ${v} line`
       : `${labels[i]}’s bar ends halfway between ${v - half} and ${v + half}, at ${v}`;
   };
-  const scale = `The scale counts by ${step}s${step % 2 === 0 ? `; halfway between two lines is ${half} more` : ""}.`;
+  const scale = `Read each bar against the scale, the numbers up the side. It counts by ${step}s${step % 2 === 0 ? `, so halfway between two lines is ${half} more` : ""}.`;
+  const units = (n: number) => `${n} ${n === 1 ? context.one : context.unit}`;
   const question = r(0, 3);
   if (question === 3) {
     const total = values.reduce((a, b) => a + b, 0);
@@ -391,7 +404,8 @@ function scaledBar(r: Random): Draft {
       explanation: [
         scale,
         ...values.map((_, i) => `${read(i)}.`),
-        `${values.join(" + ")} = ${total}.`,
+        `"In all" means add every bar: ${values.join(" + ")} = ${total}.`,
+        `The total is ${units(total)}.`,
       ],
     };
   }
@@ -412,7 +426,9 @@ function scaledBar(r: Random): Draft {
         `${read(a)}.`,
         `${read(b)}.`,
         `${read(c)}.`,
-        `Together: ${values[a]} + ${values[b]} = ${sum}. Compare: ${sum} − ${values[c]} = ${diff}.`,
+        `"Together" means add those two: ${values[a]} + ${values[b]} = ${sum}.`,
+        `"How many more" asks for the difference: ${sum} − ${values[c]} = ${diff}.`,
+        `The difference is ${units(diff)}.`,
       ],
     };
   }
@@ -429,7 +445,8 @@ function scaledBar(r: Random): Draft {
       scale,
       `${read(i!)}.`,
       `${read(j!)}.`,
-      `${values[i!]} − ${values[j!]} = ${diff}.`,
+      `"How many ${question === 0 ? "more" : "fewer"}" asks for the difference, so subtract the smaller value from the larger: ${values[i!]} − ${values[j!]} = ${diff}.`,
+      `The difference is ${units(diff)}.`,
     ],
   };
 }

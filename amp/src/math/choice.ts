@@ -79,24 +79,25 @@ export function generateChoiceProblem(
       };
       hint = `Cut each of the ${d} pieces of ${n}/${d} into the same number of smaller pieces. The shaded amount stays the same, so the shaded count and the whole count grow by the same factor.`;
       explanation = [
-        `The whole has ${d} equal pieces, and ${n} of them are shaded.`,
-        `Cut each piece into ${k} equal pieces. The whole has ${d} × ${k} = ${d * k} pieces; the shaded part has ${n} × ${k} = ${n * k}.`,
-        `No area was added or removed, so ${n}/${d} = ${n * k}/${d * k}. Both counts scale together.`,
+        `Equivalent fractions name the same amount with different numbers.`,
+        `In ${n}/${d}, the bottom number (denominator) says the whole has ${d} equal pieces; the top number (numerator) says ${n} ${n === 1 ? "is" : "are"} shaded.`,
+        `Cut each piece into ${k} equal pieces. The whole now has ${d} × ${k} = ${d * k} pieces, and the shaded part has ${n} × ${k} = ${n * k}.`,
+        `Cutting adds no area and removes none, so the shaded amount is the same. Top and bottom were both multiplied by ${k}.`,
+        `So ${n * k}/${d * k} names the same amount as ${n}/${d}.`,
       ];
       choices = [
         { label: `${n * k}/${d * k}`, correct: true },
         {
           label: `${n + 1}/${d + 1}`,
-          feedback:
-            "Adding the same number to the two counts changes the piece size without preserving the shaded amount. Equivalence needs the same scale factor.",
+          feedback: `You added 1 to the top and the bottom. Adding changes the amount: ${n + 1}/${d + 1} is not the same as ${n}/${d}. Multiply the top and bottom by the same number instead.`,
         },
         {
           label: `${n * k}/${d}`,
-          feedback: `The denominator stays ${d}, so the pieces stay the same size. Taking ${k} times as many pieces makes the amount ${k} times as large.`,
+          feedback: `You multiplied only the top by ${k}. The bottom stays ${d}, so the pieces stay the same size, and ${k} times as many of them is ${k} times as much. Multiply the bottom by ${k} too.`,
         },
         {
           label: `${n}/${d * k}`,
-          feedback: `There are ${k} times as many pieces in the whole, but the shaded count stays ${n}. That makes the shaded amount smaller.`,
+          feedback: `You multiplied only the bottom by ${k}. The pieces got ${k} times smaller, but the shaded count stayed ${n}, so the amount shrank. Multiply the top by ${k} too.`,
         },
       ];
       break;
@@ -110,13 +111,18 @@ export function generateChoiceProblem(
       prompt = `How many real-number solutions does ${a}x + ${b} = ${c}x + ${d} have?`;
       hint = `Subtract ${a}x and ${b} from both sides of ${a}x + ${b} = ${c}x + ${d}. Is what is left a value for $x$, a false statement, or true for every $x$?`;
       explanation = [
-        `Subtract ${a}x and then ${b} from both sides: 0 = ${c - a}x + ${d - b}.`,
+        `A solution is a value of $x$ that makes both sides equal. Simplify the equation to see how many there are.`,
+        `Subtract $${a}x$ and then ${b} from both sides, which keeps them equal: $0 = ${c - a}x + ${d - b}$.`,
         category === 0
-          ? `The coefficient ${c - a} is not zero. Exactly one $x$ makes ${c - a}x = ${b - d}.`
+          ? `The number multiplying $x$ (its coefficient) is ${c - a}, not zero. So $${c - a}x = ${b - d}$ picks out exactly one value of $x$.`
           : category === 1
-            ? `This says 0 = ${d - b}, which is false for every $x$. There is no solution.`
-            : "This says 0 = 0. It is true for every real number $x$, so there are infinitely many solutions.",
-        "A zero coefficient does not mean $x$ is zero. When all $x$-terms cancel, check whether the remaining statement is true or false.",
+            ? `The $x$-terms canceled, leaving $0 = ${d - b}$. That is false whatever $x$ is.`
+            : "The $x$-terms canceled, leaving $0 = 0$. That is true whatever $x$ is.",
+        category === 0
+          ? "The equation has exactly one solution."
+          : category === 1
+            ? "So no value of $x$ works: the equation has no solution."
+            : "So every real number works: the equation has infinitely many solutions.",
       ];
       choices = [
         "Exactly one solution",
@@ -129,10 +135,14 @@ export function generateChoiceProblem(
               label,
               feedback:
                 index === 0
-                  ? "One solution requires an equation that singles out one value of $x$. Here the $x$-terms cancel."
+                  ? `Both sides have the same $x$-term, $${a}x$, so the $x$-terms cancel and no single value of $x$ is picked out. Check whether what is left is true or false.`
                   : index === 1
-                    ? "No solution means the simplified equality is impossible. Cancellation alone does not prove that."
-                    : "Infinitely many solutions means both expressions agree for every $x$. Check both the $x$-coefficients and the constants.",
+                    ? category === 0
+                      ? `The $x$-terms do not cancel here: $${a}x$ and $${c}x$ differ. Subtracting leaves one equation for $x$, so it has one solution.`
+                      : `The $x$-terms cancel, but what is left, $0 = 0$, is true. A false statement would mean no solution.`
+                    : category === 0
+                      ? `The $x$-terms do not cancel here: $${a}x$ and $${c}x$ differ. Only one value of $x$ makes the sides equal.`
+                      : `The $x$-terms cancel, but the constants ${b} and ${d} differ, leaving the false $0 = ${d - b}$. Both the $x$-terms and the constants must match for every $x$ to work.`,
             },
       );
       break;
@@ -155,9 +165,10 @@ export function generateChoiceProblem(
       };
       hint = `A sits on the $y$-axis at ${b}, so the line crosses the $y$-axis there. From $A$ to $B$, $x$ goes up by 2: how much does $y$ go up?`;
       explanation = [
-        `$A$ is (0, ${b}), so the $y$-intercept is ${b}. The rule must give y = ${b} when x = 0.`,
-        `From $A$ to $B$, $x$ increases by 2 and $y$ increases by ${2 * m}. The slope is ${2 * m}/2 = ${m}.`,
-        `The rule is y = ${m}x + ${b}. Check $B$: ${m} × 2 + ${b} = ${b + 2 * m}.`,
+        `An equation $y = mx + b$ describes a line: $m$ is the slope, its steepness, and $b$ is where it crosses the $y$-axis (the $y$-intercept).`,
+        `$A$ is $(0, ${b})$, on the $y$-axis, so the $y$-intercept is ${b}.`,
+        `From $A$ to $B$, $x$ goes up by 2 and $y$ goes up by ${2 * m}. Slope is rise over run: ${2 * m}/2 = ${m}.`,
+        `So the equation is $y = ${m === 1 ? "" : m}x + ${b}$. Check $B$: $${m} \\times 2 + ${b} = ${b + 2 * m}$.`,
       ];
       choices = [
         { label: `y = ${m}x + ${b}`, correct: true },
