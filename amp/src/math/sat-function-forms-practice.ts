@@ -1060,6 +1060,29 @@ export const satFunctionFormsTemplates: readonly TemplateMetadata[] = defs.map(
   (d) => d.template,
 );
 
+/** A plain opening for each template: the idea its worked steps rest on,
+ * with every term defined at first use (issue #1781). */
+const OPENERS: Record<string, string[]> = {
+  "sat-entry-fn-linear-notation": [
+    "Function notation names a rule: $C(h)$, read \"$C$ of $h$\", is the output of the rule $C$ for the input $h$. Setting it equal to a value asks which input gives that output.",
+  ],
+  "sat-fn-line-equation-choice": [
+    "A line can be written $y=mx+b$. The slope $m$ is the steepness, the change in $y$ for each 1 that $x$ increases. The $y$-intercept $b$ is where the line crosses the $y$-axis, the value of $y$ when $x=0$.",
+  ],
+  "sat-fn-constraint-choice": [
+    "Each quantity contributes its rate times its count, such as price times number sold. The contributions add up to the total.",
+  ],
+  "sat-fn-exponential-choice": [
+    "An exponential model multiplies by the same factor at each step. In $f(x)=a\\cdot b^{n}$, $a$ is the starting amount, $b$ is the factor, and the exponent $n$ counts how many times it has been applied.",
+  ],
+  "sat-entry-fn-exponential": [
+    "Exponential change multiplies by the same factor in each equal period of time. To go back in time, divide by that factor once per period.",
+  ],
+  "sat-entry-fn-related-value": [
+    "You do not need $x$ itself. Look for the expression hidden inside the equation, then find its value directly.",
+  ],
+};
+
 /** Private exact model; only the prompt, hint and response protocol are public. */
 export function satFunctionFormsCase(id: string, seed: string) {
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
@@ -1073,7 +1096,7 @@ export function satFunctionFormsCase(id: string, seed: string) {
     answer: made.answer ? qs(made.answer) : "",
     ...(made.answer ? { fraction: true } : {}),
     hint: made.hint,
-    explanation: made.explanation,
+    explanation: [...(OPENERS[id] ?? []), ...made.explanation],
     ...(made.choices ? { choices: made.choices } : {}),
   });
   if (def.numeric) problem.entryPolicy = "sat-spr";

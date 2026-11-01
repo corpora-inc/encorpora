@@ -166,11 +166,12 @@ function systemSolve(r: R): Case {
       answer,
       hint: `In $${e1}$ and $${e2}$, the $${other}$ coefficients are ${ask === "x" ? `${b1} and ${b2}` : `${a1} and ${a2}`}. Multiply each equation so the $${other}$ terms match, then subtract to leave one equation in $${ask}$.`,
       explanation: [
-        `To eliminate $${other}$, multiply the first equation by ${m1} and the second by ${m2}: $${scaled1}$ and $${scaled2}$.`,
+        `To make the $${other}$ terms match, multiply every term of the first equation by ${m1} and of the second by ${m2}: $${scaled1}$ and $${scaled2}$.`,
         ask === "x"
           ? `Subtract the second from the first: $${det}${ask}=${num}$.`
           : `Subtract the first from the second: $${det}${ask}=${num}$.`,
-        `Divide by ${det}: $${ask}=${tex(answer)}$.`,
+        `The $${other}$ terms cancel, leaving one unknown. Divide both sides by ${det}: $${ask}=${tex(answer)}$.`,
+        `The value of $${ask}$ is $${tex(answer)}$.`,
       ],
       data: { a1, b1, c1, a2, b2, c2, ask },
     };
@@ -221,8 +222,8 @@ function systemExpression(r: R): Case {
           [lam * a + mu * d, "x"],
           [lam * b + mu * e, "y"],
         ])}$${den === 2 ? ", which is twice the expression" : ""}.`,
-        `Do the same to the right sides: $${lam}\\cdot(${c})+(${mu})\\cdot(${f})=${lam * c + mu * f}$.`,
-        `So $${expr}=${tex(answer)}$.`,
+        `Do the same to the right sides, so both sides stay equal: $${lam}\\cdot(${c})+(${mu})\\cdot(${f})=${lam * c + mu * f}$.`,
+        `The value of $${expr}$ is $${tex(answer)}$.`,
       ],
       data: { a, b, c, d, e, f, p, s },
     };
@@ -422,7 +423,7 @@ function rootRelations(r: R, axes: { "equation-form"?: string } = {}): Case {
     const common = sides
       ? `The equation $${poly([a, b + d, c + k])}=${right}$ has two distinct real solutions, $p$ and $q$.`
       : `The equation $${e}=0$ has two distinct real solutions, $p$ and $q$.`;
-    const vieta = `Here $a=${a}$, $b=${b}$ and $c=${c}$. Since $ax^2+bx+c=a(x-p)(x-q)=ax^2-a(p+q)x+a(pq)$, matching coefficients gives $p+q=\\frac{-b}{a}=${tex(q(-b, a))}$ and $pq=\\frac{c}{a}=${tex(q(c, a))}$.`;
+    const vieta = `Here $a=${a}$, $b=${b}$ and $c=${c}$. A quadratic with solutions $p$ and $q$ factors as $a(x-p)(x-q)$, which multiplies out to $ax^2-a(p+q)x+a(pq)$. Matching the numbers in front gives $p+q=\\frac{-b}{a}=${tex(q(-b, a))}$ and $pq=\\frac{c}{a}=${tex(q(c, a))}$.`;
     if (variant === 0)
       return {
         variant: "sum",
@@ -710,8 +711,9 @@ function radicalEquation(r: R): Case {
       hint: `Square both sides to get a quadratic and solve it. Then test each candidate in the original equation: a square root is never negative, so check the sign of $${right}$.`,
       explanation: [
         ...common,
-        `At $x=${bad}$ the right side is ${bad + c}, which is negative, so ${bad} is extraneous.`,
-        `At $x=${good}$ the right side is ${good + c}, which is not negative, and both sides agree. The solution is ${good}.`,
+        `At $x=${bad}$ the right side is ${bad + c}, which is negative. A square root is never negative, so ${bad} is extraneous, a false answer that squaring added.`,
+        `At $x=${good}$ the right side is ${good + c}, which is not negative, and both sides agree.`,
+        `The solution is ${good}.`,
       ],
       data: { kind: "extraneous", a, b, c, ask: "solution" },
     };
@@ -790,7 +792,7 @@ function rationalEquation(r: R): Case {
         hint: `A fraction is 0 only when its numerator is 0 and its denominator is not 0. Factor the numerator, then compare each root with the value that makes $${den}$ equal 0.`,
         explanation: [
           `Factor the numerator: $${num}=${factors}$, so the numerator is 0 at $x=${r1}$ and $x=${r2}$.`,
-          `The denominator $${den}$ is 0 at $x=${s}$, so ${s} is not allowed.`,
+          `A fraction is 0 when its top is 0 and its bottom is not. The denominator $${den}$ is 0 at $x=${s}$, so ${s} is not allowed.`,
           `The only solution is ${r1}.`,
         ],
         data: { kind: "excluded", r1, r2, s },
@@ -802,7 +804,7 @@ function rationalEquation(r: R): Case {
       hint: `A fraction is 0 only when its numerator is 0 and its denominator is not 0. Factor the numerator and check whether either root makes $${den}$ equal 0.`,
       explanation: [
         `Factor the numerator: $${num}=${factors}$, so the numerator is 0 at $x=${r1}$ and $x=${r2}$.`,
-        `The denominator is 0 only at $x=${s}$, which is neither root, so both are solutions.`,
+        `A fraction is 0 when its top is 0 and its bottom is not. The denominator is 0 only at $x=${s}$, which is neither root, so both are solutions.`,
         `Their sum is ${r1 + r2}.`,
       ],
       data: { kind: "two-roots", r1, r2, s },
@@ -941,8 +943,9 @@ function quadraticContext(r: R): Case {
       answer: tMax,
       hint: `The graph of $h$ is a parabola opening downward, so its highest point is at the axis of symmetry $t=\\frac{-b}{2a}$. Use $a=-${a}$ and $b=${b}$.`,
       explanation: [
-        `With $a=-${a}$ and $b=${b}$, the greatest height occurs at $t=\\frac{-${b}}{2(-${a})}$.`,
-        `$t=${tex(tMax)}$ seconds.`,
+        `The vertex of $at^2 + bt + c$ lies on its axis of symmetry, the line $t=\\frac{-b}{2a}$ that splits the parabola into mirror halves.`,
+        `With $a=-${a}$ and $b=${b}$, the greatest height occurs at $t=\\frac{-${b}}{2(-${a})}=${tex(tMax)}$.`,
+        `The ball reaches its greatest height after $${tex(tMax)}$ seconds.`,
       ],
       data: { a, b, c, ask: "time" },
     };
@@ -953,8 +956,8 @@ function quadraticContext(r: R): Case {
       answer: hMax,
       hint: `The greatest height is the value of $h(t)=${h}$ at the axis of symmetry $t=\\frac{-b}{2a}$. Find that time first, then substitute it into $h(t)$.`,
       explanation: [
-        `The axis of symmetry is $t=\\frac{-${b}}{2(-${a})}=${tex(tMax)}$.`,
-        `Substitute: $h(${tex(tMax)})=${tex(hMax)}$.`,
+        `The vertex lies on the axis of symmetry, the line $t=\\frac{-b}{2a}$ that splits the parabola into mirror halves. Here $t=\\frac{-${b}}{2(-${a})}=${tex(tMax)}$.`,
+        `Substitute that time into the model to get the height there: $h(${tex(tMax)})=${tex(hMax)}$.`,
         `The greatest height is $${tex(hMax)}$ meters.`,
       ],
       data: { a, b, c, ask: "height" },
@@ -994,7 +997,7 @@ function rateNumeric(r: R): Case {
           answer,
           hint: `Write each rate as a fraction of the pool per hour: the pipe adds $\\frac1{${a}}$, the drain removes $\\frac1{${b}}$. The net rate is their difference.`,
           explanation: [
-            `Net rate: $\\frac1{${a}}-\\frac1{${b}}=\\frac{${b - a}}{${a * b}}$ of the pool per hour.`,
+            `Filling alone does $\\frac1{${a}}$ of the pool each hour and draining undoes $\\frac1{${b}}$. The net rate, what is gained each hour, is $\\frac1{${a}}-\\frac1{${b}}=\\frac{${b - a}}{${a * b}}$ of the pool.`,
             `Time = 1 pool divided by the rate: $\\frac{${a * b}}{${b - a}}$, which is $${tex(answer)}$ hours in lowest terms.`,
           ],
           data: { kind: "fill-drain", a, b },
@@ -1333,6 +1336,49 @@ export const satNumericEntryTemplates: readonly TemplateMetadata[] = defs.map(
   (d) => d.template,
 );
 
+/** A plain opening for each template: the idea the worked steps rest on,
+ * with every term defined at first use (issue #1781). */
+const OPENERS: Record<string, string[]> = {
+  "sat-entry-system-solve": [
+    "A system of equations is two equations that share the same unknowns. Its solution makes both equations true at once.",
+    "Elimination removes one unknown: make its terms match in both equations, then subtract one equation from the other.",
+  ],
+  "sat-entry-system-expression": [
+    "You can find the expression without solving for $x$ and $y$. Adding, subtracting or multiplying whole equations keeps them true.",
+  ],
+  "sat-entry-quadratic-solution": [
+    "A solution is a value of $x$ that makes the equation true. To solve a quadratic, make one side 0, then factor the other side into brackets.",
+    "A product is 0 only when one of its factors is 0, so each bracket gives one solution.",
+  ],
+  "sat-entry-root-relations": [
+    "The solutions $p$ and $q$ are tied to the coefficients, the numbers in front of each term. So $p + q$ and $pq$ can be found without solving.",
+  ],
+  "sat-entry-absolute-equation": [
+    "The absolute value $|a|$ is the distance of $a$ from 0, so it is never negative. $|a| = k$ means $a = k$ or $a = -k$: two cases.",
+  ],
+  "sat-entry-radical-equation": [
+    "To undo a square root, square both sides. Squaring can add false answers, called extraneous solutions, so check each candidate in the original equation.",
+  ],
+  "sat-entry-rational-equation": [
+    "A rational equation has the unknown in a denominator, the bottom of a fraction. A value that makes a denominator 0 is never allowed, because dividing by 0 is undefined.",
+  ],
+  "sat-entry-polynomial-zeros": [
+    "A zero of $f$ is an input $x$ that makes $f(x) = 0$. In factored form, a product is 0 only when one of its factors is 0.",
+  ],
+  "sat-entry-quadratic-context": [
+    "The height model is a quadratic, so its graph is a parabola: it rises, turns at its highest point, the vertex, and falls.",
+  ],
+  "sat-entry-rate-numeric": [
+    "A rate is an amount per unit, such as pools per hour or liters of acid per liter of mix. Write what each part contributes, then set up one equation.",
+  ],
+  "sat-entry-radian-conversion": [
+    "Degrees and radians are two units for measuring angles. A half turn is 180 degrees, which is $\\pi$ radians.",
+  ],
+  "sat-entry-inequality-integer": [
+    "An inequality compares two sides with <, >, ≤ or ≥. Solve it like an equation, but flip the sign when you multiply or divide by a negative number.",
+  ],
+};
+
 /** Private exact model; the public problem carries only prompt, hint and response protocol. */
 export function satNumericEntryCase(id: string, seed: string) {
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
@@ -1353,7 +1399,7 @@ export function satNumericEntryCase(id: string, seed: string) {
       answer: qs(made.answer),
       fraction: true,
       hint: made.hint,
-      explanation: made.explanation,
+      explanation: [...(OPENERS[id] ?? []), ...made.explanation],
     });
     // Grading metadata only: the public problem and its id are unchanged.
     problem.entryPolicy = "sat-spr";
