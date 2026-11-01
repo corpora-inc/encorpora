@@ -4,8 +4,9 @@ import type { ProblemMethod } from "./problem-lessons";
 const angleWords: Lesson["sections"][number] = {
   title: "Rays, angles and degrees",
   paragraphs: [
-    "A ray starts at a point and goes on forever in one direction. Two rays that start at the same point, the vertex, form an angle. $\\angle AOB$ names the angle whose vertex is $O$ and whose rays pass through $A$ and $B$; the vertex letter is always in the middle. $m\\angle AOB$, or just $\\angle AOB$ in a sentence about size, means its measure in degrees.",
-    "A full turn around a point is 360°. Half a turn, a straight angle, is 180°: its two rays point in opposite directions and form a straight line. A quarter turn, a right angle, is 90° and is marked with a small square.",
+    "A ray starts at a point and goes on forever in one direction. Two rays that start at the same point form an angle, and that point is called the vertex. The symbol $\\angle$ means “angle”. $\\angle AOB$ names the angle whose vertex is $O$ and whose rays pass through $A$ and $B$. The vertex letter is always in the middle.",
+    "An angle's measure is the amount of turn between its rays, counted in degrees, written with a small circle: 90°. $m\\angle AOB$, or just $\\angle AOB$ in a sentence about size, means that measure.",
+    "A full turn around a point is 360°. Half a turn, called a straight angle, is 180°: its two rays point in opposite directions and form a straight line. A quarter turn, called a right angle, is 90° and is marked with a small square.",
   ],
 };
 
@@ -14,11 +15,19 @@ export const angleTriangleLessons: Lesson[] = [
     id: "angle-relationships",
     title: "Angle relationships",
     summary:
-      "Smaller turns that fit together without overlap add to the whole angle.",
+      "An angle is the turn between two rays (straight paths) that start at one point. Angles are measured in degrees: a straight line is a half turn, 180°. Two angles that sit next to each other without overlapping add up to the bigger angle they fill. So if a straight line is split into a 117° angle and another angle, the other is 180° − 117° = 63°. An unknown angle can be found with an equation.",
     templateIds: ["angle-pair-measure", "angle-equation"],
     includeGeneratedRepresentation: false,
+    senses: {
+      degrees: "degree-angle",
+      vertex: "vertex",
+      side: "side",
+      sides: "side",
+      square: "square-shape",
+    },
+    noLink: ["opposite", "whole", "parts", "part", "rule", "third", "edge"],
     objectives: [
-      "Recognize supplementary, complementary, adjacent and vertical angles.",
+      "Recognize supplementary, complementary, adjacent and vertical angle pairs.",
       "Write and solve an equation for an unknown angle, including angles given as expressions in $x$.",
     ],
     sections: [
@@ -26,30 +35,32 @@ export const angleTriangleLessons: Lesson[] = [
         stage: "intuition",
         title: "Make a larger turn from smaller turns",
         paragraphs: [
-          "Two angles placed side by side can fill a straight turn of 180 degrees. Such a pair is called a linear pair. A ray starts at a point and extends in one direction; two rays make an angle at their shared endpoint. Their measures add when no space is missing or counted twice. A letter such as $x$ can stand for an unknown measure.",
+          "A ray starts at a point and goes on in one direction. Two rays that share their starting point make an angle. Its size, the amount of turn between the rays, is measured in degrees, written °.",
+          "Two angles placed next to each other can fill a straight line, a half turn of 180°. Such a pair is called a linear pair. Their measures add, because no space is missing and none is counted twice: 117° + 63° = 180°. A letter such as $x$ can stand for an unknown number of degrees.",
         ],
       },
       angleWords,
       {
         title: "Parts add to the whole",
         paragraphs: [
-          "Adjacent angles share a vertex and a ray and do not overlap. When adjacent angles fill a larger angle exactly, their measures add to its measure, just as lengths placed end to end add.",
-          "Two angles that add to 180° are supplementary; two angles that add to 90° are complementary. Two adjacent angles along a straight line, a linear pair, are supplementary. Angles that fill a full turn add to 360°.",
+          "Adjacent angles share a vertex (corner point) and a ray, and do not overlap. When adjacent angles fill a larger angle exactly, their measures add to its measure, just as lengths placed end to end add.",
+          "Two angles that add to 180° are called supplementary. Two angles that add to 90° are called complementary. Two adjacent angles along a straight line, a linear pair, are supplementary. Angles that fill a full turn add to 360°.",
         ],
         illustration: "angle-pairs",
       },
       {
         title: "Vertical angles are equal",
         paragraphs: [
-          "When two lines cross, they form two pairs of vertical angles: angles opposite each other at the crossing. Number the four angles 1, 2, 3 and 4 in order around the crossing, so $\\angle 1$ and $\\angle 3$ are vertical. Each of them forms a straight line with $\\angle 2$, so $\\angle 1$ + $\\angle 2$ = 180° and $\\angle 3$ + $\\angle 2$ = 180°. Both equal 180° − $\\angle 2$, so $\\angle 1$ = $\\angle 3$. In the same way, $\\angle 2$ = $\\angle 4$.",
+          "When two lines cross, they form two pairs of vertical angles: angles across from each other at the crossing. Number the four angles 1, 2, 3 and 4 in order around the crossing, so $\\angle 1$ and $\\angle 3$ are vertical. Each of them forms a straight line with $\\angle 2$, so $\\angle 1$ + $\\angle 2$ = 180° and $\\angle 3$ + $\\angle 2$ = 180°. Both equal 180° − $\\angle 2$, so $\\angle 1$ = $\\angle 3$. In the same way, $\\angle 2$ = $\\angle 4$.",
           "So two crossing lines make only two different measures: an angle and its supplement. If one angle at the crossing is 70°, the angle opposite it is 70° and each of its neighbors is 180° − 70° = 110°.",
         ],
       },
       {
         title: "From a relationship to an equation",
         paragraphs: [
-          "When angles are given as expressions such as (3x + 12)°, write the relationship as an equation in $x$: parts of a straight angle add to 180, parts of a right angle add to 90, and vertical angles are equal. Solve the equation, then substitute $x$ back into each expression to find the angles and to check that they fit the relationship.",
-          "For vertical angles marked (4x − 6)° and (2x + 30)°, write 4x − 6 = 2x + 30. Subtract 2x from both sides: 2x − 6 = 30. Add 6: 2x = 36, so x = 18. Each angle measures 4(18) − 6 = 66°, and 2(18) + 30 = 66° checks.",
+          "An angle can be given as an expression such as $(3x + 12)$°, which means 3 times $x$, plus 12, degrees. Then write the relationship as an equation in $x$. Parts of a straight angle add to 180. Parts of a right angle add to 90. Vertical angles are equal.",
+          "Solve the equation, then substitute: put the value of $x$ back into each expression to find the angles. Check that they fit the relationship.",
+          "For vertical angles marked $(4x - 6)$° and $(2x + 30)$°, the angles are equal, so $4x - 6 = 2x + 30$. Subtract $2x$ from both sides so $x$ is on one side only: $2x - 6 = 30$. Add 6 to both sides: $2x = 36$. Divide both sides by 2: $x = 18$. Each angle measures $4 \\times 18 - 6 = 66$°, and $2 \\times 18 + 30 = 66$° checks.",
         ],
       },
     ],
@@ -58,7 +69,7 @@ export const angleTriangleLessons: Lesson[] = [
         stage: "formal",
         title: "Angles in a shared whole",
         paragraphs: [
-          "Adjacent angles whose interiors do not overlap add to the angle formed by their outer rays. Angles on a straight line sum to 180 degrees, angles around a point sum to 360 degrees, and opposite angles formed by two intersecting lines are equal.",
+          "Adjacent angles whose insides do not overlap add to the angle formed by their outer rays. Angles on a straight line add to 180 degrees. Angles around a point add to 360 degrees. Vertical angles, the angles across from each other where two lines cross, are equal.",
         ],
       },
     ],
@@ -66,16 +77,16 @@ export const angleTriangleLessons: Lesson[] = [
       prompt:
         "Points $A$, $O$ and $B$ lie on a straight line, and ray $OC$ is drawn from $O$. $\\angle AOC$ measures (3x + 12)° and $\\angle COB$ measures (2x − 7)°. What is the value of $x$?",
       steps: [
-        "$\\angle AOC$ and $\\angle COB$ are a linear pair, so they add to 180°: (3x + 12) + (2x − 7) = 180.",
-        "Combine like terms: 5x + 5 = 180.",
-        "Subtract 5 from both sides: 5x = 175. Divide by 5: x = 35.",
-        "Check: 3(35) + 12 = 117 and 2(35) − 7 = 63; 117 + 63 = 180.",
+        "$A$, $O$ and $B$ are on a straight line, so $\\angle AOC$ and $\\angle COB$ together fill a straight angle. They add to 180°: $(3x + 12) + (2x - 7) = 180$.",
+        "Combine like terms, the $x$ parts and the plain numbers: $3x + 2x = 5x$ and $12 - 7 = 5$. So $5x + 5 = 180$.",
+        "Subtract 5 from both sides to leave the $x$ part alone: $5x = 175$. Divide both sides by 5: $x = 35$.",
+        "Check by substituting: $3 \\times 35 + 12 = 117$ and $2 \\times 35 - 7 = 63$. Then 117 + 63 = 180, a straight angle.",
       ],
       answer: "35",
     },
     pitfalls: [
       "$x$ is not an angle: after solving, substitute it to find a measure if the question asks for one.",
-      "Vertical angles are equal; angles side by side along a line add to 180°. Check which pair you have before writing the equation.",
+      "Vertical angles are equal. Angles next to each other along a line add to 180°. Check which pair you have before writing the equation.",
       "Read the middle letter of $\\angle AOC$ as the vertex.",
     ],
     parentGuide:
@@ -85,15 +96,24 @@ export const angleTriangleLessons: Lesson[] = [
     id: "triangle-angle-theorems",
     title: "Triangle angles and parallel lines",
     summary:
-      "A triangle's three inside angles fit together to make a straight angle.",
+      "A triangle is a flat shape with three straight sides and three corners. The angle at each corner, inside the triangle, is called an interior angle. Tear off the three corners of a paper triangle and set them side by side: they always fill a straight line, 180°. So if two angles are 48° and 67°, the third is 180° − 48° − 67° = 65°. Parallel lines (lines that never meet) explain why.",
     templateIds: [
       "triangle-angle-sum",
       "triangle-exterior-angle",
       "parallel-lines-angle",
     ],
     includeGeneratedRepresentation: false,
+    senses: {
+      degrees: "degree-angle",
+      vertex: "vertex",
+      side: "side",
+      sides: "side",
+      square: "square-shape",
+    },
+    noLink: ["opposite", "whole", "parts", "part", "rule", "third", "edge"],
+
     objectives: [
-      "Use equal and supplementary angle pairs formed by parallel lines and a transversal.",
+      "Use the equal angle pairs, and the pairs that add to 180°, formed where a line crosses two parallel lines.",
       "Explain why the angles of a triangle add to 180° and find unknown angles.",
       "Use the exterior angle of a triangle to find unknown angles.",
     ],
@@ -102,15 +122,17 @@ export const angleTriangleLessons: Lesson[] = [
         stage: "intuition",
         title: "The three corners fit a half turn",
         paragraphs: [
-          "Cut the three corners from a triangle and place them side by side. They fill a straight line, a half turn of 180 degrees. If one side is extended, the angle outside the triangle is an exterior angle; it equals the two triangle angles away from it added together. In $\\angle CBD$, the middle letter $B$ names the corner.",
+          "An angle is the amount of turn between two lines that meet at a corner, measured in degrees (°). Cut the three corners from a paper triangle and place them next to each other. They fill a straight line, a half turn of 180 degrees.",
+          "If one side of the triangle is extended past a corner, the angle outside the triangle is called an exterior angle. It equals the two triangle angles away from it, added together. The symbol $\\angle$ means “angle”, and in $\\angle CBD$ the middle letter $B$ names the corner.",
         ],
       },
       {
         title: "Parallel lines cut by a transversal",
         paragraphs: [
-          "Parallel lines lie in the same flat plane and never meet; arrowheads on two lines mark them parallel. A transversal is a line that crosses both. It makes four angles at each crossing.",
+          "Parallel lines lie in the same flat surface and never meet, like the two rails of a straight track. Arrowheads on two lines mark them parallel. A transversal is a line that crosses both. It makes four angles at each crossing.",
           "Because the lines are parallel, the transversal crosses both at the same tilt. Sliding one crossing along the transversal lands it exactly on the other, so the four angles at one crossing match the four at the other. Angles in matching positions are corresponding angles, and they are equal.",
-          "Two more equal pairs follow. Alternate interior angles lie between the parallel lines on opposite sides of the transversal; alternate exterior angles lie outside the lines on opposite sides. Same-side interior angles lie between the lines on the same side of the transversal and add to 180°. At every crossing there are only two measures: an angle and its supplement.",
+          "Two more equal pairs follow. Alternate interior angles lie between the parallel lines, on different sides of the transversal. Alternate exterior angles lie outside the lines, on different sides. Same-side interior angles lie between the lines on the same side of the transversal, and they add to 180°.",
+          "At every crossing there are only two measures: an angle and its supplement, the angle that adds with it to 180°.",
         ],
         illustration: "parallel-angle-pairs",
       },
@@ -136,7 +158,7 @@ export const angleTriangleLessons: Lesson[] = [
         stage: "formal",
         title: "Triangle and exterior angles",
         paragraphs: [
-          "The three interior angles of a Euclidean triangle sum to 180 degrees. An exterior angle formed by extending one side equals the sum of the two remote interior angles. With parallel lines, corresponding and alternate interior angles formed by a transversal are equal.",
+          "The three interior angles of a triangle drawn on a flat surface add to 180 degrees. An exterior angle formed by extending one side equals the sum of the two remote interior angles, the two inside angles not next to it. When a transversal crosses parallel lines, corresponding angles are equal and alternate interior angles are equal.",
         ],
       },
     ],
@@ -144,9 +166,9 @@ export const angleTriangleLessons: Lesson[] = [
       prompt:
         "In triangle $ABC$, side $AB$ is extended past $B$ to point $D$. $\\angle A$ measures 48° and $\\angle CBD$ measures 113°. What is the measure of $\\angle C$, in degrees?",
       steps: [
-        "$\\angle CBD$ is an exterior angle; $\\angle A$ and $\\angle C$ are its remote interior angles, so $\\angle CBD = \\angle A + \\angle C$.",
-        "$113° = 48° + \\angle C$.",
-        "$\\angle C = 113° - 48° = 65°$.",
+        "Side $AB$ is extended past $B$, so $\\angle CBD$ is an exterior angle at $B$. The two inside angles not at $B$, $\\angle A$ and $\\angle C$, are its remote interior angles. An exterior angle equals their sum: $\\angle CBD = \\angle A + \\angle C$.",
+        "Put in the known measures: $113° = 48° + \\angle C$.",
+        "Subtract 48° from both sides to find $\\angle C$: $\\angle C = 113° - 48° = 65°$.",
         "Check with the angle sum: $\\angle B = 180° - 113° = 67°$, and $48° + 67° + 65° = 180°$.",
       ],
       answer: "65",
@@ -154,7 +176,7 @@ export const angleTriangleLessons: Lesson[] = [
     },
     pitfalls: [
       "Corresponding and alternate angles are equal only when the lines are parallel.",
-      "An exterior angle equals the two remote angles, not the angle beside it; it and the angle beside it add to 180°.",
+      "An exterior angle equals the two remote angles added, not the inside angle next to it. It and that next-door angle add to 180°.",
       "Add all three angles of the triangle to 180°, including any right angle.",
     ],
     parentGuide:
@@ -164,15 +186,23 @@ export const angleTriangleLessons: Lesson[] = [
     id: "triangle-construction",
     title: "Which triangles exist",
     summary:
-      "Three side lengths form a triangle only if the two shorter together exceed the longest.",
+      "A triangle is a flat shape with three straight sides. Not every three lengths can make one. Try sticks 3, 4 and 8 cm long: the two short ones together reach only 7 cm, so their ends cannot meet over the 8 cm stick. Three lengths make a triangle only when the two shorter ones add to more than the longest. This rule is called the triangle inequality.",
     templateIds: [
       "triangle-side-test",
       "triangle-third-side",
       "triangle-conditions",
     ],
     includeGeneratedRepresentation: false,
+    senses: {
+      degrees: "degree-angle",
+      vertex: "vertex",
+      side: "side",
+      sides: "side",
+      square: "square-shape",
+    },
+    noLink: ["opposite", "whole", "parts", "part", "rule", "third", "edge"],
     objectives: [
-      "Decide whether three lengths form a triangle using the triangle inequality.",
+      "Decide whether three lengths can form a triangle, by comparing the two shorter ones with the longest.",
       "Find the possible whole-number lengths of a third side.",
       "Decide whether given conditions determine exactly one triangle, more than one, or none.",
     ],
@@ -181,7 +211,7 @@ export const angleTriangleLessons: Lesson[] = [
         stage: "intuition",
         title: "The ends must meet",
         paragraphs: [
-          "Imagine laying down the longest stick as a base. The other two sticks reach from its ends. If together they cannot reach farther than the base's length, their tips cannot meet above it to close a triangle.",
+          "A triangle has three straight sides joined end to end. Imagine laying down the longest of three sticks as a base. The other two sticks reach up from its two ends. If together they cannot reach farther than the base's length, their tips cannot meet above it to close a triangle.",
         ],
       },
       {
@@ -195,14 +225,14 @@ export const angleTriangleLessons: Lesson[] = [
       {
         title: "Possible third sides",
         paragraphs: [
-          "When two sides $a$ and $b$ are known, the third side $s$ must be shorter than their sum, s < a + b, and longer than their difference, s > a − b for a larger than $b$. For sides 5 cm and 9 cm: 4 < s < 14, so the whole-number lengths 5 through 13 work.",
-          "The difference bound comes from the same rule applied to the longer given side: 9 < 5 + s, so s > 4. Both bounds are strict, because a third side of exactly 4 cm or 14 cm would make the three sides lie flat. Counting the whole numbers from 5 through 13 gives 13 − 5 + 1 = 9 possible lengths.",
+          "The sign $<$ means “is less than” and $>$ means “is greater than”. When two sides $a$ and $b$ are known, with $a$ the larger, the third side $s$ must be shorter than their sum: $s < a + b$. It must also be longer than their difference: $s > a - b$. For sides 5 cm and 9 cm, $4 < s < 14$, so the whole-number lengths 5 through 13 work.",
+          "The difference rule comes from the same test, with the longer given side as the longest: $9 < 5 + s$, so $s > 4$. Both bounds are strict, because a third side of exactly 4 cm or 14 cm would make the three sides lie flat. Counting the whole numbers from 5 through 13 gives 13 − 5 + 1 = 9 possible lengths.",
         ],
       },
       {
         title: "When conditions determine a triangle",
         paragraphs: [
-          "Two triangles count as the same when they have the same size and shape, so one can be moved on top of the other. Conditions determine a unique triangle when every triangle meeting them is the same.",
+          "Two triangles count as the same when they have the same size and shape, so one can be moved on top of the other. Such triangles are called congruent. Conditions fix exactly one triangle when every triangle that meets them is congruent to every other.",
           "Three sides that pass the triangle inequality determine exactly one triangle. Two sides and the angle between them determine exactly one, and so do two angles and the side between them, when the angles add to less than 180°. Three angles that add to 180° fix only the shape: an enlarged copy has the same angles, so infinitely many triangles fit. Two angles that add to 180° or more, three angles whose sum is not 180°, or three sides that fail the triangle inequality give no triangle.",
         ],
       },
@@ -212,7 +242,7 @@ export const angleTriangleLessons: Lesson[] = [
         stage: "formal",
         title: "When three lengths close",
         paragraphs: [
-          "Three positive lengths form a nondegenerate triangle exactly when the sum of any two exceeds the third; checking the two shorter against the longest is sufficient. Fixed three side lengths determine one triangle up to rigid motion, while less restrictive data may allow many or none.",
+          "Three positive lengths form a triangle that is not flat exactly when the sum of any two is greater than the third. Checking the two shorter against the longest is enough. Three fixed side lengths give exactly one triangle, apart from moving, turning or flipping it. Fewer conditions may allow many triangles, or none.",
         ],
       },
     ],
@@ -220,9 +250,10 @@ export const angleTriangleLessons: Lesson[] = [
       prompt:
         "Two sides of a triangle measure 6 cm and 10 cm. The third side is a whole number of centimeters. How many different lengths are possible for the third side?",
       steps: [
-        "The third side $s$ must be shorter than 6 + 10 = 16.",
-        "It must be longer than 10 − 6 = 4, so that 6 + s is more than 10.",
-        "The whole numbers from 5 through 15 work: 15 − 5 + 1 = 11 lengths.",
+        "Call the third side $s$. The two given sides must reach farther than $s$, so $s$ must be shorter than 6 + 10 = 16.",
+        "If $s$ and 6 are the two shorter sides, together they must reach past 10. So $s$ must be longer than 10 − 6 = 4.",
+        "The whole numbers longer than 4 and shorter than 16 are 5 through 15. 4 and 16 themselves would make the sides lie flat.",
+        "Count them: 15 − 5 + 1 = 11 lengths. Add 1 because both 5 and 15 are included.",
       ],
       answer: "11",
     },
@@ -238,11 +269,22 @@ export const angleTriangleLessons: Lesson[] = [
     id: "solid-cross-sections",
     title: "Slicing prisms and pyramids",
     summary:
-      "A flat slice through a solid creates a cross-section whose shape depends on the cut.",
+      "A solid is a shape that takes up space, like a box or a pyramid. Slice straight through a block of cheese and look at the cut: that flat shape is called a cross-section. Its shape depends on the cut. A slice of a box parallel to its bottom (running the same way, never meeting it) is a rectangle the same size as the bottom. A slice of a pyramid through its tip is a triangle.",
     templateIds: ["cross-section-shape", "cross-section-area"],
     includeGeneratedRepresentation: false,
+    senses: {
+      edge: "edge",
+      edges: "edge",
+      face: "face-solid",
+      faces: "face-solid",
+      base: "base-shape",
+      side: "side",
+      sides: "side",
+      square: "square-shape",
+    },
+    noLink: ["third", "half"],
     objectives: [
-      "Name the cross-section of a right rectangular prism or pyramid cut by a plane.",
+      "Name the cross-section when a flat cut slices a box-shaped prism or a pyramid.",
       "Find a cross-section's area from the solid's dimensions.",
     ],
     sections: [
@@ -250,7 +292,8 @@ export const angleTriangleLessons: Lesson[] = [
         stage: "intuition",
         title: "See the shape inside a cut",
         paragraphs: [
-          "A rectangular prism is a box with six rectangular faces. Slice it with a flat plane: the new flat face where the cut passed is a cross-section. A plane perpendicular to the base stands straight up from it; a parallel plane runs in the same direction without meeting it.",
+          "A rectangular prism is a box with six rectangular faces, the flat surfaces of the solid. A rectangle is a four-sided shape with four square corners. Slice the box with a flat cut: the new flat face where the cut passed is called a cross-section.",
+          "A plane is a flat surface that goes on without end, like an endless sheet of glass. A plane perpendicular to the base (the face the solid stands on) stands straight up from it, at a right angle. A parallel plane runs the same way as the base without ever meeting it.",
         ],
       },
       {
@@ -263,7 +306,7 @@ export const angleTriangleLessons: Lesson[] = [
       {
         title: "Each face crossed gives one side",
         paragraphs: [
-          "Where the plane crosses a flat face, the cut is a straight segment. So the cross-section is a polygon with one side for every face the plane crosses. A slice parallel to the base of a prism crosses the four side faces: four sides, a copy of the base. A slice standing up from the base of a prism, parallel to one pair of base edges, crosses four faces and copies the faces parallel to it: a rectangle whose sides are a base edge and the height.",
+          "Where the plane crosses a flat face, the cut is a straight segment, a straight piece of line. So the cross-section is a polygon, a flat shape with straight sides, with one side for every face the plane crosses. A slice parallel to the base of a prism crosses the four side faces: four sides, a copy of the base. A slice standing up from the base of a prism, parallel to one pair of base edges, crosses four faces and copies the faces parallel to it: a rectangle whose sides are a base edge and the height.",
           "A vertical slice of a pyramid through the apex crosses the base and two slanted faces: a triangle whose height is the pyramid's height. A vertical slice that misses the apex crosses the base, two slanted faces and the top of a third: a trapezoid. A slice parallel to the base of a pyramid gives a smaller rectangle; halfway up, each side is half the base edge below it. Cutting off one corner of a prism crosses three faces: a triangle.",
         ],
         illustration: "solid-slices",
@@ -274,7 +317,7 @@ export const angleTriangleLessons: Lesson[] = [
         stage: "formal",
         title: "A plane's intersection with a solid",
         paragraphs: [
-          "A cross-section is the flat region where a plane cuts a solid. Its boundary comes from the solid's faces that the plane crosses. For a right prism, a slice parallel to a base has the same shape and size as that base when it lies inside the prism.",
+          "A cross-section is the flat region where a plane cuts a solid. Its outline comes from the faces of the solid that the plane crosses. For a right prism, a slice parallel to a base, inside the prism, has the same shape and size as that base.",
         ],
       },
     ],
@@ -282,9 +325,9 @@ export const angleTriangleLessons: Lesson[] = [
       prompt:
         "A right rectangular prism is 9 cm long, 4 cm wide and 6 cm tall. A plane slices it perpendicular to its base and parallel to the 9 cm edges of the base. What is the area of the cross-section, in square centimeters?",
       steps: [
-        "The plane stands straight up from the base, parallel to the 9 cm edges, so it is parallel to the 9 cm by 6 cm faces.",
-        "The cross-section copies those faces: a 9 cm by 6 cm rectangle.",
-        "Area = 9 × 6 = 54 square centimeters.",
+        "The plane stands straight up from the base and runs along the 9 cm edges. So it runs the same way as the two side faces that are 9 cm long and 6 cm tall.",
+        "A cut parallel to a face makes a copy of that face. So the cross-section is a rectangle 9 cm long and 6 cm tall.",
+        "The area of a rectangle is length times width: 9 × 6 = 54 square centimeters.",
       ],
       answer: "54",
       answerUnit: "square centimeters",
@@ -292,7 +335,7 @@ export const angleTriangleLessons: Lesson[] = [
     pitfalls: [
       "A slice parallel to a face has that face's dimensions, not the base's.",
       "A vertical slice of a pyramid is a triangle only if it passes through the apex.",
-      "Name the most specific shape: a square only when all four sides are equal.",
+      "Name the most exact shape: call it a square only when all four sides are equal.",
     ],
     parentGuide:
       "Slice a block of cheese or clay parallel to a face, then at a slant through a corner, and name the cut faces before you look.",
@@ -301,21 +344,27 @@ export const angleTriangleLessons: Lesson[] = [
 
 export const angleTriangleMethods: Record<string, ProblemMethod> = {
   "angle-pair-measure": {
-    goal: "Find an unknown angle from the whole it shares with a known angle, or from a vertical pair.",
+    goal: "Find an unknown angle from the bigger angle it fills with a known angle, or from a vertical pair.",
     terms: ["supplementary", "complementary-angles", "vertical-angles"],
+    senses: { degrees: "degree-angle", vertex: "vertex" },
+    noLink: ["opposite", "whole"],
+    intuition:
+      "An angle is the turn between two rays that start at one point, measured in degrees (°). Angles next to each other add up to the angle they fill: a straight line is 180°, a right angle (square corner) is 90°, and a full turn is 360°. Where two lines cross, the angles across from each other, called vertical angles, are equal.",
     method: [
-      "Name the whole the angles fill: a line (180°), a right angle (90°) or a full turn (360°).",
+      "Name what the angles fill together: a straight line (180°), a right angle (90°) or a full turn (360°).",
       "Subtract the known angles from the whole.",
       "For vertical angles, copy the measure.",
     ],
     watch:
-      "Opposite angles at a crossing are equal; angles side by side on a line add to 180°.",
+      "Angles across from each other at a crossing are equal. Angles next to each other on a line add to 180°.",
   },
   "angle-equation": {
     goal: "Write an equation from an angle relationship, solve for $x$, and find an angle if asked.",
     intuition:
-      "A ray starts at a point and extends in one direction. Two rays make an angle at their shared endpoint. Side-by-side angles on a straight line add to 180 degrees. A letter such as $x$ stands for an unknown number of degrees.",
+      "A ray starts at a point and goes on in one direction. Two rays make an angle at their shared starting point, measured in degrees. Angles next to each other on a straight line add to 180 degrees. Where two lines cross, the angles across from each other are equal. A letter such as $x$ stands for an unknown number, and $(3x + 12)$° means 3 times $x$, plus 12, degrees.",
     terms: ["adjacent-angles", "linear-pair"],
+    senses: { degrees: "degree-angle" },
+    noLink: ["opposite", "whole"],
     method: [
       "Choose the relationship: parts add to the whole, or vertical angles are equal.",
       "Write the equation with the expressions and solve for $x$.",
@@ -325,8 +374,11 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       "Answer what is asked: $x$, or the angle's measure after substituting $x$.",
   },
   "triangle-angle-sum": {
-    goal: "Find an unknown angle of a triangle, or the value of $x$, from the 180° angle sum.",
+    goal: "Find an unknown angle of a triangle, or the value of $x$, using the fact that a triangle's three angles add to 180°.",
     terms: ["interior-angle"],
+    senses: { degrees: "degree-angle" },
+    intuition:
+      "A triangle has three straight sides and three corners. The angle inside each corner is an interior angle, measured in degrees (°). In every triangle, the three interior angles add to 180°, a straight line's worth of turn.",
     method: [
       "Write $\\angle A + \\angle B + \\angle C = 180°$ with the given measures or expressions.",
       "Solve for the unknown.",
@@ -335,7 +387,10 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
     watch: "Include every angle, including a right angle, in the sum.",
   },
   "triangle-exterior-angle": {
-    goal: "Use an exterior angle and the two remote interior angles to find an unknown.",
+    goal: "Use a triangle's exterior angle, the angle outside one corner, and the two inside angles away from it to find an unknown.",
+    senses: { degrees: "degree-angle", side: "side" },
+    intuition:
+      "Extend one side of a triangle past a corner. The angle between the extension and the next side is an exterior angle. The two inside angles at the other corners are its remote interior angles. The exterior angle equals those two added together.",
     terms: [
       "exterior-angle",
       [
@@ -352,9 +407,11 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       "The interior angle next to the exterior angle is its supplement, not one of the addends.",
   },
   "parallel-lines-angle": {
-    goal: "Find an angle where a transversal crosses two parallel lines.",
+    goal: "Find an angle where a transversal, a line crossing two parallel lines, meets them.",
     intuition:
-      "Parallel lines run in the same direction without meeting. A line crossing both makes two sets of angles. Angles in matching positions are equal. Angles on opposite sides of the crossing line are also equal when both are between the parallel lines or both are outside them; inside angles on the same side add to 180 degrees.",
+      "Parallel lines run the same way and never meet. A line crossing both, called a transversal, makes four angles at each crossing. Angles in matching positions are equal. Two angles on different sides of the transversal are equal when both are between the parallel lines, or both outside them. Inside angles on the same side add to 180 degrees.",
+    senses: { degrees: "degree-angle" },
+    noLink: ["opposite"],
     terms: ["transversal", "corresponding-angles", "alternate-interior-angles"],
     method: [
       "Slide one crossing along the transversal onto the other: matching positions have equal angles.",
@@ -365,8 +422,11 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       "Same-side interior angles add to 180°; they are not equal unless both are 90°.",
   },
   "triangle-side-test": {
-    goal: "Choose the three lengths that can form a triangle.",
+    goal: "Choose the set of three lengths that can form a triangle.",
     terms: ["triangle-inequality"],
+    senses: { side: "side" },
+    intuition:
+      "A triangle has three straight sides joined end to end. Lay the longest side flat. The other two must reach from its ends and meet above it. They can only meet if together they are longer than the longest side.",
     method: [
       "In each set, find the longest length.",
       "Add the other two and compare with the longest.",
@@ -376,21 +436,28 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       "A sum equal to the longest side gives a flat segment, not a triangle.",
   },
   "triangle-third-side": {
-    goal: "Find the greatest, least or number of whole-number lengths for a third side.",
+    goal: "Two sides of a triangle are given. Find the greatest, least or number of whole-number lengths for the third side.",
     terms: ["triangle-inequality"],
+    senses: { side: "side", sides: "side", difference: "difference-subtract" },
+    noLink: ["third"],
+    intuition:
+      "In any triangle, two sides together must be longer than the third side, or their ends cannot meet. So with sides 6 and 10, the third side must be less than 6 + 10 = 16 and more than 10 − 6 = 4.",
     method: [
       "The third side is less than the sum of the given sides.",
-      "It is greater than their difference.",
-      "Take the whole numbers strictly between those bounds.",
+      "It is greater than their difference, the larger minus the smaller.",
+      "Take the whole numbers strictly between those two limits, not the limits themselves.",
     ],
     watch:
       "Both bounds are strict: the sum and the difference themselves do not work.",
   },
   "triangle-conditions": {
-    goal: "Decide whether the conditions determine exactly one triangle, more than one, or none.",
+    goal: "Decide whether the given sides and angles fit exactly one triangle, more than one, or none.",
     terms: ["congruent"],
+    senses: { side: "side", sides: "side", degrees: "degree-angle" },
+    intuition:
+      "Triangles with the same size and shape, called congruent, count as one. Some measures fix exactly one triangle, some fit many, and some fit none. A triangle's three angles always add to 180°, and its two shorter sides must add to more than the longest.",
     method: [
-      "Rule out impossible conditions: angles that cannot add to 180°, or sides failing the triangle inequality.",
+      "Rule out impossible conditions: angles that cannot add to 180°, or two shorter sides that do not add to more than the longest.",
       "Three sides, two sides with the angle between them, or two angles with a side fix one triangle.",
       "Angles alone fix only the shape, so many sizes work.",
     ],
@@ -399,12 +466,19 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
   "cross-section-shape": {
     goal: "Name the shape where a plane slices a prism or pyramid.",
     intuition:
-      "A cross-section is the flat shape left where a plane cuts a solid. A prism has two matching ends; a pyramid has one base and sides meeting at its tip, called the apex. Trace which faces the cut crosses to see the new shape.",
+      "A solid is a shape that takes up space. A plane is a flat cut that goes on without end. A cross-section is the flat shape left where a plane cuts a solid. A prism has two matching ends joined by flat faces, like a box. A pyramid has one base and flat faces meeting at its tip, called the apex. Trace which faces the cut crosses to see the new shape.",
     terms: ["cross-section", "apex"],
+    senses: {
+      face: "face-solid",
+      faces: "face-solid",
+      base: "base-shape",
+      side: "side",
+      sides: "side",
+    },
     method: [
       "List the faces the plane crosses; each gives one straight side.",
       "Compare the sides' directions and lengths.",
-      "Choose the most specific name.",
+      "Choose the most exact name, such as square instead of rectangle when all sides are equal.",
     ],
     watch:
       "A vertical slice of a pyramid that misses the apex is a trapezoid, not a triangle.",
@@ -412,11 +486,17 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
   "cross-section-area": {
     goal: "Find the area of a slice of a prism or pyramid from its dimensions.",
     intuition:
-      "A cross-section is the flat shape where a plane cuts a solid. A rectangular prism is a box; a cut parallel to one of its faces makes a copy of that face. Area measures the space the cut face covers.",
+      "A cross-section is the flat shape where a flat cut, a plane, slices a solid. A rectangular prism is a box. A cut parallel to one of its faces (running the same way, never meeting it) makes a copy of that face. Area measures the flat space the cut face covers.",
     terms: ["cross-section"],
+    senses: {
+      face: "face-solid",
+      faces: "face-solid",
+      base: "base-shape",
+      edge: "edge",
+    },
     method: [
       "Identify the face the slice copies, or its shape and dimensions.",
-      "Use length × width for a rectangle, or ½ × base × height for a triangle.",
+      "Use length × width for a rectangle, or $\\tfrac{1}{2}$ × base × height for a triangle.",
     ],
     watch:
       "A vertical slice copies a side face: base edge × height, not length × width.",
