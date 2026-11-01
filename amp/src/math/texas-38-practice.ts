@@ -1996,7 +1996,7 @@ function reciprocalDivisionChoice(r: Random): Built {
       hint: `A whole number is a fraction over 1, so ${w} is ${w}/1. What is its reciprocal?`,
       explanation: [
         `The reciprocal of a number is the number you multiply it by to get 1; for a fraction, flip the top and bottom.`,
-        `Dividing by a number is the same as multiplying by its reciprocal, because both find how much fits in each of the equal parts.`,
+        `Dividing by a number is the same as multiplying by its reciprocal: dividing by ${w} shares into ${w} equal parts, and so does taking 1/${w} of the amount.`,
         `${w} = ${w}/1, so its reciprocal is 1/${w}.`,
         `So ${frText(a)} ÷ ${w} = ${frText(a)} × 1/${w}.`,
       ],

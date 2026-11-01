@@ -179,7 +179,8 @@ function finish(
     prompt: d.prompt,
     answer: "",
     hint: d.hint,
-    explanation: teach(d),
+    // 9–12 templates keep their own text (another strand owns them).
+    explanation: m.gradeBand === "9–12" ? d.explanation : teach(d),
     choices: [{ label: d.correct, correct: true }, ...wrong.slice(0, 3)],
   });
 }

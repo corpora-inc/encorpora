@@ -185,7 +185,7 @@ export function profitCase(seed: string) {
         `Fixed costs are paid once: ${f1} + ${f2} = ${wd(fixedTotal)}.`,
         `Variable costs are paid for each one made: ${n} × ${unitCost} = ${wd(n * unitCost)}. Total cost: ${fixedTotal} + ${n * unitCost} = ${wd(costOf(n))}.`,
         `Profit is revenue minus total cost: ${revenue} − ${costOf(n)} = ${profit}. ${profit > 0 ? "A positive result is a profit." : profit < 0 ? "A negative result is a loss." : "Zero means the sales exactly pay the costs."}`,
-        `The result is ${ok[0]!.toLowerCase()}${ok.slice(1)}.`,
+        `The result is ${/^(loss|profit)/i.test(ok) ? "a " : ""}${ok[0]!.toLowerCase()}${ok.slice(1)}.`,
       ],
       choices: options(ok, [
         wrong(
@@ -531,11 +531,13 @@ export function bracketCase(seed: string) {
         );
     });
     const total = bracketTaxCents(income, b);
+    const parts = s
+      .map((amount, i) => (amount > 0 ? cd(rates[i]! * amount) : ""))
+      .filter(Boolean);
     lines.push(
-      `Add the tax from every row: ${s
-        .map((amount, i) => (amount > 0 ? cd(rates[i]! * amount) : ""))
-        .filter(Boolean)
-        .join(" + ")} = ${cd(total)}.`,
+      parts.length === 1
+        ? `Only one row has income, so the total tax is ${cd(total)}.`
+        : `Add the tax from every row: ${parts.join(" + ")} = ${cd(total)}.`,
       `The tax owed is ${cd(total)}.`,
     );
     return { lines, total };
