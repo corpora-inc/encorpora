@@ -105,7 +105,7 @@ export const bivariateLessons: Lesson[] = [
         paragraphs: [
           "Each row of a two-way table is one group, such as dog owners. The row total counts everyone in that group. A box inside the table, called a cell, counts the people in the group who gave one answer, such as walking daily.",
           "A percent tells how many out of 100. Divide the cell count by the row total, then multiply by 100. If 12 of 20 dog owners walk daily, $12 \\div 20 = 0.6$ and $0.6 \\times 100 = 60$. So 60% of dog owners walk daily.",
-          "Compare this with the same percent among people without dogs. If the percents differ, the answer is more common in one group. Then we say the two questions are associated in this table.",
+          "Compare this with the same percent among people without dogs. If the percents are far apart, the answer is clearly more common in one group. Then we say the two questions are associated in this table. Percents within a few points of each other show no clear association.",
         ],
       },
       {
@@ -144,7 +144,7 @@ export const bivariateLessons: Lesson[] = [
         paragraphs: [
           "Every row and column of a two-way table adds to its total. So a row or column with only one blank tells you that blank.",
           "A percent within a row compares a count with the row total. It describes that group alone.",
-          "For rows whose totals are not 0, compare the share giving the same answer in each row. Different shares show an association in this table. Equal shares show none.",
+          "For rows whose totals are not 0, compare the share giving the same answer in each row. Shares that are far apart show an association in this table. Shares within a few points of each other show no clear association.",
           "A sample is the part of a larger group that was actually asked. A difference in a sample does not settle that the whole group differs the same way, because samples vary.",
         ],
       },
@@ -168,7 +168,7 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
     method: [
       "Read the dots from left to right, as $x$ increases.",
       "Ask whether $y$ tends to rise, fall, follow a curve, or show no trend.",
-      "If the dots follow a straight line, name its direction: positive or negative.",
+      "If the dots lie near a straight line that rises or falls, name its direction: positive or negative.",
     ],
     watch: "A curved pattern is an association too, but it is not linear.",
   },
@@ -243,11 +243,11 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
       samples: "sample",
     },
     intuition:
-      "A categorical variable is a question whose answers are groups, such as dog owner or not. An association means one answer is more common in one group than in another. Compare the same answer within each group as a percent: divide the count by the group's total and multiply by 100. If 60% of people without dogs and 24% of dog owners walk daily, the two are associated in this table. That does not show what caused it.",
+      "A categorical variable is a question whose answers are groups, such as dog owner or not. An association means one answer is clearly more common in one group than in another. Compare the same answer within each group as a percent: divide the count by the group's total and multiply by 100. If 60% of people without dogs and 24% of dog owners walk daily, the two are associated in this table. That does not show what caused it.",
     terms: ["two-way-table", "percent"],
     method: [
       "Find the “Yes” percent within each row.",
-      "Compare the percents. Different percents show association, and a bigger gap means a stronger one. Equal percents show none.",
+      "Compare the percents. A large gap, such as 20 percentage points or more, shows association. Percents within a few points of each other show no clear association.",
     ],
     watch:
       "Compare percents, not raw counts, when the rows have different totals.",
@@ -265,5 +265,5 @@ export const bivariatePrinciples: Record<string, string> = {
   "two-way-row-percent":
     "A percent within a row compares a count with the row total, so it describes that group alone.",
   "two-way-association-choice":
-    "For rows whose totals are not 0, different shares giving the same answer in each row show an association in the table, and equal shares show none. A claim about a larger group must allow for chance.",
+    "For rows whose totals are not 0, shares giving the same answer that are far apart show an association in the table, and shares within a few points show no clear association. A claim about a larger group must allow for chance.",
 };

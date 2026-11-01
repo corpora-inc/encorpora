@@ -77,7 +77,7 @@ export const inferenceLessons: Lesson[] = [
     ],
     pitfalls: [
       "A large sample chosen in a biased way is still biased. Choosing at random matters more than size.",
-      "An estimate from a sample is not exact. A different random sample would give a different answer.",
+      "An estimate from a sample is not exact. A different random sample could give a different answer.",
       "Multiply the sample's fraction by the population size, not by the sample size.",
     ],
     parentGuide:
@@ -112,7 +112,7 @@ export const inferenceLessons: Lesson[] = [
           "The mean is the total divided by the number of values. Six morning students do 30 push-ups in total, and six afternoon students do 48. Their means are $30 \\div 6 = 5$ and $48 \\div 6 = 8$ push-ups.",
           "A value's distance from the mean is how far it is, above or below. The mean absolute deviation, or MAD, is the average of those distances. Suppose each class has a MAD of 1 push-up.",
           "The means are $8 - 5 = 3$ push-ups apart. Divide by the MAD: $3 \\div 1 = 3$ MADs. This compares the gap between the groups with how far values usually are from their own mean.",
-          "A gap of many MADs means the groups overlap little. The number alone does not say why the groups differ.",
+          "A gap of many MADs usually means the groups overlap less. The number alone does not say why the groups differ.",
         ],
         illustration: "data-double-dot-mads",
       },

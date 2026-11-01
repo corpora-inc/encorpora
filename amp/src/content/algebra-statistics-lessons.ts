@@ -118,9 +118,9 @@ export const algebraStatisticsLessons: Lesson[] = [
       {
         title: "Association: compare within rows",
         paragraphs: [
-          "Two variables are associated when one answer is more common in one group than in another.",
+          "Two variables are associated when one answer is clearly more common in one group than in another.",
           "In another survey, more twelfth graders than ninth graders ride the bus: 21 against 18. But there are 70 twelfth graders and only 30 ninth graders. Counts and joint percents also depend on how big each group is.",
-          "So find each row's percent, as if each row were its own 100%. $18 \\div 30 = 60\\%$ of ninth graders ride the bus, but only $21 \\div 70 = 30\\%$ of twelfth graders. When these conditional percents differ, the variables are associated in this data. The bigger the difference, the stronger the association. Equal percents show no association.",
+          "So find each row's percent, as if each row were its own 100%. $18 \\div 30 = 60\\%$ of ninth graders ride the bus, but only $21 \\div 70 = 30\\%$ of twelfth graders. These conditional percents are far apart, so the variables are associated in this data. A large gap, such as 20 percentage points or more, shows association. Percents within a few points of each other show no clear association.",
         ],
         illustration: "scene-conditional-renormalize",
       },
@@ -178,7 +178,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         stage: "intuition",
         title: "The slope is a rate",
         paragraphs: [
-          "A scatter plot shows one dot per student: $x$ (the amount across) is hours of practice, and $y$ (the amount up) is test score. A fitted line follows the dots. The usual one is the least-squares line. It is the line that makes the dots' vertical gaps from it as small as possible overall.",
+          "A scatter plot shows one dot per student: $x$ (the amount across) is hours of practice, and $y$ (the amount up) is test score. A fitted line follows the dots. The usual one is the least-squares line. It is the line that makes the dots' vertical gaps from it as small as possible: the sum of the squared gaps is smallest.",
           "Software writes the line as $\\hat{y} = mx + b$. The hat on $\\hat{y}$ (read “$y$ hat”) means a predicted value, not a measured one. The number $m$ multiplying $x$ is the slope. The number $b$ added at the end is the $y$-intercept.",
           "For practice and score, the line $\\hat{y} = 4x + 42$ has slope 4. Each extra hour of practice goes with a predicted score 4 points higher. Its units are points per hour: units of $y$ for each unit of $x$.",
           "The slope describes a trend across students. It is not a promise for one student. Real scores scatter above and below the line.",
@@ -220,7 +220,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     pitfalls: [
       "The slope is a rate. The intercept is a single prediction, the one at $x = 0$.",
       "Keep $x$ and $y$ straight: the slope is the change in predicted $y$ for each 1 more of $x$.",
-      "An intercept far outside the data has no meaning in the situation.",
+      "An intercept far outside the data may have no sensible meaning, and its prediction is unreliable.",
     ],
     parentGuide:
       "Look at a phone plan or taxi fare with a fixed fee plus a cost per minute or mile. Name the slope and the intercept, with their units. Use them to predict a bill.",
@@ -263,7 +263,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         paragraphs: [
           "The correlation coefficient $r$ is a number from −1 to 1. Its sign gives the direction of a straight-line trend: positive when the points rise from left to right, negative when they fall.",
           "Its distance from 0 gives the strength. Points close to a rising line have $r$ near 1. A loose cloud has $r$ nearer 0. So $r = -0.9$ shows a stronger trend than $r = 0.7$, because −0.9 is farther from 0.",
-          "Move every point straight up or down, halfway to a rising line, and the cloud tightens. Then $r$ moves closer to 1. For a falling line, it moves closer to −1.",
+          "Move every point straight up or down, halfway to the fitted line, and the cloud tightens around it. Then $r$ moves closer to 1 for a rising line, or closer to −1 for a falling line.",
         ],
         illustration: "scene-correlation-tighten",
       },
@@ -339,7 +339,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         title: "Experiments: assign the treatment at random",
         paragraphs: [
           "In an experiment, the researcher decides who gets the treatment, the thing being tested. Random assignment means deciding by chance, such as a coin flip or a random list.",
-          "Random assignment makes the groups alike overall in everything else: age, effort, health, and even things no one thought to measure.",
+          "Random assignment tends to make the groups alike in everything else: age, effort, health, and even things no one thought to measure.",
           "Then a difference in results can support a claim that the treatment caused it. First consider whether chance alone could explain it, and whether the groups were treated alike apart from the treatment.",
           "Compare percents when the groups differ in size. For example, 90% of the app group passed, against 20% of the others.",
           "Without random assignment, people who chose the treatment may differ in other ways. Then the same difference shows only an association.",
@@ -398,7 +398,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
       "Compare the two changes.",
     ],
     watch:
-      "The mean moves with every value. The median moves only when the middle of the order moves.",
+      "The mean depends on the size of every value. The median moves only when the middle of the order moves.",
   },
   "skewed-box-compare": {
     goal: "Compare two box plots by shape, center and spread.",
@@ -456,12 +456,12 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["mean"],
     intuition:
-      "A conditional percent is a count divided by the total of one row or one column of a two-way table: the group named after “of”. Two questions are associated when the same answer is more common in one group than in another. So compare the percent giving that answer within each group.",
+      "A conditional percent is a count divided by the total of one row or one column of a two-way table: the group named after “of”. Two questions are associated when the same answer is clearly more common in one group than in another. So compare the percent giving that answer within each group.",
     terms: ["conditional-relative-frequency"],
     method: [
       "For a percent, find the group named after “of”. Its row or column total is what you divide by.",
       "For association, find the percent within each row who give the same answer.",
-      "Different percents mean association, and a bigger difference means a stronger one. Equal percents mean none.",
+      "A large gap, such as 20 percentage points or more, shows association. Percents within a few points of each other show no clear association.",
     ],
     watch:
       "Counts and joint percents depend on group size. Compare percents within each row.",
@@ -555,7 +555,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     method: [
       "Ask how the data were collected: just observed, or assigned at random?",
       "For observed data, look for a lurking variable, or for cause and effect running backward.",
-      "Conclude association, not causation.",
+      "If the data were only observed, conclude association, not causation.",
     ],
     watch: "Not showing a cause is not the same as showing no relationship.",
   },
@@ -568,7 +568,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["balances"],
     intuition:
-      "In an experiment, the researcher decides who gets the treatment, the thing being tested. Random assignment decides it by chance, such as a coin flip. That makes the groups alike overall in everything else, so a difference in results can show a cause. An observational study is one where researchers only record what people already do. There the researchers do not assign the treatment, so a difference shows only association.",
+      "In an experiment, the researcher decides who gets the treatment, the thing being tested. Random assignment decides it by chance, such as a coin flip. That tends to make the groups alike in everything else, so a difference in results can be evidence of a cause. An observational study is one where researchers only record what people already do. There the researchers do not assign the treatment, so a difference shows only association.",
     terms: ["experiment", "observational-study"],
     method: [
       "Find who decided which people got the treatment: the researcher at random, or the people themselves.",
@@ -576,7 +576,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
       "Compare results as percents of each group.",
     ],
     watch:
-      "People who chose the treatment themselves, or a before-and-after test with no comparison group, cannot show a cause.",
+      "People who chose the treatment themselves, or a before-and-after test with no comparison group, do not by themselves show a cause.",
   },
 };
 

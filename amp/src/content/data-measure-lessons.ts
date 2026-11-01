@@ -1,3 +1,4 @@
+import type { Lesson } from "./lessons";
 import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
@@ -51,7 +52,7 @@ export const dataMeasurePrinciples: Record<string, string> = {
     "For $n$ numbers, the mean is their sum divided by $n$. The median is the middle number once they are ordered (for odd $n$). The mode is the value that appears most often. The range is the greatest value minus the least value. The first three describe a typical value, and the range describes spread.",
 };
 
-export const dataMeasureLessons = [
+export const dataMeasureLessons: Lesson[] = [
   {
     ...chainLesson({
       id: "mode-of-data-lesson",

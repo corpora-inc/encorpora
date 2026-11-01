@@ -36,7 +36,7 @@ export const distributionLessons: Lesson[] = [
         title: "Counts and facts are single answers",
         paragraphs: [
           "“How many sunflowers are in our garden?” involves many sunflowers. But you collect only one number, the count for the whole garden. So it is not a statistical question.",
-          "Test a question by imagining you collect the answer. If you would write down many answers that can differ, the question is statistical. If you would write down one answer, it is not.",
+          "Test a question by imagining you collect the answer. If you would write down many answers that can differ, the question is statistical. If answering needs only one measurement or fact, it is not.",
         ],
       },
     ],
@@ -143,7 +143,7 @@ export const distributionLessons: Lesson[] = [
     id: "distribution-plots",
     title: "Histograms and box plots",
     summary:
-      "Data are numbers or facts someone collected, such as test scores. A histogram is a bar graph for number data. Each bar covers a stretch of numbers, called an interval. How tall the bar is shows how many values fall in that stretch. A box plot draws five numbers: the least value, the greatest value, the median (middle value) and the middle of each half, called the quartiles. These five numbers split the data into four parts of about equal size.",
+      "Data are numbers or facts someone collected, such as test scores. A histogram is a bar graph for number data. Each bar covers a stretch of numbers, called an interval. How tall the bar is shows how many values fall in that stretch. A box plot draws five numbers: the least value, the greatest value, the median (middle value) and the middle of each half, called the quartiles. These five numbers split the data into four parts, each holding about a quarter of the values.",
     templateIds: ["histogram-read", "box-plot-read"],
     senses: {
       interval: "interval",
@@ -182,7 +182,7 @@ export const distributionLessons: Lesson[] = [
         title: "Box plots mark quarters",
         paragraphs: [
           "The lines out from the box are called whiskers. They end at the minimum (50) and the maximum (95). The box runs from the lower quartile (65) to the upper quartile (85). The line inside the box is the median (75).",
-          "These five numbers split the ordered data into four parts. Each part holds about a quarter of the data, which is 25%. So roughly 25% of the scores are at or above 85, and the box holds roughly the middle 50%.",
+          "These five numbers split the ordered data into four parts. Each part holds about a quarter of the data, which is 25%. So, when few scores repeat, roughly 25% of the scores are at or above 85, and the box holds roughly the middle 50%.",
         ],
         illustration: "data-box-plot-scores",
       },
@@ -283,7 +283,7 @@ export const distributionLessons: Lesson[] = [
       answer: "2",
     },
     pitfalls: [
-      "Use distances, which are never negative. The differences value minus mean, with their signs, always add to 0, so they cannot measure spread.",
+      "Use distances, which are never negative. If you keep the minus signs, the differences from the mean always add to 0, so their total cannot measure spread.",
       "One far value usually moves the mean and the range much more than the median and the IQR.",
     ],
     parentGuide:
@@ -371,7 +371,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     method: [
       "Read the five numbers: the whisker ends, the box ends and the median line.",
       "The range is the maximum minus the minimum. The interquartile range is the upper quartile minus the lower quartile.",
-      "For a share of the data, count parts: each of the four parts holds about 25%.",
+      "For a share of the data, count parts: each of the four parts holds about 25% of the values, unless many values repeat at the marks.",
     ],
     watch: "A long part of the plot means spread-out values, not more values.",
   },
@@ -436,5 +436,5 @@ export const distributionPrinciples: Record<string, string> = {
   "dot-plot-iqr":
     "The interquartile range Q3 − Q1 is the width of the middle half of the ordered data.",
   "typical-value-choice":
-    "A far-off value pulls the mean toward it but barely moves the median. So the median better describes the typical values then.",
+    "A far-off value pulls the mean toward it but usually moves the median much less. So the median better describes the typical values then.",
 };

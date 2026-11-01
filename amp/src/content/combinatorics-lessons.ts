@@ -73,7 +73,7 @@ export const combinatoricsLessons: Lesson[] = [
         paragraphs: [
           "A code is a row of positions, each filled with a symbol such as a digit. When symbols may repeat, every position has all the options. A 3-digit code using the digits 0 to 9 has $10 \\times 10 \\times 10 = 1000$ possible codes, from 000 to 999. Each number you multiply, here each 10, is called a factor. Use one factor for each position.",
           "Multiply only when one choice is made at every stage. Sometimes you choose just one item from one combined list, such as one sandwich or one soup from 4 sandwiches and 3 soups. That is a single stage, so add: $4 + 3 = 7$ options.",
-          "If an earlier choice always removes the same number of options from a later stage, multiply the numbers that are actually left. That kind of count is called an arrangement without repetition.",
+          "If an earlier choice always removes the same number of options from a later stage, multiply the numbers that are actually left.",
         ],
       },
     ],
@@ -318,7 +318,7 @@ export const combinatoricsLessons: Lesson[] = [
           "Pair every cube result with every spinner result. A cube has 6 results and a spinner with 5 equal sections has 5. So there are $6 \\times 5 = 30$ equally likely pairs.",
           "In the grid, “even cube result and spinner greater than 3” fills 3 columns of 2 cells: $3 \\times 2 = 6$ pairs. The probability is $\\frac{6}{30}$, which equals $\\frac{3}{6} \\times \\frac{2}{5}$.",
           "That is why, for independent events $A$ and $B$, the probability that both happen is the product of their probabilities. The product is the answer when you multiply.",
-          "Independent is not the same as mutually exclusive. Mutually exclusive events cannot happen together, like an even and an odd result on one roll. Independent events can happen together, as the shaded cells show.",
+          "Independent is not the same as mutually exclusive. Mutually exclusive events cannot happen together, like an even and an odd result on one roll. Independent events with probabilities above 0 can happen together, as the shaded cells show.",
         ],
         illustration: "independent-grid",
       },

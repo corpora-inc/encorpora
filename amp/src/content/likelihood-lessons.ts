@@ -1,3 +1,4 @@
+import type { Lesson } from "./lessons";
 import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
@@ -76,7 +77,7 @@ export const likelihoodPrinciples: Record<string, string> = {
     "When all outcomes are equally likely, a color's chance is its count divided by the total. So two colors are equally likely exactly when their counts are equal, and the color with the greatest count is the most likely.",
 };
 
-export const likelihoodLessons = [
+export const likelihoodLessons: Lesson[] = [
   {
     ...chainLesson({
       id: "likelihood-words-lesson",
@@ -166,7 +167,7 @@ export const likelihoodLessons = [
       methodTitle: "Fraction, then count spaces",
       method: [
         "Write the chance as successes over all outcomes.",
-        "Start at 0 and count one space for each success. Counting the same number of spaces back from 1 lands on the other mark, the chance that the event does not happen.",
+        "Start at 0 and count one space for each success. Counting the same number of spaces back from 1 lands on the mark for the chance that the event does not happen. At $\\frac{1}{2}$ these two marks are the same.",
       ],
       formalTitle: "Probability as a fraction",
       formal: [
@@ -187,7 +188,6 @@ export const likelihoodLessons = [
       impossible: "impossible",
       "more than": "more-than",
     },
-    noLink: ["image"],
   },
 ];
 

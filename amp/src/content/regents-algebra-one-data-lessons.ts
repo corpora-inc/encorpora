@@ -1,3 +1,4 @@
+import type { Lesson } from "./lessons";
 import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
@@ -72,7 +73,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     goal: "Choose the right total to divide by in a two-way table and round the percent.",
     senses: { whole: "whole", part: "part" },
     intuition:
-      "A two-way table counts one group of people two ways at once, such as grade and whether they have a job. A percent is a part out of a whole, so first name the whole. A joint percent is a cell count divided by the table total, as in “percent of everyone”. “Percent of the juniors” uses the juniors' row total. “Of those who have a job” uses that column's total.",
+      "A two-way table counts one group of people two ways at once, such as grade and whether they have a job. A percent is a part out of a whole, so first name the whole. A joint percent is a cell count divided by the table total, times 100, as in “percent of everyone”. “Percent of the juniors” uses the juniors' row total. “Of those who have a job” uses that column's total.",
     terms: ["joint-relative-frequency", "conditional-relative-frequency"],
     method: [
       "Find the count of the people the question asks about.",
@@ -133,7 +134,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     terms: ["correlation", "causation"],
     method: [
       "Decide whether the amounts rise together, or one rises as the other falls.",
-      "Ask whether one could directly produce the other, or whether a third thing drives both.",
+      "Ask whether one could cause the other, or whether a third thing drives both.",
       "Choose the statement that matches both answers.",
     ],
     watch:
@@ -199,7 +200,7 @@ export const regentsAlgebraOneDataPrinciples: Record<string, string> = {
   "abs-equals-linear-unique":
     "$|u| = v$ needs $v \\ge 0$, and then $u = v$ or $u = -v$. For $k|x-a| + b = cx + d$ with $|c| > k > 0$, the two sides' graphs cross exactly once, so there is exactly one solution.",
 };
-export const regentsAlgebraOneDataLessons = [
+export const regentsAlgebraOneDataLessons: Lesson[] = [
   {
     ...chainLesson({
       id: "regents-exponential-models",
@@ -297,12 +298,12 @@ export const regentsAlgebraOneDataLessons = [
       formalTitle: "Joint and conditional percents",
       formal: [
         "A joint relative frequency is a cell count divided by the table total. A conditional relative frequency is a cell count divided by the total of its row or of its column.",
-        "The percents in one row, each divided by that row's total, add to 100% when kept exact. The joint percents in one row add only to that row's share of the table total.",
+        "In one row, the counts divided by that row's total add to 100% when kept exact. The joint percents in one row add only to that row's share of the table total.",
       ],
       pitfalls: [
         "Divide by the total of the group the question names, not always the table total.",
         "Round only after dividing.",
-        "A row total counts the people in both columns.",
+        "A row total counts everyone in that row, across all its answer columns.",
       ],
       parentGuide:
         "Ask the learner to underline the words that name the group, and say which total of the table matches those words.",
@@ -314,7 +315,7 @@ export const regentsAlgebraOneDataLessons = [
       id: "regents-quartile-list",
       title: "Quartiles of a listed data set",
       summary:
-        "Data are numbers or facts someone collected, such as test scores. Quartiles are the values that split ordered data into four parts of about equal size. Put the values in order. The median, the middle value, splits them into a lower half and an upper half. The lower quartile is the median of the lower half, and the upper quartile is the median of the upper half.",
+        "Data are numbers or facts someone collected, such as test scores. Quartiles are the values that split ordered data into four parts, each holding about a quarter of the values. Put the values in order. The median, the middle value, splits them into a lower half and an upper half. The lower quartile is the median of the lower half, and the upper quartile is the median of the upper half.",
       templateIds: ["quartile-list"],
       objectives: [
         "Order a data set that has repeated values.",
@@ -324,14 +325,14 @@ export const regentsAlgebraOneDataLessons = [
       opening: [
         "Order the data from least to greatest. The median is the middle value. With an even number of values, it is halfway between the two middle values. It splits the data into two equal halves.",
         "The lower quartile, written $Q_1$, is the middle of the lower half. The upper quartile, written $Q_3$, is the middle of the upper half.",
-        "About a quarter of the data lies below the lower quartile, and about a quarter lies above the upper quartile.",
+        "When few values repeat, about a quarter of the data lies below the lower quartile, and about a quarter lies above the upper quartile.",
       ],
       example: {
         prompt:
           "Find the upper quartile of $9, 4, 12, 4, 15, 7, 12, 20, 6, 10$.",
         steps: [
-          "Order the values, keeping both 4s and both 12s: $4, 4, 6, 7, 9, 10, 12, 12, 15, 20$.",
-          "There are 10 values, so split them into two halves of 5. The lower half is $4, 4, 6, 7, 9$ and the upper half is $10, 12, 12, 15, 20$.",
+          "Order the values, keeping both 4s and both 12s: 4, 4, 6, 7, 9, 10, 12, 12, 15, 20.",
+          "There are 10 values, so split them into two halves of 5. The lower half is 4, 4, 6, 7, 9 and the upper half is 10, 12, 12, 15, 20.",
           "The upper quartile is the median of the upper half. That half has 5 values, so its median is the third one, 12.",
         ],
         answer: "$12$",
@@ -427,7 +428,7 @@ export const regentsAlgebraOneDataLessons = [
       openingTitle: "Two separate questions",
       opening: [
         "First question: when one amount gets larger, does the other tend to get larger or smaller? Larger together is a positive correlation. One larger while the other gets smaller is a negative correlation.",
-        "Second question: does one amount directly produce the other? That is called causation.",
+        "Second question: does a change in one amount actually cause a change in the other, directly or through other steps? That is called causation.",
         "Ice cream sales and sunburns rise together. But ice cream does not cause sunburn. Hot, sunny weather drives both.",
       ],
       example: {

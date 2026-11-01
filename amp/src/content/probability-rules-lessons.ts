@@ -90,7 +90,7 @@ export const probabilityRulesLessons: Lesson[] = [
     id: "conditional-and-multiplication-rule",
     title: "Conditional probability and the multiplication rule",
     summary:
-      "An event is a group of possible outcomes, and its probability says how likely it is, from 0 to 1. Knowing that one event happened leaves fewer possible outcomes. So find the next chance inside that smaller group. For two events in a row, multiply the first chance by the second chance found that way. Multiplying this way is called the multiplication rule.",
+      "An event is a group of possible outcomes, and its probability says how likely it is, from 0 to 1. Knowing that one event happened can rule out some outcomes. So find the next chance inside that smaller group. For two events in a row, multiply the first chance by the second chance found that way. Multiplying this way is called the multiplication rule.",
     templateIds: [
       "conditional-probability-value",
       "multiplication-rule-probability",
@@ -133,7 +133,7 @@ export const probabilityRulesLessons: Lesson[] = [
       {
         title: "The multiplication rule and trees",
         paragraphs: [
-          "For both $A$ and $B$ to happen, $A$ must happen, and then $B$ must happen given $A$. So $P(A \\text{ and } B) = P(A) \\times P(B \\mid A)$. This is the multiplication rule.",
+          "For both $A$ and $B$ to happen, $A$ must happen, and $B$ must also happen given that $A$ did. So $P(A \\text{ and } B) = P(A) \\times P(B \\mid A)$. This is the multiplication rule.",
           "Drawing without replacement means a drawn item is not put back. A bag has 3 red and 2 blue marbles. The first draw is red with probability $\\frac{3}{5}$. Then 2 red marbles are left among 4. So both are red with probability $\\frac{3}{5} \\times \\frac{2}{4} = \\frac{6}{20}$.",
           "A tree diagram shows every path of choices as branches. Each branch is labeled with its probability, given the branches before it. A path's probability is the product (the result of multiplying) of the branches along it.",
           "An event made of several paths adds those paths. “One of each color” is red then blue or blue then red: $\\frac{6}{20} + \\frac{6}{20} = \\frac{12}{20} = \\frac{3}{5}$. All four path probabilities add to 1.",
@@ -167,7 +167,7 @@ export const probabilityRulesLessons: Lesson[] = [
       "Multiply along a path. Add different paths that make up the same event.",
     ],
     parentGuide:
-      "Put 3 red and 2 blue socks in a bag. Draw two without looking, 20 times, and tally “both red”. Compare the share of tries with $\\frac{3}{5} \\times \\frac{2}{4} = \\frac{3}{10}$. Talk about why the second draw has only 4 socks to choose from.",
+      "Put 3 red and 2 blue socks in a bag. Draw two without looking and tally “both red”. Put both back and repeat, 20 times in all. Compare the share of tries with $\\frac{3}{5} \\times \\frac{2}{4} = \\frac{3}{10}$. Talk about why the second draw has only 4 socks to choose from.",
   },
 ];
 
@@ -194,7 +194,7 @@ const terms = {
     ],
     [
       "sample-space",
-      "Once a condition is known, the sample space shrinks to the outcomes still possible.",
+      "Once a condition is known, only the outcomes that fit it stay possible.",
     ],
   ],
   multiplication: ["conditional-probability", "without-replacement"],
@@ -235,7 +235,7 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
     terms: terms.addition,
     method: [
       "Write the addition rule: $P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$.",
-      "Find the probability of the overlap: count the outcomes in both and divide by the total, or read it from the givens.",
+      "Find the probability of the overlap: when outcomes are equally likely, count the outcomes in both and divide by the total, or read it from the givens.",
       "Substitute and subtract the overlap once. If the overlap is the unknown, rearrange the rule to find it.",
     ],
     watch:
