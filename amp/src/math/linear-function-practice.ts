@@ -1727,7 +1727,7 @@ function formulaIsolate(r: Random): Case {
     ],
     explanation: [
       `A formula is an equation that links several quantities. Solving it for $${fc.target}$ means getting $${fc.target}$ alone on one side.`,
-      `Treat $${fc.target}$ as the unknown and every other letter as a known number. Then solve exactly as you would with numbers.`,
+      `Treat $${fc.target}$ as the unknown and every other letter as a known number that is not zero, so dividing by it is allowed. Then solve exactly as you would with numbers.`,
       `Undo what is done to $${fc.target}$ in reverse order, like unwrapping a parcel. Do each step to both sides, so they stay equal.`,
       ...fc.steps,
       `The formula that gives $${fc.target}$ in terms of ${fc.others.replaceAll("$", "").replace(/\b([A-Za-z])\b/g, "$$$1$$")} is ${fc.correct}.`,

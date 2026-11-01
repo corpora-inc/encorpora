@@ -1474,7 +1474,7 @@ function absoluteCompoundInequality(r: Random): Built {
             : `Since ${c} is positive, $|${expression}|${symbol}${c}$ says $${expression}$ is at least ${c} away from 0. Write the two separate cases, $${expression}$ below $-${c}$ or above $${c}$, and solve each.`,
         explanation: [
           reading,
-          `Subtract ${b} from every part: the endpoints for $${linear(a, 0)}$ are $${-c - b}$ and $${c - b}$.`,
+          `${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} every part, which keeps the order: the endpoints for $${linear(a, 0)}$ are $${-c - b}$ and $${c - b}$.`,
           `Divide by ${a}.${flip} The endpoints are $${tex(lo)}$ and $${tex(hi)}$.`,
           variant === 0
             ? `The solution set is ${insideCorrect}.`

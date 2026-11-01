@@ -170,7 +170,7 @@ function simplifyCase(r: Random, zero = false, given?: number): Case {
             `The square root of a number is the nonnegative number that, times itself, gives it. The number under the root sign is the radicand, here ${n}.`,
             `Simplest form takes every perfect square (such as 4, 9, 16, 25) out of the radicand. Find the largest one that divides ${n}: $${n} = ${a * a} \\times ${b}$.`,
             `The square root of a product is the product of the square roots, so the roots can be taken separately: $\\sqrt{${n}} = \\sqrt{${a * a}}\\sqrt{${b}} = ${answer}$.`,
-            `$\\sqrt{${a * a}}$ is ${a} because ${a} × ${a} = ${a * a}. The ${b} has no square factor left, so it stays under the root.`,
+            `$\\sqrt{${a * a}}$ is ${a} because ${a} × ${a} = ${a * a}. The ${b} has no square factor greater than 1 left, so it stays under the root.`,
             `Check: $${answer} \\times ${answer} = ${n}$. In simplest form, $\\sqrt{${n}}$ is $${answer}$.`,
           ];
   return {

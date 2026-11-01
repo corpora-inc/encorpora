@@ -480,7 +480,7 @@ export const quadraticNegativeOutput = chainFamily({
       hint: `Write the equation $${f} = -${m.n}$ and add ${m.n} to both sides so the right side is 0. Then factor the trinomial that results.`,
       explanation: [
         `$f(x) = -${m.n}$ asks for the inputs $x$ whose output is $-${m.n}$. So set the rule equal to $-${m.n}$: $${f} = -${m.n}$.`,
-        `To factor, one side must be 0. Add ${m.n} to both sides: $${quad(1, b, c + m.n)} = 0$.`,
+        `First make one side 0, because a product tells you about its factors only when it equals 0. Add ${m.n} to both sides: $${quad(1, b, c + m.n)} = 0$.`,
         `To factor $x^2 + bx + c$, find two numbers that multiply to $c$ and add to $b$, the number multiplying $x$.`,
         `$${-m.p}$ and $${-m.q}$ multiply to $${m.p * m.q}$ and add to $${-(m.p + m.q)}$. So the equation is $(${xShift(-m.p)})(${xShift(-m.q)}) = 0$.`,
         `A product is 0 only when a factor is 0. $${xShift(-m.p)} = 0$ gives $x=${m.p}$, and $${xShift(-m.q)} = 0$ gives $x=${m.q}$.`,
@@ -615,7 +615,7 @@ export const quadraticFormulaPositive = chainFamily({
           ? `Identify $a=${a}$, $b=${b}$ and $c=${c}$ in $${eq}$, then put them in $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$, taking care with the signs.`
           : `First move ${-c} to the left side so the equation equals 0, then read $a=${a}$, $b=${b}$ and the new constant, and use the quadratic formula.`,
       explanation: [
-        `The quadratic formula solves any equation $ax^2 + bx + c = 0$: $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$. The sign $\\pm$, "plus or minus", gives two solutions.`,
+        `The quadratic formula solves any equation $ax^2 + bx + c = 0$ with $a \\ne 0$: $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$. The sign $\\pm$, "plus or minus", gives two solutions.`,
         ax.form === "zero-form"
           ? `The equation already equals 0. Read the coefficients, the numbers in front: $a=${a}$ multiplies $x^2$, $b=${b}$ multiplies $x$, and $c=${c}$ stands alone.`
           : `The formula needs the equation to equal 0. ${c < 0 ? `Subtract ${-c} from` : `Add ${c} to`} both sides: $${quad(a, b, c)} = 0$. So $a=${a}$, $b=${b}$ and $c=${c}$.`,
