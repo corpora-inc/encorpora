@@ -7394,6 +7394,8 @@
       "terms": [
         "constant",
         "decimal",
+        "equivalent",
+        "mixed-number",
         "multiplier",
         "polynomial",
         "quadratic"
@@ -7405,7 +7407,9 @@
         "axis-of-symmetry",
         "completing-the-square",
         "decimal",
+        "equivalent",
         "maximum",
+        "mixed-number",
         "parabola",
         "substitute"
       ],
@@ -7421,6 +7425,8 @@
     "lesson:sat-entry-radian-conversion": {
       "terms": [
         "decimal",
+        "equivalent",
+        "mixed-number",
         "radian"
       ],
       "long": []
@@ -7429,6 +7435,7 @@
       "terms": [
         "decimal",
         "equivalent",
+        "mixed-number",
         "quadratic",
         "radical",
         "radicand",
@@ -7450,7 +7457,9 @@
         "denominator",
         "division",
         "domain",
+        "equivalent",
         "excluded-value",
+        "mixed-number",
         "numerator",
         "solution"
       ],
@@ -9743,7 +9752,8 @@
     },
     "practice:arithmetic-term": {
       "terms": [
-        "arithmetic-sequence"
+        "arithmetic-sequence",
+        "common-difference"
       ],
       "long": []
     },
@@ -11542,7 +11552,8 @@
     "practice:divide-fractions": {
       "terms": [
         "denominator",
-        "numerator"
+        "numerator",
+        "reciprocal"
       ],
       "long": []
     },
@@ -12586,7 +12597,10 @@
     "practice:function-evaluation": {
       "terms": [
         "coefficient",
+        "function",
+        "input",
         "multiplication",
+        "output",
         "parentheses",
         "substitute"
       ],
@@ -15420,6 +15434,12 @@
       ],
       "long": []
     },
+    "practice:percent-of": {
+      "terms": [
+        "percent"
+      ],
+      "long": []
+    },
     "practice:perimeter-area-chain": {
       "terms": [
         "unit-square"
@@ -17307,8 +17327,10 @@
       "terms": [
         "constant",
         "decimal",
+        "equivalent",
         "expression",
         "function",
+        "mixed-number",
         "multiplicity",
         "polynomial"
       ],
@@ -17318,7 +17340,9 @@
       "terms": [
         "axis-of-symmetry",
         "decimal",
+        "equivalent",
         "height",
+        "mixed-number",
         "parabola",
         "substitute",
         "symmetry",
@@ -17344,6 +17368,8 @@
         "arc",
         "coefficient",
         "decimal",
+        "equivalent",
+        "mixed-number",
         "radian",
         "radius"
       ],
@@ -17352,7 +17378,9 @@
     "practice:sat-entry-radical-equation": {
       "terms": [
         "decimal",
+        "equivalent",
         "isolate",
+        "mixed-number",
         "quadratic",
         "square-root",
         "substitute"
@@ -17379,6 +17407,7 @@
         "excluded-value",
         "expression",
         "input",
+        "mixed-number",
         "numerator",
         "solution"
       ],

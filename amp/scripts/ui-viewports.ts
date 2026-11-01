@@ -427,15 +427,20 @@ export async function assertProblemReachable(page: Page, label: string) {
 }
 
 /**
- * The whole problem is in view with no scrolling: the stage does not scroll,
- * and the prompt and every figure lie inside its visible box. Returns the
- * reasons it is not, empty when it is.
+ * The question and figure fit without scrolling. By default the whole stage
+ * must fit too. Structured answer rows may scroll when explicitly requested,
+ * just as they do in the separate landscape answer editor; callers must also
+ * verify their reachability with assertProblemReachable.
  */
-export async function problemInView(page: Page): Promise<string[]> {
-  return page.evaluate(() => {
+export async function problemInView(
+  page: Page,
+  { allowStructuredWorkScroll = false } = {},
+): Promise<string[]> {
+  return page.evaluate((allowWorkScroll) => {
     const stage = document.querySelector<HTMLElement>(".problem-stage")!;
     const found: string[] = [];
-    if (stage.scrollHeight > stage.clientHeight + 1)
+    const work = allowWorkScroll ? stage.querySelector(".work") : null;
+    if (!work && stage.scrollHeight > stage.clientHeight + 1)
       found.push(
         `stage scrolls ${stage.scrollHeight - stage.clientHeight}px (${stage.scrollHeight} > ${stage.clientHeight})`,
       );
@@ -446,6 +451,7 @@ export async function problemInView(page: Page): Promise<string[]> {
       ? [...content.children, ...content.querySelectorAll("svg:not(svg svg)")]
       : [];
     for (const part of new Set(parts)) {
+      if (work?.contains(part)) continue;
       const b = part.getBoundingClientRect();
       if (b.width < 2 || b.height < 2) continue;
       if (b.top < s.top - 1 || b.bottom > s.bottom + 1)
@@ -454,7 +460,7 @@ export async function problemInView(page: Page): Promise<string[]> {
         );
     }
     return found;
-  });
+  }, allowStructuredWorkScroll);
 }
 
 /** On-screen sizes, in CSS px, of the prompt and of the practice figure's

@@ -52,7 +52,7 @@ const entries: Entry[] = [
       "A system of equations is two equations that must both be true for the same $x$ and $y$. A coefficient is the number multiplying a variable: in $3y$, the coefficient is 3. Opposites are numbers like 3 and $-3$ that add to 0. If the $y$ coefficients are opposites, adding the two equations removes $y$. These systems have exactly one answer pair, so one equation with only $x$ is left.",
     terms: ["system-of-equations", "elimination"],
     method: [
-      "Pick the letter the question does not ask for. Multiply one or both equations by a number (not 0) so that letter has opposite coefficients.",
+      "Pick the letter the question does not ask for. Multiply one or both equations by a number (not 0) so the coefficients of that letter are opposites: numbers like 3 and $-3$ that add to 0.",
       "Add the equations, so that letter cancels. Solve the equation that is left.",
       "Check: find the other letter from one equation, then make sure both equations are true. Then enter the value.",
     ],
