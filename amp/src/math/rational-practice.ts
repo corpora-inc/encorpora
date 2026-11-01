@@ -156,7 +156,7 @@ function sumCase(r: Random): Case {
     subtract
       ? `Subtracting a number is adding its opposite: $${prompt} = ${tex(a)} + ${operand(addend)}$.`
       : `The expression is a sum: $${prompt}$. Each fraction keeps its own sign, + or −.`,
-    `Fractions add only when their pieces are the same size. The bottom number, the denominator, sets the piece size.`,
+    `To add fractions by counting pieces, the pieces must be the same size. The bottom number, the denominator, sets the piece size, so first rename the fractions to a shared denominator.`,
     `The least common denominator of ${a.d} and ${b.d} is ${l}: the smallest number that both ${a.d} and ${b.d} divide into evenly.`,
     `Rename both fractions with denominator ${l}. Add the top numbers, the numerators, keeping their signs. Then reduce, dividing top and bottom by any shared factor: $${sumSteps(a, addend)}$.`,
     `Check: $${tex(value)} - ${operand(addend)} = ${tex(a)}$.`,
