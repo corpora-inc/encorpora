@@ -6,8 +6,10 @@ export const numberSenseLessons: Lesson[] = [
     id: "count-to-100",
     title: "Count to 100 by ones and tens",
     summary:
-      "Each count moves one number forward; ten more makes a larger jump of one full ten.",
+      "Counting by ones means each number is 1 more than the one before, so you add 1 each time: 57, 58, 59, 60. Counting by tens means each number is 10 more: 20, 30, 40. A hundred chart shows the numbers 1 to 100 in rows of 10. It helps you find a missing number.",
     templateIds: ["count-sequence-missing", "hundred-chart-missing"],
+    senses: { "more than": "more-than" },
+    noLink: ["square", "squares"],
     objectives: [
       "Continue counts by ones and by tens within 100, including across a ten.",
       "Use the rows and columns of the hundred chart to find a missing number.",
@@ -17,23 +19,27 @@ export const numberSenseLessons: Lesson[] = [
         stage: "intuition",
         title: "Keep counting through a new ten",
         paragraphs: [
-          "After 68 comes 69, then 70. Nine loose ones become a full ten when one more arrives, so the tens count grows and the ones count starts again at zero.",
+          "A one is a single thing, like one counter. A ten is a group of 10 ones. A digit is one of the symbols 0 to 9 we use to write numbers. The number 68 has two digits. The 6 means 6 tens, or 60. The 8 means 8 ones, 8 single things.",
+          "Start at 68 and count one more: 69. That is 6 tens and 9 ones. One more one makes 10 ones. Ten ones make a new ten.",
+          "So after 69 comes 70: 7 tens and 0 ones. The box □ in a count stands for a missing number. The sign + means add, or put more with. The sign = means makes, or is the same as. So 58 + 1 = 59 says 58 and 1 more make 59.",
         ],
       },
       {
         title: "Ones, then a new ten",
         paragraphs: [
-          "Counting by ones, the ones digit goes 0 to 9. After 9 ones, the next count makes a new ten: 68, 69, 70, 71.",
-          "Counting by tens, the tens digit goes up by one each time and the ones digit stays the same: 20, 30, 40, 50.",
+          "In 64, the tens digit, 6, tells how many tens. The ones digit, 4, tells how many ones. Count by ones: 64, 65, 66. The ones digit goes up by 1 each time.",
+          "After a 9 in the ones, the ones digit goes back to 0, and there is one more ten: 68, 69, 70, 71.",
+          "Count by tens: 20, 30, 40, 50. Each number is one more ten, so the tens digit goes up by 1. The ones digit stays the same: 23, 33, 43.",
+          "Keep counting by tens: 70, 80, 90, 100. After 9 tens, one more ten makes 10 tens. Ten tens make one hundred, written 100.",
         ],
-        illustration: "hundred-chart-moves",
       },
       {
         title: "Read the chart both ways",
         paragraphs: [
-          "Each row of the hundred chart holds ten numbers. Moving one square right adds 1; moving one row down adds 10.",
-          "A missing square can be found from the square before it or the square above it. Both ways give the same number.",
+          "Look at the hundred chart in the picture. Each row goes across and holds 10 numbers. Moving one square to the right adds 1: 62, then 63. Moving one row down adds 10: 62, then 72.",
+          "To find a missing number, take the square on its left and add 1. Or take the square above it and add 10. If the empty square starts a row, use the square above it. Both ways give the same number, so you can use one to check the other.",
         ],
+        illustration: "hundred-chart-moves",
       },
     ],
     closingSections: [
@@ -41,28 +47,33 @@ export const numberSenseLessons: Lesson[] = [
         stage: "formal",
         title: "Counting and place value",
         paragraphs: [
-          "Counting by ones increases a whole number by 1 each step. Counting by tens increases it by 10 each step. Ten ones regroup as one ten, so the tens digit changes when the ones pass 9.",
+          "Counting by ones adds 1 at each step. Counting by tens adds 10 at each step. Ten ones make one ten. So when the ones digit passes 9, it goes back to 0 and there is one more ten. Ten tens make one hundred, so 99 and 1 more is 100.",
         ],
       },
     ],
     workedExample: {
       prompt: "Count by ones: 57, 58, □, 60. What number is missing?",
-      steps: ["Each count is 1 more.", "58 + 1 = 59. Check: 59 + 1 = 60."],
+      steps: [
+        "Counting by ones means each number is 1 more than the one before.",
+        "The number just before the box is 58. One more is 58 + 1 = 59.",
+        "Check with the number after the box: 59 + 1 = 60. It fits, so 59 is right.",
+      ],
       answer: "59",
     },
     pitfalls: [
-      "Writing 610 after 69 instead of starting the next ten, 70.",
-      "Adding 1 when moving down a row of the hundred chart; down adds 10.",
+      "After 69 comes 70, not 610. The 9 ones and 1 more one make a new ten.",
+      "On the hundred chart, moving down one row adds 10, not 1.",
     ],
     parentGuide:
-      "Point to a number on a hundred chart and ask for the number below it and the number to its right. Ask how the two moves differ.",
+      "Choose a number on a hundred chart. Ask for the number just below it and the number just to its right. Ask how the two moves are different.",
   },
   {
     id: "write-numerals",
     title: "Write the number for a quantity",
     summary:
-      "A written teen number records one full ten and the loose ones beside it.",
+      "A numeral is a number written with symbols, such as 7 or 16. A ten-frame is a box with 10 spaces, in 2 rows of 5. Counters are small round chips, one in each filled space. A full ten-frame holds 10 counters, so you do not need to count them one by one. Say 10, then keep counting from 10 for the rest, and write the number.",
     templateIds: ["numeral-for-quantity"],
+    noLink: ["parts"],
     objectives: [
       "Write numerals from 0 to 20 for quantities shown in ten-frames.",
       "Use a full frame as 10 and count on for the rest.",
@@ -72,46 +83,53 @@ export const numberSenseLessons: Lesson[] = [
         stage: "intuition",
         title: "A picture can show tens and ones",
         paragraphs: [
-          "A full ten-frame holds ten counters. If it is full and a second frame has six counters, you have one ten and six more ones. The written number 16 records those two parts.",
+          "Ten counters fill one ten-frame. A group of 10 is called a ten. A single counter is called a one. Say you have one full frame and 6 more counters. That is 1 ten and 6 ones.",
+          "To count them, say 10 for the full frame. Then count on: keep counting from 10 for each extra counter, 11, 12, 13, 14, 15, 16.",
+          "We write that number as 16. The 1 stands for the full ten. The 6 stands for the 6 extra ones.",
         ],
       },
       {
         title: "Use the frame",
         paragraphs: [
-          "A ten-frame has two rows of 5. A full row is 5 and a full frame is 10, so there is no need to count every counter.",
-          "For more than 10, the second frame holds the extra ones: a full frame and 4 more is 14, written 1 ten and 4 ones.",
+          "A ten-frame has 2 rows of 5 spaces. A full row is 5, and a full frame is 10. So you can count by rows instead of one counter at a time.",
+          "Look at the picture. One frame is full, so say 10. The other frame has 4 counters, so count on from 10: 11, 12, 13, 14.",
+          "We write 14. It means 1 ten and 4 ones.",
         ],
         illustration: "teen-ten-frame",
       },
       {
         title: "Zero and twenty",
         paragraphs: [
-          "An empty frame shows no counters: the number is 0.",
-          "Two full frames are 2 tens: the number is 20.",
+          "An empty frame has no counters. The number is 0, called zero.",
+          "Two full frames are 2 tens. The number is 20, called twenty.",
         ],
       },
     ],
     closingSections: [
       {
         stage: "formal",
-        title: "Digits record grouped counts",
+        title: "How a numeral shows tens and ones",
         paragraphs: [
-          "A numeral's digits record counts of place-value groups. For a teen number, the first digit records one ten and the second records the remaining ones; its value is ten plus that ones count.",
+          "A digit is one of the symbols 0 to 9 used to write numbers. The numbers 11 to 19 are called teen numbers. In a teen number, the first digit is 1, and it stands for one ten. The second digit tells how many more ones there are. So 14 means 10 and 4 more.",
         ],
       },
     ],
     workedExample: {
       prompt:
         "One frame is full. The other frame has 4 counters. Write the number.",
-      steps: ["The full frame is 10.", "10 and 4 more is 14."],
+      steps: [
+        "A full ten-frame always holds 10 counters. So the full frame is 10, and you do not need to count it.",
+        "Start at 10 and count on the 4 other counters: 11, 12, 13, 14.",
+        "Write 14. The 1 means one ten, and the 4 means 4 ones.",
+      ],
       answer: "14",
     },
     pitfalls: [
-      "Writing teen numbers backwards, such as 41 for fourteen.",
-      "Recounting a full frame instead of using 10.",
+      "Write the 1 for the ten first, then the ones. Fourteen is 14, not 41.",
+      "A full frame is always 10. You do not need to count it again.",
     ],
     parentGuide:
-      "Put 13 coins in an egg carton with ten cups. Ask how many without counting each coin, then ask the learner to write the number.",
+      "Put 13 coins in an egg carton with 10 cups. Ask how many coins there are without counting each one. Then ask the learner to write the number.",
   },
   {
     id: "number-line-moves",
@@ -292,31 +310,40 @@ export const numberSenseLessons: Lesson[] = [
 
 export const numberSenseMethods: Record<string, ProblemMethod> = {
   "count-sequence-missing": {
-    goal: "Given a count by ones or tens with one number missing, find it.",
+    goal: "Find the missing number in a count by ones or by tens.",
+    intuition:
+      "Counting by ones means each number is 1 more than the one before: 18, 19, 20. Counting by tens means each number is 10 more: 20, 30, 40. The box □ stands for the missing number. The step is how much each number grows: 1 or 10. The sign + means add, or put more with. The sign = means makes, or is the same as. So 19 + 1 = 20 says 19 and 1 more make 20.",
     method: [
-      "Find the step: 1 for ones, 10 for tens.",
-      "Add the step to the number before the gap.",
-      "Check that the next number follows.",
+      "Find the step. It is 1 when you count by ones and 10 when you count by tens.",
+      "Add the step to the number just before the box.",
+      "If a number comes after the box, add the step again. You should land on that number.",
     ],
-    watch: "After 9 ones, the count starts a new ten: 69, 70.",
+    watch:
+      "After 9 ones, one more one makes a new ten, a group of 10. So after 69 comes 70, not 610.",
   },
   "hundred-chart-missing": {
-    goal: "Given part of the hundred chart with an empty square, find its number.",
+    goal: "Find the number that belongs in an empty square of the hundred chart.",
+    intuition:
+      "A hundred chart shows the numbers 1 to 100 in order, in rows of 10. Each row goes across, from left to right. One square to the right is 1 more. One row down is 10 more, because each row holds 10 numbers. A picture may show only part of the chart, but it works the same way. To add 1 means to find the number 1 more.",
+    noLink: ["part", "square", "squares"],
     method: [
-      "Find a filled square next to the empty one: to its left or above it.",
-      "From the square on its left, add 1; from the square above it, add 10.",
-      "Check with the other neighbor when there is one.",
+      "Find a filled square next to the empty one: just to its left, or just above it.",
+      "From the square on its left, add 1. From the square above it, add 10.",
+      "If the empty square has both, use the other one to check.",
     ],
-    watch: "Down a row is 10 more, not 1 more.",
+    watch: "Moving down one row adds 10, not 1.",
   },
   "numeral-for-quantity": {
-    goal: "Given counters in ten-frames, write how many there are.",
+    goal: "Count the counters shown in ten-frames and write how many there are.",
+    intuition:
+      "A ten-frame is a box with 10 spaces, in 2 rows of 5. Counters are small round chips, one in each filled space. A full row holds 5 counters, and a full frame holds 10. Use those to count fast, then write the number. The sign + means add, or put more with. The sign = means makes, or is the same as.",
+    terms: ["ten-frame"],
     method: [
-      "A full frame is 10; a full row is 5.",
-      "Count on from 10 (or 5) for the rest.",
-      "Write the number: teen numbers are 1 ten and some ones.",
+      "A full frame is 10 and a full row is 5. You do not need to count them one by one.",
+      "For the rest, count on: start at 10 or 5 and keep counting each extra counter.",
+      "Write the number. A teen number, from 11 to 19, is 1 ten and some ones: 14 is 1 ten, a full frame, and 4 ones.",
     ],
-    watch: "Fourteen is written 14: the 1 is the full ten.",
+    watch: "Fourteen is written 14, not 41. The 1 stands for the full ten.",
   },
   "number-line-hops": {
     goal: "Given a start and a tens hop then an ones hop, find where they land.",
@@ -392,11 +419,11 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
 
 export const numberSensePrinciples: Record<string, string> = {
   "count-sequence-missing":
-    "Each counting number is one more than the one before; ten ones make the next ten.",
+    "In a count by ones, each number is 1 more than the one before. In a count by tens, each number is 10 more. Ten ones make one ten.",
   "hundred-chart-missing":
-    "The hundred chart has rows of ten, so one square right is +1 and one row down is +10.",
+    "The hundred chart has rows of 10. So one square to the right is 1 more, and one row down is 10 more.",
   "numeral-for-quantity":
-    "A numeral names how many: teen numbers are one ten and some ones.",
+    "A numeral is a written number that tells how many. A teen number, from 11 to 19, is one ten and some more ones: 14 is 10 and 4.",
   "number-line-hops":
     "Adding moves right and subtracting moves left by equal units; a hop can be split into tens and ones.",
   "number-line-missing-hop":

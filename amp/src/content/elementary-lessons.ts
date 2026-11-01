@@ -122,32 +122,37 @@ export const elementaryLessons: Lesson[] = [
   {
     id: "tens-and-extra-ones",
     title: "One ten and extra ones",
-    summary: "A full group of ten and some loose ones make a teen number.",
+    summary:
+      "A one is a single thing, like one counter. Ten ones can be put together to make one ten. A ten-frame is a box with 10 spaces, in 2 rows of 5, so a full one is a ten. A cube is a little block shaped like a die. A rod is 10 small cubes stuck together, so a rod is a ten too. Count the tens first. Then count on: keep counting the extra ones from where the tens end. A digit is one of the symbols 0 to 9. In 16, the 1 means one ten and the 6 means 6 ones: this is called place value.",
     templateIds: ["teen-frame-compose", "tens-ones-model"],
+    senses: { cube: "cube", cubes: "cube" },
     objectives: [
       "Compose teen numbers from ten and extra ones.",
-      "Read a model with several tens and ones.",
+      "Read a picture of base-ten blocks with several tens and ones.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Bundle ten first",
         paragraphs: [
-          "When there are more than nine counters, fill one ten-frame or make one bundle of ten. Count that bundle as ten, then count the loose counters. A teen number is one ten with some ones beside it.",
+          "Counters are small round chips used for counting. Say you have 16 counters. Put 10 of them in a ten-frame until it is full. Now you have one full ten and 6 extra counters.",
+          "You know the full frame is 10, so you do not count it again. Say 10, then count on the extras: 11, 12, 13, 14, 15, 16.",
+          "In 16, the digit 1 means one ten and the digit 6 means 6 ones. The sign + means add, or put more with. The sign = means is the same as. So 16 = 10 + 6 says 16 is the same as 10 and 6 more.",
         ],
       },
       {
         title: "See a teen number",
         paragraphs: [
-          "A full ten-frame holds ten counters. Put six counters in a second frame. There are ten and six: sixteen. We write 16 = 10 + 6.",
-          "The extra ones make teen numbers from eleven through nineteen. Keep the ten together so you do not have to count it again.",
+          "The numbers 11 to 19 are called teen numbers. Each one is one ten and some extra ones, from 1 to 9.",
+          "A full ten-frame and 6 more counters make sixteen, 16 = 10 + 6. Keep the ten together, so you never have to count it again.",
         ],
       },
       {
         title: "Bundle more than one ten",
         paragraphs: [
-          "A long rod is made of ten little squares. Four rods show four tens, or forty. Three extra squares make forty-three: 43 = 40 + 3.",
-          "The tens digit tells how many tens. The ones digit tells how many extra ones. In 40 there are four tens and zero extra ones; zero keeps that place.",
+          "Each rod is 10 small cubes, so each rod is a ten. Four rods are 4 tens: 10, 20, 30, 40. Three extra cubes make forty-three: 43 = 40 + 3.",
+          "In 43, the tens digit, 4, tells how many tens there are. The ones digit, 3, tells how many extra ones there are.",
+          "In 40 there are 4 tens and no extra ones. The 0 shows that there are no ones. Without it, 40 would look like 4.",
         ],
       },
     ],
@@ -156,25 +161,26 @@ export const elementaryLessons: Lesson[] = [
         stage: "formal",
         title: "Ten and some ones",
         paragraphs: [
-          "Any whole number from 10 through 19 can be written as one ten and 0 through 9 additional ones. A full group of ten has the same value as 10 single ones.",
+          "Every number from 10 to 19 is one ten and 0 to 9 more ones. One ten is worth the same as 10 single ones. A two-digit number, a number written with two digits such as 43, has a tens digit and a ones digit: 43 is 4 tens and 3 ones, which is 40 + 3.",
         ],
       },
     ],
     workedExample: {
-      prompt: "A model has 2 ten rods and 5 one squares. What number is shown?",
+      prompt:
+        "A picture shows 2 ten rods and 5 single cubes. What number is shown?",
       steps: [
-        "Two tens have value 20.",
-        "There are 5 extra ones.",
-        "20 + 5 = 25.",
+        "Each rod is a ten. Count the rods by tens: 10, 20. So 2 rods are 20.",
+        "Each single cube is a one. There are 5 of them.",
+        "Count on from 20 for the 5 ones: 21, 22, 23, 24, 25. So 20 + 5 = 25.",
       ],
       answer: "25",
     },
     pitfalls: [
-      "A ten rod counts as ten ones, not one.",
-      "Do not reverse the tens and ones.",
+      "A rod counts as 10 ones, not 1.",
+      "Write the tens digit first, then the ones digit. 2 tens and 5 ones is 25, not 52.",
     ],
     parentGuide:
-      "Begin with one ten-frame and teen numbers. Introduce several bundles of ten after that is secure. Use bundled sticks or connecting cubes to show that a ten contains ten ones.",
+      "Start with one ten-frame and teen numbers. Move to several groups of ten once that feels easy. Bundle 10 sticks with a rubber band, or snap 10 blocks together, to show that a ten is made of ten ones.",
   },
   {
     id: "unknown-story-parts",
@@ -603,8 +609,10 @@ export const elementaryLessons: Lesson[] = [
     id: "counting-steps",
     title: "Keep a steady counting step",
     summary:
-      "A repeating step takes you from each number in a pattern to the next.",
+      "A pattern is a list of numbers that keeps going the same way. In a counting pattern, you add the same amount each time. That amount is called the step. Counting by 5 means the step is 5: 35, 40, 45. To find the next number, add the step to the last number. To count on means to keep counting forward from a number. A one is a single thing, and a ten is a group of 10 ones. In 79, the 9 is in the ones place, the spot on the right. After 79 comes 80: 9 ones and 1 more make a new ten.",
     templateIds: ["continue-count-to-120", "skip-count-missing"],
+    senses: { term: "term-sequence" },
+    noLink: ["change", "changes"],
     objectives: [
       "Count on by ones through 120.",
       "Skip-count by fives, tens, and hundreds within 1000.",
@@ -614,21 +622,25 @@ export const elementaryLessons: Lesson[] = [
         stage: "intuition",
         title: "Keep the same-sized hop",
         paragraphs: [
-          "A pattern might go 4, 7, 10, 13. Each hop adds three. To continue it, make another hop of three; to reach a later position, count how many hops are needed.",
+          "Look at 4, 7, 10, 13. From 4 to 7 is 3 more. From 7 to 10 is 3 more, and so is 10 to 13. Each hop adds 3, so the step is 3.",
+          "To go on, make another hop of 3: 13 + 3 = 16. To go further, keep adding 3, one hop at a time.",
+          "A box □ in a list stands for a missing number. We write 13 + 3 = 16. It says 13 and 3 more make 16.",
         ],
       },
       {
         title: "One more each time",
         paragraphs: [
-          "Begin at any number and say the next numbers. After ninety-eight come ninety-nine, one hundred, one hundred one, and one hundred two. Each step still adds just one.",
-          "A new ten or hundred changes the written digits. It does not change the size of the step.",
+          "Counting by ones means each number is one bigger than the one before. Start at 98: 99, 100, 101, 102. Each step still adds just 1.",
+          "A digit is one of the symbols 0 to 9 we use to write numbers. When the ones digit is 9, the next number starts a new ten: 109, then 110. When a number ends in 99, the next number starts a new hundred: 199, then 200.",
+          "The digits look different after a new ten or hundred. The step is still 1.",
         ],
       },
       {
         title: "Take equal larger steps",
         paragraphs: [
-          "Counting by five adds five each time: 35, 40, 45, 50. Counting by ten changes the value by ten: 120, 130, 140, 150.",
-          "Counting by one hundred uses whole hundreds: 400, 500, 600, 700. Read the stated step before filling the box.",
+          "Skip-counting means counting by a step bigger than 1. Counting by fives adds 5 each time: 35, 40, 45, 50.",
+          "Counting by tens adds 10 each time: 120, 130, 140, 150. Counting by hundreds adds 100 each time: 400, 500, 600, 700, or 250, 350, 450.",
+          "Read the step first. Then add it to the last number to fill the box.",
         ],
       },
     ],
@@ -637,25 +649,25 @@ export const elementaryLessons: Lesson[] = [
         stage: "formal",
         title: "A constant step",
         paragraphs: [
-          "In a counting sequence with a fixed step, each new term equals the preceding term plus that step. After a starting number, reaching the term in position $n$ takes $n-1$ steps when the first term is position 1.",
+          "In a counting pattern with a fixed step, each number is the number before it plus the step. Each number in the list is called a term. In 5, 10, 15, 20, 25, going from the first term, 5, to the fifth term, 25, takes 4 hops of 5. In general, reaching the term in position $n$ takes $n - 1$ steps from the 1st term.",
         ],
       },
     ],
     workedExample: {
       prompt: "Count by 10: 170, 180, 190, □.",
       steps: [
-        "Each step adds 10.",
-        "190 + 10 = 200.",
-        "The next value is 200.",
+        "The numbers go up by 10 each time: 170, 180, 190. So the step is 10.",
+        "Add the step to the last number: 190 + 10 = 200.",
+        "190 is 1 hundred and 9 tens. One more ten makes 10 tens, which is another hundred. So 1 hundred and 1 more hundred make 200.",
       ],
       answer: "200",
     },
     pitfalls: [
-      "Do not switch steps when crossing a new hundred.",
-      "The next value is not always ten more; read the rule.",
+      "Keep the same step when you reach a new hundred. Counting by 10, after 190 comes 200, not 1100.",
+      "The step is not always 10. Find it before you add.",
     ],
     parentGuide:
-      "Practice the ones sequence first. Use groups of counters, rods, and flats to connect later skip-counts with their quantities. This worksheet does not assess number-name writing.",
+      "Practice counting forward by ones first. Then use groups of 5 counters, bundles of 10 sticks and stacks of 100 to show what counting by fives, tens and hundreds means. This practice does not check writing number names.",
   },
   {
     id: "two-changes",

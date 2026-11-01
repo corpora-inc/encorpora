@@ -15,12 +15,16 @@ type Spec = {
   formal: string[];
   pitfalls: string[];
   parentGuide: string;
+  senses?: Lesson["senses"];
+  noLink?: string[];
 };
 
 const lesson = (s: Spec): Lesson => ({
   id: s.id,
   title: s.title,
   summary: s.summary,
+  ...(s.senses ? { senses: s.senses } : {}),
+  ...(s.noLink ? { noLink: s.noLink } : {}),
   templateIds: [s.id],
   objectives: s.objectives,
   sections: [
@@ -85,8 +89,9 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
   "dot-group-compared-to-number": {
     goal: "Given groups of up to 20 dots, find the group that has more than, fewer than or the same number as a given number or group.",
     intuition:
-      "To compare a group with a number, count the group, then ask: is my count more than, fewer than or the same as that number? More means a greater number. Fewer means a lesser number.",
+      "Count each group first, touching each dot once. More than means a bigger number. Fewer than means a smaller number. Equal to means the same as: the count and the number match. For example, 8 dots are more than 6, because you say 8 after 6 when you count.",
     terms: ["more-than", "less-than", "equal"],
+    senses: { "more than": "more-than" },
     method: [
       "Count the dots in each group. Touch each dot once.",
       "Compare each count with the number in the question.",
@@ -138,7 +143,8 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
   "open-number-line-to-120": {
     goal: "On a number line with only three labels, find the point at a given number or read the number at a marked point, up to 120.",
     intuition:
-      "A number line has tick marks that are the same distance apart. Often only a few ticks have numbers. You can still find every other number, because each tick adds the same amount to the one before it.",
+      "A number line is a row of numbers in order, with equal spaces between them. Tick marks are the short marks where the numbers sit, and only a few have their number written. A jump is a move from one tick to the next. Each jump adds the same amount, called the step. A point is a dot that marks one spot, named with a letter. Labeled means the number is written. Count by the step from a labeled tick to find the number at any tick.",
+    senses: { jump: "jump", jumps: "jump" },
     terms: [
       "tick-mark",
       [
@@ -147,12 +153,12 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Pick two labeled numbers next to each other. Count the steps between their ticks.",
-      "Find the size of one step: the difference of the labels divided by the number of steps.",
-      "Start at the labeled number nearest the point. Count steps and add the step size each time, or subtract if you go left.",
+      "Pick two labeled numbers next to each other. Count the jumps between their ticks.",
+      "Find the step. Try a step such as 1, 2, 5 or 10, and count by it that many times from the first label. If you land exactly on the next label, that is the step.",
+      "Start at the labeled number nearest the point. Count up by the step for each jump to the right, or count back by the step for each jump to the left.",
     ],
     watch:
-      "Do not count the labeled tick as a step. Count the jumps between ticks, and use the step size shown by the labels.",
+      "Do not count the labeled tick as a jump. Count the jumps between ticks, and use the step that the labels show.",
   },
   "open-number-line-to-1000": {
     goal: "On a number line with only three labels, find the point at a given number or read the number at a marked point, up to 1,000.",
@@ -285,13 +291,13 @@ export const texasK2Principles: Record<string, string> = {
   "measurable-attribute-choice":
     "An attribute is a property of an object that can be measured with a unit. Length, capacity and weight are three such attributes, and each question about an amount asks about one of them.",
   "dot-group-compared-to-number":
-    "For whole numbers, exactly one is true: $a$ is more than $b$, $a$ is fewer than $b$, or $a$ is the same as $b$. Counting each object once gives the number of a group.",
+    "Take two numbers from the count 0, 1, 2, 3 and so on. Exactly one is true: the first is more than the second, fewer than the second, or the same as the second. Counting each object once gives how many are in a group.",
   "story-sentence-match-20":
     "A story that joins parts has the form part + part = whole. A story that takes away has the form whole − part = part. The unknown number can be in any position, and the sentence matches the story by what happens and where the unknown is.",
   "story-sentence-match-1000":
     "A story that joins parts has the form part + part = whole. A story that takes away has the form whole − part = part. The unknown number can be in any position, and the sentence matches the story by what happens and where the unknown is.",
   "open-number-line-to-120":
-    "On a number line the tick marks are equally spaced. If two ticks labeled $a$ and $b$ are $n$ steps apart, each step is $(b-a)\\div n$, and the number at $k$ steps from $a$ is $a+k\\cdot\\text{step}$.",
+    "On a number line the tick marks are equally spaced, so each jump adds the same step. Adding the step once for each jump takes you from one label to the next. A point a few jumps right of a label is that label plus one step per jump. A point to the left is the label minus one step per jump.",
   "open-number-line-to-1000":
     "On a number line the tick marks are equally spaced. If two ticks labeled $a$ and $b$ are $n$ steps apart, each step is $(b-a)\\div n$, and the number at $k$ steps from $a$ is $a+k\\cdot\\text{step}$.",
   "eighths-and-parts-beyond-one":
@@ -436,37 +442,40 @@ export const texasK2Lessons: Lesson[] = [
     id: "dot-group-compared-to-number",
     title: "More, fewer or the same",
     summary:
-      "Count each group, then compare each count with the number. More is greater, fewer is less, and the same is equal.",
+      "To compare a group with a number, first count the group. Touch each dot once. More than means a bigger number. Fewer than means a smaller number. The same as means the count and the number match.",
+    senses: { "more than": "more-than" },
     objectives: [
       "Count groups of up to 20 dots.",
       "Choose the group that has more than, fewer than or the same as a number.",
     ],
     intuitionTitle: "Count, then compare",
     intuition: [
-      "To compare a group with a number, first count the group. Touch each dot once so that you do not count any twice.",
-      "Then ask: is this count more than the number, fewer than the number or the same as the number?",
+      "Count the dots in a group. Touch each dot once, so you never count a dot twice.",
+      "Then ask: is my count more than the number, fewer than the number, or the same?",
+      "Say the number is 6. A group of 8 dots has more than 6, because 8 comes after 6 when you count. A group of 5 has fewer than 6, because 5 comes before 6. A group of 6 has the same as 6.",
     ],
     example: {
       prompt:
         "Group A has 5 dots, group B has 8 dots and group C has 6 dots. Which group has more dots than 6?",
       steps: [
-        "Compare each count with 6. 5 is fewer than 6. 8 is more than 6. 6 is the same as 6.",
+        "Each group is already counted: 5, 8 and 6 dots.",
+        "Compare each count with 6. You say 5 before 6, so 5 is fewer. You say 8 after 6, so 8 is more. 6 is the same as 6.",
         "Only group B has more than 6.",
       ],
       answer: "Group B.",
     },
     methodTitle: "Check every group",
     method: [
-      "Count the dots in each group and say each count.",
-      "Check each count against the number. Skip the groups that are not what the question asks.",
+      "Count the dots in each group, and say each count.",
+      "Compare each count with the number in the question. Skip the groups that do not fit what the question asks.",
     ],
     formalTitle: "Comparing numbers",
     formal: [
-      "For two whole numbers, exactly one is true: the first is more than the second, fewer than the second, or the same as the second.",
+      "Take two numbers from the count 0, 1, 2, 3 and so on. Exactly one of these is true: the first is more than the second, fewer than the second, or the same as the second.",
     ],
     pitfalls: [
       "A group with the same number is not more and not fewer.",
-      "Count each dot once. Pushing counted dots aside can help.",
+      "Count each dot once. Go in order, row by row, so you do not lose your place.",
     ],
     parentGuide:
       "Put out 7 coins. Ask the learner to make a group with more than 7 and a group with fewer than 7.",
@@ -557,38 +566,42 @@ export const texasK2Lessons: Lesson[] = [
     id: "open-number-line-to-120",
     title: "Open number lines to 120",
     summary:
-      "Only a few ticks are labeled. Find how much each tick adds, then count from a labeled number to the point.",
+      "A number line is a row of numbers in order, with equal spaces between them. Tick marks are the short marks where the numbers sit. Only a few ticks are labeled, which means their number is written. Each tick adds the same amount, called the step. Find the step. Then start at a labeled tick and count the jumps, the moves from one tick to the next.",
+    senses: { jump: "jump", jumps: "jump" },
     objectives: [
       "Read the number at a marked point on a number line labeled at three numbers.",
       "Find the point at a given number.",
     ],
     intuitionTitle: "Equal steps between the labels",
     intuition: [
-      "A number line shows numbers in order. The tick marks are the same distance apart, so each tick adds the same amount to the one before it. Only a few ticks have numbers.",
-      "You can find any number by counting steps from a labeled tick.",
+      "The tick marks are evenly spaced. So each jump from one tick to the next adds the same amount. That amount is the step.",
+      "Say 0 and 50 are labeled, with 5 jumps between them. The 5 equal jumps must add up to 50. Count by 10 five times: 10, 20, 30, 40, 50. That lands on 50, so each step is 10.",
+      "A point is a dot that marks one spot, named with a letter such as $P$. Moving right adds one step for each jump. Moving left takes one step away for each jump. This way you can find the number at any tick.",
     ],
     example: {
       prompt:
         "A number line goes from 0 to 100 with a tick for every 10. Only 0, 50 and 100 are labeled. What number is at point $P$, 3 ticks to the right of 50?",
       steps: [
-        "From 0 to 50 there are 5 steps. Each step is 50 ÷ 5 = 10.",
-        "$P$ is 3 steps right of 50: 50 + 10 + 10 + 10 = 80.",
+        "Count the jumps from 0 to 50: there are 5. Counting by 10 five times goes 10, 20, 30, 40, 50, so each step is 10.",
+        "$P$ is 3 jumps to the right of 50. Moving right adds, so count up by 10 three times: 60, 70, 80.",
+        "We can write it as 50 + 10 + 10 + 10 = 80.",
       ],
       answer: "80.",
     },
     methodTitle: "Find the step size first",
     method: [
-      "Count the steps between two labels. Divide the difference of the labels by the number of steps.",
-      "Count from the labeled number nearest the point, adding one step each time you move right, or subtracting each time you move left.",
-      "To place a number, count steps from a label until you reach that number, then find the point there.",
+      "Pick two labels next to each other. Count the jumps between their ticks.",
+      "Find the step. Try a step such as 1, 2, 5 or 10, and count by it that many times from the first label. If you land exactly on the next label, that is the step.",
+      "Start at the label nearest the point. Count up by the step for each jump to the right. Count back by the step for each jump to the left.",
+      "To place a number, count by the step from a label until you reach that number. The point there is the answer.",
     ],
     formalTitle: "Equal spacing",
     formal: [
-      "On a number line equal distances stand for equal changes in value. If labels $a$ and $b$ are $n$ steps apart, each step is $(b-a)\\div n$.",
+      "On a number line, equal spaces stand for equal steps between the numbers. Say two labels are some jumps apart. Each jump adds the same step. So adding the step once for each jump takes you from the smaller label to the larger one.",
     ],
     pitfalls: [
       "Count the jumps between ticks, not the ticks themselves.",
-      "Work out the step size from the labels. It is not always 1 or 10.",
+      "Work out the step from the labels. It is not always 1 or 10.",
     ],
     parentGuide:
       "Draw a line from 0 to 100 and label 0, 50 and 100. Ask the learner to find where 30 and 70 go.",

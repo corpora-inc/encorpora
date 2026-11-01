@@ -6,8 +6,16 @@ export const earlyDataLessons: Lesson[] = [
     id: "sort-and-count",
     title: "Sort, then count",
     summary:
-      "Put each object into one group, then count how many are in each group.",
+      "To sort means to put things into groups, so everything in a group is alike. Each thing goes into exactly one group. Then count each group. The group with the biggest count has the most. The group with the smallest count has the fewest.",
     templateIds: ["sort-shapes-count", "sort-shapes-most"],
+    senses: {
+      sort: "sort",
+      square: "square-shape",
+      squares: "square-shape",
+      side: "side",
+      sides: "side",
+    },
+    noLink: ["whole", "parts"],
     objectives: [
       "Sort objects into groups by one attribute, such as shape.",
       "Count each group and compare the counts to find the most and the fewest.",
@@ -17,22 +25,24 @@ export const earlyDataLessons: Lesson[] = [
         stage: "intuition",
         title: "Give each object one home",
         paragraphs: [
-          "If a pile contains red and blue buttons, move each button into the matching color group. Then you can count the red group and the blue group without losing track of a button or counting one twice.",
+          "Say a pile has red buttons and blue buttons. Move each red button to the red group and each blue button to the blue group.",
+          "Now count the red group, then the blue group. Each button is in one group only. So no button is missed, and none is counted twice.",
+          "Shapes can be sorted by kind. A circle is a round shape. A square has 4 sides, the straight parts around its outside. All 4 sides are the same size, and its 4 corners, where the sides meet, are like the corner of a page. A triangle has 3 straight sides.",
         ],
       },
       {
         title: "Sorting makes counting easy",
         paragraphs: [
-          "To sort is to put each object in the group it matches. Every object goes in exactly one group, so no object is counted twice or missed.",
-          "These nine shapes sort into 4 circles, 2 squares and 3 triangles. The three counts add back to 9, the number of shapes in the picture.",
+          "Look at the picture. The nine shapes are sorted into 4 circles, 2 squares and 3 triangles.",
+          "Every shape went into exactly one group. So the three counts together make all 9 shapes. The sign + means add, or put more with. The sign = means makes, or is the same as. We write 4 + 2 + 3 = 9. That is a good check.",
         ],
         illustration: "data-sorted-groups",
       },
       {
         title: "Compare the groups",
         paragraphs: [
-          "After counting, the group with the greatest count has the most. The group with the least count has the fewest.",
-          "Compare counts, not how much space a group takes up: a few large shapes can cover more of the page than many small ones.",
+          "After counting, the group with the biggest count has the most. The group with the smallest count has the fewest.",
+          "Compare the counts, not how much room a group takes up. A few large shapes can cover more of the page than many small ones.",
         ],
       },
     ],
@@ -41,7 +51,7 @@ export const earlyDataLessons: Lesson[] = [
         stage: "formal",
         title: "A complete sort",
         paragraphs: [
-          "A useful set of categories assigns each object to exactly one group. The count in each group is its frequency; adding all group frequencies gives the total number of objects sorted.",
+          "A good sort puts each object into exactly one group. The count in each group is how many objects it has. Adding the counts of all the groups gives the total number of objects sorted.",
         ],
       },
     ],
@@ -49,14 +59,15 @@ export const earlyDataLessons: Lesson[] = [
       prompt:
         "Sort 4 circles, 2 squares and 3 triangles by kind. Which kind has the fewest shapes?",
       steps: [
+        "Make one group for each kind: a circle group, a square group and a triangle group. Put each shape in its group.",
         "Count each group: 4 circles, 2 squares, 3 triangles.",
-        "2 is the least of 4, 2 and 3.",
+        "The smallest of 4, 2 and 3 is 2. So the squares have the fewest.",
       ],
       answer: "squares",
     },
     pitfalls: [
-      "Touch each object once; mark it as you count so it is not counted again.",
-      "Check that the group counts add up to the total number of objects.",
+      "Touch each object once. Mark it as you count, so you do not count it again.",
+      "Count all the objects too. The group counts put together should make that same number.",
     ],
     parentGuide:
       "Empty a handful of buttons, coins or blocks onto a table. Sort them by one feature, count each pile, and ask which pile has the most and which has the fewest.",
@@ -179,24 +190,44 @@ export const earlyDataLessons: Lesson[] = [
   },
 ];
 
+const shapeSort =
+  "To sort means to put things into groups, so everything in a group is alike. Here you sort shapes by kind. A circle is a round shape. A square has 4 sides, the straight parts around its outside. All 4 sides are the same size, and its 4 corners, where the sides meet, are like the corner of a page. A triangle has 3 straight sides. Each shape goes into exactly one group. The sign + means add, or put more with. The sign = means makes, or is the same as.";
 export const earlyDataMethods: Record<string, ProblemMethod> = {
   "sort-shapes-count": {
-    goal: "Count the shapes in one group after sorting by kind.",
+    goal: "Sort shapes by kind, then count the shapes in one group.",
+    intuition: `${shapeSort} Then count the group the question names.`,
     terms: ["sort"],
+    senses: {
+      sort: "sort",
+      square: "square-shape",
+      squares: "square-shape",
+      side: "side",
+      sides: "side",
+    },
+    noLink: ["whole", "parts"],
     method: [
       "Make a group for each kind of shape.",
-      "Count the group the question names, touching each shape once.",
+      "Count the group the question names. Touch each shape once.",
     ],
-    watch: "Count only the named kind; skip shapes of other kinds.",
+    watch: "Count only the kind the question names. Skip the other shapes.",
   },
   "sort-shapes-most": {
     goal: "Sort shapes by kind and choose the group with the most or the fewest.",
+    intuition: `${shapeSort} The group with the biggest count has the most. The group with the smallest count has the fewest.`,
+    senses: {
+      sort: "sort",
+      square: "square-shape",
+      squares: "square-shape",
+      side: "side",
+      sides: "side",
+    },
+    noLink: ["whole", "parts"],
     method: [
       "Sort the shapes into groups by kind.",
       "Count every group.",
-      "Choose the greatest count for most, the least for fewest.",
+      "For most, choose the biggest count. For fewest, choose the smallest count.",
     ],
-    watch: "Compare the counts, not how much space the shapes cover.",
+    watch: "Compare the counts, not how much room the shapes take up.",
   },
   "picture-graph-questions": {
     goal: "Use a picture graph where each symbol is one student to find a total or a difference.",
@@ -234,9 +265,9 @@ export const earlyDataMethods: Record<string, ProblemMethod> = {
 };
 export const earlyDataPrinciples: Record<string, string> = {
   "sort-shapes-count":
-    "Sorting puts each object in exactly one group, so the group counts add to the whole collection.",
+    "Sorting puts each object in exactly one group. So the counts of all the groups add up to the number of objects.",
   "sort-shapes-most":
-    "After sorting, the group with the greatest count has the most and the one with the least count has the fewest.",
+    "After sorting, the group with the biggest count has the most. The group with the smallest count has the fewest.",
   "picture-graph-questions":
     "Matching two rows symbol by symbol leaves the difference unmatched: how many more = larger count − smaller count.",
   "scaled-picture-graph":
