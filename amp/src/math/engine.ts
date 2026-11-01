@@ -760,21 +760,33 @@ function addWithinTwenty(a: number, b: number): string[] {
   const sum = a + b,
     big = Math.max(a, b),
     small = Math.min(a, b);
-  if (small === 0) return [`Adding 0 changes nothing: ${a} + ${b} = ${sum}.`];
-  if (sum <= 10) return [`Count on ${b} from ${a}: ${a} + ${b} = ${sum}.`];
+  if (small === 0)
+    return [
+      `Adding 0 means adding nothing, so the number does not change.`,
+      `So ${a} + ${b} = ${sum}.`,
+    ];
+  if (sum <= 10)
+    return [
+      `Start at the greater number, ${big}, because then there are fewer counts to make.`,
+      `Count on ${small}, one number for each: ${Array.from({ length: small }, (_, i) => big + i + 1).join(", ")}.`,
+      `The last number you say is the total, so ${a} + ${b} = ${sum}.`,
+    ];
   if (big < 10) {
     const need = 10 - big;
     return [
+      `Ten is easy to add to, so first build a ten.`,
       `${big} needs ${need} more to make 10.`,
-      `Split ${small} into ${need} and ${small - need}.`,
-      `10 + ${small - need} = ${sum}.`,
+      `Split ${small} into ${need} and ${small - need}, and give the ${need} to the ${big}.`,
+      `Now you have 10 and ${small - need} more: 10 + ${small - need} = ${sum}.`,
+      `So ${a} + ${b} = ${sum}.`,
     ];
   }
   const ones = big - 10;
   return [
-    `${big} is 10 + ${ones}.`,
-    `Add the ones: ${ones} + ${small} = ${ones + small}.`,
-    `10 + ${ones + small} = ${sum}.`,
+    `${big} is 1 ten and ${ones} ones.`,
+    `Add the ones first, because the ten does not change: ${ones} + ${small} = ${ones + small}.`,
+    `Put the ten back: 10 + ${ones + small} = ${sum}.`,
+    `So ${a} + ${b} = ${sum}.`,
   ];
 }
 function addWithinTwentyHint(a: number, b: number): string {
@@ -1202,8 +1214,9 @@ function generateRawProblem(
           ? "The top row has 5 dots. Count them, then keep counting along the bottom row without starting again."
           : "Start at the left dot and say one number for each dot as you touch it.";
       explanation = [
-        `Count each dot once: ${Array.from({ length: n }, (_, i) => i + 1).join(", ")}.`,
-        `There are ${n} dots.`,
+        "Touch each dot once and say one number for it, so no dot is missed or counted twice.",
+        `Count: ${Array.from({ length: n }, (_, i) => i + 1).join(", ")}.`,
+        `The last number you say tells how many, so there are ${n} dots.`,
       ];
       break;
     }
@@ -1224,10 +1237,22 @@ function generateRawProblem(
       prompt = `What is ${a} − ${b}?`;
       answer = `${a - b}`;
       hint = subtractWithinTwentyHint(a, b);
-      explanation = [
-        `Start with ${a}. Remove ${b}.`,
-        `${a} − ${b} = ${answer}.`,
-      ];
+      explanation =
+        b === 0
+          ? [
+              `Taking away 0 means taking away nothing.`,
+              `All ${a} are still there, so ${a} − 0 = ${a}.`,
+            ]
+          : b === a
+            ? [
+                `You start with ${a} and take away all ${a}.`,
+                `Nothing is left, so ${a} − ${b} = 0.`,
+              ]
+            : [
+                `Subtracting ${b} means taking ${b} away from ${a}.`,
+                `Count back ${b} from ${a}, or ask what number added to ${b} makes ${a}.`,
+                `${b} + ${a - b} = ${a}, so ${a} − ${b} = ${answer}.`,
+              ];
       break;
     }
     case "fraction-model": {
@@ -1239,8 +1264,12 @@ function generateRawProblem(
       answer = rational(BigInt(selected), BigInt(parts));
       hint = `The whole is cut into ${parts} equal parts, so the denominator is ${parts}. The numerator counts the shaded parts.`;
       explanation = [
-        `${selected} of ${parts} equal parts are shaded.`,
-        `The fraction is ${selected}/${parts}, equivalent to ${answer}.`,
+        `A fraction names part of a whole: the bottom number counts equal parts, the top counts the parts you mean.`,
+        `The whole is cut into ${parts} equal parts, so the bottom number (the denominator) is ${parts}.`,
+        `${selected} parts are shaded, so the top number (the numerator) is ${selected}.`,
+        answer === `${selected}/${parts}`
+          ? `So ${selected}/${parts} of the whole is shaded.`
+          : `So ${selected}/${parts} of the whole is shaded, which simplifies to ${answer}.`,
       ];
       break;
     }
@@ -1261,13 +1290,23 @@ function generateRawProblem(
       explanation =
         b === d
           ? [
-              `Both fractions count pieces of size 1/${b}.`,
-              `Add the numerators: ${a} + ${c} = ${a + c}, so the sum is ${a + c}/${b} = ${answer}.`,
+              `The bottom number of a fraction (the denominator) tells the size of each piece.`,
+              `Both fractions count pieces of size 1/${b}, so you can add the pieces directly.`,
+              `Add the top numbers (the numerators): ${a} + ${c} = ${a + c}, and keep the piece size ${b}.`,
+              answer === `${a + c}/${b}`
+                ? `So ${a}/${b} + ${c}/${d} = ${answer}.`
+                : `That gives ${a + c}/${b}, so ${a}/${b} + ${c}/${d} = ${answer}.`,
             ]
           : [
-              `A common denominator is ${common}, a multiple of ${b} and ${d}.`,
+              `The bottom number of a fraction (the denominator) tells the size of each piece.`,
+              `Pieces of size 1/${b} and 1/${d} are different, so they cannot be added yet.`,
+              `${common} is a multiple of both ${b} and ${d}, so both fractions can be cut into pieces of size 1/${common}.`,
               `${a}/${b} = ${(a * common) / b}/${common} and ${c}/${d} = ${(c * common) / d}/${common}.`,
-              `Add the numerators: ${sum}/${common} = ${answer}.`,
+              `Now the pieces match, so add the top numbers (the numerators): ${(a * common) / b} + ${(c * common) / d} = ${sum}.`,
+              sum === Number(answer.split("/")[0]) &&
+              answer.endsWith(`/${common}`)
+                ? `So ${a}/${b} + ${c}/${d} = ${answer}.`
+                : `That gives ${sum}/${common}, so ${a}/${b} + ${c}/${d} = ${answer}.`,
             ];
       break;
     }
@@ -1279,8 +1318,11 @@ function generateRawProblem(
       answer = `${width * height}`;
       hint = `Picture square centimeters filling the rectangle: ${height} rows, each ${width} squares long.`;
       explanation = [
-        "Each row contains one square centimeter per centimeter of width.",
-        `${width} × ${height} = ${answer} square centimeters.`,
+        "Area is how many unit squares cover a shape; here each unit square is 1 cm by 1 cm.",
+        `The rectangle is ${width} cm wide, so one row holds ${width} squares.`,
+        `It is ${height} cm high, so there are ${height} rows.`,
+        `${height} rows of ${width} squares is ${width} × ${height} = ${answer} squares.`,
+        `The area is ${answer} square centimeters.`,
       ];
       break;
     }
@@ -1293,8 +1335,11 @@ function generateRawProblem(
       answer = `${x}`;
       hint = `Undo the + ${b} first: subtract ${b} from both sides of ${a}x + ${b} = ${c}.`;
       explanation = [
-        `Subtract ${b}: ${a}x = ${c - b}.`,
-        `Divide by ${a}: x = ${answer}.`,
+        `To solve means to find the value of $x$ that makes both sides equal.`,
+        `$${a}x$ means ${a} times $x$, and then ${b} is added.`,
+        `Undo the last step first: subtract ${b} from both sides, so they stay equal. That gives $${a}x = ${c - b}$.`,
+        `Undo the multiplying: divide both sides by ${a}. That gives $x = ${answer}$.`,
+        `Check: $${a} \\times ${x < 0 ? `(${x})` : x} + ${b} = ${c}$. So $x = ${answer}$.`,
       ];
       break;
     }
@@ -1308,9 +1353,10 @@ function generateRawProblem(
       hint = `Add the values, ${values.join(" + ")}, then share that total equally among the five values.`;
       const mean = sum % 5 === 0 ? `${sum / 5}` : `${sum / 5} = ${answer}`;
       explanation = [
-        "The mean is the sum of the values divided by the number of values.",
-        `Sum: ${values.join(" + ")} = ${sum}.`,
-        `There are 5 values: ${sum} ÷ 5 = ${mean}.`,
+        "The mean is the fair-share value: what each value would be if the total were shared equally.",
+        `First find the total by adding (the sum): ${values.join(" + ")} = ${sum}.`,
+        `There are 5 values, so share the total 5 ways: ${sum} ÷ 5 = ${mean}.`,
+        `The mean is ${mean}.`,
       ];
       break;
     }
@@ -1346,8 +1392,11 @@ function generateRawProblem(
       answer = `${c}`;
       hint = `The hypotenuse $c$ is the side opposite the right angle. Write $c^2 = ${a}^2 + ${b}^2$ and work out the right side.`;
       explanation = [
-        `c² = ${a}² + ${b}² = ${a * a + b * b}.`,
-        `Take the positive square root: c = ${c} cm.`,
+        `The legs are the two sides that meet at the right angle; the hypotenuse $c$ is the longest side, across from it.`,
+        `In every right triangle, leg² + leg² = hypotenuse² (the Pythagorean theorem).`,
+        `So $c^2 = ${a}^2 + ${b}^2 = ${a * a} + ${b * b} = ${a * a + b * b}$.`,
+        `$c$ is the number that times itself makes ${a * a + b * b} (its square root): $${c} \\times ${c} = ${a * a + b * b}$.`,
+        `The hypotenuse is ${c} cm long.`,
       ];
       break;
     }

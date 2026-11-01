@@ -370,7 +370,9 @@ export function generateComparisonProblem(
       explanation = [
         `Counting up: ${Array.from({ length: Math.max(a, b) + 1 }, (_, i) => i).join(", ")}.`,
         `In the count, ${Math.min(a, b)} is before ${Math.max(a, b)}, so ${Math.min(a, b)} is less and ${Math.max(a, b)} is greater.`,
-        greater ? `${pick} > ${other}.` : `${pick} < ${other}.`,
+        greater
+          ? `${pick} is greater. We write ${pick} > ${other}; the open side of > faces the greater number.`
+          : `${pick} is less. We write ${pick} < ${other}; the point of < faces the smaller number.`,
       ];
       break;
     }
@@ -383,7 +385,7 @@ export function generateComparisonProblem(
       hint = placeCompareHint(a, b);
       explanation = [
         ...placeSteps(a, b),
-        `So ${pick} is ${greater ? "greater" : "less"}: ${pick} ${greater ? ">" : "<"} ${other}.`,
+        `So ${pick} is ${greater ? "greater" : "less"}: ${pick} ${greater ? ">" : "<"} ${other}, read "${pick} is ${greater ? "greater" : "less"} than ${other}".`,
       ];
       break;
     }
@@ -395,7 +397,7 @@ export function generateComparisonProblem(
       hint = placeCompareHint(a, b);
       explanation = [
         ...placeSteps(a, b),
-        `So ${pick} is ${greater ? "greater" : "less"}: ${pick} ${greater ? ">" : "<"} ${other}.`,
+        `So ${pick} is ${greater ? "greater" : "less"}: ${pick} ${greater ? ">" : "<"} ${other}, read "${pick} is ${greater ? "greater" : "less"} than ${other}".`,
       ];
       break;
     }
@@ -444,7 +446,8 @@ export function generateComparisonProblem(
       explanation = [
         `Read the places from the right: ones, tens, hundreds, thousands${length > 4 ? ", ten thousands" : ""}${length > 5 ? ", hundred thousands" : ""}.`,
         `The ${digit} is in the ${placeNames[place]} place.`,
-        `Its value is ${digit} × ${formatWhole(placeValues[place]!)} = ${formatWhole(value)}.`,
+        `A digit's value is the digit times the value of its place: ${digit} × ${formatWhole(placeValues[place]!)} = ${formatWhole(value)}.`,
+        `The digit ${digit} in ${formatWhole(n)} has the value ${formatWhole(value)}.`,
       ];
       break;
     }
@@ -475,7 +478,7 @@ export function generateComparisonProblem(
         const deciding = decidingPlace(a, b);
         const matched = placeNames.slice(deciding + 1, la).reverse();
         explanation = [
-          `Both numbers have ${la} digits. Compare from the left.`,
+          `Both numbers have ${la} digits. Compare from the left, because the leftmost place is worth the most.`,
           `${matched.length ? `The ${matched.join(", ")} match. ` : ""}In the ${placeNames[deciding]} place, ${digitAt(a, deciding)} ${digitAt(a, deciding) < digitAt(b, deciding) ? "<" : ">"} ${digitAt(b, deciding)}.`,
         ];
       }
