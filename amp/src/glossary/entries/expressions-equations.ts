@@ -165,7 +165,7 @@ export const expressionsEquationsEntries: GlossaryEntry[] = [
     term: "coefficient",
     forms: ["coefficient", "coefficients"],
     plain:
-      "The number multiplying a variable in a term, with its sign. When no number is written, the coefficient is 1.",
+      "The number multiplying a variable in a term, with its sign. With nothing written in front, the coefficient of $x$ is 1, and in $-x$ it is −1.",
     example:
       "In $-3x + y$, the coefficient of $x$ is −3 and the coefficient of $y$ is 1.",
     uses: ["variable", "term-expression"],
@@ -462,7 +462,7 @@ export const expressionsEquationsEntries: GlossaryEntry[] = [
     term: "expression",
     forms: ["expression", "expressions"],
     plain:
-      "Numbers, letters or both joined by operations such as + and ×, with no equal sign. It names an amount; it does not say two things are equal.",
+      "A number, a letter, or numbers and letters joined by operations such as + and ×, with no equal sign. It names an amount.",
     example: "$5c - 2.50$ and 300 − 90 − 60 are expressions.",
     uses: ["equal-sign"],
     band: "3",
@@ -571,7 +571,7 @@ export const expressionsEquationsEntries: GlossaryEntry[] = [
     id: "intercept",
     term: "intercept",
     forms: ["intercept", "intercepts"],
-    plain: "A point where a graph crosses an axis.",
+    plain: "A point where a graph crosses or touches an axis.",
     example:
       "The line $y = 2x + 4$ crosses the $y$-axis at $(0, 4)$ and the $x$-axis at $(-2, 0)$.",
     uses: ["point", "line"],
@@ -685,7 +685,7 @@ export const expressionsEquationsEntries: GlossaryEntry[] = [
     term: "multiplier",
     forms: ["multiplier", "multipliers"],
     plain:
-      "The number you multiply by. A multiplier above 1 makes an amount bigger; one between 0 and 1 makes it smaller.",
+      "The number you multiply by. For a positive amount, a multiplier above 1 makes it bigger, and one between 0 and 1 makes it smaller.",
     example: "Multiplier 3 turns 8 into 24; multiplier 0.5 turns 8 into 4.",
     uses: [],
     band: "5",
@@ -1274,7 +1274,7 @@ export const expressionsEquationsEntries: GlossaryEntry[] = [
     term: "$y$-intercept",
     forms: ["y-intercept", "y-intercepts"],
     plain:
-      "Where a graph crosses the $y$-axis. There $x = 0$, so the point is $(0, b)$, and $b$ is the $y$-intercept.",
+      "Where a graph meets the $y$-axis. There $x = 0$, so the point is $(0, b)$, and $b$ is the $y$-intercept.",
     example:
       "$y = 2x + 3$ crosses the $y$-axis at $(0, 3)$, so its $y$-intercept is 3.",
     uses: ["y-axis", "point", "intercept"],

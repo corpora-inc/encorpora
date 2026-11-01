@@ -80,9 +80,9 @@ export const algebra2Entries: GlossaryEntry[] = [
     term: "cube root",
     forms: ["cube root", "cube roots"],
     plain:
-      "The number that, multiplied by itself three times, gives the original number. It is written $\\sqrt[3]{a}$.",
+      "The number that, used as a factor three times, gives the original number. It is written $\\sqrt[3]{a}$.",
     example: "$\\sqrt[3]{8}=2$ because 2 × 2 × 2 = 8, and $\\sqrt[3]{-8}=-2$.",
-    uses: [],
+    uses: ["factor-number"],
     band: "8",
   },
   {

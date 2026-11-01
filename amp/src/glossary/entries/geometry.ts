@@ -17,7 +17,8 @@ export const geometryEntries: GlossaryEntry[] = [
     id: "acute-angle",
     term: "acute angle",
     forms: ["acute angle", "acute angles", "acute"],
-    plain: "An angle smaller than a right angle, so it measures less than 90°.",
+    plain:
+      "An angle bigger than 0° and smaller than a right angle, so it measures between 0° and 90°.",
     example: "Angles of 30° and 89° are both acute.",
     uses: ["angle", "right-angle", "less-than"],
     band: "4",
@@ -408,10 +409,11 @@ export const geometryEntries: GlossaryEntry[] = [
       "correspondence",
     ],
     plain:
-      "In the same position in two matched figures. When one figure is moved onto the other, corresponding sides, angles and corners land on each other.",
+      "In the same position in two matched figures. Corresponding sides, angles and corners are the parts that pair up when one figure is matched to the other.",
     example:
       "If triangle $ABC$ matches triangle $DEF$ in that order, side $AB$ corresponds to side $DE$.",
     uses: ["side", "angle", "corner", "triangle"],
+    noLink: ["parts"],
     band: "8",
   },
   {
@@ -591,10 +593,10 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "directrix",
     forms: ["directrix", "directrices"],
     plain:
-      "The fixed line used with a focus to draw a curve: every point on the curve is just as far from this line as from the focus.",
+      "The fixed line used with a focus to draw a parabola: every point on the parabola is just as far from this line as from the focus.",
     example:
       "The curve $y = \\tfrac{1}{4}x^2$ has focus (0, 1) and directrix $y = -1$.",
-    uses: ["line", "focus", "point"],
+    uses: ["line", "focus", "point", "parabola"],
     band: "geometry",
   },
   {
@@ -712,10 +714,19 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "height",
     forms: ["height", "heights", "perpendicular height"],
     plain:
-      "How tall a shape is: the straight-up distance from its base to its top, measured at a right angle to the base.",
+      "The distance from a shape's base to its highest point, measured along a line that meets the base at a right angle. A slanted side is not the height.",
     example:
       "A triangle with base 6 and height 4 has area $\\tfrac{1}{2} \\times 6 \\times 4 = 12$.",
-    uses: ["distance", "base-shape", "right-angle", "triangle", "area"],
+    uses: [
+      "distance",
+      "base-shape",
+      "right-angle",
+      "triangle",
+      "area",
+      "point",
+      "line",
+      "side",
+    ],
     band: "5",
   },
   {
@@ -960,8 +971,8 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "oblique",
     forms: ["oblique"],
     plain:
-      "Slanted. An oblique prism or cylinder leans, so its sides do not stand straight up from its base.",
-    uses: ["prism", "cylinder", "base-shape"],
+      "Slanted. An oblique prism or cylinder leans: the line joining the centers of its two bases does not meet them at a right angle.",
+    uses: ["prism", "cylinder", "base-shape", "line", "right-angle", "center"],
     band: "geometry",
     noLink: ["sides"],
   },
@@ -999,8 +1010,8 @@ export const geometryEntries: GlossaryEntry[] = [
     plain:
       "To find the choice that makes a quantity as large or as small as possible, such as the most area for a fixed amount of fence.",
     example:
-      "With 40 m of fence, a 10 m by 10 m square encloses the most area, 100 square meters.",
-    uses: ["area", "square-shape"],
+      "Among rectangles with 40 m of fence around them, a 10 m by 10 m square encloses the most area, 100 square meters.",
+    uses: ["area", "square-shape", "rectangle"],
     band: "geometry",
   },
   {
@@ -1144,8 +1155,8 @@ export const geometryEntries: GlossaryEntry[] = [
       "triangular prisms",
     ],
     plain:
-      "A solid with two matching flat ends that are the same polygon, joined by flat faces. A box is a rectangular prism.",
-    uses: ["solid-shape", "polygon", "face-solid"],
+      "A solid with two matching, parallel flat ends that are the same polygon, joined by flat side faces. A box is a rectangular prism.",
+    uses: ["solid-shape", "polygon", "face-solid", "parallel", "side"],
     band: "5",
   },
   {
@@ -1212,7 +1223,7 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "Pythagorean triple",
     forms: ["pythagorean triple", "pythagorean triples"],
     plain:
-      "Three whole numbers that fit $a^2 + b^2 = c^2$, so they can be the sides of a right triangle.",
+      "Three positive whole numbers that fit $a^2 + b^2 = c^2$, so they can be the sides of a right triangle.",
     example: "3, 4, 5 and 5, 12, 13 are Pythagorean triples.",
     uses: ["whole-number", "side", "right-triangle"],
     band: "8",
@@ -1283,10 +1294,10 @@ export const geometryEntries: GlossaryEntry[] = [
     forms: ["reflection", "reflections", "reflect", "reflects", "reflected"],
     plain:
       "A flip of a figure across a line, making its mirror image. Each point lands just as far from the line, on the other side.",
-    example: "Your reflection in a mirror is flipped left to right.",
+    example: "A letter b reflected across a vertical line becomes a d.",
     uses: ["point", "line"],
     band: "4",
-    noLink: ["side", "image"],
+    noLink: ["side", "image", "vertical line"],
   },
   {
     id: "reflexive-property",
@@ -1375,12 +1386,12 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "rotational symmetry",
     forms: ["rotational symmetry"],
     plain:
-      "A figure has rotational symmetry when a turn of less than 360° about its center lands it exactly on itself.",
+      "A figure has rotational symmetry when a turn of more than 0° and less than 360° about its center lands it exactly on itself.",
     example:
       "A square has rotational symmetry: a 90° turn leaves it looking the same.",
     uses: ["center", "less-than", "square-shape"],
     band: "geometry",
-    noLink: ["leaves"],
+    noLink: ["leaves", "more than"],
   },
   {
     id: "same-side-interior-angles",
@@ -1537,8 +1548,8 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "slant height",
     forms: ["slant height", "slant heights"],
     plain:
-      "The distance along the slanted side of a cone or pyramid, from its tip down to the edge of its base.",
-    uses: ["distance", "cone", "pyramid", "base-shape"],
+      "For a cone, the distance from the tip along its side to the edge of the base. For a regular pyramid, the height of one triangular side face.",
+    uses: ["distance", "cone", "pyramid", "base-shape", "height", "face-solid"],
     band: "geometry",
     noLink: ["side", "edge"],
   },
@@ -1657,12 +1668,12 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "symmetry",
     forms: ["symmetry", "symmetric", "symmetrical"],
     plain:
-      "A figure has symmetry when a flip or a turn moves it exactly onto itself, so it looks unchanged.",
+      "A figure has symmetry when a flip, or a turn of less than a full turn, moves it exactly onto itself, so it looks unchanged.",
     example:
       "A heart shape has symmetry: its left half is the mirror image of its right half.",
     uses: ["half"],
     band: "4",
-    noLink: ["image"],
+    noLink: ["image", "less than"],
   },
   {
     id: "tangent-line",
@@ -1687,10 +1698,16 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "tangent",
     forms: ["tangent", "tan"],
     plain:
-      "For an angle of a right triangle, the opposite leg divided by the adjacent leg.",
+      "For an acute angle of a right triangle, the opposite leg divided by the adjacent leg.",
     example:
       "With opposite leg 3 and adjacent leg 4, $\\tan A = \\tfrac{3}{4}$.",
-    uses: ["angle", "right-triangle", "opposite-side-angle", "adjacent-leg"],
+    uses: [
+      "angle",
+      "right-triangle",
+      "opposite-side-angle",
+      "adjacent-leg",
+      "acute-angle",
+    ],
     band: "geometry",
     autoLink: false,
   },
