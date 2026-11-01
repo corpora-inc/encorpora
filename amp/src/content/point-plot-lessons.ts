@@ -79,7 +79,7 @@ const entries: Entry[] = [
     title: "Plot points in all four quadrants",
     goal: "Plot points $(x, y)$ in all four quadrants: across by the first number, then up or down by the second.",
     summary:
-      "A coordinate plane is a flat grid made from two number lines that cross at a point called the origin. A point is named by an ordered pair, such as $(3, -2)$. The first number says how far to move across: right if positive, left if negative. The second says how far to move up or down: up if positive, down if negative.",
+      "A number line is a line with evenly spaced numbers. A coordinate plane is a flat grid made from two number lines that cross at 0, at a point called the origin. A point is named by an ordered pair, such as $(3, -2)$; the order matters. Start at the origin. The first number says how far to move across: right if positive, left if negative. The second says how far to move up or down: up if positive, down if negative.",
     objectives: [
       "Plot points with positive, negative and zero coordinates, including points on an axis.",
       "Plot the mirror image of a point across the $x$-axis or the $y$-axis by changing the sign of one coordinate.",
@@ -95,7 +95,7 @@ const entries: Entry[] = [
     watch:
       "Move across first, then up or down. Swapping the coordinates plots $(-2, 3)$ instead of $(3, -2)$, a different point.",
     principle:
-      "Each point of the plane matches exactly one ordered pair $(x, y)$ of real numbers: how far across and how far up from the origin, with signs for direction. Points whose coordinates differ only in sign are mirror images across an axis. $(x, -y)$ is the mirror image across the $x$-axis, and $(-x, y)$ across the $y$-axis.",
+      "Each point of the plane matches exactly one ordered pair $(x, y)$ of real numbers: how far across and how far up from the origin, with signs for direction. Points that differ only in the sign of one coordinate are mirror images across an axis. $(x, -y)$ is the mirror image across the $x$-axis, and $(-x, y)$ across the $y$-axis.",
     example: {
       prompt: "Plot the points $A(3, -2)$, $B(0, 4)$ and $C(-5, 0)$.",
       figure: solved(
@@ -123,7 +123,7 @@ const entries: Entry[] = [
       "The plane is the set of ordered pairs of real numbers. The distance of $(x, y)$ from the $y$-axis is $|x|$, and from the $x$-axis is $|y|$; the bars mean the size of the number without its sign. Reflecting (flipping like a mirror) across the $x$-axis sends $(x, y)$ to $(x, -y)$. Reflecting across the $y$-axis sends $(x, y)$ to $(-x, y)$.",
     pitfalls: [
       "Plot the first coordinate across and the second up or down, never the reverse.",
-      "A zero coordinate places the point on an axis, not at the origin.",
+      "One zero coordinate places the point on an axis. Only $(0, 0)$, with both zero, is the origin.",
     ],
     parentGuide:
       "Ask your learner to say each move aloud before tapping: “3 right, 2 down.”",
@@ -133,7 +133,7 @@ const entries: Entry[] = [
     title: "Graph a line from its equation",
     goal: "Graph a line from its equation by placing two of its points.",
     summary:
-      "An equation like $y = -\\frac{2}{3}x + 3$ is true for many points $(x, y)$, and they all lie on one straight line. Two points are enough to draw a line. Find one point from the equation. Then use the slope, how much $y$ goes up or down for each step right, to walk to a second point.",
+      "A point $(x, y)$ on a grid means go $x$ across and $y$ up from $(0, 0)$. An equation like $y = -\\frac{2}{3}x + 3$ is true for many points. They all lie on one straight line. Two points are enough to draw a line. Find one point from the equation. Then use the slope, how much $y$ goes up or down for each step right, to walk to a second point.",
     objectives: [
       "Find points of a line from equations such as $y = mx + b$, $ax + by = c$ or $y - y_1 = m(x - x_1)$.",
       "Use the slope, the rise (up or down) over the run (across), to step from one grid point of the line to the next.",
@@ -142,7 +142,7 @@ const entries: Entry[] = [
       "An equation in $x$ and $y$ is true for a set of points $(x, y)$. For a linear equation, those points lie on a straight line. The slope of the line says how much $y$ changes for each step of 1 in $x$. It is written as a fraction, rise over run: the rise is the move up (or down, if negative) and the run is the move right. In $y = mx + b$, $m$ is the slope and $(0, b)$ is where the line crosses the $y$-axis. From one point, the slope lets you walk to the next.",
     terms: ["slope", "y-intercept"],
     method: [
-      "Find one point. In $y = mx + b$ it is $(0, b)$. In $y - y_1 = m(x - x_1)$ it is $(x_1, y_1)$. A proportional rule $y = kx$ passes through $(0, 0)$. In $ax + by = c$, put in an $x$ value that makes $y$ a whole number.",
+      "Find one point. In $y = mx + b$ it is $(0, b)$. In $y - y_1 = m(x - x_1)$ it is $(x_1, y_1)$. A proportional rule $y = kx$ passes through $(0, 0)$. In $ax + by = c$ with $b \\ne 0$, put in an $x$ value that makes $y$ an integer (a whole number or its negative).",
       "From that point, use the slope $\\frac{\\text{rise}}{\\text{run}}$. Move right by the run, then up by the rise (down if the rise is negative), to a second point.",
       "Place both points. Any two different points of the line are correct; the graph is the line through them.",
     ],
@@ -169,7 +169,7 @@ const entries: Entry[] = [
     },
     methodTitle: "One point, then the slope",
     methodText: [
-      "A fraction slope tells you how far to step so you land on grid points. With slope $\\frac{2}{3}$, move 3 right and 2 up. With a whole-number slope such as $-2$, move 1 right and 2 down.",
+      "Starting from a grid point, a fraction slope tells you how far to step to land on another grid point. With slope $\\frac{2}{3}$, move 3 right and 2 up. With an integer slope such as $-2$, move 1 right and 2 down.",
       "A flat line $y = k$ has slope 0: every point has $y$-coordinate $k$. A proportional rule $y = kx$ always passes through the origin, $(0, 0)$.",
     ],
     formal:
@@ -187,7 +187,7 @@ const entries: Entry[] = [
     senses: { vertex: "vertex", vertices: "vertex" },
     goal: "Move a figure by a slide, flip or turn, and place each new corner under its matching label.",
     summary:
-      "A rigid motion moves a shape without stretching or bending it. A translation slides it, a reflection flips it over a line, and a rotation turns it around a point. Each motion has a rule for coordinates, the numbers $(x, y)$ of a point. Apply the rule to each corner. The new corner of $A$ is named $A'$, read “A prime”.",
+      "A rigid motion moves a shape without stretching or bending it. A translation slides it, a reflection flips it over a line, and a rotation turns it around a point. A point's coordinates $(x, y)$ say how far across and how far up it is from $(0, 0)$, in that order. Each motion has a rule for the coordinates. Apply the rule to each corner. The new corner of $A$ is named $A'$, read “A prime”.",
     objectives: [
       "Apply coordinate rules for slides, flips over an axis, and quarter and half turns about the origin.",
       "Place the new points in order, so $A$ goes to $A'$, $B$ to $B'$ and $C$ to $C'$.",
@@ -246,8 +246,8 @@ const entries: Entry[] = [
     },
     methodTitle: "Rules for each motion",
     methodText: [
-      "A flip keeps the coordinate along the mirror line and changes the sign of the other. A half turn changes both signs.",
-      "A quarter turn swaps the coordinates. Then it changes the sign of the new $x$ (counterclockwise) or the new $y$ (clockwise).",
+      "A flip over the $x$-axis or the $y$-axis keeps the coordinate along that axis and changes the sign of the other. A half turn about the origin changes both signs.",
+      "A quarter turn about the origin swaps the coordinates. Then it changes the sign of the new $x$ (counterclockwise) or the new $y$ (clockwise).",
       "Place images in order; each label goes with its own vertex.",
     ],
     formal:
@@ -265,7 +265,7 @@ const entries: Entry[] = [
     title: "Graph a parabola by placing points",
     goal: "Graph a parabola by finding its turning point, the vertex, and then points on both sides of it.",
     summary:
-      "An equation with $x^2$ ($x$ times $x$), such as $y = 2(x - 1)^2 - 3$, makes a U-shaped curve called a parabola. Its turning point is called the vertex. The two sides are mirror images of each other. So find the vertex first, then put in whole numbers next to it to find more points.",
+      "A graph shows, as points $(x, y)$ on a grid, every pair that makes an equation true. An equation with $x^2$ ($x$ times $x$), such as $y = 2(x - 1)^2 - 3$, makes a U-shaped graph called a parabola. Its turning point is called the vertex. The two sides are mirror images of each other. So find the vertex first, then put in integers (whole numbers or their negatives) next to it to find more points.",
     objectives: [
       "Read the vertex from $y = a(x - h)^2 + k$, and find it from $y = ax^2 + bx + c$ with $x = -\\frac{b}{2a}$.",
       "Find grid points of a parabola by putting in whole numbers for $x$ and using its mirror symmetry.",
@@ -304,7 +304,7 @@ const entries: Entry[] = [
     methodTitle: "Vertex first, then symmetry",
     methodText: [
       "The form $y = ax^2 + bx + c$ hides the vertex. For $y = x^2 - 4x + 1$, $x = -\\frac{-4}{2 \\cdot 1} = 2$, and $y = 2^2 - 4 \\cdot 2 + 1 = -3$. So the vertex is $(2, -3)$.",
-      "With a fraction in front, such as $a = \\frac{1}{2}$, $y$ is a whole number only when $(x - h)^2$ is even. So test $x$ values two steps apart.",
+      "With a fraction in front, such as $a = \\frac{1}{2}$, only some $x$ values give a $y$ that lands on a grid point. Test several, such as $x$ values two steps apart.",
     ],
     formal:
       "Completing the square rewrites $ax^2 + bx + c$ as $a\\left(x + \\frac{b}{2a}\\right)^2 + c - \\frac{b^2}{4a}$, so the vertex is at $x = -\\frac{b}{2a}$. Since $(x - h)^2$ has the same value at $h + d$ and $h - d$, the graph is symmetric about $x = h$.",
@@ -320,13 +320,13 @@ const entries: Entry[] = [
     title: "Graph an absolute value function by placing points",
     goal: "Graph a V-shaped absolute value function by finding its corner point and then points on both sides.",
     summary:
-      "The absolute value of a number is its distance from 0, written with bars: $|-3| = 3$. The graph of $y = a|x - h| + k$ is V-shaped. Its corner, called the vertex, is at $(h, k)$. Both arms are straight. Find the vertex, then step the same distance left and right to find points.",
+      "The absolute value of a number is its distance from 0, written with bars: $|-3| = 3$. A graph shows, as points $(x, y)$ on a grid, every pair that makes an equation true. The graph of $y = 2|x + 1| - 4$ is V-shaped, with its corner at $(-1, -4)$, called the vertex. In general, $y = a|x - h| + k$ with $a \\ne 0$ has its vertex at $(h, k)$: $h$ across, $k$ up. Find the vertex, then step the same distance left and right to find points.",
     objectives: [
       "Find the vertex of $y = a|x - h| + k$ and which way the graph opens, up or down.",
       "Find grid points on both sides of the vertex by putting in numbers for $x$.",
     ],
     intuition:
-      "The absolute value of a number is its distance from 0, written between bars: $|-3| = 3$ and $|3| = 3$. So $|x - h|$ is the distance from $x$ to $h$. It is 0 at $x = h$, and grows by 1 for each step away in either direction. Multiplying by $a$ stretches that distance, and adding $k$ lifts it. So the graph is V-shaped: two straight arms that meet at a corner called the vertex, $(h, k)$.",
+      "The absolute value of a number is its distance from 0, written between bars: $|-3| = 3$ and $|3| = 3$. So $|x - h|$ is the distance from $x$ to $h$. It is 0 at $x = h$, and grows by 1 for each step away in either direction. Multiplying by $a$ (not 0) changes how fast it grows, and flips it if $a$ is negative. Adding $k$ moves it up or down. So the graph is V-shaped: two straight arms that meet at a corner called the vertex, $(h, k)$.",
     terms: ["absolute-value", "vertex-parabola"],
     method: [
       "Find the $x$ that makes the inside of the bars 0: that is $h$. Then $y = k$ there, so the vertex is $(h, k)$.",
@@ -359,7 +359,7 @@ const entries: Entry[] = [
     methodTitle: "Distance from the vertex",
     methodText: [
       "Think of $|x - h|$ as the number of steps between $x$ and $h$. Each step adds $a$ to $y$, on both sides of the vertex.",
-      "With $a = \\frac{1}{2}$, $y$ is a whole number only when the distance is even. So look two steps from the vertex.",
+      "With $a = \\frac{1}{2}$ and an integer $k$, $y$ is an integer only when the distance is even. So look two steps from the vertex.",
     ],
     formal:
       "For $x \\ge h$, $|x - h| = x - h$, so the graph is the straight arm with slope $a$ starting at $(h, k)$. For $x < h$, $|x - h| = h - x$, so the arm has slope $-a$. The two arms are mirror images across the up-and-down line $x = h$.",
@@ -375,18 +375,18 @@ const entries: Entry[] = [
     title: "Graph an exponential function by placing points",
     goal: "Graph $y = a \\cdot b^x$ by making a table: each step right multiplies $y$ by $b$, each step left divides.",
     summary:
-      "In $y = 3 \\cdot 2^x$, $2^x$ means 2 multiplied by itself $x$ times. Each step of 1 to the right multiplies $y$ by 2. Each step to the left divides $y$ by 2. A function like this is called exponential. Its graph curves, and it gets closer and closer to the $x$-axis without ever touching it.",
+      "In $y = 3 \\cdot 2^x$, the dot means times, and for a whole number $x$, $2^x$ means 2 multiplied by itself $x$ times; $2^0 = 1$. So each step of 1 to the right multiplies $y$ by 2, and each step left divides $y$ by 2. A rule like this, which multiplies by the same number each step, is called exponential. Its graph (the picture of its points) curves. Going left, it gets closer and closer to the across axis without ever touching it.",
     objectives: [
       "Make a table of $y = a \\cdot b^x$ for whole-number $x$, including negative values.",
       "Keep the points whose outputs are whole numbers that fit on the grid.",
     ],
     intuition:
-      "In $b^x$, the small raised $x$ is called the exponent: $2^3 = 2 \\cdot 2 \\cdot 2 = 8$. Any number (other than 0) to the power 0 is 1, so $b^0 = 1$. A function $y = a \\cdot b^x$ is called exponential. It multiplies $y$ by the same number $b$, called the growth factor, for every step of 1 in $x$. At $x = 0$, $y = a$. Moving right multiplies by $b$ and moving left divides by $b$. The graph bends, because each step multiplies instead of adding. It comes closer and closer to the $x$-axis but never touches it.",
+      "In $b^x$, the small raised $x$ is called the exponent: $2^3 = 2 \\cdot 2 \\cdot 2 = 8$. Any number (other than 0) to the power 0 is 1, so $b^0 = 1$. A function $y = a \\cdot b^x$, with $a > 0$, $b > 0$ and $b \\ne 1$, is called exponential. It multiplies $y$ by the same number $b$, called the growth factor, for every step of 1 in $x$. At $x = 0$, $y = a$. Moving right multiplies by $b$ and moving left divides by $b$. The graph bends, because each step multiplies instead of adding. It comes closer and closer to the $x$-axis but never touches it.",
     terms: ["growth-factor", "asymptote"],
     method: [
       "Start at $x = 0$: $y = a \\cdot b^0 = a \\cdot 1 = a$.",
       "Move right by multiplying $y$ by $b$. Move left by dividing $y$ by $b$. Make a table of $x$ and $y$.",
-      "Keep the pairs whose $y$ is a whole number that fits on the grid, and place the points the question asks for.",
+      "Keep the pairs whose $y$ is an integer that fits on the grid, and place the points the question asks for.",
     ],
     watch:
       "A negative exponent does not make $y$ negative: $2^{-1} = \\frac{1}{2}$. For $b = \\frac{1}{2}$, going left doubles $y$.",
@@ -414,14 +414,14 @@ const entries: Entry[] = [
     },
     methodTitle: "Multiply to move right, divide to move left",
     methodText: [
-      "A table of $x$ and $y$ shows the pattern: each row multiplies $y$ by $b$. Only the rows with whole-number $y$ become points.",
-      "For $b = 2$, the useful points are to the right of 0. For $b = \\frac{1}{2}$, they are to the left.",
+      "A table of $x$ and $y$ shows the pattern: each row multiplies $y$ by $b$. Only the rows with an integer $y$ land on grid points.",
+      "For $b = 2$, the useful points are often to the right of 0. For $b = \\frac{1}{2}$, they are often to the left.",
     ],
     formal:
       "Since $b^{x + 1} = b \\cdot b^x$, the $y$ values one step apart always have the ratio $b$. For $x = -n$ with $n > 0$, $b^{-n} = \\frac{1}{b^n}$, so $y = \\frac{a}{b^n}$. For $b = \\frac{p}{q}$ this equals $a\\left(\\frac{q}{p}\\right)^n$.",
     pitfalls: [
       "Do not treat $2^x$ like $2x$: $2^3 = 8$, not 6.",
-      "Skip a point when $y$ is a fraction; only whole-number pairs sit on grid points.",
+      "Skip a point when $y$ is a fraction; only pairs of integers (whole numbers or their negatives) sit on grid points.",
     ],
     parentGuide:
       "Ask your learner to fill a table one row at a time, saying whether each step multiplies or divides.",

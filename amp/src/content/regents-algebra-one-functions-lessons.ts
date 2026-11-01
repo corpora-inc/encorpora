@@ -53,7 +53,7 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
     method: [
       "List the inputs already used, and the output each one has.",
       "Compare the unknown input with that list. A repeated input must have the same output.",
-      "Choose the value the question asks for: an unused input keeps a function, and a used input with a new output breaks it.",
+      "Choose the value the question asks for. A new input keeps a function, and so does a used input with the same output. A used input with a different output breaks it.",
     ],
     watch:
       "Repeated outputs are allowed. Only a repeated input with different outputs breaks the rule.",
@@ -91,7 +91,7 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "A zero of a function is an input that makes the output 0. Factors are the parts being multiplied. Two numbers multiply to 0 only when at least one of them is 0. An expression like $x^2 - 36$, where $x^2$ means $x$ times $x$, is called a difference of squares. It factors as $(x - 6)(x + 6)$, so it gives two zeros.",
+      "A zero of a function is an input that makes the output 0. Factors are the parts being multiplied. Two numbers multiply to 0 only when at least one of them is 0. An expression like $x^2 - 36$, where $x^2$ means $x$ times $x$, is called a difference of squares. It factors as $(x - 6)(x + 6)$, so it gives two zeros, 6 and $-6$.",
     terms: ["zero-of-a-function", "difference-of-squares"],
     method: [
       "Factor completely, including any difference of squares: $x^2 - k^2 = (x - k)(x + k)$.",
@@ -111,7 +111,7 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
       "output",
       [
         "zero-of-a-function",
-        "Here, a value of $x$ that makes one side of the equation equal 0.",
+        "Here, a value of $x$ that makes $f(x) - c$, the rearranged side, equal 0.",
       ],
     ],
     method: [
@@ -135,14 +135,14 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
       "Choose the rule whose axis matches.",
     ],
     watch:
-      "Divide by $2a$, not $a$. When $a$ is positive, the axis has the opposite sign to $b$.",
+      "Divide by $2a$, not $a$. When $a$ is positive and $b$ is not 0, the axis's $x$ value has the opposite sign to $b$.",
   },
   "quadratic-formula-positive": {
     goal: "Use the quadratic formula on an equation like $3x^2 + 4x - 2 = 0$, whose solutions are not whole numbers or fractions.",
     senses,
     noLink,
     intuition:
-      "An equation $ax^2 + bx + c = 0$ with $a \\ne 0$ is called quadratic; $x^2$ means $x$ times $x$. When it does not factor, the quadratic formula still finds its solutions: $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The sign $\\pm$ means “plus or minus”, giving two answers. The number $b^2 - 4ac$ under the root is called the discriminant.",
+      "An equation $ax^2 + bx + c = 0$ with $a \\ne 0$ is called quadratic; $x^2$ means $x$ times $x$. When it does not factor, the quadratic formula still finds its solutions: $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The sign $\\pm$ means “plus or minus”, so it can give two answers. The number $b^2 - 4ac$ under the root is called the discriminant.",
     terms: [
       "discriminant",
       [
@@ -183,13 +183,13 @@ export const regentsAlgebraOneFunctionPrinciples: Record<string, string> = {
   "radical-function-value":
     "For $f(x) = a\\sqrt{x + b} + c$, the value at an input $x_0$ is $a\\sqrt{x_0 + b} + c$, using the square root that is 0 or positive. The input must make the radicand (the number under the root) at least 0.",
   "zeros-of-factored-product":
-    "Two numbers multiply to 0 exactly when at least one of them is 0: $AB = 0$ exactly when $A = 0$ or $B = 0$. This is called the zero product property. Since $x^2 - k^2 = (x - k)(x + k)$, the function $x(x^2 - k^2)$ has the three zeros 0, $k$ and $-k$.",
+    "Two numbers multiply to 0 exactly when at least one of them is 0: $AB = 0$ exactly when $A = 0$ or $B = 0$. This is called the zero product property. Since $x^2 - k^2 = (x - k)(x + k)$, the function $x(x^2 - k^2)$ has the zeros 0, $k$ and $-k$, which are three different zeros when $k \\ne 0$.",
   "quadratic-negative-output":
     "The inputs with $f(x) = c$ are the solutions of $f(x) - c = 0$. When those solutions are whole numbers, factoring and setting each factor equal to 0 finds them.",
   "parabola-axis-rule":
     "The graph of $y = ax^2 + bx + c$ with $a \\ne 0$ is symmetric about the up-and-down line $x = -\\frac{b}{2a}$, which passes through the vertex (the turning point). Changing $c$ moves the graph up or down and does not change the axis.",
   "quadratic-formula-positive":
-    "If $a \\ne 0$, the solutions of $ax^2 + bx + c = 0$ are $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. They are real numbers when $b^2 - 4ac \\ge 0$. They are irrational (not a fraction of whole numbers) when $b^2 - 4ac$ is positive and not a perfect square.",
+    "If $a \\ne 0$, the solutions of $ax^2 + bx + c = 0$ are $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. They are real numbers when $b^2 - 4ac \\ge 0$. When $a$, $b$ and $c$ are integers, they are irrational (not a fraction of integers) if $b^2 - 4ac$ is positive and not a perfect square.",
   "factor-large-trinomial":
     "For integers $p$ and $q$, $(x + p)(x + q) = x^2 + (p + q)x + pq$. So $x^2 + bx + c$ factors this way, with integers, exactly when there are integers $p$ and $q$ with $p + q = b$ and $pq = c$.",
 };
@@ -202,7 +202,7 @@ export const regentsAlgebraOneFunctionLessons = [
       id: "regents-function-missing-input",
       title: "Completing a relation so it is a function",
       summary:
-        "A function is a rule that gives each input exactly one output. A list of pairs like $(4, -1)$ shows inputs (first numbers) and outputs (second numbers). If one input showed up with two different outputs, it would not be a function. So to keep a function, an unknown input must be new, or must have the same output as before.",
+        "A function is a rule that turns each input (what you put in) into exactly one output (what comes out). A list of pairs like $(4, -1)$ shows inputs (first numbers) and outputs (second numbers). If one input showed up with two different outputs, it would not be a function. So to keep a function, an unknown input must be new, or must have the same output as before.",
       templateIds: ["function-missing-input"],
       objectives: [
         "State the rule that makes a set of ordered pairs a function.",
@@ -294,7 +294,7 @@ export const regentsAlgebraOneFunctionLessons = [
       id: "regents-radical-function-value",
       title: "Evaluating a square-root function",
       summary:
-        "The square root of a number is the number that, times itself, gives it: $\\sqrt{25} = 5$. A rule like $f(x) = 2\\sqrt{x - 4} + 1$ is a recipe: subtract 4, take the square root, double it, then add 1. To find $f(29)$, follow the recipe with 29, working from the inside of the root outward.",
+        "The square root of a number is the number, 0 or positive, that times itself gives it: $\\sqrt{25} = 5$. $f(x)$, read “$f$ of $x$”, is the output of a function $f$ for input $x$. A rule like $f(x) = 2\\sqrt{x - 4} + 1$ is a recipe: subtract 4, take the square root, double it, then add 1. To find $f(29)$, follow the recipe with 29, working from the inside of the root outward.",
       templateIds: ["radical-function-value"],
       objectives: [
         "Put an input into a rule that has a square root in it.",
@@ -342,7 +342,7 @@ export const regentsAlgebraOneFunctionLessons = [
       id: "regents-factor-then-zeros",
       title: "Factoring to find zeros",
       summary:
-        "A zero of a function is an input that makes the output 0. If two numbers multiply to make 0, at least one of them is 0. So write the function as factors, the parts being multiplied, like $x(x - 6)(x + 6)$. Then set each factor equal to 0. Here that gives the zeros 0, 6 and $-6$.",
+        "A function turns each input into one output. A zero of a function is an input that makes the output 0. If two numbers multiply to make 0, at least one of them is 0. So write the function as factors, the parts being multiplied, like $x(x - 6)(x + 6)$; parentheses side by side mean multiply. Then set each factor equal to 0. Here that gives the zeros 0, 6 and $-6$.",
       templateIds: ["zeros-of-factored-product", "factor-large-trinomial"],
       objectives: [
         "Factor $x^2 + bx + c$ by finding two numbers that multiply to $c$ and add to $b$.",
@@ -367,7 +367,7 @@ export const regentsAlgebraOneFunctionLessons = [
       },
       methodTitle: "Factor, then set each factor to zero",
       method: [
-        "For a trinomial, list the pairs of numbers that multiply to the plain number, and check each pair's sum. A negative plain number needs one positive and one negative number.",
+        "For a trinomial $x^2 + bx + c$, list the pairs of numbers that multiply to the plain number, and check each pair's sum. A negative plain number needs one positive and one negative number.",
         "For a difference of squares, use $x^2 - k^2 = (x - k)(x + k)$.",
         "Set every factor, including a lone $x$, equal to 0.",
       ],
@@ -392,7 +392,7 @@ export const regentsAlgebraOneFunctionLessons = [
       id: "regents-solve-quadratic-equations",
       title: "Solving quadratic equations by factoring and by formula",
       summary:
-        "A quadratic equation has an $x^2$ term ($x$ times $x$), like $x^2 - 8x + 15 = 0$. To solve one, first get 0 on one side. Then factor it, because two factors multiply to 0 only when one of them is 0. When it will not factor neatly, a formula called the quadratic formula always finds the solutions.",
+        "A quadratic equation has an $x^2$ part ($x$ times $x$) and no higher power, like $x^2 - 8x + 15 = 0$. Its solutions are the values of $x$ that make it true. To find them, first get 0 on one side. Then write the other side as factors, parts that multiply, because factors multiply to 0 only when one of them is 0. When it will not factor neatly, a formula called the quadratic formula always finds the solutions.",
       templateIds: ["quadratic-negative-output", "quadratic-formula-positive"],
       objectives: [
         "Rewrite $f(x) = c$ as an equation equal to 0, and factor it.",
@@ -402,7 +402,7 @@ export const regentsAlgebraOneFunctionLessons = [
       opening: [
         "$f(x)$, read “$f$ of $x$”, is the output of the function $f$ for input $x$. To find where $f(x)$ equals a number such as $-8$, write $f(x) = -8$. Then add 8 to both sides, so the right side is 0.",
         "Now factor. Two factors (parts being multiplied) multiply to 0 only when one of them is 0. So set each factor equal to 0 and solve.",
-        "Not every quadratic factors into whole numbers. For $ax^2 + bx + c = 0$ with $a \\ne 0$, the quadratic formula always works: $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The sign $\\pm$ means “plus or minus”, so it gives two answers. The root sign $\\sqrt{\\phantom{x}}$ means square root.",
+        "Not every quadratic factors into whole numbers. For $ax^2 + bx + c = 0$ with $a \\ne 0$, the quadratic formula always works: $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The sign $\\pm$ means “plus or minus”, so it can give two answers. The root sign $\\sqrt{\\phantom{x}}$ means square root.",
       ],
       example: {
         prompt:
@@ -418,12 +418,12 @@ export const regentsAlgebraOneFunctionLessons = [
       method: [
         "Move all terms to one side so the equation equals 0, combining the plain numbers.",
         "If it factors, set each factor equal to 0. Otherwise read $a$, $b$ and $c$, and use the formula.",
-        "In the formula, start with $-b$, put all of $4ac$ under the root, and divide by $2a$.",
+        "In the formula, start with $-b$, then add or subtract the square root of $b^2 - 4ac$, and divide the whole top by $2a$.",
       ],
       formalTitle: "The quadratic formula",
       formal: [
         "For $a \\ne 0$, completing the square on $ax^2 + bx + c = 0$ gives $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The number $b^2 - 4ac$ is called the discriminant.",
-        "If the discriminant is a perfect square (like 16 or 25), the solutions are fractions of whole numbers, called rational. If it is positive and not a perfect square, they are irrational.",
+        "When $a$, $b$ and $c$ are integers: if the discriminant is a perfect square (like 16 or 25), the solutions are fractions of integers, called rational. If it is positive and not a perfect square, they are irrational.",
       ],
       pitfalls: [
         "The number in $f(x) = -8$ is an output. Solving $f(x) = 0$ answers a different question.",
@@ -441,7 +441,7 @@ export const regentsAlgebraOneFunctionLessons = [
       id: "regents-parabola-axis-rule",
       title: "Choosing a parabola by its axis of symmetry",
       summary:
-        "The graph of $y = ax^2 + bx + c$ is a U-shaped curve called a parabola. It is a mirror image of itself across an up-and-down line through its turning point. That line is called the axis of symmetry. It is always $x = -\\frac{b}{2a}$, so you can find it from $a$ and $b$ alone.",
+        "In $y = 2x^2 + 16x - 5$, $x^2$ means $x$ times $x$; here $a = 2$ multiplies $x^2$ and $b = 16$ multiplies $x$. Its graph, the picture of all its points, is a U-shaped curve called a parabola. It is a mirror image of itself across an up-and-down line through its turning point, called the axis of symmetry. For $y = ax^2 + bx + c$ with $a \\ne 0$, that line is $x = -\\frac{b}{2a}$: every point on it has that $x$ value. Here it is $x = -4$.",
       templateIds: ["parabola-axis-rule"],
       objectives: [
         "Work out the axis of symmetry from $y = ax^2 + bx + c$.",
@@ -475,7 +475,7 @@ export const regentsAlgebraOneFunctionLessons = [
       ],
       pitfalls: [
         "Divide by $2a$, not $a$.",
-        "The axis has the opposite sign of $\\frac{b}{2a}$.",
+        "The axis's $x$ value is the opposite of $\\frac{b}{2a}$.",
         "The plain number $c$ does not change the axis.",
       ],
       parentGuide:

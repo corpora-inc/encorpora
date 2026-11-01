@@ -54,7 +54,7 @@ export const regentsAlgebraOneLinearMethods: Record<string, ProblemMethod> = {
       "Divide both sides by the decimal that multiplies $x$. Check by putting the answer into both sides of the original.",
     ],
     watch:
-      "Subtract a term to remove it; adding it doubles it. Keep every decimal point when you combine terms.",
+      "To remove a term like $0.1x$ from a side, subtract it from both sides; adding it would double it. Keep every decimal point when you combine terms.",
   },
   "grouped-both-sides-solve": {
     goal: "Multiply out parentheses, gather the $x$ terms from both sides, and solve, as in $3(x - 4) + 2x = x + 8$.",
@@ -119,7 +119,7 @@ export const regentsAlgebraOneLinearMethods: Record<string, ProblemMethod> = {
       "Check that your letter now appears on one side only.",
     ],
     watch:
-      "Subtract before you divide, and divide the whole difference. Writing $\\frac{S}{2\\pi r}-2\\pi r^2$ divides only part of the right side.",
+      "Undo the steps in reverse order, and divide the whole other side, not one term. Writing $\\frac{S}{2\\pi r}-2\\pi r^2$ divides only part of the right side.",
   },
   "substitute-into-equation": {
     goal: "Solve one equation for $y$, then put that expression in place of $y$ in the other equation, keeping signs right.",
@@ -148,7 +148,7 @@ export const regentsAlgebraOneLinearPrinciples: Record<string, string> = {
   "total-and-cost-equation":
     "If two groups have $N$ items in all and $n$ are of the first kind, then $N - n$ are of the second kind. With prices $p$ and $q$, the total cost is $pn + q(N - n)$. So the cost fact is the single equation $pn + q(N - n) = C$.",
   "isolate-two-term-formula":
-    "Doing the same step to both sides keeps an equation's solutions. To solve a formula for one letter, undo the steps that built it in reverse order. First undo adding or subtracting the other terms, then undo multiplying by the letter's coefficient, which must not be 0.",
+    "Adding or subtracting the same amount on both sides, or multiplying or dividing both sides by the same amount that is not 0, keeps an equation's solutions. To solve a formula for one letter, undo the steps that built it in reverse order. First undo adding or subtracting the other terms, then undo multiplying by the letter's coefficient, which must not be 0.",
   "substitute-into-equation":
     "If $y = g(x)$, then $y$ and $g(x)$ may replace each other in any equation. A pair $(x, y)$ makes both equations of a system true exactly when $y = g(x)$ and $x$ makes the equation formed by substituting $g(x)$ for $y$ true.",
 };
@@ -161,7 +161,7 @@ export const regentsAlgebraOneLinearLessons = [
       id: "regents-both-sides-equations",
       title: "Equations with the variable on both sides",
       summary:
-        "An equation says two amounts are equal, like $3(x - 4) + 2x = x + 8$. Here the unknown $x$ appears on both sides of the equals sign. Do the same step to both sides, so they stay equal. Gather all the $x$ terms on one side and the plain numbers on the other. Then divide to find $x$.",
+        "An equation says two amounts are equal, like $3(x - 4) + 2x = x + 8$. Here $3(x - 4)$ means 3 times $x - 4$, and the unknown $x$ appears on both sides of the equals sign. Do the same step to both sides, so they stay equal. Gather all the parts with $x$ on one side and the plain numbers on the other. Then divide to find $x$.",
       templateIds: ["decimal-both-sides-equation", "grouped-both-sides-solve"],
       objectives: [
         "Move the $x$ terms to one side and the plain numbers to the other, doing the same step to both sides.",
@@ -196,7 +196,7 @@ export const regentsAlgebraOneLinearLessons = [
         "If the numbers multiplying $x$ differ on the two sides, $Ax + B = Cx + D$ has exactly one solution, $x = \\frac{D - B}{A - C}$. If they are equal, there is either no solution or every number is a solution.",
       ],
       pitfalls: [
-        "Subtract a term to remove it from a side; adding it makes it larger.",
+        "Remove a term by doing the opposite on both sides: subtract a term that is added, and add a term that is subtracted.",
         "The number outside parentheses multiplies every term inside, including the plain number.",
         "Check the answer in the original equation, not in a step you may have copied wrong.",
       ],
@@ -211,7 +211,7 @@ export const regentsAlgebraOneLinearLessons = [
       id: "regents-point-slope-two-points",
       title: "Point-slope equation from two points",
       summary:
-        "The slope of a line says how steep it is: how much $y$ changes when $x$ goes up by 1. Two points on a line give its slope. Then one of the points and the slope give the line's equation, $y - y_1 = m(x - x_1)$. Here $m$ is the slope and $(x_1, y_1)$ is the point you chose.",
+        "A point $(x, y)$ is $x$ across and $y$ up. The slope of a line says how steep it is: how much $y$ changes when $x$ goes up by 1. Two points on a line with different $x$ values give its slope. Then one of the points and the slope give an equation that every point of the line makes true: $y - y_1 = m(x - x_1)$. Here $m$ is the slope, and $(x_1, y_1)$ is the point you chose; the small 1 just marks it.",
       templateIds: ["point-slope-two-points"],
       objectives: [
         "Find the slope of the line through two points, including a fraction or negative slope.",
@@ -220,7 +220,7 @@ export const regentsAlgebraOneLinearLessons = [
       openingTitle: "One point and a slope fix a line",
       opening: [
         "A point is written $(x, y)$: across $x$, then up $y$. The two numbers are called its coordinates.",
-        "The slope of a line says how many units $y$ changes for each unit $x$ changes. Between two points, it is the change in $y$ divided by the change in $x$.",
+        "The slope of a line says how many units $y$ changes for each unit $x$ changes. Between two points with different $x$ values, it is the change in $y$ divided by the change in $x$.",
         "Point-slope form writes the line through the point $(x_1, y_1)$ with slope $m$ as $y - y_1 = m(x - x_1)$. The small 1 only marks the known point. It works because every other point $(x, y)$ on the line has that same slope to $(x_1, y_1)$.",
       ],
       example: {
@@ -241,7 +241,7 @@ export const regentsAlgebraOneLinearLessons = [
       ],
       formalTitle: "The point-slope form",
       formal: [
-        "For a line that is not vertical, the slope between any two different points of it is the same number $m$. A point $(x, y)$ other than $(x_1, y_1)$ is on the line exactly when $\\frac{y - y_1}{x - x_1} = m$. Multiplying both sides by $x - x_1$ gives $y - y_1 = m(x - x_1)$, which $(x_1, y_1)$ also makes true.",
+        "For a line that is not vertical, the slope between any two different points of it is the same number $m$. A point $(x, y)$ with $x \\ne x_1$ is on the line exactly when $\\frac{y - y_1}{x - x_1} = m$. Multiplying both sides by $x - x_1$ gives $y - y_1 = m(x - x_1)$, which $(x_1, y_1)$ also makes true.",
         "Using the other given point instead gives an equation that simplifies to the same line.",
       ],
       pitfalls: [
@@ -260,7 +260,7 @@ export const regentsAlgebraOneLinearLessons = [
       id: "regents-total-and-cost-equation",
       title: "One equation for a count and a total cost",
       summary:
-        "Say a stand sells 30 sandwiches, some large and some small. If $n$ are large, the other $30 - n$ are small. So one letter describes both kinds. Each kind's money is its price times how many were sold. Add the two money amounts and set the sum equal to the total money.",
+        "Say a stand sells 30 sandwiches, some large and some small. If $n$ are large, the other $30 - n$ are small. So one letter describes both kinds. Each kind's money is its price times how many were sold. Add the two money amounts and set that total equal to the money taken in.",
       templateIds: ["total-and-cost-equation"],
       objectives: [
         "Write the second amount as the total minus the first.",
@@ -309,7 +309,7 @@ export const regentsAlgebraOneLinearLessons = [
       id: "regents-isolate-two-term-formula",
       title: "Solving a formula that has a sum of terms",
       summary:
-        "A formula is an equation that links amounts with letters, like $P = 2\\ell + 2w$ for a rectangle's perimeter (the distance around it). To solve it for one letter, get that letter alone on one side. First take away the parts that do not contain it. Then divide by whatever multiplies it.",
+        "A formula is an equation that links amounts with letters. For example, a rectangle (a four-sided shape with four right-angle corners) has perimeter $P = 2\\ell + 2w$, with length $\\ell$ and width $w$; the perimeter is the distance around it. To solve it for one letter, get that letter alone on one side. First take away the parts that do not contain it. Then divide by whatever multiplies it.",
       templateIds: ["isolate-two-term-formula"],
       objectives: [
         "Remove the terms that do not contain the chosen letter before dividing.",
@@ -326,7 +326,7 @@ export const regentsAlgebraOneLinearLessons = [
           "For $P$: the term $2\\ell$ has no $w$, so subtract it from both sides: $P-2\\ell=2w$.",
           "$w$ is multiplied by 2, so divide both sides by 2: $w=\\frac{P-2\\ell}{2}$.",
           "For $S$: the term $2b^2$ has no $h$, so subtract it from both sides: $S-2b^2=4bh$.",
-          "$h$ is multiplied by $4b$ (which is not 0), so divide both sides by $4b$: $h=\\frac{S-2b^2}{4b}$.",
+          "$h$ is multiplied by $4b$, so divide both sides by $4b$, assuming $b$ is not 0: $h=\\frac{S-2b^2}{4b}$.",
         ],
         answer: "$w=\\frac{P-2\\ell}{2}$ and $h=\\frac{S-2b^2}{4b}$",
       },
@@ -342,9 +342,9 @@ export const regentsAlgebraOneLinearLessons = [
         "The answer is a fraction whose top is the whole difference. $\\frac{S-2b^2}{4b}$ is not $\\frac{S}{4b}-2b^2$.",
       ],
       pitfalls: [
-        "Subtract before you divide.",
+        "Undo the added terms before you divide.",
         "Divide the entire other side, not just one term of it.",
-        "Subtract a term from both sides to remove it; adding it moves it the wrong way.",
+        "Remove a term by doing the opposite on both sides: subtract a term that is added, and add a term that is subtracted.",
       ],
       parentGuide:
         "Ask your learner to put small numbers in for the other letters, and check that the new formula gives back the original value.",
@@ -357,7 +357,7 @@ export const regentsAlgebraOneLinearLessons = [
       id: "regents-substitute-into-equation",
       title: "Substitution when a variable has coefficient negative one",
       summary:
-        "A system is two equations about the same unknowns $x$ and $y$. If one equation tells you what $y$ equals, you can put that in place of $y$ in the other equation. This is called substituting. Getting $y$ alone needs care with signs when the equation has $-y$, as in $4x - y = 5$.",
+        "A system is two equations about the same unknowns $x$ and $y$, both true for the same values. If one equation tells you what $y$ equals, you can put that in place of $y$ in the other equation. This is called substituting. Getting $y$ alone needs care with plus and minus signs when the equation has $-y$ ($-1$ times $y$), as in $4x - y = 5$.",
       templateIds: ["substitute-into-equation"],
       objectives: [
         "Solve an equation such as $3x - y = 5$ for $y$ with every sign right.",
@@ -386,7 +386,7 @@ export const regentsAlgebraOneLinearLessons = [
       ],
       formalTitle: "Why substitution works",
       formal: [
-        "A pair $(x, y)$ solves both equations when $y = g(x)$ and the other equation is true for that $y$. Replacing $y$ with $g(x)$ in the other equation gives an equation in $x$ alone, with the same solutions.",
+        "A pair $(x, y)$ solves both equations when $y = g(x)$ and the other equation is true for that $y$. Replacing $y$ with $g(x)$ in the other equation gives an equation in $x$ alone. Its solutions are exactly the $x$ values of the system's solutions; each one then gives $y = g(x)$.",
         "Replace the letter you got alone: the expression equals $y$, not $x$.",
       ],
       pitfalls: [

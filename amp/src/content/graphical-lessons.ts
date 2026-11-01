@@ -28,7 +28,7 @@ export const graphicalLessons: Lesson[] = [
     id: "coordinate-reading",
     title: "Read a point on a coordinate grid",
     summary:
-      "A coordinate grid has two number lines that cross at 0: one going across and one going up and down. A point on the grid is named by two numbers, written $(x, y)$. The first number, $x$, says how far across from the center the point is. The second, $y$, says how far up or down.",
+      "A number line is a line with evenly spaced numbers. A coordinate grid has two of them that cross at 0: one going across and one going up and down. A point is an exact spot on the grid, named by two numbers written $(x, y)$. Start at the crossing point. The first number, $x$, says how far across (left if negative). The second, $y$, says how far up (down if negative).",
     templateIds: ["coordinate-point-reading"],
     senses: GRID_SENSES,
     noLink: GRID_NO_LINK,
@@ -89,7 +89,7 @@ export const graphicalLessons: Lesson[] = [
     id: "graph-slope",
     title: "Slope measures change",
     summary:
-      "The slope of a line says how steep it is. Pick two points on the line. Count how far up or down you go between them, called the rise. Count how far across you go, called the run. The slope is the rise divided by the run. A line going up to the right has a positive slope; going down, negative.",
+      "The slope of a line says how steep it is. Pick two points on the line with different across positions. The rise is how far up you go between them (negative if you go down). The run is how far across you go. The slope is the rise divided by the run. A line going up to the right has a positive slope; going down, negative.",
     templateIds: ["graphed-line-slope"],
     senses: GRID_SENSES,
     noLink: GRID_NO_LINK,
@@ -102,8 +102,8 @@ export const graphicalLessons: Lesson[] = [
         stage: "intuition",
         title: "Count up compared with across",
         paragraphs: [
-          "A point is written $(x, y)$: across $x$ from the center of the grid, then up $y$. So $(-2, 1)$ is 2 units left and 1 unit up. The center point $(0, 0)$ is called the origin.",
-          "Say a line rises 3 units while it moves 2 units right. Its slope is the up-and-down change divided by the across change: 3 divided by 2, or $\\frac{3}{2}$. A bigger slope means a steeper line.",
+          "A point is written $(x, y)$. Start at $(0, 0)$, the origin, where the two axes cross. Go across $x$ (left if negative), then up $y$ (down if negative). So $(-2, 1)$ is 2 units left and 1 unit up.",
+          "Say a line rises 3 units while it moves 2 units right. Its slope is the up-and-down change divided by the across change: 3 divided by 2, or $\\frac{3}{2}$. A slope farther from 0, such as 3 or $-3$, means a steeper line.",
         ],
       },
       {
@@ -319,7 +319,7 @@ export const graphicalLessons: Lesson[] = [
     id: "number-line-separation",
     title: "Distance between signed numbers",
     summary:
-      "A number line shows numbers in order, with negative numbers (less than 0) to the left of 0. The distance between two numbers is how many units apart they are. Count the spaces between them, not the tick marks. A distance is never negative.",
+      "A number line shows numbers in order, with tick marks (short lines) evenly spaced and negative numbers (less than 0) to the left of 0. When neighboring ticks are 1 apart, each space is one unit. The distance between two numbers is how many units apart they are. Count the spaces between them, not the tick marks. A distance is never negative.",
     templateIds: ["number-line-distance"],
     senses: GRID_SENSES,
     noLink: GRID_NO_LINK,
@@ -356,7 +356,7 @@ export const graphicalLessons: Lesson[] = [
         stage: "formal",
         title: "Distance on a number line",
         paragraphs: [
-          "For numbers $a$ and $b$ on a number line with equal spaces, the distance between them is $|b - a|$, the size of their difference without its sign. It counts the spaces between them, whichever one is farther right, so it is never negative.",
+          "For numbers $a$ and $b$ on a number line with equal spaces, the distance between them is $|b - a|$, the size of their difference without its sign. When each space is one unit, it counts the spaces between them, whichever one is farther right. It is never negative.",
         ],
       },
     ],

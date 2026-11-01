@@ -30,7 +30,7 @@ export const functionToolkitLessons: Lesson[] = [
     id: "piecewise-functions",
     title: "Functions defined in pieces",
     summary:
-      "A function is a rule that gives each input exactly one output. A piecewise function uses different rules for different inputs. For example: double the input and add 1 when it is less than 2, but use $-x + 6$ when it is 2 or more. First find which rule your input belongs to. Then use that rule alone.",
+      "A function is a rule that turns each input (the number you put in) into exactly one output (the number you get back). A piecewise function uses different rules for different inputs. For example, with input $x$: use $2x + 1$ when $x$ is less than 2, but use $-x + 6$ when $x$ is 2 or more. First find which rule your input belongs to. Then use that rule alone.",
     templateIds: ["piecewise-evaluate", "piecewise-reading"],
     includeGeneratedRepresentation: false,
     senses: PIECE_SENSES,
@@ -64,7 +64,7 @@ export const functionToolkitLessons: Lesson[] = [
         paragraphs: [
           "The absolute value of a number is its distance from 0, written with bars: $|-3| = 3$. So $|u| = u$ when $u \\ge 0$, and $|u| = -u$ when $u < 0$, which turns a negative number positive.",
           "That makes $|x - 1| + 2$ a piecewise function. For $x \\ge 1$ it is $(x - 1) + 2 = x + 1$. For $x < 1$ it is $-(x - 1) + 2 = -x + 3$. These are two straight pieces that meet at the corner point $(1, 2)$, called the vertex.",
-          "To solve $f(x) = c$ on a graph, draw the flat line $y = c$ and count where it meets the graph. A filled dot on the line counts; an open circle does not.",
+          "To solve $f(x) = c$ on a graph, draw the flat line $y = c$. The $x$ values where it meets the graph are the solutions, and counting the meeting points tells how many there are. A filled dot on the line counts; an open circle does not.",
         ],
         illustration: "abs-pieces",
       },
@@ -84,7 +84,7 @@ export const functionToolkitLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "A function gives each input one output. A piecewise function does this with conditions that do not overlap, so exactly one rule applies to each input.",
-          "$|u|$ equals $u$ where $u \\ge 0$, and $-u$ where $u < 0$. The solutions of $f(x) = c$ are the inputs where the graph meets the line $y = c$.",
+          "$|u|$ equals $u$ where $u \\ge 0$, and $-u$ where $u < 0$. The solutions of $f(x) = c$ are the inputs (the $x$ values) where the graph meets the line $y = c$, at points that belong to the graph.",
         ],
       },
     ],
@@ -349,7 +349,7 @@ export const functionToolkitMethods: Record<string, ProblemMethod> = {
       "A piecewise function uses different rules for different inputs, and its graph is made of pieces. A filled dot belongs to the graph; an open circle does not. The absolute value of a number is its distance from 0, written with bars: $|-3| = 3$. So $|x - h|$ is one rule where $x - h$ is 0 or more, and another where it is negative.",
     method: [
       "For $|x - h|$, use $x - h$ where $x \\ge h$, and $-(x - h)$ where $x < h$. Then simplify each piece.",
-      "For a piece on a graph, read two of its points to find its slope (rise over run). Then extend it back to $x = 0$ to find where it would cross the up-and-down axis.",
+      "For a straight piece on a graph, read two of its points to find its slope (rise over run). Then extend it back to $x = 0$ to find where it would cross the up-and-down axis.",
       "To count solutions of $f(x) = c$, follow the flat line $y = c$ and count where it meets the graph.",
     ],
     watch: "An open circle on the line is not a solution; a filled dot is.",

@@ -31,7 +31,7 @@ const entries: Entry[] = [
     title: "Linear functions in function notation",
     goal: "Read $f(a)$ as the output for input $a$: put $a$ in to find it, or set $f(x)$ equal to a value and solve for the input.",
     summary:
-      "A function is a rule that turns each input into exactly one output. We write $f(x)$, read “$f$ of $x$”, for the output when the input is $x$. So $f(5)$ is the output for the input 5. To find it, put 5 in place of $x$. To find which input gives a certain output, set the rule equal to that output and solve.",
+      "A function is a rule that turns each input (the number you put in) into exactly one output (the number you get back). We write $f(x)$, read “$f$ of $x$”, for the output when the input is $x$. So $f(5)$ is the output for the input 5. To find it, put 5 in place of $x$. To find which input gives a certain output, set the rule equal to that output and find the value of $x$ that makes it true.",
     objectives: [
       "Find the output of a straight-line function written as $f(x)$, including for a negative or fraction input.",
       "Find the input for a given output, or a missing plain number in the rule, by writing and solving an equation.",
@@ -46,7 +46,7 @@ const entries: Entry[] = [
         entry,
     ],
     watch:
-      "$f(x) = v$ is an equation to solve for $x$. But $f(a) = v$ is a fact about one input and its output, which you can put into the rule.",
+      "Know which number is unknown. If the output is given and the input is not, solve for the input. If both an input and its output are given, put both into the rule to find a missing number in it.",
     principle:
       "For a function $f$ and an allowed input $a$, $f(a)$ is the one output given to $a$. $f(a) = v$ is true exactly when putting $a$ in place of $x$ in the rule gives $v$.",
     example: {
@@ -63,7 +63,7 @@ const entries: Entry[] = [
     methodTitle: "Substitute, or set equal and solve",
     methodText: [
       "Finding $f(a)$ goes from an input to an output: replace $x$ and work it out. Finding an input goes the other way: the output is known, so you solve an equation.",
-      "With a fraction input or a fraction in the rule, multiply first so the bottom number cancels, then add the plain number. " +
+      "With a fraction input or a fraction in the rule, multiply first, cancelling the bottom number when you can, then add the plain number. " +
         entry,
     ],
     formal:
@@ -80,13 +80,13 @@ const entries: Entry[] = [
     title: "Choose a line's equation from its slope and a point",
     goal: "Choose the equation $y = mx + b$ of a line from its slope $m$ and one point on it.",
     summary:
-      "A straight line can be written $y = mx + b$. The slope $m$ says how steep it is: how much $y$ changes when $x$ goes up by 1. The number $b$ is where the line crosses the up-and-down $y$-axis. If you know the slope and one point, put the point's numbers into the equation to find $b$.",
+      "A point $(x, y)$ is $x$ across and $y$ up. A straight line that is not vertical can be written $y = mx + b$, like $y = 2x + 3$. The slope $m$ (here 2) says how steep it is: how much $y$ changes when $x$ goes up by 1. The number $b$ (here 3) is where the line crosses the up-and-down $y$-axis. If you know the slope and one point on the line, put the point's numbers into the equation to find $b$.",
     objectives: [
       "Write the equation $y = mx + b$ of a line from its slope and a point, including a fraction or negative slope.",
       "Turn a steady rate and one later value in a real situation into an equation.",
     ],
     intuition:
-      "A point is written $(x, y)$: across, then up. A line is the graph of $y = mx + b$, where $mx$ means $m$ times $x$. The slope $m$ is the change in $y$ for each increase of 1 in $x$. The number $b$ is the value of $y$ when $x = 0$, where the line crosses the $y$-axis; it is called the $y$-intercept. Any point on the line makes the equation true, even one not on the $y$-axis. So its numbers let you find $b$.",
+      "A point is written $(x, y)$: across, then up. A line that is not vertical is the graph of $y = mx + b$, where $mx$ means $m$ times $x$. The slope $m$ is the change in $y$ for each increase of 1 in $x$. The number $b$ is the value of $y$ when $x = 0$, where the line crosses the $y$-axis; it is called the $y$-intercept. Any point on the line makes the equation true, even one not on the $y$-axis. So its numbers let you find $b$.",
     terms: ["slope", "y-intercept"],
     method: [
       "Write $y = mx + b$ with the given slope $m$.",
@@ -127,7 +127,7 @@ const entries: Entry[] = [
     title: "Choose a two-variable equation for a total",
     goal: "Choose an equation like $3x + 7y = 91$ for a total made of two kinds of items: rate times count for each, added up.",
     summary:
-      "Many totals come from two kinds of things, like muffins at 3 dollars and loaves at 7 dollars. Call the counts $x$ and $y$. Each kind adds its price times its count: $3x$ and $7y$, where $3x$ means 3 times $x$. Add them and set the sum equal to the total: $3x + 7y = 91$.",
+      "Many totals come from two kinds of things, like muffins at 3 dollars and loaves at 7 dollars. Call the counts $x$ and $y$. Each kind adds its price times its count: $3x$ and $7y$, where $3x$ means 3 times $x$. Add them and set the result equal to the total: $3x + 7y = 91$.",
     objectives: [
       "Write $ax + by = c$ for a total made of two kinds of items, trips or scores.",
       "Choose the equation of a full load from its two extreme cases, by testing points.",
@@ -144,7 +144,7 @@ const entries: Entry[] = [
     method: [
       "Name the two counts or times $x$ and $y$.",
       "Write each part as rate times count, and add the parts to equal the total.",
-      "If the story gives only the two extreme cases (all of one kind, or all of the other), test each choice at those two points. The right equation is true at both.",
+      "If the story gives only the two extreme cases (all of one kind, or all of the other), test each choice at those two points. Of the straight-line choices, the right one is true at both.",
     ],
     watch:
       "Each rate multiplies its own count. Dividing a count by a rate answers a different question.",
@@ -178,7 +178,7 @@ const entries: Entry[] = [
     title: "Choose an exponential model",
     goal: "Choose an exponential model: find the number the amount is multiplied by each time, then write start times that number to a power.",
     summary:
-      "Some amounts grow by multiplying, not adding. If a population grows by 20% each year, each year's amount is 1.2 times the year before. The number it is multiplied by, here 1.2, is called the growth factor. After $t$ years the amount is the start times $1.2^t$, where $1.2^t$ means 1.2 multiplied by itself $t$ times.",
+      "Some amounts grow by multiplying, not adding. A percent is a number out of 100. If a population grows by 20% each year, it keeps its 100% and adds 20%, so each year it is 120%, or 1.2 times, the year before. The number it is multiplied by, here 1.2, is called the growth factor. After $t$ whole years the amount is the start times $1.2^t$, which means 1.2 multiplied by itself $t$ times.",
     objectives: [
       "Turn a percent increase, a period of several years, or a later value into the right growth factor.",
       "Write the model so its exponent (the small raised number) counts the right number of multiplications.",
@@ -217,7 +217,7 @@ const entries: Entry[] = [
       "When the first value is not at $t = 0$, as for rounds numbered from 1, shift the exponent so the first value comes out right.",
     ],
     formal:
-      "If the values at whole numbers one apart always have the same ratio $b$, then $f(x) = f(0)b^{x}$. If $f(n) = y_0b^{n}$ with $b > 0$, then $b = \\left(\\frac{f(n)}{y_0}\\right)^{1/n}$.",
+      "If the values at whole numbers one apart always have the same ratio $b$, then $f(x) = f(0)b^{x}$ at every whole number $x$. If $f(n) = y_0b^{n}$ with $b > 0$, $y_0 \\ne 0$ and $n > 0$, then $b = \\left(\\frac{f(n)}{y_0}\\right)^{1/n}$.",
     pitfalls: [
       "A 150% increase is a factor of 2.5, not 1.5.",
       "Doubling every 3 years is not doubling every year.",
@@ -230,7 +230,7 @@ const entries: Entry[] = [
     title: "Enter an exponential value",
     goal: "Undo repeated multiplying by dividing, or find the growth factor with a root, then use it once more.",
     summary:
-      "An exponential amount is multiplied by the same number each period, like doubling every 3 years. After 12 years it has doubled 4 times, so it is $2 \\times 2 \\times 2 \\times 2 = 16$ times the start. To go back to the start, divide by 16. To go one step forward, multiply by the factor once more.",
+      "Say an amount doubles every 3 years. Each 3 years is one period, and each period multiplies the amount by the same number, here 2. After 12 years there are 4 periods, so it is $2 \\times 2 \\times 2 \\times 2 = 16$ times the start. To go back to the start, divide by 16. To go one period forward, multiply by 2 once more. Amounts that change like this are called exponential.",
     objectives: [
       "Find a starting amount from a later amount after several doubling or tripling periods.",
       "Find the growth factor from one output, and use it to find the next output.",
@@ -267,7 +267,7 @@ const entries: Entry[] = [
       "You do not need a calculator: the numbers are chosen so each root and power is a small whole number.",
     ],
     formal:
-      "For $f(x) = ab^{x}$ with $b > 0$, $f(x + 1) = bf(x)$. From $f(n) = v$, $b = \\left(\\frac{v}{a}\\right)^{1/n}$ and $f(n + 1) = vb$.",
+      "For $f(x) = ab^{x}$ with $b > 0$, $f(x + 1) = bf(x)$. From $f(n) = v$ with $a \\ne 0$ and $n > 0$, $b = \\left(\\frac{v}{a}\\right)^{1/n}$ and $f(n + 1) = vb$.",
     pitfalls: [
       "Do not multiply when you are asked for the earlier amount.",
       "Three steps need a cube root (the number that times itself 3 times gives the value), not a square root.",
@@ -280,7 +280,7 @@ const entries: Entry[] = [
     title: "Enter the value of a related expression",
     goal: "Find the value of an expression like $3x + 4y$ by spotting it inside the equation, without solving for each letter.",
     summary:
-      "Sometimes a question asks for the value of a whole expression, like $3x + 4y$, not of $x$ or $y$. An expression is a math phrase made of numbers and letters. Look for it inside the equation you are given. If $6x + 8y = 22$, then $3x + 4y$ is exactly half of the left side. So it equals half of 22, which is 11.",
+      "An expression is a math phrase made of numbers, letters and signs such as + and −, like $3x + 4y$. Sometimes a question asks for the value of a whole expression, not of $x$ or $y$. Look for it inside the equation you are given. If $6x + 8y = 22$, then $3x + 4y$ is exactly half of the left side. So it equals half of 22, which is 11.",
     objectives: [
       "Rewrite an equation so the asked-for expression appears, then read its value.",
       "Treat a repeated group as one unknown, or multiply a whole equation by a number, instead of solving for each letter.",
@@ -297,7 +297,7 @@ const entries: Entry[] = [
     method: [
       "Compare the asked-for expression with the equation. Take a common number out of the equation, or multiply the whole equation, so the expression appears.",
       "If a group in parentheses appears on both sides, call it $u$, solve for $u$, and stop.",
-      "For a ratio $\\frac{x}{y}$, the ratio $\\frac{y}{x}$ is its reciprocal, the fraction flipped over. " +
+      "For a ratio $\\frac{x}{y}$ with $x$ and $y$ not 0, the ratio $\\frac{y}{x}$ is its reciprocal, the fraction flipped over. " +
         entry,
     ],
     watch:
@@ -316,7 +316,7 @@ const entries: Entry[] = [
     methodTitle: "Match the expression, then scale",
     methodText: [
       "Write the asked-for expression beside the equation, and find the number that turns one into the other.",
-      "Solving for each letter also works, and gives the same value. Use it to check.",
+      "When you also know each letter's value, putting them in is a good check.",
     ],
     formal:
       "If $L = R$ and $L = kE$ with $k \\ne 0$, then $E = \\frac{R}{k}$. For $\\frac{x}{y} = c$ with $c \\ne 0$, $\\frac{y}{x} = \\frac{1}{c}$.",
