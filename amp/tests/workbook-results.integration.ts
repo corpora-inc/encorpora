@@ -135,6 +135,27 @@ test(
       });
       assert.ok(progress.json().skills[0].independentCorrect >= 1);
 
+      // A sibling's workbook id cannot be read or recorded under another
+      // learner of the same family.
+      const sibling = await repository.create("paper-parent", "Sibling", 2014);
+      const crossUrl = `/api/v1/learners/${sibling.id}/workbooks/${made.id}/results`;
+      assert.equal((await app.inject({ url: crossUrl })).statusCode, 404);
+      const cross = await app.inject({
+        method: "POST",
+        url: crossUrl,
+        payload: { entries: [{ n: 1, mark: "right" }] },
+      });
+      assert.equal(cross.statusCode, 404);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int AS n FROM amp_attempts WHERE learner_id=$1",
+            [sibling.id],
+          )
+        ).rows[0].n,
+        0,
+      );
+
       // Today's mixed practice holds back the printed templates.
       const printed = workbookTemplateIds([
         { spec: stored.rows[0].spec } as never,

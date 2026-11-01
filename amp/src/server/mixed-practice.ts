@@ -270,7 +270,10 @@ export function planMixedPractice(options: {
         ?.recentOutcomes.slice(-support.demonstratedSuccesses) ?? [];
     return (
       recent.length === support.demonstratedSuccesses &&
-      recent.every((a) => a.correct && !a.assisted)
+      // A paper mark without the answer is not a demonstration.
+      recent.every(
+        (a) => a.correct && !a.assisted && (a.evidenceWeight ?? 1) >= 1,
+      )
     );
   };
   // Cross catalog gaps to the nearest teachable ancestors on each branch.

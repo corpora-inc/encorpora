@@ -106,9 +106,22 @@ export function registerWorkbookRoutes(
     now?: () => number;
     /** Null or absent: PDF requests answer 503 (and are logged). */
     renderer?: WorkbookRenderer | null;
+    /** The app's public https origin (`AMP_ACCOUNTS_URL`). Printed results
+     * pages carry a QR code to the results route only when it is set. */
+    publicUrl?: string;
   },
 ) {
   const now = options.now ?? Date.now;
+  const publicUrl = options.publicUrl ? new URL(options.publicUrl) : undefined;
+  const results =
+    publicUrl &&
+    (publicUrl.protocol === "https:" || publicUrl.hostname === "localhost")
+      ? (record: WorkbookRecord, learnerId: string) => ({
+          baseUrl: publicUrl.origin,
+          learnerId,
+          workbookId: record.id,
+        })
+      : () => undefined;
   const learnerParams = z.object({ learnerId: z.string().uuid() }).strict();
   const workbookParams = learnerParams
     .extend({ workbookId: z.string().uuid() })
@@ -332,6 +345,7 @@ export function registerWorkbookRoutes(
         skillTitle,
         learnerName,
         paper: paper ?? record.paper,
+        results: results(record, learnerId),
       });
       return reply
         .type("text/html; charset=utf-8")
@@ -374,6 +388,7 @@ export function registerWorkbookRoutes(
             skillTitle,
             learnerName,
             paper: format === "A4" ? "a4" : "letter",
+            results: results(record, learnerId),
           });
           const footer = workbookFooter(record.spec);
           const key = {

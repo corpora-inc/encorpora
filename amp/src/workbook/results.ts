@@ -205,6 +205,8 @@ export async function recordPaperResults(
       correct: graded
         ? gradeAnswer(problem, entry.answer!.trim())
         : entry.mark === "right",
+      // Paper is done apart from the app: "working together" (an app
+      // setting) does not describe it.
       assisted: false,
       explanation: problem.explanation,
       answer: problem.answer,

@@ -441,3 +441,33 @@ test("without a renderer, history says so and the printable document downloads i
   const rendering = app(memoryRepository().repository);
   assert.equal((await rendering.inject({ url, headers })).json().pdf, true);
 });
+
+test("with a public URL, the printed results page carries a QR code to the results route", async () => {
+  const auth = async (request: { headers: Record<string, unknown> }) =>
+    String(request.headers.authorization ?? "").replace(/^Bearer /, "");
+  for (const publicUrl of ["https://amp.example", undefined]) {
+    const { renderer, calls } = fakeRenderer();
+    const server = buildApp({
+      repository: memoryRepository().repository,
+      development: true,
+      authenticate: auth as never,
+      workbookRenderer: renderer,
+      publicUrl,
+    });
+    const made = (
+      await server.inject({
+        method: "POST",
+        url,
+        headers,
+        payload: { date: today, minutes: 30, paper: "letter" },
+      })
+    ).json();
+    const pdf = await server.inject({ url: `${url}/${made.id}/pdf`, headers });
+    assert.equal(pdf.statusCode, 200);
+    const html = calls[0]!.html;
+    if (publicUrl) {
+      assert.ok(html.includes("Scan the code"));
+      assert.ok(html.includes("<svg"), "QR code drawn");
+    } else assert.ok(html.includes("with the workbook code"));
+  }
+});

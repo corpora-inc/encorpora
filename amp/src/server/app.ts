@@ -126,6 +126,8 @@ type AppOptions = {
   trustedProxies?: readonly string[];
   /** Renders workbook PDFs (src/workbook/pdf.ts); null: none configured. */
   workbookRenderer?: WorkbookRenderer | null;
+  /** Public https origin, for links printed on paper (workbook QR codes). */
+  publicUrl?: string;
 };
 export function buildApp(options: AppOptions) {
   if (options.practicePolicy) assertPracticePolicy(options.practicePolicy);
@@ -561,9 +563,14 @@ function routes(app: FastifyInstance, options: AppOptions) {
             count,
             seed: randomUUID(),
             learnerKey: learnerId,
-            reservedTemplateIds: workbookTemplateIds(
-              await tx.recentWorkbooks(),
-            ),
+            // Only the full mix holds back today's printed templates; a
+            // chosen focus or a recovery pool is small enough that holding
+            // back could push practice off level.
+            reservedTemplateIds:
+              practicePool === supported ||
+              (practicePool === mixedPool && !focusedPool.length)
+                ? workbookTemplateIds(await tx.recentWorkbooks())
+                : undefined,
           });
       const problems: PublicProblem[] = [];
       const hints: Record<string, ProblemHint> = {};
@@ -983,5 +990,6 @@ function routes(app: FastifyInstance, options: AppOptions) {
     parent,
     development: options.development,
     renderer: options.workbookRenderer,
+    publicUrl: options.publicUrl,
   });
 }
