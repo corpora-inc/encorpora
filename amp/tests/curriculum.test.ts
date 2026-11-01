@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   expectedHighSchoolStandardIds,
+  skillTitle,
   skills,
   standards,
 } from "../src/curriculum/catalog.js";
@@ -194,4 +195,18 @@ test("production queue fails closed on dangling prerequisites and cycles", () =>
   assert.throws(() => buildProductionQueue([skill]), /unknown prerequisite/);
   skill.prerequisites = [skill.id];
   assert.throws(() => buildProductionQueue([skill]), /cycle/);
+});
+
+test("skill titles are sentence case, like problem-type titles", () => {
+  assert.equal(skillTitle("count-to-20"), "Count to 20");
+  assert.equal(skillTitle("pythagorean-theorem"), "Pythagorean theorem");
+  assert.equal(skillTitle("cavalieri-principle"), "Cavalieri principle");
+  for (const skill of skills) {
+    assert.equal(skill.title, skillTitle(skill.id));
+    // Only names and initialisms keep capitals after the first letter.
+    const rest = skill.title
+      .replace(/\b(Cavalieri|Pythagorean|GCF|LCM)\b/g, "")
+      .slice(1);
+    assert.doesNotMatch(rest, /[A-Z]/, skill.title);
+  }
 });
