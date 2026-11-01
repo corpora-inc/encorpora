@@ -24,6 +24,7 @@ import {
   generatedProblemSchema,
   type PublicProblem,
   type ProblemHint,
+  type GeneratedProblem,
 } from "../math/contracts";
 import {
   generateProblemFor,
@@ -44,7 +45,13 @@ import type { Authenticator } from "./auth";
 import { planMixedPractice } from "./mixed-practice";
 import { SKIP_USES_FREE_PROBLEM } from "../learning/skip";
 import { isTrialAccount, trialLimits } from "./trials";
-import { hasProblemLesson, problemLesson } from "../content/problem-lessons";
+import {
+  hasProblemLesson,
+  lessonGlossaryContext,
+  problemLesson,
+  screenBand,
+} from "../content/problem-lessons";
+import { glossaryPayload } from "../glossary/resolve";
 import { lessons } from "../content/lessons";
 import { startingBands } from "../learning/starting-point";
 import { buildInfo } from "./build-info";
@@ -593,10 +600,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
         };
         await tx.saveProblem(problem);
         problems.push(problem.public);
-        hints[problem.public.id] = {
-          hint: problem.hint,
-          ...(problem.hintCue ? { cue: problem.hintCue } : {}),
-        };
+        hints[problem.public.id] = hintSupport(problem);
       }
       return {
         problems,
@@ -706,7 +710,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
         createdAt: problem.skippedAt!,
         skipped: true,
       };
-      return reveal;
+      return withGlossary(reveal);
     });
   });
   app.post("/api/v1/learners/:learnerId/hints", async (request) => {
@@ -721,10 +725,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
       if (!problem) throw new ApiError(404, "Problem not found");
       problem.hintViewed = true;
       await tx.saveProblem(problem);
-      return {
-        hint: problem.hint,
-        ...(problem.hintCue ? { cue: problem.hintCue } : {}),
-      };
+      return hintSupport(problem);
     });
   });
   app.post("/api/v1/learners/:learnerId/lesson-support", async (request) => {
@@ -808,7 +809,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
             409,
             "This submission identifier was already used",
           );
-        return duplicate;
+        return withGlossary(duplicate);
       }
       // Problems fetched in advance cannot extend a trial's allowance.
       const trialRemaining = await tx.trialRemaining();
@@ -937,7 +938,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
         (await tx.masteredSkills()).includes(outcome.skillId);
       return mastered
         ? {
-            ...outcome,
+            ...withGlossary(outcome),
             mastered: {
               skillId: outcome.skillId,
               title:
@@ -945,7 +946,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
                 outcome.skillId,
             },
           }
-        : outcome;
+        : withGlossary(outcome);
     });
   });
   /** "Report a problem" on a resolved problem. First-party only. */
@@ -980,4 +981,32 @@ function routes(app: FastifyInstance, options: AppOptions) {
     development: options.development,
     renderer: options.workbookRenderer,
   });
+}
+
+/** A problem's hint, with the term cards its words open. */
+function hintSupport(problem: GeneratedProblem): ProblemHint {
+  return {
+    hint: problem.hint,
+    ...(problem.hintCue ? { cue: problem.hintCue } : {}),
+    ...glossaryPayload(
+      [problem.hint],
+      lessonGlossaryContext(problem.public.templateId),
+      [],
+      screenBand(problem.public.templateId),
+    ),
+  };
+}
+
+/** An answer's or skip's response, with the term cards its explanation's
+ * words open (choice feedback included). Never stored with the attempt. */
+function withGlossary(outcome: Outcome): Outcome {
+  return {
+    ...outcome,
+    ...glossaryPayload(
+      outcome.explanation,
+      lessonGlossaryContext(outcome.templateId),
+      [],
+      screenBand(outcome.templateId),
+    ),
+  };
 }
