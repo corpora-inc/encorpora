@@ -1249,14 +1249,13 @@
     display: none;
   }
   .pathways .pathways-status .pathways-learner {
-    flex: 0 1 auto;
-    min-width: 0;
+    flex: none;
     margin: 0;
   }
   .pathways .pathways-status .pathways-learner > span {
     display: none;
   }
   .pathways .pathways-status .pathways-learner > :last-child {
-    width: min(200px, 56vw);
+    width: clamp(180px, 56vw, 200px);
   }
 }
