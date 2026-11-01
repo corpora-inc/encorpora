@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { legacySurface } from "./fixtures/legacy-surface";
 import { readFileSync } from "node:fs";
 import {
   generatedProblemSchema,
@@ -265,8 +266,7 @@ test("the rate graph keeps every pre-axis output byte for byte at legacy axis va
     if (axes["rate-form"] !== "whole-or-fraction" || axes["y-scale"] !== "unit")
       return;
     legacy++;
-    const { variant, ...before } = problem;
-    void variant;
+    const before = legacySurface(problem);
     assert.equal(
       createHash("sha256")
         .update(JSON.stringify(before))

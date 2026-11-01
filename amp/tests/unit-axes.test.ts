@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { legacySurface } from "./fixtures/legacy-surface";
 import { readFileSync } from "node:fs";
 import { generatedProblemSchema } from "../src/math/contracts";
 import { generateProblem, gradeAnswer } from "../src/math/engine";
@@ -16,8 +17,7 @@ const golden = JSON.parse(
   ),
 ) as Record<string, string[]>;
 const digest = (id: string, seed: string) => {
-  const { variant, ...rest } = generateProblem(id, seed);
-  void variant;
+  const rest = legacySurface(generateProblem(id, seed));
   return createHash("sha256")
     .update(JSON.stringify(rest))
     .digest("hex")

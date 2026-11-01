@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { legacySurface } from "./fixtures/legacy-surface";
 import { readFileSync } from "node:fs";
 import {
   generateProblem,
@@ -41,8 +42,7 @@ const canonical = (value: unknown): unknown =>
           Number(value.toFixed(9))
         : value;
 const digest = (problem: GeneratedProblem) => {
-  const { variant, ...rest } = problem;
-  void variant;
+  const rest = legacySurface(problem);
   return createHash("sha256")
     .update(JSON.stringify(canonical(rest)))
     .digest("hex")
