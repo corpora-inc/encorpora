@@ -1,4 +1,4 @@
-import type { Browser } from "playwright-core";
+import type { Browser, Page } from "playwright-core";
 // playwright-core is a development dependency: the API image never loads it.
 // The local renderer imports it only when used, in development.
 
@@ -76,15 +76,15 @@ export function localRenderer(): WorkbookRenderer & { close(): Promise<void> } {
   return {
     async render({ html, format, footer }) {
       const instance = await launch();
-      const context = await instance.newContext({
-        javaScriptEnabled: false,
-        offline: true,
-      });
+      // Scripts run only to compose the document's own pages; the context
+      // is offline and every request is refused.
+      const context = await instance.newContext({ offline: true });
       try {
         const page = await context.newPage();
         await page.route("**/*", (route) => route.abort());
-        await page.setContent(html, { waitUntil: "load" });
         await page.emulateMedia({ media: "print" });
+        await page.setContent(html, { waitUntil: "load" });
+        await waitForWorkbookLayout(page);
         return await page.pdf({
           format,
           printBackground: true,
@@ -140,4 +140,56 @@ export async function workbookRendererFromEnv(
     "No local Chromium (npx playwright install chromium): workbook downloads use the printable document",
   );
   return null;
+}
+
+/** Wait for a workbook's page composition (`layout-script.ts`), which marks
+ * `<html data-compose>` and sets `data-layout` to "ready" or "error". Other
+ * documents pass at once. Throws on an error or when it does not finish, so a
+ * printer never ships a half-composed workbook. */
+export async function waitForWorkbookLayout(
+  page: Page,
+  timeout = 20_000,
+): Promise<void> {
+  const state = await page
+    .waitForFunction(
+      () => {
+        const root = document.documentElement;
+        if (!root.hasAttribute("data-compose")) return "none";
+        const value = root.dataset.layout;
+        return value === "ready" || value === "error" ? value : null;
+      },
+      undefined,
+      { timeout },
+    )
+    .then((handle) => handle.jsonValue());
+  if (state === "error")
+    throw new Error("Workbook layout failed; see the page console");
+}
+
+/** Print a workbook's HTML (from `workbookHtml`) to PDF in an open browser
+ * page, as the render service does. Page size and margins come from the
+ * document; footers are part of each composed page. */
+export async function printWorkbookPdf(
+  page: Page,
+  html: string,
+): Promise<Buffer> {
+  const errors: string[] = [];
+  const onError = (message: { type(): string; text(): string }) => {
+    if (message.type() === "error") errors.push(message.text());
+  };
+  page.on("console", onError);
+  try {
+    await page.emulateMedia({ media: "print" });
+    await page.setContent(html, { waitUntil: "load" });
+    await waitForWorkbookLayout(page).catch((error: Error) => {
+      throw new Error(`${error.message}: ${errors.join(" | ")}`);
+    });
+    return await page.pdf({
+      printBackground: true,
+      preferCSSPageSize: true,
+      displayHeaderFooter: false,
+    });
+  } finally {
+    page.off("console", onError);
+  }
 }
