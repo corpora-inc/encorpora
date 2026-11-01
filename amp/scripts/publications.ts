@@ -1,105 +1,88 @@
-import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
-import { createHash } from "node:crypto";
-import { chromium, type Browser } from "playwright";
-import { lessons } from "../src/content/lessons";
-import {
-  publicationHtml,
-  type PublicationKind,
-} from "../src/content/publications";
+import { availableParallelism } from "node:os";
+import { fileURLToPath } from "node:url";
+import { Worker } from "node:worker_threads";
+import { buildPublications, rendererFingerprint } from "./publication-cache";
+import { publicationDocuments } from "./publication-documents";
+import { publicationRenderer } from "./publication-render";
 
-// Incremental: a document's PDFs are re-rendered only when its print HTML
-// changed or a PDF is missing, so `npm run review:math` can always rebuild
-// what it reviews. `--force` re-renders everything (CI starts clean anyway).
-const force = process.argv.includes("--force");
-const output = new URL("../artifacts/publications/", import.meta.url);
-await mkdir(output, { recursive: true });
-type Entry = {
-  lessonId: string;
-  kind: PublicationKind;
-  format: string;
-  filename: string;
-  sha256: string;
-  bytes: number;
-};
-const read = (name: string) =>
-  readFile(new URL(name, output)).catch(() => null);
-const previous = new Map<string, Entry>();
-if (!force) {
-  const existing = await read("manifest.json");
-  if (existing)
-    for (const entry of (
-      JSON.parse(existing.toString("utf8")) as { publications: Entry[] }
-    ).publications)
-      previous.set(entry.filename, entry);
-}
-const manifest: Entry[] = [];
-const expected = new Set(["manifest.json"]);
-let browser: Browser | null = null;
-let rendered = 0;
-try {
-  for (const lesson of lessons) {
-    for (const kind of ["lesson", "workbook", "solutions"] as const) {
-      const html = publicationHtml(lesson, kind);
-      const htmlName = `${lesson.id}-${kind}.html`;
-      expected.add(htmlName);
-      const formats = (["Letter", "A4"] as const).map((format) => ({
-        format,
-        filename: `${lesson.id}-${kind}-${format}.pdf`,
-      }));
-      for (const { filename } of formats) expected.add(filename);
-      const kept = formats.map(({ filename }) => previous.get(filename));
-      const current =
-        (await read(htmlName))?.toString("utf8") === html &&
-        kept.every(Boolean) &&
-        (
-          await Promise.all(
-            kept.map(async (entry) => {
-              const pdf = await read(entry!.filename);
-              return (
-                !!pdf &&
-                createHash("sha256").update(pdf).digest("hex") === entry!.sha256
-              );
-            }),
-          )
-        ).every(Boolean);
-      if (current) {
-        manifest.push(...(kept as Entry[]));
-        continue;
-      }
-      await writeFile(new URL(htmlName, output), html);
-      browser ??= await chromium.launch({ headless: true });
-      const page = await browser.newPage();
-      await page.setContent(html);
-      for (const { format, filename } of formats) {
-        const pdf = await page.pdf({
-          format,
-          printBackground: true,
-          tagged: true,
+// Incremental and content-keyed (scripts/publication-cache.ts): a document is
+// re-rendered only when its print HTML or the renderer changed, so
+// `npm run review:math` can always rebuild what it reviews.
+//   --force          re-render everything
+//   --seed <dir>     also reuse PDFs from a prior build (repeatable)
+//   --no-html        do not keep each document's HTML (release builds); its
+//                    hashes are then computed in worker threads
+// AMP_PDF_CONCURRENCY: threads and browser pages (default: CPUs, at most 4).
+const args = process.argv.slice(2);
+const force = args.includes("--force");
+const writeHtml = !args.includes("--no-html");
+const seeds = args.flatMap((arg, i) =>
+  arg === "--seed" && args[i + 1] ? [args[i + 1]!] : [],
+);
+const concurrency = Math.max(
+  1,
+  Number(
+    process.env.AMP_PDF_CONCURRENCY ?? Math.min(4, availableParallelism()),
+  ),
+);
+const root = fileURLToPath(new URL("../", import.meta.url));
+const output = fileURLToPath(
+  new URL("../artifacts/publications/", import.meta.url),
+);
+const documents = publicationDocuments();
+
+/** Hashes every document's HTML across worker threads, in document order. */
+async function hashInWorkers(count: number, threads: number) {
+  const hashes: string[] = new Array(count);
+  const size = Math.ceil(count / threads);
+  await Promise.all(
+    Array.from({ length: threads }, (_, i) => {
+      const start = i * size;
+      const end = Math.min(count, start + size);
+      if (start >= end) return Promise.resolve();
+      return new Promise<void>((resolve, reject) => {
+        const worker = new Worker(
+          new URL("./publication-hashes.ts", import.meta.url),
+          { workerData: { start, end }, execArgv: ["--import", "tsx"] },
+        );
+        worker.once("message", (m: { start: number; hashes: string[] }) => {
+          hashes.splice(m.start, m.hashes.length, ...m.hashes);
+          resolve();
         });
-        await writeFile(new URL(filename, output), pdf);
-        manifest.push({
-          lessonId: lesson.id,
-          kind,
-          format,
-          filename,
-          sha256: createHash("sha256").update(pdf).digest("hex"),
-          bytes: pdf.length,
+        worker.once("error", reject);
+        worker.once("exit", (code) => {
+          if (code !== 0) reject(new Error(`Hash worker exited with ${code}`));
         });
-        rendered++;
-      }
-      await page.close();
-    }
-  }
-  // Documents of removed or renamed lessons must not linger to be reviewed.
-  for (const name of await readdir(output))
-    if (!expected.has(name)) await rm(new URL(name, output), { force: true });
-  await writeFile(
-    new URL("manifest.json", output),
-    JSON.stringify({ edition: "1", publications: manifest }, null, 2),
+      });
+    }),
   );
+  if (hashes.length !== count || hashes.some((h) => !h))
+    throw new Error("Hash workers did not cover every document");
+  return hashes;
+}
+
+const renderer = publicationRenderer();
+const started = Date.now();
+try {
+  const htmlSha256s =
+    !writeHtml && !force && concurrency > 1
+      ? await hashInWorkers(documents.length, concurrency)
+      : undefined;
+  const hashedSeconds = Math.round((Date.now() - started) / 1000);
+  const { publications, rendered, reused } = await buildPublications({
+    documents,
+    output,
+    seeds,
+    force,
+    concurrency,
+    writeHtml,
+    htmlSha256s,
+    renderer: await rendererFingerprint(root),
+    render: renderer.render,
+  });
   console.log(
-    `Built ${manifest.length} PDFs from ${lessons.length} shared lesson sources (${rendered} re-rendered).`,
+    `Built ${publications.length} PDFs from ${documents.length / 3} shared lesson sources (${rendered} re-rendered, ${reused} documents reused, concurrency ${concurrency}, hashed in ${hashedSeconds}s, ${Math.round((Date.now() - started) / 1000)}s).`,
   );
 } finally {
-  await browser?.close();
+  await renderer.close();
 }
