@@ -65,7 +65,7 @@ export const rightTriangleMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["rule", "opposite"],
     intuition:
-      "Turns are measured in degrees, the unit for angles. A right angle is a corner like the corner of a page, a quarter-turn of 90 degrees. Squaring means multiplying a number by itself: $5^2 = 25$. In a right triangle, the squares of the two shorter sides add up to the square of the longest side. The reverse is also true: if they add up exactly, the triangle has a right angle. So compare the two results.",
+      "Turns are measured in degrees, the unit for angles. A right angle is a corner like the corner of a page, a quarter-turn of 90 degrees. “Squared” means multiplied by itself: $5^2$, read “5 squared”, is 5 × 5 = 25. In a right triangle, the squares of the two shorter sides add up to the square of the longest side. The reverse is also true: if they add up exactly, the triangle has a right angle. So compare the two results.",
     terms: [...terms, "converse"],
     method: [
       "Use the same unit for all three lengths. Name the longest length $c$ and the other two $a$ and $b$.",
