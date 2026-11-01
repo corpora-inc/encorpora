@@ -197,6 +197,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   ...nonlinearSystemMethods,
   // Counting and early operations
   "count-objects": {
+    noLink: ["point"],
     goal: "Given a picture of dots, find how many there are.",
     method: [
       "Touch or point to one dot at a time and say the next number.",
@@ -245,6 +246,8 @@ const legacyMethods: Record<string, ProblemMethod> = {
     watch: "Count the empty places, not the counters.",
   },
   "teen-frame-compose": {
+    intuition:
+      "A ten-frame is a box with 10 spaces, in two rows of 5. When every space has a counter, it shows 10. To count on means to start at a number and keep counting up from there.",
     goal: "Given one full ten-frame and some extra counters, find the total.",
     method: [
       "A full ten-frame is 10. Do not count it one by one.",
@@ -325,6 +328,8 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   // Place value
   "continue-count-to-120": {
+    intuition:
+      "Counting numbers are the numbers 1, 2, 3 and so on. In order, they make a pattern: each one is the one before plus 1. In 37, the 7 is in the ones place, which counts ones. The 3 is in the tens place, which counts tens.",
     goal: "Given a counting sequence, find the next number.",
     method: [
       "Each next number is one more.",
@@ -333,6 +338,9 @@ const legacyMethods: Record<string, ProblemMethod> = {
     watch: "After 109 comes 110, not 1010.",
   },
   "tens-ones-model": {
+    senses: { cube: "cube" },
+    intuition:
+      "A cube is one small block, and it stands for 1. A rod is ten cubes joined together in a row, so it stands for 10. The number shown is the tens from the rods and the ones from the cubes.",
     goal: "Given rods and small cubes, find the number shown.",
     terms: [
       ["base-ten-blocks", "A rod stands for 10: ten cubes joined together."],
@@ -416,9 +424,12 @@ const legacyMethods: Record<string, ProblemMethod> = {
     watch: "A trade changes the pieces, never the total value.",
   },
   "skip-count-missing": {
+    noLink: ["changes"],
+    intuition:
+      "A pattern is a list of numbers that changes the same way each time. In a skip-counting pattern, you add the same number each time, called the step. Counting by 5s gives 5, 10, 15, 20.",
     goal: "Given a counting pattern, find the next number.",
     method: [
-      "Find the step: subtract one number from the next.",
+      "Find the step: how much you add to get from one number to the next. From 5 to 10, the step is 5.",
       "Add the same step to the last number.",
     ],
     watch: "Add the step to the last number shown, not to the first.",
@@ -874,7 +885,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     method: [
       "Count the favorable outcomes: the items of the color asked for. With 5 red and 12 blue, there are 5 red.",
       "Count all the outcomes: every item in the bag, of every color. Here $5 + 12 = 17$.",
-      "Divide the favorable count by the total: $\\tfrac{5}{17}$. Simplify the fraction: divide the top and bottom by the same number greater than 1, if both divide by it exactly.",
+      "Divide the favorable count by the total: $\\tfrac{5}{17}$. Simplify the fraction: divide the top and bottom by the same number greater than 1, if both divide by it exactly. Repeat until no such number is left.",
     ],
     watch:
       "Divide by all the items in the bag, not by the other color. With 5 red and 12 blue, the chance of red is $\\tfrac{5}{17}$, not $\\tfrac{5}{12}$.",
@@ -1160,10 +1171,10 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "If the pieces can be handed out so everyone gets the same count of them, do that. $\\tfrac{6}{8}$ among 3 people is $\\tfrac{2}{8}$ each, because $6 \\div 3 = 2$.",
       "Otherwise, cut each piece into as many smaller pieces as there are people. Sharing $\\tfrac{5}{6}$ among 3 cuts each $\\tfrac{1}{6}$ piece into 3. Each small piece is $\\tfrac{1}{18}$, because $6 \\times 3 = 18$ of them make the whole.",
       "Each person takes one small piece from every original piece: $\\tfrac{5}{18}$. So $\\tfrac{a}{b}$ shared among $n$ people is $\\tfrac{a}{b \\times n}$ each.",
-      "Simplify: divide the top and bottom by the same number greater than 1, if both divide by it exactly. The amount stays the same.",
+      "Simplify: divide the top and bottom by the same number greater than 1, if both divide by it exactly. Repeat until no such number is left. The amount stays the same.",
     ],
     watch:
-      "Multiply the denominator by the number of people and leave the numerator alone: $\\tfrac{5}{6} \\div 3 = \\tfrac{5}{18}$, not $\\tfrac{15}{6}$.",
+      "When you cut the pieces, multiply the denominator by the number of people and keep the numerator: $\\tfrac{5}{6} \\div 3 = \\tfrac{5}{18}$, not $\\tfrac{15}{6}$.",
   },
   "whole-unit-groups": {
     intuition:
@@ -1228,11 +1239,11 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "Do not line up the decimal points to multiply; count the decimal places instead.",
   },
   "ratio-missing": {
-    noLink: ["whole", "changes"],
+    noLink: ["whole", "changes", "scale"],
     intuition:
       "A ratio is a comparison of two amounts, such as 3 cups of blue paint for every 5 cups of white. We write it $3 : 5$ and read it “3 to 5”. Multiplying both amounts by the same number makes a bigger or smaller batch of the same color. That number is called the scale factor. Ratios that make the same mix are called equivalent ratios.",
     goal: "A ratio gives a mix, such as 3 cups of blue for every 5 cups of white. Find the matching amount for a new batch.",
-    senses: { factor: "scale-factor", scale: "scale" },
+    senses: { factor: "scale-factor" },
     terms: ["ratio"],
     method: [
       "Match the new amount to its number in the ratio. In 3 cups of blue for every 5 cups of white, 14 cups of white matches the 5.",
@@ -1243,8 +1254,8 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "Multiply both amounts by the same number. Adding the same amount to both usually changes the mix: $3 : 5$ and $4 : 6$ make different colors.",
   },
   "unit-price": {
+    noLink: ["scale"],
     goal: "Given the cost of some identical items, find the cost of a different number of them.",
-    senses: { scale: "scale" },
     terms: ["unit-price"],
     method: [
       "Find the unit price, the cost of 1 item: total cost ÷ number of items. 10 notebooks for 100 dollars is $100 \\div 10 = 10$ dollars each.",
@@ -1255,9 +1266,8 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "Find the price of 1 item first. The given total is for a different number of items.",
   },
   "percent-of": {
-    noLink: ["part"],
     goal: "Find a percent of an amount, such as 25% of 80.",
-    senses: { fourth: "fourth", whole: "whole" },
+    senses: { fourth: "fourth", whole: "whole", part: "part" },
     terms: ["percent"],
     method: [
       "Percent means per hundred, so write the percent as a fraction with 100 on the bottom: $35\\% = \\tfrac{35}{100}$.",
@@ -1312,7 +1322,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "Subtracting a negative number adds its size. From $-7$ to 6 is $6 - (-7) = 13$, not $6 - 7$.",
   },
   "integer-power": {
-    goal: "Find the value of a power such as $3^4$: a base multiplied by itself as many times as the exponent says.",
+    goal: "Find the value of a power such as $3^4$: the exponent counts how many copies of the base are multiplied together.",
     senses: {
       base: "base-exponent",
       square: "square-number",
@@ -1536,7 +1546,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Find the slope (the steepness) of a line drawn on a grid through two marked points.",
     senses: { change: "change" },
     intuition:
-      "Slope means how steep a line is. Each point on the grid has coordinates, the pair $(x, y)$ that says how far across and how far up it is. Pick two points on the line. The rise is the change in $y$: how far up (positive) or down (negative) you go. The run is the change in $x$: how far right you go. The slope is the rise divided by the run. A line that falls from left to right has a negative slope.",
+      "Slope means how steep a line is. Each point on the grid has coordinates, the pair $(x, y)$ that says how far across and how far up it is. Pick two points on the line. The rise is the change in $y$: how far up (positive) or down (negative) you go. The run is the change in $x$: how far right (positive) or left (negative) you go. The slope is the rise divided by the run. A line that falls from left to right has a negative slope.",
     method: [
       "Read both points' coordinates $(x, y)$ from the grid.",
       "Change in $y$: the second point's $y$ minus the first point's $y$. Change in $x$: the second point's $x$ minus the first point's $x$, in the same order.",
@@ -1581,10 +1591,11 @@ const legacyMethods: Record<string, ProblemMethod> = {
       unit: "unit",
       rule: "rule",
       change: "change",
+      "more than": "more-than",
     },
     noLink: ["mean", "part"],
     intuition:
-      "A model is a rule that links two quantities. The input is the number you put in, such as the time since filling began. The output is the number that comes out, such as the amount of water. In a model such as $V = 3t + 16$, $3t$ means 3 times $t$, so that part grows as time passes. The rate is the number multiplying the input: how much the output grows per input unit. When the input is 0, the multiplied part is 0. The number left over, 16, is the output at the start.",
+      "A model is a rule that links two quantities. The input is the number you put in, such as the time since filling began. The output is the number that comes out, such as the amount of water. In a model such as $V = 3t + 16$, $3t$ means 3 times $t$, so that part grows as time passes. The rate is the number multiplying the input: how much the output changes per input unit. It is negative when the output goes down, as when a candle burns shorter. When the input is 0, the multiplied part is 0. The number left over, 16, is the output at the start.",
     terms: ["input", "output", "initial-value", "rate"],
     method: [
       "Read what the input measures, and what moment input 0 stands for, such as the start of filling.",
@@ -1592,7 +1603,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "Choose the statement about that output at input 0. Reject statements about a change for each unit or about a later amount.",
     ],
     watch:
-      "Keep amount and rate units apart. A starting amount uses output units, such as gallons of water. A rate uses output units per input unit, such as gallons per minute.",
+      "Keep amount and rate units apart. A liter is an amount of liquid, a little more than a quart. A starting amount uses output units, such as liters. A rate uses output units per input unit, such as liters per minute.",
   },
   "predict-linear-output": {
     goal: "Given two points on a straight-line rule, find the output at a new input.",
@@ -1686,7 +1697,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     senses: { rule: "rule", unit: "unit" },
     noLink: ["mean", "whole"],
     intuition:
-      "Each plan's cost depends on $x$. The input is the number $x$, such as a number of hours. Strictly cheaper means costing less, not the same. First find the tie, where both cost the same, by setting the costs equal. Then look just past the tie. A whole input is one of 0, 1, 2, 3 and so on.",
+      "Each plan's cost depends on $x$. The input is the number $x$, such as a number of hours. The rate is the number multiplying $x$: the cost for each hour. Strictly cheaper means costing less, not the same. First find the tie, where both cost the same, by setting the costs equal. Then look just past the tie. A whole input is one of 0, 1, 2, 3 and so on.",
     method: [
       "Set the costs equal and solve for the tie: $18 + x = 2x$ gives $x = 18$.",
       "Test a whole input just above the tie to see which plan is cheaper there. At 19, Plan A costs $18 + 19 = 37$ and Plan B costs $2 \\times 19 = 38$.",
@@ -1706,11 +1717,10 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "Square the input before multiplying by its coefficient, the number in front of it. Keep the parentheses: $(-3)^2 = 9$, but $-3^2 = -9$.",
   },
   "arithmetic-term": {
-    noLink: ["jumps"],
     intuition:
       "A sequence is a list of numbers in order, and each number in it is called a term. An arithmetic sequence is a sequence where you add the same amount each time to get the next term. That amount is called the common difference. In 4, 7, 10, 13, the common difference is 3. To find a later term, count how many jumps of 3 it takes from the first term.",
     goal: "Given the first term and the common difference of an arithmetic sequence, find term $n$.",
-    senses: { term: "term-sequence" },
+    senses: { term: "term-sequence", jump: "jump" },
     terms: ["arithmetic-sequence"],
     method: [
       "Each term is the term before it plus the common difference $d$.",
@@ -1721,16 +1731,17 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "geometric-sequence": {
     goal: "Given the first term and the common ratio of a geometric sequence, find term $n$.",
-    senses: { term: "term-sequence", factor: "factor-number" },
+    senses: { term: "term-sequence" },
     intuition:
-      "A sequence is a list of numbers in order, and each number in it is called a term. A geometric sequence is a sequence where you multiply by the same number each time to get the next term. That number is called the common ratio. In 1, 3, 9, 27, the common ratio is 3.",
+      "A sequence is a list of numbers in order, and each number in it is called a term. A geometric sequence is a sequence where you multiply by the same number each time to get the next term. That number is called the common ratio. In 1, 3, 9, 27, the common ratio is 3. A sequence can also shrink: dividing by 5 each time is multiplying by the common ratio $\\tfrac{1}{5}$.",
     terms: ["geometric-sequence"],
     method: [
       "Each term is the term before it times the common ratio $r$.",
       "From term 1 to term $n$ there are $n - 1$ steps, so multiply by $r$ that many times.",
-      "So term $n$ is the first term times $r^{n - 1}$, which means $n - 1$ factors of $r$. First term 1 and $r = 3$ give term 5: $1 \\times 3^4 = 81$.",
+      "So term $n$ is the first term times $r^{n - 1}$, which means $r$ multiplied $n - 1$ times. First term 1 and $r = 3$ give term 5: $1 \\times 3^4 = 81$.",
     ],
-    watch: "Use $n - 1$ factors of $r$, not $n$: term 1 has no factor of $r$.",
+    watch:
+      "Multiply by $r$ only $n - 1$ times, not $n$ times: term 1 is not multiplied by $r$ at all.",
   },
   "quadratic-vertex": {
     noLink: ["part"],

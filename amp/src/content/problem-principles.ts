@@ -194,7 +194,7 @@ const legacyPrinciples: Record<string, string> = {
   ...nonlinearSystemPrinciples,
   // Counting, place value, early operations
   "count-objects":
-    "One-to-one correspondence: each object is matched with exactly one counting number; the last number named is the cardinality of the set.",
+    "Counting: match each object with exactly one counting number, one at a time. The last number you say tells how many objects there are in the group.",
   "join-within-10":
     "Addition joins two sets: the cardinality of the union of disjoint sets is the sum of their cardinalities.",
   "take-away-within-10":
@@ -204,7 +204,7 @@ const legacyPrinciples: Record<string, string> = {
   "ten-frame-complement":
     "Complements of ten: a + (10 − a) = 10. Knowing these pairs is the basis of making ten.",
   "teen-frame-compose":
-    "Place value: a teen number is one ten and some ones, so 10 + n is written 1n.",
+    "A teen number is one ten and some extra ones. Ten and 3 more ones is 13: the 1 on the left stands for the ten, and the 3 on the right stands for the ones. This works for 0 to 9 extra ones: 10 and 0 more is 10, and 10 and 9 more is 19.",
   "add-within-20":
     "Associative property of addition: (a + b) + c = a + (b + c). Regrouping one addend to complete a ten does not change the sum.",
   "subtract-within-20":
@@ -222,9 +222,9 @@ const legacyPrinciples: Record<string, string> = {
   "balanced-addition":
     "The equals sign states equality of value: both sides of a + b = c + d name the same number.",
   "continue-count-to-120":
-    "Base-ten counting: after 9 ones, the ones reset to 0 and the tens increase by 1.",
+    "Counting by ones: each number is the number before plus 1. After 9 ones, the ones go back to 0 and the tens go up by 1, as in 19, 20. After 9 tens and 9 ones comes the next hundred, as in 99, 100.",
   "tens-ones-model":
-    "Place value in base ten: a two-digit number with tens digit $a$ and ones digit $b$ has value 10a + b.",
+    "Place value: in a two-digit number, the left digit counts tens and the right digit counts ones. So 3 tens and 8 ones is $3 \\times 10 + 8 = 38$. In general, tens digit $a$ and ones digit $b$ make $10a + b$, which means 10 times $a$, plus $b$.",
   "ten-more-or-less":
     "Place value: adding or subtracting 10 changes only the tens digit when no regrouping occurs.",
   "add-ones-regroup":
@@ -240,7 +240,7 @@ const legacyPrinciples: Record<string, string> = {
   "exchange-base-ten":
     "Equivalent representations: 10 units of one place equal 1 unit of the next place; regrouping preserves value.",
   "skip-count-missing":
-    "An arithmetic pattern adds the same difference $d$ each step: $\\text{next} = \\text{previous} + d$.",
+    "A skip-counting pattern adds the same step each time: the next number is the number before plus the step. Counting by 5s gives 5, 10, 15, 20.",
   "add-several-two-digit":
     "Commutative and associative properties: sum the tens and the ones separately, then combine.",
   "add-with-regrouping":
@@ -458,7 +458,7 @@ const legacyPrinciples: Record<string, string> = {
   "shared-plan-input":
     "Two costs are equal at the input where their graphs cross. To find it, solve the equation that sets them equal. For two straight-line costs whose rates (the numbers multiplying $x$) differ, there is exactly one such input.",
   "first-cheaper-whole-input":
-    "A strict inequality is a comparison using < (less than) or > (greater than), so equal values do not count. For two straight-line costs, first find the tie, the input where they are equal. One plan is cheaper for every input above the tie, and the other for every input below it. The first whole input that works is the next whole number past the tie.",
+    "A strict inequality is a comparison using < (less than) or > (greater than), so equal values do not count. For two straight-line costs, first find the tie, the input where they are equal. The plan with the smaller rate is cheaper for every input above the tie, and the other plan is cheaper below it. So the smaller-rate plan's first whole input is the next whole number past the tie.",
   "function-evaluation":
     "Function evaluation: $f(a)$ is the output you get by putting $a$ in place of every $x$ in the rule for $f(x)$. A function gives exactly one output for each input.",
   "arithmetic-term":
@@ -466,7 +466,7 @@ const legacyPrinciples: Record<string, string> = {
   "geometric-sequence":
     "Geometric sequence: $a_n = a_1 \\times r^{n - 1}$. Here $a_n$ is term $n$, $a_1$ is the first term, and $r$ is the common ratio, the number each term is multiplied by. The small letter or number below $a$ gives the term's position.",
   "quadratic-vertex":
-    "Vertex form: $f(x) = a(x - h)^2 + k$. The square $(x - h)^2$ is never negative, and it is 0 at $x = h$. So when $a > 0$ ($a$ is positive), the minimum value of $f$ is $k$, reached at $x = h$. The point $(h, k)$ is called the vertex: the lowest point of the graph.",
+    "Vertex form: $f(x) = a(x - h)^2 + k$. The square $(x - h)^2$ is never negative, and it is 0 at $x = h$. So when $a > 0$ ($a$ is positive), the minimum value of $f$ is $k$, reached at $x = h$. The point $(h, k)$ is called the vertex. When $a > 0$, it is the lowest point of the graph.",
   "logarithm-integer":
     "Definition of a logarithm: $\\log_b N = p$ exactly when $b^p = N$, where $b > 0$, $b \\neq 1$ and $N > 0$.",
 };
