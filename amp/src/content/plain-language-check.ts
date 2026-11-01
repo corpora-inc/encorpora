@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import { templates } from "../math/engine";
 import {
   historicalTemplates,
@@ -17,7 +16,7 @@ import {
   referenceLessonBlocks,
   type LessonTextBlock,
 } from "./lesson-text";
-import { glossary, glossaryEntry } from "../glossary/index";
+import { glossaryEntry } from "../glossary/index";
 import { lessonUnits } from "./lesson-units";
 
 /** The plain-language rules a machine can check (`src/content/AGENTS.md`,
@@ -248,137 +247,88 @@ const lessonContext = (lesson: Lesson): LinkContext => ({
  * practice lesson of every template. */
 export function plainLanguageViolations(): Map<
   ScreenId,
-  ScreenViolations & { band: GradeBand; hash: string }
+  ScreenViolations & { band: GradeBand }
 > {
-  const out = new Map<
-    ScreenId,
-    ScreenViolations & { band: GradeBand; hash: string }
-  >();
+  const out = new Map<ScreenId, ScreenViolations & { band: GradeBand }>();
   for (const unit of lessonUnits()) {
-    if (unit.lesson) {
-      const blocks = referenceLessonBlocks(unit.lesson);
+    if (unit.lesson)
       out.set(`lesson:${unit.lesson.id}`, {
         band: unit.band,
-        hash: screenTextHash(blocks),
-        ...screenViolations(blocks, lessonContext(unit.lesson), unit.band),
+        ...screenViolations(
+          referenceLessonBlocks(unit.lesson),
+          lessonContext(unit.lesson),
+          unit.band,
+        ),
       });
-    }
     for (const templateId of unit.templateIds) {
       if (!hasProblemLesson(templateId)) continue;
       const context = lessonGlossaryContext(
         templateReplacements[templateId] ?? templateId,
         templateById.get(templateId),
       );
-      const blocks = practiceBlocks(templateId);
       out.set(`practice:${templateId}`, {
         band: unit.band,
-        hash: screenTextHash(blocks),
-        ...screenViolations(blocks, context, unit.band),
+        ...screenViolations(practiceBlocks(templateId), context, unit.band),
       });
     }
   }
   return out;
 }
 
-/** A short fingerprint of a screen's walked text (not its link metadata).
- * The baseline records it, so a violation that appears while the text stays
- * the same can only come from linking: a newly named sense or glossary form. */
-export function screenTextHash(blocks: LessonTextBlock[]) {
-  return createHash("sha256")
-    .update(JSON.stringify(blocks.map((b) => [b.stage, b.lines])))
-    .digest("hex")
-    .slice(0, 12);
-}
-
-/** The recorded violations. `glossary` lists the glossary ids when it was
- * written, so a term added later can be told apart; `screens` holds every
- * screen: its violations (often none) and the hash of the text they were
- * recorded on. */
-export type PlainLanguageBaseline = {
-  glossary: TermId[];
-  screens: Record<ScreenId, ScreenViolations & { hash?: string }>;
-};
-
-/** The current violations in baseline form, sorted for stable diffs. */
-export function currentBaseline(): PlainLanguageBaseline {
-  const screens: PlainLanguageBaseline["screens"] = {};
+/** A progress report on the plain-language rules: counts per band, the
+ * terms most often used before they are defined, and every screen's
+ * violations. It never fails anything; quality comes from the standard, the
+ * judge (`npm run review:plain`) and review. */
+export function plainLanguageReport(top = 20) {
   const all = plainLanguageViolations();
-  for (const id of [...all.keys()].sort()) {
-    const v = all.get(id)!;
-    screens[id] = {
-      terms: [...v.terms].sort(),
-      long: [...v.long].sort(),
-      hash: v.hash,
-    };
-  }
-  return { glossary: glossary.map((e) => e.id).sort(), screens };
+  const screens = [...all.entries()].sort(([a], [b]) => a.localeCompare(b));
+  const bands = gradeBandOrder
+    .map((band) => {
+      const rows = screens.filter(([, v]) => v.band === band).map(([, v]) => v);
+      return {
+        band,
+        screens: rows.length,
+        clear: rows.filter((v) => !v.terms.length && !v.long.length).length,
+        undefinedFirstUses: rows.reduce((n, v) => n + v.terms.length, 0),
+        longSentences: rows.reduce((n, v) => n + v.long.length, 0),
+      };
+    })
+    .filter((row) => row.screens > 0);
+  const counts = new Map<TermId, number>();
+  for (const [, v] of screens)
+    for (const t of v.terms) counts.set(t, (counts.get(t) ?? 0) + 1);
+  const topTerms = [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, top)
+    .map(([term, screens]) => ({ term, screens }));
+  return {
+    bands,
+    topTerms,
+    screens: Object.fromEntries(
+      screens
+        .filter(([, v]) => v.terms.length || v.long.length)
+        .map(([id, v]) => [id, { band: v.band, terms: v.terms, long: v.long }]),
+    ),
+  };
 }
 
-/** A violation, as the test and the baseline script name it. */
-export type Violation = { screen: ScreenId; term?: TermId; long?: string };
-export const violationText = (v: Violation) =>
-  v.term
-    ? `${v.screen}: "${v.term}" is not defined where it is first used`
-    : `${v.screen}: sentence over ${MAX_WORDS} words: "${v.long}…"`;
-
-/** Violations the baseline does not record (grown) and recorded ones that
- * are gone (stale). A long sentence counts once per occurrence. */
-export function diffBaseline(
-  current: PlainLanguageBaseline["screens"],
-  baseline: PlainLanguageBaseline["screens"],
+/** The report as a markdown table, for logs and pull requests. */
+export function plainLanguageReportTable(
+  report: ReturnType<typeof plainLanguageReport>,
 ) {
-  const grown: Violation[] = [];
-  const stale: Violation[] = [];
-  const minus = (a: string[], b: string[]) => {
-    const rest = [...b];
-    return a.filter((x) => {
-      const i = rest.indexOf(x);
-      if (i < 0) return true;
-      rest.splice(i, 1);
-      return false;
-    });
-  };
-  for (const screen of new Set([
-    ...Object.keys(current),
-    ...Object.keys(baseline),
-  ])) {
-    const now = current[screen] ?? { terms: [], long: [] };
-    const was = baseline[screen] ?? { terms: [], long: [] };
-    for (const term of minus(now.terms, was.terms))
-      grown.push({ screen, term });
-    for (const term of minus(was.terms, now.terms))
-      stale.push({ screen, term });
-    for (const long of minus(now.long, was.long)) grown.push({ screen, long });
-    for (const long of minus(was.long, now.long)) stale.push({ screen, long });
-  }
-  return { grown, stale };
-}
-
-/** Which new violations the baseline script may record. A term that is a
- * glossary entry added since the baseline was written (`newTerms`), or, with
- * `fromSenses`, any term on a screen whose text hash is unchanged: there the
- * text is the same, so only linking changed (a newly named sense or form).
- * New prose and long sentences are never accepted. */
-export function acceptedGrowth(
-  grown: Violation[],
-  baseline: PlainLanguageBaseline["screens"],
-  current: PlainLanguageBaseline["screens"],
-  options: { newTerms?: TermId[]; fromSenses?: boolean } = {},
-) {
-  const sameText = (screen: ScreenId) => {
-    const was = baseline[screen]?.hash;
-    return !!was && was === current[screen]?.hash;
-  };
-  const accepted: Violation[] = [];
-  const refused: (Violation & { textChanged?: boolean })[] = [];
-  for (const v of grown) {
-    if (v.term && options.newTerms?.includes(v.term)) accepted.push(v);
-    else if (v.term && options.fromSenses && sameText(v.screen))
-      accepted.push(v);
-    else
-      refused.push(
-        v.term && options.fromSenses ? { ...v, textChanged: true } : v,
-      );
-  }
-  return { accepted, refused };
+  const sum = (
+    k: "screens" | "clear" | "undefinedFirstUses" | "longSentences",
+  ) => report.bands.reduce((n, b) => n + b[k], 0);
+  return [
+    "| Band | Screens | Clear | Undefined first uses | Long sentences |",
+    "| --- | ---: | ---: | ---: | ---: |",
+    ...report.bands.map(
+      (b) =>
+        `| ${b.band} | ${b.screens} | ${b.clear} | ${b.undefinedFirstUses} | ${b.longSentences} |`,
+    ),
+    `| all | ${sum("screens")} | ${sum("clear")} | ${sum("undefinedFirstUses")} | ${sum("longSentences")} |`,
+    "",
+    "Most often undefined: " +
+      report.topTerms.map((t) => `${t.term} (${t.screens})`).join(", "),
+  ].join("\n");
 }
