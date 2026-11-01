@@ -945,7 +945,7 @@ function toScientificCase(r: Random): Case {
     answer: [{ label: `$${correct}$` }, ...picked],
     explanation: [
       "Scientific notation writes a number as $a \\times 10^{n}$. The coefficient $a$ is at least 1 and less than 10, and the exponent $n$ is an integer.",
-      `Move the decimal point so one nonzero digit is to its left: ${standardText(value)} becomes ${plain(c)}. The nonzero digits stay in the same order; only zeros that held places drop away.`,
+      `Move the decimal point so one nonzero digit is to its left: ${standardText(value)} becomes ${plain(c)}. The digits stay in the same order; only zeros at the front or the end, which just held places, drop away.`,
       n > 0
         ? `The point moved ${places(n)} to the left, so ${plain(c)} must be multiplied by $10^{${n}}$ to restore the value.`
         : `The point moved ${places(-n)} to the right, so ${plain(c)} must be multiplied by $10^{${n}}$, which divides by $10^{${-n}}$, to restore the value.`,

@@ -12,7 +12,7 @@ const notPlural =
 /** Generated text must read correctly for every count, including 1. */
 const rules: [RegExp, string][] = [
   [
-    /(?<![\d./−-])\b1 (?!is\b|was\b|has\b|plus\b|minus\b|times\b|and\b|more\b|less\b|of\b|or\b)[a-z]+(?<!s)s\b/,
+    /(?<![\d./−-])\b1 (?!is\b|was\b|has\b|as\b|its\b|thus\b|us\b|plus\b|minus\b|times\b|and\b|more\b|less\b|of\b|or\b)[a-z]+(?<!s)s\b/,
     "plural noun after 1",
   ],
   [/\b[Tt]here (are|were) 1\b/, "plural verb before 1"],
