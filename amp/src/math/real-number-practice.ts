@@ -600,7 +600,7 @@ function betweenCase(r: Random): Case {
     explanation: [
       `Find the perfect ${word} on either side of ${n}: $${k}^${index} = ${k ** index}$ and $${k + 1}^${index} = ${(k + 1) ** index}$.`,
       index === 2
-        ? `A perfect square is a whole number times itself. The square root of a number is the value that, times itself, makes that number.`
+        ? `A perfect square is a whole number times itself. The square root of a number is the positive value that, times itself, makes that number.`
         : `A perfect cube is a whole number used as a factor three times. The cube root of a number is the value that, used three times as a factor, makes that number.`,
       `$${k ** index} < ${n} < ${(k + 1) ** index}$. A larger number has a larger ${index === 2 ? "square" : "cube"} root, so $${k} < ${root} < ${k + 1}$.`,
       `So $${root}$ lies between ${k} and ${k + 1}, and the ${larger ? "larger" : "smaller"} whole number is ${larger ? k + 1 : k}.`,
@@ -631,7 +631,7 @@ function tenthCase(r: Random): Case {
     prompt: `Find $\\sqrt{${n}}$ to the nearest tenth.`,
     answer: tenth(nearest),
     explanation: [
-      `$\\sqrt{${n}}$, the square root of ${n}, is the number that times itself makes ${n}. A bigger number always has a bigger square root.`,
+      `$\\sqrt{${n}}$, the square root of ${n}, is the positive number that times itself makes ${n}. A bigger number always has a bigger square root.`,
       `First find whole numbers around it. $${k}^2 = ${k * k}$ and $${k + 1}^2 = ${(k + 1) ** 2}$. Since $${k * k} < ${n} < ${(k + 1) ** 2}$, $\\sqrt{${n}}$ is between ${k} and ${k + 1}.`,
       `Now narrow it to tenths by squaring tenths between them: $${tenth(t)}^2 = ${squared(t, 1)}$ and $${tenth(t + 1)}^2 = ${squared(t + 1, 1)}$. Since $${squared(t, 1)} < ${n} < ${squared(t + 1, 1)}$, $\\sqrt{${n}}$ is between ${tenth(t)} and ${tenth(t + 1)}.`,
       `The halfway point is ${midText}, and $${midText}^2 = ${midSquare}$. Since $${n} ${up ? ">" : "<"} ${midSquare}$, $\\sqrt{${n}}$ is ${up ? "above" : "below"} the halfway point, so it is closer to ${tenth(nearest)}.`,
@@ -945,7 +945,7 @@ function toScientificCase(r: Random): Case {
     answer: [{ label: `$${correct}$` }, ...picked],
     explanation: [
       "Scientific notation writes a number as $a \\times 10^{n}$. The coefficient $a$ is at least 1 and less than 10, and the exponent $n$ is an integer.",
-      `Move the decimal point so one nonzero digit is to its left: ${standardText(value)} becomes ${plain(c)}. The digits do not change.`,
+      `Move the decimal point so one nonzero digit is to its left: ${standardText(value)} becomes ${plain(c)}. The nonzero digits stay in the same order; only zeros that held places drop away.`,
       n > 0
         ? `The point moved ${places(n)} to the left, so ${plain(c)} must be multiplied by $10^{${n}}$ to restore the value.`
         : `The point moved ${places(-n)} to the right, so ${plain(c)} must be multiplied by $10^{${n}}$, which divides by $10^{${-n}}$, to restore the value.`,

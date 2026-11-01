@@ -24,6 +24,7 @@ export const templateGlossary: Readonly<
     senses: { product: "product-multiply" },
     noLink: ["whole"],
   },
+  "arithmetic-term": { senses: { term: "term-sequence" }, noLink: ["change"] },
   "bag-totals-chain": {
     senses: { part: "part", parts: "part", whole: "whole" },
   },
@@ -31,18 +32,34 @@ export const templateGlossary: Readonly<
     senses: { sides: "side-of-equation" },
     noLink: ["scale"],
   },
+  "benchmark-fraction-estimate": { senses: { "more than": "more-than" } },
   "circle-estimate-blanks": { senses: { center: "center" }, noLink: ["edge"] },
   "clock-minute-match": { senses: { "more than": "more-than" } },
+  "compare-decimals-hundredths": { noLink: ["changes"] },
+  "compare-decimals-thousandths": { noLink: ["changes"] },
+  "compare-fractions": { senses: { multiple: "multiple", rename: "rename" } },
+  "compare-irrational-values": {
+    senses: { root: "root-radical", square: "square-number" },
+  },
   "compare-like-denominators": { senses: { "more than": "more-than" } },
   "compare-like-numerators": { senses: { "more than": "more-than" } },
   "compare-three-digit": { noLink: ["change"] },
   "compare-two-digit": { noLink: ["change"] },
   "compare-unlike-fractions": { senses: { "more than": "more-than" } },
+  "compatible-number-estimate": {
+    senses: { multiple: "multiple", multiples: "multiple" },
+  },
+  "compound-event-simulation": {
+    senses: { event: "event", trial: "trial", trials: "trial" },
+  },
   "continue-count-to-120": {
     senses: { "more than": "more-than" },
     noLink: ["changes"],
   },
+  "coordinate-context-points": { senses: { "more than": "more-than" } },
   "count-sequence-missing": { senses: { "more than": "more-than" } },
+  "customary-unit-reverse": { noLink: ["whole"] },
+  "decimal-grid-read": { senses: { part: "part", whole: "whole" } },
   "decimal-rename-chain": { senses: { part: "part", parts: "part" } },
   "decompose-flat-shape": { senses: { sides: "side" } },
   "divide-power-of-ten": { senses: { factor: "factor-number" } },
@@ -61,7 +78,9 @@ export const templateGlossary: Readonly<
     },
     noLink: ["whole"],
   },
+  "equivalent-denominator": { senses: { whole: "whole" } },
   "equivalent-fractions-select": { noLink: ["changes", "part", "parts"] },
+  "equivalent-numerator": { senses: { whole: "whole" } },
   "expression-after-first-step": { noLink: ["part"] },
   "factor-out-choice": {
     senses: { term: "term-expression" },
@@ -76,19 +95,38 @@ export const templateGlossary: Readonly<
   },
   "find-equal-shares": { senses: { parts: "part" } },
   "find-equal-thirds": { senses: { parts: "part" } },
+  "fraction-choice-compare": {
+    senses: { "more than": "more-than", multiple: "multiple" },
+    noLink: ["part", "parts", "whole"],
+  },
+  "fraction-division-expression": {
+    senses: { parts: "part", unit: "unit" },
+    noLink: ["whole"],
+  },
+  "fraction-group-count": { noLink: ["part"] },
   "fraction-line-names-select": { senses: { part: "part", parts: "part" } },
+  "fraction-line-position": { senses: { whole: "whole" } },
   "fraction-model": {
     senses: { part: "part", parts: "part", whole: "whole" },
     noLink: ["mean"],
   },
+  "fraction-share-amount": { senses: { part: "part" } },
   "fraction-total-minus-parts": { senses: { parts: "part" } },
+  "fraction-unit-count": { senses: { whole: "whole" } },
+  "fraction-whole-as-parts": { senses: { whole: "whole" } },
   "full-kits": { noLink: ["leaves"] },
+  "gcf-factor-sum": { senses: { factor: "factor-number" } },
   "greater-numeral": { noLink: ["faces", "side"] },
+  "greatest-common-factor": {
+    senses: { factor: "factor-number", factors: "factor-number" },
+  },
   "hundred-chart-missing": { noLink: ["square"] },
   "hundreds-model": {
     senses: { parts: "part", square: "square-shape", squares: "square-shape" },
     noLink: ["model"],
   },
+  "improper-fractional-part": { senses: { whole: "whole", wholes: "whole" } },
+  "improper-whole-part": { senses: { whole: "whole", wholes: "whole" } },
   "inequality-solution-blanks": {
     senses: { sides: "side-of-equation" },
     noLink: ["rule"],
@@ -103,6 +141,12 @@ export const templateGlossary: Readonly<
   "join-within-10": { noLink: ["square"] },
   "kit-leftovers": { noLink: ["leaves"] },
   "larger-share": { senses: { whole: "whole" } },
+  "least-common-multiple": {
+    senses: { multiple: "multiple", multiples: "multiple" },
+  },
+  "like-fraction-difference": { senses: { whole: "whole" } },
+  "like-fraction-missing-part": { senses: { part: "part" } },
+  "line-slope": { senses: { change: "change" }, noLink: ["changes"] },
   "linear-equation": { senses: { sides: "side-of-equation" } },
   "make-hundred": {
     senses: { jump: "jump", jumps: "jump" },
@@ -112,10 +156,22 @@ export const templateGlossary: Readonly<
   "mean-data": { senses: { mean: "mean-average" } },
   "measurable-attribute-choice": { noLink: ["key"] },
   "mental-ten-hundred": { noLink: ["changes", "leaves"] },
+  "mixed-fraction-difference": {
+    senses: { difference: "difference-subtract", whole: "whole" },
+    noLink: ["parts"],
+  },
+  "mixed-to-improper-numerator": {
+    senses: { whole: "whole", wholes: "whole" },
+  },
+  "multidigit-decimal-quotient": { noLink: ["whole"] },
+  "multidigit-decimal-sum": { noLink: ["changes"] },
   "multiply-by-one-digit": { senses: { part: "part", parts: "part" } },
   "multiply-facts": {
     senses: { factors: "factor-number" },
     noLink: ["change", "whole"],
+  },
+  "multiply-fractions": {
+    senses: { part: "part", parts: "part", whole: "whole" },
   },
   "multiply-multidigit": { senses: { part: "part" } },
   "name-equal-share": {
@@ -145,12 +201,22 @@ export const templateGlossary: Readonly<
   "number-line-hops": { noLink: ["changes"] },
   "number-line-jump-story": { senses: { jump: "jump" } },
   "number-line-missing-hop": { senses: { jumps: "jump" } },
+  "operation-order": { noLink: ["rule"] },
   "operation-property-identify": {
     senses: { part: "part" },
     noLink: ["change", "opposite", "rule"],
   },
   "operation-sentence-choice": { noLink: ["jump", "jumps"] },
   "pairing-leftover": { noLink: ["leaves"] },
+  "pattern-pair-relationship": {
+    senses: {
+      difference: "difference-subtract",
+      factor: "factor-number",
+      term: "term-sequence",
+      terms: "term-sequence",
+    },
+  },
+  "percent-applications": { noLink: ["base"] },
   "power-compare": {
     senses: {
       base: "base-exponent",
@@ -162,6 +228,13 @@ export const templateGlossary: Readonly<
   },
   "power-doubling-story": { senses: { factor: "factor-number" } },
   "power-missing-exponent": { senses: { factor: "factor-number" } },
+  "power-of-power-exponent": {
+    senses: {
+      base: "base-exponent",
+      factor: "factor-number",
+      factors: "factor-number",
+    },
+  },
   "power-order-trap": {
     senses: {
       squared: "square-number",
@@ -178,7 +251,38 @@ export const templateGlossary: Readonly<
     },
   },
   "price-count-chain": { noLink: ["whole"] },
+  "prime-composite-sort": { senses: { factors: "factor-number" } },
+  "prime-factorization-exponents": {
+    senses: {
+      factor: "factor-number",
+      factors: "factor-number",
+      product: "product-multiply",
+    },
+  },
+  "prime-factorization-value": {
+    senses: {
+      base: "base-exponent",
+      factor: "factor-number",
+      factors: "factor-number",
+      product: "product-multiply",
+    },
+  },
+  "product-of-powers-exponent": {
+    senses: {
+      base: "base-exponent",
+      factor: "factor-number",
+      factors: "factor-number",
+    },
+  },
   "purchase-change": { noLink: ["more than"] },
+  "quotient-of-powers-exponent": {
+    senses: {
+      base: "base-exponent",
+      factor: "factor-number",
+      factors: "factor-number",
+    },
+    noLink: ["rule"],
+  },
   "rectangle-area": { senses: { squares: "square-shape" } },
   "related-division-sentence": { senses: { side: "side-of-equation" } },
   "related-subtraction": { senses: { jumps: "jump" } },
@@ -186,7 +290,10 @@ export const templateGlossary: Readonly<
     senses: { part: "part", whole: "whole" },
     noLink: ["leaves"],
   },
+  "repeating-decimal-to-fraction": { noLink: ["tail", "whole"] },
   "right-triangle": { senses: { side: "side", sides: "side" } },
+  "root-between-integers": { senses: { factor: "factor-number" } },
+  "root-nearest-tenth": { senses: { squaring: "square-number" } },
   "round-large": { noLink: ["rule"] },
   "round-to-hundred": { noLink: ["changes", "rule"] },
   "round-to-ten": { noLink: ["changes", "rule"] },
@@ -195,11 +302,31 @@ export const templateGlossary: Readonly<
   },
   "scale-drawing-work": { senses: { unit: "unit" } },
   "scientific-notation-work": { senses: { average: "mean-average" } },
+  "scientific-operations": {
+    senses: { factors: "factor-number", product: "product-multiply" },
+    noLink: ["change", "part"],
+  },
+  "scientific-times-larger": { senses: { factors: "factor-number" } },
+  "scientific-to-standard": {
+    senses: { "standard form": "standard-form-number" },
+  },
   "share-remainder-fractions": { senses: { part: "part", parts: "part" } },
   "show-work-rental-plans": { senses: { sides: "side-of-equation" } },
   "signed-changes-sum": { senses: { changes: "change" } },
+  "signed-fraction-product": { senses: { factor: "factor-number" } },
+  "signed-fraction-sum": {
+    senses: { factor: "factor-number", rename: "rename" },
+  },
+  "signed-quantity": { noLink: ["opposite"] },
   "skip-count-missing": { senses: { "more than": "more-than" } },
   "small-array-total": { senses: { squares: "square-shape" } },
+  "solve-square-cube-equation": {
+    senses: { factor: "factor-number", squaring: "square-number" },
+  },
+  "story-graph-match": {
+    senses: { decreasing: "decreasing", increasing: "increasing" },
+    noLink: ["changes", "part"],
+  },
   "subtract-through-ten": { senses: { part: "part", parts: "part" } },
   "subtract-whole-tens": { noLink: ["whole"] },
   "subtract-with-regrouping": { noLink: ["leaves"] },
@@ -212,16 +339,28 @@ export const templateGlossary: Readonly<
   "tens-ones-model": {
     senses: { square: "square-shape", squares: "square-shape" },
   },
+  "tenths-as-hundredths": { senses: { parts: "part", rename: "rename" } },
   "three-addend-story": { noLink: ["third"] },
   "three-digit-symbol": { noLink: ["change", "faces", "side"] },
   "times-table-pattern": { senses: { product: "product-multiply" } },
+  "triangle-uniqueness": { senses: { "more than": "more-than" } },
   "two-digit-symbol": { noLink: ["change", "faces", "side"] },
   "two-step-change": { senses: { changes: "change" } },
+  "unit-fraction-share": { senses: { part: "part", parts: "part" } },
+  "unit-piece-size": {
+    senses: { part: "part", whole: "whole" },
+    noLink: ["mean"],
+  },
   "unit-size-and-count": { senses: { unit: "unit", units: "unit" } },
   "unknown-addend-story": {
     senses: { part: "part", parts: "part", whole: "whole" },
   },
+  "unlike-fraction-difference": {
+    senses: { multiple: "multiple" },
+    noLink: ["leaves"],
+  },
   "whole-number-equality-choice": { senses: { sides: "side-of-equation" } },
+  "whole-sharing-fraction": { senses: { part: "part", parts: "part" } },
 };
 
 /** A template with its K–8 glossary senses merged in. */
