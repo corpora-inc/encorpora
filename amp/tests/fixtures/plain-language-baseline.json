@@ -887,12 +887,9 @@
     },
     "lesson:arc-sector-derivation": {
       "terms": [
-        "arc",
         "arc-length",
-        "proportional-relationship",
         "radian",
-        "radius",
-        "sector"
+        "radius"
       ],
       "long": []
     },
@@ -1187,10 +1184,8 @@
     },
     "lesson:cavalieri-volume-reasoning": {
       "terms": [
-        "area",
         "base-area",
         "height",
-        "oblique",
         "parallel",
         "prism",
         "pyramid",
@@ -1215,8 +1210,7 @@
     "lesson:choose-the-plot": {
       "terms": [
         "box-plot",
-        "histogram",
-        "median"
+        "histogram"
       ],
       "long": []
     },
@@ -1250,7 +1244,6 @@
     },
     "lesson:circle-dilation-scaling": {
       "terms": [
-        "composition",
         "diameter",
         "dilation",
         "radius",
@@ -1465,18 +1458,14 @@
     "lesson:compass-straightedge-reasoning": {
       "terms": [
         "arc",
-        "bisect",
         "compass",
         "equidistant",
-        "midpoint",
         "parallel",
         "perpendicular",
         "perpendicular-bisector",
         "radius",
-        "ray",
         "right-angle",
         "segment",
-        "straightedge",
         "transversal"
       ],
       "long": []
@@ -1791,8 +1780,7 @@
     },
     "lesson:conditional-everyday-reasoning": {
       "terms": [
-        "independent-events",
-        "rate"
+        "independent-events"
       ],
       "long": []
     },
@@ -1972,13 +1960,9 @@
       "terms": [
         "coordinate",
         "dot-product",
-        "parallelogram",
         "perpendicular",
         "proof",
-        "quadrilateral",
-        "rhombus",
-        "right-angle",
-        "vector"
+        "right-angle"
       ],
       "long": []
     },
@@ -2283,12 +2267,9 @@
     },
     "lesson:density-context": {
       "terms": [
-        "area",
         "gram",
         "kilogram",
-        "mass",
-        "perimeter",
-        "volume"
+        "perimeter"
       ],
       "long": []
     },
@@ -3300,11 +3281,8 @@
     },
     "lesson:geometric-design-constraint": {
       "terms": [
-        "area",
         "height",
         "parallel",
-        "perimeter",
-        "surface-area",
         "volume"
       ],
       "long": []
@@ -3312,17 +3290,12 @@
     "lesson:geometric-model-choice": {
       "terms": [
         "area",
-        "circumference",
         "height",
         "lateral-area",
         "perimeter",
-        "radius",
-        "surface-area",
         "volume"
       ],
-      "long": [
-        "You need the names of the basic solids:"
-      ]
+      "long": []
     },
     "lesson:geometric-rule-forms": {
       "terms": [
@@ -3781,15 +3754,11 @@
     },
     "lesson:inscribed-polygon-reasoning": {
       "terms": [
-        "base-angle",
-        "central-angle",
         "compass",
         "diameter",
         "equilateral",
         "inscribed-polygon",
-        "perpendicular",
-        "radius",
-        "regular-polygon"
+        "radius"
       ],
       "long": []
     },
@@ -3960,20 +3929,11 @@
     },
     "lesson:line-angle-proof-reasons": {
       "terms": [
-        "adjacent-angles",
-        "alternate-interior-angles",
         "bisect",
-        "converse",
         "equidistant",
         "expression",
-        "midpoint",
-        "parallel",
         "perpendicular-bisector",
-        "proof",
-        "right-angle",
-        "supplementary",
-        "theorem",
-        "vertical-angles"
+        "proof"
       ],
       "long": []
     },
@@ -4484,13 +4444,8 @@
       "terms": [
         "apex",
         "area",
-        "base-area",
         "height",
-        "prism",
-        "proof",
-        "radius",
-        "sector",
-        "volume"
+        "proof"
       ],
       "long": []
     },
@@ -5043,10 +4998,8 @@
     "lesson:parallelogram-property-consequences": {
       "terms": [
         "bisect",
-        "parallel",
         "right-angle",
-        "segment",
-        "supplementary"
+        "segment"
       ],
       "long": []
     },
@@ -5368,11 +5321,6 @@
     },
     "lesson:polygon-symmetry-counts": {
       "terms": [
-        "horizontal-line",
-        "interior-angle",
-        "reflection",
-        "regular-polygon",
-        "rotation",
         "symmetry"
       ],
       "long": []
@@ -5562,7 +5510,6 @@
       "terms": [
         "at-most",
         "parallel",
-        "segment",
         "skew-lines"
       ],
       "long": []
@@ -7842,12 +7789,9 @@
         "diameter",
         "height",
         "hypotenuse",
-        "isosceles",
         "leg",
-        "perpendicular",
         "right-triangle",
-        "rotation",
-        "volume"
+        "rotation"
       ],
       "long": []
     },
@@ -8043,9 +7987,7 @@
     "lesson:similar-solid-scale-chain": {
       "terms": [
         "area",
-        "cube-root",
         "ratio",
-        "square-root",
         "surface-area"
       ],
       "long": []
@@ -8071,11 +8013,9 @@
     },
     "lesson:similarity-by-transformation": {
       "terms": [
-        "biconditional",
         "coordinate",
         "dilation",
         "leg",
-        "origin",
         "reflection",
         "rigid-motion",
         "rotation",
@@ -8086,24 +8026,15 @@
     },
     "lesson:similarity-proof-aa": {
       "terms": [
-        "aa-similarity",
-        "corresponding",
-        "dilation",
         "proof",
         "proportional-relationship",
-        "ratio",
-        "reflexive-property",
-        "right-angle",
-        "rigid-motion"
+        "ratio"
       ],
       "long": []
     },
     "lesson:similarity-theorem-length": {
       "terms": [
-        "acute-angle",
-        "altitude",
         "equivalent-ratios",
-        "hypotenuse",
         "parallel",
         "proof",
         "proportion",
@@ -8266,14 +8197,11 @@
     "lesson:solid-volume-context": {
       "terms": [
         "area",
-        "diameter",
         "height",
         "liter",
         "prism",
         "pyramid",
-        "radius",
-        "substitute",
-        "volume"
+        "substitute"
       ],
       "long": []
     },
@@ -8890,7 +8818,6 @@
     },
     "lesson:tangent-circle-computation": {
       "terms": [
-        "hypotenuse",
         "perpendicular",
         "radius",
         "right-triangle",
@@ -9006,12 +8933,10 @@
         "dilation",
         "ray",
         "reflection",
-        "rigid-motion",
         "rotation",
         "scale-factor",
         "transformation",
-        "translation",
-        "vector"
+        "translation"
       ],
       "long": []
     },
@@ -9090,10 +9015,8 @@
         "incenter",
         "inscribed-angle",
         "inscribed-polygon",
-        "intercept",
         "leg",
         "perpendicular-bisector",
-        "quadrilateral",
         "radius",
         "right-triangle",
         "segment",
@@ -9104,11 +9027,7 @@
     "lesson:triangle-congruence-givens": {
       "terms": [
         "corresponding",
-        "counterexample",
         "included-angle",
-        "inequality",
-        "interior-angle",
-        "orientation",
         "proof",
         "ray",
         "reflection",
@@ -9172,9 +9091,7 @@
         "segment",
         "straight-angle"
       ],
-      "long": [
-        "These facts let you turn one measurement into"
-      ]
+      "long": []
     },
     "lesson:triangle-uniqueness": {
       "terms": [
@@ -9306,36 +9223,24 @@
     },
     "lesson:two-column-angle-proof": {
       "terms": [
-        "converse",
         "corresponding",
         "linear-pair",
         "proof",
         "same-side-interior-angles",
-        "substitute",
         "supplementary",
-        "theorem",
-        "transitive-property",
-        "transversal",
-        "vertical-angles"
+        "transitive-property"
       ],
       "long": []
     },
     "lesson:two-column-congruence-proof": {
       "terms": [
         "alternate-interior-angles",
-        "corresponding",
         "cpctc",
-        "midpoint",
         "parallel",
         "proof",
-        "rigid-motion",
-        "segment",
-        "ssa",
-        "vertical-angles"
+        "ssa"
       ],
-      "long": [
-        "A proof gathers those parts one line at"
-      ]
+      "long": []
     },
     "lesson:two-radical-steps": {
       "terms": [
@@ -9910,16 +9815,10 @@
     },
     "practice:arc-sector-derivation": {
       "terms": [
-        "arc",
         "arc-length",
         "area",
-        "central-angle",
-        "proportion",
         "proportional-relationship",
         "radian",
-        "radius",
-        "ratio",
-        "sector",
         "unit-square"
       ],
       "long": []
@@ -10253,7 +10152,6 @@
     },
     "practice:cavalieri-volume-reasoning": {
       "terms": [
-        "cross-section",
         "height",
         "parallel",
         "prism",
@@ -10296,7 +10194,6 @@
       "terms": [
         "box-plot",
         "histogram",
-        "maximum",
         "median"
       ],
       "long": []
@@ -10339,7 +10236,6 @@
       "terms": [
         "diameter",
         "dilation",
-        "radius",
         "ratio",
         "scale-factor",
         "translation",
@@ -10679,7 +10575,6 @@
     "practice:compass-straightedge-reasoning": {
       "terms": [
         "arc",
-        "bisect",
         "compass",
         "equidistant",
         "parallel",
@@ -10998,11 +10893,9 @@
     },
     "practice:conditional-everyday-reasoning": {
       "terms": [
-        "conditional-probability",
         "independent-events",
         "outcome",
-        "percent",
-        "probability"
+        "percent"
       ],
       "long": []
     },
@@ -11216,10 +11109,7 @@
         "component",
         "dot-product",
         "parallel",
-        "parallelogram",
         "perpendicular",
-        "rhombus",
-        "right-angle",
         "trapezoid",
         "vector"
       ],
@@ -11641,8 +11531,6 @@
         "area",
         "gram",
         "kilogram",
-        "kilometer",
-        "mass",
         "perimeter",
         "volume"
       ],
@@ -13308,7 +13196,6 @@
     "practice:geometric-design-constraint": {
       "terms": [
         "area",
-        "perimeter",
         "surface-area",
         "volume"
       ],
@@ -13316,12 +13203,7 @@
     },
     "practice:geometric-model-choice": {
       "terms": [
-        "area",
-        "lateral-area",
-        "perimeter",
-        "substitute",
-        "surface-area",
-        "volume"
+        "substitute"
       ],
       "long": []
     },
@@ -13882,13 +13764,11 @@
     "practice:inscribed-polygon-reasoning": {
       "terms": [
         "arc",
-        "base-angle",
         "circumference",
         "diameter",
         "equilateral",
         "inscribed-polygon",
-        "perimeter",
-        "perpendicular"
+        "perimeter"
       ],
       "long": []
     },
@@ -14106,16 +13986,10 @@
     },
     "practice:line-angle-proof-reasons": {
       "terms": [
-        "alternate-interior-angles",
-        "biconditional",
         "converse",
         "equidistant",
-        "expression",
-        "midpoint",
-        "parallel",
         "perpendicular-bisector",
-        "proof",
-        "right-angle"
+        "proof"
       ],
       "long": []
     },
@@ -14741,9 +14615,7 @@
         "area",
         "central-angle",
         "height",
-        "prism",
-        "proof",
-        "volume"
+        "proof"
       ],
       "long": []
     },
@@ -16107,7 +15979,6 @@
         "midpoint",
         "parallel",
         "perpendicular",
-        "ray",
         "right-angle"
       ],
       "long": []
@@ -17901,16 +17772,10 @@
     },
     "practice:section-revolution-solid": {
       "terms": [
-        "cross-section",
         "diameter",
         "hypotenuse",
-        "leg",
         "parallel",
-        "perpendicular",
         "radius",
-        "right-triangle",
-        "rotation",
-        "segment",
         "volume"
       ],
       "long": []
@@ -18104,11 +17969,8 @@
     },
     "practice:similar-solid-scale-chain": {
       "terms": [
-        "corresponding",
         "cube-root",
-        "ratio",
-        "square-root",
-        "surface-area"
+        "square-root"
       ],
       "long": []
     },
@@ -18154,16 +18016,13 @@
     },
     "practice:similarity-by-transformation": {
       "terms": [
-        "common-ratio",
         "coordinate",
         "dilation",
         "leg",
-        "origin",
         "reflection",
         "rigid-motion",
         "rotation",
         "scale-factor",
-        "sequence",
         "transformation",
         "translation"
       ],
@@ -18171,15 +18030,13 @@
     },
     "practice:similarity-proof-aa": {
       "terms": [
-        "aa-similarity",
         "corresponding",
         "perpendicular",
         "proof",
         "proportion",
         "proportional-relationship",
         "ratio",
-        "reflexive-property",
-        "right-angle"
+        "reflexive-property"
       ],
       "long": []
     },
@@ -18187,14 +18044,12 @@
       "terms": [
         "altitude",
         "area",
-        "hypotenuse",
         "leg",
         "parallel",
         "perpendicular",
         "proportion",
         "ratio",
         "right-angle",
-        "right-triangle",
         "segment"
       ],
       "long": []
@@ -18362,12 +18217,10 @@
     },
     "practice:solid-volume-context": {
       "terms": [
-        "diameter",
         "height",
         "liter",
         "pyramid",
         "radius",
-        "ratio",
         "segment",
         "substitute"
       ],
@@ -19119,7 +18972,6 @@
     "practice:tangent-circle-computation": {
       "terms": [
         "expression",
-        "leg",
         "perpendicular",
         "right-angle",
         "right-triangle"
@@ -19300,7 +19152,6 @@
     },
     "practice:transformation-invariant-claims": {
       "terms": [
-        "coordinate",
         "dilation",
         "reflection",
         "rotation",
@@ -19328,7 +19179,6 @@
         "function",
         "origin",
         "reflection",
-        "rigid-motion",
         "rotation",
         "sequence",
         "transformation",
@@ -19378,16 +19228,12 @@
     },
     "practice:triangle-circle-centers": {
       "terms": [
-        "altitude",
         "bisect",
         "circumcenter",
-        "hypotenuse",
         "incenter",
         "inscribed-polygon",
         "median",
-        "perpendicular-bisector",
-        "quadrilateral",
-        "segment"
+        "perpendicular-bisector"
       ],
       "long": []
     },
@@ -19445,12 +19291,9 @@
         "parallel",
         "ratio",
         "segment",
-        "substitute",
-        "theorem"
+        "substitute"
       ],
-      "long": [
-        "These facts let you turn one measurement into"
-      ]
+      "long": []
     },
     "practice:triangle-third-side": {
       "terms": [
@@ -19601,27 +19444,18 @@
         "proof",
         "ray",
         "substitute",
-        "supplementary",
-        "transitive-property",
-        "transversal"
+        "supplementary"
       ],
       "long": []
     },
     "practice:two-column-congruence-proof": {
       "terms": [
-        "alternate-interior-angles",
         "corresponding",
-        "midpoint",
-        "parallel",
         "pattern",
         "proof",
-        "segment",
-        "theorem",
-        "vertical-angles"
+        "segment"
       ],
-      "long": [
-        "A proof gathers those parts one line at"
-      ]
+      "long": []
     },
     "practice:two-digit-symbol": {
       "terms": [

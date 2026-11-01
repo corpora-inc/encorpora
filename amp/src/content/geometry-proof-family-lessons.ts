@@ -421,7 +421,7 @@ const specs: Spec[] = [
     intuition: [
       t`A definition says exactly which objects have a name. It is precise when every object it describes has the name and no other object does. A point is a location with no size. A line is a straight path that goes on without end in both directions. A plane is a flat surface that goes on without end. Space means all three dimensions, not just one flat surface.`,
       t`A ray is the part of a line that starts at one point and goes on without end in one direction. A segment is the part of a line between two endpoints, including them. Equidistant means at the same distance: every point of a circle is equidistant from the circle's middle point.`,
-      t`A short definition can fail by leaving out a condition. In space, two lines can miss each other without being parallel, like a road and a bridge that crosses over it. Such lines are called skew. So "lines that do not meet" is not enough: parallel lines must also lie in one plane. A circle is flat, so "all points a fixed distance from a point" is not enough either. In space, that describes a sphere, the surface of a ball.`,
+      t`A short definition can fail by leaving out a condition. In space, two lines can miss each other without being parallel, like a road and a bridge that crosses over it. Such lines are called skew. So "lines that do not meet" is not enough: parallel lines must also lie in one plane. A circle is flat, so "all points a fixed positive distance from a point" is not enough either. In space, that describes a sphere, the surface of a ball.`,
     ],
     terms: ["ray", "segment", "skew-lines", "equidistant"],
     method: [
@@ -1144,7 +1144,7 @@ const specs: Spec[] = [
       "prime",
     ],
     intuition: [
-      t`A circle's radius is a segment from its center to the circle. A tangent to a circle is a line that touches the circle at exactly one point, called the point of tangency. The tangent is perpendicular to the radius drawn to that point: they meet at a right angle, $90^\circ$.`,
+      t`A circle's radius is a segment from its center to the circle. A tangent is a line that touches a circle at exactly one point, called the point of tangency. The tangent is perpendicular to the radius drawn to that point: they meet at a right angle, $90^\circ$.`,
       t`So the tangent segment, the radius, and the segment from the center to the outside point form a right triangle. In a right triangle, the two sides that form the right angle are the legs. The longest side, across from the right angle, is the hypotenuse. The Pythagorean theorem is the rule $a^2+b^2=c^2$, where $a$ and $b$ are the legs, $c$ is the hypotenuse, and $a^2$ means $a\times a$. A square root is a number that times itself gives a given number. A length uses the positive one: the square root of 144 is 12.`,
       t`From one point outside a circle you can draw two tangents. The two tangent segments, from that point to where they touch the circle, have the same length.`,
     ],
@@ -1156,7 +1156,7 @@ const specs: Spec[] = [
     ],
     watch:
       "The hypotenuse is the segment from the center to the outside point, not the tangent segment. To find a leg, subtract: $c^2-a^2$ is the leg's square, so then take the square root.",
-    principle: t`A tangent is perpendicular to the radius at the point of tangency. If $T$ is the point of tangency and $P$ is a point on the tangent line, outside the circle with center $O$, then $OT^2+PT^2=OP^2$. Two tangent segments to a circle from the same outside point are congruent, meaning equal in length.`,
+    principle: t`A tangent is perpendicular to the radius at the point of tangency. If $T$ is the point of tangency and $P$ is a point on the tangent, outside the circle with center $O$, then $OT^2+PT^2=OP^2$. Two tangent segments to a circle from the same outside point are congruent, meaning equal in length.`,
     example: {
       prompt:
         "Point $P$ is outside a circle with center $O$ and radius 5. $OP=13$ and $PT$ is tangent to the circle at $T$. What is $PT$?",
@@ -1293,7 +1293,7 @@ const specs: Spec[] = [
     templateId: "coordinate-quadrilateral-claims",
     title: "Decide what coordinates prove about a quadrilateral",
     summary:
-      "Corner coordinates can prove what kind of four-sided shape you have. Arrows along the sides, called vectors, show which sides are parallel, meaning they point in the same direction. A quick product of two vectors shows a right angle. Squared lengths show equal sides. Then name the most specific shape that every test supports.",
+      "Corner coordinates can prove what kind of four-sided shape you have. Arrows along the sides, called vectors, show which sides are parallel: one side's arrow is a number times the other's. A quick product of two vectors shows a right angle. Squared lengths show equal sides. Then name the most specific shape that every test supports.",
     objectives: [
       "Test for parallel sides, right angles and equal sides from corner coordinates.",
       "Choose the most specific quadrilateral that the tests prove.",
@@ -1460,7 +1460,7 @@ const specs: Spec[] = [
     intuition: [
       t`To explain a formula, find a shape whose measure you already know. Then show that your shape has the same measure. Cutting a figure into pieces and rearranging them keeps its area, because no piece is lost or added.`,
       t`A circle's center is the point in its middle. Its radius is the distance from the center to the circle, written $r$. Its diameter is the distance across through the center, written $d$, which is twice the radius. The circumference is the distance around the circle, written $C$. The number $\pi$ (pi), about 3.14, is the circumference divided by the diameter, and it is the same for every circle. A sector is a pie-slice region of a circle, between two radii.`,
-      t`A prism is a solid with two identical flat ends that face each other, joined by flat sides. Its volume is the base area, the area of one end, times the height. A pyramid has a flat base and triangular faces meeting at one point, the apex. Three equal pyramids can fill a cube when their apexes meet at one corner. That shows it for these pyramids. The same rule holds for every pyramid: its volume is one third of the prism with the same base and height.`,
+      t`A prism is a solid with two identical flat ends that face each other, joined by flat sides. Its volume is the base area, the area of one end, times the height. A pyramid has a flat base and triangular faces meeting at one point, the apex. Three equal pyramids can fill a cube when their apexes meet at one corner, so each has one third of the cube's volume. A longer proof, comparing equal slices, shows the same one-third rule for every pyramid and cone.`,
     ],
     terms: [
       [
@@ -1472,8 +1472,8 @@ const specs: Spec[] = [
     ],
     method: [
       "Identify the known shape the figure is compared with, and the measures that carry over.",
-      "For a circle, the rearranged slices nearly form a rectangle. Its long side is half the circumference, $\\pi r$, and its short side is the radius $r$. So the area is about $\\pi r\\cdot r$.",
-      "For pyramids and cones, the volume is one third of the prism or cylinder with the same base and height.",
+      "For a circle, the rearranged slices nearly form a rectangle. Its long side is about half the circumference, $\\pi r$, and its short side is about the radius $r$. So the area is about $\\pi r\\cdot r$.",
+      "For pyramids and cones, the volume is one third of the prism or cylinder with the same base and height. The cube example shows one case of this.",
     ],
     watch:
       "A few measurements do not prove a formula. A justification must work for every case.",

@@ -88,7 +88,7 @@ const entries: WorkEntry[] = [
     title: "Prove angle relationships with parallel lines",
     goal: "Use vertical angles, corresponding angles and linear pairs to prove angles equal, angles supplementary, or lines parallel.",
     summary:
-      "When one line crosses two others, it makes eight angles, four at each crossing. A few facts connect them. Angles across from each other at a crossing are equal. Two neighboring angles that make a straight line add to 180°. If the two lines are parallel, meaning they never meet, angles in matching positions are equal. A proof chains these facts together, one reasoned line at a time.",
+      "When one line crosses two others at two different points, it makes eight angles, four at each crossing. A few facts connect them. Angles across from each other at a crossing are equal. Two neighboring angles that make a straight line add to 180°. If the two lines are parallel, meaning they never meet, angles in matching positions are equal. A proof chains these facts together, one reasoned line at a time.",
     senses: {
       degrees: "degree-angle",
       "corresponding angles": "corresponding-angles",

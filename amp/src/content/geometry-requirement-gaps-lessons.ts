@@ -55,7 +55,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "Keep units: arc length in length units and area in square units. Label an angle in radians, so it is not mistaken for degrees.",
     ],
     watch:
-      "Arc length grows with the radius, but area grows with the radius squared ($r$ times $r$). Use a fraction of $2\\pi$ when the angle is in radians and a fraction of 360 when it is in degrees. Do not mix them.",
+      "Arc length grows with the radius, but area grows with the radius squared, meaning $r$ times $r$. Use a fraction of $2\\pi$ when the angle is in radians and a fraction of 360 when it is in degrees. Do not mix them.",
   },
   "complex-plane-operations": {
     goal: "Read sums, differences, conjugates and products of complex numbers as moves of points in the complex plane.",

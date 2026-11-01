@@ -105,7 +105,7 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "product",
     ],
     intuition:
-      "Density tells how much of something is packed into each unit of space. Population density is people per square kilometer: 5000 people on 50 km² is $5000 \\div 50 = 100$ people per km². The density of a material is its mass, how heavy it is in grams, per cubic centimeter. Density is a rate, an amount for each one unit, like a price per item. So the total amount is the density times the space. The space is the amount divided by the density.",
+      "Density tells how much of something is packed into each unit of space. Population density is people per square kilometer: 5000 people on 50 km² is $5000 \\div 50 = 100$ people per km². The density of a material is its mass, the amount of stuff in it measured in grams, per cubic centimeter. Density is a rate, an amount for each one unit, like a price per item. So the total amount is the density times the space. The space is the amount divided by the density.",
     terms: [
       "density",
       "mass",
@@ -121,7 +121,7 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "To compare two objects, find each density. Do not compare masses or volumes alone.",
     ],
     watch:
-      "A larger mass does not mean a larger density. Divide each mass by its own volume. Density uses area or volume, never perimeter.",
+      "A larger mass does not mean a larger density. Divide each mass by its own volume. Here density uses area or volume, not perimeter.",
   },
   "geometric-model-choice": {
     goal: "Choose the solid that models an object and the measure a task needs, then compute that measure from the model.",
@@ -429,7 +429,7 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
     method: [
       "Name the similar triangles, and match their corners (vertices) in order by equal angles.",
       "Write the proportion of matching sides, with the unknown as one term.",
-      "Cross-multiply, then solve. In a proportion like $\\frac{a}{x} = \\frac{x}{b}$, $x$ is the geometric mean of $a$ and $b$, and $x^2 = ab$.",
+      "Cross-multiply, then solve. In a proportion like $\\frac{a}{x} = \\frac{x}{b}$ with positive numbers, $x$ is the geometric mean of $a$ and $b$, and $x^2 = ab$.",
       "Check that you used a whole side, not a piece, when the proportion needs one.",
     ],
     watch:
@@ -443,7 +443,7 @@ export const geometryModelingPrinciples: Record<string, string> = {
   "density-context":
     "Density is $\\rho=\\tfrac{m}{V}$ for mass $m$ and volume $V$, where $\\rho$ is the Greek letter rho. Population density is $\\tfrac{\\text{population}}{\\text{area}}$. Then $m=\\rho V$ and $V=\\tfrac{m}{\\rho}$. All quantities must use matching units.",
   "geometric-model-choice":
-    "A geometric model replaces an object with a solid whose important measurements match. Area measures a flat region, perimeter the length around it, surface area the total area of a solid's faces, and volume the space inside. A cylinder with radius $r$ and height $h$ has curved-side (lateral) area $2\\pi rh$. A sphere's surface area is $4\\pi r^2$. A prism's volume is the area of one end times its length.",
+    "A geometric model replaces an object with a solid whose important measurements match. Area measures a flat region, perimeter the length around it, surface area the total area of a solid's whole outside, flat or curved, and volume the space inside. A cylinder with radius $r$ and height $h$ has curved-side (lateral) area $2\\pi rh$. A sphere's surface area is $4\\pi r^2$. A prism's volume is the area of one end times its length.",
   "geometric-design-constraint":
     "A design problem asks for the option that is greatest or least in some quantity, among the options that meet a constraint. A rectangle with length $l$, width $w$ and perimeter $P$ has $l+w=\\tfrac P2$ and area $lw$. A box with edges $l$, $w$ and $h$ has surface area $2(lw+lh+wh)$. Cost is area times price per unit of area.",
   "cavalieri-volume-reasoning":
@@ -617,7 +617,7 @@ export const geometryModelingLessons: Lesson[] = [
         title: "How tightly packed",
         paragraphs: [
           "Area is the flat space a region covers, counted in squares such as square kilometers (km²). Volume is the space inside a solid, counted in cubes such as cubic centimeters (cm³). A rectangle's area is length times width. A box's height is how tall it is. Its volume is length times width times height.",
-          "A population is the number of people who live in a place. Density tells how much is packed into each unit of space. A county with 5000 people in 50 km² has $5000 \\div 50 = 100$ people in each square kilometer. Mass is how heavy something is, measured in grams. A metal with 27 g in each cm³ has a density of 27 g/cm³, read “27 grams per cubic centimeter”.",
+          "A population is the number of people who live in a place. Density tells how much is packed into each unit of space. A county with 5000 people in 50 km² has $5000 \\div 50 = 100$ people in each square kilometer. Mass is the amount of matter, or stuff, in an object, measured in grams. A metal with 27 g in each cm³ has a density of 27 g/cm³, read “27 grams per cubic centimeter”.",
           "Density is a rate, an amount for each one unit, so it works like a price per item. The total is the density times the amount of space.",
         ],
       },
@@ -647,7 +647,7 @@ export const geometryModelingLessons: Lesson[] = [
         stage: "formal",
         title: "Definition and rearrangements",
         paragraphs: [
-          "Density is $\\rho=\\tfrac mV$, where $\\rho$ (rho) is the density, $m$ the mass and $V$ the volume. Multiplying both sides by $V$ gives $m=\\rho V$. Dividing both sides of that by $\\rho$, a number other than 0, gives $V=\\tfrac m\\rho$. Population density is the population divided by the area. Units must match: grams with cm³, or kilograms with cubic meters.",
+          "Density is $\\rho=\\tfrac mV$, where $\\rho$ (rho) is the density, $m$ the mass and $V$ the volume. Multiplying both sides by $V$ gives $m=\\rho V$. Dividing both sides of that by $\\rho$, a number other than 0, gives $V=\\tfrac m\\rho$. Population density is the population divided by the area. Units must match: grams with cm³ give grams per cm³, and kilograms with cubic meters give kilograms per cubic meter.",
         ],
       },
     ],
@@ -1125,7 +1125,7 @@ export const geometryModelingLessons: Lesson[] = [
         paragraphs: [
           "Two triangles are similar when they have the same angles. Then one is a scaled copy of the other, and their matching sides are in proportion. A proportion is an equation of two equal fractions, such as $\\frac{2}{4} = \\frac{3}{6}$. To solve $\\frac{8}{4} = \\frac{2}{x}$, cross-multiply: $8x = 4 \\times 2 = 8$, so $x = 1$.",
           "Draw a line across a triangle parallel to one side, so it never meets that side. It cuts off a smaller triangle with the same angles. So it splits the other two sides in the same ratio. This is called the side-splitter theorem.",
-          "In a right triangle, the longest side, across from the right angle, is the hypotenuse. The other two sides are the legs. An altitude is a segment from a corner that meets the side across from it at a right angle. The altitude from the right angle to the hypotenuse cuts the triangle into two smaller right triangles. Each has the same angles as the whole triangle, so all three are similar.",
+          "In a right triangle, the longest side, across from the right angle, is the hypotenuse. The other two sides are the legs. An altitude is a segment from a corner that meets the line through the side across from it at a right angle. The altitude from the right angle to the hypotenuse cuts the triangle into two smaller right triangles. Each has the same angles as the whole triangle, so all three are similar.",
           "When one length appears twice, as in $\\frac{4}{x} = \\frac{x}{9}$, cross-multiplying gives $x^2 = 36$, so $x = 6$. Here $x^2$ means $x \\times x$. A number found this way is called the geometric mean of the other two.",
         ],
       },

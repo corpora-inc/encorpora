@@ -23,7 +23,7 @@ export const similarSolidChainMethods: Record<string, ProblemMethod> = {
       "scales",
     ],
     intuition:
-      "Two solids are similar when they have the same shape: every length of one is the same number times the matching length of the other. That number is the length scale, also called the scale factor. A prism is a solid with two identical flat ends that face each other, joined by flat four-sided faces, like a box. Its surface area is the total area of all its faces. Area is counted in squares, which have two lengths, so areas grow by the scale times itself: the scale squared. Volume, the space inside, is counted in cubes, which have three lengths. So volumes grow by the scale cubed, the scale used three times as a factor. With a scale of 2, areas grow 4 times and volumes grow 8 times.",
+      "Two solids are similar when they have the same shape: every length of one is the same number times the matching length of the other. That number is the length scale, also called the scale factor. A prism is a solid with two identical flat ends that face each other, joined by flat four-sided faces, like a box. Its surface area is the total area of all its faces. Multiplying a number by itself is called squaring it. Area is counted in squares, which have two lengths, so areas grow by the scale squared. Volume, the space inside, is counted in cubes, which have three lengths. So volumes grow by the scale cubed, the scale used three times as a factor. With a scale of 2, areas grow 4 times and volumes grow 8 times.",
     terms: ["scale-factor", "similar-figures"],
     method: [
       "Divide the two given amounts and simplify the fraction. A surface-area ratio is the length scale squared. A volume ratio is the length scale cubed.",
