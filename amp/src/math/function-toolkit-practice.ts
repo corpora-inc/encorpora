@@ -319,11 +319,13 @@ function piecewiseStory(r: Random): Case {
     answer: rat(cost),
     explanation: over
       ? [
-          `${M(`${amount} > ${limit}`)}, so use ${M(`C(${v}) = ${base} + ${rate}(${v} - ${limit})`)}.`,
+          `This is a piecewise function: it has a different rule for each range of ${M(v)}. The condition beside each rule says when to use it.`,
+          `${M(`${amount} > ${limit}`)}, so use the second rule, ${M(`C(${v}) = ${base} + ${rate}(${v} - ${limit})`)}. It charges ${rate} more for each unit past ${limit}.`,
           `${M(`C(${amount}) = ${base} + ${rate}(${amount} - ${limit}) = ${base} + ${rate * (amount - limit)} = ${cost}`)}.`,
           story.close(amount, cost),
         ]
       : [
+          `This is a piecewise function: it has a different rule for each range of ${M(v)}. The condition beside each rule says when to use it.`,
           `${M(`0 < ${amount} \\le ${limit}`)}, so the first rule applies: the flat charge.`,
           `${M(`C(${amount}) = ${base}`)}.`,
           story.close(amount, cost),
@@ -371,6 +373,7 @@ function piecewiseEvaluate(r: Random): Case {
         answer: rat(value),
         scene,
         explanation: [
+          `${M(fx)}, read "${M("f")} of ${n(a)}", is the height of the graph above or below ${M(`x = ${tn(a)}`)}.`,
           ends,
           `That point is ${M(pt(a, value))}, so ${M(`${fx} = ${tn(value)}`)}.`,
         ],
@@ -393,8 +396,9 @@ function piecewiseEvaluate(r: Random): Case {
       prompt,
       answer: rat(value),
       explanation: [
-        why,
-        `${M(`${fx} = ${worked(p.m, p.b, a)}`)}.`,
+        `This is a piecewise function: a different rule for each range of ${M("x")}. ${M(fx)} means the output when ${M(`x = ${tn(a)}`)}.`,
+        `First check which condition holds for the input ${n(a)}. ${why}`,
+        `Substitute ${n(a)} into that rule only: ${M(`${fx} = ${worked(p.m, p.b, a)}`)}.`,
         `So ${M(`${fx} = ${tn(value)}`)}.`,
       ],
       hint:
@@ -425,27 +429,27 @@ function absRule(r: Random): Case {
       [
         {
           ...O,
-          feedback: `That is the rule on the other side of ${M(`x = ${tn(h)}`)}.`,
+          feedback: `This is the rule for the other side of ${M(`x = ${tn(h)}`)}, where the inside of the absolute value has the opposite sign.`,
         },
         {
           m: C.m,
           b: left ? k - a * h : k + a * h,
-          feedback: `Check the sign of ${n(h)}: expand ${M(`${left ? coef(-a) : coef(a)}(${shifted(h)})`)} carefully.`,
+          feedback: `This has a sign error with ${n(h)}. Expand ${M(`${left ? coef(-a) : coef(a)}(${shifted(h)})`)} carefully, multiplying both terms.`,
         },
         {
           m: -C.m,
           b: C.b,
-          feedback: `For ${M(cond)} the slope is ${n(C.m)}, not ${n(-C.m)}.`,
+          feedback: `This has the wrong slope sign. For ${M(cond)} the slope, the change in ${M("y")} per step in ${M("x")}, is ${n(C.m)}, not ${n(-C.m)}.`,
         },
         {
           m: C.m,
           b: left ? h + k : k - h,
-          feedback: `Multiply both terms inside the parentheses by ${n(C.m)}.`,
+          feedback: `This multiplies only the first term inside the brackets. Multiply both terms by ${n(C.m)}.`,
         },
         {
           m: C.m,
           b: -C.b,
-          feedback: `Check the constant term: substitute a value of ${M("x")} to test.`,
+          feedback: `This has the wrong sign on the constant term. Test it: substitute a value of ${M("x")} into both the original and this rule.`,
         },
       ],
       (t) => [0, 1, 2].map((x) => t.m * x + t.b),
@@ -464,6 +468,7 @@ function absRule(r: Random): Case {
       prompt: `Let ${M(`f(x) = ${absTex}`)}. Which expression equals ${M("f(x)")} for ${M(cond)}?`,
       choices,
       explanation: [
+        `The absolute value ${M("|u|")} is the distance of ${M("u")} from 0. It equals ${M("u")} when ${M("u")} is 0 or positive, and ${M("-u")}, the opposite, when ${M("u")} is negative.`,
         `For ${M(cond)}, ${M(`${shifted(h)} ${left ? "<" : "\\ge"} 0`)}, so ${M(`|${shifted(h)}| = ${inside}`)}.`,
         `${M(`f(x) = ${left ? coef(-a) : coef(a)}(${shifted(h)})${plus(k)} = ${linTex(C.m, C.b)}`)}.`,
         `So ${M(`f(x) = ${linTex(C.m, C.b)}`)} for ${M(cond)}.`,
@@ -499,28 +504,28 @@ function graphRule(r: Random): Case {
         {
           m: other.m,
           b: other.b,
-          feedback: `That is the rule for the other piece, beyond ${M(`x = ${tn(c)}`)}.`,
+          feedback: `This reads the other piece, the one beyond ${M(`x = ${tn(c)}`)}. Use only the piece drawn for ${M(cond)}.`,
         },
         {
           m: -p.m,
           b: p.b,
-          feedback: `Check the direction: this piece ${p.m > 0 ? "rises" : "falls"} from left to right.`,
+          feedback: `This has the wrong slope sign. The piece ${p.m > 0 ? "rises" : "falls"} from left to right, so its slope is ${p.m > 0 ? "positive" : "negative"}.`,
         },
         {
           m: p.m,
           b: end,
-          feedback: `${n(end)} is the height at ${M(`x = ${tn(c)}`)}, not at ${M("x = 0")}.`,
+          feedback: `This uses the height at the endpoint. ${n(end)} is the height at ${M(`x = ${tn(c)}`)}, but the constant term is the height at ${M("x = 0")}.`,
         },
         {
           m: p.m,
           b: -p.b,
-          feedback: `Extend the piece to ${M("x = 0")} and read the height there.`,
+          feedback: `This has the wrong sign on the constant term. Extend the piece to ${M("x = 0")} and read the height there.`,
         },
         {
           m: 2 * p.m,
           b: p.b,
           feedback:
-            "Find the slope as rise over run between two points of the piece.",
+            "This doubles the slope. Find the slope as rise over run, the change in height divided by the change across, between two points of the piece.",
         },
       ],
       (t) => [0, 1, 2].map((x) => t.m * x + t.b),
@@ -535,8 +540,10 @@ function graphRule(r: Random): Case {
       choices,
       scene: piecewiseGraph(pieces),
       explanation: [
+        `Each piece is part of a straight line ${M("y = mx + b")}. Here ${M("m")} is the slope, the rise per step across, and ${M("b")} is the height at ${M("x = 0")}.`,
         `The piece for ${M(cond)} passes through ${M(pt(xs[0]!, ys[0]!))} and ${M(pt(xs[1]!, ys[1]!))}.`,
-        `Its slope is ${M(`\\frac{${tn(ys[1]!)} - ${tp(ys[0]!)}}{${tn(xs[1]!)} - ${tp(xs[0]!)}} = ${tn(p.m)}`)}, and extended to ${M("x = 0")} it has height ${n(p.b)}.`,
+        `Its slope is the change in height over the change across: ${M(`\\frac{${tn(ys[1]!)} - ${tp(ys[0]!)}}{${tn(xs[1]!)} - ${tp(xs[0]!)}} = ${tn(p.m)}`)}.`,
+        `Extend the piece to ${M("x = 0")}: its height there is ${n(p.b)}.`,
         `So ${M(`f(x) = ${linTex(p.m, p.b)}`)} for ${M(cond)}.`,
       ],
       hint: `Use only the piece drawn for ${M(cond)}: read two points on it, find its slope, then its height at ${M("x = 0")}.`,
@@ -591,8 +598,8 @@ function solutionCount(r: Random): Case {
       label: l,
       feedback:
         openHit !== null && COUNT.indexOf(l) === count + 1
-          ? `At ${M(`x = ${tn(openHit)}`)} the line meets an open circle, which is not a point of the graph.`
-          : `Follow the line ${M(`y = ${tn(level)}`)} across the whole window and count every point where it meets the graph.`,
+          ? `This counts an open circle. At ${M(`x = ${tn(openHit)}`)} the line meets an open circle, which is not a point of the graph.`
+          : `This miscounts the crossings. Follow the line ${M(`y = ${tn(level)}`)} across the whole window and count every point where it meets the graph.`,
     }));
     const list = hits
       .slice()
@@ -612,6 +619,7 @@ function solutionCount(r: Random): Case {
       choices: [{ label, correct: true }, ...wrong],
       scene: piecewiseGraph(pieces, { level }),
       explanation: [
+        `A solution of ${M(`f(x) = ${tn(level)}`)} is an ${M("x")} where the graph has height ${n(level)}. Those are the points where the dashed line meets the graph.`,
         meets,
         ...(openHit !== null
           ? [
@@ -704,13 +712,13 @@ function transformEquation(r: Random): Case {
           a,
           h: -h,
           k,
-          feedback: `A shift of ${units(h)} ${h > 0 ? "right" : "left"} replaces ${M("x")} with ${M(shifted(h))}.`,
+          feedback: `This shifts the wrong way sideways. A shift of ${units(h)} ${h > 0 ? "right" : "left"} replaces ${M("x")} with ${M(shifted(h))}: inside, the sign is opposite to the direction.`,
         },
         {
           a,
           h,
           k: a * k,
-          feedback: `The shift of ${units(k)} comes after the stretch, so it is not multiplied by ${n(a)}.`,
+          feedback: `This multiplies the vertical shift by ${n(a)}. The shift of ${units(k)} comes after the stretch, so it is added on its own.`,
         },
         {
           a: -a,
@@ -718,20 +726,20 @@ function transformEquation(r: Random): Case {
           k,
           feedback:
             a < 0
-              ? "The graph is reflected: the multiplier is negative."
-              : "The graph is not reflected: the multiplier is positive.",
+              ? "This drops the reflection. The graph is flipped across the $x$-axis, so the multiplier is negative."
+              : "This adds a reflection that is not there. The graph is not flipped, so the multiplier is positive.",
         },
         {
           a,
           h: k,
           k: h,
-          feedback: `The horizontal shift goes inside, with ${M("x")}; the vertical shift is added outside.`,
+          feedback: `This swaps the two shifts. The sideways shift goes inside, with ${M("x")}; the up-down shift is added outside.`,
         },
         {
           a,
           h,
           k: -k,
-          feedback: `Check the direction of the vertical shift of ${units(k)}.`,
+          feedback: `This moves the graph the wrong way vertically. A shift ${k > 0 ? "up" : "down"} ${k > 0 ? "adds" : "subtracts"} ${units(k)} outside.`,
         },
       ],
       formValues(p, h),
@@ -776,8 +784,9 @@ function transformEquation(r: Random): Case {
         choices,
         scene: transformGraph(p, a, h, k),
         explanation: [
-          `The key point of ${M(`y = ${base}`)} moved from ${M("(0, 0)")} to ${M(pt(h, k))}.`,
-          `One unit right of its key point, ${M(`y = ${base}`)} rises 1 unit and the solid curve ${a > 0 ? "rises" : "falls"} ${units(a)}: every height is multiplied by ${mn(a)}.`,
+          `A transformation moves or stretches a graph. In ${M("y = a\\,f(x - h) + k")}, ${M("h")} shifts it sideways, ${M("k")} shifts it up or down, and ${M("a")} stretches or flips it.`,
+          `The key point of ${M(`y = ${base}`)} moved from ${M("(0, 0)")} to ${M(pt(h, k))}. That gives ${M(`h = ${tn(h)}`)} and ${M(`k = ${tn(k)}`)}.`,
+          `One unit right of its key point, ${M(`y = ${base}`)} rises 1 unit and the solid curve ${a > 0 ? "rises" : "falls"} ${units(a)}. So every height is multiplied by ${mn(a)}${a < 0 ? ", and the negative sign flips it" : ""}.`,
           `So the solid curve is ${M(`y = ${formTex(p, a, h, k)}`)}.`,
         ],
         hint: `The dashed curve ${M(`y = ${base}`)} has its key point at ${M("(0, 0)")}. See where the marked point moved, then compare heights 1 unit to its right.`,
@@ -807,6 +816,7 @@ function transformEquation(r: Random): Case {
       prompt: `The graph of ${M(`y = ${base}`)} is ${said}. Which equation describes the new graph?`,
       choices,
       explanation: [
+        `A transformation moves or stretches a graph. Apply the changes one at a time, in the order given.`,
         ...explain,
         `So the new graph is ${M(`y = ${formTex(p, a, h, k)}`)}.`,
       ],
@@ -902,15 +912,16 @@ function transformDescribe(r: Random): Case {
       ? { label: o.label, correct: true }
       : {
           label: o.label,
-          feedback: `Test the point ${M(pt(...sample))}: on ${M(`y = ${g}`)} it goes to ${M(`(${fmt(moved[0])}, ${fmt(moved[1])})`)}, not ${M(`(${fmt(o.move(sample)[0])}, ${fmt(o.move(sample)[1])})`)}.`,
+          feedback: `${kind === "shift-x" || kind === "scale" ? "A change inside the brackets acts on $x$ the opposite way to how it looks. " : ""}Test the point ${M(pt(...sample))}: on ${M(`y = ${g}`)} it goes to ${M(`(${fmt(moved[0])}, ${fmt(moved[1])})`)}, not ${M(`(${fmt(o.move(sample)[0])}, ${fmt(o.move(sample)[1])})`)}.`,
         },
   );
   return {
     prompt: `How does the graph of ${M(`y = ${g}`)} compare with the graph of ${M("y = f(x)")}?`,
     choices,
     explanation: [
+      `To see how a graph changes, follow one point. A change outside ${M("f")} acts on heights. A change inside the brackets acts on ${M("x")}, and it works backward.`,
       `The point ${M(pt(...sample))} of ${M("y = f(x)")} goes to ${M(`(${fmt(moved[0])}, ${fmt(moved[1])})`)} on ${M(`y = ${g}`)}.`,
-      `Every point of the graph moves this way: ${set[correct]!.label.charAt(0).toLowerCase()}${set[correct]!.label.slice(1)}.`,
+      `Every point of the graph moves this way. So the answer is: ${set[correct]!.label.charAt(0).toLowerCase()}${set[correct]!.label.slice(1)}.`,
     ],
     hint,
     tags: ["describe", kind],
@@ -951,7 +962,9 @@ function transformPoint(r: Random): Case {
         answer: rat(answer),
         scene,
         explanation: [
+          `${M(`g(${tn(x)})`)} uses ${M(`f(${tn(x)})`)}, the height of the graph of ${M("f")} at ${M(`x = ${tn(x)}`)}. So read that first.`,
           `From the graph, ${M(`f(${tn(x)}) = ${tn(y)}`)}.`,
+          `Now put it into ${M(`g(x) = ${gTex}`)}: multiply by ${n(A)}, then add ${n(K)}.`,
           `${M(`g(${tn(x)}) = ${product}${plus(K)} = ${tn(answer)}`)}.`,
           `So ${M(`g(${tn(x)}) = ${tn(answer)}`)}.`,
         ],
@@ -991,7 +1004,8 @@ function transformPoint(r: Random): Case {
       prompt: `${given} The graph of ${M(`y = f(${inner})`)} passes through ${M(`\\left(p, ${tn(y0)}\\right)`)}. What is ${M("p")}?`,
       answer: p,
       explanation: [
-        `${M(`y = f(${inner})`)} has height ${n(y0)} where its input ${M(inner)} is ${n(x0)}, because ${M(`f(${tn(x0)}) = ${tn(y0)}`)}.`,
+        `The given point says ${M(`f(${tn(x0)}) = ${tn(y0)}`)}: when ${M("f")} gets the input ${n(x0)}, it gives ${n(y0)}.`,
+        `${M(`y = f(${inner})`)} feeds ${M(inner)} into ${M("f")}. So it has height ${n(y0)} where ${M(inner)} is ${n(x0)}.`,
         `${solve}.`,
         `So ${M(`p = ${tq(p)}`)}.`,
       ],
@@ -1014,6 +1028,7 @@ function transformPoint(r: Random): Case {
       prompt: `${given} The graph of ${M(`y = ${kind}`)} passes through ${M(`\\left(${target[0]}, ${target[1]}\\right)`)}. What is ${M(unknown)}?`,
       answer,
       explanation: [
+        `The given point says ${M(`f(${tn(x0)}) = ${tn(y0)}`)}: the input ${n(x0)} has the output ${n(y0)}.`,
         kind === "-f(x)"
           ? `${M("y = -f(x)")} has the opposite height at every ${M("x")}: a reflection across the ${M("x")}-axis.`
           : kind === "f(-x)"
@@ -1039,8 +1054,9 @@ function transformPoint(r: Random): Case {
     answer: rat(answer),
     explanation: [
       even
-        ? `An even function satisfies ${M("f(-x) = f(x)")}: its graph is symmetric about the ${M("y")}-axis.`
-        : `An odd function satisfies ${M("f(-x) = -f(x)")}: its graph is symmetric about the origin.`,
+        ? `An even function gives the same output for ${M("x")} and its opposite: ${M("f(-x) = f(x)")}. Its graph is a mirror image across the ${M("y")}-axis.`
+        : `An odd function gives opposite outputs for ${M("x")} and its opposite: ${M("f(-x) = -f(x)")}. Its graph looks the same after a half turn about the origin.`,
+      `Here ${n(-sign * x)} is the opposite of ${n(sign * x)}, so use that rule.`,
       even
         ? `So ${M(`f(${tn(-sign * x)}) = f(${tn(sign * x)}) = ${tn(y0)}`)}.`
         : `So ${M(`f(${tn(-sign * x)}) = -f(${tn(sign * x)}) = ${y0 < 0 ? `-${tp(y0)} = ` : ""}${tn(-y0)}`)}.`,
@@ -1104,7 +1120,8 @@ function compositionValue(r: Random): Case {
         prompt: `Let ${M(`f(x) = \\frac{${num}}{${shifted(c)}}`)} and ${M(`g(x) = ${linTex(m, b)}`)}. Which value of ${M("x")} is not in the domain of ${M("f(g(x))")}?`,
         answer: rat(x),
         explanation: [
-          `${M("f")} is undefined where its denominator is 0, at the input ${n(c)}.`,
+          `${M("f(g(x))")} is a composition: first ${M("g")} acts on ${M("x")}, then ${M("f")} acts on the result. The domain is every ${M("x")} that works the whole way through.`,
+          `Dividing by 0 is undefined, so ${M("f")} fails when its denominator, the bottom of the fraction, is 0. That happens at the input ${n(c)}.`,
           `${M("f(g(x))")} is undefined where ${M(`g(x) = ${tn(c)}`)}: ${M(`${linTex(m, b)} = ${tn(c)}`)}, so ${M(`${linTex(m, 0)} = ${tn(c - b)}`)}.`,
           `So ${M(`x = ${tn(x)}`)} is not in the domain of ${M("f(g(x))")}.`,
         ],
@@ -1143,6 +1160,7 @@ function compositionValue(r: Random): Case {
           ["g(x)", ...vals.g!],
         ]),
         explanation: [
+          `${M(e)} is a composition: apply ${M(inner)} first, then feed its output into ${M(outer)}. Work from the inside out.`,
           `From the table, ${M(`${inner}(${tn(a)}) = ${tn(mid)}`)}.`,
           `Then ${M(`${outer}(${tn(mid)}) = ${tn(answer)}`)}, from the column ${M(`x = ${tn(mid)}`)}.`,
           `So ${M(`${e} = ${tn(answer)}`)}.`,
@@ -1188,6 +1206,7 @@ function compositionValue(r: Random): Case {
         answer: rat(answer),
         scene,
         explanation: [
+          `${M(e)} is a composition: apply ${M(inner)} first, then feed its output into ${M(outer)}. Work from the inside out.`,
           `The graph of ${M(inner)} passes through ${M(pt(a, mid))}, so ${M(`${inner}(${tn(a)}) = ${tn(mid)}`)}.`,
           `The graph of ${M(outer)} passes through ${M(pt(mid, answer))}, so ${M(`${outer}(${tn(mid)}) = ${tn(answer)}`)}.`,
           `So ${M(`${e} = ${tn(answer)}`)}.`,
@@ -1232,8 +1251,9 @@ function compositionValue(r: Random): Case {
       answer: rat(answer),
       scene: machine(false),
       explanation: [
+        `${M(e)} is a composition: apply ${M(inner)} first, then feed its output into ${M(outer)}. Like nested brackets, work from the inside out.`,
         `Inside first: ${M(`${inner}(${tn(a)}) = ${evaluated(by[inner]!, a)}`)}.`,
-        `Then ${M(`${outer}(${tn(mid)}) = ${evaluated(by[outer]!, mid)}`)}.`,
+        `That output, ${n(mid)}, is the input to ${M(outer)}: ${M(`${outer}(${tn(mid)}) = ${evaluated(by[outer]!, mid)}`)}.`,
         `So ${M(`${e} = ${tn(answer)}`)}.`,
       ],
       hint: `Work from the inside out: find ${M(`${inner}(${tn(a)})`)} first, then use that value as the input of ${M(outer)}.`,
@@ -1295,32 +1315,32 @@ function compositionExpression(r: Random): Case {
     const wrong = [
       {
         p: other,
-        feedback: `That is ${M(frame === "f-of-g" ? "g(f(x))" : "f(g(x))")}: the order of composition matters.`,
+        feedback: `This composes in the wrong order: it is ${M(frame === "f-of-g" ? "g(f(x))" : "f(g(x))")}. The inner function is the one written inside the brackets.`,
       },
       {
         p: polyMul(F, G),
-        feedback: `That is the product ${M("f(x)g(x)")}, not a composition.`,
+        feedback: `This multiplies the two functions: ${M("f(x)g(x)")}. A composition puts one function inside the other instead.`,
       },
       {
         p: polyAdd(F, G),
-        feedback: `That is the sum ${M("f(x) + g(x)")}, not a composition.`,
+        feedback: `This adds the two functions: ${M("f(x) + g(x)")}. A composition puts one function inside the other instead.`,
       },
       frame === "f-of-g"
         ? {
             // m·g(x) + b with only g's leading part multiplied by m.
             p: polyAdd(polyMul([fm], [...G.slice(0, -1), 0]), [G.at(-1)! + fb]),
-            feedback: `Multiply the whole of ${M("g(x)")} by ${n(fm)}, its constant term included.`,
+            feedback: `This multiplies only the first term of ${M("g(x)")} by ${n(fm)}. Distribute to every term, the constant included.`,
           }
         : G.length === 3
           ? {
               // (mx + b)² + c with the square taken term by term.
               p: [fm * fm, 0, fb * fb + G[2]!],
-              feedback: `Square the whole of ${M(`(${polyTex(F)})`)}: the square of a sum has a middle term.`,
+              feedback: `This squares each term separately. Square the whole of ${M(`(${polyTex(F)})`)}: the square of a sum has a middle term.`,
             }
           : {
               // p(mx + b) + q with only mx multiplied by p.
               p: [G[0]! * fm, fb + G[1]!],
-              feedback: `Multiply the whole of ${M("f(x)")} by ${n(G[0]!)}, its constant term included.`,
+              feedback: `This multiplies only the first term of ${M("f(x)")} by ${n(G[0]!)}. Distribute to every term, the constant included.`,
             },
     ];
     const seen = new Set([polyKey(correct)]);
@@ -1344,8 +1364,9 @@ function compositionExpression(r: Random): Case {
       prompt: `Let ${M(`f(x) = ${Ftex}`)} and ${M(`g(x) = ${Gtex}`)}. Which expression equals ${M(name)}?`,
       choices: [{ label: M(polyTex(correct)), correct: true }, ...picked],
       explanation: [
-        `${M(name)} replaces ${M("x")} in ${M(`${outerName}(x)`)} with ${M(`${frame === "f-of-g" ? "g" : "f"}(x) = ${innerTex}`)}.`,
-        `${M(`${name} = ${substituted} = ${polyTex(correct)}`)}.`,
+        `${M(name)} is a composition: the inner function's output becomes the outer function's input.`,
+        `So replace every ${M("x")} in ${M(`${outerName}(x)`)} with the whole of ${M(`${frame === "f-of-g" ? "g" : "f"}(x) = ${innerTex}`)}, in brackets.`,
+        `Then multiply out and combine like terms: ${M(`${name} = ${substituted} = ${polyTex(correct)}`)}.`,
         `So ${M(`${name} = ${polyTex(correct)}`)}.`,
       ],
       hint: `Replace ${M("x")} in ${M(`${outerName}(x) = ${polyTex(outerP)}`)} with the whole expression ${M(`(${innerTex})`)}, then simplify.`,
@@ -1370,19 +1391,19 @@ function decompose(r: Random): Case {
       const choices = options(M(`x^2${plus(c)}`), [
         {
           label: M(h),
-          feedback: `That is ${M("h(x)")} itself; ${M("f")} acts on the output of ${M("g")}.`,
+          feedback: `This is ${M("h(x)")} itself. ${M("f")} acts on the output of ${M("g")}, so it does only the outer steps.`,
         },
         {
           label: M(`${tn(p)}x^2${plus(c)}`),
-          feedback: `${M("f(g(x))")} would then be ${M(`${tn(p)}(${inner})^2${plus(c)}`)}.`,
+          feedback: `This moves part of ${M("g")} into ${M("f")}. Then ${M("f(g(x))")} would be ${M(`${tn(p)}(${inner})^2${plus(c)}`)}, not ${M("h(x)")}.`,
         },
         {
           label: M(`x^2${plus(q + c)}`),
-          feedback: `${n(q)} is inside the square, as part of ${M("g(x)")}.`,
+          feedback: `This takes ${n(q)} out of the square. ${n(q)} is inside the square, as part of ${M("g(x)")}.`,
         },
         {
           label: M(`(${shifted(-q)})^2${plus(c)}`),
-          feedback: `${M("g")} already supplies ${M(inner)}; ${M("f")} only squares and then ${addWords(c, true)}.`,
+          feedback: `This repeats part of ${M("g")}. ${M("g")} already supplies ${M(inner)}; ${M("f")} only squares and then ${addWords(c, true)}.`,
         },
       ]);
       if (!choices) continue;
@@ -1390,6 +1411,7 @@ function decompose(r: Random): Case {
         prompt: `${M(`h(x) = ${h}`)} can be written as ${M("h(x) = f(g(x))")} with ${M(`g(x) = ${inner}`)}. Which is ${M("f(x)")}?`,
         choices,
         explanation: [
+          `${M("h(x) = f(g(x))")} means ${M("g")} acts first and ${M("f")} acts on its output. So ${M("g")} is the inside step and ${M("f")} is the outside steps.`,
           `In ${M(`h(x) = ${h}`)}, the quantity ${M(inner)} is squared, and then ${addWords(c)}.`,
           `${M(`g(x) = ${inner}`)} is that quantity, so ${M("f")} squares its input and then ${addWords(c, true)}.`,
           `So ${M(`f(x) = x^2${plus(c)}`)}.`,
@@ -1401,19 +1423,19 @@ function decompose(r: Random): Case {
     const choices = options(M(inner), [
       {
         label: M(`(${inner})^2`),
-        feedback: `${M("f")} already squares; ${M("g")} is only the quantity being squared.`,
+        feedback: `This squares twice. ${M("f")} already squares, so ${M("g")} is only the quantity being squared.`,
       },
       {
         label: M(shifted(-q)),
-        feedback: `Check the coefficient of ${M("x")}: ${M(`h`)} squares ${M(inner)}.`,
+        feedback: `This drops the coefficient of ${M("x")}, the number multiplying it. ${M(`h`)} squares ${M(inner)}.`,
       },
       {
         label: M(linTex(p, 0)),
-        feedback: `The constant ${n(q)} is inside the square too.`,
+        feedback: `This leaves out the constant. ${n(q)} is inside the square too.`,
       },
       {
         label: M(linTex(p, -q)),
-        feedback: `Check the sign of the constant inside the square.`,
+        feedback: `This has a sign error: check the sign of the constant inside the square.`,
       },
     ]);
     if (!choices) continue;
@@ -1421,6 +1443,7 @@ function decompose(r: Random): Case {
       prompt: `${M(`h(x) = ${h}`)} can be written as ${M("h(x) = f(g(x))")} with ${M(`f(x) = x^2${plus(c)}`)}. Which is ${M("g(x)")}?`,
       choices,
       explanation: [
+        `${M("h(x) = f(g(x))")} means ${M("g")} acts first and ${M("f")} acts on its output. So ${M("g(x)")} is whatever ${M("f")} receives.`,
         `${M(`f(x) = x^2${plus(c)}`)} squares its input and then ${addWords(c, true)}.`,
         `In ${M(`h(x) = ${h}`)}, the input being squared is ${M(inner)}.`,
         `So ${M(`g(x) = ${inner}`)}.`,
