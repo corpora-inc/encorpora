@@ -1054,3 +1054,19 @@ test("an ordering is never shown already solved, and a lesson never works the sa
         );
     }
 });
+
+test("scientific notation reads as one typeset number, never caret text", () => {
+  for (const seed of ["sci-0", "sci-1", "sci-2", "sci-3"]) {
+    const problem = generateProblem("scientific-notation-work", seed);
+    const response = problem.public.response;
+    assert.equal(response.kind, "structured-work");
+    if (response.kind !== "structured-work") continue;
+    const text = structuredWorkAnswerText(response, problem.answer);
+    // Every power base pairs with its exponent inside math.
+    assert.match(text, /\$[\d.]+\\times10\^\{-?\d+\}\$/, text);
+    // No caret or TeX command is left in prose, where MathText would
+    // show it raw.
+    const prose = text.replace(/\$[^$]*\$/g, "");
+    assert.doesNotMatch(prose, /\^|\\times/, text);
+  }
+});
