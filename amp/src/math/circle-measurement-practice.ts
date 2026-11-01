@@ -119,11 +119,14 @@ export function circleMeasurementPrintCase(
           ? `The area is $A = \\pi r^2$, and the radius is ${shown} cm. Square the radius, then multiply by 3.14.`
           : `The area is $A = \\pi r^2$, and $r$ is half the diameter. Halve ${shown} cm first, square it, then multiply by 3.14.`,
         explanation: [
+          `The radius is the distance from the center of a circle to its edge. The diameter goes all the way across, so it is two radii.`,
           isRadius
             ? `The given length is the radius: $r = ${whole}$ cm.`
-            : `A diameter is twice the radius. Divide by 2: $r = ${shown} \\div 2 = ${whole}$ cm.`,
-          `Square the radius: $${whole} \\times ${whole} = ${whole * whole}$.`,
-          `Replace $\\pi$ with 3.14: $A \\approx 3.14 \\times ${whole * whole} = ${area}$ square centimeters.`,
+            : `So the radius is half the diameter: $r = ${shown} \\div 2 = ${whole}$ cm.`,
+          `A circle's area is $\\pi$ times the radius times itself: $A = \\pi r^2$. Here $\\pi$ (pi) is a fixed number, a little more than 3.`,
+          `Square the radius, which means multiply it by itself: $${whole} \\times ${whole} = ${whole * whole}$.`,
+          `Use 3.14 for $\\pi$: $A \\approx 3.14 \\times ${whole * whole} = ${area}$.`,
+          `The area is about ${area} square centimeters.`,
         ],
         variant: sweepVariant("pi-3-14", piAxes),
       },
@@ -156,12 +159,16 @@ export function circleMeasurementPrintCase(
   let explanation: string[], hint: string;
   if (angle === null) {
     explanation = [
+      isArea
+        ? `The radius is the distance from the center to the edge. A circle's area is $\\pi r^2$: $\\pi$ times the radius times itself.`
+        : `The circumference is the distance around a circle. It is always $\\pi$ (pi) times the diameter, the distance across.`,
       radiusStep,
       fullStep,
-      `The coefficient is the number multiplying $\\pi$. Therefore $a = ${tex(coefficient)}$.`,
+      `The answer is written as $a\\pi$, so $a$ is the number multiplying $\\pi$ (its coefficient).`,
       isArea
         ? `Check using half the circumference times the radius: $\\frac{1}{2} \\times ${pi(diameter)} \\times ${tex(radius)} = ${pi(full)}$ square centimeters.`
-        : `Check the defining ratio: $${pi(full)} \\div ${tex(diameter)} = \\pi$. The circumference divided by the diameter is $\\pi$.`,
+        : `Check: the circumference divided by the diameter should be $\\pi$, and $${pi(full)} \\div ${tex(diameter)} = \\pi$.`,
+      `The ${isArea ? "area" : "circumference"} is $${pi(full)}$ ${unit}, so $a = ${tex(coefficient)}$.`,
     ];
     hint = isArea
       ? isRadius

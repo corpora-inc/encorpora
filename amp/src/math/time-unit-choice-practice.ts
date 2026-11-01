@@ -193,11 +193,14 @@ function timeSurface(m: TimeModel, r: Random): Surface | null {
     hint = `The ${e.noun} lasts ${dur}. ${m.shown === "analog-clock" ? "Read the start time on the clock, then add" : "Add"} the ${h} ${h === 1 ? "hour" : "hours"} first${extra ? `, then the ${extra} minutes` : ""}.`;
     const t1 = hourStep(m.start, h, 1);
     explanation = [
-      `${m.shown === "analog-clock" ? `The clock shows ${labelOf(m.start)}.` : `The start time is ${labelOf(m.start)}.`}`,
-      `Add the ${h} ${h === 1 ? "hour" : "hours"}: ${labelOf(m.start)} + ${h} ${h === 1 ? "hour" : "hours"} = ${labelOf(t1)}.`,
+      `${m.shown === "analog-clock" ? `The clock shows the start: ${labelOf(m.start)}.` : `The start time is ${labelOf(m.start)}.`} The ${e.noun} ends later, so add the time it lasts.`,
+      `Add the whole hours first, because they move only the hour: ${labelOf(m.start)} + ${h} ${h === 1 ? "hour" : "hours"} = ${labelOf(t1)}.`,
       extra
-        ? `Add the ${extra} minutes: ${labelOf(t1)} + ${extra} minutes = ${labelOf(end)}.`
-        : `There are no extra minutes, so the end time is ${labelOf(end)}.`,
+        ? (t1 % 60) + extra >= 60
+          ? `Then add the ${extra} minutes. ${t1 % 60} + ${extra} is ${(t1 % 60) + extra}, past 60, and 60 minutes make 1 hour. So the time rolls into the next hour: ${labelOf(end)}.`
+          : `Then add the ${extra} minutes: ${labelOf(t1)} + ${extra} minutes = ${labelOf(end)}.`
+        : `There are no extra minutes to add.`,
+      `The ${e.noun} ends at ${labelOf(end)}.`,
     ];
   } else if (m.ask === "start-time") {
     const known =
@@ -235,11 +238,14 @@ function timeSurface(m: TimeModel, r: Random): Surface | null {
     hint = `The ${e.noun} lasted ${dur}, so count back from the end time. ${m.shown === "analog-clock" ? "Read the end time on the clock, then subtract" : "Subtract"} the ${h} ${h === 1 ? "hour" : "hours"} first${extra ? `, then the ${extra} minutes` : ""}.`;
     const t1 = hourStep(end, h, -1);
     explanation = [
-      `${m.shown === "analog-clock" ? `The clock shows ${labelOf(end)}.` : `The end time is ${labelOf(end)}.`}`,
-      `Subtract the ${h} ${h === 1 ? "hour" : "hours"}: ${labelOf(end)} − ${h} ${h === 1 ? "hour" : "hours"} = ${labelOf(t1)}.`,
+      `${m.shown === "analog-clock" ? `The clock shows the end: ${labelOf(end)}.` : `The end time is ${labelOf(end)}.`} The ${e.noun} began earlier, so count back the time it lasted.`,
+      `Count back the whole hours first, because they move only the hour: ${labelOf(end)} − ${h} ${h === 1 ? "hour" : "hours"} = ${labelOf(t1)}.`,
       extra
-        ? `Subtract the ${extra} minutes: ${labelOf(t1)} − ${extra} minutes = ${labelOf(m.start)}.`
-        : `There are no extra minutes, so the start time is ${labelOf(m.start)}.`,
+        ? t1 % 60 < extra
+          ? `Then count back the ${extra} minutes. There are only ${t1 % 60} minutes in this hour, so go back past the hour into the one before: ${labelOf(t1)} − ${extra} minutes = ${labelOf(m.start)}.`
+          : `Then count back the ${extra} minutes: ${labelOf(t1)} − ${extra} minutes = ${labelOf(m.start)}.`
+        : `There are no extra minutes to count back.`,
+      `The ${e.noun} began at ${labelOf(m.start)}.`,
     ];
   } else {
     label = "Choose the elapsed time";
@@ -287,11 +293,15 @@ function timeSurface(m: TimeModel, r: Random): Surface | null {
     hint = `${m.shown === "analog-clock" ? "Read the start time on the clock. " : ""}Count on from the start to the next whole hour, then to ${labelOf(end)}, and add the hours and the minutes.`;
     const mid = Math.ceil(m.start / 60) * 60;
     explanation = [
-      `${m.shown === "analog-clock" ? `The clock shows ${labelOf(m.start)}` : `The ${e.noun} ${e.verbStart.replace(/s$/, "")}s at ${labelOf(m.start)}`} and the end time is ${labelOf(end)}.`,
+      `Elapsed time is how much time passes from the start to the end.`,
+      `${m.shown === "analog-clock" ? `The clock shows the start, ${labelOf(m.start)}` : `The ${e.noun} ${e.verbStart.replace(/s$/, "")}s at ${labelOf(m.start)}`}, and the end time is ${labelOf(end)}.`,
       m.start % 60 === 0
-        ? `From ${labelOf(m.start)} to ${labelOf(end)}: ${h} ${h === 1 ? "hour" : "hours"} and ${extra} minutes.`
-        : `Count on to the next hour: ${labelOf(m.start)} to ${labelOf(mid)} is ${mid - m.start} minutes. Then ${labelOf(mid)} to ${labelOf(end)} is ${end - mid} minutes.`,
-      `Together that is ${m.duration} minutes, which is ${hm(m.duration)}.`,
+        ? `The start is on the hour, so count whole hours, then the minutes: ${hm(m.duration)}.`
+        : `Count on in friendly jumps. First to the next hour: ${labelOf(m.start)} to ${labelOf(mid)} is ${mid - m.start} minutes. Then ${labelOf(mid)} to ${labelOf(end)} is ${hm(end - mid)}.`,
+      m.start % 60 === 0
+        ? `Check: ${labelOf(m.start)} + ${hm(m.duration)} = ${labelOf(end)}.`
+        : `Add the jumps: ${mid - m.start} minutes + ${hm(end - mid)} = ${hm(m.duration)}, because 60 minutes make 1 hour.`,
+      `The ${e.noun} lasts ${hm(m.duration)}.`,
     ];
   }
   // A time ends in "a.m." or "p.m.": the sentence's own period is not doubled.
@@ -458,11 +468,13 @@ export const objectForMeasureFamily = chainFamily({
       options,
       hint: `${relation} Picture ${measureText(t)} and compare it with each object, from the smallest to the largest.`,
       explanation: [
-        `${measureText(t)} is about the ${mass ? "mass" : "amount"} of ${t.name}.`,
+        `${relation}`,
+        `${measureText(t)[0]!.toUpperCase()}${measureText(t).slice(1)} is about the ${mass ? "mass" : "amount"} of ${t.name}.`,
         ...m.others.map(
           (o) =>
             `${o.name[0]!.toUpperCase()}${o.name.slice(1)} ${mass ? "has a mass of" : "holds"} about ${measureText(o)}, which is ${o.value > t.value ? "much more" : "much less"}.`,
         ),
+        `So ${t.name} ${mass ? "has a mass" : "holds an amount"} closest to ${measureText(t)}.`,
       ],
       label: "Choose the object",
     });
@@ -630,7 +642,10 @@ export const approximateUnitFactorFamily = chainFamily({
       options,
       hint: `One ${f.big[0]} is about ${f.rateText} ${f.small[1]}. ${toBig ? `There are fewer ${f.big[1]} than ${f.small[1]}, so divide ${m.amount} by ${f.rateText}` : `There are more ${f.small[1]} than ${f.big[1]}, so multiply ${m.amount} by ${f.rateText}`}.`,
       explanation: [
-        `One ${f.big[0]} is about ${f.rateText} ${f.small[1]}.`,
+        `One ${f.big[0]} is about ${f.rateText} ${f.small[1]}, so ${f.small[1]} are the smaller unit.`,
+        toBig
+          ? `Going to the bigger unit takes fewer of them, so divide by ${f.rateText}.`
+          : `Going to the smaller unit takes more of them, so multiply by ${f.rateText}.`,
         toBig
           ? `${m.amount} ÷ ${f.rateText} = ${(m.amount / f.rate).toFixed(3)}…, which rounds to ${tenth(exact100)} to the nearest tenth.`
           : exact100 % 10 === 0

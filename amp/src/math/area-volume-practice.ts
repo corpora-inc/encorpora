@@ -612,7 +612,8 @@ function packingCase(r: Random): Case {
       `$${mixed(x)} \\div ${frac(e)} = ${counts[i]}$ cubes fit along the ${["length", "width", "height"][i]}`,
   );
   const explanation = [
-    `Count the cubes along each edge by dividing the edge by ${len(e, u, true)}: ${list(along)}.`,
+    `Volume is how many unit cubes fill a solid. First count how many small cubes fit along each edge: divide the edge by ${len(e, u, true)}.`,
+    ...along.map((a) => `${a[0]!.toUpperCase()}${a.slice(1)}.`),
     `The cubes form ${counts[2]} ${counts[2] === 1 ? "layer" : "layers"} of ${counts[0]} × ${counts[1]} = ${counts[0]! * counts[1]!} cubes: ${times(counts)} = ${total} cubes.`,
   ];
   if (asksVolume)
@@ -965,7 +966,8 @@ function compositeAreaCase(r: Random): Case {
   const { sides, hidden } = labels(r, shape);
   const total = area(shape);
   const explanation = [
-    `Every corner is a right angle, so opposite sides line up. Find the unlabeled ${hidden.length === 1 ? "side" : "sides"}: ${hidden.map((h) => h.text).join("; ")}.`,
+    `Area is how many unit squares cover a shape. Every corner here is a right angle, so opposite sides line up and missing sides can be found.`,
+    ...hidden.map((h) => `${h.text[0]!.toUpperCase()}${h.text.slice(1)}.`),
     `Split the figure into rectangles: ${list(partsText(shape))}.`,
     `Add the rectangles: ${shape.parts.map(([, w, h]) => w * h).join(" + ")} = ${total}. The area is ${total} ${A}.`,
   ];
@@ -1013,7 +1015,7 @@ function compositePrismCase(r: Random, surface: boolean): Case {
     const qd = shape.face[(i + 1) % shape.face.length]!;
     return Math.abs(qd[0] - p[0]) + Math.abs(qd[1] - p[1]);
   });
-  const findSides = `Every corner of the front face is a right angle. Find the unlabeled ${hidden.length === 1 ? "edge" : "edges"}: ${hidden.map((h) => h.text).join("; ")}.`;
+  const findSides = `Every corner of the front face is a right angle, so opposite edges line up. ${hidden.map((h) => `${h.text[0]!.toUpperCase()}${h.text.slice(1)}.`).join(" ")}`;
   const faceStep = `Split the front face into rectangles: ${list(partsText(shape))}. Its area is ${shape.parts.map(([, w, h]) => w * h).join(" + ")} = ${face}.`;
   const intro = `A right prism has the ${describe[shape.name]} front face shown and is ${len(depth, u)} deep. All angles are right angles. Lengths are in ${unitWords[u][1]}.`;
   if (!surface)

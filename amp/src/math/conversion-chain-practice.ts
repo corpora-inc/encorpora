@@ -88,11 +88,13 @@ export const conversionChain = chainFamily({
         answer: String(answer),
         hint: `Change ${v} gallons to quarts first: each gallon is 4 quarts, so multiply ${v} by 4. Then continue down the chart one unit at a time.`,
         explanation: [
-          `Gallons to quarts: $${v}\\times4=${quarts}$ quarts.`,
-          `Quarts to pints: $${quarts}\\times2=${pints}$ pints.`,
+          `The chart links each unit to the next smaller one, so change one unit at a time.`,
+          `Going to a smaller unit takes more of them, so multiply each time.`,
+          `Gallons to quarts: each gallon is 4 quarts, so $${v}\\times4=${quarts}$ quarts.`,
+          `Quarts to pints: each quart is 2 pints, so $${quarts}\\times2=${pints}$ pints.`,
           m.target === "pints"
-            ? `The cooler holds ${pints} pints.`
-            : `Pints to cups: $${pints}\\times2=${cups}$ cups. The cooler holds ${cups} cups.`,
+            ? `The cooler holds ${pints} pints of water.`
+            : `Pints to cups: each pint is 2 cups, so $${pints}\\times2=${cups}$ cups. The cooler holds ${cups} cups of water.`,
         ],
         label: `Answer (${m.target})`,
       });
@@ -104,7 +106,8 @@ export const conversionChain = chainFamily({
         answer: String(inches),
         hint: `Change ${v} rods to yards first: each rod is 5.5 yards, so multiply ${v} by 5.5. Then use the number of feet in a yard and inches in a foot.`,
         explanation: [
-          `Rods to yards: $${v}\\times5.5=${decimalText(m.quarters * 11, 8)}$ yards.`,
+          `Change one unit at a time: rods to yards, yards to feet, then feet to inches. Each unit is smaller, so multiply each time.`,
+          `Rods to yards: each rod is 5.5 yards, so $${v}\\times5.5=${decimalText(m.quarters * 11, 8)}$ yards.`,
           `Yards to feet, with 3 feet in a yard: $${decimalText(m.quarters * 11, 8)}\\times3=${decimalText(m.quarters * 33, 8)}$ feet.`,
           `Feet to inches, with 12 inches in a foot: $${decimalText(m.quarters * 33, 8)}\\times12=${inches}$ inches.`,
           `${q.startsWith("$") ? v : q} rods is ${inches} inches long.`,
@@ -120,9 +123,11 @@ export const conversionChain = chainFamily({
       answer: String(pieces),
       hint: `The length and the piece use different units. Change ${v} meters to centimeters first: 1 meter is 100 centimeters, so multiply ${v} by 100.`,
       explanation: [
-        `Meters to centimeters: $${v}\\times100=${cm}$ centimeters.`,
-        `Divide by the length of one bow: $${cm}\\div${m.piece}$ gives ${pieces} whole bows with a remainder of ${cm - used}.`,
-        `Check: ${pieces} bows use $${pieces}\\times${m.piece}=${used}$ centimeters, and ${cm - used} is less than the ${m.piece} centimeters another bow needs. ${pieces} whole bows can be made.`,
+        `The ribbon is in meters but each bow is in centimeters. Use one unit before you divide.`,
+        `1 meter is 100 centimeters, so the ribbon is $${v}\\times100=${cm}$ centimeters long.`,
+        `Each bow uses ${m.piece} centimeters, so divide to see how many bows fit: $${cm}\\div${m.piece}$ is ${pieces} with ${cm - used} left over (the remainder).`,
+        `Check: ${pieces} bows use $${pieces}\\times${m.piece}=${used}$ centimeters. The ${cm - used} centimeters left are less than one bow needs, so they make no whole bow.`,
+        `${pieces} whole bows can be made.`,
       ],
       label: "Answer (bows)",
     });

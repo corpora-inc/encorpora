@@ -134,11 +134,13 @@ export function generateMeasurementProblem(
         label = "Length in inches";
         hint = `Each inch on this ruler is cut into ${parts} equal spaces, so each small space is $1/${parts}$ inch.${start ? ` The ${noun} starts at the ${start}-inch mark, not at 0.` : ""} Count the small spaces from one end of the ${noun} to the other, then write that count over ${parts}.`;
         explanation = [
-          `Each inch is cut into ${parts} equal spaces, so each space is $1/${parts}$ inch.`,
+          `Length is how far it is from one end to the other end.`,
+          `Each inch is cut into ${parts} equal spaces, so each small space is $1/${parts}$ inch.`,
           start
-            ? `The ${noun} runs from the ${start}-inch mark to the mark at $${rational(end, parts)}$ inches: $${rational(end, parts)} - ${start} = ${answer}$.`
-            : `The ${noun} starts at 0 and ends at the mark for $${answer}$ inches.`,
-          `That is ${spaces} spaces of $1/${parts}$ inch, so the ${noun} is $${answer}$ inches long, measured to the nearest ${partWord} of an inch.`,
+            ? `The ${noun} starts at the ${start}-inch mark, not at 0, so count only the spaces it covers: ${spaces} spaces.`
+            : `The ${noun} starts at 0. Count the small spaces to its other end: ${spaces} spaces.`,
+          `${spaces} spaces of $1/${parts}$ inch make $${spaces}/${parts}$ inch${spaces === 1 ? "" : "es"}${`${spaces}/${parts}` === answer ? "" : `, which is $${answer}$`}.`,
+          `The ${noun} is $${answer}$ inches long${parts === 8 ? ", to the nearest eighth of an inch" : ""}.`,
         ];
         break;
       }
@@ -161,13 +163,21 @@ export function generateMeasurementProblem(
       hint = whole
         ? `A starts at the ${start} cm mark, not at 0. Read B's mark and subtract ${start}.`
         : `Each centimeter is cut into ${denominator} small spaces. Count the small spaces from $A$ to $B$, then write that count over ${denominator}.`;
-      explanation = [
-        `$A$ is at ${rational(start, denominator)} cm; $B$ is at ${rational(end, denominator)} cm.`,
-        `${rational(end, denominator)} − ${rational(start, denominator)} = ${answer} cm.`,
-        whole
-          ? "The starting mark is a position, not an extra unit of length."
-          : `Each small space is 1/${denominator} cm. There are ${end - start} of those spaces between the ends.`,
-      ];
+      explanation = whole
+        ? [
+            `Length is how far it is from one end to the other end.`,
+            `The strip does not start at 0. $A$ is at the ${start} cm mark and $B$ is at the ${end} cm mark.`,
+            `The length is the distance between the marks, so subtract: ${end} − ${start} = ${answer}.`,
+            `Counting the marks themselves would add 1 too many; count the spaces between them.`,
+            `The strip is ${answer} cm long.`,
+          ]
+        : [
+            `Length is how far it is from one end to the other end.`,
+            `Each centimeter is cut into ${denominator} equal spaces, so each small space is 1/${denominator} cm.`,
+            `$A$ is at ${rational(start, denominator)} cm and $B$ is at ${rational(end, denominator)} cm. There are ${end - start} small spaces between them.`,
+            `${end - start} spaces of 1/${denominator} cm make ${end - start}/${denominator} cm${`${end - start}/${denominator}` === answer ? "" : `, which is ${answer} cm`}.`,
+            `The strip is ${answer} cm long.`,
+          ];
       break;
     }
     case "rectangle-border-length":
@@ -190,9 +200,11 @@ export function generateMeasurementProblem(
         label = "Perimeter in cm";
         hint = `Ribbon goes along all four sides: two sides of ${width} cm and two sides of ${height} cm.`;
         explanation = [
-          `The four sides are ${width}, ${height}, ${width}, and ${height} cm.`,
-          `${width} + ${height} + ${width} + ${height} = ${perimeter} cm.`,
-          `Equivalently, double the adjacent-side sum: 2 × (${width} + ${height}) = ${perimeter}.`,
+          `Ribbon that goes once around a shape measures its perimeter: the total length of all its sides.`,
+          `A rectangle's opposite sides are equal, so its four sides are ${width}, ${height}, ${width} and ${height} cm.`,
+          `Add all four: ${width} + ${height} + ${width} + ${height} = ${perimeter}.`,
+          `A shortcut: one long side and one short side make half the trip, so 2 × (${width} + ${height}) = ${perimeter}.`,
+          `${perimeter} cm of ribbon go once around the rectangle.`,
         ];
       } else if (fromArea) {
         prompt = `This rectangle covers ${area} square cm. Find its missing side in cm.`;
@@ -200,9 +212,11 @@ export function generateMeasurementProblem(
         label = "Missing side in cm";
         hint = `Area is side × side, so ${width} × □ = ${area}. Which length times ${width} covers ${area} square cm?`;
         explanation = [
-          `${width} × □ = ${area}.`,
-          `${area} ÷ ${width} = ${height}, so the missing side is ${height} cm.`,
-          `Check: ${width} cm × ${height} cm covers ${area} square cm.`,
+          `Area is how many 1 cm squares cover the rectangle. It equals one side times the other side.`,
+          `One side is ${width} cm, so ${width} × □ = ${area}.`,
+          `Division undoes multiplication: ${area} ÷ ${width} = ${height}.`,
+          `Check: ${width} rows of ${height} squares is ${width} × ${height} = ${area} square cm.`,
+          `The missing side is ${height} cm.`,
         ];
       } else {
         prompt = `This rectangle has perimeter ${perimeter} cm. Find its missing side in cm.`;
@@ -210,9 +224,11 @@ export function generateMeasurementProblem(
         label = "Missing side in cm";
         hint = `Half of the ${perimeter} cm border is one width plus one height. Take ${width} away from that half.`;
         explanation = [
-          `Half the border is ${perimeter} ÷ 2 = ${width + height} cm.`,
-          `The missing side is ${width + height} − ${width} = ${height} cm.`,
+          `The perimeter is the length all the way around: two equal long sides and two equal short sides.`,
+          `So half the perimeter is one of each side: ${perimeter} ÷ 2 = ${width + height} cm.`,
+          `One side is ${width} cm, so the other side is ${width + height} − ${width} = ${height} cm.`,
           `Check all four sides: ${width} + ${height} + ${width} + ${height} = ${perimeter} cm.`,
+          `The missing side is ${height} cm.`,
         ];
       }
       break;
@@ -230,10 +246,10 @@ export function generateMeasurementProblem(
           : {
               feedback:
                 unit === "cubic cm"
-                  ? "Cubic units measure three-dimensional volume."
+                  ? `A cubic centimeter is a small cube. Cubes fill space inside a box, but the ${cover ? "paper covers a flat face" : "ribbon is a line along an edge"}. Use ${cover ? "square cm" : "cm"}.`
                   : cover
-                    ? "Centimeters measure length; covering a surface needs square units."
-                    : "Square centimeters measure area, not the length around an edge.",
+                    ? "A centimeter measures length along a line. Paper covers a flat surface, so count the 1 cm squares that cover it: square cm."
+                    : "A square centimeter is a small square that covers a surface. The ribbon is a line around the edge, so measure its length in cm.",
             }),
       }));
       hint = cover
@@ -241,12 +257,14 @@ export function generateMeasurementProblem(
         : "Ribbon runs along a path around the edge, so measure how long that path is.";
       explanation = cover
         ? [
-            "A unit square has a side of 1 cm and covers 1 square cm.",
-            "Counting the square units needed to cover the card measures its area.",
+            "Area is how much flat surface something covers.",
+            "Area is counted in unit squares. A square with 1 cm sides covers 1 square cm.",
+            "The paper covers the flat face, so it measures area. The unit is square cm.",
           ]
         : [
-            "A centimeter is a unit of length.",
-            "The ribbon follows the outside edge. Its length is a perimeter, so centimeters are appropriate.",
+            "A centimeter is a unit of length: it measures how long a line or path is.",
+            "The ribbon runs along the outside edge, so its length is the perimeter, the distance around.",
+            "Distance around is a length, so the unit is cm.",
           ];
       break;
     }
@@ -291,18 +309,34 @@ export function generateMeasurementProblem(
         ...(name === winner
           ? { correct: true as const }
           : {
-              feedback: `Compare ${sameArea ? "all four side lengths" : "the two side-length products"}. Equal ${sameArea ? "area" : "perimeter"} does not force equal ${sameArea ? "perimeter" : "area"}.`,
+              feedback:
+                name === "They are equal"
+                  ? sameArea
+                    ? `Equal areas do not mean equal borders. The border of $A$ is ${valueA} cm and the border of $B$ is ${valueB} cm.`
+                    : `Equal borders do not mean equal areas. $A$ covers ${valueA} square cm and $B$ covers ${valueB} square cm.`
+                  : sameArea
+                    ? `Rectangle ${name}'s border is ${name === "A" ? valueA : valueB} cm, longer than ${name === "A" ? valueB : valueA} cm. Add all four sides of each rectangle and pick the smaller total.`
+                    : `Rectangle ${name} covers ${name === "A" ? valueA : valueB} square cm, less than ${name === "A" ? valueB : valueA} square cm. Multiply the two sides of each rectangle and pick the larger area.`,
             }),
       }));
       hint = sameArea
         ? `Equal area does not mean equal border. Add all four sides of $A$ (${a[0]} by ${a[1]}) and of $B$ (${b[0]} by ${b[1]}).`
         : `An equal border does not mean equal area. Multiply the sides of $A$ (${a[0]} by ${a[1]}) and of $B$ (${b[0]} by ${b[1]}).`;
-      explanation = [
-        sameArea
-          ? `A: 2 × (${a[0]} + ${a[1]}) = ${valueA} cm. B: 2 × (${b[0]} + ${b[1]}) = ${valueB} cm.`
-          : `$A$: ${a[0]} × ${a[1]} = ${valueA} square cm. $B$: ${b[0]} × ${b[1]} = ${valueB} square cm.`,
-        `Rectangle ${winner} has the ${sameArea ? "shorter border" : "greater area"}. Equal ${sameArea ? "areas" : "perimeters"} alone do not determine that comparison.`,
-      ];
+      explanation = sameArea
+        ? [
+            `Ribbon around the border measures the perimeter: the total of all four sides.`,
+            `$A$ is ${a[0]} by ${a[1]}: its perimeter is 2 × (${a[0]} + ${a[1]}) = ${valueA} cm.`,
+            `$B$ is ${b[0]} by ${b[1]}: its perimeter is 2 × (${b[0]} + ${b[1]}) = ${valueB} cm.`,
+            `The areas match, but the borders do not. A long, thin rectangle has a longer border.`,
+            `Rectangle ${winner} needs less ribbon.`,
+          ]
+        : [
+            `Area is how many unit squares cover a rectangle: one side times the other.`,
+            `$A$ is ${a[0]} by ${a[1]}: its area is ${a[0]} × ${a[1]} = ${valueA} square cm.`,
+            `$B$ is ${b[0]} by ${b[1]}: its area is ${b[0]} × ${b[1]} = ${valueB} square cm.`,
+            `The borders match, but the areas do not. A rectangle closer to a square covers more.`,
+            `Rectangle ${winner} covers more area.`,
+          ];
       break;
     }
     case "metric-length-rename":
@@ -331,6 +365,15 @@ export function generateMeasurementProblem(
           : r(1, 12),
         from = reverse ? small : large,
         to = reverse ? large : small;
+      const word: Record<string, string> = {
+        km: "kilometer",
+        m: "meter",
+        cm: "centimeter",
+        L: "liter",
+        mL: "milliliter",
+        kg: "kilogram",
+        g: "gram",
+      };
       const quantity = { length: "Length", capacity: "Capacity", mass: "Mass" }[
         axes.quantity
       ];
@@ -340,15 +383,21 @@ export function generateMeasurementProblem(
       hint = reverse
         ? `Every ${factor} ${small} make 1 ${large}. How many groups of ${factor} are in ${n}?`
         : n === 1
-          ? `How many ${small} make 1 ${large}? ${length ? `A ${small} is much shorter, so the count is large.` : `A ${small} is much smaller than a ${large}, so the count is large.`}`
+          ? `How many ${small} make 1 ${large}? ${length ? `A ${word[small]} is much shorter, so the count is large.` : `A ${word[small]} is much smaller than a ${word[large]}, so the count is large.`}`
           : `Each ${large} is ${factor} ${small}, and you have ${n} of them: ${n} groups of ${factor}.`;
-      explanation = [
-        `1 ${large} = ${factor} ${small}.`,
-        `${n} ${reverse ? "÷" : "×"} ${factor} = ${answer}, so ${n} ${from} = ${answer} ${to}.`,
-        length
-          ? "The physical length stays the same; only its unit and numerical name change."
-          : `The ${axes.quantity} stays the same; only its unit and numerical name change.`,
-      ];
+      explanation = reverse
+        ? [
+            `1 ${large} means one ${word[large]}, and it is the same amount as ${factor} ${small}, or ${factor} ${word[small]}s.`,
+            `A ${word[large]} is the bigger unit, so the amount takes fewer of them. Divide by ${factor}.`,
+            `${n} ÷ ${factor} = ${answer}, which is ${n / factor} as a decimal.`,
+            `The amount does not change; only the unit does. ${n} ${from} = ${answer} ${to}.`,
+          ]
+        : [
+            `1 ${large} means one ${word[large]}, and it is the same amount as ${factor} ${small}, or ${factor} ${word[small]}s.`,
+            `A ${word[small]} is the smaller unit, so it takes more of them. Each ${large} becomes ${factor} ${small}, so multiply by ${factor}.`,
+            `${n} × ${factor} = ${answer}.`,
+            `The amount does not change; only the unit does. ${n} ${from} = ${answer} ${to}.`,
+          ];
       break;
     }
     case "mixed-length-total": {
@@ -359,9 +408,11 @@ export function generateMeasurementProblem(
       label = "Total length in cm";
       hint = `Rename ${meters} m in centimeters first (1 m = 100 cm). Then add the ${cm} cm.`;
       explanation = [
-        `${meters} m = ${meters} × 100 cm = ${meters * 100} cm.`,
-        `${meters * 100} + ${cm} = ${answer} cm.`,
-        `Adding ${meters} + ${cm} directly would mix two different unit sizes.`,
+        `You can only add lengths in the same unit, so first write both in centimeters.`,
+        `1 m is 100 cm, so ${meters} m is ${meters} × 100 = ${meters * 100} cm.`,
+        `Now add: ${meters * 100} + ${cm} = ${answer}.`,
+        `Adding ${meters} + ${cm} would mix meters and centimeters, which are different sizes.`,
+        `The total length is ${answer} cm.`,
       ];
       break;
     }
@@ -379,9 +430,11 @@ export function generateMeasurementProblem(
       label = "Perimeter in cm";
       hint = `Write ${meters} m in cm first, so both sides use one unit. Then add all four sides.`;
       explanation = [
-        `${meters} m = ${meters * 100} cm.`,
-        `2 × (${meters * 100} + ${cm}) = ${answer} cm.`,
-        "Converting the unit does not change the rectangle. Counting only two adjacent sides would give half its perimeter.",
+        `The perimeter is the total length of all four sides. All sides must use the same unit before you add.`,
+        `1 m is 100 cm, so the ${meters} m side is ${meters} × 100 = ${meters * 100} cm.`,
+        `A rectangle has two sides of each length: ${meters * 100} + ${cm} + ${meters * 100} + ${cm}.`,
+        `That is 2 × (${meters * 100} + ${cm}) = ${answer}. Adding only two sides would give half the trip.`,
+        `The perimeter is ${answer} cm.`,
       ];
       break;
     }
@@ -418,7 +471,7 @@ export function generateMeasurementProblem(
         ...(possible.some((p) => p[0] === w && p[1] === h)
           ? { correct: true as const }
           : {
-              feedback: `This pair has area ${w * h} square cm and perimeter ${2 * (w + h)} cm. Check both conditions.`,
+              feedback: `${w} cm by ${h} cm has the right area, ${w} × ${h} = ${w * h} square cm. But its perimeter is 2 × (${w} + ${h}) = ${2 * (w + h)} cm, ${existence ? "not" : "more than"} ${target} cm. Check the perimeter too.`,
             }),
       }));
       if (existence)
@@ -427,19 +480,21 @@ export function generateMeasurementProblem(
           ...(!possible.length
             ? { correct: true as const }
             : {
-                feedback:
-                  "At least one positive whole-number factor pair meets both conditions.",
+                feedback: `One of the listed rectangles works. Find each one's perimeter, 2 × (side + side), and look for ${target} cm.`,
               }),
         });
       hint = existence
         ? `List the whole-number side pairs with area ${area}: 1 by ${area}, 2 by ${area / 2}, and so on. Does any pair have a perimeter of exactly ${target} cm?`
         : `List the whole-number side pairs with area ${area}: 1 by ${area}, 2 by ${area / 2}, and so on. Find each perimeter and keep those at most ${target} cm.`;
       explanation = [
-        `All possible side pairs are ${pairs.map(([w, h]) => `${w} cm by ${h} cm`).join(", ")}.`,
-        `Their perimeters are ${pairs.map(([w, h]) => 2 * (w + h)).join(", ")} cm, respectively.`,
+        `Area is one side times the other, and the perimeter is the total of all four sides.`,
+        `Whole-number sides with area ${area} are pairs that multiply to ${area}: ${pairs.map(([w, h]) => `${w} by ${h}`).join(", ")}.`,
+        `Their perimeters, 2 × (side + side), are ${pairs.map(([w, h]) => `${2 * (w + h)}`).join(", ")} cm, in the same order.`,
         possible.length
-          ? `${possible[0]![0]} cm by ${possible[0]![1]} cm meets both conditions.`
-          : `None has perimeter ${target} cm. The impossibility concerns positive whole-number sides; it is not a claim about every real-valued rectangle.`,
+          ? existence
+            ? `${possible[0]![0]} cm by ${possible[0]![1]} cm has perimeter ${target} cm, so it meets both conditions.`
+            : `Only ${possible[0]![0]} cm by ${possible[0]![1]} cm has a perimeter of ${target} cm or less, so it works.`
+          : `No pair has a perimeter of exactly ${target} cm, so no rectangle with whole-number sides fits.`,
       ];
       break;
     }
@@ -459,16 +514,24 @@ export function generateMeasurementProblem(
           ? { correct: true as const }
           : {
               feedback:
-                "Use enough complete packs for offer A. Offer B can supply exactly the needed length; compare total bills.",
+                winner === "Same cost"
+                  ? `Both bills are ${a} dollars: A's ${packs} whole ${packs === 1 ? "pack costs" : "packs cost"} ${a} dollars, and B's ${need} m cost ${b} dollars. Neither costs less.`
+                  : name === "Same cost"
+                    ? `The bills differ: A costs ${a} dollars and B costs ${b} dollars. Offer A must buy whole packs, ${packs} of them.`
+                    : `Offer ${name} costs more: ${name === "A" ? a : b} dollars against ${name === "A" ? b : a} dollars. For A, buy enough whole packs to cover ${need} m: ${packs} packs, even if some ribbon is left over.`,
             }),
       }));
       hint = `A sells only whole ${size} m packs: how many packs cover ${need} m? Compare that bill with B's ${need} × ${rate} dollars.`;
       explanation = [
-        `A needs ${packs} complete ${packs === 1 ? "pack" : "packs"}: ${packs} × ${size} = ${packs * size} m, costing ${a} dollars.`,
-        `Offer B supplies exactly ${need} m for ${need} × ${rate} = ${b} dollars.`,
+        `Offer A sells only whole packs, so you must buy enough packs to reach at least ${need} m.`,
+        `${packs} ${packs === 1 ? "pack gives" : "packs give"} ${packs} × ${size} = ${packs * size} m, enough for ${need} m. ${packs === 1 ? "It costs" : "They cost"} ${packs} × ${price} = ${a} dollars.`,
+        `Offer B sells exactly ${need} m at ${rate} ${rate === 1 ? "dollar" : "dollars"} per meter: ${need} × ${rate} = ${b} dollars.`,
+        packs * size > need
+          ? `With A you still pay for the ${packs * size - need} m left over.`
+          : `With A nothing is left over.`,
         a === b
-          ? `The bills tie. A leaves ${packs * size - need} m unused; that does not change the stated cost.`
-          : `${winner} costs less. A's ${packs * size - need} m of unused ribbon does not reduce its bill.`,
+          ? `Both offers cost ${a} dollars, so they cost the same.`
+          : `Offer ${winner} costs less: ${Math.min(a, b)} dollars instead of ${Math.max(a, b)} dollars.`,
       ];
       break;
     }
