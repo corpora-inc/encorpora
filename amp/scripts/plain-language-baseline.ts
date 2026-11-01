@@ -6,6 +6,11 @@
  *                                       also record violations of these glossary
  *                                       terms, which must be entries added since
  *                                       the baseline was written
+ *   npm run plain:baseline -- --from-senses
+ *                                       also record undefined first uses that
+ *                                       come only from linking (a newly named
+ *                                       sense or glossary form): accepted only
+ *                                       on screens whose text hash is unchanged
  *   npm run plain:baseline -- --report  print counts per band; write nothing
  *   npm run plain:baseline -- --init    create the file when it does not exist
  *
@@ -17,6 +22,7 @@
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import {
+  acceptedGrowth,
   currentBaseline,
   diffBaseline,
   plainLanguageViolations,
@@ -33,7 +39,7 @@ const path = new URL(
 const args = process.argv.slice(2);
 const newTermsArg = args.find((a) => a.startsWith("--new-terms="));
 for (const a of args)
-  if (a !== newTermsArg && !["--report", "--init"].includes(a))
+  if (a !== newTermsArg && !["--report", "--init", "--from-senses"].includes(a))
     throw new Error(`Unknown option ${a}`);
 
 if (args.includes("--report")) {
@@ -83,11 +89,14 @@ for (const id of newTerms) {
     );
 }
 const { grown, stale } = diffBaseline(current.screens, baseline.screens);
-const allowed = (v: { term?: string }) => !!v.term && newTerms.includes(v.term);
-const refused = grown.filter((v) => !allowed(v));
+const fromSenses = args.includes("--from-senses");
+const { refused } = acceptedGrowth(grown, baseline.screens, current.screens, {
+  newTerms,
+  fromSenses,
+});
 if (refused.length) {
   console.error(
-    `Refusing to grow the plain-language baseline. Define each term in the sentence where it first appears on that screen ("X is called …", "X means …", "X, the …,"), or split the sentence:\n${refused.map(violationText).join("\n")}`,
+    `Refusing to grow the plain-language baseline. Define each term in the sentence where it first appears on that screen ("X is called …", "X means …", "X, the …,"), or split the sentence:\n${refused.map((v) => violationText(v) + (v.textChanged ? " (its text changed since the baseline was written)" : "")).join("\n")}`,
   );
   process.exit(1);
 }
@@ -95,5 +104,5 @@ if (refused.length) {
 // is the shrunk baseline.
 writeFileSync(path, JSON.stringify(current, null, 2) + "\n");
 console.log(
-  `Wrote ${Object.keys(current.screens).length} screens: removed ${stale.length} fixed violations${grown.length ? `, recorded ${grown.length} for new glossary terms ${newTerms.join(", ")}` : ""}.`,
+  `Wrote ${Object.keys(current.screens).length} screens: removed ${stale.length} fixed violations${grown.length ? `, recorded ${grown.length} ${fromSenses ? "from newly linked words on unchanged text" : `for new glossary terms ${newTerms.join(", ")}`}` : ""}.`,
 );

@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { templates } from "../math/engine";
 import {
   historicalTemplates,
@@ -247,50 +248,68 @@ const lessonContext = (lesson: Lesson): LinkContext => ({
  * practice lesson of every template. */
 export function plainLanguageViolations(): Map<
   ScreenId,
-  ScreenViolations & { band: GradeBand }
+  ScreenViolations & { band: GradeBand; hash: string }
 > {
-  const out = new Map<ScreenId, ScreenViolations & { band: GradeBand }>();
+  const out = new Map<
+    ScreenId,
+    ScreenViolations & { band: GradeBand; hash: string }
+  >();
   for (const unit of lessonUnits()) {
-    if (unit.lesson)
+    if (unit.lesson) {
+      const blocks = referenceLessonBlocks(unit.lesson);
       out.set(`lesson:${unit.lesson.id}`, {
         band: unit.band,
-        ...screenViolations(
-          referenceLessonBlocks(unit.lesson),
-          lessonContext(unit.lesson),
-          unit.band,
-        ),
+        hash: screenTextHash(blocks),
+        ...screenViolations(blocks, lessonContext(unit.lesson), unit.band),
       });
+    }
     for (const templateId of unit.templateIds) {
       if (!hasProblemLesson(templateId)) continue;
       const context = lessonGlossaryContext(
         templateReplacements[templateId] ?? templateId,
         templateById.get(templateId),
       );
+      const blocks = practiceBlocks(templateId);
       out.set(`practice:${templateId}`, {
         band: unit.band,
-        ...screenViolations(practiceBlocks(templateId), context, unit.band),
+        hash: screenTextHash(blocks),
+        ...screenViolations(blocks, context, unit.band),
       });
     }
   }
   return out;
 }
 
+/** A short fingerprint of a screen's walked text (not its link metadata).
+ * The baseline records it, so a violation that appears while the text stays
+ * the same can only come from linking: a newly named sense or glossary form. */
+export function screenTextHash(blocks: LessonTextBlock[]) {
+  return createHash("sha256")
+    .update(JSON.stringify(blocks.map((b) => [b.stage, b.lines])))
+    .digest("hex")
+    .slice(0, 12);
+}
+
 /** The recorded violations. `glossary` lists the glossary ids when it was
  * written, so a term added later can be told apart; `screens` holds every
- * screen with a violation. */
+ * screen: its violations (often none) and the hash of the text they were
+ * recorded on. */
 export type PlainLanguageBaseline = {
   glossary: TermId[];
-  screens: Record<ScreenId, ScreenViolations>;
+  screens: Record<ScreenId, ScreenViolations & { hash?: string }>;
 };
 
 /** The current violations in baseline form, sorted for stable diffs. */
 export function currentBaseline(): PlainLanguageBaseline {
-  const screens: Record<ScreenId, ScreenViolations> = {};
+  const screens: PlainLanguageBaseline["screens"] = {};
   const all = plainLanguageViolations();
   for (const id of [...all.keys()].sort()) {
     const v = all.get(id)!;
-    if (v.terms.length || v.long.length)
-      screens[id] = { terms: [...v.terms].sort(), long: [...v.long].sort() };
+    screens[id] = {
+      terms: [...v.terms].sort(),
+      long: [...v.long].sort(),
+      hash: v.hash,
+    };
   }
   return { glossary: glossary.map((e) => e.id).sort(), screens };
 }
@@ -333,4 +352,33 @@ export function diffBaseline(
     for (const long of minus(was.long, now.long)) stale.push({ screen, long });
   }
   return { grown, stale };
+}
+
+/** Which new violations the baseline script may record. A term that is a
+ * glossary entry added since the baseline was written (`newTerms`), or, with
+ * `fromSenses`, any term on a screen whose text hash is unchanged: there the
+ * text is the same, so only linking changed (a newly named sense or form).
+ * New prose and long sentences are never accepted. */
+export function acceptedGrowth(
+  grown: Violation[],
+  baseline: PlainLanguageBaseline["screens"],
+  current: PlainLanguageBaseline["screens"],
+  options: { newTerms?: TermId[]; fromSenses?: boolean } = {},
+) {
+  const sameText = (screen: ScreenId) => {
+    const was = baseline[screen]?.hash;
+    return !!was && was === current[screen]?.hash;
+  };
+  const accepted: Violation[] = [];
+  const refused: (Violation & { textChanged?: boolean })[] = [];
+  for (const v of grown) {
+    if (v.term && options.newTerms?.includes(v.term)) accepted.push(v);
+    else if (v.term && options.fromSenses && sameText(v.screen))
+      accepted.push(v);
+    else
+      refused.push(
+        v.term && options.fromSenses ? { ...v, textChanged: true } : v,
+      );
+  }
+  return { accepted, refused };
 }

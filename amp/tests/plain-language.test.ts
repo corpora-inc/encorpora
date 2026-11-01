@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import {
+  acceptedGrowth,
   currentBaseline,
   definesAt,
   diffBaseline,
@@ -123,6 +124,38 @@ test("the baseline diff names each new and fixed violation", () => {
     { screen: "lesson:a", long: "three" },
   ]);
   assert.deepEqual(stale, [{ screen: "lesson:a", term: "slope" }]);
+});
+
+test("growth from a newly named sense is accepted only on unchanged text", () => {
+  const baseline = {
+    "practice:a": { terms: [], long: [], hash: "aaa" },
+    "practice:b": { terms: [], long: [], hash: "bbb" },
+  };
+  const current = {
+    "practice:a": { terms: ["slope"], long: [], hash: "aaa" },
+    "practice:b": { terms: ["slope"], long: ["new long one"], hash: "b2b" },
+  };
+  const grown = [
+    { screen: "practice:a", term: "slope" },
+    { screen: "practice:b", term: "slope" },
+    { screen: "practice:b", long: "new long one" },
+  ];
+  const plain = acceptedGrowth(grown, baseline, current);
+  assert.equal(plain.accepted.length, 0, "the default mode records nothing");
+  const senses = acceptedGrowth(grown, baseline, current, { fromSenses: true });
+  assert.deepEqual(senses.accepted, [{ screen: "practice:a", term: "slope" }]);
+  assert.deepEqual(
+    senses.refused.map((v) => [v.screen, v.term ?? v.long]),
+    [
+      ["practice:b", "slope"],
+      ["practice:b", "new long one"],
+    ],
+    "changed text and long sentences are never recorded this way",
+  );
+  const added = acceptedGrowth(grown, baseline, current, {
+    newTerms: ["slope"],
+  });
+  assert.equal(added.accepted.length, 2);
 });
 
 test("plain-language violations only shrink (tests/fixtures/plain-language-baseline.json)", () => {

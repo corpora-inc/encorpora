@@ -37,6 +37,17 @@ An ambiguous word needs a sense where it is used:
 
 A sense maps a lowercase form to an id (`{ range: "range-function" }`); it also covers the other forms of that entry ("ranges"). `noLink` lists forms that are ordinary words there ("the mean time").
 
+### Linking is independent of the plain-language gate
+
+A word links wherever it is a glossary term in that sense, whether or not the screen defines it there. Linking and defining are separate questions:
+
+- **Linking** gives the learner a (?) definition. It matters most on a screen that does not define the word yet, so never hide a link to satisfy a test.
+- **Defining at first use** is the plain-language rule (`src/content/AGENTS.md`, rule 2). `tests/plain-language.test.ts` checks it, and an undefined first use is recorded in `tests/fixtures/plain-language-baseline.json` until a rewrite defines the word in place.
+
+`noLink` is only for an ordinary-English use where the glossary sense does not apply: "third" as an ordinal, "the mean time", "side by side". Never add a word to `noLink` because its screen does not define it yet.
+
+When you name a new sense, or add a form, a word that was ordinary prose can become a linked term, and the plain-language test then reports its first use as undefined. The prose did not change; only the link did. Record that with `npm run plain:baseline -- --from-senses`. It accepts an undefined first use only on a screen whose text hash matches the one in the baseline, and it never records a long sentence. If you also changed the screen's text in the same PR, define the word in that text instead.
+
 `glossaryFor(texts, context, extra)` (`src/glossary/resolve.ts`) returns the entries a payload needs.
 
 ## The unresolved baseline
