@@ -222,14 +222,14 @@ export const regentsAlgebraTwoReasoningLessons = [
     {
       prompt: "Write $\\frac{3x^3-14x^2-7x+10}{3x-2}$ in factored form.",
       steps: [
-        "Divide by $3x - 2$, with long or synthetic division. The quotient is $x^2 - 4x - 5$ with remainder 0, so $3x - 2$ is a factor. Check: $(3x - 2)(x^2 - 4x - 5) = 3x^3 - 12x^2 - 15x - 2x^2 + 8x + 10 = 3x^3 - 14x^2 - 7x + 10$.",
+        "Divide by $3x - 2$ with long division. (With synthetic division, use $\\tfrac{2}{3}$, the input that makes $3x - 2$ zero, then divide the bottom row by 3.) The quotient is $x^2 - 4x - 5$ with remainder 0, so $3x - 2$ is a factor. Check: $(3x - 2)(x^2 - 4x - 5) = 3x^3 - 12x^2 - 15x - 2x^2 + 8x + 10 = 3x^3 - 14x^2 - 7x + 10$.",
         "Factor $x^2 - 4x - 5$: we need two numbers that multiply to $-5$ and add to $-4$. They are $-5$ and 1.",
         "So the quotient is $(x - 5)(x + 1)$, for every $x$ where $3x - 2 \\ne 0$ ($\\ne$ means is not equal to).",
       ],
       answer: "$(x-5)(x+1)$",
     },
     [
-      "Divide the cubic by the given factor, with long division or synthetic division.",
+      "Divide the cubic by the given factor with long division. With synthetic division, use the input that makes the factor zero, then divide the bottom row by the factor's leading coefficient.",
       "Factor the quadratic quotient into two factors.",
       "Multiply back to check that you get the cubic again.",
     ],
@@ -327,7 +327,7 @@ export const regentsAlgebraTwoReasoningLessons = [
   lesson(
     "regents-rational-abs-solution-count",
     "Counting solutions from two graphs",
-    "A solution of $f(x) = g(x)$ is an input where the two graphs have the same height. So counting solutions means counting the points where the graphs meet. Here one graph is a rational function, a fraction with $x$ in the bottom, and the other is an absolute-value graph, two straight pieces meeting at a corner.",
+    "A solution of $f(x) = g(x)$ is an input where the two graphs have the same height. So counting solutions means counting the points where the graphs meet. Here one graph is a rational function, one polynomial divided by another, with $x$ in the bottom, and the other is an absolute-value graph, two straight pieces meeting at a corner.",
     ["rational-abs-solution-count"],
     [
       "Count the points where a rational graph meets an absolute-value graph.",
@@ -349,7 +349,7 @@ export const regentsAlgebraTwoReasoningLessons = [
       answer: "2",
     },
     [
-      "Look at where the graphs meet, on each side of the asymptote and of the corner.",
+      "Look at where the graphs meet, to the left and right of the asymptote and of the corner.",
       "Count each meeting point once, including a point where the graphs only touch.",
       "Confirm by solving the two cases of the absolute value. Keep roots that fit their case and are not on the asymptote.",
     ],
@@ -362,7 +362,13 @@ export const regentsAlgebraTwoReasoningLessons = [
       "Count each meeting point once.",
     ],
     "Ask your learner to say where the asymptote and the corner are before counting.",
-    { senses: { side: "side-of-equation", root: "root-equation" } },
+    {
+      senses: {
+        rational: "rational-expression",
+        side: "side-of-equation",
+        root: "root-equation",
+      },
+    },
   ),
 ];
 

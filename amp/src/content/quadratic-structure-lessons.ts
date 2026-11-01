@@ -151,10 +151,10 @@ export const quadraticStructureLessons: Lesson[] = [
       product: "product-multiply",
       opposite: "opposite-number",
       squared: "square-number",
-      side: "side",
     },
     noLink: ["parts", "whole", "changes"],
     templateIds: ["zeros-from-factors", "zero-multiplicity"],
+    includeGeneratedRepresentation: false,
     objectives: [
       "Find the zeros of a factored polynomial, and build a polynomial from given zeros.",
       "Use each factor's exponent to tell whether the graph crosses or touches the $x$-axis.",
@@ -211,7 +211,7 @@ export const quadraticStructureLessons: Lesson[] = [
     id: "polynomial-division",
     title: "Dividing by a linear factor",
     summary:
-      "Dividing a polynomial by $x - a$ gives a quotient, the main answer, and a remainder, the number left over. The remainder equals the polynomial's value at $x = a$. So to find the remainder, put $x = a$ into the original polynomial.",
+      "A polynomial is a sum of terms like $2x^3$ and $-4$. Dividing a polynomial by $x - a$ gives a quotient, the main answer, and a remainder, the number left over. The remainder equals the polynomial's value at $x = a$. So to find the remainder, put $x = a$ into the original polynomial.",
     senses: {
       term: "term-expression",
       factor: "factor-number",
@@ -220,6 +220,7 @@ export const quadraticStructureLessons: Lesson[] = [
     },
     noLink: ["whole", "part"],
     templateIds: ["remainder-theorem", "polynomial-quotient"],
+    includeGeneratedRepresentation: false,
     objectives: [
       "Find the remainder of a division by $x - a$ by working out the polynomial's value at $a$.",
       "Divide by $x - a$ with synthetic division to find the quotient and the remainder.",
@@ -246,7 +247,7 @@ export const quadraticStructureLessons: Lesson[] = [
         title: "The remainder theorem",
         paragraphs: [
           "Put $x = a$ into $p(x) = (x - a)q(x) + R$. The first part is 0, so $p(a) = R$. This is called the remainder theorem: the remainder is the value of $p$ at the input that makes the divisor 0.",
-          "So $x - a$ is a factor exactly when $p(a) = 0$; this is called the factor theorem. For $x^3 + kx - 6$ to have the factor $x - 2$, we need $8 + 2k - 6 = 0$, so $k = -1$.",
+          "So $x - a$ is a factor exactly when $p(a) = 0$. This is called the factor theorem. For $x^3 + kx - 6$ to have the factor $x - 2$, we need $8 + 2k - 6 = 0$, so $k = -1$.",
         ],
       },
     ],
@@ -266,7 +267,7 @@ export const quadraticStructureLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "$p(x) = (x - a)q(x) + R$, so $p(a) = R$: the remainder is the value at $a$, and $x - a$ is a factor exactly when $p(a) = 0$.",
-          "For a polynomial $p$ of degree at least 1, dividing by $x - a$ writes $p(x) = (x - a)q(x) + R$, with $q$ one degree lower. Synthetic division finds $q$ and $R$ by repeated multiplying and adding.",
+          "For a polynomial $p$ of degree at least 1 (its highest power of $x$ is 1 or more), dividing by $x - a$ writes $p(x) = (x - a)q(x) + R$, with $q$ one degree lower. Synthetic division finds $q$ and $R$ by repeated multiplying and adding.",
         ],
       },
     ],
@@ -365,7 +366,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
     goal: "Use a factor's exponent to decide whether the graph crosses or touches the $x$-axis.",
     senses: { factor: "factor-number", square: "square-number" },
     intuition:
-      "A zero is an input where the graph meets the $x$-axis. The exponent on its factor, the small raised number, counts how many copies of the factor are multiplied. Close to the zero, the other factors keep their sign. One copy changes sign at the zero, so the graph crosses. Two copies, a squared factor, never go negative, so the graph touches the axis and turns back.",
+      "A zero is an input where the graph meets the $x$-axis. The exponent on its factor, the small raised number, counts how many copies of the factor are multiplied. Close to the zero, the other factors keep their sign. One copy changes sign at the zero, so the graph crosses. Two copies, a squared factor, never go negative, so the graph touches the axis and turns back. The number of copies is called the multiplicity of the zero.",
     method: [
       "A factor to the first power changes sign at its zero, so the graph crosses there.",
       "A squared factor is positive on both sides, so the graph touches the axis and turns back.",

@@ -50,6 +50,7 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
   },
   "rational-function-features": {
     goal: "Given a rational function with small linear factors, find its vertical asymptotes, hole, horizontal asymptote, intercepts, or domain.",
+    senses: { rational: "rational-expression" },
     intuition:
       "A rational function is one polynomial divided by another. Its top is the numerator and its bottom the denominator. Where the denominator is 0, the function is undefined. If that factor stays after canceling, the graph shoots up or down beside a vertical line, a vertical asymptote. If it cancels completely with the same factor on top, there is just one missing point, a hole. For large $x$, comparing the degrees (highest powers) of the top and bottom tells where the graph levels off.",
     terms: [
@@ -297,8 +298,9 @@ export const functionBehaviorLessons: Lesson[] = [
     id: "rational-function-features",
     title: "Asymptotes, holes and intercepts",
     summary:
-      "A polynomial is a sum of terms like $x + 3$ or $2x^2 - 5$. A rational function is one polynomial divided by another, like $\\tfrac{2}{x + 3}$. A fraction is undefined when its bottom, the denominator, is 0, so those inputs are left out. Near such an input the graph either shoots up or down beside a vertical line, called a vertical asymptote, or has a single missing point, called a hole. Factoring the top and bottom shows which.",
+      "A polynomial, like $x + 3$ or $2x^2 - 5$, is a sum of terms: numbers times whole-number powers of $x$. A rational function is one polynomial divided by another, like $\\tfrac{2}{x + 3}$. A fraction is undefined when its bottom, the denominator, is 0, so those inputs are left out. Near such an input the graph either shoots up or down beside a vertical line, called a vertical asymptote, or has a single missing point, called a hole. Factoring the top and bottom shows which.",
     senses: {
+      rational: "rational-expression",
       term: "term-expression",
       hole: "hole",
       factor: "factor-number",
@@ -349,7 +351,7 @@ export const functionBehaviorLessons: Lesson[] = [
         title: "Why the degrees decide",
         paragraphs: [
           "For very large $|x|$, the size of $x$ ignoring its sign, each polynomial is dominated by its leading term, its highest-power term. So $\\tfrac{p}{q}$ behaves like $\\tfrac{c x^m}{d x^n} = \\tfrac{c}{d} x^{m - n}$. This tends to 0 when $m < n$, equals $\\tfrac{c}{d}$ when $m = n$, and grows without bound when $m > n$.",
-          "A factor that appears as many times on the top as on the bottom cancels completely and gives a hole. Its height is the value of the simplified function there. The original function is still not defined at that input.",
+          "A factor that appears at least as many times on the top as on the bottom cancels completely from the bottom and gives a hole. Its height is the value of the simplified function there. The original function is still not defined at that input.",
         ],
       },
     ],
@@ -378,8 +380,8 @@ export const functionBehaviorLessons: Lesson[] = [
         stage: "intuition",
         title: "Where two outputs match",
         paragraphs: [
-          "A function gives one output for each input $x$. The equation $f(x) = g(x)$ asks for an input where both outputs are the same. On graphs, these inputs are the $x$-coordinates, the left-right positions, of the points where the curves meet. Consecutive integers are whole numbers next to each other, like 0 and 1.",
-          "Some graphs have no breaks or jumps; they are called continuous. For continuous functions, one graph can go from above the other to below it only by crossing. So if $f$ is larger in one row and smaller in the next, a solution lies between the two inputs. A table can still miss a solution, for example when the curves cross twice between two rows.",
+          "A function gives one output for each input $x$. The equation $f(x) = g(x)$ asks for an input where both outputs are the same. On graphs, these inputs are the $x$-coordinates, the left-right positions, of the points where the curves meet. Integers are the whole numbers and their negatives. Consecutive integers are integers next to each other, like $-1$ and 0, or 0 and 1.",
+          "Some graphs have no breaks or jumps. They are called continuous. For continuous functions, one graph can go from above the other to below it only by crossing. So if $f$ is larger in one row and smaller in the next, a solution lies between the two inputs. A table can still miss a solution, for example when the curves cross twice between two rows.",
         ],
       },
     ],
@@ -465,7 +467,7 @@ export const functionBehaviorLessons: Lesson[] = [
         title: "Other identities and testing an equation",
         paragraphs: [
           "The identity $a^2 - b^2 = (a + b)(a - b)$ is called a difference of squares. It turns $43 \\times 37 = (40 + 3)(40 - 3)$ into $1600 - 9 = 1591$. It also gives $x^2 - y^2$ from the values of $x + y$ and $x - y$. From $(x + y)^2 = x^2 + 2xy + y^2$ you get $x^2 + y^2 = (x + y)^2 - 2xy$.",
-          "A Pythagorean triple is three whole numbers that can be the sides of a right triangle, like 3, 4 and 5, because $3^2 + 4^2 = 5^2$. For whole numbers $x$ and $y$ with $x > y > 0$, the numbers $x^2 - y^2$, $2xy$ and $x^2 + y^2$ form one: $x = 2$ and $y = 1$ give 3, 4 and 5.",
+          "A Pythagorean triple is three whole numbers that can be the lengths of a right triangle's two legs and hypotenuse, like 3, 4 and 5, because $3^2 + 4^2 = 5^2$. For whole numbers $x$ and $y$ with $x > y > 0$, the numbers $x^2 - y^2$, $2xy$ and $x^2 + y^2$ form one: $x = 2$ and $y = 1$ give 3, 4 and 5.",
           "To test whether an equation is an identity, multiply out one side and compare every term. Trying one value such as $x = 1$ can show that an equation is false, but it cannot prove that it is always true.",
         ],
       },
@@ -481,7 +483,7 @@ export const functionBehaviorLessons: Lesson[] = [
     pitfalls: [
       "$(a + b)^2$ has the middle term $2ab$: it is not $a^2 + b^2$.",
       "A difference of squares has no middle term, and the second square is subtracted.",
-      "In a Pythagorean triple, the largest number is the hypotenuse, the longest side of the right triangle; list it last.",
+      "In a Pythagorean triple, the largest number is the hypotenuse, the longest of the three lengths. List it last.",
     ],
     parentGuide:
       "Ask the learner to work out $49 \\times 51$ by writing it as $(50 - 1)(50 + 1)$.",
@@ -490,7 +492,7 @@ export const functionBehaviorLessons: Lesson[] = [
     id: "binomial-coefficient",
     title: "Coefficients of a binomial power",
     summary:
-      "A binomial is an expression with two terms, like $x + 2$. A binomial power such as $(x + 2)^3$ means $(x + 2)(x + 2)(x + 2)$. When you multiply it out, each term of the result picks either $x$ or 2 from every bracket. Pascal's triangle counts the ways to pick. That count is the number in front of each term, called its coefficient.",
+      "A binomial is an expression with two terms, like $x + 2$. A binomial power such as $(x + 2)^3$ means $(x + 2)(x + 2)(x + 2)$. When you multiply it out, each term of the result picks either $x$ or 2 from every bracket. Pascal's triangle counts the ways to pick. The coefficient, the number in front of a term, is that count times the numbers picked: in $(x + 2)^3$ the $x^2$ term is $3 \\times 2 = 6$ times $x^2$.",
     senses: { term: "term-expression", rule: "rule" },
     templateIds: ["binomial-coefficient"],
     objectives: [
@@ -550,7 +552,7 @@ export const functionBehaviorLessons: Lesson[] = [
     id: "number-system-closure-classify",
     title: "Rational and irrational sums and products",
     summary:
-      "A rational number can be written as a fraction of two integers, like $\\tfrac{3}{4}$ or $-5$. An irrational number cannot, like $\\sqrt{2}$. A rational number plus an irrational number is always irrational. A rational number other than 0 times an irrational number is irrational too. Two irrational numbers can combine to give a rational number.",
+      "A rational number can be written as a fraction of two integers, the whole numbers and their negatives, like $\\tfrac{3}{4}$ or $-5$. An irrational number cannot, like $\\sqrt{2}$. A rational number plus an irrational number is always irrational. A rational number other than 0 times an irrational number is irrational too. Two irrational numbers can combine to give a rational number.",
     senses: {
       product: "product-multiply",
       side: "side-of-equation",

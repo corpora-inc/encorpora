@@ -317,7 +317,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
     id: "sat-shifted-polynomials",
     title: "Features of shifted polynomials",
     summary:
-      "Shifting a graph slides it without changing its shape. A horizontal shift moves every point left or right, so every feature, such as a zero or a highest point, moves by the same amount. A vertical shift adds the same number to every output, so the graph moves up or down. The sign inside the brackets works backward: $f(x - 2)$ moves the graph 2 units right.",
+      "A polynomial is a sum of terms like $x^2$ and $-8x$. Shifting a graph slides it without changing its shape. A horizontal shift moves every point left or right, so every feature, such as a zero (an input that makes the function 0) or a highest point, moves by the same amount. A vertical shift adds the same number to every output, so the graph moves up or down. The sign inside the brackets works backward: $f(x - 2)$ moves the graph 2 units right.",
     senses: {
       unit: "unit",
       factor: "factor-number",
@@ -335,7 +335,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         title: "Change the input or change the output",
         paragraphs: [
           "We write $f(x)$, read “$f$ of $x$”, for the output of the function $f$ at input $x$. In $g(x) = f(x - 2)$, the function $g$ gives at $x$ what $f$ gave 2 units earlier, at $x - 2$. So every point of the graph of $f$ moves 2 units right.",
-          "In $g(x) = f(x) + 2$, every output is 2 greater, so the graph moves up 2. Changing the input moves the graph sideways, the opposite way from the sign; changing the output moves it up or down.",
+          "In $g(x) = f(x) + 2$, every output is 2 greater, so the graph moves up 2. Changing the input moves the graph sideways, the opposite way from the sign. Changing the output moves it up or down.",
           "An $x$-intercept is a point where a graph meets the $x$-axis. For $f(x) = (x - 1)(x + 2)(x - 4)$, a polynomial written as factors multiplied together, the $x$-intercepts are at $x = 1$, $-2$ and 4, because each makes one factor 0.",
         ],
       },

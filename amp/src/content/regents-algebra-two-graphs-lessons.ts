@@ -134,7 +134,7 @@ export const regentsAlgebraTwoGraphLessons = [
   lesson(
     "regents-remainder-zero-graph",
     "Remainder zero and the graph",
-    "A polynomial is a sum of terms like $x^3$ and $-4x$, and $p(x)$, read “$p$ of $x$”, is its value at input $x$. Dividing $p(x)$ by $x - r$ leaves a remainder, the number left over, equal to $p(r)$. That is the height of the graph at $x = r$. So the remainder is 0 exactly when the graph meets the $x$-axis at $x = r$.",
+    "A polynomial is a sum of terms like $x^3$ and $-4x$, and $p(x)$, read “$p$ of $x$”, is its value at input $x$. Dividing $p(x)$ by the divisor $x - r$ leaves a remainder, the number left over, equal to $p(r)$. That is the height of the graph at $x = r$. So the remainder is 0 exactly when the graph meets the $x$-axis at $x = r$.",
     ["remainder-zero-graph"],
     [
       "Use the remainder theorem: the remainder of $p(x) \\div (x - r)$ is $p(r)$.",
@@ -177,7 +177,7 @@ export const regentsAlgebraTwoGraphLessons = [
   lesson(
     "regents-repeated-zero-rule",
     "A rule from a graph with a double zero",
-    "A polynomial is a sum of terms like $2x^3$ or $-5x$, and a cubic is a polynomial whose highest power is $x^3$. Its graph meets the $x$-axis at its zeros, the inputs that make it 0, and each zero $r$ gives a factor $(x - r)$. Where the graph touches the axis and turns back, the factor is squared; where it crosses, the factor appears once. The right end of the graph gives the sign of the leading coefficient, the number in front.",
+    "A polynomial is a sum of terms like $2x^3$ or $-5x$, and a cubic is a polynomial whose highest power is $x^3$. Its graph meets the $x$-axis at its zeros, the inputs that make it 0, and each zero $r$ gives a factor $(x - r)$. Where the graph touches the axis and turns back, the factor is squared. Where it crosses, the factor appears once. The right end of the graph gives the sign of the leading coefficient, the number in front.",
     ["repeated-zero-rule"],
     [
       "Write a factor for each zero, and square the factor of a zero where the graph touches the axis.",
@@ -219,7 +219,6 @@ export const regentsAlgebraTwoGraphLessons = [
         squared: "square-number",
         square: "square-number",
         rule: "rule",
-        side: "side",
       },
       noLink: ["part"],
     },
@@ -333,7 +332,7 @@ export const regentsAlgebraTwoGraphLessons = [
     ],
     [
       "Touching the axis is not crossing it.",
-      "Read intervals of increase from left to right; they can also run off to the far left or the far right.",
+      "Read intervals of increase from left to right. They can also run off to the far left or the far right.",
       "End behavior depends on the sign of the leading coefficient, the number in front.",
     ],
     "Ask your learner to trace the graph with a finger and say up or down.",
