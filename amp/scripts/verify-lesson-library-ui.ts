@@ -190,7 +190,12 @@ try {
     // Escape and the clear control empty the field and the URL.
     await search(page).press("Escape");
     await page.waitForURL((url) => !url.searchParams.has("q"));
-    check((await visibleRows(page)) === all, "Escape shows everything again");
+    await settle(page, 300);
+    const afterEscape = await visibleRows(page);
+    check(
+      afterEscape === all,
+      `Escape shows everything again (${afterEscape} of ${all})`,
+    );
     await search(page).fill("zzzq");
     await settle(page, 200);
     check(

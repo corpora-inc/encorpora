@@ -6,6 +6,7 @@ import type { GlossaryEntry } from "../glossary/types";
 import { gradeOrder, strandNames } from "./BirthYearPrompt";
 import { bandLabel } from "./features/pathways/model";
 import { Select } from "./ui/Select";
+import { MathText } from "./MathText";
 import {
   attachTerms,
   buildLibrary,
@@ -272,9 +273,11 @@ export function LessonLibrary(props: {
                           props.openReference(lesson, event.currentTarget);
                       }}
                     >
-                      <span className={styles.lessonTitle}>{item.title}</span>
+                      <span className={styles.lessonTitle}>
+                        <MathText text={item.title} />
+                      </span>
                       <span className={styles.lessonSummary}>
-                        {item.summary}
+                        <MathText text={item.summary} />
                       </span>
                     </button>
                   </li>
@@ -304,7 +307,11 @@ export function LessonLibrary(props: {
                             data-template={item.id}
                             onClick={() => props.openTopic(item.id)}
                           >
-                            {item.title}
+                            {/* One flex child: text and formulas wrap
+                                together as a line, never word by word. */}
+                            <span>
+                              <MathText text={item.title} />
+                            </span>
                           </button>
                         </li>
                       ))}
