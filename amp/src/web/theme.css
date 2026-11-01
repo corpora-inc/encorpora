@@ -1,4 +1,5 @@
 @import "./ui/tokens.css";
+@import "./ui/glossary.css";
 /* AMP visual system. Loaded after the structural stylesheets: it owns colour,
    type and surface treatment. Neutral surfaces, one accent, colour only where
    it carries meaning (strand, correct, incorrect). */
