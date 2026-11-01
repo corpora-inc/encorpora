@@ -13,7 +13,7 @@ export const choiceLessons: Lesson[] = [
       third: "third",
       "more than": "more-than",
     },
-    noLink: ["change", "changes", "changed"],
+    noLink: ["change", "changes", "changed", "leaves"],
     objectives: [
       "Find equivalent fractions by multiplying the top and bottom numbers by the same number.",
       "Explain why adding the same number to the top and bottom usually changes the amount.",

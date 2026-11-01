@@ -12,7 +12,8 @@ const fractionChainSenses = {
   unit: "unit",
   rename: "rename",
 };
-const fractionChainNoLink = ["change", "changes"];
+const fractionChainNoLink = ["change", "changes", "leaves"];
+const priceSenses = { unit: "unit", "more than": "more-than" };
 const priceNoLink = ["whole", "part", "scale"];
 
 export const multiTermChainMethods: Record<string, ProblemMethod> = {
@@ -54,6 +55,7 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
   },
   "price-count-chain": {
     goal: "Find the total cost of a group by adding two prices and multiplying by the people, or multiplying each price by its own count.",
+    senses: priceSenses,
     noLink: priceNoLink,
     intuition:
       "A group buys two kinds of things, such as tickets and drinks. If everyone buys the same pair, find the cost of one pair, then multiply by the number of people. If the counts are different, find the cost of each kind, then add. Prices are decimals: numbers with a decimal point, like 4.50 dollars.",
@@ -68,6 +70,7 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
   },
   "dollar-rate-scale": {
     goal: "Use a table of charges for two numbers of hours at one price per hour to find another charge, or the hours for a charge.",
+    senses: priceSenses,
     noLink: priceNoLink,
     intuition:
       "A rate is a comparison of two amounts with different units, such as dollars and hours. The unit rate is the amount for exactly 1 unit, such as the price of 1 hour. When every hour costs the same, the charge is the unit rate times the number of hours. A table gives the charges for two numbers of hours. Division means sharing an amount out evenly. Divide a charge by its hours to find the price of 1 hour.",
@@ -266,6 +269,7 @@ export const multiTermChainLessons = [
       parentGuide:
         "Before your child multiplies, ask what one person spends, or what one hour costs.",
     }),
+    senses: priceSenses,
     noLink: priceNoLink,
   },
   {

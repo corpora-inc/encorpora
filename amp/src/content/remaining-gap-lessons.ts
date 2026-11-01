@@ -7,6 +7,7 @@ const budgetSenses = {
   "more than": "more-than",
 };
 const budgetNoLink = ["balance", "balances", "increasing"];
+const paySenses = { "more than": "more-than" };
 const payNoLink = ["net"];
 
 export const remainingGapMethods: Record<string, ProblemMethod> = {
@@ -77,6 +78,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
   },
   "gross-net-pay": {
     goal: "Given gross pay, deductions and net pay in dollars and cents, find net pay, gross pay or a missing deduction, or the take-home amount.",
+    senses: paySenses,
     noLink: payNoLink,
     intuition:
       "Gross pay is the amount a worker earns before anything is taken out. A tax is the money people pay to the government. A deduction is an amount taken out of pay, such as a tax or a health plan payment. Net pay, also called take-home pay, is what is left: gross pay minus all the deductions. Pay amounts are decimals: numbers with a decimal point, such as 52.40 dollars.",
@@ -349,6 +351,7 @@ export const remainingGapLessons: Lesson[] = [
     summary:
       "Gross pay is what a worker earns before anything is taken out. A tax is the money people pay to the government. A deduction is an amount taken out of pay, such as a tax. Net pay is what is left after all the deductions. So net pay is gross pay minus the deductions.",
     templateIds: ["gross-net-pay"],
+    senses: paySenses,
     noLink: payNoLink,
     objectives: [
       "Tell gross pay from net pay.",

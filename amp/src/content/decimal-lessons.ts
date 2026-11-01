@@ -17,6 +17,7 @@ const decimalSenses = {
   interval: "interval",
   "more than": "more-than",
 };
+const decimalNoLink = ["change", "changes", "mean", "means", "rule"];
 
 export const decimalLessons: Lesson[] = [
   {
@@ -30,6 +31,7 @@ export const decimalLessons: Lesson[] = [
       "decimal-line-point",
     ],
     senses: decimalSenses,
+    noLink: decimalNoLink,
     includeGeneratedRepresentation: false,
     objectives: [
       "Name shaded tenths and hundredths of one whole as a fraction and as a decimal.",
@@ -96,6 +98,7 @@ export const decimalLessons: Lesson[] = [
       "A decimal is a number written with a decimal point, such as 0.45. To compare two decimals, line up their decimal points. Then compare the digits in each place, starting from the left. The first place where the digits are different tells which decimal is greater.",
     templateIds: ["compare-decimals-hundredths"],
     senses: decimalSenses,
+    noLink: decimalNoLink,
     includeGeneratedRepresentation: false,
     objectives: [
       "Line up two decimals by place value.",
@@ -167,6 +170,7 @@ export const decimalLessons: Lesson[] = [
       "round-decimal",
     ],
     senses: decimalSenses,
+    noLink: decimalNoLink,
     includeGeneratedRepresentation: false,
     objectives: [
       "Name the value of a digit in the tenths, hundredths or thousandths place.",
@@ -194,7 +198,7 @@ export const decimalLessons: Lesson[] = [
       {
         title: "Round to the nearer neighbor",
         paragraphs: [
-          "To round 2.37 to the nearest tenth, find the tenths on either side of it: 2.3 and 2.4. The halfway point between them is 2.35.",
+          "To round 2.37 to the nearest tenth, find the tenths just below and just above it: 2.3 and 2.4. The halfway point between them is 2.35.",
           "Look at the picture. 2.37 is past the halfway point, so it is nearer 2.4. So 2.37 rounds to 2.4.",
           "A number exactly at the halfway point is just as near to both. The rule everyone uses is that it rounds up.",
         ],
@@ -213,7 +217,7 @@ export const decimalLessons: Lesson[] = [
     workedExample: {
       prompt: "Round 4.862 to the nearest hundredth.",
       steps: [
-        "Find the hundredths on either side of 4.862. They are 4.86 and 4.87, the numbers with two digits after the point just below and just above it.",
+        "Find the hundredths just below and just above 4.862. They are 4.86 and 4.87, the numbers with two digits after the point just below and just above it.",
         "Find the halfway point between them: 4.865. 4.862 is less than 4.865, so it has not reached halfway.",
         "So 4.862 is nearer 4.86, and it rounds down to 4.86.",
       ],
@@ -232,8 +236,8 @@ export const decimalLessons: Lesson[] = [
     summary:
       "A decimal is a number written with a decimal point, such as 4.68. Rounding means replacing a number with the nearer of two simpler numbers. Many decimals round to the same answer: 4.676 and 4.684 both round to 4.68 at the nearest hundredth. A halfway point is the number exactly between two rounded values. The halfway points on each side of 4.68 show which decimals round to it.",
     templateIds: ["inverse-round-decimal"],
-    senses: { ...decimalSenses, side: "side" },
-    noLink: ["side"],
+    senses: decimalSenses,
+    noLink: [...decimalNoLink, "side"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Choose one decimal greater than 0 that rounds to a given tenth or hundredth.",
@@ -408,7 +412,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
   "compare-decimals-hundredths": {
     goal: "Choose the greater or lesser of two decimals to hundredths.",
     senses: decimalSenses,
-    noLink: ["mean"],
+    noLink: ["mean", "change", "changes"],
     terms: placeTerms,
     method: compareMethod,
     watch: "More digits does not mean greater: 0.5 > 0.45.",

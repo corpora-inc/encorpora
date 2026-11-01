@@ -135,7 +135,7 @@ export const partWholeLessons: Lesson[] = [
         paragraphs: [
           "Look at the picture. The first square is cut in half straight down the middle. The second square is cut in half from one corner to the other. A corner is a point where two sides meet.",
           "The straight-down cut makes 2 rectangles. The corner-to-corner cut makes 2 triangles, the flat shapes with 3 sides. A rectangle half and a triangle half look different. But each one covers exactly half of its square. In each square, turn one piece over and it fits right on the other piece.",
-          "So compare shares by their names, not their shapes. Any half of a square is the same amount as any other half of the same square. A half is more than a third or a quarter of that square. The third square in the picture shows one third, which is smaller than one half.",
+          "So compare shares by their names, not their shapes. Any half of a square is the same amount as any other half of the same square. A half is bigger than a third or a quarter of that square. The third square in the picture shows one third, which is smaller than one half.",
         ],
         illustration: "same-share-shapes",
       },
@@ -179,6 +179,7 @@ export const partWholeLessons: Lesson[] = [
       side: "side",
       unit: "unit",
     },
+    noLink: ["mean", "means"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Explain that parts with equal area are equal parts, even when their shapes are different.",
@@ -257,6 +258,7 @@ export const partWholeLessons: Lesson[] = [
       rename: "rename",
       "more than": "more-than",
     },
+    noLink: ["change", "changes", "mean", "means"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Compare fractions with the same denominator by counting same-size parts.",
@@ -277,7 +279,7 @@ export const partWholeLessons: Lesson[] = [
         title: "The same whole",
         paragraphs: [
           "When fractions tell amounts of something, like pizza, the wholes must be the same size. Half of a large pizza is more pizza than half of a small one. In this lesson, both fractions are always parts of one whole of the same size.",
-          "The sign > means is greater than, and < means is less than. The open side faces the greater number.",
+          "The sign > means is greater than, and < means is less than. The wide open end is next to the greater number.",
         ],
       },
       {
@@ -418,7 +420,12 @@ export const partWholeMethods: Record<string, ProblemMethod> = {
   },
   "equal-area-part-size": {
     goal: "Find the area of one part of a rectangle split into equal-area parts.",
-    senses: { whole: "whole", part: "part", square: "square-shape" },
+    senses: {
+      whole: "whole",
+      part: "part",
+      square: "square-shape",
+      side: "side",
+    },
     terms: [
       "area",
       [
