@@ -1,6 +1,6 @@
 # Daily workbooks
 
-A daily workbook is a printable PDF of about 30, 45 or 60 minutes of work, chosen for one learner from their practice evidence. Each workbook is new and they never run out. The layout and structure are the same at every level; only the problems change. Issue [#1776](https://github.com/corpora-inc/encorpora/issues/1776) tracks the feature. It stays out of the production interface until the founder has reviewed generated workbooks.
+A daily workbook is a printable document of about 30, 45 or 60 minutes of work, chosen for one learner from their practice evidence. Each workbook is new and they never run out. The layout and structure are the same at every level; only the problems change. Issue [#1776](https://github.com/corpora-inc/encorpora/issues/1776) tracks the feature. Parent entry points stay off until release: `workbooksEnabled` in `src/web/features/workbooks/config.ts` is the one switch. The routes work by URL either way.
 
 ## Structure
 
@@ -30,11 +30,34 @@ Selection is a scheduling heuristic, like mixed practice. Success levels per sec
 - **Today's idea.** The lesson card shows the summary, one explanation (an illustrated section, else the plain-words introduction), its diagram when the lesson has one, the worked example with numbered steps, and the first pitfall.
 - **Results.** Pass `results: { baseUrl, learnerId, workbookId }` to print a QR code for `<baseUrl>/learners/<learnerId>/workbooks/<workbookId>/results` (`src/workbook/links.ts`). The code is drawn as SVG from the `qrcode` package's module matrix.
 
+## Storage and API
+
+`amp_workbooks` (migration 0077) stores one row per learner, date, number and length: the spec, its code and the parent's paper size. Rows are learning data. They appear in the family export, are deleted with the learner's learning data, and cascade when a learner row is removed.
+
+The routes (`src/workbook/routes.ts`) require the learner's parent with consent and an active license, as practice does; a free trial has no workbooks.
+
+| Route | Result |
+| --- | --- |
+| `POST /api/v1/learners/:id/workbooks` `{date, minutes: 30\|45\|60, paper: letter\|a4, number?}` | The workbook for that date, number and length: stored the first time (201), returned unchanged afterwards (200). No `number` means the next number for the date ("Another one"). A new workbook is for today (within a day of the server's UTC date); stored ones of any date stay available. A changed paper size is saved; the problems are not |
+| `GET /api/v1/learners/:id/workbooks[?date=]` | History, newest first, as summaries (sections, problem counts, estimated minutes, code) |
+| `GET /api/v1/learners/:id/workbooks/:workbookId/document[?paper=]` | The printable workbook as one HTML document. 410 when a template has changed version since the workbook was made, because its problems would no longer reprint exactly |
+
+A stored spec never changes when evidence changes later; the next number is composed from the new evidence. `workbookCode` hashes the spec with sorted keys, because JSONB storage reorders them.
+
+## Parent screens
+
+- `/learners/:id/workbooks/:date` (today): length and paper size as segmented controls, Download and Another one. Length, paper and number live in the URL (`?minutes=&paper=&number=`), so Back, reload and shared links restore the screen. Opening it makes today's first workbook, from the starting estimate when the learner has no answers yet. Other dates list that day's workbooks.
+- `/learners/:id/workbooks`: every workbook, newest first, each downloadable again.
+- Family → Learners shows "Download today's workbook" and "Past workbooks" when `workbooksEnabled` is on and the learner can practice.
+
+`npm run test:workbooks-ui` runs the real routes (in memory) in Chromium at 320, 390, 768 and 1280 px, light and dark: overflow, touch targets, controls that never move while workbooks load, change, fail or download, Back and reload, and the unlicensed state. Screenshots: `docs/reviews/workbooks/`.
+
 ## Checks
 
 - `npm run workbook:audit` prints three problems from every template in the workbook layout. It fails on content wider than its column, a problem taller than a page, or a figure shape that lost its styles. Known failures are listed in `src/workbook/paper-exclusions.ts` and skipped by the composer; any new failure fails the audit.
 - `npm run workbook:samples -- [30|45|60|all] [--paper letter|a4|all] [--png] [--gray] [learner…]` writes PDFs for synthetic learners (`src/workbook/synthetic.ts`) to `artifacts/workbooks/` and checks every composed page: no overflow or split problem, no heading ending a page, student pages at least 90% full (except the last), key and results never mixed with student pages, the PDF page count equal to the composed pages, no word broken across lines, 4.5:1 text contrast (which is also the grayscale contrast), and no unstyled figure shape. `--png` renders every page with Poppler for review.
-- `npm run test:workbook-ui` runs the same checks on a fixed set of learners, lengths and paper sizes in CI.
+- `npm run test:workbook-paper-ui` runs the same checks on a fixed set of learners, lengths and paper sizes in CI.
 - `npx tsx scripts/workbook-challenge-pool.ts --write` regenerates `src/workbook/challenge-pool.ts` and documents its scoring; curate with its `routine` list.
 - `tests/workbook.test.ts` covers determinism, structure at every level and length, time targets, due review, a learner with no answers, key placement, the results link and the challenge pool.
-- Review pages of representative learners are in `docs/reviews/workbooks/`.
+- `tests/workbooks.test.ts` covers the API with an in-memory repository; `tests/workbooks.integration.ts` covers storage, concurrency, export and deletion on PostgreSQL.
+- Review pages of representative learners are in `docs/reviews/workbooks/` (`paper-*.png`).

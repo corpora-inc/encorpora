@@ -59,6 +59,18 @@ test("the same learner, date and number print the same workbook; another number 
     items(a).map((i) => i.seed),
   );
   assert.notEqual(workbookCode(b), workbookCode(a));
+  // Storage (JSONB) reorders object keys; the printed code must not change.
+  const reorder = (value: unknown): unknown =>
+    Array.isArray(value)
+      ? value.map(reorder)
+      : value && typeof value === "object"
+        ? Object.fromEntries(
+            Object.entries(value)
+              .reverse()
+              .map(([k, v]) => [k, reorder(v)]),
+          )
+        : value;
+  assert.equal(workbookCode(reorder(a) as WorkbookSpec), workbookCode(a));
 });
 
 test("every workbook has the full structure at every level and length", () => {
