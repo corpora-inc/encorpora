@@ -182,11 +182,28 @@ def solve_integer_exponent(public):
     return Fraction(answers[0])
 
 
+TEX_GROUP = r'\{([^{}]*)\}'
+
+
+def plain_math(text):
+    """Read typeset arithmetic as plain symbols: $x^{-3} = \\frac{1}{x^3}$ is
+    x^(-3) = (1)/(x^3), so a typeset claim is checked rather than skipped."""
+    def span(found):
+        tex = found[1]
+        tex = re.sub(rf'\\[td]?frac{TEX_GROUP}{TEX_GROUP}', r'(\1)/(\2)', tex)
+        tex = re.sub(rf'\^{TEX_GROUP}', r'^(\1)', tex)
+        for command, symbol in ((r'\cdot', '×'), (r'\times', '×'), (r'\div', '÷'), (r'\left', ''), (r'\right', '')):
+            tex = re.sub(re.escape(command) + r'(?![A-Za-z])', symbol, tex)
+        return tex
+    return re.sub(r'\$([^$]+)\$', span, text)
+
+
 def equalities(text, answer=0):
     chunk = r'[0-9xk() +−\-×÷/^]+'
-    chains = re.findall(rf'(?<![A-Za-z])({chunk}(?:={chunk})+)', text)
+    chains = re.findall(rf'(?<![A-Za-z])({chunk}(?:={chunk})+)', plain_math(text))
     for chain in chains:
         parts = [part.strip() for part in chain.split('=')]
+        require(all(parts), f'Equality without arithmetic: {chain!r}')
         for base in (2, 3, -2):
             values = [arithmetic(part, {'x': base, 'k': answer}) for part in parts]
             require(all(value == values[0] for value in values), f'False worked equality: {chain}')
