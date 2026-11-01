@@ -1295,7 +1295,7 @@ export const geometryEntries: GlossaryEntry[] = [
     forms: ["reflection", "reflections", "reflect", "reflects", "reflected"],
     plain:
       "A flip of a figure across a line, making its mirror image. Each point lands just as far from the line, on the other side.",
-    example: "A letter b flipped across an up-and-down line becomes a d.",
+    example: "A right hand reflected across a line looks like a left hand.",
     uses: ["point", "line"],
     band: "4",
     noLink: ["side", "image"],
