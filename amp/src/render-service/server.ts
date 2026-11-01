@@ -1,8 +1,11 @@
 /**
  * AMP render service: HTML in, PDF out, through headless Chromium. Internal
  * only: the API checks the parent's access, builds the document and calls
- * this with a shared secret. Pages render with JavaScript off and every
- * network request blocked, so a document can only use what it carries.
+ * this with a shared secret. Every network request is blocked and the
+ * context is offline, so a document can only use what it carries. Scripts
+ * run only so a document can compose its own pages: one that marks
+ * `<html data-compose>` (daily workbooks) is printed once it sets
+ * `data-layout="ready"`, and fails on "error".
  *
  *   AMP_RENDER_TOKEN        shared secret, at least 32 characters (required)
  *   AMP_RENDER_HOST         listen address (default 127.0.0.1; 0.0.0.0 in the image)
@@ -162,15 +165,26 @@ export function createRenderService(options: RenderServiceOptions): {
     });
     const work = (async () => {
       const instance = await connected();
-      context = await instance.newContext({
-        javaScriptEnabled: false,
-        offline: true,
-      });
+      context = await instance.newContext({ offline: true });
       const page = await context.newPage();
       // Data URLs never reach the network; anything else is refused.
       await page.route("**/*", (route) => route.abort());
-      await page.setContent(html, { waitUntil: "load", timeout: timeoutMs });
       await page.emulateMedia({ media: "print" });
+      await page.setContent(html, { waitUntil: "load", timeout: timeoutMs });
+      const layout = await page
+        .waitForFunction(
+          () => {
+            const root = document.documentElement;
+            if (!root.hasAttribute("data-compose")) return "none";
+            const value = root.dataset.layout;
+            return value === "ready" || value === "error" ? value : null;
+          },
+          undefined,
+          { timeout: timeoutMs },
+        )
+        .then((handle) => handle.jsonValue());
+      if (layout === "error")
+        throw new HttpError(422, "Document page composition failed");
       return page.pdf({
         format,
         printBackground: true,
