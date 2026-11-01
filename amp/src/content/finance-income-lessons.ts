@@ -6,18 +6,7 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     goal: "Find profit or loss, total cost, the break-even number, or the variable cost from a price and costs.",
     intuition:
       "Revenue is the money a sale brings in. Costs are the money spent. Profit is revenue minus all costs; a negative result is a loss. A fixed cost is paid once no matter how many items are made, such as renting a table. A variable cost is paid again for each item, such as the beads in one bracelet.",
-    terms: [
-      ["revenue", "Money received from sales: price times the number sold."],
-      ["fixed cost", "A cost that stays the same however many items are made."],
-      [
-        "variable cost",
-        "A cost that is paid for each item made, so it grows with the number made.",
-      ],
-      [
-        "break-even number",
-        "The number sold at which revenue equals total cost, so profit is zero.",
-      ],
-    ],
+    terms: ["revenue", "fixed-cost", "variable-cost", "break-even-number"],
     method: [
       "Total cost = fixed costs + (making cost per item × number made).",
       "Revenue = price × number sold. Profit = revenue − total cost. A negative profit is a loss.",
@@ -30,21 +19,7 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     goal: "Name the kind of tax, income, payroll, sales or property, from a description or example.",
     intuition:
       "A tax is money people and businesses pay to a government. The four common kinds are told apart by what the amount is based on and when it is paid.",
-    terms: [
-      ["income tax", "A share of the money a person earns in a year."],
-      [
-        "payroll tax",
-        "An amount taken out of each paycheck to pay for programs such as Social Security and Medicare.",
-      ],
-      [
-        "sales tax",
-        "A percent of the price, added at the register when something is bought.",
-      ],
-      [
-        "property tax",
-        "A yearly amount based on the value of land and buildings that a person owns.",
-      ],
-    ],
+    terms: ["income-tax", "payroll-tax", "sales-tax", "property-tax"],
     method: [
       "Find what the amount is based on: earnings over a year, one paycheck, one price, or the value of property.",
       "Find when it is paid: when filing a yearly return, at each paycheck, at each purchase, or each year on what is owned.",
@@ -57,17 +32,7 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     goal: "Use a three-bracket tax table to find the tax owed or the tax on part of an income.",
     intuition:
       "In a bracket table, income is cut into slices. Each slice has its own rate, and a rate applies only to the dollars in its own slice. Earning more moves only the new dollars into a higher rate; it never raises the rate on the dollars below.",
-    terms: [
-      ["bracket", "A slice of income with one tax rate."],
-      [
-        "taxable income",
-        "Income left after subtractions such as a standard deduction; the table applies to this amount.",
-      ],
-      [
-        "deduction",
-        "An amount subtracted from income before the tax table is used.",
-      ],
-    ],
+    terms: ["tax-bracket", "taxable-income", "deduction"],
     method: [
       "If a deduction is given, subtract it from earned income to get taxable income.",
       "Split taxable income by row: the first row's full width, then the next rows' widths, then the rest. Skip rows the income does not reach.",
@@ -81,11 +46,17 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     intuition:
       "A percent tax takes that many hundredths of an amount. A property tax is often stated as dollars for each 100 dollars of value, so count how many hundreds the taxable value holds and multiply by the rate.",
     terms: [
-      ["withheld", "Taken out of pay before the worker receives it."],
-      ["exempt", "Not taxed; the item is still paid for at its price."],
       [
-        "exemption",
-        "An amount of value subtracted before property tax is figured.",
+        "payroll-tax",
+        "Withheld means taken out of pay before the worker receives it.",
+      ],
+      [
+        "tax",
+        "An exempt item is not taxed; it is still paid for at its price.",
+      ],
+      [
+        "property-tax",
+        "An exemption is an amount subtracted from the value before the tax is figured.",
       ],
     ],
     method: [
@@ -101,9 +72,12 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     intuition:
       "A budget plans how income is spent. A category's share is its part divided by the whole, written as a percent. Fixed expenses stay the same each month, such as rent; variable expenses change, such as food or fun; savings is money set aside. All the shares of a complete budget add to 100%.",
     terms: [
-      ["fixed expense", "An expense that is the same amount each month."],
-      ["variable expense", "An expense that can change from month to month."],
-      ["share", "A part divided by the whole, written as a percent."],
+      "fixed-cost",
+      "variable-cost",
+      [
+        "percent",
+        "A share is one part divided by the whole, written as a percent.",
+      ],
     ],
     method: [
       "Share of the budget = category amount ÷ total, written as a percent.",
@@ -117,14 +91,7 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     goal: "Classify assets and liabilities, find net worth, or decide how a transaction changes it.",
     intuition:
       "An asset is something a person owns that has value. A liability is money the person owes. Net worth is what would be left if every asset were sold and every liability paid: assets minus liabilities. It can be negative.",
-    terms: [
-      [
-        "asset",
-        "Something owned that has value, such as savings or a bicycle.",
-      ],
-      ["liability", "Money owed, such as a loan or a credit card debt."],
-      ["net worth", "Total assets minus total liabilities."],
-    ],
+    terms: ["asset", "liability", "net-worth"],
     method: [
       "Sort each item as owned or owed. Add the assets and, separately, the liabilities.",
       "Net worth = total assets − total liabilities. If liabilities are larger, the net worth is negative.",
@@ -138,9 +105,12 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     intuition:
       "Different offers save money in different ways. A coupon takes dollars off. A percent discount takes a share of the price off. A mail-in rebate is paid back after the full price is paid. To compare, find the dollars each one saves, or the final cost.",
     terms: [
-      ["coupon", "A stated number of dollars off the price."],
-      ["rebate", "Money returned after the purchase."],
-      ["final cost", "The price paid after all offers that are used."],
+      "coupon",
+      "rebate",
+      [
+        "coupon",
+        "The final cost is the price paid after every coupon, rebate or other offer used.",
+      ],
     ],
     method: [
       "Turn each offer into dollars saved or a final cost: percent off saves price × percent ÷ 100.",

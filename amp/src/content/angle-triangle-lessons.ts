@@ -302,14 +302,7 @@ export const angleTriangleLessons: Lesson[] = [
 export const angleTriangleMethods: Record<string, ProblemMethod> = {
   "angle-pair-measure": {
     goal: "Find an unknown angle from the whole it shares with a known angle, or from a vertical pair.",
-    terms: [
-      ["supplementary", "Two angles whose measures add to 180°."],
-      ["complementary", "Two angles whose measures add to 90°."],
-      [
-        "vertical angles",
-        "Opposite angles where two lines cross; they are equal.",
-      ],
-    ],
+    terms: ["supplementary", "complementary-angles", "vertical-angles"],
     method: [
       "Name the whole the angles fill: a line (180°), a right angle (90°) or a full turn (360°).",
       "Subtract the known angles from the whole.",
@@ -322,16 +315,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
     goal: "Write an equation from an angle relationship, solve for $x$, and find an angle if asked.",
     intuition:
       "A ray starts at a point and extends in one direction. Two rays make an angle at their shared endpoint. Side-by-side angles on a straight line add to 180 degrees. A letter such as $x$ stands for an unknown number of degrees.",
-    terms: [
-      [
-        "adjacent angles",
-        "Angles that share a vertex and a ray without overlapping.",
-      ],
-      [
-        "linear pair",
-        "Adjacent angles along a straight line; they add to 180°.",
-      ],
-    ],
+    terms: ["adjacent-angles", "linear-pair"],
     method: [
       "Choose the relationship: parts add to the whole, or vertical angles are equal.",
       "Write the equation with the expressions and solve for $x$.",
@@ -342,12 +326,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
   },
   "triangle-angle-sum": {
     goal: "Find an unknown angle of a triangle, or the value of $x$, from the 180° angle sum.",
-    terms: [
-      [
-        "interior angle",
-        "An angle inside the triangle at one of its vertices.",
-      ],
-    ],
+    terms: ["interior-angle"],
     method: [
       "Write $\\angle A + \\angle B + \\angle C = 180°$ with the given measures or expressions.",
       "Solve for the unknown.",
@@ -358,13 +337,10 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
   "triangle-exterior-angle": {
     goal: "Use an exterior angle and the two remote interior angles to find an unknown.",
     terms: [
+      "exterior-angle",
       [
-        "exterior angle",
-        "The angle between one side and the extension of the side next to it.",
-      ],
-      [
-        "remote interior angles",
-        "The two interior angles not next to the exterior angle.",
+        "exterior-angle",
+        "The remote interior angles are the two inside angles not next to it; they add up to the exterior angle.",
       ],
     ],
     method: [
@@ -379,17 +355,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
     goal: "Find an angle where a transversal crosses two parallel lines.",
     intuition:
       "Parallel lines run in the same direction without meeting. A line crossing both makes two sets of angles. Angles in matching positions are equal. Angles on opposite sides of the crossing line are also equal when both are between the parallel lines or both are outside them; inside angles on the same side add to 180 degrees.",
-    terms: [
-      ["transversal", "A line that crosses two other lines."],
-      [
-        "corresponding angles",
-        "Angles in matching positions at the two crossings.",
-      ],
-      [
-        "alternate interior angles",
-        "Angles between the lines on opposite sides of the transversal.",
-      ],
-    ],
+    terms: ["transversal", "corresponding-angles", "alternate-interior-angles"],
     method: [
       "Slide one crossing along the transversal onto the other: matching positions have equal angles.",
       "Decide whether the two marked angles are equal or supplementary.",
@@ -400,12 +366,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
   },
   "triangle-side-test": {
     goal: "Choose the three lengths that can form a triangle.",
-    terms: [
-      [
-        "triangle inequality",
-        "The two shorter sides of a triangle add to more than the longest.",
-      ],
-    ],
+    terms: ["triangle-inequality"],
     method: [
       "In each set, find the longest length.",
       "Add the other two and compare with the longest.",
@@ -416,12 +377,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
   },
   "triangle-third-side": {
     goal: "Find the greatest, least or number of whole-number lengths for a third side.",
-    terms: [
-      [
-        "triangle inequality",
-        "Each side is shorter than the other two together.",
-      ],
-    ],
+    terms: ["triangle-inequality"],
     method: [
       "The third side is less than the sum of the given sides.",
       "It is greater than their difference.",
@@ -432,9 +388,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
   },
   "triangle-conditions": {
     goal: "Decide whether the conditions determine exactly one triangle, more than one, or none.",
-    terms: [
-      ["same triangle", "Same size and shape; one fits exactly on the other."],
-    ],
+    terms: ["congruent"],
     method: [
       "Rule out impossible conditions: angles that cannot add to 180°, or sides failing the triangle inequality.",
       "Three sides, two sides with the angle between them, or two angles with a side fix one triangle.",
@@ -446,10 +400,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
     goal: "Name the shape where a plane slices a prism or pyramid.",
     intuition:
       "A cross-section is the flat shape left where a plane cuts a solid. A prism has two matching ends; a pyramid has one base and sides meeting at its tip, called the apex. Trace which faces the cut crosses to see the new shape.",
-    terms: [
-      ["cross-section", "The flat shape where a plane cuts through a solid."],
-      ["apex", "The vertex where a pyramid's triangular side faces meet."],
-    ],
+    terms: ["cross-section", "apex"],
     method: [
       "List the faces the plane crosses; each gives one straight side.",
       "Compare the sides' directions and lengths.",
@@ -462,9 +413,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
     goal: "Find the area of a slice of a prism or pyramid from its dimensions.",
     intuition:
       "A cross-section is the flat shape where a plane cuts a solid. A rectangular prism is a box; a cut parallel to one of its faces makes a copy of that face. Area measures the space the cut face covers.",
-    terms: [
-      ["cross-section", "The flat shape where a plane cuts through a solid."],
-    ],
+    terms: ["cross-section"],
     method: [
       "Identify the face the slice copies, or its shape and dimensions.",
       "Use length × width for a rectangle, or ½ × base × height for a triangle.",

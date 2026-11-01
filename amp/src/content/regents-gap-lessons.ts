@@ -8,13 +8,10 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
       "In a model such as $y=a\\cdot b^{t}$, the quantity is multiplied by the base $b$ once for each period. A base of 1.038 keeps all of the quantity and adds 3.8% of it. A base of 0.85 keeps 85% of it, so 15% is lost.",
     terms: [
       [
-        "base",
-        "The number $b$ that is raised to a power in $a\\cdot b^{t}$. It is the factor applied each period.",
+        "base-exponent",
+        "In $a \\cdot b^{t}$, the base $b$ is the factor applied each period.",
       ],
-      [
-        "half-life",
-        "The time in which a decaying quantity falls to half of its value.",
-      ],
+      "half-life",
     ],
     method: [
       "Compare the base with 1. Above 1 the quantity grows; below 1 it decays.",
@@ -29,16 +26,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Factor a difference of squares that has a coefficient, a common factor, or two variables, until no factor can be factored again.",
     intuition:
       "Factoring rewrites an expression as a product. First pull out any factor shared by every term. Then check whether what is left is a difference of two perfect squares, which factors as $a^{2}-b^{2}=(a-b)(a+b)$. Factoring is complete when no factor can be factored further.",
-    terms: [
-      [
-        "common factor",
-        "A number or variable that divides every term. Pulling it out leaves the other factor in parentheses.",
-      ],
-      [
-        "difference of squares",
-        "Two perfect squares that are subtracted, such as $4x^{2}-25=(2x)^{2}-5^{2}$.",
-      ],
-    ],
+    terms: ["common-factor", "difference-of-squares"],
     method: [
       "Find the greatest common factor of all the terms, including variables, and pull it out.",
       "Write each remaining term as a square, such as $4x^{2}=(2x)^{2}$.",
@@ -52,16 +40,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Find the zeros of a product with a nonmonic factor, or a zero of an expanded cubic by factoring by grouping.",
     intuition:
       "A zero of a function is an input that makes the output 0. A product is 0 only when one of its factors is 0, so each factor gives a zero. For a factor such as $3x+2$, solve $3x+2=0$ and get $-\\frac{2}{3}$. An expanded cubic with four terms can sometimes be factored by grouping its terms in pairs.",
-    terms: [
-      [
-        "zero-product property",
-        "If a product of numbers is 0, at least one of the numbers is 0.",
-      ],
-      [
-        "grouping",
-        "Splitting a polynomial into pairs of terms, factoring each pair, and pulling out the binomial the pairs share.",
-      ],
-    ],
+    terms: ["zero-product-property", "factoring-by-grouping"],
     method: [
       "If the function is a product, set each factor equal to 0, including a factor that is only $x$.",
       "Solve each factor completely. For $ax+b=0$ the zero is $-\\frac{b}{a}$.",
@@ -75,16 +54,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Simplify a monomial with a coefficient and two variables raised to a power, alone or times another monomial.",
     intuition:
       "A power of a product repeats the whole product: $(2x^{3})^{2}=2x^{3}\\cdot2x^{3}$. Every factor inside gets the power. The coefficient is multiplied by itself, and each exponent is multiplied by the power.",
-    terms: [
-      [
-        "coefficient",
-        "The number that multiplies the variables in a term, such as 3 in $3x^{2}y$.",
-      ],
-      [
-        "monomial",
-        "A product of a number and variables with whole-number exponents.",
-      ],
-    ],
+    terms: ["coefficient", "monomial"],
     method: [
       "Raise the coefficient to the outer power by multiplying it by itself that many times.",
       "Multiply each exponent inside the parentheses by the outer power.",
@@ -99,13 +69,10 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
       "A rational exponent $\\frac{p}{q}$ means a root and a power: $x^{p/q}$ is the $q$-th root of $x^{p}$. A negative exponent means the reciprocal. Radicals combine most easily after they are written as powers of the same base.",
     terms: [
       [
-        "index",
-        "The small number $q$ in $\\sqrt[q]{\\ }$ that tells which root is taken. A square root has index 2.",
+        "nth-root",
+        "Here it is the small $q$ in $\\sqrt[q]{\\ }$ that names the root; a square root has index 2.",
       ],
-      [
-        "rational exponent",
-        "An exponent that is a fraction. The denominator is the root and the numerator is the power.",
-      ],
+      "rational-exponent",
     ],
     method: [
       "Write each radical as a power: $\\sqrt[q]{x}=x^{1/q}$.",
@@ -120,16 +87,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Build a polynomial from its degree, number of terms, leading coefficient and constant term, or read them from one.",
     intuition:
       "A polynomial is a sum of terms, each a number times a whole-number power of $x$. The degree is the highest exponent. The leading coefficient is the number on that term. The constant term is the term with no variable.",
-    terms: [
-      [
-        "binomial and trinomial",
-        "A polynomial with exactly two terms and one with exactly three terms.",
-      ],
-      [
-        "leading coefficient",
-        "The coefficient of the term with the highest exponent.",
-      ],
-    ],
+    terms: ["binomial", "trinomial", "leading-coefficient"],
     method: [
       "Write the terms from the highest exponent to the lowest so the leading term comes first.",
       "Read the degree and leading coefficient from that first term.",
@@ -143,10 +101,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Use volume, density and unit conversions to find a weight, a count of whole objects, or a number of liters.",
     intuition:
       "Density is mass per unit of volume, so mass is density times volume. Units must match: a density in pounds per cubic foot needs a volume in cubic feet. When you count whole objects, a leftover part does not count, so you round down.",
-    terms: [
-      ["density", "Mass per unit of volume, such as 45 pounds per cubic foot."],
-      ["liter", "A unit of volume equal to 1000 cubic centimeters."],
-    ],
+    terms: ["density", ["liter", "One liter is 1000 cubic centimeters."]],
     method: [
       "Find the depth or the radius first: halve a diameter, subtract a gap from a height.",
       "Convert lengths so they match the unit in the density, or convert cubic centimeters to liters at the end.",
@@ -160,10 +115,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the fact that makes a parallelogram a rhombus or a rectangle, or find a trapezoid angle from expressions.",
     intuition:
       "A rhombus is a parallelogram with four equal sides. A rectangle is a parallelogram with four right angles. Opposite sides equal, opposite angles equal and diagonals that bisect each other hold for every parallelogram, so they prove nothing special. In a trapezoid, the two angles on one leg lie between the same two parallel lines, so they add to 180°.",
-    terms: [
-      ["supplementary", "Two angles whose measures add to 180 degrees."],
-      ["leg of a trapezoid", "One of the two sides that are not parallel."],
-    ],
+    terms: ["supplementary", "trapezoid"],
     method: [
       "Ask whether the fact is true of every parallelogram. If it is, it cannot prove a rhombus or a rectangle.",
       "Match the fact to the shape: perpendicular diagonals or equal consecutive sides give a rhombus; congruent diagonals or a right angle give a rectangle.",
@@ -177,8 +129,8 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "In a parallelogram, consecutive angles add to 180°. A perpendicular from a vertex makes a right triangle, and the two other angles of a right triangle add to 90°.",
     terms: [
-      ["perpendicular", "Meeting another line at a right angle, 90 degrees."],
-      ["consecutive angles", "Two angles of a polygon that share a side."],
+      "perpendicular",
+      ["angle", "Consecutive angles of a polygon share a side."],
     ],
     method: [
       "Mark the right angle where the perpendicular meets the line.",
@@ -192,16 +144,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Use a perpendicular bisector or a triangle's midsegment, in words or with algebraic lengths.",
     intuition:
       "The perpendicular bisector of a segment crosses it at its midpoint at a right angle. Every point on it is the same distance from both endpoints. A midsegment joins the midpoints of two sides of a triangle. It is parallel to the third side and half as long.",
-    terms: [
-      [
-        "perpendicular bisector",
-        "A line that is perpendicular to a segment and passes through its midpoint.",
-      ],
-      [
-        "midsegment",
-        "A segment joining the midpoints of two sides of a triangle.",
-      ],
-    ],
+    terms: ["perpendicular-bisector", "midsegment"],
     method: [
       "Name the segment that is bisected, or the two sides whose midpoints are joined.",
       "For a point on a perpendicular bisector, its distances to the two endpoints are equal.",
@@ -215,12 +158,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Find a leg, a hypotenuse or a square's side with the isosceles right triangle ratio, rounded to the nearest tenth.",
     intuition:
       "An isosceles right triangle has two equal legs and a right angle between them. Its hypotenuse is the leg times $\\sqrt{2}$, about 1.414. A square's diagonal cuts it into two such triangles.",
-    terms: [
-      [
-        "hypotenuse",
-        "The longest side of a right triangle, opposite the right angle.",
-      ],
-    ],
+    terms: ["hypotenuse"],
     method: [
       "Call each leg $x$ and use the Pythagorean theorem: $x^{2}+x^{2}=c^{2}$.",
       "So $c=x\\sqrt{2}$ and $x=\\frac{c}{\\sqrt{2}}$.",
@@ -233,12 +171,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Find a triangle's area from two sides and the angle between them, rounded to the nearest tenth.",
     intuition:
       "The area of a triangle is half of a base times the height. When two sides $a$ and $b$ meet at angle $C$, the height on side $a$ is $b\\sin C$, so the area is $\\frac{1}{2}ab\\sin C$. This works for an obtuse angle too, because $\\sin C=\\sin(180°-C)$.",
-    terms: [
-      [
-        "included angle",
-        "The angle formed by two given sides, at the vertex where they meet.",
-      ],
-    ],
+    terms: ["included-angle"],
     method: [
       "Find the angle between the two given sides.",
       "Multiply: $\\frac{1}{2}\\times$ side $\\times$ side $\\times$ the sine of that angle, with the calculator in degree mode.",
@@ -251,12 +184,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Decide whether a length could be, or could not be, the third side of a triangle with two given sides.",
     intuition:
       "Two sides of a triangle must together be longer than the third side, or the sides cannot meet. For sides $a$ and $b$ the third side must be longer than their difference and shorter than their sum.",
-    terms: [
-      [
-        "triangle inequality",
-        "In a triangle, the sum of any two sides is greater than the third side.",
-      ],
-    ],
+    terms: ["triangle-inequality"],
     method: [
       "Find the difference and the sum of the two given sides.",
       "The third side must be strictly between them.",
@@ -269,16 +197,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Find a segment of the hypotenuse from the altitude to the hypotenuse of a right triangle, to the nearest tenth.",
     intuition:
       "The altitude from the right angle to the hypotenuse cuts the triangle into two triangles that are similar to it and to each other. That gives proportions: each leg is the mean proportional between the whole hypotenuse and the part of it next to that leg.",
-    terms: [
-      [
-        "altitude",
-        "A segment from a vertex perpendicular to the opposite side.",
-      ],
-      [
-        "mean proportional",
-        "The number $m$ with $\\frac{a}{m}=\\frac{m}{b}$, so $m^{2}=ab$.",
-      ],
-    ],
+    terms: ["altitude", "geometric-mean"],
     method: [
       "Name the given leg, the whole hypotenuse and the part of the hypotenuse next to that leg.",
       "Use $\\text{leg}^{2}=(\\text{whole hypotenuse})(\\text{adjacent part})$ to find the whole hypotenuse.",

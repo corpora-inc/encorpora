@@ -135,13 +135,7 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
   "scope-of-inference-choice": studyDesignMethod,
   "representative-sample-choice": {
     goal: "Choose the method most likely to give a representative sample.",
-    terms: [
-      [
-        "random sample",
-        "A sample in which every member of the population has the same chance of being chosen.",
-      ],
-      ["biased sample", "A sample that favors some members of the population."],
-    ],
+    terms: ["random-sample", "biased-sample"],
     method: [
       "Name the population the question is about.",
       "Choose the method that picks at random from all of it.",
@@ -167,12 +161,7 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
   },
   "means-in-mads": {
     goal: "Express the difference between two means in MADs.",
-    terms: [
-      [
-        "MAD",
-        "Mean absolute deviation: the mean distance of the values from their mean.",
-      ],
-    ],
+    terms: ["mean-absolute-deviation"],
     method: [
       "Find the mean of each group.",
       "Subtract the smaller mean from the larger.",

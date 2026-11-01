@@ -364,7 +364,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
   },
   "multiply-power-of-ten": {
     goal: "Given a number times 10, 100 or 1,000, find the product.",
-    terms: [["10², 10³", "10 × 10 = 100 and 10 × 10 × 10 = 1,000."]],
+    terms: ["power-of-10"],
     method: [
       "Count the factors of 10: 10 is one, 100 is two, 1,000 is three.",
       "Move every digit that many places left; fill empty places with 0.",
@@ -373,7 +373,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
   },
   "divide-power-of-ten": {
     goal: "Given a whole number divided by 10, 100 or 1,000, find the quotient.",
-    terms: [["10², 10³", "10 × 10 = 100 and 10 × 10 × 10 = 1,000."]],
+    terms: ["power-of-10"],
     method: [
       "Count the factors of 10.",
       "Move every digit that many places right; digits past the ones become tenths, hundredths, thousandths.",

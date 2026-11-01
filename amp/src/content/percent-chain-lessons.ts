@@ -9,12 +9,12 @@ export const percentChainMethods: Record<string, ProblemMethod> = {
       "A percent change multiplies an amount by a factor: a 20% decrease keeps 80% of it, so it multiplies by 0.8, and a 25% increase multiplies by 1.25. The second change acts on the amount after the first change, so the two factors multiply instead of the two percents adding.",
     terms: [
       [
-        "factor",
-        "The number an amount is multiplied by: 1 plus the rate for an increase, 1 minus the rate for a decrease.",
+        "factor-number",
+        "For a percent change, the factor is 1 plus the rate for an increase, or 1 minus the rate for a decrease.",
       ],
       [
-        "base",
-        "The amount a percent is taken of. After the first change the base is the changed amount.",
+        "percent",
+        "The base is the amount the percent is taken of; after the first change, it is the changed amount.",
       ],
     ],
     method: [

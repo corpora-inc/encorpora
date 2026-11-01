@@ -8,9 +8,9 @@ export const stripDiagramMethods: Record<string, ProblemMethod> = {
     intuition:
       "A strip diagram draws a story as a strip. The long strip above is the whole, and the strips below are its parts, each as wide as its amount. A part marked with a question mark is the amount you want to find. Parts of the same width are equal.",
     terms: [
-      ["whole", "The total amount, drawn as the long strip."],
-      ["part", "One piece of the whole, drawn under it."],
-      ["equal parts", "Parts of the same width, which are the same amount."],
+      ["whole", "In a strip diagram, the whole is the long strip."],
+      "part",
+      "equal-parts",
     ],
     method: [
       "Name the whole and each part: which numbers are given and which part has the question mark.",

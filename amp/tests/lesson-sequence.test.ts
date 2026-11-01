@@ -47,6 +47,7 @@ test("problem lessons teach an example before the procedure and keep definitions
     principle:
       "Addition gives the size of two disjoint finite collections together.",
     terms: [{ term: "Sum", meaning: "The result of addition." }],
+    glossary: [],
     method: ["Count the first group.", "Count on for the second group."],
     watch: "Count each object once.",
     example: {

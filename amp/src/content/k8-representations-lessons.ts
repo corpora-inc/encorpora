@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -12,7 +13,7 @@ type Spec = {
   objectives: string[];
   goal: string;
   intuition: string[];
-  terms: [string, string][];
+  terms: MethodTerm[];
   method: string[];
   watch: string;
   principle: string;
@@ -44,21 +45,7 @@ const specs: Spec[] = [
       t`Two quantities are in a proportional relationship when one is always the same number of times the other. Apples sold at one price per pound are an example: 2 pounds cost twice as much as 1 pound, and 3 pounds cost three times as much. The cost of 1 pound is the unit rate, the amount of the second quantity for 1 of the first.`,
       t`On a graph, each point is an ordered pair $(x, y)$. Start at the origin, the point $(0, 0)$ where the axes meet. Go across $x$, then up $y$. In a situation, the pair says that $x$ of the first quantity goes with $y$ of the second. A proportional relationship makes a straight line that passes through the origin, because 0 of the first quantity goes with 0 of the second. The same line passes through $(1, r)$, where $r$ is the unit rate.`,
     ],
-    terms: [
-      [
-        "ordered pair",
-        "Two numbers $(x, y)$ that name a point: $x$ is across, $y$ is up.",
-      ],
-      ["origin", "The point $(0, 0)$, where the two axes cross."],
-      [
-        "unit rate",
-        "The amount of the second quantity for 1 unit of the first.",
-      ],
-      [
-        "proportional relationship",
-        "A relationship in which the second quantity is always the same number times the first.",
-      ],
-    ],
+    terms: ["ordered-pair", "origin", "unit-rate", "proportional-relationship"],
     method: [
       "Say what each axis shows, with its unit.",
       "Read a labeled point as (first quantity, second quantity), and say it in a sentence with the units.",
@@ -110,12 +97,12 @@ const specs: Spec[] = [
       t`A graph is read in order, one piece at a time. A story is matched to a graph by checking each part of the story against the piece that is at the same place.`,
     ],
     terms: [
-      ["increasing", "The quantity gets larger as time goes on."],
-      ["decreasing", "The quantity gets smaller as time goes on."],
-      ["constant", "The quantity stays the same as time goes on."],
+      "increasing",
+      "decreasing",
+      "constant",
       [
-        "steeper",
-        "A line that rises or falls more for the same amount of time.",
+        "slope",
+        "A steeper line has a slope farther from 0: it rises or falls more for each step to the right.",
       ],
     ],
     method: [
@@ -170,14 +157,11 @@ const specs: Spec[] = [
       t`The labels on the axes tell what each number means. The point $(4, 6)$ on a graph of weeks and plant height means that after 4 weeks, the plant is 6 centimeters tall.`,
     ],
     terms: [
-      ["ordered pair", "Two numbers $(x, y)$ in order: across first, then up."],
+      "ordered-pair",
+      "origin",
       [
-        "origin",
-        "The point $(0, 0)$ where the horizontal and vertical axes meet.",
-      ],
-      [
-        "first quadrant",
-        "The part of the plane where both numbers are 0 or more.",
+        "quadrant",
+        "The first quadrant is the upper right one, where both coordinates are 0 or more.",
       ],
     ],
     method: [
@@ -230,15 +214,12 @@ const specs: Spec[] = [
       t`Write each pair of corresponding terms as an ordered pair (term of the first pattern, term of the second pattern). Then look at the pairs for a relationship. For example, each term of the second pattern might be 3 times the matching term of the first, or 4 more.`,
     ],
     terms: [
-      ["corresponding terms", "Terms in the same position in two patterns."],
+      "corresponding-terms",
       [
-        "ordered pair",
-        "A pair (first, second) such as (term of A, term of B).",
+        "ordered-pair",
+        "Here the first number is the term of pattern A and the second the term of pattern B.",
       ],
-      [
-        "rule",
-        "Where to start and what to add each time, such as start at 2 and add 3.",
-      ],
+      "rule",
     ],
     method: [
       "Write the first few terms of each pattern from its start and its rule.",
@@ -292,17 +273,14 @@ const specs: Spec[] = [
     ],
     terms: [
       [
-        "included angle",
-        "The angle between two given sides. A non-included angle is not between them.",
+        "included-angle",
+        "A non-included angle is not between the two given sides.",
       ],
       [
-        "opposite",
-        "Side $BC$ is opposite angle $A$: it is the side that does not touch $A$.",
+        "opposite-side-angle",
+        "Side $BC$ is opposite angle $A$: it does not touch $A$.",
       ],
-      [
-        "hypotenuse",
-        "The longest side of a right triangle, opposite the right angle.",
-      ],
+      "hypotenuse",
     ],
     method: [
       "Name what is given: sides, angles, and where each is. Is the angle between the two sides?",
@@ -354,19 +332,11 @@ const specs: Spec[] = [
       t`Tax and tips are added to the base. A markup is added to what a store paid, and a markdown is taken off a price. Simple interest is a percent of the money put in, earned once for every year. Percent error compares the error in a measurement with the true amount.`,
     ],
     terms: [
-      ["base", "The amount that the percent is taken of."],
-      [
-        "markup",
-        "An amount added to the cost to get the selling price. Markdown is an amount taken off a price.",
-      ],
-      [
-        "simple interest",
-        "Interest earned each year on the money put in only, so it is the same each year.",
-      ],
-      [
-        "percent error",
-        "The size of the error divided by the true amount, written as a percent.",
-      ],
+      ["percent", "The base is the amount that the percent is taken of."],
+      "markup",
+      "discount",
+      "simple-interest",
+      "percent-error",
     ],
     method: [
       "Find the base: the amount the percent is of.",
@@ -418,19 +388,10 @@ const specs: Spec[] = [
       t`If it is hard to list outcomes, you can estimate a probability with a simulation. Pick random digits to stand for the outcomes, run many trials, and count how often the event happens. That is the experimental probability: the number of trials where the event happened, divided by the number of trials. The exact value from the sample space is the theoretical probability. The two are usually close, but not equal.`,
     ],
     terms: [
-      ["sample space", "The list of all possible outcomes."],
-      [
-        "theoretical probability",
-        "The number of outcomes where the event happens divided by all equally likely outcomes.",
-      ],
-      [
-        "experimental probability",
-        "The number of trials where the event happened divided by the number of trials.",
-      ],
-      [
-        "trial",
-        "One run of the experiment or one group of random digits in a simulation.",
-      ],
+      "sample-space",
+      "theoretical-probability",
+      "experimental-probability",
+      "trial",
     ],
     method: [
       "For a sample space, list all outcomes in an organized table or tree. Count them.",
