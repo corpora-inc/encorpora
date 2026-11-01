@@ -262,9 +262,35 @@ registerComponent("numberLine", {
       `Number line from ${spoken(c.min)} to ${spoken(c.max)}, with a tick every ${c.denominator ? `1/${c.denominator}` : spoken(step)}.`,
     ];
     const marks = (c.marks ?? []).filter((_, i) => !hidden(`mark.${i}`));
-    if (marks.length)
+    const named = marks.filter((m) => typeof m.label === "string");
+    if (named.length) {
+      // A lettered point is described by its letter, so a learner who reads
+      // the description can answer a question about point P. On a line that
+      // labels only some ticks, the learner counts ticks from a labeled
+      // number, as a sighted learner does; the value is said only on reveal.
+      const labeled = Array.isArray(c.labels) ? c.labels : null;
+      const place = (at: number) => {
+        if (reveal || !labeled || labeled.includes(at))
+          return `is at ${spoken(at)}`;
+        const near = labeled.reduce((a, b) =>
+          Math.abs(b - at) < Math.abs(a - at) ? b : a,
+        );
+        const n = Math.round(Math.abs(at - near) / step);
+        return `is ${n} ${n === 1 ? "tick mark" : "tick marks"} to the ${at > near ? "right" : "left"} of ${spoken(near)}`;
+      };
       out.push(
-        `${marks.length === 1 ? "A point marks" : "Points mark"} ${marks
+        named
+          .map(
+            (m) =>
+              `Point ${m.label} ${m.derived && !reveal ? "marks an unknown number" : place(m.at)}.`,
+          )
+          .join(" "),
+      );
+    }
+    const plain = marks.filter((m) => typeof m.label !== "string");
+    if (plain.length)
+      out.push(
+        `${plain.length === 1 ? "A point marks" : "Points mark"} ${plain
           .map((m) =>
             m.derived && !reveal ? "an unknown number" : spoken(m.at),
           )
