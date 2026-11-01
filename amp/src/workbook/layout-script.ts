@@ -107,7 +107,8 @@ export const workbookLayoutScript = String.raw`(function () {
       // A single block taller than a page stays; the layout check reports it.
     }
     // A lesson card must fit one page with its heading. A long one drops,
-    // in order, its extra paragraphs, its pitfall and its diagram, then
+    // in order, its extra paragraphs, its pitfall, its diagram and its
+    // words to know, then
     // prints slightly smaller (never below 75%).
     var probe = newPage("student");
     var pageHeight = height(probe.body);
@@ -115,7 +116,7 @@ export const workbookLayoutScript = String.raw`(function () {
     made.pop();
     list(flow.querySelectorAll("[data-fit]")).forEach(function (block) {
       var limit = pageHeight - 0.8 * 96;
-      for (var level = 1; level <= 3 && height(block) > limit; level++)
+      for (var level = 1; level <= 4 && height(block) > limit; level++)
         list(block.querySelectorAll('[data-trim="' + level + '"]')).forEach(function (el) {
           el.setAttribute("data-trimmed", "");
         });
@@ -165,7 +166,7 @@ export const workbookLayoutScript = String.raw`(function () {
       made.forEach(function (p) {
         var card = p.content.querySelector(".wb-lesson-block");
         if (!card || growable(p).length || block.parentNode) return;
-        if (height(p.body) - height(p.content) < 1.4 * 96) return;
+        if (height(p.body) - height(p.content) < 1 * 96) return;
         card.parentNode.insertBefore(block, card.nextSibling);
         if (!fits(p)) detach([block]);
       });

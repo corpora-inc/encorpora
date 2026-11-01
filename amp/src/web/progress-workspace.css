@@ -49,6 +49,7 @@
 }
 .progress-mix {
   flex: none;
+  min-width: 44px;
   white-space: nowrap;
 }
 .progress-controls {
@@ -83,6 +84,7 @@
   border-radius: 12px;
 }
 .progress-filters button {
+  min-height: 44px;
   padding: 8px 16px;
   border: 0;
   background: transparent;
@@ -401,8 +403,10 @@
   .progress-filters {
     justify-content: stretch;
   }
+  /* A longer label ("Review · 27") takes the room it needs. */
   .progress-filters button {
-    flex: 1;
+    flex: 1 1 auto;
+    min-height: 44px;
     padding: 8px 4px;
     font-size: 0.8125rem;
   }

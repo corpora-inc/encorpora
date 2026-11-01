@@ -429,33 +429,36 @@ export const extendedLessons: Lesson[] = [
     id: "signed-addition",
     title: "Combine positive and negative changes",
     summary:
-      "Positive and negative changes move in opposite directions and combine into one net change.",
+      "A number line is a line with evenly spaced marks for numbers. Numbers to the right of 0 are positive, meaning greater than 0. Numbers to the left are negative, meaning less than 0, and are written with a minus sign, like $-7$. Adding a positive number moves right, and adding a negative number moves left. Moves of the same length that go opposite ways cancel, meaning they undo each other.",
     templateIds: ["integer-addition"],
+    senses: { change: "change", opposite: "opposite-number" },
     objectives: [
-      "Model signed addition on a number line.",
-      "Use opposite pairs to simplify a sum.",
+      "Show a sum of positive and negative numbers as moves on a number line.",
+      "Cancel opposite pairs to find a sum, and explain why the answer has its sign.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Changes can point in opposite directions",
         paragraphs: [
-          "On a number line, adding three moves right three spaces and adding negative two moves left two spaces.",
-          "The moves partly cancel, leaving a net move of one space right.",
+          "A number line is a straight line with evenly spaced marks, where each step from one mark to the next is a change of 1. Zero is marked on it. Numbers to the right of 0 are positive, meaning greater than 0. Numbers to the left are negative, meaning less than 0. The number $-2$ is read negative two, and it sits 2 steps left of 0. Whether a number is positive or negative is called its sign. Zero is neither.",
+          "Think of each number you add as a move. Adding 3 means move 3 steps right. Adding $-2$ means move 2 steps left. Start at 0 and make both moves: 3 steps right, then 2 steps back. You stop 1 step right of 0, so $3 + (-2) = 1$.",
+          "The two moves partly cancel. The 2 left steps undo 2 of the right steps, and 1 right step is left over. The numbers 0, 1, 2, 3 and so on are called whole numbers. The whole numbers and their negatives, such as $-3$, 0 and 5, are called integers.",
         ],
       },
       {
         title: "Direction matters",
         paragraphs: [
-          "Positive numbers lie to the right of zero and negative numbers to the left. Adding a positive change moves right; adding a negative change moves left.",
-          "Starting at negative seven and adding twelve means move twelve steps right. Seven steps reach zero and five more reach positive five.",
+          "Adding a positive number moves right. Adding a negative number moves left, even though the sign between the numbers is a plus. The minus sign belongs to the number, and it tells you which way to move.",
+          "Find $(-7) + 12$. Start at $-7$, which is 7 steps left of 0. Adding 12 means 12 steps right. The first 7 steps bring you back to 0. The other 5 steps take you to 5. So $(-7) + 12 = 5$.",
         ],
       },
       {
         title: "Cancel opposite pairs",
         paragraphs: [
-          "A positive unit and a negative unit sum to zero. Pairing opposites leaves whichever sign has extra units.",
-          "When both addends have the same sign, combine their magnitudes and keep that sign. With different signs, compare magnitudes to determine what remains.",
+          "Counters show the same idea. A positive counter stands for $+1$, read positive one, and a negative counter stands for $-1$. One of each makes 0, because $1 + (-1) = 0$. Such a pair is called a zero pair. Removing a zero pair does not change the total.",
+          "The size of a number is its distance from 0, ignoring the sign. This distance is called its absolute value. So $-8$ and 8 both have size 8.",
+          "If both numbers have the same sign (both positive or both negative), nothing cancels. Add the sizes and keep the sign: $(-4) + (-5) = -9$. If the signs are different, pairs cancel. Subtract the smaller size from the larger one. The answer takes the sign of the number with the larger size, because its counters are the ones left over: $(-8) + 3 = -5$. If the sizes are equal, every counter is paired, and the answer is 0: $(-3) + 3 = 0$.",
         ],
       },
     ],
@@ -464,56 +467,64 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Opposite changes",
         paragraphs: [
-          "Adding a positive number moves right on a number line; adding a negative number moves left. Opposite changes of equal size cancel, and the final signed sum records the position reached from the starting value.",
+          "For any number $a$, the number $-a$ is called its opposite, and $a + (-a) = 0$. To add two integers (whole numbers or their negatives) with the same sign, add their absolute values (distances from 0) and keep that sign. To add two integers with different signs, subtract the smaller absolute value from the larger. Then use the sign of the number with the larger absolute value. If the absolute values are equal, the sum (the result of adding) is 0.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is (−7) + 12?",
       steps: [
-        "Seven of the positive units cancel the seven negative units.",
-        "Five positive units remain.",
+        "A positive counter stands for $+1$ and a negative counter for $-1$. Show $-7$ as 7 negative counters and 12 as 12 positive counters.",
+        "One positive and one negative counter make 0, because a step right and a step left cancel. So pair them up and remove all 7 pairs. Removing zeros does not change the total.",
+        "Count what is left: 12 − 7 = 5 positive counters. So $(-7) + 12 = 5$.",
       ],
       answer: "5",
     },
     pitfalls: [
-      "A negative sign belongs to its number.",
-      "Adding a negative number moves left, even though the operation is addition.",
+      "A minus sign belongs to its number. In $5 + (-3)$, the $-3$ is a move of 3 steps to the left.",
+      "Adding a negative number moves left, even though you are adding. $5 + (-3) = 2$, which is less than 5.",
+      "With different signs, the answer takes the sign of the number farther from 0: $(-8) + 3 = -5$, not 5. If both are the same distance from 0, the answer is 0.",
     ],
     parentGuide:
-      "Use two colors for positive and negative counters and remove opposite pairs to model the sum.",
+      "Use counters in two colors, one for positive and one for negative. Build a sum such as $(-7) + 12$ and remove matching pairs. Ask the learner what is left, and why the answer is positive or negative.",
   },
   {
     id: "slope-two-points",
     title: "Slope measures change per step",
     summary:
-      "Slope is the vertical change for each unit of horizontal change along a line.",
+      "Slope tells how steep a line is and which way it tilts. Pick two points on the line. Find how far the line goes up or down between them, and how far it goes across. Slope is the up-or-down change divided by the across change. A slope of 2 means up 2 for every 1 step to the right.",
     templateIds: ["line-slope"],
+    senses: { change: "change" },
+    noLink: ["mean", "part", "parts", "whole", "leaves"],
     objectives: [
-      "Compute corresponding coordinate changes.",
-      "Interpret positive, negative and zero slope.",
+      "Find the change in $x$ and the change in $y$ between two points, subtracting in the same order.",
+      "Explain what a positive, negative or zero slope says about the line.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Compare two changes on the same line",
         paragraphs: [
-          "Choose two points on a line.",
-          "See how much higher or lower the second is and how far right or left it lies. Comparing those two changes gives the line's rise for each horizontal unit.",
+          "A point on a grid is named by two numbers in brackets, like $(1, 2)$. These two numbers are its coordinates. The first, the $x$-coordinate, says how far to the right of the origin (the starting point, $(0, 0)$) to go. The second, the $y$-coordinate, says how far up. So $(1, 2)$ means 1 right and 2 up. Negative coordinates mean left or down.",
+          "Walk along a line from $(1, 2)$ to $(5, 8)$. Across, you go from $x = 1$ to $x = 5$: that is 4 steps right. Up, you go from $y = 2$ to $y = 8$: that is 6 steps up. The up-or-down change is called the rise. The across change is called the run.",
+          "Slope is the rise divided by the run: $\\tfrac{6}{4}$. Dividing the top and bottom of a fraction by the same whole number greater than 1 gives an equal fraction with smaller numbers. This is called simplifying. Divide both by 2 to get $\\tfrac{3}{2}$. It means the line climbs 3 grid steps for every 2 steps to the right, which is 1.5 steps up for every 1 step right. On a straight line that is not vertical, any two different points give the same slope, so the slope belongs to the whole line.",
         ],
       },
       {
         title: "Use a consistent direction",
         paragraphs: [
-          "For points (x₁,y₁) and (x₂,y₂), slope is (y₂ − y₁)/(x₂ − x₁). Subtract coordinates in the same point order in both places.",
-          "A slope of 3/2 means $y$ increases by three for every increase of two in $x$. A negative slope means $y$ falls as $x$ increases.",
+          "To write this for any two points, mark each letter with a small number below it, called a subscript. Point 1 is $(x_1, y_1)$, read “$x$ one, $y$ one”. Point 2 is $(x_2, y_2)$. A subscript only says which point a number came from.",
+          "Then slope $= \\frac{y_2 - y_1}{x_2 - x_1}$: the change in $y$ over the change in $x$. The letter $m$ is often used for slope. Subtract in the same point order on the top and the bottom: point 2 minus point 1 in both places.",
+          "Why the same order? Going the other way, from $(5, 8)$ back to $(1, 2)$, the rise is 2 − 8 = −6 and the run is 1 − 5 = −4. Then $\\frac{-6}{-4} = \\frac{3}{2}$, the same slope, because a negative divided by a negative is positive. Mixing the orders gives $\\frac{8 - 2}{1 - 5} = \\frac{6}{-4}$, which has the wrong sign: negative instead of positive.",
+          "A number's sign says whether it is positive (greater than 0) or negative (less than 0). The sign of the slope tells the tilt. A positive slope means the line goes up as you move right. A negative slope means it goes down as you move right.",
         ],
       },
       {
-        title: "Check the denominator",
+        title: "When a change is zero",
         paragraphs: [
-          "A horizontal line has zero change in $y$ and therefore slope zero. A vertical line has zero change in $x$, so its slope is undefined.",
-          "The practice uses distinct $x$-coordinates, which guarantees a numeric slope. Fractions are valid and need not be rounded.",
+          "A horizontal line runs flat, straight across. Its $y$-coordinate never changes, so the rise is 0. The run is not 0, and 0 divided by any number other than 0 is 0. So a horizontal line has slope 0.",
+          "A vertical line runs straight up and down. Its $x$-coordinate never changes, so the run is 0. Dividing by 0 has no answer, so a vertical line has no slope number. We say its slope is undefined.",
+          "In this practice the two points always have different $x$-coordinates, so there is always a slope number. A slope can be a fraction, such as $-\\tfrac{1}{6}$. Keep it as an exact fraction, simplified as far as it goes. A decimal such as $-0.17$ is only close to $-\\tfrac{1}{6}$, so do not round.",
         ],
       },
     ],
@@ -522,56 +533,65 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Slope from two points",
         paragraphs: [
-          "For distinct points $(x_1,y_1)$ and $(x_2,y_2)$ with $x_1\\ne x_2$, the slope is $(y_2-y_1)/(x_2-x_1)$. Reversing the point order changes both differences' signs and leaves the ratio unchanged.",
+          "For two points $(x_1, y_1)$ and $(x_2, y_2)$ with $x_1 \\ne x_2$ ($\\ne$ means is not equal to), the slope is $m = \\frac{y_2 - y_1}{x_2 - x_1}$.",
+          "Swapping which point comes first changes the sign of both the top and the bottom. Changing the sign of both parts of a fraction leaves its value the same. So the slope is the same either way, whether it is positive, negative or 0.",
         ],
       },
     ],
     workedExample: {
       prompt: "Find the slope through (1, 2) and (5, 8).",
       steps: [
-        "Change in y = 8 − 2 = 6.",
-        "Change in x = 5 − 1 = 4.",
-        "Slope = 6/4 = 3/2.",
+        "Name the points. Point 1 is $(1, 2)$, so its $x$ is 1 and its $y$ is 2. Point 2 is $(5, 8)$, so its $x$ is 5 and its $y$ is 8.",
+        "Change in $y$ (the rise): $y$ goes from 2 to 8, and subtracting the start from the end measures the change. Point 2's $y$ minus point 1's $y$: 8 − 2 = 6.",
+        "Change in $x$ (the run): subtract in the same order, point 2 minus point 1, so both changes describe the same walk. 5 − 1 = 4.",
+        "Slope = rise ÷ run = $\\tfrac{6}{4}$. Divide the top and bottom by 2 to simplify: $\\tfrac{3}{2}$. The line goes up 3 for every 2 to the right.",
       ],
       answer: "3/2",
     },
     pitfalls: [
-      "Do not reverse point order in only one difference.",
-      "Slope is change in $y$ divided by change in $x$, not the reverse.",
+      "Use the same point first in both subtractions. Switching the order in only one of them flips a slope that is not 0 from positive to negative, or the reverse.",
+      "Slope is the change in $y$ divided by the change in $x$: up-or-down over across. It is not across over up-or-down.",
     ],
     parentGuide:
-      "Plot the two points, draw a horizontal then vertical path between them, and label each change.",
+      "On graph paper, mark the two points with dots. Draw a path from one to the other: first straight across, then straight up or down. Count and label each part, writing a move left or down as a negative number. Then divide the up-or-down count by the across count.",
   },
   {
     id: "systems-elimination",
     title: "Make two equations work together",
-    summary: "Find a pair of values that makes both equations true.",
+    summary:
+      "A system is two equations about the same two unknown numbers, such as $x$ and $y$. Its solution is the pair of numbers that makes both equations true at the same time. To find it, combine the equations so one unknown disappears. Solve for the other one, then go back for the first.",
     templateIds: ["linear-system-x"],
+    senses: { side: "side-of-equation", term: "term-expression" },
+    noLink: ["change", "leaves", "mean", "part", "whole"],
     objectives: [
-      "Eliminate one variable with equivalent equations.",
-      "Check a solution in both original equations.",
+      "Remove one unknown by subtracting one equation from the other, after making its coefficients (the numbers multiplying it) match.",
+      "Find the remaining unknown, and check the pair in both original equations.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Both statements must hold at once",
         paragraphs: [
-          "Two equations about the same unknowns may describe two conditions on one pair of numbers.",
-          "Add or subtract the equations to remove one unknown, solve for the other, then check the pair in both original statements.",
+          "An equation says two amounts are equal. A variable is a letter that stands for an unknown number. The equation $x + y = 5$ has many solutions, meaning pairs of numbers that make it true: $x = 1$ and $y = 4$, or $x = 2$ and $y = 3$, and many more.",
+          "Two equations about the same $x$ and $y$ are called a system of equations. A solution of the system is a pair that makes both equations true at once. For $2x + y = 7$ and $x + y = 5$, the pair $x = 2$, $y = 3$ works in both: $2 \\times 2 + 3 = 7$ and $2 + 3 = 5$. The pair $x = 1$, $y = 4$ works only in the second, because $2 \\times 1 + 4 = 6$, not 7.",
+          "Think of two shopping trips. Two apples and a banana cost 7 dollars. One apple and a banana cost 5 dollars. The first trip has exactly one more apple, and it costs 2 dollars more. So one apple costs 2 dollars. Comparing the trips made the banana drop out.",
         ],
       },
       {
-        title: "One shared solution",
+        title: "Subtract to remove one unknown",
         paragraphs: [
-          "Each linear equation describes pairs of $x$ and $y$ values. Solving a system means finding a pair common to both equations.",
-          "Multiplying an entire equation by a nonzero number preserves its solutions. Use this to make one variable’s coefficients match.",
+          "Here is the same idea in symbols, with $x$ as the price of an apple and $y$ as the price of a banana. Write the equations in lined-up rows: $2x + y = 7$ above $x + y = 5$. Subtract the bottom row from the top row, column by column: $2x - x = x$, $y - y = 0$, and $7 - 5 = 2$. The $y$ is gone, leaving $x = 2$. Removing an unknown this way is called elimination.",
+          "Why is this allowed? Taking equal amounts from both sides of an equation keeps it true. The bottom equation says that $x + y$ and 5 are the same amount. So taking $x + y$ from the left side of the top equation, and 5 from its right side, takes the same amount from both sides.",
+          "Then go back for $y$. Put $x = 2$ into either original equation: $2 + y = 5$, so $y = 3$. Check the pair in both equations, because a pair that works in only one of them is not a solution of the system.",
         ],
       },
       {
-        title: "Subtract to eliminate",
+        title: "Make the coefficients match first",
         paragraphs: [
-          "When the $y$ coefficients agree, subtract one whole equation from the other. The $y$ terms cancel, leaving an equation in $x$.",
-          "After finding $x$, substitute it into an original equation to find $y$, then check both. Some systems have no solution or infinitely many; this practice uses systems with one solution.",
+          "The number multiplying a variable is called its coefficient. In $3x + 5y$, the coefficient of $y$ is 5. Subtracting removes $y$ only when its coefficients are the same in both equations.",
+          "If they differ, multiply a whole equation by a number first. Multiply every term on both sides, so the two sides stay equal and the solutions do not change. The number must not be 0, because multiplying by 0 turns any equation into $0 = 0$ and loses its information.",
+          "For $3x + 5y = -5$ and $3x + 4y = -7$, multiply the first equation by 4 and the second by 5. The $x$ coefficients already match here, so subtracting right away would remove $x$. But the question asks for $x$, so remove $y$ instead. Now both have $20y$: $12x + 20y = -20$ and $15x + 20y = -35$. Subtract the second from the first: $12x - 15x = -3x$, and $-20 - (-35) = -20 + 35 = 15$, since subtracting a negative is the same as adding. So $-3x = 15$. Dividing both sides by $-3$ undoes the multiplication and gives $x = -5$.",
+          "Some systems have no solution, and some have infinitely many solutions, meaning endlessly many pairs. Every system in this practice has exactly one solution.",
         ],
       },
     ],
@@ -580,25 +600,28 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "A shared solution",
         paragraphs: [
-          "A solution of two equations must satisfy both original equations. Replacing one equation with its sum or difference with a multiple of the other preserves their shared solutions and can eliminate a variable; substitute back to check the resulting pair.",
+          "A solution of a system of two equations makes both equations true. Two moves keep the solutions the same. One is multiplying an equation by a nonzero number, meaning any number except 0. The other is replacing one equation by the result of adding the other equation to it or subtracting the other from it.",
+          "Elimination uses these moves to remove one variable. Then substitute, that is, put the value you found back into an original equation, and check the pair in both original equations.",
         ],
       },
     ],
     workedExample: {
       prompt: "Find $x$ if 2x + y = 7 and x + y = 5.",
       steps: [
-        "Subtract the second equation from the first: x = 2.",
-        "Substitute: 2 + y = 5, so y = 3.",
-        "Check: 2(2) + 3 = 7 and 2 + 3 = 5.",
+        "The number multiplying a letter is called its coefficient. In both equations $y$ has coefficient 1, because $y$ means $1 \\times y$. Matching coefficients mean that subtracting one equation from the other will remove $y$.",
+        "Subtract the second equation from the first, one part at a time on each side: $(2x - x) + (y - y) = 7 - 5$. Taking equal amounts from both sides keeps the equation true. That leaves $x = 2$.",
+        "Find $y$ so the pair can be checked: put $x = 2$ into $x + y = 5$. Then $2 + y = 5$. Subtract 2 from both sides: $y = 3$.",
+        "Check the pair in both original equations: $2 \\times 2 + 3 = 7$ and $2 + 3 = 5$. Both are true, so $x = 2$.",
       ],
       answer: "2",
     },
     pitfalls: [
-      "Subtract every term, including the right-hand side.",
-      "A pair that satisfies only one equation is not a system solution.",
+      "Subtract every term, including the number on the right side of the equals sign.",
+      "When you multiply an equation, multiply every term on both sides.",
+      "A pair that makes only one equation true is not a solution of the system.",
     ],
     parentGuide:
-      "Write the equations on aligned rows and mark the matching $y$ terms before subtracting.",
+      "Write the two equations in lined-up rows, with $x$ terms, $y$ terms and numbers in columns. Ask the learner to circle the matching $y$ terms before subtracting, and to say why subtracting keeps the equation true.",
   },
   {
     id: "equally-likely-probability",
