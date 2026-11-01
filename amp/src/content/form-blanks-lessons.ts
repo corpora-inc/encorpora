@@ -6,45 +6,46 @@ const entries: FormatLessonEntry[] = [
     id: "fraction-forms-blanks",
     title: "A fraction as a decimal and a percent",
     summary:
-      "Divide the numerator by the denominator for the decimal, then multiply by 100 for the percent.",
+      "To write a fraction as a decimal, divide the top number by the bottom number. Multiply that decimal by 100 to get the percent.",
     objectives: [
-      "Write a fraction as a decimal by dividing.",
+      "Write a fraction as a decimal by dividing its top number by its bottom number.",
       "Write a decimal as a percent by multiplying by 100.",
     ],
     intuition:
-      "A fraction, a decimal and a percent can name the same amount. The fraction $\\frac{3}{8}$ means 3 divided by 8, which is 0.375. A percent means out of 100, so 0.375 is 37.5 hundredths of the whole, written 37.5%. To go from a decimal to a percent, multiply by 100, which moves the decimal point two places to the right.",
+      "A fraction such as $\\frac{3}{8}$ has a top number, the numerator, and a bottom number, the denominator. It means 3 divided by 8. A fraction, a decimal and a percent can name the same amount. Dividing gives the decimal: $3\\div8=0.375$. A percent means “out of 100”, so 50% is 50 out of 100, or one half. To change a decimal to a percent, multiply by 100. This moves the decimal point two places to the right: $0.375\\times100=37.5$. So $\\frac{3}{8}$ is 37.5%.",
     terms: ["decimal", "percent"],
     method: [
-      "Divide the numerator by the denominator to find the decimal.",
+      "Divide the numerator (the top number) by the denominator (the bottom number) to find the decimal.",
       "Multiply the decimal by 100, moving the point two places right, to find the percent.",
-      "Check that the percent over 100 reduces to the original fraction.",
+      "Check that the percent written over 100 simplifies to the original fraction.",
     ],
     watch:
       "Move the decimal point two places to the right, not one: 0.36 is 36%, not 3.6%.",
     principle:
-      "A fraction $\\frac{n}{d}$ equals the decimal $n\\div d$ and the percent $\\frac{n}{d}\\cdot100\\%$. For $d$ with only the prime factors 2 and 5 the decimal ends.",
+      "A fraction $\\frac{n}{d}$ equals the decimal $n\\div d$ and the percent $\\frac{n}{d}\\times100\\%$. In lowest terms, the decimal ends when the denominator's only prime factors are 2 and 5, as with 4, 8, 20 and 25.",
     example: {
       prompt: "Write $\\frac{3}{20}$ as a decimal and a percent.",
       steps: [
-        "$3\\div 20=0.15$.",
-        "$0.15\\times100=15$, so the percent is 15%.",
-        "Check: $\\frac{15}{100}=\\frac{3}{20}$.",
+        "Divide the numerator by the denominator: $3\\div20=0.15$.",
+        "Multiply by 100 to get the percent: $0.15\\times100=15$, so the percent is 15%.",
+        "Check: dividing the top and bottom of $\\frac{15}{100}$ by 5 gives $\\frac{3}{20}$, the fraction we started with.",
       ],
       answer: "0.15 and 15%.",
     },
     methodTitle: "Divide, then times 100",
     methodText: [
       "A denominator of 4, 5, 8, 20 or 25 gives a decimal that ends.",
-      "Fractions with denominator 100 are percents already: $\\frac{36}{100}=36\\%$.",
+      "A fraction with denominator 100 is already a percent: $\\frac{36}{100}=36\\%$.",
     ],
     formal:
-      "A percent is a ratio to 100: $p\\%=\\frac{p}{100}$. So the fraction $\\frac{n}{d}$ corresponds to $p=\\frac{100n}{d}$, and the decimal is $\\frac{p}{100}$.",
+      "A percent is a ratio to 100: $p\\%=\\frac{p}{100}$. So the fraction $\\frac{n}{d}$ matches the percent $p=\\frac{100n}{d}$, and the decimal is $\\frac{p}{100}$.",
     pitfalls: [
       "Do not put the digits of the fraction together, as in 0.38 for $\\frac{3}{8}$.",
       "Do not give the decimal with a percent sign: 0.36% is not 36%.",
     ],
     parentGuide:
-      "Use a hundred-grid to shade the percent and check that it matches the fraction.",
+      "Use a hundred-square grid to shade the percent and check that it matches the fraction.",
+    noLink: ["whole", "change"],
   },
   {
     id: "decimal-mixed-number-blanks",
@@ -94,102 +95,106 @@ const entries: FormatLessonEntry[] = [
     id: "inequality-solution-blanks",
     title: "Solve an inequality with a negative coefficient",
     summary:
-      "Undo the constant, then divide by the negative coefficient and reverse the inequality symbol.",
+      "Undo the added or subtracted number first. Then divide by the number multiplying $x$. If it is negative, turn the sign around.",
     objectives: [
-      "Solve $ax+b\;\\square\;c$ when $a$ is negative.",
-      "Reverse the symbol when dividing by a negative number.",
+      "Solve inequalities such as $-2x+4\\ge10$, where the number multiplying $x$ is negative.",
+      "Turn the inequality sign around when dividing both sides by a negative number.",
     ],
     intuition:
-      "Solving an inequality works like solving an equation, with one change. Multiplying or dividing both sides by a negative number reverses the order: $2<5$ but $-2>-5$. So in $-3x>12$, dividing both sides by $-3$ gives $x<-4$, with the symbol turned around. First undo any added or subtracted constant, then divide.",
+      "An inequality compares two sides with a sign: $<$ (is less than), $>$ (is greater than), $\\le$ (is less than or equal to) or $\\ge$ (is greater than or equal to). Its solution is every value of $x$ that makes it true. The number multiplying $x$ is called the coefficient: in $-3x$, it is $-3$. You solve an inequality like an equation, by doing the same thing to both sides, with one change. Multiplying or dividing both sides by a negative number flips the order. For example, $2<5$, but $-2>-5$, because $-2$ is to the right of $-5$ on a number line. So in $-3x>12$, dividing both sides by $-3$ gives $x<-4$, with the sign turned around. Check with $x=-5$: $-3\\times(-5)=15$, and 15 is greater than 12. First undo any added or subtracted number, then divide.",
     terms: ["coefficient", "solution-set"],
     method: [
-      "Add or subtract to get the term with $x$ alone on one side.",
-      "Divide both sides by the coefficient of $x$.",
-      "If the coefficient is negative, reverse the symbol: $<$ becomes $>$ and $\\le$ becomes $\\ge$.",
+      "Add or subtract the same number on both sides so the $x$-term stands alone.",
+      "Divide both sides by the coefficient of $x$, the number multiplying it.",
+      "If the coefficient is negative, turn the sign around: $<$ becomes $>$, and $\\le$ becomes $\\ge$.",
     ],
     watch:
-      "Reverse the symbol only when you divide or multiply by a negative number, not when you add or subtract.",
+      "Turn the sign around only when you multiply or divide by a negative number, never when you add or subtract.",
     principle:
-      "If $a<b$ and $k<0$ then $ka>kb$. So $ax+b<c$ with $a<0$ is equivalent to $x>\\frac{c-b}{a}$, and $ax+b\\le c$ is equivalent to $x\\ge\\frac{c-b}{a}$.",
+      "If $p<q$ and $k$ is negative, then $kp>kq$. So when the coefficient $a$ is negative, $ax+b<c$ means the same as $x>\\frac{c-b}{a}$, and $ax+b\\le c$ means the same as $x\\ge\\frac{c-b}{a}$.",
     example: {
       prompt: "Solve $-2x+4\\ge10$.",
       steps: [
-        "Subtract 4 from both sides: $-2x\\ge6$.",
-        "Divide both sides by $-2$ and reverse the symbol: $x\\le-3$.",
-        "Check $x=-4$: $-2(-4)+4=12$, which is at least 10.",
+        "Subtract 4 from both sides to undo the + 4: $-2x\\ge6$.",
+        "Divide both sides by $-2$. Dividing by a negative number turns the sign around: $x\\le-3$.",
+        "Check with $x=-4$, a number in the answer: $-2\\times(-4)+4=8+4=12$, and 12 is at least 10.",
       ],
       answer: "$x\\le-3$.",
     },
-    methodTitle: "Constant first, then flip",
+    methodTitle: "Undo the number first, then flip",
     methodText: [
-      "Test a number from your answer in the original inequality.",
-      "The boundary number is the same as for the equation; only the direction needs care.",
+      "Test a number from your answer in the original inequality. Also test one outside it: with $x=0$, $-2\\times0+4=4$, which is less than 10, so 0 correctly fails.",
+      "The boundary number, where the two sides are equal, is the same as for the equation. Only the direction needs care.",
     ],
     formal:
-      "Multiplication by a negative number is an order-reversing bijection of the real line, so it maps the solution set $\\{x: ax+b<c\\}$ to the reflected half-line, giving $x>\\frac{c-b}{a}$.",
+      "Multiplying by a negative number reverses the order of all numbers on the number line, like a mirror. So, with $a<0$, it changes $ax+b<c$ into $x>\\frac{c-b}{a}$.",
     pitfalls: [
-      "Do not keep the symbol after dividing by a negative number.",
-      "Do not divide the constant by the coefficient before moving it: undo the constant first.",
+      "Do not keep the same sign after dividing by a negative number.",
+      "Undo the added number first. Do not divide it by the coefficient before moving it.",
     ],
     parentGuide:
       "Try a value on each side of the boundary in the original inequality to see which side is true.",
+    senses: { side: "side-of-equation", term: "term-expression", rule: "rule" },
+    noLink: ["change", "changes"],
   },
   {
     id: "conversion-proportion-blanks",
     title: "Set up a conversion proportion",
     summary:
-      "Write the conversion factor as a ratio, then an equal ratio with the same units in the same positions.",
+      "Write the conversion as a ratio of two units. Then write an equal ratio for your amount, with the units in the same order.",
     objectives: [
-      "Write a unit conversion as a ratio.",
-      "Place the amount and the unknown in an equal ratio with matching units.",
+      "Write a unit conversion, such as 1 yard to 0.9 meter, as a ratio.",
+      "Place the amount and the unknown in an equal ratio with the units in the same order.",
     ],
     intuition:
-      "A conversion factor such as 1 yard is about 0.9 meter says that yards and meters are in the ratio $1:0.9$. To convert 40 yards, write an equal ratio with the same order of units: yards first, meters second, so $40:x$. The proportion is $1:0.9=40:x$. The key is that each ratio lists yards before meters; mixing the order gives a wrong equation.",
+      "A ratio compares two amounts. It is written like $1:0.9$ and read “1 to 0.9”. A conversion factor says how two units compare. For example, 1 yard is about 0.9 meter, so yards and meters are in the ratio $1:0.9$. A proportion says two ratios are equal. To convert 40 yards, write a second ratio with the units in the same order, yards first and meters second: $40:x$. Here $x$ stands for the unknown number of meters. The proportion is $1:0.9=40:x$. Each ratio must list yards before meters. Mixing the order gives a wrong equation.",
     terms: ["proportion", "conversion-factor"],
     method: [
-      "Write the conversion factor with the units in the order given.",
-      "Write the second ratio with the amount to convert and the unknown, with the same order of units.",
-      "Set the two ratios equal.",
+      "Write the conversion factor as a ratio, with the units in the order given.",
+      "Write a second ratio with the amount to convert and the unknown, with the units in the same order.",
+      "Set the two ratios equal. That is the proportion.",
     ],
     watch:
-      "Keep the units in the same order in both ratios: yards over meters on each side.",
+      "Keep the units in the same order in both ratios: yards first and meters second in each.",
     principle:
-      "If quantities of two kinds are in proportion, then $a:b=c:d$, where $a$ and $c$ are in one unit and $b$ and $d$ in the other. Then $d=\\frac{bc}{a}$.",
+      "If two kinds of quantity are in proportion, then $a:b=c:d$, where $a$ and $c$ use one unit and $b$ and $d$ use the other. Then $d=\\frac{bc}{a}$, as long as $a$ is not 0.",
     example: {
       prompt:
         "One yard is about 0.9 meter. Set up the proportion for the meters $x$ in 50 yards.",
       steps: [
-        "The conversion factor is 1 yard to 0.9 meter: $1:0.9$.",
-        "The amount to convert is 50 yards to $x$ meters: $50:x$.",
-        "The proportion is $1:0.9=50:x$, and $x=0.9\\times50=45$ meters.",
+        "The conversion factor is 1 yard to 0.9 meter, yards first: $1:0.9$.",
+        "The amount to convert is 50 yards, and $x$ is its length in meters. Keep yards first: $50:x$.",
+        "Set the ratios equal: $1:0.9=50:x$. Since 50 yards is 50 times 1 yard, $x=0.9\\times50=45$ meters.",
       ],
       answer: "$1:0.9=50:x$.",
     },
     methodTitle: "Same units in the same places",
     methodText: [
-      "Check the setup with a simple amount: 1 yard should give 0.9 meter.",
-      "The unknown is always in the place of its unit.",
+      "Check the setup with an easy amount: 1 yard should give 0.9 meter.",
+      "The unknown always sits in the place of its unit.",
     ],
     formal:
-      "Equality of ratios $\\frac{a}{b}=\\frac{c}{d}$ with $a,b,d\\ne0$ gives $d=\\frac{bc}{a}$, so a unit conversion is multiplication by the constant factor $\\frac{b}{a}$.",
+      "Two equal ratios $\\frac{a}{b}=\\frac{c}{d}$, with $a$, $b$ and $d$ not 0, give $d=\\frac{bc}{a}$. So a unit conversion is multiplying by the same fixed number, $\\frac{b}{a}$, every time.",
     pitfalls: [
       "Do not put the meters of one ratio against the yards of the other.",
-      "Do not leave out the unknown; it takes the place of the converted amount.",
+      "Do not leave out the unknown. It takes the place of the converted amount.",
     ],
     parentGuide:
       "Ask what the conversion says for one yard, then what the same proportion says for several yards.",
+    senses: { unit: "unit" },
+    noLink: ["key", "factor", "side"],
   },
   {
     id: "exponential-parameters-blanks",
     title: "Read the parts of an exponential model",
     summary:
-      "In $a\\cdot b^t$, the number $a$ is the starting amount and the base $b$ gives the percent change each period.",
+      "In $a\\cdot b^t$, $a$ is the starting amount. The number $b$ tells the percent it grows or shrinks each period.",
     objectives: [
-      "Find the starting amount of an exponential model.",
-      "Find the percent growth or decay each period from the base.",
+      "Find the starting amount of an exponential model such as $800(0.94)^t$.",
+      "Find the percent growth or decay (shrinking) each period from the base.",
     ],
     intuition:
-      "In $P(t)=800(0.94)^t$ the amount after $t$ years is the starting amount times the base multiplied $t$ times. At $t=0$ the power is 1, so the starting amount is 800. Each year the amount is multiplied by 0.94, which is $1-0.06$: it loses 6 percent. A base above 1, such as 1.25, is $1+0.25$ and means growth of 25 percent a year.",
+      "In $P(t)=800(0.94)^t$, read “$P$ of $t$”, $P(t)$ is the amount after $t$ years. The small raised $t$ is an exponent: it says how many times to multiply by 0.94. So the amount is the starting amount times 0.94, multiplied $t$ times. At $t=0$ nothing has been multiplied yet, since $0.94^0=1$. So the starting amount is 800. The number being raised, 0.94, is called the base. Each year the amount is multiplied by 0.94, which is $1-0.06$. So it loses 0.06, or 6 percent, each year. A base above 1, such as 1.25, is $1+0.25$. It means growth of 25 percent each year. In general, $a\\cdot b^t$ has starting amount $a$ and base $b$. The dot means multiply, and one period is one step of $t$, such as one year.",
     terms: [
       ["initial-value", "Here it is $a$ in $a\\cdot b^t$."],
       "growth-factor",
@@ -199,78 +204,84 @@ const entries: FormatLessonEntry[] = [
       ],
     ],
     method: [
-      "Put $t=0$ in the model: the starting amount is $a$.",
-      "Compare the base $b$ with 1: greater means increases, less means decreases.",
-      "The percent rate is the distance from $b$ to 1, written as a percent.",
+      "Put $t=0$ into the model. Since $b^0=1$, the starting amount is $a$.",
+      "Compare the base $b$ with 1. Greater than 1 means the amount grows. Less than 1 means it shrinks.",
+      "The percent change each period is the distance from $b$ to 1, written as a percent.",
     ],
-    watch: "The base 0.94 means a 6 percent decrease, not a 94 percent change.",
+    watch:
+      "The base 0.94 means a 6 percent decrease each period, not a 94 percent change.",
     principle:
-      "For $y=a\\cdot b^t$ with $a>0$ and $b>0$: $y(0)=a$; if $b>1$ the amount grows by $(b-1)\\cdot100$ percent per period, and if $0<b<1$ it decays by $(1-b)\\cdot100$ percent per period.",
+      "For $y=a\\cdot b^t$ with $a>0$ and $b>0$, the starting amount is $y(0)=a$. If $b>1$, the amount grows by $(b-1)\\times100$ percent each period. If $0<b<1$, it shrinks by $(1-b)\\times100$ percent each period.",
     example: {
       prompt: "A town's population is $P(t)=2{,}000(1.08)^t$. Describe it.",
       steps: [
-        "At $t=0$: $2{,}000\\times1=2{,}000$ people.",
-        "The base 1.08 is greater than 1, so the population increases.",
-        "$1.08=1+0.08$, so it grows by 8 percent each year.",
+        "Put $t=0$: $2{,}000\\times1.08^0=2{,}000\\times1=2{,}000$. The town starts with 2,000 people.",
+        "The base, 1.08, is greater than 1, so the population grows.",
+        "$1.08=1+0.08$, and 0.08 is 8 percent. So it grows by 8 percent each year.",
       ],
       answer: "Starts at 2,000 and increases by 8 percent a year.",
     },
     methodTitle: "Start, then compare with 1",
     methodText: [
-      "Check by computing the next year: $2{,}000\\times1.08=2{,}160$, which is 8 percent more.",
-      "The growth factor and the percent rate are different numbers.",
+      "Check with the next year: $2{,}000\\times1.08=2{,}160$. That is 160 more, and 160 is 8 percent of 2,000.",
+      "The base (here 1.08) and the percent rate (here 8 percent) are different numbers.",
     ],
     formal:
-      "Writing $b=1+r$ with $r=\\frac{y(t+1)-y(t)}{y(t)}$ constant, the model $y=a(1+r)^t$ has rate $r$ per period; $r<0$ is decay.",
+      "Write $b=1+r$, where $r$ is the fraction the amount changes by each period. Then $y=a(1+r)^t$, and each period's amount is $1+r$ times the one before. When $r$ is negative, the amount shrinks, which is called decay.",
     pitfalls: [
       "Do not read the base as the percent.",
       "Do not use the starting amount as the amount after one period.",
     ],
     parentGuide:
-      "Compute the amount after one year and compare it with the starting amount to see the percent change.",
+      "Work out the amount after one year and compare it with the starting amount to see the percent change.",
+    senses: { base: "base-exponent", model: "model" },
+    noLink: ["change", "period", "population", "changes"],
   },
   {
     id: "circle-estimate-blanks",
     title: "Estimate a circle with 3.14",
     summary:
-      "Use the radius, half the diameter, in $\\pi r^2$ with 3.14 for $\\pi$; and $\\pi$ is the circumference divided by the diameter.",
+      "To estimate a circle's area, halve the diameter to get the radius $r$, then work out $3.14\\times r\\times r$.",
     objectives: [
-      "Find the area of a circle from its diameter using 3.14 for $\\pi$.",
+      "Find the area of a circle from its diameter, using 3.14 for $\\pi$.",
       "Estimate $\\pi$ by dividing a circumference by a diameter.",
     ],
     intuition:
-      "The number $\\pi$ is the same for every circle: the circumference divided by the diameter, about 3.14. To estimate an area, half the diameter gives the radius $r$, and the area is $\\pi r^2$, with 3.14 in place of $\\pi$. A sign 10 feet across has radius 5 feet, and area about $3.14\\times25=78.5$ square feet. Using the diameter in place of the radius would give four times too much.",
+      "The diameter of a circle is the distance across it through the center. The radius $r$ is half of that, the distance from the center to the circle. The circumference is the distance around the circle. For every circle, the circumference divided by the diameter is the same number, about 3.14. That number is called $\\pi$ (pi). The area of a circle, the space inside it, is $\\pi r^2$. Here $r^2$ ($r$ squared) means $r\\times r$. To estimate, use 3.14 in place of $\\pi$. A sign 10 feet across has a radius of 5 feet. Its area is about $3.14\\times5\\times5=3.14\\times25=78.5$ square feet. Using the diameter in place of the radius would give four times too much, because $10\\times10$ is four times $5\\times5$.",
     terms: ["circumference", "diameter", "radius"],
     method: [
       "Find the radius: divide the diameter by 2.",
-      "Multiply 3.14 by the radius twice to find the area.",
+      "Multiply 3.14 by the radius, then by the radius again, to find the area.",
       "To estimate $\\pi$, divide the circumference by the diameter.",
     ],
-    watch: "Square the radius, not the diameter, in the area formula.",
+    watch:
+      "Use the radius, not the diameter, in the area: $3.14\\times r\\times r$.",
     principle:
-      "The area of a circle of radius $r$ is $A=\\pi r^2$, and $\\pi=\\frac{C}{d}$ where $C$ is the circumference and $d=2r$ the diameter. Replacing $\\pi$ by 3.14 gives an estimate.",
+      "The area of a circle of radius $r$ is $A=\\pi r^2$. Also $\\pi=\\frac{C}{d}$, where $C$ is the circumference and $d=2r$ is the diameter. Using 3.14 for $\\pi$ gives an estimate.",
     example: {
       prompt:
         "A circle is 8 feet across. Use 3.14 for $\\pi$ to estimate its area.",
       steps: [
-        "The radius is $8\\div2=4$ feet.",
-        "The area is about $3.14\\times4\\times4=3.14\\times16=50.24$ square feet.",
+        "8 feet across is the diameter. The radius is half of it: $8\\div2=4$ feet.",
+        "The area is about $3.14\\times4\\times4=3.14\\times16=50.24$ square feet. It is an estimate, because 3.14 is close to $\\pi$ but not equal to it.",
       ],
       answer: "About 50.24 square feet.",
     },
     methodTitle: "Radius first",
     methodText: [
-      "To estimate $\\pi$ from measurements, a circumference of 31.4 centimeters and a diameter of 10 give $31.4\\div10=3.14$.",
-      "The result is an estimate because measurements and 3.14 are approximate.",
+      "To estimate $\\pi$ from measurements: a circumference of 31.4 centimeters and a diameter of 10 centimeters give $31.4\\div10=3.14$.",
+      "The result is an estimate, because measurements and 3.14 are both approximate.",
     ],
     formal:
-      "The ratio $C/d$ is the same for all circles, which defines $\\pi$; the decimal 3.14 is a rational approximation to the irrational number $\\pi=3.14159\\ldots$.",
+      "The ratio $\\frac{C}{d}$ is the same for all circles, and it defines $\\pi$. The decimal 3.14 is close to $\\pi$. But $\\pi=3.14159\\ldots$ goes on forever without repeating, so no fraction or ending decimal equals it exactly.",
     pitfalls: [
       "Do not use the diameter as the radius.",
       "Do not divide the diameter by the circumference to estimate $\\pi$.",
     ],
     parentGuide:
       "Wrap a string around a can, measure it and the width of the can, and divide the two measurements.",
+    senses: { square: "square-number", center: "center" },
+    noLink: ["edge"],
   },
 ];
 
