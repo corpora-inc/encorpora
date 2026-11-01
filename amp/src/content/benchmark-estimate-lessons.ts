@@ -7,13 +7,7 @@ export const benchmarkEstimateMethods: Record<string, ProblemMethod> = {
     goal: "Round each fraction to 0, one half or 1, then add or subtract the benchmarks to estimate a sum, a difference or the amount left.",
     intuition:
       "A benchmark fraction is an easy fraction to think with: 0, one half and 1. A fraction like $\\frac{5}{9}$ is just a little more than $\\frac{1}{2}$, so it can stand in for one half when you only need to know about how much. Rounding first makes the sum or difference easy to do in your head.",
-    terms: [
-      ["benchmark", "An easy number to compare with: 0, one half or 1."],
-      [
-        "estimate",
-        "An answer that is close to the exact answer but easier to find.",
-      ],
-    ],
+    terms: ["benchmark-fraction", "estimate"],
     method: [
       "Decide which benchmark each fraction is closest to: compare its numerator with half of its denominator.",
       "Replace each fraction with its benchmark and add or subtract the benchmarks. For the amount left from a whole, subtract the used amount from 1.",

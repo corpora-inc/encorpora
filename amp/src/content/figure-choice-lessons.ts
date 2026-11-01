@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -7,7 +8,7 @@ type Entry = {
   summary: string;
   objectives: [string, string];
   intuition: string;
-  terms: [string, string][];
+  terms: MethodTerm[];
   method: string[];
   watch: string;
   principle: string;
@@ -31,16 +32,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "Two facts pin down a line: where it starts on the $y$-axis and how steeply it climbs. Find the starting point, then walk one step right and $m$ steps up (or down, when $m$ is negative). The graph that passes through both points is the one.",
-    terms: [
-      [
-        "$y$-intercept",
-        "Where the line crosses the $y$-axis: the point $(0, b)$.",
-      ],
-      [
-        "slope",
-        "The change in $y$ for each increase of 1 in $x$; positive slopes rise from left to right, negative slopes fall.",
-      ],
-    ],
+    terms: ["y-intercept", "slope"],
     method: [
       "Write the rule as $y = mx + b$: read $m$ and $b$, or solve $ax + y = c$ for $y$, or find them in the table.",
       "Keep only graphs that cross the $y$-axis at $(0, b)$.",
@@ -85,16 +77,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "A printer that prints 3 pages a minute has printed nothing at minute 0, 3 pages at minute 1 and 6 at minute 2. Plotting minutes across and pages up, the points line up on a ray from the origin. A faster printer climbs more steeply; a printer that had pages ready before starting would begin above the origin, and that is no longer proportional.",
-    terms: [
-      [
-        "unit rate",
-        "The amount for one unit of the other quantity: pages per minute.",
-      ],
-      [
-        "proportional",
-        "$y = kx$ for one constant $k$: zero of one means zero of the other, and the graph passes through the origin.",
-      ],
-    ],
+    terms: ["unit-rate", "proportional-relationship"],
     method: [
       "Find the unit rate $k$: divide the total by the number of units it took.",
       "Keep only graphs that start at the origin (0, 0).",
@@ -140,16 +123,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "An inequality has infinitely many solutions, so its graph shades a whole ray. Three things decide the picture: where the ray starts, whether that starting number is itself a solution (closed circle) or not (open circle), and which way the ray points.",
-    terms: [
-      [
-        "boundary",
-        "The number where the solutions start: the solution of the related equation.",
-      ],
-      [
-        "closed and open circles",
-        "A closed circle includes the boundary ($\\le$, $\\ge$); an open circle leaves it out ($<$, $>$).",
-      ],
-    ],
+    terms: ["boundary", "closed-circle", "open-circle"],
     method: [
       "Undo addition or subtraction first: do the same to both sides.",
       "Divide both sides by the coefficient of $x$. If it is negative, reverse the inequality sign.",
@@ -193,16 +167,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "A rule's numbers say where its graph sits. For a parabola, $(x - h)$ slides it sideways and $+ k$ lifts it, so the turning point moves to $(h, k)$. For an exponential, $a$ is the starting height at $x = 0$ and $b$ is what each step multiplies by, which bends the graph into a curve that keeps getting steeper or flatter.",
-    terms: [
-      [
-        "vertex",
-        "The turning point of a parabola: its lowest point when it opens up, its highest when it opens down.",
-      ],
-      [
-        "growth factor",
-        "The base $b$ of $a \\cdot b^x$: each step of 1 in $x$ multiplies $y$ by $b$.",
-      ],
-    ],
+    terms: ["vertex-parabola", "growth-factor"],
     method: [
       "For $y = a(x - h)^2 + k$: the vertex is $(h, k)$. $x - 2$ gives $h = 2$; $x + 2$ gives $h = -2$. Positive $a$ opens up, negative $a$ opens down.",
       "For $y = f(x - h) + k$: move the graph of $f$ right $h$ and up $k$ (left or down for negative values).",

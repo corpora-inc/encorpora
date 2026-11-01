@@ -295,7 +295,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
   },
   "constraint-feasible": {
     goal: "Choose the combination that meets every constraint of a situation.",
-    terms: [["feasible region", "The points that make every inequality true."]],
+    terms: ["feasible-region"],
     method: [
       "Substitute the pair into each inequality in turn.",
       "Keep the pair only if every inequality is true; a point on a solid boundary counts.",

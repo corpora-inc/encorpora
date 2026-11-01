@@ -74,6 +74,9 @@ import type { LearnerSkillProgress } from "./progress";
 import type { GeneratedProblem, ProblemVariant } from "../math/contracts";
 import type { PracticeSkip } from "../learning/skip";
 import type { ProblemFlag } from "../feedback/problem-flags";
+import type { WorkbookRecord } from "../workbook/contracts";
+import { purgeWorkbookPdfs } from "../workbook/retention.js";
+import { RETENTION } from "../privacy/retention-periods.js";
 import type {
   StartingBand,
   PracticeStartingPoint,
@@ -170,7 +173,23 @@ export interface LearnerTransaction {
     key: { requestId: string } | { problemId: string },
   ): Promise<{ id: string; requestId: string } | undefined>;
   saveFlag(flag: ProblemFlag): Promise<void>;
+  /** This learner's workbooks, newest first (one date, or all). */
+  workbooks(date?: string): Promise<WorkbookRecord[]>;
+  workbook(id: string): Promise<WorkbookRecord | undefined>;
+  /** Stores a workbook unless one exists for its date, number and length;
+   * returns the stored one either way. */
+  saveWorkbook(workbook: WorkbookRecord): Promise<WorkbookRecord>;
+  setWorkbookPaper(id: string, paper: WorkbookRecord["paper"]): Promise<void>;
+  /** A rendered PDF of exactly this document, while it is retained. */
+  workbookPdf(key: WorkbookPdfKey): Promise<Buffer | undefined>;
+  /** Stores a rendered PDF and drops every expired one. */
+  saveWorkbookPdf(key: WorkbookPdfKey, pdf: Buffer): Promise<void>;
 }
+export type WorkbookPdfKey = {
+  workbookId: string;
+  format: "Letter" | "A4";
+  documentSha256: string;
+};
 export interface Repository {
   /** The anonymous free-trial allowance and its placement length. */
   readonly limits?: TrialLimits;
@@ -496,6 +515,19 @@ export class PostgresRepository implements Repository {
     }
   }
 }
+const workbookColumns = `id,to_char(workbook_date,'YYYY-MM-DD') AS date,number,minutes,paper,spec,code,created_at AS "createdAt"`;
+function workbookRow(row: Record<string, unknown>): WorkbookRecord {
+  return {
+    id: row.id as string,
+    date: row.date as string,
+    number: row.number as number,
+    minutes: row.minutes as WorkbookRecord["minutes"],
+    paper: row.paper as WorkbookRecord["paper"],
+    spec: row.spec as WorkbookRecord["spec"],
+    code: row.code as string,
+    createdAt: (row.createdAt as Date).toISOString(),
+  };
+}
 export class PgTransaction implements LearnerTransaction {
   private settingsCache?: Promise<PracticeSettings>;
   practiceSettings(): Promise<PracticeSettings> {
@@ -817,6 +849,76 @@ export class PgTransaction implements LearnerTransaction {
         flag.viewport.width,
         flag.viewport.height,
       ],
+    );
+  }
+  async workbooks(date?: string) {
+    const result = await this.db.query(
+      `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1
+        AND ($2::date IS NULL OR workbook_date=$2::date)
+        ORDER BY workbook_date DESC,number DESC,minutes
+        LIMIT CASE WHEN $2::date IS NULL THEN 400 END`,
+      [this.learnerId, date ?? null],
+    );
+    return result.rows.map(workbookRow);
+  }
+  async workbook(id: string) {
+    const result = await this.db.query(
+      `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1 AND id=$2`,
+      [this.learnerId, id],
+    );
+    return result.rows[0] ? workbookRow(result.rows[0]) : undefined;
+  }
+  async saveWorkbook(workbook: WorkbookRecord) {
+    await this.db.query(
+      `INSERT INTO amp_workbooks(id,learner_id,workbook_date,number,minutes,paper,spec,code)
+        VALUES($1,$2,$3,$4,$5,$6,$7,$8)
+        ON CONFLICT(learner_id,workbook_date,number,minutes) DO NOTHING`,
+      [
+        workbook.id,
+        this.learnerId,
+        workbook.date,
+        workbook.number,
+        workbook.minutes,
+        workbook.paper,
+        JSON.stringify(workbook.spec),
+        workbook.code,
+      ],
+    );
+    const result = await this.db.query(
+      `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1
+        AND workbook_date=$2 AND number=$3 AND minutes=$4`,
+      [this.learnerId, workbook.date, workbook.number, workbook.minutes],
+    );
+    return workbookRow(result.rows[0]);
+  }
+  async setWorkbookPaper(id: string, paper: WorkbookRecord["paper"]) {
+    await this.db.query(
+      "UPDATE amp_workbooks SET paper=$3 WHERE learner_id=$1 AND id=$2",
+      [this.learnerId, id, paper],
+    );
+  }
+  async workbookPdf(key: WorkbookPdfKey) {
+    const result = await this.db.query(
+      `SELECT p.pdf FROM amp_workbook_pdfs p JOIN amp_workbooks w ON w.id=p.workbook_id
+        WHERE w.learner_id=$1 AND p.workbook_id=$2 AND p.format=$3 AND p.document_sha256=$4
+        AND p.created_at>now()-make_interval(hours=>$5)`,
+      [
+        this.learnerId,
+        key.workbookId,
+        key.format,
+        key.documentSha256,
+        RETENTION.workbookPdfHours,
+      ],
+    );
+    return result.rows[0]?.pdf as Buffer | undefined;
+  }
+  async saveWorkbookPdf(key: WorkbookPdfKey, pdf: Buffer) {
+    await purgeWorkbookPdfs(this.db);
+    await this.db.query(
+      `INSERT INTO amp_workbook_pdfs(workbook_id,format,document_sha256,pdf)
+        SELECT id,$3,$4,$5 FROM amp_workbooks WHERE learner_id=$1 AND id=$2
+        ON CONFLICT(workbook_id,format,document_sha256) DO UPDATE SET pdf=EXCLUDED.pdf,created_at=now()`,
+      [this.learnerId, key.workbookId, key.format, key.documentSha256, pdf],
     );
   }
   async trialRemaining() {

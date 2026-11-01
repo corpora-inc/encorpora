@@ -1,32 +1,18 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
-const terms: [string, string][] = [
-  [
-    "ordered pair",
-    "Two coordinates in a stated order: $(x, y)$ gives $x$ first and $y$ second.",
-  ],
-  [
-    "system",
-    "Equations that must all hold for the same values of their variables.",
-  ],
-  ["solution", "An ordered pair that makes both original equations true."],
-  [
-    "coefficient",
-    "The number multiplying a variable; in −3x, the coefficient of $x$ is −3.",
-  ],
+const terms: MethodTerm[] = [
+  "ordered-pair",
+  "system-of-equations",
+  "solution-of-a-system",
+  "coefficient",
 ];
 
 export const linearSystemMethods: Record<string, ProblemMethod> = {
   "linear-system-pair": {
     goal: "Find the complete ordered pair that satisfies both linear equations.",
-    terms: [
-      ...terms,
-      [
-        "elimination",
-        "Combine equations to remove one variable while retaining one original equation.",
-      ],
-    ],
+    terms: [...terms, "elimination"],
     method: [
       "If an equation gives one variable directly, substitute that value or expression into the other equation.",
       "Otherwise multiply whole equations by nonzero numbers so one variable has matching or opposite coefficients. Subtract or add corresponding sides to eliminate it.",
@@ -38,14 +24,7 @@ export const linearSystemMethods: Record<string, ProblemMethod> = {
   },
   "linear-system-solution-count": {
     goal: "Decide whether two linear equations have one, no, or infinitely many shared ordered pairs.",
-    terms: [
-      ...terms,
-      ["contradiction", "A statement that cannot be true, such as 0 = 2."],
-      [
-        "identity",
-        "An equality true for every permitted variable value, such as 0 = 0.",
-      ],
-    ],
+    terms: [...terms, "contradiction", "identity-equation"],
     method: [
       "If an equation gives $x$ or $y$ directly, substitute into the other equation. Recover the other coordinate, or decide whether the remaining numerical equality is true or false.",
       "Otherwise align the $x$-terms, $y$-terms, and constants. Multiply an entire equation by a nonzero number if needed, then eliminate one variable.",

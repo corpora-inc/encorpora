@@ -245,12 +245,7 @@ export const distributionLessons: Lesson[] = [
 export const distributionMethods: Record<string, ProblemMethod> = {
   "statistical-question-choice": {
     goal: "Choose the question whose answers would vary across a group.",
-    terms: [
-      [
-        "statistical question",
-        "A question answered by data that are expected to vary.",
-      ],
-    ],
+    terms: ["statistical-question"],
     method: [
       "Imagine collecting the answer to each question.",
       "Choose the one that gives many different values, one from each member of a group.",
@@ -260,7 +255,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
   },
   "dot-plot-mean": {
     goal: "Find the exact mean of the values in a dot plot.",
-    terms: [["mean", "The total of the values divided by how many there are."]],
+    terms: ["mean-average"],
     method: [
       "Multiply each value by the number of dots above it, and add.",
       "Divide the total by the number of dots.",
@@ -281,7 +276,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     terms: [
       [
         "interval",
-        "A bar’s range, from its left edge up to but not including its right edge.",
+        "Here each bar covers its left edge up to, but not including, its right edge.",
       ],
     ],
     method: [
@@ -294,10 +289,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     goal: "Read a summary or a share of the data from a box plot.",
     intuition:
       "A box plot marks the least value, greatest value, middle value (median), and the middles of the lower and upper halves (quartiles). Each of its four intervals holds about one quarter of the ordered data.",
-    terms: [
-      ["quartiles", "The ends of the box: Q1 on the left, Q3 on the right."],
-      ["interquartile range", "Q3 − Q1, the length of the box."],
-    ],
+    terms: ["quartile", "interquartile-range"],
     method: [
       "Read the five numbers: whisker ends, box ends and the median line.",
       "Subtract for a range or IQR; each of the four sections holds about 25% of the data.",
@@ -308,12 +300,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     goal: "Find the mean absolute deviation of dot-plot data.",
     intuition:
       "The mean is the total of the values divided by their count. Mean absolute deviation is the average distance from that mean: find each distance without a plus or minus sign, then average them.",
-    terms: [
-      [
-        "mean absolute deviation",
-        "The mean of the distances of the values from their mean.",
-      ],
-    ],
+    terms: ["mean-absolute-deviation"],
     method: [
       "Find the mean.",
       "Find each value’s distance from the mean.",

@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -141,23 +142,32 @@ export const probabilityRulesLessons: Lesson[] = [
 
 const terms = {
   sets: [
-    ["$A \\cup B$", "$A$ or $B$: outcomes in $A$, in $B$ or in both."],
-    ["$A \\cap B$", "$A$ and $B$: outcomes in both."],
-    ["$A'$", "The complement: outcomes not in $A$."],
+    "union",
+    "intersection",
+    [
+      "complement-probability",
+      "Written $A'$: the outcomes of the sample space that are not in $A$.",
+    ],
   ],
   addition: [
-    ["$P(A \\text{ or } B)$", "The probability that $A$, $B$ or both happen."],
-    ["mutually exclusive", "Events that cannot happen together."],
+    [
+      "union",
+      "$P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$, so outcomes in both count once.",
+    ],
+    "mutually-exclusive",
   ],
   conditional: [
-    ["$P(A \\mid  B)$", "The probability of $A$ given that $B$ happened."],
-    ["sample space", "The set of outcomes still possible."],
+    [
+      "conditional-probability",
+      '$P(A \\mid B)$ is read "the probability of $A$ given $B$."',
+    ],
+    [
+      "sample-space",
+      "Once a condition is known, the sample space shrinks to the outcomes still possible.",
+    ],
   ],
-  multiplication: [
-    ["$P(B \\mid  A)$", "The probability of $B$ once $A$ has happened."],
-    ["without replacement", "A drawn item is not put back."],
-  ],
-} satisfies Record<string, [string, string][]>;
+  multiplication: ["conditional-probability", "without-replacement"],
+} satisfies Record<string, MethodTerm[]>;
 export const probabilityRulesMethods: Record<string, ProblemMethod> = {
   "event-set-count": {
     goal: "Count, or find the probability of, the outcomes in a union, intersection or complement.",

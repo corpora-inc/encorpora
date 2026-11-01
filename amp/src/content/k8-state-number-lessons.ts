@@ -7,13 +7,10 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     intuition:
       "A number is divisible by another when dividing leaves no remainder. Each rule below checks a few digits instead of dividing the whole number.",
     terms: [
+      "divisible-by",
       [
-        "divisible by",
-        "A number is divisible by $d$ when dividing it by $d$ leaves remainder 0.",
-      ],
-      [
-        "digit sum",
-        "The result of adding all the digits of a number. For 4,512 it is $4+5+1+2=12$.",
+        "sum",
+        "The digit sum adds all the digits of a number: for 4,512 it is $4 + 5 + 1 + 2 = 12$.",
       ],
     ],
     method: [
@@ -29,20 +26,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     goal: "Given four whole numbers, choose the prime one, the composite one, or the one that is neither.",
     intuition:
       "A factor of a number divides it with no remainder. A prime number has exactly two factors, 1 and itself. A composite number has more than two factors. The number 1 has only one factor, so it is neither.",
-    terms: [
-      [
-        "prime number",
-        "A whole number greater than 1 whose only factors are 1 and itself.",
-      ],
-      [
-        "composite number",
-        "A whole number greater than 1 that has a factor other than 1 and itself.",
-      ],
-      [
-        "factor pair",
-        "Two whole numbers whose product is the number, such as $3\\times17=51$.",
-      ],
-    ],
+    terms: ["prime-number", "composite-number", "factor-pair"],
     method: [
       "Look for a factor pair other than 1 and the number. Try dividing by 2, 3, 5, 7 and 11 in turn; for numbers to 144, no prime above 11 is needed.",
       "If one divides evenly, the number is composite. If none does, it is prime.",
@@ -55,20 +39,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     goal: "Choose the prime factorization of a composite number, written with exponents for factors that repeat.",
     intuition:
       "Every composite number is a product of primes. A factor tree splits a number into two factors, then splits any factor that is not prime, until every branch ends in a prime.",
-    terms: [
-      [
-        "prime factorization",
-        "The number written as a product of prime numbers.",
-      ],
-      [
-        "exponent",
-        "A small raised number that tells how many times its base is a factor: $2^3=2\\times2\\times2$.",
-      ],
-      [
-        "factor tree",
-        "A diagram that splits a number into factors, and those factors into smaller factors, until all are prime.",
-      ],
-    ],
+    terms: ["prime-factorization", "exponent", "factor-tree"],
     method: [
       "Split the number into any two factors greater than 1. Split every factor that is not prime.",
       "Stop when every branch ends in a prime. List the primes from least to greatest.",
@@ -83,11 +54,11 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     intuition:
       "A prime factorization is the number's building blocks. Reading it as a product recovers the number; reading its primes answers questions about the number.",
     terms: [
-      ["prime factor", "A prime that divides the number evenly."],
       [
-        "exponent",
-        "A small raised number that tells how many times its base is a factor.",
+        "prime-number",
+        "A prime factor of a number is a prime that divides it evenly, such as 3 for 12.",
       ],
+      "exponent",
     ],
     method: [
       "To evaluate, work out each power, then multiply the results.",
@@ -101,13 +72,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     goal: "Given prices and an amount paid in dollars and cents, find the change, the total, the amount still needed, or an unknown cost.",
     intuition:
       "Dollars and cents are a decimal: 3.45 dollars is 3 dollars and 45 hundredths of a dollar. Change is the part of the amount paid that is left after paying the price.",
-    terms: [
-      ["change", "The money returned: amount paid minus total cost."],
-      [
-        "decimal point",
-        "The dot that separates whole dollars from cents; two digits after it make cents.",
-      ],
-    ],
+    terms: ["change-money", "decimal-point"],
     method: [
       "Add the prices of everything bought. For equal items, multiply the price by how many.",
       "Subtract the total from the amount paid, lining up the decimal points so cents are subtracted from cents. Or count up from the price to the next whole dollar, then to the amount paid.",
@@ -120,12 +85,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     goal: "Find the fewest bills and coins that make an amount of change.",
     intuition:
       "The fewest pieces come from using big pieces first. With 1-dollar bills, quarters, dimes, nickels and pennies, take the largest piece that fits, then repeat with what is left.",
-    terms: [
-      [
-        "quarter, dime, nickel, penny",
-        "Coins worth 25, 10, 5 and 1 cents. A dollar is 100 cents.",
-      ],
-    ],
+    terms: ["coin"],
     method: [
       "Write the amount in cents. For dollars and cents, 4.16 dollars is 416 cents.",
       "Take as many 1-dollar bills as fit, then as many quarters as fit in what is left, then dimes, nickels and pennies.",
@@ -138,7 +98,12 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     goal: "Read three drawn sets of bills and coins and choose the one worth the most, the least, or an exact amount.",
     intuition:
       "The value of a set depends on which pieces it has, not how many. Two quarters are worth more than five pennies.",
-    terms: [["value", "How much money a set is worth, in dollars and cents."]],
+    terms: [
+      [
+        "dollar",
+        "The value of a set of coins and bills is how much money it is worth.",
+      ],
+    ],
     method: [
       "Find each set's value separately. Count the 1-dollar bills, then the quarters, dimes, nickels and pennies.",
       "Write each value in dollars and cents and compare them place by place, starting with dollars.",
@@ -151,13 +116,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     goal: "Rename a length, weight or capacity from a larger customary unit to a smaller one.",
     intuition:
       "A larger unit is made of many smaller ones, so the same amount takes more small units than large ones. To rename a measure in a smaller unit, multiply.",
-    terms: [
-      [
-        "customary units",
-        "The units used in the United States: inches, feet, yards and miles for length; ounces, pounds and tons for weight; fluid ounces, cups, pints, quarts and gallons for capacity.",
-      ],
-      ["capacity", "How much a container holds."],
-    ],
+    terms: ["customary-units", "capacity"],
     method: [
       "Write the fact that links the units, such as 1 foot = 12 inches.",
       "Multiply the number of large units by the number of small units in one large unit.",
@@ -170,12 +129,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     goal: "Rename a customary measure as a larger unit, find whole larger units, or convert across two steps.",
     intuition:
       "Going from a smaller unit to a larger one groups the small units. Count how many full groups fit; each group is one larger unit.",
-    terms: [
-      [
-        "remainder",
-        "What is left over after making as many full groups as possible.",
-      ],
-    ],
+    terms: ["remainder"],
     method: [
       "Write the fact that links the units, such as 1 pound = 16 ounces.",
       "Divide the number of small units by the number in one large unit.",
@@ -189,13 +143,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     goal: "Rename a mixed measure such as 3 ft 8 in as one unit or the reverse, and add or subtract mixed measures.",
     intuition:
       "A mixed measure uses two units together. 3 ft 8 in is 3 feet and 8 more inches. Adding and subtracting works like regrouping in whole numbers, but you regroup by the unit fact, not by 10.",
-    terms: [
-      ["mixed measure", "A measure written with two units, such as 3 ft 8 in."],
-      [
-        "regroup",
-        "Rename one larger unit as smaller units, or smaller units as one larger unit.",
-      ],
-    ],
+    terms: ["mixed-measure", "regroup"],
     method: [
       "To write 3 ft 8 in in inches: multiply the feet by 12, then add the 8 inches.",
       "To write inches as feet and inches: divide by 12. The quotient is feet; the remainder is inches.",
@@ -210,7 +158,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     intuition:
       "Each unit has a size you can picture. An inch is about the width of a thumb, a foot is a ruler, a yard is a long step, a mile is a 20-minute walk. An ounce is a slice of bread, a pound a loaf of bread, a ton a small car. A cup is a glass of milk, a gallon a jug of milk.",
     terms: [
-      ["reasonable", "A measure that is close to the real size of the object."],
+      ["estimate", "A reasonable measure is close to the object's real size."],
     ],
     method: [
       "Picture the object and compare it with a benchmark you know, such as a ruler or a jug of milk.",
@@ -224,16 +172,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     goal: "Estimate a quotient or product by changing a number to a compatible number, and estimate a sum by its front-end digits.",
     intuition:
       "An estimate is a close answer that is quick to find. Compatible numbers are numbers close to the real ones that divide or multiply easily in your head. Front-end estimation adds only the leading digits.",
-    terms: [
-      [
-        "compatible numbers",
-        "Numbers close to the real numbers that are easy to compute with, such as 360 and 6 for 347 ÷ 6.",
-      ],
-      [
-        "front-end estimation",
-        "Keeping the first digit of each number, replacing the others with zeros, and adding.",
-      ],
-    ],
+    terms: ["compatible-numbers", "front-end-estimation"],
     method: [
       "For division, list the multiples of the needed number near the dividend and choose the closest. Divide it by the divisor.",
       "For multiplication, change one factor to the closest compatible number, then multiply.",
@@ -247,12 +186,12 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     intuition:
       "A percent means 'per 100'. 10% is one tenth, 5% is half of that, and 25% is one fourth. With a rounded price these are easy to find in your head.",
     terms: [
+      "benchmark-percent",
+      "discount",
       [
-        "benchmark percent",
-        "A percent that is easy to find: 10%, 5%, 25% and 50%.",
+        "discount",
+        "The sale price is the price after the discount: price minus discount.",
       ],
-      ["discount", "The amount taken off a price."],
-      ["sale price", "The price after the discount: price minus discount."],
     ],
     method: [
       "Round the price as directed.",
