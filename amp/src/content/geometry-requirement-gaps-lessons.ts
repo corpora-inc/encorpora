@@ -15,9 +15,31 @@ const complexFigure = graph({ x: [-5, 5], y: [-5, 5], tick: 1 })
 
 export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
   "arc-sector-derivation": {
-    goal: "Relate arc length to radius with similar circles, define radian measure as arc over radius, and find sector area as a fraction.",
+    goal: "Scale arc lengths between circles, measure an angle in radians (arc length divided by radius), and find a sector's area.",
+    senses: {
+      similar: "similar-figures",
+      vertex: "vertex",
+      degrees: "degree-angle",
+      side: "side",
+      radius: "radius",
+      center: "center",
+      squared: "square-number",
+    },
+    noLink: [
+      "factor",
+      "whole",
+      "unit",
+      "units",
+      "square",
+      "scale",
+      "scales",
+      "rule",
+      "part",
+      "factors",
+      "multiple",
+    ],
     intuition:
-      "Every circle is an enlargement of every other circle. When a circle is enlarged by a factor $k$, every length in it is multiplied by $k$, including the radius and the arc cut off by a fixed central angle. So for one angle, arc length divided by radius is the same number in every circle. That number measures the angle.",
+      "A circle's radius is the distance from its center to the circle. A central angle has its corner at the center. The piece of the circle between its two sides is called an arc. Every circle is an enlarged or shrunken copy of every other circle. Enlarge a circle by a factor $k$, so every length is multiplied by $k$. Then the radius and the arc of a fixed angle are both multiplied by $k$. So for one angle, arc length divided by radius is the same in every circle. That number measures the angle in radians. A sector is the pie-slice region between the two radii and the arc.",
     terms: [
       "central-angle",
       [
@@ -27,13 +49,13 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "sector",
     ],
     method: [
-      "For a proportion between two circles, divide each arc by its own radius and set the two ratios equal.",
-      "For radian measure, divide the arc length by the radius: $\\theta=s/r$. For an arc, multiply: $s=\\theta r$.",
-      "For a sector, take the fraction $\\theta/2\\pi$ of the disk's area $\\pi r^2$. The factor $\\pi$ cancels, leaving $\\tfrac12\\theta r^2$.",
-      "Keep units: arc length in length units, area in square units, radians with no unit.",
+      "To scale between two circles, divide each arc by its own radius and set the two results equal.",
+      "For radian measure, divide arc length by radius: $\\theta=s/r$. Here $\\theta$ (theta) is the angle, $s$ the arc length and $r$ the radius. To find an arc, multiply: $s=\\theta r$.",
+      "For a sector, take the fraction $\\theta/2\\pi$ of the disk's area $\\pi r^2$, because a full turn is $2\\pi$ radians. The $\\pi$ cancels, leaving $\\tfrac12\\theta r^2$.",
+      "Keep units: arc length in length units and area in square units. Label an angle in radians, so it is not mistaken for degrees.",
     ],
     watch:
-      "Arc length scales with the radius, not with its square. Area scales with the square. A sector uses a fraction of $2\\pi$ when the angle is in radians, and a fraction of $360$ when it is in degrees; do not mix them.",
+      "Arc length grows with the radius, but area grows with the radius squared ($r$ times $r$). Use a fraction of $2\\pi$ when the angle is in radians and a fraction of 360 when it is in degrees. Do not mix them.",
   },
   "complex-plane-operations": {
     goal: "Read sums, differences, conjugates and products of complex numbers as moves of points in the complex plane.",
@@ -54,18 +76,34 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "Multiplication by $i$ is a rotation, not a reflection, and the conjugate is a reflection, not a rotation. Moduli multiply and arguments add when you multiply; they do not both add.",
   },
   "conditional-everyday-reasoning": {
-    goal: "Read statements about rates as conditional probabilities, tell $P(A\\mid B)$ from $P(B\\mid A)$, and decide independence from described rates.",
+    goal: "Read “among those who …” rates as conditional probabilities, tell $P(A\\mid B)$ from $P(B\\mid A)$, and test independence.",
+    senses: {
+      event: "event",
+      impossible: "impossible",
+      intersection: "intersection",
+    },
+    noLink: [
+      "rate",
+      "rates",
+      "change",
+      "group",
+      "groups",
+      "whole",
+      "certain",
+      "product",
+      "difference",
+    ],
     intuition:
-      "A conditional probability $P(A\\mid B)$ is the chance of $A$ when you look only at the cases where $B$ happened. The group you restrict to goes after the bar. Two events are independent when learning that $B$ happened does not change the chance of $A$.",
+      "A probability is a chance, a number from 0 to 1, and $P(A)$ means the probability that event $A$ happens. A conditional probability is the chance of $A$ when you look only at the cases where $B$ happened. It is written $P(A\\mid B)$ and read “the probability of $A$ given $B$”. The group you look inside goes after the bar. If 20 of 50 bus riders play in the band, then $P(\\text{band}\\mid\\text{bus})=\\frac{20}{50}$. Two events are independent when learning that $B$ happened does not change the chance of $A$.",
     terms: ["conditional-probability", "independent-events", "intersection"],
     method: [
-      'Find the group the percentage is taken of. "Among those who $B$" names the condition: the probability is $P(\\cdot\\mid B)$.',
+      "Find the group the percentage is taken of. A phrase such as “among the bus riders” names the condition, and the condition goes after the bar.",
       "To compute from counts, divide the count with both events by the size of the condition group.",
-      "To test independence, compare $P(A\\mid B)$ with $P(A)$, or $P(A\\cap B)$ with $P(A)P(B)$.",
-      "If $P(A\\mid B)>P(A)$, then $B$ makes $A$ more likely; if it is smaller, less likely.",
+      "To test independence, compare $P(A\\mid B)$ with $P(A)$. Or compare $P(A\\cap B)$, the chance that both happen, with $P(A)\\times P(B)$.",
+      "If $P(A\\mid B)$ is bigger than $P(A)$, then $B$ makes $A$ more likely. If it is smaller, $B$ makes $A$ less likely.",
     ],
     watch:
-      "$P(A\\mid B)$ and $P(B\\mid A)$ divide by different group sizes, so they are usually different. Independent events can occur together; the test is a match of rates, not an absence of overlap.",
+      "$P(A\\mid B)$ and $P(B\\mid A)$ divide by different group sizes, so they are usually different. Independent events can happen together. The test is whether the rates match, not whether the events overlap.",
   },
   "congruence-by-rigid-motion": {
     goal: "Choose or predict the rigid motions that carry one triangle onto another, and decide congruence by whether such a sequence exists.",
@@ -109,9 +147,22 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "For an ellipse $c<a$ and $c^2=a^2-b^2$. For a hyperbola $c>a$ and $c^2=a^2+b^2$. The constant sum or difference is $2a$, not $a$.",
   },
   "choose-the-plot": {
-    goal: "Match a dot plot, histogram or box plot to the data it displays, and find the bar heights or five numbers a data set produces.",
+    goal: "Match a dot plot, histogram or box plot to the list of data it shows, and find the bar heights or five numbers a list makes.",
+    senses: { interval: "interval" },
+    noLink: [
+      "whole",
+      "line",
+      "border",
+      "range",
+      "side",
+      "sort",
+      "sorting",
+      "changes",
+      "fourth",
+      "boundary",
+    ],
     intuition:
-      "A dot plot puts one dot for each value, so every data value can be read back. A histogram groups values into equal intervals and shows only how many fall in each. A box plot shows five numbers: the least value, the lower quartile, the median, the upper quartile and the greatest value.",
+      "A data set is a list of numbers. A dot plot puts one dot above a number line for each value, so you can read every value back. A histogram groups the values into equal intervals, stretches of the number line such as 20 to 30. Its bar heights show only how many values fall in each interval. A box plot shows five numbers: the least value, the lower quartile, the median, the upper quartile and the greatest value. The median is the middle value of the ordered list. The quartiles are the middle values of its lower half and its upper half.",
     terms: [
       [
         "interval",
@@ -123,26 +174,44 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Dot plot: count the dots at each value and compare with the number of copies in each list.",
-      "Histogram: sort each list into the intervals and compare the counts bar by bar.",
-      "Box plot: order the list, find the minimum, the median, the medians of the two halves, and the maximum, and compare the five numbers.",
-      "To build a plot from data, work in the other direction with the same counts or five numbers.",
+      "Dot plot: count the dots at each value. Compare with how many times each value appears in each list.",
+      "Histogram: sort each list into the intervals. Compare the counts with the bars, one bar at a time.",
+      "Box plot: put the list in order. Find the least value, the median, the middle of each half, and the greatest value, then compare these five numbers.",
+      "To build a plot from data, work the other way, using the same counts or five numbers.",
     ],
     watch:
-      "Order the data before taking a median or quartile. A histogram does not show the individual values, so two lists can share a histogram. Boundary values go into the interval that starts at them.",
+      "Put the data in order before finding a median or quartile. A histogram does not show single values, so two lists can share a histogram. A value on the border between two intervals goes in the interval that starts at it.",
   },
   "similarity-by-transformation": {
-    goal: "Choose the dilation and rigid motions that map one triangle onto another, and decide similarity by whether such a sequence exists.",
+    goal: "Find the resizing (dilation) and moves that carry one triangle onto another, and decide whether the triangles are similar.",
+    senses: {
+      similar: "similar-figures",
+      side: "side",
+      vertex: "vertex",
+      image: "image-transformation",
+      center: "center",
+    },
+    noLink: [
+      "factor",
+      "factors",
+      "unit",
+      "units",
+      "change",
+      "mean",
+      "square",
+      "multiple",
+      "scale",
+    ],
     intuition:
-      "A dilation enlarges or shrinks a figure by a scale factor about a center without changing its shape. Two figures are similar when some dilation followed by rigid motions maps one onto the other. The scale factor is the ratio of corresponding side lengths.",
+      "A dilation resizes a figure. It multiplies every distance from a fixed center point by the same positive number, the scale factor $k$. It keeps the shape and every angle. A rigid motion moves a figure without changing its size: a slide (translation), a turn (rotation) or a flip (reflection). Two figures are similar, meaning the same shape, when a dilation followed by rigid motions carries one exactly onto the other. The scale factor is then the ratio of matching side lengths: a side of the new figure divided by the matching side of the original.",
     terms: ["dilation", "similar-figures"],
     method: [
-      "Compare one pair of corresponding sides to find the scale factor $k$, and check the other sides give the same $k$.",
-      "Dilate about the origin by $k$, then find the rigid motion (reflection, rotation, translation) that lands one vertex on its image.",
-      "Check a second vertex. If the sides scale by different factors, no such sequence exists.",
+      "Compare one pair of matching sides to find the scale factor $k$. Check that every other pair gives the same $k$.",
+      "Dilate about the origin, the point $(0,0)$, by multiplying both coordinates by $k$. Then find the rigid motion that lands one vertex (corner) on its partner.",
+      "Check all three vertices. If the sides grow by different factors, no such list of moves exists, and the triangles are not similar.",
     ],
     watch:
-      "A dilation about the origin multiplies the coordinates, so translate after dilating, not before. Two right triangles are similar only if their legs scale by the same factor.",
+      "It is simplest to dilate about the origin first and slide afterward. Sliding first needs a different slide, because the dilation then stretches the slide too. Two right triangles are similar only if both legs grow by the same factor.",
   },
   "aa-similarity": {
     goal: "Decide whether two triangles are similar by AA from stated angles, name the correspondence, and write the matching proportion of sides.",
@@ -168,19 +237,19 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
 
 export const geometryRequirementGapPrinciples: Record<string, string> = {
   "arc-sector-derivation":
-    "In a circle of radius $r$, a central angle of $\\theta$ radians cuts off an arc of length $s=\\theta r$, because arc length is proportional to radius for a fixed angle and one radian is the angle whose arc equals the radius. The sector has area $\\tfrac{\\theta}{2\\pi}\\cdot\\pi r^2=\\tfrac12\\theta r^2$. In degrees $d$, the area is $\\tfrac{d}{360}\\pi r^2$.",
+    "In a circle of radius $r$, a central angle of $\\theta$ radians cuts off an arc of length $s=\\theta r$. This holds because, for a fixed angle, arc length is proportional to the radius, and one radian is the angle whose arc equals the radius. The sector has area $\\tfrac{\\theta}{2\\pi}\\cdot\\pi r^2=\\tfrac12\\theta r^2$. For an angle of $d$ degrees, the area is $\\tfrac{d}{360}\\pi r^2$.",
   "complex-plane-operations":
     "Identify $a+bi$ with the point $(a,b)$. Then $z+w$ is vector addition, $z-w$ is the vector from $w$ to $z$, $\\overline{z}$ is the reflection in the real axis, and for $w=r(\\cos\\theta+i\\sin\\theta)$ multiplication by $w$ scales by $r$ and rotates counterclockwise by $\\theta$. In particular $i=\\cos90^\\circ+i\\sin90^\\circ$ rotates by $90^\\circ$.",
   "conditional-everyday-reasoning":
-    "For $P(B)>0$, $P(A\\mid B)=P(A\\cap B)/P(B)$. Events $A$ and $B$ are independent exactly when $P(A\\cap B)=P(A)P(B)$, equivalently $P(A\\mid B)=P(A)$. In general $P(A\\mid B)\\ne P(B\\mid A)$; they are related by $P(A\\mid B)P(B)=P(B\\mid A)P(A)$.",
+    "When $P(B)>0$, $P(A\\mid B)=P(A\\cap B)/P(B)$, where $A\\cap B$ means that both $A$ and $B$ happen. Events $A$ and $B$ are independent exactly when $P(A\\cap B)=P(A)P(B)$. When $P(B)>0$, this is the same as $P(A\\mid B)=P(A)$. In general $P(A\\mid B)\\ne P(B\\mid A)$, where $\\ne$ means is not equal to. When $P(A)>0$ and $P(B)>0$, they are related by $P(A\\mid B)P(B)=P(B\\mid A)P(A)$.",
   "congruence-by-rigid-motion":
     "Translations, rotations and reflections preserve distance and angle measure. Figures are congruent exactly when a sequence of rigid motions maps one onto the other, so corresponding sides and angles are equal. A reflection reverses orientation; a translation or rotation preserves it.",
   "conic-foci":
     "For an ellipse with foci $(\\pm c,0)$ and $d_1+d_2=2a$, the equation is $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ with $b^2=a^2-c^2$. For a hyperbola with foci $(\\pm c,0)$ and $|d_1-d_2|=2a$, it is $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ with $b^2=c^2-a^2$. With foci $(0,\\pm c)$, the roles of $x$ and $y$ swap.",
   "choose-the-plot":
-    "A dot plot shows every value, a histogram shows the count in each interval (a value equal to an interval's left end belongs to that interval), and a box plot shows the minimum, the first quartile, the median, the third quartile and the maximum. Quartiles are the medians of the lower and upper halves of the ordered data, excluding the overall median when the count is odd.",
+    "A dot plot shows every value. A histogram shows the count in each interval; a value equal to an interval's left end belongs to that interval. A box plot shows the minimum (least value), the first quartile, the median, the third quartile and the maximum (greatest value). The quartiles are the medians of the lower and upper halves of the ordered data. When the count is odd, the overall median is left out of both halves.",
   "similarity-by-transformation":
-    "A dilation about the origin with scale factor $k$ sends $(x,y)$ to $(kx,ky)$, multiplies distances by $k$ and preserves angles. Figures are similar exactly when a dilation followed by rigid motions maps one onto the other; corresponding sides are then in the common ratio $k$.",
+    "A dilation about the origin with positive scale factor $k$ sends the point $(x,y)$ to $(kx,ky)$. It multiplies distances by $k$ and keeps angles. Figures are similar exactly when a dilation followed by rigid motions maps one onto the other. Corresponding sides are then all in the same ratio $k$.",
   "aa-similarity":
     "If $\\angle A=\\angle D$ and $\\angle B=\\angle E$ in triangles $ABC$ and $DEF$, then $\\angle C=\\angle F$ and $\\triangle ABC\\sim\\triangle DEF$, so $\\frac{AB}{DE}=\\frac{BC}{EF}=\\frac{CA}{FD}$. Dilate $ABC$ by $DE/AB$ to make $AB=DE$; the image has the same two angles on $DE$, so it is congruent to $DEF$ by ASA, and a rigid motion finishes the map.",
 };
@@ -217,20 +286,44 @@ export const geometryRequirementGapLessons: Lesson[] = [
     id: "arc-sector-derivation",
     title: "Arc length, radians and sector area from proportion",
     summary:
-      "Circles are enlargements of each other, so a fixed angle cuts arcs proportional to the radius. Radian measure and the sector formula follow.",
+      "An arc is a piece of a circle. Draw the same angle at the center of a small circle and of a big circle. The big circle is an enlarged copy, so its arc is longer by the same factor as its radius. So arc length divided by radius depends only on the angle. That number is the angle's measure in radians, and it leads to a formula for the area of a pie-slice region.",
     templateIds: ["arc-sector-derivation"],
+    senses: {
+      similar: "similar-figures",
+      vertex: "vertex",
+      degrees: "degree-angle",
+      side: "side",
+      radius: "radius",
+      center: "center",
+      squared: "square-number",
+    },
+    noLink: [
+      "factor",
+      "whole",
+      "unit",
+      "units",
+      "square",
+      "scale",
+      "scales",
+      "rule",
+      "part",
+      "factors",
+      "multiple",
+    ],
     objectives: [
-      "Use similar circles to scale an arc length to a different radius.",
-      "Define radian measure as arc length divided by radius and use it both ways.",
-      "Find a sector's area as a fraction of the disk.",
+      "Use similar circles, enlarged copies of each other, to scale an arc length to a different radius.",
+      "Measure an angle in radians, arc length divided by radius, and use that rule both ways.",
+      "Find a sector's area, the area of a pie slice, as a fraction of the whole disk.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "One angle, every circle",
         paragraphs: [
-          "A central angle has its vertex at the center of a circle and cuts off an arc. Draw the same angle in a small circle and in a large one. The large circle is an enlargement of the small one, so every length in it, including the radius and the arc, is multiplied by the same factor.",
-          "That means arc length divided by radius is the same number for the angle in every circle. This ratio is the natural measure of the angle. One radian is the angle whose arc is exactly one radius long.",
+          "A circle is all the points at one distance from a center point. That distance is the radius, $r$. A central angle has its corner (vertex) at the center. The part of the circle between its two sides is called the arc it cuts off. A sector is the pie-slice region between the two radii and the arc.",
+          "The disk is the whole flat region inside the circle. Its area is $\\pi r^2$. Here $\\pi$ (pi), about 3.14, is how many times the diameter fits around the circle, and $r^2$ means $r$ times $r$.",
+          "Draw the same angle in a circle of radius 1 cm and in a circle of radius 3 cm. The big circle is the small one enlarged 3 times, so every length in it is 3 times as long. Its radius is 3 times as long, and so is its arc. If the small arc is 2 cm, the big arc is 6 cm.",
+          "So arc length divided by radius is the same for that angle in every circle: $2 \\div 1 = 6 \\div 3 = 2$. This ratio measures the angle, in units called radians. One radian is the angle whose arc is exactly one radius long. We write $\\theta$ (the Greek letter theta) for the angle, $s$ for the arc length and $r$ for the radius.",
         ],
       },
     ],
@@ -238,10 +331,10 @@ export const geometryRequirementGapLessons: Lesson[] = [
       prompt:
         "A central angle cuts off an arc 4 cm long in a circle of radius 3 cm. (1) How long an arc does the same angle cut off in a circle of radius 9 cm? (2) What is the angle in radians? (3) What is the area of the sector in the circle of radius 3 cm?",
       steps: [
-        "(1) The radius is multiplied by $9/3=3$, so the arc is too: $4\\times3=12$ cm. Check the ratios: $4/3=12/9$.",
-        "(2) Radian measure is arc over radius: $\\theta=4/3$ radians.",
-        "(3) One full turn is $2\\pi$ radians, so the sector is the fraction $\\frac{4/3}{2\\pi}$ of the disk. The disk's area is $\\pi\\cdot3^2=9\\pi$. Then $\\frac{4/3}{2\\pi}\\cdot9\\pi=\\frac{4}{6}\\cdot9=6$.",
-        "Check with the shortcut $\\tfrac12\\theta r^2=\\tfrac12\\cdot\\tfrac43\\cdot9=6$.",
+        "(1) The new radius is $9 \\div 3 = 3$ times as long, so the arc is 3 times as long too: $4\\times3=12$ cm. Check that arc divided by radius matches: $4/3=12/9$.",
+        "(2) Radian measure is arc length divided by radius: $\\theta=4/3$ radians.",
+        "(3) A full turn is $2\\pi$ radians, so the sector is the fraction $\\frac{4/3}{2\\pi}$ of the disk. The disk's area is $\\pi\\cdot3^2=9\\pi$ square centimeters. Multiply: $\\frac{4/3}{2\\pi}\\cdot9\\pi=\\frac{4}{6}\\cdot9=6$.",
+        "Check with the shortcut $\\tfrac12\\theta r^2=\\tfrac12\\cdot\\tfrac43\\cdot9=6$ square centimeters.",
       ],
       answer: "(1) 12 cm; (2) $\\tfrac43$ radians; (3) 6 square centimeters",
     },
@@ -250,25 +343,25 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "Three formulas from one ratio",
         paragraphs: [
-          "Because $\\theta=s/r$, the arc cut off by $\\theta$ radians in a circle of radius $r$ is $s=\\theta r$. A full turn is the whole circumference, $2\\pi r$, so a full turn measures $2\\pi$ radians.",
-          "A sector is the fraction $\\theta/2\\pi$ of the disk, so its area is $\\frac{\\theta}{2\\pi}\\cdot\\pi r^2=\\tfrac12\\theta r^2$. For an angle of $d$ degrees the fraction is $d/360$.",
+          "Because $\\theta=s/r$, multiplying both sides by $r$ gives the arc: $s=\\theta r$. A full turn's arc is the whole circumference, the distance around the circle, which is $2\\pi r$. So a full turn measures $2\\pi r \\div r = 2\\pi$ radians.",
+          "A sector with angle $\\theta$ is the fraction $\\theta/2\\pi$ of a full turn. So its area is that fraction of the disk: $\\frac{\\theta}{2\\pi}\\cdot\\pi r^2=\\tfrac12\\theta r^2$. For an angle of $d$ degrees, the fraction is $d/360$, because a full turn is 360 degrees.",
         ],
       },
       {
         stage: "formal",
         title: "Why arc length is proportional to radius",
         paragraphs: [
-          "Dilating a circle by a factor $k$ about its center maps it to a circle of radius $kr$ and maps an arc of length $s$ and central angle $\\theta$ to an arc with the same central angle and length $ks$. Since the angle is unchanged, $s/r$ depends only on the angle. Define radian measure to be this ratio.",
+          "A dilation by a factor $k$ about the center multiplies every distance from the center by $k$. It maps a circle of radius $r$ to a circle of radius $kr$. It maps an arc of length $s$ to an arc of length $ks$ with the same central angle, because a dilation keeps angles. So $s/r = ks/kr$ depends only on the angle. Radian measure is defined to be this ratio.",
         ],
       },
     ],
     pitfalls: [
-      "Arc length scales with the radius; area scales with the square of the radius.",
+      "Arc length grows with the radius. Area grows with the radius squared.",
       "Use $\\theta/2\\pi$ for radians and $d/360$ for degrees.",
-      "The ratio is arc over radius, not radius over arc.",
+      "Radian measure is arc divided by radius, not radius divided by arc.",
     ],
     parentGuide:
-      "Ask the learner to draw two circles with the same angle and explain why the longer radius gives the longer arc in the same ratio.",
+      "Ask the learner to draw two circles with the same angle at the center. Ask them to explain why the longer radius gives a longer arc, in the same ratio.",
   },
   {
     id: "complex-plane-operations",
@@ -330,18 +423,35 @@ export const geometryRequirementGapLessons: Lesson[] = [
     id: "conditional-everyday-reasoning",
     title: "Conditional probability and independence in everyday situations",
     summary:
-      'Restrict to the group named after "among", divide by that group\'s size, and compare with the overall rate to judge independence.',
+      "A rate like “40% of bus riders play in the band” looks only at one group, the bus riders. The chance of an event inside a group is called a conditional probability. To find it, divide by the size of that group, not of everyone. Then compare it with the rate for everyone. If the two match, the events are called independent: knowing one tells you nothing about the other.",
     templateIds: ["conditional-everyday-reasoning"],
+    senses: {
+      event: "event",
+      impossible: "impossible",
+      intersection: "intersection",
+    },
+    noLink: [
+      "rate",
+      "rates",
+      "change",
+      "group",
+      "groups",
+      "whole",
+      "certain",
+      "product",
+      "difference",
+    ],
     objectives: [
-      "Tell $P(A\\mid B)$ from $P(B\\mid A)$ in a described situation.",
-      "Decide independence by comparing a conditional rate with the overall rate.",
+      "Tell $P(A\\mid B)$, the chance of $A$ among the cases of $B$, from $P(B\\mid A)$ in a described situation.",
+      "Decide whether two events are independent by comparing a rate inside a group with the overall rate.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Which group are you looking at?",
         paragraphs: [
-          'A rate such as "40% of students on the bus play in the band" looks only at the students on the bus. That is a conditional probability: the chance of one event within the group where another happened. The group goes after the vertical bar, so this is $P(\\text{band}\\mid\\text{bus})$.',
+          "A probability is a chance, written as a number from 0 (impossible) to 1 (sure to happen). An event is something that may or may not happen, such as a student playing in the band. $P(\\text{band})$ means the probability that a student chosen at random plays in the band.",
+          "A rate such as “40% of students on the bus play in the band” looks only at the students on the bus. That is a conditional probability: the chance of one event within the group where another event happened. We write it with a vertical bar, read “given”: $P(\\text{band}\\mid\\text{bus})$. The group you look inside goes after the bar.",
           "Two events are independent when knowing about one does not change the chance of the other. Then the rate inside the group equals the rate for everyone.",
         ],
       },
@@ -350,10 +460,10 @@ export const geometryRequirementGapLessons: Lesson[] = [
       prompt:
         "Of 200 students, 80 play in the band, 50 take the bus, and 20 do both. Find $P(\\text{band}\\mid\\text{bus})$ and $P(\\text{bus}\\mid\\text{band})$, and decide whether the events are independent.",
       steps: [
-        "Among the 50 bus riders, 20 play in the band: $P(\\text{band}\\mid\\text{bus})=\\frac{20}{50}=\\frac25$.",
-        "Among the 80 band members, 20 take the bus: $P(\\text{bus}\\mid\\text{band})=\\frac{20}{80}=\\frac14$. The two differ because the groups have different sizes.",
-        "Overall, $P(\\text{band})=\\frac{80}{200}=\\frac25$, which equals $P(\\text{band}\\mid\\text{bus})$. Check the other direction: $P(\\text{bus})=\\frac{50}{200}=\\frac14=P(\\text{bus}\\mid\\text{band})$.",
-        "Knowing a student rides the bus does not change the chance that the student plays in the band, so the events are independent. Check the product: $\\frac25\\cdot\\frac14=\\frac1{10}=\\frac{20}{200}=P(\\text{both})$.",
+        "Look inside the 50 bus riders. Of them, 20 play in the band, so $P(\\text{band}\\mid\\text{bus})=\\frac{20}{50}=\\frac25$.",
+        "Now look inside the 80 band members. Of them, 20 take the bus, so $P(\\text{bus}\\mid\\text{band})=\\frac{20}{80}=\\frac14$. The two answers differ because the groups have different sizes.",
+        "Find the overall rates. $P(\\text{band})=\\frac{80}{200}=\\frac25$, which equals $P(\\text{band}\\mid\\text{bus})$. In the other direction, $P(\\text{bus})=\\frac{50}{200}=\\frac14=P(\\text{bus}\\mid\\text{band})$.",
+        "Knowing that a student rides the bus does not change the chance of playing in the band, so the events are independent. Check with a product: $\\frac25\\times\\frac14=\\frac1{10}$, and $P(\\text{both})=\\frac{20}{200}=\\frac1{10}$ too.",
       ],
       answer: "$\\tfrac25$ and $\\tfrac14$; independent",
     },
@@ -362,24 +472,25 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "Compare the rates",
         paragraphs: [
-          "If the rate inside the group is higher than the overall rate, the condition makes the event more likely; if lower, less likely; if equal, the events are independent. The comparison needs only these two rates, not the size of the group.",
+          "If the rate inside the group is higher than the overall rate, the condition makes the event more likely. If it is lower, the condition makes the event less likely. If they are equal, the events are independent. This comparison needs only the two rates, not the size of the group.",
         ],
       },
       {
         stage: "formal",
         title: "Definition and relation",
         paragraphs: [
-          "For $P(B)>0$, $P(A\\mid B)=P(A\\cap B)/P(B)$. Events $A$ and $B$ are independent exactly when $P(A\\cap B)=P(A)P(B)$, which is the same as $P(A\\mid B)=P(A)$. Because $P(A\\cap B)$ equals both $P(A\\mid B)P(B)$ and $P(B\\mid A)P(A)$, the two conditional probabilities are equal only when $P(A)=P(B)$ or when the overlap is empty.",
+          "The symbol $A\\cap B$ means the event that both $A$ and $B$ happen. When $P(B)>0$, $P(A\\mid B)=P(A\\cap B)/P(B)$. Events $A$ and $B$ are independent exactly when $P(A\\cap B)=P(A)P(B)$. When $P(B)>0$, that is the same as $P(A\\mid B)=P(A)$.",
+          "When $P(A)>0$ and $P(B)>0$, both $P(A\\mid B)P(B)$ and $P(B\\mid A)P(A)$ equal $P(A\\cap B)$. So the two conditional probabilities are equal only when $P(A)=P(B)$ or when the events never happen together.",
         ],
       },
     ],
     pitfalls: [
-      "$P(A\\mid B)$ divides by the size of $B$; $P(B\\mid A)$ divides by the size of $A$.",
-      "Independent events can occur together, and exclusive events with positive chance are not independent.",
-      "Compare the conditional rate with the overall rate for the same event.",
+      "$P(A\\mid B)$ divides by the size of group $B$. $P(B\\mid A)$ divides by the size of group $A$.",
+      "Independent events can happen together. Two events that cannot happen together, each with a chance above 0, are not independent.",
+      "Compare the rate inside the group with the overall rate for the same event.",
     ],
     parentGuide:
-      'Ask the learner to read "of the people who carry umbrellas, 80% are wet" and say which group is the condition.',
+      "Ask the learner to read “of the people who carry umbrellas, 80% are wet”. Then ask which group is the condition, and what the 80% is a fraction of.",
   },
   {
     id: "congruence-by-rigid-motion",
@@ -497,19 +608,34 @@ export const geometryRequirementGapLessons: Lesson[] = [
     id: "choose-the-plot",
     title: "Match raw data to its dot plot, histogram or box plot",
     summary:
-      "A dot plot keeps every value, a histogram keeps the count in each interval, and a box plot keeps five numbers. Check a list against each by counting.",
+      "The same list of numbers can be drawn three ways. A dot plot shows every value. A histogram shows how many values fall in each stretch of the number line. A box plot shows just five numbers that mark the middle and the spread. To match a list to a plot, work out what the plot would show for that list and compare.",
     templateIds: ["choose-the-plot"],
+    senses: { interval: "interval" },
+    noLink: [
+      "whole",
+      "line",
+      "border",
+      "range",
+      "side",
+      "sort",
+      "sorting",
+      "changes",
+      "fourth",
+      "boundary",
+    ],
     objectives: [
-      "Choose the data set a dot plot, histogram or box plot displays.",
-      "Find bar heights and the five numbers of a box plot from raw data.",
+      "Choose the data list that a dot plot, histogram or box plot shows.",
+      "Find the bar heights of a histogram and the five numbers of a box plot from a list.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Three views of the same numbers",
         paragraphs: [
-          "A data set is a list of numbers. A dot plot puts one dot above the number line for each value, so stacks show repeats. A histogram splits the line into equal intervals and draws a bar whose height is the count of values in the interval. A box plot shows only five numbers: the least value, the lower quartile, the median, the upper quartile and the greatest value.",
-          "To match a plot to a list, compute what the plot would show for the list and compare it with the picture.",
+          "A data set is a list of numbers, such as test scores. A dot plot puts one dot above a number line for each value. Repeated values make stacks of dots, so you can read every value back.",
+          "A histogram splits the number line into equal intervals, stretches such as 20 to 25 and 25 to 30. Each interval gets a bar, and the bar's height is the count of values in that interval. A value on a border, like 25, goes in the interval that starts there.",
+          "A box plot shows only five numbers. First put the list in order. The median is the middle value. The lower quartile is the middle of the lower half, and the upper quartile is the middle of the upper half. Together with the least and greatest values, these make five numbers. The box runs from one quartile to the other, with a line at the median. Lines called whiskers reach out to the least and greatest values.",
+          "To match a plot to a list, work out what the plot would show for that list. Then compare it with the picture.",
         ],
       },
     ],
@@ -525,10 +651,10 @@ export const geometryRequirementGapLessons: Lesson[] = [
         unit: "points",
       },
       steps: [
-        "Order the values: 20, 25, 25, 30, 40, 45, 50. The least is 20 and the greatest is 50.",
-        "The median is the middle of the seven values, the fourth: 30.",
-        "The lower half is 20, 25, 25, with median 25. The upper half is 40, 45, 50, with median 45. The overall median is left out of both halves.",
-        "The five numbers are 20, 25, 30, 45 and 50. The plot has its box from 25 to 45 with a line at 30, and whiskers to 20 and 50.",
+        "Put the values in order, so the middle is easy to find: 20, 25, 25, 30, 40, 45, 50. The least is 20 and the greatest is 50.",
+        "There are seven values, so the median is the fourth, with three values on each side: 30.",
+        "Leave the median out and split the rest. The lower half is 20, 25, 25, with middle value 25. The upper half is 40, 45, 50, with middle value 45. These are the quartiles.",
+        "The five numbers are 20, 25, 30, 45 and 50. The box runs from 25 to 45 with a line at 30, and the whiskers reach 20 and 50.",
       ],
       answer: "20, 25, 30, 45, 50",
     },
@@ -537,43 +663,64 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "Check a list against each plot",
         paragraphs: [
-          "Dot plot: count the dots at each value; the list must repeat each value that many times. Histogram: sort the list into the intervals, putting a value equal to an interval's left end in that interval, and compare the counts with the bar heights. Box plot: order the list and compute the five numbers. A different list that changes any one of them does not match.",
+          "Dot plot: count the dots at each value. The list must have each value that many times.",
+          "Histogram: sort the list into the intervals, putting a border value in the interval that starts there. Compare the counts with the bar heights.",
+          "Box plot: put the list in order and find its five numbers. If a list changes any one of them, it does not match.",
         ],
       },
       {
         stage: "formal",
         title: "What each plot keeps",
         paragraphs: [
-          "A dot plot determines the data exactly. A histogram determines only the counts in the intervals, and a box plot only the five-number summary, so different lists can give the same histogram or box plot. That is why a list must be checked against the numbers the plot actually shows.",
+          "A dot plot pins down the data exactly. A histogram keeps only the count in each interval. A box plot keeps only the five-number summary: the minimum, lower quartile, median, upper quartile and maximum. So different lists can give the same histogram or the same box plot. That is why you check a list against the numbers the plot actually shows.",
         ],
       },
     ],
     pitfalls: [
-      "Order the data before finding a median or quartile.",
+      "Put the data in order before finding a median or quartile.",
       "Count a value on an interval's left end in the interval that starts there.",
-      "When the count is odd, leave the median out of both halves for the quartiles.",
+      "When the count is odd, leave the median out of both halves before finding the quartiles.",
     ],
     parentGuide:
-      "Ask the learner to make a dot plot of ten numbers and then group them in intervals of 5 to see what the histogram hides.",
+      "Ask the learner to make a dot plot of ten numbers. Then group them in intervals of 5 to see what the histogram hides.",
   },
   {
     id: "similarity-by-transformation",
     title: "Similarity by dilation and rigid motion",
     summary:
-      "Triangles are similar when a dilation followed by rigid motions maps one onto the other. The scale factor is the ratio of corresponding sides.",
+      "Two triangles are similar when they have the same shape, maybe at different sizes. You can show this with moves. First resize one triangle, multiplying every length by the same number. Then slide, turn or flip it exactly onto the other. That number is called the scale factor: a side of the new triangle divided by the matching side of the old one.",
     templateIds: ["similarity-by-transformation"],
+    senses: {
+      similar: "similar-figures",
+      side: "side",
+      vertex: "vertex",
+      image: "image-transformation",
+      center: "center",
+    },
+    noLink: [
+      "factor",
+      "factors",
+      "unit",
+      "units",
+      "change",
+      "mean",
+      "square",
+      "multiple",
+      "scale",
+    ],
     objectives: [
       "Find the scale factor between two triangles on a grid.",
-      "Choose the dilation and rigid motions that map one triangle onto the other.",
-      "Decide that triangles are not similar when sides scale unequally.",
+      "Choose a dilation (resizing) and rigid motions (slides, turns and flips) that carry one triangle onto the other.",
+      "Decide that triangles are not similar when their sides grow by different factors.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Same shape, different size",
         paragraphs: [
-          "A dilation about a center multiplies every distance from the center by a scale factor $k$. It enlarges when $k>1$ and shrinks when $0<k<1$, and it keeps every angle. Two figures are similar when a dilation followed by moves that do not change size (rigid motions) turns one into the other.",
-          "That means corresponding sides are all in the same ratio $k$. If two matching pairs of sides scale by different factors, no dilation can fix it.",
+          "Points on a grid are named by coordinates. The point $(1, 2)$ is 1 unit right of the origin, the point $(0, 0)$, and 2 units up. Negative numbers mean left or down.",
+          "A dilation resizes a figure from a center point. It multiplies every distance from the center by the same number, called the scale factor $k$. If $k$ is bigger than 1, the figure grows. If $k$ is between 0 and 1, it shrinks. Every angle stays the same, so the shape stays the same. A dilation about the origin multiplies both coordinates by $k$: with $k = 2$, the point $(1, 2)$ goes to $(2, 4)$.",
+          "A rigid motion moves a figure without changing its size: a translation slides it, a rotation turns it, and a reflection flips it. Two figures are similar when a dilation followed by rigid motions turns one into the other. Then all matching sides are in the same ratio $k$. If two pairs of matching sides grow by different factors, no dilation can fix that, and the figures are not similar.",
         ],
       },
     ],
@@ -582,10 +729,11 @@ export const geometryRequirementGapLessons: Lesson[] = [
         "Triangle $ABC$ has $A(1,2)$, $B(3,2)$, $C(1,5)$. Triangle $DEF$ has $D(-3,1)$, $E(1,1)$, $F(-3,7)$. Find the dilation about the origin and the translation that map $A\\to D$, $B\\to E$, $C\\to F$.",
       figure: similarFigure,
       steps: [
-        "Compare $AB$ and $DE$: $AB=2$ and $DE=4$. Compare $AC$ and $DF$: $AC=3$ and $DF=6$. Both pairs scale by $2$, so the triangles are similar with $k=2$.",
-        "Dilate by $2$ about the origin: $A(1,2)\\to(2,4)$, $B(3,2)\\to(6,4)$, $C(1,5)\\to(2,10)$.",
-        "To move $(2,4)$ to $D(-3,1)$, translate by $(x,y)\\to(x-5,y-3)$.",
-        "Check: $(6,4)\\to(1,1)=E$ and $(2,10)\\to(-3,7)=F$.",
+        "Compare matching sides. $AB$ runs from $x = 1$ to $x = 3$, so $AB = 2$, and $DE$ runs from $x = -3$ to $x = 1$, so $DE = 4$. Likewise $AC = 5 - 2 = 3$ and $DF = 7 - 1 = 6$.",
+        "Both pairs grow by 2. Each triangle also has a square corner at $A$ or $D$, where a flat side meets an upright one. So the triangles are similar with scale factor $k = 2$.",
+        "Dilate by 2 about the origin, multiplying each coordinate by 2: $A(1,2)\\to(2,4)$, $B(3,2)\\to(6,4)$, $C(1,5)\\to(2,10)$.",
+        "Slide the new $A$ onto $D$. From $(2,4)$ to $(-3,1)$, $x$ goes down by 5 and $y$ goes down by 3. So translate by $(x,y)\\to(x-5,y-3)$.",
+        "Check the other two vertices: $(6,4)\\to(1,1)=E$ and $(2,10)\\to(-3,7)=F$. All three corners land on their partners.",
       ],
       answer:
         "Dilate by a factor of 2 about the origin, then translate $(x,y)\\to(x-5,y-3)$",
@@ -595,24 +743,24 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "Order matters",
         paragraphs: [
-          "A dilation about the origin multiplies the coordinates, so do it first and translate afterward. Translating first and then dilating also multiplies the translation by $k$ and lands elsewhere. If the image is reflected or rotated, insert that motion between the dilation and the translation and check every vertex.",
+          "A dilation about the origin multiplies the coordinates, so the simplest order is to dilate first and slide afterward. If you slide first, the dilation also doubles that slide. The same slide then lands the triangle somewhere else, so you would need a different slide. If the image (the moved copy) is flipped or turned, put that motion between the dilation and the slide. Then check every vertex.",
         ],
       },
       {
         stage: "formal",
         title: "The definition",
         paragraphs: [
-          "Two figures are similar if and only if a sequence of dilations and rigid motions maps one onto the other. A dilation with scale factor $k$ multiplies all lengths by $k$ and preserves angles, and rigid motions preserve both, so similar figures have equal corresponding angles and corresponding sides in the ratio $k$.",
+          "Two figures are similar exactly when some sequence of dilations and rigid motions maps one onto the other. A dilation with a positive scale factor $k$ multiplies all lengths by $k$ and keeps angles. Rigid motions keep both lengths and angles. So similar figures have equal matching angles, and their matching sides are all in the ratio $k$.",
         ],
       },
     ],
     pitfalls: [
-      "Dilate first, then translate, when the dilation is about the origin.",
-      "Right triangles are similar only if their legs scale by the same factor.",
-      "A scale factor below 1 is a shrink, written as a fraction.",
+      "When the dilation is about the origin, dilate first, then slide. A slide done first gets stretched by the dilation.",
+      "Right triangles are similar only if both legs grow by the same factor.",
+      "A scale factor between 0 and 1, such as one half, means the figure shrinks.",
     ],
     parentGuide:
-      "Ask the learner to compare two photos of the same picture in different sizes and say what ratio relates matching lengths.",
+      "Ask the learner to compare two prints of the same photo at different sizes. Which number relates matching lengths, and is it the same everywhere on the photo?",
   },
   {
     id: "aa-similarity",

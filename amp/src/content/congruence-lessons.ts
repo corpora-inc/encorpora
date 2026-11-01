@@ -4,9 +4,24 @@ import { act, scene, step, triangle } from "../math/scene/author";
 
 export const congruenceMethods: Record<string, ProblemMethod> = {
   "triangle-congruence-criteria": {
-    goal: "Decide whether the corresponding givens determine congruent triangles, or complete a specified criterion.",
+    goal: "Decide whether the given matching sides and angles prove two triangles congruent, or name the one fact a test still needs.",
+    senses: {
+      side: "side",
+      vertex: "vertex",
+      degrees: "degree-angle",
+      similar: "similar-figures",
+    },
+    noLink: [
+      "opposite",
+      "parts",
+      "part",
+      "third",
+      "whole",
+      "leaves",
+      "intersection",
+    ],
     intuition:
-      "Congruent triangles have the same side lengths and angle measures. Corresponding parts are sides or angles paired by the stated vertex matching. $S$ means a side pair and $A$ an angle pair: SSS matches three sides; SAS uses two sides and the angle between them; ASA uses two angles and the side between them; AAS uses two angles and another side.",
+      "Two triangles are congruent when they have the same size and shape, so one fits exactly on the other. Corresponding parts are the sides and angles that match up when you pair the corners in order. If $A$ goes with $D$ and $B$ with $E$, side $AB$ goes with side $DE$. In the test names, S means a matching pair of sides and A a matching pair of angles. SSS is three pairs of sides. SAS is two pairs of sides and the angle between them. ASA is two pairs of angles and the side between them. AAS is two pairs of angles and a side not between them. Three matching angles (AAA), or two sides and an angle not between them (SSA), do not prove congruence.",
     terms: [
       "congruent",
       "corresponding",
@@ -14,17 +29,17 @@ export const congruenceMethods: Record<string, ProblemMethod> = {
       ["side", "The included side joins the vertices of the two given angles."],
     ],
     method: [
-      "Use the vertex correspondence to pair sides and angles. Count only the equalities that are stated or marked.",
-      "Check their positions: SSS uses three sides; SAS uses two sides and their included angle; ASA uses two angles and their included side; AAS uses two angles and another side.",
-      "If a named criterion needs one more fact, identify the exact missing corresponding pair. Three angles permit scaling; two sides with a non-included angle require further reasoning and are not a general congruence criterion.",
+      "Pair the corners in the given order, then pair the sides and angles. Count only the equal pairs that are stated or marked.",
+      "Check where each part sits. In SAS the angle is between the two sides. In ASA the side joins the two angles. AAS uses two angles and a side that is not between them.",
+      "If a named test needs one more fact, find the exact missing matching pair. Three angles allow a bigger or smaller copy. Two sides with an angle not between them can make two different triangles.",
     ],
     watch:
-      "Check where the angle or side lies. Three pieces of information do not automatically prove congruence, and an unmarked feature supplies no given fact.",
+      "Check where the angle or side sits. Three facts do not automatically prove congruence. A feature with no mark or statement is not a given fact.",
   },
 };
 export const congruencePrinciples: Record<string, string> = {
   "triangle-congruence-criteria":
-    "For nondegenerate triangles in a Euclidean plane, SSS, SAS, ASA and AAS give sufficient corresponding information for congruence. The included angle lies between the two specified sides; the included side joins the two specified angle vertices. AAA and SSA are not general congruence criteria.",
+    "SSS, SAS, ASA and AAS each give enough matching information to prove two triangles congruent. The included angle lies between the two named sides. The included side joins the corners of the two named angles. AAA and SSA are not congruence tests in general. These facts hold for true triangles, whose corners are not all on one line, in ordinary flat geometry.",
 };
 export const congruenceScenes = {
   "congruence-three-sides": scene(
@@ -77,22 +92,44 @@ export const congruenceLessons: Lesson[] = [
     id: "triangle-congruence-givens",
     title: "When triangle givens fix the whole shape",
     summary:
-      "Use corresponding sides and angles to establish a triangle's size and shape.",
+      "Two triangles are congruent when they are exactly the same size and shape. You do not need to measure all six parts, the three sides and the three angles. Certain sets of three matching parts are enough to fix the whole triangle. These sets are called congruence tests; one is three matching sides. Other sets of three, such as three matching angles, are not enough.",
     templateIds: ["triangle-congruence-criteria"],
+    senses: {
+      side: "side",
+      vertex: "vertex",
+      degrees: "degree-angle",
+      similar: "similar-figures",
+      radius: "radius",
+      center: "center",
+      image: "image-transformation",
+    },
+    noLink: [
+      "opposite",
+      "parts",
+      "part",
+      "third",
+      "square root",
+      "certain",
+      "whole",
+      "leaves",
+      "more than",
+      "change",
+      "changes",
+    ],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Identify SSS, SAS, ASA and AAS from corresponding givens.",
-      "Explain why AAA and SSA do not generally establish congruence.",
-      "Complete a specified criterion with a corresponding side or angle pair.",
+      "Recognize the tests SSS, SAS, ASA and AAS from the matching sides and angles you are given.",
+      "Explain why three matching angles (AAA), or two sides and an angle not between them (SSA), do not prove congruence in general.",
+      "Name the one matching side or angle that completes a given test.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "What must match?",
         paragraphs: [
-          "A triangle has three straight sides and three vertices, the points where the sides meet. An angle is the opening between two sides at a vertex. You need to recognize sides and angles and know that a triangle's interior angles sum to $180^\\circ$.",
-          "Congruent triangles match exactly after sliding, turning or reflecting, without stretching. These movements are called rigid motions because they preserve every length and angle. Corresponding parts are parts paired by a vertex matching: if $A$ matches $D$, $B$ matches $E$ and $C$ matches $F$, then side $AB$ matches $DE$ and angle $A$ matches angle $D$.",
-          "A congruence criterion is a set of matching measurements sufficient to fix the whole triangle. The letter $\\mathrm{S}$ stands for side and $\\mathrm{A}$ for angle. The included angle of two sides is the angle at their common endpoint. The included side of two angles joins their vertices. For sides $AB$ and $AC$, the included angle is $\\angle A$; for angles $A$ and $B$, the included side is $AB$.",
+          "A triangle has three straight sides and three corners, called vertices (one corner is a vertex). An angle is the opening between two sides at a vertex, measured in degrees (°). The three angles inside any triangle add to $180^\\circ$.",
+          "Two triangles are congruent when one can be moved exactly onto the other by sliding, turning or flipping, with no stretching. These moves are called rigid motions, because they keep every length and every angle the same. The parts that land on each other are called corresponding parts. If $A$ matches $D$, $B$ matches $E$ and $C$ matches $F$, then side $AB$ matches side $DE$. The angle at $A$, written $\\angle A$, matches $\\angle D$.",
+          "A congruence test, also called a criterion, is a set of matching parts that is enough to fix the whole triangle. In the names, S stands for a side and A for an angle. The included angle of two sides is the angle at the corner they share: for sides $AB$ and $AC$, it is $\\angle A$. The included side of two angles is the side joining their corners: for $\\angle A$ and $\\angle B$, it is side $AB$.",
         ],
       },
     ],
@@ -100,10 +137,11 @@ export const congruenceLessons: Lesson[] = [
       prompt:
         "Given $AB = DE = 4$ cm, $BC = EF = 5$ cm and $CA = FD = 3$ cm, which criterion proves triangle $ABC$ congruent to triangle $DEF$?",
       steps: [
-        "Pair the endpoints: $A$ with $D$, $B$ with $E$, $C$ with $F$. Each stated equality compares corresponding sides.",
-        "The three side pairs match: 4 cm, 5 cm and 3 cm. This is side-side-side, abbreviated SSS.",
-        "To see why this fixes the triangle, match the 4 cm sides. The third vertex must be 3 cm from one endpoint and 5 cm from the other. Those distances locate it on two intersecting circles. The possible positions are reflections across the matched side, so both give congruent triangles.",
-        "Check that the lengths can form a triangle: $3 + 4 > 5$. The other two triangle inequalities also hold. A reflection changes orientation but preserves the side lengths.",
+        "Pair the corners by the order of the letters: $A$ with $D$, $B$ with $E$, $C$ with $F$. Each given equality then compares matching sides.",
+        "All three pairs of sides match: 4 cm, 5 cm and 3 cm. Three matching sides is the test side-side-side, written SSS.",
+        "Here is why three sides fix the triangle. Lay the 4 cm sides on top of each other. The third corner must be 3 cm from one end and 5 cm from the other. So it lies where a circle of radius 3 cm around one end crosses a circle of radius 5 cm around the other. (The radius is the distance from a circle's center to any point on the circle.)",
+        "The two circles cross at two points, one on each side of the matched side. Each point is the mirror image (reflection) of the other across that side, so both give congruent triangles.",
+        "Check that the lengths can make a triangle: any two sides must add to more than the third. Here $3 + 4 = 7 > 5$, $3 + 5 = 8 > 4$ and $4 + 5 = 9 > 3$.",
       ],
       answer: "SSS",
     },
@@ -112,35 +150,35 @@ export const congruenceLessons: Lesson[] = [
         stage: "method",
         title: "Read the matching marks",
         paragraphs: [
-          "The picture uses the example's lengths. Matching tick counts identify the three side pairs; the labels give lengths in centimeters. Follow each pair before comparing the whole triangles. A drawing that merely looks the same would not prove congruence.",
+          "The picture uses the example's lengths. Small marks called ticks show which sides match: sides with the same number of ticks are equal. The labels give the lengths in centimeters. Follow each pair before you compare the whole triangles. A drawing that only looks the same does not prove congruence.",
         ],
         illustration: "congruence-three-sides",
       },
       {
         stage: "method",
-        title: "Why the other criteria work",
+        title: "Why the other tests work",
         paragraphs: [
-          "SAS means two corresponding sides and their included angles match. For $AB$, $AC$ and $\\angle A$, first match the angle's two rays, then mark the specified length on each ray. Both remaining vertices are fixed. An angle at $B$ would not be between $AB$ and $AC$, so that information would be SSA instead.",
-          "ASA means two corresponding angles and their included sides match. With angles $A$ and $B$ and side $AB$ fixed, the two angle rays from the side's endpoints locate the third vertex. AAS uses a non-included side, such as $BC$, instead. The missing angle is $180^\\circ$ minus the two given angles, so AAS supplies an ASA configuration too.",
-          "AAA means all three corresponding angles match. Doubling every side preserves the angles but changes the size, so AAA establishes similarity, not congruence. Similar triangles have the same shape; congruent triangles also have the same size.",
-          "SSA means two sides and a non-included angle match. Sometimes those measurements determine a triangle, but sometimes they permit two different triangles. For an exact counterexample, take $A=(0,0)$ and $B=(7,0)$. Both $C=(3,4)$ and $C=(4,3)$ give $AC=5$, $AB=7$ and $m\\angle B=45^\\circ$. Yet $BC=4\\sqrt{2}$ in the first case and $BC=3\\sqrt{2}$ in the second. Thus SSA is not a general criterion.",
+          "SAS means two matching sides and the angle between them match. Take sides $AB$ and $AC$ with $\\angle A$ between them. Copy the angle first, so its two rays (half-lines) point the same ways. Then mark each side's length along its ray. Both remaining corners are now fixed. An angle at $B$ would not be between $AB$ and $AC$, so that information would be SSA instead.",
+          "ASA means two matching angles and the side between them match. Fix side $AB$ and the angles at $A$ and $B$. A ray leaves each end of the side at its angle. The two rays cross at exactly one point, the third corner. AAS uses a side that is not between the angles, such as $BC$. The missing angle is $180^\\circ$ minus the two given angles, so all three angles are known. Then the given side lies between two known angles, and ASA applies.",
+          "AAA means all three matching angles are equal. Doubling every side keeps the angles but changes the size. So AAA shows the triangles are similar (the same shape), not congruent (the same shape and size).",
+          "SSA means two sides and an angle not between them match. Sometimes that fixes one triangle, but sometimes two different triangles fit. Here is an exact example on a grid. Take $A = (0, 0)$ and $B = (7, 0)$. Both $C = (3, 4)$ and $C = (4, 3)$ give $AC = 5$, $AB = 7$ and an angle of $45^\\circ$ at $B$. But side $BC$ is $4\\sqrt{2}$ in the first triangle and $3\\sqrt{2}$ in the second. Here $\\sqrt{2}$, the square root of 2, is the number that times itself makes 2, about 1.41. So SSA is not a test in general.",
         ],
       },
       {
         title: "The precise conditions",
         paragraphs: [
-          "In Euclidean plane geometry, each of SSS, SAS, ASA and AAS is sufficient for congruence of two nondegenerate triangles under a consistent vertex correspondence. Nondegenerate means that the three vertices do not lie on one straight line. These criteria use equal corresponding side lengths and equal corresponding angle measures. A rotation, translation or reflection may be needed to make the match.",
-          "Use only stated or marked information. To complete a named criterion, supply the exact missing pair in that criterion. For example, given equal angles at $A$ and $D$ and at $B$ and $E$, the additional pair $AB=DE$ completes ASA, while $BC=EF$ completes AAS.",
+          "In ordinary flat geometry, called Euclidean geometry, each of SSS, SAS, ASA and AAS proves two triangles congruent. The corners must be matched the same way for every pair. The triangles must be true triangles, meaning their three corners do not lie on one straight line. The tests compare equal matching side lengths and equal matching angle measures. A rotation (turn), translation (slide) or reflection (flip) may be needed to line the triangles up.",
+          "Use only facts that are stated or marked. To complete a named test, supply the exact missing pair. Suppose the angles at $A$ and $D$ are equal, and so are the angles at $B$ and $E$. Then $AB = DE$ completes ASA, because $AB$ lies between those two angles. Instead, $BC = EF$ completes AAS, because $BC$ does not.",
         ],
       },
     ],
     pitfalls: [
-      "Check the included position before naming SAS or ASA.",
-      "AAA gives no fixed side length.",
-      "SSA is not a general criterion; check any special conditions separately.",
-      "Keep the same vertex correspondence for every pair.",
+      "Check that the angle or side lies between the others before you name SAS or ASA.",
+      "Three matching angles (AAA) fix the shape but not the size.",
+      "SSA is not a test in general. Check any special conditions separately.",
+      "Keep the same corner matching for every pair.",
     ],
     parentGuide:
-      "Ask the learner to trace the endpoints of each corresponding side, then point to the included angle or side. Change one given's position and ask whether the same criterion still applies. For AAA, enlarge a paper triangle to demonstrate unchanged angles and changed lengths.",
+      "Ask the learner to trace the two ends of each matching side, then point to the included angle or side. Move one given to a different spot and ask whether the same test still works. For AAA, enlarge a paper triangle on a copier: the angles stay the same while the lengths change.",
   },
 ];

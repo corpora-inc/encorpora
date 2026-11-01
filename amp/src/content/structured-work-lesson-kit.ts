@@ -1,4 +1,4 @@
-import type { MethodTerm } from "../glossary/types";
+import type { GlossarySenses, MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -20,6 +20,12 @@ export type WorkEntry = {
   formal: string;
   pitfalls: string[];
   parentGuide: string;
+  /** Practice-screen task line (<= 140 characters); defaults to the summary. */
+  goal?: string;
+  /** Intuition sections the reference lesson shows before "What the work shows". */
+  background?: { title: string; paragraphs: string[] }[];
+  senses?: GlossarySenses;
+  noLink?: string[];
 };
 
 export function workContent(entries: readonly WorkEntry[]) {
@@ -27,8 +33,10 @@ export function workContent(entries: readonly WorkEntry[]) {
     entries.map((e) => [
       e.id,
       {
-        goal: e.summary,
+        goal: e.goal ?? e.summary,
         intuition: e.intuition,
+        ...(e.senses ? { senses: e.senses } : {}),
+        ...(e.noLink ? { noLink: e.noLink } : {}),
         terms: e.terms,
         method: e.method,
         watch: e.watch,
@@ -44,7 +52,14 @@ export function workContent(entries: readonly WorkEntry[]) {
     summary: e.summary,
     templateIds: [e.id],
     objectives: [...e.objectives],
+    ...(e.senses ? { senses: e.senses } : {}),
+    ...(e.noLink ? { noLink: e.noLink } : {}),
     sections: [
+      ...(e.background ?? []).map((s) => ({
+        stage: "intuition" as const,
+        title: s.title,
+        paragraphs: s.paragraphs,
+      })),
       {
         stage: "intuition",
         title: "What the work shows",
