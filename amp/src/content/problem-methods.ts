@@ -855,25 +855,29 @@ const legacyMethods: Record<string, ProblemMethod> = {
     watch: '"How many more" asks for a difference, not a total.',
   },
   "mean-data": {
-    goal: "Given a list of numbers, find their mean.",
+    goal: "Find the mean of a list of numbers: the size each would be if the total were shared out equally.",
     terms: ["mean-average"],
     method: [
-      "Add all the values to get the total.",
-      "Count the values.",
-      "Mean = total ÷ count: the size each value would be if the total were shared equally.",
+      "Add all the values to get the total. A value is one number in the list.",
+      "Count the values. A repeated value counts each time it appears, so 3, 4, 4 is three values.",
+      "Divide the total by the count. The mean is the size each value would be if the total were shared out equally.",
     ],
     watch:
-      "Divide by how many values there are, counting repeated values each time.",
+      "Divide by how many values there are, counting repeated values each time. The list 3, 4, 4, 7, 8 has 5 values, not 4.",
   },
   "simple-probability": {
-    goal: "Given counts of each color in a bag, find the probability of drawing one color.",
+    intuition:
+      "Probability means chance: how likely something is to happen. An outcome is one possible result: here, each counter in the bag is one outcome. Equally likely means every outcome has the same chance, as when same-sized counters are mixed and drawn without looking. The event is the result you ask about, such as drawing red. A favorable outcome is an outcome that makes the event happen. With equally likely outcomes, the probability is the number of favorable outcomes divided by the number of all outcomes.",
+    goal: "Find the probability (the chance) of drawing one color from a bag, when every item is equally likely to be drawn.",
+    senses: { event: "event" },
     terms: ["probability"],
     method: [
-      "Count the favorable items: the color asked for.",
-      "Count all items in the bag.",
-      "Probability = favorable ÷ total, simplified.",
+      "Count the favorable outcomes: the items of the color asked for. With 5 red and 12 blue, there are 5 red.",
+      "Count all the outcomes: every item in the bag, of every color. Here $5 + 12 = 17$.",
+      "Divide the favorable count by the total: $\\tfrac{5}{17}$. Simplify the fraction: divide the top and bottom by the same number greater than 1, if both divide by it exactly.",
     ],
-    watch: "Divide by the total, not by the other color.",
+    watch:
+      "Divide by all the items in the bag, not by the other color. With 5 red and 12 blue, the chance of red is $\\tfrac{5}{17}$, not $\\tfrac{5}{12}$.",
   },
   // Fractions
   "unit-piece-size": {
@@ -1148,14 +1152,18 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "fraction-share-amount": {
     intuition:
-      "Sharing a fractional amount works like sharing a whole amount: split it into equal shares. You can share its pieces among the people or cut the pieces smaller. Everyone’s shares together must make the original amount.",
-    goal: "Given a fraction shared equally, find each share.",
+      "A fraction such as $\\tfrac{6}{8}$ names equal pieces of one whole. Its denominator, the bottom number, says how many equal pieces make the whole. Its numerator, the top number, says how many of those pieces you have. Sharing an amount equally among 3 people means dividing it by 3. You can hand out the pieces, or cut every piece into smaller equal pieces.",
+    goal: "Share a fraction of an amount equally among a number of people, and find each person's share.",
+    senses: { whole: "whole" },
+    terms: ["numerator", "denominator"],
     method: [
-      "Dividing a/b among $n$ people gives each a/(b × n).",
-      "If $n$ divides the numerator, share the pieces instead: 6/8 among 3 is 2/8 each.",
-      "Simplify.",
+      "If the pieces can be handed out so everyone gets the same count of them, do that. $\\tfrac{6}{8}$ among 3 people is $\\tfrac{2}{8}$ each, because $6 \\div 3 = 2$.",
+      "Otherwise, cut each piece into as many smaller pieces as there are people. Sharing $\\tfrac{5}{6}$ among 3 cuts each $\\tfrac{1}{6}$ piece into 3. Each small piece is $\\tfrac{1}{18}$, because $6 \\times 3 = 18$ of them make the whole.",
+      "Each person takes one small piece from every original piece: $\\tfrac{5}{18}$. So $\\tfrac{a}{b}$ shared among $n$ people is $\\tfrac{a}{b \\times n}$ each.",
+      "Simplify: divide the top and bottom by the same number greater than 1, if both divide by it exactly. The amount stays the same.",
     ],
-    watch: "5/6 ÷ 3 = 5/18.",
+    watch:
+      "Multiply the denominator by the number of people and leave the numerator alone: $\\tfrac{5}{6} \\div 3 = \\tfrac{5}{18}$, not $\\tfrac{15}{6}$.",
   },
   "whole-unit-groups": {
     intuition:
@@ -1169,25 +1177,34 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "Multiply by the denominator; dividing the wholes by it gives a fraction, not a count.",
   },
   "fraction-group-count": {
+    noLink: ["more than"],
     intuition:
-      "Ask how many container-sized amounts fit into the total. If the total and one container are both written as counts of equal-sized pieces, compare those counts. A leftover part can be described as part of a container.",
-    goal: "Given a total and a container size, both fractions, find how many containers.",
+      "A fraction such as $\\tfrac{6}{4}$ means 6 equal parts, where 4 of those parts make one whole. Its numerator, the top number, counts the parts. Its denominator, the bottom number, says how many parts make one whole. A liter is an amount of liquid, a little more than a quart. So $\\tfrac{6}{4}$ liters means 6 pieces, each $\\tfrac{1}{4}$ of a liter. When two amounts use pieces of the same size, compare how many pieces each has. Pieces you have divided by pieces one container holds gives the number of containers.",
+    goal: "Given a total amount and the amount one container holds, both fractions, find how many containers it fills.",
+    senses: { fourth: "fourth", unit: "unit", whole: "whole", part: "part" },
+    terms: ["numerator", "denominator"],
     method: [
-      "Write both with the same denominator.",
-      "Divide the numerators: total pieces ÷ pieces per container.",
+      "Write both amounts with the same denominator, so both count pieces of the same size.",
+      "Divide the numerators: total pieces ÷ pieces in one container. For $\\tfrac{6}{4}$ liters in containers of $\\tfrac{4}{4}$ liter, $6 \\div 4 = \\tfrac{3}{2}$.",
+      "A leftover part counts as a fraction of a container: $\\tfrac{3}{2}$ means one full container and half of another.",
     ],
     watch:
-      "The answer counts containers, not liters; a part container is a fraction of one container.",
+      "The answer counts containers, not liters. A part-filled container counts as a fraction of one container, such as $\\tfrac{1}{2}$.",
   },
   "divide-fractions": {
-    goal: "Given a fraction divided by a fraction, find the quotient.",
+    senses: { whole: "whole", part: "part" },
+    noLink: ["change"],
+    intuition:
+      "A fraction such as $\\tfrac{3}{4}$ means 3 of 4 equal parts of a whole. Its numerator, the top number, counts the parts. Its denominator, the bottom number, says how many equal parts make the whole. Division means finding how many groups of one size fit into an amount. So $\\tfrac{3}{4} \\div \\tfrac{1}{8}$ asks how many pieces of size $\\tfrac{1}{8}$ fit in $\\tfrac{3}{4}$. The answer is 6, because $\\tfrac{3}{4} = \\tfrac{6}{8}$. Multiplication is the quicker way to get it: multiply by the reciprocal, the second fraction flipped upside down.",
+    goal: "Divide one fraction by another and find the quotient: the answer to the division.",
     terms: ["reciprocal"],
     method: [
-      "Keep the first fraction.",
-      "Change ÷ to × and flip the second fraction to its reciprocal: 3/4 becomes 4/3.",
-      "Multiply, then simplify.",
+      "Keep the first fraction as it is.",
+      "Change the division to multiplication, and flip the second fraction upside down. The flipped fraction is called its reciprocal: $\\tfrac{3}{4}$ becomes $\\tfrac{4}{3}$.",
+      "Multiply the tops together and the bottoms together, then simplify: $\\tfrac{1}{2} \\div \\tfrac{10}{12} = \\tfrac{1}{2} \\times \\tfrac{12}{10} = \\tfrac{12}{20} = \\tfrac{3}{5}$.",
     ],
-    watch: "Flip only the divisor, the second fraction, never the first.",
+    watch:
+      "Flip only the divisor, the second fraction: the one you divide by. Never flip the first fraction.",
   },
   // Decimals, ratio, percent
   "decimal-addition": {
@@ -1211,46 +1228,58 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "Do not line up the decimal points to multiply; count the decimal places instead.",
   },
   "ratio-missing": {
-    goal: "Given a ratio and one new amount, find the matching amount.",
+    noLink: ["whole", "changes"],
+    intuition:
+      "A ratio is a comparison of two amounts, such as 3 cups of blue paint for every 5 cups of white. We write it $3 : 5$ and read it “3 to 5”. Multiplying both amounts by the same number makes a bigger or smaller batch of the same color. That number is called the scale factor. Ratios that make the same mix are called equivalent ratios.",
+    goal: "A ratio gives a mix, such as 3 cups of blue for every 5 cups of white. Find the matching amount for a new batch.",
+    senses: { factor: "scale-factor", scale: "scale" },
     terms: ["ratio"],
     method: [
-      "Find the scale factor: new amount ÷ its ratio number.",
-      "Multiply the other ratio number by the same factor.",
+      "Match the new amount to its number in the ratio. In 3 cups of blue for every 5 cups of white, 14 cups of white matches the 5.",
+      "Find the scale factor, the number the whole batch is multiplied by: new amount ÷ its ratio number. Here $14 \\div 5 = 2.8$.",
+      "Multiply the other ratio number by the same scale factor: $3 \\times 2.8 = 8.4$ cups of blue.",
     ],
     watch:
-      "Multiply both parts by the same factor; adding the same amount to both breaks the ratio.",
+      "Multiply both amounts by the same number. Adding the same amount to both usually changes the mix: $3 : 5$ and $4 : 6$ make different colors.",
   },
   "unit-price": {
-    goal: "Given the cost of several items, find the cost of a different number.",
+    goal: "Given the cost of some identical items, find the cost of a different number of them.",
+    senses: { scale: "scale" },
     terms: ["unit-price"],
     method: [
-      "Unit price = total cost ÷ number of items.",
-      "Multiply the unit price by the new number of items.",
-      "Check: more items must cost more.",
+      "Find the unit price, the cost of 1 item: total cost ÷ number of items. 10 notebooks for 100 dollars is $100 \\div 10 = 10$ dollars each.",
+      "Multiply the unit price by the new number of items: 9 notebooks cost $9 \\times 10 = 90$ dollars.",
+      "Check: more items must cost more, and fewer items must cost less.",
     ],
     watch:
-      "Find the price of one item first; the given total is for a different number of items.",
+      "Find the price of 1 item first. The given total is for a different number of items.",
   },
   "percent-of": {
-    goal: "Given a percent and an amount, find that percent of the amount.",
+    noLink: ["part"],
+    goal: "Find a percent of an amount, such as 25% of 80.",
+    senses: { fourth: "fourth", whole: "whole" },
     terms: ["percent"],
     method: [
-      "Write the percent as a fraction over 100: 35% = 35/100.",
-      "Multiply that fraction by the amount.",
-      "Shortcut: 10% is the amount ÷ 10, and 50% is half.",
+      "Percent means per hundred, so write the percent as a fraction with 100 on the bottom: $35\\% = \\tfrac{35}{100}$.",
+      "Multiply that fraction by the amount: $\\tfrac{35}{100} \\times 60 = \\tfrac{2100}{100} = 21$.",
+      "Shortcuts: 10% is $\\tfrac{10}{100} = \\tfrac{1}{10}$, so divide by 10. 50% is $\\tfrac{1}{2}$, so take half. 25% is $\\tfrac{1}{4}$, so divide by 4.",
     ],
     watch:
-      "Find the percent of the stated amount; do not just write the percent as the answer.",
+      "The answer is a part of the stated amount, not the percent itself. 25% of 7 is $7 \\div 4 = 1.75$, not 25.",
   },
   "proportional-rule-choice": {
-    goal: "Given several rules, choose the proportional one.",
+    goal: "From several rules, choose the one where the output is always the same number times the input.",
+    senses: { rule: "rule" },
+    intuition:
+      "A rule is a way of turning one number into another. The input is the number you start with, and the output is the number the rule gives. Proportional means that the output $y$ is always the same fixed number times the input $x$, as in $y = 3x$. Here $3x$ means 3 times $x$. That fixed number is called the constant of proportionality. Doubling $x$ then doubles $y$, and $x = 0$ gives $y = 0$.",
     terms: ["proportional-relationship"],
     method: [
-      "A proportional rule is y = kx: one multiplier, no added constant.",
-      "Check: it gives y = 0 when x = 0.",
+      "Look for the form $y = kx$: $x$ times one fixed number $k$, with nothing added or subtracted.",
+      "Check $x = 0$. A proportional rule gives $y = 0$ there. The rule $y = 3x + 2$ gives $y = 2$, so it is not proportional.",
+      "Check a second input if you are unsure: $y \\div x$ must be the same number $k$ for every input other than 0.",
     ],
     watch:
-      "A rule with an added constant, such as y = 3x + 2, is linear but not proportional.",
+      "A rule like $y = 3x + 2$, with a number other than 0 added, is not proportional. At $x = 0$ it gives $y = 2$, not 0. So its graph misses the point $(0, 0)$, where both $x$ and $y$ are 0.",
   },
   // Integers, expressions, equations
   "integer-addition": {
@@ -1269,23 +1298,36 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "With different signs, the answer takes the sign of the number farther from 0: $-8 + 3 = -5$, not 5. If both are the same distance from 0, the answer is 0.",
   },
   "number-line-distance": {
-    goal: "Given two points on a number line, find the distance between them.",
+    goal: "Find the distance between two points on a number line: how many units apart they are.",
+    senses: { unit: "unit" },
+    noLink: ["sides", "mean"],
+    intuition:
+      "A number line is a line with evenly spaced marks, called ticks, for numbers. A positive number is a number greater than 0, to the right of 0. A negative number is a number less than 0, to the left of 0, such as $-7$. The distance between two points is how many units, or equal steps, apart they are. A distance is never negative.",
     method: [
-      "Subtract the smaller number from the larger: from −7 to 6 is 6 − (−7).",
-      "When the points are on both sides of 0, add their distances from 0.",
-      "Distance is never negative.",
+      "Read the number at each marked point.",
+      "Subtract the smaller number from the larger: from $-7$ to 6 is $6 - (-7) = 6 + 7 = 13$.",
+      "Or count from 0: when the points are on both sides of 0, add their distances from 0. $-7$ is 7 from 0 and 6 is 6 from 0, so $7 + 6 = 13$.",
     ],
-    watch: "From −7 to 6 is 6 − (−7) = 13, not 6 − 7.",
+    watch:
+      "Subtracting a negative number adds its size. From $-7$ to 6 is $6 - (-7) = 13$, not $6 - 7$.",
   },
   "integer-power": {
-    goal: "Given a base and an exponent, find the power's value.",
+    goal: "Find the value of a power such as $3^4$: a base multiplied by itself as many times as the exponent says.",
+    senses: {
+      base: "base-exponent",
+      square: "square-number",
+      factor: "factor-number",
+    },
+    intuition:
+      "In $3^4$, the base is the number being multiplied, 3. The exponent is the small raised number, 4: it counts how many copies of the base are multiplied together. So $3^4 = 3 \\cdot 3 \\cdot 3 \\cdot 3 = 81$, where the dot $\\cdot$ means multiply. All of $3^4$ together is called a power.",
     terms: ["base-exponent", "exponent"],
     method: [
-      "Write the factors: $b^n$ is $n$ factors of $b$.",
-      "Group them into powers you know: $3^4 = 3^2 \\cdot 3^2$, $2^7 = 2^5 \\cdot 2^2$.",
-      "Multiply the groups. A nonzero base to the power 0 is 1.",
+      "Write out the factors, the numbers being multiplied: $5^3$ is $5 \\cdot 5 \\cdot 5$.",
+      "Multiply step by step. Or split the copies into groups you know: four 3s are two pairs, so $3^4 = 3^2 \\cdot 3^2 = 9 \\cdot 9 = 81$.",
+      "Exponent 0 gives 1 for any base other than 0. Each step down in the exponent divides by the base: $7^2 = 49$, $7^1 = 7$, and $7^0 = 7 \\div 7 = 1$.",
     ],
-    watch: "$8^3 = 8 \\cdot 8 \\cdot 8$, not $8 \\cdot 3$.",
+    watch:
+      "The exponent counts copies of the base; it does not multiply the base. $8^3 = 8 \\cdot 8 \\cdot 8 = 512$, not $8 \\cdot 3 = 24$.",
   },
   "operation-order": {
     goal: "Given an expression, find its value.",
@@ -1339,70 +1381,102 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "A constant is not an $x$ term. When you combine like terms, leave it out of the coefficient.",
   },
   "linear-equation": {
-    goal: "Given an equation like ax + b = c, find $x$.",
+    noLink: ["change"],
+    intuition:
+      "An equation has two sides: the amount on the left of the equal sign and the amount on the right. It says they are equal. In $11x + 3 = -63$, the letter $x$ stands for an unknown number, and $11x$ means 11 times $x$. The number that makes the equation true is called the solution. To find it, undo what was done to $x$, last step first. Make the same change on both sides so they stay equal.",
+    goal: "Solve an equation like $11x + 3 = -63$: find the number $x$ that makes both sides equal.",
+    senses: { side: "side-of-equation" },
     method: [
-      "Undo the addition first: subtract $b$ from both sides, leaving ax = c − b.",
-      "Undo the multiplication: divide both sides by $a$.",
-      "Check by putting $x$ back into ax + b.",
+      "Undo the adding first. Subtract 3 from both sides: $11x = -66$. Both sides stay equal.",
+      "Undo the multiplying. Divide both sides by 11, the number multiplying $x$: $x = -6$.",
+      "Check by putting $-6$ in place of $x$: $11 \\times (-6) + 3 = -66 + 3 = -63$. It matches.",
     ],
     watch:
-      "Subtract $b$ from both sides before dividing. Dividing first means $b$ must be divided too.",
+      "Subtract the added number from both sides before dividing. If you divide first, you must divide the added number too.",
   },
   "negative-coefficient-equation": {
-    goal: "Given an equation where $x$ is multiplied by a negative number, find $x$.",
+    goal: "Solve an equation in which $x$ is multiplied by a negative number.",
+    senses: { side: "side-of-equation" },
+    intuition:
+      "An equation has two sides: the amount on the left of the equal sign and the amount on the right. It says they are equal. In $-4x - 8 = -7$, the letter $x$ stands for an unknown number. The number that makes the equation true is called the solution. In $-4x$, the $-4$ is the coefficient: the number multiplying $x$. Here it is a negative number, a number less than 0. To find $x$, undo each step done to it. Do the same thing to both sides so they stay equal.",
     method: [
-      "Undo the added or subtracted constant on both sides.",
-      "Divide both sides by the coefficient, sign included.",
+      "Undo the added or subtracted number. In $-4x - 8 = -7$, add 8 to both sides: $-4x = 1$.",
+      "Divide both sides by the coefficient, sign and all: $x = 1 \\div (-4) = -\\tfrac{1}{4}$.",
+      "Check by putting the value back into the starting equation: $-4 \\times (-\\tfrac{1}{4}) - 8 = 1 - 8 = -7$.",
     ],
     watch:
-      "Divide by the negative coefficient, sign and all: −3x = 12 gives x = −4.",
+      "Divide by the negative coefficient with its sign: $-3x = 12$ gives $x = -4$, not 4.",
   },
   "rational-coefficient-equation": {
-    goal: "Given an equation where $x$ is multiplied by a fraction, find $x$.",
+    noLink: ["leaves"],
+    goal: "Solve an equation in which $x$ is multiplied by a fraction.",
+    senses: { side: "side-of-equation" },
+    intuition:
+      "An equation has two sides: the amount on the left of the equal sign and the amount on the right. It says they are equal. In $\\tfrac{5}{6}x - 7 = 3$, $\\tfrac{5}{6}x$ means $\\tfrac{5}{6}$ times $x$. So the coefficient, the number multiplying $x$, is a fraction. A fraction's reciprocal is the fraction flipped upside down: the reciprocal of $\\tfrac{5}{6}$ is $\\tfrac{6}{5}$. A fraction times its reciprocal is 1.",
     method: [
-      "Undo the added constant on both sides.",
-      "Multiply both sides by the reciprocal of the fraction.",
+      "Undo the added or subtracted number on both sides. In $\\tfrac{5}{6}x - 7 = 3$, add 7: $\\tfrac{5}{6}x = 10$.",
+      "Multiply both sides by the reciprocal of the fraction. $\\tfrac{6}{5} \\times \\tfrac{5}{6}x = x$, and $\\tfrac{6}{5} \\times 10 = 12$, so $x = 12$.",
+      "Check: $\\tfrac{5}{6} \\times 12 - 7 = 10 - 7 = 3$.",
     ],
     watch:
-      "Multiply by the reciprocal, not by the fraction itself: (2/3)x = 4 gives x = 6.",
+      "Multiply by the reciprocal, not by the fraction itself: $\\tfrac{2}{3}x = 4$ gives $x = 4 \\times \\tfrac{3}{2} = 6$.",
   },
   "grouped-linear-equation": {
-    goal: "Given an equation like $a(x + b) = c$, find $x$.",
+    noLink: ["whole"],
+    goal: "Solve an equation like $a(x + b) = c$, where a number multiplies a group in parentheses.",
+    senses: { side: "side-of-equation" },
+    intuition:
+      "An equation has two sides: the amount on the left of the equal sign and the amount on the right. It says they are equal. A number written right before parentheses, the curved brackets ( ), multiplies everything inside them. So $3(x + 2)$ means 3 times the whole amount $x + 2$. To find $x$, undo the steps done to it in reverse order. The multiplying happened last, so undo it first.",
     method: [
-      "Divide both sides by $a$: $3(x + 2) = 15$ becomes $x + 2 = 5$.",
-      "Undo the $+\\,b$ inside: $x = 5 - 2 = 3$.",
+      "Divide both sides by the number outside the parentheses, which is never 0 here: $3(x + 2) = 15$ becomes $x + 2 = 5$. Both sides stay equal.",
+      "Undo the number added inside: subtract 2 from both sides, so $x = 3$.",
+      "Check: $3(3 + 2) = 3 \\times 5 = 15$.",
     ],
-    watch: "Divide the whole right side by $a$ before undoing $b$.",
+    watch:
+      "Divide the whole right side by the outside number before undoing the number inside. Keep a negative sign: $-1(x + 8) = -9$ gives $x + 8 = 9$.",
   },
   "both-sides-linear-equation": {
-    goal: "Given an equation with $x$ on both sides, find $x$.",
+    goal: "Solve an equation that has $x$ on both sides.",
+    senses: { side: "side-of-equation", term: "term-expression" },
+    noLink: ["parts", "whole"],
+    intuition:
+      "An equation has two sides: the amount on the left of the equal sign and the amount on the right. It says they are equal. The number for $x$ that makes them equal is called the solution. Here $x$ appears on both sides, as in $-2x + 11 = -x - 1$. Terms are the parts joined by + or −, such as $-2x$ and 11. An $x$ term has $x$ in it, and a constant is a number with no $x$. Gather the $x$ terms on one side and the constants on the other.",
     method: [
-      "Subtract one $x$ term from both sides so $x$ is on one side.",
-      "Move the constants to the other side.",
-      "Divide by the coefficient.",
+      "Add or subtract an $x$ term on both sides so $x$ is on one side only. In $-2x + 11 = -x - 1$, add $2x$ to both sides: $11 = x - 1$.",
+      "Move the constants to the other side the same way. Add 1 to both sides: $12 = x$.",
+      "If a number still multiplies $x$, divide both sides by it. Check in the starting equation: both sides give $-13$.",
     ],
-    watch: "Do the same step to both whole sides, and keep each term's sign.",
+    watch:
+      "Do each step to both whole sides, and keep the sign in front of each term: $-x$ means $-1$ times $x$.",
   },
   "check-equation-candidate": {
-    goal: "Given an equation and a proposed value, decide whether it is a solution.",
+    noLink: ["whole"],
+    goal: "Decide whether a given value of $x$ is a solution of an equation: whether it makes both sides equal.",
+    senses: { side: "side-of-equation" },
+    intuition:
+      "An equation has two sides: the amount on the left of the equal sign and the amount on the right. It says they are equal. A number for $x$ that makes the two sides equal is called a solution. Such a number is said to satisfy the equation. To substitute means to replace $x$ with a number. Put the number in parentheses, the curved brackets ( ), so its sign stays. Then work out each side. You do not need to solve the equation.",
     method: [
-      "Substitute the value into the left side and evaluate.",
-      "Evaluate the right side.",
-      "It is a solution only if the two sides are equal.",
+      "Replace $x$ with the value on the left side, in parentheses, and work it out: at $x = -3$, $6(-3) + 3 = -18 + 3 = -15$.",
+      "Work out the right side the same way.",
+      "The value is a solution only if the two sides come out equal.",
     ],
     watch:
-      "Evaluate the whole left side with the value in place; do not solve the equation instead.",
+      "Work out the whole left side with the value in place, and keep the value's sign. Do not solve the equation instead.",
   },
   "equation-solution-count": {
-    goal: "Given a linear equation, decide whether it has one, no, or infinitely many solutions.",
+    goal: "Decide whether an equation in $x$ has one solution, no solution, or infinitely many.",
+    senses: { side: "side-of-equation", term: "term-expression" },
+    noLink: ["parts", "mean"],
+    intuition:
+      "An equation has two sides: the amount on the left of the equal sign and the amount on the right. It says they are equal. A solution is a number for $x$ that makes both sides equal. Terms are the parts joined by + or −, such as $2x$ and 9. A linear equation has $x$ terms but nothing like $x^2$ ($x$ times $x$). It can have exactly one solution, no solution, or infinitely many, meaning every number works. Gather the $x$ terms on one side and see what is left.",
     method: [
-      "Move all $x$ terms to one side and constants to the other.",
-      "$x$ remains: exactly one solution.",
-      "$x$ cancels and the statement is false (0 = 5): no solution.",
-      "$x$ cancels and the statement is true (0 = 0): every number is a solution.",
+      "Add or subtract $x$ terms so all of them are on one side. Move the constants, the plain numbers, to the other side.",
+      "If some $x$ is left, as in $-4x = 5$, there is exactly one solution.",
+      "If the $x$ terms cancel and a false statement is left, such as $0 = 5$, no number works: there is no solution.",
+      "If the $x$ terms cancel and a true statement is left, such as $0 = 0$, every number works: there are infinitely many solutions.",
     ],
     watch:
-      "When the $x$ terms cancel, check the numbers left; 0 = 0 means every number works, not that x = 0.",
+      "When the $x$ terms cancel, look at the numbers left. $0 = 0$ means every number works, not that $x = 0$.",
   },
   "linear-system-x": {
     goal: "Two equations use the same unknowns $x$ and $y$. Find the value of $x$ in the pair that makes both equations true.",
@@ -1424,7 +1498,10 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   // Lines and functions
   "coordinate-point-reading": {
-    goal: "Given a point on a grid, find one of its coordinates.",
+    goal: "Read one coordinate of a point on a grid: how far across, or how far up or down, it is.",
+    senses: { unit: "unit" },
+    intuition:
+      "A coordinate grid has two number lines called axes. The $x$-axis runs across and the $y$-axis runs up and down. They cross at 0. Each point has two coordinates, the numbers that give its position. The first says how far across the point is from the $y$-axis: right is positive, left is negative. The second says how far up (positive) or down (negative) it is from the $x$-axis. Together they are written $(x, y)$, which is called an ordered pair.",
     terms: [
       [
         "coordinate",
@@ -1432,11 +1509,12 @@ const legacyMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "For $x$, count across from the vertical axis.",
-      "For $y$, count up or down from the horizontal axis.",
+      "For the $x$-coordinate, count grid steps across from the vertical $y$-axis. Right is positive and left is negative.",
+      "For the $y$-coordinate, count grid steps up or down from the horizontal $x$-axis. Up is positive and down is negative.",
+      "A point is written $(x, y)$: the across number first, then the up-or-down number.",
     ],
     watch:
-      "$x$ is the across distance and comes first; do not swap it with $y$.",
+      "The $x$-coordinate is the across distance and comes first. Do not swap it with $y$.",
   },
   "line-slope": {
     goal: "Find the slope of the line through two given points.",
@@ -1455,147 +1533,218 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "Use the same point first in both subtractions. Mixing the order gives the opposite sign (positive instead of negative, or the reverse) whenever the slope is not 0.",
   },
   "graphed-line-slope": {
-    goal: "Given a line on a grid through two marked points, find its slope.",
+    goal: "Find the slope (the steepness) of a line drawn on a grid through two marked points.",
+    senses: { change: "change" },
+    intuition:
+      "Slope means how steep a line is. Each point on the grid has coordinates, the pair $(x, y)$ that says how far across and how far up it is. Pick two points on the line. The rise is the change in $y$: how far up (positive) or down (negative) you go. The run is the change in $x$: how far right you go. The slope is the rise divided by the run. A line that falls from left to right has a negative slope.",
     method: [
-      "Read both points' coordinates.",
-      "Slope = (change in $y$) ÷ (change in $x$), same order for both.",
-    ],
-    watch: "A line falling to the right has negative slope.",
-  },
-  "unequal-step-rate": {
-    goal: "Given points from a linear rule, find the rate of change.",
-    method: [
-      "Pick two points.",
-      "Rate = output change ÷ input change: from (1, 4) to (4, 10) is 6 ÷ 3 = 2.",
+      "Read both points' coordinates $(x, y)$ from the grid.",
+      "Change in $y$: the second point's $y$ minus the first point's $y$. Change in $x$: the second point's $x$ minus the first point's $x$, in the same order.",
+      "Slope = change in $y$ ÷ change in $x$. Simplify the fraction.",
     ],
     watch:
-      "The input steps may differ in size; always divide by the input change.",
+      "Subtract in the same order both times. A line falling to the right has a negative slope.",
+  },
+  "unequal-step-rate": {
+    noLink: ["jump"],
+    goal: "Given points from a straight-line rule, find how much the output changes for each 1 added to the input.",
+    senses: { change: "change", rule: "rule", unit: "unit" },
+    intuition:
+      "A rule is a way of turning one number into another. The input is the number you start with, and the output is the number the rule gives. A pair such as $(3, 11)$ lists the input first, then the output. A linear rule changes its output by the same amount for each increase of 1 in the input. The rate is the amount the output changes for each 1 added to the input. The given inputs may jump by different amounts, so divide the output change by the input change.",
+    method: [
+      "Pick any two of the given points.",
+      "Find the output change and the input change, subtracting in the same order. From $(1, 4)$ to $(4, 10)$, the output change is $10 - 4 = 6$ and the input change is $4 - 1 = 3$.",
+      "Rate = output change ÷ input change: $6 \\div 3 = 2$ for each input unit.",
+    ],
+    watch:
+      "The input steps may differ in size. Always divide by the input change; the output change alone is not the rate.",
   },
   "recover-linear-intercept": {
-    goal: "Given the rate of a linear rule and one point, find the output at input 0.",
+    goal: "Given the rate of a straight-line rule and one point on it, find the output when the input is 0.",
+    senses: { change: "change", rule: "rule" },
+    intuition:
+      "A rule is a way of turning one number into another. The input is the number you start with, and the output is the number the rule gives. A linear rule can be written $y = mx + b$, with input $x$ and output $y$. Here $mx$ means $m$ times $x$. The rate is how much the output changes for each increase of 1 in the input, and we write it $m$. The output when the input is 0 is $b$, because then $mx = 0$. On a graph, $b$ is where the line crosses the $y$-axis.",
     terms: [["y-intercept", "In $y = mx + b$, it is $b$."]],
     method: [
-      "Substitute the point into y = mx + b.",
-      "Solve for $b$: subtract m × x from $y$.",
+      "Put the point's input and output into $y = mx + b$. Rate 2 through $(1, 8)$ gives $8 = 2 \\times 1 + b$.",
+      "Solve for $b$: subtract the rate times the input from the output. $b = 8 - 2 = 6$.",
       "$b$ is the output when the input is 0.",
     ],
-    watch: "Subtract the rate times the input, not the rate alone.",
+    watch:
+      "Subtract the rate times the input, not the rate alone. Through $(3, 10)$ with rate 2, $b = 10 - 6 = 4$, not 8.",
   },
   "linear-initial-value-meaning": {
     goal: "Explain the starting amount in a linear model.",
+    senses: {
+      model: "model",
+      term: "term-expression",
+      unit: "unit",
+      rule: "rule",
+      change: "change",
+    },
+    noLink: ["mean", "part"],
     intuition:
-      "A model is a rule linking an input, such as time, to an output, such as an amount of water. The changing part depends on the input. At input zero, that part contributes nothing, so the remaining number is the starting amount. On the graph, it is the amount where the line meets the vertical axis.",
+      "A model is a rule that links two quantities. The input is the number you put in, such as the time since filling began. The output is the number that comes out, such as the amount of water. In a model such as $V = 3t + 16$, $3t$ means 3 times $t$, so that part grows as time passes. The rate is the number multiplying the input: how much the output grows per input unit. When the input is 0, the multiplied part is 0. The number left over, 16, is the output at the start.",
     terms: ["input", "output", "initial-value", "rate"],
     method: [
-      "Read what the input measures and identify the moment or distance represented by zero.",
-      "Set the input to zero in the model. Its multiplied term becomes zero; read the remaining output with its units.",
-      "Choose the statement about that output at zero, and check that it does not describe a per-unit change or a later amount.",
+      "Read what the input measures, and what moment input 0 stands for, such as the start of filling.",
+      "Set the input to 0. The multiplied part becomes 0, so the output is the number left over, in output units.",
+      "Choose the statement about that output at input 0. Reject statements about a change for each unit or about a later amount.",
     ],
     watch:
-      "Keep amount and rate units separate: a starting amount uses output units, while a rate uses output units per input unit.",
+      "Keep amount and rate units apart. A starting amount uses output units, such as gallons of water. A rate uses output units per input unit, such as gallons per minute.",
   },
   "predict-linear-output": {
-    goal: "Given two points on a line, find the output at a new input.",
+    goal: "Given two points on a straight-line rule, find the output at a new input.",
+    senses: { change: "change", rule: "rule" },
+    intuition:
+      "A rule is a way of turning one number into another. The input is the number you start with, and the output is the number the rule gives. A pair such as $(1, 3)$ lists an input, then its output. A linear rule changes the output by the same amount for each increase of 1 in the input. That amount is called the rate. To predict, start from a known point and add the rate once for every input step to the new input.",
     method: [
-      "Rate = output change ÷ input change.",
-      "From a known point, add rate × input change to reach the new input.",
+      "Rate = output change ÷ input change. Through $(1, 3)$ and $(3, -1)$: $(-1 - 3) \\div (3 - 1) = -4 \\div 2 = -2$.",
+      "Find the input change from a known point to the new input: from 3 to 7 is 4.",
+      "New output = known output + rate × input change: $-1 + (-2) \\times 4 = -9$.",
     ],
     watch:
-      "Multiply the rate by the input change; adding the rate once moves only one input step.",
+      "Multiply the rate by the input change. Adding the rate once moves only one input step.",
   },
   "graph-equation-choice": {
     goal: "Given a line on a grid, choose its equation.",
+    senses: { rule: "rule", change: "change" },
+    intuition:
+      "The equation of a straight line can be written $y = mx + b$, where $mx$ means $m$ times $x$. The slope is how much $y$ changes for each step of 1 to the right, and we write it $m$. Up is positive and down is negative. The $y$-intercept is the $y$-value where the line crosses the $y$-axis, the vertical axis where $x = 0$. We write it $b$.",
     method: [
-      "Read $b$, the $y$-value where the line crosses the $y$-axis.",
-      "Find the slope $m$ from two points.",
-      "The equation is y = mx + b.",
+      "Read $b$: the $y$-value where the line crosses the vertical $y$-axis.",
+      "Find the slope $m$ from two points: change in $y$ ÷ change in $x$, subtracting in the same order.",
+      "Write $y = mx + b$ and pick the choice that matches both numbers.",
     ],
     watch:
-      "Do not swap the slope and the intercept: the crossing height is $b$, the number added.",
+      "Do not swap the slope and the intercept. The line crosses the $y$-axis at $b$, the number added. The slope $m$ multiplies $x$.",
   },
   "relation-function-choice": {
-    goal: "Given lists of input-output pairs, choose the one that is a function.",
+    noLink: ["more than", "rule"],
+    goal: "From lists of (input, output) pairs, choose the one that is a function: one output for every input.",
+    intuition:
+      "A relation is a set of pairs of numbers. In each pair, the input is the first number and the output is the second. A relation is a function when every input has exactly one output. So the same input can never appear with two different outputs. Two different inputs may share the same output.",
     terms: ["function"],
     method: [
-      "Look for an input that appears with two different outputs.",
-      "If none does, it is a function.",
+      "In each list, look for an input that appears more than once.",
+      "If a repeated input has two different outputs, that list is not a function.",
+      "Pick the list where every input has only one output.",
     ],
-    watch: "Different inputs may share an output.",
+    watch:
+      "Different inputs may share an output: $(1, 5)$ and $(2, 5)$ are fine in a function. Only a repeated input with different outputs breaks the rule.",
   },
   "relation-point-removal": {
-    goal: "Find all single-point removals that make a plotted relation a function.",
+    goal: "Find every single point whose removal makes a plotted relation a function.",
+    noLink: ["leaves", "rule"],
+    intuition:
+      "Each plotted point is a pair $(x, y)$. The input is the first number, $x$, and the output is the second, $y$. These two numbers are the point's coordinates. A relation is a set of such pairs. It is a function when each input has only one output. Two points straight above each other have the same $x$ and different $y$, so they break this rule. Removing either one of them fixes it.",
     terms: ["function"],
     method: [
-      "Find any two plotted points with the same $x$-coordinate and different $y$-coordinates.",
-      "Test removing each labeled point in turn; keep every removal that leaves at most one output for each remaining input.",
+      "Find two plotted points with the same $x$-coordinate and different $y$-coordinates.",
+      "Test removing each labeled point, one at a time. Keep a removal if every input still on the graph has only one output.",
+      "Choose the answer that lists every removal that works.",
     ],
     watch:
-      "Test every candidate separately; either point in a lone conflicting pair can be removed.",
+      "Test each point separately. With one clashing pair, either of its points can be removed; removing any other point keeps the clash.",
   },
   "distance-graph-meaning": {
-    goal: "Given a distance–time graph, describe how distance changes between two points.",
+    noLink: ["part", "mean"],
+    goal: "Given a distance–time graph, describe how the distance from home changes between two points.",
+    senses: { change: "change" },
+    intuition:
+      "A distance–time graph shows time along the horizontal axis, the line across the bottom. It shows distance from home on the vertical axis, the line going up. A rising line means the distance is growing. A falling line means it is shrinking: the person is getting closer to home. A level line means the distance is not changing.",
     method: [
-      "Rising: distance from home increases.",
-      "Falling: distance decreases.",
-      "Level: distance stays the same.",
+      "Look at the part of the graph from the first point to the second.",
+      "Rising to the right: the distance from home increases.",
+      "Falling to the right: the distance decreases. Level: the distance stays the same.",
     ],
     watch:
-      "The graph shows distance from home, not the path walked; a level part can still be moving.",
+      "The graph shows distance from home, not the path walked. A level part can still mean moving, such as walking in a circle around home.",
   },
   "shared-plan-input": {
     goal: "Given two cost rules, find the input where they cost the same.",
+    senses: {
+      side: "side-of-equation",
+      term: "term-expression",
+      rule: "rule",
+      unit: "unit",
+    },
+    noLink: ["mean", "whole"],
+    intuition:
+      "Each plan's cost is an amount in dollars that depends on $x$. The input is the number $x$, such as a number of hours. In $16 + 2x$, $2x$ means 2 times $x$. The rate is the number multiplying $x$: the cost for each unit of input. An equation has two sides: the amount on the left of the equal sign and the amount on the right. It says they are equal. Set the two costs equal in an equation and solve it for $x$.",
     method: [
-      "Set the two cost expressions equal: 20 + 3x = 5x.",
-      "Collect the $x$ terms on one side and solve: 20 = 2x, so x = 10.",
+      "Set the two costs equal: $20 + 3x = 5x$.",
+      "Subtract the smaller amount of $x$ from both sides: $20 = 2x$.",
+      "Divide both sides by the number multiplying $x$: $x = 10$. The answer may be a fraction.",
     ],
-    watch: "Set the costs equal; do not compare the rates or the fees alone.",
+    watch:
+      "Set the whole costs equal. Comparing only the rates, or only the fixed fees (the numbers with no $x$), does not find where the costs match.",
   },
   "first-cheaper-whole-input": {
-    goal: "Given two cost rules, find the first whole input where one is strictly cheaper.",
+    goal: "Given two cost rules, find the first whole-number input where one plan costs strictly less.",
+    senses: { rule: "rule", unit: "unit" },
+    noLink: ["mean", "whole"],
+    intuition:
+      "Each plan's cost depends on $x$. The input is the number $x$, such as a number of hours. Strictly cheaper means costing less, not the same. First find the tie, where both cost the same, by setting the costs equal. Then look just past the tie. A whole input is one of 0, 1, 2, 3 and so on.",
     method: [
-      "Set the costs equal and solve for the tie.",
-      "Strictly cheaper starts after the tie: the next whole number above it.",
+      "Set the costs equal and solve for the tie: $18 + x = 2x$ gives $x = 18$.",
+      "Test a whole input just above the tie to see which plan is cheaper there. At 19, Plan A costs $18 + 19 = 37$ and Plan B costs $2 \\times 19 = 38$.",
+      "The answer is the first whole number past the tie where the plan is cheaper. If the tie is a whole number, take the next one.",
     ],
     watch:
-      "At the tie the costs are equal, not cheaper; take the next whole number even when the tie is whole.",
+      "At the tie the costs are equal, not cheaper. Take the next whole number, even when the tie is a whole number.",
   },
   "function-evaluation": {
-    goal: "Given $f(x)$ and an input, find the output.",
+    goal: "Given a rule $f(x)$ and an input, find the output.",
     method: [
-      "Replace every $x$ with the input, in parentheses.",
-      "Powers first, then multiplication, then addition.",
+      "Replace every $x$ in the rule with the input, in parentheses: $f(-3) = 2(-3)^2 + 3(-3) + 5$.",
+      "Work out powers first: $(-3)^2$ means $(-3) \\times (-3) = 9$, because a negative times a negative is positive.",
+      "Then multiply, then add: $2 \\times 9 + 3 \\times (-3) + 5 = 18 - 9 + 5 = 14$.",
     ],
     watch:
-      "Square the input before multiplying by its coefficient, and keep the parentheses: (−3)² = 9.",
+      "Square the input before multiplying by its coefficient, the number in front of it. Keep the parentheses: $(-3)^2 = 9$, but $-3^2 = -9$.",
   },
   "arithmetic-term": {
-    goal: "Given the first term and common difference, find term $n$.",
+    noLink: ["jumps"],
+    intuition:
+      "A sequence is a list of numbers in order, and each number in it is called a term. An arithmetic sequence is a sequence where you add the same amount each time to get the next term. That amount is called the common difference. In 4, 7, 10, 13, the common difference is 3. To find a later term, count how many jumps of 3 it takes from the first term.",
+    goal: "Given the first term and the common difference of an arithmetic sequence, find term $n$.",
+    senses: { term: "term-sequence" },
     terms: ["arithmetic-sequence"],
     method: [
-      "Each term adds the common difference $d$ to the term before.",
-      "Term $n$ is $n - 1$ steps after term 1.",
-      "Term $n$ is the first term plus $(n - 1) \\times d$.",
+      "Each term is the term before it plus the common difference $d$.",
+      "Term $n$ is $n - 1$ steps after term 1. For example, term 3 is 2 steps after term 1.",
+      "So term $n$ is the first term plus $(n - 1) \\times d$. First term 19 and $d = 7$ give term 3: $19 + 2 \\times 7 = 33$.",
     ],
-    watch: "Use n − 1 steps, not $n$: term 1 has no steps added.",
+    watch: "Use $n - 1$ steps, not $n$: term 1 itself has no steps added.",
   },
   "geometric-sequence": {
-    goal: "Given the first term and common ratio, find term $n$.",
+    goal: "Given the first term and the common ratio of a geometric sequence, find term $n$.",
+    senses: { term: "term-sequence", factor: "factor-number" },
+    intuition:
+      "A sequence is a list of numbers in order, and each number in it is called a term. A geometric sequence is a sequence where you multiply by the same number each time to get the next term. That number is called the common ratio. In 1, 3, 9, 27, the common ratio is 3.",
     terms: ["geometric-sequence"],
     method: [
-      "Each term is the term before it times the ratio $r$.",
-      "From term 1 to term $n$ there are n − 1 steps, so multiply by $r$ that many times.",
-      "Term $n$ is the first term times $r^{n - 1}$.",
+      "Each term is the term before it times the common ratio $r$.",
+      "From term 1 to term $n$ there are $n - 1$ steps, so multiply by $r$ that many times.",
+      "So term $n$ is the first term times $r^{n - 1}$, which means $n - 1$ factors of $r$. First term 1 and $r = 3$ give term 5: $1 \\times 3^4 = 81$.",
     ],
-    watch: "Use n − 1 factors of $r$, not $n$: term 1 has no factor of $r$.",
+    watch: "Use $n - 1$ factors of $r$, not $n$: term 1 has no factor of $r$.",
   },
   "quadratic-vertex": {
-    goal: "Given f(x) = a(x − h)² + k with a > 0, find its minimum value.",
+    noLink: ["part"],
+    goal: "Find the minimum value, the smallest output, of $f(x) = a(x - h)^2 + k$ when $a$ is positive.",
+    senses: { square: "square-number", vertex: "vertex-parabola" },
+    intuition:
+      "In $f(x) = 2(x - 6)^2 + 9$, the input is the number put in for $x$. The output is the value $f(x)$, read “$f$ of $x$”, that comes out. Here $x$ can be any real number, which means any number on the number line. Squared means multiplied by itself, so $(x - 6)^2$ means $(x - 6)$ times $(x - 6)$. A squared number is never negative, and $(x - 6)^2$ is 0 when $x = 6$. So the smallest output comes when that part is 0: $f(6) = 9$. That smallest output is called the minimum value.",
     method: [
-      "A square is never negative and is 0 at x = h.",
-      "With a > 0, the smallest value of $f$ is $k$.",
+      "Compare $f(x)$ with the form $f(x) = a(x - h)^2 + k$. In $f(x) = 2(x - 6)^2 + 9$, $a = 2$, $h = 6$ and $k = 9$.",
+      "The squared part $(x - h)^2$ is 0 when $x = h$ and positive at every other input. Times a positive $a$, it only adds to $k$.",
+      "So the smallest value of $f(x)$ is $k$, reached at $x = h$. Here it is 9, at $x = 6$.",
     ],
     watch:
-      "The minimum value is $k$, the value of $f$. The number $h$ is where it happens, not the minimum.",
+      "The minimum value is $k$, the smallest output. The number $h$ is the input where it happens, not the minimum.",
   },
   "logarithm-integer": {
     goal: "Given log base $b$ of $N$, find its value.",

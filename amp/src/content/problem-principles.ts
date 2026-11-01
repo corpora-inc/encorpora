@@ -326,16 +326,16 @@ const legacyPrinciples: Record<string, string> = {
     "Ceiling division: when only whole packs are sold, the number of packs is ⌈need ÷ pack size⌉.",
   ...rightTrianglePrinciples,
   "coordinate-point-reading":
-    "Cartesian coordinates: a point $(x, y)$ lies $x$ units horizontally and $y$ units vertically from the origin.",
+    "A point $(x, y)$ on a coordinate grid lies $x$ units across and $y$ units up or down from the origin, the point $(0, 0)$ where the axes cross. Right and up are positive; left and down are negative. The $x$-coordinate always comes first.",
   // Data and probability
   "bar-chart-total":
     "A bar's height on the scale gives its category's frequency; the total is the sum of the frequencies.",
   "bar-chart-difference":
     "Comparing frequencies: the difference between two categories is the larger frequency minus the smaller.",
   "mean-data":
-    "The arithmetic mean of $n$ values is their sum divided by $n$: $(x_1 + \\cdots + x_n) \\div n$.",
+    "The mean (also called the arithmetic mean or average) of a list of numbers is their sum, the result of adding them, divided by how many numbers there are. Every value counts, including repeats. The mean of 4, 6 and 11 is $(4 + 6 + 11) \\div 3 = 7$.",
   "simple-probability":
-    "Classical probability: for equally likely outcomes, $P(\\text{event}) = \\text{favorable outcomes} \\div \\text{total outcomes}$.",
+    "When every outcome (possible result) is equally likely, the probability of an event is the number of favorable outcomes divided by the total number of outcomes. We write $P(\\text{event})$ for it. A probability is always from 0 to 1.",
   // Fractions
   "unit-piece-size":
     "Unit fraction: when a whole is partitioned into $b$ equal parts, each part is 1/b of the whole.",
@@ -383,31 +383,33 @@ const legacyPrinciples: Record<string, string> = {
   "unit-fraction-share":
     "Dividing a unit fraction by a whole number: (1/a) ÷ b = 1/(a × b).",
   "fraction-share-amount":
-    "Dividing a fraction by a whole number: (a/b) ÷ n = a/(b × n).",
+    "Dividing a fraction by $n$ multiplies its denominator by $n$: $\\tfrac{a}{b} \\div n = \\tfrac{a}{b \\times n}$. Here $n$ is a counting number: 1, 2, 3 and so on. Each of the $n$ equal shares is $\\tfrac{1}{n}$ of the amount. Check: $n$ shares of $\\tfrac{a}{b \\times n}$ add back to $\\tfrac{a}{b}$.",
   "whole-unit-groups":
     "Dividing a whole number by a unit fraction: n ÷ (1/b) = n × b.",
   "fraction-group-count":
-    "Dividing fractions with a common denominator: (a/d) ÷ (c/d) = a ÷ c.",
+    "With a common denominator (the same bottom number), dividing fractions divides the numerators: $\\tfrac{a}{d} \\div \\tfrac{c}{d} = a \\div c$, when $c$ and $d$ are not 0. Both fractions count pieces of the same size, $\\tfrac{1}{d}$. So the quotient, the answer to dividing, says how many groups of $c$ pieces fit in $a$ pieces.",
   "divide-fractions":
-    "Dividing by a fraction is multiplying by its reciprocal: (a/b) ÷ (c/d) = (a/b) × (d/c), with c ≠ 0.",
+    "Dividing by a fraction is the same as multiplying by its reciprocal, the fraction flipped: $\\tfrac{a}{b} \\div \\tfrac{c}{d} = \\tfrac{a}{b} \\times \\tfrac{d}{c}$, where $b$, $c$ and $d$ are not 0. It works because $\\tfrac{c}{d} \\times \\tfrac{d}{c} = 1$, so multiplying by $\\tfrac{d}{c}$ undoes multiplying by $\\tfrac{c}{d}$.",
   // Decimals, ratio, percent
   "decimal-addition":
     "Decimal place value: aligning decimal points adds digits of equal place value.",
   "decimal-multiplication":
     "Decimals as fractions: ($a$/10ᵐ$) × (b$/10ⁿ$) = (a × b$)/10ᵐ⁺ⁿ, so the product has m + n decimal places.",
-  "ratio-missing": "Equivalent ratios: $a : b = ka : kb$ for any positive $k$.",
+  "ratio-missing":
+    "Equivalent ratios are ratios that describe the same mix. Let $a$ and $b$ stand for the two amounts in a ratio. Multiplying both by the same number $k$ greater than 0 keeps the mix: $a : b$ and $ka : kb$ are equivalent ratios. Here $ka$ means $k$ times $a$, and $kb$ means $k$ times $b$. Adding the same number to both usually gives a different mix.",
   "unit-price":
-    "Unit rate: price per item = total cost ÷ number of items; cost is proportional to quantity.",
-  "percent-of": "Percent means per hundred: $p$% of n = (p/100) × n.",
+    "The unit price is the cost of one item: total cost ÷ number of items. Proportional means that multiplying one amount by any number multiplies the other by the same number. When every item costs the same, the cost is proportional to the number of items. So cost = unit price × number of items.",
+  "percent-of":
+    "Percent means per hundred. For a percent $p$ and an amount $n$, $p\\%$ of $n$ is $\\tfrac{p}{100} \\times n$. So $p\\%$ is the fraction $\\tfrac{p}{100}$ of the whole amount, and 100% is the whole amount.",
   "proportional-rule-choice":
-    "A proportional relationship has the form y = kx, with constant of proportionality $k$; its graph passes through the origin.",
+    "A proportional relationship has the form $y = kx$, where $k$ is a fixed number called the constant of proportionality. Then $y \\div x = k$ for every input other than 0. Its graph is a straight line through the origin, the point $(0, 0)$.",
   // Integers, expressions, equations
   "integer-addition":
     "Adding integers (whole numbers and their negatives): with the same sign, add the absolute values (distances from 0) and keep that sign. With different signs, subtract the smaller absolute value from the larger, and take the sign of the number with the larger absolute value. If the absolute values are equal, the sum is 0.",
   "number-line-distance":
-    "The distance between $a$ and $b$ on the number line is |a − b|.",
+    "The distance between two numbers $a$ and $b$ on the number line is the larger number minus the smaller. We write it $|a - b|$. The bars mean absolute value: the distance from 0, which is never negative. For example, $|6 - (-7)| = |13| = 13$.",
   "integer-power":
-    "Exponent notation: $b^n$ is $n$ factors of $b$, and $b^0 = 1$ for $b \\neq 0$; $b^{m + n} = b^m \\cdot b^n$ lets a large power be built from smaller ones.",
+    "Powers: $b^n$ means $n$ factors of $b$ multiplied together. Here $n$ is a counting number, which is one of 1, 2, 3 and so on. Also $b^0 = 1$ when $b$ is not 0. Powers of the same base multiply by adding exponents: $b^{m + n} = b^m \\cdot b^n$. This builds a large power from smaller ones, such as $2^7 = 2^5 \\cdot 2^2$.",
   "operation-order":
     "Order of operations: grouping symbols, then exponents, then multiplication and division left to right, then addition and subtraction left to right.",
   "substitute-linear-expression":
@@ -417,54 +419,54 @@ const legacyPrinciples: Record<string, string> = {
   "combine-like-coefficient":
     "Like terms (terms with the same letter part) combine by adding their coefficients. With letters, $ax + bx = (a + b)x$, where $ax$ means $a$ times $x$. For example, $6x - 8x = (6 - 8)x = -2x$.",
   "linear-equation":
-    "Properties of equality: adding, subtracting, multiplying or dividing both sides by the same number (nonzero for division) preserves the solutions.",
+    "Doing the same thing to both sides of an equation keeps them equal. You may add or subtract the same number on both sides. You may also multiply or divide both sides by the same number, as long as it is not 0. Each of these steps keeps the same solutions: the values of $x$ that make the equation true.",
   "negative-coefficient-equation":
-    "Multiplication property of equality: dividing both sides by a nonzero number, including a negative one, preserves the solutions.",
+    "Dividing both sides of an equation by the same number other than 0, including a negative number, keeps the same solutions. So $-4x = 1$ and $x = -\\tfrac{1}{4}$ have the same solution.",
   "rational-coefficient-equation":
-    "Multiplicative inverse: (b/a) × (a/b) = 1, so multiplying both sides by the reciprocal isolates the variable.",
+    "A fraction times its reciprocal is 1: $\\tfrac{b}{a} \\times \\tfrac{a}{b} = 1$ when $a$ and $b$ are not 0. So multiplying both sides of $\\tfrac{a}{b}x = c$ by $\\tfrac{b}{a}$ leaves $x$ alone: $x = \\tfrac{b}{a} \\times c$. Doing the same to both sides keeps them equal.",
   "grouped-linear-equation":
-    "Properties of equality: undo operations in the reverse order they were applied to the variable.",
+    "To solve an equation, undo the operations on the variable (the letter) in the reverse of the order they were done. Doing the same thing to both sides keeps them equal. When $a$ is not 0, dividing both sides by $a$ turns $a(x + b) = c$ into $x + b = \\tfrac{c}{a}$.",
   "both-sides-linear-equation":
-    "Addition property of equality: subtracting the same term from both sides collects the variable on one side.",
+    "Adding or subtracting the same term on both sides of an equation keeps the same solutions. So you can collect the $x$ terms on one side and the constants on the other. Then divide both sides by the number multiplying $x$, when that number is not 0.",
   "check-equation-candidate":
-    "A solution of an equation is a value that makes both sides equal when substituted.",
+    "A solution of an equation is a value that makes both sides equal when it replaces the variable, the letter such as $x$. If the two sides come out different, the value is not a solution.",
   "equation-solution-count":
-    "A linear equation reduces to ax = b: one solution if a ≠ 0; none if a = 0 and b ≠ 0; infinitely many if a = 0 and b = 0.",
+    "Every linear equation in $x$ can be rewritten as $ax = b$, where $ax$ means $a$ times $x$. If $a$ is not 0, there is exactly one solution, $x = \\tfrac{b}{a}$. If $a = 0$ and $b$ is not 0, there is no solution. If $a = 0$ and $b = 0$, every number is a solution.",
   "linear-system-x":
     "Elimination means removing one variable (unknown letter) by combining the equations. Multiplying an equation by any number except 0 keeps the same solutions. So does replacing one equation with the sum or difference of the two. Choose the numbers to multiply by so that one variable cancels.",
   // Lines and functions
   "line-slope":
     "Slope: $m = \\frac{y_2 - y_1}{x_2 - x_1}$. Here $m$ stands for the slope, and the small numbers 1 and 2 mark which point each coordinate comes from: $(x_1, y_1)$ and $(x_2, y_2)$. The two $x$-coordinates must be different ($x_1 \\ne x_2$). The slope is how much $y$ changes for each increase of 1 in $x$.",
   "graphed-line-slope":
-    "Slope: $m = \\frac{\\text{rise}}{\\text{run}} = \\frac{y_2 - y_1}{x_2 - x_1}$. It is constant along a line.",
+    "Slope: $m = \\tfrac{\\text{rise}}{\\text{run}} = \\tfrac{y_2 - y_1}{x_2 - x_1}$. Here $m$ stands for the slope, and $(x_1, y_1)$ and $(x_2, y_2)$ are two points with different $x$-coordinates. The small numbers 1 and 2 mark which point a coordinate comes from. On a line that is not vertical, any two different points give the same slope.",
   "unequal-step-rate":
-    "A linear function has a constant rate of change: (y₂ − y₁)/(x₂ − x₁) is the same for every pair of points.",
+    "A linear function is a rule whose graph is a straight line. Its rate of change is the same for every pair of points. For any two points $(x_1, y_1)$ and $(x_2, y_2)$ with different inputs, $\\tfrac{y_2 - y_1}{x_2 - x_1}$ is the same number. The small 1 and 2 mark which point each number comes from.",
   "recover-linear-intercept":
-    "Slope-intercept form y = mx + b: $b$ is the value of $y$ when x = 0.",
+    "The form $y = mx + b$ is called slope-intercept form. In it, $m$ is the slope (the rate) and $b$ is the value of $y$ when $x = 0$. The graph crosses the $y$-axis at $(0, b)$. From one point $(x_1, y_1)$ on the line, $b = y_1 - m x_1$.",
   "linear-initial-value-meaning":
     "For a linear model $y=mx+b$, $x$ is the input, $y$ is the output, $m$ is the number multiplying $x$, and $b$ is the remaining number. Setting $x=0$ gives $y=b$. If zero is an allowed input, $b$ is the output amount there, with output units, and the graph passes through $(0,b)$. The rate $m$ has output units per input unit and describes a change. If zero is outside the allowed inputs, $b$ need not describe an observed starting amount.",
   "predict-linear-output":
-    "Linear functions change by equal amounts over equal intervals: y = y₁ + m(x − x₁).",
+    "A linear function is a rule whose graph is a straight line. It changes by equal amounts over equal input steps. Through a known point $(x_1, y_1)$ with rate $m$, the output at input $x$ is $y = y_1 + m(x - x_1)$. Here $m(x - x_1)$ means $m$ times the input change.",
   "graph-equation-choice":
-    "Slope-intercept form: the line through (0, $b$) with slope $m$ is y = mx + b.",
+    "Slope-intercept form: the line with slope $m$ through the point $(0, b)$ has the equation $y = mx + b$. Every point $(x, y)$ on the line makes the equation true, and no other point does.",
   "relation-function-choice":
-    "Definition of a function: each input is assigned exactly one output.",
+    "A function assigns each input exactly one output. A list of pairs is a function exactly when no input is paired with two different outputs.",
   "relation-point-removal":
-    "A finite relation is a function exactly when each input is paired with one output. If the only conflict is two points at one input with different outputs, removing either one, and only one of those two, repairs the relation.",
+    "A relation, a set of input-output pairs, is a function exactly when each input is paired with one output. Suppose the only clash is two points at one input with different outputs. Then removing either one of those two points makes it a function, and removing any other point does not.",
   "distance-graph-meaning":
-    "On a distance–time graph, slope is the rate of change of distance: positive means moving away, zero means constant distance, negative means approaching.",
+    "On a distance–time graph, the slope (the steepness) shows how fast the distance changes as time passes. A positive slope (rising) means moving away. A slope of zero (level) means the distance stays the same. A negative slope (falling) means getting closer.",
   "shared-plan-input":
-    "Two linear expressions are equal where their graphs intersect: solve f(x) = g(x).",
+    "Two costs are equal at the input where their graphs cross. To find it, solve the equation that sets them equal. For two straight-line costs whose rates (the numbers multiplying $x$) differ, there is exactly one such input.",
   "first-cheaper-whole-input":
-    "Solving a strict linear inequality: find the boundary where f(x) = g(x), then the inequality holds on one side of it.",
+    "A strict inequality is a comparison using < (less than) or > (greater than), so equal values do not count. For two straight-line costs, first find the tie, the input where they are equal. One plan is cheaper for every input above the tie, and the other for every input below it. The first whole input that works is the next whole number past the tie.",
   "function-evaluation":
-    "Function evaluation: $f(a)$ is the output obtained by substituting a for every $x$ in the rule.",
+    "Function evaluation: $f(a)$ is the output you get by putting $a$ in place of every $x$ in the rule for $f(x)$. A function gives exactly one output for each input.",
   "arithmetic-term":
-    "Arithmetic sequence: aₙ = a₁ + (n − 1)d, where $d$ is the common difference.",
+    "Arithmetic sequence: $a_n = a_1 + (n - 1)d$. Here $a_n$ is term $n$, $a_1$ is the first term, and $d$ is the common difference, the amount added each time. The small letter or number below $a$ gives the term's position.",
   "geometric-sequence":
-    "Geometric sequence: aₙ = a₁ × rⁿ⁻¹, where $r$ is the common ratio.",
+    "Geometric sequence: $a_n = a_1 \\times r^{n - 1}$. Here $a_n$ is term $n$, $a_1$ is the first term, and $r$ is the common ratio, the number each term is multiplied by. The small letter or number below $a$ gives the term's position.",
   "quadratic-vertex":
-    "Vertex form f(x) = a(x − h)² + k: since (x − h)² ≥ 0, when a > 0 the minimum value is $k$, at x = h.",
+    "Vertex form: $f(x) = a(x - h)^2 + k$. The square $(x - h)^2$ is never negative, and it is 0 at $x = h$. So when $a > 0$ ($a$ is positive), the minimum value of $f$ is $k$, reached at $x = h$. The point $(h, k)$ is called the vertex: the lowest point of the graph.",
   "logarithm-integer":
     "Definition of a logarithm: $\\log_b N = p$ exactly when $b^p = N$, where $b > 0$, $b \\neq 1$ and $N > 0$.",
 };
