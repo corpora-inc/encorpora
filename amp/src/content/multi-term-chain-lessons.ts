@@ -14,8 +14,13 @@ const fractionChainSenses = {
   rename: "rename",
 };
 const fractionChainNoLink = ["change", "changes", "leaves"];
-const priceSenses = { unit: "unit", "more than": "more-than" };
-const priceNoLink = ["whole", "part", "scale"];
+const priceSenses = {
+  unit: "unit",
+  whole: "whole",
+  part: "part",
+  "more than": "more-than",
+};
+const priceNoLink = ["scale"];
 
 export const multiTermChainMethods: Record<string, ProblemMethod> = {
   "fraction-term-chain": {
