@@ -3,6 +3,10 @@ import type { ProblemMethod } from "./problem-lessons";
 
 /** Glossary readings shared by the two-variable lessons and methods. */
 const senses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
   boundary: "boundary",
   multiple: "multiple",
   identity: "identity-equation",
@@ -31,12 +35,6 @@ const noLink = [
   "combination",
   "quarters",
   "sort",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
 ];
 
 /** The inequality signs, said on every screen that uses them. */

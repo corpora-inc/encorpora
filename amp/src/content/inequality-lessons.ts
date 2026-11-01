@@ -16,6 +16,10 @@ export const inequalityMethods: Record<string, ProblemMethod> = {
   "affine-linear-inequality": {
     goal: "Find every number $x$ that makes an inequality like $-3x + 2 \\le 7$ true.",
     senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      term: "term-expression",
+      terms: "term-expression",
       boundary: "boundary",
     },
     noLink: [
@@ -25,12 +29,6 @@ export const inequalityMethods: Record<string, ProblemMethod> = {
       "part",
       "parts",
       "leaves",
-      "side",
-      "sides",
-      "left side",
-      "right side",
-      "term",
-      "terms",
       "rule",
       "rules",
     ],
@@ -48,6 +46,10 @@ export const inequalityMethods: Record<string, ProblemMethod> = {
   "grouped-linear-inequality": {
     goal: "Solve an inequality with parentheses and $x$ on both sides, such as $-2(2x - 3) + 1 > x + 4$.",
     senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      term: "term-expression",
+      terms: "term-expression",
       boundary: "boundary",
     },
     noLink: [
@@ -57,12 +59,6 @@ export const inequalityMethods: Record<string, ProblemMethod> = {
       "part",
       "parts",
       "leaves",
-      "side",
-      "sides",
-      "left side",
-      "right side",
-      "term",
-      "terms",
       "rule",
       "rules",
     ],
@@ -80,6 +76,10 @@ export const inequalityMethods: Record<string, ProblemMethod> = {
   "cancelled-linear-inequality": {
     goal: "The $x$ terms cancel. Decide if every number or no number makes the inequality true.",
     senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      term: "term-expression",
+      terms: "term-expression",
       boundary: "boundary",
     },
     noLink: [
@@ -89,12 +89,6 @@ export const inequalityMethods: Record<string, ProblemMethod> = {
       "part",
       "parts",
       "leaves",
-      "side",
-      "sides",
-      "left side",
-      "right side",
-      "term",
-      "terms",
       "rule",
       "rules",
     ],
@@ -130,12 +124,6 @@ const NO_LINK = [
   "leaves",
   "mean",
   "opposite",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
   "rules",
 ];
 
@@ -166,6 +154,10 @@ export const inequalityLessons: Lesson[] = [
       "An inequality compares two amounts. In $-3x + 2 \\le 7$, the sign $\\le$ means “is less than or equal to”. Its answer is not one number but a whole stretch of numbers. Solve it like an equation, doing the same step to both sides. The one new rule: dividing both sides by a negative number reverses the comparison, so $\\le$ becomes $\\ge$. The answer is a boundary number, where the two sides are equal, and the side of it where the numbers work.",
     templateIds: ["affine-linear-inequality"],
     senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      term: "term-expression",
+      terms: "term-expression",
       boundary: "boundary",
     },
     noLink: NO_LINK,
@@ -227,6 +219,10 @@ export const inequalityLessons: Lesson[] = [
       "An inequality compares two amounts. The sign $>$ means “is greater than”. Some inequalities have parentheses, the curved brackets ( ), and $x$ on both sides, like $-2(2x - 3) + 1 > x + 4.5$. A number right before parentheses multiplies everything inside, so multiply that out first. Then gather the parts with $x$ on one side and the plain numbers on the other. Divide to get $x$ alone, reversing the comparison only if you divide by a negative number.",
     templateIds: ["grouped-linear-inequality"],
     senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      term: "term-expression",
+      terms: "term-expression",
       boundary: "boundary",
     },
     noLink: NO_LINK,
@@ -291,6 +287,10 @@ export const inequalityLessons: Lesson[] = [
       "An inequality compares two amounts: $<$ means “is less than” and $>$ means “is greater than”. Sometimes both sides have the same amount of $x$, as in $3x + 5 < 3x + 8$. Subtract $3x$ from both sides and $x$ disappears: $5 < 8$. That is true whatever $x$ is, so every number is a solution (a number that makes the comparison true). If what is left is false, like $5 > 8$, no number is a solution.",
     templateIds: ["cancelled-linear-inequality"],
     senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      term: "term-expression",
+      terms: "term-expression",
       boundary: "boundary",
     },
     noLink: NO_LINK,

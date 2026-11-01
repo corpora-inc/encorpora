@@ -10,6 +10,12 @@ const patternWords: Lesson["sections"][number] = {
 };
 /** Glossary readings for the grade 6 and 8 function lessons and methods. */
 const functionSenses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
+  rule: "rule",
+  rules: "rule",
   "more than": "more-than",
   squares: "square-shape",
   squared: "square-number",
@@ -26,14 +32,6 @@ const functionNoLink = [
   "leaves",
   "mean",
   "means",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
-  "rule",
-  "rules",
 ];
 
 const variableWords: Lesson["sections"][number] = {

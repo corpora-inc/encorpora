@@ -53,6 +53,7 @@ const entries: WorkEntry[] = [
 const work = workContent(entries);
 /** Ordinary words in this lesson and method that are not glossary links. */
 const glossary = {
+  senses: { side: "side-of-equation", sides: "side-of-equation" },
   noLink: [
     "part",
     "whole",
@@ -60,12 +61,6 @@ const glossary = {
     "changes",
     "multiple",
     "place",
-    "side",
-    "sides",
-    "left side",
-    "right side",
-    "term",
-    "terms",
     "rule",
     "rules",
   ],

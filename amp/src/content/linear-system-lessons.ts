@@ -11,6 +11,10 @@ const terms: MethodTerm[] = [
 
 /** Glossary readings shared by both system lessons and methods. */
 const senses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
   unit: "unit",
   units: "unit",
   opposites: "opposite-number",
@@ -37,12 +41,6 @@ const noLink = [
   "window",
   "more than",
   "rules",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
   "rule",
 ];
 

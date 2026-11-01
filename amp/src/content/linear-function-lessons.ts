@@ -3,6 +3,12 @@ import type { ProblemMethod } from "./problem-lessons";
 
 /** Glossary readings shared by the Algebra 1 function lessons and methods. */
 const senses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
+  rule: "rule",
+  rules: "rule",
   range: "range-function",
   ranges: "range-function",
   unit: "unit",
@@ -34,14 +40,6 @@ const noLink = [
   "population",
   "base",
   "bases",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
-  "rule",
-  "rules",
 ];
 
 /** What a function, an input and an output are, said on every screen that

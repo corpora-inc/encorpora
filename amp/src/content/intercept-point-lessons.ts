@@ -3,7 +3,14 @@ import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
 /** Glossary readings for the intercept lesson and its method. */
-const senses = {} as const;
+const senses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
+  rule: "rule",
+  rules: "rule",
+} as const;
 const noLink = [
   "whole",
   "part",
@@ -12,14 +19,6 @@ const noLink = [
   "changes",
   "opposite",
   "mean",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
-  "rule",
-  "rules",
 ];
 
 export const interceptPointMethods: Record<string, ProblemMethod> = {

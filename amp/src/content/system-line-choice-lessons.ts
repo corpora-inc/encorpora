@@ -4,6 +4,12 @@ import { chainLesson } from "./chain-lesson-kit";
 
 /** Glossary readings for every lesson and method in this file. */
 const senses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
+  rule: "rule",
+  rules: "rule",
   multiple: "multiple",
   ratio: "ratio",
   factor: "factor-number",
@@ -25,16 +31,8 @@ const noLink = [
   "opposite",
   "leaves",
   "mean",
-  "rule",
   "jump",
   "jumps",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
-  "rules",
 ];
 
 export const systemLineChoiceMethods: Record<string, ProblemMethod> = {

@@ -8,6 +8,10 @@ const terms: NonNullable<ProblemMethod["terms"]> = [
 
 /** Glossary readings shared by every absolute-value lesson and method. */
 const senses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
   unit: "unit",
   units: "unit",
 } as const;
@@ -24,12 +28,6 @@ const noLink = [
   "mean",
   "impossible",
   "sort",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
   "rule",
   "rules",
 ];
