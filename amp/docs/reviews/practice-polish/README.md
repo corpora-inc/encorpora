@@ -164,9 +164,10 @@ problem state, on any axe violation and on any invisible focus.
 1. **Feedback sheet sized to its content.** Stacked, the sheet is as tall
    as what it says, anchored at the bottom where Check was. Next stays in
    the thumb zone and no empty band opens above it when the dock was taller
-   (multi-select, keypad). Side by side, the sheet is centred in the answer
-   column instead of putting the result and Next at the column's two ends,
-   up to 500 px apart. Asserted: `feedback-gap`.
+   (multi-select, keypad). Side by side, the sheet sits at the foot of the
+   answer column, where Next has always been. Before, it filled the column
+   and left a gap of up to 500 px between the result and Next. Growing (See
+   why) moves only its top edge. Asserted: `feedback-gap`.
 2. **Reduced motion.** The shared button rule (`theme.css`) eases fills and
    shrinks a pressed button only under `prefers-reduced-motion:
    no-preference`. With reduced motion, Check enabling changes at once.
@@ -188,9 +189,14 @@ problem state, on any axe violation and on any invisible focus.
 5. **Large tablets and desktops** (1024×768, 1366×1024 and 1440×900, in
    both orientations). The sheet changes above remove the stretched-phone
    gaps. Figures in the side-by-side workspace at 1200×760 and up, and on
-   tall portrait tablets, draw up to 30% larger, with labels still below
-   the prompt's size. On tall portrait screens the dock and sheet widen to
-   680 px.
+   tall portrait tablets, get more height (up to 520 px and 460 px). A
+   labelled figure still stops where its labels reach the figure type size
+   (`FigureTextCap`, enforced by `verify-graphical-ui.ts` and
+   `verify-ui.ts`), so the gain goes to unlabelled and lightly labelled
+   figures. On tall portrait screens the dock and sheet widen to 680 px.
+6. **Not changed (another owner):** `ProgressWorkspace.tsx` re-cases skill
+   titles itself (lowercases, then capitalises the first letter), so GCF
+   and LCM read "Gcf lcm" there. Reported to the app-shell owner.
 
 Screenshots: `round-2/before/` and `round-2/after/` (same seeds), plus
 `round-2/after/print-scientific-notation-{worksheet,key}.png`.
