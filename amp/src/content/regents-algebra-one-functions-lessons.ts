@@ -8,8 +8,11 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
     intuition:
       "A relation is a function when no input is paired with two different outputs. An input that appears twice is fine only when both pairs agree, so a new pair with a new output must use an input that has not been used.",
     terms: [
-      ["input", "The first number of an ordered pair."],
-      ["function", "A relation in which each input has exactly one output."],
+      [
+        "input",
+        "In a list of ordered pairs, it is the first number of each pair.",
+      ],
+      "function",
     ],
     method: [
       "List the inputs already used and the output each one has.",
@@ -23,13 +26,7 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
     goal: "Write a shifted function in function notation, keeping the horizontal and vertical directions straight.",
     intuition:
       "Adding to the output moves the graph up by that amount. Changing the input moves the graph the opposite way you might expect: $f(x-3)$ needs a larger $x$ to give the same output, so the graph moves right by 3.",
-    terms: [
-      ["shift", "Moving the whole graph without turning or resizing it."],
-      [
-        "vertex form",
-        "$y=(x-h)^2+k$, where $(h,k)$ is the vertex of the parabola.",
-      ],
-    ],
+    terms: ["translation", "vertex-form"],
     method: [
       "Horizontal shift: replace $x$ by $x-h$ to move right $h$ units, or by $x+h$ to move left.",
       "Vertical shift: add $k$ to the output to move up $k$ units, or subtract to move down.",
@@ -42,13 +39,7 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
     goal: "Evaluate a function containing a square root by simplifying the radicand first.",
     intuition:
       "To evaluate a function, put the input where $x$ is, then follow the order of operations. Everything under the square root sign is calculated first, then the root is taken, then the rest of the rule is applied.",
-    terms: [
-      ["radicand", "The expression under the square root sign."],
-      [
-        "perfect square",
-        "A number that is the square of a whole number, such as 25.",
-      ],
-    ],
+    terms: ["radicand", "perfect-square"],
     method: [
       "Substitute the input for $x$ and simplify the radicand.",
       "Take the square root of the radicand.",
@@ -61,13 +52,7 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
     goal: "Find every zero of a product with a difference of squares by setting each factor to zero.",
     intuition:
       "A product of numbers is zero only when at least one factor is zero. A difference of squares $x^2-k^2$ is itself a product, $(x-k)(x+k)$, so it contributes two zeros.",
-    terms: [
-      ["zero", "An input $x$ where the function value is 0."],
-      [
-        "difference of squares",
-        "An expression $a^2-b^2$, which factors as $(a-b)(a+b)$.",
-      ],
-    ],
+    terms: ["zero-of-a-function", "difference-of-squares"],
     method: [
       "Factor completely, including any difference of squares.",
       "Set each factor equal to zero and solve.",
@@ -81,10 +66,10 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
     intuition:
       "Asking for $f(x)=-8$ is asking where the graph is 8 below the $x$-axis. Add 8 to both sides, and the question becomes finding the zeros of a new quadratic.",
     terms: [
-      ["output", "The value $f(x)$ the function gives for an input $x$."],
+      "output",
       [
-        "zero of the equation",
-        "A value of $x$ that makes one side equal to 0.",
+        "zero-of-a-function",
+        "Here, a value of $x$ that makes one side of the equation equal 0.",
       ],
     ],
     method: [
@@ -99,13 +84,7 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
     goal: "Choose the quadratic rule whose axis of symmetry is a given line, using $x=-\\frac{b}{2a}$.",
     intuition:
       "A parabola is symmetric about a vertical line through its vertex. The linear and quadratic terms together decide where that line is, and the constant only moves the graph up or down.",
-    terms: [
-      [
-        "axis of symmetry",
-        "The vertical line that splits a parabola into mirror-image halves.",
-      ],
-      ["standard form", "$y=ax^2+bx+c$."],
-    ],
+    terms: ["axis-of-symmetry", "standard-form-polynomial"],
     method: [
       "Compute $-\\frac{b}{2a}$ for each rule.",
       "Compare with the required line, keeping the sign.",
@@ -119,10 +98,10 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
     intuition:
       "When a quadratic does not factor over the integers, the quadratic formula still gives its solutions. The discriminant under the root decides how many real solutions exist and whether they are rational.",
     terms: [
-      ["discriminant", "$b^2-4ac$, the quantity under the root."],
+      "discriminant",
       [
-        "irrational solution",
-        "A solution that cannot be written as a fraction of integers, such as $\\frac{3+\\sqrt{5}}{2}$.",
+        "irrational-number",
+        "A solution such as $\\frac{3 + \\sqrt{5}}{2}$ is irrational.",
       ],
     ],
     method: [
@@ -137,10 +116,7 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
     goal: "Factor a monic trinomial whose constant is large by finding the factor pair with the right sum.",
     intuition:
       "Multiplying $(x+p)(x+q)$ gives $x^2+(p+q)x+pq$. Factoring reverses that: find two numbers whose product is the constant and whose sum is the middle coefficient.",
-    terms: [
-      ["monic", "A polynomial whose leading coefficient is 1."],
-      ["factor pair", "Two whole numbers whose product is a given number."],
-    ],
+    terms: ["monic", "factor-pair"],
     method: [
       "List the factor pairs of the constant's size.",
       "Choose the signs from the sign of the constant: a negative constant needs one positive and one negative number.",

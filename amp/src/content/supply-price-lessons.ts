@@ -8,13 +8,13 @@ export const supplyPriceMethods: Record<string, ProblemMethod> = {
     intuition:
       "Sellers set prices, and buyers decide whether to pay. When there are fewer goods than people who want them, buyers compete and sellers can ask for more. When there are more goods than people want, sellers lower the price to sell what is left.",
     terms: [
-      ["supply", "How many of a product are for sale."],
-      ["demand", "How many people want to buy it."],
+      "supply",
+      "demand",
       [
-        "scarce",
-        "Having a smaller supply than people want, so there are not enough to go around.",
+        "supply",
+        "Scarce means less is for sale than people want, so there is not enough to go around.",
       ],
-      ["plentiful", "Having more for sale than people want."],
+      ["supply", "Plentiful means more is for sale than people want to buy."],
     ],
     method: [
       "Compare the supply, the number for sale, with the demand, the number of people who want one.",

@@ -7,16 +7,7 @@ export const shapeFigureGapMethods: Record<string, ProblemMethod> = {
     goal: "Pick the two figures that have exactly the same size and shape, even when one is turned or flipped.",
     intuition:
       "Two figures are congruent when one would fit exactly on top of the other. You may turn a figure or flip it over, but you may not stretch, shrink or bend it. A turned or flipped figure keeps all its side lengths and angles.",
-    terms: [
-      [
-        "congruent",
-        "Having exactly the same size and shape, so that one fits on the other.",
-      ],
-      [
-        "flip",
-        "Turning a figure over like a page, which makes its mirror image.",
-      ],
-    ],
+    terms: ["congruent", "reflection"],
     method: [
       "Count the sides of each figure and compare how long they look: a bigger or smaller copy has the same shape but cannot be congruent.",
       "Look at the corners: a figure with one corner in a different place is a different shape.",
@@ -29,11 +20,7 @@ export const shapeFigureGapMethods: Record<string, ProblemMethod> = {
     goal: "Name a triangle as scalene, isosceles or equilateral by how many of its sides are equal.",
     intuition:
       "Triangles are sorted by their sides. Compare the three side lengths and count how many are equal: none equal, exactly two equal, or all three equal.",
-    terms: [
-      ["scalene", "A triangle with no two sides equal."],
-      ["isosceles", "A triangle with exactly two sides equal."],
-      ["equilateral", "A triangle with all three sides equal."],
-    ],
+    terms: ["scalene", "isosceles", "equilateral"],
     method: [
       "Write the three side lengths, or find the sides that have the same tick marks.",
       "Count how many sides are equal to each other.",
@@ -46,17 +33,7 @@ export const shapeFigureGapMethods: Record<string, ProblemMethod> = {
     goal: "Name each piece a flat figure is cut into by counting its sides and square corners.",
     intuition:
       "When a flat figure is cut along straight lines, every piece is a smaller flat figure with its own name. Look at each piece alone and ignore the rest of the figure.",
-    terms: [
-      ["triangle", "A figure with 3 straight sides."],
-      [
-        "trapezoid",
-        "A figure with 4 straight sides and exactly one pair of parallel sides.",
-      ],
-      [
-        "rectangle",
-        "A figure with 4 sides and 4 square corners. A square is a rectangle with 4 equal sides.",
-      ],
-    ],
+    terms: ["triangle", "trapezoid", "rectangle"],
     method: [
       "Count the pieces and look at each one separately.",
       "Count the sides of a piece: 3 sides is a triangle, 4 sides is a four-sided figure.",

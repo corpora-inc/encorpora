@@ -6,20 +6,7 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
     goal: "Sum an arithmetic series, move between recursive and explicit rules, or find a term from a table or a recursive rule.",
     intuition:
       "A sequence is an ordered list of numbers called terms. A recursive rule gives the first term and says how to get each term from the one before it. An explicit rule gives term $n$ directly. An arithmetic sequence adds the same number, the common difference $d$, at every step. A series is the sum of the terms.",
-    terms: [
-      [
-        "recursive rule",
-        "A first term plus a rule such as $a_{n+1}=a_n+d$ that builds each term from the previous one.",
-      ],
-      [
-        "explicit rule",
-        "A formula such as $a_n=a_1+(n-1)d$ that gives term $n$ from $n$ alone.",
-      ],
-      [
-        "series",
-        "The sum of the terms of a sequence, such as the first $n$ terms.",
-      ],
-    ],
+    terms: ["recursive-rule", "explicit-rule", "series"],
     method: [
       "Find the first term and the common difference. From two table entries, divide the change in value by the number of steps between them.",
       "To jump to term $n$, count $n-1$ steps from the first term: $a_n=a_1+(n-1)d$. To convert a rule, test it at $n=1$.",
@@ -34,16 +21,16 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
       "Interest that is added to a balance earns interest itself. Compounding $n$ times a year means the annual rate $r$ is split into $n$ equal period rates of $r/n$, and each period multiplies the balance by $1+r/n$. When $n$ grows without limit, the balance follows $Pe^{rt}$.",
     terms: [
       [
-        "compounding period",
-        "The time between interest additions, such as a month or a quarter.",
+        "compound-interest",
+        "The compounding period is the time between interest additions, such as a month or a quarter.",
       ],
       [
-        "growth factor",
-        "The number multiplied by a value in one period: $1+p$ for a $100p$% increase, $1-p$ for a decrease.",
+        "growth-factor",
+        "For a $100p$% increase it is $1+p$; for a $100p$% decrease it is $1-p$.",
       ],
       [
-        "continuous compounding",
-        "The limit of compounding more and more often, giving $A=Pe^{rt}$ with $r$ as a decimal.",
+        "compound-interest",
+        "Compounding more and more often approaches continuous compounding, $A=Pe^{rt}$, with the rate $r$ as a decimal.",
       ],
     ],
     method: [
@@ -59,17 +46,11 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "Some polynomials are products of simpler pieces that follow a pattern. A factorization is complete when no factor can be split further into integer-coefficient polynomials. Check each factor again after every step.",
     terms: [
+      "sum-or-difference-of-cubes",
+      "factoring-by-grouping",
       [
-        "sum or difference of cubes",
-        "An expression $u^3\\pm v^3$, which factors as $(u\\pm v)(u^2\\mp uv+v^2)$.",
-      ],
-      [
-        "factoring by grouping",
-        "Factoring common factors from pairs of terms, then factoring out the binomial that the pairs share.",
-      ],
-      [
-        "quadratic in form",
-        "A polynomial such as $x^4-5x^2+4$, which becomes a quadratic after the substitution $u=x^2$.",
+        "quadratic",
+        "$x^4 - 5x^2 + 4$ is quadratic in form: with $u = x^2$, it becomes $u^2 - 5u + 4$.",
       ],
     ],
     method: [
@@ -85,18 +66,14 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "A residual is observed value minus predicted value. A positive residual means the point lies above the model; a negative residual means it lies below. If a model has the right shape, residuals scatter around 0 with no pattern. A curve in the residuals shows a shape the model missed.",
     terms: [
+      "residual",
+      "residual-plot",
       [
-        "residual",
-        "Observed value minus the value the model predicts at the same input.",
+        "linear-function",
+        "Linear data show equal differences, quadratic data equal second differences, exponential data equal ratios.",
       ],
-      [
-        "residual plot",
-        "A graph of each residual against the input, with a horizontal line at 0.",
-      ],
-      [
-        "model type",
-        "The family of the model: linear (equal differences), quadratic (equal second differences) or exponential (equal ratios).",
-      ],
+      "quadratic",
+      "exponential-function",
     ],
     method: [
       "For a residual plot, read from left to right. Random scatter keeps the model. Positive-negative-positive means the data bend upward from the line; negative-positive-negative means they bend downward.",
@@ -110,20 +87,7 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
     goal: "Read the intercept, asymptote, domain, range or end behavior of an exponential or logarithmic function from its equation or graph.",
     intuition:
       "An exponential function $a\\cdot b^x+k$ levels off at the height $k$ in one direction and grows or falls without bound in the other. A logarithmic function $a\\log_b(x-h)+k$ is built from the inverse of an exponential function: it lives to the right of a vertical line $x=h$ and climbs or falls slowly.",
-    terms: [
-      [
-        "horizontal asymptote",
-        "A height the graph approaches but never reaches as $x$ becomes very large or very negative.",
-      ],
-      [
-        "vertical asymptote",
-        "A vertical line the graph approaches but never touches.",
-      ],
-      [
-        "end behavior",
-        "What the function values approach as $x$ grows without bound in either direction.",
-      ],
-    ],
+    terms: ["horizontal-asymptote", "vertical-asymptote", "end-behavior"],
     method: [
       "For $a\\cdot b^x+k$: the horizontal asymptote is $y=k$; the $y$-intercept is $a+k$; the range is above $k$ when $a>0$ and below $k$ when $a<0$. It is increasing when $a>0,b>1$ or $a<0,b<1$.",
       "For $a\\log_b(x-h)+k$: the input must be positive, so the domain is $x>h$ and the vertical asymptote is $x=h$. When $k=0$ the $x$-intercept is $(h+1,0)$.",

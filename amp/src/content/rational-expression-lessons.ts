@@ -1,19 +1,14 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
-const terms: [string, string][] = [
+const terms: MethodTerm[] = [
+  "rational-expression",
+  "polynomial",
   [
-    "rational expression",
-    "A quotient of polynomials, defined only where its denominator is nonzero.",
+    "domain",
+    "For an expression, it is every input for which the expression is defined.",
   ],
-  [
-    "polynomial",
-    "A sum of constant multiples of nonnegative whole-number powers of a variable, such as $x^2 - 5x + 6$.",
-  ],
-  ["domain", "The inputs for which an expression is defined."],
-  [
-    "factor",
-    "An expression multiplied by another expression to make a product.",
-  ],
+  "factor-number",
 ];
 export const rationalExpressionMethods: Record<string, ProblemMethod> = {
   "rational-expression-domain": {

@@ -6,20 +6,7 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
     goal: "Use the volume formula of a cylinder, cone, pyramid, sphere or a combination to find a capacity, a count, a dimension or a rounded value.",
     intuition:
       "Volume is the amount of space inside a solid. A cylinder or prism is a stack of identical layers, so its volume is the area of one layer times the height. A cone or pyramid holds one third of the cylinder or prism with the same base and height. A sphere of radius $r$ holds $\\tfrac43\\pi r^3$. In a story, first name the solid, then decide what the question asks for: the volume, a different unit, a number of copies or a missing length.",
-    terms: [
-      [
-        "capacity",
-        "How much a container holds. It is a volume, often given in liters: 1 liter is 1000 cm³.",
-      ],
-      [
-        "radius and diameter",
-        "The radius is the distance from the center of a circle to its edge. The diameter is twice the radius.",
-      ],
-      [
-        "composite solid",
-        "A solid made of two or more simple solids joined together. Its volume is the sum of their volumes.",
-      ],
-    ],
+    terms: ["capacity", "radius", "diameter", "composite-figure"],
     method: [
       "Name the solid or solids and write the volume formula for each.",
       "Find the radius by halving a diameter. Substitute, keeping $\\pi$ as a symbol unless the problem tells you to use 3.14.",
@@ -34,17 +21,11 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
     intuition:
       "Density tells how much of something is packed into each unit of space. Population density is people per square kilometer. The density of a material is mass per cubic centimeter. Because density is a rate, you can read it as a conversion: each unit of space comes with that many people or grams.",
     terms: [
+      "density",
+      "mass",
       [
-        "density",
-        "An amount divided by the space it occupies: mass ÷ volume, or people ÷ area.",
-      ],
-      [
-        "mass",
-        "How much matter an object contains. It is measured in grams or kilograms.",
-      ],
-      [
-        "consistent units",
-        "Every quantity in a calculation is measured in units that match, such as grams with cm³.",
+        "unit",
+        "Measure every quantity in a calculation in matching units, such as grams with cubic centimeters.",
       ],
     ],
     method: [
@@ -60,14 +41,7 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
     goal: "Choose the solid that models an object, choose the measure a task needs, and compute it from the model.",
     intuition:
       "A real object is rarely a perfect solid, but a simple solid can describe it well enough to measure. Choose the solid by looking at the ends and the sides. Then choose the measure by asking what the task covers or fills: the flat region inside (area), the distance around (perimeter), the outside faces of a solid (surface area), or the space inside (volume).",
-    terms: [
-      ["model", "A simplified geometric shape that stands for a real object."],
-      ["surface area", "The total area of all the outside faces of a solid."],
-      [
-        "lateral area",
-        "The area of the sides of a solid, not counting its bases.",
-      ],
-    ],
+    terms: ["model", "surface-area", "lateral-area"],
     method: [
       "Describe the object's ends and sides, then match them to a solid.",
       "Decide what the task covers or fills to choose area, perimeter, surface area or volume.",
@@ -83,13 +57,10 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "A constraint is a requirement that every acceptable design must meet, such as using exactly 40 m of fence or holding exactly 48 cm³. Among the designs that meet it, a goal such as the largest area or least material picks the best. Make sure each option satisfies the constraint, compute the goal for each, and compare the results.",
     terms: [
       [
-        "constraint",
-        "A condition a design must satisfy, such as a total length of fence.",
-      ],
-      [
         "optimize",
-        "Choose the option that makes a quantity, such as area or cost, as large or as small as possible.",
+        "A constraint is a condition the design must meet, such as a fixed total length of fence.",
       ],
+      "optimize",
     ],
     method: [
       "Write what the constraint fixes: a perimeter, a volume or a total length of fence.",
@@ -105,17 +76,11 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
     intuition:
       "Imagine a stack of thin coins. If you push the stack sideways, it leans, but it still has the same coins, so it has the same volume. Cavalieri's principle says this in general: if two solids have the same height and every horizontal slice at the same height has the same area, the solids have the same volume. The slant of the sides does not matter.",
     terms: [
+      "cross-section",
+      "oblique",
       [
-        "cross-section",
-        "The shape where a plane cuts through a solid. Here the plane is horizontal.",
-      ],
-      [
-        "oblique",
-        "Slanted: the sides lean instead of standing straight up from the base.",
-      ],
-      [
-        "perpendicular height",
-        "The straight-up distance between the planes of the bases, not the length of a slanted side.",
+        "height",
+        "Measure it straight across between the planes of the bases, not along a slanted side.",
       ],
     ],
     method: [
@@ -132,14 +97,11 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "Cutting a solid with a plane leaves a flat shape, the cross-section. Spinning a flat figure around a line makes a solid. A rectangle spun about one of its sides makes a cylinder, a right triangle spun about a leg makes a cone, and a semicircle spun about its diameter makes a sphere. The side on the line is the axis.",
     terms: [
       [
-        "axis of rotation",
-        "The line a figure spins around. Points on the axis do not move.",
+        "solid-of-revolution",
+        "The axis of rotation is the line the figure spins around; points on it do not move.",
       ],
-      ["cross-section", "The shape where a plane cuts through a solid."],
-      [
-        "solid of revolution",
-        "The solid swept out when a plane figure makes one full turn about an axis.",
-      ],
+      "cross-section",
+      "solid-of-revolution",
     ],
     method: [
       "Find the side or segment that lies on the axis. Its length becomes the height (or, for a semicircle, the diameter).",
@@ -155,18 +117,13 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
     intuition:
       "Similar triangles have the same shape: matching angles are equal and matching sides are in proportion. A line parallel to one side of a triangle cuts off a smaller triangle with the same shape, so it divides the other two sides in the same ratio. The altitude from the right angle of a right triangle splits it into two triangles that are each similar to the whole.",
     terms: [
+      "similar-figures",
       [
-        "similar triangles",
-        "Triangles with equal matching angles. Their matching sides are in proportion.",
+        "altitude",
+        "Here the altitude runs from the right angle, perpendicular to the hypotenuse.",
       ],
-      [
-        "altitude to the hypotenuse",
-        "The segment from the right angle perpendicular to the longest side.",
-      ],
-      [
-        "geometric mean",
-        "For positive numbers $a$ and $b$, the number $x$ with $x^2=ab$, so $\\tfrac{a}{x}=\\tfrac{x}{b}$.",
-      ],
+      "hypotenuse",
+      "geometric-mean",
     ],
     method: [
       "Name the similar triangles and match their vertices in order.",

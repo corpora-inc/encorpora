@@ -7,15 +7,7 @@ export const solidPropertyMethods: Record<string, ProblemMethod> = {
     goal: "Select the prisms and pyramids that have a stated property by checking each solid's faces, edges and bases.",
     intuition:
       "A solid has flat faces that meet along edges, and edges meet at corners called vertices. A prism has two bases that are the same size and shape and parallel to each other, joined by rectangular sides. A pyramid has one base, and its other faces are triangles that meet at one point.",
-    terms: [
-      ["face", "A flat surface of a solid."],
-      ["edge", "A line where two faces meet."],
-      [
-        "base",
-        "A face a prism or pyramid is named for: a prism has two, a pyramid has one.",
-      ],
-      ["congruent", "Having exactly the same size and shape."],
-    ],
+    terms: ["face-solid", "edge", "base-shape", "congruent"],
     method: [
       "Say what the property needs: a count of faces or edges, or a kind of face.",
       "Check each solid in turn: for a count, count the faces or edges; for bases, say how many bases it has and what shapes its other faces are.",

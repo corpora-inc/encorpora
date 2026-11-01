@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -10,7 +11,7 @@ type Entry = {
   summary: string;
   objectives: [string, string];
   intuition: string;
-  terms: [string, string][];
+  terms: MethodTerm[];
   method: string[];
   watch: string;
   principle: string;
@@ -34,13 +35,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "A system of equations is two equations that must both be true for the same $x$ and $y$. If the $y$ terms are opposites, adding the equations removes $y$ and leaves one equation in $x$. A coefficient is the number multiplying a variable.",
-    terms: [
-      ["system", "Two or more equations that the same values must satisfy."],
-      [
-        "elimination",
-        "Adding or subtracting equations so that one variable cancels.",
-      ],
-    ],
+    terms: ["system-of-equations", "elimination"],
     method: [
       "Choose the variable that is not requested. Multiply one or both equations by nonzero numbers so that variable has opposite coefficients.",
       "Add the equations. Solve the single equation that remains for the requested variable.",
@@ -86,13 +81,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "An equation stays true when you add the same quantity to both sides, and a pair of true equations can be added side by side. If the sum of the left sides is exactly the expression asked for, the sum of the right sides is its value, and you never need $x$ or $y$ separately.",
-    terms: [
-      ["expression", "A combination of numbers and variables such as $4x+6y$."],
-      [
-        "linear combination",
-        "A multiple of one equation added to a multiple of another.",
-      ],
-    ],
+    terms: ["expression", "linear-combination"],
     method: [
       "Compare the coefficients of $x$ and $y$ in the requested expression with those in the equations.",
       "Find multipliers (often 1, $-1$, or $\\frac12$) so the left sides combine into the expression.",
@@ -138,10 +127,10 @@ const entries: Entry[] = [
     intuition:
       "A quadratic equation has $x^2$ as its highest power. If two numbers multiply to 0, one of them is 0. So once the equation is $0=(\\text{factor})(\\text{factor})$, each factor can be set to 0 to find a solution.",
     terms: [
-      ["solution", "A value of $x$ that makes the equation true."],
+      "solution",
       [
-        "perfect square",
-        "An expression of the form $(mx+n)^2$; it equals 0 only when its base is 0.",
+        "perfect-square-trinomial",
+        "$(mx + n)^2$ equals 0 only when $mx + n = 0$.",
       ],
     ],
     method: [
@@ -189,9 +178,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "If $p$ and $q$ solve a quadratic with leading coefficient $a$, the quadratic equals $a(x-p)(x-q)$. Multiplying out shows that the coefficient of $x$ holds the sum $p+q$ and the constant holds the product $pq$, so you can read them without finding $p$ and $q$.",
-    terms: [
-      ["coefficient", "The number multiplying a power of $x$ in $ax^2+bx+c$."],
-    ],
+    terms: ["coefficient"],
     method: [
       "Identify $a$, $b$ and $c$ in $ax^2+bx+c=0$.",
       "Compute $p+q=-\\frac ba$ and $pq=\\frac ca$.",
@@ -237,13 +224,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "The absolute value $|u|$ is the distance of $u$ from 0, so it is never negative. If $|u|=v$, then $u$ is either $v$ or $-v$. When $v$ itself contains $x$, a candidate may make $v$ negative; that candidate cannot be a solution.",
-    terms: [
-      ["absolute value", "The distance of a number from 0; $|-3|=3$."],
-      [
-        "extraneous solution",
-        "A value that appears when solving but fails in the original equation.",
-      ],
-    ],
+    terms: ["absolute-value", "extraneous-solution"],
     method: [
       "Write the two cases: the inside equals $v$, and the inside equals $-v$.",
       "Solve each case.",
@@ -289,12 +270,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "The square root symbol means the non-negative root, so $\\sqrt{u}$ is never negative. Squaring both sides removes the root but also accepts the case where the right side is negative. Candidates must be checked in the original equation.",
-    terms: [
-      [
-        "extraneous solution",
-        "A value created by squaring that does not satisfy the original equation.",
-      ],
-    ],
+    terms: ["extraneous-solution"],
     method: [
       "Isolate the square root, then square both sides.",
       "Move everything to one side and solve the quadratic.",
@@ -339,9 +315,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "A rational expression is a fraction with $x$ in the denominator. Division by 0 is undefined, so the value that makes the denominator 0 can never be a solution, even if it solves the simplified equation.",
-    terms: [
-      ["excluded value", "A value of $x$ that makes a denominator equal 0."],
-    ],
+    terms: ["excluded-value"],
     method: [
       "List the excluded values from the denominators.",
       "Solve: set the numerator to 0, or cross-multiply when two fractions are equal.",
@@ -387,10 +361,10 @@ const entries: Entry[] = [
     intuition:
       "A zero of a polynomial is an input that makes its value 0. A product is 0 only when one of its factors is 0, so you can read zeros by setting each factor equal to 0.",
     terms: [
-      ["zero", "A value of $x$ for which $f(x)=0$."],
+      "zero-of-a-function",
       [
-        "distinct zeros",
-        "The different zeros, with a repeated factor counted once.",
+        "zero-of-a-function",
+        "Distinct zeros are the different zeros; a repeated factor counts once.",
       ],
     ],
     method: [
@@ -439,10 +413,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "A parabola that opens downward has a highest point on its axis of symmetry, halfway between the two points where the height is 0. The height there is the greatest height. The height is 0 when the object is at ground level.",
-    terms: [
-      ["axis of symmetry", "The vertical line through the highest point."],
-      ["vertex", "The highest or lowest point of the parabola."],
-    ],
+    terms: ["axis-of-symmetry", "vertex-parabola"],
     method: [
       "Find the time of greatest height with $t=\\frac{-b}{2a}$ (for $a<0$).",
       "Substitute that time into $h$ for the greatest height, or set $h=0$ and factor for the landing time.",
@@ -486,13 +457,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "A rate says how much happens in one unit of time. If one machine does $\\frac14$ of a job per hour and another does $\\frac16$, together they do $\\frac14+\\frac16$ of the job per hour. The time is 1 job divided by that rate.",
-    terms: [
-      ["rate", "Amount of work done per unit of time."],
-      [
-        "mixture",
-        "A combination in which the amount of the dissolved substance is the amount of solution times its concentration.",
-      ],
-    ],
+    terms: ["rate", "concentration"],
     method: [
       "Write each rate as a fraction of the job per time unit.",
       "Add rates that work together and subtract a rate that works against; for a mixture, set the substance before mixing equal to the substance after.",
@@ -538,7 +503,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "Degrees and radians measure the same turning with different units. A half turn is 180 degrees, and it is also $\\pi$ radians, so one degree is $\\frac{\\pi}{180}$ radians.",
-    terms: [["radian", "An angle unit where a half turn is $\\pi$ radians."]],
+    terms: ["radian"],
     method: [
       "To get radians, multiply degrees by $\\frac{\\pi}{180}$ and simplify the fraction; the coefficient of $\\pi$ is $k$.",
       "To get degrees, replace $\\pi$ by 180 and simplify.",
@@ -582,13 +547,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "An inequality such as $x<4$ describes a whole range of numbers. The integers are the whole numbers in that range. If the sign is strict (<), the boundary is not included.",
-    terms: [
-      [
-        "strict inequality",
-        "An inequality using < or >; the boundary is excluded.",
-      ],
-      ["integer", "A whole number, positive, negative or zero."],
-    ],
+    terms: ["strict-inequality", "integer"],
     method: [
       "Solve the inequality for $x$; reverse the sign when dividing by a negative number.",
       "Mark the boundary: included for $\\le$ and $\\ge$, excluded for $<$ and $>$.",

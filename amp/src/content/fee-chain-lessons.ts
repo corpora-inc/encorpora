@@ -8,11 +8,11 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
     intuition:
       "A flat fee covers some hours; only the hours after that earn the hourly charge. One known total therefore reveals the hourly charge: take away the flat fee and divide by the extra hours. A rate such as 1 unit every 8 days means each unit of change takes 8 days.",
     terms: [
-      ["extra hours", "The hours beyond the ones the flat fee covers."],
       [
         "rate",
-        "How much changes per unit of time, or how much time one unit of change takes.",
+        "Extra hours are the hours beyond those the flat fee covers; each is charged at the hourly rate.",
       ],
+      "rate",
     ],
     method: [
       "Find the quantity the rate acts on: the extra hours beyond the flat fee, or the total change from start to end.",
@@ -28,12 +28,12 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
       "The charge is the flat fee plus the rate times the extra hours. The extra hours are $h$ minus the hours the flat fee covers. Expanding the product gives a line whose slope is the rate and whose intercept is the flat fee minus the rate times the covered hours.",
     terms: [
       [
-        "grouped form",
-        "$C=F+r(h-h_0)$, which shows the flat fee and the extra hours.",
+        "expression",
+        "$C = F + r(h - h_0)$ shows the flat fee $F$ plus the rate $r$ times the extra hours $h - h_0$.",
       ],
       [
-        "expanded form",
-        "$C=rh+(F-rh_0)$, the slope-intercept form of the same line.",
+        "slope-intercept-form",
+        "Here the expanded form is $C = rh + (F - rh_0)$.",
       ],
     ],
     method: [
@@ -49,8 +49,11 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
     intuition:
       "The cost of $x$ units is the fee plus the rate times $x$. Staying within the budget means that cost is not more than the budget, or is less than it when the budget must not be reached. Solving the inequality gives the largest number of units that fit.",
     terms: [
-      ["at most", "Less than or equal to; the total may equal the budget."],
-      ["under", "Strictly less than; the total may not equal the budget."],
+      "at-most",
+      [
+        "strict-inequality",
+        "Under means less than, so the total may not equal the budget: use $<$.",
+      ],
     ],
     method: [
       "Write the cost as the fee plus the rate times $x$.",

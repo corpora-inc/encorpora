@@ -13,10 +13,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "An expense is money spent regularly. A fixed expense is the same amount every month, such as rent or a phone plan agreed in advance. A variable expense changes from month to month because it depends on how much you use or buy, such as groceries or electricity. To decide from records, compare the amounts: if they are all alike the expense is fixed, and if they differ it varies.",
-    terms: [
-      ["fixed expense", "An expense that is the same amount each month."],
-      ["variable expense", "An expense that changes from month to month."],
-    ],
+    terms: ["fixed-cost", "variable-cost"],
     method: [
       "Look at the amounts for each expense across the months.",
       "If every month shows the same amount, the expense is fixed. If any month differs, it varies.",
@@ -60,16 +57,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "In a right triangle the side opposite the right angle is the longest side, the hypotenuse, and its square equals the sum of the squares of the other two sides. This also works backward: if the squares of the two shorter sides add to the square of the longest side, the triangle has a right angle. A set like 3, 4, 5 works, and a set like 3, 4, 6 does not, because $9+16=25$ is not 36.",
-    terms: [
-      [
-        "hypotenuse",
-        "The longest side of a right triangle, opposite the right angle.",
-      ],
-      [
-        "Pythagorean triple",
-        "Three whole numbers $a$, $b$, $c$ with $a^2+b^2=c^2$.",
-      ],
-    ],
+    terms: ["hypotenuse", "pythagorean-triple"],
     method: [
       "Find the longest side and call it $c$.",
       "Compute $a^2+b^2$ for the other two sides, and $c^2$.",
@@ -114,13 +102,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "Two figures are congruent when one can be moved onto the other without changing its size or shape. A translation slides, a reflection flips and a rotation turns a figure, and none of them changes distances or angles. A dilation changes size, a stretch pulls a figure in one direction and a shear slants it: all change some distance, so the image is not congruent. To test a rule, apply it to two points and compare the distance between them before and after.",
-    terms: [
-      ["congruent", "Having the same size and shape."],
-      [
-        "rigid motion",
-        "A translation, reflection or rotation: a transformation that keeps all distances.",
-      ],
-    ],
+    terms: ["congruent", "rigid-motion"],
     method: [
       "Choose two points, such as $(0,0)$ and $(1,0)$, and find their images under the rule.",
       "Compare the distance between the images with the distance between the points.",
@@ -166,18 +148,9 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "Two expressions are equivalent when they give the same value whatever the variable is. Multiplying by 1 and adding 0 do not change a value, so $x\\cdot1$, $1\\cdot x$ and $x$ are equivalent. Regrouping a product or a sum with parentheses does not change it either, so $(2x)\\cdot3$ equals $6x$. An expression such as $x+1$ is different, because for some values it gives another result than $x$. Trying a value like 3 shows a difference quickly.",
     terms: [
-      [
-        "equivalent expressions",
-        "Expressions with the same value for every value of the variable.",
-      ],
-      [
-        "identity property",
-        "Multiplying by 1 or adding 0 leaves a number unchanged.",
-      ],
-      [
-        "associative property",
-        "Regrouping a sum or a product does not change its value.",
-      ],
+      "equivalent-expressions",
+      "identity-property",
+      "associative-property",
     ],
     method: [
       "Simplify the given expression with the properties.",
@@ -222,14 +195,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "Gross pay is all the money a worker earns, before anything is taken out. Taxes and other deductions, such as insurance, are taken out of it. What is left, the take-home pay, is the money the worker actually receives. So take-home pay is gross pay minus taxes and deductions, and it is always less than gross pay when something is taken out.",
-    terms: [
-      ["gross pay", "Earnings before taxes and deductions."],
-      ["deduction", "An amount taken out of pay, such as for insurance."],
-      [
-        "take-home pay",
-        "Gross pay minus taxes and deductions: the money received.",
-      ],
-    ],
+    terms: ["gross-pay", "deduction", "net-pay"],
     method: [
       "Add taxes and deductions to find everything taken out.",
       "Subtract that total from gross pay.",
@@ -273,14 +239,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A coordinate plane has two number lines that cross at right angles. The horizontal one is the $x$-axis and the vertical one is the $y$-axis. They cross at the origin, the point $(0,0)$. A point is named by an ordered pair of numbers in a set order: the first number, the $x$-coordinate, tells how far to move along the $x$-axis, and the second, the $y$-coordinate, how far to move up.",
-    terms: [
-      [
-        "axis",
-        "A number line of the plane: the $x$-axis is horizontal and the $y$-axis is vertical.",
-      ],
-      ["origin", "The point $(0,0)$ where the axes cross."],
-      ["ordered pair", "Two numbers in order that name a point: $(x,y)$."],
-    ],
+    terms: ["x-axis", "y-axis", "origin", "ordered-pair"],
     method: [
       "Decide whether the description is about a line, a point, or one of the numbers of a pair.",
       "For a line, decide whether it runs across (the $x$-axis) or up (the $y$-axis).",
@@ -325,10 +284,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "In an ordered pair the first number says how far to move right and the second how far to move up. If the second number is 0, you do not move up at all, so the point is on the $x$-axis: $(5,0)$ is 5 units right of the origin. If the first number is 0, you do not move right, so the point is on the $y$-axis: $(0,3)$ is 3 units up.",
-    terms: [
-      ["coordinate", "One of the two numbers of an ordered pair."],
-      ["origin", "The point $(0,0)$, where you start."],
-    ],
+    terms: ["coordinate", "origin"],
     method: [
       "Find which coordinate is 0.",
       "If the second is 0 the point is on the $x$-axis; if the first is 0 it is on the $y$-axis.",
@@ -372,13 +328,10 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "'3 times as many' compares by multiplying: 24 cups and 8 mugs means 24 is 3 times 8, because $24\\div 8=3$. This differs from 'how many more', which subtracts. When one item is chosen at random from a collection, a type with a bigger count is more likely, and 'more than twice as likely' means its count is more than double the other count.",
     terms: [
+      "times-as-many",
       [
-        "times as many",
-        "A comparison by multiplying: $a$ is $k$ times as many as $b$ when $a=kb$.",
-      ],
-      [
-        "more than twice as likely",
-        "Its chance is more than double: its count is more than twice the other count.",
+        "times-as-many",
+        "More than twice as likely: its count is more than 2 times the other count.",
       ],
     ],
     method: [
@@ -424,13 +377,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "If two fractions have the same denominator, the whole is cut into equal parts of the same size in both, so the fraction with more parts is greater: $\\frac{5}{8}$ is greater than $\\frac{3}{8}$. If they have the same numerator, both have the same number of parts, but a smaller denominator means larger parts: $\\frac{5}{6}$ is greater than $\\frac{5}{8}$ because sixths are larger than eighths.",
-    terms: [
-      ["numerator", "The top number: how many equal parts are taken."],
-      [
-        "denominator",
-        "The bottom number: how many equal parts make the whole.",
-      ],
-    ],
+    terms: ["numerator", "denominator"],
     method: [
       "Check which part is the same: the denominators or the numerators.",
       "Same denominator: the greater numerator is the greater fraction. Same numerator: the smaller denominator is the greater fraction.",
@@ -474,13 +421,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "An inequality such as $\\square<-\\frac{1}{2}$ asks for a number to the left of $-\\frac{1}{2}$ on the number line. To compare a decimal with a fraction, write both as decimals: $-\\frac{1}{2}=-0.5$. Then place the numbers in order: of two negative numbers, the one farther from zero is the lesser. With the numbers in order, the one that fits each statement stands out.",
-    terms: [
-      [
-        "inequality",
-        "A statement that one number is less than ($<$) or greater than ($>$) another.",
-      ],
-      ["number line", "A line on which numbers increase from left to right."],
-    ],
+    terms: ["inequality", "number-line"],
     method: [
       "Write every number as a decimal.",
       "Put them in order from least to greatest.",
