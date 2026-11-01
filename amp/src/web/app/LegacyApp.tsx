@@ -1196,7 +1196,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     leavingHome.current ||
     // The welcome states the configured free allowance: paint it once.
     (!token && !nativeRuntime && !catalog && !error) ||
-    (starting && token && !familySummary)
+    (starting && token && !familySummary) ||
+    // Signed in, the family loads behind the same first-paint frame: never
+    // the signed-out welcome or a placeholder card in between.
+    (!!token && !nativeRuntime && !familySummary && !error && !familyOpen)
   )
     return (
       <LoadingScreen
@@ -1299,7 +1302,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           )}
         </div>
       </header>
-      {!learner && !familyOpen && !nativeRuntime && !(signingIn && !token) && (
+      {!token && !familyOpen && !nativeRuntime && !signingIn && (
         <div className="intro">
           <div>
             <p>

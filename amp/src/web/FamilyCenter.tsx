@@ -490,11 +490,14 @@ export function FamilyCenter({
       <div className="family-body" ref={body}>
         {section === "security" && accountsEnabled && <AccountSecurity />}
         <Toast message={error} onDismiss={() => setError("")} />
-        {notice && (
-          <p className="family-notice" role="status">
-            {notice}
-          </p>
-        )}
+        {/* Confirmations overlay the page instead of pushing it down. */}
+        <Toast
+          tone="status"
+          className="family-notice"
+          message={notice}
+          persist={notice.length > 60}
+          onDismiss={() => setNotice("")}
+        />
         {!family ? (
           <div aria-busy="true">
             <p>Loading family details…</p>
