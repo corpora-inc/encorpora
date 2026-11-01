@@ -11,7 +11,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
     noLink: ["side", "mean", "positions", "position"],
     method: [
       "Mark the numbers on a number line, or write fractions as decimals so they are easy to compare.",
-      "If the question asks which is greater, higher, warmer or less cold, compare positions: farther left is less.",
+      "If the question asks which number is greater, higher, warmer or less cold, compare positions: farther left is less. A greater debt is a size question, not an order question.",
       "If the question asks for the size of a debt, a depth or a distance from 0, compare absolute values.",
       "Write the comparison with $<$ or $>$ and read it aloud to check that the symbol and the words agree.",
     ],
@@ -183,7 +183,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "method",
         title: "Choose the question first",
         paragraphs: [
-          "Underline what the question asks. Words such as greater, higher, warmer and less cold ask about order, so compare positions on the number line. Words such as debt, depth, distance from sea level and how far ask about size, so compare absolute values.",
+          "Underline what the question asks. Words such as greater balance, higher, warmer and less cold ask about order, so compare positions on the number line. Words such as debt, depth, distance from sea level and how far ask about size, so compare absolute values.",
           "To order fractions and decimals, write each as a decimal, for example $-\\frac{3}{4}=-0.75$. Place the negative numbers to the left of 0 and put the one with the greater absolute value farthest left.",
         ],
       },
@@ -217,7 +217,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
       product: "product-multiply",
     },
     objectives: [
-      "Rewrite a linear expression (one with $x$ but no $x^2$) by multiplying out parentheses and combining like terms.",
+      "Rewrite a linear expression (one where $x$ is never multiplied by $x$, such as $3x + 2$) by multiplying out parentheses and combining like terms.",
       "Use substitution, putting a number in place of $x$, to show that expressions are not equivalent, and explain why one matching value is not proof.",
     ],
     sections: [
@@ -255,7 +255,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
         title: "Why two inputs settle linear expressions",
         paragraphs: [
           "Expressions are equivalent when they have equal values for every allowed $x$. Take two linear expressions $mx + k$ and $nx + j$, where $m$, $k$, $n$ and $j$ are numbers. They agree at $x = 0$ exactly when $k = j$. They agree at $x = 1$ exactly when $m + k = n + j$. If they agree at both inputs, then $m = n$ and $k = j$, so they are the same expression.",
-          "For other kinds of expressions, agreement at finitely many inputs does not prove equivalence.",
+          "For other kinds of expressions, such as ones with $x^2$, agreeing at two inputs is not enough.",
         ],
       },
     ],

@@ -6,7 +6,7 @@ const foundations: Lesson["sections"] = [
   {
     title: "Read a signed fraction",
     paragraphs: [
-      "A fraction $\\frac{a}{b}$ names the quotient $a \\div b$. The denominator $b$, below the bar, is the number of equal parts that make one whole. The number above the bar is called the numerator, $a$, and it counts those parts. Thus $\\frac{3}{4}$ counts three of the four equal parts of one whole. A denominator is never 0, because no number of parts can make a whole of zero parts.",
+      "A fraction $\\frac{a}{b}$ names the quotient $a \\div b$. The number below the bar is called the denominator, $b$. When it is positive, it is the number of equal parts that make one whole. The number above the bar is called the numerator, $a$, and it counts those parts. Thus $\\frac{3}{4}$ counts three of the four equal parts of one whole. A denominator is never 0, because dividing by 0 has no answer.",
       "Integers are the whole numbers 0, 1, 2, 3 and so on, together with their negatives. A rational number is a quotient of two integers with a nonzero denominator; it can be positive, negative or zero. On a number line, $-\\frac{3}{4}$ lies three quarters of a unit to the left of 0. One minus sign may be written before the fraction or in its numerator: $-\\frac{3}{4} = \\frac{-3}{4}$.",
       "Equivalent fractions name the same number. Multiplying the numerator and the denominator by the same nonzero number keeps the value, because the multiplying fraction equals 1: $\\frac{3}{4} = \\frac{3 \\times 3}{4 \\times 3} = \\frac{9}{12}$. Dividing both by a common factor reverses this. A fraction is in lowest terms when its numerator and denominator have no common factor greater than 1.",
     ],
@@ -82,7 +82,7 @@ export const rationalLessons: Lesson[] = [
       prompt: "Calculate $-\\frac{5}{6} - \\left(-\\frac{3}{8}\\right)$.",
       steps: [
         "Subtracting a number is the same as adding its opposite. The opposite of $-\\frac{3}{8}$ is $\\frac{3}{8}$, so $-\\frac{5}{6} - \\left(-\\frac{3}{8}\\right) = -\\frac{5}{6} + \\frac{3}{8}$.",
-        "The parts must be the same size before adding. The smallest number both 6 and 8 divide is 24, so use twenty-fourths: $-\\frac{5}{6} = -\\frac{5 \\times 4}{6 \\times 4} = -\\frac{20}{24}$ and $\\frac{3}{8} = \\frac{3 \\times 3}{8 \\times 3} = \\frac{9}{24}$.",
+        "The parts must be the same size before adding. The smallest positive number both 6 and 8 divide evenly is 24, so use twenty-fourths: $-\\frac{5}{6} = -\\frac{5 \\times 4}{6 \\times 4} = -\\frac{20}{24}$ and $\\frac{3}{8} = \\frac{3 \\times 3}{8 \\times 3} = \\frac{9}{24}$.",
         "Add the signed numerators (the top numbers) and keep the denominator, which names the part size: $\\frac{-20 + 9}{24} = -\\frac{11}{24}$.",
         "11 and 24 share no factor (a number that divides both) greater than 1, so $-\\frac{11}{24}$ is in lowest terms.",
         "Check by undoing the step: $-\\frac{11}{24} - \\frac{3}{8} = -\\frac{11}{24} - \\frac{9}{24} = -\\frac{20}{24} = -\\frac{5}{6}$, the number we started with.",
@@ -101,7 +101,7 @@ export const rationalLessons: Lesson[] = [
     id: "signed-fraction-product",
     title: "Multiply and divide signed fractions",
     summary:
-      "A signed fraction is a positive or negative fraction, like $-\\frac{4}{9}$. To multiply fractions, multiply the top numbers and multiply the bottom numbers. To divide by a fraction, flip it (swap its top and bottom) and multiply instead. The flipped fraction is called the reciprocal. Then use the signs: two numbers with the same sign give a positive answer, and different signs give a negative answer.",
+      "A signed fraction is a positive or negative fraction, like $-\\frac{4}{9}$. To multiply fractions, multiply the top numbers and multiply the bottom numbers. To divide by a fraction other than 0, flip it (swap its top and bottom) and multiply instead. The flipped fraction is called the reciprocal. Then use the signs: two numbers with the same sign give a positive answer, and different signs give a negative answer.",
     templateIds: ["signed-fraction-product"],
     includeGeneratedRepresentation: false,
     senses: {
@@ -133,7 +133,7 @@ export const rationalLessons: Lesson[] = [
       {
         title: "Find the sign first",
         paragraphs: [
-          "Multiplying by $-1$ flips a number across 0 to its opposite, the same distance from 0 on the other side. A product with one negative factor is reflected once and is negative. A product with two negative factors is reflected twice, back to the positive side. So same signs give a positive product and opposite signs give a negative product.",
+          "Multiplying by $-1$ flips a number across 0 to its opposite, the same distance from 0 on the other side. When no factor is 0, a product with one negative factor is flipped across 0 once, so it is negative. A product with two negative factors is reflected twice, back to the positive side. So same signs give a positive product and opposite signs give a negative product.",
           "Division follows the same sign rule. Dividing is multiplying by a reciprocal, and a reciprocal has the same sign as its number. Settle the sign, then work with the sizes.",
           "Before multiplying, a number that divides a numerator may cancel with the same number in a denominator. This divides the top and bottom of the answer by the same number, so the value stays the same. Simplify the result to lowest terms: no number greater than 1 divides both top and bottom.",
         ],
@@ -339,7 +339,7 @@ export const rationalMethods: Record<string, ProblemMethod> = {
   "signed-fraction-product": {
     goal: "Multiply or divide two signed fractions (fractions with plus or minus signs) and give the exact answer.",
     intuition:
-      "To multiply fractions, multiply the tops (numerators) and multiply the bottoms (denominators). A fraction's reciprocal is the fraction flipped, with its top and bottom swapped. To divide, multiply by the reciprocal of the divisor, the number you divide by. Numbers being multiplied are called factors, and the answer is called the product. Then use the signs. Same signs give a positive result, and different signs give a negative one.",
+      "To multiply fractions, multiply the tops (numerators) and multiply the bottoms (denominators). A fraction's reciprocal is the fraction flipped, with its top and bottom swapped; 0 has no reciprocal. To divide, multiply by the reciprocal of the divisor, the number you divide by. Numbers being multiplied are called factors, and the answer is called the product. Then use the signs. Same signs give a positive result, and different signs give a negative one.",
     terms: [...fractionTerms, "reciprocal"],
     senses: {
       opposite: "opposite-number",

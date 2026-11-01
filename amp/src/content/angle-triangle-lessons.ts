@@ -79,7 +79,7 @@ export const angleTriangleLessons: Lesson[] = [
         stage: "formal",
         title: "Angles in a shared whole",
         paragraphs: [
-          "Adjacent angles whose insides do not overlap add to the angle formed by their outer rays. Angles on a straight line add to 180 degrees. Angles around a point add to 360 degrees. Vertical angles, the angles across from each other where two lines cross, are equal.",
+          "Adjacent angles whose insides do not overlap add to the angle formed by their outer rays. Angles that fill a straight line exactly, with no gaps or overlaps, add to 180 degrees. Angles that fill a full turn around a point add to 360 degrees. Vertical angles, the angles across from each other where two lines cross, are equal.",
         ],
       },
     ],

@@ -515,5 +515,5 @@ export const decimalPrinciples: Record<string, string> = {
   "multidigit-decimal-product":
     "Tenths times hundredths are thousandths, so the product's decimal places are the factors' decimal places added together.",
   "multidigit-decimal-quotient":
-    "Multiplying the dividend and divisor by the same number leaves the quotient unchanged.",
+    "Multiplying the dividend and divisor by the same number, other than 0, leaves the quotient unchanged.",
 };

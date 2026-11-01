@@ -79,7 +79,7 @@ export const powerLessons: Lesson[] = [
     id: "comparing-powers",
     title: "Comparing powers and growth by doubling",
     summary:
-      "A power such as $2^5$ means the same number multiplied again and again. The big number 2 is the base, the number that repeats. The small raised 5 is the exponent, which counts the 2s: $2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32$. Swapping the base and the exponent usually changes the value: $5^2 = 5 \\times 5 = 25$. Doubling (multiplying by 2) again and again makes a power of 2.",
+      "A power such as $2^5$ means the same number multiplied again and again. The big number 2 is the base, the number that repeats. The small raised 5 is the exponent, which counts the 2s: $2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32$. Swapping the base and the exponent usually changes the value: $5^2 = 5 \\times 5 = 25$. Starting at 1 and doubling (multiplying by 2) again and again makes the powers of 2: 2, 4, 8, 16.",
     templateIds: ["power-compare", "power-order-trap", "power-doubling-story"],
     senses: { ...powerSenses, change: "change" },
     noLink: ["changes", "whole"],
@@ -163,7 +163,7 @@ export const powerMethods: Record<string, ProblemMethod> = {
       "A factor is a number being multiplied, and the product is the answer when you multiply. When the same factor repeats, we can write it as a power. In $5^4$, the big number 5 is the base, the factor that repeats. The small raised 4 is the exponent, which counts the factors: $5^4 = 5 \\times 5 \\times 5 \\times 5$.",
     method: [
       "Find the repeated factor. It is the base.",
-      "Count how many times it is multiplied. That count is the exponent: $5 \\times 5 \\times 5 \\times 5 = 5^4$.",
+      "Count how many times it appears as a factor. That count is the exponent: $5 \\times 5 \\times 5 \\times 5 = 5^4$.",
       "Reject the look-alikes. $5 \\times 4$ multiplies 5 by the count, and $5 + 5 + 5 + 5$ adds four 5s. Only $5^4$ multiplies four 5s together.",
     ],
     watch: "Do not swap them: four factors of 5 is $5^4$, not $4^5$.",

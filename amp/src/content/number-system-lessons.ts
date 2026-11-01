@@ -87,7 +87,7 @@ export const numberSystemLessons: Lesson[] = [
       answer: "24",
     },
     pitfalls: [
-      "The GCF is never larger than the smaller number, so an answer larger than that cannot be the GCF.",
+      "For two numbers greater than 0, the GCF is never larger than the smaller number, so an answer larger than that cannot be the GCF.",
       "A common factor is not always the greatest: 12 divides 48 and 72, but the quotients 4 and 6 still share 2.",
       "Divide both numbers by the factor: 4(9 + 8) is 36 + 32, not 36 + 8.",
     ],
@@ -433,7 +433,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
       "The GCF is the largest shared factor, or the shared primes multiplied together.",
     ],
     watch:
-      "The GCF is never larger than the smaller number, so an answer larger than that cannot be right.",
+      "For two numbers greater than 0, the GCF is never larger than the smaller number, so an answer larger than that cannot be right.",
   },
   "least-common-multiple": {
     noLink: ["whole"],
@@ -562,7 +562,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
       "Add the changes to the start. For the change between two values, find end − start.",
     ],
     watch:
-      "A fall, descent or payment is a negative change even when the story states it as a positive amount.",
+      "With up, or money in, chosen as positive, a fall, descent or payment out is a negative change, even when the story states it as a positive amount.",
   },
   "signed-jumps": {
     goal: "Find where a list of positive and negative changes ends on a number line.",

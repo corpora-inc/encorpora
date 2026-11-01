@@ -58,7 +58,7 @@ const specs: Spec[] = [
       "To decide if the graph is proportional, check two things: it is a straight line that is not straight up and down, and it passes through $(0, 0)$.",
     ],
     watch:
-      "A line that goes up is not always proportional. If it meets the vertical axis above 0, something is already there at the start, like a fixed fee. Also, the second number of a point is a total, not the rate.",
+      "A line that goes up is not always proportional. If it meets the vertical axis above 0, something is already there at the start, like a fixed fee. Also, the second number of a point is the total for that many units. It equals the unit rate only when the first number is 1.",
     principle: t`A relationship between $x$ and $y$ is proportional when $y = rx$ for one fixed number $r$. Its graph is a straight line through $(0, 0)$ and $(1, r)$, and $r$ is the unit rate. A line $y = rx + b$ with $b \neq 0$ does not pass through $(0, 0)$, and the ratio $y/x$ is not constant on it.`,
     example: {
       prompt: t`Apples are sold at one price for each pound. The graph of cost in dollars against pounds passes through the labeled point $(4, 12)$. What does the point mean, and what is the unit rate?`,
@@ -416,7 +416,7 @@ const specs: Spec[] = [
     templateId: "compound-event-simulation",
     title: "Sample spaces and simulations",
     summary:
-      "Probability is a number from 0 to 1 that tells how likely something is. An outcome is one possible result, such as rolling a 3. A compound event has more than one stage, like rolling two dice. To find its probability, list every outcome and count the ones you want. Or estimate it with a simulation: use random digits to act out many tries, called trials, and count. Then compare the estimate with the exact value.",
+      "Probability is a number from 0 to 1 that tells how likely something is. An outcome is one possible result, such as rolling a 3. A compound event is an event in a chance process with more than one stage, like “the sum is 5” when rolling two dice. To find its probability, list every outcome and count the ones you want. Or estimate it with a simulation: use random digits to act out many tries, called trials, and count. Then compare the estimate with the exact value.",
     objectives: [
       "Find a compound-event probability from a list of all outcomes.",
       "Estimate a probability from simulated trials and compare it with the theoretical probability.",
@@ -424,8 +424,8 @@ const specs: Spec[] = [
     goal: "Find a compound event's probability from its sample space, estimate it from random-digit trials, and compare experimental with theoretical.",
     intuition: [
       t`An outcome is one possible result of a chance process, like the number a die lands on. An event is the outcome or outcomes you are asking about, such as “the sum is 5”. Probability tells how likely an event is, as a number from 0 to 1. Impossible means it cannot happen, with probability 0. Certain means it is sure to happen, with probability 1.`,
-      t`A compound event has more than one stage, such as rolling two dice or flipping a coin three times. The sample space is the list of all possible outcomes. When every outcome is equally likely, the probability of an event is the number of outcomes where it happens, divided by the number of outcomes in all.`,
-      t`If it is hard to list outcomes, you can estimate a probability with a simulation, acting out the chance process many times. Random digits are digits picked by chance, each equally likely. Let them stand for the outcomes, run many trials (one full run each), and count how often the event happens. That is the experimental probability: the number of trials where the event happened, divided by the number of trials. The exact value from the sample space is the theoretical probability. The two are usually close, but not equal.`,
+      t`A compound event is an event in a chance process with more than one stage. One example is “the sum is 5” when rolling two dice. Another is “2 or more heads” when flipping a coin three times. The sample space is the list of all possible outcomes. When every outcome is equally likely, the probability of an event is the number of outcomes where it happens, divided by the number of outcomes in all.`,
+      t`If it is hard to list outcomes, you can estimate a probability with a simulation, acting out the chance process many times. Random digits are digits picked by chance, each equally likely. Let them stand for the outcomes, run many trials (one full run each), and count how often the event happens. That is the experimental probability: the number of trials where the event happened, divided by the number of trials. The exact value from the sample space is the theoretical probability. With many trials the two are usually close, though rarely exactly equal; with few trials they can be far apart.`,
     ],
     terms: [
       "sample-space",
@@ -440,7 +440,7 @@ const specs: Spec[] = [
       "Divide by the number of trials. To compare with the theoretical probability, compare the two fractions.",
     ],
     watch:
-      "Count trials, not single digits. Do not add the number of outcomes at each stage; multiply. A difference between experimental and theoretical probability is normal, since chance varies.",
+      "Count trials, not single digits. When each stage has the same number of results whatever happened before, multiply those numbers; do not add them. A difference between experimental and theoretical probability is normal, since chance varies.",
     principle: t`If all outcomes of a sample space are equally likely, $P(\text{event}) = \frac{\text{number of outcomes in the event}}{\text{number of outcomes in the sample space}}$. A compound event's sample space has $n_1 \cdot n_2 \cdots$ outcomes when the stages have $n_1, n_2, \dots$ outcomes. The experimental probability of an event in $N$ trials is $\frac{\text{trials with the event}}{N}$, and it tends to be close to the theoretical probability as $N$ grows.`,
     example: {
       prompt:
@@ -462,7 +462,7 @@ const specs: Spec[] = [
     ],
     pitfalls: [
       "A trial is one whole group of digits, not one digit.",
-      "Multiply the numbers of outcomes of the stages to count the sample space.",
+      "When each stage has the same number of results whatever happened before, multiply those numbers to count the sample space.",
       "Results of a simulation vary; a small difference is not a mistake.",
     ],
     parentGuide:

@@ -250,7 +250,7 @@ export const missingLegLesson: Lesson = {
       paragraphs: [
         "Suppose the hypotenuse is 13 cm and one leg is 5 cm. Let $x$ stand for the other leg's length in centimeters. The two leg squares together equal the hypotenuse square: $x^2 + 5^2 = 13^2$.",
         "The hypotenuse square has area $13^2 = 169$ cm². One leg square has area $5^2 = 25$ cm². The other leg square is the rest: 169 − 25 = 144 cm². In the equation, subtract 25 on the left and on the right of the equals sign, so the two sides stay equal: $x^2 + 25 - 25 = 169 - 25$, so $x^2 = 144$.",
-        "The root sign means the square root that is zero or greater: $\sqrt{144}$ is the number, zero or greater, whose square is 144. Since 12 × 12 = 144, $\\sqrt{144} = 12$. A side has positive length, so $x = 12$ and the missing side is 12 cm long. The value −12 also squares to 144, but it cannot be a side length.",
+        "The root sign means the square root that is zero or greater: $\\sqrt{144}$ is the number, zero or greater, whose square is 144. Since 12 × 12 = 144, $\\sqrt{144} = 12$. A side has positive length, so $x = 12$ and the missing side is 12 cm long. The value −12 also squares to 144, but it cannot be a side length.",
         "This is subtraction because the hypotenuse square is the total and one leg square is a known part. Adding 169 and 25 would give a bigger total, not the missing part. Subtract the squares, not the lengths: 13 − 5 = 8, and $8^2 + 5^2 = 89$, not 169.",
       ],
     },

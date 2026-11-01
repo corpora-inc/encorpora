@@ -247,7 +247,7 @@ export const realNumberLessons: Lesson[] = [
     id: "scientific-notation",
     title: "Scientific notation",
     summary:
-      "Very large and very small numbers are hard to read: 307,000 or 0.000307. Scientific notation writes them as a number from 1 up to (but not including) 10, times a power of 10. A power of 10 is 10 multiplied by itself, such as $10^5 = 100{,}000$. So $307{,}000 = 3.07 \\times 10^5$. The exponent, the small raised number, tells how many places the decimal point moves.",
+      "Very large and very small numbers are hard to read: 307,000 or 0.000307. Scientific notation writes them as a number from 1 up to (but not including) 10, times a power of 10. A power of 10 is 10 multiplied by itself some number of times, like $10^5 = 100{,}000$, or 1 divided by such a number, like $10^{-2} = 0.01$. So $307{,}000 = 3.07 \\times 10^5$. The exponent, the small raised number, tells how many places the decimal point moves.",
     templateIds: [
       "scientific-to-standard",
       "standard-to-scientific",
@@ -416,7 +416,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
     terms: ["repeating-block"],
     noLink: ["whole", "tails", "tail", "leaves", "place", "places"],
     intuition:
-      "A repeating decimal repeats a block of digits forever. A bar marks the block: $0.\\overline{27} = 0.272727\\ldots$. Call the decimal $x$. For a 2-digit block, multiplying by 100 shifts every digit two places left, so $100x$ and $x$ have the same endless tail. For a 3-digit block, use 1000. Subtracting cancels the tail.",
+      "A repeating decimal repeats a block of digits forever. A bar marks the block: $0.\\overline{27} = 0.272727\\ldots$. Call the decimal $x$. For a 2-digit block, multiplying by 100 shifts every digit two places left, so $100x$ and $x$ have the same endless tail. For a 3-digit block, use 1000. If digits come before the block, first multiply by 10 for each of them: for $0.1\\overline{6}$, use $100x - 10x = 15$. Subtracting cancels the tail.",
     method: [
       "Call the decimal $x$ and write out a few repetitions.",
       "Multiply $x$ by powers of 10 so that two copies have the same tail after the point.",

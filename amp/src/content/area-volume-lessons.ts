@@ -58,7 +58,7 @@ export const areaVolumeLessons: Lesson[] = [
           "Area is the amount of flat surface a shape covers. It is counted in square units: small squares 1 unit long on each side. The abbreviation cm means centimeters, and a square centimeter is a small square 1 cm long on each side. A rectangle, a four-sided shape with four square corners, 5 cm long and 3 cm wide holds 3 rows of 5 of these squares. So its area is 5 × 3 = 15 square centimeters.",
           "A triangle is a flat shape with three straight sides. Each corner, where two sides meet, is called a vertex. Pick any side and call it the base. The height is the distance from the base to the vertex across from it. It is measured along a line that meets the base at a right angle, a square corner like the corner of a page. Figures often draw the height as a dashed line. A slanted side is not the height.",
           "Make a copy of the triangle and turn it halfway around. Fit the copy against the original along one of the two sides that is not the base. Together they make a parallelogram, a four-sided shape whose facing sides are parallel: they point the same way and never meet. The parallelogram has the same base and height as the triangle.",
-          "Cut a triangle off one end of the parallelogram and slide it to the other end. That makes a rectangle with the same base and height, so the parallelogram's area is base × height too. The triangle is exactly half of the parallelogram. So the triangle's area is half of base × height.",
+          "For most parallelograms, cut a triangle off one end and slide it to the other end. That makes a rectangle with the same base and height, so the parallelogram's area is base × height too. The triangle is exactly half of the parallelogram. So the triangle's area is half of base × height.",
         ],
       },
       areaMeaning,
@@ -153,7 +153,7 @@ export const areaVolumeLessons: Lesson[] = [
         title: "Shapes made of familiar pieces",
         paragraphs: [
           "Many polygons can be split into a rectangle and a triangle by drawing one line. A pentagon, a five-sided shape, shaped like a house is a rectangle with a triangle on top. The rectangle is 8 m wide and 5 m tall, so its area is 8 × 5 = 40. The roof triangle sits on the 8 m top of the rectangle, so its base is 8 m. Its height, from that base up to the peak, is 3 m. So its area is $\\tfrac{1}{2} \\times 8 \\times 3 = 12$. The pentagon's area is 40 + 12 = 52 square meters.",
-          "Sometimes a figure gives the total height of the house instead of the triangle's height. The total height runs from the floor to the peak. The wall takes up the bottom 5 m of it, so the roof's height is what is left: 8 − 5 = 3 m. Finally, check that the pieces cover the shape exactly once.",
+          "Sometimes a figure gives the total height of the house instead of the triangle's height. The total height runs from the floor to the peak. The wall takes up the bottom 5 m of it, so if the total height is 8 m, the roof's height is what is left: 8 − 5 = 3 m. Finally, check that the pieces cover the shape exactly once.",
         ],
       },
     ],
@@ -232,7 +232,7 @@ export const areaVolumeLessons: Lesson[] = [
         title: "Prisms and pyramids",
         paragraphs: [
           "A rectangular prism has six rectangle faces in three matching pairs: top and bottom, front and back, and the two ends. Take a box 5 cm long, 3 cm wide and 2 cm tall. Its pairs have areas 5 × 3 = 15, 5 × 2 = 10 and 3 × 2 = 6 square centimeters. Each area counts twice, once for each face in the pair. So the surface area is 2 × 15 + 2 × 10 + 2 × 6 = 30 + 20 + 12 = 62 square centimeters.",
-          "A triangular prism has two triangle ends and three rectangles. Each rectangle is as long as the prism and as wide as one side of the triangle. A square pyramid has a square base and four triangles that meet at the top. In these lessons the top point is directly above the middle of the base, so the four triangles match. Each triangle's height runs along the face, from the middle of a bottom edge up to the top point. It is called the slant height. It is longer than the pyramid's height measured straight up from the base.",
+          "A right triangular prism (one that does not lean) has two triangle ends and three rectangles. Each rectangle is as long as the prism and as wide as one side of the triangle. A square pyramid has a square base and four triangles that meet at the top. In these lessons the top point is directly above the middle of the base, so the four triangles match. Each triangle's height runs along the face, from the middle of a bottom edge up to the top point. It is called the slant height. It is longer than the pyramid's height measured straight up from the base.",
         ],
       },
     ],
@@ -269,7 +269,7 @@ export const areaVolumeLessons: Lesson[] = [
     id: "unit-fraction-cube-packing",
     title: "Packing a prism with fraction cubes",
     summary:
-      "A solid is a shape that takes up space, and its volume is the amount of space it takes up. A rectangular prism is a box shape. A cube is a box whose edges, the lines where its flat faces meet, are all the same length. Small cubes with edges of $\\tfrac{1}{2}$ unit can fill a box exactly. Count them, then multiply by the volume of one small cube. The result equals the three edge lengths multiplied together.",
+      "A solid is a shape that takes up space, and its volume is the amount of space it takes up. A rectangular prism is a box shape. A cube is a box whose edges, the lines where its flat faces meet, are all the same length. Small cubes with edges of $\\tfrac{1}{2}$ unit can fill a box exactly when each edge of the box is a whole number of halves. Count them, then multiply by the volume of one small cube. The result equals the three edge lengths multiplied together.",
     templateIds: ["unit-fraction-cube-packing"],
     senses: {
       side: "side",
@@ -885,7 +885,7 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["opposite side", "opposite"],
     intuition:
-      "A solid is a shape that takes up space, like a box. Its faces are its flat outside surfaces. A net is the flat pattern you get by unfolding all the faces. Area is the amount of flat surface a shape covers, counted in square units: squares 1 unit long on each side, such as square feet. A rectangle has four sides and four square corners. A prism is a solid with two matching ends joined by rectangles. A pyramid has one face at the bottom, its base, and triangles that meet at a point. Surface area is the total area of all the faces, each counted once. A rectangle's area is length × width. A triangle's area is half of base × height: its base is one side, and its height is measured from that side at a right angle, a square corner.",
+      "A solid is a shape that takes up space, like a box. Its faces are its flat outside surfaces. A net is the flat pattern you get by unfolding all the faces. Area is the amount of flat surface a shape covers, counted in square units: squares 1 unit long on each side, such as square feet. A rectangle has four sides and four square corners. A right prism is a solid with two matching ends joined by rectangles. A pyramid has one face at the bottom, its base, and triangles that meet at a point. Surface area is the total area of all the faces, each counted once. A rectangle's area is length × width. A triangle's area is half of base × height: its base is one side, and its height is measured from that side at a right angle, a square corner.",
     terms: ["net-solid", "surface-area"],
     method: [
       "Name every face in the net and its shape.",

@@ -15,7 +15,7 @@ const foundations: Lesson["sections"] = [
     stage: "intuition",
     title: "Read a power",
     paragraphs: [
-      "A factor is a number being multiplied, and the product is the answer when you multiply. A power is a short way to write the same factor multiplied again and again: $2^3 = 2 \\times 2 \\times 2 = 8$. The big number 2 is called the base: it is the factor that repeats. The small raised 3 is called the exponent. A positive exponent counts how many times the base is multiplied.",
+      "A factor is a number being multiplied, and the product is the answer when you multiply. A power is a short way to write the same factor multiplied again and again: $2^3 = 2 \\times 2 \\times 2 = 8$. The big number 2 is called the base: it is the factor that repeats. The small raised 3 is called the exponent. A positive exponent counts how many times the base is used as a factor.",
       "A letter such as $x$ can stand for a number. In these lessons the base is never 0. It can be any real number, meaning any number on the number line, except zero. That includes negative numbers, which are less than 0, and fractions. You will multiply and divide negative numbers, so remember: a negative times a negative is positive, and a negative times a positive is negative.",
     ],
   },
@@ -25,7 +25,7 @@ const foundations: Lesson["sections"] = [
     paragraphs: [
       "Keep the base 2 and lower the exponent one step at a time. Each step down divides the value by 2: $2^3 = 8$, $2^2 = 4$, $2^1 = 2$, $2^0 = 1$, and then $2^{-1} = \\tfrac{1}{2}$. The pattern carries on past zero into negative exponents. An integer is a whole number or its negative (… −2, −1, 0, 1, 2 …), and an integer exponent can be positive, zero or negative.",
       "A fraction $\\tfrac{a}{b}$ means $a$ divided by $b$. The top number $a$ is the numerator, and the bottom number $b$ is the denominator, which is never 0. The reciprocal of a number is what you multiply it by to get 1. For a fraction, flip it: swap the numerator and denominator. The reciprocal of 2 is $\\tfrac{1}{2}$, and the reciprocal of $-\\tfrac{2}{3}$ is $-\\tfrac{3}{2}$, because $\\left(-\\tfrac{2}{3}\\right) \\times \\left(-\\tfrac{3}{2}\\right) = 1$.",
-      "A negative exponent means “take the reciprocal”. It does not make the answer negative. Zero has no reciprocal, because zero times any number is zero, never 1. Dividing by zero has no answer, so the base is never 0.",
+      "A negative exponent means “take the reciprocal”. It does not change the sign: $2^{-1} = \\tfrac{1}{2}$, and $(-2)^{-1} = -\\tfrac{1}{2}$. Zero has no reciprocal, because zero times any number is zero, never 1. Dividing by zero has no answer, so the base is never 0.",
     ],
   },
 ];
@@ -35,7 +35,7 @@ export const integerExponentLessons: Lesson[] = [
     id: "negative-integer-power",
     title: "Understand and evaluate negative powers",
     summary:
-      "In $2^3$, 2 is multiplied 3 times: $2 \\times 2 \\times 2$. The repeated number is called the base, and the small raised 3 is called the exponent. Each step down in the exponent divides by the base: $2^2 = 4$, $2^1 = 2$, $2^0 = 1$. Keep going past zero: $2^{-1} = \\tfrac{1}{2}$ and $2^{-2} = \\tfrac{1}{4}$. A negative exponent means: use the matching positive exponent, then take the reciprocal, the number that multiplies with the result to make 1. It does not make the answer negative.",
+      "In $2^3$, three 2s are multiplied: $2 \\times 2 \\times 2$. The repeated number is called the base, and the small raised 3 is called the exponent. Each step down in the exponent divides by the base: $2^2 = 4$, $2^1 = 2$, $2^0 = 1$. Keep going past zero: $2^{-1} = \\tfrac{1}{2}$ and $2^{-2} = \\tfrac{1}{4}$. A negative exponent means: use the matching positive exponent, then take the reciprocal, the number that multiplies with the result to make 1. It does not change the sign of the base.",
     templateIds: ["negative-integer-power"],
     includeGeneratedRepresentation: false,
     senses: exponentSenses,
@@ -99,7 +99,7 @@ export const integerExponentLessons: Lesson[] = [
     id: "product-of-powers-exponent",
     title: "Multiply powers with the same base",
     summary:
-      "In $x^2$, $x$ is multiplied 2 times: $x \\times x$. The repeated number is called the base, and the small raised 2 is called the exponent. So $x^2 \\times x^3$ is two $x$s times three more $x$s. That is five $x$s in all, or $x^5$. When two powers have the same base, multiplying them adds their exponents.",
+      "In $x^2$, two $x$s are multiplied: $x \\times x$. The repeated number is called the base, and the small raised 2 is called the exponent. So $x^2 \\times x^3$ is two $x$s times three more $x$s. That is five $x$s in all, or $x^5$. When two powers have the same base, multiplying them adds their exponents.",
     templateIds: ["product-of-powers-exponent"],
     includeGeneratedRepresentation: false,
     senses: exponentSenses,
@@ -156,7 +156,7 @@ export const integerExponentLessons: Lesson[] = [
     id: "quotient-of-powers-exponent",
     title: "Divide powers with the same base",
     summary:
-      "In $x^5$, $x$ is multiplied 5 times. The repeated number is called the base, and the small raised 5 is called the exponent. Dividing $x^5$ by $x^2$ cancels two $x$s on top with the two below, because $\\tfrac{x}{x} = 1$. Three $x$s are left, so the answer is $x^3$. When two powers have the same base (not 0), dividing subtracts the bottom exponent from the top one: 5 − 2 = 3.",
+      "In $x^5$, five $x$s are multiplied. The repeated number is called the base, and the small raised 5 is called the exponent. Dividing $x^5$ by $x^2$ cancels two $x$s on top with the two below, because $\\tfrac{x}{x} = 1$. Three $x$s are left, so the answer is $x^3$. When two powers have the same base (not 0), dividing subtracts the bottom exponent from the top one: 5 − 2 = 3.",
     templateIds: ["quotient-of-powers-exponent"],
     includeGeneratedRepresentation: false,
     senses: exponentSenses,
@@ -213,7 +213,7 @@ export const integerExponentLessons: Lesson[] = [
     id: "power-of-power-exponent",
     title: "Raise a power to another power",
     summary:
-      "In $x^2$, $x$ is multiplied 2 times. The repeated number is called the base, and the small raised 2 is called the exponent. Then $(x^2)^3$ means three copies of $x^2$ multiplied: $x^2 \\times x^2 \\times x^2$. That is three groups of two $x$s, or six $x$s, so $(x^2)^3 = x^6$. Raising a power to another power multiplies the exponents: 2 × 3 = 6.",
+      "In $x^2$, two $x$s are multiplied. The repeated number is called the base, and the small raised 2 is called the exponent. Then $(x^2)^3$ means three copies of $x^2$ multiplied: $x^2 \\times x^2 \\times x^2$. That is three groups of two $x$s, or six $x$s, so $(x^2)^3 = x^6$. Raising a power to another power multiplies the exponents: 2 × 3 = 6.",
     templateIds: ["power-of-power-exponent"],
     includeGeneratedRepresentation: false,
     senses: exponentSenses,
@@ -293,7 +293,7 @@ export const integerExponentMethods: Record<string, ProblemMethod> = {
       "Raise the reciprocal to the positive exponent. Multiply the top factors and the bottom factors, then simplify.",
     ],
     watch:
-      "A negative exponent means reciprocal, not a negative answer: $2^{-1} = \\tfrac{1}{2}$, not −2.",
+      "A negative exponent means take the reciprocal; it does not change the sign. $2^{-1} = \\tfrac{1}{2}$, not −2, and $(-2)^{-1} = -\\tfrac{1}{2}$.",
   },
   "product-of-powers-exponent": {
     goal: "Two powers of the same base are multiplied. Find the exponent of the result by adding the two exponents.",

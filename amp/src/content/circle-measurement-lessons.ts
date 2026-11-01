@@ -116,7 +116,7 @@ export const circleMeasurementLessons: Lesson[] = [
     },
     pitfalls: [
       "Use the diameter in $C = \\pi d$ or the radius in $C = 2\\pi r$.",
-      "Circumference is a length, so its unit is cm, not square centimeters.",
+      "Circumference is a length, so it uses a length unit such as cm, not an area unit such as square centimeters.",
       "When the question asks for $a$ in $a\\pi$, enter the coefficient only.",
     ],
     parentGuide:
