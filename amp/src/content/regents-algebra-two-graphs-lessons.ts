@@ -5,7 +5,7 @@ import { lesson, m } from "./regents-algebra-two-reasoning-lessons";
 export const regentsAlgebraTwoGraphMethods: Record<string, ProblemMethod> = {
   "log-base-fraction-graph": m(
     "Choose the graph of a logarithm whose base is between 0 and 1.",
-    "The base is the number being raised to a power, and the exponent is the small raised number. A logarithm is the exponent that turns the base into $x$. Every logarithm graph passes through $(1,0)$, because any allowed base raised to the power 0 is 1. It stays to the right of the $y$-axis, because only positive numbers have logarithms. With a base greater than 1 it rises. With a base between 0 and 1 it falls, because larger values of $x$ give smaller logarithms.",
+    "The base is the number being raised to a power, and the exponent is the small raised number. A logarithm is the exponent that turns the base into $x$. The graph of $y = \\log_b x$ passes through $(1,0)$, because any allowed base raised to the power 0 is 1. It stays to the right of the $y$-axis, because only positive numbers have logarithms. With a base greater than 1 it rises. With a base between 0 and 1 it falls, because larger values of $x$ give smaller logarithms.",
     [["logarithm", "The base is the number $b$ in $\\log_b x$."]],
     [
       "Check that the graph passes through $(1,0)$ and lies to the right of the $y$-axis.",
@@ -91,7 +91,7 @@ export const regentsAlgebraTwoGraphLessons = [
   lesson(
     "regents-log-base-fraction-graph",
     "Graphs of logarithms with a base below 1",
-    "In a power like $b^2$, the base is the number being raised and the exponent is the small raised number. A logarithm is the answer to the question: what exponent turns the base into this number? For $y = \\log_{1/2} x$, read “log base one half of $x$”, the base is $\\tfrac{1}{2}$. Every logarithm graph passes through the point $(1, 0)$, where $x$ is 1 and $y$ is 0. With a base between 0 and 1, the graph falls as $x$ grows.",
+    "In a power like $b^2$, the base is the number being raised and the exponent is the small raised number. A logarithm is the answer to the question: what exponent turns the base into this number? For $y = \\log_{1/2} x$, read “log base one half of $x$”, the base is $\\tfrac{1}{2}$. Every graph of the form $y = \\log_b x$ passes through the point $(1, 0)$, where $x$ is 1 and $y$ is 0. With a base between 0 and 1, the graph falls as $x$ grows.",
     ["log-base-fraction-graph"],
     [
       "Recognize the features every logarithm graph shares.",

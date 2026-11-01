@@ -56,7 +56,7 @@ export const regentsAlgebraTwoExponentialMethods: Record<
     },
     noLink: ["whole"],
     intuition:
-      "A logarithm is a missing exponent. The exponent is the small raised number in a power like $10^3$, and the base is the number being raised, here 10. The base-10 logarithm of a number, written $\\log$, is the power of 10 that gives it, so $\\log 10^k = k$. In $3 \\cdot 10^x = 45$, where the dot means times, first get $10^x$ alone by dividing by 3. Then take the logarithm. A letter that stands for a fixed number, like $a$ in $a \\cdot 10^x = b$, is called a parameter.",
+      "A logarithm is a missing exponent. The exponent is the small raised number in a power like $10^3$, and the base is the number being raised, here 10. The base-10 logarithm of a number, written $\\log$, is the exponent that turns 10 into that number, so $\\log 10^k = k$. A power of 10, meaning 10 raised to some exponent, is undone by it. In $3 \\cdot 10^x = 45$, where the dot means times, first get $10^x$ alone by dividing by 3. Then take the logarithm. A letter that stands for a fixed number, like $a$ in $a \\cdot 10^x = b$, is called a parameter.",
     terms: [
       [
         "logarithm",
@@ -167,7 +167,7 @@ export const regentsAlgebraTwoExponentialLessons = [
     openingTitle: "A fixed ratio makes the sum short",
     opening: [
       "In a geometric sequence, every term is the term before it times a fixed number $r$, the common ratio. The first term is written $a_1$: the small 1 is a label for position 1. The sum of the first $n$ terms is called a geometric series, written $S_n$.",
-      "A common ratio between 0 and 1, like $\\tfrac{3}{4}$, makes the terms shrink. A common ratio above 1 makes them grow. Percent (%) means out of 100. A payment that rises 8% each year keeps the whole amount and adds 0.08 of it, so each payment is 1.08 times the last: $r = 1.08$.",
+      "When the first term is positive, a common ratio between 0 and 1, like $\\tfrac{3}{4}$, makes the terms shrink. A common ratio above 1 makes them grow. Percent (%) means out of 100. A payment that rises 8% each year keeps the whole amount and adds 0.08 of it, so each payment is 1.08 times the last: $r = 1.08$.",
       "The sum formula is $S_n = \\tfrac{a_1(1 - r^n)}{1 - r}$, for any common ratio $r$ that is not 1. Here $r^n$ means $r$ multiplied by itself $n$ times. That exponent, the small raised $n$, is the number of terms.",
     ],
     example: {
@@ -240,7 +240,7 @@ export const regentsAlgebraTwoExponentialLessons = [
     ],
     pitfalls: [
       "Do not set the exponents equal while the bases are different.",
-      "Multiply the whole exponent by the power: $2(x + 3)$, not $2x + 3$.",
+      "Multiply the whole exponent by the inner exponent: $2(x + 3)$, not $2x + 3$.",
     ],
     parentGuide:
       "After both sides are rewritten in base 3, have your learner put the answer into both new exponents and see that they match.",
@@ -249,7 +249,7 @@ export const regentsAlgebraTwoExponentialLessons = [
     id: "regents-exponential-parameter-log",
     title: "Base-10 equations with parameters",
     summary:
-      "In $10^x = 15$, the unknown $x$ is an exponent, the small raised number. A power of 10 is a number made by multiplying 10 by itself, like $10^2 = 100$. The base-10 logarithm is the exponent that turns 10 into a given number. It is written $\\log$, so $x = \\log 15$. To solve, get the power of 10 alone, then take the logarithm. Sometimes letters such as $a$ and $b$ stand for fixed numbers. Letters like these are called parameters.",
+      "In $10^x = 15$, the unknown $x$ is an exponent, the small raised number. A power of 10, meaning 10 raised to some exponent, can be any positive number: $10^2 = 100$, and $10^x = 15$ for an $x$ between 1 and 2. The base-10 logarithm is the exponent that turns 10 into a given number. It is written $\\log$, so $x = \\log 15$. To solve, get the power of 10 alone, then take the logarithm. Sometimes letters such as $a$ and $b$ stand for fixed numbers. Letters like these are called parameters.",
     senses: { parameter: "parameter", side: "side-of-equation" },
     noLink: ["whole", "part"],
     templateIds: ["exponential-parameter-log"],

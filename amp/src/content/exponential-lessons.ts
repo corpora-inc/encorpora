@@ -127,7 +127,7 @@ export const exponentialLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "A linear function is one of the form $y = mx + c$, and an exponential function is one of the form $y = a \\cdot b^x$. Here $m$, $c$, $a$ and $b$ are fixed numbers, and the dot $\\cdot$ means times. Over equal steps of the input, the linear function has the same difference every step, and the exponential function has the same ratio every step.",
+          "A linear function is one of the form $y = mx + c$, and an exponential function is one of the form $y = a \\cdot b^x$, with $a \\neq 0$, $b > 0$ and $b \\neq 1$ ($\\neq$ means is not equal to). Here $m$, $c$, $a$ and $b$ are fixed numbers, and the dot $\\cdot$ means times. Over equal steps of the input, the linear function has the same difference every step, and the exponential function has the same ratio every step.",
           "If $a > 0$ and $b > 1$, then $a \\cdot b^x$ eventually becomes greater than every linear function $mx + c$ as $x$ grows, and stays greater.",
         ],
       },
@@ -143,7 +143,7 @@ export const exponentialLessons: Lesson[] = [
     id: "exponential-equations",
     title: "Solving for an exponent",
     summary:
-      "In $2^x = 8$, the 2 is called the base and the unknown $x$ is the exponent: the small raised number that says how many 2s are multiplied together. A base with an exponent, like $2^3$, is called a power. Since $2 \\times 2 \\times 2 = 8$, the answer is $x = 3$. When both sides, meaning the left and the right of the equals sign, can be written as powers of the same base, set the exponents equal. When they cannot, a logarithm names the missing exponent.",
+      "In $2^x = 8$, the 2 is called the base and the unknown $x$ is the exponent: the small raised number that says how many 2s are multiplied together. A base with an exponent, like $2^3$, is called a power. Since $2 \\times 2 \\times 2 = 8$, the answer is $x = 3$. When both sides, meaning the left and the right of the equals sign, can be written as powers of the same base, set the exponents equal. This works when the base is positive and not 1. When they cannot, a logarithm names the missing exponent.",
     senses: {
       rule: "rule",
       base: "base-exponent",
@@ -176,7 +176,7 @@ export const exponentialLessons: Lesson[] = [
       {
         title: "When the bases do not match",
         paragraphs: [
-          "In $3 \\cdot 10^x = 21$, the dot means times, and 21 is not a power of 10, meaning 10, 100, 1000 or another number made by multiplying 10s together. First get the power alone. Divide both sides by 3 to get $10^x = 7$. Dividing both sides by the same number, other than 0, keeps them equal.",
+          "In $3 \\cdot 10^x = 21$, the dot means times, and you cannot get 21 by multiplying 10s together. First get the power alone. Divide both sides by 3 to get $10^x = 7$. Dividing both sides by the same number, other than 0, keeps them equal.",
           "Now ask: 10 to what power gives 7? That exponent is called a logarithm. It is written $\\log_{10} 7$ and read “log base 10 of 7”. So $x = \\log_{10} 7$, which is about 0.845. With no base written, $\\log$ means base 10. $\\ln$ stands for the natural logarithm, the logarithm with base $e$, a special number about 2.718.",
           "In general, $b^x = k$ means $x = \\log_b k$. The base of the power becomes the base of the logarithm. This needs the base $b$ to be positive and not 1, and $k$ to be positive.",
         ],
@@ -454,7 +454,7 @@ export const exponentialLessons: Lesson[] = [
         paragraphs: [
           "On the graph of $y = \\log_2 x$, each doubling of $x$ adds 1 to $y$: $\\log_2 2 = 1$, $\\log_2 4 = 2$ and $\\log_2 8 = 3$. The curve passes through the point $(1, 0)$, because $2^0 = 1$.",
           "Halving $x$ takes 1 away from $y$. So $\\log_2 \\tfrac{1}{2} = -1$, because $2^{-1} = \\tfrac{1}{2}$. A negative exponent means one divided by the power.",
-          "A fractional exponent, an exponent that is a fraction, works like a root, the number that multiplied by itself gives what is inside. A square root is the power $\\tfrac{1}{2}$, so $\\sqrt{8} = 8^{1/2} = (2^3)^{1/2} = 2^{3/2}$. That gives $\\log_2 \\sqrt{8} = \\tfrac{3}{2}$.",
+          "A root is the number that undoes a power: 3 is a root of 9, because $3^2 = 9$. A fractional exponent, an exponent that is a fraction, means a root. The exponent $\\tfrac{1}{2}$ means the square root, the positive number that, multiplied by itself, gives the number inside. The exponent $\\tfrac{1}{3}$ means the cube root, the number whose three copies multiply to give the number inside. A square root is the power $\\tfrac{1}{2}$, so $\\sqrt{8} = 8^{1/2} = (2^3)^{1/2} = 2^{3/2}$. That gives $\\log_2 \\sqrt{8} = \\tfrac{3}{2}$.",
           "A number between two powers has a logarithm between their exponents. The sign $<$ means is less than. Since $8 < 10 < 16$, that is $2^3 < 10 < 2^4$, $\\log_2 10$ is between 3 and 4.",
         ],
         illustration: "log-graph-points",
@@ -536,7 +536,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     senses: { rule: "rule" },
     noLink: ["whole", "jumps"],
     intuition:
-      "An input is a number you start with, and an output is the number you get. A function is a rule that turns each input into exactly one output. We write $f(x)$, read “$f$ of $x$”, for the output when the input is $x$. A linear function is one that adds the same amount each step. An exponential function is one that multiplies by the same number each step, so when that number is greater than 1, its jumps keep getting bigger. The sign $>$ means is greater than.",
+      "An input is a number you start with, and an output is the number you get. A function is a rule that turns each input into exactly one output. We write $f(x)$, read “$f$ of $x$”, for the output when the input is $x$. A linear function is one that adds the same amount each step. An exponential function is one that multiplies by the same number each step, so when its starting output is above 0 and that number is greater than 1, its jumps keep getting bigger. The sign $>$ means is greater than.",
     method: [
       "Work out both functions at the whole numbers, meaning 0, 1, 2 and so on, or continue both lists of values one step at a time.",
       "Compare the two values at each step.",
@@ -564,7 +564,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     senses: { side: "side-of-equation", base: "base-exponent" },
     noLink: ["balance", "whole", "more than"],
     intuition:
-      "In $3 \\cdot 10^x = 21$, the dot means times, the unknown $x$ is an exponent, and 21 is not a power of 10, meaning 10, 100, 1000 or another number made by multiplying 10s together. The base is the number being raised to a power. A logarithm is the missing exponent: $\\log_b k$, read “log base $b$ of $k$”, is the power of $b$ that gives $k$. So $10^x = 7$ means $x = \\log_{10} 7$.",
+      "In $3 \\cdot 10^x = 21$, the dot means times, the unknown $x$ is an exponent, and you cannot get 21 by multiplying 10s together. The base is the number being raised to a power. A logarithm is the missing exponent: $\\log_b k$, read “log base $b$ of $k$”, is the power of $b$ that gives $k$. So $10^x = 7$ means $x = \\log_{10} 7$.",
     terms: [terms.logarithm],
     method: [
       "Get the power alone. If a number is added to it, subtract that number from both sides, meaning the left and the right of the equals sign. Then divide both sides by the number multiplying it, which is never 0 here.",
@@ -603,7 +603,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     terms: [terms.ratio],
     method: [
       "Find the first term $a_1$. Find the ratio, the number each term is multiplied by, by dividing a term by the one before it (a term that is not 0).",
-      "Count the terms $n$. Term $n$ is $a_1 r^{n-1}$: its exponent is one less than its position. With sigma ($\\Sigma$, meaning add up), count the whole numbers, meaning 0, 1, 2 and so on, from the bottom limit to the top one.",
+      "Count the terms $n$. Term $n$ is $a_1 r^{n-1}$: its exponent is one less than its position. With sigma ($\\Sigma$, meaning add up), count the values of the counter from the number below the sigma to the number above it, including both.",
       "If $r$ is not 1, use $S_n = \\tfrac{a_1(r^n - 1)}{r - 1}$. When $r$ is between 0 and 1, the same value is $\\tfrac{a_1(1 - r^n)}{1 - r}$. If $r = 1$, every term is $a_1$, so the sum is $n a_1$.",
     ],
     watch:
@@ -681,7 +681,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       base: "base-exponent",
     },
     intuition:
-      "The base is the number being raised to a power. A logarithm is an exponent: $\\log_b N$, read “log base $b$ of $N$”, is the exponent that turns the base $b$ into $N$. One over a power flips the sign of its exponent: $\\tfrac{1}{8} = \\tfrac{1}{2^3} = 2^{-3}$. A square root is the number that, multiplied by itself, gives what is inside. It has a fractional exponent: $\\sqrt{2} = 2^{1/2}$.",
+      "The base is the number being raised to a power. A logarithm is an exponent: $\\log_b N$, read “log base $b$ of $N$”, is the exponent that turns the base $b$ into $N$. One over a power flips the sign of its exponent: $\\tfrac{1}{8} = \\tfrac{1}{2^3} = 2^{-3}$. A square root is the positive number that, multiplied by itself, gives what is inside. It has a fractional exponent: $\\sqrt{2} = 2^{1/2}$.",
     terms: [terms.logarithm],
     method: [
       "Write the number inside the logarithm as a power of the base. One over $b^k$ is $b^{-k}$, and a square root of $b^k$ is $b^{k/2}$.",
@@ -699,7 +699,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     terms: [terms.logarithm],
     method: [
       "$\\log_b N = p$ and $b^p = N$ say the same thing. The base stays the base, the logarithm's value is the exponent, and $N$ is the result.",
-      "To place $\\log_b N$ between whole numbers, meaning 0, 1, 2 and so on, take a base greater than 1 and $N$ greater than 1. List the powers $b^1, b^2, b^3, \\dots$ until one passes $N$. If one equals $N$, its exponent is the logarithm exactly. Otherwise the logarithm is between the exponents of the powers just below and just above $N$.",
+      "To place $\\log_b N$ between whole numbers, meaning 0, 1, 2 and so on, take a base greater than 1 and $N$ greater than 1. List the powers $b^0 = 1, b^1, b^2, \\dots$ until one passes $N$. If one equals $N$, its exponent is the logarithm exactly. Otherwise the logarithm is between the exponents of the powers just below and just above $N$.",
     ],
     watch:
       "The result $N$ goes inside the logarithm, and the exponent is the logarithm's value.",
