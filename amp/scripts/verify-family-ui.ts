@@ -283,6 +283,15 @@ try {
   });
   await page.keyboard.press("Escape");
   await page.setViewportSize({ width: 390, height: 844 });
+  // Edit name is a quiet outlined action, never a second filled primary
+  // beside the learner's workbook and delete actions.
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Edit name", exact: true })
+      .evaluate((el) => getComputedStyle(el).backgroundColor),
+    "rgba(0, 0, 0, 0)",
+    "Edit name is filled",
+  );
   await page.getByRole("button", { name: "Edit name", exact: true }).click();
   await page.getByLabel("Learner display name").fill("Renamed learner");
   await page.getByRole("button", { name: "Save name", exact: true }).click();

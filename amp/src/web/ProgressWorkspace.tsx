@@ -47,10 +47,8 @@ const areaNames: Record<string, string> = {
 const areaName = (name: string) =>
   areaNames[name] ??
   name.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase());
-const title = (skill: Skill) =>
-  skill.id === "statistics-mean"
-    ? "Mean of a data set"
-    : skill.title.toLowerCase().replace(/^./, (c) => c.toUpperCase());
+/** The catalog's title (skillTitle), as every screen shows it. */
+const title = (skill: Skill) => skill.title;
 export function reviewSuggested(
   skill: LearnerSkillProgress,
   asOf: string,
