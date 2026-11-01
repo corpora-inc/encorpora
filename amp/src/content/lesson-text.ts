@@ -59,8 +59,10 @@ export function bandBelow(band: GradeBand): GradeBand | null {
 
 /** A reference lesson's text in the order `ReferenceLesson` renders it:
  * summary and intuition sections, worked example, method sections, watch
- * for, the partner note, then principle and definitions. Objectives are
- * listed after the summary as the lesson's goals. */
+ * for, the partner note, then principle and definitions. Objectives are not
+ * shown to learners, so they are not part of it. The printed lesson's
+ * generated "Explore the representation" practice (`publications.tsx`) is
+ * reviewed with its template's practice lesson, not here. */
 export function referenceLessonBlocks(lesson: Lesson): LessonTextBlock[] {
   const sections = [
     ...lesson.sections.map((s) => ({ ...s, stage: s.stage ?? "method" })),
@@ -80,7 +82,6 @@ export function referenceLessonBlocks(lesson: Lesson): LessonTextBlock[] {
   const example = lesson.workedExample;
   return [
     { stage: "summary", label: "summary", lines: [lesson.summary] },
-    { stage: "goal", label: "goals", lines: lesson.objectives },
     ...layer("intuition"),
     {
       stage: "example",
@@ -103,21 +104,19 @@ export function referenceLessonBlocks(lesson: Lesson): LessonTextBlock[] {
   ];
 }
 
-/** A problem lesson's text in the order `ProblemLesson` renders it: goal and
- * plain opening, generated example, method, watch for, then the principle and
- * terms. */
+/** A problem lesson's text in the order `ProblemLesson` renders it: the
+ * plain opening (its intuition, or the goal when it has none), generated
+ * example, method, watch for, then the principle and terms. */
 export function problemLessonBlocks(
   view: ProblemLessonView,
 ): LessonTextBlock[] {
   const blocks: LessonTextBlock[] = [
-    { stage: "goal", label: "goal", lines: [view.goal] },
-  ];
-  if (view.intuition && view.intuition !== view.goal)
-    blocks.push({
-      stage: "intuition",
+    {
+      stage: view.intuition ? "intuition" : "goal",
       label: "opening",
-      lines: [view.intuition],
-    });
+      lines: [view.intuition ?? view.goal],
+    },
+  ];
   blocks.push(
     {
       stage: "example",

@@ -27,15 +27,15 @@ The summary of `quadratic-factored-solutions` (`quadratic-lessons.ts`) names a p
 >
 > **After:** If two numbers multiply to make zero, at least one of them is zero. In $(x - 2)(x + 3) = 0$, the factors (the parts being multiplied) are $x - 2$ and $x + 3$. So $x - 2 = 0$ or $x + 3 = 0$. That gives $x = 2$ or $x = -3$. A value that makes the equation true is called a solution. This finds every solution.
 
-The intuition of `quadratic-real-solution-count` starts with letters and symbols, then names the discriminant before showing what it does:
+The intuition of `quadratic-real-solution-count` (`quadratic-lessons.ts`) starts with letters and symbols, then names the discriminant before showing what it does:
 
 > **Before:** A quadratic has the form $ax^2+bx+c=0$ with $a\ne0$; $a$, $b$, and $c$ are its signed number coefficients. Its discriminant is $D=b^2-4ac$.
 >
-> **After:** In $2x^2 + 3x - 5 = 0$, $x^2$ ($x$ squared) means $x$ times $x$. An equation like this, with an $x^2$ part and nothing like $x^3$ ($x \cdot x \cdot x$), is called a quadratic. Its coefficients are the numbers in front of each part: $2$, $3$ and $-5$. Square the middle number. Then subtract 4 times the first and last numbers multiplied together: $3^2 - 4 \cdot 2 \cdot (-5) = 9 + 40 = 49$. This number is called the discriminant. Its sign tells how many real-number solutions (solutions on the number line) there are.
+> **After:** In $2x^2 + 3x - 5 = 0$, $x^2$ ($x$ squared) means $x$ times $x$. An equation like this, with an $x^2$ part and nothing like $x^3$ ($x$ times $x$ times $x$), is called a quadratic. Its coefficients are the numbers that multiply each part: $2$ multiplies $x^2$, and $3$ multiplies $x$. The last number, $-5$, stands alone. Square the middle number. Then subtract 4 times the first and last numbers multiplied together: $3^2 - 4 \times 2 \times (-5) = 9 + 40 = 49$. This number is called the discriminant. Its sign tells how many different real-number solutions (values on the number line that make the equation true) there are.
 
 ### Checking a rewrite
 
-- `npm run review:plain -- --file src/content/<file>.ts --run <name>` asks a Codex judge to read each lesson as a learner one band below. It covers the reference lesson and the practice lesson of every template. Select with `--lesson`, `--template`, `--strand`, `--band`, `--sample` or `--all`, and use `--print` to see the exact text it reads. It writes `artifacts/plain-language/<name>.json` and `<name>.md`. Reusing a run name skips lessons already judged on unchanged text and retries failures. Quote the before and after counts in the PR, and resolve every high and medium finding or explain why it is wrong.
+- `npm run review:plain -- --file src/content/<file>.ts --run <name>` asks a Codex judge to read each lesson as a learner one band below. It covers the reference lesson and the practice lesson of every template. Select with `--lesson`, `--template`, `--strand`, `--band`, `--sample` or `--all`, and use `--print` to see the exact text it reads. It writes `artifacts/plain-language/<name>.json` and `<name>.md`. A run uses effort `high` by default (a few minutes per lesson, eight lessons at a time); `--effort medium` is faster for a first pass. Reusing a run name skips lessons already judged on unchanged text and retries failures. Quote the before and after counts in the PR, and resolve every high and medium finding or explain why it is wrong.
 
 ## Writing rules
 
