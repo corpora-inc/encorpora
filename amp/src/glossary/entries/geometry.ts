@@ -409,7 +409,7 @@ export const geometryEntries: GlossaryEntry[] = [
       "correspondence",
     ],
     plain:
-      "In the same position in two matched figures. Corresponding sides, angles and corners are the parts that pair up when one figure is matched to the other.",
+      "In the same position in two matched figures. Corresponding sides, angles and corners pair up when the figures are named in the same order, as $ABC$ and $DEF$.",
     example:
       "If triangle $ABC$ matches triangle $DEF$ in that order, side $AB$ corresponds to side $DE$.",
     uses: ["side", "angle", "corner", "triangle"],
@@ -714,7 +714,7 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "height",
     forms: ["height", "heights", "perpendicular height"],
     plain:
-      "The distance from a shape's base to its highest point, measured along a line that meets the base at a right angle. A slanted side is not the height.",
+      "The distance from the base to the corner or side across from it, measured at a right angle to the base's line. A slanted side is not the height.",
     example:
       "A triangle with base 6 and height 4 has area $\\tfrac{1}{2} \\times 6 \\times 4 = 12$.",
     uses: [
@@ -726,6 +726,7 @@ export const geometryEntries: GlossaryEntry[] = [
       "point",
       "line",
       "side",
+      "corner",
     ],
     band: "5",
   },
@@ -1155,8 +1156,8 @@ export const geometryEntries: GlossaryEntry[] = [
       "triangular prisms",
     ],
     plain:
-      "A solid with two matching, parallel flat ends that are the same polygon, joined by flat side faces. A box is a rectangular prism.",
-    uses: ["solid-shape", "polygon", "face-solid", "parallel", "side"],
+      "A solid with two matching flat ends that are the same polygon, directly facing each other, joined by four-sided flat side faces. A box is a rectangular prism.",
+    uses: ["solid-shape", "polygon", "face-solid", "side"],
     band: "5",
   },
   {
@@ -1294,10 +1295,10 @@ export const geometryEntries: GlossaryEntry[] = [
     forms: ["reflection", "reflections", "reflect", "reflects", "reflected"],
     plain:
       "A flip of a figure across a line, making its mirror image. Each point lands just as far from the line, on the other side.",
-    example: "A letter b reflected across a vertical line becomes a d.",
+    example: "A letter b flipped across an up-and-down line becomes a d.",
     uses: ["point", "line"],
     band: "4",
-    noLink: ["side", "image", "vertical line"],
+    noLink: ["side", "image"],
   },
   {
     id: "reflexive-property",

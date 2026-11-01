@@ -776,8 +776,8 @@ export const statisticsProbabilityEntries: GlossaryEntry[] = [
     plain:
       "Reshuffling the group labels among the same results many times, recomputing the difference each time, to see how big a difference chance alone makes.",
     example:
-      "If only 2 of 1,000 reshuffles give a difference at least as big as the real one, the real difference is hard to explain by chance alone.",
-    uses: ["difference-subtract", "at-least"],
+      "If only 2 of 1,000 reshuffles give a difference as big as the real one or bigger, the real difference is hard to explain by chance alone.",
+    uses: ["difference-subtract"],
     band: "algebra-2",
   },
   {
@@ -908,10 +908,10 @@ export const statisticsProbabilityEntries: GlossaryEntry[] = [
     term: "statistically significant",
     forms: ["significant", "statistically significant"],
     plain:
-      "A result is significant when chance alone would give a result at least this extreme less often than a cutoff chosen in advance, such as 5%.",
+      "A result is significant when chance alone would give a result this extreme, or more, less often than a cutoff chosen in advance, such as 5%.",
     example:
-      "If reshuffles give a difference at least this big only 1% of the time, the difference is significant at a 5% cutoff.",
-    uses: ["difference-subtract", "at-least"],
+      "If reshuffles give a difference this big or bigger only 1% of the time, the difference is significant at a 5% cutoff.",
+    uses: ["difference-subtract"],
     autoLink: false,
     band: "algebra-2",
   },

@@ -18,7 +18,7 @@ export const ratioEntries: GlossaryEntry[] = [
     term: "APR",
     forms: ["apr", "annual percentage rate"],
     plain:
-      "Annual percentage rate: the yearly cost of borrowing as a percent, including interest and some fees. Many cards charge interest monthly at the APR divided by 12.",
+      "Annual percentage rate: the yearly cost of borrowing, as a percent. Dividing the APR by 12 gives a monthly rate.",
     example: "An APR of 18% is a monthly rate of 18% ÷ 12 = 1.5%.",
     uses: ["interest", "rate", "loan", "credit-card", "percent"],
     band: "7",
@@ -159,7 +159,7 @@ export const ratioEntries: GlossaryEntry[] = [
     term: "minimum payment",
     forms: ["minimum payment", "minimum payments"],
     plain:
-      "The smallest payment a credit card requires by the due date. Paying less brings fees, and any unpaid balance usually collects interest.",
+      "The smallest payment a credit card requires by the due date. Paying less can bring a late fee, and any unpaid balance usually collects interest.",
     uses: ["credit-card", "interest", "balance-account"],
     band: "7",
   },

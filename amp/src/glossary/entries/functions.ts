@@ -39,17 +39,9 @@ export const functionsEntries: GlossaryEntry[] = [
     term: "axis of symmetry",
     forms: ["axis of symmetry", "axes of symmetry"],
     plain:
-      "The line through a parabola's vertex that splits it into two mirror-image halves. For the graph of a quadratic function, it is vertical.",
+      "The line through a parabola's vertex that splits it into two mirror-image halves. For a parabola $y=ax^2+bx+c$, it is vertical.",
     example: "For $y=(x-3)^2+1$, the axis of symmetry is the line $x=3$.",
-    uses: [
-      "vertical-line",
-      "line",
-      "vertex-parabola",
-      "parabola",
-      "half",
-      "quadratic",
-      "function",
-    ],
+    uses: ["vertical-line", "line", "vertex-parabola", "parabola", "half"],
     band: "algebra-1",
   },
   {
@@ -373,7 +365,7 @@ export const functionsEntries: GlossaryEntry[] = [
     term: "logarithm",
     forms: ["logarithm", "logarithms", "log", "logs"],
     plain:
-      "For positive $N$ and a positive base $b \\ne 1$, $\\log_b N$ is the exponent that turns $b$ into $N$. A log with no base written means base 10.",
+      "For $N>0$, $b>0$ and $b\\ne1$, $\\log_b N$ is the exponent that turns $b$ into $N$: $b$ raised to it is $N$. No base written means base 10.",
     example: "$\\log_2 8=3$ because $2^3=8$; $\\log 100=2$ because $10^2=100$.",
     uses: ["exponent", "base-exponent"],
     band: "algebra-1",
