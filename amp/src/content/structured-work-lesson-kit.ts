@@ -20,6 +20,7 @@ export type WorkEntry = {
   formal: string;
   pitfalls: string[];
   parentGuide: string;
+  /** Glossary senses and unlinked words for the lesson, method and hints. */
   senses?: GlossarySenses;
   noLink?: string[];
 };

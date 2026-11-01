@@ -12,7 +12,7 @@ production, publication, advertising, and outcome measurement.
 2. Open the [private media and connections runbook](https://github.com/corpora-inc/infra-private/blob/main/operations/amp-media/README.md)
    for the music inventory, machine paths, platform identities, connection
    configuration, active workers, and recovery steps. Authorized local operators
-   can also read `~/Documents/Corpora/AMP-media/PIPELINE.md`.
+   can also read `$AMP_MEDIA_ROOT/PIPELINE.md`.
 3. Load the local path configuration when using the production machine:
    `source "$HOME/.config/corpora/amp/video.env"`. It defines asset locations;
    it contains no credential values and does not publish anything. On another
@@ -73,6 +73,16 @@ configuration and consult the private inventory before generating a replacement.
 Check that cloud-backed files are fully readable. Record the selected track's
 source path, SHA-256, rights/provenance, edit offset, fades, and mix settings.
 A rendered music segment is an edit artifact, not the canonical source track.
+
+Media and the background workers that read it live in a plain, non-synced folder
+on a directly attached drive, reached through one stable, space-free path
+(`~/corpora-media`) that `video.env` builds on. Never put production media,
+receipts, or launchd workers under `~/Documents`, `~/Desktop`, or
+`~/Library/Application Support`: those are synced or special macOS locations,
+and iCloud's Optimize Storage evicts files in place, so a worker that reads an
+evicted file fails with `OSError: [Errno 11] Resource deadlock avoided`. The
+workers cannot run while the drive is unplugged; reconnect it rather than
+recreating files elsewhere.
 
 Generated narration uses exactly one approved ElevenLabs voice:
 
