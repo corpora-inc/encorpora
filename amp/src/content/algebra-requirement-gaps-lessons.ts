@@ -667,9 +667,18 @@ const complexPartsLesson: Lesson = {
 };
 
 const interpretLinearParametersMethod: ProblemMethod = {
-  goal: "Say what the slope and the initial value of a linear model mean in its context, with units.",
+  goal: "A linear model describes a real situation. Say what its slope and its initial value mean there, with units.",
+  senses: {
+    rule: "rule",
+    balance: "balance-account",
+    change: "change",
+    model: "model",
+    unit: "unit",
+    term: "term-expression",
+  },
+  noLink: ["mean", "population"],
   intuition:
-    "In a linear model $y=mx+b$, the number $m$ says how much $y$ changes for each one-unit increase in $x$. The number $b$ is the value of $y$ when $x$ is 0, where the model starts.",
+    "A linear model is a rule in which each extra 1 of input changes the output by the same amount, like $C = 39h + 63$. In general it is written $y = mx + b$. You choose the input $x$, and the rule gives the output $y$. The slope $m$, the number multiplying $x$, says how much $y$ changes each time $x$ goes up by 1. The initial value $b$, the number standing alone, is the output when $x$ is 0. That 0 may stand for a starting moment, such as the year 2018 or the moment a drain opens.",
   terms: [
     [
       "rate-of-change",
@@ -681,35 +690,45 @@ const interpretLinearParametersMethod: ProblemMethod = {
     ],
   ],
   method: [
-    "Identify the input and output with their units.",
-    "Slope: say that the output increases (positive $m$) or decreases (negative $m$) by $|m|$ output units for each additional input unit.",
-    "Initial value: substitute input 0. State the output at that starting input, with units.",
-    "Check that the units of the slope are output per input and that the initial value has the output’s units.",
+    "Name the input and the output, and the unit of each: what it counts or measures, such as dollars, hours or liters.",
+    "Slope: as the input goes up, a positive $m$ (greater than 0) means the output goes up, and a negative $m$ means it goes down. If $m$ is 0, the output stays the same. Give the size without the sign, in output units per input unit.",
+    "Initial value: put 0 in for the input. Give the output at that starting point, in the output's units.",
+    "Check the units: the slope is output units per input unit, and the initial value is in output units.",
   ],
   watch:
-    "The slope is the change per unit, not the value after one unit; the value after one unit is $m+b$. The initial value is the value at input 0, which is not always at year 0 or time 0 of the calendar.",
+    "The slope is the change for each 1 of input. It is not the output after one unit, which is $m + b$. An input of 0 means the starting point the problem names, such as the moment a drain opens or the year 2018.",
 };
 
 const interpretLinearParametersPrinciple =
-  "For the linear model $y=mx+b$, equal changes in $x$ give equal changes in $y$: increasing $x$ by 1 changes $y$ by exactly $m$. The value at $x=0$ is $b$. Both interpretations apply within the domain where the model is valid and use the units of the context.";
+  "In the linear model $y = mx + b$, each increase of 1 in $x$ changes $y$ by exactly $m$, the slope. When $x = 0$, $y = b$, the initial value. These meanings hold only for inputs that make sense in the situation, and both numbers carry the situation's units.";
 
 const interpretLinearParametersLesson: Lesson = {
   id: "interpret-linear-parameters",
   title: "What the slope and starting value mean",
   summary:
-    "The slope is the change in the output for each one-unit change in the input; the constant is the output at input 0. State both with units.",
+    "A linear model is a rule, like $C = 39h + 63$, in which each extra 1 of input changes the output by the same amount. Here the input $h$ is hours worked, and the output $C$ is the charge in dollars. The 39 is the slope: each extra hour adds 39 dollars. The 63 is the starting value: the charge when $h = 0$. Always say what each number means, with its units, such as dollars or hours.",
   templateIds: ["interpret-linear-parameters"],
+  senses: {
+    balance: "balance-account",
+    change: "change",
+    model: "model",
+    unit: "unit",
+    rule: "rule",
+  },
+  noLink: ["mean", "parts", "whole"],
   objectives: [
-    "Interpret the slope as a rate of change with units, including a decrease.",
-    "Interpret the constant as the value at input 0, including when 0 means a starting year.",
+    "Explain the slope as the change in the output for each increase of 1 in the input, with units, including a decrease.",
+    "Explain the starting value as the output when the input is 0, including when 0 stands for a starting year.",
   ],
   sections: [
     {
       stage: "intuition",
       title: "A rate and a starting amount",
       paragraphs: [
-        "A plumber charges a fixed fee for coming plus an amount for each hour of work. The model $C=39h+63$ gives the total charge $C$ in dollars for $h$ hours. Each extra hour adds the same 39 dollars: that is the rate of change. Even with 0 hours the charge is $39(0)+63=63$ dollars: that is the starting amount.",
-        "Always say what each number means in the situation and attach its units: 39 dollars per hour and 63 dollars.",
+        "A plumber charges a fee just for coming, plus the same amount for each hour of work. A model is a rule, written as an equation, that describes a real situation. The model $C = 39h + 63$ gives the total charge $C$, in dollars, for $h$ hours of work. Here $39h$ means 39 times $h$.",
+        "The input is the number you choose: here, the hours $h$. The output is the result the rule gives: here, the charge $C$. Try a few inputs. For 1 hour, $C = 39 \\times 1 + 63 = 102$. For 2 hours, $C = 39 \\times 2 + 63 = 141$. For 3 hours, $C = 39 \\times 3 + 63 = 180$. Each extra hour adds the same 39 dollars.",
+        "That steady change for each extra 1 of input is called the rate of change. A model like this is called linear: equal steps in the input give equal steps in the output. Its graph, a picture of the input and output pairs as points, is a straight line. In a linear model the rate of change is the slope, the number multiplying the input. Its units are output units per input unit: 39 dollars per hour.",
+        "Now try 0 hours: $C = 39 \\times 0 + 63 = 63$. So 63 dollars is the charge before any work, just for coming. The output when the input is 0 is called the initial value, or starting value. It has the output's units: 63 dollars.",
       ],
     },
   ],
@@ -717,10 +736,11 @@ const interpretLinearParametersLesson: Lesson = {
     prompt:
       "The balance on a gift card is modeled by $B=150-12w$, where $B$ is in dollars and $w$ is the number of weeks after purchase. What do 12 and 150 mean?",
     steps: [
-      "Compare two inputs one week apart: $B(1)=138$ and $B(2)=126$. The balance drops by 12 dollars each week.",
-      "The slope is $-12$: the balance decreases by 12 dollars for each additional week (12 dollars per week).",
-      "Put $w=0$: $B=150$. The initial value is the balance at purchase.",
-      "So 12 is the weekly decrease and 150 dollars is the starting balance. After one week the balance is 138, not 12.",
+      "Name the input and the output. The input $w$ is the number of weeks after purchase. The output $B$ is the balance, the money left on the card, in dollars.",
+      "Find the change for one more week. At $w = 1$, $B = 150 - 12 \\times 1 = 138$. At $w = 2$, $B = 150 - 12 \\times 2 = 126$. The balance drops by 12 dollars from one week to the next.",
+      "So the slope is $-12$. The minus sign means a decrease: the balance goes down 12 dollars per week.",
+      "Put in $w = 0$, the moment of purchase: $B = 150 - 12 \\times 0 = 150$. The initial value is 150 dollars, the balance when the card is bought.",
+      "So 12 is how much the balance falls each week, and 150 dollars is the starting balance. After one week the balance is 138 dollars, not 12.",
     ],
     answer:
       "The balance decreases by 12 dollars each week; it starts at 150 dollars",
@@ -730,25 +750,28 @@ const interpretLinearParametersLesson: Lesson = {
       stage: "method",
       title: "When 0 is not the beginning of time",
       paragraphs: [
-        "In $N=1200+85t$, where $N$ is the number of subscribers and $t$ is the number of years after 2018, the input 0 means 2018. So 1200 is the number of subscribers in 2018, not at the year 0 of the calendar, and 85 is the number of subscribers added per year.",
-        "A decreasing model has a negative slope. In $D=240-55t$, where $D$ is the distance remaining in miles and $t$ is the hours driven, the distance remaining shrinks by 55 miles per hour, and 240 miles is the distance at the start of the trip.",
+        "Sometimes the input counts from a chosen starting point. In $N = 1200 + 85t$, $N$ is the number of subscribers and $t$ is the number of years after 2018. Then $t = 0$ means the year 2018 itself. So 1200 is the number of subscribers in 2018. The 85 means 85 more subscribers each year.",
+        "A model that goes down has a negative slope. In $D = 240 - 55t$, $D$ is the distance left to drive, in miles, and $t$ is the number of hours driven. The slope is $-55$: the distance left shrinks by 55 miles for each hour driven. The initial value, 240 miles, is the distance left at the start of the trip.",
+        "If the slope is 0, the output never changes. For example, $C = 0h + 63$ is always 63 dollars, however long the job takes.",
       ],
     },
     {
       stage: "formal",
       title: "Slope and intercept as changes and values",
       paragraphs: [
-        "For $f(x)=mx+b$, $f(x+1)-f(x)=m$ for every $x$, so $m$ is the constant rate of change. Also $f(0)=b$. A rate of change has the units of the output divided by the units of the input.",
+        "Mathematicians often name the output $f(x)$, read “$f$ of $x$”: the output when the input is $x$. So $f(0)$ means the output when the input is 0. It does not mean $f$ times 0. With this name, a linear model is written $f(x) = mx + b$.",
+        "Increase the input by 1. The new output is $f(x + 1) = m(x + 1) + b$. Here $m(x + 1)$ means $m$ times the whole of $x + 1$, which is $mx + m$. So $f(x + 1) = mx + m + b$. The change is the new output minus the old one: $(mx + m + b) - (mx + b)$. The $mx$ and $b$ parts cancel, leaving $m$. So the output changes by exactly $m$ whenever the input goes up by 1. For the plumber, $m = 39$.",
+        "Also $f(0) = m \\times 0 + b = b$, the initial value. On a graph, the vertical axis is the up-and-down number line where the input is 0. The line crosses it at the point $(0, b)$, so $b$ is also called the $y$-intercept. A rate of change has the output's units divided by the input's units.",
       ],
     },
   ],
   pitfalls: [
-    "The slope is the change per unit of input, not the output after one unit.",
-    "Say increase or decrease according to the sign of the slope.",
-    "State the units of both numbers, and say what an input of 0 means when the input is measured from a starting point.",
+    "The slope is the change for each 1 of input, not the output after one unit. In $C = 39h + 63$, the output after 1 hour is 39 + 63 = 102 dollars, not 39.",
+    "A positive slope (greater than 0) means the output goes up as the input goes up. A negative slope (less than 0) means the output goes down as the input goes up. Say which, and give the size without the sign: decreases by 12 dollars per week.",
+    "Give the units of both numbers. When the input counts from a starting point, such as years after 2018, say what an input of 0 means.",
   ],
   parentGuide:
-    "Ask what the charge is for a 0-hour job and how much it grows with each extra hour, then connect those answers to 63 and 39.",
+    "Ask what the charge is for a 0-hour job, and how much it grows with each extra hour. Then connect those answers to the 63 and the 39 in $C = 39h + 63$.",
 };
 
 const formConversionSenses = {
@@ -760,7 +783,6 @@ const formConversionSenses = {
   product: "product-multiply",
   term: "term-expression",
   terms: "term-expression",
-  standard: "standard-form-polynomial",
   "standard form": "standard-form-polynomial",
   side: "side-of-equation",
   unit: "unit",

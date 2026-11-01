@@ -11,6 +11,7 @@ import {
   generateSatGeometryAdvancedProblem,
 } from "./sat-geometry-advanced-practice";
 import { normalizeSelection } from "./selection-response";
+import { withTemplateGlossary } from "./template-glossary";
 import { historicalTrueEquationChoice } from "./operation-sentence-practice";
 import { historicalEqualFactorFamily } from "./multiselect-number-practice";
 import { sceneCapabilitiesIn } from "./scene/capability";
@@ -634,7 +635,7 @@ export const templates: readonly TemplateMetadata[] = [
   // Frozen legacy list above. New families register through src/families/
   // (docs/content-family-playbook.md) and append here in family-id order.
   ...familyRegistry.templates,
-];
+].map(withTemplateGlossary);
 
 function gcd(a: bigint, b: bigint): bigint {
   a = a < 0n ? -a : a;

@@ -31,6 +31,8 @@ video to private as a reflex. Apply the settled settings without asking Skylar
 to repeat them; verify actual Studio and viewer behavior. Private receipts and
 channel access configuration stay outside this public repository.
 
+Paid-video production must include Full HD 16:9, 1:1 and 9:16 exports for every new concept; 4:5 is supplemental. Follow the format gate in `docs/youtube-publishing.md`. Keep every active Performance Max asset group Excellent, verify eligible live coverage, and resolve all recommendations within approved budgets and conversion goals. Check after changes and daily; record Pending as unfinished and retain readback evidence.
+
 ## Public repository: protect operational information
 
 This repository, its issues, PRs, review comments, CI logs, screenshots, and
