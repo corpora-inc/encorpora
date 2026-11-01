@@ -64,7 +64,7 @@ export const powerLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "For a number $b$ and a positive whole number $n$ (1, 2, 3 and so on), the power $b^n$ is the product of $n$ factors, each equal to $b$. The base is $b$ and the exponent is $n$.",
-          "For $b$ greater than 1, the equation $b^n = v$ means that dividing $v$ by $b$ exactly $n$ times reaches 1. This check needs a base greater than 1. You cannot divide by 0, and dividing by 1 never changes a number.",
+          "For $b$ greater than 1, the equation $b^n = v$ means that dividing $v$ by $b$ exactly $n$ times reaches 1. This lesson uses whole-number bases greater than 1. You cannot divide by 0, and dividing by 1 never changes a number.",
         ],
       },
     ],

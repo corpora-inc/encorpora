@@ -16,7 +16,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
       "Write the comparison with $<$ or $>$ and read it aloud to check that the symbol and the words agree.",
     ],
     watch:
-      "Among negative numbers the greater absolute value is the lesser number: $-8<-3$ even though $8>3$. A debt of 8 is more debt, and a temperature of $-8$ is colder.",
+      "Among negative numbers, the one with the greater absolute value is the lesser number: $-8<-3$ even though $8>3$. A debt of 8 is more debt, and a temperature of $-8$ is colder.",
   },
   "equivalent-expressions-check": {
     noLink: ["part", "parts"],

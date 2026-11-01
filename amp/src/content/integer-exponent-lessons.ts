@@ -261,7 +261,7 @@ export const integerExponentLessons: Lesson[] = [
     pitfalls: [
       "Add exponents when multiplying powers with the same base, $x^2 \\times x^3 = x^5$. Multiply exponents for a power of a power, $(x^2)^3 = x^6$.",
       "A negative outer exponent takes a reciprocal; it does not just flip a sign.",
-      "These rules need integer exponents and a base other than 0. Do not use them on expressions that have no value, such as $0^{-2}$.",
+      "In this lesson the exponents are integers and the base is not 0. Do not use these rules on expressions that have no value, such as $0^{-2}$.",
     ],
     parentGuide:
       "Ask the learner to write $(x^3)^2$ as separate factors of $x$ and compare it with $x^3 \\times x^2$. Then ask why a zero in either exponent of a power of a power gives 1.",

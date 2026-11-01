@@ -6,7 +6,7 @@ const foundations: Lesson["sections"] = [
   {
     title: "Read a signed fraction",
     paragraphs: [
-      "A fraction $\\frac{a}{b}$ names the quotient $a \\div b$. The number below the bar is called the denominator, $b$. When it is positive, it is the number of equal parts that make one whole. The number above the bar is called the numerator, $a$, and it counts those parts. Thus $\\frac{3}{4}$ counts three of the four equal parts of one whole. A denominator is never 0, because dividing by 0 has no answer.",
+      "A fraction $\\frac{a}{b}$ names the quotient $a \\div b$. The number below the bar is called the denominator, $b$. When it is a positive whole number, it is the number of equal parts that make one whole. The number above the bar is called the numerator, $a$, and it counts those parts. Thus $\\frac{3}{4}$ counts three of the four equal parts of one whole. A denominator is never 0, because dividing by 0 has no answer.",
       "Integers are the whole numbers 0, 1, 2, 3 and so on, together with their negatives. A rational number is a quotient of two integers with a nonzero denominator; it can be positive, negative or zero. On a number line, $-\\frac{3}{4}$ lies three quarters of a unit to the left of 0. One minus sign may be written before the fraction or in its numerator: $-\\frac{3}{4} = \\frac{-3}{4}$.",
       "Equivalent fractions name the same number. Multiplying the numerator and the denominator by the same nonzero number keeps the value, because the multiplying fraction equals 1: $\\frac{3}{4} = \\frac{3 \\times 3}{4 \\times 3} = \\frac{9}{12}$. Dividing both by a common factor reverses this. A fraction is in lowest terms when its numerator and denominator have no common factor greater than 1.",
     ],

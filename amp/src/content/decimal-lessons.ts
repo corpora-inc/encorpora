@@ -340,7 +340,7 @@ export const decimalLessons: Lesson[] = [
     pitfalls: [
       "Line up the decimal points, not the last digits.",
       "Multiplying two positive decimals that are each less than 1 gives a product smaller than either factor: 0.5 × 0.4 = 0.2.",
-      "When dividing, multiply both numbers by the same power of ten, or the quotient changes.",
+      "When dividing, multiply both numbers by the same power of ten, or the quotient can change.",
     ],
     parentGuide:
       "Add two prices with different numbers of decimal places, such as 12.5 and 3.75, writing one above the other with the points lined up.",
@@ -488,7 +488,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
       "Check: quotient × divisor = dividend.",
     ],
     watch:
-      "Multiply both numbers by the same power of ten, or the quotient changes.",
+      "Multiply both numbers by the same power of ten, or the quotient can change.",
   },
 };
 export const decimalPrinciples: Record<string, string> = {

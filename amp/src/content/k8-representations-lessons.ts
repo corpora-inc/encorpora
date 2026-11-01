@@ -307,7 +307,7 @@ const specs: Spec[] = [
     ],
     method: [
       "Name what is given: sides, angles, and where each is. Is the angle between the two sides?",
-      "Check whether a triangle can exist: the sides pass the triangle inequality, and any two given angles add to less than 180°.",
+      "Check whether a triangle can exist: the sides pass the triangle inequality, any two given angles add to less than 180°, and three given angles add to exactly 180°.",
       "If two sides and an angle not between them are given, draw the angle and lay one side along one of its rays (straight paths from the corner). The other side swings from the end of that side like a gate. See where it can land on the other ray.",
       "Count the landing places that make a real triangle: none, one or two. A landing at the starting corner does not count.",
     ],
@@ -458,7 +458,7 @@ const specs: Spec[] = [
     ],
     formalTitle: "Experimental and theoretical probability",
     formal: [
-      t`The theoretical probability is a fixed number found by counting the sample space. The experimental probability changes from one set of trials to another, because the results are random. As the number of trials grows, the experimental probability tends to get closer to the theoretical probability. To compare $a/b$ and $c/d$ exactly, compare $ad$ with $bc$.`,
+      t`The theoretical probability is a fixed number found from the sample space. When the outcomes are equally likely, it is the number of outcomes in the event divided by the number of all outcomes. The experimental probability changes from one set of trials to another, because the results are random. As the number of trials grows, the experimental probability tends to get closer to the theoretical probability. To compare $a/b$ and $c/d$ exactly, compare $ad$ with $bc$.`,
     ],
     pitfalls: [
       "A trial is one whole group of digits, not one digit.",

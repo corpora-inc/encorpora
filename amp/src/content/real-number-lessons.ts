@@ -280,7 +280,7 @@ export const realNumberLessons: Lesson[] = [
         title: "Scientific notation and standard form",
         paragraphs: [
           "A number is in scientific notation when it is written as $a \\times 10^{n}$. The number in front, $a$, is called the coefficient, and it is at least 1 and less than 10. The exponent $n$ is an integer: a whole number (one of 0, 1, 2, …) or its negative. Standard form is the ordinary way of writing the number, with digits and a decimal point.",
-          "To write $3.07 \\times 10^{5}$ in standard form, move the decimal point 5 places to the right and fill the empty places with zeros: 307,000. For $3.07 \\times 10^{-4}$, move it 4 places to the left: 0.000307. To go the other way, move the point until exactly one digit that is not 0 is to its left, and count the places moved. 0.000307 becomes 3.07 after 4 places to the right, so $0.000307 = 3.07 \\times 10^{-4}$.",
+          "To write $3.07 \\times 10^{5}$ in standard form, move the decimal point 5 places to the right and fill the empty places with zeros: 307,000. For $3.07 \\times 10^{-4}$, move it 4 places to the left: 0.000307. To go the other way, move the point so it sits just after the first digit that is not 0, and count the places moved. 0.000307 becomes 3.07 after 4 places to the right, so $0.000307 = 3.07 \\times 10^{-4}$.",
           "Numbers of 10 or more have positive exponents; numbers between 0 and 1 have negative exponents. A negative exponent makes a small positive number, not a negative number.",
         ],
         illustration: "decimal-point-shift",
@@ -325,7 +325,7 @@ export const realNumberLessons: Lesson[] = [
     id: "scientific-operations",
     title: "Calculate with scientific notation",
     summary:
-      "Scientific notation is a way to write a number as a coefficient (a number that is 1 or more and less than 10) times a power of 10, like $3 \\times 10^4 = 30{,}000$. To multiply or divide two such numbers, work on the coefficients and the powers of 10 separately. To add or subtract, first rewrite them with the same power of 10, just as you add hundreds to hundreds. Then fix the coefficient so its size, ignoring any minus sign, is from 1 up to 10 again.",
+      "Scientific notation is a way to write a number as a coefficient, the number in front, whose size is 1 or more and less than 10, times a power of 10, like $3 \\times 10^4 = 30{,}000$. To multiply or divide two such numbers, work on the coefficients and the powers of 10 separately. To add or subtract, first rewrite them with the same power of 10, just as you add hundreds to hundreds. Then fix the coefficient so its size, ignoring any minus sign, is 1 or more and less than 10 again. A result of 0 is just written 0.",
     templateIds: ["scientific-operations"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -534,7 +534,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
     intuition:
       "Scientific notation writes a number as $a \\times 10^{n}$. The coefficient $a$ is 1 or more, and less than 10; $1 \\le a < 10$ says that in symbols. The exponent $n$ counts how many places the decimal point moved. So $4500 = 4.5 \\times 10^3$.",
     method: [
-      "Move the decimal point until exactly one digit that is not 0 is to its left.",
+      "Move the decimal point so it sits just after the first digit that is not 0.",
       "Count the places moved: that count is the size of the exponent.",
       "Make the exponent positive for numbers of 10 or more, negative for positive numbers less than 1, and 0 for numbers from 1 up to (not including) 10.",
     ],
@@ -569,11 +569,11 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       product: "product-multiply",
     },
     intuition:
-      "A number in scientific notation is a coefficient (a number that is 1 or more and less than 10) times a power of 10, like $3.2 \\times 10^5$. Multiplying powers of 10 adds exponents, and dividing subtracts them. A product is the answer when you multiply. An integer is a whole number (one of 0, 1, 2, …) or its negative. To add the coefficients directly, the powers of 10 must match, like adding hundreds to hundreds.",
+      "A number in scientific notation is a coefficient, the number in front, whose size is 1 or more and less than 10, times a power of 10, like $3.2 \\times 10^5$. Multiplying powers of 10 adds exponents, and dividing subtracts them. A product is the answer when you multiply. An integer is a whole number (one of 0, 1, 2, …) or its negative. To add the coefficients directly, the powers of 10 must match, like adding hundreds to hundreds.",
     method: [
       "Multiply or divide: combine coefficients, then add or subtract exponents.",
       "Add or subtract: first rewrite both numbers with the same power of 10.",
-      "Adjust the coefficient so its size, ignoring any minus sign, is 1 or more and less than 10. Change the exponent to keep the value.",
+      "Adjust the coefficient so its size, ignoring any minus sign, is 1 or more and less than 10. Change the exponent to keep the value. If the result is 0, write 0.",
     ],
     watch:
       "Exponents add for a product, not for a sum; match powers of 10 before adding.",
