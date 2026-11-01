@@ -1511,7 +1511,7 @@ const constructionFamily: Family = {
       explanation: [
         "A transversal is a line that crosses two other lines. Corresponding angles sit in matching positions at the two crossings.",
         "Copying the angle makes the new angle at $P$ congruent (equal) to the original, in the matching position. So they are congruent corresponding angles.",
-        "The construction has to prove the lines parallel, so it needs a theorem that ends with \"the lines are parallel\". That is the converse: the familiar theorem run backward.",
+        'The construction has to prove the lines parallel, so it needs a theorem that ends with "the lines are parallel". That is the converse: the familiar theorem run backward.',
         "The theorem is: if corresponding angles formed by a transversal are congruent, the two lines are parallel.",
       ],
     }),
@@ -1554,9 +1554,9 @@ const constructionFamily: Family = {
         hint: "Among Steps 1, 2, 3 and 4, each step uses points made earlier. Find the step that needs nothing else, then the step that uses only that point, and continue.",
         explanation: [
           "Each step of a construction can use only points that earlier steps made. So find the step that needs nothing, then build up.",
-          `Step ${letterOf(0)} comes first: mark $P$. Every later arc or line depends on it.`,
+          `Step ${letterOf(0)} is first: mark $P$. Every later arc or line depends on it.`,
           `Step ${letterOf(1)} is next: arcs centered at $P$ make $X$ and $Y$ on $\\ell$, the same distance from $P$.`,
-          `Step ${letterOf(2)} follows: equal arcs from $X$ and $Y$ cross at $Z$, which is equally far from $X$ and $Y$. So $Z$ is on the perpendicular bisector of $\\overline{XY}$, which passes through $P$.`,
+          `Step ${letterOf(2)} is next: equal arcs from $X$ and $Y$ cross at $Z$, which is equally far from $X$ and $Y$. So $Z$ is on the perpendicular bisector of $\\overline{XY}$, which passes through $P$.`,
           `Step ${letterOf(3)} is last: line $PZ$ is the perpendicular. The correct order is ${order(canonical)}.`,
         ],
       };
