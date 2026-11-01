@@ -10,13 +10,7 @@ export const regentsAlgebraTwoExponentialMethods: Record<
     goal: "Add the first $n$ terms of a geometric sequence with a fractional ratio, or a run of payments that each grow by a percent.",
     intuition:
       "In a geometric sequence each term is the previous one times a fixed ratio. Adding $n$ terms one by one is slow, so a formula does it at once. A payment that grows by 8% each year is a term whose ratio is 1.08.",
-    terms: [
-      [
-        "common ratio",
-        "The number each term is multiplied by to get the next.",
-      ],
-      ["geometric series", "The sum of the terms of a geometric sequence."],
-    ],
+    terms: ["common-ratio", "geometric-series"],
     method: [
       "Find $a_1$ and $r$. A percent increase of $p\\%$ gives $r=1+\\frac{p}{100}$.",
       "Use $S_n=\\dfrac{a_1(1-r^n)}{1-r}$, which works for any $r\\ne1$.",
@@ -29,10 +23,7 @@ export const regentsAlgebraTwoExponentialMethods: Record<
     goal: "Write both sides of an exponential equation as powers of one base, set the exponents equal and solve.",
     intuition:
       "Different numbers such as 27 and 9 can be powers of the same base: $27=3^3$ and $9=3^2$. When both sides are powers of 3, they are equal exactly when their exponents are equal.",
-    terms: [
-      ["base", "The number that is raised to a power."],
-      ["exponent", "The power the base is raised to."],
-    ],
+    terms: ["base-exponent", "exponent"],
     method: [
       "Rewrite each side with the same base.",
       "Use a power of a power: $(b^m)^k=b^{mk}$, so multiply the exponent of the base by the whole exponent expression.",
@@ -45,13 +36,7 @@ export const regentsAlgebraTwoExponentialMethods: Record<
     goal: "Isolate the exponential, take a base-10 logarithm and read $x$, with letters or numbers as parameters.",
     intuition:
       "A logarithm undoes a power: $\\log 10^k=k$. First get $10^{(\\text{exponent})}$ alone by dividing out any multiplier, then take the log.",
-    terms: [
-      [
-        "logarithm",
-        "The base-10 log of $y$ is the exponent $k$ with $10^k=y$.",
-      ],
-      ["parameter", "A letter that stands for a fixed number."],
-    ],
+    terms: ["logarithm", "parameter"],
     method: [
       "Divide both sides by any factor that multiplies $10^{(\\cdot)}$.",
       "Take $\\log$ of both sides so the exponent comes down.",
@@ -64,13 +49,7 @@ export const regentsAlgebraTwoExponentialMethods: Record<
     goal: "Solve an exponential model for the time it reaches a target and round as the question asks.",
     intuition:
       "An exponential model gives the amount at time $t$. To find when it reaches a target, set the model equal to the target, isolate the exponential part and use a logarithm to bring $t$ down.",
-    terms: [
-      [
-        "growth factor",
-        "The base $b$ that multiplies the amount each time unit.",
-      ],
-      ["natural logarithm", "The log with base $e$, written $\\ln$."],
-    ],
+    terms: ["growth-factor", "natural-logarithm"],
     method: [
       "Set the rule equal to the target and divide by the starting amount.",
       "Take $\\ln$ (or $\\log$) of both sides.",
@@ -84,11 +63,8 @@ export const regentsAlgebraTwoExponentialMethods: Record<
     intuition:
       "If a value is multiplied by 1.06 each year, twelve equal monthly steps must multiply to 1.06 together, so each month multiplies by the 12th root. A half-life is the time to lose half, so the exponent counts half-lives.",
     terms: [
-      [
-        "half-life",
-        "The time it takes for an amount to fall to half of itself.",
-      ],
-      ["monthly factor", "The number the value is multiplied by each month."],
+      "half-life",
+      ["growth-factor", "Here the time period is one month."],
     ],
     method: [
       "For monthly forms, take the 12th root of the annual factor and use $12t$ months.",
@@ -102,13 +78,7 @@ export const regentsAlgebraTwoExponentialMethods: Record<
     goal: "Turn a percent lost each year into a ratio and write the recursive rule with its starting value.",
     intuition:
       "Losing 15% of a value leaves 85% of it. Each year's value is 0.85 times the year before, so the values form a geometric sequence.",
-    terms: [
-      [
-        "recursive rule",
-        "A rule that gives each term from the term before it, with the first term stated.",
-      ],
-      ["common ratio", "The fixed multiplier from one term to the next."],
-    ],
+    terms: ["recursive-rule", "common-ratio"],
     method: [
       "Subtract the percent lost from 100% and write the result as a decimal.",
       "Write the first value, then multiply the previous term by that ratio.",
@@ -121,8 +91,8 @@ export const regentsAlgebraTwoExponentialMethods: Record<
     intuition:
       "A recursive rule tells you how to get the next term from the one before. You cannot skip ahead: each term needs the one before it.",
     terms: [
-      ["recursive rule", "A rule that gives each term from the previous term."],
-      ["term", "One number in the sequence, named $a_n$ for position $n$."],
+      "recursive-rule",
+      ["term-sequence", "Here, $a_n$ names the term in position $n$."],
     ],
     method: [
       "Write the rule with the known previous term in place of $a_{n-1}$.",

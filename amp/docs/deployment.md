@@ -106,7 +106,7 @@ Both are `null` for an image built without the pipeline's `SOURCE_COMMIT` and `B
 
 ## Operations
 
-Serve `dist/` and proxy `/api` to the application. `Dockerfile` builds both: target `api` (the server, migrations and scheduled jobs; non-root, read-only root filesystem compatible) and target `web` (nginx serving `dist/` with a single-page fallback, `docker/nginx.conf`). Each listens on port 8080. Deployment configuration for a particular host lives outside this repository. The API defaults to loopback; set `AMP_HOST` deliberately for container networking only in hosted mode. Set up TLS, database backups and restore drills, secret storage, monitoring, and alerting before external availability. Keep the database and object storage private. The API image includes immutable, catalog-matched PDFs generated in a separate Docker build stage. Lesson, workbook, and solution downloads include Letter and A4 editions; book downloads include their validated Letter edition. The build stage installs Chromium and Poppler, renders the current catalog, verifies publication hashes and book content/page-count manifests, and copies only delivery files into the API image. Browser binaries and development dependencies are excluded from the runtime. A locked BuildKit cache reuses PDFs only with a matching source/toolchain fingerprint and verified file bytes. Download routes retain parent authentication, consent, learner ownership, and active-license checks; no public PDF directory or external storage mount is required. A later object-storage adapter must preserve those checks and bind files to the deployed content version.
+Serve `dist/` and proxy `/api` to the application. `Dockerfile` builds three images: target `api` (the server, migrations and scheduled jobs; non-root, read-only root filesystem compatible) target `web` (nginx serving `dist/` with a single-page fallback, `docker/nginx.conf`), and target `render`, the internal workbook PDF service ([below](#workbook-render-service)). Each listens on port 8080. Deployment configuration for a particular host lives outside this repository. The API defaults to loopback; set `AMP_HOST` deliberately for container networking only in hosted mode. Set up TLS, database backups and restore drills, secret storage, monitoring, and alerting before external availability. Keep the database and object storage private. The API image includes immutable, catalog-matched PDFs generated in a separate Docker build stage. Lesson, workbook, and solution downloads include Letter and A4 editions; book downloads include their validated Letter edition. The build stage installs Chromium and Poppler, renders the current catalog, verifies publication hashes and book content/page-count manifests, and copies only delivery files into the API image. Browser binaries and development dependencies are excluded from the runtime. A locked BuildKit cache reuses PDFs only with a matching source/toolchain fingerprint and verified file bytes. Download routes retain parent authentication, consent, learner ownership, and active-license checks; no public PDF directory or external storage mount is required. A later object-storage adapter must preserve those checks and bind files to the deployed content version.
 
 `AMP_FREE_PROBLEMS` sets how many free problems a signed-in parent can try before the paywall: placement (a fifth of the allowance, at most 20), then adaptive practice with lessons, hints and review. It must be a whole number from 1 to 1000 and defaults to 100. Invalid values stop startup.
 
@@ -148,3 +148,35 @@ docker run --rm --network none --read-only --tmpfs /tmp amp-api:pdf-check \
 ```
 
 The check runs as the image’s unprivileged user. It validates the complete catalog’s artifact inventory and hashes, requests representative Letter/A4 publications and every book through the actual Fastify routes, and checks authentication, consent, license, and ownership rejection using synthetic in-memory fixtures. It does not create a listener or access learner records. The publisher logs PDF counts, byte totals, cache status, and elapsed generation time.
+
+### Workbook render service
+
+Daily workbook PDFs are rendered on request, so they need a browser, and the API image has none. The `render` image (`docker build --target render`, `src/render-service/`) is a small internal service: HTML in, PDF out, through headless Chromium. The API checks the parent's access, builds the document and posts it with a shared secret. It caches each PDF for `RETENTION.workbookPdfHours` (24) in `amp_workbook_pdfs`, and deletes it earlier with the learner's learning data.
+
+| Setting | Where | Value |
+| --- | --- | --- |
+| `AMP_RENDER_URL` | API | The service's internal URL, for example `http://amp-render:8080`. Never public |
+| `AMP_RENDER_TOKEN` | API and render | Shared secret of at least 32 characters, from secret storage |
+| `AMP_RENDER_CONCURRENCY` | render | Documents rendered at once, default 2. About 150 MB and one CPU per concurrent render |
+| `AMP_RENDER_QUEUE` | render | Requests waiting beyond that before a 503, default 16 |
+| `AMP_RENDER_TIMEOUT_MS` | render | Per-document limit, default 20000 |
+| `AMP_RENDER_MAX_BYTES` | render | Largest request body, default 8 MiB (a workbook is about 1 MB) |
+
+- The service listens on port 8080 (`AMP_RENDER_HOST`/`AMP_RENDER_PORT`).
+- `GET /healthz` answers 200 while the browser is connected; the image declares it as its health check.
+- It runs as UID 65532 and writes only to `/tmp`. Give it a read-only root with a tmpfs at `/tmp` (256 MB is plenty), no capabilities and no inbound route from the internet.
+- Pages render offline with every network request blocked, so a document cannot fetch anything. Scripts run only so a document can compose its own pages: a daily workbook (`<html data-compose>`) is printed once it reports `data-layout="ready"`, and refused with 422 if it reports an error.
+- Logs are one JSON object per line: render time, size and format, or the failure. They never include document content.
+- Sizing: 1 vCPU and 1 GB of memory serve the default concurrency of 2. A 45-minute workbook renders in about 0.5 to 1 s on one CPU.
+
+If `AMP_RENDER_URL` is not set in hosted mode, the API logs a warning at startup. Workbook history then reports `pdf: false`, and downloads fall back to the printable HTML document, which the parent prints from the browser; no download button fails. When the service is configured but unreachable or failing, a PDF request is logged and answers 503: "Your workbook is being prepared; try again in a minute." The screen then downloads the printable document instead, so the parent still gets a workbook to print. A PDF that renders but fails to cache is still sent; the cache failure is logged. Requests waiting longer than `AMP_RENDER_TIMEOUT_MS` for a free slot get 503, and a request whose caller has gone is not rendered. Development without `AMP_RENDER_URL` renders in the API process with the local Playwright Chromium (`npx playwright install chromium`).
+
+Acceptance for a render image:
+
+```bash
+docker build --target render -t amp-render:check amp
+docker run --rm -d --name amp-render-check --read-only --tmpfs /tmp \
+  --cap-drop ALL -e AMP_RENDER_TOKEN="$(openssl rand -hex 24)" -p 127.0.0.1:8090:8080 amp-render:check
+curl -f http://127.0.0.1:8090/healthz
+```
+

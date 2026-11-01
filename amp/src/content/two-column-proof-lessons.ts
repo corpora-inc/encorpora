@@ -14,18 +14,9 @@ const entries: WorkEntry[] = [
     intuition:
       "A congruence criterion needs three matching parts, such as two sides and the angle between them (SAS). A proof gathers those parts one line at a time: the givens first, then the parts the givens imply (a midpoint gives two equal segments, parallel lines give equal alternate interior angles, crossing lines give vertical angles), then the criterion that combines them.",
     terms: [
-      [
-        "included angle",
-        "The angle formed by two sides of a triangle; SAS needs the angle between the two sides.",
-      ],
-      [
-        "CPCTC",
-        "Corresponding parts of congruent triangles are congruent: once the triangles are proved congruent, their matching sides and angles are too.",
-      ],
-      [
-        "reflexive property",
-        "A segment or angle is congruent to itself, as when two triangles share a side.",
-      ],
+      ["included-angle", "SAS needs the angle between the two given sides."],
+      "cpctc",
+      "reflexive-property",
     ],
     method: [
       "Mark the givens on the figure and decide which three pairs of parts the triangles share: sides, angles, or both.",
@@ -76,20 +67,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "When a transversal crosses two parallel lines, the two crossings look the same: each angle at one crossing has a match, its corresponding angle, at the other. At one crossing, opposite angles are vertical and equal, and side-by-side angles form a straight line, adding to $180^\\circ$. Every other relationship is a chain of these.",
-    terms: [
-      [
-        "corresponding angles",
-        "Angles in the same position at the two crossings, such as both above the line and left of the transversal.",
-      ],
-      [
-        "linear pair",
-        "Two angles side by side whose outer rays form a straight line; their measures add to $180^\\circ$.",
-      ],
-      [
-        "transitive property",
-        "If $\\angle 1\\cong\\angle 2$ and $\\angle 2\\cong\\angle 3$, then $\\angle 1\\cong\\angle 3$.",
-      ],
-    ],
+    terms: ["corresponding-angles", "linear-pair", "transitive-property"],
     method: [
       "Locate the two angles: same crossing or different crossings, which side of the transversal, above or below each line.",
       "Find a middle angle that relates to both: vertical to one and corresponding to the other, or a linear pair with one and corresponding to the other.",

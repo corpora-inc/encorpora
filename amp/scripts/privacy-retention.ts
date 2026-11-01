@@ -8,6 +8,7 @@ import { purgeMetaPurchaseQueue } from "../src/advertising/meta-delivery.js";
 import { purgeGooglePurchaseQueue } from "../src/advertising/purchase-queue.js";
 import { purgeAdvertisingPermissions } from "../src/advertising/permission.js";
 import { purgeOfflinePacks } from "../src/offline/retention.js";
+import { purgeWorkbookPdfs } from "../src/workbook/retention.js";
 import { purgeConsentRecords } from "../src/parent-consent/lifecycle.js";
 import { purgeExpiredFundingRequests } from "../src/funding-purchase/retention.js";
 import { createDatabasePool } from "../src/server/database.js";
@@ -38,6 +39,7 @@ try {
       expiredMetaPurchaseDeliveries: await purgeMetaPurchaseQueue(pool),
       expiredAdvertisingPayments: await purgeGooglePurchaseQueue(pool),
       expiredOfflinePacks: await purgeOfflinePacks(pool),
+      expiredWorkbookPdfs: await purgeWorkbookPdfs(pool),
       expiredConsentRecords: await purgeConsentRecords(pool),
       expiredFundingRequests: await purgeExpiredFundingRequests(pool),
       expiredTrials: await purgeExpiredTrials(pool),

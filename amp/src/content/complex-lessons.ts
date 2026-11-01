@@ -7,14 +7,11 @@ export const complexMethods: Record<string, ProblemMethod> = {
     intuition:
       "The number $i$ has the special rule $i^2=-1$. A complex number adds a real number and a multiple of $i$, such as $2+3i$. To multiply two of them, multiply every term in one parentheses by every term in the other, then replace $i^2$ by −1.",
     terms: [
-      ["real part", "The ordinary number in $a+bi$; it is $a$."],
+      "real-part",
+      "imaginary-part",
       [
-        "imaginary part",
-        "The real coefficient $b$ of $i$ in $a+bi$; $bi$ is the imaginary term.",
-      ],
-      [
-        "distributive property",
-        "Multiply each term of one sum by each term of the other sum, then add the products.",
+        "distributive-property",
+        "For two sums, multiply each term of one by each term of the other, then add.",
       ],
     ],
     method: [

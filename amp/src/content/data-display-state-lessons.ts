@@ -7,17 +7,11 @@ export const dataDisplayStateMethods: Record<string, ProblemMethod> = {
     intuition:
       "A stem-and-leaf plot sorts data by writing each value in two pieces. The stem is the leading digit or digits, and the leaf is the last digit. Every stem from the least to the greatest gets a row, and the leaves in each row go in order from least to greatest. The plot keeps every value, so you can still read the data back out.",
     terms: [
-      [
-        "stem",
-        "The leading digit or digits of a value. Each stem is written once, in the left column.",
-      ],
-      [
-        "leaf",
-        "The last digit of a value. Write one leaf for each value, in the row of its stem.",
-      ],
+      "stem",
+      "leaf",
       [
         "key",
-        "A line that shows how to read a stem and a leaf as a number, such as $2\\mid 4$ means $24$ or $2.4$.",
+        "In a stem-and-leaf plot, the key shows how to read a row: $2 \\mid 4$ means 24 or 2.4.",
       ],
     ],
     method: [
@@ -34,18 +28,9 @@ export const dataDisplayStateMethods: Record<string, ProblemMethod> = {
     intuition:
       "A frequency table lists each value, or each interval of values, and how many times it occurs. The number of times is the frequency. A table turns a long list into counts you can read at once.",
     terms: [
-      [
-        "frequency",
-        "How many times a value, or how many values in an interval, occur in the data.",
-      ],
-      [
-        "interval",
-        "A range of values such as 10–19. An interval includes both of its end values.",
-      ],
-      [
-        "dot plot",
-        "A number line with one dot above a value for each time it occurs.",
-      ],
+      "frequency",
+      ["interval", "Here each interval includes both of its end values."],
+      "dot-plot",
     ],
     method: [
       "Make one row for each value in the range, or one row for each interval. Include a row for a value that never occurs, with frequency 0.",
@@ -60,15 +45,9 @@ export const dataDisplayStateMethods: Record<string, ProblemMethod> = {
     intuition:
       "A circle graph shows how one whole splits into parts. Each part is a sector, a slice of the circle, and its size is its share of the whole. The whole circle is 100% of the data and 360 degrees. So a sector with 25% takes a quarter of the circle, which is 90 degrees.",
     terms: [
-      ["sector", "A slice of the circle that stands for one category."],
-      [
-        "central angle",
-        "The angle of a sector at the center of the circle, measured in degrees. A whole circle is 360 degrees.",
-      ],
-      [
-        "percent",
-        "A number out of 100. $25\\%$ means $\\frac{25}{100}$ of the whole.",
-      ],
+      ["sector", "In a circle graph, each sector stands for one category."],
+      "central-angle",
+      "percent",
     ],
     method: [
       "Name the whole: all of the data is 100%, 360 degrees, and the total count.",
@@ -84,24 +63,13 @@ export const dataDisplayStateMethods: Record<string, ProblemMethod> = {
     intuition:
       "Each data display is built for one job. Pick the display by asking what the data are and what you want to see: parts of a whole, a count for each category, a change over time, the spread of a large set of numbers, a link between two measures, or every value in a small set.",
     terms: [
-      [
-        "circle graph",
-        "Shows each part as a share of one whole. The parts add to 100%.",
-      ],
-      ["bar graph", "Compares the counts or amounts of separate categories."],
-      ["line graph", "Shows how one quantity changes as time passes."],
-      [
-        "histogram",
-        "Groups a large set of numbers into equal-width intervals and shows how many values fall in each.",
-      ],
-      [
-        "scatterplot",
-        "Plots two numerical measures of each individual as a point, to show whether they are related.",
-      ],
-      [
-        "dot plot and stem-and-leaf plot",
-        "Show every value of a small set of numbers.",
-      ],
+      "circle-graph",
+      "bar-graph",
+      "line-graph",
+      "histogram",
+      "scatterplot",
+      ["dot-plot", "Both show every value, so they suit small data sets."],
+      "stem-and-leaf-plot",
     ],
     method: [
       "Decide whether the data are categories or numbers, and whether time matters.",
@@ -116,11 +84,14 @@ export const dataDisplayStateMethods: Record<string, ProblemMethod> = {
     intuition:
       "The rate of return tells how much an investment grew compared with the amount put in. A gain of 60 dollars is large on 100 dollars and small on 10,000 dollars, so compare rates, not dollars. A yearly rate also needs the time: the same gain in half the time is twice the yearly rate.",
     terms: [
-      ["gain", "The ending amount minus the starting amount."],
-      ["rate of return", "The gain as a percent of the starting amount."],
       [
-        "simple yearly rate",
-        "The rate of return divided by the number of years, with no compounding.",
+        "amount-of-change",
+        "The gain is the ending amount minus the starting amount.",
+      ],
+      "rate-of-return",
+      [
+        "rate-of-return",
+        "The simple yearly rate is the rate of return divided by the number of years, with no compounding.",
       ],
     ],
     method: [

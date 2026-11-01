@@ -13,16 +13,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A table follows a rule when the same operation with the same number turns every $x$ into the $y$ beside it. Try an operation on the first pair, then test it on the other pairs: one pair can fit several rules by chance, but only the true rule fits all of them. An additive rule changes the outputs by the same amount each time $x$ goes up by the same amount; a multiplicative rule changes them by the same factor.",
-    terms: [
-      [
-        "additive",
-        "A rule that adds or subtracts the same number to every $x$.",
-      ],
-      [
-        "multiplicative",
-        "A rule that multiplies or divides every $x$ by the same number.",
-      ],
-    ],
+    terms: ["additive-rule", "multiplicative-rule"],
     method: [
       "Look at the first pair and ask what was done to $x$ to get $y$. Try adding, subtracting, multiplying and dividing.",
       "Test the operation and number on a second and a last pair. Keep a rule only if it fits every pair.",
@@ -70,12 +61,9 @@ const entries: FormatLessonEntry[] = [
     terms: [
       [
         "substitute",
-        "Replace a variable by a number, keeping parentheses around a negative number so the sign stays with it.",
+        "Keep parentheses around a negative number: $x = -2$ in $x^2$ gives $(-2)^2$.",
       ],
-      [
-        "true equation",
-        "An equation whose two sides have the same value after substituting.",
-      ],
+      "true-equation",
     ],
     method: [
       "Rewrite the left side with the value in place of the variable, putting a negative value in parentheses: for $3m + 4$ and $m = -5$, write $3 \\cdot (-5) + 4$.",

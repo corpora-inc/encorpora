@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -12,7 +13,7 @@ type Spec = {
   objectives: string[];
   goal: string;
   intuition: string[];
-  terms: [string, string][];
+  terms: MethodTerm[];
   method: string[];
   watch: string;
   principle: string;
@@ -42,19 +43,10 @@ const specs: Spec[] = [
       t`A proof step has a claim and a reason. A reason is a theorem whose conditions are all given and whose conclusion is the claim. Many theorems have a converse that swaps the given fact and the conclusion, and the converse is a separate theorem. So read which direction the step goes.`,
     ],
     terms: [
-      [
-        "vertical angles",
-        "Two angles formed by two crossing lines that face each other and share only the crossing point.",
-      ],
-      [
-        "alternate interior angles",
-        "Angles between two lines, on opposite sides of a transversal that crosses both.",
-      ],
-      [
-        "perpendicular bisector",
-        "A line through the midpoint of a segment that is perpendicular to it.",
-      ],
-      ["converse", "A theorem with its given fact and conclusion exchanged."],
+      "vertical-angles",
+      "alternate-interior-angles",
+      "perpendicular-bisector",
+      "converse",
     ],
     method: [
       "Underline what the problem gives and what the step claims.",
@@ -106,21 +98,7 @@ const specs: Spec[] = [
       t`An isosceles triangle has two equal sides. The angles opposite those sides are the base angles, and they are equal. A midpoint splits a segment into two equal parts. A midsegment joins the midpoints of two sides of a triangle. A median joins a vertex to the midpoint of the opposite side, and the three medians meet at one point called the centroid.`,
       t`These facts let you turn one measurement into others: a midsegment is half as long as the side it is parallel to, and the centroid is two thirds of the way along each median from its vertex.`,
     ],
-    terms: [
-      [
-        "base angles",
-        "The two angles opposite the equal sides of an isosceles triangle.",
-      ],
-      [
-        "midsegment",
-        "A segment joining the midpoints of two sides of a triangle.",
-      ],
-      [
-        "median",
-        "A segment from a vertex to the midpoint of the opposite side.",
-      ],
-      ["centroid", "The point where the three medians meet."],
-    ],
+    terms: ["base-angle", "midsegment", "median-triangle", "centroid"],
     method: [
       "Name which theorem fits: equal sides give equal base angles, a segment between midpoints gives a half-length parallel side, and medians give a $2:1$ split.",
       "Write the relationship as an equation using the given expressions or measures.",
@@ -173,9 +151,9 @@ const specs: Spec[] = [
       t`Parallel sides force many equal measures: opposite sides are equal, opposite angles are equal, consecutive angles total $180^\circ$ and the diagonals bisect each other. Only a rectangle also has equal diagonals.`,
     ],
     terms: [
-      ["diagonal", "A segment joining two opposite corners of a polygon."],
-      ["bisect", "Cut into two equal parts."],
-      ["consecutive angles", "Two angles of a polygon that share a side."],
+      "diagonal",
+      "bisect",
+      ["angle", "Consecutive angles of a polygon share a side."],
     ],
     method: [
       "Read which parts the claim compares: opposite sides, opposite angles, consecutive angles, or diagonals.",
@@ -228,18 +206,7 @@ const specs: Spec[] = [
       t`A definition says exactly which objects have a name. It is precise when every object it describes has the name and no other object does. A point is a location with no size. A line is a straight path in both directions without end. A plane is a flat surface that extends without end.`,
       t`A short definition can fail by leaving out a condition. Lines that do not meet in space need not be parallel, so "do not intersect" alone is not enough; a circle is flat, so "points a fixed distance from a point" alone would describe a sphere in space.`,
     ],
-    terms: [
-      [
-        "ray",
-        "A part of a line that starts at one point and extends without end in one direction.",
-      ],
-      [
-        "segment",
-        "A part of a line consisting of two endpoints and all points between them.",
-      ],
-      ["skew lines", "Lines in space that do not meet and are not parallel."],
-      ["equidistant", "Equally far from given points."],
-    ],
+    terms: ["ray", "segment", "skew-lines", "equidistant"],
     method: [
       "For each choice, ask what other objects it would also describe. If it fits a second kind of object, a condition is missing.",
       "Check where the objects lie (in a plane or in space), how far, and whether endpoints are included.",
@@ -288,17 +255,7 @@ const specs: Spec[] = [
       t`A transformation moves every point of the plane. A translation slides every point the same distance in the same direction. A reflection flips the plane across a line. A rotation turns the plane about a center by a fixed angle. These three are rigid motions: they carry a figure to a congruent figure. A dilation scales distances from a center by a scale factor, and keeps shape but not size.`,
       t`Not every transformation preserves shape. A stretch in one direction or a shear slides rows by different amounts and changes both distances and angles.`,
     ],
-    terms: [
-      [
-        "rigid motion",
-        "A transformation that preserves every distance and every angle measure.",
-      ],
-      [
-        "scale factor",
-        "The number by which a dilation multiplies distances from its center.",
-      ],
-      ["image", "The figure obtained by applying a transformation."],
-    ],
+    terms: ["rigid-motion", "scale-factor", "image-transformation"],
     method: [
       "For coordinates, find the squared length of each side before and after: $(x_2-x_1)^2+(y_2-y_1)^2$.",
       "If every squared length is unchanged, it is rigid. If every one is multiplied by $k^2$, it is a dilation with factor $k$. Otherwise it is neither.",
@@ -349,17 +306,7 @@ const specs: Spec[] = [
       t`A symmetry of a figure is a rotation or reflection that carries the figure exactly onto itself. A rotation about the center turns the figure by an angle. A line of symmetry is a line across which a reflection carries the figure onto itself. A regular polygon has equal sides and equal angles.`,
       t`A regular polygon with $n$ sides has $n$ equally spaced vertices around its center, so the smallest turn is $360^\circ\div n$. Folding it along a line through the center works in $n$ different ways.`,
     ],
-    terms: [
-      ["symmetry", "A rotation or reflection that maps a figure onto itself."],
-      [
-        "line of symmetry",
-        "A line such that reflecting the figure across it gives the same figure.",
-      ],
-      [
-        "regular polygon",
-        "A polygon with all sides equal and all angles equal.",
-      ],
-    ],
+    terms: ["symmetry", "line-of-symmetry", "regular-polygon"],
     method: [
       "For a regular polygon, divide $360^\\circ$ by the number of sides for the smallest rotation. Its multiples up to a full turn are all the rotations.",
       "For other shapes, check each candidate: does every vertex land on a vertex and each side on a side of equal length?",
@@ -408,14 +355,7 @@ const specs: Spec[] = [
       t`A composition of transformations applies one transformation, then another to the result. Order matters: reflecting and then translating usually gives a different image from translating and then reflecting. A vector $\langle a,b\rangle$ describes a translation by $a$ horizontally and $b$ vertically.`,
       t`To decide which transformations are needed, compare one side before and after. If its length changes, a dilation is involved. If its direction turns or flips, a rotation or reflection is involved. Then the leftover shift is a translation.`,
     ],
-    terms: [
-      ["composition", "Applying one transformation after another."],
-      [
-        "vector",
-        "A pair $\\langle a,b\\rangle$ giving a horizontal and a vertical change.",
-      ],
-      ["image", "The figure or point after a transformation."],
-    ],
+    terms: ["composition", "vector", "image-transformation"],
     method: [
       "Find $\\overrightarrow{PQ}$ and $\\overrightarrow{P'Q'}$. Same length and direction means translation only; same length with changed direction means a reflection or rotation; a different length means a dilation.",
       "Apply the candidate sequence to $P$, one transformation at a time and in the stated order, and compare with $P'$.",
@@ -464,14 +404,7 @@ const specs: Spec[] = [
       t`A compass draws arcs of a fixed radius, and a straightedge draws straight lines but has no markings. A construction uses only these. The key move is to copy equal lengths with the compass. Points that are the same distance from two points lie on the perpendicular bisector of the segment between them.`,
       t`A bisector cuts a segment or angle into two equal parts. A perpendicular line makes right angles with another. Each construction works because the arcs create points with known equal distances.`,
     ],
-    terms: [
-      ["compass", "A tool that draws a circle or arc with a fixed radius."],
-      [
-        "straightedge",
-        "A ruler with no markings, used only to draw straight lines.",
-      ],
-      ["arc", "A part of a circle."],
-    ],
+    terms: ["compass", "straightedge", "arc"],
     method: [
       "State what the finished object needs: for a perpendicular bisector, points equally far from both endpoints.",
       "Choose arcs that create such points: equal radii centered at the two endpoints, with the radius more than half the segment.",
@@ -521,11 +454,7 @@ const specs: Spec[] = [
       t`A polygon is inscribed in a circle when all its vertices lie on the circle. A central angle has its vertex at the center of the circle. A regular polygon's equal sides cut the full turn at the center into equal central angles. A chord is a segment joining two points on the circle.`,
       t`If the central angle is $60^\circ$ and the two radii are equal, the triangle formed with the chord has equal base angles that total $120^\circ$, so all three angles are $60^\circ$. The triangle is equilateral and the chord equals the radius. This is why stepping the radius around a circle returns to the start after six steps.`,
     ],
-    terms: [
-      ["inscribed polygon", "A polygon whose vertices all lie on one circle."],
-      ["central angle", "An angle with its vertex at the center of a circle."],
-      ["chord", "A segment joining two points of a circle."],
-    ],
+    terms: ["inscribed-polygon", "central-angle", "chord"],
     method: [
       "A regular $n$-gon has central angles of $360^\\circ\\div n$.",
       "For $n=6$, the central angle is $60^\\circ$ and the side equals the radius, so the perimeter is $6r$.",
@@ -575,20 +504,7 @@ const specs: Spec[] = [
       t`The circumscribed circle of a triangle passes through all three vertices. Its center, the circumcenter, is the same distance from the three vertices. The inscribed circle touches all three sides from inside. Its center, the incenter, is the same distance from the three sides.`,
       t`Points equally far from two vertices lie on the perpendicular bisector of the segment between them, so the circumcenter is where perpendicular bisectors meet. Points equally far from two sides lie on the bisector of the angle between them, so the incenter is where angle bisectors meet.`,
     ],
-    terms: [
-      [
-        "circumcenter",
-        "The center of the circle through the three vertices of a triangle.",
-      ],
-      [
-        "incenter",
-        "The center of the circle inside a triangle that is tangent to all three sides.",
-      ],
-      [
-        "inscribed quadrilateral",
-        "A quadrilateral whose four vertices lie on one circle.",
-      ],
-    ],
+    terms: ["circumcenter", "incenter", "inscribed-polygon"],
     method: [
       "For the circle through the vertices, use perpendicular bisectors of sides. For the circle tangent to the sides, use angle bisectors.",
       "For an inscribed quadrilateral, write opposite angles as supplementary: their measures total $180^\\circ$.",
@@ -638,14 +554,7 @@ const specs: Spec[] = [
       t`A tangent to a circle is a line that touches the circle at exactly one point, the point of tangency. A radius is a segment from the center to the circle. The tangent is perpendicular to the radius drawn to the point of tangency. So a tangent segment, the radius and the segment from the center to the outside point form a right triangle.`,
       t`From one point outside a circle you can draw two tangents. The two tangent segments from that point to the circle have the same length.`,
     ],
-    terms: [
-      ["tangent", "A line that touches a circle at exactly one point."],
-      ["point of tangency", "The point where a tangent touches the circle."],
-      [
-        "hypotenuse",
-        "The longest side of a right triangle, opposite the right angle.",
-      ],
-    ],
+    terms: ["tangent-line", "hypotenuse"],
     method: [
       "Draw the radius to the point of tangency. It makes a right angle with the tangent.",
       "The segment from the center to the outside point is the hypotenuse. Use $a^2+b^2=c^2$ with the radius and tangent segment as legs.",
@@ -696,17 +605,7 @@ const specs: Spec[] = [
       t`A dilation with scale factor $k$ multiplies every length by $k$. Circles are determined by a center and a radius, so a translation moves the center and a dilation changes the radius. That means any circle can be mapped onto any other, which is why all circles are similar.`,
       t`Lengths like radius, diameter and circumference are multiplied by $k$. Areas are multiplied by $k^2$ because area has two dimensions.`,
     ],
-    terms: [
-      ["scale factor", "The number by which a dilation multiplies lengths."],
-      [
-        "similar",
-        "Having the same shape: one can be mapped onto the other by a dilation and rigid motions.",
-      ],
-      [
-        "dilation center",
-        "The fixed point from which a dilation scales distances.",
-      ],
-    ],
+    terms: ["scale-factor", "similar-figures", "center-of-dilation"],
     method: [
       "Find the scale factor $k$ as image radius divided by original radius.",
       "Circumference scales by $k$; area scales by $k^2$.",
@@ -757,15 +656,9 @@ const specs: Spec[] = [
       t`Parallelogram, rectangle, rhombus and square are nested: each tests one more condition. A parallelogram has two pairs of parallel sides. A rectangle adds a right angle. A rhombus adds equal adjacent sides. A square has both.`,
     ],
     terms: [
-      [
-        "vector",
-        "A pair $\\langle a,b\\rangle$ giving the horizontal and vertical change from one point to another.",
-      ],
-      [
-        "dot product",
-        "$\\langle a,b\\rangle\\cdot\\langle c,d\\rangle=ac+bd$; zero exactly when the vectors are perpendicular.",
-      ],
-      ["adjacent sides", "Two sides that share a vertex."],
+      "vector",
+      "dot-product",
+      ["side", "Adjacent sides are two sides that share a vertex."],
     ],
     method: [
       "Compute $\\overrightarrow{AB}$, $\\overrightarrow{DC}$, $\\overrightarrow{BC}$ and $\\overrightarrow{AD}$. Equal vectors for opposite sides show a parallelogram.",
@@ -817,17 +710,11 @@ const specs: Spec[] = [
     ],
     terms: [
       [
-        "dissection",
-        "Cutting a figure into pieces that can be rearranged into another figure.",
+        "decompose",
+        "In a dissection, the pieces are then rearranged into another figure.",
       ],
-      [
-        "sector",
-        "A pie-slice region of a circle, bounded by two radii and an arc.",
-      ],
-      [
-        "apex",
-        "The point where the triangular faces of a pyramid or cone meet.",
-      ],
+      "sector",
+      "apex",
     ],
     method: [
       "Identify the known shape the figure is compared to, and the measures that carry over.",

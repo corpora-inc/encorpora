@@ -8,13 +8,13 @@ const sequenceFunctionMethod: ProblemMethod = {
   terms: [
     [
       "domain",
-      "The set of inputs a function accepts. For a sequence starting at position 1 it is the positive integers $1,2,3,\\ldots$.",
+      "For a sequence starting at position 1, it is the positive integers 1, 2, 3, …",
     ],
-    ["$a(n)$", "The term in position $n$, read “$a$ of $n$”."],
     [
-      "discrete graph",
-      "A graph made of separate points, with nothing between them.",
+      "term-sequence",
+      "Written $a(n)$ and read “$a$ of $n$”, it is the term in position $n$.",
     ],
+    "discrete-graph",
   ],
   method: [
     "Read $n$ as a position. Only whole-number positions from the first one on are inputs.",
@@ -95,17 +95,7 @@ const geometricRuleFormsMethod: ProblemMethod = {
   goal: "Translate a geometric sequence between its recursive rule and its explicit rule, from a rule, a description or two consecutive terms.",
   intuition:
     "In a geometric sequence each term is the previous term times the same number, the common ratio. A recursive rule says where the list starts and how to get from one term to the next. An explicit rule jumps straight to any term from its position.",
-  terms: [
-    ["common ratio", "The constant $r$ with $a_{n+1}=r\\,a_n$."],
-    [
-      "recursive rule",
-      "A starting term plus a rule for each term in terms of the one before, such as $a_1=2$ and $a_{n+1}=3a_n$.",
-    ],
-    [
-      "explicit rule",
-      "A formula for $a_n$ in terms of $n$, such as $a_n=2\\cdot 3^{n-1}$.",
-    ],
-  ],
+  terms: ["common-ratio", "recursive-rule", "explicit-rule"],
   method: [
     "Find the first term $a_1$ and the common ratio $r$. From two consecutive terms, $r$ is the later term divided by the earlier one; undo one multiplication to get $a_1$.",
     "Recursive form: $a_1$ and $a_{n+1}=r\\,a_n$.",
@@ -181,13 +171,10 @@ const solveByCompletingSquareMethod: ProblemMethod = {
   intuition:
     "A quadratic with an $x$ term is hard to undo directly. Rewriting one side as a perfect square, $(x+h)^2$, lets you undo it with a square root.",
   terms: [
+    "completing-the-square",
     [
-      "completing the square",
-      "Adding the number $\\left(\\frac b2\\right)^2$ to $x^2+bx$ so that it factors as $\\left(x+\\frac b2\\right)^2$.",
-    ],
-    [
-      "$\\pm$",
-      "Plus or minus: a positive number has two square roots, one of each sign.",
+      "plus-or-minus",
+      "A positive number has two square roots, one of each sign: $x^2 = 9$ gives $x = \\pm 3$.",
     ],
   ],
   method: [
@@ -264,17 +251,7 @@ const complexQuadraticSolveMethod: ProblemMethod = {
   goal: "Solve a quadratic equation with real coefficients whose solutions are not real, or write such an equation from its solutions.",
   intuition:
     "Squaring a real number never gives a negative result, so $x^2=-9$ has no real solution. The number $i$ is defined by $i^2=-1$, which gives $x^2=-9$ the solutions $3i$ and $-3i$. A quadratic with real coefficients can have such solutions.",
-  terms: [
-    ["$i$", "The number with $i^2=-1$."],
-    [
-      "complex number",
-      "A number $a+bi$ with real $a$ and $b$. The solutions of these equations have this form.",
-    ],
-    [
-      "complex conjugates",
-      "Two numbers $p+qi$ and $p-qi$. The nonreal solutions of a real-coefficient quadratic come as a conjugate pair.",
-    ],
-  ],
+  terms: ["imaginary-unit", "complex-number", "complex-conjugate"],
   method: [
     "If the leading coefficient is not 1, divide by it.",
     "Complete the square: $(x+h)^2=h^2-q$ where the equation is $x^2+2hx+q=0$. The right side is negative.",
@@ -349,14 +326,11 @@ const complexPartsMethod: ProblemMethod = {
   intuition:
     "Every complex number is written $a+bi$: a real number $a$ plus a real multiple $b$ of $i$, where $i^2=-1$. The two real numbers $a$ and $b$ tell you everything about it.",
   terms: [
-    ["real part", "The number $a$ in $a+bi$."],
+    "real-part",
+    "imaginary-part",
     [
-      "imaginary part",
-      "The real number $b$ in $a+bi$, the coefficient of $i$.",
-    ],
-    [
-      "power of $i$",
-      "$i^n$ for a whole number $n$; the values repeat in a cycle of four.",
+      "imaginary-unit",
+      "Its powers repeat in a cycle of four: $i$, −1, $-i$, 1.",
     ],
   ],
   method: [
@@ -434,12 +408,12 @@ const interpretLinearParametersMethod: ProblemMethod = {
     "In a linear model $y=mx+b$, the number $m$ says how much $y$ changes for each one-unit increase in $x$. The number $b$ is the value of $y$ when $x$ is 0, where the model starts.",
   terms: [
     [
-      "rate of change",
-      "How much the output changes per one unit of input; here the slope $m$, with units of output per input.",
+      "rate-of-change",
+      "Here it is the slope $m$, in units of output per unit of input.",
     ],
     [
-      "initial value",
-      "The output when the input is 0; here the constant $b$. When the input is measured from a starting point (such as years after 2018), 0 means that starting point.",
+      "initial-value",
+      "Here it is the constant $b$. If the input counts from a start, such as years after 2018, 0 means that start.",
     ],
   ],
   method: [
@@ -517,17 +491,7 @@ const quadraticFormConversionMethod: ProblemMethod = {
   goal: "Rewrite a quadratic in factored or vertex form and read its zeros, axis of symmetry, vertex or extreme value.",
   intuition:
     "One quadratic can be written in several equivalent forms. Each form makes a different feature visible: the factored form shows the zeros, the vertex form shows the vertex and the extreme value, and the standard form shows the $y$-intercept.",
-  terms: [
-    ["zero", "An input where the function equals 0."],
-    [
-      "vertex form",
-      "$y=a(x-h)^2+k$; the vertex is $(h,k)$ and the extreme value is $k$.",
-    ],
-    [
-      "axis of symmetry",
-      "The vertical line $x=h$ through the vertex that splits the parabola into mirror halves.",
-    ],
-  ],
+  terms: ["zero-of-a-function", "vertex-form", "axis-of-symmetry"],
   method: [
     "To see zeros: factor, then set each factor to 0. The axis of symmetry is halfway between the zeros.",
     "To see the vertex or extreme value: complete the square. Factor out $a$ from the $x$ terms, add and subtract the needed square, remember the added amount is multiplied by $a$.",
@@ -601,16 +565,7 @@ const rationalExtraneousSingleMethod: ProblemMethod = {
   goal: "Solve a rational equation with one variable denominator, check whether the candidate is allowed, and explain a disallowed one.",
   intuition:
     "To clear a fraction you multiply both sides by its denominator. That step assumes the denominator is not zero. A candidate that makes the original denominator zero is not a solution; it only appears because the multiplication ignored that condition.",
-  terms: [
-    [
-      "excluded value",
-      "An input that makes a denominator zero, so the original equation is undefined there.",
-    ],
-    [
-      "extraneous solution",
-      "A candidate that satisfies the cleared equation but not the original equation.",
-    ],
-  ],
+  terms: ["excluded-value", "extraneous-solution"],
   method: [
     "Find the excluded value: set the denominator equal to 0 and solve.",
     "Multiply both sides by the denominator and solve the resulting equation.",
@@ -684,16 +639,7 @@ const squareRootExtraneousMethod: ProblemMethod = {
   goal: "Solve a square-root equation by squaring, identify the extraneous candidate, and explain why squaring creates it.",
   intuition:
     "A principal square root is never negative. Squaring both sides also keeps the case where the right side is the negative of the square root, so the squared equation can have a candidate that the original equation does not.",
-  terms: [
-    [
-      "principal square root",
-      "The nonnegative number whose square is the radicand; $\\sqrt{25}=5$, not $-5$.",
-    ],
-    [
-      "extraneous solution",
-      "A candidate that satisfies the squared equation but not the original equation.",
-    ],
-  ],
+  terms: ["principal-square-root", "extraneous-solution"],
   method: [
     "Isolate the square root on one side.",
     "Square both sides, then solve the resulting equation. Quadratics give up to two candidates.",

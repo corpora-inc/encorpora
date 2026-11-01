@@ -9,13 +9,10 @@ export const systemLineChoiceMethods: Record<string, ProblemMethod> = {
       "Each equation is a line, and a solution is a point on both lines. Two lines can cross once, lie on top of each other, or run side by side without meeting. Comparing the coefficients tells which of the three happens.",
     terms: [
       [
-        "proportional coefficients",
-        "The coefficients of $x$ and $y$ in one equation are the same multiple of those in the other, so the lines have the same slope.",
+        "coefficient",
+        "When one equation's $x$ and $y$ coefficients are the same multiple of the other's, the lines have the same slope.",
       ],
-      [
-        "solution of a system",
-        "An ordered pair $(x, y)$ that makes both equations true.",
-      ],
+      "solution-of-a-system",
     ],
     method: [
       "Write the given equation as $ax + by = c$. Compare its $x$-coefficient and $y$-coefficient with each choice's.",
@@ -31,13 +28,10 @@ export const systemLineChoiceMethods: Record<string, ProblemMethod> = {
       "Parallel lines slant the same way, so they have the same slope. The point the new line must pass through then fixes how far up or down it sits.",
     terms: [
       [
-        "parallel lines",
-        "Lines in a plane that never meet; non-vertical parallel lines have equal slopes.",
+        "parallel",
+        "On a graph, non-vertical parallel lines have equal slopes.",
       ],
-      [
-        "slope-intercept form",
-        "$y = mx + b$, where $m$ is the slope and $(0, b)$ is the $y$-intercept.",
-      ],
+      "slope-intercept-form",
     ],
     method: [
       "Find the slope of the given line. In $ax + by = c$ it is $-a/b$; in $y = mx + k$ it is $m$.",
@@ -52,13 +46,10 @@ export const systemLineChoiceMethods: Record<string, ProblemMethod> = {
     intuition:
       "The rate of change is the change in $y$ divided by the change in $x$ between two columns, whatever the gap between the columns is. A table with uneven steps does not change this, it only means you must read the gap.",
     terms: [
+      "standard-form-line",
       [
-        "standard form",
-        "$Ax + By = C$ with whole-number coefficients that share no common factor, usually with $A$ positive.",
-      ],
-      [
-        "vertical shift",
-        "Adding a number $s$ to every output, so the graph of $g(x) = f(x) + s$ is the graph of $f$ moved up by $s$.",
+        "translation",
+        "Adding $s$ to every output moves the graph up by $s$: $g(x) = f(x) + s$.",
       ],
     ],
     method: [

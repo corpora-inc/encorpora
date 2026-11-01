@@ -13,20 +13,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "A line with slope $\\frac{2}{3}$ goes up 2 for every 3 across. That fixes its steepness but not its place: many parallel lines have that slope. One point on the line pins it down. The point's $x$ and $y$ must make $y=\\frac{2}{3}x+b$ true, and only one value of $b$ does.",
-    terms: [
-      [
-        "slope",
-        "The rise over the run between two points: $m=\\frac{y_2-y_1}{x_2-x_1}$.",
-      ],
-      [
-        "$y$-intercept",
-        "The value $b$ of $y$ where the line crosses the $y$-axis, at $x=0$.",
-      ],
-      [
-        "slope-intercept form",
-        "The equation $y=mx+b$, with $y$ alone on one side.",
-      ],
-    ],
+    terms: ["slope", "y-intercept", "slope-intercept-form"],
     method: [
       "If two points are given, find the slope $m=\\frac{y_2-y_1}{x_2-x_1}$ and reduce it.",
       "Write $y=mx+b$ and substitute $m$ and the $x$ and $y$ of one point.",

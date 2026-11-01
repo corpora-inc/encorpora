@@ -14,13 +14,10 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "A whole number with the same number of digits as another is greater when its leftmost different digit is greater, because a digit in a higher place stands for a much larger amount. The digits to the right of that place do not matter. To order three numbers, compare them from the left until the digits tell them apart, then name the item with the smallest number first, the middle one next and the greatest last, or the reverse.",
     terms: [
+      "place-value",
       [
-        "place value",
-        "The amount a digit stands for because of where it is written: ones, tens, hundreds, thousands, ten thousands.",
-      ],
-      [
-        "ten thousands place",
-        "The fifth place from the right in a five-digit number; a 4 there means 40,000.",
+        "place",
+        "The ten thousands place is fifth from the right; a 4 there means 40,000.",
       ],
     ],
     method: [
@@ -67,17 +64,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A fraction names equal parts of one whole. With the same denominator the parts are the same size, so the fraction with more parts is greater. With the same numerator the number of parts is the same, but a larger denominator cuts the whole into smaller parts, so the fraction is smaller. When denominators and numerators both differ, compare each fraction with one half: a fraction is less than one half when its numerator is less than half its denominator.",
-    terms: [
-      [
-        "numerator",
-        "The top number of a fraction; it counts the equal parts taken.",
-      ],
-      [
-        "denominator",
-        "The bottom number of a fraction; it tells how many equal parts make the whole.",
-      ],
-      ["benchmark", "A familiar fraction, such as one half, used to judge others."],
-    ],
+    terms: ["numerator", "denominator", "benchmark-fraction"],
     method: [
       "Look at the denominators and numerators. If one of them matches, compare the other one with the rule for parts.",
       "If neither matches, compare each fraction with $\\frac{1}{2}$: double its numerator and compare it with its denominator.",
@@ -122,16 +109,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "On a number line, numbers farther to the left are lesser. Every negative number is lesser than every positive number, and between two negative numbers the one farther from zero is lesser: $-1.5$ is to the left of $-0.6$. A fraction and a decimal can be compared once both are written the same way, so change each fraction to a decimal by dividing its numerator by its denominator.",
-    terms: [
-      [
-        "absolute value",
-        "The distance of a number from zero. Both $-0.6$ and $0.6$ have absolute value $0.6$.",
-      ],
-      [
-        "number line order",
-        "Numbers increase from left to right, so the lesser number is the one farther left.",
-      ],
-    ],
+    terms: ["absolute-value", "number-line"],
     method: [
       "Write each number as a decimal; for example $\\frac{3}{4}=0.75$.",
       "Sort by sign: the negatives are lesser than the positives. Put the negatives in order by absolute value, largest absolute value first.",
