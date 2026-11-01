@@ -3,10 +3,6 @@ import type { ProblemMethod } from "./problem-lessons";
 
 /** Glossary readings shared by the two-variable lessons and methods. */
 const senses = {
-  side: "side-of-equation",
-  sides: "side-of-equation",
-  term: "term-expression",
-  terms: "term-expression",
   boundary: "boundary",
   multiple: "multiple",
   identity: "identity-equation",
@@ -35,6 +31,12 @@ const noLink = [
   "combination",
   "quarters",
   "sort",
+  "side",
+  "sides",
+  "left side",
+  "right side",
+  "term",
+  "terms",
 ];
 
 /** The inequality signs, said on every screen that uses them. */
@@ -70,7 +72,7 @@ export const twoVariableLessons: Lesson[] = [
         paragraphs: [
           `A constraint is a limit the answer must meet. It is written as an inequality: a statement that one amount is less than, greater than, at most or at least another. ${signWords}`,
           "A bakery can bake at most 12 boxes a day, and wants to take in at least 60 dollars. Small boxes sell for 4 dollars and large boxes for 7 dollars. With $x$ small boxes and $y$ large boxes: $x + y \\le 12$ and $4x + 7y \\ge 60$. Also $x \\ge 0$ and $y \\ge 0$, because you cannot bake fewer than 0 boxes.",
-          "Each inequality is true on one side of a straight line, called its boundary. The pairs that meet every condition are where all those sides overlap. That overlap is shaded and called the feasible region, the set of possible answers. Boxes come whole, so only the whole-number points in it count here.",
+          "Each inequality is true on one side of a straight line. That line is called the boundary. The pairs that meet every condition are where all those sides overlap. That overlap is shaded and called the feasible region, the set of possible answers. Boxes come whole, so only the whole-number points in it count here.",
           "$(3, 8)$ is inside it: $3 + 8 = 11$, and $11 \\le 12$. Also $4 × 3 + 7 × 8 = 68$, and $68 \\ge 60$. But $(8, 2)$ is not: $4 × 8 + 7 × 2 = 46$, which is less than 60.",
         ],
         illustration: "feasible-bakery",
@@ -208,7 +210,7 @@ export const twoVariableLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "The rules for keeping both sides equal work for every value of a letter coefficient, with two limits. You may divide only by a letter that is not 0. Dividing an inequality by a negative number flips its sign.",
+          "The rules for keeping both sides equal work for every value of a letter coefficient, with two limits. You may divide only by a letter that is not 0. Dividing an inequality by a negative number, one less than 0, flips its sign.",
           "An equation $ax = b$ has no solution when $a = 0$ and $b \\ne 0$. Every $x$ is a solution when $a = 0$ and $b = 0$.",
         ],
       },
@@ -274,7 +276,7 @@ export const twoVariableLessons: Lesson[] = [
     pitfalls: [
       "Do not do an operation to one side only.",
       "Distribute to every part inside the parentheses.",
-      "Subtracting a negative number is adding. Name the operation that was really done.",
+      "Subtracting a negative number, one less than 0, is the same as adding. Name the operation that was really done.",
     ],
     parentGuide:
       "Solve an equation aloud together, saying the reason for each step before writing it. Then write a solution with one deliberate mistake and ask your learner to find it.",
@@ -325,7 +327,7 @@ export const twoVariableLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "Replacing one equation by its sum with a multiple of the other can be undone. So it keeps the system's solutions exactly the same.",
+          "Replacing one equation by its sum with the other equation times a number can be undone. So it keeps the system's solutions exactly the same.",
         ],
       },
     ],
@@ -358,7 +360,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
     goal: "Choose the pair of numbers that meets every limit in a story.",
     senses,
     noLink,
-    intuition: `A constraint is a limit that the answer must meet. It is written as an inequality: a statement that one amount is less than, greater than, at most or at least another. ${signWords} A pair $(x, y)$ is feasible, or possible, when it makes every inequality true at once.`,
+    intuition: `A constraint is a limit that the answer must meet. It is written as an inequality, a statement that compares two amounts. “At most” means less than or equal to, and “at least” means greater than or equal to. ${signWords} A pair $(x, y)$ is feasible, or possible, when it makes every inequality true at once.`,
     terms: ["feasible-region"],
     method: [
       "Put the pair into each inequality in turn: the first number for $x$ and the second for $y$.",
@@ -424,7 +426,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "Each step in solving an equation is one of two kinds. Either one side is rewritten as something equal, by distributing (multiplying a number into parentheses) or by combining like terms (like $5x + 2x = 7x$). Or the same number is added to or subtracted from both sides, or both sides are multiplied or divided by the same number that is not 0. Doing the same to both sides has names, such as the addition property of equality.",
+      "Each step in solving an equation is one of two kinds. Either one side is rewritten as something equal, or the same number is added to or subtracted from both sides, or both sides are multiplied or divided by the same number that is not 0. Distributing means multiplying a number by each part inside parentheses, the curved brackets ( ). Like terms are parts with the same letter, such as $5x$ and $2x$; combining them gives $7x$. Doing the same to both sides has names, such as the addition property of equality.",
     method: [
       "Compare the two lines. Was one side rewritten, or was the same thing done to both sides?",
       "Name it: the distributive property, combining like terms, or the addition, subtraction, multiplication or division property of equality.",
@@ -450,7 +452,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
 
 export const twoVariablePrinciples: Record<string, string> = {
   "system-model-value":
-    "Two straight-line equations in two unknowns that are not parallel share exactly one pair. Substitution keeps their shared solutions while leaving only one unknown.",
+    "Two straight-line equations in two unknowns share exactly one pair when their lines are not parallel, meaning the lines do cross. Substitution keeps their shared solutions while leaving only one unknown.",
   "constraint-feasible":
     "A pair is feasible exactly when it makes every inequality of the system true. So the feasible region is where all their half-planes (the sides of their lines) overlap.",
   "half-plane-inequality":

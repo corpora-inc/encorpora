@@ -10,12 +10,6 @@ const patternWords: Lesson["sections"][number] = {
 };
 /** Glossary readings for the grade 6 and 8 function lessons and methods. */
 const functionSenses = {
-  side: "side-of-equation",
-  sides: "side-of-equation",
-  term: "term-expression",
-  terms: "term-expression",
-  rule: "rule",
-  rules: "rule",
   "more than": "more-than",
   squares: "square-shape",
   squared: "square-number",
@@ -32,6 +26,14 @@ const functionNoLink = [
   "leaves",
   "mean",
   "means",
+  "side",
+  "sides",
+  "left side",
+  "right side",
+  "term",
+  "terms",
+  "rule",
+  "rules",
 ];
 
 const variableWords: Lesson["sections"][number] = {
@@ -46,7 +48,7 @@ const variableWords: Lesson["sections"][number] = {
 const functionWords: Lesson["sections"][number] = {
   title: "Rate of change and initial value",
   paragraphs: [
-    "This lesson uses positive and negative numbers, fractions and the coordinate grid. A point $(2, 5)$ means 2 across and 5 up. A function is a rule that gives exactly one output $y$ for each input $x$.",
+    "This lesson uses positive and negative numbers (the numbers less than 0), fractions and the coordinate grid. A point $(2, 5)$ means 2 across and 5 up. A function is a rule that gives exactly one output $y$ for each input $x$.",
     "The rate of change of a function is how much $y$ changes each time $x$ goes up by 1. Between two points, it is the change in $y$ divided by the change in $x$. From $(2, 5)$ to $(4, 9)$, $y$ goes up 4 while $x$ goes up 2. So the rate is $(9 − 5) ÷ (4 − 2) = 2$.",
     "The initial value is the output when $x = 0$. On a graph, it is where the line crosses the up-and-down axis. It is the starting amount.",
     "A function is called linear when its rate of change is the same between every pair of points. Then its graph is a straight line. Its rule can be written $y = mx + b$, where $mx$ means $m$ times $x$. Here $m$ is the rate of change and $b$ is the initial value. In $y = 2x + 1$, the rate of change is 2 and the initial value is 1.",
@@ -450,7 +452,7 @@ export const patternFunctionLessons: Lesson[] = [
         paragraphs: [
           "In the figure, $y = 2x + 1$ gives 1, 3, 5, 7 at $x = 0, 1, 2, 3$. Each step adds 2, and the points lie on a straight line.",
           "Now take $y = x^2$, read “$x$ squared”, which means $x$ times $x$. It gives 0, 1, 4, 9. The changes are 1, 3 and 5, and they grow, so the points bend upward. Its rate of change is not the same each step, so it is not linear.",
-          "To test a rule, find $y$ at $x = 1$, 2 and 3. Unequal changes prove a rule is not linear. Equal changes are a good sign; then confirm by rewriting the rule as $y = mx + b$. Rules like $y = x \\times x$ and $y = \\frac{12}{x}$ are not linear: equal steps in $x$ give unequal changes in $y$.",
+          "To test a rule, find $y$ at $x = 1$, 2 and 3. Unequal changes show for sure that a rule is not linear. Equal changes are a good sign; then confirm by rewriting the rule as $y = mx + b$. Rules like $y = x \\times x$ and $y = \\frac{12}{x}$ are not linear: equal steps in $x$ give unequal changes in $y$.",
         ],
         illustration: "linear-nonlinear-graph",
       },
@@ -458,7 +460,7 @@ export const patternFunctionLessons: Lesson[] = [
         title: "Linear rules in disguise",
         paragraphs: [
           "Multiply out parentheses: $y = 3(x − 2)$ is $y = 3x − 6$. Reorder the parts: $y = 5 − 2x$ is $y = -2x + 5$. Dividing $x$ by a number is multiplying it by a fraction: $y = \\frac{x}{2} − 4$ has rate of change $\\tfrac{1}{2}$. All three are linear.",
-          "A rule with no $x$ at all, such as $y = 7$, is linear too. It is $y = 0x + 7$, with rate of change 0, and its graph is a flat, horizontal line. Being linear means the rate of change stays the same. It does not depend on the letter $x$ appearing.",
+          "A rule with no $x$ at all, such as $y = 7$, is linear too. It is $y = 0x + 7$, with rate of change 0, and its graph is a horizontal line, a flat line going straight across. Being linear means the rate of change stays the same. It does not depend on the letter $x$ appearing.",
         ],
       },
     ],

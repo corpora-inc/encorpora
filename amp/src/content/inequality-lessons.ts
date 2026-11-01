@@ -10,17 +10,30 @@ const terms: NonNullable<ProblemMethod["terms"]> = [
 /** The words every inequality practice screen needs, said once in plain
  * language: the four signs, a solution, the solution set and the boundary. */
 const signsIntuition =
-  "An inequality compares two amounts. The sign $<$ means “is less than” and $>$ means “is greater than”. The sign $\\le$ means “is less than or equal to” and $\\ge$ means “is greater than or equal to”. A solution is a number that makes the comparison true when you put it in for $x$. The solution set is all of those numbers together. It is usually a whole stretch of the number line, starting at one boundary number.";
+  "An inequality is a statement that compares two amounts. The sign $<$ means “is less than” and $>$ means “is greater than”. The sign $\\le$ means “is less than or equal to” and $\\ge$ means “is greater than or equal to”. A solution is a number that makes the comparison true when you put it in for $x$. The solution set is all of those numbers together. It is usually a whole stretch of the number line. The number where that stretch starts is called the boundary.";
 
 export const inequalityMethods: Record<string, ProblemMethod> = {
   "affine-linear-inequality": {
     goal: "Find every number $x$ that makes an inequality like $-3x + 2 \\le 7$ true.",
     senses: {
-      side: "side-of-equation",
-      sides: "side-of-equation",
       boundary: "boundary",
     },
-    noLink: ["whole", "change", "changes", "part", "parts", "leaves"],
+    noLink: [
+      "whole",
+      "change",
+      "changes",
+      "part",
+      "parts",
+      "leaves",
+      "side",
+      "sides",
+      "left side",
+      "right side",
+      "term",
+      "terms",
+      "rule",
+      "rules",
+    ],
     intuition: `${signsIntuition} Solve it almost like an equation. The one change: dividing both sides by a negative number flips the sign, so $<$ becomes $>$.`,
     terms,
     method: [
@@ -35,20 +48,31 @@ export const inequalityMethods: Record<string, ProblemMethod> = {
   "grouped-linear-inequality": {
     goal: "Solve an inequality with parentheses and $x$ on both sides, such as $-2(2x - 3) + 1 > x + 4$.",
     senses: {
-      side: "side-of-equation",
-      sides: "side-of-equation",
-      term: "term-expression",
-      terms: "term-expression",
       boundary: "boundary",
     },
-    noLink: ["whole", "change", "changes", "part", "parts", "leaves"],
+    noLink: [
+      "whole",
+      "change",
+      "changes",
+      "part",
+      "parts",
+      "leaves",
+      "side",
+      "sides",
+      "left side",
+      "right side",
+      "term",
+      "terms",
+      "rule",
+      "rules",
+    ],
     intuition: `${signsIntuition} A number right before parentheses multiplies everything inside: $-2(2x - 3)$ is $-4x + 6$. This is called distributing. Dividing both sides by a negative number flips the sign.`,
     terms: [...terms, "distribute"],
     method: [
       "Distribute: multiply the outside number by each part inside the parentheses, signs included. Then add up the plain numbers on each side.",
       "Subtract the same $x$ term from both sides so $x$ appears on one side only. Then subtract the same number from both sides so the $x$ term stands alone.",
       "Divide both sides by the number multiplying $x$. Flip the sign only if that number is negative. If it is 0, $x$ has cancelled: read whether the comparison left is true or false.",
-      "Keep the boundary as an exact fraction, not a rounded decimal. Check the boundary and one number inside the solution set.",
+      "Keep the boundary as an exact fraction; do not shorten it, as in writing 0.33 for $\\tfrac{1}{3}$. Check the boundary and one number inside the solution set.",
     ],
     watch:
       "Subtracting an $x$ term from both sides never flips the sign. Only dividing or multiplying by a negative number does.",
@@ -56,17 +80,28 @@ export const inequalityMethods: Record<string, ProblemMethod> = {
   "cancelled-linear-inequality": {
     goal: "The $x$ terms cancel. Decide if every number or no number makes the inequality true.",
     senses: {
-      side: "side-of-equation",
-      sides: "side-of-equation",
-      terms: "term-expression",
-      term: "term-expression",
       boundary: "boundary",
     },
-    noLink: ["whole", "change", "changes", "part", "parts", "leaves"],
+    noLink: [
+      "whole",
+      "change",
+      "changes",
+      "part",
+      "parts",
+      "leaves",
+      "side",
+      "sides",
+      "left side",
+      "right side",
+      "term",
+      "terms",
+      "rule",
+      "rules",
+    ],
     intuition: `${signsIntuition} Sometimes both sides have the same amount of $x$, as in $3x + 5 < 3x + 8$. Subtracting $3x$ from both sides removes $x$ completely and leaves $5 < 8$. That statement is true or false no matter what $x$ is.`,
     terms,
     method: [
-      "Distribute any parentheses, add up the plain numbers on each side, and subtract the matching $x$ terms from both sides.",
+      "Multiply out any parentheses, the curved brackets ( ), add up the plain numbers on each side, and subtract the matching $x$ terms from both sides.",
       "Read the comparison of plain numbers that is left. Equal numbers make $\\le$ and $\\ge$ true, but $<$ and $>$ false.",
       "If the comparison is true, every number is a solution. If it is false, no number is a solution.",
     ],
@@ -95,6 +130,13 @@ const NO_LINK = [
   "leaves",
   "mean",
   "opposite",
+  "side",
+  "sides",
+  "left side",
+  "right side",
+  "term",
+  "terms",
+  "rules",
 ];
 
 const foundations: Lesson["sections"][number] = {
@@ -102,7 +144,7 @@ const foundations: Lesson["sections"][number] = {
   title: "What the comparison means",
   paragraphs: [
     "This lesson uses adding, subtracting, multiplying and dividing with positive and negative numbers and fractions. A real number is any number that has a point on the number line. That includes whole numbers, negative numbers, fractions and decimals. Numbers get larger as you move right. A variable is a letter, such as $x$, that stands for a number.",
-    "An inequality compares two amounts. The sign $<$ means “is less than”, and $>$ means “is greater than”. The sign $\\le$ means “is less than or equal to”, and $\\ge$ means “is greater than or equal to”. So $2 < 5$ is true, $5 < 5$ is false, and $5 \\le 5$ is true. The open mouth of the sign faces the larger amount.",
+    "An inequality is a statement that compares two amounts. The sign $<$ means “is less than”, and $>$ means “is greater than”. The sign $\\le$ means “is less than or equal to”, and $\\ge$ means “is greater than or equal to”. So $2 < 5$ is true, $5 < 5$ is false, and $5 \\le 5$ is true. The open mouth of the sign faces the larger amount.",
     "A solution is a value of $x$ that makes the comparison true when you put it in for $x$. The solution set is every solution together. For $x < 2$, the numbers 1, 0, $-3$ and 1.5 are solutions, but 2 and 5 are not. The number 2 is called the boundary: it separates the numbers that work from the numbers that do not. The sign $<$ leaves the boundary out, and $\\le$ includes it.",
     "A short list of examples is not the whole solution set. There are endlessly many numbers less than 2, including fractions such as 1.9 and 1.99. So the answer is written as a statement like $x < 2$.",
   ],
@@ -112,7 +154,7 @@ const order: Lesson["sections"][number] = {
   paragraphs: [
     "Adding the same number to two amounts moves both the same distance along the number line. So their order stays the same. Subtracting works the same way. For example, $2 < 5$, and subtracting 7 from both gives $-5 < -2$. That is still true. A negative result alone does not flip the sign.",
     "Multiplying by a positive number can change distances from 0, but it keeps left and right in order. Multiplying by a negative number also flips every number other than 0 to the other side of 0. That reverses the order. For example, $-2 < 3$. Multiply both by $-2$: you get 4 and $-6$, and $4 > -6$. The smaller number became the larger one.",
-    "Dividing by a negative number flips the order too. Dividing by $-2$ is the same as multiplying by $-\\tfrac{1}{2}$, which is also negative. The reciprocal of a number (one that is not 0) is the number you multiply it by to get 1, so the reciprocal of $-2$ is $-\\tfrac{1}{2}$. Flip $<$ to $>$, $>$ to $<$, $\\le$ to $\\ge$, or $\\ge$ to $\\le$. Whether the boundary is included stays the same. You can never divide by 0.",
+    "Dividing by a negative number flips the order too. Dividing by $-2$ is the same as multiplying by $-\\tfrac{1}{2}$, which is also negative. For a number that is not 0, the number you multiply it by to get 1 is called its reciprocal. So the reciprocal of $-2$ is $-\\tfrac{1}{2}$. Flip $<$ to $>$, $>$ to $<$, $\\le$ to $\\ge$, or $\\ge$ to $\\le$. Whether the boundary is included stays the same. You can never divide by 0.",
     "A fraction in front of $x$ follows the same rule. In $-\\tfrac{2}{3}x \\le 4$, the number multiplying $x$ is $-\\tfrac{2}{3}$. Multiply both sides by its reciprocal, $-\\tfrac{3}{2}$. That number is negative, so flip $\\le$ to $\\ge$: $x \\ge 4 \\times (-\\tfrac{3}{2}) = -6$.",
   ],
 };
@@ -124,8 +166,6 @@ export const inequalityLessons: Lesson[] = [
       "An inequality compares two amounts. In $-3x + 2 \\le 7$, the sign $\\le$ means “is less than or equal to”. Its answer is not one number but a whole stretch of numbers. Solve it like an equation, doing the same step to both sides. The one new rule: dividing both sides by a negative number reverses the comparison, so $\\le$ becomes $\\ge$. The answer is a boundary number, where the two sides are equal, and the side of it where the numbers work.",
     templateIds: ["affine-linear-inequality"],
     senses: {
-      side: "side-of-equation",
-      sides: "side-of-equation",
       boundary: "boundary",
     },
     noLink: NO_LINK,
@@ -139,7 +179,7 @@ export const inequalityLessons: Lesson[] = [
         title: "Show the whole set on a number line",
         paragraphs: [
           "The number 2 is the boundary of $x < 2$. Numbers on one side of 2 make it true, and numbers on the other side do not. Draw an open (empty) circle at 2 to show that 2 itself is left out. Shade the line to the left of 2, with an arrow to show it goes on forever. A set like this, with one end and no other end, is called a half-line.",
-          "For $x \\le 2$, fill in the circle, because 2 is included. For $x > 2$ or $x \\ge 2$, shade the line to the right. The direction and the open or filled circle say different things, and both matter. Every point on the shaded line is a solution, not only the whole numbers.",
+          "For $x \\le 2$, fill in the circle, because 2 is included. For $x > 2$ or $x \\ge 2$, shade the line to the right. The direction and the kind of circle (open or filled in) say different things, and both matter. Every point on the shaded line is a solution, not only the whole numbers.",
         ],
         illustration: "inequality-half-lines",
       },
@@ -148,7 +188,7 @@ export const inequalityLessons: Lesson[] = [
         paragraphs: [
           "In $-3x + 2$, $-3x$ means $-3$ times $x$, and then 2 is added. The number multiplying $x$, sign included, is called the coefficient; here it is $-3$. The 2 is called a constant, a plain number with no $x$. An inequality like this, where $x$ is only multiplied by numbers (no $x^2$, meaning $x$ times $x$), is called linear.",
           "To isolate $x$ means to get $x$ alone on one side. First undo the adding or subtracting, by doing the opposite step to both sides. Then undo the multiplying, by dividing both sides by the coefficient. The coefficient must not be 0. Every step can be undone, so the new inequality has exactly the same solutions as the old one.",
-          "The numbers may be fractions. In $\\tfrac{3}{2}$, the bottom number 2 (the denominator) splits one whole into 2 equal parts. The top number 3 (the numerator) counts 3 of those parts. Keep an exact fraction such as $\\tfrac{5}{3}$; do not round it to 1.67. A rounded boundary changes which nearby numbers count as solutions.",
+          "The numbers may be fractions. In $\\tfrac{3}{2}$, the bottom number 2 (the denominator) splits one whole into 2 equal parts. The top number 3 (the numerator) counts 3 of those parts. Keep an exact fraction such as $\\tfrac{5}{3}$; do not round it to 1.67. Rounding means cutting a number short, like writing 1.67 for $\\tfrac{5}{3}$. A rounded boundary changes which nearby numbers count as solutions.",
         ],
       },
       order,
@@ -187,10 +227,6 @@ export const inequalityLessons: Lesson[] = [
       "An inequality compares two amounts. The sign $>$ means “is greater than”. Some inequalities have parentheses, the curved brackets ( ), and $x$ on both sides, like $-2(2x - 3) + 1 > x + 4.5$. A number right before parentheses multiplies everything inside, so multiply that out first. Then gather the parts with $x$ on one side and the plain numbers on the other. Divide to get $x$ alone, reversing the comparison only if you divide by a negative number.",
     templateIds: ["grouped-linear-inequality"],
     senses: {
-      side: "side-of-equation",
-      sides: "side-of-equation",
-      term: "term-expression",
-      terms: "term-expression",
       boundary: "boundary",
     },
     noLink: NO_LINK,
@@ -203,7 +239,7 @@ export const inequalityLessons: Lesson[] = [
       {
         title: "Parentheses group an amount",
         paragraphs: [
-          "A term is one part of a sum, together with its sign. In $2x - 3$, the terms are $2x$ and $-3$. The coefficient 2 is the number multiplying $x$. The constant $-3$ is a plain number with no $x$. In $-2(2x - 3)$, the parentheses keep $2x - 3$ together so the whole thing is multiplied by $-2$.",
+          "A term is one part of a sum, together with its sign. In $2x - 3$, the terms are $2x$ and $-3$. The coefficient 2 is the number multiplying $x$. The constant, the plain number $-3$, has no $x$. In $-2(2x - 3)$, the parentheses keep $2x - 3$ together so the whole thing is multiplied by $-2$.",
           "Multiplying a sum means multiplying every term in it. This is called distributing. So $-2(2x - 3) = (-2)(2x) + (-2)(-3) = -4x + 6$. Both terms get multiplied by $-2$. The constant becomes positive, because a negative number times a negative number is positive.",
           "Like terms have the same letter part, such as $-4x$ and $-x$. You combine them by adding their coefficients: $-4x - x = (-4 - 1)x = -5x$. Plain numbers combine with plain numbers: $6 + 1 = 7$. You cannot combine $-4x$ and 7 into one term, because only $-4x$ changes when $x$ changes.",
         ],
@@ -213,7 +249,7 @@ export const inequalityLessons: Lesson[] = [
         paragraphs: [
           "Subtract the same $x$ term from both sides. For any number $x$ stands for, you subtract the same amount from each side, so the comparison stays true or false. For example, subtract $x$ from both sides of $-4x + 7 > x + 2$ to get $-5x + 7 > 2$. Then subtract 7 from both sides to get $-5x > -5$.",
           "Inequalities with exactly the same solutions are called equivalent. Distributing only writes the same amount a new way. Adding or subtracting the same term on both sides keeps the order. Then divide both sides by the coefficient (it must not be 0) to get $x$ alone. A negative divisor flips the sign.",
-          "Write a fraction boundary exactly. In a fraction, the bottom number (the denominator) says how many equal parts make one whole. The top number (the numerator) counts those parts. So $\\tfrac{1}{2}$ is one of two equal parts. Rounding $\\tfrac{1}{3}$ to 0.33 would move the boundary and change the solution set.",
+          "Write a fraction boundary exactly. In a fraction, the bottom number is called the denominator. It says how many equal parts make one whole. The top number is called the numerator, and it counts those parts. So $\\tfrac{1}{2}$ is one of two equal parts. Rounding $\\tfrac{1}{3}$ to 0.33 would move the boundary and change the solution set.",
         ],
       },
       order,
@@ -255,10 +291,6 @@ export const inequalityLessons: Lesson[] = [
       "An inequality compares two amounts: $<$ means “is less than” and $>$ means “is greater than”. Sometimes both sides have the same amount of $x$, as in $3x + 5 < 3x + 8$. Subtract $3x$ from both sides and $x$ disappears: $5 < 8$. That is true whatever $x$ is, so every number is a solution (a number that makes the comparison true). If what is left is false, like $5 > 8$, no number is a solution.",
     templateIds: ["cancelled-linear-inequality"],
     senses: {
-      side: "side-of-equation",
-      sides: "side-of-equation",
-      term: "term-expression",
-      terms: "term-expression",
       boundary: "boundary",
     },
     noLink: NO_LINK,
@@ -272,7 +304,7 @@ export const inequalityLessons: Lesson[] = [
         title: "What counts as a solution",
         paragraphs: [
           "This lesson uses arithmetic with positive and negative numbers. A real number is any number that has a point on the number line: whole numbers, negative numbers, fractions and decimals. A variable is a letter, such as $x$, that stands for a number.",
-          "An inequality compares two amounts. The sign $<$ means “is less than” and $>$ means “is greater than”. The signs $\\le$ and $\\ge$ mean the same but also allow the two amounts to be equal. So $2 < 5$ and $5 \\le 5$ are true, but $5 < 5$ is false.",
+          "An inequality is a statement that compares two amounts. The sign $<$ means “is less than” and $>$ means “is greater than”. The signs $\\le$ and $\\ge$ mean the same but also allow the two amounts to be equal. So $2 < 5$ and $5 \\le 5$ are true, but $5 < 5$ is false.",
           "A solution is a value of $x$ that makes the comparison true when you put it in for $x$. The solution set is every solution together.",
         ],
       },
@@ -280,7 +312,7 @@ export const inequalityLessons: Lesson[] = [
         title: "Remove matching unknown terms",
         paragraphs: [
           "The coefficient is the number multiplying $x$. A constant is a plain number with no $x$. In $3x + 5 < 3x + 8$, the coefficient of $x$ is 3 on both sides. Subtract $3x$ from both sides, and $5 < 8$ is left. Whatever number $x$ is, you took the same amount from both sides, so the comparison stays true or false.",
-          "The statement $5 < 8$ is true, and it has no $x$ in it. So every real number makes the original inequality true. The solution set is all real numbers: the whole number line, with no boundary. For example, $x = 0$ gives $5 < 8$, and $x = -2$ gives $-1 < 2$. The subtraction proves it for every $x$, not only for these two.",
+          "The statement $5 < 8$ is true, and it has no $x$ in it. So every real number makes the original inequality true. The solution set is all real numbers: the whole number line, with no boundary, the number where true switches to false. For example, $x = 0$ gives $5 < 8$, and $x = -2$ gives $-1 < 2$. The subtraction proves it for every $x$, not only for these two.",
           "Now take $3x + 5 > 3x + 8$. Subtracting $3x$ from both sides leaves $5 > 8$, which is false. No choice of $x$ can change that. The solution set is empty: no real number works.",
         ],
       },

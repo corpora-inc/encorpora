@@ -3,14 +3,8 @@ import type { ProblemMethod } from "./problem-lessons";
 
 /** Glossary readings shared by the Algebra 1 function lessons and methods. */
 const senses = {
-  side: "side-of-equation",
-  sides: "side-of-equation",
-  term: "term-expression",
-  terms: "term-expression",
   range: "range-function",
   ranges: "range-function",
-  rule: "rule",
-  rules: "rule",
   unit: "unit",
   units: "unit",
   squared: "square-number",
@@ -40,6 +34,14 @@ const noLink = [
   "population",
   "base",
   "bases",
+  "side",
+  "sides",
+  "left side",
+  "right side",
+  "term",
+  "terms",
+  "rule",
+  "rules",
 ];
 
 /** What a function, an input and an output are, said on every screen that
@@ -75,7 +77,7 @@ export const linearFunctionLessons: Lesson[] = [
         paragraphs: [
           "A relation is any set of pairs that matches inputs $x$ with outputs $y$. It is called a function when each input has exactly one output.",
           "In the table, the input 2 is paired with both 3 and 7. So this relation is not a function. The output 4 appears twice, for the inputs 1 and 5. That is allowed, because each of those inputs still has only one output.",
-          "An equation makes $y$ a function of $x$ when every $x$ gives just one $y$. Take $y = x^2 + 1$, where $x^2$, read “$x$ squared”, means $x$ times $x$. Each $x$ has one square, so each $x$ gives one $y$: it is a function. But $x = y^2$ is not: $x = 4$ is true for $y = 2$ and also for $y = -2$.",
+          "An equation makes $y$ a function of $x$ when every $x$ gives just one $y$. Take $y = x^2 + 1$. Here $x^2$ is read “$x$ squared”, which means $x$ times $x$. Each $x$ has one square, so each $x$ gives one $y$: it is a function. But $x = y^2$ is not: $x = 4$ is true for $y = 2$ and also for $y = -2$.",
         ],
         illustration: "relation-repeated-input",
       },
@@ -128,7 +130,7 @@ export const linearFunctionLessons: Lesson[] = [
     id: "average-rate-of-change",
     title: "Average rate of change",
     summary:
-      "A rate of change says how fast one amount changes compared with another, like miles per hour. On a curved graph (a picture of how one amount depends on another), the change is faster in some places and slower in others. The average rate of change between two points is the change in output (the result) divided by the change in input (what you put in). Drive 120 miles in 3 hours and your average is $120 ÷ 3 = 40$ miles per hour, even if you stopped on the way.",
+      "A rate of change tells how fast one amount changes compared with another, like miles per hour. On a curved graph (a picture of how one amount depends on another), the change is faster in some places and slower in others. Between two points, the average rate of change is the change in output (the result) divided by the change in input (what you put in). Drive 120 miles in 3 hours and your average is $120 ÷ 3 = 40$ miles per hour, even if you stopped on the way.",
     templateIds: ["average-rate-formula", "average-rate-display"],
     includeGeneratedRepresentation: false,
     senses,
@@ -142,16 +144,16 @@ export const linearFunctionLessons: Lesson[] = [
         stage: "intuition",
         title: "Change in output over change in input",
         paragraphs: [
-          `${functionWords} A straight line changes at one steady rate, called its slope. A curve can speed up and slow down.`,
+          `${functionWords} A straight line changes by the same amount for every step, and that amount is called its slope. A curve can get steeper or flatter as you go.`,
           "So pick two different inputs, $a$ and $b$. Then $f(a)$ is the output at $a$, and $f(b)$ is the output at $b$. The average rate of change from $a$ to $b$ is the change in output divided by the change in input: $\\frac{f(b) - f(a)}{b - a}$. Only the two end points count; what happens between them does not.",
-          "For example, if an output goes up 9 while its input goes up 3, the average rate is $9 ÷ 3 = 3$. That is 3 output units for each 1 input unit. It depends only on the two end points, even when the graph curves between them.",
+          "For example, if an output goes up 9 while its input goes up 3, the average rate of change is $9 ÷ 3 = 3$. That is 3 output units for each 1 input unit. It depends only on the two end points, even when the graph curves between them.",
         ],
       },
       {
         title: "The secant line",
         paragraphs: [
-          "Draw the straight line through $A = (1, -2)$ and $B = (4, 7)$. A line like this, through two points of a curve, is called a secant line. It rises 9 while it runs 3 to the right, so its slope is $9 ÷ 3 = 3$. That is the same number as the average rate. The secant is the straight path from $A$ to $B$ at one steady rate.",
-          "The units come from the division. If $h(t)$ is a height in feet after $t$ seconds, the average rate is in feet per second. If $P$ is a population in thousands and $x$ is a year, it is thousands per year. Going from the smaller input to the larger, a negative average rate means the output went down overall.",
+          "Draw the straight line through $A = (1, -2)$ and $B = (4, 7)$. A line like this, through two points of a curve, is called a secant line. It rises 9 while it runs 3 to the right, so its slope is $9 ÷ 3 = 3$. That is the same number as the average rate of change. The secant is the straight path from $A$ to $B$ that rises by the same amount for every step.",
+          "The units come from dividing. If $h(t)$ is a height in feet after $t$ seconds, the average rate of change is in feet per second. If $P$ is a population in thousands and $x$ is a year, it is thousands per year. Going from the smaller input to the larger, a negative average rate of change means the output went down overall.",
         ],
         illustration: "average-rate-secant",
       },
@@ -187,7 +189,7 @@ export const linearFunctionLessons: Lesson[] = [
     id: "linear-models",
     title: "Build linear models",
     summary:
-      "Many real costs have two parts: an amount paid once, and an amount paid again for each mile, month or item. The once-only part is the starting amount. The amount for each step is the rate. Together they make an equation, called a linear model, like fare $= 2 \\times$ miles $+ 3$. Use it to predict a total, or work backward from a total.",
+      "Many real costs have two parts: an amount paid once, and an amount paid again for each mile, month or item. The once-only part is the starting amount. The amount for each step is the rate. Together they make an equation like fare $= 2 \\times$ miles $+ 3$. An equation like this is called a linear model. Use it to predict a total, or work backward from a total.",
     templateIds: [
       "linear-model-value",
       "linear-model-equation",
@@ -236,7 +238,7 @@ export const linearFunctionLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "An amount that starts at $b$ and changes by $m$ for each input unit has output $y=mx+b$ after $x$ input units. A stated total or limit turns this rule into an equation or inequality to solve.",
+          "An amount that starts at $b$ and changes by $m$ for each input unit has output $y=mx+b$ after $x$ input units. A stated total or limit turns this into an equation or inequality to solve.",
           "In a linear model $y=mx+b$, $x$ is the input and $y$ is the output. The number $b$ is the output when $x=0$, if the situation allows 0. The number $m$ is the change in output for each increase of 1 in $x$, in output units per input unit. On a graph, the line meets the up-and-down axis at $(0,b)$.",
         ],
       },
@@ -362,7 +364,7 @@ export const linearFunctionLessons: Lesson[] = [
     pitfalls: [
       "Put the first number in for $x$ and the second for $y$. $(3, 2)$ and $(2, 3)$ are different points.",
       "Check every point by putting its numbers in. A point that looks close to a line may miss it.",
-      "Square the whole number you put in, sign included. Squaring means multiplying a number by itself: $(-2)^2 = (-2) \\times (-2) = 4$, while $-2^2$ means $-(2 \\times 2) = -4$.",
+      "Multiply the entire number you put in by itself, sign included. Squaring means multiplying a number by itself: $(-2)^2 = (-2) \\times (-2) = 4$, while $-2^2$ means $-(2 \\times 2) = -4$.",
     ],
     parentGuide:
       "Write an equation such as $x + y = 10$. Take turns naming points on its graph and points off it. Then plot the points you named and watch the line appear.",
@@ -379,7 +381,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     method: [
       "For the domain, read along the across axis from the graph's left end to its right end.",
       "For the range, read along the up-and-down axis from the lowest point to the highest. Check any turning point as well as the ends.",
-      "At an end of the graph, use $\\le$ for a filled dot and $<$ for an open dot. For the range, an open dot's height still counts if another point of the graph reaches it.",
+      "At an end of the graph, use $\\le$ for a filled dot and $<$ for an open dot. For the range, an open dot's $y$ value still counts if another point of the graph reaches it.",
     ],
     watch:
       "Match each dot to its own value. On a line that falls to the right, the right end gives the lowest $y$ value.",
@@ -416,7 +418,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     goal: "Find the average rate of change of a function between two inputs, from its rule or two of its values.",
     senses,
     noLink,
-    intuition: `${functionWords} The average rate of change from input $a$ to input $b$ is the change in output divided by the change in input: $\\frac{f(b) - f(a)}{b - a}$. It tells how much the output changes, on average, for each step of 1 in the input.`,
+    intuition: `${functionWords} From input $a$ to input $b$, the average rate of change is the change in output divided by the change in input: $\\frac{f(b) - f(a)}{b - a}$. It tells how much the output changes, on average, for each step of 1 in the input.`,
     terms: ["average-rate-of-change"],
     method: [
       "Find the output at each end: put $a$ and then $b$ into the rule.",
@@ -458,7 +460,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "A linear model is written output $=$ rate $\\times$ input $+$ starting amount, like $y = 2x + 3$. The starting amount is the output when the input is 0. On a graph, it is where the line meets the up-and-down axis. The rate is how much the output changes each time the input goes up by 1.",
+      "The rate is how much the output changes each time the input goes up by 1. A linear model is written output $=$ rate $\\times$ input $+$ starting amount, like $y = 2x + 3$. The starting amount is the output when the input is 0. On a graph, it is where the line meets the up-and-down axis. The rate is how much the output changes each time the input goes up by 1.",
     method: [
       "Find the starting amount: the output when the input is 0, where the graph meets the up-and-down axis.",
       "Find the rate: the change in output for each increase of 1 in the input. It is negative if the output goes down.",
@@ -472,7 +474,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "A formula is an equation that links amounts with letters, like $A = \\frac{bh}{2}$ for a triangle's area $A$, with base $b$ and height $h$; $bh$ means $b$ times $h$. To get one letter alone, treat every other letter as a known number. Then undo what was done to your letter, last step first, doing the same to both sides.",
+      "A formula is an equation that links amounts with letters. For a triangle, $A = \\frac{bh}{2}$, where $bh$ means $b$ times $h$. The area is the amount of flat space inside the triangle, written $A$. The base $b$ is its bottom side. The height is the straight-up distance to the top corner, written $h$. To get one letter alone, treat every other letter as a known number. Then undo what was done to your letter, last step first, doing the same to both sides.",
     method: [
       "Treat every other letter as a known number. List what is done to the chosen letter, in order.",
       "Undo those steps in reverse order, doing the same thing to both sides each time.",
@@ -486,7 +488,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "A formula is an equation that links amounts with letters, like $P = 2l + 2w$ for a rectangle's perimeter $P$ (the distance around it), with length $l$ and width $w$. If you know every letter but one, put in the known numbers. Then undo what was done to the unknown, last step first, doing the same to both sides.",
+      "A formula is an equation that links amounts with letters. The perimeter is the distance around a shape. For a rectangle it is $P = 2l + 2w$, with length $l$ and width $w$. If you know every letter but one, put in the known numbers. Then undo what was done to the unknown, last step first, doing the same to both sides.",
     method: [
       "Put the known values into the formula in place of their letters.",
       "Undo the steps on the unknown in reverse order, on both sides, until it stands alone.",
@@ -517,7 +519,8 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
       "Put the known coordinate into the equation in place of its letter.",
       "Solve the one-letter equation that is left for the missing coordinate.",
     ],
-    watch: "Square the whole number you put in, sign included: $(-2)^2 = 4$.",
+    watch:
+      "Multiply the entire number you put in by itself, sign included: $(-2)^2 = 4$.",
   },
 };
 

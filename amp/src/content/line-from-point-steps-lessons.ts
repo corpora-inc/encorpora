@@ -12,7 +12,7 @@ const entries: WorkEntry[] = [
       "Write the line as $y = mx + b$, called slope-intercept form.",
     ],
     intuition:
-      "The slope of a line says how steep it is: how much $y$ changes for each step of 1 in $x$. A slope of $\\frac{2}{3}$ means the line goes up 2 for every 3 across. A line that is not vertical can be written $y = mx + b$. Here $m$ is the slope, $mx$ means $m$ times $x$, and $b$ is the $y$-intercept, the height where the line crosses the $y$-axis. The slope fixes the steepness but not the place: many parallel lines, lines that never meet, share that slope. One point on the line pins it down. The point's $x$ and $y$ must make $y = \\frac{2}{3}x + b$ true, and only one value of $b$ does that.",
+      "The slope of a line says how steep it is: how much $y$ changes for each step of 1 in $x$. A slope of $\\frac{2}{3}$ means the line goes up 2 for every 3 across. A line that is not vertical can be written $y = mx + b$. Here $m$ is the slope, $mx$ means $m$ times $x$, and $b$ is the $y$-intercept, the $y$ value where the line crosses the $y$-axis. The slope fixes the steepness but not the place: many lines share that slope. Lines like these, which never meet, are called parallel. One point on the line pins it down. The point's $x$ and $y$ must make $y = \\frac{2}{3}x + b$ true, and only one value of $b$ does that.",
     terms: ["slope", "y-intercept", "slope-intercept-form"],
     method: [
       "If two points with different $x$ values are given, find the slope: $m = \\frac{y_2 - y_1}{x_2 - x_1}$, the change in $y$ over the change in $x$. The small 1 and 2 mark which point a number comes from. Simplify the fraction.",
@@ -53,8 +53,22 @@ const entries: WorkEntry[] = [
 const work = workContent(entries);
 /** The lesson and method read “parallel” and “part” in their plain senses. */
 const glossary = {
-  senses: { side: "side-of-equation", sides: "side-of-equation" },
-  noLink: ["part", "whole", "change", "changes", "multiple", "place"],
+  noLink: [
+    "part",
+    "whole",
+    "change",
+    "changes",
+    "multiple",
+    "place",
+    "side",
+    "sides",
+    "left side",
+    "right side",
+    "term",
+    "terms",
+    "rule",
+    "rules",
+  ],
 };
 export const lineFromPointContent = {
   ...work,

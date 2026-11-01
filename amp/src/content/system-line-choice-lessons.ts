@@ -4,10 +4,6 @@ import { chainLesson } from "./chain-lesson-kit";
 
 /** Glossary readings for every lesson and method in this file. */
 const senses = {
-  side: "side-of-equation",
-  sides: "side-of-equation",
-  term: "term-expression",
-  terms: "term-expression",
   multiple: "multiple",
   ratio: "ratio",
   factor: "factor-number",
@@ -16,7 +12,6 @@ const senses = {
 /** The table lesson also reads “rule”, “unit” and “standard form”. */
 const tableSenses = {
   ...senses,
-  rule: "rule",
   unit: "unit",
   units: "unit",
   "standard form": "standard-form-line",
@@ -33,6 +28,13 @@ const noLink = [
   "rule",
   "jump",
   "jumps",
+  "side",
+  "sides",
+  "left side",
+  "right side",
+  "term",
+  "terms",
+  "rules",
 ];
 
 export const systemLineChoiceMethods: Record<string, ProblemMethod> = {
@@ -51,7 +53,7 @@ export const systemLineChoiceMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Write each equation as $ax + by = c$, with the letters on the left. Compare the $x$ coefficients and the $y$ coefficients of the two equations.",
-      "If one pair of coefficients is not the same multiple of the other (2 and $-3$ against 3 and 2), the lines tilt differently. They cross once: exactly one solution.",
+      "If one pair of coefficients is not the other pair times one number (2 and $-3$ against 3 and 2), the lines tilt differently. They cross once: exactly one solution.",
       "If they are the same multiple (2 and $-3$ doubled is 4 and $-6$), check the number on the right. Same multiple again: the same line, endlessly many solutions. A different number: parallel lines, no solution.",
     ],
     watch:
@@ -81,9 +83,9 @@ export const systemLineChoiceMethods: Record<string, ProblemMethod> = {
   "table-standard-form": {
     goal: "Write a line from a table with uneven or fraction inputs in standard form, or shift its rule up or down.",
     senses: tableSenses,
-    noLink: noLink.filter((w) => w !== "rule"),
+    noLink,
     intuition:
-      "A table lists inputs $x$ and the outputs $y$ that go with them. The slope of the line is the change in $y$ divided by the change in $x$ between two columns. That is true however far apart the inputs are. If the inputs jump unevenly, read the real change in $x$. Standard form writes a line as $Ax + By = C$, with integers (whole numbers or their negatives) and both letters on the left.",
+      "A table lists inputs $x$ and the outputs $y$ that go with them. For a line, the change in $y$ divided by the change in $x$ between two columns is called the slope. That is true however far apart the inputs are. If the inputs jump unevenly, read the real change in $x$. Standard form writes a line as $Ax + By = C$, with integers (whole numbers or their negatives) and both letters on the left.",
     terms: [
       "standard-form-line",
       [
@@ -105,9 +107,9 @@ export const systemLineChoicePrinciples: Record<string, string> = {
   "system-second-equation":
     "Take the system $a_1x + b_1y = c_1$ and $a_2x + b_2y = c_2$; the small 1 and 2 mark which equation a number comes from. If $a_1b_2 \\ne a_2b_1$, the lines are not parallel, so they cross once and there is exactly one solution. If $a_1b_2 = a_2b_1$, the lines are parallel or the same (each equation has a letter whose coefficient is not 0, so each is a line). They are the same line when $(a_2, b_2, c_2)$ is a multiple of $(a_1, b_1, c_1)$, giving endlessly many solutions. Otherwise they are different lines, giving none.",
   "parallel-line-intercept":
-    "Two lines that are not vertical (straight up and down) are parallel exactly when they have the same slope and are different lines. The line with slope $m$ through $(x_0, y_0)$ is $y = m(x - x_0) + y_0$. Through $(0, b)$ it is $y = mx + b$. Through $(h, 0)$ it is $y = m(x - h)$, whose constant is $-mh$.",
+    "Two lines that are not vertical (straight up and down) are parallel exactly when they have the same slope and are different lines. The line with slope $m$ through $(x_0, y_0)$ is $y = m(x - x_0) + y_0$. Through $(0, b)$ it is $y = mx + b$. Through $(h, 0)$ it is $y = m(x - h)$, whose constant, the number added, is $-mh$.",
   "table-standard-form":
-    "If a line passes through $(x_1, y_1)$ and $(x_2, y_2)$ with $x_1 \\ne x_2$, its slope is $\\dfrac{y_2 - y_1}{x_2 - x_1}$. Any two of its points give the same slope, however the inputs are spaced. Clearing fractions in $y = mx + b$ gives $Ax + By = C$ with integers. The function $g(x) = f(x) + s$ has the same slope as $f$ and constant $b + s$.",
+    "If a line passes through $(x_1, y_1)$ and $(x_2, y_2)$ with $x_1 \\ne x_2$, its slope is $\\dfrac{y_2 - y_1}{x_2 - x_1}$. Any two of its points give the same slope, however the inputs are spaced. Clearing fractions in $y = mx + b$ gives $Ax + By = C$ with integers. The function $g(x) = f(x) + s$ has the same slope as $f$, and its constant, the number added, is $b + s$.",
 };
 
 export const systemLineChoiceLessons = [
@@ -210,12 +212,12 @@ export const systemLineChoiceLessons = [
   },
   {
     senses: tableSenses,
-    noLink: noLink.filter((w) => w !== "rule"),
+    noLink,
     ...chainLesson({
       id: "table-standard-form-lesson",
       title: "A line from a table with uneven steps",
       summary:
-        "A table lists inputs $x$ (numbers you put in) and the outputs $y$ that go with them. For a line, the slope (steepness) is the change in $y$ divided by the change in $x$. When the inputs jump by different amounts, read both changes. Then write the line in standard form, such as $3x - y = -2$: both letters on the left and no fractions. To move the line up 3, add 3 to every output.",
+        "A table lists inputs $x$ (numbers you put in) and the outputs $y$ that go with them. For a line, the slope (steepness) is the change in $y$ divided by the change in $x$. When the inputs jump by different amounts, read both changes. Then write the line in standard form: both letters on the left and no fractions, such as $3x - y = -2$. To move the line up 3, add 3 to every output.",
       templateIds: ["table-standard-form"],
       objectives: [
         "Find a slope from two columns of a table whose inputs are unevenly spaced or fractions.",
@@ -240,16 +242,16 @@ export const systemLineChoiceLessons = [
       methodTitle: "Read the gap, then the constant",
       method: [
         "Slope: the change in $y$ divided by the change in $x$, between two columns. Do not divide by the number of columns.",
-        "The number $b$: put one column into $y = mx + b$. Standard form: move the $x$ term to the left, multiply to clear fractions, and make the $x$ coefficient positive if it is not 0.",
+        "The number $b$: put one column into $y = mx + b$. Standard form: move the $x$ term to the left, multiply to clear fractions, and make the number multiplying $x$ positive if it is not 0.",
         "A rule shifted up by $s$, $g(x) = f(x) + s$: keep the slope and add $s$ to $b$.",
       ],
       formalTitle: "Two points determine a line",
       formal: [
-        "A line through $(x_1, y_1)$ and $(x_2, y_2)$ with $x_1 \\ne x_2$ has slope $\\frac{y_2 - y_1}{x_2 - x_1}$. Any two different points of the line give the same slope. Standard form is $Ax + By = C$ with integer coefficients that share no common factor.",
+        "A line through $(x_1, y_1)$ and $(x_2, y_2)$ with $x_1 \\ne x_2$ has slope $\\frac{y_2 - y_1}{x_2 - x_1}$. Any two different points of the line give the same slope. Standard form is $Ax + By = C$, where $A$, $B$ and $C$ are integers that no number greater than 1 divides evenly.",
       ],
       pitfalls: [
         "Dividing the change in $y$ by 1 because the columns sit next to each other. Divide by the change in $x$.",
-        "Subtracting a shift that should be added, or putting it inside the parentheses of $f$.",
+        "Subtracting a shift that should be added, or putting it inside the curved brackets of $f$.",
         "Leaving fractions in standard form. Multiply every term by the common denominator.",
       ],
       parentGuide:

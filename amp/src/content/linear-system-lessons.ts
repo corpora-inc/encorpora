@@ -11,10 +11,6 @@ const terms: MethodTerm[] = [
 
 /** Glossary readings shared by both system lessons and methods. */
 const senses = {
-  side: "side-of-equation",
-  sides: "side-of-equation",
-  term: "term-expression",
-  terms: "term-expression",
   unit: "unit",
   units: "unit",
   opposites: "opposite-number",
@@ -41,11 +37,18 @@ const noLink = [
   "window",
   "more than",
   "rules",
+  "side",
+  "sides",
+  "left side",
+  "right side",
+  "term",
+  "terms",
+  "rule",
 ];
 
 /** The words both practice screens need before the generated example. */
 const systemIntuition =
-  "A system of equations is two or more equations about the same unknown numbers; here, two equations about $x$ and $y$. An ordered pair $(x, y)$ lists the two numbers, $x$ first and $y$ second. The solution of the system is a pair that makes both equations true at once. The coefficient of a letter is the number multiplying it: in $2x + 3y = 7$ they are 2 and 3.";
+  "A system of equations is two or more equations about the same unknown numbers; here, two equations about $x$ and $y$. An ordered pair is a pair of numbers in order, written $(x, y)$, with $x$ first and $y$ second. The solution of the system is a pair that makes both equations true at once. The coefficient of a letter is the number multiplying it: in $2x + 3y = 7$ they are 2 and 3.";
 
 export const linearSystemMethods: Record<string, ProblemMethod> = {
   "linear-system-pair": {
@@ -76,7 +79,7 @@ export const linearSystemMethods: Record<string, ProblemMethod> = {
       "If both letters cancel and the numbers left are unequal, like $0 = 2$, no pair works. If they are equal, like $0 = 0$, both equations are the same line: endlessly many pairs on that line work, but not every pair.",
     ],
     watch:
-      "One equation can be a negative multiple of the other and still be the same line. Compare the plain numbers as well as the coefficients. Never divide by 0.",
+      "One equation can be the other times a number less than 0 and still be the same line. Compare the plain numbers as well as the coefficients. Never divide by 0.",
   },
 };
 
@@ -101,7 +104,7 @@ const coordinates = {
   title: "Why lines show the solutions",
   paragraphs: [
     "A coordinate plane is a flat grid made from two number lines, called axes, that cross at a square corner. The across line is the $x$-axis and the up-and-down line is the $y$-axis. They cross at the origin, $(0, 0)$. To find $(2, 3)$, start at the origin, move 2 right, then 3 up. A negative $x$ means move left; a negative $y$ means move down.",
-    "A linear equation in $x$ and $y$ looks like $ax + by = c$. Here $a$, $b$ and $c$ are fixed numbers, and $a$ and $b$ are not both 0. The letters are never squared or multiplied together. Every pair that makes one such equation true lies on one straight line. Every point on that line makes the equation true.",
+    "A linear equation in $x$ and $y$ looks like $ax + by = c$. Here $a$, $b$ and $c$ are fixed numbers, and $a$ and $b$ are not both 0. The letters are never multiplied by themselves or by each other. Every pair that makes one such equation true lies on one straight line. Every point on that line makes the equation true.",
     "For example, $y = x + 1$ makes $y$ one more than $x$. Its points include $(0, 1)$, $(1, 2)$ and $(2, 3)$. An intersection is a point that two lines share. That shared point is a pair that makes both equations true.",
   ],
 };
@@ -109,7 +112,7 @@ const coordinates = {
 const fractionCalculations = {
   title: "Calculate with fractions",
   paragraphs: [
-    "In a fraction such as $\\tfrac{5}{4}$, the top number (the numerator) counts parts, and the bottom number (the denominator) says how many parts make one whole. To multiply a fraction by a whole number, multiply the top and keep the bottom: $3 \\times \\tfrac{5}{4} = \\tfrac{15}{4}$. Three groups of five quarters make fifteen quarters.",
+    "In a fraction such as $\\tfrac{5}{4}$, the top number is called the numerator: it counts parts. The bottom number is called the denominator: it says how many parts make one whole. To multiply a fraction by a whole number, multiply the top and keep the bottom: $3 \\times \\tfrac{5}{4} = \\tfrac{15}{4}$. Three groups of five quarters make fifteen quarters.",
     "Signs work as usual: $-2 \\times \\tfrac{3}{4} = -\\tfrac{6}{4} = -\\tfrac{3}{2}$. The last step divides the top and bottom by 2. Dividing top and bottom by the same number (not 0) keeps the value.",
     "To divide a fraction by a positive whole number, multiply the bottom by that number: $\\tfrac{5}{4} \\div 2 = \\tfrac{5}{8}$. Halving each quarter makes an eighth. So $-\\tfrac{5}{4} \\div 5 = -\\tfrac{5}{20} = -\\tfrac{1}{4}$. For a negative divisor, also flip the sign: $-\\tfrac{9}{2} \\div (-3) = \\tfrac{9}{6} = \\tfrac{3}{2}$. You can never divide by 0.",
     "To add or subtract fractions, first give them the same bottom number. Multiplying top and bottom by the same number (not 0) keeps the value: $\\tfrac{1}{2} = \\tfrac{3}{6}$ and $\\tfrac{1}{3} = \\tfrac{2}{6}$. So $\\tfrac{1}{2} + \\tfrac{1}{3} = \\tfrac{3}{6} + \\tfrac{2}{6} = \\tfrac{5}{6}$. Whole numbers can be rewritten too: $-2 - \\tfrac{2}{3} = -\\tfrac{6}{3} - \\tfrac{2}{3} = -\\tfrac{8}{3}$.",
@@ -135,7 +138,7 @@ export const linearSystemPairLesson: Lesson = {
       title: "What you will use",
       paragraphs: [
         "One equation with two letters, such as $x + y = 5$, has many pairs that work: $(1, 4)$, $(2, 3)$, $(0, 5)$ and more. A system adds a second equation. Now we want the one ordered pair $(x, y)$ that makes both equations true at once. Here $x$ is the first number and $y$ is the second. Check the same pair in both equations.",
-        "You will solve equations with one letter, and work with positive and negative numbers and fractions. A fraction $\\tfrac{a}{b}$ means $a$ divided by $b$, where $b$ is not 0. Keep fractions exact while you work.",
+        "You will solve equations with one letter, and work with positive and negative numbers (the numbers less than 0) and fractions. A fraction $\\tfrac{a}{b}$ means $a$ divided by $b$, where $b$ is not 0. Keep fractions exact while you work.",
       ],
     },
     foundations,
@@ -160,7 +163,7 @@ export const linearSystemPairLesson: Lesson = {
       title: "Elimination removes one letter",
       paragraphs: [
         "Elimination combines the equations so one letter disappears. Multiplying every term on both sides of an equation by the same number keeps its solutions, as long as the number is not 0. You can undo it by dividing. Multiplying by 0 is different: it would wipe out the equation.",
-        "If two equations are both true for a pair, adding their left sides gives the same result as adding their right sides. Subtracting works the same way. So make one letter's coefficients match, then subtract. Or make them opposites (like 6 and $-6$), then add. For example, $6x - 6x = 0$ removes $x$.",
+        "If two equations are both true for a pair, adding their left sides gives the same result as adding their right sides. Subtracting works the same way. So make one letter's coefficients match, then subtract. Or make them opposites, the same size with different signs (like 6 and $-6$), then add. For example, $6x - 6x = 0$ removes $x$.",
         "Keep one original equation alongside the new one. The new equation alone has lost a condition, so it cannot find the whole pair by itself. The original equation lets you find the second number.",
       ],
     },
@@ -219,8 +222,8 @@ export const linearSystemCountLesson: Lesson = {
       stage: "intuition",
       title: "What you will use",
       paragraphs: [
-        "Each equation in a system is true for many pairs of numbers. A solution of the system must make both equations true. Picture each equation as a straight line. Two lines can cross once, never meet, or lie exactly on top of each other. Those three pictures mean one, no, or endlessly many shared pairs.",
-        "An ordered pair $(x, y)$ names $x$ first and $y$ second. You will use positive and negative numbers, fractions and one-letter equations. A fraction $\\tfrac{a}{b}$ means $a$ divided by $b$, where $b$ is not 0.",
+        "Each equation in a system is true for many pairs of numbers. A solution of the system is a pair that makes both equations true. Picture each equation as a straight line. Two lines can cross once, never meet, or lie exactly on top of each other. Those three pictures mean one, no, or endlessly many shared pairs.",
+        "An ordered pair $(x, y)$ names $x$ first and $y$ second. You will use positive and negative numbers (the numbers less than 0), fractions and one-letter equations. A fraction $\\tfrac{a}{b}$ means $a$ divided by $b$, where $b$ is not 0.",
       ],
     },
     foundations,
@@ -270,7 +273,7 @@ export const linearSystemCountLesson: Lesson = {
     prompt:
       "How many ordered pairs $(x, y)$ satisfy x + 2y = 3 and −2x − 4y = −6?",
     steps: [
-      "Make the coefficients of $x$ opposites so adding removes $x$. Multiply every term of $x + 2y = 3$ by 2: $2x + 4y = 6$.",
+      "Make the coefficients of $x$ opposites, the same size with different signs, so adding removes $x$. Multiply every term of $x + 2y = 3$ by 2: $2x + 4y = 6$.",
       "Add this to $-2x - 4y = -6$, side by side: $(2x + 4y) + (-2x - 4y) = 6 + (-6)$. Both letters cancel, leaving $0 = 0$, which is always true.",
       "Keep $x + 2y = 3$. The second equation is $-2$ times this whole equation, so it adds nothing new. Both equations describe one shared line.",
       "Pick any real $y$ and set $x = 3 - 2y$. For $y = 0$, 1 and 2, the pairs are $(3, 0)$, $(1, 1)$ and $(-1, 2)$. Endlessly many choices of $y$ give endlessly many shared pairs.",

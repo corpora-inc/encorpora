@@ -8,10 +8,6 @@ const terms: NonNullable<ProblemMethod["terms"]> = [
 
 /** Glossary readings shared by every absolute-value lesson and method. */
 const senses = {
-  side: "side-of-equation",
-  sides: "side-of-equation",
-  term: "term-expression",
-  terms: "term-expression",
   unit: "unit",
   units: "unit",
 } as const;
@@ -28,6 +24,14 @@ const noLink = [
   "mean",
   "impossible",
   "sort",
+  "side",
+  "sides",
+  "left side",
+  "right side",
+  "term",
+  "terms",
+  "rule",
+  "rules",
 ];
 
 /** What every absolute-value practice screen needs before its first step. */
@@ -62,7 +66,7 @@ export const absoluteValueMethods: Record<string, ProblemMethod> = {
       "Check every answer in the original equation and list every one that works.",
     ],
     watch:
-      "Give the plus and minus signs to the whole number on the right. Do not split the bars across a plus or minus: $|2x - 3|$ is not $|2x| - |3|$.",
+      "Give the plus and minus signs to the entire number on the right. Do not split the bars across a plus or minus: $|2x - 3|$ is not $|2x| - |3|$.",
   },
   "absolute-value-transformed-equation": {
     goal: "Get the absolute value alone on one side, then find every $x$ that makes the equation true.",

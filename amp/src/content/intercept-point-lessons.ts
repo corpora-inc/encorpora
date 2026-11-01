@@ -3,12 +3,7 @@ import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
 /** Glossary readings for the intercept lesson and its method. */
-const senses = {
-  side: "side-of-equation",
-  sides: "side-of-equation",
-  rule: "rule",
-  rules: "rule",
-} as const;
+const senses = {} as const;
 const noLink = [
   "whole",
   "part",
@@ -17,6 +12,14 @@ const noLink = [
   "changes",
   "opposite",
   "mean",
+  "side",
+  "sides",
+  "left side",
+  "right side",
+  "term",
+  "terms",
+  "rule",
+  "rules",
 ];
 
 export const interceptPointMethods: Record<string, ProblemMethod> = {
@@ -25,7 +28,7 @@ export const interceptPointMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "A point is written $(x, y)$: $x$ says how far across, $y$ how far up. The $x$-axis is the across line, where every point has $y = 0$. The $y$-axis is the up-and-down line, where every point has $x = 0$. An intercept is a point where a line crosses an axis. So each intercept has a 0 in it, and the other number is the one to find.",
+      "A point is written $(x, y)$. Its two numbers are called its coordinates: $x$ says how far across, $y$ how far up. The $x$-axis is the across line, where every point has $y = 0$. The $y$-axis is the up-and-down line, where every point has $x = 0$. An intercept is a point where a line crosses an axis. So each intercept has a 0 in it, and the other number is the one to find.",
     terms: ["y-intercept", "x-intercept", "zero-of-a-function"],
     method: [
       "For the $y$-intercept, put $x = 0$ into the equation and solve for $y$. For the $x$-intercept, put $y = 0$ and solve for $x$. On a graph, read where the line meets that axis.",
@@ -58,7 +61,7 @@ export const interceptPointLessons = [
       ],
       openingTitle: "Each axis crossing has a 0 in its pair",
       opening: [
-        "A point is written as an ordered pair $(x, y)$. The first number, $x$, says how far across from the starting point $(0, 0)$, called the origin. The second, $y$, says how far up. Negative numbers mean left or down.",
+        "A point is written as an ordered pair, a pair of numbers in a set order: $(x, y)$. The first number, $x$, says how far across from the starting point $(0, 0)$, called the origin. The second, $y$, says how far up. Negative numbers mean left or down.",
         "The $y$-axis is the up-and-down line where every point has $x = 0$. A line that is not vertical crosses it at one point, written $(0, b)$. That point is called the $y$-intercept.",
         "The $x$-axis is the across line where every point has $y = 0$. A line that is not horizontal crosses it at one point, $(a, 0)$, called the $x$-intercept. A function is a rule that gives one output $y$ for each input $x$. For a line that is not vertical, the number $a$ alone is called a zero of the function: the input that makes the output 0.",
       ],
@@ -74,13 +77,13 @@ export const interceptPointLessons = [
       methodTitle: "Set one variable to 0",
       method: [
         "$y$-intercept: put $x = 0$ into the equation and solve for $y$. In $y = mx + k$ the point is $(0, k)$, because $m \\times 0 = 0$.",
-        "$x$-intercept: put $y = 0$ and solve for $x$. In $y = mx + k$ with $m \\ne 0$, $0 = mx + k$ gives $mx = -k$, so $x = -k \\div m$. So divide by the slope $m$ (the number multiplying $x$), which may be a fraction.",
+        "$x$-intercept: put $y = 0$ and solve for $x$. In $y = mx + k$ with $m \\ne 0$, $0 = mx + k$ gives $mx = -k$, so $x = -k \\div m$. So divide by $m$, the slope (the number multiplying $x$), which may be a fraction.",
         "On a graph, find where the line meets the axis and read that one number. If the question asks for a sum, add the two intercept numbers that are not 0, signs included.",
       ],
       formalTitle: "Intercepts of a line",
       formal: [
         "For $ax + by = c$ with $a \\ne 0$ and $b \\ne 0$, the $x$-intercept is $(\\tfrac{c}{a}, 0)$ and the $y$-intercept is $(0, \\tfrac{c}{b})$. For $y = mx + k$ with $m \\ne 0$, they are $(-\\tfrac{k}{m}, 0)$ and $(0, k)$.",
-        "A zero of a function $f$ is an input $x$ with $f(x) = 0$, read “$f$ of $x$ equals 0”. For a line, the zero is the $x$ value of the $x$-intercept.",
+        "A zero of a function is an input $x$ that gives the output 0: $f(x) = 0$, read “$f$ of $x$ equals 0”. For a line, the zero is the $x$ value of the $x$-intercept.",
       ],
       pitfalls: [
         "Writing $(y, 0)$ for the $y$-intercept. The point on the $y$-axis has $x = 0$, so it is $(0, y)$.",

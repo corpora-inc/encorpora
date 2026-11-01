@@ -681,22 +681,13 @@
     "lesson:absolute-value-affine-equation": {
       "terms": [
         "absolute-value",
-        "constant",
-        "constant-term",
         "decimal",
         "denominator",
-        "division",
-        "equivalent",
         "expression",
         "isolate",
-        "multiplication",
         "negative-number",
         "numerator",
-        "reciprocal",
         "solution",
-        "solution-set",
-        "substitute",
-        "variable",
         "whole-number"
       ],
       "long": []
@@ -706,16 +697,10 @@
         "absolute-value",
         "closed-circle",
         "decimal",
-        "denominator",
-        "division",
         "expression",
-        "multiplication",
         "negative-number",
-        "numerator",
         "solution",
         "solution-set",
-        "substitute",
-        "variable",
         "whole-number"
       ],
       "long": []
@@ -723,23 +708,14 @@
     "lesson:absolute-value-transformed-equation": {
       "terms": [
         "absolute-value",
-        "constant",
-        "constant-term",
         "decimal",
         "denominator",
-        "division",
         "expression",
         "isolate",
         "multiplication",
-        "multiplier",
         "negative-number",
         "numerator",
-        "real-number",
-        "reciprocal",
         "solution",
-        "solution-set",
-        "substitute",
-        "variable",
         "whole-number"
       ],
       "long": []
@@ -789,22 +765,12 @@
     },
     "lesson:affine-linear-inequality": {
       "terms": [
-        "coefficient",
-        "corresponding",
         "decimal",
         "denominator",
-        "division",
         "inequality",
         "isolate",
-        "multiplication",
         "negative-number",
         "numerator",
-        "open-circle",
-        "reflection",
-        "reverse-inequality-sign",
-        "solution-set",
-        "substitute",
-        "variable",
         "whole-number"
       ],
       "long": []
@@ -936,18 +902,6 @@
       "terms": [
         "division",
         "quotient"
-      ],
-      "long": []
-    },
-    "lesson:average-rate-of-change": {
-      "terms": [
-        "constant",
-        "function",
-        "input",
-        "output",
-        "quotient",
-        "secant",
-        "slope"
       ],
       "long": []
     },
@@ -1140,13 +1094,8 @@
         "decimal",
         "distribute",
         "inequality",
-        "input",
         "negative-number",
-        "parentheses",
         "proof",
-        "solution-set",
-        "substitute",
-        "variable",
         "whole-number"
       ],
       "long": []
@@ -1389,13 +1338,8 @@
     "lesson:compare-function-rates": {
       "terms": [
         "coordinate-plane",
-        "function",
-        "initial-value",
-        "input",
         "linear-function",
-        "output",
-        "rate",
-        "rate-of-change"
+        "rate"
       ],
       "long": []
     },
@@ -2313,7 +2257,6 @@
         "input",
         "multiplication",
         "output",
-        "proportional-relationship",
         "speed"
       ],
       "long": []
@@ -2326,8 +2269,7 @@
         "input",
         "multiplication",
         "output",
-        "speed",
-        "substitute"
+        "speed"
       ],
       "long": []
     },
@@ -2467,17 +2409,12 @@
       "terms": [
         "at-most",
         "closed-circle",
-        "function",
         "input",
         "liter",
-        "open-circle",
         "output",
-        "real-number",
         "volume"
       ],
-      "long": [
-        "An equation defines $y$ as a function of"
-      ]
+      "long": []
     },
     "lesson:dot-group-compared-to-number": {
       "terms": [
@@ -2551,14 +2488,9 @@
     },
     "lesson:elimination-why": {
       "terms": [
-        "elimination",
-        "like-terms",
-        "solution",
-        "solution-set"
+        "like-terms"
       ],
-      "long": [
-        "If no terms are opposites, multiply an equation"
-      ]
+      "long": []
     },
     "lesson:empirical-distributions": {
       "terms": [
@@ -2614,17 +2546,9 @@
     },
     "lesson:equation-reasoning": {
       "terms": [
-        "distribute",
-        "distributive-property",
-        "division",
-        "domain",
-        "expression",
         "like-terms",
         "parentheses",
-        "property-of-equality",
-        "solution",
-        "solution-set",
-        "substitute"
+        "solution"
       ],
       "long": []
     },
@@ -3505,14 +3429,6 @@
       ],
       "long": []
     },
-    "lesson:graphs-as-solution-sets": {
-      "terms": [
-        "coordinate",
-        "substitute",
-        "vertical-line"
-      ],
-      "long": []
-    },
     "lesson:greatest-common-factor": {
       "terms": [
         "area",
@@ -3577,26 +3493,13 @@
     "lesson:grouped-linear-inequality": {
       "terms": [
         "coefficient",
-        "corresponding-terms",
         "decimal",
         "distribute",
-        "distribution",
-        "distributive-property",
-        "division",
         "divisor",
-        "equivalent",
         "inequality",
-        "isolate",
-        "multiplication",
         "negative-number",
-        "numerator",
-        "parentheses",
         "proof",
-        "reflection",
         "round",
-        "solution-set",
-        "substitute",
-        "variable",
         "whole-number"
       ],
       "long": []
@@ -3616,9 +3519,7 @@
       "terms": [
         "coordinate",
         "inequality",
-        "solution",
-        "strict-inequality",
-        "substitute"
+        "strict-inequality"
       ],
       "long": []
     },
@@ -3803,10 +3704,7 @@
     },
     "lesson:intercept-point-lesson": {
       "terms": [
-        "constant",
-        "coordinate",
         "input",
-        "intercept",
         "output"
       ],
       "long": []
@@ -3992,12 +3890,8 @@
     },
     "lesson:line-from-point-steps": {
       "terms": [
-        "denominator",
-        "intercept",
         "slope",
-        "slope-intercept-form",
-        "substitute",
-        "whole-number"
+        "slope-intercept-form"
       ],
       "long": []
     },
@@ -4063,14 +3957,7 @@
     },
     "lesson:linear-function-choice": {
       "terms": [
-        "constant",
         "coordinate-plane",
-        "denominator",
-        "domain",
-        "function",
-        "input",
-        "linear-function",
-        "output",
         "rate",
         "rate-of-change"
       ],
@@ -4079,34 +3966,20 @@
     "lesson:linear-models": {
       "terms": [
         "at-most",
-        "inequality",
         "input",
-        "output",
-        "variable"
+        "output"
       ],
       "long": []
     },
     "lesson:linear-system-pair": {
       "terms": [
-        "at-least",
         "coefficient",
-        "common-denominator",
         "constant",
-        "coordinate",
-        "coordinate-plane",
-        "corresponding",
-        "distribute",
-        "division",
         "elimination",
-        "expression",
-        "horizontal-line",
-        "numerator",
         "ordered-pair",
         "origin",
         "solution",
-        "substitute",
         "system-of-equations",
-        "variable",
         "whole-number"
       ],
       "long": []
@@ -4115,26 +3988,12 @@
       "terms": [
         "at-least",
         "coefficient",
-        "common-denominator",
         "constant",
-        "coordinate",
-        "coordinate-plane",
-        "corresponding",
-        "division",
         "elimination",
-        "expression",
-        "horizontal-line",
-        "multiplication",
-        "multiplier",
-        "numerator",
         "ordered-pair",
         "origin",
-        "outcome",
         "proof",
-        "solution",
         "system-of-equations",
-        "variable",
-        "vertical-line",
         "whole-number"
       ],
       "long": []
@@ -4171,13 +4030,7 @@
     },
     "lesson:literal-equations": {
       "terms": [
-        "coefficient",
-        "constant",
-        "division",
-        "divisor",
-        "inequality",
         "parallel",
-        "property-of-equality",
         "solution"
       ],
       "long": []
@@ -5005,15 +4858,10 @@
     },
     "lesson:parallel-line-intercept-lesson": {
       "terms": [
-        "constant",
-        "coordinate",
-        "intercept",
-        "negative-reciprocal",
         "parallel",
         "perpendicular",
         "rate",
-        "slope",
-        "substitute"
+        "slope"
       ],
       "long": []
     },
@@ -6185,18 +6033,7 @@
     },
     "lesson:rearrange-formulas": {
       "terms": [
-        "area",
-        "denominator",
-        "division",
-        "elapsed-time",
-        "height",
-        "inverse-operation",
-        "isolate",
-        "parentheses",
-        "perimeter",
-        "solution",
-        "speed",
-        "variable"
+        "division"
       ],
       "long": []
     },
@@ -8816,11 +8653,6 @@
     "lesson:system-second-equation-lesson": {
       "terms": [
         "at-least",
-        "coefficient",
-        "constant",
-        "parallel",
-        "proportion",
-        "ratio",
         "slope"
       ],
       "long": []
@@ -8869,13 +8701,9 @@
     "lesson:table-standard-form-lesson": {
       "terms": [
         "common-denominator",
-        "common-factor",
-        "constant",
         "input",
-        "integer",
         "output",
         "slope",
-        "substitute",
         "whole-number"
       ],
       "long": []
@@ -9394,13 +9222,9 @@
         "at-least",
         "at-most",
         "expression",
-        "feasible-region",
-        "inequality",
-        "ordered-pair",
         "parallel",
         "solution",
-        "substitute",
-        "variable"
+        "substitute"
       ],
       "long": []
     },
@@ -9688,10 +9512,6 @@
     "practice:absolute-value-affine-equation": {
       "terms": [
         "absolute-value",
-        "coefficient",
-        "constant-term",
-        "equivalent",
-        "expression",
         "inequality",
         "solution",
         "variable"
@@ -9725,16 +9545,9 @@
     "practice:absolute-value-transformed-equation": {
       "terms": [
         "absolute-value",
-        "coefficient",
-        "constant",
-        "expression",
         "inequality",
-        "isolate",
-        "multiplier",
         "negative-number",
-        "real-number",
         "solution",
-        "substitute",
         "variable"
       ],
       "long": []
@@ -9822,15 +9635,7 @@
       "terms": [
         "at-least",
         "at-most",
-        "coefficient",
-        "division",
-        "divisor",
-        "inequality",
-        "isolate",
-        "multiplication",
         "negative-number",
-        "solution-set",
-        "substitute",
         "variable"
       ],
       "long": []
@@ -9992,11 +9797,8 @@
     },
     "practice:average-rate-formula": {
       "terms": [
-        "function",
         "input",
-        "output",
-        "rate",
-        "slope"
+        "output"
       ],
       "long": []
     },
@@ -10223,11 +10025,6 @@
       "terms": [
         "at-least",
         "at-most",
-        "constant",
-        "distribute",
-        "division",
-        "input",
-        "proof",
         "variable"
       ],
       "long": []
@@ -10570,13 +10367,10 @@
     },
     "practice:compare-function-rates": {
       "terms": [
-        "function",
-        "initial-value",
         "input",
         "linear-function",
         "output",
-        "rate",
-        "rate-of-change"
+        "rate"
       ],
       "long": []
     },
@@ -11116,16 +10910,8 @@
       ],
       "long": []
     },
-    "practice:constraint-feasible": {
-      "terms": [
-        "inequality",
-        "substitute"
-      ],
-      "long": []
-    },
     "practice:context-domain-range": {
       "terms": [
-        "function",
         "input",
         "output",
         "whole-number"
@@ -11667,19 +11453,14 @@
     "practice:dependent-variable-equation": {
       "terms": [
         "expression",
-        "independent-variable",
         "input",
-        "output",
-        "quotient"
+        "output"
       ],
       "long": []
     },
     "practice:dependent-variable-value": {
       "terms": [
-        "expression",
-        "inverse-operation",
-        "substitute",
-        "variable"
+        "expression"
       ],
       "long": []
     },
@@ -11935,10 +11716,7 @@
     },
     "practice:elimination-equivalent": {
       "terms": [
-        "elimination",
-        "solution",
-        "solution-set",
-        "variable"
+        "solution"
       ],
       "long": []
     },
@@ -12018,12 +11796,10 @@
       "terms": [
         "distributive-property",
         "division",
-        "domain",
         "expression",
         "multiplication",
         "property-of-equality",
-        "solution",
-        "solution-set"
+        "solution"
       ],
       "long": []
     },
@@ -12636,21 +12412,7 @@
     },
     "practice:formula-isolate": {
       "terms": [
-        "coefficient",
-        "domain",
-        "solution",
-        "substitute",
-        "variable"
-      ],
-      "long": []
-    },
-    "practice:formula-value": {
-      "terms": [
-        "inverse-operation",
-        "isolate",
-        "multiplication",
-        "substitute",
-        "variable"
+        "solution"
       ],
       "long": []
     },
@@ -12900,9 +12662,7 @@
     },
     "practice:function-relation-test": {
       "terms": [
-        "function",
         "input",
-        "ordered-pair",
         "output"
       ],
       "long": []
@@ -13425,7 +13185,6 @@
     "practice:graph-domain-range": {
       "terms": [
         "closed-circle",
-        "function",
         "input",
         "open-circle",
         "output",
@@ -13658,17 +13417,8 @@
       "terms": [
         "at-least",
         "at-most",
-        "coefficient",
-        "constant",
-        "constant-term",
-        "corresponding-terms",
-        "distribute",
-        "distribution",
-        "division",
-        "divisor",
         "negative-number",
         "parentheses",
-        "solution-set",
         "variable"
       ],
       "long": []
@@ -13685,11 +13435,8 @@
     },
     "practice:half-plane-inequality": {
       "terms": [
-        "coefficient",
         "inequality",
-        "solution",
-        "strict-inequality",
-        "substitute"
+        "strict-inequality"
       ],
       "long": []
     },
@@ -13843,9 +13590,7 @@
     "practice:inequality-solution-point": {
       "terms": [
         "coordinate",
-        "inequality",
-        "solution",
-        "substitute"
+        "inequality"
       ],
       "long": []
     },
@@ -13907,13 +13652,8 @@
     },
     "practice:intercept-point-choice": {
       "terms": [
-        "coefficient",
-        "constant",
         "expression",
-        "height",
         "input",
-        "intercept",
-        "ordered-pair",
         "polynomial"
       ],
       "long": []
@@ -14138,9 +13878,7 @@
     },
     "practice:line-from-point-steps": {
       "terms": [
-        "numerator",
-        "slope",
-        "substitute"
+        "slope"
       ],
       "long": []
     },
@@ -14213,7 +13951,6 @@
     },
     "practice:linear-function-choice": {
       "terms": [
-        "function",
         "input",
         "output",
         "parentheses",
@@ -14232,8 +13969,7 @@
     "practice:linear-model-equation": {
       "terms": [
         "input",
-        "output",
-        "variable"
+        "output"
       ],
       "long": []
     },
@@ -14243,7 +13979,6 @@
         "expression",
         "inequality",
         "input",
-        "inverse-operation",
         "output",
         "rate",
         "whole-number"
@@ -14260,10 +13995,6 @@
     "practice:linear-system-pair": {
       "terms": [
         "coefficient",
-        "coordinate",
-        "corresponding",
-        "elimination",
-        "expression",
         "solution",
         "substitute",
         "variable"
@@ -14274,11 +14005,7 @@
       "terms": [
         "at-least",
         "coefficient",
-        "constant",
-        "coordinate",
-        "ordered-pair",
         "solution",
-        "substitute",
         "variable"
       ],
       "long": []
@@ -14310,15 +14037,8 @@
     },
     "practice:literal-equation-solve": {
       "terms": [
-        "coefficient",
-        "division",
-        "divisor",
         "inequality",
-        "inverse-operation",
-        "isolate",
-        "negative-number",
-        "property-of-equality",
-        "reverse-inequality-sign"
+        "negative-number"
       ],
       "long": []
     },
@@ -15534,12 +15254,9 @@
     },
     "practice:parallel-line-intercept": {
       "terms": [
-        "intercept",
-        "negative-reciprocal",
         "parallel",
         "perpendicular",
-        "slope",
-        "substitute"
+        "slope"
       ],
       "long": []
     },
@@ -15587,10 +15304,6 @@
     },
     "practice:parameter-solution-count": {
       "terms": [
-        "coefficient",
-        "constant",
-        "division",
-        "divisor",
         "parallel"
       ],
       "long": []
@@ -18373,17 +18086,9 @@
       ],
       "long": []
     },
-    "practice:solution-coordinate": {
-      "terms": [
-        "coordinate",
-        "substitute"
-      ],
-      "long": []
-    },
     "practice:solution-point-choice": {
       "terms": [
-        "coordinate",
-        "substitute"
+        "coordinate"
       ],
       "long": []
     },
@@ -19051,9 +18756,6 @@
     },
     "practice:system-model-value": {
       "terms": [
-        "inequality",
-        "ordered-pair",
-        "solution",
         "substitute"
       ],
       "long": []
@@ -19061,7 +18763,6 @@
     "practice:system-second-equation": {
       "terms": [
         "parallel",
-        "ratio",
         "slope",
         "variable"
       ],
@@ -19093,8 +18794,6 @@
     "practice:table-standard-form": {
       "terms": [
         "common-factor",
-        "constant-term",
-        "denominator",
         "function",
         "input",
         "integer",
