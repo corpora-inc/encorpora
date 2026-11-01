@@ -39,6 +39,30 @@ The routes (`src/workbook/routes.ts`) require the learner's parent with consent 
 
 A stored spec never changes when evidence changes later; the next number is composed from the new evidence. `workbookCode` hashes the spec with sorted keys, because JSONB storage reorders them.
 
+## Results
+
+Results come back from paper through `/learners/:id/workbooks/:workbookId/results`. The QR code on a workbook's results page links there; parents can also reach it with "Enter results" on the workbook or in history, or by typing the printed code in history.
+
+The screen has one row per problem.
+- **Typed answers.** Numbers and fractions can be typed, and printed choices picked by letter. The app's exact grader checks them (`gradeAnswer`), and they count as independent attempts.
+- **Marks.** Every row can instead be marked right or not yet, at half weight. Responses that don't type well are always marked: several choices, plotted points, multi-part answers and shown work.
+
+Recording works like this:
+- Each problem is stored once, as an attempt with `evidenceSource: "paper"`. Its problem instance (`paper:<workbook>:<n>`) is regenerated from the spec.
+- Rows already recorded are kept, so entering a workbook again changes nothing. Recorded rows show their result and lock.
+- A row the server refuses (an unreadable answer, a number not in the workbook) is named in the error. Nothing from that save is stored.
+- Progress, levels and practice read the same evidence, and the screen invalidates the account store after saving.
+
+The weights are in [adaptive evidence](adaptive-evidence.md).
+
+| Route | Result |
+| --- | --- |
+| `GET …/workbooks/:workbookId/results` | The rows, with what is already recorded |
+| `POST …/workbooks/:workbookId/results` `{entries: [{n, answer} \| {n, mark: right\|not-yet}]}` | Records new rows; returns the rows and how many were new. 400 names the problem; 410 for a stale workbook |
+| `GET …/workbooks?code=ABCD-EFGH` | The workbook with that code (any case, dash optional) |
+
+**Held back from practice.** Templates printed in a workbook made in the last 24 hours are left out of mixed practice (`reservedTemplateIds` in `planMixedPractice`), so the app does not repeat the paper that day. A focused or recovery pool made only of printed templates is still served.
+
 ## Parent screens
 
 - `/learners/:id/workbooks/:date` (today): length and paper size as segmented controls, Download and Another one. Length, paper and number live in the URL (`?minutes=&paper=&number=`), so Back, reload and shared links restore the screen. Opening it makes today's first workbook, from the starting estimate when the learner has no answers yet. Other dates list that day's workbooks.
@@ -53,3 +77,4 @@ A stored spec never changes when evidence changes later; the next number is comp
 - `npm run workbook:samples -- [30|45|60] [learner…]` writes PDFs for synthetic learners (`src/workbook/synthetic.ts`) to `artifacts/workbooks/` and runs the same layout checks on every page.
 - `tests/workbook.test.ts` covers determinism, structure at every level and length, time targets, due review, a learner with no answers, and key placement.
 - `tests/workbooks.test.ts` covers the API with an in-memory repository; `tests/workbooks.integration.ts` covers storage, concurrency, export and deletion on PostgreSQL.
+- `tests/workbook-results.test.ts` covers grading, paper evidence, idempotent re-entry, refused rows, code lookup, held-back templates and the weights. `tests/workbook-results.integration.ts` covers the same flow on PostgreSQL, and `tests/skill-evidence.integration.ts` checks that the SQL and TypeScript projections agree with paper marks.

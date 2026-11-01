@@ -398,3 +398,9 @@
   margin-bottom: calc(1.4em + var(--space-1));
   white-space: nowrap;
 }
+.pickField {
+  display: grid;
+  gap: var(--space-1);
+  font-size: var(--text-small);
+  font-weight: 700;
+}

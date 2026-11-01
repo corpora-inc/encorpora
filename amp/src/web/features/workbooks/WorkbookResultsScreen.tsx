@@ -251,30 +251,38 @@ function ResultRowView({
             </label>
           )}
           {row.entry === "choice" && (
-            <Picker
-              label={`Answer to problem ${row.n}`}
-              options={(row.options ?? []).map((o) => ({
-                value: o.id,
-                label: o.letter,
-                title: o.label,
-              }))}
-              value={draft.answer ?? null}
-              disabled={disabled}
-              onChange={(value) => onChange({ answer: value })}
-            />
+            <div className={styles.pickField}>
+              <span aria-hidden="true">Answer</span>
+              <Picker
+                label={`Answer to problem ${row.n}`}
+                options={(row.options ?? []).map((o) => ({
+                  value: o.id,
+                  label: o.letter,
+                  title: o.label,
+                }))}
+                value={draft.answer ?? null}
+                disabled={disabled}
+                onChange={(value) => onChange({ answer: value })}
+              />
+            </div>
           )}
-          <Picker
-            label={`Mark problem ${row.n}`}
-            options={[
-              { value: "right", label: "Right" },
-              { value: "not-yet", label: "Not yet" },
-            ]}
-            value={draft.answer ? null : (draft.mark ?? null)}
-            disabled={disabled}
-            onChange={(value) =>
-              onChange({ mark: value as "right" | "not-yet" })
-            }
-          />
+          <div className={styles.pickField}>
+            <span aria-hidden="true">
+              {row.entry === "mark" ? "Mark" : "Or mark"}
+            </span>
+            <Picker
+              label={`Mark problem ${row.n}`}
+              options={[
+                { value: "right", label: "Right" },
+                { value: "not-yet", label: "Not yet" },
+              ]}
+              value={draft.answer ? null : (draft.mark ?? null)}
+              disabled={disabled}
+              onChange={(value) =>
+                onChange({ mark: value as "right" | "not-yet" })
+              }
+            />
+          </div>
         </div>
       )}
       <p id={`${id}-error`} className={styles.rowError} aria-live="polite">

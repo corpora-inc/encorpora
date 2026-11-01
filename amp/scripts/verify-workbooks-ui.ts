@@ -17,8 +17,10 @@ import { buildApp } from "../src/server/app";
 import {
   ApiError,
   type LearnerTransaction,
+  type Outcome,
   type Repository,
 } from "../src/server/repository";
+import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import type { WorkbookRecord } from "../src/workbook/contracts";
 import { sampleLearners, simulateLearner } from "../src/workbook/synthetic";
 import { retentionNotice } from "../src/family/contracts";
@@ -41,6 +43,7 @@ const simulated = simulateLearner(
   Date.now(),
 );
 const rows: WorkbookRecord[] = [];
+const attempts: Outcome[] = [];
 const repository = {
   hasConsent: async () => true,
   list: async () => [{ id: learnerId, name: "Maya", birthYear: 2017 }],
@@ -88,6 +91,17 @@ const repository = {
       },
       workbookPdf: async () => undefined,
       saveWorkbookPdf: async () => undefined,
+      workbookByCode: async (code: string) => rows.find((r) => r.code === code),
+      recentWorkbooks: async () => rows,
+      practiceSettings: async () => defaultPracticeSettings(),
+      attemptByRequest: async (requestId: string) =>
+        attempts.find((a) => a.requestId === requestId),
+      attemptByProblem: async (problemId: string) =>
+        attempts.find((a) => a.problemId === problemId),
+      saveProblem: async () => undefined,
+      saveAttempt: async (outcome: Outcome) => {
+        attempts.push(outcome);
+      },
     } as unknown as LearnerTransaction);
   },
 } as unknown as Repository;
@@ -295,6 +309,7 @@ try {
       const page = await context.newPage();
       const errors = await fixture(page);
       rows.splice(2);
+      attempts.length = 0;
       await page.goto(`${origin}/learners/${learnerId}/workbooks/${today}`);
       await page
         .getByRole("heading", { name: "No. 1" })
@@ -402,6 +417,40 @@ try {
         path: `${output}history-${label}.png`,
         fullPage: true,
       });
+
+      // Results: open by the printed code, enter a typed answer and a mark,
+      // save; the rows lock as recorded and nothing moves.
+      const code = rows.find((r) => r.date === today)!.code;
+      await page
+        .getByLabel("Enter results with the workbook code")
+        .fill(code.toLowerCase().replace("-", ""));
+      await page.getByRole("button", { name: "Open", exact: true }).click();
+      await page.waitForURL(/\/results$/);
+      await page.getByRole("list", { name: "Problems" }).waitFor();
+      await assertLayout(page, `${label} results`);
+      const save = page.getByRole("button", { name: /result/ });
+      assert.equal(await save.isDisabled(), true);
+      const answer = page.getByRole("textbox", { name: "Answer" }).first();
+      await answer.fill("12345");
+      await page
+        .getByRole("radiogroup", { name: /^Mark problem/ })
+        .last()
+        .getByRole("radio", { name: "Right" })
+        .click();
+      await page.getByRole("button", { name: "Save 2 results" }).click();
+      await page.getByText("2 results saved. Progress is updated.").waitFor();
+      assert.equal(attempts.length, 2);
+      assert.ok(attempts.every((a) => a.evidenceSource === "paper"));
+      await page.getByText(/^Not yet · answer 12345$/).waitFor();
+      await page.getByText(/^Right · marked$/).waitFor();
+      await assertLayout(page, `${label} results saved`);
+      await page.screenshot({
+        path: `${output}results-${label}.png`,
+        fullPage: true,
+      });
+      // Reload restores the screen and the recorded rows from the URL.
+      await page.reload();
+      await page.getByText(/^Right · marked$/).waitFor();
 
       // A learner without practice access is sent to set it up, never to a
       // download that would fail.
