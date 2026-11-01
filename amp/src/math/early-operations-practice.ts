@@ -4,7 +4,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
-import { isAre, wasWere } from "./agreement.js";
+import { isAre, wasWere, count } from "./agreement.js";
 
 type Random = (low: number, high: number) => number;
 /** Grade levels of the catalog skills these families serve. */
@@ -67,8 +67,6 @@ function random(id: string, seed: string): Random {
 }
 const pick = <T>(r: Random, items: readonly T[]) =>
   items[r(0, items.length - 1)]!;
-/** "1 block", "3 blocks". */
-const count = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
 const countOn = (from: number, to: number) =>
   Array.from({ length: to - from }, (_, i) => from + i + 1).join(", ");
 
@@ -130,13 +128,16 @@ export function generateEarlyOperationsProblem(
           ? `One part is already all ${whole}. What is left for the other part?`
           : `The whole is ${whole} and one part is ${part}. Count on from ${part} to ${whole}.`;
       explanation = [
-        `The whole is ${whole}; one part is ${part}.`,
+        frame === 2
+          ? `In a number bond, the whole is the total, and the two parts together make the whole.`
+          : `The box □ stands for the missing number. The whole is the total, and the two parts together make the whole.`,
+        `Here the whole is ${whole} and one part is ${part}, so the missing part is what you add to ${part} to reach ${whole}.`,
         part === whole
-          ? `${part} is the whole, so nothing is left for the other part.`
+          ? `${part} is already the whole, so nothing is left for the other part.`
           : part === 0
-            ? `A part of 0 leaves the whole for the other part.`
-            : `Count on from ${part} to ${whole}: ${countOn(part, whole)}. That is ${answer}.`,
-        `${part} + ${answer} = ${whole}.`,
+            ? `A part of 0 is nothing, so the other part must be the whole ${whole}.`
+            : `Count on from ${part} to ${whole}: ${countOn(part, whole)}. That is ${answer} counts.`,
+        `Check: ${part} + ${answer} = ${whole}. The missing number is ${answer}.`,
       ];
       break;
     }
@@ -161,11 +162,12 @@ export function generateEarlyOperationsProblem(
               : `□ + ${start} = ${total}. What number belongs in the box?`;
       hint = `Write it as ${start} + □ = ${total}. Count up from ${start} to ${total} and keep track of how many you count.`;
       explanation = [
-        `The whole is ${total}; one part is ${start}. The other part is missing.`,
+        `${frame === 1 || frame === 3 ? "The box □ stands for the missing number. " : ""}The total, ${total}, is the whole. ${start} is one part, and the other part is missing.`,
+        `A missing part is the whole minus the part you know, because the two parts make the whole.`,
         total - start <= 5
-          ? `Count up from ${start}: ${countOn(start, total)}. That is ${added}.`
-          : `Find it by subtracting: ${total} − ${start} = ${added}.`,
-        `Check: ${start} + ${added} = ${total}.`,
+          ? `Count up from ${start} to ${total}: ${countOn(start, total)}. That is ${added} counts.`
+          : `Subtract: ${total} − ${start} = ${added}.`,
+        `Check: ${start} + ${added} = ${total}. The missing part is ${added}.`,
       ];
       break;
     }
@@ -181,9 +183,9 @@ export function generateEarlyOperationsProblem(
         prompt = `□ = ${a} + ${b}. What number belongs in the box?`;
         hint = `The equal sign means both sides have the same value. Find ${a} + ${b}.`;
         explanation = [
-          `The equal sign says the box has the same value as ${a} + ${b}.`,
-          `${a} + ${b} = ${sum}.`,
-          `So ${sum} = ${a} + ${b}.`,
+          `The box □ stands for the missing number. The equal sign (=) means both sides have the same value.`,
+          `So the box must have the same value as ${a} + ${b}.`,
+          `${a} + ${b} = ${sum}, so ${sum} belongs in the box.`,
         ];
         break;
       }
@@ -201,9 +203,10 @@ export function generateEarlyOperationsProblem(
           : `${a} + ${b} = ${boxSide}. What number makes both sides equal?`;
       hint = `First find ${a} + ${b}. The box and ${c} together must make that same total.`;
       explanation = [
+        `The box □ stands for the missing number. The equal sign (=) means both sides have the same value, like a balanced scale.`,
         `${a} + ${b} = ${sum}, so ${boxSide} must also be ${sum}.`,
-        `${c} and ${answer} make ${sum}: ${sum} − ${c} = ${answer}.`,
-        `Both sides equal ${sum}.`,
+        `What adds to ${c} to reach ${sum}? ${sum} − ${c} = ${answer}.`,
+        `Check: both sides equal ${sum}. The box holds ${answer}.`,
       ];
       break;
     }
@@ -238,19 +241,27 @@ export function generateEarlyOperationsProblem(
           [a, c, b],
         ] as const
       ).find(([x, y]) => x + y === 10);
+      const totalLine = [
+        `There are ${answer} blocks.`,
+        `Sam read ${answer} pages.`,
+        `The team scored ${answer} points.`,
+        `${a} + ${b} + ${c} = ${answer}.`,
+      ][frame]!;
       hint = ten
         ? `Look for a ten first: ${ten[0]} + ${ten[1]} = 10. Then add the other ${ten[2]}.`
         : `Add two numbers first, ${a} + ${b}. Then add the ${c}.`;
       explanation = ten
         ? [
-            `${ten[0]} + ${ten[1]} = 10.`,
-            `10 + ${ten[2]} = ${answer}.`,
-            "Adding in a different order does not change the total.",
+            `You may add numbers in any order; the total stays the same.`,
+            `So add the two that make 10 first, because 10 is easy to add to: ${ten[0]} + ${ten[1]} = 10.`,
+            `Then add the rest: 10 + ${ten[2]} = ${answer}.`,
+            totalLine,
           ]
         : [
+            `Add two numbers first, then add the third to that. Any order gives the same total.`,
             `${a} + ${b} = ${a + b}.`,
             `${a + b} + ${c} = ${answer}.`,
-            "Adding in a different order does not change the total.",
+            totalLine,
           ];
       break;
     }
@@ -273,8 +284,10 @@ export function generateEarlyOperationsProblem(
         prompt = `There are ${start} books. Add ${added} books, then take away ${removed}. How many books remain?`;
         hint = `Do the changes in order. First find ${start} + ${added}, the books there are before any are taken away.`;
         explanation = [
-          `After adding: ${start} + ${added} = ${start + added}.`,
-          `After taking away: ${start + added} − ${removed} = ${answer}.`,
+          `Do the changes in the order they happen.`,
+          `Adding ${added} books makes more: ${start} + ${added} = ${start + added}.`,
+          `Taking away ${removed} makes fewer: ${start + added} − ${removed} = ${answer}.`,
+          `${answer} ${answer === 1 ? "book remains" : "books remain"}.`,
         ];
       } else if (frame === 1) {
         const start = r(20, 80),
@@ -293,8 +306,10 @@ export function generateEarlyOperationsProblem(
         prompt = `A bus has ${start} people. At a stop, ${off} ${off === 1 ? "gets" : "get"} off and then ${on} ${on === 1 ? "gets" : "get"} on. How many people are on the bus now?`;
         hint = `First find how many are left after ${off} get off: ${start} − ${off}.`;
         explanation = [
-          `After ${off} get off: ${start} − ${off} = ${start - off}.`,
-          `After ${on} get on: ${start - off} + ${on} = ${answer}.`,
+          `Follow the changes in order: first people get off, then people get on.`,
+          `Getting off makes fewer, so subtract: ${start} − ${off} = ${start - off}.`,
+          `Getting on makes more, so add: ${start - off} + ${on} = ${answer}.`,
+          `There ${answer === 1 ? "is 1 person" : `are ${answer} people`} on the bus now.`,
         ];
       } else if (frame === 2) {
         const start = r(10, 50),
@@ -314,9 +329,10 @@ export function generateEarlyOperationsProblem(
         prompt = `There were ${start} birds in a tree. ${came} more came. Then some flew away, and now there ${isAre(end)} ${end}. How many flew away?`;
         hint = `First find how many birds there were before any flew away: ${start} + ${came}.`;
         explanation = [
-          `Before any flew away: ${start} + ${came} = ${start + came}.`,
-          `From ${start + came} down to ${end}: ${start + came} − ${end} = ${gone} flew away.`,
-          `Check: ${start} + ${came} − ${gone} = ${end}.`,
+          `First find how many birds there were before any flew away.`,
+          `${came} more came, so add: ${start} + ${came} = ${start + came}.`,
+          `The number that flew away is the drop from ${start + came} to ${end}: ${start + came} − ${end} = ${gone}.`,
+          `Check: ${start} + ${came} − ${gone} = ${end}. ${gone} ${gone === 1 ? "bird" : "birds"} flew away.`,
         ];
       } else {
         const start = r(10, 60),
@@ -336,9 +352,10 @@ export function generateEarlyOperationsProblem(
         prompt = `Some marbles were in a bag. ${added} were put in, then ${removed} ${wasWere(removed)} taken out. Now there are ${end}. How many marbles were in the bag at first?`;
         hint = `Work backward from ${end}: put back the ${removed} taken out first.`;
         explanation = [
-          `Undo the last change: ${end} + ${removed} = ${end + removed}.`,
-          `Undo the first change: ${end + removed} − ${added} = ${start}.`,
-          `Check: ${start} + ${added} − ${removed} = ${end}.`,
+          `To find the start, work backward and undo each change, last change first.`,
+          `${removed} ${removed === 1 ? "was" : "were"} taken out last, so put ${removed === 1 ? "it" : "them"} back: ${end} + ${removed} = ${end + removed}.`,
+          `${added} ${added === 1 ? "was" : "were"} put in first, so take ${added === 1 ? "it" : "them"} out: ${end + removed} − ${added} = ${start}.`,
+          `Check: ${start} + ${added} − ${removed} = ${end}. There were ${start} marbles in the bag at first.`,
         ];
       }
       break;

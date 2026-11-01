@@ -142,6 +142,30 @@ export const satGeometryDataMethods: Record<string, ProblemMethod> =
 export const satGeometryDataPrinciples = Object.fromEntries(
   Object.entries(instruction).map(([id, value]) => [id, value.principle]),
 );
+const referenceNoLink: Record<string, string[]> = {
+  "circle-segment-lengths": [
+    "center",
+    "product",
+    "products",
+    "square",
+    "squared",
+    "squares",
+    "squaring",
+    "tangent",
+    "tangents",
+  ],
+  "independence-test": ["mean", "average", "averages"],
+  "midpoint-endpoint": ["square", "squared", "squares", "squaring"],
+  "space-diagonal": [
+    "root",
+    "roots",
+    "square",
+    "squared",
+    "squares",
+    "squaring",
+  ],
+  "trig-context-triangle": ["degree", "degrees", "tangent"],
+};
 export const satGeometryDataLessons: Lesson[] = satGeometryDataTemplates.map(
   (meta) => {
     const text = instruction[meta.id]!;
@@ -159,7 +183,12 @@ export const satGeometryDataLessons: Lesson[] = satGeometryDataTemplates.map(
       summary: text.intuition,
       templateIds: [meta.id],
       senses: glossary.glossarySenses,
-      noLink: glossary.glossaryNoLink,
+      // Until these reference lessons define the words at first use, the
+      // generated worked example links them only on the practice screen.
+      noLink: [
+        ...(glossary.glossaryNoLink ?? []),
+        ...(referenceNoLink[meta.id] ?? []),
+      ],
       includeGeneratedRepresentation: false,
       objectives: [text.goal, text.method[0]!],
       sections: [],

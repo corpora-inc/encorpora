@@ -699,7 +699,7 @@ function primeFactorizationValue(r: Random): Built {
     responseLabel: "Number of primes",
     hint: `Split ${n} until every factor is prime. Count every prime in the product, including repeats.`,
     explanation: [
-      `A prime is a number whose only factors are 1 and itself. Split ${n} until every factor is prime.`,
+      `A prime is a whole number greater than 1 whose only factors are 1 and itself. Split ${n} until every factor is prime.`,
       `${n} = ${primeFactors(n).join(" × ")}.`,
       `Count every prime in the product, including repeats, because each one is a separate factor.`,
       `The product has ${count} primes.`,

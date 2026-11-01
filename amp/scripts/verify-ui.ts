@@ -28,8 +28,8 @@ import { developmentAuth } from "../src/server/auth";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { templates } from "../src/math/engine";
-/** Problem types allowed to need a scroll at one tablet size: a very tall
- * figure past its legible floor. The sweep prints the list it measured. */
+/** No question or figure may require tablet scrolling. Structured answer
+ * rows have a separate reachability check. The sweep prints every failure. */
 const TABLET_SCROLL_BUDGET = 0;
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
@@ -577,7 +577,10 @@ try {
         size.width >= 768,
       );
       if (TABLETS.some((t) => t.width === size.width)) {
-        const why = await problemInView(page);
+        const why = await problemInView(page, {
+          allowStructuredWorkScroll:
+            template.requiredResponseCapability === "structured-work-v1",
+        });
         if (why.length) {
           const key = `${size.width}×${size.height}`;
           tabletScrolls.set(key, [
@@ -632,11 +635,11 @@ try {
     const key = `${size.width}×${size.height}`;
     const scrolled = tabletScrolls.get(key) ?? [];
     console.log(
-      `Tablet ${key}: ${templates.length - scrolled.length} of ${templates.length} problem types show whole without scrolling.${scrolled.length ? `\n  ${scrolled.join("\n  ")}` : ""}`,
+      `Tablet ${key}: ${templates.length - scrolled.length} of ${templates.length} questions and figures fit without scrolling.${scrolled.length ? `\n  ${scrolled.join("\n  ")}` : ""}`,
     );
     assert.ok(
       scrolled.length <= TABLET_SCROLL_BUDGET,
-      `Tablet ${key}: ${scrolled.length} problem types need a scroll (budget ${TABLET_SCROLL_BUDGET})`,
+      `Tablet ${key}: ${scrolled.length} problem types fail fit checks (budget ${TABLET_SCROLL_BUDGET})`,
     );
   }
   // Lessons: every problem type has its own short lesson.
