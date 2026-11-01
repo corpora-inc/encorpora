@@ -17,6 +17,7 @@ import type { AuthSession } from "../../auth";
 import { sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { Segmented } from "../../ui/Segmented";
+import { Toast } from "../../ui/Toast";
 import type {
   WorkbookPaper,
   WorkbookSummary,
@@ -199,19 +200,12 @@ function Today({
     }
   }
   const loadError = history.error ?? workbook.error;
-  const shown = message
-    ? message
-    : loadError
-      ? workbookMessage(
-          loadError,
-          "Today's workbook couldn't be prepared. Try again.",
-        )
-      : "";
   return (
     <>
       <Head learner={learner} date={date} />
       <div className={styles.controls}>
         <Segmented<"30" | "45" | "60">
+          compact
           label="Length"
           value={String(minutes) as "30" | "45" | "60"}
           onChange={(value) =>
@@ -224,6 +218,7 @@ function Today({
           ]}
         />
         <Segmented<WorkbookPaper>
+          compact
           label="Paper size"
           value={paper}
           onChange={(value) => set({ paper: value })}
@@ -255,29 +250,26 @@ function Today({
           {another.isPending ? "Making…" : "Another one"}
         </Button>
       </div>
-      <p
-        className={styles.message}
-        role={shown ? "alert" : undefined}
-        aria-live="polite"
-      >
-        {shown}
-        {loadError && !message && (
-          <button
-            type="button"
-            className={styles.retry}
-            onClick={() => {
-              void history.refetch();
-              void workbook.refetch();
-            }}
-          >
-            Try again
-          </button>
-        )}
-      </p>
+      {/* An action that fails says so in the shared toast, over the page. */}
+      <Toast message={message} onDismiss={() => setMessage("")} />
       <Contents
         workbook={workbook.data}
         stale={!current}
         learnerId={learner.id}
+        failure={
+          loadError && !workbook.data
+            ? {
+                text: workbookMessage(
+                  loadError,
+                  "Today's workbook couldn't be prepared. Try again.",
+                ),
+                retry: () => {
+                  void history.refetch();
+                  void workbook.refetch();
+                },
+              }
+            : undefined
+        }
       />
     </>
   );
@@ -287,14 +279,17 @@ function Contents({
   workbook,
   stale,
   learnerId,
+  failure,
 }: {
   workbook?: WorkbookSummary;
   stale: boolean;
   learnerId: string;
+  /** A load that failed: said in the card's reserved space, with a retry. */
+  failure?: { text: string; retry: () => void };
 }) {
   return (
     <div
-      className={`${styles.contents} ${stale ? styles.stale : ""}`}
+      className={`${styles.contents} ${stale && !failure ? styles.stale : ""}`}
       aria-label="Workbook contents"
     >
       {workbook ? (
@@ -330,6 +325,17 @@ function Contents({
             Enter results
           </Link>
         </>
+      ) : failure ? (
+        <div className={styles.failure} role="alert">
+          <p>{failure.text}</p>
+          <button
+            type="button"
+            className={styles.retry}
+            onClick={failure.retry}
+          >
+            Try again
+          </button>
+        </div>
       ) : (
         <div className={styles.skeleton} aria-hidden="true">
           <span />
