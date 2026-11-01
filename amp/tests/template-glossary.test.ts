@@ -2,12 +2,12 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { templates } from "../src/math/engine";
 import { glossary, hasGlossaryEntry } from "../src/glossary";
-import { templateGlossary } from "../src/math/template-glossary";
+import { k8TemplateGlossary } from "../src/math/template-glossary-k8";
 
 test("every K–8 template sense names a real template, form and glossary entry", () => {
   const ids = new Set(templates.map((t) => t.id));
   for (const [id, { senses = {}, noLink = [] }] of Object.entries(
-    templateGlossary,
+    k8TemplateGlossary,
   )) {
     assert.ok(ids.has(id), `${id} is a template`);
     for (const [form, term] of Object.entries(senses)) {
