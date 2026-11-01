@@ -34,6 +34,7 @@ import { chosenPlan } from "../lib/pending-trial";
 import { hasInitialConsentChallenge } from "../consent-entry";
 import { hasPurchaseReturn } from "../purchase-return";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
+import { workbookSearchSchema } from "../features/workbooks/model";
 const searchSchema = z
   .object({
     return: z
@@ -407,6 +408,30 @@ const pathwaySkill = createRoute({
     "PathwaysScreen",
   ),
 });
+/** Daily paper workbooks for one learner (features/workbooks). */
+const workbookHistory = createRoute({
+  getParentRoute: () => root,
+  path: "/learners/$learnerId/workbooks",
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/workbooks/WorkbookHistoryScreen"),
+    "WorkbookHistoryScreen",
+  ),
+});
+const workbookDay = createRoute({
+  getParentRoute: () => root,
+  path: "/learners/$learnerId/workbooks/$date",
+  validateSearch: (search) => workbookSearchSchema.parse(search),
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/workbooks/WorkbookDayScreen"),
+    "WorkbookDayScreen",
+  ),
+});
 const funded = createRoute({
   getParentRoute: () => root,
   path: "/purchase/arkansas-efa",
@@ -487,6 +512,8 @@ export const router = createRouter({
     inventory,
     pathways,
     pathwaySkill,
+    workbookHistory,
+    workbookDay,
     funded,
     fundedNewHampshire,
     fundedArizona,
