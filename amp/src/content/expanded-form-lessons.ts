@@ -46,7 +46,7 @@ export const expandedFormPrinciples: Record<string, string> = {
   "expanded-sum-to-standard":
     "A digit $d$ in a place with value $p$ is worth $d\\times p$. A number is the sum of what all its digits are worth. Standard form puts each digit in its place and writes 0 where no digit is named.",
   "standard-to-expanded-choice":
-    "Each place is 10 times the place to its right: $\\ldots,1{,}000,100,10,1,0.1,0.01,0.001,\\ldots$. The expanded form of a number is the sum of digit times place value, for each digit that is not 0.",
+    "Each place is 10 times the place to its right. From left to right the places are worth 1,000, 100, 10, 1, 0.1, 0.01 and 0.001. The expanded form of a number is the sum of digit times place value, for each digit that is not 0.",
 };
 
 export const expandedFormLessons: Lesson[] = [
