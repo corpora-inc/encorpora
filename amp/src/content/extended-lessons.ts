@@ -664,7 +664,7 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Count favorable outcomes",
         paragraphs: [
-          "Suppose there is a countable, limited list of outcomes and each is equally likely. Then the probability of an event is the number of favorable outcomes divided by the total number of outcomes. The result is from 0 to 1, including both. If the outcomes are not equally likely, counting alone does not give the probability.",
+          "Suppose the outcomes make a list you can finish counting, and each is equally likely. Then the probability of an event is the number of favorable outcomes divided by the total number of outcomes. The result is from 0 to 1, including both. If the outcomes are not equally likely, counting alone does not give the probability.",
         ],
       },
     ],
@@ -781,7 +781,7 @@ export const extendedLessons: Lesson[] = [
       {
         title: "Evaluate in order",
         paragraphs: [
-          "Work out powers first, then multiplication, then addition and subtraction. A rule with an $x^2$ part is called a quadratic. Its $x^2$ part and its $x$ part can come out with different signs for a negative input.",
+          "Work out powers first, then multiplication, then addition and subtraction. A rule like $2x^2 + 3x + 1$, with an $x^2$ part and no higher power, is called a quadratic. Its $x^2$ part and its $x$ part can come out with different signs for a negative input.",
           "Function notation does not mean $f$ times the input. The letter $f$ names the rule, and the parentheses hold the input.",
         ],
       },

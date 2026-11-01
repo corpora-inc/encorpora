@@ -126,7 +126,7 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     method: [
       "Balance after $n$ months = starting amount + deposit × $n$. Here $n$ stands for the number of months.",
       "To reach a goal above the start, divide the amount still needed, goal − start, by the deposit (more than 0). Round up to a whole month, because deposits come at the end of each month.",
-      "The starting gap is how much more one plan starts with. If the other plan deposits more each month, it catches up after starting gap ÷ difference in deposits months. If that is not a whole count, it passes the other plan at the next deposit.",
+      "The starting gap is how much more one plan starts with. If the other plan deposits more each month, it catches up after starting gap ÷ difference in deposits months. The difference in deposits is the larger monthly deposit minus the smaller one. If the result is not an exact count of months, round up: that is the month the faster plan pulls ahead.",
     ],
     watch:
       "Count the starting amount once, and count one deposit for each month.",
@@ -148,7 +148,7 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Subtract each balance from the next one. That gives the rise in each year.",
-      "If the rises are all equal, the account earns simple interest. If they grow, it earns compound interest.",
+      "If the rises are all equal, the account earns simple interest. If they grow, it earns compound interest. This works when no money is added or taken out. Very small growth can hide in the cents.",
       "For simple interest, balance after $t$ years = principal + $t$ × the yearly rise. Here $t$ stands for the number of years.",
     ],
     watch:
@@ -254,7 +254,7 @@ export const financeCreditLessons: Lesson[] = [
     pitfalls: [
       "For compound interest, do not use the principal every year. Use the current balance.",
       "A higher simple rate can beat a lower compound rate for a few years. Work out both balances for the years asked.",
-      "The gap in balances equals the gap in interest earned only when both accounts start with the same principal.",
+      "When both accounts start with the same principal, the gap in balances equals the gap in interest earned.",
     ],
     parentGuide:
       "Ask the learner which account's yearly interest changes, and why. Then ask them to find the interest each account earns in year 2.",
@@ -284,7 +284,7 @@ export const financeCreditLessons: Lesson[] = [
     intuition: [
       "Suppose you borrow 1,000 dollars and pay back 100 dollars a month for 12 months. You pay back 12 × 100 = 1,200 dollars in all. That is 200 dollars more than you borrowed.",
       "The amount you borrow is called the principal. You pay it back in equal monthly payments. Each payment adds the same amount to the total you have repaid. So the total repaid is the payment times the number of payments.",
-      "The finance charge is the total repaid minus the principal, here 1,200 − 1,000 = 200 dollars. It is the price of borrowing. Interest is the extra money a lender charges for a loan. For the same amount borrowed, a higher interest rate raises the payment. At the same rate, a longer term, the length of the loan, lowers the payment but adds more payments.",
+      "The finance charge is the total repaid minus the principal, here 1,200 − 1,000 = 200 dollars. It is the price of borrowing. Interest is the extra money a lender charges for a loan. For the same amount and the same number of months, a higher interest rate raises the payment. For the same amount and rate, a longer term, the length of the loan, lowers the payment but adds more payments.",
     ],
     workedExample: {
       prompt:
@@ -306,7 +306,7 @@ export const financeCreditLessons: Lesson[] = [
       "For $n$ equal payments of $p$ dollars on a principal of $P$ dollars, the total repaid is $T=pn$, meaning $p$ times $n$. The finance charge is $pn-P$. The total $T$ grows in a straight line: each extra payment adds $p$ dollars.",
     ],
     pitfalls: [
-      "For the same amount and rate, a longer loan has a lower payment but a larger total. Compare totals.",
+      "For the same amount and rate, a longer loan has a lower payment but, when there is interest, a larger total. Compare totals.",
       "Count payments, not years. Monthly payments over $y$ years number $12y$, 12 for each year.",
       "The finance charge does not include the principal. Subtract the principal.",
     ],
@@ -549,7 +549,7 @@ export const financeCreditLessons: Lesson[] = [
     ],
     title: "Simple or compound? Read the table",
     summary:
-      "Interest is the money an account pays you, and the balance is how much the account holds. Take an account that pays interest the same way every year, with no money added or taken out. To tell its kind of interest from a table, subtract each balance from the next one. That gives each year's rise. If the rises are equal, it is simple interest. If they grow, it is compound interest, which pays interest on earlier interest.",
+      "Interest is the money an account pays you, and the balance is how much the account holds. Take an account that pays interest the same way every year, with no money added or taken out. Rounding to cents can hide very small growth, so look at several years. To tell its kind of interest from a table, subtract each balance from the next one. That gives each year's rise. If the rises are equal, it is simple interest. If they grow, it is compound interest, which pays interest on earlier interest.",
     templateIds: ["interest-table-type"],
     objectives: [
       "Tell simple interest from compound interest in a table of balances.",

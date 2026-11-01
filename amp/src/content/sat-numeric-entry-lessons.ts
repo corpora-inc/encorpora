@@ -43,7 +43,7 @@ const entries: Entry[] = [
     title: "Enter a variable from a 2×2 system",
     goal: "Make one letter cancel by giving it opposite numbers in front, solve what is left, and type the value, even a fraction.",
     summary:
-      "A system of equations is two equations that must both be true for the same $x$ and $y$. To find $x$, make the $y$ parts cancel out. Multiply one equation so the numbers in front of $y$ are opposites (a pair like $3$ and $-3$ that adds to 0). Then add the equations. These systems have exactly one answer pair, so only $y$ cancels and $x$ is left. Solve for it. The answer may be a fraction.",
+      "A system of equations is two equations that must both be true for the same $x$ and $y$. To find $x$, make the $y$ parts cancel out (to find $y$, cancel the $x$ parts instead). Multiply one or both equations so the numbers in front of $y$ are opposites (a pair like $3$ and $-3$ that adds to 0). Then add the equations. These systems have exactly one answer pair, so only $y$ cancels and $x$ is left. Solve for it. The answer may be a fraction.",
     objectives: [
       "Remove one variable (letter) from two equations by multiplying and adding them.",
       "Enter the exact value of $x$ or $y$, including a negative or fractional value.",
@@ -54,7 +54,7 @@ const entries: Entry[] = [
     method: [
       "Pick the letter the question does not ask for. Multiply one or both equations by a number (not 0) so that letter has opposite coefficients.",
       "Add the equations, so that letter cancels. Solve the equation that is left.",
-      "Check by putting the value into the other equation, then enter it.",
+      "Check: find the other letter from one equation, then make sure both equations are true. Then enter the value.",
     ],
     watch:
       "Multiply every term (each part joined by + or −) of an equation, including the number on the right side (the side after the equal sign). A fraction is a correct answer, so do not round it.",
@@ -77,7 +77,7 @@ const entries: Entry[] = [
         entry,
     ],
     formal:
-      "Suppose $ae-bd\\ne0$. Multiply $ax+by=c$ by $e$ and $dx+ey=f$ by $b$, then subtract. That gives $(ae-bd)x=ce-bf$, so $x=\\frac{ce-bf}{ae-bd}$. In the same way, $y=\\frac{af-cd}{ae-bd}$. The answer is a fraction when $ae-bd$ does not divide the top number evenly.",
+      "Here $a$, $b$, $c$, $d$, $e$ and $f$ stand for given numbers. Suppose $ae-bd\\ne0$. Multiply $ax+by=c$ by $e$ and $dx+ey=f$ by $b$, then subtract. That gives $(ae-bd)x=ce-bf$, so $x=\\frac{ce-bf}{ae-bd}$. In the same way, $y=\\frac{af-cd}{ae-bd}$. The answer is a fraction when $ae-bd$ does not divide the top number evenly.",
     pitfalls: [
       "Multiply the number on the right side by the same number as the rest of the equation.",
       "Watch signs when subtracting: subtracting $-3y$ adds $3y$.",
@@ -144,8 +144,6 @@ const entries: Entry[] = [
   {
     id: "sat-entry-quadratic-solution",
     senses: {
-      factor: "factor-number",
-      factors: "factor-number",
       "left side": "side-of-equation",
       "more than": "more-than",
       opposite: "opposite-number",
@@ -159,6 +157,7 @@ const entries: Entry[] = [
       term: "term-expression",
       terms: "term-expression",
     },
+    noLink: ["factor", "factors"],
     title: "Enter a quadratic solution",
     goal: "Factor the quadratic, set each factor to 0, then choose the solution described: the greater, the positive or the only one.",
     summary:
@@ -234,7 +233,7 @@ const entries: Entry[] = [
     method: [
       "Find $a$, $b$ and $c$ in $ax^2+bx+c=0$.",
       "Work out $p+q=-\\frac ba$ and $pq=\\frac ca$.",
-      "Rewrite the quantity asked for using them: $\\frac1p+\\frac1q=\\frac{p+q}{pq}$ and $p^2+q^2=(p+q)^2-2pq$. " +
+      "Rewrite the quantity asked for using them: $\\frac1p+\\frac1q=\\frac{p+q}{pq}$ (when neither solution is 0) and $p^2+q^2=(p+q)^2-2pq$. " +
         entry,
     ],
     watch:
@@ -530,7 +529,7 @@ const entries: Entry[] = [
     terms: ["rate", "concentration"],
     method: [
       "Write each rate as a fraction of the job per unit of time. A job done in 4 hours is $\\frac14$ of the job per hour.",
-      "Add rates that work together, and subtract a rate that works against them. For a mixture, set the substance before mixing equal to the substance after.",
+      "Add rates that work together, and subtract a rate that works against them. For a mixture, set the substance before mixing equal to the substance after. If the machines work one after another, find the time for each part and add the times.",
       "Divide the whole job by the combined rate, or solve the balance equation. " +
         entry,
     ],
@@ -648,7 +647,7 @@ const entries: Entry[] = [
     methodTitle: "Boundary, then integers",
     methodText: [
       "After solving, picture the boundary on a number line, a line with evenly spaced marks for numbers. Shade the side where the solutions are.",
-      "To count the positive integers below a boundary, start at 1. If the boundary is 1 or less, there are none, so the count is 0.",
+      "To count the positive integers up to the boundary, start at 1. If the boundary is less than 1, there are none, so the count is 0.",
       "Type the integer or the count. Type a negative integer with its minus sign.",
     ],
     formal:

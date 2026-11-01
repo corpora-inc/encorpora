@@ -93,7 +93,7 @@ const boundaries: Lesson["sections"][number] = {
   paragraphs: [
     "An amount that stays the same has a 0% change, as long as its original is greater than 0. A 100% increase adds the whole original once, so it doubles the amount. A 150% increase adds one and a half originals. That leaves two and a half times the original. So an increase can be more than 100%.",
     "This lesson uses amounts that are 0 or more. A 100% decrease removes the whole original and leaves 0. A decrease of more than 100% would leave less than 0, so it does not fit these amounts.",
-    "A percent change from an original of 0 has no answer. The rule would divide by 0, and dividing by 0 is not possible. Even a change from 0 to 0 has no percent change.",
+    "A percent change from an original of 0 has no answer. (That is about finding a percent change. Applying a percent to 0 is fine: it gives 0.) The rule would divide by 0, and dividing by 0 is not possible. Even a change from 0 to 0 has no percent change.",
   ],
 };
 export const percentChangeLessons: Lesson[] = [

@@ -96,11 +96,10 @@ export const ratioRateLessons: Lesson[] = [
     senses: {
       part: "part",
       parts: "part",
-      product: "product-multiply",
       unit: "unit",
       units: "unit",
     },
-    noLink: ["scale"],
+    noLink: ["product", "scale"],
     title: "Find the better buy",
     summary:
       "The better buy is the package that gives you more for your money. A bigger box can cost more in all and still be cheaper for each item. So find what 1 item costs in each package. That cost is called the unit price. The package with the lower unit price is the better buy.",
@@ -203,7 +202,7 @@ export const ratioRateLessons: Lesson[] = [
         stage: "formal",
         title: "Equivalent ratio columns",
         paragraphs: [
-          "Take a pair of amounts greater than 0 in a ratio table. Multiply or divide both by the same number, not 0. The result is an equivalent pair, with the same relationship. That number is called the scale factor. In every column, the bottom amount divided by the top amount gives the same quotient: the answer when you divide.",
+          "Take a pair of amounts greater than 0 in a ratio table. Multiply or divide both by the same number greater than 0. The result is an equivalent pair, with the same relationship. That number is called the scale factor. In every column, the bottom amount divided by the top amount gives the same quotient: the answer when you divide.",
         ],
       },
     ],

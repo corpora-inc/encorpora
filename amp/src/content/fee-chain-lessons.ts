@@ -57,7 +57,7 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
     senses: { part: "part", sides: "side-of-equation" },
     goal: "Write the inequality for a one-time fee plus a cost per item that must fit a budget, or choose its solution.",
     intuition:
-      "A budget is the most money you plan to spend. The cost of $x$ items is the fee plus the cost per item times $x$. The sign $\\le$ means is less than or equal to, for at most. The sign $<$ means is less than, for under. Solving shows which counts fit. The answer is the largest whole number (the numbers 0, 1, 2 and so on) that fits.",
+      "A budget is the most money you plan to spend. The cost of $x$ items is the fee plus the cost per item times $x$. The sign $\\le$ means is less than or equal to, for at most. The sign $<$ means is less than, for under. Solving shows which counts fit. If the question asks for the most items, it is the largest whole number (the numbers 0, 1, 2 and so on) that fits.",
     terms: [
       "at-most",
       [
@@ -77,7 +77,7 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
 
 export const feeChainPrinciples: Record<string, string> = {
   "fee-plan-chain":
-    "A charge made of a flat fee $F$ for the first $h_0$ hours and a rate $r$ for each hour after is $F+r(h-h_0)$ for $h\\ge h_0$. One known pair of $H$ hours and total $T$, with $H>h_0$, gives $r=(T-F)/(H-h_0)$. An amount that changes by 1 unit every $k$ days takes $kd$ days, $k$ times $d$, to change by $d$ units.",
+    "A charge made of a flat fee $F$ for the first $h_0$ hours and a rate $r$ for each hour after is $F+r(h-h_0)$ for $h\\ge h_0$. One known pair of $H$ hours and total $T$, with $H>h_0$, gives $r=(T-F)/(H-h_0)$. An amount that changes by 1 unit every $k$ hours, days or minutes takes $kd$ of the same time unit, $k$ times $d$, to change by $d$ units.",
   "fee-rule-choice":
     "A flat fee $F$ for the first $h_0$ hours plus rate $r$ for each extra hour gives $C=F+r(h-h_0)=rh+(F-rh_0)$ for $h\\ge h_0$. As a line, its slope (the change in $C$ for each extra hour) is $r$, and its intercept (the plain number) is $F-rh_0$. The rule only applies for $h\\ge h_0$, so the intercept is not itself a booking price.",
   "fee-budget-inequality":
@@ -121,7 +121,7 @@ export const feeChainLessons = [
       method: [
         "Find the extra hours: the hours booked minus the hours the flat fee covers. Find the rate: the charge beyond the flat fee divided by the extra hours.",
         "A budget is the most money you plan to spend. Call the budget $B$, the fee $F$, and the cost per item $r$. Then $x$ items cost $F+rx$, meaning $F$ plus $r$ times $x$.",
-        "The sign $\\le$ means is less than or equal to, so use it for at most. The sign $<$ means is less than, so use it for under. Subtract $F$ from both sides (the parts on each side of the sign), then divide both sides by $r$. That shows which counts fit. For a count of items, the answer is the largest whole number allowed. With $<$, the boundary, the number where the allowed counts stop, is not allowed itself.",
+        "The sign $\\le$ means is less than or equal to, so use it for at most. The sign $<$ means is less than, so use it for under. Subtract $F$ from both sides (the parts on each side of the sign), then divide both sides by $r$. That shows which counts fit. If the question asks for the most items, it is the largest whole number allowed. Otherwise, every whole number from 0 up to that limit fits. With $<$, the boundary, the number where the allowed counts stop, is not allowed itself.",
       ],
       formalTitle: "The line behind the charge",
       formal: [

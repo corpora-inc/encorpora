@@ -76,7 +76,7 @@ export const percentChainLessons = [
       formalTitle: "Why factors multiply",
       formal: [
         "A start amount $A$ changed by $p\\%$ becomes $A(1\\pm p/100)$. The sign $\\pm$ means plus for an increase and minus for a decrease. A second change of $q\\%$ is taken of that new amount. So the result is $A(1\\pm p/100)(1\\pm q/100)$.",
-        "When each decrease is less than 100%, each factor is greater than 0. So dividing by it is allowed, and it undoes the change exactly. Swapping the order of the two factors does not change their product, the result of multiplying. But the order does change the amount in between.",
+        "When each decrease is less than 100%, each factor is greater than 0. So dividing by it is allowed, and it undoes the change exactly. Swapping the order of the two factors does not change their product, the result of multiplying. But the order can change the amount in between.",
       ],
       pitfalls: [
         "Do not add the percents. Multiply the factors.",
