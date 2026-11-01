@@ -7,13 +7,7 @@ export const operationSentenceMethods: Record<string, ProblemMethod> = {
     goal: "Choose the number sentence for equal groups told in a story, drawn as groups or as jumps, or judge which sentence cannot find the total.",
     intuition:
       "When every group has the same number of things, the total is found by joining the equal groups. That is multiplication, and repeated addition of the group size says the same thing. A sentence fits when it uses the number of groups and the size of each group to give the total.",
-    terms: [
-      ["equal groups", "Groups that each hold the same number of things."],
-      [
-        "number sentence",
-        "An equation made of numbers and an operation, with $n$ standing for the number to find.",
-      ],
-    ],
+    terms: ["equal-groups", "number-sentence"],
     method: [
       "Find the number of groups and the size of each group in the story, the picture or the jumps.",
       "Choose the sentence that joins that many equal groups: multiplication or repeated addition, or division that uses the total.",
@@ -26,16 +20,7 @@ export const operationSentenceMethods: Record<string, ProblemMethod> = {
     goal: "Choose the division sentence a multiplication fact helps solve, or the multiplication sentence that helps solve a division, including tens.",
     intuition:
       "Multiplication and division undo each other. A multiplication fact has two factors and a product, and the product is the number that division starts from. A division sentence asks which factor makes the product.",
-    terms: [
-      [
-        "factor",
-        "A number that is multiplied, such as 6 and 7 in $6 \\times 7$.",
-      ],
-      [
-        "product",
-        "The result of multiplying, such as 42 in $6 \\times 7 = 42$.",
-      ],
-    ],
+    terms: ["factor-number", "product-multiply"],
     method: [
       "Name the product and the factors, or the total and the divisor in a division sentence.",
       "For a fact, divide the product by one factor. For a division, write a multiplication with the divisor times the unknown equal to the total.",
@@ -49,8 +34,8 @@ export const operationSentenceMethods: Record<string, ProblemMethod> = {
     intuition:
       "An addition fact joins two parts to make a whole. Subtraction undoes it: take one part away from the whole and the other part is left.",
     terms: [
-      ["part", "One of the two numbers that are added."],
-      ["whole", "The sum of the two parts."],
+      ["part", "Here the parts are the two numbers being added."],
+      "whole",
     ],
     method: [
       "Name the two parts and the whole in the addition fact.",
@@ -64,10 +49,7 @@ export const operationSentenceMethods: Record<string, ProblemMethod> = {
     goal: "Choose the one true equation when a product equals a sum or difference, or when two products of three factors are compared.",
     intuition:
       "The equal sign says both sides have the same value. To test an equation, work out the value of each side separately and compare. A product and a sum can be equal even though they use different operations.",
-    terms: [
-      ["equation", "A statement that two expressions have the same value."],
-      ["side", "The expression on the left or on the right of the equal sign."],
-    ],
+    terms: ["equation", "side-of-equation"],
     method: [
       "Work out the value of the left side, then of the right side, one operation at a time.",
       "Compare the two values. Keep the equation only if they match.",

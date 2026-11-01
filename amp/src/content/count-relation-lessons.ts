@@ -9,10 +9,10 @@ export const countRelationMethods: Record<string, ProblemMethod> = {
       "An equation with two counts, such as $3p+5q=87$, ties them together: once one count is known, the equation has one unknown left. A story that says 'k times as many' and 'd more than' gives two facts about the same two counts, and together they leave one unknown.",
     terms: [
       [
-        "value equation",
-        "An equation that adds each count times its price to give the total value.",
+        "equation",
+        "A value equation adds each count times its price to give the total value.",
       ],
-      ["times as many", "A count that equals $k$ times another count."],
+      "times-as-many",
     ],
     method: [
       "Name the counts with variables, and write the relationship the story gives as an equation or two.",

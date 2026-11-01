@@ -7,13 +7,7 @@ export const variableStoryMethods: Record<string, ProblemMethod> = {
     goal: "Tell a quantity that can change, a variable, from a quantity that always stays the same, a constant.",
     intuition:
       "In a story, some numbers are set once and never change, like the pages read each night. Others take new values as the story goes on, like the number of nights. A letter can stand for a quantity that changes.",
-    terms: [
-      ["variable", "A quantity that can take different values."],
-      [
-        "constant",
-        "A quantity that always has the same value in the situation.",
-      ],
-    ],
+    terms: ["variable", "constant"],
     method: [
       "List each quantity in the choices.",
       "Ask of each one: as the story goes on, does it take new values or does it always stay the same?",
@@ -27,9 +21,9 @@ export const variableStoryMethods: Record<string, ProblemMethod> = {
     intuition:
       "A subtraction story starts with an amount, takes some away and leaves some. Which of those three amounts is the unknown changes the story, even when the same three numbers are used. The sentence shows where the unknown sits.",
     terms: [
-      ["start", "The amount before anything is taken away."],
-      ["change", "The amount taken away."],
-      ["result", "The amount left."],
+      ["subtraction", "The start is the amount before anything is taken away."],
+      ["change", "In a take-away story, the change is the amount taken away."],
+      ["difference-subtract", "Here, the result is the amount left."],
     ],
     method: [
       "Name the three roles in the sentence: the number before the minus sign is the start, the number after it is the amount taken away, and the number after the equal sign is what is left.",

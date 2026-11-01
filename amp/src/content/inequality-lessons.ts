@@ -2,15 +2,9 @@ import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 const terms: NonNullable<ProblemMethod["terms"]> = [
-  [
-    "inequality",
-    "A comparison using <, ≤, >, or ≥. These signs mean less than, less than or equal to, greater than, and greater than or equal to.",
-  ],
-  ["solution set", "All values of the variable that make the comparison true."],
-  [
-    "coefficient",
-    "The number multiplying a variable. In −3x, the coefficient of $x$ is −3.",
-  ],
+  "inequality",
+  "solution-set",
+  "coefficient",
 ];
 export const inequalityMethods: Record<string, ProblemMethod> = {
   "affine-linear-inequality": {
@@ -27,13 +21,7 @@ export const inequalityMethods: Record<string, ProblemMethod> = {
   },
   "grouped-linear-inequality": {
     goal: "Find the complete solution set when parentheses and variable terms appear on both sides.",
-    terms: [
-      ...terms,
-      [
-        "distribute",
-        "Multiply every term inside parentheses by the outside factor.",
-      ],
-    ],
+    terms: [...terms, "distribute"],
     method: [
       "Distribute the outside factor to each term, including its sign. Combine constant terms on each side.",
       "Subtract the same variable term from both sides, then subtract the same constant from both sides.",

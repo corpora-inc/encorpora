@@ -94,9 +94,11 @@ export const numberLinePosition = chainFamily({
       ],
       hint: `Each tick mark is worth 10, and the labeled halfway mark is ${comma(half)}. Decide whether $P$ is before or after the halfway mark, then count tick marks from ${comma(m.low)}.`,
       explanation: [
-        `The line runs from ${comma(m.low)} to ${comma(m.low + 100)} in 10 equal steps of 10. The halfway mark is ${comma(half)}.`,
-        `Point $P$ is ${m.tens} ${m.tens === 1 ? "tick mark" : "tick marks"} above ${comma(m.low)}, so it is ${comma(m.low)} + ${m.tens} × 10 = ${comma(v)}.`,
-        `That is ${v > half ? "past" : v === half ? "at" : "before"} the halfway mark, as the picture shows.`,
+        `A tick mark is a small line on the number line. Here the tick marks split ${comma(m.low)} to ${comma(m.low + 100)} into 10 equal steps.`,
+        `100 split into 10 equal steps is 10 per step, so each tick mark is worth 10.`,
+        `The halfway mark is ${comma(half)}, and $P$ is ${v > half ? "past" : v === half ? "at" : "before"} it, so the answer is ${v > half ? "more than" : v === half ? "equal to" : "less than"} ${comma(half)}.`,
+        `Count the tick marks from ${comma(m.low)} to $P$: there ${m.tens === 1 ? "is 1 tick mark" : `are ${m.tens} tick marks`}, so add ${m.tens === 1 ? "1 ten" : `${m.tens} tens`}: ${comma(m.low)} + ${m.tens} × 10 = ${comma(v)}.`,
+        `Point $P$ shows ${comma(v)}.`,
       ],
     });
     return (
@@ -201,9 +203,11 @@ export const numberLineStory = chainFamily({
       options,
       hint: `Start at ${start} and follow the jumps in order. Look at which way the first jump, ${firstN} long, points and which way the second jump, ${secondN} long, points. A jump to the left takes away and a jump to the right adds.`,
       explanation: [
+        `On a number line, numbers get bigger to the right. A jump to the right adds, and a jump to the left takes away.`,
         `The first jump is ${firstN} long and goes ${first < 0 ? "left" : "right"}, so it ${first < 0 ? "takes away" : "adds"} ${firstN}.`,
         `The second jump is ${secondN} long and goes ${second < 0 ? "left" : "right"}, so it ${second < 0 ? "takes away" : "adds"} ${secondN}.`,
-        `The story that does these two things in this order is: "${correct}"`,
+        `The matching story must do both things with the same amounts, in the same order.`,
+        `The story that matches is: "${correct}"`,
       ],
     });
     return (

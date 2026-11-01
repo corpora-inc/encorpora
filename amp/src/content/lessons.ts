@@ -1,3 +1,4 @@
+import type { GlossarySenses } from "../glossary/types";
 import type { SemanticFigure } from "../math/contracts";
 import { satCompletionLessons } from "./sat-completion-lessons";
 import { satGeometryDataLessons } from "./sat-geometry-data-lessons";
@@ -115,6 +116,11 @@ export interface Lesson {
   id: string;
   title: string;
   summary: string;
+  /** The glossary entry an ambiguous word means in this lesson: lowercase
+   * form → term id (`src/glossary/`). */
+  senses?: GlossarySenses;
+  /** Glossary forms used as ordinary words in this lesson. */
+  noLink?: string[];
   templateIds: string[];
   objectives: string[];
   /** Omit a generic practice figure when authored illustrations teach the same representation. */

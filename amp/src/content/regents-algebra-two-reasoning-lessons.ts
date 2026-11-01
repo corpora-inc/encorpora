@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
@@ -5,7 +6,7 @@ import { chainLesson } from "./chain-lesson-kit";
 export const m = (
   goal: string,
   intuition: string,
-  terms: [string, string][],
+  terms: MethodTerm[],
   method: string[],
   watch: string,
 ): ProblemMethod => ({ goal, intuition, terms, method, watch });
@@ -15,16 +16,7 @@ export const regentsAlgebraTwoReasoningMethods: Record<string, ProblemMethod> =
     "study-design-classify": m(
       "Decide whether a study is an experiment or observational by asking who assigns the treatment.",
       "In an experiment the researcher decides, usually by chance, which treatment each subject gets. In an observational study the researcher only records what already happens in groups that formed on their own.",
-      [
-        [
-          "experiment",
-          "A study in which the researcher assigns the treatments.",
-        ],
-        [
-          "observational study",
-          "A study that records existing groups without assigning treatments.",
-        ],
-      ],
+      ["experiment", "observational-study"],
       [
         "Find the treatment or the groups being compared.",
         "Ask who decided which subjects are in which group.",
@@ -35,13 +27,7 @@ export const regentsAlgebraTwoReasoningMethods: Record<string, ProblemMethod> =
     "quartic-factored-form": m(
       "Factor a quartic binomial completely: common factor first, then differences of squares.",
       "Take out the greatest common factor, then look for a difference of squares. $x^4-81$ is $(x^2)^2-9^2$, so it factors, and one of its factors $x^2-9$ factors again.",
-      [
-        [
-          "greatest common factor",
-          "The largest number that divides every term.",
-        ],
-        ["difference of squares", "$a^2-b^2$, which factors as $(a-b)(a+b)$."],
-      ],
+      ["greatest-common-factor", "difference-of-squares"],
       [
         "Factor out the common factor.",
         "Write the remaining binomial as a difference of squares and factor it.",
@@ -52,10 +38,7 @@ export const regentsAlgebraTwoReasoningMethods: Record<string, ProblemMethod> =
     "cubic-quotient-factored": m(
       "Divide a cubic by one of its linear factors and factor the quotient.",
       "If $(ax+b)$ is a factor of the cubic, the quotient is the product of the other two linear factors, with leading coefficient 1 once $a$ cancels. Dividing undoes the multiplication that built the cubic.",
-      [
-        ["quotient", "The result of dividing."],
-        ["linear factor", "A factor of the form $ax+b$."],
-      ],
+      ["quotient", "linear-factor"],
       [
         "Divide the cubic by the linear factor with long division or synthetic division.",
         "Factor the quadratic quotient.",
@@ -66,10 +49,7 @@ export const regentsAlgebraTwoReasoningMethods: Record<string, ProblemMethod> =
     "complete-square-first-steps": m(
       "Tell which first steps of solving a quadratic keep the solutions unchanged.",
       "A step is correct when it does the same thing to both sides of the equation. Dividing every term by the same number or moving a term across with a sign change keeps the solutions; changing only some terms does not.",
-      [
-        ["equivalent equations", "Equations with the same solutions."],
-        ["zero-product property", "If $AB=0$ then $A=0$ or $B=0$."],
-      ],
+      ["equivalent-equations", "zero-product-property"],
       [
         "Compare each step with the equation before it.",
         "Check whether every term was treated the same way and every sign changed correctly.",
@@ -80,10 +60,7 @@ export const regentsAlgebraTwoReasoningMethods: Record<string, ProblemMethod> =
     "exponential-points-statement": m(
       "Find the doubling time and the model from three graphed points at equal spacing.",
       "If the value is multiplied by the same factor each time $x$ grows by the same step, the points lie on an exponential curve. A factor of 2 per step of size $T$ means the value doubles every $T$ units, modeled by $a\\cdot2^{x/T}$.",
-      [
-        ["doubling time", "The change in $x$ over which the value doubles."],
-        ["growth factor", "The number each value is multiplied by."],
-      ],
+      ["doubling-time", "growth-factor"],
       [
         "Divide neighbouring $y$-values.",
         "If the ratios agree, read the factor and the step.",
@@ -94,10 +71,7 @@ export const regentsAlgebraTwoReasoningMethods: Record<string, ProblemMethod> =
     "rational-abs-solution-count": m(
       "Count the solutions of an equation by counting the points where two graphs meet.",
       "Each solution of $f(x)=g(x)$ is an input where the two graphs have the same height. Counting meeting points counts solutions, but each must be counted once, and no solution can sit on a vertical asymptote.",
-      [
-        ["asymptote", "A line a graph approaches but never reaches."],
-        ["intersection", "A point on both graphs."],
-      ],
+      ["asymptote", "intersection-graphs"],
       [
         "Draw or read both graphs.",
         "Count the points on each side of the asymptote and of the corner of the absolute value.",

@@ -67,15 +67,16 @@ export function radicalEquationCase(id: string, seed: string) {
             ? `In $${equation}$, the square root is already alone. Its value is nonnegative. Square both sides, then solve the resulting linear equation.`
             : `In $${equation}$, undo the outside ${c > 0 ? "addition" : "subtraction"} of ${Math.abs(c)} on both sides before squaring. Check that the isolated root equals a nonnegative number.`,
         explanation: [
-          `The expression under the root must satisfy $${radicand} \\ge 0$. The square-root symbol means the nonnegative root.`,
+          `The symbol $\\sqrt{\\ }$ means the square root that is zero or positive. Over the real numbers, the expression under it, $${radicand}$, must be zero or more.`,
           ...(c === 0
-            ? []
+            ? [`The square root is already alone on the left side.`]
             : [
-                `${c > 0 ? "Subtract" : "Add"} ${Math.abs(c)} on both sides: $\\sqrt{${radicand}} = ${n(k)}$.`,
+                `First get the square root alone. ${c > 0 ? "Subtract" : "Add"} ${Math.abs(c)} ${c > 0 ? "from" : "to"} both sides: $\\sqrt{${radicand}} = ${n(k)}$.`,
               ]),
-          `Both sides are nonnegative, so squaring is reversible here: $${radicand} = ${k * k}$.`,
-          `Subtract ${n(b)} from both sides, then divide by ${n(a)}: $${linearText(a, 0)} = ${k * k - b}$, so $x = ${tex(answer)}$.`,
-          `At this input, $${n(a)}\\left(${tex(answer)}\\right)${constText(b)} = ${k * k}$. In the original equation, $\\sqrt{${k * k}}${constText(c)} = ${k}${constText(c)} = ${n(d)}$. The input is allowed and the equality holds.`,
+          `Squaring undoes a square root. Both sides are zero or positive, so squaring keeps the equation true and adds no false answers: $${radicand} = ${k * k}$.`,
+          `Now solve the linear equation. ${b === 0 ? "" : `${b > 0 ? "Subtract" : "Add"} ${Math.abs(b)} ${b > 0 ? "from" : "to"} both sides: $${linearText(a, 0)} = ${k * k - b}$. `}${a === 1 ? "So" : `Divide by ${n(a)}:`} $x = ${tex(answer)}$.`,
+          `Check in the original equation. At this $x$, $${n(a)}\\left(${tex(answer)}\\right)${constText(b)} = ${k * k}$, and $\\sqrt{${k * k}}${constText(c)} = ${k}${constText(c)} = ${n(d)}$. It works.`,
+          `The solution is $x = ${tex(answer)}$.`,
         ],
         tags: [
           c === 0
@@ -139,14 +140,23 @@ export function radicalEquationCase(id: string, seed: string) {
           ? { correct: true as const }
           : {
               feedback:
-                "Check each candidate in the original equation. A square root is nonnegative, so a candidate giving a negative right side must be rejected.",
+                i === 0
+                  ? `This keeps both candidates from the squared equation without checking them. Squaring can add false answers. A square root is never negative, so reject any $x$ that makes $${right}$ negative.`
+                  : i === 3
+                    ? `This rejects every candidate, but at least one works. Put each candidate into $\\sqrt{${radicand}} = ${right}$: keep it when the right side is zero or positive.`
+                    : accepted.length === 2
+                      ? `This drops a candidate that works. Check both in the original equation: each gives a right side that is zero or positive, so both are solutions.`
+                      : accepted.length === 0
+                        ? `This keeps a candidate that fails: it makes $${right}$ negative, and a square root is never negative. Neither candidate works.`
+                        : `This keeps the wrong candidate. A square root is never negative, so the right side $${right}$ must be zero or positive. Check each candidate in the original equation.`,
             }),
       })),
       hint: `In $\\sqrt{${radicand}} = ${right}$, require both $${radicand} \\ge 0$ and $${right} \\ge 0$. Squaring gives candidates; keep only those that satisfy the original equation.`,
       explanation: [
-        `For a real solution, $${radicand} \\ge 0$ and $${right} \\ge 0$, because a real square root is nonnegative.`,
-        `Squaring gives $${radicand} = (${right})^2$. Move all terms to the right: $0 = x^2${termText(2 * c - a, "x", false)}${constText(c * c - b)}$.`,
-        `Factor: $0 = (${linearText(1, -lo)})(${linearText(1, -hi)})$. Every original solution must therefore be among $x = ${n(lo)}$ and $x = ${n(hi)}$.`,
+        `A square root, $\\sqrt{\\ }$, is never negative. So a real solution needs the inside, $${radicand}$, to be zero or more, and the right side, $${right}$, to be zero or more.`,
+        `Squaring both sides undoes the root: $${radicand} = (${right})^2$. Multiply out the right side and move every term there: $0 = x^2${termText(2 * c - a, "x", false)}${constText(c * c - b)}$.`,
+        `Factor: $0 = (${linearText(1, -lo)})(${linearText(1, -hi)})$. A product is zero only when a factor is zero, so the candidates are $x = ${n(lo)}$ and $x = ${n(hi)}$.`,
+        `Squaring can add false answers, called extraneous solutions, because $(-3)^2$ and $3^2$ are both 9. So check each candidate in the original equation.`,
         check(lo),
         check(hi),
         accepted.length === 0

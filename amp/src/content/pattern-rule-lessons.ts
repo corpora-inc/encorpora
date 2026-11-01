@@ -7,10 +7,7 @@ export const patternRuleMethods: Record<string, ProblemMethod> = {
     goal: "Find the rule of a number pattern from its terms, or find the pattern that follows the same rule.",
     intuition:
       "A number pattern follows a rule that turns each term into the next. The rule can add the same number each time, multiply by the same number each time, or add an amount that grows by one each time. To find it, look at how each term changes into the next.",
-    terms: [
-      ["term", "One number in the pattern."],
-      ["rule", "What you do to one term to get the next."],
-    ],
+    terms: ["term-sequence", "rule"],
     method: [
       "Subtract each term from the next to find the changes. If the changes are all equal, the rule is to add that number.",
       "If the changes are not equal, check whether each term is the same multiple of the one before (divide), or whether the changes grow by one each time.",
@@ -24,8 +21,14 @@ export const patternRuleMethods: Record<string, ProblemMethod> = {
     intuition:
       "When no rule is given, you find it from the terms. Subtract neighboring terms to see the changes. If the changes are all the same, add that change again and again. If the changes themselves grow or shrink by one each time, keep following that second pattern too.",
     terms: [
-      ["difference", "The change from one term to the next."],
-      ["decreasing pattern", "A pattern whose terms get smaller."],
+      [
+        "difference-subtract",
+        "Here, the change from one term of the pattern to the next.",
+      ],
+      [
+        "pattern",
+        "In a decreasing pattern, each term is smaller than the one before.",
+      ],
     ],
     method: [
       "Write the changes between neighbors: second term minus first term, and so on.",

@@ -7,13 +7,7 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
   "complex-plane-forms": {
     goal: "Given a complex number as a point, a sum of points, a modulus request or a polar form, find the requested exact value.",
     intuition: r`A complex number $a+bi$ is the point $(a,b)$: $a$ counts across the real axis and $b$ counts up the imaginary axis. Its distance from 0 is its modulus. The same point can be named by that distance $r$ and an angle $\theta$ from the positive real axis.`,
-    terms: [
-      ["modulus", r`The distance $|a+bi|=\sqrt{a^2+b^2}$ from 0 to the point.`],
-      [
-        "polar form",
-        r`$r(\cos\theta+i\sin\theta)$, where $r\ge0$ is the modulus and $\theta$ is the angle from the positive real axis.`,
-      ],
-    ],
+    terms: ["modulus", "polar-form"],
     method: [
       r`Read the real part from the horizontal coordinate and the imaginary part from the vertical coordinate.`,
       r`For a modulus, apply the Pythagorean theorem to the two parts. For a sum, add real parts and add imaginary parts.`,
@@ -25,10 +19,10 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
     goal: "Given a complex number or a quotient of complex numbers, use the conjugate to give an exact standard-form result.",
     intuition: r`Changing the sign of the imaginary part of $a+bi$ gives its conjugate $a-bi$. Multiplying a number by its conjugate cancels the $i$ and leaves a real number, which is why a conjugate can clear $i$ from a denominator.`,
     terms: [
-      ["conjugate", r`The conjugate of $a+bi$ is $a-bi$.`],
+      "complex-conjugate",
       [
-        "standard form",
-        r`$x+yi$ with $x$ and $y$ real; fractions are allowed for $x$ and $y$.`,
+        "complex-number",
+        "Standard form for a complex number is $x + yi$ with $x$ and $y$ real; fractions are allowed.",
       ],
     ],
     method: [
@@ -42,8 +36,11 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
     goal: "Given complex numbers, find the distance between them, their midpoint, a missing endpoint, or the center and radius of $|z-w|=r$.",
     intuition: r`Subtracting two complex numbers gives the arrow from one to the other. The modulus of that arrow is the distance between the points. The midpoint is where the average of the two numbers lies.`,
     terms: [
-      ["distance", r`The distance between $z$ and $w$ is $|z-w|$.`],
-      ["midpoint", r`The midpoint of $z$ and $w$ is $\frac{z+w}{2}$.`],
+      ["distance", "For complex numbers $z$ and $w$, it is $|z - w|$."],
+      [
+        "midpoint",
+        "For complex numbers $z$ and $w$, it is $\\frac{z + w}{2}$.",
+      ],
     ],
     method: [
       r`For a distance, subtract the real parts and the imaginary parts, then take $\sqrt{(\Delta a)^2+(\Delta b)^2}$ and simplify.`,
@@ -56,14 +53,8 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
     goal: "Factor a sum of squares or solve or build a quadratic whose roots are not real.",
     intuition: r`A sum of squares $x^2+k^2$ has no real roots, but $(ki)^2=-k^2$, so it has two imaginary roots. A quadratic with a negative discriminant has two roots that are conjugates of each other.`,
     terms: [
-      [
-        "discriminant",
-        r`For $x^2+bx+c$, the number $b^2-4c$ under the square root in the quadratic formula.`,
-      ],
-      [
-        "conjugate pair",
-        r`Two roots $p+qi$ and $p-qi$ with the same real part and opposite imaginary parts.`,
-      ],
+      ["discriminant", "For $x^2 + bx + c$, where $a = 1$, it is $b^2 - 4c$."],
+      "complex-conjugate",
     ],
     method: [
       r`For $x^2+k^2$ write $x^2-(ki)^2$ and factor as a difference of squares: $(x+ki)(x-ki)$.`,
@@ -76,14 +67,12 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
     goal: "Given a polynomial, count its complex roots with multiplicity or use conjugate pairs to restrict its real and nonreal roots.",
     intuition: r`Every polynomial of degree $n\ge1$ has exactly $n$ roots among the complex numbers when a root of multiplicity $m$ is counted $m$ times. When the coefficients are real, a nonreal root always comes with its conjugate.`,
     terms: [
+      "multiplicity",
       [
-        "multiplicity",
-        r`The number of times a root appears as a factor: $(x-a)^3$ gives the root $a$ three times.`,
+        "coefficient",
+        "Here every coefficient is a real number, so nonreal roots come in conjugate pairs.",
       ],
-      [
-        "real coefficients",
-        r`Every coefficient is a real number, so nonreal roots occur in conjugate pairs.`,
-      ],
+      "real-number",
     ],
     method: [
       r`Find the degree, or add the exponents of all the factors. That total is the number of complex roots.`,
@@ -95,16 +84,7 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
   "polar-cartesian-conversion": {
     goal: "Convert between polar and Cartesian coordinates at special angles, and recognize different polar names for one point.",
     intuition: r`A point can be located by two steps: turn through an angle $\theta$ from the positive $x$-axis, then move $r$ units. If $r$ is negative, move that distance in the opposite direction. Different turns can end at the same point.`,
-    terms: [
-      [
-        "polar coordinates",
-        r`The pair $(r,\theta)$: distance $r$ along the direction at angle $\theta$.`,
-      ],
-      [
-        "reference angle",
-        r`The acute angle between the terminal side and the $x$-axis.`,
-      ],
-    ],
+    terms: ["polar-coordinates", "reference-angle"],
     method: [
       r`For polar to Cartesian, use $x=r\cos\theta$ and $y=r\sin\theta$, keeping the sign of $r$.`,
       r`For Cartesian to polar, use $r=\sqrt{x^2+y^2}$, then the angle in $[0,2\pi)$ whose cosine is $x/r$ and sine is $y/r$.`,
@@ -117,12 +97,12 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
     intuition: r`A parametric model gives each coordinate as its own function of time. At each time $t$ the pair $(x(t),y(t))$ is the object's position. When both functions are linear, the object moves along a line at a steady speed.`,
     terms: [
       [
-        "parameter",
-        r`The variable, here time $t$, that both coordinates depend on.`,
+        "parametric-equations",
+        "Here the parameter is time $t$; both $x$ and $y$ depend on it.",
       ],
       [
         "speed",
-        r`The distance moved per unit time; for rates $a$ and $b$ it is $\sqrt{a^2+b^2}$.`,
+        "For rates $a$ and $b$ in $x$ and $y$, the speed is $\\sqrt{a^2+b^2}$.",
       ],
     ],
     method: [
@@ -136,11 +116,11 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
     goal: "Given a conic equation, name the curve, read its center or axis ends, or complete the square to find its center and size.",
     intuition: r`Circles, ellipses, parabolas and hyperbolas are the curves made by slicing a cone. Their equations differ in which variables are squared, whether the squared terms are added or subtracted, and whether their denominators match.`,
     terms: [
-      ["center", r`For $(x-h)^2$ and $(y-k)^2$ terms, the point $(h,k)$.`],
       [
-        "completing the square",
-        r`Adding the square of half a linear coefficient so that $x^2+Dx$ becomes $(x+\frac{D}{2})^2$.`,
+        "center",
+        "For the circle $(x - h)^2 + (y - k)^2 = r^2$, the center is $(h, k)$.",
       ],
+      "completing-the-square",
     ],
     method: [
       r`To identify: count the squared variables, then look at the sign between them and whether their denominators or coefficients are equal.`,
@@ -153,14 +133,11 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
     goal: "Given a focus and directrix, or a parabola equation, find the vertex, equation, focus or directrix.",
     intuition: r`A parabola is every point that is the same distance from a fixed point (the focus) and a fixed line (the directrix). The vertex is the point of the curve closest to both, halfway between them.`,
     terms: [
-      ["focus", r`The fixed point inside the curve.`],
+      "focus",
+      "directrix",
       [
-        "directrix",
-        r`The fixed line outside the curve; the curve is equally far from it and the focus.`,
-      ],
-      [
-        "$p$",
-        r`The signed distance from the vertex to the focus, along the axis of symmetry.`,
+        "focus",
+        "$p$ is the signed distance from the vertex to the focus, along the axis of symmetry.",
       ],
     ],
     method: [

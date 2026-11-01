@@ -7,16 +7,7 @@ export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
     goal: "Write a sine, cosine or tangent of an angle using the sides of the smaller right triangle made by an altitude.",
     intuition:
       "The altitude from the right angle splits a right triangle into two smaller right triangles. Each shares an acute angle with the whole triangle, so that angle can be read in the small triangle, using that triangle's own sides.",
-    terms: [
-      [
-        "altitude",
-        "A segment from a vertex perpendicular to the opposite side.",
-      ],
-      [
-        "opposite and adjacent",
-        "For an acute angle, the leg across from it and the leg next to it.",
-      ],
-    ],
+    terms: ["altitude", "opposite-side-angle", "adjacent-leg"],
     method: [
       "Find the small right triangle that has the angle.",
       "Mark the side opposite the angle, the side adjacent to it, and the hypotenuse in that triangle.",
@@ -29,13 +20,7 @@ export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
     goal: "Use the similar small triangle cut by a parallel segment to find the perimeter of the whole triangle.",
     intuition:
       "A segment parallel to one side of a triangle cuts off a small triangle with the same angles as the whole one, so the two are similar. Corresponding sides are in the same ratio, which is the whole side over the part cut off.",
-    terms: [
-      [
-        "similar triangles",
-        "Triangles with equal angles and sides in the same ratio.",
-      ],
-      ["scale factor", "The ratio of corresponding sides."],
-    ],
+    terms: ["similar-figures", "scale-factor"],
     method: [
       "Find the whole side along the cut: part plus remaining part.",
       "Divide the whole side by the part cut off for the scale factor.",
@@ -48,16 +33,7 @@ export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
     goal: "Decide which statement is not always true for two triangles formed by parallel segments.",
     intuition:
       "Parallel lines make equal angles with a transversal, and the angles at a shared vertex or across a crossing are equal. So the two triangles have the same angles and are similar. Having the same angles does not make them the same size.",
-    terms: [
-      [
-        "alternate interior angles",
-        "Equal angles on opposite sides of a transversal between parallel lines.",
-      ],
-      [
-        "AA similarity",
-        "Two pairs of equal angles make two triangles similar.",
-      ],
-    ],
+    terms: ["alternate-interior-angles", "aa-similarity"],
     method: [
       "Find the equal angles from the parallel lines and the shared or vertical angles.",
       "Conclude the triangles are similar and their sides are proportional.",
@@ -70,13 +46,7 @@ export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
     goal: "Find a leg or a hypotenuse of a similar triangle with equal legs, using a factor of $\\sqrt{2}$.",
     intuition:
       "A right triangle with equal legs has two $45^\\circ$ angles. Every such triangle has the same shape, so the hypotenuse is always the leg times $\\sqrt{2}$, which follows from the Pythagorean theorem.",
-    terms: [
-      [
-        "45-45-90 triangle",
-        "A right triangle with two equal legs and two angles of $45^\\circ$.",
-      ],
-      ["radical", "An expression with a root sign, such as $6\\sqrt{2}$."],
-    ],
+    terms: ["45-45-90-triangle", "radical"],
     method: [
       "Note that the similar triangle also has equal legs.",
       "For the hypotenuse, multiply a leg by $\\sqrt{2}$.",
@@ -89,13 +59,7 @@ export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
     goal: "Add the two heights from an angle of elevation and an angle of depression measured at the same point.",
     intuition:
       "A horizontal line through the viewing point splits the height of the object in two. Above the line, the angle of elevation makes a right triangle. Below it, the angle of depression makes another. Both have the same horizontal leg.",
-    terms: [
-      ["angle of elevation", "The angle above the horizontal when looking up."],
-      [
-        "angle of depression",
-        "The angle below the horizontal when looking down.",
-      ],
-    ],
+    terms: ["angle-of-elevation", "angle-of-depression"],
     method: [
       "Draw the horizontal line through the point and mark both angles from it.",
       "Use tangent: height equals the horizontal distance times the tangent of the angle.",
@@ -109,8 +73,11 @@ export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
     intuition:
       "Density tells how crowded a region is: people per square mile. A region with the most people may not be the most crowded if its area is large. To compare, divide each population by its area.",
     terms: [
-      ["population density", "The number of people per unit of area."],
-      ["rate", "A quotient that compares two quantities with different units."],
+      [
+        "density",
+        "Population density is the number of people per unit of area.",
+      ],
+      "rate",
     ],
     method: [
       "Divide each population by its area.",

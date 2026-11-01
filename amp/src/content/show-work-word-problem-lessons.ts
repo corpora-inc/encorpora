@@ -14,13 +14,10 @@ const entries: WorkEntry[] = [
     intuition:
       "If each box costs 5 dollars, then 2 boxes cost $5\\times2$, 3 boxes cost $5\\times3$, and $c$ boxes cost $5c$ dollars. A coupon worth 2.50 dollars is taken off the total once, so the cost becomes $5c-2.50$, not $(5-2.50)c$.",
     terms: [
+      "expression",
       [
-        "expression",
-        "A calculation written with numbers, operations and a letter that stands for a number, such as $5c-2.50$.",
-      ],
-      [
-        "work backward",
-        "Undo the last operation first: add back the coupon, then divide by the price.",
+        "inverse-operation",
+        "Working backward undoes the last operation first: add back the coupon, then divide by the price.",
       ],
     ],
     method: [
@@ -71,11 +68,12 @@ const entries: WorkEntry[] = [
     intuition:
       "30% means 30 out of every 100, the fraction $\\frac{30}{100}=\\frac{3}{10}$. Of 50 states, $\\frac{3}{10}$ is 15. Going the other way, 20 of 50 is $\\frac{20}{50}=\\frac{40}{100}$, which is 40%.",
     terms: [
-      ["percent", "A rate per 100: $p\\%$ means $\\frac{p}{100}$."],
+      "percent",
       [
-        "part and whole",
+        "part",
         "The part is the count you have; the whole is the total the percent is taken of.",
       ],
+      "whole",
     ],
     method: [
       "Write $p\\%$ as $\\frac{p}{100}$ and simplify.",
@@ -125,10 +123,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "Plan A charges 25 dollars plus 0.40 dollars per mile, so $m$ miles cost $25+0.40m$. Plan B charges 40 dollars plus 0.20 dollars per mile: $40+0.20m$. Plan A costs less when its cost is smaller: $25+0.40m<40+0.20m$.",
-    terms: [
-      ["fixed fee", "The amount charged no matter how much is used."],
-      ["rate", "The amount charged for each mile, hour or unit used."],
-    ],
+    terms: ["fixed-cost", "rate"],
     method: [
       "Write each plan's cost: fee plus rate times the variable.",
       "Write the comparison asked for: less than is $<$, more than is $>$, with plan A's cost on the side of the plan named first.",

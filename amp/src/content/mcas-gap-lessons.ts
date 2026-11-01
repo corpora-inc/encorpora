@@ -12,13 +12,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Decide which multiplication and division equations are true, with the result written on either side.",
     intuition:
       "An equation is true when both sides name the same number. A multiplication fact and its division facts say the same thing: if $6\\times8=48$ then $48\\div6=8$ and $48\\div8=6$. So you can test any division by multiplying the answer back.",
-    terms: [
-      ["quotient", "The answer to a division, such as 8 in $48\\div6=8$."],
-      [
-        "fact family",
-        "The multiplication and division equations that use the same three numbers.",
-      ],
-    ],
+    terms: ["quotient", "fact-family"],
     method: [
       "Find the side with the operation. It can be on either side: $7=63\\div9$ says the same as $63\\div9=7$.",
       "For a division, multiply the quotient by the divisor. The result must be the dividend.",
@@ -33,10 +27,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "Rounding to the nearest hundred moves a number to the closest multiple of 100. The halfway point decides: numbers from 50 below a hundred up to 49 above it round to that hundred, so 250 rounds to 300 but 249 rounds to 200.",
     terms: [
-      [
-        "nearest hundred",
-        "The multiple of 100 that is closest to the number. A number exactly halfway between two hundreds rounds up.",
-      ],
+      ["round", "To the nearest hundred means to the closest multiple of 100."],
     ],
     method: [
       "Find the two hundreds the number lies between.",
@@ -51,13 +42,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the prime numbers in a list, or the factors of a number that include no multiples of it.",
     intuition:
       "A factor of a number divides it with nothing left over. A prime number has exactly two factors, 1 and itself, so a number with any other factor is composite. A multiple of a number, such as 128 for 64, is larger than it and is never a factor.",
-    terms: [
-      [
-        "prime number",
-        "A whole number greater than 1 whose only factors are 1 and itself.",
-      ],
-      ["factor", "A whole number that divides another with no remainder."],
-    ],
+    terms: ["prime-number", "factor-number"],
     method: [
       "For a prime question, look for a small factor: 2 for an even number, 3 when the digits add to a multiple of 3, 5 for a last digit of 0 or 5, then 7.",
       "For a factor question, divide the number by each candidate. Keep it only when the division leaves no remainder.",
@@ -71,13 +56,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the equations that find the unknown in a times-as-many or more-than story, with the larger or the smaller amount unknown.",
     intuition:
       "A story about “times as many” has the multiplication and the two related divisions. A story about “more than” has the addition and the two related subtractions. Each true equation is one of these, and an equation that mixes the operations is not.",
-    terms: [
-      [
-        "times as many",
-        "A comparison by multiplication: 4 times as many as 12 is $4\\times12$.",
-      ],
-      ["more than", "A comparison by addition: 4 more than 12 is $12+4$."],
-    ],
+    terms: ["times-as-many", "more-than"],
     method: [
       "Decide whether the story compares by multiplication or by addition, and which amount the letter stands for.",
       "Find the letter's value. When the larger amount is given, divide or subtract to find the smaller one.",
@@ -91,12 +70,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Decide which stated products of a three-digit and a one-digit number are correct.",
     intuition:
       "Multiplying place by place splits a number into hundreds, tens and ones, multiplies each part, then adds. Mistakes come from forgetting to add a regrouped ten or hundred, or from putting a part in the wrong place.",
-    terms: [
-      [
-        "regroup",
-        "Carry ten ones to the tens place, or ten tens to the hundreds place.",
-      ],
-    ],
+    terms: ["regroup"],
     method: [
       "Split the three-digit number into hundreds, tens and ones.",
       "Multiply each part by the one-digit number: for $453\\times6$ that is $2{,}400+300+18$.",
@@ -111,10 +85,10 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "The volume of a rectangular prism is its length times its width times its height, in cubic units. Volume adds: two prisms together hold the sum of their volumes.",
     terms: [
-      ["volume", "The number of unit cubes that fill a solid."],
+      "volume",
       [
-        "cubic centimeter",
-        "The volume of a cube whose edges are 1 centimeter.",
+        "unit-cube",
+        "A cubic centimeter is the volume of a unit cube with 1 cm edges.",
       ],
     ],
     method: [
@@ -130,20 +104,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the true statements that compare counts as part to part, part to whole or whole to part.",
     intuition:
       "A ratio compares two quantities in a stated order, and the order matters: 5 red to 12 blue is $5:12$, not $12:5$. A part-to-whole ratio uses the total as its second number, and a whole-to-part ratio uses it as the first.",
-    terms: [
-      [
-        "part-to-part ratio",
-        "Compares one group with another group, such as red to blue.",
-      ],
-      [
-        "part-to-whole ratio",
-        "Compares one group with the total of all groups.",
-      ],
-      [
-        "equal ratios",
-        "Ratios such as $2:5$ and $4:10$ whose numbers can both be multiplied or divided by one number to match.",
-      ],
-    ],
+    terms: ["part-to-part-ratio", "part-to-whole-ratio", "equivalent-ratios"],
     method: [
       "Write each count and the total of all the objects.",
       "Put the counts in the order the words give, first quantity first.",
@@ -157,10 +118,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the true division equations with two-digit divisors and multidigit dividends.",
     intuition:
       "A quotient is correct when multiplying it by the divisor gives back the dividend. An estimate with friendly numbers shows whether the size of the quotient is right before any exact check.",
-    terms: [
-      ["dividend", "The number being divided."],
-      ["divisor", "The number you divide by."],
-    ],
+    terms: ["dividend", "divisor"],
     method: [
       "Estimate: round the divisor and dividend to friendly numbers and divide to see the size of the quotient.",
       "Multiply the stated quotient by the divisor, place by place.",
@@ -174,9 +132,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the true statements about the cubes, count and volume of a prism packed with cubes of unit-fraction edge.",
     intuition:
       "A cube with edge $\\frac{1}{n}$ unit needs $n$ of them to span 1 unit. Its volume is $\\frac{1}{n^{3}}$ cubic unit, because it takes $n\\times n\\times n$ of them to make a cube of edge 1. Counting the small cubes and multiplying the edge lengths give the same volume.",
-    terms: [
-      ["unit fraction", "A fraction with numerator 1, such as $\\frac{1}{4}$."],
-    ],
+    terms: ["unit-fraction"],
     method: [
       "Divide each edge of the prism by the cube's edge to count the cubes along it.",
       "Multiply the three counts to find the number of cubes.",
@@ -190,16 +146,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the questions that expect different answers from different people, items or times.",
     intuition:
       "A statistical question has an answer that varies, so you need to collect data to answer it and the answer describes the whole spread. A question with one fixed answer, or about one person on one day, is not statistical.",
-    terms: [
-      [
-        "statistical question",
-        "A question that you expect to have different answers, so you must collect data to answer it.",
-      ],
-      [
-        "variability",
-        "How much the values in a set of data differ from one another.",
-      ],
-    ],
+    terms: ["statistical-question", "variability"],
     method: [
       "Imagine asking the question of many people or on many days.",
       "If the answers would be the same every time, it is not statistical.",
@@ -213,13 +160,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Check stated speeds in miles per hour by dividing fractional distances by fractional times.",
     intuition:
       "A speed in miles per hour is the distance divided by the time. When both are fractions or mixed numbers, write them as fractions and divide by multiplying by the reciprocal. The reciprocal division in the wrong order gives hours per mile, a different rate.",
-    terms: [
-      ["unit rate", "The amount for one unit, such as miles for 1 hour."],
-      [
-        "reciprocal",
-        "The fraction turned upside down: the reciprocal of $\\frac{3}{4}$ is $\\frac{4}{3}$.",
-      ],
-    ],
+    terms: ["unit-rate", "reciprocal"],
     method: [
       "Write each mixed number as a fraction.",
       "Divide the distance by the time: multiply the distance by the reciprocal of the time.",
@@ -233,9 +174,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the expressions equal to a stated fraction by counting negative signs and checking the fraction's orientation.",
     intuition:
       "A negative sign can sit in the numerator, in the denominator or in front, and all three places give the same value: $\\frac{-3}{4}=\\frac{3}{-4}=-\\frac{3}{4}$. Two negative signs cancel, because multiplying by $-1$ twice returns the original value.",
-    terms: [
-      ["opposite", "The number with the same size on the other side of 0."],
-    ],
+    terms: ["opposite-number"],
     method: [
       "Count the negative signs in the numerator, the denominator and the front.",
       "An odd count gives a negative value. An even count gives a positive value.",
@@ -249,7 +188,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the items whose selling price is correct for a stated percent above or below the cost.",
     intuition:
       "A percent of the cost is a part of the cost: 40 percent of 50 is 20. A price 40 percent above cost adds that part, and a price 40 percent below cost subtracts it. The percent alone, or the percent added as dollars, are different amounts.",
-    terms: [["percent", "A rate per 100: 40 percent is $\\frac{40}{100}$."]],
+    terms: ["percent"],
     method: [
       "Find the stated percent of the cost: multiply the cost by the percent over 100.",
       "Add it for a price above the cost, or subtract it for a price below.",
@@ -263,16 +202,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the rational numbers among radicals, or among sums, products and powers of roots and $\\pi$.",
     intuition:
       "A rational number is a ratio of two integers, and an irrational number is not. The square root of a perfect square is a whole number, so it is rational. A rational number plus an irrational number is irrational, but two irrational numbers can combine to a rational one: $\\sqrt{2}\\cdot\\sqrt{8}=4$.",
-    terms: [
-      [
-        "rational number",
-        "A number that can be written as a ratio of two integers.",
-      ],
-      [
-        "irrational number",
-        "A number that cannot be written as a ratio of two integers, such as $\\pi$ or $\\sqrt{2}$.",
-      ],
-    ],
+    terms: ["rational-number", "irrational-number"],
     method: [
       "Simplify each expression. Evaluate roots of perfect squares and perfect cubes.",
       "For a product of roots, multiply under one root and check for a perfect square. Simplify powers: $\\left(\\sqrt{a}\\right)^{2}=a$ and $\\left(\\sqrt[3]{a}\\right)^{3}=a$, but $\\left(\\sqrt{a}\\right)^{3}=a\\sqrt{a}$ keeps the root and $\\pi^{2}$ is irrational.",
@@ -287,11 +217,11 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "Multiplying by 10 moves the decimal point one place right, and multiplying by $10^{-1}$ moves it one place left. A positive exponent makes the number larger and a negative exponent makes it smaller but still positive.",
     terms: [
+      "scientific-notation",
       [
-        "scientific notation",
-        "A number written as a number from 1 up to 10 times a power of 10, such as $2\\times10^{4}$.",
+        "standard-form-number",
+        "The standard numeral for $2 \\times 10^4$ is 20,000.",
       ],
-      ["standard numeral", "The number written with digits, such as 20,000."],
     ],
     method: [
       "Look at the sign of the exponent: positive moves the decimal point right, negative moves it left.",
@@ -306,13 +236,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Find the $y$-intercept of each linear table and choose those above or below a stated $y$-intercept.",
     intuition:
       "The $y$-intercept is the value of $y$ at $x=0$. In a linear table $y$ changes by the same amount for each step in $x$, so you can step backward from any row to $x=0$.",
-    terms: [
-      [
-        "$y$-intercept",
-        "The value of $y$ when $x=0$, where the graph crosses the $y$-axis.",
-      ],
-      ["slope", "The change in $y$ for each increase of 1 in $x$."],
-    ],
+    terms: ["y-intercept", "slope"],
     method: [
       "Find the slope: the change in $y$ divided by the change in $x$ between two rows.",
       "If $x=0$ is listed, read $y$. Otherwise move back from a row to $x=0$, changing $y$ by the slope for each step.",
@@ -326,12 +250,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the two values of $x$ that make a quadratic expression equal to 0.",
     intuition:
       "A product is 0 only when one of its factors is 0, so a factored quadratic is 0 at the value that zeroes each factor. A value is a zero of any expression if substituting it gives 0.",
-    terms: [
-      [
-        "zero of an expression",
-        "A value of $x$ for which the expression equals 0.",
-      ],
-    ],
+    terms: ["zero-of-a-function"],
     method: [
       "If the expression is factored, set each factor equal to 0 and solve.",
       "If it is not factored, factor it first or substitute each value and evaluate.",
@@ -345,16 +264,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "From a congruence statement, choose the true statements about corresponding sides and angles.",
     intuition:
       "Congruent triangles can be moved to fit exactly. In the statement $\\triangle ABC\\cong\\triangle QRP$ the letters match in order: $A$ with $Q$, $B$ with $R$, $C$ with $P$. Each angle matches the angle at its matching vertex, and each side matches the side between its matching vertices.",
-    terms: [
-      [
-        "corresponding parts",
-        "The sides and angles that match when one triangle is placed on the other.",
-      ],
-      [
-        "congruent",
-        "Having the same size and shape, so corresponding parts are equal.",
-      ],
-    ],
+    terms: ["corresponding", "congruent"],
     method: [
       "Write the pairs of vertices by position in the statement.",
       "For an angle, find the matching vertex of the other triangle.",
@@ -371,9 +281,9 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     terms: [
       [
         "center",
-        "The point $(h,k)$ at the same distance from every point of the circle.",
+        "For the circle $(x - h)^2 + (y - k)^2 = r^2$, the center is $(h, k)$.",
       ],
-      ["radius", "The distance from the center to the circle."],
+      "radius",
     ],
     method: [
       "Read $h$ and $k$ with the opposite sign of the numbers in the parentheses, and take the square root of the right side for $r$.",
@@ -387,7 +297,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the true statements about how a cylinder's volume changes when its radius or height is multiplied.",
     intuition:
       "In $V=\\pi r^{2}h$ the radius appears twice, so multiplying it by a factor multiplies the volume by that factor squared. The height appears once, so multiplying it by a factor multiplies the volume by that factor.",
-    terms: [["factor", "The number a quantity is multiplied by."]],
+    terms: ["factor-number"],
     method: [
       "Replace the changed dimension by its factor times itself in the formula.",
       "Radius multiplied by $f$ multiplies the volume by $f^{2}$. Height multiplied by $g$ multiplies it by $g$.",
@@ -401,16 +311,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Give the distance from a circle's center to a point on the circle from its radius, diameter or circumference.",
     intuition:
       "A circle is every point at one fixed distance from its center, and that distance is the radius. So every point on the circle is a radius away from the center, wherever the point is.",
-    terms: [
-      [
-        "radius",
-        "The distance from the center of a circle to any point on it.",
-      ],
-      [
-        "diameter",
-        "The distance across a circle through its center, twice the radius.",
-      ],
-    ],
+    terms: ["radius", "diameter"],
     method: [
       "Find the radius. It is given, or half the diameter, or the circumference divided by $2\\pi$.",
       "The distance from the center to any point on the circle equals the radius.",
@@ -422,10 +323,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the statement that describes an expression with a parenthesized sum or difference, without evaluating it.",
     intuition:
       "Parentheses make the numbers inside one quantity. In $8\\times(24+2)$ the sum is one number and 8 multiplies all of it, so the expression is 8 times as large as the sum.",
-    terms: [
-      ["sum", "The result of adding."],
-      ["difference", "The result of subtracting."],
-    ],
+    terms: ["sum", "difference-subtract"],
     method: [
       "Name the quantity inside the parentheses, such as “the sum of 24 and 2”.",
       "Say what the operation outside does to it: “8 times as large as” for multiplication.",
@@ -438,12 +336,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Decide whether a linear function's slope is positive, negative or zero from how its output changes with its input.",
     intuition:
       "The slope is the change in the output divided by the change in the input. When both change in the same direction the quotient is positive, when they change in opposite directions it is negative, and when the output does not change it is zero.",
-    terms: [
-      [
-        "slope",
-        "The change in output divided by the change in input for a linear function.",
-      ],
-    ],
+    terms: ["slope"],
     method: [
       "Decide whether the input goes up or down.",
       "Decide whether the output goes up or down, or stays the same.",
@@ -456,16 +349,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Decide which figure maps onto itself in a turn of less than a full circle about its center.",
     intuition:
       "A figure has rotational symmetry if turning it less than 360° about a point leaves it looking the same. A rectangle looks the same after a half turn. A kite or an isosceles trapezoid has a line of symmetry but no turn of less than 360° fits it back on itself.",
-    terms: [
-      [
-        "rotational symmetry",
-        "A turn of less than 360° about a center that maps a figure onto itself.",
-      ],
-      [
-        "line of symmetry",
-        "A line that splits a figure into two mirror images.",
-      ],
-    ],
+    terms: ["rotational-symmetry", "line-of-symmetry"],
     method: [
       "Picture the figure turning about its center.",
       "Test a half turn and a turn of $\\frac{360^\\circ}{n}$ for a figure with $n$ equal sides.",
@@ -478,7 +362,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Decide whether a product is greater than, less than or equal to a fraction factor without multiplying.",
     intuition:
       "Multiplying by a number is taking that many copies of a quantity. Fewer than one copy, a number between 0 and 1, makes the result smaller. Exactly one copy changes nothing. More than one copy makes it larger.",
-    terms: [["factor", "A number that is multiplied."]],
+    terms: ["factor-number"],
     method: [
       "Compare the other factor with 1.",
       "Greater than 1: the product is greater than the first factor. Equal to 1: equal. Between 0 and 1: less.",

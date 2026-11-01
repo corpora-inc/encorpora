@@ -14,13 +14,10 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "A table or a rule gives pairs of numbers, and a graph shows each pair as one dot. The first number of a pair is the distance across from the origin and the second is the distance up, so the pair $(2, 5)$ is not the pair $(5, 2)$. A correct graph has exactly one dot for every pair: no dot missing and no extra dot.",
     terms: [
+      "ordered-pair",
       [
-        "ordered pair",
-        "Two numbers in a fixed order, $(x, y)$: across first, then up.",
-      ],
-      [
-        "relationship",
-        "A rule that gives $y$ from $x$, such as '$y$ is 1.5 times $x$' or '$y$ is 5 less than $x$'.",
+        "rule",
+        "Here the relationship is a rule that gives $y$ from $x$, such as $y$ is 1.5 times $x$.",
       ],
     ],
     method: [
@@ -68,13 +65,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "Start at the origin where the axes cross. The first number moves you across: right if it is positive, left if it is negative. The second moves you up if positive and down if negative. The two signs together decide the quadrant: for example, both negative puts the point down and to the left.",
-    terms: [
-      [
-        "quadrant",
-        "One of the four regions the axes cut the plane into; the signs of $x$ and $y$ decide which.",
-      ],
-      ["origin", "The point $(0, 0)$ where the $x$-axis and $y$-axis cross."],
-    ],
+    terms: ["quadrant", "origin"],
     method: [
       "Read $x$ first and $y$ second. When distances are given, 'left of the $y$-axis' means $x$ is negative and 'below the $x$-axis' means $y$ is negative.",
       "Name the quadrant from the two signs and rule out graphs whose point is in another quadrant.",
@@ -120,13 +111,10 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "Moving a graph does not change its shape, only its position, so pick one point you can read, such as a vertex or an intercept, and follow where it goes. Adding to the output $f(x)$ lifts every point; subtracting lowers it. A number inside the parentheses works on the input, so it acts backward: $f(x - 2)$ needs $x$ to be 2 larger to get the old output, so the graph moves 2 to the right.",
     terms: [
+      "translation",
       [
         "translation",
-        "A move of the whole graph without turning or stretching it.",
-      ],
-      [
-        "$f(x - h) + k$",
-        "The graph of $f$ moved $h$ units right (left if $h < 0$) and $k$ units up (down if $k < 0$).",
+        "$f(x-h)+k$ moves the graph of $f$ right $h$ and up $k$; a negative $h$ or $k$ reverses that direction.",
       ],
     ],
     method: [
