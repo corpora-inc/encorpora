@@ -1,3 +1,4 @@
+import { nounFor } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -356,7 +357,7 @@ function arcSectorDerivation(r: Random): Built {
       [1, 6],
     ] as const);
     const rad = r(2, 9);
-    const area = (t: string) => `${M(t)} square centimeters`;
+    const area = (t: string) => `${M(t)} ${nounFor(t, "square centimeter")}`;
     const correct = area(piMul(p * rad * rad, 2 * q));
     return {
       variant,
@@ -396,7 +397,7 @@ function arcSectorDerivation(r: Random): Built {
   const rad = r(2, 10);
   const thetaText = `${theta2 / 2}`;
   const quarters = (v: number) => `${v / 4}`; // exact: v is a count of quarters
-  const area = (t: string) => `${M(t)} square centimeters`;
+  const area = (t: string) => `${M(t)} ${nounFor(t, "square centimeter")}`;
   const correctQ = theta2 * rad * rad;
   return {
     variant,
@@ -405,7 +406,7 @@ function arcSectorDerivation(r: Random): Built {
     explanation: [
       `Area $=\\frac{\\theta}{2\\pi}\\cdot\\pi r^2=\\frac{1}{2}\\theta r^2$, because the $\\pi$ in the numerator cancels the $\\pi$ in the denominator.`,
       `$\\frac{1}{2}\\times${thetaText}\\times${rad}^2=${quarters(correctQ)}$.`,
-      `The sector's area is ${quarters(correctQ)} square centimeters.`,
+      `The sector's area is ${quarters(correctQ)} ${nounFor(quarters(correctQ), "square centimeter")}.`,
     ],
     correct: area(quarters(correctQ)),
     wrong: [

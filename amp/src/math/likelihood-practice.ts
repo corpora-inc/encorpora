@@ -1,3 +1,4 @@
+import { count } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { numberLine } from "./scene/author";
 import { defineAxis } from "./variation/axes";
@@ -298,7 +299,7 @@ export const probabilityLine = chainFamily({
       options,
       hint: `The chance is the number of successes out of all ${e.n} ${e.unit}. Find how many ${e.unit} are successes (${e.event}), then count that many equal spaces up from 0.`,
       explanation: [
-        `${e.k} of the ${e.n} ${e.unit} are successes (${e.event}), so the chance is ${e.k} out of ${e.n}, which is $\\frac{${e.k}}{${e.n}}$.`,
+        `${e.k} of the ${e.n} ${e.unit} ${e.k === 1 ? "is a success" : "are successes"} (${e.event}), so the chance is ${e.k} out of ${e.n}, which is $\\frac{${e.k}}{${e.n}}$.`,
         `The line from 0 to 1 has ${e.n} equal spaces, so $\\frac{${e.k}}{${e.n}}$ is ${e.k} ${e.k === 1 ? "space" : "spaces"} up from 0.`,
         `That is point $${letters[m.correct]}$.`,
       ],
@@ -333,16 +334,18 @@ interface ChanceModel {
   correct: number;
   total: number;
 }
+/** "1 purple marble, 7 green marbles and 1 blue marble": each count names
+ * its own noun, so every count agrees with it. */
 const describe = (m: ChanceModel, c: Candidate) =>
-  m.device === "bag"
-    ? c.counts
-        .map((v, i) => `${v} ${m.colorsUsed[i]}`)
-        .join(", ")
-        .replace(/, ([^,]*)$/, " and $1") + " marbles"
-    : c.counts
-        .map((v, i) => `${v} ${m.colorsUsed[i]}`)
-        .join(", ")
-        .replace(/, ([^,]*)$/, " and $1") + " sections";
+  c.counts
+    .map((v, i) =>
+      count(
+        v,
+        `${m.colorsUsed[i]} ${m.device === "bag" ? "marble" : "section"}`,
+      ),
+    )
+    .join(", ")
+    .replace(/, ([^,]*)$/, " and $1");
 export const equalChance = chainFamily({
   template: equalChanceTemplate,
   axes: chanceAxes,

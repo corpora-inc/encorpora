@@ -1,3 +1,4 @@
+import { count } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -69,8 +70,6 @@ function random(id: string, seed: string): Random {
 const pick = <T>(r: Random, xs: readonly T[]): T => xs[r(0, xs.length - 1)]!;
 const PLACE = ["ones", "tenths", "hundredths", "thousandths"] as const;
 const UNIT = ["1", "1/10", "1/100", "1/1000"] as const;
-const count = (n: number, one: string, many: string) =>
-  `${n} ${n === 1 ? one : many}`;
 /** Decimal places shown in a written decimal. */
 const placesOf = (s: string) => (s.includes(".") ? s.split(".")[1]!.length : 0);
 

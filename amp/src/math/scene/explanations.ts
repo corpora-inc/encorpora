@@ -1,3 +1,4 @@
+import { article } from "../agreement";
 import { act, areaModel, lessonStep, numberLine, step } from "./author";
 import { areaScale } from "./components/area-model";
 import type { Scene } from "./spec";
@@ -90,7 +91,7 @@ export function partialProducts(n: number, m: number): Scene {
       title,
       steps: [
         step(
-          `${n} × ${m} is the area of a ${n}-by-${m} rectangle.`,
+          `${n} × ${m} is the area of ${article(n)} ${n}-by-${m} rectangle.`,
           act.highlight("area.region"),
         ),
         lessonStep(
@@ -108,7 +109,7 @@ export function partialProducts(n: number, m: number): Scene {
     title,
     steps: [
       step(
-        `${n} × ${m} is the area of a ${n}-by-${m} rectangle.`,
+        `${n} × ${m} is the area of ${article(n)} ${n}-by-${m} rectangle.`,
         act.highlight("area.region"),
       ),
       step(

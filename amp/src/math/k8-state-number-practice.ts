@@ -1,3 +1,4 @@
+import { count as plural } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -187,8 +188,6 @@ const dl = (cents: number) => (cents / 100).toFixed(2);
 /** A dollar amount for prose: whole dollars stay whole. */
 const dollarsText = (cents: number) =>
   cents % 100 === 0 ? `${cents / 100}` : dl(cents);
-const plural = (n: number, one: string, many = `${one}s`) =>
-  `${n} ${n === 1 ? one : many}`;
 
 /** Four distinct choices: the correct one plus three distinct wrong labels. */
 function choicesFrom(

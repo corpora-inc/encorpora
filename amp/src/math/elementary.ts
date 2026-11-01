@@ -4,7 +4,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
-import { wasWere, hasHave, isAre } from "./agreement.js";
+import { count, wasWere, hasHave, isAre } from "./agreement.js";
 const definitions = [
   [
     "join-within-10",
@@ -195,9 +195,9 @@ export function generateElementaryProblem(
       const a = r(1, 8),
         b = r(1, 10 - a);
       figure = { kind: "ten-frame", first: a, second: b, capacity: 10 };
-      prompt = `There are ${a} round counters and ${b} square counters. How many counters altogether?`;
+      prompt = `There ${isAre(a)} ${count(a, "round counter")} and ${count(b, "square counter")}. How many counters altogether?`;
       answer = a + b;
-      hint = `Say ${a} for the ${a} round counters. Then count on one number for each of the ${b} square counters.`;
+      hint = `Say ${a} for the ${count(a, "round counter")}. Then count on one number for each of the ${count(b, "square counter")}.`;
       explanation = [
         `The two parts are ${a} and ${b}.`,
         `Join the parts: ${a} + ${b} = ${answer}.`,

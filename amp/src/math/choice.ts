@@ -1,3 +1,4 @@
+import { count, isAre } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -79,7 +80,7 @@ export function generateChoiceProblem(
       };
       hint = `Cut each of the ${d} pieces of ${n}/${d} into the same number of smaller pieces. The shaded amount stays the same, so the shaded count and the whole count grow by the same factor.`;
       explanation = [
-        `The whole has ${d} equal pieces, and ${n} of them are shaded.`,
+        `The whole has ${count(d, "equal piece")}, and ${n} of them ${isAre(n)} shaded.`,
         `Cut each piece into ${k} equal pieces. The whole has ${d} × ${k} = ${d * k} pieces; the shaded part has ${n} × ${k} = ${n * k}.`,
         `No area was added or removed, so ${n}/${d} = ${n * k}/${d * k}. Both counts scale together.`,
       ];

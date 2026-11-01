@@ -1,3 +1,4 @@
+import { count } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -741,7 +742,7 @@ function twoWayAssociation(r: Random): Draft {
         ? { label: yesLabel, correct: true as const }
         : {
             label: yesLabel,
-            feedback: `The percents differ by only ${Math.abs(p0 - p1)} points: about the same.`,
+            feedback: `The percents differ by only ${count(Math.abs(p0 - p1), "point")}: about the same.`,
           },
       associated
         ? {

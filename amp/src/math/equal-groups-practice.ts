@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { count, isAre } from "./agreement.js";
 import { partialProducts, partialProductsHint } from "./scene/explanations.js";
 import type { Step } from "./scene/timeline.js";
 import { equalGroupsDefinitions } from "../content/equal-groups-definitions.js";
@@ -68,10 +69,10 @@ export function generateEqualGroupsProblem(
         figure = grouped(total, size, "visitors");
         hint = `How many groups of ${size} fit in ${total}? If anyone is left over, they still need a van.`;
         explanation = [
-          `${complete} full vans seat ${size * complete} visitors.`,
+          `${count(complete, "full van")} ${complete === 1 ? "seats" : "seat"} ${count(size * complete, "visitor")}.`,
           left
-            ? `${left} visitors still need seats, so use one more van: ${answer} vans.`
-            : `No visitors remain, so exactly ${answer} vans are enough.`,
+            ? `${count(left, "visitor")} still ${left === 1 ? "needs a seat" : "need seats"}, so use one more van: ${count(answer, "van")}.`
+            : `No visitors remain, so exactly ${count(answer, "van")} ${answer === 1 ? "is" : "are"} enough.`,
         ];
       } else {
         prompt = `You have ${total} beads. Each full kit needs exactly ${size} beads. ${templateId === "full-kits" ? "How many full kits can you make?" : "After making as many full kits as possible, how many beads are left?"}`;
@@ -132,8 +133,8 @@ export function generateEqualGroupsProblem(
           ? "The array is a single row. Count its squares one at a time."
           : `There are ${rows} rows. Count the squares in one row; every row has the same number.`;
       explanation = [
-        `There are ${rows} rows with ${columns} squares in each row.`,
-        `${rows} × ${columns} = ${answer} unit squares.`,
+        `There ${isAre(rows)} ${count(rows, "row")} with ${count(columns, "square")} in each row.`,
+        `${rows} × ${columns} = ${count(answer, "unit square")}.`,
       ];
       break;
     }

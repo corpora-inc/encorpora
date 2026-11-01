@@ -1,3 +1,4 @@
+import { count } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, random } from "./distribution-practice";
 
@@ -441,7 +442,7 @@ export function loanTotalCostCase(seed: string): FinanceCase {
       value: c(total),
       problem: finish(m, seed, r, {
         prompt: `${who} borrows ${usd(c(L.P))} to ${thing}. The loan is repaid with ${L.n} equal monthly payments of ${usd(c(L.p))}. How much does ${who} pay back in all?`,
-        hint: `Each of the ${L.n} months, ${who} pays ${usd(c(L.p))}. Total paid is the payment times the number of payments.`,
+        hint: `Each of the ${count(L.n, "month")}, ${who} pays ${usd(c(L.p))}. Total paid is the payment times the number of payments.`,
         explanation: [
           `${L.n} payments of ${usd(c(L.p))} total ${L.n} × ${L.p} = ${group(total)} dollars.`,
           `That is more than the ${usd(c(L.P))} borrowed; the extra, ${usd(c(total - L.P))}, is the cost of borrowing.`,
@@ -517,7 +518,7 @@ export function loanTotalCostCase(seed: string): FinanceCase {
       given: { P: L.P, n1, p1, n2, p2 },
       value: c(diff),
       problem: finish(m, seed, r, {
-        prompt: `${who} can borrow ${usd(c(L.P))} to ${thing} at the same interest rate for two different terms. Over ${n1} months the payment is ${usd(c(p1))}. Over ${n2} months the payment is ${usd(c(p2))}. How much more is the total finance charge for the longer loan?`,
+        prompt: `${who} can borrow ${usd(c(L.P))} to ${thing} at the same interest rate for two different terms. Over ${count(n1, "month")} the payment is ${usd(c(p1))}. Over ${count(n2, "month")} the payment is ${usd(c(p2))}. How much more is the total finance charge for the longer loan?`,
         hint: `For each loan, multiply the payment by its number of months. Both loans borrow ${usd(c(L.P))}, so the difference in finance charges equals the difference in totals repaid.`,
         explanation: [
           `${n1}-month loan: ${n1} × ${p1} = ${group(p1 * n1)} dollars repaid.`,
@@ -560,8 +561,8 @@ export function loanTotalCostCase(seed: string): FinanceCase {
       given: { P: L.P, n: L.n, p1, p2 },
       value: c(diff),
       problem: finish(m, seed, r, {
-        prompt: `${who} borrows ${usd(c(L.P))} for ${L.n} months. At ${a1}% interest the monthly payment is ${usd(c(p1))}. At ${a2}% interest it is ${usd(c(p2))}. How much more does ${who} repay in total with the ${a2}% loan?`,
-        hint: `The loans last the same ${L.n} months. The monthly payments differ by ${usd(c(p2 - p1))}; think about how many times that difference is paid.`,
+        prompt: `${who} borrows ${usd(c(L.P))} for ${count(L.n, "month")}. At ${a1}% interest the monthly payment is ${usd(c(p1))}. At ${a2}% interest it is ${usd(c(p2))}. How much more does ${who} repay in total with the ${a2}% loan?`,
+        hint: `The loans last the same ${count(L.n, "month")}. The monthly payments differ by ${usd(c(p2 - p1))}; think about how many times that difference is paid.`,
         explanation: [
           `${a1}% loan: ${L.n} × ${p1} = ${group(L.n * p1)} dollars.`,
           `${a2}% loan: ${L.n} × ${p2} = ${group(L.n * p2)} dollars.`,
@@ -597,7 +598,7 @@ export function loanTotalCostCase(seed: string): FinanceCase {
       value: c(L.p),
       problem: finish(m, seed, r, {
         prompt: `${who} borrows ${usd(c(L.P))} to ${thing} and repays it in ${L.n} equal monthly payments. The finance charge is ${usd(c(F))}. How much is each monthly payment?`,
-        hint: `Total repaid is the amount borrowed plus the ${usd(c(F))} finance charge. Equal payments split that total across ${L.n} months.`,
+        hint: `Total repaid is the amount borrowed plus the ${usd(c(F))} finance charge. Equal payments split that total across ${count(L.n, "month")}.`,
         explanation: [
           `Total repaid = borrowed + finance charge = ${group(L.P)} + ${group(F)} = ${group(L.P + F)} dollars.`,
           `Monthly payment = ${group(L.P + F)} ÷ ${L.n} = ${group(L.p)} dollars.`,
@@ -1338,23 +1339,23 @@ export function savingsPlanGrowthCase(seed: string): FinanceCase {
           `${group(G - S)} ÷ ${d} = ${parseFloat(((G - S) / d).toFixed(3))}. The balance only grows at month ends, so use the next whole month: ${need}.`,
           `Check: after ${need} deposits ${group(S + d * need)} dollars is at least ${group(G)}.`,
         ],
-        correct: `${need} months`,
+        correct: `${count(need, "month")}`,
         wrong: [
           [
-            `${floorN} months`,
+            `${count(floorN, "month")}`,
             "After that many months the balance is still below the goal.",
           ],
           [
-            `${Math.ceil(G / d)} months`,
+            `${count(Math.ceil(G / d), "month")}`,
             "The starting amount already counts toward the goal; subtract it first.",
           ],
-          [`${need + 1} months`, "One fewer month is already enough."],
+          [`${count(need + 1, "month")}`, "One fewer month is already enough."],
           [
-            `${Math.max(need - 1, 1)} months`,
+            `${count(Math.max(need - 1, 1), "month")}`,
             "After that many months the balance is still below the goal.",
           ],
           [
-            `${need + 2} months`,
+            `${count(need + 2, "month")}`,
             "A smaller number of months already reaches the goal.",
           ],
         ],
@@ -1369,7 +1370,7 @@ export function savingsPlanGrowthCase(seed: string): FinanceCase {
       given: { S, G, n },
       value: c(d),
       problem: finish(m, seed, r, {
-        prompt: `${who} has ${usd(c(S))} and wants exactly ${usd(c(G))} in ${n} months, with no interest counted. ${who} will make ${n} equal monthly deposits. How much should each deposit be?`,
+        prompt: `${who} has ${usd(c(S))} and wants exactly ${usd(c(G))} in ${count(n, "month")}, with no interest counted. ${who} will make ${n} equal monthly deposits. How much should each deposit be?`,
         hint: `Subtract the ${usd(c(S))} already saved from the ${usd(c(G))} goal, then share what is left equally among ${n} deposits.`,
         explanation: [
           `Still needed: ${G} − ${S} = ${group(G - S)} dollars.`,
@@ -1416,21 +1417,24 @@ export function savingsPlanGrowthCase(seed: string): FinanceCase {
           explanation: [
             `Plan B's lead at the start: ${SB} − ${SA} = ${SB - SA} dollars.`,
             `Plan A gains ${dA} − ${dB} = ${dA - dB} dollars per month on Plan B.`,
-            `${SB - SA} ÷ ${dA - dB} = ${k} months. Check: A holds ${SA} + ${k} × ${dA} = ${SA + k * dA} dollars and B holds ${SB} + ${k} × ${dB} = ${SB + k * dB} dollars.`,
+            `${SB - SA} ÷ ${dA - dB} = ${count(k, "month")}. Check: A holds ${SA} + ${k} × ${dA} = ${SA + k * dA} dollars and B holds ${SB} + ${k} × ${dB} = ${SB + k * dB} dollars.`,
           ],
-          correct: `${k} months`,
+          correct: `${count(k, "month")}`,
           wrong: [
-            [`${k + 1} months`, "At that many months Plan A is already ahead."],
             [
-              `${Math.max(k - 1, 1)} months`,
+              `${count(k + 1, "month")}`,
+              "At that many months Plan A is already ahead.",
+            ],
+            [
+              `${count(Math.max(k - 1, 1), "month")}`,
               "At that many months Plan B is still ahead.",
             ],
             [
-              `${Math.round((SB - SA) / dA) || k + 2} months`,
+              `${count(Math.round((SB - SA) / dA) || k + 2, "month")}`,
               "Plan A closes the gap by the difference between the deposits, not by its whole deposit.",
             ],
             [
-              `${k * 2} months`,
+              `${count(k * 2, "month")}`,
               "Plan A gains the difference in deposits each month; divide the starting gap by that difference.",
             ],
           ],

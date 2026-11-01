@@ -1,3 +1,4 @@
+import { count as plural } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -201,8 +202,6 @@ function powerOf(b: number, n: number) {
   for (let k = 0, v = 1; v <= n; k++, v *= b) if (v === n) return k;
   return undefined;
 }
-const plural = (n: number, one: string, many = `${one}s`) =>
-  `${n} ${n === 1 ? one : many}`;
 const words = ["zero", "one", "two", "three", "four", "five", "six", "seven"];
 type Choice = { label: string; correct?: true; feedback?: string };
 type Draft = {

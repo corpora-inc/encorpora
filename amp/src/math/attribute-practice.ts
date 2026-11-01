@@ -1,3 +1,4 @@
+import { count } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -66,8 +67,6 @@ function shuffle<T>(r: Random, xs: T[]): T[] {
   return xs;
 }
 const cap = (s: string) => s[0]!.toUpperCase() + s.slice(1);
-const count = (n: number, one: string, many = `${one}s`) =>
-  `${n} ${n === 1 ? one : many}`;
 
 type Choice = { label: string; correct?: true; feedback?: string };
 type Draft = {

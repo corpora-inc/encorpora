@@ -1,3 +1,4 @@
+import { nounFor } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, random } from "./distribution-practice";
 import { defineAxis } from "./variation/axes";
@@ -955,7 +956,7 @@ function quadraticContext(r: R): Case {
       explanation: [
         `The axis of symmetry is $t=\\frac{-${b}}{2(-${a})}=${tex(tMax)}$.`,
         `Substitute: $h(${tex(tMax)})=${tex(hMax)}$.`,
-        `The greatest height is $${tex(hMax)}$ meters.`,
+        `The greatest height is $${tex(hMax)}$ ${nounFor(tex(hMax), "meter")}.`,
       ],
       data: { a, b, c, ask: "height" },
     };
@@ -970,7 +971,7 @@ function quadraticContext(r: R): Case {
         [b, ""],
       ])})$, which is 0 at $t=0$ and $t=${tex(q(b, a))}$.`,
       `The highest point is halfway between: $t=${tex(tMax)}$.`,
-      `$h(${tex(tMax)})=${tex(hMax)}$, so the greatest height is $${tex(hMax)}$ meters.`,
+      `$h(${tex(tMax)})=${tex(hMax)}$, so the greatest height is $${tex(hMax)}$ ${nounFor(tex(hMax), "meter")}.`,
     ],
     data: { a, b, c, ask: "height" },
   };

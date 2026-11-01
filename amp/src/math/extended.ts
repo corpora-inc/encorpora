@@ -5,7 +5,7 @@ import type {
   TemplateMetadata,
 } from "./contracts.js";
 import { exactDecimal, sweepChoose, sweepVariant } from "./number-domain-axes";
-import { isAre } from "./agreement.js";
+import { count, isAre } from "./agreement.js";
 export const generatorVersion = 1 as const;
 export const extendedTemplates: readonly TemplateMetadata[] = [
   [
@@ -409,7 +409,7 @@ export function generateExtendedProblem(
     case "simple-probability": {
       const red = r(1, 12),
         blue = r(1, 12);
-      prompt = `A bag contains ${red} red counters and ${blue} blue counters. Each counter is equally likely to be drawn. What is the probability of drawing a red counter in one draw?`;
+      prompt = `A bag contains ${count(red, "red counter")} and ${count(blue, "blue counter")}. Each counter is equally likely to be drawn. What is the probability of drawing a red counter in one draw?`;
       kind = "fraction";
       answer = fraction(red, red + blue);
       hint = `${red} of the counters ${isAre(red)} red, out of ${red} + ${blue} in all. Probability = red counters ÷ all counters.`;

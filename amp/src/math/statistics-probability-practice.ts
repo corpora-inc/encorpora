@@ -1,3 +1,4 @@
+import { nounFor } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -912,7 +913,7 @@ function theoreticalCase(r: Random): Built {
     const w = r(3, 20);
     const l = r(1, 8);
     const num = ev.ways * w - (36 - ev.ways) * l;
-    const correct = `$${frac(num, 36)}$ dollars`;
+    const correct = `$${frac(num, 36)}$ ${nounFor(frac(num, 36), "dollar")}`;
     const swapped = ev.ways * l - (36 - ev.ways) * w;
     return {
       variant,
@@ -923,26 +924,26 @@ function theoreticalCase(r: Random): Built {
         explanation: [
           `$P(\\text{win})=\\frac{${ev.ways}}{36}$ and $P(\\text{lose})=\\frac{${36 - ev.ways}}{36}$.`,
           `$E(X)=${w}\\cdot\\frac{${ev.ways}}{36}+(-${l})\\cdot\\frac{${36 - ev.ways}}{36}=\\frac{${ev.ways * w}-${(36 - ev.ways) * l}}{36}=\\frac{${num}}{36}$.`,
-          `In lowest terms, $E(X)=${frac(num, 36)}$ dollars per game.`,
+          `In lowest terms, $E(X)=${frac(num, 36)}$ ${nounFor(frac(num, 36), "dollar")} per game.`,
         ],
         choices: options(r, correct, [
           {
-            label: `$${frac(w - l, 2)}$ dollars`,
+            label: `$${frac(w - l, 2)}$ ${nounFor(frac(w - l, 2), "dollar")}`,
             feedback:
               "That averages the two payoffs as if they were equally likely. Weight each payoff by its probability.",
           },
           {
-            label: `$${frac(ev.ways * w, 36)}$ dollars`,
+            label: `$${frac(ev.ways * w, 36)}$ ${nounFor(frac(ev.ways * w, 36), "dollar")}`,
             feedback:
               "That leaves out the loss. Include the negative payoff times its probability.",
           },
           {
-            label: `$${frac(swapped, 36)}$ dollars`,
+            label: `$${frac(swapped, 36)}$ ${nounFor(frac(swapped, 36), "dollar")}`,
             feedback:
               "The probabilities are swapped: the winning payoff goes with the smaller number of favorable outcomes in this event.",
           },
           {
-            label: `$${num}$ dollars`,
+            label: `$${num}$ ${nounFor(num, "dollar")}`,
             feedback:
               "Divide the total by the 36 equally likely outcomes to get an expected value per game.",
           },
@@ -1015,7 +1016,7 @@ function theoreticalCase(r: Random): Built {
       explanation: [
         `$E(X)=0\\cdot P(0)+1\\cdot P(1)+2\\cdot P(2)+3\\cdot P(3)$.`,
         `The numerators give $0\\cdot${nums[0]}+1\\cdot${nums[1]}+2\\cdot${nums[2]}+3\\cdot${nums[3]}=${total}$ over ${denom}.`,
-        `$E(X)=\\frac{${total}}{${denom}}$${gcd(total, denom) > 1 ? `, which reduces to ${correct}` : ""} shots made out of 3, on average.`,
+        `$E(X)=\\frac{${total}}{${denom}}$${gcd(total, denom) > 1 ? `, which reduces to ${correct}` : ""} ${nounFor(gcd(total, denom) > 1 ? correct : `${total}/${denom}`, "shot")} made out of 3, on average.`,
       ],
       choices: options(r, correct, [
         {
@@ -1259,17 +1260,17 @@ function strategyCase(r: Random): Built {
           explanation: games
             .map(
               (g, i) =>
-                `Game $${names[i]}$: $${g.w}\\cdot${frac(g.k, g.d)}-${g.c}=${frac(nets[i]!.n, nets[i]!.d)}$ dollars.`,
+                `Game $${names[i]}$: $${g.w}\\cdot${frac(g.k, g.d)}-${g.c}=${frac(nets[i]!.n, nets[i]!.d)}$ ${nounFor(frac(nets[i]!.n, nets[i]!.d), "dollar")}.`,
             )
             .concat([
-              `The greatest expected net gain is ${bestText} dollars, so the answer is ${correct}.`,
+              `The greatest expected net gain is ${bestText} ${nounFor(bestText, "dollar")}, so the answer is ${correct}.`,
             ]),
           choices: names.map((name, i) =>
             i === bestIndex
               ? { label: `Game $${name}$`, correct: true as const }
               : {
                   label: `Game $${name}$`,
-                  feedback: `Game $${name}$ has expected net gain $${frac(nets[i]!.n, nets[i]!.d)}$ dollars, which is less than the best game's ${bestText} dollars.`,
+                  feedback: `Game $${name}$ has expected net gain $${frac(nets[i]!.n, nets[i]!.d)}$ ${nounFor(frac(nets[i]!.n, nets[i]!.d), "dollar")}, which is less than the best game's ${bestText} ${nounFor(bestText, "dollar")}.`,
                 },
           ),
         },
@@ -1299,7 +1300,7 @@ function strategyCase(r: Random): Built {
         answer: correct,
         hint: `Expected repair cost without the warranty = repair bill × probability of needing it: ${R} × $${frac(k, d)}$. Compare that expected cost with the ${price}-dollar price.`,
         explanation: [
-          `Expected cost without the warranty: $${R}\\cdot${frac(k, d)}=${exp}$ dollars (the other outcome costs 0).`,
+          `Expected cost without the warranty: $${R}\\cdot${frac(k, d)}=${exp}$ ${nounFor(exp, "dollar")} (the other outcome costs 0).`,
           `The warranty costs ${price} dollars.`,
           `${exp} dollars is ${buy ? "more" : "less"} than ${price} dollars, so on average ${buy ? "buying the warranty costs less." : "skipping the warranty costs less."}`,
         ],
@@ -1352,7 +1353,7 @@ function strategyCase(r: Random): Built {
       hint: `Expected value of the gamble: ${W} times $${frac(k, d)}$, plus the other payoff (−${-L}) times the leftover probability. Compare that total with the sure ${S}.`,
       explanation: [
         `The losing probability is $1-${frac(k, d)}=${frac(d - k, d)}$.`,
-        `Expected value of the gamble: $${W}\\cdot${frac(k, d)}+(${L})\\cdot${frac(d - k, d)}=${frac(num, d)}$ dollars.`,
+        `Expected value of the gamble: $${W}\\cdot${frac(k, d)}+(${L})\\cdot${frac(d - k, d)}=${frac(num, d)}$ ${nounFor(frac(num, d), "dollar")}.`,
         `${correct}`,
       ],
       choices: options(r, correct, [
@@ -1710,7 +1711,12 @@ const trialContexts = [
     measure: "mean quiz score",
     unit: "points",
   },
-  { a: "plant food $A$", b: "plant food $B$", measure: "mean growth", unit: "cm" },
+  {
+    a: "plant food $A$",
+    b: "plant food $B$",
+    measure: "mean growth",
+    unit: "cm",
+  },
   {
     a: "the warm-up routine",
     b: "no warm-up",

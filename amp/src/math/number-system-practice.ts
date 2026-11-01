@@ -1,3 +1,4 @@
+import { count as plural } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -132,8 +133,6 @@ const list = (items: (string | number)[]) =>
     : `${items.slice(0, -1).join(", ")} and ${items.at(-1)}`;
 const factorsOf = (n: number) =>
   Array.from({ length: n }, (_, i) => i + 1).filter((d) => n % d === 0);
-const plural = (n: number, one: string, many: string) =>
-  `${n} ${n === 1 ? one : many}`;
 const pick = <T>(r: Random, items: readonly T[]): T =>
   items[r(0, items.length - 1)]!;
 

@@ -1,3 +1,4 @@
+import { isAre } from "./agreement";
 import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import { MAX_STACK, stackHeights } from "./data-display-models.js";
@@ -2684,7 +2685,7 @@ function experimentProbability(r: Random): Built {
   const den = n * n;
   return {
     variant: "with-replacement",
-    prompt: `A box holds ${n} cards. ${red} of the cards are red and ${zero} of the cards are labeled 0. A card is drawn at random and put back. Then a second card is drawn. What is the probability that the first card is red and the second card is labeled 0? Give a fraction in simplest form.`,
+    prompt: `A box holds ${n} cards. ${red} of the cards ${isAre(red)} red and ${zero} of the cards ${isAre(zero)} labeled 0. A card is drawn at random and put back. Then a second card is drawn. What is the probability that the first card is red and the second card is labeled 0? Give a fraction in simplest form.`,
     answer: reduce(num, den),
     fraction: true,
     hint: `The first card is put back, so both draws are from the same ${n} cards. Find the probability of each draw separately, then multiply.`,
