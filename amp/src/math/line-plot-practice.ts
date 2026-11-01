@@ -182,7 +182,7 @@ function countQuestion(
       hint: `Look only to the right of ${mixedText(v, d)}, not at ${mixedText(v, d)} itself. Count every mark there.`,
       explanation: [
         `Each mark (×) is one ${context.item}, placed above its length. Lengths grow to the right.`,
-        `“Longer than ${mixedText(v, d)}” means to the right of ${mixedText(v, d)}. Marks at ${mixedText(v, d)} itself are not longer, so they do not count.`,
+        `“Longer than ${mixedText(v, d)}” means to the right of ${mixedText(v, d)}. Marks exactly at ${mixedText(v, d)} do not count, because they are not longer.`,
         `To the right of ${mixedText(v, d)}: ${longer.map(([x, c]) => `${c} at ${mixedText(x, d)}`).join(", ")}.`,
         longer.length > 1
           ? `Add the columns: ${longer.map(([, c]) => c).join(" + ")} = ${n}. So ${n} ${n === 1 ? `${context.item} is` : `${context.items} are`} longer than ${name(v)}.`
