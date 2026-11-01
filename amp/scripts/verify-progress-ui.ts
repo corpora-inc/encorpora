@@ -104,6 +104,37 @@ try {
       assert.ok(
         layout.footerBottom <= size.height && layout.body <= size.width,
       );
+      // A full page never leaves room for one more card (a phone used to
+      // show two cards above a card-sized gap).
+      if (
+        !(await page
+          .getByRole("button", { name: "Next ideas", exact: true })
+          .isDisabled())
+      ) {
+        const room = await page.evaluate(() => {
+          const stage = document.querySelector<HTMLElement>(
+            ".progress-card-stage",
+          )!;
+          const grid = stage.querySelector(".progress-cards")!;
+          const cards = [...grid.querySelectorAll(".progress-skill-card")];
+          const last = Math.max(
+            ...cards.map((c) => c.getBoundingClientRect().bottom),
+          );
+          const tallest = Math.max(
+            ...cards.map((c) => c.getBoundingClientRect().height),
+          );
+          return {
+            spare:
+              stage.getBoundingClientRect().top + stage.clientHeight - last,
+            tallest,
+            gap: Number.parseFloat(getComputedStyle(grid).rowGap) || 0,
+          };
+        });
+        assert.ok(
+          room.spare < room.tallest,
+          `Overview ${size.width}: ${Math.round(room.spare)}px left empty under the cards`,
+        );
+      }
     }
     for (const name of ["Math area", "Learner"]) {
       const target = await page

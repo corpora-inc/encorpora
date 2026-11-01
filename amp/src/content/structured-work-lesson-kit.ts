@@ -24,6 +24,7 @@ export type WorkEntry = {
   goal?: string;
   /** Intuition sections the reference lesson shows before "What the work shows". */
   background?: { title: string; paragraphs: string[] }[];
+  /** Glossary senses and unlinked words for the lesson, method and hints. */
   senses?: GlossarySenses;
   noLink?: string[];
 };
@@ -35,11 +36,11 @@ export function workContent(entries: readonly WorkEntry[]) {
       {
         goal: e.goal ?? e.summary,
         intuition: e.intuition,
-        ...(e.senses ? { senses: e.senses } : {}),
-        ...(e.noLink ? { noLink: e.noLink } : {}),
         terms: e.terms,
         method: e.method,
         watch: e.watch,
+        ...(e.senses && { senses: e.senses }),
+        ...(e.noLink && { noLink: e.noLink }),
       },
     ]),
   );
@@ -52,8 +53,6 @@ export function workContent(entries: readonly WorkEntry[]) {
     summary: e.summary,
     templateIds: [e.id],
     objectives: [...e.objectives],
-    ...(e.senses ? { senses: e.senses } : {}),
-    ...(e.noLink ? { noLink: e.noLink } : {}),
     sections: [
       ...(e.background ?? []).map((s) => ({
         stage: "intuition" as const,
@@ -77,6 +76,8 @@ export function workContent(entries: readonly WorkEntry[]) {
     ],
     pitfalls: e.pitfalls,
     parentGuide: e.parentGuide,
+    ...(e.senses && { senses: e.senses }),
+    ...(e.noLink && { noLink: e.noLink }),
   }));
   return { methods, principles, lessons };
 }
