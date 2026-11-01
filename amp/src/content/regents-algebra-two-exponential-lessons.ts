@@ -566,7 +566,7 @@ export const regentsAlgebraTwoExponentialLessons = [
       formalTitle: "Equivalent forms",
       formal: [
         "For $b > 0$, $(b^{1/12})^{12t} = b^t$. This uses the power of a power rule: $(b^m)^n = b^{m \\times n}$.",
-        "A quantity with starting amount $A_0$ and half-life $h$ is $A_0 \\left(\\frac{1}{2}\\right)^{t/h}$. Using the yearly rate divided by 12 as a monthly rate gives a different model that grows a little faster.",
+        "A quantity with starting amount $A_0$ and half-life $h$ is $A_0 \\left(\\frac{1}{2}\\right)^{t/h}$. Using the yearly rate divided by 12 as a monthly rate gives a slightly different model: a growing amount grows a little faster, and a shrinking amount shrinks a little more slowly.",
       ],
       pitfalls: [
         "Do not divide the factor by 12 or raise it to the 12th power. Take the 12th root.",

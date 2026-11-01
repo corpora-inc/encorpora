@@ -172,7 +172,7 @@ const sequenceFunctionLesson: Lesson = {
       paragraphs: [
         "To graph a sequence, plot the points $(n, a(n))$: the position goes across and the term goes up. For the example the points are $(1, 5)$, $(2, 8)$, $(3, 11)$, $(4, 14)$ and so on.",
         "Only counting numbers are inputs, so there are no points between them. Do not join the points with a line. A graph made of separate points like this is called a discrete graph.",
-        "In an arithmetic sequence, each step adds the same number, so the separate points lie along one straight line. In a geometric sequence, each step multiplies by the same number, called the ratio, so the points usually curve. Multiplying by 1, or starting at 0, gives points on a flat line.",
+        "In an arithmetic sequence, each step adds the same number, so the separate points lie along one straight line. In a geometric sequence, each step multiplies by the same number, called the ratio, so the points do not lie on one slanted line. With a positive ratio other than 1 they curve, and with a negative ratio they zigzag.",
       ],
     },
     {
