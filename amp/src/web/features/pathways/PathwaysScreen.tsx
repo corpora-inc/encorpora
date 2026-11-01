@@ -433,6 +433,12 @@ export function MapView({
         </div>
       )}
       <div className="pathways-status">
+        {/* Phones: the count shares the learner's row (the full sentence
+            above stays for screen readers), so the map starts on the first
+            screen. */}
+        <p className="pathways-phone-summary" aria-hidden="true">
+          {earned} of {skills?.length ?? "…"} skills illuminated
+        </p>
         <p role="status" data-priority={noticeImportant}>
           {notice}
         </p>
