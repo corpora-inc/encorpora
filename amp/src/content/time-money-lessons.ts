@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -209,14 +210,8 @@ export const timeMoneyLessons: Lesson[] = [
   },
 ];
 
-const handTerms: [string, string][] = [
-  ["Hour hand", "The short hand; it shows the hour."],
-  ["Minute hand", "The long hand; it shows the minutes."],
-];
-const coinTerms: [string, string][] = [
-  ["Cent (¢)", "The smallest unit of money; 100 cents make 1 dollar."],
-  ["Count on", "Start from a value and add each next piece in turn."],
-];
+const handTerms: MethodTerm[] = ["hour-hand", "minute-hand"];
+const coinTerms: MethodTerm[] = ["cent", "count-on"];
 const readMethod = [
   "Find the long hand and count by fives from 12 to it: the minutes.",
   "Find the short hand: the hour is the last numeral it has reached.",
@@ -272,10 +267,7 @@ export const timeMoneyMethods: Record<string, ProblemMethod> = {
   },
   "clock-am-pm": {
     goal: "Read a clock and choose a.m. or p.m. from the activity.",
-    terms: [
-      ["a.m.", "Times from midnight to noon."],
-      ["p.m.", "Times from noon to midnight."],
-    ],
+    terms: ["a-m", "p-m"],
     method: [
       "Read the clock: minutes from the long hand, the hour from the short hand.",
       "Morning activities are a.m.; afternoon and evening activities are p.m.",
@@ -303,10 +295,7 @@ export const timeMoneyMethods: Record<string, ProblemMethod> = {
   },
   "money-total-dollars": {
     goal: "Find the value of bills and coins in dollars.",
-    terms: [
-      ...coinTerms,
-      ["Dollar", "100 cents; $2.35 is 2 dollars and 35 cents."],
-    ],
+    terms: [...coinTerms, "dollar"],
     method: [
       "Add the bills: dollars.",
       "Count on the coins: cents.",

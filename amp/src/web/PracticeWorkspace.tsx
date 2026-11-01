@@ -38,7 +38,10 @@ import {
   StructuredWorkInput,
   workSummary,
 } from "./StructuredWorkInput";
-import { structuredWorkAnswerText } from "../math/structured-work";
+import {
+  structuredWorkAnswerText,
+  structuredWorkRows,
+} from "../math/structured-work";
 import {
   useEffect,
   useId,
@@ -458,6 +461,69 @@ export function PracticeWorkspace(props: Props) {
     observer.observe(host);
     return () => observer.disconnect();
   }, []);
+  // Stacked, the feedback sheet can rise above the dock it replaces. The
+  // stage's scroll range then extends by that overlap (an out-of-flow
+  // spacer: nothing in the problem moves), and an answer drawn in the
+  // problem itself (plotted points, marked parts, steps) scrolls into view
+  // above the sheet instead of staying hidden under it.
+  const sheet = useRef<HTMLDivElement>(null);
+  const spacer = useRef<HTMLDivElement>(null);
+  const reviewInProblem = !!(plot || parts || figures || work);
+  useLayoutEffect(() => {
+    const host = stage.current;
+    const cover = sheet.current;
+    const room = spacer.current;
+    if (!host || !room) return;
+    room.style.height = "0px";
+    if (!outcome || !cover || sideBySide) return;
+    // Layout offsets, not client rects: the sheet's entrance transform
+    // must not shorten the overlap. A fixed sheet (very short screens)
+    // has no shared offset parent, so it is measured on screen.
+    const overlap = () =>
+      Math.max(
+        0,
+        Math.ceil(
+          cover.offsetParent && cover.offsetParent === host.offsetParent
+            ? host.offsetTop + host.offsetHeight - cover.offsetTop
+            : host.getBoundingClientRect().bottom -
+                cover.getBoundingClientRect().top,
+        ),
+      );
+    const content = host.querySelector<HTMLElement>(".problem-content");
+    // The problem may shrink below its own content (a flex item at
+    // min-height 0), so its end is where that content ends.
+    const end = () =>
+      content
+        ? content.offsetTop +
+          Math.max(content.offsetHeight, content.scrollHeight)
+        : 0;
+    const update = () => {
+      room.style.top = `${end()}px`;
+      room.style.height = `${overlap()}px`;
+    };
+    update();
+    if (reviewInProblem && !outcome.correct) {
+      const hidden = end() - host.scrollTop - (host.clientHeight - overlap());
+      if (hidden > 0)
+        host.scrollBy({
+          top: hidden + 8,
+          behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "instant"
+            : "smooth",
+        });
+    }
+    // A fixed sheet is measured on screen: again once its entrance ends.
+    cover.addEventListener("animationend", update);
+    const observer =
+      typeof ResizeObserver === "undefined" ? null : new ResizeObserver(update);
+    observer?.observe(cover);
+    observer?.observe(host);
+    if (content) observer?.observe(content);
+    return () => {
+      cover.removeEventListener("animationend", update);
+      observer?.disconnect();
+    };
+  }, [outcome?.id, sideBySide]);
   const locked = busy || pending || !!outcome;
   // AMP's keypad is always present for typed answers; touch devices never
   // raise the system keyboard, and a physical keyboard still types.
@@ -891,6 +957,8 @@ export function PracticeWorkspace(props: Props) {
           role="status"
           aria-live="polite"
           aria-atomic="true"
+          // A long answer may scroll inside the head; keyboards reach it.
+          tabIndex={longAnswer ? 0 : undefined}
         >
           <span className="result-mark" aria-hidden="true">
             {outcome.correct ? "✓" : skipped ? "→" : "✕"}
@@ -945,7 +1013,7 @@ export function PracticeWorkspace(props: Props) {
                   <small>
                     {problem.response.kind === "multi-select"
                       ? "You selected "
-                      : figures
+                      : figures || problem.response.kind === "choice"
                         ? "You chose "
                         : "You entered "}
                     <MathText text={displayResponse(outcome.response)} />
@@ -1035,10 +1103,11 @@ export function PracticeWorkspace(props: Props) {
                 setPanel("lesson");
                 if (!outcome) setLessonBeforeAnswer(true);
               }
-            } catch {
+            } catch (failure) {
+              console.error("AMP lesson failed to open:", failure);
               if (current())
                 setLessonError(
-                  "The lesson could not be opened. Please try again.",
+                  "The lesson could not be opened. Check your connection and try again.",
                 );
             } finally {
               if (current()) setLessonLoading(false);
@@ -1074,11 +1143,21 @@ export function PracticeWorkspace(props: Props) {
           ? "with the lesson"
           : "with a hint or lesson";
   const skipped = !!outcome?.skipped;
+  const longAnswer =
+    !!outcome &&
+    !outcome.correct &&
+    ((!!work && skipped) ||
+      (!plot &&
+        !(work && !skipped) &&
+        !(parts && (skipped || parts.layout === "table")) &&
+        displayResponse(outcome.answer).length > 24));
   /** The worked answer in the feedback title. A plotted answer is drawn on
    * the grid above the sheet, so the sheet names where to look and keeps the
    * coordinates for screen readers; the explanation lists them in full. */
   const answerLine = (raw: string) =>
-    plot || (work && !skipped) || parts?.layout === "table" ? (
+    plot ||
+    (work && !skipped) ||
+    (parts && (skipped || parts.layout === "table")) ? (
       <span
         className="solution-answer plot-answer"
         data-text={displayResponse(raw)}
@@ -1086,7 +1165,9 @@ export function PracticeWorkspace(props: Props) {
         {work
           ? `Each ${work.layout === "proof" ? "line" : "step"} is marked`
           : parts
-            ? "Each row’s answer is ringed"
+            ? skipped
+              ? "The answer is filled in"
+              : "Each row’s answer is ringed"
             : plot?.connect === "line"
               ? "The answer is dashed"
               : "The answer is circled"}
@@ -1094,8 +1175,31 @@ export function PracticeWorkspace(props: Props) {
           . Answer: {spokenMath(displayResponse(raw))}
         </span>
       </span>
+    ) : work && skipped ? (
+      // Skipped work fills no row: every found value is listed, one per
+      // line, as the steps would read.
+      <span
+        className="solution-answer"
+        data-text={displayResponse(raw)}
+        data-long=""
+      >
+        Answer
+        <ol className="solution-rows">
+          {structuredWorkRows(work, raw).map((row, index) => (
+            <li key={index}>
+              <MathText text={row} />
+            </li>
+          ))}
+        </ol>
+      </span>
     ) : (
-      <span className="solution-answer" data-text={displayResponse(raw)}>
+      <span
+        className="solution-answer"
+        data-text={displayResponse(raw)}
+        // A statement, a selection or worked lines read at body size, so
+        // the sheet keeps room for progress, connections and Next.
+        data-long={displayResponse(raw).length > 24 ? "" : undefined}
+      >
         Answer:{" "}
         <strong>
           <MathText text={displayResponse(raw)} />
@@ -1226,11 +1330,19 @@ export function PracticeWorkspace(props: Props) {
             {parts && (
               <MultiPartChoiceInput
                 response={parts}
-                value={outcome ? outcome.response : response}
+                // A skip is neutral: the worked answer fills the parts, with
+                // no miss marks on blanks the learner never chose.
+                value={
+                  outcome
+                    ? outcome.skipped
+                      ? outcome.answer
+                      : outcome.response
+                    : response
+                }
                 onChange={setResponse}
                 locked={locked}
                 review={
-                  outcome
+                  outcome && !outcome.skipped
                     ? partsReview(parts, outcome.answer, outcome.response)
                     : null
                 }
@@ -1252,6 +1364,7 @@ export function PracticeWorkspace(props: Props) {
               />
             )}
           </div>
+          <div className="feedback-spacer" ref={spacer} aria-hidden="true" />
           {celebrate && (
             <div className="practice-celebration" aria-hidden="true">
               <span>✓</span>
@@ -1288,6 +1401,7 @@ export function PracticeWorkspace(props: Props) {
         )}
         {outcome && (
           <div
+            ref={sheet}
             className={`feedback solution-panel ${outcome.correct ? "correct" : skipped ? "skipped" : "incorrect"}`}
             role="region"
             aria-label="Answer feedback"
@@ -1349,10 +1463,13 @@ export function PracticeWorkspace(props: Props) {
           </button>
         </div>
       )}
-      {lessonError && (
-        <p className="workspace-error" role="alert">
-          {lessonError}
-        </p>
+      {lessonError && !(outcome && props.error) && (
+        <div className="feedback-navigation-error" role="alert">
+          <span>{lessonError}</span>
+          <button onClick={() => setLessonError("")} aria-label="Dismiss error">
+            ×
+          </button>
+        </div>
       )}
       {compact && entering && !panel && (
         <FocusDialog
@@ -1412,6 +1529,7 @@ export function PracticeWorkspace(props: Props) {
       )}
       {panel && (
         <FocusDialog
+          className={panel === "hint" ? "hint-dialog" : ""}
           returnFocus={panel === "lesson" ? lessonTrigger.current : undefined}
           title={
             panel === "hint" ? "Hint" : (problemLessonView?.title ?? "Lesson")

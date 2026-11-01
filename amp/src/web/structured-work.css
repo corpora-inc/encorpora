@@ -565,3 +565,8 @@
 .problem-content:has(> .work) {
   margin: 0 auto;
 }
+
+/* The exponent mark of a power base (× 10ⁿ) stays legible. */
+.work-unit sup {
+  font-size: 12px;
+}

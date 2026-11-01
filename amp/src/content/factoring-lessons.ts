@@ -251,12 +251,12 @@ export const factoringMethods: Record<string, ProblemMethod> = {
     goal: "Rewrite the polynomial with its positive greatest common monomial factor outside parentheses.",
     terms: [
       [
-        "Coefficient GCF",
-        "The largest positive integer dividing every coefficient.",
+        "greatest-common-factor",
+        "Here, of the coefficients only: for $6x^2 + 9x$, it is 3.",
       ],
       [
-        "Common monomial factor",
-        "The coefficient GCF multiplied by the variable power contained in every term.",
+        "common-factor",
+        "The greatest one is the coefficients' greatest common factor times the variable power in every term: $3x$ for $6x^2 + 9x$.",
       ],
     ],
     method: [
@@ -270,10 +270,7 @@ export const factoringMethods: Record<string, ProblemMethod> = {
   },
   "monic-quadratic-factorization": {
     goal: "Rewrite the monic quadratic as a product of integer linear factors.",
-    terms: [
-      ["Monic", "Having leading coefficient 1."],
-      ["Linear factor", "A polynomial factor of degree 1, such as x + 3."],
-    ],
+    terms: ["monic", "linear-factor"],
     method: [
       "Read the constant $c$ and the coefficient $b$ of $x$, including their signs.",
       "Find integers $p$ and $q$ with product $c$ and sum $b$.",
@@ -287,13 +284,10 @@ export const factoringMethods: Record<string, ProblemMethod> = {
     goal: "Factor the quadratic completely while retaining any outside signed integer.",
     terms: [
       [
-        "Numerical content",
-        "The greatest common factor of the coefficient magnitudes.",
+        "greatest-common-factor",
+        "Here, of the coefficients, ignoring their signs.",
       ],
-      [
-        "Grouping",
-        "Collecting terms and factoring a common expression from each group.",
-      ],
+      "factoring-by-grouping",
     ],
     method: [
       "Extract numerical content and, if needed, a negative sign to leave a positive leading coefficient.",

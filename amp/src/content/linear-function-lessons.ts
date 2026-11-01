@@ -308,10 +308,7 @@ export const linearFunctionLessons: Lesson[] = [
 export const linearFunctionMethods: Record<string, ProblemMethod> = {
   "graph-domain-range": {
     goal: "Read the domain or range of a function from its whole graph.",
-    terms: [
-      ["domain", "Every $x$-value that has a point on the graph."],
-      ["range", "Every $y$-value the graph reaches."],
-    ],
+    terms: ["domain", "range-function"],
     method: [
       "For the domain, read along the $x$-axis from the graph's left end to its right end.",
       "For the range, read up the $y$-axis from the lowest point to the highest, checking any turning point as well as the ends.",
@@ -322,10 +319,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   },
   "context-domain-range": {
     goal: "Choose the inputs or outputs that make sense for a function describing a situation.",
-    terms: [
-      ["domain", "The inputs the situation allows."],
-      ["range", "The outputs those inputs produce."],
-    ],
+    terms: ["domain", "range-function"],
     method: [
       "Ask what the input measures: a count of whole things, or a continuous quantity such as time.",
       "Find the limits: a stated maximum, or when the quantity runs out (solve the function equal to 0).",
@@ -336,9 +330,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   },
   "function-relation-test": {
     goal: "Decide which relation assigns exactly one output to each input.",
-    terms: [
-      ["function", "A relation in which each input has exactly one output."],
-    ],
+    terms: ["function"],
     method: [
       "For ordered pairs, list the inputs and look for one that appears with two different outputs.",
       "For an equation, try an $x$-value and count the $y$-values that make it true; $y$ and −y together mean two outputs.",
@@ -348,12 +340,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   },
   "average-rate-formula": {
     goal: "Find the average rate of change of a function over an interval from its formula or two of its values.",
-    terms: [
-      [
-        "average rate of change",
-        "(f(b) − f(a)) ÷ (b − a), the slope of the secant through the two points.",
-      ],
-    ],
+    terms: ["average-rate-of-change"],
     method: [
       "Evaluate the function at both ends of the interval.",
       "Subtract the values in the same order as the inputs: f(b) − f(a) over b − a.",
@@ -373,16 +360,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   },
   "linear-model-value": {
     goal: "Write a linear equation or inequality for a situation and solve it.",
-    terms: [
-      [
-        "starting amount",
-        "The value paid or present once, when the variable is 0.",
-      ],
-      [
-        "rate",
-        "The change for each unit of the variable; it multiplies the variable.",
-      ],
-    ],
+    terms: ["initial-value", "rate"],
     method: [
       "Name the variable: what it counts and its units.",
       "Write starting amount + rate × variable, and set it equal to the total (or at most a limit, or equal to a second expression).",

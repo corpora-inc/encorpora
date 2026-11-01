@@ -13,16 +13,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "When you pack items into groups of the same size, you fill as many full groups as you can and some items may be left over. Dividing the total by the group size gives the number of full groups, the quotient. Multiplying the quotient by the group size and subtracting from the total gives the leftover, the remainder. The remainder is always less than the group size; if it is not, another full group fits.",
-    terms: [
-      [
-        "quotient",
-        "The number of full groups, the whole-number result of the division.",
-      ],
-      [
-        "remainder",
-        "What is left after the full groups are taken out; it is less than the group size.",
-      ],
-    ],
+    terms: ["quotient", "remainder"],
     method: [
       "Estimate how many groups fit, using tens: how many tens of groups are in the total?",
       "Multiply the group size by your quotient and subtract from the total to get the leftover.",
@@ -68,11 +59,8 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "A kilometer is 1,000 meters, so a total of 2,396 meters is 2 groups of 1,000 meters and 396 meters more: 2 kilometers and 396 meters. First add all the distances in meters. Then see how many thousands the sum holds; that is the number of kilometers, and the three digits that remain are the meters.",
     terms: [
-      ["kilometer", "A unit of length equal to 1,000 meters."],
-      [
-        "regroup",
-        "Rewrite a number using bigger units, such as 2,396 meters as 2 kilometers 396 meters.",
-      ],
+      "kilometer",
+      ["regroup", "Here 2,396 meters regroups as 2 kilometers 396 meters."],
     ],
     method: [
       "Add the distances in meters.",
@@ -119,12 +107,12 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "Interest is money earned on a deposit or paid on a loan. With simple interest the same amount is earned every year: the rate, a percent of the principal, the amount at the start. Earning 5% of 800 dollars is 40 dollars a year. In 3 years the interest is $3\\times40=120$ dollars. The total is the principal and the interest together: $800+120=920$ dollars.",
     terms: [
-      ["principal", "The amount deposited or borrowed at the start."],
+      "principal",
+      "simple-interest",
       [
-        "simple interest",
-        "Interest calculated only on the principal, the same amount each year.",
+        "interest",
+        "Here, the rate is the percent of the principal earned or charged each year.",
       ],
-      ["rate", "The percent of the principal earned or charged each year."],
     ],
     method: [
       "Write the rate as a fraction of 100 and multiply by the principal to get one year of interest.",
@@ -171,10 +159,10 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "A loan's cost is the interest you pay. When two banks lend the same amount at different rates and for different times, a lower rate does not always cost less, because the time also matters. Find each bank's interest from principal times rate times years, then compare the two amounts. The offer with the lesser interest costs less, and the difference tells how much less.",
     terms: [
-      ["loan", "Money borrowed that is paid back with interest."],
+      "loan",
       [
-        "cost of a loan",
-        "The interest paid, the amount beyond what was borrowed.",
+        "interest",
+        "The cost of a loan is all the interest paid beyond the amount borrowed.",
       ],
     ],
     method: [
@@ -221,16 +209,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A dilation by a scale factor $k$ multiplies every length by $k$. A perimeter is a sum of lengths, so it is multiplied by $k$. An area is a length times a length, so it is multiplied by $k$ twice, $k\\times k=k^2$. Doubling the sides of a 2 by 3 rectangle makes a 4 by 6 rectangle: the perimeter goes from 10 to 20, twice as much, and the area from 6 to 24, four times as much.",
-    terms: [
-      [
-        "scale factor",
-        "The number by which every length of a figure is multiplied.",
-      ],
-      [
-        "dilation",
-        "A transformation that enlarges or reduces a figure by a scale factor.",
-      ],
-    ],
+    terms: ["scale-factor", "dilation"],
     method: [
       "Find the sides of the image by multiplying each side by the scale factor.",
       "Compare the new perimeter with the old: the ratio is the scale factor.",
@@ -275,16 +254,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "On a spinner with 10 equal sections, each section is equally likely. If 2 sections show 20, the probability of landing on 20 is $\\frac{2}{10}=\\frac{1}{5}$. In 150 spins you would expect about $\\frac{1}{5}$ of the spins to land on 20, which is $\\frac{1}{5}\\times150=30$. The expected count is a prediction, not a guarantee.",
-    terms: [
-      [
-        "probability",
-        "How likely an outcome is: favorable outcomes divided by all equally likely outcomes.",
-      ],
-      [
-        "expected count",
-        "The number of times you predict an outcome in many trials: probability times the number of trials.",
-      ],
-    ],
+    terms: ["probability", "expected-count"],
     method: [
       "Count the sections that show the number, and divide by the total number of sections.",
       "Reduce the fraction if you can.",
@@ -328,16 +298,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A unit rate says how much for one unit, such as pages for one minute. If a printer prints 36 pages in 8 minutes, then in one minute it prints $36\\div 8=4.5$ pages. When there are two situations, find a rate for each one using its own amount and its own time; do not mix them.",
-    terms: [
-      [
-        "rate",
-        "A comparison of two different quantities, such as pages and minutes.",
-      ],
-      [
-        "unit rate",
-        "A rate with 1 unit of the second quantity: pages per 1 minute.",
-      ],
-    ],
+    terms: ["rate", "unit-rate"],
     method: [
       "Pair each amount with its own time.",
       "Divide the amount by the time to get the amount per minute.",
@@ -383,11 +344,11 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "A ratio of 4 to 3 means that for every 4 blue gumballs there are 3 yellow. Think of each color as a number of equal parts. If 24 gumballs are yellow and yellow is 3 parts, one part is $24\\div3=8$ gumballs. Then blue is 4 parts, $4\\times8=32$, and all together there are $4+3=7$ parts, $7\\times8=56$ gumballs.",
     terms: [
+      "ratio",
       [
-        "ratio",
-        "A comparison of two quantities by their parts, such as 4 to 3.",
+        "part",
+        "Here a part is one of the equal shares the ratio splits the whole into.",
       ],
-      ["part", "One of the equal shares the ratio divides the whole into."],
     ],
     method: [
       "Divide the known amount by its ratio number to find the size of one part.",
@@ -433,13 +394,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "The mean is the amount each value would have if they were all equal: add the values and divide by how many there are. The median is the middle value when the list is in order. With six values there are two middle values, so the median is halfway between them, their mean. The median needs the values sorted first, and a list in the order given may have a different middle.",
-    terms: [
-      ["mean", "The sum of the values divided by the number of values."],
-      [
-        "median",
-        "The middle value of an ordered list; with an even number of values, the mean of the two middle ones.",
-      ],
-    ],
+    terms: ["mean-average", "median"],
     method: [
       "Add the values and divide by the number of values to find the mean.",
       "Write the values in order from least to greatest.",
@@ -484,10 +439,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "The median is the middle value of a sorted list; the mode is the value that occurs most often. To compare two teams, find these two numbers for each team. Two lists can have the same mode and different medians, or the reverse. Sort each list first, because the median of the unsorted list is not the middle value.",
-    terms: [
-      ["median", "The middle value of a list in order."],
-      ["mode", "The value that occurs most often."],
-    ],
+    terms: ["median", "mode-statistics"],
     method: [
       "Write each list in order from least to greatest.",
       "Find the middle value (the 4th of 7) for each median, and the most frequent value for each mode.",
@@ -532,13 +484,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "The area of a rectangle is its length times its width, so the length is the area divided by the width. Once both sides are known, the perimeter is the distance around: two lengths and two widths, which is $2\\times(\\text{length}+\\text{width})$. The first step must come first, because the perimeter needs the length.",
-    terms: [
-      ["area", "The amount of surface, in square units: length times width."],
-      [
-        "perimeter",
-        "The distance around a shape: for a rectangle, twice the sum of length and width.",
-      ],
-    ],
+    terms: ["area", "perimeter"],
     method: [
       "Divide the area by the width to find the length.",
       "Add the length and the width.",
@@ -584,11 +530,8 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "Net pay is the pay earned minus a one-time cost. Each hour adds the same wage to the net pay, so the wage is the change in net pay for one hour. Before any work the net pay is $-$ the cost, so the cost is how much the pay must rise before it reaches zero. In a table with 2 and 4 hours, divide the change in net pay by 2 to get the wage for one hour.",
     terms: [
-      ["net pay", "Pay earned minus what was spent."],
-      [
-        "rate of change",
-        "How much a quantity changes for each step of 1 in the other quantity.",
-      ],
+      ["net-pay", "Here it is the pay earned minus what was spent."],
+      "rate-of-change",
     ],
     method: [
       "Find the change in net pay between two columns and divide by the change in hours: that is the wage.",
@@ -635,8 +578,11 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "A percent is a number out of 100, so 35% of 1,500 is $1{,}500\\times\\frac{35}{100}=525$. A set of items can be split by percents: in 40 books, 25% fiction is 10 books. A budget works the same way: rent of 35% of an income of 1,500 dollars is 525 dollars. To check a limit, compare the amount with the limit: an amount that is not more than the limit is within it.",
     terms: [
-      ["percent", "A number out of 100, written with %."],
-      ["limit", "The greatest amount allowed."],
+      "percent",
+      [
+        "at-most",
+        "The limit is the greatest amount allowed, so the total must be at most the limit.",
+      ],
     ],
     method: [
       "Write each percent as a fraction over 100.",
@@ -681,11 +627,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A check register records money in and out. A deposit adds money and is written as a positive amount; a withdrawal takes money out and is written as a negative amount. Each new balance is the previous balance plus the amount. If the balance is below zero the account is overdrawn. To find a missing amount, subtract the balance before from the balance after.",
-    terms: [
-      ["balance", "The amount in the account after a transaction."],
-      ["deposit", "Money added to the account: a positive amount."],
-      ["withdrawal", "Money taken out: a negative amount."],
-    ],
+    terms: ["balance-account", "deposit", "withdrawal"],
     method: [
       "For a missing balance, add the signed amount to the previous balance.",
       "For a missing amount, subtract the previous balance from the new balance.",

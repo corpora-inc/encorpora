@@ -302,6 +302,11 @@ export interface TemplateMetadata {
   skillId: string;
   gradeBand: "K–2" | "3–5" | "6–8" | "9–12";
   description: string;
+  /** The glossary entry an ambiguous word means in this template's generated
+   * hints and explanations: lowercase form → term id (`src/glossary/`). */
+  glossarySenses?: Record<string, string>;
+  /** Glossary forms that are ordinary words in this template's generated text. */
+  glossaryNoLink?: string[];
 }
 export type MultiSelectResponse = {
   kind: "multi-select";

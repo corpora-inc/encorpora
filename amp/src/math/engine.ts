@@ -1379,15 +1379,21 @@ function generateRawProblem(
           prompt = `A pattern starts at ${start}. Each term is the previous term divided by ${divisor}. What is term ${n} (the first term is term 1)?`;
           hint = `From term 1 to term ${n} is ${n - 1} steps. Start at ${start} and divide by ${divisor} once per step.`;
           explanation = [
-            `Each step divides by ${divisor}, so term ${n} is the first term divided by ${divisor} a total of ${n - 1} times.`,
-            `Term ${n} is $${start} \\div ${divisor}^{${n - 1}} = ${answer}$.`,
+            `A term is one number in the pattern. Each term is the one before it divided by ${divisor}.`,
+            `Term 1 is ${start}. Getting from term 1 to term ${n} takes ${n - 1} steps, so we divide by ${divisor} a total of ${n - 1} times.`,
+            `Dividing by ${divisor} ${n - 1} times is the same as dividing once by $${divisor}^{${n - 1}} = ${divisor ** (n - 1)}$. The exponent ${n - 1} counts the steps.`,
+            `So term ${n} is $${start} \\div ${divisor ** (n - 1)} = ${answer}$.`,
+            `Term ${n} of the pattern is ${answer}.`,
           ];
         } else {
           prompt = `A geometric sequence has first term ${start} and common ratio $\\frac{1}{${divisor}}$. What is term ${n} (the first term is term 1)?`;
           hint = `From term 1 to term ${n} is ${n - 1} steps. Multiplying by $\\frac{1}{${divisor}}$ once per step splits the term into ${divisor} equal parts and keeps one.`;
           explanation = [
-            `Term $n$ is the first term times the ratio raised to the power $n - 1$.`,
+            `In a geometric sequence each term is the one before times the same number, the common ratio. Here the ratio is $\\frac{1}{${divisor}}$.`,
+            `Multiplying by $\\frac{1}{${divisor}}$ is the same as dividing by ${divisor}.`,
+            `From term 1 to term ${n} is ${n - 1} steps. So term $n$ is the first term times the ratio to the power $n - 1$, which counts the steps.`,
             `Term ${n} is $${start} \\times \\left(\\frac{1}{${divisor}}\\right)^{${n - 1}} = ${start} \\div ${divisor ** (n - 1)} = ${answer}$.`,
+            `Term ${n} of the sequence is ${answer}.`,
           ];
         }
         break;
@@ -1399,8 +1405,11 @@ function generateRawProblem(
       answer = `${BigInt(a) * BigInt(ratio) ** BigInt(n - 1)}`;
       hint = `From term 1 to term ${n} is ${n - 1} steps. Start at ${a} and multiply by ${ratio} once per step.`;
       explanation = [
-        `Term $n$ is the first term times the ratio raised to the power $n - 1$.`,
-        `Term ${n} is $${a} \\times ${ratio}^{${n - 1}} = ${answer}$.`,
+        `In a geometric sequence each term is the one before times the same number, the common ratio. Here the ratio is ${ratio}.`,
+        `From term 1 to term ${n} is ${n - 1} steps, so we multiply by ${ratio} a total of ${n - 1} times.`,
+        `That is the first term times the ratio to the power $n - 1$. The exponent counts the steps: $${ratio}^{${n - 1}} = ${ratio ** (n - 1)}$.`,
+        `So term ${n} is $${a} \\times ${ratio ** (n - 1)} = ${answer}$.`,
+        `Term ${n} of the sequence is ${answer}.`,
       ];
       break;
     }
@@ -1412,8 +1421,11 @@ function generateRawProblem(
       answer = `${power}`;
       hint = `log base ${base} of ${argument} asks: ${base} to what power is ${argument}? Multiply ${base} by itself until you reach ${argument}, counting the factors.`;
       explanation = [
-        `Find $p$ such that $${base}^p = ${argument}$.`,
-        `${base}^${power} = ${argument}, so the logarithm is ${power}.`,
+        `A logarithm is an exponent. "Log base ${base} of ${argument}" asks: ${base} to what power gives ${argument}?`,
+        `The base, ${base}, is the number being multiplied. The power, or exponent, counts how many times it appears.`,
+        `Multiply ${base} by itself until you reach ${argument}: $${Array(power).fill(base).join(" \\times ")} = ${argument}$.`,
+        `That uses ${power} factors of ${base}, so $${base}^{${power}} = ${argument}$.`,
+        `So log base ${base} of ${argument} is ${power}.`,
       ];
       break;
     }

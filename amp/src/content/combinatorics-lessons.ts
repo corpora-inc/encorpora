@@ -393,8 +393,11 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
   "counting-principle": {
     goal: "Count complete outcomes of a process with one choice at each stage.",
     terms: [
-      ["stage", "One decision in the process."],
-      ["outcome", "One complete result: a choice at every stage."],
+      [
+        "outcome",
+        "A stage is one decision in the process; one outcome makes a choice at every stage.",
+      ],
+      "outcome",
     ],
     method: [
       "List the stages and the number of options at each.",
@@ -405,13 +408,7 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
   },
   "permutation-count": {
     goal: "Count ways to fill distinct positions without using an item twice.",
-    terms: [
-      [
-        "arrangement",
-        "A selection in which each item fills a different position.",
-      ],
-      ["$n!$", "The product of every whole number from $n$ down to 1."],
-    ],
+    terms: ["permutation", "factorial"],
     method: [
       "Confirm that order or position matters.",
       "Give the first position all $n$ options and each later position one fewer.",
@@ -423,11 +420,8 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
   "combination-count": {
     goal: "Count groups chosen from a collection when order does not matter.",
     terms: [
-      ["combination", "A group whose members have the same role."],
-      [
-        "orders of a group",
-        "For $k$ items, $k \\times (k - 1) \\times \\cdots \\times 1$.",
-      ],
+      "combination",
+      ["factorial", "A group of $k$ items can be put in order in $k!$ ways."],
     ],
     method: [
       "Count ordered selections as a product of decreasing factors.",
@@ -439,13 +433,7 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
   },
   "combination-probability": {
     goal: "Find the probability of a random selection by counting equally likely groups.",
-    terms: [
-      [
-        "probability",
-        "Favorable equally likely outcomes divided by all outcomes.",
-      ],
-      ["combination", "A group chosen when order does not matter."],
-    ],
+    terms: ["probability", "combination"],
     method: [
       "Count all groups of the drawn size.",
       "Count favorable groups, multiplying the choices from each kind.",
@@ -455,16 +443,7 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
   },
   "independent-events-probability": {
     goal: "Find both, neither or at-least-one probabilities for two independent results.",
-    terms: [
-      [
-        "independent",
-        "One result does not change the probabilities of the other.",
-      ],
-      [
-        "complement",
-        "The event does not happen; its probability is 1 minus the event's.",
-      ],
-    ],
+    terms: ["independent-events", "complement-probability"],
     method: [
       "Find each event's probability from its equally likely outcomes.",
       "For both, multiply the probabilities.",
@@ -474,10 +453,7 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
   },
   "expected-value": {
     goal: "Find the long-run average payoff of one play, after any cost.",
-    terms: [
-      ["expected value", "The sum of each payoff times its probability."],
-      ["net gain", "Payoff minus the cost of playing."],
-    ],
+    terms: ["expected-value", "net-gain"],
     method: [
       "Find each payoff's probability: its sections divided by all sections.",
       "Multiply each payoff by its probability and add.",

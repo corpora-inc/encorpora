@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -244,9 +245,11 @@ export const comparisonLessons: Lesson[] = [
   },
 ];
 
-const placeTerms: [string, string][] = [
-  ["Place", "A digit's position: ones, tens, hundreds, and so on."],
-  [">, <, =", "Is greater than, is less than, is equal to."],
+const placeTerms: MethodTerm[] = [
+  "place",
+  "greater-than",
+  "less-than",
+  "equal",
 ];
 export const comparisonMethods: Record<string, ProblemMethod> = {
   "compare-groups": {
@@ -307,12 +310,7 @@ export const comparisonMethods: Record<string, ProblemMethod> = {
   },
   "multidigit-digit-value": {
     goal: "Given a number up to 999,999, find the value of one of its digits.",
-    terms: [
-      [
-        "Place value",
-        "What one unit in a place is worth: 1, 10, 100, 1,000, 10,000 or 100,000.",
-      ],
-    ],
+    terms: ["place-value"],
     method: [
       "Name the digit's place, counting from the ones at the right.",
       "Multiply the digit by that place's value.",
