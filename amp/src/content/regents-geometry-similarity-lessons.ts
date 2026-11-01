@@ -21,6 +21,8 @@ const GEO_SENSES = {
   population: "population",
   "opposite leg": "opposite-side-angle",
   squaring: "square-number",
+  multiple: "multiple",
+  "one third": "third",
 } as const;
 const GEO_NOLINK = [
   "opposite",
@@ -43,8 +45,6 @@ const GEO_NOLINK = [
   "term",
   "terms",
   "scale",
-  "multiple",
-  "one third",
   "prime",
   "opposite side",
   "mode",

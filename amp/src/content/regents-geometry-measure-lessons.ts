@@ -19,6 +19,8 @@ const GEO_SENSES = {
   unit: "unit",
   tangent: "tangent-trig",
   "opposite leg": "opposite-side-angle",
+  multiple: "multiple",
+  "one third": "third",
 } as const;
 const GEO_NOLINK = [
   "opposite",
@@ -41,12 +43,11 @@ const GEO_NOLINK = [
   "term",
   "terms",
   "scale",
-  "multiple",
-  "one third",
   "prime",
   "opposite side",
   "mode",
   "key",
+  "cubes",
 ];
 
 export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {

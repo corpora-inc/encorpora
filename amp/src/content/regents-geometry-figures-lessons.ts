@@ -18,6 +18,8 @@ const GEO_SENSES = {
   solid: "solid-shape",
   unit: "unit",
   tangent: "tangent-line",
+  multiple: "multiple",
+  "one third": "third",
 } as const;
 const GEO_NOLINK = [
   "opposite",
@@ -40,13 +42,10 @@ const GEO_NOLINK = [
   "term",
   "terms",
   "scale",
-  "multiple",
-  "one third",
   "prime",
   "opposite side",
   "thirds",
   "certain",
-  "multiples",
   "quarter",
   "one quarter",
   "root",
