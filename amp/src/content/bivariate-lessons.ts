@@ -247,7 +247,7 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
     terms: ["two-way-table", "percent"],
     method: [
       "Find the “Yes” percent within each row.",
-      "Compare the percents. A large gap shows association. Nearly equal percents show none.",
+      "Compare the percents. Different percents show association, and a bigger gap means a stronger one. Equal percents show none.",
     ],
     watch:
       "Compare percents, not raw counts, when the rows have different totals.",

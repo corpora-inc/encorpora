@@ -6,7 +6,7 @@ export const distributionLessons: Lesson[] = [
     id: "statistical-questions",
     title: "Statistical questions",
     summary:
-      "Data are facts or numbers you collect by counting, measuring or asking. Some questions have one answer, like how tall one sunflower is. A statistical question asks about a group and expects answers that differ from one member to the next, like how tall the sunflowers in a garden are. Answering it means collecting many numbers that vary.",
+      "Data are facts or numbers you collect by counting, measuring or asking. Some questions have one answer, like how tall one sunflower is. A statistical question asks about a group and expects answers that differ from one member to the next, like how tall the sunflowers in a garden are. Answering it means collecting many answers that vary.",
     templateIds: ["statistical-question-choice"],
     senses: { whole: "whole" },
     noLink: ["center", "multiple", "mean"],
@@ -36,7 +36,7 @@ export const distributionLessons: Lesson[] = [
         title: "Counts and facts are single answers",
         paragraphs: [
           "“How many sunflowers are in our garden?” involves many sunflowers. But you collect only one number, the count for the whole garden. So it is not a statistical question.",
-          "Test a question by imagining you collect the answer. If you would write down many numbers that differ, the question is statistical. If you would write down one number, it is not.",
+          "Test a question by imagining you collect the answer. If you would write down many answers that can differ, the question is statistical. If you would write down one answer, it is not.",
         ],
       },
     ],
@@ -91,7 +91,7 @@ export const distributionLessons: Lesson[] = [
           "A team plays 5 games. Pretend you could move goals from game to game until every game had the same number. That equal amount is called the mean. People also call it the average.",
           "Or line up the 5 scores from least to greatest and take the one in the middle. That middle value is called the median.",
           "Both the mean and the median give a typical value for the data, in different ways.",
-          "A dot plot is a number line with one dot above it for each value. Two dots stacked above 2 mean the value 2 appears twice.",
+          "A dot plot is a number line with one dot above it for each value, so you can see every value at once. Two dots stacked above 2 mean the value 2 appears twice.",
         ],
       },
       {
@@ -137,13 +137,13 @@ export const distributionLessons: Lesson[] = [
       "The mean does not have to be one of the data values or a whole number.",
     ],
     parentGuide:
-      "Stack coins in piles of different heights. Move coins between piles until all the piles are the same height. That height is the mean.",
+      "Stack 9 coins in piles of 1, 2 and 6. Move coins between piles until all three are the same height. That height, 3, is the mean.",
   },
   {
     id: "distribution-plots",
     title: "Histograms and box plots",
     summary:
-      "A histogram is a bar graph for number data. Each bar covers a stretch of numbers, called an interval. How tall the bar is shows how many values fall in that stretch. A box plot draws five numbers: the least value, the greatest value, the median (middle value) and the middle of each half, called the quartiles. These five numbers split the data into four parts of about equal size.",
+      "Data are numbers or facts someone collected, such as test scores. A histogram is a bar graph for number data. Each bar covers a stretch of numbers, called an interval. How tall the bar is shows how many values fall in that stretch. A box plot draws five numbers: the least value, the greatest value, the median (middle value) and the middle of each half, called the quartiles. These five numbers split the data into four parts of about equal size.",
     templateIds: ["histogram-read", "box-plot-read"],
     senses: {
       interval: "interval",
@@ -172,7 +172,7 @@ export const distributionLessons: Lesson[] = [
       {
         title: "Histograms group values into intervals",
         paragraphs: [
-          "Each bar covers an equal interval. It starts at the number on its left and goes up to, but not including, the number on its right. The bar from 20 to 30 counts students who read 20 to 29 minutes. Here that is 8 students.",
+          "Each bar covers an equal interval. It starts at the number on its left and goes up to, but not including, the number on its right. The bar from 20 to 30 counts students who read from 20 minutes up to, but not including, 30 minutes. Here that is 8 students.",
           "“At least 30 minutes” means 30 minutes or more. It uses every bar that starts at 30 or later: $6 + 3 = 9$ students.",
           "A histogram does not show the single values. It shows only how many fall in each interval.",
         ],
@@ -182,7 +182,7 @@ export const distributionLessons: Lesson[] = [
         title: "Box plots mark quarters",
         paragraphs: [
           "The lines out from the box are called whiskers. They end at the minimum (50) and the maximum (95). The box runs from the lower quartile (65) to the upper quartile (85). The line inside the box is the median (75).",
-          "These five numbers split the ordered data into four parts. Each part holds about a quarter of the data, which is 25%. So about 25% of the scores are above 85, and the box holds about the middle 50%.",
+          "These five numbers split the ordered data into four parts. Each part holds about a quarter of the data, which is 25%. So roughly 25% of the scores are at or above 85, and the box holds roughly the middle 50%.",
         ],
         illustration: "data-box-plot-scores",
       },
@@ -284,7 +284,7 @@ export const distributionLessons: Lesson[] = [
     },
     pitfalls: [
       "Use distances, which are never negative. The differences value minus mean, with their signs, always add to 0, so they cannot measure spread.",
-      "One far value moves the mean and the range much more than the median and the IQR.",
+      "One far value usually moves the mean and the range much more than the median and the IQR.",
     ],
     parentGuide:
       "Write the ages of five relatives. Find their mean and each age’s distance from it. Then add a much older or much younger relative and see which summaries change most.",
@@ -300,7 +300,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     terms: ["statistical-question"],
     method: [
       "Imagine collecting the answer to each question.",
-      "Choose the question that gives many different values, one from each member of a group.",
+      "Choose the question whose answers come from many members of a group and could differ.",
     ],
     watch:
       "A count of a group, such as how many members it has, is one answer.",
@@ -339,7 +339,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["edge"],
     intuition:
-      "A histogram is a bar graph for number data. Each bar covers an interval, a stretch of numbers such as 20 up to 30. The bar's height is how many values fall in that interval. A bar from 20 to 30 counts 20 up to 29, not 30.",
+      "Data are numbers or facts someone collected, such as test scores. A histogram is a bar graph for number data. Each bar covers an interval, a stretch of numbers such as 20 up to 30. The bar's height is how many values fall in that interval. A bar from 20 to 30 counts values from 20 up to, but not including, 30. For whole numbers, that is 20 to 29.",
     terms: [
       [
         "interval",
@@ -366,7 +366,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["third"],
     intuition:
-      "A box plot shows five numbers. The whiskers end at the least value (minimum) and the greatest value (maximum). The line inside the box is the median, the middle value. The box ends are the quartiles: the middle of the lower half and the middle of the upper half. These five numbers split the ordered data into four parts, each holding about one quarter (25%) of the data.",
+      "Data are numbers or facts someone collected, such as test scores. A box plot shows five numbers. The whiskers end at the least value (minimum) and the greatest value (maximum). The line inside the box is the median, the middle value. The box ends are the quartiles: the middle of the lower half and the middle of the upper half. These five numbers split the ordered data into four parts, each holding about one quarter (25%) of the data.",
     terms: ["quartile", "interquartile-range"],
     method: [
       "Read the five numbers: the whisker ends, the box ends and the median line.",
@@ -396,7 +396,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     goal: "Find the interquartile range of dot-plot data.",
     senses: { average: "mean-average" },
     intuition:
-      "Put the values in order. The median, the middle value, splits them into a lower half and an upper half. The middle of the lower half is the lower quartile, Q1. The middle of the upper half is the upper quartile, Q3. The interquartile range is the upper quartile minus the lower quartile: Q3 minus Q1. It is the width of the middle half of the data. A box plot is a graph that draws this middle half as a box.",
+      "Data are numbers or facts someone collected, such as test scores. Put the values in order. The median, the middle value, splits them into a lower half and an upper half. The middle of the lower half is the lower quartile, Q1. The middle of the upper half is the upper quartile, Q3. The interquartile range is the upper quartile minus the lower quartile: Q3 minus Q1. It is the width of the middle half of the data. A box plot is a graph that draws this middle half as a box.",
     terms: ["quartile", "interquartile-range"],
     method: [
       "Read the values in order, left to right. A stack of dots is several values.",
@@ -411,7 +411,7 @@ export const distributionMethods: Record<string, ProblemMethod> = {
     senses: { mean: "mean-average" },
     noLink: ["jump"],
     intuition:
-      "The mean is the total divided by the count, so every value's size counts. One far-off value pulls the mean toward it. The median is the middle value once the data are in order. It depends only on the order, so one far-off value barely moves it.",
+      "Data are numbers or facts someone collected, such as test scores. The mean is the total divided by the count, so every value's size counts. One far-off value pulls the mean toward it. The median is the middle value once the data are in order. It depends on the middle value or values, not on how far away the end values are. So one far-off value usually moves it little.",
     terms: ["mean-average", "median"],
     method: [
       "Find the value that is far from the others.",

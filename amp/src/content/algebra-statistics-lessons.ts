@@ -42,7 +42,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         title: "Shape decides the measures",
         paragraphs: [
           "A box plot draws five numbers. The box holds the middle half of the data. It runs from the lower quartile, $Q_1$, to the upper quartile, $Q_3$: the middles of the lower half and the upper half. The line inside the box is the median. The whiskers, the lines out from the box, reach the least value (minimum) and the greatest value (maximum).",
-          "The shape of a set of data is how its values are spread out. It is skewed right when the right whisker and the right part of the box are much longer. That long side, stretching toward higher values, is called a tail. It is skewed left when the long side is on the left. It is roughly symmetric when the two sides match.",
+          "The shape of a set of data is how its values are spread out. It is skewed right when the right whisker and the right part of the box are much longer. That long side, stretching toward higher values, is called a tail. It is skewed left when the long side is on the left. It looks roughly symmetric when the two sides match.",
           "A long tail tends to pull the mean toward it. The standard deviation is a measure of how far values usually are from the mean. Extreme values can make it larger too.",
           "The interquartile range is $\\text{IQR} = Q_3 - Q_1$, the width of the box. It measures how spread out the middle half is. For skewed data or data with outliers, compare medians and IQRs. For roughly symmetric data without outliers, means and standard deviations work well too.",
           "The range is the maximum minus the minimum, so it uses only the two most extreme values. One long tail can give a group the larger range even when its middle half is narrower.",
@@ -119,8 +119,8 @@ export const algebraStatisticsLessons: Lesson[] = [
         title: "Association: compare within rows",
         paragraphs: [
           "Two variables are associated when one answer is more common in one group than in another.",
-          "In another survey, more twelfth graders than ninth graders ride the bus: 21 against 18. But there are 70 twelfth graders and only 30 ninth graders. Counts and joint percents mostly reflect how big each group is.",
-          "So find each row's percent, as if each row were its own 100%. $18 \\div 30 = 60\\%$ of ninth graders ride the bus, but only $21 \\div 70 = 30\\%$ of twelfth graders. When these conditional percents differ a lot, the variables are associated. When they are about equal, they are not.",
+          "In another survey, more twelfth graders than ninth graders ride the bus: 21 against 18. But there are 70 twelfth graders and only 30 ninth graders. Counts and joint percents also depend on how big each group is.",
+          "So find each row's percent, as if each row were its own 100%. $18 \\div 30 = 60\\%$ of ninth graders ride the bus, but only $21 \\div 70 = 30\\%$ of twelfth graders. When these conditional percents differ, the variables are associated in this data. The bigger the difference, the stronger the association. Equal percents show no association.",
         ],
         illustration: "scene-conditional-renormalize",
       },
@@ -156,7 +156,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     id: "regression-interpretation",
     title: "Slope and intercept of a fitted line",
     summary:
-      "A scatter plot is a graph with one dot for each person or thing, placed by two measurements. A fitted line is a straight line drawn through it to predict one amount from another, such as test score from hours of practice. Its slope is how much the prediction changes for each 1 more unit of the input. Its intercept is the prediction when the input is 0. That prediction makes sense only when 0 is a sensible input inside the data.",
+      "A scatter plot is a graph with one dot for each person or thing, placed by two measurements. A fitted line is a straight line drawn through it to predict one amount from another, such as test score from hours of practice. Its slope is how much the prediction changes for each 1 more unit of the input. Its intercept is the prediction when the input is 0. It is useful when an input of 0 makes sense in the situation.",
     templateIds: ["regression-coefficient-meaning", "regression-line-predict"],
     senses: {
       change: "change",
@@ -191,7 +191,7 @@ export const algebraStatisticsLessons: Lesson[] = [
           "To predict, put the input in place of $x$. A student who practices 7 hours has a predicted score of $\\hat{y} = 4(7) + 42 = 70$. Here $4(7)$ means 4 times 7.",
           "To find the input for a prediction, solve an equation. A predicted score of 62 needs $4x + 42 = 62$. Subtract 42 from both sides: $4x = 20$. Divide both sides by 4: $x = 5$ hours.",
           "The intercept, 42, is the prediction at $x = 0$. A student who practices 0 hours has a predicted score of 42. That makes sense here because the data include students who practiced 0 hours.",
-          "When $x = 0$ is far outside the data, the intercept has no real meaning. Predicting outside the data is called extrapolation. A line for adults' height in cm and mass in kg might be $\\hat{y} = 0.9x - 85$. But no adult is 0 cm tall, and a mass of −85 kg cannot happen.",
+          "When $x = 0$ is far outside the data, the intercept may have no real meaning. Predicting outside the data is called extrapolation. A line for adults' height in cm and mass in kg might be $\\hat{y} = 0.9x - 85$. But no adult is 0 cm tall, and a mass of −85 kg cannot happen.",
         ],
         illustration: "scene-predict-on-line",
       },
@@ -219,7 +219,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     ],
     pitfalls: [
       "The slope is a rate. The intercept is a single prediction, the one at $x = 0$.",
-      "Keep $x$ and $y$ straight: the slope is the change in $y$ for each 1 more of $x$.",
+      "Keep $x$ and $y$ straight: the slope is the change in predicted $y$ for each 1 more of $x$.",
       "An intercept far outside the data has no meaning in the situation.",
     ],
     parentGuide:
@@ -263,15 +263,15 @@ export const algebraStatisticsLessons: Lesson[] = [
         paragraphs: [
           "The correlation coefficient $r$ is a number from −1 to 1. Its sign gives the direction of a straight-line trend: positive when the points rise from left to right, negative when they fall.",
           "Its distance from 0 gives the strength. Points close to a rising line have $r$ near 1. A loose cloud has $r$ nearer 0. So $r = -0.9$ shows a stronger trend than $r = 0.7$, because −0.9 is farther from 0.",
-          "Pull every point halfway toward the line and the cloud tightens. Then $r$ moves toward 1.",
+          "Move every point straight up or down, halfway to a rising line, and the cloud tightens. Then $r$ moves closer to 1. For a falling line, it moves closer to −1.",
         ],
         illustration: "scene-correlation-tighten",
       },
       {
         title: "Correlation sees only lines",
         paragraphs: [
-          "Temperatures rise through the morning and fall in the evening. They follow a clear curve, yet $r$ is near 0. No single straight line fits a rise and then a fall.",
-          "So $r$ near 0 means no straight-line association. It does not mean no association at all.",
+          "Temperatures rise through the morning and fall in the evening. They follow a clear curve, yet $r$ can be near 0. No single straight line fits a rise and then a fall.",
+          "So $r$ near 0 means little or no straight-line pattern. It does not mean no pattern at all.",
         ],
         illustration: "scene-curve-near-zero-r",
       },
@@ -390,7 +390,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["leaves"],
     intuition:
-      "The mean is the total divided by the number of values. The median is the middle value once the values are in order. An outlier is a value far from the rest. Adding, removing or changing an outlier changes the total, so the mean moves. The median moves only if the middle of the ordered list moves.",
+      "The mean is the total divided by the number of values. The median is the middle value once the values are in order. An outlier is a value far from the rest. Adding or removing a value changes the count and usually the total. Changing a value changes the total. Either way the mean usually moves. The median moves only if the middle of the ordered list moves.",
     terms: ["mean-average", "median", "outlier"],
     method: [
       "Find the mean before and after: total ÷ count. Change the total, and change the count if a value joins or leaves.",
@@ -422,11 +422,11 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "For each plot, compare the two whiskers and the two parts of the box on either side of the median.",
-      "The longer side is the tail: skewed right or skewed left. If the sides match, the data are roughly symmetric.",
+      "The longer side is the tail: skewed right or skewed left. If the sides about match, the data look roughly symmetric.",
       "For skewed data, compare medians and IQRs. Read the range from the whisker ends and the IQR from the box.",
     ],
     watch:
-      "A long whisker makes a large range, not a large IQR. The IQR is only the box.",
+      "A long whisker makes the range large, but it does not change the IQR. The IQR is the width of the box.",
   },
   "relative-frequency-percent": {
     goal: "Find a joint, marginal or conditional percent from a two-way table.",
@@ -456,12 +456,12 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["mean"],
     intuition:
-      "A conditional percent is a count divided by the total of one row or one column of a two-way table: the group named after “of”. Two questions are associated when the same answer is much more common in one group than in another. So compare the percent giving that answer within each group.",
+      "A conditional percent is a count divided by the total of one row or one column of a two-way table: the group named after “of”. Two questions are associated when the same answer is more common in one group than in another. So compare the percent giving that answer within each group.",
     terms: ["conditional-relative-frequency"],
     method: [
       "For a percent, find the group named after “of”. Its row or column total is what you divide by.",
       "For association, find the percent within each row who give the same answer.",
-      "Large differences between the rows mean association. Nearly equal percents mean none.",
+      "Different percents mean association, and a bigger difference means a stronger one. Equal percents mean none.",
     ],
     watch:
       "Counts and joint percents depend on group size. Compare percents within each row.",
@@ -479,11 +479,11 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["mean"],
     intuition:
-      "A scatter plot is a graph with one dot for each person or thing. A least-squares line is the straight line that best follows those dots. It is written $\\hat{y} = mx + b$, and $\\hat{y}$ (read “$y$ hat”) means a predicted value. The slope is the number multiplying $x$, written $m$. It is how much the prediction changes for each 1 more unit of $x$. The $y$-intercept is the number added at the end, written $b$. It is the prediction when $x = 0$. It means something only when $x = 0$ is a sensible value inside the data.",
+      "A scatter plot is a graph with one dot for each person or thing. A least-squares line is the straight line that best follows those dots. It is written $\\hat{y} = mx + b$, and $\\hat{y}$ (read “$y$ hat”) means a predicted value. The slope is the number multiplying $x$, written $m$. It is how much the prediction changes for each 1 more unit of $x$. The $y$-intercept is the number added at the end, written $b$. It is the prediction when $x = 0$. It has a clear meaning when $x = 0$ makes sense in the situation and is near the data.",
     terms: ["slope", "y-intercept"],
     method: [
       "The slope is the number multiplying $x$. Say it as: each extra unit of $x$ goes with a predicted $y$ that much higher, or lower if negative.",
-      "The intercept is the prediction at $x = 0$. It has a meaning only when $x = 0$ is a sensible value inside the data.",
+      "The intercept is the prediction at $x = 0$. It has a clear meaning when $x = 0$ makes sense in the situation and is near the data.",
     ],
     watch:
       "Keep $x$ and $y$ straight, and do not read the slope as the value at $x = 0$.",
@@ -501,7 +501,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     terms: ["slope", "y-intercept"],
     method: [
       "To predict, put the input in place of $x$ and work it out.",
-      "For the gap between two predictions, multiply the slope by the gap between the inputs.",
+      "For how far apart two predictions are, multiply the slope, ignoring its sign, by how far apart the inputs are.",
       "For the input that gives a prediction, set the line's formula equal to it and solve for $x$.",
     ],
     watch:
@@ -534,10 +534,10 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     method: [
       "Direction: dots rising from left to right give a positive $r$. Falling dots give a negative $r$.",
       "Strength: the more closely the dots hug a line, the closer $r$ is to −1 or 1.",
-      "In a residual plot, a curve means a line is the wrong model. No pattern means the line fits.",
+      "In a residual plot, a curve means a line is the wrong model. No pattern means a line is a reasonable model.",
     ],
     watch:
-      "Strength is how far $r$ is from 0. An $r$ near 0 rules out only a straight-line association.",
+      "Strength is how far $r$ is from 0. An $r$ near 0 means a weak straight-line pattern, but a curve may still be there.",
   },
   "causal-claim-choice": {
     goal: "Judge what an observed association can and cannot show.",
@@ -568,7 +568,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["balances"],
     intuition:
-      "In an experiment, the researcher decides who gets the treatment, the thing being tested. Random assignment decides it by chance, such as a coin flip. That makes the groups alike overall in everything else, so a difference in results can show a cause. An observational study is one where researchers only record what people already do. There people choose for themselves, so a difference shows only association.",
+      "In an experiment, the researcher decides who gets the treatment, the thing being tested. Random assignment decides it by chance, such as a coin flip. That makes the groups alike overall in everything else, so a difference in results can show a cause. An observational study is one where researchers only record what people already do. There the researchers do not assign the treatment, so a difference shows only association.",
     terms: ["experiment", "observational-study"],
     method: [
       "Find who decided which people got the treatment: the researcher at random, or the people themselves.",
@@ -576,7 +576,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
       "Compare results as percents of each group.",
     ],
     watch:
-      "Volunteers, or a before-and-after test with no comparison group, cannot show a cause.",
+      "People who chose the treatment themselves, or a before-and-after test with no comparison group, cannot show a cause.",
   },
 };
 

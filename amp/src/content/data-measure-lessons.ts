@@ -86,7 +86,7 @@ export const dataMeasureLessons = [
       formalTitle: "Mode and frequency",
       formal: [
         "The frequency of a value is the number of times it appears. The mode is the value with the greatest frequency.",
-        "If two values tie for the greatest frequency, the data have two modes. If every value appears the same number of times, there is no mode.",
+        "If two values tie for the greatest frequency, the data have two modes. If every value appears exactly once, there is no mode.",
       ],
       pitfalls: [
         "Report the number that appears most often, not how many times it appears.",

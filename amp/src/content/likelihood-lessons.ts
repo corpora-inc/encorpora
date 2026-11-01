@@ -110,7 +110,7 @@ export const likelihoodLessons = [
       },
       methodTitle: "Count, then compare",
       method: [
-        "Count the successes and all the outcomes. Then use these words. With 0 successes the event is impossible. With every outcome a success it is certain. More than half is likely, exactly half is as likely as not, and fewer than half is unlikely.",
+        "Count the successes and all the outcomes. Then use these words. With 0 successes the event is impossible. With every outcome a success it is certain. Otherwise, more than half is likely, exactly half is as likely as not, and fewer than half is unlikely.",
         "To build a bag or spinner, choose the counts to fit the goal. Give two colors equal counts for equal chances. Give a color the largest count to make it the most likely, or the smallest count to make it the least likely.",
       ],
       formalTitle: "Equally likely outcomes",
@@ -140,7 +140,7 @@ export const likelihoodLessons = [
       id: "probability-line-lesson",
       title: "A chance on a number line",
       summary:
-        "An outcome is one thing that can happen, such as a spinner landing on one section. An event is the result you ask about, such as landing on red. A success is an outcome that makes the event happen. The chance of the event is the number of successes out of all the outcomes, written as a fraction such as $\\frac{3}{8}$. The chance is always between 0 and 1, so it has a place on a number line from 0 to 1.",
+        "An outcome is one thing that can happen, such as a spinner landing on one section. An event is the result you ask about, such as landing on red. A success is an outcome that makes the event happen. When every outcome is equally likely, the chance of the event is the number of successes out of all the outcomes, written as a fraction such as $\\frac{3}{8}$. The chance is always between 0 and 1, so it has a place on a number line from 0 to 1.",
       templateIds: ["probability-on-number-line"],
       objectives: [
         "Write a chance as the number of successes over the number of all outcomes.",

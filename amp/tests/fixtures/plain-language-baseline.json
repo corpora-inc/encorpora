@@ -1155,7 +1155,6 @@
         "conditional-relative-frequency",
         "joint-relative-frequency",
         "marginal-relative-frequency",
-        "reflection",
         "variable"
       ],
       "long": []
@@ -5568,12 +5567,6 @@
       ],
       "long": []
     },
-    "lesson:probability-line-lesson": {
-      "terms": [
-        "equally-likely"
-      ],
-      "long": []
-    },
     "lesson:probability-missing-count": {
       "terms": [
         "complementary-angles",
@@ -7205,7 +7198,6 @@
     },
     "lesson:residuals-correlation": {
       "terms": [
-        "association",
         "correlation-coefficient",
         "residual-plot",
         "speed"

@@ -19,7 +19,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
       "Multiply by the number in front. That product is the initial value.",
     ],
     watch:
-      "When a number is added to $t$ in the exponent, as in $t + 2$, work out the power at $t = 0$. The number in front is not the answer then.",
+      "When a number is added to $t$ in the exponent, as in $t + 2$, work out the power at $t = 0$ before multiplying by the number in front.",
   },
   "exponential-decay-table": {
     goal: "Tell exponential decay from growth, linear change and other patterns in a list of values at equal steps.",
@@ -91,7 +91,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
       "more than": "more-than",
     },
     intuition:
-      "The median is the middle value once the data are in order. It splits the ordered data into a lower half and an upper half. The lower quartile is the median of the lower half, written $Q_1$. The upper quartile is the median of the upper half, written $Q_3$. In a half with an even number of values, the median is the mean of the two middle values: add them and divide by 2.",
+      "Data are numbers or facts someone collected, such as test scores. The median is the middle value once the data are in order. It splits the ordered data into a lower half and an upper half. The lower quartile is the median of the lower half, written $Q_1$. The upper quartile is the median of the upper half, written $Q_3$. In a half with an even number of values, the median is the mean of the two middle values: add them and divide by 2.",
     terms: ["quartile", "median"],
     method: [
       "Order the data from least to greatest, keeping repeated values.",
@@ -183,7 +183,7 @@ export const regentsAlgebraOneDataPrinciples: Record<string, string> = {
   "exponential-initial-value":
     "For $f(t) = a \\cdot b^{t+k}$ with $b > 0$, the initial value is $f(0) = a \\cdot b^{k}$. A growth rate $r$ per step, such as $r = 0.05$ for 5%, multiplies by $1 + r$. A decay rate $r$ multiplies by $1 - r$.",
   "exponential-decay-table":
-    "Values $y_0, y_1, y_2, \\dots$ at equally spaced inputs are exponential when each quotient $y_{i+1} \\div y_i$ is the same number $b$. They show decay when $0 < b < 1$. They are linear when each difference $y_{i+1} - y_i$ is the same.",
+    "Values $y_0, y_1, y_2, \\dots$ at equally spaced inputs are exponential when each quotient $y_{i+1} \\div y_i$ is the same positive number $b$. They show decay when $0 < b < 1$. They are linear when each difference $y_{i+1} - y_i$ is the same.",
   "exponential-passes-linear":
     "If $a > 0$ and $b > 1$, then $a \\cdot b^x$ eventually becomes greater than any linear function $cx + d$ and stays greater from then on.",
   "two-way-share":
@@ -246,7 +246,7 @@ export const regentsAlgebraOneDataLessons = [
         "For $f(t) = a \\cdot b^{t+k}$, the initial value is $f(0) = a \\cdot b^k$.",
       ],
       pitfalls: [
-        "The factor $b$ is not the initial value.",
+        "The factor $b$ and the initial value play different roles. Do not report $b$ as the starting value.",
         "A list that gets smaller is exponential decay only if every quotient is the same.",
         "Keep decimals when comparing values. Round only at the end.",
       ],
@@ -297,7 +297,7 @@ export const regentsAlgebraOneDataLessons = [
       formalTitle: "Joint and conditional percents",
       formal: [
         "A joint relative frequency is a cell count divided by the table total. A conditional relative frequency is a cell count divided by the total of its row or of its column.",
-        "The conditional percents across one row add to 100%. The joint percents across one row do not.",
+        "The percents in one row, each divided by that row's total, add to 100% when kept exact. The joint percents in one row add only to that row's share of the table total.",
       ],
       pitfalls: [
         "Divide by the total of the group the question names, not always the table total.",
@@ -314,7 +314,7 @@ export const regentsAlgebraOneDataLessons = [
       id: "regents-quartile-list",
       title: "Quartiles of a listed data set",
       summary:
-        "Quartiles are the values that split ordered data into four parts of equal size. Put the values in order. The median, the middle value, splits them into a lower half and an upper half. The lower quartile is the median of the lower half, and the upper quartile is the median of the upper half.",
+        "Data are numbers or facts someone collected, such as test scores. Quartiles are the values that split ordered data into four parts of about equal size. Put the values in order. The median, the middle value, splits them into a lower half and an upper half. The lower quartile is the median of the lower half, and the upper quartile is the median of the upper half.",
       templateIds: ["quartile-list"],
       objectives: [
         "Order a data set that has repeated values.",
@@ -345,7 +345,7 @@ export const regentsAlgebraOneDataLessons = [
       formalTitle: "Quartiles and the interquartile range",
       formal: [
         "The interquartile range is $Q_3 - Q_1$, the spread of the middle half of the data.",
-        "Splitting at the median and taking the median of each half is one common rule for quartiles. This practice uses it with an even number of values. Then the median falls between two values, and no value has to be placed in a half.",
+        "Splitting at the median and taking the median of each half is one common rule for quartiles. This practice uses it with an even number of values. Then the median falls between two values, so every value goes cleanly into one half.",
       ],
       pitfalls: [
         "Order the data before splitting.",
@@ -435,7 +435,7 @@ export const regentsAlgebraOneDataLessons = [
           "Daily ice cream sales and daily sunburns at a beach are measured. Describe the relationship.",
         steps: [
           "Direction: on sunny days both are higher, and on cloudy days both are lower. They rise together, so the correlation is positive.",
-          "Cause: buying ice cream does not burn skin, and a sunburn does not make people buy ice cream. The weather explains both, so neither causes the other.",
+          "Cause: buying ice cream does not burn skin, and a sunburn does not make people buy ice cream. The weather drives both, so neither causes the other.",
         ],
         answer: "positive correlation; neither causes the other",
       },
@@ -452,7 +452,7 @@ export const regentsAlgebraOneDataLessons = [
       ],
       pitfalls: [
         "A negative correlation is a relationship. It is not the same as no relationship.",
-        "A strong correlation can still have no cause behind it.",
+        "A strong correlation, with the dots close to a line, can happen without either amount causing the other.",
         "A real cause can come with either a positive or a negative correlation.",
       ],
       parentGuide:

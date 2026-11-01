@@ -212,7 +212,7 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["prime"],
     intuition:
-      "An event is a group of outcomes, such as the customers who bought coffee. A Venn diagram draws two events as overlapping circles. The union $A \\cup B$ means “$A$ or $B$”: everything in either circle. The intersection $A \\cap B$ means “$A$ and $B$”: only the overlap. The complement is all of the outcomes outside circle $A$, written $A'$ and read “$A$ prime”. It means “not $A$”. A probability is a count divided by the total.",
+      "An event is a group of outcomes, such as the customers who bought coffee. A Venn diagram draws two events as overlapping circles. The union $A \\cup B$ means “$A$ or $B$”: everything in either circle. The intersection $A \\cap B$ means “$A$ and $B$”: only the overlap. The complement is all of the outcomes outside circle $A$, written $A'$ and read “$A$ prime”. It means “not $A$”. When all outcomes are equally likely, a probability is the count in the event divided by the total count.",
     terms: terms.sets,
     method: [
       "Translate the symbols into words: $\\cup$ is or, $\\cap$ is and, and $'$ is not.",
@@ -235,7 +235,7 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
     terms: terms.addition,
     method: [
       "Write the addition rule: $P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$.",
-      "Find the overlap: count the outcomes in both, or read it from the givens.",
+      "Find the probability of the overlap: count the outcomes in both and divide by the total, or read it from the givens.",
       "Substitute and subtract the overlap once. If the overlap is the unknown, rearrange the rule to find it.",
     ],
     watch:
@@ -251,7 +251,7 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["leaves"],
     intuition:
-      "$P(A \\mid B)$ is read “the probability of $A$ given $B$”. The bar means “given”. It is the chance of $A$ when we already know $B$ happened. Knowing $B$ leaves only the outcomes in $B$. So count the outcomes in $B$, then count how many of those are also in $A$, and divide.",
+      "$P(A \\mid B)$ is read “the probability of $A$ given $B$”. The bar means “given”. It is the chance of $A$ when we already know $B$ happened. Knowing $B$ leaves only the outcomes in $B$. When each outcome has the same chance, count the outcomes in $B$, then count how many of those are also in $A$, and divide.",
     terms: terms.conditional,
     method: [
       "The given event is the group of outcomes you know happened, here $B$. Find it: a row, a column, a circle or a list of outcomes.",

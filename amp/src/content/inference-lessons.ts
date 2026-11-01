@@ -39,7 +39,7 @@ export const inferenceLessons: Lesson[] = [
           "Instead, the school can ask a sample of 60 students. A sample is the part of the population that is actually asked.",
           "A random sample is chosen by chance, like drawing 60 names from a hat holding all 900 names. Every student has the same chance of being picked. So no group is favored, and the sample tends to look like the whole school.",
           "Asking only the student council, or only those who answer an email, favors some students. Those students may think differently from the rest. A sample like that is called biased.",
-          "An answer from a sample is an estimate, a careful guess. Another random sample could give a slightly different answer.",
+          "An answer from a sample is an estimate, a careful guess. Another random sample could give a different answer.",
         ],
       },
       {
@@ -60,7 +60,7 @@ export const inferenceLessons: Lesson[] = [
         "The sample was chosen at random from the town's voters. So its fraction can estimate the fraction for the whole town.",
         "Find the fraction in the sample: 18 of 50 support the park, which is $\\frac{18}{50}$.",
         "Take the same fraction of all the voters: $\\frac{18}{50} \\times 1500 = 540$.",
-        "This is an estimate. Another random sample could give a slightly different number.",
+        "This is an estimate. Another random sample could give a different number.",
       ],
       answer: "About 540 voters",
     },
@@ -77,7 +77,7 @@ export const inferenceLessons: Lesson[] = [
     ],
     pitfalls: [
       "A large sample chosen in a biased way is still biased. Choosing at random matters more than size.",
-      "An estimate from a sample is not exact. A different random sample would give a slightly different answer.",
+      "An estimate from a sample is not exact. A different random sample would give a different answer.",
       "Multiply the sample's fraction by the population size, not by the sample size.",
     ],
     parentGuide:
@@ -87,7 +87,7 @@ export const inferenceLessons: Lesson[] = [
     id: "compare-distributions",
     title: "Comparing two groups",
     summary:
-      "To compare two groups, compare a typical value and a spread. The mean is the total divided by the number of values. The mean absolute deviation is the average distance of the values from their mean, written MAD. Measure the gap between two means in MADs. On box plots, compare the middle values and the box widths, one at a time.",
+      "Data are numbers or facts someone collected, such as test scores. To compare two groups, compare a typical value and a spread. The mean is the total divided by the number of values. The mean absolute deviation is the average distance of the values from their mean, written MAD. Measure the gap between two means in MADs. On box plots, compare the middle values and the box widths, one at a time.",
     templateIds: [
       "means-in-mads",
       "double-box-compare",
@@ -226,7 +226,7 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
     senses: { mean: "mean-average", difference: "difference-subtract" },
     noLink: ["centers"],
     intuition:
-      "The mean is the total divided by the number of values. The mean absolute deviation is the average distance of the values from their mean, written MAD. When two groups have the same MAD, divide the gap between their means by it. The answer says how many MADs apart the groups are. More MADs apart means less overlap.",
+      "The mean is the total divided by the number of values. The mean absolute deviation is the average distance of the values from their mean, written MAD. When two groups have the same MAD, greater than 0, divide the gap between their means by it. The answer says how many MADs apart the groups are. The more MADs apart the means are, the more separate the two groups usually are.",
     terms: ["mean-average", "mean-absolute-deviation"],
     method: [
       "Find the mean of each group: total ÷ number of values.",
@@ -240,7 +240,7 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
     senses: { scale: "scale-axis" },
     noLink: ["center", "centers"],
     intuition:
-      "A box plot's median, the line inside the box, is its middle value. The lower quartile is the middle of the lower half of the data, and the upper quartile is the middle of the upper half. The box runs between them, so it holds the middle half of the data. The box's length is the interquartile range (IQR). Compare medians to compare typical values. Compare box lengths to compare spreads.",
+      "Data are numbers or facts someone collected, such as test scores. A box plot's median, the line inside the box, is its middle value. The lower quartile is the middle of the lower half of the data, and the upper quartile is the middle of the upper half. The box runs between them, so it holds the middle half of the data. The box's length is the interquartile range (IQR). Compare medians to compare typical values. Compare box lengths to compare spreads.",
     terms: ["median", "interquartile-range"],
     method: [
       "Read the median line and the two box ends of each plot.",
@@ -253,7 +253,7 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
     goal: "Choose the true comparison of two box plots.",
     noLink: ["center"],
     intuition:
-      "A box plot is a graph of data drawn around a box. The line inside the box is the median, the middle value. The lower quartile is the middle of the lower half of the data, and the upper quartile is the middle of the upper half. The box runs between them. The box's length is the interquartile range (IQR), the spread of the middle half of the data. One group can have a higher median and still have a shorter box.",
+      "Data are numbers or facts someone collected, such as test scores. A box plot is a graph of data drawn around a box. The line inside the box is the median, the middle value. The lower quartile is the middle of the lower half of the data, and the upper quartile is the middle of the upper half. The box runs between them. The box's length is the interquartile range (IQR), the spread of the middle half of the data. One group can have a higher median and still have a shorter box.",
     terms: ["median", "interquartile-range"],
     method: [
       "Compare the median lines. Which is farther right?",

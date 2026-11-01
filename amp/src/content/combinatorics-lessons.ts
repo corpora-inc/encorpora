@@ -73,7 +73,7 @@ export const combinatoricsLessons: Lesson[] = [
         paragraphs: [
           "A code is a row of positions, each filled with a symbol such as a digit. When symbols may repeat, every position has all the options. A 3-digit code using the digits 0 to 9 has $10 \\times 10 \\times 10 = 1000$ possible codes, from 000 to 999. Each number you multiply, here each 10, is called a factor. Use one factor for each position.",
           "Multiply only when one choice is made at every stage. Sometimes you choose just one item from one combined list, such as one sandwich or one soup from 4 sandwiches and 3 soups. That is a single stage, so add: $4 + 3 = 7$ options.",
-          "If an earlier choice removes options from a later stage, multiply the numbers that are actually left. That kind of count is called an arrangement without repetition.",
+          "If an earlier choice always removes the same number of options from a later stage, multiply the numbers that are actually left. That kind of count is called an arrangement without repetition.",
         ],
       },
     ],
@@ -358,7 +358,7 @@ export const combinatoricsLessons: Lesson[] = [
       "Independent does not mean mutually exclusive. Independent events can happen together.",
     ],
     parentGuide:
-      "Roll a cube and toss a coin together 20 times, and tally even-and-heads. Then list the 12 equally likely pairs and compare the tally with $\\frac{3}{12}$.",
+      "Roll a cube and toss a coin together 20 times, and tally even-and-heads. Then list the 12 equally likely pairs and compare the share of tries, the tally ÷ 20, with $\\frac{3}{12}$.",
   },
   {
     id: "expected-value",

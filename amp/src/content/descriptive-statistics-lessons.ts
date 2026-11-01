@@ -39,7 +39,7 @@ const medianDefinition: Lesson["sections"][number] = {
     "With an odd number of values, one value is in the middle. It has the same number of values on each side. For 1, 2, 2, 7, 9, the third value is the median, 2. Two values come before it and two come after it.",
     "With an even number of values, two values share the middle. The median is the number halfway between them: add the two and divide by 2. For six values, the middle positions are third and fourth. For eight values, they are fourth and fifth.",
     "Positions count from 1. A repeated value takes up one position each time it appears.",
-    "The mean is a different typical value: add every value and divide by how many there are. It is also called the average. The median and the mean can differ, because the median uses only the order. The median is also not always halfway between the least and greatest values.",
+    "The mean is a different typical value: add every value and divide by how many there are. It is also called the average. The median and the mean can differ, because the median uses only the middle value or values. The median is also not always halfway between the least and greatest values.",
   ],
 };
 
@@ -48,7 +48,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
     id: "median-data",
     title: "Find the median",
     summary:
-      "The median is the middle value of a set of numbers. Put every value in order from least to greatest, keeping repeats. With an odd number of values, the median is the one in the middle. With an even number, two values share the middle, and the median is halfway between them.",
+      "The median is the middle value of a set of numbers. Put every value in order from least to greatest, keeping repeats. With an odd number of values, such as 5 or 7, the median is the one in the middle. With an even number, such as 6 or 8, two values share the middle, and the median is halfway between them.",
     templateIds: ["median-data"],
     includeGeneratedRepresentation: false,
     senses: {
@@ -76,7 +76,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
         paragraphs: [
           "A data value is one recorded number. Put all the values in order and keep repeats. Cross off one value from each end, again and again. The value left in the middle is the median. It is one way to describe a typical value of the data.",
           "If two values are left, find the number halfway between them. For 1 and 3, that number is 2, even if 2 was never recorded.",
-          "The median depends on the places of the values in the ordered list. It does not depend on how large the end values are.",
+          "The median depends on the places of the values in the ordered list. With three or more values, making an end value larger or smaller does not change it, as long as that value stays at the end.",
         ],
       },
       ...foundations,
@@ -118,7 +118,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
       "With an even count, average the two middle values, not the two end values.",
     ],
     parentGuide:
-      "Lay out six numbered cards, including a repeat. Remove one card from each end until two middle cards remain, and find the number halfway between them. Then add a seventh card and repeat.",
+      "Lay out six numbered cards, including a repeat, and put them in order. Remove one card from each end until two middle cards remain, and find the number halfway between them. Then add a seventh card and repeat.",
   },
   {
     id: "range-data",
@@ -205,7 +205,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
     id: "interquartile-range-data",
     title: "Find the interquartile range",
     summary:
-      "Put the values in order and split them into a lower half and an upper half. The middle of the lower half is called the lower quartile, and the middle of the upper half is the upper quartile. The interquartile range is the upper quartile minus the lower quartile. It measures how spread out the middle half of the data is.",
+      "Data are numbers or facts someone collected, such as test scores. Put the values in order and split them into a lower half and an upper half. The middle of the lower half is called the lower quartile, and the middle of the upper half is the upper quartile. The interquartile range is the upper quartile minus the lower quartile. It measures how spread out the middle half of the data is.",
     templateIds: ["interquartile-range-data"],
     includeGeneratedRepresentation: false,
     senses: {
@@ -244,7 +244,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
         stage: "intuition",
         title: "Look at the middle part of the data",
         paragraphs: [
-          "The median is the middle value once the data are in order. With an even number of values, it is halfway between the two middle values.",
+          "The median is the middle value once the data are in order. With an even number of values, such as 6 or 8, it is halfway between the two middle values.",
           "The median splits the ordered values into a lower half and an upper half. Find the median of each half. These two values are called quartiles, because together with the median they cut the data into four parts.",
           "Subtract the lower quartile from the upper quartile. The result is the interquartile range. It tells how spread out the middle half of the data is.",
         ],
@@ -361,7 +361,7 @@ export const descriptiveStatisticsMethods: Record<string, ProblemMethod> = {
     senses: { mean: "mean-average", average: "mean-average" },
     noLink: ["third", "fourth", "rule"],
     intuition:
-      "Put the values in order. The median, the middle value, splits them into a lower half and an upper half. The median of the lower half is the lower quartile. The median of the upper half is the upper quartile. The interquartile range is the upper quartile minus the lower quartile. It tells how spread out the middle half of the data is.",
+      "Data are numbers or facts someone collected, such as test scores. Put the values in order. The median, the middle value, splits them into a lower half and an upper half. The median of the lower half is the lower quartile. The median of the upper half is the upper quartile. The interquartile range is the upper quartile minus the lower quartile. It tells how spread out the middle half of the data is.",
     terms: [
       "median",
       [

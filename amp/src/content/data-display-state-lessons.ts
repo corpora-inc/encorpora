@@ -15,7 +15,7 @@ export const dataDisplayStateMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["part"],
     intuition:
-      "A stem-and-leaf plot writes each value in two pieces. The leaf is the last digit. The stem is the digit or digits in front of it. For 27, the stem is 2 and the leaf is 7. Each stem gets one row, from the least stem to the greatest. The leaves in a row go in order from least to greatest. A key is a note that shows how to read a row, such as $2 \\mid 7$ means 27. The plot keeps every value, so you can read the data back out.",
+      "Data are numbers or facts someone collected, such as test scores. A stem-and-leaf plot writes each value in two pieces. The leaf is the last digit. The stem is the digit or digits in front of it. For 27, the stem is 2 and the leaf is 7. Each stem gets one row, from the least stem to the greatest. The leaves in a row go in order from least to greatest. A key is a note that shows how to read a row, such as $2 \\mid 7$ means 27. The plot keeps every value, so you can read the data back out.",
     terms: [
       "stem",
       "leaf",
@@ -63,7 +63,7 @@ export const dataDisplayStateMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["edges", "units"],
     intuition:
-      "A circle graph shows how one whole splits into parts. Each part is a sector, a slice of the circle. Angles are measured in degrees, the units for measuring turns, written °. The center is the middle point of the circle. A sector's central angle is the angle at the center between its two straight edges. The whole circle is 100% of the data, 360°, and the total count. A sector with 25% of the data takes a quarter of the circle, which is 90°.",
+      "Data are numbers or facts someone collected, such as test scores. A circle graph shows how one whole splits into parts. Each part is a sector, a slice of the circle. Angles are measured in degrees, the units for measuring turns, written °. The center is the middle point of the circle. A sector's central angle is the angle at the center between its two straight edges. The whole circle is 100% of the data, 360°, and the total count. A sector with 25% of the data takes a quarter of the circle, which is 90°.",
     terms: [
       ["sector", "In a circle graph, each sector stands for one category."],
       "central-angle",
@@ -151,7 +151,7 @@ export const dataDisplayStateLessons: Lesson[] = [
     id: "stem-leaf-construct",
     title: "Build a stem-and-leaf plot",
     summary:
-      "A stem-and-leaf plot is a way to list data in order. Each value is split in two. The leaf is the last digit, and the stem is the digit or digits in front. For 27, the stem is 2 and the leaf is 7. Every stem gets a row, even an empty one, and every value gets its own leaf. A key is a note that says how to read a row.",
+      "Data are numbers or facts someone collected, such as test scores. A stem-and-leaf plot is a way to list data in order. Each value is split in two. The leaf is the last digit, and the stem is the digit or digits in front. For 27, the stem is 2 and the leaf is 7. Every stem gets a row, even an empty one, and every value gets its own leaf. A key is a note that says how to read a row.",
     templateIds: ["stem-leaf-construct"],
     senses: {
       stem: "stem",
@@ -276,7 +276,7 @@ export const dataDisplayStateLessons: Lesson[] = [
     id: "circle-graph-read",
     title: "Read a circle graph",
     summary:
-      "A circle graph shows how one whole splits into parts. Each part is a slice of the circle, called a sector. A full turn around a circle measures 360 degrees, the units for measuring turns. The whole circle stands for 100% of the data, for 360 degrees and for the total count. So a sector can be described three ways: by its percent, by its angle in degrees, or by its count. Each one can be found from the others.",
+      "Data are numbers or facts someone collected, such as test scores. A circle graph shows how one whole splits into parts. Each part is a slice of the circle, called a sector. A full turn around a circle measures 360 degrees, the units for measuring turns. The whole circle stands for 100% of the data, for 360 degrees and for the total count. So a sector can be described three ways: by its percent, by its angle in degrees, or by its count. Each one can be found from the others.",
     templateIds: ["circle-graph-read"],
     senses: {
       whole: "whole",
@@ -346,7 +346,7 @@ export const dataDisplayStateLessons: Lesson[] = [
     id: "best-display-choice",
     title: "Choose the best display",
     summary:
-      "A data display is a picture of data, such as a bar graph. Each kind is built for one job. To choose one, ask two questions. Are the data categories, like kinds of pets, or numbers, like heights? And what do you want to show? The answers point to one display.",
+      "Data are numbers or facts someone collected, such as test scores. A data display is a picture of data, such as a bar graph. Each kind is built for one job. To choose one, ask two questions. Are the data categories, like kinds of pets, or numbers, like heights? And what do you want to show? The answers point to one display.",
     templateIds: ["best-display-choice"],
     senses: {
       whole: "whole",
@@ -378,7 +378,7 @@ export const dataDisplayStateLessons: Lesson[] = [
       steps: [
         "Name the data. They are one amount, sales, measured once a month.",
         "Name the goal. You want to see how sales change as time passes.",
-        "A line graph shows change over time, so it fits. A circle graph shows parts of a whole, and a scatterplot relates two measures of the same thing. Neither one answers this question.",
+        "A line graph shows change over time, so it fits. A circle graph shows parts of a whole, and a scatterplot relates two measures of the same thing. Neither shows the rise and fall over time as directly.",
       ],
       answer: "A line graph",
     },
@@ -404,7 +404,7 @@ export const dataDisplayStateLessons: Lesson[] = [
     pitfalls: [
       "Pick the display from the question you want to answer, not from the topic.",
       "A bar graph compares categories. A histogram groups numbers into intervals.",
-      "A line graph needs time along one axis. A scatterplot does not.",
+      "A line graph usually shows time along one axis. A scatterplot shows two measures of each person or thing.",
     ],
     parentGuide:
       "Name a situation, such as how tall a plant grows each week. Ask the learner which display they would draw, and why.",
