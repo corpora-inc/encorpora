@@ -25,6 +25,7 @@ export const regentsAlgebraTwoGraphMethods: Record<string, ProblemMethod> = {
       "Choose the graph whose height is exactly 0 there.",
     ],
     "The divisor $x+3$ has $r=-3$, not 3. A graph that is close to the axis at $r$ is not enough: the height must be exactly 0.",
+    { senses: { term: "term-expression" } },
   ),
   "repeated-zero-rule": m(
     "Write a factored rule from a graph's zeros, the way it meets the axis there, and its end behavior.",
@@ -69,6 +70,7 @@ export const regentsAlgebraTwoGraphMethods: Record<string, ProblemMethod> = {
       "Check each statement against these features.",
     ],
     "Touching is not crossing. Read intervals of increase from left to right: they can lie between turning points or run off to either end.",
+    { senses: { interval: "interval" } },
   ),
 };
 
@@ -167,6 +169,10 @@ export const regentsAlgebraTwoGraphLessons = [
       "A graph shifted up or down at $r$ has a remainder that is not 0.",
     ],
     "Ask your learner to read $p(r)$, the height at $x = r$, on each graph, and say which one is 0.",
+    {
+      senses: { term: "term-expression", factor: "factor-number" },
+      noLink: ["leaves"],
+    },
   ),
   lesson(
     "regents-repeated-zero-rule",
@@ -206,6 +212,17 @@ export const regentsAlgebraTwoGraphLessons = [
       "A right end that falls means a negative leading coefficient.",
     ],
     "Ask your learner to multiply out the rule, or just its first terms, to see where the leading sign comes from.",
+    {
+      senses: {
+        term: "term-expression",
+        factor: "factor-number",
+        squared: "square-number",
+        square: "square-number",
+        rule: "rule",
+        side: "side",
+      },
+      noLink: ["part"],
+    },
   ),
   lesson(
     "regents-sinusoid-compare-rule",
@@ -320,6 +337,15 @@ export const regentsAlgebraTwoGraphLessons = [
       "End behavior depends on the sign of the leading coefficient, the number in front.",
     ],
     "Ask your learner to trace the graph with a finger and say up or down.",
+    {
+      senses: {
+        term: "term-expression",
+        factor: "factor-number",
+        increasing: "increasing",
+        decreasing: "decreasing",
+        interval: "interval",
+      },
+    },
   ),
 ];
 

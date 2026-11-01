@@ -46,6 +46,7 @@ export const regentsAlgebraTwoReasoningMethods: Record<string, ProblemMethod> =
         "Check by multiplying back.",
       ],
       "The quotient's first coefficient is the cubic's first coefficient divided by the divisor's. A factor $(x-r)$ has a zero at $r$.",
+      { senses: { term: "term-expression" } },
     ),
     "complete-square-first-steps": m(
       "Tell which first steps of solving a quadratic keep the solutions unchanged.",
@@ -241,6 +242,14 @@ export const regentsAlgebraTwoReasoningLessons = [
       "Check by multiplying back.",
     ],
     "Have your learner multiply the quotient by the divisor to get the cubic back.",
+    {
+      senses: {
+        term: "term-expression",
+        factor: "factor-number",
+        product: "product-multiply",
+      },
+      noLink: ["part"],
+    },
   ),
   lesson(
     "regents-complete-square-first-steps",
@@ -353,6 +362,7 @@ export const regentsAlgebraTwoReasoningLessons = [
       "Count each meeting point once.",
     ],
     "Ask your learner to say where the asymptote and the corner are before counting.",
+    { senses: { side: "side-of-equation", root: "root-equation" } },
   ),
 ];
 
