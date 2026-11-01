@@ -87,6 +87,12 @@ const parts = (d: number) =>
 /** "16/8 = 2 inches": the value in parts, its simplest form, and an agreeing unit. */
 const result = (v: number, d: number, one: string, many: string) =>
   `${v}/${d}${rational(v, d) !== `${v}/${d}` ? ` = ${both(v, d)}` : ""} ${v <= d ? one : many}`;
+/** The simplest answer with its unit: "1 inch", "1 1/4 inches", "3/4 liter". */
+const measure2 = (v: number, d: number, one: string, many: string) => {
+  const r = rational(v, d);
+  const text = r.includes("/") && v > d ? mixedText(v, d) : r;
+  return `${text} ${v <= d ? one : many}`;
+};
 const lengthContexts = [
   { item: "pencil", items: "pencils" },
   { item: "leaf", items: "leaves" },
@@ -153,8 +159,10 @@ function countQuestion(
       fraction: false,
       hint: `Find ${mixedText(v, d)} on the number line. Each × above it is one ${context.item}.`,
       explanation: [
-        `Each mark (×) stands for one ${context.item}, placed above its length.`,
-        `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} above ${mixedText(v, d)}, so ${n} ${n === 1 ? `${context.item} is` : `${context.items} are`} ${name(v)} long.`,
+        `A line plot puts one mark (×) above the number line for each ${context.item}, at its length.`,
+        `So the marks above ${mixedText(v, d)} show the ${context.items} of that length. Count only that column.`,
+        `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} above ${mixedText(v, d)}.`,
+        `${n} ${n === 1 ? `${context.item} is` : `${context.items} are`} ${name(v)} long.`,
       ],
     };
   }
@@ -173,11 +181,12 @@ function countQuestion(
       fraction: false,
       hint: `Look only to the right of ${mixedText(v, d)}, not at ${mixedText(v, d)} itself. Count every mark there.`,
       explanation: [
-        `“Longer than ${mixedText(v, d)}” means to the right of ${mixedText(v, d)} on the number line; marks at ${mixedText(v, d)} itself do not count.`,
-        `${longer.map(([x, c]) => `${c} at ${mixedText(x, d)}`).join(", ")}.`,
+        `Each mark (×) is one ${context.item}, placed above its length. Lengths grow to the right.`,
+        `“Longer than ${mixedText(v, d)}” means to the right of ${mixedText(v, d)}. Marks exactly at ${mixedText(v, d)} do not count, because they are not longer.`,
+        `To the right of ${mixedText(v, d)}: ${longer.map(([x, c]) => `${c} at ${mixedText(x, d)}`).join(", ")}.`,
         longer.length > 1
-          ? `${longer.map(([, c]) => c).join(" + ")} = ${n}.`
-          : `That is ${n}.`,
+          ? `Add the columns: ${longer.map(([, c]) => c).join(" + ")} = ${n}. So ${n} ${n === 1 ? `${context.item} is` : `${context.items} are`} longer than ${name(v)}.`
+          : `So ${n} ${n === 1 ? `${context.item} is` : `${context.items} are`} longer than ${name(v)}.`,
       ],
     };
   }
@@ -190,8 +199,10 @@ function countQuestion(
       fraction: false,
       hint: `Every × is one measured ${context.item}. Count the marks in each of the ${columns.length} columns, starting above ${mixedText(columns[0]![0], d)}, then add the columns.`,
       explanation: [
-        `Columns: ${columns.map(([x, c]) => `${c} at ${mixedText(x, d)}`).join(", ")}.`,
-        `${columns.map(([, c]) => c).join(" + ")} = ${values.length}.`,
+        `Each mark (×) on a line plot is one measured ${context.item}, so count every mark.`,
+        `Count each column: ${columns.map(([x, c]) => `${c} at ${mixedText(x, d)}`).join(", ")}.`,
+        `Add the columns: ${columns.map(([, c]) => c).join(" + ")} = ${values.length}.`,
+        `${values.length} ${context.items} were measured.`,
       ],
     };
   }
@@ -204,8 +215,10 @@ function countQuestion(
     fraction: false,
     hint: `The longest ${context.item} is the rightmost mark and the shortest is the leftmost. Read both lengths and subtract, in ${unit.many}.`,
     explanation: [
+      `Lengths grow to the right, so the rightmost mark is the longest ${context.item} and the leftmost is the shortest.`,
       `The longest is ${name(longest)}; the shortest is ${name(shortest)}.`,
-      `${longest} − ${shortest} = ${longest - shortest}.`,
+      `"How many longer" asks for the difference, so subtract: ${longest} − ${shortest} = ${longest - shortest}.`,
+      `The longest ${context.item} is ${longest - shortest} ${longest - shortest === 1 ? unit.one : unit.many} longer than the shortest.`,
     ],
   };
 }
@@ -271,6 +284,7 @@ function plotDifference(r: Random): Draft {
   const longest = sorted.at(-1)!,
     shortest = sorted[0]!;
   const f = (v: number) => `${v}/${d}`;
+  const lead = `The rightmost mark is the longest ${context.item} and the leftmost is the shortest. Write both in ${parts(d)}, so the pieces are the same size.`;
   const read = `The longest is ${mixedText(longest, d)} = ${f(longest)} inches; the shortest is ${mixedText(shortest, d)} = ${f(shortest)} inch${shortest > d ? "es" : ""}.`;
   const question = r(0, 2);
   if (question === 0)
@@ -281,8 +295,10 @@ function plotDifference(r: Random): Draft {
       fraction: true,
       hint: `Write both lengths as ${parts(d)}. Subtract the numerators; the size of the parts stays ${parts(d)}.`,
       explanation: [
+        lead,
         read,
-        `${f(longest)} − ${f(shortest)} = ${result(longest - shortest, d, "inch", "inches")}.`,
+        `The difference is what is left after subtracting. With same-size pieces, subtract the top numbers: ${f(longest)} − ${f(shortest)} = ${result(longest - shortest, d, "inch", "inches")}.`,
+        `The difference in length is ${measure2(longest - shortest, d, "inch", "inches")}.`,
       ],
     };
   if (question === 1)
@@ -293,8 +309,10 @@ function plotDifference(r: Random): Draft {
       fraction: true,
       hint: `Write both lengths as ${parts(d)} and add the numerators. The parts are still ${parts(d)}.`,
       explanation: [
+        lead,
         read,
-        `${f(longest)} + ${f(shortest)} = ${result(longest + shortest, d, "inch", "inches")}.`,
+        `Combined means added together. With same-size pieces, add the top numbers: ${f(longest)} + ${f(shortest)} = ${result(longest + shortest, d, "inch", "inches")}.`,
+        `The combined length is ${measure2(longest + shortest, d, "inch", "inches")}.`,
       ],
     };
   const heights = stackHeights(values);
@@ -310,8 +328,10 @@ function plotDifference(r: Random): Draft {
     fraction: true,
     hint: `Count the marks above ${mixedText(v, d)}. Add that length once for each mark, or multiply.`,
     explanation: [
+      `Each mark (×) is one ${context.item}. The marks above ${mixedText(v, d)} show the ${context.items} of that length.`,
       `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} above ${mixedText(v, d)} = ${f(v)}.`,
-      `${n} × ${f(v)} = ${result(total, d, "inch", "inches")}.`,
+      `Add that length once for each mark. That is the same as multiplying: ${n} × ${f(v)} = ${result(total, d, "inch", "inches")}.`,
+      `Their total length is ${measure2(total, d, "inch", "inches")}.`,
     ],
   };
 }
@@ -342,9 +362,11 @@ function equalShare(r: Random): Draft {
     fraction: true,
     hint: `Two steps: add every amount to find the total water, then divide the total by the ${count} beakers.`,
     explanation: [
-      `In ${parts(d)} of a liter: ${columns.map(([v, c]) => `${c} × ${f(v)}`).join(" + ")} = ${result(sum, d, "liter", "liters")} in all.`,
-      `Share among ${count} beakers: ${f(sum)} ÷ ${count} = ${result(share, d, "liter", "liters")} each.`,
-      "Check: the equal share lies between the least and greatest amounts.",
+      `Sharing equally means: put all the water together, then split it into ${count} equal amounts.`,
+      `First find the total. Each mark is one beaker, so add each amount once per mark, in ${parts(d)} of a liter: ${columns.map(([v, c]) => `${c} × ${f(v)}`).join(" + ")} = ${result(sum, d, "liter", "liters")}.`,
+      `Then split the total among ${count} beakers: ${f(sum)} ÷ ${count} = ${result(share, d, "liter", "liters")}.`,
+      `Check: the equal share lies between the least and greatest amounts.`,
+      `Each beaker would hold ${measure2(share, d, "liter", "liters")}.`,
     ],
   };
 }

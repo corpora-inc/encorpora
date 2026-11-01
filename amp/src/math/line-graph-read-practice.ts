@@ -330,8 +330,10 @@ function surfaceLine(m: LineModel, r: Random): Surface | null {
       options,
       `Find ${day(m, m.a)} on the horizontal axis and look straight up at the four points above it. The vertical scale counts by 10 percent.`,
       [
-        `Reading the four points above ${day(m, m.a)}: ${categoryNames.map((c, i) => `${c} ${col[i]}%`).join(", ")}.`,
-        `The ${m.bigger ? "greatest" : "least"} is ${m.target}%, so the answer is ${categoryNames[winner]}.`,
+        `Each line is one activity. A point's height, read on the vertical scale, is its percent for that week.`,
+        `Look straight up from ${day(m, m.a)} and read the four points: ${categoryNames.map((c, i) => `${c} ${col[i]}%`).join(", ")}.`,
+        `The ${m.bigger ? "greatest" : "least"} of these is ${m.target}%.`,
+        `${categoryNames[winner]} had the ${m.bigger ? "greatest" : "least"} percent in ${day(m, m.a)}.`,
       ],
       "Choose the activity",
     );
@@ -365,8 +367,10 @@ function surfaceLine(m: LineModel, r: Random): Surface | null {
       options,
       `${readHint} The ${big ? "greatest" : "least"} value is the point ${big ? "highest above" : "closest to"} the horizontal axis.`,
       [
-        `The points read ${ys.map((v, i) => `${day(m, i + 1)}: ${v}`).join(", ")}.`,
-        `The ${big ? "greatest" : "least"} value is ${best}, on ${day(m, at)}.`,
+        `On a line graph, the higher a point sits, the greater its value. The steepest part of the line is not the same as the ${big ? "highest" : "lowest"} point.`,
+        `Read each point on the vertical scale: ${ys.map((v, i) => `${day(m, i + 1)}: ${v}`).join(", ")}.`,
+        `The ${big ? "greatest" : "least"} value is ${best}.`,
+        `The ${noun} was ${big ? "greatest" : "least"} on ${day(m, at)}.`,
       ],
       `Choose the ${ctx.xWord}`,
     );
@@ -426,10 +430,11 @@ function surfaceLine(m: LineModel, r: Random): Surface | null {
       options,
       `${readHint} Find how far each point is from ${m.target}, above or below, and keep the smallest distance.`,
       [
+        `"Closest to ${m.target}" means the smallest distance from ${m.target}, above or below it.`,
         `Distances from ${m.target}: ${rangeInts(m.n)
           .map((i) => `${day(m, i)}: ${dist[i - 1]}`)
           .join(", ")}.`,
-        `The smallest distance is ${dist[best - 1]}, on ${day(m, best)}.`,
+        `The smallest distance is ${dist[best - 1]}, so the ${noun} was closest to ${val(m.target)} on ${day(m, best)}.`,
       ],
       `Choose the ${ctx.xWord}`,
     );
@@ -469,6 +474,7 @@ function surfaceLine(m: LineModel, r: Random): Surface | null {
       options,
       `${readHint} Read the values on ${day(m, m.a)} and ${day(m, m.b)}, then subtract the first from the second to see the direction and size of the change.`,
       [
+        `A change is the end value minus the start value. A positive change is an increase; a negative change is a decrease.`,
         `${day(m, m.a)} is ${from} and ${day(m, m.b)} is ${to}.`,
         `${to} − ${from} = ${d}.`,
         `The ${noun} ${d > 0 ? "increased" : "decreased"} by ${Math.abs(d)}.`,
@@ -509,8 +515,9 @@ function surfaceLine(m: LineModel, r: Random): Surface | null {
       options,
       `${readHint} For each pair of neighboring points, find how much the line ${up ? "goes up" : "goes down"}; the steepest ${up ? "climb" : "drop"} wins.`,
       [
+        `Between two neighboring points, the change is the later value minus the earlier one. The steepest ${up ? "climb" : "drop"} is the greatest ${up ? "increase" : "decrease"}.`,
         `The changes between neighbors are ${d.map((v, i) => `${interval(m, i + 1)}: ${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(v)}`).join("; ")}.`,
-        `The greatest ${up ? "increase" : "decrease"} is ${Math.abs(d[best - 1]!)}, from ${interval(m, best)}.`,
+        `The greatest ${up ? "increase" : "decrease"} is ${Math.abs(d[best - 1]!)}, so the ${noun} ${up ? "increased" : "decreased"} the most from ${interval(m, best)}.`,
       ],
       "Choose the interval",
     );
@@ -571,7 +578,7 @@ function surfaceLine(m: LineModel, r: Random): Surface | null {
         pool.push({
           text: `The ${noun} on ${day(m, i)} was ${claim} ${diff > 0 ? "more" : "less"} than on ${day(m, j)}.`,
           truth: Math.abs(diff) === claim && diff !== 0,
-          feedback: `${day(m, i)} was ${ys[i - 1]} and ${day(m, j)} was ${ys[j - 1]}, a difference of ${Math.abs(diff)} (${diff > 0 ? "more" : diff < 0 ? "less" : "equal"}), not ${claim}.`,
+          feedback: `${day(m, i)} was ${ys[i - 1]} and ${day(m, j)} was ${ys[j - 1]}, ${diff === 0 ? "the same value" : `${Math.abs(diff)} ${diff > 0 ? "more" : "less"}`}, not ${claim}.`,
         });
     }
     if (kind === 5) {
@@ -605,6 +612,7 @@ function surfaceLine(m: LineModel, r: Random): Surface | null {
     options,
     `${readHint} Check each statement against the points, one at a time, using the values you read.`,
     [
+      `First read every point on the vertical scale, so each statement can be checked with numbers.`,
       `The points read ${ys.map((v, i) => `${day(m, i + 1)}: ${v}`).join(", ")}.`,
       `Checking the statements against these values, only one is true: ${truths[0]!.text}`,
     ],
@@ -804,8 +812,10 @@ export const dotPlotArithmeticFamily = chainFamily({
       prompt = `${ctx.intro(m.count)} ${ctx.total(m.count)}`;
       hint = `The plot has ${m.count} dots. Each dot is one measurement, so a value with two dots counts twice. Add the value of every dot.`;
       explanation = [
-        `The dots show ${listed}.`,
-        `Adding all ${m.count} values gives ${val(total, d)}.`,
+        `In a dot plot, each dot is one measurement, placed above its value. Two dots above a value mean it happened twice.`,
+        `Read every dot, repeats included: ${listed}.`,
+        `"In all" means add every dot's value: all ${m.count} values add to ${val(total, d)}.`,
+        `The total is ${withUnit(total, d, ctx)}.`,
       ];
     } else if (m.ask === "range") {
       answer = hi - lo;
@@ -827,8 +837,10 @@ export const dotPlotArithmeticFamily = chainFamily({
       prompt = `${ctx.intro(m.count)} What is the difference between the greatest and the least value, in ${ctx.unit}?`;
       hint = `The plot has ${m.count} dots on a scale marked in ${m.values === "whole" ? "whole numbers" : d === 2 ? "halves" : "fourths"}. Find the dot farthest to the right and the dot farthest to the left, then subtract.`;
       explanation = [
+        `In a dot plot, each dot is one measurement. The rightmost dot is the greatest value and the leftmost is the least.`,
         `The greatest value is ${val(hi, d)} and the least is ${val(lo, d)}.`,
-        `$${tv(hi, d)} - ${tv(lo, d)} = ${tv(hi - lo, d)}$.`,
+        `The difference is what you get by subtracting: $${tv(hi, d)} - ${tv(lo, d)} = ${tv(hi - lo, d)}$.`,
+        `The difference is ${withUnit(hi - lo, d, ctx)}.`,
       ];
     } else {
       answer = m.hidden;
@@ -836,14 +848,22 @@ export const dotPlotArithmeticFamily = chainFamily({
       wrong = [
         [total, "That is the total of the dots shown, not the missing value."],
         [grand, "That is the given total, not the missing value."],
-        [grand - total + 1, "It is one mark too many. Subtract carefully."],
-        [grand - total - 1, "It is one mark too few. Subtract carefully."],
+        [
+          grand - total + 1,
+          "It is one mark more than the difference. Add the shown dots again, counting each repeated value every time, then subtract that sum from the total.",
+        ],
+        [
+          grand - total - 1,
+          "It is one mark less than the difference. Add the shown dots again, counting each repeated value every time, then subtract that sum from the total.",
+        ],
       ];
       prompt = `${ctx.intro(m.count)} ${ctx.missing(m.count, withUnit(grand, d, ctx))}`;
       hint = `Add the values of the ${m.count} dots, counting repeated values each time. The missing value is the total ${val(grand, d)} minus that sum.`;
       explanation = [
-        `The dots show ${listed}; their total is ${val(total, d)}.`,
-        `The missing value is $${tv(grand, d)} - ${tv(total, d)} = ${tv(m.hidden, d)}$.`,
+        `The given total is the dots shown plus the missing value. So the missing value is the total minus the dots shown.`,
+        `Read every dot, repeats included: ${listed}. They add to ${val(total, d)}.`,
+        `Subtract: $${tv(grand, d)} - ${tv(total, d)} = ${tv(m.hidden, d)}$.`,
+        `The missing value is ${withUnit(m.hidden, d, ctx)}.`,
       ];
     }
     const seen = new Set([answer]);

@@ -355,15 +355,17 @@ function associationChoice(r: Random): Draft {
     answer: "",
     hint: `Read the ${n} points from left to right as ${c.names[0]} increases. Does ${c.names[1]} tend to rise, fall, bend, or show no trend?`,
     explanation: [
-      `${associationLabels[kind]}. ${associationWhy[kind]}`,
+      "An association is a pattern between two quantities: knowing one helps predict the other.",
+      `Read the points from left to right as ${c.names[0]} increases. ${associationWhy[kind]}`,
       c.read,
+      `So the scatter plot shows ${associationLabels[kind].toLowerCase()}.`,
     ],
     choices: kinds.map((k) =>
       k === kind
         ? { label: associationLabels[k], correct: true as const }
         : {
             label: associationLabels[k],
-            feedback: `${associationWhy[kind]} ${k === "none" ? "There is a pattern here." : k === "nonlinear" ? "Here the points lie near a straight line." : kind === "nonlinear" ? "Here the points bend, so a straight line does not fit." : kind === "none" ? "Here there is no trend at all." : "Here the trend goes the other way."}`,
+            feedback: `${associationLabels[k]} would mean: ${associationWhy[k].charAt(0).toLowerCase()}${associationWhy[k].slice(1)} But in this plot, ${associationWhy[kind].charAt(0).toLowerCase()}${associationWhy[kind].slice(1)} ${k === "none" ? "There is a pattern here." : k === "nonlinear" ? "Here the points lie near a straight line." : kind === "nonlinear" ? "Here the points bend, so a straight line does not fit." : kind === "none" ? "Here there is no trend at all." : "Here the trend goes the other way."}`,
           },
     ),
   };
@@ -476,9 +478,10 @@ function trendPredict(r: Random): Draft {
     answer: `${f(X)}`,
     hint: `Slope = change in ${c.names[1]} ÷ change in ${c.names[0]} between the marked points. Then move from (${x1}, ${y1}) to ${X}.`,
     explanation: [
-      `Slope: (${y2} − ${y1}) ÷ (${x2} − ${x1}) = ${signed(y2 - y1)} ÷ ${x2 - x1} = ${signed(m)}.`,
+      `A trend line is a straight line drawn close to the points; it shows the typical pattern.`,
+      `Its slope is how much ${c.names[1]} changes for each 1 more of ${c.names[0]}: (${y2} − ${y1}) ÷ (${x2} − ${x1}) = ${signed(y2 - y1)} ÷ ${x2 - x1} = ${signed(m)}.`,
       `${X > x1 ? `From ${x1} up to ${X}` : `From ${x1} back to ${X}`} is ${Math.abs(X - x1)} ${Math.abs(X - x1) === 1 ? "step" : "steps"}, so ${c.names[1]} changes by ${signed(m)} × ${signed(X - x1)} = ${signed(m * (X - x1))}: ${y1} ${m * (X - x1) < 0 ? "−" : "+"} ${Math.abs(m * (X - x1))} = ${f(X)}.`,
-      "The trend line predicts a typical value; actual data points scatter around it.",
+      `The trend line predicts ${f(X)}. This is a typical value; actual data points scatter around it.`,
     ],
   };
 }
@@ -494,8 +497,9 @@ function slopeMeaning(r: Random): Draft {
     answer: "",
     hint: `Find the slope: change in ${c.names[1]} ÷ change in ${c.names[0]}, from (${x1}, ${f(x1)}) to (${x2}, ${f(x2)}). The slope is the change in ${c.names[1]} for each 1 more of ${c.names[0]}.`,
     explanation: [
-      `Slope: (${f(x2)} − ${f(x1)}) ÷ (${x2} − ${x1}) = ${signed(m)}.`,
-      `The slope is the change in ${c.names[1]} for each additional ${xOne}. ${correct}`,
+      `The slope of a line is how much it rises or falls for each 1 step to the right.`,
+      `Here: (${f(x2)} − ${f(x1)}) ÷ (${x2} − ${x1}) = ${signed(m)}.`,
+      `So the slope is the change in ${c.names[1]} for each additional ${xOne}. ${correct}`,
       c.intercept
         ? `The $y$-intercept, ${b}, is a different fact: the predicted ${c.names[1]} when ${c.names[0]} is 0.`
         : "The slope is a rate: it describes change, not any single point on the line.",
@@ -681,7 +685,8 @@ function twoWayPercent(r: Random): Draft {
     explanation: [
       `The question is about ${c.nouns[i]} only: the ${c.rows[i]} row, ${totals[i]} ${c.everyone}.`,
       `${counts[i]![0]} of ${totals[i]} ${c.trait}: ${counts[i]![0]} ÷ ${totals[i]} = ${rational(counts[i]![0], totals[i]!)}.`,
-      `${rational(counts[i]![0], totals[i]!)} = ${ps[i]}%.`,
+      `A percent is a number out of 100: ${rational(counts[i]![0], totals[i]!)} = ${ps[i]}/100 = ${ps[i]}%.`,
+      `${ps[i]}% of the ${c.nouns[i]} ${c.trait}.`,
     ],
   };
 }
@@ -730,18 +735,19 @@ function twoWayAssociation(r: Random): Draft {
     answer: "",
     hint: `The rows have different totals, ${totals[0]} and ${totals[1]}. Turn each row’s “Yes” count into a percent of its own row before comparing.`,
     explanation: [
+      `Two things are associated when one group is clearly more likely than the other to say yes.`,
+      `The rows have different totals, so compare percents of each row, not raw counts.`,
       `${c.rows[0]}: ${a} ÷ ${totals[0]} = ${p0}%. ${c.rows[1]}: ${b} ÷ ${totals[1]} = ${p1}%.`,
       associated
         ? `The percents differ by ${Math.abs(p0 - p1)} points, so the group and whether they ${c.trait} are associated.`
         : `The percents are nearly equal, so there is no evidence of an association.`,
-      "Compare relative frequencies within each row, never raw counts, when the rows have different totals.",
     ],
     choices: [
       associated
         ? { label: yesLabel, correct: true as const }
         : {
             label: yesLabel,
-            feedback: `The percents differ by only ${Math.abs(p0 - p1)} points: about the same.`,
+            feedback: `The percents differ by only ${Math.abs(p0 - p1)} ${Math.abs(p0 - p1) === 1 ? "point" : "points"}: about the same, so the groups do not clearly differ.`,
           },
       associated
         ? {

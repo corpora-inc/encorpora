@@ -422,9 +422,11 @@ function meansInMads(r: Random): Draft {
     fraction: true,
     hint: `Find each group’s mean. Then divide the distance between the two means by the MAD, ${mad}.`,
     explanation: [
+      `The mean of a group is its total shared equally: add the values, then divide by how many there are.`,
       `${c.labels[0]}: ${sum(first)} ÷ ${first.length} = ${m1}. ${c.labels[1]}: ${sum(second)} ÷ ${second.length} = ${m2}.`,
       `The means are ${Math.max(m1, m2)} − ${Math.min(m1, m2)} = ${units(gap, c.unit)} apart.`,
-      `${gap} ÷ ${mad} = ${shown(gap, mad)}: the centers are ${shown(gap, mad)} MADs apart.`,
+      `The MAD (mean absolute deviation) is the typical distance of a value from its group's mean, here ${units(mad, c.unit)}. Dividing the gap by the MAD tells how many typical distances apart the means are.`,
+      `${gap} ÷ ${mad} = ${shown(gap, mad)}, so the means are ${shown(gap, mad)} ${shown(gap, mad) === "1" ? "MAD" : "MADs"} apart.`,
       "The more MADs apart the means are, the less the two groups overlap.",
     ],
   };
@@ -521,8 +523,10 @@ function boxCompare(r: Random): Draft {
       answer: `${s[hi]![2] - s[lo]![2]}`,
       hint: "The line inside each box is its median. Read both on the shared scale and subtract.",
       explanation: [
+        "In a box plot, the line inside the box marks the median: the middle value when the data are in order.",
         reading,
-        `${s[hi]![2]} − ${s[lo]![2]} = ${units(s[hi]![2] - s[lo]![2], c.unit)}.`,
+        `Subtract the medians to compare them: ${s[hi]![2]} − ${s[lo]![2]} = ${units(s[hi]![2] - s[lo]![2], c.unit)}.`,
+        `The median of ${c.names[hi]} is ${units(s[hi]![2] - s[lo]![2], c.unit)} greater.`,
       ],
     };
   if (question === 1) {
@@ -534,6 +538,7 @@ function boxCompare(r: Random): Draft {
       answer: `${iqr[wide]! - iqr[narrow]!}`,
       hint: "Each box runs from Q1 to Q3, so its length is the IQR. Find both lengths and subtract.",
       explanation: [
+        "A box runs from the lower quartile (Q1) to the upper quartile (Q3), so its length is the interquartile range (IQR): the spread of the middle half of the data.",
         reading,
         `IQRs: ${iqr[wide]} and ${iqr[narrow]}. ${iqr[wide]} − ${iqr[narrow]} = ${units(iqr[wide]! - iqr[narrow]!, c.unit)}.`,
         `The ${c.things} of ${c.names[wide]} are more spread out in the middle half.`,
@@ -549,9 +554,10 @@ function boxCompare(r: Random): Draft {
     fraction: true,
     hint: "Subtract the medians. Then divide by the length of one box.",
     explanation: [
+      "The line inside each box is the median; the box length is the interquartile range (IQR), the spread of the middle half.",
       reading,
       `The medians differ by ${s[hi]![2]} − ${s[lo]![2]} = ${gap}; each IQR is ${iqr}.`,
-      `${gap} ÷ ${iqr} = ${shown(gap, iqr)}: the centers are ${shown(gap, iqr)} IQRs apart.`,
+      `${gap} ÷ ${iqr} = ${shown(gap, iqr)}, so the medians are ${shown(gap, iqr)} ${shown(gap, iqr) === "1" ? "IQR" : "IQRs"} apart.`,
     ],
   };
 }

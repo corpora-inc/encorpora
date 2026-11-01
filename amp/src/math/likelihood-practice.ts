@@ -224,13 +224,14 @@ export const likelihoodWords = chainFamily({
       options,
       hint: `Count the successes, the ${e.unit} where ${e.event}${e.device === "cube" ? ": check each number from 1 to 6" : `, using the counts ${e.counts}`}. Then compare that count with none, with half of ${e.n} (which is ${half}), and with all ${e.n}.`,
       explanation: [
-        `${e.k} of the ${e.n} ${e.unit} ${e.k === 1 ? "is a success" : "are successes"}: ${e.event}.`,
+        `An outcome is one way things can turn out. A success is an outcome where ${e.event}. Every outcome here is equally likely.`,
+        `${e.k} of the ${e.n} ${e.unit} ${e.k === 1 ? "is a success" : "are successes"}.`,
         e.k === 0
           ? "No outcome is a success, so the event cannot happen."
           : e.k === e.n
             ? "Every outcome is a success, so the event must happen."
-            : `Half of ${e.n} is ${half}; ${e.k} is ${e.k === half ? "exactly half" : e.k > half ? "more than half but not all" : "less than half but not none"}.`,
-        `The event is ${wordLabel[m.word].toLowerCase()}.`,
+            : `Compare with half: half of ${e.n} is ${half}, and ${e.k} is ${e.k === half ? "exactly half" : e.k > half ? "more than half but not all" : "less than half but not none"}.`,
+        `So the event is ${wordLabel[m.word].toLowerCase()}.`,
       ],
     });
   },
@@ -298,9 +299,10 @@ export const probabilityLine = chainFamily({
       options,
       hint: `The chance is the number of successes out of all ${e.n} ${e.unit}. Find how many ${e.unit} are successes (${e.event}), then count that many equal spaces up from 0.`,
       explanation: [
-        `${e.k} of the ${e.n} ${e.unit} are successes (${e.event}), so the chance is ${e.k} out of ${e.n}, which is $\\frac{${e.k}}{${e.n}}$.`,
-        `The line from 0 to 1 has ${e.n} equal spaces, so $\\frac{${e.k}}{${e.n}}$ is ${e.k} ${e.k === 1 ? "space" : "spaces"} up from 0.`,
-        `That is point $${letters[m.correct]}$.`,
+        `A chance (probability) is a number from 0 to 1. A chance of 0 cannot happen; a chance of 1 must happen.`,
+        `${e.k} of the ${e.n} ${e.unit} ${e.k === 1 ? "is a success" : "are successes"} (${e.event}), so the chance is ${e.k} out of ${e.n}, which is $\\frac{${e.k}}{${e.n}}$.`,
+        `The line from 0 to 1 has ${e.n} equal spaces, so each space is $\\frac{1}{${e.n}}$. Count ${e.k} ${e.k === 1 ? "space" : "spaces"} up from 0.`,
+        `Point $${letters[m.correct]}$ shows the chance that ${e.event}.`,
       ],
     });
     return (
@@ -441,7 +443,9 @@ export const equalChance = chainFamily({
       options,
       hint: `The chance of a color depends on its count out of ${m.total}. Compare the number of ${c1} with the number of ${m.goal === "equally-likely" ? c2 : `${c2} and ${c3}`} in each choice.`,
       explanation: [
-        `Chance depends on how many of the ${m.total} ${m.device === "bag" ? "marbles" : "sections"} are each color, so ${rule}.`,
+        `When every ${m.device === "bag" ? "marble" : "section"} is equally likely, a color's chance grows with how many of the ${m.total} are that color.`,
+        `So ${rule}.`,
+        `Check each choice by comparing the counts, not the order the colors are listed.`,
         `${m.device === "bag" ? "The bag" : "The spinner"} with ${describe(m, m.options[m.correct]!)} is the only choice that fits.`,
       ],
     });

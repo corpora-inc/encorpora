@@ -571,7 +571,7 @@ export function frequencyTableCase(seed: string) {
           },
           {
             label: String(counts[(idx + 1) % counts.length]!),
-            feedback: `This counts a different value. Count only the ${value}s.`,
+            feedback: `This is the count of a different value. Count only the values equal to ${value}.`,
           },
           {
             label: String(values.filter((v) => v >= value).length),
@@ -709,12 +709,17 @@ export function frequencyTableCase(seed: string) {
         ? `Make a row for each interval: ${labels.join(", ")}. Go through the ${n} values once and put each in the interval that holds it. Check that the frequencies add to ${n}.`
         : `Make a row for each value from ${lo} to ${hi}, even one that never appears. Count how many times each value appears. Check that the frequencies add to ${n}.`,
       explanation: [
-        ...labels.map((label, i) =>
-          grouped
-            ? `Interval ${label}: ${counts[i]} values.`
-            : `${label}: appears ${counts[i]} ${counts[i] === 1 ? "time" : "times"}.`,
-        ),
-        `The frequencies add to ${total(counts)}, which is the number of values. The table is ${correct}.`,
+        `A value's frequency is how many times it appears. A frequency table lists each ${grouped ? "interval" : "value"} with its count.`,
+        `Go through the ${n} values once, ${grouped ? "putting each in the interval that holds it" : "tallying each one"}, so none is missed or counted twice.`,
+        `${grouped ? "The counts are" : "Times each value appears:"} ${labels
+          .map((label, i) =>
+            grouped
+              ? `${label}: ${counts[i]} ${counts[i] === 1 ? "value" : "values"}`
+              : `${label}: ${counts[i]} ${counts[i] === 1 ? "time" : "times"}`,
+          )
+          .join("; ")}.`,
+        `Check: the frequencies add to ${total(counts)}, the number of values.`,
+        `The matching table is ${correct}.`,
       ],
       choices: options(correct, wrongTables),
     }),
@@ -1037,8 +1042,10 @@ export function circleGraphCase(seed: string) {
     ];
     hint = `The percents of all sectors add to 100%. Add the ${k - 1} given percents and subtract from 100% to find the missing percent, then use 360° for the whole circle.`;
     explanation = [
-      `The given percents add to ${percents.slice(0, last).reduce((x, y) => x + y, 0)}%, so ${names[last]} is ${rest}%.`,
-      `${rest}% of 360° is ${rest} ÷ 100 × 360 = ${a}°.`,
+      `A circle graph splits a whole into parts. All the percents together make 100%, and all the central angles make 360°.`,
+      `The given percents add to ${percents.slice(0, last).reduce((x, y) => x + y, 0)}%, so ${names[last]} is the rest: 100% − ${percents.slice(0, last).reduce((x, y) => x + y, 0)}% = ${rest}%.`,
+      `The sector gets the same share of 360°: ${rest}% of 360° is ${rest} ÷ 100 × 360 = ${a}°.`,
+      `The central angle for ${names[last]} is ${a}°.`,
     ];
   }
   const problem = assemble(meta, seed, r, {
