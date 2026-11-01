@@ -1,3 +1,4 @@
+import type { GlossaryCard, GlossaryLexicon } from "../glossary/types";
 import {
   defaultPracticeSettings,
   practiceSettingsSchema,
@@ -106,6 +107,10 @@ export type Outcome = {
   /** Below 1 for evidence weaker than a graded answer (a parent's mark
    * without the answer). Absent means 1. */
   evidenceWeight?: number;
+  /** Term cards for the explanation's words. Added to the response only,
+   * never stored with the attempt. */
+  glossary?: GlossaryCard[];
+  glossaryLexicon?: GlossaryLexicon;
 };
 export type SavedProblem = GeneratedProblem & {
   /** Serving context is private and immutable for evidence interpretation. */

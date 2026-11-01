@@ -1,10 +1,12 @@
 import { z } from "zod";
 import type { ProblemHint, PublicProblem } from "../../math/contracts";
 import { stepsSchema } from "../../math/scene/timeline";
+import { glossaryPayloadShape } from "./glossary-payload";
 
 export const problemHintSchema = z.object({
   hint: z.string().min(1).max(4000),
   cue: stepsSchema.optional(),
+  ...glossaryPayloadShape,
 });
 export type HintedProblem = PublicProblem & { hintSupport?: ProblemHint };
 
