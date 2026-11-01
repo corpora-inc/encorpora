@@ -9,6 +9,7 @@ const glossary: Record<
   string,
   { senses?: Record<string, string>; noLink?: string[] }
 > = {
+  "composition-value": { noLink: ["whole"] },
   "aa-similarity": {
     senses: { vertex: "vertex", vertices: "vertex" },
     noLink: [
@@ -1800,7 +1801,7 @@ const glossary: Record<
   },
   "piecewise-evaluate": {
     senses: { changes: "change" },
-    noLink: ["boundary", "intervals", "rule", "rules"],
+    noLink: ["range", "boundary", "intervals", "rule", "rules"],
   },
   "piecewise-reading": { noLink: ["rule"] },
   "point-slope-two-points": { senses: { change: "change" } },
