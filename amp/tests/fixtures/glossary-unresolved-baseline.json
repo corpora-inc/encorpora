@@ -33,20 +33,9 @@
     "opposite": 1,
     "vertex": 8
   },
-  "angle-equation": {
-    "degrees": 2,
-    "parts": 2,
-    "sides": 41,
-    "whole": 2
-  },
   "angle-kind-select": {
     "change": 1,
     "square": 8
-  },
-  "angle-pair-measure": {
-    "opposite": 3,
-    "parts": 9,
-    "whole": 12
   },
   "approximate-unit-factor": {
     "certain": 1,
@@ -117,12 +106,6 @@
   "benchmark-length-estimate": {
     "unit": 1
   },
-  "benchmark-percent-estimate": {
-    "base": 1,
-    "leaves": 1,
-    "multiples": 1,
-    "one fourth": 4
-  },
   "booth-equation-slots": {
     "changes": 20,
     "side": 2
@@ -182,24 +165,8 @@
     "sort": 4,
     "sorting": 2
   },
-  "circle-area-coefficient": {
-    "scale": 1
-  },
-  "circle-circumference-coefficient": {
-    "center": 2,
-    "more than": 1
-  },
   "circle-estimate-blanks": {
     "square": 6
-  },
-  "classify-real-number": {
-    "cube": 2,
-    "cubes": 1,
-    "multiples": 1,
-    "root": 3,
-    "roots": 1,
-    "square": 1,
-    "squares": 1
   },
   "classify-triangle-angles": {
     "opposite": 4
@@ -248,10 +215,6 @@
     "change": 14,
     "square": 5,
     "squares": 48
-  },
-  "compare-irrational-values": {
-    "intervals": 3,
-    "mean": 1
   },
   "compare-lengths": {
     "edge": 1
@@ -304,9 +267,6 @@
     "sides": 7,
     "square": 9
   },
-  "complex-fraction": {
-    "part": 1
-  },
   "compose-shape-name": {
     "edge": 9,
     "sides": 9,
@@ -314,58 +274,9 @@
     "squares": 2,
     "whole": 2
   },
-  "composite-area": {
-    "base": 5,
-    "differences": 1,
-    "edge": 10,
-    "left side": 8,
-    "opposite": 21,
-    "parts": 1,
-    "right side": 15,
-    "side": 19,
-    "sides": 36,
-    "square": 20,
-    "stem": 6,
-    "whole": 7
-  },
-  "composite-face-prism-surface-area": {
-    "edge": 35,
-    "edges": 21,
-    "face": 115,
-    "faces": 58,
-    "left side": 7,
-    "right side": 20,
-    "side": 32,
-    "stem": 13
-  },
-  "composite-face-prism-volume": {
-    "edge": 16,
-    "edges": 21,
-    "face": 74,
-    "left side": 8,
-    "right side": 20,
-    "side": 16,
-    "stem": 12
-  },
   "composite-prism-volume": {
     "parts": 1,
     "whole": 1
-  },
-  "compound-event-simulation": {
-    "difference": 1,
-    "more than": 1,
-    "product": 2,
-    "tails": 2
-  },
-  "cone-sphere-volume": {
-    "base": 33,
-    "center": 2,
-    "cube": 12,
-    "edge": 1,
-    "one third": 25,
-    "square": 8,
-    "squared": 1,
-    "thirds": 20
   },
   "congruent-figure-pair": {
     "corresponding angles": 1,
@@ -444,31 +355,6 @@
   "count-on-back": {
     "jump": 17
   },
-  "cross-section-area": {
-    "center": 8,
-    "edge": 5,
-    "edges": 26,
-    "face": 6,
-    "faces": 14,
-    "side": 1,
-    "square": 20,
-    "vertex": 4,
-    "whole": 4
-  },
-  "cross-section-shape": {
-    "base": 33,
-    "edge": 1,
-    "edges": 26,
-    "face": 28,
-    "faces": 40,
-    "opposite": 1,
-    "plane": 26,
-    "side": 26,
-    "sides": 9,
-    "solid": 2,
-    "square": 7,
-    "third": 5
-  },
   "cube-layer-count": {
     "edge": 21,
     "face": 12
@@ -511,14 +397,6 @@
     "side": 48,
     "square": 5,
     "terms": 1
-  },
-  "cylinder-volume": {
-    "base": 31,
-    "center": 2,
-    "edge": 1,
-    "product": 10,
-    "solid": 1,
-    "square": 15
   },
   "cylinder-volume-slots": {
     "base": 15,
@@ -637,9 +515,6 @@
   "division-remainder": {
     "multiple": 20
   },
-  "division-remainder-story": {
-    "more than": 20
-  },
   "dot-group-compared-to-number": {
     "more than": 40
   },
@@ -697,13 +572,6 @@
     "changes": 1,
     "factor": 1,
     "rename": 1
-  },
-  "equivalent-expressions-check": {
-    "multiples": 3,
-    "part": 1,
-    "product": 1,
-    "term": 17,
-    "terms": 8
   },
   "equivalent-expressions-table": {
     "change": 14,
@@ -889,12 +757,6 @@
   "fraction-division-expression": {
     "model": 1
   },
-  "fraction-edge-volume": {
-    "edge": 3,
-    "edges": 37,
-    "product": 27,
-    "wholes": 1
-  },
   "fraction-equivalence-choice": {
     "factor": 10,
     "part": 15,
@@ -966,9 +828,6 @@
     "intervals": 3,
     "range": 5
   },
-  "gcf-factor-sum": {
-    "leaves": 1
-  },
   "graph-equation-choice": {
     "rule": 12
   },
@@ -1003,14 +862,6 @@
   },
   "greater-numeral": {
     "more than": 1
-  },
-  "greatest-common-factor": {
-    "edge": 6,
-    "edges": 6,
-    "multiple": 1,
-    "product": 3,
-    "side": 24,
-    "square": 6
   },
   "gross-net-pay": {
     "net": 7
@@ -1106,10 +957,6 @@
     "part": 1,
     "parts": 1,
     "quarters": 2
-  },
-  "least-common-multiple": {
-    "product": 1,
-    "whole": 3
   },
   "lesson:absolute-compound-inequality": {
     "more than": 1,
@@ -1213,18 +1060,6 @@
     "sort": 1,
     "square": 3
   },
-  "lesson:angle-relationships": {
-    "degrees": 4,
-    "edge": 1,
-    "opposite": 5,
-    "parts": 2,
-    "quarter": 1,
-    "side": 4,
-    "sides": 2,
-    "square": 1,
-    "vertex": 5,
-    "whole": 1
-  },
   "lesson:angles-in-circles": {
     "center": 4,
     "edge": 1,
@@ -1234,42 +1069,10 @@
     "tangent": 5,
     "vertex": 3
   },
-  "lesson:approximate-roots": {
-    "cube": 3,
-    "cubes": 3,
-    "factor": 1,
-    "interval": 1,
-    "intervals": 4,
-    "mean": 1,
-    "root": 3,
-    "roots": 3,
-    "scales": 1,
-    "side": 1,
-    "square": 10,
-    "squares": 3,
-    "squaring": 1
-  },
   "lesson:approximate-unit-factor-lesson": {
     "factor": 6,
     "unit": 4,
     "units": 9
-  },
-  "lesson:arc-length-coefficient": {
-    "boundary": 6,
-    "center": 9,
-    "degrees": 16,
-    "factor": 1,
-    "more than": 1,
-    "one quarter": 3,
-    "parts": 1,
-    "quarter": 1,
-    "quarters": 3,
-    "sides": 1,
-    "square": 2,
-    "unit": 1,
-    "units": 1,
-    "vertex": 1,
-    "whole": 2
   },
   "lesson:arc-sector-derivation": {
     "center": 2,
@@ -1370,12 +1173,6 @@
   "lesson:benchmark-length-estimate": {
     "unit": 2
   },
-  "lesson:benchmark-percent-estimate": {
-    "base": 1,
-    "leaves": 1,
-    "multiples": 1,
-    "one fourth": 1
-  },
   "lesson:binomial-coefficient": {
     "factor": 2,
     "factors": 3,
@@ -1473,37 +1270,6 @@
     "interval": 4,
     "intervals": 4,
     "sort": 1
-  },
-  "lesson:circle-area-coefficient": {
-    "boundary": 4,
-    "center": 5,
-    "factor": 1,
-    "more than": 1,
-    "parts": 1,
-    "quarters": 1,
-    "scale": 2,
-    "side": 1,
-    "sides": 2,
-    "square": 14,
-    "squared": 1,
-    "squaring": 2,
-    "unit": 1,
-    "units": 1,
-    "whole": 3
-  },
-  "lesson:circle-circumference-coefficient": {
-    "boundary": 3,
-    "center": 6,
-    "changes": 1,
-    "factor": 1,
-    "more than": 1,
-    "parts": 1,
-    "quarters": 1,
-    "sides": 2,
-    "square": 3,
-    "unit": 2,
-    "units": 1,
-    "whole": 2
   },
   "lesson:circle-dilation-scaling": {
     "center": 10,
@@ -1637,17 +1403,6 @@
     "whole": 3,
     "wholes": 1
   },
-  "lesson:comparing-powers": {
-    "base": 4,
-    "change": 1,
-    "changes": 1,
-    "factor": 2,
-    "factors": 3,
-    "product": 1,
-    "square": 2,
-    "squaring": 1,
-    "whole": 1
-  },
   "lesson:compass-straightedge-reasoning": {
     "argument": 1,
     "corresponding angles": 1,
@@ -1724,16 +1479,6 @@
     "plane": 1,
     "square": 1
   },
-  "lesson:complex-fraction": {
-    "part": 1,
-    "parts": 7,
-    "quarters": 1,
-    "rename": 1,
-    "rule": 1,
-    "terms": 1,
-    "unit": 1,
-    "whole": 7
-  },
   "lesson:complex-multiplication": {
     "changes": 1,
     "identity": 1,
@@ -1804,49 +1549,6 @@
     "square": 3,
     "whole": 1
   },
-  "lesson:composite-area": {
-    "change": 1,
-    "differences": 1,
-    "edge": 4,
-    "edges": 1,
-    "left side": 2,
-    "opposite": 2,
-    "parts": 2,
-    "right side": 2,
-    "side": 4,
-    "sides": 5,
-    "square": 4,
-    "whole": 2
-  },
-  "lesson:composite-face-prism-surface-area": {
-    "base": 1,
-    "bases": 1,
-    "boundary": 1,
-    "edge": 3,
-    "edges": 5,
-    "face": 18,
-    "faces": 9,
-    "left side": 1,
-    "right side": 1,
-    "side": 10,
-    "sides": 1,
-    "square": 1
-  },
-  "lesson:composite-face-prism-volume": {
-    "base": 2,
-    "bases": 2,
-    "cube": 1,
-    "cubes": 3,
-    "edge": 2,
-    "edges": 3,
-    "face": 17,
-    "faces": 2,
-    "left side": 1,
-    "opposite": 1,
-    "right side": 1,
-    "solid": 4,
-    "unit": 2
-  },
   "lesson:composite-surface-area": {
     "base": 2,
     "faces": 6,
@@ -1865,17 +1567,6 @@
     "side": 1,
     "sides": 2,
     "squared": 1
-  },
-  "lesson:compound-event-simulation": {
-    "changes": 1,
-    "difference": 1,
-    "event": 4,
-    "faces": 1,
-    "mean": 2,
-    "more than": 1,
-    "trial": 2,
-    "trials": 8,
-    "whole": 1
   },
   "lesson:compound-growth": {
     "balance": 7,
@@ -1916,17 +1607,6 @@
     "side": 7,
     "sides": 2,
     "vertex": 6
-  },
-  "lesson:cone-sphere-volume": {
-    "base": 6,
-    "center": 4,
-    "cube": 2,
-    "more than": 1,
-    "one third": 4,
-    "solid": 1,
-    "square": 1,
-    "thirds": 1,
-    "whole": 1
   },
   "lesson:congruence-claims-table": {
     "change": 3,
@@ -2128,16 +1808,6 @@
     "solid": 1,
     "square": 1,
     "terms": 2
-  },
-  "lesson:cylinder-volume": {
-    "base": 4,
-    "bases": 2,
-    "center": 2,
-    "face": 1,
-    "multiples": 1,
-    "square": 4,
-    "terms": 1,
-    "unit": 1
   },
   "lesson:cylinder-volume-slots": {
     "center": 3,
@@ -2452,12 +2122,6 @@
     "sides": 12,
     "term": 1
   },
-  "lesson:equivalent-expressions-check": {
-    "part": 1,
-    "product": 1,
-    "term": 3,
-    "terms": 2
-  },
   "lesson:equivalent-expressions-table": {
     "change": 2,
     "difference": 1,
@@ -2676,20 +2340,6 @@
     "eighths": 1,
     "more than": 2,
     "part": 1,
-    "wholes": 1
-  },
-  "lesson:fraction-edge-volume": {
-    "cube": 1,
-    "cubes": 4,
-    "edge": 10,
-    "edges": 5,
-    "faces": 1,
-    "product": 3,
-    "quarter": 1,
-    "scales": 1,
-    "solid": 1,
-    "third": 2,
-    "unit": 3,
     "wholes": 1
   },
   "lesson:fraction-forms-blanks": {
@@ -2957,20 +2607,6 @@
     "square": 1,
     "whole": 1
   },
-  "lesson:greatest-common-factor": {
-    "edge": 1,
-    "factor": 12,
-    "factors": 9,
-    "leaves": 1,
-    "multiple": 1,
-    "parts": 1,
-    "product": 5,
-    "side": 2,
-    "square": 1,
-    "terms": 1,
-    "units": 1,
-    "whole": 1
-  },
   "lesson:greatest-monomial-factor": {
     "degree": 2,
     "factor": 14,
@@ -3157,13 +2793,6 @@
   "lesson:large-place-value": {
     "change": 1
   },
-  "lesson:least-common-multiple": {
-    "factor": 3,
-    "jumps": 2,
-    "multiple": 12,
-    "multiples": 9,
-    "product": 4
-  },
   "lesson:length-between-two-positions": {
     "boundary": 1,
     "changes": 1,
@@ -3348,11 +2977,6 @@
     "factors": 2,
     "mean": 1,
     "roots": 1
-  },
-  "lesson:long-division": {
-    "more than": 3,
-    "multiple": 1,
-    "part": 4
   },
   "lesson:longer-heavier-holds-more": {
     "balance": 3,
@@ -3602,16 +3226,6 @@
     "factors": 1,
     "products": 1
   },
-  "lesson:multidigit-decimal-operations": {
-    "changes": 1,
-    "factor": 1,
-    "factors": 1,
-    "parts": 1,
-    "product": 2,
-    "unit": 1,
-    "units": 3,
-    "whole": 2
-  },
   "lesson:multiplication": {
     "changes": 1,
     "factor": 3,
@@ -3703,31 +3317,9 @@
     "square": 16,
     "squares": 1
   },
-  "lesson:negative-integer-power": {
-    "base": 14,
-    "bases": 1,
-    "change": 2,
-    "factors": 2,
-    "mean": 1,
-    "product": 2,
-    "third": 2,
-    "whole": 2
-  },
   "lesson:nested-number-sets": {
     "sort": 1,
     "whole": 1
-  },
-  "lesson:net-surface-area": {
-    "base": 9,
-    "edge": 1,
-    "edges": 3,
-    "face": 6,
-    "faces": 13,
-    "net": 6,
-    "opposite side": 1,
-    "side": 4,
-    "solid": 3,
-    "square": 10
   },
   "lesson:nonlinear-data-model": {
     "changes": 1,
@@ -3982,10 +3574,6 @@
     "term": 4,
     "terms": 4
   },
-  "lesson:percent-applications": {
-    "base": 7,
-    "scale": 1
-  },
   "lesson:percent-grids-conversions": {
     "part": 9,
     "squares": 2,
@@ -4066,19 +3654,6 @@
     "changes": 3,
     "leaves": 2,
     "ranges": 1
-  },
-  "lesson:polygon-area-decompose": {
-    "base": 6,
-    "bases": 3,
-    "change": 1,
-    "leaves": 1,
-    "opposite": 1,
-    "part": 1,
-    "parts": 1,
-    "side": 4,
-    "sides": 1,
-    "square": 6,
-    "squares": 2
   },
   "lesson:polygon-sides-select-lesson": {
     "side": 2,
@@ -4228,15 +3803,6 @@
     "squared": 1,
     "whole": 1
   },
-  "lesson:power-of-power-exponent": {
-    "base": 4,
-    "bases": 1,
-    "factors": 7,
-    "opposite": 1,
-    "product": 3,
-    "rules": 1,
-    "whole": 1
-  },
   "lesson:powers-of-ten": {
     "change": 1,
     "changes": 1
@@ -4270,20 +3836,6 @@
   "lesson:probability-missing-count": {
     "event": 2
   },
-  "lesson:product-of-powers-exponent": {
-    "base": 8,
-    "bases": 1,
-    "changes": 2,
-    "factor": 2,
-    "factors": 8,
-    "product": 5,
-    "rule": 3
-  },
-  "lesson:proportional-graph": {
-    "changes": 1,
-    "mean": 1,
-    "units": 3
-  },
   "lesson:proportional-match-table": {
     "changes": 2
   },
@@ -4301,18 +3853,6 @@
     "unit": 2,
     "units": 1,
     "whole": 2
-  },
-  "lesson:pythagorean-converse": {
-    "base": 3,
-    "center": 1,
-    "changes": 1,
-    "corresponding angles": 1,
-    "images": 1,
-    "more than": 2,
-    "opposite": 5,
-    "third": 1,
-    "unit": 5,
-    "vertex": 3
   },
   "lesson:pythagorean-sort-table": {
     "opposite": 1,
@@ -4424,17 +3964,6 @@
     "square": 9,
     "squares": 2
   },
-  "lesson:quotient-of-powers-exponent": {
-    "base": 4,
-    "bases": 1,
-    "difference": 1,
-    "factor": 1,
-    "factors": 6,
-    "opposite": 1,
-    "opposites": 1,
-    "product": 1,
-    "rule": 2
-  },
   "lesson:radian-arc-ratio": {
     "boundary": 3,
     "center": 2,
@@ -4518,31 +4047,19 @@
     "rule": 3,
     "sample": 1
   },
-  "lesson:rational-irrational-numbers": {
-    "cube": 1,
-    "leaves": 1,
-    "multiple": 1,
-    "opposite": 1,
-    "quarters": 1,
-    "root": 3,
-    "rule": 1,
-    "square": 1,
-    "tail": 3,
-    "tails": 4
-  },
   "lesson:rational-power": {
     "base": 4,
     "bases": 1,
     "factors": 1,
     "fourth": 2,
     "part": 1,
-    "parts": 3,
+    "parts": 1,
     "quarters": 1,
     "root": 13,
     "rule": 1,
     "third": 1,
     "unit": 1,
-    "whole": 3
+    "whole": 2
   },
   "lesson:rationalize-radical-denominator": {
     "change": 1,
@@ -5188,16 +4705,6 @@
     "model": 12,
     "third": 1
   },
-  "lesson:right-triangle-missing-leg": {
-    "difference": 3,
-    "opposite": 2,
-    "part": 5,
-    "root": 1,
-    "third": 1,
-    "unit": 2,
-    "vertex": 2,
-    "whole": 3
-  },
   "lesson:right-triangle-trigonometry": {
     "opposite": 12,
     "opposite side": 2,
@@ -5457,24 +4964,9 @@
     "scale": 3,
     "whole": 1
   },
-  "lesson:scientific-notation": {
-    "change": 1,
-    "difference": 1,
-    "factor": 2,
-    "factors": 1,
-    "leaves": 1,
-    "standard form": 4
-  },
   "lesson:scientific-notation-work": {
     "factors": 1,
     "product": 1
-  },
-  "lesson:scientific-operations": {
-    "factors": 2,
-    "parts": 1,
-    "product": 3,
-    "rules": 1,
-    "units": 1
   },
   "lesson:section-revolution-solid": {
     "base": 1,
@@ -5483,25 +4975,6 @@
     "side": 6,
     "solid": 8,
     "terms": 1
-  },
-  "lesson:sector-area-coefficient": {
-    "boundary": 4,
-    "center": 7,
-    "changes": 1,
-    "degrees": 11,
-    "factor": 1,
-    "more than": 1,
-    "one quarter": 2,
-    "parts": 1,
-    "quarter": 3,
-    "quarters": 4,
-    "sides": 1,
-    "square": 9,
-    "squaring": 1,
-    "unit": 1,
-    "units": 1,
-    "vertex": 1,
-    "whole": 2
   },
   "lesson:sequence-as-function": {
     "change": 1,
@@ -5574,57 +5047,6 @@
     "more than": 1,
     "side": 1,
     "sides": 1
-  },
-  "lesson:signed-context-order": {
-    "balance": 7,
-    "mean": 1
-  },
-  "lesson:signed-fraction-product": {
-    "factor": 4,
-    "factors": 6,
-    "fourths": 1,
-    "opposite": 2,
-    "parts": 3,
-    "product": 7,
-    "quarters": 1,
-    "rule": 1,
-    "side": 1,
-    "unit": 1,
-    "whole": 5
-  },
-  "lesson:signed-fraction-sum": {
-    "change": 1,
-    "factor": 1,
-    "fourths": 1,
-    "one fourth": 1,
-    "opposite": 6,
-    "part": 1,
-    "parts": 6,
-    "quarters": 1,
-    "rename": 4,
-    "renaming": 1,
-    "side": 1,
-    "term": 1,
-    "unit": 2,
-    "whole": 3
-  },
-  "lesson:signed-numbers": {
-    "degrees": 1,
-    "opposite": 18,
-    "opposites": 2,
-    "side": 2,
-    "sides": 1,
-    "unit": 1,
-    "units": 2
-  },
-  "lesson:signed-stories": {
-    "balance": 1,
-    "change": 16,
-    "changes": 4,
-    "degrees": 1,
-    "jumps": 2,
-    "opposite": 4,
-    "product": 1
   },
   "lesson:similar-solid-scale-chain": {
     "cube": 1,
@@ -5760,21 +5182,6 @@
     "solid": 5,
     "square": 8
   },
-  "lesson:solid-cross-sections": {
-    "base": 19,
-    "boundary": 1,
-    "center": 1,
-    "edge": 3,
-    "edges": 3,
-    "face": 5,
-    "faces": 13,
-    "plane": 12,
-    "side": 3,
-    "sides": 3,
-    "solid": 3,
-    "square": 3,
-    "third": 1
-  },
   "lesson:solid-figure-select-lesson": {
     "base": 7,
     "bases": 3,
@@ -5870,14 +5277,6 @@
     "quarter": 2,
     "vertex": 1,
     "vertices": 1
-  },
-  "lesson:square-cube-equations": {
-    "cube": 4,
-    "opposite": 1,
-    "opposites": 1,
-    "product": 2,
-    "root": 3,
-    "square": 6
   },
   "lesson:square-root-equations-and-checks": {
     "change": 1,
@@ -6055,15 +5454,6 @@
     "part": 3,
     "parts": 3,
     "whole": 3
-  },
-  "lesson:story-graph-match": {
-    "change": 3,
-    "changes": 7,
-    "decreasing": 7,
-    "increasing": 6,
-    "left side": 1,
-    "part": 1,
-    "parts": 1
   },
   "lesson:story-operation-choice": {
     "factor": 2,
@@ -6310,26 +5700,6 @@
     "side": 1,
     "sides": 1
   },
-  "lesson:triangle-angle-theorems": {
-    "corresponding angles": 1,
-    "degrees": 3,
-    "edge": 1,
-    "opposite": 2,
-    "plane": 1,
-    "side": 14,
-    "sides": 3
-  },
-  "lesson:triangle-area-base-height": {
-    "base": 23,
-    "change": 1,
-    "opposite": 5,
-    "product": 3,
-    "side": 8,
-    "sides": 5,
-    "square": 8,
-    "vertex": 2,
-    "whole": 1
-  },
   "lesson:triangle-circle-centers": {
     "center": 5,
     "degrees": 1,
@@ -6355,16 +5725,6 @@
     "vertex": 6,
     "vertices": 4,
     "whole": 2
-  },
-  "lesson:triangle-construction": {
-    "base": 1,
-    "difference": 2,
-    "more than": 4,
-    "rule": 1,
-    "side": 10,
-    "sides": 10,
-    "third": 9,
-    "units": 1
   },
   "lesson:triangle-law-reasoning": {
     "factor": 1,
@@ -6401,13 +5761,6 @@
     "third": 2,
     "thirds": 2,
     "vertex": 3
-  },
-  "lesson:triangle-uniqueness": {
-    "opposite": 2,
-    "side": 13,
-    "sides": 4,
-    "third": 3,
-    "vertex": 2
   },
   "lesson:triangles-by-sides-lesson": {
     "side": 2,
@@ -6511,34 +5864,9 @@
     "side": 1,
     "solid": 1
   },
-  "lesson:unit-chain-conversion": {
-    "change": 1,
-    "changes": 1,
-    "cube": 2,
-    "edge": 2,
-    "factor": 2,
-    "factors": 1,
-    "side": 2,
-    "square": 5,
-    "squared": 1,
-    "unit": 2,
-    "units": 8
-  },
   "lesson:unit-circle-coordinate": {
     "degrees": 2,
     "side": 1
-  },
-  "lesson:unit-fraction-cube-packing": {
-    "cube": 15,
-    "cubes": 17,
-    "edge": 15,
-    "edges": 8,
-    "faces": 1,
-    "quarters": 1,
-    "solid": 1,
-    "thirds": 1,
-    "unit": 2,
-    "whole": 2
   },
   "lesson:unit-fraction-division-slots": {
     "fourth": 1,
@@ -6627,12 +5955,6 @@
     "unit": 2,
     "units": 3
   },
-  "lesson:whole-number-powers": {
-    "base": 7,
-    "factor": 4,
-    "factors": 3,
-    "product": 3
-  },
   "lesson:write-numerals": {
     "more than": 1,
     "parts": 1
@@ -6717,11 +6039,6 @@
     "period": 6,
     "periods": 5,
     "whole": 23
-  },
-  "long-division-quotient": {
-    "more than": 34,
-    "part": 41,
-    "product": 1
   },
   "make-a-dollar": {
     "difference": 1,
@@ -6881,15 +6198,6 @@
   "money-total-dollars": {
     "quarters": 7
   },
-  "multidigit-decimal-product": {
-    "factors": 2,
-    "product": 21
-  },
-  "multidigit-decimal-quotient": {
-    "changes": 1,
-    "leaves": 1,
-    "scale": 1
-  },
   "multiplication-division-equation-truth": {
     "left side": 20,
     "mean": 1,
@@ -6959,29 +6267,10 @@
   "negative-coefficient-equation": {
     "sides": 59
   },
-  "negative-integer-power": {
-    "base": 8,
-    "change": 1,
-    "factors": 4,
-    "fourth": 1,
-    "mean": 1,
-    "product": 1,
-    "third": 1
-  },
   "neighbor-product-change": {
     "change": 1,
     "product": 1,
     "whole": 2
-  },
-  "net-surface-area": {
-    "base": 18,
-    "face": 12,
-    "faces": 20,
-    "net": 8,
-    "opposite": 1,
-    "side": 7,
-    "solid": 1,
-    "square": 27
   },
   "number-between-bounds": {
     "mean": 1,
@@ -7040,14 +6329,6 @@
   "operation-sentence-choice": {
     "terms": 1
   },
-  "opposite-on-line": {
-    "left side": 1,
-    "opposite": 27,
-    "right side": 1,
-    "side": 3,
-    "unit": 19,
-    "units": 28
-  },
   "order-fractions-slots": {
     "parts": 36,
     "rule": 1,
@@ -7062,13 +6343,6 @@
   },
   "order-whole-numbers-slots": {
     "change": 1
-  },
-  "parallel-lines-angle": {
-    "corresponding angles": 3,
-    "degrees": 1,
-    "opposite": 1,
-    "side": 1,
-    "sides": 21
   },
   "pattern-pair-relationship": {
     "more than": 3,
@@ -7095,11 +6369,6 @@
   },
   "pay-exact-coins": {
     "changes": 1
-  },
-  "percent-applications": {
-    "changes": 1,
-    "difference": 2,
-    "part": 2
   },
   "percent-forms-and-parts": {
     "change": 2,
@@ -7158,35 +6427,10 @@
     "unit": 9,
     "units": 35
   },
-  "polygon-area-decompose": {
-    "base": 35,
-    "bases": 1,
-    "change": 1,
-    "opposite": 1,
-    "parts": 7,
-    "side": 9,
-    "sides": 2,
-    "square": 20,
-    "vertex": 2
-  },
   "polygon-sides-select": {
     "side": 4,
     "sides": 74,
     "square": 9
-  },
-  "power-compare": {
-    "mean": 1,
-    "product": 1
-  },
-  "power-missing-exponent": {
-    "base": 3
-  },
-  "power-of-power-exponent": {
-    "product": 1
-  },
-  "power-order-trap": {
-    "base": 1,
-    "product": 5
   },
   "predict-linear-output": {
     "change": 45,
@@ -7217,17 +6461,9 @@
     "factors": 1,
     "product": 6
   },
-  "product-of-powers-exponent": {
-    "product": 1,
-    "rule": 1
-  },
   "profit-cost-breakeven": {
     "change": 1,
     "leaves": 7
-  },
-  "proportional-graph": {
-    "unit": 3,
-    "units": 1
   },
   "proportional-match-table": {
     "changes": 4,
@@ -7248,11 +6484,6 @@
   },
   "purchase-change": {
     "change": 18
-  },
-  "pythagorean-converse": {
-    "opposite": 1,
-    "rules": 1,
-    "unit": 2
   },
   "pythagorean-sort-table": {
     "opposite": 2,
@@ -7354,33 +6585,10 @@
     "rename": 13,
     "renaming": 1
   },
-  "repeating-decimal-to-fraction": {
-    "leaves": 1,
-    "tails": 40
-  },
   "repeating-shape-pattern": {
     "part": 33,
     "square": 27,
     "whole": 1
-  },
-  "right-triangle-missing-leg": {
-    "difference": 1,
-    "opposite": 19,
-    "square": 9,
-    "unit": 2
-  },
-  "root-between-integers": {
-    "cubes": 2,
-    "root": 21,
-    "roots": 20,
-    "side": 38,
-    "square": 1,
-    "squares": 2
-  },
-  "root-nearest-tenth": {
-    "root": 1,
-    "roots": 40,
-    "side": 1
   },
   "round-decimal-blanks": {
     "multiple": 1
@@ -7471,10 +6679,6 @@
   "scientific-notation-work": {
     "change": 1
   },
-  "scientific-times-larger": {
-    "parts": 20,
-    "standard form": 1
-  },
   "shape-sides-select": {
     "change": 1,
     "sides": 12,
@@ -7510,34 +6714,6 @@
   },
   "show-work-rental-plans": {
     "more than": 7
-  },
-  "signed-context-order": {
-    "balance": 17,
-    "mean": 1,
-    "side": 7
-  },
-  "signed-fraction-product": {
-    "opposite": 2,
-    "product": 14
-  },
-  "signed-fraction-sum": {
-    "difference": 1,
-    "opposite": 18,
-    "part": 1
-  },
-  "signed-jumps": {
-    "change": 55,
-    "changes": 35
-  },
-  "signed-quantity": {
-    "units": 13
-  },
-  "signed-story": {
-    "balance": 15,
-    "change": 26,
-    "changes": 7,
-    "degrees": 6,
-    "opposite": 5
   },
   "similar-triangles-side": {
     "multiple": 1,
@@ -7600,14 +6776,6 @@
     "sides": 1,
     "vertex": 1,
     "vertices": 3
-  },
-  "solve-square-cube-equation": {
-    "cube": 13,
-    "cubes": 7,
-    "opposite": 12,
-    "product": 12,
-    "root": 8,
-    "roots": 1
   },
   "sort-shapes-count": {
     "sort": 19,
@@ -7751,9 +6919,6 @@
     "standard form": 8,
     "whole": 1
   },
-  "standard-to-scientific": {
-    "standard form": 1
-  },
   "stem-leaf-match-select": {
     "leaf": 3,
     "leaves": 20,
@@ -7791,12 +6956,6 @@
   "story-for-subtraction-sentence": {
     "changes": 1,
     "leaves": 1
-  },
-  "story-graph-match": {
-    "interval": 1,
-    "left side": 1,
-    "parts": 8,
-    "scale": 2
   },
   "story-operation-choice": {
     "factor": 2,
@@ -7958,41 +7117,6 @@
     "image": 21,
     "rule": 22
   },
-  "triangle-angle-sum": {
-    "sides": 14
-  },
-  "triangle-area-base-height": {
-    "base": 126,
-    "opposite": 3,
-    "side": 44,
-    "sides": 19,
-    "square": 38,
-    "vertex": 13
-  },
-  "triangle-conditions": {
-    "impossible": 1,
-    "more than": 9,
-    "rule": 1,
-    "side": 20,
-    "sides": 37,
-    "third": 28
-  },
-  "triangle-exterior-angle": {
-    "terms": 4
-  },
-  "triangle-side-test": {
-    "more than": 20
-  },
-  "triangle-third-side": {
-    "difference": 3,
-    "third": 4
-  },
-  "triangle-uniqueness": {
-    "opposite": 12,
-    "side": 66,
-    "sides": 33,
-    "third": 6
-  },
   "true-comparison-statement": {
     "difference": 1,
     "third": 10
@@ -8027,12 +7151,6 @@
     "product": 1,
     "side": 4,
     "squares": 1
-  },
-  "unit-fraction-cube-packing": {
-    "cube": 8,
-    "cubes": 162,
-    "edge": 58,
-    "edges": 12
   },
   "unit-fraction-division-slots": {
     "part": 7,

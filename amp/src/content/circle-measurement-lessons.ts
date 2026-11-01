@@ -5,7 +5,7 @@ const foundations: Lesson["sections"] = [
   {
     title: "Locate the center and measure the radius",
     paragraphs: [
-      "A circle is the set of points in a flat surface that are all the same distance from one point, called the center. A radius joins the center to a point on the circle; radius also names that segment's length. Every radius of one circle has the same length.",
+      "A circle is the set of points in a flat surface that are all the same distance from one point, called the center. A radius is a straight line from the center to a point on the circle; radius also names that line's length. Every radius of one circle has the same length.",
       "A diameter joins two points on the circle and passes through the center. It consists of two radii, so its length is twice the radius. Write $r$ for the radius and $d$ for the diameter: $d = 2r$ and $r = d/2$. If a diameter is given, divide it by 2 before using a formula that requires the radius.",
       "Circumference is the distance once around the circle's curved boundary. Area measures how much of the flat surface lies inside that boundary. A length in centimeters uses cm; an area in square centimeters counts units the size of a square with sides of 1 cm.",
     ],
@@ -15,7 +15,7 @@ const foundations: Lesson["sections"] = [
     paragraphs: [
       "Divide a circle's circumference by its diameter. Every circle gives the same ratio, the number $\\pi$ (pi). A ratio compares two quantities by division. The number $\\pi$ is approximately 3.14159, but that shortened decimal is not its exact value. Leaving $\\pi$ in an answer keeps the measure exact.",
       "A coefficient is the number multiplying another quantity. In $7\\pi$ cm, the coefficient of $\\pi$ is 7. In $\\frac{5}{2}\\pi$ cm, it is $\\frac{5}{2}$. These questions write the measure as $a\\pi$ and ask only for $a$. The letter $a$ is a place for the unknown coefficient; the complete measure also includes $\\pi$ and its unit.",
-      "You need multiplication and division of positive numbers and fractions. A fraction's denominator names how many equal parts make one whole; its numerator counts those parts. Thus $\\frac{3}{2}$ is three halves, or 1 whole and 1 half. The fraction also means division: 3 divided by 2. Multiply fractions by multiplying their numerators and their denominators, then divide both by a shared factor to reduce the result.",
+      "You need multiplication and division of positive numbers and fractions. A fraction's denominator names how many equal parts make one whole; its numerator counts those parts. Thus $\\frac{3}{2}$ is three halves, or 1 whole and 1 half. The fraction also means division: 3 divided by 2. Multiply fractions by multiplying their numerators and their denominators, then divide both by the same number to simplify the result.",
       "To divide a fraction by 2, multiply it by $\\frac{1}{2}$. For example, $\\frac{3}{2} \\div 2 = \\frac{3}{2} \\times \\frac{1}{2} = \\frac{3}{4}$. Three halves become three quarters when their total size is halved.",
     ],
   },
@@ -36,27 +36,59 @@ export const circleMeasurementLessons: Lesson[] = [
     id: "circle-circumference-coefficient",
     title: "Measure a circle's circumference",
     summary:
-      "Every circle has the same ratio of distance around to distance across.",
+      "The circumference is the distance around a circle. The diameter is the straight distance across it, through the center. For every circle, the distance around is the same number of times the distance across: a little more than 3 times. That number is called $\\pi$ (pi). So the circumference is $\\pi$ times the diameter: a circle 10 cm across is $10\\pi$ cm around.",
     templateIds: ["circle-circumference-coefficient"],
     includeGeneratedRepresentation: false,
+    senses: {
+      squaring: "square-number",
+      "more than": "more-than",
+      squared: "square-number",
+      unit: "unit",
+      units: "unit",
+      degrees: "degree-angle",
+      factor: "factor-number",
+      vertex: "vertex",
+    },
+    noLink: [
+      "whole",
+      "parts",
+      "part",
+      "rule",
+      "half",
+      "quarters",
+      "quarter",
+      "edge",
+      "square",
+      "squares",
+      "center",
+      "boundary",
+      "sides",
+      "side",
+      "changes",
+      "scale",
+      "scales",
+      "multiple",
+      "one quarter",
+    ],
+
     objectives: [
       "Distinguish a radius, a diameter, and a circumference.",
-      "Calculate an exact circumference and identify its coefficient of $\\pi$.",
+      "Find an exact circumference and the number that multiplies $\\pi$ in it.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Measure around and across",
         paragraphs: [
-          "The circumference is the distance around a circle. The diameter is a straight distance across its center. For every circle, the distance around is a little more than three times the distance across.",
-          "That fixed ratio is $\\pi$ (pi), so circumference is $\\pi$ times the diameter. A radius goes from the center to the circle and is half a diameter. In an answer written $a\\pi$, the letter $a$ asks for the number multiplying $\\pi$.",
+          "A circle is a round shape whose edge is the same distance from its center all the way around. The circumference is the distance around a circle. The diameter is the straight distance across it, through the center. Wrap a string around a can, then lay it across the top: the string is a little more than 3 times as long as the width.",
+          "That is true for every circle. The distance around divided by the distance across is always the same number, called $\\pi$ (pi), about 3.14. So circumference is $\\pi$ times the diameter. A radius goes from the center to the circle and is half a diameter. In an answer written $a\\pi$, the letter $a$ stands for the number multiplying $\\pi$.",
         ],
       },
       ...foundations,
       {
         title: "Use the circumference-to-diameter ratio",
         paragraphs: [
-          "Write $C$ for circumference. The definition of $\\pi$ gives $C/d = \\pi$. Multiply both sides by the positive diameter $d$ to get $C = \\pi d$. Since $d = 2r$, the same formula is $C = 2\\pi r$.",
+          "Write $C$ for circumference and $d$ for diameter. The definition of $\\pi$ says $C \\div d = \\pi$. Multiply both sides by $d$, a positive number, to get $C = \\pi d$. The diameter is two radii, $d = 2r$, so the same formula is $C = 2\\pi r$.",
           "The diameter is a straight distance through the center; circumference follows the curved boundary. The number $\\pi$ is greater than 3 and less than 4, so a circumference is greater than three diameters and less than four. This gives a size check without replacing the exact answer by a decimal.",
         ],
         illustration: "circle-circumference",
@@ -75,16 +107,16 @@ export const circleMeasurementLessons: Lesson[] = [
       prompt:
         "A circle has a diameter of 10 cm. Its circumference is $a\\pi$ cm. What is $a$?",
       steps: [
-        "The given length is the diameter: $d = 10$ cm. The radius is half of it: $r = 10 \\div 2 = 5$ cm.",
-        "Use the diameter formula: $C = \\pi d = \\pi \\times 10 = 10\\pi$ cm.",
-        "The coefficient is the number multiplying $\\pi$, so $a = 10$. The complete circumference is $10\\pi$ cm.",
+        "The given length goes across through the center, so it is the diameter: $d = 10$ cm. The radius is half of it: $r = 10 \\div 2 = 5$ cm.",
+        "The circumference is $\\pi$ times the diameter: $C = \\pi d = \\pi \\times 10 = 10\\pi$ cm.",
+        "The coefficient is the number multiplying $\\pi$, so $a = 10$. The complete circumference is $10\\pi$ cm, about 31.4 cm.",
         "Check using the radius: $C = 2\\pi r = 2 \\times \\pi \\times 5 = 10\\pi$ cm. Both forms give the same measure.",
       ],
       answer: "10",
     },
     pitfalls: [
       "Use the diameter in $C = \\pi d$ or the radius in $C = 2\\pi r$.",
-      "Circumference is a length, so its unit is cm rather than square centimeters.",
+      "Circumference is a length, so it uses a length unit such as cm, not an area unit such as square centimeters.",
       "When the question asks for $a$ in $a\\pi$, enter the coefficient only.",
     ],
     parentGuide:
@@ -93,20 +125,54 @@ export const circleMeasurementLessons: Lesson[] = [
   {
     id: "circle-area-coefficient",
     title: "Measure the area inside a circle",
-    summary: "The area inside a circle grows with the square of its radius.",
+    summary:
+      "The area of a circle is the amount of flat space inside it. The radius is the distance from the center to the edge. To find the area, multiply the radius by itself, then by the number $\\pi$ (pi), about 3.14. A circle with radius 3 cm has area $3 \\times 3 \\times \\pi = 9\\pi$ square centimeters. Doubling the radius makes the area four times as big.",
     templateIds: ["circle-area-coefficient"],
     includeGeneratedRepresentation: false,
+    senses: {
+      squaring: "square-number",
+      "more than": "more-than",
+      squared: "square-number",
+      unit: "unit",
+      units: "unit",
+      degrees: "degree-angle",
+      factor: "factor-number",
+      vertex: "vertex",
+    },
+    noLink: [
+      "whole",
+      "parts",
+      "part",
+      "rule",
+      "half",
+      "quarters",
+      "quarter",
+      "edge",
+      "square",
+      "squares",
+      "center",
+      "boundary",
+      "sides",
+      "side",
+      "changes",
+      "scale",
+      "scales",
+      "multiple",
+      "one quarter",
+    ],
+
     objectives: [
       "Explain why radius and square units appear in the area formula.",
-      "Calculate exact circle area from a radius or diameter.",
+      "Find the exact area of a circle from its radius or diameter.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Cover the space inside",
         paragraphs: [
-          "A circle's area measures the flat region it covers. A wider circle grows in two directions, so doubling its radius makes more than twice as much space inside. The radius sets the scale for the area.",
-          "A radius runs from the center to the circle; it is half the diameter across the center. Area is $\\pi$ (pi) times radius times radius. In $a\\pi$, $a$ is the number multiplying $\\pi$.",
+          "A circle's area is the amount of flat space it covers. A radius runs from the center to the circle. A diameter runs across through the center, so it is two radii long.",
+          "A wider circle grows in two directions at once, across and up. So doubling its radius multiplies the space inside by four, not by two.",
+          "Multiplying a number by itself is called squaring it. The area is $\\pi$ (pi), about 3.14, times the radius times the radius, or $\\pi$ times the radius squared. In an answer written $a\\pi$, the letter $a$ stands for the number multiplying $\\pi$.",
         ],
       },
       ...foundations,
@@ -115,7 +181,7 @@ export const circleMeasurementLessons: Lesson[] = [
         paragraphs: [
           "Imagine cutting the region inside a circle into many narrow wedges. A wedge, called a sector, is bounded by two radii and the curved boundary between their endpoints. Arrange the wedges alternately with their tips up and down. This rearrangement preserves the area.",
           "As the wedges become narrower, the rearranged shape approaches a rectangle. Its height approaches $r$. Its width approaches half the circumference because half the curved boundary runs along each long side. The bends along those sides shrink as the wedges narrow.",
-          "A rectangle's area is width times height. The circle therefore has area $A = (C/2)r = \\pi r^2$. Here uppercase $A$ names the area, and $r^2$ means $r \\times r$. Squaring a length in centimeters produces square centimeters. Lowercase $a$ in the question names the coefficient of $\\pi$.",
+          "A rectangle's area is width times height. Half the circumference is $\\frac{1}{2} \\times 2\\pi r = \\pi r$, so the circle has area $A = \\pi r \\times r = \\pi r^2$. Here uppercase $A$ names the area, and $r^2$ means $r \\times r$. Squaring a length in centimeters produces square centimeters. Lowercase $a$ in the question names the coefficient of $\\pi$.",
         ],
         illustration: "circle-area",
       },
@@ -140,9 +206,9 @@ export const circleMeasurementLessons: Lesson[] = [
       prompt:
         "A circle has a diameter of 6 cm. Its area is $a\\pi$ square centimeters. What is $a$?",
       steps: [
-        "Find the radius: $r = 6 \\div 2 = 3$ cm.",
-        "Square the radius: $r^2 = 3 \\times 3 = 9$ square centimeters.",
-        "Multiply by $\\pi$: $A = \\pi r^2 = 9\\pi$ square centimeters. The requested coefficient is $a = 9$.",
+        "The formula needs the radius, and the diameter is two radii. So halve it: $r = 6 \\div 2 = 3$ cm.",
+        "Square the radius, which means multiply it by itself: $r^2 = 3 \\times 3 = 9$.",
+        "Multiply by $\\pi$: $A = \\pi r^2 = 9\\pi$ square centimeters. The number multiplying $\\pi$ is $a = 9$.",
         "Check with half the circumference times the radius. The circumference is $6\\pi$ cm, so $A = \\frac{1}{2} \\times 6\\pi \\times 3 = 9\\pi$ square centimeters.",
       ],
       answer: "9",
@@ -159,20 +225,52 @@ export const circleMeasurementLessons: Lesson[] = [
     id: "arc-length-coefficient",
     title: "Measure an arc of a circle",
     summary:
-      "An arc is the same fraction of the circumference as its center angle is of a full turn.",
+      "An arc is a piece of the curved edge of a circle. A central angle is the turn at the center between the two ends of the arc. Turns are measured in degrees, the unit for angles, and a full turn is 360 degrees. An arc of a 90-degree turn is $\\frac{90}{360} = \\frac{1}{4}$ of the way around. So its length is one quarter of the circumference, the distance all the way around.",
     templateIds: ["arc-length-coefficient"],
     includeGeneratedRepresentation: false,
+    senses: {
+      squaring: "square-number",
+      "more than": "more-than",
+      squared: "square-number",
+      unit: "unit",
+      units: "unit",
+      degrees: "degree-angle",
+      factor: "factor-number",
+      vertex: "vertex",
+    },
+    noLink: [
+      "whole",
+      "parts",
+      "part",
+      "rule",
+      "half",
+      "quarters",
+      "quarter",
+      "edge",
+      "square",
+      "squares",
+      "center",
+      "boundary",
+      "sides",
+      "side",
+      "changes",
+      "scale",
+      "scales",
+      "multiple",
+      "one quarter",
+    ],
+
     objectives: [
       "Use a central angle to identify a fraction of a circle's boundary.",
-      "Calculate exact arc lengths, including arcs greater than a semicircle.",
+      "Find exact arc lengths, including arcs longer than half the circle.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Take part of the rim",
         paragraphs: [
-          "An arc is a piece of a circle's boundary. A turn of one quarter around the center reaches one quarter of the rim. Find the full distance around first, then take the matching fraction.",
-          "The central angle measures the turn at the center; a full turn is 360 degrees. The distance around the full circle, its circumference, is $\\pi$ (pi) times its diameter. In $a\\pi$, $a$ is the number multiplying $\\pi$.",
+          "An arc is a piece of a circle's curved edge. Picture the hand of a clock turning a quarter of the way around: its tip traces a quarter of the rim. So find the full distance around first, then take the matching fraction.",
+          "The central angle is the turn at the center. It is measured in degrees, the unit for angles, and a full turn is 360 degrees. The distance around the full circle, its circumference, is $\\pi$ (pi), about 3.14, times its diameter, the distance across through the center. In an answer written $a\\pi$, the letter $a$ stands for the number multiplying $\\pi$.",
         ],
       },
       ...foundations,
@@ -192,7 +290,7 @@ export const circleMeasurementLessons: Lesson[] = [
         stage: "formal",
         title: "A part of the circumference",
         paragraphs: [
-          "For a central angle $\\theta$ between 0 and 360 degrees in a circle of radius $r$, the intercepted arc has length $L=(\\theta/360)2\\pi r$. This uses the same fraction of the full circumference as the angle uses of a full turn.",
+          "For a central angle $\\theta$ between 0 and 360 degrees in a circle of radius $r$, the arc between its two rays has length $L = \\frac{\\theta}{360} \\times 2\\pi r$. The arc is the same fraction of the full circumference as the angle is of a full turn.",
         ],
       },
     ],
@@ -200,9 +298,9 @@ export const circleMeasurementLessons: Lesson[] = [
       prompt:
         "A circle has a diameter of 12 cm. An arc corresponds to a central angle of 150 degrees. Its length is $a\\pi$ cm. What is $a$?",
       steps: [
-        "Find the radius: $r = 12 \\div 2 = 6$ cm. The full circumference is $C = 2\\pi r = 12\\pi$ cm.",
-        "Find the fraction of a full turn: $\\frac{150}{360} = \\frac{5}{12}$, dividing numerator and denominator by 30.",
-        "Multiply that fraction by the circumference: $L = \\frac{5}{12} \\times 12\\pi = 5\\pi$ cm.",
+        "Find the whole distance around first. The radius, the distance from the center to the circle, is half the diameter: $r = 12 \\div 2 = 6$ cm. The full circumference is $C = 2\\pi r = 2 \\times \\pi \\times 6 = 12\\pi$ cm.",
+        "Find what fraction of a full turn the angle is: $\\frac{150}{360}$. Divide top and bottom by 30 to simplify: $\\frac{5}{12}$.",
+        "The arc is that same fraction of the way around, so multiply: $L = \\frac{5}{12} \\times 12\\pi = 5\\pi$ cm.",
         "The requested coefficient is $a = 5$. Check: 150 degrees is less than 180 degrees, and $5\\pi$ cm is less than the half-circumference $6\\pi$ cm.",
       ],
       answer: "5",
@@ -219,20 +317,52 @@ export const circleMeasurementLessons: Lesson[] = [
     id: "sector-area-coefficient",
     title: "Measure a sector of a circle",
     summary:
-      "A sector is the same fraction of the circle's area as its center angle is of a full turn.",
+      "A sector is a pie-slice part of a circle, cut out by two radii (lines from the center to the edge). The central angle is the turn between those two radii. Turns are measured in degrees, the unit for angles, and a full turn is 360 degrees. A 270-degree sector is $\\frac{270}{360} = \\frac{3}{4}$ of a full turn. So its area is three quarters of the whole circle's area, $\\pi r^2$.",
     templateIds: ["sector-area-coefficient"],
     includeGeneratedRepresentation: false,
+    senses: {
+      squaring: "square-number",
+      "more than": "more-than",
+      squared: "square-number",
+      unit: "unit",
+      units: "unit",
+      degrees: "degree-angle",
+      factor: "factor-number",
+      vertex: "vertex",
+    },
+    noLink: [
+      "whole",
+      "parts",
+      "part",
+      "rule",
+      "half",
+      "quarters",
+      "quarter",
+      "edge",
+      "square",
+      "squares",
+      "center",
+      "boundary",
+      "sides",
+      "side",
+      "changes",
+      "scale",
+      "scales",
+      "multiple",
+      "one quarter",
+    ],
+
     objectives: [
       "Identify the region selected by a central angle.",
-      "Calculate exact sector areas, including sectors greater than half a circle.",
+      "Find exact sector areas, including sectors bigger than half a circle.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Take a slice of the circle",
         paragraphs: [
-          "A sector is the pie-slice-shaped region between two radii and the arc joining them. A quarter turn at the center cuts out one quarter of the circle's area. Find the full area, then take the matching fraction.",
-          "A radius runs from the center to the circle. The central angle measures the turn between the two radii; a full turn is 360 degrees. The circle's full area is $\\pi$ (pi) times radius times radius. In $a\\pi$, $a$ is the number multiplying $\\pi$.",
+          "A radius runs from the center of a circle to its edge. A sector is the pie-slice-shaped region between two radii and the curved edge, called the arc, joining them. A quarter turn at the center cuts out one quarter of the circle's area. So find the full area, then take the matching fraction.",
+          "The central angle is the turn between the two radii. It is measured in degrees, the unit for angles, and a full turn is 360 degrees. Multiplying a number by itself is called squaring it. The circle's full area, the flat space inside it, is $\\pi$ (pi), about 3.14, times the radius times the radius. In an answer written $a\\pi$, the letter $a$ stands for the number multiplying $\\pi$.",
         ],
       },
       ...foundations,
@@ -242,7 +372,7 @@ export const circleMeasurementLessons: Lesson[] = [
         paragraphs: [
           "The area of a full circle is $\\pi r^2$, where $r^2$ means $r \\times r$. One way to see this formula is to rearrange very narrow sectors alternately tip-up and tip-down: they approach a rectangle of height $r$ and width half the circumference, $\\pi r$. Multiplying gives $\\pi r^2$.",
           "Equal central angles cut out equal areas in the same circle. A 1-degree sector is $\\frac{1}{360}$ of the full area. Write the angle as $\\theta$ (theta), measured in degrees, and the sector area as $S$. Then $S = \\frac{\\theta}{360} \\times \\pi r^2$.",
-          "Find the radius, square it, and multiply by the angle's fraction of a full turn. Keep $\\pi$ in the complete area. A sector's area uses square centimeters; its curved boundary has a length measured in centimeters.",
+          "Find the radius, multiply it by itself, and multiply by the angle's fraction of a full turn. Keep $\\pi$ in the complete area. A sector's area uses square centimeters; its curved boundary has a length measured in centimeters.",
         ],
         illustration: "circle-sector",
       },
@@ -252,7 +382,7 @@ export const circleMeasurementLessons: Lesson[] = [
         stage: "formal",
         title: "A part of the circle's area",
         paragraphs: [
-          "For a central angle $\\theta$ between 0 and 360 degrees in a circle of radius $r$, the sector has area $A=(\\theta/360)\\pi r^2$. It occupies the same fraction of the full circle as the angle occupies of a full turn.",
+          "For a central angle $\\theta$ between 0 and 360 degrees in a circle of radius $r$, the sector has area $S = \\frac{\\theta}{360} \\times \\pi r^2$. It is the same fraction of the full circle as the angle is of a full turn.",
         ],
       },
     ],
@@ -260,9 +390,9 @@ export const circleMeasurementLessons: Lesson[] = [
       prompt:
         "A circle has a radius of 4 cm. A sector has a central angle of 270 degrees. Its area is $a\\pi$ square centimeters. What is $a$?",
       steps: [
-        "The radius is $r = 4$ cm. Square it: $r^2 = 4 \\times 4 = 16$. The full circle has area $16\\pi$ square centimeters.",
-        "Find the fraction of a full turn: $\\frac{270}{360} = \\frac{3}{4}$, dividing numerator and denominator by 90.",
-        "Take three quarters of the full area: $S = \\frac{3}{4} \\times 16\\pi = 12\\pi$ square centimeters. Thus $a = 12$.",
+        "Find the full circle's area first. The radius is $r = 4$ cm. Multiply it by itself (this is called squaring it): $r^2 = 4 \\times 4 = 16$. So the full area is $\\pi r^2 = 16\\pi$ square centimeters.",
+        "Find what fraction of a full turn the angle is: $\\frac{270}{360}$. Divide top and bottom by 90 to simplify: $\\frac{3}{4}$.",
+        "The sector is that same fraction of the circle, so take three quarters of the full area: $S = \\frac{3}{4} \\times 16\\pi = 12\\pi$ square centimeters. Thus $a = 12$.",
         "Check the omitted quarter: $\\frac{1}{4} \\times 16\\pi = 4\\pi$ square centimeters. The two areas sum to $12\\pi + 4\\pi = 16\\pi$, the full circle's area.",
       ],
       answer: "12",
@@ -277,6 +407,17 @@ export const circleMeasurementLessons: Lesson[] = [
   },
 ];
 
+/** What each practice screen asks, in plain words. */
+const circleGoal: Record<string, string> = {
+  "circle-circumference-coefficient":
+    "Find the circumference, the distance around a circle, written as $a\\pi$. Give the number $a$.",
+  "circle-area-coefficient":
+    "Find the area inside a circle, written as $a\\pi$ square units. Give the number $a$.",
+  "arc-length-coefficient":
+    "Find the length of an arc, a piece of a circle's edge, written as $a\\pi$. Give the number $a$.",
+  "sector-area-coefficient":
+    "Find the area of a sector, a pie-slice part of a circle, written as $a\\pi$. Give the number $a$.",
+};
 /** The most common error for each circle measure, stated as what to do. */
 const circleWatch: Record<string, string> = {
   "circle-circumference-coefficient":
@@ -293,7 +434,9 @@ export const circleMeasurementMethods: Record<string, ProblemMethod> =
     circleMeasurementLessons.map((lesson) => [
       lesson.id,
       {
-        goal: lesson.objectives[1]!,
+        goal: circleGoal[lesson.id]!,
+        senses: lesson.senses,
+        noLink: lesson.noLink,
         intuition:
           lesson.sections
             .find((section) => section.stage === "intuition")
@@ -302,9 +445,9 @@ export const circleMeasurementMethods: Record<string, ProblemMethod> =
         method:
           lesson.id === "circle-circumference-coefficient"
             ? [
-                "If a radius is given, double it to find the diameter.",
+                "If a radius is given, double it to find the diameter, because a diameter is two radii.",
                 "Circumference is $\\pi$ times the diameter: $C = \\pi d$.",
-                "Enter the diameter's numerical value as $a$.",
+                "Enter the diameter's number as $a$, without $\\pi$ or the unit.",
               ]
             : lesson.id === "circle-area-coefficient"
               ? [
@@ -313,11 +456,11 @@ export const circleMeasurementMethods: Record<string, ProblemMethod> =
                   "Area is $\\pi$ times that square: $A = \\pi r^2$. Enter the square as $a$.",
                 ]
               : [
-                  "Find the radius; halve a given diameter.",
-                  "Divide the stated angle by 360.",
+                  "Find the radius. If a diameter is given, halve it.",
+                  "Divide the stated angle by 360 to find its fraction of a full turn.",
                   lesson.id === "arc-length-coefficient"
-                    ? "Multiply that fraction by twice the radius."
-                    : "Multiply that fraction by the square of the radius.",
+                    ? "Multiply that fraction by twice the radius, the number multiplying $\\pi$ in the circumference $2\\pi r$."
+                    : "Multiply that fraction by the radius times itself, the number multiplying $\\pi$ in the area $\\pi r^2$.",
                   "Enter this exact coefficient $a$; the complete measure keeps $\\pi$ and its unit.",
                 ],
         watch: circleWatch[lesson.id]!,
@@ -328,7 +471,7 @@ export const circleMeasurementPrinciples: Record<string, string> = {
   "circle-circumference-coefficient":
     "Every circle has the same circumference-to-diameter ratio, $\\pi$.",
   "circle-area-coefficient":
-    "Circle area is $\\pi$ times the square of the radius; a diameter contains two radii.",
+    "Circle area is $\\pi$ times the square of the radius: $A = \\pi r^2$. A diameter is two radii long.",
   "arc-length-coefficient":
     "An arc's fraction of the circumference equals its central angle divided by 360 degrees.",
   "sector-area-coefficient":
