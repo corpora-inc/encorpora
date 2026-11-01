@@ -30,8 +30,10 @@ function markOf(review: FigureChoiceReview | null, id: string) {
  * their typeset size, so the plot shrinks and the text does not. The result
  * depends only on the stage and the fixed card chrome, never on the current
  * figure height, so measuring cannot oscillate. Phones scroll and keep full
- * size. */
-const MIN_FIGURE = 176;
+ * size. The floor keeps a readable plot beside labels at their typeset size;
+ * a given graph above four options on a portrait iPad (768×1024) leaves each
+ * option about 169 px, so the floor sits below that. */
+const MIN_FIGURE = 160;
 function useFigureHeight() {
   const root = useRef<HTMLFieldSetElement>(null);
   const [cap, setCap] = useState<{ height: number; width: number } | undefined>(
