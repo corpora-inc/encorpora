@@ -2,7 +2,11 @@ import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 export const assessmentGapMethods: Record<string, ProblemMethod> = {
   "measurement-error-bound": {
-    goal: "Find the smallest or greatest possible actual measurement.",
+    goal: "A scale shows a reading and a largest possible error. Find the smallest or greatest mass the object could really have.",
+    intuition:
+      "A measuring tool is never perfect. The reported value is the number it shows. The actual value is the true amount, which may be a little different. The error limit is the most the two can differ. So the actual value is somewhere from the reading minus the limit up to the reading plus the limit.",
+    senses: { unit: "unit", difference: "difference-subtract" },
+    noLink: ["side", "base", "scale", "range"],
     terms: [
       [
         "error-limit",
@@ -11,11 +15,12 @@ export const assessmentGapMethods: Record<string, ProblemMethod> = {
       "error-limit",
     ],
     method: [
-      "Express the error limit in the same units as the reported measurement. If it is a percentage, take that percentage of the stated base.",
-      "Subtract the error limit for the lower bound; add it for the upper bound. “At most” includes both endpoints.",
+      "Write the error limit in the same unit as the reading. If it is a percent of the reading, find that amount first: reading × percent ÷ 100.",
+      "For the smallest possible value, subtract the error limit from the reading. For the greatest, add it.",
+      "“At most” allows the error to equal the limit, so both ends of the range count.",
     ],
     watch:
-      "Use the base named in the question. An error of 2% is a fraction of that base; an error of 2 grams is already a length along the mass scale.",
+      "Turn a percent error into grams before you add or subtract it. An error of 2% of 80 g is 1.6 g, not 2 g.",
   },
   "margin-of-error-interval": {
     goal: "Find the interval centered on an estimate with a stated margin of error.",
@@ -40,7 +45,7 @@ export const assessmentGapMethods: Record<string, ProblemMethod> = {
 };
 export const assessmentGapPrinciples: Record<string, string> = {
   "measurement-error-bound":
-    "If the reported value is $m$ and the absolute error is at most $e \\ge 0$, then $m-e \\le x \\le m+e$ for the actual value $x$. A relative error limit of $p$% of the reported value gives $e = |m|p/100$.",
+    "If the reported value is $m$ and the error is at most $e$ (with $e \\ge 0$, read “$e$ is at least 0”), the actual value $x$ satisfies $m-e \\le x \\le m+e$. The symbol $\\le$ means “is less than or equal to.” An error limit of $p$% of a positive reading $m$ gives $e = m \\times p \\div 100$.",
   "margin-of-error-interval":
     "An estimate $c$ with a symmetric margin of error $e$ gives the interval $[c-e,c+e]$. A 95% confidence procedure covers the fixed population parameter in about 95% of repeated samples when its assumptions hold.",
   "radian-arc-ratio":
@@ -51,19 +56,24 @@ export const assessmentGapLessons: Lesson[] = [
     id: "measurement-error-bound",
     title: "Measurements leave a range",
     summary:
-      "A reported measurement is an instrument's reading. An error limit says how far the actual value may be from it; subtract and add that limit to find the allowed range.",
+      "No measuring tool is perfect. The number a scale shows is called the reported value. The true amount, the actual value, can be a little more or a little less. An error limit tells the most they can differ. If a scale shows 80 g and the error is at most 2 g, the actual mass is anywhere from 78 g to 82 g.",
+    senses: { unit: "unit", difference: "difference-subtract" },
+    noLink: ["range", "base", "scale", "more than", "rule", "change", "side"],
     templateIds: ["measurement-error-bound"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Distinguish a reported measurement from the actual value.",
-      "Apply absolute and explicitly based relative error limits without rounding.",
+      "Tell apart the reported value (what the tool shows) and the actual value (the true amount).",
+      "Find the smallest and greatest possible actual value from an error limit given in units or as a percent of the reading.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "A reading and its error limit",
         paragraphs: [
-          "You need addition, subtraction and percentages. A reported value is the number an instrument displays. The actual value may differ from it. An absolute error limit is the greatest allowed difference, in the measurement’s units. An error of at most 2 g means the actual mass may be 2 g below or above the reading, or anywhere between.",
+          "You need addition, subtraction and percents. A percent means “out of 100,” so 2.5% means 2.5 out of every 100.",
+          "Put a bag on a kitchen scale and it shows 80 g. That shown number is the reported value. The real mass of the bag is the actual value. The two may not match exactly.",
+          "The error limit is the largest difference allowed between them. It is measured in the same unit as the reading, here grams. “The error is at most 2 g” means the actual mass is no more than 2 g below the reading and no more than 2 g above it.",
+          "So the actual mass sits in a range around the reading. The range reaches the same distance down as up.",
         ],
       },
     ],
@@ -72,21 +82,27 @@ export const assessmentGapLessons: Lesson[] = [
         stage: "method",
         title: "Work outward from the reading",
         paragraphs: [
-          "An instrument reports 80 g with error at most 2 g. Subtract to get the smallest allowed mass: 80 − 2 = 78 g. Add to get the greatest: 80 + 2 = 82 g. Both endpoints are allowed because the error may equal 2 g.",
+          "A scale reports 80 g, and the error is at most 2 g. Subtract the limit to get the smallest possible mass: 80 − 2 = 78 g. Add the limit to get the greatest possible mass: 80 + 2 = 82 g.",
+          "Both ends count. “At most 2 g” allows the error to be exactly 2 g, so 78 g and 82 g are both possible.",
         ],
         illustration: "assessment-measurement-interval",
       },
       {
         stage: "method",
-        title: "When the error is a percentage",
+        title: "When the error is a percent",
         paragraphs: [
-          "If the error limit is 2.5% of the reported 80 g, first convert it to grams: 80 × 2.5/100 = 2 g. Then use the same range, from 78 g to 82 g. A percentage needs a base: if the question specifies the actual value as the base instead, these bounds do not follow from the same calculation.",
+          "Sometimes the limit is a percent of the reading, such as 2.5% of 80 g. A percent of an amount is the amount times the percent, divided by 100. So first turn the percent into grams: 80 × 2.5 ÷ 100 = 2 g.",
+          "Now the error limit is 2 g, the same as before. The range is again 78 g to 82 g.",
+          "Read which amount the percent is taken of. Here it is the reported value, 80 g. A percent of a different amount would give a different number of grams.",
         ],
       },
       {
         title: "The precise rule",
         paragraphs: [
-          "Let $m$ be the reported value, $x$ the actual value and $e$ a nonnegative error limit in the same units. The condition $|x-m| \\le e$ means $m-e \\le x \\le m+e$. If the error is at most $p$% of the reported value, use $e = |m|p/100$. These bounds describe an explicit error limit; rounding to a fixed number of decimal places can require different endpoint conventions.",
+          "Let $m$ be the reported value, $x$ the actual value, and $e$ the error limit, a number 0 or greater in the same unit. The symbol $\\le$ means “is less than or equal to.”",
+          "The rule is $m - e \\le x \\le m + e$. It says the actual value is at least $m - e$ and at most $m + e$.",
+          "If the error limit is $p$% of a positive reading $m$, then $e = m \\times p \\div 100$.",
+          "These bounds use a stated error limit. A value that was rounded, such as “to the nearest tenth,” follows a separate rule about its ends.",
         ],
       },
     ],
@@ -94,19 +110,20 @@ export const assessmentGapLessons: Lesson[] = [
       prompt:
         "A scale reports 80 g. The error is at most 2.5% of the reported value. What is the greatest possible actual mass?",
       steps: [
-        "The error limit is 80 × 2.5/100 = 2 g.",
-        "Add the error limit: 80 + 2 = 82 g.",
-        "Check: 82 differs from 80 by 2 g, exactly the allowed limit.",
+        "Turn the percent into grams so it matches the reading: 80 × 2.5 ÷ 100 = 2 g.",
+        "The question asks for the greatest mass, so add the error limit to the reading: 80 + 2 = 82 g.",
+        "Check: 82 g is 2 g above 80 g. That is exactly the limit, and “at most” allows it.",
       ],
       answer: "82",
       answerUnit: "g",
     },
     pitfalls: [
-      "Express the error in the same unit before adding or subtracting.",
-      "A relative error must use the base explicitly named in the question.",
+      "Change a percent error into the reading's unit before adding or subtracting. Then the numbers measure the same thing.",
+      "Take the percent of the amount the question names, usually the reported value.",
+      "Use the error limit once on each side. The full range is twice the limit wide.",
     ],
     parentGuide:
-      "Ask for both endpoints and check that each is the same distance from the reading.",
+      "Weigh something on a kitchen scale and pretend the error is at most 5 g. Ask for the smallest and greatest possible true mass. Check that both are the same distance from the reading.",
   },
   {
     id: "margin-of-error-interval",

@@ -51,29 +51,32 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "Check each term's place before reading it: 5,000 is five thousand, and leaving out a zero place changes the number.",
   },
   "staar-rename-percent-fraction-decimal": {
-    goal: "Rename a percent as a decimal, a fraction as a decimal or percent, or a decimal as a mixed number.",
+    goal: "Rename a percent as a decimal, a fraction as a decimal or percent, or a decimal as a mixed number (a whole number plus a fraction).",
     intuition:
-      "Percent means per hundred, so 35% is 35 hundredths, or 0.35. A fraction bar means division, and a fraction greater than 1 is a number greater than 1. A decimal such as 4.58 is the whole number 4 plus 58 hundredths.",
+      "Renaming writes the same amount another way. Percent means “out of 100,” so 35% is 35 hundredths, or 0.35. A fraction bar means divide: $\\frac{9}{4}$ is $9 \\div 4 = 2.25$. A decimal such as 4.58 is 4 wholes plus 58 hundredths, the mixed number $4\\frac{58}{100}$.",
+    senses: { rename: "rename", "more than": "more-than" },
+    noLink: ["whole", "part", "wholes"],
     terms: ["percent", "mixed-number"],
     method: [
       "Percent to decimal: divide by 100, which moves the decimal point two places left.",
-      "Fraction to decimal: divide the numerator by the denominator. To get a percent, multiply the decimal by 100.",
-      "Decimal to mixed number: the whole part stays, and the decimal digits become the numerator over 10 for one place or 100 for two places.",
-      "Check the size: a percent over 100 is more than 1, and a fraction over 1 is more than 1.",
+      "Fraction to decimal: divide the top number by the bottom number. For a percent, multiply that decimal by 100.",
+      "Decimal to mixed number: keep the whole number. Put the digits after the point over 10 for one digit, or over 100 for two.",
+      "Check the size: a percent over 100% is more than 1, and so is a fraction whose top is bigger than its bottom.",
     ],
     watch:
-      "Write a zero in the tenths place when you need it: 4.07 is $4\\frac{7}{100}$, not $4\\frac{7}{10}$.",
+      "Keep a zero in the tenths place when it is there: 4.07 is $4\\frac{7}{100}$, not $4\\frac{7}{10}$.",
   },
   "staar-ratio-statements": {
-    goal: "Write a ratio from two counts in simplest form, use a part-to-part ratio with a total, or find a unit rate.",
+    goal: "Write a ratio from two counts in simplest form, split a total using a ratio, or find a unit rate (an amount for one unit).",
     intuition:
-      "A ratio compares two amounts by division. You can divide both amounts by the same number without changing the comparison, just as you simplify a fraction. A unit rate is a ratio in which the second amount is 1.",
+      "A ratio compares two amounts in a set order. 12 red to 18 blue is written $12:18$, read “12 to 18.” Dividing both numbers by the same number keeps the comparison, so $12:18$ is the same as $2:3$. A unit rate says how much goes with 1 of the second amount, such as 9 miles per hour.",
+    senses: { part: "part", whole: "whole", unit: "unit" },
     terms: ["ratio", "unit-rate"],
     method: [
       "Write the amounts in the order the question asks. “Red to blue” puts red first.",
-      "Divide both amounts by their greatest common factor to simplify.",
-      "For a part-to-part ratio and a total, add the ratio numbers to get the number of equal parts, divide the total by that, and multiply by the part you need.",
-      "For a unit rate, divide the first amount by the second and attach both units in the order asked.",
+      "Simplify: divide both amounts by the largest number that divides both, their greatest common factor.",
+      "With a total, add the ratio numbers to get the number of equal parts. Divide the total by that, then multiply by the parts you need.",
+      "For a unit rate, divide the first amount by the second. Keep the units in the order asked.",
     ],
     watch:
       "Keep the order of the units. 63 miles in 7 hours is 9 miles per hour, not 9 hours per mile.",
@@ -139,23 +142,26 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "250% is 2.5, not 250. Rewrite a percent before comparing it with a decimal or a fraction.",
   },
   "staar-decimal-operations": {
-    goal: "Multiply, divide, add and subtract decimals in money and measurement stories, including a unit fraction.",
+    goal: "Multiply, divide, add or subtract decimals in money and measurement stories, including a unit fraction such as $\\frac{1}{4}$.",
     intuition:
-      "Decimal operations work like whole-number operations once the decimal point is placed. Hundredths multiplied by a whole number stay hundredths. Dividing a decimal total by a whole number keeps the decimal point straight above. A unit fraction can be written as a decimal first.",
+      "A decimal such as 0.18 means 18 hundredths. Work with decimals as with whole numbers, then place the decimal point. When multiplying, count the digits after the point in both numbers. When dividing by a whole number, keep the point straight above. When adding or subtracting, line up the points. A unit fraction, with 1 on top, becomes a decimal by dividing: $\\frac{1}{4} = 0.25$.",
+    senses: { product: "product-multiply", factor: "factor-number" },
+    noLink: ["tan"],
     terms: ["unit-fraction"],
     method: [
-      "Decide the operation from the story: equal amounts each time divide, equal groups multiply, how many more subtracts.",
-      "Multiply as whole numbers, then give the answer as many decimal places as the factors have in all.",
-      "To divide a decimal by a whole number, keep the decimal point directly above the one in the dividend.",
-      "To subtract, line up the decimal points and write the whole number with a decimal point and zeros.",
+      "Choose the operation from the story: equal shares divide, equal groups multiply, how much more or how much is left subtracts.",
+      "To multiply, ignore the points, then give the answer as many digits after the point as both numbers have together.",
+      "To divide a decimal by a whole number, keep the decimal point straight above the one in the number being divided.",
+      "To add or subtract, line up the points. Write a whole number such as 6 as 6.0.",
     ],
     watch:
-      "Write 6 as 6.0 before subtracting 2.4. Lining up the decimal points keeps each place with its own place.",
+      "Write 6 as 6.0 before subtracting 2.4. Lining up the decimal points keeps tenths under tenths: $6.0 - 2.4 = 3.6$.",
   },
   "staar-salary-percent": {
-    goal: "Find a percent raise of a salary, the new salary, or the difference in earnings of two jobs over several years.",
+    goal: "Find a percent raise of a salary, the new salary, or how much more one job earns than another over several years.",
     intuition:
-      "A percent of a number is that many hundredths of it. For a raise, find 1 percent by dividing the salary by 100 and multiply by the percent. A difference in yearly pay, repeated for each year, gives the difference over many years.",
+      "A salary is the pay for one year of work. A raise is extra pay, often a percent of the salary. Percent means “out of 100,” so 1 percent of a salary is the salary divided by 100. If one job pays more each year, that extra is earned again every year.",
+    senses: { difference: "difference-subtract" },
     terms: [
       ["income", "A salary is a fixed amount of pay for a year of work."],
       [
@@ -164,9 +170,9 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Find 1 percent of the salary: divide by 100.",
-      "Multiply by the percent to find the raise. Add it to the old salary for the new salary.",
-      "For two careers, subtract the yearly salaries and multiply the difference by the number of years.",
+      "Find 1 percent of the salary: divide it by 100.",
+      "Multiply by the percent to find the raise. Add the raise to the old salary for the new salary.",
+      "For two jobs, subtract the yearly salaries. Multiply that difference by the number of years.",
     ],
     watch:
       "A raise is the extra amount, not the new salary. Add the raise to the old salary only when the question asks for the new pay.",
@@ -205,15 +211,22 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "Answer the question that is asked. The result of the first step is only a stepping stone.",
   },
   "staar-line-from-points": {
-    goal: "Choose the slope and intercept of a line from two points, the equation from a slope and a point, or the slope of $Ax+By=C$.",
+    goal: "Find a line's slope and intercept from two points, its equation from a slope and a point, or the slope of $Ax+By=C$.",
     intuition:
-      "A line is described by its slope, the change in $y$ for each change in $x$, and its $y$-intercept, the value of $y$ when $x=0$. Two points give the slope. One point and the slope give the intercept.",
+      "A line $y = mx + b$ ($mx$ means $m$ times $x$) is set by two numbers. The slope $m$ is how much $y$ changes when $x$ goes up by 1: the change in $y$ divided by the change in $x$. The $y$-intercept $b$ is the value of $y$ when $x = 0$. Two points give the slope. One point and the slope give $b$.",
+    senses: {
+      term: "term-expression",
+      side: "side-of-equation",
+      "standard form": "standard-form-line",
+      difference: "difference-subtract",
+    },
+    noLink: ["change", "changes"],
     terms: ["slope", "y-intercept"],
     method: [
-      "Slope: subtract the $y$-values and the $x$-values in the same order and divide.",
-      "Put one point into $y=mx+b$ with the slope and solve for $b$.",
-      "For $Ax+By=C$, solve for $y$: $y=-\\frac{A}{B}x+\\frac{C}{B}$. The slope is the coefficient of $x$.",
-      "Check the other point or one more value.",
+      "Slope: subtract the $y$-values and the $x$-values in the same order, then divide the $y$ difference by the $x$ difference.",
+      "Put one point and the slope into $y=mx+b$. Solve for $b$.",
+      "For $Ax+By=C$, get $y$ alone: $y=-\\frac{A}{B}x+\\frac{C}{B}$ when $B$ is not 0. The slope is the number multiplying $x$.",
+      "Check with the other point or one more value.",
     ],
     watch:
       "The $y$-value of a point is not the intercept unless the point has $x=0$.",
@@ -271,42 +284,52 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "One wrong pair is enough to rule out a table, even when all the others match.",
   },
   "staar-multistep-equations": {
-    goal: "Solve an equation by distributing, combining like terms or clearing fractions, with the variable possibly on both sides.",
+    goal: "Solve an equation by multiplying out parentheses, combining like terms or clearing fractions, with $x$ possibly on both sides.",
     intuition:
-      "To solve an equation, keep both sides equal while you get $x$ alone. First simplify each side: distribute over parentheses, combine like terms, or multiply by the denominator to clear fractions.",
+      "An equation says its left side equals its right side. To solve it, get $x$ alone while keeping both sides equal. First tidy each side. Distribute: a number before parentheses multiplies every term inside, sign included. Combine like terms, pieces with the same letter part such as $2x + 4x = 6x$. Clear a fraction by multiplying every term by its denominator.",
+    senses: {
+      term: "term-expression",
+      side: "side-of-equation",
+      factor: "factor-number",
+    },
+    noLink: ["changes", "part"],
     terms: ["like-terms", "distribute"],
     method: [
-      "Simplify each side: distribute, combine like terms, or multiply every term by the common denominator.",
+      "Tidy each side: distribute, combine like terms, or multiply every term by the common denominator.",
       "Move the $x$ terms to one side and the numbers to the other by adding or subtracting the same thing on both sides.",
-      "Divide by the coefficient of $x$.",
+      "Divide both sides by the number multiplying $x$, its coefficient.",
       "Check by putting the answer back into the original equation.",
     ],
     watch:
-      "Distributing a negative changes the sign of every term inside: $-5(x+3)=-5x-15$.",
+      "Distributing a negative number changes the sign of every term inside: $-5(x+3)=-5x-15$.",
   },
   "staar-experiment-probability": {
-    goal: "Find an experimental probability from a table, or the probability of two draws with replacement.",
+    goal: "Find an experimental probability from a table of results, or the probability of two draws when the first is put back.",
     intuition:
-      "An experimental probability is what actually happened: how many times the outcome occurred out of all the trials. When a draw is put back, the next draw has the same chances, so the probability of two draws in order is the product of the two probabilities.",
+      "A trial is one try, such as one draw from a bag. An experimental probability is what actually happened: the number of times an outcome came up divided by the number of trials. When a drawn item is put back, the next draw has the same chances. Then the chance of one result and then another is the two probabilities multiplied.",
+    senses: { trial: "trial", product: "product-multiply" },
+    noLink: ["change"],
     terms: ["experimental-probability", "with-replacement"],
     method: [
-      "For two outcomes, add their counts from the table, then divide by the number of trials.",
-      "For two draws with replacement, find the probability of each draw from the same set and multiply.",
+      "If either of two outcomes counts, add their counts from the table. Divide by the total number of trials.",
+      "For two draws with replacement, find each draw's probability from the same full set, then multiply.",
       "Write the fraction in simplest form.",
     ],
     watch:
       "Divide by the total number of trials, not by the count of the other outcomes.",
   },
   "staar-number-sets": {
-    goal: "Place a number among whole numbers, integers and rational numbers, or say where a quotient belongs.",
+    goal: "Place a number among the whole numbers, integers and rational numbers, or say where a quotient (a division answer) belongs.",
     intuition:
-      "The whole numbers 0, 1, 2, … are inside the integers, which also include the negatives. The integers are inside the rational numbers, which are all numbers that can be written as a fraction of integers. To place a number, first work out its value.",
+      "The whole numbers are 0, 1, 2, and so on. They sit inside the integers, which also include the negatives, such as $-4$. The integers sit inside the rational numbers: every number that can be written as a fraction of integers, with a bottom that is not 0. To place a number, first work out its value.",
+    senses: { opposite: "opposite-number" },
+    noLink: ["part"],
     terms: ["integer", "rational-number"],
     method: [
-      "Work out the value of the number, especially a quotient such as $\\frac{24}{3}$.",
-      "If it is 0 or positive and has no fraction part, it is a whole number.",
+      "Work out the value of the number, especially a division such as $\\frac{24}{3}$.",
+      "If it is 0 or positive with no fraction part, it is a whole number.",
       "If it has no fraction part but is negative, it is an integer that is not a whole number.",
-      "If it has a fraction or decimal part, it is rational but not an integer.",
+      "If it is a fraction or decimal with a part left over, it is rational but not an integer.",
     ],
     watch:
       "A fraction can be a whole number: $\\frac{24}{3}=8$. Divide before you decide.",
@@ -321,9 +344,9 @@ export const staarGapPrinciples: Record<string, string> = {
   "staar-number-word-form":
     "A number is the sum of each digit times its place value, so $305{,}062=300{,}000+5{,}000+60+2$. A decimal $0.d_1d_2d_3$ with $n$ digits is the whole number $d_1d_2d_3$ divided by $10^{n}$, read with the place name of the last digit.",
   "staar-rename-percent-fraction-decimal":
-    "$p\\%=\\frac{p}{100}$. A fraction $\\frac{a}{b}$ is $a\\div b$, and its percent form is $100\\cdot\\frac{a}{b}\\%$. A decimal with $n$ places equals its digits over $10^{n}$, so $w.xy=w\\frac{xy}{100}$.",
+    "For any number $p$, $p\\%=\\frac{p}{100}$. A fraction $\\frac{a}{b}$ with $b\\neq0$ ($b$ is not 0) means $a\\div b$, and its percent form is $100\\times(a\\div b)$ percent. A decimal with $n$ digits after the point equals those digits over $10^{n}$ (1 followed by $n$ zeros), so $4.58=4\\frac{58}{100}$.",
   "staar-ratio-statements":
-    "Ratios $a:b$ and $ka:kb$ are equivalent for $k\\neq0$. If parts are in ratio $a:b$ with total $T$, the first part is $\\frac{a}{a+b}T$. A unit rate is $\\frac{a}{b}$ with $b$ as the unit.",
+    "Ratios $a:b$ and $ka:kb$ are equivalent for any number $k\\neq0$ ($k$ is not 0). If two parts are in the ratio $a:b$ and the total is $T$, the first part is $\\frac{a}{a+b}\\times T$. A unit rate is $a\\div b$, the amount of the first quantity for 1 unit of the second.",
   "staar-story-model-choice":
     "If $g$ equal groups of $n$ make a total $T$, then $gn=T$, $T\\div g=n$ and $T\\div n=g$. If parts $a$, $b$ and $f$ make a total $T$, then $a+b+f=T$. An equation models a story exactly when it is true for the story's values.",
   "staar-rate-equation-choice":
@@ -333,15 +356,15 @@ export const staarGapPrinciples: Record<string, string> = {
   "staar-order-mixed-forms":
     "Real numbers are ordered by their position on the number line. Fractions, percents and roots can be compared through their decimal values. For $a>0$, $\\sqrt{a}$ is the positive number whose square is $a$, so $n<\\sqrt{a}<n+1$ when $n^2<a<(n+1)^2$.",
   "staar-decimal-operations":
-    "$0.01m\\times n=0.01(mn)$, so a product with two decimal places has two decimal places. A unit fraction $\\frac1q$ equals $1\\div q$. Equal parts of a total $T$ among $n$ are $T\\div n$.",
+    "Hundredths times a whole number are hundredths: $0.01m\\times n=0.01(mn)$, where $mn$ means $m$ times $n$. So a product of hundredths and a whole number has two digits after the point. A unit fraction $\\frac1q$ ($q$ not 0) equals $1\\div q$. Sharing a total $T$ equally among $n$ groups gives $T\\div n$ in each.",
   "staar-salary-percent":
-    "$p$ percent of $S$ is $\\frac{p}{100}S$, and after a raise of $p$ percent the new value is $S+\\frac{p}{100}S$. The difference over $n$ years of a constant yearly difference $d$ is $nd$.",
+    "$p$ percent of an amount $S$ is $\\frac{p}{100}\\times S$. After a raise of $p$ percent, the new amount is $S+\\frac{p}{100}\\times S$. If one salary is $d$ dollars more every year, then over $n$ years it earns $n\\times d$ dollars more.",
   "staar-measure-chains":
     "A rectangle with length $\\ell$ and width $w$ has perimeter $2(\\ell+w)$ and area $\\ell w$. A square of side $s$ has perimeter $4s$ and area $s^{2}$.",
   "staar-multistep-stories":
     "A quantity found in the first step is a given for the second. For $a$ groups of $b$ shared into servings of $c$, the number of full servings is $\\lfloor ab/c\\rfloor$. If $k$ of one unit equal $m$ of another, one unit equals $\\frac{m}{k}$.",
   "staar-line-from-points":
-    "The line through $(x_1,y_1)$ and $(x_2,y_2)$ with $x_1\\neq x_2$ has slope $m=\\frac{y_2-y_1}{x_2-x_1}$ and $y$-intercept $b=y_1-mx_1$. For $B\\neq0$, the line $Ax+By=C$ has slope $-\\frac{A}{B}$.",
+    "The line through two points $(x_1,y_1)$ and $(x_2,y_2)$ with $x_1\\neq x_2$ has slope $m=\\frac{y_2-y_1}{x_2-x_1}$ and $y$-intercept $b=y_1-mx_1$. (The small 1 and 2 label the first and second point.) For $B\\neq0$, the line $Ax+By=C$ has slope $-\\frac{A}{B}$.",
   "staar-stem-leaf-combine":
     "A stem-and-leaf plot stores each value as stem and leaf digits read together with its key. Values are listed in increasing order down the stems and left to right within a stem.",
   "staar-dot-plot-threshold":
@@ -351,11 +374,11 @@ export const staarGapPrinciples: Record<string, string> = {
   "staar-table-rule-choice":
     "A table matches a rule exactly when every pair $(x,y)$ in it satisfies the rule. A single pair that does not satisfy it shows the table does not match.",
   "staar-multistep-equations":
-    "An equivalent equation results from adding, subtracting, multiplying or dividing both sides by the same nonzero number, and from the distributive property $a(b+c)=ab+ac$. A linear equation $ax+b=cx+d$ with $a\\neq c$ has the unique solution $x=\\frac{d-b}{a-c}$.",
+    "Adding or subtracting the same number on both sides, multiplying or dividing both sides by the same number other than 0, and using the distributive property $a(b+c)=ab+ac$ all give an equation with the same solutions. A linear equation $ax+b=cx+d$ with $a\\neq c$ ($a$ not equal to $c$) has exactly one solution, $x=\\frac{d-b}{a-c}$.",
   "staar-experiment-probability":
-    "The experimental probability of an outcome is its frequency divided by the number of trials. For independent draws, $P(A\\text{ then }B)=P(A)\\cdot P(B)$. Draws with replacement are independent.",
+    "The experimental probability of an outcome is the number of times it happened divided by the number of trials. Draws with replacement are independent: one does not change the chances of the other. For independent draws, $P(A\\text{ then }B)=P(A)\\times P(B)$, where $P(A)$ means the probability of $A$.",
   "staar-number-sets":
-    "$\\mathbb{W}\\subset\\mathbb{Z}\\subset\\mathbb{Q}$. A number is rational if it equals $\\frac{p}{q}$ with $p,q$ integers and $q\\neq0$; it is an integer if $q$ can be 1, and a whole number if in addition it is not negative.",
+    "Every whole number is an integer, and every integer is a rational number. A number is rational if it equals $\\frac{p}{q}$ with $p$ and $q$ integers and $q\\neq0$ ($q$ not 0). It is an integer if it can be written with $q=1$, and a whole number if it is also not negative.",
 };
 
 type LessonInput = Omit<Lesson, "sections"> & {
@@ -462,88 +485,103 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-rename-forms",
     title: "Rename percents, fractions and decimals",
     summary:
-      "A percent is hundredths, a fraction is a division, and a decimal is a whole part plus tenths or hundredths.",
+      "One amount can be written in different ways. Percent means “out of 100,” so 35% is 35 hundredths, or 0.35. A fraction bar means divide, so $\\frac{7}{4}$ is $7 \\div 4 = 1.75$. Multiply a decimal by 100 to get a percent: 1.75 is 175%. Renaming changes how a number looks, never how much it is.",
+    senses: { rename: "rename", "more than": "more-than" },
+    noLink: ["whole", "part", "changes", "wholes"],
     templateIds: ["staar-rename-percent-fraction-decimal"],
     objectives: [
-      "Rename a percent as a decimal.",
-      "Rename a fraction greater than 1 as a decimal or percent.",
-      "Choose the true equality between a decimal and a mixed number.",
+      "Rename a percent as a decimal by dividing by 100.",
+      "Rename a fraction greater than 1 as a decimal or a percent.",
+      "Choose the true match between a decimal and a mixed number, a whole number plus a fraction.",
     ],
     intuition: [
       "Three names for one amount",
       [
-        "You need to divide whole numbers. Percent means per hundred, so 35% is 35 hundredths or 0.35. A fraction bar means division, so $\\frac{9}{4}$ is $9\\div4=2.25$.",
-        "A decimal like 4.58 is 4 and 58 hundredths, the mixed number $4\\frac{58}{100}$.",
+        "You need to divide whole numbers. To rename a number means to write the same amount another way.",
+        "Percent means “out of 100.” The sign % is read “percent.” So 35% is 35 out of 100, which is 35 hundredths, written 0.35. And 100% is 100 hundredths, which is 1 whole.",
+        "A fraction has a top number, the numerator, and a bottom number, the denominator. The fraction bar means divide the top by the bottom. So $\\frac{9}{4}$ is $9 \\div 4 = 2.25$. When the top is bigger than the bottom, the fraction is more than 1.",
+        "In a decimal, the digits after the point are tenths, then hundredths. So 4.58 is 4 wholes and 58 hundredths. As a mixed number, a whole number with a fraction beside it, that is $4\\frac{58}{100}$.",
       ],
     ],
     workedExample: {
       prompt: "Write $\\frac{7}{4}$ as a percent.",
       steps: [
-        "Divide: $7\\div4=1.75$.",
-        "Multiply by 100 to get a percent: $1.75\\times100=175$.",
-        "Check: 175% is more than 100%, as $\\frac{7}{4}$ is more than 1.",
+        "A fraction bar means divide, so divide the top by the bottom: $7 \\div 4 = 1.75$.",
+        "Percent means out of 100, so multiply by 100 to count hundredths: $1.75 \\times 100 = 175$. The answer is 175%.",
+        "Check the size: $\\frac{7}{4}$ is more than 1, because 7 is more than 4. One whole is 100%, so the percent must be more than 100%. It is.",
       ],
       answer: "$175\\%$",
     },
     closingSections: [
       method("Move the decimal point", [
-        "Percent to decimal: divide by 100, moving the point two places left. Decimal to percent: multiply by 100, moving it two places right.",
-        "For a decimal with a zero in the tenths place, keep the zero: $3.07=3\\frac{7}{100}$.",
+        "Percent to decimal: divide by 100. That moves the decimal point two places to the left, so 35% becomes 0.35 and 4% becomes 0.04.",
+        "Decimal to percent: multiply by 100. That moves the point two places to the right, so 0.6 becomes 60%.",
+        "Decimal to mixed number: keep the whole number. Put the digits after the point over 10 for one digit, or over 100 for two digits. Keep a zero in the tenths place: $3.07 = 3\\frac{7}{100}$, not $3\\frac{7}{10}$.",
       ]),
       formal("Equivalent forms", [
-        "$p\\%=\\frac{p}{100}$. A decimal with $n$ places equals its digits over $10^{n}$.",
+        "Let $p$ be any number. Then $p\\% = \\frac{p}{100}$.",
+        "A fraction $\\frac{a}{b}$, with $b$ not 0, means $a \\div b$. Its percent is $100 \\times (a \\div b)$ percent.",
+        "A decimal with $n$ digits after the point equals those digits over $10^{n}$, which means 1 followed by $n$ zeros. So $0.58 = \\frac{58}{100}$.",
       ]),
     ],
     pitfalls: [
-      "Moving the point one place too few or too many: check the size of your answer.",
-      "A fraction over 1 gives a percent over 100.",
+      "Move the point exactly two places for percents. Then check the size of your answer.",
+      "A fraction more than 1 is a percent more than 100%.",
+      "Keep zeros that hold a place: 4% is 0.04, not 0.4.",
     ],
     parentGuide:
-      "Ask the learner to write 4% as a decimal and explain where the zero goes.",
+      "Ask the learner to write 4% as a decimal and explain why the zero goes right after the point.",
   }),
   build({
     id: "staar-ratio-forms",
     title: "Write ratios and unit rates",
     summary:
-      "Write a ratio in the order asked, simplify it, and use a part-to-part ratio with a total.",
+      "A ratio compares two amounts, such as 12 red beads to 18 blue beads. We write it $12:18$, read “12 to 18,” in the order the question names them. Dividing both numbers by the same number keeps the comparison the same, so $12:18$ is also $2:3$. A unit rate tells how much for one, like 9 miles for each 1 hour.",
+    senses: { part: "part", whole: "whole", unit: "unit" },
     templateIds: ["staar-ratio-statements"],
     objectives: [
-      "Write a ratio from counts in simplest form.",
-      "Find a part from a part-to-part ratio and a total.",
-      "Choose a unit rate with its units in the right order.",
+      "Write a ratio from two counts and simplify it.",
+      "Find one amount from a part-to-part ratio, like gold to green, and the total.",
+      "Choose a unit rate, an amount for one unit, with its units in the right order.",
     ],
     intuition: [
       "A ratio compares two amounts",
       [
-        "You need to multiply and divide whole numbers. A ratio compares two amounts in a stated order. 12 red to 18 blue is $12:18$, and dividing both numbers by 6 gives $2:3$.",
-        "A unit rate says how much for one unit, such as 9 miles for each 1 hour.",
+        "You need to multiply and divide whole numbers. A ratio compares two amounts in a set order. With 12 red beads and 18 blue beads, the ratio of red to blue is $12:18$. The colon : is read “to.”",
+        "Picture the beads in equal groups of 6. There are 2 groups of red and 3 groups of blue. So for every 2 red there are 3 blue, and $12:18$ is the same comparison as $2:3$. Dividing both numbers by the same number keeps the ratio the same, just like simplifying a fraction.",
+        "A ratio in simplest form cannot be divided further by any whole number larger than 1. The largest number that divides both is called the greatest common factor. For 12 and 18 it is 6.",
+        "A unit rate says how much of the first amount goes with 1 of the second. If a car goes 63 miles in 7 hours, it goes $63 \\div 7 = 9$ miles in each hour: 9 miles per hour.",
       ],
     ],
     workedExample: {
       prompt:
         "A mural uses gold and green tiles in the ratio 2 to 3. There are 30 tiles. How many are gold?",
       steps: [
-        "The whole is $2+3=5$ equal parts.",
-        "One part is $30\\div5=6$ tiles.",
-        "Gold is 2 parts: $2\\times6=12$.",
+        "The ratio 2 to 3 means: in every group of 5 tiles, 2 are gold and 3 are green. So the whole is $2 + 3 = 5$ equal parts.",
+        "Share the 30 tiles among the 5 parts: $30 \\div 5 = 6$ tiles in each part.",
+        "Gold has 2 of the parts: $2 \\times 6 = 12$ tiles. Check: green is $3 \\times 6 = 18$, and $12 + 18 = 30$.",
       ],
       answer: "$12$ tiles",
     },
     closingSections: [
       method("Part to part and part to whole", [
-        "A ratio of two colors compares part to part. To use a total, add the two numbers to see how many equal parts make the whole.",
-        "For a unit rate, divide the first amount by the second and keep the units in the order asked.",
+        "A ratio of gold to green compares one part to the other part. It is called part to part.",
+        "To use a total, add the two ratio numbers. That gives how many equal parts make the whole. Divide the total by that number to find one part. Then multiply by the number of parts you need.",
+        "For a unit rate, divide the first amount by the second. Say the units in the order asked: miles per hour means miles for each 1 hour.",
       ]),
       formal("Equivalent ratios", [
-        "$a:b$ and $ka:kb$ are equivalent for $k\\neq0$. If parts are in ratio $a:b$ and the total is $T$, the first part is $\\frac{a}{a+b}T$.",
+        "Let $a$, $b$ and $k$ be numbers, with $k$ not 0. Then $a:b$ and $ka:kb$ are equivalent ratios. Here $ka$ means $k$ times $a$.",
+        "If two parts are in the ratio $a:b$ and the total is $T$, the first part is $\\frac{a}{a+b} \\times T$.",
+        "A unit rate is $a \\div b$, the amount of the first quantity for 1 unit of the second.",
       ]),
     ],
     pitfalls: [
-      "Keep the order: red to blue is not blue to red.",
-      "Dividing the total by 3 would use only one of the numbers; use the sum.",
+      "Keep the order the question asks: red to blue is not blue to red.",
+      "With a total, divide by the sum of the ratio numbers, $2 + 3 = 5$, not by just one of them.",
+      "Keep the units in order: 9 miles per hour, not 9 hours per mile.",
     ],
     parentGuide:
-      "Ask which comes first in “the ratio of cats to dogs” and why.",
+      "Ask which number comes first in “the ratio of cats to dogs” and why. Then ask for the ratio in simplest form for 4 cats and 6 dogs.",
   }),
   build({
     id: "staar-story-models",
@@ -632,86 +670,104 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-decimal-stories",
     title: "Solve decimal stories",
     summary:
-      "Choose the operation from the story, then place the decimal point by lining up places or counting places.",
+      "Money and measurements often use decimals, numbers with a point such as 7.40. First read the story to choose the operation: equal shares mean divide, equal groups mean multiply, and “how much is left” means subtract. Then work as with whole numbers, and put the decimal point in the right place. For example, 44.40 dollars shared over 6 weeks is $44.40 \\div 6 = 7.4$ dollars a week.",
+    senses: { product: "product-multiply", factor: "factor-number" },
+    noLink: ["tan", "mean"],
     templateIds: ["staar-decimal-operations"],
     objectives: [
-      "Multiply a whole number by a value in hundredths.",
-      "Divide a decimal total by a whole number.",
-      "Subtract a tenths decimal or a unit fraction from a whole number or decimal.",
+      "Multiply a whole number by a decimal in hundredths, such as 0.18.",
+      "Divide a decimal total into equal shares.",
+      "Subtract a decimal or a unit fraction (a fraction with 1 on top, such as $\\frac{1}{4}$) from a whole number or a decimal.",
     ],
     intuition: [
       "Place the decimal point with care",
       [
-        "You need to multiply, divide, add and subtract whole numbers. Money in dollars and measurements use decimals. Multiplying 59 by 0.18 is 59 times 18 hundredths, which is 1062 hundredths, or 10.62.",
-        "To subtract, line up the decimal points. Write the whole number 6 as 6.0.",
+        "You need to multiply, divide, add and subtract whole numbers. In a decimal, the first digit after the point counts tenths and the second counts hundredths. So 0.18 is 18 hundredths.",
+        "Multiplying works like whole numbers. 59 times 0.18 is 59 times 18 hundredths. That is 1,062 hundredths, which is 10.62.",
+        "Dividing a decimal by a whole number also works like whole numbers. Keep the decimal point in the answer straight above the point in the number being divided.",
+        "To add or subtract, line up the decimal points so tenths sit under tenths. A whole number has a point at its end, so 6 is the same as 6.0. Then $6.0 - 2.4 = 3.6$.",
+        "A unit fraction has 1 on top, like $\\frac{1}{4}$. The fraction bar means divide, so $\\frac{1}{4} = 1 \\div 4 = 0.25$. Write it as a decimal first, then work with decimals.",
       ],
     ],
     workedExample: {
       prompt:
         "Lia saved 44.40 dollars in 6 weeks, the same amount each week. How much per week?",
       steps: [
-        "Equal amounts each week means divide: $44.40\\div6$.",
-        "Keep the decimal point straight up: $44.40\\div6=7.4$.",
-        "Check: $6\\times7.4=44.4$.",
+        "The same amount each week means the total is shared equally among 6 weeks. Sharing equally is division: $44.40 \\div 6$.",
+        "Divide as with whole numbers and keep the point straight above: $44.40 \\div 6 = 7.40$, which is the same as 7.4.",
+        "Check by multiplying back, because multiplication undoes division: $6 \\times 7.4 = 44.4$. That matches 44.40 dollars.",
       ],
       answer: "$7.4$ dollars",
     },
     closingSections: [
       method("Count places, line up points", [
-        "For a product, multiply as whole numbers and give the answer as many decimal places as the factors have together. For a quotient, keep the point above the point.",
-        "A unit fraction becomes a decimal by dividing: $\\frac{1}{4}=0.25$.",
+        "For a product, the answer to a multiplication, multiply as if there were no points. Then count the digits after the point in both numbers together. Give the answer that many digits after its point. For $59 \\times 0.18$, there are 2 such digits, so 1062 becomes 10.62.",
+        "For division by a whole number, keep the point above the point.",
+        "To add or subtract, line up the points and fill empty places with zeros.",
       ]),
       formal("Decimal arithmetic", [
-        "$0.01m\\times n=0.01(mn)$. $\\frac{1}{q}=1\\div q$. Subtracting aligned places keeps each place value with its own place.",
+        "Hundredths times a whole number are still hundredths: $m$ hundredths times $n$ is $m \\times n$ hundredths.",
+        "A unit fraction $\\frac{1}{q}$, with $q$ not 0, equals $1 \\div q$.",
+        "Sharing a total $T$ equally among $n$ groups gives $T \\div n$ in each group.",
       ]),
     ],
     pitfalls: [
-      "6 minus 2.4 is not 4.4 unless the point is aligned: $6.0-2.4=3.6$.",
-      "The answer can be negative when you subtract a greater number.",
+      "Line up the decimal points before subtracting: $6.0 - 2.4 = 3.6$, not 4.4.",
+      "Count the digits after the point in both numbers when you multiply.",
+      "Subtracting a larger number from a smaller one gives a negative answer, a number less than 0.",
     ],
-    parentGuide: "Ask the learner to estimate 59 times 0.18 before computing.",
+    parentGuide:
+      "Ask the learner to estimate 59 times 0.18 before working it out. About 60 times one fifth is about 12, so 10.62 is reasonable.",
   }),
   build({
     id: "staar-raises-and-earnings",
     title: "Find a raise and compare earnings",
     summary:
-      "A raise is a percent of the salary; a yearly difference is repeated for each year.",
+      "A salary is the pay for one year of work. A raise is an increase in pay, often given as a percent of the salary. Percent means “out of 100,” so 1 percent of 40,000 dollars is $40{,}000 \\div 100 = 400$ dollars. A 3 percent raise is 3 of those, 1,200 dollars. If one job pays 5,000 dollars more each year, over 10 years it pays 50,000 dollars more.",
+    senses: { difference: "difference-subtract" },
+    noLink: ["part", "parts"],
     templateIds: ["staar-salary-percent"],
     objectives: [
       "Find a percent raise of a salary.",
-      "Find the new salary after a raise.",
-      "Find the difference in earnings over several years.",
+      "Find the new salary after a raise, the old salary plus the raise.",
+      "Find the difference in earnings between two jobs over several years.",
     ],
     intuition: [
       "A percent is hundredths of an amount",
       [
-        "You need to multiply and divide whole numbers. 1 percent of a number is the number divided by 100. 3 percent is 3 of those.",
-        "If one job pays more each year, the extra repeats every year.",
+        "You need to multiply and divide whole numbers. A salary is the amount of money a job pays for one year of work.",
+        "Percent means “out of 100.” So 1 percent of an amount is the amount split into 100 equal parts, and taking one part. To find it, divide by 100. Then 3 percent is 3 of those parts.",
+        "A raise is extra pay added to a salary. A 3 percent raise on 40,000 dollars adds 3 percent of 40,000 dollars.",
+        "To compare two jobs, look at how much more one pays each year. That extra amount is earned again every year. So multiply it by the number of years.",
       ],
     ],
     workedExample: {
       prompt:
         "A salary of 40,000 dollars rises by 3 percent. What is the raise?",
       steps: [
-        "1 percent of 40,000 is $40{,}000\\div100=400$.",
-        "3 percent is $3\\times400=1{,}200$.",
+        "Find 1 percent of the salary by dividing by 100, because percent means out of 100: $40{,}000 \\div 100 = 400$.",
+        "A 3 percent raise is 3 of those amounts: $3 \\times 400 = 1{,}200$. The raise is 1,200 dollars. The new salary would be $40{,}000 + 1{,}200 = 41{,}200$ dollars.",
       ],
       answer: "$1{,}200$ dollars",
     },
     closingSections: [
       method("Raise, new salary, years", [
-        "New salary = old salary + raise. For two careers, subtract the yearly pay and multiply by the number of years.",
+        "The raise is only the extra amount. The new salary is the old salary plus the raise.",
+        "To compare two careers over several years, subtract the two yearly salaries first. That difference is the extra pay each year. Multiply it by the number of years.",
+        "For example, 52,000 dollars and 47,000 dollars differ by 5,000 dollars a year. Over 10 years that is $10 \\times 5{,}000 = 50{,}000$ dollars.",
       ]),
       formal("Percent of an amount", [
-        "$p$ percent of $S$ is $\\frac{p}{100}S$, and the new amount after a raise is $S+\\frac{p}{100}S$.",
+        "Let $S$ be a salary and $p$ a percent. Then $p$ percent of $S$ is $\\frac{p}{100} \\times S$.",
+        "After a raise of $p$ percent, the new salary is $S + \\frac{p}{100} \\times S$.",
+        "If one salary is $d$ dollars more every year, then over $n$ years it earns $n \\times d$ dollars more.",
       ]),
     ],
     pitfalls: [
-      "The raise is only the extra pay.",
-      "Use the difference, not each salary, when comparing over years.",
+      "The raise is only the extra pay. Add it to the old salary only when the question asks for the new salary.",
+      "To compare jobs over years, multiply the yearly difference, not each salary.",
     ],
     parentGuide:
-      "Ask what 1 percent of 50,000 is and how to use it for 4 percent.",
+      "Ask what 1 percent of 50,000 is, and how to use that to find 4 percent.",
   }),
   build({
     id: "staar-perimeter-area-chains",
@@ -799,42 +855,60 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-lines-from-data",
     title: "Find a line's slope and intercept",
     summary:
-      "Two points give the slope; a point and the slope give the intercept; standard form gives the slope $-\\frac{A}{B}$.",
+      "A straight line on a graph can be described by two numbers. The slope tells how much $y$ goes up (or down) each time $x$ goes up by 1. The $y$-intercept is the value of $y$ where the line crosses the $y$-axis, which is where $x = 0$. For the points $(1, 5)$ and $(3, 11)$, $y$ rises 6 while $x$ rises 2, so the slope is $6 \\div 2 = 3$.",
+    senses: {
+      term: "term-expression",
+      side: "side-of-equation",
+      "standard form": "standard-form-line",
+    },
+    noLink: ["change", "changes"],
     templateIds: ["staar-line-from-points"],
     objectives: [
-      "Find slope and intercept from two points.",
-      "Write an equation from a fractional slope and a point.",
-      "Find the rate of change from standard form.",
+      "Find the slope and the $y$-intercept of a line from two points on it.",
+      "Write the equation of a line from its slope, even a fraction, and one point.",
+      "Find the slope of a line written as $Ax + By = C$.",
     ],
     intuition: [
       "Slope and starting value",
       [
-        "You need to subtract and divide integers. The slope $m$ of a line is how much $y$ changes when $x$ goes up by 1. The $y$-intercept $b$ is the value of $y$ when $x=0$. A line is $y=mx+b$.",
+        "You need to subtract and divide integers, which are whole numbers, their negatives and 0. A point $(x, y)$ gives two numbers: first how far across, then how far up.",
+        "The slope of a line is how much $y$ changes when $x$ goes up by 1. We call it $m$. Find it from two points: divide the change in $y$ by the change in $x$. From $(1, 5)$ to $(3, 11)$, $y$ changes by $11 - 5 = 6$ and $x$ changes by $3 - 1 = 2$. So $m = 6 \\div 2 = 3$.",
+        "The $y$-intercept is the value of $y$ when $x = 0$, where the line crosses the $y$-axis. We call it $b$.",
+        "Every non-vertical line can be written $y = mx + b$. Here $mx$ means $m$ times $x$. For example, $y = 3x + 2$ has slope 3 and $y$-intercept 2.",
       ],
     ],
     workedExample: {
       prompt: "Find $m$ and $b$ for the line through $(1, 5)$ and $(3, 11)$.",
       steps: [
-        "$m=\\frac{11-5}{3-1}=\\frac{6}{2}=3$.",
-        "Put $(1, 5)$ in $y=3x+b$: $5=3+b$, so $b=2$.",
+        "Find the slope: change in $y$ divided by change in $x$, subtracting in the same order. $m=\\frac{11-5}{3-1}=\\frac{6}{2}=3$.",
+        "Find $b$. The point $(1, 5)$ is on the line, so $x = 1$ and $y = 5$ make $y = 3x + b$ true. Put them in: $5 = 3 \\times 1 + b$, so $5 = 3 + b$.",
+        "Subtract 3 from both sides to get $b$ alone: $b = 2$. Check with the other point: $3 \\times 3 + 2 = 11$. It works.",
       ],
       answer: "$m=3,\\ b=2$",
     },
     closingSections: [
       method("Slope first, then intercept", [
-        "Subtract the $y$-values and the $x$-values in the same order. Solve for $b$ with a point.",
-        "For $Ax+By=C$, solve for $y$: the slope is $-\\frac{A}{B}$ and the intercept is $\\frac{C}{B}$.",
+        "Subtract the $y$-values and the $x$-values in the same order, then divide. Then put one point and the slope into $y = mx + b$ and solve for $b$.",
+        "The two points must have different $x$-values. If the $x$-values are equal, the line is vertical and has no slope.",
+      ]),
+      method("Lines in standard form", [
+        "A line can also be written $Ax + By = C$, where $A$, $B$ and $C$ are numbers. This is called standard form. Here $Ax$ means $A$ times $x$.",
+        "To read the slope, get $y$ alone. Subtract $Ax$ from both sides, then divide every term by $B$ (when $B$ is not 0). The result is $y = -\\frac{A}{B}x + \\frac{C}{B}$. So the slope is $-\\frac{A}{B}$.",
+        "For example, $2x + 4y = 8$ becomes $4y = -2x + 8$, then $y = -\\frac{1}{2}x + 2$. The slope is $-\\frac{1}{2}$, so $y$ goes down a half each time $x$ goes up by 1.",
       ]),
       formal("Slope-intercept form", [
-        "The line through $(x_1,y_1)$ and $(x_2,y_2)$ has $m=\\frac{y_2-y_1}{x_2-x_1}$ and $b=y_1-mx_1$.",
+        "Let $(x_1, y_1)$ and $(x_2, y_2)$ be two points with $x_1 \\neq x_2$ (the $x$-values differ). The small numbers 1 and 2 just label the first and second point.",
+        "The line through them has slope $m=\\frac{y_2-y_1}{x_2-x_1}$ and $y$-intercept $b = y_1 - m x_1$.",
+        "For $B \\neq 0$, the line $Ax + By = C$ has slope $-\\frac{A}{B}$.",
       ]),
     ],
     pitfalls: [
-      "A point's $y$-value is not the intercept.",
-      "Keep the same order in both subtractions.",
+      "A point's $y$-value is the intercept only when that point has $x = 0$.",
+      "Subtract in the same order on top and bottom: $(11 - 5)$ over $(3 - 1)$, not $(11 - 5)$ over $(1 - 3)$.",
+      "In $Ax + By = C$, the slope is $-\\frac{A}{B}$, not $A$.",
     ],
     parentGuide:
-      "Ask where $y=2x+5$ crosses the $y$-axis and what happens to $y$ when $x$ goes up by 1.",
+      "Ask where $y=2x+5$ crosses the $y$-axis, and what happens to $y$ when $x$ goes up by 1.",
   }),
   build({
     id: "staar-read-plots",
@@ -959,118 +1033,157 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-multistep-linear",
     title: "Solve equations that need simplifying first",
     summary:
-      "Distribute, combine like terms or clear fractions, then collect the $x$ terms and divide.",
+      "An equation says two amounts are equal, like $-2(x + 3) = x + 9$. Some equations must be tidied before you can solve them. Multiply out parentheses, gather matching pieces, or clear fractions. Then move all the $x$ pieces to one side and the plain numbers to the other. Whatever you do to one side, do to the other, so they stay equal.",
+    senses: {
+      term: "term-expression",
+      side: "side-of-equation",
+      factor: "factor-number",
+      product: "product-multiply",
+    },
+    noLink: ["changes", "part"],
     templateIds: ["staar-multistep-equations"],
     objectives: [
-      "Distribute a negative factor and solve with variables on both sides.",
-      "Combine like terms and solve.",
-      "Clear fractions and solve.",
+      "Multiply a negative number through parentheses and solve with $x$ on both sides.",
+      "Combine like terms, pieces with the same letter, and solve.",
+      "Clear fractions by multiplying both sides, then solve.",
     ],
     intuition: [
       "Simplify, then undo",
       [
-        "You need to solve two-step equations. Like terms have the same variable, so $2x+4x=6x$. Distributing multiplies each term inside parentheses, including its sign.",
-        "If the equation has fractions, multiplying every term by the denominator clears them.",
+        "You need to solve two-step equations such as $3x + 5 = 20$. An equation has a left side and a right side with an equals sign between. A solution is a value of $x$ that makes both sides equal.",
+        "A term is one piece of an expression joined by + or −, such as $2x$, $-6$ or $x$. Like terms have the same letter part, so $2x$ and $4x$ are like terms: $2x + 4x = 6x$. Plain numbers are also like terms with each other.",
+        "Parentheses group a part. A number right before them multiplies every term inside, sign included. This is called distributing. So $-2(x + 3) = -2x - 6$, because $-2 \\times x = -2x$ and $-2 \\times 3 = -6$.",
+        "If an equation has a fraction such as $\\frac{x}{4}$, multiply every term on both sides by 4. The 4 cancels the fraction, and the two sides stay equal.",
+        "Doing the same thing to both sides keeps them equal: adding, subtracting, or multiplying or dividing by a number other than 0.",
       ],
     ],
     workedExample: {
       prompt: "Solve $-2(x+3)=x+9$.",
       steps: [
-        "Distribute: $-2x-6=x+9$.",
-        "Subtract $x$: $-3x-6=9$. Add 6: $-3x=15$.",
-        "Divide by $-3$: $x=-5$.",
+        "Distribute the $-2$ to both terms inside the parentheses: $-2 \\times x = -2x$ and $-2 \\times 3 = -6$. The equation becomes $-2x - 6 = x + 9$.",
+        "Gather the $x$ terms on the left. Subtract $x$ from both sides: $-3x - 6 = 9$.",
+        "Move the plain number to the right. Add 6 to both sides to undo the − 6: $-3x = 15$.",
+        "Divide both sides by $-3$ to get $x$ alone: $x = 15 \\div (-3) = -5$. Check: $-2(-5 + 3) = -2 \\times (-2) = 4$, and $-5 + 9 = 4$. Both sides are 4.",
       ],
       answer: "$x=-5$",
     },
     closingSections: [
       method("Simplify each side first", [
-        "Do the same thing to both sides. Move the $x$ terms to one side, the numbers to the other, then divide by the coefficient.",
-        "Check by substituting the answer.",
+        "First tidy each side: distribute, combine like terms, or multiply every term by the denominator to clear fractions.",
+        "Then move the $x$ terms to one side and the numbers to the other, by adding or subtracting the same thing on both sides.",
+        "Last, divide both sides by the number multiplying $x$, called its coefficient. Check by putting the answer back into the original equation.",
       ]),
       formal("Linear equations", [
-        "$ax+b=cx+d$ with $a\\neq c$ has the unique solution $x=\\frac{d-b}{a-c}$.",
+        "Adding or subtracting the same number on both sides, or multiplying or dividing both sides by the same number other than 0, gives an equation with the same solutions.",
+        "The distributive property says $a(b + c) = ab + ac$: a number times a sum equals the sum of the separate products.",
+        "An equation $ax + b = cx + d$ with $a \\neq c$ ($a$ not equal to $c$) has exactly one solution, $x=\\frac{d-b}{a-c}$.",
       ]),
     ],
     pitfalls: [
-      "Distribute the sign to every term: $-2(x+3)=-2x-6$.",
-      "Combine only like terms.",
+      "Distribute the sign to every term: $-2(x+3)=-2x-6$, not $-2x+6$ or $-2x+3$.",
+      "Combine only like terms. $3x$ and 3 cannot be joined.",
+      "When clearing fractions, multiply every term on both sides, not just the fraction.",
     ],
-    parentGuide: "Ask the learner to check a solution by putting it in.",
+    parentGuide:
+      "After the learner solves an equation, ask them to put the answer back in and show both sides are equal.",
   }),
   build({
     id: "staar-experimental-probability",
     title: "Experimental probability and two draws",
     summary:
-      "Divide the favorable count by the trials; for draws with replacement, multiply the probabilities.",
+      "Probability is a number from 0 to 1 that says how likely something is. An experimental probability comes from trying it: count how many times an outcome happened, then divide by the number of tries. If red came up 6 times in 20 draws, its experimental probability is $\\frac{6}{20}$. When a drawn tile is put back before the next draw, multiply the chances of the two draws.",
+    senses: { trial: "trial", product: "product-multiply", event: "event" },
+    noLink: ["change"],
     templateIds: ["staar-experiment-probability"],
     objectives: [
-      "Find an experimental probability of one of two outcomes.",
-      "Find the probability of two draws in order with replacement.",
+      "Find the experimental probability that one of two outcomes happened, using counts from a table.",
+      "Find the probability of two draws in a row when the first item is put back.",
     ],
     intuition: [
       "What happened, out of all trials",
       [
-        "You need to write fractions. An experimental probability counts how often an outcome happened out of all the trials. If a tile is put back after each draw, the chances do not change for the next draw.",
+        "You need to write and simplify fractions, and multiply fractions. A trial is one try of an experiment, such as one draw of a tile from a bag. An outcome is what happens on a trial, such as getting red.",
+        "An experimental probability is what actually happened. It is the number of times the outcome happened divided by the total number of trials. Red 6 times out of 20 draws gives $\\frac{6}{20}$, which simplifies to $\\frac{3}{10}$.",
+        "If either of two outcomes counts, such as red or blue, add their counts first. Then divide by the total number of trials.",
+        "“With replacement” means the tile is put back after each draw. Then the bag is the same for the next draw, so the chances do not change. To find the chance of one result and then another, multiply the two probabilities. If red has chance $\\frac{1}{2}$ on each draw, red then red has chance $\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}$.",
       ],
     ],
     workedExample: {
       prompt:
         "In 20 draws, red came up 6 times and blue 4 times. What is the experimental probability of red or blue?",
-      steps: ["Add: $6+4=10$.", "Divide by 20: $\\frac{10}{20}=\\frac{1}{2}$."],
+      steps: [
+        "Either color counts, so add their counts: $6 + 4 = 10$ draws were red or blue.",
+        "Divide by all 20 trials, because a probability compares the outcome with every try: $\\frac{10}{20}$.",
+        "Simplify by dividing top and bottom by 10: $\\frac{10}{20} = \\frac{1}{2}$.",
+      ],
       answer: "$\\frac{1}{2}$",
     },
     closingSections: [
-      method("Multiply for independent draws", [
-        "With replacement, find each draw's probability from the same set and multiply them.",
+      method("Multiply for draws with replacement", [
+        "With replacement, each draw uses the same full set. Find each draw's probability from that set: the number of items you want divided by the number of items in all.",
+        "Multiply the two probabilities. A bag has 3 red and 2 blue tiles, 5 in all. Red then blue, with the first tile put back, has chance $\\frac{3}{5} \\times \\frac{2}{5} = \\frac{6}{25}$.",
       ]),
       formal("Independent events", [
-        "$P(A\\text{ then }B)=P(A)\\cdot P(B)$ when the draws are independent.",
+        "The experimental probability of an outcome is how many times it happened divided by the number of trials.",
+        "Two events are independent when one does not change the chances of the other. Draws with replacement are independent.",
+        "$P(A)$ is read “the probability of $A$.” For independent events $A$ and $B$, $P(A\\text{ then }B) = P(A) \\times P(B)$.",
       ]),
     ],
     pitfalls: [
-      "Divide by all the trials, not by the other outcomes.",
-      "Add the counts of both colors before dividing when two colors count.",
+      "Divide by all the trials, not by the count of the other outcomes.",
+      "When two colors count, add both counts before dividing.",
+      "Multiply only when the first item is put back. Without replacement, the second draw uses a smaller set.",
     ],
     parentGuide:
-      "Ask why putting the card back keeps the second chance the same.",
+      "Ask why putting the card back keeps the chances for the second draw the same.",
   }),
   build({
     id: "staar-number-sets",
     title: "Whole numbers, integers and rational numbers",
     summary:
-      "Work out a number's value, then place it among the whole numbers, integers and rational numbers.",
+      "Numbers come in families that fit inside each other. Whole numbers are 0, 1, 2, 3 and so on. Integers are the whole numbers and their negatives, such as $-4$. Rational numbers are all numbers that can be written as a fraction of integers, such as $\\frac{1}{2}$ or 2.5. To place a number, first work out its value: $\\frac{24}{3}$ is 8, a whole number.",
+    senses: { opposite: "opposite-number" },
+    noLink: ["part"],
     templateIds: ["staar-number-sets"],
     objectives: [
-      "Place a number in the correct region of nested sets.",
-      "Fix a misplaced quotient.",
+      "Place a number in the right part of a diagram of sets inside sets.",
+      "Find and fix a quotient (the answer to a division) placed in the wrong set.",
     ],
     intuition: [
       "Sets inside sets",
       [
-        "You need to divide integers. The whole numbers are 0, 1, 2, …. The integers add the negative whole numbers. The rational numbers are the numbers that can be written as a fraction of integers, so they include decimals like 2.5.",
-        "A fraction such as $\\frac{24}{3}$ equals 8, a whole number. Work out the value first.",
+        "You need to divide integers. A set is a group of numbers that belong together.",
+        "The whole numbers are 0, 1, 2, 3, and so on without end. The integers are the whole numbers together with their negatives: …, −3, −2, −1, 0, 1, 2, 3, …. A negative number is less than 0.",
+        "The rational numbers are all the numbers that can be written as a fraction with an integer on top and a nonzero integer on the bottom. That includes $\\frac{1}{2}$, 2.5 (which is $\\frac{5}{2}$) and $-\\frac{3}{4}$.",
+        "Each set fits inside the next. Every whole number is an integer, and every integer is rational, because 7 can be written $\\frac{7}{1}$. Picture three circles, one inside another: whole numbers in the middle, then integers, then rational numbers.",
+        "A fraction does not always land outside the integers. $\\frac{24}{3}$ equals 8, which is a whole number. So work out the value first.",
       ],
     ],
     workedExample: {
       prompt: "Where does $\\frac{-20}{5}$ belong?",
       steps: [
-        "Divide: $\\frac{-20}{5}=-4$.",
-        "−4 is an integer but is negative, so it is not a whole number.",
+        "Work out the value first, because a fraction can equal an integer. The fraction bar means divide: $\\frac{-20}{5} = -20 \\div 5 = -4$.",
+        "$-4$ has no fraction part, so it is an integer. But it is negative, and whole numbers are never negative. So it belongs with the integers that are not whole numbers.",
       ],
       answer: "Integers that are not whole numbers",
     },
     closingSections: [
       method("Ask in order", [
-        "Is it a whole number? An integer? If it has a fraction or decimal part, it is rational but not an integer.",
+        "First find the value. Then ask: is it 0 or positive with no fraction part? Then it is a whole number.",
+        "Is it negative with no fraction part? Then it is an integer but not a whole number.",
+        "Does it have a part left over, like $\\frac{1}{2}$ or 0.5? Then it is rational but not an integer.",
       ]),
       formal("Number sets", [
-        "Every whole number is an integer and every integer is rational, but not the other way round.",
+        "A number is rational if it equals $\\frac{p}{q}$, where $p$ and $q$ are integers and $q$ is not 0.",
+        "It is an integer if it can be written with $q = 1$. It is a whole number if it is an integer that is not negative.",
+        "So every whole number is an integer, and every integer is rational. The reverse is not true: $-4$ is an integer but not a whole number.",
       ]),
     ],
     pitfalls: [
-      "A quotient can be a whole number: divide first.",
-      "A negative integer is not a whole number, even though it is an integer.",
+      "A fraction can equal a whole number. Divide first: $\\frac{24}{3} = 8$.",
+      "A negative integer, such as $-4$, is not a whole number, even though it is an integer.",
+      "Zero is a whole number.",
     ],
-    parentGuide: "Ask the learner whether 0 is a whole number and why.",
+    parentGuide: "Ask the learner whether 0 is a whole number, and why.",
   }),
 ];
