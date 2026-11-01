@@ -1,4 +1,4 @@
-import { nounFor } from "./agreement";
+import { nounFor, isAre } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -566,7 +566,7 @@ function randomVariableCase(r: Random): Built {
           explanation: [
             RANDOM_VARIABLE,
             `Each toss has 2 results, so ${n} tosses have $2^{${n}}=${total}$ equally likely sequences.`,
-            `$\\binom{${n}}{${k}}$, read "${n} choose ${k}", counts the ways to pick which ${k} of the ${n} tosses are heads. Here it is ${ways}.`,
+            `$\\binom{${n}}{${k}}$, read "${n} choose ${k}", counts the ways to pick which ${k} of the ${n} tosses ${isAre(k)} heads. Here it is ${ways}.`,
             `Probability is favorable outcomes over all outcomes: $P(X=${k})=\\frac{${ways}}{${total}}$${gcd(ways, total) > 1 ? `, which reduces to ${correct}` : ""}.`,
             `So $P(X=${k})=${frac(ways, total)}$.`,
           ],
@@ -1013,7 +1013,7 @@ function theoreticalCase(r: Random): Built {
           RANDOM_VARIABLE,
           `Independent means one shot does not affect another, so probabilities multiply. A miss has probability $1-${p}=\\frac{${b - a}}{${b}}$.`,
           `One order with ${k} make${k === 1 ? "" : "s"} and ${3 - k} miss${3 - k === 1 ? "" : "es"} has probability $\\left(${p}\\right)^{${k}}\\left(\\frac{${b - a}}{${b}}\\right)^{${3 - k}}=\\frac{${a ** k * (b - a) ** (3 - k)}}{${denom}}$.`,
-          `$\\binom{3}{${k}}$, read "3 choose ${k}", counts the orders: which ${k} of the 3 shots are makes. It is ${choose(3, k)}.`,
+          `$\\binom{3}{${k}}$, read "3 choose ${k}", counts the orders: which ${k} of the 3 shots ${isAre(k)} ${k === 1 ? "a make" : "makes"}. It is ${choose(3, k)}.`,
           `Multiply: $P(X=${k})=${choose(3, k)}\\cdot\\frac{${a ** k * (b - a) ** (3 - k)}}{${denom}}=\\frac{${nums[k]}}{${denom}}$${gcd(nums[k]!, denom) > 1 ? `, which reduces to ${correct}` : ""}.`,
           `So $P(X=${k})=${frac(nums[k]!, denom)}$.`,
         ],
@@ -1398,10 +1398,10 @@ function strategyCase(r: Random): Built {
     const e = `$${frac(n, den)}$`;
     const diff = n - S * den;
     if (diff > 0)
-      return `Take the gamble: its expected value, ${e} dollars, is more than the sure ${S} dollars.`;
+      return `Take the gamble: its expected value, ${e} ${nounFor(e, "dollar")}, is more than the sure ${S} dollars.`;
     if (diff < 0)
-      return `Take the sure amount: the gamble's expected value, ${e} dollars, is less than the sure ${S} dollars.`;
-    return `Either choice: the gamble's expected value, ${e} dollars, equals the sure ${S} dollars.`;
+      return `Take the sure amount: the gamble's expected value, ${e} ${nounFor(e, "dollar")}, is less than the sure ${S} dollars.`;
+    return `Either choice: the gamble's expected value, ${e} ${nounFor(e, "dollar")}, equals the sure ${S} dollars.`;
   };
   const correct = claim(num, d);
   return {

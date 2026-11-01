@@ -1,3 +1,4 @@
+import { count, plural } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, pick, seeded, shuffle } from "./algebra-one-kit";
 import type { Case, Choice, Random } from "./algebra-one-kit";
@@ -1617,16 +1618,16 @@ function percentApplications(r: Random): Built {
       const d = (actual * e) / 100;
       const high = r(0, 1) === 1;
       const measured = high ? actual + d : actual - d;
-      const g = pick(r, ["grams", "centimeters", "liters", "seconds"] as const);
+      const g = pick(r, ["gram", "centimeter", "liter", "second"] as const);
       const wrong: Wrong[] = [
         [
           pct(100 * d, measured),
           "Percent error compares the error with the true value, not with the measured value.",
         ],
         [
-          `${d} ${g}`,
+          count(d, g),
           "The error is the difference in " +
-            g +
+            plural(g) +
             ". Percent error divides it by the true value to get a percent.",
         ],
         [
@@ -1640,15 +1641,15 @@ function percentApplications(r: Random): Built {
           "Percent error uses the size of the difference, so it is not negative.",
         ]);
       return {
-        prompt: `A scale shows ${measured} ${g} for an object whose true amount is ${actual} ${g}. What is the percent error, the size of the error as a percent of the true amount?`,
+        prompt: `A scale shows ${count(measured, g)} for an object whose true amount is ${count(actual, g)}. What is the percent error, the size of the error as a percent of the true amount?`,
         choices: options(pct(e, 1), wrong),
         explanation: [
           `Percent error tells how far off a measurement is, compared with the true amount, as a percent.`,
-          `The error is the size of the gap between ${measured} and ${actual}, ignoring which is bigger: ${d} ${d === 1 ? g.slice(0, -1) : g}.`,
+          `The error is the size of the gap between ${measured} and ${actual}, ignoring which is bigger: ${count(d, g)}.`,
           `Divide by the true amount, because that is the standard: ${d} ÷ ${actual} = ${d / actual}, which is ${pct(e, 1)}.`,
           `The percent error is ${pct(e, 1)}.`,
         ],
-        hint: `Find the size of the difference between the measured ${measured} ${g} and the true ${actual} ${g}. Then divide by the amount that is the standard: the true one.`,
+        hint: `Find the size of the difference between the measured ${count(measured, g)} and the true ${count(actual, g)}. Then divide by the amount that is the standard: the true one.`,
         tags: [variant],
         model: { measured, actual, e },
       };

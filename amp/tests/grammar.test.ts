@@ -106,6 +106,8 @@ test("a describing word between 1 and its noun does not hide the plural", () => 
   assert.equal(plural.test("2 + 1 equal parts"), false);
   // The noun is shared by a list: "6 orange, 3 purple and 1 green sections".
   assert.equal(plural.test("6 orange, 3 purple and 1 green sections"), false);
+});
+
 test("a ten-frame story reads correctly when either part is 1", () => {
   const texts = Array.from({ length: 200 }, (_, seed) =>
     generateProblem("join-within-10", `one-counter-${seed}`),

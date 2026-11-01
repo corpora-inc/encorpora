@@ -127,9 +127,11 @@ const singularOf = (plural: string) =>
       : plural.slice(0, -1);
 
 /** A whole number used as a count: not part of a decimal, fraction, sign,
- * list ("5, 4, 2"), operation ("× 32", "= 12") or label ("Card 2"). */
+ * list ("5, 4, 2"), operation ("× 32", "= 12") or label ("Card 2", "the
+ * score on Game 1"). A capital word that starts a sentence ("Take 1 apple")
+ * is not a label. */
 const COUNT =
-  "(?<![\\d.,/−+×÷^_=<>≤≥-])(?<![−+×÷=<>≤≥-] )(?<!\\d, )(?<![A-Z][a-z]* )(\\d{1,3}(?:,\\d{3})+|\\d+)(?![\\d]|[.,/:]\\d|%|°)";
+  "(?<![\\d.,/−+×÷^_=<>≤≥-])(?<![−+×÷=<>≤≥-] )(?<!\\d, )(?<![a-z,;:] [A-Z][a-z]* )(?<!^(?:Card|Box|Bag|Game|Plan|Option|Step|Row|Column|Day|Week|Year|Month|Graph|Table|Figure|Line|Equation|Part|Question|Account|Level|Round|Page|Player|Team|Store|Group|Point|Sample|Trial|Spinner|Machine|Model|Method|Choice|Statement|Pattern|Term|Number|Unit|Grade|Class|Section|Bus|Route|Car) )(\\d{1,3}(?:,\\d{3})+|\\d+)(?![\\d]|[.,/:]\\d|%|°)";
 
 /** Countable nouns, learned from the corpus: a word ending in s that follows
  * a count of 2 or more and ends the phrase ("3 counters.", "5 apples and")
@@ -212,10 +214,11 @@ export function agreementIssues(raw: string, lex: NounLexicon): Agreement[] {
       /^(?:the|a|an|it|them|this|that|its|their|every|each|from|on|in|into|with|once|evenly|over|up|down|after|before|to|sign|⟨math⟩|[\d−+-])/.test(
         next,
       );
-    // "at least one works", "each one keeps": "one" stands for a noun.
+    // "at least one works", "each one keeps", "the flawed one fits": "one"
+    // stands for a noun.
     const pronoun =
       !m[1] &&
-      /\b(?:each|the|this|that|which|any|every|no|least|only|another|same|other|[a-z]+ed)\s$/i.test(
+      /\b(?:each|the|this|that|which|any|every|no|least|only|another|same|other|(?:the|a|each|this|that) [a-z]+ed)\s$/i.test(
         before,
       );
     if (
