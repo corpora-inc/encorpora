@@ -547,8 +547,8 @@ export const regentsAlgebraOneDataLessons = [
       ],
       formalTitle: "Why only one solution",
       formal: [
-        "$|u| = v$ needs $v \\ge 0$, where $\\ge$ means is greater than or equal to. The graph of an absolute value is a V shape.",
-        "When the line is steeper than both arms of the V, the gap between the two sides only goes up, or only goes down. So the graphs cross exactly once, and the equation has one solution.",
+        "$|u| = v$ needs $v \\ge 0$, where $\\ge$ means is greater than or equal to. The graph of an absolute value has two straight arms that meet at a corner point.",
+        "When the line is steeper than both arms, the gap between the two sides only goes up, or only goes down. So the graphs cross exactly once, and the equation has one solution.",
       ],
       pitfalls: [
         "Do not skip the check. A case can produce a false solution.",
@@ -556,7 +556,7 @@ export const regentsAlgebraOneDataLessons = [
         "In the negative case, take the opposite of the whole other side, not just one part of it.",
       ],
       parentGuide:
-        "Ask the learner to sketch the V-shaped absolute-value graph and the line, and see where they cross.",
+        "Ask the learner to sketch the absolute-value graph, with its two arms, and the line, and see where they cross.",
     }),
     senses: {
       side: "side-of-equation",
