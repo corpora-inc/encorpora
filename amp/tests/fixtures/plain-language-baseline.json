@@ -659,12 +659,9 @@
   "screens": {
     "lesson:aa-similarity": {
       "terms": [
-        "aa-similarity",
         "at-least",
-        "corresponding",
-        "dilation",
-        "proportion",
-        "rigid-motion"
+        "degree-angle",
+        "similar-figures"
       ],
       "long": []
     },
@@ -1832,13 +1829,12 @@
     },
     "lesson:congruence-by-rigid-motion": {
       "terms": [
-        "biconditional",
-        "corresponding",
-        "reflection",
-        "rigid-motion",
-        "rotation",
+        "coordinate",
+        "degree-angle",
+        "image-transformation",
+        "line-of-symmetry",
         "sequence",
-        "translation"
+        "vertical-line"
       ],
       "long": []
     },
@@ -2958,16 +2954,12 @@
     },
     "lesson:expressions-keep-the-structure": {
       "terms": [
-        "coefficient",
-        "constant",
         "distribute",
         "distributive-property",
-        "input",
-        "like-terms",
-        "parentheses",
+        "multiplication",
+        "negative-number",
         "proof",
-        "substitute",
-        "variable"
+        "real-number"
       ],
       "long": []
     },
@@ -3847,7 +3839,9 @@
     },
     "lesson:interpret-linear-parameters": {
       "terms": [
+        "balance-account",
         "input",
+        "intercept",
         "output"
       ],
       "long": []
@@ -5684,9 +5678,11 @@
       "terms": [
         "biconditional",
         "converse",
+        "degree-angle",
         "proof",
         "radius",
-        "right-angle"
+        "right-angle",
+        "square-number"
       ],
       "long": []
     },
@@ -5699,14 +5695,14 @@
     },
     "lesson:pythagorean-theorem": {
       "terms": [
-        "area",
-        "corresponding",
         "decimal",
-        "right-angle",
+        "degree-angle",
+        "negative-number",
+        "proof",
+        "pythagorean-theorem",
+        "root-radical",
         "round",
-        "solution",
         "square-root",
-        "straight-angle",
         "unit-square"
       ],
       "long": []
@@ -5742,14 +5738,7 @@
     },
     "lesson:quadratic-factored-solutions": {
       "terms": [
-        "at-least",
-        "biconditional",
-        "division",
-        "polynomial",
-        "real-number",
-        "solution",
-        "solution-set",
-        "zero-product-property"
+        "at-least"
       ],
       "long": []
     },
@@ -6223,13 +6212,13 @@
     "lesson:reasons-in-angle-proofs": {
       "terms": [
         "adjacent-angles",
-        "corresponding",
-        "interior-angle",
+        "degree-angle",
         "linear-pair",
         "parallel",
         "proof",
         "ray",
-        "vertical-angles"
+        "straight-angle",
+        "supplementary"
       ],
       "long": []
     },
@@ -7299,7 +7288,9 @@
     },
     "lesson:right-triangle-missing-leg": {
       "terms": [
+        "degree-angle",
         "right-triangle",
+        "square-number",
         "square-root",
         "whole-number"
       ],
@@ -7987,7 +7978,8 @@
     },
     "lesson:signed-addition": {
       "terms": [
-        "negative-number"
+        "negative-number",
+        "opposite-number"
       ],
       "long": []
     },
@@ -8211,9 +8203,10 @@
     },
     "lesson:slope-two-points": {
       "terms": [
-        "coordinate",
-        "ratio",
-        "round"
+        "decimal",
+        "horizontal-line",
+        "vertical-line",
+        "whole-number"
       ],
       "long": []
     },
@@ -8834,9 +8827,8 @@
     },
     "lesson:systems-elimination": {
       "terms": [
-        "coefficient",
-        "solution",
-        "variable"
+        "multiplication",
+        "term-expression"
       ],
       "long": []
     },
@@ -9362,8 +9354,7 @@
         "decimal",
         "distribute",
         "negative-number",
-        "substitute",
-        "variable"
+        "side-of-equation"
       ],
       "long": []
     },
@@ -9491,11 +9482,7 @@
     "lesson:unit-rate": {
       "terms": [
         "constant",
-        "corresponding",
-        "decimal",
-        "division",
         "equal-groups",
-        "quotient",
         "rate",
         "speed",
         "whole-number"
@@ -9665,12 +9652,9 @@
     },
     "practice:aa-similarity": {
       "terms": [
-        "aa-similarity",
         "at-least",
-        "corresponding",
-        "dilation",
-        "proportion",
-        "rigid-motion"
+        "degree-angle",
+        "dilation"
       ],
       "long": []
     },
@@ -10517,11 +10501,6 @@
     },
     "practice:combine-like-coefficient": {
       "terms": [
-        "coefficient",
-        "constant",
-        "distribute",
-        "like-terms",
-        "substitute",
         "variable"
       ],
       "long": []
@@ -11074,7 +11053,7 @@
     "practice:congruence-by-rigid-motion": {
       "terms": [
         "dilation",
-        "orientation",
+        "image-transformation",
         "reflection",
         "rigid-motion",
         "rotation",
@@ -11779,13 +11758,8 @@
     },
     "practice:distributive-expression-choice": {
       "terms": [
-        "constant",
-        "distribute",
-        "distributive-property",
-        "like-terms",
-        "multiplication",
-        "real-number",
-        "substitute"
+        "equivalent",
+        "real-number"
       ],
       "long": []
     },
@@ -13421,8 +13395,9 @@
     },
     "practice:geometry-proof-step": {
       "terms": [
+        "parallel",
         "proof",
-        "straight-angle",
+        "ray",
         "supplementary"
       ],
       "long": []
@@ -13919,7 +13894,8 @@
     },
     "practice:integer-addition": {
       "terms": [
-        "absolute-value"
+        "absolute-value",
+        "negative-number"
       ],
       "long": []
     },
@@ -13970,10 +13946,11 @@
     },
     "practice:interpret-linear-parameters": {
       "terms": [
-        "domain",
+        "initial-value",
         "input",
+        "liter",
         "output",
-        "substitute"
+        "slope"
       ],
       "long": []
     },
@@ -14223,7 +14200,7 @@
     },
     "practice:line-slope": {
       "terms": [
-        "rate-of-change"
+        "slope"
       ],
       "long": []
     },
@@ -14309,7 +14286,7 @@
     "practice:linear-system-x": {
       "terms": [
         "coefficient",
-        "equivalent",
+        "side-of-equation",
         "variable"
       ],
       "long": []
@@ -16345,17 +16322,9 @@
     "practice:quadratic-factored-solutions": {
       "terms": [
         "at-least",
-        "biconditional",
-        "coefficient",
-        "constant",
-        "linear-factor",
         "real-number",
         "remainder",
-        "repeated-root",
-        "solution",
-        "solution-set",
-        "variable",
-        "zero-product-property"
+        "variable"
       ],
       "long": []
     },
@@ -17422,8 +17391,9 @@
     "practice:right-triangle": {
       "terms": [
         "area",
-        "right-angle",
-        "rotation",
+        "degree-angle",
+        "proof",
+        "square-number",
         "square-root"
       ],
       "long": []
@@ -18973,11 +18943,9 @@
     },
     "practice:substitute-linear-expression": {
       "terms": [
-        "distribute",
-        "like-terms",
-        "parentheses",
-        "substitute",
-        "variable"
+        "expression",
+        "multiplication",
+        "negative-number"
       ],
       "long": []
     },
@@ -19689,8 +19657,8 @@
     },
     "practice:two-step-equation": {
       "terms": [
-        "solution",
-        "substitute",
+        "multiplication",
+        "side-of-equation",
         "variable"
       ],
       "long": []

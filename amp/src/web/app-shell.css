@@ -148,7 +148,11 @@
   grid-column: 1;
   grid-row: 1;
   flex-direction: row;
-  justify-content: space-between;
+  /* Back, then the page title beside it: one header bar, title first in
+     weight, never a small word stranded at the far edge. */
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-4);
 }
 .shell.family-shell
   .family-center:has([data-security-tab])
@@ -163,8 +167,10 @@
   grid-column: auto;
   order: 2;
 }
-.shell.family-shell .family-heading h1 {
-  font-size: 22px;
+.shell.family-shell .family-heading h1,
+.shell.family-shell .family-center:has([data-security-tab]) .family-heading h1 {
+  font-size: clamp(24px, 4vw, 30px);
+  line-height: 1.15;
 }
 .shell.family-shell .family-center > .family-tabs {
   grid-column: 1;
