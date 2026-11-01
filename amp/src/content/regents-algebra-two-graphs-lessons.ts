@@ -167,7 +167,7 @@ export const regentsAlgebraTwoGraphLessons = [
   lesson(
     "regents-repeated-zero-rule",
     "A rule from a graph with a double zero",
-    "A cubic is a polynomial whose highest power is $x^3$. Its graph meets the $x$-axis at its zeros, the inputs that make it 0, and each zero $r$ gives a factor $(x - r)$. Where the graph touches the axis and turns back, the factor is squared; where it crosses, the factor appears once. The right end of the graph gives the sign of the leading coefficient, the number in front.",
+    "A polynomial is a sum of terms like $2x^3$ or $-5x$, and a cubic is a polynomial whose highest power is $x^3$. Its graph meets the $x$-axis at its zeros, the inputs that make it 0, and each zero $r$ gives a factor $(x - r)$. Where the graph touches the axis and turns back, the factor is squared; where it crosses, the factor appears once. The right end of the graph gives the sign of the leading coefficient, the number in front.",
     ["repeated-zero-rule"],
     [
       "Write a factor for each zero, and square the factor of a zero where the graph touches the axis.",
@@ -280,7 +280,7 @@ export const regentsAlgebraTwoGraphLessons = [
   lesson(
     "regents-cubic-graph-statement",
     "Reading a cubic's graph",
-    "A cubic is a polynomial whose highest power is $x^3$. To decide which statement about its graph is true, read three things. Read what the ends do, how the graph meets the $x$-axis at each zero, and where it rises or falls.",
+    "A polynomial is a sum of terms like $2x^3$ or $-5x$, and a cubic is a polynomial whose highest power is $x^3$. To decide which statement about its graph is true, read three things. Read what the ends do, how the graph meets the $x$-axis at each zero, and where it rises or falls.",
     ["cubic-graph-statement"],
     [
       "Read the zeros of a cubic and how many times each factor appears.",

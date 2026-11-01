@@ -37,7 +37,7 @@ export const regentsAlgebraTwoReasoningMethods: Record<string, ProblemMethod> =
     ),
     "cubic-quotient-factored": m(
       "Divide a cubic by one of its linear factors and factor the quotient.",
-      "A cubic is a polynomial whose highest power is $x^3$. If a linear factor $(ax+b)$, one with no higher power of $x$, divides the cubic, the quotient is what is left: here, the product of the other two linear factors. Dividing undoes the multiplication that built the cubic.",
+      "A polynomial is a sum of terms like $2x^3$ or $-5x$, and a cubic is a polynomial whose highest power is $x^3$. If a linear factor $(ax+b)$, one with no higher power of $x$, divides the cubic, the quotient is what is left: here, the product of the other two linear factors. Dividing undoes the multiplication that built the cubic.",
       ["quotient", "linear-factor"],
       [
         "Divide the cubic by the linear factor with long division or synthetic division.",
@@ -204,7 +204,7 @@ export const regentsAlgebraTwoReasoningLessons = [
   lesson(
     "regents-cubic-quotient-factored",
     "Dividing a cubic by a linear factor",
-    "A cubic is a polynomial whose highest power is $x^3$. When a cubic is built by multiplying three factors, dividing by one of them gives back the product of the other two. Then factor that quadratic, the part whose highest power is $x^2$, to finish.",
+    "A polynomial is a sum of terms like $2x^3$ or $-5x$, and a cubic is a polynomial whose highest power is $x^3$. When a cubic is built by multiplying three factors, dividing by one of them gives back the product of the other two. Then factor that quadratic, the part whose highest power is $x^2$, to finish.",
     ["cubic-quotient-factored"],
     [
       "Divide a cubic by one of its linear factors, a factor like $3x - 2$ with no higher power of $x$.",
