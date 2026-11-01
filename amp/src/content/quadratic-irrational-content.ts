@@ -174,7 +174,7 @@ export const quadraticIrrationalLesson: Lesson = {
       "Find the discriminant, the number that goes under the root sign: $D = 4^2 - 4 \\times 2 \\times (-3) = 16 + 24 = 40$. It is positive, so there are two solutions.",
       "Put the numbers into the formula: $x = \\frac{-4 \\pm \\sqrt{40}}{2 \\times 2} = \\frac{-4 \\pm \\sqrt{40}}{4}$.",
       "Simplify the root. Since $40 = 4 \\times 10$ and $\\sqrt{4} = 2$, $\\sqrt{40} = 2\\sqrt{10}$. Now $x = \\frac{-4 \\pm 2\\sqrt{10}}{4}$.",
-      "Every part of the top ($-4$ and $2\\sqrt{10}$) and the bottom ($4$) can be divided by 2. A number that divides another evenly is called a factor, so they share a factor of 2, so divide each by 2: $x = \\frac{-2 \\pm \\sqrt{10}}{2}$. Nothing else divides both $-2$ and the 1 in front of $\\sqrt{10}$, so this is fully simplified.",
+      "Every part of the top ($-4$ and $2\\sqrt{10}$) and the bottom ($4$) can be divided by 2. A number that divides another evenly is called a factor, so they share a factor of 2, so divide each by 2: $x = \\frac{-2 \\pm \\sqrt{10}}{2}$. No whole number greater than 1 divides $-2$, the 1 in front of $\\sqrt{10}$ and the bottom 2 all at once, so this is fully simplified.",
       "Check without rounding. The left side, the part before the equals sign, can be rewritten as $2(x + 1)^2 - 5$, since $2(x + 1)^2 = 2x^2 + 4x + 2$. For each answer, $x + 1 = \\pm \\frac{\\sqrt{10}}{2}$, and squaring gives $\\frac{10}{4}$. So $2 \\times \\frac{10}{4} - 5 = 5 - 5 = 0$, which makes the equation true.",
     ],
     answer:

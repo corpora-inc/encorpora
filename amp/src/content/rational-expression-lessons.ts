@@ -101,7 +101,7 @@ export const rationalExpressionMethods: Record<string, ProblemMethod> = {
 };
 export const rationalExpressionPrinciples: Record<string, string> = {
   "rational-expression-domain":
-    "A rational expression is defined exactly where its original denominator is not 0. A product is 0 when at least one of its factors is 0, so each denominator factor gives excluded inputs.",
+    "A rational expression is defined exactly where its original denominator is not 0. A product is 0 when at least one of its factors is 0, so each denominator factor that can be 0 gives excluded inputs.",
   "rational-expression-simplify":
     "Dividing a fraction's top and bottom by the same factor keeps its value wherever that factor is not 0. Cancelling a factor does not make an excluded input allowed again.",
 };

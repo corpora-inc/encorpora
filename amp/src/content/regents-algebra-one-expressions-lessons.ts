@@ -263,7 +263,7 @@ export const regentsAlgebraOneExpressionLessons = [
       ],
       formalTitle: "The rules behind the steps",
       formal: [
-        "$(ab)^k = a^k b^k$ and $(x^m)^k = x^{mk}$ for whole-number exponents $m$ and $k$. A negative number, one less than 0, to an odd power is negative.",
+        "$(ab)^k = a^k b^k$ and $(x^m)^k = x^{mk}$ for whole-number exponents $m$ and $k$. A negative number, one less than 0, raised to an odd counting-number power is negative.",
         "$\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$ when $a$ and $b$ are 0 or more. And $p\\sqrt{n} + q\\sqrt{n} = (p + q)\\sqrt{n}$, by the distributive property.",
       ],
       pitfalls: [

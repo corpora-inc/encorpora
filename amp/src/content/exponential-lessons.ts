@@ -32,7 +32,7 @@ export const exponentialLessons: Lesson[] = [
     id: "exponential-models",
     title: "Growth by a constant factor",
     summary:
-      "Some amounts grow by multiplying, not adding. A town of 1,000 people that grows by 10% each year has 1,100 after one year, then 1,210, then 1,331. Each year multiplies the number by the same amount, 1.1. A pattern where each equal step multiplies by the same number is called exponential. That multiplier, the number each step multiplies by, and the starting amount let you find any later value.",
+      "Some amounts grow by multiplying, not adding. A town of 1,000 people that grows by 10% each year has 1,100 after one year, then 1,210, then 1,331. Each year multiplies the number by the same amount, 1.1. A pattern where each equal step multiplies by the same positive number (other than 1) is called exponential. That multiplier, the number each step multiplies by, and the starting amount let you find any later value.",
     templateIds: ["exponential-model-value", "exponential-model-rule"],
     includeGeneratedRepresentation: false,
     senses: exponentialSenses,
@@ -90,7 +90,7 @@ export const exponentialLessons: Lesson[] = [
         paragraphs: [
           "Compare two patterns over equal steps of $x$. The rule $3x + 2$ gives 2, 5, 8, 11 for $x = 0, 1, 2, 3$: it adds 3 each step. A rule that adds the same amount each step is called linear. The rule $2 \\times 3^x$ gives 2, 6, 18, 54: it multiplies by 3 each step. A rule that multiplies by the same number each step is called exponential.",
           "In $3^x$, the raised $x$ is an exponent: it says how many times to multiply by 3. So $3^2 = 3 \\times 3 = 9$, and $3^0 = 1$, because no multiplying has happened yet.",
-          "Every exponential rule can be written $y = a \\times b^x$. The number $a$ is the starting value, the value of $y$ when $x = 0$. The number $b$ is the growth factor, the number each step multiplies by. Read $a$ from the row where $x = 0$. Find $b$ by dividing any value by the one just before it.",
+          "Every exponential rule can be written $y = a \\times b^x$. The number $a$ is the starting value, the value of $y$ when $x = 0$. The number $b$ is the growth factor, the number each step multiplies by. Read $a$ from the row where $x = 0$. Find $b$ by dividing a value by the one just before it. These values are never 0.",
         ],
         illustration: "ratio-difference-table",
       },
@@ -443,7 +443,7 @@ export const exponentialLessons: Lesson[] = [
           "We label terms by position with a small number written low, called a subscript. $a_1$ is the first term, $a_2$ the second, and $a_n$ the term in position $n$. The letter $r$ stands for the common ratio.",
           "Going from term 1 to term 5 takes four multiplications, not five. In general, reaching term $n$ takes $n - 1$ steps. So $a_n = a_1 \\times r^{n-1}$, where the raised $n - 1$ means multiply by $r$ that many times.",
           "A rule like $a_n = 3a_{n-1}$ builds the same kind of list one step at a time: each term is 3 times the term before it, $a_{n-1}$. This is called a recursive rule.",
-          "Between any two known terms, the ratio is used once per step. From $a_2$ to $a_5$ is three steps, so $a_5 \\div a_2 = r^3$.",
+          "Between any two known terms, the ratio is used once per step. From $a_2$ to $a_5$ is three steps, so $a_5 = a_2 \\times r^3$.",
         ],
       },
     ],
@@ -461,7 +461,7 @@ export const exponentialLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "For positions $n = 1, 2, 3, \\ldots$, a geometric sequence with first term $a_1$ and common ratio $r$ has $a_n = a_1 r^{n-1}$. If $r \\ne 0$ and $a_k \\ne 0$ ($\\ne$ means is not equal to), then $\\frac{a_m}{a_k} = r^{m-k}$ for any positions $m$ and $k$.",
+          "For positions $n = 1, 2, 3, \\ldots$, a geometric sequence with first term $a_1$ and common ratio $r \\ne 0$ has $a_n = a_1 r^{n-1}$, where $r^0 = 1$. If $r \\ne 0$ and $a_k \\ne 0$ ($\\ne$ means is not equal to), then $\\frac{a_m}{a_k} = r^{m-k}$ for any positions $m$ and $k$.",
         ],
       },
     ],
@@ -593,7 +593,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
   "exponential-model-rule": {
     goal: "Choose the equation $y = a \\times b^x$ that fits a table, a graph or a story.",
     intuition:
-      "An exponential rule multiplies by the same number for each step of $x$. It can be written $y = a \\times b^x$, where the raised $x$ means multiply by $b$ that many times. The number $a$ is the starting value, the value of $y$ when $x = 0$, because $b^0 = 1$. The number $b$ is the growth factor, the number each step multiplies by. Divide any value by the one just before it to find $b$.",
+      "An exponential rule multiplies by the same number for each step of $x$. It can be written $y = a \\times b^x$, where the raised $x$ means multiply by $b$ that many times. The number $a$ is the starting value, the value of $y$ when $x = 0$, because $b^0 = 1$. The number $b$ is the growth factor, the number each step multiplies by. Divide a value by the one just before it to find $b$. These values are never 0.",
     terms: [terms.exponential],
     senses: exponentialSenses,
     noLink: [
@@ -810,7 +810,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       "patterns",
     ],
     method: [
-      "Find the ratio $r$: divide any term by the term just before it.",
+      "Find the ratio $r$: divide a term by the term just before it (which is not 0).",
       "For two terms $k$ steps apart, the later one divided by the earlier one is $r^k$.",
       "Multiply by $r$ once for each step forward, or divide by $r$ once for each step back.",
     ],
@@ -847,5 +847,5 @@ export const exponentialPrinciples: Record<string, string> = {
   "log-exponential-form":
     "$\\log_b N = p$ and $b^p = N$ are the same statement.",
   "geometric-sequence-rule":
-    "For positions $n = 1, 2, 3, \\ldots$, a geometric sequence has $a_n = a_1 r^{n-1}$, where $a_1$ is the first term and $r$ the common ratio. If $r \\ne 0$ and $a_k \\ne 0$, then $\\frac{a_m}{a_k} = r^{m-k}$.",
+    "For positions $n = 1, 2, 3, \\ldots$, a geometric sequence has $a_n = a_1 r^{n-1}$ (with $r \\ne 0$ and $r^0 = 1$), where $a_1$ is the first term and $r$ the common ratio. If $r \\ne 0$ and $a_k \\ne 0$, then $\\frac{a_m}{a_k} = r^{m-k}$.",
 };

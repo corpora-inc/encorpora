@@ -19,7 +19,7 @@ const foundations: Lesson["sections"] = [
       "To square a fraction, square the top and square the bottom: $\\left(\\frac{3}{2}\\right)^2 = \\frac{3 \\times 3}{2 \\times 2} = \\frac{9}{4}$.",
       "To multiply a fraction by a whole number, multiply its top: $2 \\times \\frac{3}{4} = \\frac{6}{4} = \\frac{3}{2}$. To divide a fraction by a whole number other than 0, multiply its bottom: $\\frac{3}{2} \\div 2 = \\frac{3}{4}$.",
       "To subtract, first write both numbers with the same bottom number: $1 - \\frac{9}{4} = \\frac{4}{4} - \\frac{9}{4} = -\\frac{5}{4}$.",
-      "A product is the result of multiplying. A negative number times a negative number is positive, so $(-3) \\times (-3) = 9$. A product with exactly one negative number is negative, so $(-2) \\times 3 = -6$.",
+      "A product is the result of multiplying. A negative number times a negative number is positive, so $(-3) \\times (-3) = 9$. A negative number times a positive number is negative, so $(-2) \\times 3 = -6$.",
     ],
   },
   {

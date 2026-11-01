@@ -76,7 +76,7 @@ const sequenceFunctionMethod: ProblemMethod = {
     "Read $n$ as a position. Only counting numbers from the first position on can be inputs.",
     "To find $a(k)$, put $k$ in place of $n$ in the rule. Work out $n - 1$ first, then the multiplying or the power.",
     "A number that is not a position, such as 2.5, 0 or $-3$, has no term, so $a$ is undefined there.",
-    "To test whether a value is a term, work out the terms just before and just after it. It is a term only if some counting-number position gives it.",
+    "If the terms only go up or only go down, test whether a value is a term by working out the terms just before and just after it. It is a term only if some counting-number position gives it.",
   ],
   watch:
     "You can put 2.5 into the formula, but the list has no 2.5th term. So the graph is separate points, never a joined line or curve.",
@@ -180,7 +180,7 @@ const sequenceFunctionLesson: Lesson = {
       title: "Sequences as functions on the integers",
       paragraphs: [
         "Integers are the whole numbers and their negatives. A sequence is a function $a$ whose domain is a run of consecutive integers, usually the positive integers $1, 2, 3, \\ldots$. The notation $a_n$ (the small $n$ is a subscript, a label) means the same as $a(n)$.",
-        "A rule such as $a(n) = a_1 + d(n - 1)$ or $a(n) = a_1 r^{n-1}$ gives the output for every integer in the domain. Here $a_1$ is the first term, $d$ is the number added each step, and $r$ is the number multiplied each step. A number outside the domain is not an input. Putting it into the formula does not create a term.",
+        "A rule such as $a(n) = a_1 + d(n - 1)$ or $a(n) = a_1 r^{n-1}$ gives the output for every integer in the domain. Here $a_1$ is the first term (when positions start at 1), $d$ is the number added each step, and $r$ is the number multiplied each step. A number outside the domain is not an input. Putting it into the formula does not create a term.",
       ],
     },
   ],
@@ -255,7 +255,7 @@ const geometricRuleFormsMethod: ProblemMethod = {
     "patterns",
   ],
   method: [
-    "Find the first term $a_1$ and the common ratio $r$. From two terms in a row, $r$ is the later term divided by the earlier one (which must not be 0). Divide by $r$ to step back toward $a_1$.",
+    "Find the first term $a_1$ and the common ratio $r$. From two terms in a row, $r$ is the later term divided by the earlier one (which must not be 0). Divide by $r$, which is never 0 here, to step back toward $a_1$.",
     "Recursive rule: state $a_1$, then $a_{n+1} = r a_n$.",
     "Explicit rule: $a_n = a_1 r^{n-1}$. The power is $n - 1$ because the first term has not been multiplied yet.",
     "Check by putting $n = 1$ and $n = 2$ into the rule you wrote.",
@@ -348,7 +348,7 @@ const geometricRuleFormsLesson: Lesson = {
       stage: "method",
       title: "Why the power is one less than the position",
       paragraphs: [
-        "Going from $a_1$ to $a_2$ multiplies by $r$ once. Going to $a_3$ multiplies twice, and going to $a_n$ multiplies $n - 1$ times. So $a_n = a_1 r^{n-1}$.",
+        "Going from $a_1$ to $a_2$ multiplies by $r$ once. Going to $a_3$ multiplies twice, and going to $a_n$ multiplies $n - 1$ times. So $a_n = a_1 r^{n-1}$, with $r \\ne 0$ and $r^0 = 1$ for the first term.",
         "You can read it backward too. In $a_n = 5 \\times 2^{n-1}$, put $n = 1$: $5 \\times 2^0 = 5 \\times 1 = 5$, since any number other than 0 to the power 0 is 1. So the first term is 5, and the ratio is 2.",
         "The ratio can be a fraction or negative. $a_n = 8 \\left(\\tfrac{1}{2}\\right)^{n-1}$ halves each time: 8, 4, 2, 1. $a_n = 3(-2)^{n-1}$ switches sign each time: 3, $-6$, 12, $-24$.",
       ],

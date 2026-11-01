@@ -173,7 +173,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
     method: [
       "Choose the form that fits the facts: $y = a(x - p)(x - q)$ for zeros $p$ and $q$, $y = a(x - h)^2 + k$ for vertex $(h, k)$, or $y = ax^2 + bx + c$ for a table or points.",
       "For factored form (the form $a(x - p)(x - q)$) or vertex form (the form $a(x - h)^2 + k$), put the extra point into it and solve for $a$. For a table with equal steps $h$, use $a = \\frac{\\text{second difference}}{2h^2}$.",
-      "For $y = ax^2 + bx + c$, use two points to find $b$, then one point to find $c$.",
+      "For $y = ax^2 + bx + c$ with three points, write three equations. Subtract pairs to remove $c$, solve for $a$ and $b$, then find $c$.",
       "Check every given point in the finished equation, including the sign in each bracket.",
     ],
     watch:
@@ -407,7 +407,7 @@ export const satAlgebraStructureLessons: Lesson[] = [
           "A rate is an amount per unit of time. A worker who finishes a job in 4 hours does $\\frac{1}{4}$ of the job each hour. A second worker who takes 6 hours does $\\frac{1}{6}$ of it each hour.",
           "Working together, they each do their share in the same hour, so their rates add. The time for the whole job is then 1 divided by the combined rate.",
           "For two workers sharing one job, their times do not simply add or average. Together the workers must be faster than either one alone, so the answer is less than 4 hours, not 5 or 10.",
-          "The same idea works for mixtures. The concentration of a salt solution is the amount of salt divided by the total amount. To mix two solutions, add their amounts of salt. Do not simply add or average the two concentrations unless the amounts are equal.",
+          "The same idea works for mixtures. The concentration of a salt solution is the amount of salt divided by the total amount. To mix two solutions, add their amounts of salt. Never add the two concentrations, and average them only when the amounts are equal.",
         ],
       },
     ],

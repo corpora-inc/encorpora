@@ -146,7 +146,7 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
     method: [
       "Take out any shared factor first. Then count terms. Two terms suggest cubes or a difference of squares. Four terms suggest grouping. Only $x^4$, $x^2$ and a number suggest writing $u = x^2$.",
       "Use the pattern: $u^3 + v^3 = (u + v)(u^2 - uv + v^2)$ and $u^3 - v^3 = (u - v)(u^2 + uv + v^2)$. Or group in pairs, or factor the quadratic in $u$ and put $x^2$ back.",
-      "Test every factor again. A difference of squares $x^2 - c^2$ splits further. A sum $x^2 + c$ with $c > 0$ does not, and the three-term bracket from a cube pattern in $x$, like $x^2 - 2x + 4$, does not either.",
+      "Test every factor again. A difference of squares $x^2 - c^2$ splits further. A sum $x^2 + c$ with $c > 0$ does not. A cube pattern in $x$ alone, like $x^3 + 8 = (x + 2)(x^2 - 2x + 4)$, gives a three-term bracket that does not split with integers.",
     ],
     watch:
       "Stopping at $(x^2 - 4)(x^2 - 9)$ is not complete, because each bracket is a difference of squares. In a cube pattern, the middle term is $uv$, not $2uv$, with the opposite sign.",
@@ -154,7 +154,7 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
   "residual-function-fit": {
     goal: "Use a residual plot or a table to choose a model type, or find and explain a residual from a curved model.",
     intuition:
-      "A model is a rule that predicts a value, like $\\hat{y} = 3 \\times 2^x$ (the hat on $y$ marks a prediction). A residual is how far off one prediction is: the observed value minus the predicted value. A positive residual means the real point is above the model. A negative residual means it is below. A residual plot graphs the residuals. If the model fits well, the residuals scatter above and below 0 with no pattern. A curve in the residuals shows a bend the model missed.",
+      "A model is a rule that predicts a value, like $\\hat{y} = 3 \\times 2^x$ (the hat on $y$ marks a prediction). A residual is how far off one prediction is: the observed value minus the predicted value. A positive residual means the real point is above the model. A negative residual means it is below. A residual plot graphs the residuals. If the model fits well, the residuals are small and scatter above and below 0 with no pattern. A curve in the residuals shows a bend the model missed.",
     terms: [
       "residual",
       "residual-plot",
@@ -168,8 +168,8 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
     senses: amgSenses,
     noLink: amgNoLink,
     method: [
-      "For a residual plot, read from left to right. Random scatter close to 0 means the model type fits. Positive, then negative, then positive means the data bend upward away from the line. Negative, positive, negative means they bend downward.",
-      "For a table with equally spaced inputs, find the differences between neighbouring values, then the differences of those, called second differences, then the ratios (one value divided by the one before). Equal first differences mean linear, equal second differences (not 0) mean quadratic, and equal positive ratios mean exponential.",
+      "For a residual plot, read from left to right. Random scatter close to 0 means the model type fits. Positive, then negative, then positive means the data bend upward compared with a straight-line model. Negative, positive, negative means they bend downward compared with it.",
+      "For a table with equally spaced inputs, find the differences between neighbouring values, then the differences of those, called second differences, then the ratios (one value divided by the one before). Equal first differences mean linear, equal second differences (not 0) mean quadratic, and equal positive ratios other than 1 mean exponential.",
       "For a residual, work out the model's prediction at the input, then subtract: observed minus predicted. Negative means the model predicted too high. Positive means it predicted too low.",
     ],
     watch:
@@ -323,7 +323,7 @@ export const advancedMathGapLessons: Lesson[] = [
     pitfalls: [
       "Divide the yearly rate by $n$ before compounding, and multiply $n$ by $t$ for the exponent.",
       "Do not divide a yearly growth factor by 12 to get a monthly one. Take its 12th root.",
-      "Do not multiply a monthly percent by 12 to get the yearly percent. Raise the monthly growth factor to the 12th power and subtract 1.",
+      "Multiplying a monthly percent by 12 does not give the actual yearly growth. Raise the monthly growth factor to the 12th power and subtract 1.",
     ],
     parentGuide:
       "Have the learner work out 1,000 dollars at 12% for one year, added once (1,120), and added monthly at 1% (about 1,126.83). Ask them to explain why the two differ.",
@@ -411,8 +411,8 @@ export const advancedMathGapLessons: Lesson[] = [
         paragraphs: [
           "A model is a rule that predicts a result from a starting number. The starting number is called the input, and the predicted result is called the output. We write $\\hat{y}$, read “$y$ hat”, for the predicted value, and $y$ for the observed (real) value.",
           "A residual is the observed value minus the predicted value: $y - \\hat{y}$. If the real point is above the model, the residual is positive. If it is below, the residual is negative.",
-          "A graph of every residual against its input is called a residual plot. When a model fits well, the residuals fall above and below 0 at random. When they follow a curve, the data bend in a way the model cannot.",
-          "For example, residuals that are positive at both ends and negative in the middle mean the data sit above a line at the ends and below it in the middle. So the data curve upward, and a straight line is the wrong shape.",
+          "A graph of every residual against its input is called a residual plot. When a model fits well, the residuals are small and fall above and below 0 with no pattern. When they follow a curve, the data bend in a way the model cannot.",
+          "For example, residuals that are positive at both ends and negative in the middle mean the data sit above the model line at the ends and below it in the middle. So the data curve upward compared with the line, and a straight line is the wrong shape.",
         ],
       },
     ],
