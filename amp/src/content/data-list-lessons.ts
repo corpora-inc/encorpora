@@ -7,17 +7,7 @@ export const dataListMethods: Record<string, ProblemMethod> = {
     goal: "Choose the list of data that matches a dot plot or a table of counts, including a table of counts in ranges.",
     intuition:
       "A dot plot and a table of counts both summarize a list of data. Each dot or each count stands for one value in the list. To check a list, count how many times each value appears, or how many values fall in each range, and compare with the display.",
-    terms: [
-      ["data", "The numbers collected, such as the pets each student has."],
-      [
-        "dot plot",
-        "A number line with one dot above the line for each value in the data.",
-      ],
-      [
-        "range",
-        "A set of values from one number to another, such as 10 to 19.",
-      ],
-    ],
+    terms: ["data", "dot-plot", "interval"],
     method: [
       "Add the counts or count the dots. The list must have that many values.",
       "Count how many times each value appears in a list, or how many values fall in each range.",

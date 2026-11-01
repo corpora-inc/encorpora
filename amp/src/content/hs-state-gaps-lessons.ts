@@ -6,20 +6,7 @@ export const hsStateGapMethods: Record<string, ProblemMethod> = {
     goal: "Use elimination on three equations in $x$, $y$, $z$ to find the solution, a row operation, or how many solutions exist.",
     intuition:
       "One equation in three unknowns leaves many possibilities. Each independent equation removes one degree of freedom, so three independent equations can pin down a single point. Elimination turns three equations into two, then one, by adding multiples of one equation to another without changing the solutions.",
-    terms: [
-      [
-        "elimination",
-        "Add or subtract a multiple of one equation to another so a variable cancels.",
-      ],
-      [
-        "row operation",
-        "A step such as $R_2\\to R_2-3R_1$: replace equation 2 by equation 2 minus 3 times equation 1. It does not change the solutions.",
-      ],
-      [
-        "back-substitution",
-        "Solve the last equation, then put its value into the equation above, and repeat upward.",
-      ],
-    ],
+    terms: ["elimination", "row-operation", "back-substitution"],
     method: [
       "Use one equation to cancel $x$ from the other two. The multiplier is the ratio of the two $x$ coefficients.",
       "Use one of the two new equations to cancel $y$ from the other. The last equation has only $z$.",
@@ -33,16 +20,7 @@ export const hsStateGapMethods: Record<string, ProblemMethod> = {
     goal: "Solve a quadratic inequality using its zeros and the sign of its leading coefficient, and write the solution set.",
     intuition:
       "The graph of a quadratic is a parabola. An inequality asks where that parabola is above or below the $x$-axis. The zeros are where the graph crosses the axis, so between them and beyond them the sign is constant.",
-    terms: [
-      [
-        "zeros",
-        "The values of $x$ where the expression equals 0, where its graph meets the $x$-axis.",
-      ],
-      [
-        "interval notation",
-        "$(a,b)$ leaves out the endpoints, $[a,b]$ includes them, and $\\cup$ joins two separate intervals.",
-      ],
-    ],
+    terms: ["zero-of-a-function", "interval-notation"],
     method: [
       "Move every term to one side so the other side is 0, then find the zeros by factoring or the quadratic formula.",
       "Look at the leading coefficient: positive opens up, so the expression is negative between the zeros and positive outside; negative reverses this.",
@@ -56,18 +34,7 @@ export const hsStateGapMethods: Record<string, ProblemMethod> = {
     goal: "Form and compare a conditional, its converse, inverse and contrapositive, and evaluate compound statements from truth values.",
     intuition:
       "A conditional “if $P$, then $Q$” promises that whenever $P$ holds, $Q$ holds. It breaks only when $P$ is true and $Q$ is false. Changing the order or adding negations makes related statements, and only some of them say the same thing.",
-    terms: [
-      ["converse", "Swap hypothesis and conclusion: if $Q$, then $P$."],
-      ["inverse", "Negate both: if not $P$, then not $Q$."],
-      [
-        "contrapositive",
-        "Swap and negate both: if not $Q$, then not $P$. It is logically equivalent to the original.",
-      ],
-      [
-        "biconditional",
-        "$P$ if and only if $Q$: the conditional and its converse are both true.",
-      ],
-    ],
+    terms: ["converse", "inverse-statement", "contrapositive", "biconditional"],
     method: [
       "Name the hypothesis $P$ and the conclusion $Q$ in “if $P$, then $Q$”.",
       "Build the requested form: converse swaps, inverse negates, contrapositive does both.",
@@ -81,16 +48,7 @@ export const hsStateGapMethods: Record<string, ProblemMethod> = {
     goal: "Solve equations with a cube root or a cube over the real numbers, and explain why cube roots create no extraneous solutions.",
     intuition:
       "Cubing undoes a cube root, just as a cube root undoes cubing. Unlike squaring, cubing keeps the sign: negative numbers have negative cubes, and each real number has exactly one real cube root.",
-    terms: [
-      [
-        "cube root",
-        "$\\sqrt[3]{a}$ is the number whose cube is $a$, for example $\\sqrt[3]{-8}=-2$.",
-      ],
-      [
-        "extraneous solution",
-        "A candidate found by an algebra step that does not satisfy the original equation.",
-      ],
-    ],
+    terms: ["cube-root", "extraneous-solution"],
     method: [
       "Isolate the cube root, or isolate $x^3$, on one side.",
       "Cube both sides, or take the cube root of both sides.",
@@ -105,15 +63,12 @@ export const hsStateGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "In polar coordinates a point is a distance $r$ from the pole at an angle $\\theta$. An equation tells how far to go in each direction, so its form reveals the shape: a constant $r$ gives a circle, a trigonometric multiple of $\\theta$ gives a rose, and a constant plus a trigonometric term gives a limaçon.",
     terms: [
-      ["pole", "The origin of the polar grid."],
       [
-        "rose",
-        "A curve $r=a\\cos(n\\theta)$ or $r=a\\sin(n\\theta)$ with $n\\ge2$. It has $n$ petals for odd $n$ and $2n$ for even $n$.",
+        "polar-coordinates",
+        "The pole is the center point of the polar grid, like the origin.",
       ],
-      [
-        "limaçon",
-        "A curve $r=a+b\\cos\\theta$ or $r=a+b\\sin\\theta$. It is a cardioid when $a=b$ and has an inner loop when $a<b$.",
-      ],
+      "rose-curve",
+      "limacon",
     ],
     method: [
       "Match the form of the equation to a family: $r=a$, $r=a\\cos\\theta$, $\\theta=\\alpha$, rose, or limaçon.",
@@ -128,11 +83,11 @@ export const hsStateGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "Slicing a double cone with a plane gives different curves depending on how steeply the plane tilts. A level cut gives a circle. Tilting makes an oval. Tilting until the plane is parallel to a side of the cone gives an open curve, and tilting more cuts both halves.",
     terms: [
+      "double-cone",
       [
-        "double cone",
-        "Two cones joined point to point, sharing an axis; each half is a nappe.",
+        "vertex",
+        "In a double cone, it is the single point where the two cones meet.",
       ],
-      ["vertex", "The point where the two nappes meet."],
     ],
     method: [
       "Find the side angle $\\alpha$ between a side line of the cone and the axis, and the plane's angle $\\beta$ with the axis.",

@@ -1,23 +1,15 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
-const terms: [string, string][] = [
+const terms: MethodTerm[] = [
+  "square-root",
+  ["radicand", "For a real square root it must not be negative."],
   [
-    "square root",
-    "The principal square root is the nonnegative number whose square equals the given number. For example, $\\sqrt{9} = 3$, not −3.",
+    "solution",
+    "A candidate is a possible solution found after changing the equation; it counts only if it satisfies the original equation.",
   ],
-  [
-    "radicand",
-    "The expression under the root symbol. It must be nonnegative for a real square root.",
-  ],
-  [
-    "candidate",
-    "A possible solution found after transforming an equation; it must still satisfy the original equation.",
-  ],
-  [
-    "extraneous candidate",
-    "A value that satisfies a transformed equation but not the original equation.",
-  ],
+  "extraneous-solution",
 ];
 const basic: ProblemMethod = {
   goal: "Isolate a square root, then find and check the input.",

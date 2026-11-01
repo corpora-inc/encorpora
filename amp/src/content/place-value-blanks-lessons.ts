@@ -13,16 +13,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A whole number is written with digits, and the place of a digit tells how much it is worth. The rightmost place is the ones place. Each place to the left is worth ten times the place to its right: tens, hundreds, thousands, ten thousands, hundred thousands. In 804,516 the digit 8 is in the hundred thousands place, so it stands for 800,000.",
-    terms: [
-      [
-        "place",
-        "The position of a digit in a number, such as tens or thousands.",
-      ],
-      [
-        "place value",
-        "What a digit is worth because of its place: the digit times the value of the place.",
-      ],
-    ],
+    terms: ["place", "place-value"],
     method: [
       "Start at the rightmost digit and call its place ones.",
       "Move left one digit at a time, saying tens, hundreds, thousands, ten thousands, hundred thousands.",
@@ -69,12 +60,12 @@ const entries: FormatLessonEntry[] = [
       "Rounding replaces a number by the nearest multiple of a place, such as the nearest hundred. To decide, look at the digit one place to the right. If it is 5 or more, the number is at least halfway to the next multiple, so round up; if it is less than 5, round down. Each place gives a different answer for the same number, so every place needs its own look.",
     terms: [
       [
-        "round up",
-        "Increase the digit in the rounding place by one and change the digits to its right to zero.",
+        "round",
+        "To round up, add 1 to the digit in the rounding place and change every digit to its right to zero.",
       ],
       [
-        "round down",
-        "Keep the digit in the rounding place and change the digits to its right to zero.",
+        "round",
+        "To round down, keep the digit in the rounding place and change every digit to its right to zero.",
       ],
     ],
     method: [
@@ -120,10 +111,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "Rounding a decimal works like rounding a whole number. For the nearest tenth, look at the hundredths digit; for the nearest hundredth, look at the thousandths digit. Digits of 5 or more round up and digits under 5 round down. When a 9 rounds up it becomes 0 and adds 1 to the digit on its left, as in 4.396 rounding to 4.40 at the hundredth.",
-    terms: [
-      ["tenth", "One of ten equal parts of 1, written 0.1."],
-      ["hundredth", "One of one hundred equal parts of 1, written 0.01."],
-    ],
+    terms: ["tenth", "hundredth"],
     method: [
       "Name the rounding place and look at the digit just to its right.",
       "If that digit is 5 or more, add 1 to the digit in the rounding place (carrying if it is 9); otherwise leave it.",
@@ -166,13 +154,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "An estimate is a quick answer that is close to the exact one. To estimate a sum, round each addend to the same place and add the rounded numbers, which is easy to do in your head. The result is close to the exact sum but usually not equal to it.",
-    terms: [
-      ["addend", "A number that is added."],
-      [
-        "estimate",
-        "An answer that is close to the exact answer and easier to find.",
-      ],
-    ],
+    terms: ["addend", "estimate"],
     method: [
       "Round the first addend to the stated place by looking at the digit to its right.",
       "Round the second addend the same way.",
@@ -217,13 +199,10 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "A number is the sum of what its digits are worth. The digit 4 in the ten thousands place is worth 40,000, the digit 3 in the thousands place is 3,000, and so on. Writing 43,582 as 40,000 + 3,000 + 500 + 80 + 2 is expanded form. A digit 0 is worth nothing, so it leaves no term in the sum.",
     terms: [
+      "expanded-form",
       [
-        "expanded form",
-        "A number written as the sum of the values of its digits.",
-      ],
-      [
-        "value of a digit",
-        "The digit times the value of its place, such as $4\\times 10{,}000$.",
+        "place-value",
+        "The value of a digit is the digit times its place value, such as $4 \\times 10{,}000$ for the 4 in 47,000.",
       ],
     ],
     method: [
@@ -271,12 +250,12 @@ const entries: FormatLessonEntry[] = [
       "Places to the right of the decimal point are worth less. The tenths place is worth one tenth, written 0.1, and the hundredths place is worth one hundredth, 0.01. So the digit 4 in the tenths place is worth 0.4, and the digit 4 in the hundredths place is worth 0.04. Writing 3,205.4 as 3,000 + 200 + 5 + 0.4 adds up the worth of each digit.",
     terms: [
       [
-        "tenths place",
-        "The first place right of the decimal point, worth 0.1 for each count.",
+        "place",
+        "The tenths place is the first place right of the decimal point; each count there is worth 0.1.",
       ],
       [
-        "hundredths place",
-        "The second place right of the decimal point, worth 0.01 for each count.",
+        "place",
+        "The hundredths place is the second place right of the decimal point; each count there is worth 0.01.",
       ],
     ],
     method: [
@@ -322,11 +301,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "Two whole numbers are compared by their digits from the left. With the same number of digits, the first place that differs decides which is greater. A number can be written in different ways: 3,000 + 400 + 80 + 2 is the same number as 3,482. Rewrite a sum as a standard number before comparing, and use an equal sign when the numbers are the same.",
-    terms: [
-      ["<", "Is less than: the small end points at the lesser number."],
-      [">", "Is greater than: the open end faces the greater number."],
-      ["=", "Is equal to: both sides name the same number."],
-    ],
+    terms: ["less-than", "greater-than", "equal-sign"],
     method: [
       "Write both numbers in standard form, adding the parts of any sum.",
       "Compare the number of digits, then compare place by place from the left.",
@@ -370,10 +345,13 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "A digit is worth more in a place farther to the left, because each place is worth ten times the one to its right. In 380,286 the 8 on the left is worth 80,000 and the 8 on the right is worth 80. The first is 1,000 times the second, because the places are three steps apart and each step multiplies by 10.",
     terms: [
-      ["value of a digit", "The digit times the value of its place."],
       [
-        "times as great",
-        "A comparison by multiplying: 80,000 is 1,000 times as great as 80.",
+        "place-value",
+        "The value of a digit is the digit times its place value, such as $4 \\times 10{,}000$ for the 4 in 47,000.",
+      ],
+      [
+        "times-as-many",
+        "80,000 is 1,000 times as great as 80 because 80 × 1,000 = 80,000.",
       ],
     ],
     method: [

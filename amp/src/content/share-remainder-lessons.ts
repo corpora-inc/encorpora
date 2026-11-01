@@ -8,8 +8,11 @@ export const shareRemainderMethods: Record<string, ProblemMethod> = {
     intuition:
       "A fraction of a whole number means splitting the whole into equal parts and taking some of them: $\\frac{3}{4}$ of 120 is three of four equal parts of 120. When two fractions describe different parts of the same whole, the rest is what is left after both parts are removed.",
     terms: [
-      ["part", "The amount a fraction of a whole picks out."],
-      ["the rest", "The whole minus all the parts already named."],
+      [
+        "part",
+        "Here the part is the amount the fraction picks out of the whole.",
+      ],
+      ["whole", "The rest is the whole minus all the parts already named."],
     ],
     method: [
       "Find each named part separately: divide the whole by the denominator, then multiply by the numerator.",
@@ -23,13 +26,7 @@ export const shareRemainderMethods: Record<string, ProblemMethod> = {
     goal: "Use percents of a stated total for several groups, then find the remaining group or the difference between two groups.",
     intuition:
       "A percent is a number of hundredths, so 35% of 500 people is 35 out of every 100. Percents of one whole add up to 100%, so the group not named has the percent that is left.",
-    terms: [
-      ["share", "The percent of the whole that one group makes up."],
-      [
-        "difference",
-        "How many more one group has than another: subtract the smaller count from the larger.",
-      ],
-    ],
+    terms: ["percent", "difference-subtract"],
     method: [
       "Add the named percents and subtract from 100 to get the remaining percent.",
       "Turn each percent you need into a count: multiply the total by the percent written as a decimal.",

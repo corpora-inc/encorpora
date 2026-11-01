@@ -260,7 +260,7 @@ export const factsMethods: Record<string, ProblemMethod> = {
   },
   "make-ten-fact": {
     goal: "Given two one-digit numbers with a sum over ten, find the sum.",
-    terms: [["Make ten", "Move counters to fill one ten-frame exactly."]],
+    terms: ["make-ten"],
     method: [
       "Find how many the first number needs to make 10.",
       "Take that many from the second number.",

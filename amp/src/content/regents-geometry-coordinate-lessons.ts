@@ -9,13 +9,11 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
       "A ratio $a:b$ cuts a segment into $a+b$ equal parts. The dividing point is $a$ of those parts from the first endpoint, so it is $\\frac{a}{a+b}$ of the way along the segment, in both the horizontal and the vertical direction.",
     terms: [
       [
-        "ratio $a:b$",
-        "$a$ parts on one side of the point for every $b$ parts on the other.",
+        "directed-segment",
+        "Ratio $a : b$ means $a$ parts on one side of the point for every $b$ parts on the other.",
       ],
-      [
-        "directed segment",
-        "A segment whose first letter names the starting end.",
-      ],
+      "ratio",
+      "directed-segment",
     ],
     method: [
       "Find the change in $x$ and the change in $y$ from the first endpoint to the second.",
@@ -29,16 +27,7 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
     goal: "Complete the square in $x$ and in $y$ to read a circle's center and radius from an expanded equation.",
     intuition:
       "The expanded equation hides the center and radius. Completing the square rewrites $x^2-2hx$ as $(x-h)^2-h^2$, which shows the center's coordinates and moves the extra squares to the other side of the equation.",
-    terms: [
-      [
-        "general form",
-        "An equation like $x^2+y^2+Dx+Ey+F=0$ with every term expanded.",
-      ],
-      [
-        "completing the square",
-        "Adding the square of half the coefficient of the linear term so that three terms become a squared binomial.",
-      ],
-    ],
+    terms: ["general-form", "completing-the-square"],
     method: [
       "If the squared terms have a common coefficient, divide every term by it.",
       "Move the constant, group the $x$ terms and the $y$ terms, and add $(D/2)^2$ and $(E/2)^2$ to both sides.",
@@ -51,13 +40,7 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
     goal: "Write a line's point-slope equation using the slope of a parallel or perpendicular line and a given point.",
     intuition:
       "A line is fixed by its slope and one point. Parallel lines have the same slope, and perpendicular lines have slopes that are opposite reciprocals. Point-slope form $y-y_1=m(x-x_1)$ puts these two facts together.",
-    terms: [
-      [
-        "point-slope form",
-        "$y-y_1=m(x-x_1)$ for a line with slope $m$ through $(x_1,y_1)$.",
-      ],
-      ["opposite reciprocal", "Flip the fraction and change its sign."],
-    ],
+    terms: ["point-slope-form", "negative-reciprocal"],
     method: [
       "Find the slope of the given line as change in $y$ over change in $x$.",
       "Use the same slope for a parallel line, or the opposite reciprocal for a perpendicular line.",
@@ -71,10 +54,10 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
     intuition:
       "Two lines in a plane either cross or never meet. Their slopes tell which: equal slopes mean parallel or the same line, and slopes that multiply to $-1$ mean the lines meet at a right angle.",
     terms: [
-      ["standard form", "$Ax+By=C$; its slope is $-\\frac{A}{B}$."],
+      ["standard-form-line", "Its slope is $-\\frac{A}{B}$."],
       [
-        "the same line",
-        "Two equations whose solutions are exactly the same points.",
+        "line",
+        "Two equations give the same line when they have exactly the same solutions.",
       ],
     ],
     method: [
@@ -89,13 +72,7 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
     goal: "Find the image of a line under a dilation centered at the origin by scaling its intercept and keeping its slope.",
     intuition:
       "A dilation about the origin multiplies every point's distance from the origin by the scale factor. A line that misses the center is sent to a parallel line, and its $y$-intercept point is carried to the new intercept.",
-    terms: [
-      [
-        "scale factor",
-        "The number every distance from the center is multiplied by.",
-      ],
-      ["image", "The figure after the transformation."],
-    ],
+    terms: ["scale-factor", "image-transformation"],
     method: [
       "Find a point on the line that is easy to scale, such as the $y$-intercept $(0,b)$.",
       "Multiply its coordinates by the scale factor to get the image's $y$-intercept $kb$.",

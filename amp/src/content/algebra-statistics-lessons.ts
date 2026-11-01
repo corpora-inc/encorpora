@@ -321,17 +321,7 @@ export const algebraStatisticsLessons: Lesson[] = [
 export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
   "outlier-center-shift": {
     goal: "Decide how an outlier changes the mean and the median.",
-    terms: [
-      ["mean", "The total of the values divided by how many there are."],
-      [
-        "median",
-        "The middle value of the ordered data, or the average of the two middle values.",
-      ],
-      [
-        "outlier",
-        "A value far from the rest: beyond 1.5 IQRs past a quartile.",
-      ],
-    ],
+    terms: ["mean-average", "median", "outlier"],
     method: [
       "Find the mean before and after: total ÷ count, changing the total and, if a value joins or leaves, the count.",
       "Order the values and find the middle before and after.",
@@ -343,10 +333,10 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
   "skewed-box-compare": {
     goal: "Compare two box plots by shape, center and spread.",
     terms: [
-      ["IQR", "Interquartile range: $Q_3 - Q_1$, the width of the box."],
+      "interquartile-range",
       [
-        "skewed right",
-        "A long tail toward higher values: a long right whisker and right part of the box.",
+        "skewed-right",
+        "On a box plot, the right whisker and the right part of the box are longer.",
       ],
     ],
     method: [
@@ -360,9 +350,9 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
   "relative-frequency-percent": {
     goal: "Find a joint, marginal or conditional percent from a two-way table.",
     terms: [
-      ["joint", "One cell out of everyone surveyed."],
-      ["marginal", "A row or column total out of everyone surveyed."],
-      ["conditional", "One cell out of its own row or column total."],
+      "joint-relative-frequency",
+      "marginal-relative-frequency",
+      "conditional-relative-frequency",
     ],
     method: [
       "Name the whole: everyone surveyed, or only the group after “of”.",
@@ -384,13 +374,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
   },
   "regression-coefficient-meaning": {
     goal: "Interpret the slope and intercept of a least-squares line in context.",
-    terms: [
-      [
-        "slope",
-        "The predicted change in $y$ for each 1 more of $x$, in units of $y$ per unit of $x$.",
-      ],
-      ["$y$-intercept", "The predicted $y$ when $x = 0$."],
-    ],
+    terms: ["slope", "y-intercept"],
     method: [
       "The slope is the coefficient of $x$: say it as “each additional unit of $x$ goes with a predicted $y$ that much higher or lower”.",
       "The intercept is the prediction at $x = 0$; it has a meaning only when $x = 0$ is a sensible value inside the data.",
@@ -410,7 +394,12 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
   },
   "residual-value": {
     goal: "Find a residual, or an observed value from its residual.",
-    terms: [["residual", "Observed $y$ minus predicted $\\hat{y}$."]],
+    terms: [
+      [
+        "residual",
+        "Written $y - \\hat{y}$, where $\\hat{y}$ is the predicted value.",
+      ],
+    ],
     method: [
       "Find the predicted value by substituting $x$ into the line.",
       "Residual = observed − predicted; observed = predicted + residual.",
@@ -420,12 +409,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
   },
   "correlation-choice": {
     goal: "Interpret correlation and residual plots.",
-    terms: [
-      [
-        "correlation coefficient",
-        "$r$, from −1 to 1: the direction and strength of a linear association.",
-      ],
-    ],
+    terms: ["correlation-coefficient"],
     method: [
       "Direction: points rising left to right give a positive $r$, falling give a negative $r$.",
       "Strength: the closer the points hug a line, the closer $r$ is to −1 or 1.",
@@ -437,11 +421,11 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
   "causal-claim-choice": {
     goal: "Judge what an observed association can and cannot show.",
     terms: [
+      "lurking-variable",
       [
-        "lurking variable",
-        "A third variable that affects both variables in an association.",
+        "causation",
+        "Reverse causation means the second variable is actually causing the first.",
       ],
-      ["reverse causation", "The second variable causing the first."],
     ],
     method: [
       "Ask how the data were collected: observed, or assigned at random?",
@@ -452,13 +436,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
   },
   "study-design-choice": {
     goal: "Choose and read study designs.",
-    terms: [
-      ["experiment", "A study in which the researcher assigns the treatment."],
-      [
-        "observational study",
-        "A study that only records what subjects already do.",
-      ],
-    ],
+    terms: ["experiment", "observational-study"],
     method: [
       "Find who decided which subjects got the treatment: the researcher at random, or the subjects themselves.",
       "Random assignment with a comparison group can show cause and effect; observation shows association.",

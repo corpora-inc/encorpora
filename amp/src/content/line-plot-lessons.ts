@@ -245,7 +245,12 @@ export const linePlotLessons: Lesson[] = [
 export const linePlotMethods: Record<string, ProblemMethod> = {
   "line-plot-whole": {
     goal: "Answer a counting or length question from a whole-unit line plot.",
-    terms: [["line plot", "A number line with one × above each measurement."]],
+    terms: [
+      [
+        "dot-plot",
+        "Here each measurement is marked with an × instead of a dot.",
+      ],
+    ],
     method: [
       "Find the length the question names on the number line.",
       "Count marks at it, or to its right for “longer than”; count all marks for how many were measured.",
@@ -263,7 +268,7 @@ export const linePlotMethods: Record<string, ProblemMethod> = {
   },
   "fraction-plot-difference": {
     goal: "Add or subtract lengths read from a fourths or eighths line plot.",
-    terms: [["like fractions", "Fractions with the same denominator."]],
+    terms: ["like-fractions"],
     method: [
       "Read each needed length and write it as fourths or eighths.",
       "Add or subtract the numerators; keep the denominator.",
@@ -273,7 +278,12 @@ export const linePlotMethods: Record<string, ProblemMethod> = {
   },
   "fraction-plot-equal-share": {
     goal: "Find each container’s amount when the plotted amounts are pooled and shared equally.",
-    terms: [["equal share", "The total divided by the number of containers."]],
+    terms: [
+      [
+        "mean-average",
+        "Here, the total amount divided by the number of containers.",
+      ],
+    ],
     method: [
       "Add every plotted amount, one per ×.",
       "Divide the total by the number of containers.",

@@ -6,16 +6,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Read and write a multiplication as a comparison: how many times as many one amount is as another.",
     intuition:
       'Compare two amounts by asking how many equal copies of the smaller amount make the larger one. That number goes in front of "times as many".',
-    terms: [
-      [
-        "times as many",
-        "A comparison by multiplication: $3$ times as many as $24$ means $3$ equal copies of $24$, or $3\\times24$.",
-      ],
-      [
-        "more than",
-        "A comparison by addition: $3$ more than $24$ means $24+3$.",
-      ],
-    ],
+    terms: ["times-as-many", "more-than"],
     method: [
       'Name the amount being compared with: the one after "as". It is the amount that gets copied.',
       'The number before "times as many" is how many copies. Multiply it by the amount being copied.',
@@ -30,13 +21,10 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       "A table of pairs lists matching amounts. When every row follows the same rule, one row tells you the rule, and the rule fills in the rest.",
     terms: [
       [
-        "number pair",
-        "Two numbers that go together, such as 3 boxes and 24 pencils.",
+        "ordered-pair",
+        "Here, two numbers that go together, such as 3 boxes and 24 pencils.",
       ],
-      [
-        "rule",
-        "What you do to the first number of every pair to get the second.",
-      ],
+      "rule",
     ],
     method: [
       "Read the situation: is each row made by multiplying (equal groups) or adding (a fixed gap)?",
@@ -50,16 +38,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Choose the equation, with a letter for the unknown, that matches a one-step or two-step story within 1,000.",
     intuition:
       "An equation tells the story in numbers. Decide which amount is the whole, which amounts are parts, and what happens to the amounts, then write that with a letter for what you do not know.",
-    terms: [
-      [
-        "unknown",
-        "The amount you are asked to find, written as a letter such as $n$.",
-      ],
-      [
-        "equation",
-        "A statement that two quantities are equal, such as $346+128=n$.",
-      ],
-    ],
+    terms: ["unknown", "equation"],
     method: [
       "Find the total and the parts. Getting more joins amounts; giving away takes one away from the total.",
       "Write the changes in the order they happen, with the unknown where the story hides it.",
@@ -72,16 +51,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Read a strip diagram of a multistep story and choose the equation with a letter that fits it.",
     intuition:
       "A strip diagram shows parts and the whole as bars of matching length. Each bar becomes a number, a product or a letter in the equation.",
-    terms: [
-      [
-        "strip diagram",
-        "A drawing where a whole is one long bar and its parts are bars that together match its length.",
-      ],
-      [
-        "equal parts",
-        "Bars of the same length that all stand for the same amount, such as $4$ bars of $6$, written $4\\times6$.",
-      ],
-    ],
+    terms: ["strip-diagram", "equal-parts"],
     method: [
       "Name the whole and each part. Write repeated equal parts as one product.",
       "Combine the parts with the operation the diagram shows: parts add to the whole.",
@@ -95,13 +65,10 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     intuition:
       "A rectangle's area is its height times its width. If the area and the height are known, dividing the area by the height gives the width.",
     terms: [
+      "area-model",
       [
-        "area model",
-        "A rectangle split into parts whose areas add to the total area.",
-      ],
-      [
-        "partial quotient",
-        "The width of one part of the rectangle: that part's area divided by the height.",
+        "quotient",
+        "A partial quotient is one part of the quotient; in an area model it is one part's width, its area divided by the height.",
       ],
     ],
     method: [
@@ -116,16 +83,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Use the benchmarks 0, 1/4, 1/2, 3/4 and 1 to estimate sums and differences and judge reasonable answers.",
     intuition:
       "A benchmark is an easy fraction to compare with. Replace each fraction by the nearest benchmark and the sum or difference becomes easy to find.",
-    terms: [
-      [
-        "benchmark fraction",
-        "A familiar fraction used for comparison: $0$, $\\tfrac14$, $\\tfrac12$, $\\tfrac34$ and $1$.",
-      ],
-      [
-        "estimate",
-        "An answer that is close to the exact value, found with easy numbers.",
-      ],
-    ],
+    terms: ["benchmark-fraction", "estimate"],
     method: [
       "Write each fraction as a decimal, or compare it with $\\tfrac12$ first. Choose the nearest benchmark.",
       "Add or subtract the benchmarks.",
@@ -138,12 +96,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Compare the sizes of customary and metric units and decide which measurement has the greater number.",
     intuition:
       "A larger unit covers more, so fewer of them are needed. The same amount measured in a smaller unit gives a greater number.",
-    terms: [
-      [
-        "unit",
-        "A fixed amount used for measuring, such as an inch, a meter or a quart.",
-      ],
-    ],
+    terms: ["unit"],
     method: [
       "Picture a real object for each unit and decide which is bigger.",
       "For the same amount, a smaller unit gives a greater number of units.",
@@ -156,13 +109,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Model a decimal product on a hundredths square and a decimal quotient as the missing side of a rectangle.",
     intuition:
       "A 10 by 10 square is 1 whole, so each small square is one hundredth. A rectangle that is tenths tall and tenths wide covers hundredths of the whole.",
-    terms: [
-      ["tenth", "One of 10 equal parts of a whole: $0.1$."],
-      [
-        "hundredth",
-        "One of 100 equal parts of a whole: $0.01$. A tenth of a tenth is a hundredth.",
-      ],
-    ],
+    terms: ["tenth", "hundredth"],
     method: [
       "For a product, count the rows and columns of the shaded rectangle and multiply the counts, then write the total as hundredths.",
       "For a quotient, write the area as tenths or hundredths and share that count equally across the width.",
@@ -175,18 +122,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Place numbers in nested sets of natural, whole, integer and rational numbers and judge subset statements.",
     intuition:
       "Each set of numbers contains the one before it. Natural numbers sit inside whole numbers, whole numbers inside integers and integers inside rational numbers.",
-    terms: [
-      ["natural number", "A counting number: $1, 2, 3, \\ldots$"],
-      ["whole number", "A natural number or zero: $0, 1, 2, \\ldots$"],
-      [
-        "integer",
-        "A whole number or the opposite of one: $\\ldots,-2,-1,0,1,2,\\ldots$",
-      ],
-      [
-        "rational number",
-        "A number that can be written as a fraction of two integers with a nonzero denominator.",
-      ],
-    ],
+    terms: ["natural-number", "whole-number", "integer", "rational-number"],
     method: [
       "Simplify first: $12/4$ equals $3$ and $-9/3$ equals $-3$.",
       "Start from the innermost set and move outward until the number fits. The number is in that set and every larger set.",
@@ -199,13 +135,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Choose the multiplication that equals a division by a fraction or whole number, using the reciprocal.",
     intuition:
       "Dividing by $\\tfrac23$ asks how many groups of $\\tfrac23$ fit. Each whole has $\\tfrac32$ of them, so dividing by $\\tfrac23$ multiplies by $\\tfrac32$.",
-    terms: [
-      [
-        "reciprocal",
-        "The number you multiply by to get 1: the reciprocal of $\\tfrac23$ is $\\tfrac32$, and of $5$ is $\\tfrac15$.",
-      ],
-      ["divisor", "The number you divide by."],
-    ],
+    terms: ["reciprocal", "divisor"],
     method: [
       "Find the divisor, the number after the division sign.",
       "Turn the divisor upside down. A whole number is a fraction over 1.",
@@ -218,9 +148,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Decide, without computing, whether a product is greater than or less than the starting number.",
     intuition:
       "Multiplying by 1 leaves a number unchanged. A multiplier less than 1 takes only part of the number, so the result shrinks. A multiplier greater than 1 takes more than one copy, so it grows.",
-    terms: [
-      ["multiplier", "The number you multiply by. It scales the other number."],
-    ],
+    terms: ["multiplier"],
     method: [
       "Compare the multiplier with 1. An improper fraction is greater than 1.",
       "Less than 1 gives a smaller result, equal to 1 gives the same, and greater than 1 gives a larger result.",
@@ -233,9 +161,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Read the percent, fraction or decimal for the shaded part of a 10 by 10 grid.",
     intuition:
       "The grid has 100 equal squares, and percent means out of 100. The number of shaded squares is the percent.",
-    terms: [
-      ["percent", "A number out of 100: $35\\%$ means $\\tfrac{35}{100}$."],
-    ],
+    terms: ["percent"],
     method: [
       "Count shaded squares: full columns of 10, then the extra squares.",
       "The count is the percent. As a fraction it is the count over 100, which can be simplified.",
@@ -249,8 +175,11 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     intuition:
       "A percent, a decimal and a fraction can name the same part of a whole. Percent is the version with 100 as the denominator.",
     terms: [
-      ["part", "The amount that is some percent of the whole."],
-      ["whole", "The full amount, which is $100\\%$."],
+      [
+        "part",
+        "Here the part is the amount that is some percent of the whole.",
+      ],
+      ["whole", "As a percent, the whole is $100\\%$."],
     ],
     method: [
       "Fraction to percent: divide the numerator by the denominator and multiply by 100. Decimal to percent: multiply by 100.",
@@ -264,16 +193,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Name the independent and dependent quantity in a table of two related quantities.",
     intuition:
       "In a relationship one quantity determines the other. The quantity you choose or set is independent; the quantity it determines is dependent.",
-    terms: [
-      [
-        "independent quantity",
-        "The quantity that is set or chosen. It goes on the horizontal axis of a graph.",
-      ],
-      [
-        "dependent quantity",
-        "The quantity whose value is determined by the independent quantity. It goes on the vertical axis.",
-      ],
-    ],
+    terms: ["independent-variable", "dependent-variable"],
     method: [
       "Ask: which quantity do I choose, and which one then follows from it?",
       "The one that follows is dependent. The one it follows from is independent.",
@@ -286,16 +206,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Tell an expression from an equation in numeric, algebraic and verbal forms.",
     intuition:
       "An expression is a mathematical phrase that names a value. An equation is a sentence that says two quantities are equal, so it has an equal sign.",
-    terms: [
-      [
-        "expression",
-        "A number, a variable, or numbers and variables joined by operations, with no equal sign.",
-      ],
-      [
-        "equation",
-        "A statement with an equal sign saying two expressions have the same value.",
-      ],
-    ],
+    terms: ["expression", "equation"],
     method: [
       'Look for an equal sign, or for a word such as "is" or "equals" in a phrase.',
       "With one, it is an equation, true or false. Without one, it is an expression.",
@@ -310,8 +221,8 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       "An area or volume formula is an equation. Put the known measures and the total in the formula and leave the unknown measure as a letter.",
     terms: [
       [
-        "rational dimension",
-        "A length written as a fraction or mixed number, such as $2\\tfrac12$ feet.",
+        "length",
+        "A rational dimension is a length written as a fraction or mixed number, such as $2\\tfrac{1}{2}$ feet.",
       ],
     ],
     method: [
@@ -326,13 +237,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Find the mode, a relative frequency as a percent, and a category count from a percent bar.",
     intuition:
       "Categorical data sorts items into categories. The mode is the most common category; a relative frequency is a category's share of all the items.",
-    terms: [
-      ["mode", "The category with the greatest count."],
-      [
-        "relative frequency",
-        "A category's count divided by the total count. Written as a percent, it is the share out of 100.",
-      ],
-    ],
+    terms: ["mode-statistics", "relative-frequency"],
     method: [
       "For the mode, compare the counts and choose the category with the greatest one.",
       "For a relative frequency, divide the count by the total and multiply by 100.",
@@ -345,10 +250,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Find a running balance or a missing amount in a check register with deposits, checks, transfers and fees.",
     intuition:
       "A check register tracks an account. A deposit adds money and a check, a transfer out or a fee takes money away, so each balance is the one before plus or minus the entry.",
-    terms: [
-      ["balance", "The amount of money in the account after an entry."],
-      ["deposit", "Money added to the account."],
-    ],
+    terms: ["balance-account", "deposit"],
     method: [
       "Start from the balance at the top.",
       "For each entry in order, add a deposit and subtract a check, transfer or fee. The result is the next balance.",
@@ -361,7 +263,9 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Find total earnings over a career from a yearly or monthly pay and a number of years, and compare two salaries.",
     intuition:
       "If the pay is the same every year, total earnings are the yearly pay times the number of years. A small difference in yearly pay becomes a large difference over a career.",
-    terms: [["salary", "A fixed amount of pay for a year of work."]],
+    terms: [
+      ["income", "A salary is a fixed amount of pay for a year of work."],
+    ],
     method: [
       "Find the number of years: retirement age minus starting age.",
       "If the pay is monthly, multiply by 12 for the pay in one year.",
@@ -374,17 +278,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Describe $\\pi$ as the circumference divided by the diameter and compute it from a measured circle.",
     intuition:
       "Measure around any circle and across it through the center. The distance around is always a bit more than three times the distance across, and that number is $\\pi$.",
-    terms: [
-      ["circumference", "The distance around a circle."],
-      [
-        "diameter",
-        "The distance across a circle through its center. It is twice the radius.",
-      ],
-      [
-        "$\\pi$",
-        "The ratio circumference divided by diameter, which is the same for every circle: about $3.14$.",
-      ],
-    ],
+    terms: ["circumference", "diameter", "pi"],
     method: [
       "Find the diameter. If you are given the radius, double it.",
       "Divide the circumference by the diameter.",
@@ -397,16 +291,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Find an experimental probability from trials, predict counts for more trials, and compare with expected counts.",
     intuition:
       "An experiment gives data. The share of trials in which an event happened is the experimental probability, and it helps predict what happens in more trials.",
-    terms: [
-      [
-        "experimental probability",
-        "The number of times an event happened divided by the number of trials.",
-      ],
-      [
-        "theoretical probability",
-        "The probability found from equally likely outcomes, such as $\\tfrac16$ for rolling a 6.",
-      ],
-    ],
+    terms: ["experimental-probability", "theoretical-probability"],
     method: [
       "Experimental probability is successes divided by trials.",
       "To predict, scale the observed count by the number of times as many trials.",
@@ -419,13 +304,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Find the lateral or total surface area of a cylinder in terms of $\\pi$, a missing height, or a triangular prism's surface area.",
     intuition:
       "Surface area is the area of all the faces. A cylinder unrolls into two circles and one rectangle; a triangular prism has two triangles and three rectangles.",
-    terms: [
-      [
-        "lateral surface area",
-        "The area of the curved side of a cylinder, not counting the bases.",
-      ],
-      ["total surface area", "The area of every surface, including the bases."],
-    ],
+    terms: ["lateral-area", "surface-area"],
     method: [
       "Cylinder: the side unrolls to a rectangle $2\\pi r$ wide and $h$ tall, so it has area $2\\pi rh$. Each base has area $\\pi r^2$.",
       "Triangular prism: add the two triangles to the three rectangles, each the length of one triangle side times the prism's length.",
@@ -438,12 +317,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Write an equation or inequality for two situations that each have a starting amount and a rate.",
     intuition:
       "Each situation is an expression: starting amount plus or minus the rate times the number of units. Setting them equal, or comparing them, gives a variable on both sides.",
-    terms: [
-      [
-        "rate",
-        "The amount that changes for each unit, such as dollars per visit.",
-      ],
-    ],
+    terms: ["rate"],
     method: [
       "Write each situation as starting amount, then plus (increasing) or minus (decreasing) rate times the variable.",
       "Join the two expressions with $=$ for equal, or with $<$ or $>$ for less than or more than.",

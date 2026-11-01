@@ -326,14 +326,8 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
   "classify-real-number": {
     goal: "Pick the one rational (or irrational) number from four given numbers.",
     terms: [
-      [
-        "rational",
-        "Equal to a quotient $\\frac{a}{b}$ of integers, $b \\neq 0$; its decimal ends or repeats.",
-      ],
-      [
-        "irrational",
-        "Real but not rational; its decimal never ends or repeats.",
-      ],
+      ["rational-number", "Its decimal either ends or repeats."],
+      "irrational-number",
     ],
     method: [
       "Under a root sign, check for a perfect square or cube: if so, the root is a whole number.",
@@ -345,9 +339,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
   },
   "repeating-decimal-to-fraction": {
     goal: "Write a repeating decimal as a fraction in simplest form.",
-    terms: [
-      ["repeating block", "The digits under the bar, which repeat forever."],
-    ],
+    terms: ["repeating-block"],
     method: [
       "Call the decimal $x$ and write out a few repetitions.",
       "Multiply $x$ by powers of 10 so that two copies have the same tail after the point.",
@@ -357,7 +349,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
   },
   "root-between-integers": {
     goal: "Find the consecutive whole numbers between which a square or cube root lies.",
-    terms: [["perfect square", "A whole number times itself, such as 49."]],
+    terms: ["perfect-square"],
     method: [
       "List perfect squares (or cubes) near the number under the root.",
       "Find the two that the number lies between.",
@@ -387,10 +379,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
   },
   "solve-square-cube-equation": {
     goal: "Find every real solution of $x^2 = p$ or $x^3 = p$.",
-    terms: [
-      ["solution", "A value of $x$ that makes the equation true."],
-      ["±", "Both the positive and the negative value."],
-    ],
+    terms: ["solution", "plus-or-minus"],
     method: [
       "For $x^2 = p$ with $p > 0$, the solutions are $\\sqrt{p}$ and $-\\sqrt{p}$.",
       "For $x^3 = p$, the one solution is $\\sqrt[3]{p}$, with the same sign as $p$.",
@@ -400,9 +389,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
   },
   "scientific-to-standard": {
     goal: "Write $a \\times 10^{n}$ in standard form.",
-    terms: [
-      ["standard form", "The number written with digits and a decimal point."],
-    ],
+    terms: ["standard-form-number"],
     method: [
       "Move the decimal point $n$ places: right if $n$ is positive, left if negative.",
       "Fill empty places with zeros.",
@@ -411,12 +398,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
   },
   "standard-to-scientific": {
     goal: "Write a number in standard form as $a \\times 10^{n}$ with $1 \\le a < 10$.",
-    terms: [
-      [
-        "scientific notation",
-        "$a \\times 10^{n}$ with a at least 1 and less than 10, $n$ an integer.",
-      ],
-    ],
+    terms: ["scientific-notation"],
     method: [
       "Move the decimal point until one nonzero digit is to its left.",
       "Count the places moved: that count is the size of the exponent.",

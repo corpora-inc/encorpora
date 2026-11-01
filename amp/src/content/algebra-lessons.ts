@@ -4,48 +4,53 @@ export const algebraLessons: Lesson[] = [
     id: "expressions-keep-the-structure",
     title: "Keep the structure, change the form",
     summary:
-      "Substitute, distribute and collect like terms without changing what an expression means.",
+      "An expression is a math phrase made of numbers, letters and operations (add, subtract, multiply, divide), like $3x + 2$. It has a value but no equals sign. This lesson works with expressions in three ways. Put a number in for the letter to find the value. Multiply a number by each part inside parentheses, the curved brackets ( ). Combine matching parts. The last two change how an expression looks, never its value.",
     templateIds: [
       "substitute-linear-expression",
       "distributive-expression-choice",
       "combine-like-coefficient",
     ],
+    senses: { term: "term-expression" },
+    noLink: ["change", "part", "parts", "rule", "side", "changes"],
     objectives: [
-      "Substitute a complete signed value.",
-      "Distribute to every term.",
-      "Distinguish a variable coefficient from a constant.",
+      "Put a number in place of a letter, keeping its sign, and find the expression's value.",
+      "Multiply a number by every part inside parentheses.",
+      "Tell a coefficient (the number multiplying a letter) apart from a constant (a number with no letter).",
     ],
     sections: [
       {
         stage: "intuition",
         title: "A place for the whole value",
         paragraphs: [
-          "In 3x + 2, the $x$ is a place for one complete value. At x = −1/2, write 3 × (−1/2) + 2. Parentheses keep the negative sign attached to the input.",
-          "An expression names a value. An equation makes a statement that two values agree. Evaluating an expression does not require inventing an equals sign with zero.",
+          "A variable is a letter, such as $x$, that stands for a number. Writing $3x$ means 3 times $x$. An expression is a math phrase made of numbers, variables and operations (adding, subtracting, multiplying, dividing), such as $3x + 2$. It names a value. An equation is different: it uses an equals sign to say that two values are the same.",
+          "To substitute means to replace the letter with a number. Then finding the value is called evaluating the expression. In $3x + 2$, the $x$ is a place for one complete number, which may be a fraction or a negative. When $x = 4$, write $3 \\times 4 + 2 = 12 + 2 = 14$.",
+          "Parentheses, the curved brackets ( ), group what is inside so it is treated as one number. When $x = -\\tfrac{1}{2}$, write $3 \\times (-\\tfrac{1}{2}) + 2$. The parentheses keep the minus sign with its number. Multiply first, because multiplication comes before addition. A positive times a negative is negative: $3 \\times (-\\tfrac{1}{2}) = -\\tfrac{3}{2}$. Then add 2, which is $\\tfrac{4}{2}$: $-\\tfrac{3}{2} + \\tfrac{4}{2} = \\tfrac{1}{2}$.",
         ],
       },
       {
-        title: "One multiplier, every term",
+        title: "Multiply every part inside",
         paragraphs: [
-          "Imagine three bags, each holding $x$ counters and two extra counters. Their total is 3(x + 2). Three copies of $x$ and three copies of two give 3x + 6.",
-          "The same property works with signed quantities: −2(x − 3) = −2x + 6. The positive six comes from multiplying two negative factors, not from ignoring the subtraction.",
+          "A number written right before parentheses multiplies everything inside them. Imagine 3 bags. Each bag holds $x$ counters plus 2 extra counters. All together that is $3(x + 2)$. Count the parts: 3 groups of $x$ and 3 groups of 2. So $3(x + 2) = 3x + 6$.",
+          "Multiplying the outside number by each part inside is called distributing. The parts of an expression joined by + or − are called terms. In $3x + 6$, the terms are $3x$ and 6. Every term inside the parentheses gets multiplied, not just the first one.",
+          "Negative numbers follow the same rule. Think of $x - 3$ as $x + (-3)$. Then $-2(x - 3) = (-2) \\times x + (-2) \\times (-3) = -2x + 6$. The 6 is positive because a negative number times a negative number is positive.",
         ],
       },
       {
         title: "Collect the same kind of quantity",
         paragraphs: [
-          "In 4x − 7x + 5, the $x$ terms combine to −3x. The constant five is not another $x$ term. The coefficient is −3; the full expression is −3x + 5.",
-          "In 4x − 4x + 5, the $x$ terms cancel. Their coefficient is zero, and the expression equals five for every input.",
+          "Terms with the same letter part are called like terms, such as $4x$ and $-7x$. A term with no letter, such as 5, is called a constant, because its value never changes. The number multiplying the letter is called the coefficient. In $4x$, the coefficient is 4.",
+          "Like terms combine by adding their coefficients. Think of $x$ as one kind of item. Adding 4 of them and then subtracting 7 of them is the same as subtracting 3 of them in all, because $4 - 7 = -3$. So $4x - 7x + 5 = -3x + 5$. The 5 stays separate, because it is not a number of $x$'s.",
+          "In $4x - 4x + 5$, the $x$ terms cancel, meaning they add to zero: $4 - 4 = 0$, so no $x$'s are left. The expression equals 5 for every value of $x$.",
         ],
       },
     ],
     workedExample: {
       prompt: "Evaluate −2(x − 3) at x = −1/2.",
       steps: [
-        "Substitute: −2(−1/2 − 3).",
-        "Inside the brackets: −1/2 − 6/2 = −7/2.",
-        "Multiply: −2 × (−7/2) = 7.",
-        "Check by expanding first: −2x + 6 gives 1 + 6 = 7.",
+        "A number written right before parentheses multiplies everything inside them. Substitute: put $-\\tfrac{1}{2}$ in place of $x$, inside parentheses so its sign stays with it. This gives $-2(-\\tfrac{1}{2} - 3)$.",
+        "Work inside the parentheses first. To subtract 3 from a number of halves, write 3 as halves: $3 = \\tfrac{6}{2}$. Then $-\\tfrac{1}{2} - \\tfrac{6}{2} = -\\tfrac{7}{2}$.",
+        "Multiply: $-2 \\times (-\\tfrac{7}{2})$. A negative times a negative is positive, and $2 \\times \\tfrac{7}{2} = 7$. So the value is 7.",
+        "Check another way by distributing first, which means multiplying the outside number by each part inside: $(-2) \\times x = -2x$ and $(-2) \\times (-3) = 6$, so $-2(x - 3) = -2x + 6$. At $x = -\\tfrac{1}{2}$, $-2 \\times (-\\tfrac{1}{2}) = 1$, and $1 + 6 = 7$. Both routes give 7.",
       ],
       answer: "7",
     },
@@ -54,17 +59,19 @@ export const algebraLessons: Lesson[] = [
         stage: "formal",
         title: "The precise rule",
         paragraphs: [
-          "Substitution replaces every occurrence of a variable by the same input. The distributive property gives $a(b+c)=ab+ac$ for all real $a$, $b$ and $c$. Like terms have the same variable part and combine by adding their coefficients. Each rewrite preserves the expression's value for every input.",
+          "To substitute a number for a variable, replace every copy of that variable with the same number.",
+          "Writing letters side by side, as in $ab$, means multiply. The distributive property says $a(b + c) = ab + ac$. The rule holds for all real numbers $a$, $b$ and $c$: every number on the number line (a line with evenly spaced marks for numbers), including fractions and negatives.",
+          "Like terms have the same variable part, and they combine by adding their coefficients, the numbers multiplying the variable. Each of these rewrites keeps the expression's value the same for every value of the variable.",
         ],
       },
     ],
     pitfalls: [
-      "Distributing to only the first term changes the expression.",
-      "Adding a constant to an $x$ coefficient mixes unlike quantities.",
-      "One successful numerical check cannot prove two expressions agree for every input.",
+      "Multiply the outside number by every term inside. $3(x + 5)$ is $3x + 15$, not $3x + 5$.",
+      "When combining parts, never add a constant (a number with no letter) to a coefficient (the number multiplying a letter). In $5x + 2$, the 2 is not a number of $x$'s, so the expression is not $7x$.",
+      "One number check cannot prove that two expressions are equal for every value. Two different expressions can still agree at one value of $x$.",
     ],
     parentGuide:
-      "Ask for two routes to the same value: substitute first and expand first. Have the learner explain why each route preserves the expression. Use a different signed input to test a suspected mistake.",
+      "Ask for two routes to the same value. First put the number in for $x$ right away. Then multiply into the parentheses first, and put the number in after. Have the learner explain why each route keeps the value the same. If an answer looks wrong, test both expressions with a negative value of $x$.",
   },
   {
     id: "equations-preserve-equality",

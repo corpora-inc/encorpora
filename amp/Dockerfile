@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1.7
-# AMP: one build, two images. `api` runs the Fastify server, its migrations
-# and its scheduled jobs; `web` serves the built browser app.
+# AMP: one build, three images. `api` runs the Fastify server, its migrations
+# and its scheduled jobs; `web` serves the built browser app; `render` is the
+# internal HTML-to-PDF service for workbooks (src/render-service).
 ARG NODE_IMAGE=node:22.23.4-bookworm-slim@sha256:5991875dfb80938dd8a6ba3fe3e96fd04929e70792762b3319d8caadbbe229bc
 
 FROM ${NODE_IMAGE} AS node-base
@@ -48,6 +49,31 @@ COPY . .
 # The release directory is outside the cache mount and contains delivery files only.
 RUN --mount=type=cache,id=amp-pdf-build-v1,target=/app/artifacts,sharing=locked \
     node_modules/.bin/tsx scripts/build-pdf-release.ts /app/pdf-release
+
+# The render service is one bundled file plus playwright-core (no other
+# dependencies), so its image carries Node, Chromium and nothing else.
+FROM dependencies AS render-build
+COPY src/render-service ./src/render-service
+RUN node_modules/.bin/esbuild src/render-service/main.ts --bundle --platform=node \
+      --format=esm --target=node22 --external:playwright-core --outfile=/out/main.mjs
+
+FROM node-base AS render
+ENV NODE_ENV=production PLAYWRIGHT_BROWSERS_PATH=/opt/amp-playwright \
+    AMP_RENDER_HOST=0.0.0.0 AMP_RENDER_PORT=8080 HOME=/tmp
+WORKDIR /app
+COPY --from=dependencies /app/node_modules/playwright-core ./node_modules/playwright-core
+# The browser build matches this playwright-core exactly; system libraries and
+# fonts come with it. Pages print the same as the publication PDFs.
+RUN node node_modules/playwright-core/cli.js install --with-deps --only-shell chromium \
+    && rm -rf /var/lib/apt/lists/* /tmp/*
+COPY --from=render-build /out/main.mjs ./main.mjs
+RUN printf '{"type":"module"}\n' > package.json
+# Non-root; writes only to /tmp (mount a tmpfs with a read-only root).
+USER 65532:65532
+EXPOSE 8080
+HEALTHCHECK --interval=30s --timeout=6s --start-period=20s --retries=3 \
+  CMD ["node", "-e", "fetch('http://127.0.0.1:'+(process.env.AMP_RENDER_PORT||8080)+'/healthz').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"]
+CMD ["node", "main.mjs"]
 
 FROM node-base AS api
 ENV NODE_ENV=production AMP_HOST=0.0.0.0 AMP_PORT=8080
