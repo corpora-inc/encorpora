@@ -360,15 +360,18 @@ export function generateExtendedProblem(
         b === d
           ? `Both equations have $${b}y$. Subtract one equation from the other to remove $y$.`
           : `To remove $y$, make its coefficients match: multiply the first equation by ${d} and the second by ${b}, then subtract.`;
+      // With equal y coefficients no scaling is needed.
+      const m1 = b === d ? 1 : d,
+        m2 = b === d ? 1 : b;
       explanation = [
         `A system is two equations that share the same $x$ and $y$. The solution is the pair that makes both true.`,
         `To find $x$, remove $y$ first. This method is called elimination: make the $y$ terms equal, then subtract one equation from the other.`,
         b === d
           ? `Both equations already have $${b === 1 ? "" : b}y$, so no multiplying is needed.`
           : `Multiply every term of the first equation by ${d}: ${a * d}x + ${b * d}y = ${e * d}. Multiply every term of the second by ${b}: ${b * c}x + ${b * d}y = ${b * f}.`,
-        `Now both have $${b * d === 1 ? "" : b * d}y$. Subtract the second equation from the first, left side from left side and right from right. The $y$ terms cancel.`,
-        `That leaves (${a * d} − ${b * c})x = ${e * d} − (${b * f}), so ${a * d - b * c}x = ${e * d - b * f}.`,
-        `Divide both sides by ${a * d - b * c}: x = ${answer}.`,
+        `Now both have $${b * m1 === 1 ? "" : b * m1}y$. Subtract the second equation from the first, left side from left side and right from right. The $y$ terms cancel.`,
+        `That leaves (${a * m1} − ${c * m2})x = ${e * m1} − (${f * m2}), so ${a * m1 - c * m2}x = ${e * m1 - f * m2}.`,
+        `Divide both sides by ${a * m1 - c * m2}: x = ${answer}.`,
         `The solution has x = ${answer}.`,
       ];
       break;

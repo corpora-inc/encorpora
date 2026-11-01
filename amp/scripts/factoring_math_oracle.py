@@ -230,7 +230,8 @@ def review_explanation(problem):
     chains = sum(review_equalities(step) for step in steps)
     require(chains >= 2, 'Factoring explanation lacks explicit equality steps')
     labels = {option['id']: option['label'] for option in public['response']['options']}
-    require(labels[key] in ' '.join(steps), 'Explanation omits the factored answer')
+    # The closing summary restates the answer; the derivation before it must reach it too.
+    require(labels[key] in ' '.join(steps[:-1]), 'Explanation omits the factored answer')
     feedback = problem.get('choiceFeedback', {})
     require(set(feedback) == set(labels)-{key}, 'Missing or extraneous choice feedback')
     for option, text in feedback.items():

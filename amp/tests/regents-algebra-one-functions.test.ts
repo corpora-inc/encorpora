@@ -232,3 +232,21 @@ test("negative output: the factoring step names numbers that add to the middle c
     assert.equal(Number(claim![1]), b, text);
   }
 });
+
+test("linear-system-x elimination steps match the equations when the y coefficients are already equal", () => {
+  let checked = 0;
+  for (let i = 0; i < 400; i++) {
+    const p = generateProblem("linear-system-x", `elim:${i}`);
+    const m = /(\d+)x \+ (\d+)y = (-?\d+); (\d+)x \+ (\d+)y = (-?\d+)/.exec(
+      p.public.prompt,
+    );
+    if (!m || m[2] !== m[5]) continue;
+    checked++;
+    const [a, c] = [Number(m[1]), Number(m[4])];
+    assert.ok(
+      p.explanation.join(" ").includes(`(${a} − ${c})x`),
+      p.explanation.join(" "),
+    );
+  }
+  assert.ok(checked > 0);
+});

@@ -1076,7 +1076,7 @@ const OPENERS: Record<string, string[]> = {
     "An exponential model multiplies by the same factor at each step. In $f(x)=a\\cdot b^{n}$, $a$ is the starting amount, $b$ is the factor, and the exponent $n$ counts how many times it has been applied.",
   ],
   "sat-entry-fn-exponential": [
-    "Exponential change multiplies by the same factor in each equal period of time. To go back in time, divide by that factor once per period.",
+    "Exponential change multiplies by the same factor in each equal step. To move forward, multiply by the factor once per step; to move back, divide.",
   ],
   "sat-entry-fn-related-value": [
     "You do not need $x$ itself. Look for the expression hidden inside the equation, then find its value directly.",

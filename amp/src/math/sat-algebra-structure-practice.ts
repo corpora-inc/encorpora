@@ -2033,7 +2033,7 @@ const OPENERS: Record<string, string[]> = {
     "You can find the expression without solving for $x$ and $y$. Multiplying whole equations by numbers and adding them keeps them true, because equal amounts added to equal amounts stay equal.",
   ],
   "rate-combination-model": [
-    "A rate is an amount per unit of time, such as liters per minute. Amount = rate × time, so work out what each part of the job contributes.",
+    "A rate is an amount per unit, such as liters per minute or grams of salt per liter. Work out what each part contributes, then combine.",
   ],
   "absolute-compound-inequality": [
     "The absolute value $|x - c|$ is the distance between $x$ and $c$ on the number line. So $|x - c| \\le r$ means $x$ is within $r$ of $c$.",

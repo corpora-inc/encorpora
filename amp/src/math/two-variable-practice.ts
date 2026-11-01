@@ -796,7 +796,7 @@ function parameterSolutionCount(r: Random): Case {
       prompt: `For what value of a does the equation ax${constText(b)} = ${termText(q, "x")}${constText(d)} have no solution?`,
       answer: rat(q),
       explanation: [
-        `An equation has no solution when no value of $x$ makes it true. That happens when the $x$ terms cancel and leave a false statement such as 3 = 5.`,
+        `An equation has no solution when no value of $x$ makes it true. That happens when the $x$ terms cancel and leave two different numbers that would have to be equal.`,
         `Gather the $x$ terms. Subtract ${termText(q, "x")} from both sides: $(a − ${q < 0 ? `(${n(q)})` : q})x${constText(b)} = ${n(d)}$.`,
         `The number in front of $x$, its coefficient, is $a − ${q < 0 ? `(${n(q)})` : q}$. It is 0 exactly when a = ${n(q)}.`,
         `If a = ${n(q)}, the $x$ terms vanish, leaving ${n(b)} = ${n(d)}. That is false, so no $x$ works.`,
