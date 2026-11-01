@@ -30,7 +30,7 @@ export const interceptPointMethods: Record<string, ProblemMethod> = {
     method: [
       "For the $y$-intercept, put $x = 0$ into the equation and solve for $y$. For the $x$-intercept, put $y = 0$ and solve for $x$. On a graph, read where the line meets that axis.",
       "Solve the one-letter equation exactly. Move the plain number to the other side first, then divide by the number multiplying the letter. A fraction stays a fraction.",
-      "Answer in the form asked: a point $(x, y)$ with $x$ first, a zero (the single $x$ value where $y$ is 0), or the sum of the two intercept numbers that are not 0, signs included.",
+      "Answer in the form asked: a point $(x, y)$ with $x$ first, a zero (an $x$ value where $y$ is 0), or the sum of the two intercept numbers that are not 0, signs included.",
     ],
     watch:
       "Do not swap the numbers. A point on the $y$-axis is $(0, y)$, and a point on the $x$-axis is $(x, 0)$.",
@@ -50,7 +50,7 @@ export const interceptPointLessons = [
       id: "intercept-point-lesson",
       title: "Intercepts as ordered pairs",
       summary:
-        "A point on a graph is written $(x, y)$: across first, then up. An intercept is a point where a line crosses an axis. On the $y$-axis every point has $x = 0$, and on the $x$-axis every point has $y = 0$. So to find an intercept, put 0 in for one letter and solve for the other.",
+        "A graph is drawn on two number lines, called axes: the $x$-axis goes across and the $y$-axis goes up and down. A point is written $(x, y)$: across first, then up. An intercept is a point where a line crosses an axis. On the $y$-axis every point has $x = 0$, and on the $x$-axis every point has $y = 0$. So to find an intercept, put 0 in for one letter and find the value of the other.",
       templateIds: ["intercept-point-choice"],
       objectives: [
         "Find where a line crosses the $y$-axis by putting $x = 0$, and where it crosses the $x$-axis by putting $y = 0$.",
@@ -60,7 +60,7 @@ export const interceptPointLessons = [
       opening: [
         "A point is written as an ordered pair $(x, y)$. The first number, $x$, says how far across from the starting point $(0, 0)$, called the origin. The second, $y$, says how far up. Negative numbers mean left or down.",
         "The $y$-axis is the up-and-down line where every point has $x = 0$. A line that is not vertical crosses it at one point, written $(0, b)$. That point is called the $y$-intercept.",
-        "The $x$-axis is the across line where every point has $y = 0$. A line crosses it at $(a, 0)$, called the $x$-intercept. A function is a rule that gives one output $y$ for each input $x$. The number $a$ alone is called a zero of the function: the input that makes the output 0.",
+        "The $x$-axis is the across line where every point has $y = 0$. A line that is not horizontal crosses it at one point, $(a, 0)$, called the $x$-intercept. A function is a rule that gives one output $y$ for each input $x$. For a line that is not vertical, the number $a$ alone is called a zero of the function: the input that makes the output 0.",
       ],
       example: {
         prompt: "Which ordered pair is the $x$-intercept of $3x - 4y = 10$?",

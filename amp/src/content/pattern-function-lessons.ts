@@ -39,7 +39,7 @@ const variableWords: Lesson["sections"][number] = {
   paragraphs: [
     "This lesson uses multiplication, division and the coordinate grid, a grid of squares with numbered lines across and up. A variable is a letter that stands for an amount that can change, such as $t$ for a number of hours or $d$ for a distance in miles.",
     "Often one amount depends on the other. The amount that is chosen or changed freely, like hours spent driving, is called the independent variable. The amount that results, like the distance driven, is called the dependent variable, because it depends on the first. So $t$ is independent and $d$ is dependent, even when you happen to know the distance first.",
-    "A table lists matching values. Each column pairs a value of the independent variable with the dependent value that goes with it. A graph shows each pair as a point: go across to the independent value, then up to the dependent value.",
+    "A table lists matching values, one pair of them in each row (or column) of the table: a value of the independent variable and the dependent value that goes with it. A graph shows each pair as a point: go across to the independent value, then up to the dependent value.",
     "An equation such as $d = 65t$ states the relationship for every pair at once. Here $65t$ means 65 times $t$. The dependent variable stands alone on one side, so the equation reads “$d$ equals 65 times $t$”.",
   ],
 };
@@ -357,7 +357,7 @@ export const patternFunctionLessons: Lesson[] = [
     id: "compare-function-rates",
     title: "Compare two functions",
     summary:
-      "A function is a rule that gives one output for each input. Its rate of change is how much the output changes each time the input goes up by 1. Its initial value is the output when the input is 0, the starting amount. To compare two functions, find these two numbers for each one. They may be shown as a table, a graph, an equation or in words.",
+      "A function is a rule that turns each input (the number you put in) into one output (the number you get back). We compare functions whose output changes by the same amount for every step of 1 in the input. That change is the rate of change. The output when the input is 0, the starting amount, is the initial value. Find these two numbers for each function, whether it is shown as a table, a graph, an equation or in words.",
     templateIds: ["compare-function-rates"],
     includeGeneratedRepresentation: false,
     senses: functionSenses,
@@ -427,7 +427,7 @@ export const patternFunctionLessons: Lesson[] = [
     id: "linear-function-choice",
     title: "Linear or not linear",
     summary:
-      "A function is a rule that gives one output for each input. It is called linear when each step of 1 in the input changes the output by the same amount. Then its graph is a straight line. For $y = 2x + 1$, the outputs go 1, 3, 5, 7: up 2 each time. For $y = x^2$ ($x$ times $x$), they go 0, 1, 4, 9, which is not steady.",
+      "A function is a rule that turns each input (the number you put in) into one output (the number you get back). It is called linear when equal steps in the input always change the output by equal amounts. Then its graph, the picture of all its input and output pairs, is a straight line. For $y = 2x + 1$, the inputs 0, 1, 2, 3 give outputs 1, 3, 5, 7: up 2 each time. For $y = x^2$ ($x$ times $x$), they give 0, 1, 4, 9, which is not steady.",
     templateIds: ["linear-function-choice"],
     includeGeneratedRepresentation: false,
     senses: functionSenses,
@@ -441,7 +441,7 @@ export const patternFunctionLessons: Lesson[] = [
         stage: "intuition",
         title: "Look for a steady climb",
         paragraphs: [
-          "A function gives one output for each allowed input. In a rule such as $y = 3x + 1$, $x$ is the input and $y$ is the output. If every step of 1 in the input changes the output by the same amount, the graph is a straight line. A function like that is called linear.",
+          "A function gives one output for each allowed input. In a rule such as $y = 3x + 1$, $x$ is the input and $y$ is the output. If equal steps in the input always change the output by equal amounts, the graph is a straight line. A function like that is called linear.",
         ],
       },
       functionWords,
@@ -450,7 +450,7 @@ export const patternFunctionLessons: Lesson[] = [
         paragraphs: [
           "In the figure, $y = 2x + 1$ gives 1, 3, 5, 7 at $x = 0, 1, 2, 3$. Each step adds 2, and the points lie on a straight line.",
           "Now take $y = x^2$, read “$x$ squared”, which means $x$ times $x$. It gives 0, 1, 4, 9. The changes are 1, 3 and 5, and they grow, so the points bend upward. Its rate of change is not the same each step, so it is not linear.",
-          "To test a rule, find $y$ at $x = 1$, 2 and 3. Unequal changes prove a rule is not linear. Equal changes are a good sign; then confirm by rewriting the rule as $y = mx + b$. After simplifying, a rule that still has $x$ times $x$, or $x$ in the bottom of a fraction as in $y = \\frac{12}{x}$, is not linear.",
+          "To test a rule, find $y$ at $x = 1$, 2 and 3. Unequal changes prove a rule is not linear. Equal changes are a good sign; then confirm by rewriting the rule as $y = mx + b$. Rules like $y = x \\times x$ and $y = \\frac{12}{x}$ are not linear: equal steps in $x$ give unequal changes in $y$.",
         ],
         illustration: "linear-nonlinear-graph",
       },
@@ -535,12 +535,12 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
     senses: functionSenses,
     noLink: functionNoLink,
     intuition:
-      "A variable is a letter that stands for an amount, such as $t$ for hours or $d$ for miles. The independent variable is the amount you choose or know first. The dependent variable is the one that depends on it, like distance depending on time. In the equation, the dependent variable stands alone on one side, as in $d = 65t$, meaning $d$ is 65 times $t$.",
+      "A variable is a letter that stands for an amount, such as $t$ for hours or $d$ for miles. The independent variable is the amount that is chosen or changed freely, like the hours driven. The dependent variable is the one that depends on it, like distance depending on time. In the equation, the dependent variable stands alone on one side, as in $d = 65t$, meaning $d$ is 65 times $t$.",
     terms: ["independent-variable", "dependent-variable"],
     method: [
       "Name the dependent variable: the amount that depends on the other. It stands alone on one side of the equation.",
-      "In each row, divide the dependent value by the independent value, and also subtract them. Compare each output with its own input.",
-      "Use the answer that is the same in every row: a times rule like $d = 65t$, or a plus rule like $m = b + 4$.",
+      "For each pair, divide the dependent value by the independent value (when it is not 0), and also subtract them. Compare each output with its own input.",
+      "Use the answer that is the same in every row: a times rule like $d = 65t$, or a plus rule like $m = b + 4$. If neither stays the same, test rules that multiply and add, like $y = 2x + 1$.",
     ],
     watch:
       "Test every row. Divide each output by its own input, not by the step between rows.",
@@ -580,7 +580,7 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
     senses: functionSenses,
     noLink: functionNoLink,
     intuition:
-      "A function is a rule that gives one output $y$ for each input $x$. It is called linear when each step of 1 in $x$ changes $y$ by the same amount, so its graph is a straight line. Every linear rule can be written $y = mx + b$, where $mx$ means $m$ times $x$. A rule with $x^2$ ($x$ times $x$) or with $x$ in the bottom of a fraction is not linear.",
+      "A function is a rule that gives one output $y$ for each input $x$. It is called linear when equal steps in $x$ always change $y$ by equal amounts, so its graph is a straight line. Every linear rule can be written $y = mx + b$, where $mx$ means $m$ times $x$. Rules like $y = x^2$ ($x$ times $x$) and $y = \\frac{12}{x}$ are not linear: equal steps in $x$ give unequal changes in $y$.",
     terms: ["linear-function"],
     method: [
       "Rewrite each rule: multiply out parentheses and put the parts in order.",

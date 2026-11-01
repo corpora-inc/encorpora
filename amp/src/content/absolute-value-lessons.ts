@@ -124,7 +124,7 @@ export const absoluteValueLessons: Lesson[] = [
     id: "absolute-value-direct-equation",
     title: "Absolute-value equations: distance from zero",
     summary:
-      "The absolute value of a number is its distance from 0 on the number line. We write it with two bars: $|-3| = 3$. So $|x| = 3$ asks which numbers are 3 steps from 0. There are two, 3 and $-3$. A distance of 0 gives one number, 0. A negative distance gives none, because distances are never negative.",
+      "A number line shows numbers in order, evenly spaced, with 0 in the middle. The absolute value of a number is its distance from 0 on the number line. We write it with two bars: $|-3| = 3$. So $|x| = 3$ asks which numbers are 3 steps from 0. There are two, 3 and $-3$. A distance of 0 gives one number, 0. A negative distance gives none, because distances are never negative.",
     templateIds: ["absolute-value-direct-equation"],
     includeGeneratedRepresentation: false,
     senses,
@@ -183,7 +183,7 @@ export const absoluteValueLessons: Lesson[] = [
     id: "absolute-value-affine-equation",
     title: "Absolute value of a linear expression",
     summary:
-      "The absolute value of a number is its distance from 0, written with bars: $|-5| = 5$. In $|2x - 3| = 5$, the whole amount $2x - 3$ is 5 steps from 0. So $2x - 3 = 5$ or $2x - 3 = -5$. Solve both equations to get $x = 4$ or $x = -1$. Then check both in the original.",
+      "The absolute value of a number is its distance from 0, written with bars: $|-5| = 5$. In $|2x - 3| = 5$, the whole amount $2x - 3$ is 5 steps from 0. Both 5 and $-5$ are 5 steps from 0, so $2x - 3 = 5$ or $2x - 3 = -5$. Add 3 to both sides and divide by 2 in each one: $x = 4$ or $x = -1$. Then check both in the original.",
     templateIds: ["absolute-value-affine-equation"],
     includeGeneratedRepresentation: false,
     senses,
@@ -246,7 +246,7 @@ export const absoluteValueLessons: Lesson[] = [
     id: "absolute-value-transformed-equation",
     title: "Isolate an absolute value before solving",
     summary:
-      "The absolute value of a number is its distance from 0, written with bars: $|-5| = 5$. In $-2|3x - 1| + 4 = -6$, the bars are multiplied by $-2$ and then 4 is added. Undo those outside steps first, so the bars stand alone: $|3x - 1| = 5$. Then solve the two equations $3x - 1 = 5$ and $3x - 1 = -5$. Some equations work for every number, and some for none.",
+      "The absolute value of a number is its distance from 0, written with bars: $|-5| = 5$. In $-2|3x - 1| + 4 = -6$, the bars are multiplied by $-2$ and then 4 is added. Undo those outside steps first, so the bars stand alone: $|3x - 1| = 5$. Both 5 and $-5$ are 5 steps from 0, so solve $3x - 1 = 5$ and $3x - 1 = -5$. Some equations work for every number, and some for none.",
     templateIds: ["absolute-value-transformed-equation"],
     includeGeneratedRepresentation: false,
     senses,

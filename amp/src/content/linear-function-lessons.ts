@@ -45,7 +45,7 @@ const noLink = [
 /** What a function, an input and an output are, said on every screen that
  * needs them. */
 const functionWords =
-  "A function is a rule that gives exactly one output for each input. We often call the input $x$ and the output $y$. We also write $f(x)$, read “$f$ of $x$”: it means the output of the function $f$ when the input is $x$.";
+  "A function is a rule that gives exactly one output for each input. The input is the number you put in, and the output is the number the rule gives back. We often call the input $x$ and the output $y$. We also write $f(x)$, read “$f$ of $x$”: it means the output of the function $f$ when the input is $x$.";
 
 /** Algebra 1: functions and their domains, average rate of change, linear
  * models, formulas, and graphs as solution sets. */
@@ -54,7 +54,7 @@ export const linearFunctionLessons: Lesson[] = [
     id: "domain-and-range",
     title: "Functions, domain and range",
     summary:
-      "A function is a rule that gives each input exactly one output. Think of a vending machine: each button gives one snack. The domain is every input the function accepts. The range is every output it can give. On a graph, read the domain across and the range up and down.",
+      "A function is a rule that gives each input exactly one output. The input is what you put in; the output is what comes out. Think of a vending machine: each button (input) gives one snack (output). The domain is every input the function accepts. The range is every output it can give. On a graph, a picture of all the input-output pairs, read the domain across and the range up and down.",
     templateIds: [
       "graph-domain-range",
       "context-domain-range",
@@ -84,14 +84,14 @@ export const linearFunctionLessons: Lesson[] = [
         paragraphs: [
           "The domain is every $x$ value that has a point on the graph. Read it along the across axis (the $x$-axis), from the left end of the graph to the right end. The range is every $y$ value the graph reaches. Read it along the up-and-down axis (the $y$-axis), from the lowest point to the highest.",
           "A filled dot at an end means that end point is included. An open dot means it is left out. The sign $\\le$ means “less than or equal to”, and $<$ means “less than”.",
-          "The graph shown starts at $(-3, 6)$ with a filled dot and ends at $(4, 2.5)$ with an open dot. So its domain is $-3 \\le x < 4$. Its lowest point is the turning point $(1, -2)$, and its highest is $(-3, 6)$. So its range is $-2 \\le y \\le 6$. The range of a curve is not always set by its ends.",
+          "A point $(-3, 6)$ means 3 left of $(0, 0)$ and 6 up. The graph shown starts at $(-3, 6)$ with a filled dot and ends at $(4, 2.5)$ with an open dot. So its domain is $-3 \\le x < 4$. Its lowest point is the turning point $(1, -2)$, where the graph stops going down and starts going up. Its highest point is $(-3, 6)$. So its range is $-2 \\le y \\le 6$. The range of a curve is not always set by its ends.",
         ],
         illustration: "domain-range-axes",
       },
       {
         title: "Domain and range in a situation",
         paragraphs: [
-          "A formula may accept every number while the real situation does not. Say a van carries at most 12 passengers, who pay 5 dollars each. The fares are $F(p) = 5p$ for $p = 0, 1, 2, \\ldots, 12$. The domain is the whole numbers from 0 to 12, because you cannot have half a passenger. The range is the multiples of 5 from 0 to 60.",
+          "A formula may accept every number while the real situation does not. Say a van carries at most 12 passengers, who pay 5 dollars each. The fare for $p$ passengers is $F(p) = 5p$, for $p = 0, 1, 2$ and so on up to 12. The domain is the whole numbers (0, 1, 2, 3 and so on) from 0 to 12, because you cannot have half a passenger. The range is 0, 5, 10 and so on up to 60.",
           "An amount that changes smoothly, such as time or volume, takes every value in between. A 600-liter tank drains at 25 liters per minute, so the water left is $W(t) = 600 - 25t$. It reaches 0 when $t = 600 ÷ 25 = 24$. Its domain is $0 \\le t \\le 24$ and its range is $0 \\le W \\le 600$.",
         ],
       },
@@ -128,7 +128,7 @@ export const linearFunctionLessons: Lesson[] = [
     id: "average-rate-of-change",
     title: "Average rate of change",
     summary:
-      "A rate of change says how fast one amount changes compared with another, like miles per hour. A curved graph changes at different speeds in different places. The average rate of change between two points is the change in output divided by the change in input. Drive 120 miles in 3 hours and your average is $120 ÷ 3 = 40$ miles per hour, even if you stopped on the way.",
+      "A rate of change says how fast one amount changes compared with another, like miles per hour. On a curved graph (a picture of how one amount depends on another), the change is faster in some places and slower in others. The average rate of change between two points is the change in output (the result) divided by the change in input (what you put in). Drive 120 miles in 3 hours and your average is $120 ÷ 3 = 40$ miles per hour, even if you stopped on the way.",
     templateIds: ["average-rate-formula", "average-rate-display"],
     includeGeneratedRepresentation: false,
     senses,
@@ -151,7 +151,7 @@ export const linearFunctionLessons: Lesson[] = [
         title: "The secant line",
         paragraphs: [
           "Draw the straight line through $A = (1, -2)$ and $B = (4, 7)$. A line like this, through two points of a curve, is called a secant line. It rises 9 while it runs 3 to the right, so its slope is $9 ÷ 3 = 3$. That is the same number as the average rate. The secant is the straight path from $A$ to $B$ at one steady rate.",
-          "The units come from the division. If $h(t)$ is a height in feet after $t$ seconds, the average rate is in feet per second. If $P$ is a population in thousands and $x$ is a year, it is thousands per year. A negative average rate means the output went down over that stretch.",
+          "The units come from the division. If $h(t)$ is a height in feet after $t$ seconds, the average rate is in feet per second. If $P$ is a population in thousands and $x$ is a year, it is thousands per year. Going from the smaller input to the larger, a negative average rate means the output went down overall.",
         ],
         illustration: "average-rate-secant",
       },
@@ -217,7 +217,7 @@ export const linearFunctionLessons: Lesson[] = [
         paragraphs: [
           "To answer a question, write the equation it describes. If the fare was 19 dollars, then $2d + 3 = 19$. Subtract 3 from both sides: $2d = 16$. Divide both sides by 2: $d = 8$ miles.",
           "Two phone plans cost $30 + 12m$ and $6 + 18m$ dollars after $m$ months. They cost the same when $30 + 12m = 6 + 18m$. Subtract $12m$ and 6 from both sides: $24 = 6m$, so $m = 4$ months.",
-          "Words such as “at most” and “no more than” give an inequality, which uses $\\le$, meaning “less than or equal to”. With 25 dollars for the taxi, $2d + 3 \\le 25$, so $2d \\le 22$ and $d \\le 11$. When the letter counts whole things and the limit says “at most”, the answer is the greatest whole number that fits.",
+          "Words such as “at most” and “no more than” give an inequality, which uses $\\le$, meaning “less than or equal to”. With 25 dollars for the taxi, $2d + 3 \\le 25$, so $2d \\le 22$ and $d \\le 11$. If the question asks for the greatest number of whole things under an “at most” limit, the answer is the greatest whole number that fits.",
         ],
       },
     ],
@@ -253,7 +253,7 @@ export const linearFunctionLessons: Lesson[] = [
     id: "rearrange-formulas",
     title: "Rearrange formulas",
     summary:
-      "A formula is an equation that links several amounts with letters, like $P = 2l + 2w$ for a rectangle's perimeter. Sometimes you need a different letter alone on one side. Treat every other letter as a known number. Then undo what was done to your letter, last step first, doing the same thing to both sides.",
+      "A formula is an equation that links several amounts with letters. For example, a rectangle's perimeter, the distance around it, is $P = 2l + 2w$, with length $l$ and width $w$. Sometimes you need a different letter alone on one side. Treat every other letter as a known number. Then undo what was done to your letter, last step first, doing the same thing to both sides.",
     templateIds: ["formula-isolate", "formula-value"],
     includeGeneratedRepresentation: false,
     senses,
@@ -267,7 +267,7 @@ export const linearFunctionLessons: Lesson[] = [
         stage: "intuition",
         title: "Undo in reverse order",
         paragraphs: [
-          "A triangle's area is $A=\\frac{bh}{2}$. Here $b$ is the base, $h$ is the height (both more than 0), and $bh$ means $b$ times $h$. To find $h$ from the others, undo what was done to it. First $h$ was multiplied by $b$, then divided by 2.",
+          "A triangle's area, the amount of flat space inside it, is $A=\\frac{bh}{2}$. Here $b$ is the base (the bottom side), $h$ is the height (the straight-up distance to the top corner), both more than 0, and $bh$ means $b$ times $h$. To find $h$ from the others, undo what was done to it. First $h$ was multiplied by $b$, then divided by 2.",
           "Undo the last step first: multiply both sides by 2 to get $2A=bh$. Then divide both sides by $b$, which is not 0: $h=\\frac{2A}{b}$. Each step can be reversed, so the formula stays true.",
           "In $v=u+at$, $u$ is the starting speed, $v$ is the final speed, $a$ is the change in speed per unit of time, and $t$ is the time that passed. To find $a$ when $t$ is not 0, subtract $u$ from both sides, then divide both sides by $t$: $a=\\frac{v-u}{t}$. The whole difference $v-u$ is divided by $t$, so it goes on top together.",
         ],
@@ -301,7 +301,7 @@ export const linearFunctionLessons: Lesson[] = [
       },
     ],
     pitfalls: [
-      "Divide every term by the number: $\\frac{P - 2l}{2}$ is $\\frac{P}{2} - l$, not $\\frac{P}{2} - 2l$.",
+      "Divide every term (each part joined by + or −) by the number: $\\frac{P - 2l}{2}$ is $\\frac{P}{2} - l$, not $\\frac{P}{2} - 2l$.",
       "Undo the steps in reverse order. In $C = \\frac{5(F - 32)}{9}$, 32 was subtracted first, so to find $F$ you multiply both sides by $\\tfrac{9}{5}$ first and add 32 last.",
       "Keep the division the right way up. From $d = rt$, $t = \\frac{d}{r}$, not $\\frac{r}{d}$.",
     ],
@@ -312,7 +312,7 @@ export const linearFunctionLessons: Lesson[] = [
     id: "graphs-as-solution-sets",
     title: "Graphs as solution sets",
     summary:
-      "An equation with $x$ and $y$, like $2x + 3y = 12$, is true for some pairs of numbers and false for others. Each pair is a point $(x, y)$: across $x$, then up $y$. The graph of the equation is every point that makes it true. So a point is on the graph exactly when its numbers make the equation true.",
+      "An equation with $x$ and $y$, like $2x + 3y = 12$, is true for some pairs of numbers and false for others. Each pair is a point on a grid, such as $(3, 2)$: start where the two number lines cross, at $(0, 0)$, go 3 to the right, then 2 up. The graph of the equation is every point that makes it true. So a point is on the graph exactly when its numbers make the equation true.",
     templateIds: ["solution-point-choice", "solution-coordinate"],
     includeGeneratedRepresentation: false,
     senses,
@@ -362,7 +362,7 @@ export const linearFunctionLessons: Lesson[] = [
     pitfalls: [
       "Put the first number in for $x$ and the second for $y$. $(3, 2)$ and $(2, 3)$ are different points.",
       "Check every point by putting its numbers in. A point that looks close to a line may miss it.",
-      "Square the whole number you put in, sign included: $(-2)^2 = 4$, while $-2^2 = -4$.",
+      "Square the whole number you put in, sign included. Squaring means multiplying a number by itself: $(-2)^2 = (-2) \\times (-2) = 4$, while $-2^2$ means $-(2 \\times 2) = -4$.",
     ],
     parentGuide:
       "Write an equation such as $x + y = 10$. Take turns naming points on its graph and points off it. Then plot the points you named and watch the line appear.",
@@ -379,7 +379,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     method: [
       "For the domain, read along the across axis from the graph's left end to its right end.",
       "For the range, read along the up-and-down axis from the lowest point to the highest. Check any turning point as well as the ends.",
-      "Use $\\le$ at a filled dot and $<$ at an open dot.",
+      "At an end of the graph, use $\\le$ for a filled dot and $<$ for an open dot. For the range, an open dot's height still counts if another point of the graph reaches it.",
     ],
     watch:
       "Match each dot to its own value. On a line that falls to the right, the right end gives the lowest $y$ value.",
@@ -407,7 +407,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     terms: ["function"],
     method: [
       "For a list of pairs, look at the inputs (the first numbers). Find any input that appears with two different outputs.",
-      "For an equation, try one $x$ value and count the $y$ values that make it true. If both $y$ and its negative work, that $x$ has two outputs.",
+      "For an equation, try one $x$ value and count the $y$ values that make it true. If two different $y$ values work, such as 2 and $-2$, that $x$ has two outputs.",
     ],
     watch:
       "A repeated output is allowed. Only an input with two different outputs breaks a function.",
@@ -448,7 +448,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     method: [
       "Name the letter: what it counts, and its units.",
       "Write starting amount + rate $\\times$ letter. Set it equal to the total, or $\\le$ a limit, or equal to a second expression.",
-      "Solve by undoing the steps on both sides, and check the answer in the story. For an “at most” limit, take the greatest whole number that fits; for “at least”, take the least.",
+      "Solve by undoing the steps on both sides, and check the answer in the story. If the question asks for the greatest (or least) whole number that fits a limit, round down (or up) to it.",
     ],
     watch:
       "Add the one-time amount once. Only the amount per unit multiplies the letter.",
@@ -472,7 +472,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "A formula is an equation that links amounts with letters, like $A = \\frac{bh}{2}$ for a triangle's area, where $bh$ means $b$ times $h$. To get one letter alone, treat every other letter as a known number. Then undo what was done to your letter, last step first, doing the same to both sides.",
+      "A formula is an equation that links amounts with letters, like $A = \\frac{bh}{2}$ for a triangle's area $A$, with base $b$ and height $h$; $bh$ means $b$ times $h$. To get one letter alone, treat every other letter as a known number. Then undo what was done to your letter, last step first, doing the same to both sides.",
     method: [
       "Treat every other letter as a known number. List what is done to the chosen letter, in order.",
       "Undo those steps in reverse order, doing the same thing to both sides each time.",
@@ -486,7 +486,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "A formula is an equation that links amounts with letters, like $P = 2l + 2w$ for a rectangle's perimeter. If you know every letter but one, put in the known numbers. Then undo what was done to the unknown, last step first, doing the same to both sides.",
+      "A formula is an equation that links amounts with letters, like $P = 2l + 2w$ for a rectangle's perimeter $P$ (the distance around it), with length $l$ and width $w$. If you know every letter but one, put in the known numbers. Then undo what was done to the unknown, last step first, doing the same to both sides.",
     method: [
       "Put the known values into the formula in place of their letters.",
       "Undo the steps on the unknown in reverse order, on both sides, until it stands alone.",
@@ -499,7 +499,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "A point $(x, y)$ is a pair of numbers: across $x$, then up $y$. The graph of an equation is every point whose numbers make the equation true. So test each point: put its first number in for $x$ and its second for $y$.",
+      "A point $(x, y)$ is a pair of numbers: start at $(0, 0)$, go across $x$ (right if positive, left if negative), then up $y$ (down if negative). The graph of an equation is every point whose numbers make the equation true. So test each point: put its first number in for $x$ and its second for $y$.",
     method: [
       "Put each pair into the equation, the first number for $x$ and the second for $y$.",
       "Keep the pair that makes the equation true. The graph is exactly the set of such points.",
@@ -512,7 +512,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "A point $(x, y)$ is a pair of numbers, called coordinates: across $x$, then up $y$. A point is on the graph of an equation exactly when its numbers make the equation true. So put in the number you know, and solve for the one you do not.",
+      "A point $(x, y)$ is a pair of numbers, called coordinates: start at $(0, 0)$, go across $x$ (right if positive, left if negative), then up $y$ (down if negative). A point is on the graph of an equation exactly when its numbers make the equation true. So put in the number you know, and solve for the one you do not.",
     method: [
       "Put the known coordinate into the equation in place of its letter.",
       "Solve the one-letter equation that is left for the missing coordinate.",

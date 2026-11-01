@@ -68,7 +68,7 @@ export const twoVariableLessons: Lesson[] = [
       {
         title: "Constraints and the feasible region",
         paragraphs: [
-          `A constraint is a limit the answer must meet, written as an inequality. ${signWords}`,
+          `A constraint is a limit the answer must meet. It is written as an inequality: a statement that one amount is less than, greater than, at most or at least another. ${signWords}`,
           "A bakery can bake at most 12 boxes a day, and wants to take in at least 60 dollars. Small boxes sell for 4 dollars and large boxes for 7 dollars. With $x$ small boxes and $y$ large boxes: $x + y \\le 12$ and $4x + 7y \\ge 60$. Also $x \\ge 0$ and $y \\ge 0$, because you cannot bake fewer than 0 boxes.",
           "Each inequality is true on one side of a straight line, called its boundary. The pairs that meet every condition are where all those sides overlap. That overlap is shaded and called the feasible region, the set of possible answers. Boxes come whole, so only the whole-number points in it count here.",
           "$(3, 8)$ is inside it: $3 + 8 = 11$, and $11 \\le 12$. Also $4 × 3 + 7 × 8 = 68$, and $68 \\ge 60$. But $(8, 2)$ is not: $4 × 8 + 7 × 2 = 46$, which is less than 60.",
@@ -81,7 +81,8 @@ export const twoVariableLessons: Lesson[] = [
         "A theater sold 40 tickets for 380 dollars. Adult tickets cost 12 dollars and child tickets cost 7 dollars. How many adult tickets were sold?",
       steps: [
         "Let $a$ be the adult tickets and $c$ the child tickets. One equation for the count and one for the money: $a + c = 40$ and $12a + 7c = 380$.",
-        "From the first equation, $c = 40 - a$. Put that in place of $c$ in the second, so only $a$ is left: $12a + 7(40 - a) = 380$. That is $12a + 280 - 7a = 380$, so $5a = 100$ and $a = 20$.",
+        "Subtract $a$ from both sides of the first equation: $c = 40 - a$. Put that in place of $c$ in the second equation, so only $a$ is left: $12a + 7(40 - a) = 380$. Here $7(40 - a)$ means 7 times the whole amount $40 - a$.",
+        "Multiply the 7 into the parentheses: $7 × 40 = 280$ and $7 × a = 7a$, so $12a + 280 - 7a = 380$. Combine $12a - 7a = 5a$: $5a + 280 = 380$. Subtract 280 from both sides: $5a = 100$. Divide both sides by 5: $a = 20$.",
         "Check both facts. Then $c = 40 - 20 = 20$, and $12 × 20 + 7 × 20 = 240 + 140 = 380$.",
       ],
       answer: "20",
@@ -108,7 +109,7 @@ export const twoVariableLessons: Lesson[] = [
     id: "half-plane-regions",
     title: "Inequalities in two variables",
     summary:
-      "An inequality like $y < 2x - 1$ compares two amounts. It is true for some points $(x, y)$ and false for others. The points where the two sides are equal form a straight line, called the boundary. The points that make it true fill one whole side of that line. Draw the line, then test one point to see which side to shade.",
+      "An inequality compares two amounts. The sign $<$ means “is less than”, so $y < 2x - 1$ says $y$ is less than $2x - 1$. It is true for some points on a grid and false for others; a point $(x, y)$ means go $x$ across, then $y$ up. The points where the two sides are equal form a straight line, called the boundary. The points that make it true fill one whole side of that line. Draw the line, then test one point to see which side to shade.",
     templateIds: ["half-plane-inequality", "inequality-solution-point"],
     includeGeneratedRepresentation: false,
     senses,
@@ -160,13 +161,13 @@ export const twoVariableLessons: Lesson[] = [
       "Do not use $(0, 0)$ as the test point when it lies on the boundary line.",
     ],
     parentGuide:
-      "Draw a line on graph paper. Pick points on both sides and on the line, and sort them as solutions or not for “$y$ is greater than” and “$y$ is at most”. Ask which points change when the line becomes dashed.",
+      "Draw the line $y = x + 1$ on graph paper. Pick points above it, below it and on it. Sort them as solutions or not for $y > x + 1$ and for $y \\le x + 1$. Ask which points change when the line becomes dashed.",
   },
   {
     id: "literal-equations",
     title: "Equations with letters as coefficients",
     summary:
-      "Sometimes the number multiplying $x$ is itself a letter, as in $kx + 7 = 19$. That number is called the coefficient. Solve for $x$ as usual, treating $k$ like a fixed number. One rule matters: you may divide by $k$ only when $k$ is not 0. In an inequality, dividing by a negative $k$ flips the sign.",
+      "Sometimes the number multiplying $x$ is itself a letter, as in $kx + 7 = 19$. That number is called the coefficient. To solve for $x$ means to find the value of $x$ that makes the equation true. Do it as usual, treating $k$ like a fixed number. You may divide by $k$ only when $k$ is not 0. In an inequality, a comparison such as $kx \\ge 6$, dividing by a negative $k$ reverses the comparison: $\\ge$ becomes $\\le$.",
     templateIds: ["literal-equation-solve", "parameter-solution-count"],
     includeGeneratedRepresentation: false,
     senses,
@@ -224,7 +225,7 @@ export const twoVariableLessons: Lesson[] = [
     id: "equation-reasoning",
     title: "Why each step works",
     summary:
-      "Each step in solving an equation needs a reason. There are two safe kinds of step. You can rewrite one side as something equal to it. Or you can do the same thing to both sides, like adding 12. Both keep the same solution. But multiplying both sides by 0 can change the solutions, and dividing by 0 is never allowed.",
+      "A solution of an equation is a number that makes it true. Each step in solving needs a reason that keeps the solution the same. There are two safe kinds of step. You can rewrite one side as something equal to it. Or you can add or subtract the same number on both sides, or multiply or divide both sides by the same number that is not 0. Multiplying both sides by 0 can change the solutions, and dividing by 0 is never allowed.",
     templateIds: ["equation-step-property"],
     includeGeneratedRepresentation: false,
     senses,
@@ -247,7 +248,7 @@ export const twoVariableLessons: Lesson[] = [
       {
         title: "Finding the broken step",
         paragraphs: [
-          "A wrong step changes the solution. Going from $3(x - 4) = 18$ to $3x - 4 = 18$ multiplies only the first part by 3. The lines after it may be done correctly, but they solve the wrong equation: $3x = 22$ and $x = \\frac{22}{3}$.",
+          "A wrong step usually changes the solution. Going from $3(x - 4) = 18$ to $3x - 4 = 18$ multiplies only the first part by 3. The lines after it may be done correctly, but they solve the wrong equation: $3x = 22$ and $x = \\frac{22}{3}$.",
           "To find the error, redo each step from the line above it and compare. Then put the final value into the original equation: $3(\\frac{22}{3} - 4) = 10$, not 18.",
         ],
       },
@@ -266,7 +267,7 @@ export const twoVariableLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "Adding or subtracting the same expression on both sides keeps an equation's solutions, as long as that expression has a value wherever the original does. Multiplying or dividing both sides by the same amount that is never 0 can be undone, so it also keeps them. Multiplying by 0 can add solutions, and dividing by 0 has no meaning. Replacing an expression with an equal one keeps its value.",
+          "Adding or subtracting the same expression on both sides keeps an equation's solutions, as long as that expression has a value wherever the original does. Multiplying or dividing both sides by the same amount can be undone, so it also keeps them, if that amount always has a value and is never 0. Multiplying by 0 can add solutions, and dividing by 0 has no meaning. Replacing an expression with an equal one keeps its value.",
         ],
       },
     ],
@@ -282,7 +283,7 @@ export const twoVariableLessons: Lesson[] = [
     id: "elimination-why",
     title: "Why elimination works",
     summary:
-      "A system is two equations about the same two unknowns, $x$ and $y$. Elimination means adding the two equations so one letter cancels out. In $x + 2y = 7$ and $3x - 2y = 5$, the $2y$ and $-2y$ cancel, leaving $4x = 12$. This never gains or loses a solution, because adding equal amounts to equal amounts keeps them equal.",
+      "A system is two equations about the same two unknowns, $x$ and $y$. Its solution is the pair of values that makes both true. Elimination means adding the two equations, left sides together and right sides together, so one letter disappears. In $x + 2y = 7$ and $3x - 2y = 5$, $2y$ and $-2y$ add to 0, leaving $4x = 12$. Keep one original equation beside this sum, and the solutions stay exactly the same.",
     templateIds: ["elimination-equivalent"],
     includeGeneratedRepresentation: false,
     senses,
@@ -357,7 +358,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
     goal: "Choose the pair of numbers that meets every limit in a story.",
     senses,
     noLink,
-    intuition: `A constraint is a limit that the answer must meet, written as an inequality. ${signWords} A pair $(x, y)$ is feasible, or possible, when it makes every inequality true at once.`,
+    intuition: `A constraint is a limit that the answer must meet. It is written as an inequality: a statement that one amount is less than, greater than, at most or at least another. ${signWords} A pair $(x, y)$ is feasible, or possible, when it makes every inequality true at once.`,
     terms: ["feasible-region"],
     method: [
       "Put the pair into each inequality in turn: the first number for $x$ and the second for $y$.",
@@ -370,14 +371,14 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
     goal: "Read the inequality, or the system of inequalities, that a shaded region on a graph shows.",
     senses,
     noLink,
-    intuition: `${signWords} An inequality in $x$ and $y$ is true for every point on one side of a straight line, called the boundary. A solid boundary line is included ($\\le$ or $\\ge$); a dashed one is not ($<$ or $>$). The shading shows the side that makes it true.`,
+    intuition: `${signWords} A linear inequality, such as $y < 2x - 1$, is true for every point on one side of a straight line, called the boundary. A solid boundary line is included ($\\le$ or $\\ge$); a dashed one is not ($<$ or $>$). The shading shows the side that makes it true.`,
     method: [
       "Name the boundary line from two of its grid points.",
       "Use $\\le$ or $\\ge$ for a solid boundary, and $<$ or $>$ for a dashed one.",
       "Put a shaded point into the inequality to choose which way the sign points.",
     ],
     watch:
-      "Test a point instead of guessing the side from the sign. $y > \\ldots$ is above the line, but for $2x + 3y > \\ldots$ the side depends on the numbers.",
+      "Test a point instead of guessing the side from the sign. With $y$ alone on the left, $y > \\ldots$ is above the line. But $-y > x$ means $y < -x$, which is below the line.",
   },
   "inequality-solution-point": {
     goal: "Choose the point that makes an inequality in $x$ and $y$ true.",
@@ -423,7 +424,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "Each step in solving an equation is one of two kinds. Either one side is rewritten as something equal, by distributing (multiplying a number into parentheses) or by combining like terms (like $5x + 2x = 7x$). Or the same operation is done to both sides. Doing the same to both sides has names, such as the addition property of equality.",
+      "Each step in solving an equation is one of two kinds. Either one side is rewritten as something equal, by distributing (multiplying a number into parentheses) or by combining like terms (like $5x + 2x = 7x$). Or the same number is added to or subtracted from both sides, or both sides are multiplied or divided by the same number that is not 0. Doing the same to both sides has names, such as the addition property of equality.",
     method: [
       "Compare the two lines. Was one side rewritten, or was the same thing done to both sides?",
       "Name it: the distributive property, combining like terms, or the addition, subtraction, multiplication or division property of equality.",

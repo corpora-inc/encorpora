@@ -47,7 +47,7 @@ export const inequalityMethods: Record<string, ProblemMethod> = {
     method: [
       "Distribute: multiply the outside number by each part inside the parentheses, signs included. Then add up the plain numbers on each side.",
       "Subtract the same $x$ term from both sides so $x$ appears on one side only. Then subtract the same number from both sides so the $x$ term stands alone.",
-      "Divide both sides by the number multiplying $x$ (it is not 0). Flip the sign only if that number is negative.",
+      "Divide both sides by the number multiplying $x$. Flip the sign only if that number is negative. If it is 0, $x$ has cancelled: read whether the comparison left is true or false.",
       "Keep the boundary as an exact fraction, not a rounded decimal. Check the boundary and one number inside the solution set.",
     ],
     watch:
@@ -111,7 +111,7 @@ const order: Lesson["sections"][number] = {
   title: "Why a negative divisor flips the sign",
   paragraphs: [
     "Adding the same number to two amounts moves both the same distance along the number line. So their order stays the same. Subtracting works the same way. For example, $2 < 5$, and subtracting 7 from both gives $-5 < -2$. That is still true. A negative result alone does not flip the sign.",
-    "Multiplying by a positive number stretches distances from 0 but keeps left and right in order. Multiplying by a negative number also flips every number to the other side of 0. That reverses the order. For example, $-2 < 3$. Multiply both by $-2$: you get 4 and $-6$, and $4 > -6$. The smaller number became the larger one.",
+    "Multiplying by a positive number can change distances from 0, but it keeps left and right in order. Multiplying by a negative number also flips every number other than 0 to the other side of 0. That reverses the order. For example, $-2 < 3$. Multiply both by $-2$: you get 4 and $-6$, and $4 > -6$. The smaller number became the larger one.",
     "Dividing by a negative number flips the order too. Dividing by $-2$ is the same as multiplying by $-\\tfrac{1}{2}$, which is also negative. The reciprocal of a number (one that is not 0) is the number you multiply it by to get 1, so the reciprocal of $-2$ is $-\\tfrac{1}{2}$. Flip $<$ to $>$, $>$ to $<$, $\\le$ to $\\ge$, or $\\ge$ to $\\le$. Whether the boundary is included stays the same. You can never divide by 0.",
     "A fraction in front of $x$ follows the same rule. In $-\\tfrac{2}{3}x \\le 4$, the number multiplying $x$ is $-\\tfrac{2}{3}$. Multiply both sides by its reciprocal, $-\\tfrac{3}{2}$. That number is negative, so flip $\\le$ to $\\ge$: $x \\ge 4 \\times (-\\tfrac{3}{2}) = -6$.",
   ],
@@ -121,7 +121,7 @@ export const inequalityLessons: Lesson[] = [
     id: "affine-linear-inequality",
     title: "Solve a linear inequality",
     summary:
-      "An inequality, like $-3x + 2 \\le 7$, says one amount is less than or greater than another. Its answer is not one number but a whole stretch of numbers. Solve it like an equation, doing the same step to both sides. The one new rule: dividing both sides by a negative number flips the sign. The answer has a boundary, the number where the two sides are equal, and a direction.",
+      "An inequality compares two amounts. In $-3x + 2 \\le 7$, the sign $\\le$ means “is less than or equal to”. Its answer is not one number but a whole stretch of numbers. Solve it like an equation, doing the same step to both sides. The one new rule: dividing both sides by a negative number reverses the comparison, so $\\le$ becomes $\\ge$. The answer is a boundary number, where the two sides are equal, and the side of it where the numbers work.",
     templateIds: ["affine-linear-inequality"],
     senses: {
       side: "side-of-equation",
@@ -184,7 +184,7 @@ export const inequalityLessons: Lesson[] = [
     id: "grouped-linear-inequality",
     title: "Solve inequalities with parentheses",
     summary:
-      "An inequality compares two amounts with $<$, $>$, $\\le$ or $\\ge$. Some have parentheses and $x$ on both sides, like $-2(2x - 3) + 1 > x + 4.5$. First multiply out the parentheses. Then gather the $x$ terms on one side and the plain numbers on the other. Divide to get $x$ alone, flipping the sign only if you divide by a negative number.",
+      "An inequality compares two amounts. The sign $>$ means “is greater than”. Some inequalities have parentheses, the curved brackets ( ), and $x$ on both sides, like $-2(2x - 3) + 1 > x + 4.5$. A number right before parentheses multiplies everything inside, so multiply that out first. Then gather the parts with $x$ on one side and the plain numbers on the other. Divide to get $x$ alone, reversing the comparison only if you divide by a negative number.",
     templateIds: ["grouped-linear-inequality"],
     senses: {
       side: "side-of-equation",
@@ -252,7 +252,7 @@ export const inequalityLessons: Lesson[] = [
     id: "cancelled-linear-inequality",
     title: "When the variable terms cancel",
     summary:
-      "Sometimes both sides of an inequality have the same amount of $x$, as in $3x + 5 < 3x + 8$. Subtract $3x$ from both sides and $x$ disappears: $5 < 8$. That is true for every number $x$, so every number is a solution. If what is left is false, like $5 > 8$, no number is a solution.",
+      "An inequality compares two amounts: $<$ means “is less than” and $>$ means “is greater than”. Sometimes both sides have the same amount of $x$, as in $3x + 5 < 3x + 8$. Subtract $3x$ from both sides and $x$ disappears: $5 < 8$. That is true whatever $x$ is, so every number is a solution (a number that makes the comparison true). If what is left is false, like $5 > 8$, no number is a solution.",
     templateIds: ["cancelled-linear-inequality"],
     senses: {
       side: "side-of-equation",

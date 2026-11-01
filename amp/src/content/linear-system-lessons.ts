@@ -45,7 +45,7 @@ const noLink = [
 
 /** The words both practice screens need before the generated example. */
 const systemIntuition =
-  "A system of equations is two equations about the same two unknown numbers, $x$ and $y$. An ordered pair $(x, y)$ lists the two numbers, $x$ first and $y$ second. The solution of the system is a pair that makes both equations true at once. The coefficient of a letter is the number multiplying it: in $2x + 3y = 7$ they are 2 and 3.";
+  "A system of equations is two or more equations about the same unknown numbers; here, two equations about $x$ and $y$. An ordered pair $(x, y)$ lists the two numbers, $x$ first and $y$ second. The solution of the system is a pair that makes both equations true at once. The coefficient of a letter is the number multiplying it: in $2x + 3y = 7$ they are 2 and 3.";
 
 export const linearSystemMethods: Record<string, ProblemMethod> = {
   "linear-system-pair": {
@@ -102,7 +102,7 @@ const coordinates = {
   paragraphs: [
     "A coordinate plane is a flat grid made from two number lines, called axes, that cross at a square corner. The across line is the $x$-axis and the up-and-down line is the $y$-axis. They cross at the origin, $(0, 0)$. To find $(2, 3)$, start at the origin, move 2 right, then 3 up. A negative $x$ means move left; a negative $y$ means move down.",
     "A linear equation in $x$ and $y$ looks like $ax + by = c$. Here $a$, $b$ and $c$ are fixed numbers, and $a$ and $b$ are not both 0. The letters are never squared or multiplied together. Every pair that makes one such equation true lies on one straight line. Every point on that line makes the equation true.",
-    "For example, $y = x + 1$ makes $y$ one more than $x$. Its points include $(0, 1)$, $(1, 2)$ and $(2, 3)$. An intersection is a point where two lines cross. That shared point is a pair that makes both equations true.",
+    "For example, $y = x + 1$ makes $y$ one more than $x$. Its points include $(0, 1)$, $(1, 2)$ and $(2, 3)$. An intersection is a point that two lines share. That shared point is a pair that makes both equations true.",
   ],
 };
 
@@ -120,7 +120,7 @@ export const linearSystemPairLesson: Lesson = {
   id: "linear-system-pair",
   title: "Solve two equations together",
   summary:
-    "Two equations can be about the same two unknown numbers, $x$ and $y$. Together they are called a system. Its solution is one pair of numbers, written $(x, y)$ with $x$ first, that makes both equations true. For $y = x + 1$ and $x + y = 5$, the pair $(2, 3)$ works in both. Find one number first by removing the other letter, then find the second.",
+    "Say two numbers add to 5, and the second is 1 more than the first. Call them $x$ and $y$: then $x + y = 5$ and $y = x + 1$. Two equations about the same unknowns like this are called a system. When they have one answer, it is a pair of numbers, written $(x, y)$ with $x$ first, that makes both equations true. Here it is $(2, 3)$. Find one number first by removing the other letter, then find the second.",
   templateIds: ["linear-system-pair"],
   includeGeneratedRepresentation: false,
   senses,

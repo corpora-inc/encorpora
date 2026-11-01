@@ -12,7 +12,7 @@ const entries: WorkEntry[] = [
       "Write the line as $y = mx + b$, called slope-intercept form.",
     ],
     intuition:
-      "The slope of a line says how steep it is: how much $y$ changes for each step of 1 in $x$. A slope of $\\frac{2}{3}$ means the line goes up 2 for every 3 across. A line can be written $y = mx + b$. Here $m$ is the slope, $mx$ means $m$ times $x$, and $b$ is the $y$-intercept, the height where the line crosses the $y$-axis. The slope fixes the steepness but not the place: many parallel lines, lines that never meet, share that slope. One point on the line pins it down. The point's $x$ and $y$ must make $y = \\frac{2}{3}x + b$ true, and only one value of $b$ does that.",
+      "The slope of a line says how steep it is: how much $y$ changes for each step of 1 in $x$. A slope of $\\frac{2}{3}$ means the line goes up 2 for every 3 across. A line that is not vertical can be written $y = mx + b$. Here $m$ is the slope, $mx$ means $m$ times $x$, and $b$ is the $y$-intercept, the height where the line crosses the $y$-axis. The slope fixes the steepness but not the place: many parallel lines, lines that never meet, share that slope. One point on the line pins it down. The point's $x$ and $y$ must make $y = \\frac{2}{3}x + b$ true, and only one value of $b$ does that.",
     terms: ["slope", "y-intercept", "slope-intercept-form"],
     method: [
       "If two points with different $x$ values are given, find the slope: $m = \\frac{y_2 - y_1}{x_2 - x_1}$, the change in $y$ over the change in $x$. The small 1 and 2 mark which point a number comes from. Simplify the fraction.",
@@ -21,7 +21,7 @@ const entries: WorkEntry[] = [
       "Write $y = mx + b$ with your numbers for $m$ and $b$. If there is a second point, check it.",
     ],
     watch:
-      "Start from the same point on the top and the bottom of the slope fraction. Put the point's $x$ in for $x$ and its $y$ in for $y$; swapping them finds a different line.",
+      "Start from the same point on the top and the bottom of the slope fraction. Put the point's $x$ in for $x$ and its $y$ in for $y$; swapping them usually finds a different line.",
     principle:
       "A line with slope $m$ through the point $(x_1, y_1)$ is $y = mx + b$ with $b = y_1 - mx_1$. Exactly one line has a given slope and passes through a given point.",
     example: {
@@ -42,7 +42,7 @@ const entries: WorkEntry[] = [
     formal:
       "The line through $(x_1, y_1)$ with slope $m$ is every point $(x, y)$ with $\\frac{y - y_1}{x - x_1} = m$, together with $(x_1, y_1)$ itself. Solving for $y$ gives $y = mx + (y_1 - mx_1)$, so $b = y_1 - mx_1$.",
     pitfalls: [
-      "To find $b$, subtract the slope times $x$ from $y$. Adding it finds the wrong number.",
+      "To find $b$, subtract the slope times $x$ from $y$. Adding it instead gives the wrong $b$ whenever the slope times $x$ is not 0.",
       "Use the point's $y$ for $y$ and its $x$ for $x$.",
     ],
     parentGuide:
@@ -66,7 +66,7 @@ export const lineFromPointContent = {
     ...l,
     ...glossary,
     summary:
-      "The slope of a line says how steep it is: how much $y$ goes up for each step of 1 to the right. A negative slope means it goes down. A line can be written $y = mx + b$, where $m$ is the slope. The number $b$ is the height where the line crosses the $y$-axis. If you know the slope and one point on the line, put them in and solve for $b$. Then write the equation.",
+      "The slope of a line says how steep it is: how much $y$ goes up for each step of 1 to the right. A negative slope means it goes down. A line that is not vertical can be written $y = mx + b$, where $m$ is the slope. The number $b$ is the height where the line crosses the $y$-axis. If you know the slope and one point on the line, put them in and solve for $b$. Then write the equation.",
   })),
 };
 
