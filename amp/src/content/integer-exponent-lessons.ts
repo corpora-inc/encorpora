@@ -253,11 +253,12 @@ export const integerExponentMethods: Record<string, ProblemMethod> =
       {
         goal: lesson.objectives[1]!,
         terms: [
-          ["base", "The number being raised to a power."],
+          "base-exponent",
           [
-            "integer exponent",
-            "A positive exponent counts factors; zero gives 1 for a nonzero base; a negative exponent takes a reciprocal.",
+            "exponent",
+            "A positive exponent counts factors, and a zero exponent gives 1 for a nonzero base.",
           ],
+          "negative-exponent",
         ],
         method:
           lesson.id === "negative-integer-power"

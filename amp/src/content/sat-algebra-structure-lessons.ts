@@ -6,16 +6,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
     goal: "Given a quadratic with real solutions, find a sum, product or reciprocal sum of them, a coefficient or a solution, without solving both.",
     intuition:
       "A quadratic equation $ax^2+bx+c=0$ has solutions $p$ and $q$ exactly when it can be written $a(x-p)(x-q)=0$. Multiplying that out shows how the coefficients $b$ and $c$ are built from $p$ and $q$, so the coefficients tell you the sum and product of the solutions directly.",
-    terms: [
-      [
-        "solution",
-        "A number that makes the equation true when it replaces $x$.",
-      ],
-      [
-        "coefficient",
-        "The number multiplying a power of $x$: $a$ for $x^2$, $b$ for $x$; $c$ is the constant term.",
-      ],
-    ],
+    terms: ["solution", "coefficient"],
     method: [
       "Write the equation as $ax^2+bx+c=0$ and read $a$, $b$ and $c$ with their signs.",
       "The solutions $p$ and $q$ satisfy $p+q=-\\frac{b}{a}$ and $pq=\\frac{c}{a}$.",
@@ -30,14 +21,8 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
     intuition:
       "If two equations are true, then multiplying each by a number and adding the results gives another true equation. When the left side of that new equation is the expression you want, its right side is the answer. You never need $x$ or $y$ alone.",
     terms: [
-      [
-        "combination of equations",
-        "Multiply each equation by a number, then add the left sides and add the right sides.",
-      ],
-      [
-        "multiplier",
-        "The number that multiplies one whole equation, both sides.",
-      ],
+      "linear-combination",
+      ["multiplier", "Here it multiplies both sides of a whole equation."],
     ],
     method: [
       "Compare the requested expression's $x$ coefficient with those in the equations and find multipliers $u$ and $v$ that build it.",
@@ -53,15 +38,12 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
     intuition:
       "Two quantities vary directly when one is always the same multiple of the other: doubling one doubles the other. They vary inversely when their product stays the same: doubling one halves the other. In either case one number, the constant of variation, describes the whole relationship.",
     terms: [
+      "proportional-relationship",
+      "inverse-variation",
       [
-        "varies directly",
-        "$y=kx$ for one constant $k\\ne0$; the ratio $y/x$ is always $k$.",
+        "constant-of-proportionality",
+        "For $y = \\frac{k}{x}$ (inverse variation), $k$ is the product $xy$ instead.",
       ],
-      [
-        "varies inversely",
-        "$y=\\frac{k}{x}$ for one constant $k\\ne0$; the product $xy$ is always $k$.",
-      ],
-      ["constant of variation", "The fixed number $k$ in either equation."],
     ],
     method: [
       "Decide the kind from the wording, or from a table: a constant ratio $y/x$ means direct, a constant product $xy$ means inverse.",
@@ -76,17 +58,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
     goal: "Combine constant rates: shared work, filling with a drain, mixing solutions, average speed over equal distances, or a rate that changes.",
     intuition:
       "A rate says how much happens per unit of time, such as $\\frac15$ of a job per hour. Rates working together add, and a rate working against another subtracts. Times and speeds do not add or average that way, so convert to rates or to totals first.",
-    terms: [
-      [
-        "rate",
-        "The amount done per unit of time, for example jobs per hour or liters per minute.",
-      ],
-      [
-        "concentration",
-        "The part of a mixture that is the named substance, such as 20% salt means $0.20$ of the mixture's volume is salt.",
-      ],
-      ["average speed", "Total distance divided by total time."],
-    ],
+    terms: ["rate", "concentration", "average-speed"],
     method: [
       "Name what is being measured and write each given as an amount per unit time, or as an amount of the pure substance.",
       "Combine: add rates working together and subtract a rate working against; add the amounts of pure substance in a mixture; add distances and add times for a trip.",
@@ -100,16 +72,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
     goal: "Choose the solution set of an absolute-value or compound inequality, or the inequality that describes a set on a number line.",
     intuition:
       'The absolute value $|E|$ is the distance of $E$ from 0. So $|E|<c$ means $E$ is closer than $c$ to 0, between $-c$ and $c$. And $|E|>c$ means $E$ is farther than $c$, either below $-c$ or above $c$. A compound inequality joins two conditions with "and" (both true) or "or" (at least one true).',
-    terms: [
-      [
-        "absolute value",
-        "$|E|$ is the distance of $E$ from 0 on the number line, never negative.",
-      ],
-      [
-        "compound inequality",
-        'Two inequalities joined by "and" (a chain such as $2<3x+1<10$) or "or".',
-      ],
-    ],
+    terms: ["absolute-value", "compound-inequality"],
     method: [
       "For $|E|<c$ with $c>0$, write $-c<E<c$. For $|E|>c$, write $E<-c$ or $E>c$.",
       "Solve every part of the chain, or each case, by the same steps; reverse an inequality sign whenever you multiply or divide by a negative number.",
@@ -123,17 +86,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
     goal: "Choose the quadratic equation fixed by two zeros and a point, a vertex and a point, a table with equal steps, or three points.",
     intuition:
       "A quadratic has three unknowns, so three facts fix it. Zeros point to a factored form, a vertex points to vertex form, and a table or points point to the standard form $y=ax^2+bx+c$. In each form, one fact is used for the shape and one point is used to find the stretch $a$.",
-    terms: [
-      ["zero", "An $x$-value where $y=0$, also an $x$-intercept."],
-      [
-        "vertex",
-        "The turning point of the parabola, its highest or lowest point.",
-      ],
-      [
-        "second difference",
-        "For $x$-values equally spaced, subtract consecutive $y$-values to get first differences, then subtract those; for a quadratic it is constant.",
-      ],
-    ],
+    terms: ["zero-of-a-function", "vertex-parabola", "second-difference"],
     method: [
       "Choose the form that matches the given facts: $y=a(x-p)(x-q)$ for zeros $p$ and $q$, $y=a(x-h)^2+k$ for vertex $(h,k)$, or $y=ax^2+bx+c$ for a table or points.",
       "Substitute the extra point into that form and solve for $a$. For a table with equal steps $h$, use $a=\\frac{\\text{second difference}}{2h^2}$.",

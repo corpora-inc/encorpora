@@ -7,16 +7,7 @@ export const oneStepResultMethods: Record<string, ProblemMethod> = {
     goal: "Choose the equation that results from one inverse step done to both sides of a two-step equation.",
     intuition:
       "An equation is a balance. To keep it balanced, whatever is done to one side is done to the other, and to every term on that side. One step removes one operation: a constant, a factor outside parentheses, or a division.",
-    terms: [
-      [
-        "inverse operation",
-        "The operation that undoes another: subtraction undoes addition, and division undoes multiplication.",
-      ],
-      [
-        "equivalent equations",
-        "Equations that have the same solution, such as $2x+3=11$ and $2x=8$.",
-      ],
-    ],
+    terms: ["inverse-operation", "equivalent-equations"],
     method: [
       "Find the operation to undo: the constant added to the variable term, the factor outside the parentheses, or the number dividing $x$.",
       "Do the opposite operation to both entire sides, to every term on a side that has several terms.",
@@ -30,13 +21,10 @@ export const oneStepResultMethods: Record<string, ProblemMethod> = {
     intuition:
       "The order of operations says which operation is done first: parentheses, then multiplication and division, then addition and subtraction. Doing only the first step rewrites one part of the expression and leaves the rest as it was.",
     terms: [
+      "order-of-operations",
       [
-        "order of operations",
-        "The agreed order for evaluating: parentheses, then multiplication and division, then addition and subtraction.",
-      ],
-      [
-        "first step",
-        "The single operation done before any other, with everything else copied unchanged.",
+        "order-of-operations",
+        "The first step is the one operation done first; everything else is copied unchanged.",
       ],
     ],
     method: [
@@ -51,16 +39,7 @@ export const oneStepResultMethods: Record<string, ProblemMethod> = {
     goal: "Choose the equivalent expression after a stated number, positive or negative, is factored out of a linear expression.",
     intuition:
       "Factoring out a number reverses distributing. If every term of an expression is a multiple of the same number, the number can be written once in front, and each term is divided by it inside parentheses.",
-    terms: [
-      [
-        "factor out",
-        "Write a common factor in front of parentheses and divide every term by it inside.",
-      ],
-      [
-        "common factor",
-        "A number that divides every term of an expression exactly.",
-      ],
-    ],
+    terms: ["factor-out", "common-factor"],
     method: [
       "Divide every term of the expression by the stated factor, keeping each sign.",
       "Write the factor, then the quotients inside parentheses.",
@@ -73,16 +52,7 @@ export const oneStepResultMethods: Record<string, ProblemMethod> = {
     goal: "Choose the list of properties that justifies each line of a shown linear equation solution.",
     intuition:
       "Each line of a solution follows from the line before it by one property. Naming the property says why the step keeps the same solution: equal operations on both sides keep an equation balanced, and the distributive property rewrites a product without changing its value.",
-    terms: [
-      [
-        "property of equality",
-        "A rule saying that adding, subtracting, multiplying or dividing both sides of an equation by the same number gives an equivalent equation.",
-      ],
-      [
-        "distributive property",
-        "$a(b+c)=ab+ac$: multiplying a group is the same as multiplying each term.",
-      ],
-    ],
+    terms: ["property-of-equality", "distributive-property"],
     method: [
       "Compare two neighbouring lines and decide what changed: a group was multiplied out, or the same number was added, subtracted, multiplied or divided on both sides.",
       "Name that property, using the opposite operation of the one that was undone.",

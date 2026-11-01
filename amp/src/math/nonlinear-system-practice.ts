@@ -84,18 +84,27 @@ export function nonlinearSystemCase(id: string, seed: string) {
   const reduced = `${termText(a, "x^2")}${termText(B, "x", false)}${constText(C)}`;
   const explanation = counting
     ? [
-        `At a shared point both expressions equal $y$, so $${quadratic} = ${line}$. Subtract the line's expression to obtain $${reduced} = 0$.`,
-        `For $Ax^2 + Bx + C = 0$, the discriminant is $B^2 - 4AC$. Here it is $${p(B)}^2 - 4 \\cdot ${p(a)} \\cdot ${p(C)} = ${n(discriminant)}$.`,
-        `${discriminant > 0 ? "A positive discriminant gives two distinct real roots" : discriminant === 0 ? "A zero discriminant gives one repeated real root" : "A negative discriminant gives no real roots"}. Each real $x$ gives exactly one $y$ on the line, so the system has ${count} distinct real solutions.`,
+        `A solution of the system is a point on both graphs: the parabola and the line. There both equations give the same $y$.`,
+        `So set the two right sides equal: $${quadratic} = ${line}$. Subtract the line's expression from both sides: $${reduced} = 0$.`,
+        `Each real solution $x$ of this quadratic is one crossing point. To count them without solving, use the discriminant.`,
+        `For $Ax^2 + Bx + C = 0$, the discriminant is $B^2 - 4AC$, the part under the square root in the quadratic formula. Here it is $${p(B)}^2 - 4 \\cdot ${p(a)} \\cdot ${p(C)} = ${n(discriminant)}$.`,
+        discriminant > 0
+          ? `It is positive, so the square root gives two different values and there are two real roots.`
+          : discriminant === 0
+            ? `It is zero, so plus and minus the root give the same value: one real root. The line just touches the parabola.`
+            : `It is negative, and a negative number has no real square root. So there are no real roots: the line misses the parabola.`,
+        `Each real $x$ gives exactly one $y$ on the line, so the system has ${count} distinct real ${count === 1 ? "solution" : "solutions"}.`,
       ]
     : [
-        `At an intersection the two values of $y$ agree: $${quadratic} = ${line}$. Subtract to get $${reduced} = 0$.`,
+        `A solution of the system is a point on both graphs: the parabola and the line. There both equations give the same $y$.`,
+        `So set the two right sides equal: $${quadratic} = ${line}$. Subtract the line's expression from both sides: $${reduced} = 0$.`,
         `Factor: $${a === 1 ? "" : n(a)}(x${constText(-left)})(x${constText(-right)}) = 0$. A product is zero only when a factor is zero, so $x = ${n(left)}$ or $x = ${n(right)}$.`,
-        `Substitute each into $y = ${line}$: the shared points are $\\left(${n(left)}, ${n(m * left + b)}\\right)$ and $\\left(${n(right)}, ${n(m * right + b)}\\right)$. The requested coordinate is ${n(answer)}.`,
+        `Find each $y$ by putting $x$ into the simpler equation, $y = ${line}$. The shared points are $\\left(${n(left)}, ${n(m * left + b)}\\right)$ and $\\left(${n(right)}, ${n(m * right + b)}\\right)$.`,
+        `The ${small ? "smaller" : "larger"} $x$-coordinate is ${n(selected)}. So the requested $${coordinate}$-coordinate is ${n(answer)}.`,
       ];
   if (reading)
     explanation.unshift(
-      `On the graph, find the shared points $\\left(${n(left)}, ${n(m * left + b)}\\right)$ and $\\left(${n(right)}, ${n(m * right + b)}\\right)$. Choose the ${small ? "left" : "right"} crossing for the ${small ? "smaller" : "larger"} horizontal coordinate. The algebra below checks these readings.`,
+      `On the graph, find where the line crosses the parabola: $\\left(${n(left)}, ${n(m * left + b)}\\right)$ and $\\left(${n(right)}, ${n(m * right + b)}\\right)$. The ${small ? "smaller" : "larger"} $x$-coordinate is the ${small ? "left" : "right"} crossing. The algebra below checks these readings.`,
     );
   const scene = reading
     ? graph({ id: "g", x: [-5, 7], y: [-12, 12], grid: [1, 2], tick: [1, 2] })

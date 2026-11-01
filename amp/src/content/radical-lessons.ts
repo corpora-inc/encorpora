@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -269,14 +270,14 @@ export const radicalLessons: Lesson[] = [
   },
 ];
 
-const terms: [string, string][] = [
-  ["Square root", "The nonnegative number whose square is the given radicand."],
-  ["Radicand", "The number under a root sign."],
+const terms: MethodTerm[] = [
+  "square-root",
+  "radicand",
+  "coefficient",
   [
-    "Coefficient",
-    "The number multiplying a radical term; an omitted coefficient is 1.",
+    "simplest-radical-form",
+    "Square-free means having no whole-number square factor greater than 1.",
   ],
-  ["Square-free", "Having no whole-number square factor greater than 1."],
 ];
 export const radicalMethods: Record<string, ProblemMethod> = {
   "simplify-square-root": {
@@ -311,11 +312,7 @@ export const radicalMethods: Record<string, ProblemMethod> = {
   },
   "rationalize-radical-denominator": {
     goal: "Write an equivalent simplified fraction with a rational denominator.",
-    terms: [
-      ...terms,
-      ["Denominator", "The nonzero quantity below a fraction bar."],
-      ["Rational number", "A quotient of integers with a nonzero denominator."],
-    ],
+    terms: [...terms, "denominator", "rational-number"],
     method: [
       "Simplify the root in the denominator.",
       "Multiply numerator and denominator by the remaining square root.",

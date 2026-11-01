@@ -67,16 +67,10 @@ export const studyDesignLesson: Lesson = {
 export const studyDesignMethod: ProblemMethod = {
   goal: "Match the conclusion to how participants were selected and treatments were allocated.",
   terms: [
-    ["population", "The entire group the study aims to describe."],
-    ["random sampling", "Chance selects a sample from a defined population."],
-    [
-      "random assignment",
-      "Chance allocates treatments to participants already in the study.",
-    ],
-    [
-      "causal inference",
-      "A conclusion that changing a treatment changes an outcome.",
-    ],
+    "population",
+    "random-sample",
+    "random-assignment",
+    "causal-inference",
   ],
   method: [
     "Name the population and identify how participants entered the study. Random sampling supports generalizing to that population, with uncertainty.",

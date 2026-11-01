@@ -13,20 +13,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "Triangles with the same angles have the same shape, one a scaled copy of the other. Two angles are enough, because the third angle is what is left of $180^\\circ$. A proof collects those two pairs of angles one line at a time, states the similarity, and only then reads off the ratio of sides.",
-    terms: [
-      [
-        "similar triangles",
-        "Triangles whose corresponding angles are congruent and whose corresponding sides are in the same ratio.",
-      ],
-      [
-        "AA",
-        "If two angles of one triangle are congruent to two angles of another, the triangles are similar.",
-      ],
-      [
-        "corresponding sides",
-        "Sides that join corresponding vertices, such as $AD$ and $AB$ when $A$ matches $A$ and $D$ matches $B$.",
-      ],
-    ],
+    terms: ["similar-figures", "aa-similarity", "corresponding"],
     method: [
       "Write the givens first, each with the reason Given.",
       "Add one line for each pair of congruent angles: right angles from perpendicular segments, corresponding angles from parallel lines, or the angle both triangles share (reflexive property).",

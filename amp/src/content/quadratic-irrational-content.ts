@@ -4,18 +4,7 @@ import { act, f, graph, step } from "../math/scene/author";
 
 export const quadraticIrrationalMethod: ProblemMethod = {
   goal: "Find both real roots of a quadratic in exact radical form.",
-  terms: [
-    ["quadratic", "An equation $ax^2 + bx + c = 0$ with $a \\ne 0$."],
-    ["root", "A value of $x$ that makes the equation true."],
-    [
-      "discriminant",
-      "The quantity $D = b^2 - 4ac$ under the square root in the quadratic formula.",
-    ],
-    [
-      "plus or minus",
-      "The symbol $\\pm$ requests both the plus case and the minus case.",
-    ],
-  ],
+  terms: ["quadratic", "root-equation", "discriminant", "plus-or-minus"],
   method: [
     "Read the signed coefficients $a$, $b$ and $c$ after writing the equation equal to zero.",
     "Compute $D = b^2 - 4ac$, then substitute into $x = \\frac{-b \\pm \\sqrt{D}}{2a}$.",

@@ -17,7 +17,7 @@ export function WorkbookList({
 }: {
   session: AuthSession;
   learnerId: string;
-  query: UseQueryResult<{ workbooks: WorkbookSummary[] }>;
+  query: UseQueryResult<{ workbooks: WorkbookSummary[]; pdf: boolean }>;
   showDates?: boolean;
 }) {
   const [downloading, setDownloading] = useState<string | null>(null);
@@ -26,7 +26,13 @@ export function WorkbookList({
     setMessage("");
     setDownloading(workbook.id);
     try {
-      await downloadWorkbook(session, learnerId, workbook, workbook.paper);
+      await downloadWorkbook(
+        session,
+        learnerId,
+        workbook,
+        workbook.paper,
+        query.data?.pdf ?? false,
+      );
     } catch (error) {
       setMessage(
         workbookMessage(error, "The workbook didn't download. Try again."),

@@ -13,10 +13,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A fraction, a decimal and a percent can name the same amount. The fraction $\\frac{3}{8}$ means 3 divided by 8, which is 0.375. A percent means out of 100, so 0.375 is 37.5 hundredths of the whole, written 37.5%. To go from a decimal to a percent, multiply by 100, which moves the decimal point two places to the right.",
-    terms: [
-      ["decimal", "A number written with a decimal point, such as 0.375."],
-      ["percent", "A number out of 100, written with the sign %."],
-    ],
+    terms: ["decimal", "percent"],
     method: [
       "Divide the numerator by the denominator to find the decimal.",
       "Multiply the decimal by 100, moving the point two places right, to find the percent.",
@@ -60,14 +57,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A mixed number has a whole part and a fraction part. The digits left of the decimal point give the whole part. The digits right of it are tenths if there is one digit and hundredths if there are two: 3.7 is 3 and $\\frac{7}{10}$, and 4.25 is 4 and $\\frac{25}{100}$. The denominator is 10 or 100 because the places are tenths and hundredths.",
-    terms: [
-      [
-        "mixed number",
-        "A whole number and a fraction together, such as $3\\frac{7}{10}$.",
-      ],
-      ["tenths", "Parts of a whole cut into 10 equal parts."],
-      ["hundredths", "Parts of a whole cut into 100 equal parts."],
-    ],
+    terms: ["mixed-number", "tenth", "hundredth"],
     method: [
       "Write the whole number from the left of the point.",
       "Write the digits right of the point as the numerator.",
@@ -111,13 +101,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "Solving an inequality works like solving an equation, with one change. Multiplying or dividing both sides by a negative number reverses the order: $2<5$ but $-2>-5$. So in $-3x>12$, dividing both sides by $-3$ gives $x<-4$, with the symbol turned around. First undo any added or subtracted constant, then divide.",
-    terms: [
-      [
-        "coefficient",
-        "The number multiplying the variable, such as $-3$ in $-3x$.",
-      ],
-      ["solution", "All values of the variable that make the inequality true."],
-    ],
+    terms: ["coefficient", "solution-set"],
     method: [
       "Add or subtract to get the term with $x$ alone on one side.",
       "Divide both sides by the coefficient of $x$.",
@@ -161,13 +145,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "A conversion factor such as 1 yard is about 0.9 meter says that yards and meters are in the ratio $1:0.9$. To convert 40 yards, write an equal ratio with the same order of units: yards first, meters second, so $40:x$. The proportion is $1:0.9=40:x$. The key is that each ratio lists yards before meters; mixing the order gives a wrong equation.",
-    terms: [
-      ["proportion", "A statement that two ratios are equal."],
-      [
-        "conversion factor",
-        "A ratio that relates two units, such as 1 yard to 0.9 meter.",
-      ],
-    ],
+    terms: ["proportion", "conversion-factor"],
     method: [
       "Write the conversion factor with the units in the order given.",
       "Write the second ratio with the amount to convert and the unknown, with the same order of units.",
@@ -213,17 +191,11 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "In $P(t)=800(0.94)^t$ the amount after $t$ years is the starting amount times the base multiplied $t$ times. At $t=0$ the power is 1, so the starting amount is 800. Each year the amount is multiplied by 0.94, which is $1-0.06$: it loses 6 percent. A base above 1, such as 1.25, is $1+0.25$ and means growth of 25 percent a year.",
     terms: [
+      ["initial-value", "Here it is $a$ in $a\\cdot b^t$."],
+      "growth-factor",
       [
-        "initial value",
-        "The amount at $t=0$, the number $a$ in $a\\cdot b^t$.",
-      ],
-      [
-        "growth factor",
-        "The base $b$; each period the amount is multiplied by it.",
-      ],
-      [
-        "percent rate",
-        "The change each period as a percent, $|b-1|\\times100$.",
+        "growth-factor",
+        "The percent rate is the change each period as a percent: $|b-1|\\times 100$.",
       ],
     ],
     method: [
@@ -268,14 +240,7 @@ const entries: FormatLessonEntry[] = [
     ],
     intuition:
       "The number $\\pi$ is the same for every circle: the circumference divided by the diameter, about 3.14. To estimate an area, half the diameter gives the radius $r$, and the area is $\\pi r^2$, with 3.14 in place of $\\pi$. A sign 10 feet across has radius 5 feet, and area about $3.14\\times25=78.5$ square feet. Using the diameter in place of the radius would give four times too much.",
-    terms: [
-      ["circumference", "The distance around a circle."],
-      ["diameter", "The distance across a circle through its center."],
-      [
-        "radius",
-        "The distance from the center to the edge: half the diameter.",
-      ],
-    ],
+    terms: ["circumference", "diameter", "radius"],
     method: [
       "Find the radius: divide the diameter by 2.",
       "Multiply 3.14 by the radius twice to find the area.",

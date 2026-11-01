@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -244,9 +245,7 @@ export const addSubtractLessons: Lesson[] = [
   },
 ];
 
-const terms: [string, string][] = [
-  ["Regroup", "Trade 10 of one place for 1 of the next, or the reverse."],
-];
+const terms: MethodTerm[] = ["regroup"];
 export const addSubtractMethods: Record<string, ProblemMethod> = {
   "add-two-digit-regroup": {
     goal: "Given two two-digit numbers, find their sum.",

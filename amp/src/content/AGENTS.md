@@ -39,6 +39,7 @@ The intuition of `quadratic-real-solution-count` (`quadratic-lessons.ts`) starts
 
 ## Writing rules
 
+- Terms are defined once, in the shared glossary (`src/glossary/`, see `docs/glossary.md`). A method's `terms` lists glossary ids, optionally `[id, note]` for this problem's symbols or convention; add a missing term to the glossary rather than defining it locally. Give an ambiguous word (range, mean, product, similar) its sense in `senses`, or list an ordinary use in `noLink`. The glossary does not replace the definition at first use (rule 2).
 - Connect each symbol to the quantity it represents. For fractions, explain the whole, equal parts, numerator, and denominator. For right triangles, explain a triangle, a right angle, the legs, and the hypotenuse.
 - Explain why a method works before turning it into a rule. Show what stays unchanged during a transformation and why the next step is valid. Preserve explicit algebraic and arithmetic steps.
 - Concision removes empty words, repetition without purpose, and motivational filler. It must not remove definitions, reasoning, intermediate steps, useful comparisons, or checks. Use enough space to make the explanation complete.

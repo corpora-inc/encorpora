@@ -7,16 +7,7 @@ export const fractionChoiceMethods: Record<string, ProblemMethod> = {
     goal: "Choose the fraction or mixed number that is greater or less than a stated number by comparing with a common denominator.",
     intuition:
       "A fraction names a part of a whole. To compare two fractions, cut both wholes into the same size of piece, so you can compare how many pieces each has. A whole number can be written as a fraction with any denominator: 2 is $\\frac{8}{4}$.",
-    terms: [
-      [
-        "common denominator",
-        "A number that both denominators divide into, so both fractions can be written with the same size of piece.",
-      ],
-      [
-        "mixed number",
-        "A whole number and a fraction together, such as $2\\frac{1}{4}$.",
-      ],
-    ],
+    terms: ["common-denominator", "mixed-number"],
     method: [
       "Rewrite the stated number and the choice with a common denominator. For a whole number, write it as a fraction over the choice's denominator.",
       "Compare the numerators: the greater numerator is the greater fraction.",

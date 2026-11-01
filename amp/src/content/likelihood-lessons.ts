@@ -7,18 +7,7 @@ export const likelihoodMethods: Record<string, ProblemMethod> = {
     goal: "Name an event as certain, likely, as likely as not, unlikely or impossible by comparing the successes with half of all outcomes.",
     intuition:
       "An outcome is one thing that can happen, like one marble coming out of a bag. A success is an outcome that makes the event happen. How likely the event is depends on how many of the outcomes are successes, out of all the outcomes.",
-    terms: [
-      [
-        "outcome",
-        "One thing that can happen, such as one face of a cube landing up.",
-      ],
-      [
-        "event",
-        "The thing you are asking about, such as picking a red marble.",
-      ],
-      ["impossible", "No outcome makes the event happen."],
-      ["certain", "Every outcome makes the event happen."],
-    ],
+    terms: ["outcome", "event", "impossible", "certain"],
     method: [
       "Count the outcomes that make the event happen, and count all the outcomes.",
       "If none of them do, the event is impossible. If all of them do, it is certain.",
@@ -31,13 +20,7 @@ export const likelihoodMethods: Record<string, ProblemMethod> = {
     goal: "Place the chance of an event on a number line from 0 to 1 as the fraction of outcomes that are successes.",
     intuition:
       "The chance of an event is a number from 0 to 1. Impossible is 0, certain is 1, and everything between is a fraction: the successes out of all the equally likely outcomes. A number line from 0 to 1 cut into that many equal spaces puts each fraction at its own mark.",
-    terms: [
-      [
-        "chance",
-        "A number from 0 to 1 that tells how likely an event is. It equals the successes divided by all outcomes when the outcomes are equally likely.",
-      ],
-      ["equally likely", "Each outcome has the same chance of happening."],
-    ],
+    terms: ["probability", "equally-likely"],
     method: [
       "Count the successes and all the outcomes, and write the chance as successes over all outcomes.",
       "Count the equal spaces on the number line from 0 to 1 and check that it matches the number of outcomes.",
@@ -51,13 +34,10 @@ export const likelihoodMethods: Record<string, ProblemMethod> = {
     intuition:
       "When every marble or section is equally likely to be picked, a color's chance depends only on how many there are of it. Equal chances need equal counts. The most likely color has the most; the least likely has the fewest.",
     terms: [
+      "equally-likely",
       [
-        "equally likely",
-        "Having the same chance, which here means the same count.",
-      ],
-      [
-        "most likely",
-        "Having the greatest chance, which here means the greatest count.",
+        "probability",
+        "The most likely result has the greatest probability; here, the color with the greatest count.",
       ],
     ],
     method: [

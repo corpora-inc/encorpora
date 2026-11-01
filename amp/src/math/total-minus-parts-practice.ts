@@ -74,8 +74,10 @@ export const bagTotals = chainFamily({
         answer: String(sum - m.c),
         hint: `Add the two totals first: ${m.a} + ${m.b}. The ${m.c} that are set aside come off that sum.`,
         explanation: [
-          `Together the ${s.holder} hold $${m.a}+${m.b}=${sum}$ ${s.thing}.`,
-          `Take away the ${m.c} set aside: $${sum}-${m.c}=${sum - m.c}$.`,
+          `Both ${s.holder} are poured out together, so first add them to find the whole amount.`,
+          `$${m.a}+${m.b}=${sum}$ ${s.thing} in all.`,
+          `${m.c} of those are set aside, so take them away from the whole: $${sum}-${m.c}=${sum - m.c}$.`,
+          `Check: $${sum - m.c}+${m.c}=${sum}$.`,
           `${sum - m.c} ${s.thing} are not set aside.`,
         ],
         label: `Answer (${s.thing})`,
@@ -87,8 +89,10 @@ export const bagTotals = chainFamily({
       answer: String(m.total - sum),
       hint: `The ${s.a} and ${s.b} ${s.thing} are both taken out of the ${m.total}. Add ${m.a} and ${m.b} first to see how many that is.`,
       explanation: [
-        `The ${s.a} and ${s.b} ${s.thing} total $${m.a}+${m.b}=${sum}$.`,
-        `Subtract from the whole collection: $${m.total}-${sum}=${m.total - sum}$.`,
+        `The whole collection is made of three parts. Two parts are known, and the ${s.rest} ${s.thing} are the missing part.`,
+        `Add the known parts: $${m.a}+${m.b}=${sum}$.`,
+        `The missing part is the whole minus the known parts: $${m.total}-${sum}=${m.total - sum}$.`,
+        `Check: $${sum}+${m.total - sum}=${m.total}$.`,
         `${m.total - sum} ${s.thing} are ${s.rest}.`,
       ],
       label: `Answer (${s.thing})`,
@@ -193,9 +197,10 @@ export const fractionTotalMinusParts = chainFamily({
         answer,
         hint: `Add ${mixedTex(m.a)} and ${mixedTex(m.b)} first. Rewrite the eighths as sixteenths so the two measures have the same denominator.`,
         explanation: [
-          `Rewrite each measure as an improper fraction with denominator 16: ${mixedTex(m.a)} is $${m.a}/16$ and ${mixedTex(m.b)} is $${m.b}/16$.`,
+          `Mixed numbers with different denominators (bottom numbers) are easier to work with as sixteenths, the smallest piece here.`,
+          `Rewrite each measure as an improper fraction (a fraction with the top larger than the bottom) with denominator 16: ${mixedTex(m.a)} is $${m.a}/16$ and ${mixedTex(m.b)} is $${m.b}/16$.`,
           `The two measures total $${m.a}/16+${m.b}/16=${sum}/16$, which is ${mixedTex(sum)}.`,
-          `Subtract from the total ${mixedTex(m.total)}, which is $${m.total}/16$: $${m.total}/16-${sum}/16=${left}/16$.`,
+          `What remains is the total minus what was used. The total ${mixedTex(m.total)} is $${m.total}/16$, so $${m.total}/16-${sum}/16=${left}/16$.`,
           left % 16 === 0
             ? `The amount left is ${answer} ${t.measure}.`
             : `The amount left is ${mixedTex(left)} ${t.measure}. As an improper fraction, that is $${answer}$.`,
@@ -212,9 +217,10 @@ export const fractionTotalMinusParts = chainFamily({
       answer: hundredths(left),
       hint: `Write ${fractionText} as a decimal first: divide ${m.a / (100 / m.aDenominator)} by ${m.aDenominator}. Then both measures are decimals you can add.`,
       explanation: [
-        `${fractionText} written as a decimal is $${aDecimal}$.`,
-        `The two measures total $${aDecimal}+${hundredths(m.b)}=${hundredths(m.a + m.b)}$.`,
-        `Subtract from the total: $${hundredths(m.total)}-${hundredths(m.a + m.b)}=${hundredths(left)}$.`,
+        `One measure is a fraction and the other is a decimal. Write both as decimals so they can be added.`,
+        `A fraction bar means divide, so ${fractionText} written as a decimal is $${aDecimal}$.`,
+        `Add the two parts, lining up the decimal points: $${aDecimal}+${hundredths(m.b)}=${hundredths(m.a + m.b)}$.`,
+        `What remains is the total minus the two parts: $${hundredths(m.total)}-${hundredths(m.a + m.b)}=${hundredths(left)}$.`,
         `The amount left is ${hundredths(left)} ${t.measure}.`,
       ],
     });

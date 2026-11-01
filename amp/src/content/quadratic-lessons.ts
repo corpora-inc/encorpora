@@ -9,14 +9,7 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
   "quadratic-irrational-solutions": quadraticIrrationalMethod,
   "quadratic-factored-solutions": {
     goal: "Given a quadratic equation as a product equal to zero, find every real solution.",
-    terms: [
-      ["factor", "An expression multiplied by another expression."],
-      ["root", "A value of $x$ that makes the polynomial equal zero."],
-      [
-        "repeated root",
-        "A root that occurs in more than one factor; it is one distinct solution.",
-      ],
-    ],
+    terms: ["factor-number", "root-equation", "repeated-root"],
     method: [
       "Set each linear factor equal to zero.",
       "In each equation, subtract the constant and divide by the nonzero coefficient of $x$.",
@@ -27,11 +20,7 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
   },
   "quadratic-expanded-solutions": {
     goal: "Given an expanded quadratic equation with rational roots, factor it and find every real solution.",
-    terms: [
-      ["quadratic", "A polynomial whose highest power of $x$ is x²."],
-      ["coefficient", "The number multiplying a power of $x$."],
-      ["root", "A value of $x$ that makes the polynomial equal zero."],
-    ],
+    terms: ["quadratic", "coefficient", "root-equation"],
     method: [
       "Write ax² + bx + c = 0 with a ≠ 0. If c = 0, factor out $x$.",
       "Otherwise, divide out any common numerical factor, then find integers $m$ and $n$ with m + n = b and mn = ac. Replace bx by mx + nx and factor by grouping.",
@@ -46,18 +35,12 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
     intuition:
       "A quadratic has the form $ax^2+bx+c=0$ with $a\\ne0$; $a$, $b$, and $c$ are its signed number coefficients. Its discriminant is $D=b^2-4ac$. The sign of $D$ tells how many different real-number solutions the equation has: two if positive, one if zero, none if negative.",
     terms: [
+      "discriminant",
       [
-        "discriminant",
-        "The quantity b² − 4ac for ax² + bx + c = 0, where a ≠ 0.",
+        "repeated-root",
+        "Distinct means different from one another, so a repeated solution is counted once.",
       ],
-      [
-        "distinct",
-        "Different from one another; a repeated solution is counted once.",
-      ],
-      [
-        "real solution",
-        "A number on the real number line that makes the equation true.",
-      ],
+      ["solution", "A real solution is a number on the number line."],
     ],
     method: [
       "Read $a$, $b$, and $c$ with their signs; a missing $x$ term or constant has coefficient zero.",

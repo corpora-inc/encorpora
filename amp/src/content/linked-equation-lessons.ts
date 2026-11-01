@@ -9,12 +9,12 @@ export const linkedEquationMethods: Record<string, ProblemMethod> = {
       "A two-step story needs two operations in the order the story tells them. The answer to the first step is a new number that the second step uses. A letter such as $a$ stands for that new number, so the first equation defines it and the second equation uses it.",
     terms: [
       [
-        "linked equations",
-        "Two equations where the answer of the first is an input of the second.",
+        "equation",
+        "In linked equations, the answer to the first equation is an input to the second.",
       ],
       [
-        "combined equation",
-        "One equation that does both steps, with the first step in parentheses.",
+        "equation",
+        "The combined equation does both steps at once, with the first step in parentheses.",
       ],
     ],
     method: [
@@ -31,12 +31,12 @@ export const linkedEquationMethods: Record<string, ProblemMethod> = {
       "Time that has passed is taken away from the whole. After the first period some time is left; the second period takes away from what is left. The time remaining is the whole minus both periods.",
     terms: [
       [
-        "time remaining",
-        "The total time minus all the time that has already passed.",
+        "elapsed-time",
+        "Time remaining is the total time minus all the time already elapsed.",
       ],
       [
-        "linked equations",
-        "Two equations where the answer of the first is an input of the second.",
+        "equation",
+        "In linked equations, the answer to the first equation is an input to the second.",
       ],
     ],
     method: [

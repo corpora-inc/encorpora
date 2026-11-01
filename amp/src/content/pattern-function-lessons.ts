@@ -447,10 +447,7 @@ export const patternFunctionLessons: Lesson[] = [
 export const patternFunctionMethods: Record<string, ProblemMethod> = {
   "rule-pattern-term": {
     goal: "Find a later term of a number pattern from its start and rule.",
-    terms: [
-      ["term", "One number in the pattern; the start is the 1st term."],
-      ["rule", "How to get each term from the term before it."],
-    ],
+    terms: ["term-sequence", "rule"],
     method: [
       "Write the start as the 1st term.",
       "Apply the rule to each term to get the next, numbering the terms as you go.",
@@ -461,10 +458,7 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
   },
   "rule-pattern-feature": {
     goal: "Find a feature that every term of a rule-generated pattern shares.",
-    terms: [
-      ["even", "Splits into pairs with none left over."],
-      ["odd", "Splits into pairs with one left over."],
-    ],
+    terms: ["even-number", "odd-number"],
     method: [
       "Write the first five or six terms.",
       "Look for a shared feature: odd or even, a common factor, the same last digit.",
@@ -476,8 +470,11 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
   "related-patterns-relationship": {
     goal: "State how the matching terms of two patterns are related.",
     terms: [
-      ["matching terms", "Terms in the same position in the two patterns."],
-      ["ordered pair", "(A-term, B-term): across A, up B on the grid."],
+      "corresponding-terms",
+      [
+        "ordered-pair",
+        "Here the first number is the term of pattern A and the second the term of pattern B.",
+      ],
     ],
     method: [
       "Pair the terms in order and read the pairs in the table.",
@@ -489,10 +486,7 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
   },
   "dependent-variable-equation": {
     goal: "Choose the equation that gives the dependent variable from the independent one.",
-    terms: [
-      ["independent variable", "The quantity chosen or known first."],
-      ["dependent variable", "The quantity that results from it."],
-    ],
+    terms: ["independent-variable", "dependent-variable"],
     method: [
       "Name the dependent variable: it stands alone in the equation.",
       "In each row, divide the dependent value by the independent value, or subtract.",
@@ -503,7 +497,7 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
   },
   "dependent-variable-value": {
     goal: "Use an equation between two variables to find one from the other.",
-    terms: [["substitute", "Replace a variable with its known value."]],
+    terms: ["substitute"],
     method: [
       "Substitute the known value for its variable.",
       "If the unknown is multiplied, divide; if a number is added to it, subtract.",
@@ -513,10 +507,7 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
   },
   "compare-function-rates": {
     goal: "Compare the rates of change and initial values of two linear functions.",
-    terms: [
-      ["rate of change", "Change in $y$ divided by change in $x$."],
-      ["initial value", "The value of $y$ when x = 0."],
-    ],
+    terms: ["rate-of-change", "initial-value"],
     method: [
       "For each function, find the rate of change from its own representation.",
       "Find each initial value, working back to x = 0 if needed.",
@@ -527,7 +518,7 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
   },
   "linear-function-choice": {
     goal: "Decide which rules define linear functions.",
-    terms: [["linear function", "A rule that can be written $y = mx + b$."]],
+    terms: ["linear-function"],
     method: [
       "Rewrite each rule: multiply out parentheses and reorder terms.",
       "A rule in the form $y = mx + b$, including y = c, is linear.",
