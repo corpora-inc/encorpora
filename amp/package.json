@@ -22,6 +22,7 @@
     "tsc": "tsc --noEmit",
     "workbook:samples": "tsx scripts/workbook-samples.ts",
     "workbook:audit": "tsx scripts/workbook-paper-audit.ts",
+    "test:workbooks-ui": "tsx scripts/verify-workbooks-ui.ts",
     "lint:colors": "tsx scripts/check-color-literals.ts --strict",
     "test:contrast": "tsx scripts/verify-contrast.ts --strict",
     "build": "npm run tsc && vite build && npm run build:public-pathways",

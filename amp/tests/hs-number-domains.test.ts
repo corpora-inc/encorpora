@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { legacySurface } from "./fixtures/legacy-surface";
 import { readFileSync } from "node:fs";
 import { generatedProblemSchema } from "../src/math/contracts";
 import { generateProblem, templates } from "../src/math/engine";
@@ -61,8 +62,7 @@ test("legacy axis values reproduce the pre-axis output byte for byte", () => {
       if (!Object.values(varied[id]!).every((a) => axes[a.id] === a.legacy))
         return;
       legacy++;
-      const { variant, ...before } = problem;
-      void variant;
+      const before = legacySurface(problem);
       assert.equal(
         createHash("sha256")
           .update(JSON.stringify(before))
