@@ -227,13 +227,17 @@ function circleCase(r: Random): Case {
       answer: q(r2),
       explanation: [
         read
-          ? `From the graph, $C = ${pt([h, k])}$ and $P = ${pt(P)}$.`
-          : `$r$ is the distance from the center ${pt([h, k])} to ${pt(P)}.`,
+          ? `In $(x − a)^2 + (y − b)^2 = c$, the point $(a, b)$ is the center and $c$ is the radius squared. The radius is the distance from the center to the circle.`
+          : `In $(x − h)^2 + (y − k)^2 = r^2$, the point $(h, k)$ is the center and $r$ is the radius, the distance from the center to the circle.`,
+        read
+          ? `From the graph, $C = ${pt([h, k])}$ and $P = ${pt(P)}$. Since $P$ is on the circle, $CP$ is a radius.`
+          : `The circle passes through ${pt(P)}, so the radius is the distance from the center ${pt([h, k])} to ${pt(P)}.`,
+        `The distance comes from the Pythagorean theorem: square the change in $x$, square the change in $y$, and add. That sum is the radius squared.`,
         `r² = (${n(P[0])} − ${n(h)})² + (${n(P[1])} − ${n(k)})² = ${dx}² + ${dy}² = ${r2}.`.replace(
           /− −/g,
           "+ ",
         ),
-        `r² = ${r2}.`,
+        read ? `So $c$, the radius squared, is ${r2}.` : `So r² is ${r2}.`,
       ],
       hint: read
         ? "Read the center $C$ and the point $P$ from the grid. The squared radius is (change in $x$)² + (change in $y$)²."
@@ -254,10 +258,17 @@ function circleCase(r: Random): Case {
       }`,
       answer: q(ask === "radius" ? rr : ask === "x" ? h : k),
       explanation: [
-        `Compare with ${math("(x − h)² + (y − k)² = r²")}: the center is $(h, k)$ and r² is the right side.`,
-        `Matching ${shift("x", h)} with x − h gives h = ${n(h)}; matching ${shift("y", k)} with y − k gives k = ${n(k)}. So the center is ${pt([h, k])}, and the radius is the square root of ${rr * rr}: r = ${rr}.`,
+        `A circle's equation in center-radius form is ${math("(x − h)² + (y − k)² = r²")}. Here $(h, k)$ is the center and $r$ is the radius, the distance from the center to the circle.`,
         ask === "radius"
-          ? `The radius is ${rr}.`
+          ? `The right side is the radius squared: r² = ${rr * rr}.`
+          : `The form subtracts the center's coordinates. So the sign inside each square is the opposite of the center's sign.`,
+        ask === "radius"
+          ? `Take the square root to undo the squaring: r = √${rr * rr} = ${rr}.`
+          : ask === "x"
+            ? `Match ${shift("x", h)} with x − h: h = ${n(h)}.`
+            : `Match ${shift("y", k)} with y − k: k = ${n(k)}.`,
+        ask === "radius"
+          ? `The radius of the circle is ${rr}.`
           : `The $${ask}$-coordinate of the center is ${n(ask === "x" ? h : k)}.`,
       ],
       hint:
@@ -283,13 +294,15 @@ function circleCase(r: Random): Case {
     }`,
     answer: q(ask === "radius" ? rr : ask === "x" ? h : k),
     explanation: [
-      `Group and complete each square: add (half the $x$-coefficient)² = ${h * h} and (half the $y$-coefficient)² = ${k * k} to both sides.`,
+      `The goal is center-radius form, ${math("(x − h)² + (y − k)² = r²")}, where $(h, k)$ is the center and $r$ is the radius.`,
+      `Group the $x$ terms and the $y$ terms. Completing the square makes each group a perfect square, like $(x − 3)^2$.`,
+      `To do it, add (half the $x$-coefficient)² = ${h * h} and (half the $y$-coefficient)² = ${k * k}. The coefficient is the number in front of the letter. Add to both sides to keep the equation balanced.`,
       `${math(`${sq("x", h)} + ${sq("y", k)} = ${n(-F)} + ${h * h} + ${k * k} = ${rr * rr}`)}.`
         .replace("+ 0 + 0 ", "")
         .replace(/= (−?\d+) \+ 0 \+ /, "= $1 + "),
       ask === "radius"
-        ? `r² = ${rr * rr}, so the radius is ${rr}.`
-        : `The center is ${pt([h, k])}, so its $${ask}$-coordinate is ${n(ask === "x" ? h : k)}.`,
+        ? `The right side is r² = ${rr * rr}. Take the square root: the radius of the circle is ${rr}.`
+        : `The center has the opposite signs of the numbers inside the squares: ${pt([h, k])}. Its $${ask}$-coordinate is ${n(ask === "x" ? h : k)}.`,
     ],
     hint: `Complete the square in $x$ and in $y$: the $x$-coefficient ${n(D)} halves to ${n(D / 2)}, and the $y$-coefficient ${n(E)} halves to ${n(E / 2)}.`,
     tags: ["general", ask],
@@ -323,14 +336,14 @@ function polygonCase(r: Random): Case {
       prompt: `A triangle has vertices $A${pt(A)}$, $B${pt(B)}$ and $C${pt(C)}$. What is its area, in square units?`,
       answer: q(area2, 2),
       explanation: [
-        `Enclose it in the rectangle from x = ${n(Math.min(...xs))} to ${n(Math.max(...xs))} and y = ${n(Math.min(...ys))} to ${n(Math.max(...ys))}: ${W} × ${H} = ${W * H}.`,
-        `Subtract the three right triangles in the corners, or use the shoelace sum: ${shoelace(
-          pts,
-        )
+        `Area is the number of unit squares a shape covers. A slanted triangle is hard to count directly, so box it in.`,
+        `The smallest rectangle around it runs from $x = ${n(Math.min(...xs))}$ to ${n(Math.max(...xs))} and $y = ${n(Math.min(...ys))}$ to ${n(Math.max(...ys))}: ${W} × ${H} = ${W * H} square units.`,
+        `The triangle is that rectangle minus the right triangles in its corners. A shortcut that does the same subtraction is the shoelace sum: for each vertex, multiply its $x$ by the next vertex's $y$, and subtract the reverse product.`,
+        `Going around $A$, $B$, $C$: ${shoelace(pts)
           .terms.map((t) => `(${t.text})`)
           .join(" + ")} = ${n(shoelace(pts).sum)}.`,
-        `Half its size: ${Math.abs(shoelace(pts).sum)} ÷ 2 = ${frac(q(area2, 2))}.`,
-        `Area = ${frac(q(area2, 2))} square units.`,
+        `The area is half the size of that sum, ignoring its sign: ${Math.abs(shoelace(pts).sum)} ÷ 2 = ${frac(q(area2, 2))}.`,
+        `The triangle's area is ${frac(q(area2, 2))} square units.`,
       ],
       hint: `Draw the smallest rectangle around $A${pt(A)}$, $B${pt(B)}$ and $C${pt(C)}$: ${W} by ${H}. Subtract the right triangles in its corners that lie outside the triangle.`,
       tags: ["area", "triangle"],
@@ -381,13 +394,16 @@ function polygonCase(r: Random): Case {
       prompt: `A ${para ? "parallelogram" : "triangle"} has vertices ${list(P.map((p, i) => `$${names[i]}${pt(p)}$`))}. What is its perimeter?`,
       answer: q(perimeter),
       explanation: [
+        `The perimeter is the distance all the way around: add every side.`,
         para
-          ? `AB and CD are horizontal: each is ${base}.`
-          : `AB is horizontal, ${a} long, and BC is vertical, ${b} long.`,
+          ? `$\\overline{AB}$ and $\\overline{CD}$ lie along grid lines, so count the units: each is ${base} long.`
+          : `$\\overline{AB}$ lies along a grid line, ${a} long, and $\\overline{BC}$ goes straight up, ${b} long.`,
+        `A slanted side is the hypotenuse of a right triangle drawn on the grid. The Pythagorean theorem says leg² + leg² = hypotenuse².`,
         `The slanted ${para ? "sides run" : "side runs"} ${a} across and ${b} up: √(${a}² + ${b}²) = √${a * a + b * b} = ${c}.`,
         para
-          ? `Perimeter = 2 × (${base} + ${c}) = ${perimeter}.`
-          : `Perimeter = ${a} + ${b} + ${c} = ${perimeter}.`,
+          ? `A parallelogram has two pairs of equal opposite sides: 2 × (${base} + ${c}) = ${perimeter}.`
+          : `Add the three sides: ${a} + ${b} + ${c} = ${perimeter}.`,
+        `The perimeter of the ${para ? "parallelogram" : "triangle"} is ${perimeter} units.`,
       ],
       hint: `From $${names[0]}${pt(P[0]!)}$, count the horizontal and vertical sides on the grid. For a slanted side, use its run and rise in the distance formula.`,
       tags: ["perimeter", para ? "parallelogram" : "triangle"],
@@ -434,16 +450,16 @@ function polygonCase(r: Random): Case {
     prompt: `A quadrilateral has vertices ${list(P.map((p, i) => `$${names[i]}${pt(p)}$`))}, in order. What is its area, in square units?`,
     answer: q(area2, 2),
     explanation: [
-      `Enclose it in a ${W} × ${H} rectangle, area ${W * H}.`,
-      `Subtract the corner pieces, or use the shoelace sum around $A$, $B$, $C$, $D$: ${shoelace(
-        P,
-      )
+      `Area is the number of unit squares a shape covers. A slanted shape is hard to count directly, so box it in.`,
+      `The smallest rectangle around it is ${W} × ${H}, with area ${W * H} square units.`,
+      `The quadrilateral is that rectangle minus the corner pieces. A shortcut that does the same subtraction is the shoelace sum: for each vertex, multiply its $x$ by the next vertex's $y$, and subtract the reverse product.`,
+      `Going around $A$, $B$, $C$, $D$: ${shoelace(P)
         .terms.map((t) => `(${t.text})`)
         .join(" + ")} = ${n(shoelace(P).sum)}.`,
-      `Half its size: ${Math.abs(shoelace(P).sum)} ÷ 2 = ${frac(q(area2, 2))}.`,
-      `Area = ${frac(q(area2, 2))} square units.`,
+      `The area is half the size of that sum, ignoring its sign: ${Math.abs(shoelace(P).sum)} ÷ 2 = ${frac(q(area2, 2))}.`,
+      `The quadrilateral's area is ${frac(q(area2, 2))} square units.`,
     ],
-    hint: `Surround ABCD, from $A${pt(P[0]!)}$, with a ${W}-by-${H} rectangle on the grid. The area you want is what is left after removing the corner triangles.`,
+    hint: `Surround $ABCD$, from $A${pt(P[0]!)}$, with a ${W}-by-${H} rectangle on the grid. The area you want is what is left after removing the corner triangles.`,
     tags: ["area", "quadrilateral"],
     figure: g.scene({ title: "Quadrilateral ABCD on a grid" }),
     label: "Area",
@@ -479,17 +495,22 @@ function partitionCase(r: Random): Case {
     answer,
     explanation: [
       asRatio
-        ? `With $AP$ : $PB = ${m}$ : ${k}, $AB$ has ${total} equal parts, and $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$: ${frac(t)} of the way.`
-        : `$P$ is ${frac(t)} of the way along $AB$.`,
-      `The $${name}$-coordinate changes by ${n(run)} from $A$ to $B$; ${frac(t)} of that is ${frac(q(run * m, total))}.`,
-      `${n(A[axis]!)} + ${frac(q(run * m, total))} = ${frac(answer)}.`.replace(
+        ? `With $AP$ : $PB = ${m}$ : ${k}, think of $\\overline{AB}$ as ${m} + ${k} = ${total} equal parts. $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$, so it is ${frac(t)} of the way.`
+        : `$P$ is ${frac(t)} of the way along $\\overline{AB}$, starting from $A$.`,
+      `Going from $A$ to $B$, the $${name}$-coordinate changes by ${n(B[axis]!)} − ${n(A[axis]!)} = ${n(run)}.`.replace(
+        "− −",
+        "+ ",
+      ),
+      `$P$ has gone ${frac(t)} of the way, so its $${name}$-coordinate has changed by ${frac(t)} of that: ${frac(q(run * m, total))}.`,
+      `Add the change to $A$'s coordinate: ${n(A[axis]!)} + ${frac(q(run * m, total))} = ${frac(answer)}.`.replace(
         "+ −",
         "− ",
       ),
+      `The $${name}$-coordinate of $P$ is ${frac(answer)}.`,
     ],
     hint: asRatio
-      ? `A ${m} : ${k} split makes ${m} + ${k} equal parts; $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$. Take that fraction of the change in $${name}$ and add it to A's $${name}$.`
-      : `Take ${frac(t)} of the change in $${name}$ from $A$ to $B$, then add it to A's $${name}$-coordinate.`,
+      ? `A ${m} : ${k} split makes ${m} + ${k} equal parts; $P$ is ${m} ${m === 1 ? "part" : "parts"} from $A$. Take that fraction of the change in $${name}$ and add it to $A$'s $${name}$-coordinate.`
+      : `Take ${frac(t)} of the change in $${name}$ from $A$ to $B$, then add it to $A$'s $${name}$-coordinate.`,
     tags: [asRatio ? "ratio" : "fraction", `axis-${name}`],
     figure: graph({ x: w.x, y: w.y, tick: w.tick })
       .id("g")
@@ -582,10 +603,14 @@ function slopeCase(r: Random, form = "two-points"): Case {
       prompt: `${given} What is the slope of a line ${parallel ? "parallel" : "perpendicular"} to $ℓ$?`,
       answer: parallel ? m : perp,
       explanation: [
+        `Slope measures steepness: rise over run, the change in $y$ divided by the change in $x$.`,
         slopeStep,
         parallel
-          ? `Parallel lines have equal slopes: ${frac(m)}.`
-          : `Perpendicular slopes are negative reciprocals (their product is −1): −1 ÷ ${frac(m)} = ${frac(perp)}.`,
+          ? `Parallel lines never meet, so they rise at the same rate. They have equal slopes.`
+          : `Perpendicular lines meet at a right angle. Their slopes are opposite reciprocals: flip the fraction and change the sign, so the product is −1.`,
+        parallel
+          ? `The slope of a parallel line is ${frac(m)}.`
+          : `−1 ÷ ${frac(m)} = ${frac(perp)}. The slope of a perpendicular line is ${frac(perp)}.`,
       ],
       hint: byEquation
         ? parallel
@@ -608,10 +633,16 @@ function slopeCase(r: Random, form = "two-points"): Case {
       prompt: `${given} A line through $P${pt(P)}$ ${parallel ? "parallel" : "perpendicular"} to $ℓ$ has equation $y = mx + b$. What is $b$?`,
       answer: b,
       explanation: [
-        `${byEquation ? slopeStep : `Slope of $ℓ$: ${frac(m)}.`} The new line's slope is ${parallel ? `the same, ${frac(s)}` : `its negative reciprocal, ${frac(s)}`}.`,
-        `Through $P$: ${n(P[1])} = ${frac(s)} × ${n(P[0])} + b, so $b = ${n(P[1])} ${s.n * P[0] < 0 ? "+" : "−"} ${frac(q(Math.abs(s.n * P[0]), s.d))} = ${frac(b)}$.`,
+        `In $y = mx + b$, $m$ is the slope, the steepness, and $b$ is the $y$-intercept, where the line crosses the $y$-axis.`,
+        byEquation ? slopeStep : `Slope of $ℓ$, rise over run: ${frac(m)}.`,
+        parallel
+          ? `Parallel lines rise at the same rate, so the new slope is the same: ${frac(s)}.`
+          : `Perpendicular lines have opposite reciprocal slopes (flip and change the sign), so the new slope is ${frac(s)}.`,
+        `The line passes through $P${pt(P)}$, so those coordinates make the equation true: ${n(P[1])} = ${frac(s)} × ${n(P[0])} + b.`,
+        `Get $b$ alone: $b = ${n(P[1])} ${s.n * P[0] < 0 ? "+" : "−"} ${frac(q(Math.abs(s.n * P[0]), s.d))} = ${frac(b)}$.`,
+        `So $b$ is ${frac(b)}.`,
       ],
-      hint: `${byEquation ? `${slopeHint} Then the new slope` : "First the slope"}: ${parallel ? "equal to $ℓ$'s" : "the negative reciprocal of $ℓ$'s"}. Then put $P${pt(P)}$ into y = mx + b and solve for $b$.`,
+      hint: `${byEquation ? `${slopeHint} Then the new slope` : "First the slope"}: ${parallel ? "equal to $ℓ$'s" : "the negative reciprocal of $ℓ$'s"}. Then put $P${pt(P)}$ into $y = mx + b$ and solve for $b$.`,
       tags: [parallel ? "parallel-line" : "perpendicular-line"],
       ...(byEquation ? {} : { figure: base() }),
       label: "Value of $b$",
@@ -624,6 +655,7 @@ function slopeCase(r: Random, form = "two-points"): Case {
     prompt: `${given} Line $j$ passes through $C${pt(C)}$ and $D(${n(D[0])}, k)$. For which value of $k$ is $j$ perpendicular to $ℓ$?`,
     answer: q(D[1]),
     explanation: [
+      `Slope is rise over run. Perpendicular lines meet at a right angle, and their slopes are opposite reciprocals: flip the fraction and change the sign.`,
       byEquation
         ? `${slopeStep} So $j$ needs slope ${frac(perp)}.`
         : `Slope of $ℓ$: ${frac(m)}, so $j$ needs slope ${frac(perp)}.`,
@@ -631,9 +663,9 @@ function slopeCase(r: Random, form = "two-points"): Case {
         /− −/g,
         "+ ",
       ),
-      `k = ${n(D[1])}.`,
+      `Add ${n(C[1])} to both sides. The value that makes $j$ perpendicular to $ℓ$ is $k = ${n(D[1])}$.`,
     ],
-    hint: `${byEquation ? `${slopeHint} $j$ must have the negative reciprocal of that slope.` : "$j$ must have slope −1 ÷ (slope of $ℓ$)."} Write j's slope from $C$ and $D$ with $k$ in it, and set the two equal.`,
+    hint: `${byEquation ? `${slopeHint} $j$ must have the negative reciprocal of that slope.` : "$j$ must have slope −1 ÷ (slope of $ℓ$)."} Write $j$'s slope from $C$ and $D$ with $k$ in it, and set the two equal.`,
     tags: ["missing-coordinate"],
     ...(byEquation ? {} : { figure: base() }),
     label: "Value of $k$",
@@ -657,10 +689,14 @@ function circleAngleCase(r: Random): Case {
         : `In circle $O$, inscribed angle $ACB$ measures ${inscribed}°. What is the measure of central angle $AOB$, in degrees, on the same arc $AB$?`,
       answer: q(fromCentral ? inscribed : central),
       explanation: [
-        "An inscribed angle and a central angle on the same arc: the inscribed angle is half the central angle.",
+        "A central angle has its corner at the center $O$. An inscribed angle has its corner on the circle itself.",
+        "When both open onto the same arc, the inscribed angle is half the central angle. The corner on the circle is farther away, so it sees the arc at half the angle.",
         fromCentral
           ? `$\\angle ACB$ = ${central}° ÷ 2 = ${inscribed}°.`
-          : `$\\angle AOB$ = 2 × ${inscribed}° = ${central}°.`,
+          : `So the central angle is double: $\\angle AOB$ = 2 × ${inscribed}° = ${central}°.`,
+        fromCentral
+          ? `Inscribed angle $ACB$ measures ${inscribed} degrees.`
+          : `Central angle $AOB$ measures ${central} degrees.`,
       ],
       hint: fromCentral
         ? `Angle $AOB$, ${central}°, and angle $ACB$ stand on the same arc $AB$. Which is larger, and by what factor?`
@@ -723,8 +759,10 @@ function circleAngleCase(r: Random): Case {
       prompt: `$AB$ is a diameter of circle $O$, and $C$ is another point on the circle. $\\angle CAB$ = ${x}°. What is the measure of $\\angle CBA$, in degrees?`,
       answer: q(90 - x),
       explanation: [
-        "An angle inscribed in a semicircle is a right angle: $\\angle ACB$ stands on the 180° arc, so it measures 180° ÷ 2 = 90°.",
-        `The angles of triangle $ABC$ add to 180°: $\\angle CBA$ = 180° − 90° − ${x}° = ${90 - x}°.`,
+        "A diameter runs through the center, so it cuts the circle into two half-circles, each a 180° arc.",
+        "An inscribed angle (corner on the circle) is half its arc. $\\angle ACB$ opens onto a 180° arc, so it measures 180° ÷ 2 = 90°, a right angle.",
+        `The three angles of triangle $ABC$ add to 180°: $\\angle CBA$ = 180° − 90° − ${x}° = ${90 - x}°.`,
+        `$\\angle CBA$ measures ${90 - x} degrees.`,
       ],
       hint: `$AB$ is a diameter, so the angle at $C$ is special. Then use the triangle's angle sum with ${x}°.`,
       tags: ["semicircle"],
@@ -779,10 +817,15 @@ function circleAngleCase(r: Random): Case {
         : `$PT$ is tangent to circle $O$ at $T$. $PT = ${b}$ and $OP = ${c}$. What is the radius of the circle?`,
       answer: q(askTangent ? b : a),
       explanation: [
-        "A tangent is perpendicular to the radius at the point of tangency, so triangle $OTP$ has a right angle at $T$, with hypotenuse $OP$.",
+        "A tangent line touches a circle at exactly one point, here $T$. It always meets the radius to that point at a right angle.",
+        "So triangle $OTP$ has a right angle at $T$. Its longest side, the hypotenuse, is $OP$, across from that right angle.",
+        "The Pythagorean theorem says leg² + leg² = hypotenuse². To find a leg, subtract: leg² = hypotenuse² − other leg².",
         askTangent
           ? `$PT = \\sqrt{${c}^2 - ${a}^2} = \\sqrt{${c * c - a * a}} = ${b}$.`
           : `$OT = \\sqrt{${c}^2 - ${b}^2} = \\sqrt{${c * c - b * b}} = ${a}$.`,
+        askTangent
+          ? `The tangent segment $PT$ is ${b} long.`
+          : `The radius of the circle is ${a}.`,
       ],
       hint: `The radius $OT$ and the tangent $PT$ meet at a right angle, so $OP = ${c}$ is the hypotenuse of a right triangle.`,
       tags: ["tangent", askTangent ? "ask-tangent" : "ask-radius"],
@@ -830,8 +873,9 @@ function circleAngleCase(r: Random): Case {
     prompt: `Points $A$, $B$, $C$ and $D$ are on a circle, with $C$ and $D$ on the same side of chord $AB$. $\\angle ACB$ = ${x}°. What is the measure of $\\angle ADB$, in degrees?`,
     answer: q(x),
     explanation: [
-      "Both angles are inscribed angles on the same arc $AB$.",
-      `Each is half the central angle on that arc, so they are equal: $\\angle ADB$ = ${x}°.`,
+      "An inscribed angle has its corner on the circle. Both $\\angle ACB$ and $\\angle ADB$ open onto the same arc $AB$.",
+      "An inscribed angle is always half the central angle (corner at the center) on its arc. Both angles are half of the same central angle.",
+      `So they are equal. $\\angle ADB$ measures ${x} degrees.`,
     ],
     hint: `$\\angle ACB = ${x}$° and $\\angle ADB$ both open onto arc $AB$. What does each equal in terms of the central angle?`,
     tags: ["same-arc"],
