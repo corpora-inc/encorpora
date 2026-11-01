@@ -10,6 +10,7 @@ import {
 } from "../learning/practice-policy.js";
 import fp from "fastify-plugin";
 import { registerBookRoutes } from "../books/routes.js";
+import { registerWorkbookRoutes } from "../workbook/routes.js";
 import { readFile } from "node:fs/promises";
 import Fastify, { type FastifyInstance } from "fastify";
 import rateLimit from "@fastify/rate-limit";
@@ -969,5 +970,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
     parent,
     development: options.development,
     publicationDirectory: options.bookPublicationDirectory,
+  });
+  registerWorkbookRoutes(app, {
+    repository: options.repository,
+    parent,
+    development: options.development,
   });
 }
