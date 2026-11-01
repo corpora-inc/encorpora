@@ -70,7 +70,18 @@ export const choiceLessons: Lesson[] = [
     id: "equation-solution-sets",
     title: "When the variable terms disappear",
     summary:
-      "A letter such as $x$ stands for an unknown number; $5x$ means five copies of it. A linear equation in $x$ may work for one number, none, or every number.",
+      "An equation says two amounts are equal. It has two sides: the amounts left and right of its equals sign. A variable is a letter, such as $x$, that stands for an unknown number, and $5x$ means 5 times $x$. A solution is a value of $x$ that makes the two sides equal. A linear equation is one where $x$ is only multiplied by numbers and added to them. It can have one solution, no solution, or every number as a solution.",
+    senses: { side: "side-of-equation", sides: "side-of-equation" },
+    noLink: [
+      "impossible",
+      "multiple",
+      "fourth",
+      "mean",
+      "changes",
+      "parts",
+      "part",
+      "terms",
+    ],
     templateIds: ["equation-solution-count"],
     objectives: [
       "Distinguish one solution, no solution, and infinitely many solutions.",
@@ -81,28 +92,28 @@ export const choiceLessons: Lesson[] = [
         stage: "intuition",
         title: "Ask which numbers make both sides match",
         paragraphs: [
-          "Here the unknown appears only as copies of $x$ added to numbers. An equation of this kind is linear. Some linear equations balance for one number, others never balance, and some balance for every number. Simplifying both sides reveals which kind you have.",
+          "Some linear equations are true for exactly one number. Some are never true. Some are true for every number. Simplifying both sides, by combining the $x$ parts and the plain numbers, shows which kind you have.",
         ],
       },
       {
         title: "What counts as a solution?",
         paragraphs: [
-          "A solution is a value that makes the original left and right sides equal. In 2x + 3 = 3x + 7, subtracting 2x and then 7 gives −4 = x. Only x = −4 works. Substitute it into the original: both sides are −5.",
-          "The operations must preserve equality. Subtracting the same expression from both sides does this. Keep checking the relationship between the sides instead of assuming every equation must end with $x$ equal to a number.",
+          "In $2x + 3 = 3x + 7$, subtract $2x$ from both sides: $3 = x + 7$. Subtract 7 from both sides: $-4 = x$. Only $x = -4$ works. Check in the original: $2(-4) + 3 = -5$ and $3(-4) + 7 = -5$, so both sides are $-5$.",
+          "Each step must keep the two sides equal, and subtracting the same amount from both sides does this. So keep watching what the two sides say. Do not assume every equation must end with $x$ equal to one number.",
         ],
       },
       {
         title: "Cancellation can tell two different stories",
         paragraphs: [
-          "For 4x + 3 = 4x + 8, subtract 4x from both sides. You get 3 = 8. That statement is never true, whatever $x$ was. There is no solution; x = 0 does not rescue it.",
-          "For 4x + 3 = 4x + 3, the same subtraction gives 3 = 3. Every real number works because the two expressions are identical. There are infinitely many solutions, not just the value zero.",
+          "For $4x + 3 = 4x + 8$, subtract $4x$ from both sides. You get $3 = 8$, which is never true, whatever $x$ is. So there is no solution, and $x = 0$ does not rescue it.",
+          "For $4x + 3 = 4x + 3$, the same subtraction gives $3 = 3$, which is always true. Real numbers are all the numbers on the number line. The two sides are exactly the same, so every real number works. There are infinitely many solutions, not just 0.",
         ],
       },
       {
         title: "A quick test is not a proof",
         paragraphs: [
-          "Trying x = 0 can disprove a claim that every number works. It cannot by itself prove that no number works: the equation might have a different solution. Simplifying the equation explains the entire solution set.",
-          "When all variable terms cancel, read the remaining equality. A false number statement means no solution; a true number statement means every real $x$ works. If a nonzero multiple of $x$ remains, isolate $x$ to obtain exactly one solution.",
+          "Trying $x = 0$ can show that not every number works. It cannot show that no number works, because some other number might. A proof is a reason that works in every case. Simplifying gives one, because it finds all the solutions at once.",
+          "When all the $x$ parts cancel, read what is left. A false number statement, like $3 = 8$, means no solution. A true one, like $3 = 3$, means every real $x$ works. To isolate means to get $x$ alone on one side. If some $x$ part other than $0x$ remains, isolate $x$ to find exactly one solution.",
         ],
       },
     ],
@@ -111,30 +122,42 @@ export const choiceLessons: Lesson[] = [
         stage: "formal",
         title: "Possible numbers of solutions",
         paragraphs: [
-          "For real numbers $a,b,c,d$, a linear equation $ax+b=cx+d$ becomes $(a-c)x=d-b$ after subtracting equal amounts from both sides. If $a-c$ is nonzero, exactly one real $x$ works. If $a-c=0$ and $d-b$ is nonzero, none works. If both are zero, every real $x$ works.",
+          "For real numbers $a$, $b$, $c$ and $d$, the linear equation $ax+b=cx+d$ becomes $(a-c)x=d-b$ after subtracting $cx$ and $b$ from both sides. If $a-c\\neq0$ ($a-c$ is not 0), exactly one real $x$ works. If $a-c=0$ and $d-b\\neq0$, none works. If both are 0, every real $x$ works. The solution set is the collection of all the solutions.",
         ],
       },
     ],
     workedExample: {
-      prompt: "How many real-number solutions does 5x + 2 = 5x + 9 have?",
+      prompt: "How many real-number solutions does $5x + 2 = 5x + 9$ have?",
       steps: [
-        "Subtract 5x from both sides: 2 = 9.",
-        "The equality is false regardless of $x$. There is no solution.",
+        "Subtract $5x$ from both sides: $2 = 9$.",
+        "That statement is false whatever $x$ is, so no value works. There is no solution.",
       ],
       answer: "No solution",
     },
     pitfalls: [
-      "0x = 7 is impossible; it does not mean x = 0.",
-      "0x = 0 is true for every real $x$. Do not divide both sides by zero.",
+      "$0x = 7$ has no solution: 0 times any number is 0, never 7. It does not mean $x = 0$.",
+      "$0x = 0$ is true for every real $x$. Do not divide both sides by zero.",
     ],
     parentGuide:
-      "Write three equations: 2x + 1 = 3x + 5, 2x + 1 = 2x + 5, and 2x + 1 = 2x + 1. Ask what changes between them and why that changes the solution set. Have the learner construct a fourth example of each kind.",
+      "Write three equations: $2x + 1 = 3x + 5$, $2x + 1 = 2x + 5$ and $2x + 1 = 2x + 1$. Ask what changes between them and why that changes the solutions. Have the learner make up a fourth example of each kind.",
   },
   {
     id: "graph-to-equation",
     title: "A starting height and a steady climb",
     summary:
-      "In $(x,y)$, $x$ is the horizontal input and $y$ the vertical output. A line's rule uses its output at $x=0$ and its rise for each step right.",
+      "A point is written $(x, y)$: $x$ across and $y$ up. The input is the number you choose, $x$, and the output is the number the rule gives, $y$. A line's rule is an equation that gives $y$ from $x$. It uses two facts: the output at $x = 0$, and the slope, the rise for each step of 1 to the right.",
+    senses: {
+      rule: "rule",
+      rules: "rule",
+      change: "change",
+      changes: "change",
+      unit: "unit",
+      units: "unit",
+      square: "square-shape",
+      squares: "square-shape",
+      decreasing: "decreasing",
+    },
+    noLink: ["term", "part"],
     templateIds: ["graph-equation-choice"],
     objectives: [
       "Read a $y$-intercept and a rate of change from two labeled points.",
@@ -145,28 +168,28 @@ export const choiceLessons: Lesson[] = [
         stage: "intuition",
         title: "A line has a start and a steady change",
         paragraphs: [
-          "A line can cross the vertical axis at five and rise two for each step right. The crossing tells its output when the input is zero; the rise tells how its output changes afterward. In a point $(x,y)$, $x$ is the horizontal input and $y$ the vertical output. Together the crossing and rise describe the line.",
+          "A line can cross the up-and-down axis at 5 and rise 2 for each step to the right. The crossing tells its output when the input is 0. The rise tells how its output changes after that. Together the crossing and the rise describe the line.",
         ],
       },
       {
         title: "Start where the input is zero",
         paragraphs: [
-          "The vertical axis is the set of points with x = 0. If a line crosses it at (0, 5), then the rule must give y = 5 when x = 0. In y = mx + b, the term mx becomes zero there, leaving $b$.",
-          "The intercept is a $y$-coordinate, not the distance between two points. A line can cross high on the axis and climb slowly, or cross low and climb steeply. Starting height and rate of change do different jobs.",
+          "The up-and-down axis is the set of points with $x = 0$. If a line crosses it at $(0, 5)$, the rule must give $y = 5$ when $x = 0$. In $y = mx + b$, the part $mx$ becomes 0 there, leaving $b$. The $y$-intercept is the value $b$ where the line crosses this axis.",
+          "The height of a point is its $y$-coordinate, the up-down number. The intercept is a height. It is not a distance between two points. A line can cross high on the axis and climb slowly, or cross low and climb steeply. The rate of change is how fast the output changes, here the rise for each step right. The starting height and the rate of change do different jobs.",
         ],
       },
       {
         title: "Count change in coordinate units",
         paragraphs: [
-          "Suppose a second point is (2, 9). Moving from (0, 5) to (2, 9) changes $x$ by 2 and $y$ by 4. The slope is 4 divided by 2, or 2 units up for each unit to the right.",
-          "Read the numbers on both axes. A grid square is not always one unit, and the drawing may stretch the two axes differently. Slope comes from coordinate changes, not the visual angle of the line on the screen.",
+          "Suppose a second point is $(2, 9)$. Moving from $(0, 5)$ to $(2, 9)$ changes $x$ by 2 and $y$ by 4. The slope is the rise for each step of 1 to the right: $4 \\div 2 = 2$.",
+          "Read the numbers on both axes. A grid square is not always one unit, and the two axes may be stretched differently. Slope comes from the changes in the coordinates, not from how steep the line looks on the screen.",
         ],
       },
       {
         title: "Put the two facts together",
         paragraphs: [
-          "A slope of 2 and intercept of 5 give y = 2x + 5. At x = 2, this predicts 9, matching the second point. Testing a second point catches a rule with the correct starting height but the wrong slope.",
-          "Swapping the numbers gives y = 5x + 2, which starts at the wrong height. Dropping the constant gives y = 2x, which passes through the origin. A negative coefficient would make $y$ fall as $x$ increases. Each choice makes a different claim you can check.",
+          "A slope of 2 and an intercept of 5 give $y = 2x + 5$. At $x = 2$ this gives $2(2) + 5 = 9$, matching the second point. Testing a second point catches a rule with the right start but the wrong slope.",
+          "Swapping the numbers gives $y = 5x + 2$, which starts at the wrong height. Dropping the 5 gives $y = 2x$, which passes through $(0, 0)$. A number less than 0 in front of $x$ would make $y$ fall as $x$ increases. Each choice makes a different claim you can check.",
         ],
       },
     ],
@@ -175,25 +198,25 @@ export const choiceLessons: Lesson[] = [
         stage: "formal",
         title: "Slope and intercept determine a line",
         paragraphs: [
-          "A nonvertical line with constant slope $m$ crossing the vertical axis at $(0,b)$ has equation $y=mx+b$. A vertical line has equation $x=c$ and cannot be written in this slope-intercept form.",
+          "A line that is not vertical, with slope $m$, crossing the vertical axis at $(0,b)$, has the equation $y=mx+b$. This is called slope-intercept form. A vertical line has an equation $x=c$ and cannot be written in slope-intercept form.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "Which rule passes through (0, 5) and (2, 9): y = 2x + 5 or y = 5x + 2?",
+        "Which rule passes through $(0, 5)$ and $(2, 9)$: $y = 2x + 5$ or $y = 5x + 2$?",
       steps: [
-        "At x = 0, y = 5, so the constant must be 5.",
-        "The slope is (9 − 5)/(2 − 0) = 2.",
-        "Choose y = 2x + 5. It gives 9 when x = 2.",
+        "At $x = 0$, $y = 5$, so the number added at the end must be 5.",
+        "The slope is the change in $y$ over the change in $x$: $\\frac{9 - 5}{2 - 0} = \\frac{4}{2} = 2$.",
+        "Choose $y = 2x + 5$. Check: at $x = 2$ it gives $2(2) + 5 = 9$.",
       ],
       answer: "y = 2x + 5",
     },
     pitfalls: [
-      "Use rise divided by run, not run divided by rise.",
-      "Check the axis labels before counting grid squares; screen angles do not determine slope.",
+      "Use rise divided by run: the change in $y$ over the change in $x$, not the other way round.",
+      "Check the axis labels before counting grid squares; how steep the line looks on screen does not decide the slope.",
     ],
     parentGuide:
-      "Draw two points on paper with labeled axes and ask the learner to describe the starting height and change before writing an equation. Then change only the intercept, and ask which features of the line stay the same. Include decreasing lines in discussion as a transfer task.",
+      "Draw two points on paper with labeled axes and ask the learner to describe the starting height and change before writing an equation. Then change only the intercept, and ask which features of the line stay the same. Include falling lines in the discussion as a stretch.",
   },
 ];

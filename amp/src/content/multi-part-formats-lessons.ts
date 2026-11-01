@@ -1,7 +1,15 @@
 import type { FacetMapping } from "./coverage";
+import type { GlossarySenses } from "../glossary/types";
 import { formatLessons, type FormatLessonEntry } from "./format-lesson-entry";
 
-const entries: FormatLessonEntry[] = [
+type Entry = FormatLessonEntry & {
+  /** The practice-screen task, at most 140 characters; defaults to the summary. */
+  goal?: string;
+  senses?: GlossarySenses;
+  noLink?: string[];
+};
+
+const entries: Entry[] = [
   {
     id: "table-rule-sentence",
     title: "Say the rule of a table",
@@ -50,14 +58,23 @@ const entries: FormatLessonEntry[] = [
   {
     id: "substitution-match-table",
     title: "Test each equation with a value",
+    goal: "Put a stated value in for the variable in each equation, and mark each equation true or not true.",
     summary:
-      "Replace the variable with the stated value in every equation and compare the two sides. Equal sides mean true.",
+      "A variable is a letter that stands for a number. An equation has two sides: the parts to the left and right of its equals sign. To substitute means to put a number in place of the variable. Substitute the stated value into each equation and work out both sides. If they are equal, the equation is true for that value.",
+    senses: {
+      "left side": "side-of-equation",
+      "right side": "side-of-equation",
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      product: "product-multiply",
+    },
+    noLink: ["mean", "changes", "parts"],
     objectives: [
       "Substitute a negative or positive value into an equation and evaluate the left side exactly.",
       "Mark the equation true when both sides have the same value and not true when they differ.",
     ],
     intuition:
-      "An equation is a claim that two expressions have the same value. A stated value of the variable makes the claim true or not: put the value in, work out each side, and compare. With a negative value the signs need care, because a product of two negatives is positive, and subtracting a negative adds.",
+      "A variable is a letter that stands for a number. An equation is a claim that its two sides, the parts left and right of the equals sign, have the same value. To substitute means to put a number in place of the variable. Substitute the stated value, work out each side, and compare. A value that makes the equation true is called a solution. A negative number is a number less than 0, and it needs care. A negative times a negative is positive, and subtracting a negative adds: $4 - (-5) = 9$.",
     terms: [
       [
         "substitute",
@@ -68,17 +85,17 @@ const entries: FormatLessonEntry[] = [
     method: [
       "Rewrite the left side with the value in place of the variable, putting a negative value in parentheses: for $3m + 4$ and $m = -5$, write $3 \\cdot (-5) + 4$.",
       "Work out the left side and the right side separately.",
-      "Mark the equation true if the two numbers are equal, not true otherwise. Repeat for every row.",
+      "Mark the equation true if the two numbers are equal, and not true otherwise. Repeat for every row.",
     ],
     watch:
       "Using 5 where the value is −5 can make a false equation look true. Keep the sign in the substitution.",
     principle:
-      "For a value $a$, the equation $L(v) = R(v)$ is true at $v = a$ exactly when $L(a) = R(a)$. Each row is checked on its own: one true equation says nothing about the others.",
+      "For a value $a$, an equation is true at $a$ exactly when its two sides give the same number after substituting $a$. Each row is checked on its own: one true equation says nothing about the others.",
     example: {
       prompt: "Is $3m + 4 = -11$ true when $m = -5$, and is $m + 6 = 1$ true?",
       steps: [
         "For $3m + 4$: $3 \\cdot (-5) + 4 = -15 + 4 = -11$. The right side is −11, so the equation is true.",
-        "For $m + 6$: $-5 + 6 = 1$. The right side is 1, so the equation is true.",
+        "For $m + 6$: $-5 + 6 = 1$. The right side is 1, so this equation is true too.",
         "With $m = 5$ instead, $3 \\cdot 5 + 4 = 19$ would not equal −11: the sign changes the answer.",
       ],
       answer: "Both equations are true.",
@@ -89,7 +106,7 @@ const entries: FormatLessonEntry[] = [
       "For a fraction of the variable, divide the value: $\\frac{m}{5}$ with $m = -10$ is −2.",
     ],
     formal:
-      "Substitution is a function evaluation: the left side defines $L$ and the right side $R$, and the equation holds at $a$ exactly when $L(a)$ and $R(a)$ are the same real number. A solution of the equation is a value for which this holds.",
+      "Substitution is evaluation. The left side is an expression $L$ and the right side an expression $R$, and the equation holds at $a$ exactly when $L(a)$ and $R(a)$ are the same number. Here $L(a)$ means the value of $L$ when the variable is $a$. A solution of the equation is a value for which this holds.",
     pitfalls: [
       "Keep the sign of a negative value when you substitute it.",
       "Subtracting a negative number adds: $4 - (-5) = 9$.",
@@ -100,8 +117,24 @@ const entries: FormatLessonEntry[] = [
 ];
 
 const built = formatLessons(entries);
-export const multiPartFormatsLessons = built.lessons;
-export const multiPartFormatsMethods = built.methods;
+const glossaryFields = (e: Entry) => ({
+  ...(e.senses ? { senses: e.senses } : {}),
+  ...(e.noLink ? { noLink: e.noLink } : {}),
+});
+export const multiPartFormatsLessons = built.lessons.map((lesson, i) => ({
+  ...lesson,
+  ...glossaryFields(entries[i]!),
+}));
+export const multiPartFormatsMethods = Object.fromEntries(
+  entries.map((e) => [
+    e.id,
+    {
+      ...built.methods[e.id]!,
+      ...(e.goal ? { goal: e.goal } : {}),
+      ...glossaryFields(e),
+    },
+  ]),
+);
 export const multiPartFormatsPrinciples = built.principles;
 
 export const multiPartFormatsFacetMappings: readonly FacetMapping[] = [

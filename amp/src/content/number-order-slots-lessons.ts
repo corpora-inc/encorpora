@@ -1,7 +1,15 @@
 import type { FacetMapping } from "./coverage";
+import type { GlossarySenses } from "../glossary/types";
 import { formatLessons, type FormatLessonEntry } from "./format-lesson-entry";
 
-const entries: FormatLessonEntry[] = [
+type Entry = FormatLessonEntry & {
+  /** The practice-screen task, at most 140 characters; defaults to the summary. */
+  goal?: string;
+  senses?: GlossarySenses;
+  noLink?: string[];
+};
+
+const entries: Entry[] = [
   {
     id: "order-whole-numbers-slots",
     title: "Put large numbers in order",
@@ -101,43 +109,45 @@ const entries: FormatLessonEntry[] = [
   {
     id: "order-rationals-slots",
     title: "Order signed decimals and fractions",
+    goal: "Put signed decimals and fractions in order by writing them as decimals and placing them on a number line.",
     summary:
-      "Write signed numbers as decimals, place them on a number line, and read them from left to right.",
+      "A number line is a line with numbers marked in order, smaller to the left. A negative number is a number less than 0, so it sits left of 0. To order numbers, write each one as a decimal, a number written with a decimal point. Then place it on the number line and read from left to right.",
+    noLink: ["sort", "change", "more than", "mean"],
     objectives: [
       "Rewrite fractions as decimals so every number in a list can be compared.",
       "Order negative and positive numbers, remembering that the negative number farther from zero is lesser.",
     ],
     intuition:
-      "On a number line, numbers farther to the left are lesser. Every negative number is lesser than every positive number, and between two negative numbers the one farther from zero is lesser: $-1.5$ is to the left of $-0.6$. A fraction and a decimal can be compared once both are written the same way, so change each fraction to a decimal by dividing its numerator by its denominator.",
+      "A number line is a line with numbers marked in order, smaller to the left. A negative number is a number less than 0. Every negative number is less than every positive number. A number's absolute value is its distance from 0: $|-1.5|=1.5$. Between two negative numbers, the one with the larger absolute value is farther left, so it is less: $-1.5$ is to the left of $-0.6$. A decimal is a number written with a decimal point, such as 0.75. In a fraction, the top number is called the numerator and the bottom number is called the denominator. To change a fraction to a decimal, divide the numerator by the denominator: $\\frac{3}{4}=3\\div4=0.75$.",
     terms: ["absolute-value", "number-line"],
     method: [
       "Write each number as a decimal; for example $\\frac{3}{4}=0.75$.",
-      "Sort by sign: the negatives are lesser than the positives. Put the negatives in order by absolute value, largest absolute value first.",
+      "Sort by sign: the negatives are less than the positives. Put the negatives in order by absolute value, largest absolute value first.",
       "Read the numbers from left to right for least to greatest, and fill the positions in the direction the question asks.",
     ],
     watch:
-      "Do not order negative numbers by their digits: $-1.5$ is less than $-0.6$ even though 1.5 and 0.6 are in the other order.",
+      "Do not order negative numbers by their digits: $-1.5$ is less than $-0.6$ even though 1.5 is more than 0.6.",
     principle:
-      "For real numbers $a$ and $b$, $a<b$ exactly when $a$ lies to the left of $b$ on the number line. If $a<0<b$ then $a<b$; if $a$ and $b$ are both negative then $a<b$ exactly when $|a|>|b|$.",
+      "Real numbers are all the numbers on the number line. For real numbers $a$ and $b$, $a<b$ exactly when $a$ lies to the left of $b$ on the number line. If $a<0<b$, then $a<b$. If $a$ and $b$ are both negative, then $a<b$ exactly when $|a|>|b|$.",
     example: {
       prompt:
         "Put $-\\frac{3}{4}$, $0.5$, $-1.2$ and $\\frac{1}{4}$ in order from least to greatest.",
       steps: [
-        "As decimals the numbers are $-0.75$, $0.5$, $-1.2$ and $0.25$.",
-        "The negatives are $-1.2$ and $-0.75$. Because 1.2 is farther from zero than 0.75, $-1.2<-0.75$.",
-        "The positives in order are $0.25<0.5$.",
+        "Divide to write each fraction as a decimal: the numbers are $-0.75$, $0.5$, $-1.2$ and $0.25$.",
+        "The negatives are $-1.2$ and $-0.75$. Since 1.2 is farther from zero than 0.75, $-1.2<-0.75$.",
+        "The positives in order are $0.25<0.5$. The negatives come first, then the positives.",
       ],
       answer: "$-1.2$, $-\\frac{3}{4}$, $\\frac{1}{4}$, $0.5$.",
     },
     methodTitle: "Same form, then sign",
     methodText: [
       "Convert first so that every comparison is between decimals.",
-      "A quick check: the first number in a least-to-greatest list is the negative with the largest absolute value, and the last is the positive with the largest value.",
+      "A quick check: when the list has negative numbers, the first number from least to greatest is the negative with the largest absolute value. When it has positive numbers, the last is the largest positive number.",
     ],
     formal:
-      "Define $a<b$ when $b-a$ is positive. For negative numbers $a$ and $b$ this gives $a<b$ exactly when $-a>-b$, that is, when $|a|>|b|$, and any negative number is less than any positive number.",
+      "Define $a<b$ to mean that $b-a$ is positive. For negative numbers $a$ and $b$ this gives $a<b$ exactly when $-a>-b$, that is, when $|a|>|b|$. Any negative number is less than any positive number.",
     pitfalls: [
-      "Do not order by absolute value: that reverses the negative numbers.",
+      "Do not order by absolute value alone: that reverses the negative numbers.",
       "Compare $0.25$ and $0.5$ as 25 hundredths and 50 hundredths, not by the number of digits.",
     ],
     parentGuide:
@@ -146,8 +156,24 @@ const entries: FormatLessonEntry[] = [
 ];
 
 const built = formatLessons(entries);
-export const numberOrderSlotsLessons = built.lessons;
-export const numberOrderSlotsMethods = built.methods;
+const glossaryFields = (e: Entry) => ({
+  ...(e.senses ? { senses: e.senses } : {}),
+  ...(e.noLink ? { noLink: e.noLink } : {}),
+});
+export const numberOrderSlotsLessons = built.lessons.map((lesson, i) => ({
+  ...lesson,
+  ...glossaryFields(entries[i]!),
+}));
+export const numberOrderSlotsMethods = Object.fromEntries(
+  entries.map((e) => [
+    e.id,
+    {
+      ...built.methods[e.id]!,
+      ...(e.goal ? { goal: e.goal } : {}),
+      ...glossaryFields(e),
+    },
+  ]),
+);
 export const numberOrderSlotsPrinciples = built.principles;
 
 export const numberOrderSlotsFacetMappings: readonly FacetMapping[] = [

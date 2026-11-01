@@ -545,7 +545,14 @@ export const baseLessons: Lesson[] = [
     id: "linear-equations",
     title: "Keep an equation balanced",
     summary:
-      "An equation says two amounts are equal, like a balanced scale. A letter such as $x$ stands for a missing number; $3x$ means three times that number. Undo what was done to $x$, making the same change on both sides.",
+      "An equation says two amounts are equal, like a balanced pan scale. Its two sides are the amounts to the left and right of the equals sign. A variable is a letter, such as $x$, that stands for a missing number, and $3x$ means 3 times that number. To find $x$, undo what was done to it. Make the same change on both sides so they stay equal.",
+    senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      "left side": "side-of-equation",
+      "right side": "side-of-equation",
+    },
+    noLink: ["scale", "change"],
     templateIds: ["linear-equation"],
     objectives: [
       "Solve a two-step linear equation.",
@@ -553,17 +560,18 @@ export const baseLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Equality is a balance",
         paragraphs: [
-          "An equation states that two expressions have the same value. Subtracting the same amount from both sides preserves equality. Dividing both sides by the same nonzero number also preserves equality.",
-          "To solve ax + b = c with a nonzero, subtract $b$ first and then divide by $a$. These operations undo addition and multiplication.",
+          "An equation has two sides: the amounts to the left and right of its equals sign. A solution is a value of $x$ that makes the two sides equal. Subtracting the same amount from both sides keeps them equal. Dividing both sides by the same number also keeps them equal, as long as that number is not 0.",
+          "In $3x + 5 = -7$, two things were done to $x$: multiply by 3, then add 5. Undo them in reverse order: subtract 5 first, then divide by 3. The number multiplying $x$, here 3, is called the coefficient.",
         ],
       },
       {
         title: "Check in the original equation",
         paragraphs: [
-          "Replace $x$ with your proposed solution. Compute the left side and compare it with the right side.",
-          "Negative solutions are possible. Follow the signs carefully when the right side minus the constant is negative.",
+          "To substitute means to put a number in place of a letter. Substitute your answer for $x$ in the original equation. Work out the left side and compare it with the right side.",
+          "Negative solutions are possible. In $3x + 5 = -7$, subtracting 5 gives $-12$, so follow the signs carefully.",
         ],
       },
     ],
@@ -572,23 +580,23 @@ export const baseLessons: Lesson[] = [
         stage: "formal",
         title: "Equivalent equations",
         paragraphs: [
-          "An equation states equality between two expressions. A solution is a value for the unknown that makes the original equality true. Adding or subtracting the same quantity on both sides preserves equality; multiplying or dividing both sides by the same nonzero quantity preserves equality as well.",
-          "For real constants $a,b,c$ with $a \\ne 0$, the equation $ax+b=c$ has the unique solution $x=(c-b)/a$. Here $a$ is the coefficient, the number multiplying the unknown $x$. Substitution checks the solution in the original equation.",
+          "An equation states that two expressions have the same value. A solution is a value of the unknown that makes the original equation true. Adding or subtracting the same quantity on both sides keeps the same solutions. So does multiplying or dividing both sides by the same quantity, as long as it is not 0.",
+          "Real numbers are all the numbers on the number line. For real numbers $a$, $b$ and $c$ with $a \\ne 0$, the equation $ax+b=c$ has exactly one solution, $x=\\frac{c-b}{a}$. Here $a$ is the coefficient, the number multiplying the unknown $x$. Substitution checks the solution in the original equation.",
         ],
       },
     ],
     workedExample: {
-      prompt: "Solve 3x + 5 = −7.",
+      prompt: "Solve $3x + 5 = -7$.",
       steps: [
-        "Subtract 5 from both sides: 3x = −12.",
-        "Divide both sides by 3: x = −4.",
-        "Check: 3(−4) + 5 = −12 + 5 = −7.",
+        "Subtract 5 from both sides to undo the + 5: $3x = -12$.",
+        "Divide both sides by 3 to undo the multiplication: $x = -4$.",
+        "Check in the original: $3(-4) + 5 = -12 + 5 = -7$. Both sides are $-7$.",
       ],
       answer: "-4",
     },
     pitfalls: [
-      "Changing only one side usually destroys equality.",
-      "The coefficient multiplies $x$; remove it by division, not subtraction.",
+      "Changing only one side breaks the equality, and the new equation has a different solution.",
+      "The coefficient multiplies $x$, so remove it by dividing, not by subtracting.",
     ],
     parentGuide:
       "Ask which operation the learner is undoing and why the same change must happen on both sides. Let substitution settle disagreements.",
@@ -597,7 +605,9 @@ export const baseLessons: Lesson[] = [
     id: "statistics-mean",
     title: "Mean as a fair share",
     summary:
-      "The mean is what each group would have if you shared the total equally. Imagine several bags holding different amounts. Add everything together, then split that total into as many equal shares as there are bags.",
+      "The mean is what each group would get if the total were shared equally. Picture several bags holding different numbers of marbles. Add all the marbles together. Then split that total into as many equal shares as there are bags. One share is the mean.",
+    senses: { mean: "mean-average", "arithmetic mean": "mean-average" },
+    noLink: ["units", "model", "part"],
     templateIds: ["mean-data"],
     objectives: [
       "Compute an arithmetic mean.",
@@ -605,17 +615,18 @@ export const baseLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Find the total and the count",
         paragraphs: [
-          "Add all observations, including repeated values. Divide that total by the number of observations. The result is the arithmetic mean.",
-          "Imagine sharing the total equally. If five bags contain different numbers of marbles, the mean is the amount per bag after an equal redistribution, allowing fractional amounts in the calculation.",
+          "Data is a set of values, and each value is called an observation. Add all the observations, including repeated values. Then divide that total by the number of observations. The result is the mean, also called the arithmetic mean or the average.",
+          "Picture sharing the total equally. If five bags hold different numbers of marbles, the mean is how many each bag holds after you even them out. In the calculation, a share can include part of a marble.",
         ],
       },
       {
         title: "Interpret the answer",
         paragraphs: [
-          "A mean can be a fraction or decimal even when all observations are whole numbers. It need not appear anywhere in the original dataset.",
-          "One unusually large observation pulls the mean upward. The median, which uses the middle position in sorted data, describes a different feature.",
+          "A mean can be a fraction or a decimal, a number with a decimal point, even when every observation is a whole number. It does not have to be one of the values in the list.",
+          "One very large observation pulls the mean up. The median, the middle value when the list is in order, describes something different.",
         ],
       },
     ],
@@ -624,7 +635,7 @@ export const baseLessons: Lesson[] = [
         stage: "formal",
         title: "The arithmetic mean",
         paragraphs: [
-          "For a nonempty finite list of real numbers, the arithmetic mean is the sum of all entries divided by the number of entries. Every occurrence counts, including repeated values. The mean has the same units as the entries.",
+          "Real numbers are all the numbers on the number line. For a list of one or more real numbers, the arithmetic mean is the sum of all the entries divided by the number of entries. Every occurrence counts, including repeated values. The mean has the same units as the entries.",
           "The mean lies between the smallest and largest entries. It need not be one of the listed values or a whole number. The median is the middle value of the sorted list, or the mean of its two middle values when the list has an even number of entries.",
         ],
       },
@@ -632,24 +643,30 @@ export const baseLessons: Lesson[] = [
     workedExample: {
       prompt: "What is the mean of 3, 4, 4, 7, 8?",
       steps: [
-        "Add every value: 3 + 4 + 4 + 7 + 8 = 26.",
-        "There are 5 values.",
-        "26 ÷ 5 = 26/5 = 5.2.",
+        "Add every value, including both 4s: $3 + 4 + 4 + 7 + 8 = 26$.",
+        "Count the values: there are 5.",
+        "Share the total equally: $26 \\div 5 = \\frac{26}{5} = 5.2$.",
       ],
       answer: "26/5",
     },
     pitfalls: [
-      "Count observations, not just distinct values.",
-      "Dividing by the largest value or finding the middle value does not compute the mean.",
+      "Count every observation, including repeated ones, not just the different values.",
+      "Dividing by the largest value, or picking the middle value, does not give the mean.",
     ],
     parentGuide:
-      "Use five small piles of counters. Redistribute them to model a fair share, then discuss why a fractional mean can be meaningful even when counters are indivisible.",
+      "Use five small piles of counters. Move counters between piles until they are even, to model a fair share. Then discuss why a mean with a fraction makes sense even when counters cannot be split.",
   },
   {
     id: "quadratics",
     title: "Read a quadratic minimum",
     summary:
-      "A real number is any number on the usual number line, including fractions and negatives. Its square cannot be negative. In $f(x)$, $x$ is the input and $f(x)$ is the output. If a rule doubles a square and adds five, its lowest output is five.",
+      "A real number is any number on the number line, including fractions and negative numbers, the numbers less than 0. A number squared is the number multiplied by itself, and it is never negative. The input is the number you put into a rule, and the output is the number you get out. We write $f(x)$, read “$f$ of $x$”, for the output of a rule $f$ at the input $x$. A rule that doubles a square and then adds 5 has a lowest output of 5. That lowest output is called the minimum value.",
+    senses: {
+      square: "square-number",
+      squared: "square-number",
+      vertex: "vertex-parabola",
+    },
+    noLink: ["multiple", "rule", "face", "more than", "part", "side"],
     templateIds: ["quadratic-vertex"],
     objectives: [
       "Interpret a positive multiple of a square.",
@@ -657,17 +674,19 @@ export const baseLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "A square cannot be negative",
         paragraphs: [
-          "For real x, (x − h)² is at least zero. It becomes zero exactly when x = h. Multiplying by a positive coefficient preserves this lower bound.",
-          "Therefore f(x) = a(x − h)² + k with a positive has minimum value $k$. The vertex is the point $(h, k)$.",
+          "For any real number $x$, $(x-3)^{2}$ means $(x-3)$ times $(x-3)$. A positive times a positive is positive, and a negative times a negative is positive too. At least means equal to or more than. So $(x-3)^{2}$ is at least 0, and we write $(x-3)^{2} \\ge 0$. It equals 0 exactly when $x=3$, because then $x-3=0$.",
+          "Multiplying by the positive number 2 keeps this, so $2(x-3)^{2}$ is also at least 0. Adding 5 gives an output of at least 5. The smallest output, 5, happens at $x=3$.",
+          "In general, $f(x)=a(x-h)^{2}+k$ with $a$ positive has minimum value $k$, reached at $x=h$. The point $(h,k)$ is called the vertex. Its coordinates are its two numbers: $h$ across and $k$ up.",
         ],
       },
       {
         title: "Input and output are different",
         paragraphs: [
-          "The input $h$ tells where the minimum occurs. The output $k$ tells the minimum value. Read the question carefully to decide which is requested.",
-          "A negative coefficient opens the parabola downward and gives a maximum instead. This lesson’s practice uses positive coefficients and a real-number domain.",
+          "The input $h$ tells where the minimum happens. The output $k$ tells the minimum value. Read the question carefully to see which one it asks for.",
+          "A negative number in front, $a<0$, turns the curve upside down. Then $k$ is the maximum, the highest output, instead. This lesson’s practice uses positive $a$ and real-number inputs.",
         ],
       },
     ],
@@ -676,27 +695,27 @@ export const baseLessons: Lesson[] = [
         stage: "formal",
         title: "Vertex form and extreme values",
         paragraphs: [
-          "For real constants $a,h,k$ with $a \\ne 0$, the quadratic function $f(x)=a(x-h)^2+k$ is in vertex form. Its graph is a parabola, a bowl-shaped curve that may face upward or downward. Its vertex $(h,k)$ is the turning point, and its domain is all real-number inputs.",
+          "A function is a rule that gives exactly one output for each input. For real numbers $a$, $h$ and $k$ with $a \\ne 0$, the function $f(x)=a(x-h)^2+k$ is called quadratic. This way of writing it is called vertex form. Its graph is a parabola (a bowl-shaped curve that opens up or down). Its vertex $(h,k)$ is the turning point. Its domain, the set of allowed inputs, is all real numbers.",
           "Because $(x-h)^2 \\ge 0$ for every real $x$, with equality exactly at $x=h$, a positive $a$ gives a minimum output $k$ at input $h$. A negative $a$ gives a maximum output $k$ at the same input. The input where the extreme occurs and the extreme output are different quantities.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "For real $x$, what is the minimum value of f(x) = 2(x − 3)² + 5?",
+        "For real $x$, what is the minimum value of $f(x) = 2(x - 3)^2 + 5$?",
       steps: [
-        "The squared expression is nonnegative, so 2(x − 3)² ≥ 0.",
-        "At x = 3, the squared expression is zero.",
-        "The smallest output is 0 + 5 = 5.",
+        "A square is never negative, so $(x - 3)^2 \\ge 0$. Multiplying by the positive 2 keeps it that way: $2(x - 3)^2 \\ge 0$.",
+        "At $x = 3$, $x - 3 = 0$, so the squared part is 0, its smallest possible value.",
+        "So the smallest output is $0 + 5 = 5$.",
       ],
       answer: "5",
     },
     pitfalls: [
       "The $x$-coordinate of the vertex is not the minimum output.",
-      "The coefficient’s sign determines whether the vertex is a minimum or maximum.",
+      "The sign of $a$ decides whether the vertex is a minimum or a maximum.",
     ],
     parentGuide:
-      "Make a small table for x = 1, 2, 3, 4, 5. Compare the symmetric outputs and distinguish the input 3 from the minimum value 5.",
+      "Make a small table for $x$ = 1, 2, 3, 4, 5. Compare the outputs on each side of 3, and tell apart the input 3 from the minimum value 5.",
   },
 ];
 
