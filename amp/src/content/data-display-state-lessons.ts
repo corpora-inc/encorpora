@@ -36,7 +36,7 @@ export const dataDisplayStateMethods: Record<string, ProblemMethod> = {
   "frequency-table-build": {
     goal: "Count whole-number data into a frequency table, from a list, a dot plot or equal-width intervals.",
     intuition:
-      "A frequency table shows how many times each number comes up in a list. That count is called the frequency. A number line is a line with numbers in order, evenly spaced. A dot plot shows the same thing: one dot above the number line, right above each number in the list. Sometimes the table uses groups, like 0 to 9, instead of single numbers. Each group includes both of its end numbers.",
+      "A frequency table shows how many times each number comes up in a list. That count is called the frequency. A number line is a line with numbers in order, evenly spaced. A dot plot shows the same thing: one dot above the number line, right above each number in the list. Sometimes the table uses intervals, groups of numbers like 0 to 9, instead of single numbers. Each group includes both of its end numbers.",
     terms: [
       "frequency",
       ["interval", "Here each interval includes both of its end values."],
@@ -259,7 +259,7 @@ export const dataDisplayStateLessons: Lesson[] = [
         title: "Dot plots and groups",
         paragraphs: [
           "A number line is a line with numbers in order, evenly spaced. A dot plot shows the same counts with dots. It puts one dot above the number line for each number in the list, right above that number. The frequency of a number is the number of dots above it. A number with no dots has frequency 0, and it still gets a row.",
-          "When the numbers are very spread out, put them in equal groups, like 0 to 9, 10 to 19 and 20 to 29. Each group includes both of its end numbers, so 10 belongs in 10 to 19. The frequency of a group is how many numbers in the list fall in it.",
+          "When the numbers are very spread out, put them in equal groups, called intervals, like 0 to 9, 10 to 19 and 20 to 29. Each group includes both of its end numbers, so 10 belongs in 10 to 19. The frequency of a group is how many numbers in the list fall in it.",
         ],
       },
       {

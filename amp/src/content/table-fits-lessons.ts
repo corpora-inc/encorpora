@@ -9,12 +9,12 @@ export const tableFitsMethods: Record<string, ProblemMethod> = {
       "A survey asks people a question and records their answers. A table shows how many people gave each answer. Here each person gives exactly one answer. The story tells you some facts: how many people answered, and how many choices there were. The right table must match every fact. Check them one at a time.",
     terms: ["survey", "two-way-table"],
     method: [
-      "Write down what the story tells you: the number of people, the number of choices, or the total for each row and column. A row goes across a table, and a column goes up and down.",
+      "Write down what the story tells you: the number of people, the number of choices, or the total for each row and any column total it gives. A row goes across a table, and a column goes up and down.",
       "Add the counts in each table. A two-way table sorts people two ways at once, so add each row and each column.",
       "Keep the table that matches every fact. Each other table breaks at least one fact.",
     ],
     watch:
-      "A table can have the right total and still have the wrong number of choices. Check every fact.",
+      "A table can have the right total and still have the wrong number of choices. It can have the right row totals and a wrong column total. Check every fact.",
   },
 };
 
@@ -38,7 +38,7 @@ export const tableFitsLessons = [
     opening: [
       "A survey asks people a question. Say 14 students each pick one of 4 lunches.",
       "Each student picks exactly one lunch, so every student is counted once. The counts must add up to 14. The table must also show 4 lunches. A table that adds up to 13 is wrong. A table with 5 lunches is wrong too.",
-      "A two-way table sorts the same students two ways at once, like by grade and by lunch. A row goes across, and a column goes up and down. Each grade has a row, and each lunch has a column. A total is how many altogether. The counts across a row add up to that row's total. The counts down a column add up to that column's total.",
+      "A two-way table sorts the same students two ways at once, like by grade and by boy or girl. A row goes across, and a column goes up and down. Each grade has a row. Boys have a column, and girls have a column. A total is how many altogether. The counts across a row add up to that row's total. The counts down a column add up to that column's total.",
     ],
     example: {
       prompt:

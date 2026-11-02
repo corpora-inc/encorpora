@@ -18,7 +18,7 @@ export const lineGraphReadMethods: Record<string, ProblemMethod> = {
     method: [
       "Check what the scale counts by. Then read the height of each point you need.",
       "Write the amounts you read as a list, in order. Answer greatest, least or closest questions from the list.",
-      "For a change, subtract the earlier amount from the later one. For the greatest increase, find the change between every pair of neighboring points and pick the biggest one above 0.",
+      "For a change, subtract the earlier amount from the later one. For the greatest increase, find the change between every pair of neighboring points and pick the biggest one above 0. For the greatest decrease, pick the change farthest below 0.",
     ],
     watch:
       "The highest point and the biggest rise are different questions. A big rise can start from a low point and still end below the highest point.",
@@ -32,7 +32,7 @@ export const lineGraphReadMethods: Record<string, ProblemMethod> = {
     method: [
       "Write the value of every dot as a list. A stack of dots puts that value in the list once for each dot.",
       "For the total, add them all. For the range, subtract the least value from the greatest. When one value is missing from a given total, the missing value is the given total minus the total of the dots shown.",
-      "A mixed number, like 2 1/4, is a whole number and a fraction together. In these plots, all the values use the same size of parts, like fourths. Add or subtract the fraction parts, then the whole numbers. If the fraction parts make a whole or more, take out the whole. If a fraction part is too small to subtract from, trade 1 whole for 4 fourths first.",
+      "A mixed number, like 2 1/4, is a whole number and a fraction together. First write every fraction part in the plot's smallest part, halves or fourths: 1/2 is 2/4. Add or subtract the fraction parts, then the whole numbers. If the fraction parts make a whole or more, take out the whole. If a fraction part is too small to subtract from, trade 1 whole for 2 halves or 4 fourths first.",
     ],
     watch:
       "Do not add each different value only once. A value with two dots is added twice.",
@@ -125,7 +125,7 @@ export const lineGraphReadLessons = [
       "Write the value of each dot, repeating a value once for each dot above it.",
       "Total: add the list. Range: greatest minus least.",
       "Missing value: the story gives the total of all the values, but one dot is missing. The given total is the dots shown plus the missing value. So the missing value is the given total minus the total of the dots.",
-      "For mixed numbers in these plots, all the values use the same size of parts, like fourths. Add the fraction parts, then the whole numbers. If the fraction parts make a whole or more, like 5/4, take out the whole: 5/4 is 1 and 1/4.",
+      "For mixed numbers, first write every fraction part in the plot's smallest part, halves or fourths: 1/2 is 2/4. Add the fraction parts, then the whole numbers. If the fraction parts make a whole or more, like 5/4, take out the whole: 5/4 is 1 and 1/4.",
     ],
     formalTitle: "Total, range and the missing value",
     formal: [

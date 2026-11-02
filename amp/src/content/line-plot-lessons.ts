@@ -192,7 +192,7 @@ export const linePlotLessons: Lesson[] = [
     },
     pitfalls: [
       "Do not subtract the denominators. The size of each part stays the same.",
-      "Write a mixed number, a whole number with a fraction like 2 3/4, as fourths before you subtract. Or subtract the wholes and the parts separately. If the first fraction part is smaller, trade 1 whole for 4 fourths first.",
+      "Write a mixed number, a whole number with a fraction like 2 3/4, as fourths or eighths before you subtract. Or subtract the wholes and the parts separately. If the first fraction part is smaller, trade 1 whole for 4 fourths, or 8 eighths, first.",
     ],
     parentGuide:
       "Use a ruler marked in eighths. Measure two objects and find how much longer one is by counting the eighth-inch spaces between their lengths.",

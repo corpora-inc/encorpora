@@ -250,7 +250,7 @@ export const earlyDataMethods: Record<string, ProblemMethod> = {
   "picture-graph-questions": {
     goal: "Use a picture graph where each symbol is one student to find a total or a difference.",
     intuition:
-      "A picture graph uses small pictures to show counts. Each row is one choice. Here each picture stands for 1 student. In all means every row put together, so add. How many more or how many fewer means take the smaller count away from the bigger count.",
+      "A picture graph uses small pictures, called symbols, to show counts. Each row is one choice. Here each symbol stands for 1 student. In all means every row put together, so add. How many more or how many fewer means take the smaller count away from the bigger count.",
     senses: { difference: "difference-subtract" },
     method: [
       "Count the pictures in each row the question names.",
@@ -262,7 +262,7 @@ export const earlyDataMethods: Record<string, ProblemMethod> = {
   "scaled-picture-graph": {
     goal: "Read a picture graph whose symbol stands for 2, 5 or 10 and compare rows.",
     intuition:
-      "A picture graph uses small pictures to show counts. The key is the note that says how many each picture stands for, like 2 students. Half a picture stands for half of that. With a key of 2, 3 whole pictures are 3 × 2 = 6, and a half picture adds 1 more.",
+      "A picture graph uses small pictures, called symbols, to show counts. The key is the note that says how many each picture stands for, like 2 students. Half a picture stands for half of that. With a key of 2, 3 whole pictures are 3 × 2 = 6, and a half picture adds 1 more.",
     terms: [["key", "Half a symbol stands for half the key's amount."]],
     senses: { key: "key", difference: "difference-subtract" },
     method: [
@@ -284,7 +284,7 @@ export const earlyDataMethods: Record<string, ProblemMethod> = {
     ],
     senses: { scale: "scale-axis", difference: "difference-subtract" },
     method: [
-      "Find what the scale counts by from its numbers.",
+      "Find what the lines on the scale count by. The numbers may be written only on some lines.",
       "Read where each named bar ends, including halfway values.",
       "For a combined amount, add first. Then subtract to compare.",
     ],

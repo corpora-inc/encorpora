@@ -176,7 +176,7 @@ export const graphicalLessons: Lesson[] = [
         title: "Read what each bar counts",
         paragraphs: [
           "The name under each bar tells which group it counts. The words beside the scale tell what is counted. In these charts, it is trees.",
-          "Sometimes each line on the scale counts by 1. Sometimes it counts by 2 or 5. So read the numbers on the scale, not the number of lines.",
+          "Each line on the scale counts by 1. The numbers may be written only on every other line, like 0, 2, 4. A bar that ends on the line between 4 and 6 shows 5.",
         ],
       },
       {
@@ -290,7 +290,7 @@ export const graphicalLessons: Lesson[] = [
         stage: "intuition",
         title: "Move from start to finish",
         paragraphs: [
-          "Say a trip starts at 2:45 and ends at 3:10. Count on from the start. At 2:45 the long hand is at 9. Moving to 12 passes 3 numbers, and each is 5 minutes. So from 2:45 to 3:00 is 15 minutes. From 3:00 to 3:10 is 10 more minutes. In all, 15 + 10 = 25 minutes.",
+          "Say a trip starts at 2:45 and ends at 3:10. Count on from the start. At 2:45 the long hand is at 9. Moving from 9 to 12 is 3 jumps, and each jump is 5 minutes. So from 2:45 to 3:00 is 15 minutes. From 3:00 to 3:10 is 10 more minutes. In all, 15 + 10 = 25 minutes.",
           "Going past 3:00 does not start the count over. Keep adding.",
         ],
       },
