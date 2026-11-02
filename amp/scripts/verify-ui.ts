@@ -274,6 +274,13 @@ try {
     /with (a hint|the lesson)/i,
   );
   await page.keyboard.press("Escape");
+  // Feedback can render before the answer dialog's close/focus effects commit.
+  // Observe the actual restored focus, rather than sampling the interim body.
+  await page.waitForFunction(
+    () => document.activeElement === document.querySelector(".next-action"),
+    undefined,
+    { timeout: 2_000 },
+  );
   assert.equal(
     await page.evaluate(() => document.activeElement?.textContent),
     "Next →",
