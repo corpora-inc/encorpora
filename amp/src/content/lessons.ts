@@ -285,54 +285,65 @@ export const baseLessons: Lesson[] = [
     id: "counting",
     title: "One object, one count",
     summary:
-      "Connect each object with one number word and use the last number to name the total.",
+      "To count, you say one number for each thing. The counting numbers are 1, 2, 3, 4, 5 and so on. Touch each thing once as you say its number. The last number you say tells how many things there are. That number is called the total.",
     templateIds: ["count-objects"],
+    noLink: ["change"],
     objectives: [
-      "Count each object exactly once.",
-      "Explain that rearranging objects does not change their number.",
+      "Count a group by touching each object once and saying one number for it.",
+      "Explain that moving the objects around does not change how many there are.",
     ],
     sections: [
       {
-        stage: "method",
-        title: "Keep track",
+        stage: "intuition",
+        title: "One number for each thing",
         paragraphs: [
-          "Put a finger beside the first object. Say one. Move to a new object and say two. Keep going until every object has a number word.",
-          "For scattered objects, move each counted object into a separate group. For a picture, point in a steady order so no object gets counted twice.",
+          "Put 3 apples in a row. Touch the first apple and say 1. Touch the next apple and say 2. Touch the last apple and say 3.",
+          "Each apple got one number, and no apple got two. The last number you said is 3. So there are 3 apples.",
         ],
       },
       {
         stage: "method",
-        title: "The last word tells how many",
+        title: "Keep track",
         paragraphs: [
-          "When you finish counting, the last number names the size of the whole group. You do not need to begin counting again when someone asks how many.",
-          "Spread the same objects apart and count them again. The group takes more space, but it has the same number of objects.",
+          "Touch the first object and say 1. Move to the next object and say 2. Keep going until every object has a number.",
+          "Some objects can be moved, like blocks on a table. Slide each one aside after you count it. Then you can see which ones are left.",
+          "Dots in a picture cannot be moved. Count them in a steady order, such as left to right along each row. That way no dot gets counted twice.",
+        ],
+      },
+      {
+        stage: "method",
+        title: "The last number tells how many",
+        paragraphs: [
+          "When you finish, the last number you said is how many there are. If someone asks how many, say that number. You do not need to count again.",
+          "Now spread the same objects far apart and count again. They take up more room, but the count is the same. Moving objects does not add any or take any away.",
         ],
       },
     ],
     closingSections: [
       {
         stage: "formal",
-        title: "Counting a finite collection",
+        title: "Counting a group",
         paragraphs: [
-          "A finite collection has a number of objects that counting can finish. Match each object to exactly one number word in order, beginning with one. The last number gives the collection’s cardinality, meaning its number of objects. A collection with no objects has cardinality zero.",
-          "Changing the order or position of the objects does not change the cardinality, provided no objects are added or removed.",
+          "Counting matches each object with exactly one counting number. The numbers are said in order, starting with 1. The last number said is how many objects the group has. This number is called the group’s cardinality. A group with no objects has 0 objects.",
+          "Moving the objects, or counting them in a different order, does not change how many there are. This is true as long as no objects are added or taken away.",
         ],
       },
     ],
     workedExample: {
       prompt: "Count these dots: ● ● ● ● ●",
       steps: [
-        "Point to each dot while saying one, two, three, four, five.",
-        "The last number word is five.",
+        "Touch the first dot and say one. Then touch each next dot and say the next number: two, three, four, five.",
+        "Every dot got exactly one number. So no dot was missed, and none was counted twice.",
+        "The last number you said is five. It tells how many dots there are.",
       ],
       answer: "5",
     },
     pitfalls: [
-      "Saying number words faster than you point can skip or double-count an object.",
-      "A longer row does not necessarily contain more objects.",
+      "Say one number each time you touch one object. Saying numbers faster than you touch can skip an object or count one twice.",
+      "A longer row does not always have more objects. Count to find out.",
     ],
     parentGuide:
-      "Use five buttons or blocks. Ask the learner to count, rearrange them, and explain whether the number changed. Accept pointing or moving objects as a strategy.",
+      "Use five buttons or blocks. Ask the learner to count them, then spread them out or bunch them up. Ask whether the number changed, and why. Touching or moving each object are both good ways to keep track.",
   },
   {
     id: "addition",

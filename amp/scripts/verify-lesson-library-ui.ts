@@ -277,6 +277,10 @@ try {
     );
     await settle(page, 200);
     check((await visibleRows(page)) === geometry, "Forward restores the area");
+    // Curriculum grouping is optional; revealing it preserves all rows.
+    await page
+      .getByRole("checkbox", { name: "Show grades and estimates" })
+      .check();
     // A band section folds and unfolds without leaving the page.
     const band = page.locator("section[data-band]:visible").first();
     const toggle = band.getByRole("button", { expanded: true });

@@ -126,6 +126,12 @@ async function serve(page: Page, s: State) {
   await page.route("**/api/v1/**", async (route) => {
     const req = route.request(),
       path = new URL(req.url()).pathname.replace("/api/v1", "");
+    if (path === "/trials/current")
+      return route.fulfill({ json: { trial: null } });
+    if (path === "/events/context")
+      return route.fulfill({ json: { generation: "initial" } });
+    if (path === "/events")
+      return route.fulfill({ status: 202, json: { accepted: 1 } });
     if (path === "/me")
       return route.fulfill({
         status: s.failMe ? 503 : 200,

@@ -23,7 +23,7 @@ jobs:
     name: smoke
     # Only run when the deploy actually succeeded (or on manual dispatch).
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust

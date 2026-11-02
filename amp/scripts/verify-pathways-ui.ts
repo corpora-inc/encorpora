@@ -718,6 +718,9 @@ async function verifySearchFilters() {
         "Deleting keeps the keyboard focused on search",
       );
       assert.equal(new URL(page.url()).searchParams.get("filter"), "K");
+      await page
+        .getByRole("checkbox", { name: "Show grades and estimates" })
+        .check();
       const grade = page.getByRole("button", { name: /^Grade or course/ });
       assert.equal(await grade.getAttribute("data-value"), "K");
       const gradeBox = await grade.boundingBox();
@@ -909,10 +912,7 @@ try {
         await page.locator('link[rel="canonical"]').getAttribute("href"),
         `https://amp.corpora.inc/pathways/${target.id}`,
       );
-      assert.equal(
-        await page.title(),
-        `${target.title} · Algebra 2 | AMP Pathways`,
-      );
+      assert.equal(await page.title(), `${target.title} | AMP Pathways`);
       assert.match(
         (await page
           .getByRole("link", { name: "Try a problem" })
@@ -982,6 +982,19 @@ try {
           .getByRole("heading", { name: target.title, exact: true })
           .waitFor();
       }
+      assert.equal(
+        await page.getByText("Algebra frontier:", { exact: false }).count(),
+        0,
+      );
+      await page
+        .getByRole("button", { name: "Browse skills", exact: true })
+        .click();
+      await page
+        .getByRole("checkbox", { name: "Show grades and estimates" })
+        .check();
+      await page
+        .getByRole("button", { name: "Close browser", exact: true })
+        .click();
       await page.getByText("Algebra frontier:", { exact: false }).waitFor();
       await page.getByRole("button", { name: "Zoom in", exact: true }).click();
       await noOverflow(page);
@@ -1414,12 +1427,12 @@ try {
       "long skill card grows the phone document",
     );
     await phone
-      .locator(".pathways-detail > ul li:last-child")
+      .locator(".pathways-detail .pathways-connections li:last-child")
       .last()
       .evaluate((el) => el.scrollIntoView({ block: "end" }));
     assert(
       await phone
-        .locator(".pathways-detail > ul li:last-child")
+        .locator(".pathways-detail .pathways-connections li:last-child")
         .last()
         .evaluate((el) => el.getBoundingClientRect().bottom <= innerHeight + 1),
       "last relationship stays reachable by page scroll",
@@ -1602,13 +1615,23 @@ try {
       await related
         .getByText("When each kit holds two items", { exact: false })
         .waitFor();
-      assert.equal(await related.locator("p").count(), 4);
+      for (const explanation of [
+        "Adding an even number keeps a number odd or even",
+        "An even positive whole number has 2 as a factor",
+        "When each kit holds two items",
+        "Even and odd outcomes form sets",
+      ])
+        assert.equal(
+          await related.getByText(explanation, { exact: false }).count(),
+          1,
+        );
+
       const application = related.getByRole("link", { name: /Event sets/ });
       assert.equal(
         await application.getAttribute("href"),
         "/pathways/event-sets",
       );
-      await related.scrollIntoViewIfNeeded();
+      await application.scrollIntoViewIfNeeded();
       await noOverflow(parity);
       if (width <= 390)
         assert(

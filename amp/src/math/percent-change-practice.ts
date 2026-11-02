@@ -163,13 +163,13 @@ export function percentChangePrintCase(
       ? `The original ${B}${pct} is the base. Find the change, ${sign < 0 ? B : F} − ${sign < 0 ? F : B}, then write it as a fraction of ${B}.`
       : `It starts at ${B}${pct} and ends at ${B}${pct}. How much did it change, as a fraction of ${B}${pct}?`;
     explanation.push(
-      `The original ${context === "share" ? "share" : "quantity"}, ${B}${context === "share" ? "%" : ""}, is the base for this change.`,
-      `Amount of change: ${sign < 0 ? B : F} − ${sign < 0 ? F : B} = ${decimal(delta)}${context === "share" ? (delta.n === delta.d ? " percentage point" : " percentage points") : ""}.`,
-      `Change as a fraction of the original: ${decimal(delta)} ÷ ${B} = ${num(factor)}.`,
-      `Convert the ratio to a percent: ${num(factor)} × 100 = ${num(p)}.`,
-      sign
-        ? `The relative ${direction} is ${P}.`
-        : `The quantity is unchanged, so the percent change is 0%.`,
+      `A percent change compares the change to the starting amount, called the base.`,
+      `The starting ${context === "share" ? "share" : context === "price" ? "price" : "quantity"}, ${B}${pct}, is the base, because the change is measured from where it began.`,
+      context === "share"
+        ? `Find the change by subtracting the shares: ${sign < 0 ? B : F} − ${sign < 0 ? F : B} = ${decimal(delta)}. This plain gap between two percents is ${decimal(delta)} ${delta.n === delta.d ? "percentage point" : "percentage points"}.`
+        : `Find the change by subtracting: ${sign < 0 ? B : F} − ${sign < 0 ? F : B} = ${decimal(delta)}.`,
+      `Divide the change by the base to see what part of the base it is: ${decimal(delta)} ÷ ${B} = ${num(factor)}.`,
+      `Percent means "out of 100," so multiply by 100: ${num(factor)} × 100 = ${num(p)}.`,
     );
   } else {
     const noun = context === "price" ? "A price" : "A quantity",
@@ -195,35 +195,57 @@ export function percentChangePrintCase(
         ? `${P} of ${B} is ${num(factor)} × ${B}. Find that amount, then ${sign > 0 ? "add it to" : "subtract it from"} ${B}.`
         : `A 0% change adds nothing to ${B}.`;
     explanation.push(
-      `Write the percentage as a fraction: ${num(p)} ÷ 100 = ${num(factor)}.`,
+      `Percent means "out of 100," so ${P} is the fraction ${num(p)} ÷ 100 = ${num(factor)}.`,
       sign
-        ? `The final quantity is ${sign > 0 ? "the original plus" : "the original minus"} this fraction of the original: 1 ${operation} ${num(factor)} = ${num(multiplier)}.`
-        : "A 0% change leaves the original quantity unchanged; its multiplier is 1.",
+        ? `${reverse ? `The ${P} is a part of the original, not of the final ${F}. ` : ""}The final amount is the original ${sign > 0 ? "plus" : "minus"} ${num(factor)} of it: 1 ${operation} ${num(factor)} = ${num(multiplier)} of the original.`
+        : "A 0% change adds or removes nothing, so the final amount equals the original.",
     );
     if (reverse) {
       explanation.push(
-        `Divide the final quantity by ${num(multiplier)}. Multiply by its reciprocal: ${F} × ${num(q(multiplier.d, multiplier.n))} = ${B}.`,
+        sign
+          ? `So the final ${F} is ${num(multiplier)} × the original. Undo that by dividing by ${num(multiplier)}, which is the same as multiplying by its flip, ${num(q(multiplier.d, multiplier.n))}: ${F} × ${num(q(multiplier.d, multiplier.n))} = ${B}.`
+          : `So the original is the same as the final amount, ${B}.`,
       );
     } else {
       explanation.push(
         `Amount ${sign < 0 ? "removed" : "added"}: ${B} × ${num(factor)} = ${decimal(delta)}.`,
         sign
-          ? `Final quantity: ${B} ${operation} ${decimal(delta)} = ${F}.`
-          : `Final quantity: ${B} + 0 = ${F}.`,
+          ? `Final ${context === "price" ? "price" : "quantity"}: ${B} ${operation} ${decimal(delta)} = ${F}.`
+          : `Final ${context === "price" ? "price" : "quantity"}: ${B} + 0 = ${F}.`,
       );
     }
   }
   if (!rateTask && !reverse)
     explanation.push(
-      `Check using the final multiplier: ${B} × ${num(multiplier)} = ${F}.`,
+      sign
+        ? `Check in one step: multiplying by ${num(multiplier)} does the same thing. ${B} × ${num(multiplier)} = ${F}.`
+        : `Check: nothing is added to ${B}, so it stays ${F}.`,
     );
   else
     explanation.push(
-      `Check the change using the original quantity: ${B} × ${num(factor)} = ${decimal(delta)}.`,
       sign
-        ? `Apply the change: ${B} ${operation} ${decimal(delta)} = ${F}.`
-        : `Apply the change: ${B} + 0 = ${F}.`,
+        ? `Check: ${num(factor)} of ${B} is ${B} × ${num(factor)} = ${decimal(delta)}, and ${B} ${operation} ${decimal(delta)} = ${F}.`
+        : `Check: nothing is added to ${B}, so it stays ${F}.`,
     );
+  const unitOf = (x: Q) =>
+    context === "price"
+      ? x.n === x.d
+        ? " dollar"
+        : " dollars"
+      : context === "share"
+        ? "%"
+        : x.n === x.d
+          ? " unit"
+          : " units";
+  explanation.push(
+    rateTask
+      ? sign
+        ? `The ${context === "share" ? "share" : context === "price" ? "price" : "quantity"} ${verb} by ${P} of its starting value.`
+        : `Nothing changed, so the percent change is 0%.`
+      : reverse
+        ? `The original ${context === "price" ? "price" : "quantity"} was ${B}${unitOf(b)}.`
+        : `The final ${context === "price" ? "price" : "quantity"} is ${F}${unitOf(f)}.`,
+  );
   const tags = [
     direction,
     context,
