@@ -5,7 +5,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "divisibility-rule-check": {
     goal: "Choose the number that is divisible by a given number, or the hidden digit that makes a number divisible.",
     intuition:
-      "A digit is one of the symbols 0 to 9 we use to write numbers. A whole number is one of the numbers 0, 1, 2, 3 and so on. When you divide, the amount left over is called the remainder. A number is divisible by another when dividing leaves no remainder. 12 is divisible by 4, because 12 ÷ 4 = 3 with nothing left over. A divisibility rule is a quick check that looks at a few digits instead of dividing the whole number. Some rules use the digit sum: add up all the digits. For 4,512 the digit sum is 4 + 5 + 1 + 2 = 12. This works because each ten or hundred is a group of 9s with 1 left over. A multiple of 9 is 9 times a whole number: 0, 9, 18, 27 and so on. The box ▢ stands for a hidden digit.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A whole number is one of the numbers 0, 1, 2, 3 and so on. When you divide, the amount left over is called the remainder. A number is divisible by another when dividing leaves no remainder. 12 is divisible by 4, because 12 ÷ 4 = 3 with nothing left over. A divisibility rule is a quick check that looks at a few digits instead of dividing the whole number. Some rules use the digit sum: add up all the digits. For 4,512 the digit sum is 4 + 5 + 1 + 2 = 12. This works because 10 is 9 + 1, 100 is 99 + 1 and 1,000 is 999 + 1: groups of 9s with 1 left over. A multiple of 9 is 9 times a whole number: 0, 9, 18, 27 and so on. The box ▢ stands for a hidden digit.",
     terms: [
       "divisible-by",
       [
@@ -103,7 +103,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     noLink: ["quarter", "quarters", "one quarter"],
     method: [
       "Write the amount in cents. 4.16 dollars is 416 cents.",
-      "The question says which pieces you may use: 1-dollar bills and the four coins, or just the coins. Take as many of the biggest piece as fit, then as many quarters as fit in what is left. Then dimes, nickels and pennies.",
+      "The question says which pieces you may use: 1-dollar bills and the four coins, or just the coins. Take as many 1-dollar bills as fit, if you may use them. Then take as many quarters as fit in what is left, then dimes, nickels and pennies.",
       "Add up how many pieces you used.",
     ],
     watch:
@@ -132,7 +132,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "customary-unit-rename": {
     goal: "Rename a length, weight or capacity from a larger customary unit to a smaller one.",
     intuition:
-      "A unit is a fixed amount we measure with, like an inch or a cup. Customary units are the units used in the United States. Capacity is how much a container holds. A big unit is made of many small units: 1 foot is 12 inches. So the same amount takes more small units than big ones. To rename a measure, or write it another way, in a smaller unit, multiply.",
+      "A unit is a fixed amount we measure with, like an inch or a cup. Customary units are one set of units used in the United States. Inches, feet, yards and miles measure length. Ounces, pounds and tons measure weight. Fluid ounces, cups, pints, quarts and gallons measure capacity. Capacity is how much a container holds. A big unit is made of many small units: 1 foot is 12 inches. So the same amount takes more small units than big ones. To rename a measure means to write the same amount in a different unit: 1 foot and 12 inches are the same length. To rename in a smaller unit, multiply. 12 pints is 12 groups of 2 cups, so 12 × 2 = 24 cups.",
     terms: ["customary-units", "capacity"],
     senses: { unit: "unit", rename: "rename", "more than": "more-than" },
     noLink: ["change"],
@@ -147,7 +147,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "customary-unit-reverse": {
     goal: "Rename a customary measure as a larger unit, find whole larger units, or convert across two steps.",
     intuition:
-      "A unit is a fixed amount we measure with, like an ounce or a pound. Customary units are the units used in the United States. Going from a small unit to a big one groups the small units: 16 ounces make 1 pound. Count how many full groups fit by dividing. Each full group is one big unit. What is left over is called the remainder. To convert means to change a measure to another unit.",
+      "A unit is a fixed amount we measure with, like an ounce or a pound. Customary units are one set of units used in the United States. Inches, feet, yards and miles measure length. Ounces, pounds and tons measure weight. Fluid ounces, cups, pints, quarts and gallons measure capacity. Going from a small unit to a big one groups the small units: 16 ounces make 1 pound. Count how many full groups fit by dividing. Each full group is one big unit. What is left over is called the remainder. 50 ounces is 3 groups of 16 ounces, which is 48 ounces, with 2 ounces left over: 3 pounds 2 ounces. The number you divide by is called the divisor. To convert means to change a measure to another unit.",
     terms: ["remainder"],
     senses: { unit: "unit", rename: "rename" },
     noLink: ["whole", "change"],
@@ -163,7 +163,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "customary-mixed-units": {
     goal: "Rename a mixed measure such as 3 ft 8 in as one unit or the reverse, and add or subtract mixed measures.",
     intuition:
-      "A unit is a fixed amount we measure with, like a foot or an inch. A mixed measure is a measure that uses two units together. 3 ft 8 in means 3 feet and 8 more inches. Short forms: ft is feet, in is inches, lb is pounds, oz is ounces, gal is gallons and qt is quarts. 1 foot is 12 inches, so 3 feet is 3 × 12 = 36 inches, and 3 ft 8 in is 36 + 8 = 44 inches. The fact that links two units, like 1 foot = 12 inches, is called the unit fact. To regroup means to trade one big unit for small units, or small units for one big unit. You regroup by the unit fact, not by 10. The sum is the answer when you add, and the difference is the answer when you subtract. The sign < means is less than.",
+      "A unit is a fixed amount we measure with, like a foot or an inch. A mixed measure is a measure that uses two units together. 3 ft 8 in means 3 feet and 8 more inches. Short forms: ft is feet, in is inches, yd is yards, lb is pounds, oz is ounces, gal is gallons and qt is quarts. Fluid ounces, written fl oz, are a small unit of capacity: 8 fl oz make 1 cup. 1 foot is 12 inches, so 3 feet is 3 × 12 = 36 inches, and 3 ft 8 in is 36 + 8 = 44 inches. The fact that links two units, like 1 foot = 12 inches, is called the unit fact. To regroup means to trade one big unit for small units, or small units for one big unit. You regroup by the unit fact, not by 10. The sum is the answer when you add, and the difference is the answer when you subtract. The sign < means is less than.",
     terms: [
       "mixed-measure",
       [
@@ -251,7 +251,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
 
 export const k8StateNumberPrinciples: Record<string, string> = {
   "divisibility-rule-check":
-    "10 is 9 + 1, and 100 is 99 + 1. So each ten and each hundred leaves 1 over when you split it into 9s, or into 3s. That is why a number leaves the same remainder as its digit sum when you divide by 9 or by 3. 100 is 25 fours, so only the last two digits matter for 4. A number is divisible by 6 exactly when it is divisible by both 2 and 3.",
+    "10 is 9 + 1, 100 is 99 + 1 and 1,000 is 999 + 1. So each ten, hundred and thousand leaves 1 over when you split it into 9s, or into 3s. That is why a number leaves the same remainder as its digit sum when you divide by 9 or by 3. 100 is 25 fours, so only the last two digits matter for 4. A number is divisible by 6 exactly when it is divisible by both 2 and 3.",
   "prime-composite-sort":
     "A prime has exactly two factors, 1 and itself. A composite number has a factor pair other than 1 and itself. To test a number, try dividing by the primes in order. You can stop once a prime times itself is bigger than the number, because a factor pair always has one factor no bigger than that.",
   "prime-factorization-exponents":
@@ -267,13 +267,13 @@ export const k8StateNumberPrinciples: Record<string, string> = {
   "customary-unit-rename":
     "A fact such as 1 foot = 12 inches means every foot is 12 inches, so 3 feet is 3 × 12 = 36 inches. To rename a measure in a smaller unit, multiply by the number of small units in one big unit.",
   "customary-unit-reverse":
-    "If one big unit is 16 small units, divide the small units by 16. The answer is the number of whole big units, and the remainder is the small units left over: 50 ounces is 3 pounds and 2 ounces. A two-step change does one change after the other.",
+    "If one big unit is 16 small units, divide the small units by 16. The answer is the number of whole big units. The remainder is the small units left over. 50 ounces is 3 × 16 = 48 ounces and 2 more, so 3 pounds and 2 ounces. A two-step change does one change after the other.",
   "customary-mixed-units":
     "If one big unit is 12 small units, then 3 big units and 8 small units is 3 × 12 + 8 = 44 small units. Add and subtract the small units first, regrouping by 12 instead of 10. In the answer, keep fewer small units than make one big unit.",
   "customary-unit-choice":
     "A measure is reasonable when its number and unit match the object's real size. A unit must measure the right thing: capacity units, like gallons, cannot measure length or weight.",
   "compatible-number-estimate":
-    "An estimate swaps the numbers for close numbers that are easy to work with. Changing 347 to 360, a multiple of 6, makes 360 ÷ 6 easy. Front-end estimation keeps the first digit and its place value in each number you add.",
+    "An estimate swaps the numbers for close numbers that are easy to work with. Changing 347 to 360, a multiple of 60, makes 360 ÷ 6 easy. Front-end estimation keeps the first digit and its place value in each number you add.",
   "benchmark-percent-estimate":
     "For a base amount $B$, $10\\%$ of $B$ is $B \\div 10$, $5\\%$ is $B \\div 20$, $25\\%$ is $B \\div 4$ and $50\\%$ is $B \\div 2$. Other percents are built by adding or doubling these. A discount of $p\\%$ leaves $(100 - p)\\%$ of the price.",
 };
@@ -325,7 +325,7 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "formal",
         title: "Why digit sums work",
         paragraphs: [
-          "10 is 9 + 1, and 100 is 99 + 1. So each ten and each hundred is a group of 9s with 1 left over. That means a number leaves the same remainder as its digit sum when you divide by 9. The same is true for 3, because 9 is made of 3s.",
+          "10 is 9 + 1, 100 is 99 + 1 and 1,000 is 999 + 1. So each ten, hundred and thousand is a group of 9s with 1 left over. That means a number leaves the same remainder as its digit sum when you divide by 9. The same is true for 3, because 9 is made of 3s.",
           "100 is 25 fours, so the hundreds and everything bigger always divide by 4. Only the last two digits can change whether a number is divisible by 4.",
         ],
       },
@@ -529,7 +529,7 @@ export const k8StateNumberLessons: Lesson[] = [
     id: "customary-unit-conversion",
     title: "Customary units: rename and choose",
     summary:
-      "A unit is a fixed amount we measure with, like an inch or a cup. Customary units are the units used in the United States. To rename a measure means to write the same amount in another unit. Multiply to go to a smaller unit. Divide to go to a larger unit.",
+      "A unit is a fixed amount we measure with, like an inch or a cup. Customary units are one set of units used in the United States. Inches, feet, yards and miles measure length. Ounces, pounds and tons measure weight. Fluid ounces, cups, pints, quarts and gallons measure capacity. To rename a measure means to write the same amount in another unit. Multiply to go to a smaller unit. Divide to go to a larger unit.",
     templateIds: [
       "customary-unit-rename",
       "customary-unit-reverse",
@@ -547,7 +547,7 @@ export const k8StateNumberLessons: Lesson[] = [
         title: "Bigger units, fewer of them",
         paragraphs: [
           "Length: 12 inches make 1 foot, 3 feet make 1 yard, and 5,280 feet make 1 mile. Weight: 16 ounces make 1 pound, and 2,000 pounds make 1 ton.",
-          "Capacity is how much a container holds. 8 fluid ounces make 1 cup, 2 cups make 1 pint, 2 pints make 1 quart, and 4 quarts make 1 gallon.",
+          "Capacity is how much a container holds. A fluid ounce measures capacity, not weight. 8 fluid ounces make 1 cup, 2 cups make 1 pint, 2 pints make 1 quart, and 4 quarts make 1 gallon.",
           "The same amount takes more small units than big units. So renaming a measure in a smaller unit makes the number bigger: multiply. Renaming it in a larger unit makes the number smaller: divide.",
         ],
       },
@@ -558,7 +558,7 @@ export const k8StateNumberLessons: Lesson[] = [
       steps: [
         "A pint is smaller than a quart, so multiply. Each quart is 2 pints: $3\\times2=6$ pints.",
         "A cup is smaller than a pint, so multiply again. Each pint is 2 cups: $6\\times2=12$ cups.",
-        "Check by going back: $12\\div2=6$ pints, and $6\\div2=3$ quarts.",
+        "Check by going back to bigger units, so divide. Each pint is 2 cups: $12\\div2=6$ pints. Each quart is 2 pints: $6\\div2=3$ quarts, the amount we started with.",
       ],
       answer: "12 cups",
     },
@@ -567,7 +567,7 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "method",
         title: "Multiply to go smaller, divide to go larger",
         paragraphs: [
-          "Write the fact that links the units. To go to a smaller unit, multiply by the number in one bigger unit. To go to a larger unit, divide. The remainder, what is left over, is less than one more big unit.",
+          "Write the fact that links the units. To go to a smaller unit, multiply by the number in one bigger unit. To go to a larger unit, divide by the number of small units in one big unit. The remainder, what is left over, is less than one more big unit.",
           "For two steps, finish one change before you start the next. To compare two measures, put both in the same unit first.",
           "To choose a unit, picture the object. An inch is a thumb width, a foot is a ruler, and a mile is about a 20-minute walk. An ounce is a slice of bread, a pound is a loaf, and a ton is a small car. A cup is a glass of milk, and a gallon is a big jug. Pick the unit that makes the number about right.",
         ],
@@ -576,8 +576,8 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "formal",
         title: "Conversion facts",
         paragraphs: [
-          "If 1 big unit is 12 small units, then 3 big units are 3 × 12 = 36 small units. Going back, 40 small units make 3 whole big units, with 4 small units left over.",
-          "Two changes in a row multiply: 1 gallon = 4 quarts = 4 × 2 pints = 8 pints.",
+          "If 1 big unit is 12 small units, then 3 big units are 3 × 12 = 36 small units. Now try 40 small units. 3 big units use 36 of them, and 40 − 36 = 4 are left over. So 40 small units are 3 big units and 4 small units.",
+          "When both changes go to smaller units, multiply twice: 1 gallon = 4 quarts = 4 × 2 pints = 8 pints.",
         ],
       },
     ],
@@ -609,7 +609,7 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "intuition",
         title: "Two units in one measure",
         paragraphs: [
-          "A unit is a fixed amount we measure with, like a foot or an inch. A mixed measure is a measure that uses two units together. 3 ft 8 in means 3 feet plus 8 more inches. The short forms are ft for feet, in for inches, lb for pounds and oz for ounces.",
+          "A unit is a fixed amount we measure with, like a foot or an inch. A mixed measure is a measure that uses two units together. 3 ft 8 in means 3 feet plus 8 more inches. The short forms are ft for feet, in for inches, yd for yards, lb for pounds and oz for ounces. Fluid ounces, fl oz, measure capacity instead.",
           "The unit fact links the two units: 1 foot is 12 inches. So 3 feet is 36 inches, and 3 ft 8 in is 36 + 8 = 44 inches.",
           "Adding and subtracting work like regrouping in place value, where 10 ones make a ten. To regroup a measure means to trade 1 big unit for small units, or small units for 1 big unit. Use the unit fact: 12 inches for a foot, 16 ounces for a pound, 4 quarts for a gallon, 8 fluid ounces for a cup, 3 feet for a yard.",
         ],
@@ -620,7 +620,7 @@ export const k8StateNumberLessons: Lesson[] = [
         "Add 2 lb 9 oz and 1 lb 12 oz. Write the sum with fewer than 16 ounces.",
       steps: [
         "Add the small units first, to see if they make another pound: $9+12=21$ oz.",
-        "16 oz make 1 lb, so trade 16 of the ounces for 1 pound: $21$ oz $=1$ lb $5$ oz.",
+        "16 oz make 1 lb, so trade 16 of the ounces for 1 pound: 21 oz is 1 lb 5 oz.",
         "Add the pounds, including the traded pound: $2+1+1=4$ lb.",
         "The sum is 4 lb 5 oz. Check in ounces: 2 lb 9 oz is $2\\times16+9=41$ oz, and 1 lb 12 oz is $16+12=28$ oz. $41+28=69$, and $4\\times16+5=69$.",
       ],

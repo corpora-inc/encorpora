@@ -248,7 +248,7 @@ const specs: Spec[] = [
       "Write the first few terms of each pattern from its start and its rule.",
       "Pair the terms in the same spot into ordered pairs. If the question asks for a pair, you are done.",
       "To find a relationship, try two checks on every pair: subtract (second − first) and divide (second ÷ first). Skip dividing when the first number is 0, because you cannot divide by 0.",
-      "The relationship is the check that gives the same answer for every pair. Use it to find a later term. Sometimes neither check works, and then the question asks only for terms or pairs.",
+      "The relationship is the check that gives the same answer for every pair. Use it to find a later term. Sometimes neither check works. Then another rule, such as times 8 and add 2, may connect the pairs.",
     ],
     watch:
       "Check every pair, not only the first. Two patterns that add the same number each time always differ by the same amount. Two patterns that add different numbers do not.",

@@ -77,7 +77,7 @@ const entries: Entry[] = [
       "A fraction names equal parts of one whole. The denominator, the bottom number, tells how many equal parts the whole is cut into. The numerator, the top number, counts the parts. Same denominator: the parts are the same size, so more parts is more. $\\frac{5}{8}$ is greater than $\\frac{3}{8}$. Same numerator: there are the same number of parts. A bigger denominator cuts the whole into more parts, so each part is smaller. $\\frac{2}{5}$ is less than $\\frac{2}{3}$. When both numbers differ, compare each fraction with one half, $\\frac{1}{2}$. One half is called a benchmark: a number you know well and compare with. Double the numerator. Doubling shows what two copies of the fraction make. For $\\frac{3}{8}$, two copies are $\\frac{6}{8}$, less than a whole, so $\\frac{3}{8}$ is less than one half. So if the doubled numerator is less than the denominator, the fraction is less than one half. If it equals the denominator, the fraction is exactly one half. If it is more, the fraction is more than one half. The sign < means is less than.",
     terms: ["numerator", "denominator", "benchmark-fraction"],
     method: [
-      "Look at the denominators and the numerators. Same denominator: more parts is greater. Same numerator: the bigger denominator is smaller.",
+      "Look at the denominators and the numerators. Same denominator: more parts is greater. Same numerator: the fraction with the bigger denominator is smaller.",
       "If neither matches, compare each fraction with $\\frac{1}{2}$: double its numerator and compare it with its denominator.",
       "Write the fractions in order. Fill the spots in the direction the question asks.",
     ],
@@ -97,7 +97,7 @@ const entries: Entry[] = [
     },
     methodTitle: "Choose the quickest comparison",
     methodText: [
-      "Same denominator: order by the numerators. Same numerator: the bigger the denominator, the smaller the fraction.",
+      "Same denominator: order by the numerators. Same numerator, more than 0: the bigger the denominator, the smaller the fraction.",
       "Different numerators and denominators: sort the fractions into less than one half, exactly one half and more than one half. Then compare inside a group if you need to.",
     ],
     formal:

@@ -197,7 +197,7 @@ export const numberSenseLessons: Lesson[] = [
     id: "rounding",
     title: "Round to the nearest ten, hundred or thousand",
     summary:
-      "To round a number means to swap it for a close, easy number. To the nearest ten, find the closest number that ends in 0. To the nearest hundred, find the closest number that ends in 00. To the nearest thousand, it ends in 000.",
+      "To round a number means to swap it for a close, easy number. To the nearest ten, find the closest number that ends in 0. To the nearest hundred, find the closest number that ends in 00. To the nearest thousand, it ends in 000, and to the nearest ten thousand, it ends in 0,000.",
     templateIds: ["round-to-ten", "round-to-hundred", "round-large"],
     noLink: ["change"],
     objectives: [
@@ -259,7 +259,7 @@ export const numberSenseLessons: Lesson[] = [
     id: "powers-of-ten",
     title: "Multiply and divide by powers of ten",
     summary:
-      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. From the right, the places are ones, tens, hundreds, thousands and so on. Each place is worth 10 times the place on its right. So multiplying by 10 moves every digit one place left, and dividing by 10 moves every digit one place right. 10, 100 and 1,000 are called powers of ten, because each is made by multiplying 10s.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. In a whole number, the places from the right are ones, tens, hundreds, thousands and so on. In a decimal, the ones place is just left of the decimal point. Each place is worth 10 times the place on its right. So multiplying by 10 moves every digit one place left, and dividing by 10 moves every digit one place right. 10, 100 and 1,000 are called powers of ten, because each is made by multiplying 10s.",
     templateIds: [
       "multiply-power-of-ten",
       "divide-power-of-ten",
@@ -378,7 +378,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
     goal: "Given the two ends of a hop, find its length.",
     senses: { difference: "difference-subtract" },
     intuition:
-      "A number line is a line with numbers marked in order, evenly spaced. The length of a hop is how many steps of 1 it covers. It is the bigger number minus the smaller one. A hop covers the same steps whichever way it points, so you can always count up from the smaller number. Count in easy pieces: to the next number ending in 0, then 10 at a time, then by ones, steps of 1. Add the pieces. The sum, the answer when you add, is the length.",
+      "A number line is a line with numbers marked in order, evenly spaced. The length of a hop is how many steps of 1 it covers. It is the bigger number minus the smaller one. A hop covers the same steps whichever way it points, so you can always count up from the smaller number. Count in easy pieces. First go to the next number ending in 0, unless that passes the bigger number. Then go 10 at a time without passing it. Then go by ones, steps of 1. Add the pieces. The sum, the answer when you add, is the length.",
     method: [
       "Count up from the smaller number to the next number ending in 0. Skip this if the smaller number already ends in 0, or if the next ten is past the bigger number.",
       "Count by tens as far as you can without passing the bigger number. Then count the ones left.",
@@ -420,12 +420,12 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
       "Write 0 in every place right of the rounding place.",
     ],
     watch:
-      "A 9 that rounds up becomes 0 and adds 1 to the digit on its left. So 49,700 to the nearest thousand is 50,000.",
+      "A 9 that rounds up becomes 0 and adds 1 to the digit on its left. So 49,700 to the nearest thousand is 50,000. If that digit is also 9, it carries too. If there is no digit on its left, write a 1 there: 97,300 to the nearest ten thousand is 100,000.",
   },
   "multiply-power-of-ten": {
     goal: "Given a number times 10, 100 or 1,000, find the product.",
     intuition:
-      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. From the right, the places are ones, tens, hundreds, thousands and so on. Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. Multiplying by 10 makes every digit worth 10 times as much, so every digit moves one place left. A factor is a number being multiplied. 100 is 10 × 10, two factors of 10, so it moves digits two places. 1,000 is 10 × 10 × 10, three factors of 10, so it moves them three places. The decimal point stays where it is. Empty places before the point fill with 0. The answer to a multiplication is called the product.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. In a whole number, the places from the right are ones, tens, hundreds, thousands and so on. In a decimal, the ones place is just left of the decimal point. Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. Multiplying by 10 makes every digit worth 10 times as much, so every digit moves one place left. A factor is a number being multiplied. 100 is 10 × 10, two factors of 10, so it moves digits two places. 1,000 is 10 × 10 × 10, three factors of 10, so it moves them three places. The decimal point stays where it is. Empty places before the point fill with 0. The answer to a multiplication is called the product.",
     terms: ["power-of-10"],
     senses: {
       factor: "factor-number",
@@ -441,7 +441,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
   "divide-power-of-ten": {
     goal: "Given a whole number divided by 10, 100 or 1,000, find the quotient.",
     intuition:
-      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. From the right, the places are ones, tens, hundreds, thousands and so on. Each place is worth one tenth of the place on its left. A tenth is one of 10 equal parts. Dividing by 10 makes every digit worth one tenth as much, so every digit moves one place right. A factor is a number being multiplied. 100 is 10 × 10, two factors of 10, so dividing by 100 moves digits two places right. Zeros hold any empty places between the point and a digit: 7 ÷ 1,000 = 0.007. Digits that move past the ones place go into the tenths, hundredths and thousandths places, after the decimal point. The answer to a division is called the quotient.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. In a whole number, the places from the right are ones, tens, hundreds, thousands and so on. In a decimal, the ones place is just left of the decimal point. Each place is worth one tenth of the place on its left. A tenth is one of 10 equal parts. Dividing by 10 makes every digit worth one tenth as much, so every digit moves one place right. A factor is a number being multiplied. 100 is 10 × 10, two factors of 10, so dividing by 100 moves digits two places right. Zeros hold any empty places between the point and a digit: 7 ÷ 1,000 = 0.007. Digits that move past the ones place go into the tenths, hundredths and thousandths places, after the decimal point. The answer to a division is called the quotient.",
     terms: ["power-of-10"],
     senses: { factor: "factor-number", factors: "factor-number" },
     method: [
@@ -454,7 +454,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
   "digit-value-ratio": {
     goal: "Given a number with one digit in two places, compare the two values.",
     intuition:
-      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. From the right, the places are ones, tens, hundreds, thousands and so on. Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. So a digit is worth 10 times as much for each place it moves left. In 35,932 the first 3 is in the ten thousands place, worth 30,000. The second 3 is in the tens place, worth 30. The places are 3 steps apart, so the first is worth 10 × 10 × 10 = 1,000 times as much. How many times as much one value is as another is called their ratio.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. In a whole number, the places from the right are ones, tens, hundreds, thousands and so on. In a decimal, the ones place is just left of the decimal point. Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. So a digit is worth 10 times as much for each place it moves left. In 35,932 the first 3 is in the ten thousands place, worth 30,000. The second 3 is in the tens place, worth 30. The places are 3 steps apart, so the first is worth 10 × 10 × 10 = 1,000 times as much. How many times as much one value is as another is called their ratio.",
     method: [
       "Name the place of each copy of the digit, and count the steps between them.",
       "Each step left multiplies the value by 10. Multiply one 10 for each step.",

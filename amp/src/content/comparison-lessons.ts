@@ -210,7 +210,7 @@ export const comparisonLessons: Lesson[] = [
     id: "large-place-value",
     title: "Place value to hundred thousands",
     summary:
-      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number, and the place tells what the digit is worth. In 372,946 the 7 is worth 70,000. Knowing this, you can read and compare numbers up to 999,999.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number, and the place tells what the digit is worth. In 372,946 the 7 is worth 70,000. Knowing this, you can read numbers up to 999,999 and compare them: tell which is bigger, which is smaller, or if they are the same.",
     templateIds: ["multidigit-digit-value", "compare-multidigit"],
     noLink: ["change"],
     objectives: [
@@ -222,7 +222,7 @@ export const comparisonLessons: Lesson[] = [
         stage: "intuition",
         title: "The same digit can name different amounts",
         paragraphs: [
-          "The 3 in 30 means 3 tens. The 3 in 300 means 3 hundreds. Moving one place left makes a digit worth 10 times as much. “10 times as much” means 10 groups of that amount: 3 hundreds is 10 groups of 3 tens.",
+          "A ten is 10 ones, and a hundred is 10 tens. The 3 in 30 means 3 tens. The 3 in 300 means 3 hundreds. Moving one place left makes a digit worth 10 times as much. “10 times as much” means 10 groups of that amount: 3 hundreds is 10 groups of 3 tens.",
           "10 ones make a ten, 10 tens make a hundred, and 10 hundreds make a thousand. This keeps going: 10 thousands make a ten thousand, and 10 ten thousands make a hundred thousand.",
         ],
       },
@@ -230,7 +230,7 @@ export const comparisonLessons: Lesson[] = [
         title: "A digit's value comes from its place",
         paragraphs: [
           "Look at the chart. The places from the right are ones, tens, hundreds, thousands, ten thousands and hundred thousands. Each place is worth 10 of the place on its right. The comma splits the digits into groups of three, so the number is easier to read.",
-          "A digit's value is what it is worth: the digit times its place. In 372,946 the 7 is in the ten thousands place. So it is worth 7 × 10,000 = 70,000.",
+          "Each place counts groups of a size: the ten thousands place counts groups of 10,000. A digit's value is what it is worth: the digit times the size of its place's groups. In 372,946 the 7 is in the ten thousands place. So it is worth 7 × 10,000 = 70,000.",
         ],
         illustration: "large-place-value-chart",
       },
@@ -239,7 +239,7 @@ export const comparisonLessons: Lesson[] = [
         paragraphs: [
           "To compare two numbers means to find which is greater (bigger) or less (smaller). The sign > means is greater than, and < means is less than.",
           "A whole number is one of the numbers 0, 1, 2, 3 and so on. First count the digits. A whole number with more digits is greater. Every five-digit number is less than 100,000, the smallest six-digit number.",
-          "If the numbers have the same number of digits, compare from the left. The first place where the digits differ decides. The places to its right can never make up one more of that place.",
+          "If the numbers have the same number of digits, compare from the left. The first place where the digits differ decides. The places to its right can never make up one more of that place. If every digit matches, the numbers are equal: the same amount.",
         ],
       },
     ],
@@ -256,9 +256,9 @@ export const comparisonLessons: Lesson[] = [
     workedExample: {
       prompt: "Which number is greater: 405,213 or 450,123?",
       steps: [
-        "Count the digits. Both numbers have 6 digits, so compare place by place from the left.",
+        "Greater means bigger. Count the digits. Both numbers have 6 digits, so compare place by place from the left, where the places are worth the most.",
         "The hundred thousands digits match: 4 and 4. So move one place right.",
-        "In the ten thousands place, 0 is less than 5. This is the first place that differs, so 450,123 is greater.",
+        "In the ten thousands place, 0 is less than 5. This is the first place that differs. The places after it add up to at most 9,999, less than one more ten thousand. So 450,123 is greater.",
       ],
       answer: "450,123",
     },
@@ -367,7 +367,7 @@ export const comparisonMethods: Record<string, ProblemMethod> = {
   "multidigit-digit-value": {
     goal: "Given a number up to 999,999, find the value of one of its digits.",
     intuition:
-      "A digit is one of the symbols 0 to 9. Its place is its spot in the number. From the right, the places are ones, tens, hundreds, thousands, ten thousands and hundred thousands. Each place is worth 10 times the place on its right. A digit's value is what it is worth: the digit times its place. In 372,946 the 7 is in the ten thousands place, so it is worth 7 × 10,000 = 70,000.",
+      "A digit is one of the symbols 0 to 9. Its place is its spot in the number. From the right, the places count ones, tens (groups of 10), hundreds (groups of 100), thousands, ten thousands and hundred thousands. Each place is worth 10 times the place on its right. A digit's value is what it is worth: the digit times the size of its place's groups. To multiply means to use ×. In 372,946 the 7 is in the ten thousands place, so it is worth 7 × 10,000 = 70,000.",
     terms: ["place-value"],
     method: [
       "Name the digit's place. Count the places from the ones at the right.",
@@ -379,7 +379,7 @@ export const comparisonMethods: Record<string, ProblemMethod> = {
   "compare-multidigit": {
     goal: "Given two numbers up to 999,999, name the greater or the lesser.",
     intuition:
-      "A whole number is one of the numbers 0, 1, 2, 3 and so on. To compare two numbers means to find which is greater (bigger) and which is less (smaller). The sign > means is greater than, and < means is less than. First count the digits. A whole number with more digits is greater. If both have the same number of digits, line up the places and compare from the left, the biggest place. The first place where the digits differ decides, because the places to its right can never make up one more of that place.",
+      "A whole number is one of the numbers 0, 1, 2, 3 and so on. A digit is one of the symbols 0 to 9, and its place is its spot in the number: ones, tens, hundreds and so on from the right. To compare two numbers means to find which is greater (bigger) and which is less (smaller), or that they are equal. The sign > means is greater than, and < means is less than. First count the digits. A whole number with more digits is greater. If both have the same number of digits, line up the places and compare from the left, the biggest place. The first place where the digits differ decides, because the places to its right can never make up one more of that place.",
     terms: placeTerms,
     method: [
       "Count the digits. More digits means a greater number.",

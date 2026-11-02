@@ -30,7 +30,7 @@ export const numberOrderMethods: Record<string, ProblemMethod> = {
     goal: "Choose the true comparison of whole numbers of five to nine digits that share their first digits.",
     noLink: ["side", "faces", "change", "third"],
     intuition:
-      "A whole number is one of the numbers 0, 1, 2, 3 and so on. The sign > means is greater than, < means is less than, and = means is equal to. The open side of > or < faces the greater number. A statement is true when it says what really is so. Big numbers have more places. From the right they are ones, tens, hundreds, thousands, ten thousands, hundred thousands, millions, ten millions and hundred millions. To compare two whole numbers, first count their digits. More digits means a greater number. With the same number of digits, line up the places and read from the left. Skip the places that match. The first place where the digits differ decides: the number with the bigger digit there is greater. The digits after that place cannot change the answer.",
+      "A whole number is one of the numbers 0, 1, 2, 3 and so on. A digit is one of the symbols 0 to 9. To compare two numbers means to find which is greater (bigger) or less (smaller), or that they are equal. The sign > means is greater than, < means is less than, and = means is equal to. The open side of > or < faces the greater number. Two signs in a row, like 400 < 500 < 600, mean both comparisons are true. A statement is true when it says what really is so. A digit's place is its spot in the number, and each place is worth 10 times the place on its right. From the right the places are ones, tens, hundreds, thousands, ten thousands, hundred thousands, millions, ten millions and hundred millions. To compare two whole numbers, first count their digits. More digits means a greater number. With the same number of digits, line up the places and read from the left. Skip the places that match. The first place where the digits differ decides: the number with the bigger digit there is greater. The digits after that place cannot change the answer: 499 is less than 530, because 4 hundreds and any tens and ones stay below 500.",
     terms: ["place-value", "greater-than"],
     method: [
       "Count the digits first. More digits means a greater number.",
@@ -98,7 +98,7 @@ export const numberOrderLessons = [
     id: "true-comparison-statement-lesson",
     title: "Comparing and ordering large numbers",
     summary:
-      "To compare two numbers means to find which is greater (bigger) or less (smaller). A whole number is one of the numbers 0, 1, 2, 3 and so on. For whole numbers with five to nine digits, line up the places and read from the left. The first place where the digits differ decides. You can order three numbers the same way.",
+      "To compare two numbers means to find which is greater (bigger) or less (smaller). A whole number is one of the numbers 0, 1, 2, 3 and so on. A digit is one of the symbols 0 to 9, and its place is its spot in the number. For whole numbers with five to nine digits, line up the places and read from the left. The first place where the digits differ decides. You can order three numbers the same way.",
     templateIds: ["true-comparison-statement"],
     noLink: ["side", "faces", "change"],
     objectives: [
@@ -107,23 +107,23 @@ export const numberOrderLessons = [
     ],
     openingTitle: "Find the first place that differs",
     opening: [
-      "Big numbers have more places. From the right they are ones, tens, hundreds, thousands, ten thousands, hundred thousands, millions, ten millions and hundred millions. The commas split the digits into groups of three to make them easy to read.",
+      "A digit's place is its spot in the number, and each place is worth 10 times the place on its right. From the right the places are ones, tens, hundreds, thousands, ten thousands, hundred thousands, millions, ten millions and hundred millions. The commas split the digits into groups of three to make them easy to read.",
       "The sign < means is less than, > means is greater than, and = means is equal to. The open side of < or > faces the greater number.",
       "Compare 3,045,820 and 3,054,820. Both have 7 digits, so line them up. The millions match (3 and 3), and so do the hundred thousands (0 and 0). The ten thousands digits are 4 and 5. That is the first place that differs, so 3,045,820 < 3,054,820.",
-      "To order three numbers, compare them two at a time in the same way. Write them with the least on the left: 400 < 500 < 600.",
+      "To order three numbers, compare them two at a time in the same way. Write them with the least on the left: 400 < 500 < 600. Two signs in a row mean both comparisons are true: 400 < 500 and 500 < 600.",
     ],
     example: {
       prompt: "Is $4{,}280{,}190>4{,}208{,}190$ true?",
       steps: [
         "Both numbers have 7 digits. The millions digits are 4 and 4, and the hundred thousands digits are 2 and 2. They match.",
         "The next place is the ten thousands. Its digit is 8 in the first number and 0 in the second.",
-        "8 is greater than 0, so the first number is greater. The statement says 4,280,190 is greater than 4,208,190, so it is true.",
+        "8 is greater than 0. The 8 means 80,000, and the places after it add up to at most 9,999. So the first number is greater. The statement says 4,280,190 is greater than 4,208,190, so it is true.",
       ],
       answer: "True",
     },
     methodTitle: "Digits, then the first difference",
     method: [
-      "Count the digits first. If the counts are equal, compare place by place from the left.",
+      "Count the digits first. If one number has more digits, it is greater. If the counts are equal, compare place by place from the left.",
       "Stop at the first place where the digits differ. The bigger digit there belongs to the greater number.",
     ],
     formalTitle: "Comparing whole numbers",
@@ -137,7 +137,7 @@ export const numberOrderLessons = [
       "When two numbers have the same first digit, keep going to the next place to order them.",
     ],
     parentGuide:
-      "Use a place-value chart and ask your learner which column is the first one that is different.",
+      "Draw a chart with a column for each place, labeled ones, tens, hundreds and so on. Write both numbers in it and ask your learner which column is the first one that is different.",
   }),
 ];
 

@@ -69,7 +69,7 @@ const entries: Entry[] = [
     terms: [
       [
         "round",
-        "To round up, add 1 to the digit in the rounding place and change every digit to its right to zero. A 9 becomes 0 and adds 1 to the digit on its left.",
+        "To round up, add 1 to the digit in the rounding place and change every digit to its right to zero. A 9 becomes 0 and adds 1 to the digit on its left, or writes a new 1 if there is none: 9,650 rounds to 10,000.",
       ],
       [
         "round",
@@ -79,7 +79,7 @@ const entries: Entry[] = [
     method: [
       "Find the place you round to: thousands, hundreds or tens.",
       "Look at the digit just to its right. If it is 5 or more, round up. If it is 4 or less, round down.",
-      "To round up, add 1 to the digit in the rounding place. A 9 becomes 0 and adds 1 to its left. To round down, keep the digit. Then write 0 in every place to its right.",
+      "To round up, add 1 to the digit in the rounding place. A 9 becomes 0 and adds 1 to its left, or a new 1 if there is no digit there: 9,650 rounds to 10,000. To round down, keep the digit. Then write 0 in every place to its right.",
       "For the next place, start again from the original number.",
     ],
     watch:
@@ -149,7 +149,7 @@ const entries: Entry[] = [
       "To the nearest tenth, every decimal sits between two tenths, like 6.2 and 6.3. Halfway between them is 6.25. If the next digit is 5 or more, the number is halfway or past it, so round up. If it is 4 or less, the number is before halfway, so round down. When a number is exactly halfway, we agree to round up.",
     pitfalls: [
       "Do not just cut off digits. 2.678 cut at the hundredths is 2.67, but it rounds to 2.68.",
-      "When a 9 rounds up, write 0 and add 1 to the digit on its left. Never write 10 in one place.",
+      "When a 9 rounds up, write 0 and add 1 to the digit on its left. If there is no digit there, write a 1: 9.96 rounds to 10.0. Never write 10 in one place.",
     ],
     parentGuide:
       "Put a decimal on a number line between two tenths, such as 6.2 and 6.3. Ask which tenth it is closer to.",
