@@ -106,7 +106,7 @@ function fixture(specs){
     if(command==='plugin:f2z|start_chat'){
       ai.starts.push(args.operation);ai.requests.push(args.request);
       // TEST-ONLY `holdAfter: n`: every batch after the first n stays on its way until releaseHeld() (#929: the bank refills
-      // at <= 8 banked, so a scenario that inspects a 3-activity queue holds the background refill in flight).
+      // while the bank is low, so a scenario that inspects a 3-activity queue holds the background refill in flight).
       if(typeof ai.holdAfter==='number'&&ai.starts.length>ai.holdAfter)(ai.held??=new Set()).add(args.operation.operationId);
       if(args.request.response_format&&ai.formatRefusal==='chat')throw {code:'invalid_request',status:400};
       // Shaped as tauri-plugin-f2z d4d58ea3 delivers it: 402 balance / 403 budget, with `refusalDetails` as documented details (decimal strings).
@@ -848,7 +848,8 @@ try {
       ]}}};
     await ctx.addInitScript(db=>{
       if(!localStorage.getItem('aha-controller-test-fixture'))localStorage.setItem('aha-controller-test-fixture',JSON.stringify(db));
-      Object.assign(window.__ahaAI,{enforced:true,structured:true,holdChat:true});
+      // Keep the background refill in flight: three fixture items leave the bank below its refill threshold.
+      Object.assign(window.__ahaAI,{enforced:true,structured:true,holdChat:true,holdAfter:1});
     },seeded);
     const o=await ctx.newPage();
     const oErrors=[];o.on('pageerror',e=>oErrors.push(e.message));
