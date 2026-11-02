@@ -656,7 +656,10 @@ export function FamilyCenter({
                         </form>
                       ) : (
                         <div className="family-actions">
+                          {/* A quiet edit beside a destructive action: the
+                              card's one primary action is the workbook. */}
                           <button
+                            className="secondary"
                             data-rename-id={learner.id}
                             disabled={busy}
                             onClick={() => {

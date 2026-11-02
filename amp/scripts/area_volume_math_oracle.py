@@ -1138,7 +1138,7 @@ def solve_worked(template, prompt):
         return unit
 
     if template == 'triangle-area-base-height':
-        m = re.fullmatch(r'A triangle has a base of (\d+) (\w+)\. The dashed height from the opposite vertex to the base is (\d+) (\w+), '
+        m = re.fullmatch(r'A triangle has a base of (\d+) (\w+)\. The dashed height(?: from the opposite vertex to the base|, drawn from the top vertex to the base,) is (\d+) (\w+), '
                          r'and the slanted sides are (\d+) (\w+) and (\d+) (\w+)\. What is its area, in square (\w+)\?', prompt)
         require(m is not None, 'Unrecognized worked triangle')
         b, h, s1, s2 = (Fraction(int(m[i])) for i in (1, 3, 5, 7))
@@ -1178,18 +1178,22 @@ def solve_worked(template, prompt):
             require_plural(q[1], unit, template)
             D = math.lcm(*(e.denominator for e in edges))
             return Fraction(math.prod(int(e * D) for e in edges), D ** 3), 'cubic ' + q[1]
-        q = re.fullmatch(r'It is packed with cubes that have edges of \$(' + TEX_NUMBER + r')\$ (\w+)\. How many cubes fill it, and what is its volume, in cubic (\w+)\?', rest)
+        q = re.fullmatch(r'It is packed with cubes that have edges of \$(' + TEX_NUMBER + r')\$ (\w+)\. (?:How many cubes fill it, and what is its volume, in cubic (\w+)\?|Use the cubes to find the prism\'s volume, in cubic (\w+)\.)', rest)
         require(q is not None, 'Unrecognized worked packing question')
         cube = tex_number(q[1])
         require_unit(q[2], unit, cube, template)
-        require_plural(q[3], unit, template)
+        asked_unit = q[3] or q[4]
+        require_plural(asked_unit, unit, template)
         counts = [e / cube for e in edges]
         require(all(c.denominator == 1 for c in counts), 'Worked cubes do not fit')
         cubes = list(itertools.product(*(range(int(c)) for c in counts)))
-        return sum(cube ** 3 for _ in cubes), 'cubic ' + q[3]
+        return sum(cube ** 3 for _ in cubes), 'cubic ' + asked_unit
     if template == 'composite-area':
         m = re.fullmatch(r'An L-shaped figure has all right angles\. Its bottom is (\d+) (\w+), its left side is (\d+) (\w+), its top is (\d+) (\w+) '
                          r'and its right side is (\d+) (\w+)\. What is its area, in square (\w+)\?', prompt)
+        if m is None:
+            m = re.fullmatch(r'An L-shaped figure has sides that run only straight across or straight up and down\. Its bottom is (\d+) (\w+) and its left side is (\d+) (\w+)\. '
+                             r'Its top is (\d+) (\w+) and its right side is (\d+) (\w+)\. The missing corner is at the top right\. What is its area, in square (\w+)\?', prompt)
         require(m is not None, 'Unrecognized worked L')
         b, l, t, r = (Fraction(int(m[i])) for i in (1, 3, 5, 7))
         unit = same((m[2], b), (m[4], l), (m[6], t), (m[8], r))
@@ -1198,6 +1202,10 @@ def solve_worked(template, prompt):
     if template in ('composite-face-prism-volume', 'composite-face-prism-surface-area'):
         m = re.fullmatch(r'A right prism is (\d+) (\w+) deep\. Its front face is L-shaped with all right angles: the bottom is (\d+) (\w+), the left side is (\d+) (\w+), '
                          r'the top is (\d+) (\w+) and the right side is (\d+) (\w+)\. What is its (volume|surface area), in (cubic|square) (\w+)\?', prompt)
+        if m is None:
+            m = re.fullmatch(r'A right prism is (\d+) (\w+) deep\. Its front face is L-shaped, with sides running only straight across or straight up and down\. '
+                             r'The bottom is (\d+) (\w+) and the left side is (\d+) (\w+)\. The top is (\d+) (\w+) and the right side is (\d+) (\w+)\. '
+                             r'What is its (volume|surface area), in (cubic|square) (\w+)\?', prompt)
         require(m is not None, 'Unrecognized worked prism')
         depth, b, l, t, r = (Fraction(int(m[i])) for i in (1, 3, 5, 7, 9))
         unit = same((m[2], depth), (m[4], b), (m[6], l), (m[8], t), (m[10], r))
@@ -1586,18 +1594,19 @@ def lesson_text(lesson, illustration=None):
 
 def review_lesson_figure_links(lessons, facts):
     """Where prose describes the figure beside it, its numbers must be the figure's."""
+    dimension = r'(\$' + TEX_NUMBER + r'\$|\d+ \d+/\d+|\d+)'
     links = [
         ('triangle-area-base-height', 'av-triangle-half', r'For base (\d+) cm and height (\d+) cm',
          lambda f: (f['base'], f['height'])),
         ('polygon-area-decompose', 'av-polygon-split', r'For parallel sides (\d+) and (\d+) and height (\d+)',
          lambda f: (f['bottom'], f['top'], f['height'])),
-        ('net-surface-area', None, r'For a box (\d+) cm long, (\d+) cm wide and (\d+) cm tall',
+        ('net-surface-area', None, r'(?:For|Take) a box (\d+) cm long, (\d+) cm wide and (\d+) cm tall',
          lambda f: (facts['av-prism-net']['length'], facts['av-prism-net']['width'], facts['av-prism-net']['height'])),
-        ('unit-fraction-cube-packing', 'av-cube-packing', r'A prism (\d+ \d+/\d+|\d+) cm by (\d+ \d+/\d+|\d+) cm by (\d+ \d+/\d+|\d+) cm holds (?:\d+ × )*\d+ = (\d+)',
+        ('unit-fraction-cube-packing', 'av-cube-packing', r'A prism ' + dimension + r' cm by ' + dimension + r' cm by ' + dimension + r' cm holds (?:\d+ × )*\d+ = (\d+)',
          lambda f: (*f['prism'], f['cubes'])),
         ('composite-area', None, r'bottom of (\d+) m and a top of (\d+) m.*?A left side of (\d+) m and a right side of (\d+) m',
          lambda f: (facts['av-composite-split']['bottom'], facts['av-composite-split']['top'], facts['av-composite-split']['left'], facts['av-composite-split']['right'])),
-        ('composite-face-prism-surface-area', 'av-prism-unrolled', r'with area (\d+), perimeter (\d+) and depth (\d+)',
+        ('composite-face-prism-surface-area', 'av-prism-unrolled', r'(?:with area|the area is) (\d+), (?:perimeter|the perimeter is) (\d+) and (?:depth|the depth is) (\d+)',
          lambda f: (f['area'], f['perimeter'], f['depth'])),
         ('cylinder-volume', 'av-cylinder-stack', r'A cylinder with radius (\d+) cm and height (\d+) cm',
          lambda f: (f['radius'], f['height'])),
@@ -1607,7 +1616,7 @@ def review_lesson_figure_links(lessons, facts):
         text = lesson_text(by_id[lesson_id], kind)
         m = re.search(pattern, text, re.S)
         require(m is not None, f'Lesson {lesson_id} no longer describes its figure')
-        got = tuple(plain_value(g).get(0, Fraction(0)) for g in m.groups())
+        got = tuple(tex_number(g[1:-1]) if g.startswith('$') else plain_value(g).get(0, Fraction(0)) for g in m.groups())
         require(got == tuple(expected(facts.get(kind))), f'Lesson {lesson_id} describes its figure with numbers {got}, the figure shows {expected(facts.get(kind))}')
     return len(links)
 
@@ -1632,7 +1641,10 @@ def review_area_volume_content(data=None):
     require(set(lessons) == AREA_VOLUME and all(lesson['templateIds'][0] == i for i, lesson in lessons.items()), 'Lesson inventory')
     for template, lesson in lessons.items():
         worked = lesson['workedExample']
-        expected, unit = solve_worked(template, worked['prompt'])
+        try:
+            expected, unit = solve_worked(template, worked['prompt'])
+        except ValueError as error:
+            raise ValueError(f'Worked example {template}: {error}; prompt={worked["prompt"]!r}') from error
         require(Fraction(worked['answer']) == expected, f'Worked example {template}: answer {worked["answer"]}, the prompt gives {fmt(expected)}')
         require(worked.get('answerUnit') == unit, f'Worked example {template}: unit {worked.get("answerUnit")!r}, the prompt asks for {unit!r}')
         require(len(worked['steps']) >= 2 and expected in numbers_in(worked['steps'][-1]), f'Worked example {template}: last step does not reach the answer')
@@ -1692,7 +1704,7 @@ def review_content_mutations(data=None):
     mutant(lambda b: replace_lesson_paragraph(b, 'net-surface-area', [('= 62', '= 64')]))
     mutant(lambda b: replace_lesson_paragraph(b, 'cylinder-volume', [('141.3', '141.4')]))
     mutant(lambda b: replace_lesson_paragraph(b, 'composite-face-prism-surface-area', [
-        ('perimeter 28', 'perimeter 30'),
+        ('perimeter is 28', 'perimeter is 30'),
         ('2 × 28 + 28 × 4 = 56 + 112', '2 × 28 + 30 × 4 = 56 + 120'),
         ('= 168', '= 176'),
     ]))

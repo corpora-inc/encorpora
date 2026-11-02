@@ -193,7 +193,7 @@ function unitRateCase(r: Random): Case {
       `A ${b}-pound bag of apples costs ${dollars(cents * b)}. What is the price per pound, in dollars?`,
       "Dollars per pound",
       "1 pound",
-      `Divide the cost by the pounds: ${centsAnswer(cents * b)} ÷ ${b} = ${centsAnswer(cents)} dollars.`,
+      `Divide the cost by the pounds: ${centsAnswer(cents * b)} ÷ ${b} = ${centsAnswer(cents)} ${cents === 100 ? "dollar" : "dollars"}.`,
       `The apples cost ${dollars(cents)} per pound.`,
       centsAnswer(cents),
       "price",
@@ -225,9 +225,11 @@ function unitRateCase(r: Random): Case {
       answer: String(pace),
       hint: `The question puts 1 mile at the unit: share the ${miles * pace} minutes equally among the ${miles} miles.`,
       explanation: [
-        "A unit rate is the amount of one quantity for 1 unit of the other. The question puts 1 mile at the unit, so the minutes are divided among the miles.",
-        `Divide the minutes by the miles: ${miles * pace} ÷ ${miles} = ${pace}.`,
-        `It takes ${pace} minutes to run 1 mile.`,
+        "A unit rate tells how much of one quantity goes with 1 unit of the other.",
+        `The question asks about 1 mile, so the minutes are shared equally among the ${miles} miles.`,
+        `Sharing equally is division: ${miles * pace} ÷ ${miles} = ${pace}.`,
+        `Check: ${miles} miles at ${pace} minutes each is ${miles} × ${pace} = ${miles * pace} minutes.`,
+        `It takes the runner ${pace} minutes to run 1 mile.`,
       ],
       tags: ["pace", "reverse-order", "whole-rate"],
     };
@@ -240,8 +242,10 @@ function unitRateCase(r: Random): Case {
     answer: String(each),
     hint: `The question puts 1 dollar at the unit: share the ${cost * each} pencils equally among the ${cost} dollars.`,
     explanation: [
-      "A unit rate is the amount of one quantity for 1 unit of the other. The question puts 1 dollar at the unit, so the pencils are divided among the dollars.",
-      `Divide the pencils by the dollars: ${cost * each} ÷ ${cost} = ${each}.`,
+      "A unit rate tells how much of one quantity goes with 1 unit of the other.",
+      `The question asks about 1 dollar, so the ${cost * each} pencils are shared equally among the ${cost} dollars.`,
+      `Sharing equally is division: ${cost * each} ÷ ${cost} = ${each}.`,
+      `Check: ${cost} dollars at ${each} pencils each buys ${cost} × ${each} = ${cost * each} pencils.`,
       `${each} pencils can be bought for 1 dollar.`,
     ],
     tags: ["pencils", "reverse-order", "whole-rate"],
@@ -261,9 +265,10 @@ function forwardRate(
     prompt,
     label,
     answer,
-    hint: `The question asks for the amount for ${unit}. ${divide.split(" = ")[0]}.`,
+    hint: `The question asks for the amount for ${unit.replace(/^1 /, "one ")}. ${divide.split(" = ")[0]}.`,
     explanation: [
-      `A unit rate is the amount of one quantity for 1 unit of the other. Here the unit is ${unit}.`,
+      "A unit rate tells how much of one quantity goes with 1 unit of the other.",
+      `Here the question asks about ${unit}, so the total is shared equally among the units, which is division.`,
       divide,
       final,
     ],
@@ -337,12 +342,13 @@ function betterBuyCase(r: Random): Case {
   const both = `Find the price of 1 ${good.one}: ${price(a.p)} at Store A and ${price(b.p)} at Store B.`;
   const winner = a.p < b.p ? "A" : a.p > b.p ? "B" : "same";
   const explanation = [
-    `Compare unit prices: the price of 1 ${good.one} at each store.`,
+    `The packs hold different amounts, so their total prices cannot be compared directly.`,
+    `Instead, find each unit price: the price of 1 ${good.one}. Divide the pack price by the number in the pack.`,
     unitLine(a, "Store A"),
     unitLine(b, "Store B"),
     winner === "same"
       ? `Both stores charge ${price(a.p)} per ${good.one}, so neither is a better buy.`
-      : `${price(Math.min(a.p, b.p))} is less than ${price(Math.max(a.p, b.p))}, so Store ${winner} has the better buy.`,
+      : `${price(Math.min(a.p, b.p))} is less than ${price(Math.max(a.p, b.p))}, so each ${good.one} costs less at Store ${winner}. Store ${winner} is the better buy.`,
   ];
   const feedback = (store: "A" | "B") => {
     const mine = store === "A" ? a : b,
@@ -350,8 +356,8 @@ function betterBuyCase(r: Random): Case {
     if (winner === "same")
       return `Store ${store} is not cheaper per ${good.one}. ${both} They are equal.`;
     if (mine.n * mine.p < other.n * other.p)
-      return `Store ${store} costs less in all, but it sells less. ${both}`;
-    return `A bigger package is not always cheaper per ${good.one}. ${both}`;
+      return `You compared the pack prices. Store ${store}'s pack costs less in all, but it holds fewer. ${both}`;
+    return `You picked the bigger pack, but a bigger pack is not always cheaper per ${good.one}. ${both}`;
   };
   const choices: Choice[] = [
     winner === "A"
@@ -364,7 +370,7 @@ function betterBuyCase(r: Random): Case {
       ? { label: `The same price per ${good.one}`, correct: true }
       : {
           label: `The same price per ${good.one}`,
-          feedback: `${both} They are different.`,
+          feedback: `"The same" needs equal prices for 1 ${good.one}. ${both} They are different, so one store is cheaper.`,
         },
   ];
   return {
@@ -427,11 +433,11 @@ function ratioTableCase(r: Random): Case {
   const name = (label: string) => label.replace(/ \(.*\)$/, "").toLowerCase();
   const explanation = [
     witness.m === 1
-      ? `The column ${top[witness.i]} and ${bottom[witness.i]} is already the simplest ratio, ${p} : ${s}: its numbers have no common factor.`
-      : `Divide a complete column by its common factor to find the simplest ratio: ${top[witness.i]} ÷ ${witness.m} = ${p} and ${bottom[witness.i]} ÷ ${witness.m} = ${s}, so the ratio is ${p} : ${s}.`,
-    `Every column is ${p} : ${s} multiplied by the same number. In the column with the question mark, the ${row === 0 ? `${name(bottomLabel)} entry is ${bottom[missing]} = ${target} × ${s}` : `${name(topLabel)} entry is ${top[missing]} = ${target} × ${p}`}.`,
-    `So the ${row === 0 ? `${name(topLabel)} entry is ${target} × ${p} = ${answer}` : `${name(bottomLabel)} entry is ${target} × ${s} = ${answer}`}.`,
-    `The missing number is ${answer}.`,
+      ? `The column ${top[witness.i]} and ${bottom[witness.i]} is already the simplest ratio, ${p} : ${s}, because no number above 1 divides both.`
+      : `Divide a full column by a number that divides both: ${top[witness.i]} ÷ ${witness.m} = ${p} and ${bottom[witness.i]} ÷ ${witness.m} = ${s}. So the ratio is ${p} : ${s} in simplest form.`,
+    `Equivalent ratios come from multiplying both numbers of one ratio by the same number. So every column is ${p} : ${s} times one number. In the column with the question mark, the ${row === 0 ? `${name(bottomLabel)} entry is ${bottom[missing]} = ${target} × ${s}` : `${name(topLabel)} entry is ${top[missing]} = ${target} × ${p}`}.`,
+    `That number is ${target}, so multiply the other part of the ratio by ${target} too: ${row === 0 ? `${target} × ${p} = ${answer}` : `${target} × ${s} = ${answer}`}.`,
+    `The missing number in the ${name(row === 0 ? topLabel : bottomLabel)} row is ${answer}.`,
   ];
   const cells = (values: number[], r0: number) =>
     values.map((v, i) => (i === missing && row === r0 ? null : v));
@@ -549,11 +555,12 @@ function doubleLineCase(r: Random): Case {
   const [one, many] = context.bottomWord;
   const unit = (n: number) => `${n} ${n === 1 ? one : many}`;
   const explanation = [
-    `Aligned marks show equivalent pairs: ${rate * given} ${context.topWord} go with ${unit(given)}.`,
-    `Find the ${context.perOne}: ${rate * given} ÷ ${given} = ${rate}.`,
+    `On a double number line, marks that line up are amounts that go together, because the ratio stays the same.`,
+    `The lined-up marks show ${rate * given} ${context.topWord} with ${unit(given)}.`,
+    `Find the ${context.perOne}: ${rate * given} ÷ ${given} = ${rate}. An amount for one is easy to scale.`,
     findBottom
-      ? `Each ${one} adds ${rate} ${context.topWord}, so divide: ${rate * target} ÷ ${rate} = ${target}.`
-      : `Multiply by the number of ${many}: ${rate} × ${target} = ${rate * target}.`,
+      ? `Each ${one} adds ${rate} ${context.topWord}, so count the groups of ${rate} in ${rate * target}: ${rate * target} ÷ ${rate} = ${target}.`
+      : `${unit(target)} is ${target} times as much, so multiply: ${rate} × ${target} = ${rate * target}.`,
     findBottom
       ? `The answer is ${unit(target)}.`
       : `The answer is ${rate * target} ${context.topWord}.`,
@@ -697,8 +704,9 @@ function fractionCase(input: {
     answer: frac(rate),
     hint: `${input.divide}: ${frac(a)} ÷ ${frac(c)}. To divide by ${frac(c)}, multiply by its reciprocal, ${frac(flip)}.`,
     explanation: [
-      `A unit rate is the amount for 1 ${input.unitName[0]}. ${input.divide}: ${frac(a)} ÷ ${frac(c)}.`,
-      `Dividing by ${frac(c)} is the same as multiplying by its reciprocal, ${frac(flip)}: ${frac(a)} × ${frac(flip)} = ${product}${frac(rate) === product ? "" : ` = ${frac(rate)}`}.`,
+      `A unit rate tells the amount for 1 ${input.unitName[0]}. ${input.divide}: ${frac(a)} ÷ ${frac(c)}.`,
+      `A reciprocal flips a fraction's top and bottom. Dividing by ${frac(c)} is the same as multiplying by its reciprocal, ${frac(flip)}.`,
+      `${frac(a)} × ${frac(flip)} = ${product}${frac(rate) === product ? "" : ` = ${frac(rate)}`}.`,
       c.n === 1
         ? `Check: 1 ${input.unitName[0]} is ${c.d} copies of ${frac(c)} ${input.unitName[0]}, so the amount is ${c.d} × ${frac(a)} = ${frac(rate)}.`
         : `Check: ${frac(c)} × ${frac(rate)} = ${frac(q(c.n * rate.n, c.d * rate.d))}, which matches the amount given.`,
@@ -883,18 +891,21 @@ function storyExplanation(s: Story): string[] {
     return [
       `The story gives the number of equal groups (${g}) and the size of each group (${size}). The total is unknown.`,
       `Putting equal groups together is multiplication: ${s.groups} × ${s.size} = ${s.total}.`,
+      `Multiplying is a fast way to add ${s.size} again and again, ${s.groups} times.`,
       `The answer is ${s.total} ${s.itemWord}.`,
     ];
   if (s.unknown === "size")
     return [
       `The story gives the total (${s.total} ${s.itemWord}) and the number of equal groups (${g}). The size of each group is unknown.`,
       `Splitting a total into a known number of equal groups is division: ${s.total} ÷ ${s.groups} = ${s.size}.`,
-      `Check: ${s.groups} × ${s.size} = ${s.total}. The answer is ${answer} ${s.itemWord}.`,
+      `Check with multiplication, the opposite of division: ${s.groups} × ${s.size} = ${s.total}.`,
+      `The answer is ${answer} ${s.itemWord}.`,
     ];
   return [
     `The story gives the total (${s.total} ${s.itemWord}) and the size of each group (${size}). The number of groups is unknown.`,
     `Finding how many groups of ${s.size} make ${s.total} is division: ${s.total} ÷ ${s.size} = ${s.groups}.`,
-    `Check: ${s.groups} × ${s.size} = ${s.total}. The answer is ${answer} ${s.groupWord[1]}.`,
+    `Check with multiplication, the opposite of division: ${s.groups} × ${s.size} = ${s.total}.`,
+    `The answer is ${answer} ${s.groupWord[1]}.`,
   ];
 }
 function storyCase(r: Random): Case {
@@ -938,25 +949,25 @@ function storyChoiceCase(r: Random): Case {
       "+",
       `${x} + ${y} = ?`,
       product
-        ? `Adding ${x} and ${y} counts one group and one more amount. There are ${x} equal groups of ${y}, so multiply.`
-        : `The total ${x} is already known. Adding makes a larger total; the story asks how the ${x} is split, so divide.`,
+        ? `You added the two numbers. That joins one group to one more amount, but there are ${x} equal groups of ${y}, so multiply.`
+        : `You added the two numbers, which makes a bigger total. The total ${x} is already known; the story splits it, so divide.`,
     ],
     [
       "−",
       `${big} − ${small} = ?`,
       product
-        ? `Subtracting takes an amount away. The story puts ${x} equal groups of ${y} together, so multiply.`
-        : `Subtracting ${y} once removes one group. Splitting all ${x} into equal parts is division.`,
+        ? `You subtracted, which takes an amount away. The story puts ${x} equal groups of ${y} together, so multiply.`
+        : `You subtracted ${y} once, which removes only one group. Splitting all ${x} into equal parts is division.`,
     ],
     [
       "×",
       `${x} × ${y} = ?`,
-      `${x} × ${y} makes a total larger than ${x}. Here ${x} is the total, so divide it.`,
+      `You multiplied, which builds a total larger than ${x}. Here ${x} is already the total, so divide it.`,
     ],
     [
       "÷",
       `${big} ÷ ${small} = ?`,
-      `Division splits a known total. Here the total is unknown: ${x} equal groups of ${y} are put together, so multiply.`,
+      `You divided, but division splits a total you already know. Here the total is unknown: ${x} groups of ${y} are put together, so multiply.`,
     ],
   ];
   return {
@@ -966,7 +977,7 @@ function storyChoiceCase(r: Random): Case {
     hint: `The story gives ${x} and ${y}. Is one of them the total of the equal groups, or is the total what the question asks for?`,
     explanation: [
       ...storyExplanation(s).slice(0, 2),
-      `${options.find(([op]) => op === correctOp)![1]} models the story.`,
+      `${options.find(([op]) => op === correctOp)![1]} matches the story, so it is the equation to use.`,
     ],
     tags: [s.context, s.unknown],
     choices: options.map(([op, label, feedback]) =>

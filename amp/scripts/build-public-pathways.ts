@@ -122,11 +122,7 @@ function cardSvg(skill?: (typeof skills)[number], product = false) {
     ? "Math that adapts to you"
     : (skill?.title ?? "Explore math skills");
   const lines = product ? ["Math that adapts", "to you"] : titleLines(title);
-  const grade = product
-    ? "ADAPTIVE MATH PATHWAYS"
-    : skill
-      ? bandLabel(skill.gradeBand).toUpperCase()
-      : "KINDERGARTEN THROUGH PRECALCULUS";
+  const grade = "ADAPTIVE MATH PATHWAYS";
   const titleY = lines.length > 1 ? 260 : 290;
   if (
     lines.length > 3 ||
@@ -202,7 +198,7 @@ function skillLinks(ids: string[]) {
     .filter((skill) => skill !== undefined)
     .map(
       (skill) =>
-        `<li><a href="${skillUrl(skill.id)}">${escapeHtml(skill.title)}</a> <small>${escapeHtml(bandLabel(skill.gradeBand))}</small></li>`,
+        `<li><a href="${skillUrl(skill.id)}">${escapeHtml(skill.title)}</a></li>`,
     );
   return links.length ? `<ul>${links.join("")}</ul>` : "<p>None listed.</p>";
 }
@@ -273,13 +269,13 @@ function skillPage(skill: (typeof skills)[number]) {
       ? `<ul>${items
           .map(({ skill: other, connection, source }) => {
             const label = neighborLabel({ skill: other, connection, source });
-            return `<li><a href="${skillUrl(other.id)}">${escapeHtml(other.title)}</a> · ${escapeHtml(bandLabel(other.gradeBand))}${label ? ` · ${escapeHtml(label)}` : ""}${connection ? `<p>${escapeHtml(connection.explanation)}</p>` : ""}</li>`;
+            return `<li><a href="${skillUrl(other.id)}">${escapeHtml(other.title)}</a>${label ? ` · ${escapeHtml(label)}` : ""}${connection ? `<p>${escapeHtml(connection.explanation)}</p>` : ""}</li>`;
           })
           .join("")}</ul>`
       : "<p>None listed.</p>";
   const content = `<main class="pathways-static">
     <nav><a href="/pathways">Explore the whole skill map</a></nav>
-    <p class="grade">${escapeHtml(bandLabel(skill.gradeBand))}</p>
+    <details><summary>Curriculum placement</summary><p class="grade">${escapeHtml(bandLabel(skill.gradeBand))}. This describes the skill, not a learner estimate.</p></details>
     <h1>${escapeHtml(skill.title)}</h1>
     <p>${escapeHtml(skill.description)}</p>
     <section><h2>Problem types</h2>${typeList}</section>
@@ -289,7 +285,7 @@ function skillPage(skill: (typeof skills)[number]) {
     <p><a href="/pathways">Open the interactive map</a> to explore lessons and skill connections.</p>
   </main>`;
   return page(
-    `${skill.title} · ${bandLabel(skill.gradeBand)} | AMP Pathways`,
+    `${skill.title} | AMP Pathways`,
     metaDescription(skill.description),
     skillUrl(skill.id),
     content,
@@ -316,8 +312,8 @@ for (const skill of skills) {
 }
 const listing = [...groups]
   .map(
-    ([band, group]) =>
-      `<section><h2>${escapeHtml(bandLabel(band))}</h2>${skillLinks(group.map((skill) => skill.id))}</section>`,
+    ([, group]) =>
+      `<section>${skillLinks(group.map((skill) => skill.id))}</section>`,
   )
   .join("");
 const mapDirectory = new URL("pathways/", destination);

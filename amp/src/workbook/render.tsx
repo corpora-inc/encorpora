@@ -873,6 +873,25 @@ export function workbookFooter(_spec: WorkbookSpec): string {
   return "";
 }
 
+/** The workspace grid's lines as one small SVG tile, in the theme colour.
+ * Chromium prints a two-gradient line grid as separate shadings for every
+ * cell: that made the PDF step about seven times slower (0.9 s against
+ * 0.13 s for a grade 3 workbook) and the file nearly twice the size. A tile
+ * is one image pattern. Geometry matches the gradients: a 0.7px line on each
+ * cell edge. (The radial-gradient dot grids print quickly and stay.) */
+const gridLines = (() => {
+  // The tile is its own SVG document: it needs a literal colour (a CSS
+  // variable or currentColor would print black).
+  const grid = /--color-figure-grid:\s*([^;]+);/
+    .exec(printTokens())?.[1]
+    ?.trim();
+  if (!grid || !/^#[0-9a-f]{3,8}$/i.test(grid))
+    throw new Error("--color-figure-grid must be a hex colour in tokens.css");
+  // A 0.25in cell is 24px, so one unit is one CSS pixel.
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'><path d='M0 0H24V.7H0zM0 .7H.7V24H0z' fill='${grid}' fill-opacity='.8'/></svg>`;
+  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+})();
+
 const workbookCss = `
 /* Tokens by band. Paper is plain white: figures and answer boxes never
    carry a cream tint. */
@@ -1002,7 +1021,7 @@ body{margin:0}
    the layout (--wb-grow). Answer boxes sit at the bottom of the row. */
 .wb-work{position:relative;flex:1 0 auto;display:flex;flex-direction:column;gap:6px;margin-top:6px;min-height:calc(var(--work-standard) + var(--wb-grow,0px))}
 .wb-work-grid{flex:1 1 auto;min-height:0;border-radius:calc(var(--radius) * 0.6);
-background-image:linear-gradient(var(--grid-line) 0.7px,transparent 0.7px),linear-gradient(90deg,var(--grid-line) 0.7px,transparent 0.7px);background-size:var(--grid) var(--grid);background-position:-0.35px -0.35px}
+background-image:${gridLines};background-size:var(--grid) var(--grid);background-position:-0.35px -0.35px}
 .wb-work--answer{min-height:calc(var(--work-answer) + var(--wb-grow,0px))}
 .wb-work--roomy{min-height:calc(var(--work-roomy) + var(--wb-grow,0px))}
 .wb--high .wb-work-grid{background-image:radial-gradient(circle,var(--color-border-strong) 0.6px,transparent 0.9px);background-size:var(--grid) var(--grid);background-position:center}

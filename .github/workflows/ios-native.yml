@@ -38,7 +38,7 @@ env:
 jobs:
   plugins-ios:
     name: Tauri plugins · Swift compile (aarch64-apple-ios)
-    runs-on: macos-14
+    runs-on: macos-26
     steps:
       - name: Initialize verified client trust
         id: ci-trust
