@@ -263,7 +263,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
       "Compare values from different data sets with $z$-scores, and recognize when a normal model is not appropriate.",
     ],
     intuition: [
-      "The mean is the ordinary average: add the values and divide by how many there are. The standard deviation (SD) is a typical distance of values from the mean. Many measurements, such as heights or the fill weights of boxes from one machine, pile up symmetrically around the mean with one peak. Such data are described by a normal model, a bell-shaped curve.",
+      "The mean is the ordinary average: add the values and divide by how many there are. The standard deviation (SD) is a typical distance of values from the mean. Many measurements, such as heights or the fill weights of boxes from one machine, pile up symmetrically around the mean with one peak. Such data are often described well by a normal model, a particular bell-shaped curve.",
       "A normal model has a fixed pattern: about 68% of values lie within 1 SD of the mean, 95% within 2 SDs and 99.7% within 3 SDs. A $z$-score tells how many SDs a value is from its mean, so values from different scales can be compared.",
     ],
     workedExample: {
@@ -296,7 +296,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
     pitfalls: [
       "For an interval centered on the mean, the percent outside is split equally between the two tails, so one tail is half of it.",
       "Do not compare raw scores from different tests; compare $z$-scores.",
-      "Check the shape before applying the rule: a long tail or two peaks means the data are not normal.",
+      "Check the shape before applying the rule: strong skew, a long tail on one side only, or two peaks means a normal model does not fit.",
     ],
     parentGuide:
       "Ask the learner why 160 ± 12 cm covers about 95% of heights when the SD is 6 cm.",
@@ -339,7 +339,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
     formal: {
       title: "Definition",
       paragraphs: [
-        "A random variable $X$ is a function from the outcomes of an experiment to the real numbers. Its distribution gives $P(X=x)$ for every possible value $x$, and $\\sum P(X=x)=1$.",
+        "A random variable $X$ is a function from the outcomes of an experiment to the real numbers. When its possible values can be listed, its distribution gives $P(X=x)$ for every possible value $x$, and $\\sum P(X=x)=1$.",
         "For an event such as $X\\ge k$, $P(X\\ge k)=\\sum_{x\\ge k}P(X=x)$ because the values are mutually exclusive.",
       ],
     },
@@ -663,7 +663,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
     formal: {
       title: "Interpretation",
       paragraphs: [
-        "If treatment had no effect, each reshuffling of group labels would be as likely as the actual assignment. The proportion of reshuffled differences as or more extreme than the observed one is the estimated probability of such a difference arising by chance.",
+        "If treatment had no effect, each person's result would be the same under any assignment. Because the groups were formed at random, each reshuffling of group labels was as likely as the actual assignment. The proportion of reshuffled differences as or more extreme than the observed one is the estimated probability of such a difference arising by chance.",
         "Significance supports a treatment effect only because assignment was random. A difference that is not significant does not show there is no effect; the experiment may simply be too small to detect it.",
       ],
     },
@@ -694,7 +694,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
     ],
     intuition: [
       "A headline such as 'Most customers prefer the Garden Melt' sounds certain. But the number depends on whom the company asked, how many it asked, how precise the number is, and how the result is drawn.",
-      "Each question points to a different possible flaw. A sample is biased when the people in it differ in a systematic way from the whole group, as volunteers often do. A margin of error tells how far the true value could reasonably be from the reported one, because another random sample would give a slightly different number. A graph's axis is truncated when it starts above zero, which makes small differences look large.",
+      "Each question points to a different possible flaw. A sample is biased when the people in it differ in a systematic way from the whole group, as volunteers often do. A margin of error tells how far the true value could reasonably be from the reported one, because another random sample would give a slightly different number. A bar graph's axis, the number scale along its side, is truncated when it starts above zero, which can make small differences look large.",
       "A report can have any of these flaws, and fixing one does not fix the others.",
     ],
     workedExample: {
@@ -712,7 +712,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
       title: "A four-part check",
       keepTogetherInPrint: true,
       paragraphs: [
-        "Who: random sample from the whole group (good), or volunteers or convenient people (bad). How many: a very small sample gives an unstable estimate. How precise: a margin of error should accompany a percent, and the lead of one choice over the other should be larger than about twice it. How shown: a bar chart's axis should start at zero.",
+        "Who: a random sample from the whole group (usually representative), or volunteers or convenient people (likely biased). How many: a very small sample gives an unstable estimate. How precise: a margin of error should accompany a percent, and the lead of one choice over the other should be larger than about twice it. How shown: a bar chart's axis should start at zero.",
         "Name only the checks that fail, with the evidence from the report.",
       ],
     },
@@ -759,7 +759,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
       steps: [
         "The residuals add to $6+1-3-4-3+1+2=0$, but a zero sum does not show a good fit.",
         "Their signs run positive, negative, positive: a pattern, not random scatter.",
-        "The data curve away from the line, so the straight line has the wrong form.",
+        "Positive residuals at both ends and negative ones in the middle mean the heights curve away from the line, so a straight line is likely the wrong form.",
         "A curved model should be tried.",
       ],
       answer: "No: the pattern shows a curved model is needed",
@@ -776,7 +776,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
     formal: {
       title: "Definitions",
       paragraphs: [
-        "For observed $y_i$ and predicted $\\hat y_i$, the residual is $e_i=y_i-\\hat y_i$. The least-squares line, the line that makes the sum of the squared residuals as small as possible, always has residuals that add to zero. So the sum alone cannot detect a poor model.",
+        "For observed $y_i$ and predicted $\\hat y_i$, the residual is $e_i=y_i-\\hat y_i$. The least-squares line, the line $y=mx+b$ whose slope and intercept make the sum of the squared residuals as small as possible, always has residuals that add to zero. So the sum alone cannot detect a poor model.",
         "Predicting for $x$ outside the range of observed $x$-values is extrapolation. The pattern of residuals inside the range gives no evidence that the same form continues beyond it.",
       ],
     },

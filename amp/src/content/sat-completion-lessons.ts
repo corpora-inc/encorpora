@@ -18,7 +18,7 @@ const instruction: Record<string, Instruction> = {
     },
     noLink: ["whole"],
     intuition:
-      "A population is the whole group you want to know about, and a sample is the smaller group you actually measure. In a simple random sample, every possible group of that size has the same chance of being chosen. Then the sample's average, its mean, is a fair estimate of the population's average. It is not exact, because another sample could give a different result.",
+      "A population is the whole group you want to know about, and a sample is the smaller group you actually measure. In a simple random sample, every possible group of that size has the same chance of being chosen. Then the sample's average, its mean, is a fair estimate of the population's average. It may not be exact, because another sample could give a different result.",
     terms: [
       [
         "mean-average",

@@ -6,7 +6,7 @@ export const studyDesignLesson: Lesson = {
   id: "study-design",
   title: "Two kinds of randomness in a study",
   summary:
-    "A study can use chance in two separate ways. Choosing the participants by chance, a random sample, lets the results describe the larger group they came from. Assigning the treatments by chance, random assignment, lets the study say whether a treatment causes a difference. Check each choice on its own.",
+    "A study can use chance in two separate ways. Choosing the participants by chance, a random sample, lets the results describe the larger group they came from. Assigning the treatments by chance, random assignment, lets a large enough difference be credited to the treatment rather than to how the groups were formed. Check each choice on its own.",
   templateIds: ["scope-of-inference-choice"],
   senses: {
     difference: "difference-subtract",

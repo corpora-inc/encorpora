@@ -214,7 +214,7 @@ export const combinatoricsLessons: Lesson[] = [
         title: "Notation and checks",
         paragraphs: [
           "The number of groups of $k$ items chosen from $n$ is written $\\binom{n}{k}$ and read “$n$ choose $k$”. For a committee of 4 from 10 students: arrangements 10 × 9 × 8 × 7 = 5040, orders of one committee 4 × 3 × 2 × 1 = 24, and 5040 ÷ 24 = 210 committees.",
-          "Handshakes are pairs: if each of 9 people shakes hands once with every other person, there are 9 × 8 ÷ 2 = 36 handshakes. Choosing who serves also chooses who does not, so choosing 4 of 10 gives the same count as choosing 6 of 10 to leave out. A group count is always a whole number, so a fraction signals a mistake in the counting.",
+          "Handshakes are pairs: if each of 9 people shakes hands once with every other person, there are 9 × 8 ÷ 2 = 36 handshakes. Choosing who serves also chooses who does not, so choosing 4 of 10 gives the same count as choosing 6 of 10 to leave out. A group count is always a whole number, so a result that does not simplify to a whole number signals a mistake in the counting.",
         ],
       },
     ],
@@ -250,7 +250,7 @@ export const combinatoricsLessons: Lesson[] = [
     id: "combination-probability",
     title: "Probability by counting groups",
     summary:
-      "When a group is chosen at random, every possible group is equally likely. So the probability of an event, how likely it is, is the number of groups that fit the event divided by the number of all possible groups. Combinations count both.",
+      "When a group is chosen so that every possible group is equally likely, as when names are drawn from a well-mixed hat, the probability of an event, how likely it is, is the number of groups that fit the event divided by the number of all possible groups. Combinations count both.",
     templateIds: ["combination-probability"],
     senses: {
       event: "event",
