@@ -2,7 +2,7 @@
 
 Repository Chromium tools use `amp/browser-security.mjs`. It selects Chrome for Testing 156.0.8078.80, enables Chromium sandboxing, and checks the running browser version before returning it to a caller. Playwright remains the automation library; its bundled Chromium is not used. Firefox, WebKit, and connections to existing native WebViews keep their engine-specific behavior.
 
-From the repository root, install the browser with:
+Use Node 22 or newer with `curl` and `unzip` on PATH. From the repository root, install the browser with:
 
 ```sh
 node amp/scripts/install-browser.mjs

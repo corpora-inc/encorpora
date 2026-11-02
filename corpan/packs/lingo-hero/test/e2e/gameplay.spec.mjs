@@ -91,10 +91,7 @@ const read = () => page.evaluate(() => {
 });
 
 // Start a Practice run (click the menu button like a real player would).
-await page.evaluate(() => {
-  const p = [...document.querySelectorAll("button")].find((b) => /practice/i.test(b.textContent || ""));
-  if (p) p.click(); else window.__lingoHero.startGame("PRACTICE");
-});
+await page.getByRole("button", { name: /practice/i }).click();
 await page.waitForFunction(() => (window.__lingoHero.notes || []).length > 0, { timeout: 10000 });
 
 // --- Contract (a): cards actually FALL (y increases across frames). ----------
