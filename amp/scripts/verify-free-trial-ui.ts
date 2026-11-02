@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
+import { randomUUID } from "node:crypto";
 import { realpathSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -15,6 +16,7 @@ import { PostgresRepository } from "../src/server/repository";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { trialLimits } from "../src/server/trials";
 import { migrate } from "./migrate";
+import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 
 /**
@@ -37,14 +39,22 @@ const repository = new PostgresRepository(url, {
   development: true,
   freeProblems: FREE,
 });
+// Other browser suites share this database. Their saved assessment must not
+// become this family's current trial during the adoption journey.
+const fixtureAccount = `free-trial-fixture-${randomUUID()}`;
+const validateDevelopmentSession = developmentAuth();
+const authenticate: ReturnType<typeof developmentAuth> = async (request) => {
+  await validateDevelopmentSession(request);
+  return fixtureAccount;
+};
 const app = buildApp({
   repository,
-  authenticate: developmentAuth(),
+  authenticate,
   development: true,
 });
 await registerFamilyRoutes(app, {
   pool: repository.pool,
-  authenticate: developmentAuth(),
+  authenticate,
   development: true,
 });
 const apiPort = 4363,
@@ -54,7 +64,7 @@ const origin = `http://127.0.0.1:${port}`;
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 // A signed-in parent exists only while this tab's fixture flag is set; the
 // learning API's development authenticator accepts the same bearer token.
-const auth = `export async function accessSession(){return localStorage.getItem('fixture.parent')?{token:'amp-local-development',accountId:'development-household'}:null;}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const auth = `export async function accessSession(){return localStorage.getItem('fixture.parent')?{token:'amp-local-development',accountId:${JSON.stringify(fixtureAccount)}}:null;}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
 const vite = await createServer({
   root: new URL("../", import.meta.url).pathname,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
@@ -142,7 +152,7 @@ function me(state: State) {
   return {
     signedIn: true,
     account: {
-      id: "development-household",
+      id: fixtureAccount,
       email: "parent@example.test",
       emailVerified: true,
     },
@@ -420,30 +430,6 @@ async function coldLoad(
 const flashes = (page: Page) =>
   page.evaluate(() => (window as unknown as { __flash: string[] }).__flash);
 
-/** Answers the current problem through the visible controls. */
-async function answerOne(page: Page, correct: boolean) {
-  await page.locator(".problem-stage .question").waitFor();
-  const compact = page.locator(".compact-answer-action");
-  if (await compact.isVisible()) await compact.click();
-  const scope = (await compact.isVisible().catch(() => false))
-    ? page.locator("dialog[open]")
-    : page.locator("main.practice-workspace");
-  const attempt = page.waitForResponse((r) => r.url().endsWith("/attempts"));
-  const choice = page.locator(".choice-option");
-  if (await choice.count()) {
-    await choice.nth(correct ? 0 : 1).click();
-    await page.locator(".choice-submit:visible").click();
-  } else {
-    const input = page.locator("#answer:visible");
-    await input.fill(correct ? "1" : "999999");
-    await input.press("Enter");
-  }
-  const response = await attempt;
-  assert.equal(response.status(), 200, await response.text());
-  void scope;
-  await page.locator(".next-action").waitFor();
-  return response.json();
-}
 /** Next; a level check that opens with the next problem is continued
  * past (verify-level-check-ui.ts covers it). */
 async function next(page: Page) {
@@ -485,6 +471,7 @@ try {
   for (const theme of ["light", "dark"] as const)
     for (const [width, height] of viewports) {
       const tag = `${width}x${height}-${theme}`;
+      console.log(`Free trial journey: ${tag}`);
       const audit = width === 320 && theme === "light";
       const context = await browser.newContext({
         viewport: { width, height },
@@ -492,6 +479,7 @@ try {
       });
       await context.addInitScript({ content: watch });
       const page = await context.newPage();
+      trackPracticeProblems(page);
       page.setDefaultTimeout(15000);
       const faults: string[] = [];
       page.on("pageerror", (error) => faults.push(error.message));

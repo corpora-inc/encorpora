@@ -117,6 +117,22 @@ try {
       return failMe
         ? route.fulfill({ status: 503, json: { error: "unavailable" } })
         : route.fulfill({ json: account });
+    if (path === "/api/v1/trials/current") {
+      assert.equal(route.request().method(), "POST");
+      assert.match(route.request().headers().authorization ?? "", /^Bearer /);
+      return route.fulfill({
+        json: {
+          trial: signedIn
+            ? {
+                token: "synthetic-drawer-trial",
+                learnerId: "trial-student",
+                birthYear: 2016,
+                expiresAt: "2099-01-01T00:00:00.000Z",
+              }
+            : null,
+        },
+      });
+    }
     if (path === "/api/v1/catalog")
       return route.fulfill({
         json: {
@@ -235,7 +251,15 @@ try {
             ? "constraint-feasible"
             : "absolute-value-affine-equation";
       await page.goto(`${origin}/try/practice`);
-      await page.locator(".problem-stage .question").waitFor();
+      await page
+        .locator(".problem-stage .question")
+        .waitFor()
+        .catch(async (cause) => {
+          throw new Error(
+            `Navigation fixture ${width}/${theme} reached ${page.url()}; errors=${JSON.stringify(errors)}; requests=${JSON.stringify(requests.slice(-15))}; body=${(await page.locator("body").innerText()).slice(0, 2000)}`,
+            { cause },
+          );
+        });
       await trigger.waitFor();
       assert.equal(
         await page.getByRole("link", { name: "Your progress" }).count(),
@@ -395,7 +419,7 @@ try {
     }
   // A menu opened before the assessment lookup answers must not move when it
   // does. Signed in, the "Free assessment" row is decided by the token saved
-  // on this browser; as a guest, the card is laid out for the assessment,
+  // on this browser; without family learners, the card is laid out for the assessment,
   // budget included, from the first frame.
   const learningCard = drawer.getByRole("region", {
     name: "Current learning",
@@ -419,7 +443,7 @@ try {
         ),
       ].every((stat) => stat.textContent !== "—"),
     );
-  for (const guest of [false, true])
+  for (const assessmentOnly of [false, true])
     for (const theme of ["light", "dark"] as const)
       for (const [width, height] of [
         [320, 568],
@@ -427,20 +451,26 @@ try {
         [768, 1024],
         [1280, 900],
       ]) {
-        const who = guest ? "guest" : "signed-in";
+        const who = assessmentOnly ? "assessment-only" : "family";
         const label = `delayed assessment ${who} ${theme} ${width}`;
-        signedIn = !guest;
+        signedIn = true;
+        account = assessmentOnly
+          ? fixtureMe(
+              { ...twoLearners.family, learners: [] },
+              "amp|drawer-fixture",
+            )
+          : twoLearners;
         await page.setViewportSize({ width, height });
         await page.emulateMedia({ colorScheme: theme });
         let release!: () => void;
         const held = new Promise<void>((resolve) => (release = resolve));
-        await page.route("**/api/v1/learners", async (route) => {
+        await page.route("**/api/v1/trials/current", async (route) => {
           await held;
           await route.fallback();
         });
-        const lookup = page.waitForRequest("**/api/v1/learners");
+        const lookup = page.waitForRequest("**/api/v1/trials/current");
         await page.goto(`${origin}/inventory`);
-        if (guest)
+        if (assessmentOnly)
           await page
             .getByRole("status")
             .filter({ hasText: "Loading" })
@@ -449,7 +479,7 @@ try {
         await lookup;
         await trigger.click();
         await learningCard.locator("[aria-live] strong").first().waitFor();
-        if (guest) {
+        if (assessmentOnly) {
           // The budget holds its place, unnamed until its numbers arrive.
           await learningCard
             .locator('[aria-busy="true"]')
@@ -470,7 +500,7 @@ try {
           await Promise.all(el.getAnimations().map((a) => a.finished));
         });
         const pending = await menuGeometry();
-        if (!guest)
+        if (!assessmentOnly)
           assert(
             pending.some((row) => row.startsWith("trial ")),
             `${label}: the saved assessment is offered while its lookup is pending`,
@@ -481,11 +511,11 @@ try {
           path: `${output}/menu-assessment-pending-${who}-${theme}-${width}.png`,
           animations: "disabled",
         });
-        const answered = page.waitForResponse("**/api/v1/learners");
+        const answered = page.waitForResponse("**/api/v1/trials/current");
         release();
         await answered;
         await statsSettled();
-        if (guest)
+        if (assessmentOnly)
           await learningCard
             .getByRole("progressbar", { name: "Free assessment problems used" })
             .waitFor();
@@ -504,10 +534,11 @@ try {
           path: `${output}/menu-assessment-loaded-${who}-${theme}-${width}.png`,
           animations: "disabled",
         });
-        await page.unroute("**/api/v1/learners");
+        await page.unroute("**/api/v1/trials/current");
         await page.keyboard.press("Escape");
         await drawer.waitFor({ state: "detached" });
       }
+  account = twoLearners;
   signedIn = true;
   for (const [width, height] of [
     [320, 568],
@@ -818,6 +849,9 @@ try {
   await drawer.getByRole("link", { name: "Sign in", exact: true }).waitFor();
   await fits("guest drawer");
   await page.screenshot({ path: `${output}/drawer-guest.png` });
+  // Practice requires a parent session; isolate menu-load recovery from the
+  // signed-out drawer case above.
+  signedIn = true;
   const failedMenu = await context.newPage();
   await failedMenu.route(
     /\/DrawerContents(?:\.tsx|-[^/]+\.js)(?:\?.*)?$/,
