@@ -39,7 +39,7 @@ test("a learner without practice gets no workbook entry", () => {
 test("enabled, it links to today's workbook and the history", async () => {
   renderEntry({ learner, enabled: true });
   const today = await screen.findByRole("link", {
-    name: "Download today's workbook",
+    name: "Make a workbook",
   });
   expect(today.getAttribute("href")).toBe(
     `/learners/learner-1/workbooks/${localDate()}`,

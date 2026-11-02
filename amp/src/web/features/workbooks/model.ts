@@ -1,6 +1,10 @@
 import { z } from "zod";
 import { AppError } from "../../lib/AppError";
-import type { WorkbookPaper } from "../../../workbook/contracts";
+import {
+  workbookLeans,
+  type WorkbookChoicesInput,
+  type WorkbookPaper,
+} from "../../../workbook/contracts";
 
 export const workbookSearchSchema = z.object({
   minutes: z
@@ -9,6 +13,11 @@ export const workbookSearchSchema = z.object({
     .catch(undefined),
   paper: z.enum(["letter", "a4"]).optional().catch(undefined),
   number: z.coerce.number().int().min(1).max(999).optional().catch(undefined),
+  /** The workbook's choices: areas (comma-separated strands), lean, and
+   * `lesson=off` for problems only. Absent: mixed, at level, with a lesson. */
+  areas: z.string().max(400).optional().catch(undefined),
+  lean: z.enum(workbookLeans).optional().catch(undefined),
+  lesson: z.literal("off").optional().catch(undefined),
 });
 export type WorkbookSearch = z.infer<typeof workbookSearchSchema>;
 
@@ -63,4 +72,51 @@ export function workbookMessage(error: unknown, fallback: string): string {
   )
     return error.code;
   return error instanceof Error && error.message ? error.message : fallback;
+}
+
+export const defaultWorkbookChoices: WorkbookChoicesInput = {
+  areas: [],
+  lean: "level",
+  lesson: true,
+};
+/** Choices from the URL. */
+export function searchChoices(search: WorkbookSearch): WorkbookChoicesInput {
+  return {
+    areas: [...new Set((search.areas ?? "").split(",").filter(Boolean))].sort(),
+    lean: search.lean ?? "level",
+    lesson: search.lesson !== "off",
+  };
+}
+/** Choices as URL search parameters; defaults are left out. */
+export function choicesSearch(choices: WorkbookChoicesInput) {
+  return {
+    areas: choices.areas.length
+      ? [...choices.areas].sort().join(",")
+      : undefined,
+    lean: choices.lean === "level" ? undefined : choices.lean,
+    lesson: choices.lesson ? undefined : ("off" as const),
+  };
+}
+export const sameChoices = (a: WorkbookChoicesInput, b: WorkbookChoicesInput) =>
+  a.lean === b.lean &&
+  a.lesson === b.lesson &&
+  [...a.areas].sort().join(",") === [...b.areas].sort().join(",");
+
+export const leanNames = {
+  easier: "Easier review",
+  level: "At level",
+  stretch: "Stretch",
+} as const;
+/** A short line for a workbook's choices; empty for the defaults. */
+export function choicesLabel(
+  choices: WorkbookChoicesInput,
+  areaName: (id: string) => string,
+): string {
+  return [
+    choices.areas.map(areaName).join(", "),
+    choices.lean === "level" ? "" : leanNames[choices.lean],
+    choices.lesson ? "" : "Problems only",
+  ]
+    .filter(Boolean)
+    .join(" · ");
 }

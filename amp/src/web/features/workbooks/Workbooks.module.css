@@ -76,6 +76,39 @@
   min-height: var(--target-size);
   white-space: nowrap;
 }
+.another {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+.dice {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+.dice circle {
+  fill: currentColor;
+  stroke: none;
+}
+/* Areas: one row that scrolls sideways, so the number of areas a learner
+   has never changes the height of anything. Room for the focus ring. */
+.areas {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  padding: 4px;
+  margin: -4px;
+}
+.areas::-webkit-scrollbar {
+  display: none;
+}
+.areas [role="group"] {
+  flex-wrap: nowrap;
+}
 .today {
   align-self: stretch;
   text-align: center;
@@ -146,7 +179,12 @@
   white-space: nowrap;
 }
 .summary {
-  margin: var(--space-1) 0 var(--space-3);
+  margin: var(--space-1) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+}
+.choiceLine {
+  margin: 0 0 var(--space-3);
   color: var(--color-muted-text);
   font-size: var(--text-small);
 }

@@ -33,7 +33,7 @@ function History({
   return (
     <>
       <div className={styles.head}>
-        <p className={styles.eyebrow}>{learner.name} · Daily workbooks</p>
+        <p className={styles.eyebrow}>Workbooks for {learner.name}</p>
       </div>
       <h1 className={styles.title}>Workbooks</h1>
       <p className={styles.lede}>

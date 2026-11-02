@@ -11,15 +11,22 @@ import {
   type Repository,
 } from "../server/repository.js";
 import { isTrialAccount } from "../server/trials.js";
+import { strandEstimate, type Frontier } from "../learning/frontier.js";
+import { templateGrade } from "../server/mixed-practice.js";
 import {
   composeWorkbook,
+  printable,
+  specChoices,
+  WORKBOOK_HISTORY,
   workbookCode,
   workbookMinutes,
   type WorkbookMinutes,
 } from "./compose.js";
 import {
+  workbookAreaNames,
   workbookPapers,
   workbookRequestSchema,
+  type WorkbookChoicesInput,
   type WorkbookRecord,
   type WorkbookSummary,
 } from "./contracts.js";
@@ -53,6 +60,7 @@ export function workbookSummary(record: WorkbookRecord): WorkbookSummary {
     code: record.code,
     createdAt: record.createdAt,
     estimatedMinutes: workbookMinutes(record.spec),
+    choices: specChoices(record.spec),
     problems: record.spec.sections.reduce((n, s) => n + s.items.length, 0),
     sections: record.spec.sections.map((s) => ({
       kind: s.kind,
@@ -73,22 +81,62 @@ export function composableDate(date: string, now: number): boolean {
   return Math.abs(day - today) <= DAY;
 }
 
-/** Composes from the learner's own evidence. A learner without answers
- * gets a workbook from the starting estimate (age or chosen starting point). */
+const nodes = new Map(skills.map((s) => [s.id, s]));
+const areaOrder = Object.keys(workbookAreaNames);
+/** Strands a parent can choose: printable work within a grade and a half
+ * below to a grade above the strand's estimated level, in curriculum order. */
+export function workbookAreas(frontier: Frontier): string[] {
+  const near = new Set<string>();
+  for (const t of templates) {
+    const node = nodes.get(t.skillId);
+    if (!node || !printable(t)) continue;
+    const offset =
+      templateGrade(t, nodes) - strandEstimate(frontier, node.strand).level;
+    if (offset >= -1.5 && offset <= 1) near.add(node.strand);
+  }
+  return [...near].sort(
+    (a, b) =>
+      (areaOrder.indexOf(a) + 1 || 99) - (areaOrder.indexOf(b) + 1 || 99) ||
+      a.localeCompare(b),
+  );
+}
+
+/** Composes from the learner's own evidence and recent workbooks, so each
+ * roll is new. A learner without answers gets a workbook from the starting
+ * estimate (age or chosen starting point). */
 async function compose(
   tx: LearnerTransaction,
   learnerId: string,
-  input: { date: string; minutes: WorkbookMinutes; number: number },
+  input: {
+    date: string;
+    minutes: WorkbookMinutes;
+    number: number;
+    choices?: WorkbookChoicesInput;
+  },
   now: number,
 ) {
   const recent = await tx.recentAttempts();
+  const frontier = await tx.frontier(now);
+  if (input.choices?.areas.length) {
+    const offered = new Set(workbookAreas(frontier));
+    const unknown = input.choices.areas.filter((a) => !offered.has(a));
+    if (unknown.length)
+      throw new ApiError(
+        400,
+        "Those areas have no problems near this level. Choose from the areas shown.",
+      );
+  }
   return composeWorkbook({
     templates,
     skills,
     lessons,
-    frontier: await tx.frontier(now),
+    frontier,
     evidence: await tx.skillEvidence(),
     recentTemplateIds: recent.map((a) => a.templateId),
+    history: (await tx.workbooks(undefined, WORKBOOK_HISTORY)).map(
+      (w) => w.spec,
+    ),
+    choices: input.choices,
     date: input.date,
     number: input.number,
     minutes: input.minutes,
@@ -171,6 +219,21 @@ export function registerWorkbookRoutes(
     });
   });
 
+  /** The areas a parent can choose for this learner. */
+  app.get("/api/v1/learners/:learnerId/workbooks/areas", async (request) => {
+    const accountId = await account(request);
+    const { learnerId } = learnerParams.parse(request.params);
+    return options.repository.transaction(accountId, learnerId, async (tx) => {
+      await access(tx);
+      return {
+        areas: workbookAreas(await tx.frontier(now())).map((id) => ({
+          id,
+          label: workbookAreaNames[id] ?? id,
+        })),
+      };
+    });
+  });
+
   /** Same date, number and length: the same workbook, stored the first time.
    * No number: the next one for that date ("Another one"). */
   app.post("/api/v1/learners/:learnerId/workbooks", async (request, reply) => {
@@ -206,7 +269,12 @@ export function registerWorkbookRoutes(
         const spec = await compose(
           tx,
           learnerId,
-          { date: input.date, minutes: input.minutes, number },
+          {
+            date: input.date,
+            minutes: input.minutes,
+            number,
+            choices: input.choices,
+          },
           at,
         );
         const saved = await tx.saveWorkbook({

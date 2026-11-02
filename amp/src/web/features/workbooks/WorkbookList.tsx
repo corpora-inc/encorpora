@@ -3,9 +3,19 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import type { AuthSession } from "../../auth";
 import { Button } from "../../ui/Button";
-import type { WorkbookSummary } from "../../../workbook/contracts";
+import {
+  workbookAreaNames,
+  type WorkbookSummary,
+} from "../../../workbook/contracts";
 import { downloadWorkbook } from "./api";
-import { dateLabel, workbookMessage } from "./model";
+import {
+  choicesLabel,
+  choicesSearch,
+  dateLabel,
+  workbookMessage,
+} from "./model";
+
+const areaName = (id: string) => workbookAreaNames[id] ?? id;
 import styles from "./Workbooks.module.css";
 
 /** Stored workbooks, newest first, each downloadable again. */
@@ -74,6 +84,7 @@ export function WorkbookList({
                     number: workbook.number,
                     minutes: workbook.minutes,
                     paper: workbook.paper,
+                    ...choicesSearch(workbook.choices),
                   }}
                   className={styles.rowTitle}
                 >
@@ -82,9 +93,15 @@ export function WorkbookList({
                     : `No. ${workbook.number}`}
                 </Link>
                 <span className={styles.rowMeta}>
-                  {workbook.minutes} min · {workbook.problems} problems ·{" "}
+                  {workbook.minutes} min · {workbook.problems}{" "}
+                  {workbook.problems === 1 ? "problem" : "problems"} ·{" "}
                   <span className={styles.code}>{workbook.code}</span>
                 </span>
+                {choicesLabel(workbook.choices, areaName) && (
+                  <span className={styles.rowMeta}>
+                    {choicesLabel(workbook.choices, areaName)}
+                  </span>
+                )}
                 <Link
                   to="/learners/$learnerId/workbooks/$workbookId/results"
                   params={{ learnerId, workbookId: workbook.id }}

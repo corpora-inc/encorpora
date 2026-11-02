@@ -16,27 +16,37 @@ import { useEffect, useState } from "react";
 import type { AuthSession } from "../../auth";
 import { sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
+import { Chips } from "../../ui/Chips";
 import { Segmented } from "../../ui/Segmented";
 import { Toast } from "../../ui/Toast";
-import type {
-  WorkbookPaper,
-  WorkbookSummary,
+import {
+  workbookAreaNames,
+  type WorkbookChoicesInput,
+  type WorkbookPaper,
+  type WorkbookSummary,
 } from "../../../workbook/contracts";
 import {
   anotherWorkbook,
   downloadWorkbook,
+  workbookAreasOptions,
   workbookHistoryOptions,
   workbookOptions,
   workbooksKey,
   type WorkbookMinutes,
 } from "./api";
 import {
+  choicesLabel,
+  choicesSearch,
   dateLabel,
   defaultPaper,
   isDate,
+  leanNames,
   localDate,
+  sameChoices,
+  searchChoices,
   sectionNames,
   workbookMessage,
+  type WorkbookSearch,
 } from "./model";
 import { WorkbookFrame, type WorkbookLearner } from "./WorkbookFrame";
 import { WorkbookList } from "./WorkbookList";
@@ -74,7 +84,7 @@ function Head({ learner, date }: { learner: WorkbookLearner; date: string }) {
   return (
     <>
       <div className={styles.head}>
-        <p className={styles.eyebrow}>{learner.name} · Daily workbook</p>
+        <p className={styles.eyebrow}>Workbook for {learner.name}</p>
         <Link
           to="/learners/$learnerId/workbooks"
           params={{ learnerId: learner.id }}
@@ -97,16 +107,14 @@ function Today({
   learner: WorkbookLearner;
   date: string;
 }) {
-  const search = useSearch({ strict: false }) as {
-    minutes?: WorkbookMinutes;
-    paper?: WorkbookPaper;
-    number?: number;
-  };
+  const search = useSearch({ strict: false }) as WorkbookSearch;
   const navigate = useNavigate();
   const client = useQueryClient();
   const minutes = search.minutes ?? 45;
   const paper = search.paper ?? defaultPaper();
+  const choices = searchChoices(search);
   const history = useQuery(workbookHistoryOptions(session, learner.id, date));
+  const areas = useQuery(workbookAreasOptions(session, learner.id));
   const latest = history.data?.workbooks.length
     ? Math.max(...history.data.workbooks.map((w) => w.number))
     : 1;
@@ -117,6 +125,7 @@ function Today({
       number: number ?? 1,
       minutes,
       paper,
+      choices,
     }),
     enabled: number !== undefined,
     placeholderData: keepPreviousData,
@@ -125,6 +134,26 @@ function Today({
     refetchOnWindowFocus: false,
   });
   const current = workbook.isPlaceholderData ? undefined : workbook.data;
+  // A stored workbook keeps the choices it was made with: the URL follows
+  // it, so the controls always show what this workbook is.
+  useEffect(() => {
+    if (!current || sameChoices(current.choices, choices)) return;
+    client.setQueryData(
+      workbookOptions(session, learner.id, {
+        date,
+        number: current.number,
+        minutes,
+        paper,
+        choices: current.choices,
+      }).queryKey,
+      current,
+    );
+    void navigate({
+      to: ".",
+      search: (prev) => ({ ...prev, ...choicesSearch(current.choices) }),
+      replace: true,
+    });
+  }, [current?.id]);
   // A workbook made here joins the day's history.
   useEffect(() => {
     if (
@@ -142,9 +171,16 @@ function Today({
   const [downloading, setDownloading] = useState(false);
   // A failed history load means no PDF flag: the printable copy still works.
   const ready = !!current && (!!history.data || !!history.error);
+  // Roll another, or change a choice: the next workbook for today, made
+  // with these choices. Each is its own URL, so Back returns to the last.
   const another = useMutation({
-    mutationFn: () =>
-      anotherWorkbook(session, learner.id, { date, minutes, paper }),
+    mutationFn: (next: WorkbookChoicesInput) =>
+      anotherWorkbook(session, learner.id, {
+        date,
+        minutes,
+        paper,
+        choices: next,
+      }),
     onSuccess: (made) => {
       client.setQueryData(
         workbookOptions(session, learner.id, {
@@ -152,6 +188,7 @@ function Today({
           number: made.number,
           minutes,
           paper,
+          choices: made.choices,
         }).queryKey,
         made,
       );
@@ -160,7 +197,11 @@ function Today({
       });
       void navigate({
         to: ".",
-        search: (prev) => ({ ...prev, number: made.number }),
+        search: (prev) => ({
+          ...prev,
+          number: made.number,
+          ...choicesSearch(made.choices),
+        }),
       });
     },
     onError: (error) =>
@@ -168,6 +209,12 @@ function Today({
         workbookMessage(error, "Another workbook couldn't be made. Try again."),
       ),
   });
+  const roll = (next: WorkbookChoicesInput) => {
+    setMessage("");
+    another.mutate(next);
+  };
+  const choosing = !current || another.isPending;
+  const areaName = (id: string) => workbookAreaNames[id] ?? id;
   const set = (change: {
     minutes?: WorkbookMinutes;
     paper?: WorkbookPaper;
@@ -227,6 +274,56 @@ function Today({
             { value: "a4", label: "A4", detail: "Most countries" },
           ]}
         />
+        <Segmented<WorkbookChoicesInput["lean"]>
+          compact
+          label="Level"
+          value={choices.lean}
+          disabled={choosing}
+          onChange={(lean) => roll({ ...choices, lean })}
+          options={[
+            { value: "easier", label: leanNames.easier, detail: "More review" },
+            { value: "level", label: leanNames.level, detail: "Recommended" },
+            {
+              value: "stretch",
+              label: leanNames.stretch,
+              detail: "A bit above",
+            },
+          ]}
+        />
+        <Segmented<"lesson" | "problems">
+          compact
+          label="Today's idea"
+          value={choices.lesson ? "lesson" : "problems"}
+          disabled={choosing}
+          onChange={(value) => roll({ ...choices, lesson: value === "lesson" })}
+          options={[
+            { value: "lesson", label: "With a lesson", detail: "Recommended" },
+            { value: "problems", label: "Problems only", detail: "No lesson" },
+          ]}
+        />
+      </div>
+      {/* One row that scrolls sideways: however many areas a learner has,
+          nothing below it moves when they load. */}
+      <div className={styles.areas}>
+        <Chips<string>
+          label="Areas"
+          disabled={choosing}
+          value={choices.areas.length ? choices.areas : ["mixed"]}
+          onChange={(next) => {
+            const picked = next.filter((v) => v !== "mixed");
+            const mixed =
+              !picked.length ||
+              (next.includes("mixed") && choices.areas.length > 0);
+            roll({ ...choices, areas: mixed ? [] : picked });
+          }}
+          options={[
+            { value: "mixed", label: "Mixed (recommended)" },
+            ...(areas.data?.areas ?? []).map((a) => ({
+              value: a.id,
+              label: a.label,
+            })),
+          ]}
+        />
       </div>
       <div className={styles.actions} data-workbook-actions>
         <Button
@@ -244,12 +341,16 @@ function Today({
           variant="secondary"
           className={styles.another}
           disabled={!current || another.isPending}
-          onClick={() => {
-            setMessage("");
-            another.mutate();
-          }}
+          aria-busy={another.isPending}
+          onClick={() => roll(choices)}
         >
-          {another.isPending ? "Making…" : "Another one"}
+          <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.dice}>
+            <rect x="2.5" y="2.5" width="15" height="15" rx="3.5" />
+            <circle cx="7" cy="7" r="1.3" />
+            <circle cx="13" cy="13" r="1.3" />
+            <circle cx="10" cy="10" r="1.3" />
+          </svg>
+          {another.isPending ? "Rolling…" : "Roll another"}
         </Button>
       </div>
       {/* An action that fails says so in the shared toast, over the page. */}
@@ -258,6 +359,7 @@ function Today({
         workbook={workbook.data}
         stale={!current}
         learnerId={learner.id}
+        areaName={areaName}
         failure={
           loadError && !workbook.data
             ? {
@@ -285,11 +387,13 @@ function Contents({
   workbook,
   stale,
   learnerId,
+  areaName,
   failure,
 }: {
   workbook?: WorkbookSummary;
   stale: boolean;
   learnerId: string;
+  areaName: (id: string) => string;
   /** A load that failed: said in the card's reserved space, with a retry. */
   failure?: { text: string; retry: () => void };
 }) {
@@ -310,7 +414,12 @@ function Contents({
           </div>
           <p className={styles.summary}>
             About {Math.max(5, Math.round(workbook.estimatedMinutes / 5) * 5)}{" "}
-            minutes · {workbook.problems} problems · answer key included
+            minutes · {workbook.problems}{" "}
+            {workbook.problems === 1 ? "problem" : "problems"} · answer key
+            included
+          </p>
+          <p className={styles.choiceLine}>
+            {choicesLabel(workbook.choices, areaName) || "Mixed, at level"}
           </p>
           <ol className={styles.sections}>
             {workbook.sections.map((section) => (
