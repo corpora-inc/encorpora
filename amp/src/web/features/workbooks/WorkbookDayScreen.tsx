@@ -12,7 +12,7 @@ import {
   useParams,
   useSearch,
 } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { AuthSession } from "../../auth";
 import { sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
@@ -213,6 +213,27 @@ function Today({
     another.mutate(next);
   };
   const choosing = !current || another.isPending;
+  // The areas row fades at an end only while there is more to scroll there.
+  const areasRow = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const row = areasRow.current;
+    if (!row) return;
+    const edges = () => {
+      row.dataset.start = String(row.scrollLeft <= 1);
+      row.dataset.end = String(
+        row.scrollLeft + row.clientWidth >= row.scrollWidth - 1,
+      );
+    };
+    edges();
+    row.addEventListener("scroll", edges, { passive: true });
+    const observer = new ResizeObserver(edges);
+    observer.observe(row);
+    if (row.firstElementChild) observer.observe(row.firstElementChild);
+    return () => {
+      row.removeEventListener("scroll", edges);
+      observer.disconnect();
+    };
+  }, [areas.data]);
   const areaName = (id: string) => workbookAreaNames[id] ?? id;
   const set = (change: {
     minutes?: WorkbookMinutes;
@@ -344,7 +365,7 @@ function Today({
         <span className={styles.choiceLabel} aria-hidden="true">
           Areas
         </span>
-        <div className={styles.areas}>
+        <div className={styles.areas} ref={areasRow}>
           <Chips<string>
             label="Areas"
             disabled={choosing}

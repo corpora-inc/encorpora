@@ -112,9 +112,21 @@
   font-size: var(--text-small);
   font-weight: 650;
 }
-/* A fade at the end says the row scrolls when it holds more areas. */
-.areas {
+/* A fade at an end says the row scrolls further that way. */
+.areas[data-start="false"] {
+  mask-image: linear-gradient(90deg, transparent, #000 28px);
+}
+.areas[data-end="false"] {
   mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+}
+.areas[data-start="false"][data-end="false"] {
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 28px,
+    #000 calc(100% - 28px),
+    transparent
+  );
 }
 .areas::-webkit-scrollbar {
   display: none;
