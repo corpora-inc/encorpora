@@ -158,55 +158,59 @@ const specs: Spec[] = [
     templateId: "coordinate-context-points",
     title: "Points in a real-world graph",
     summary:
-      "A point on a graph is a pair of numbers: go across for the first, then up for the second. The axis labels tell what each number means.",
+      "A graph can show a real situation, like a plant growing week by week. Each point on it stands for a pair of numbers. Go across for the first number, then up for the second. The labels on the graph tell what each number means.",
     objectives: [
       "Say what a plotted point means in a situation.",
       "Choose the point or ordered pair that fits a situation, and compare two points.",
     ],
-    goal: "Say what a point in the first quadrant means in a situation, find the point or pair that matches a situation, and compare two points.",
+    goal: "Say what a point on a graph means in a situation, find the point or pair that matches a situation, and compare two points.",
+    senses: { difference: "difference-subtract", unit: "unit" },
+    noLink: ["part", "square"],
     figure: true,
     intuition: [
-      t`A graph can show a real situation. The horizontal axis shows one quantity, such as weeks, and the vertical axis shows another, such as the height of a plant. A point in the first quadrant, where both numbers are 0 or more, is an ordered pair $(x, y)$. Start at the origin $(0, 0)$. Go across $x$, then go up $y$.`,
-      t`The labels on the axes tell what each number means. The point $(4, 6)$ on a graph of weeks and plant height means that after 4 weeks, the plant is 6 centimeters tall.`,
+      t`A graph has two number lines that meet at a square corner. Each number line is called an axis. The horizontal axis goes across, and it might count weeks. The vertical axis goes up, and it might show a plant's height. The point where they meet is called the origin. Both numbers there are 0, so we write it $(0, 0)$.`,
+      t`A point stands for two numbers written in order, like $(4, 6)$. This is called an ordered pair. Start at the origin. Go across the first number, 4. Then go up the second number, 6. This graph shows only the upper-right part, where both numbers are 0 or more. Inside it, where both numbers are more than 0, is the first quadrant. A point with a 0 sits on an axis.`,
+      t`The labels on the axes tell what each number means. On a graph of weeks and plant height, the point $(4, 6)$ means that after 4 weeks the plant is 6 centimeters tall.`,
     ],
     terms: [
       "ordered-pair",
       "origin",
       [
         "quadrant",
-        "The first quadrant is the upper right one, where both coordinates are 0 or more.",
+        "The first quadrant is the upper right one, where both coordinates are more than 0.",
       ],
     ],
     method: [
-      "Read the label on each axis. The first number goes with the horizontal axis and the second with the vertical axis.",
+      "Read the label on each axis. The first number goes with the horizontal axis, and the second goes with the vertical axis.",
       "To read a point, count across from the origin, then up. Write the pair.",
-      "Say the pair as a sentence with the units.",
-      "To compare two points, find what is the same. If they have the same first number, subtract the second numbers.",
+      "Say the pair as a sentence with its units, such as weeks and centimeters.",
+      "To compare two points, find what is the same. If they have the same first number, subtract the second numbers to find how far apart they are.",
     ],
     watch:
-      "The order matters: $(4, 6)$ and $(6, 4)$ are different points. Count along the horizontal axis first.",
-    principle: t`Each point in the plane corresponds to exactly one ordered pair $(x, y)$: $x$ is its distance across from the origin and $y$ its distance up. Two points with the same $x$-value are on one vertical line, and their $y$-values differ by $|y_2 - y_1|$.`,
+      "The order matters: $(4, 6)$ and $(6, 4)$ are different points. Count across the horizontal axis first, then up.",
+    principle: t`Each point on the graph stands for exactly one ordered pair. The first number is how far across from the origin it is, and the second is how far up. Two points with the same first number sit straight above one another, and the difference of their second numbers tells how far apart they are.`,
     example: {
       prompt:
         "A graph has weeks on the horizontal axis and the height of a plant in centimeters on the vertical axis. A point is 4 across and 6 up. What does it mean?",
       steps: [
-        "Count across 4 from the origin, then up 6. The point is $(4, 6)$.",
-        "The first number is on the weeks axis: 4 weeks. The second is on the height axis: 6 centimeters.",
+        "Start at the origin. Count across 4, then up 6. So the point is $(4, 6)$.",
+        "The first number goes with the weeks axis, so it means 4 weeks. The second goes with the height axis, so it means 6 centimeters.",
       ],
       answer: "After 4 weeks, the plant is 6 centimeters tall.",
     },
     methodTitle: "Two points above each other",
     methodText: [
-      t`Plant A is at $(5, 5)$ and Plant B is at $(5, 7)$. Both points are at 5 weeks, so they are straight above one another. Only the heights differ: $7 - 5 = 2$. Plant B is 2 centimeters taller.`,
+      t`Plant A is at $(5, 5)$ and Plant B is at $(5, 7)$. Both points have the same first number, 5 weeks, so they sit straight above one another. Only the heights are different. Subtract them: $7 - 5 = 2$. So Plant B is 2 centimeters taller.`,
     ],
     formalTitle: "Why the order matters",
     formal: [
-      t`The plane has two number lines at a right angle. A point is named by its position on each: $x$ on the horizontal line, $y$ on the vertical line. Because the two lines measure different quantities in a situation, swapping the numbers names a different point and a different situation. In a point at $(4, 6)$, the 4 is a number of weeks and the 6 is a height; $(6, 4)$ would be 6 weeks and a height of 4.`,
+      t`The graph has two number lines at a square corner. A point is named by where it sits on each line: the first number on the line across, and the second on the line going up.`,
+      t`When the two numbers are different, swapping them names a different point. Because the two lines count different things, it also tells a different story. The point $(4, 6)$ is 4 weeks and a height of 6 centimeters. The point $(6, 4)$ would be 6 weeks and a height of 4 centimeters.`,
     ],
     pitfalls: [
-      "Count across before up.",
+      "Count across before you count up.",
       "Use the axis labels to say what each number means.",
-      "To compare two points at the same first number, compare the second numbers.",
+      "To compare two points with the same first number, compare their second numbers.",
     ],
     parentGuide:
       "Ask your learner to make up a short sentence for a point on a graph from the labels on the axes.",
@@ -216,15 +220,16 @@ const specs: Spec[] = [
     templateId: "pattern-pair-relationship",
     title: "Two patterns made from two rules",
     summary:
-      "Build two patterns from two rules, pair the terms in the same position, and find how each term of one pattern is related to its partner.",
+      "A pattern is a list of numbers made by a rule, such as “start at 2 and add 3.” Make two patterns from two rules. Then pair up the numbers in the same spot, and find how each pair is related.",
     objectives: [
       "Build matching terms and write them as ordered pairs.",
       "Tell whether one pattern is the other plus a number or times a number, and use it.",
     ],
     goal: "Build two patterns from their rules, write corresponding terms as ordered pairs, and use the relationship between them.",
     intuition: [
-      t`A pattern can come from a rule such as "start at 2 and add 3." Its terms are 2, 5, 8, 11, and so on. A second rule, such as "start at 0 and add 6," gives 0, 6, 12, 18. Corresponding terms are the terms in the same position: the first with the first, the second with the second.`,
-      t`Write each pair of corresponding terms as an ordered pair (term of the first pattern, term of the second pattern). Then look at the pairs for a relationship. For example, each term of the second pattern might be 3 times the matching term of the first, or 4 more.`,
+      t`A rule tells how to make a pattern. “Start at 2 and add 3” gives 2, 5, 8, 11, and so on. Each number in a pattern is called a term: 2 is the 1st term, 5 is the 2nd term, and so on. A second rule, “start at 6 and add 3,” gives 6, 9, 12, 15.`,
+      t`Terms in the same spot in two patterns are called corresponding terms: the 1st term with the 1st term, the 2nd with the 2nd. Write each pair as an ordered pair, two numbers in order inside parentheses: (term of the first pattern, term of the second pattern). Here the pairs are (2, 6), (5, 9), (8, 12) and (11, 15).`,
+      t`Then look for a relationship: one thing you do to every first number to get its partner. Here each second number is 4 more than the first. In other patterns, each second number might be 3 times the first. A relationship counts only if it works for every pair.`,
     ],
     terms: [
       "corresponding-terms",
@@ -234,40 +239,47 @@ const specs: Spec[] = [
       ],
       "rule",
     ],
+    senses: {
+      rule: "rule",
+      term: "term-sequence",
+      "more than": "more-than",
+    },
     method: [
       "Write the first few terms of each pattern from its start and its rule.",
-      "Match the terms in the same position into ordered pairs.",
-      "For each pair, check two ideas: subtract (second − first) and divide (second ÷ first).",
-      "The relationship is the one that gives the same result for every pair. Use it to find a later term.",
+      "Pair the terms in the same spot into ordered pairs. If the question asks for a pair, you are done.",
+      "To find a relationship, try two checks on every pair: subtract (second − first) and divide (second ÷ first). Skip dividing when the first number is 0, because you cannot divide by 0.",
+      "The relationship is the check that gives the same answer for every pair. Use it to find a later term.",
     ],
     watch:
-      "Check every pair, not only the first. Two patterns that both add the same number each time differ by a fixed amount, but two patterns that add different numbers do not.",
-    principle: t`Terms in the same position of two patterns that add a fixed number each time are ordered pairs. If pattern B is pattern A plus a fixed number $c$, every pair differs by $c$. If B is $k$ times A, every pair has the second number equal to $k$ times the first. When the start and the added number of B are both $k$ times those of A, B is $k$ times A.`,
+      "Check every pair, not only the first. Two patterns that add the same number each time always differ by the same amount. Two patterns that add different numbers do not.",
+    principle: t`Corresponding terms of two patterns make ordered pairs. If each term of pattern B is pattern A's term plus the same number, every pair differs by that number. If each term of B is the same number times A's term, every pair has the second number that many times the first. When B's start and the number it adds are both 2 times A's, B is 2 times A, and the same works for any number.`,
     example: {
       prompt:
         "Pattern A starts at 2 and adds 3 each time. Pattern B starts at 4 and adds 6 each time. How are corresponding terms of B related to those of A?",
       steps: [
-        "Pattern A: 2, 5, 8, 11. Pattern B: 4, 10, 16, 22. The ordered pairs are (2, 4), (5, 10), (8, 16), (11, 22).",
-        "Subtracting does not give the same number: 4 − 2 = 2, but 10 − 5 = 5.",
-        "Dividing does: 4 ÷ 2 = 2, 10 ÷ 5 = 2, 16 ÷ 8 = 2, and 22 ÷ 11 = 2.",
+        "Write the terms. Pattern A: 2, 5, 8, 11. Pattern B: 4, 10, 16, 22. The ordered pairs are (2, 4), (5, 10), (8, 16), (11, 22).",
+        "Try subtracting. It does not give the same answer each time: 4 − 2 = 2, but 10 − 5 = 5.",
+        "Try dividing. It does: 4 ÷ 2 = 2, 10 ÷ 5 = 2, 16 ÷ 8 = 2, and 22 ÷ 11 = 2. So the relationship is times 2.",
       ],
       answer: "Each term of B is 2 times the matching term of A.",
     },
     methodTitle: "Patterns that differ by a fixed amount",
     methodText: [
-      t`Pattern A starts at 1 and adds 4: 1, 5, 9, 13. Pattern B starts at 4 and adds 4: 4, 8, 12, 16. The pairs are (1, 4), (5, 8), (9, 12), (13, 16). Each second number is 3 more than the first, because both patterns grow by the same amount each time. To find the 10th term of B, find the 10th term of A, which is $1 + 9 \times 4 = 37$, and add 3: 40.`,
+      t`Pattern A starts at 1 and adds 4: 1, 5, 9, 13. Pattern B starts at 4 and adds 4: 4, 8, 12, 16. The pairs are (1, 4), (5, 8), (9, 12) and (13, 16). Each second number is 3 more than the first. That is because both patterns grow by the same amount each time, so the gap of 3 never changes.`,
+      t`To find the 10th term of B, first find the 10th term of A. The 1st term has no 4s added, so the 10th term has 9 of them: $1 + 9 \times 4 = 37$. Then add 3: the 10th term of B is 40.`,
     ],
     formalTitle: "Why one relationship holds for every pair",
     formal: [
-      t`The $n$th term of a pattern that starts at $s$ and adds $d$ is $s + (n-1)d$. If B starts at $ks$ and adds $kd$, its $n$th term is $ks + (n-1)kd = k\,(s + (n-1)d)$, which is $k$ times the $n$th term of A. If B starts at $s + c$ and adds $d$, its $n$th term is $c$ more than the $n$th term of A. Checking only one pair cannot prove that this holds for all.`,
+      t`A pattern that starts at 2 and adds 3 has 2, then 2 + 3, then 2 + 3 + 3, and so on. A pattern that starts at 4 and adds 6 has 4, then 4 + 6, then 4 + 6 + 6. Every part of the second is 2 times the matching part of the first, so every term is 2 times the matching term.`,
+      t`If instead both patterns add the same number, the second just starts higher, and that head start stays the same. Checking only one pair cannot show that a relationship holds for all of them.`,
     ],
     pitfalls: [
-      "The first term uses 0 additions, so the nth term has n − 1 additions.",
-      "Compare terms in the same position.",
+      "The 1st term has no additions yet, so the 10th term has 9 additions, not 10.",
+      "Compare terms in the same spot.",
       "Check every pair, not only the first.",
     ],
     parentGuide:
-      "Ask your learner to write the first four pairs and say which of subtract or divide gives the same answer each time.",
+      "Ask your learner to write the first four pairs and say whether subtracting or dividing gives the same answer each time, or neither.",
   },
   {
     senses: {

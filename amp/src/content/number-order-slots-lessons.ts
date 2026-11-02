@@ -10,14 +10,17 @@ const entries: Entry[] = [
   {
     id: "order-whole-numbers-slots",
     title: "Put large numbers in order",
+    senses: { "more than": "more-than" },
+    noLink: ["change", "third"],
+    goal: "Compare three whole numbers from the left, place by place, then name which item is smallest, middle and greatest.",
     summary:
-      "Compare whole numbers from the left, place by place, then name which item is smallest, middle and greatest.",
+      "To put numbers in order means to list them from smallest to greatest, or from greatest to smallest. Line up the places and read from the left. The first place where the digits differ tells the order.",
     objectives: [
       "Find the first place, reading from the left, where the digits of two whole numbers differ.",
       "Use that place to order three numbers and match each number to its item.",
     ],
     intuition:
-      "A whole number with the same number of digits as another is greater when its leftmost different digit is greater, because a digit in a higher place stands for a much larger amount. The digits to the right of that place do not matter. To order three numbers, compare them from the left until the digits tell them apart, then name the item with the smallest number first, the middle one next and the greatest last, or the reverse.",
+      "A digit is one of the symbols 0 to 9. Its place tells what it is worth. In 45,120 the 4 is in the ten thousands place, so it is worth 40,000. The 5 is in the thousands place, so it is worth 5,000. When numbers have the same number of digits, compare them from the left, the biggest place. Skip the places where the digits match. The first place where they differ decides. The digits to its right cannot change the order, because together they are worth less than one more of that place. So 41,987 is less than 42,310, even though 987 is more than 310. To order three numbers, find the smallest, the middle one and the greatest. Then fill the spots in the order the question asks.",
     terms: [
       "place-value",
       [
@@ -26,34 +29,35 @@ const entries: Entry[] = [
       ],
     ],
     method: [
-      "Write the numbers one above the other so that equal places line up.",
-      "Move from the left and find the first place where the digits are not all the same. The digits there tell the order.",
-      "Rank the digits in that place, then match each rank to its item and fill the positions in the order the question asks.",
+      "Write the numbers one above the other so that matching places line up.",
+      "Move from the left and find the first place where the digits are not all the same. Rank the digits there.",
+      "If two numbers share the same digit in that place, keep comparing those two to the right until their digits differ.",
+      "Match each number to its item, and fill the spots in the order the question asks.",
     ],
     watch:
-      "Stop at the first place that differs. Later digits can be larger in the smaller number and must not change the order.",
+      "For each pair of numbers, stop at the first place where they differ. Later digits can be bigger in the smaller number, and they must not change the order.",
     principle:
-      "Two whole numbers with the same number of digits compare by the leftmost place in which their digits differ: the number with the greater digit there is greater. Comparing is transitive, so three numbers are ordered by comparing them at that place.",
+      "For whole numbers with the same number of digits, the first place from the left where the digits differ decides which is greater. If one number is less than a second, and the second is less than a third, then the first is less than the third. So comparing at that place puts all three in order.",
     example: {
       prompt:
-        "Harbor Field holds 42,310 people, Summit Park holds 45,120 and Ridge Stadium holds 41,987. Order the stadiums from smallest to greatest capacity.",
+        "Harbor Field holds 42,310 people, Summit Park holds 45,120 and Ridge Stadium holds 41,987. Order the stadiums from the one that holds the fewest people to the one that holds the most.",
       steps: [
-        "All three numbers begin with 4, so look at the thousands place: the digits are 2, 5 and 1.",
-        "The order of these digits is 1, 2, 5, so the numbers are in the order 41,987, 42,310, 45,120.",
+        "All three numbers have 5 digits, and all start with 4 in the ten thousands place. So look at the next place, the thousands: the digits are 2, 5 and 1.",
+        "From smallest to greatest those digits are 1, 2, 5. So the numbers in order are 41,987, 42,310, 45,120.",
         "Match each number to its stadium: Ridge Stadium, Harbor Field, Summit Park.",
       ],
       answer: "Ridge Stadium, Harbor Field, Summit Park.",
     },
     methodTitle: "Compare at the first different place",
     methodText: [
-      "Check that the numbers have the same number of digits; a number with more digits is greater.",
-      "Mark the first place that differs, rank the digits in that place, and use the ranking for every position.",
+      "First check the number of digits. A number with more digits is greater.",
+      "Mark the first place that differs and rank the digits there. If two numbers tie in that place, compare those two at the next place to the right.",
     ],
     formal:
-      "For whole numbers $a$ and $b$ with the same number of digits, if their digits agree above a place and differ at that place, then $a<b$ exactly when the digit of $a$ there is less than the digit of $b$. Each digit $d$ in place $10^k$ contributes $d\\cdot 10^k$, and the digits to the right contribute less than $10^k$ in total, so they cannot reverse the order.",
+      "In 41,987 and 42,310 the first place that differs is the thousands: 1 thousand and 2 thousands. The places to the right, 987 and 310, are each less than 1,000. So they can never make up a whole thousand. The bigger digit in the first different place always belongs to the greater number.",
     pitfalls: [
-      "Do not compare the ones digits first: 45,120 is greater than 41,987 even though 0 is less than 7.",
-      "Do not skip a position: each position holds one item, and no item is used twice.",
+      "Do not compare the ones digits first. 45,120 is greater than 41,987, even though 0 is less than 7.",
+      "Do not skip a spot. Each spot holds one item, and no item is used twice.",
     ],
     parentGuide:
       "Ask your learner to put a finger on the first column where the numbers are not the same and to say which digit is bigger.",
@@ -61,47 +65,49 @@ const entries: Entry[] = [
   {
     id: "order-fractions-slots",
     title: "Put three fractions in order",
+    goal: "Order three fractions with the same denominator, the same numerator, or by comparing each with one half.",
     summary:
-      "Order fractions with the same denominator, the same numerator, or by comparing each with one half.",
+      "A fraction names equal parts of one whole. In $\\frac{3}{8}$, read “three eighths,” the bottom number, 8, is the denominator: the whole is cut into 8 equal parts. The top number, 3, is the numerator: it counts 3 of those parts. To order fractions, compare the parts.",
+    senses: { "more than": "more-than", whole: "whole", part: "part" },
     objectives: [
-      "Compare fractions that share a denominator or a numerator by reasoning about the size of the parts.",
-      "Use one half as a benchmark to order fractions with different denominators.",
+      "Compare fractions that share a denominator or a numerator by thinking about the size of the parts.",
+      "Use one half to order fractions with different denominators.",
     ],
     intuition:
-      "A fraction names equal parts of one whole. With the same denominator the parts are the same size, so the fraction with more parts is greater. With the same numerator the number of parts is the same, but a larger denominator cuts the whole into smaller parts, so the fraction is smaller. When denominators and numerators both differ, compare each fraction with one half: a fraction is less than one half when its numerator is less than half its denominator.",
+      "A fraction names equal parts of one whole. The denominator, the bottom number, tells how many equal parts the whole is cut into. The numerator, the top number, counts the parts. Same denominator: the parts are the same size, so more parts is more. $\\frac{5}{8}$ is greater than $\\frac{3}{8}$. Same numerator: there are the same number of parts. A bigger denominator cuts the whole into more parts, so each part is smaller. $\\frac{2}{5}$ is less than $\\frac{2}{3}$. When both numbers differ, compare each fraction with one half, $\\frac{1}{2}$. One half is called a benchmark: a number you know well and compare with. Double the numerator. If that is less than the denominator, the fraction is less than one half. If it equals the denominator, the fraction is exactly one half. If it is more, the fraction is more than one half. The sign < means is less than.",
     terms: ["numerator", "denominator", "benchmark-fraction"],
     method: [
-      "Look at the denominators and numerators. If one of them matches, compare the other one with the rule for parts.",
+      "Look at the denominators and the numerators. Same denominator: more parts is greater. Same numerator: the bigger denominator is smaller.",
       "If neither matches, compare each fraction with $\\frac{1}{2}$: double its numerator and compare it with its denominator.",
-      "Write the fractions in order and fill the positions in the direction the question asks.",
+      "Write the fractions in order. Fill the spots in the direction the question asks.",
     ],
     watch:
-      "With the same numerator, the larger denominator makes the smaller fraction. Do not order by the size of the denominators.",
+      "With the same numerator, the bigger denominator makes the smaller fraction. Do not order by the size of the denominators.",
     principle:
-      "For positive integers, $\\frac{a}{n}<\\frac{b}{n}$ exactly when $a<b$, and $\\frac{a}{m}<\\frac{a}{n}$ exactly when $m>n$. A fraction $\\frac{a}{b}$ is less than, equal to or greater than $\\frac{1}{2}$ according to whether $2a$ is less than, equal to or greater than $b$.",
+      "With the same denominator, the fraction with the bigger numerator is greater. With the same numerator, the fraction with the bigger denominator is smaller. A fraction is less than, equal to or more than $\\frac{1}{2}$ when twice its numerator is less than, equal to or more than its denominator.",
     example: {
       prompt:
         "Put $\\frac{3}{8}$, $\\frac{5}{12}$ and $\\frac{4}{8}$ in order from least to greatest.",
       steps: [
-        "Compare each with $\\frac{1}{2}$: $2 \\cdot 3 = 6$ is less than 8, so $\\frac{3}{8}$ is less than one half.",
-        "$\\frac{4}{8}$ is exactly one half, and $2 \\cdot 5 = 10$ is less than 12, so $\\frac{5}{12}$ is less than one half.",
-        "Both $\\frac{3}{8}$ and $\\frac{5}{12}$ are below $\\frac{4}{8}$. Compare them with twelfths and eighths over 24: $\\frac{9}{24}$ and $\\frac{10}{24}$, so $\\frac{3}{8}<\\frac{5}{12}$.",
+        "Compare each with $\\frac{1}{2}$. For $\\frac{3}{8}$, double 3 to get 6. That is less than 8, so $\\frac{3}{8}$ is less than one half.",
+        "For $\\frac{5}{12}$, double 5 to get 10. That is less than 12, so it is less than one half too. For $\\frac{4}{8}$, double 4 to get 8, the same as the denominator. So $\\frac{4}{8}$ is exactly one half, and it is the greatest.",
+        "Now compare $\\frac{3}{8}$ and $\\frac{5}{12}$. One half is $\\frac{4}{8}$, so $\\frac{3}{8}$ is $\\frac{1}{8}$ less than one half. One half is also $\\frac{6}{12}$, so $\\frac{5}{12}$ is $\\frac{1}{12}$ less. Twelfths are smaller parts than eighths, so $\\frac{5}{12}$ is closer to one half: $\\frac{3}{8}<\\frac{5}{12}$.",
       ],
       answer: "$\\frac{3}{8}$, $\\frac{5}{12}$, $\\frac{4}{8}$.",
     },
     methodTitle: "Choose the quickest comparison",
     methodText: [
-      "Same denominator: order the numerators. Same numerator: reverse the order of the denominators.",
-      "Different denominators and numerators: sort the fractions into less than, equal to and greater than one half before comparing the ones in the same group.",
+      "Same denominator: order by the numerators. Same numerator: the bigger the denominator, the smaller the fraction.",
+      "Different numerators and denominators: sort the fractions into less than one half, exactly one half and more than one half. Then compare inside a group if you need to.",
     ],
     formal:
-      "Positive fractions compare by the sign of $\\frac{a}{b}-\\frac{c}{d}=\\frac{ad-bc}{bd}$, so $\\frac{a}{b}<\\frac{c}{d}$ exactly when $ad<bc$. The rules for a common denominator, a common numerator and one half are the cases $b=d$, $a=c$ and $c/d=1/2$.",
+      "Think of a paper strip as one whole. Cutting it into more equal parts makes each part smaller. So with the same number of parts, the fraction with the bigger denominator is smaller. With parts of the same size, more parts cover more of the strip. A fraction is exactly one half when its numerator is half its denominator, so doubling the numerator checks it.",
     pitfalls: [
       "Do not read a bigger denominator as a bigger fraction when the numerators are equal.",
       "Do not compare numerators alone when the denominators differ.",
     ],
     parentGuide:
-      "Draw each fraction as a strip cut into equal parts and shade the parts; the longer shaded strip is the greater fraction.",
+      "Draw each fraction as a strip cut into equal parts and shade the parts. The longer shaded part shows the greater fraction.",
   },
   {
     id: "order-rationals-slots",

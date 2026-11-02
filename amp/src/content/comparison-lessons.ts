@@ -210,33 +210,36 @@ export const comparisonLessons: Lesson[] = [
     id: "large-place-value",
     title: "Place value to hundred thousands",
     summary:
-      "A digit's place tells whether it counts ones, tens, hundreds, or larger groups.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number, and the place tells what the digit is worth. In 372,946 the 7 is worth 70,000. Knowing this, you can read and compare numbers up to 999,999.",
     templateIds: ["multidigit-digit-value", "compare-multidigit"],
+    noLink: ["change"],
     objectives: [
       "Name the value of any digit in a number up to 999,999.",
-      "Compare multidigit numbers by digit count, then place by place.",
+      "Compare numbers with many digits: first by how many digits they have, then place by place.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "The same digit can name different amounts",
         paragraphs: [
-          "The 3 in 300 is three hundreds, while the 3 in 30 is three tens. Moving one place left makes a digit worth ten times as much. This lets you read and compare numbers well beyond 100.",
+          "The 3 in 30 means 3 tens. The 3 in 300 means 3 hundreds. Moving one place left makes a digit worth 10 times as much.",
+          "10 ones make a ten, 10 tens make a hundred, and 10 hundreds make a thousand. The pattern keeps going: 10 thousands make a ten thousand, and 10 ten thousands make a hundred thousand.",
         ],
       },
       {
         title: "A digit's value comes from its place",
         paragraphs: [
-          "The places from the right are ones, tens, hundreds, thousands, ten thousands and hundred thousands. Each is worth ten of the place to its right.",
-          "A digit's value is the digit times its place's value. In 372,946 the 7 is in the ten thousands place, so it is worth 7 × 10,000 = 70,000.",
+          "Look at the chart. The places from the right are ones, tens, hundreds, thousands, ten thousands and hundred thousands. Each place is worth 10 of the place on its right. The comma splits the digits into groups of three, so the number is easier to read.",
+          "A digit's value is what it is worth: the digit times its place. In 372,946 the 7 is in the ten thousands place. So it is worth 7 × 10,000 = 70,000.",
         ],
         illustration: "large-place-value-chart",
       },
       {
         title: "Compare large numbers",
         paragraphs: [
-          "First count the digits. A whole number with more digits is greater: every five-digit number is less than 100,000.",
-          "With the same number of digits, compare from the left. The first place that differs decides, as with smaller numbers.",
+          "To compare two numbers means to find which is greater (bigger) or less (smaller). The sign > means is greater than, and < means is less than.",
+          "First count the digits. A whole number with more digits is greater. Every five-digit number is less than 100,000, the smallest six-digit number.",
+          "If the numbers have the same number of digits, compare from the left. The first place where the digits differ decides. The places to its right can never make up one more of that place.",
         ],
       },
     ],
@@ -245,25 +248,26 @@ export const comparisonLessons: Lesson[] = [
         stage: "formal",
         title: "Value of a digit",
         paragraphs: [
-          "A digit's value is its digit count times the value of its place. Each place to the left is worth ten times the place to its right. Comparing from the greatest place finds the first value that can decide which whole number is larger.",
+          "A digit's value is the digit times the value of its place. Each place is worth 10 times the place on its right.",
+          "That is why the first place from the left that differs decides a comparison. One more in that place is worth more than all the places to its right can make, just as 1,000 is more than 999.",
         ],
       },
     ],
     workedExample: {
       prompt: "Which number is greater: 405,213 or 450,123?",
       steps: [
-        "Both have 6 digits.",
-        "Hundred thousands match: 4 and 4.",
-        "Ten thousands: 0 < 5, so 450,123 is greater.",
+        "Count the digits. Both numbers have 6 digits, so compare place by place from the left.",
+        "The hundred thousands digits match: 4 and 4. So move one place right.",
+        "In the ten thousands place, 0 is less than 5. This is the first place that differs, so 450,123 is greater.",
       ],
       answer: "450,123",
     },
     pitfalls: [
-      "Giving the digit instead of its value: the 7 in 372,946 is worth 70,000, not 7.",
-      "Comparing the first digits of numbers with different digit counts: 98,765 < 102,345.",
+      "Give the digit's value, not the digit. The 7 in 372,946 is worth 70,000, not 7.",
+      "Count the digits before you compare first digits. 98,765 < 102,345, because 98,765 has fewer digits.",
     ],
     parentGuide:
-      "Read a large number from a receipt or map aloud. Point to one digit and ask what it is worth, then change its place and ask again.",
+      "Read a large number from a receipt or map aloud. Point to one digit and ask what it is worth. Then move it to another place and ask again.",
   },
 ];
 
@@ -362,21 +366,28 @@ export const comparisonMethods: Record<string, ProblemMethod> = {
   },
   "multidigit-digit-value": {
     goal: "Given a number up to 999,999, find the value of one of its digits.",
+    intuition:
+      "A digit is one of the symbols 0 to 9. Its place is its spot in the number. From the right, the places are ones, tens, hundreds, thousands, ten thousands and hundred thousands. Each place is worth 10 times the place on its right. A digit's value is what it is worth: the digit times its place. In 372,946 the 7 is in the ten thousands place, so it is worth 7 × 10,000 = 70,000.",
     terms: ["place-value"],
     method: [
-      "Name the digit's place, counting from the ones at the right.",
-      "Multiply the digit by that place's value.",
+      "Name the digit's place. Count the places from the ones at the right.",
+      "Multiply the digit by the value of that place.",
     ],
-    watch: "Give the value, not the digit: the 7 in 372,946 is worth 70,000.",
+    watch:
+      "Give the value, not the digit. The 7 in 372,946 is worth 70,000, not 7.",
   },
   "compare-multidigit": {
     goal: "Given two numbers up to 999,999, name the greater or the lesser.",
+    intuition:
+      "To compare two numbers means to find which is greater (bigger) and which is less (smaller). The sign > means is greater than, and < means is less than. First count the digits. A whole number with more digits is greater. If both have the same number of digits, line up the places and compare from the left, the biggest place. The first place where the digits differ decides, because the places to its right can never make up one more of that place.",
+    terms: placeTerms,
     method: [
-      "Count the digits. More digits means greater.",
-      "With equal digit counts, compare from the left.",
-      "The first place that differs decides.",
+      "Count the digits. More digits means a greater number.",
+      "If the counts are equal, compare place by place from the left.",
+      "The first place where the digits differ decides.",
     ],
-    watch: "A shorter number is less even when its first digit is larger.",
+    watch:
+      "A number with fewer digits is less, even when its first digit is bigger: 98,765 < 102,345.",
   },
 };
 export const comparisonPrinciples: Record<string, string> = {
@@ -393,7 +404,7 @@ export const comparisonPrinciples: Record<string, string> = {
   "three-digit-symbol":
     "For any two numbers, exactly one is true: the first is less than, equal to or greater than the second. The first place from the left where the digits differ shows which.",
   "multidigit-digit-value":
-    "Each place is worth ten times the place to its right, so a digit's value is the digit times its place value.",
+    "Each place is worth 10 times the place on its right. A digit's value is the digit times the value of its place.",
   "compare-multidigit":
-    "A whole number with more digits is greater; with equal digit counts, the highest differing place decides.",
+    "A whole number with more digits is greater. If two whole numbers have the same number of digits, the first place from the left where the digits differ decides.",
 };

@@ -5,8 +5,9 @@ import { chainLesson } from "./chain-lesson-kit";
 export const numberOrderMethods: Record<string, ProblemMethod> = {
   "number-between-bounds": {
     goal: "Choose the whole number that is greater than a lower number and less than an upper number.",
+    noLink: ["side", "faces"],
     intuition:
-      "A statement such as $24{,}350<n<24{,}820$ says that $n$ is more than 24,350 and also less than 24,820. Compare numbers from the left: the first place where the digits differ decides which number is greater.",
+      "The sign < means is less than, and > means is greater than. The open side faces the greater number. The letter $n$ stands for the number you are looking for. $24{,}350<n<24{,}820$ says two things at once: 24,350 is less than $n$, and $n$ is less than 24,820. So $n$ is between them. The smaller number is called the lower bound, and the bigger one is the upper bound. A number equal to a bound does not fit, because a number is not less than itself. To compare two whole numbers, first count their digits: more digits means greater. If they have the same number of digits, read from the left. The first place where the digits differ decides which number is greater.",
     terms: [
       [
         "greater-than",
@@ -18,33 +19,34 @@ export const numberOrderMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Compare each choice with the lower number, place by place from the left. It must be greater.",
-      "Compare each choice with the upper number the same way. It must be less.",
-      "Keep the choice that passes both. A number equal to a bound does not pass, because the signs mean strictly between.",
+      "Compare each choice with the lower bound, place by place from the left. It must be greater.",
+      "Compare each choice with the upper bound the same way. It must be less.",
+      "Keep the choice that passes both tests. A number equal to a bound does not pass.",
     ],
     watch:
-      "Check both bounds. A number can be above the lower bound and also above the upper bound.",
+      "Check both bounds. A number can be greater than the lower bound and also greater than the upper bound.",
   },
   "true-comparison-statement": {
-    goal: "Choose the true comparison of whole numbers of five to nine digits that share leading digits.",
+    goal: "Choose the true comparison of whole numbers of five to nine digits that share their first digits.",
+    noLink: ["side", "faces", "change", "third"],
     intuition:
-      "To compare two whole numbers, line up their digits by place and look from the left. Numbers with more digits are greater. When two numbers have the same number of digits, the first place where they differ decides: the number with the greater digit there is the greater number.",
+      "The sign > means is greater than, < means is less than, and = means is equal to. The open side of > or < faces the greater number. A statement is true when it says what really is so. Big numbers have more places. From the right they are ones, tens, hundreds, thousands, ten thousands, hundred thousands, millions, ten millions and hundred millions. To compare two whole numbers, first count their digits. More digits means a greater number. With the same number of digits, line up the places and read from the left. Skip the places that match. The first place where the digits differ decides: the number with the bigger digit there is greater. The digits after that place cannot change the answer.",
     terms: ["place-value", "greater-than"],
     method: [
-      "Check the number of digits first: more digits means a greater number.",
-      "For numbers with the same number of digits, compare place by place from the left and stop at the first difference.",
-      "Read the statement with the sign in words and check that it is true.",
+      "Count the digits first. More digits means a greater number.",
+      "For numbers with the same number of digits, compare place by place from the left. Stop at the first place that differs.",
+      "Read the statement aloud, saying each sign in words, and check that it is true.",
     ],
     watch:
-      "Do not compare the last digits first. The leftmost place where the digits differ decides, even when the later digits favor the other number.",
+      "Do not compare the last digits first. The first place from the left where the digits differ decides, even when later digits are bigger in the other number.",
   },
 };
 
 export const numberOrderPrinciples: Record<string, string> = {
   "number-between-bounds":
-    "For whole numbers $a<b$, the numbers $n$ with $a<n<b$ are those greater than $a$ and less than $b$; neither $a$ nor $b$ is included.",
+    "A statement like $18{,}200<n<18{,}640$ means $n$ is greater than 18,200 and also less than 18,640. The two bounds themselves do not fit.",
   "true-comparison-statement":
-    "Two whole numbers with the same number of digits are compared place by place from the left; the first place with different digits decides. A whole number with more digits is greater than one with fewer digits, so $x<y<z$ lists numbers from least to greatest.",
+    "A whole number with more digits is greater than one with fewer digits. Two whole numbers with the same number of digits are compared place by place from the left, and the first place that differs decides. A chain like 400 < 500 < 600 lists numbers from least to greatest.",
 };
 
 export const numberOrderLessons = [
@@ -52,40 +54,42 @@ export const numberOrderLessons = [
     id: "number-between-bounds-lesson",
     title: "A number between two numbers",
     summary:
-      "Find the whole number that is greater than a lower number and less than an upper number.",
+      "Some questions ask for a number between two others. It must be greater than the smaller number and less than the bigger number. Compare place by place from the left to test each choice.",
     templateIds: ["number-between-bounds"],
+    noLink: ["side", "faces"],
     objectives: [
       "Read a statement with a lower and an upper bound.",
       "Compare multi-digit numbers from the left to test each choice.",
     ],
     openingTitle: "Two comparisons at once",
     opening: [
-      "The statement $24{,}350<n<24{,}820$ is two comparisons joined: $n$ is greater than 24,350 and $n$ is less than 24,820. A number that fits both lies between them.",
-      "To compare multi-digit numbers, line up the places and look from the left. 24,600 and 24,820 both start with 24; then the hundreds are 6 and 8, so 24,600 is less than 24,820.",
+      "The sign < means is less than, and > means is greater than. The open side faces the greater number. The letter $n$ stands for the number we want.",
+      "$24{,}350<n<24{,}820$ is two comparisons joined: 24,350 is less than $n$, and $n$ is less than 24,820. So $n$ is between them. The smaller number is called the lower bound and the bigger one the upper bound.",
+      "To compare numbers with many digits, line up the places and read from the left. 24,600 and 24,820 both start with 24. Then the hundreds digits are 6 and 8, so 24,600 is less than 24,820.",
     ],
     example: {
       prompt: "Which fits $18{,}200<n<18{,}640$: 18,150, 18,420 or 18,700?",
       steps: [
-        "18,150 is less than 18,200 because the hundreds are 1 and 2. It is too small.",
-        "18,700 is greater than 18,640 because the hundreds are 7 and 6. It is too large.",
-        "18,420 is greater than 18,200 and less than 18,640, so it fits.",
+        "Test 18,150 against the lower bound, 18,200. Both start with 18, then the hundreds digits are 1 and 2. So 18,150 is less than 18,200, and it is too small.",
+        "Test 18,700 against the upper bound, 18,640. The hundreds digits are 7 and 6, so 18,700 is greater than 18,640. It is too big.",
+        "18,420 is greater than 18,200, because 4 hundreds is more than 2. It is less than 18,640, because 4 hundreds is less than 6. So it fits.",
       ],
       answer: "18,420",
     },
     methodTitle: "Test both bounds",
     method: [
-      "Compare the choice with the lower number from the left, then with the upper number.",
-      "Keep the choice that is greater than the lower number and less than the upper number.",
+      "Compare the choice with the lower bound from the left. Then compare it with the upper bound.",
+      "Keep the choice that is greater than the lower bound and less than the upper bound.",
     ],
-    formalTitle: "Strict bounds",
+    formalTitle: "Strictly between",
     formal: [
-      "$a<n<b$ means $n>a$ and $n<b$. The bounds themselves are not solutions.",
-      "Whole numbers are compared place by place from the leftmost place where they differ.",
+      "$18{,}200<n<18{,}640$ means $n$ is greater than 18,200 and $n$ is less than 18,640. The bounds themselves do not fit, because a number is not less than itself.",
+      "Whole numbers with the same number of digits are compared from the left. The first place where their digits differ decides.",
     ],
     pitfalls: [
-      "Choosing a number equal to a bound.",
-      "Checking only one of the two bounds.",
-      "Comparing the last digits instead of the first place that differs.",
+      "Do not choose a number equal to a bound.",
+      "Check both bounds, not just one.",
+      "Compare at the first place that differs, not at the last digits.",
     ],
     parentGuide:
       "Ask your learner to write the three numbers in a column, lined up by place, before comparing.",
@@ -94,40 +98,43 @@ export const numberOrderLessons = [
     id: "true-comparison-statement-lesson",
     title: "Comparing and ordering large numbers",
     summary:
-      "Compare whole numbers of five to nine digits by place value and order three of them.",
+      "To compare two numbers means to find which is greater (bigger) or less (smaller). For whole numbers with five to nine digits, line up the places and read from the left. The first place where the digits differ decides. You can order three numbers the same way.",
     templateIds: ["true-comparison-statement"],
+    noLink: ["side", "faces", "change"],
     objectives: [
       "Compare two large whole numbers place by place from the left.",
       "Order three large numbers from least to greatest.",
     ],
     openingTitle: "Find the first place that differs",
     opening: [
-      "To compare 3,045,820 and 3,054,820, line up the digits. Both start 3,0; then the ten-thousands digit is 4 in the first and 5 in the second. The first place that differs decides, so 3,045,820 is less than 3,054,820.",
-      "To order three numbers, compare them two at a time in the same way, and write them with the least on the left.",
+      "Big numbers have more places. From the right they are ones, tens, hundreds, thousands, ten thousands, hundred thousands, millions, ten millions and hundred millions. The commas split the digits into groups of three to make them easy to read.",
+      "The sign < means is less than, > means is greater than, and = means is equal to. The open side of < or > faces the greater number.",
+      "Compare 3,045,820 and 3,054,820. Both have 7 digits, so line them up. The millions match (3 and 3), and so do the hundred thousands (0 and 0). The ten thousands digits are 4 and 5. That is the first place that differs, so 3,045,820 < 3,054,820.",
+      "To order three numbers, compare them two at a time in the same way. Write them with the least on the left: 400 < 500 < 600.",
     ],
     example: {
       prompt: "Is $4{,}280{,}190>4{,}208{,}190$ true?",
       steps: [
-        "Both numbers have 7 digits, and both start 4,2.",
-        "The next digit is 8 in the first number and 0 in the second.",
-        "8 is greater than 0, so the first number is greater and the statement is true.",
+        "Both numbers have 7 digits. The millions digits are 4 and 4, and the hundred thousands digits are 2 and 2. They match.",
+        "The next place is the ten thousands. Its digit is 8 in the first number and 0 in the second.",
+        "8 is greater than 0, so the first number is greater. The statement says 4,280,190 is greater than 4,208,190, so it is true.",
       ],
       answer: "True",
     },
     methodTitle: "Digits, then the first difference",
     method: [
-      "Count digits first. If they are equal, compare place by place from the left.",
-      "Stop at the first place where the digits differ. The greater digit there belongs to the greater number.",
+      "Count the digits first. If the counts are equal, compare place by place from the left.",
+      "Stop at the first place where the digits differ. The bigger digit there belongs to the greater number.",
     ],
     formalTitle: "Comparing whole numbers",
     formal: [
-      "A whole number with more digits is greater. With equal numbers of digits, the first differing place decides.",
-      "$x<y<z$ means $x<y$ and $y<z$.",
+      "A whole number with more digits is greater. With the same number of digits, the first place that differs decides, because one more in that place is worth more than all the places to its right.",
+      "A chain such as 400 < 500 < 600 means 400 < 500 and also 500 < 600.",
     ],
     pitfalls: [
-      "Comparing the digits at the right end first.",
-      "Reading the sign the wrong way: $>$ opens toward the greater number.",
-      "Ordering by the first digit only when it is the same in two numbers.",
+      "Do not compare the digits at the right end first.",
+      "Read each sign the right way. The open side of > faces the greater number.",
+      "When two numbers have the same first digit, keep going to the next place to order them.",
     ],
     parentGuide:
       "Use a place-value chart and ask your learner which column is the first one that is different.",

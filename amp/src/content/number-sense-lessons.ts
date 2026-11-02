@@ -134,8 +134,9 @@ export const numberSenseLessons: Lesson[] = [
     id: "number-line-moves",
     title: "Add and subtract with hops",
     summary:
-      "Adding moves right on a number line, and subtracting moves left by the amount named.",
+      "A number line shows numbers in order. The numbers are evenly spaced. A hop is one move along the line. A hop to the right adds. A hop to the left subtracts.",
     templateIds: ["number-line-hops", "number-line-missing-hop"],
+    senses: { difference: "difference-subtract" },
     objectives: [
       "Add or subtract within 100 by hopping tens, then ones, on a number line.",
       "Find the difference of two numbers as the length of the hop between them.",
@@ -145,22 +146,25 @@ export const numberSenseLessons: Lesson[] = [
         stage: "intuition",
         title: "A move has direction and length",
         paragraphs: [
-          "A number line places numbers in order with equal spaces. A move right reaches a larger number and a move left reaches a smaller one. A long move can be made as two shorter moves.",
+          "On a number line, bigger numbers are to the right. Smaller numbers are to the left.",
+          "A hop to the right adds. A hop to the left subtracts. A long hop can be split into two short hops.",
         ],
       },
       {
         title: "Hop the tens, then the ones",
         paragraphs: [
-          "On a number line every unit has the same length. A hop to the right adds; a hop to the left subtracts.",
-          "To find 46 − 23, hop back 20 to 26, then back 3 to 23. Two short hops replace one long count.",
+          "Every step of 1 on the line is the same length. Hopping back means hopping left.",
+          "Look at the picture. To find 46 − 23, hop back 20 to 26. Then hop back 3 to 23.",
+          "Two short hops are easier than counting back 23 ones.",
         ],
         illustration: "number-line-hop-pair",
       },
       {
         title: "A difference is a distance",
         paragraphs: [
-          "The hop from 38 to 65 has the same length as 65 − 38. Count up from 38: 2 to 40, 20 to 60, 5 to 65.",
-          "The pieces add to the hop: 2 + 20 + 5 = 27.",
+          "The answer to a take-away is called the difference. It is also how far apart two numbers are.",
+          "How far is it from 38 to 65? Count up from 38 in pieces. 2 takes you to 40. 20 more takes you to 60. 5 more takes you to 65.",
+          "Add the pieces: 2 + 20 + 5 = 27. So 65 − 38 = 27.",
         ],
       },
     ],
@@ -169,28 +173,33 @@ export const numberSenseLessons: Lesson[] = [
         stage: "formal",
         title: "Number-line distance and direction",
         paragraphs: [
-          "On a number line with equal unit intervals, adding a positive amount moves right by that distance and subtracting it moves left. A move of tens and ones may be split into consecutive moves whose distances add to the original distance.",
+          "On a number line, every step of 1 is the same length. Adding moves right that many steps. Subtracting moves left that many steps.",
+          "A hop can be split into smaller hops, one after another. The small hops add up to the big hop.",
         ],
       },
     ],
     workedExample: {
       prompt: "Start at 46. Hop back 20, then back 3. Where do you land?",
-      steps: ["46 − 20 = 26.", "26 − 3 = 23."],
+      steps: [
+        "Back means subtract. Hop back 20: 46 − 20 = 26. Only the tens digit changes.",
+        "Now hop back 3 from 26: 26 − 3 = 23.",
+      ],
       answer: "23",
     },
     pitfalls: [
-      "Counting the starting number as the first step of a hop.",
-      "Hopping right when the problem subtracts.",
+      "Do not count the start number as a step. Start on it, then count each hop.",
+      "Back means left. Hop left when you subtract.",
     ],
     parentGuide:
-      "Draw a line with tens marked. Ask the learner to show 34 + 25 as one hop of 20 and one hop of 5, saying where each hop lands.",
+      "Draw a line with the tens marked. Ask the learner to show 34 + 25 as one hop of 20 and one hop of 5, saying where each hop lands.",
   },
   {
     id: "rounding",
     title: "Round to the nearest ten, hundred or thousand",
     summary:
-      "Rounding replaces a number with the nearest multiple of a chosen place value.",
+      "To round a number means to swap it for a close, easy number. To the nearest ten, find the closest number that ends in 0. To the nearest hundred, find the closest number that ends in 00. To the nearest thousand, it ends in 000.",
     templateIds: ["round-to-ten", "round-to-hundred", "round-large"],
+    noLink: ["change"],
     objectives: [
       "Round whole numbers to the nearest ten or hundred.",
       "Round larger numbers to the nearest hundred, thousand or ten thousand.",
@@ -200,22 +209,24 @@ export const numberSenseLessons: Lesson[] = [
         stage: "intuition",
         title: "Choose the nearer landmark",
         paragraphs: [
-          "To round 347 to the nearest ten, look at its neighboring tens, 340 and 350. It is three away from 350 and seven away from 340, so 350 is the nearer landmark.",
+          "347 sits between 340 and 350, two numbers that end in 0. These are its landmarks.",
+          "347 is 3 away from 350 and 7 away from 340. So 350 is nearer. 347 rounds to 350.",
         ],
       },
       {
-        title: "Between two multiples",
+        title: "Halfway decides",
         paragraphs: [
-          "347 is between 340 and 350. Halfway is 345. 347 is past halfway, so it rounds to 350.",
-          "Only the digit just right of the rounding place matters: 5 or more rounds up, 4 or less rounds down.",
+          "Look at the number line. Halfway between 340 and 350 is 345. 347 is past halfway, so it rounds up to 350.",
+          "A quick check uses one digit. Look at the digit just right of the place you round to. 5 or more rounds up. 4 or less rounds down. For 347 to the nearest ten, the ones digit is 7, so round up.",
+          "A number exactly halfway, like 345, rounds up too.",
         ],
         illustration: "rounding-halfway",
       },
       {
         title: "Crossing and halfway",
         paragraphs: [
-          "Rounding up can change more than one digit: 396 rounds to 400 and 49,700 rounds to 50,000 to the nearest thousand.",
-          "Do not round in steps. 449 is less than halfway between 400 and 500, so it rounds to 400, even though 449 rounds to 450 to the nearest ten.",
+          "Rounding up can change more than one digit. 396 rounds to 400 to the nearest ten: 39 tens and 1 more ten make 40 tens. To the nearest thousand, 49,700 rounds to 50,000.",
+          "Round once, from the original number. 449 rounds to 400 to the nearest hundred, because it is before the halfway mark, 450. Rounding to 450 first and then to 500 is a mistake.",
         ],
       },
     ],
@@ -224,30 +235,31 @@ export const numberSenseLessons: Lesson[] = [
         stage: "formal",
         title: "Nearest multiple",
         paragraphs: [
-          "To round a number to a chosen place, compare its distance from the two neighboring multiples of that place value. Choose the nearer multiple; under the usual whole-number convention, choose the greater one when exactly halfway.",
+          "Every number sits between two numbers that end in zeros at the rounding place, like 340 and 350. Rounding picks the nearer one.",
+          "When a number is exactly halfway, like 345, we agree to pick the greater one.",
         ],
       },
     ],
     workedExample: {
       prompt: "Round 46,382 to the nearest thousand.",
       steps: [
-        "46,382 is between 46,000 and 47,000; halfway is 46,500.",
-        "46,382 is before halfway, so it rounds down.",
+        "To the nearest thousand means the closest number ending in 000. 46,382 is between 46,000 and 47,000. Halfway is 46,500.",
+        "46,382 is less than 46,500, so it is before halfway and rounds down to 46,000. The hundreds digit, 3, says the same: 4 or less rounds down.",
       ],
       answer: "46000",
     },
     pitfalls: [
-      "Rounding twice: 449 to 450, then to 500.",
-      "Forgetting the carry: 396 to the nearest ten is 400, not 390.",
+      "Do not round twice, like 449 to 450 and then to 500. Round once: 449 rounds to 400.",
+      "Remember to carry. 396 to the nearest ten is 400, not 390.",
     ],
     parentGuide:
-      "Name a price such as $3.47 and ask which whole ten cents it is closer to. Then try one exactly halfway.",
+      "Name a price, such as 3 dollars and 47 cents. Ask whether it is closer to 3 dollars 40 cents or 3 dollars 50 cents. Then try one exactly halfway, like 3 dollars 45 cents.",
   },
   {
     id: "powers-of-ten",
     title: "Multiply and divide by powers of ten",
     summary:
-      "Each place to the left is worth ten times as much as the place beside it.",
+      "Each place is worth 10 times the place on its right. So multiplying by 10 moves every digit one place left, and dividing by 10 moves every digit one place right. 10, 100 and 1,000 are called powers of ten, because each is made by multiplying 10s.",
     templateIds: [
       "multiply-power-of-ten",
       "divide-power-of-ten",
@@ -262,22 +274,26 @@ export const numberSenseLessons: Lesson[] = [
         stage: "intuition",
         title: "Make every place ten times larger",
         paragraphs: [
-          "The 7 in 47 counts seven ones. In 470 it counts seven tens, a value ten times larger. Multiplying by ten moves every digit into the place worth ten times as much.",
+          "In 47, the 7 means 7 ones. In 470, the 7 means 7 tens, which is 10 times as much.",
+          "Multiplying by 10 makes every digit worth 10 times as much. So every digit moves one place left.",
         ],
       },
       {
         title: "Digits move, the point stays",
         paragraphs: [
-          "47 × 10 = 470: the 4 tens become 4 hundreds and the 7 ones become 7 tens. Every digit moves one place left; a zero fills the ones place.",
-          "Dividing by 10 moves every digit one place right: 52 ÷ 100 = 0.52. 10² means 10 × 10 = 100, so ×10² moves digits two places.",
+          "The decimal point is the dot between the ones place and the tenths place. One tenth is one of 10 equal parts of 1.",
+          "Look at the chart: 4.7 × 10 = 47, and 47 × 10 = 470. Each time, every digit moves one place left. The 4 ones become 4 tens, and the 7 tenths become 7 ones. The decimal point stays where it is. When the ones place is empty, a 0 fills it.",
+          "Dividing by 10 moves every digit one place right. 100 is 10 × 10, so dividing by 100 moves digits two places right: 52 ÷ 100 = 0.52.",
+          "We can write 10 × 10 as $10^{2}$, read “10 to the second power.” The small 2 counts how many 10s are multiplied. So multiplying by $10^{2}$ moves digits two places left.",
         ],
         illustration: "power-of-ten-shift",
       },
       {
         title: "The same digit in two places",
         paragraphs: [
-          "In 7,370 the first 7 is worth 7,000 and the second is worth 70. They are two places apart, so the first is 10 × 10 = 100 times as much.",
-          "Moving one place left multiplies a digit's value by 10; moving one place right divides it by 10.",
+          "In 7,370 the first 7 is in the thousands place, so it is worth 7,000. The second 7 is in the tens place, so it is worth 70.",
+          "They are two places apart, so the first is worth 10 × 10 = 100 times as much. Check: 70 × 100 = 7,000.",
+          "Moving one place left multiplies a digit's value by 10. Moving one place right divides it by 10.",
         ],
       },
     ],
@@ -286,24 +302,25 @@ export const numberSenseLessons: Lesson[] = [
         stage: "formal",
         title: "Each place is ten times larger",
         paragraphs: [
-          "Moving a digit one place left multiplies its value by 10; moving it one place right divides its value by 10. Multiplying an entire whole number by a power of ten applies that change to every digit, with zero placeholders where needed.",
+          "Moving a digit one place left multiplies its value by 10. Moving it one place right divides its value by 10.",
+          "So multiplying by 10, 100 or 1,000 moves every digit 1, 2 or 3 places left, and dividing moves every digit right. Zeros fill the empty places before the decimal point.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 3.6 × 100?",
       steps: [
-        "100 = 10 × 10, so every digit moves two places left.",
-        "3 ones become 3 hundreds and 6 tenths become 6 tens: 360.",
+        "100 is 10 × 10, two 10s. So every digit moves two places left.",
+        "The 3 ones become 3 hundreds, and the 6 tenths become 6 tens. The ones place is now empty, so a 0 fills it: 360.",
       ],
       answer: "360",
     },
     pitfalls: [
-      "Adding zeros to a decimal: 3.6 × 100 is 360, not 3.600.",
-      "Moving digits the wrong way when dividing.",
+      "Do not just write zeros after a decimal. 3.6 × 100 is 360, not 3.600.",
+      "Dividing moves the digits right, not left.",
     ],
     parentGuide:
-      "Ask how many dimes are in $4.70 and how many pennies. Connect each answer to moving the digits one place.",
+      "Ask how many dimes make 4 dollars and 70 cents: 47, the digits of 4.70 moved one place left. Then ask how many pennies: 470, moved two places left.",
   },
 ];
 
@@ -345,74 +362,104 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
     watch: "Fourteen is written 14, not 41. The 1 stands for the full ten.",
   },
   "number-line-hops": {
-    goal: "Given a start and a tens hop then an ones hop, find where they land.",
+    goal: "Start at a number, hop by tens, then hop by ones. Find where you land.",
+    noLink: ["whole"],
+    intuition:
+      "A number line shows numbers in order, evenly spaced. Bigger numbers are to the right. A hop to the right adds. A hop back, to the left, subtracts. Hop the tens first, then the ones. Hopping back 20 from 46 lands on 26: only the tens digit changes.",
     method: [
-      "Start at the first number; do not count it as a step.",
-      "Hop the tens: the tens digit goes up or down, the ones digit stays.",
-      "Hop the ones from there, one tick at a time.",
+      "Start on the first number. Do not count it as a step.",
+      "Hop the tens first. Forward means add, and back means subtract.",
+      "Then hop the ones from where you landed.",
     ],
-    watch: "Back means subtract; the tens hop changes only the tens digit.",
+    watch:
+      "Back means subtract, so hop left. Hop the tens, then the ones, in that order.",
   },
   "number-line-missing-hop": {
     goal: "Given the two ends of a hop, find its length.",
+    senses: { difference: "difference-subtract" },
+    intuition:
+      "A number line shows numbers in order, evenly spaced. The length of a hop is how many steps of 1 it covers. It is the bigger number minus the smaller one. To find it, count up from the smaller number in easy pieces: to the next ten, then by tens, then the ones left over. Add the pieces.",
     method: [
-      "Count up from the smaller number to the next ten.",
-      "Count tens to the last ten, then the remaining ones.",
-      "Add the pieces.",
+      "Count up from the smaller number to the next ten. If it already ends in 0, skip this.",
+      "Count by tens as far as you can without passing the bigger number. Then count the ones left.",
+      "Add the pieces. That sum is the length of the hop.",
     ],
-    watch: "The length is the same whichever way the hop points.",
+    watch:
+      "The length is the same whichever way the hop points. Always count up from the smaller number.",
   },
   "round-to-ten": {
     goal: "Given a whole number, round it to the nearest ten.",
+    noLink: ["change"],
+    intuition:
+      "To round to the nearest ten means to find the closest number that ends in 0. 347 is between 340 and 350, and it is closer to 350. Look at the ones digit. If it is 5 or more, round up to the bigger ten. If it is 4 or less, round down to the smaller ten. A number exactly halfway, like 345, rounds up.",
     method: [
-      "Name the two tens it is between.",
-      "Ones digit 5 or more: round up. 4 or less: round down.",
+      "Name the two numbers ending in 0 that it is between, like 340 and 350.",
+      "Look at the ones digit. If it is 5 or more, round up. If it is 4 or less, round down.",
     ],
-    watch: "Rounding up can change the hundreds: 396 rounds to 400.",
+    watch: "Rounding up can change the hundreds too: 396 rounds up to 400.",
   },
   "round-to-hundred": {
     goal: "Given a three-digit number, round it to the nearest hundred.",
+    noLink: ["side"],
+    intuition:
+      "To round to the nearest hundred means to find the closest number that ends in 00. 449 is between 400 and 500. Halfway between them is 450. 449 is just before halfway, so it rounds down to 400. Look at the tens digit. If it is 5 or more, round up. If it is 4 or less, round down.",
     method: [
-      "Name the two hundreds it is between.",
-      "Tens digit 5 or more: round up. 4 or less: round down.",
+      "Name the two numbers ending in 00 that it is between, like 400 and 500.",
+      "Look at the tens digit. If it is 5 or more, round up. If it is 4 or less, round down.",
     ],
-    watch: "Look only at the tens digit: 449 rounds to 400.",
+    watch:
+      "Look only at the tens digit. 449 rounds to 400, even though its ones digit is 9.",
   },
   "round-large": {
     goal: "Given a large whole number, round it to the named place.",
+    intuition:
+      "To round to a place, like thousands, find the closest number with 0 in every place to its right. 46,382 is between 46,000 and 47,000. Halfway between them is 46,500. Look at the digit just right of the rounding place. If it is 5 or more, round up. If it is 4 or less, round down. Then write 0 in every place to the right of the rounding place.",
     method: [
-      "Find the rounding place and the two multiples around the number.",
-      "Look at the digit one place to the right: 5 or more rounds up.",
-      "Replace every digit right of the rounding place with 0.",
+      "Find the rounding place and the two numbers around the number, like 46,000 and 47,000.",
+      "Look at the digit one place to the right. If it is 5 or more, round up. If it is 4 or less, round down.",
+      "Write 0 in every place right of the rounding place.",
     ],
     watch:
-      "A 9 that rounds up carries: 49,700 to the nearest thousand is 50,000.",
+      "A 9 that rounds up becomes 0 and adds 1 to the digit on its left. So 49,700 to the nearest thousand is 50,000.",
   },
   "multiply-power-of-ten": {
     goal: "Given a number times 10, 100 or 1,000, find the product.",
+    intuition:
+      "Each place is worth 10 times the place on its right. Multiplying by 10 makes every digit worth 10 times as much, so every digit moves one place left. 100 is 10 × 10, two factors of 10, so it moves digits two places. 1,000 is 10 × 10 × 10, three factors of 10, so it moves them three places. A factor is a number being multiplied. The decimal point stays where it is. Empty places before the point fill with 0. The answer to a multiplication is called the product.",
     terms: ["power-of-10"],
+    senses: {
+      factor: "factor-number",
+      factors: "factor-number",
+      product: "product-multiply",
+    },
     method: [
       "Count the factors of 10: 10 is one, 100 is two, 1,000 is three.",
-      "Move every digit that many places left; fill empty places with 0.",
+      "Move every digit that many places left. Fill empty places before the decimal point with 0.",
     ],
-    watch: "A decimal's digits move too: 3.6 × 100 = 360.",
+    watch: "A decimal's digits move too: 3.6 × 100 = 360, not 3.600.",
   },
   "divide-power-of-ten": {
     goal: "Given a whole number divided by 10, 100 or 1,000, find the quotient.",
+    intuition:
+      "Each place is worth one tenth of the place on its left. Dividing by 10 makes every digit worth one tenth as much, so every digit moves one place right. 100 is 10 × 10, two factors of 10, so dividing by 100 moves digits two places right. A factor is a number being multiplied. Digits that move past the ones place go into the tenths, hundredths and thousandths places, after the decimal point. The answer to a division is called the quotient.",
     terms: ["power-of-10"],
+    senses: { factor: "factor-number", factors: "factor-number" },
     method: [
-      "Count the factors of 10.",
-      "Move every digit that many places right; digits past the ones become tenths, hundredths, thousandths.",
+      "Count the factors of 10: 10 is one, 100 is two, 1,000 is three.",
+      "Move every digit that many places right. Digits past the ones place become tenths, hundredths and thousandths.",
     ],
-    watch: "Drop trailing zeros after the decimal point: 520 ÷ 100 = 5.2.",
+    watch:
+      "Zeros at the end after the decimal point can be dropped: 520 ÷ 100 = 5.20, which is 5.2.",
   },
   "digit-value-ratio": {
     goal: "Given a number with one digit in two places, compare the two values.",
+    intuition:
+      "Each place is worth 10 times the place on its right. So a digit is worth 10 times as much for each place it moves left. In 35,932 the first 3 is in the ten thousands place, worth 30,000. The second 3 is in the tens place, worth 30. The places are 3 steps apart, so the first is worth 10 × 10 × 10 = 1,000 times as much. How many times as much one value is as another is called their ratio.",
     method: [
-      "Name the place of each copy of the digit.",
-      "Each place left multiplies the value by 10.",
+      "Name the place of each copy of the digit, and count the steps between them.",
+      "Each step left multiplies the value by 10. Multiply one 10 for each step.",
     ],
-    watch: "Two places apart is 100 times, not 20 times.",
+    watch: "Two places apart is 10 × 10 = 100 times, not 20 times.",
   },
 };
 
@@ -424,19 +471,19 @@ export const numberSensePrinciples: Record<string, string> = {
   "numeral-for-quantity":
     "A numeral is a written number that tells how many. A teen number, from 11 to 19, is one ten and some more ones: 14 is 10 and 4.",
   "number-line-hops":
-    "Adding moves right and subtracting moves left by equal units; a hop can be split into tens and ones.",
+    "Adding moves right and subtracting moves left, one equal step for each 1. A hop can be split into a tens hop and a ones hop that add up to the whole move.",
   "number-line-missing-hop":
-    "The difference of two numbers is the distance between them on a number line.",
+    "The difference of two numbers, the bigger minus the smaller, is the distance between them on a number line.",
   "round-to-ten":
-    "A number rounds to the nearer multiple of ten; exactly halfway rounds up.",
+    "A number rounds to the nearer of the two numbers ending in 0 around it. A number exactly halfway rounds up.",
   "round-to-hundred":
-    "A number rounds to the nearer multiple of a hundred, decided by the tens digit alone.",
+    "A number rounds to the nearer of the two numbers ending in 00 around it. The tens digit shows the side: 0 to 4 is before halfway, and 5 to 9 is halfway or past.",
   "round-large":
-    "Rounding to a place compares the number with the halfway point between the two multiples of that place.",
+    "Rounding to a place picks the nearer of the two numbers around it that have zeros after that place. The digit just right of the place shows whether the number is halfway or past.",
   "multiply-power-of-ten":
-    "Multiplying by 10 makes every digit worth ten times as much, moving it one place left.",
+    "Multiplying by 10 makes every digit worth 10 times as much, which moves it one place left.",
   "divide-power-of-ten":
-    "Dividing by 10 makes every digit worth one tenth as much, moving it one place right.",
+    "Dividing by 10 makes every digit worth one tenth as much, which moves it one place right.",
   "digit-value-ratio":
-    "A digit is worth 10 times as much as the same digit one place to its right.",
+    "A digit is worth 10 times as much as the same digit one place to its right. For each extra step apart, multiply by 10 again.",
 };
