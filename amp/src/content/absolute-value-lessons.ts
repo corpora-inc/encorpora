@@ -5,79 +5,120 @@ const terms: NonNullable<ProblemMethod["terms"]> = [
   "solution-set",
   "coefficient",
 ];
+
+/** Glossary readings shared by every absolute-value lesson and method. */
+const senses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
+  unit: "unit",
+  units: "unit",
+} as const;
+const noLink = [
+  "whole",
+  "part",
+  "parts",
+  "change",
+  "changes",
+  "leaves",
+  "opposite",
+  "opposites",
+  "center",
+  "mean",
+  "impossible",
+  "sort",
+  "rule",
+  "rules",
+];
+
+/** What every absolute-value practice screen needs before its first step. */
+const barsIntuition =
+  "The absolute value of a number is its distance from 0 on the number line. We write it between two straight bars: $|-3| = 3$ and $|3| = 3$, because both are 3 steps from 0. A distance is never negative.";
+
 export const absoluteValueMethods: Record<string, ProblemMethod> = {
   "absolute-value-direct-equation": {
-    goal: "Find all real numbers whose absolute value equals the given number.",
+    goal: "Find every number $x$ whose absolute value, its distance from 0, is the given number, as in $|x| = 3$.",
+    senses,
+    noLink,
+    intuition: `${barsIntuition} So $|x| = 3$ asks which numbers are 3 steps from 0. There are two: 3 and $-3$.`,
     terms,
     method: [
-      "Read the number on the other side as a proposed distance from zero.",
-      "A positive distance gives its positive and negative values. Distance zero gives only zero. A negative distance gives no solutions.",
-      "Check each value and state the complete set.",
+      "Read the number on the other side of the equals sign as a distance from 0.",
+      "A positive distance gives two answers, the number and its negative. A distance of 0 gives only 0. A negative distance gives no answer, because distances are never negative.",
+      "Check each answer by putting it back in, and list every answer.",
     ],
     watch:
-      "Absolute value is never negative, but the number inside the bars can be negative.",
+      "The absolute value is never negative, but the number inside the bars can be. So keep the negative answer: $|-3| = 3$.",
   },
   "absolute-value-affine-equation": {
-    goal: "Find all real values of $x$ that give the expression inside the bars the required absolute value.",
+    goal: "Find every $x$ that makes an equation like $|2x - 3| = 5$ true.",
+    senses,
+    noLink,
+    intuition: `${barsIntuition} In $|2x - 3| = 5$, the whole amount $2x - 3$ is 5 steps from 0. So $2x - 3$ is 5 or $-5$. Each of those two equations is called a branch; solve both.`,
     terms,
     method: [
-      "If the target is negative, there are no real solutions. If it is zero, set the inside expression equal to zero.",
-      "For a positive target, set the inside expression equal to the target or its opposite. Solve both equations.",
-      "Undo the constant term, then divide by the nonzero coefficient of $x$. Keep exact fractions.",
-      "Check every candidate in the original equation and include every valid value.",
+      "If the number on the right is negative, there is no solution. If it is 0, set the inside of the bars equal to 0 and solve.",
+      "If it is positive, write two equations: the inside equals that number, or the inside equals its negative.",
+      "Solve each one. Undo the plain number first, then divide by the number multiplying $x$ (it is not 0). Keep fractions exact.",
+      "Check every answer in the original equation and list every one that works.",
     ],
     watch:
-      "Apply the two signs to the whole target. Do not split the absolute value across an addition.",
+      "Give the plus and minus signs to the entire number on the right. Do not split the bars across a plus or minus: $|2x - 3|$ is not $|2x| - |3|$.",
   },
   "absolute-value-transformed-equation": {
-    goal: "Isolate an absolute value, then find the complete real solution set.",
+    goal: "Get the absolute value alone on one side, then find every $x$ that makes the equation true.",
+    senses,
+    noLink,
+    intuition: `${barsIntuition} In $-2|3x - 1| + 4 = -6$, the bars are multiplied by $-2$ and then 4 is added. Undo those outside steps first, last one first. Only then look at the sign of the number left on the right.`,
     terms,
     method: [
-      "If an outside multiplier is zero, evaluate the resulting constant equation. If the coefficient of $x$ inside is zero, evaluate that constant expression instead.",
-      "Otherwise subtract the outside constant from both sides, then divide by the nonzero outside multiplier.",
-      "A negative isolated target gives no solutions; zero gives one branch; a positive target gives two branches.",
-      "Solve each branch and substitute each candidate in the original equation.",
+      "If the number multiplying the bars is 0, the bars vanish: check whether the plain numbers left are equal. If the number multiplying $x$ inside is 0, work out the value inside instead.",
+      "Otherwise, subtract the outside plain number from both sides, then divide both sides by the number multiplying the bars (not 0).",
+      "Now the bars stand alone. A negative number on the right gives no solution, 0 gives one equation, and a positive number gives two.",
+      "Solve each equation, then put each answer back into the original equation to check it.",
     ],
     watch:
-      "A negative number on the original right side can be valid. The sign test applies only after the absolute value is isolated. Never divide by zero.",
+      "A negative number on the right of the original equation can still have solutions. Decide only after the bars stand alone. Never divide by 0.",
   },
 };
 export const absoluteValuePrinciples: Record<string, string> = {
   "absolute-value-direct-equation":
-    "Absolute value is distance from zero. For a positive $c$, |x| = c exactly when x = c or x = −c; |x| = 0 exactly when x = 0; a negative $c$ is impossible.",
+    "Absolute value is distance from 0, written with bars. For a positive number $c$, $|x| = c$ exactly when $x = c$ or $x = -c$. Also $|x| = 0$ exactly when $x = 0$. If $c$ is negative, $|x| = c$ has no solution.",
   "absolute-value-affine-equation":
-    "For positive $c$, |ax + b| = c is equivalent to ax + b = c or ax + b = −c. Solving both equations with reversible operations gives every real solution.",
+    "For a positive number $c$, $|ax + b| = c$ has the same solutions as the pair $ax + b = c$ or $ax + b = -c$. Here $ax$ means $a$ times $x$, with $a$ not 0. Solving both equations with steps that can be undone gives every real solution.",
   "absolute-value-transformed-equation":
-    "Adding the same number and dividing by the same nonzero number preserve an equation's solutions. Isolate the absolute value before splitting into sign branches; a constant equality is true for all real $x$ or for none.",
+    "Adding the same number to both sides, or dividing both sides by the same number other than 0, keeps an equation's solutions. Get the absolute value alone before splitting it into two equations. An equation with no $x$ left is true for every real $x$ or for none.",
 };
 const foundations: Lesson["sections"][number] = {
   stage: "intuition",
   title: "Absolute value measures distance",
   paragraphs: [
-    "This lesson uses addition, subtraction, multiplication, and division of positive and negative numbers. A real number is a number represented by a point on the number line, including whole numbers, negative numbers, fractions, and decimals. Equal distances on the line represent equal changes in value. Numbers increase to the right; negative numbers lie to the left of zero.",
-    "The absolute value of a number is its distance from zero. Two vertical bars enclose the number: |3| = 3 and |−3| = 3, because both 3 and −3 are three units from zero. Also, |0| = 0. A distance cannot be negative. Thus an absolute value is nonnegative, which means positive or zero.",
-    "The bars describe an operation on their entire contents. In |−3|, the number inside is negative, but the resulting distance is positive. In −|3|, the minus sign is outside: first find the distance 3, then take its opposite, giving −3. An opposite lies the same distance from zero on the other side; the opposite of zero is zero.",
+    "This lesson uses adding, subtracting, multiplying and dividing with positive and negative numbers. A real number is any number with a point on the number line: whole numbers, negative numbers, fractions and decimals. Numbers get larger to the right. Negative numbers sit to the left of 0.",
+    "The absolute value of a number is its distance from 0. We write it between two straight bars. So $|3| = 3$ and $|-3| = 3$, because 3 and $-3$ are both 3 steps from 0. Also $|0| = 0$. A distance cannot be negative, so an absolute value is always positive or 0.",
+    "The bars act on everything inside them. In $|-3|$, the number inside is negative, but its distance from 0 is positive, 3. In $-|3|$, the minus sign is outside the bars. First find the distance, 3. Then take its opposite, $-3$. The opposite of a number is the same distance from 0 on the other side; the opposite of 0 is 0.",
   ],
 };
 const equations: Lesson["sections"][number] = {
   title: "What it means to solve an equation",
   paragraphs: [
-    "A variable, such as $x$, stands for a number. An expression, such as 2x − 3, describes a quantity; 2x means 2 times $x$. An equation says that two expressions have equal values. A solution is a value of $x$ that makes that equality true. To check a proposed solution, substitute it for every $x$ and calculate both sides.",
-    "The complete solution set contains every solution and no other values. The word or joins alternatives: x = −3 or x = 3 means either value works. It does not mean that $x$ must have both values at once. No real solutions means that no point on the number line works; all real numbers means that every point works.",
+    "A variable is a letter, such as $x$, that stands for a number. An expression, such as $2x - 3$, is a math phrase with a value; $2x$ means 2 times $x$. An equation says two expressions are equal. A solution is a value of $x$ that makes the equation true. To check one, put it in for every $x$ and work out both sides.",
+    "The solution set is every solution, and nothing else. The word “or” joins choices: “$x = -3$ or $x = 3$” means either value works. It does not mean $x$ is both at once. “No real solutions” means no number on the number line works. “All real numbers” means every number works.",
   ],
 };
 const branches: Lesson["sections"][number] = {
   title: "Why there are two branches, one branch, or none",
   paragraphs: [
-    "If a distance from zero is positive, exactly two points have that distance: one on each side of zero. Therefore |t| = 3 means t = 3 or t = −3. Here $t$ represents the entire quantity inside the bars; it can be $x$ or an expression involving $x$. The two equations are called branches because each is a separate possibility to solve.",
-    "If the distance is zero, the two possibilities coincide: |t| = 0 means t = 0. Writing zero twice does not give two different solutions. If the proposed distance is negative, such as |t| = −3, there is no solution because distances cannot be negative.",
+    "Exactly two numbers are 3 steps from 0: one on each side of 0. So $|t| = 3$ means $t = 3$ or $t = -3$. Here the letter $t$ stands for everything inside the bars. It can be $x$, or an expression with $x$ in it. The two equations are called branches, because each is a separate choice to solve.",
+    "If the distance is 0, the two choices are the same: $|t| = 0$ means $t = 0$. Writing 0 twice does not give two different solutions. If the distance is negative, as in $|t| = -3$, there is no solution, because a distance cannot be negative.",
   ],
 };
 const operations: Lesson["sections"][number] = {
   title: "Solve each branch without changing its solutions",
   paragraphs: [
-    "A coefficient is a number multiplying a variable; in −2x + 3, the coefficient of $x$ is −2 and the constant term is 3. A constant does not depend on $x$. To isolate $x$ means to leave $x$ alone on one side of an equation. Subtract or add the same constant on both sides, then divide both sides by the nonzero coefficient. These operations are reversible, so they preserve exactly which values satisfy the equation. Division by zero is undefined.",
-    "Keep fractions exact. In 3/2, the denominator 2 divides one unit into two equal parts, and the numerator 3 counts three such parts. A negative fraction is the opposite of that positive quantity. To add or subtract fractions, express them in equal-sized parts: 5/2 − 3 = 5/2 − 6/2 = −1/2. To divide by −2, multiply by its reciprocal −1/2, the number that gives 1 when multiplied by −2. Thus (−1/2) ÷ (−2) = (−1/2) × (−1/2) = 1/4.",
+    "In $-2x + 3$, the number multiplying $x$ is $-2$; it is called the coefficient. The plain number 3, with no $x$, is called the constant. To isolate $x$ means to get $x$ alone on one side. Add or subtract the same number on both sides. Then divide both sides by the coefficient, which must not be 0. Each step can be undone, so the solutions stay the same. Dividing by 0 has no meaning.",
+    "Keep fractions exact. In $\\tfrac{3}{2}$, the bottom number 2 (the denominator) splits one whole into 2 equal parts. The top number 3 (the numerator) counts 3 of them. To add or subtract fractions, write them with the same bottom number: $\\tfrac{5}{2} - 3 = \\tfrac{5}{2} - \\tfrac{6}{2} = -\\tfrac{1}{2}$.",
+    "To divide by $-2$, multiply by $-\\tfrac{1}{2}$. That number is the reciprocal of $-2$: the number you multiply $-2$ by to get 1. So $-\\tfrac{1}{2} \\div (-2) = -\\tfrac{1}{2} \\times (-\\tfrac{1}{2}) = \\tfrac{1}{4}$.",
   ],
 };
 export const absoluteValueLessons: Lesson[] = [
@@ -85,12 +126,14 @@ export const absoluteValueLessons: Lesson[] = [
     id: "absolute-value-direct-equation",
     title: "Absolute-value equations: distance from zero",
     summary:
-      "Find every number at a specified distance from zero, including the zero-distance and impossible-distance cases.",
+      "A number line shows numbers in order, evenly spaced, with 0 marked and negative numbers to its left. The absolute value of a number is its distance from 0 on the number line. We write it with two bars: $|-3| = 3$. So $|x| = 3$ asks which numbers are 3 steps from 0. There are two, 3 and $-3$. A distance of 0 gives one number, 0. A negative distance gives none, because distances are never negative.",
     templateIds: ["absolute-value-direct-equation"],
     includeGeneratedRepresentation: false,
+    senses,
+    noLink,
     objectives: [
-      "Interpret absolute value as a distance.",
-      "Find complete solution sets for positive, zero, and negative targets.",
+      "Read an absolute value, such as $|-5|$, as a distance from 0.",
+      "Find every solution of equations like $|x| = 3$, $|x| = 0$ and $|x| = -3$.",
     ],
     sections: [
       foundations,
@@ -99,26 +142,26 @@ export const absoluteValueLessons: Lesson[] = [
       {
         title: "Read the solution points",
         paragraphs: [
-          "For |x| = 3, mark the two points three units from zero. Only −3 and 3 solve the equation; points between them have smaller distances. For |x| = 0, only the point zero works.",
-          "A filled dot in these diagrams marks a solution, not an interval of solutions. The unmarked points between −3 and 3 do not solve |x| = 3, because each is less than three units from zero.",
+          "For $|x| = 3$, mark the two points 3 steps from 0. Only $-3$ and 3 solve the equation. Every point between them is closer to 0. For $|x| = 0$, only the point 0 works.",
+          "A filled dot in these pictures marks one solution. The unmarked points between $-3$ and 3 do not solve $|x| = 3$, because each is less than 3 steps from 0.",
         ],
         illustration: "absolute-value-distance",
       },
       {
         title: "Distances can be fractions",
         paragraphs: [
-          "A unit is the distance from 0 to 1. Dividing that unit into two equal parts makes halves. In the fraction 3/2, the denominator 2 names those parts and the numerator 3 counts them. Three halves have length one and a half units. Therefore |x| = 3/2 has the two solutions x = −3/2 or x = 3/2. Keep the exact fraction when a distance is given as a fraction.",
-          "The same reasoning works for every positive distance, whether whole or fractional. It depends on distance and direction, not on counting whole-number steps.",
+          "One unit is the distance from 0 to 1. Split that unit into 2 equal parts to make halves. In $\\tfrac{3}{2}$, the bottom number 2 names the parts and the top number 3 counts them. Three halves make one and a half units. So $|x| = \\tfrac{3}{2}$ has two solutions: $x = -\\tfrac{3}{2}$ or $x = \\tfrac{3}{2}$. Keep the exact fraction.",
+          "The same idea works for every positive distance, whole or fraction. It depends only on the distance and the two directions, left and right.",
         ],
       },
     ],
     workedExample: {
-      prompt: "Solve |x| = 3. Give the complete set of real solutions.",
+      prompt: "Solve $|x| = 3$. Give the complete set of real solutions.",
       steps: [
-        "The target distance 3 is positive. The two points three units from zero are 3 and −3.",
-        "These are two alternative equations, called branches: $x=3$ or $x=-3$.",
-        "Check x = 3: |3| = 3. Check x = −3: |−3| = 3. Both equal the right side.",
-        "No other point is exactly three units from zero. The complete solution set is x = −3 or x = 3.",
+        "The bars mean distance from 0, so the question asks which numbers are 3 steps from 0. The distance 3 is positive, so there is one number on each side: 3 and $-3$.",
+        "Write the two choices, called branches: $x = 3$ or $x = -3$.",
+        "Check each one. $|3| = 3$ and $|-3| = 3$. Both match the right side.",
+        "No other point is exactly 3 steps from 0. So the complete solution set is $x = -3$ or $x = 3$.",
       ],
       answer: "x = −3 or x = 3",
     },
@@ -127,37 +170,39 @@ export const absoluteValueLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "Absolute value is distance from zero. For a positive $c$, |x| = c exactly when x = c or x = −c; |x| = 0 exactly when x = 0; a negative $c$ is impossible.",
+          "Absolute value is distance from 0. For a positive number $c$, $|x| = c$ exactly when $x = c$ or $x = -c$. Also $|x| = 0$ exactly when $x = 0$. If $c$ is negative, $|x| = c$ has no solution.",
         ],
       },
     ],
     pitfalls: [
-      "Do not discard the negative solution: a negative number can have a positive distance from zero.",
-      "For a zero target, list zero once. For a negative target, report no real solutions.",
+      "Do not drop the negative answer. A negative number still has a positive distance from 0.",
+      "For $|x| = 0$, list 0 once. For a negative number on the right, answer “no real solutions”.",
     ],
     parentGuide:
-      "Ask the learner to draw the solutions of |x| = 2, |x| = 0, and |x| = −2, and explain why the numbers of solutions are two, one, and zero. Then ask for |x| = 1/2.",
+      "Ask your learner to mark the solutions of $|x| = 2$, $|x| = 0$ and $|x| = -2$ on a number line. Have them explain why there are two, one and no solutions. Then ask about $|x| = \\tfrac{1}{2}$.",
   },
   {
     id: "absolute-value-affine-equation",
     title: "Absolute value of a linear expression",
     summary:
-      "Split a positive distance into two sign possibilities, solve both equations, and check their values in the original expression.",
+      "The absolute value of a number is its distance from 0, written with bars: $|-5| = 5$. In $|2x - 3| = 5$, the whole amount $2x - 3$ is 5 steps from 0. Both 5 and $-5$ are 5 steps from 0, so $2x - 3 = 5$ or $2x - 3 = -5$. Add 3 to both sides and divide by 2 in each one: $x = 4$ or $x = -1$. Then check both in the original.",
     templateIds: ["absolute-value-affine-equation"],
     includeGeneratedRepresentation: false,
+    senses,
+    noLink,
     objectives: [
-      "Solve both branches of an absolute-value equation with a linear expression inside.",
-      "Explain zero and negative targets and retain exact fractional solutions.",
+      "Solve both equations that come from an absolute value with an $x$ expression inside, such as $|2x - 3| = 5$.",
+      "Explain what happens when the number on the right is 0 or negative, and keep fraction answers exact.",
     ],
     sections: [
       foundations,
       equations,
       branches,
       {
-        title: "The distance belongs to the whole inside expression",
+        title: "The distance belongs to the whole inside",
         paragraphs: [
-          "In |2x − 3| = 5, the number whose distance is 5 is 2x − 3, not $x$. It must equal 5 or −5. The branches are 2x − 3 = 5 or 2x − 3 = −5. Adding 3 gives 2x = 8 or 2x = −2; dividing by 2 gives x = 4 or x = −1. The solutions need not be opposites, because the expression inside is not simply $x$.",
-          "The expression x − 2 is the signed displacement from 2 to $x$: it is positive to the right of 2 and negative to the left. Its absolute value is the distance between $x$ and 2. Thus |x − 2| = 3 places the solutions three units on either side of 2, at −1 and 5. The center 2 is not a solution because its distance from itself is zero.",
+          "In $|2x - 3| = 5$, the number that is 5 steps from 0 is $2x - 3$, not $x$. So $2x - 3$ must be 5 or $-5$. The two branches are $2x - 3 = 5$ or $2x - 3 = -5$. Add 3 to both sides: $2x = 8$ or $2x = -2$. Divide both sides by 2: $x = 4$ or $x = -1$. These two answers are not opposites, because the inside is not just $x$.",
+          "Now look at $x - 2$. It tells how far $x$ is from 2, and in which direction: positive to the right of 2, negative to the left. So $|x - 2|$ is the distance between $x$ and 2. Then $|x - 2| = 3$ puts the solutions 3 steps on either side of 2, at $-1$ and 5. The center, 2, is not a solution: its distance from itself is 0.",
         ],
         illustration: "absolute-value-shifted",
       },
@@ -165,20 +210,21 @@ export const absoluteValueLessons: Lesson[] = [
       {
         title: "Zero and negative targets",
         paragraphs: [
-          "For |2x − 3| = 0, set 2x − 3 = 0. Add 3 to obtain 2x = 3, then divide by 2 to obtain x = 3/2. Check: 2 × (3/2) − 3 = 0 and |0| = 0. There is one solution.",
-          "For |2x − 3| = −5, stop: the left side is nonnegative for every real $x$, so it cannot equal −5. There are no real solutions. Do not create sign branches for a negative target.",
+          "For $|2x - 3| = 0$, the inside must be 0, so set $2x - 3 = 0$. Add 3 to both sides: $2x = 3$. Divide both sides by 2: $x = \\tfrac{3}{2}$. Check: $2 \\times \\tfrac{3}{2} - 3 = 0$, and $|0| = 0$. There is one solution.",
+          "For $|2x - 3| = -5$, stop. The left side is a distance, so it is positive or 0 for every $x$. It can never equal $-5$. There are no real solutions. Do not write two branches when the number on the right is negative.",
         ],
       },
     ],
     workedExample: {
-      prompt: "Solve |−2x + 3| = 5/2. Give the complete set of real solutions.",
+      prompt:
+        "Solve $|-2x + 3| = \\tfrac{5}{2}$. Give the complete set of real solutions.",
       steps: [
-        "Because 5/2 is positive, the inside expression can be 5/2 or −5/2: −2x + 3 = 5/2 or −2x + 3 = −5/2.",
-        "First branch: subtract 3 from both sides. Then −2x = 5/2 − 3 = 5/2 − 6/2 = −1/2. Divide by −2: x = (−1/2) ÷ (−2) = 1/4.",
-        "Second branch: subtract 3 from both sides. Then −2x = −5/2 − 3 = −5/2 − 6/2 = −11/2. Divide by −2: x = (−11/2) ÷ (−2) = 11/4.",
-        "Check x = 1/4: −2 × (1/4) + 3 = −1/2 + 6/2 = 5/2, so |5/2| = 5/2.",
-        "Check x = 11/4: −2 × (11/4) + 3 = −11/2 + 6/2 = −5/2, so |−5/2| = 5/2.",
-        "Both branches give valid solutions, so x = 1/4 or x = 11/4.",
+        "The number on the right, $\\tfrac{5}{2}$, is positive. So the inside is $\\tfrac{5}{2}$ steps from 0 and can be $\\tfrac{5}{2}$ or $-\\tfrac{5}{2}$: $-2x + 3 = \\tfrac{5}{2}$ or $-2x + 3 = -\\tfrac{5}{2}$.",
+        "First branch: subtract 3 from both sides to undo the + 3. Then $-2x = \\tfrac{5}{2} - \\tfrac{6}{2} = -\\tfrac{1}{2}$. Divide both sides by $-2$ to get $x$ alone: $x = -\\tfrac{1}{2} \\div (-2) = \\tfrac{1}{4}$.",
+        "Second branch: subtract 3 from both sides. Then $-2x = -\\tfrac{5}{2} - \\tfrac{6}{2} = -\\tfrac{11}{2}$. Divide both sides by $-2$: $x = -\\tfrac{11}{2} \\div (-2) = \\tfrac{11}{4}$.",
+        "Check $x = \\tfrac{1}{4}$: $-2 \\times \\tfrac{1}{4} + 3 = -\\tfrac{1}{2} + \\tfrac{6}{2} = \\tfrac{5}{2}$, and $|\\tfrac{5}{2}| = \\tfrac{5}{2}$.",
+        "Check $x = \\tfrac{11}{4}$: $-2 \\times \\tfrac{11}{4} + 3 = -\\tfrac{11}{2} + \\tfrac{6}{2} = -\\tfrac{5}{2}$, and $|-\\tfrac{5}{2}| = \\tfrac{5}{2}$.",
+        "Both answers work, so $x = \\tfrac{1}{4}$ or $x = \\tfrac{11}{4}$.",
       ],
       answer: "x = 1/4 or x = 11/4",
     },
@@ -187,27 +233,29 @@ export const absoluteValueLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "For positive $c$, |ax + b| = c is equivalent to ax + b = c or ax + b = −c. Solving both equations with reversible operations gives every real solution.",
+          "For a positive number $c$, $|ax + b| = c$ has the same solutions as the pair $ax + b = c$ or $ax + b = -c$. Here $a$ is not 0. Solving both equations with steps that can be undone gives every real solution.",
         ],
       },
     ],
     pitfalls: [
-      "Do not write |2x − 3| as |2x| − |3|. For x = 1, the first is 1 but the second is −1.",
-      "Solve both sign branches and substitute the resulting $x$ values, not the target distances, into the original equation.",
+      "Do not write $|2x - 3|$ as $|2x| - |3|$. For $x = 1$, the first is 1 but the second is $-1$.",
+      "Solve both branches. Then put the $x$ answers, not the distances, back into the original equation.",
     ],
     parentGuide:
-      "Ask why the solutions of |x − 2| = 3 are centered at 2 rather than zero. Then have the learner solve |−2x + 3| = 0 and explain why there is only one answer.",
+      "Ask why the solutions of $|x - 2| = 3$ sit on either side of 2 and not of 0. Then have your learner solve $|-2x + 3| = 0$ and explain why it has only one answer.",
   },
   {
     id: "absolute-value-transformed-equation",
     title: "Isolate an absolute value before solving",
     summary:
-      "Undo operations outside the bars, identify the possible inside values, and recognize equations that hold for every real number or for none.",
+      "The absolute value of a number is its distance from 0, written with bars: $|-5| = 5$. In $-2|3x - 1| + 4 = -6$, the bars are multiplied by $-2$ and then 4 is added. Undo those outside steps first, so the bars stand alone: $|3x - 1| = 5$. Both 5 and $-5$ are 5 steps from 0, so solve $3x - 1 = 5$ and $3x - 1 = -5$. Some equations work for every number, and some for none.",
     templateIds: ["absolute-value-transformed-equation"],
     includeGeneratedRepresentation: false,
+    senses,
+    noLink,
     objectives: [
-      "Solve shifted and scaled absolute-value equations with exact real solution sets.",
-      "Distinguish zero, one, two, and infinitely many real solutions without dividing by zero.",
+      "Solve absolute-value equations with numbers outside the bars, such as $-2|3x - 1| + 4 = -6$, and give every real solution.",
+      "Tell apart no solution, one, two and endlessly many, without ever dividing by 0.",
     ],
     sections: [
       foundations,
@@ -217,32 +265,32 @@ export const absoluteValueLessons: Lesson[] = [
       {
         title: "Undo the outside operations first",
         paragraphs: [
-          "In −2|3x − 1| + 4, first calculate 3x − 1, then its absolute value, then multiply that distance by −2, then add 4. The outside multiplier is −2 and the outside constant is 4. To solve an equation, undo the last operation first: subtract 4 from both sides, then divide both sides by −2.",
-          "A negative original right side does not make the equation impossible. For −2|3x − 1| + 4 = −6, subtracting 4 gives −2|3x − 1| = −10. Dividing by −2 gives |3x − 1| = 5, a positive distance with two branches. The sign test applies to this isolated distance.",
-          "For 2|x − 2| + 1 = 1, subtract 1 and divide by 2 to obtain |x − 2| = 0, so x = 2. For 2|x − 2| + 1 = −3, those steps give |x − 2| = −2, which has no real solutions.",
+          "To work out $-2|3x - 1| + 4$, you first find $3x - 1$, then its absolute value, then multiply by $-2$, then add 4. So $-2$ is the outside multiplier and 4 is the outside constant. To solve, undo the last step first. Subtract 4 from both sides, then divide both sides by $-2$.",
+          "A negative number on the right of the original equation does not make it impossible. For $-2|3x - 1| + 4 = -6$, subtract 4 from both sides: $-2|3x - 1| = -10$. Divide both sides by $-2$: $|3x - 1| = 5$. That is a positive distance, so there are two branches. Check the sign only after the bars stand alone.",
+          "For $2|x - 2| + 1 = 1$, subtract 1 and divide by 2 to get $|x - 2| = 0$, so $x = 2$. For $2|x - 2| + 1 = -3$, the same steps give $|x - 2| = -2$. A distance cannot be negative, so there are no real solutions.",
         ],
       },
       {
         title: "When a coefficient is zero",
         paragraphs: [
-          "A zero outside multiplier removes the entire absolute-value term. For 0|2x + 1| + 4 = 4, zero times any real quantity is zero, so the equation becomes 4 = 4. Every real $x$ works. Changing the right side to 7 gives 4 = 7, a false statement; no real $x$ works. Do not divide by the outside coefficient when it is zero.",
-          "A zero coefficient of $x$ inside the bars also makes the expression constant. In 2|0x − 3| − 1 = 5, we have 0x = 0 for every $x$. The left side is 2|−3| − 1 = 2 × 3 − 1 = 5. Thus every real number is a solution. If the right side were 4, there would be no solutions.",
-          "These constant equations have infinitely many solutions when true and no solutions when false. A nonzero coefficient inside and a nonzero outside multiplier instead give zero, one, or two solutions, according to the isolated distance.",
+          "If the outside multiplier is 0, the whole absolute-value part disappears. In $0|2x + 1| + 4 = 4$, zero times any number is 0, so the equation becomes $4 = 4$. That is true, so every real $x$ works. Change the right side to 7, and you get $4 = 7$, which is false: no $x$ works. Never divide by an outside multiplier of 0.",
+          "If the number multiplying $x$ inside the bars is 0, the inside is a plain number too. In $2|0x - 3| - 1 = 5$, $0x = 0$ for every $x$. So the left side is $2|-3| - 1 = 2 \\times 3 - 1 = 5$. It always equals 5, so every real number is a solution. If the right side were 4, there would be no solutions.",
+          "Equations like these, with no $x$ left, have endlessly many solutions when true and none when false. When both multipliers are not 0, there are zero, one or two solutions, set by the distance once the bars stand alone.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "Solve −2|3x − 1| + 4 = −6. Give the complete set of real solutions.",
+        "Solve $-2|3x - 1| + 4 = -6$. Give the complete set of real solutions.",
       steps: [
-        "Subtract 4 from both sides: −2|3x − 1| = −6 − 4 = −10.",
-        "Divide by −2: |3x − 1| = (−10) ÷ (−2) = 5.",
-        "The inside expression can be 5 or −5: 3x − 1 = 5 or 3x − 1 = −5.",
-        "First branch: add 1 to obtain 3x = 6, then divide by 3 to obtain x = 2.",
-        "Second branch: add 1 to obtain 3x = −4, then divide by 3 to obtain x = −4/3.",
-        "Check x = 2: 3 × 2 − 1 = 5, so the original left side is −2|5| + 4 = −10 + 4 = −6.",
-        "Check x = −4/3: 3 × (−4/3) − 1 = −4 − 1 = −5, so the original left side is −2|−5| + 4 = −10 + 4 = −6.",
-        "Both values satisfy the original equation, so x = −4/3 or x = 2.",
+        "The + 4 is the last outside step, so undo it first. Subtract 4 from both sides: $-2|3x - 1| = -6 - 4 = -10$.",
+        "Undo the multiplication by $-2$. Divide both sides by $-2$: $|3x - 1| = -10 \\div (-2) = 5$. Now the bars stand alone.",
+        "The distance 5 is positive, so the inside is 5 or $-5$: $3x - 1 = 5$ or $3x - 1 = -5$.",
+        "First branch: add 1 to both sides to get $3x = 6$. Divide both sides by 3 to get $x = 2$.",
+        "Second branch: add 1 to both sides to get $3x = -4$. Divide both sides by 3 to get $x = -\\tfrac{4}{3}$.",
+        "Check $x = 2$: $3 \\times 2 - 1 = 5$, so the left side is $-2|5| + 4 = -10 + 4 = -6$. That matches.",
+        "Check $x = -\\tfrac{4}{3}$: $3 \\times (-\\tfrac{4}{3}) - 1 = -4 - 1 = -5$, so the left side is $-2|-5| + 4 = -10 + 4 = -6$. That matches too.",
+        "Both values make the original equation true, so $x = -\\tfrac{4}{3}$ or $x = 2$.",
       ],
       answer: "x = −4/3 or x = 2",
     },
@@ -251,16 +299,16 @@ export const absoluteValueLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "Adding the same number and dividing by the same nonzero number preserve an equation's solutions. Isolate the absolute value before splitting into sign branches; a constant equality is true for all real $x$ or for none.",
+          "Adding the same number to both sides, or dividing both sides by the same number other than 0, keeps an equation's solutions. Get the absolute value alone before splitting it into two equations. An equation with no $x$ left is true for every real $x$ or for none.",
         ],
       },
     ],
     pitfalls: [
-      "Isolate the absolute value before inspecting the target's sign. Outside multiplication can make the whole left side negative.",
-      "Do not divide by zero. Evaluate constant equations and decide whether they are true or false.",
-      "Changing an equation to two branches requires or: either branch can provide a solution.",
+      "Get the absolute value alone before you look at the sign of the right side. Multiplying by a negative number outside the bars can make the whole left side negative.",
+      "Never divide by 0. If a multiplier is 0, work out the plain numbers and decide whether the equation is true or false.",
+      "The two branches are joined by “or”: either one can give a solution.",
     ],
     parentGuide:
-      "Ask the learner to classify 2|x − 2| + 1 = 1, 2|x − 2| + 1 = −3, and 0|x − 2| + 1 = 1 before solving. The answers are one, zero, and infinitely many solutions. Ask which feature determines each count.",
+      "Before solving, ask your learner to sort $2|x - 2| + 1 = 1$, $2|x - 2| + 1 = -3$ and $0|x - 2| + 1 = 1$ by how many solutions each has. The answers are one, none and endlessly many. Ask what decides each count.",
   },
 ];

@@ -1842,15 +1842,19 @@ function compoundEventSimulation(r: Random): Built {
         }
       if (distinct < 3) continue;
       const text = trials.map((t) => t.join("")).join(", ");
+      const unit = (n: number) =>
+        n === 1 ? ctx.unitWord.replace(/s$/, "") : ctx.unitWord;
+      // Each counted trial shows its decoded count, so the learner can check it.
       const hitTrials = trials
-        .filter((_, i) => event.test(marks[i]!))
-        .map((t) => t.join(""));
+        .map((t, i) => [t, marks[i]!] as const)
+        .filter(([, m]) => event.test(m))
+        .map(([t, m]) => `${t.join("")} (${m} ${unit(m)})`);
       return {
         prompt: `${ctx.intro} Here are ${N} trials: ${text}. Based on these trials, what is the estimated probability that ${event.text}?`,
         choices: options(correct, candidates),
         explanation: [
           `A simulation uses random digits to act out a chance event many times. Each group of ${ctx.digits} digits is one trial.`,
-          `Go through each of the ${N} trials and count the ${ctx.unitWord}.`,
+          `Decode every digit first: ${ctx.id === "family" ? "an even digit (0, 2, 4, 6, 8) is a girl, and an odd digit is a boy" : "0 to 5 is a made shot, and 6 to 9 is a miss"}. Then count the ${ctx.unitWord} in each of the ${N} trials.`,
           `Trials where ${event.text}: ${hitTrials.join(", ")}. That is ${hits} of the ${N} trials.`,
           `An estimated probability is the number of times the event happened divided by the number of trials.`,
           `The estimated probability is ${hits} out of ${N}, which is ${correct}.`,
