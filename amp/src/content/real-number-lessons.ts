@@ -18,9 +18,9 @@ export const realNumberLessons: Lesson[] = [
       product: "product-multiply",
       opposite: "opposite-number",
       whole: "whole",
+      root: "root-radical",
     },
     noLink: [
-      "root",
       "roots",
       "tail",
       "tails",
@@ -119,8 +119,11 @@ export const realNumberLessons: Lesson[] = [
       squaring: "square-number",
       factor: "factor-number",
       cube: "cube",
+      roots: "root-radical",
+      root: "root-radical",
+      scales: "scale-axis",
     },
-    noLink: ["root", "roots", "scales", "mean", "side", "place", "half"],
+    noLink: ["mean", "side", "place", "half"],
     sections: [
       {
         stage: "intuition",
@@ -177,7 +180,7 @@ export const realNumberLessons: Lesson[] = [
       "Draw a number line from 4 to 5 marked in tenths. Have the learner square 4.4 and 4.5 with pencil and paper. Then mark where $\\sqrt{20}$ must lie, and say whether it is nearer 4.4 or 4.5.",
   },
   {
-    noLink: ["root", "roots"],
+    noLink: ["roots"],
     id: "square-cube-equations",
     title: "Solve square and cube equations",
     summary:
@@ -191,6 +194,7 @@ export const realNumberLessons: Lesson[] = [
       product: "product-multiply",
       opposite: "opposite-number",
       cube: "cube",
+      root: "root-radical",
     },
     objectives: [
       "Find every real solution of $x^2 = p$ for a positive $p$ and of $x^3 = p$ for any $p$.",
@@ -389,7 +393,7 @@ export const realNumberLessons: Lesson[] = [
 
 export const realNumberMethods: Record<string, ProblemMethod> = {
   "classify-real-number": {
-    noLink: ["root", "roots"],
+    noLink: ["roots"],
     goal: "Pick the one rational (or irrational) number from four given numbers.",
     terms: [
       ["rational-number", "Its decimal either ends or repeats."],
@@ -400,6 +404,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       squares: "square-number",
       cube: "cube",
       whole: "whole",
+      root: "root-radical",
     },
     intuition:
       "A square root is the number, zero or greater, that times itself gives a number: $\\sqrt{49} = 7$. A cube root is the number whose three copies multiply to make a given number: $\\sqrt[3]{8} = 2$. An integer is a whole number (one of 0, 1, 2, 3, …) or its negative. A rational number is a number that can be written as a fraction of two integers, with a bottom number that is not 0. Its decimal ends or repeats. An irrational number cannot be written that way; its decimal never ends and never repeats. A perfect square is a whole number times itself, like 49, so $\\sqrt{49} = 7$ is rational.",
@@ -425,7 +430,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
     watch: "Use 10 raised to the length of the repeating block, not always 10.",
   },
   "root-between-integers": {
-    noLink: ["root", "roots", "side"],
+    noLink: ["side"],
     goal: "Find the two whole numbers next to each other that a square root or cube root lies between.",
     terms: ["perfect-square"],
     senses: {
@@ -434,6 +439,8 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       squares: "square-number",
       cube: "cube",
       cubes: "cube",
+      root: "root-radical",
+      roots: "root-radical",
     },
     intuition:
       "A square root is the number, zero or greater, that times itself makes a given number: $\\sqrt{20}$ times itself makes 20. A cube root is the number whose three copies multiply to make a given number: $\\sqrt[3]{20}$ is that number for 20. Squaring means multiplying a number by itself. A perfect square is a whole number times itself, like 16 or 25. Since 20 is between 16 and 25, $\\sqrt{20}$ is between 4 and 5.",
@@ -450,8 +457,9 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
     senses: {
       square: "square-number",
       squares: "square-number",
+      root: "root-radical",
     },
-    noLink: ["root", "roots", "side", "half"],
+    noLink: ["roots", "side", "half"],
     intuition:
       "A square root is the number, zero or greater, that times itself makes a given number: $\\sqrt{20}$ times itself makes 20. Squaring means multiplying a number by itself: $4.4^2 = 4.4 \\times 4.4 = 19.36$. For numbers zero or greater, bigger numbers have bigger squares, so squares show where the root sits.",
     method: [
@@ -463,7 +471,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       "Decide rounding with the halfway point's square, not by guessing from the two squares.",
   },
   "compare-irrational-values": {
-    noLink: ["root", "roots", "mean"],
+    noLink: ["mean"],
     goal: "Find the greatest or least of four roots, fractions and decimals.",
     senses: {
       factor: "factor-number",
@@ -471,6 +479,8 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       square: "square-number",
       squaring: "square-number",
       cube: "cube",
+      roots: "root-radical",
+      root: "root-radical",
     },
     intuition:
       "A square root is the number, zero or greater, that times itself makes a given number, written $\\sqrt{n}$. A cube root is the number whose three copies multiply to make a given number, written $\\sqrt[3]{n}$. Squaring means multiplying a number by itself. To compare numbers in different forms, find the tenths each one lies between, for example 5.4 and 5.5.",
@@ -483,7 +493,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       "A larger number under the root sign does not mean a larger value when the roots differ.",
   },
   "solve-square-cube-equation": {
-    noLink: ["root", "roots"],
+    noLink: ["roots"],
     goal: "Find every real solution of $x^2 = p$ or $x^3 = p$.",
     terms: ["solution", "plus-or-minus"],
     senses: {
@@ -494,6 +504,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       squares: "square-number",
       cube: "cube",
       cubes: "cube",
+      root: "root-radical",
     },
     intuition:
       "Squared means multiplied by itself: $x^2$ ($x$ squared) is $x \\times x$. Cubed means three copies multiplied: $x^3$ ($x$ cubed) is $x \\times x \\times x$. A solution is a value of $x$ that makes the equation true. Both 7 and −7 square to 49, because a negative times a negative is positive. But only 4 cubes to 64, since $(-4)^3 = -64$.",

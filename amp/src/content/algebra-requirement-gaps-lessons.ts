@@ -94,7 +94,7 @@ const sequenceFunctionLesson: Lesson = {
     "arithmetic-sequence-as-function",
     "geometric-sequence-as-function",
   ],
-  senses: sequenceSenses,
+  senses: { ...sequenceSenses, rule: "rule" },
   noLink: [
     "part",
     "parts",
@@ -123,7 +123,6 @@ const sequenceFunctionLesson: Lesson = {
     "quarters",
     "one quarter",
     "mirror image",
-    "rule",
     "rules",
     "opposite",
     "opposites",
@@ -273,7 +272,7 @@ const geometricRuleFormsLesson: Lesson = {
   summary:
     "In the list 2, 6, 18, 54, each number is 3 times the one before. A list like this is called a geometric sequence, and the 3 is its common ratio. You can describe it step by step: start at 2 and multiply by 3 each time. Or you can give a formula that jumps straight to any position. Both descriptions come from the first number and the common ratio.",
   templateIds: ["geometric-rule-forms"],
-  senses: geometricSenses,
+  senses: { ...geometricSenses, rule: "rule", rules: "rule" },
   noLink: [
     "part",
     "parts",
@@ -302,8 +301,6 @@ const geometricRuleFormsLesson: Lesson = {
     "quarters",
     "one quarter",
     "mirror image",
-    "rule",
-    "rules",
     "opposite",
     "opposites",
     "unit",
@@ -775,12 +772,13 @@ const interpretLinearParametersLesson: Lesson = {
   senses: {
     balance: "balance-account",
     change: "change",
+    model: "model",
+    rule: "rule",
   },
   noLink: [
     "mean",
     "parts",
     "whole",
-    "rule",
     "rules",
     "opposite",
     "opposites",
@@ -789,7 +787,6 @@ const interpretLinearParametersLesson: Lesson = {
     "average",
     "decreasing",
     "increasing",
-    "model",
     "models",
     "pattern",
     "patterns",
@@ -936,7 +933,7 @@ const quadraticFormConversionLesson: Lesson = {
   summary:
     "The same calculation can be written in different ways. For example, $x^2 - 6x + 5$, $(x - 1)(x - 5)$ and $(x - 3)^2 - 4$ give the same answer for every $x$. The second way shows at a glance where the answer is 0: at $x = 1$ and $x = 5$. The third shows the smallest the answer can be: $-4$, reached at $x = 3$. Pick the way of writing it that shows what you need.",
   templateIds: ["quadratic-form-conversion"],
-  senses: formConversionSenses,
+  senses: { ...formConversionSenses, rule: "rule" },
   noLink: [
     "part",
     "parts",
@@ -965,7 +962,6 @@ const quadraticFormConversionLesson: Lesson = {
     "quarters",
     "one quarter",
     "mirror image",
-    "rule",
     "rules",
     "opposite",
     "opposites",

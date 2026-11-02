@@ -53,8 +53,8 @@ const entries: WorkEntry[] = [
     ],
     parentGuide:
       "Ask your learner to write each term on its own line and to say which term it came from.",
-    senses: { term: "term-sequence", square: "square-number" },
-    noLink: ["third", "whole", "factor", "jumps", "rule"],
+    senses: { term: "term-sequence", square: "square-number", rule: "rule" },
+    noLink: ["third", "whole", "factor", "jumps"],
   },
   {
     id: "remainder-steps",
@@ -210,8 +210,8 @@ const entries: WorkEntry[] = [
     ],
     parentGuide:
       "Ask your learner which two rows they used and how many years apart they are.",
-    senses: { change: "change" },
-    noLink: ["population", "average", "rule"],
+    senses: { change: "change", average: "mean-average", rule: "rule" },
+    noLink: ["population"],
   },
   {
     id: "budget-items-steps",

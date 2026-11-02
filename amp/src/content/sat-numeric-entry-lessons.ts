@@ -514,8 +514,9 @@ const entries: Entry[] = [
       difference: "difference-subtract",
       part: "part",
       unit: "unit",
+      average: "mean-average",
     },
-    noLink: ["average", "balance", "net", "whole"],
+    noLink: ["balance", "net", "whole"],
     title: "Enter a combined-rate or mixture value",
     goal: "Add rates (jobs per hour), not times, subtract a draining rate, or balance the amount of a substance before and after mixing.",
     summary:
