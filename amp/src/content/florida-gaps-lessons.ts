@@ -170,7 +170,13 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
   "fl-vector-dot-product": {
     goal: "Compute a dot product, a perpendicular condition, or a scalar projection for two-dimensional vectors.",
     intuition:
-      "The dot product of two vectors multiplies matching components and adds the results, so it is a single number, not a vector. It is 0 exactly when the vectors are perpendicular. Divided by the length of a vector, it measures how far the other vector reaches along it.",
+      "A vector $\\langle a,b\\rangle$ is an arrow that moves $a$ across and $b$ up. The dot product of two vectors multiplies matching components and adds the results, so it is a single number, not a vector. For vectors other than $\\langle0,0\\rangle$, it is 0 exactly when they are perpendicular, at a right angle. Divided by the length of one vector, it measures how far the other vector reaches along it, called the scalar projection.",
+    senses: {
+      product: "product-multiply",
+      sides: "side-of-equation",
+      square: "square-number",
+    },
+    noLink: ["parts"],
     terms: [
       "dot-product",
       "scalar-projection",
@@ -190,7 +196,8 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
   "fl-vector-angle": {
     goal: "Find the angle between two vectors, or decide whether they are perpendicular, parallel or neither.",
     intuition:
-      "The dot product also equals the lengths times the cosine of the angle between the vectors. Solving for the cosine gives the angle. A dot product of 0 means a right angle, and when one vector is a multiple of the other the angle is $0^\\circ$ or $180^\\circ$.",
+      "The dot product of two vectors, found by multiplying matching components and adding, also equals their lengths times the cosine of the angle between them. Solving for the cosine gives the angle. For vectors other than $\\langle0,0\\rangle$, a dot product of 0 means a right angle. When one vector is a multiple of the other, they are parallel, and the angle is $0^\\circ$ or $180^\\circ$.",
+    senses: { squared: "square-number" },
     terms: [
       [
         "angle",
@@ -616,16 +623,15 @@ export const floridaGapLessons: Lesson[] = [
     title: "Convert between customary and metric units",
     summary:
       "The same length can be measured in inches or in centimeters. A conversion factor tells how the two units compare, such as “1 inch = 2.54 centimeters.” To change inches into centimeters, multiply by 2.54. To change centimeters back into inches, divide by 2.54. For any amount above 0, the smaller unit needs the bigger number.",
-    senses: { unit: "unit", "more than": "more-than" },
-    noLink: [
-      "factor",
-      "factors",
-      "square",
-      "squares",
-      "change",
-      "changes",
-      "side",
-    ],
+    senses: {
+      unit: "unit",
+      "more than": "more-than",
+      factor: "conversion-factor",
+      squares: "square-shape",
+      side: "side",
+      factors: "conversion-factor",
+    },
+    noLink: ["square", "change", "changes"],
     templateIds: ["fl-metric-customary-conversion"],
     objectives: [
       "Read a conversion factor (a statement like “1 inch = 2.54 centimeters”) and use it in either direction.",
@@ -746,27 +752,30 @@ export const floridaGapLessons: Lesson[] = [
     id: "vector-dot-product",
     title: "Dot product, angle and projection",
     summary:
-      "The dot product multiplies matching components and adds. It is 0 for perpendicular vectors and gives the angle through the cosine.",
+      "Two arrows, or vectors, can point the same way, at a right angle, or in opposite directions. One number, the dot product, measures this. Multiply matching parts of the two vectors and add. For vectors with nonzero length, the dot product is 0 exactly when they are perpendicular, and with their lengths it gives the angle between them.",
     templateIds: ["fl-vector-dot-product", "fl-vector-angle"],
+    senses: { "more than": "more-than" },
+    noLink: ["opposite", "parts", "multiple"],
     objectives: [
-      "Compute a dot product and use it to test perpendicular vectors.",
-      "Find the angle between two vectors and the scalar projection of one on another.",
+      "Compute a dot product, and use it to test whether two vectors are perpendicular.",
+      "Find the angle between two vectors, and the scalar projection of one on another.",
     ],
     intuition: [
       "How much two vectors point the same way",
       [
-        "You need to write a vector in component form $\\langle a,b\\rangle$ and find its length $\\sqrt{a^2+b^2}$. The dot product of two vectors multiplies matching components and adds. It is one number, not a vector.",
-        "The dot product is positive when the vectors point roughly the same way, 0 when they are perpendicular and negative when they point roughly opposite ways.",
+        "A vector is an arrow with a length and a direction. In component form, $\\langle a,b\\rangle$ says it moves $a$ across and $b$ up, and its length is $\\sqrt{a^2+b^2}$, written $|\\mathbf{v}|$. The dot product of $\\langle a,b\\rangle$ and $\\langle c,d\\rangle$ multiplies matching components and adds: $ac+bd$. It is one number, not a vector.",
+        "The dot product is positive when the vectors point roughly the same way, 0 when they are perpendicular (at a right angle), and negative when they point roughly opposite ways. In fact, it equals the two lengths times the cosine of the angle $\\theta$ between them, so the cosine, and then the angle, can be found from it.",
+        "Dividing the dot product by the length of $\\mathbf{v}$ gives the scalar projection of $\\mathbf{u}$ on $\\mathbf{v}$: how far $\\mathbf{u}$ reaches in the direction of $\\mathbf{v}$.",
       ],
     ],
     workedExample: {
       prompt:
         "Find the angle between $\\mathbf{u}=\\langle1,1\\rangle$ and $\\mathbf{v}=\\langle-2,0\\rangle$.",
       steps: [
-        "Dot product: $1(-2)+1(0)=-2$.",
-        "Lengths: $|\\mathbf{u}|=\\sqrt{2}$ and $|\\mathbf{v}|=2$.",
-        "$\\cos\\theta=\\frac{-2}{\\sqrt{2}\\cdot2}=-\\frac{\\sqrt{2}}{2}$.",
-        "The angle between $0^\\circ$ and $180^\\circ$ with this cosine is $135^\\circ$.",
+        "Dot product, multiplying matching components and adding: $1(-2)+1(0)=-2$.",
+        "Lengths: $|\\mathbf{u}|=\\sqrt{1^2+1^2}=\\sqrt{2}$ and $|\\mathbf{v}|=\\sqrt{(-2)^2+0^2}=2$.",
+        "The dot product equals the lengths times $\\cos\\theta$, so $\\cos\\theta=\\frac{-2}{\\sqrt{2}\\cdot2}=-\\frac{\\sqrt{2}}{2}$.",
+        "The angle between $0^\\circ$ and $180^\\circ$ with this cosine is $135^\\circ$. It is more than $90^\\circ$ because the dot product is negative.",
       ],
       answer: "$135^\\circ$",
     },
@@ -775,8 +784,8 @@ export const floridaGapLessons: Lesson[] = [
         stage: "method",
         title: "Use the dot product three ways",
         paragraphs: [
-          "Perpendicular: set $\\mathbf{u}\\cdot\\mathbf{v}=0$ and solve. Angle: compute $\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$. Scalar projection of $\\mathbf{u}$ on $\\mathbf{v}$: $\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|}$.",
-          "Parallel vectors: one is a multiple of the other, so $u_1v_2-u_2v_1=0$. The angle is $0^\\circ$ when the dot product is positive and $180^\\circ$ when it is negative.",
+          "These uses need vectors other than the zero vector $\\langle0,0\\rangle$, which has no direction. Perpendicular: set $\\mathbf{u}\\cdot\\mathbf{v}=0$ and solve. Angle: compute $\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$. Scalar projection of $\\mathbf{u}$ on $\\mathbf{v}$: $\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|}$.",
+          "Parallel vectors point along the same line: one is a multiple of the other, so $u_1v_2-u_2v_1=0$, where $u_1$ and $u_2$ are the components of $\\mathbf{u}$. The angle is $0^\\circ$ when the dot product is positive and $180^\\circ$ when it is negative.",
         ],
       },
       {

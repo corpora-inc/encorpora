@@ -6,8 +6,8 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Read the percent change per time period from the base of an exponential model, or build a model from a half-life.",
     intuition:
       "An exponential model multiplies an amount by the same number once in every time period. In $y=a\\cdot b^{t}$, $a$ is the starting amount and $t$ counts the periods. The number $b$ is called the base: it is what the amount is multiplied by each period. The small raised $t$ is called the exponent. It counts how many times the amount has been multiplied by $b$. A percent is a number out of 100, so 0.038 is 3.8%. A base of 1.038 keeps all of the amount and adds 3.8% of it, because $1.038=1+0.038$. A base of 0.85 keeps 85% of the amount, so 15% is lost. A half-life is the time it takes for half of an amount to be gone.",
-    senses: { base: "base-exponent" },
-    noLink: ["model", "period", "periods"],
+    senses: { base: "base-exponent", model: "model" },
+    noLink: ["period", "periods"],
     terms: [
       [
         "base-exponent",
@@ -252,8 +252,9 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
       similar: "similar-figures",
       square: "square-shape",
       squared: "square-number",
+      "opposite side": "opposite-side-angle",
     },
-    noLink: ["opposite", "opposite side", "whole", "part", "rule"],
+    noLink: ["opposite", "whole", "part", "rule"],
     terms: ["altitude", "geometric-mean"],
     method: [
       "Name the given leg, the whole hypotenuse and the part of the hypotenuse next to that leg.",
@@ -321,9 +322,8 @@ export const regentsGapLessons: Lesson[] = [
     title: "Read the percent change from an exponential base",
     summary:
       "An exponential model multiplies an amount by the same number once every time period. That number is called the base. A percent is a number out of 100. The percent change is how much the amount grows or shrinks for every 100 it had. Compare the base with 1 to find it. A base of 1.05 means the amount grows by 5% each period. A base of 0.95 means it shrinks by 5% each period.",
-    senses: { base: "base-exponent" },
+    senses: { base: "base-exponent", model: "model" },
     noLink: [
-      "model",
       "period",
       "periods",
       "population",
@@ -809,16 +809,9 @@ export const regentsGapLessons: Lesson[] = [
       square: "square-shape",
       base: "base-shape",
       unit: "unit",
+      "opposite side": "opposite-side-angle",
     },
-    noLink: [
-      "whole",
-      "part",
-      "parts",
-      "mode",
-      "product",
-      "opposite",
-      "opposite side",
-    ],
+    noLink: ["whole", "part", "parts", "mode", "product", "opposite"],
     templateIds: [
       "rg-isosceles-right-decimal",
       "rg-triangle-area-sas",

@@ -1,6 +1,56 @@
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
+const GEO_SENSES = {
+  side: "side",
+  vertex: "vertex",
+  degrees: "degree-angle",
+  "corresponding angles": "corresponding-angles",
+  similar: "similar-figures",
+  image: "image-transformation",
+  center: "center",
+  radius: "radius",
+  plane: "plane",
+  base: "base-shape",
+  face: "face-solid",
+  edge: "edge",
+  solid: "solid-shape",
+  unit: "unit",
+  tangent: "tangent-line",
+  squared: "square-number",
+  multiple: "multiple",
+  "one third": "third",
+} as const;
+const GEO_NOLINK = [
+  "opposite",
+  "part",
+  "parts",
+  "rule",
+  "rules",
+  "third",
+  "whole",
+  "change",
+  "changes",
+  "square",
+  "squares",
+  "factor",
+  "factors",
+  "more than",
+  "leaves",
+  "mean",
+  "product",
+  "term",
+  "terms",
+  "scale",
+  "prime",
+  "opposite side",
+  "thirds",
+  "certain",
+  "quarter",
+  "one quarter",
+  "root",
+];
+
 const plane: Lesson["sections"][number] = {
   stage: "intuition",
   title: "Points on the coordinate plane",
@@ -13,7 +63,7 @@ const motionTerms: Lesson["sections"][number] = {
   stage: "intuition",
   title: "Transformations and images",
   paragraphs: [
-    "A transformation moves every point of the plane to a new point. The figure before the move is the pre-image; the figure after it is the image. The image of a point $A$ is named $A'$, read “A prime”, so the image of triangle $ABC$ is triangle $A'B'C'$, and $A'$ is the image of $A$.",
+    "A transformation sends every point of the coordinate plane to a point, which may be a new one or the same one. The figure before the move is the pre-image; the figure after it is the image. The image of a point $A$ is named $A'$, read “A prime”, so the image of triangle $ABC$ is triangle $A'B'C'$, and $A'$ is the image of $A$.",
     "A rigid motion moves a figure without stretching or bending it: every length and every angle stays the same, so the image is congruent to the pre-image, an exact copy in a new position. A translation slides, a reflection flips across a line, and a rotation turns around a fixed point. Each is a rigid motion.",
   ],
 };
@@ -23,8 +73,10 @@ export const transformationLessons: Lesson[] = [
     id: "coordinate-polygons",
     title: "Side lengths, perimeter and area from coordinates",
     summary:
-      "A side whose endpoints share one coordinate is horizontal or vertical; its length is the distance between the other coordinates.",
+      "Points on a grid are named by two numbers, their coordinates. When two corners share one coordinate, the side between them is flat (horizontal) or straight up and down (vertical). Its length is the distance between the other two coordinates. From those lengths you get a rectangle's perimeter, the distance around, and its area, the space inside.",
     templateIds: ["coordinate-side-length", "coordinate-rectangle-measure"],
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     includeGeneratedRepresentation: false,
     objectives: [
       "Recognize horizontal and vertical sides from the coordinates of their endpoints.",
@@ -88,8 +140,10 @@ export const transformationLessons: Lesson[] = [
     id: "coordinate-distance",
     title: "Distance between two points",
     summary:
-      "A slanted segment between two grid points completes a right triangle. Its straight-line length comes from the horizontal and vertical changes.",
+      "Two points on a grid can be joined by a slanted segment. Going across and then up makes a right triangle, with the segment as its longest side. The Pythagorean theorem, $a^2+b^2=c^2$, then gives the segment's length from the distance across and the distance up. From $(-3,-1)$ to $(5,5)$ is 8 across and 6 up, so the length is 10.",
     templateIds: ["coordinate-distance", "coordinate-distance-exact"],
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     includeGeneratedRepresentation: false,
     objectives: [
       "Find the horizontal and vertical legs of the right triangle under a segment.",
@@ -101,8 +155,8 @@ export const transformationLessons: Lesson[] = [
         stage: "intuition",
         title: "A right triangle under every segment",
         paragraphs: [
-          "A right triangle has one right angle, a square corner. The two sides that form the right angle are the legs, and the longest side, opposite the right angle, is the hypotenuse. The Pythagorean theorem says that for every right triangle, leg² + leg² = hypotenuse².",
-          "From $A(−3, −1)$, move horizontally to (5, −1), then vertically to $B(5, 5)$. These moves are the legs of a right triangle whose hypotenuse is $AB$. The horizontal leg is the change in x: 5 − (−3) = 8. The vertical leg is the change in y: 5 − (−1) = 6. So $AB^2 = 8^2 + 6^2 = 64 + 36 = 100$, and $AB = 10$, because 10 × 10 = 100.",
+          "A right triangle has one right angle, a square corner. The two sides that form the right angle are the legs, and the longest side, opposite the right angle, is the hypotenuse. Squared means multiplied by itself: $8^2=8\\times8=64$. The Pythagorean theorem says that for every right triangle, leg² + leg² = hypotenuse².",
+          "From $A(−3, −1)$, move horizontally to (5, −1), then vertically to $B(5, 5)$. These moves are the legs of a right triangle whose hypotenuse is $AB$. The horizontal leg is as long as the change in $x$: 5 − (−3) = 8. The vertical leg is as long as the change in $y$: 5 − (−1) = 6. A change can come out negative when you move left or down. A length is never negative, so a leg is the size of its change, without the minus sign. So $AB^2 = 8^2 + 6^2 = 64 + 36 = 100$, and $AB = 10$, because 10 × 10 = 100.",
         ],
         illustration: "distance-triangle",
       },
@@ -117,7 +171,7 @@ export const transformationLessons: Lesson[] = [
     workedExample: {
       prompt: "What is the distance between the points (−3, −1) and (5, 5)?",
       steps: [
-        "The horizontal leg is the change in x: 5 − (−3) = 8. The vertical leg is the change in y: 5 − (−1) = 6.",
+        "The horizontal leg is as long as the change in $x$: 5 − (−3) = 8. The vertical leg is as long as the change in $y$: 5 − (−1) = 6.",
         "By the Pythagorean theorem, the distance squared is 8² + 6² = 64 + 36 = 100.",
         "The distance is √100 = 10, because 10 × 10 = 100.",
       ],
@@ -146,8 +200,10 @@ export const transformationLessons: Lesson[] = [
     id: "rigid-motions",
     title: "Translations, reflections and rotations",
     summary:
-      "A rigid motion moves a figure while keeping every length and angle unchanged. A slide, flip, or turn sends each point to a new point by one coordinate rule.",
+      "A rigid motion moves a figure without changing any length or angle. The three basic kinds are a slide (translation), a flip across a line (reflection) and a turn about a point (rotation). On a grid, each one follows a coordinate rule, such as $(x, y)\\to(x-6, y+2)$ for a slide 6 left and 2 up.",
     templateIds: ["transformation-image", "identify-rigid-motion"],
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     includeGeneratedRepresentation: false,
     objectives: [
       "Find image coordinates under a translation, a reflection over an axis and a rotation of 90° or 180° about the origin.",
@@ -160,15 +216,15 @@ export const transformationLessons: Lesson[] = [
         title: "Three motions and their rules",
         paragraphs: [
           "A translation slides every point the same distance in the same direction. Moving 6 units left and 2 units up subtracts 6 from every $x$-coordinate and adds 2 to every $y$-coordinate: $(x, y) \\to (x - 6, y + 2)$.",
-          "A reflection over a line flips the figure across it, like a mirror image: each point moves straight across the line, at a right angle to it, to the same distance on the other side. Over the $x$-axis, $x$ stays and $y$ changes sign: ($x$, $y$) → (x, −y). Over the $y$-axis, ($x$, $y$) → (−x, y).",
-          "A rotation turns the figure about a fixed point, the center, keeping every point's distance from the center. A half turn (180°) about the origin sends each point to the opposite side: $(x, y)$ → (−x, −y). A quarter turn (90°) counterclockwise sends the point (1, 0) to (0, 1) and (0, 1) to (−1, 0), so $(x, y)$ → (−y, x). A quarter turn clockwise is ($x$, $y$) → (y, −x).",
+          "A reflection over a line flips the figure across it, like a mirror image: each point moves straight across the line, at a right angle to it. It lands the same distance away on the other side, and points on the line stay put. Over the $x$-axis, $x$ stays and $y$ changes sign: ($x$, $y$) → (x, −y). Over the $y$-axis, ($x$, $y$) → (−x, y).",
+          "A rotation turns the figure about a fixed point, called the center, keeping every point's distance from the center. A half turn (180°) about the origin sends each point to the opposite side: $(x, y)$ → (−x, −y). A quarter turn (90°) counterclockwise sends the point (1, 0) to (0, 1) and (0, 1) to (−1, 0), so $(x, y)$ → (−y, x). A quarter turn clockwise is ($x$, $y$) → (y, −x).",
         ],
         illustration: "rigid-motions-panels",
       },
       {
         title: "Identify a motion by checking every vertex",
         paragraphs: [
-          "Labels tell which vertex went where: $A$ goes to $A'$, $B$ to $B'$ and $C$ to $C'$. Write each pair, such as (1, 1) → (−1, 1), and look for one rule that fits all three. If $x$ and $y$ swap places and one changes sign, it is a quarter turn; if only one coordinate changes sign, it is a reflection; if both change sign, it is a half turn; if the same amounts are added to every vertex, it is a translation.",
+          "Labels tell which vertex went where: $A$ goes to $A'$, $B$ to $B'$ and $C$ to $C'$. Write each pair, such as (1, 1) → (−1, 1), and look for one rule that fits all three. For turns about the origin and flips across the axes: if $x$ and $y$ swap places and one changes sign, it is a quarter turn; if only one coordinate changes sign, it is a reflection; if both change sign, it is a half turn; if the same amounts are added to every vertex, it is a translation.",
           "Checking one vertex is not enough. A translation can always carry $A$ onto $A'$, and a reflection can match a vertex that lies near an axis. The motion is the one rule that carries all three vertices onto their images.",
         ],
       },
@@ -205,12 +261,14 @@ export const transformationLessons: Lesson[] = [
     id: "dilations-similarity",
     title: "Dilations and similar triangles",
     summary:
-      "A dilation resizes a figure from a center by one positive scale factor, keeping angles. Similar figures have the same shape: matched sides share that scale ratio.",
+      "A dilation resizes a figure from a fixed point, called the center: every distance from the center is multiplied by the same positive number, the scale factor. Every length is multiplied by the same number and every angle stays the same, so the shape stays the same. Figures with the same shape are called similar. Each side of one is the scale factor times the matching side of the other.",
     templateIds: [
       "dilation-image",
       "dilation-scale-factor",
       "similar-triangles-side",
     ],
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     includeGeneratedRepresentation: false,
     objectives: [
       "Find image coordinates and scale factors of dilations centered at the origin.",
@@ -222,13 +280,13 @@ export const transformationLessons: Lesson[] = [
         stage: "intuition",
         title: "One scale for every matched side",
         paragraphs: [
-          "A dilation uses a positive multiplier $k$ to move each point farther from or closer to its center. If $k=2$, every side becomes twice as long while the angles stay equal. Figures related by a dilation and a rigid motion are similar. Their corresponding sides match the same corners, and each image side is $k$ times its matching original side.",
+          "A dilation multiplies each point's distance from a fixed center by a positive number $k$, the scale factor. If $k$ is more than 1, points move away from the center. If $k$ is between 0 and 1, they move closer, and if $k=1$, nothing moves. If $k=2$, every side becomes twice as long, while every angle (the opening at a corner) stays the same size. The new figure is called the image. A rigid motion is a slide, flip or turn, which changes no lengths. Two figures are called similar when a dilation, maybe followed by a rigid motion, carries one onto the other. Corresponding sides are sides in matching positions: they join matching corners. Each side of the image is $k$ times its corresponding original side.",
         ],
       },
       {
         title: "Dilations change size, not shape",
         paragraphs: [
-          "A dilation with center $O$ and scale factor $k$ moves every point $P$ along the ray from $O$ through $P$, to the point $P'$ whose distance from $O$ is $k$ times the distance $OP$. With the center at the origin, both coordinates are multiplied by $k$: ($x$, $y$) → (kx, ky).",
+          "A dilation with center $O$ and scale factor $k$ moves every point $P$ along the ray from $O$ through $P$. A ray is a straight path that starts at one point and goes on forever in one direction. The image of $P$ is named $P'$, read “$P$ prime”, and its distance from $O$ is $k$ times the distance $OP$. With the center at the origin, $(0, 0)$, each coordinate is a distance across or up from the center, so both coordinates are multiplied by $k$. The arrow means “goes to”: $(x, y) \\to (kx, ky)$.",
           "In the figure, triangle $ABC$ with $A(2, 1)$, $B(4, 1)$ and $C(2, 3)$ is dilated by 2. The images are $A'(4, 2)$, $B'(8, 2)$ and $C'(4, 6)$, each on the ray from the origin through its point. Every side of the image is 2 times as long, and every angle is unchanged. A scale factor greater than 1 enlarges; one between 0 and 1 reduces.",
           "To find the scale factor from coordinates, divide one image coordinate by its matching original coordinate only when that original coordinate is nonzero. For $A(2,1)$ and $A'(4,2)$, $k=4\\div2=2$.",
         ],
@@ -238,7 +296,7 @@ export const transformationLessons: Lesson[] = [
         title: "Similar figures and corresponding sides",
         paragraphs: [
           "Two figures are similar when one can be carried onto the other by rigid motions and a dilation. Similar figures have the same shape: corresponding angles are equal, and every side of one is the same number of times its corresponding side in the other. That number is the scale factor.",
-          "Triangle $ABC$ ∼ triangle $DEF$ means $A$ corresponds to $D$, $B$ to $E$ and $C$ to $F$, so side $AB$ corresponds to $DE$, $BC$ to $EF$ and $CA$ to $FD$. In the figure, $AB = 4$ and $DE = 6$, so the scale factor from $ABC$ to $DEF$ is 6 ÷ 4 = 3/2. Then $EF = 6 × 3/2 = 9$ and $FD = 5 × 3/2 = 7.5$. Equal numbers of arcs mark corresponding angles.",
+          "The sign ∼ means “is similar to”. Triangle $ABC$ is the triangle with corners $A$, $B$ and $C$, and $AB$ names the side from $A$ to $B$, or its length. Triangle $ABC$ ∼ triangle $DEF$ matches the letters in order: $A$ with $D$, $B$ with $E$ and $C$ with $F$. So side $AB$ corresponds to $DE$, $BC$ to $EF$ and $CA$ to $FD$. In the figure, $AB = 4$ and $DE = 6$, so the scale factor from $ABC$ to $DEF$ is 6 ÷ 4 = 3/2. Then $EF = 6 × 3/2 = 9$ and $FD = 5 × 3/2 = 7.5$. In the figure, small curves drawn in the corners, called arcs, mark corresponding angles: equal numbers of arcs mean equal angles.",
         ],
         illustration: "similar-triangles-marked",
       },
@@ -247,9 +305,9 @@ export const transformationLessons: Lesson[] = [
       prompt:
         "Triangle $ABC$ is similar to triangle $DEF$, with $A$ corresponding to $D$, $B$ corresponding to $E$ and $C$ corresponding to $F$. In centimeters, $AB = 4$, $BC = 6$, $CA = 5$ and $DE = 6$. What is $EF$, in centimeters?",
       steps: [
-        "Corresponding sides join corresponding vertices: $AB$ ↔ $DE$, $BC$ ↔ $EF$ and $CA$ ↔ $FD$.",
-        "The scale factor from $ABC$ to $DEF$ is $DE ÷ AB = 6 ÷ 4 = 3/2$.",
-        "$EF = BC × 3/2 = 6 × 3/2 = 9$.",
+        "Corresponding sides join corresponding vertices (corners). The arrow ↔ means “matches”: $AB$ ↔ $DE$, $BC$ ↔ $EF$ and $CA$ ↔ $FD$.",
+        "The scale factor from $ABC$ to $DEF$ is the number that multiplies each side of $ABC$ to give its match in $DEF$. So divide the new length by the old one: $DE ÷ AB = 6 ÷ 4 = 3/2$.",
+        "$EF$ corresponds to $BC$, so multiply $BC$ by the same scale factor: $EF = BC × 3/2 = 6 × 3/2 = 9$.",
       ],
       answer: "9",
       answerUnit: "cm",
@@ -260,15 +318,15 @@ export const transformationLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "For a positive scale factor $k$, a dilation centered at the origin sends $(x,y)$ to $(kx,ky)$.",
-          "Such a dilation multiplies every distance by $k$ and preserves every angle; $k>1$ enlarges and $0<k<1$ reduces the figure.",
+          "Such a dilation multiplies every distance by $k$ and keeps every angle. It enlarges the figure when $k>1$ ($k$ is greater than 1) and reduces it when $0<k<1$ ($k$ is between 0 and 1).",
           "In similar triangles, every side of one is the same multiple, the scale factor, of its corresponding side in the other.",
         ],
       },
     ],
     pitfalls: [
-      "A dilation multiplies coordinates by the scale factor; adding the scale factor slides the figure instead.",
+      "A dilation centered at the origin multiplies coordinates by the scale factor. Adding the scale factor would slide the figure instead.",
       "Match sides by vertex order, not by position on the page: $BC$ corresponds to $EF$ when $B$ ↔ $E$ and $C$ ↔ $F$.",
-      "The scale factor from the image back to the original is the reciprocal: 2/3, not 3/2, from $DEF$ to $ABC$.",
+      "Going back from the image to the original, use the reciprocal, the fraction flipped upside down. From $DEF$ to $ABC$ the scale factor is 2/3, not 3/2.",
     ],
     parentGuide:
       "Photocopy a picture at 150% and measure one length in both copies. Ask which number multiplies every length, and check it on a second length.",
@@ -277,8 +335,10 @@ export const transformationLessons: Lesson[] = [
     id: "scale-drawings",
     title: "Scale drawings",
     summary:
-      "Every length on a scale drawing is multiplied by the same number to give the actual length; every area by that number squared.",
+      "A scale drawing is an accurate picture of a real object, drawn smaller or larger. Every real length is the same number times its length on the drawing. Areas are multiplied by that number times itself, because an area has two directions.",
     templateIds: ["scale-drawing"],
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     includeGeneratedRepresentation: false,
     objectives: [
       "Use a scale to convert lengths from a drawing to actual lengths and back.",
@@ -328,13 +388,17 @@ export const transformationLessons: Lesson[] = [
       "Keep the units straight: drawing lengths are in the drawing's unit, actual lengths in the real unit.",
     ],
     parentGuide:
-      "Measure a room with a tape measure and draw it on graph paper with one square for each meter. Count the squares for the area, then check against the measured length times width.",
+      "Measure a room with a tape measure and draw it on graph paper with one square for each meter. For a rectangular room, count the squares for the area, then check against the measured length times width.",
   },
 ];
 
 export const transformationMethods: Record<string, ProblemMethod> = {
   "coordinate-side-length": {
     goal: "Find the length of a horizontal or vertical side from its endpoints' coordinates.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "A grid has two number lines, the axes: the $x$-axis across and the $y$-axis up and down. They cross at the origin, $(0, 0)$. A point $(x, y)$ is $x$ grid steps (units) across and $y$ units up from the origin. Negative numbers mean left or down. The first number is the $x$-coordinate and the second is the $y$-coordinate. Two points with the same $y$-coordinate lie on one horizontal (flat) line. Two with the same $x$-coordinate lie on one vertical (straight up and down) line. The side's length is the distance between the coordinates that differ. If both are on the same side of 0, subtract the smaller distance from 0 from the larger: from 2 to 7 is $7-2=5$. If they are on opposite sides, the side passes through 0, so add the two distances: from $-4$ to 5 is $4+5=9$.",
     terms: [
       [
         "side",
@@ -346,13 +410,17 @@ export const transformationMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Find the coordinate the endpoints share; the other coordinates change.",
+      "Find the coordinate the two endpoints (the ends of the side) share. The other coordinates change along the side.",
       "Same side of 0: subtract their distances from 0. Opposite sides: add them.",
     ],
     watch: "Across an axis, add the distances from 0: from −4 to 5 is 9.",
   },
   "coordinate-rectangle-measure": {
     goal: "Find a rectangle's perimeter or area from its vertices.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "A point $(x, y)$ is $x$ units across and $y$ units up from the origin, $(0, 0)$; negative numbers mean left or down. The first number is the $x$-coordinate and the second is the $y$-coordinate. A rectangle has four square corners, and its opposite sides are equal. When its sides are horizontal (flat) and vertical (straight up and down), a horizontal side gives the width and a vertical side gives the height. Its perimeter, the distance around, adds two widths and two heights: a rectangle 3 wide and 2 tall has perimeter $3+2+3+2=10$. Add width and height first, then double: $2\\times(\\text{width}+\\text{height})$. Its area is the number of unit squares inside, squares 1 unit on each side. It is $\\text{width}\\times\\text{height}$, so $3\\times2=6$ square units.",
     terms: ["perimeter", "area"],
     method: [
       "Find the width from a horizontal side and the height from a vertical side.",
@@ -362,10 +430,14 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "coordinate-distance": {
     goal: "Find the distance between two points with the Pythagorean theorem.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "The hypotenuse is the longest side of a right triangle, across from its square corner. A slanted segment between two grid points is the hypotenuse of one. The other two sides are the legs. Their lengths are the change in $x$ (across) and the change in $y$ (up or down), without any minus sign, because a length is never negative. The Pythagorean theorem is the rule $\\text{leg}^2+\\text{leg}^2=\\text{hypotenuse}^2$, where the raised 2 means a number times itself. Squaring makes a negative change positive, so the sign does not matter there. So square the two changes, add them, and take the square root: the number, 0 or more, whose square is that sum.",
     terms: [
       [
         "leg",
-        "Here the legs are the changes in $x$ and in $y$, which meet at a right angle.",
+        "Here the legs are the across and up-or-down sides, which meet at a right angle. Their lengths are the changes in $x$ and in $y$, without any minus sign.",
       ],
       "hypotenuse",
     ],
@@ -377,25 +449,34 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "coordinate-distance-exact": {
     goal: "Find an exact distance as a whole number or a simplified square root.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "The hypotenuse is the longest side of a right triangle, across from its square corner. A slanted segment between two grid points is the hypotenuse of one. Its legs are as long as the change in $x$ and the change in $y$, without any minus sign, because a length is never negative. By the Pythagorean theorem, the distance squared, the distance times itself, is the sum of the two changes squared. The distance is the square root of that sum: the number, 0 or more, whose square is the sum. When the sum is not a perfect square, a whole number times itself, such as 20, keep the root and simplify it: $\\sqrt{20}=\\sqrt{4\\times5}=2\\sqrt{5}$, because $\\sqrt{4}=2$.",
     terms: [
       [
         "distance",
-        "An exact distance keeps the square root, such as $\\sqrt{20}$, instead of a decimal estimate.",
+        "An exact distance is not rounded: write $\\sqrt{20}$, not a decimal such as 4.47.",
       ],
       "simplest-radical-form",
     ],
     method: [
       "Find the change in $x$ and the change in $y$.",
       "The distance squared is the sum of their squares.",
-      "Take the square root and remove square factors: √(a² × b) = a√b.",
+      "Take the square root and remove square factors: √(a² × b) = a√b for whole numbers $a$ and $b$.",
     ],
-    watch: "Subtracting a negative coordinate adds to the leg.",
+    watch:
+      "Subtracting a negative coordinate adds: from $-3$ to 5 the change is $5-(-3)=8$.",
   },
   "transformation-image": {
     goal: "Find where a vertex lands after a translation, reflection or rotation.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "A transformation sends every point to a point, called the image, which may be new or the same. The image is named with a prime mark: $A'$, read “$A$ prime”. A translation slides every point the same way: $(x,y)\\to(x+a,y+b)$. A reflection over the $x$-axis changes the sign of $y$, so $(x,y)\\to(x,-y)$, and over the $y$-axis it changes the sign of $x$. A half turn about the origin changes both signs. A quarter turn counterclockwise about the origin sends $(x,y)$ to $(-y,x)$.",
     terms: ["image-transformation", "rigid-motion"],
     method: [
-      "Write the motion's coordinate rule: a translation adds, a reflection changes one sign, a rotation swaps or negates.",
+      "Write the motion's coordinate rule: a translation adds the same amounts, a reflection over an axis changes one sign, and a quarter or half turn about the origin changes signs or swaps $x$ and $y$.",
       "Apply the rule to the vertex's coordinates.",
       "Check the image on the grid: it should sit where the motion carries the point.",
     ],
@@ -403,6 +484,10 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "identify-rigid-motion": {
     goal: "Name the single motion that carries a triangle onto its labeled image.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "A rigid motion, such as a slide, flip or turn, moves a figure without changing lengths or angles. Matching labels show where each corner went: $A$ goes to $A'$, read “$A$ prime”. One rule must fit all three corners. For turns about the origin, the point $(0,0)$, and flips across the axes, one sign change is a flip, and both signs changing is a half turn. Swapping $x$ and $y$ with one sign change is a quarter turn.",
     terms: ["corresponding"],
     method: [
       "Pair each vertex with its image.",
@@ -412,6 +497,10 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "dilation-image": {
     goal: "Find a vertex's image under a dilation centered at the origin.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "A point's coordinates are its two numbers $(x, y)$: how far across, then how far up, from the origin, the point $(0,0)$ where the axes cross. A dilation centered at the origin resizes a figure from that point. It multiplies both coordinates of every point by the same positive number, the scale factor. With scale factor 2, the point $(3,1)$ goes to $(6,2)$. The moved point is called the image. Each image point lies on the ray from the origin through the original point: the straight path that starts at the origin and goes on forever through that point.",
     terms: ["scale-factor"],
     method: [
       "Find the scale factor and the vertex asked about.",
@@ -422,18 +511,26 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "dilation-scale-factor": {
     goal: "Find the scale factor of a dilation centered at the origin.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "A point's coordinates are its two numbers $(x, y)$: how far across, then how far up, from the origin, the point $(0,0)$ where the axes cross. A dilation centered at the origin multiplies both coordinates of every point by the same positive number, the scale factor. The moved point is called the image. So the scale factor is an image coordinate divided by the matching original coordinate, using one that is not 0. A scale factor above 1 enlarges, and one between 0 and 1 shrinks.",
     terms: [
       ["dilation", "An enlargement has a scale factor greater than 1."],
       ["dilation", "A reduction has a scale factor between 0 and 1."],
     ],
     method: [
-      "Divide an image coordinate by the matching original coordinate.",
+      "Divide an image coordinate by the matching original coordinate, choosing one that is not 0.",
       "Check the factor on another vertex.",
     ],
     watch: "Divide image by original, not original by image.",
   },
   "similar-triangles-side": {
     goal: "Find a missing side of similar triangles.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "Two triangles are called similar when they have the same shape: every side of one is the same number, the scale factor, times its matching side in the other. Triangle $ABC$, written $\\triangle ABC$, has corners $A$, $B$ and $C$, and $BC$ is the side from $B$ to $C$. The sign $\\sim$ means “is similar to”. In $\\triangle ABC\\sim\\triangle DEF$, the letters match in order: $A$ with $D$, $B$ with $E$, and $C$ with $F$. So side $BC$ matches side $EF$.",
     terms: ["similar-figures", "corresponding"],
     method: [
       "Pair the sides by vertex order.",
@@ -444,6 +541,10 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "scale-drawing": {
     goal: "Convert between a scale drawing and real lengths or areas.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
+    intuition:
+      "A scale drawing is an accurate picture of an object, drawn smaller or larger. Its scale says how drawing lengths compare with real lengths, such as 1 cm for every 5 m. Every real length is the same multiple of its drawing length. An area has two directions, so areas are multiplied by that number times itself.",
     terms: ["scale"],
     method: [
       "Drawing to actual: multiply lengths by the scale; actual to drawing: divide.",

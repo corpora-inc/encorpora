@@ -35,8 +35,8 @@ export const functionToolkitLessons: Lesson[] = [
       "A function is a rule that turns each input (the number you put in) into exactly one output (the number you get back). A piecewise function uses different rules for different inputs. For example, with input $x$: use $2x + 1$ when $x$ is less than 2, but use $-x + 6$ when $x$ is 2 or more. First find which rule your input belongs to. Then use that rule alone.",
     templateIds: ["piecewise-evaluate", "piecewise-reading"],
     includeGeneratedRepresentation: false,
-    senses: PIECE_SENSES,
-    noLink: PIECE_NO_LINK,
+    senses: { ...PIECE_SENSES, rule: "rule", rules: "rule" },
+    noLink: PIECE_NO_LINK.filter((w) => !["rule", "rules"].includes(w)),
     objectives: [
       "Find the output of a piecewise function for any input, including the inputs where the rule changes.",
       "Read a piecewise graph: open circles, filled dots, and the rule for each piece.",
@@ -330,8 +330,8 @@ export const functionToolkitLessons: Lesson[] = [
 export const functionToolkitMethods: Record<string, ProblemMethod> = {
   "piecewise-evaluate": {
     goal: "Find the output of a function that uses different rules for different inputs.",
-    senses: PIECE_SENSES,
-    noLink: PIECE_NO_LINK,
+    senses: { ...PIECE_SENSES, rules: "rule", rule: "rule" },
+    noLink: PIECE_NO_LINK.filter((w) => !["rule", "rules"].includes(w)),
     intuition:
       "A function gives each input one output; $f(x)$, read “$f$ of $x$”, is the output for input $x$. A piecewise function uses different rules for different inputs. A condition next to each rule, such as $x < 2$ or $x \\ge 2$, says which inputs use it. The sign $\\le$ means “less than or equal to” and $\\ge$ means “greater than or equal to”.",
     terms: ["piecewise-function"],
@@ -345,8 +345,8 @@ export const functionToolkitMethods: Record<string, ProblemMethod> = {
   },
   "piecewise-reading": {
     goal: "Read a piecewise function: rewrite an absolute value in pieces, find a piece's rule, or count solutions.",
-    senses: PIECE_SENSES,
-    noLink: PIECE_NO_LINK,
+    senses: { ...PIECE_SENSES, rule: "rule", rules: "rule" },
+    noLink: PIECE_NO_LINK.filter((w) => !["rule", "rules"].includes(w)),
     intuition:
       "A piecewise function uses different rules for different inputs, and its graph is made of pieces. A filled dot belongs to the graph; an open circle does not. The absolute value is a number's distance from 0, written with bars: $|-3| = 3$. So $|x - h|$ is one rule where $x - h$ is 0 or more, and another where it is negative.",
     method: [

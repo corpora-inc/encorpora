@@ -350,7 +350,7 @@ function similarCase(r: Random): Case {
       }`,
       answer,
       explanation: [
-        "The symbol ∥ means parallel: the segments never meet. Where $AB$ crosses the parallel segments, the corresponding angles (in matching positions) at $D$ and $B$ are equal. So are the angles at $E$ and $C$.",
+        "The symbol ∥ means parallel: the segments point in the same direction, so the lines through them never meet. Where $AB$ crosses the parallel segments, the corresponding angles (in matching positions) at $D$ and $B$ are equal. So are the angles at $E$ and $C$.",
         "Angle $A$ is in both triangles too. Equal angles make triangle $ADE$ similar to triangle $ABC$: a smaller copy with the same shape.",
         `Match the small triangle's side $AD$ with the big triangle's whole side $AB$, not the piece $DB$. $AB = AD + DB = ${ad} + ${db} = ${ab}$.`,
         `The scale factor from $ABC$ down to $ADE$ is ${ad} ÷ ${ab} = ${frac(q(ad, ab))}. Every side of $ADE$ is that fraction of the matching side of $ABC$.`,

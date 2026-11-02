@@ -23,7 +23,8 @@ export const regentsAlgebraOneFigureMethods: Record<string, ProblemMethod> = {
     goal: "Use the vertical line test to decide which graph shows a function.",
     intuition:
       "A function is a rule that turns each input, the number you put in, into exactly one output, the number you get out. On a graph, the input is the position left or right, and the output is the height. A vertical line is a line straight up and down. If some vertical line touches a graph in two places, one input has two outputs, so the graph is not a function. At most means no more than: at most once is once or not at all.",
-    noLink: ["more than", "rule", "side"],
+    senses: { rule: "rule" },
+    noLink: ["more than", "side"],
     terms: [
       "vertical-line-test",
       [

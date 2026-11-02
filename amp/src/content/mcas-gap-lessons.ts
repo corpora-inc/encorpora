@@ -875,8 +875,9 @@ export const mcasGapLessons: Lesson[] = [
       factor: "factor-number",
       factors: "factor-number",
       product: "product-multiply",
+      rule: "rule",
     },
-    noLink: ["opposite", "rule", "part", "parts"],
+    noLink: ["opposite", "part", "parts"],
     templateIds: [
       "mcas-table-intercept-select",
       "mcas-quadratic-zeros-select",

@@ -6,12 +6,44 @@ import {
   generateSatGeometryDataProblem,
 } from "../math/sat-geometry-data-practice";
 
-type Instruction = ProblemMethod & { intuition: string; principle: string };
+type Instruction = ProblemMethod & {
+  intuition: string;
+  principle: string;
+  /** The reference lesson's short plain opening. */
+  summary: string;
+  objectives: [string, string];
+  /** The reference lesson's intuition section, before the worked example. */
+  explain: { title: string; paragraphs: string[] };
+  parentGuide: string;
+};
 const instruction: Record<string, Instruction> = {
   "trig-context-triangle": {
-    goal: "Turn a described situation into a right triangle, then find a side or an angle with a trigonometric ratio.",
+    goal: "Turn a described situation into a right triangle, then find a side or an angle with sine, cosine or tangent.",
+    summary:
+      "A ladder against a wall makes a right triangle with the wall and the ground: a triangle with a square corner. So does a ramp, or your line of sight, the straight line from your eye to what you look at. An angle measures the turn between two sides that meet. If you know one of the other two angles and one side, you can find the other sides. A ratio is one length divided by another. Trigonometry is the math of these ratios. It uses three ratios of the triangle's sides, and each one depends only on the chosen angle.",
+    objectives: [
+      "Draw a described situation as a right triangle and name its sides from a given angle.",
+      "Find a side or an angle with sine, cosine or tangent.",
+    ],
     intuition:
-      "A ladder against a wall, a ramp, a shadow and a line of sight all make a right triangle with the ground or a level line. In a right triangle, the sides have fixed ratios once an acute angle is known. The side across from the angle is opposite it, the other side touching the angle is adjacent to it, and the longest side, across from the right angle, is the hypotenuse. An angle of elevation is measured upward from a level line. An angle of depression is measured downward from a level line.",
+      "Angles are measured in degrees, written with a small raised circle. A right triangle has one right angle, a square corner of $90^\\circ$ (90 degrees). The legs are the two sides that form the right angle. The other two angles are acute, which means smaller than $90^\\circ$. Pick one acute angle and call it $\\theta$, the Greek letter theta. The hypotenuse is the longest side, across from the right angle. The opposite side is the side across from $\\theta$. The adjacent side is the leg that touches $\\theta$. The hypotenuse touches $\\theta$ too, but it is not a leg. A ratio is one side length divided by another. Sine means opposite ÷ hypotenuse. Cosine means adjacent ÷ hypotenuse. Tangent means opposite ÷ adjacent. We write $\\tan 52^\\circ$ for the tangent of a $52^\\circ$ angle. A calculator in degree mode, its setting for angles measured in degrees, gives its value. An angle of elevation is the angle measured up from a level line. An angle of depression is the angle measured down from a level line. Parallel lines are lines in the same flat surface that never meet, like a level line at the top and the level ground below. The line of sight crosses both at the same slant. That is why an angle of depression from the top equals the angle of elevation from the bottom. Capital letters label corners: triangle $ABC$ has corners $A$, $B$ and $C$, and $AC$ is the side joining $A$ and $C$. To find an angle from two sides, work backward with the inverse tangent, written $\\tan^{-1}$. It takes opposite ÷ adjacent and gives back the angle. Here the raised $-1$ means “undo the tangent”. Height means how far up something reaches. The sign $\\approx$ means “is about equal to”. Rounding to the nearest tenth means choosing the closest number with one digit after the decimal point: 83.196 becomes 83.2.",
+    explain: {
+      title: "Same angle, same shape",
+      paragraphs: [
+        "Every right triangle with the same acute angle, an angle smaller than a right angle, has the same shape, whatever its size. So a ratio of two of its sides, one length divided by another, is always the same number. For an angle of $52^\\circ$, the opposite side divided by the adjacent side is always about 1.28.",
+        "We write $\\sin\\theta$ for the sine of $\\theta$, $\\cos\\theta$ for its cosine and $\\tan\\theta$ for its tangent. A calculator gives each value; set it to degree mode when the angles are in degrees.",
+        "To find an angle from two sides, work backward with the inverse tangent: it takes opposite ÷ adjacent and gives back the angle. We write it $\\tan^{-1}$. The inverse sine, $\\sin^{-1}$, takes opposite ÷ hypotenuse, and the inverse cosine, $\\cos^{-1}$, takes adjacent ÷ hypotenuse. Each gives back the angle.",
+        "Parallel lines are lines that never meet, like a level line at the top of a cliff and the level sea below. A line that crosses both makes equal angles on opposite sides of it, between the two parallel lines. These are called alternate interior angles. So an angle of depression from the top equals the angle of elevation from the bottom.",
+        "Rounding means keeping fewer digits, choosing the closest value. To the nearest tenth, 83.196 is 83.2.",
+      ],
+    },
+    senses: {
+      tangent: "tangent-trig",
+      degree: "degree-angle",
+      side: "side",
+      square: "square-shape",
+    },
+    noLink: ["base"],
     terms: [
       "opposite-side-angle",
       "adjacent-leg",
@@ -22,34 +54,77 @@ const instruction: Record<string, Instruction> = {
       "inverse-trig-function",
     ],
     method: [
-      "Sketch the right triangle and mark the right angle, the given angle and the given side. For a depression angle, draw the level line through the observer and copy that angle to the object, where it is inside the triangle.",
-      "Label the sides opposite, adjacent and hypotenuse relative to the angle used. Choose the ratio that contains the given side and the unknown side: sine for opposite and hypotenuse, cosine for adjacent and hypotenuse, tangent for opposite and adjacent.",
-      "Solve for the unknown side, multiplying when the unknown is in the numerator and dividing when it is in the denominator. To find an angle, take the inverse of the ratio. Round only at the end, as the problem states. Add any extra height, such as the height of the observer's eyes.",
+      "Sketch the right triangle. Mark the right angle, the given angle and the given side. For an angle of depression, draw a level line through the viewer. The same angle sits at the object, inside the triangle, because the level line and the ground are parallel, which means they never meet.",
+      "Name the sides from the angle you use: opposite, adjacent and hypotenuse. Choose the ratio that holds the given side and the unknown side: sine for opposite and hypotenuse, cosine for adjacent and hypotenuse, tangent for opposite and adjacent.",
+      "Solve. If the unknown is on top of the ratio, multiply: height $= 65 \\times \\tan 52^\\circ \\approx 83.2$. If it is on the bottom, divide the known side by the ratio's value. To find an angle, use the inverse ratio. Round only at the end.",
+      "Adjust for any extra height the problem gives, such as how high the viewer's eyes are above the ground. Add it when the triangle starts at eye level and rises. Subtract when the triangle reaches down below eye level.",
     ],
     watch:
-      "Name the sides from the angle you use. The same side is opposite one acute angle and adjacent to the other. Do not measure a depression angle from the vertical.",
+      "Name the sides from the angle you use: a side opposite one acute angle is adjacent to the other. Measure an angle of depression down from a level line, not from an upright one.",
     principle:
-      "In a right triangle with acute angle $\\theta$: $\\sin\\theta=\\frac{\\text{opposite}}{\\text{hypotenuse}}$, $\\cos\\theta=\\frac{\\text{adjacent}}{\\text{hypotenuse}}$ and $\\tan\\theta=\\frac{\\text{opposite}}{\\text{adjacent}}$. The two acute angles total $90^\\circ$, and the calculator must be in degree mode for angles in degrees.",
+      "In a right triangle with an acute angle $\\theta$: $\\sin\\theta=\\frac{\\text{opposite}}{\\text{hypotenuse}}$, $\\cos\\theta=\\frac{\\text{adjacent}}{\\text{hypotenuse}}$ and $\\tan\\theta=\\frac{\\text{opposite}}{\\text{adjacent}}$. These values depend only on $\\theta$, because all right triangles with that angle have the same shape. The two acute angles add to $90^\\circ$. For angles in degrees, the calculator must be in degree mode.",
+    parentGuide:
+      "Ask the learner to sketch the situation as a right triangle, point to the side across from the given angle, and say which ratio uses the two sides in the problem.",
   },
   "midpoint-endpoint": {
-    goal: "Use averaging to find a midpoint, a missing endpoint, or the center and equation of a circle from a diameter.",
+    goal: "Use averages to find a midpoint, a missing endpoint, or the center and equation of a circle from a diameter.",
+    summary:
+      "A segment is a straight piece of a line with two ends. Its midpoint is the point exactly halfway between them. A point $(x, y)$ is $x$ across and $y$ up, and these two numbers are its coordinates. Halfway across is the average of the two $x$-coordinates: add them and divide by 2. Halfway up is the average of the two $y$-coordinates. From $(5, 9)$ to $(7, -1)$, the midpoint is $(6, 4)$.",
+    objectives: [
+      "Find the midpoint of a segment, or a missing endpoint, from coordinates.",
+      "Find the center and equation of a circle from the ends of a diameter.",
+    ],
     intuition:
-      "The midpoint of a segment is the point halfway between its endpoints. Halfway in each direction means halfway in $x$ and halfway in $y$, so each midpoint coordinate is the average of the two endpoint coordinates. A circle's center is the midpoint of any of its diameters, and its radius is half the diameter's length.",
+      "A segment is the straight piece of a line between two points, called its endpoints. We write $\\overline{AB}$, with a bar on top, for the segment from $A$ to $B$. The $xy$-plane is a flat grid with two number lines, called axes, that cross at $(0, 0)$. A point $(x, y)$ is $x$ across and $y$ up from there, and a negative number means left or down. The two numbers are the point's coordinates. A name like $A(1, 2)$ means point $A$ is at $(1, 2)$. The midpoint is the point halfway between the endpoints. It is halfway across and halfway up. So each of its coordinates is the average of the endpoints' coordinates: add the two and divide by 2. A circle is all the points at one distance from a center point. That distance is the radius. A diameter is a segment through the center with both ends on the circle, so the center is its midpoint. A small raised 2 means squared, a number multiplied by itself: $r^2$ is $r$ times $r$. A circle with center $(h, k)$ and radius $r$ has the equation $(x - h)^2 + (y - k)^2 = r^2$.",
+    explain: {
+      title: "Halfway in each direction",
+      paragraphs: [
+        "Halfway between 5 and 7 is 6, and $\\frac{5 + 7}{2} = 6$. Halfway between 9 and $-1$ is 4, and $\\frac{9 + (-1)}{2} = 4$. So the midpoint of $(5, 9)$ and $(7, -1)$ is $(6, 4)$.",
+        "To find a missing endpoint, work backward. The midpoint is as far from the known endpoint as the missing endpoint is from the midpoint. From $A(1, 2)$ to the midpoint $(4, 6)$ is 3 across and 4 up. So the other endpoint is 3 across and 4 up again: $(7, 10)$.",
+        "A circle is all the points at one distance from a center point. That distance is called the radius. A diameter is a segment through the center with both ends on the circle. The center is the midpoint of any diameter, and the radius is half a diameter. The circle with center $(h, k)$ and radius $r$ has the equation $(x - h)^2 + (y - k)^2 = r^2$, where $r^2$ means $r$ times $r$.",
+      ],
+    },
+    senses: { square: "square-number", plane: "plane" },
     terms: ["midpoint", "diameter"],
     method: [
-      "For a midpoint, average the $x$-coordinates and average the $y$-coordinates of the endpoints.",
-      "For a missing endpoint, set each coordinate average equal to the midpoint coordinate and solve, or double the midpoint and subtract the known endpoint.",
-      "For a circle from a diameter, find the center as the midpoint. Find $r^2$ by adding the squares of the $x$- and $y$-changes from the center to an endpoint, then write $(x-h)^2+(y-k)^2=r^2$.",
+      "For a midpoint, average the $x$-coordinates and average the $y$-coordinates of the endpoints: add each pair and divide by 2.",
+      "For a missing endpoint, double the midpoint and subtract the known endpoint, one coordinate at a time. This works because the midpoint is as far from the known endpoint as the missing endpoint is from the midpoint. Midpoint $(4, 6)$ and endpoint $(1, 2)$ give $(2 \\times 4 - 1, 2 \\times 6 - 2) = (7, 10)$.",
+      "For a circle from a diameter, the center is the midpoint. For $r^2$, square the across change and the up change from the center to one endpoint, and add them. When neither change is 0, their sizes are the legs of a right triangle whose longest side is the radius. If one change is 0, the size of the other is the radius. Then write $(x - h)^2 + (y - k)^2 = r^2$.",
     ],
     watch:
-      "In $(x-h)^2$ the center's coordinate is subtracted, so a center with $x=-3$ gives $x+3$. The right side is $r^2$, not $r$.",
+      "In $(x - h)^2$ the center's across coordinate $h$ is subtracted. A center with $h = -3$ gives $(x - (-3))^2 = (x + 3)^2$. The right side is $r^2$, not $r$.",
     principle:
-      "The midpoint of $(x_1,y_1)$ and $(x_2,y_2)$ is $\\left(\\frac{x_1+x_2}{2},\\frac{y_1+y_2}{2}\\right)$. If $M$ is the midpoint of $\\overline{AB}$, then $B=2M-A$. A circle with center $(h,k)$ and radius $r$ has equation $(x-h)^2+(y-k)^2=r^2$.",
+      "Write the endpoints as $(x_1, y_1)$ and $(x_2, y_2)$: the small numbers 1 and 2 name the first and second endpoint. Their midpoint is $\\left(\\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2}\\right)$. If $M$ is the midpoint of $\\overline{AB}$, then $B = 2M - A$, worked one coordinate at a time. A circle with center $(h, k)$ and radius $r$ has the equation $(x - h)^2 + (y - k)^2 = r^2$. It comes from the Pythagorean theorem: in a right triangle, leg squared plus leg squared equals the longest side squared. Here the legs are the across and up distances from the center to a point on the circle, and the longest side is the radius.",
+    parentGuide:
+      "Mark two points on grid paper and ask the learner to find the point halfway between them by counting, then check it with the averages.",
   },
   "space-diagonal": {
-    goal: "Find the corner-to-corner length of a box, or a missing edge, with the Pythagorean theorem used twice.",
+    goal: "Find the corner-to-corner length of a box, or a missing edge, by using the Pythagorean theorem twice.",
+    summary:
+      "Think of a shoebox. The longest straight line inside it runs from one bottom corner to the opposite top corner. It is called the space diagonal. To find its length, use a rule about right triangles, triangles with a corner like the corner of a page, twice. The rule, called the Pythagorean theorem, says leg squared plus leg squared equals the longest side squared. Use it once across the floor of the box, then once up to the top. For a box 3 by 4 by 12, the line across the 3 by 4 floor is 5, and the space diagonal is 13.",
+    objectives: [
+      "Find the space diagonal of a rectangular box from its three edges.",
+      "Find a missing edge from the space diagonal and the other two edges.",
+    ],
     intuition:
-      "A rectangular box has a floor, and the floor has a diagonal. That floor diagonal and the vertical edge stand at a right angle, so they are the legs of a second right triangle. Its hypotenuse is the segment from one corner of the box to the opposite corner, the longest straight segment inside the box.",
+      "A rectangle is a flat shape with four straight sides and four corners like the corners of a page. A rectangular box has six faces, its flat sides, and each face is a rectangle. An edge is a straight line where two faces meet, and three edges meet at each corner. The three dimensions of the box are its length $\\ell$, its width $w$ and its height $h$. The length and width run along the floor, and the height is how tall the box is. A diagonal is a straight line from one corner to a corner that is not next to it. Opposite corners are the two corners farthest apart, such as a bottom corner and the top corner across from it. The straight line between them is the space diagonal. A triangle is a shape with three straight sides. A right triangle is a triangle with a right angle, a corner like the corner of a page. Its two shorter sides are the legs, and the longest side is the hypotenuse. Squared means multiplied by itself, and we write $3^2$ for 3 squared. The Pythagorean theorem is the rule that leg squared plus leg squared equals hypotenuse squared. The floor diagonal and an upright edge meet at a right angle. So they are the legs of a second right triangle, and its hypotenuse is the space diagonal. A square root undoes squaring. Both 5 and $-5$ times themselves make 25, and the root sign means the one that is 0 or more: $\\sqrt{25} = 5$. An answer written with the root sign is called a radical. To simplify a radical means to leave the smallest possible whole number under the root sign. Split off a factor that is a square number, such as 25: $\\sqrt{50} = \\sqrt{25 \\times 2} = \\sqrt{25} \\times \\sqrt{2} = 5\\sqrt{2}$. Here $5\\sqrt{2}$ means 5 times $\\sqrt{2}$.",
+    explain: {
+      title: "Across the floor, then up",
+      paragraphs: [
+        "Floor first. The floor is a rectangle 3 by 4. Its diagonal $f$ is the hypotenuse of a right triangle with legs 3 and 4. So $f^2 = 3^2 + 4^2 = 9 + 16 = 25$, and $f = 5$.",
+        "Then up. Call the space diagonal $d$. The floor diagonal, 5, and the height, 12, are the legs of a right triangle standing up inside the box. So $d^2 = 5^2 + 12^2 = 25 + 144 = 169$, and $d = 13$.",
+        "You can skip the middle step. The upright triangle gives $d^2 = f^2 + h^2$. Replace $f^2$ with $\\ell^2 + w^2$: $d^2 = \\ell^2 + w^2 + h^2$. The square root of 169 is 13, because $13 \\times 13 = 169$. When the square root is not a whole number, as for 122, leave the answer with a root sign: $\\sqrt{122}$. An answer written with a root sign is called a radical.",
+      ],
+    },
+    senses: {
+      square: "square-number",
+      root: "root-radical",
+      edge: "edge",
+      face: "face-solid",
+      side: "side",
+      factor: "factor-number",
+    },
+    noLink: ["rule"],
     terms: [
       [
         "diagonal",
@@ -58,49 +133,109 @@ const instruction: Record<string, Instruction> = {
       "pythagorean-theorem",
     ],
     method: [
-      "Find the diagonal of the base: its square is $\\ell^2+w^2$.",
-      "Use that diagonal and the height as the legs of a right triangle: $d^2=\\ell^2+w^2+h^2$.",
-      "Take the square root, simplifying a radical if the sum is not a perfect square. To find a missing edge, subtract the known squares from $d^2$ and then take the root.",
+      "Square the length, the width and the height of the box, and add: $d^2 = \\ell^2 + w^2 + h^2$. For 3, 7 and 8, that is $9 + 49 + 64 = 122$.",
+      "Take the square root of that total: $d = \\sqrt{122}$. Simplify the root if you can, as in $\\sqrt{50} = \\sqrt{25 \\times 2} = 5\\sqrt{2}$.",
+      "For a missing edge, you need the diagonal and the other two edges. Subtract their squares from $d^2$, because $d^2$ is the total of all three squares. Then take the square root.",
     ],
     watch:
       "Add the squares of the three edges, not the edges themselves, and take one square root at the end.",
     principle:
-      "A rectangular box with edges $\\ell$, $w$ and $h$ has space diagonal $d=\\sqrt{\\ell^2+w^2+h^2}$. A cube of edge $a$ has $d=a\\sqrt{3}$.",
+      "A rectangular box with edges $\\ell$, $w$ and $h$ has space diagonal $d = \\sqrt{\\ell^2 + w^2 + h^2}$. It comes from using the Pythagorean theorem twice: across the floor, then up. A cube is a box whose edges all have the same length $a$. Then $d^2 = a^2 + a^2 + a^2 = 3a^2$, so $d = \\sqrt{3a^2} = a\\sqrt{3}$. For example, a cube with edge 2 has $d = 2\\sqrt{3}$.",
+    parentGuide:
+      "Use a real box. Stretch a string from one bottom corner to the opposite top corner, and compare its length with the answer.",
   },
   "circle-segment-lengths": {
-    goal: "Use products of segments of chords, secants and tangents, and the perpendicular radius, to find lengths and slopes.",
+    goal: "Use products of chord, secant and tangent pieces, and the radius at a right angle to a tangent, to find lengths and slopes.",
+    summary:
+      "A chord is a straight piece joining two points on a circle. When two chords cross inside a circle, multiply the two pieces of each chord: the two results, called products, are equal. With pieces 2 and 6 on one chord and 3 and 4 on the other, $2 \\times 6 = 3 \\times 4 = 12$. The same idea works for lines that meet outside the circle.",
+    objectives: [
+      "Find a missing length from crossing chords, two secants, or a tangent and a secant.",
+      "Find the slope of a tangent line from the radius to the point where it touches.",
+    ],
     intuition:
-      "A chord is a segment with both endpoints on a circle. A secant is a line that crosses a circle at two points. A tangent touches it at one point. When two such lines meet, the pieces they cut off are linked by products. The product of the two pieces of one chord equals the product of the two pieces of the other. For lines from an outside point, the outside piece times the whole secant is the same for each line, and a tangent counts as both pieces at once, so its length squared is that product. A tangent is also perpendicular to the radius drawn to its point of tangency.",
+      "A circle is all the points at one distance from one point. That point is called the center, and the distance is called the radius. A segment is a straight piece of a line between two points, and $\\overline{PT}$ names the segment from $P$ to $T$. A chord is a segment with both ends on the circle. A secant is a line that crosses the circle at two points. A tangent line is a line that touches the circle at exactly one point, called the point of tangency. An external point is a point outside the circle. When two of these lines meet, multiply lengths measured from the meeting point. For two crossing chords, multiply the two pieces of each chord. For two lines from an outside point, use the outside piece, from the point to the near crossing, and the whole segment, from the point to the far crossing. Multiply them for each line. A tangent from point $P$ touching at point $T$ has one segment, $PT$. Its length is multiplied by itself, written $PT^2$. The two products, the results of multiplying, are equal. Slope means how steep a line is: rise ÷ run, the change up divided by the change across. Lines that meet at a right angle, a square corner, are called perpendicular. A fraction's reciprocal is the fraction flipped upside down. When neither line is horizontal or upright, perpendicular slopes are negative reciprocals: flip the fraction and change its sign.",
+    explain: {
+      title: "Pieces that multiply to the same number",
+      paragraphs: [
+        "Two chords that cross inside the circle: each chord is cut into two pieces. The product of one chord's pieces equals the product of the other's. If one chord has pieces 2 and 6, and the other has pieces 3 and $x$, then $3x = 12$ and $x = 4$.",
+        "Two secants from a point $P$ outside the circle: on each one, measure the outside piece, from $P$ to the near crossing. Also measure the whole secant, from $P$ to the far crossing. Outside piece times whole secant is the same for both lines.",
+        "A tangent from $P$ touches the circle once, so its outside piece and its whole length are the same segment $PT$. Then $PT \\times PT = PA \\times PB$ for any secant from $P$. Squared means multiplied by itself, and we write $PT^2$ for $PT \\times PT$. With $PA = 4$ and $PB = 9$, $PT^2 = 36$, so $PT = 6$.",
+        "A tangent line makes a right angle with the radius drawn to the point of tangency. A fraction's reciprocal is the fraction flipped upside down. On a grid, take two perpendicular lines, neither horizontal nor upright. The slope of one is the negative reciprocal of the other's: flip the fraction and change its sign. A radius with slope $\\frac{12}{-5}$ has a tangent with slope $\\frac{5}{12}$.",
+      ],
+    },
+    senses: {
+      tangent: "tangent-line",
+      center: "center",
+      product: "product-multiply",
+      square: "square-shape",
+      squared: "square-number",
+      plane: "plane",
+    },
     terms: ["chord", "secant", "tangent-line"],
     method: [
-      "Identify the pieces. For intersecting chords, use the two parts of each chord. For lines from an outside point, use the outside part and the whole secant, measured from the outside point to the far intersection.",
-      "Set the products equal and solve: $ab=cd$ for chords, $PA\\cdot PB=PC\\cdot PD$ for two secants, and $PT^2=PA\\cdot PB$ for a tangent and a secant. Subtract the outside part if the problem asks for the chord inside the circle.",
-      "For a tangent slope, find the slope of the radius to the point of tangency. The tangent's slope is its negative reciprocal. A horizontal radius gives a vertical tangent with undefined slope, and a vertical radius gives a horizontal tangent with slope 0.",
+      "Find the pieces, measured from the point where the lines meet. For crossing chords, use the two pieces of each chord. For lines from an outside point, use the outside piece and the whole secant, out to the far crossing.",
+      "Set the products equal and solve. For crossing chords, $a \\times b = c \\times d$. For two secants, $PA \\times PB = PC \\times PD$. For a tangent and a secant, $PT^2 = PA \\times PB$. If asked for the chord inside the circle, subtract the outside piece from the whole secant.",
+      "For a tangent's slope, find the slope of the radius to the point of tangency, then take its negative reciprocal, the fraction flipped with its sign changed. A horizontal radius gives an upright tangent, whose slope is undefined. An upright radius gives a horizontal tangent, with slope 0.",
     ],
     watch:
-      "Use the whole secant, from the outside point to the far intersection, not only the part inside the circle. Do not use the radius slope itself for the tangent.",
+      "Use the whole secant, from the outside point to the far crossing, not only the part inside the circle. For a tangent's slope, do not use the radius's slope itself.",
     principle:
-      "If chords $AB$ and $CD$ meet at $E$, then $AE\\cdot EB=CE\\cdot ED$. If secants from $P$ meet the circle at $A,B$ and $C,D$ (nearer points $A,C$), then $PA\\cdot PB=PC\\cdot PD$. If $PT$ is tangent and a secant meets the circle at $A$ then $B$, then $PT^2=PA\\cdot PB$. Perpendicular lines with slopes $m_1,m_2$ satisfy $m_1m_2=-1$.",
+      "If chords $AB$ and $CD$ cross at $E$, then $AE \\times EB = CE \\times ED$. If two secants from $P$ meet the circle at $A$ and $B$, and at $C$ and $D$, with $A$ and $C$ nearer to $P$, then $PA \\times PB = PC \\times PD$. If $PT$ is tangent at $T$ and a secant from $P$ meets the circle at $A$ then $B$, then $PT^2 = PA \\times PB$. A tangent is perpendicular to the radius at the point of tangency. Two perpendicular lines, neither horizontal nor upright, have slopes $m_1$ and $m_2$ with $m_1 \\times m_2 = -1$.",
+    parentGuide:
+      "Draw a circle and two crossing chords. Measure the four pieces with a ruler and check that the two products come out nearly equal.",
   },
   "frequency-table-center": {
-    goal: "Find or compare a mean or median when the data are given by frequencies, weights, or a changed data set.",
+    goal: "Find or compare a mean or median when the data come as a frequency table, as weights, or as a changed list.",
+    summary:
+      "Data are numbers you collect, and each one is a value. A frequency table lists each value once, with how many times it appears. The mean is the total of all the values divided by how many values there are. The median is the middle value when the values are listed from least to greatest. For the scores 2, 2, 2, 5, 9, the table says “2 appears 3 times”. The five scores add to 20, so the mean is $20 \\div 5 = 4$. The median, the middle score, is 2.",
+    objectives: [
+      "Find the mean and the median from a frequency table.",
+      "Find a weighted mean, and the new mean after a value is added or removed.",
+    ],
     intuition:
-      "A frequency table lists each value and how many times it occurs, instead of writing every data value. The mean is the total of all the data divided by how many data values there are. The median is the middle value when all data values are put in order. A weighted mean counts some values more than others. Adding or removing a value changes the total and the count, and it can move the mean and the median differently.",
+      "Data are the numbers you collect, and each one is a value. A frequency is how many times a value appears. The mean is the total of all the values divided by how many values there are. The median is the middle value once the values are in order from least to greatest. A weighted mean is a mean that counts some values more than others, such as a test that counts twice. A value's weight says how many times it counts. An even count is one that splits into pairs: 2, 4, 6 and so on. Then there are two middle values, and the median is their mean. A raised dot means times: $4 \\cdot 32$ is 4 times 32.",
+    explain: {
+      title: "Each row stands for many values",
+      paragraphs: [
+        "In a frequency table, the row “value 2, frequency 3” stands for three 2s. To find the total, multiply each value by its frequency and add: $2 \\times 3 + 5 \\times 1 + 9 \\times 1 = 20$. The number of values is the sum of the frequencies: $3 + 1 + 1 = 5$.",
+        "For the median, count through the frequencies in order. With 5 values, the middle one is the 3rd. The first three values are all 2, so the median is 2. With an even count, the median is the mean of the two middle values.",
+        "Removing or adding a value changes the count by 1 and the total by that value. Since the mean is the total divided by the count, the total is the mean times the count. If 4 numbers have a mean of 32, their total is $4 \\times 32 = 128$. Remove 17: the new total is $128 - 17 = 111$ for 3 numbers, and the new mean is $111 \\div 3 = 37$.",
+      ],
+    },
+    senses: { mean: "mean-average" },
     terms: ["frequency", "weighted-mean", "median"],
     method: [
-      "For a mean from a table, multiply each value by its frequency and add; add the frequencies for the number of data values; divide the first sum by the second.",
-      "For a median, add the frequencies from the least value until you reach the middle position or the two middle positions of the ordered data.",
-      "For a weighted mean or a combined mean, multiply each mean by its weight or group size, add, and divide by the total weight or total count. When a value is added or removed, update the total and the count, then recompute.",
+      "For a mean from a table, multiply each value by its frequency and add. Add the frequencies to get the count. Divide the first sum by the count.",
+      "For a median, find the middle position: with 5 values it is the 3rd. With an even count, use the two middle positions. Count through the frequencies from the least value until you reach them.",
+      "For a weighted mean, multiply each value by its weight, add, and divide by the total weight. For two groups, multiply each group's mean by its size, add, and divide by the total count. When a value is added or removed, find the new total and count first.",
     ],
     watch:
-      "Do not average the listed values without their frequencies, and do not average two group means as if the groups were the same size.",
+      "Do not find the mean of the listed values without their frequencies. Do not find the mean of two group means as if the groups were the same size.",
     principle:
-      "For values $x_i$ with frequencies $f_i$, the mean is $\\frac{\\sum x_if_i}{\\sum f_i}$. A value above the mean raises the mean when it is added, a value below lowers it, and a value equal to the mean leaves it unchanged. The mean of $n$ values is $\\text{total}/n$, so the total is $n$ times the mean.",
+      "Number the values $x_1, x_2$, and so on, with frequencies $f_1, f_2$, and so on. The small numbers match each value with its frequency, $x_1 f_1$ means $x_1$ times $f_1$, and the dots mean the pattern continues. The mean is $\\frac{x_1 f_1 + x_2 f_2 + \\cdots}{f_1 + f_2 + \\cdots}$. Since mean = total ÷ count, the total is the count times the mean. Adding a value above the mean raises the mean, and a value below lowers it. A value equal to the mean leaves it unchanged.",
+    parentGuide:
+      "Write a short list of scores with repeats, make its frequency table together, and check that both give the same mean.",
   },
   "independence-test": {
-    goal: "Decide whether events are independent from a two-way table, and read conditional-probability language correctly.",
+    goal: "Decide from a two-way table whether two events are independent, and read “given” probability statements correctly.",
+    summary:
+      "An event is something that may or may not happen, such as a student playing a sport. Two events are independent when knowing that one happened does not change the chance of the other. A two-way table, a table that sorts people by two questions at once, lets you check. Suppose 30% of all students play a sport, and 30% of band members play a sport too. Then being in the band tells you nothing about playing a sport, so the two events are independent.",
+    objectives: [
+      "Find a probability inside one group of a two-way table, and compare it with the overall probability.",
+      "Read a statement such as $P(A \\mid B) = 0.2$ in words.",
+    ],
     intuition:
-      "Two events are independent when knowing that one happened does not change the chance of the other. In a two-way table, a probability given an event is found inside the row or column for that event. If the share inside that row or column equals the share in the whole table, the event gives no information. A conditional probability such as $P(A\\mid B)$ is read as the probability of $A$ given $B$: restrict attention to outcomes in $B$, then find the share of them in $A$.",
+      "An event is a result that may or may not happen, such as “plays a sport”. Probability means chance: a number from 0 to 1, written $P(A)$ for an event $A$. An outcome is one possible result, such as one student chosen. A respondent is a person who answers a survey. Randomly selected means every person has the same chance of being chosen. A two-way table counts people by two questions at once, one along the rows and one along the columns. A share is the part of a group that has some feature, written as a fraction, a decimal or a percent. A conditional probability is a chance inside a smaller group. We write $P(A \\mid B)$, read “the probability of $A$ given $B$”: among the outcomes in $B$, the share that are also in $A$. Events $A$ and $B$ are independent when knowing $B$ does not change the chance of $A$: $P(A \\mid B) = P(A)$. The product of two numbers is the result of multiplying them.",
+    explain: {
+      title: "Compare a share inside a group with the overall share",
+      paragraphs: [
+        "A two-way table counts people by two questions, one along the rows and one along the columns. Suppose 200 students say whether they are in the band and whether they play a sport. If 60 of the 200 play a sport, then $P(\\text{sport}) = \\frac{60}{200} = 0.3$.",
+        "Now look only at the band row. If 15 of the 50 band members play a sport, then $P(\\text{sport} \\mid \\text{band}) = \\frac{15}{50} = 0.3$. The share inside the band is the same as overall, so the events are independent.",
+        "If the shares differ, the events are dependent, which means not independent. Divide by the count of the group named after the bar. So $P(B \\mid A)$ divides by the count in $A$, and it is usually different from $P(A \\mid B)$.",
+      ],
+    },
+    senses: { event: "event" },
+    noLink: ["sorts", "proportion"],
     terms: [
       [
         "independent-events",
@@ -113,32 +248,49 @@ const instruction: Record<string, Instruction> = {
       ],
     ],
     method: [
-      "Find the overall proportion for one event from the totals, then the proportion of that event inside each group (a row or column).",
-      "Compare. Equal proportions mean independence. Unequal proportions mean the events are not independent, and the larger one shows which group makes the event more likely.",
-      "For an expected joint count under independence, multiply the two overall probabilities and then the total number of people. To interpret $P(A\\mid B)=p$, say: among those in $B$, a share $p$ are in $A$.",
+      "Find the overall share for one event: its total divided by the grand total.",
+      "Find the share of that event inside each group, a row or a column. Divide by the group's total, not the grand total.",
+      "Compare. Equal shares mean the events are independent. Unequal shares mean they are not, and the larger share shows where the event is more likely.",
+      "For the count expected if the events were independent, multiply the two overall probabilities, then the total number of people. To read $P(A \\mid B) = p$, say: among those in $B$, a share $p$ are in $A$.",
     ],
     watch:
-      "The group named after the bar is the one you divide by. $P(A\\mid B)$ and $P(B\\mid A)$ are usually different, and events that overlap can still be dependent.",
+      "Divide by the count of the group named after the bar. $P(A \\mid B)$ and $P(B \\mid A)$ are usually different. Events that overlap, so both can happen, are not automatically independent.",
     principle:
-      "Events $A$ and $B$ with $P(B)>0$ are independent exactly when $P(A\\mid B)=P(A)$, which is equivalent to $P(A\\text{ and }B)=P(A)P(B)$. Mutually exclusive events with positive probabilities are never independent.",
+      "Events $A$ and $B$, with $P(B) > 0$ (greater than 0), are independent exactly when $P(A \\mid B) = P(A)$. This is the same as $P(A \\text{ and } B) = P(A) \\times P(B)$. Mutually exclusive means that two events cannot both happen. Such events are never independent when both have a probability greater than 0.",
+    parentGuide:
+      "Make a small two-way table from family or class data. Ask whether the share in one row matches the share overall, and what that says about the two questions.",
   },
 };
 const furtherPitfalls: Record<string, string> = {
   "trig-context-triangle":
-    "Check that the answer is reasonable: a leg is always shorter than the hypotenuse, and a larger angle of elevation means a steeper line.",
+    "Check that the answer makes sense: a leg is always shorter than the hypotenuse, and a larger angle of elevation means a steeper line.",
   "midpoint-endpoint":
-    "A midpoint can have a half-integer coordinate. Do not round it.",
+    "A midpoint can have a coordinate that ends in .5, such as 3.5. Do not round it.",
   "space-diagonal":
-    "The segment along the edges of the box is longer than the space diagonal, which is the straight-line shortcut.",
+    "The path along the edges of the box is longer than the space diagonal, the straight line between opposite corners.",
   "circle-segment-lengths":
-    "Check which pieces the problem names. A secant has an outside piece, an inside chord and a whole length, and these are three different numbers.",
+    "Check which piece the problem names. A secant has an outside piece, an inside chord and a whole length, and these are three different measurements.",
   "frequency-table-center":
-    "A mean can be a value that does not appear in the table. A median of an even count is the mean of the two middle values.",
+    "A mean can be a value that does not appear in the table. The median of an even count is the mean of the two middle values.",
   "independence-test":
-    "Proportions that are close but not equal are not independent. Compare exact fractions, not rounded impressions.",
+    "Shares that are close but not equal do not make events independent. Compare exact fractions, not shortened ones.",
 };
 export const satGeometryDataMethods: Record<string, ProblemMethod> =
-  instruction;
+  Object.fromEntries(
+    Object.entries(instruction).map(
+      ([
+        id,
+        {
+          principle: _principle,
+          summary: _summary,
+          objectives: _objectives,
+          explain: _explain,
+          parentGuide: _parentGuide,
+          ...method
+        },
+      ]) => [id, method],
+    ),
+  );
 export const satGeometryDataPrinciples = Object.fromEntries(
   Object.entries(instruction).map(([id, value]) => [id, value.principle]),
 );
@@ -156,15 +308,27 @@ export const satGeometryDataLessons: Lesson[] = satGeometryDataTemplates.map(
     return {
       id: meta.id,
       title: meta.title,
-      summary: text.intuition,
+      summary: text.summary,
       templateIds: [meta.id],
-      senses: glossary.glossarySenses,
-      noLink: glossary.glossaryNoLink,
+      // The worked example is generated: read its words as the template does.
+      senses: { ...glossary.glossarySenses, ...text.senses },
+      noLink: [...(glossary.glossaryNoLink ?? []), ...(text.noLink ?? [])],
       includeGeneratedRepresentation: false,
-      objectives: [text.goal, text.method[0]!],
-      sections: [],
+      objectives: text.objectives,
+      sections: [
+        {
+          stage: "intuition",
+          title: "What the words mean",
+          paragraphs: [text.intuition],
+        },
+        {
+          stage: "intuition",
+          title: text.explain.title,
+          paragraphs: text.explain.paragraphs,
+        },
+      ],
       closingSections: [
-        { stage: "method", title: meta.title, paragraphs: text.method },
+        { stage: "method", title: "Steps", paragraphs: text.method },
         {
           stage: "formal",
           title: "Rule and conditions",
@@ -181,8 +345,7 @@ export const satGeometryDataLessons: Lesson[] = satGeometryDataTemplates.map(
         ...(example.public.figure ? { figure: example.public.figure } : {}),
       },
       pitfalls: [text.watch!, furtherPitfalls[meta.id]!],
-      parentGuide:
-        "Ask the learner to identify the givens, the requested quantity, and the reason each step preserves the relationship.",
+      parentGuide: text.parentGuide,
     };
   },
 );
