@@ -13,11 +13,8 @@ import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
 import { figureCapabilities } from "../src/math/contracts";
-import { generateProblem, gradeAnswer } from "../src/math/engine";
-import {
-  parseSelection,
-  serializeSelection,
-} from "../src/math/selection-response";
+import { generateProblem } from "../src/math/engine";
+import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
 import { trialLimits } from "../src/server/trials";
 import { migrate } from "./migrate";
 
@@ -52,6 +49,7 @@ const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   cacheDir: "node_modules/.vite-level-check",
   server: {
+    watch: { ignored: ["**/artifacts/**"] },
     host: "127.0.0.1",
     port,
     strictPort: true,
@@ -126,10 +124,6 @@ async function trialWith(answers: number) {
   return { token, learnerId };
 }
 
-const servedProblems = new WeakMap<
-  Page,
-  Map<string, { id: string; templateId: string; seed: string }>
->();
 async function open(
   theme: "light" | "dark",
   width: number,
@@ -163,16 +157,7 @@ async function open(
     });
   }
   page.setDefaultTimeout(15000);
-  const served = new Map<
-    string,
-    { id: string; templateId: string; seed: string }
-  >();
-  servedProblems.set(page, served);
-  page.on("response", async (response) => {
-    if (!response.url().endsWith("/batches") || !response.ok()) return;
-    const batch = await response.json();
-    for (const problem of batch.problems ?? []) served.set(problem.id, problem);
-  });
+  trackPracticeProblems(page);
   const faults: string[] = [];
   page.on("pageerror", (error) => {
     faults.push(error.message);
@@ -242,70 +227,6 @@ async function shoot(page: Page, name: string, tag: string, full = false) {
   });
 }
 
-/** Answers the current problem through the visible controls. */
-async function answerOne(page: Page, correct: boolean) {
-  // Next can still be awaiting its prefetched problem after the click returns.
-  await page.locator(".next-action").waitFor({ state: "hidden" });
-  await page.locator(".problem-stage .question").waitFor();
-  const compact = page.locator(".compact-answer-action");
-  if (await compact.isVisible()) await compact.click();
-  const template = await page
-    .locator(".problem-content")
-    .getAttribute("data-template");
-  const served = servedProblems.get(page)!;
-  const problem = [...served.values()].find((p) => p.templateId === template);
-  assert.ok(problem, `missing served problem for ${template}`);
-  const solution = generateProblem(problem.templateId, problem.seed);
-  const schema = solution.public.response;
-  let response = solution.answer;
-  if (!correct) {
-    if (schema.kind === "choice")
-      response = schema.options.find((o) => o.id !== solution.answer)!.id;
-    else if (schema.kind === "multi-select") {
-      const ids = parseSelection(solution.answer)!;
-      const replacement = schema.options.find((o) => !ids.includes(o.id))!.id;
-      response = serializeSelection([...ids.slice(1), replacement]);
-    } else {
-      // Preserve the family's response syntax (e.g. ordered pairs). A generic
-      // "999999" can fail input validation and never submit an attempt.
-      for (let i = 0; i < 20; i++) {
-        const candidate = generateProblem(
-          problem.templateId,
-          `${problem.seed}:miss:${i}`,
-        ).answer;
-        if (!gradeAnswer(solution, candidate)) {
-          response = candidate;
-          break;
-        }
-      }
-      assert.ok(
-        !gradeAnswer(solution, response),
-        `no valid wrong response for ${template}`,
-      );
-    }
-  }
-  const attempt = page.waitForResponse((r) => r.url().endsWith("/attempts"));
-  if (schema.kind === "multi-select") {
-    for (const id of parseSelection(response)!)
-      await page
-        .locator(`.multi-select-form:visible input[value="${id}"]`)
-        .check();
-    await page.locator(".choice-submit:visible").click();
-  } else if (schema.kind === "choice") {
-    await page
-      .locator(".choice-option:visible")
-      .nth(schema.options.findIndex((o) => o.id === response))
-      .click();
-    await page.locator(".choice-submit:visible").click();
-  } else {
-    const input = page.locator("#answer:visible");
-    await input.fill(response);
-    await input.press("Enter");
-  }
-  assert.equal((await attempt).status(), 200);
-  served.delete(problem.id);
-  await page.locator(".next-action").waitFor();
-}
 async function used(learnerId: string, token: string) {
   const response = await app.inject({
     method: "GET",
