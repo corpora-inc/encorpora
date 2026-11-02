@@ -146,8 +146,6 @@ test("progress modal hides grade text and accessible estimates until explicitly 
   expect(dialog.textContent).not.toContain("You’re about 14");
   fireEvent.click(within(dialog).getByRole("checkbox"));
   expect(within(dialog).queryByTestId("level-readout")).toBeNull();
-  fireEvent.click(
-    within(dialog).getByRole("button", { name: "Continue", exact: true }),
-  );
+  fireEvent.click(within(dialog).getByRole("button", { name: "Continue" }));
   expect(proceed).toHaveBeenCalledOnce();
 });

@@ -1615,7 +1615,10 @@ try {
       await related
         .getByText("When each kit holds two items", { exact: false })
         .waitFor();
-      assert.equal(await related.locator("p").count(), 4);
+      assert.equal(
+        await related.locator(".pathways-connection-why").count(),
+        4,
+      );
       const application = related.getByRole("link", { name: /Event sets/ });
       assert.equal(
         await application.getAttribute("href"),
