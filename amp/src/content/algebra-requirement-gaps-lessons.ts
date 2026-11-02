@@ -564,14 +564,15 @@ const complexQuadraticSolveMethod: ProblemMethod = {
   intuition:
     "Squaring a real number never gives a negative result, so $x^2=-9$ has no real solution. The number $i$ is defined by $i^2=-1$, which gives $x^2=-9$ the solutions $3i$ and $-3i$. A quadratic with real coefficients can have such solutions.",
   terms: ["imaginary-unit", "complex-number", "complex-conjugate"],
+  senses: { term: "term-expression" },
   method: [
-    "If the leading coefficient is not 1, divide by it.",
+    "If the leading coefficient, the number in front of $x^2$, is not 1, divide every term by it.",
     "Complete the square: $(x+h)^2=h^2-q$ where the equation is $x^2+2hx+q=0$. The right side is negative.",
     "Write the negative number $-m$ as $m\\cdot i^2$ and take both roots: $x+h=\\pm\\sqrt{m}\\,i$.",
     "Subtract $h$. To go backward from $x=-h\\pm ki$, the equation is $x^2+2hx+(h^2+k^2)=0$.",
   ],
   watch:
-    "The real part of the solutions is $-h$ (half of the middle coefficient, with its sign flipped), and the imaginary part is $\\sqrt m$, not $m$. Both $+$ and $-$ appear.",
+    "After dividing by the coefficient of $x^2$, the real part of both solutions is $-h$: half of the middle coefficient, with its sign flipped. Their imaginary parts are $\\sqrt m$ and $-\\sqrt m$, not $\\pm m$.",
 };
 
 const complexQuadraticSolvePrinciple =
@@ -581,11 +582,20 @@ const complexQuadraticSolveLesson: Lesson = {
   id: "complex-quadratic-solve",
   title: "Quadratics with nonreal solutions",
   summary:
-    "When completing the square leaves a negative number on the right, use $i^2=-1$ to take its square root. The solutions come as a conjugate pair.",
+    "Some quadratic equations, such as $x^2+4x+13=0$, have no real solutions: rewriting them leaves a square equal to a negative number. With the imaginary unit $i$, the number with $i^2=-1$, that square root exists. So the equation has two solutions, $p+qi$ and $p-qi$, called a conjugate pair.",
   templateIds: ["complex-quadratic-solve"],
+  senses: {
+    square: "square-number",
+    squares: "square-number",
+    squaring: "square-number",
+    sides: "side-of-equation",
+    root: "root-radical",
+    roots: "root-radical",
+  },
+  noLink: ["leaves", "change"],
   objectives: [
-    "Solve $x^2+px+q=0$ with solutions $a\\pm bi$ by completing the square.",
-    "Write a real-coefficient quadratic with given conjugate solutions.",
+    "Solve $x^2+px+q=0$ by completing the square when its solutions are $a\\pm bi$, not real.",
+    "Write a quadratic with real coefficients that has two given conjugate solutions.",
   ],
   sections: [
     {
@@ -593,15 +603,16 @@ const complexQuadraticSolveLesson: Lesson = {
       title: "A negative number on the right",
       paragraphs: [
         "In the real numbers, the square of every number is zero or positive, so $x^2=-4$ has no real solution. The number $i$ is defined by $i^2=-1$. Then $(2i)^2=4i^2=-4$ and $(-2i)^2=-4$, so $x^2=-4$ has the solutions $x=2i$ and $x=-2i$.",
-        "A complex number has the form $a+bi$ with real numbers $a$ and $b$; $a$ is its real part and $b$ is its imaginary part.",
+        "A complex number has the form $a+bi$ with real numbers $a$ and $b$. $a$ is its real part and $b$ is its imaginary part. Two complex numbers $p+qi$ and $p-qi$, which differ only in the sign of the imaginary part, are called conjugates.",
+        "Completing the square rewrites $x^2+2hx$ as $(x+h)^2-h^2$, so that $x$ appears only once, inside a square. When that square must equal a negative number, the solutions are not real, and $i$ gives its square roots.",
       ],
     },
   ],
   workedExample: {
     prompt: "Solve $x^2+4x+13=0$ over the complex numbers.",
     steps: [
-      "Move the constant: $x^2+4x=-13$.",
-      "Half of 4 is 2. Add $2^2=4$ to both sides: $(x+2)^2=-9$.",
+      "Move the constant to the right side: $x^2+4x=-13$.",
+      "To complete the square, add the square of half the coefficient of $x$. Half of 4 is 2, so add $2^2=4$ to both sides. Since $x^2+4x+4=(x+2)^2$, this gives $(x+2)^2=-9$.",
       "No real number squares to −9. Using $i^2=-1$, the square roots of −9 are $\\pm3i$, so $x+2=\\pm3i$.",
       "Subtract 2: $x=-2\\pm3i$. Check $x=-2+3i$: $(x+2)^2=(3i)^2=-9$.",
     ],
@@ -613,7 +624,7 @@ const complexQuadraticSolveLesson: Lesson = {
       title: "Going backward",
       paragraphs: [
         "If the solutions are $-2\\pm3i$, then $x+2=\\pm3i$. Squaring gives $(x+2)^2=-9$, so $x^2+4x+4+9=0$, that is $x^2+4x+13=0$. The constant is the square of the real part plus the square of the imaginary part: $2^2+3^2=13$.",
-        "If the right side is not a perfect square, keep the radical: $(x+1)^2=-5$ gives $x=-1\\pm\\sqrt5\\,i$.",
+        "If the number on the right, without its minus sign, is not a perfect square (a whole number times itself), keep the square root sign: $(x+1)^2=-5$ gives $x=-1\\pm\\sqrt5\\,i$.",
       ],
     },
     {
@@ -636,7 +647,8 @@ const complexQuadraticSolveLesson: Lesson = {
 const complexPartsMethod: ProblemMethod = {
   goal: "Name the real and imaginary parts of a complex number, simplify powers of $i$, and write a root of a negative number as $a+bi$.",
   intuition:
-    "Every complex number is written $a+bi$: a real number $a$ plus a real multiple $b$ of $i$, where $i^2=-1$. The two real numbers $a$ and $b$ tell you everything about it.",
+    "Every complex number is written $a+bi$: a real number $a$ plus a real number $b$ times $i$, where $i^2=-1$. The two real numbers $a$ and $b$ tell you everything about it.",
+  senses: { square: "square-number" },
   terms: [
     "real-part",
     "imaginary-part",
@@ -661,8 +673,14 @@ const complexPartsLesson: Lesson = {
   id: "complex-parts",
   title: "Parts of a complex number and its powers",
   summary:
-    "A complex number $a+bi$ has real part $a$ and imaginary part $b$. Powers of $i$ repeat every four steps.",
+    "A complex number $a+bi$, where $i^2=-1$, is built from two real numbers: its real part $a$ and its imaginary part $b$. Multiplying by $i$ over and over gives $i$, $-1$, $-i$, $1$, and then the same four values again. So $i$ raised to any whole-number power is one of those four.",
   templateIds: ["complex-parts"],
+  senses: {
+    square: "square-number",
+    squares: "square-number",
+    root: "root-radical",
+  },
+  noLink: ["part", "leaves"],
   objectives: [
     "State the real and imaginary parts of $a+bi$, including when a part is 0.",
     "Simplify $i^n$ and $c\\,i^n$ with the cycle of four.",
@@ -673,7 +691,7 @@ const complexPartsLesson: Lesson = {
       stage: "intuition",
       title: "Two real numbers and one new number",
       paragraphs: [
-        "The number $i$ is defined by $i^2=-1$. A complex number is $a+bi$ with real $a$ and $b$. For $3-5i$ the real part is 3 and the imaginary part is $-5$. The number $-5i$ has real part 0, and the number 4 has imaginary part 0, since $4=4+0i$.",
+        "No real number squares to a negative number, so the number $i$, called the imaginary unit, is defined by $i^2=-1$. A complex number is $a+bi$ with real $a$ and $b$. For $3-5i$ the real part is 3 and the imaginary part is $-5$. The number $-5i$ has real part 0, and the number 4 has imaginary part 0, since $4=4+0i$.",
         "Multiplying by $i$ again and again gives a cycle: $i^1=i$, $i^2=-1$, $i^3=i^2\\cdot i=-i$, $i^4=(i^2)^2=1$, then $i^5=i$ and the cycle repeats.",
       ],
     },
@@ -681,7 +699,7 @@ const complexPartsLesson: Lesson = {
   workedExample: {
     prompt: "Simplify $i^{27}$, and write $5-\\sqrt{-16}$ in the form $a+bi$.",
     steps: [
-      "The powers of $i$ repeat every 4. Divide 27 by 4: $27=4\\cdot6+3$, remainder 3.",
+      "The powers of $i$ repeat every 4, so only the remainder after dividing by 4 matters. Divide 27 by 4: $27=4\\cdot6+3$, remainder 3.",
       "So $i^{27}=(i^4)^6\\cdot i^3=1\\cdot(-i)=-i$.",
       "For the second number, $\\sqrt{-16}=\\sqrt{16}\\,i=4i$.",
       "Keep the minus sign in front: $5-4i$. Its real part is 5 and its imaginary part is $-4$.",
@@ -708,7 +726,7 @@ const complexPartsLesson: Lesson = {
   pitfalls: [
     "The imaginary part of $3-5i$ is $-5$, not $-5i$.",
     "Do not square the root: $\\sqrt{-16}=4i$, not $16i$.",
-    "Reduce the exponent by 4 before simplifying a power of $i$.",
+    "Replace the exponent by its remainder after dividing by 4 before simplifying a power of $i$.",
   ],
   parentGuide:
     "Ask what $i^2$ and $i^4$ are, then ask how that tells you where $i^{27}$ lands in the cycle.",
