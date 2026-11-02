@@ -416,11 +416,12 @@ try {
         return Math.max(0, ...widths);
       });
       assert.ok(space >= 4, `${label}: title word space is ${space}px`);
-      // No empty band between the actions and the contents card.
+      // No empty band between the last choice (the areas row) and the
+      // contents card.
       const gap = await page.evaluate(() => {
         const actions = document
-          .querySelector("main [data-workbook-actions]")!
-          .getBoundingClientRect();
+          .querySelector("main [role=group][aria-label=Areas]")!
+          .parentElement!.getBoundingClientRect();
         const contents = document
           .querySelector("main [aria-label='Workbook contents']")!
           .getBoundingClientRect();

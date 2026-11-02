@@ -249,6 +249,35 @@ function Today({
   return (
     <>
       <Head learner={learner} date={date} />
+      {/* The actions come first: never under the toast, always in reach. */}
+      <div className={styles.actions} data-workbook-actions>
+        <Button
+          variant="primary"
+          className={styles.download}
+          disabled={!ready || downloading}
+          aria-busy={downloading || (!ready && !loadError)}
+          onClick={() => void download()}
+        >
+          {(ready || loadError) && !downloading
+            ? "Download workbook"
+            : "Preparing…"}
+        </Button>
+        <Button
+          variant="secondary"
+          className={styles.another}
+          disabled={!current || another.isPending}
+          aria-busy={another.isPending}
+          onClick={() => roll(choices)}
+        >
+          <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.dice}>
+            <rect x="2.5" y="2.5" width="15" height="15" rx="3.5" />
+            <circle cx="7" cy="7" r="1.3" />
+            <circle cx="13" cy="13" r="1.3" />
+            <circle cx="10" cy="10" r="1.3" />
+          </svg>
+          {another.isPending ? "Rolling…" : "Roll another"}
+        </Button>
+      </div>
       <div className={styles.controls}>
         <Segmented<"30" | "45" | "60">
           compact
@@ -319,34 +348,6 @@ function Today({
             })),
           ]}
         />
-      </div>
-      <div className={styles.actions} data-workbook-actions>
-        <Button
-          variant="primary"
-          className={styles.download}
-          disabled={!ready || downloading}
-          aria-busy={downloading || (!ready && !loadError)}
-          onClick={() => void download()}
-        >
-          {(ready || loadError) && !downloading
-            ? "Download workbook"
-            : "Preparing…"}
-        </Button>
-        <Button
-          variant="secondary"
-          className={styles.another}
-          disabled={!current || another.isPending}
-          aria-busy={another.isPending}
-          onClick={() => roll(choices)}
-        >
-          <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.dice}>
-            <rect x="2.5" y="2.5" width="15" height="15" rx="3.5" />
-            <circle cx="7" cy="7" r="1.3" />
-            <circle cx="13" cy="13" r="1.3" />
-            <circle cx="10" cy="10" r="1.3" />
-          </svg>
-          {another.isPending ? "Rolling…" : "Roll another"}
-        </Button>
       </div>
       {/* An action that fails says so in the shared toast, over the page. */}
       <Toast message={message} onDismiss={() => setMessage("")} />
