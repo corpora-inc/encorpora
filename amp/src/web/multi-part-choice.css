@@ -421,7 +421,9 @@
   }
   .multi-part-table tr {
     display: grid;
-    grid-template-columns: repeat(var(--columns, 2), minmax(0, 1fr));
+    /* Leave room for the radio and whole label words, including when a
+       scrollbar takes space from the practice stage. */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
     gap: var(--space-2);
     padding: var(--space-3) 0;
     border-bottom: 1px solid var(--color-border);
@@ -462,6 +464,9 @@
   .multi-part-cell-text {
     display: block;
     min-width: 0;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
     font-size: var(--text-label);
     font-weight: 600;
     line-height: 1.25;

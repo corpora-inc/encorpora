@@ -228,6 +228,10 @@ const interestTable = (rows: [string, number[]][], cents: boolean) =>
     )
     .join("\\\\")}\\end{array}$`;
 
+const interestWords = [
+  "Simple interest is paid only on the original deposit, the principal, so it is the same amount every year.",
+  "Compound interest is paid on the whole balance, including earlier interest, so the yearly interest grows.",
+];
 export function interestCompareYearsCase(seed: string): FinanceCase {
   checkSeed(seed);
   const m = interestCompareYearsTemplate;
@@ -252,6 +256,7 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
           prompt: `Two accounts each start with ${usd(Pc)} and earn ${pct}% interest a year. Account S pays simple interest on the original deposit only. Account C pays compound interest: each year's interest is added to the balance at the end of the year, rounded to the nearest cent, and earns interest the next year. Nothing else is added or withdrawn. After ${t} years, how much more does Account C hold than Account S?`,
           hint: `Account S earns ${usd((Pc * pct) / 100)} every year, the same amount. Find Account C's balance one year at a time, using ${pct}% of the balance at the start of that year, then subtract Account S's balance.`,
           explanation: [
+            ...interestWords,
             `Account S earns ${pct}% of ${usd(Pc)} = ${usd((Pc / 100) * pct)} each year, so after ${t} years it holds ${usd(Pc)} + ${t} × ${usd((Pc / 100) * pct)} = ${usd(S(t))}.`,
             `Account C's year-end balances are ${C.slice(1)
               .map(usd)
@@ -259,6 +264,7 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
                 ", ",
               )}, each found by adding ${pct}% of the previous balance, rounded to the cent.`,
             `The gap is ${usd(C[t]!)} − ${usd(S(t))} = ${usd(diff)}.`,
+            `After ${t} years, Account C holds ${usd(diff)} more than Account S.`,
           ],
           correct: usd(diff),
           wrong: mw([
@@ -334,9 +340,11 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
           prompt: `Account ${simpleName} starts with ${usd(Pc)} and pays ${rateS}% simple interest a year. Account ${compName} also starts with ${usd(Pc)} and pays ${rateC}% interest a year, compounded: each year's interest, rounded to the nearest cent, is added to the balance. With no deposits or withdrawals, which account holds more after ${t} years, and by how much?`,
           hint: `Account ${simpleName} adds ${usd((Pc / 100) * rateS)} every year. Build Account ${compName}'s balance year by year at ${rateC}% of the balance at the start of each year, then compare the two balances after ${t} years.`,
           explanation: [
+            ...interestWords,
             `Account ${simpleName} earns ${usd((Pc / 100) * rateS)} each year, so it holds ${usd(Pc)} + ${t} × ${usd((Pc / 100) * rateS)} = ${usd(A)}.`,
             `Account ${compName} compounds at ${rateC}%. Its year-end balances are ${C.slice(1).map(usd).join(", ")}, so it holds ${usd(C[t]!)}.`,
             `Account ${winner} holds more. The gap is ${usd(Math.max(A, C[t]!))} − ${usd(Math.min(A, C[t]!))} = ${usd(diff)}.`,
+            `After ${t} years, Account ${winner} holds ${usd(diff)} more than Account ${loser}.`,
           ],
           correct: lab(winner, diff),
           wrong: cand,
@@ -375,6 +383,7 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
           prompt: `Both accounts started with ${usd(Pc)} and earn the same yearly rate; nothing is added or withdrawn. One account pays simple interest and one pays compound interest. The table shows year-end balances in dollars. Which statement is true?\n${interestTable(rows, cents)}`,
           hint: `Look at how much each account grows from one year to the next. The account that earns simple interest grows by the same amount every year; find the other account's increases, then compare the year ${t} balances.`,
           explanation: [
+            ...interestWords,
             `Account ${other} grows by ${usd((Pc / 100) * pct)} every year, so it earns simple interest.`,
             `Account ${compName} grows by a larger amount each year: ${C.slice(
               1,
@@ -382,6 +391,7 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
               .map((v, i) => usd(v - C[i]!))
               .join(", ")}. It earns compound interest.`,
             `After ${t} years the balances are ${usd(C[t]!)} and ${usd(S[t]!)}, a gap of ${usd(diff)}.`,
+            `So Account ${compName} earns compound interest, and after ${t} years it holds ${usd(diff)} more than Account ${other}.`,
           ],
           correct: lab(compName, diff),
           wrong: [
@@ -420,9 +430,11 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
         prompt: `Account S pays ${pct}% simple interest and Account C pays ${pct}% interest compounded yearly with each year's interest rounded to the nearest cent. Each starts with ${usd(Pc)} and nothing else is added or withdrawn. During year 2, how much more interest does Account C earn than Account S?`,
         hint: `Account S earns the same interest every year, ${pct}% of ${usd(Pc)}. In year 2 Account C earns ${pct}% of its balance at the end of year 1, which includes year 1's interest.`,
         explanation: [
+          ...interestWords,
           `Each account earns ${pct}% of ${usd(Pc)} = ${usd(int1)} in year 1. Account S earns ${usd(int1)} in year 2 as well.`,
           `Account C starts year 2 with ${usd(C[1]!)}, so it earns ${pct}% of that, ${usd(int2)}, rounded to the cent.`,
           `The difference is ${usd(int2)} − ${usd(int1)} = ${usd(diff)}, the interest earned on year 1's interest.`,
+          `So Account C earns ${usd(diff)} more interest than Account S during year 2.`,
         ],
         correct: usd(diff),
         wrong: mw([
