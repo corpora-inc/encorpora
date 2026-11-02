@@ -58,7 +58,6 @@ const sequenceFunctionMethod: ProblemMethod = {
     "quarters",
     "one quarter",
     "mirror image",
-
     "rules",
     "opposite",
     "opposites",
@@ -239,7 +238,6 @@ const geometricRuleFormsMethod: ProblemMethod = {
     "quarters",
     "one quarter",
     "mirror image",
-
     "rules",
     "opposite",
     "opposites",
@@ -746,11 +744,9 @@ const interpretLinearParametersMethod: ProblemMethod = {
     "rules",
     "opposite",
     "opposites",
-
     "average",
     "decreasing",
     "increasing",
-
     "models",
     "pattern",
     "patterns",

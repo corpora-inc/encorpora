@@ -196,7 +196,7 @@ export const linearFunctionLessons: Lesson[] = [
     ],
     includeGeneratedRepresentation: false,
     senses,
-    noLink: noLink.filter((w) => !["more than"].includes(w)),
+    noLink,
     objectives: [
       "Write an equation or inequality for a real situation, saying what the letter counts.",
       "Tell the starting amount from the rate in words, tables and graphs, and solve the model.",
@@ -388,7 +388,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   "context-domain-range": {
     goal: "Choose the inputs or outputs that make sense for a function that describes a real situation.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["more than"].includes(w)),
     intuition: `${functionWords} The domain is every input that makes sense, and the range is every output those inputs give. A count of things, like people, can only be a whole number. An amount like time or water can take any value in between.`,
     terms: ["domain", "range-function"],
     method: [
@@ -442,7 +442,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   "linear-model-value": {
     goal: "Write an equation or inequality for a real situation, then solve it.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["more than"].includes(w)),
     intuition:
       "Many real totals have two parts. The starting amount is paid once, such as a 3-dollar taxi fee. The rate is paid for each unit, such as 2 dollars per mile, so it multiplies the letter. Together they give a linear model: total $= 2d + 3$, where $2d$ means 2 times $d$. “At most” gives an inequality with $\\le$, meaning “less than or equal to”.",
     terms: ["initial-value", "rate"],

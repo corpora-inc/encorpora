@@ -168,8 +168,8 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
     intuition:
       "A rule like $y = ax^2 + bx + c$, with $a \\ne 0$, is called a quadratic. It has three unknown numbers, so it usually takes three facts that fit together to fix it. Its graph is a U-shaped curve called a parabola. A zero is an $x$-value where $y = 0$. Two zeros $p$ and $q$ give the form $y = a(x - p)(x - q)$. The vertex is the turning point; a vertex $(h, k)$ gives $y = a(x - h)^2 + k$. One more point, other than the zeros or the vertex, then fixes $a$, which sets how steep and which way up the curve is.",
     terms: ["zero-of-a-function", "vertex-parabola", "second-difference"],
-    senses: { ...satSenses, rule: "rule", opposite: "opposite-number" },
-    noLink: satNoLink.filter((w) => !["opposite", "rule"].includes(w)),
+    senses: { ...satSenses, rule: "rule" },
+    noLink: satNoLink.filter((w) => !["rule", "change"].includes(w)),
     method: [
       "Choose the form that fits the facts: $y = a(x - p)(x - q)$ for zeros $p$ and $q$, $y = a(x - h)^2 + k$ for vertex $(h, k)$, or $y = ax^2 + bx + c$ for a table or points.",
       "For factored form (the form $a(x - p)(x - q)$) or vertex form (the form $a(x - h)^2 + k$), put the extra point into it and solve for $a$. For a table with equal steps $h$, use $a = \\frac{\\text{second difference}}{2h^2}$.",

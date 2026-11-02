@@ -138,7 +138,6 @@ const glossary: Record<
   "average-rate-display": {
     senses: {
       change: "change",
-
       degrees: "degree-temperature",
       difference: "difference-subtract",
       unit: "unit",
@@ -148,7 +147,6 @@ const glossary: Record<
   "average-rate-formula": {
     senses: {
       change: "change",
-
       difference: "difference-subtract",
       unit: "unit",
       units: "unit",
@@ -163,7 +161,6 @@ const glossary: Record<
       change: "change",
       changes: "change",
       difference: "difference-subtract",
-
       unit: "unit",
     },
   },
@@ -214,7 +211,6 @@ const glossary: Record<
   "cavalieri-volume-reasoning": {
     senses: {
       edge: "edge",
-
       multiple: "multiple",
       side: "side",
       sides: "side",
@@ -266,7 +262,7 @@ const glossary: Record<
     },
     noLink: ["opposite", "right side", "sides"],
   },
-  "circle-estimate-blanks": { noLink: ["center", "edge"] },
+  "circle-estimate-blanks": { noLink: ["edge"] },
   "circle-line-system": {
     senses: { square: "square-number", squared: "square-number" },
     noLink: ["intersections", "leaves", "part", "right side"],
@@ -338,7 +334,6 @@ const glossary: Record<
   "compare-fractions": { senses: { multiple: "multiple", rename: "rename" } },
   "compare-irrational-values": {
     senses: { root: "root-radical", square: "square-number" },
-    noLink: ["roots", "squaring"],
   },
   "compare-like-denominators": { senses: { "more than": "more-than" } },
   "compare-like-numerators": { senses: { "more than": "more-than" } },
@@ -420,7 +415,6 @@ const glossary: Record<
       factor: "factor-number",
       "left side": "side-of-equation",
       opposite: "opposite-number",
-
       side: "side-of-equation",
       sides: "side-of-equation",
     },
@@ -548,7 +542,6 @@ const glossary: Record<
       "one quarter": "fourth",
       quarters: "fourth",
       units: "unit",
-
       roots: "root-equation",
     },
   },
@@ -723,7 +716,6 @@ const glossary: Record<
     senses: {
       "left side": "side-of-equation",
       "right side": "side-of-equation",
-
       side: "side-of-equation",
       sides: "side-of-equation",
       term: "term-expression",
@@ -746,7 +738,6 @@ const glossary: Record<
     senses: {
       unit: "unit",
       units: "unit",
-
       population: "population",
     },
     noLink: ["sample"],
@@ -762,7 +753,6 @@ const glossary: Record<
   "depreciation-recursion": {
     senses: {
       factor: "factor-number",
-
       rule: "rule",
       term: "term-sequence",
     },
@@ -778,7 +768,6 @@ const glossary: Record<
   },
   "eighths-and-parts-beyond-one": {
     senses: { part: "part", parts: "part", eighths: "eighth", whole: "whole" },
-    noLink: ["eighth"],
   },
   "elevation-depression-steps": {
     senses: { "opposite side": "opposite-side-angle", tangent: "tangent-trig" },
@@ -932,12 +921,9 @@ const glossary: Record<
   "exponential-time-scale": {
     senses: {
       base: "base-exponent",
-
       changes: "change",
       unit: "unit",
-
       model: "model",
-
       root: "root-equation",
     },
     noLink: ["increasing", "index", "interval", "intervals", "rule"],
@@ -1074,7 +1060,6 @@ const glossary: Record<
       term: "term-expression",
       terms: "term-expression",
       "left side": "side-of-equation",
-
       "right side": "side-of-equation",
       sides: "side-of-equation",
     },
@@ -1110,14 +1095,13 @@ const glossary: Record<
       factors: "factor-number",
       image: "image-transformation",
     },
-    noLink: ["base", "part", "rule", "rules"],
+    noLink: ["part", "rule", "rules"],
   },
   "geo-centroid-median": {
     senses: { vertex: "vertex", "opposite side": "opposite-side-angle" },
     noLink: [
       "balance",
       "median of a triangle",
-
       "part",
       "parts",
       "thirds",
@@ -1179,7 +1163,7 @@ const glossary: Record<
   },
   "geo-isosceles-exterior-angle": {
     senses: { degrees: "degree-angle", vertex: "vertex" },
-    noLink: ["base", "opposite", "sides"],
+    noLink: ["opposite", "sides"],
   },
   "geo-isosceles-trig": {
     senses: {
@@ -1190,12 +1174,11 @@ const glossary: Record<
       sides: "side",
       tangent: "tangent-trig",
     },
-    noLink: ["base", "opposite", "whole"],
+    noLink: ["opposite", "whole"],
   },
   "geo-line-pair-relationship": {
     senses: {
       term: "term-expression",
-
       product: "product-multiply",
       "standard form": "standard-form-line",
     },
@@ -1231,7 +1214,6 @@ const glossary: Record<
       sides: "side",
       vertex: "vertex",
       "corresponding angles": "corresponding-angles",
-
       similar: "similar-figures",
     },
     noLink: ["opposite", "similar triangles"],
@@ -1259,7 +1241,6 @@ const glossary: Record<
   "geo-rigid-statement": {
     senses: {
       "corresponding angle": "corresponding-angles",
-
       side: "side",
       sides: "side",
       vertices: "vertex",
@@ -1276,10 +1257,9 @@ const glossary: Record<
     senses: {
       side: "side",
       sides: "side",
-
       degree: "degree-angle",
     },
-    noLink: ["base", "mode"],
+    noLink: ["mode"],
   },
   "geo-section-impossible": {
     senses: {
@@ -1339,7 +1319,7 @@ const glossary: Record<
       model: "model",
       models: "model",
     },
-    noLink: ["base", "boundary", "opposite", "part", "whole"],
+    noLink: ["boundary", "opposite", "part", "whole"],
   },
   "geometric-rule-forms": {
     senses: { term: "term-sequence", terms: "term-sequence", rule: "rule" },
@@ -1493,7 +1473,6 @@ const glossary: Record<
       change: "change",
       event: "event",
       multiple: "multiple",
-
       complements: "complement-probability",
     },
   },
@@ -1502,7 +1481,7 @@ const glossary: Record<
   },
   "inequality-solution-blanks": {
     senses: { sides: "side-of-equation" },
-    noLink: ["rule", "side"],
+    noLink: ["rule"],
   },
   "inequality-solution-point": { noLink: ["solid"] },
   "infinite-geometric-sum": {
@@ -1528,7 +1507,6 @@ const glossary: Record<
       change: "change",
       changes: "change",
       model: "model",
-
       unit: "unit",
       units: "unit",
     },
@@ -1573,7 +1551,7 @@ const glossary: Record<
       degree: "degree-angle",
       degrees: "degree-angle",
     },
-    noLink: ["base", "whole", "mode"],
+    noLink: ["whole", "mode"],
   },
   "larger-share": { senses: { wholes: "whole", whole: "whole" } },
   "least-common-multiple": {
@@ -1601,7 +1579,6 @@ const glossary: Record<
   "linear-model-equation": {
     senses: {
       change: "change",
-
       unit: "unit",
       model: "model",
       models: "model",
@@ -1826,7 +1803,6 @@ const glossary: Record<
   "model-quantity-roles": {
     senses: {
       change: "change",
-
       unit: "unit",
       units: "unit",
       model: "model",
@@ -2035,7 +2011,7 @@ const glossary: Record<
     senses: { change: "change", opposite: "opposite-number", part: "part" },
     noLink: ["rule"],
   },
-  "operation-sentence-choice": { senses: { jump: "jump", jumps: "jump" } },
+  "operation-sentence-choice": { senses: { jumps: "jump" } },
   "outlier-center-shift": {
     senses: {
       change: "change",
@@ -2222,7 +2198,6 @@ const glossary: Record<
       terms: "term-expression",
       factor: "factor-number",
       factors: "factor-number",
-
       product: "product-multiply",
       products: "product-multiply",
     },
@@ -2355,7 +2330,6 @@ const glossary: Record<
   "precise-geometric-definitions": {
     senses: {
       center: "center",
-
       sides: "side",
       vertex: "vertex",
     },
@@ -2817,7 +2791,6 @@ const glossary: Record<
   "residual-function-fit": {
     senses: {
       differences: "difference-subtract",
-
       model: "model",
     },
   },
@@ -2907,7 +2880,7 @@ const glossary: Record<
       sides: "side",
       degree: "degree-angle",
     },
-    noLink: ["base", "mode"],
+    noLink: ["mode"],
   },
   "rg-triangle-third-side-test": {
     senses: { difference: "difference-subtract", side: "side", sides: "side" },
@@ -2919,14 +2892,12 @@ const glossary: Record<
   "root-between-integers": { senses: { factor: "factor-number" } },
   "root-nearest-tenth": {
     senses: { squaring: "square-number" },
-    noLink: ["square", "squares"],
   },
   "same-base-equation": {
     senses: {
       base: "base-exponent",
       bases: "base-exponent",
       "left side": "side-of-equation",
-
       "right side": "side-of-equation",
       side: "side-of-equation",
       sides: "side-of-equation",
@@ -2957,7 +2928,7 @@ const glossary: Record<
       degree: "degree-angle",
       product: "product-multiply",
     },
-    noLink: ["base", "mode", "square"],
+    noLink: ["mode", "square"],
   },
   "sat-entry-absolute-equation": {
     senses: {
@@ -3073,7 +3044,6 @@ const glossary: Record<
   "sat-entry-system-expression": {
     senses: {
       difference: "difference-subtract",
-
       "left side": "side-of-equation",
       "right side": "side-of-equation",
       side: "side-of-equation",
@@ -3097,20 +3067,16 @@ const glossary: Record<
   "sat-fn-exponential-choice": {
     senses: {
       change: "change",
-
       unit: "unit",
       units: "unit",
       base: "base-exponent",
-
       model: "model",
-
       root: "root-equation",
     },
   },
   "sat-fn-line-equation-choice": {
     senses: {
       change: "change",
-
       unit: "unit",
       units: "unit",
       plane: "plane",
@@ -3140,7 +3106,6 @@ const glossary: Record<
   "section-revolution-solid": {
     senses: {
       center: "center",
-
       side: "side",
       sides: "side",
       plane: "plane",
@@ -3166,7 +3131,6 @@ const glossary: Record<
   "series-recursion": {
     senses: {
       change: "change",
-
       "more than": "more-than",
       term: "term-sequence",
       terms: "term-sequence",
@@ -3206,10 +3170,7 @@ const glossary: Record<
     },
     noLink: ["whole"],
   },
-  "show-work-rental-plans": {
-    senses: { sides: "side-of-equation" },
-    noLink: ["side"],
-  },
+  "show-work-rental-plans": { senses: { sides: "side-of-equation" } },
   "sigma-notation-represent": {
     senses: {
       difference: "difference-subtract",
@@ -3225,7 +3186,6 @@ const glossary: Record<
     noLink: ["factors"],
   },
   "signed-fraction-sum": { senses: { factor: "factor-number" } },
-  "signed-quantity": { noLink: ["opposite"] },
   "similar-solid-scale-chain": {
     senses: {
       multiple: "multiple",
@@ -3352,7 +3312,6 @@ const glossary: Record<
   "solid-volume-context": {
     senses: {
       base: "base-shape",
-
       solid: "solid-shape",
       solids: "solid-shape",
       square: "square-number",
@@ -3401,7 +3360,6 @@ const glossary: Record<
       "left side": "side-of-equation",
       side: "side-of-equation",
       sides: "side-of-equation",
-
       term: "term-expression",
       terms: "term-expression",
     },
@@ -3410,7 +3368,6 @@ const glossary: Record<
   "solve-justify-quadratic": {
     senses: {
       product: "product-multiply",
-
       side: "side-of-equation",
       sides: "side-of-equation",
       factor: "factor-number",
@@ -3640,7 +3597,6 @@ const glossary: Record<
   "transformation-invariant-claims": {
     senses: {
       change: "change",
-
       image: "image-transformation",
       similar: "similar-figures",
       vertices: "vertex",

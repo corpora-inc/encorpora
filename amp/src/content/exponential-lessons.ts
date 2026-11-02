@@ -67,7 +67,6 @@ export const exponentialLessons: Lesson[] = [
       "rules",
       "opposite",
       "opposites",
-
       "units",
       "average",
       "decreasing",
@@ -631,7 +630,6 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       "rules",
       "opposite",
       "opposites",
-      "unit",
       "units",
       "average",
       "decreasing",
@@ -803,7 +801,6 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     senses: {
       difference: "difference-subtract",
       base: "base-exponent",
-
       product: "product-multiply",
     },
 
@@ -845,7 +842,6 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     goal: "Given a logarithm in an awkward base, or a product or quotient of logs, find its value.",
     senses: {
       base: "base-exponent",
-
       factor: "factor-number",
       product: "product-multiply",
     },

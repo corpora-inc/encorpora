@@ -199,7 +199,6 @@ const specs: Spec[] = [
       "quarter",
       "key",
       "argument",
-
       "prime",
     ],
     intuition: [
@@ -295,7 +294,6 @@ const specs: Spec[] = [
       "mean",
       "product",
       "term",
-
       "scale",
       "thirds",
       "boundary",
@@ -484,6 +482,7 @@ const specs: Spec[] = [
       multiple: "multiple",
       "one third": "third",
       squared: "square-number",
+      square: "square-shape",
     },
     noLink: [
       "opposite",
@@ -493,9 +492,7 @@ const specs: Spec[] = [
       "rules",
       "third",
       "whole",
-
       "changes",
-
       "factor",
       "more than",
       "leaves",
@@ -612,7 +609,6 @@ const specs: Spec[] = [
       "thirds",
       "boundary",
       "identity",
-
       "key",
       "argument",
       "opposite side",
@@ -697,7 +693,6 @@ const specs: Spec[] = [
       "third",
       "whole",
       "change",
-
       "square",
       "squares",
       "squared",
@@ -805,7 +800,6 @@ const specs: Spec[] = [
       "squared",
       "factor",
       "factors",
-
       "leaves",
       "mean",
       "product",

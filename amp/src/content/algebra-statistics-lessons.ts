@@ -406,7 +406,6 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
       range: "range-statistics",
       tail: "tail",
       mean: "mean-average",
-
       change: "change",
     },
     noLink: ["side", "sides", "center"],
@@ -453,7 +452,6 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
       part: "part",
       differences: "difference-subtract",
     },
-
     intuition:
       "A conditional percent is a count divided by the total of one row or one column of a two-way table: the group named after “of”. Two questions are associated when the same answer is clearly more common in one group than in another. So compare the percent giving that answer within each group.",
     terms: ["conditional-relative-frequency"],

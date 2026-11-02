@@ -190,7 +190,6 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
       "rules",
       "opposite",
       "opposites",
-
       "decreasing",
       "increasing",
       "model",

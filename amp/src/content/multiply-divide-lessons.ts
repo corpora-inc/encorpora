@@ -19,7 +19,7 @@ const divideSenses: GlossarySenses = {
   "more than": "more-than",
 };
 /** Everyday uses: "change it to", "leaves 120", "the whole quotient". */
-const divideNoLink = ["change", "leaves", "whole"];
+const divideNoLink = ["change", "leaves"];
 
 export const multiplyDivideLessons: Lesson[] = [
   {

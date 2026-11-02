@@ -120,7 +120,7 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
   },
   "geo-sas-triangle-area": {
     goal: "Use two sides and the angle between them to find the area, including for an obtuse angle.",
-    senses: sensesWithout(GEO_SENSES, "base"),
+    senses: { ...GEO_SENSES, base: "base-flat-shape" },
     noLink: GEO_NOLINK,
     intuition:
       "A triangle's area is half its base times its height, where the height is measured straight up from the base, at a right angle (a square corner). Suppose you know two sides, $a$ and $b$, and the angle $C$ between them. Then the height to side $a$ is $b\\sin C$: side $b$ times the sine of the angle, a number a calculator gives. When $C$ is acute (under $90^\\circ$), the height and side $b$ form a right triangle with side $b$ as its longest side. Sine is the side opposite $C$ divided by that longest side, so the height is $b\\sin C$. When $C$ is obtuse (over $90^\\circ$), the height falls outside the triangle and the right triangle uses the angle $180^\\circ-C$. Its sine equals $\\sin C$, so the height is still $b\\sin C$. So the area is $\\frac12ab\\sin C$, and no separate height is needed.",
@@ -135,7 +135,7 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
   },
   "geo-isosceles-trig": {
     goal: "Split an isosceles triangle into two right triangles and use trigonometry to find a perimeter or a base angle.",
-    senses: GEO_SENSES,
+    senses: { ...GEO_SENSES, base: "base-flat-shape" },
     noLink: GEO_NOLINK,
     intuition:
       "An isosceles triangle has two equal sides. They meet at the apex, and the angle there is the apex angle. The third side is the base. The altitude is the line from the apex straight down to the base, meeting it at a right angle, a square corner. It splits the triangle into two matching right triangles. It halves the apex angle and halves the base. In each right triangle, the altitude and half the base are the legs, and an equal side is the hypotenuse. Tangent is the ratio of the leg across from an angle to the leg beside it.",

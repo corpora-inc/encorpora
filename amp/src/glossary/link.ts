@@ -56,6 +56,7 @@ export function contextConflicts(context: LinkContext): string[] {
 const isDev = () =>
   (globalThis as { process?: { env?: Record<string, string | undefined> } })
     .process?.env?.NODE_ENV !== "production";
+
 const warned = new Set<string>();
 
 /** Warns once per conflicting form set outside production: a context that

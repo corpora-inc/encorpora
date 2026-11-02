@@ -131,8 +131,9 @@ const entries: WorkEntry[] = [
       degrees: "degree-angle",
       vertex: "vertex",
       product: "product-multiply",
+      base: "base-flat-shape",
     },
-    noLink: ["mode", "base", "square"],
+    noLink: ["mode", "square"],
   },
   {
     id: "trig-leg-steps",
@@ -301,6 +302,7 @@ const entries: WorkEntry[] = [
       tangent: "tangent-trig",
       "opposite leg": "opposite-side-angle",
       square: "square-number",
+      base: "base-flat-shape",
     },
     noLink: ["whole", "opposite", "third", "rule"],
   },

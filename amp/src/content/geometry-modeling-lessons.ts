@@ -28,9 +28,7 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "whole",
       "rule",
       "rules",
-
       "squares",
-
       "squaring",
       "part",
       "parts",
@@ -42,7 +40,6 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "more than",
       "leaves",
       "scale",
-
       "third",
       "product",
     ],
@@ -125,8 +122,8 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
   "geometric-model-choice": {
     goal: "Choose the solid that models an object and the measure a task needs, then compute that measure from the model.",
     senses: {
+      base: "base-flat-shape",
       side: "side",
-
       plane: "plane",
       solid: "solid-shape",
       face: "face-solid",
@@ -312,7 +309,6 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       plane: "plane",
       solid: "solid-shape",
       face: "face-solid",
-
       center: "center",
       cube: "cube",
       unit: "unit",
@@ -394,7 +390,6 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "whole",
       "rule",
       "rules",
-
       "squares",
       "squared",
       "squaring",

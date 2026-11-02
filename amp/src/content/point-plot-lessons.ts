@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
@@ -58,6 +59,8 @@ type Entry = {
   goal?: string;
   /** Senses that differ from the shared ones (a polygon's corners). */
   senses?: Record<string, string>;
+  /** Shared senses that are ordinary words here ("both sides" of a parabola). */
+  ordinary?: string[];
   summary: string;
   objectives: [string, string];
   intuition: string;
@@ -270,6 +273,7 @@ const entries: Entry[] = [
   {
     id: "graph-quadratic-points",
     title: "Graph a parabola by placing points",
+    ordinary: ["side", "sides"],
     goal: "Graph a parabola by finding its turning point, the vertex, and then points on both sides of it.",
     summary:
       "A graph shows, as points $(x, y)$ on a grid, every pair that makes an equation true. An equation with $x^2$ ($x$ times $x$) and no higher power, such as $y = 2(x - 1)^2 - 3$, makes a U-shaped graph called a parabola. Its turning point is called the vertex. The two sides are mirror images of each other. So find the vertex first, then put in integers (the whole numbers and their negatives) next to it to find more points.",
@@ -530,7 +534,7 @@ const noLink = [
 
 const stripFormat = (e: Entry): ProblemMethod => ({
   goal: e.goal ?? e.summary,
-  senses: { ...senses, ...e.senses },
+  senses: sensesWithout({ ...senses, ...e.senses }, ...(e.ordinary ?? [])),
   noLink,
   intuition: e.intuition,
   terms: e.terms,
@@ -549,7 +553,7 @@ export const pointPlotLessons: Lesson[] = entries.map((e) => ({
   id: e.id,
   title: e.title,
   summary: e.summary,
-  senses: { ...senses, ...e.senses },
+  senses: sensesWithout({ ...senses, ...e.senses }, ...(e.ordinary ?? [])),
   noLink,
   templateIds: [e.id],
   objectives: [...e.objectives],

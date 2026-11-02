@@ -33,7 +33,6 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
     senses: {
       change: "change",
       part: "part",
-
       rule: "rule",
     },
     goal: "Choose the equation for a flat fee that covers the first hours plus a rate for each extra hour, grouped or multiplied out.",

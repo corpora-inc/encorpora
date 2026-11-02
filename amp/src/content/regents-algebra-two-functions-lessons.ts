@@ -157,7 +157,6 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
         "rules",
         "opposite",
         "opposites",
-
         "average",
         "decreasing",
         "increasing",

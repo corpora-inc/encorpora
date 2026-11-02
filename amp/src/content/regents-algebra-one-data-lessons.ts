@@ -53,7 +53,6 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     senses: {
       rules: "rule",
       increasing: "increasing",
-      whole: "whole",
       factor: "factor-number",
       difference: "difference-subtract",
       changes: "change",

@@ -185,7 +185,6 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       side: "side",
       vertex: "vertex",
       image: "image-transformation",
-
       factors: "scale-factor",
       factor: "scale-factor",
     },
