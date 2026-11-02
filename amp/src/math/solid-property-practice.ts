@@ -42,13 +42,28 @@ export const solids: readonly Solid[] = [
   },
   { name: "Hexagonal pyramid", faces: 7, edges: 12, vertices: 7, prism: false },
 ];
+/** Sides of the base: a prism has n + 2 faces and 3n edges; a pyramid has
+ * n + 1 faces and 2n edges. */
+const baseSides = (s: Solid) => (s.prism ? s.edges / 3 : s.edges / 2);
+const facesWhy = (s: Solid) => {
+  const n = baseSides(s);
+  return s.prism
+    ? `${s.name} has 2 bases and ${n} side faces, one for each side of a base: 2 + ${n} = ${s.faces} faces.`
+    : `${s.name} has 1 base and ${n} triangle faces, one for each side of the base: 1 + ${n} = ${s.faces} faces.`;
+};
+const edgesWhy = (s: Solid) => {
+  const n = baseSides(s);
+  return s.prism
+    ? `${s.name} has ${n} edges around each base and ${n} joining them: ${n} + ${n} + ${n} = ${s.edges} edges.`
+    : `${s.name} has ${n} edges around the base and ${n} rising to the point: ${n} + ${n} = ${s.edges} edges.`;
+};
 export const properties = {
   "parallel-faces": {
     phrase: "two congruent parallel faces",
     test: (s: Solid) => s.prism,
     why: (s: Solid) =>
       s.prism
-        ? `${s.name} is a prism: its two bases are congruent and parallel.`
+        ? `${s.name} is a prism: its two bases are congruent (the same size and shape) and parallel (they face each other and never meet).`
         : `${s.name} is a pyramid: it has one base and its other faces are triangles that meet at a point, so no two faces are parallel.`,
   },
   "triangle-faces": {
@@ -62,12 +77,12 @@ export const properties = {
   "many-edges": {
     phrase: "12 or more edges",
     test: (s: Solid) => s.edges >= 12,
-    why: (s: Solid) => `${s.name} has ${s.edges} edges.`,
+    why: edgesWhy,
   },
   "few-faces": {
     phrase: "fewer than 6 faces",
     test: (s: Solid) => s.faces < 6,
-    why: (s: Solid) => `${s.name} has ${s.faces} faces.`,
+    why: facesWhy,
   },
 } as const;
 export type PropertyKey = keyof typeof properties;
@@ -114,9 +129,14 @@ export const solidProperty = chainFamily({
         m.property === "few-faces" || m.property === "many-edges"
           ? `Count the ${m.property === "few-faces" ? "faces" : "edges"} of each solid, starting with the ${first.name.toLowerCase()}, and compare the count with ${m.property === "few-faces" ? "6" : "12"}.`
           : `Think about the bases of each solid, starting with the ${first.name.toLowerCase()}: how many bases does it have, and what shapes are its other faces?`,
-      explanation: shown.map(
-        (s) => `${prop.test(s) ? "Yes" : "No"}: ${prop.why(s)}`,
-      ),
+      explanation: [
+        "A face is a flat surface of a solid, and an edge is where two faces meet. A prism has 2 matching, parallel bases; a pyramid has 1 base and triangles that meet at a point.",
+        ...shown.map((s) => `${prop.test(s) ? "Yes" : "No"}: ${prop.why(s)}`),
+        `So the 3 solids with ${prop.phrase} are the ${m.yes
+          .map((s) => s.name.toLowerCase())
+          .join(", the ")
+          .replace(/, the ([^,]*)$/, " and the $1")}.`,
+      ],
     };
   },
 });

@@ -344,6 +344,7 @@ function linearRule(seed: string): GeneratedProblem {
             ? `Rewrite $${left(m)} = ${b.n}$ as $y = mx + b$ by moving the $x$-term to the other side. Then look for the graph that crosses the $y$-axis at $b$.`
             : `Start with the $y$-intercept ${signed(b.n)}: rule out every graph that does not cross the $y$-axis at ${point([0, b.n])}. Then compare the slopes, ${prose(m)}.`,
       explanation: (name) => [
+        `In $y = mx + b$, the slope $m$ is how much $y$ changes for each 1 step right, and the $y$-intercept $b$ is where the line crosses the $y$-axis.`,
         `${given}.`,
         `So the line crosses the $y$-axis at ${point([0, b.n])} and, from there, ${m.n > 0 ? "rises" : "falls"} ${Math.abs(m.n)} for each ${step} to the right, reaching ${point(next)}.`,
         `${name} is the line through ${point([0, b.n])} and ${point(next)}.`,
