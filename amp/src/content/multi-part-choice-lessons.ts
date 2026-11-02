@@ -31,8 +31,13 @@ const entries: Entry[] = [
     goal: "Find a line's slope and $y$-intercept from two points, a graph or a table, and say whether $y$ increases or decreases.",
     summary:
       "A line's slope is how much $y$ changes for each step of 1 to the right in $x$. Its $y$-intercept is the value of $y$ where the line crosses the $y$-axis, at $x = 0$. Two different points on a line that is not straight up and down give both. Together they make the rule $y = mx + b$.",
-    senses: { change: "change", changes: "change", similar: "similar-figures" },
-    noLink: ["rule"],
+    senses: {
+      change: "change",
+      changes: "change",
+      similar: "similar-figures",
+      rule: "rule",
+    },
+
     objectives: [
       "Find the slope of a line from two of its points, its graph or a table of values.",
       "Find the $y$-intercept, write $y = mx + b$, and tell whether $y$ increases or decreases.",

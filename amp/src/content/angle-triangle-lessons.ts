@@ -541,7 +541,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       "A vertical slice of a pyramid, parallel to a base edge, that misses the apex (the tip) is a trapezoid: a four-sided shape with one pair of parallel sides.",
   },
   "cross-section-area": {
-    noLink: ["sides", "square", "center", "whole", "vertex", "side"],
+    noLink: ["square", "center", "whole", "vertex", "side"],
     goal: "Find the area of a slice of a prism or pyramid from its dimensions.",
     intuition:
       "A plane is a flat surface that goes on forever. A cross-section is the flat shape where a plane slices a solid, a shape that takes up space. A rectangular prism is a box. A cut parallel to one of its faces (running the same way, never meeting it) makes a copy of that face. Area measures the flat space the cut face covers.",
@@ -553,6 +553,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       faces: "face-solid",
       base: "base-shape",
       edge: "edge",
+      sides: "side",
     },
     method: [
       "Identify the face the slice copies, or its shape and dimensions.",

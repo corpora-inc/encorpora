@@ -136,8 +136,8 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
       intuition:
         "An equation is like a balanced scale: both sides are equal. A step that does the same thing to both sides keeps it balanced. Adding or subtracting the same number on both sides is called the addition property of equality. Multiplying or dividing both sides by the same number (not 0) is called the multiplication property of equality.",
       terms: ["property-of-equality", "balance-scale"],
-      senses: r1Senses,
-      noLink: r1NoLink,
+      senses: { ...r1Senses, opposite: "opposite-number" },
+      noLink: r1NoLink.filter((w) => !["opposite"].includes(w)),
       method: [
         "Compare the equation before and after the step.",
         "Decide what was done to both sides: a number added or subtracted, or both sides multiplied or divided by a number.",

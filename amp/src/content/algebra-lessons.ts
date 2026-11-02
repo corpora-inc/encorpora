@@ -239,7 +239,8 @@ export const algebraLessons: Lesson[] = [
       "proportional-rule-choice",
       "distance-graph-meaning",
     ],
-    noLink: ["rule", "rules", "mean", "side", "part", "parts", "center"],
+    senses: { center: "center" },
+    noLink: ["rule", "rules", "mean", "side", "part", "parts"],
     objectives: [
       "Recognize when each input has exactly one output.",
       "Tell a proportional rule apart from a rule with a fixed amount added.",
@@ -309,8 +310,8 @@ export const algebraLessons: Lesson[] = [
       "An input is a number you put into a rule, and its output is the number that comes out. A function is a rule that gives each input exactly one output. On a grid, two points straight above each other have the same input but different outputs. Find each single point you could remove to leave one output for each input.",
     templateIds: ["relation-point-removal"],
     includeGeneratedRepresentation: false,
-    senses: { unit: "unit" },
-    noLink: ["leaves", "rule", "whole", "side", "center"],
+    senses: { unit: "unit", rule: "rule" },
+    noLink: ["leaves", "whole", "side", "center"],
     objectives: [
       "Read the input and output of a labeled point on a coordinate grid.",
       "Find every single point whose removal makes a relation a function.",
@@ -371,16 +372,14 @@ export const algebraLessons: Lesson[] = [
     summary:
       "Each plan costs a fixed fee, paid once, plus a rate, an amount for each unit used. Where both plans cost the same is a tie, not a saving. Past the tie, the plan with the smaller rate is cheaper. If only whole numbers, the numbers 0, 1, 2 and so on, are allowed, it is first cheaper at the first allowed whole number past the tie.",
     templateIds: ["shared-plan-input", "first-cheaper-whole-input"],
-    senses: { unit: "unit", difference: "difference-subtract" },
-    noLink: [
-      "whole",
-      "rule",
-      "rules",
-      "range",
-      "intersection",
-      "side",
-      "sides",
-    ],
+    senses: {
+      unit: "unit",
+      difference: "difference-subtract",
+      rules: "rule",
+      sides: "side-of-equation",
+      side: "side-of-equation",
+    },
+    noLink: ["whole", "rule", "range", "intersection"],
     objectives: [
       "Find the exact input where two cost rules give the same cost.",
       "Find the first whole number of units where one plan is strictly cheaper.",

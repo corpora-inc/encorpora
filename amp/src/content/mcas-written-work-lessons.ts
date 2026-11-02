@@ -13,8 +13,13 @@ const entries: Entry[] = [
     goal: "Find a missing angle, the scale factor and the missing sides of two similar triangles.",
     summary:
       "Similar triangles have the same shape but may differ in size. Their matching angles are equal. Every side of one is the same number times the matching side of the other. That number is called the scale factor. Find the missing angle first, then the scale factor, then the missing sides.",
-    senses: { side: "side", sides: "side", similar: "similar-figures" },
-    noLink: ["factor", "third", "sort", "parts"],
+    senses: {
+      side: "side",
+      sides: "side",
+      similar: "similar-figures",
+      factor: "factor-number",
+    },
+    noLink: ["third", "sort", "parts"],
     objectives: [
       "Find an unknown angle from the angle sum and the correspondence of two similar triangles.",
       "Find the scale factor from one pair of corresponding sides and use it to find the other sides.",

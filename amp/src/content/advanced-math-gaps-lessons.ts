@@ -91,8 +91,13 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "A sequence is a list of numbers in order, and each number is a term. We write $a_1$ for the first term and $a_n$ for the term in position $n$. In an arithmetic sequence, the same number, called the common difference $d$, is added at every step: 5, 8, 11, 14 adds 3. A recursive rule gives the first term and how to get each term from the one before. An explicit rule gives term $n$ directly from $n$. A series is the sum of the terms.",
     terms: ["recursive-rule", "explicit-rule", "series"],
-    senses: amgSenses,
-    noLink: amgNoLink,
+    senses: {
+      ...amgSenses,
+      rules: "rule",
+      rule: "rule",
+      average: "mean-average",
+    },
+    noLink: amgNoLink.filter((w) => !["average", "rule", "rules"].includes(w)),
     method: [
       "Find the first term and the common difference. From two table entries, divide the change in value by the number of steps between them.",
       "To jump to term $n$, count $n - 1$ steps from the first term: $a_n = a_1 + (n - 1)d$. To check a rule you converted, put in $n = 1$.",
@@ -165,8 +170,8 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
       "quadratic",
       "exponential-function",
     ],
-    senses: amgSenses,
-    noLink: amgNoLink,
+    senses: { ...amgSenses, model: "model", rule: "rule" },
+    noLink: amgNoLink.filter((w) => !["model", "rule"].includes(w)),
     method: [
       "For a residual plot, read from left to right. Random scatter close to 0 means the model type fits. Positive, then negative, then positive means the data bend upward compared with a straight-line model. Negative, positive, negative means they bend downward compared with it.",
       "For a table with equally spaced inputs, find the differences between neighbouring values, then the differences of those, called second differences, then the ratios (one value divided by the one before). Equal first differences mean linear, equal second differences (not 0) mean quadratic, and equal positive ratios other than 1 mean exponential.",
@@ -210,8 +215,13 @@ export const advancedMathGapLessons: Lesson[] = [
     summary:
       "The list 5, 8, 11, 14 adds 3 at every step. You can build it one number at a time, or use a formula that jumps straight to any position. To add up the numbers, pair the first with the last: $5 + 14 = 19$, and $8 + 11 = 19$ too. Two pairs of 19 make 38, so the total is 38.",
     templateIds: ["series-recursion"],
-    senses: amgSenses,
-    noLink: amgNoLink,
+    senses: {
+      ...amgSenses,
+      rule: "rule",
+      rules: "rule",
+      average: "mean-average",
+    },
+    noLink: amgNoLink.filter((w) => !["average", "rule", "rules"].includes(w)),
     objectives: [
       "Switch between a step-by-step (recursive) rule and a direct (explicit) rule for an arithmetic sequence.",
       "Find a term from two entries of a table, or from a step rule that is not arithmetic.",
@@ -397,8 +407,8 @@ export const advancedMathGapLessons: Lesson[] = [
     summary:
       "A model is a rule that predicts values, like a line or a curve drawn through data. A residual is how far off one prediction is: the real value minus the predicted value. If a model predicts 48 and the real value is 45, the residual is $45 - 48 = -3$. A pattern in many residuals, or in the gaps between values in a table, gives clues about which kind of model fits: a line, a U-shaped curve or an exponential curve.",
     templateIds: ["residual-function-fit"],
-    senses: amgSenses,
-    noLink: amgNoLink,
+    senses: { ...amgSenses, model: "model", rule: "rule" },
+    noLink: amgNoLink.filter((w) => !["model", "rule"].includes(w)),
     objectives: [
       "Decide from a residual plot whether to keep a straight-line model or switch to a curved one.",
       "Sort equally spaced data into linear, quadratic or exponential from differences and ratios.",
