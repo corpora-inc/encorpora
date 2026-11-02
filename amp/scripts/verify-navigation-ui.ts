@@ -549,7 +549,7 @@ try {
     await page.goto(`${origin}/inventory?context=trial`);
     await page
       .getByRole("navigation", { name: "Progress views" })
-      .getByRole("link", { name: "Progress", exact: true })
+      .getByRole("link", { name: "Overview", exact: true })
       .click();
     await page.locator(".frontier-map").waitFor();
     await fits(`level view ${width}`);

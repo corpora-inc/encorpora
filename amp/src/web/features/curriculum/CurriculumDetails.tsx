@@ -2,7 +2,7 @@ import { createContext, useContext, type ReactNode } from "react";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { useCurriculumScope } from "./useCurriculumScope";
-import styles from "../practice/FeedbackPreferences.module.css";
+import styles from "./CurriculumDetails.module.css";
 
 type State = {
   shown: Record<string, boolean>;
@@ -93,21 +93,26 @@ export const useCurriculumDetails = () => useContext(Details);
 export function CurriculumDetailsControl() {
   const { shown, ready, setShown } = useCurriculumDetails();
   return (
-    <fieldset className={styles.preferences}>
-      <legend>Curriculum details</legend>
-      <label>
+    <label className={styles.control}>
+      <span className={styles.copy}>
         <span>Show grades and estimates</span>
+        <small>For this learner on this device.</small>
+      </span>
+      <span className={styles.check}>
         <input
           type="checkbox"
-          style={{ width: 44, height: 44 }}
+          aria-label="Show grades and estimates"
+          aria-description="Remembered for this learner on this device. Practice stays the same."
           checked={shown}
           disabled={!ready}
           onChange={(e) => setShown(e.target.checked)}
         />
-      </label>
-      <small>
-        Remembered for this learner on this device. Practice stays the same.
-      </small>
-    </fieldset>
+        <span className={styles.indicator} aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none">
+            <path d="m3 8 3 3 7-7" />
+          </svg>
+        </span>
+      </span>
+    </label>
   );
 }

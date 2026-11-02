@@ -27,7 +27,8 @@ export const variableStoryMethods: Record<string, ProblemMethod> = {
   },
   "story-for-subtraction-sentence": {
     goal: "Match a subtraction sentence with one unknown amount to the story that asks for that same amount.",
-    noLink: ["leaves", "change", "changes", "side"],
+    senses: { side: "side-of-equation" },
+    noLink: ["leaves", "change", "changes"],
     intuition:
       "A subtraction story starts with an amount, takes some away, and ends with what is left. So it has three amounts: the start, the amount taken away and the amount left. In $20 - 8 = 12$, 20 is the start, 8 is taken away and 12 is left. The unknown is the amount the story asks you to find. In a subtraction sentence, a short math statement such as $20 - 8 = 12$, a letter such as $n$ stands for it. The same three numbers can tell different stories, depending on which amount is unknown.",
     terms: [

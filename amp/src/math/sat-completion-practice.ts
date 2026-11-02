@@ -29,7 +29,7 @@ const OPENERS: Record<string, string[]> = {
     "A larger random sample gives a smaller margin of error, because averages of more values vary less.",
   ],
   "compound-unit-conversion": [
-    "A compound unit, such as miles per hour, has a unit on top and a unit underneath. Convert each with a factor equal to 1 so the old units cancel.",
+    "A compound unit is built from other units, such as square meters or miles per hour. Convert each unit inside with a factor equal to 1 so the old units cancel.",
   ],
   "degree-radian-conversion": [
     "Degrees and radians are two units for angles. A half turn is 180 degrees, which is $\\pi$ radians.",
@@ -273,13 +273,18 @@ function draft(
   if (id === "probability-missing-count") {
     const red = r(1, 12),
       blue = r(2, 15);
+    // The prompt shows the reduced fraction n/d, so the algebra uses it too.
+    const g = gcd(red, red + blue),
+      n = red / g,
+      d = (red + blue) / g,
+      times = (k: number) => (k === 1 ? "" : String(k));
     return {
       prompt: `A bag contains only red and blue counters. It contains ${blue} blue counters. One counter is selected uniformly at random. The probability that it is red is ${rational(red, red + blue)}. How many red counters are in the bag?`,
       answer: String(red),
       hint: `There are ${blue} blue counters. Let $x$ be the red count, so the total is $x+${blue}$. Express the stated red probability as red count divided by total count.`,
       explanation: [
         `The equation is $x/(x+${blue})=${rational(red, red + blue)}$.`,
-        `Multiply by the positive total and solve: $${red + blue}x=${red}(x+${blue})$, so $${blue}x=${red * blue}$.`,
+        `Multiply both sides by ${d} and by the total $x+${blue}$ to clear the fractions: $${d}x=${n === 1 ? `x+${blue}` : `${n}(x+${blue})`}$. Subtract $${times(n)}x$ from both sides: $${times(d - n)}x=${n * blue}$.`,
         `Thus $x=${red}$ red counters. Check: ${red} out of ${red + blue} counters gives the stated probability.`,
       ],
     };

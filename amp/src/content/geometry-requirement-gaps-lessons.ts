@@ -25,9 +25,9 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       multiple: "multiple",
       center: "center",
       squared: "square-number",
+      factor: "scale-factor",
     },
     noLink: [
-      "factor",
       "whole",
       "unit",
       "units",
@@ -60,7 +60,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
   "complex-plane-operations": {
     goal: "Read sums, differences, conjugates and products of complex numbers as moves of points in the complex plane.",
     intuition:
-      "A complex number $a+bi$ is the point with $a$ across (the real part) and $b$ up (the imaginary part). Adding complex numbers adds the arrows from the origin, so the sum is the far corner of a parallelogram. Subtracting gives the arrow between the two points. The conjugate flips the sign of the imaginary part, which reflects the point in the horizontal axis. Multiplying by $i$ turns the point a quarter turn counterclockwise about the origin.",
+      "A complex number $a+bi$, where $i^2=-1$, is the point with $a$ across (the real part) and $b$ up (the imaginary part). Adding complex numbers adds the arrows from the origin, so the sum is the far corner of a parallelogram. Subtracting gives the arrow between the two points. The conjugate flips the sign of the imaginary part, which reflects the point in the horizontal axis. Multiplying by $i$ turns the point a quarter turn counterclockwise about the origin.",
     terms: [
       "modulus",
       "argument",
@@ -70,7 +70,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "Read each number as a point: real part across, imaginary part up.",
       "For $z+w$, complete the parallelogram with sides along $z$ and $w$. For $z-w$, use the arrow that starts at $w$ and ends at $z$.",
       "For $\\overline{z}$, reflect in the real axis. For $iz$, turn a quarter turn counterclockwise: $(a,b)\\to(-b,a)$.",
-      "For $w=r(\\cos\\theta+i\\sin\\theta)$, multiply the distance from the origin by $r$ and add $\\theta$ to the argument.",
+      "For $w=r(\\cos\\theta+i\\sin\\theta)$ with $r>0$, and a point other than 0, multiply its distance from the origin by $r$ and add $\\theta$ to its argument.",
     ],
     watch:
       "Multiplication by $i$ is a rotation, not a reflection, and the conjugate is a reflection, not a rotation. Moduli multiply and arguments add when you multiply; they do not both add.",
@@ -197,17 +197,10 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       vertex: "vertex",
       image: "image-transformation",
       center: "center",
+      factors: "scale-factor",
+      factor: "scale-factor",
     },
-    noLink: [
-      "factor",
-      "factors",
-      "unit",
-      "units",
-      "change",
-      "mean",
-      "square",
-      "scale",
-    ],
+    noLink: ["unit", "units", "change", "mean", "square", "scale"],
     intuition:
       "A dilation resizes a figure. It multiplies every distance from a fixed center point by the same positive number, the scale factor $k$. It keeps the shape and every angle. A rigid motion moves a figure without changing its size: a slide (translation), a turn (rotation) or a flip (reflection). Two figures are similar, meaning the same shape, when a dilation followed by rigid motions carries one exactly onto the other. The scale factor is then a ratio, the result of dividing two lengths: a side of the new figure divided by the matching side of the original. Matching sides, also called corresponding sides, are sides that land on each other.",
     terms: ["dilation", "similar-figures"],
@@ -311,16 +304,16 @@ export const geometryRequirementGapLessons: Lesson[] = [
       multiple: "multiple",
       center: "center",
       squared: "square-number",
+      factor: "scale-factor",
+      rule: "rule",
     },
     noLink: [
-      "factor",
       "whole",
       "unit",
       "units",
       "square",
       "scale",
       "scales",
-      "rule",
       "part",
       "factors",
     ],
@@ -381,8 +374,16 @@ export const geometryRequirementGapLessons: Lesson[] = [
     id: "complex-plane-operations",
     title: "Complex arithmetic in the plane",
     summary:
-      "Sums are parallelograms, differences are arrows between points, the conjugate is a reflection, and multiplying by $i$ is a quarter turn.",
+      "Each complex number $a+bi$ is a point in the plane, $a$ across and $b$ up. So arithmetic with complex numbers moves points. Adding completes a parallelogram, and subtracting gives the arrow between two points. Flipping the sign of $b$ mirrors the point across the horizontal axis, and multiplying by $i$ turns it a quarter turn.",
     templateIds: ["complex-plane-operations"],
+    senses: {
+      plane: "plane",
+      quarter: "fourth",
+      argument: "argument",
+      product: "product-multiply",
+      sides: "side",
+    },
+    noLink: ["changes", "opposite"],
     objectives: [
       "Locate $z+w$, $z-w$ and $\\overline{z}$ in the plane.",
       "Describe multiplication by $i$ and by $r(\\cos\\theta+i\\sin\\theta)$ as a rotation with a scaling.",
@@ -392,8 +393,8 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Numbers as points and arrows",
         paragraphs: [
-          "A complex number $a+bi$ has a real part $a$ and an imaginary part $b$. Plot it at the point with $a$ across and $b$ up. The arrow from the origin to that point has a length, the modulus, and a direction, the argument.",
-          "Each operation becomes a move. Adding two numbers adds their arrows. Subtracting finds the arrow from one point to the other. The conjugate changes the sign of $b$. Multiplying by $i$ is the special case of multiplying that turns every arrow a quarter turn.",
+          "A complex number $a+bi$, where $i^2=-1$, has a real part $a$ and an imaginary part $b$. Plot it at the point with $a$ across and $b$ up, in the complex plane. The arrow from the origin to that point has a length, called the modulus, and a direction, called the argument: the angle from the positive real axis.",
+          "Each operation becomes a move. Adding two numbers adds their arrows. Subtracting finds the arrow from one point to the other. The conjugate of $a+bi$, written $\\overline{z}$, is $a-bi$: it changes the sign of $b$. Multiplying by $i$ turns every arrow a quarter turn counterclockwise, the opposite way to a clock's hands.",
         ],
       },
     ],
@@ -402,10 +403,10 @@ export const geometryRequirementGapLessons: Lesson[] = [
         "Let $z=3+i$ and $w=1+2i$. Find $z+w$, $z-w$, $\\overline{z}$ and $iz$, and describe each as a move of the point for $z$.",
       figure: { kind: "scene", scene: complexFigure },
       steps: [
-        "$z+w=(3+1)+(1+2)i=4+3i$. It is the corner opposite the origin in the parallelogram with sides along $z$ and $w$.",
+        "Add real parts and imaginary parts: $z+w=(3+1)+(1+2)i=4+3i$. It is the corner opposite the origin in the parallelogram with sides along $z$ and $w$.",
         "$z-w=(3-1)+(1-2)i=2-i$. It is the arrow that goes from the point $w$ to the point $z$.",
         "$\\overline{z}=3-i$. The real part stays and the imaginary part changes sign, so the point is reflected in the real axis.",
-        "$iz=i(3+i)=3i+i^2=-1+3i$. The point $(3,1)$ moves to $(-1,3)$, a quarter turn counterclockwise about the origin. Both have modulus $\\sqrt{10}$.",
+        "$iz=i(3+i)=3i+i^2=-1+3i$, using $i^2=-1$. The point $(3,1)$ moves to $(-1,3)$, a quarter turn counterclockwise about the origin. Both are $\\sqrt{10}$ from the origin, so the turn kept the modulus.",
       ],
       answer: "$4+3i$; $2-i$; $3-i$; $-1+3i$",
     },
@@ -414,14 +415,14 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "Scaling and turning",
         paragraphs: [
-          "Write $w=r(\\cos\\theta+i\\sin\\theta)$, where $r$ is the modulus and $\\theta$ the argument. Multiplying $z$ by $w$ multiplies the modulus of $z$ by $r$ and adds $\\theta$ to its argument. Since $i=\\cos90^\\circ+i\\sin90^\\circ$, multiplying by $i$ adds $90^\\circ$ and keeps the modulus. Then $i^2$ adds $180^\\circ$, $i^3$ adds $270^\\circ$ and $i^4$ returns to the start.",
+          "Write $w=r(\\cos\\theta+i\\sin\\theta)$, where $r$ is the modulus and $\\theta$ the argument. For $z\\ne0$ and $w\\ne0$, multiplying $z$ by $w$ multiplies the modulus of $z$ by $r$ and adds $\\theta$ to its argument. (0 has no direction, and a product with 0 is 0.) Since $i=\\cos90^\\circ+i\\sin90^\\circ$, multiplying by $i$ adds $90^\\circ$ and keeps the modulus. Then $i^2$ adds $180^\\circ$, $i^3$ adds $270^\\circ$ and $i^4$ returns to the start.",
         ],
       },
       {
         stage: "formal",
         title: "Why arguments add",
         paragraphs: [
-          "The angle-sum identities give $(\\cos\\alpha+i\\sin\\alpha)(\\cos\\beta+i\\sin\\beta)=\\cos(\\alpha+\\beta)+i\\sin(\\alpha+\\beta)$. So a product of numbers with moduli $r_1,r_2$ and arguments $\\alpha,\\beta$ has modulus $r_1r_2$ and argument $\\alpha+\\beta$. The conjugate has the same modulus and the opposite argument.",
+          "The angle-sum formulas for sine and cosine give $(\\cos\\alpha+i\\sin\\alpha)(\\cos\\beta+i\\sin\\beta)=\\cos(\\alpha+\\beta)+i\\sin(\\alpha+\\beta)$, where $\\alpha$ and $\\beta$ (alpha and beta) are angles. So a product of numbers with moduli $r_1,r_2$ and arguments $\\alpha,\\beta$ has modulus $r_1r_2$ and argument $\\alpha+\\beta$. The conjugate has the same modulus and the opposite argument.",
         ],
       },
     ],
@@ -443,6 +444,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
       event: "event",
       impossible: "impossible",
       intersection: "intersection",
+      product: "product-multiply",
     },
     noLink: [
       "rate",
@@ -452,7 +454,6 @@ export const geometryRequirementGapLessons: Lesson[] = [
       "groups",
       "whole",
       "certain",
-      "product",
       "difference",
     ],
     objectives: [
@@ -598,8 +599,19 @@ export const geometryRequirementGapLessons: Lesson[] = [
     id: "conic-foci",
     title: "Foci of ellipses and hyperbolas",
     summary:
-      "An ellipse has a constant sum of distances to its foci and a hyperbola a constant difference. These give $c^2=a^2-b^2$ and $c^2=a^2+b^2$.",
+      "An ellipse, an oval, and a hyperbola, a two-piece curve, are each built from two fixed points called foci. On an ellipse, the distances from any point to the two foci always add to the same number. On a hyperbola, they always differ by the same number. Those facts tell where the foci are from the equation: $c^2=a^2-b^2$ for an ellipse and $c^2=a^2+b^2$ for a hyperbola.",
     templateIds: ["conic-foci"],
+    senses: {
+      difference: "difference-subtract",
+      vertex: "vertex",
+      vertices: "vertex",
+      center: "center",
+      focus: "focus",
+      term: "term-expression",
+      root: "root-radical",
+      squaring: "square-number",
+    },
+    noLink: ["side", "part"],
     objectives: [
       "Find the foci of an ellipse or hyperbola from its equation.",
       "Write the equation from the foci and a constant sum or difference of distances.",
@@ -610,7 +622,8 @@ export const geometryRequirementGapLessons: Lesson[] = [
         title: "Two special points",
         paragraphs: [
           "Pin the ends of a string at two points, hold the string tight with a pencil and draw: you trace an ellipse. The pins are the foci. The string has fixed length, so the distances from the pencil to the two pins always add to the same number.",
-          "A hyperbola uses the same two points, but the distances to them differ by a fixed amount instead. In both curves the foci lie on the axis through the vertices, the same distance $c$ on each side of the center.",
+          "A hyperbola uses the same two points, but the distances to them differ by a fixed amount instead. In both curves the foci lie on the axis through the vertices, the points where the curve crosses that axis, the same distance $c$ on each side of the center.",
+          "Centered at the origin with its foci on the $x$-axis, an ellipse is $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ and a hyperbola is $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$. Here $a$ is the distance from the center to a vertex along the axis through the foci, and $c$ is the distance from the center to a focus.",
         ],
       },
     ],
@@ -618,7 +631,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
       prompt:
         "(1) Find the foci of $\\frac{x^2}{25}+\\frac{y^2}{9}=1$. (2) Find the equation of the ellipse with foci $(\\pm4,0)$ whose distances to the foci always add to $10$.",
       steps: [
-        "(1) The larger denominator is $a^2=25$ and the smaller is $b^2=9$. For an ellipse $c^2=a^2-b^2=25-9=16$, so $c=4$. The larger denominator is under $x^2$, so the foci are $(\\pm4,0)$.",
+        "(1) For an ellipse, the larger denominator is $a^2$, because the vertices on the longer axis are farther out: $a^2=25$ and $b^2=9$. Then $c^2=a^2-b^2=25-9=16$, so $c=4$. The larger denominator is under $x^2$, so the foci are $(\\pm4,0)$.",
         "(2) The constant sum is $2a=10$, so $a=5$ and $a^2=25$. The foci give $c=4$, so $b^2=a^2-c^2=25-16=9$.",
         "The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\frac{x^2}{25}+\\frac{y^2}{9}=1$. This is the curve in part (1), a consistency check.",
       ],
@@ -740,17 +753,10 @@ export const geometryRequirementGapLessons: Lesson[] = [
       vertex: "vertex",
       image: "image-transformation",
       center: "center",
+      factors: "scale-factor",
+      factor: "scale-factor",
     },
-    noLink: [
-      "factor",
-      "factors",
-      "unit",
-      "units",
-      "change",
-      "mean",
-      "square",
-      "scale",
-    ],
+    noLink: ["unit", "units", "change", "mean", "square", "scale"],
     objectives: [
       "Find the scale factor between two triangles on a grid.",
       "Choose a dilation (resizing) and rigid motions (slides, turns and flips) that carry one triangle onto the other.",

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { contrast, type Rgba } from "./color-system";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { mkdir } from "node:fs/promises";
@@ -718,9 +719,15 @@ async function verifySearchFilters() {
         "Deleting keeps the keyboard focused on search",
       );
       assert.equal(new URL(page.url()).searchParams.get("filter"), "K");
-      await page
-        .getByRole("checkbox", { name: "Show grades and estimates" })
-        .check();
+      const preference = page.getByRole("checkbox", {
+        name: "Show grades and estimates",
+      });
+      assert.equal(await preference.isChecked(), false);
+      assert(
+        await page.locator(".pathways-grade").isVisible(),
+        "an active URL filter remains visible so it can be cleared while details are hidden",
+      );
+      await preference.check();
       const grade = page.getByRole("button", { name: /^Grade or course/ });
       assert.equal(await grade.getAttribute("data-value"), "K");
       const gradeBox = await grade.boundingBox();
@@ -739,6 +746,50 @@ async function verifySearchFilters() {
       assert.equal(
         await page.locator(".pathways-skill-list a").count(),
         skills.length,
+      );
+      await preference.uncheck();
+      assert.equal(
+        await grade.isVisible(),
+        false,
+        "without an active filter, hiding details also hides the grade picker",
+      );
+      const colors = await preference.evaluate((input) => {
+        const label = input.closest("label")!;
+        const marker = input.nextElementSibling!;
+        const panel = input.closest(".pathways-browser")!;
+        const box = input.getBoundingClientRect();
+        return {
+          width: box.width,
+          height: box.height,
+          text: getComputedStyle(label).color,
+          panel: getComputedStyle(panel).backgroundColor,
+          border: getComputedStyle(marker).borderColor,
+          fill: getComputedStyle(marker).backgroundColor,
+        };
+      });
+      const rgba = (value: string): Rgba => {
+        const parts = value.match(/[\d.]+/g)!.map(Number);
+        assert(parts.length >= 3, `Expected computed RGB color: ${value}`);
+        return [parts[0]!, parts[1]!, parts[2]!, parts[3] ?? 1];
+      };
+      assert(
+        colors.width >= 44 && colors.height >= 44,
+        "the compact checkbox keeps its full touch target",
+      );
+      assert(
+        contrast(rgba(colors.text), rgba(colors.panel)) >= 4.5,
+        "display preference text remains readable on the atlas in both themes",
+      );
+      assert(
+        contrast(rgba(colors.border), rgba(colors.panel)) >= 3 &&
+          contrast(rgba(colors.border), rgba(colors.fill)) >= 3,
+        "the unchecked indicator remains visible against its fill and atlas panel",
+      );
+      await preference.focus();
+      await preference.press("Space");
+      assert(
+        (await preference.isChecked()) && (await grade.isVisible()),
+        "keyboard reveal restores the grade picker",
       );
       await input.pressSequentially("linear", { delay: 10 });
       await page.waitForURL(

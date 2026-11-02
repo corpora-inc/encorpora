@@ -76,7 +76,11 @@ export const choiceLessons: Lesson[] = [
     title: "When the variable terms disappear",
     summary:
       "An equation says two amounts are equal. It has two sides: the amounts left and right of its equals sign. A variable is a letter, such as $x$, that stands for an unknown number, and $5x$ means 5 times $x$. A solution is a value of $x$ that makes the two sides equal. A linear equation is one where $x$ is only multiplied by numbers and added to them. It can have one solution, no solution, or every number as a solution.",
-    senses: { side: "side-of-equation", sides: "side-of-equation" },
+    senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      terms: "term-expression",
+    },
     noLink: [
       "impossible",
       "multiple",
@@ -85,7 +89,6 @@ export const choiceLessons: Lesson[] = [
       "changes",
       "parts",
       "part",
-      "terms",
     ],
     templateIds: ["equation-solution-count"],
     objectives: [

@@ -316,8 +316,9 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
   },
   "parametric-rectangular-convert": {
     goal: "Eliminate the parameter from linear, parabolic and circular parametric equations, or write a line parametrically.",
+    noLink: ["third"],
     intuition:
-      "Parametric equations give $x$ and $y$ separately as functions of a parameter $t$. Removing $t$ leaves one equation linking $x$ and $y$ whose graph is the same path.",
+      "Parametric equations give $x$ and $y$ separately as functions of a parameter $t$. Removing $t$ leaves one equation linking $x$ and $y$ that every point of the path satisfies. If $t$ is limited to some values, the path may be only part of that graph.",
     terms: [
       [
         "parametric-equations",
@@ -664,8 +665,9 @@ export const texasHsLessons: Lesson[] = [
       base: "base-exponent",
       range: "range-function",
       model: "model",
+      rule: "rule",
     },
-    noLink: ["side", "rule", "mean"],
+    noLink: ["side", "mean"],
     templateIds: ["exponential-domain-range"],
     objectives: [
       "Write the domain (allowed inputs) and range (possible outputs) of an exponential function as inequalities.",
@@ -1042,8 +1044,10 @@ export const texasHsLessons: Lesson[] = [
       edge: "edge",
       face: "face-solid",
       solid: "solid-shape",
+      center: "center",
+      squared: "square-number",
     },
-    noLink: ["side", "square", "part", "parts", "center", "squared", "whole"],
+    noLink: ["side", "square", "part", "parts", "whole"],
     templateIds: ["curved-solid-surface-area"],
     objectives: [
       "Find the surface area of a cone and of solids joined to a cylinder.",
@@ -1195,14 +1199,24 @@ export const texasHsLessons: Lesson[] = [
     id: "parametric-to-rectangular",
     title: "Parametric equations and rectangular equations",
     summary:
-      "Eliminate the parameter to see the path as an equation in $x$ and $y$.",
+      "A moving point can be described by two rules, one for $x$ and one for $y$, each depending on a third number $t$, often time. These are parametric equations, and $t$ is the parameter. Removing $t$ leaves one equation in $x$ and $y$, called a rectangular equation, that shows the shape of the path: a line, a parabola or a circle.",
     templateIds: ["parametric-rectangular-convert"],
+    senses: {
+      rule: "rule",
+      rules: "rule",
+      parameter: "parameter",
+      square: "square-number",
+      squaring: "square-number",
+      "right side": "side-of-equation",
+    },
+    noLink: ["third", "leaves", "changes"],
     objectives: [
-      "Eliminate $t$ from linear, parabolic and circular parametric equations.",
+      "Eliminate the parameter $t$ from linear, parabolic and circular parametric equations.",
       "Write a line in parametric form for a chosen $x(t)$.",
     ],
     intuition: [
-      "When $x$ and $y$ both depend on a time-like variable $t$, a point traces a path. Removing $t$ leaves an equation connecting $x$ and $y$ for the same path.",
+      "When $x$ and $y$ both depend on a time-like variable $t$, called the parameter, the point $(x(t),y(t))$ traces a path as $t$ changes. Removing $t$, called eliminating the parameter, leaves an equation connecting $x$ and $y$ that every point of the path satisfies. If $t$ is limited to some values, the path may be only part of that graph. An equation in $x$ and $y$ alone is called rectangular, after the rectangular grid of $x$ and $y$.",
+      "For a line or a parabola, solve one rule for $t$ and substitute into the other. For a circle written with $\\cos t$ and $\\sin t$, use $\\cos^2t+\\sin^2t=1$, which holds for every $t$.",
     ],
     example: {
       prompt: "Eliminate $t$ from $x=2t-1$ and $y=6t+2$.",
@@ -1221,12 +1235,12 @@ export const texasHsLessons: Lesson[] = [
     formal: {
       title: "Parametrizations",
       paragraphs: [
-        "A line $y=mx+b$ can be parametrized by choosing $x=at+h$ and substituting: $y=m(at+h)+b$. Different parametrizations can trace the same path at different speeds.",
+        "A line $y=mx+b$ can be parametrized by choosing $x=at+h$ with $a\\ne0$ and substituting: $y=m(at+h)+b$. Different parametrizations can trace the same path at different speeds.",
       ],
     },
     pitfalls: [
       "Keep every constant when solving for $t$.",
-      "After squaring cosine and sine, the right side is $r^2$.",
+      "For $x=h+r\\cos t$ and $y=k+r\\sin t$, divide by $r$ before squaring: $\\cos^2t+\\sin^2t=1$ becomes $(x-h)^2+(y-k)^2=r^2$ after multiplying by $r^2$.",
     ],
     parentGuide:
       "Ask the learner to give the position at $t=0$ and $t=1$ for a pair of equations.",
