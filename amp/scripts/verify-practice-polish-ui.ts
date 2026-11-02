@@ -55,6 +55,7 @@ export const CASES = [
   ["fraction", "unit-piece-size"],
   ["choice", "hierarchy-statement"],
   ["choice-table", "quadratic-from-data"],
+  ["choice-radical", "trig-equation-solutions"],
   ["choice-scene", "first-quadrant-locate"],
   ["choice-clocks", "clock-minute-match"],
   ["multi-select", "fact-equation-truth-select"],
@@ -88,6 +89,7 @@ const VERIFY = [
   "number",
   "choice-scene",
   "choice-table",
+  "choice-radical",
   "multi-select-figure",
   "parts-inline",
   "parts-cards",
@@ -231,11 +233,14 @@ async function mockApi(context: BrowserContext, templateId: string) {
     }
     if (path.endsWith("/batches")) {
       const problemIndex = state.count++;
+      const firstSeeds: Record<string, string> = {
+        "quadratic-from-data": "independent-68",
+        "trig-equation-solutions": "95d3e70d-9422-4921-b88f-0407b2bb0fad",
+      };
       const problem = generateProblemFor(
         state.templateId,
-        state.templateId === "quadratic-from-data" && problemIndex === 0
-          ? "independent-68"
-          : `polish-${state.templateId}-${problemIndex}`,
+        (problemIndex === 0 ? firstSeeds[state.templateId] : undefined) ??
+          `polish-${state.templateId}-${problemIndex}`,
         body.figureCapabilities ?? [],
       );
       problem.public = responseForClient(
@@ -592,7 +597,7 @@ async function runCase(
       .waitFor({ timeout: 60_000 });
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(400);
-    if (label === "choice-table") {
+    if (label === "choice-table" || label === "choice-radical") {
       // Match the hosted Chromium gutter on overlay-scrollbar hosts. WebKit
       // does not reserve custom scrollbar space until overflow, so use its
       // native scrollbars and keep the same layout and reachability checks.
@@ -601,7 +606,30 @@ async function runCase(
           content:
             ".problem-stage::-webkit-scrollbar { width: 15px; height: 15px; }",
         });
-      await assertProblemReachable(page, `quadratic table ${width}×${height}`);
+      if (label === "choice-radical") {
+        const id = await page
+          .locator(".problem-content")
+          .getAttribute("data-problem-id");
+        if (
+          api.problems.get(id ?? "")?.public.prompt !==
+          String.raw`How many solutions does $\tan\,x=\sqrt{3}$ have with $0\le x<2\pi$?`
+        )
+          throw new Error("The radical edge case must be the rendered problem");
+        if (browserName === "chromium") {
+          const reserved = await page
+            .locator(".problem-stage")
+            .evaluate(
+              (stage) => (stage as HTMLElement).offsetWidth - stage.clientWidth,
+            );
+          if (reserved !== 30)
+            throw new Error(
+              `Classic scrollbar gutters were not reserved: ${reserved}`,
+            );
+        }
+      }
+      await assertProblemReachable(page, `${label} ${width}×${height}`);
+    }
+    if (label === "choice-table") {
       const geometry = await page.locator(".question").evaluate((question) => {
         const table = question.querySelector<HTMLElement>(
           ":scope > .math:has(.mtable)",
@@ -821,7 +849,41 @@ async function probeSelfTest(browser: Browser) {
       <p><span class="m" aria-hidden="true">$</span><input aria-label="Dollars"></p></main>`);
   await page.evaluate(shim);
   const crowded = await probe(page);
+  // Stretchable KaTeX paths may extend beyond a clipping box. Removing that
+  // clip, or moving the visible box offscreen, must still report overflow.
+  await page.setContent(`<main class="practice-workspace">
+    <span class="katex" style="display:block;width:28px">
+      <span class="hide-tail" style="display:block;width:28px;height:24px;overflow:hidden">
+        <svg width="500" height="24"><path d="M0 0H500V24H0Z"/></svg>
+      </span>
+    </span></main>`);
+  await page.evaluate(shim);
+  const clippedSvg = await probe(page);
+  await page.locator(".hide-tail").evaluate((e) => {
+    (e as HTMLElement).style.overflow = "visible";
+  });
+  const visibleSvg = await probe(page);
+  await page.locator(".hide-tail").evaluate((e) => {
+    (e as HTMLElement).style.overflow = "hidden";
+    (e as HTMLElement).style.marginLeft = "380px";
+  });
+  const offscreenClip = await probe(page);
   await page.close();
+  if (clippedSvg.some((f) => f.kind === "horizontal-overflow"))
+    throw new Error("Probe measures a clipped SVG tail as visible overflow");
+  if (
+    !visibleSvg.some(
+      (f) => f.kind === "horizontal-overflow" && f.selector === "path",
+    )
+  )
+    throw new Error("Probe misses an unclipped SVG path outside the viewport");
+  if (
+    !offscreenClip.some(
+      (f) =>
+        f.kind === "horizontal-overflow" && f.selector === "span.hide-tail",
+    )
+  )
+    throw new Error("Probe exempts an offscreen visible clipping box");
   const kinds = (f: Finding[]) => f.map((x) => `${x.kind}:${x.text}`);
   const small = crowded
     .filter((f) => f.kind === "small-target")
