@@ -235,7 +235,7 @@ export function registerWorkbookRoutes(
   });
 
   /** Same date, number and length: the same workbook, stored the first time.
-   * No number: the next one for that date ("Another one"). */
+   * No number: the next one for that date ("Roll another"). */
   app.post("/api/v1/learners/:learnerId/workbooks", async (request, reply) => {
     const accountId = await account(request);
     const { learnerId } = learnerParams.parse(request.params);

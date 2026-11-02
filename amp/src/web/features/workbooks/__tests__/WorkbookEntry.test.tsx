@@ -27,7 +27,7 @@ test("daily workbooks are released: the entry shows by default", async () => {
   expect(workbooksEnabled).toBe(true);
   renderEntry({ learner });
   expect(
-    await screen.findByRole("link", { name: "Download today's workbook" }),
+    await screen.findByRole("link", { name: "Make a workbook" }),
   ).toBeTruthy();
 });
 
