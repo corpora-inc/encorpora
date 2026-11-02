@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { notifyManager, useQuery } from "@tanstack/react-query";
 import { useCallback, useSyncExternalStore } from "react";
 import type { FamilySummary } from "../../family/contracts";
 import type { Me } from "../../account/contracts";
@@ -7,7 +7,7 @@ import { meKey, queryClient } from "./query";
 const nativeFamilyKey = (identity: string | null) =>
   ["native-family", identity] as const;
 const subscribeAccountCache = (notify: () => void) =>
-  queryClient.getQueryCache().subscribe(notify);
+  queryClient.getQueryCache().subscribe(notifyManager.batchCalls(notify));
 /** Web has one canonical server resource; legacy Family screens select its projection. */
 export function useFamilyCache(identity: string | null) {
   // A projection must not replace the canonical resource's fetch function.

@@ -368,3 +368,36 @@ test("native session notifications retain native Family observation and do not f
       ?.getObserversCount(),
   ).toBe(1);
 });
+
+test("Family cache notifications do not update another component during a render", async () => {
+  const { useFamilyCache } = await import("../family-cache");
+  const log = vi.spyOn(console, "error").mockImplementation(() => {});
+  queryClient.setQueryData(meKey(parent.accountId), signedIn);
+  function Projection() {
+    return (
+      <p>
+        {useFamilyCache(parent.accountId)
+          ? "Family retained"
+          : "Family missing"}
+      </p>
+    );
+  }
+  function AccountTransition({ changed }: { changed: boolean }) {
+    if (changed) queryClient.setQueryData(meKey(parent.accountId), signedOut);
+    return null;
+  }
+  const view = render(
+    <Providers>
+      <Projection />
+      <AccountTransition changed={false} />
+    </Providers>,
+  );
+  view.rerender(
+    <Providers>
+      <Projection />
+      <AccountTransition changed />
+    </Providers>,
+  );
+  expect(await screen.findByText("Family missing")).toBeTruthy();
+  expect(log).not.toHaveBeenCalled();
+});
