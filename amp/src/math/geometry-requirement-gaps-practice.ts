@@ -2666,7 +2666,7 @@ const GAP_OPENERS: Record<string, string[]> = {
     "Rigid motions are slides, flips and turns. They keep every length and angle, so a figure mapped onto another by them is congruent: same shape and size.",
   ],
   "conic-foci": [
-    "An ellipse or hyperbola has two fixed points called foci. Their distance $c$ from the center comes from $a$ and $b$, the distances to the curve along its two axes.",
+    "An ellipse or hyperbola has two fixed points called foci, each a distance $c$ from the center. For an ellipse, $a$ and $b$ are the distances from the center to the curve along its long and short axes, and $c^2=a^2-b^2$. For a hyperbola, $a$ is the distance from the center to each vertex, the point where the curve crosses its axis. $b$ sets how steep the two lines are that the curve gets closer and closer to, and $c^2=a^2+b^2$.",
   ],
   "similarity-by-transformation": [
     "A dilation stretches a figure from a center by a scale factor. A dilation followed by rigid motions keeps the shape, so the figures are similar.",

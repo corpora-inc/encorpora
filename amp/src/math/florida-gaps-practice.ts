@@ -1432,11 +1432,16 @@ function evenOdd(r: Random): Built {
     );
     const correct = randomParity(r, want);
     const pool: Wrong[] = [];
+    const why = new Map<string, string>();
     for (let i = 0; i < 12; i++) {
       const p = others[r(0, 1)]!;
       const c = randomParity(r, p);
       const fx = polyText(c);
       const fneg = polyText(polyAt(c));
+      why.set(
+        tex(`f(x)=${fx}`),
+        `${tex(`f(x)=${fx}`)} has $f(-x)=${fneg}$, so it is ${parityName[p]}.`,
+      );
       pool.push({
         label: tex(`f(x)=${fx}`),
         feedback: `$f(-x)=${fneg}$, which makes $f$ ${parityName[p]}. The question asks for ${parityName[want]}.`,
@@ -1458,7 +1463,10 @@ function evenOdd(r: Random): Built {
           : want === "odd"
             ? `That equals $-f(x)=${polyText(polyNeg(correct))}$, so this function is odd.`
             : `That equals neither $f(x)$ nor $-f(x)=${polyText(polyNeg(correct))}$, so this function is neither even nor odd.`,
-        `The other three functions have a different relationship between $f(-x)$ and $f(x)$.`,
+        `${want === "neither" ? "Each other choice is even or odd" : `The other choices are not ${parityName[want]}`}. ${choices
+          .slice(1)
+          .map((c) => why.get(c.label)!)
+          .join(" ")}`,
         `So the function that is ${parityName[want]} is ${label}.`,
       ],
       choices,

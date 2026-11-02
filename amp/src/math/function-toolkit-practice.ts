@@ -1001,7 +1001,7 @@ function transformPoint(r: Random): Case {
       solve = `${M(`\\frac{1}{${b}}x = ${tn(x0)}`)} gives ${M(`x = ${b} \\cdot ${tp(x0)} = ${tn(x0 * b)}`)}`;
     }
     return {
-      prompt: `${given} The graph of ${M(`y = f(${inner})`)} passes through ${M(`\\left(p, ${tn(y0)}\\right)`)}. What is ${M("p")}?`,
+      prompt: `${given} On the graph of ${M(`y = f(${inner})`)}, that point moves to ${M(`\\left(p, ${tn(y0)}\\right)`)}. What is ${M("p")}?`,
       answer: p,
       explanation: [
         `The given point says ${M(`f(${tn(x0)}) = ${tn(y0)}`)}: when ${M("f")} gets the input ${n(x0)}, it gives ${n(y0)}.`,
@@ -1025,7 +1025,7 @@ function transformPoint(r: Random): Case {
     const answer = askY ? rat(-y0) : rat(-x0);
     const unknown = askY ? "q" : "p";
     return {
-      prompt: `${given} The graph of ${M(`y = ${kind}`)} passes through ${M(`\\left(${target[0]}, ${target[1]}\\right)`)}. What is ${M(unknown)}?`,
+      prompt: `${given} On the graph of ${M(`y = ${kind}`)}, that point moves to ${M(`\\left(${target[0]}, ${target[1]}\\right)`)}. What is ${M(unknown)}?`,
       answer,
       explanation: [
         `The given point says ${M(`f(${tn(x0)}) = ${tn(y0)}`)}: the input ${n(x0)} has the output ${n(y0)}.`,
@@ -1876,7 +1876,7 @@ function inverseExpression(r: Random): Case {
       choices,
       explanation: [
         `The graph of ${M("f")} is a parabola with its vertex at ${M(`x = ${tn(h)}`)}: it falls on one side of the vertex and rises on the other.`,
-        `Inputs the same distance either side of ${M(`x = ${tn(h)}`)} give the same output, so a domain on both sides is not one-to-one.`,
+        `Inputs the same distance either side of ${M(`x = ${tn(h)}`)} give the same output. So a domain with inputs on both sides of the vertex is not one-to-one: two inputs share an output.`,
         `On ${M(correct)} the graph only ${right ? "rises" : "falls"}, so each output comes from one input: ${M(correct)}.`,
       ],
       hint: `${M("f")} turns at its vertex, where ${M(`${shifted(h)} = 0`)}. An inverse needs a domain that stays on one side of that turn.`,
