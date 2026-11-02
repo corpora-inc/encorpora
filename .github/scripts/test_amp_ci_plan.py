@@ -186,6 +186,34 @@ def test_pending_main_runtime_validation_cannot_be_displaced_by_a_later_doc_comm
     assert not later_doc['core'] and not later_doc['database']
 
 
+def test_template_sweep_partitions_cover_full_and_selected_browser_runs():
+    jobs = yaml.safe_load((ROOT / '.github/workflows/amp-deep-checks.yml').read_text())['jobs']
+    broad, sweep, coverage = (jobs[name] for name in ('amp-browser', 'amp-ui-sweep', 'amp-ui-coverage'))
+    assert broad['env']['AMP_UI_SKIP_TEMPLATE_SWEEP'] == '1'
+    assert 'AMP_UI_SHARD_INDEX' not in broad['env']
+    assert sweep['strategy'] == {'fail-fast': False, 'matrix': {'shard': list(range(8))}}
+    assert sweep['env']['AMP_UI_SHARD_COUNT'] == 8
+    assert sweep['env']['AMP_UI_SHARD_INDEX'] == '${{ matrix.shard }}'
+    assert 'AMP_UI_SKIP_TEMPLATE_SWEEP' not in sweep['env']
+    assert sweep['timeout-minutes'] == broad['timeout-minutes'] == 60
+    assert sweep['if'] == "${{ needs.changes.outputs.browser == 'true' && (fromJSON(needs.changes.outputs.amp_plan).browser || contains(fromJSON(needs.changes.outputs.amp_plan).browser_scripts, 'scripts/verify-ui.ts')) }}"
+    assert plan(['amp/scripts/verify-ui.ts'])['browser_scripts'] == ['scripts/verify-ui.ts']
+    upload = next(step for step in sweep['steps'] if step.get('uses') == 'actions/upload-artifact@v4')
+    assert upload['with']['if-no-files-found'] == 'error'
+    assert upload['with']['name'] == 'amp-ui-sweep-${{ matrix.shard }}'
+    assert upload['with']['overwrite'] is True
+    assert upload['with']['path'] == 'amp/artifacts/ui-sweep/shard-${{ matrix.shard }}.json'
+    assert coverage['needs'] == 'amp-ui-sweep'
+    assert coverage['if'] == "${{ needs.amp-ui-sweep.result == 'success' }}"
+    download = next(step for step in coverage['steps'] if step.get('uses') == 'actions/download-artifact@v4')
+    assert download['with']['pattern'] == 'amp-ui-sweep-*'
+    assert 'run-id' not in download['with']
+    assert '--shards 8' in coverage['steps'][-1]['run']
+    assert {'amp-ui-sweep', 'amp-ui-coverage'} <= set(jobs['report']['needs'])
+    for path in ('.github/scripts/verify_amp_ui_sweep.py', '.github/scripts/test_amp_ui_sweep.py'):
+        assert plan([path])['browser'], path
+
+
 @pytest.mark.parametrize('selected,outcome,passes', [
     (True, 'success', True), (True, 'failure', False),
     (True, 'cancelled', False), (True, 'skipped', False),
