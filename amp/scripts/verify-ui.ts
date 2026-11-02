@@ -18,7 +18,7 @@ import { exitPractice, resume, startTopic } from "./ui-practice";
 import { algebraDefinitions } from "../src/content/algebra-definitions.js";
 import { equalGroupsDefinitions } from "../src/content/equal-groups-definitions.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
-import { chromium } from "playwright";
+import { chromium, type Page } from "playwright";
 import { createServer } from "vite";
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import assert from "node:assert/strict";
@@ -29,6 +29,7 @@ import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { templates } from "../src/math/engine";
 import { uiSweepManifest, uiSweepPartition } from "./ui-sweep-partition";
+import { captureUiFailure } from "./ui-failure-receipt";
 const inventoryIds = templates.map((template) => template.id);
 const sweep = uiSweepPartition(inventoryIds);
 const selectedIds = new Set(sweep.selectedIds);
@@ -37,6 +38,9 @@ const manifestPath = new URL(
   `../artifacts/ui-sweep/shard-${sweep.shardIndex}.json`,
   import.meta.url,
 );
+const failureDirectory = new URL("../artifacts/ui-failure/", import.meta.url)
+  .pathname;
+await rm(failureDirectory, { recursive: true, force: true });
 // A failed rerun must never leave stale completion evidence behind.
 if (!sweep.skip) await rm(manifestPath, { force: true });
 /** No question or figure may require tablet scrolling. Structured answer
@@ -104,11 +108,13 @@ const vite = await createServer({
 });
 await vite.listen();
 const browser = await chromium.launch({ headless: true });
+let diagnosticPage: Page | undefined;
 await mkdir(new URL("../artifacts/screenshots/", import.meta.url), {
   recursive: true,
 });
 try {
   const page = await browser.newPage({ hasTouch: true });
+  diagnosticPage = page;
   page.setDefaultTimeout(15_000);
   page.setDefaultNavigationTimeout(30_000);
   progress("initial lesson and practice navigation");
@@ -1018,6 +1024,34 @@ try {
   );
 } catch (error) {
   console.error(`UI review failed during ${phase}`);
+  if (diagnosticPage) {
+    try {
+      await within(
+        captureUiFailure(
+          diagnosticPage,
+          failureDirectory,
+          phase,
+          async (id) => {
+            // pg supports query_timeout at runtime; the installed QueryConfig
+            // declarations omit that option. Keep it on the submitted config.
+            const query = {
+              text: "SELECT content->'public' AS problem FROM amp_instances WHERE id=$1 AND learner_id=ANY($2::text[])",
+              values: [id, learnerIds],
+              query_timeout: 1_000,
+            };
+            const result = await repository.pool.query(query);
+            return result.rows[0]?.problem;
+          },
+        ),
+        "failure diagnostics",
+        5_000,
+      );
+    } catch {
+      console.error(
+        "UI failure diagnostics could not finish; preserving the original failure.",
+      );
+    }
+  }
   throw error;
 } finally {
   await browser.close();
