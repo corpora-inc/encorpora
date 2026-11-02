@@ -1072,8 +1072,9 @@ const rationalExtraneousSingleLesson: Lesson = {
   id: "rational-extraneous-single",
   title: "When the answer makes the denominator zero",
   summary:
-    "Clearing a denominator can produce a candidate that the original equation does not allow. Compare every candidate with the excluded value.",
+    "In an equation with the unknown in a fraction's bottom, its denominator, some value makes that bottom zero, and dividing by zero has no answer. That value is excluded from the start. Multiplying both sides by the bottom clears the fraction, but the cleared equation can produce the excluded value as a possible answer, which must then be rejected.",
   templateIds: ["rational-extraneous-single"],
+  senses: { sides: "side-of-equation", factors: "factor-number" },
   objectives: [
     "Solve a rational equation with one linear denominator and test the candidate against the excluded value.",
     "Explain why multiplying by the denominator can introduce an extraneous candidate.",
@@ -1126,6 +1127,7 @@ const rationalExtraneousSingleLesson: Lesson = {
 
 const squareRootExtraneousMethod: ProblemMethod = {
   goal: "Solve a square-root equation by squaring, identify the extraneous candidate, and explain why squaring creates it.",
+  noLink: ["opposite"],
   intuition:
     "A principal square root is never negative. Squaring both sides also keeps the case where the right side is the negative of the square root, so the squared equation can have a candidate that the original equation does not.",
   terms: ["principal-square-root", "extraneous-solution"],
@@ -1146,8 +1148,16 @@ const squareRootExtraneousLesson: Lesson = {
   id: "square-root-extraneous",
   title: "Why squaring adds a candidate",
   summary:
-    "Squaring both sides can add a candidate that satisfies $\\sqrt A=-B$ instead of $\\sqrt A=B$. Check each candidate in the original equation.",
+    "Squaring both sides removes a square root, but it also loses the sign: $3^2$ and $(-3)^2$ are both 9. So a possible answer from the squared equation may actually solve $\\sqrt A=-B$ instead of $\\sqrt A=B$. Such a false answer is called extraneous, so check each possible answer in the original equation.",
   templateIds: ["square-root-extraneous"],
+  senses: {
+    squaring: "square-number",
+    squared: "square-number",
+    square: "square-number",
+    sides: "side-of-equation",
+    "right side": "side-of-equation",
+    root: "root-radical",
+  },
   objectives: [
     "Solve a square-root equation with a linear right side and keep only the valid candidates.",
     "Explain from the sign of the right side why a candidate is extraneous.",

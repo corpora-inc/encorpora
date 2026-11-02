@@ -248,8 +248,18 @@ export const rationalLessons: Lesson[] = [
     id: "rational-power",
     title: "Evaluate a fractional power",
     summary:
-      "A fractional exponent uses its bottom number for a root and its top number for a power; a negative exponent takes a reciprocal.",
+      "An exponent counts how many times a number is multiplied by itself: $2^3=2\\times2\\times2=8$. A fraction as an exponent combines two steps. Its bottom number names a root, such as a cube root, and its top number names a power: $8^{2/3}$ is the cube root of 8, which is 2, squared, which is 4. A negative exponent also flips the result into its reciprocal, 1 divided by it.",
     templateIds: ["rational-power"],
+    senses: {
+      root: "root-radical",
+      squared: "square-number",
+      quarters: "fourth",
+      unit: "unit",
+      base: "base-exponent",
+      bases: "base-exponent",
+      factors: "factor-number",
+    },
+    noLink: ["whole", "parts", "part", "third", "fourth", "rule"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Interpret $x^{m/n} = \\left(\\sqrt[n]{x}\\right)^m$ as the nth root of $x$ raised to the power $m$, and a negative exponent as a reciprocal.",

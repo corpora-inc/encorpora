@@ -437,8 +437,15 @@ export const regentsGapLessons: Lesson[] = [
     id: "zeros-nonmonic-grouping",
     title: "Zeros of a nonmonic product and of a cubic by grouping",
     summary:
-      "Set each factor to 0 and solve it completely. Factor an expanded cubic by grouping first.",
+      "The zeros of a polynomial are the inputs that make it equal 0. When a polynomial is written as factors multiplied together, it is 0 exactly when one factor is 0, so set each factor to 0 and solve. A multiplied-out cubic, highest power $x^3$, can often be factored first by grouping its terms in pairs.",
     templateIds: ["rg-polynomial-zeros-forms"],
+    senses: {
+      factor: "factor-number",
+      factors: "factor-number",
+      terms: "term-expression",
+      product: "product-multiply",
+    },
+    noLink: ["leaves", "whole"],
     objectives: [
       "Find the zeros of a product that includes a factor such as $3x+2$.",
       "Find a zero of an expanded cubic by grouping its terms in pairs.",
@@ -536,8 +543,14 @@ export const regentsGapLessons: Lesson[] = [
     id: "rational-exponent-radical-forms",
     title: "Rational exponents, radicals and negative powers of fractions",
     summary:
-      "Write radicals as powers, add exponents with a common denominator, and flip a fraction for a negative exponent.",
+      "A root can be written as a power with a fractional exponent: $\\sqrt{x}=x^{1/2}$ and $\\sqrt[3]{x}=x^{1/3}$. Then roots follow the exponent rules. Multiplying powers of the same base adds their exponents, which may need a common denominator. A negative exponent means a reciprocal, so it flips a fraction.",
     templateIds: ["rg-rational-exponent-forms"],
+    senses: {
+      root: "root-radical",
+      roots: "root-radical",
+      base: "base-exponent",
+    },
+    noLink: ["rules"],
     objectives: [
       "Combine a radical and a rational power into one power with a coefficient.",
       "Write a fraction raised to a negative rational exponent in radical form or find its value.",

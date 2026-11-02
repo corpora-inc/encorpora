@@ -40,8 +40,15 @@ export const rationalEquationLessons: Lesson[] = [
     id: "rational-equations-and-original-domain",
     title: "Clear the denominator, check the input",
     summary:
-      "A fraction with a variable in its denominator can be undefined for one input. Find that input before solving, then check the answer in the original equation.",
+      "In an equation like $\\frac{x+1}{x-2}=3$, the unknown is in the bottom of a fraction, its denominator. Dividing by zero has no answer, so $x=2$ is ruled out before solving starts. Multiplying both sides by the bottom clears the fraction, but the answer must still be checked against that ruled-out value.",
     templateIds: Object.keys(rationalEquationMethods),
+    senses: {
+      sides: "side-of-equation",
+      identity: "identity-equation",
+      terms: "term-expression",
+      difference: "difference-subtract",
+      factor: "factor-number",
+    },
     includeGeneratedRepresentation: false,
     objectives: [
       "Solve a rational equation with a linear denominator.",
@@ -53,7 +60,8 @@ export const rationalEquationLessons: Lesson[] = [
         title: "Which numbers can solve it?",
         paragraphs: [
           "A denominator is the expression below a fraction bar. In $1/(x-2)$, choosing $x=2$ would divide by zero, so that choice is forbidden before any solving begins. A solution must make the original equation defined and true.",
-          "A rational equation contains a quotient of polynomials. A polynomial is a sum of constant multiples of nonnegative whole-number powers of a variable, such as $2x+1$. You need fraction arithmetic and linear-equation solving for this lesson.",
+          "A rational equation contains a quotient of polynomials. A polynomial is a sum of terms like $5x^2$ or $-3x$ or 7: a number times a whole-number power of the variable, such as $2x+1$.",
+          "The domain of an equation is every input for which all its expressions are defined. A value that makes a denominator zero is an excluded value: it can never be a solution, even if a later step seems to produce it.",
         ],
       },
     ],

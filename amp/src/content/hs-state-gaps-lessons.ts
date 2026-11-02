@@ -400,8 +400,16 @@ export const hsStateGapLessons: Lesson[] = [
     id: "cube-root-equation",
     title: "Solve equations with cube roots",
     summary:
-      "Isolate the cube root and cube both sides. Unlike square roots, cube roots never produce extraneous solutions.",
+      "A cube root undoes cubing: $\\sqrt[3]{8}=2$ because $2\\cdot2\\cdot2=8$, and $\\sqrt[3]{-8}=-2$. To solve an equation with a cube root, get the root alone and cube both sides. Unlike squaring, cubing keeps the sign, so it never adds false (extraneous) answers.",
     templateIds: ["cube-root-equation"],
+    senses: {
+      root: "root-radical",
+      sides: "side-of-equation",
+      side: "side-of-equation",
+      squaring: "square-number",
+      increasing: "increasing",
+    },
+    noLink: ["cube"],
     objectives: [
       "Solve equations containing a cube root or a cube.",
       "Work with negative values.",

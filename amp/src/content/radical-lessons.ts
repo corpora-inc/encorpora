@@ -18,7 +18,7 @@ const foundations: Lesson["sections"] = [
       "A factor is a number that multiplies another to make a given number. In $18 = 9 \\times 2$, both 9 and 2 are factors of 18. The factor 9 is a perfect square, so $\\sqrt{18} = \\sqrt{9}\\sqrt{2} = 3\\sqrt{2}$. The coefficient 3 multiplies the root; it counts three copies of $\\sqrt{2}$.",
       "For any nonnegative numbers $a$ and $b$, $\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$. The product on the right is nonnegative and its square is ab, so it is the principal square root of ab. This product rule justifies taking a square factor outside a radical. It does not give a rule for adding radicands.",
       "In simplest radical form, no square factor greater than 1 remains inside a square root. Such a radicand is called square-free. For example, 6 is square-free, but 12 contains the square factor 4. Look for square factors 4, 9, 16, 25 and so on. Using the largest one finishes the extraction in a single step.",
-      "You need multiplication, factor pairs and signed-number arithmetic. Multiplying two numbers with the same sign gives a positive product; different signs give a negative product. Keep a signed coefficient outside the root while simplifying the nonnegative radicand.",
+      "Multiplying two numbers with the same sign gives a positive product; different signs give a negative product. Keep a signed coefficient outside the root while simplifying the nonnegative radicand.",
     ],
   },
 ];
@@ -38,8 +38,21 @@ export const radicalLessons: Lesson[] = [
     id: "simplify-square-root",
     title: "Simplify a square root exactly",
     summary:
-      "The number inside a square root is its radicand. A square factor contributes its square root as an outside multiplier, or coefficient: $\\sqrt{72}=6\\sqrt2$.",
+      "A square root undoes squaring: $\\sqrt{9}=3$ because $3\\times3=9$. When the number inside, the radicand, has a perfect-square factor such as 36, that part can come out of the root as a multiplier in front, called a coefficient: $\\sqrt{72}=\\sqrt{36}\\sqrt2=6\\sqrt2$. The result is the same exact number, written more simply.",
     templateIds: ["simplify-square-root"],
+    senses: {
+      root: "root-radical",
+      square: "square-number",
+      squares: "square-number",
+      squaring: "square-number",
+      factor: "factor-number",
+      factors: "factor-number",
+      product: "product-multiply",
+      side: "side",
+      sides: "side",
+      units: "unit",
+    },
+    noLink: ["part", "changes", "rule"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Explain the principal square root and square-free radical form.",
@@ -94,8 +107,29 @@ export const radicalLessons: Lesson[] = [
     id: "combine-square-roots",
     title: "Add and subtract square-root terms",
     summary:
-      "A coefficient is the multiplier outside a square root; its radicand is the number inside. Simplify roots, then add coefficients only when their radicands match: $2\\sqrt3+4\\sqrt3=6\\sqrt3$.",
+      "Square roots add like counted objects: 2 copies of $\\sqrt3$ plus 4 copies of $\\sqrt3$ make 6 copies, so $2\\sqrt3+4\\sqrt3=6\\sqrt3$. The number in front, the coefficient, counts the copies, and the number inside, the radicand, says what is counted. Simplify each root first, then add coefficients only when the radicands match.",
     templateIds: ["combine-square-roots"],
+    senses: {
+      root: "root-radical",
+      roots: "root-radical",
+      term: "term-expression",
+      terms: "term-expression",
+      square: "square-number",
+      squaring: "square-number",
+      factor: "factor-number",
+      factors: "factor-number",
+      product: "product-multiply",
+      difference: "difference-subtract",
+    },
+    noLink: [
+      "part",
+      "parts",
+      "change",
+      "changes",
+      "rule",
+      "opposite",
+      "increasing",
+    ],
     includeGeneratedRepresentation: false,
     objectives: [
       "Simplify square-root terms before deciding whether they are like terms.",
@@ -151,8 +185,22 @@ export const radicalLessons: Lesson[] = [
     id: "multiply-square-roots",
     title: "Multiply square-root expressions",
     summary:
-      "A coefficient multiplies a square root from outside; the radicand is its nonnegative inside number. Multiply coefficients and radicands separately, then take the root of any square factor outside.",
+      "To multiply square roots, multiply the numbers in front of the roots, the coefficients, and separately the numbers inside, the radicands, which are never negative here: $(-2\\sqrt3)(3\\sqrt6)=-6\\sqrt{18}$. Then take any perfect-square factor out of the root: $-6\\sqrt{18}=-6\\cdot3\\sqrt2=-18\\sqrt2$.",
     templateIds: ["multiply-square-roots"],
+    senses: {
+      root: "root-radical",
+      roots: "root-radical",
+      product: "product-multiply",
+      term: "term-expression",
+      terms: "term-expression",
+      square: "square-number",
+      squares: "square-number",
+      squaring: "square-number",
+      factor: "factor-number",
+      factors: "factor-number",
+      sides: "side-of-equation",
+    },
+    noLink: ["rule", "changes", "whole"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Use the square-root product rule only for nonnegative radicands.",
@@ -207,8 +255,18 @@ export const radicalLessons: Lesson[] = [
     id: "rationalize-radical-denominator",
     title: "Remove a square root from a denominator",
     summary:
-      "The numerator is a fraction's top and the denominator its nonzero bottom. If the bottom contains a square root, multiply both parts by that root to remove it without changing the value.",
+      "A fraction with a square root in its bottom, such as $\\frac{1}{\\sqrt2}$, is usually rewritten so the bottom has no root. Multiply the top and the bottom by that same root. This multiplies the fraction by 1, so its value does not change, and $\\sqrt2\\cdot\\sqrt2=2$ clears the root: $\\frac{1}{\\sqrt2}=\\frac{\\sqrt2}{2}$.",
     templateIds: ["rationalize-radical-denominator"],
+    senses: {
+      root: "root-radical",
+      square: "square-number",
+      squaring: "square-number",
+      factor: "factor-number",
+      factors: "factor-number",
+      product: "product-multiply",
+      quarters: "fourth",
+    },
+    noLink: ["change", "changes", "rule", "whole", "parts"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Explain why multiplying numerator and denominator by the same nonzero root preserves value.",
@@ -282,6 +340,8 @@ const terms: MethodTerm[] = [
 export const radicalMethods: Record<string, ProblemMethod> = {
   "simplify-square-root": {
     goal: "Rewrite the given square root in exact simplest radical form.",
+    intuition:
+      "The square root of a number that is not negative is the number, also not negative, whose square equals it: $\\sqrt{36}=6$. The number under the root is the radicand. If the radicand has a perfect-square factor, like 36 in $72=36\\times2$, its root can move outside as a coefficient: $\\sqrt{72}=6\\sqrt2$. A root is in simplest form when no square factor greater than 1 is left inside.",
     terms,
     method: [
       "Find the largest square factor of the radicand.",
@@ -292,6 +352,8 @@ export const radicalMethods: Record<string, ProblemMethod> = {
   },
   "combine-square-roots": {
     goal: "Simplify each given square-root term, then add or subtract like terms.",
+    intuition:
+      "In $4\\sqrt3$, the coefficient 4 counts copies of $\\sqrt3$, and 3 is the radicand, the number under the root. Terms with the same radicand are like terms, and they combine by adding their coefficients: $2\\sqrt3+4\\sqrt3=6\\sqrt3$. Terms with different radicands stay separate. Simplifying a root first can reveal a match: $\\sqrt{12}=2\\sqrt3$.",
     terms,
     method: [
       "Extract square factors from each root and include its signed coefficient.",
@@ -302,6 +364,8 @@ export const radicalMethods: Record<string, ProblemMethod> = {
   },
   "multiply-square-roots": {
     goal: "Find the exact simplified product of the two radical terms.",
+    intuition:
+      "For radicands that are not negative, $\\sqrt a\\cdot\\sqrt b=\\sqrt{ab}$. So to multiply $(-2\\sqrt3)(3\\sqrt6)$, multiply the coefficients in front, $-2\\cdot3=-6$, and the radicands under the roots, $3\\cdot6=18$. The product $-6\\sqrt{18}$ may contain a new perfect-square factor, so simplify it: $-18\\sqrt2$.",
     terms,
     method: [
       "Multiply the signed coefficients.",
@@ -312,6 +376,8 @@ export const radicalMethods: Record<string, ProblemMethod> = {
   },
   "rationalize-radical-denominator": {
     goal: "Write an equivalent simplified fraction with a rational denominator.",
+    intuition:
+      "A fraction's denominator is its bottom, which is never 0. A rational number can be written as a fraction of two integers, and a root such as $\\sqrt2$ is not rational. To remove a root from the denominator, multiply the top and bottom by that root. That multiplies the fraction by 1, so its value stays the same, and $\\sqrt2\\cdot\\sqrt2=2$ makes the bottom rational.",
     terms: [...terms, "denominator", "rational-number"],
     method: [
       "Simplify the root in the denominator.",

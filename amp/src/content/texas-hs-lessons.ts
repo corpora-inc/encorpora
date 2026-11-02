@@ -778,8 +778,16 @@ export const texasHsLessons: Lesson[] = [
     id: "rational-exponent-equations",
     title: "Solve equations with rational exponents",
     summary:
-      "Raise both sides to the reciprocal power, and check which signs are possible.",
+      "An equation like $x^{2/3}=9$ has the unknown raised to a fraction. Raising both sides to the flipped fraction, the reciprocal power $\\frac32$, undoes it. But even roots and powers hide signs: $(-27)^{2/3}$ and $27^{2/3}$ are both 9, so check which signs the equation allows.",
     templateIds: ["rational-exponent-equation"],
+    senses: {
+      sides: "side-of-equation",
+      "right side": "side-of-equation",
+      root: "root-radical",
+      roots: "root-radical",
+      square: "square-number",
+    },
+    noLink: ["cube"],
     objectives: [
       "Solve $x^{p/q}=k$ and decide whether $x$ can be negative.",
       "Check each candidate in the original equation.",
@@ -1157,8 +1165,16 @@ export const texasHsLessons: Lesson[] = [
     id: "composition-and-one-sided-behavior",
     title: "Composition order and one-sided behavior",
     summary:
-      "Compare $f(g(x))$ with $g(f(x))$, and describe what a function approaches on each side of a break.",
+      "Doing one function and then another is called composition: $f(g(x))$ means apply $g$ first, then $f$. The order matters, so $f(g(x))$ and $g(f(x))$ usually differ. This lesson also describes what a function's outputs get close to as the input approaches a break in the graph from the left or from the right.",
     templateIds: ["composition-order-choice", "one-sided-behavior-choice"],
+    senses: {
+      hole: "hole",
+      jump: "jump",
+      squared: "square-number",
+      factor: "factor-number",
+      product: "product-multiply",
+    },
+    noLink: ["left side", "right side", "sides"],
     objectives: [
       "Decide whether two functions give the same result in both orders.",
       "Describe left- and right-sided behavior at an asymptote, hole or jump.",
@@ -1249,11 +1265,13 @@ export const texasHsLessons: Lesson[] = [
     id: "rotation-angles-and-speed",
     title: "Angles in standard position and rotation speed",
     summary:
-      "Use reference angles for any angle, and radians for angular and linear speed.",
+      "Angles can be any size, even more than a full turn or negative. Any angle's sine and cosine come from its reference angle, the acute angle it makes with the $x$-axis. Measuring angles in radians, where a full turn is $2\\pi$, links turning to distance: a wheel of radius $r$ turning through $\\theta$ radians rolls $r\\theta$.",
     templateIds: [
       "reference-angle-standard-position",
       "angular-velocity-problem",
     ],
+    senses: { "more than": "more-than" },
+    noLink: ["change"],
     objectives: [
       "Find reference angles, quadrants and coterminal angles.",
       "Relate angular speed, linear speed and distance on a rotating wheel.",
@@ -1420,8 +1438,14 @@ export const texasHsLessons: Lesson[] = [
     id: "polynomial-and-rational-inequalities",
     title: "Polynomial and rational inequalities",
     summary:
-      "Find the zeros, test each interval and write the solution in interval notation.",
+      "An inequality such as $\\frac{x-1}{x+2}\\ge0$ asks where an expression is positive or negative. It can change sign only where it is zero or undefined. So mark those values on a number line, test one number in each gap between them, and write the gaps that work in interval notation.",
     templateIds: ["polynomial-inequality-solve", "rational-inequality-solve"],
+    senses: {
+      interval: "interval",
+      squared: "square-number",
+      factor: "factor-number",
+    },
+    noLink: ["change"],
     objectives: [
       "Solve polynomial and rational inequalities and write interval notation.",
       "Exclude values where a rational expression is undefined.",
