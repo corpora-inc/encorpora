@@ -21,8 +21,8 @@ export async function go(page: Page) {
   await page.getByRole("button", { name: /^(Go|Continue)$/ }).click();
 }
 
-/** Practice one problem type from its lesson in the Lessons section. */
-export async function startTopic(
+/** Open one problem type’s lesson in the Lessons section. */
+export async function openTopicLesson(
   page: Page,
   templateId: string,
   options: { entry?: "library" | "lesson-url" } = {},
@@ -78,6 +78,15 @@ export async function startTopic(
     );
     await topic.click();
   }
+}
+
+/** Practice one problem type from its lesson in the Lessons section. */
+export async function startTopic(
+  page: Page,
+  templateId: string,
+  options: { entry?: "library" | "lesson-url" } = {},
+) {
+  await openTopicLesson(page, templateId, options);
   await page
     .getByRole("button", { name: "Practice this", exact: true })
     .click();
