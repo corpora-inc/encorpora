@@ -1210,3 +1210,56 @@
   outline: 2px solid var(--atlas-accent);
   outline-offset: 2px;
 }
+
+/* The count is the full summary sentence above the views on wider screens. */
+.pathways-status > .pathways-phone-summary {
+  display: none;
+}
+/* Phones: the learner's count and the learner picker share one row under
+   the views, so the map starts on the first screen instead of below a
+   stack of summary, views, learner and search rows. The summary sentence
+   stays in the page for screen readers. */
+@media (max-width: 650px) {
+  /* Its visible text has moved into the status row: no padding to keep. */
+  .pathways .pathways-heading {
+    padding: 0;
+  }
+  .pathways .pathways-heading .pathways-summary {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .pathways .pathways-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+  }
+  .pathways .pathways-status > .pathways-phone-summary {
+    display: block;
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--atlas-muted);
+  }
+  .pathways
+    .pathways-status:has(> p[data-priority="true"])
+    > .pathways-phone-summary {
+    display: none;
+  }
+  .pathways .pathways-status .pathways-learner {
+    flex: none;
+    margin: 0;
+  }
+  .pathways .pathways-status .pathways-learner > span {
+    display: none;
+  }
+  .pathways .pathways-status .pathways-learner > :last-child {
+    width: clamp(180px, 56vw, 200px);
+  }
+}

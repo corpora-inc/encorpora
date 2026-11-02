@@ -159,7 +159,7 @@ TABLE_CONTEXTS = {
     'blue beads to white beads in a necklace': ('Blue beads', 'White beads'),
     'laps run to minutes at a steady pace': ('Laps', 'Minutes'),
     'tickets to their cost in dollars': ('Tickets', 'Cost ($)'),
-    'red paint to white paint, in liters': ('Red paint (L)', 'White paint (L)'),
+    'red paint to white paint, in liters': ('Red paint ($L$)', 'White paint ($L$)'),
 }
 
 

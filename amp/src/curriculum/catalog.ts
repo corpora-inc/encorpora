@@ -632,9 +632,15 @@ const titleWords: Record<string, string> = {
   gcf: "GCF",
   lcm: "LCM",
 };
+/** Skills whose id does not read as a title on its own. */
+const titleOverrides: Record<string, string> = {
+  "statistics-mean": "Mean of a data set",
+};
 /** A skill's title from its id, in AMP's sentence case ("Count to 20",
- * "Pythagorean theorem"), matching problem-type titles. */
+ * "Pythagorean theorem"), matching problem-type titles. The one source for
+ * every screen: none re-cases it. */
 export function skillTitle(id: string): string {
+  if (titleOverrides[id]) return titleOverrides[id];
   const words = id.split("-").map((word) => titleWords[word] ?? word);
   words[0] = words[0]![0]!.toUpperCase() + words[0]!.slice(1);
   return words.join(" ");
