@@ -83,6 +83,15 @@ export const remainingGapTemplates: readonly TemplateMetadata[] = [
   },
 ];
 
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const OPENERS = {
+  "triangle-law-reasoning":
+    "Two laws connect sides and angles in any triangle. The law of sines pairs each side with the angle opposite it. The law of cosines links all three sides with one angle.",
+  "model-quantity-roles":
+    "A model has fixed numbers, such as a fee or a rate, and quantities that change. The independent quantity is the one you choose. The dependent quantity responds to it.",
+};
+
 export type Wrong = { label: string; feedback: string };
 /** Correct choice plus three distinct wrong ones; fewer distinct wrong choices is a content bug. */
 export function options(
@@ -455,6 +464,7 @@ export function triangleLawCase(seed: string) {
     variant,
     problem: assemble(meta, seed, r, {
       ...draft,
+      explanation: [OPENERS["triangle-law-reasoning"], ...draft.explanation],
       ...(figure ? { figure } : {}),
     }),
   };
@@ -702,7 +712,13 @@ export function modelQuantityCase(seed: string) {
       ]),
     };
   }
-  return { variant, problem: assemble(meta, seed, r, draft) };
+  return {
+    variant,
+    problem: assemble(meta, seed, r, {
+      ...draft,
+      explanation: [OPENERS["model-quantity-roles"], ...draft.explanation],
+    }),
+  };
 }
 
 /* ------------------------------------------------------------------ */
