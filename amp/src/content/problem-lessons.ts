@@ -20,6 +20,8 @@ import { displayAnswer } from "../math/polish";
 import { methods } from "./problem-methods";
 import { principles } from "./problem-principles";
 import { answerText } from "../math/selection-response";
+import type { MultiPartChoiceResponse } from "../math/multi-part-choice";
+import { examplePartsTexts, type ExampleParts } from "./example-parts";
 import { lessonVideoFor, type LessonVideo } from "./lesson-videos";
 import type {
   GlossaryCard,
@@ -66,6 +68,8 @@ export type ProblemLessonView = {
   example: {
     prompt: string;
     choices?: string[];
+    /** A multi-part example's sentence and blanks, read-only. */
+    parts?: ExampleParts;
     figure?: SemanticFigure;
     /** Structured givens of the worked example (never the learner's own problem), for its animation. */
     givens?: RealNumberGivens;
@@ -73,6 +77,40 @@ export type ProblemLessonView = {
     answer: string;
   };
 };
+function exampleParts(response: MultiPartChoiceResponse): ExampleParts {
+  const lists = response.blanks.map((blank) =>
+    blank.options.map((option) => option.label),
+  );
+  const same = lists.every(
+    (list) => JSON.stringify(list) === JSON.stringify(lists[0]),
+  );
+  const shared =
+    response.blanks.length > 1 && same
+      ? lists[0]!
+      : response.layout === "cards"
+        ? [...new Set(lists.flat())]
+        : undefined;
+  return {
+    ...(response.sentence
+      ? {
+          sentence: response.sentence.map((part) =>
+            "text" in part
+              ? { text: part.text }
+              : {
+                  blank:
+                    response.blanks.findIndex((b) => b.id === part.blank) + 1,
+                },
+          ),
+        }
+      : {}),
+    blanks: response.blanks.map((blank, i) => ({
+      label: blank.label,
+      ...(shared ? {} : { options: lists[i]! }),
+    })),
+    ...(shared ? { options: shared } : {}),
+  };
+}
+
 export type ProblemMethod = {
   /** What the problem gives and what it asks for, in one sentence. */
   goal: string;
@@ -249,6 +287,16 @@ export function problemLesson(
   const terms = methodTermDefinitions(methodTerms);
   const band = screenBand(templateId);
   const context = lessonGlossaryContext(lessonTemplateId, template);
+  // The example shows what the learner would choose from: its options, or
+  // its sentence and blanks.
+  const choices =
+    response.kind === "multi-select" || response.kind === "choice"
+      ? response.options.map((option) => option.label)
+      : undefined;
+  const parts =
+    response.kind === "multi-part-choice" ? exampleParts(response) : undefined;
+  // Every text the lesson view links: the worked example's question,
+  // choices and answer too, so a glossary word met only there opens its card.
   const { glossary, glossaryLexicon } = glossaryPayload(
     [
       goal,
@@ -257,7 +305,11 @@ export function problemLesson(
       watch ?? "",
       principle ?? "",
       ...terms.map((t) => t.meaning),
+      example.public.prompt,
+      ...(choices ?? []),
+      ...examplePartsTexts(parts),
       ...steps,
+      answer,
     ],
     context,
     methodTerms.map(methodTermId),
@@ -265,7 +317,8 @@ export function problemLesson(
   );
   // The lesson's own words: the method's terms, then the words it uses near
   // its level, in the order the page shows them. Words it already knows are
-  // left out.
+  // left out, and so is the example's question: its words name this one
+  // instance and its answer format ("rounded", "integer"), not the method.
   const near = band ? gradeBandOrder.indexOf(band) - 1 : 0;
   const keyWords = [
     ...methodTerms.map(methodTermId),
@@ -295,9 +348,8 @@ export function problemLesson(
     watch,
     example: {
       prompt: example.public.prompt,
-      ...(response.kind === "multi-select"
-        ? { choices: response.options.map((option) => option.label) }
-        : {}),
+      ...(choices ? { choices } : {}),
+      ...(parts ? { parts } : {}),
       // A private walkthrough of the example, when it has one, replaces its
       // problem figure: the lesson plays it revealed.
       ...(example.walkthrough

@@ -92,6 +92,13 @@ test("the gate flags each kind of bare mathematics", () => {
     ["In triangle ABC, AB = 4.", "bare point name"],
     ["∠ABC measures 40°.", "∠ outside math"],
     ["What is $a\\pi$? Find a", "bare lowercase letter"],
+    // decimal-multiplication principle on main: six dollar signs, paired wrong.
+    [
+      "($a$/10ᵐ$) × (b$/10ⁿ$) = (a × b$)/10ᵐ⁺ⁿ",
+      "dollar signs paired across a formula",
+    ],
+    ["($a$/10ᵐ$) × (b$/10ⁿ$)", "raised letter outside math"],
+    ["Choose $y = a·b$ˣ from a table.", "raised letter outside math"],
   ];
   for (const [text, rule] of cases)
     assert.ok(rules(text).includes(rule), `${text} → ${rule}`);

@@ -64,6 +64,7 @@ export const k8TemplateGlossary: Record<
   "composite-face-prism-volume": { noLink: ["opposite", "square"] },
   "composite-prism-volume": { senses: { solid: "solid-shape" } },
   "compound-event-simulation": { senses: { event: "event" } },
+  "congruent-figure-pair": { senses: { scale: "scale" } },
   "congruent-fourths-pair": { senses: { "one fourth": "fourth" } },
   "continue-count-to-120": {
     senses: { "more than": "more-than" },
@@ -71,6 +72,7 @@ export const k8TemplateGlossary: Record<
   },
   "conversion-chain-story": { senses: { unit: "unit" }, noLink: ["change"] },
   "coordinate-context-points": { senses: { "more than": "more-than" } },
+  "coordinate-terms-slots": { noLink: ["term"] },
   "correct-unit-measure": { senses: { cubes: "cube" } },
   "count-sequence-missing": { noLink: ["more than"] },
   "count-sides-corners": {
@@ -100,9 +102,9 @@ export const k8TemplateGlossary: Record<
     senses: { balance: "balance-scale" },
     noLink: ["left side", "sides", "terms", "whole"],
   },
-  "equivalent-denominator": { senses: { whole: "whole" } },
+  "equivalent-denominator": { senses: { whole: "whole", rename: "rename" } },
   "equivalent-fractions-select": { noLink: ["changes", "part", "parts"] },
-  "equivalent-numerator": { senses: { whole: "whole" } },
+  "equivalent-numerator": { senses: { whole: "whole", rename: "rename" } },
   "expression-after-first-step": { noLink: ["part"] },
   "factor-out-choice": { noLink: ["part"] },
   "factor-partner": { noLink: ["factor", "factors", "product"] },
@@ -269,13 +271,17 @@ export const k8TemplateGlossary: Record<
     senses: { side: "side", sides: "side" },
     noLink: ["opposite"],
   },
-  "rectangle-existence-choice": { senses: { side: "side", sides: "side" } },
+  "rectangle-existence-choice": {
+    senses: { side: "side", sides: "side" },
+    noLink: ["square"],
+  },
   "rectangle-missing-area-side": {
     senses: { side: "side", squares: "square-shape" },
   },
   "rectangle-missing-border-side": { senses: { side: "side", sides: "side" } },
   "rectangle-two-constraints-choice": {
     senses: { side: "side", sides: "side" },
+    noLink: ["square"],
   },
   "related-division-sentence": { senses: { side: "side-of-equation" } },
   "related-subtraction": { senses: { jumps: "jump" } },
@@ -293,6 +299,7 @@ export const k8TemplateGlossary: Record<
   "same-border-area-choice": { senses: { side: "side" } },
   "same-share-different-shape": { senses: { squares: "square-shape" } },
   "scale-drawing-work": { senses: { unit: "unit" } },
+  "scaling-direction-choice": { senses: { product: "product-multiply" } },
   "scientific-notation-work": { senses: { average: "mean-average" } },
   "scientific-operations": {
     senses: { factors: "factor-number" },
@@ -312,7 +319,7 @@ export const k8TemplateGlossary: Record<
     senses: { side: "side", "similar triangles": "similar-figures" },
   },
   "skip-count-missing": { senses: { "more than": "more-than" } },
-  "small-array-total": { noLink: ["squares"] },
+  "small-array-total": { noLink: ["squares", "whole"] },
   "solid-bottom-face-shape": { senses: { sides: "side" }, noLink: ["square"] },
   "solid-parts": {
     senses: {
@@ -337,9 +344,10 @@ export const k8TemplateGlossary: Record<
   "solve-square-cube-equation": {
     senses: { factor: "factor-number", squaring: "square-number" },
   },
+  "staar-rate-equation-choice": { noLink: ["terms"] },
   "story-graph-match": { noLink: ["change", "changes", "part"] },
   "subtract-through-ten": { senses: { part: "part" } },
-  "subtract-whole-tens": { noLink: ["whole"] },
+  "subtract-whole-tens": { senses: { model: "model" }, noLink: ["whole"] },
   "subtract-with-regrouping": { noLink: ["leaves"] },
   "ten-more-or-less": { noLink: ["changes", "more than"] },
   "tens-contribution": { noLink: ["part"] },
@@ -349,7 +357,9 @@ export const k8TemplateGlossary: Record<
   "tenths-as-hundredths": { senses: { parts: "part" } },
   "three-addend-story": { noLink: ["third"] },
   "three-digit-symbol": { noLink: ["change", "faces", "side"] },
+  "times-as-many-comparison": { senses: { product: "product-multiply" } },
   "times-table-pattern": { senses: { product: "product-multiply" } },
+  "trend-slope-meaning": { noLink: ["mean"] },
   "triangle-angle-sum": { noLink: ["side"] },
   "triangle-conditions": { noLink: ["parts"] },
   "triangle-exterior-angle": { senses: { side: "side" } },

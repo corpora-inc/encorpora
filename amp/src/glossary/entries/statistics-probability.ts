@@ -86,7 +86,7 @@ export const statisticsProbabilityEntries: GlossaryEntry[] = [
       "A conclusion that changing one thing causes a change in another. The strongest support comes from an experiment where treatments were handed out by random assignment.",
     example:
       "If volunteers are randomly assigned to sleep 6 or 9 hours and the test-score difference is too large to be chance, it can be credited to sleep.",
-    uses: ["random-assignment", "difference-subtract"],
+    uses: ["random-assignment", "difference-subtract", "experiment"],
     noLink: ["change"],
     band: "algebra-2",
   },
