@@ -322,7 +322,7 @@ const entries: FormatLessonEntry[] = [
     methodTitle: "Which number is zero",
     methodText: [
       "Check by plotting: start at the origin and make the moves.",
-      "Move right for the first number and up for the second.",
+      "Move right for the first number and up for the second. A negative number means left or down.",
     ],
     formal:
       "The $x$-axis is every point whose second number, $y$, is 0. The $y$-axis is every point whose first number, $x$, is 0.",

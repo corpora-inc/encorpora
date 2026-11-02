@@ -25,7 +25,7 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     terms: ["income-tax", "payroll-tax", "sales-tax", "property-tax"],
     method: [
       "Find what the amount is based on: earnings over a year, one paycheck, one price, or the value of what a person owns.",
-      "Then check how it is collected. Income tax is worked out for the whole year. Payroll tax comes out of each paycheck for set programs. Sales tax is added at each purchase. Property tax is billed on what is owned.",
+      "Then check how it is collected. Income tax is worked out on the whole year of income, even when some of it is taken from each paycheck. Payroll tax comes out of each paycheck for set programs. Sales tax is added at each purchase. Property tax is billed on what is owned.",
       "Match those two clues to the kind of tax.",
     ],
     watch:
@@ -271,7 +271,7 @@ export const financeIncomeLessons: Lesson[] = [
         title: "Two clues",
         paragraphs: [
           "Ask two questions. First, what is the amount based on: a year of earnings, one paycheck, one price, or what a person owns?",
-          "Second, how is it collected: worked out for the whole year, taken from each paycheck for set programs, added at each purchase, or billed on what is owned? Together the two answers point to one kind.",
+          "Second, how is it collected: worked out for the whole year, taken from each paycheck for set programs, added at each purchase, or billed on what is owned? Together the two answers point to one kind. Income tax can also be taken from each paycheck, so check what the amount is based on first.",
         ],
       },
       {
