@@ -495,3 +495,26 @@ test("the answer key carries the whole worked example, shown only when the card 
   assert.match(html, /data-steps-more="" hidden/);
   assert.match(html, /The rest of the steps are in the answer key\./);
 });
+
+test("fractions in workbook prose print text-style; standalone mathematics and other publications stay display-style", async () => {
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const { createElement } = await import("react");
+  const { PrintMathProse, PrintMathText } =
+    await import("../src/content/PrintMathText");
+  const render = (text: string, prose: boolean) =>
+    renderToStaticMarkup(
+      createElement(
+        PrintMathProse.Provider,
+        { value: prose },
+        createElement(PrintMathText, { text }),
+      ),
+    );
+  const sentence = "Shade \\(\\frac{3}{4}\\) of the strip.";
+  assert.match(render(sentence, true), /print-math--prose/);
+  assert.match(render(sentence, true), /\\textstyle/);
+  // A card or choice holding only the fraction keeps the large form.
+  assert.doesNotMatch(render("\\(\\frac{3}{4}\\)", true), /print-math--prose/);
+  // Books and lesson printables are unchanged.
+  assert.doesNotMatch(render(sentence, false), /print-math--prose/);
+  assert.match(render(sentence, false), /\\displaystyle/);
+});
