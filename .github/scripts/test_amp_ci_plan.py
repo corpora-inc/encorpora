@@ -373,3 +373,20 @@ def test_policy_change_runs_full_validation_even_for_pull_requests():
     assert result['mode'] == 'full'
     assert result['database'] == catalog(ROOT)['database']
     assert result['core'] == catalog(ROOT)['core']
+
+
+def test_browser_lanes_verify_configured_font_before_journeys():
+    from pathlib import Path
+    import yaml
+    workflow = Path(__file__).resolve().parents[1] / 'workflows/amp-deep-checks.yml'
+    jobs = yaml.safe_load(workflow.read_text())['jobs']
+    for name in ('amp-browser', 'amp-ui-sweep'):
+        job = jobs[name]
+        assert job['env']['AMP_EXPECT_UI_FONT'] == 'Roboto'
+        steps = job['steps']
+        install = next(i for i, step in enumerate(steps) if 'apt-get install -y poppler-utils fonts-roboto' in step.get('run', ''))
+        verify = next(i for i, step in enumerate(steps) if step.get('run') == 'node scripts/verify-ci-fonts.mjs')
+        journeys = [i for i, step in enumerate(steps) if 'test:ui:' in step.get('run', '') or 'node --import tsx scripts/verify-ui.ts' in step.get('run', '')]
+        assert journeys and install < verify < min(journeys)
+        assert 'if' not in steps[verify]
+        assert not steps[verify].get('continue-on-error')

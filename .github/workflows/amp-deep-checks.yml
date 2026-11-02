@@ -151,7 +151,9 @@ jobs:
       - run: npx playwright install --with-deps firefox webkit && npx playwright install-deps chromium && node scripts/install-browser.mjs --configure-linux-sandbox
       # test:payment-ui and the print suites inspect PDFs with pdfinfo.
       - name: Install PDF inspection tools and the Android UI font
-        run: sudo apt-get install -y poppler-utils fonts-roboto && fc-match system-ui && fc-match sans-serif
+        run: sudo apt-get install -y poppler-utils fonts-roboto && fc-match 'system\-ui' && fc-match sans-serif
+      - name: Verify the actual browser UI font
+        run: node scripts/verify-ci-fonts.mjs
       - name: Selected browser entrypoints
         if: matrix.lane == 'selected'
         run: node scripts/run-ci-tests.mjs browser
@@ -270,7 +272,9 @@ jobs:
       - run: npx playwright install-deps chromium && node scripts/install-browser.mjs --configure-linux-sandbox
       # test:payment-ui and the print suites inspect PDFs with pdfinfo.
       - name: Install PDF inspection tools and the Android UI font
-        run: sudo apt-get install -y poppler-utils fonts-roboto && fc-match system-ui && fc-match sans-serif
+        run: sudo apt-get install -y poppler-utils fonts-roboto && fc-match 'system\-ui' && fc-match sans-serif
+      - name: Verify the actual browser UI font
+        run: node scripts/verify-ci-fonts.mjs
       - name: Verify template partition and shared browser journeys
         run: node --import tsx scripts/verify-ui.ts
       - name: Preserve completed template partition
