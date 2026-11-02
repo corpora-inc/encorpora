@@ -131,12 +131,21 @@ def review_converse_explanation(public, explanation):
         text = plain_worked_math(text).replace('²', '^2')
     except ValueError as error:
         raise ValueError(f'Unsupported converse explanation: {context}: {error}') from error
+    def complete_relation(match):
+        # A matching substring is not evidence when a spaced sign or another
+        # arithmetic operation changes either side of the displayed relation.
+        operators = tuple('−+-*/^×÷')
+        return (not text[:match.start()].rstrip().endswith(operators)
+                and not text[match.end():].lstrip().startswith(operators))
     if category == 'right':
-        relations = re.findall(r'(?<![0-9.−+*/^×÷-])([0-9]+)\^2\s*\+\s*([0-9]+)\^2\s*=\s*([0-9]+)\^2(?![0-9^]|\.[0-9])', text)
+        relations = [match.groups() for match in re.finditer(
+            r'(?<![0-9.−+*/^×÷-])([0-9]+)\^2\s*\+\s*([0-9]+)\^2\s*=\s*([0-9]+)\^2(?![0-9^]|\.[0-9])', text)
+            if complete_relation(match)]
         require(any(sorted((int(x), int(y))) == [a, b] and int(z) == c for x, y, z in relations),
                 'Polished converse explanation lost the exact side-square equality: ' + context)
     else:
-        require(re.search(rf'(?<![0-9.−+*/^×÷-]){a*a+b*b}\s*≠\s*{c*c}(?![0-9^]|\.[0-9])', text) is not None,
+        require(any(complete_relation(match) for match in re.finditer(
+            rf'(?<![0-9.−+*/^×÷-]){a*a+b*b}\s*≠\s*{c*c}(?![0-9^]|\.[0-9])', text)),
                 'Polished nonright explanation must show the exact unequal squared totals: ' + context)
 
 
