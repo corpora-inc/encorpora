@@ -836,7 +836,7 @@ export const texasK2Lessons: Lesson[] = [
     method: [
       "Count the parts the cuts make.",
       "Pick one part. 3 sides: triangle. 4 square corners and 4 sides the same length: square. 4 square corners, 2 long sides and 2 short sides: a rectangle that is not a square.",
-      "Say the number and the name together, like 4 squares.",
+      "Check that all the parts have the same shape. Then say the number and the name together, like 4 squares. If the shapes differ, name each kind.",
     ],
     formalTitle: "Cutting squares and rectangles",
     formal: [
