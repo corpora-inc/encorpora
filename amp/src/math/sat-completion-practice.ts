@@ -35,7 +35,7 @@ const OPENERS: Record<string, string[]> = {
     "Degrees and radians are two units for angles. A half turn is 180 degrees, which is $\\pi$ radians.",
   ],
   "unit-circle-coordinate": [
-    "The unit circle has radius 1 and its center at the origin. The point at angle $\\theta$ is $(\\cos\\theta, \\sin\\theta)$: cosine across, sine up.",
+    "A reference angle is the acute angle between the angle's ray and the $x$-axis. It sets the size of each coordinate; the quadrant sets its sign.",
   ],
   "similar-solid-volume": [
     "Similar solids have the same shape. If lengths scale by a factor $k$, areas scale by $k^2$ and volumes by $k^3$.",
@@ -59,10 +59,10 @@ const OPENERS: Record<string, string[]> = {
     "Different models grow in different ways: linear models add the same amount each step, exponential models multiply by the same factor, and quadratic models change by amounts that change steadily.",
   ],
   "quadratic-parameter-root": [
-    "A root of a quadratic is a value of $x$ that makes it equal 0. Substituting a known root gives an equation for the unknown number.",
+    "The discriminant, $b^2-4ac$, is the part under the square root in the quadratic formula. When it equals 0, the quadratic has exactly one real solution.",
   ],
   "rational-function-representation": [
-    "A rational function is a fraction with polynomials on top and bottom. Its graph has a vertical asymptote, a line it never touches, where the bottom is 0 and the top is not.",
+    "A rational function is a fraction with $x$ in the denominator, the bottom. It has no value where the denominator is 0, so that input is excluded.",
   ],
 };
 
