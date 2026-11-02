@@ -28,7 +28,7 @@ env:
 jobs:
   changes:
     name: changes
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       corpora_site: ${{ steps.filter.outputs.corpora_site }}
       amp: ${{ steps.filter.outputs.amp }}
@@ -408,7 +408,7 @@ jobs:
     name: corpan-app · tsc + build
     needs: changes
     if: needs.changes.outputs.corpan_app == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -476,7 +476,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.dja == 'true'
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -527,7 +527,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.ci_scripts == 'true'
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -575,7 +575,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.dynawalla_app == 'true'
     timeout-minutes: 15
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -652,7 +652,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.dynawalla_android_gen == 'true'
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -757,7 +757,7 @@ jobs:
     name: lambda · tests
     needs: changes
     if: needs.changes.outputs.lambda == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -799,7 +799,7 @@ jobs:
     name: web/io · build
     needs: changes
     if: needs.changes.outputs.web == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -855,7 +855,7 @@ jobs:
     name: changed packs · test + build
     needs: changes
     if: needs.changes.outputs.packs == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -948,7 +948,7 @@ jobs:
     name: terraform · fmt + validate
     needs: changes
     if: needs.changes.outputs.terraform == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -995,7 +995,7 @@ jobs:
     name: pack-catalog · integrity
     needs: changes
     if: needs.changes.outputs.packs == 'true' || needs.changes.outputs.web == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -1048,7 +1048,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-24.04, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Initialize verified client trust
@@ -1103,7 +1103,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.dynawalla_engine == 'true'
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -1176,7 +1176,7 @@ jobs:
     needs: changes
     if: needs.changes.outputs.dynawalla_packs == 'true'
     timeout-minutes: 20
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -1383,7 +1383,7 @@ jobs:
     # a hang, rather than burning 45 minutes of queue time before anyone
     # notices. See the cache step for where the warm time actually goes.
     timeout-minutes: 30
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -1716,7 +1716,7 @@ jobs:
     name: aha-app
     needs: changes
     if: needs.changes.outputs.aha_app == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: aha/aha-app
@@ -1823,7 +1823,7 @@ jobs:
     name: amp-core
     needs: changes
     if: needs.changes.outputs.amp_core == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: amp
@@ -1868,7 +1868,7 @@ jobs:
     name: amp-database
     needs: changes
     if: needs.changes.outputs.amp_database == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: amp
@@ -1944,7 +1944,7 @@ jobs:
     name: amp-build
     needs: changes
     if: needs.changes.outputs.amp_build == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: amp
@@ -1997,7 +1997,7 @@ jobs:
     - amp-database
     - amp-build
     if: ${{ always() && needs.changes.outputs.amp == 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -2103,7 +2103,7 @@ jobs:
     name: Corpora site
     needs: changes
     if: needs.changes.outputs.corpora_site == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - name: Initialize verified client trust
@@ -2181,7 +2181,7 @@ jobs:
     permissions:
       contents: read
       issues: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
