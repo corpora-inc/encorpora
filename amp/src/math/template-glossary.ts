@@ -730,7 +730,7 @@ const glossary: Record<
   },
   "cubic-graph-statement": {
     senses: { changes: "change", factor: "factor-number" },
-    noLink: ["decreasing", "increasing", "increasing intervals", "interval"],
+    noLink: ["decreasing", "increasing", "increasing intervals"],
   },
   "cubic-quotient-factored": {
     senses: { factor: "factor-number", product: "product-multiply" },
@@ -1706,7 +1706,6 @@ const glossary: Record<
   },
   "log-base-fraction-graph": {
     senses: { base: "base-exponent" },
-    noLink: ["rule"],
   },
   "log-equation": {
     senses: {
@@ -2145,11 +2144,10 @@ const glossary: Record<
   },
   "parabola-shift": {
     senses: { unit: "unit", units: "unit", vertex: "vertex-parabola" },
-    noLink: ["opposite", "solid", "square"],
+    noLink: ["opposite", "solid"],
   },
   "parabola-vertex": {
     senses: {
-      changes: "change",
       term: "term-expression",
       vertex: "vertex-parabola",
       factor: "factor-number",
@@ -2157,7 +2155,7 @@ const glossary: Record<
       squared: "square-number",
       "standard form": "standard-form-line",
     },
-    noLink: ["base", "image", "opposite"],
+    noLink: ["image", "opposite"],
   },
   "parabola-vertex-distance": {
     senses: {
@@ -3614,12 +3612,10 @@ const glossary: Record<
     senses: {
       base: "base-exponent",
       change: "change",
-      population: "population",
       rule: "rule",
       unit: "unit",
       term: "term-expression",
     },
-    noLink: ["factor"],
   },
   "structure-rewrite": {
     senses: {
