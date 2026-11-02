@@ -235,13 +235,13 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   "compare-lengths": {
     goal: "Decide which of two strips is longer or shorter, or that they are equal.",
     intuition:
-      "Length is how long something is, from one end to the other. To compare two strips fairly, they must start at the same line. Then the strip that reaches farther is longer. The other strip is shorter.",
+      "Length is how long something is, from one end to the other. To compare two strips fairly, they must start at the same line. Then the strip that reaches farther is longer. The other strip is shorter. If their ends line up too, the strips are the same length.",
     terms: ["length"],
     noLink: ["edge"],
     method: [
       "Look at the left ends. Do both strips start at the same line?",
       "If one starts farther right, picture sliding it back to the same start line.",
-      "From the same start, the strip that reaches farther is longer.",
+      "From the same start, the strip that reaches farther is longer. If the ends match, the strips are the same length.",
     ],
     watch:
       "Ending farther right does not tell you which strip is longer. Line up the starts first.",
@@ -364,7 +364,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
 };
 export const attributePrinciples: Record<string, string> = {
   "compare-lengths":
-    "Line two strips up at the same start. Then the one that reaches farther is longer.",
+    "Line two strips up at the same start. Then the one that reaches farther is longer. If both end at the same place, they are the same length.",
   "compare-weights":
     "A balance compares weight: the heavier side goes down, and equal weights keep the beam level.",
   "compare-capacity":

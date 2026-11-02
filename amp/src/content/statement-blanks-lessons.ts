@@ -12,17 +12,17 @@ const entries: FormatLessonEntry[] = [
       "Use the amounts for several months to decide.",
     ],
     intuition:
-      "An expense is money spent on something. Many expenses come every month. A fixed expense is set at the same amount every month, like rent. Rent is money paid to live in a home. A variable expense depends on how much you use or buy, like food or electricity, so it changes from month to month. The tables in these problems show a few months. An expense with the same amount in every month counts as fixed. An expense whose amount changes counts as variable.",
+      "An expense is money spent on something. Many expenses come every month. A fixed expense is set at the same amount every month, like rent. Rent is money paid to live in a home. A variable expense depends on how much you use or buy, like food or electricity, so it changes from month to month. The tables in these problems show a few months. An expense with the same amount in every month shown stayed the same, as a fixed expense does. An expense whose amount changes varies. A few matching months alone do not prove a cost is set ahead, so also ask whether the amount is agreed ahead of time.",
     terms: ["fixed-cost", "variable-cost"],
     method: [
       "Look at the amounts for one expense across all the months.",
-      "If every month shows the same amount, the expense is fixed. If any month is different, it is variable.",
+      "If every month shows the same amount, the expense stayed the same in those months. If any month is different, it varies.",
       "If there are no amounts, ask: is the monthly amount agreed ahead of time (fixed)? Or does it depend on how much you use (variable)?",
     ],
     watch:
       "Check every month. Two months that match do not make an expense fixed if a third month is different.",
     principle:
-      "Rent of 700, 700 and 700 dollars is a fixed expense, because every month is the same. Groceries of 210, 185 and 240 dollars are a variable expense. With letters, monthly amounts $a_1$, $a_2$ and $a_3$ make a fixed expense when $a_1=a_2=a_3$, and a variable one if any two differ. The small numbers 1, 2 and 3 name the months. A monthly price agreed ahead of time makes a fixed expense, and paying for how much you use makes a variable one.",
+      "Rent of 700, 700 and 700 dollars stayed the same in every month shown. Groceries of 210, 185 and 240 dollars varied. With letters, monthly amounts $a_1$, $a_2$ and $a_3$ stayed the same when $a_1=a_2=a_3$, and varied if any two differ. The small numbers 1, 2 and 3 name the months. A monthly price agreed ahead of time makes a fixed expense, and paying for how much you use makes a variable one.",
     example: {
       prompt:
         "Rent was 700, 700, 700 and groceries were 210, 185, 240 dollars in three months. Which varies?",
@@ -38,7 +38,7 @@ const entries: FormatLessonEntry[] = [
       "A family budget, a plan for spending, can plan a fixed expense exactly. For a variable expense it has to estimate, or make a close guess.",
     ],
     formal:
-      "Think of each expense as a list of monthly amounts. A fixed expense has the same amount in every month. A variable expense has at least two months that differ.",
+      "Think of each expense as a list of monthly amounts. A fixed expense has the same amount in every month. So two months that differ show an expense is not fixed. Matching months alone do not prove it is fixed: a variable expense can match by chance.",
     pitfalls: [
       "Do not call an expense fixed because it is large. Size does not decide.",
       "Do not call an expense variable because it was paid late. Only the amount matters.",

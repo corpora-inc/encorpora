@@ -191,6 +191,22 @@ function discountModel(r: (lo: number, hi: number) => number): DiscountModel {
 }
 const quarterTex = (q: number) =>
   q === 2 ? "\\frac{1}{2}" : `\\frac{${q}}{4}`;
+/** The cost of a mixed-number quantity, shown as whole units plus the
+ * fractional part. The model keeps the fractional part's cost a whole number
+ * of cents (cents × quarters is a multiple of 4), so each step is exact. */
+function partCost(m: DiscountModel) {
+  const unit = m.good.unit;
+  const wholeCost = m.whole * m.cents;
+  const partCents = (m.cents * m.quarters) / 4;
+  const price = dollars(m.cents);
+  const part =
+    m.quarters === 2
+      ? `Half a ${unit} costs $${price}\\div2=${dollars(partCents)}$ dollars.`
+      : m.quarters === 1
+        ? `A fourth of a ${unit} costs $${price}\\div4=${dollars(partCents)}$ dollars.`
+        : `A fourth of a ${unit} costs $${price}\\div4=${dollars(m.cents / 4)}$ dollars, so three fourths cost $3\\times${dollars(m.cents / 4)}=${dollars(partCents)}$ dollars.`;
+  return `${m.whole === 1 ? `1 ${unit} costs` : `${m.whole} ${unit}s cost`} $${m.whole}\\times${price}=${dollars(wholeCost)}$ dollars. ${part} Together: $${dollars(wholeCost)}+${dollars(partCents)}=${dollars(m.before)}$ dollars.`;
+}
 export const mixedQuantityDiscount = chainFamily({
   template: mixedQuantityDiscountTemplate,
   axes: discountAxes,
@@ -210,7 +226,7 @@ export const mixedQuantityDiscount = chainFamily({
       hint: `Find the cost before the discount first: multiply ${amount} ${m.good.unit}s by ${dollars(m.cents)} dollars per ${m.good.unit}. The discount applies to that total, not to the price per ${m.good.unit}.`,
       explanation: [
         `The discount comes off the total, so find the total cost first.`,
-        `${amount} is ${decimalQuantity} as a decimal. Multiply by the price per ${m.good.unit}: $${decimalQuantity}\\times${dollars(m.cents)}=${dollars(m.before)}$ dollars.`,
+        `${amount} is ${decimalQuantity} as a decimal. Multiply by the price per ${m.good.unit} in two parts: ${partCost(m)}`,
         a["discount-form"] === "fraction"
           ? `The discount is ${fractionOff} of ${dollars(m.before)} dollars. Taking one of ${m.discount.d} equal parts means dividing by ${m.discount.d}: $${dollars(m.before)}\\div${m.discount.d}=${dollars(m.before / m.discount.d)}$ dollars.`
           : `The discount is ${m.discount.percent}% of ${dollars(m.before)} dollars. ${m.discount.percent}% means ${m.discount.percent} hundredths, or ${m.discount.percent / 100}: $${dollars(m.before)}\\times${m.discount.percent / 100}=${dollars((m.before * m.discount.percent) / 100)}$ dollars.`,

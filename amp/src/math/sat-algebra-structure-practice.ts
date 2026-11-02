@@ -1475,8 +1475,8 @@ function absoluteCompoundInequality(r: Random): Built {
     const symbol = variant === 0 ? lt(strict) : gt(strict);
     const reading =
       variant === 0
-        ? `$|${expression}|${symbol}${c}$ means $${expression}$ is within ${c} of 0: $-${c}${lt(strict)}${expression}${lt(strict)}${c}$.`
-        : `$|${expression}|${symbol}${c}$ means $${expression}$ is at least ${c} from 0: $${expression}${lt(strict)}-${c}$ or $${expression}${gt(strict)}${c}$.`;
+        ? `$|${expression}|${symbol}${c}$ means $${expression}$ is ${strict ? `less than ${c} away from 0` : `within ${c} of 0, ${c} or less away`}: $-${c}${lt(strict)}${expression}${lt(strict)}${c}$.`
+        : `$|${expression}|${symbol}${c}$ means $${expression}$ is ${strict ? `more than ${c} away from 0` : `at least ${c} away from 0`}: $${expression}${lt(strict)}-${c}$ or $${expression}${gt(strict)}${c}$.`;
     const insideCorrect = inside(lo, hi, strict, strict);
     const outsideCorrect = outside(lo, hi, strict, strict);
     return {

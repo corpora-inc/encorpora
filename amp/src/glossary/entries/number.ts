@@ -221,9 +221,9 @@ export const numberEntries: GlossaryEntry[] = [
     term: "factor",
     forms: ["factor", "factors"],
     plain:
-      "A number multiplied by another number to make a product. A factor of a number divides it with no remainder.",
+      "A number multiplied by another number to make a product. For whole numbers, a factor of a number divides it with no remainder.",
     example: "In 3 × 4 = 12, 3 and 4 are factors of 12.",
-    uses: ["product-multiply", "remainder"],
+    uses: ["product-multiply", "remainder", "whole-number"],
     band: "3",
     autoLink: false,
   },

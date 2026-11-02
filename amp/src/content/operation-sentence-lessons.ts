@@ -85,7 +85,7 @@ export const operationSentenceMethods: Record<string, ProblemMethod> = {
 
 export const operationSentencePrinciples: Record<string, string> = {
   "operation-sentence-choice":
-    "Let $g$ be the number of groups and $s$ the size of each group. The total is $n = g \\times s = s \\times g$, which is $s$ added $g$ times. Then $n \\div s = g$ and $n \\div g = s$. A sentence that only uses $g + s$, $g - s$ or $g \\div s$ finds a different amount.",
+    "Let $g$ be the number of groups and $s$ the size of each group. The total is $n = g \\times s = s \\times g$, which is $s$ added $g$ times. Then $n \\div s = g$ and $n \\div g = s$. A sentence that only uses $g + s$, $g - s$ or $g \\div s$ does not join $g$ groups of $s$, even when its value happens to match, as in $2 + 2 = 2 \\times 2$.",
   "related-division-sentence":
     "If $a \\times b = c$, and neither $a$ nor $b$ is 0, then $c \\div a = b$ and $c \\div b = a$. Going back, $c \\div a = n$ means $a \\times n = c$. Here the letters stand for numbers. This works because division undoes multiplication by a number that is not 0.",
   "related-subtraction-sentence":

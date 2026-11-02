@@ -255,7 +255,7 @@ const specs: SelectContentSpec[] = [
     more: "A square root of a whole number between two perfect squares is between their roots. $\\sqrt{10}$ is between $\\sqrt{9}=3$ and $\\sqrt{16}=4$, and since $3.14^2<10$ it is greater than $3.14$.",
     terms: ["pi", "square-root"],
     steps: [
-      "Write the number to compare with, such as $\\pi\\approx3.14159$, to at least four decimal places.",
+      "Decimal places are the digits after the decimal point. Write the number to compare with, without rounding, to one more decimal place than the closest choice shows. If the closest choice is $3.1416$, with four places, write $\\pi$ to five: $3.14159$.",
       "Write each choice as a decimal to the same number of places: divide a fraction, and square a decimal to place a square root.",
       "Compare digit by digit from the left.",
       "Select only the numbers that are greater (or less) as asked and check the count.",

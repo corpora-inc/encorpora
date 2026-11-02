@@ -196,7 +196,7 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
   "fl-vector-angle": {
     goal: "Find the angle between two vectors, or decide whether they are perpendicular, parallel or neither.",
     intuition:
-      "The dot product of two vectors, found by multiplying matching components and adding, also equals their lengths times the cosine of the angle between them. Solving for the cosine gives the angle. For vectors other than $\\langle0,0\\rangle$, a dot product of 0 means a right angle. When one vector is a multiple of the other, they are parallel, and the angle is $0^\\circ$ or $180^\\circ$.",
+      "The dot product of two vectors, found by multiplying matching components and adding, also equals their lengths times the cosine of the angle between them. Solving for the cosine gives the angle. For vectors other than $\\langle0,0\\rangle$, a dot product of 0 means a right angle, and when one vector is a multiple of the other, they are parallel and the angle is $0^\\circ$ or $180^\\circ$.",
     senses: { squared: "square-number" },
     terms: [
       [
@@ -213,7 +213,7 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
     method: [
       "Compute the dot product and the two lengths.",
       "Use $\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$ and choose the angle between $0^\\circ$ and $180^\\circ$ with that cosine.",
-      "A zero dot product means $90^\\circ$. If $u_1v_2-u_2v_1=0$, the vectors are parallel; the sign of the dot product tells the direction.",
+      "For vectors other than $\\langle0,0\\rangle$: a zero dot product means $90^\\circ$. If $u_1v_2-u_2v_1=0$, the vectors are parallel; the sign of the dot product tells the direction.",
     ],
     watch:
       "A negative dot product means an angle greater than $90^\\circ$. Do not report its supplement.",
@@ -307,7 +307,7 @@ export const floridaGapPrinciples: Record<string, string> = {
   "fl-vector-dot-product":
     "For vectors $\\mathbf{u}=\\langle u_1,u_2\\rangle$ and $\\mathbf{v}=\\langle v_1,v_2\\rangle$, $\\mathbf{u}\\cdot\\mathbf{v}=u_1v_1+u_2v_2$. Nonzero vectors are perpendicular exactly when $\\mathbf{u}\\cdot\\mathbf{v}=0$. The scalar projection of $\\mathbf{u}$ on $\\mathbf{v}$ is $\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|}$.",
   "fl-vector-angle":
-    "For nonzero vectors, $\\mathbf{u}\\cdot\\mathbf{v}=|\\mathbf{u}||\\mathbf{v}|\\cos\\theta$ with $0^\\circ\\le\\theta\\le180^\\circ$, so $\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$. In the plane, $u_1v_2-u_2v_1=0$ exactly when one vector is a multiple of the other.",
+    "For nonzero vectors, $\\mathbf{u}\\cdot\\mathbf{v}=|\\mathbf{u}||\\mathbf{v}|\\cos\\theta$ with $0^\\circ\\le\\theta\\le180^\\circ$, so $\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$. In the plane, nonzero vectors are parallel exactly when $u_1v_2-u_2v_1=0$, which happens exactly when one is a multiple of the other.",
   "fl-even-odd-classify":
     "A function $f$ is even if $f(-x)=f(x)$ for all $x$ in its domain, and odd if $f(-x)=-f(x)$ for all $x$ in its domain. After like terms are combined, a nonzero polynomial is even exactly when every term has an even exponent. It is odd exactly when every term has an odd exponent.",
   "fl-function-arithmetic":

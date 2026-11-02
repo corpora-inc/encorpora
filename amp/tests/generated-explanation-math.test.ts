@@ -61,3 +61,112 @@ test("a choice called a number sentence has an equals or comparison sign", () =>
         for (const label of options(p))
           assert.match(label, /[=<>]/, `${id}: "${label}" is not a sentence`);
 });
+
+const feedbacks = (p: GeneratedProblem) =>
+  Object.values(p.choiceFeedback ?? {});
+
+test("equal groups: adding one copy per group counts them, so steps never say adding cannot", () => {
+  for (const p of sample("operation-sentence-choice", 80)) {
+    const all = text(p);
+    assert.doesNotMatch(all, /Adding, taking away or sharing would not count/);
+    const m = /Adding (\d+) once for each group does: \$([\d+]+)=(\d+)\$/.exec(
+      all,
+    );
+    if (!m) continue;
+    const terms = m[2]!.split("+").map(Number);
+    assert.ok(terms.every((t) => t === Number(m[1])));
+    assert.equal(
+      terms.reduce((a, b) => a + b, 0),
+      Number(m[3]),
+    );
+  }
+});
+
+test("a power is copies multiplied, never a number multiplied by itself n times", () => {
+  for (const p of sample("rg-exponent-monomial-power", 60)) {
+    const all = [text(p), ...feedbacks(p)].join("\n");
+    assert.doesNotMatch(all, /multiplied by itself \d+ times/);
+    for (const m of all.matchAll(
+      /(\d+) copies of (-?\d+) multiplied, \$([^$]+)\$/g,
+    )) {
+      const factors = m[3]!.split("\\times");
+      assert.equal(factors.length, Number(m[1]));
+      assert.ok(
+        factors.every((f) => Number(f.replace(/[()]/g, "")) === Number(m[2])),
+      );
+    }
+  }
+});
+
+test("a factored polynomial's zeros: one factor can give more than one zero", () => {
+  for (const p of sample("rg-polynomial-zeros-forms", 10))
+    assert.doesNotMatch(text(p), /each factor that can equal 0 gives one zero/);
+});
+
+test("absolute value: 'within' is used only for at most, never for strictly less than", () => {
+  const seen = new Set<string>();
+  for (const p of sample("absolute-compound-inequality", 80))
+    for (const step of p.explanation) {
+      const m = /^\$\|[^|]+\|(<|>|\\le |\\ge )(\d+)\$ means/.exec(step);
+      if (!m) continue;
+      seen.add(m[1]!);
+      const words = {
+        "<": `less than ${m[2]} away`,
+        "\\le ": `within ${m[2]} of 0, ${m[2]} or less away`,
+        ">": `more than ${m[2]} away`,
+        "\\ge ": `at least ${m[2]} away`,
+      }[m[1]!]!;
+      assert.ok(step.includes(words), step);
+    }
+  assert.equal(seen.size, 4, "every inequality sign was sampled");
+});
+
+test("least squares: each shown residual total is the sum of the shown squares", () => {
+  for (const p of sample("nonlinear-data-model", 30)) {
+    const pairs = [...p.public.prompt.matchAll(/\((\d+),(\d+)\)/g)].map((m) =>
+      Number(m[2]),
+    );
+    let seen = 0;
+    for (const step of p.explanation) {
+      const m =
+        /the predicted amounts are \$([^$]+)\$\. The residuals are \$([^$]+)\$, and their squares add to \$[^=]+=(\d+)\$/.exec(
+          step,
+        );
+      if (!m) continue;
+      seen++;
+      const predicted = m[1]!.split(", ").map(Number);
+      const residuals = m[2]!.split(", ").map(Number);
+      residuals.forEach((e, i) => assert.equal(e, pairs[i]! - predicted[i]!));
+      assert.equal(
+        residuals.reduce((s, e) => s + e * e, 0),
+        Number(m[3]),
+      );
+    }
+    assert.equal(seen, 4, p.public.prompt);
+  }
+});
+
+test("mixed-number cost: whole units plus the fraction, each part exact and adding to the total", () => {
+  for (const p of sample("mixed-quantity-discount", 60)) {
+    const step = p.explanation[1]!;
+    const m = /Together: \$([\d.]+)\+([\d.]+)=([\d.]+)\$/.exec(step)!;
+    assert.ok(m, step);
+    const cents = (s: string) => Math.round(Number(s) * 100);
+    assert.equal(cents(m[1]!) + cents(m[2]!), cents(m[3]!));
+    for (const [, a, op, b, c] of step.matchAll(
+      /\$([\d.]+)\\(times|div)([\d.]+)=([\d.]+)\$/g,
+    )) {
+      const exact =
+        op === "times" ? Number(a) * Number(b) : Number(a) / Number(b);
+      assert.equal(Math.round(exact * 1e6), Math.round(Number(c) * 1e6), step);
+    }
+  }
+});
+
+test("vector conditions name the nonzero case", () => {
+  for (const id of ["fl-vector-dot-product", "fl-vector-angle"])
+    for (const p of sample(id, 30))
+      for (const line of text(p).split("\n"))
+        if (/perpendicular (exactly )?when|parallel when/.test(line))
+          assert.match(line, /nonzero|other than/, `${id}: ${line}`);
+});

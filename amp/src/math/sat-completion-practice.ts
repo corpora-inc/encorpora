@@ -964,10 +964,11 @@ function draft(
         "Compare all four squared residual totals; the closest fit need not pass through every observed point.",
       ),
       explanation: labels
-        .map(
-          (label, i) =>
-            `For $y=${label}$, the sum of squared residuals is ${errors[i]}.`,
-        )
+        .map((label, i) => {
+          const predicted = xs.map((x) => funcs[i]!(x));
+          const residuals = predicted.map((p, j) => ys[j]! - p);
+          return `For $y=${label}$, the predicted amounts are $${predicted.join(", ")}$. The residuals are $${residuals.join(", ")}$, and their squares add to $${residuals.map((e) => (e < 0 ? `(${e})^2` : `${e}^2`)).join("+")}=${errors[i]}$.`;
+        })
         .concat(
           `The smallest total is ${errors[best]}, so choose $y=${labels[best]}$. This is a fit to these observations, not proof of a causal law.`,
         ),

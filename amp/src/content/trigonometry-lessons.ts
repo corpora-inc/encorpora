@@ -152,12 +152,12 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
   "sinusoid-model": {
     goal: "From a maximum, minimum, period and starting position, build or use a model $h(t)=A\\cos(Bt)+k$ or $A\\sin(Bt)+k$.",
     intuition:
-      "Tides, wheels and springs repeat. A sinusoid, a wave-shaped graph, models them: it swings equally above and below a middle level, the midline. The amplitude is how far it swings from the midline, and the period is the time for one full cycle. These, and where the quantity starts, fix the model.",
+      "Tides, wheels and springs repeat. A sinusoid, a wave-shaped graph, models them: it swings equally above and below a middle level, the midline. The amplitude is how far it swings from the midline, and the period is the time for one full cycle. These, and where the quantity starts, fix the model. Cosine and sine describe a point turning around a circle of radius 1, starting at the circle's rightmost point. Cosine, written cos, is the point's sideways position from the center, and sine, written sin, is its height above or below the center.",
     terms: ["midline", "amplitude"],
     method: [
       "Midline $k=\\frac{\\max+\\min}{2}$; amplitude $A=\\frac{\\max-\\min}{2}$; $B=\\frac{2\\pi}{\\text{period}}$.",
       "Choose the form from the start: maximum at $t=0$ gives $+A\\cos$; minimum gives $-A\\cos$; midline moving up gives $+A\\sin$.",
-      "To use the model, compute $Bt$ first, then the trigonometric value, then multiply and add $k$.",
+      "To use the model, compute $Bt$ first, then its cosine or sine. Multiply by the number in front with its sign, $A$ or $-A$, then add $k$.",
     ],
     watch:
       "The amplitude is not the maximum value, and $B$ is not the period. Check the model at $t=0$: it must give the stated starting value.",
@@ -182,7 +182,7 @@ export const trigonometryPrinciples: Record<string, string> = {
   "trig-triangle-area":
     "A triangle with sides $a$ and $b$ and included angle $C$ has area $\\frac12ab\\sin C$, because $b\\sin C$ is the height above side $a$. Since $\\sin(180^\\circ-C)=\\sin C$, supplementary included angles give equal areas.",
   "sinusoid-model":
-    "A quantity with maximum $M$, minimum $m$ and period $P$ is modeled by $A\\cos(Bt)+k$ or $A\\sin(Bt)+k$ with $A=\\frac{M-m}{2}$, $k=\\frac{M+m}{2}$ and $B=\\frac{2\\pi}{P}$. The sign and the choice of sine or cosine match the value and direction at $t=0$.",
+    "A quantity that swings like a wave, such as the height of a seat on a steadily turning wheel, with maximum $M$, minimum $m$ and period $P$, has $A=\\frac{M-m}{2}$, $k=\\frac{M+m}{2}$ and $B=\\frac{2\\pi}{P}$. Starting at the maximum, it is $A\\cos(Bt)+k$. Starting at the minimum, it is $-A\\cos(Bt)+k$. Starting at the midline and rising, it is $A\\sin(Bt)+k$.",
 };
 
 const lesson = (
@@ -618,7 +618,7 @@ export const trigonometryLessons: Lesson[] = [
   lesson(
     "sinusoid-model",
     "Build a periodic model",
-    "A periodic quantity repeats over and over, like a tide or a Ferris wheel seat. Its highest and lowest values give the middle level, the midline, and the size of the swing, the amplitude. The time for one full repeat, the period, gives the number $B$. The starting position decides whether to use cosine, negative cosine or sine.",
+    "A periodic quantity repeats over and over, like a tide or a Ferris wheel seat. Its highest and lowest values give the middle level, the midline, and the size of the swing, the amplitude. The time for one full repeat, the period, gives the number $B$. Cosine and sine, written cos and sin, follow a point turning around a circle of radius 1 from its rightmost point: cosine is its sideways position from the center, and sine is its height. The starting position decides whether to use cosine, negative cosine or sine.",
     [
       "Find the midline, amplitude and period of a repeating quantity from a description.",
       "Write a sine or cosine model that starts in the right place, and use it.",
@@ -643,7 +643,7 @@ export const trigonometryLessons: Lesson[] = [
     "Parameters from context",
     [
       "$k = \\tfrac{\\text{max} + \\text{min}}{2}$, $A = \\tfrac{\\text{max} - \\text{min}}{2}$ and $B = \\tfrac{2\\pi}{\\text{period}}$. Starting at a maximum: $A\\cos(Bt) + k$. Starting at a minimum: $-A\\cos(Bt) + k$. Starting at the midline and rising: $A\\sin(Bt) + k$.",
-      "To use a model, find the angle $Bt$ first, take its cosine or sine, multiply by $A$, and add $k$.",
+      "To use a model, find the angle $Bt$ first, take its cosine or sine, multiply by the number in front with its sign ($-A$ when the model starts at the minimum), and add $k$.",
     ],
     "Why these parameters",
     [
