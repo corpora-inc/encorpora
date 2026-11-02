@@ -358,7 +358,7 @@ const specs: SelectContentSpec[] = [
       "For each equation, choose the statement that says correctly whether it is true or false. Choose one statement for each equation.",
     ],
     watch:
-      "A number times itself, divided by that number, gives the number back. $49\\div7=7$, not 6 or 8.",
+      "A number other than 0, times itself, divided by that number, gives the number back. $49\\div7=7$, not 6 or 8.",
     principle:
       "Each multiplication fact $a\\times b=p$ gives two division facts: $p\\div a=b$ and $p\\div b=a$. Here the letters stand for whole numbers other than 0. When $a$ and $b$ are the same number, the two division facts are the same. An equation is true when its two sides are equal, whichever side comes first.",
     example: {

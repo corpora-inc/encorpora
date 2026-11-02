@@ -173,10 +173,10 @@ const specs: SelectContentSpec[] = [
       "Angles are measured in degrees, written °. An acute angle is between $0^\\circ$ and $90^\\circ$. A right angle is exactly $90^\\circ$. An obtuse angle is between $90^\\circ$ and $180^\\circ$. Turning an angle does not change its measure.",
     example: {
       prompt:
-        "An angle opens wider than the corner of a sheet of paper but is not a straight line. Is it acute, right or obtuse?",
+        "An angle opens wider than the corner of a sheet of paper, but not as wide as a straight line. Is it acute, right or obtuse?",
       steps: [
         "It opens wider than a right angle, so it is more than $90^\\circ$.",
-        "The angles here never open wider than a straight line, which is $180^\\circ$. This one is not a straight line, so it is less than $180^\\circ$.",
+        "It is not as wide as a straight line, which is $180^\\circ$, so it is less than $180^\\circ$.",
         "An angle between $90^\\circ$ and $180^\\circ$ is obtuse.",
       ],
       answer: "Obtuse",
