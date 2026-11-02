@@ -229,7 +229,7 @@ export const mixedQuantityDiscount = chainFamily({
         `${amount} is ${decimalQuantity} as a decimal. Multiply by the price per ${m.good.unit} in two parts: ${partCost(m)}`,
         a["discount-form"] === "fraction"
           ? `The discount is ${fractionOff} of ${dollars(m.before)} dollars. Taking one of ${m.discount.d} equal parts means dividing by ${m.discount.d}: $${dollars(m.before)}\\div${m.discount.d}=${dollars(m.before / m.discount.d)}$ dollars.`
-          : `The discount is ${m.discount.percent}% of ${dollars(m.before)} dollars. ${m.discount.percent}% means ${m.discount.percent} hundredths, or ${m.discount.percent / 100}: $${dollars(m.before)}\\times${m.discount.percent / 100}=${dollars((m.before * m.discount.percent) / 100)}$ dollars.`,
+          : `The discount is ${m.discount.percent}% of ${dollars(m.before)} dollars. ${m.discount.percent}% means ${m.discount.percent} of every 100, which is ${m.discount.word} of the total: one of ${m.discount.d} equal parts. So divide by ${m.discount.d}: $${dollars(m.before)}\\div${m.discount.d}=${dollars(m.before / m.discount.d)}$ dollars.`,
         `Subtract the discount from the total: $${dollars(m.before)}-${dollars(m.before - m.after)}=${dollars(m.after)}$ dollars.`,
         `Dara pays ${dollars(m.after)} dollars.`,
       ],

@@ -785,7 +785,7 @@ export const floridaGapLessons: Lesson[] = [
         stage: "method",
         title: "Use the dot product three ways",
         paragraphs: [
-          "These uses need vectors other than the zero vector $\\langle0,0\\rangle$, which has no direction. Perpendicular: set $\\mathbf{u}\\cdot\\mathbf{v}=0$ and solve. Angle: compute $\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$. Scalar projection of $\\mathbf{u}$ on $\\mathbf{v}$: $\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|}$.",
+          "The perpendicular and angle tests need two vectors other than the zero vector $\\langle0,0\\rangle$, which has no direction. A projection needs only the vector you project onto to be nonzero. Perpendicular: set $\\mathbf{u}\\cdot\\mathbf{v}=0$ and solve. Angle: compute $\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$. Scalar projection of $\\mathbf{u}$ on $\\mathbf{v}$: $\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|}$.",
           "Parallel vectors point along the same line: one is a multiple of the other, so $u_1v_2-u_2v_1=0$, where $u_1$ and $u_2$ are the components of $\\mathbf{u}$. The angle is $0^\\circ$ when the dot product is positive and $180^\\circ$ when it is negative.",
         ],
       },

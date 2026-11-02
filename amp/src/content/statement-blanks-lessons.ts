@@ -12,7 +12,7 @@ const entries: FormatLessonEntry[] = [
       "Use the amounts for several months to decide.",
     ],
     intuition:
-      "An expense is money spent on something. Many expenses come every month. A fixed expense is set at the same amount every month, like rent. Rent is money paid to live in a home. A variable expense depends on how much you use or buy, like food or electricity, so it changes from month to month. The tables in these problems show a few months. An expense with the same amount in every month shown stayed the same, as a fixed expense does. An expense whose amount changes varies. A few matching months alone do not prove a cost is set ahead, so also ask whether the amount is agreed ahead of time.",
+      "An expense is money spent on something. Many expenses come every month. A fixed expense is set at the same amount every month, like rent. Rent is money paid to live in a home. A variable expense depends on how much you use or buy, like food or electricity. So it can change from month to month. The tables in these problems show a few months. An expense with the same amount in every month shown stayed the same, as a fixed expense does. An expense whose amount changes varies. A few matching months alone do not prove a cost is set ahead, so also ask whether the amount is agreed ahead of time.",
     terms: ["fixed-cost", "variable-cost"],
     method: [
       "Look at the amounts for one expense across all the months.",
@@ -41,7 +41,7 @@ const entries: FormatLessonEntry[] = [
       "Think of each expense as a list of monthly amounts. A fixed expense has the same amount in every month. So two months that differ show an expense is not fixed. Matching months alone do not prove it is fixed: a variable expense can match by chance.",
     pitfalls: [
       "Do not call an expense fixed because it is large. Size does not decide.",
-      "Do not call an expense variable because it was paid late. Only the amount matters.",
+      "Do not call an expense variable because it was paid late. When it is paid does not change how its amount is set.",
     ],
     parentGuide:
       "Look at recent family bills together. Sort them into bills that are always the same and bills that change.",

@@ -152,7 +152,7 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
   "sinusoid-model": {
     goal: "From a maximum, minimum, period and starting position, build or use a model $h(t)=A\\cos(Bt)+k$ or $A\\sin(Bt)+k$.",
     intuition:
-      "Tides, wheels and springs repeat. A sinusoid, a wave-shaped graph, models them: it swings equally above and below a middle level, the midline. The amplitude is how far it swings from the midline, and the period is the time for one full cycle. These, and where the quantity starts, fix the model. Cosine and sine describe a point turning around a circle of radius 1, starting at the circle's rightmost point. Cosine, written cos, is the point's sideways position from the center, and sine, written sin, is its height above or below the center.",
+      "Tides, wheels and springs repeat. A sinusoid, a smooth wave shaped like the graph of sine or cosine, models them: it swings equally above and below a middle level, the midline. The amplitude is how far it swings from the midline, and the period is the time for one full cycle. These, and where the quantity starts and which way it moves, fix the model. Cosine and sine describe a point turning around a circle of radius 1, starting at the circle's rightmost point. Cosine, written cos, is the point's sideways position from the center, and sine, written sin, is its height above or below the center. Here the turn is measured in radians: one full turn is $2\\pi$, about 6.28.",
     terms: ["midline", "amplitude"],
     method: [
       "Midline $k=\\frac{\\max+\\min}{2}$; amplitude $A=\\frac{\\max-\\min}{2}$; $B=\\frac{2\\pi}{\\text{period}}$.",
@@ -618,7 +618,7 @@ export const trigonometryLessons: Lesson[] = [
   lesson(
     "sinusoid-model",
     "Build a periodic model",
-    "A periodic quantity repeats over and over, like a tide or a Ferris wheel seat. Its highest and lowest values give the middle level, the midline, and the size of the swing, the amplitude. The time for one full repeat, the period, gives the number $B$. Cosine and sine, written cos and sin, follow a point turning around a circle of radius 1 from its rightmost point: cosine is its sideways position from the center, and sine is its height. The starting position decides whether to use cosine, negative cosine or sine.",
+    "A periodic quantity repeats over and over, like a tide or a Ferris wheel seat. Its highest and lowest values give the middle level, the midline, and the size of the swing, the amplitude. The time for one full repeat, the period, gives the number $B$. Cosine and sine, written cos and sin, follow a point turning around a circle of radius 1 from its rightmost point: cosine is its sideways position from the center, and sine is its height. The starting position, and which way the quantity moves from there, decide whether to use cosine, negative cosine or sine.",
     [
       "Find the midline, amplitude and period of a repeating quantity from a description.",
       "Write a sine or cosine model that starts in the right place, and use it.",

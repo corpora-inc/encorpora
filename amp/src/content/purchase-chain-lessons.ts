@@ -26,7 +26,7 @@ export const purchaseChainMethods: Record<string, ProblemMethod> = {
     noLink: ["leaves"],
     method: [
       "Write the mixed number as a decimal. One half is 0.5, one fourth is 0.25 and three fourths is 0.75, so $3\\frac{1}{2}$ is 3.5. Multiply it by the price for one unit. That is the cost before the discount.",
-      "Find the discount. For a fraction like one fifth, one tenth or one fourth, divide the cost by the bottom number: 5 for $\\frac{1}{5}$, 10 for $\\frac{1}{10}$, 4 for $\\frac{1}{4}$. For a percent, write it as hundredths and multiply: 20% of the cost is the cost times 0.2.",
+      "Find the discount. For one equal part, such as one fifth, one tenth or one fourth, divide the cost by the bottom number: 5 for $\\frac{1}{5}$, 10 for $\\frac{1}{10}$, 4 for $\\frac{1}{4}$. For a percent, write it as hundredths and multiply: 20% of the cost is the cost times 0.2.",
       "Take the discount away from the cost. That is what the buyer pays.",
     ],
     watch:

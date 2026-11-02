@@ -102,7 +102,7 @@ export const algebra2Entries: GlossaryEntry[] = [
     term: "dot product",
     forms: ["dot product", "dot products"],
     plain:
-      "A number made from two vectors by multiplying matching components and adding: $\\langle a,b\\rangle\\cdot\\langle c,d\\rangle=ac+bd$. It is 0 exactly when they are perpendicular.",
+      "A number made from two vectors by multiplying matching components and adding: $\\langle a,b\\rangle\\cdot\\langle c,d\\rangle=ac+bd$. For nonzero vectors, it is 0 exactly when they are perpendicular.",
     example: "$\\langle 2,3\\rangle\\cdot\\langle 4,-1\\rangle=8-3=5$.",
     uses: ["vector", "component", "perpendicular"],
     band: "geometry",

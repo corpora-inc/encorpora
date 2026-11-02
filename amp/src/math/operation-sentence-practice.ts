@@ -228,7 +228,7 @@ export const operationSentenceChoice = chainFamily({
             ? `The picture shows ${g} groups, and each group has ${s} ${t.unit}. Groups that are all the same size are called equal groups.`
             : `Each of the ${g} ${t.holders} holds the same number, ${s}, so they are ${g} equal groups of ${s}.`,
           `Multiplication is the operation that joins equal groups: $${g} ${T} ${s}$ means ${g} groups of ${s}.`,
-          `A sentence with $${g} + ${s}$, $${Math.max(g, s)} ${M} ${Math.min(g, s)}$ or $${g} ${D} ${s}$ uses each number once, so it does not join ${g} groups of ${s}. Adding ${s} once for each group does: $${Array(g).fill(s).join("+")}=${total}$. Multiplication is the short way to write that sum, so the sentence is ${times}.`,
+          `$${g} + ${s}$ adds one ${s} to the number of groups, $${Math.max(g, s)} ${M} ${Math.min(g, s)}$ finds a difference and $${g} ${D} ${s}$ shares, so none of them joins ${g} groups of ${s}. Adding ${s} once for each group does: $${Array(g).fill(s).join("+")}=${total}$. Multiplication is the short way to write that sum, so the sentence is ${times}.`,
           `$${g} ${T} ${s} = ${total}$, so there are ${total} ${t.unit} in all.`,
         ],
         label: "Choose the number sentence",

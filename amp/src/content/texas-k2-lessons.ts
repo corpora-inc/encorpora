@@ -291,7 +291,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     terms: ["minute-hand", "hour-hand"],
     method: [
       "Read the hour. If the short hand points right at a number, that number is the hour. If it is between two numbers, the hour is the number it has just passed.",
-      "Read the minutes. Count by fives from the 12 to the last number the long hand passed. Then count on by ones for each small tick mark.",
+      "Read the minutes. Count by fives from the 12 to the last number the long hand has reached. Then count on by ones for each small tick mark. A long hand on the 12 means 0 minutes.",
       "Write the hour, a colon, then two digits for the minutes: 4:37. If the minutes are less than 10, write a 0 first: 4:07.",
     ],
     watch:
@@ -974,8 +974,8 @@ export const texasK2Lessons: Lesson[] = [
     },
     methodTitle: "Hour first, then minutes",
     method: [
-      "Read the hour from the short hand: the last number it has passed.",
-      "Count by fives from the 12 to the last number the long hand passed. Then count on by ones for the small tick marks.",
+      "Read the hour from the short hand. If it points right at a number, that number is the hour. Between two numbers, the hour is the number it has just passed.",
+      "Count by fives from the 12 to the last number the long hand has reached. Then count on by ones for the small tick marks. A long hand on the 12 means 0 minutes.",
       "Write the digital time. If the minutes are less than 10, write a 0 first, as in 4:07.",
     ],
     formalTitle: "Reading a clock",

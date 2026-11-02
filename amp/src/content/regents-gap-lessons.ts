@@ -69,7 +69,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     noLink: ["part"],
     terms: ["coefficient", "monomial"],
     method: [
-      "Raise the coefficient to the outer power: multiply it by itself that many times.",
+      "Raise the coefficient to the outer power: multiply as many copies of it as the power says, so $3^{2}=3\\times3=9$.",
       "Multiply each exponent inside the parentheses by the outer power. A letter written with no exponent has exponent 1.",
       "If another monomial follows, multiply the two coefficients. Then add the exponents of the same letter.",
     ],

@@ -18,7 +18,7 @@ const unitText = (id: string) => {
 test("compare with pi one decimal place past the closest choice: four places tie 3.1416", () => {
   const text = unitText("compare-to-pi-select-lesson");
   assert.doesNotMatch(text, /at least four decimal places/);
-  assert.match(text, /one more decimal place than the closest choice/);
+  assert.match(text, /keep going until the two numbers first differ/);
   // The rule's own example: rounded to four places, pi and 3.1416 tie;
   // written to five places without rounding, they differ.
   assert.equal(Math.PI.toFixed(4), "3.1416");
