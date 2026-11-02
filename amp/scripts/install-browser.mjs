@@ -64,3 +64,19 @@ else {
     await rm(temporary, { recursive: true, force: true });
   }
 }
+
+if (
+  process.argv.includes("--configure-linux-sandbox") &&
+  process.platform === "linux"
+) {
+  const { fileURLToPath } = await import("node:url");
+  execFileSync(
+    "sudo",
+    [
+      "bash",
+      fileURLToPath(new URL("./configure-browser-sandbox.sh", import.meta.url)),
+      executable,
+    ],
+    { stdio: "inherit" },
+  );
+}

@@ -170,6 +170,7 @@ def test_planner_outputs_never_share_a_name_with_an_area_filter():
 @pytest.mark.parametrize('path', [
     'amp/browser-security.mjs',
     'amp/scripts/install-browser.mjs',
+    'amp/scripts/configure-browser-sandbox.sh',
 ])
 @pytest.mark.parametrize('event', ['pull_request', 'merge_group', 'push'])
 def test_browser_policy_runs_all_automated_browser_consumers(tmp_path, repo, event, path):
