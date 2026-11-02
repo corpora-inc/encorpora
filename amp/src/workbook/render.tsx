@@ -1044,6 +1044,8 @@ background-image:${gridLines};background-size:var(--grid) var(--grid);background
 .wb .wb-lesson [data-trimmed]{display:none}
 .wb-lesson--stacked .wb-lesson-grid{grid-template-columns:minmax(0,1fr)!important}
 .wb-lesson--stacked .wb-example{margin-top:0.08in}
+.wb-lesson--cont{margin-top:0.06in}
+.wb-lesson--cont .wb-example{margin-top:0}
 .wb-lesson--visual:has(.wb-lesson-visual[data-trimmed]) .wb-lesson-grid{grid-template-columns:minmax(0,1fr)}
 .wb-lesson-visual svg,.wb-lesson-visual .figure{max-width:100%;max-height:2.3in;margin:0 auto}
 .wb-example{border:1px solid var(--rule-strong);border-radius:var(--radius);padding:0.1in 0.13in}

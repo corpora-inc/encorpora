@@ -107,25 +107,49 @@ export const workbookLayoutScript = String.raw`(function () {
       // A single block taller than a page stays; the layout check reports it.
     }
     // A lesson card must fit one page with its heading. A long one stacks
-    // its idea and worked example, then drops,
-    // in order, its extra paragraphs, its pitfall, its diagram and its
-    // words to know, then
-    // prints slightly smaller (never below 75%).
+    // its idea and worked example, drops its extra paragraphs, and if still
+    // too tall continues on a second card. Each part then drops, in order,
+    // its pitfall, its diagram and its words to know, then prints slightly
+    // smaller (never below 75%).
     var probe = newPage("student");
     var pageHeight = height(probe.body);
     pages.removeChild(probe.page);
     made.pop();
-    list(flow.querySelectorAll("[data-fit]")).forEach(function (block) {
-      var limit = pageHeight - 0.8 * 96;
-      // A long worked example beside the idea first takes the full width.
-      var card = block.querySelector(".wb-lesson");
-      if (card && height(block) > limit) card.classList.add("wb-lesson--stacked");
-      for (var level = 1; level <= 4 && height(block) > limit; level++)
+    var trimAndZoom = function (block, limit, from) {
+      for (var level = from; level <= 4 && height(block) > limit; level++)
         list(block.querySelectorAll('[data-trim="' + level + '"]')).forEach(function (el) {
           el.setAttribute("data-trimmed", "");
         });
       for (var zoom = 0.95; zoom >= 0.749 && height(block) > limit; zoom -= 0.05)
         block.style.zoom = zoom.toFixed(2);
+    };
+    list(flow.querySelectorAll("[data-fit]")).forEach(function (block) {
+      var limit = pageHeight - 0.8 * 96;
+      // A long worked example beside the idea first takes the full width.
+      var card = block.querySelector(".wb-lesson");
+      if (card && height(block) > limit) card.classList.add("wb-lesson--stacked");
+      trimAndZoom(block, limit, 1);
+      if (!card || height(block) <= limit) return;
+      // Still too tall: undo the shrinking and continue the card on a second
+      // block (worked example, words to know, pitfall), so nothing is lost
+      // and the type stays full size where it fits.
+      block.style.zoom = "";
+      list(block.querySelectorAll("[data-trimmed]")).forEach(function (el) {
+        if (el.getAttribute("data-trim") !== "1") el.removeAttribute("data-trimmed");
+      });
+      var rest = document.createElement("div");
+      rest.className = block.className + " wb-lesson-block--cont";
+      if (block.getAttribute("data-group")) rest.setAttribute("data-group", block.getAttribute("data-group"));
+      if (block.getAttribute("data-lesson")) rest.setAttribute("data-lesson", block.getAttribute("data-lesson"));
+      var inner = document.createElement("div");
+      inner.className = "wb-lesson wb-lesson--stacked wb-lesson--cont";
+      rest.appendChild(inner);
+      list(card.querySelectorAll(".wb-example, .wb-words, .wb-watch")).forEach(function (el) {
+        inner.appendChild(el);
+      });
+      block.parentNode.insertBefore(rest, block.nextSibling);
+      trimAndZoom(block, limit, 2);
+      trimAndZoom(rest, pageHeight - 0.2 * 96, 2);
     });
 
     // A problem too wide for half the page (a long formula, a wide table)
@@ -168,7 +192,8 @@ export const workbookLayoutScript = String.raw`(function () {
     // after it, which the levelling below sizes to the page.
     optional.forEach(function (block) {
       made.forEach(function (p) {
-        var card = p.content.querySelector(".wb-lesson-block");
+        var cards = p.content.querySelectorAll(".wb-lesson-block");
+        var card = cards[cards.length - 1];
         if (!card || growable(p).length || block.parentNode) return;
         if (height(p.body) - height(p.content) < 1 * 96) return;
         card.parentNode.insertBefore(block, card.nextSibling);
