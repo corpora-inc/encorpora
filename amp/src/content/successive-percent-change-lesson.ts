@@ -91,7 +91,7 @@ export const successivePercentChangeMethod: ProblemMethod = {
     "rule",
   ],
   intuition:
-    "Percent means per hundred, and the sign % stands for percent. So 20% of a price is 20 hundredths of it: 20 out of every 100 equal parts. The base is the price a percent is taken of. When a price changes twice, the base for the second change is the new price. A multiplier is the number you multiply a price by to get the changed price: 0.80 for a 20% decrease, 1.20 for a 20% increase.",
+    "Percent means per hundred, and the sign % stands for percent. So 20% of a price is 20 hundredths of it: 20 out of every 100 equal parts. The base is the price a percent is taken of. When a price changes twice, the base for the second change is the new price. A multiplier is the number you multiply a price by to get the changed price. The whole price is 1 times itself. So a 20% decrease keeps $1 - 0.20 = 0.80$ of the price, and a 20% increase makes $1 + 0.20 = 1.20$ of it. Rounding to the nearest cent keeps two decimal places, the two digits after the decimal point. Look at the next digit: 5 or more rounds up, and less than 5 leaves the cents as they are.",
   terms: [
     ["percent", "The base is the whole that the percent is taken of."],
     [

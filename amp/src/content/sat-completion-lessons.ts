@@ -81,7 +81,7 @@ const instruction: Record<string, Instruction> = {
       "Compare two data sets by the distances of their values from their own means.",
     ],
     intuition:
-      "The mean, or average, is the sum of the values divided by how many there are. A value's deviation is its distance from the mean. Standard deviation is a typical size of those distances, so it measures spread: how far apart the values are. To find it, square each distance, which means multiplying it by itself. Add the squares, divide by the count, and take the square root. A square root is the number that, multiplied by itself, gives back the original. Some books divide by one less than the count instead, so compare two sets with the same version. Big values do not mean big spread. Adding the same number to every value keeps the gaps the same. Multiplying every value by 2 doubles every gap, so it doubles the standard deviation too.",
+      "A data set is a list of values. The mean, or average, is the total of the values divided by how many there are. A value's deviation is its distance from the mean. Standard deviation is a typical size of those distances, so it measures spread: how far apart the values are. To find it, square each distance, which means multiplying it by itself. Add the squares, divide by the count, and take the square root. A square root is the number that, multiplied by itself, gives back the original. Some books divide by one less than the count instead, so compare two sets with the same version. Big values do not mean big spread. Adding the same number to every value keeps the gaps the same. Multiplying every value by 2 doubles every gap, so it doubles the standard deviation too.",
     explain: {
       title: "Spread is about gaps, not size",
       paragraphs: [
@@ -111,7 +111,7 @@ const instruction: Record<string, Instruction> = {
     watch:
       "Compare distances from the mean, not the size of the mean, and not the range (largest value minus smallest) alone.",
     principle:
-      "Replacing every value $x$ by $ax + b$, where $ax$ means $a$ times $x$, multiplies the standard deviation by $|a|$, read “the absolute value of $a$”: $a$ without its minus sign. Adding $b$ to every value moves the mean by $b$ too, so no distance from the mean changes. This holds for either version of the standard deviation, dividing by the count or by one less, as long as both sets use the same one.",
+      "Replacing every value $x$ by $ax + b$ multiplies the standard deviation by $|a|$. Here $ax$ means $a$ times $x$, and $|a|$, read “the absolute value of $a$”, is $a$ without its minus sign. Adding $b$ to every value moves the mean by $b$ too, so no distance from the mean changes. This holds for either version of the standard deviation, dividing by the count or by one less, as long as both sets use the same one.",
     parentGuide:
       "Write five numbers, then add 10 to each. Ask whether the numbers became more spread out or just moved.",
   },
@@ -138,7 +138,7 @@ const instruction: Record<string, Instruction> = {
       "Convert both units of a rate, and multiply power by time to get energy.",
     ],
     intuition:
-      "A unit is the size you count in, such as a meter or an hour. A unit conversion changes the unit but keeps the amount the same. A kilometer is a length of 1000 meters. A conversion factor is a ratio, such as 1000 meters over 1 kilometer, that equals 1. Multiplying by it changes only the unit. Area is the space a flat shape covers, and its units, such as square meters, hold two lengths. Volume is the space inside a solid, and its units hold three lengths. A rate is a comparison of two different units, such as kilometers per hour. Speed is a rate: distance per unit of time. In a rate written as a fraction, the top unit is the numerator and the bottom unit is the denominator. Squared means multiplied by itself. Acceleration is how fast speed changes. Its unit, such as kilometers per hour squared, means kilometers per hour gained each hour, so the hour is on the bottom twice. Power is how fast energy is used, measured in watts.",
+      "A unit is the size you count in, such as a meter or an hour. A unit conversion changes the unit but keeps the amount the same. A kilometer is a length of 1000 meters. A conversion factor is a ratio, such as 1000 meters over 1 kilometer, that equals 1 because its top and bottom are the same length. Multiplying by it changes only the unit. A unit cancels when it appears once on the top and once on the bottom: it divides out, as $\\frac{3}{3} = 1$. A compound unit is made from two or more units, such as square meters, kilometers per hour or watt-hours. Area is the space a flat shape covers, and its units, such as square meters, hold two lengths. Volume is the space inside a solid, and its units hold three lengths. A rate is a comparison of two different units, such as kilometers per hour. Speed is a rate: distance per unit of time. In a rate written as a fraction, the top unit is the numerator and the bottom unit is the denominator. Squared means multiplied by itself. Acceleration is how fast speed changes. Its unit, such as kilometers per hour squared, means kilometers per hour gained each hour, so the hour is on the bottom twice. Power is how fast energy is used, measured in watts.",
     explain: {
       title: "Convert every unit inside",
       paragraphs: [
@@ -200,13 +200,13 @@ const instruction: Record<string, Instruction> = {
   "similar-solid-volume": {
     goal: "Use the scale factor of similar solids to connect matching lengths and volumes.",
     summary:
-      "Similar solids are solids with the same shape, where one is an exact enlargement of the other. Every length is multiplied by the same number, called the scale factor. Volume is the space inside a solid. If every length doubles, the volume grows by $2 \\times 2 \\times 2 = 8$, because volume uses three lengths: across, deep and tall. A ratio is one number divided by another. So the volume ratio is the scale factor cubed, which means multiplied by itself three times.",
+      "A solid is a three-dimensional shape, such as a box. Similar solids are solids with the same shape, where one is an exact enlargement of the other. Every length is multiplied by the same number, called the scale factor. Volume is the space inside a solid. If every length doubles, the volume grows by $2 \\times 2 \\times 2 = 8$, because volume uses three lengths: across, deep and tall. A ratio is one number divided by another. So the volume ratio is the scale factor cubed, which means multiplied by itself three times.",
     objectives: [
       "Find the volume ratio of similar solids from their scale factor.",
       "Find a missing length from the volumes of similar solids.",
     ],
     intuition:
-      "A solid is a three-dimensional shape, such as a box or a cylinder. An edge is a straight line where two flat surfaces of a solid meet, such as the edge of a box. Similar solids are solids with the same shape, where every length of one is the same number times the matching length of the other. That number is called the scale factor. Corresponding means in matching places, so corresponding edges match each other. A ratio is one number divided by another. Area is the space a flat surface covers. Volume is the space inside, and it uses three lengths multiplied together. So the scale factor acts on volume three times: it is cubed, which means multiplied by itself three times. We write $5^3$ for 5 cubed, $5 \\times 5 \\times 5 = 125$, and $k^2$ for $k$ squared, $k \\times k$. A cube root is the number that, multiplied by itself three times, gives a given number: the cube root of 125 is 5.",
+      "A solid is a three-dimensional shape, such as a box or a cylinder. An edge is a straight line where two flat surfaces of a solid meet, such as the edge of a box. Similar solids are solids with the same shape, where every length of one is the same number times the matching length of the other. That number is called the scale factor. Corresponding means in matching places, so corresponding edges match each other. A ratio is one number divided by another. Area is the space a flat surface covers. Volume is the space inside, and it uses three lengths multiplied together. Volume is counted in cubic units: a cubic centimeter is a cube 1 centimeter (cm) long on each edge. So the scale factor acts on volume three times: it is cubed, which means multiplied by itself three times. We write $5^3$ for 5 cubed, $5 \\times 5 \\times 5 = 125$, and $k^2$ for $k$ squared, $k \\times k$. A cube root is the number that, multiplied by itself three times, gives a given number: the cube root of 125 is 5.",
     explain: {
       title: "Length once, area twice, volume three times",
       paragraphs: [
@@ -241,7 +241,7 @@ const instruction: Record<string, Instruction> = {
   "nonlinear-formula-isolate": {
     goal: "Get a positive quantity that appears squared in a formula alone on one side.",
     summary:
-      "A formula is an equation that links quantities. In $E = \\frac{mv^2}{2}$, $E$ is energy, $m$ is mass (how much matter an object has), and $v$ is speed (how fast it moves). To find one quantity, undo the steps around it, doing the same thing to the left and right of the equal sign. Squared means multiplied by itself. To undo squaring, use the square root: the number that, multiplied by itself, gives back the original. A speed or a length cannot be negative, so take the positive square root.",
+      "A formula is an equation that links quantities. In $E = \\frac{mv^2}{2}$, $E$ is energy, $m$ is mass (how much matter an object has), and $v$ is speed (how fast it moves). To find one quantity, undo the steps around it, doing the same thing to the left and right of the equal sign. Squared means multiplied by itself. To undo squaring, use the square root: the number that, multiplied by itself, gives back the original. A speed or a length cannot be negative (less than 0), so take the positive square root, the one greater than 0.",
     objectives: [
       "Undo the steps around a squared quantity in a formula, in reverse order.",
       "Take the positive square root when the quantity must be positive.",
@@ -271,7 +271,7 @@ const instruction: Record<string, Instruction> = {
     watch:
       "Get the whole square alone first, then take the square root. Everything under the square root sign stays there: $\\sqrt{\\frac{2E}{m}}$ is not $\\frac{\\sqrt{2E}}{m}$.",
     principle:
-      "If $z > 0$ and $z^2 = q$ with $q > 0$, then $z = \\sqrt{q}$. Here $z > 0$ means $z$ is positive. Without the condition $z > 0$, the real solutions are $z = \\pm\\sqrt{q}$, where $\\pm$ means plus or minus: both $\\sqrt{q}$ and $-\\sqrt{q}$.",
+      "If $z > 0$ and $z^2 = q$ with $q > 0$, then $z = \\sqrt{q}$. Here $z > 0$ means $z$ is positive. Without the condition $z > 0$, the real solutions, the numbers on the number line that make $z^2 = q$ true, are $z = \\pm\\sqrt{q}$, where $\\pm$ means plus or minus: both $\\sqrt{q}$ and $-\\sqrt{q}$.",
     parentGuide:
       "Pick numbers for mass and speed, find the energy, then use the rearranged formula to get the speed back.",
   },
@@ -298,7 +298,7 @@ const instruction: Record<string, Instruction> = {
       "Rewrite the model with one factor per single time unit.",
     ],
     intuition:
-      "A model is a formula that describes a real situation. Exponential change multiplies an amount by the same positive number over each equal stretch of time. That number is called the factor. Growth means the amount gets bigger, with a factor more than 1. Decay means it gets smaller, with a factor between 0 and 1. The initial value is the amount at time 0. In $P(t) = 80\\left(\\frac{1}{2}\\right)^{t/4.5}$, read “$P$ of $t$”, the input is the time $t$ in years, and the output is the amount $P(t)$. The initial value is 80, and the factor $\\frac{1}{2}$ applies once every 4.5 years. The exponent is the small raised number, here $t/4.5$, meaning $t$ divided by 4.5. It counts how many 4.5-year stretches have passed. A power such as $2^3$ means the base, 2, multiplied by itself 3 times. An exponent of $\\frac{1}{2}$ means a square root: $4^{1/2} = 2$, because $2 \\times 2 = 4$. Two models are equivalent when they give the same output for every input.",
+      "A model is a formula that describes a real situation. Exponential change multiplies an amount by the same positive number over each equal stretch of time. That number is called the factor. Growth means the amount gets bigger, with a factor more than 1. Decay means it gets smaller, with a factor between 0 and 1. The initial value is the amount at time 0. In $P(t) = 80\\left(\\frac{1}{2}\\right)^{t/4.5}$, read “$P$ of $t$”, the input is the time $t$ in years, and the output is the amount $P(t)$. The initial value is 80, and the factor $\\frac{1}{2}$ applies once every 4.5 years. The exponent is the small raised number, here $t/4.5$, meaning $t$ divided by 4.5. It counts how many 4.5-year stretches have passed. A power such as $2^3$ means the base, 2, multiplied by itself 3 times. An exponent of $\\frac{1}{2}$ means a square root: $4^{1/2} = 2$, because $2 \\times 2 = 4$. Two models are equivalent when they give the same output for every input. A raised dot means times: $200 \\cdot 2$ is 200 times 2.",
     explain: {
       title: "One factor per stretch of time",
       paragraphs: [
@@ -398,7 +398,7 @@ const instruction: Record<string, Instruction> = {
       "Solve for an unknown coefficient and check that the equation has one repeated solution.",
     ],
     intuition:
-      "Quadratic means having an $x^2$ part and no higher power. A quadratic equation has the form $ax^2 + bx + c = 0$, where $ax^2$ means $a$ times $x$ times $x$, and $a$ is not 0. The numbers $a$, $b$ and $c$ are its coefficients, taken with their signs. A solution, also called a root, is a value of $x$ that makes the equation true. Distinct means different, so a repeated solution counts once. A real number is any number on the number line. Squared means multiplied by itself, so $b^2$ is $b$ times $b$. A square root is the number that, multiplied by itself, gives a given number. The discriminant is the number $b^2 - 4ac$. It is the part under the square root sign in the quadratic formula, $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$, where $\\pm$ means one answer adds and the other subtracts. If the discriminant is positive, there are two real solutions. If it is 0, there is exactly one. If it is negative, there are none, because no real number times itself is negative.",
+      "Quadratic means having an $x^2$ part and no higher power. A quadratic equation has the form $ax^2 + bx + c = 0$, where $ax^2$ means $a$ times $x$ times $x$, and $a$ is not 0. The numbers $a$, $b$ and $c$ are its coefficients, taken with their signs. A solution, also called a root, is a value of $x$ that makes the equation true. Distinct means different, so a repeated solution counts once. A raised dot means times: $4 \\cdot 3$ is 4 times 3. A real number is any number on the number line. Squared means multiplied by itself, so $b^2$ is $b$ times $b$. A square root is the number that, multiplied by itself, gives a given number. The discriminant is the number $b^2 - 4ac$. It is the part under the square root sign in the quadratic formula, $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The sign $\\pm$ means one answer adds and the other subtracts. If the discriminant is positive, there are two real solutions. If it is 0, there is exactly one. If it is negative, there are none, because no real number times itself is negative.",
     explain: {
       title: "When two solutions become one",
       paragraphs: [
@@ -421,7 +421,7 @@ const instruction: Record<string, Instruction> = {
       "Solve for the unknown coefficient. Put it back and check for one repeated solution: $3(x - 3)^2 = 0$ gives only $x = 3$.",
     ],
     watch:
-      "Square the whole signed middle coefficient: $(-18)^2 = 324$, not $-324$. Keep the factor $4a$ when you solve for $c$.",
+      "Square the whole signed middle coefficient: $(-18)^2 = 324$, not $-324$. Keep the $4a$ that multiplies $c$ when you solve for $c$.",
     principle:
       "For real coefficients with $a$ not 0, $ax^2 + bx + c = 0$ has exactly one real solution exactly when $b^2 - 4ac = 0$. That solution is $x = \\frac{-b}{2a}$. There are two real solutions when $b^2 - 4ac > 0$, and none when $b^2 - 4ac < 0$.",
     parentGuide:
@@ -448,7 +448,7 @@ const furtherPitfalls: Record<string, string> = {
   "sample-size-margin":
     "Changing the confidence level, sampling method, or population can invalidate a comparison based only on sample size.",
   "compound-unit-conversion":
-    "Watts measure power; watt-hours measure energy. Multiply power by time to get energy; do not divide.",
+    "Watts measure power, how fast energy is used. A watt-hour is the energy used at 1 watt for 1 hour. Multiply power by time to get energy, and do not divide.",
   "degree-radian-conversion":
     "Keep the exact multiple of $\\pi$ unless a decimal approximation is requested.",
   "unit-circle-coordinate":

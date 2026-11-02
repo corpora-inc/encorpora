@@ -26,7 +26,7 @@ const instruction: Record<string, Instruction> = {
       "Find a side or an angle with sine, cosine or tangent.",
     ],
     intuition:
-      "A right triangle has one right angle, a square corner of $90^\\circ$ (90 degrees). The legs are the two sides that form the right angle. The other two angles are acute, which means smaller than $90^\\circ$. Pick one acute angle and call it $\\theta$, the Greek letter theta. The hypotenuse is the longest side, across from the right angle. The opposite side is the side across from $\\theta$. The adjacent side is the other side that touches $\\theta$. A ratio is one side length divided by another. Sine means opposite ÷ hypotenuse. Cosine means adjacent ÷ hypotenuse. Tangent means opposite ÷ adjacent. We write $\\tan 52^\\circ$ for the tangent of a $52^\\circ$ angle. A calculator in degree mode gives its value. An angle of elevation is the angle measured up from a level line. An angle of depression is the angle measured down from a level line. Parallel lines never meet, so a level line at the top and the level ground below are parallel. That is why an angle of depression from the top equals the angle of elevation from the bottom. Height means how far up something reaches. The sign $\\approx$ means “is about equal to”. Rounding to the nearest tenth keeps one digit after the decimal point.",
+      "A right triangle has one right angle, a square corner of $90^\\circ$ (90 degrees). The legs are the two sides that form the right angle. The other two angles are acute, which means smaller than $90^\\circ$. Pick one acute angle and call it $\\theta$, the Greek letter theta. The hypotenuse is the longest side, across from the right angle. The opposite side is the side across from $\\theta$. The adjacent side is the other side that touches $\\theta$. A ratio is one side length divided by another. Sine means opposite ÷ hypotenuse. Cosine means adjacent ÷ hypotenuse. Tangent means opposite ÷ adjacent. We write $\\tan 52^\\circ$ for the tangent of a $52^\\circ$ angle. A calculator in degree mode gives its value. An angle of elevation is the angle measured up from a level line. An angle of depression is the angle measured down from a level line. Parallel lines never meet, so a level line at the top and the level ground below are parallel. That is why an angle of depression from the top equals the angle of elevation from the bottom. Capital letters label corners: triangle $ABC$ has corners $A$, $B$ and $C$, and $AC$ is the side joining $A$ and $C$. To find an angle from two sides, use an inverse ratio such as $\\tan^{-1}$. It takes opposite ÷ adjacent and gives back the angle. The raised $-1$ means “undo”, not a power. Height means how far up something reaches. The sign $\\approx$ means “is about equal to”. Rounding to the nearest tenth keeps one digit after the decimal point.",
     explain: {
       title: "Same angle, same shape",
       paragraphs: [
@@ -88,7 +88,7 @@ const instruction: Record<string, Instruction> = {
     terms: ["midpoint", "diameter"],
     method: [
       "For a midpoint, average the $x$-coordinates and average the $y$-coordinates of the endpoints: add each pair and divide by 2.",
-      "For a missing endpoint, double the midpoint and subtract the known endpoint, one coordinate at a time. Midpoint $(4, 6)$ and endpoint $(1, 2)$ give $(2 \\times 4 - 1, 2 \\times 6 - 2) = (7, 10)$.",
+      "For a missing endpoint, double the midpoint and subtract the known endpoint, one coordinate at a time. This works because the midpoint is as far from the known endpoint as the missing endpoint is from the midpoint. Midpoint $(4, 6)$ and endpoint $(1, 2)$ give $(2 \\times 4 - 1, 2 \\times 6 - 2) = (7, 10)$.",
       "For a circle from a diameter, the center is the midpoint. For $r^2$, square the across change and the up change from the center to one endpoint, and add them. Then write $(x - h)^2 + (y - k)^2 = r^2$.",
     ],
     watch:
@@ -101,7 +101,7 @@ const instruction: Record<string, Instruction> = {
   "space-diagonal": {
     goal: "Find the corner-to-corner length of a box, or a missing edge, by using the Pythagorean theorem twice.",
     summary:
-      "Think of a shoebox. The longest straight line inside it runs from one bottom corner to the opposite top corner. It is called the space diagonal. To find its length, use the Pythagorean theorem, a rule about triangles with a square corner, twice: once across the floor of the box, then once up to the top. For a box 3 by 4 by 12, the floor diagonal is 5 and the space diagonal is 13.",
+      "Think of a shoebox. The longest straight line inside it runs from one bottom corner to the opposite top corner. It is called the space diagonal. To find its length, use the Pythagorean theorem twice. It is a rule about triangles with a square corner. Use it once across the floor of the box, then once up to the top. For a box 3 by 4 by 12, the floor diagonal is 5 and the space diagonal is 13.",
     objectives: [
       "Find the space diagonal of a rectangular box from its three edges.",
       "Find a missing edge from the space diagonal and the other two edges.",
@@ -174,7 +174,7 @@ const instruction: Record<string, Instruction> = {
     terms: ["chord", "secant", "tangent-line"],
     method: [
       "Find the pieces, measured from the point where the lines meet. For crossing chords, use the two pieces of each chord. For lines from an outside point, use the outside piece and the whole secant, out to the far crossing.",
-      "Set the products equal and solve: $a \\times b = c \\times d$ for chords, $PA \\times PB = PC \\times PD$ for two secants, and $PT^2 = PA \\times PB$ for a tangent and a secant. If asked for the chord inside the circle, subtract the outside piece from the whole secant.",
+      "Set the products equal and solve. For crossing chords, $a \\times b = c \\times d$. For two secants, $PA \\times PB = PC \\times PD$. For a tangent and a secant, $PT^2 = PA \\times PB$. If asked for the chord inside the circle, subtract the outside piece from the whole secant.",
       "For a tangent's slope, find the slope of the radius to the point of tangency, then take its negative reciprocal, the fraction flipped with its sign changed. A horizontal radius gives an upright tangent, whose slope is undefined. An upright radius gives a horizontal tangent, with slope 0.",
     ],
     watch:
@@ -193,7 +193,7 @@ const instruction: Record<string, Instruction> = {
       "Find a weighted mean, and the new mean after a value is added or removed.",
     ],
     intuition:
-      "Data are the numbers you collect, and each one is a value. A frequency is how many times a value appears. The mean is the total of all the values divided by how many values there are. The median is the middle value once the values are in order from least to greatest. A weighted mean is a mean that counts some values more than others, such as a test that counts twice. A raised dot means times: $4 \\cdot 32$ is 4 times 32.",
+      "Data are the numbers you collect, and each one is a value. A frequency is how many times a value appears. The mean is the total of all the values divided by how many values there are. The median is the middle value once the values are in order from least to greatest. A weighted mean is a mean that counts some values more than others, such as a test that counts twice. With an even count (2, 4, 6 and so on), the median is the mean of the two middle values. A raised dot means times: $4 \\cdot 32$ is 4 times 32.",
     explain: {
       title: "Each row stands for many values",
       paragraphs: [
@@ -219,19 +219,19 @@ const instruction: Record<string, Instruction> = {
   "independence-test": {
     goal: "Decide from a two-way table whether two events are independent, and read “given” probability statements correctly.",
     summary:
-      "Two events are independent when knowing that one happened does not change the chance of the other. A two-way table, a table that sorts people by two questions at once, lets you check. Suppose 30% of all students play a sport, and 30% of band members play a sport too. Then being in the band tells you nothing about playing a sport, so the two events are independent.",
+      "An event is something that may or may not happen, such as a student playing a sport. Two events are independent when knowing that one happened does not change the chance of the other. A two-way table, a table that sorts people by two questions at once, lets you check. Suppose 30% of all students play a sport, and 30% of band members play a sport too. Then being in the band tells you nothing about playing a sport, so the two events are independent.",
     objectives: [
       "Find a probability inside one group of a two-way table, and compare it with the overall probability.",
       "Read a statement such as $P(A \\mid B) = 0.2$ in words.",
     ],
     intuition:
-      "An event is a result that may or may not happen, such as “plays a sport”. Probability means chance: a number from 0 to 1, written $P(A)$ for an event $A$. An outcome is one possible result, such as one student chosen. A respondent is a person who answers a survey. Randomly selected means every person has the same chance of being chosen. A two-way table counts people by two questions at once, one along the rows and one along the columns. A share is the part of a group that has some feature, written as a fraction, a decimal or a percent. A conditional probability is a chance inside a smaller group. We write $P(A \\mid B)$, read “the probability of $A$ given $B$”: among the outcomes in $B$, the share that are also in $A$. Events $A$ and $B$ are independent when knowing $B$ does not change the chance of $A$: $P(A \\mid B) = P(A)$.",
+      "An event is a result that may or may not happen, such as “plays a sport”. Probability means chance: a number from 0 to 1, written $P(A)$ for an event $A$. An outcome is one possible result, such as one student chosen. A respondent is a person who answers a survey. Randomly selected means every person has the same chance of being chosen. A two-way table counts people by two questions at once, one along the rows and one along the columns. A share is the part of a group that has some feature, written as a fraction, a decimal or a percent. A conditional probability is a chance inside a smaller group. We write $P(A \\mid B)$, read “the probability of $A$ given $B$”: among the outcomes in $B$, the share that are also in $A$. Events $A$ and $B$ are independent when knowing $B$ does not change the chance of $A$: $P(A \\mid B) = P(A)$. The product of two numbers is the result of multiplying them.",
     explain: {
       title: "Compare a share inside a group with the overall share",
       paragraphs: [
         "A two-way table counts people by two questions, one along the rows and one along the columns. Suppose 200 students say whether they are in the band and whether they play a sport. If 60 of the 200 play a sport, then $P(\\text{sport}) = \\frac{60}{200} = 0.3$.",
         "Now look only at the band row. If 15 of the 50 band members play a sport, then $P(\\text{sport} \\mid \\text{band}) = \\frac{15}{50} = 0.3$. The share inside the band is the same as overall, so the events are independent.",
-        "If the shares differ, the events are dependent, which means not independent. The group named after the bar is the one you divide by. So $P(B \\mid A)$ divides by the count in $A$, and it is usually different from $P(A \\mid B)$.",
+        "If the shares differ, the events are dependent, which means not independent. Divide by the count of the group named after the bar. So $P(B \\mid A)$ divides by the count in $A$, and it is usually different from $P(A \\mid B)$.",
       ],
     },
     senses: { event: "event" },
@@ -254,7 +254,7 @@ const instruction: Record<string, Instruction> = {
       "For the count expected if the events were independent, multiply the two overall probabilities, then the total number of people. To read $P(A \\mid B) = p$, say: among those in $B$, a share $p$ are in $A$.",
     ],
     watch:
-      "Divide by the group named after the bar. $P(A \\mid B)$ and $P(B \\mid A)$ are usually different. Events that overlap, so both can happen, are not automatically independent.",
+      "Divide by the count of the group named after the bar. $P(A \\mid B)$ and $P(B \\mid A)$ are usually different. Events that overlap, so both can happen, are not automatically independent.",
     principle:
       "Events $A$ and $B$, with $P(B) > 0$ (greater than 0), are independent exactly when $P(A \\mid B) = P(A)$. This is the same as $P(A \\text{ and } B) = P(A) \\times P(B)$. Mutually exclusive means that two events cannot both happen. Such events are never independent when both have a probability greater than 0.",
     parentGuide:
@@ -267,9 +267,9 @@ const furtherPitfalls: Record<string, string> = {
   "midpoint-endpoint":
     "A midpoint can have a coordinate that ends in .5, such as 3.5. Do not round it.",
   "space-diagonal":
-    "The path along the edges of the box is longer than the space diagonal, which is the straight-line shortcut.",
+    "The path along the edges of the box is longer than the space diagonal, the straight line between opposite corners.",
   "circle-segment-lengths":
-    "Check which piece the problem names. A secant has an outside piece, an inside chord and a whole length, and these are three different numbers.",
+    "Check which piece the problem names. A secant has an outside piece, an inside chord and a whole length, and these are three different measurements.",
   "frequency-table-center":
     "A mean can be a value that does not appear in the table. The median of an even count is the mean of the two middle values.",
   "independence-test":
