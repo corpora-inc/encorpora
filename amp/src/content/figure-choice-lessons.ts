@@ -188,44 +188,52 @@ const entries: Entry[] = [
   {
     id: "graph-of-quadratic-or-exponential",
     title: "Match a curve with its rule",
+    goal: "Match a parabola or an exponential curve with its rule, using the vertex, the direction and one more point.",
+    senses: {
+      rule: "rule",
+      rules: "rule",
+      vertex: "vertex-parabola",
+      base: "base-exponent",
+    },
+    noLink: ["opposite", "side"],
     summary:
-      "The vertex of $y = a(x - h)^2 + k$ is $(h, k)$. The graph of $y = a \\cdot b^x$ starts at $(0, a)$ and grows when $b > 1$.",
+      "Each number in a rule moves or shapes its graph. In $y = (x - 2)^2 + 1$, the U-shaped graph, a parabola, has its turning point at $(2, 1)$. In $y = 3 \\cdot 2^x$, the graph crosses the $y$-axis at $(0, 3)$, and its height doubles each time $x$ goes up 1. Read these clues from the rule, then pick the graph that shows them.",
     objectives: [
       "Read the vertex and direction of a parabola from vertex form, and follow the shifts of $y = f(x - h) + k$.",
       "Read the $y$-intercept and growth or decay of $y = a \\cdot b^x$ and tell its curve from a line.",
     ],
     intuition:
-      "A rule's numbers say where its graph sits. For a parabola, $(x - h)$ slides it sideways and $+ k$ lifts it, so the turning point moves to $(h, k)$. For an exponential, $a$ is the starting height at $x = 0$ and $b$ is what each step multiplies by, which bends the graph into a curve that keeps getting steeper or flatter.",
+      "A quadratic rule $y = a(x - h)^2 + k$, with $a \\ne 0$, has a U-shaped graph called a parabola. Its turning point, the vertex, is its lowest or highest point. Here $(x - h)$ slides the graph sideways and $+ k$ lifts it, so the vertex moves to $(h, k)$. A positive $a$ makes it open upward, and a negative $a$ makes it open downward. An exponential rule $y = a \\cdot b^x$, with $a \\ne 0$, $b > 0$ and $b \\ne 1$, multiplies by $b$ each time $x$ goes up 1. The number $b$ is called the growth factor. At $x = 0$ the height is $a$, because $b^0 = 1$. Multiplying again and again bends the graph into a curve that keeps getting steeper or flatter.",
     terms: ["vertex-parabola", "growth-factor"],
     method: [
-      "For $y = a(x - h)^2 + k$: the vertex is $(h, k)$. $x - 2$ gives $h = 2$; $x + 2$ gives $h = -2$. Positive $a$ opens up, negative $a$ opens down.",
-      "For $y = f(x - h) + k$: move the graph of $f$ right $h$ and up $k$ (left or down for negative values).",
-      "For $y = a \\cdot b^x$: the curve passes through $(0, a)$ and $(1, ab)$; it rises when $b > 1$ and falls when $0 < b < 1$, leveling off toward the $x$-axis.",
+      "For $y = a(x - h)^2 + k$, the vertex is $(h, k)$. So $x - 2$ gives $h = 2$, and $x + 2$ gives $h = -2$. A positive $a$ opens up, and a negative $a$ opens down.",
+      "For $y = f(x - h) + k$, move the graph of $f$ right $h$ and up $k$. A negative $h$ moves it left, and a negative $k$ moves it down.",
+      "For $y = a \\cdot b^x$ with $a > 0$, the curve passes through $(0, a)$ and $(1, ab)$. It rises from left to right when $b > 1$ and falls when $0 < b < 1$. It levels off toward the $x$-axis on one side: the left when $b > 1$, the right when $0 < b < 1$.",
     ],
     watch:
       "The sign inside the parentheses works backwards: $(x - 3)^2$ moves the graph right 3, not left.",
     principle:
-      "The vertex of $y = a(x - h)^2 + k$ is where $(x - h)^2 = 0$, at $x = h$, giving $y = k$. Replacing $x$ by $x - h$ moves every point of a graph right $h$, and adding $k$ moves it up $k$. For $y = a \\cdot b^x$, $b^0 = 1$ gives the intercept $a$, and multiplying by the same $b$ each step makes equal steps in $x$ multiply, not add, so the graph is a curve.",
+      "For $a \\ne 0$, the vertex of $y = a(x - h)^2 + k$ is where $(x - h)^2 = 0$, at $x = h$, which gives $y = k$. Replacing $x$ by $x - h$ moves every point of a graph right $h$, and adding $k$ moves it up $k$. For $y = a \\cdot b^x$, $b^0 = 1$ gives the $y$-intercept $a$. Each step of 1 in $x$ multiplies $y$ by $b$ instead of adding a fixed amount, so the graph is a curve, not a line.",
     example: {
       prompt:
         "Which graph shows $y = -(x - 1)^2 + 4$: a parabola opening down with vertex (1, 4), opening up with vertex (1, 4), opening down with vertex (−1, 4), or opening down with vertex (1, −4)?",
       steps: [
-        "The form $y = a(x - h)^2 + k$ has $a = -1$, $h = 1$ and $k = 4$.",
-        "The vertex is (1, 4); $(x - 1)$ moves the graph right, so (−1, 4) is the wrong way.",
-        "$a$ is negative, so the parabola opens down.",
+        "Match the rule to $y = a(x - h)^2 + k$: the minus sign in front means $a = -1$, and $h = 1$ and $k = 4$.",
+        "The vertex is $(h, k) = (1, 4)$. The $(x - 1)$ moves the graph right 1, so vertex $(-1, 4)$ is the wrong way, and $(1, -4)$ has the wrong height.",
+        "$a$ is negative, so the parabola opens down. That rules out the one opening up.",
       ],
       answer: "The parabola opening down with its vertex at (1, 4).",
     },
     methodTitle: "Check one more point",
     methodText: [
-      "Substitute an easy $x$ into the rule and look for that point on the chosen graph. For $y = -(x - 1)^2 + 4$ at $x = 0$: $y = -1 + 4 = 3$, so the graph passes through (0, 3).",
-      "For an exponential, check $x = 0$ and $x = 1$: $y = a$ and $y = ab$. A straight line through the same two points is not exponential; at $x = 2$ it gives a different value.",
+      "Put an easy $x$ into the rule and look for that point on the chosen graph. For $y = -(x - 1)^2 + 4$ at $x = 0$: $y = -(0 - 1)^2 + 4 = -1 + 4 = 3$, so the graph passes through $(0, 3)$.",
+      "For an exponential, check $x = 0$ and $x = 1$: $y = a$ and $y = ab$. A straight line through the same two points is not exponential. At $x = 2$ the line gives $2ab - a$, but the exponential gives $ab^2$, a different number when $b \\ne 1$.",
     ],
     formal:
-      "If $(x_0, y_0)$ is on the graph of $f$, then $(x_0 + h, y_0 + k)$ is on the graph of $g(x) = f(x - h) + k$, since $g(x_0 + h) = f(x_0) + k$. With $f(x) = ax^2$, the vertex $(0, 0)$ moves to $(h, k)$. For $g(x) = a \\cdot b^x$ with $a > 0$, $g(x + 1) = b \\cdot g(x)$, so $g$ increases when $b > 1$ and decreases when $0 < b < 1$.",
+      "If $(x_0, y_0)$ is on the graph of $f$, then $(x_0 + h, y_0 + k)$ is on the graph of $g(x) = f(x - h) + k$, since $g(x_0 + h) = f(x_0) + k$. With $f(x) = ax^2$ and $a \\ne 0$, the vertex $(0, 0)$ moves to $(h, k)$. For $g(x) = a \\cdot b^x$ with $a > 0$ and $b > 0$, $g(x + 1) = b \\cdot g(x)$. So $g$ increases when $b > 1$ and decreases when $0 < b < 1$.",
     pitfalls: [
       "Read $h$ with the opposite sign of the number inside the parentheses.",
-      "A factor between 0 and 1 means decay, even though the graph never reaches 0.",
+      "For a positive starting value $a$, a growth factor between 0 and 1 means decay: the amount shrinks toward 0 but never reaches it.",
     ],
     parentGuide:
       "Ask your learner where the graph crosses the $y$-axis or turns, and why, before choosing.",

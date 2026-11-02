@@ -102,9 +102,19 @@ export const functionToolkitLessons: Lesson[] = [
     id: "function-transformations",
     title: "Moving and stretching graphs",
     summary:
-      "Moving, stretching, or reflecting a graph changes where its points appear. A change inside the input acts horizontally; a change outside acts on outputs.",
+      "A transformation moves, stretches or flips a graph. Here $f(x)$, read “$f$ of $x$”, is the output of the function $f$ for the input $x$. A change outside $f$, as in $f(x) + 3$, acts on the outputs, the heights: every point moves up 3. A change inside, as in $f(x + 3)$, acts on the inputs and works backwards: every point moves 3 to the left.",
     templateIds: ["transform-equation", "transform-point"],
     includeGeneratedRepresentation: false,
+    senses: {
+      rule: "rule",
+      squared: "square-number",
+      vertex: "vertex-parabola",
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      unit: "unit",
+      units: "unit",
+    },
+    noLink: ["change", "changes", "whole", "image", "mirror image"],
     objectives: [
       "Match shifts, stretches and reflections of $y = x^2$, $y = |x|$, $y = \\sqrt{x}$ and $y = x^3$ with their equations.",
       "Follow one point of a graph through a transformation.",
@@ -115,17 +125,18 @@ export const functionToolkitLessons: Lesson[] = [
         stage: "intuition",
         title: "Inside changes inputs, outside changes outputs",
         paragraphs: [
-          "A function assigns one output to each allowed input. On its graph, changing the output changes the point's height. Adding $k$ outside, $f(x)+k$, adds $k$ to every height. Multiplying outside, $af(x)$, multiplies each height by $a$: $|a|>1$ stretches away from the $x$-axis, $0<|a|<1$ compresses toward it, a negative $a$ also reflects across it, and $a=0$ flattens the graph to $y=0$.",
-          "Changing the input works backwards. The point with old input 0 moves to input 3 under $f(x-3)$, because $x-3=0$ there: the graph moves 3 to the right. Under $f(2x)$, the point with old input 4 moves to input 2, because $2x=4$ there: every $x$-coordinate is divided by 2.",
-          "Do the steps in this order: shift across, stretch or reflect, then shift up. $y = x^2$ moved 1 right, stretched by $-2$ and moved 3 up is $y = -2(x - 1)^2 + 3$, with vertex $(1, 3)$.",
+          "A function is a rule that gives each allowed input exactly one output. On its graph, the input is the $x$-coordinate (how far across) and the output is the $y$-coordinate (the height). Adding $k$ outside, $f(x)+k$, adds $k$ to every height. So the graph moves up $k$, or down if $k$ is negative.",
+          "Multiplying outside, $af(x)$, multiplies every height by $a$. With $a = 3$, the heights 1, 2 and 4 become 3, 6 and 12. Here $|a|$, the absolute value of $a$, is its size without its sign. If $|a|>1$, the graph stretches away from the $x$-axis. If $0<|a|<1$, it is squashed toward the $x$-axis. A negative $a$ also flips (reflects) the graph across the $x$-axis. If $a=0$, every height is 0, so the graph flattens onto the $x$-axis, over the same inputs as before.",
+          "Changing the input works backwards. The graph of $f(x-3)$ reaches the old input 0 when $x-3=0$, which is at $x = 3$. So that point moves from $x = 0$ to $x = 3$, and the whole graph moves 3 to the right. The graph of $f(2x)$ reaches the old input 4 when $2x=4$, at $x = 2$. So every $x$-coordinate is divided by 2.",
+          "To build an equation, do the steps in this order: shift sideways, then stretch or flip, then shift up or down. A stretch multiplies heights, so a shift added after it is not stretched. Start with $y = x^2$ ($x$ squared, $x$ times $x$), a U-shaped graph with its lowest point, the vertex, at $(0, 0)$. Moving it 1 right gives $y = (x - 1)^2$. Multiplying by $-2$ stretches and flips it: $y = -2(x - 1)^2$. Moving it 3 up gives $y = -2(x - 1)^2 + 3$. Its vertex is now the highest point, $(1, 3)$.",
         ],
         illustration: "transform-parent",
       },
       {
         title: "Following a point, and symmetry",
         paragraphs: [
-          "If $(2, 5)$ is on $y = f(x)$, then $y = f(x + 3)$ has height 5 where $x + 3 = 2$, at $x = -1$: the point moves to $(-1, 5)$. On $y = 2f(x) - 1$ it moves to $(2, 2 \\cdot 5 - 1) = (2, 9)$.",
-          "$y = f(-x)$ reflects the graph across the $y$-axis and $y = -f(x)$ across the $x$-axis. An even function equals its own reflection across the $y$-axis, $f(-x) = f(x)$; an odd function is unchanged by a half turn about the origin, $f(-x) = -f(x)$.",
+          "Suppose $(2, 5)$ is on $y = f(x)$, so $f(2) = 5$. The graph of $y = f(x + 3)$ has height 5 where its input $x + 3$ equals 2. That happens at $x = -1$, so the point moves to $(-1, 5)$. On $y = 2f(x) - 1$ the input is not changed. The height becomes $2 \\cdot 5 - 1 = 9$, so the point moves to $(2, 9)$.",
+          "$y = f(-x)$ flips (reflects) the graph across the $y$-axis, as in a mirror standing on that axis. $y = -f(x)$ reflects it across the $x$-axis. A function is called even when $f(-x) = f(x)$ for every allowed $x$. Its graph is its own mirror image across the $y$-axis, like $y = x^2$. A function is called odd when $f(-x) = -f(x)$ for every allowed $x$. Its graph looks the same after a half turn about the origin, the point $(0, 0)$, like $y = x^3$.",
         ],
       },
     ],
@@ -133,8 +144,9 @@ export const functionToolkitLessons: Lesson[] = [
       prompt:
         "The point $(2,5)$ is on the graph of $y=f(x)$. Where does this point move on the graph of $y=f(x+3)$? Give its new $x$-coordinate.",
       steps: [
-        "$y = f(x + 3)$ has height 5 where its input $x + 3$ is 2, because $f(2) = 5$.",
-        "$x + 3 = 2$ gives $x = 2 - 3 = -1$.",
+        "The point $(2, 5)$ on $y = f(x)$ means $f(2) = 5$: the input 2 gives the height 5.",
+        "$y = f(x + 3)$ puts $x + 3$ into $f$. So it has height 5 where its input $x + 3$ equals 2.",
+        "Subtract 3 from both sides of $x + 3 = 2$ to get $x$ alone: $x = 2 - 3 = -1$. The point moves to $(-1, 5)$, 3 units to the left.",
       ],
       answer: "−1",
     },
@@ -144,14 +156,14 @@ export const functionToolkitLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "$y = af(x - h) + k$ moves every point $\\left(x, y\\right)$ of $y = f(x)$ to $\\left(x + h, ay + k\\right)$.",
-          "Outside changes act on outputs directly; inside changes act on inputs in reverse, because the new graph must reach the old input.",
+          "Outside changes act on the outputs directly. Inside changes act on the inputs in reverse, because the new graph must reach the old input. For $f(x - h)$, the old input $x$ is reached at $x + h$.",
         ],
       },
     ],
     pitfalls: [
-      "$f(x + 3)$ moves the graph 3 to the left, not right: solve $x + 3 = 0$.",
-      "A shift up after a stretch is not stretched: $y = 2f(x) + 3$, not $2(f(x) + 3)$.",
-      "$-f(x)$ reflects across the $x$-axis; $f(-x)$ reflects across the $y$-axis.",
+      "$f(x + 3)$ moves the graph 3 to the left, not right. To check, solve $x + 3 = 0$: the old input 0 is now at $x = -3$.",
+      "A shift up after a stretch is not stretched: stretch by 2, then move up 3, gives $y = 2f(x) + 3$, not $2(f(x) + 3)$.",
+      "$-f(x)$ reflects across the $x$-axis. $f(-x)$ reflects across the $y$-axis.",
     ],
     parentGuide:
       "Graph $y = x^2$ from a small table, then ask where the point $(1, 1)$ goes under each change: 2 right, then times 3, then 1 down. Check by substituting into the new equation.",
@@ -160,9 +172,16 @@ export const functionToolkitLessons: Lesson[] = [
     id: "function-composition",
     title: "Composing functions",
     summary:
-      "A function gives each allowed input one output. In $f(g(x))$, first use $g$ on the input, then give its output to $f$; both steps must accept their inputs.",
+      "A function is a rule that gives each allowed input exactly one output. Composing two functions means feeding the output of one into the next, like two machines in a row. In $f(g(x))$, read “$f$ of $g$ of $x$”, first apply $g$ to $x$. Then put that output into $f$. Each function must be able to take the number it is given.",
     templateIds: ["composition-value", "composition-expression"],
     includeGeneratedRepresentation: false,
+    senses: {
+      rule: "rule",
+      square: "square-number",
+      squares: "square-number",
+      squaring: "square-number",
+    },
+    noLink: ["whole"],
     objectives: [
       "Evaluate $f(g(a))$ and $(f \\circ g)(a)$ from formulas, tables and graphs.",
       "Write $f(g(x))$ and $g(f(x))$ as expressions, and split a function into an outer and an inner function.",
@@ -173,24 +192,27 @@ export const functionToolkitLessons: Lesson[] = [
         stage: "intuition",
         title: "Inside first",
         paragraphs: [
-          "A function gives each allowed input one output; its domain is the set of allowed inputs. Composition feeds one function's output into another. In $(f\\circ g)(x)=f(g(x))$, $g$ acts first and $f$ acts on its output. With $g(x)=x^2+1$ and $f(x)=2x-3$, the input 3 becomes $g(3)=10$, and then $f(10)=17$.",
-          "The order matters: $g(f(3)) = g(3) = 10$, not 17. From a table or a graph, read the inner value first, then look up the outer function at that value.",
+          "Take $g(x)=x^2+1$ and $f(x)=2x-3$. Here $x^2$ means $x$ times $x$. Put the input 3 into $g$: $g(3)=3^2+1=10$. Then put 10 into $f$: $f(10)=2 \\cdot 10-3=17$. So $f(g(3)) = 17$. The function $g$ is called the inner function, and $f$ is the outer function.",
+          "Using one function's output as the next function's input is called composition. We also write $(f\\circ g)(x)$, read “$f$ composed with $g$ of $x$”, for $f(g(x))$. The order matters. In the other order, $f(3) = 2 \\cdot 3 - 3 = 3$, and then $g(3) = 10$. So $g(f(3)) = 10$, not 17.",
+          "From a table or a graph, read the inner value first. Then look up the outer function at that value.",
         ],
         illustration: "composition-machine",
       },
       {
         title: "Composing expressions",
         paragraphs: [
-          "To write $f(g(x))$, replace every $x$ in $f$ with the whole of $g(x)$, in parentheses: $f(g(x)) = 2(x^2 + 1) - 3 = 2x^2 - 1$, while $g(f(x)) = (2x - 3)^2 + 1 = 4x^2 - 12x + 10$.",
-          "Going backwards, $h(x) = (3x - 1)^2 + 4$ squares $3x - 1$ and adds 4, so $h = f \\circ g$ with $g(x) = 3x - 1$ and $f(x) = x^2 + 4$. And $f(g(x))$ is undefined wherever $g(x)$ is outside the domain of $f$: with $f(x) = \\frac{1}{x - 5}$, wherever $g(x) = 5$.",
+          "To write $f(g(x))$ as one expression, replace every $x$ in the rule for $f$ with the whole of $g(x)$, in parentheses. The parentheses keep $g(x)$ together as one input. So $f(g(x)) = 2(x^2 + 1) - 3 = 2x^2 + 2 - 3 = 2x^2 - 1$.",
+          "In the other order, $g(f(x)) = (2x - 3)^2 + 1$. Squaring means multiplying by itself: $(2x - 3)(2x - 3) = 4x^2 - 12x + 9$. So $g(f(x)) = 4x^2 - 12x + 10$.",
+          "Going backwards is called decomposing. The function $h(x) = (3x - 1)^2 + 4$ first works out $3x - 1$, then squares it and adds 4. So $h = f \\circ g$, with inner function $g(x) = 3x - 1$ and outer function $f(x) = x^2 + 4$.",
+          "The domain of a function is the set of inputs it allows. $f(g(x))$ is undefined wherever $g(x)$ is outside the domain of $f$. For example, $f(x) = \\frac{1}{x - 5}$ cannot take the input 5, because it would divide by 0. So $f(g(x))$ is undefined wherever $g(x) = 5$.",
         ],
       },
     ],
     workedExample: {
       prompt: "Let $f(x) = 2x - 3$ and $g(x) = x^2 + 1$. What is $f(g(3))$?",
       steps: [
-        "Inside first: $g(3) = 3^2 + 1 = 10$.",
-        "Then $f(10) = 2 \\cdot 10 - 3 = 17$.",
+        "Work from the inside out, because $f$ needs the output of $g$ as its input. $g(3) = 3^2 + 1 = 9 + 1 = 10$.",
+        "Now put 10 into $f$: $f(10) = 2 \\cdot 10 - 3 = 20 - 3 = 17$.",
       ],
       answer: "17",
     },
@@ -199,15 +221,15 @@ export const functionToolkitLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "The composition $f(g(x))$ is defined exactly for inputs $x$ in the domain of $g$ whose output $g(x)$ lies in the domain of $f$.",
-          "Substituting the inner expression for every $x$ in the outer function gives the composite as a single expression.",
+          "The composition $f(g(x))$ is defined exactly for the inputs $x$ in the domain of $g$ whose output $g(x)$ lies in the domain of $f$.",
+          "Substituting the inner expression for every $x$ in the outer function gives the composite, the combined function, as a single expression.",
         ],
       },
     ],
     pitfalls: [
-      "$f(g(x))$ is not the product $f(x)g(x)$.",
+      "$f(g(x))$ is not $f(x)$ times $g(x)$. The functions are used one after the other, not multiplied.",
       "Work from the inside out: in $f(g(2))$, find $g(2)$ first.",
-      "Substitute the whole inner expression in parentheses: $(2x - 3)^2$, not $2x^2 - 3^2$.",
+      "Substitute the whole inner expression in parentheses and square all of it: $(2x - 3)^2 = 4x^2 - 12x + 9$, not $4x^2 - 9$.",
     ],
     parentGuide:
       "Act out two machines: one adds 1, the next doubles. Put 3 through in both orders and compare the outputs, 8 and 7.",
@@ -216,9 +238,15 @@ export const functionToolkitLessons: Lesson[] = [
     id: "inverse-functions",
     title: "Inverse functions",
     summary:
-      "An inverse function reverses input and output: it returns the input that produced a given output. Each output must come from only one allowed input.",
+      "An inverse function undoes a function. If $f$ turns 5 into 8, its inverse turns 8 back into 5. We write the inverse as $f^{-1}$, read “$f$ inverse”. It exists only when each output comes from just one input, so there is exactly one input to send it back to.",
     templateIds: ["inverse-value", "inverse-expression"],
     includeGeneratedRepresentation: false,
+    senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      vertex: "vertex-parabola",
+    },
+    noLink: ["inverse"],
     objectives: [
       "Find $f^{-1}(b)$ from a formula, a table or a graph by finding the input with output $b$.",
       "Find the inverse of a linear function by swapping $x$ and $y$ and solving.",
@@ -229,16 +257,19 @@ export const functionToolkitLessons: Lesson[] = [
         stage: "intuition",
         title: "Undoing a function",
         paragraphs: [
-          "$f^{-1}(8)$ asks which input $f$ sends to 8. For $f(x) = 3x - 7$, solve $3x - 7 = 8$: $3x = 15$, so $f^{-1}(8) = 5$. In a table, find 8 among the outputs and read its input; on a graph, go across from 8 on the $y$-axis to the curve and down to the $x$-axis.",
-          "For a formula, write $y = f(x)$, swap $x$ and $y$, and solve for $y$. From $y = 2x - 3$, swapping gives $x = 2y - 3$, so $f^{-1}(x) = \\frac{x + 3}{2}$. Swapping coordinates reflects every point in the line $y = x$: $(4, 5)$ on $f$ is $(5, 4)$ on $f^{-1}$.",
+          "$f^{-1}(8)$ asks which input $f$ sends to 8. For $f(x) = 3x - 7$, solve $3x - 7 = 8$. Add 7 to both sides: $3x = 15$. Divide both sides by 3: $x = 5$. So $f^{-1}(8) = 5$.",
+          "In a table, find 8 among the outputs and read its input. On a graph, start at 8 on the $y$-axis and go across to the curve. Then go down to the $x$-axis and read the input.",
+          "For a formula, write $y = f(x)$, swap $x$ and $y$, and solve for $y$. Swapping trades the roles of input and output. From $y = 2x - 3$, swapping gives $x = 2y - 3$. Add 3 to both sides: $x + 3 = 2y$. Divide by 2: $y = \\frac{x + 3}{2}$. So $f^{-1}(x) = \\frac{x + 3}{2}$.",
+          "Swapping the coordinates of every point flips the graph across the line $y = x$, like a mirror. The point $(4, 5)$ on the graph of $f$ becomes $(5, 4)$ on the graph of $f^{-1}$.",
         ],
         illustration: "inverse-reflection",
       },
       {
         title: "Restricting the domain",
         paragraphs: [
-          "$f(x)=x^2$ sends both 2 and $-2$ to 4, so it has no inverse function on all real inputs: it is not one-to-one. Restricting its inputs to $x\\ge0$ gives the inverse $\\sqrt{x}$; restricting to $x\\le0$ gives $-\\sqrt{x}$.",
-          "For $f(x)=(x-h)^2+k$, a convenient restriction is either full half of the parabola. On $x\\ge h$, $f^{-1}(x)=h+\\sqrt{x-k}$; on $x\\le h$, $f^{-1}(x)=h-\\sqrt{x-k}$. Both inverse formulas require $x\\ge k$. Other one-to-one subsets are possible; these halves keep the full range of the parabola.",
+          "$f(x)=x^2$ ($x$ times $x$) sends both 2 and $-2$ to 4. An inverse could not know whether to send 4 back to 2 or to $-2$. A function is called one-to-one when no two inputs give the same output. So $x^2$ is not one-to-one on all real numbers, and it has no inverse function there.",
+          "The domain of a function is the set of inputs it allows. Restricting the domain means allowing fewer inputs. If only $x\\ge0$ (0 or more) is allowed, $x^2$ is one-to-one. Its inverse is $\\sqrt{x}$, the square root that is 0 or positive. If only $x\\le0$ is allowed, the inverse is $-\\sqrt{x}$.",
+          "The graph of $f(x)=(x-h)^2+k$ is a parabola, a U-shaped curve, with its lowest point (its vertex) at $(h, k)$. Each half of the curve, left or right of the vertex, is one-to-one. On $x\\ge h$, $f^{-1}(x)=h+\\sqrt{x-k}$. On $x\\le h$, $f^{-1}(x)=h-\\sqrt{x-k}$. Both formulas need $x\\ge k$, because a negative number has no real square root. Other one-to-one pieces are possible. These two halves each keep every output of the parabola.",
         ],
         illustration: "inverse-restricted",
       },
@@ -246,8 +277,9 @@ export const functionToolkitLessons: Lesson[] = [
     workedExample: {
       prompt: "Let $f(x) = 3x - 7$. What is $f^{-1}(8)$?",
       steps: [
-        "$f^{-1}(8)$ is the $x$ with $f(x) = 8$: $3x - 7 = 8$.",
-        "$3x = 15$, so $x = 5$. Check: $f(5) = 3 \\cdot 5 - 7 = 8$.",
+        "$f^{-1}(8)$ is the input $x$ that $f$ sends to 8. So solve $f(x) = 8$, which is $3x - 7 = 8$.",
+        "Add 7 to both sides to undo the $-7$: $3x = 15$. Divide both sides by 3 to undo the multiplying: $x = 5$.",
+        "Check by putting 5 into $f$: $f(5) = 3 \\cdot 5 - 7 = 8$. It gives 8, so $f^{-1}(8) = 5$.",
       ],
       answer: "5",
     },
@@ -256,15 +288,15 @@ export const functionToolkitLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "An inverse reverses each input-output pair: $f(a) = b$ exactly when $f^{-1}(b) = a$.",
-          "Swapping the coordinates of every point reflects a graph in $y = x$; the result is a function only when $f$ is one-to-one.",
+          "An inverse reverses each input-output pair: $f(a) = b$ exactly when $f^{-1}(b) = a$. It exists exactly when $f$ is one-to-one on its domain.",
+          "Swapping the coordinates of every point reflects a graph across the line $y = x$. The result is the graph of a function only when $f$ is one-to-one.",
         ],
       },
     ],
     pitfalls: [
-      "$f^{-1}(x)$ is not $\\frac{1}{f(x)}$.",
-      "Undo the steps of $f$ in reverse order: for $3x - 7$, add 7 first, then divide by 3.",
-      "Restricting a quadratic to either half of its parabola is a convenient way to make it one-to-one before finding an inverse function.",
+      "$f^{-1}(x)$ is not $\\frac{1}{f(x)}$. The $-1$ here means “undo”, not “one divided by”.",
+      "Undo the steps of $f$ in reverse order. For $3x - 7$, $f$ multiplies by 3 and then subtracts 7, so add 7 first, then divide by 3.",
+      "A quadratic such as $x^2$ is not one-to-one. Keep only the inputs left of its vertex, or only those right of it, before finding an inverse function.",
     ],
     parentGuide:
       "Make a two-row table of a function, then swap the rows. Ask whether the swapped table is still a function: it is only if no output appeared twice.",
@@ -273,9 +305,14 @@ export const functionToolkitLessons: Lesson[] = [
     id: "cross-representation-comparison",
     title: "Comparing functions across representations",
     summary:
-      "To compare a function given by a formula with one given by a graph or a table, find the same feature in each (a maximum, an intercept, an average rate of change) and compare numbers.",
+      "The same function can be given three ways: by a formula, by a graph or by a table of values. To compare two functions given in different ways, find the same feature in each. For example, find each one's greatest output, or each one's output at $x = 0$. Then compare the two numbers.",
     templateIds: ["compare-representations"],
     includeGeneratedRepresentation: false,
+    senses: {
+      "standard form": "standard-form-polynomial",
+      vertex: "vertex-parabola",
+    },
+    noLink: ["part", "sides", "change", "changes", "average"],
     objectives: [
       "Find a maximum or minimum from vertex form, from standard form, from a graph and from a symmetric table.",
       "Find a $y$-intercept and an average rate of change from a formula, a graph or a table.",
@@ -286,16 +323,17 @@ export const functionToolkitLessons: Lesson[] = [
         stage: "intuition",
         title: "The same feature, read two ways",
         paragraphs: [
-          "From a formula, compute: $f(x) = -(x - 1)^2 + 5$ has its highest point at the vertex $(1, 5)$, so its maximum is 5. A quadratic in standard form is $ax^2+bx+c$, where $a$, $b$ and $c$ are fixed numbers and $a\\ne0$; its vertex is at $x=-\\frac{b}{2a}$.",
-          "From a table of a quadratic, use symmetry: in the table $g(-3) = -1$, $g(-2) = 2$, $g(-1) = 3$, $g(0) = 2$, $g(1) = -1$, the values match in pairs around $x = -1$, so the vertex is $(-1, 3)$ and the maximum is 3. So $f$ has the greater maximum.",
+          "From a formula, compute the feature. $f(x) = -(x - 1)^2 + 5$ is a quadratic, a function with an $x^2$ ($x$ times $x$) part and no higher power. Its graph is a parabola, a U-shaped curve, here upside down because of the minus sign in front. Its highest point, the vertex, is $(1, 5)$. So its maximum, its greatest output, is 5.",
+          "A quadratic can also be written in standard form, $ax^2+bx+c$. Here $a$, $b$ and $c$ are fixed numbers and $a\\ne0$. Its vertex is at $x=-\\frac{b}{2a}$. Put that $x$ into the formula to get the greatest or least output.",
+          "From a table of a quadratic, use symmetry: a parabola is the same on both sides of its vertex. Take the table $g(-3) = -1$, $g(-2) = 2$, $g(-1) = 3$, $g(0) = 2$, $g(1) = -1$. The outputs match in pairs around $x = -1$. So the vertex is $(-1, 3)$ and the maximum is 3. So $f$ has the greater maximum.",
         ],
         illustration: "compare-formula-table",
       },
       {
         title: "Intercepts and rates",
         paragraphs: [
-          "The $y$-intercept is the value at $x = 0$: for $f(x) = 3 \\cdot 2^x - 1$ it is $3 \\cdot 1 - 1 = 2$; on a graph, read where the curve crosses the $y$-axis.",
-          "The average rate of change from $x = 0$ to $x = 2$ is $\\frac{f(2) - f(0)}{2 - 0}$: for $f(x) = 3 \\cdot 2^x - 1$ it is $\\frac{11 - 2}{2} = \\frac{9}{2}$. Compute the same quotient from two entries of a table or two points of a graph.",
+          "The $y$-intercept is where the graph crosses the $y$-axis, so it is the output at $x = 0$. For $f(x) = 3 \\cdot 2^x - 1$, it is $3 \\cdot 2^0 - 1 = 3 \\cdot 1 - 1 = 2$, because $2^0 = 1$. On a graph, read where the curve crosses the $y$-axis. In a table, read the output for the input 0.",
+          "The average rate of change says how much the output changes for each 1 added to the input, on average. From $x = 0$ to $x = 2$ it is $\\frac{f(2) - f(0)}{2 - 0}$, the change in output divided by the change in input. For $f(x) = 3 \\cdot 2^x - 1$, $f(2) = 11$ and $f(0) = 2$. So the rate is $\\frac{11 - 2}{2} = \\frac{9}{2}$. From a table or a graph, use the same two inputs and do the same division.",
         ],
       },
     ],
@@ -303,8 +341,9 @@ export const functionToolkitLessons: Lesson[] = [
       prompt:
         "$f(x) = -(x - 1)^2 + 5$, and the quadratic function $g$ has $g(-3) = -1$, $g(-2) = 2$, $g(-1) = 3$, $g(0) = 2$ and $g(1) = -1$. Which function has the greater maximum value?",
       steps: [
-        "The maximum of $f$ is at its vertex $(1, 5)$: it is 5.",
-        "The values of $g$ match in pairs around $x = -1$, so its vertex is $(-1, 3)$ and its maximum is 3.",
+        "$f(x) = -(x - 1)^2 + 5$ is in vertex form, $a(x - h)^2 + k$, which shows the vertex $(h, k)$. So its vertex is $(1, 5)$. The minus sign in front makes it open down, so the vertex is its highest point. The maximum of $f$ is 5.",
+        "The outputs of $g$ match in pairs around $x = -1$: $g(-2) = g(0) = 2$ and $g(-3) = g(1) = -1$. So its vertex is at $x = -1$, and its maximum is $g(-1) = 3$.",
+        "Compare the two maximums: 5 is greater than 3, so $f$ has the greater maximum.",
       ],
       answer: "$f$",
     },
@@ -313,14 +352,14 @@ export const functionToolkitLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "A formula, a graph and a table describe the same kind of object, so the same feature can be found in each and compared as numbers.",
+          "A formula, a graph and a table can describe the same function. So the same feature, such as a maximum, a $y$-intercept or an average rate of change, can be found in each and compared as numbers.",
         ],
       },
     ],
     pitfalls: [
       "Compare the same feature: a maximum with a maximum, a rate with a rate.",
-      "In a table, the largest entry is the maximum only if the table includes the vertex; use the symmetry of the values to find it.",
-      "An average rate of change divides the change in output by the change in input.",
+      "In a table, the largest entry is the maximum only if the table includes the vertex. Use the matching pairs of outputs to find it.",
+      "An average rate of change divides the change in output by the change in input, not the other way round.",
     ],
     parentGuide:
       "Write one function as a formula and draw another, then ask which reaches higher and which starts higher. Have the learner point to where each number comes from.",
@@ -357,75 +396,82 @@ export const functionToolkitMethods: Record<string, ProblemMethod> = {
     watch: "An open circle on the line is not a solution; a filled dot is.",
   },
   "transform-equation": {
-    goal: "Match a shifted, stretched or reflected graph with its equation.",
+    goal: "Match a graph that has been moved, stretched or flipped with its equation.",
     terms: ["parent-graph"],
     method: [
-      "A shift of $h$ right replaces $x$ with $x - h$; a shift left uses $x + h$.",
-      "A vertical stretch by $a$ multiplies the whole output by $a$; a negative $a$ also reflects across the $x$-axis.",
-      "A shift of $k$ up adds $k$ last, outside the stretch.",
+      "A shift of $h$ units right replaces $x$ with $x - h$, and a shift left uses $x + h$. The sign is reversed because the new graph must reach each old input.",
+      "A vertical stretch by $a$ multiplies every output, every height, by $a$. So $a$ goes in front of the whole function. A negative $a$ also flips (reflects) the graph across the $x$-axis.",
+      "A shift of $k$ up adds $k$ last, outside the stretch, so every height moves by exactly $k$.",
     ],
     watch:
-      "Inside the function the sign is reversed: $f(x + 3)$ moves the graph left.",
+      "Inside the function the sign is reversed: $f(x + 3)$ moves the graph 3 to the left.",
   },
   "transform-point": {
-    goal: "Find where one point of a graph goes under a transformation, or use symmetry.",
+    goal: "Find where one point of a graph goes when the graph is moved, stretched or flipped, or use symmetry.",
     method: [
-      "Changes outside $f$ act on the $y$-coordinate: $y = af(x) + k$ sends height $v$ to $av + k$.",
-      "Changes inside $f$ act on the $x$-coordinate: solve for the $x$ that makes the input equal the old $x$.",
-      "An even function has $f(-x) = f(x)$; an odd function has $f(-x) = -f(x)$.",
+      "A change outside $f$ acts on the $y$-coordinate, the height. $y = af(x) + k$ sends height $v$ to $av + k$: multiply by $a$, then add $k$.",
+      "A change inside $f$ acts on the $x$-coordinate. Solve for the $x$ that makes the new input equal the old $x$-coordinate, because there $f$ gives the old height.",
+      "An even function has $f(-x) = f(x)$ for every allowed $x$, so $(-x, y)$ is on its graph whenever $(x, y)$ is. An odd function has $f(-x) = -f(x)$, so $(-x, -y)$ is on its graph whenever $(x, y)$ is.",
     ],
-    watch: "For $f(3x)$ divide the old $x$ by 3; do not multiply.",
+    watch:
+      "For $f(3x)$, divide the old $x$-coordinate by 3, because $3x$ must equal it. Do not multiply.",
   },
   "composition-value": {
     goal: "Evaluate a composition such as $f(g(2))$ from formulas, tables or graphs.",
     terms: ["composition"],
     method: [
-      "Find the inner value first: $g(2)$ from its formula, table or graph.",
-      "Use that value as the input of the outer function.",
-      "For a domain question, find the inputs that make the inner output an excluded input of the outer function.",
+      "Find the inner value first, such as $g(2)$, from its formula, table or graph. The outer function needs it as its input.",
+      "Use that value as the input of the outer function, and find its output.",
+      "For a domain question (which inputs are allowed), leave out inputs the inner function cannot take. Also leave out inputs whose inner output the outer function cannot take, such as one that makes it divide by 0.",
     ],
     watch: "$f(g(2))$ applies $g$ first, even though $f$ is written first.",
   },
   "composition-expression": {
     goal: "Write a composition as an expression, or split a function into an outer and an inner function.",
+    noLink: ["part"],
     method: [
-      "Replace every $x$ in the outer function with the whole inner expression, in parentheses.",
-      "Expand and collect like terms.",
-      "To decompose, name the quantity that is being operated on as the inner function.",
+      "Replace every $x$ in the outer function with the whole inner expression, in parentheses, so it stays together as one input.",
+      "Multiply out the parentheses. Then collect like terms, the terms with the same power of $x$.",
+      "To decompose (split) a function, find the part worked out first, such as $3x - 1$ in $(3x - 1)^2 + 4$. That part is the inner function.",
     ],
-    watch: "Square a whole binomial: $(3x + 3)^2$ has a middle term.",
+    watch:
+      "Square a two-term expression by multiplying it by itself: $(3x + 3)^2 = 9x^2 + 18x + 9$, with a middle term.",
   },
   "inverse-value": {
     goal: "Find a value of an inverse function from a formula, a table or a graph.",
     terms: ["inverse-function"],
     method: [
-      "$f^{-1}(b)$ is the input with output $b$: set $f(x) = b$.",
-      "Solve the equation, or find $b$ among the outputs of a table or the heights of a graph.",
+      "$f^{-1}(b)$ is the input whose output is $b$. So set $f(x) = b$.",
+      "Solve that equation by undoing the steps of $f$ in reverse order. From a table, find $b$ among the outputs. From a graph, find the point at height $b$.",
       "Read the matching input, and check that $f$ of it gives $b$.",
     ],
     watch:
-      "$f^{-1}(b)$ is not $f(b)$ and not $\\frac{1}{f(b)}$: search the outputs for $b$.",
+      "$f^{-1}(b)$ is not $f(b)$ and not $\\frac{1}{f(b)}$. Look for $b$ among the outputs, not the inputs.",
   },
   "inverse-expression": {
-    goal: "Find an inverse function, restrict a domain so one exists, or mirror a point in the line of symmetry.",
+    goal: "Find an inverse function, restrict a domain so one exists, or mirror a point across the line $y = x$.",
+    intuition:
+      "An inverse function, written $f^{-1}$, undoes $f$: if $f$ sends $a$ to $b$, then $f^{-1}$ sends $b$ back to $a$. It exists only when $f$ is one-to-one, which means no two inputs give the same output. The domain is the set of allowed inputs. A quadratic such as $(x - 1)^2 + 3$ has a U-shaped graph, a parabola, that turns at its vertex. Inputs the same distance either side of the vertex give the same output, so only one side can be kept.",
     method: [
-      "Write $y = f(x)$, swap $x$ and $y$, and solve for $y$.",
-      "For a square, keep the root whose sign matches the restricted domain.",
-      "A point $\\left(a, b\\right)$ of $f$ is the point $\\left(b, a\\right)$ of $f^{-1}$, its mirror image in $y = x$.",
-      "A quadratic has an inverse on one side of its vertex only.",
+      "To find a formula, write $y = f(x)$, swap $x$ and $y$, and solve for $y$. Swapping trades inputs and outputs.",
+      "If solving needs a square root, choose $+\\sqrt{\\ }$ or $-\\sqrt{\\ }$ so the inverse gives back inputs from the allowed side.",
+      "A point $\\left(a, b\\right)$ on the graph of $f$ is the point $\\left(b, a\\right)$ on the graph of $f^{-1}$, its mirror image across the line $y = x$.",
+      "A quadratic has an inverse only on one side of its vertex: $x \\ge h$ or $x \\le h$ when the vertex is at $x = h$.",
     ],
     watch:
-      "$f^{-1}(x)$ undoes $f$; it is not the reciprocal $\\frac{1}{f(x)}$.",
+      "$f^{-1}(x)$ undoes $f$. It is not $\\frac{1}{f(x)}$, one divided by $f(x)$.",
   },
   "compare-representations": {
     goal: "Compare a feature of a function given by a formula with the same feature of one given by a graph or table.",
+    intuition:
+      "The same function can be given by a formula, a graph or a table. To compare two of them, find the same feature in each and compare the numbers. A quadratic $ax^2 + bx + c$, with $a \\ne 0$, has a U-shaped graph called a parabola. Its turning point, the vertex, is at $x = -\\frac{b}{2a}$. The output there is the maximum (greatest output) if $a < 0$, or the minimum (least output) if $a > 0$. The $y$-intercept is the output at $x = 0$. An average rate of change is the change in output divided by the change in input.",
     method: [
-      "From the formula: read the vertex form, use $x = -\\frac{b}{2a}$, or substitute.",
-      "From a graph, read the highest or lowest point, or the heights at the two inputs; from a table, use its entries and symmetry.",
-      "Compare the two numbers, and check each statement against them.",
+      "From the formula: read the vertex $(h, k)$ from vertex form $a(x - h)^2 + k$, use $x = -\\frac{b}{2a}$ for $ax^2 + bx + c$, or substitute an input.",
+      "From a graph, read the highest or lowest point, or the heights at the inputs you need. From a table, use its entries and the matching pairs of outputs around the vertex.",
+      "Compare the two numbers, then check each statement against them.",
     ],
     watch:
-      "An average rate of change divides the change in output by the change in input.",
+      "Compare the same feature in both. An average rate of change divides the change in output by the change in input.",
   },
 };
 
@@ -437,15 +483,15 @@ export const functionToolkitPrinciples: Record<string, string> = {
   "transform-equation":
     "$y = af(x - h) + k$ moves every point $\\left(x, y\\right)$ of $y = f(x)$ to $\\left(x + h, ay + k\\right)$.",
   "transform-point":
-    "Outside changes act on outputs directly; inside changes act on inputs in reverse, because the new graph must reach the old input.",
+    "Outside changes act on the outputs directly. Inside changes act on the inputs in reverse, because the new graph must reach the old input.",
   "composition-value":
-    "A composition applies functions in sequence: the inner function's output is the outer function's input.",
+    "A composition applies functions one after the other: the inner function's output is the outer function's input.",
   "composition-expression":
-    "Substituting the inner expression for every $x$ in the outer function gives the composite as a single expression.",
+    "Substituting the inner expression for every $x$ in the outer function gives the composite, the combined function, as a single expression.",
   "inverse-value":
-    "An inverse reverses each input-output pair: $f(a) = b$ exactly when $f^{-1}(b) = a$.",
+    "An inverse reverses each input-output pair: $f(a) = b$ exactly when $f^{-1}(b) = a$. It exists only when $f$ is one-to-one.",
   "inverse-expression":
-    "Swapping the coordinates of every point reflects a graph in $y = x$; the result is a function only when $f$ is one-to-one.",
+    "Swapping the coordinates of every point reflects a graph across the line $y = x$. The result is the graph of a function only when $f$ is one-to-one.",
   "compare-representations":
     "A formula, a graph and a table describe the same kind of object, so the same feature can be found in each and compared as numbers.",
 };
