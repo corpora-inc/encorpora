@@ -2649,6 +2649,32 @@ const builders: Record<string, (r: Random) => Built> = {
 };
 
 /** Private exact model; the variant name is kept for tests only. */
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const GAP_OPENERS: Record<string, string[]> = {
+  "arc-sector-derivation": [
+    "An arc is a piece of a circle, and a sector is the slice between two radii. Both are the same fraction of the whole circle as their central angle is of a full turn.",
+  ],
+  "complex-plane-operations": [
+    "A complex number $a+bi$ is plotted as the point $(a, b)$: real part across, imaginary part up. Adding complex numbers adds these coordinates, like joining arrows.",
+  ],
+  "conditional-everyday-reasoning": [
+    'A conditional probability, written $P(A\\mid B)$ and read "the probability of $A$ given $B$", counts only the cases where $B$ happened.',
+  ],
+  "congruence-by-rigid-motion": [
+    "Rigid motions are slides, flips and turns. They keep every length and angle, so a figure mapped onto another by them is congruent: same shape and size.",
+  ],
+  "conic-foci": [
+    "An ellipse or hyperbola has two fixed points called foci. Their distance $c$ from the center comes from $a$ and $b$, the distances to the curve along its two axes.",
+  ],
+  "similarity-by-transformation": [
+    "A dilation stretches a figure from a center by a scale factor. A dilation followed by rigid motions keeps the shape, so the figures are similar.",
+  ],
+  "aa-similarity": [
+    "Two triangles are similar, the same shape, when two angles of one equal two angles of the other. The angles of a triangle add to 180 degrees, so the third angles match too.",
+  ],
+};
+
 export function geometryRequirementGapCase(
   id: string,
   seed: string,
@@ -2676,7 +2702,7 @@ export function geometryRequirementGapCase(
       ...(built.figure ? { figure: built.figure } : {}),
       answer: "",
       hint: built.hint,
-      explanation: built.explanation,
+      explanation: [...(GAP_OPENERS[template.id] ?? []), ...built.explanation],
       choices: [
         { label: built.correct, correct: true },
         ...wrong.map((w) => ({ label: w.label, feedback: w.feedback })),

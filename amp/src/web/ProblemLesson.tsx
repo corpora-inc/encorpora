@@ -94,8 +94,8 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
           )}
           <GlossaryBlock texts={lesson.example.steps}>
             <ol>
-              {lesson.example.steps.map((step) => (
-                <li key={step}>
+              {lesson.example.steps.map((step, index) => (
+                <li key={`${index}:${step}`}>
                   <MathText text={step} />
                 </li>
               ))}
@@ -112,8 +112,8 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
           <h3>Method</h3>
           <GlossaryBlock texts={lesson.method}>
             <ol className="lesson-method">
-              {lesson.method.map((step) => (
-                <li key={step}>
+              {lesson.method.map((step, index) => (
+                <li key={`${index}:${step}`}>
                   <MathText text={step} />
                 </li>
               ))}

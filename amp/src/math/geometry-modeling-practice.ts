@@ -132,6 +132,32 @@ const rq = (n: number) =>
   isSquare(n) ? `${Math.sqrt(n)}` : math(`\\sqrt{${n}}`);
 const tenths = (t: number) => (t / 10).toFixed(1).replace(/\.0$/, "");
 
+/** Plain openings: the idea each geometry model rests on, with its terms
+ * defined (issue #1781). */
+const MODEL_OPENERS: Record<string, string[]> = {
+  "solid-volume-context": [
+    "Volume is the space inside a solid, measured in cubic units. Each solid has its own formula, so first name the solid and its measurements.",
+  ],
+  "density-context": [
+    "Density is how much mass fits in each unit of volume, such as grams per cubic centimeter. So mass equals density times volume.",
+  ],
+  "geometric-model-choice": [
+    "A geometric model replaces a real object with a simple shape whose formula we know. Choose the shape that matches the object, then use its formula.",
+  ],
+  "geometric-design-constraint": [
+    "A design constraint is a limit the plan must meet, such as an amount of paint or a budget. Work out the area or volume first, then apply the limit.",
+  ],
+  "cavalieri-volume-reasoning": [
+    "Cavalieri's principle says: if two solids have the same height and every slice at the same level has the same area, they have the same volume.",
+  ],
+  "section-revolution-solid": [
+    "Spinning a flat shape around a line, the axis, sweeps out a solid of revolution. The side on the axis stays fixed; a side at right angles to it sweeps a circle.",
+  ],
+  "similarity-theorem-length": [
+    "Similar triangles have the same shape: matching angles are equal and matching sides share one ratio. The altitude to the hypotenuse of a right triangle makes three similar triangles.",
+  ],
+};
+
 function finish(
   meta: TemplateMetadata,
   seed: string,
@@ -150,7 +176,7 @@ function finish(
     prompt: b.prompt,
     answer: "",
     hint: b.hint,
-    explanation: b.explanation,
+    explanation: [...(MODEL_OPENERS[meta.id] ?? []), ...b.explanation],
     ...(b.figure ? { figure: b.figure } : {}),
     choices: [
       { label: b.correct, correct: true },
