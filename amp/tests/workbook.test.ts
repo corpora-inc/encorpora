@@ -639,11 +639,11 @@ test("choices change the workbook deterministically and are stored in the spec",
   const plain = compose("third-grade", { number: 3 });
   assert.equal(plain.version, WORKBOOK_VERSION);
   assert.deepEqual(plain.choices, { areas: [], lean: "level", lesson: true });
-  const choices = {
+  const choices: WorkbookChoices = {
     areas: ["geometry", "fractions"],
     lean: "stretch",
     lesson: false,
-  } as const;
+  };
   const mixed = compose("third-grade", { number: 3, choices });
   assert.deepEqual(compose("third-grade", { number: 3, choices }), mixed);
   assert.deepEqual(mixed.choices, {
