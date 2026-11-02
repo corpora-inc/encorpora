@@ -8,7 +8,8 @@
  * minutes, Letter and A4, whole catalog, a few strands or one course) and of
  * the largest possible composition at every print band must fit one page,
  * and WORKBOOK_SWEEP_FULL random workbooks must pass every page check.
- * WORKBOOK_SWEEP_SEED reproduces a run; each run prints its seed, and
+ * The seed is the UTC day; WORKBOOK_SWEEP_SEED reproduces a run (each run
+ * prints its seed), and
  * WORKBOOK_SWEEP_ONLY=1 runs the sweep alone.
  *
  *   npx tsx scripts/verify-workbook-layout.ts
@@ -149,9 +150,11 @@ for (const engine of sweepOnly ? [] : [firefox, webkit]) {
   }
 }
 // Randomized sweep.
-const sweepSeed =
-  Number(process.env.WORKBOOK_SWEEP_SEED) ||
-  Math.floor(Math.random() * 2 ** 31);
+// The seed is the UTC day unless given: compositions change from day to
+// day, and a rerun on the same day repeats the same ones.
+const sweepSeed = /^\d+$/.test(process.env.WORKBOOK_SWEEP_SEED ?? "")
+  ? Number(process.env.WORKBOOK_SWEEP_SEED)
+  : Math.floor(Date.now() / 86_400_000);
 const sweepCount = Number(process.env.WORKBOOK_SWEEP_COUNT ?? 240);
 const sweepFull = Number(process.env.WORKBOOK_SWEEP_FULL ?? 4);
 console.log(
