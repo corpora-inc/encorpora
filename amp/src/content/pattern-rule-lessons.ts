@@ -6,9 +6,17 @@ export const patternRuleMethods: Record<string, ProblemMethod> = {
   "pattern-rule-choice": {
     goal: "Find the rule of a number pattern from its terms, or find the pattern that follows the same rule.",
     intuition:
-      "A number pattern is a list of numbers made by a rule. Each number in it is called a term. The rule tells how to turn each term into the next. It can add the same number each time, like 5, 14, 23 (add 9). It can multiply by the same number each time, like 2, 6, 18 (multiply by 3). Or it can add an amount that grows each time, like 1, 2, 4, 7 (add 1, then 2, then 3). Multiplying by the same number each time is also called growing by the same factor. The change is how much a term goes up or down to make the next one.",
+      "A number pattern is a list of numbers made by a rule. Each number in it is called a term. The rule tells how to turn each term into the next. It can add the same number each time, like 5, 14, 23 (add 9). It can multiply by the same number each time, like 2, 6, 18 (multiply by 3). Or it can add an amount that grows each time, like 1, 2, 4, 7 (add 1, then 2, then 3). In 2, 6, 18, the number you multiply by, 3, is also called the factor. The change is how much a term goes up or down to make the next one.",
     terms: ["term-sequence", "rule"],
-    senses: { term: "term-sequence", rule: "rule" },
+    senses: {
+      term: "term-sequence",
+      rule: "rule",
+      change: "change",
+      changes: "change",
+      factor: "factor-number",
+      multiple: "multiple",
+      "more than": "more-than",
+    },
     method: [
       "Subtract each term from the next to find the changes. If the changes are all equal, the rule is to add that number.",
       "If the changes are not equal, divide each term by the one before. Division tells how many times as big the next term is, so the same answer each time means a multiply rule. Or see whether the changes grow by the same amount each time.",
@@ -24,14 +32,20 @@ export const patternRuleMethods: Record<string, ProblemMethod> = {
     terms: [
       [
         "difference-subtract",
-        "Here, the change from one term of the pattern to the next: take the smaller number away from the bigger one.",
+        "Here, the change from one term of the pattern to the next: how much it goes up or down.",
       ],
       [
         "pattern",
         "In a decreasing pattern, each term is smaller than the one before.",
       ],
     ],
-    senses: { term: "term-sequence", rule: "rule" },
+    senses: {
+      term: "term-sequence",
+      rule: "rule",
+      change: "change",
+      changes: "change",
+      "more than": "more-than",
+    },
     method: [
       "Compare each term with the next, and write how much it goes up or down. From 89 to 86 it goes down by 3, because 89 − 86 = 3.",
       "Decide whether the changes stay the same, or grow or shrink by the same amount each time.",
@@ -46,7 +60,7 @@ export const patternRulePrinciples: Record<string, string> = {
   "pattern-rule-choice":
     "Adding 9 each time to 5 gives 5, 14, 23, 32. Multiplying by 3 each time from 2 gives 2, 6, 18, 54. Adding 2, then 3, then 4 to 4 gives 4, 6, 9, 13, so its changes grow by 1. Two patterns follow the same rule when they change in the same way, whatever their first terms.",
   "pattern-term-unknown-rule":
-    "If the changes between neighbors are all equal, the pattern goes up or down by the same amount each time. If the changes grow or shrink by the same amount each time, the changes make a pattern of their own. To get each next term, add the next change if the pattern goes up, or take it away if the pattern goes down.",
+    "If the changes between neighbors are all equal, the pattern goes up or down by the same amount each time. If the changes grow or shrink by the same amount each time, the changes make a pattern of their own. Use the amount each term goes up or down. Add it when the pattern goes up. Take it away when the pattern goes down.",
 };
 
 export const patternRuleLessons = [
@@ -55,7 +69,13 @@ export const patternRuleLessons = [
     title: "Finding the rule of a number pattern",
     summary:
       "A number pattern is a list of numbers made by a rule, like “add 9.” Each number in it is called a term. Look at how much each term changes to make the next. That shows the rule. Then you can find other patterns with the same rule.",
-    senses: { term: "term-sequence", rule: "rule" },
+    senses: {
+      term: "term-sequence",
+      rule: "rule",
+      change: "change",
+      changes: "change",
+    },
+    noLink: ["mean", "means"],
     templateIds: ["pattern-rule-choice"],
     objectives: [
       "Find the changes between neighboring terms of a number pattern.",
@@ -80,8 +100,8 @@ export const patternRuleLessons = [
     },
     methodTitle: "Changes first, then check",
     method: [
-      "Find the changes. Equal changes mean an adding rule. If the changes themselves grow or shrink by the same amount each time, the amount added grows or shrinks.",
-      "If the changes are not equal and the terms grow fast, divide each term by the one before. Division tells how many times as big the next term is. The same answer each time means a multiplying rule.",
+      "Find the changes. Equal changes mean you add the same number each time, an adding rule. If the changes themselves grow or shrink by the same amount each time, the amount added grows or shrinks.",
+      "If the changes are not equal and the terms grow fast, divide each term by the one before. Division tells how many times as big the next term is. The same answer each time means you multiply by that number each time, a multiplying rule.",
       "Check the rule on every term.",
     ],
     formalTitle: "Rules of patterns",
@@ -91,7 +111,7 @@ export const patternRuleLessons = [
     ],
     pitfalls: [
       "Check the rule on every term, not only the first two.",
-      "If the changes grow by 1 each time, the rule adds a growing amount. It does not multiply.",
+      "If the changes grow by 1 each time, try adding 1, then 2, then 3. Check every term, because a short pattern can fit two rules: 1, 2, 4 also fits “multiply by 2.”",
       "Choose the pattern with the same rule, not the one with the same first term.",
     ],
     parentGuide:
@@ -102,7 +122,12 @@ export const patternRuleLessons = [
     title: "Continuing a pattern from its terms",
     summary:
       "A number pattern is a list of numbers made by a rule. Each number in it is called a term. When the rule is not given, look at how much each term goes up or down to make the next. Find a rule for those changes that fits every term shown. Keep it going to find a later term.",
-    senses: { term: "term-sequence", rule: "rule" },
+    senses: {
+      term: "term-sequence",
+      rule: "rule",
+      change: "change",
+      changes: "change",
+    },
     templateIds: ["pattern-term-unknown-rule"],
     objectives: [
       "Find the changes between terms, and say how the changes change.",
@@ -119,7 +144,7 @@ export const patternRuleLessons = [
       prompt:
         "A pattern starts 50, 43, 37, 32, 28. What is the seventh number?",
       steps: [
-        "Find the changes by subtracting: 50 − 43 = 7, 43 − 37 = 6, 37 − 32 = 5 and 32 − 28 = 4. So the pattern goes down by 7, then 6, then 5, then 4. Each amount taken away is 1 less than the one before.",
+        "The numbers go down, so subtract each term from the one before it: 50 − 43 = 7, 43 − 37 = 6, 37 − 32 = 5 and 32 − 28 = 4. So the pattern goes down by 7, then 6, then 5, then 4. Each amount taken away is 1 less than the one before.",
         "So the next two changes are to take away 3, then take away 2.",
         "The sixth number is $28-3=25$. The seventh needs the sixth first: $25-2=23$.",
       ],

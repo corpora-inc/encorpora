@@ -100,7 +100,7 @@ const entries: FormatLessonEntry[] = [
     id: "unit-fraction-division-slots",
     title: "Divide a unit fraction",
     summary:
-      "A unit fraction is one equal part of a whole, like $\\frac{1}{4}$. You can share a unit fraction among some people. Or you can count how many unit fractions fit in some wholes, like how many fourths fit in 3 wholes. Both are division.",
+      "A unit fraction, like $\\frac{1}{4}$, is one equal part of a whole. Share it, or count how many fit in some wholes: both are division.",
     objectives: [
       "Share a unit fraction among equal groups and write the division, such as $\\frac{1}{4}\\div 3=\\frac{1}{12}$.",
       "Count how many unit fractions fit in a whole number and write the division, such as $3\\div\\frac{1}{4}=12$.",
@@ -114,7 +114,7 @@ const entries: FormatLessonEntry[] = [
       "Find the answer. Sharing cuts each part into more pieces: $\\frac{1}{4}\\div 3=\\frac{1}{4\\times 3}=\\frac{1}{12}$. Counting multiplies: $3\\div\\frac{1}{4}=3\\times 4=12$.",
     ],
     watch:
-      "Sharing among 2 or more groups makes each share smaller than the part you started with. Counting small parts in wholes gives more than the number of wholes: 3 wholes hold 12 fourths.",
+      "Sharing among 2 or more groups makes each share smaller than the part you started with. Counting parts smaller than one whole, like fourths, gives more parts than wholes: 3 wholes hold 12 fourths.",
     principle:
       "Whole numbers are 0, 1, 2, 3 and so on. Let the letters $d$, $g$ and $w$ stand for whole numbers more than 0. Then $\\frac{1}{d}\\div g=\\frac{1}{d\\times g}$, because each of the $d$ parts is cut into $g$ equal pieces. And $w\\div\\frac{1}{d}=w\\times d$, because each whole holds $d$ pieces of size $\\frac{1}{d}$. So dividing by $\\frac{1}{d}$ is the same as multiplying by $d$.",
     example: {
@@ -133,36 +133,44 @@ const entries: FormatLessonEntry[] = [
       "Check by multiplying back. One share times the number of people gives the part you started with: $\\frac{1}{12}\\times 4=\\frac{1}{3}$. The number of laps times one lap gives the distance: $12\\times\\frac{1}{4}=3$.",
     ],
     formal:
-      "Let $d$ be the number of equal parts in a whole and $g$ the number of people, both more than 0. Let $q$ be each person's share. Dividing by $g$ undoes multiplying by $g$, so $\\frac{1}{d}\\div g=q$ means $q\\times g=\\frac{1}{d}$. Cut each of the $d$ parts into $g$ equal pieces. The whole then has $d\\times g$ pieces, so $q=\\frac{1}{d\\times g}$. For counting, let $w$ be the number of wholes. Then $w\\div\\frac{1}{d}=q$ means $q\\times\\frac{1}{d}=w$. Each whole holds $d$ pieces, so $q=w\\times d$.",
+      "Let $d$ be the number of equal parts in a whole and $g$ the number of people, both more than 0. Let $q$ be each person's share. Dividing by $g$ undoes multiplying by $g$, so $\\frac{1}{d}\\div g=q$ means $q\\times g=\\frac{1}{d}$. Cut each of the $d$ parts into $g$ equal pieces. The whole then has $d\\times g$ pieces, so $q=\\frac{1}{d\\times g}$. For counting, let $w$ be the number of wholes and $q$ the number of pieces. Then $w\\div\\frac{1}{d}=q$ means $q\\times\\frac{1}{d}=w$. Each whole holds $d$ pieces, so $q=w\\times d$.",
     pitfalls: [
       "When you share $\\frac{1}{3}$ among 4 people, multiply the denominator, the bottom number, by 4. Each share is $\\frac{1}{12}$, not $\\frac{1}{7}$ or $\\frac{4}{3}$.",
       "To count $\\frac{1}{4}$ mile laps in 3 miles, multiply: $3\\times 4=12$ laps. The answer is not $\\frac{3}{4}$.",
     ],
     parentGuide:
       "Fold a strip of paper into fourths and shade one fourth. Fold that fourth again to share it. Then count how many of the small pieces fit in the whole strip.",
-    senses: { whole: "whole", part: "part" },
+    senses: {
+      whole: "whole",
+      part: "part",
+      fourth: "fourth",
+      fourths: "fourth",
+      "one fourth": "fourth",
+      third: "third",
+      "more than": "more-than",
+    },
   },
   {
     id: "array-division-slots",
     title: "Divide with an array",
     summary:
-      "An array is objects set out in rows, with the same number in every row. To divide means to split a total into equal groups. Divide an array's total by the number of rows to find how many are in each row. Or divide by the number in each row to find the number of rows.",
+      "An array has the same number in every row. Total ÷ number of rows gives the number in each row. Total ÷ number in each row gives the rows.",
     objectives: [
       "Find the total of an array from its number of rows and the number in each row.",
       "Write the division that finds the number of rows or the number in each row.",
     ],
     intuition:
-      "An array is objects set out in rows, with the same number in every row. A row goes across. Say there are 7 rows with 8 counters in each row. The sign × is read “times,” so there are $7\\times 8=56$ counters in all. Multiplication counts all the things in equal groups. To divide means to split a total into equal groups, and ÷ is read “divided by.” Division undoes multiplication: it starts from the total. If you know the total and the number in each row, $56\\div 8=7$ tells how many rows. If you know the total and the number of rows, $56\\div 7=8$ tells how many are in each row. The answer to a division is called the quotient.",
+      "An array is objects set out in rows, with the same number in every row. A row goes across. Say there are 7 rows with 8 counters, small counting pieces, in each row. The sign × is read “times,” so there are $7\\times 8=56$ counters in all. Multiplication counts all the things in equal groups. To divide means to split a total into equal groups, and ÷ is read “divided by.” Division undoes multiplication: it starts from the total. If you know the total and the number in each row, $56\\div 8=7$ tells how many rows. If you know the total and the number of rows, $56\\div 7=8$ tells how many are in each row. The answer to a division is called the quotient.",
     terms: ["array", "quotient"],
     method: [
       "Multiply the number of rows by the number in each row to find the total.",
       "Write the total first. Then divide by the number you know: the number in each row, or the number of rows.",
-      "The quotient is the other number. Check: the quotient times the number you divided by makes the total.",
+      "The quotient, the answer to the division, is the count you did not know: the rows or the number in each row. Check: the quotient times the number you divided by makes the total.",
     ],
     watch:
       "Put the total first in the division. It counts all the counters, so it is never smaller than the other two numbers.",
     principle:
-      "The numbers 6, 9 and 54 make four facts, or true number sentences: $6\\times 9=54$, $9\\times 6=54$, $54\\div 9=6$ and $54\\div 6=9$. Four facts made from the same three numbers are called a fact family. In general, let the letters $r$ and $c$ stand for whole numbers more than 0, such as 6 and 9. If $r\\times c=T$, then $T\\div c=r$ and $T\\div r=c$.",
+      "The numbers 6, 9 and 54 make four facts, or true number sentences: $6\\times 9=54$, $9\\times 6=54$, $54\\div 9=6$ and $54\\div 6=9$. Four facts made from the same three numbers are called a fact family. In general, let $r$ stand for the number of rows and $c$ for the number in each row, both whole numbers more than 0, like 6 and 9. Let $T$ be the total. If $r\\times c=T$, then $T\\div c=r$ and $T\\div r=c$.",
     example: {
       prompt:
         "An array has 6 rows with 9 counters in each row. Write the division that finds the number of rows.",
@@ -176,23 +184,28 @@ const entries: FormatLessonEntry[] = [
     methodTitle: "A fact family",
     methodText: [
       "Check: 6 rows of 9 must hold all 54 counters. So multiply the quotient by the number you divided by: $6\\times 9=54$.",
-      "A fact family is the four facts, or true number sentences, made from the same three numbers: $6\\times 9=54$, $9\\times 6=54$, $54\\div 9=6$ and $54\\div 6=9$. Divide by the other number to get the other division in the family.",
+      "A fact family is the four facts, or true number sentences, made from the same three numbers: $6\\times 9=54$, $9\\times 6=54$, $54\\div 9=6$ and $54\\div 6=9$. Dividing 54 by 9 gives the 6 rows. Dividing 54 by 6 gives the 9 counters in each row.",
     ],
     formal:
-      "Say an array has $r$ rows with $c$ in each row, and $T$ in all. These letters stand for whole numbers more than 0. Division undoes multiplication: $T\\div c=r$ means exactly that $r\\times c=T$. The order of the factors, the numbers you multiply, does not change the product, the answer. So $c\\times r=T$ too. Since $r$ is not 0, that gives $T\\div r=c$.",
+      "Say an array has $r$ rows with $c$ in each row, and $T$ in all. These letters stand for whole numbers more than 0. Division undoes multiplication: $T\\div c=r$ means exactly that $r\\times c=T$. The order of the factors, the numbers you multiply, does not change the product, the answer. So $c\\times r=T$ too. Since $r$ is not 0, we can divide by it: $T\\div r=c$.",
     pitfalls: [
       "Put the total first. In $54\\div 9$, the total 54 comes before the number you divide by.",
       "Find the total by multiplying, not adding: 6 rows of 9 is $6\\times 9=54$, not $6+9=15$.",
     ],
     parentGuide:
       "Lay out counters in rows. Ask your learner how many there are in all. Then ask which division finds the number of rows, and which finds the number in each row.",
-    senses: { factor: "factor-number", product: "product-multiply" },
+    senses: {
+      factor: "factor-number",
+      product: "product-multiply",
+      "more than": "more-than",
+    },
+    noLink: ["change"],
   },
   {
     id: "story-operations-slots",
     title: "Choose the operations of a story",
     summary:
-      "Read how the numbers in a story fit together. Choose × for equal groups, groups with the same number in each. Choose + for extra items and − for items taken away.",
+      "Read how a story's numbers fit together. Use × for equal groups (the same number in each), + for extras and − for items taken away.",
     objectives: [
       "Choose multiplication for equal groups, and addition or subtraction for extra items and items taken away.",
       "Check an equation against the total in the story.",
@@ -202,7 +215,7 @@ const entries: FormatLessonEntry[] = [
     terms: ["equal-groups", "order-of-operations"],
     method: [
       "Find the numbers in the story and what each one counts.",
-      "Choose an operation for each one: × for equal groups, + for extra items, − for items taken away.",
+      "Choose a sign to go between the numbers: × for equal groups, + for extra items, − for items taken away.",
       "Work it out, multiplying first. Check that you get the number after the equals sign.",
     ],
     watch:
@@ -232,6 +245,7 @@ const entries: FormatLessonEntry[] = [
     ],
     parentGuide:
       "Act the story out with small objects and ask what happens to the pile at each step.",
+    noLink: ["leaves", "part"],
   },
   {
     id: "delivery-operations-slots",
@@ -243,7 +257,7 @@ const entries: FormatLessonEntry[] = [
       "Write one equation for a starting amount with several changes, and find the amount left.",
     ],
     intuition:
-      "The starting amount is what you have at the beginning. It changes step by step. Items that arrive are added, and items that leave are subtracted. Adding and subtracting are called operations. Write the number sentence, the numbers and signs, in the same order as the story. A shop has 18 tulips. One farm brings 25 more and another brings 14 more. Then 30 are sold: $18+25+14-30$. Work from left to right, the order things happen in the story: $18+25=43$, $43+14=57$, $57-30=27$. An equation is a number sentence with an equals sign: $18+25+14-30=27$. So 27 tulips are left.",
+      "The starting amount is what you have at the beginning. It changes step by step. Items that arrive are added, and items that leave are subtracted. Adding and subtracting are called operations. Write the number sentence in the story's order: the starting number, then + and each amount that arrives, or − and each amount that leaves. A shop has 18 tulips. One farm brings 25 more and another brings 14 more. Then 30 are sold: $18+25+14-30$. Work from left to right, the order things happen in the story: $18+25=43$, $43+14=57$, $57-30=27$. An equation is a number sentence with an equals sign: $18+25+14-30=27$. So 27 tulips are left.",
     terms: [
       [
         "change",
@@ -282,7 +296,8 @@ const entries: FormatLessonEntry[] = [
     ],
     parentGuide:
       "Use coins or counters. Move counters onto the table for each arrival and away for each loss. Say plus or minus as you move them.",
-    senses: { change: "change", changes: "change" },
+    senses: { change: "change", changes: "change", "more than": "more-than" },
+    noLink: ["leaves"],
   },
   {
     id: "table-equation-slots",
@@ -334,7 +349,7 @@ const entries: FormatLessonEntry[] = [
     id: "rule-table-fill-slots",
     title: "Complete a table from its rule",
     summary:
-      "A rule tells what to do to a number, like “add 7.” The number you start with is the input, and the answer is the output. Use the rule to find an output, and undo it to find an input.",
+      "A rule, like “add 7,” turns an input number into an output number. Use the rule to find an output. Undo it to find an input.",
     objectives: [
       "Find $y$ for a given $x$ when the rule adds, subtracts or multiplies.",
       "Find $x$ for a given $y$ by undoing the rule with the inverse operation.",
@@ -344,7 +359,7 @@ const entries: FormatLessonEntry[] = [
     terms: ["input", "output", "inverse-operation"],
     method: [
       "For a missing $y$, put the given $x$ into the rule and work it out.",
-      "For a missing $x$, undo the rule: subtract if the rule adds, add if it subtracts, divide if it multiplies.",
+      "For a missing $x$, undo the rule: subtract if the rule adds, add if it subtracts, and divide by the same number if it multiplies.",
       "Put each number back into the rule to check it.",
     ],
     watch:
@@ -374,6 +389,7 @@ const entries: FormatLessonEntry[] = [
     parentGuide:
       "Ask your learner to say the rule out loud, such as “add 7.” Then ask how to go back: “take 7 away.”",
     senses: { rule: "rule", rules: "rule" },
+    noLink: ["opposite"],
   },
   {
     id: "unit-price-sentence-slots",

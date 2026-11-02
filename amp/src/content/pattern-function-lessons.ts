@@ -62,7 +62,14 @@ export const patternFunctionLessons: Lesson[] = [
       "A number pattern is a list of numbers made by a rule, like “add 6.” Each number in the list is called a term. Start with the first term. Use the rule once to get each next term. Keep going until you reach the term you need.",
     templateIds: ["rule-pattern-term"],
     includeGeneratedRepresentation: false,
-    senses: { term: "term-sequence", rule: "rule" },
+    senses: {
+      term: "term-sequence",
+      rule: "rule",
+      jump: "jump",
+      jumps: "jump",
+      "more than": "more-than",
+    },
+    noLink: ["mean", "means"],
     objectives: [
       "Write the terms of a pattern from its starting number and its rule.",
       "Find a later term, and check it by counting how many times the rule was used.",
@@ -126,6 +133,7 @@ export const patternFunctionLessons: Lesson[] = [
     templateIds: ["rule-pattern-feature"],
     includeGeneratedRepresentation: false,
     senses: { term: "term-sequence", rule: "rule", multiple: "multiple" },
+    noLink: ["change", "changes", "mean", "means", "whole"],
     objectives: [
       "Notice features that every term of a pattern shares, such as being odd, being in the times table of a number, or ending in the same digit.",
       "Explain why the feature keeps going, using what the rule does to odd and even numbers or to multiples.",
@@ -177,7 +185,7 @@ export const patternFunctionLessons: Lesson[] = [
         "A number pattern starts at 9. Its rule is “add 6.” Is every number in the pattern odd, is every number even, or do the numbers alternate between odd and even?",
       steps: [
         "Write the first few terms by adding 6: 9, 15, 21, 27, 33.",
-        "The start, 9, is odd. The step, 6, is even. Adding an even number adds whole pairs, so it never changes odd to even.",
+        "The start, 9, is odd. The step, the amount added each time, is 6, which is even. Adding an even number adds whole pairs, so it never changes odd to even.",
         "So every term stays odd, like the start.",
       ],
       answer: "Every number is odd.",
@@ -197,7 +205,7 @@ export const patternFunctionLessons: Lesson[] = [
       "A number pattern is a list of numbers made by a rule. Each number in it is called a term. Two patterns can be compared term by term. Pair the 1st terms, then the 2nd terms, and so on. Then see how each pair is related, such as the second number being 3 times the first.",
     templateIds: ["related-patterns-relationship"],
     includeGeneratedRepresentation: false,
-    senses: { term: "term-sequence", rule: "rule" },
+    senses: { term: "term-sequence", rule: "rule", "more than": "more-than" },
     objectives: [
       "Pair matching terms of two patterns as ordered pairs, and plot them on a coordinate grid.",
       "State and explain how matching terms are related, such as each B-term being 3 times its A-term.",
@@ -225,7 +233,7 @@ export const patternFunctionLessons: Lesson[] = [
         paragraphs: [
           "At every step, A grows by 2 and B grows by 6, and 6 = 3 × 2. Both start at 0. So after the same number of steps, B has grown 3 times as much as A.",
           "After 4 steps, A is 4 × 2 = 8 and B is 4 × 6 = 24. And 24 = 3 × 8.",
-          "Look at the graph, the picture of the pairs as points on the grid. Each point is 3 times as high as it is far across. From one point to the next, you always go 2 right and 6 up. Repeating the same move puts the points on one straight line through (0, 0).",
+          "Look at the graph, the picture of the pairs as points on the grid. Each point's up number is 3 times its across number. From one point to the next, you always go 2 right and 6 up. Repeating the same move puts the points on one straight line through (0, 0).",
           "The table shows the same fact pair by pair: 6 = 3 × 2, 12 = 3 × 4, 18 = 3 × 6. To find the B-term that goes with any A-term, multiply by 3.",
         ],
         illustration: "related-patterns-graph",
@@ -244,7 +252,7 @@ export const patternFunctionLessons: Lesson[] = [
       prompt:
         "Pattern A starts at 0 and adds 2 each step. Pattern B starts at 0 and adds 6 each step. Each term of pattern B is how many times the matching term of pattern A?",
       steps: [
-        "List both patterns: A is 0, 2, 4, 6, 8 and B is 0, 6, 12, 18, 24. Pair the terms in order, each pair inside parentheses with A's term first: (0, 0), (2, 6), (4, 12), (6, 18) and (8, 24).",
+        "List both patterns: A is 0, 2, 4, 6, 8 and B is 0, 6, 12, 18, 24. Pair the terms in order. Write each pair inside parentheses ( ), with A's term first: (0, 0), (2, 6), (4, 12), (6, 18) and (8, 24).",
         "Compare the steps. B adds 6 and A adds 2, and 6 = 3 × 2. So B grows 3 times as fast.",
         "Both patterns start at 0, and every step adds 3 times as much to B as to A. So after any number of steps, each B-term is 3 times its A-term. Check two pairs: 12 = 3 × 4 and 24 = 3 × 8.",
       ],
@@ -532,9 +540,10 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
   "rule-pattern-feature": {
     goal: "Find a feature that every term of a pattern made by a rule shares.",
     intuition:
-      "A number pattern is a list of numbers made by a rule, like “add 4.” Each number in it is called a term. The amount added each time is called the step. An even number can be split into pairs with none left over. An odd number has one left over. A multiple of a number is made of whole groups of it: a multiple of 3 is in the 3 times table, like 12 = 4 × 3. A digit is one of the symbols 0 to 9. The last digit is the ones digit, like the 7 in 37. The three dots … mean a pattern keeps going.",
+      "A number pattern is a list of numbers made by a rule, like “add 4.” Each number in it is called a term. The amount added each time is called the step. An even number can be split into pairs with none left over. An odd number splits into pairs with one left over. A multiple of a number is made of whole groups of it: a multiple of 3 is in the 3 times table, like 12 = 4 × 3. A digit is one of the symbols 0 to 9. The last digit is the ones digit, like the 7 in 37. The three dots … mean a pattern keeps going.",
     terms: ["even-number", "odd-number"],
     senses: { term: "term-sequence", rule: "rule", multiple: "multiple" },
+    noLink: ["change", "changes", "mean", "means", "whole"],
     method: [
       "Write the first five or six terms.",
       "Look for something they all share: all odd or all even, all multiples of one number, or the same last digit.",
@@ -546,7 +555,7 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
   "related-patterns-relationship": {
     goal: "State how the matching terms of two number patterns are related.",
     intuition:
-      "A number pattern is a list of numbers made by a rule. Each number is called a term, and the amount added each time is the step. Matching terms are in the same place in both lists: 1st with 1st, 2nd with 2nd. An ordered pair writes them together in a set order, like (2, 6): the A-term first, then the B-term. A coordinate grid is a grid of numbered lines. On it, (2, 6) is the point you reach by starting at 0, going 2 across to the right, then 6 up.",
+      "A number pattern is a list of numbers made by a rule. Each number is called a term, and the amount added each time is the step. Matching terms are in the same place in both lists: 1st with 1st, 2nd with 2nd. An ordered pair writes them together in a set order, like (2, 6): the A-term first, then the B-term. A coordinate grid is a grid of numbered lines, and a point is a spot on it. Start where both numbers are 0. Go 2 across to the right, then 6 up: that is the point (2, 6).",
     terms: [
       "corresponding-terms",
       [
@@ -554,10 +563,10 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
         "Here the first number is the term of pattern A and the second the term of pattern B.",
       ],
     ],
-    senses: { term: "term-sequence", rule: "rule" },
+    senses: { term: "term-sequence", rule: "rule", multiple: "multiple" },
     method: [
       "Pair the terms in order and read the pairs in the table.",
-      "Both patterns start at 0, so compare the steps: divide B's step by A's step. That tells how many times as much B adds each step.",
+      "Both patterns start at 0, so compare the steps. Divide B's step by A's step to find how many of A's steps fit in one of B's.",
       "Check that every B-term is that many times its A-term. Then use it.",
     ],
     watch:

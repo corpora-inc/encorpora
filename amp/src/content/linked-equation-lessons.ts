@@ -6,7 +6,7 @@ export const linkedEquationMethods: Record<string, ProblemMethod> = {
   "linked-division-equations": {
     goal: "Choose the linked equations or the one combined equation for a story that shares a total equally, then shares or multiplies.",
     intuition:
-      "Some stories take two steps. The answer to step one is used in step two. Dividing, shown by ÷, splits a number into equal groups. Multiplying, shown by ×, counts equal groups: $3 \\times 9$ is 3 groups of 9. A number sentence uses numbers and signs. An equation is a number sentence with an equals sign, like $108 \\div 2 = 54$. A letter such as $a$ stands for a number we do not know yet. Linked equations are two equations where the answer of the first is used in the second.",
+      "Some stories take two steps. The answer to step one is used in step two. Dividing, shown by ÷, splits a number into equal groups. Multiplying, shown by ×, finds how many things are in equal groups altogether: $3 \\times 9$ is 3 groups of 9. A number sentence uses numbers and signs. An equation is a number sentence with an equals sign, like $108 \\div 2 = 54$. A letter such as $a$ stands for a number we do not know yet. Linked equations are two equations where the answer of the first is used in the second.",
     terms: [
       [
         "equation",
@@ -29,6 +29,7 @@ export const linkedEquationMethods: Record<string, ProblemMethod> = {
     goal: "Choose the pair of linked equations, or the one combined equation, that finds the time left after two parts have passed.",
     intuition:
       "Some stories take two steps. The answer to step one is used in step two. A number sentence uses numbers and signs. An equation is a number sentence with an equals sign, like $80 - 23 = 57$. Time that has passed is taken away from the whole time. After the first part, some time is left. The second part is taken away from what is left. A letter such as $a$ stands for a number we do not know yet. Linked equations are two equations where the answer of the first is used in the second.",
+    senses: { part: "part", parts: "part", whole: "whole" },
     terms: [
       [
         "elapsed-time",
@@ -40,7 +41,7 @@ export const linkedEquationMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write step one: the whole time minus the first part gives the time left, $a$.",
+      "Write step one: take the first part away from the whole time to get the time left, $a$.",
       "Write step two with that answer: the time left, $a$, minus the second part.",
       "Choose the choice that takes both parts away from the whole, in that order. It never adds time back.",
     ],
@@ -62,6 +63,8 @@ export const linkedEquationLessons = [
     title: "Linked equations for a two-step story",
     summary:
       "Some stories take two steps. A number sentence uses numbers and signs, like 8 − 3 = 5. Write a number sentence for step one. Then use its answer in step two. You can also write both steps as one number sentence.",
+    senses: { part: "part", parts: "part", whole: "whole" },
+    noLink: ["change", "changes"],
     templateIds: ["linked-division-equations", "linked-time-equations"],
     objectives: [
       "Write a number sentence for the first step of a two-step story, and name its answer with a letter.",
@@ -72,7 +75,7 @@ export const linkedEquationLessons = [
       "Some stories take two steps. Here is one.",
       "A class of 30 children splits into 2 equal groups. Then each group splits into 5 equal teams.",
       "Step one finds how many are in a group. Step two uses that number.",
-      "The sign ÷ means split into equal groups. An equation is a number sentence with an equals sign, like 30 ÷ 2 = 15. It says 30 split into 2 equal groups is 15 in each.",
+      "The sign ÷ means split into equal groups. An equation is a number sentence with an equals sign, like 30 ÷ 2 = 15. It says 30 split into 2 equal groups is 15 in each, because 15 + 15 = 30.",
       "A letter can stand for a number we do not know yet. Let $a$ stand for the answer to step one: $30\\div2=a$.",
       "Step two uses $a$: $a\\div5=t$. Here $t$ stands for the number of children on each team.",
       "These two number sentences are called linked equations. The first answer links them.",

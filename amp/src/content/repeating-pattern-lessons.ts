@@ -8,6 +8,7 @@ export const repeatingPatternMethods: Record<string, ProblemMethod> = {
     intuition:
       "A pattern is something that happens again and again in the same way. Some patterns repeat a short group of shapes, like circle, square, square, circle, square, square. The shortest group that repeats is called the repeating part. Its length is how many shapes it has: here, 3. A shape's position is its place in the row, counting from the left. To fill an empty box, find the repeating part and see where in it the box falls.",
     senses: { square: "square-shape" },
+    noLink: ["part", "whole"],
     terms: [
       "pattern",
       [
@@ -37,6 +38,7 @@ export const repeatingPatternLessons = [
     summary:
       "A pattern is something that happens again and again in the same way. Some patterns use the same short group of shapes over and over. The shortest group that repeats is called the repeating part. Find it, and you can tell which shape goes in any empty box.",
     senses: { square: "square-shape" },
+    noLink: ["part", "third", "whole"],
     templateIds: ["repeating-shape-pattern"],
     objectives: [
       "Find the repeating part of a pattern of shapes.",
@@ -46,14 +48,14 @@ export const repeatingPatternLessons = [
     opening: [
       "A pattern is something that happens again and again in the same way. A repeating pattern uses the same short group of shapes over and over: circle, square, square, circle, square, square.",
       "That short group is called the repeating part. Here it is circle, square, square. Its length is how many shapes it has: 3.",
-      "To find it, read the pattern from the left. Look for the place where it starts again. The group before that place is the repeating part.",
+      "To find it, try a short group from the left. Check that repeating it matches the whole row. Use the shortest group that works.",
       "Once you know the repeating part, you know every shape in the pattern, even the hidden ones.",
     ],
     example: {
       prompt:
-        "The pattern is circle, square, square, circle, square, square, circle, ?, ?. Which two shapes go in the boxes?",
+        "The pattern is circle, square, square, circle, square, square, circle, ?, ?. Each ? is an empty box. Which two shapes go in the boxes?",
       steps: [
-        "The pattern starts again at the 4th shape, a circle. So the repeating part is circle, square, square: 3 shapes.",
+        "The first three shapes are circle, square, square, and the next three match them in order. No shorter group works. So the repeating part is circle, square, square: 3 shapes.",
         "Seven shapes come before the first box. Count them in groups of 3: two full groups use 6 shapes, and 1 is left over. That 1 is the circle that starts a third repeat.",
         "So the first box is the 2nd shape of the repeating part, a square. The second box is the 3rd shape, also a square.",
       ],
