@@ -10,6 +10,22 @@ import { fixtureMe } from "./me-fixture";
 import { retentionNotice } from "../src/family/contracts";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import {
+  preparePracticeAnswer,
+  trackPracticeProblems,
+} from "./ui-practice-answer";
+const families = {
+  chromium: {
+    trial: ["hierarchy-statement", "polygon-sides-select"],
+    fallback: ["proportional-match-table", "graph-of-proportional-rate"],
+    account: ["scientific-notation-work", "unit-piece-size"],
+  },
+  firefox: {
+    trial: ["plot-points", "hierarchy-statement"],
+    fallback: ["polygon-sides-select", "proportional-match-table"],
+    account: ["unit-piece-size", "scientific-notation-work"],
+  },
+} as const;
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw new Error("AMP_TEST_DATABASE_URL is required");
 assertTestDatabaseTarget(url);
@@ -47,26 +63,46 @@ const vite = await createServer({
   },
 });
 await vite.listen();
-async function submit(page: Page) {
-  const compact = page.locator(".compact-answer-action");
-  if (await compact.isVisible()) await compact.click();
-  const choice = page.locator(".choice-option:visible");
-  if (await choice.count()) {
-    await choice.first().click();
-    await page.locator(".choice-submit:visible").click();
-  } else {
-    await page.locator("#answer:visible").fill("1");
-    await page.locator("#answer:visible").press("Enter");
-  }
+async function attempt(page: Page) {
+  const { problem, submit } = await preparePracticeAnswer(page, true);
+  const [response] = await Promise.all([
+    page.waitForResponse((r) =>
+      r.url().endsWith("/attempts") &&
+      r.request().postDataJSON()?.problemId === problem.id,
+    ),
+    submit(),
+  ]);
+  assert.equal(response.status(), 200, await response.text());
+  assert.equal((await response.json()).problemId, problem.id);
+  return response;
 }
+async function nextProblem(page: Page) {
+  const previous = await page
+    .locator(".problem-content")
+    .getAttribute("data-problem-id");
+  assert.ok(previous, "Current problem has an identity before Next");
+  await page.locator(".next-action").click();
+  await page.locator(".feedback").waitFor({ state: "detached" });
+  await page.waitForFunction((id) => {
+    const current = document
+      .querySelector(".problem-content")
+      ?.getAttribute("data-problem-id");
+    return !!current && current !== id;
+  }, previous);
+  await page.locator(".question").waitFor();
+}
+
 try {
   for (const [name, engine] of Object.entries({ chromium, firefox })) {
     console.log(`${name}: starting hint browser`);
     const browser = await engine.launch();
     try {
-      for (const mode of ["trial", "fallback", "account"]) {
+      for (const mode of ["trial", "fallback", "account"] as const) {
         console.log(`${name}/${mode}: opening hint journey`);
         const fallback = mode === "fallback";
+        const [hintedFamily, independentFamily] =
+          families[name as keyof typeof families][mode];
+        let servingFamily = mode === "account" ? hintedFamily : "multiply-facts";
         const created = await app.inject({
           method: "POST",
           url: "/api/v1/trials",
@@ -82,6 +118,7 @@ try {
           [trialKey, token],
         );
         const page = await context.newPage();
+        const served = trackPracticeProblems(page);
         const navigations: string[] = [];
         page.on("framenavigated", (frame) => {
           if (frame === page.mainFrame()) navigations.push(frame.url());
@@ -136,13 +173,19 @@ try {
           if (fallback) await route.continue();
           else await route.abort();
         });
-        if (fallback)
-          await page.route("**/batches", async (route) => {
-            const response = await route.fetch();
-            const body = await response.json();
-            delete body.hints;
-            await route.fulfill({ response, json: body });
+        // Deterministic families exercise different response surfaces while
+        // the real server still generates/persists problems, hints and attempts.
+        await page.route("**/batches", async (route) => {
+          const response = await route.fetch({
+            postData: JSON.stringify({
+              ...route.request().postDataJSON(),
+              templateId: servingFamily,
+            }),
           });
+          const body = await response.json();
+          if (fallback) delete body.hints;
+          await route.fulfill({ response, json: body });
+        });
         await page.goto(
           `http://127.0.0.1:4462/${mode === "account" ? "practice" : "try/practice"}`,
         );
@@ -158,11 +201,9 @@ try {
         if (mode !== "account") {
           // A placement map needs a recorded answer; an empty placement
           // intentionally redirects to practice instead of showing the map.
-          const first = page.waitForResponse((r) =>
-            r.url().endsWith("/attempts"),
-          );
-          await submit(page);
-          assert.equal((await first).status(), 200);
+          // Arm the next family before answering can start its prefetch.
+          servingFamily = hintedFamily;
+          await attempt(page);
           const progress = await app.inject({
             method: "GET",
             url: `/api/v1/learners/${learnerId}/trial-progress`,
@@ -170,10 +211,17 @@ try {
           });
           assert.equal(progress.statusCode, 200);
           assert.equal(progress.json().totals.answered, 1);
-          await page.locator(".next-action").click();
-          await page.locator(".feedback").waitFor({ state: "detached" });
-          await page.locator(".question").waitFor();
+          await nextProblem(page);
         }
+        assert.equal(
+          await page.locator(".problem-content").getAttribute("data-template"),
+          hintedFamily,
+        );
+        const hintedId = await page
+          .locator(".problem-content")
+          .getAttribute("data-problem-id");
+        assert.ok(hintedId);
+        const hintedKind = served.get(hintedId)!.response.kind;
         const hint = page.getByRole("button", { name: "Hint", exact: true });
         await hint.click();
         const dialog = page.getByRole("dialog", { name: "Hint", exact: true });
@@ -214,6 +262,11 @@ try {
           await page.waitForURL((url) => url.pathname === "/try/practice");
           await page.locator(".question").waitFor();
         }
+        assert.equal(
+          await page.locator(".problem-content").getAttribute("data-problem-id"),
+          hintedId,
+          "navigation keeps the hinted problem",
+        );
         await hint.click();
         assert.equal(
           await dialog.locator(".hint").textContent(),
@@ -226,6 +279,8 @@ try {
           fallback ? 1 : 0,
           "preloaded hints need no content request",
         );
+        // Arm the family before an answer or retry can prefetch the next problem.
+        servingFamily = independentFamily;
         if (mode === "trial") {
           const submitted: unknown[] = [];
           await page.route("**/attempts", async (route) => {
@@ -235,19 +290,23 @@ try {
               await route.abort();
             } else await route.continue();
           });
-          await submit(page);
+          const planned = await preparePracticeAnswer(page, true);
+          await planned.submit();
           await page.getByRole("alert").first().waitFor();
           assert.ok(
             await hint.isDisabled(),
             "cannot reveal extra help while retrying an immutable answer",
           );
-          const retried = page.waitForResponse((r) =>
-            r.url().endsWith("/attempts"),
-          );
-          await page
-            .locator(".answer-action:visible, .choice-submit:visible")
-            .click();
-          assert.equal((await (await retried).json()).assisted, true);
+          const [retried] = await Promise.all([
+            page.waitForResponse((r) =>
+              r.url().endsWith("/attempts") &&
+              r.request().postDataJSON()?.problemId === planned.problem.id,
+            ),
+            page.locator(".answer-action:visible, .choice-submit:visible").click(),
+          ]);
+          assert.equal(retried.status(), 200);
+          assert.equal((await retried.json()).problemId, planned.problem.id);
+          assert.equal((await retried.json()).assisted, true);
           assert.equal(submitted.length, 2);
           assert.deepEqual(
             submitted[0],
@@ -256,11 +315,7 @@ try {
           );
           await page.unroute("**/attempts");
         } else {
-          const attempt = page.waitForResponse((r) =>
-            r.url().endsWith("/attempts"),
-          );
-          await submit(page);
-          const response = await attempt;
+          const response = await attempt(page);
           assert.equal(response.status(), 200);
           assert.equal((await response.json()).assisted, true);
           assert.equal(
@@ -268,12 +323,24 @@ try {
             fallback ? undefined : true,
           );
         }
-        await page.locator(".next-action").click();
-        await page.locator(".feedback").waitFor({ state: "detached" });
-        const next = page.waitForResponse((r) => r.url().endsWith("/attempts"));
-        await submit(page);
+        await nextProblem(page);
         assert.equal(
-          (await (await next).json()).assisted,
+          await page.locator(".problem-content").getAttribute("data-template"),
+          independentFamily,
+        );
+        const independentId = await page
+          .locator(".problem-content")
+          .getAttribute("data-problem-id");
+        assert.ok(independentId);
+        const independentKind = served.get(independentId)!.response.kind;
+        assert.notEqual(
+          independentKind,
+          hintedKind,
+          "next independent answer changes response kind",
+        );
+        const next = await attempt(page);
+        assert.equal(
+          (await next.json()).assisted,
           false,
           "preloading alone is independent; help resets between problems",
         );
@@ -286,7 +353,7 @@ try {
         await page.unrouteAll({ behavior: "wait" });
         await context.close();
         console.log(
-          `${name}/${mode}: ${fallback ? "legacy fallback" : "preloaded hints without a hint request"}, map/back, assisted answer, independent next answer`,
+          `${name}/${mode}: ${fallback ? "legacy fallback" : "preloaded hints without a hint request"}, ${mode === "account" ? "" : "map/back, "}assisted ${hintedKind}, independent ${independentKind}`,
         );
       }
     } finally {
