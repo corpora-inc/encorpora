@@ -353,8 +353,37 @@ def solve(public):
     return kit.answer(public, verdicts(public))
 
 
+def explanation_frame(public):
+    """Recognize the teaching lines around the verdicts from the prompt alone.
+
+Unknown prose, including an extra claim before or after the verdicts, fails
+the review because it must equal these lines exactly.
+"""
+    template, prompt = public['templateId'], public['prompt']
+    if template == 'equivalent-trinomial-select':
+        m = re.match(r'Look at the (trinomial|product) \$([^$]+)\$\.', prompt)
+        require(m is not None, 'Trinomial prompt shape')
+        given = m[2]
+        first = (f'Two expressions are equivalent when they are equal for every value of $x$. To check, expand each choice and compare it with ${given}$.'
+                 if m[1] == 'trinomial' else
+                 f'Two expressions are equivalent when they are equal for every value of $x$. To check, expand ${given}$ and each choice, then compare.')
+        return ([first,
+                 'To expand a product of two binomials (expressions with two terms), multiply every term of one by every term of the other. Then combine like terms, the terms with the same power of $x$.'],
+                ['So the equivalent expressions are exactly the ones that expand to the same $x^2$ term, $x$ term and constant term.'])
+    if template == 'regression-prediction-select':
+        m = re.search(r'is \$(\\hat\{y\}=(-?\d+\.\d)x\+(\d+\.\d))\$\.', prompt)
+        require(m is not None, 'Regression prompt shape')
+        eq, slope, intercept = m[1], m[2], m[3]
+        return ([f'A line of best fit is a line drawn close to the data points. In ${eq}$, $\\hat{{y}}$, read "$y$-hat", is the predicted value for an input $x$.',
+                 f'The slope, the number multiplying $x$, is ${slope}$. It is the predicted change in $\\hat{{y}}$ when $x$ goes up by $1$.',
+                 f'The intercept, the number added on, is ${intercept}$. It is the prediction at $x=0$.',
+                 'To predict, substitute the value of $x$ and work out $\\hat{y}$.'],
+                ["So the true statements are exactly the ones that match the line's predictions, its slope and its intercept."])
+    return ([], [])
+
+
 def review_problem(problem):
-    return kit.review(problem, verdicts)
+    return kit.review(problem, verdicts, explanation_frame)
 
 
 def _public(template, prompt, labels, count, label, figure=None):
@@ -406,6 +435,18 @@ def self_test():
         require(solve(public) == expected, f'Handwritten fixture {template}')
         explanation = [f"{t}: {'true' if o['id'] in expected else 'false'}. Checked." for t, o in zip(labels, public['response']['options'])]
         kit.standard_mutants(public, expected, explanation, 'Check each statement against the givens.', verdicts, solve)
+    # Teaching lines around the verdicts are recognized exactly or rejected.
+    for template, prompt, labels, count, expected, figure in cases:
+        if template not in ('equivalent-trinomial-select', 'regression-prediction-select'):
+            continue
+        public = _public(template, prompt, labels, count, 'Choose %d statements' % count, figure)
+        verdict_lines = [f"{t}: {'true' if o['id'] in expected else 'false'}. Checked." for t, o in zip(labels, public['response']['options'])]
+        lead, tail = explanation_frame(public)
+        problem = {'public': public, 'answer': expected, 'hint': 'Check each statement against the givens.',
+                   'explanation': lead + verdict_lines + tail}
+        review_problem(problem)
+        kit.must_fail(review_problem, dict(problem, explanation=[lead[0] + ' So every choice works.'] + lead[1:] + verdict_lines + tail))
+        kit.must_fail(review_problem, dict(problem, explanation=lead + verdict_lines + ['So the answer is the first choice.']))
     # figure edits that change a verdict must change the answer or fail
     kit.must_fail(solve, kit.tamper(_public('function-pair-select', cases[7][1], cases[7][2], 2, 'Choose 2 ordered pairs', graph),
                                     lambda p: p['figure']['scene']['elements'][0]['points'].append({'x': 4, 'y': 6})))
