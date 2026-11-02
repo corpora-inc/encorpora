@@ -1231,8 +1231,8 @@ export function PracticeWorkspace(props: Props) {
             <a
               className="workspace-level"
               href={props.exitHref}
-              aria-label="Your level"
-              title="Your level"
+              aria-label="Your progress"
+              title="Your progress"
               onClick={(event) => {
                 // A modified click opens the view in a new tab as usual.
                 if (
@@ -1252,7 +1252,7 @@ export function PracticeWorkspace(props: Props) {
                 <path d="M7.5 16v-3M12 16V9.5M16.5 16V5.5" />
               </svg>
               <span className="workspace-level-label" aria-hidden="true">
-                Your level
+                Your progress
               </span>
             </a>
           )}

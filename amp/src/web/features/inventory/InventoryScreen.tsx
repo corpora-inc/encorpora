@@ -1,3 +1,7 @@
+import {
+  CurriculumDetailsControl,
+  useCurriculumDetails,
+} from "../curriculum/CurriculumDetails";
 import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
@@ -40,6 +44,7 @@ function strength(e?: Evidence) {
 
 export function InventoryScreen() {
   const view = useLearningView();
+  const { shown } = useCurriculumDetails();
   const catalog = useQuery(skillCatalogOptions);
   const search = useSearch({ strict: false });
   const navigate = useNavigate();
@@ -132,12 +137,13 @@ export function InventoryScreen() {
               : "Your learning record"}
         </p>
         <h1>Your inventory</h1>
-        {view.frontier?.overall.answered ? (
+        <CurriculumDetailsControl />
+        {shown && view.frontier?.overall.answered ? (
           <p className={styles.level}>
             Estimated level{" "}
             <strong>{gradeName(view.frontier.overall.level)}</strong>
           </p>
-        ) : !view.frontier && !view.trialMode ? (
+        ) : shown && !view.frontier && !view.trialMode ? (
           // Holds the line's place while the estimate loads.
           <p
             className={styles.level}
@@ -310,7 +316,7 @@ export function InventoryScreen() {
                         search={view.contextSearch}
                       >
                         <strong>{skill.title}</strong>
-                        <small>{bandLabel(skill.gradeBand)}</small>
+                        {shown && <small>{bandLabel(skill.gradeBand)}</small>}
                       </Link>
                       <div className={styles.illumination}>
                         <div>

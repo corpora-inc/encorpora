@@ -57,7 +57,13 @@ export async function mapShareImage(
   ctx.fillText(`${earned} skills illuminated`, 56, 348);
   ctx.fillStyle = muted;
   ctx.font = "400 15px system-ui, sans-serif";
-  ctx.fillText("My current estimate, earned through practice.", 56, 383);
+  ctx.fillText(
+    level
+      ? "An estimate from my practice so far."
+      : "Connected skills, explored through practice.",
+    56,
+    383,
+  );
   ctx.font = "400 20px system-ui, sans-serif";
   ctx.fillText("Think you’re good at math?", 56, 480);
   ctx.fillText("Explore your pathways.", 56, 510);
