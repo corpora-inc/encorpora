@@ -132,8 +132,9 @@ const entries: WorkEntry[] = [
       vertex: "vertex",
       product: "product-multiply",
       base: "base-flat-shape",
+      square: "unit-square",
     },
-    noLink: ["mode", "square"],
+    noLink: ["mode"],
   },
   {
     id: "trig-leg-steps",

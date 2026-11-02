@@ -115,7 +115,6 @@ const entries: Entry[] = [
     title: "Move a graph up, down, left or right",
     goal: "Follow one point of the graph to find the graph moved up, down, left or right.",
     senses: {
-      change: "change",
       vertex: "vertex-parabola",
       unit: "unit",
       units: "unit",
