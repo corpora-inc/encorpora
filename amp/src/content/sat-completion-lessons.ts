@@ -143,7 +143,7 @@ const instruction: Record<string, Instruction> = {
       title: "Convert every unit inside",
       paragraphs: [
         "1 meter is 100 centimeters. A square 1 meter on each side is 100 centimeters by 100 centimeters. So 1 square meter is $100 \\times 100 = 10000$ square centimeters. The length conversion is used twice, once for each length.",
-        "For a rate, convert the top and the bottom. 72 kilometers per hour is $72 \\times 1000 = 72000$ meters per 3600 seconds. That is $72000 \\div 3600 = 20$ meters per second.",
+        "For a rate, convert each unit that differs from the one you want, on the top and on the bottom. 72 kilometers per hour is $72 \\times 1000 = 72000$ meters per 3600 seconds. That is $72000 \\div 3600 = 20$ meters per second.",
         "Hours squared means hours times hours: the hour unit used twice in a multiplication. One hour squared is $3600 \\times 3600 = 12960000$ seconds squared.",
         "Power is how fast energy is used, measured in watts. Power times time gives energy: a 60-watt bulb on for 2 hours uses $60 \\times 2 = 120$ watt-hours.",
       ],
@@ -200,7 +200,7 @@ const instruction: Record<string, Instruction> = {
   "similar-solid-volume": {
     goal: "Use the scale factor of similar solids to connect matching lengths and volumes.",
     summary:
-      "A solid is a shape that takes up space, with length, width and height, like a box. Similar solids have the same shape: one is a larger, smaller or same-size copy of the other. Every length is multiplied by the same number, called the scale factor. Volume is the space inside a solid. If every length doubles, the volume grows by $2 \\times 2 \\times 2 = 8$, because volume grows in all three directions: across, deep and tall. A ratio is one number divided by another. So the volume ratio is the scale factor cubed: three copies of it multiplied together.",
+      "A solid is a shape that takes up space, with length, width and height, like a box. Similar solids have the same shape: one is a larger, smaller or same-size copy of the other. Every length is multiplied by the same number, called the scale factor. Volume is the space inside a solid. If every length doubles, the volume is multiplied by $2 \\times 2 \\times 2 = 8$, because volume grows in all three directions: across, deep and tall. A ratio is one number divided by another. So the volume ratio is the scale factor cubed: three copies of it multiplied together.",
     objectives: [
       "Find the volume ratio of similar solids from their scale factor.",
       "Find a missing length from the volumes of similar solids.",
@@ -298,7 +298,7 @@ const instruction: Record<string, Instruction> = {
       "Rewrite the model with one factor per single time unit.",
     ],
     intuition:
-      "A formula is an equation that links quantities. A model is a formula that describes a real situation. Exponential change multiplies an amount by the same number, greater than 0, over each equal stretch of time. That number is called the factor. Growth means the amount gets bigger, with a factor more than 1. Decay means it gets smaller, with a factor between 0 and 1. A power such as $2^3$ means 3 copies of 2 multiplied together: $2 \\times 2 \\times 2 = 8$. The 2 is the base, the number being multiplied, and the small raised 3 is the exponent. An exponent of 0 gives 1, because no copies of the factor have been multiplied in yet. A square root is a number that, multiplied by itself, gives a given number. An exponent of $\\frac{1}{2}$ means the square root greater than 0: $4^{1/2} = 2$, because $2 \\times 2 = 4$. In $P(t) = 80\\left(\\frac{1}{2}\\right)^{t/4.5}$, read “$P$ of $t$”, the input is the time $t$ in years. The output $P(t)$ is the amount. The exponent $t/4.5$ means $t$ divided by 4.5. It counts how many 4.5-year stretches have passed. At $t = 0$ the exponent is 0, so the amount is 80. This is the initial value, the amount at time 0. The factor $\\frac{1}{2}$ applies once every 4.5 years. Two models are equivalent when they give the same output for every input. If a factor is rounded, say to four decimal places, the models count as equivalent when only that rounding differs. A raised dot means times: $200 \\cdot 2$ is 200 times 2.",
+      "A formula is an equation that links quantities. A model is a formula that describes a real situation. Exponential change multiplies an amount by the same number, greater than 0, over each equal stretch of time. That number is called the factor. Growth means the amount gets bigger, with a factor more than 1. Decay means it gets smaller, with a factor between 0 and 1. A power such as $2^3$ means 3 copies of 2 multiplied together: $2 \\times 2 \\times 2 = 8$. The 2 is the base, the number being multiplied, and the small raised 3 is the exponent. An exponent of 0 gives 1, because no copies of the factor have been multiplied in yet. A square root is a number that, multiplied by itself, gives a given number. An exponent of $\\frac{1}{2}$ means the square root greater than 0: $4^{1/2} = 2$, because $2 \\times 2 = 4$. In $P(t) = 80\\left(\\frac{1}{2}\\right)^{t/4.5}$, read “$P$ of $t$”, the input is the time $t$ in years. The output $P(t)$ is the amount. The exponent $t/4.5$ means $t$ divided by 4.5. It counts how many 4.5-year stretches have passed. At $t = 0$ the exponent is 0, so the amount is 80. This is the initial value, the amount at time 0. The factor $\\frac{1}{2}$ applies once every 4.5 years. Two models are equivalent when they give the same output for every input. A model with a rounded factor is only approximately equivalent: its outputs are very close, not exactly the same. When a question says its choices are rounded, pick the choice that matches after rounding. A raised dot means times: $200 \\cdot 2$ is 200 times 2.",
     explain: {
       title: "One factor per stretch of time",
       paragraphs: [
@@ -310,11 +310,11 @@ const instruction: Record<string, Instruction> = {
     senses: {
       base: "base-exponent",
       root: "root-radical",
-      factor: "factor-number",
       model: "model",
       unit: "unit",
     },
-    noLink: ["change", "more than", "population", "rule"],
+    // A growth or decay factor, not a factor that divides a number.
+    noLink: ["change", "more than", "population", "rule", "factor", "factors"],
     terms: ["initial-value"],
     method: [
       "Find the initial value, the amount at time 0, and how much time makes the exponent go up by 1.",
@@ -404,7 +404,7 @@ const instruction: Record<string, Instruction> = {
       paragraphs: [
         "In $3x^2 - 18x + c = 0$, $a = 3$, $b = -18$, and $c$ is unknown. The discriminant is $(-18)^2 - 4 \\times 3 \\times c = 324 - 12c$.",
         "For exactly one solution, set it to 0: $324 - 12c = 0$. Add $12c$ to both sides: $12c = 324$. Divide both sides by 12: $c = 27$.",
-        "Check: take out the common factor 3, and notice that $x^2 - 6x + 9 = (x - 3)(x - 3)$. So $3x^2 - 18x + 27 = 3(x - 3)^2$. A square is 0 only when the number being squared is 0. So $x - 3 = 0$, and $x = 3$ is the only solution. The quadratic formula, $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$, gives two answers, one with + and one with −. They become the same number when the root part is 0.",
+        "Check: take out the common factor 3, and notice that $x^2 - 6x + 9 = (x - 3)(x - 3)$. So $3x^2 - 18x + 27 = 3(x - 3)^2$. A square is 0 only when the number being squared is 0. So $x - 3 = 0$, and $x = 3$ is the only solution. The quadratic formula, $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$, gives two answers, one with + and one with −. They become the same number when $b^2 - 4ac$ is 0.",
       ],
     },
     senses: {

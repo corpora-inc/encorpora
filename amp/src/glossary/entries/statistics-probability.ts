@@ -132,7 +132,7 @@ export const statisticsProbabilityEntries: GlossaryEntry[] = [
     plain:
       "All the outcomes where an event does not happen. An event and its complement cover every outcome, so their probabilities add to 1.",
     example:
-      "On a fair six-sided die, where each face is equally likely, rolling a 6 has probability $\\tfrac16$. So its complement, not rolling a 6, has probability $\\tfrac56$.",
+      "A fair die shows 1 to 6, each with the same chance. Rolling a 6 has probability $\\tfrac16$. So its complement, not rolling a 6, has probability $\\tfrac56$.",
     uses: ["outcome", "event", "probability"],
     autoLink: false,
     band: "7",

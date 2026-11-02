@@ -273,13 +273,18 @@ function draft(
   if (id === "probability-missing-count") {
     const red = r(1, 12),
       blue = r(2, 15);
+    // The prompt shows the reduced fraction n/d, so the algebra uses it too.
+    const g = gcd(red, red + blue),
+      n = red / g,
+      d = (red + blue) / g,
+      times = (k: number) => (k === 1 ? "" : String(k));
     return {
       prompt: `A bag contains only red and blue counters. It contains ${blue} blue counters. One counter is selected uniformly at random. The probability that it is red is ${rational(red, red + blue)}. How many red counters are in the bag?`,
       answer: String(red),
       hint: `There are ${blue} blue counters. Let $x$ be the red count, so the total is $x+${blue}$. Express the stated red probability as red count divided by total count.`,
       explanation: [
         `The equation is $x/(x+${blue})=${rational(red, red + blue)}$.`,
-        `Multiply both sides by ${red + blue} and by the total $x+${blue}$ to clear the fractions: $${red + blue}x=${red}(x+${blue})$. Subtract $${red === 1 ? "" : red}x$ from both sides: $${blue}x=${red * blue}$.`,
+        `Multiply both sides by ${d} and by the total $x+${blue}$ to clear the fractions: $${d}x=${n === 1 ? `x+${blue}` : `${n}(x+${blue})`}$. Subtract $${times(n)}x$ from both sides: $${times(d - n)}x=${n * blue}$.`,
         `Thus $x=${red}$ red counters. Check: ${red} out of ${red + blue} counters gives the stated probability.`,
       ],
     };

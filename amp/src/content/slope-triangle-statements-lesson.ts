@@ -92,8 +92,8 @@ export const slopeTriangleStatementsLesson: Lesson = {
       stage: "formal",
       title: "Equal ratios, corresponding parts",
       paragraphs: [
-        "Take two points on a line, $P(x_1, y_1)$ and $Q(x_2, y_2)$, with $Q$ to the right of $P$. Here $x$ is the across coordinate and $y$ is the up coordinate. The small numbers 1 and 2 tell which point each coordinate belongs to. The run is $r = x_2 - x_1$, which is positive. The rise is $h = y_2 - y_1$, which keeps its sign. The slope is $m = \\tfrac{h}{r}$. The bars in $|h|$ mean absolute value: $h$ without its minus sign. So the leg lengths are $r$ and $|h|$.",
-        "Now take two stretches of one line that is neither horizontal nor vertical. Both slope triangles have a right angle. Their horizontal legs lie on parallel lines, lines that never meet however far they are extended. Their slanted sides lie on the same line. So the angles where the slanted side meets the horizontal leg are equal too.",
+        "Take two points on a line, $P(x_1, y_1)$ and $Q(x_2, y_2)$, with $Q$ to the right of $P$. Here $x$ is the across coordinate and $y$ is the up coordinate. The small numbers 1 and 2 tell which point each coordinate belongs to. The run is $r = x_2 - x_1$, which is positive. The rise is $h = y_2 - y_1$, which keeps its sign. The slope is $m = \\tfrac{h}{r}$. The bars in $|h|$ mean absolute value: $h$ without its minus sign. When the line is not horizontal, $h$ is not 0, and the leg lengths are $r$ and $|h|$.",
+        "Now take two stretches of one line that is neither horizontal nor vertical. Both slope triangles have a right angle. Their horizontal legs lie on one line or on parallel lines, lines that never meet however far they are extended. Either way, the slanted line crosses both at the same slant. Their slanted sides lie on the same line. So the angles where the slanted side meets the horizontal leg are equal too.",
         "Two triangles with two pairs of equal angles are similar. Then their corresponding sides are proportional: each side is the same number times its match.",
         "Call the first triangle's run and rise $r_1$ and $h_1$, and the second's $r_2$ and $h_2$. Let that number be $k = \\tfrac{r_2}{r_1}$, which is positive, so $r_2 = k \\times r_1$. Similarity makes the second vertical leg $k$ times the first. Both stretches go the same way along the line, so the rises have the same sign: $h_2 = k \\times h_1$. Then $\\tfrac{h_2}{r_2} = \\tfrac{k \\times h_1}{k \\times r_1} = \\tfrac{h_1}{r_1}$. Dividing the top and bottom of a fraction by the same number $k$ does not change its value. So the slopes are equal. The triangles are congruent exactly when $k = 1$.",
         "On a falling line both rises are negative, but the leg lengths stay positive. A horizontal line has slope 0: its rise is 0, so there is no triangle, only a flat piece of line. A vertical line has run 0, so its slope is undefined.",
@@ -139,9 +139,8 @@ export const slopeTriangleStatementsMethod: ProblemMethod = {
     "right-triangle",
     [
       "slope",
-      "The run is the change in $x$ and the rise is the change in $y$ from one point to another.",
+      "Use two different points on a line that is not vertical, so the run is not 0. The run is the change in $x$ and the rise is the change in $y$ from one point to the other.",
     ],
-    "slope",
     ["corresponding", "In right triangles, pair the right angles first."],
     "similar-figures",
     "congruent",
