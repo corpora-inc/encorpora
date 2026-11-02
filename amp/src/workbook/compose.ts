@@ -10,14 +10,44 @@ import { templateGrade } from "../server/mixed-practice";
 import { challengePool } from "./challenge-pool";
 import { paperExclusions } from "./paper-exclusions";
 
-/** A daily workbook: about 30, 45 or 60 minutes of printed work chosen from
+/** A workbook: about 30, 45 or 60 minutes of printed work chosen from
  * one learner's evidence. The spec names every problem by template and seed,
  * so the same spec always prints the same pages, and a new seed is a new
  * workbook. Selection is a scheduling heuristic like mixed practice: it aims
  * each section at a success level, it does not certify mastery. */
-export const WORKBOOK_VERSION = 1;
+export const WORKBOOK_VERSION = 2;
 export const WORKBOOK_MINUTES = [30, 45, 60] as const;
 export type WorkbookMinutes = (typeof WORKBOOK_MINUTES)[number];
+export const WORKBOOK_LEANS = ["easier", "level", "stretch"] as const;
+/** Easier review: more review and practice a little below the frontier.
+ * Stretch: practice and today's idea a little above it. */
+export type WorkbookLean = (typeof WORKBOOK_LEANS)[number];
+/** What the parent chose. Every choice changes the composition, and the
+ * same choices with the same inputs always compose the same workbook. */
+export interface WorkbookChoices {
+  /** Strands to draw from, sorted; empty is mixed (recommended). */
+  areas: string[];
+  lean: WorkbookLean;
+  /** False: problems only, without "Today's idea". */
+  lesson: boolean;
+}
+export const defaultChoices: WorkbookChoices = {
+  areas: [],
+  lean: "level",
+  lesson: true,
+};
+/** The choices a spec was made with. Version 1 specs had none: mixed, at
+ * level, with a lesson. */
+export const specChoices = (spec: WorkbookSpec): WorkbookChoices =>
+  spec.choices ?? defaultChoices;
+/** Grades the lean moves practice and today's idea. */
+const leanShift: Record<WorkbookLean, number> = {
+  easier: -0.5,
+  level: 0,
+  stretch: 0.4,
+};
+/** Recent workbooks whose problems a new one avoids. */
+export const WORKBOOK_HISTORY = 12;
 
 export type SectionKind =
   "warm-up" | "lesson" | "practice" | "review" | "challenge";
@@ -42,7 +72,8 @@ export interface WorkbookSection {
   lessonId?: string;
 }
 export interface WorkbookSpec {
-  version: typeof WORKBOOK_VERSION;
+  /** 2 since parent choices; stored version 1 specs reprint unchanged. */
+  version: 1 | typeof WORKBOOK_VERSION;
   /** Local calendar date the workbook is for, YYYY-MM-DD. */
   date: string;
   /** 1 for the day's first workbook; "another one" increments it. */
@@ -52,6 +83,8 @@ export interface WorkbookSpec {
    * early grades). Never printed as a grade. */
   level: number;
   sections: WorkbookSection[];
+  /** Version 2: what the parent chose (absent in version 1). */
+  choices?: WorkbookChoices;
 }
 
 type SkillNode = {
@@ -115,10 +148,15 @@ export function composeWorkbook(options: {
   evidence: readonly SkillEvidence[];
   /** Templates answered most recently in the app; not repeated on paper. */
   recentTemplateIds?: readonly string[];
+  /** The learner's recent workbooks, newest first: their lessons, skills
+   * and templates go last, so every roll is new. */
+  history?: readonly WorkbookSpec[];
+  choices?: Partial<WorkbookChoices>;
   date: string;
   number?: number;
   minutes?: WorkbookMinutes;
-  /** Stable per learner; with date and number it fixes every choice. */
+  /** Stable per learner; with date, number, choices and history it fixes
+   * every choice. */
   learnerKey: string;
   now?: number;
 }): WorkbookSpec {
@@ -131,15 +169,54 @@ export function composeWorkbook(options: {
   if (!Number.isInteger(number) || number < 1 || number > 999)
     throw new Error("Invalid workbook number");
   const now = options.now ?? Date.now();
-  const budget = budgets[minutes];
-  const seed = `workbook:${options.learnerKey}:${options.date}:${number}`;
+  const choices: WorkbookChoices = {
+    areas: [...new Set(options.choices?.areas ?? [])].sort(),
+    lean: options.choices?.lean ?? "level",
+    lesson: options.choices?.lesson ?? true,
+  };
+  if (!WORKBOOK_LEANS.includes(choices.lean))
+    throw new Error("Invalid workbook lean");
+  const shift = leanShift[choices.lean];
+  const budget = {
+    ...budgets[minutes],
+    // Easier review: half again as much spaced review.
+    ...(choices.lean === "easier"
+      ? { review: Math.ceil(budgets[minutes].review * 1.5) }
+      : {}),
+  };
+  const seed = `workbook:${options.learnerKey}:${options.date}:${number}:${choices.areas.join("+")}:${choices.lean}:${choices.lesson ? "lesson" : "problems"}`;
   const nodes = new Map(options.skills.map((s) => [s.id, s]));
   const strandOf = (t: TemplateMetadata) =>
     nodes.get(t.skillId)?.strand ?? t.skillId;
+  const areas = new Set(choices.areas);
   const pool = options.templates.filter(
-    (t) => printable(t) && nodes.has(t.skillId),
+    (t) =>
+      printable(t) &&
+      nodes.has(t.skillId) &&
+      (!areas.size || areas.has(strandOf(t))),
   );
   if (!pool.length) throw new Error("No printable templates");
+  // The newest workbook weighs most: a template it printed goes after one
+  // printed longer ago, and a skill it practised after a fresh one.
+  const history = (options.history ?? []).slice(0, WORKBOOK_HISTORY);
+  const printedTemplate = new Map<string, number>();
+  const printedSkill = new Map<string, number>();
+  const printedLesson = new Map<string, number>();
+  history.forEach((spec, index) => {
+    const weight = history.length - index;
+    for (const section of spec.sections) {
+      if (section.lessonId && !printedLesson.has(section.lessonId))
+        printedLesson.set(section.lessonId, weight);
+      for (const i of section.items) {
+        if (!printedTemplate.has(i.templateId))
+          printedTemplate.set(i.templateId, weight);
+        if (!printedSkill.has(i.skillId)) printedSkill.set(i.skillId, weight);
+      }
+    }
+  });
+  /** 0 for work no recent workbook printed; higher for more recent. */
+  const staleness = (t: TemplateMetadata) =>
+    2 * (printedTemplate.get(t.id) ?? 0) + (printedSkill.get(t.skillId) ?? 0);
   const gradeOf = new Map(pool.map((t) => [t.id, templateGrade(t, nodes)]));
   const levelOf = (strand: string) =>
     strandEstimate(options.frontier, strand).level;
@@ -192,6 +269,13 @@ export function composeWorkbook(options: {
             : "standard",
     };
   };
+  /** The minutes `item` would give this template next, without taking it. */
+  const estimate = (t: TemplateMetadata, kind: SectionKind) =>
+    minutesFor(
+      generateProblem(t.id, `${seed}:${kind}:${serial.get(kind) ?? 0}`),
+      gradeOf.get(t.id)!,
+      kind,
+    );
   /** Fresh assessment templates within [lo, hi] of their strand's level, in
    * this workbook's order. Recently answered templates go last. */
   const band = (
@@ -208,6 +292,7 @@ export function composeWorkbook(options: {
       })
       .sort(
         (a, b) =>
+          staleness(a) - staleness(b) ||
           Number(recent.has(a.id)) - Number(recent.has(b.id)) ||
           rank(a.id) - rank(b.id),
       );
@@ -253,36 +338,52 @@ export function composeWorkbook(options: {
     }
     return chosen;
   };
+  /** At most two problems from one strand, unless the parent chose a few
+   * areas: then the section shares out among them. */
+  const perStrand = (count: number) =>
+    areas.size ? Math.max(2, Math.ceil(count / areas.size)) : 2;
   const strong = (skillId: string) => {
     const e = evidence.get(skillId);
     return !!e && e.recentIndependentCorrect >= 3;
   };
 
-  // Today's idea: the frontier skill a lesson can move forward. Skills the
-  // learner has started and not yet secured come first; then new skills at
-  // the frontier. The lesson's own templates give the guided problems.
+  // Today's idea: a frontier skill a lesson can move forward. The focus
+  // rotates: a lesson no recent workbook taught comes first, then skills the
+  // learner has started and not yet secured, then new skills at the
+  // frontier, in this workbook's order. The lesson's own templates give the
+  // guided problems. Problems only: no lesson.
   const lessonOf = new Map<string, Lesson>();
   for (const lesson of options.lessons)
     for (const id of lesson.templateIds)
       if (!lessonOf.has(id)) lessonOf.set(id, lesson);
   const lessonCandidates = (lo: number, hi: number) =>
-    band(lo, hi, (t) => lessonOf.has(t.id) && !strong(t.skillId)).sort(
-      (a, b) => {
-        const started = (t: TemplateMetadata) =>
-          (evidence.get(t.skillId)?.attempts ?? 0) > 0 ? 0 : 1;
-        const distance = (t: TemplateMetadata) =>
-          Math.abs(gradeOf.get(t.id)! - levelOf(strandOf(t)) + 0.1);
-        return (
-          started(a) - started(b) ||
-          Math.round(distance(a) * 4) - Math.round(distance(b) * 4) ||
-          rank(a.id) - rank(b.id)
+    band(
+      lo + shift,
+      hi + shift,
+      (t) => lessonOf.has(t.id) && !strong(t.skillId),
+    ).sort((a, b) => {
+      const taught = (t: TemplateMetadata) =>
+        printedLesson.get(lessonOf.get(t.id)!.id) ?? 0;
+      const started = (t: TemplateMetadata) =>
+        (evidence.get(t.skillId)?.attempts ?? 0) > 0 ? 0 : 1;
+      // Whole grades from the target: one bucket inside the first band, so
+      // the focus rotates there; nearer first when the band widens.
+      const distance = (t: TemplateMetadata) =>
+        Math.floor(
+          Math.abs(gradeOf.get(t.id)! - levelOf(strandOf(t)) - shift + 0.1),
         );
-      },
-    );
-  const focus =
-    lessonCandidates(-0.6, 0.4)[0] ??
-    lessonCandidates(-1.5, 1)[0] ??
-    lessonCandidates(-13, 13)[0];
+      return (
+        distance(a) - distance(b) ||
+        taught(a) - taught(b) ||
+        started(a) - started(b) ||
+        rank(a.id) - rank(b.id)
+      );
+    });
+  const focus = !choices.lesson
+    ? undefined
+    : (lessonCandidates(-0.6, 0.4)[0] ??
+      lessonCandidates(-1.5, 1)[0] ??
+      lessonCandidates(-13, 13)[0]);
   const lessonSection: WorkbookSection | null = focus
     ? (() => {
         const lesson = lessonOf.get(focus.id)!;
@@ -307,8 +408,11 @@ export function composeWorkbook(options: {
   // then material comfortably below the strand frontier.
   const warmUpSection: WorkbookSection = {
     kind: "warm-up",
-    items: spread(budget.warmUp, [[-1.5, 0.25]], 2, (t) =>
-      strong(t.skillId),
+    items: spread(
+      budget.warmUp,
+      [[-1.5, 0.25]],
+      perStrand(budget.warmUp),
+      (t) => strong(t.skillId),
     ).map((t) => item(t, "warm-up")),
   };
   warmUpSection.items.push(
@@ -319,12 +423,14 @@ export function composeWorkbook(options: {
         [-3, -0.5],
         [-13, 0],
       ],
-      2,
+      perStrand(budget.warmUp),
     ).map((t) => item(t, "warm-up")),
   );
 
-  // Bring it back: ideas whose spaced review is due, oldest first, on a
-  // different template than last time when the skill has one.
+  // Bring it back: ideas whose spaced review is due, on a different
+  // template than last time when the skill has one. Skills a recent workbook
+  // reviewed wait; then the longest overdue (by week), in this workbook's
+  // order, so each roll brings back different ideas.
   const due = [...options.evidence]
     .filter(
       (e) =>
@@ -333,7 +439,14 @@ export function composeWorkbook(options: {
         e.independentCorrect > 0 &&
         !usedSkills.has(e.skillId),
     )
-    .sort((a, b) => a.reviewDueAt! - b.reviewDueAt!);
+    .sort(
+      (a, b) =>
+        (printedSkill.get(a.skillId) ?? 0) -
+          (printedSkill.get(b.skillId) ?? 0) ||
+        Math.floor((now - b.reviewDueAt!) / (7 * 86_400_000)) -
+          Math.floor((now - a.reviewDueAt!) / (7 * 86_400_000)) ||
+        rank(a.skillId) - rank(b.skillId),
+    );
   const review: TemplateMetadata[] = [];
   for (const e of due) {
     if (review.length >= budget.review) break;
@@ -348,6 +461,7 @@ export function composeWorkbook(options: {
       .sort(
         (a, b) =>
           Number(a.id === last) - Number(b.id === last) ||
+          staleness(a) - staleness(b) ||
           rank(a.id) - rank(b.id),
       );
     if (choices[0]) review.push(choices[0]);
@@ -382,8 +496,23 @@ export function composeWorkbook(options: {
   // from day to day instead of repeating one template.
   const byConfidence = (a: TemplateMetadata, b: TemplateMetadata) =>
     Number(confident.indexOf(strandOf(a)) >= 3) -
-      Number(confident.indexOf(strandOf(b)) >= 3) || rank(a.id) - rank(b.id);
+      Number(confident.indexOf(strandOf(b)) >= 3) ||
+    staleness(a) - staleness(b) ||
+    rank(a.id) - rank(b.id);
   const inPool = (t: TemplateMetadata) => challengePool.has(t.id);
+  // A long multi-step problem at 2.5x can run past 20 minutes; the
+  // challenge keeps to a fifth of the workbook. The first candidate in order
+  // that fits, else the quickest of them.
+  const challengeCap = minutes / 5;
+  const fitting = (ordered: TemplateMetadata[]) => {
+    let quickest: { t: TemplateMetadata; m: number } | undefined;
+    for (const t of ordered) {
+      const m = estimate(t, "challenge");
+      if (m <= challengeCap) return t;
+      if (!quickest || m < quickest.m) quickest = { t, m };
+    }
+    return quickest?.t;
+  };
   const challengePick = (() => {
     // The challenge sits 0.5 to 1.3 grades above the learner: above its
     // strand's level, and never more than 1.3 above the overall level (a
@@ -393,56 +522,97 @@ export function composeWorkbook(options: {
     const [lo, hi] = CHALLENGE_WINDOW;
     const capped = (t: TemplateMetadata) =>
       gradeOf.get(t.id)! <= options.frontier.overall.level + hi;
+    const ordered: TemplateMetadata[] = [];
     for (const extra of [
       (t: TemplateMetadata) => inPool(t) && capped(t),
       capped,
       inPool,
       undefined,
-    ]) {
-      const candidates = band(lo, hi, extra);
-      if (candidates.length) return candidates.sort(byConfidence)[0];
-    }
-    // Nothing in the window (the ends of the catalog): the template closest
-    // to it, from the pool when the pool has one as close.
+    ])
+      for (const t of band(lo, hi, extra).sort(byConfidence))
+        if (!ordered.includes(t)) ordered.push(t);
+    // Then (the ends of the catalog, or nothing in the window that fits the
+    // time) the templates closest to it, from the pool when as close.
     const distance = (t: TemplateMetadata) => {
       const offset = gradeOf.get(t.id)! - levelOf(strandOf(t));
       return offset < lo ? lo - offset : offset > hi ? offset - hi : 0;
     };
-    return band(-13, 13).sort(
+    // Every candidate in order, so a challenge that fits the time is found
+    // before a long one is accepted.
+    for (const t of band(-13, 13).sort(
       (a, b) =>
         Math.round(distance(a) * 10) - Math.round(distance(b) * 10) ||
         Number(inPool(b)) - Number(inPool(a)) ||
         byConfidence(a, b),
-    )[0];
+    ))
+      if (!ordered.includes(t)) ordered.push(t);
+    return fitting(ordered);
   })();
 
   const challengeSection: WorkbookSection = {
     kind: "challenge",
     items: challengePick ? [item(challengePick, "challenge")] : [],
   };
-  // Practice at the frontier fills the remaining time across strands.
-  const fixed =
-    [warmUpSection, reviewSection, challengeSection, lessonSection]
-      .flatMap((s) => s?.items ?? [])
-      .reduce((sum, i) => sum + i.minutes, 0) +
-    (lessonSection ? LESSON_READING_MINUTES : 0);
+  // The estimate never exceeds the chosen length. Long problems (high school
+  // runs 1.3x) can fill the budget before practice: the warm-up gives way to
+  // half, then the guided problems to two, then review to two (then each to
+  // one), so practice keeps about a quarter of the time.
+  const minutesOf = (list: readonly WorkbookItem[]) =>
+    list.reduce((sum, i) => sum + i.minutes, 0);
+  const fixedMinutes = () =>
+    minutesOf(
+      [warmUpSection, reviewSection, challengeSection, lessonSection].flatMap(
+        (s) => s?.items ?? [],
+      ),
+    ) + (lessonSection ? LESSON_READING_MINUTES : 0);
+  const giveWay: [WorkbookItem[], number][] = [
+    [warmUpSection.items, Math.ceil(budget.warmUp / 2)],
+    [lessonSection?.items ?? [], 2],
+    [reviewSection.items, 2],
+    [warmUpSection.items, 1],
+    [lessonSection?.items ?? [], 1],
+    [reviewSection.items, 1],
+  ];
+  for (const [list, floor] of giveWay)
+    while (fixedMinutes() > minutes * 0.75 && list.length > floor) list.pop();
+
+  // Practice at the frontier fills the remaining time across strands. A
+  // problem longer than the time left is passed over for a shorter one.
   const practiceItems: WorkbookItem[] = [];
-  let remaining = minutes - fixed;
+  let remaining = minutes - fixedMinutes();
+  // Problems only: practice also takes the guided problems' share.
+  const practiceMax =
+    budget.practiceMax + (lessonSection ? 0 : budget.guided + 2);
   for (const t of spread(
-    budget.practiceMax,
+    practiceMax,
     [
-      [-0.8, 0.2],
-      [-1.2, 0.5],
-      [-2, 0.8],
+      [-0.8 + shift, 0.2 + shift],
+      [-1.2 + shift, 0.5 + shift],
+      [-2 + shift, 0.8 + shift],
       [-13, 13],
     ],
-    2,
+    perStrand(practiceMax),
   )) {
-    if (practiceItems.length >= 3 && remaining <= 1) break;
+    if (remaining < 1) break;
     const next = item(t, "practice");
+    if (next.minutes > remaining) continue;
     practiceItems.push(next);
     remaining -= next.minutes;
   }
+  // Last resort (a catalog of only long problems): drop from the end of the
+  // warm-up, practice, review and guided problems, keeping one of each.
+  const lastResort = [
+    warmUpSection.items,
+    practiceItems,
+    reviewSection.items,
+    lessonSection?.items ?? [],
+  ];
+  for (const list of lastResort)
+    while (
+      fixedMinutes() + minutesOf(practiceItems) > minutes &&
+      list.length > 1
+    )
+      list.pop();
   const sections: WorkbookSection[] = [];
   sections.push(warmUpSection);
   if (lessonSection) sections.push(lessonSection);
@@ -456,6 +626,7 @@ export function composeWorkbook(options: {
     minutes,
     level: Math.round(options.frontier.overall.level),
     sections: sections.filter((s) => s.items.length),
+    choices,
   };
 }
 

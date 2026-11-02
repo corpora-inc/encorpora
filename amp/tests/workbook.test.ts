@@ -11,12 +11,18 @@ import { challengePool } from "../src/workbook/challenge-pool";
 import { workbookResultsUrl } from "../src/workbook/links";
 import { strandEstimate } from "../src/learning/frontier";
 import { templateGrade } from "../src/server/mixed-practice";
+import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import {
   CHALLENGE_WINDOW,
   composeWorkbook,
   printable,
+  specChoices,
+  WORKBOOK_VERSION,
   workbookCode,
   workbookMinutes,
+  workbookProblems,
+  type WorkbookChoices,
   type WorkbookMinutes,
   type WorkbookSpec,
 } from "../src/workbook/compose";
@@ -39,7 +45,12 @@ const learners = new Map(
 );
 const compose = (
   id: string,
-  extra: { number?: number; minutes?: WorkbookMinutes } = {},
+  extra: {
+    number?: number;
+    minutes?: WorkbookMinutes;
+    history?: WorkbookSpec[];
+    choices?: Partial<WorkbookChoices>;
+  } = {},
 ) => {
   const { frontier, evidence, attempts } = learners.get(id)!;
   return composeWorkbook({
@@ -100,10 +111,35 @@ test("every workbook has the full structure at every level and length", () => {
       assert.equal(spec.sections.at(-1)!.items.length, 1);
       const total = workbookMinutes(spec);
       assert.ok(
-        total >= minutes - 6 && total <= minutes + 8,
+        total >= minutes - 6 && total <= minutes,
         `${id} ${minutes}: ${total} minutes`,
       );
     }
+});
+
+test("a workbook's estimate never exceeds its length, and practice is never empty", () => {
+  // Many numbers at every length: high school problems run long, and once
+  // a 60-minute geometry workbook estimated 68 minutes.
+  for (const id of learners.keys())
+    for (const minutes of [30, 45, 60] as const)
+      for (let number = 1; number <= 12; number++) {
+        const spec = compose(id, { minutes, number });
+        const total = workbookMinutes(spec);
+        assert.ok(total <= minutes, `${id} ${minutes} #${number}: ${total}`);
+        assert.ok(
+          total >= minutes - 10,
+          `${id} ${minutes} #${number}: ${total}`,
+        );
+        assert.ok(
+          spec.sections.some((s) => s.kind === "practice" && s.items.length),
+          `${id} ${minutes} #${number}: practice`,
+        );
+        const challenge = spec.sections.find((s) => s.kind === "challenge")!;
+        assert.ok(
+          challenge.items[0]!.minutes <= minutes / 5,
+          `${id} ${minutes} #${number}: challenge ${challenge.items[0]!.minutes} min`,
+        );
+      }
 });
 
 test("only lesson problems share a template; every problem is valid", () => {
@@ -469,4 +505,182 @@ test("the answer key carries the whole worked example, shown only when the card 
   assert.match(html, /data-key-example="" hidden/);
   assert.match(html, /data-steps-more="" hidden/);
   assert.match(html, /The rest of the steps are in the answer key\./);
+});
+
+test("fractions in workbook prose print text-style; standalone mathematics and other publications stay display-style", async () => {
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const { createElement } = await import("react");
+  const { PrintMathProse, PrintMathText } =
+    await import("../src/content/PrintMathText");
+  const render = (text: string, prose: boolean) =>
+    renderToStaticMarkup(
+      createElement(
+        PrintMathProse.Provider,
+        { value: prose },
+        createElement(PrintMathText, { text }),
+      ),
+    );
+  const sentence = "Shade \\(\\frac{3}{4}\\) of the strip.";
+  assert.match(render(sentence, true), /print-math--prose/);
+  assert.match(render(sentence, true), /\\textstyle/);
+  // A card or choice holding only the fraction keeps the large form.
+  assert.doesNotMatch(render("\\(\\frac{3}{4}\\)", true), /print-math--prose/);
+  assert.doesNotMatch(
+    render("\\(\\frac{3}{4}\\) cup.", true),
+    /print-math--prose/,
+  );
+  // Books and lesson printables are unchanged.
+  assert.doesNotMatch(render(sentence, false), /print-math--prose/);
+  assert.match(render(sentence, false), /\\displaystyle/);
+});
+
+test("a stored version 1 workbook reprints the same problems under the same code", () => {
+  const fixture = JSON.parse(
+    readFileSync(
+      new URL("./fixtures/workbook-v1-spec.json", import.meta.url),
+      "utf8",
+    ),
+  ) as { code: string; problems: string; spec: WorkbookSpec };
+  assert.equal(fixture.spec.version, 1);
+  assert.equal(fixture.spec.choices, undefined);
+  assert.equal(workbookCode(fixture.spec), fixture.code);
+  const problems = createHash("sha256")
+    .update(
+      JSON.stringify(
+        workbookProblems(fixture.spec).map((p) => [p.public, p.answer]),
+      ),
+    )
+    .digest("hex");
+  assert.equal(problems, fixture.problems);
+  assert.deepEqual(specChoices(fixture.spec), {
+    areas: [],
+    lean: "level",
+    lesson: true,
+  });
+  assert.match(
+    workbookHtml(fixture.spec, { lessons, skillTitle, learnerName: "Ada Q" }),
+    /Workbook for Ada</,
+  );
+});
+
+/** Six rolls on one day, each composed after the ones before it. */
+const rolls = (
+  id: string,
+  choices?: Partial<WorkbookChoices>,
+  count = 6,
+): WorkbookSpec[] => {
+  const made: WorkbookSpec[] = [];
+  for (let number = 1; number <= count; number++)
+    made.push(compose(id, { number, history: [...made].reverse(), choices }));
+  return made;
+};
+const templateSet = (spec: WorkbookSpec) =>
+  new Set(spec.sections.flatMap((s) => s.items.map((i) => i.templateId)));
+const jaccard = (a: Set<string>, b: Set<string>) =>
+  [...a].filter((x) => b.has(x)).length / new Set([...a, ...b]).size;
+
+test("every roll is a different workbook: little template overlap, a new lesson and new review", () => {
+  const overlaps: number[] = [];
+  for (const id of ["third-grade", "algebra-two"]) {
+    const made = rolls(id);
+    for (let i = 1; i < made.length; i++)
+      overlaps.push(jaccard(templateSet(made[i - 1]!), templateSet(made[i]!)));
+    const lessonIds = made.map(
+      (s) => s.sections.find((x) => x.kind === "lesson")?.lessonId,
+    );
+    // Both learners have more than six lessons near their frontier.
+    assert.equal(new Set(lessonIds).size, made.length, `${id}: ${lessonIds}`);
+    const reviews = made.map((s) =>
+      s.sections
+        .find((x) => x.kind === "review")!
+        .items.map((i) => i.skillId)
+        .join(","),
+    );
+    assert.ok(new Set(reviews).size >= made.length - 1, `${id}: ${reviews}`);
+  }
+  const mean = overlaps.reduce((a, b) => a + b, 0) / overlaps.length;
+  // Before history-aware selection the mean was 0.17.
+  assert.ok(mean < 0.1, `mean consecutive overlap ${mean.toFixed(3)}`);
+});
+
+test("rolls stay at the learner's level for every lean", () => {
+  const { frontier } = learners.get("third-grade")!;
+  const nodes = new Map(skills.map((s) => [s.id, s]));
+  const byId = new Map(templates.map((t) => [t.id, t]));
+  const offset = (templateId: string) => {
+    const t = byId.get(templateId)!;
+    return (
+      templateGrade(t, nodes) -
+      strandEstimate(frontier, nodes.get(t.skillId)!.strand).level
+    );
+  };
+  const shift = { easier: -0.5, level: 0, stretch: 0.4 } as const;
+  for (const lean of ["easier", "level", "stretch"] as const)
+    for (const spec of rolls("third-grade", { lean }, 4)) {
+      const section = (kind: string) =>
+        spec.sections.find((s) => s.kind === kind)?.items ?? [];
+      for (const i of section("practice")) {
+        const o = offset(i.templateId);
+        assert.ok(
+          o >= -2 + shift[lean] - 1e-9 && o <= 0.8 + shift[lean] + 1e-9,
+          `${lean} practice ${i.templateId} at ${o.toFixed(2)}`,
+        );
+      }
+      for (const i of section("warm-up"))
+        assert.ok(
+          offset(i.templateId) <= 0.25 + 1e-9,
+          `warm-up ${i.templateId}`,
+        );
+      const [challenge] = section("challenge");
+      assert.ok(
+        challenge!.grade <= frontier.overall.level + CHALLENGE_WINDOW[1] + 1e-9,
+        `${lean} challenge ${challenge!.templateId}`,
+      );
+    }
+});
+
+test("choices change the workbook deterministically and are stored in the spec", () => {
+  const plain = compose("third-grade", { number: 3 });
+  assert.equal(plain.version, WORKBOOK_VERSION);
+  assert.deepEqual(plain.choices, { areas: [], lean: "level", lesson: true });
+  const choices: WorkbookChoices = {
+    areas: ["geometry", "fractions"],
+    lean: "stretch",
+    lesson: false,
+  };
+  const mixed = compose("third-grade", { number: 3, choices });
+  assert.deepEqual(compose("third-grade", { number: 3, choices }), mixed);
+  assert.deepEqual(mixed.choices, {
+    areas: ["fractions", "geometry"],
+    lean: "stretch",
+    lesson: false,
+  });
+  assert.notEqual(workbookCode(mixed), workbookCode(plain));
+  const strand = new Map(skills.map((s) => [s.id, s.strand]));
+  for (const i of items(mixed))
+    assert.ok(
+      ["fractions", "geometry"].includes(strand.get(i.skillId)!),
+      i.skillId,
+    );
+  assert.ok(!mixed.sections.some((s) => s.kind === "lesson"));
+  // A few areas still fill the time: practice shares out among them.
+  const total = workbookMinutes(mixed);
+  assert.ok(total <= 45 && total >= 35, `${total} minutes`);
+  // Easier review: more review, practice lower than a stretch.
+  const easier = compose("third-grade", {
+    number: 4,
+    choices: { lean: "easier" },
+  });
+  const stretch = compose("third-grade", {
+    number: 4,
+    choices: { lean: "stretch" },
+  });
+  const count = (spec: WorkbookSpec, kind: string) =>
+    spec.sections.find((s) => s.kind === kind)?.items.length ?? 0;
+  assert.ok(count(easier, "review") > count(plain, "review"));
+  const meanGrade = (spec: WorkbookSpec) => {
+    const list = spec.sections.find((s) => s.kind === "practice")!.items;
+    return list.reduce((sum, i) => sum + i.grade, 0) / list.length;
+  };
+  assert.ok(meanGrade(easier) < meanGrade(stretch));
 });

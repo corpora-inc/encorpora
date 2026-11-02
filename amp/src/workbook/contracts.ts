@@ -22,13 +22,43 @@ export const workbookMinutesSchema = z.union([
   z.literal(45),
   z.literal(60),
 ]);
+/** Strand names as parents read them (areas to practise). */
+export const workbookAreaNames: Record<string, string> = {
+  number: "Numbers",
+  operations: "Operations",
+  fractions: "Fractions",
+  decimals: "Decimals",
+  measurement: "Measurement",
+  geometry: "Geometry",
+  data: "Data",
+  ratio: "Ratios",
+  probability: "Probability",
+  algebra: "Algebra",
+  functions: "Functions",
+  modeling: "Models",
+  reasoning: "Reasoning",
+  trigonometry: "Trigonometry",
+};
+export const workbookLeans = ["easier", "level", "stretch"] as const;
+export const workbookChoicesSchema = z
+  .object({
+    /** Strands to draw from; empty: mixed (recommended). */
+    areas: z.array(z.string().min(1).max(40)).max(20),
+    lean: z.enum(workbookLeans),
+    /** False: problems only, without "Today's idea". */
+    lesson: z.boolean(),
+  })
+  .strict();
+export type WorkbookChoicesInput = z.infer<typeof workbookChoicesSchema>;
 export const workbookRequestSchema = z
   .object({
     date: workbookDateSchema,
     minutes: workbookMinutesSchema,
     paper: z.enum(workbookPapers),
-    /** Omitted: the next number for this date ("Another one"). */
+    /** Omitted: the next number for this date ("Roll another"). */
     number: z.number().int().min(1).max(999).optional(),
+    /** Used when the workbook is made; a stored one keeps its own. */
+    choices: workbookChoicesSchema.optional(),
   })
   .strict();
 export type WorkbookRequest = z.infer<typeof workbookRequestSchema>;
@@ -59,8 +89,14 @@ export const workbookSummarySchema = z.object({
   paper: z.enum(workbookPapers),
   code: z.string(),
   createdAt: z.string(),
-  /** The composer's estimate, which can differ a little from `minutes`. */
+  /** The composer's estimate, never more than `minutes`. */
   estimatedMinutes: z.number(),
+  /** What it was made with (version 1 workbooks: mixed, at level, lesson). */
+  choices: workbookChoicesSchema.default({
+    areas: [],
+    lean: "level",
+    lesson: true,
+  }),
   problems: z.number().int(),
   sections: z.array(
     z.object({
@@ -78,6 +114,13 @@ export const workbookHistorySchema = z.object({
    * document and print it from the browser. */
   pdf: z.boolean().default(false),
 });
+
+/** Areas a parent can choose for this learner: strands with work near
+ * the learner's level, in curriculum order. */
+export const workbookAreasSchema = z.object({
+  areas: z.array(z.object({ id: z.string(), label: z.string() })),
+});
+export type WorkbookAreas = z.infer<typeof workbookAreasSchema>;
 
 /** One printed problem on the results screen. */
 export const workbookResultRowSchema = z.object({

@@ -16,6 +16,7 @@
  *
  * Synthetic data only: no database, no account, no network beyond loopback.
  */
+import { assertProblemReachable } from "./ui-viewports";
 import AxeBuilder from "@axe-core/playwright";
 import { appendFile, mkdir, writeFile } from "node:fs/promises";
 import { createServer } from "vite";
@@ -53,6 +54,7 @@ export const CASES = [
   ["number-scene", "unit-cube-volume"],
   ["fraction", "unit-piece-size"],
   ["choice", "hierarchy-statement"],
+  ["choice-table", "quadratic-from-data"],
   ["choice-scene", "first-quadrant-locate"],
   ["choice-clocks", "clock-minute-match"],
   ["multi-select", "fact-equation-truth-select"],
@@ -85,6 +87,7 @@ const full = process.env.AUDIT_FULL === "1";
 const VERIFY = [
   "number",
   "choice-scene",
+  "choice-table",
   "multi-select-figure",
   "parts-inline",
   "parts-cards",
@@ -227,9 +230,12 @@ async function mockApi(context: BrowserContext, templateId: string) {
       return json(practice);
     }
     if (path.endsWith("/batches")) {
+      const problemIndex = state.count++;
       const problem = generateProblemFor(
         state.templateId,
-        `polish-${state.templateId}-${state.count++}`,
+        state.templateId === "quadratic-from-data" && problemIndex === 0
+          ? "independent-68"
+          : `polish-${state.templateId}-${problemIndex}`,
         body.figureCapabilities ?? [],
       );
       problem.public = responseForClient(
@@ -586,6 +592,36 @@ async function runCase(
       .waitFor({ timeout: 60_000 });
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(400);
+    if (label === "choice-table") {
+      // Match the hosted Chromium gutter on overlay-scrollbar hosts. WebKit
+      // does not reserve custom scrollbar space until overflow, so use its
+      // native scrollbars and keep the same layout and reachability checks.
+      if (browserName === "chromium")
+        await page.addStyleTag({
+          content:
+            ".problem-stage::-webkit-scrollbar { width: 15px; height: 15px; }",
+        });
+      await assertProblemReachable(page, `quadratic table ${width}×${height}`);
+      const geometry = await page.locator(".question").evaluate((question) => {
+        const table = question.querySelector<HTMLElement>(
+          ":scope > .math:has(.mtable)",
+        )!;
+        const range = document.createRange();
+        range.setStart(question, 0);
+        range.setEndBefore(table);
+        const proseBottom = Math.max(
+          ...[...range.getClientRects()].map((r) => r.bottom),
+        );
+        return {
+          tableTop: table.getBoundingClientRect().top,
+          proseBottom,
+        };
+      });
+      if (geometry.tableTop < geometry.proseBottom)
+        throw new Error(
+          `Quadratic table shares its prose row: ${JSON.stringify(geometry)}`,
+        );
+    }
     await watchShifts(page);
     const deep = !full || theme === "light" || width === 390;
     await record("start", null, {

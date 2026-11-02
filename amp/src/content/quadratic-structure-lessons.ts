@@ -382,7 +382,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
       "The graph of $y = x^2$ ($x$ times $x$) is a U-shaped curve called a parabola, and its turning point is called the vertex, at $(0, 0)$. Sliding a graph without turning or stretching it is called a translation. Adding $k$ after the square moves the graph $k$ units up. Writing $x - h$ inside the square moves it $h$ units right, because the square is now 0 at $x = h$. So $y = (x - h)^2 + k$ has its vertex at $(h, k)$.",
     terms: ["vertex-parabola", "vertex-form"],
     senses: parabolaSenses,
-    noLink: ["solid", "opposite", "unit", "units"],
+    noLink: ["solid", "opposite"],
     method: [
       "Follow the vertex: $(0, 0)$ moves to $(h, k)$.",
       "Moving $h$ units right is $x - h$ inside the square. Moving $h$ units left is $x + h$.",
@@ -417,15 +417,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
       "A formula turns a number you choose, called the input, into a result, called the output. For example, hours $h$ can give a cost $C$. In $C = 40 + 15h$, putting $h = 0$ leaves $C = 40$: a fixed amount you pay at the start. Each extra hour adds 15, so 15 is the rate, the change for each 1 added to the input. In $P = 2400(1.05)^t$, the raised $t$ means 1.05 is multiplied $t$ times. So each step multiplies by 1.05, called the growth factor. A variable is a letter that stands for a number. A coefficient is the number multiplying a variable in a term (one part of the formula).",
     terms: ["coefficient", "constant"],
     senses: structureSenses,
-    noLink: [
-      "part",
-      "change",
-      "leaves",
-      "means",
-      "population",
-      "rule",
-      "units",
-    ],
+    noLink: ["part", "leaves", "means", "population"],
     method: [
       "Set the input to 0. What is left is the starting value.",
       "Increase the input by 1. If the same amount is added each time, that amount is the rate. If it is multiplied by the same number each time, that number is the growth factor.",

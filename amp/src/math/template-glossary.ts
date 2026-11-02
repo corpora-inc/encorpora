@@ -125,7 +125,7 @@ const glossary: Record<
   },
   "area-probability": {
     senses: { center: "center", side: "side" },
-    noLink: ["base", "part", "square", "whole"],
+    noLink: ["base"],
   },
   "arithmetic-distant-term": {
     senses: {
@@ -707,7 +707,7 @@ const glossary: Record<
   },
   "counterexample-choice": {
     senses: { product: "product-multiply", side: "side" },
-    noLink: ["part", "parts", "square", "squares", "third"],
+    noLink: ["part", "parts", "third"],
   },
   "crossing-segment-similarity": {
     senses: {
@@ -730,7 +730,7 @@ const glossary: Record<
   },
   "cubic-graph-statement": {
     senses: { changes: "change", factor: "factor-number" },
-    noLink: ["decreasing", "increasing", "increasing intervals", "interval"],
+    noLink: ["decreasing", "increasing", "increasing intervals"],
   },
   "cubic-quotient-factored": {
     senses: { factor: "factor-number", product: "product-multiply" },
@@ -740,12 +740,9 @@ const glossary: Record<
   "curved-solid-surface-area": {
     senses: {
       edge: "edge",
-      side: "side",
-      sides: "side",
       solids: "solid-shape",
-      square: "square-number",
     },
-    noLink: ["base", "bases", "face", "faces"],
+    noLink: ["bases", "faces"],
   },
   "customary-unit-reverse": { noLink: ["whole"] },
   "decimal-both-sides-equation": {
@@ -909,7 +906,7 @@ const glossary: Record<
       base: "base-exponent",
       model: "model",
     },
-    noLink: ["boundary", "side"],
+    noLink: ["side"],
   },
   "exponential-initial-value": {
     senses: { model: "model", factor: "factor-number" },
@@ -1606,8 +1603,12 @@ const glossary: Record<
     noLink: ["image", "inverse"],
   },
   "inverse-trig-value": {
-    senses: { tangent: "tangent-trig" },
-    noLink: ["interval", "intervals", "inverse", "range"],
+    senses: {
+      tangent: "tangent-trig",
+      interval: "interval",
+      inverse: "inverse-function",
+      range: "range-function",
+    },
   },
   "inverse-value": { noLink: ["inverse"] },
   "isolate-two-term-formula": {
@@ -1642,7 +1643,7 @@ const glossary: Record<
     },
   },
   "line-relationship-equations": {
-    senses: { change: "change", product: "product-multiply" },
+    senses: { product: "product-multiply" },
   },
   "line-slope": { senses: { change: "change", changes: "change" } },
   "linear-model-equation": {
@@ -1701,7 +1702,6 @@ const glossary: Record<
   },
   "log-base-fraction-graph": {
     senses: { base: "base-exponent" },
-    noLink: ["rule"],
   },
   "log-equation": {
     senses: {
@@ -2138,11 +2138,10 @@ const glossary: Record<
   },
   "parabola-shift": {
     senses: { unit: "unit", units: "unit", vertex: "vertex-parabola" },
-    noLink: ["opposite", "solid", "square"],
+    noLink: ["opposite", "solid"],
   },
   "parabola-vertex": {
     senses: {
-      changes: "change",
       term: "term-expression",
       vertex: "vertex-parabola",
       factor: "factor-number",
@@ -2150,7 +2149,7 @@ const glossary: Record<
       squared: "square-number",
       "standard form": "standard-form-line",
     },
-    noLink: ["base", "image", "opposite"],
+    noLink: ["image", "opposite"],
   },
   "parabola-vertex-distance": {
     senses: {
@@ -3535,15 +3534,13 @@ const glossary: Record<
   },
   "spherical-geometry-compare": {
     senses: {
-      change: "change",
-      changes: "change",
       quarter: "fourth",
       sides: "side",
       vertex: "vertex",
       vertices: "vertex",
       center: "center",
     },
-    noLink: ["opposite", "plane"],
+    noLink: ["opposite"],
   },
   "square-root-extraneous": {
     senses: {
@@ -3604,12 +3601,10 @@ const glossary: Record<
     senses: {
       base: "base-exponent",
       change: "change",
-      population: "population",
       rule: "rule",
       unit: "unit",
       term: "term-expression",
     },
-    noLink: ["factor"],
   },
   "structure-rewrite": {
     senses: {
@@ -3714,7 +3709,7 @@ const glossary: Record<
     noLink: ["image", "rule"],
   },
   "transformation-composition-image": {
-    senses: { change: "change", image: "image-transformation", units: "unit" },
+    senses: { image: "image-transformation", units: "unit" },
     noLink: ["center", "scale", "scales"],
   },
   "transformation-invariant-claims": {
@@ -3796,20 +3791,20 @@ const glossary: Record<
     ],
   },
   "trig-equation-solutions": {
-    senses: { period: "period", tangent: "tangent-trig" },
-    noLink: ["interval", "leaves", "range", "side", "sides"],
+    senses: { period: "period", tangent: "tangent-trig", interval: "interval" },
+    noLink: ["leaves", "range", "side", "sides"],
   },
   "trig-identity-value": {
     senses: {
-      complement: "complement-probability",
+      complement: "complementary-angles",
       difference: "difference-subtract",
-      mean: "mean-average",
+      identity: "identity-equation",
       tangent: "tangent-trig",
       terms: "term-expression",
       unit: "unit",
       product: "product-multiply",
     },
-    noLink: ["identity", "opposite", "part", "parts", "rule", "side"],
+    noLink: ["mean", "opposite", "part", "parts", "rule", "side"],
   },
   "trig-leg-steps": {
     senses: { side: "side", degree: "degree-angle" },
@@ -3837,8 +3832,8 @@ const glossary: Record<
     noLink: ["opposite", "rule", "whole"],
   },
   "trig-triangle-area": {
-    senses: { degree: "degree-angle", units: "unit" },
-    noLink: ["base", "mode", "side", "sides"],
+    senses: { degree: "degree-angle", units: "unit", base: "base-shape" },
+    noLink: ["mode", "side", "sides"],
   },
   "trinomial-product": {
     senses: {

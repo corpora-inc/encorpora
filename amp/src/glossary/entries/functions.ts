@@ -289,7 +289,7 @@ export const functionsEntries: GlossaryEntry[] = [
     term: "index",
     forms: ["index"],
     plain:
-      "In a sum written with sigma notation, the counting letter that steps through whole numbers from the bottom value to the top value.",
+      "In a sum written with sigma notation, the counting letter. It steps up by 1 from the value below the sigma to the value above it.",
     example:
       "In $\\sum_{k=1}^{4} k^2$ the index $k$ takes the values 1, 2, 3, 4.",
     uses: ["sum", "sigma-notation", "whole-number"],

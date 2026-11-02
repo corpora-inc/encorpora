@@ -1,9 +1,10 @@
 /**
- * Daily workbook screens in a real browser: the real Fastify routes compose
+ * Workbook screens in a real browser: the real Fastify routes compose
  * and store workbooks for a synthetic learner (in memory); only sign-in and
  * the family summary are fixtures. Checks overflow, touch targets, that no
  * control moves while workbooks load, change, fail or download, real URLs
- * (Back, reload), and the unlicensed state. Screenshots at 320/390/768/1280
+ * (Back, reload), mixing and matching (areas, level, problems only), and
+ * the unlicensed state. Screenshots at 320/390/768/1280
  * in light and dark go to docs/reviews/workbooks/.
  *
  *   npx tsx scripts/verify-workbooks-ui.ts
@@ -264,6 +265,9 @@ async function fixture(page: Page) {
       });
     }
     if (url.pathname.endsWith("/me")) return route.fulfill({ json: me });
+    // A paid account has no free trial.
+    if (url.pathname.endsWith("/trials/current"))
+      return route.fulfill({ json: { trial: null } });
     if (url.pathname.endsWith("/auth-config"))
       return route.fulfill({
         json: { mode: "accounts", passwords: true, providers: [] },
@@ -399,22 +403,28 @@ try {
         });
       await assertLayout(page, label);
       await assertSegments(page, label);
-      // The date heading keeps its word spaces.
+      // The date heading keeps its word spaces. A space where the title
+      // wraps has no width, so measure the widest.
       const space = await page.evaluate(() => {
         const h1 = document.querySelector("main h1")!;
         const text = h1.firstChild!;
-        const at = text.textContent!.indexOf(" ");
-        const range = document.createRange();
-        range.setStart(text, at);
-        range.setEnd(text, at + 1);
-        return range.getBoundingClientRect().width;
+        const widths: number[] = [];
+        for (let at = 0; at < text.textContent!.length; at++) {
+          if (text.textContent![at] !== " ") continue;
+          const range = document.createRange();
+          range.setStart(text, at);
+          range.setEnd(text, at + 1);
+          widths.push(range.getBoundingClientRect().width);
+        }
+        return Math.max(0, ...widths);
       });
       assert.ok(space >= 4, `${label}: title word space is ${space}px`);
-      // No empty band between the actions and the contents card.
+      // No empty band between the last choice (the areas row) and the
+      // contents card.
       const gap = await page.evaluate(() => {
         const actions = document
-          .querySelector("main [data-workbook-actions]")!
-          .getBoundingClientRect();
+          .querySelector("main [role=group][aria-label=Areas]")!
+          .parentElement!.getBoundingClientRect();
         const contents = document
           .querySelector("main [aria-label='Workbook contents']")!
           .getBoundingClientRect();
@@ -434,19 +444,19 @@ try {
       await page.getByText(/About (55|60|65) minutes/).waitFor();
       assert.deepEqual(await controlBoxes(page), before, `${label}: length`);
 
-      // Another one: a new number, a new URL, nothing moves.
+      // Roll another: a new number, a new URL, nothing moves.
       const firstCode = await page
         .getByLabel("Workbook code")
         .first()
         .textContent();
-      await page.getByRole("button", { name: "Another one" }).click();
+      await page.getByRole("button", { name: "Roll another" }).click();
       await page.getByRole("heading", { name: "No. 2" }).waitFor();
       assert.match(page.url(), /number=2/);
       assert.notEqual(
         await page.getByLabel("Workbook code").first().textContent(),
         firstCode,
       );
-      assert.deepEqual(await controlBoxes(page), before, `${label}: another`);
+      assert.deepEqual(await controlBoxes(page), before, `${label}: roll`);
 
       // A renderer outage still gives the parent a printable copy.
       failNextDownload = "pdf";
@@ -511,6 +521,60 @@ try {
         "true",
       );
 
+      // Mix and match: each choice rolls a new workbook with it, at its own
+      // URL, and nothing moves. An area, then a stretch, then problems only.
+      const area = page
+        .getByRole("group", { name: "Areas" })
+        .getByRole("button")
+        .nth(1);
+      await area.waitFor();
+      const areaLabel = (await area.textContent())!.trim();
+      await area.click();
+      await page.getByRole("heading", { name: "No. 3" }).waitFor();
+      assert.match(page.url(), /areas=/);
+      assert.equal(await area.getAttribute("aria-pressed"), "true");
+      await page
+        .getByText(new RegExp(`^${areaLabel}`))
+        .first()
+        .waitFor();
+      assert.deepEqual(await controlBoxes(page), before, `${label}: area`);
+      await page.getByRole("radio", { name: /^Harder/ }).click();
+      await page.getByRole("heading", { name: "No. 4" }).waitFor();
+      assert.match(page.url(), /lean=stretch/);
+      assert.deepEqual(await controlBoxes(page), before, `${label}: lean`);
+      await page.getByRole("radio", { name: /^Leave out/ }).click();
+      await page.getByRole("heading", { name: "No. 5" }).waitFor();
+      assert.match(page.url(), /lesson=off/);
+      assert.equal(
+        await page
+          .getByLabel("Workbook contents")
+          .getByText("Today's idea")
+          .count(),
+        0,
+      );
+      assert.deepEqual(await controlBoxes(page), before, `${label}: lesson`);
+      await assertLayout(page, `${label} mixed`);
+      await assertSegments(page, `${label} mixed`);
+      await page.screenshot({
+        path: `${output}day-mixed-${label}.png`,
+        fullPage: true,
+      });
+      // Back restores the previous workbook and its choices.
+      await page.goBack();
+      await page.getByRole("heading", { name: "No. 4" }).waitFor();
+      assert.equal(
+        await page
+          .getByRole("radio", { name: /^Include/ })
+          .getAttribute("aria-checked"),
+        "true",
+      );
+      assert.equal(
+        await page
+          .getByRole("radio", { name: /^Harder/ })
+          .getAttribute("aria-checked"),
+        "true",
+      );
+
       // History lists every stored workbook, newest first.
       await page.getByRole("link", { name: "Past workbooks" }).click();
       await page.waitForURL(new RegExp(`/learners/${learnerId}/workbooks$`));
@@ -519,7 +583,7 @@ try {
         .getByRole("list", { name: "Workbooks" })
         .getByRole("listitem")
         .count();
-      assert.equal(items, 5);
+      assert.equal(items, 8);
       await assertLayout(page, `${label} history`);
       await page.screenshot({
         path: `${output}history-${label}.png`,

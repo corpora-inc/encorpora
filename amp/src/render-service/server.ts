@@ -4,7 +4,7 @@
  * this with a shared secret. Every network request is blocked and the
  * context is offline, so a document can only use what it carries. Scripts
  * run only so a document can compose its own pages: one that marks
- * `<html data-compose>` (daily workbooks) is printed once it sets
+ * `<html data-compose>` (workbooks) is printed once it sets
  * `data-layout="ready"`, and fails on "error".
  *
  *   AMP_RENDER_TOKEN        shared secret, at least 32 characters (required)
