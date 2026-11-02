@@ -12,7 +12,7 @@ import { circleDiagram, scene } from "./scene/author";
  * (issue #1781). */
 const OPENERS: Record<string, string[]> = {
   "measurement-error-bound": [
-    "A measurement is only as exact as its smallest unit. The true value can be up to half that unit above or below the reading.",
+    "An error limit is the most the actual value can differ from the reading. The actual value lies within that limit, below or above the reading.",
   ],
   "margin-of-error-interval": [
     "A margin of error says how far a sample's estimate may be from the true value. The interval goes from the estimate minus the margin to the estimate plus the margin.",

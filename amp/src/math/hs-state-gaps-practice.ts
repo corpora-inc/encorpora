@@ -43,7 +43,7 @@ const OPENERS: Record<string, string[]> = {
     'A conditional statement has the form "if $P$, then $Q$". Its converse swaps the parts, its inverse negates both parts, and its contrapositive does both.',
   ],
   "cube-root-equation": [
-    "To undo a cube root, cube both sides. Unlike squaring, cubing keeps every solution and adds no false ones, because cube roots of negative numbers exist.",
+    "To undo a cube root, cube both sides. Two different numbers never have the same cube, so cubing adds no false solutions.",
   ],
   "polar-graph-identify": [
     "In polar form a point is given by its distance $r$ from the origin and its angle $\\theta$. The equation's form decides the curve's shape.",
