@@ -96,7 +96,7 @@ def review_print_html(documents, root):
         require(layout.returncode == 0, f'{label} failed: {layout.stderr[:2000]}')
         report = json.loads(layout.stdout)
         require(report['documents'] == len(batch), f'{label}: incomplete layout review')
-        require(report['rejectedMutations'] == 14, f'{label}: incomplete mutation checks')
+        require(report['rejectedMutations'] == 27, f'{label}: incomplete mutation checks')
         rejected = report['rejectedMutations']
         completed += report['documents']
         batches += 1

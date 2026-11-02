@@ -98,6 +98,36 @@ async function inspect(html: string, format: "Letter" | "A4") {
           issues.push("A section kept together is taller than a printable page");
       }
       const solutions = document.querySelector(".publication-kind")?.textContent?.trim() === "Worked solutions";
+      for (const example of document.querySelectorAll<HTMLElement>(".reference-lesson > .worked-example")) {
+        const children = [...example.children] as HTMLElement[];
+        const steps = children.find((child) => child.tagName === "OL");
+        const answer = children.at(-1);
+        const question = steps ? children.slice(0, children.indexOf(steps)) : [];
+        const stepItems = steps ? [...steps.children] as HTMLElement[] : [];
+        if (question[0]?.tagName !== "H2" || question[1]?.tagName !== "P" || !steps || !stepItems.length ||
+            !stepItems.every((item) => item.tagName === "LI") ||
+            answer?.tagName !== "P" || !answer.classList.contains("worked-answer") ||
+            answer.querySelector("strong")?.textContent?.trim() !== "Answer:") {
+          issues.push("Worked example lacks a complete question, explanation, or answer group");
+          continue;
+        }
+        const exampleStyle = getComputedStyle(example);
+        if (exampleStyle.breakInside !== "auto")
+          issues.push("Worked example cannot flow across pages");
+        // The last question part's break-after also attaches the first step.
+        const questionHeight = stepItems[0]!.getBoundingClientRect().bottom - question[0]!.getBoundingClientRect().top +
+          parseFloat(exampleStyle.paddingTop) + parseFloat(exampleStyle.borderTopWidth);
+        if (questionHeight > pageHeight || question.some((item) => !["avoid", "avoid-page"].includes(getComputedStyle(item).breakInside) || !["avoid", "avoid-page"].includes(getComputedStyle(item).breakAfter)))
+          issues.push("Worked example question, figure and choices do not form one printable group");
+        if (stepItems.some((item) => item.getBoundingClientRect().height > pageHeight || !["avoid", "avoid-page"].includes(getComputedStyle(item).breakInside)))
+          issues.push("Worked example explanation item can split or exceed a page");
+        const lastStep = stepItems.at(-1)!;
+        const conclusionHeight = answer.getBoundingClientRect().bottom - lastStep.getBoundingClientRect().top +
+          parseFloat(exampleStyle.paddingBottom) + parseFloat(exampleStyle.borderBottomWidth);
+        if (conclusionHeight > pageHeight || !["avoid", "avoid-page"].includes(getComputedStyle(lastStep).breakAfter) ||
+            !["avoid", "avoid-page"].includes(getComputedStyle(answer).breakBefore) || !["avoid", "avoid-page"].includes(getComputedStyle(answer).breakInside))
+          issues.push("Final worked-example explanation and answer do not form one printable group");
+      }
       for (const exercise of document.querySelectorAll<HTMLElement>(".exercise")) {
         if (!solutions && !exercise.classList.contains("exercise--solutions")) continue;
         if (!solutions || !exercise.classList.contains("exercise--solutions")) {
@@ -205,6 +235,28 @@ try {
   for (const mutation of solutionMutations)
     if (!(await inspect(mutation, "Letter")).length)
       throw new Error("Layout oracle accepted a broken solution pagination group");
+  const safeExample = `<style>.worked-example{break-inside:auto}.worked-example>h2,.worked-example>p,.worked-example>ul{break-inside:avoid;break-after:avoid}.worked-example>ol>li{break-inside:avoid}.worked-example>ol>li:last-child{break-after:avoid}.worked-answer{break-before:avoid;break-inside:avoid}</style><div class="reference-lesson"><section class="example worked-example"><h2>A worked example</h2><p>A complete question.</p><ul><li>A choice.</li></ul><ol><li>A reason.</li><li>A conclusion.</li></ol><p class="worked-answer"><strong>Answer:</strong> one.</p></section></div>`;
+  if ((await inspect(safeExample, "Letter")).length)
+    throw new Error("Valid breakable worked-example reference failed");
+  const exampleMutations = [
+    safeExample.replace('class="example worked-example"', 'class="example worked-example" style="break-inside:avoid;height:2000px"'),
+    safeExample.replace("<p>A complete question.</p>", "<p style=\"height:2000px\">A complete question.</p>"),
+    safeExample.replace("<ul>", "<ul style=\"break-after:auto\">"),
+    safeExample.replace("<li>A reason.</li>", "<li style=\"height:2000px\">A reason.</li>"),
+    safeExample.replace("<li>A reason.</li>", "<li style=\"break-inside:auto\">A reason.</li>"),
+    safeExample.replace("<li>A conclusion.</li>", "<li style=\"break-after:auto\">A conclusion.</li>"),
+    safeExample.replace('class="worked-answer"', 'class="worked-answer" style="break-before:auto"'),
+    safeExample.replace('class="worked-answer"', 'class="worked-answer" style="height:2000px"'),
+    safeExample.replace("<ol><li>A reason.</li><li>A conclusion.</li></ol>", ""),
+    safeExample.replace('<p class="worked-answer"><strong>Answer:</strong> one.</p>', ""),
+    safeExample.replace("<p>A complete question.</p>", "<p style=\"height:500px\">A complete question.</p>")
+      .replace("<li>A reason.</li>", "<li style=\"height:500px\">A reason.</li>"),
+    safeExample.replace('class="example worked-example"', 'class="example worked-example" style="padding-top:1000px"'),
+    safeExample.replace('class="example worked-example"', 'class="example worked-example" style="padding-bottom:1000px"'),
+  ];
+  for (const mutation of exampleMutations)
+    if (!(await inspect(mutation, "Letter")).length)
+      throw new Error("Layout oracle accepted a broken worked-example pagination group");
   const cache = new Map<string, string>();
   for (const document of documents) {
     if (!cache.has(document.file))
@@ -220,7 +272,7 @@ try {
   console.log(
     JSON.stringify({
       documents: documents.length,
-      rejectedMutations: mutations.length + solutionMutations.length,
+      rejectedMutations: mutations.length + solutionMutations.length + exampleMutations.length,
     }),
   );
 } finally {
