@@ -1768,7 +1768,7 @@ jobs:
     name: aha-native
     needs: changes
     if: needs.changes.outputs.aha_app == 'true'
-    runs-on: macos-14
+    runs-on: macos-26
     timeout-minutes: 30
     defaults:
       run:
