@@ -694,6 +694,62 @@ header {
 .lesson-example-answer {
   margin: 8px 0 0;
 }
+/* A multi-part example, read-only: a sentence with numbered boxes, then
+   what each box asks for and offers. Nothing here looks pressable. */
+.lesson-example-parts {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 8px;
+}
+.lesson-example-sentence {
+  margin: 0;
+  white-space: pre-line;
+}
+.lesson-blank {
+  display: inline-block;
+  min-width: 2em;
+  margin: 0 2px;
+  padding: 0 6px;
+  border-bottom: 2px solid var(--color-border-strong);
+  color: var(--color-subtle-text);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: baseline;
+}
+.problem-lesson .lesson-example-blanks {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.problem-lesson .lesson-example-blanks li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: baseline;
+  margin: 0;
+}
+.lesson-example-blanks .lesson-blank {
+  margin: 0;
+}
+.lesson-example-options {
+  display: block;
+  color: var(--color-muted-text);
+}
+.lesson-example-shared {
+  margin: 0;
+}
+.lesson-example-shared-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-subtle-text);
+}
 .lesson-watch {
   margin: 0;
   padding: 10px 14px;

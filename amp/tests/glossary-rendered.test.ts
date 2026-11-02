@@ -118,3 +118,31 @@ test("a glossary word in a lesson's worked question opens its card", () => {
   assert.ok(prompt, "the example prompt renders");
   assert.match(prompt, /data-term-id="integer"/);
 });
+
+test("a lesson's worked example shows what a learner chooses from", () => {
+  const render = (id: string) => {
+    const lesson = problemLesson(id, "glossary-rendered");
+    const { video: _video, ...view } = lesson;
+    const { figure: _figure, givens: _givens, ...example } = view.example;
+    return {
+      lesson,
+      html: renderToStaticMarkup(
+        createElement(ProblemLesson, { lesson: { ...view, example } }),
+      ),
+    };
+  };
+  // One answer from a list: the options, lettered.
+  const choice = render("first-quadrant-locate");
+  assert.ok((choice.lesson.example.choices?.length ?? 0) > 1);
+  assert.match(choice.html, /<ol type="A" aria-label="Example choices">/);
+  // A sentence to complete: its numbered blanks, and what each offers.
+  const sentence = render("table-rule-sentence");
+  const parts = sentence.lesson.example.parts!;
+  assert.ok(parts.sentence?.some((part) => "blank" in part));
+  assert.equal(
+    (sentence.html.match(/aria-label="blank \d"/g) ?? []).length,
+    parts.blanks.length * 2,
+  );
+  for (const option of parts.blanks.flatMap((b) => b.options ?? []))
+    assert.ok(sentence.html.includes(option), option);
+});

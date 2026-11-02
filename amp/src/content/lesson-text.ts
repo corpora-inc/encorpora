@@ -4,6 +4,7 @@ import { isPorted, legacyScene } from "../math/scene/legacy";
 import type { GradeBand } from "../curriculum/types";
 import type { Lesson } from "./lessons";
 import type { ProblemLessonView } from "./problem-lessons";
+import type { ExampleParts } from "./example-parts";
 
 /** The teaching layer a block belongs to, in the order a learner meets them. */
 export type LessonStage =
@@ -148,6 +149,7 @@ export function problemLessonBlocks(
         `Problem: ${view.example.prompt}`,
         ...(view.example.figure ? [figureText(view.example.figure)] : []),
         ...(view.example.choices ?? []).map((c, i) => `Choice ${i + 1}: ${c}`),
+        ...examplePartsLines(view.example.parts),
         ...view.example.steps.map((s, i) => `Step ${i + 1}: ${s}`),
         `Answer: ${view.example.answer}`,
       ],
@@ -167,6 +169,26 @@ export function problemLessonBlocks(
       lines: formal,
     });
   return blocks;
+}
+
+/** A multi-part example as a reviewer reads it: the sentence with its
+ * numbered blanks, what each blank asks for and offers, then shared choices. */
+function examplePartsLines(parts: ExampleParts | undefined): string[] {
+  if (!parts) return [];
+  return [
+    ...(parts.sentence
+      ? [
+          `Sentence: ${parts.sentence
+            .map((part) => ("text" in part ? part.text : `[${part.blank}]`))
+            .join("")}`,
+        ]
+      : []),
+    ...parts.blanks.map(
+      (blank, i) =>
+        `Blank ${i + 1}: ${blank.label}${blank.options ? ` (${blank.options.join(" / ")})` : ""}`,
+    ),
+    ...(parts.options ? [`Choices: ${parts.options.join(" / ")}`] : []),
+  ];
 }
 
 /** Plain text a reviewer reads, one labelled block per paragraph group. */
