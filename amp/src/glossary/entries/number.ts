@@ -576,9 +576,9 @@ export const numberEntries: GlossaryEntry[] = [
     term: "remainder",
     forms: ["remainder", "remainders"],
     plain:
-      "What is left over after making as many equal groups as possible. It is always less than the divisor.",
+      "What is left over after making as many equal groups as possible. In whole-number division, it is always less than the divisor.",
     example: "17 ÷ 5 = 3 with remainder 2: three groups of 5, and 2 left over.",
-    uses: ["equal-groups", "less-than", "divisor"],
+    uses: ["equal-groups", "less-than", "divisor", "division"],
     band: "3",
   },
   {

@@ -30,7 +30,7 @@ export const fractionsEntries: GlossaryEntry[] = [
     term: "denominator",
     forms: ["denominator", "denominators"],
     plain:
-      "The bottom number of a fraction. It tells how many equal parts one whole is cut into, so it is never 0.",
+      "The bottom of a fraction, which is never 0. In a fraction of a whole, it tells how many equal parts the whole is cut into.",
     example:
       "In $\\frac{3}{4}$, the denominator is 4: the whole is cut into 4 equal parts.",
     figure: "fraction-parts",

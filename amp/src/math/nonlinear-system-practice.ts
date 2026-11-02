@@ -89,7 +89,7 @@ export function nonlinearSystemCase(id: string, seed: string) {
         `Each real solution $x$ of this quadratic is one crossing point. To count them without solving, use the discriminant.`,
         `For $Ax^2 + Bx + C = 0$, the discriminant is $B^2 - 4AC$, the part under the square root in the quadratic formula. Here it is $${p(B)}^2 - 4 \\cdot ${p(a)} \\cdot ${p(C)} = ${n(discriminant)}$.`,
         discriminant > 0
-          ? `It is positive, so the square root gives two different values and there are two real roots.`
+          ? `It is positive, so it has a positive square root. Adding it and subtracting it in the quadratic formula give two different values: two real roots.`
           : discriminant === 0
             ? `It is zero, so plus and minus the root give the same value: one real root. The line just touches the parabola.`
             : `It is negative, and a negative number has no real square root. So there are no real roots: the line misses the parabola.`,

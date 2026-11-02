@@ -414,9 +414,9 @@ export const algebra2Entries: GlossaryEntry[] = [
     term: "rational equation",
     forms: ["rational equation", "rational equations"],
     plain:
-      "An equation with a fraction that has the variable in its denominator.",
+      "An equation with one or more fractions that have the variable in a denominator, such as one expression with the variable divided by another.",
     example: "$\\frac{3}{x}+1=\\frac{5}{x}$ is a rational equation.",
-    uses: ["equation", "fraction", "variable", "denominator"],
+    uses: ["equation", "fraction", "variable", "denominator", "expression"],
     band: "algebra-2",
   },
   {
@@ -521,7 +521,7 @@ export const algebra2Entries: GlossaryEntry[] = [
     term: "square root",
     forms: ["square root", "square roots"],
     plain:
-      "A number that gives a value when multiplied by itself. Every positive number has two square roots; $\\sqrt{n}$ means the nonnegative one.",
+      "A number that, multiplied by itself, gives the value. Only a value of 0 or more has real square roots. A positive value has two; $\\sqrt{n}$ means the nonnegative one.",
     example: "$\\sqrt{36}=6$; the square roots of 36 are 6 and −6.",
     uses: [],
     band: "8",

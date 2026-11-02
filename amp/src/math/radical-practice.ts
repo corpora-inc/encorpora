@@ -168,9 +168,11 @@ function simplifyCase(r: Random, zero = false, given?: number): Case {
           ]
         : [
             `The square root of a number is the nonnegative number that, times itself, gives it. The number under the root sign is the radicand, here ${n}.`,
-            `Simplest form takes every perfect square (such as 4, 9, 16, 25) out of the radicand. Find the largest one that divides ${n}: $${n} = ${a * a} \\times ${b}$.`,
-            `The square root of a product is the product of the square roots, so the roots can be taken separately: $\\sqrt{${n}} = \\sqrt{${a * a}}\\sqrt{${b}} = ${answer}$.`,
-            `$\\sqrt{${a * a}}$ is ${a} because ${a} × ${a} = ${a * a}. The ${b} has no square factor greater than 1 left, so it stays under the root.`,
+            `In simplest form, no perfect square greater than 1 (such as 4, 9, 16, 25) divides the number left under the root. Find the largest perfect square that divides ${n}: $${n} = ${a * a} \\times ${b}$.`,
+            `For numbers that are 0 or more, the square root of a product is the product of the square roots, so the roots can be taken separately: $\\sqrt{${n}} = \\sqrt{${a * a}}\\sqrt{${b}} = ${answer}$.`,
+            b === 1
+              ? `$\\sqrt{${a * a}}$ is ${a} because ${a} × ${a} = ${a * a}, and $\\sqrt{1} = 1$, so no root is left.`
+              : `$\\sqrt{${a * a}}$ is ${a} because ${a} × ${a} = ${a * a}. The ${b} has no square factor greater than 1, so it stays under the root.`,
             `Check: $${answer} \\times ${answer} = ${n}$. In simplest form, $\\sqrt{${n}}$ is $${answer}$.`,
           ];
   return {
@@ -227,8 +229,12 @@ function combineCase(
   const explanation = [
     "Square roots combine like terms only when the numbers under the root, the radicands, match. Then add the numbers in front, as with $3x + 2x$.",
     "So first simplify each root: take every perfect square factor (4, 9, 16, …) out from under the root sign.",
-    `First term: $${rawTerm(a, m)} = ${text(first)}$.`,
-    `Second term, with its sign: $${rawTerm(b, n)} = ${text(second)}$.`,
+    um === 1 && m > 1
+      ? `First term: ${m} has no perfect square factor greater than 1, so $${rawTerm(a, m)}$ is already simplest.`
+      : `First term: $${rawTerm(a, m)} = ${text(first)}$.`,
+    un === 1 && n > 1
+      ? `Second term, with its sign: ${n} has no perfect square factor greater than 1, so $${rawTerm(b, n)}$ is already simplest.`
+      : `Second term, with its sign: $${rawTerm(b, n)} = ${text(second)}$.`,
     rm === rn
       ? `The radical parts match. Add the signed coefficients: $${a * um} ${b * un < 0 ? "-" : "+"} ${Math.abs(b * un)} = ${a * um + b * un}$. Thus $${opening} = ${text(value)}$.`
       : `The simplified terms have different radical parts, so they remain separate: $${opening} = ${text(value)}$.`,
@@ -309,7 +315,7 @@ function rationalizeCase(r: Random, given?: [number, number, number]): Case {
   const explanation = [
     "Rationalizing the denominator means rewriting the fraction so no square root is left in its bottom, the denominator.",
     factor === 1
-      ? `The root in the denominator, $\\sqrt{${n}}$, has no perfect square factor to take out, so it is already simple.`
+      ? `The root in the denominator, $\\sqrt{${n}}$, has no perfect square factor greater than 1 to take out, so it is already simple.`
       : `First simplify the root in the denominator: $\\sqrt{${n}} = ${text(term(q(1), n))}$. The denominator is $${denominator} = ${simplifiedDenominator}$.`,
     `Multiply the top and the bottom by $\\sqrt{${remaining}}$. That multiplies the fraction by $\\frac{\\sqrt{${remaining}}}{\\sqrt{${remaining}}} = 1$, so its value does not change.`,
     `In the bottom, $\\sqrt{${remaining}} \\times \\sqrt{${remaining}} = ${remaining}$, a whole number, so the root is gone.`,
