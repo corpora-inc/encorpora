@@ -10,6 +10,7 @@ import { createServer } from "vite";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { registerAnalyticsRoutes } from "../src/analytics/routes";
+import { ApiError } from "../src/server/repository";
 import {
   linkCheckoutVisitor,
   recordVerifiedPurchase,
@@ -44,14 +45,34 @@ await migrate(scoped.href);
 const pool = new Pool({ connectionString: scoped.href, max: 4 });
 const api = Fastify();
 await api.register(rateLimit, { max: 600, timeWindow: "1 minute" });
-await registerAnalyticsRoutes(api, { pool });
+await registerAnalyticsRoutes(api, {
+  pool,
+  authenticate: async (request) => {
+    if (request.headers.authorization !== "Bearer synthetic")
+      throw new ApiError(401, "fixture_authentication_required");
+    return "synthetic-parent";
+  },
+});
 const apiPort = 4394,
   port = 4395,
   origin = `http://127.0.0.1:${port}`;
 await api.listen({ host: "127.0.0.1", port: apiPort });
 
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const auth = `export async function accessSession(){return localStorage.getItem('verify.signedIn')?{token:'synthetic',accountId:'synthetic-parent'}:null;}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const auth = `
+const listeners = new Set();
+let revision = 0;
+export async function accessSession(){return localStorage.getItem('verify.signedIn')?{token:'synthetic',accountId:'synthetic-parent'}:null;}
+export function onSessionChanged(update){listeners.add(update);return()=>listeners.delete(update);}
+export async function signIn(){}
+export async function signOut(){}
+export function notifyAccountSessionChanged(checked){
+  const current = ++revision;
+  if(checked !== undefined){for(const listener of listeners) listener(checked);return;}
+  void accessSession().then(session=>{if(current === revision) for(const listener of listeners) listener(session);});
+}
+export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}
+`;
 const vite = await createServer({
   cacheDir: "node_modules/.vite-funnel",
   plugins: [
@@ -105,13 +126,21 @@ async function serve(page: Page, faults: string[]) {
   await page.route("**/api/v1/**", async (route) => {
     const req = route.request(),
       path = new URL(req.url()).pathname.replace("/api/v1", "");
-    if (path === "/events") {
+    if (
+      (path === "/events" && req.method() === "POST") ||
+      (path === "/events/context" && req.method() === "GET")
+    ) {
       // Forward to the real collection endpoint, as a deployment proxy would.
       const forwarded = await fetch(
-        `http://127.0.0.1:${apiPort}/api/v1/events`,
+        `http://127.0.0.1:${apiPort}/api/v1${path}`,
         {
-          method: "POST",
-          headers: { "content-type": req.headers()["content-type"] ?? "" },
+          method: req.method(),
+          headers: {
+            "content-type": req.headers()["content-type"] ?? "",
+            ...(req.headers().authorization
+              ? { authorization: req.headers().authorization }
+              : {}),
+          },
           body: req.postData() ?? undefined,
         },
       );
@@ -120,6 +149,8 @@ async function serve(page: Page, faults: string[]) {
         body: await forwarded.text(),
       });
     }
+    if (path === "/trials/current")
+      return route.fulfill({ json: { trial: null } });
     if (path === "/me")
       return route.fulfill({
         json: {
@@ -244,6 +275,21 @@ try {
     },
   );
   await page.getByRole("button", { name: "Try free" }).click();
+  await page.waitForURL(
+    (url) =>
+      url.pathname === "/sign-up" &&
+      url.searchParams.get("return") === "free-practice",
+  );
+  // Sign-in is supplied by this analytics fixture; the actual guarded trial
+  // screen emits try_click after the session notification reaches its listeners.
+  await page.evaluate(async () => {
+    localStorage.setItem("verify.signedIn", "1");
+    const auth = await import("/src/web/auth.ts" as string);
+    auth.notifyAccountSessionChanged(await auth.accessSession());
+    const { router } = await import("/src/web/app/router.tsx" as string);
+    await router.navigate({ to: "/try" });
+  });
+  await page.getByRole("group", { name: "Birth year" }).waitFor();
   await milestones(page, [
     ["placement_answer", { index: 0 }],
     ["placement_answer", { index: 1 }],
@@ -257,8 +303,7 @@ try {
     ["paywall_view", { reason: "limit" }],
   ]);
   await settled(13);
-  // The parent signs up and opens the plan step.
-  await page.evaluate(() => localStorage.setItem("verify.signedIn", "1"));
+  // The parent opens the plan step after the free assessment.
   await page.goto(`${origin}/start/plan`);
   await page.getByRole("radio", { name: /Monthly/ }).click();
   await page.getByRole("radio", { name: /Annual/ }).click();

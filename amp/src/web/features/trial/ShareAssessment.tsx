@@ -2,12 +2,15 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { buttonClass } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
 import { mapShareImage, type ShareMap } from "../pathways/share-image";
+import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import styles from "./ShareAssessment.module.css";
 
 export function assessmentShare(level: string) {
   return {
     title: "Adaptive Math Pathways",
-    text: `My current math estimate on AMP: ${level}. Think you’re good at math? Try the assessment and explore your pathways.`,
+    text: level
+      ? `My current math estimate on AMP: ${level}. Try the assessment and explore your pathways.`
+      : "Explore connected math skills with Adaptive Math Pathways. Try the assessment and find what to practice next.",
     url: "https://amp.corpora.inc/try",
   };
 }
@@ -72,12 +75,18 @@ function ShareIcon({ name }: { name: IconName }) {
 
 /** Explicit sharing destinations; images stay on this device until downloaded. */
 export function ShareAssessment({
-  level,
+  level: estimatedLevel,
   map,
 }: {
   level: string;
   map?: ShareMap;
 }) {
+  const { scope } = useCurriculumDetails();
+  const [includedScope, setIncludedScope] = useState<string | null>(null);
+  const includeEstimate = includedScope === scope;
+  const setIncludeEstimate = (included: boolean) =>
+    setIncludedScope(included ? scope : null);
+  const level = includeEstimate ? estimatedLevel : "";
   const imageKey = useMemo(
     () => (map ? JSON.stringify([level, map.skills, map.evidence]) : ""),
     [level, map?.skills, map?.evidence],
@@ -130,7 +139,11 @@ export function ShareAssessment({
       {card ? (
         <img
           src={card.url}
-          alt={`Your AMP curriculum map with your ${level} estimate and earned skill illumination`}
+          alt={
+            level
+              ? `Your AMP curriculum map with your ${level} estimate and earned skill illumination`
+              : "Your AMP curriculum map and earned skill illumination"
+          }
           width="1200"
           height="630"
         />
@@ -186,11 +199,26 @@ export function ShareAssessment({
         }}
       >
         <div className={styles.panel}>
+          <label>
+            <input
+              type="checkbox"
+              checked={includeEstimate}
+              onChange={(e) => setIncludeEstimate(e.target.checked)}
+            />{" "}
+            Include my estimated level in this share
+          </label>
+
           {map ? (
             preview
           ) : (
             <p className={styles.estimate}>
-              My current estimate <strong>{level}</strong>
+              {level ? (
+                <>
+                  My current estimate <strong>{level}</strong>
+                </>
+              ) : (
+                "Share an invitation to explore math skills."
+              )}
             </p>
           )}
           <div className={styles.destinations}>
