@@ -549,6 +549,7 @@ export function generateAngleProblem(
       answer = String(m);
       hint = `Ray $${b}${a}$ passes through 0 on the ${right ? "right" : "left"}. Use the scale that starts at 0 there, and follow it to ray $${b}${c}$.`;
       explanation = [
+        `A protractor measures how wide an angle opens, in degrees. Read from the scale that reads 0 on one ray.`,
         `Ray $${b}${a}$ lies on 0 of the ${scale} scale.`,
         `Follow the ${scale} scale from 0 to ray $${b}${c}$: it reads ${m}.`,
         m === 90
@@ -596,7 +597,9 @@ export function generateAngleProblem(
         hint = `Angle $${A}${B}${D}$ is made of the two angles side by side, so their measures add: start from ${p}°.`;
         explanation = [
           `Angles $${A}${B}${C}$ and $${C}${B}${D}$ share ray $${B}${C}$ and do not overlap, so together they make angle $${A}${B}${D}$.`,
-          `$${p} + ${q} = ${W}$, so angle $${A}${B}${D}$ measures ${W}°.`,
+          `When angles sit side by side with no overlap, the whole angle measures their sum.`,
+          `$${p} + ${q} = ${W}$.`,
+          `Angle $${A}${B}${D}$ measures ${W}°.`,
         ];
       } else {
         const known = unknown === "first" ? q : p,
@@ -615,8 +618,10 @@ export function generateAngleProblem(
         answer = String(missing);
         hint = `The two angles fill angle $${A}${B}${D}$ with no overlap. Subtract the known part, ${known}°, from ${W}°.`;
         explanation = [
-          `Angles ${kName} and ${mName} together make angle $${A}${B}${D}$, so ${known}° plus the missing angle is ${W}°.`,
-          `$${W} - ${known} = ${missing}$, so angle ${mName} measures ${missing}°.`,
+          `Angles ${kName} and ${mName} share a ray and do not overlap, so together they make angle $${A}${B}${D}$.`,
+          `So the two parts add to the whole: ${known}° plus the missing angle is ${W}°.`,
+          `Subtraction undoes adding: $${W} - ${known} = ${missing}$.`,
+          `Angle ${mName} measures ${missing}°.`,
         ];
       }
       break;
@@ -687,7 +692,8 @@ export function generateAngleProblem(
         answer = String(total);
         hint = `A full turn is 360°. Find $${part}$ of 360: divide 360 by ${n / g}, then multiply by ${k / g}.`;
         explanation = [
-          `A full turn around the center is 360°, so one of ${n / g} equal parts is $360 \\div ${n / g} = ${(360 * g) / n}$ degrees.`,
+          `A degree (°) is a small unit of turn. A full turn around the center is 360°.`,
+          `Split the full turn into ${n / g} equal parts: each part is $360 \\div ${n / g} = ${(360 * g) / n}$ degrees.`,
           `The shaded angle is ${k / g === 1 ? "1 part" : `${k / g} parts`}: $${k / g} \\times ${(360 * g) / n} = ${total}$.`,
           `The shaded angle measures ${total}°.`,
         ];
@@ -698,7 +704,8 @@ export function generateAngleProblem(
       answer = String(total);
       hint = `A full turn is 360°. Find one of the ${n} equal angles, 360° ÷ ${n}, then count the shaded ones.`;
       explanation = [
-        `A full turn around the center is 360°, so each of the ${n} equal angles is $360 \\div ${n} = ${each}$ degrees.`,
+        `A degree (°) is a small unit of turn. A full turn around the center is 360°.`,
+        `The ${n} equal angles share that full turn, so each is $360 \\div ${n} = ${each}$ degrees.`,
         `${k === 1 ? "1 angle is" : `${k} angles are`} shaded: $${k} \\times ${each} = ${total}$.`,
         `The shaded angle measures ${total}°.`,
       ];
@@ -731,7 +738,9 @@ export function generateAngleProblem(
         straight: "a straight line: the two rays point in opposite directions",
       };
       explanation = [
-        `The opening is ${describe[kind]}.`,
+        `Angles are named by how wide they open compared with a right angle, a square corner that measures 90°.`,
+        `Acute means less than 90°, right means exactly 90°, obtuse means between 90° and 180°, and straight means exactly 180°.`,
+        `This opening is ${describe[kind]}${kind === "acute" ? ", so it is less than 90°" : kind === "obtuse" ? ", so it is between 90° and 180°" : kind === "right" ? ", so it is 90°" : ", so it is 180°"}.`,
         `So it is ${kind === "acute" || kind === "obtuse" ? "an" : "a"} ${kind} angle.`,
       ];
       choices = (["acute", "right", "obtuse", "straight"] as const).map((k) =>
@@ -815,6 +824,7 @@ export function generateAngleProblem(
             ? `ray $${A}${B}$`
             : `line segment $${A}${B}$`;
       explanation = [
+        "An arrow on an end means the figure keeps going forever that way. A dot with no arrow means it stops there.",
         kind === "line"
           ? "Both ends have arrows: it goes on forever both ways."
           : kind === "ray"
@@ -941,7 +951,13 @@ export function generateAngleProblem(
         neither: "neither: they cross, but not at a right angle",
       };
       explanation = [
-        `One line goes ${step(pair[0])}; the other goes ${step(pair[1])}.`,
+        `Parallel lines go the same direction, so they never meet. Perpendicular lines cross at a right angle, a square corner.`,
+        `Step along the dots: one line goes ${step(pair[0])}; the other goes ${step(pair[1])}.`,
+        kind === "parallel"
+          ? `The steps match, so the lines keep the same distance apart and never meet.`
+          : kind === "perpendicular"
+            ? `One line's steps are the other's turned a quarter turn, so they cross at a square corner.`
+            : `The steps do not match and are not a quarter turn of each other, so the lines cross at a corner that is not square.`,
         `So the lines are ${describe[kind]}.`,
       ];
       choices = (["parallel", "perpendicular", "neither"] as const).map((k) =>
@@ -1018,11 +1034,13 @@ export function generateAngleProblem(
       prompt = "Classify this triangle by its angles.";
       hint = `The largest angle is opposite the longest side, which ${runs}. Compare that angle with a right angle.`;
       explanation = [
+        "Triangles are named by their largest angle. A right angle is a square corner, 90°.",
+        "Acute triangle: all three angles less than 90°. Right triangle: one angle exactly 90°. Obtuse triangle: one angle more than 90°.",
         kind === "right"
           ? "The square mark shows one right angle."
           : kind === "obtuse"
-            ? "Its largest angle is wider than a square corner."
-            : "All three angles are smaller than a square corner.",
+            ? "Its largest angle, across from the longest side, is wider than a square corner."
+            : "Even its largest angle, across from the longest side, is smaller than a square corner.",
         `So it is ${kind === "right" ? "a right" : kind === "obtuse" ? "an obtuse" : "an acute"} triangle.`,
       ];
       choices = (["acute", "right", "obtuse"] as const).map((k) =>
@@ -1061,6 +1079,7 @@ export function generateAngleProblem(
           ? "Try folds through two opposite corners, and folds through the middles of two opposite sides. Count each fold whose halves match exactly."
           : "Try folds from each corner through the middle of the side across from it. Count each fold whose halves match exactly.";
       explanation = [
+        `A line of symmetry is a fold line that makes the two halves match exactly, like a mirror.`,
         shape.axes === 0
           ? `No fold of this ${shape.name} makes the two halves match.`
           : `Folding this ${shape.name} along ${shape.axes === 1 ? "its line" : `each of its ${shape.axes} lines`} of symmetry makes the halves match exactly; every other fold leaves a corner sticking out.`,
@@ -1179,6 +1198,7 @@ export function generateAngleProblem(
       prompt = "Which dashed line is a line of symmetry?";
       hint = `This shape has ${points.length} corners. Folded along a line of symmetry, each corner lands exactly on a corner, or on the fold itself.`;
       explanation = [
+        `A line of symmetry is a fold line that makes the two halves match exactly, like a mirror.`,
         `Fold along line ${right}: every corner lands on a matching corner, so the halves match exactly.`,
         `Line ${right} is a line of symmetry of the ${shape.name}.`,
       ];

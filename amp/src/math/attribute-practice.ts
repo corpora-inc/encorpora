@@ -118,10 +118,11 @@ function compareLengths(r: Random): Draft {
           "They are the same length, so neither is longer or shorter.",
         ]
       : [
+          "To compare lengths fairly, the strips must start at the same line.",
           misleading
-            ? `The strips do not start at the same place, so the one that reaches further right is not necessarily longer.`
-            : "Both strips start at the same left edge.",
-          `Lined up at one end, strip ${a > b ? "A" : "B"} reaches further, so it is longer.`,
+            ? `These strips start at different places, so the one that ends further right is not always longer.`
+            : "Both strips start at the same left edge, so compare their right ends.",
+          `Lined up at one end, strip ${a > b ? "A" : "B"} reaches further, so it is longer and strip ${a > b ? "B" : "A"} is shorter.`,
           `Strip ${target} is ${ask}.`,
         ],
     choices: [
@@ -130,14 +131,18 @@ function compareLengths(r: Random): Draft {
         target === "A",
         equal
           ? "The strips start and end at the same places, so they are the same length."
-          : `Line up the left ends: strip ${target} is ${ask}.`,
+          : misleading
+            ? `The strips start at different places, so where they end can fool you. Line up the left ends: strip ${target} is ${ask}.`
+            : `Both strips start at the same line, so look at the right ends. Strip ${target} is ${ask}.`,
       ),
       choice(
         "Strip B",
         target === "B",
         equal
           ? "The strips start and end at the same places, so they are the same length."
-          : `Line up the left ends: strip ${target} is ${ask}.`,
+          : misleading
+            ? `The strips start at different places, so where they end can fool you. Line up the left ends: strip ${target} is ${ask}.`
+            : `Both strips start at the same line, so look at the right ends. Strip ${target} is ${ask}.`,
       ),
       choice(
         "They are the same length.",
@@ -189,16 +194,33 @@ function compareWeights(r: Random): Draft {
       right: { shape: nameB, size: sizeB!, label: "B" },
     },
     explanation: [
+      "A balance works like a seesaw: the heavier side goes down, and a level beam means equal weights.",
       `${cap(nameA)} A is on the left pan and ${nameB} B is on the right pan.`,
       reason,
       heavier === null
-        ? "Neither is heavier or lighter."
+        ? "Neither is heavier or lighter: they weigh the same."
         : `So ${target} is ${ask}. A bigger object is not always heavier.`,
     ],
     choices: [
-      choice(`A (the ${nameA})`, target === "A", reason),
-      choice(`B (the ${nameB})`, target === "B", reason),
-      choice(same, heavier === null, reason),
+      choice(
+        `A (the ${nameA})`,
+        target === "A",
+        heavier === null
+          ? `The beam is level, so the ${nameA} and the ${nameB} weigh the same. Neither is ${ask}.`
+          : `The beam goes down on ${heavier}'s side, so ${heavier} is heavier and ${heavier === "A" ? "B" : "A"} is lighter. Size does not decide weight; the balance does.`,
+      ),
+      choice(
+        `B (the ${nameB})`,
+        target === "B",
+        heavier === null
+          ? `The beam is level, so the ${nameA} and the ${nameB} weigh the same. Neither is ${ask}.`
+          : `The beam goes down on ${heavier}'s side, so ${heavier} is heavier and ${heavier === "A" ? "B" : "A"} is lighter. Size does not decide weight; the balance does.`,
+      ),
+      choice(
+        same,
+        heavier === null,
+        `A level beam would mean the same weight, but this beam tips down on ${heavier}'s side. So ${heavier} is heavier.`,
+      ),
     ],
     ordered: true,
   };
@@ -230,18 +252,37 @@ function compareCapacity(r: Random): Draft {
     hint: `Look at ${B} after pouring. Did the water leave room, fill it exactly, or spill over?`,
     figure: { kind: "pour", eighths },
     explanation: [
+      "Pouring all of one container into another compares how much each holds, its capacity.",
       what,
       answer === "B"
         ? `${cap(B)} can hold all of the water from ${A} and more, so ${B} holds more.`
         : answer === "A"
           ? `The water from ${A} is more than ${B} can hold, so ${A} holds more.`
           : `${cap(B)} holds exactly what ${A} held, so they hold the same amount.`,
-      "A taller container does not always hold more; pouring compares what they hold.",
+      "A taller container does not always hold more; a wide one can hold as much or more.",
     ],
     choices: [
-      choice(`A, ${A}`, answer === "A", what),
-      choice(`B, ${B}`, answer === "B", what),
-      choice("They hold the same amount.", answer === null, what),
+      choice(
+        `A, ${A}`,
+        answer === "A",
+        answer === "B"
+          ? `${cap(A)} is taller, but taller does not mean it holds more. ${what} So ${B} holds more.`
+          : `${what} So ${B} holds exactly as much as ${A}.`,
+      ),
+      choice(
+        `B, ${B}`,
+        answer === "B",
+        answer === "A"
+          ? `${what} If ${B} held more, the water would fit with room to spare. So ${A} holds more.`
+          : `${what} So ${B} holds exactly as much as ${A}.`,
+      ),
+      choice(
+        "They hold the same amount.",
+        answer === null,
+        answer === "A"
+          ? `${what} If they held the same, the water would fill ${B} exactly. So ${A} holds more.`
+          : `${what} If they held the same, the water would fill ${B} exactly. So ${B} holds more.`,
+      ),
     ],
     ordered: true,
   };
@@ -267,7 +308,7 @@ function measureWithUnits(r: Random): Draft {
       ],
     },
     explanation: [
-      `The ${unitName}s start at the end of the ${object} and touch each other, so each one measures one equal part.`,
+      `To measure length with ${unitName}s, line them up from one end, touching, with no gaps or overlaps. Then each ${unitName} counts one equal part.`,
       `Count them: ${Array.from({ length }, (_, i) => i + 1).join(", ")}.`,
       `The ${object} is ${count(length, unitName)} long.`,
     ],
@@ -315,6 +356,7 @@ function correctUnitMeasure(r: Random): Draft {
       })),
     },
     explanation: [
+      `To measure with ${unitName}s, start at one end, keep them touching, and never overlap them. Then each one counts one equal part.`,
       ...wrong.map((role) => `${name(role)} ${why[role]}.`),
       `${name("correct")} ${why.correct}: the ${object} is ${count(length, unitName)} long.`,
     ],
@@ -353,7 +395,8 @@ function orderLengths(r: Random): Draft {
     explanation: [
       `The ${long} ribbon is longer than the ${middle} ribbon.`,
       `The ${middle} ribbon is longer than the ${short} ribbon.`,
-      `So from longest to shortest: ${long}, ${middle}, ${short}. The ${ask} is the ${answer} ribbon.`,
+      `So from longest to shortest: ${long}, ${middle}, ${short}.`,
+      `The ${ask} ribbon is the ${answer} ribbon.`,
     ],
     choices: [long, middle, short].map((colour) =>
       choice(
@@ -361,7 +404,7 @@ function orderLengths(r: Random): Draft {
         colour === answer,
         colour === middle
           ? `The ${middle} ribbon is between the other two: shorter than ${long}, longer than ${short}.`
-          : `From longest to shortest the order is ${long}, ${middle}, ${short}.`,
+          : `That is the ${ask === "longest" ? "shortest" : "longest"} ribbon, the other end of the order. From longest to shortest the order is ${long}, ${middle}, ${short}.`,
       ),
     ),
   };
@@ -397,7 +440,7 @@ function readLiquid(r: Random): Draft {
       level,
     },
     explanation: [
-      `The labels go up by ${big} liters every ${count(labelEvery, "space")}, so each tick mark is ${big} ÷ ${labelEvery} = ${count(step, "liter")}.`,
+      `First find what one tick mark is worth. The labels go up by ${big} liters every ${count(labelEvery, "space")}, so each tick is ${big} ÷ ${labelEvery} = ${count(step, "liter")}.`,
       ticks === 0
         ? `The water is exactly at the ${below}-liter label.`
         : `The water is ${count(ticks, "tick")} above the ${below}-liter label: ${below} + ${ticks} × ${step} = ${level}.`,
@@ -425,7 +468,8 @@ function balanceMass(r: Random): Draft {
       right: { grams },
     },
     explanation: [
-      `The beam is level, so the ${shape} has the same mass as the standard masses.`,
+      `Mass is how heavy something is. A level beam means both pans have the same mass.`,
+      `So the ${shape} has the same mass as the standard masses on the other pan.`,
       `Add them in grams: ${grams.join(" + ")} = ${total}.`,
       `The ${shape} has a mass of ${total} grams.`,
     ],
@@ -447,9 +491,11 @@ function massVolumeStory(r: Random): Draft {
       prompt,
       hint: `Together means join ${a} and ${b}: add the two amounts.`,
       explanation: [
-        `Both amounts are in ${u}s, so add them.`,
-        `${a} + ${b} = ${a + b}.`,
-        `Together: ${count(a + b, u)}.`,
+        `"Together" means join the two amounts, so add.`,
+        `Both amounts are in ${u}s, so they can be added directly: ${a} + ${b} = ${a + b}.`,
+        volume
+          ? `Together they hold ${count(a + b, u)}.`
+          : `Their total mass is ${count(a + b, u)}.`,
       ],
       answer: `${a + b}`,
     };
@@ -468,9 +514,13 @@ function massVolumeStory(r: Random): Draft {
         ? `${b} liters are taken away from ${a}: subtract.`
         : `How many more compares ${a} grams with ${b} grams: subtract the smaller from the larger.`,
       explanation: [
-        `Both amounts are in ${u}s, so subtract.`,
-        `${a} − ${b} = ${a - b}.`,
-        `${volume ? "Left" : "Difference"}: ${count(a - b, u)}.`,
+        volume
+          ? `Water that is used is taken away, so subtract.`
+          : `"How many grams heavier" asks how far apart the two masses are, so subtract the smaller from the larger.`,
+        `Both amounts are in ${u}s, so subtract directly: ${a} − ${b} = ${a - b}.`,
+        volume
+          ? `${count(a - b, u)} ${a - b === 1 ? "is" : "are"} left.`
+          : `The bag of potatoes is ${count(a - b, u)} heavier.`,
       ],
       answer: `${a - b}`,
     };
@@ -486,9 +536,11 @@ function massVolumeStory(r: Random): Draft {
       prompt,
       hint: `${groups} equal amounts of ${each}: multiply.`,
       explanation: [
-        `${groups} equal groups of ${count(each, u)}.`,
-        `${groups} × ${each} = ${groups * each}.`,
-        `In all: ${count(groups * each, u)}.`,
+        `Every ${volume ? "bottle" : "bag"} has the same amount, so this is ${groups} equal groups of ${count(each, u)}.`,
+        `Equal groups are counted with multiplication: ${groups} × ${each} = ${groups * each}.`,
+        volume
+          ? `${groups} bottles hold ${count(groups * each, u)}.`
+          : `The mass of ${groups} bags is ${count(groups * each, u)}.`,
       ],
       answer: `${groups * each}`,
     };
@@ -501,9 +553,11 @@ function massVolumeStory(r: Random): Draft {
     prompt,
     hint: `Share ${total} equally into ${groups} parts: divide.`,
     explanation: [
-      `Share ${count(total, u)} equally among ${groups}.`,
+      `Sharing equally means every ${volume ? "jug" : "bag"} gets the same amount, so divide ${total} into ${groups} equal parts.`,
       `${total} ÷ ${groups} = ${each}, because ${groups} × ${each} = ${total}.`,
-      `Each holds ${count(each, u)}.`,
+      volume
+        ? `Each jug holds ${count(each, u)}.`
+        : `The mass of each bag is ${count(each, u)}.`,
     ],
     answer: `${each}`,
   };
