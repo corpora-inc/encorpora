@@ -111,15 +111,19 @@ async function inspect(html: string, format: "Letter" | "A4") {
           issues.push("Worked example lacks a complete question, explanation, or answer group");
           continue;
         }
-        if (getComputedStyle(example).breakInside !== "auto")
+        const exampleStyle = getComputedStyle(example);
+        if (exampleStyle.breakInside !== "auto")
           issues.push("Worked example cannot flow across pages");
-        const questionHeight = question.at(-1)!.getBoundingClientRect().bottom - question[0]!.getBoundingClientRect().top;
+        // The last question part's break-after also attaches the first step.
+        const questionHeight = stepItems[0]!.getBoundingClientRect().bottom - question[0]!.getBoundingClientRect().top +
+          parseFloat(exampleStyle.paddingTop) + parseFloat(exampleStyle.borderTopWidth);
         if (questionHeight > pageHeight || question.some((item) => !["avoid", "avoid-page"].includes(getComputedStyle(item).breakInside) || !["avoid", "avoid-page"].includes(getComputedStyle(item).breakAfter)))
           issues.push("Worked example question, figure and choices do not form one printable group");
         if (stepItems.some((item) => item.getBoundingClientRect().height > pageHeight || !["avoid", "avoid-page"].includes(getComputedStyle(item).breakInside)))
           issues.push("Worked example explanation item can split or exceed a page");
         const lastStep = stepItems.at(-1)!;
-        const conclusionHeight = answer.getBoundingClientRect().bottom - lastStep.getBoundingClientRect().top;
+        const conclusionHeight = answer.getBoundingClientRect().bottom - lastStep.getBoundingClientRect().top +
+          parseFloat(exampleStyle.paddingBottom) + parseFloat(exampleStyle.borderBottomWidth);
         if (conclusionHeight > pageHeight || !["avoid", "avoid-page"].includes(getComputedStyle(lastStep).breakAfter) ||
             !["avoid", "avoid-page"].includes(getComputedStyle(answer).breakBefore) || !["avoid", "avoid-page"].includes(getComputedStyle(answer).breakInside))
           issues.push("Final worked-example explanation and answer do not form one printable group");
@@ -245,6 +249,10 @@ try {
     safeExample.replace('class="worked-answer"', 'class="worked-answer" style="height:2000px"'),
     safeExample.replace("<ol><li>A reason.</li><li>A conclusion.</li></ol>", ""),
     safeExample.replace('<p class="worked-answer"><strong>Answer:</strong> one.</p>', ""),
+    safeExample.replace("<p>A complete question.</p>", "<p style=\"height:500px\">A complete question.</p>")
+      .replace("<li>A reason.</li>", "<li style=\"height:500px\">A reason.</li>"),
+    safeExample.replace('class="example worked-example"', 'class="example worked-example" style="padding-top:1000px"'),
+    safeExample.replace('class="example worked-example"', 'class="example worked-example" style="padding-bottom:1000px"'),
   ];
   for (const mutation of exampleMutations)
     if (!(await inspect(mutation, "Letter")).length)

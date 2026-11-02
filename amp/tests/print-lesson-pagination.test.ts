@@ -5,9 +5,11 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+import { secureChromium } from "../browser-security.mjs";
 import { lessons } from "../src/content/lessons";
 import { publicationHtml } from "../src/content/publications";
+const chromium = secureChromium(rawChromium);
 
 test("long printed lesson examples retain complete printable question, step and answer groups", {
   skip: !existsSync(chromium.executablePath()) && "Chromium not installed",
@@ -26,7 +28,7 @@ test("long printed lesson examples retain complete printable question, step and 
       input: JSON.stringify(documents), encoding: "utf8", timeout: 60_000,
     });
     assert.equal(result.status, 0, result.stderr || String(result.error));
-    assert.deepEqual(JSON.parse(result.stdout), { documents: 6, rejectedMutations: 24 });
+    assert.deepEqual(JSON.parse(result.stdout), { documents: 6, rejectedMutations: 27 });
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }
