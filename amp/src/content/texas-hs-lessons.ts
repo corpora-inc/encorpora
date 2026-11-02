@@ -1174,7 +1174,7 @@ export const texasHsLessons: Lesson[] = [
       factor: "factor-number",
       product: "product-multiply",
     },
-    noLink: ["left side", "right side", "sides"],
+    noLink: ["left side", "right side", "side", "sides"],
     objectives: [
       "Decide whether two functions give the same result in both orders.",
       "Describe left- and right-sided behavior at an asymptote, hole or jump.",

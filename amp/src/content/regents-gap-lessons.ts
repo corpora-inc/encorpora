@@ -445,7 +445,7 @@ export const regentsGapLessons: Lesson[] = [
       terms: "term-expression",
       product: "product-multiply",
     },
-    noLink: ["leaves", "whole"],
+    noLink: ["leaves", "whole", "parts"],
     objectives: [
       "Find the zeros of a product that includes a factor such as $3x+2$.",
       "Find a zero of an expanded cubic by grouping its terms in pairs.",

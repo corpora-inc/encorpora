@@ -142,6 +142,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   },
   "cubic-quotient-remainder": {
     goal: "Divide a cubic by a linear binomial and write the quotient plus the remainder over the divisor.",
+    noLink: ["part"],
     intuition:
       "Dividing like long division gives a quotient and a remainder: $\\frac{p(x)}{d(x)}=q(x)+\\frac{R}{d(x)}$. The remainder is the part the divisor does not go into evenly, so it is written over the divisor, as in $17\\div5=3+\\frac25$.",
     terms: [
