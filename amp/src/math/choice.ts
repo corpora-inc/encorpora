@@ -1,3 +1,4 @@
+import { count, isAre } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -80,7 +81,7 @@ export function generateChoiceProblem(
       hint = `Cut each of the ${d} pieces of ${n}/${d} into the same number of smaller pieces. The shaded amount stays the same, so the shaded count and the whole count grow by the same factor.`;
       explanation = [
         `Equivalent fractions name the same amount with different numbers.`,
-        `In ${n}/${d}, the bottom number (denominator) says the whole has ${d} equal pieces; the top number (numerator) says ${n} ${n === 1 ? "is" : "are"} shaded.`,
+        `In ${n}/${d}, the bottom number (denominator) says the whole has ${d} equal pieces; the top number (numerator) says ${n} ${isAre(n)} shaded.`,
         `Cut each piece into ${k} equal pieces. The whole now has ${d} × ${k} = ${d * k} pieces, and the shaded part has ${n} × ${k} = ${n * k}.`,
         `Cutting adds no area and removes none, so the shaded amount is the same. Top and bottom were both multiplied by ${k}.`,
         `So ${n * k}/${d * k} names the same amount as ${n}/${d}.`,

@@ -473,7 +473,7 @@ def rate_numeric(prompt):
         a, b = Q(int(m[1])), Q(int(m[2]))
         require(a < b, 'Pool never fills unless the pipe is faster than the drain')
         return 1 / (1 / a - 1 / b)
-    m = re.fullmatch(r'How many liters of a (\d+)% acid solution must be added to (\d+) liters of a (\d+)% acid solution to make a (\d+)% acid solution\?', prompt)
+    m = re.fullmatch(r'How many liters of an? (\d+)% acid solution must be added to (\d+) liters of an? (\d+)% acid solution to make an? (\d+)% acid solution\?', prompt)
     if m:
         strong, volume, weak, goal = (Q(int(g)) for g in m.groups())
         require(weak < goal < strong, 'Target concentration must lie between the two')

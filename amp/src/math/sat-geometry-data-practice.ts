@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   assemble,
@@ -278,8 +279,8 @@ function trigCase(r: Random): SatGeometryDataCase {
         const ans = reach ? L * ls : L * lc;
         if (!safe(ans)) continue;
         prompt = reach
-          ? `A ${L}-foot ladder leans against a vertical wall and makes a ${lt}° angle with the level ground. How high up the wall does the ladder reach, in feet? ${rule}`
-          : `A ${L}-foot ladder leans against a vertical wall and makes a ${lt}° angle with the level ground. How far is the foot of the ladder from the wall, in feet? ${rule}`;
+          ? `${article(L, true)} ${L}-foot ladder leans against a vertical wall and makes ${article(lt)} ${lt}° angle with the level ground. How high up the wall does the ladder reach, in feet? ${rule}`
+          : `${article(L, true)} ${L}-foot ladder leans against a vertical wall and makes ${article(lt)} ${lt}° angle with the level ground. How far is the foot of the ladder from the wall, in feet? ${rule}`;
         hint = `The ladder, the wall and the ground form a right triangle, and the ${lt}° angle is at the foot of the ladder. The ladder is the hypotenuse. Decide whether the ${reach ? "height on the wall" : "distance along the ground"} is opposite or adjacent to that angle.`;
         correct = len(ans, "feet");
         wrong = [
@@ -311,7 +312,7 @@ function trigCase(r: Random): SatGeometryDataCase {
         const h = r(8, 30);
         const ans = h / ls;
         if (!safe(ans)) continue;
-        prompt = `A ladder must reach a window ${h} feet above level ground and make a ${lt}° angle with the ground. How long must the ladder be, in feet? ${rule}`;
+        prompt = `A ladder must reach a window ${h} feet above level ground and make ${article(lt)} ${lt}° angle with the ground. How long must the ladder be, in feet? ${rule}`;
         hint = `The window height ${h} feet is the leg opposite the ${lt}° angle at the foot of the ladder, and the ladder is the hypotenuse. Choose the ratio that links the opposite leg and the hypotenuse, then solve for the hypotenuse.`;
         correct = len(ans, "feet");
         wrong = [

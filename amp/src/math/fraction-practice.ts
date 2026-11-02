@@ -4,7 +4,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
-import { isAre } from "./agreement.js";
+import { isAre, count } from "./agreement.js";
 
 // ID | title | skill | instructional grade | book page | bounded numeric objective
 const rows = `
@@ -71,9 +71,6 @@ function random(id: string, seed: string) {
   };
 }
 const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
-/** "1 piece", "3 pieces". */
-const count = (n: number, one: string, many = `${one}s`) =>
-  `${n} ${n === 1 ? one : many}`;
 /** A unit after a fraction or whole: singular for amounts of at most 1. */
 const unitAfter = (value: string, one: string) => {
   const [n, d = "1"] = value.split("/");
@@ -270,7 +267,7 @@ export function generateFractionPracticeProblem(
       label = "Missing numerator";
       answer = `${w * d + n}`;
       figure = strips(d, w * d + n, "one whole");
-      hint = `Each whole is ${d} pieces, so ${w} ${w === 1 ? "whole holds" : "wholes hold"} ${w} × ${d} pieces. Then add the ${n} extra pieces.`;
+      hint = `Each whole is ${d} pieces, so ${w} ${w === 1 ? "whole holds" : "wholes hold"} ${w} × ${d} pieces. Then add the ${count(n, "extra piece")}.`;
       explanation = [
         `${w} ${n}/${d} is a mixed number: ${w === 1 ? "1 whole" : `${w} wholes`} plus ${n}/${d} more.`,
         `Each whole holds ${d} pieces of size 1/${d}, so ${w === 1 ? "1 whole holds" : `${w} wholes hold`} ${w} × ${d} = ${w * d} pieces.`,

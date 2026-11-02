@@ -199,7 +199,7 @@ ONE_STEP_STORIES = [
     (r'A class had some stickers\. The teacher added (\d+) more, and now the class has (\d+) stickers\. Let (s) be the number of stickers the class had at first\.', 'add'),
     (r'Rain raised the water in a barrel by (\d+) centimeters\. The water is now (\d+) centimeters deep\. Let (d) be the depth before the rain, in centimeters\.', 'add'),
     (r'A bakery sold (\d+) muffins in the morning and had (\d+) muffins left\. Let (m) be the number of muffins the bakery had at the start\.', 'subtract'),
-    (r'A (\d+)-centimeter piece was cut from a ribbon, leaving (\d+) centimeters\. Let (r) be the ribbon\'s original length, in centimeters\.', 'subtract'),
+    (r'An? (\d+)-centimeter piece was cut from a ribbon, leaving (\d+) centimeters\. Let (r) be the ribbon\'s original length, in centimeters\.', 'subtract'),
     (r'Museum tickets cost (\d+) dollars each\. A class paid (\d+) dollars for tickets\. Let (t) be the number of tickets the class bought\.', 'groups'),
     (r'A hall has (\d+) chairs set out in rows of (\d+)\. Let (r) be the number of rows\.', 'rows'),
     (r'A box of pencils is shared equally among (\d+) students, and each student gets (\d+) pencils\. Let (n) be the number of pencils in the box\.', 'share'),
@@ -235,7 +235,7 @@ def dollars(text):
 
 
 TWO_STEP_STORIES = {
-    'gym': r'A gym charges a (\d+)-dollar sign-up fee plus (\d+) dollars per month\. Ravi has paid (\d+) dollars in all\.',
+    'gym': r'A gym charges an? (\d+)-dollar sign-up fee plus (\d+) dollars per month\. Ravi has paid (\d+) dollars in all\.',
     'savings': r'Mia has (\d+) dollars saved and adds (\d+) dollars each week\. She wants to have (\d+) dollars\.',
     'taxi': r'A taxi ride costs (\d+(?:\.\d\d)?) dollars to start plus (\d+(?:\.\d\d)?) dollars for each mile\. Ana\'s ride cost (\d+(?:\.\d\d)?) dollars\.',
     'tank': r'A tank holds (\d+) liters of water\. It drains (\d+) liters each minute until it holds (\d+) liters\.',

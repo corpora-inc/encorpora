@@ -1,3 +1,4 @@
+import { nounFor, isAre, article } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -565,7 +566,7 @@ function randomVariableCase(r: Random): Built {
           explanation: [
             RANDOM_VARIABLE,
             `Each toss has 2 results, so ${n} tosses have $2^{${n}}=${total}$ equally likely sequences.`,
-            `$\\binom{${n}}{${k}}$, read "${n} choose ${k}", counts the ways to pick which ${k} of the ${n} tosses are heads. Here it is ${ways}.`,
+            `$\\binom{${n}}{${k}}$, read "${n} choose ${k}", counts the ways to pick which ${k} of the ${n} tosses ${isAre(k)} heads. Here it is ${ways}.`,
             `Probability is favorable outcomes over all outcomes: $P(X=${k})=\\frac{${ways}}{${total}}$${gcd(ways, total) > 1 ? `, which reduces to ${correct}` : ""}.`,
             `So $P(X=${k})=${frac(ways, total)}$.`,
           ],
@@ -954,7 +955,7 @@ function theoreticalCase(r: Random): Built {
     const w = r(3, 20);
     const l = r(1, 8);
     const num = ev.ways * w - (36 - ev.ways) * l;
-    const correct = `$${frac(num, 36)}$ dollars`;
+    const correct = `$${frac(num, 36)}$ ${nounFor(frac(num, 36), "dollar")}`;
     const swapped = ev.ways * l - (36 - ev.ways) * w;
     return {
       variant,
@@ -966,26 +967,26 @@ function theoreticalCase(r: Random): Built {
           EXPECTED,
           `${ev.text.charAt(0).toUpperCase()}${ev.text.slice(1)} in ${ev.ways} of the 36 equally likely pairs. So $P(\\text{win})=\\frac{${ev.ways}}{36}$ and $P(\\text{lose})=\\frac{${36 - ev.ways}}{36}$.`,
           `$E(X)=${w}\\cdot\\frac{${ev.ways}}{36}+(-${l})\\cdot\\frac{${36 - ev.ways}}{36}=\\frac{${ev.ways * w}-${(36 - ev.ways) * l}}{36}=\\frac{${num}}{36}$.`,
-          `In lowest terms, $E(X)=${frac(num, 36)}$. ${num === 0 ? "On average you break even over many games." : `On average you ${num > 0 ? "gain" : "lose"} $${frac(Math.abs(num), 36)}$ dollars per game over many games.`}`,
+          `In lowest terms, $E(X)=${frac(num, 36)}$. ${num === 0 ? "On average you break even over many games." : `On average you ${num > 0 ? "gain" : "lose"} $${frac(Math.abs(num), 36)}$ ${nounFor(frac(Math.abs(num), 36), "dollar")} per game over many games.`}`,
         ],
         choices: options(r, correct, [
           {
-            label: `$${frac(w - l, 2)}$ dollars`,
+            label: `$${frac(w - l, 2)}$ ${nounFor(frac(w - l, 2), "dollar")}`,
             feedback:
               "That averages the two payoffs as if they were equally likely. Weight each payoff by its probability.",
           },
           {
-            label: `$${frac(ev.ways * w, 36)}$ dollars`,
+            label: `$${frac(ev.ways * w, 36)}$ ${nounFor(frac(ev.ways * w, 36), "dollar")}`,
             feedback:
               "That leaves out the loss. Include the negative payoff times its probability.",
           },
           {
-            label: `$${frac(swapped, 36)}$ dollars`,
+            label: `$${frac(swapped, 36)}$ ${nounFor(frac(swapped, 36), "dollar")}`,
             feedback:
               "The probabilities are swapped: the winning payoff goes with the smaller number of favorable outcomes in this event.",
           },
           {
-            label: `$${num}$ dollars`,
+            label: `$${num}$ ${nounFor(num, "dollar")}`,
             feedback:
               "This forgets to divide. Divide the total by the 36 equally likely outcomes to get an expected value per game.",
           },
@@ -1012,7 +1013,7 @@ function theoreticalCase(r: Random): Built {
           RANDOM_VARIABLE,
           `Independent means one shot does not affect another, so probabilities multiply. A miss has probability $1-${p}=\\frac{${b - a}}{${b}}$.`,
           `One order with ${k} make${k === 1 ? "" : "s"} and ${3 - k} miss${3 - k === 1 ? "" : "es"} has probability $\\left(${p}\\right)^{${k}}\\left(\\frac{${b - a}}{${b}}\\right)^{${3 - k}}=\\frac{${a ** k * (b - a) ** (3 - k)}}{${denom}}$.`,
-          `$\\binom{3}{${k}}$, read "3 choose ${k}", counts the orders: which ${k} of the 3 shots are makes. It is ${choose(3, k)}.`,
+          `$\\binom{3}{${k}}$, read "3 choose ${k}", counts the orders: which ${k} of the 3 shots ${isAre(k)} ${k === 1 ? "a make" : "makes"}. It is ${choose(3, k)}.`,
           `Multiply: $P(X=${k})=${choose(3, k)}\\cdot\\frac{${a ** k * (b - a) ** (3 - k)}}{${denom}}=\\frac{${nums[k]}}{${denom}}$${gcd(nums[k]!, denom) > 1 ? `, which reduces to ${correct}` : ""}.`,
           `So $P(X=${k})=${frac(nums[k]!, denom)}$.`,
         ],
@@ -1062,7 +1063,7 @@ function theoreticalCase(r: Random): Built {
         EXPECTED,
         `$E(X)=0\\cdot P(0)+1\\cdot P(1)+2\\cdot P(2)+3\\cdot P(3)$.`,
         `The numerators give $0\\cdot${nums[0]}+1\\cdot${nums[1]}+2\\cdot${nums[2]}+3\\cdot${nums[3]}=${total}$ over ${denom}.`,
-        `$E(X)=\\frac{${total}}{${denom}}$${gcd(total, denom) > 1 ? `, which reduces to ${correct}` : ""} shots made out of 3, on average.`,
+        `$E(X)=\\frac{${total}}{${denom}}$${gcd(total, denom) > 1 ? `, which reduces to ${correct}` : ""} ${nounFor(gcd(total, denom) > 1 ? correct : `${total}/${denom}`, "shot")} made out of 3, on average.`,
       ],
       choices: options(r, correct, [
         {
@@ -1309,25 +1310,25 @@ function strategyCase(r: Random): Built {
         draft: {
           prompt: `Four games are offered. ${lines} Which game has the greatest expected net gain per play (prize chance times prize, minus the cost)?`,
           answer: correct,
-          hint: `For one game, such as the one with a ${games[0]!.w}-dollar prize at probability $${frac(games[0]!.k, games[0]!.d)}$ and cost ${games[0]!.c}, multiply the prize by its probability and subtract the cost. Do that for each game and compare.`,
+          hint: `For one game, such as the one with ${article(games[0]!.w)} ${games[0]!.w}-dollar prize at probability $${frac(games[0]!.k, games[0]!.d)}$ and cost ${games[0]!.c}, multiply the prize by its probability and subtract the cost. Do that for each game and compare.`,
           explanation: [
             `${EXPECTED} For each game: prize times its chance, minus the cost you always pay.`,
           ]
             .concat(
               games.map(
                 (g, i) =>
-                  `Game $${names[i]}$: $${g.w}\\cdot${frac(g.k, g.d)}-${g.c}=${frac(nets[i]!.n, nets[i]!.d)}$ dollars.`,
+                  `Game $${names[i]}$: $${g.w}\\cdot${frac(g.k, g.d)}-${g.c}=${frac(nets[i]!.n, nets[i]!.d)}$ ${nounFor(frac(nets[i]!.n, nets[i]!.d), "dollar")}.`,
               ),
             )
             .concat([
-              `The greatest expected net gain is ${bestText} dollars, so the best choice is ${correct}.`,
+              `The greatest expected net gain is ${bestText} ${nounFor(bestText, "dollar")}, so the best choice is ${correct}.`,
             ]),
           choices: names.map((name, i) =>
             i === bestIndex
               ? { label: `Game $${name}$`, correct: true as const }
               : {
                   label: `Game $${name}$`,
-                  feedback: `Game $${name}$ has expected net gain $${frac(nets[i]!.n, nets[i]!.d)}$ dollars, which is less than the best game's ${bestText} dollars.`,
+                  feedback: `Game $${name}$ has expected net gain $${frac(nets[i]!.n, nets[i]!.d)}$ ${nounFor(frac(nets[i]!.n, nets[i]!.d), "dollar")}, which is less than the best game's ${bestText} ${nounFor(bestText, "dollar")}.`,
                 },
           ),
         },
@@ -1353,12 +1354,12 @@ function strategyCase(r: Random): Built {
     return {
       variant,
       draft: {
-        prompt: `A warranty costs ${price} dollars. Without it, there is a probability of $${frac(k, d)}$ that you pay a ${R}-dollar repair bill and otherwise pay nothing. Which statement is justified by comparing expected costs?`,
+        prompt: `A warranty costs ${price} dollars. Without it, there is a probability of $${frac(k, d)}$ that you pay ${article(R)} ${R}-dollar repair bill and otherwise pay nothing. Which statement is justified by comparing expected costs?`,
         answer: correct,
         hint: `Expected repair cost without the warranty = repair bill × probability of needing it: ${R} × $${frac(k, d)}$. Compare that expected cost with the ${price}-dollar price.`,
         explanation: [
           EXPECTED,
-          `Without the warranty, you pay ${R} dollars with probability $${frac(k, d)}$, and 0 otherwise. Expected cost: $${R}\\cdot${frac(k, d)}=${exp}$ dollars.`,
+          `Without the warranty, you pay ${R} dollars with probability $${frac(k, d)}$, and 0 otherwise. Expected cost: $${R}\\cdot${frac(k, d)}=${exp}$ ${nounFor(exp, "dollar")}.`,
           `With the warranty, you pay ${price} dollars for sure.`,
           `${exp} dollars is ${buy ? "more" : "less"} than ${price} dollars, so on average ${buy ? "buying the warranty costs less." : "skipping the warranty costs less."}`,
         ],
@@ -1397,10 +1398,10 @@ function strategyCase(r: Random): Built {
     const e = `$${frac(n, den)}$`;
     const diff = n - S * den;
     if (diff > 0)
-      return `Take the gamble: its expected value, ${e} dollars, is more than the sure ${S} dollars.`;
+      return `Take the gamble: its expected value, ${e} ${nounFor(e, "dollar")}, is more than the sure ${S} dollars.`;
     if (diff < 0)
-      return `Take the sure amount: the gamble's expected value, ${e} dollars, is less than the sure ${S} dollars.`;
-    return `Either choice: the gamble's expected value, ${e} dollars, equals the sure ${S} dollars.`;
+      return `Take the sure amount: the gamble's expected value, ${e} ${nounFor(e, "dollar")}, is less than the sure ${S} dollars.`;
+    return `Either choice: the gamble's expected value, ${e} ${nounFor(e, "dollar")}, equals the sure ${S} dollars.`;
   };
   const correct = claim(num, d);
   return {
@@ -1412,7 +1413,7 @@ function strategyCase(r: Random): Built {
       explanation: [
         EXPECTED,
         `The losing probability is what is left of 1: $1-${frac(k, d)}=${frac(d - k, d)}$.`,
-        `Expected value of the gamble: $${W}\\cdot${frac(k, d)}+(${L})\\cdot${frac(d - k, d)}=${frac(num, d)}$ dollars.`,
+        `Expected value of the gamble: $${W}\\cdot${frac(k, d)}+(${L})\\cdot${frac(d - k, d)}=${frac(num, d)}$ ${nounFor(frac(num, d), "dollar")}.`,
         `${correct}`,
       ],
       choices: options(r, correct, [
