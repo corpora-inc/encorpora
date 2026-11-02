@@ -11,6 +11,14 @@ import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
  * Round-2 problem types inside existing number, expression, area, estimation,
  * unit and fraction skills. Each template is new; no existing template changes.
  */
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const OPENERS: Record<string, string[]> = {
+  "unit-chain-conversion": [
+    "A conversion factor is a fraction equal to 1, such as 12 inches over 1 foot. Multiply by factors that cancel the unit you have and leave the unit you want.",
+  ],
+};
+
 export const numberMeasurementGapTemplates: readonly TemplateMetadata[] = [
   {
     id: "signed-context-order",
@@ -1430,7 +1438,10 @@ export function numberMeasurementGapCase(templateId: string, seed: string) {
       throw error;
     }
     if (leaks(draft)) continue;
-    const problem = assemble(meta, seed, r, draft);
+    const problem = assemble(meta, seed, r, {
+      ...draft,
+      explanation: [...(OPENERS[meta.id] ?? []), ...draft.explanation],
+    });
     return {
       variant: draft.variant,
       problem: axes
