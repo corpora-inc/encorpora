@@ -1337,3 +1337,24 @@ test("read-thermometer: the bar surface is byte-identical, and drawn thermometer
   });
   assert.deepEqual([...seen].sort(), ["bar-scale", "thermometer"]);
 });
+
+test("pattern-term-unknown-rule: a falling pattern is explained as subtracting, not adding a negative", () => {
+  let falling = 0;
+  for (const p of prompts("pattern-term-unknown-rule")) {
+    const text = p.explanation.join(" ");
+    assert.doesNotMatch(text, /adding\s*[−-]\d/, text);
+    const list = listOf(p.public.prompt.split("What")[0]!);
+    const d = list.slice(1).map((v, i) => v - list[i]!);
+    if (d.every((v) => v === d[0]) && d[0]! < 0) {
+      falling++;
+      assert.match(
+        text,
+        new RegExp(
+          `Each number is ${-d[0]!} less than the one before, so keep subtracting ${-d[0]!}\\.`,
+        ),
+        text,
+      );
+    }
+  }
+  assert.ok(falling > 0, "the sample includes falling patterns");
+});
