@@ -11,6 +11,7 @@ import { lessonGlossaryContext } from "../src/content/problem-lessons";
 import { glossary } from "../src/glossary/index";
 import {
   contextConflicts,
+  siblingNoLinks,
   entryContext,
   linkTerms,
   type LinkContext,
@@ -82,4 +83,15 @@ test("the linker warns once when a context names a form both ways", (t) => {
   linkTerms("the whole bar again", context);
   assert.equal(warn.mock.callCount(), 1);
   assert.match(String(warn.mock.calls[0]!.arguments[0]), /"whole"/);
+});
+
+test("siblingNoLinks finds a muted form of a named entry", () => {
+  assert.deepEqual(
+    siblingNoLinks({ senses: { side: "side" }, noLink: ["sides", "whole"] }),
+    [{ form: "sides", id: "side" }],
+  );
+  assert.deepEqual(
+    siblingNoLinks({ senses: { side: "side" }, noLink: ["side"] }),
+    [],
+  );
 });

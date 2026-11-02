@@ -137,7 +137,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
       "A rate is an amount per unit of time. A painter who finishes a fence in 4 hours paints $\\frac{1}{4}$ of it each hour. Rates working together add, and a rate working against another subtracts. Times for sharing one job do not combine like that, so change them into rates or totals first. The concentration of a mixture is the amount of pure substance divided by the total amount.",
     terms: ["rate", "concentration", "average-speed"],
     senses: { ...satSenses, average: "mean-average" },
-    noLink: satNoLink.filter((w) => !["average", "unit"].includes(w)),
+    noLink: satNoLink.filter((w) => !["average", "unit", "units"].includes(w)),
     method: [
       "Name what is measured. Write each given as an amount per unit of time, or as an amount of the pure substance.",
       "Combine. Add rates working together and subtract a rate working against. For a mixture, add the amounts of pure substance. For a trip, add the distances and add the times.",

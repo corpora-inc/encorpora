@@ -1786,7 +1786,7 @@ export function rationalExponentEquationCase(seed: string): TexasHsCase {
     prompt: `Solve $${exp}=${k}$ for all real $x$.`,
     hint: `Raise both sides to the reciprocal of the exponent, $\\frac{${qq}}{${p}}$. ${both ? "Think about whether a negative $x$ could also work." : qq % 2 === 0 ? "Think about which $x$ the even root allows." : ""}`.trim(),
     explanation: [
-      `The reciprocal of $\\frac{${p}}{${qq}}$ is $\\frac{${qq}}{${p}}$. Since $\\left(x^{\\frac{${p}}{${qq}}}\\right)^{\\frac{${qq}}{${p}}}=x$, raise both sides to that power.`,
+      `The reciprocal of $\\frac{${p}}{${qq}}$ is $\\frac{${qq}}{${p}}$. ${p % 2 === 1 && qq % 2 === 1 ? `Both numbers are odd, so $\\left(x^{\\frac{${p}}{${qq}}}\\right)^{\\frac{${qq}}{${p}}}=x$ for every real $x$.` : `For $x\\ge0$, $\\left(x^{\\frac{${p}}{${qq}}}\\right)^{\\frac{${qq}}{${p}}}=x$.`} Raise both sides to that power.${both ? " This finds the solution that is 0 or more; the last step checks a negative one." : ""}`,
       `${k} is ${negative ? `$-${t}^{${p}}$` : `$${t}^{${p}}$`}, so the right side becomes ${negative ? "$-" : "$"}${t}^{${qq}}=${negative ? -base : base}$.${restrict}`,
       both
         ? `The exponent's numerator ${p} is even, so $x$ and $-x$ both give ${k}. Check: $${base}^{${frac}}=${k}$ and $${par(-base)}^{${frac}}=${k}$. The solutions are ${right}.`

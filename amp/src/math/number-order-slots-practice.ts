@@ -350,7 +350,7 @@ export const numberOrderSlotsGenerate = defineGenerate(
         ),
         hint: `Sort by sign first: ${list(negatives.map(t))} are left of zero. Of two negative numbers, the one farther from zero is the lesser.`,
         explanation: [
-          `Write every number as a decimal: ${list(shown.map((s) => s.tex.includes("frac") ? `$${s.tex}=${dec(s.value)}$` : `$${s.tex}$`))}.`,
+          `Write every number as a decimal: ${list(shown.map((s) => (s.tex.includes("frac") ? `$${s.tex}=${dec(s.value)}$` : `$${s.tex}$`)))}.`,
           `Farther left on the number line means lesser. In order from least to greatest: $${ascending.map((s) => dec(s.value)).join("<")}$.`,
           `${axes.order === "least-first" ? "Least to greatest" : "Greatest to least"}: ${ordered.map(t).join(", ")}.`,
         ],

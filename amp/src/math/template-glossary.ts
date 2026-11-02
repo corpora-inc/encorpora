@@ -16,7 +16,7 @@ const glossary: Record<
       vertices: "vertex",
       similar: "similar-figures",
     },
-    noLink: ["sides", "similar triangles", "similarity", "third"],
+    noLink: ["third"],
   },
   "abs-equals-linear-unique": {
     senses: { opposite: "opposite-number" },
@@ -71,11 +71,12 @@ const glossary: Record<
   "addition-rule-steps": { senses: { events: "event" }, noLink: ["leaves"] },
   "angle-chase-chain": {
     senses: {
+      sides: "side-of-equation",
       degrees: "degree-angle",
       "more than": "more-than",
       "corresponding angles": "corresponding-angles",
     },
-    noLink: ["opposite", "sides", "third"],
+    noLink: ["opposite", "third"],
   },
   "angle-claim-reasoning": {
     senses: { degrees: "degree-angle", "more than": "more-than" },
@@ -219,7 +220,7 @@ const glossary: Record<
       plane: "plane",
       planes: "plane",
     },
-    noLink: ["bases", "square"],
+    noLink: ["square"],
   },
   "change-of-base": {
     senses: {
@@ -239,7 +240,7 @@ const glossary: Record<
       tangent: "tangent-line",
       tangents: "tangent-line",
     },
-    noLink: ["sides", "tangent line", "terms"],
+    noLink: ["terms"],
   },
   "circle-dilation-scaling": {
     senses: {
@@ -252,6 +253,7 @@ const glossary: Record<
   },
   "circle-equation": {
     senses: {
+      sides: "side-of-equation",
       change: "change",
       square: "square-number",
       squared: "square-number",
@@ -260,7 +262,7 @@ const glossary: Record<
       terms: "term-expression",
       center: "center",
     },
-    noLink: ["opposite", "right side", "sides"],
+    noLink: ["opposite", "right side"],
   },
   "circle-estimate-blanks": { noLink: ["edge"] },
   "circle-line-system": {
@@ -269,7 +271,7 @@ const glossary: Record<
   },
   "circle-radii-triangle": {
     senses: { degrees: "degree-angle", center: "center" },
-    noLink: ["opposite", "sides"],
+    noLink: ["opposite"],
   },
   "circle-segment-lengths": {
     senses: {
@@ -286,10 +288,8 @@ const glossary: Record<
       "opposite",
       "part",
       "parts",
-      "point of tangency",
       "sides",
       "similar triangles",
-      "tangent line",
       "whole",
     ],
   },
@@ -351,18 +351,19 @@ const glossary: Record<
       "more than": "more-than",
       "corresponding angles": "corresponding-angles",
     },
-    noLink: ["key", "sides"],
+    noLink: ["key"],
   },
   "compatible-number-estimate": {
     senses: { multiple: "multiple", multiples: "multiple" },
   },
   "complementary-trig": {
     senses: {
+      sides: "side-of-equation",
       complement: "complement-probability",
       complements: "complement-probability",
       "opposite side": "opposite-side-angle",
     },
-    noLink: ["opposite", "sides"],
+    noLink: ["opposite"],
   },
   "complete-square-equation": {
     senses: {
@@ -421,11 +422,12 @@ const glossary: Record<
   },
   "complete-square-term": {
     senses: {
+      sides: "side",
+      side: "side",
       factors: "factor-number",
       square: "square-number",
       term: "term-expression",
     },
-    noLink: ["side", "sides"],
   },
   "complex-conjugate-division": {
     senses: {
@@ -636,7 +638,7 @@ const glossary: Record<
       vertex: "vertex",
       vertices: "vertex",
     },
-    noLink: ["opposite", "sides"],
+    noLink: ["opposite"],
   },
   "coordinate-quadrilateral-claims": {
     senses: {
@@ -646,7 +648,7 @@ const glossary: Record<
       square: "square-number",
       squared: "square-number",
     },
-    noLink: ["opposite", "sides"],
+    noLink: ["opposite"],
   },
   "correlation-causation-choice": {
     senses: { change: "change" },
@@ -666,7 +668,6 @@ const glossary: Record<
       "corresponding angles": "corresponding-angles",
       similar: "similar-figures",
     },
-    noLink: ["similar triangles", "similarity"],
   },
   "count-relation-chain": {
     senses: { difference: "difference-subtract", term: "term-expression" },
@@ -683,7 +684,7 @@ const glossary: Record<
       vertices: "vertex",
       similar: "similar-figures",
     },
-    noLink: ["opposite", "similar triangles"],
+    noLink: ["opposite"],
   },
   "cube-root-equation": {
     senses: {
@@ -709,7 +710,7 @@ const glossary: Record<
       edge: "edge",
       solids: "solid-shape",
     },
-    noLink: ["bases", "faces"],
+    noLink: ["faces"],
   },
   "customary-unit-reverse": { noLink: ["whole"] },
   "decimal-both-sides-equation": {
@@ -802,7 +803,7 @@ const glossary: Record<
       side: "side-of-equation",
       term: "term-expression",
     },
-    noLink: ["left side", "sides", "terms"],
+    noLink: ["terms"],
   },
   "equation-step-property": {
     senses: {
@@ -826,7 +827,6 @@ const glossary: Record<
       term: "term-expression",
       terms: "term-expression",
     },
-    noLink: ["products"],
   },
   "event-complement-set": {
     senses: {
@@ -889,7 +889,6 @@ const glossary: Record<
       side: "side-of-equation",
       sides: "side-of-equation",
     },
-    noLink: ["parameters"],
   },
   "exponential-parameters-blanks": {
     senses: {
@@ -989,10 +988,10 @@ const glossary: Record<
   },
   "fl-trapezoid-consequences": {
     senses: { average: "mean-average" },
-    noLink: ["base", "bases", "sides"],
+    noLink: ["base", "bases"],
   },
   "fl-vector-angle": { senses: { multiple: "multiple" }, noLink: ["plane"] },
-  "fl-vector-dot-product": { noLink: ["products"] },
+  "fl-vector-dot-product": {},
   "formula-isolate": {
     senses: {
       product: "product-multiply",
@@ -1068,7 +1067,7 @@ const glossary: Record<
   "gcf-factor-sum": { senses: { factor: "factor-number" } },
   "geo-altitude-hypotenuse": {
     senses: { side: "side", sides: "side", similar: "similar-figures" },
-    noLink: ["part", "parts", "similar triangles", "whole"],
+    noLink: ["part", "parts", "whole"],
   },
   "geo-altitude-ratio": {
     senses: {
@@ -1076,7 +1075,7 @@ const glossary: Record<
       "opposite side": "opposite-side-angle",
       tangent: "tangent-trig",
     },
-    noLink: ["opposite", "sides", "whole"],
+    noLink: ["opposite", "whole"],
   },
   "geo-arc-length-rounded": {
     senses: {
@@ -1099,14 +1098,7 @@ const glossary: Record<
   },
   "geo-centroid-median": {
     senses: { vertex: "vertex", "opposite side": "opposite-side-angle" },
-    noLink: [
-      "balance",
-      "median of a triangle",
-      "part",
-      "parts",
-      "thirds",
-      "whole",
-    ],
+    noLink: ["balance", "median of a triangle", "part", "parts", "whole"],
   },
   "geo-circle-general-form": {
     senses: {
@@ -1117,11 +1109,11 @@ const glossary: Record<
       squared: "square-number",
       squares: "square-number",
     },
-    noLink: ["opposite", "right side", "sides"],
+    noLink: ["opposite"],
   },
   "geo-complementary-trig-choice": {
-    senses: { complement: "complement-probability" },
-    noLink: ["opposite", "sides", "third"],
+    senses: { sides: "side-of-equation", complement: "complement-probability" },
+    noLink: ["opposite", "third"],
   },
   "geo-density-rank": {
     senses: { population: "population", populations: "population" },
@@ -1159,11 +1151,10 @@ const glossary: Record<
       factor: "factor-number",
       similar: "similar-figures",
     },
-    noLink: ["similar triangles"],
   },
   "geo-isosceles-exterior-angle": {
     senses: { degrees: "degree-angle", vertex: "vertex" },
-    noLink: ["opposite", "sides"],
+    noLink: ["opposite"],
   },
   "geo-isosceles-trig": {
     senses: {
@@ -1203,10 +1194,10 @@ const glossary: Record<
       "corresponding angles": "corresponding-angles",
       similar: "similar-figures",
     },
-    noLink: ["factor", "part", "sides", "whole"],
+    noLink: ["factor", "part", "whole"],
   },
   "geo-parallel-segment-length": {
-    noLink: ["part", "parts", "sides", "whole"],
+    noLink: ["part", "parts", "whole"],
   },
   "geo-parallel-statement": {
     senses: {
@@ -1216,7 +1207,7 @@ const glossary: Record<
       "corresponding angles": "corresponding-angles",
       similar: "similar-figures",
     },
-    noLink: ["opposite", "similar triangles"],
+    noLink: ["opposite"],
   },
   "geo-parallelogram-sufficient": {
     senses: { side: "side", sides: "side" },
@@ -1288,7 +1279,7 @@ const glossary: Record<
   },
   "geo-trig-leg-degrees": {
     senses: { units: "unit", degree: "degree-angle", degrees: "degree-angle" },
-    noLink: ["mode", "opposite", "sides"],
+    noLink: ["mode", "opposite"],
   },
   "geo-volume-context": {
     senses: {
@@ -1383,7 +1374,7 @@ const glossary: Record<
   },
   "graph-domain-range": {
     senses: { range: "range-function" },
-    noLink: ["leaves", "part", "range of a function", "whole"],
+    noLink: ["leaves", "part", "whole"],
   },
   "graph-estimate-system-solution": {
     senses: { changes: "change" },
@@ -1489,7 +1480,7 @@ const glossary: Record<
   },
   "inscribed-polygon-reasoning": {
     senses: { vertex: "vertex", vertices: "vertex", center: "center" },
-    noLink: ["sides", "square"],
+    noLink: ["square"],
   },
   "integer-power": {
     senses: {
@@ -1541,7 +1532,7 @@ const glossary: Record<
       term: "term-expression",
       terms: "term-expression",
     },
-    noLink: ["left side", "part", "right side", "whole"],
+    noLink: ["part", "whole"],
   },
   "isosceles-perimeter-steps": {
     senses: {
@@ -1896,7 +1887,7 @@ const glossary: Record<
       square: "square-number",
       squared: "square-number",
     },
-    noLink: ["sides", "whole"],
+    noLink: ["whole"],
   },
   "nonlinear-recursion-term": {
     senses: { rule: "rule", term: "term-sequence", terms: "term-sequence" },
@@ -2089,7 +2080,7 @@ const glossary: Record<
   },
   "parallelogram-property-consequences": {
     senses: { terms: "term-expression", vertices: "vertex" },
-    noLink: ["opposite", "parts", "sides", "whole"],
+    noLink: ["opposite", "parts", "whole"],
   },
   "parameter-solution-count": {
     senses: {
@@ -2142,7 +2133,7 @@ const glossary: Record<
   },
   "perpendicular-slopes": {
     senses: { change: "change", product: "product-multiply" },
-    noLink: ["opposite", "sides"],
+    noLink: ["opposite"],
   },
   "piecewise-evaluate": {
     noLink: ["unit", "range", "intervals"],
@@ -2223,7 +2214,7 @@ const glossary: Record<
       term: "term-expression",
       terms: "term-expression",
     },
-    noLink: ["identities", "left side", "sides"],
+    noLink: ["left side", "sides"],
   },
   "polynomial-inequality-solve": {
     senses: {
@@ -2297,11 +2288,9 @@ const glossary: Record<
   },
   "power-doubling-story": {
     senses: { factor: "factor-number" },
-    noLink: ["factors"],
   },
   "power-missing-exponent": {
     senses: { factor: "factor-number" },
-    noLink: ["factors"],
   },
   "power-of-power-exponent": {
     senses: {
@@ -2436,7 +2425,6 @@ const glossary: Record<
     senses: {
       term: "term-expression",
     },
-    noLink: ["sides"],
   },
   "quadratic-irrational-solutions": {
     senses: {
@@ -2557,7 +2545,6 @@ const glossary: Record<
       squared: "square-number",
       squares: "square-number",
     },
-    noLink: ["sides"],
   },
   "random-variable-distribution": {
     senses: { event: "event" },
@@ -2738,13 +2725,14 @@ const glossary: Record<
   },
   "regular-polygon-area": {
     senses: {
+      square: "square-shape",
       side: "side",
       sides: "side",
       squared: "square-number",
       vertices: "vertex",
       factor: "factor-number",
     },
-    noLink: ["base", "center", "part", "square", "whole"],
+    noLink: ["base", "center", "part", "whole"],
   },
   "related-subtraction-sentence": {
     senses: { part: "part", whole: "whole" },
@@ -3185,7 +3173,6 @@ const glossary: Record<
   "signed-changes-sum": { senses: { changes: "change" } },
   "signed-fraction-product": {
     senses: { factor: "factor-number" },
-    noLink: ["factors"],
   },
   "signed-fraction-sum": { senses: { factor: "factor-number" } },
   "similar-solid-scale-chain": {
@@ -3194,11 +3181,11 @@ const glossary: Record<
       square: "square-number",
       squares: "square-shape",
     },
-    noLink: ["cube", "scale", "scales", "similar solids"],
+    noLink: ["cube", "scale", "scales"],
   },
   "similar-solid-volume": {
     senses: { edge: "edge", edges: "edge", square: "square-number" },
-    noLink: ["scale", "scales", "similar solids"],
+    noLink: ["scale", "scales"],
   },
   "similar-triangle-side": {
     senses: {
@@ -3209,7 +3196,7 @@ const glossary: Record<
       square: "square-number",
       squared: "square-number",
     },
-    noLink: ["factor", "scale", "scales", "similar triangles", "whole"],
+    noLink: ["factor", "scale", "scales", "whole"],
   },
   "similar-triangles-work": {
     senses: {
@@ -3218,7 +3205,7 @@ const glossary: Record<
       similar: "similar-figures",
       degrees: "degree-angle",
     },
-    noLink: ["factor", "similar triangles", "third"],
+    noLink: ["factor", "third"],
   },
   "similarity-by-transformation": {
     senses: {
@@ -3232,7 +3219,7 @@ const glossary: Record<
       image: "image-transformation",
       similar: "similar-figures",
     },
-    noLink: ["center", "scale", "similarity"],
+    noLink: ["center", "scale"],
   },
   "similarity-proof-aa": {
     senses: {
@@ -3241,7 +3228,7 @@ const glossary: Record<
       vertices: "vertex",
       "corresponding angles": "corresponding-angles",
     },
-    noLink: ["similar triangles", "similarity", "third"],
+    noLink: ["third"],
   },
   "similarity-theorem-length": {
     senses: {
@@ -3252,7 +3239,7 @@ const glossary: Record<
       similar: "similar-figures",
       square: "square-number",
     },
-    noLink: ["similar triangles", "term", "terms", "whole"],
+    noLink: ["term", "terms", "whole"],
   },
   "simplify-square-root": {
     senses: {
@@ -3346,7 +3333,7 @@ const glossary: Record<
   },
   "solve-justify-formula": {
     senses: { product: "product-multiply" },
-    noLink: ["base", "sides", "whole"],
+    noLink: ["base", "whole"],
   },
   "solve-justify-inequality": {
     senses: {
@@ -3450,7 +3437,6 @@ const glossary: Record<
       square: "square-number",
       squared: "square-number",
     },
-    noLink: ["roots"],
   },
   "standard-deviation-compare": {
     senses: {
@@ -3566,7 +3552,6 @@ const glossary: Record<
       tangent: "tangent-line",
       tangents: "tangent-line",
     },
-    noLink: ["point of tangency", "sides"],
   },
   "tangent-quadrant-cosine": {
     senses: { "opposite side": "opposite-side-angle", tangent: "tangent-trig" },
@@ -3607,7 +3592,7 @@ const glossary: Record<
       squared: "square-number",
       squares: "square-number",
     },
-    noLink: ["factor", "factors", "scales", "sides"],
+    noLink: ["factor", "factors", "scales"],
   },
   "transformation-sequence-mapping": {
     senses: {
@@ -3626,7 +3611,7 @@ const glossary: Record<
       vertices: "vertex",
       tangent: "tangent-trig",
     },
-    noLink: ["intersection", "opposite", "sides"],
+    noLink: ["intersection", "opposite"],
   },
   "triangle-congruence-criteria": {
     senses: {
@@ -3645,7 +3630,7 @@ const glossary: Record<
       term: "term-expression",
       terms: "term-expression",
     },
-    noLink: ["base", "opposite", "opposite leg", "side", "sides", "sort"],
+    noLink: ["base", "opposite", "side", "sides", "sort"],
   },
   "triangle-theorem-consequences": {
     senses: {
@@ -3654,7 +3639,7 @@ const glossary: Record<
       vertex: "vertex",
       "opposite side": "opposite-side-angle",
     },
-    noLink: ["opposite", "third", "thirds"],
+    noLink: ["opposite", "third"],
   },
   "triangle-uniqueness": { senses: { "more than": "more-than" } },
   "trig-context-triangle": {
@@ -3664,7 +3649,7 @@ const glossary: Record<
       degrees: "degree-angle",
       tangent: "tangent-trig",
     },
-    noLink: ["inverse", "mode", "opposite", "opposite leg", "part", "sides"],
+    noLink: ["inverse", "mode", "opposite", "part"],
   },
   "trig-equation-solutions": {
     senses: { period: "period", tangent: "tangent-trig", interval: "interval" },
@@ -3691,7 +3676,7 @@ const glossary: Record<
       tangent: "tangent-trig",
       "opposite side": "opposite-side-angle",
     },
-    noLink: ["opposite", "sides", "tan", "third"],
+    noLink: ["opposite", "third"],
   },
   "trig-symmetry-value": {
     senses: {

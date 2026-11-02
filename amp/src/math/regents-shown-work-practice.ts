@@ -352,7 +352,7 @@ const sasArea = chainFamily({
         "Two sides and the angle between them, called the included angle, fix a triangle. The sine of that angle turns one slanted side into the height.",
         `The area is ${tex("\\frac12ab\\sin C")} with the angle between the two sides.`,
         `${tex(`\\frac12(${fix(m.a / 10, 1)})(${fix(m.b / 10, 1)})=${decimalText(m.a * m.b, 200)}`)} and ${tex(`\\sin ${m.angle}^\\circ\\approx${dec(sin, 4)}`)}.`,
-        `${tex(`${decimalText(m.a * m.b, 200)}\\times${dec(sin, 4)}\\approx${dec(area, 2)}`)}, so the area is ${dec(area, 1)} square centimeters.`,
+        `${tex(`${decimalText(m.a * m.b, 200)}\\times${dec(sin, 4)}\\approx${dec(half * Number(dec(sin, 4)), 2)}`)}, so the area is ${dec(area, 1)} square centimeters.`,
       ],
     });
   },

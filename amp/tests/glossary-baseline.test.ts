@@ -4,7 +4,11 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { templates } from "../src/math/engine";
 import { lessons } from "../src/content/lessons";
 import { lessonGlossaryContext } from "../src/content/problem-lessons";
-import { termsIn, type LinkContext } from "../src/glossary/link";
+import {
+  siblingNoLinks,
+  termsIn,
+  type LinkContext,
+} from "../src/glossary/link";
 import { learnerTexts } from "./fixtures/math-typography";
 
 /** Learner-visible teaching text: lessons, methods, principles, and the
@@ -93,4 +97,33 @@ test("unresolved ambiguous words report (artifacts/glossary/unresolved-report.js
     `${total} unresolved ambiguous words across ${Object.keys(counts).length} lessons and templates. Most often: ${topForms.map(([f, n]) => `${f} (${n})`).join(", ")}`,
   );
   assert.ok(total >= 0);
+});
+
+// Report only. A noLink form whose entry another form names in senses is
+// muted; that is right only where the form is ordinary English there ("one
+// third" is a fraction, "the third side" an ordinal). Review the list when
+// adding senses or noLink.
+test("sibling noLink report (artifacts/glossary/sibling-nolink-report.json)", () => {
+  const rows: { context: string; form: string; id: string }[] = [];
+  for (const lesson of lessons)
+    for (const r of siblingNoLinks({
+      senses: lesson.senses,
+      noLink: lesson.noLink,
+    }))
+      rows.push({ context: `lesson:${lesson.id}`, ...r });
+  for (const template of templates)
+    for (const r of siblingNoLinks(
+      lessonGlossaryContext(template.id, template),
+    ))
+      rows.push({ context: template.id, ...r });
+  const dir = new URL("../artifacts/glossary/", import.meta.url);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(
+    new URL("sibling-nolink-report.json", dir),
+    JSON.stringify({ total: rows.length, rows }, null, 2) + "\n",
+  );
+  console.log(
+    `${rows.length} noLink forms whose entry is named through another form`,
+  );
+  assert.ok(rows.length >= 0);
 });

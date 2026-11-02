@@ -151,7 +151,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "A power $p/q$ means a $q$th root and then a $p$th power. To undo it, raise both sides to the reciprocal power $q/p$. An even power of $x$ cannot tell $x$ from $-x$, and an even root needs $x\\ge0$.",
     terms: ["rational-exponent", "reciprocal"],
     method: [
-      "Write the exponent $\\frac{p}{q}$ in lowest terms, then raise both sides to the power $\\frac{q}{p}$.",
+      "Write the exponent $\\frac{p}{q}$ in lowest terms. The numerator $p$ is not 0, so the reciprocal $\\frac{q}{p}$ exists. Raise both sides to the power $\\frac{q}{p}$.",
       "Evaluate the right side, using a root and a power.",
       "If the numerator $p$ is even and the right side is positive, include both the positive and the negative value. If the denominator $q$ is even, keep only $x\\ge0$.",
       "Substitute to check.",
@@ -229,7 +229,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "A regular polygon is a flat shape with equal straight sides and equal angles. Lines from its center to each corner cut it into identical triangles. Each triangle has one side of the polygon as its bottom and the apothem, the distance from the center to the middle of a side, as its height. So the area is half the apothem times the perimeter.",
     senses: { side: "side", vertex: "vertex" },
-    noLink: ["center", "square", "base", "part", "whole"],
+    noLink: ["center", "base", "part", "whole"],
     terms: ["regular-polygon", "apothem"],
     method: [
       "Find the perimeter: the number of sides times the side length.",
@@ -249,7 +249,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       solid: "solid-shape",
       center: "center",
     },
-    noLink: ["side", "sides", "square", "part", "bases", "parts"],
+    noLink: ["side", "sides", "square", "part", "parts"],
     terms: [
       "slant-height",
       [
@@ -472,7 +472,7 @@ export const texasHsPrinciples: Record<string, string> = {
   "rational-equation-formulate":
     "Distance equals speed times time, so time equals distance divided by speed. If two workers finish a job alone in $a$ and $b$ hours, then working together they finish in $x$ hours, where $\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{x}$.",
   "rational-exponent-equation":
-    "For $x^{p/q}=k$ in lowest terms with $q>0$, raising both sides to $\\frac{q}{p}$ gives $x=k^{q/p}$ when $p$ is odd. When $p$ is even, $x^{p/q}=k>0$ has solutions $x=\\pm k^{q/p}$, and when $q$ is even, $x^{p/q}$ is defined only for $x\\ge0$.",
+    "For $x^{p/q}=k$ with $\\frac{p}{q}$ in lowest terms, $p\\ne0$ and $q>0$, raising both sides to $\\frac{q}{p}$ gives the candidate $x=k^{q/p}$. When $p$ is even, $x^{p/q}$ is never negative: $k>0$ gives two solutions, $x=\\pm k^{q/p}$, and $k<0$ gives none. When $q$ is even, $x^{p/q}$ is defined only for $x\\ge0$ and is never negative, so keep only $x\\ge0$, and $k<0$ gives no solution. Check every candidate in the original equation.",
   "transformation-composition-image":
     "The dilation with center $C$ and scale factor $k$ sends a point $P$ to $C+k(P-C)$. When transformations are done one after another, each acts on the previous result, and in general the order of a rigid motion and a dilation matters.",
   "counterexample-choice":
@@ -808,7 +808,7 @@ export const texasHsLessons: Lesson[] = [
     method: {
       title: "Reciprocal power, then sign cases",
       paragraphs: [
-        "With the exponent $\\frac{p}{q}$ in lowest terms, raise both sides to $\\frac{q}{p}$. If the numerator $p$ is even and the right side is positive, give both $\\pm$ values; for example $x^{2/3}=4$ gives $x=\\pm8$. If the denominator is even, keep only nonnegative $x$.",
+        "With the exponent $\\frac{p}{q}$ in lowest terms and $p\\ne0$, raise both sides to $\\frac{q}{p}$. If the numerator $p$ is even and the right side is positive, give both $\\pm$ values; for example $x^{2/3}=4$ gives $x=\\pm8$. If the denominator is even, keep only nonnegative $x$.",
       ],
     },
     formal: {

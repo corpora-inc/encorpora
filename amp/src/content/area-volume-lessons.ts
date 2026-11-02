@@ -668,6 +668,7 @@ export const areaVolumeLessons: Lesson[] = [
       "A solid is a shape that takes up space. A cylinder is a solid shaped like a can. Its two ends are matching circles, called its bases. Area is the amount of flat surface a shape covers. The cylinder's volume, the amount of space it fills, is the area of one base times the height, the distance between the bases. The radius of a circle is the distance from its middle point to the circle. A circle's area is the number $\\pi$ (pi), about 3.14, times the radius times the radius.",
     templateIds: ["cylinder-volume"],
     senses: {
+      squares: "square-shape",
       side: "side",
       cube: "cube",
       base: "base-shape",
@@ -679,7 +680,7 @@ export const areaVolumeLessons: Lesson[] = [
       solid: "solid-shape",
       rule: "rule",
     },
-    noLink: ["square", "terms", "edge", "squares"],
+    noLink: ["square", "terms", "edge"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Explain why a cylinder's volume is its base area times its height.",
@@ -748,6 +749,7 @@ export const areaVolumeLessons: Lesson[] = [
       "A solid is a shape that takes up space, and its volume is how much space it fills. A cone is a solid with a circle at the bottom that narrows to a point, like a party hat. It holds exactly one third as much as a cylinder (a can shape) with the same circle and the same height. A sphere is a perfectly round solid, like a ball. It holds two thirds as much as the smallest cylinder that fits around it. These comparisons give the volume rules.",
     templateIds: ["cone-sphere-volume"],
     senses: {
+      squares: "square-shape",
       edge: "edge",
       unit: "unit",
       factor: "factor-number",
@@ -759,7 +761,7 @@ export const areaVolumeLessons: Lesson[] = [
       squared: "square-number",
       rule: "rule",
     },
-    noLink: ["cube", "square", "more than", "whole", "rules", "squares"],
+    noLink: ["cube", "square", "more than", "whole", "rules"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Find a cone's volume as one third of the matching cylinder's volume.",
@@ -1017,6 +1019,7 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   "cylinder-volume": {
     goal: "Find a cylinder's volume, or its height, from its radius or diameter.",
     senses: {
+      squares: "square-shape",
       cube: "cube",
       unit: "unit",
       side: "side",
@@ -1026,7 +1029,7 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
       solid: "solid-shape",
       product: "product-multiply",
     },
-    noLink: ["square", "edge", "squares"],
+    noLink: ["edge"],
     intuition:
       "A solid is a shape that takes up space. A cylinder is a solid shaped like a can, with matching circles at its ends, called bases. Its height $h$ is the distance between them. Volume is the amount of space it fills, counted in cubic units: the space inside a cube 1 unit long on each edge, such as a cubic meter. Area is the amount of flat surface a shape covers, counted in squares 1 unit on each side. The radius $r$ goes from a circle's middle point to the circle. A circle's center is the middle point of the circle. The diameter goes across through the center and is twice the radius. The number $\\pi$ (pi) is about 3.14. Squared means multiplied by itself. A circle's area is $\\pi r^2$, where $r^2$ ($r$ squared) is $r \\times r$: radius 7 gives $49\\pi$. The base area is the area of one base, and volume = base area × height. If the volume is $a\\pi$, then $a$ is the number multiplying $\\pi$.",
     terms: [

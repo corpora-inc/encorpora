@@ -393,7 +393,6 @@ export const realNumberLessons: Lesson[] = [
 
 export const realNumberMethods: Record<string, ProblemMethod> = {
   "classify-real-number": {
-    noLink: ["roots"],
     goal: "Pick the one rational (or irrational) number from four given numbers.",
     terms: [
       ["rational-number", "Its decimal either ends or repeats."],
@@ -459,7 +458,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       squares: "square-number",
       root: "root-radical",
     },
-    noLink: ["roots", "side", "half"],
+    noLink: ["side", "half"],
     intuition:
       "A square root is the number, zero or greater, that times itself makes a given number: $\\sqrt{20}$ times itself makes 20. Squaring means multiplying a number by itself: $4.4^2 = 4.4 \\times 4.4 = 19.36$. For numbers zero or greater, bigger numbers have bigger squares, so squares show where the root sits.",
     method: [

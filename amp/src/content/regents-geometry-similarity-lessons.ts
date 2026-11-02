@@ -308,7 +308,7 @@ export const regentsGeometrySimilarityLessons = [
         "Ask your learner to check that squaring the hypotenuse gives twice the square of a leg.",
     }),
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["square"].includes(w)),
   },
   {
     ...chainLesson({

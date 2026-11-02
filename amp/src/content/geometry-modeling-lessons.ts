@@ -29,7 +29,6 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "rule",
       "rules",
       "squares",
-      "squaring",
       "part",
       "parts",
       "terms",

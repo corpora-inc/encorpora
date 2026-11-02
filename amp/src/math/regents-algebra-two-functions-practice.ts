@@ -195,7 +195,7 @@ export const normalProbability = chainFamily({
           `A calculator or table gives the area under the curve to the left of a $z$-score. That area is the fraction of values below it.`,
           `Area below ${fmt(m.b)}: $${normalCdf(z(m.b)).toFixed(4)}$. Area below ${fmt(m.a)}: $${normalCdf(z(m.a)).toFixed(4)}$.`,
           `The values between ${fmt(m.a)} and ${fmt(m.b)} are the values below ${fmt(m.b)} minus the values below ${fmt(m.a)}.`,
-          `The percent between them is $${normalCdf(z(m.b)).toFixed(4)}-${normalCdf(z(m.a)).toFixed(4)}\\approx${(P * 100).toFixed(1)}\\%$.`,
+          `The fraction between them is $${normalCdf(z(m.b)).toFixed(4)}-${normalCdf(z(m.a)).toFixed(4)}=${(Number(normalCdf(z(m.b)).toFixed(4)) - Number(normalCdf(z(m.a)).toFixed(4))).toFixed(4)}$. Multiply by 100 to write it as a percent: about ${(P * 100).toFixed(1)}%.`,
           `About ${(P * 100).toFixed(1)}% of these ${spec.what.split(" ")[0]} are between ${fmt(m.a)} and ${fmt(m.b)} ${spec.unit}.`,
         ],
       });
@@ -332,16 +332,15 @@ export const tangentQuadrantCosine = chainFamily({
       ],
       hint: `Draw a reference right triangle with opposite side ${a} and adjacent side ${b}, find its hypotenuse, and then decide the sign of cosine from Quadrant ${quad}.`,
       explanation: [
-        `In a right triangle, the tangent of an angle is the opposite side divided by the adjacent side: $\\tan\\theta=\\frac{\\text{opposite}}{\\text{adjacent}}$.`,
-        `So draw a reference triangle, the right triangle the angle makes with the $x$-axis, with opposite side ${a} and adjacent side ${b}.${tanNeg ? " Side lengths are positive, so set the minus sign aside for now." : ""}`,
-        `The Pythagorean theorem says the two legs squared add up to the hypotenuse squared. The hypotenuse, the longest side, is $\\sqrt{${a}^2+${b}^2}=${exact ? root : `\\sqrt{${n}}`}$.`,
-        `Cosine is the adjacent side divided by the hypotenuse. So the size of $\\cos\\theta$ is $\\frac{${b}}{${exact ? root : `\\sqrt{${n}}`}}$.`,
+        `For an angle in any quadrant, pick a point $(x, y)$ on the ray that makes the angle, and let $r$ be its distance from the origin. Then $\\tan\\theta=\\frac{y}{x}$ and $\\cos\\theta=\\frac{x}{r}$.`,
+        `In Quadrant ${quad}, $x$ is ${cosNeg ? "negative" : "positive"} and $y$ is ${sinNeg ? "negative" : "positive"}. So $\\tan\\theta=${tanText}$ fits the point $x=${cosNeg ? -b : b}$, $y=${sinNeg ? -a : a}$.`,
+        `The distance $r$ is the hypotenuse of a right triangle with legs ${a} and ${b}. By the Pythagorean theorem, $r=\\sqrt{${a}^2+${b}^2}=${exact ? root : `\\sqrt{${n}}`}$. A distance is never negative.`,
+        `So $\\cos\\theta=\\frac{x}{r}=${cosNeg ? "-" : ""}\\frac{${b}}{${exact ? root : `\\sqrt{${n}}`}}$. It is ${cosNeg ? "negative" : "positive"} because $x$ is ${cosNeg ? "negative" : "positive"} in Quadrant ${quad}.`,
         ...(exact
           ? []
           : [
-              `Multiply the top and bottom by $\\sqrt{${n}}$ to clear the square root from the bottom: $\\frac{${b}}{\\sqrt{${n}}}=\\frac{${b === 1 ? "" : b}\\sqrt{${n}}}{${n}}$.`,
+              `Multiply the top and bottom by $\\sqrt{${n}}$ to clear the square root from the bottom: $${cosNeg ? "-" : ""}\\frac{${b}}{\\sqrt{${n}}}=${cosNeg ? "-" : ""}\\frac{${b === 1 ? "" : b}\\sqrt{${n}}}{${n}}$.`,
             ]),
-        `In Quadrant ${quad}, $x$-values are ${cosNeg ? "negative" : "positive"}. Cosine has the sign of the $x$-value, so cosine is ${cosNeg ? "negative" : "positive"} there.`,
         `So ${cos(cosNeg).replace(/^\$/, "$\\cos\\theta = ")}.`,
       ],
     });
@@ -541,10 +540,11 @@ export const oddSineParameters = chainFamily({
         `An odd function is one where $f(-x)=-f(x)$ for every $x$. Its graph looks the same after a half turn about the origin, the point (0, 0).`,
         `Put $x=0$ into that rule: $f(0)=-f(0)$. Only 0 equals its own opposite, so an odd function has $f(0)=0$.`,
         `Sine is odd, because $\\sin(-x)=-\\sin(x)$. So with no shifts, $${rule.replace("-C", "").replace("+D", "")}$ is odd.`,
-        `$D$ is a vertical shift, a slide up or down. If $D\\ne0$, then $f(0)=D$, not 0, so the function is not odd.`,
-        `$C$ is a phase shift, a slide left or right. With $C=\\frac{\\pi}{2}$, sine turns into cosine, which is even: $f(-x)=f(x)$.`,
-        `The other nonzero choice, $C=${quarter}$, makes $\\sin(-C)$ nonzero, so $f(0)$ is not 0 even when $D=0$.`,
-        "So both shifts must be 0: $C=0$ and $D=0$.",
+        `$D$ slides the graph up or down. $C$ slides it sideways by $\\frac{C}{${m.B}}$, because $${m.B}x-C=${m.B}\\left(x-\\frac{C}{${m.B}}\\right)$.`,
+        `A sine graph with no vertical slide is odd only when the sideways slide puts one of its zeros back at the origin. That happens when $C$ is a whole multiple of $\\pi$: 0, $\\pi$, $2\\pi$ and so on.`,
+        `With $C=\\frac{\\pi}{2}$, $\\sin\\left(${m.B}x-\\frac{\\pi}{2}\\right)=-\\cos(${m.B}x)$. Cosine is even, $f(-x)=f(x)$, so this function is not odd. $C=${quarter}$ is not a multiple of $\\pi$ either, so it is not odd for any $D$.`,
+        `With $C=0$, $f(0)=${A < 0 ? "-" : ""}${Math.abs(A)}\\sin(0)+D=D$. An odd function needs $f(0)=0$, so $D$ must be 0.`,
+        "So both must be 0: $C=0$ and $D=0$.",
         "The function is odd when $C=0$ and $D=0$.",
       ],
     });

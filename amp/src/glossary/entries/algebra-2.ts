@@ -414,9 +414,9 @@ export const algebra2Entries: GlossaryEntry[] = [
     term: "rational equation",
     forms: ["rational equation", "rational equations"],
     plain:
-      "An equation with a fraction that has the variable in its denominator.",
+      "An equation with one or more fractions that have the variable in a denominator, such as one expression with the variable divided by another.",
     example: "$\\frac{3}{x}+1=\\frac{5}{x}$ is a rational equation.",
-    uses: ["equation", "fraction", "variable", "denominator"],
+    uses: ["equation", "fraction", "variable", "denominator", "expression"],
     band: "algebra-2",
   },
   {
@@ -429,9 +429,9 @@ export const algebra2Entries: GlossaryEntry[] = [
       "fractional exponents",
     ],
     plain:
-      "An exponent that is a fraction. The bottom number names the root and the top number the power: $a^{m/n}=\\sqrt[n]{a^m}$.",
+      "An exponent that is a fraction. In lowest terms, the bottom number names the root and the top number the power: $a^{m/n}=\\sqrt[n]{a^m}$, for $a\\ge0$.",
     example: "$8^{2/3}=(\\sqrt[3]{8})^2=2^2=4$.",
-    uses: ["exponent", "fraction", "root-radical"],
+    uses: ["exponent", "fraction", "root-radical", "lowest-terms"],
     band: "algebra-2",
     noLink: ["power"],
   },
@@ -521,7 +521,7 @@ export const algebra2Entries: GlossaryEntry[] = [
     term: "square root",
     forms: ["square root", "square roots"],
     plain:
-      "A number that gives a value when multiplied by itself. Every positive number has two square roots; $\\sqrt{n}$ means the nonnegative one.",
+      "A number that, multiplied by itself, gives the value. Only a value of 0 or more has real square roots. A positive value has two; $\\sqrt{n}$ means the nonnegative one.",
     example: "$\\sqrt{36}=6$; the square roots of 36 are 6 and −6.",
     uses: [],
     band: "8",
