@@ -169,6 +169,24 @@ export const dataList = chainFamily({
           ? "The table shows how many times each value was recorded for"
           : "The table shows how many values fall in each range for";
     const first = keys[0]!;
+    const name = (k: number) =>
+      m.display === "range-table"
+        ? `the range ${k * m.width}–${k * m.width + m.width - 1}`
+        : `the value ${k}`;
+    /** Names the first value (or range) whose count in a wrong list differs. */
+    const mismatch = (l: number[]) => {
+      const own = new Map<number, number>();
+      for (const v of l) own.set(bucket(v), (own.get(bucket(v)) ?? 0) + 1);
+      const all = [...new Set([...keys, ...own.keys()])].sort((x, y) => x - y);
+      const k = all.find((x) => (own.get(x) ?? 0) !== (counts.get(x) ?? 0))!;
+      const has = own.get(k) ?? 0,
+        want = counts.get(k) ?? 0;
+      const shownCount =
+        m.display === "dot-plot"
+          ? `the dot plot has ${want} ${want === 1 ? "dot" : "dots"} above ${k}`
+          : `the table shows ${want}`;
+      return `This list has ${has} ${has === 1 ? "value" : "values"} ${m.display === "range-table" ? "in" : "equal to"} ${name(k).replace(/^the (value|range) /, "")}, but ${shownCount}. Every count must match, not only the number of values.`;
+    };
     const surface = choiceSurface(r, {
       prompt: `${shown} ${m.context.what}. Which list of data could match it?`,
       options: m.options.map((o, i) =>
@@ -176,10 +194,7 @@ export const dataList = chainFamily({
           ? { label: text(o), correct: true as const }
           : {
               label: text(o),
-              feedback:
-                m.display === "range-table"
-                  ? `Sort this list into the ranges and count: the counts do not match the table.`
-                  : `Count each value in this list: the counts do not match the ${m.display === "dot-plot" ? "dots" : "table"}.`,
+              feedback: mismatch(o),
             },
       ),
       hint:
@@ -189,11 +204,14 @@ export const dataList = chainFamily({
             ? `Add the counts: the list needs ${n} values. Then compare the count of ${first} in each list with the table.`
             : `Add the counts: the list needs ${n} values. Then count how many values of each list fall in the range ${first * m.width}–${first * m.width + m.width - 1}.`,
       explanation: [
-        `The ${m.display === "dot-plot" ? "dots" : "counts"} add to ${n}, so the list has ${n} values.`,
+        m.display === "dot-plot"
+          ? `In a dot plot, each dot is one value from the list, stacked above that value.`
+          : `Each count in the table tells how many values from the list ${m.display === "range-table" ? "fall in that range" : "equal that value"}.`,
+        `The ${m.display === "dot-plot" ? "dots" : "counts"} add to ${n}, so the list must have ${n} values.`,
         m.display === "range-table"
-          ? `Sort each list into the ranges: only the correct list gives the counts ${keys.map((k) => counts.get(k)).join(", ")}, in order from the first range.`
-          : `Count each value in the list: ${keys.map((k) => `${k} was recorded ${counts.get(k)} ${counts.get(k) === 1 ? "time" : "times"}`).join(", ")}.`,
-        `Only one list has exactly these counts.`,
+          ? `Sort each list into the ranges. The table needs the counts ${keys.map((k) => counts.get(k)).join(", ")}, in order from the first range.`
+          : `The list must have: ${keys.map((k) => `${k} recorded ${counts.get(k)} ${counts.get(k) === 1 ? "time" : "times"}`).join(", ")}.`,
+        `Only ${text(m.values)} has exactly these counts, so it is the list that matches.`,
       ],
     });
     return surface && { ...surface, figure };

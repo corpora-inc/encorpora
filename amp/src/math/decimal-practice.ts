@@ -244,8 +244,9 @@ function draft(templateId: string, r: Random, seed: string): Draft {
           prompt: `${a}/10 + ${b}/100 = □/100. What number belongs in the box?`,
           hint: `${a}/10 is ${count(a, "tenth", "tenths")}, and each tenth is ten hundredths. Rename ${a}/10 in hundredths, then add the ${b}/100.`,
           explanation: [
-            `You can only add the top numbers when the bottom numbers match, so rename the tenths as hundredths.`,
-            `One tenth is 10 hundredths, because cutting each tenth into 10 parts makes hundredths. So ${a}/10 = ${a * 10}/100.`,
+            `To add by counting pieces, the pieces must be the same size, so first write the tenths as hundredths.`,
+            `One tenth is 10 hundredths, because cutting a tenth into 10 equal parts makes hundredths.`,
+            `So ${count(a, "tenth is", "tenths are")} ${a} × 10 = ${a * 10} hundredths: ${a}/10 = ${a * 10}/100.`,
             `Now both count hundredths: ${a * 10}/100 + ${b}/100 = ${a * 10 + b}/100.`,
             `The number in the box is ${a * 10 + b}.`,
           ],
@@ -259,7 +260,7 @@ function draft(templateId: string, r: Random, seed: string): Draft {
           explanation: [
             `The first place after the decimal point counts tenths, so 0.${a} is ${count(a, "tenth", "tenths")}: ${a}/10.`,
             `Each tenth is 10 hundredths, because cutting a tenth into 10 equal parts makes hundredths.`,
-            `So ${a}/10 = ${a} × 10 hundredths = ${a * 10}/100. That is why 0.${a} = 0.${a}0.`,
+            `So ${count(a, "tenth is", "tenths are")} ${a} × 10 = ${a * 10} hundredths: ${a}/10 = ${a * 10}/100. That is why 0.${a} = 0.${a}0.`,
             `The number in the box is ${a * 10}.`,
           ],
           answer: `${a * 10}`,

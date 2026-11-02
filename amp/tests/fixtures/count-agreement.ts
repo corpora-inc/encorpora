@@ -248,8 +248,10 @@ export function agreementIssues(raw: string, lex: NounLexicon): Agreement[] {
     if (lex.isSingular(noun) && ends)
       push("singular noun after a count other than 1", m[0]);
   }
+  // "one of the integers that are …" is correct: the relative clause
+  // describes the plural noun, so a that/who/which clause never counts.
   for (const m of text.matchAll(
-    /\b(?:1|[Oo]ne) of (?:the|these|those|them|its|their)\b(?: \d+)?(?: [a-z]+){0,2} (are|were|have)\b/g,
+    /\b(?:1|[Oo]ne) of (?:the|these|those|them|its|their)\b(?: \d+)?(?: (?!(?:that|who|which)\b)[a-z]+){0,2} (are|were|have)\b/g,
   ))
     push("plural verb after “one of”", m[0]);
   for (const m of text.matchAll(

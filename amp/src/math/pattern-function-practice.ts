@@ -593,7 +593,7 @@ function valueCase(r: Random): Case {
     ? [
         `In ${y} = ${c}${x}, $${y}$ is the dependent variable: it depends on $${x}$. Substitute ${x} = ${input}.`,
         `${y} = ${c} × ${input} = ${output}.`,
-        `The answer is ${output} ${unit}.`,
+        `So the answer is ${output} ${unit} when ${x} = ${input}.`,
       ]
     : [
         `In ${y} = ${c}${x}, $${y}$ is the dependent variable and $${x}$ is the independent variable. Substitute ${y} = ${output}: ${output} = ${c}${x}.`,

@@ -179,6 +179,7 @@ test("the agreement check finds each kind of error and passes correct text", () 
   for (const text of [
     "There is 1 round counter and 3 square counters.",
     "1 of the marbles is blue.",
+    "It is one of the integers that are not whole numbers.",
     "An 8-pound bag holds 2 red apples.",
     "Multiply 1 times 5.",
     "The input 1 appears twice.",

@@ -1,12 +1,13 @@
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 
 import pytest
 import yaml
 
-from amp_ci_plan import ROOT, plan, test_catalog as catalog
+from amp_ci_plan import ROOT, browser_entries, plan, test_catalog as catalog
 
 
 def test_single_database_regression_does_not_rebuild_or_sweep_unrelated_suites():
@@ -169,9 +170,48 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
     detection = next(s['run'] for s in deep['changes']['steps'] if s.get('id') == 'paths')
     assert 'amp_ci_plan.py --full --github' in detection
     assert 'git diff --no-renames' in detection
-    for step in deep['amp-browser']['steps']:
-        if step.get('run') in ('npm run test:ui', 'npm run test:family-ui', 'npm run test:contrast'):
-            assert 'amp_plan).browser' in step['if']
+    browser = deep['amp-browser']
+    assert browser['strategy']['fail-fast'] is False
+    assert browser['strategy']['matrix']['lane'] == "${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('[\"ui-1\", \"ui-2\", \"family\", \"contrast\"]') || fromJSON('[\"selected\"]') }}"
+    commands = {step['run']: step for step in browser['steps'] if 'run' in step}
+    for command, lane in [('npm run test:ui:1', 'ui-1'), ('npm run test:ui:2', 'ui-2'),
+                          ('npm run test:family-ui', 'family'),
+                          ('npm run test:contrast', 'contrast'),
+                          ('node scripts/run-ci-tests.mjs browser', 'selected')]:
+        assert commands[command]['if'] == f"matrix.lane == '{lane}'"
+    assert commands['npm run test:native-session']['if'] == "needs.changes.outputs.native == 'true' && (matrix.lane == 'ui-1' || matrix.lane == 'selected')"
+    contrast_report = next(step for step in browser['steps'] if step.get('name') == 'Preserve the contrast sweep report')
+    assert contrast_report['if'] == "always() && (matrix.lane == 'contrast' || matrix.lane == 'selected')"
+
+
+def test_ui_groups_preserve_the_full_ordered_suite_without_duplicates():
+    scripts = json.loads((ROOT / 'amp/package.json').read_text())['scripts']
+
+    def expand(name, active=()):
+        assert name not in active, f"Recursive npm alias: {name}"
+        commands = []
+        for command in scripts[name].split(' && '):
+            match = re.fullmatch(r'npm run ([\w:-]+)', command)
+            commands.extend(expand(match[1], (*active, name)) if match else [command])
+        return commands
+
+    # test:ui keeps its independent full chain. Any missing, reordered or
+    # duplicated command in either hosted group fails this comparison.
+    full = expand('test:ui')
+    first, second = expand('test:ui:1'), expand('test:ui:2')
+    assert first and second
+    assert first + second == full
+    assert len(set(full)) == len(full)
+    assert not set(first) & set(second)
+    assert any('verify-ui.ts' in command for command in first)
+    assert all('verify-ui.ts' not in command for command in second)
+    assert any('verify-structured-work-ui.ts' in command for command in first)
+    assert any('verify-consent-ui.ts' in command for command in second)
+    # Every direct verifier remains discoverable for targeted main runs.
+    entries = browser_entries(ROOT)
+    for command in full:
+        for entry in re.findall(r'\btsx (scripts/verify-[\w-]+\.ts)\b', command):
+            assert 'amp/' + entry in entries
 
 
 def test_pending_main_runtime_validation_cannot_be_displaced_by_a_later_doc_commit():
@@ -184,6 +224,34 @@ def test_pending_main_runtime_validation_cannot_be_displaced_by_a_later_doc_comm
     later_doc = plan(['amp/docs/deployment.md'])
     assert runtime['core'] and runtime['database']
     assert not later_doc['core'] and not later_doc['database']
+
+
+def test_template_sweep_partitions_cover_full_and_selected_browser_runs():
+    jobs = yaml.safe_load((ROOT / '.github/workflows/amp-deep-checks.yml').read_text())['jobs']
+    broad, sweep, coverage = (jobs[name] for name in ('amp-browser', 'amp-ui-sweep', 'amp-ui-coverage'))
+    assert broad['env']['AMP_UI_SKIP_TEMPLATE_SWEEP'] == '1'
+    assert 'AMP_UI_SHARD_INDEX' not in broad['env']
+    assert sweep['strategy'] == {'fail-fast': False, 'matrix': {'shard': list(range(8))}}
+    assert sweep['env']['AMP_UI_SHARD_COUNT'] == 8
+    assert sweep['env']['AMP_UI_SHARD_INDEX'] == '${{ matrix.shard }}'
+    assert 'AMP_UI_SKIP_TEMPLATE_SWEEP' not in sweep['env']
+    assert sweep['timeout-minutes'] == broad['timeout-minutes'] == 60
+    assert sweep['if'] == "${{ needs.changes.outputs.browser == 'true' && (fromJSON(needs.changes.outputs.amp_plan).browser || contains(fromJSON(needs.changes.outputs.amp_plan).browser_scripts, 'scripts/verify-ui.ts')) }}"
+    assert plan(['amp/scripts/verify-ui.ts'])['browser_scripts'] == ['scripts/verify-ui.ts']
+    upload = next(step for step in sweep['steps'] if step.get('uses') == 'actions/upload-artifact@v4')
+    assert upload['with']['if-no-files-found'] == 'error'
+    assert upload['with']['name'] == 'amp-ui-sweep-${{ matrix.shard }}'
+    assert upload['with']['overwrite'] is True
+    assert upload['with']['path'] == 'amp/artifacts/ui-sweep/shard-${{ matrix.shard }}.json'
+    assert coverage['needs'] == 'amp-ui-sweep'
+    assert coverage['if'] == "${{ needs.amp-ui-sweep.result == 'success' }}"
+    download = next(step for step in coverage['steps'] if step.get('uses') == 'actions/download-artifact@v4')
+    assert download['with']['pattern'] == 'amp-ui-sweep-*'
+    assert 'run-id' not in download['with']
+    assert '--shards 8' in coverage['steps'][-1]['run']
+    assert {'amp-ui-sweep', 'amp-ui-coverage'} <= set(jobs['report']['needs'])
+    for path in ('.github/scripts/verify_amp_ui_sweep.py', '.github/scripts/test_amp_ui_sweep.py'):
+        assert plan([path])['browser'], path
 
 
 @pytest.mark.parametrize('selected,outcome,passes', [

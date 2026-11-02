@@ -165,6 +165,16 @@ try {
       // First-party funnel beacons (verified in verify-funnel-ui).
       if (path.endsWith("/events"))
         return route.fulfill({ status: 202, json: { accepted: 1 } });
+      if (
+        path === "/api/v1/trials/current" &&
+        route.request().method() === "POST"
+      )
+        return route.fulfill({ json: { trial: null } });
+      if (
+        path === "/api/v1/events/context" &&
+        route.request().method() === "GET"
+      )
+        return route.fulfill({ json: { generation: "initial" } });
       faults.push(path);
       return route.fulfill({
         status: 404,

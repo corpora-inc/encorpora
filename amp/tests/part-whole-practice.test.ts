@@ -155,16 +155,21 @@ test("part-whole animations conserve the example's quantities", () => {
         );
     }
   assert.deepEqual([...kinds].sort(), ["area", "compare", "partition"]);
+  // The lesson draws the walkthrough's shaded bars; a bar whose label does
+  // not name its own parts gives no animation.
   const lesson = problemLesson("compare-like-numerators", "pw");
   const f = lesson.example.figure;
-  if (f?.kind !== "fraction-bars") throw new Error("figure");
+  if (f?.kind !== "scene") throw new Error("figure");
+  const corrupt = structuredClone(f);
+  const bar = corrupt.scene.elements.find(
+    (e) => (e as { type?: string }).type === "fractionBar",
+  ) as { bars: { label?: string | false }[] };
+  bar.bars[1]!.label = "x";
+  assert.ok(animationModel(lesson));
   assert.equal(
     animationModel({
       ...lesson,
-      example: {
-        ...lesson.example,
-        figure: { ...f, bars: [f.bars[0]!, { ...f.bars[1]!, label: "x" }] },
-      },
+      example: { ...lesson.example, figure: corrupt },
     }),
     null,
   );

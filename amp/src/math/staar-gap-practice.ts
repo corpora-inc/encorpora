@@ -1673,7 +1673,7 @@ function decimalOperations(r: Random): Built {
       hint: `${dec(h, 2)} is ${h} hundredths. Multiply ${n} by ${h} as whole numbers, then place the decimal point so the answer has two decimal places.`,
       explanation: [
         `Multiply as whole numbers: $${n}\\times${h}=${total}$.`,
-        `${dec(h, 2)} has two decimal places, so the answer has two: ${fixed(total, 2)}.`,
+        `${dec(h, 2)} is ${h} hundredths, so the product is ${total} hundredths, which is ${fixed(total, 2)}.`,
         `The tokens are worth ${dec(total, 2)} dollars.`,
       ],
     };
@@ -2178,7 +2178,7 @@ function stemLeafCombine(r: Random): Built {
       hint: `The greatest values are in the bottom row, stem ${lastStem}, at the right end. Read the last two leaves with the key $${stemOf(key)}\\mid ${key % 10}$, then add the two values.`,
       explanation: [
         `The two greatest values are at the end of the last row: ${second} and ${top}.`,
-        `Add them: $${second}+${top}=${top + second}$.`,
+        `Add them: $${second}+${top}=${top + second}$. The sum is ${top + second}.`,
       ],
     };
   return {
@@ -2189,8 +2189,9 @@ function stemLeafCombine(r: Random): Built {
     answer: String(top - low2),
     hint: `The greatest value is the last leaf of the bottom row, stem ${lastStem}. The least value is the first leaf of the top row, stem ${firstStem}; the second-least is the next leaf in reading order. Read each leaf with the key $${stemOf(key)}\\mid ${key % 10}$.`,
     explanation: [
-      `The greatest value is ${top}. The values in order from the top row begin ${values.slice(0, 2).join(", ")}, so the second-least is ${low2}.`,
-      `Subtract: $${top}-${low2}=${top - low2}$.`,
+      `In a stem-and-leaf plot, the stem gives the tens and each leaf gives the ones. The greatest value is the last leaf of the bottom row: ${top}.`,
+      `The values in order from the top row begin ${values.slice(0, 2).join(", ")}, so the second-least is ${low2}.`,
+      `Subtract: $${top}-${low2}=${top - low2}$. The difference is ${top - low2}.`,
     ],
   };
 }
@@ -2288,9 +2289,16 @@ function dotPlotThreshold(r: Random): Built {
     answer: String(count),
     hint: `Decide which values count: those ${phrase}. Count the dots above each of those values, not just the values themselves.`,
     explanation: [
-      `The values ${phrase} are ${matched.join(", ")}.`,
-      `Count the dots above each: ${counts.join(" + ")}.`,
-      `The total is ${count}.`,
+      ...(matched.length === 1
+        ? [
+            `The only value ${phrase} is ${matched[0]}.`,
+            `There are ${count} dots above ${matched[0]}. So ${count} of the ${people} had a ${measure} ${phrase}.`,
+          ]
+        : [
+            `The values ${phrase} are ${matched.slice(0, -1).join(", ")} and ${matched[matched.length - 1]}.`,
+            `Count the dots above each: ${matched.map((v, i) => `${counts[i]} above ${v}`).join(", ")}.`,
+            `Add: ${counts.join(" + ")} = ${count}. So ${count} of the ${people} had a ${measure} ${phrase}.`,
+          ]),
     ],
   };
 }
@@ -2584,7 +2592,7 @@ function multistepEquations(r: Random): Built {
       explanation: [
         `Distribute: $-${a}\\times x=-${a}x$ and $-${a}\\times${par(b)}=${-a * b}$, so the left side is $${expanded}$.`,
         `Subtract $${lin(c)}$ from both sides: $${lin(-a - c)}${plus(-a * b)}=${d}$.`,
-        `${a * b > 0 ? "Add" : "Subtract"} $${Math.abs(a * b)}$: $${lin(-a - c)}=${d + a * b}$, so $x=${s}$.`,
+        `${a * b > 0 ? "Add" : "Subtract"} $${Math.abs(a * b)}$ ${a * b > 0 ? "to" : "from"} both sides: $${lin(-a - c)}=${d + a * b}$.${-a - c === 1 ? "" : ` Divide both sides by ${-a - c}: $x=${s}$.`}`,
         `Check: $-${a}(${s}${plus(b)})=${-a * (s + b)}$ and $${lin(c)}${plus(d)}$ at $x=${s}$ is ${c * s + d}.`,
       ],
     };
@@ -2620,16 +2628,38 @@ function multistepEquations(r: Random): Built {
   const b = m * v;
   const c = (p * (s + b) - q * s) / m;
   if (!Number.isInteger(c) || c === 0) throw new Error("Need three retry");
+  // Show each coefficient in lowest terms: 5/5 is 1 and 2/4 is 1/2.
+  const coef = (n: number) => {
+    const g = gcd(n, m);
+    if (m / g === 1) return n / g === 1 ? "" : `${n / g}`;
+    return `\\frac{${n / g}}{${m / g}}`;
+  };
+  const whole = (n: number) => (n === 1 ? "" : `${n}`);
+  const fractionFree = p % m === 0 && q % m === 0;
+  // With fractions shown, clear them by multiplying by m; otherwise work directly.
+  const [P, Q, K] = fractionFree ? [p / m, q / m, c] : [p, q, m * c];
+  const steps = [
+    ...(fractionFree
+      ? []
+      : [
+          `Multiply both sides by ${m} to clear the fractions: $${whole(p)}(x${plus(b)})=${lin(q)}${plus(m * c)}$.`,
+        ]),
+    ...(fractionFree && P === 1
+      ? []
+      : [`Distribute: $${lin(P)}${plus(P * b)}=${lin(Q)}${plus(K)}$.`]),
+    `Subtract $${lin(Q)}$ from both sides and ${P * b < 0 ? "add" : "subtract"} ${Math.abs(P * b)}: $${lin(P - Q)}=${K - P * b}$.`,
+    ...(P - Q === 1 ? [] : [`Divide both sides by ${P - Q}: $x=${s}$.`]),
+  ];
   return {
     variant,
-    prompt: `Solve $\\frac{${p}}{${m}}(x${plus(b)})=\\frac{${q}}{${m}}x${plus(c)}$.`,
+    prompt: `Solve $${coef(p) === "" ? `x${plus(b)}` : `${coef(p)}(x${plus(b)})`}=${coef(q)}x${plus(c)}$.`,
     answer: String(s),
-    hint: `Multiply both sides by ${m} to clear the fractions, then distribute ${p} over the parentheses and collect the $x$ terms.`,
-    explanation: [
-      `Multiply both sides by ${m}: $${p}(x${plus(b)})=${q}x${plus(m * c)}$.`,
-      `Distribute: $${p}x${plus(p * b)}=${q}x${plus(m * c)}$.`,
-      `Subtract $${q}x$ and ${p * b}: $${lin(p - q)}=${m * c - p * b}$, so $x=${s}$.`,
-    ],
+    hint: fractionFree
+      ? P === 1
+        ? `Collect the $x$ terms on one side and the numbers on the other.`
+        : `Distribute ${P} over the parentheses first, then collect the $x$ terms on one side.`
+      : `Multiply both sides by ${m} to clear the fractions, then distribute ${p} over the parentheses and collect the $x$ terms.`,
+    explanation: steps,
   };
 }
 
@@ -2699,7 +2729,7 @@ function experimentProbability(r: Random): Built {
     hint: `The first card is put back, so both draws are from the same ${n} cards. Find the probability of each draw separately, then multiply.`,
     explanation: [
       `First draw, red: $\\frac{${red}}{${n}}$. Second draw, labeled 0: $\\frac{${zero}}{${n}}$.`,
-      `The draws do not affect each other, so multiply: $\\frac{${red}}{${n}}\\times\\frac{${zero}}{${n}}=\\frac{${num}}{${den}}=${fracTex(num, den)}$.`,
+      `The card goes back, so the first draw does not change the second. For two such draws, multiply the probabilities: $\\frac{${red}}{${n}}\\times\\frac{${zero}}{${n}}=\\frac{${num}}{${den}}=${fracTex(num, den)}$.`,
     ],
   };
 }
@@ -2764,8 +2794,8 @@ function numberSets(r: Random): Built {
       answer: "",
       hint: `Work out the value of ${tex(item.tex)} first. Then decide whether that value is a whole number, a negative integer, or a number that is not an integer.`,
       explanation: [
-        `${tex(item.tex)} equals ${item.value}.`,
         describe(kind, item.value, item.tex),
+        `It is not one of the ${kindName[wrongKind]}, so it is in the wrong region.`,
         `So the correct fix is: ${move(kind)}`,
       ],
       choices: choicesFrom(r, move(kind), [
@@ -2811,7 +2841,7 @@ function numberSets(r: Random): Built {
         tex(correct.tex),
         wrongs.map((w) => ({
           label: tex(w.tex),
-          feedback: describe(w.kind, w.value, w.tex),
+          feedback: `${tex(w.tex)} equals ${w.value}, ${w.kind === "whole" ? "a whole number" : "a negative integer"}, so it does belong with the ${outside === "whole" ? "whole numbers" : "integers"}.`,
         })),
       ),
     };
