@@ -92,6 +92,8 @@ export type Context = { variables?: Set<string>; names?: Set<string> };
 const VARIABLE_FOLLOWERS =
   "is|are|was|be|and|or|to|lies|has|equals|stays|appears|varies|changes|increases|decreases";
 
+const RAISED_LETTER = /[ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓ]/u;
+
 /** A text as one typesetter reads it, each formula replaced by the
  * placeholder 0, so prose keeps its neighbours ("$r = 4$ m" reads "0 m"). */
 const FORMULA = "0";
@@ -139,6 +141,10 @@ function proseIssues(
   for (const [pattern] of ALLOWED) text = text.replace(pattern, " ");
   const at = (index: number, length = 1) =>
     text.slice(Math.max(0, index - 24), index + length + 24).trim();
+  // A raised or lowered letter (10ᵐ, aₙ) is a variable set as prose.
+  const script = text.search(RAISED_LETTER);
+  if (script >= 0)
+    issues.push({ rule: "raised letter outside math", excerpt: at(script) });
   if (/\b[Pp]i\b/.test(text))
     issues.push({
       rule: "the word pi",
@@ -196,13 +202,22 @@ export function typographyIssues(
   const seen = new Set<string>();
   const out: Issue[] = [];
   // Every explicit formula must typeset; KaTeX would otherwise show its source.
-  for (const m of source.matchAll(/\$([^$]+)\$/g))
+  for (const m of source.matchAll(/\$([^$]+)\$/g)) {
+    // A span that closes a bracket before opening one, like "$) × (b$",
+    // pairs the wrong dollar signs: the formula's pieces sit in the prose.
+    let depth = 0;
+    for (const c of m[1]!.replace(/\\[{}]|\\left\.|\\right\./g, ""))
+      if ("([{".includes(c)) depth++;
+      else if (")]}".includes(c) && --depth < 0) break;
+    if (depth < 0)
+      out.push({ rule: "dollar signs paired across a formula", excerpt: m[0] });
     try {
       katex.renderToString(m[1]!, { throwOnError: true });
     } catch {
       if (/[\\A-Za-z]/.test(m[1]!))
         out.push({ rule: "TeX that does not typeset", excerpt: m[0] });
     }
+  }
   if (plain && text.includes("$"))
     out.push({ rule: "TeX in a plain-text title", excerpt: text });
   const readings = plain ? [text] : [appProse(source), printProse(source)];

@@ -269,9 +269,9 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Given two numbers, find what remains when the second is taken from the first.",
     terms: ["difference-subtract"],
     method: [
-      "Count up from the smaller number to the larger number.",
-      "How many you counted is the difference.",
-      "Or take away in two steps: first down to 10, then the rest.",
+      "Count up from the number taken away to the starting number: for 13 − 5, count 6, 7, 8, 9, 10, 11, 12, 13.",
+      "How many numbers you counted is the difference, the amount left. That is 8 numbers, so 13 − 5 = 8.",
+      "When the starting number is between 11 and 19 and you take away more than its ones digit, you can also take away in two steps: first down to 10, then the rest. For 14 − 6, take away 4 to reach 10, then 2 more: 10 − 2 = 8.",
     ],
     watch: "Check by adding: difference + second number = first number.",
   },
@@ -302,12 +302,13 @@ const legacyMethods: Record<string, ProblemMethod> = {
     watch: "16 − 9: remove 6 to reach 10, then 3 more. 10 − 3 = 7.",
   },
   "unknown-addend-story": {
-    goal: "Given a starting amount and a total, find the missing addend.",
+    goal: "Given one part and a total, find the missing part.",
     method: [
-      "Write it as start + ? = total.",
-      "Count up from the start to the total, or subtract: total − start.",
+      "Find the total, the amount at the end, and the part you know.",
+      "The known part and the missing part make the total, in either order: 5 + □ = 12 and □ + 5 = 12 ask the same thing.",
+      "Count up from the known part to the total, or take the known part away from the total: 12 − 5 = 7.",
     ],
-    watch: "Check: start + answer = total.",
+    watch: "Check: the known part plus your answer makes the total.",
   },
   "missing-start-story": {
     goal: "Given how many were taken out and how many stayed, find how many there were at first.",
@@ -349,8 +350,8 @@ const legacyMethods: Record<string, ProblemMethod> = {
       ["base-ten-blocks", "A small square stands for 1."],
     ],
     method: [
-      "Count the rods. That is the tens digit.",
-      "Count the small squares, 9 or fewer here. That is the ones digit.",
+      "Count the rods. That number is the tens digit, the digit on the left.",
+      "Count the small squares, 9 or fewer here. That number is the ones digit, the digit on the right.",
       "Write tens then ones: 3 rods and 8 small squares is 38.",
     ],
     watch: "A rod is ten, not one: 3 rods and 8 small squares is 38, not 11.",
@@ -358,8 +359,9 @@ const legacyMethods: Record<string, ProblemMethod> = {
   "ten-more-or-less": {
     goal: "Given a number, find ten more or ten less.",
     method: [
-      "Change only the tens digit: up one for ten more, down one for ten less.",
-      "Keep the ones digit the same.",
+      "Ten more adds one ten, and ten less takes one ten away. Keep the ones digit the same, because no ones were added or taken away.",
+      "For ten more, a tens digit from 0 to 8 goes up by 1: 47 + 10 = 57. A tens digit of 9 becomes 10 tens, which is 1 hundred: 96 + 10 = 106.",
+      "For ten less, the tens digit goes down by 1: 47 − 10 = 37. Every number here has at least 2 tens, so there is always a ten to take away.",
     ],
     watch:
       "Change the tens digit, not the ones digit: ten more than 47 is 57, not 48.",
@@ -377,7 +379,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Given a number of tens and some tens to remove, find what is left.",
     method: [
       "Count tens: 50 is 5 tens, 20 is 2 tens.",
-      "Subtract the tens: 5 − 2 = 3 tens.",
+      "Take away the tens: 5 tens take away 2 tens is 3 tens, because 5 − 2 = 3.",
       "Name the value: 3 tens is 30.",
     ],
     watch:
@@ -448,9 +450,9 @@ const legacyMethods: Record<string, ProblemMethod> = {
   "add-with-regrouping": {
     goal: "Given two three-digit numbers, find their sum.",
     method: [
-      "Add the ones. If 10 or more, write the ones digit and carry 1 ten.",
-      "Add the tens plus any carry. If 10 or more, write the tens digit and carry 1 hundred.",
-      "Add the hundreds plus any carry.",
+      "Add the ones. If the sum is 10 or more, write its ones digit and carry 1 ten: move it to the tens. 8 + 7 = 15, so write 5 and carry 1 ten.",
+      "Add the tens and any carried ten. If that is 10 or more tens, write its ones digit and carry 1 hundred: 12 tens is 1 hundred and 2 tens, so write 2.",
+      "Add the hundreds and any carried hundred.",
     ],
     watch:
       "Carry the new ten into the tens column; never write both digits of 13 under the ones.",
@@ -682,7 +684,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "To find a missing change or start, work from what you know: undo a change by doing the opposite.",
     ],
     watch:
-      "Apply each change to the amount the last change made, never to the original start.",
+      "Apply the first change to the start. Apply the second change to the amount the first change made, not to the start again.",
   },
   // Measurement, perimeter, area
   "shifted-ruler-length": {
@@ -1070,10 +1072,10 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "To add fractions, first make their pieces the same size. The bottom number, called the denominator, tells how many equal pieces make one whole. The top number, called the numerator, counts the pieces you have. Once both fractions use the same-sized pieces, add their counts.",
     terms: ["denominator", "numerator", "common-denominator"],
     method: [
-      "Choose a common multiple of the denominators. Multiplying them always gives one; a smaller common multiple can reduce the work.",
-      "Rename each fraction with that denominator, multiplying its top and bottom numbers by the same factor so its value stays unchanged.",
-      "Add the numerators and keep the shared denominator.",
-      "Simplify by dividing both numbers by a common whole-number factor greater than one, until none remains.",
+      "Find a common denominator: a number that both denominators divide into evenly. Multiplying the two denominators always gives one. For $\\tfrac{1}{4} + \\tfrac{1}{6}$, $4 \\times 6 = 24$ works. 4 and 6 also both divide 12 evenly, and 12 is smaller, so use 12.",
+      "Rename each fraction with that denominator. Multiply its top and bottom by the same number, so it still names the same amount. $12 \\div 4 = 3$, so $\\tfrac{1}{4} = \\tfrac{1 \\times 3}{4 \\times 3} = \\tfrac{3}{12}$. $12 \\div 6 = 2$, so $\\tfrac{1}{6} = \\tfrac{1 \\times 2}{6 \\times 2} = \\tfrac{2}{12}$.",
+      "Add the numerators and keep the denominator, because the pieces are now the same size: $\\tfrac{3}{12} + \\tfrac{2}{12} = \\tfrac{5}{12}$.",
+      "Simplify if you can, so the fraction uses the smallest numbers. Divide the top and bottom by the same whole number greater than 1. It must divide both with nothing left over. Repeat until no such number is left.",
     ],
     watch:
       "Keep the whole the same size. Add the counts of equal-sized pieces, not their denominators.",
