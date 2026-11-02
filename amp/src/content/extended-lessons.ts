@@ -6,6 +6,7 @@ export const extendedLessons: Lesson[] = [
     title: "A digit gets its value from its place",
     summary:
       "A digit is one of the symbols 0 to 9. Its place in a number tells how much it is worth. Ten ones make a ten, and ten tens make a hundred. In 352, the 3 means 3 hundreds. The 5 means 5 tens, which is 50. The 2 means 2 ones.",
+    noLink: ["mean"],
     templateIds: ["place-value-digit"],
     objectives: [
       "Name the ones, tens and hundreds places.",
@@ -66,7 +67,16 @@ export const extendedLessons: Lesson[] = [
     title: "Add matching decimal places",
     summary:
       "A decimal uses a point to show parts of one whole. The first place after the point is tenths, and the second is hundredths. Add tenths to tenths and hundredths to hundredths, just as you add ones to ones. Line up the decimal points so matching places line up. If a place adds up to 10 or more, carry 1 to the place on its left.",
-    senses: { part: "part", parts: "part", whole: "whole" },
+    senses: {
+      part: "part",
+      parts: "part",
+      whole: "whole",
+      "more than": "more-than",
+      squares: "square-shape",
+      units: "unit",
+      unit: "unit",
+    },
+    noLink: ["change"],
     templateIds: ["decimal-addition"],
     objectives: [
       "Line up decimal places to add.",
@@ -133,6 +143,7 @@ export const extendedLessons: Lesson[] = [
       wholes: "whole",
       fourths: "fourth",
       rename: "rename",
+      "more than": "more-than",
     },
     templateIds: ["compare-fractions"],
     objectives: [
@@ -201,6 +212,8 @@ export const extendedLessons: Lesson[] = [
       fourths: "fourth",
       product: "product-multiply",
       factor: "factor-number",
+      "more than": "more-than",
+      eighths: "eighth",
     },
     templateIds: ["multiply-fractions"],
     objectives: [
@@ -912,6 +925,8 @@ export const extendedLessons: Lesson[] = [
       product: "product-multiply",
       factor: "factor-number",
       factors: "factor-number",
+      "more than": "more-than",
+      side: "side",
     },
     templateIds: ["decimal-multiplication"],
     objectives: [
@@ -977,6 +992,7 @@ export const extendedLessons: Lesson[] = [
     summary:
       "An expression is numbers and signs, like $+$ and $\\times$, that stand for one number. Parentheses ( ) group a part to work out first. The order of operations is the shared rule for what comes next: parentheses first, then powers, then multiply and divide, then add and subtract. A power, like $3^{2}=3\\times3$, multiplies a number by itself.",
     senses: { part: "part" },
+    noLink: ["rule", "whole"],
     templateIds: ["operation-order"],
     objectives: [
       "Work out the group inside parentheses first.",

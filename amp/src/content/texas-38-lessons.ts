@@ -30,7 +30,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Read the story. Is each second number equal groups of the first (multiply), or the first plus a fixed gap (add)? A fixed gap is the same difference in every row, like being 6 years older.",
-      "Test the rule on a row you can see. For equal groups, divide the second number by the first. For a gap, subtract the first number from the second.",
+      "Test the rule on a row you can see. For equal groups, divide the second number by the first, using a row whose first number is not 0. The answer is how many go with 1. For a gap, subtract the first number from the second.",
       "Use the rule forward to find a second number. Undo it to go backward: divide to undo a times, and subtract to undo an add.",
     ],
     watch:
@@ -46,7 +46,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       whole: "whole",
       side: "side-of-equation",
     },
-    noLink: ["leaves"],
+    noLink: ["leaves", "mean"],
     terms: ["unknown", "equation"],
     method: [
       "Find the total and the parts. Getting more joins parts into a total, so add. Giving some away takes a part from the total, so subtract.",
@@ -61,7 +61,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     intuition:
       "A strip diagram shows a story with bars. The long bar is the whole, the total amount. The shorter bars are its parts. Together the parts are as long as the whole. Equal bars stand for equal amounts. Each bar becomes a number or a letter in the equation, and equal bars together become a multiplication.",
     senses: { part: "part", whole: "whole", product: "product-multiply" },
-    noLink: ["leaves"],
+    noLink: ["leaves", "mean"],
     terms: ["strip-diagram", "equal-parts"],
     method: [
       "Name the whole and each part. Several equal bars, like 3 bars of $n$, can be written as one multiplication: $3\\times n$ means $n+n+n$.",
@@ -84,6 +84,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       squares: "square-shape",
       unit: "unit",
       units: "unit",
+      whole: "whole",
     },
     terms: [
       "area-model",
@@ -147,6 +148,8 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       part: "part",
       whole: "whole",
       model: "model",
+      unit: "unit",
+      units: "unit",
     },
     terms: ["tenth", "hundredth"],
     method: [
@@ -587,6 +590,7 @@ export const texas38Lessons: Lesson[] = [
       side: "side-of-equation",
       sides: "side-of-equation",
     },
+    noLink: ["mean"],
     templateIds: ["story-equation-choice", "strip-diagram-equation"],
     objectives: [
       "Choose an equation, with a letter for the unknown, that matches a one-step or two-step story.",
@@ -722,6 +726,7 @@ export const texas38Lessons: Lesson[] = [
       differences: "difference-subtract",
       fourths: "fourth",
     },
+    noLink: ["change"],
     templateIds: ["fraction-benchmark-reasonable"],
     objectives: [
       "Choose the benchmark nearest a fraction.",
@@ -779,7 +784,7 @@ export const texas38Lessons: Lesson[] = [
     title: "How big is a unit?",
     summary:
       "A unit is the amount you count by when you measure, such as a meter or a cup. A bigger unit covers more, so measuring the same amount takes fewer of them. A smaller unit takes more of them, so its number is greater.",
-    senses: { unit: "unit", units: "unit" },
+    senses: { unit: "unit", units: "unit", "more than": "more-than" },
     noLink: ["mean"],
     templateIds: ["unit-relative-size"],
     objectives: [

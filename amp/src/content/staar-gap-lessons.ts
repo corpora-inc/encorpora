@@ -11,6 +11,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       difference: "difference-subtract",
       part: "part",
     },
+    noLink: ["rule"],
     terms: [
       [
         "parentheses",
@@ -38,6 +39,9 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       differences: "difference-subtract",
       square: "square-number",
       squared: "square-number",
+      "more than": "more-than",
+      opposite: "opposite-number",
+      whole: "whole",
     },
     terms: ["square-number", "opposite-number"],
     method: [
@@ -52,8 +56,14 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
   "staar-number-word-form": {
     goal: "Choose the words for a number in expanded form, or the number named by counts of hundreds, tens and ones.",
     intuition:
-      "A digit is one of the symbols 0 to 9. Its place in a number gives its value: in 7,305 the 7 means 7 thousands. Expanded form writes a number as the values of its digits added up, like $7{,}000+300+5$. To say a number in words, say the thousands part as a number, then “thousand”, then the rest. A zero holds a place. In a whole number like 7,305, the 0 is not said aloud. For a decimal, say the whole part, then “and”, then the digits after the point with the name of the last place, such as thousandths.",
-    senses: { part: "part" },
+      "A digit is one of the symbols 0 to 9. Its place in a number gives its value: in 7,305 the 7 means 7 thousands. Expanded form writes a number as the values of its digits added up, like $7{,}000+300+5$. To say a number under a million in words, say the thousands part, the digits left of the comma, then “thousand”, then the rest. A zero holds a place. Inside a whole number like 7,305, the 0 is not said aloud. For a decimal, say the whole part, then “and”, then the digits after the point with the name of the last place, such as thousandths.",
+    senses: {
+      part: "part",
+      term: "term-expression",
+      terms: "term-expression",
+      whole: "whole",
+    },
+    noLink: ["change", "changes"],
     terms: ["expanded-form", "word-form"],
     method: [
       "Add the numbers in the expanded form to write the number in digits. Put a 0 in any place that is missing.",
@@ -99,13 +109,18 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the equation or expression that fits a story, or the one that does not.",
     intuition:
       "An equation is a number sentence that says two amounts are equal, using the sign $=$. A letter such as $n$ stands for a number the story does not tell. To write a story as an equation, say what each group or part is. Equal groups multiply, and joining parts add. Times and divide facts come in families: if $4\\times n=36$, then $36\\div4=n$ and $36\\div n=4$.",
-    senses: { part: "part", parts: "part" },
+    senses: {
+      part: "part",
+      parts: "part",
+      side: "side-of-equation",
+      sides: "side-of-equation",
+    },
     terms: ["unknown", "fact-family"],
     method: [
       "Name the unknown, the number the letter stands for. Say in words what the story puts together.",
       "Write that as an equation. Equal groups use multiplication. Joining parts uses addition.",
       "Test a choice. First check that it does what the story does: equal groups or joining. Then work out the unknown and put it in. A matching equation comes out true.",
-      "When asked for the one that does not fit, find the three true choices. The other one is the answer.",
+      "When asked for the one that does not fit, find the choices that fit the story. The one left over is the answer.",
     ],
     watch:
       "Order matters in division: $36\\div4$ is 9, but $4\\div36$ is less than 1. Check the order of the numbers.",
@@ -113,7 +128,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
   "staar-rate-equation-choice": {
     goal: "Find the amount for one unit from a total, then choose the equation for any number of units.",
     intuition:
-      "A rate tells how much for each unit, like 1.5 pounds of food per day. Per means for each. At a steady rate, every unit adds the same amount. Divide the total by the number of units to get the amount for one unit. The amount for any number of units is that rate times the number of units.",
+      "A rate tells how much for each unit, like 1.5 pounds of food per day. 1.5 means one and a half. Per means for each. At a steady rate, every unit adds the same amount. Divide the total by the number of units to get the amount for one unit. The amount for any number of units is that rate times the number of units.",
     senses: { unit: "unit", units: "unit" },
     terms: [
       [
@@ -130,6 +145,8 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "Do not flip the rate. The amount per unit is the amount divided by the units. The amount for several units is the rate times the units.",
   },
   "staar-order-decimals": {
+    noLink: ["change", "third"],
+    senses: { "more than": "more-than", parts: "part", part: "part" },
     goal: "Order four decimals that have different numbers of places, or find the decimal in a given position.",
     intuition:
       "A decimal uses a point to show parts of one. The first digit after the point is tenths, then hundredths, then thousandths. A decimal with more digits is not always greater. To compare, give every number the same number of digits after the point by writing zeros on the right. Those zeros do not change the value. Then compare place by place from the left.",
@@ -144,6 +161,13 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "0.5 is greater than 0.45, even though 45 is greater than 5. Writing 0.500 and 0.450 shows it.",
   },
   "staar-order-mixed-forms": {
+    noLink: ["change"],
+    senses: {
+      root: "root-radical",
+      roots: "root-radical",
+      squares: "square-number",
+      square: "square-number",
+    },
     goal: "Order signed fractions and decimals, a fraction, percent, decimal and root, or choose the true comparison.",
     intuition:
       "Numbers can be written in different forms: a fraction like $\\frac{3}{4}$, a decimal like 0.75 or a percent like 75%. To compare them, write each one as a decimal. For a fraction, divide the top number, the numerator, by the bottom number, the denominator. For a percent, divide by 100, because percent means out of 100. A square root such as $\\sqrt{7}$ is the number that times itself makes 7, so it is between 2 and 3. On a number line, a number farther left is less. Negative numbers, numbers less than 0, sit to the left of 0.",
@@ -218,8 +242,9 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
   "staar-multistep-stories": {
     goal: "Solve a two-step story with whole numbers or units: add then subtract, share then regroup, multiply then divide or convert.",
     intuition:
-      "A two-step story needs a first answer before you can answer the question. Find the amount the story does not say straight out. Write it down. Then use it in the second step.",
-    senses: { unit: "unit", units: "unit" },
+      "A two-step story needs a first answer before you can answer the question. Find the amount the story does not say straight out. Write it down. Then use it in the second step. Some stories use decimals: 0.25 liter means 25 hundredths of a liter, which is a quarter of a liter.",
+    senses: { unit: "unit", units: "unit", part: "part" },
+    noLink: ["change", "changes"],
     terms: [
       [
         "remainder",
@@ -433,6 +458,7 @@ export const staarGapLessons: Lesson[] = [
       part: "part",
       square: "square-number",
       squared: "square-number",
+      "more than": "more-than",
     },
     templateIds: ["staar-nested-grouping", "staar-signed-exponent-order"],
     objectives: [
@@ -482,8 +508,9 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-number-words",
     title: "Write numbers in words and read place-value units",
     summary:
-      "A digit is one of the symbols 0 to 9. Its place in a number gives its value. To read a big number, say the thousands part, then “thousand”, then the rest. A zero holds a place. In a whole number, a 0 is not said aloud. Read a decimal with the name of its last place, such as thousandths.",
-    senses: { part: "part" },
+      "A digit is one of the symbols 0 to 9. Its place in a number gives its value. To read a number under a million, say the thousands part, the digits left of the comma, then “thousand”, then the rest. A zero holds a place. Inside a whole number, a 0 is not said aloud. Read a decimal with the name of its last place, such as thousandths.",
+    senses: { part: "part", whole: "whole" },
+    noLink: ["change", "changes"],
     templateIds: ["staar-number-word-form"],
     objectives: [
       "Write the word form of a number given in expanded form.",
@@ -656,7 +683,7 @@ export const staarGapLessons: Lesson[] = [
       prompt:
         "Eli buys a book for 6.50 dollars and a map for 3.25 dollars. He also buys a pen. He spends 12 dollars in all. Let $p$ be the price of the pen. Write an equation.",
       steps: [
-        "Eli buys three things, so the three prices add up to the total he spends.",
+        "6.50 dollars is 6 dollars and 50 cents, and 3.25 dollars is 3 dollars and 25 cents. Eli buys three things, so the three prices add up to the total he spends.",
         "The book is 6.50 and the map is 3.25. The pen's price is unknown, so call it $p$.",
         "He spends 12 in all, so the three prices add to 12: $6.50+3.25+p=12$.",
       ],
@@ -665,7 +692,7 @@ export const staarGapLessons: Lesson[] = [
     closingSections: [
       method("Test with the story's number", [
         "To check a choice, first check that it does what the story does: equal groups multiply, and joining parts add. Then work out the unknown and put it in. A matching equation comes out true. A true equation like $36+4=40$ can still miss the story, so check both.",
-        "For “which can NOT”, find the three true ones. The other one is the answer.",
+        "For “which can NOT”, find the choices that fit the story. The one left over is the answer.",
         "A rate is the amount for each unit, such as pounds per day. For a steady rate, divide the total by the number of units. Then multiply the rate by any number of units.",
       ]),
       formal("Equations and rates", [
@@ -681,10 +708,12 @@ export const staarGapLessons: Lesson[] = [
       "Ask the learner to tell a story that goes with $3\\times n=24$.",
   }),
   build({
+    noLink: ["change"],
+    senses: { "more than": "more-than", parts: "part", part: "part" },
     id: "staar-order-numbers",
     title: "Order decimals, fractions, percents and roots",
     summary:
-      "A decimal uses a point to show parts of one: in 0.45, the digit 4 means 4 tenths and the 5 means 5 hundredths. To compare numbers, write each one as a decimal. Give every decimal the same number of digits after the point by adding zeros on the right. Then compare digits from the left. On a number line, the number farther left is less.",
+      "A decimal uses a point to show parts of one: in 0.45, the digit 4 means 4 tenths and the 5 means 5 hundredths. To compare numbers, write each one as a decimal. Give every decimal the same number of digits after the point by adding zeros on the right. Line up the points, then compare digits from the left. This works for numbers that are not negative. On a number line, the number farther left is less.",
     templateIds: ["staar-order-decimals", "staar-order-mixed-forms"],
     objectives: [
       "Order decimals with different numbers of places.",
@@ -839,6 +868,7 @@ export const staarGapLessons: Lesson[] = [
       squares: "square-shape",
       unit: "unit",
       units: "unit",
+      squared: "square-number",
     },
     templateIds: ["staar-measure-chains"],
     objectives: [
@@ -887,6 +917,7 @@ export const staarGapLessons: Lesson[] = [
     summary:
       "Some questions need two steps. First find an amount the story does not say straight out. Write it down. Then use it to answer the question.",
     senses: { unit: "unit", units: "unit" },
+    noLink: ["change", "changes"],
     templateIds: ["staar-multistep-stories"],
     objectives: [
       "Add and then subtract to compare totals.",
@@ -1031,7 +1062,7 @@ export const staarGapLessons: Lesson[] = [
     title: "Credit and fixed or variable expenses",
     summary:
       "Credit means you get something now and pay for it later. An expense is money spent on something. A fixed expense costs the same each month. A variable expense costs different amounts in different months.",
-    noLink: ["change", "changes"],
+    noLink: ["change", "changes", "mean"],
     templateIds: ["staar-money-vocabulary"],
     objectives: [
       "Recognize an example of credit.",
