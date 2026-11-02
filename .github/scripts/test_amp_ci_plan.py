@@ -258,6 +258,12 @@ def test_template_sweep_partitions_cover_full_and_selected_browser_runs():
     assert upload['with']['name'] == 'amp-ui-sweep-${{ matrix.shard }}'
     assert upload['with']['overwrite'] is True
     assert upload['with']['path'] == 'amp/artifacts/ui-sweep/shard-${{ matrix.shard }}.json'
+    failure_upload = next(step for step in sweep['steps'] if step.get('name') == 'Preserve synthetic UI failure')
+    assert failure_upload['if'] == '${{ failure() }}'
+    assert failure_upload['with']['name'] == 'amp-ui-failure-${{ matrix.shard }}-${{ github.run_attempt }}'
+    assert failure_upload['with']['path'] == 'amp/artifacts/ui-failure/'
+    assert failure_upload['with']['if-no-files-found'] == 'ignore'
+    assert not failure_upload['with']['name'].startswith('amp-ui-sweep-')
     assert coverage['needs'] == 'amp-ui-sweep'
     assert coverage['if'] == "${{ needs.amp-ui-sweep.result == 'success' }}"
     download = next(step for step in coverage['steps'] if step.get('uses') == 'actions/download-artifact@v4')

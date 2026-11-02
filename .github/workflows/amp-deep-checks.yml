@@ -280,6 +280,14 @@ jobs:
           path: amp/artifacts/ui-sweep/shard-${{ matrix.shard }}.json
           if-no-files-found: error
           retention-days: 7
+      - name: Preserve synthetic UI failure
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: amp-ui-failure-${{ matrix.shard }}-${{ github.run_attempt }}
+          path: amp/artifacts/ui-failure/
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Remove this job's PostgreSQL container
         if: ${{ always() && steps.ci-postgres.outputs.container_id != '' }}
         shell: bash
