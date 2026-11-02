@@ -13,6 +13,59 @@ import { generateWithAxes } from "./variation/legacy";
 /** Surface axes of the SAT-completion families that share one model across
  * several ways of giving or asking it. The first value of each axis is the
  * surface these families showed before the axis existed. */
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const OPENERS: Record<string, string[]> = {
+  "sample-mean-estimate": [
+    "A sample mean, the average of the sample, estimates the mean of the whole population when the sample is chosen at random.",
+  ],
+  "probability-missing-count": [
+    "A probability is favorable outcomes divided by all outcomes. Set that fraction equal to the given probability and solve for the missing count.",
+  ],
+  "standard-deviation-compare": [
+    "The standard deviation measures spread: the typical distance of values from their mean. Values bunched near the mean give a smaller standard deviation.",
+  ],
+  "sample-size-margin": [
+    "A larger random sample gives a smaller margin of error, because averages of more values vary less.",
+  ],
+  "compound-unit-conversion": [
+    "A compound unit, such as miles per hour, has a unit on top and a unit underneath. Convert each with a factor equal to 1 so the old units cancel.",
+  ],
+  "degree-radian-conversion": [
+    "Degrees and radians are two units for angles. A half turn is 180 degrees, which is $\\pi$ radians.",
+  ],
+  "unit-circle-coordinate": [
+    "The unit circle has radius 1 and its center at the origin. The point at angle $\\theta$ is $(\\cos\\theta, \\sin\\theta)$: cosine across, sine up.",
+  ],
+  "similar-solid-volume": [
+    "Similar solids have the same shape. If lengths scale by a factor $k$, areas scale by $k^2$ and volumes by $k^3$.",
+  ],
+  "nonlinear-formula-isolate": [
+    "Solving a formula for one letter means getting that letter alone on one side. Undo the operations on it in reverse order, doing the same to both sides.",
+  ],
+  "quadratic-context-model": [
+    "A quadratic model describes something that rises and falls, or falls and rises. Its graph is a parabola, and the vertex is the highest or lowest point.",
+  ],
+  "exponential-time-scale": [
+    "An exponential model multiplies by the same factor in each equal period. Changing the time unit changes the exponent, not the starting amount.",
+  ],
+  "symbolic-rational-exponent": [
+    "A fractional exponent is a root: the bottom number says which root, and the top number says which power.",
+  ],
+  "rational-expression-operation": [
+    "A rational expression is a fraction with polynomials on top and bottom. Combine them like number fractions: use a common denominator to add, and multiply tops and bottoms to multiply.",
+  ],
+  "nonlinear-data-model": [
+    "Different models grow in different ways: linear models add the same amount each step, exponential models multiply by the same factor, and quadratic models change by amounts that change steadily.",
+  ],
+  "quadratic-parameter-root": [
+    "A root of a quadratic is a value of $x$ that makes it equal 0. Substituting a known root gives an equation for the unknown number.",
+  ],
+  "rational-function-representation": [
+    "A rational function is a fraction with polynomials on top and bottom. Its graph has a vertical asymptote, a line it never touches, where the bottom is 0 and the top is not.",
+  ],
+};
+
 export const satCompletionAxes = {
   "similar-solid-volume": {
     "scale-given": defineAxis("scale-given", [
@@ -1034,7 +1087,11 @@ export function generateSatCompletionProblem(
     const r = random(id, seed);
     for (let attempt = 0; attempt < 80; attempt++) {
       try {
-        return assemble(meta, seed, r, draft(id, r, axes));
+        const d = draft(id, r, axes);
+        return assemble(meta, seed, r, {
+          ...d,
+          explanation: [...(OPENERS[id] ?? []), ...d.explanation],
+        });
       } catch (error) {
         if (!(error instanceof Error && error.message.startsWith("Need three")))
           throw error;

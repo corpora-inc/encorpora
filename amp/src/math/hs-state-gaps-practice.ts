@@ -30,6 +30,29 @@ const meta = (
   description,
 });
 
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const OPENERS: Record<string, string[]> = {
+  "gauss-3x3-solve": [
+    "Gaussian elimination solves a system by combining equations to remove one variable at a time, until one equation has a single variable. Then substitute back.",
+  ],
+  "quadratic-inequality-interval": [
+    "To solve a quadratic inequality, find where the quadratic equals 0. Those roots split the number line into intervals; test one value in each interval for the sign.",
+  ],
+  "conditional-statements": [
+    'A conditional statement has the form "if $P$, then $Q$". Its converse swaps the parts, its inverse negates both parts, and its contrapositive does both.',
+  ],
+  "cube-root-equation": [
+    "To undo a cube root, cube both sides. Unlike squaring, cubing keeps every solution and adds no false ones, because cube roots of negative numbers exist.",
+  ],
+  "polar-graph-identify": [
+    "In polar form a point is given by its distance $r$ from the origin and its angle $\\theta$. The equation's form decides the curve's shape.",
+  ],
+  "cone-section-name": [
+    "A conic section is the curve where a flat plane cuts a double cone. The tilt of the plane decides whether the curve is a circle, ellipse, parabola or hyperbola.",
+  ],
+};
+
 export const hsStateGapTemplates: readonly TemplateMetadata[] = [
   meta(
     "gauss-3x3-solve",
@@ -1039,7 +1062,7 @@ function cubeRootCase(r: Random): Draft {
     return {
       prompt: `Solve ${M(`${cbrtTex(rad)} = ${c}`)} for real $x$.`,
       answer: "",
-      hint: `Cube both sides to remove the cube root, so the left side becomes ${M(rad)}. The right side ${c} becomes a single number; then solve the linear equation in $x$.`,
+      hint: `Cube both sides to remove the cube root, so the left side becomes ${M(rad)}. On the right, the cube of ${c} is a single number. Then solve the linear equation in $x$.`,
       explanation: [
         `Cube both sides: ${M(`${rad} = ${par(c)}^3 = ${c ** 3}`)}.`,
         `Solve: ${M(`${poly([[a, "x"]])} = ${c ** 3 - b}`)}, so ${xv(x)}.`,
@@ -1633,5 +1656,9 @@ export function generateHsStateGapProblem(
     "polar-graph-identify": polarCase,
     "cone-section-name": coneCase,
   };
-  return assemble(template, seed, r, build[templateId]!(r));
+  const draft = build[templateId]!(r);
+  return assemble(template, seed, r, {
+    ...draft,
+    explanation: [...(OPENERS[templateId] ?? []), ...draft.explanation],
+  });
 }
