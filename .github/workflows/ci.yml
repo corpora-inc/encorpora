@@ -183,7 +183,7 @@ jobs:
           set_output packs '^(corpan/packs/|\.github/workflows/(ci|deploy-pages)\.yml$|\.github/scripts/pack_catalog_check\.js$)'
           set_output terraform '^(corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|\.github/workflows/ci\.yml$)'
           set_output amp_ads '^(web/scripts/amp-ads/|amp/(browser-security\.mjs|scripts/install-browser\.mjs)$|\.github/workflows/ci\.yml$)'
-          set_output web '^(web/(io|data|pages|scripts)/|\.github/workflows/(ci|deploy-pages)\.yml$)'
+          set_output web '^(web/(io|data|pages|scripts)/|amp/(browser-security\.mjs|scripts/install-browser\.mjs)$|\.github/workflows/(ci|deploy-pages)\.yml$)'
 
           # Dynawalla areas. Every one of them is consumed by a job below.
           #

@@ -165,3 +165,16 @@ def test_planner_outputs_never_share_a_name_with_an_area_filter():
     names = set(github_outputs(plan(['amp/src/math/engine.ts'])))
     assert all(name.startswith('amp') for name in names)
     assert not names & AREAS
+
+
+@pytest.mark.parametrize('path', [
+    'amp/browser-security.mjs',
+    'amp/scripts/install-browser.mjs',
+])
+@pytest.mark.parametrize('event', ['pull_request', 'merge_group', 'push'])
+def test_browser_policy_runs_all_automated_browser_consumers(tmp_path, repo, event, path):
+    base = repo.git('rev-parse', 'HEAD')
+    head = repo.commit([path])
+    values = repo.select(tmp_path, event, base, head)
+    assert {'amp', 'amp_core', 'amp_build', 'corpora_site', 'aha_app', 'amp_ads', 'web'} <= on(values)
+    assert values['native'] == 'false'
