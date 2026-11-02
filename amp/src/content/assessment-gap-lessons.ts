@@ -34,13 +34,17 @@ export const assessmentGapMethods: Record<string, ProblemMethod> = {
   },
   "radian-arc-ratio": {
     goal: "Measure a swept angle by comparing its arc length with the radius.",
+    senses: { center: "center" },
+    noLink: ["edge", "whole"],
+    intuition:
+      "A radius is the distance from a circle's center to its edge. An arc is a curved piece of the edge. A radian is a unit of angle: one radian sweeps an arc as long as the radius. So the angle in radians is the arc length divided by the radius. Counterclockwise means against a clock's hands. A semicircle is half a circle.",
     terms: ["radius", "arc", "radian"],
     method: [
-      "Identify the arc that the angle sweeps, including its direction, and put its length and the radius in the same units.",
-      "Divide the arc length by the positive radius. Keep an exact fraction, then check by multiplying the angle by the radius.",
+      "Find the arc that the angle sweeps, with its direction. Put its length and the radius in the same units.",
+      "Divide the arc length by the radius, which is positive. Keep an exact fraction. Check by multiplying the angle by the radius: you should get the arc length back.",
     ],
     watch:
-      "Use the radius, not the diameter. An arc longer than a semicircle corresponds to the larger swept angle, not the smaller angle between the radii.",
+      "Use the radius, not the diameter. An arc longer than a semicircle goes with the larger swept angle, not the smaller angle between the radii.",
   },
 };
 export const assessmentGapPrinciples: Record<string, string> = {
@@ -49,7 +53,7 @@ export const assessmentGapPrinciples: Record<string, string> = {
   "margin-of-error-interval":
     "An estimate $c$ with a symmetric margin of error $e$ gives the interval $[c-e,c+e]$. A 95% confidence procedure covers the fixed population parameter in about 95% of repeated samples when its assumptions hold.",
   "radian-arc-ratio":
-    "For an arc of length $s$ on a circle of positive radius $r$, the swept angle in radians is $\\theta=s/r$, so $s=r\\theta$. One full turn is $2\\pi$ radians because its arc length is $2\\pi r$.",
+    "For an arc of length $s$ on a circle with radius $r>0$, the swept angle in radians is $\\theta=\\frac{s}{r}$, so $s=r\\theta$. One full turn is $2\\pi$ radians, because its arc, the whole circumference, has length $2\\pi r$.",
 };
 export const assessmentGapLessons: Lesson[] = [
   {
@@ -204,8 +208,16 @@ export const assessmentGapLessons: Lesson[] = [
     id: "radian-arc-ratio",
     title: "Measure an angle by its arc",
     summary:
-      "A radius reaches from a circle's center to its edge; an arc follows part of that edge. One radian is the angle that sweeps an arc as long as the radius.",
+      "Measure an angle by how far its tip travels. Picture a circle with radius 4 cm, the distance from its center to its edge. Turn a radius around the center. Its endpoint traces an arc, a curved piece of the circle's edge. When that arc is 4 cm long, as long as the radius, the turn is called one radian. An arc 6 cm long is $6 \\div 4 = \\frac32$ radius-lengths, so that turn is $\\frac32$ radians.",
     templateIds: ["radian-arc-ratio"],
+    senses: {
+      center: "center",
+      unit: "unit",
+      units: "unit",
+      degree: "degree-angle",
+      degrees: "degree-angle",
+    },
+    noLink: ["edge", "boundary", "whole"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Find a swept angle in radians using arc length divided by radius.",
@@ -216,7 +228,7 @@ export const assessmentGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Use the radius as a measuring stick",
         paragraphs: [
-          "You need division and exact fractions. A radius is the distance from the center of a circle to its boundary. An arc is a connected part of that boundary. As a radius turns, its endpoint sweeps an arc. One radian is the angle that sweeps an arc whose length equals the radius. An arc twice as long as the radius sweeps two radians.",
+          "You need division and exact fractions. A radius is the distance from the center of a circle to its edge, and also a segment of that length. An arc is a connected, curved piece of the edge. As a radius turns about the center, its endpoint sweeps out an arc. One radian is the angle that sweeps an arc whose length equals the radius. An arc twice as long as the radius sweeps two radians. So the angle in radians is the arc length divided by the radius.",
         ],
       },
     ],
@@ -225,7 +237,7 @@ export const assessmentGapLessons: Lesson[] = [
         stage: "method",
         title: "Compare the two lengths",
         paragraphs: [
-          "A circle has radius 4 cm. A counterclockwise arc has length 6 cm. The arc contains 6 ÷ 4 = 3/2 radius-lengths, so the swept angle is 3/2 radians. Check: 4 × 3/2 = 6 cm. The centimeters cancel in the ratio; radians measure an angle rather than a length.",
+          "A circle has radius 4 cm. A counterclockwise arc, one traced against a clock's hands, has length 6 cm. The arc holds $6 \\div 4 = \\frac32$ radius-lengths, so the swept angle is $\\frac32$ radians. Check: $4 \\times \\frac32 = 6$ cm. Both lengths are in centimeters, so the units cancel when you divide. A radian measures an angle, not a length.",
         ],
         illustration: "assessment-radian-arc",
       },
@@ -233,14 +245,14 @@ export const assessmentGapLessons: Lesson[] = [
         stage: "method",
         title: "Full turns and larger arcs",
         paragraphs: [
-          "A full circle has circumference $2\\pi r$, where $r$ is its radius and $\\pi$ is the constant ratio of circumference to diameter. Divide by the radius: one full turn measures $2\\pi$ radians. Half a turn is $\\pi$ radians, equal to 180 degrees.",
-          "The chosen arc matters. An arc longer than half the circumference gives an angle greater than $\\pi$ radians, even though the two final radii also bound a smaller angle. Follow the direction and arc stated in the problem.",
+          "The circumference of a circle, the distance all the way around, is $2\\pi r$. Here $r$ is the radius, and $\\pi$ (pi), about 3.14, is the circumference divided by the diameter for every circle. Divide the circumference by the radius: one full turn is $2\\pi$ radians. Half a turn is $\\pi$ radians, which is 180 degrees.",
+          "The chosen arc matters. Two radii split the circle into two arcs, a shorter one and a longer one. An arc longer than half the circumference sweeps an angle greater than $\\pi$ radians, even though the two radii also make a smaller angle. Follow the arc and direction the problem states.",
         ],
       },
       {
         title: "The precise rule",
         paragraphs: [
-          "For a counterclockwise arc of length $s \\ge 0$ on a circle with radius $r>0$, the nonnegative swept angle is $\\theta=s/r$ radians. Equivalently, $s=r\\theta$. Degree and radian measures satisfy $\\theta_{\\mathrm{rad}}=\\theta_{\\mathrm{deg}}\\pi/180$. For signed rotation, clockwise angles are negative; arc length itself is nonnegative.",
+          "For a counterclockwise arc of length $s \\ge 0$ on a circle with radius $r>0$, the swept angle is $\\theta=\\frac{s}{r}$ radians, which is 0 or positive. Equivalently, $s=r\\theta$. Degree and radian measures of the same angle satisfy $\\theta_{\\mathrm{rad}}=\\frac{\\pi}{180}\\theta_{\\mathrm{deg}}$. When turns have a direction, clockwise angles are negative. An arc length is never negative.",
         ],
       },
     ],
@@ -248,16 +260,16 @@ export const assessmentGapLessons: Lesson[] = [
       prompt:
         "A circle has radius 4 cm and a counterclockwise arc of length 6 cm. What angle does the arc sweep, in radians?",
       steps: [
-        "One radian sweeps 4 cm on this circle.",
-        "The arc contains 6/4 = 3/2 radius-lengths.",
-        "The angle is 3/2 radians; multiplying by the radius recovers 6 cm.",
+        "One radian sweeps an arc as long as the radius. On this circle, that is 4 cm.",
+        "So count how many radius-lengths fit in the arc: $6 \\div 4 = \\frac64 = \\frac32$.",
+        "The angle is $\\frac32$ radians. Check by multiplying by the radius: $4 \\times \\frac32 = 6$ cm, the arc length.",
       ],
       answer: "3/2",
       answerUnit: "radians",
     },
     pitfalls: [
-      "Divide by the radius, not the diameter.",
-      "Keep the given arc and direction; two radii alone do not specify which swept angle is intended.",
+      "Divide by the radius, not the diameter, which is twice the radius.",
+      "Keep the given arc and direction. Two radii alone do not say which of the two angles is meant.",
     ],
     parentGuide:
       "Draw a radius-length along the circle’s boundary, then compare the whole arc with that length.",

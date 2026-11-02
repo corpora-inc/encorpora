@@ -220,21 +220,22 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
   },
   "fl-even-odd-classify": {
     goal: "Use $f(-x)$ to classify a polynomial function as even, odd or neither, or choose a function with a stated symmetry.",
+    noLink: ["image", "mirror image"],
     intuition:
-      "Replacing $x$ by $-x$ reflects a graph across the $y$-axis. If the function is unchanged, its graph is symmetric about the $y$-axis and it is even. If every output changes sign, the graph is symmetric about the origin and it is odd.",
+      "Replacing $x$ by $-x$ flips a graph across the $y$-axis, as in a mirror. A function is even when $f(-x)=f(x)$ for every $x$: its graph matches its own mirror image across the $y$-axis. It is odd when $f(-x)=-f(x)$ for every $x$: every output changes sign, and the graph looks the same after a half turn about the origin $(0, 0)$. An exponent counts the copies multiplied: $x^3 = x \\cdot x \\cdot x$.",
     terms: ["even-function", "odd-function"],
     method: [
-      "Replace every $x$ by $-x$. A term $kx^n$ becomes $k(-x)^n$, which keeps its sign when $n$ is even and changes sign when $n$ is odd.",
-      "Simplify and compare with $f(x)$ and with $-f(x)$.",
-      "Equal to $f(x)$: even. Equal to $-f(x)$: odd. Neither: neither.",
+      "Replace every $x$ by $-x$. A term $kx^n$ becomes $k(-x)^n$. It keeps its sign when the exponent $n$ is even and changes sign when $n$ is odd, because an even number of minus signs multiply to a plus.",
+      "Simplify, then compare with $f(x)$ and with $-f(x)$.",
+      "If it equals $f(x)$, the function is even. If it equals $-f(x)$, it is odd. If it equals neither, the function is neither.",
     ],
     watch:
-      "A constant term has exponent 0, an even exponent. $x^3+1$ is neither even nor odd, because $f(-x)=-x^3+1$ equals neither $f(x)$ nor $-f(x)$.",
+      "A constant term, a plain number, has exponent 0, an even exponent. So $x^3+1$ is neither even nor odd: $f(-x)=-x^3+1$ equals neither $f(x)$ nor $-f(x)$.",
   },
   "fl-function-arithmetic": {
     goal: "Add, subtract, multiply or divide two functions, and give the domain or a value of the quotient.",
     intuition:
-      "Two functions can be combined by doing the operation to their outputs. For $f$ and $g$, $(f+g)(x)$ means $f(x)+g(x)$, and so on. A quotient $\\frac{f(x)}{g(x)}$ is undefined where $g(x)=0$, so those inputs are left out of its domain.",
+      "Two functions can be combined by doing the operation to their outputs at the same input. For $f$ and $g$, $(f+g)(x)$ means $f(x)+g(x)$. Subtracting, multiplying and dividing work the same way. Dividing by 0 has no answer, so a quotient $\\frac{f(x)}{g(x)}$ is undefined where $g(x)=0$. Those inputs are left out of its domain, the set of allowed inputs. Like terms are terms with the same power of $x$, such as $5x$ and $4x$.",
     terms: [
       [
         "function",
@@ -247,8 +248,8 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Write the combination of the two formulas, with parentheses around each full formula.",
-      "Sum and difference: distribute the sign to every term, then combine like terms. Product: multiply every term by every term.",
-      "Quotient: solve $g(x)=0$ and exclude those inputs. To find a value, evaluate $f$ and $g$ at the input, then divide.",
+      "For a sum or a difference, apply the sign to every term, then combine like terms. For a product, multiply every term by every term.",
+      "For a quotient, solve $g(x)=0$ and leave those inputs out. To find a value, work out $f$ and $g$ at the input, then divide.",
     ],
     watch:
       "In $f-g$, the minus sign changes every term of $g$, not just the first one.",
@@ -308,7 +309,7 @@ export const floridaGapPrinciples: Record<string, string> = {
   "fl-vector-angle":
     "For nonzero vectors, $\\mathbf{u}\\cdot\\mathbf{v}=|\\mathbf{u}||\\mathbf{v}|\\cos\\theta$ with $0^\\circ\\le\\theta\\le180^\\circ$, so $\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$. In the plane, $u_1v_2-u_2v_1=0$ exactly when one vector is a multiple of the other.",
   "fl-even-odd-classify":
-    "A function $f$ is even if $f(-x)=f(x)$ for all $x$ in its domain, and odd if $f(-x)=-f(x)$. For a polynomial, it is even exactly when every term has an even exponent and odd exactly when every term has an odd exponent.",
+    "A function $f$ is even if $f(-x)=f(x)$ for all $x$ in its domain, and odd if $f(-x)=-f(x)$ for all $x$ in its domain. After like terms are combined, a nonzero polynomial is even exactly when every term has an even exponent. It is odd exactly when every term has an odd exponent.",
   "fl-function-arithmetic":
     "For functions $f$ and $g$ with domains $D_f$ and $D_g$, $(f\\pm g)(x)=f(x)\\pm g(x)$ and $(fg)(x)=f(x)g(x)$ on $D_f\\cap D_g$, and $\\left(\\frac{f}{g}\\right)(x)=\\frac{f(x)}{g(x)}$ on $D_f\\cap D_g$ with $g(x)\\ne0$.",
   "fl-trapezoid-consequences":
@@ -807,8 +808,10 @@ export const floridaGapLessons: Lesson[] = [
     id: "even-odd-classify",
     title: "Even and odd functions",
     summary:
-      "Replace $x$ by $-x$. If nothing changes the function is even; if every sign changes it is odd.",
+      "Put $-x$ in place of $x$ and compare. For $f(x) = x^2$, $f(-3) = 9 = f(3)$, so the graph is its own mirror image across the $y$-axis. A function with $f(-x) = f(x)$ for every $x$ is called even. For $f(x) = x^3$, $f(-2) = -8 = -f(2)$. A function with $f(-x) = -f(x)$ for every $x$ is called odd. Many functions are neither.",
     templateIds: ["fl-even-odd-classify"],
+    senses: { term: "term-expression", terms: "term-expression" },
+    noLink: ["image", "mirror image", "leaves", "changes", "whole"],
     objectives: [
       "Compute $f(-x)$ for a polynomial and compare it with $f(x)$ and $-f(x)$.",
       "Classify a function as even, odd or neither.",
@@ -816,16 +819,17 @@ export const floridaGapLessons: Lesson[] = [
     intuition: [
       "Symmetry in an equation",
       [
-        "You need to evaluate a function and simplify powers of negative numbers. A function is even when $f(-x)=f(x)$, so its graph is symmetric about the $y$-axis. It is odd when $f(-x)=-f(x)$, so its graph is symmetric about the origin.",
-        "A power $(-x)^n$ keeps its sign when $n$ is even and changes it when $n$ is odd.",
+        "This lesson uses powers of negative numbers. A power such as $x^3$ means 3 copies of $x$ multiplied, $x \\cdot x \\cdot x$, and the small 3 is the exponent. An even number of minus signs multiply to a plus, and an odd number multiply to a minus. So $(-2)^2 = 4$ but $(-2)^3 = -8$. In general, $(-x)^n = x^n$ when the whole number $n$ is even, and $(-x)^n = -x^n$ when $n$ is odd.",
+        "A function is even when $f(-x)=f(x)$ for every $x$ in its domain, its set of allowed inputs. Its graph is symmetric about the $y$-axis: folding along that axis matches the two halves. A function is odd when $f(-x)=-f(x)$ for every $x$ in its domain. Its graph is symmetric about the origin $(0, 0)$: a half turn about that point leaves it unchanged.",
       ],
     ],
     workedExample: {
       prompt: "Classify $f(x)=2x^3-5x$ as even, odd or neither.",
       steps: [
-        "Replace $x$ by $-x$: $f(-x)=2(-x)^3-5(-x)=-2x^3+5x$.",
-        "Compare with $-f(x)=-(2x^3-5x)=-2x^3+5x$.",
-        "$f(-x)=-f(x)$, so $f$ is odd.",
+        "Put $-x$ in place of every $x$: $f(-x)=2(-x)^3-5(-x)$.",
+        "Simplify. The exponent 3 is odd, so $(-x)^3=-x^3$. Also $-5(-x)=5x$. So $f(-x)=-2x^3+5x$.",
+        "This is not $f(x)=2x^3-5x$, so $f$ is not even. Now find $-f(x)=-(2x^3-5x)=-2x^3+5x$.",
+        "These match: $f(-x)=-f(x)$ for every $x$, so $f$ is odd.",
       ],
       answer: "Odd",
     },
@@ -834,8 +838,8 @@ export const floridaGapLessons: Lesson[] = [
         stage: "method",
         title: "Compare the negated input with two things",
         paragraphs: [
-          "Compute $f(-x)$ and simplify. If it equals $f(x)$, the function is even. If it equals $-f(x)$, it is odd. If it equals neither, the function is neither.",
-          "For a polynomial, check the exponents: all even means even, all odd means odd. A constant term counts as an even exponent, so $x^3+1$ is neither.",
+          "Compute $f(-x)$ and simplify. If it equals $f(x)$ for every $x$, the function is even. If it equals $-f(x)$ for every $x$, it is odd. If it equals neither, the function is neither.",
+          "For a polynomial, a sum of terms like $kx^n$, check the exponents. All even means even, and all odd means odd. A constant term, a plain number, is $k$ times $x^0$, so it counts as an even exponent. That makes $x^3+1$ neither.",
         ],
       },
       {
@@ -847,8 +851,8 @@ export const floridaGapLessons: Lesson[] = [
       },
     ],
     pitfalls: [
-      "A function that is not even is not necessarily odd.",
-      "$f(-x)$ negates only the input, not the whole function.",
+      "A function that is not even is not always odd. It can be neither.",
+      "$f(-x)$ changes the sign of the input only, not of the whole function.",
     ],
     parentGuide:
       "Ask whether $x^2$ and $x^3$ are even or odd, and what $(-2)^2$ and $(-2)^3$ show.",
@@ -857,8 +861,16 @@ export const floridaGapLessons: Lesson[] = [
     id: "function-arithmetic",
     title: "Add, subtract, multiply and divide functions",
     summary:
-      "Combine the outputs of two functions with the same input. A quotient excludes the inputs where the denominator is 0.",
+      "Two functions can be combined by combining their outputs for the same input. Take $f(x) = x^2$ and $g(x) = x + 1$. At $x = 3$, $f(3) = 9$ and $g(3) = 4$, so $(f+g)(3) = 9 + 4 = 13$. Subtracting, multiplying and dividing work the same way. A quotient, one output divided by the other, is not defined where the bottom output $g(x)$ is 0.",
     templateIds: ["fl-function-arithmetic"],
+    senses: {
+      term: "term-expression",
+      terms: "term-expression",
+      product: "product-multiply",
+      side: "side-of-equation",
+      sides: "side-of-equation",
+    },
+    noLink: ["changes", "leaves"],
     objectives: [
       "Write $(f+g)(x)$, $(f-g)(x)$ and $(fg)(x)$ as expressions.",
       "Find the domain and a value of $\\left(\\frac{f}{g}\\right)(x)$.",
@@ -866,18 +878,19 @@ export const floridaGapLessons: Lesson[] = [
     intuition: [
       "Combine outputs at the same input",
       [
-        "You need to evaluate polynomial functions and combine like terms. For functions $f$ and $g$, $(f+g)(x)$ means $f(x)+g(x)$. The other operations work the same way.",
-        "A quotient divides by $g(x)$, so it is not defined where $g(x)=0$.",
+        "This lesson uses like terms, terms with the same power of $x$, such as $3x$ and $-x$. Combine them by adding the numbers in front: $3x - x = 2x$. For functions $f$ and $g$, $(f+g)(x)$ means $f(x)+g(x)$, and $(f-g)(x)$ means $f(x)-g(x)$. The product $(fg)(x)$ means $f(x)$ times $g(x)$.",
+        "The quotient $\\left(\\frac{f}{g}\\right)(x)$ means $\\frac{f(x)}{g(x)}$. Dividing by 0 has no answer, so the quotient is not defined where $g(x)=0$. Those inputs are left out of its domain, the set of allowed inputs.",
       ],
     ],
     workedExample: {
       prompt:
         "Let $f(x)=x^2+3x$ and $g(x)=x-2$. Find $(f-g)(x)$ and the domain of $\\left(\\frac{f}{g}\\right)(x)$.",
       steps: [
-        "$(f-g)(x)=(x^2+3x)-(x-2)$. Distribute the minus sign: $x^2+3x-x+2$.",
-        "Combine like terms: $x^2+2x+2$.",
-        "For the quotient, solve $g(x)=0$: $x-2=0$ gives $x=2$.",
-        "The domain is all real numbers except 2.",
+        "$(f-g)(x)$ is $f(x)$ minus $g(x)$. Put each formula in parentheses: $(x^2+3x)-(x-2)$.",
+        "The minus sign applies to every term of $g$, so $-(x-2)=-x+2$. This gives $x^2+3x-x+2$.",
+        "Combine like terms, using $3x-x=2x$: $x^2+2x+2$.",
+        "The quotient divides by $g(x)$, so it is undefined where $g(x)=0$. Solve $x-2=0$ by adding 2 to both sides: $x=2$.",
+        "So the domain of the quotient is all real numbers except 2.",
       ],
       answer: "$(f-g)(x)=x^2+2x+2$; the domain excludes $x=2$.",
     },
@@ -886,21 +899,21 @@ export const floridaGapLessons: Lesson[] = [
         stage: "method",
         title: "Put each formula in parentheses",
         paragraphs: [
-          "Write each function in parentheses when you combine, so a minus sign reaches every term. For a product, multiply each term by each term.",
-          "For a quotient, find the zeros of the denominator function and exclude them. To find $\\left(\\frac{f}{g}\\right)(a)$, evaluate $f(a)$ and $g(a)$ and divide.",
+          "Put each function in parentheses when you combine them, so a minus sign reaches every term. For a product, multiply each term of one by each term of the other.",
+          "For a quotient, find the inputs where the denominator function is 0, and leave them out. To find $\\left(\\frac{f}{g}\\right)(a)$ at an input $a$, work out $f(a)$ and $g(a)$, then divide.",
         ],
       },
       {
         stage: "formal",
         title: "Domain of a combination",
         paragraphs: [
-          "$(f\\pm g)(x)$ and $(fg)(x)$ are defined where both $f$ and $g$ are. $\\left(\\frac{f}{g}\\right)(x)$ also requires $g(x)\\ne0$.",
+          "$(f+g)(x)$, $(f-g)(x)$ and $(fg)(x)$ are defined where both $f$ and $g$ are defined. $\\left(\\frac{f}{g}\\right)(x)$ also needs $g(x)\\ne0$.",
         ],
       },
     ],
     pitfalls: [
-      "$f-g$ changes the sign of every term of $g$.",
-      "The domain of a quotient is decided by the denominator function, not the numerator.",
+      "$f-g$ changes the sign of every term of $g$, not just the first.",
+      "The domain of a quotient leaves out every input where the denominator function is 0. It also leaves out any input that $f$ or $g$ does not allow.",
     ],
     parentGuide: "Ask what input is not allowed in $\\frac{x+1}{x-4}$ and why.",
   }),

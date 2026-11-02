@@ -13,17 +13,18 @@ const payNoLink = ["net"];
 export const remainingGapMethods: Record<string, ProblemMethod> = {
   "triangle-law-reasoning": {
     goal: "Choose a step in deriving the law of sines or cosines, the law that starts a given triangle, or the number of triangles the data allow.",
+    senses: { squared: "square-number" },
     intuition:
-      "An altitude is a segment from a vertex perpendicular to the opposite side. It cuts a triangle into right triangles, where sine and cosine are ratios of sides. Writing the same altitude in two ways, or Pythagoras' theorem in two right triangles, links the original sides and angles.",
+      "An altitude is a segment from a vertex, a corner, that meets the line through the opposite side at a right angle. It forms right triangles. In a right triangle, the hypotenuse is the longest side. The sine of an acute angle is the opposite leg divided by the hypotenuse, and the cosine is the adjacent leg divided by the hypotenuse. Writing the same altitude in two ways links the original sides and angles. So does using “the legs squared add up to the hypotenuse squared” in both right triangles. Side $a$ is across from angle $A$, and so on.",
     terms: ["altitude", "opposite-side-angle", "included-angle"],
     method: [
-      "Draw the altitude and name the two right triangles it makes. In each, identify the hypotenuse and the leg you want.",
-      "To derive a law, write the same quantity (the altitude, or the foot's distance along the base) with sine or cosine in each right triangle, then equate or substitute.",
-      "To choose a law, look for a side with its opposite angle (law of sines) or for three sides or two sides with the angle between them (law of cosines).",
-      "For two sides and a non-included angle, compare the side opposite the angle with the height $b\\sin A$ and with $b$ to count the triangles.",
+      "Draw the altitude and name the right triangles it makes. In each, find the hypotenuse and the leg you want.",
+      "To derive a law, write the same length, the altitude or the distance from its foot along the base, with sine or cosine in each right triangle. Then set the two expressions equal, or substitute one into the other.",
+      "To choose a law, look for a side with its opposite angle: use the law of sines. With three sides, or two sides and the angle between them, use the law of cosines.",
+      "For two sides and an angle not between them, compare the side opposite the angle with the height $b\\sin A$ and with $b$ to count the triangles.",
     ],
     watch:
-      "A cosine relates the adjacent leg to the hypotenuse; a sine relates the opposite leg. Use the hypotenuse of the same right triangle, and keep the cosine term in the law of cosines subtracted.",
+      "A cosine uses the adjacent leg and the hypotenuse. A sine uses the opposite leg. Use the hypotenuse of the same right triangle, and keep the cosine term in the law of cosines subtracted.",
   },
   "model-quantity-roles": {
     goal: "Read a situation and choose the right variable definitions and units, the rate, a matching unit, or which quantities vary.",
@@ -108,7 +109,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
 
 export const remainingGapPrinciples: Record<string, string> = {
   "triangle-law-reasoning":
-    "In a triangle with sides $a,b,c$ opposite angles $A,B,C$, an altitude $h$ from $C$ gives $h=b\\sin A=a\\sin B$, so $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}$. An altitude from $A$ with foot $D$ between $B$ and $C$ and $x=CD=b\\cos C$ gives $c^2=a^2+b^2-2ab\\cos C$. For angle $A$ with sides $a$ opposite and $b$ adjacent: if $A$ is acute, $a<b\\sin A$ gives no triangle, $a=b\\sin A$ one, $b\\sin A<a<b$ two and $a\\ge b$ one.",
+    "In a triangle with sides $a$, $b$ and $c$ opposite angles $A$, $B$ and $C$, an altitude $h$ from $C$ gives $h=b\\sin A=a\\sin B$. So $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}$. An altitude from $A$, with foot $D$ between $B$ and $C$ and $x=CD=b\\cos C$, gives $c^2=a^2+b^2-2ab\\cos C$. For an acute angle $A$ with side $a$ opposite and side $b$ adjacent: $a<b\\sin A$ gives no triangle, and $a=b\\sin A$ gives one. $b\\sin A<a<b$ gives two, and $a\\ge b$ gives one.",
   "model-quantity-roles":
     "A model names each quantity, its unit and its role. In a linear model $y=mx+b$ ($mx$ means $m$ times $x$), $x$ is the independent quantity, measured in a unit $X$, and $y$ is the dependent quantity, measured in a unit $Y$. The rate $m$ has unit $Y$ per $X$, and $b$ is the value of $y$ when $x=0$, in unit $Y$.",
   "stem-leaf-read":
@@ -124,8 +125,21 @@ export const remainingGapLessons: Lesson[] = [
     id: "triangle-law-reasoning",
     title: "Where the triangle laws come from and when they apply",
     summary:
-      "Drop an altitude to make right triangles, then read the laws of sines and cosines from them. Match a law to the measurements you are given.",
+      "An altitude is a segment from a corner of a triangle that meets the opposite side's line at a right angle. It splits a triangle into right triangles, where sine and cosine are ratios of sides. Writing the altitude's length in two ways gives the law of sines. Using “the legs squared add up to the hypotenuse squared” in both right triangles gives the law of cosines. Each law fits certain given measurements.",
     templateIds: ["triangle-law-reasoning"],
+    senses: {
+      side: "side",
+      sides: "side",
+      squared: "square-number",
+      "opposite leg": "opposite-side-angle",
+      "opposite side": "opposite-side-angle",
+      vertex: "vertex",
+      vertices: "vertex",
+      term: "term-expression",
+      terms: "term-expression",
+      factor: "factor-number",
+    },
+    noLink: ["opposite", "certain", "rule", "third"],
     objectives: [
       "Derive the law of sines and the law of cosines from an altitude.",
       "Choose the law that fits given measurements.",
@@ -136,8 +150,9 @@ export const remainingGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Right triangles inside any triangle",
         paragraphs: [
-          "In a right triangle, the sine of an angle is the opposite leg divided by the hypotenuse, and the cosine is the adjacent leg divided by the hypotenuse. An ordinary triangle is not a right triangle, but an altitude, a segment from a vertex perpendicular to the opposite side, cuts it into two right triangles.",
-          "Side $a$ is the side opposite angle $A$, and likewise for $b$ and $B$ and for $c$ and $C$. Writing one altitude in terms of both right triangles, or applying Pythagoras' theorem to both, links the sides and angles of the original triangle.",
+          "In a right triangle, the hypotenuse is the longest side, across from the right angle, and the other two sides are the legs. For an acute angle, the sine is the opposite leg (across from the angle) divided by the hypotenuse. The cosine is the adjacent leg (next to the angle) divided by the hypotenuse.",
+          "An altitude is a segment from a vertex, a corner, that meets the line through the opposite side at a right angle. If it meets that side between its two ends, it cuts the triangle into two right triangles. If it lands outside, on the side's line extended, it still forms right triangles, and the same laws follow.",
+          "Each side is named by the angle across from it: side $a$ is opposite angle $A$, side $b$ is opposite $B$, and side $c$ is opposite $C$. Writing one altitude using both right triangles links the sides and angles of the original triangle. So does the rule that the legs squared add up to the hypotenuse squared, used in both right triangles. That rule is called the Pythagorean theorem.",
         ],
       },
     ],
@@ -145,10 +160,10 @@ export const remainingGapLessons: Lesson[] = [
       prompt:
         "In triangle $ABC$ the altitude $h$ from $C$ meets $AB$ at $D$ between $A$ and $B$. Show that $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}$.",
       steps: [
-        "In right triangle $ADC$ the hypotenuse is $AC=b$ and $h$ is opposite angle $A$, so $h=b\\sin A$.",
-        "In right triangle $BDC$ the hypotenuse is $BC=a$ and $h$ is opposite angle $B$, so $h=a\\sin B$.",
-        "Both equal $h$, so $b\\sin A=a\\sin B$.",
-        "Divide both sides by $\\sin A\\sin B$. On the left $\\sin A$ cancels, leaving $\\frac{b}{\\sin B}$; on the right $\\sin B$ cancels, leaving $\\frac{a}{\\sin A}$.",
+        "Look at right triangle $ADC$, with its right angle at $D$. Its hypotenuse is $AC=b$, and $h$ is the leg opposite angle $A$. Since $\\sin A=\\frac{h}{b}$, multiply both sides by $b$: $h=b\\sin A$.",
+        "In right triangle $BDC$, the hypotenuse is $BC=a$, and $h$ is opposite angle $B$. Since $\\sin B=\\frac{h}{a}$, $h=a\\sin B$.",
+        "Both expressions equal the same length $h$, so $b\\sin A=a\\sin B$.",
+        "Divide both sides by $\\sin A\\sin B$, which is not 0 for the angles of a triangle. On the left, $\\sin A$ cancels, leaving $\\frac{b}{\\sin B}$. On the right, $\\sin B$ cancels, leaving $\\frac{a}{\\sin A}$.",
       ],
       answer: "$\\frac{a}{\\sin A}=\\frac{b}{\\sin B}$",
     },
@@ -157,31 +172,33 @@ export const remainingGapLessons: Lesson[] = [
         stage: "method",
         title: "Law of cosines from the same idea",
         paragraphs: [
-          "Draw the altitude from $A$ to $BC$ with foot $D$, and let $x=CD$, so $BD=a-x$. In right triangle $ADC$, $x=b\\cos C$ and $h^2=b^2-x^2$. In right triangle $ADB$, $h^2=c^2-(a-x)^2$.",
-          "Set the two expressions for $h^2$ equal: $b^2-x^2=c^2-a^2+2ax-x^2$. The $x^2$ terms cancel, so $c^2=a^2+b^2-2ax=a^2+b^2-2ab\\cos C$.",
+          "Draw the altitude from $A$ to side $BC$, meeting it at $D$ between $B$ and $C$. Let $x=CD$, so $BD=a-x$. In right triangle $ADC$, the hypotenuse is $b$, so $\\cos C=\\frac{x}{b}$ and $x=b\\cos C$. The legs squared add up to the hypotenuse squared, so $h^2=b^2-x^2$.",
+          "In right triangle $ADB$, the hypotenuse is $c$, so $h^2=c^2-(a-x)^2$. Multiplying out, $(a-x)^2=a^2-2ax+x^2$.",
+          "Both expressions equal $h^2$, so set them equal: $b^2-x^2=c^2-a^2+2ax-x^2$. The $x^2$ terms cancel. Solve for $c^2$: $c^2=a^2+b^2-2ax$. Then put in $x=b\\cos C$: $c^2=a^2+b^2-2ab\\cos C$.",
         ],
       },
       {
         stage: "method",
         title: "Choosing a law",
         paragraphs: [
-          "The law of sines needs a side together with the angle opposite it. Two angles and one side always provide such a pair, because the third angle is $180^\\circ$ minus the other two. The law of cosines starts from three sides, or from two sides and the angle between them.",
-          "With two sides and an angle not between them (side-side-angle), the law of sines applies but the data may fit zero, one or two triangles. Take acute angle $A$ with opposite side $a$ and adjacent side $b$. The height is $b\\sin A$. If $a<b\\sin A$ there is no triangle; if $a=b\\sin A$ there is one right triangle; if $b\\sin A<a<b$ there are two; if $a\\ge b$ there is one.",
+          "The law of sines needs a side together with the angle opposite it. Two angles and one side always give such a pair, because the third angle is $180^\\circ$ minus the other two. The law of cosines starts from three sides, or from two sides and the included angle, the angle between them.",
+          "Suppose instead you know two sides and an angle that is not between them. This is called side-side-angle, and the data may fit zero, one or two triangles. Take an acute angle $A$, with opposite side $a$ and adjacent side $b$. The height from $C$ to the other side of angle $A$ is $b\\sin A$.",
+          "If $a<b\\sin A$, side $a$ is too short to reach, so there is no triangle. If $a=b\\sin A$, it just reaches, making one right triangle. If $b\\sin A<a<b$, it can reach in two places, so there are two triangles. If $a\\ge b$, there is one triangle.",
         ],
       },
       {
         stage: "formal",
         title: "Statements",
         paragraphs: [
-          "Law of sines: $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}=\\frac{c}{\\sin C}$. Law of cosines: $c^2=a^2+b^2-2ab\\cos C$, with the same pattern for the other two sides. If $C=90^\\circ$ the cosine is $0$ and the law of cosines reduces to the Pythagorean theorem.",
-          "The derivations above assume the foot of the altitude lies between the vertices. When the foot lies outside, the same results hold; the supplementary angle has the same sine, and its cosine is the negative of the cosine, which gives the same final statements.",
+          "Law of sines: $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}=\\frac{c}{\\sin C}$. Law of cosines: $c^2=a^2+b^2-2ab\\cos C$, with the same pattern for the other two sides. If $C=90^\\circ$, then $\\cos C=0$, and the law of cosines becomes the Pythagorean theorem.",
+          "The derivations above assume the foot of the altitude lies between the vertices. When the foot lies outside, the same results hold. There the angle used is the supplementary angle, the one that adds to $180^\\circ$ with the triangle's angle. It has the same sine, and its cosine is the negative, which gives the same final statements.",
         ],
       },
     ],
     pitfalls: [
-      "Multiply the sine of an angle by the hypotenuse of the same right triangle, not by another side.",
-      "Keep the cosine term in the law of cosines subtracted, with the factor 2.",
-      "Compare the side opposite the angle with the height $b\\sin A$ before counting triangles.",
+      "Use the hypotenuse of the same right triangle as the angle: $h=b\\sin A$ uses the hypotenuse $b$ of triangle $ADC$.",
+      "Keep the cosine term in the law of cosines subtracted, with the factor 2: $-2ab\\cos C$.",
+      "Before counting triangles, compare the side opposite the angle with the height $b\\sin A$ and with $b$.",
     ],
     parentGuide:
       "Ask the learner to say why an altitude helps and which side is the hypotenuse of each right triangle it makes.",

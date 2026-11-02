@@ -113,14 +113,22 @@ const entries: Entry[] = [
   {
     id: "graph-after-shift",
     title: "Move a graph up, down, left or right",
+    goal: "Follow one point of the graph to find the graph moved up, down, left or right.",
+    senses: {
+      change: "change",
+      vertex: "vertex-parabola",
+      unit: "unit",
+      units: "unit",
+    },
+    noLink: ["opposite"],
     summary:
-      "$f(x) + k$ moves every point up $k$; $f(x - h)$ moves every point right $h$. Follow one point to find the new graph.",
+      "Sliding a graph, called a translation, moves every point the same distance in the same direction. The shape stays the same. Here $f(x)$, read “$f$ of $x$”, is the output of $f$ for the input $x$. $f(x) + 3$ adds 3 to every output, so every point moves up 3. $f(x - 2)$ moves every point 2 to the right, the opposite of what the minus sign suggests. Follow one point to find the new graph.",
     objectives: [
       "Read a vertical or horizontal move from words or from $f(x - h) + k$, including the direction.",
       "Choose the graph that has moved the shown graph exactly that way, ruling out opposite and partial moves.",
     ],
     intuition:
-      "Moving a graph does not change its shape, only its position, so pick one point you can read, such as a vertex or an intercept, and follow where it goes. Adding to the output $f(x)$ lifts every point; subtracting lowers it. A number inside the parentheses works on the input, so it acts backward: $f(x - 2)$ needs $x$ to be 2 larger to get the old output, so the graph moves 2 to the right.",
+      "A translation, or shift, slides a graph to a new position, and its shape stays the same. So pick one point you can read, such as a vertex (a corner or turning point) or an intercept (where the graph crosses an axis). Then follow where it goes. Adding a number to the output $f(x)$ lifts every point by that much, and subtracting lowers it. A number inside the parentheses works on the input, so it acts backward. $f(x - 2)$ gives the old output $f(0)$ at $x = 2$, so it needs $x$ to be 2 larger. The graph moves 2 to the right.",
     terms: [
       "translation",
       [
@@ -129,34 +137,34 @@ const entries: Entry[] = [
       ],
     ],
     method: [
-      "Find the horizontal and vertical moves: inside the parentheses, $x - h$ is right $h$ and $x + h$ is left $h$; outside, $+ k$ is up and $- k$ is down.",
-      "Pick a point of the shown graph (vertex, intercept, or a corner) and move it by those amounts.",
-      "Choose the graph that passes through the new point, then check the shape is the same as the original.",
+      "Find the horizontal and vertical moves. Inside the parentheses, $x - h$ moves right $h$, and $x + h$ moves left $h$. Outside, $+ k$ moves up $k$, and $- k$ moves down $k$.",
+      "Pick a point of the shown graph, such as a vertex, an intercept or a corner, and move it by those amounts.",
+      "Choose the graph that passes through the new point. Then move a second point the same way and check that it is on that graph too.",
     ],
     watch:
-      "Both moves matter: a graph moved only up when it should also move left is one of the wrong options.",
+      "Both moves matter. A graph moved only up, when it should also move left, is one of the wrong options.",
     principle:
-      "If $(a, b)$ is on the graph of $f$, then $g(x) = f(x - h) + k$ satisfies $g(a + h) = f(a) + k = b + k$, so $(a + h, b + k)$ is on the graph of $g$. Every point moves by the same $(h, k)$, so $g$ has the same shape as $f$.",
+      "If $(a, b)$ is on the graph of $f$, then $g(x) = f(x - h) + k$ gives $g(a + h) = f(a) + k = b + k$. So $(a + h, b + k)$ is on the graph of $g$. Every point moves by the same amounts, $h$ across and $k$ up, so $g$ has the same shape as $f$.",
     example: {
       prompt:
         "An absolute-value graph has its vertex at (1, 2). Which graph shows $f(x + 3) - 1$: the same shape with vertex (4, 1), (−2, 3), (−2, 1) or (4, 3)?",
       steps: [
-        "Inside the parentheses, $x + 3$ moves the graph 3 units left, so the vertex $x$-coordinate becomes 1 − 3 = −2.",
-        "Outside, subtracting 1 moves the graph 1 unit down, so the vertex $y$-coordinate becomes 2 − 1 = 1.",
-        "The vertex moves to (−2, 1). The vertex (4, 1) moved right, (−2, 3) moved up and (4, 3) moved right and up.",
+        "Inside the parentheses, $x + 3$ moves the graph 3 units left. So the vertex's $x$-coordinate becomes $1 - 3 = -2$.",
+        "Outside, subtracting 1 moves the graph 1 unit down. So the vertex's $y$-coordinate becomes $2 - 1 = 1$.",
+        "The vertex moves to (−2, 1). The other choices are wrong: (4, 1) moved right instead of left, (−2, 3) moved up instead of down, and (4, 3) made both mistakes.",
       ],
       answer: "The graph with its vertex at (−2, 1).",
     },
     methodTitle: "Check with a second point",
     methodText: [
-      "After choosing, move a second point by the same amounts and see that it is on the chosen graph. For an absolute-value graph with its vertex at (1, 2) and another point at (2, 4), $f(x + 3) - 1$ takes them to (−2, 1) and (−1, 3); both must lie on the chosen graph.",
-      "For a line, a move sideways can look like a move up or down, so compare the point you followed, not just the look of the line.",
+      "After choosing, move a second point by the same amounts and check that it is on the chosen graph. Take an absolute-value graph with its vertex at (1, 2) and another point at (2, 4). $f(x + 3) - 1$ takes them to (−2, 1) and (−1, 3). Both must lie on the chosen graph.",
+      "For a straight line, a move sideways can look like a move up or down. So compare the points you followed, not just the look of the line.",
     ],
     formal:
-      "The translation $T(x, y) = (x + h, y + k)$ carries the graph of $f$ onto the graph of $g(x) = f(x - h) + k$: $(x, y)$ is on the graph of $f$ exactly when $(x + h, y + k)$ is on the graph of $g$. Distances between points are unchanged, so $g$ has the same shape.",
+      "The translation $T(x, y) = (x + h, y + k)$ carries the graph of $f$ onto the graph of $g(x) = f(x - h) + k$. A point $(x, y)$ is on the graph of $f$ exactly when $(x + h, y + k)$ is on the graph of $g$. Distances between points stay the same, so $g$ has the same shape.",
     pitfalls: [
       "A number inside the parentheses moves the graph the opposite way from its sign: $f(x + 3)$ moves left.",
-      "Do not use a horizontal amount as a vertical one: keep the two moves apart.",
+      "Do not use a horizontal amount as a vertical one. Keep the two moves apart.",
     ],
     parentGuide:
       "Ask your learner to follow the lowest or leftmost point of the shown graph to where it goes, then pick the graph through that spot.",
