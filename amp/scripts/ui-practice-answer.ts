@@ -41,8 +41,9 @@ export function trackPracticeProblems(page: Page) {
   return served;
 }
 
-/** Answers the current problem through the visible controls. */
-export async function answerOne(
+/** Prepares the actual rendered problem's controls. The caller owns the
+ * response wait, including tests that deliberately lose an attempt response. */
+export async function preparePracticeAnswer(
   page: Page,
   correct: boolean,
   savedFixture?: GeneratedProblem,
@@ -218,6 +219,21 @@ export async function answerOne(
       await input.press("Enter");
     }
   };
+  return { problem, submit };
+}
+
+/** Answers the current problem through the visible controls. */
+export async function answerOne(
+  page: Page,
+  correct: boolean,
+  savedFixture?: GeneratedProblem,
+) {
+  const { problem, submit } = await preparePracticeAnswer(
+    page,
+    correct,
+    savedFixture,
+  );
+  const template = problem.templateId;
   // Attach the response listener before submitting, and observe both promises
   // together so a control failure cannot leave an unhandled response timeout.
   const [outcome] = await Promise.all([
@@ -236,7 +252,7 @@ export async function answerOne(
     correct,
     `${template}/${problem.seed}: actual attempt grading`,
   );
-  served.delete(problem.id);
+  servedProblems.get(page)!.delete(problem.id);
   await page.locator(".next-action").waitFor();
   return result;
 }
