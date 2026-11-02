@@ -535,3 +535,19 @@ test("every template has exactly one library lesson and a worked problem lesson"
     assert.ok(lesson.example.steps.length > 0);
   }
 });
+
+test("exponential base feedback quotes this problem's own decimals", () => {
+  for (let i = 0; i < 200; i++) {
+    const p = generateProblem("rg-exponential-base-rate", `own:${i}`);
+    const base = /\(?(\d\.\d+)\)?\^/.exec(p.public.prompt)?.[1];
+    if (!base) continue;
+    const rate = Math.abs(1 - Number(base));
+    for (const text of Object.values(p.choiceFeedback ?? {}))
+      for (const d of text.match(/\b0\.\d+\b/g) ?? [])
+        assert.ok(
+          [rate, rate * 10].some((v) => Math.abs(Number(d) - v) < 1e-9) ||
+            d === base,
+          `${p.public.prompt} :: ${text}`,
+        );
+  }
+});

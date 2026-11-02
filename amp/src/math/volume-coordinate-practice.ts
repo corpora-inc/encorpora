@@ -167,6 +167,7 @@ export function generateVolumeCoordinateProblem(
         label = "Volume in cubic units";
         hint = `Some cubes are hidden. The solid is ${depth} cubes thick, and every slice through it matches the face that shows the steps. Count the cubes on that face, column by column, then multiply by the thickness.`;
         explanation = [
+          `Volume is how many unit cubes fill a solid. Hidden cubes count too.`,
           `The face that shows the steps has ${columns.length} columns. Their heights in cubes are ${columns.join(", ")}: $${columns.join(" + ")} = ${front}$ cubes.`,
           `The solid is ${depth} cubes thick, and every slice behind that face has the same ${front} cubes.`,
           `$${front} \\times ${depth} = ${total}$, so the volume is ${total} cubic units.`,
@@ -214,6 +215,7 @@ export function generateVolumeCoordinateProblem(
         label = "Volume in cubic units";
         hint = `Some cubes are hidden. The top layer is ${l} cubes by ${w} cubes, and every layer below matches it. Count the layers, then multiply.`;
         explanation = [
+          `Volume is how many unit cubes fill a solid. Count one layer, then count the layers.`,
           `The top layer has ${l} cubes along one edge and ${w} along the other: $${l} \\times ${w} = ${layer}$ cubes.`,
           `Every layer below it is the same. Count the layers up the side: there are ${h}.`,
           `$${layer} \\times ${h} = ${layer * h}$, so the volume is ${layer * h} cubic units.`,
@@ -225,8 +227,10 @@ export function generateVolumeCoordinateProblem(
         label = "Cubes in one layer";
         hint = `The bottom layer matches the top. Along one top edge there are ${l} cubes; count the cubes along the other top edge, then multiply.`;
         explanation = [
-          `The top face shows ${l} cubes along one edge and ${w} along the other.`,
-          `The bottom layer has the same ${l} by ${w} arrangement: $${l} \\times ${w} = ${layer}$ cubes.`,
+          `A prism has the same shape all the way up, so every layer, top or bottom, has the same cubes.`,
+          `The top face shows ${l} cubes along one edge and ${w} along the other: ${l} rows of ${w}.`,
+          `So the bottom layer has $${l} \\times ${w} = ${layer}$ cubes.`,
+          `There are ${layer} cubes in the bottom layer.`,
         ];
       }
       break;
@@ -252,8 +256,9 @@ export function generateVolumeCoordinateProblem(
       label = "Volume in cubic cm";
       hint = `One layer of centimeter cubes covers the ${l} cm by ${w} cm base. How many such layers fill the ${h} cm height?`;
       explanation = [
+        `Volume is how many centimeter cubes (1 cm on each edge) fill the prism.`,
         `The base is ${l} cm by ${w} cm, so one layer holds $${l} \\times ${w} = ${base}$ centimeter cubes.`,
-        `The prism is ${h} cm high: ${h} layers.`,
+        `Each layer is 1 cm tall, and the prism is ${h} cm high, so it holds ${h} layers.`,
         `$V = ${base} \\times ${h} = ${volume}$ cubic centimeters.`,
       ];
       break;
@@ -284,10 +289,10 @@ export function generateVolumeCoordinateProblem(
       label = "Edge length in cm";
       hint = `Volume is the product of the three edges: ${a} × ${b} × ? = ${volume}. Multiply the two known edges first.`;
       explanation = [
-        `Volume is the product of the three edges: $${a} \\times ${b} \\times ? = ${volume}$.`,
-        `Multiply the known edges: $${a} \\times ${b} = ${face}$.`,
-        `$${volume} \\div ${face} = ${answer}$, so the missing edge is ${answer} cm.`,
-        `Check: $${a} \\times ${b} \\times ${answer} = ${volume}$.`,
+        `A rectangular prism's volume is length times width times height: $${a} \\times ${b} \\times ? = ${volume}$.`,
+        `Multiply the two known edges first: $${a} \\times ${b} = ${face}$. So $${face} \\times ? = ${volume}$.`,
+        `Division undoes multiplication: $${volume} \\div ${face} = ${answer}$.`,
+        `Check: $${a} \\times ${b} \\times ${answer} = ${volume}$. The missing edge is ${answer} cm.`,
       ];
       break;
     }
@@ -307,6 +312,7 @@ export function generateVolumeCoordinateProblem(
       label = "Volume in cubic cm";
       hint = `Split the solid into its two prisms. The taller one is ${parts[0]!.length} by ${width} by ${parts[0]!.height} cm. Find each volume, then add.`;
       explanation = [
+        `The solid splits into two boxes. Find each volume (length times width times height), then add.`,
         `Taller prism: $${parts[0]!.length} \\times ${width} \\times ${parts[0]!.height} = ${volumes[0]}$ cubic centimeters.`,
         `Shorter prism: $${parts[1]!.length} \\times ${width} \\times ${parts[1]!.height} = ${volumes[1]}$ cubic centimeters.`,
         `The prisms do not overlap, so their volumes add: $${volumes[0]} + ${volumes[1]} = ${answer}$ cubic centimeters.`,
@@ -355,6 +361,7 @@ export function generateVolumeCoordinateProblem(
       prompt = `Which point is at ${pair(x, y)}?`;
       hint = `For ${pair(x, y)}, start at 0. Go ${x} to the right first, then ${y} up.`;
       explanation = [
+        `A point's coordinates are an ordered pair: (across, up), both counted from 0 where the axes meet.`,
         `The first number, ${x}, means ${count(x, "unit")} across from 0.`,
         `The second number, ${y}, means ${count(y, "unit")} up.`,
         `Point $${right.label}$ is ${x} right and ${y} up, so it is at ${pair(x, y)}.`,
@@ -427,6 +434,7 @@ export function generateVolumeCoordinateProblem(
       prompt = "What are the coordinates of point $P$?";
       hint = `From $P$, go straight down to the horizontal axis for the first number, then straight left for the second. $P$ is ${x > y ? "farther across than it is up" : "higher up than it is across"}, so check that its first number is the ${x > y ? "larger" : "smaller"} one.`;
       explanation = [
+        `Coordinates are an ordered pair (across, up), counted from 0 where the axes meet.`,
         `Straight below $P$, the horizontal axis reads ${x}. That is the first coordinate.`,
         `Straight left of $P$, the vertical axis reads ${y}. That is the second coordinate.`,
         `$P$ is at ${pair(x, y)}: across first, then up.`,
@@ -471,7 +479,7 @@ export function generateVolumeCoordinateProblem(
       prompt = `Start at point $A$. Move ${count(right, "unit")} right and ${count(up, "unit")} up. What are the coordinates of the point where you stop?`;
       hint = `Read A's coordinates first. Moving ${right} right adds ${right} to the first number; moving ${up} up adds ${up} to the second.`;
       explanation = [
-        `$A$ is at ${pair(x, y)}.`,
+        `Coordinates are written (across, up). $A$ is at ${pair(x, y)}.`,
         `Moving right changes only the first coordinate: $${x} + ${right} = ${x + right}$.`,
         `Moving up changes only the second coordinate: $${y} + ${up} = ${y + up}$.`,
         `You stop at ${end}.`,
