@@ -10,7 +10,7 @@ import type { ConsentView } from "../src/parent-consent/contracts.js";
 import { retentionNotice } from "../src/family/contracts.js";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
-const auth = `const listeners=new Set();window.authFragment=location.hash;window.consentApp={emit(s){for(const f of listeners)f(s)}};export async function accessSession(){return {token:'fixture',accountId:'parent'}};export function onSessionChanged(f){listeners.add(f);return()=>listeners.delete(f)};export async function signIn(){};export function notifyAccountSessionChanged(){void accessSession().then(session=>window.consentApp.emit(session));}export async function authConfig(){return {mode:"oidc"};}export async function signOut(){window.consentApp.emit(null)}`;
+const auth = `const listeners=new Set();let session={token:'fixture',accountId:'parent'};window.authFragment=location.hash;window.consentApp={emit(s){session=s;for(const f of listeners)f(s)}};export async function accessSession(){return session};export function onSessionChanged(f){listeners.add(f);return()=>listeners.delete(f)};export async function signIn(){};export function notifyAccountSessionChanged(){void accessSession().then(session=>window.consentApp.emit(session));}export async function authConfig(){return {mode:"oidc"};}export async function signOut(){window.consentApp.emit(null)}`;
 const vite = await createServer({
   cacheDir: "node_modules/.vite-consent-app",
   root: fileURLToPath(new URL("../", import.meta.url)),
@@ -46,7 +46,7 @@ try {
     page.setDefaultTimeout(10000);
     const faults: string[] = [];
     page.on("pageerror", (error) => faults.push(error.message));
-    let view: ConsentView = {
+    const emptyView: ConsentView = {
       available: false,
       consentActive: false,
       notice: null,
@@ -54,6 +54,8 @@ try {
       confirmationDelayHours: null,
       request: null,
     };
+    let view = structuredClone(emptyView);
+    let otherConsentReads = 0;
     let familyReads = 0;
     let held = false;
     let entered!: () => void, release!: () => void;
@@ -67,23 +69,47 @@ try {
           json: { templates: [], lessons: [], skills: [], mode: "fixture" },
         });
       if (path.endsWith("/me")) {
+        assert.ok(
+          ["Bearer fixture", "Bearer refreshed", "Bearer other"].includes(
+            req.headers().authorization,
+          ),
+        );
         familyReads++;
         return route.fulfill({
-          json: fixtureMe({
-            consent: {
-              status: view.consentActive ? "active" : "not-recorded",
-              policyVersion: null,
-              recordedAt: null,
-              withdrawnAt: null,
+          json: fixtureMe(
+            {
+              consent: {
+                status: (req.headers().authorization === "Bearer other"
+                  ? emptyView
+                  : view
+                ).consentActive
+                  ? "active"
+                  : "not-recorded",
+                policyVersion: null,
+                recordedAt: null,
+                withdrawnAt: null,
+              },
+              learners: [],
+              retained: retentionNotice,
             },
-            learners: [],
-            retained: retentionNotice,
-          }),
+            req.headers().authorization === "Bearer other" ? "other" : "parent",
+          ),
         });
       }
       if (path.endsWith("/books"))
         return route.fulfill({ json: { books: [] } });
-      if (path.endsWith("/consent")) return route.fulfill({ json: view });
+      if (path.endsWith("/consent")) {
+        const bearer = req.headers().authorization;
+        assert.ok(
+          ["Bearer fixture", "Bearer refreshed", "Bearer other"].includes(
+            bearer,
+          ),
+        );
+        if (bearer === "Bearer other") otherConsentReads++;
+        return route.fulfill({
+          json: bearer === "Bearer other" ? emptyView : view,
+        });
+      }
       if (path.endsWith("/billing/enrollment"))
         return route.fulfill({
           json: {
@@ -117,6 +143,16 @@ try {
         if (!held) view = snapshot;
         return route.fulfill({ json: snapshot }).catch(() => {});
       }
+      if (
+        path === "/api/v1/trials/current" &&
+        route.request().method() === "POST"
+      )
+        return route.fulfill({ json: { trial: null } });
+      if (
+        path === "/api/v1/events/context" &&
+        route.request().method() === "GET"
+      )
+        return route.fulfill({ json: { generation: "initial" } });
       // First-party funnel beacons (verified in verify-funnel-ui).
       if (path.endsWith("/events"))
         return route.fulfill({ status: 202, json: { accepted: 1 } });
@@ -228,13 +264,34 @@ try {
       location.hash = hash;
     }, fragment);
     await page.getByRole("heading", { name: "Review and respond" }).waitFor();
+    const otherAccount = page.waitForResponse(
+      (response) =>
+        new URL(response.url()).pathname === "/api/v1/me" &&
+        response.request().headers().authorization === "Bearer other",
+    );
     await page.evaluate(() =>
       (
         window as unknown as { consentApp: { emit(s: unknown): void } }
       ).consentApp.emit({ token: "other", accountId: "other" }),
     );
-    // The new account starts at the plan step; email-plus is offered there.
-    await page.waitForURL("**/start/plan");
+    assert.equal((await (await otherAccount).json()).account.id, "other");
+    // The consent route belongs to the new account; its empty response must not
+    // display the previous parent's notice, request, or email challenge controls.
+    await page
+      .getByRole("heading", { name: "Enrollment is unavailable" })
+      .waitFor();
+    assert.equal(new URL(page.url()).pathname, "/consent");
+    assert.ok(
+      otherConsentReads > 0,
+      "the new account loads its own consent state",
+    );
+    assert.equal(await page.getByRole("checkbox").count(), 0);
+    assert.equal(
+      await page
+        .getByRole("link", { name: "Read the complete privacy notice" })
+        .count(),
+      0,
+    );
     assert.equal(
       await page.getByRole("heading", { name: "Review and respond" }).count(),
       0,
