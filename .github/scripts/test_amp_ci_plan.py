@@ -172,13 +172,14 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
     assert 'git diff --no-renames' in detection
     browser = deep['amp-browser']
     assert browser['strategy']['fail-fast'] is False
-    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1", "ui-2", "family", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
+    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1", "ui-2a", "ui-2b", "family", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
     commands = {step['run']: step for step in browser['steps'] if 'run' in step}
-    for command, lane in [('npm run test:ui:1', 'ui-1'), ('npm run test:ui:2', 'ui-2'),
+    for command, lane in [('npm run test:ui:1', 'ui-1'), ('npm run test:ui:2a', 'ui-2a'), ('npm run test:ui:2b', 'ui-2b'),
                           ('npm run test:family-ui', 'family'),
                           ('node scripts/run-ci-tests.mjs browser', 'selected')]:
         assert commands[command]['if'] == f"matrix.lane == '{lane}'"
     assert commands['npm run test:native-session']['if'] == "needs.changes.outputs.native == 'true' && (matrix.lane == 'ui-1' || matrix.lane == 'selected')"
+    assert sum(step.get('run') == 'npm run test:native-session' for step in browser['steps']) == 1
     contrast_report = next(step for step in browser['steps'] if step.get('name') == 'Preserve the contrast sweep report')
     assert contrast_report['if'] == "always() && (startsWith(matrix.lane, 'contrast-') || matrix.lane == 'selected')"
     assert contrast_report['with']['name'] == 'amp-contrast-${{ matrix.lane }}-${{ github.run_attempt }}'
@@ -211,11 +212,16 @@ def test_ui_groups_preserve_the_full_ordered_suite_without_duplicates():
         return commands
 
     # test:ui keeps its independent full chain. Any missing, reordered or
-    # duplicated command in either hosted group fails this comparison.
+    # duplicated command in any hosted group fails this comparison.
     full = expand('test:ui')
     first, second = expand('test:ui:1'), expand('test:ui:2')
     assert first and second
     assert first + second == full
+    second_a, second_b = expand('test:ui:2a'), expand('test:ui:2b')
+    assert second_a and second_b
+    assert second_a + second_b == second
+    assert first + second_a + second_b == full
+    assert not set(second_a) & set(second_b)
     assert len(set(full)) == len(full)
     assert not set(first) & set(second)
     assert any('verify-ui.ts' in command for command in first)
@@ -258,6 +264,12 @@ def test_template_sweep_partitions_cover_full_and_selected_browser_runs():
     assert upload['with']['name'] == 'amp-ui-sweep-${{ matrix.shard }}'
     assert upload['with']['overwrite'] is True
     assert upload['with']['path'] == 'amp/artifacts/ui-sweep/shard-${{ matrix.shard }}.json'
+    failure_upload = next(step for step in sweep['steps'] if step.get('name') == 'Preserve synthetic UI failure')
+    assert failure_upload['if'] == '${{ failure() }}'
+    assert failure_upload['with']['name'] == 'amp-ui-failure-${{ matrix.shard }}-${{ github.run_attempt }}'
+    assert failure_upload['with']['path'] == 'amp/artifacts/ui-failure/'
+    assert failure_upload['with']['if-no-files-found'] == 'ignore'
+    assert not failure_upload['with']['name'].startswith('amp-ui-sweep-')
     assert coverage['needs'] == 'amp-ui-sweep'
     assert coverage['if'] == "${{ needs.amp-ui-sweep.result == 'success' }}"
     download = next(step for step in coverage['steps'] if step.get('uses') == 'actions/download-artifact@v4')

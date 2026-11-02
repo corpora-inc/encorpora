@@ -705,12 +705,15 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "clock-elapsed-minutes": {
     goal: "Given a start time and an end time, find the minutes between them.",
+    intuition:
+      "Elapsed time is how much time passes from a start time to an end time. One hour is 60 minutes. An o'clock time, like 4:00, is a time with 0 minutes.",
     method: [
-      "Count minutes from the start to the next full hour.",
-      "Add 60 for each full hour after that.",
-      "Add the minutes past the last hour.",
+      "If both times are in the same hour, subtract the minutes: 3:10 to 3:45 is 45 − 10 = 35 minutes.",
+      "Otherwise, count the minutes from the start up to the next o'clock time.",
+      "Add 60 for each full hour after that. Then add the minutes past the last o'clock time.",
     ],
-    watch: "3:25 to 4:50: 35 minutes to 4:00, then 50 more. 85 minutes.",
+    watch:
+      "After 12 o'clock comes 1 o'clock. 11:40 to 12:15 is 20 minutes to 12:00, then 15 more: 35 minutes.",
   },
   "metric-length-rename": {
     goal: "Given a length in a larger unit, write it in a smaller unit.",
