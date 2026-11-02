@@ -65,6 +65,11 @@ try {
     page.getByRole("button", { name: "Learner", exact: true }),
     learner.id,
   );
+  // Classic scrollbars reserve space even on hosts that default to overlays.
+  // Keep the narrow-phone layout representative of the Linux browser runner.
+  await page.addStyleTag({
+    content: ".problem-stage::-webkit-scrollbar { width: 15px; height: 15px; }",
+  });
   const rows = [];
   const fixtures: {
     name: string;
@@ -189,7 +194,13 @@ try {
         .evaluate((stage) => ({
           height: stage.clientHeight,
           scroll: stage.scrollHeight,
+          gutter: (stage as HTMLElement).offsetWidth - stage.clientWidth,
         }));
+      if (browserName === "chromium" && size.width === 320)
+        assert.ok(
+          geometry.gutter >= 15,
+          "Classic scrollbar space must be reserved",
+        );
       // Phone landscape only has to stay usable; the others must fit.
       if (isPhoneLandscape(size)) await assertPhoneLandscapeSmoke(page, id);
       else
