@@ -78,7 +78,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
   "geo-centroid-median": {
     goal: "Use that the centroid divides each median into parts in the ratio 2 to 1, longer part next to the vertex.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK.filter((w) => !["opposite side"].includes(w)),
+    noLink: GEO_NOLINK.filter((w) => !["opposite side", "thirds"].includes(w)),
     intuition:
       "A midpoint is the point halfway along a side. A median joins a corner (vertex) to the midpoint of the side across from it. The three medians meet at one point, called the centroid, the triangle's balance point. The centroid is two thirds of the way from the vertex along each median. So the part next to the vertex is twice the part next to the midpoint.",
     terms: ["median-triangle", "centroid"],
@@ -280,7 +280,7 @@ export const regentsGeometryFiguresLessons = [
         "Ask your learner to name the two triangles they are comparing, and which sides match, before writing any proportion.",
     }),
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["thirds"].includes(w)),
   },
   {
     ...chainLesson({

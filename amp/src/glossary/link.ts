@@ -53,6 +53,34 @@ export function contextConflicts(context: LinkContext): string[] {
   );
 }
 
+/** Forms in `noLink` that belong to an entry the context names in `senses`
+ * through another form, e.g. sense "side" with noLink "sides". A sense covers
+ * every form of its entry, so such a form is muted. That is right when the
+ * form is ordinary English there ("one third" is a fraction, "the third side"
+ * an ordinal), so this is reported (`tests/glossary-baseline.test.ts`), never
+ * enforced. */
+export function siblingNoLinks(
+  context: LinkContext,
+): { form: string; id: TermId }[] {
+  if (!context.senses || !context.noLink?.length) return [];
+  const ordinary = new Set(
+    context.noLink.map((word) => normalizeForm(word.toLowerCase())),
+  );
+  const named = new Set(
+    Object.entries(context.senses)
+      .filter(([form]) => !ordinary.has(normalizeForm(form.toLowerCase())))
+      .map(([, id]) => id),
+  );
+  const out: { form: string; id: TermId }[] = [];
+  for (const id of named)
+    for (const form of glossaryEntry(id).forms) {
+      const key = normalizeForm(form.toLowerCase());
+      if (ordinary.has(key) && !(key in context.senses))
+        out.push({ form: key, id });
+    }
+  return out;
+}
+
 const isDev = () =>
   (globalThis as { process?: { env?: Record<string, string | undefined> } })
     .process?.env?.NODE_ENV !== "production";

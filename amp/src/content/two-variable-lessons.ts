@@ -436,7 +436,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
   "elimination-equivalent": {
     goal: "Add two equations of a system to remove a letter, and explain why the solutions stay the same.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["opposite"].includes(w)),
     intuition:
       "A system is two equations about the same unknowns $x$ and $y$. If both are true, adding them, left side to left side and right side to right side, gives another true equation. When one letter has opposite numbers in front of it, like $2y$ and $-2y$, adding makes it cancel. This is called elimination.",
     method: [

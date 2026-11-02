@@ -653,7 +653,7 @@ export const mcasGapLessons: Lesson[] = [
     summary:
       "A ratio is a comparison of two amounts in a set order, such as 6 red marbles to 9 blue ones. A rate is a ratio of two different kinds of amounts, such as miles per hour. A percent is a number out of 100. Check each stated ratio, rate or price against the real amounts. Keep the order and the units straight.",
     senses: { part: "part", whole: "whole", unit: "unit" },
-    noLink: ["units", "more than", "changes", "change"],
+    noLink: ["more than", "changes", "change"],
     templateIds: [
       "mcas-ratio-statements-select",
       "mcas-fraction-rate-select",

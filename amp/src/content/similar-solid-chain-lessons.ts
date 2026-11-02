@@ -86,7 +86,7 @@ export const similarSolidChainLessons = [
       solid: "solid-shape",
       squared: "square-number",
     },
-    noLink: ["factor", "cube", "cubes", "square", "squares", "scale", "scales"],
+    noLink: ["factor", "cube", "cubes", "squares", "scale", "scales"],
   },
 ];
 
