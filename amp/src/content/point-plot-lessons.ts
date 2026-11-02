@@ -439,7 +439,7 @@ const entries: Entry[] = [
     senses: { root: "root-radical", roots: "root-radical" },
     goal: "Find where the graph of $y = a\\sqrt{x - h} + k$ starts, then place points where the number under the root is a perfect square.",
     summary:
-      "The square root $\\sqrt{u}$ is the number, 0 or positive, that times itself gives $u$. A negative number has no real square root. So the graph of $y = a\\sqrt{x - h} + k$ starts where $x - h = 0$, at the point $(h, k)$, and goes only to the right. For example, $y = \\sqrt{x - 2} + 1$ starts at $(2, 1)$. Points land on the grid when $x - h$ is a perfect square, such as 0, 1, 4 or 9.",
+      "The square root $\\sqrt{u}$ is the number, 0 or positive, that times itself gives $u$. A negative number has no real square root. So the graph of $y = a\\sqrt{x - h} + k$ starts where $x - h = 0$, at the point $(h, k)$, and goes only to the right. For example, $y = \\sqrt{x - 2} + 1$ starts at $(2, 1)$. When $a$, $h$ and $k$ are integers, whole numbers or their negatives, points land on the grid where $x - h$ is a perfect square, such as 0, 1, 4 or 9.",
     objectives: [
       "Find the starting point and the domain of $y = a\\sqrt{x - h} + k$.",
       "Choose $x$-values that make the radicand a perfect square, and find the points.",
@@ -456,7 +456,7 @@ const entries: Entry[] = [
       "Place the points the question asks for. Any points that make the equation true are correct.",
     ],
     watch:
-      "Pick $x$ so that $x - h$ is a perfect square, or $y$ will not be a whole number. For example, $\\sqrt{3}$ is not a whole number, so $x = h + 3$ does not give a grid point.",
+      "With integer $a$, $h$, $k$ and $x$, pick $x$ so that $x - h$ is a perfect square, or $y$ will not be an integer. For example, $\\sqrt{3}$ is not a whole number, so $x = h + 3$ does not give a grid point.",
     principle:
       "The function $y = \\sqrt{x}$ is defined for $x \\ge 0$, and its outputs grow as $x$ grows. The graph of $y = a\\sqrt{x - h} + k$, with $a \\ne 0$, is that curve stretched by $|a|$, the size of $a$. It is flipped over the $x$-axis if $a < 0$, then moved $h$ right and $k$ up.",
     example: {

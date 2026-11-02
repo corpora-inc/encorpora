@@ -183,7 +183,7 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
   "function-graph-features": {
     goal: "Read the intercept, asymptote, domain, range or end behavior of an exponential or logarithmic function from its equation or graph.",
     intuition:
-      "An exponential function $a\\cdot b^x+k$, with $a\\ne0$, $b>0$ and $b\\ne1$, multiplies $b^x$ by $b$ each time $x$ goes up 1. Its graph levels off toward the line $y=k$ in one direction and grows or falls without end in the other. A line that a graph gets closer and closer to, without reaching, is called an asymptote. A logarithm undoes an exponential: $\\log_b(x)$ is the power of $b$ that gives $x$, such as $\\log_2 8=3$. So $a\\log_b(x-h)+k$ needs $x-h>0$. Its graph lives to the right of the vertical line $x=h$. Far from that line, it climbs or falls more and more slowly.",
+      "An exponential function $a\\cdot b^x+k$, with $a\\ne0$, $b>0$ and $b\\ne1$, multiplies $b^x$ by $b$ each time $x$ goes up 1. Its graph levels off toward the line $y=k$ in one direction and grows or falls without end in the other. An asymptote is a line that a graph gets closer and closer to as it runs off toward one end. The graphs here never touch theirs. A logarithm undoes an exponential: $\\log_b(x)$ is the power of $b$ that gives $x$, such as $\\log_2 8=3$. So $a\\log_b(x-h)+k$ needs $x-h>0$. Its graph lives to the right of the vertical line $x=h$. Far from that line, it climbs or falls more and more slowly.",
     terms: ["horizontal-asymptote", "vertical-asymptote", "end-behavior"],
     method: [
       "For $a\\cdot b^x+k$: the horizontal asymptote is $y=k$, and the $y$-intercept is $a+k$. The range, the set of outputs, is above $k$ when $a>0$ and below $k$ when $a<0$. The function is increasing when $a>0$ and $b>1$, or when $a<0$ and $0<b<1$.",
@@ -486,8 +486,8 @@ export const advancedMathGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Where the curve flattens, and where it cannot go",
         paragraphs: [
-          "You need to read a graph and work out a power. In $b^x$, the base $b$ is positive and not 1, and $x$ is the exponent. Take $b=2$: $2^{-2}=\\frac14$, $2^0=1$ and $2^3=8$. So $2^x$ is always positive. It grows quickly to the right and flattens toward 0 on the left, without reaching it. A line that a graph gets closer and closer to, without reaching, is called an asymptote.",
-          "Adding $k$ lifts the whole graph, so $b^x+k$ flattens toward the horizontal line $y=k$. That line is its horizontal asymptote. A negative number $a$ in front flips the graph over that line. The range, the set of all outputs, is the part above $k$ if $a>0$, or below $k$ if $a<0$.",
+          "You need to read a graph and work out a power. In $b^x$, the base $b$ is positive and not 1, and $x$ is the exponent. Take $b=2$: $2^{-2}=\\frac14$, $2^0=1$ and $2^3=8$. So $2^x$ is always positive. It grows quickly to the right and flattens toward 0 on the left, without reaching it. An asymptote is a line that a graph gets closer and closer to as it runs off toward one end. The graphs here never touch theirs.",
+          "Adding $k$ moves the whole graph up by $k$, or down if $k$ is negative. So $b^x+k$ flattens toward the horizontal line $y=k$, its horizontal asymptote. A number $a$ in front multiplies each distance from that line by $|a|$, the size of $a$. A negative $a$ also flips the graph over the line. The range, the set of all outputs, is the part above $k$ if $a>0$, or below $k$ if $a<0$.",
           "A logarithm is the inverse of a power: $\\log_b(x)$ answers “which power of $b$ gives $x$?” For example, $\\log_2 8=3$. A positive base raised to any power gives a positive number. So $\\log_b(x)$ exists only for positive $x$: its domain, the set of allowed inputs, is $x>0$. Its graph hugs the vertical line $x=0$ without reaching it. Changing the input to $x-h$ moves that vertical asymptote to $x=h$.",
         ],
       },

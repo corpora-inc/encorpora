@@ -216,7 +216,7 @@ const instruction: Record<string, Instruction> = {
     terms: ["radian"],
     method: [
       "Use the fact that $180^\\circ$ and $\\pi$ radians are the same half turn.",
-      "For degrees to radians, multiply by $\\frac{\\pi}{180}$. For radians to degrees, multiply by $\\frac{180}{\\pi}$, so the $\\pi$s cancel. Keep exact fractions.",
+      "For degrees to radians, multiply by $\\frac{\\pi}{180}$. For radians to degrees, multiply by $\\frac{180}{\\pi}$. When the measure is a number times $\\pi$, the two $\\pi$s divide out. Keep exact fractions.",
     ],
     watch:
       "Switching units keeps the fraction of a full turn. Do not flip the conversion fraction: radians to degrees uses $\\frac{180}{\\pi}$.",
@@ -254,7 +254,7 @@ const instruction: Record<string, Instruction> = {
     },
     terms: ["quadrant"],
     method: [
-      "Find the reference angle. A $30^\\circ$–$60^\\circ$–$90^\\circ$ triangle has sides in the ratio $1:\\sqrt{3}:2$. A $45^\\circ$–$45^\\circ$–$90^\\circ$ triangle has sides in the ratio $1:1:\\sqrt{2}$.",
+      "Find the reference angle. For $30^\\circ$, $45^\\circ$ or $60^\\circ$, use a special triangle. A $30^\\circ$–$60^\\circ$–$90^\\circ$ triangle has sides in the ratio $1:\\sqrt{3}:2$. A $45^\\circ$–$45^\\circ$–$90^\\circ$ triangle has sides in the ratio $1:1:\\sqrt{2}$. An endpoint on an axis, such as at $90^\\circ$, has one coordinate 0 and the other 1 or $-1$.",
       "Shrink the triangle so its hypotenuse is 1, the radius. The vertical leg gives the size of the $y$-coordinate, and the horizontal leg gives the size of the $x$-coordinate.",
       "Give the coordinate the sign of its quadrant: $x$ is negative in quadrants II and III, and $y$ is negative in quadrants III and IV.",
     ],
@@ -368,13 +368,13 @@ const instruction: Record<string, Instruction> = {
         "Area: a rectangle has perimeter 40 meters, the distance all the way around. So one length plus one width is 20 meters. If the width is $x$ meters, the length is $20 - x$ meters. The area, width times length, is $A = x(20 - x)$ square meters. Both lengths must be positive, so $0 < x < 20$.",
         "Height: a ball's height in meters after $t$ seconds is $h(t) = 3(6 - t)(t + 28)$. It is on the ground when $h(t) = 0$. Numbers multiply to 0 only when one of them is 0. So $6 - t = 0$ or $t + 28 = 0$, which gives $t = 6$ or $t = -28$.",
         "A time before the ball was thrown makes no sense here, so reject $-28$. The ball reaches the ground after 6 seconds.",
-        "The vertex answers “how high” or “how large” questions. For $ax^2 + bx + c$ with $a \\ne 0$, the vertex is at the input $x = -\\frac{b}{2a}$. Put that input into the formula to get the greatest or least value.",
+        "The vertex answers “how high” or “how large” questions when its input makes sense in the situation. For $ax^2 + bx + c$ with $a \\ne 0$, the vertex is at the input $x = -\\frac{b}{2a}$. Put that input into the formula to get the greatest or least value. If that input is not allowed, check the ends of the allowed values instead.",
       ],
     },
     terms: ["vertex-parabola"],
     method: [
       "Write each quantity in terms of the unknown. Then turn the relationship into an equation, such as area equals length times width.",
-      "Solve the equation, or find the vertex, as the question asks. Put values back in to get the quantity asked for. Reject values that make no sense in the situation, such as a negative length or time.",
+      "Solve the equation, or find the vertex, as the question asks. Put values back in to get the quantity asked for. Reject values that make no sense in the situation, such as a negative length or time. For a greatest value, use the vertex only if its input is allowed.",
     ],
     watch:
       "A time, a height and a length are different answers. Reject negative lengths, and keep the vertex's input (where) apart from its output (how much).",
@@ -450,7 +450,7 @@ const instruction: Record<string, Instruction> = {
     terms: ["nth-root"],
     method: [
       "Write an $n$th root as a power with exponent $\\frac1n$. Then multiply by any exponent already on the base: $\\sqrt[n]{x^m} = (x^m)^{1/n} = x^{m/n}$.",
-      "One divided by a power makes the exponent negative: $\\frac{1}{x^a} = x^{-a}$. Keep $x > 0$, and simplify the exponent fraction.",
+      "One divided by a power flips the sign of its exponent: $\\frac{1}{x^a} = x^{-a}$. Keep $x > 0$, and simplify the exponent fraction.",
     ],
     watch:
       "The root index divides the exponent. It does not multiply it. A negative exponent means one divided by the power, not a negative number.",
@@ -468,7 +468,7 @@ const instruction: Record<string, Instruction> = {
     },
     noLink: ["part", "parts", "change", "whole"],
     summary:
-      "A rational expression is a fraction with $x$ in it, such as $\\frac{7}{x}$ or $\\frac{4}{x+1}$. You combine these the way you combine number fractions. To add or subtract, first rewrite them over a common denominator, a bottom they share. A denominator can never be 0, so note the inputs that make one 0. Those inputs stay excluded, even if a part of the fraction later cancels.",
+      "A rational expression is a fraction whose top and bottom are polynomials, sums of terms like 7, $x$ and $x^2$. Examples are $\\frac{7}{x}$ and $\\frac{4}{x+1}$. You combine these the way you combine number fractions. To add or subtract, first rewrite them over a common denominator, a bottom they share. A denominator can never be 0, so note the inputs that make one 0. Those inputs stay excluded, even if a part of the fraction later cancels.",
     objectives: [
       "Add or subtract rational expressions over a common denominator.",
       "Multiply rational expressions and keep the original excluded values.",

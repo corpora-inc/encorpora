@@ -53,7 +53,7 @@ export const assessmentGapPrinciples: Record<string, string> = {
   "margin-of-error-interval":
     "An estimate $c$ with a symmetric margin of error $e$ gives the interval $[c-e,c+e]$. A 95% confidence procedure covers the fixed population parameter in about 95% of repeated samples when its assumptions hold.",
   "radian-arc-ratio":
-    "For an arc of length $s$ on a circle with radius $r>0$, the swept angle in radians is $\\theta=\\frac{s}{r}$, so $s=r\\theta$. One full turn is $2\\pi$ radians, because its arc, the whole circumference, has length $2\\pi r$.",
+    "For a counterclockwise arc of length $s$ on a circle with radius $r>0$, the swept angle in radians is $\\theta=\\frac{s}{r}$, so $s=r\\theta$. One full turn is $2\\pi$ radians, because its arc, the whole circumference, has length $2\\pi r$.",
 };
 export const assessmentGapLessons: Lesson[] = [
   {
@@ -217,7 +217,7 @@ export const assessmentGapLessons: Lesson[] = [
       degree: "degree-angle",
       degrees: "degree-angle",
     },
-    noLink: ["edge", "boundary", "whole"],
+    noLink: ["edge", "boundary", "whole", "opposite"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Find a swept angle in radians using arc length divided by radius.",
@@ -246,7 +246,7 @@ export const assessmentGapLessons: Lesson[] = [
         title: "Full turns and larger arcs",
         paragraphs: [
           "The circumference of a circle, the distance all the way around, is $2\\pi r$. Here $r$ is the radius, and $\\pi$ (pi), about 3.14, is the circumference divided by the diameter for every circle. Divide the circumference by the radius: one full turn is $2\\pi$ radians. Half a turn is $\\pi$ radians, which is 180 degrees.",
-          "The chosen arc matters. Two radii split the circle into two arcs, a shorter one and a longer one. An arc longer than half the circumference sweeps an angle greater than $\\pi$ radians, even though the two radii also make a smaller angle. Follow the arc and direction the problem states.",
+          "The chosen arc matters. Two radii split the circle into two arcs. Unless the radii point in opposite directions, one arc is shorter and one is longer. An arc longer than half the circumference sweeps an angle greater than $\\pi$ radians, even though the two radii also make a smaller angle. Follow the arc and direction the problem states.",
         ],
       },
       {

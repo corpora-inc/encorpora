@@ -85,7 +85,7 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
       senses: { plane: "plane" },
       noLink: ["part", "leaves", "change"],
       intuition:
-        "Angles here are in radians: $\\pi$ radians is a half turn, $180^\\circ$. An obtuse angle, between $\\frac{\\pi}{2}$ and $\\pi$, ends in Quadrant II, the upper left. Its reference angle is the acute angle back to the $x$-axis: $\\pi$ minus the angle. The angle has the same sine as its reference angle and the opposite cosine, because $x$ is negative in Quadrant II. Also, for any angle $\\alpha$ (alpha), $\\sin\\alpha=\\cos\\left(\\frac{\\pi}{2}-\\alpha\\right)$. For an acute $\\alpha$, the angles $\\alpha$ and $\\frac{\\pi}{2}-\\alpha$ add up to a right angle. Together these let you write one value in several ways.",
+        "Draw an angle from the positive $x$-axis to a point on a circle of radius 1 centered at the origin. The cosine of the angle is that point's $x$-coordinate, and the sine is its $y$-coordinate. Angles here are in radians: $\\pi$ radians is a half turn, $180^\\circ$. An obtuse angle, between $\\frac{\\pi}{2}$ and $\\pi$, ends in Quadrant II, the upper left. Its reference angle is the acute angle back to the $x$-axis: $\\pi$ minus the angle. The angle has the same sine as its reference angle and the opposite cosine, because $x$ is negative in Quadrant II. Also, for any angle $\\alpha$ (alpha), $\\sin\\alpha=\\cos\\left(\\frac{\\pi}{2}-\\alpha\\right)$. For an acute $\\alpha$, the angles $\\alpha$ and $\\frac{\\pi}{2}-\\alpha$ add up to a right angle. Together these let you write one value in several ways.",
       terms: [
         "reference-angle",
         [
@@ -250,7 +250,7 @@ export const regentsAlgebraTwoFunctionsPrinciples: Record<string, string> = {
   "special-angle-match":
     "Let $\\alpha$ (alpha) be an angle with $0<\\alpha<\\frac{\\pi}{2}$. Then $\\sin(\\pi-\\alpha)=\\sin\\alpha$, $\\cos(\\pi-\\alpha)=-\\cos\\alpha$ and $\\sin\\alpha=\\cos\\left(\\frac{\\pi}{2}-\\alpha\\right)$.",
   "odd-sine-parameters":
-    "A function is odd when $f(-x)=-f(x)$ for every $x$. For $f(x)=A\\sin(Bx-C)+D$ with $A\\ne0$ and $B\\ne0$, $f$ is odd exactly when $D=0$ and $C$ is an integer multiple of $\\pi$, such as $-\\pi$, 0 or $\\pi$. The choices here use $C=0$ as the only such value.",
+    "A function is odd when $f(-x)=-f(x)$ for every $x$. For $f(x)=A\\sin(Bx-C)+D$ with $A\\ne0$ and $B\\ne0$, $f$ is odd exactly when $D=0$ and $C$ is an integer multiple of $\\pi$, such as $-\\pi$, 0 or $\\pi$. The answer choices in these problems include only one such value, $C=0$.",
   "parabola-vertex-distance":
     "A parabola with focus $F$ and directrix $\\ell$ is the set of points the same distance from both. Its vertex lies on the line through $F$ at a right angle to $\\ell$, halfway between $F$ and $\\ell$.",
   "event-complement-set":
@@ -362,7 +362,7 @@ export const regentsAlgebraTwoFunctionsLessons = [
     id: "regents-special-angle-match",
     title: "Equal values at special angles",
     summary:
-      "Different angles can have the same sine or cosine. For example, $\\sin 150^\\circ = \\sin 30^\\circ = \\frac12$, and $\\cos 60^\\circ$ is also $\\frac12$. To match two expressions, find the exact value of each and compare. The size comes from the reference angle, the acute angle back to the $x$-axis. The sign comes from the quadrant the angle ends in.",
+      "Draw an angle from the positive $x$-axis, and mark where it meets a circle of radius 1 centered at the origin. The cosine of the angle, $\\cos$, is that point's $x$-coordinate, and the sine, $\\sin$, is its $y$-coordinate. Different angles can have the same sine or cosine. For example, $\\sin 150^\\circ = \\sin 30^\\circ = \\frac12$, and $\\cos 60^\\circ$ is also $\\frac12$. To match two expressions, find the exact value of each and compare. The size comes from the reference angle, the acute angle back to the $x$-axis. The sign comes from the quadrant the angle ends in.",
     templateIds: ["special-angle-match"],
     senses: { quarter: "fourth", square: "square-number" },
     noLink: ["change", "complement"],

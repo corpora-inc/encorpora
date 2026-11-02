@@ -5,21 +5,24 @@ import { chainLesson } from "./chain-lesson-kit";
 export const heightModelChainMethods: Record<string, ProblemMethod> = {
   "quadratic-model-chain": {
     goal: "Fix a height model's constant from the drop height and solve for landing time, or build a quadratic from vertex and zero and evaluate it.",
-    senses: { sides: "side-of-equation" },
+    senses: { sides: "side-of-equation", difference: "difference-subtract" },
     noLink: ["change"],
     intuition:
-      "A height model is a formula for an object's height. Its constant, a number that does not change, depends on the situation. At time zero the height equals the starting height, which fixes the constant. A parabola is the U-shaped graph of a quadratic, and its vertex is its turning point. A parabola with vertex $(h,k)$ has the form $y=a(x-h)^2+k$, called vertex form. A point on it, such as where it lands at height 0, fixes the number $a$.",
+      "A height model is a formula for an object's height. In a falling-object model $h=-gt^2+c$, the constant $c$, a number that does not change, depends on the situation. At time zero the height equals the starting height, which fixes $c$. A parabola is the U-shaped graph of a quadratic, and its vertex is its turning point. A parabola with vertex $(h,k)$ has the form $y=a(x-h)^2+k$, called vertex form. A point on it, such as where it lands at height 0, fixes the number $a$.",
     terms: [
-      ["constant-term", "In a height model, it is the height at time $t = 0$."],
+      [
+        "constant-term",
+        "In a falling-object model $-gt^2+c$, it is the height at time $t = 0$.",
+      ],
       "vertex-form",
     ],
     method: [
       "Fix the unknown number from a known point: use the starting point for the constant, or the landing point for $a$.",
       "Write the finished model. Then set the height to 0 and solve for the time, or put in the new input.",
-      "Keep the positive time, or round only the final height, as the problem asks.",
+      "Keep the time that is not negative, because time is counted from the drop. Or round only the final height, as the problem asks.",
     ],
     watch:
-      "Fix the constant from the starting height before solving. Put the distance $x-h$ from the vertex into vertex form, not $x$ alone.",
+      "Fix the constant from the starting height before solving. Put the difference $x-h$, how far across the input is from the vertex, into vertex form, not $x$ alone.",
   },
 };
 
@@ -39,6 +42,7 @@ export const heightModelChainLessons = [
       model: "model",
       vertex: "vertex-parabola",
       parameter: "parameter",
+      difference: "difference-subtract",
     },
     noLink: ["change", "leaves"],
     objectives: [
@@ -48,7 +52,7 @@ export const heightModelChainLessons = [
     openingTitle: "The situation fixes the missing number",
     opening: [
       "A model is a formula that describes a real situation. In $h=-16t^2+c$, $h$ is the height in feet after $t$ seconds, and $t^2$ means $t$ times $t$. The constant $c$, a number that does not change, is decided by the situation. At $t=0$, $h(0)=-16\\cdot0+c=c$, so $c$ is the starting height. Once $c$ is known, the model is complete.",
-      "A parabola, the U-shaped graph of a quadratic, can also be fixed by its highest point and one more point. Vertex form, $y=a(x-p)^2+k$, uses the highest point, the vertex $(p,k)$. That leaves one unknown, the number $a$. A point such as the landing spot, where the height is 0, gives an equation for $a$.",
+      "A parabola, the U-shaped graph of a quadratic, can also be fixed by its highest point and one more point. Vertex form, $y=a(x-p)^2+k$, uses the vertex $(p,k)$, which here is the highest point. That leaves one unknown, the number $a$. A point such as the landing spot, where the height is 0, gives an equation for $a$.",
     ],
     example: {
       prompt:
@@ -64,16 +68,16 @@ export const heightModelChainLessons = [
     methodTitle: "Fix, finish, then use",
     method: [
       "Fix: put the known point into the model. For a falling object, $t=0$ and the starting height give $c$. For a parabola, the landing point, where the height is 0, gives $a$.",
-      "Finish and use: to find when the object lands, set $h=0$ and solve $-gt^2+c=0$ for the positive $t$. Here $g$ is the number multiplying $t^2$, such as 16. Or put the new $x$ into the finished model, and round only the final value.",
+      "Finish and use: to find when the object lands, set $h=0$ and solve $-gt^2+c=0$ for the positive $t$. Here $-g$ is the number multiplying $t^2$, so $g$ is a positive number such as 16. Or put the new $x$ into the finished model, and round only the final value.",
     ],
     formalTitle: "Why the point fixes the number",
     formal: [
       "A function value at a known input gives an equation for the unknown number, called a parameter. For $h(t)=-gt^2+c$, $h(0)=c$ gives the parameter directly. For $y=a(x-p)^2+k$, a zero at $x=z$ gives $0=a(z-p)^2+k$. When $z\\ne p$, this has exactly one solution, $a=-\\frac{k}{(z-p)^2}$.",
-      "For $g>0$ and $c\\ge0$, the equation $-gt^2+c=0$ has solutions $t=\\pm\\sqrt{\\frac{c}{g}}$, where $\\pm$ means plus or minus. Only $t=\\sqrt{\\frac{c}{g}}$, which is not negative, is a time after the drop.",
+      "For $g>0$ and $c\\ge0$, the equation $-gt^2+c=0$ has solutions $t=\\pm\\sqrt{\\frac{c}{g}}$, where $\\pm$ means plus or minus. Only $t=\\sqrt{\\frac{c}{g}}$, the solution that is not negative, can be a time at or after the drop.",
     ],
     pitfalls: [
       "Use the starting height as the constant before you solve for the time.",
-      "Put $x-p$, the distance from the vertex, into vertex form, not $x$ alone.",
+      "Put the difference $x-p$, how far across the input is from the vertex, into vertex form, not $x$ alone.",
       "Round only the final height, not $a$.",
     ],
     parentGuide:

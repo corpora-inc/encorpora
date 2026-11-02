@@ -419,7 +419,7 @@ const entries: Entry[] = [
     methodTitle: "Exclude first, then solve",
     methodText: [
       "Write the excluded values before any algebra so they cannot be forgotten.",
-      "When you cross-multiply, the $x^2$ terms may cancel. Then a linear equation, one with no power of $x$ above 1, is left. " +
+      "When you cross-multiply, the $x^2$ terms may cancel. Then what is left is usually a linear equation, one with no power of $x$ above 1. " +
         entry,
     ],
     formal:
@@ -465,7 +465,7 @@ const entries: Entry[] = [
         entry,
     ],
     watch:
-      "A factor $(3x-2)$ gives $\\frac23$, not $2$: solve $3x-2=0$ all the way. A squared factor still gives a single zero.",
+      "A factor $(3x-2)$ gives $\\frac23$, not $2$: solve $3x-2=0$ all the way. A squared factor such as $(x-4)^2$ gives the same zero as $x-4$, counted once.",
     principle:
       "Suppose $f(x)=a(x-r_1)^{m_1}\\cdots(x-r_k)^{m_k}g(x)$, with $a\\ne0$, real numbers $r_1,\\dots,r_k$, positive whole-number powers, and $g$ with no real zero. Then the real zeros of $f$ are exactly $r_1,\\dots,r_k$. The powers $m_1,\\dots,m_k$, called multiplicities, count how often each factor repeats. They do not change which numbers are zeros.",
     example: {
@@ -487,7 +487,7 @@ const entries: Entry[] = [
     formal:
       "For a positive number $k$, the factor $x^2+k$ is positive for every real $x$, so it gives no real zero. A factor $mx-n$, with $m\\ne0$, has the zero $\\frac nm$.",
     pitfalls: [
-      "Solve $mx-n=0$ all the way, to $x=\\frac nm$. Do not stop at $n$.",
+      "For $m\\ne0$, solve $mx-n=0$ all the way, to $x=\\frac nm$. Do not stop at $n$.",
       "Do not add a repeated zero twice.",
     ],
     parentGuide:
@@ -520,7 +520,7 @@ const entries: Entry[] = [
     watch:
       "Use the signed coefficients, the numbers with their signs: for $-4t^2+12t+7$, $a=-4$ and $b=12$.",
     principle:
-      "For $h(t)=at^2+bt+c$ with $a\\ne0$, the vertex is at $t=-\\frac{b}{2a}$ and has height $c-\\frac{b^2}{4a}$. When the two zeros are real, they are the same distance from this time, one before it and one after it.",
+      "For $h(t)=at^2+bt+c$ with $a\\ne0$, the vertex is at $t=-\\frac{b}{2a}$ and has height $c-\\frac{b^2}{4a}$. Two different real zeros are the same distance from this time, one before it and one after it.",
     example: {
       prompt:
         "A ball is hit upward. Its height, in meters, $t$ seconds after it is hit is $h(t)=-4t^2+12t+7$ for $t\\ge0$ until it lands. What is the greatest height, in meters, that the ball reaches?",

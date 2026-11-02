@@ -142,7 +142,7 @@ const entries: Entry[] = [
       "Choose the graph that passes through the new point. Then move a second point the same way and check that it is on that graph too.",
     ],
     watch:
-      "Both moves matter. A graph moved only up, when it should also move left, is one of the wrong options.",
+      "Both moves matter. A wrong option may show only one of the two moves, so follow a point through both.",
     principle:
       "If $(a, b)$ is on the graph of $f$, then $g(x) = f(x - h) + k$ gives $g(a + h) = f(a) + k = b + k$. So $(a + h, b + k)$ is on the graph of $g$. Every point moves by the same amounts, $h$ across and $k$ up, so $g$ has the same shape as $f$.",
     example: {

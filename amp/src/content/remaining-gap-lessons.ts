@@ -15,7 +15,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose a step in deriving the law of sines or cosines, the law that starts a given triangle, or the number of triangles the data allow.",
     senses: { squared: "square-number" },
     intuition:
-      "An altitude is a segment from a vertex, a corner, that meets the line through the opposite side at a right angle. It forms right triangles. In a right triangle, the hypotenuse is the longest side. The sine of an acute angle is the opposite leg divided by the hypotenuse, and the cosine is the adjacent leg divided by the hypotenuse. Writing the same altitude in two ways links the original sides and angles. So does using “the legs squared add up to the hypotenuse squared” in both right triangles. Side $a$ is across from angle $A$, and so on.",
+      "An altitude is a segment from a vertex, a corner, that meets the line through the opposite side at a right angle. It forms at least one right triangle, a triangle with a $90^\\circ$ angle. In a right triangle, the hypotenuse is the longest side. The sine of an acute angle is the opposite leg divided by the hypotenuse, and the cosine is the adjacent leg divided by the hypotenuse. Writing the same altitude in two ways links the original sides and angles. So does using “the legs squared add up to the hypotenuse squared” in both right triangles. Side $a$ is across from angle $A$, and so on.",
     terms: ["altitude", "opposite-side-angle", "included-angle"],
     method: [
       "Draw the altitude and name the right triangles it makes. In each, find the hypotenuse and the leg you want.",
@@ -125,7 +125,7 @@ export const remainingGapLessons: Lesson[] = [
     id: "triangle-law-reasoning",
     title: "Where the triangle laws come from and when they apply",
     summary:
-      "An altitude is a segment from a corner of a triangle that meets the opposite side's line at a right angle. It splits a triangle into right triangles, where sine and cosine are ratios of sides. Writing the altitude's length in two ways gives the law of sines. Using “the legs squared add up to the hypotenuse squared” in both right triangles gives the law of cosines. Each law fits certain given measurements.",
+      "An altitude is a segment from a corner of a triangle that meets the opposite side's line at a right angle. It forms one or two right triangles, each with a $90^\\circ$ angle, where sine and cosine are ratios of sides. Writing the altitude's length in two ways gives the law of sines. Using “the legs squared add up to the hypotenuse squared” in both right triangles gives the law of cosines. Each law fits certain given measurements.",
     templateIds: ["triangle-law-reasoning"],
     senses: {
       side: "side",

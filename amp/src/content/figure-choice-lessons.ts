@@ -233,7 +233,7 @@ const entries: Entry[] = [
       "If $(x_0, y_0)$ is on the graph of $f$, then $(x_0 + h, y_0 + k)$ is on the graph of $g(x) = f(x - h) + k$, since $g(x_0 + h) = f(x_0) + k$. With $f(x) = ax^2$ and $a \\ne 0$, the vertex $(0, 0)$ moves to $(h, k)$. For $g(x) = a \\cdot b^x$ with $a > 0$ and $b > 0$, $g(x + 1) = b \\cdot g(x)$. So $g$ increases when $b > 1$ and decreases when $0 < b < 1$.",
     pitfalls: [
       "Read $h$ with the opposite sign of the number inside the parentheses.",
-      "A growth factor between 0 and 1 means decay, a shrinking amount, even though the graph never reaches 0.",
+      "For a positive starting value $a$, a growth factor between 0 and 1 means decay: the amount shrinks toward 0 but never reaches it.",
     ],
     parentGuide:
       "Ask your learner where the graph crosses the $y$-axis or turns, and why, before choosing.",
