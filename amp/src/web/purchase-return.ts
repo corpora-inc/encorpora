@@ -5,6 +5,35 @@ export interface PurchaseReturn {
   expiresAt: number;
 }
 export const purchaseReturnSlot = "amp.purchase-return.v1";
+let ownedReturn: { identity: string; value: PurchaseReturn } | null = null;
+/** Carry only the bounded navigation descriptor after its ownership lookup.
+ * Learner identity and payment authority always come from authenticated APIs. */
+export function rememberOwnedPurchaseReturn(
+  identity: string,
+  value: PurchaseReturn,
+  now = Date.now(),
+) {
+  const valid = parsePurchaseReturn(value, now);
+  if (!identity || !valid) {
+    ownedReturn = null;
+    return false;
+  }
+  ownedReturn = { identity, value: { ...valid } };
+  return true;
+}
+export function readOwnedPurchaseReturn(identity: string, now = Date.now()) {
+  if (!ownedReturn) return null;
+  const value =
+    ownedReturn.identity === identity
+      ? parsePurchaseReturn(ownedReturn.value, now)
+      : null;
+  if (!value) ownedReturn = null;
+  return value;
+}
+export function clearOwnedPurchaseReturn() {
+  ownedReturn = null;
+}
+
 const lifetime = 15 * 60 * 1000;
 const uuid =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
