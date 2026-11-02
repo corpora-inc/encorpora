@@ -474,7 +474,7 @@ export const measurementEntries: GlossaryEntry[] = [
     plain:
       "A cost that goes up or down with how much you use, buy or make. Using or making more costs more.",
     example:
-      "A family that buys more food one month pays more: 90 dollars, then 120 dollars. A bakery spends 2 dollars of flour per cake, so 10 cakes cost 20 dollars.",
+      "A family that buys more food one month pays more: 90 dollars, then 120 dollars. A bakery spends 2 dollars of flour per cake, so the flour for 10 cakes costs 20 dollars.",
     uses: [],
     noLink: ["changes"],
     band: "2",
