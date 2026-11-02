@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { count } from "../../agreement";
 import { base, fill } from "../base";
 import { registerComponent, type Prim } from "../layout";
 import type { Point } from "../spec";
@@ -107,7 +108,7 @@ registerComponent("array", {
     return prims;
   },
   describe(c) {
-    const unit = c.shape === "dot" ? "dots" : "unit squares";
-    return `${c.rows} rows of ${c.columns} ${unit}${c.splitAfterRow ? `; region A is the top ${c.splitAfterRow} row${c.splitAfterRow > 1 ? "s" : ""} and region B is the remaining ${c.rows - c.splitAfterRow}` : ""}${c.splitAfterColumn ? `; a line splits the first ${c.splitAfterColumn} columns from the other ${c.columns - c.splitAfterColumn}` : ""}.`;
+    const unit = c.shape === "dot" ? "dot" : "unit square";
+    return `${count(c.rows, "row")} of ${count(c.columns, unit)}${c.splitAfterRow ? `; region A is the top ${count(c.splitAfterRow, "row")} and region B is the remaining ${c.rows - c.splitAfterRow}` : ""}${c.splitAfterColumn ? `; a line splits the first ${count(c.splitAfterColumn, "column")} from the other ${c.columns - c.splitAfterColumn}` : ""}.`;
   },
 });

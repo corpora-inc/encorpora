@@ -506,10 +506,13 @@ export const statementBlanksGenerate = defineGenerate(
             cols,
           ),
           hint: `Test the rule $(x, y)\\to ${first.rule}$ on two points such as $(0, 0)$ and $(1, 0)$ and compare the distance between them with the distance between their images.`,
-          explanation: rows.map(
-            (row) =>
-              `$(x, y)\\to ${row.rule}$ is ${row.kind}, which ${row.keeps ? "keeps every distance and angle, so the image is congruent" : "changes distances, so the image is not congruent"}.`,
-          ),
+          explanation: [
+            "Congruent figures have the same size and shape. A rigid motion, such as a reflection, rotation or translation, keeps every distance and angle.",
+            ...rows.map(
+              (row) =>
+                `$(x, y)\\to ${row.rule}$ is ${row.kind}, which ${row.keeps ? "keeps every distance and angle, so the image is congruent" : "changes distances, so the image is not congruent"}.`,
+            ),
+          ],
         });
       },
     ),
@@ -555,6 +558,7 @@ export const statementBlanksGenerate = defineGenerate(
           ),
           hint: `${axes.property === "identity" ? "Multiplying by 1 or adding 0 does not change a value." : "Regrouping a product or a sum does not change its value."} Simplify $${tex(base)}$ first, then try the same value, such as $${v} = 3$, in each row.`,
           explanation: [
+            `Two expressions are equivalent when they have the same value for every value of $${v}$. One value that gives different results proves they are not.`,
             `Simplify the given expression: $${tex(base)}$ equals $${tex([...rows].filter((x) => x.equivalent).sort((p, q) => p.e[0].length - q.e[0].length)[0]!.e)}$ for every value of $${v}$.`,
             ...rows.map(
               (row) =>

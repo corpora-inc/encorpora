@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -82,6 +83,15 @@ export const remainingGapTemplates: readonly TemplateMetadata[] = [
       "Use gross pay, listed deductions and net pay with amounts in dollars and cents: find net pay, gross pay or a missing deduction, or identify the take-home amount on a pay stub.",
   },
 ];
+
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const OPENERS = {
+  "triangle-law-reasoning":
+    "Two laws connect sides and angles in any triangle. The law of sines pairs each side with the angle opposite it. The law of cosines links all three sides with one angle.",
+  "model-quantity-roles":
+    "A model has fixed numbers, such as a fee or a rate, and quantities that change. The independent quantity is the one you choose. The dependent quantity responds to it.",
+};
 
 export type Wrong = { label: string; feedback: string };
 /** Correct choice plus three distinct wrong ones; fewer distinct wrong choices is a content bug. */
@@ -455,6 +465,7 @@ export function triangleLawCase(seed: string) {
     variant,
     problem: assemble(meta, seed, r, {
       ...draft,
+      explanation: [OPENERS["triangle-law-reasoning"], ...draft.explanation],
       ...(figure ? { figure } : {}),
     }),
   };
@@ -483,7 +494,7 @@ type QuantityContext = {
 const quantityContexts: QuantityContext[] = [
   {
     scene: (rate, fixed) =>
-      `A bike shop charges ${rate} dollars for each hour a bike is rented, plus a ${fixed}-dollar helmet fee`,
+      `A bike shop charges ${rate} dollars for each hour a bike is rented, plus ${article(fixed)} ${fixed}-dollar helmet fee`,
     xSym: "h",
     xAsk: "the time a bike is rented",
     xUnit: "hours",
@@ -502,7 +513,7 @@ const quantityContexts: QuantityContext[] = [
   },
   {
     scene: (rate, fixed) =>
-      `A taxi charges ${rate} dollars for each mile driven, plus a ${fixed}-dollar pickup fee`,
+      `A taxi charges ${rate} dollars for each mile driven, plus ${article(fixed)} ${fixed}-dollar pickup fee`,
     xSym: "d",
     xAsk: "the distance the taxi drives",
     xUnit: "miles",
@@ -566,7 +577,7 @@ const quantityContexts: QuantityContext[] = [
   },
   {
     scene: (rate, fixed) =>
-      `A gym charges a ${fixed}-dollar joining fee plus ${rate} dollars each month`,
+      `A gym charges ${article(fixed)} ${fixed}-dollar joining fee plus ${rate} dollars each month`,
     xSym: "m",
     xAsk: "the number of months a member has belonged",
     xUnit: "months",
@@ -702,7 +713,13 @@ export function modelQuantityCase(seed: string) {
       ]),
     };
   }
-  return { variant, problem: assemble(meta, seed, r, draft) };
+  return {
+    variant,
+    problem: assemble(meta, seed, r, {
+      ...draft,
+      explanation: [OPENERS["model-quantity-roles"], ...draft.explanation],
+    }),
+  };
 }
 
 /* ------------------------------------------------------------------ */
@@ -881,9 +898,11 @@ export function stemLeafCase(seed: string) {
     const leaves = rows.flatMap((x) => x.leaves);
     hint = `The range is the greatest value minus the least value. Read the first leaf of the top row and the last leaf of the bottom row, each with the key.`;
     explanation = [
+      `The range of a data set is how far it spreads: the greatest value minus the least value.`,
       scaleNote,
       `The greatest value is ${show(max)} and the least value is ${show(min)}.`,
       `Range = ${show(max)} − ${show(min)} = ${answer}${unitText}.`,
+      `The range of the data is ${answer}${unitText}.`,
     ];
     wrong = [
       {
@@ -1140,7 +1159,8 @@ export function budgetCase(seed: string) {
       answer: "",
       hint: `Add the ${known.length} listed expenses first. The ${open} amount is what remains of ${money(income)} after that total.`,
       explanation: [
-        `Add the listed expenses: ${plus(known)} = ${dollars(knownTotal)}.`,
+        `The whole income is spent, so the planned expenses, Fun included, must add up to the income.`,
+        `Add the listed expenses, lining up the decimal points: ${plus(known)} = ${dollars(knownTotal)}.`,
         `Subtract from the income: ${dollars(income)} − ${dollars(knownTotal)} = ${dollars(missing)}.`,
         `${open} can be ${ok}.`,
       ],
@@ -1375,8 +1395,9 @@ export function grossNetCase(seed: string) {
       answer: "",
       hint: `Gross pay is the amount before deductions, and each deduction is one amount withheld. Take-home pay is gross pay, ${money(grossPay)}, minus all ${deductions.length} deductions.`,
       explanation: [
-        `Gross pay is ${dollars(grossPay)}. The deductions total ${plus(deductions)} = ${dollars(totalDeductions)}.`,
-        `Take-home (net) pay = ${dollars(grossPay)} − ${dollars(totalDeductions)} = ${dollars(netPay)}.`,
+        `Gross pay is the amount earned before anything is taken out. Deductions are amounts taken out, such as taxes.`,
+        `Gross pay is ${dollars(grossPay)}. Add the deductions, lining up the decimal points: ${plus(deductions)} = ${dollars(totalDeductions)}.`,
+        `Take-home (net) pay is what is left after every deduction: ${dollars(grossPay)} − ${dollars(totalDeductions)} = ${dollars(netPay)}.`,
         `The paycheck is ${ok}.`,
       ],
       choices: options(ok, [

@@ -310,6 +310,7 @@ export function generatePolygonProblem(
       prompt = "What kind of polygon is this?";
       hint = `Count the sides once around, starting from the highest corner. Then match the count: ${shown.map((k) => prefix[k]).join(", ")}.`;
       explanation = [
+        `A polygon is a flat, closed shape made of straight sides. It is named by how many sides it has.`,
         `Going around once, the polygon has ${n} straight sides and ${n} angles.`,
         `A polygon with ${n} sides is ${an(polygonNames[n]!)}, even when its sides and angles are not equal.`,
       ];
@@ -335,6 +336,7 @@ export function generatePolygonProblem(
       prompt = `Which shape has exactly ${target} angles?`;
       hint = `An angle is where two sides meet. Count each shape's angles once around, and look for exactly ${target}.`;
       explanation = [
+        `An angle is the corner where two sides meet, so a shape has as many angles as corners.`,
         `Counting the angles: ${counts.map((n, i) => `${labels[i]} has ${n}`).join(", ")}.`,
         `Shape ${right} has exactly ${target} angles.`,
       ];
@@ -450,6 +452,14 @@ export function generatePolygonProblem(
               `$${n} + ${n} = ${count}$ vertices.`,
             ],
           }[part];
+      explanation.unshift(
+        {
+          faces: "A face is a flat surface of the solid.",
+          edges: "An edge is a line where two faces meet.",
+          vertices:
+            "A vertex is a corner, a point where edges meet. Vertices means more than one vertex.",
+        }[part],
+      );
       explanation.push(`The ${kind} has ${count} ${part}.`);
       break;
     }
@@ -479,6 +489,7 @@ export function generatePolygonProblem(
       prompt = "Which is the most exact name for this shape?";
       hint = `${rights === 4 ? "All 4 corners have right-angle marks" : "No corner has a right-angle mark"}. Now check the tick marks: are all 4 sides marked equal?`;
       explanation = [
+        `A small square mark shows a right angle (a square corner). Matching tick marks show sides of equal length.`,
         `The marks show ${markedQuad(kind)}.`,
         exact === "square"
           ? "4 right angles make it a rectangle, and 4 equal sides make it a rhombus. A shape that is both is a square, the most exact name."
@@ -564,6 +575,7 @@ export function generatePolygonProblem(
         hint =
           "Cross out each shape with 4 right-angle marks or with all 4 sides marked equal. One shape is left.";
         explanation = [
+          "A small square mark shows a right angle. Matching tick marks show equal sides.",
           "A rectangle has 4 right angles; a rhombus has 4 equal sides; a square has both.",
           `Shape ${right} has ${markedQuad(goal)}, so it is none of them. It is still a quadrilateral.`,
         ];
@@ -571,6 +583,7 @@ export function generatePolygonProblem(
         prompt = `Which shape is ${an(target)}?`;
         hint = `${An(target)} needs ${needs[target]}. Check each shape's marks for exactly that.`;
         explanation = [
+          "A small square mark shows a right angle. Matching tick marks show equal sides.",
           `${An(target)} has ${needs[target]}.`,
           `Shape ${right} has ${markedQuad(goal)}, so it is the ${target}.`,
         ];
@@ -641,6 +654,7 @@ export function generatePolygonProblem(
       prompt = "Which list gives every name that fits this shape?";
       hint = `${pairs === 2 ? "2 pairs of parallel sides are marked, so start from parallelogram" : "No parallel sides are marked, so it is not a parallelogram"}. Then check the right-angle and tick marks for the more exact names.`;
       explanation = [
+        `A shape can have more than one name: each name is a group, and a shape belongs to every group whose rules it meets.`,
         `The marks show ${describeQuad[kind]}.`,
         kind === "square"
           ? "4 right angles: a rectangle. 4 equal sides: a rhombus. Both: a square. Rectangles and rhombuses are parallelograms, and every parallelogram is a quadrilateral."
@@ -679,6 +693,7 @@ export function generatePolygonProblem(
       const [cx, cy] = wrong[0]!;
       hint = `For each statement, try to picture ${an(cx)} that is not ${an(cy)}. If you can, that statement is false.`;
       explanation = [
+        `Each shape name is a group with rules. One group sits inside another when its shapes always meet the bigger group's rules.`,
         `Every ${tx} has all the properties a ${ty} needs, so every ${tx} is ${an(ty)}.`,
         `The reverse is not true: not every ${ty} is ${an(tx)}.`,
         `The true statement: every ${tx} is ${an(ty)}.`,
@@ -740,8 +755,10 @@ export function generatePolygonProblem(
       prompt = `Every ${row.category} has ${row.property}. Which shape must also have ${row.property}?`;
       hint = `Any shape that is always ${an(row.category)} must have ${row.property}. Which choice is always ${an(row.category)}?`;
       explanation = [
+        `A shape that always belongs to a group gets every property of that group.`,
         `Every ${sub} is ${an(row.category)}.`,
         `So every ${sub} has every property of ${an(row.category)}, including ${row.property}.`,
+        `The shape that must have ${row.property} is the ${sub}.`,
       ];
       const why: Record<string, string> = {
         trapezoid:

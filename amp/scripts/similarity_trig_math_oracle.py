@@ -214,7 +214,7 @@ def solve_trig(prompt):
         require(leg.denominator == 1, 'A whole side')
         isqrt_exact(hyp * hyp - int(leg) ** 2)
         return leg
-    m = re.fullmatch(r'A (\d+)-foot ladder leans against a vertical wall\. Its foot is (\d+) feet from the wall, and its top is (\d+) feet above the ground\. What is (sin|cos|tan) θ, where θ is the angle between the ladder and the ground\?', prompt)
+    m = re.fullmatch(r'An? (\d+)-foot ladder leans against a vertical wall\. Its foot is (\d+) feet from the wall, and its top is (\d+) feet above the ground\. What is (sin|cos|tan) θ, where θ is the angle between the ladder and the ground\?', prompt)
     require(m is not None, f'Unrecognized trigonometry prompt: {prompt}')
     ladder, foot, top = int(m[1]), int(m[2]), int(m[3])
     require(foot ** 2 + top ** 2 == ladder ** 2, 'The ladder fits')

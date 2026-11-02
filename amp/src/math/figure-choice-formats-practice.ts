@@ -867,6 +867,12 @@ function graphAfterShift(seed: string, salt: string): GeneratedProblem {
         ? `For $${rule}$, follow ${mark.text}, ${point(mark.at)}, of the original graph. Outside the function, $+$ moves up and $-$ moves down; inside the parentheses, $x - h$ moves right and $x + h$ moves left. Decide where ${point(mark.at)} goes.`
         : `Follow ${mark.text}, ${point(mark.at)}, of the original graph. Move it ${moves(h, k)} and find the graph that passes through its new position.`,
     explanation: (name) => [
+      "Shifting a graph slides every point the same distance in the same direction. The shape does not change.",
+      ...(axes.phrasing === "notation" && h !== 0
+        ? [
+            `Inside the parentheses the move is opposite to the sign: $f(x ${h > 0 ? "-" : "+"} ${Math.abs(h)})$ gives at $x = ${h}$ what $f$ gave at $x = 0$. So every point moves ${unitsOf(Math.abs(h))} to the ${h > 0 ? "right" : "left"}.`,
+          ]
+        : []),
       axes.phrasing === "notation"
         ? `In $${rule}$, ${[
             ...(h !== 0
@@ -881,6 +887,18 @@ function graphAfterShift(seed: string, salt: string): GeneratedProblem {
               : []),
           ].join(" and ")}.`
         : `The whole graph moves ${moves(h, k)}.`,
+      `So ${[
+        ...(h !== 0
+          ? [
+              `${h > 0 ? "add" : "subtract"} ${Math.abs(h)} ${h > 0 ? "to" : "from"} every $x$-coordinate`,
+            ]
+          : []),
+        ...(k !== 0
+          ? [
+              `${k > 0 ? "add" : "subtract"} ${Math.abs(k)} ${k > 0 ? "to" : "from"} every $y$-coordinate`,
+            ]
+          : []),
+      ].join(" and ")}.`,
       `${cap(mark.text)}, ${point(mark.at)}, moves to ${point(newMark)}.`,
       `${name} is the graph moved ${moves(h, k)}: ${describeBase(place(h, k)).replace(/^A /, "a ").replace(/\.$/, "")}.`,
     ],

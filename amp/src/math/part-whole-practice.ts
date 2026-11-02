@@ -5,6 +5,8 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { snakeRegions, type PartitionedShape } from "./part-whole-models";
+import { fractionBar } from "./scene/author";
+import type { Scene } from "./scene/spec";
 
 type Response = "choice" | "fraction" | "number";
 // id | title | skill | grade band | response | description
@@ -147,6 +149,8 @@ type Draft = {
   choices?: Choice[];
   /** Choices are already in display order (labels name figure positions). */
   ordered?: boolean;
+  /** The lesson's worked model, which may show the answer. */
+  walkthrough?: Scene;
 };
 
 function findEqualShares(r: Random, targets: number[], counts: number[]) {
@@ -391,6 +395,12 @@ function compareDraft(
         { parts: d, shaded: 0, label: second },
       ],
     },
+    // The practice figure leaves the bars blank so it does not show the
+    // answer; the lesson's worked model shades each fraction.
+    walkthrough: fractionBar(
+      { parts: b, shaded: a, label: first },
+      { parts: d, shaded: c, label: second },
+    ).scene({ title: "Fraction bars", width: 360 }),
     explanation: [
       ...explain(greater, lesser),
       `${greater} is more than ${lesser}, so the ${ask === "greater" ? "greater" : "lesser"} fraction is ${ask === "greater" ? greater : lesser}.`,
@@ -653,6 +663,7 @@ export function generatePartWholeProblem(
       answer: d.answer!,
       explanation: d.explanation,
       hint: d.hint,
+      ...(d.walkthrough ? { walkthrough: d.walkthrough } : {}),
     };
   }
   const choices = d.ordered ? d.choices : shuffle(r, [...d.choices]);

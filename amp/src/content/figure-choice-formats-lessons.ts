@@ -1,18 +1,25 @@
 import type { FacetMapping } from "./coverage";
 import { formatLessons, type FormatLessonEntry } from "./format-lesson-entry";
 
-const entries: FormatLessonEntry[] = [
+type Entry = FormatLessonEntry & {
+  /** The practice-screen task, at most 140 characters; defaults to the summary. */
+  goal?: string;
+};
+
+const entries: Entry[] = [
   {
     id: "graph-of-paired-values",
     title: "Match paired values with their graph",
+    senses: { rule: "rule", "more than": "more-than" },
+    noLink: ["changes", "leaves"],
     summary:
-      "Each pair $(x, y)$ is one point: $x$ says how far right, $y$ how far up. The right graph has every pair and nothing else.",
+      "An ordered pair is two numbers, like (2, 5), that name one point. The right graph has a dot for every pair, and no other dots.",
     objectives: [
-      "Read every pair $(x, y)$ from a table, or find $y$ from a stated relationship for each given $x$.",
-      "Choose the graph that plots all of the pairs, ruling out swapped coordinates, mismatched columns and missing points.",
+      "Read every pair from a table, or find $y$ from a rule for each given $x$.",
+      "Choose the graph that shows all of the pairs, and spot graphs with swapped numbers, mismatched columns or missing dots.",
     ],
     intuition:
-      "A table or a rule gives pairs of numbers, and a graph shows each pair as one dot. The first number of a pair is the distance across from the origin and the second is the distance up, so the pair $(2, 5)$ is not the pair $(5, 2)$. A correct graph has exactly one dot for every pair: no dot missing and no extra dot.",
+      "A rule is a sentence that tells how to get $y$ from $x$, such as “$y$ is 3 more than $x$”. A table or a rule gives pairs of numbers. A graph shows each pair as one dot on a grid. The origin is the corner of the grid, where both counts start at 0. Each number in a pair is called a coordinate. The first coordinate, $x$, tells how far to go right from the origin. The second coordinate, $y$, tells how far to go up. So (2, 5) and (5, 2) are different dots. A correct graph has exactly one dot for each pair, with none missing and none extra.",
     terms: [
       "ordered-pair",
       [
@@ -21,66 +28,70 @@ const entries: FormatLessonEntry[] = [
       ],
     ],
     method: [
-      "Write the pair for each $x$: read $y$ below it in the table, or use the rule ($y = 1.5x$, $y = x - 5$) to find it.",
-      "Count the pairs. Rule out any graph with fewer or more dots.",
-      "Check the first coordinate of each dot is $x$, then check the second is $y$. Rule out graphs where they are swapped or where a $y$ sits under the wrong $x$.",
+      "Write the pair for each $x$. Read the $y$ that goes with it in the table, or work it out with the rule, such as $y = 1.5 \\times x$ or $y = x - 5$.",
+      "Count the pairs. Cross out any graph with fewer dots or more dots.",
+      "Check each dot: its first coordinate must be one of the $x$ values, and its second the matching $y$. Cross out graphs where the two are swapped, or where a $y$ is paired with the wrong $x$.",
     ],
     watch:
-      "The order matters: from $(2, 5)$, go right 2 and up 5, not right 5 and up 2.",
+      "Order matters. For (2, 5), go right 2 and up 5, not right 5 and up 2.",
     principle:
-      "A graph of a set of pairs is the set of points $(x, y)$ for those pairs. Two points with the same coordinates in the other order are different points unless $x = y$, so swapping coordinates changes the graph.",
+      "The graph of a set of pairs is the dots at those pairs and no others. Swapping the two numbers of a pair gives a different point, unless the numbers are equal. So a graph with swapped pairs is a different graph.",
     example: {
       prompt:
-        "The table has $x$ = 2, 4, 6 and $y$ = 3, 6, 4. Which graph plots every pair: points at (2, 3), (4, 6), (6, 4); at (3, 2), (6, 4), (4, 6); at (2, 3), (4, 4), (6, 6); or at (2, 3) and (4, 6)?",
+        "A table has $x$ = 2, 4, 6 in its top row and $y$ = 3, 6, 4 in its bottom row. Which graph shows every pair: dots at (2, 3), (4, 6), (6, 4); at (3, 2), (6, 4), (4, 6); at (2, 3), (4, 4), (6, 6); or at (2, 3) and (4, 6)?",
       steps: [
-        "The pairs are (2, 3), (4, 6) and (6, 4): each $y$ goes with the $x$ above it.",
-        "The points (3, 2), (6, 4), (4, 6) swap the coordinates of every pair.",
-        "The points (2, 3), (4, 4), (6, 6) shift the $y$-row by one column, and the graph with two points leaves out (6, 4).",
+        "Pair each $x$ with the $y$ just below it in the table. The pairs are (2, 3), (4, 6) and (6, 4).",
+        "The dots at (3, 2), (6, 4), (4, 6) put each pair's numbers the wrong way round, so that graph is wrong.",
+        "The dots at (2, 3), (4, 4), (6, 6) pair two of the $y$ values with the wrong $x$. The graph with only two dots leaves out (6, 4).",
+        "Only the first graph has every pair and no other dots.",
       ],
       answer: "The graph with points at (2, 3), (4, 6) and (6, 4).",
     },
     methodTitle: "Check a rule with one pair",
     methodText: [
-      "When a rule is given, test it on the first $x$ before looking at the graphs: for 'y is 1.5 times x' and $x = 2$, $y = 1.5 \\cdot 2 = 3$, so the graph must have a dot at $(2, 3)$.",
-      "A decimal multiplier needs the exact value: 1.5 is not 1 and not 2, so a graph for $y = x$ or $y = 2x$ is wrong.",
+      "When a rule is given, test it on the first $x$ before you look at the graphs. For “$y$ is 1.5 times $x$” and $x = 2$, $y = 1.5 \\times 2 = 3$. So the graph must have a dot at (2, 3).",
+      "A decimal is a number with a decimal point, such as 1.5. A multiplier is the number you multiply by. With a decimal multiplier, use its exact value. 1.5 is not 1 and not 2, so a graph for $y = x$ or $y = 2 \\times x$ is wrong.",
     ],
     formal:
-      "For a function given by a rule or a table, the graph is $\\{(x, y)\\}$ over the listed $x$-values. Each $x$ has one point at height $y$, and the point $(a, b)$ equals $(c, d)$ only when $a = c$ and $b = d$.",
+      "The graph of a rule or a table is the set of points $(x, y)$ for the listed $x$ values. Each listed $x$ has one dot, straight above $x$ and level with its $y$. Two pairs name the same point only when their first numbers match and their second numbers match.",
     pitfalls: [
-      "Do not swap the coordinates: the first number of a pair is $x$.",
-      "Do not leave out a pair: count the dots against the pairs.",
-      "With a decimal multiplier, multiply by the exact number; rounding 1.5 to 1 or 2 plots other points.",
+      "Do not swap the numbers. The first number of a pair is $x$.",
+      "Do not leave out a pair. Count the dots and count the pairs.",
+      "With a decimal multiplier, multiply by the exact number. Changing 1.5 to 1 or 2 gives other points.",
     ],
     parentGuide:
-      "Ask your learner to say each pair aloud as 'right, then up' while a finger moves to the dot.",
+      "Ask your learner to say each pair aloud as “right, then up” while a finger moves to the dot.",
   },
   {
     id: "point-on-signed-grid",
     title: "Choose the graph of a signed point",
+    goal: "Choose the graph that shows one point given by two signed numbers, or by its distances from the axes.",
     summary:
-      "The signs tell the direction: negative $x$ is left of the $y$-axis, negative $y$ is below the $x$-axis. The first number is always $x$.",
+      "The coordinate plane is a flat grid with two number lines, called axes, crossing at a point called the origin. A point is written $(x, y)$: the first number moves you across and the second moves you up or down. A negative $x$ means left of the up-and-down axis. A negative $y$ means below the across axis. The first number is always $x$.",
+    senses: { unit: "unit", units: "unit" },
+    noLink: ["third", "fourth", "rule", "changes", "plane", "image"],
     objectives: [
       "Place an ordered pair of signed numbers, or two distances from the axes, in the correct quadrant.",
       "Choose the graph with that one point, ruling out flipped signs and swapped coordinates.",
     ],
     intuition:
-      "Start at the origin where the axes cross. The first number moves you across: right if it is positive, left if it is negative. The second moves you up if positive and down if negative. The two signs together decide the quadrant: for example, both negative puts the point down and to the left.",
+      "The coordinate plane is a flat grid with two number lines, called axes. They cross at a point called the origin, $(0, 0)$. The first number of a point moves you across: right if it is positive, left if it is negative. The second moves you up if it is positive and down if it is negative. A quadrant is one of the four regions the axes cut the plane into. The two signs together decide the quadrant: both negative puts the point down and to the left.",
     terms: ["quadrant", "origin"],
     method: [
       "Read $x$ first and $y$ second. When distances are given, 'left of the $y$-axis' means $x$ is negative and 'below the $x$-axis' means $y$ is negative.",
-      "Name the quadrant from the two signs and rule out graphs whose point is in another quadrant.",
+      "Name the quadrant from the two signs, and rule out graphs whose point is in another quadrant.",
       "Of the points left, rule out any with the numbers in the other order.",
     ],
     watch:
-      "Changing one sign moves the point across an axis to a different quadrant; swapping the numbers reflects it over the line $y = x$.",
+      "For a point off the axes, changing one sign moves it across an axis into a different quadrant. Swapping the numbers gives its reflection, its mirror image, across the line $y = x$.",
     principle:
-      "The point $(a, b)$ is $|a|$ units from the $y$-axis, on the right if $a > 0$ and on the left if $a < 0$, and $|b|$ units from the $x$-axis, above if $b > 0$ and below if $b < 0$. The pair is ordered: $(a, b) \\ne (b, a)$ unless $a = b$.",
+      "The point $(a, b)$ is $|a|$ units from the $y$-axis, where $|a|$ is $a$ without its sign. It is on the right if $a > 0$ and on the left if $a < 0$. It is $|b|$ units from the $x$-axis, above if $b > 0$ and below if $b < 0$. The pair is ordered: $(a, b) \\ne (b, a)$ unless $a = b$.",
     example: {
       prompt:
         "Which graph shows the point $(-3, 4)$: a point at (3, 4), at (−3, −4), at (4, −3) or at (−3, 4)?",
       steps: [
         "The first number is −3: 3 units left of the $y$-axis. The second is 4: 4 units above the $x$-axis.",
-        "That is the second quadrant (left and up). The point (3, 4) has the wrong sign for $x$ and the point (−3, −4) has the wrong sign for $y$.",
+        "Left and up is the second quadrant. The point (3, 4) has the wrong sign for $x$, and the point (−3, −4) has the wrong sign for $y$.",
         "The point (4, −3) swaps the two numbers.",
       ],
       answer: "The point at (−3, 4).",
@@ -88,10 +99,10 @@ const entries: FormatLessonEntry[] = [
     methodTitle: "Say the moves",
     methodText: [
       "Say the moves from the origin out loud: 'left 3, up 4'. The graph whose dot is at that place is the one.",
-      "When a graph shows a point on the right instead of the left, only the sign of $x$ is wrong. Fix one thing at a time.",
+      "When a graph shows the point on the right instead of the left, the sign of $x$ is wrong. Check the distances too, one thing at a time.",
     ],
     formal:
-      "The coordinate plane assigns to each point $P$ the pair $(x, y)$ of signed distances: $x$ measured along the horizontal axis from the origin, $y$ along the vertical axis. Reflecting $P$ across the $y$-axis changes the sign of $x$ only; across the $x$-axis, the sign of $y$ only.",
+      "The coordinate plane gives each point $P$ a pair $(x, y)$ of signed distances: $x$ measured along the horizontal axis from the origin, $y$ along the vertical axis. Reflecting $P$ across the $y$-axis changes the sign of $x$ only. Reflecting it across the $x$-axis changes the sign of $y$ only.",
     pitfalls: [
       "A negative $x$ goes left, not down.",
       "Keep $x$ first: $(−3, 4)$ and $(4, −3)$ are different points.",
@@ -154,7 +165,12 @@ const entries: FormatLessonEntry[] = [
 
 const built = formatLessons(entries);
 export const figureChoiceFormatsLessons = built.lessons;
-export const figureChoiceFormatsMethods = built.methods;
+export const figureChoiceFormatsMethods = Object.fromEntries(
+  entries.map((e) => [
+    e.id,
+    { ...built.methods[e.id]!, ...(e.goal ? { goal: e.goal } : {}) },
+  ]),
+);
 export const figureChoiceFormatsPrinciples = built.principles;
 
 export const figureChoiceFormatsFacetMappings: readonly FacetMapping[] = [

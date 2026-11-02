@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -132,6 +133,32 @@ const rq = (n: number) =>
   isSquare(n) ? `${Math.sqrt(n)}` : math(`\\sqrt{${n}}`);
 const tenths = (t: number) => (t / 10).toFixed(1).replace(/\.0$/, "");
 
+/** Plain openings: the idea each geometry model rests on, with its terms
+ * defined (issue #1781). */
+const MODEL_OPENERS: Record<string, string[]> = {
+  "solid-volume-context": [
+    "Volume is the space inside a solid, measured in cubic units. Each solid has its own formula, so first name the solid and its measurements.",
+  ],
+  "density-context": [
+    "Density is how much mass fits in each unit of volume, such as grams per cubic centimeter. So mass equals density times volume.",
+  ],
+  "geometric-model-choice": [
+    "A geometric model replaces a real object with a simple shape whose formula we know. Choose the shape that matches the object, then use its formula.",
+  ],
+  "geometric-design-constraint": [
+    "A design constraint is a limit the plan must meet, such as an amount of paint or a budget. Work out the area or volume first, then apply the limit.",
+  ],
+  "cavalieri-volume-reasoning": [
+    "Cavalieri's principle says: if two solids have the same height and every slice at the same level has the same area, they have the same volume.",
+  ],
+  "section-revolution-solid": [
+    "Spinning a flat shape around a line, the axis, sweeps out a solid of revolution. The side on the axis stays fixed; a side at right angles to it sweeps a circle.",
+  ],
+  "similarity-theorem-length": [
+    "Similar triangles have the same shape: matching angles are equal and matching sides share one ratio. The altitude to the hypotenuse of a right triangle makes three similar triangles.",
+  ],
+};
+
 function finish(
   meta: TemplateMetadata,
   seed: string,
@@ -150,7 +177,7 @@ function finish(
     prompt: b.prompt,
     answer: "",
     hint: b.hint,
-    explanation: b.explanation,
+    explanation: [...(MODEL_OPENERS[meta.id] ?? []), ...b.explanation],
     ...(b.figure ? { figure: b.figure } : {}),
     choices: [
       { label: b.correct, correct: true },
@@ -739,7 +766,7 @@ function densityCase(
       variant,
       built: {
         prompt: `A rectangular nature reserve is ${l} km long and ${w} km wide, and ${pop} people live inside it. What is its population density, in people per square kilometer?`,
-        hint: `Density needs the area of the reserve, not its length or its perimeter. Model the reserve as a ${l} km by ${w} km rectangle and find its area first.`,
+        hint: `Density needs the area of the reserve, not its length or its perimeter. Model the reserve as ${article(l)} ${l} km by ${w} km rectangle and find its area first.`,
         explanation: [
           `The area is ${l} × ${w} = ${l * w} km².`,
           `Density = population ÷ area = ${pop} ÷ ${l * w} = ${d} people per km².`,
@@ -953,7 +980,7 @@ function modelCase(
       variant,
       built: {
         prompt: `A can of beans is modeled as a cylinder with a radius of ${rad} cm and a height of ${h} cm. Its paper label wraps once around the curved side with no overlap, and covers no part of the ends. What is the area of the label, in square centimeters? Give the area in terms of $\\pi$.`,
-        hint: `The label covers only the curved side. Unroll it: it is a rectangle whose width is the distance around the can (the circumference of a ${rad} cm radius circle) and whose height is ${h} cm.`,
+        hint: `The label covers only the curved side. Unroll it: it is a rectangle whose width is the distance around the can (the circumference of ${article(rad)} ${rad} cm radius circle) and whose height is ${h} cm.`,
         explanation: [
           `The circumference of the can is $2\\pi r=2\\pi(${rad})=${piTex(2 * rad)}$ cm.`,
           `Unrolled, the label is a rectangle $${piTex(2 * rad)}$ cm by ${h} cm.`,
@@ -1343,7 +1370,7 @@ function cavalieriCase(
         prompt: `${n} identical foam sheets, each a rectangle ${l} cm by ${w} cm and ${t} cm thick, are stacked straight. The stack is then pushed sideways so that it leans, with each sheet sliding a little past the one below it. What is the volume of the leaning stack, in cubic centimeters?`,
         hint: `Sliding the sheets sideways changes the shape but not the area of any horizontal slice, which is always one sheet's ${l} cm by ${w} cm rectangle. Compare with the straight stack of ${n} sheets.`,
         explanation: [
-          `Each horizontal slice of the leaning stack is a ${l} cm by ${w} cm rectangle, the same as in the straight stack.`,
+          `Each horizontal slice of the leaning stack is ${article(l)} ${l} cm by ${w} cm rectangle, the same as in the straight stack.`,
           `By Cavalieri's principle the volumes are equal. One sheet has volume ${l} × ${w} × ${t} = ${l * w * t} cm³.`,
           `${n} sheets: ${n} × ${l * w * t} = ${n * l * w * t} cm³.`,
         ],

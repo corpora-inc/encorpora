@@ -16,7 +16,12 @@ import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { migrate } from "./migrate";
+import {
+  assertContrastCoverage,
+  contrastPartition,
+} from "./contrast-partition";
 
+const pairs = contrastPartition(process.argv.slice(2));
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw Error("AMP_TEST_DATABASE_URL is required for the sweep");
 const strict = process.argv.includes("--strict");
@@ -494,13 +499,10 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
 
 const browser = await chromium.launch();
 try {
-  const only = process.argv.find((a) => a.startsWith("--only="))?.slice(7);
-  for (const theme of ["light", "dark"] as const)
-    for (const width of [390, 1280]) {
-      if (only && only !== `${theme}:${width}`) continue;
-      console.log("Sweeping", theme, width);
-      await sweep(browser, theme, width);
-    }
+  for (const { theme, width } of pairs) {
+    console.log("Sweeping", theme, width);
+    await sweep(browser, theme, width);
+  }
 } finally {
   await browser.close();
   await vite.close();
@@ -537,4 +539,5 @@ console.log(
   `Contrast sweep: ${visited.length} states, ${list.length} violation(s) (light ${byTheme("light")}, dark ${byTheme("dark")}). Report: artifacts/contrast/report.md`,
 );
 if (strict && list.length) process.exit(1);
+assertContrastCoverage(visited, pairs);
 process.exit(0);

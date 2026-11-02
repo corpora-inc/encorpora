@@ -802,7 +802,7 @@ def solve_area_probability(public):
         w, h, b, th = (int(m[i]) for i in range(1, 5))
         require(b <= w and th <= h, 'Triangle must fit in the rectangle')
         symbolic = float(Fraction(b * th, 2 * w * h))
-    elif (m := re.match(r'A point is chosen at random on a (\d+) by (\d+) rectangular board\. A shaded (\d+) by (\d+) rectangle lies entirely on the board\. What is the probability that the point is in the shaded rectangle\? Give a fraction in simplest form\.', prompt)):
+    elif (m := re.match(r'A point is chosen at random on an? (\d+) by (\d+) rectangular board\. A shaded (\d+) by (\d+) rectangle lies entirely on the board\. What is the probability that the point is in the shaded rectangle\? Give a fraction in simplest form\.', prompt)):
         w, h, sw, sh = (int(m[i]) for i in range(1, 5))
         require(sw <= w and sh <= h, 'Shaded rectangle must fit on the board')
         symbolic = float(Fraction(sw * sh, w * h))

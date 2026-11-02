@@ -271,7 +271,7 @@ def solve_strategy(public):
             s = re.fullmatch(r"(Either choice|Take the gamble|Take the sure amount): (?:the gamble's expected value|its expected value), (.+?) dollars, (equals|is more than|is less than) the sure (-?\d+) dollars\.", t)
             return bool(s) and s[1] == verdict and s[3] == phrase and num(s[2]) == ev and int(s[4]) == sure
         return pick(options, good, 'gamble versus sure amount')
-    m = re.fullmatch(r'A warranty costs (\d+) dollars\. Without it, there is a probability of (\\frac\{\d+\}\{\d+\}) that you pay a (\d+)-dollar repair bill and otherwise pay nothing\. Which statement is justified by comparing expected costs\?', prompt)
+    m = re.fullmatch(r'A warranty costs (\d+) dollars\. Without it, there is a probability of (\\frac\{\d+\}\{\d+\}) that you pay an? (\d+)-dollar repair bill and otherwise pay nothing\. Which statement is justified by comparing expected costs\?', prompt)
     if m:
         price, p, bill = int(m[1]), num(m[2]), int(m[3])
         ev = p * bill

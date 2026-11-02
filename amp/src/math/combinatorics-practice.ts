@@ -12,6 +12,23 @@ type Case = {
   tags: string[];
 };
 
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const OPENERS: Record<string, string[]> = {
+  "permutation-count": [
+    "A permutation is an arrangement where order matters. Count the choices for the first place, then the second, and so on, and multiply.",
+  ],
+  "combination-count": [
+    "A combination is a selection where order does not matter. Count the ordered arrangements, then divide by the number of ways to order each group.",
+  ],
+  "combination-probability": [
+    "Probability here is favorable selections divided by all possible selections. Count both with combinations, selections where order does not matter.",
+  ],
+  "expected-value": [
+    "The expected value is the long-run average: multiply each possible value by its probability and add the results.",
+  ],
+};
+
 export const combinatoricsTemplates: readonly TemplateMetadata[] = [
   {
     id: "counting-principle",
@@ -184,8 +201,14 @@ function countingCase(r: Random): Case {
       prompt: `A code has ${k} positions. Each position is ${symbols}. How many different codes are possible?`,
       answer: q(total),
       explanation: [
-        `Each of the ${k} positions is a separate stage with ${n} options. Repeats are allowed, so earlier positions do not reduce the options for later ones.`,
-        `Every option for one position can follow every arrangement of the earlier positions, so multiply ${k} factors of ${n}: ${times(Array(k).fill(n))} = ${total}.`,
+        `Each position can be any of the ${n} ${digits ? "digits" : "letters"}. Repeats are allowed, so no position loses a choice.`,
+        `The first two positions give ${n} × ${n} = ${n * n} pairs: every first choice can go with every second choice.`,
+        ...(k > 2
+          ? [
+              `Each new position multiplies the count again by ${n}, because every code so far can end in any of the ${n}.`,
+            ]
+          : []),
+        `So multiply ${k} factors of ${n} (numbers multiplied together): ${times(Array(k).fill(n))} = ${total}.`,
         `There are ${total} different codes.`,
       ],
       hint: `Each of the ${k} positions can be any of the ${n} ${digits ? "digits" : "letters"}, and repeats are allowed, so no position loses an option. Multiply ${k} factors of ${n}.`,
@@ -221,7 +244,7 @@ function countingCase(r: Random): Case {
     key = menu.key;
     hint = `Any of the ${counts[0]} ${stages[0]![1]} can go with any of the ${counts[1]} ${stages[1]![1]}${k > 2 ? ", and so on through every stage" : ""}. Multiply the counts: ${times(counts)}.`;
     explanation.push(
-      `Every ${menu.one} combines one choice from each of ${k} stages, and every choice at one stage can be combined with every choice at the others.`,
+      `Every ${menu.one} takes one choice from each of the ${k} lists, and any choice from one list can go with any choice from another.`,
     );
     let running = counts[0]!;
     for (let i = 1; i < k; i++) {
@@ -232,7 +255,7 @@ function countingCase(r: Random): Case {
     }
   }
   explanation.push(
-    `All together: ${times(counts)} = ${total}. There are ${total} different ${unit}.`,
+    `So multiply all the counts: ${times(counts)} = ${total}. There are ${total} different ${unit}.`,
   );
   return {
     prompt,
@@ -706,7 +729,7 @@ export function combinatoricsPrintCase(
       },
     },
     answer: answerText(c.answer),
-    explanation: c.explanation,
+    explanation: [...(OPENERS[id] ?? []), ...c.explanation],
     hint: c.hint,
   };
   // The prompt states every given, so equal prompts are the same case.
