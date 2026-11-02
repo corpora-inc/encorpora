@@ -204,7 +204,7 @@ const legacyPrinciples: Record<string, string> = {
   "ten-frame-complement":
     "Complements of ten: a + (10 − a) = 10. Knowing these pairs is the basis of making ten.",
   "teen-frame-compose":
-    "A teen number is one ten and some extra ones. Ten and 3 more ones is 13: the 1 on the left stands for the ten, and the 3 on the right stands for the ones. This works for 0 to 9 extra ones: 10 and 0 more is 10, and 10 and 9 more is 19.",
+    "A teen number, 11 to 19, is one ten and some extra ones. Ten and 3 more ones is 13: the 1 on the left stands for the ten, and the 3 on the right stands for the ones. Every number from 10 to 19 is one ten and 0 to 9 extra ones: 10 and 0 more is 10, and 10 and 9 more is 19.",
   "add-within-20":
     "Associative property of addition: (a + b) + c = a + (b + c). Regrouping one addend to complete a ten does not change the sum.",
   "subtract-within-20":
@@ -224,7 +224,7 @@ const legacyPrinciples: Record<string, string> = {
   "continue-count-to-120":
     "Counting by ones: each number is the number before plus 1. After 9 ones, the ones go back to 0 and the tens go up by 1, as in 19, 20. After 9 tens and 9 ones comes the next hundred, as in 99, 100.",
   "tens-ones-model":
-    "Place value: in a two-digit number, the left digit counts tens and the right digit counts ones. So 3 tens and 8 ones is $3 \\times 10 + 8 = 38$. In general, tens digit $a$ and ones digit $b$ make $10a + b$, which means 10 times $a$, plus $b$.",
+    "Place value: in a two-digit number, the left digit counts tens and the right digit counts ones. So 3 tens and 8 ones is $3 \\times 10 + 8 = 38$.",
   "ten-more-or-less":
     "Place value: adding or subtracting 10 changes only the tens digit when no regrouping occurs.",
   "add-ones-regroup":
@@ -326,7 +326,7 @@ const legacyPrinciples: Record<string, string> = {
     "Ceiling division: when only whole packs are sold, the number of packs is ⌈need ÷ pack size⌉.",
   ...rightTrianglePrinciples,
   "coordinate-point-reading":
-    "A point $(x, y)$ on a coordinate grid lies $x$ units across and $y$ units up or down from the origin, the point $(0, 0)$ where the axes cross. Right and up are positive; left and down are negative. The $x$-coordinate always comes first.",
+    "A point $(x, y)$ on a coordinate grid is found from the origin, the point $(0, 0)$ where the axes cross. The size of $x$ is the distance across and the size of $y$ is the distance up or down. Right and up are positive; left and down are negative. The $x$-coordinate always comes first.",
   // Data and probability
   "bar-chart-total":
     "A bar's height on the scale gives its category's frequency; the total is the sum of the frequencies.",
@@ -351,7 +351,7 @@ const legacyPrinciples: Record<string, string> = {
   "equivalent-denominator":
     "Fundamental property of fractions: a/b = (a ÷ k)/(b ÷ k) when $k$ divides both $a$ and $b$.",
   "fraction-equivalence-choice":
-    "Fundamental property of fractions: multiplying or dividing numerator and denominator by the same nonzero number gives an equivalent fraction.",
+    "Multiplying or dividing the numerator and the denominator by the same number, other than 0, gives an equivalent fraction: one that names the same amount. For example, $\\tfrac{1}{2} = \\tfrac{1 \\times 3}{2 \\times 3} = \\tfrac{3}{6}$.",
   "compare-fractions":
     "Comparing fractions: with a common denominator, a/d < c/d exactly when a < c.",
   "like-fraction-missing-part":
@@ -456,15 +456,15 @@ const legacyPrinciples: Record<string, string> = {
   "distance-graph-meaning":
     "On a distance–time graph, the slope (the steepness) shows how fast the distance changes as time passes. A positive slope (rising) means moving away. A slope of zero (level) means the distance stays the same. A negative slope (falling) means getting closer.",
   "shared-plan-input":
-    "Two costs are equal at the input where their graphs cross. To find it, solve the equation that sets them equal. For two straight-line costs whose rates (the numbers multiplying $x$) differ, there is exactly one such input.",
+    "Two costs are equal at the input where their graphs cross. To find it, solve the equation that sets them equal. For two costs of the form fixed fee plus rate times $x$, with different rates (the numbers multiplying $x$), there is exactly one such input. It may fall outside the allowed inputs.",
   "first-cheaper-whole-input":
-    "A strict inequality is a comparison using < (less than) or > (greater than), so equal values do not count. For two straight-line costs, first find the tie, the input where they are equal. The plan with the smaller rate is cheaper for every input above the tie, and the other plan is cheaper below it. So the smaller-rate plan's first whole input is the next whole number past the tie.",
+    "A strict inequality is a comparison using < (less than) or > (greater than), so equal values do not count. For two costs of the form fixed fee plus rate times $x$, with different rates, first find the tie, the input where they are equal. The plan with the smaller rate is cheaper for every input above the tie, and the other plan is cheaper below it. So the smaller-rate plan's first cheaper whole input is the next whole number past the tie, if that number is an allowed input.",
   "function-evaluation":
     "Function evaluation: $f(a)$ is the output you get by putting $a$ in place of every $x$ in the rule for $f(x)$. A function gives exactly one output for each input.",
   "arithmetic-term":
     "Arithmetic sequence: $a_n = a_1 + (n - 1)d$. Here $a_n$ is term $n$, $a_1$ is the first term, and $d$ is the common difference, the amount added each time. The small letter or number below $a$ gives the term's position.",
   "geometric-sequence":
-    "Geometric sequence: $a_n = a_1 \\times r^{n - 1}$. Here $a_n$ is term $n$, $a_1$ is the first term, and $r$ is the common ratio, the number each term is multiplied by. The small letter or number below $a$ gives the term's position.",
+    "Geometric sequence: $a_n = a_1 \\times r^{n - 1}$. Here $a_n$ is term $n$, $a_1$ is the first term, and $r$ is the common ratio, the number other than 0 that each term is multiplied by. The small letter or number below $a$ gives the term's position.",
   "quadratic-vertex":
     "Vertex form: $f(x) = a(x - h)^2 + k$. The square $(x - h)^2$ is never negative, and it is 0 at $x = h$. So when $a > 0$ ($a$ is positive), the minimum value of $f$ is $k$, reached at $x = h$. The point $(h, k)$ is called the vertex. When $a > 0$, it is the lowest point of the graph.",
   "logarithm-integer":

@@ -348,7 +348,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Count the rods. That is the tens digit.",
-      "Count the cubes. That is the ones digit.",
+      "Count the cubes, 9 or fewer here. That is the ones digit.",
       "Write tens then ones: 3 rods and 8 cubes is 38.",
     ],
     watch: "A rod is ten, not one: 3 rods and 8 cubes is 38, not 11.",
@@ -970,12 +970,16 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "Divide the denominator by the same number as the numerator; subtracting the same number changes the amount.",
   },
   "fraction-equivalence-choice": {
+    intuition:
+      "A fraction such as $\\tfrac{1}{2}$ names equal parts of one whole. Its denominator, the bottom number, says how many equal parts make the whole. Its numerator, the top number, says how many of those parts you have. Two fractions are equivalent when they name the same amount. Cut each half into 3 equal pieces: the whole now has 6 pieces, and you have 3 of them. So $\\tfrac{1}{2} = \\tfrac{3}{6}$.",
     goal: "Given a fraction, choose another fraction that names the same amount.",
     method: [
-      "Multiply or divide the numerator and denominator by the same number.",
-      "A choice is equivalent if it can be made this way.",
+      "Find the number that turns the given denominator into the choice's denominator. For $\\tfrac{1}{2}$ and $\\tfrac{3}{6}$, it is 3, because $2 \\times 3 = 6$.",
+      "Multiply the numerator by the same number: $1 \\times 3 = 3$. If that gives the choice's numerator, the choice names the same amount, because every part was cut into the same number of pieces.",
+      "Dividing both numbers by the same number, other than 0, also keeps the amount. It joins equal pieces back together: $\\tfrac{4}{8} = \\tfrac{4 \\div 4}{8 \\div 4} = \\tfrac{1}{2}$.",
     ],
-    watch: "Adding the same number to top and bottom does not keep the amount.",
+    watch:
+      "Multiply or divide the top and bottom by the same number. Adding the same number to both usually changes the amount: $\\tfrac{1}{2}$ is not equal to $\\tfrac{2}{3}$.",
   },
   "compare-fractions": {
     goal: "Given two fractions, find the larger.",
@@ -1241,7 +1245,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   "ratio-missing": {
     noLink: ["whole", "changes", "scale"],
     intuition:
-      "A ratio is a comparison of two amounts, such as 3 cups of blue paint for every 5 cups of white. We write it $3 : 5$ and read it “3 to 5”. Multiplying both amounts by the same number makes a bigger or smaller batch of the same color. That number is called the scale factor. Ratios that make the same mix are called equivalent ratios.",
+      "A ratio is a comparison of two amounts, such as 3 cups of blue paint for every 5 cups of white. We write it $3 : 5$ and read it “3 to 5”. Multiplying both amounts by the same positive number makes a batch of the same color: bigger for a number above 1, smaller for a number between 0 and 1. That number is called the scale factor. Ratios that make the same mix are called equivalent ratios.",
     goal: "A ratio gives a mix, such as 3 cups of blue for every 5 cups of white. Find the matching amount for a new batch.",
     senses: { factor: "scale-factor" },
     terms: ["ratio"],
@@ -1284,9 +1288,9 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "A rule is a way of turning one number into another. The input is the number you start with, and the output is the number the rule gives. Proportional means that the output $y$ is always the same fixed number times the input $x$, as in $y = 3x$. Here $3x$ means 3 times $x$. That fixed number is called the constant of proportionality. Doubling $x$ then doubles $y$, and $x = 0$ gives $y = 0$.",
     terms: ["proportional-relationship"],
     method: [
-      "Look for the form $y = kx$: $x$ times one fixed number $k$, with nothing added or subtracted.",
+      "Simplify the rule first: $y = 3x + 2 - 2$ is $y = 3x$. Then look for the form $y = kx$: $x$ times one fixed number $k$, with nothing left added or subtracted.",
       "Check $x = 0$. A proportional rule gives $y = 0$ there. The rule $y = 3x + 2$ gives $y = 2$, so it is not proportional.",
-      "Check a second input if you are unsure: $y \\div x$ must be the same number $k$ for every input other than 0.",
+      "Numbers can show that a rule is not proportional: if $y \\div x$ is different for two inputs other than 0, it is not. A few matching values do not prove it, so trust the form $y = kx$.",
     ],
     watch:
       "A rule like $y = 3x + 2$, with a number other than 0 added, is not proportional. At $x = 0$ it gives $y = 2$, not 0. So its graph misses the point $(0, 0)$, where both $x$ and $y$ are 0.",
@@ -1422,7 +1426,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Solve an equation in which $x$ is multiplied by a fraction.",
     senses: { side: "side-of-equation" },
     intuition:
-      "An equation has two sides: the amount on the left of the equal sign and the amount on the right. It says they are equal. In $\\tfrac{5}{6}x - 7 = 3$, $\\tfrac{5}{6}x$ means $\\tfrac{5}{6}$ times $x$. So the coefficient, the number multiplying $x$, is a fraction. A fraction's reciprocal is the fraction flipped upside down: the reciprocal of $\\tfrac{5}{6}$ is $\\tfrac{6}{5}$. A fraction times its reciprocal is 1.",
+      "An equation has two sides: the amount on the left of the equal sign and the amount on the right. It says they are equal. In $\\tfrac{5}{6}x - 7 = 3$, $\\tfrac{5}{6}x$ means $\\tfrac{5}{6}$ times $x$. So the coefficient, the number multiplying $x$, is a fraction. The reciprocal of a fraction other than 0 is the fraction flipped upside down: the reciprocal of $\\tfrac{5}{6}$ is $\\tfrac{6}{5}$. A fraction times its reciprocal is 1.",
     method: [
       "Undo the added or subtracted number on both sides. In $\\tfrac{5}{6}x - 7 = 3$, add 7: $\\tfrac{5}{6}x = 10$.",
       "Multiply both sides by the reciprocal of the fraction. $\\tfrac{6}{5} \\times \\tfrac{5}{6}x = x$, and $\\tfrac{6}{5} \\times 10 = 12$, so $x = 12$.",
@@ -1515,7 +1519,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     terms: [
       [
         "coordinate",
-        "$x$ is the distance across from the $y$-axis; $y$ is the distance up from the $x$-axis.",
+        "The size of $x$ is the distance across from the $y$-axis, and its sign says right or left. The size of $y$ is the distance up or down from the $x$-axis.",
       ],
     ],
     method: [
@@ -1524,7 +1528,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "A point is written $(x, y)$: the across number first, then the up-or-down number.",
     ],
     watch:
-      "The $x$-coordinate is the across distance and comes first. Do not swap it with $y$.",
+      "The $x$-coordinate, the across number, comes first. Its size is the distance across, and its sign says right or left. Do not swap it with $y$.",
   },
   "line-slope": {
     goal: "Find the slope of the line through two given points.",
@@ -1622,7 +1626,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Given a line on a grid, choose its equation.",
     senses: { rule: "rule", change: "change" },
     intuition:
-      "The equation of a straight line can be written $y = mx + b$, where $mx$ means $m$ times $x$. The slope is how much $y$ changes for each step of 1 to the right, and we write it $m$. Up is positive and down is negative. The $y$-intercept is the $y$-value where the line crosses the $y$-axis, the vertical axis where $x = 0$. We write it $b$.",
+      "The equation of a straight line that is not vertical can be written $y = mx + b$, where $mx$ means $m$ times $x$. The slope is how much $y$ changes for each step of 1 to the right, and we write it $m$. Up is positive and down is negative. The $y$-intercept is the $y$-value where the line crosses the $y$-axis, the vertical axis where $x = 0$. We write it $b$.",
     method: [
       "Read $b$: the $y$-value where the line crosses the vertical $y$-axis.",
       "Find the slope $m$ from two points: change in $y$ ÷ change in $x$, subtracting in the same order.",
@@ -1649,7 +1653,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Find every single point whose removal makes a plotted relation a function.",
     noLink: ["leaves", "rule"],
     intuition:
-      "Each plotted point is a pair $(x, y)$. The input is the first number, $x$, and the output is the second, $y$. These two numbers are the point's coordinates. A relation is a set of such pairs. It is a function when each input has only one output. Two points straight above each other have the same $x$ and different $y$, so they break this rule. Removing either one of them fixes it.",
+      "Each plotted point is a pair $(x, y)$. The input is the first number, $x$, and the output is the second, $y$. These two numbers are the point's coordinates. A relation is a set of such pairs. It is a function when each input has only one output. Two points straight above each other have the same $x$ and different $y$, so they break this rule. If they are the only clash, removing either one of them fixes it.",
     terms: ["function"],
     method: [
       "Find two plotted points with the same $x$-coordinate and different $y$-coordinates.",
@@ -1701,10 +1705,10 @@ const legacyMethods: Record<string, ProblemMethod> = {
     method: [
       "Set the costs equal and solve for the tie: $18 + x = 2x$ gives $x = 18$.",
       "Test a whole input just above the tie to see which plan is cheaper there. At 19, Plan A costs $18 + 19 = 37$ and Plan B costs $2 \\times 19 = 38$.",
-      "The answer is the first whole number past the tie where the plan is cheaper. If the tie is a whole number, take the next one.",
+      "If the plan asked about has the smaller rate, the answer is the first whole number past the tie; if the tie is a whole number, take the next one. A plan with the larger rate is cheaper only before the tie.",
     ],
     watch:
-      "At the tie the costs are equal, not cheaper. Take the next whole number, even when the tie is a whole number.",
+      "At the tie the costs are equal, not cheaper. Past the tie, the plan with the smaller rate is cheaper. Take the next whole number, even when the tie is a whole number, and check that it is an allowed input.",
   },
   "function-evaluation": {
     goal: "Given a rule $f(x)$ and an input, find the output.",
