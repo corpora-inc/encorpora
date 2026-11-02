@@ -664,8 +664,9 @@ export const texasHsLessons: Lesson[] = [
       base: "base-exponent",
       range: "range-function",
       model: "model",
+      rule: "rule",
     },
-    noLink: ["side", "rule", "mean"],
+    noLink: ["side", "mean"],
     templateIds: ["exponential-domain-range"],
     objectives: [
       "Write the domain (allowed inputs) and range (possible outputs) of an exponential function as inequalities.",
@@ -1042,8 +1043,10 @@ export const texasHsLessons: Lesson[] = [
       edge: "edge",
       face: "face-solid",
       solid: "solid-shape",
+      center: "center",
+      squared: "square-number",
     },
-    noLink: ["side", "square", "part", "parts", "center", "squared", "whole"],
+    noLink: ["side", "square", "part", "parts", "whole"],
     templateIds: ["curved-solid-surface-area"],
     objectives: [
       "Find the surface area of a cone and of solids joined to a cylinder.",

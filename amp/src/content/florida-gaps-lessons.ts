@@ -566,16 +566,15 @@ export const floridaGapLessons: Lesson[] = [
     title: "Convert between customary and metric units",
     summary:
       "The same length can be measured in inches or in centimeters. A conversion factor tells how the two units compare, such as “1 inch = 2.54 centimeters.” To change inches into centimeters, multiply by 2.54. To change centimeters back into inches, divide by 2.54. For any amount above 0, the smaller unit needs the bigger number.",
-    senses: { unit: "unit", "more than": "more-than" },
-    noLink: [
-      "factor",
-      "factors",
-      "square",
-      "squares",
-      "change",
-      "changes",
-      "side",
-    ],
+    senses: {
+      unit: "unit",
+      "more than": "more-than",
+      factor: "conversion-factor",
+      squares: "square-shape",
+      side: "side",
+      factors: "conversion-factor",
+    },
+    noLink: ["square", "change", "changes"],
     templateIds: ["fl-metric-customary-conversion"],
     objectives: [
       "Read a conversion factor (a statement like “1 inch = 2.54 centimeters”) and use it in either direction.",

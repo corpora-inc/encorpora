@@ -226,8 +226,8 @@ export const ratioRateLessons: Lesson[] = [
   },
   {
     id: "double-number-line-missing",
-    senses: { third: "third", unit: "unit" },
-    noLink: ["change", "changes", "scale"],
+    senses: { third: "third", unit: "unit", scale: "scale-axis" },
+    noLink: ["change", "changes"],
     title: "Read a double number line",
     summary:
       "A number line is a line with evenly spaced marks for numbers. A double number line is two number lines, one above the other, for two amounts that grow together, such as miles and hours. Marks that line up go together. Divide both amounts to find the amount for 1 unit. Then multiply to find any other matching pair.",

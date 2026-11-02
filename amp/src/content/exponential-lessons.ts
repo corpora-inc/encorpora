@@ -35,7 +35,7 @@ export const exponentialLessons: Lesson[] = [
       "Some amounts grow by multiplying, not adding. A town of 1,000 people that grows by 10% each year has 1,100 after one year, then 1,210, then 1,331. Each year multiplies the number by the same amount, 1.1. A pattern where each equal step multiplies by the same positive number (other than 1) is called exponential. That multiplier, the number each step multiplies by, and the starting amount let you find any later value.",
     templateIds: ["exponential-model-value", "exponential-model-rule"],
     includeGeneratedRepresentation: false,
-    senses: exponentialSenses,
+    senses: { ...exponentialSenses, model: "model", rule: "rule" },
     noLink: [
       "part",
       "parts",
@@ -64,7 +64,6 @@ export const exponentialLessons: Lesson[] = [
       "quarters",
       "one quarter",
       "mirror image",
-      "rule",
       "rules",
       "opposite",
       "opposites",
@@ -73,7 +72,6 @@ export const exponentialLessons: Lesson[] = [
       "average",
       "decreasing",
       "increasing",
-      "model",
       "models",
       "pattern",
       "patterns",
@@ -432,7 +430,7 @@ export const exponentialLessons: Lesson[] = [
     summary:
       "Start with 3 and keep multiplying by 2: 3, 6, 12, 24, 48. A list of numbers in order is called a sequence, and each number in it is a term. When each term is the one before times the same number, the sequence is called geometric. That same number, here 2, is called the common ratio. Each copy of it that gets multiplied in is called a factor.",
     templateIds: ["geometric-sequence", "geometric-sequence-rule"],
-    senses: exponentialSenses,
+    senses: { ...exponentialSenses, rule: "rule" },
     noLink: [
       "part",
       "parts",
@@ -461,7 +459,6 @@ export const exponentialLessons: Lesson[] = [
       "quarters",
       "one quarter",
       "mirror image",
-      "rule",
       "rules",
       "opposite",
       "opposites",
@@ -601,7 +598,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     intuition:
       "An exponential model multiplies by the same number each step. That number is called the growth factor. Growing by 10% each year multiplies by $1 + 0.1 = 1.1$, because the whole amount stays and 0.1 of it is added. Losing 20% multiplies by 0.8, because 80% is left. A half-life, the time for an amount to halve, multiplies by $\\frac{1}{2}$. In $y = a \\times b^t$, $a$ is the starting value, $b$ is the growth factor, and the raised $t$ means multiply by $b$ that many times.",
     terms: [terms.exponential],
-    senses: exponentialSenses,
+    senses: { ...exponentialSenses, model: "model" },
     noLink: [
       "part",
       "parts",
@@ -639,7 +636,6 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       "average",
       "decreasing",
       "increasing",
-      "model",
       "models",
       "pattern",
       "patterns",
@@ -657,7 +653,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     intuition:
       "An exponential rule multiplies by the same number for each step of $x$. It can be written $y = a \\times b^x$, where the raised $x$ means multiply by $b$ that many times. The number $a$ is the starting value, the value of $y$ when $x = 0$, because $b^0 = 1$. The number $b$ is the growth factor, the number each step multiplies by. Divide a value by the one just before it to find $b$. These values are never 0.",
     terms: [terms.exponential],
-    senses: exponentialSenses,
+    senses: { ...exponentialSenses, rule: "rule" },
     noLink: [
       "part",
       "parts",
@@ -686,7 +682,6 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       "quarters",
       "one quarter",
       "mirror image",
-      "rule",
       "rules",
       "opposite",
       "opposites",
@@ -905,7 +900,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     intuition:
       "A sequence is a list of numbers in order, and each number is a term. In a geometric sequence, each term is the one before times the same number, called the common ratio $r$. For example, 3, 6, 12, 24 has $r = 2$. To find $r$, divide a term by the one just before it (which must not be 0). Going forward one step multiplies by $r$, and going back one step divides by $r$, when $r$ is not 0. For two terms $k$ steps apart, the later one is the earlier one times $r^k$, meaning $k$ copies of $r$ multiplied together.",
     terms: [terms.ratio],
-    senses: exponentialSenses,
+    senses: { ...exponentialSenses, rule: "rule" },
     noLink: [
       "part",
       "parts",
@@ -934,7 +929,6 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       "quarters",
       "one quarter",
       "mirror image",
-      "rule",
       "rules",
       "opposite",
       "opposites",

@@ -34,8 +34,8 @@ export const graphicalLessons: Lesson[] = [
     summary:
       "A number line is a line with evenly spaced numbers. A coordinate grid has two of them that cross at 0: one going across and one going up and down. A point is an exact spot on the grid, named by two numbers written $(x, y)$. Start at the crossing point. The first number, $x$, says how far across (left if negative). The second, $y$, says how far up (down if negative).",
     templateIds: ["coordinate-point-reading"],
-    senses: GRID_SENSES,
-    noLink: GRID_NO_LINK,
+    senses: { ...GRID_SENSES, scale: "scale-axis" },
+    noLink: GRID_NO_LINK.filter((w) => !["scale"].includes(w)),
     objectives: [
       "Tell the across number ($x$) of a point from its up-and-down number ($y$).",
       "Read positive, negative and zero coordinates from a grid.",
