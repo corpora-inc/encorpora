@@ -265,6 +265,9 @@ async function fixture(page: Page) {
       });
     }
     if (url.pathname.endsWith("/me")) return route.fulfill({ json: me });
+    // A paid account has no free trial.
+    if (url.pathname.endsWith("/trials/current"))
+      return route.fulfill({ json: { trial: null } });
     if (url.pathname.endsWith("/auth-config"))
       return route.fulfill({
         json: { mode: "accounts", passwords: true, providers: [] },
