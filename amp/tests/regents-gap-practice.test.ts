@@ -545,7 +545,8 @@ test("exponential base feedback quotes this problem's own decimals", () => {
     for (const text of Object.values(p.choiceFeedback ?? {}))
       for (const d of text.match(/\b0\.\d+\b/g) ?? [])
         assert.ok(
-          [rate, rate * 10].some((v) => Math.abs(Number(d) - v) < 1e-9) || d === base,
+          [rate, rate * 10].some((v) => Math.abs(Number(d) - v) < 1e-9) ||
+            d === base,
           `${p.public.prompt} :: ${text}`,
         );
   }
