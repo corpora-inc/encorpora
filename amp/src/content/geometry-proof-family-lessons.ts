@@ -41,7 +41,6 @@ const specs: Spec[] = [
     ],
     goal: "Choose the reason or equation that justifies one proof step about crossing lines, parallel lines or a perpendicular bisector.",
     senses: {
-      side: "side",
       vertex: "vertex",
       degrees: "degree-angle",
       "corresponding angles": "corresponding-angles",
@@ -200,7 +199,7 @@ const specs: Spec[] = [
       "quarter",
       "key",
       "argument",
-      "opposite side",
+
       "prime",
     ],
     intuition: [
@@ -296,7 +295,7 @@ const specs: Spec[] = [
       "mean",
       "product",
       "term",
-      "terms",
+
       "scale",
       "thirds",
       "boundary",
@@ -485,10 +484,8 @@ const specs: Spec[] = [
       multiple: "multiple",
       "one third": "third",
       squared: "square-number",
-      factors: "factor-number",
     },
     noLink: [
-      "square",
       "opposite",
       "part",
       "parts",
@@ -496,9 +493,9 @@ const specs: Spec[] = [
       "rules",
       "third",
       "whole",
-      "change",
+
       "changes",
-      "squares",
+
       "factor",
       "more than",
       "leaves",
@@ -615,7 +612,7 @@ const specs: Spec[] = [
       "thirds",
       "boundary",
       "identity",
-      "quarter",
+
       "key",
       "argument",
       "opposite side",
@@ -700,7 +697,7 @@ const specs: Spec[] = [
       "third",
       "whole",
       "change",
-      "changes",
+
       "square",
       "squares",
       "squared",
@@ -808,7 +805,7 @@ const specs: Spec[] = [
       "squared",
       "factor",
       "factors",
-      "more than",
+
       "leaves",
       "mean",
       "product",

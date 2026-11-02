@@ -67,7 +67,7 @@ export const exponentialLessons: Lesson[] = [
       "rules",
       "opposite",
       "opposites",
-      "unit",
+
       "units",
       "average",
       "decreasing",
@@ -709,7 +709,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       factor: "factor-number",
       difference: "difference-subtract",
     },
-    noLink: ["changes", "change", "model", "balance", "whole"],
+    noLink: ["changes", "change", "balance", "whole"],
     intuition:
       "An input is a number you start with, and an output is the number you get from it. A linear relationship adds the same amount to the output each step, like 5, 8, 11, 14 (add 3 each time). An exponential relationship multiplies the output by the same number each step, like 3, 6, 12, 24 (times 2 each time). One that does neither is called neither.",
     method: [
@@ -772,7 +772,6 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       term: "term-expression",
       product: "product-multiply",
       factor: "factor-number",
-      argument: "argument",
     },
     intuition:
       "The base is the number being raised to a power, and a logarithm is an exponent. $\\log_b A = n$, read “log base $b$ of $A$ equals $n$”, means $b^n = A$. The number $A$ inside the logarithm is called its argument. A logarithm exists only when its argument is positive.",
@@ -804,12 +803,10 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     senses: {
       difference: "difference-subtract",
       base: "base-exponent",
-      rule: "rule",
-      product: "product-multiply",
 
-      argument: "argument",
+      product: "product-multiply",
     },
-    noLink: ["multiple"],
+
     intuition:
       "A logarithm is an exponent, and the base is the number being raised to a power. $\\log_b m$, read “log base $b$ of $m$”, is the power of $b$ that gives $m$. Adding logarithms with the same base multiplies their arguments, the numbers inside. Subtracting divides them. A number in front, as in $2\\log_3 6$, can move inside as an exponent.",
     terms: [terms.logarithm],
@@ -832,7 +829,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
 
       base: "base-exponent",
     },
-    noLink: ["multiple", "multiples", "part", "combination"],
+    noLink: ["multiple", "part", "combination"],
     intuition:
       "A logarithm is an exponent, so it follows the same laws as exponents. The base is the number being raised to a power. The logarithm of a product (a multiplication) is a sum of logarithms, and the logarithm of a quotient (a division) is a difference. The logarithm of a power is a multiple: $\\log(x^3) = 3\\log x$. A square root is the power $\\tfrac{1}{2}$, so $\\log\\sqrt{x} = \\tfrac{1}{2}\\log x$.",
     terms: [terms.logarithm],
@@ -848,7 +845,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     goal: "Given a logarithm in an awkward base, or a product or quotient of logs, find its value.",
     senses: {
       base: "base-exponent",
-      rule: "rule",
+
       factor: "factor-number",
       product: "product-multiply",
     },
@@ -883,7 +880,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
   },
   "log-exponential-form": {
     goal: "Given a logarithmic or exponential statement, choose its other form, or place a logarithm between whole numbers.",
-    senses: { base: "base-exponent", side: "side-of-equation" },
+    senses: { base: "base-exponent" },
     noLink: ["part"],
     intuition:
       "A logarithm is an exponent, and the base is the number being raised to a power. A logarithm statement and a power statement can say the same thing. $\\log_2 8 = 3$, read “log base 2 of 8 equals 3”, means $2^3 = 8$: the logarithm is the exponent, the small raised number.",

@@ -137,7 +137,7 @@ export const regentsAlgebraTwoExponentialMethods: Record<
       "average",
       "decreasing",
       "increasing",
-      "model",
+
       "models",
       "pattern",
       "patterns",
@@ -199,7 +199,7 @@ export const regentsAlgebraTwoExponentialMethods: Record<
       "average",
       "decreasing",
       "increasing",
-      "model",
+
       "models",
       "pattern",
       "patterns",
@@ -246,7 +246,7 @@ export const regentsAlgebraTwoExponentialMethods: Record<
       "quarters",
       "one quarter",
       "mirror image",
-      "rule",
+
       "rules",
       "opposite",
       "opposites",
@@ -304,7 +304,7 @@ export const regentsAlgebraTwoExponentialMethods: Record<
       "quarters",
       "one quarter",
       "mirror image",
-      "rule",
+
       "rules",
       "opposite",
       "opposites",

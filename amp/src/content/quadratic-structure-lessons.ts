@@ -351,7 +351,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
     intuition:
       "Squaring means multiplying a number by itself. A parabola is the U-shaped graph of a rule like $y = ax^2 + bx + c$, where $x^2$ means $x$ times $x$ and $a \\ne 0$. Its turning point, the lowest point or the highest if it opens downward, is called the vertex. In vertex form $y = a(x - h)^2 + k$, with $a \\ne 0$, the square $(x - h)^2$ is 0 at $x = h$ and positive everywhere else. So the vertex is $(h, k)$. In the form $y = ax^2 + bx + c$, the vertex is at $x = -\\frac{b}{2a}$.",
     terms: ["vertex-parabola", "vertex-form"],
-    senses: { ...parabolaSenses, rule: "rule", opposite: "opposite-number" },
+    senses: { ...parabolaSenses, rule: "rule" },
     noLink: ["changes", "means", "image"],
     method: [
       "Vertex form: $h$ is the $x$ that makes the squared bracket 0, and $k$ is the number added after the square.",

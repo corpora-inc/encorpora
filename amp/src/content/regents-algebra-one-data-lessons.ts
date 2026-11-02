@@ -142,7 +142,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
   },
   "budget-whole-items": {
     goal: "Find the greatest whole number of items affordable after a fixed cost.",
-    noLink: ["whole", "part", "multiple"],
+    noLink: ["whole", "part"],
     intuition:
       "A fixed cost is paid once, whatever you buy, such as an entry fee. Take it off the budget first. The money left buys items, and you cannot buy part of an item. A whole number is one of 0, 1, 2, 3 and so on. So the answer is the number of whole times the price fits into the money left. $6.16n \\le 97.93$ means $6.16n$ is less than or equal to 97.93.",
     terms: [

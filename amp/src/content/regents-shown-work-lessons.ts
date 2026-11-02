@@ -287,7 +287,6 @@ const entries: WorkEntry[] = [
     parentGuide:
       "Ask your learner to sketch one of the two right triangles and label the half angle.",
     senses: {
-      base: "base-shape",
       side: "side",
       tangent: "tangent-trig",
       "opposite leg": "opposite-side-angle",

@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
@@ -77,7 +78,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
   "geo-centroid-median": {
     goal: "Use that the centroid divides each median into parts in the ratio 2 to 1, longer part next to the vertex.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["opposite side"].includes(w)),
     intuition:
       "A midpoint is the point halfway along a side. A median joins a corner (vertex) to the midpoint of the side across from it. The three medians meet at one point, called the centroid, the triangle's balance point. The centroid is two thirds of the way from the vertex along each median. So the part next to the vertex is twice the part next to the midpoint.",
     terms: ["median-triangle", "centroid"],
@@ -109,7 +110,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
   },
   "geo-isosceles-exterior-angle": {
     goal: "Set the base angles of an isosceles triangle equal to find the variable, then find an exterior angle.",
-    senses: GEO_SENSES,
+    senses: sensesWithout(GEO_SENSES, "base"),
     noLink: GEO_NOLINK,
     intuition:
       "An isosceles triangle has two equal sides, and the angles across from them, the base angles, are equal. If both are written with the same variable, setting them equal gives an equation. An exterior angle is the angle outside a corner, made by extending one side. It equals the sum of the two inside angles that are not next to it. The corner where the equal sides meet is called the apex.",
@@ -139,7 +140,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
   },
   "geo-polygon-rotation": {
     goal: "Work backward from rotation angles to the regular polygon that maps onto itself.",
-    senses: GEO_SENSES,
+    senses: sensesWithout(GEO_SENSES, "center"),
     noLink: GEO_NOLINK,
     intuition:
       "A polygon is a flat closed shape with straight sides, such as a triangle or a square. A regular polygon has all sides equal and all angles, the openings at its corners, equal. Turns are measured in degrees, and a full turn is $360^\\circ$. A regular polygon with $n$ sides looks the same after a turn of $360^\\circ\\div n$ about its center, because each corner moves onto the next. It also looks the same after any whole number of those turns. Multiples are the results of multiplying by 1, 2, 3 and so on. So the angles that work are exactly the multiples of $360^\\circ\\div n$.",
@@ -154,8 +155,8 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
   },
   "geo-area-changing-transformation": {
     goal: "Tell which coordinate transformation changes area, or keeps it without keeping congruence.",
-    senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    senses: sensesWithout(GEO_SENSES, "base"),
+    noLink: GEO_NOLINK.filter((w) => !["factor", "factors"].includes(w)),
     intuition:
       "A rigid motion, a slide, flip or turn, keeps every length and angle. So the image, the moved figure, is congruent (same size and shape) and has the same area. A point on a grid is named by its coordinates $(x,y)$: how far across, then how far up. A rule such as $(x,y)\\to(2x,y)$ says where each point goes: the arrow means “goes to”, and $2x$ means 2 times $x$. This rule is a stretch. It doubles every width and keeps every height. The area, the space inside, of a rectangle is width times height. So a stretch multiplies the area by the width factor times the height factor, the numbers that multiply the width and the height. Two stretches can cancel, such as doubling widths and halving heights. That keeps the area but can change the shape: a 2 by 2 square becomes a 4 by 1 rectangle.",
     terms: [

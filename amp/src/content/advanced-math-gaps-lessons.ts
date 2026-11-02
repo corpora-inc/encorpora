@@ -97,7 +97,9 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
       rule: "rule",
       average: "mean-average",
     },
-    noLink: amgNoLink.filter((w) => !["average", "rule", "rules"].includes(w)),
+    noLink: amgNoLink.filter(
+      (w) => !["average", "rule", "rules", "change", "more than"].includes(w),
+    ),
     method: [
       "Find the first term and the common difference. From two table entries, divide the change in value by the number of steps between them.",
       "To jump to term $n$, count $n - 1$ steps from the first term: $a_n = a_1 + (n - 1)d$. To check a rule you converted, put in $n = 1$.",
@@ -125,7 +127,9 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     senses: compoundSenses,
-    noLink: amgNoLink,
+    noLink: amgNoLink.filter(
+      (w) => !["change", "one quarter", "quarters", "units"].includes(w),
+    ),
     method: [
       "Write the yearly rate as a decimal. For $n$ compoundings a year, use $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$. For continuous compounding, use $A = Pe^{rt}$.",
       "To change time units, keep the same total growth. A yearly factor $F$ becomes $F^{1/12}$ per month, and a monthly factor $G$ becomes $G^{12}$ per year.",

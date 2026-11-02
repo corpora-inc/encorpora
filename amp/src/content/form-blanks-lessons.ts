@@ -237,7 +237,7 @@ const entries: FormatLessonEntry[] = [
     parentGuide:
       "Work out the amount after one year and compare it with the starting amount to see the percent change.",
     senses: { base: "base-exponent", model: "model" },
-    noLink: ["change", "period", "population", "changes"],
+    noLink: ["period", "population", "changes"],
   },
   {
     id: "circle-estimate-blanks",

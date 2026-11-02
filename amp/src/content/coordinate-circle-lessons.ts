@@ -242,7 +242,9 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
   "circle-equation": {
     goal: "Find a circle's center, radius or $r^2$ from its equation, from a center and a point, or from its graph.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter(
+      (w) => !["change", "square", "squares", "terms"].includes(w),
+    ),
     intuition:
       "A circle's radius is the distance from its center $(h,k)$ to every point on it, written $r$. By the Pythagorean theorem, a point $(x,y)$ is on it exactly when $(x-h)^2+(y-k)^2=r^2$. The raised 2 means a number times itself. If the squares are multiplied out, complete the square: take half of the number in front of $x$, square it, and add it to both sides. Do the same for $y$.",
     terms: terms.circle,
@@ -257,7 +259,7 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
   "coordinate-polygon": {
     goal: "Find a polygon's perimeter or area from the coordinates of its vertices.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["product"].includes(w)),
     intuition:
       "A polygon is a closed shape with straight sides, and its corners are its vertices. A horizontal or vertical side's length is the larger coordinate minus the smaller. A slanted side with run $a$ (change across) and rise $b$ (change up) has length $\\sqrt{a^2+b^2}$. That follows from the Pythagorean theorem, the rule linking the sides of a triangle with a square corner. The perimeter is all the sides added. Area is the space inside. To find it, draw a rectangle along the grid lines just around the polygon, and subtract the pieces outside the polygon.",
     terms: terms.measure,
@@ -271,7 +273,7 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
   "segment-partition": {
     goal: "Find the point that divides a segment in a ratio or at a fraction of the way.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["change"].includes(w)),
     intuition:
       "A ratio $m:n$ splits a segment into $m+n$ equal parts. The point $P$ with $AP:PB=m:n$ has $m$ parts on $A$'s side, so it is $\\frac{m}{m+n}$ of the way from $A$ to $B$. The run is the change in $x$ from $A$ to $B$, and the rise is the change in $y$. Add $\\frac{m}{m+n}$ of each to $A$'s coordinates.",
     terms: terms.partition,
@@ -286,7 +288,7 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
   "perpendicular-slopes": {
     goal: "Use parallel and perpendicular slopes for a slope, a line through a point or a missing coordinate.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["change", "product"].includes(w)),
     intuition:
       "Slope is a line's steepness: the rise (change in $y$) divided by the run (change in $x$) between two of its points, when the run is not 0. Parallel lines are lines that never meet. Perpendicular lines are lines that meet at a right angle. A vertical line is one that goes straight up and down, and a horizontal line is a flat one. Parallel lines that are not vertical have equal slopes. If neither perpendicular line is vertical or horizontal, their slopes are negative reciprocals: flip the fraction and change the sign, so $\\frac23$ goes with $-\\frac32$. A line that is not vertical can be written $y=mx+b$, where $m$ is the slope and $b$ is where it crosses the $y$-axis.",
     terms: terms.slope,
@@ -301,7 +303,7 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
   "circle-angles": {
     goal: "Find angles and lengths with inscribed angles, semicircles and tangents.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["factor"].includes(w)),
     intuition:
       "Angles are measured in degrees, and a full turn is $360^\\circ$. A central angle has its corner at the circle's center, and an inscribed angle has its corner on the circle. In both, the two sides end on the circle. The arc they open onto is the piece of the circle between those ends, away from the corner. On the same arc, the inscribed angle is half the central angle. A chord is a segment joining two points of the circle, and a diameter is a chord through the center. An inscribed angle whose sides go to the two ends of a diameter is $90^\\circ$, a right angle. A radius is a segment from the center to the circle. A tangent is a line that touches the circle at exactly one point, called the point of tangency. It meets the radius to that point at $90^\\circ$.",
     terms: terms.angles,

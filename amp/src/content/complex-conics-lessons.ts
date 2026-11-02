@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -156,7 +157,7 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
         "$p$ is the signed distance from the vertex to the focus, along the axis of symmetry.",
       ],
     ],
-    senses: focusSenses,
+    senses: sensesWithout(focusSenses, "side"),
     noLink: [
       "part",
       "parts",
@@ -189,9 +190,7 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
       "rules",
       "opposite",
       "opposites",
-      "unit",
-      "units",
-      "average",
+
       "decreasing",
       "increasing",
       "model",

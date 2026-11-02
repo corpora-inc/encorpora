@@ -137,7 +137,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
       "A rate is an amount per unit of time. A painter who finishes a fence in 4 hours paints $\\frac{1}{4}$ of it each hour. Rates working together add, and a rate working against another subtracts. Times for sharing one job do not combine like that, so change them into rates or totals first. The concentration of a mixture is the amount of pure substance divided by the total amount.",
     terms: ["rate", "concentration", "average-speed"],
     senses: { ...satSenses, average: "mean-average" },
-    noLink: satNoLink.filter((w) => !["average"].includes(w)),
+    noLink: satNoLink.filter((w) => !["average", "unit"].includes(w)),
     method: [
       "Name what is measured. Write each given as an amount per unit of time, or as an amount of the pure substance.",
       "Combine. Add rates working together and subtract a rate working against. For a mixture, add the amounts of pure substance. For a trip, add the distances and add the times.",
@@ -153,7 +153,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
       "The absolute value $|E|$ is how far $E$ is from 0, so it is never negative: $|-3| = 3$. The sign $<$ means less than and $>$ means greater than. So $|E| < 7$ means $E$ is less than 7 away from 0, between $-7$ and $7$. And $|E| > 7$ means $E$ is more than 7 away: below $-7$ or above $7$. A compound inequality joins two conditions. “And” means both are true. “Or” means at least one is true.",
     terms: ["absolute-value", "compound-inequality"],
     senses: satSenses,
-    noLink: satNoLink,
+    noLink: satNoLink.filter((w) => !["more than"].includes(w)),
     method: [
       "For $|E| < c$ with $c > 0$, write $-c < E < c$. For $|E| > c$, write $E < -c$ or $E > c$.",
       "Solve every part the same way. Flip the inequality sign, which means turn $<$ into $>$ or $>$ into $<$, whenever you multiply or divide by a negative number.",

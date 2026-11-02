@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
@@ -123,7 +124,7 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
           "It also passes through the focus and is perpendicular to the directrix.",
         ],
       ],
-      senses: r2fParabolaSenses,
+      senses: sensesWithout(r2fParabolaSenses, "side"),
       noLink: [
         "part",
         "parts",
@@ -156,8 +157,7 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
         "rules",
         "opposite",
         "opposites",
-        "unit",
-        "units",
+
         "average",
         "decreasing",
         "increasing",

@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -195,7 +196,7 @@ export const linearFunctionLessons: Lesson[] = [
     ],
     includeGeneratedRepresentation: false,
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["more than"].includes(w)),
     objectives: [
       "Write an equation or inequality for a real situation, saying what the letter counts.",
       "Tell the starting amount from the rate in words, tables and graphs, and solve the model.",
@@ -401,7 +402,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   "function-relation-test": {
     goal: "Decide which relation gives exactly one output for each input.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["mean", "opposite"].includes(w)),
     intuition:
       "A relation is a set of pairs that matches inputs $x$ with outputs $y$, such as $(1, 4)$ and $(2, 3)$. It is called a function when each input has exactly one output. An output may repeat. But if one input comes with two different outputs, it is not a function.",
     terms: ["function"],
@@ -415,7 +416,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   "average-rate-formula": {
     goal: "Find the average rate of change of a function between two inputs, from its rule or two of its values.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["change", "difference"].includes(w)),
     intuition: `${functionWords} From input $a$ to input $b$, the average rate of change is the change in output divided by the change in input: $\\frac{f(b) - f(a)}{b - a}$. It tells how much the output changes, on average, for each step of 1 in the input.`,
     terms: ["average-rate-of-change"],
     method: [
@@ -429,7 +430,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   "average-rate-display": {
     goal: "Find the average rate of change between two inputs, from a graph or a table.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["change", "difference"].includes(w)),
     intuition: `${functionWords} The average rate of change between two inputs is the change in output divided by the change in input. It uses only the two end points, not the values between them.`,
     method: [
       "Read the output at each end: the marked points on the graph, or the shaded columns of the table.",
@@ -455,8 +456,8 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   },
   "linear-model-equation": {
     goal: "Choose the equation that matches a situation given in words, a graph or a table.",
-    senses,
-    noLink,
+    senses: sensesWithout(senses, "terms"),
+    noLink: noLink.filter((w) => !["change"].includes(w)),
     intuition:
       "The rate is how much the output changes each time the input goes up by 1. A linear model is written output $=$ rate $\\times$ input $+$ starting amount, like $y = 2x + 3$. The starting amount is the output when the input is 0. On a graph, it is where the line meets the up-and-down axis.",
     method: [
@@ -483,7 +484,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   },
   "formula-value": {
     goal: "Find one letter of a formula from the values of the others.",
-    senses,
+    senses: sensesWithout(senses, "side"),
     noLink,
     intuition:
       "A formula is an equation that links amounts with letters. The perimeter is the distance around a shape. For a rectangle it is $P = 2l + 2w$, with length $l$ and width $w$. If you know every letter but one, put in the known numbers. Then undo what was done to the unknown, last step first, doing the same to both sides.",

@@ -134,7 +134,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "A rate is how much happens in one unit of time. A worker who keeps a steady pace and finishes a job in $h$ hours does $\\frac{1}{h}$ of it per hour. For travel, time equals distance divided by speed. When the unknown ends up in the bottom of a fraction, the equation is called a rational equation.",
     senses: { model: "model", unit: "unit" },
-    noLink: ["part", "parts", "whole", "change"],
+    noLink: ["part", "parts", "whole"],
     terms: ["rate", "rational-equation"],
     method: [
       "Name the unknown, and decide what each fraction measures: a rate or a time.",

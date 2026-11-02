@@ -27,17 +27,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       squared: "square-number",
       factor: "scale-factor",
     },
-    noLink: [
-      "whole",
-      "unit",
-      "units",
-      "square",
-      "scale",
-      "scales",
-      "rule",
-      "part",
-      "factors",
-    ],
+    noLink: ["whole", "scale", "scales", "rule", "part"],
     intuition:
       "The middle point of a circle is called the center. A circle's radius is the distance from the center to the circle. A central angle has its corner at the center. The piece of the circle between its two sides is called an arc. Every circle is an enlarged or shrunken copy of every other circle. Enlarge a circle by a factor $k$, so every length is multiplied by $k$. Then the radius and the arc of a fixed angle are both multiplied by $k$. So for one angle, arc length divided by radius is the same in every circle. That number measures the angle in radians. A sector is the pie-slice region between the two radii and the arc.",
     terms: [
@@ -91,7 +81,6 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "whole",
       "certain",
       "product",
-      "difference",
     ],
     intuition:
       "An event is a result that may or may not happen, such as a student riding the bus. A probability is a chance, a number from 0 to 1, and $P(A)$ means the probability that event $A$ happens. A conditional probability is the chance of $A$ when you look only at the cases where $B$ happened. It is written $P(A\\mid B)$ and read “the probability of $A$ given $B$”. The group you look inside goes after the bar. If 20 of 50 bus riders play in the band, then $P(\\text{band}\\mid\\text{bus})=\\frac{20}{50}$. Two events are independent when learning that $B$ happened does not change the chance of $A$.",
@@ -196,11 +185,11 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       side: "side",
       vertex: "vertex",
       image: "image-transformation",
-      center: "center",
+
       factors: "scale-factor",
       factor: "scale-factor",
     },
-    noLink: ["unit", "units", "change", "mean", "square", "scale"],
+    noLink: ["unit", "change", "mean", "square", "scale"],
     intuition:
       "A dilation resizes a figure. It multiplies every distance from a fixed center point by the same positive number, the scale factor $k$. It keeps the shape and every angle. A rigid motion moves a figure without changing its size: a slide (translation), a turn (rotation) or a flip (reflection). Two figures are similar, meaning the same shape, when a dilation followed by rigid motions carries one exactly onto the other. The scale factor is then a ratio, the result of dividing two lengths: a side of the new figure divided by the matching side of the original. Matching sides, also called corresponding sides, are sides that land on each other.",
     terms: ["dilation", "similar-figures"],

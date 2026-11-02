@@ -167,7 +167,7 @@ const entries: WorkEntry[] = [
     ],
     parentGuide:
       "Ask your learner to test one number of miles in their inequality and say which plan is cheaper there.",
-    senses: { side: "side-of-equation" },
+
     noLink: ["more than"],
   },
 ];

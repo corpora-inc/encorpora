@@ -140,7 +140,7 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
   "quadratic-formula-positive": {
     goal: "Use the quadratic formula on an equation like $3x^2 + 4x - 2 = 0$, whose solutions are not whole numbers or fractions.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["opposite"].includes(w)),
     intuition:
       "An equation $ax^2 + bx + c = 0$ with $a \\ne 0$ is called quadratic; $x^2$ means $x$ times $x$. When it does not factor, the quadratic formula still finds its solutions: $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The sign $\\pm$ stands for “plus or minus”, so it can give two answers. The number $b^2 - 4ac$ under the root is called the discriminant.",
     terms: [

@@ -229,7 +229,9 @@ export const multiplyDivideLessons: Lesson[] = [
       "To divide means to split a number into equal groups. The sign ÷ is read “divided by.” For 1,476 ÷ 6, ask how many groups of 6 fit in 1,476. Take away big, easy groups first, like 200 groups of 6. Then take smaller groups from what is left. Add up the groups you took to get the answer.",
     templateIds: ["divide-by-one-digit", "division-remainder"],
     senses: divideSenses,
-    noLink: divideNoLink,
+    noLink: divideNoLink.filter(
+      (w) => !["whole", "whole", "whole"].includes(w),
+    ),
     objectives: [
       "Divide a number with up to four digits by a one-digit number (a number from 1 to 9).",
       "Find the remainder, the amount left over, and check that it is less than the number you divide by.",
@@ -296,7 +298,7 @@ export const multiplyDivideLessons: Lesson[] = [
       "To divide means to split a number into equal groups. The sign ÷ is read “divided by.” To find 1,512 ÷ 24, ask how many groups of 24 fit in 1,512. Twenty-four is hard to think with, so use a nearby easy number like 25. Make a first guess, multiply to check it, and fix it if needed. The answer is called the quotient.",
     templateIds: ["divide-by-two-digit"],
     senses: divideSenses,
-    noLink: divideNoLink,
+    noLink: divideNoLink.filter((w) => !["whole"].includes(w)),
     objectives: [
       "Divide a number with up to four digits by a two-digit number.",
       "Use estimates and multiplication to check each step.",
@@ -439,7 +441,7 @@ export const multiplyDivideMethods: Record<string, ProblemMethod> = {
       "To divide means to split a number into equal groups. The sign ÷ is read “divided by.” The number you divide by is called the divisor. The count of full groups is called the quotient. The amount left over, too small to make one more group, is called the remainder.",
     terms: divisionTerms,
     senses: divideSenses,
-    noLink: divideNoLink,
+    noLink: divideNoLink.filter((w) => !["whole"].includes(w)),
     method: [
       "Take away groups of the divisor, big groups first, until no more fit.",
       "What is left is the remainder. It must be less than the divisor.",

@@ -99,7 +99,7 @@ export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
   "geo-equal-legs-radical": {
     goal: "Find a leg or a hypotenuse of a similar triangle with equal legs, using a factor of $\\sqrt{2}$.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["factor"].includes(w)),
     intuition:
       "In a right triangle, the two sides that form the square corner are the legs, and the longest side is the hypotenuse. A right triangle with equal legs has two $45^\\circ$ angles, and every such triangle has the same shape. The Pythagorean theorem is the rule $a^2+b^2=c^2$. It gives $c^2=a^2+a^2=2a^2$. So the hypotenuse is always the leg times $\\sqrt{2}$, the positive number that times itself makes 2, about 1.41.",
     terms: ["45-45-90-triangle", "radical"],
