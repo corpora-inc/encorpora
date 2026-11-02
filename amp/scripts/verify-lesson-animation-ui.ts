@@ -546,10 +546,17 @@ try {
   const remountPage = await browser.newPage();
   await remountPage.clock.install();
   await remountPage.goto(`http://127.0.0.1:${address.port}/animation-review`);
-  await remountPage.getByRole("button", { name: "Open next lesson" }).click();
-  await remountPage.locator(".lesson-animation").scrollIntoViewIfNeeded();
+  // Load the lazy chunk before freezing, without mounting an animation. The
+  // remount check isolates playback; the main sweep covers lazy loading.
+  await remountPage.evaluate(async () => {
+    const module = "/src/web/lesson-animation/LessonAnimation.tsx";
+    await import(module);
+  });
   const remountNow = await remountPage.evaluate(() => Date.now());
   await remountPage.clock.pauseAt(remountNow + 500);
+  await remountPage.getByRole("button", { name: "Open next lesson" }).click();
+  await remountPage.clock.runFor(500);
+  await remountPage.locator(".lesson-animation").scrollIntoViewIfNeeded();
   assert.equal(
     await remountPage.locator(".lesson-animation").getAttribute("data-step"),
     "0",
