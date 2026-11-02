@@ -296,6 +296,21 @@ function plotRule(f: Display): PlotRule | null {
 }
 
 /** Only compatible semantic figures opt in. No prompt parsing or answer access. */
+/** The two labeled bars of a fraction comparison: the practice figure's
+ * blank bars, or the lesson walkthrough's shaded fraction-bar scene. */
+function comparisonBars(
+  f: ProblemLessonView["example"]["figure"],
+): { parts: number; label: string }[] | null {
+  if (f?.kind === "fraction-bars") return f.bars;
+  if (f?.kind !== "scene") return null;
+  const el = f.scene.elements.find(
+    (e) => (e as { type?: string }).type === "fractionBar",
+  ) as { bars: { parts: number; label?: string | false }[] } | undefined;
+  return el
+    ? el.bars.map((b) => ({ parts: b.parts, label: b.label || "" }))
+    : null;
+}
+
 export function animationModel(
   lesson: ProblemLessonView,
 ): AnimationModel | null {
@@ -492,10 +507,9 @@ export function animationModel(
     (lesson.templateId === "compare-like-denominators" ||
       lesson.templateId === "compare-like-numerators" ||
       lesson.templateId === "compare-unlike-fractions") &&
-    f?.kind === "fraction-bars" &&
-    f.bars.length === 2
+    comparisonBars(f)?.length === 2
   ) {
-    const bars = f.bars.map((bar) => {
+    const bars = comparisonBars(f)!.map((bar) => {
       const m = /^(\d+)\/(\d+)$/.exec(bar.label);
       return m && Number(m[2]) === bar.parts
         ? { n: Number(m[1]), d: bar.parts }
