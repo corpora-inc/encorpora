@@ -25,8 +25,8 @@ A workbook's choices are stored in its spec (`choices`, spec version 2):
 | Choice | Values | Effect |
 | --- | --- | --- |
 | Areas | Mixed (recommended), or strands near the learner's level | Every section draws only from the chosen strands. The areas offered are strands with printable work from 1.5 grades below to 1 grade above the strand's estimate (`workbookAreas`) |
-| Level | Easier (review), At level, Stretch | Moves practice and today's idea by −0.5, 0 or +0.4 grades. Easier also has half again as much review. The warm-up and the challenge keep their windows |
-| Today's idea | With a lesson, Problems only | Problems only leaves out the lesson; practice takes its time |
+| Level | Easier, At level, Harder (`lean`: easier, level, stretch) | Moves practice and today's idea by −0.5, 0 or +0.4 grades. Easier also has half again as much review. The warm-up and the challenge keep their windows |
+| Today's idea | Include, Leave out (problems only) | Leaving it out drops the lesson; practice takes its time |
 
 Version 1 specs have no `choices` and read as mixed, at level, with a lesson (`specChoices`). They reprint the same problems under the same code; `tests/fixtures/workbook-v1-spec.json` checks it.
 

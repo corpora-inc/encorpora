@@ -103,9 +103,9 @@ export const sameChoices = (a: WorkbookChoicesInput, b: WorkbookChoicesInput) =>
   [...a.areas].sort().join(",") === [...b.areas].sort().join(",");
 
 export const leanNames = {
-  easier: "Easier review",
+  easier: "Easier",
   level: "At level",
-  stretch: "Stretch",
+  stretch: "Harder",
 } as const;
 /** A short line for a workbook's choices; empty for the defaults. */
 export function choicesLabel(

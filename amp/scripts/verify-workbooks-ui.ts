@@ -529,11 +529,11 @@ try {
         .first()
         .waitFor();
       assert.deepEqual(await controlBoxes(page), before, `${label}: area`);
-      await page.getByRole("radio", { name: /^Stretch/ }).click();
+      await page.getByRole("radio", { name: /^Harder/ }).click();
       await page.getByRole("heading", { name: "No. 4" }).waitFor();
       assert.match(page.url(), /lean=stretch/);
       assert.deepEqual(await controlBoxes(page), before, `${label}: lean`);
-      await page.getByRole("radio", { name: /^Problems only/ }).click();
+      await page.getByRole("radio", { name: /^Leave out/ }).click();
       await page.getByRole("heading", { name: "No. 5" }).waitFor();
       assert.match(page.url(), /lesson=off/);
       assert.equal(
@@ -555,13 +555,13 @@ try {
       await page.getByRole("heading", { name: "No. 4" }).waitFor();
       assert.equal(
         await page
-          .getByRole("radio", { name: /^With a lesson/ })
+          .getByRole("radio", { name: /^Include/ })
           .getAttribute("aria-checked"),
         "true",
       );
       assert.equal(
         await page
-          .getByRole("radio", { name: /^Stretch/ })
+          .getByRole("radio", { name: /^Harder/ })
           .getAttribute("aria-checked"),
         "true",
       );

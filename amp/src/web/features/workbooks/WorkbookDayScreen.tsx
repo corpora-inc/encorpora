@@ -280,9 +280,9 @@ function Today({
           disabled={choosing}
           onChange={(lean) => roll({ ...choices, lean })}
           options={[
-            { value: "easier", label: "Easier", detail: "More review" },
-            { value: "level", label: "At level", detail: "Recommended" },
-            { value: "stretch", label: "Stretch", detail: "A bit above" },
+            { value: "easier", label: "Easier" },
+            { value: "level", label: "At level" },
+            { value: "stretch", label: "Harder" },
           ]}
         />
         <Segmented<"lesson" | "problems">
@@ -292,8 +292,8 @@ function Today({
           disabled={choosing}
           onChange={(value) => roll({ ...choices, lesson: value === "lesson" })}
           options={[
-            { value: "lesson", label: "With a lesson", detail: "Recommended" },
-            { value: "problems", label: "Problems only", detail: "No lesson" },
+            { value: "lesson", label: "Include" },
+            { value: "problems", label: "Leave out" },
           ]}
         />
       </div>
