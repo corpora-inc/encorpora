@@ -619,9 +619,7 @@ try {
 
       // Placement done: the map, the meter and two next steps that succeed.
       await page.waitForURL("**/try/map");
-      await page
-        .getByRole("heading", { name: "Your estimated level" })
-        .waitFor();
+      await page.getByRole("heading", { name: "Your progress" }).waitFor();
       await page.locator(".frontier-map").waitFor();
       await page
         .getByText(`${PLACEMENT} of ${FREE} free problems used`)

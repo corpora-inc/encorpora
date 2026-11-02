@@ -303,6 +303,11 @@ async function answerOne(page: Page, correct: boolean) {
       );
     }
   }
+  assert.equal(
+    gradeAnswer(solution, response),
+    correct,
+    `${template}: planned answer`,
+  );
   const attempt = page.waitForResponse((r) => r.url().endsWith("/attempts"));
   if (schema.kind === "multi-select") {
     for (const id of parseSelection(response)!)

@@ -20,7 +20,7 @@ import { equalGroupsDefinitions } from "../src/content/equal-groups-definitions.
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { chromium } from "playwright";
 import { createServer } from "vite";
-import { mkdir } from "node:fs/promises";
+import { mkdir, rm, writeFile } from "node:fs/promises";
 import assert from "node:assert/strict";
 import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
@@ -28,9 +28,49 @@ import { developmentAuth } from "../src/server/auth";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { templates } from "../src/math/engine";
+import { uiSweepManifest, uiSweepPartition } from "./ui-sweep-partition";
+const inventoryIds = templates.map((template) => template.id);
+const sweep = uiSweepPartition(inventoryIds);
+const selectedIds = new Set(sweep.selectedIds);
+const completedIds: string[] = [];
+const manifestPath = new URL(
+  `../artifacts/ui-sweep/shard-${sweep.shardIndex}.json`,
+  import.meta.url,
+);
+// A failed rerun must never leave stale completion evidence behind.
+if (!sweep.skip) await rm(manifestPath, { force: true });
 /** No question or figure may require tablet scrolling. Structured answer
  * rows have a separate reachability check. The sweep prints every failure. */
 const TABLET_SCROLL_BUDGET = 0;
+console.log("UI review: script started");
+const startedAt = Date.now();
+let phase = "setup";
+function progress(next: string) {
+  phase = next;
+  console.log(
+    `UI review (${Math.round((Date.now() - startedAt) / 1000)}s): ${phase}`,
+  );
+}
+async function within<T>(
+  work: Promise<T>,
+  label: string,
+  timeout = 15_000,
+): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      work,
+      new Promise<never>((_, reject) => {
+        timer = setTimeout(
+          () => reject(new Error(`${phase}: timed out waiting for ${label}`)),
+          timeout,
+        );
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+  }
+}
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
@@ -54,6 +94,7 @@ await app.listen({ host: "127.0.0.1", port: 4351 });
 const vite = await createServer({
   root: new URL("../", import.meta.url).pathname,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
+  cacheDir: "node_modules/.vite-ui-review",
   server: {
     host: "127.0.0.1",
     port: 4350,
@@ -68,6 +109,9 @@ await mkdir(new URL("../artifacts/screenshots/", import.meta.url), {
 });
 try {
   const page = await browser.newPage({ hasTouch: true });
+  page.setDefaultTimeout(15_000);
+  page.setDefaultNavigationTimeout(30_000);
+  progress("initial lesson and practice navigation");
   const errors: string[] = [];
   let windowStart = Date.now(),
     requestsInWindow = 0;
@@ -121,6 +165,7 @@ try {
     );
     await cdp.detach();
   }
+  progress("practice viewports and answer controls");
   for (const viewport of [
     { width: 1280, height: 1000 },
     { width: 390, height: 844 },
@@ -282,6 +327,7 @@ try {
     await page.locator(".answer-error").waitFor({ state: "detached" });
     page.off("request", count);
   }
+  progress("held lesson and next-problem requests");
   let releaseLesson!: () => void;
   let heldLesson!: () => void;
   const held = new Promise<void>((resolve) => {
@@ -297,7 +343,7 @@ try {
     await route.fulfill({ response: result });
   });
   await page.getByRole("button", { name: "Lesson", exact: true }).click();
-  await held;
+  await within(held, "lesson-support request");
   let releaseNext!: () => void;
   const nextHeld = new Promise<void>((resolve) => {
     releaseNext = resolve;
@@ -432,11 +478,14 @@ try {
       await page.locator("#answer").fill("999999");
       await page.getByRole("button", { name: "Check", exact: true }).click();
       await page.locator(".solution-panel").waitFor();
-      await page
-        .locator(".solution-panel")
-        .evaluate((sheet) =>
-          Promise.all(sheet.getAnimations().map((a) => a.finished)),
-        );
+      await within(
+        page
+          .locator(".solution-panel")
+          .evaluate((sheet) =>
+            Promise.all(sheet.getAnimations().map((a) => a.finished)),
+          ),
+        "feedback animation",
+      );
       // Feedback replaces the answer column, not the problem.
       const sheet = (await page.locator(".solution-panel").boundingBox())!;
       assert.ok(
@@ -491,166 +540,188 @@ try {
       );
     }
   }
+  progress("tablet answer and feedback states");
   await verifyTabletStates();
   // Tablets in both orientations show a figure problem whole, without
   // scrolling. Measured per template; the rare very tall problem may scroll
   // cleanly instead, and is listed rather than failing the sweep.
   const tabletScrolls = new Map<string, string[]>();
-  for (const template of templates) {
-    // Respect the real server rate limit during this accelerated catalog sweep.
-    if (requestsInWindow > GLOBAL_RATE_LIMIT * 0.75)
-      await page.waitForTimeout(
-        Math.max(0, 60_100 - (Date.now() - windowStart)),
-      );
-    await startTopic(page, template.id).catch(async (failure) => {
-      console.error(
-        "Lesson navigation failed",
-        template.id,
-        new URL(page.url()).pathname,
-        await page.locator("body").innerText(),
-      );
-      throw failure;
-    });
-    await page
-      .locator(
-        "#answer, .choice-form, .point-plot-form, .multi-part-form, .figure-choice-form, .work-form, .compact-answer-action",
-      )
-      .first()
-      .waitFor();
-    assert.ok(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
-      ),
-      `Overflow in ${template.id}`,
+  progress(
+    `${sweep.selectedIds.length}/${templates.length} templates: viewport fit sweep (partition ${sweep.shardIndex}/${sweep.shardCount}${sweep.skip ? "; explicitly skipped in broad lane" : ""})`,
+  );
+  for (const [index, template] of templates.entries()) {
+    if (!selectedIds.has(template.id)) continue;
+    progress(
+      `template ${index + 1}/${templates.length} (${completedIds.length + 1}/${sweep.selectedIds.length} in partition): ${template.id}`,
     );
-    // Real phone browsers (their bars showing) and tablets are strict: the
-    // problem fits or scrolls cleanly, never clipped or hidden under the dock.
-    for (const size of [
-      { width: 390, height: 844 },
-      ...PHONE_REAL_BROWSERS,
-      { width: 320, height: 568 },
-      ...TABLETS,
-      PHONE_LANDSCAPE,
-    ]) {
-      await page.setViewportSize(size);
-      // Let the media-query subscription commit the appropriate answer surface.
-      // Point plots, multi-part choices, figure choices and structured work
-      // answer in the problem and never use the answer dialog.
-      await page
-        .waitForFunction(
-          ([multiSelect, plot]) => {
-            const compact =
-              !plot &&
-              (matchMedia("(max-width: 650px) and (max-height: 640px)")
-                .matches ||
-                (multiSelect &&
-                  // A drawn figure, as the app's `problem.figure`. KaTeX
-                  // typesets a radical's surd as an inline svg, so a
-                  // figure-less option like √11 is not a figure.
-                  [...document.querySelectorAll(".problem-content svg")].some(
-                    (svg) => !svg.closest(".katex"),
-                  ) &&
-                  matchMedia("(max-width: 899px)").matches));
-            return (
-              !!document.querySelector(".compact-answer-action") === compact
-            );
-          },
-          [
-            template.requiredResponseCapability === "multi-select-v1",
-            template.requiredResponseCapability === "point-plot-v1" ||
-              template.requiredResponseCapability === "multi-part-choice-v1" ||
-              template.requiredResponseCapability === "figure-choice-v1" ||
-              template.requiredResponseCapability === "structured-work-v1",
-          ],
-        )
-        .catch(async (failure) => {
-          // Name the problem type and viewport; the timeout alone does not.
-          const shown = await page
-            .locator(".compact-answer-action")
-            .count()
-            .then((n) => (n ? "the compact answer action" : "inline answers"))
-            .catch(() => "an unreadable page");
-          throw new Error(
-            `${template.id} ${size.width}×${size.height}: the answer surface did not match the expected one; the page shows ${shown} (response capability: ${template.requiredResponseCapability ?? "none"})`,
-            { cause: failure },
+    // Respect the real server rate limit during this accelerated catalog sweep.
+    if (requestsInWindow > GLOBAL_RATE_LIMIT * 0.75) {
+      const wait = Math.max(0, 60_100 - (Date.now() - windowStart));
+      console.log(`${phase}: respecting rate limit for ${wait}ms`);
+      await page.waitForTimeout(wait);
+    }
+    await within(
+      (async () => {
+        await startTopic(page, template.id).catch(async (failure) => {
+          console.error(
+            "Lesson navigation failed",
+            template.id,
+            new URL(page.url()).pathname,
+            await page.locator("body").innerText(),
           );
+          throw failure;
         });
-      if (isPhoneLandscape(size)) {
-        await assertPhoneLandscapeSmoke(page, template.id);
-        continue;
-      }
-      await assertProblemReachable(
-        page,
-        `${template.id} ${size.width}×${size.height}`,
-      );
-      // Figure labels never outgrow the prompt or the figure type sizes,
-      // however much room the layout gives the figure.
-      assertFigureTextScale(
-        await figureTextScale(page),
-        `${template.id} ${size.width}×${size.height}`,
-        typeSizes.lg,
-        size.width >= 768,
-      );
-      if (TABLETS.some((t) => t.width === size.width)) {
-        const why = await problemInView(page, {
-          allowStructuredWorkScroll:
-            template.requiredResponseCapability === "structured-work-v1",
-        });
-        if (why.length) {
-          const key = `${size.width}×${size.height}`;
-          tabletScrolls.set(key, [
-            ...(tabletScrolls.get(key) ?? []),
-            `${template.id}: ${why[0]}`,
-          ]);
-          if (isTabletLandscape(size))
+        await page
+          .locator(
+            "#answer, .choice-form, .point-plot-form, .multi-part-form, .figure-choice-form, .work-form, .compact-answer-action",
+          )
+          .first()
+          .waitFor();
+        assert.ok(
+          await page.evaluate(
+            () => document.documentElement.scrollWidth <= innerWidth,
+          ),
+          `Overflow in ${template.id}`,
+        );
+        // Real phone browsers (their bars showing) and tablets are strict: the
+        // problem fits or scrolls cleanly, never clipped or hidden under the dock.
+        for (const size of [
+          { width: 390, height: 844 },
+          ...PHONE_REAL_BROWSERS,
+          { width: 320, height: 568 },
+          ...TABLETS,
+          PHONE_LANDSCAPE,
+        ]) {
+          await page.setViewportSize(size);
+          // Let the media-query subscription commit the appropriate answer surface.
+          // Point plots, multi-part choices, figure choices and structured work
+          // answer in the problem and never use the answer dialog.
+          await page
+            .waitForFunction(
+              ([multiSelect, plot]) => {
+                const compact =
+                  !plot &&
+                  (matchMedia("(max-width: 650px) and (max-height: 640px)")
+                    .matches ||
+                    (multiSelect &&
+                      // A drawn figure, as the app's `problem.figure`. KaTeX
+                      // typesets a radical's surd as an inline svg, so a
+                      // figure-less option like √11 is not a figure.
+                      [
+                        ...document.querySelectorAll(".problem-content svg"),
+                      ].some((svg) => !svg.closest(".katex")) &&
+                      matchMedia("(max-width: 899px)").matches));
+                return (
+                  !!document.querySelector(".compact-answer-action") === compact
+                );
+              },
+              [
+                template.requiredResponseCapability === "multi-select-v1",
+                template.requiredResponseCapability === "point-plot-v1" ||
+                  template.requiredResponseCapability ===
+                    "multi-part-choice-v1" ||
+                  template.requiredResponseCapability === "figure-choice-v1" ||
+                  template.requiredResponseCapability === "structured-work-v1",
+              ],
+            )
+            .catch(async (failure) => {
+              // Name the problem type and viewport; the timeout alone does not.
+              const shown = await page
+                .locator(".compact-answer-action")
+                .count()
+                .then((n) =>
+                  n ? "the compact answer action" : "inline answers",
+                )
+                .catch(() => "an unreadable page");
+              throw new Error(
+                `${template.id} ${size.width}×${size.height}: the answer surface did not match the expected one; the page shows ${shown} (response capability: ${template.requiredResponseCapability ?? "none"})`,
+                { cause: failure },
+              );
+            });
+          if (isPhoneLandscape(size)) {
+            await assertPhoneLandscapeSmoke(page, template.id);
+            continue;
+          }
+          await assertProblemReachable(
+            page,
+            `${template.id} ${size.width}×${size.height}`,
+          );
+          // Figure labels never outgrow the prompt or the figure type sizes,
+          // however much room the layout gives the figure.
+          assertFigureTextScale(
+            await figureTextScale(page),
+            `${template.id} ${size.width}×${size.height}`,
+            typeSizes.lg,
+            size.width >= 768,
+          );
+          if (TABLETS.some((t) => t.width === size.width)) {
+            const why = await problemInView(page, {
+              allowStructuredWorkScroll:
+                template.requiredResponseCapability === "structured-work-v1",
+            });
+            if (why.length) {
+              const key = `${size.width}×${size.height}`;
+              tabletScrolls.set(key, [
+                ...(tabletScrolls.get(key) ?? []),
+                `${template.id}: ${why[0]}`,
+              ]);
+              if (isTabletLandscape(size))
+                await page.screenshot({
+                  path: new URL(
+                    `../artifacts/screenshots/tablet-scroll-${template.id}-${size.width}.png`,
+                    import.meta.url,
+                  ).pathname,
+                });
+            }
+          }
+          if (
+            size.width === 320 &&
+            [...equalGroupsDefinitions, ...algebraDefinitions].some(
+              (d) => d.id === template.id,
+            )
+          )
             await page.screenshot({
               path: new URL(
-                `../artifacts/screenshots/tablet-scroll-${template.id}-${size.width}.png`,
+                `../artifacts/screenshots/${template.id}-compact.png`,
                 import.meta.url,
               ).pathname,
             });
+          if (template.id === "fraction-group-count" && size.width === 320)
+            await page.screenshot({
+              path: new URL(
+                "../artifacts/screenshots/fraction-group-count-compact.png",
+                import.meta.url,
+              ).pathname,
+              fullPage: true,
+            });
         }
-      }
-      if (
-        size.width === 320 &&
-        [...equalGroupsDefinitions, ...algebraDefinitions].some(
-          (d) => d.id === template.id,
+        await page.setViewportSize({ width: 390, height: 844 });
+        if (
+          template.id.startsWith("graphed-") ||
+          template.id.startsWith("clock-") ||
+          template.id.startsWith("bar-chart-")
         )
-      )
-        await page.screenshot({
-          path: new URL(
-            `../artifacts/screenshots/${template.id}-compact.png`,
-            import.meta.url,
-          ).pathname,
-        });
-      if (template.id === "fraction-group-count" && size.width === 320)
-        await page.screenshot({
-          path: new URL(
-            "../artifacts/screenshots/fraction-group-count-compact.png",
-            import.meta.url,
-          ).pathname,
-          fullPage: true,
-        });
-    }
-    await page.setViewportSize({ width: 390, height: 844 });
-    if (
-      template.id.startsWith("graphed-") ||
-      template.id.startsWith("clock-") ||
-      template.id.startsWith("bar-chart-")
-    )
-      await page.screenshot({
-        path: new URL(
-          `../artifacts/screenshots/${template.id}.png`,
-          import.meta.url,
-        ).pathname,
-        fullPage: true,
-      });
+          await page.screenshot({
+            path: new URL(
+              `../artifacts/screenshots/${template.id}.png`,
+              import.meta.url,
+            ).pathname,
+            fullPage: true,
+          });
+      })(),
+      "template viewport checks",
+      60_000,
+    );
+    completedIds.push(template.id);
   }
+  progress(
+    `all ${completedIds.length} selected templates completed; checking tablet totals`,
+  );
   for (const size of TABLETS) {
     const key = `${size.width}×${size.height}`;
     const scrolled = tabletScrolls.get(key) ?? [];
     console.log(
-      `Tablet ${key}: ${templates.length - scrolled.length} of ${templates.length} questions and figures fit without scrolling.${scrolled.length ? `\n  ${scrolled.join("\n  ")}` : ""}`,
+      `Tablet ${key}: ${completedIds.length - scrolled.length} of ${completedIds.length} selected questions and figures fit without scrolling.${scrolled.length ? `\n  ${scrolled.join("\n  ")}` : ""}`,
     );
     assert.ok(
       scrolled.length <= TABLET_SCROLL_BUDGET,
@@ -658,6 +729,7 @@ try {
     );
   }
   // Lessons: every problem type has its own short lesson.
+  progress("lesson inventory and section navigation");
   await exitPractice(page);
   await page.getByRole("button", { name: "Lessons", exact: true }).click();
   await page.locator(".topic-list:not([hidden]) button").first().click();
@@ -705,6 +777,7 @@ try {
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page.locator(".progress-skill-card").first().waitFor();
   // The navigation drawer leaves the page in place and returns keyboard focus.
+  progress("navigation drawer geometry and focus");
   const familyMenu = page.getByRole("button", {
     name: "Open AMP menu",
     includeHidden: true,
@@ -720,9 +793,12 @@ try {
     await page.setViewportSize(size);
     await familyMenu.click();
     await familyList.waitFor();
-    await familyList.evaluate(async (el) => {
-      await Promise.all(el.getAnimations().map((a) => a.finished));
-    });
+    await within(
+      familyList.evaluate(async (el) => {
+        await Promise.all(el.getAnimations().map((a) => a.finished));
+      }),
+      "navigation drawer animation",
+    );
     const box = (await familyList.boundingBox())!;
     assert(
       box.x >= 0 &&
@@ -761,6 +837,7 @@ try {
   await page.locator(".problem-stage").waitFor();
   await exitPractice(page);
   // A reload keeps the learner chosen on this device.
+  progress("learner persistence and family controls");
   await page.reload();
   await page.getByRole("button", { name: "Learner", exact: true }).waitFor();
   assert.equal(
@@ -878,7 +955,7 @@ try {
   });
   await page.getByRole("button", { name: "2016", exact: true }).click();
   await page.getByRole("button", { name: "Go", exact: true }).click();
-  await familyBatchWaiting;
+  await within(familyBatchWaiting, "family batch request");
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page
     .getByRole("link", { name: "Manage learners", exact: true })
@@ -939,6 +1016,9 @@ try {
   console.log(
     "Browser learning, hint, attempt, lesson and progress flows passed at desktop and phone widths.",
   );
+} catch (error) {
+  console.error(`UI review failed during ${phase}`);
+  throw error;
 } finally {
   await browser.close();
   await vite.close();
@@ -948,4 +1028,12 @@ try {
     [learnerIds],
   );
   await repository.close();
+}
+if (!sweep.skip) {
+  const manifest = uiSweepManifest(inventoryIds, sweep, completedIds);
+  await mkdir(new URL("../artifacts/ui-sweep/", import.meta.url), {
+    recursive: true,
+  });
+  await writeFile(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
+  progress(`completion manifest written for ${completedIds.length} templates`);
 }
