@@ -365,7 +365,7 @@ function associationChoice(r: Random): Draft {
         ? { label: associationLabels[k], correct: true as const }
         : {
             label: associationLabels[k],
-            feedback: `${associationLabels[k]} would mean: ${associationWhy[k].charAt(0).toLowerCase()}${associationWhy[k].slice(1)} But in this plot, ${associationWhy[kind].charAt(0).toLowerCase()}${associationWhy[kind].slice(1)} ${k === "none" ? "There is a pattern here." : k === "nonlinear" ? "Here the points lie near a straight line." : kind === "nonlinear" ? "Here the points bend, so a straight line does not fit." : kind === "none" ? "Here there is no trend at all." : "Here the trend goes the other way."}`,
+            feedback: `${associationLabels[k]} means ${associationWhy[k].charAt(0).toLowerCase()}${associationWhy[k].slice(1)} But in this plot, ${associationWhy[kind].charAt(0).toLowerCase()}${associationWhy[kind].slice(1)}`,
           },
     ),
   };
