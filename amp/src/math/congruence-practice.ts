@@ -167,6 +167,7 @@ export function congruenceCase(id: string, seed: string) {
           ? `Start with the given ${cueText}. Locate its matching part, then check which missing side or angle would put the stated pairs in the order required by ${rule}.`
           : `Locate the given ${cueText} and its match. List the marked side pairs and angle pairs, then check which angle lies between which sides.`,
       explanation: [
+        "Two triangles are congruent when all matching sides and angles are equal. A criterion names three matching parts that are enough. For example, SSS means three pairs of equal sides, and SAS means two sides and the angle between them.",
         `The correspondence pairs $AB$ with $DE$, $BC$ with $EF$, $CA$ with $FD$, and angles at $A$, $B$, $C$ with those at $D$, $E$, $F$.`,
         ...(frame === 2
           ? [`The additional fact is ${equalities[missing]}.`]

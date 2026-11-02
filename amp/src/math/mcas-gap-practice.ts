@@ -412,6 +412,22 @@ function fromCategories(r: Random, cats: Option[][], k: number): Option[] {
   throw new Error("Need three retry: no category assignment");
 }
 
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const OPENERS: Record<string, string> = {
+  "mcas-quadratic-zeros-select":
+    "A zero of an expression is an $x$-value that makes it equal 0. Substitute each choice to test it.",
+  "mcas-congruence-statement-select":
+    "Congruent figures have the same size and shape. In a congruence statement, letters in the same position name matching vertices.",
+  "mcas-circle-equation-select":
+    "A circle is every point at one distance, the radius, from its center. Its equation is $(x-h)^{2}+(y-k)^{2}=r^{2}$, with center $(h,k)$ and radius $r$.",
+  "mcas-cylinder-scaling-select":
+    "Volume is the space inside a solid. In $V=\\pi r^{2}h$ the radius is used twice, as $r^{2}$, but the height only once.",
+  "mcas-rotational-symmetry":
+    "A figure has rotational symmetry when a turn of less than 360° about its center maps it onto itself.",
+};
+const opener = (id: string) => (OPENERS[id] ? [OPENERS[id]] : []);
+
 function assembleSelect(
   template: TemplateMetadata,
   seed: string,
@@ -443,6 +459,7 @@ function assembleSelect(
     answer: serializeSelection(correct),
     hint: built.hint,
     explanation: [
+      ...opener(template.id),
       ...(built.lead ?? []),
       ...options.map(
         (o) =>
@@ -2850,7 +2867,7 @@ export function mcasGapCase(
       const draft: Draft = {
         prompt: single.prompt,
         hint: single.hint,
-        explanation: single.explanation,
+        explanation: [...opener(templateId), ...single.explanation],
         answer: "",
         choices: single.choices,
         ...(single.figure ? { figure: single.figure } : {}),
