@@ -12,17 +12,18 @@ import {
 // effects, request guards and rendered UI execute unchanged.
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const fixtureSource = `
-let resolve, reject;
+let resolve, reject, current;
+let checked = false;
 const pending = new Promise((yes,no)=>{resolve=yes;reject=no;});
 pending.catch(()=>{});
 const subscribers = new Set();
 window.sessionReview = {
   get ready(){return subscribers.size > 0;},
-  emit(session){for(const subscriber of subscribers) subscriber(session);},
+  emit(session){checked=true;current=session;for(const subscriber of subscribers) subscriber(session);},
   resolve(session){resolve(session);},
   reject(){reject(new Error('obsolete bootstrap error'));}
 };
-export function accessSession(){return pending;}
+export function accessSession(){return checked ? Promise.resolve(current) : pending;}
 export function onSessionChanged(callback){subscribers.add(callback);return ()=>subscribers.delete(callback);}
 export async function signIn(){}export function notifyAccountSessionChanged(){void accessSession().then(session=>window.sessionReview.emit(session));}
 export async function signOut(){window.sessionReview.emit(null);}export async function authConfig(){return {mode:"oidc"};}
@@ -102,6 +103,13 @@ async function fixturePage(family: (token: string) => FamilySummary) {
           strands: {},
         },
       });
+    if (
+      path === "/api/v1/trials/current" &&
+      route.request().method() === "POST"
+    )
+      return route.fulfill({ json: { trial: null } });
+    if (path === "/api/v1/events/context" && route.request().method() === "GET")
+      return route.fulfill({ json: { generation: "initial" } });
     // First-party funnel beacons (verified in verify-funnel-ui).
     if (path === "/api/v1/events")
       return route.fulfill({ status: 202, json: { accepted: 1 } });
@@ -126,6 +134,7 @@ try {
     );
     try {
       await open(page);
+      const beforeCurrent = familyTokens.length;
       await page.evaluate(() =>
         (window as any).sessionReview.emit({
           token: "current-token",
@@ -165,7 +174,16 @@ try {
           .count(),
         1,
       );
-      assert.deepEqual(familyTokens, ["Bearer current-token"]);
+      assert.ok(
+        familyTokens.length > beforeCurrent,
+        "the current session performs authenticated account reads",
+      );
+      for (const token of familyTokens)
+        assert.equal(
+          token,
+          "Bearer current-token",
+          "every account read uses the current bearer",
+        );
       assert.ok(
         !(await page.locator("body").innerText()).includes(
           "obsolete bootstrap error",
@@ -184,8 +202,16 @@ try {
       await page.evaluate(() => (window as any).sessionReview.reject());
       await page
         .getByRole("alert")
-        .filter({ hasText: "Sign-in could not be checked" })
+        .filter({ hasText: "This screen could not be loaded." })
         .waitFor();
+      await page
+        .getByRole("button", { name: "Try again", exact: true })
+        .waitFor();
+      assert.ok(
+        !(await page.locator("body").innerText()).includes(
+          "obsolete bootstrap error",
+        ),
+      );
       assert.deepEqual(errors, []);
     } finally {
       await page.close();
