@@ -279,7 +279,7 @@ function draft(
       hint: `There are ${blue} blue counters. Let $x$ be the red count, so the total is $x+${blue}$. Express the stated red probability as red count divided by total count.`,
       explanation: [
         `The equation is $x/(x+${blue})=${rational(red, red + blue)}$.`,
-        `Multiply by the positive total and solve: $${red + blue}x=${red}(x+${blue})$, so $${blue}x=${red * blue}$.`,
+        `Multiply both sides by ${red + blue} and by the total $x+${blue}$ to clear the fractions: $${red + blue}x=${red}(x+${blue})$. Subtract $${red === 1 ? "" : red}x$ from both sides: $${blue}x=${red * blue}$.`,
         `Thus $x=${red}$ red counters. Check: ${red} out of ${red + blue} counters gives the stated probability.`,
       ],
     };

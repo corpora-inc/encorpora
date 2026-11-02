@@ -38,18 +38,18 @@ const instruction: Record<string, Instruction> = {
   "probability-missing-count": {
     goal: "Find an unknown count of objects from the probability of picking one kind.",
     summary:
-      "Probability means chance. Picture a bag of counters, small round tokens. Equally likely means each counter has the same chance of being picked. Then the probability of red is the red count divided by the total count. Sometimes you know the probability but not the red count. Call the unknown red count $x$. With 6 blue counters, the total is $x + 6$, and you can solve for $x$.",
+      "Probability means chance. Picture a bag that holds only red and blue counters, small round tokens. Equally likely means each counter has the same chance of being picked. Then the probability of red is the red count divided by the total count. Sometimes you know the probability but not the red count. Call the unknown red count $x$. With 6 blue counters, the total is $x + 6$. Solving means finding the number that $x$ stands for.",
     objectives: [
       "Write the total count with the unknown in it.",
       "Set favorable ÷ total equal to the given probability, and solve for the unknown count.",
     ],
     intuition:
-      "Probability means chance: how likely something is. Each possible pick is called an outcome. Equally likely means every outcome has the same chance. Picking uniformly at random means the same thing: every object has the same chance of being picked. An event is a result we are looking for, such as picking a red counter. The favorable count is how many objects give the event, such as the red counters. The probability of the event is the favorable count divided by the total count. The complement of an event is every outcome where it does not happen, such as picking a blue counter. If the favorable count is unknown, call it $x$. Then the total is $x$ plus the other count.",
+      "Probability means chance: how likely something is. Each possible pick is called an outcome. Equally likely means every outcome has the same chance. Picking uniformly at random means the same thing: every object has the same chance of being picked. A counter is a small round token. An event is a result we are looking for, such as picking a red counter. The favorable count is how many objects give the event, such as the red counters. The probability of the event is the favorable count divided by the total count. The complement of an event is every outcome where it does not happen, such as picking a blue counter from a bag of only red and blue counters. If the favorable count is unknown, call it $x$. Then the total is $x$ plus the other count.",
     explain: {
       title: "Write the total with the unknown",
       paragraphs: [
         "A bag has 6 blue counters and some red ones. The chance of red is $\\frac{5}{11}$. Call the number of red counters $x$. The total number of counters is $x + 6$, so the chance of red is $\\frac{x}{x + 6}$.",
-        "Set the two equal: $\\frac{x}{x + 6} = \\frac{5}{11}$. Multiply both sides by $11(x + 6)$, the two denominators (bottom numbers) multiplied together, to clear the fractions: $11x = 5(x + 6) = 5x + 30$. Subtract $5x$ from both sides to collect the $x$ terms: $6x = 30$. Divide both sides by 6: $x = 5$.",
+        "Set the two equal: $\\frac{x}{x + 6} = \\frac{5}{11}$. Multiplying both sides by the same number keeps them equal. Multiply both sides by 11 and by $x + 6$, the two denominators (bottom numbers). Each denominator divides out, so no fractions are left: $11x = 5(x + 6)$. Here $5(x + 6)$ means 5 times the whole sum, so 5 multiplies both parts: $5x + 30$. Subtract $5x$ from both sides, since $11x - 5x = 6x$: $6x = 30$. Divide both sides by 6 to get $x$ alone: $x = 5$.",
         "Check: 5 red and 6 blue make 11 counters, and 5 of the 11 are red. That matches $\\frac{5}{11}$.",
       ],
     },
@@ -62,33 +62,33 @@ const instruction: Record<string, Instruction> = {
     method: [
       "Call the unknown count $x$. Write the total as $x$ plus the known other count.",
       "Set favorable ÷ total equal to the given probability. With 6 blue counters and probability $\\frac{5}{11}$, that is $\\frac{x}{x + 6} = \\frac{5}{11}$.",
-      "Multiply both sides by both denominators (bottom numbers) to clear the fractions, then solve. Here $11x = 5(x + 6)$, so $6x = 30$ and $x = 5$.",
-      "Check by putting the count back into the probability. Here $\\frac{5}{5 + 6} = \\frac{5}{11}$.",
+      "Multiply both sides by both denominators (bottom numbers). Each one divides out, so the fractions disappear, and both sides stay equal. Then solve. Here $11x = 5(x + 6)$, so $6x = 30$ and $x = 5$.",
+      "Check that the count is a whole number (0, 1, 2 and so on) and that it gives back the probability. Here $\\frac{5}{5 + 6} = \\frac{5}{11}$.",
     ],
     watch:
       "Divide by the total, the favorable count and the other count together, not by the other count alone.",
     principle:
-      "With $r$ favorable objects and $b$ other objects, all equally likely, the probability is $P = \\frac{r}{r + b}$. If $P$ is greater than 0 and less than 1, solving for $r$ gives $r = \\frac{P \\times b}{1 - P}$. For $P = \\frac{5}{11}$ and $b = 6$: $r = \\frac{(5/11) \\times 6}{6/11} = 5$.",
+      "With $r$ favorable objects and $b$ other objects, all equally likely, the probability is $P = \\frac{r}{r + b}$. Multiply both sides by $r + b$: $P(r + b) = r$, so $P \\times b = r - P \\times r = r(1 - P)$. If $P$ is greater than 0 and less than 1, dividing by $1 - P$ gives $r = \\frac{P \\times b}{1 - P}$. For $P = \\frac{5}{11}$ and $b = 6$: $r = \\frac{(5/11) \\times 6}{6/11} = 5$.",
     parentGuide:
       "Put 6 blue counters and some red ones in a cup. Ask how many red ones would make the chance of red exactly 5 out of 11.",
   },
   "standard-deviation-compare": {
     goal: "Compare how spread out two data sets are, using distances from each set's own mean.",
     summary:
-      "Standard deviation is a measure of spread: how far the values in a data set typically sit from their mean, the average. Values bunched close together have a small standard deviation. Values spread far apart have a large one. Adding the same number to every value moves the data but keeps the spacing, so the standard deviation stays the same.",
+      "A data set is a list of values. Its mean, or average, is the total of the values divided by how many there are. Standard deviation measures spread: how far the values typically sit from their mean. Values bunched close together have a small standard deviation. Values spread far apart have a large one. Adding the same number to every value moves the data but keeps the spacing, so the standard deviation stays the same.",
     objectives: [
       "Say how adding to or multiplying every value changes the standard deviation.",
       "Compare two data sets by the distances of their values from their own means.",
     ],
     intuition:
-      "A data set is a list of values. The mean, or average, is the total of the values divided by how many there are. A value's deviation is its distance from the mean. Standard deviation is a typical size of those distances, so it measures spread: how far apart the values are. To find it, square each distance, which means multiplying it by itself. Add the squares, divide by the count, and take the square root. A square root is the number that, multiplied by itself, gives back the original. Some books divide by one less than the count instead, so compare two sets with the same version. Big values do not mean big spread. Adding the same number to every value keeps the gaps the same. Multiplying every value by 2 doubles every gap, so it doubles the standard deviation too.",
+      "A data set is a list of values. The mean, or average, is the total of the values divided by how many there are. A value's deviation is the value minus the mean. It is negative for a value below the mean, and its size is the value's distance from the mean. Standard deviation is a typical size of those distances, so it measures spread: how far apart the values are. A square root is the number, 0 or more, that multiplied by itself gives back the original: the square root of 9 is 3. To find the standard deviation, square each deviation, which means multiplying it by itself, so no result is negative. Add the squares, divide by the count, and take the square root. Many calculators also offer a version that divides by one less than the count, used for a sample from a larger group. That version needs at least two values. Compare two sets with the same version. Big values do not mean big spread. Adding the same number to every value keeps the gaps the same. Multiplying every value by 2 doubles every gap, so it doubles the standard deviation too.",
     explain: {
       title: "Spread is about gaps, not size",
       paragraphs: [
         "Data set A is 17, 21, 25, 29, 33. Its mean is $125 \\div 5 = 25$, and the values sit 8, 4, 0, 4 and 8 away from it.",
         "Add 100 to every value: 117, 121, 125, 129, 133. The mean becomes 125, and the distances are still 8, 4, 0, 4 and 8. The spread did not change.",
         "Multiply every value of A by 2: 34, 42, 50, 58, 66. The mean doubles to 50, and every distance doubles: 16, 8, 0, 8, 16. So the standard deviation doubles too.",
-        "When neither shortcut applies, compare the distances from each set's own mean directly. The standard deviation is built by squaring each distance, which means multiplying it by itself, and then adding.",
+        "When neither shortcut applies, compute each standard deviation. Square each distance from the set's own mean, add the squares, divide by the count, and take the square root. Then compare the two results.",
       ],
     },
     senses: {
@@ -100,18 +100,18 @@ const instruction: Record<string, Instruction> = {
     terms: [
       [
         "standard-deviation",
-        "Use the same version of the formula for both data sets: dividing by $n$ or by $n - 1$.",
+        "Here $n$ is the number of values. Use the same version for both data sets: dividing by $n$ or by $n - 1$.",
       ],
     ],
     method: [
       "Find how the values changed from one set to the other, if they did. Look at distances from each set's own mean.",
       "If every value moved by the same amount, the spread is unchanged. If every value was multiplied by a number, the spread is multiplied by that number's size, ignoring any minus sign.",
-      "Otherwise, compare the distances from the mean: the set whose values sit farther from its mean has the larger standard deviation.",
+      "Otherwise, compute each set's standard deviation from the distances to its own mean. The larger result means more spread.",
     ],
     watch:
       "Compare distances from the mean, not the size of the mean, and not the range (largest value minus smallest) alone.",
     principle:
-      "Replacing every value $x$ by $ax + b$ multiplies the standard deviation by $|a|$. Here $ax$ means $a$ times $x$, and $|a|$, read “the absolute value of $a$”, is $a$ without its minus sign. Adding $b$ to every value moves the mean by $b$ too, so no distance from the mean changes. This holds for either version of the standard deviation, dividing by the count or by one less, as long as both sets use the same one.",
+      "Suppose every value $x$ is multiplied by a number $a$ and then increased by a number $b$, giving $ax + b$. Here $ax$ means $a$ times $x$. Then the standard deviation is multiplied by $|a|$, read “the absolute value of $a$”: $a$ without its minus sign. Adding $b$ to every value moves the mean by $b$ too, so no distance from the mean changes. This holds for either version of the standard deviation, dividing by the count or by one less, as long as both sets use the same one.",
     parentGuide:
       "Write five numbers, then add 10 to each. Ask whether the numbers became more spread out or just moved.",
   },
@@ -132,13 +132,13 @@ const instruction: Record<string, Instruction> = {
   "compound-unit-conversion": {
     goal: "Convert every unit inside a measurement, such as an area, a volume or a rate, so the amount stays the same.",
     summary:
-      "Changing units does not change the amount, only how you count it. A kilometer is a length of 1000 meters, so 3 kilometers is 3000 meters. Some units have more than one unit inside them, such as square meters or kilometers per hour. For these, convert every unit inside.",
+      "A unit is the size you count in, such as a meter or an hour. Changing units does not change the amount, only how you count it. A kilometer is a length of 1000 meters, so 3 kilometers is 3000 meters. Some units are built from other units, such as square meters for area, or kilometers per hour, where per means “for each”. For these, convert each unit inside that is not already the one you want.",
     objectives: [
       "Convert area and volume units by using a length conversion two or three times.",
       "Convert both units of a rate, and multiply power by time to get energy.",
     ],
     intuition:
-      "A unit is the size you count in, such as a meter or an hour. A unit conversion changes the unit but keeps the amount the same. A kilometer is a length of 1000 meters. A conversion factor is a ratio, such as 1000 meters over 1 kilometer, that equals 1 because its top and bottom are the same length. Multiplying by it changes only the unit. A unit cancels when it appears once on the top and once on the bottom: it divides out, as $\\frac{3}{3} = 1$. A compound unit is made from two or more units, such as square meters, kilometers per hour or watt-hours. Area is the space a flat shape covers, and its units, such as square meters, hold two lengths. Volume is the space inside a solid, and its units hold three lengths. A rate is a comparison of two different units, such as kilometers per hour. Speed is a rate: distance per unit of time. In a rate written as a fraction, the top unit is the numerator and the bottom unit is the denominator. Squared means multiplied by itself. Acceleration is how fast speed changes. Its unit, such as kilometers per hour squared, means kilometers per hour gained each hour, so the hour is on the bottom twice. Power is how fast energy is used, measured in watts.",
+      "A unit is the size you count in, such as a meter or an hour. A unit conversion changes the unit but keeps the amount the same. A kilometer is a length of 1000 meters. A ratio compares two amounts by dividing one by the other. A conversion factor is a ratio that equals 1, such as 1000 meters over 1 kilometer. It equals 1 because its top and bottom are the same length. Multiplying by it changes only the unit. A unit cancels when the same unit is on the top and the bottom: the two divide to 1, just as $\\frac{3}{3} = 1$. A compound unit is built from two or more units, such as square meters or kilometers per hour. Area is the space a flat shape covers. A square meter is the area of a square 1 meter long on each side, so area units hold two lengths. A solid is a shape that takes up space, like a box. Volume is the space inside a solid, and its units, such as cubic meters, hold three lengths. A rate compares two amounts with different units by division, such as kilometers per hour: kilometers for each hour. Speed is a rate: distance per unit of time. In a rate written as a fraction, the top amount is the numerator and the bottom amount is the denominator. Squared means multiplied by itself. Acceleration is how fast speed changes. Its unit, such as kilometers per hour squared, means kilometers per hour gained each hour, so the hour is on the bottom twice. Energy is what makes things move, heat up or light up. Power is how fast energy is used, and it is measured in watts. A watt-hour is the energy used at 1 watt for 1 hour.",
     explain: {
       title: "Convert every unit inside",
       paragraphs: [
@@ -160,12 +160,12 @@ const instruction: Record<string, Instruction> = {
     method: [
       "Write the units you want. Multiply by conversion factors that equal 1, arranged so the old units cancel: each old unit appears once on top and once on the bottom.",
       "For area, use a length conversion twice; for volume, three times. A unit squared inside a rate, such as hours squared, is converted twice as well.",
-      "For a rate, convert both the top unit and the bottom unit. To get energy from power, multiply power by time.",
+      "For a rate, convert both the top unit and the bottom unit. To get energy from power, multiply power by time: 60 watts for 2 hours is $60 \\times 2 = 120$ watt-hours.",
     ],
     watch:
       "Use a length conversion twice for area and three times for volume, not once. A unit on the bottom of a rate works the other way: more seconds on the bottom makes the number smaller.",
     principle:
-      "If 1 old length unit equals $k$ new length units, then 1 old area unit equals $k^2$ new area units, and 1 old volume unit equals $k^3$ new volume units. Here $k^2$ means $k \\times k$ and $k^3$ means $k \\times k \\times k$. Multiplying by a conversion factor equal to 1 never changes the measured amount.",
+      "Here $k^2$ means $k \\times k$, and $k^3$ means $k \\times k \\times k$. If 1 old length unit equals $k$ new length units, then 1 old area unit equals $k^2$ new area units. Likewise, 1 old volume unit equals $k^3$ new volume units. For example, 1 meter is 100 centimeters, so 1 square meter is $100^2 = 10000$ square centimeters. Multiplying by a conversion factor equal to 1 never changes the measured amount.",
     parentGuide:
       "Use a ruler marked in centimeters. Ask how many 1-centimeter squares fill a square 10 centimeters on each side, and why the answer uses 10 twice.",
   },
@@ -200,13 +200,13 @@ const instruction: Record<string, Instruction> = {
   "similar-solid-volume": {
     goal: "Use the scale factor of similar solids to connect matching lengths and volumes.",
     summary:
-      "A solid is a three-dimensional shape, such as a box. Similar solids are solids with the same shape, where one is an exact enlargement of the other. Every length is multiplied by the same number, called the scale factor. Volume is the space inside a solid. If every length doubles, the volume grows by $2 \\times 2 \\times 2 = 8$, because volume uses three lengths: across, deep and tall. A ratio is one number divided by another. So the volume ratio is the scale factor cubed, which means multiplied by itself three times.",
+      "A solid is a shape that takes up space, with length, width and height, like a box. Similar solids have the same shape: one is a larger, smaller or same-size copy of the other. Every length is multiplied by the same number, called the scale factor. Volume is the space inside a solid. If every length doubles, the volume grows by $2 \\times 2 \\times 2 = 8$, because volume grows in all three directions: across, deep and tall. A ratio is one number divided by another. So the volume ratio is the scale factor cubed: three copies of it multiplied together.",
     objectives: [
       "Find the volume ratio of similar solids from their scale factor.",
       "Find a missing length from the volumes of similar solids.",
     ],
     intuition:
-      "A solid is a three-dimensional shape, such as a box or a cylinder. An edge is a straight line where two flat surfaces of a solid meet, such as the edge of a box. Similar solids are solids with the same shape, where every length of one is the same number times the matching length of the other. That number is called the scale factor. Corresponding means in matching places, so corresponding edges match each other. A ratio is one number divided by another. Area is the space a flat surface covers. Volume is the space inside, and it uses three lengths multiplied together. Volume is counted in cubic units: a cubic centimeter is a cube 1 centimeter (cm) long on each edge. So the scale factor acts on volume three times: it is cubed, which means multiplied by itself three times. We write $5^3$ for 5 cubed, $5 \\times 5 \\times 5 = 125$, and $k^2$ for $k$ squared, $k \\times k$. A cube root is the number that, multiplied by itself three times, gives a given number: the cube root of 125 is 5.",
+      "A solid is a shape that takes up space, with length, width and height, such as a box or a can. An edge is a straight line where two flat surfaces of a solid meet, such as the edge of a box. Similar solids are solids with the same shape, where every length of one is the same number times the matching length of the other. That number is called the scale factor. Corresponding means in matching places, so corresponding edges match each other. A ratio is one number divided by another. Area is the space a flat surface covers. Volume is the space inside a solid. For a box, it is length times width times height. When every length of any solid is multiplied by the scale factor, its volume is multiplied by the scale factor three times, once for each direction. A centimeter (cm) is a small unit of length, about the width of a fingernail. A cubic centimeter is the space inside a cube, a box with all edges equal, 1 cm long on each edge. So the scale factor is cubed for volume: three copies of it are multiplied together. We write $5^3$ for 5 cubed, $5 \\times 5 \\times 5 = 125$, and $k^2$ for $k$ squared, $k \\times k$. A cube root is the number whose three copies multiply to a given number: the cube root of 125 is 5.",
     explain: {
       title: "Length once, area twice, volume three times",
       paragraphs: [
@@ -234,26 +234,26 @@ const instruction: Record<string, Instruction> = {
     watch:
       "Divide in the same order for both ratios, large over small or small over large. A volume ratio is the length ratio cubed, not the length ratio itself.",
     principle:
-      "For similar solids with a positive length scale factor $k$, areas scale by $k^2$ and volumes by $k^3$. Here $k^2$ is $k \\times k$ and $k^3$ is $k \\times k \\times k$. Going back, the length scale factor is the cube root of the volume ratio.",
+      "For similar solids with a length scale factor $k$ greater than 0, areas scale by $k^2$ and volumes by $k^3$. Here $k^2$ is $k \\times k$ and $k^3$ is $k \\times k \\times k$. Going back, the length scale factor is the cube root of the volume ratio.",
     parentGuide:
       "Build a 2 by 2 by 2 cube from small cubes. Count that it takes 8, even though each edge only doubled.",
   },
   "nonlinear-formula-isolate": {
     goal: "Get a positive quantity that appears squared in a formula alone on one side.",
     summary:
-      "A formula is an equation that links quantities. In $E = \\frac{mv^2}{2}$, $E$ is energy, $m$ is mass (how much matter an object has), and $v$ is speed (how fast it moves). To find one quantity, undo the steps around it, doing the same thing to the left and right of the equal sign. Squared means multiplied by itself. To undo squaring, use the square root: the number that, multiplied by itself, gives back the original. A speed or a length cannot be negative (less than 0), so take the positive square root, the one greater than 0.",
+      "A formula is an equation that links quantities. Squared means multiplied by itself: $v^2$ is $v$ times $v$. Letters written next to each other are multiplied, so $mv^2$ is $m$ times $v^2$. In $E = \\frac{mv^2}{2}$, $E$ is energy, $m$ is mass (how much matter an object has), and $v$ is speed (how fast it moves). To find one quantity, undo the steps around it, doing the same thing to the left and right of the equal sign. To undo squaring, use a square root: a number that, multiplied by itself, gives back the original. A number greater than 0 has two square roots, such as 5 and $-5$ for 25. A speed or a length cannot be negative (less than 0). So take the square root that is 0 or more.",
     objectives: [
       "Undo the steps around a squared quantity in a formula, in reverse order.",
-      "Take the positive square root when the quantity must be positive.",
+      "Take the square root that is 0 or more when the quantity cannot be negative.",
     ],
     intuition:
-      "Mass is how much matter an object has, and speed is how fast it moves. A formula is an equation linking quantities, such as $E = \\frac{mv^2}{2}$ for energy $E$, mass $m$ and speed $v$. Squared means multiplied by itself: $v^2$ is $v$ times $v$, and $mv^2$ is $m$ times $v^2$. An equation has two sides: the parts left and right of the equal sign. Isolate means get one quantity by itself, apart from everything else in the equation. A square root is the number that, multiplied by itself, gives a given number: the square root of 25 is 5. Every positive number has two square roots, such as 5 and $-5$, and $\\sqrt{25}$ means the positive one. An expression is a group of numbers, letters and operations, such as $\\frac{2E}{m}$. A slash also means divide: $2E/m$ is $2E$ divided by $m$. Kinetic energy is the energy an object has because it moves. The sign $>$ means “is greater than”, so $m > 0$ says $m$ is positive.",
+      "Mass is how much matter an object has, and speed is how fast it moves. A formula is an equation linking quantities, such as $E = \\frac{mv^2}{2}$ for energy $E$, mass $m$ and speed $v$. Squared means multiplied by itself: $v^2$ is $v$ times $v$, and $mv^2$ is $m$ times $v^2$. An equation has two sides: the parts left and right of the equal sign. Isolate means get one quantity by itself, apart from everything else in the equation. A square root is a number that, multiplied by itself, gives a given number. Every number greater than 0 has two square roots: 25 has 5 and $-5$. The root sign picks the one greater than 0, so $\\sqrt{25} = 5$. An expression is a number, a letter, or numbers and letters joined by operations such as adding, multiplying and dividing. One example is $\\frac{2E}{m}$. A slash also means divide: $2E/m$ is $2E$ divided by $m$. Kinetic energy is the energy an object has because it moves. The sign $>$ means “is greater than”, so $m > 0$ says $m$ is positive.",
     explain: {
       title: "Undo the steps in reverse",
       paragraphs: [
         "In $E = \\frac{mv^2}{2}$, the speed $v$ is squared, then multiplied by $m$, then divided by 2. Undo these in reverse order.",
-        "Multiply both sides by 2: $2E = mv^2$. Divide both sides by $m$, which is not 0: $\\frac{2E}{m} = v^2$.",
-        "Now take the square root of both sides. Speed is positive, so $v = \\sqrt{\\frac{2E}{m}}$. Check with numbers: if $m = 2$ and $v = 3$, then $E = \\frac{2 \\times 9}{2} = 9$. And $\\sqrt{\\frac{2 \\times 9}{2}} = \\sqrt{9} = 3$, the speed we started with.",
+        "Multiply both sides by 2 to undo the division by 2: $2E = mv^2$. Divide both sides by $m$, which is not 0, to undo the multiplication by $m$: $\\frac{2E}{m} = v^2$.",
+        "Now take the square root of both sides. Speed is positive, so $v = \\sqrt{\\frac{2E}{m}}$. Check with numbers: if $m = 2$ and $v = 3$, then $v^2 = 3 \\times 3 = 9$ and $E = \\frac{2 \\times 9}{2} = 9$. And $\\sqrt{\\frac{2 \\times 9}{2}} = \\sqrt{9} = 3$, the speed we started with.",
       ],
     },
     senses: {
@@ -265,13 +265,13 @@ const instruction: Record<string, Instruction> = {
     terms: ["principal-square-root"],
     method: [
       "Multiply or divide both sides by the other numbers and letters until the squared quantity is alone. Divide only by quantities that are not 0.",
-      "Take the positive square root when the quantity must be positive, such as a speed or a length.",
+      "Take the square root that is 0 or more when the quantity cannot be negative, such as a speed or a length.",
       "Check by putting the result back into the original formula.",
     ],
     watch:
-      "Get the whole square alone first, then take the square root. Everything under the square root sign stays there: $\\sqrt{\\frac{2E}{m}}$ is not $\\frac{\\sqrt{2E}}{m}$.",
+      "Get $v^2$ alone first, then take the square root. The root covers the whole fraction: $\\sqrt{\\frac{2E}{m}}$ is not $\\frac{\\sqrt{2E}}{m}$.",
     principle:
-      "If $z > 0$ and $z^2 = q$ with $q > 0$, then $z = \\sqrt{q}$. Here $z > 0$ means $z$ is positive. Without the condition $z > 0$, the real solutions, the numbers on the number line that make $z^2 = q$ true, are $z = \\pm\\sqrt{q}$, where $\\pm$ means plus or minus: both $\\sqrt{q}$ and $-\\sqrt{q}$.",
+      "If $z > 0$ and $z^2 = q$ with $q > 0$, then $z = \\sqrt{q}$. Here $z > 0$ means $z$ is positive. Without the condition $z > 0$, both $\\sqrt{q}$ and $-\\sqrt{q}$ make $z^2 = q$ true. We write this as $z = \\pm\\sqrt{q}$, where $\\pm$ means plus or minus.",
     parentGuide:
       "Pick numbers for mass and speed, find the energy, then use the rearranged formula to get the speed back.",
   },
@@ -298,12 +298,12 @@ const instruction: Record<string, Instruction> = {
       "Rewrite the model with one factor per single time unit.",
     ],
     intuition:
-      "A model is a formula that describes a real situation. Exponential change multiplies an amount by the same positive number over each equal stretch of time. That number is called the factor. Growth means the amount gets bigger, with a factor more than 1. Decay means it gets smaller, with a factor between 0 and 1. The initial value is the amount at time 0. In $P(t) = 80\\left(\\frac{1}{2}\\right)^{t/4.5}$, read “$P$ of $t$”, the input is the time $t$ in years, and the output is the amount $P(t)$. The initial value is 80, and the factor $\\frac{1}{2}$ applies once every 4.5 years. The exponent is the small raised number, here $t/4.5$, meaning $t$ divided by 4.5. It counts how many 4.5-year stretches have passed. A power such as $2^3$ means the base, 2, multiplied by itself 3 times. An exponent of $\\frac{1}{2}$ means a square root: $4^{1/2} = 2$, because $2 \\times 2 = 4$. Two models are equivalent when they give the same output for every input. A raised dot means times: $200 \\cdot 2$ is 200 times 2.",
+      "A formula is an equation that links quantities. A model is a formula that describes a real situation. Exponential change multiplies an amount by the same number, greater than 0, over each equal stretch of time. That number is called the factor. Growth means the amount gets bigger, with a factor more than 1. Decay means it gets smaller, with a factor between 0 and 1. A power such as $2^3$ means 3 copies of 2 multiplied together: $2 \\times 2 \\times 2 = 8$. The 2 is the base, the number being multiplied, and the small raised 3 is the exponent. An exponent of 0 gives 1, because no copies of the factor have been multiplied in yet. A square root is a number that, multiplied by itself, gives a given number. An exponent of $\\frac{1}{2}$ means the square root greater than 0: $4^{1/2} = 2$, because $2 \\times 2 = 4$. In $P(t) = 80\\left(\\frac{1}{2}\\right)^{t/4.5}$, read “$P$ of $t$”, the input is the time $t$ in years. The output $P(t)$ is the amount. The exponent $t/4.5$ means $t$ divided by 4.5. It counts how many 4.5-year stretches have passed. At $t = 0$ the exponent is 0, so the amount is 80. This is the initial value, the amount at time 0. The factor $\\frac{1}{2}$ applies once every 4.5 years. Two models are equivalent when they give the same output for every input. A raised dot means times: $200 \\cdot 2$ is 200 times 2.",
     explain: {
       title: "One factor per stretch of time",
       paragraphs: [
         "At $t = 0$, the exponent is 0 and $\\left(\\frac{1}{2}\\right)^0 = 1$, so $P(0) = 80$. At $t = 4.5$, the exponent is 1, so $P = 80 \\times \\frac{1}{2} = 40$. At $t = 9$, the exponent is 2, so $P = 80 \\times \\frac{1}{4} = 20$.",
-        "For a factor per year, rewrite the exponent: $\\left(\\frac{1}{2}\\right)^{t/4.5} = \\left(\\left(\\frac{1}{2}\\right)^{1/4.5}\\right)^t$. To four decimal places, meaning four digits after the decimal point, the yearly factor is $\\left(\\frac{1}{2}\\right)^{1/4.5} \\approx 0.8572$, where $\\approx$ means “is about equal to”. Multiplying by 0.8572 once a year gives about half after 4.5 years.",
+        "For a factor per year, rewrite the exponent: $\\left(\\frac{1}{2}\\right)^{t/4.5} = \\left(\\left(\\frac{1}{2}\\right)^{1/4.5}\\right)^t$. To four decimal places, meaning four digits after the decimal point, the yearly factor is $\\left(\\frac{1}{2}\\right)^{1/4.5} \\approx 0.8572$, where $\\approx$ means “is about equal to”. An exponent of $\\frac{1}{4.5}$ gives the yearly factor: the number that, applied each year for 4.5 years, makes the factor $\\frac{1}{2}$. Multiplying by 0.8572 once a year gives about half after 4.5 years.",
         "This uses the rule that a power of a power multiplies the exponents. For example, $\\left(2^3\\right)^2 = 8^2 = 64 = 2^6$, and $3 \\times 2 = 6$. The base, the number being raised, must be positive: $\\left(b^{1/4.5}\\right)^t = b^{t/4.5}$.",
       ],
     },
@@ -319,12 +319,12 @@ const instruction: Record<string, Instruction> = {
     method: [
       "Find the initial value, the amount at time 0, and how much time makes the exponent go up by 1.",
       "Compare two times one such stretch apart: the later amount is the earlier amount times the factor.",
-      "For a factor per single time unit, raise the factor to the power 1 over the stretch: a factor $b$ every $d$ units is $b^{1/d}$ per unit. Applying it $d$ times gives back $b$. The initial value does not change.",
+      "For a factor per single time unit, raise the factor to the power 1 over the stretch: a factor $b$ every $d$ units is $b^{1/d}$ per unit. Over $d$ units of time it gives back $b$, because $\\left(b^{1/d}\\right)^d = b^{d/d} = b$. The initial value does not change.",
     ],
     watch:
       "A factor for several years is not the factor for each year. Multiplying by the same number is different from adding the same amount.",
     principle:
-      "For $A > 0$, $b > 0$ and $d > 0$, $P(t) = A \\times b^{t/d} = A \\times \\left(b^{1/d}\\right)^t$, and $P(t + d) = b \\times P(t)$. Here $A$ is the initial value, and $b^{1/d}$ is the factor per unit of time. Growth has $b > 1$, and decay has $b$ between 0 and 1.",
+      "Let $A$ be the initial value, $b$ the factor and $d$ the stretch of time it covers. Each is greater than 0, written $A > 0$, $b > 0$ and $d > 0$. Then $P(t) = A \\times b^{t/d} = A \\times \\left(b^{1/d}\\right)^t$, and $P(t + d) = b \\times P(t)$. Here $b^{1/d}$ is the factor per unit of time. Growth, getting bigger, has $b > 1$. Decay, getting smaller, has $b$ between 0 and 1.",
     parentGuide:
       "Start with 80 and halve it every 4.5 years along a timeline. Ask what single number you would multiply by each year to get the same halving.",
   },
@@ -359,13 +359,13 @@ const instruction: Record<string, Instruction> = {
   "nonlinear-data-model": {
     goal: "Choose the model whose predictions miss the data by the smallest total of squared residuals.",
     summary:
-      "The input is the number you start with, such as a day. A model is a rule that predicts a number from the input, called the output. Real data rarely match a model exactly. A residual is the observed value minus the predicted value. Squared means multiplied by itself. To pick the model that fits best, square each residual, add them up, and choose the model with the smallest total.",
+      "The input is the number you start with, such as a day. A model is a rule that predicts a number from the input, called the output. Data are numbers collected by watching or measuring, such as an amount counted each day. Real data rarely match a model exactly. A residual is the observed value minus the predicted value. Squared means multiplied by itself. To pick the model that fits best, square each residual, add them up, and choose the model with the smallest total.",
     objectives: [
       "Find each model's residuals at the data points.",
       "Choose the model with the smallest sum of squared residuals.",
     ],
     intuition:
-      "A model is a rule that predicts one number from another. The input is the number you start with, such as a day. The output is the number the model predicts, such as an amount. A residual is the observed output minus the predicted output. A positive residual means the model predicted too low. Squaring each residual, which means multiplying it by itself, makes every one positive, so they cannot cancel. It also makes big misses count much more. The sum of squared residuals is the total of those squares: a smaller total means a closer fit. A linear model, such as $y = 10x + 5$, adds the same amount at each step. An exponential model, such as $y = 5(2)^x$, multiplies by the same factor at each step: $(2)^x$ means $x$ twos multiplied together, and $(2)^0 = 1$. A quadratic model, such as $y = 5x^2 + 2$, has an $x^2$ part, $x$ times $x$. A close fit does not prove that the input causes the output.",
+      "A model is a rule that predicts one number from another. The input is the number you start with, such as a day. The output is the number the model predicts, such as an amount. A residual is the observed output minus the predicted output. A positive residual means the model predicted too low. Each observed (input, output) pair is a data point. Squaring each residual, which means multiplying it by itself, makes every one 0 or positive. So misses above and below cannot cancel. Squaring also makes big misses count much more. The sum of squared residuals is the total of those squares: a smaller total means a closer fit. In the models below, $x$ is the input and $y$ is the predicted output. A linear model adds the same amount each time the input goes up by 1: $y = 10x + 5$ predicts 5, 15, 25 and 35 for $x = 0, 1, 2, 3$. An exponential model multiplies by the same number each time the input goes up by 1. In $y = 5(2)^x$, the 5 multiplies $(2)^x$. For a whole number $x$, $(2)^x$ means $x$ twos multiplied together, and $(2)^0 = 1$. So $y = 5(2)^x$ predicts 5, 10, 20 and 40 for $x = 0, 1, 2, 3$. A quadratic model has an $x^2$ part ($x$ times $x$) and no higher power, such as $y = 5x^2 + 2$. A close fit does not prove that the input causes the output.",
     explain: {
       title: "Score each model by its misses",
       paragraphs: [
@@ -385,26 +385,26 @@ const instruction: Record<string, Instruction> = {
     watch:
       "Use every data point for every model. A close fit does not show that one thing causes the other, and it does not promise good predictions far from the data.",
     principle:
-      "For data points $(x_1, y_1), (x_2, y_2), \\ldots$, the sum of squared residuals for a model $f$ is $(y_1 - f(x_1))^2 + (y_2 - f(x_2))^2 + \\cdots$. Here $f(x_1)$, read “$f$ of $x_1$”, is the model's predicted output at $x_1$, and the small numbers count the data points. Of the choices offered, the model with the smallest sum is the least-squares choice.",
+      "Number the data points and write them $(x_1, y_1), (x_2, y_2)$, and so on: the small numbers count the points. Write $f(x_1)$, read “$f$ of $x_1$”, for the model's predicted output at $x_1$. Then the sum of squared residuals for a model $f$ is $(y_1 - f(x_1))^2 + (y_2 - f(x_2))^2 + \\cdots$, where the dots mean the pattern continues for every point. Of the choices offered, the model with the smallest sum is the least-squares choice.",
     parentGuide:
       "Plot a few points and sketch two possible curves. Ask which curve passes closer to the points, then check by measuring the misses.",
   },
   "quadratic-parameter-root": {
     goal: "Find the coefficient that gives a quadratic equation exactly one real solution.",
     summary:
-      "Quadratic means having an $x^2$ part, $x$ times $x$, and no higher power. An example of a quadratic equation is $3x^2 - 18x + 27 = 0$. It can have two real solutions, one, or none. On a graph, its curve crosses the $x$-axis twice, touches it once, or misses it. Exactly one solution happens when the number $b^2 - 4ac$, called the discriminant, is 0.",
+      "In $3x^2 - 18x + 27 = 0$, $x^2$ ($x$ squared) means $x$ times $x$. An equation with an $x^2$ part and nothing like $x^3$ is called a quadratic equation. A solution is a value of $x$ that makes the equation true. A quadratic equation can have two real solutions (numbers on the number line), one, or none. Its graph crosses the $x$-axis, the horizontal number line, twice, touches it once, or misses it. One number decides which. For $ax^2 + bx + c = 0$ it is $b^2 - 4ac$, called the discriminant, where $4ac$ means 4 times $a$ times $c$. Exactly one solution happens when it is 0.",
     objectives: [
       "Write the discriminant of a quadratic equation and set it equal to 0.",
       "Solve for an unknown coefficient and check that the equation has one repeated solution.",
     ],
     intuition:
-      "Quadratic means having an $x^2$ part and no higher power. A quadratic equation has the form $ax^2 + bx + c = 0$, where $ax^2$ means $a$ times $x$ times $x$, and $a$ is not 0. The numbers $a$, $b$ and $c$ are its coefficients, taken with their signs. A solution, also called a root, is a value of $x$ that makes the equation true. Distinct means different, so a repeated solution counts once. A raised dot means times: $4 \\cdot 3$ is 4 times 3. A real number is any number on the number line. Squared means multiplied by itself, so $b^2$ is $b$ times $b$. A square root is the number that, multiplied by itself, gives a given number. The discriminant is the number $b^2 - 4ac$. It is the part under the square root sign in the quadratic formula, $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The sign $\\pm$ means one answer adds and the other subtracts. If the discriminant is positive, there are two real solutions. If it is 0, there is exactly one. If it is negative, there are none, because no real number times itself is negative.",
+      "Squared means multiplied by itself: $x^2$ is $x$ times $x$. A power is several copies of a number multiplied together, so $x^3$, $x$ times $x$ times $x$, is a higher power. Quadratic means having an $x^2$ part and no higher power. A quadratic equation has the form $ax^2 + bx + c = 0$, where $ax^2$ means $a$ times $x^2$, and $a$ is not 0. The numbers $a$, $b$ and $c$ are its coefficients, taken with their signs: $a$ multiplies $x^2$, $b$ multiplies $x$, and $c$ stands alone. In $3x^2 - 18x + 27 = 0$, $a = 3$, $b = -18$ and $c = 27$. A solution, also called a root, is a value of $x$ that makes the equation true. Distinct means different, so a repeated solution counts once. A raised dot means times: $4 \\cdot 3$ is 4 times 3. A number line is a line with the numbers marked in order, and a real number is any number on it. A square root of a number is a number that, multiplied by itself, gives it: 3 and $-3$ are both square roots of 9. The root sign means the one that is 0 or more. The quadratic formula gives the solutions. It is $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$, where the sign $\\pm$ means one answer adds and the other subtracts. The discriminant is the number $b^2 - 4ac$, the part under its root sign. If the discriminant is positive, there are two real solutions. If it is 0, there is exactly one. If it is negative, there are none, because no real number times itself is negative.",
     explain: {
       title: "When two solutions become one",
       paragraphs: [
         "In $3x^2 - 18x + c = 0$, $a = 3$, $b = -18$, and $c$ is unknown. The discriminant is $(-18)^2 - 4 \\times 3 \\times c = 324 - 12c$.",
-        "For exactly one solution, set it to 0: $324 - 12c = 0$, so $12c = 324$ and $c = 27$.",
-        "Check: $3x^2 - 18x + 27 = 3(x^2 - 6x + 9) = 3(x - 3)^2$. This is 0 only when $x = 3$, so there is one solution. The quadratic formula, $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$, gives two answers, one with + and one with −. They become the same number when the root part is 0.",
+        "For exactly one solution, set it to 0: $324 - 12c = 0$. Add $12c$ to both sides: $12c = 324$. Divide both sides by 12: $c = 27$.",
+        "Check: take out the common factor 3, and notice that $x^2 - 6x + 9 = (x - 3)(x - 3)$. So $3x^2 - 18x + 27 = 3(x - 3)^2$. A square is 0 only when the number being squared is 0. So $x - 3 = 0$, and $x = 3$ is the only solution. The quadratic formula, $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$, gives two answers, one with + and one with −. They become the same number when the root part is 0.",
       ],
     },
     senses: {
@@ -418,7 +418,7 @@ const instruction: Record<string, Instruction> = {
     method: [
       "Read $a$, $b$ and $c$ with their signs, and check that $a$ is not 0.",
       "Write the discriminant $b^2 - 4ac$ and set it equal to 0.",
-      "Solve for the unknown coefficient. Put it back and check for one repeated solution: $3(x - 3)^2 = 0$ gives only $x = 3$.",
+      "Solve for the unknown coefficient. Put that value back into the equation and check that it has one repeated solution. For example, $3x^2 - 18x + 27 = 3(x - 3)^2 = 0$ gives only $x = 3$.",
     ],
     watch:
       "Square the whole signed middle coefficient: $(-18)^2 = 324$, not $-324$. Keep the $4a$ that multiplies $c$ when you solve for $c$.",
@@ -466,7 +466,7 @@ const furtherPitfalls: Record<string, string> = {
   "rational-expression-operation":
     "A factor cancelled during simplification still excludes its original zero from the domain.",
   "nonlinear-data-model":
-    "Reversing a residual's sign does not change its square. The sign still tells you whether the model predicted too high or too low.",
+    "Reversing a residual's sign, from plus to minus or back, does not change its square. The sign still tells you whether the model predicted too high or too low.",
   "quadratic-parameter-root":
     "If $a$ were 0, the equation would not be quadratic, and the discriminant test would not apply.",
   "rational-function-representation":
@@ -474,7 +474,7 @@ const furtherPitfalls: Record<string, string> = {
   "sample-mean-estimate":
     "Use population size for a population total. Sample size gives only an estimated total for the sampled group.",
   "probability-missing-count":
-    "Check that the count you find is a whole number, 0 or more, and that it gives back the stated probability.",
+    "Check that the count you find is a whole number: 0, 1, 2 and so on. Then check that it gives back the stated probability.",
 };
 export const satCompletionMethods: Record<string, ProblemMethod> =
   Object.fromEntries(

@@ -48,12 +48,12 @@ export const successivePercentChangeLesson: Lesson = {
   closingSections: [
     {
       stage: "formal",
-      title: "Successive percent multipliers",
+      title: "Two percent changes in a row",
       paragraphs: [
-        "A percent is $\\tfrac{1}{100}$ of a base: $p\\%$ means $\\tfrac{p}{100}$ of that base. Let $P_0$ be the starting price, a number 0 or greater. The small numbers below the letters count the steps: $P_1$ is the price after one change and $P_2$ after two.",
+        "A percent is $\\tfrac{1}{100}$ of a base: $p\\%$ means $\\tfrac{p}{100}$ of that base. The small numbers written below letters count the steps. Let $P_0$ be the starting price, a number 0 or greater. Then $P_1$ is the price after one change and $P_2$ after two.",
         "For a percent $p_1$ that is 0 or greater, the first multiplier $m_1$ is $1 + \\tfrac{p_1}{100}$ for an increase. It is $1 - \\tfrac{p_1}{100}$ for a decrease. The second multiplier $m_2$ comes from the second percent $p_2$ in the same way. A decrease can be 100% or less, so the price never goes below 0. An increase may be more than 100%.",
         "Then $P_1 = P_0 \\times m_1$ and $P_2 = P_1 \\times m_2 = P_0 \\times m_1 \\times m_2$. The second percent is taken of $P_1$, even though the three numbers can be multiplied in any order.",
-        "Equal decrease and increase percents do not undo each other. For any percent $p$ greater than 0 and at most 100, $(1 - \\tfrac{p}{100}) \\times (1 + \\tfrac{p}{100}) = 1 - (\\tfrac{p}{100})^2$, which is less than 1. For example, $0.80 \\times 1.20 = 0.96$. So a positive price ends lower than it started.",
+        "Start with a price greater than 0. A decrease and then an increase by the same percent, greater than 0, end lower than the start. For example, $0.80 \\times 1.20 = 0.96$, so 100 dollars becomes 96 dollars. For a percent $p$ greater than 0 and at most 100, $(1 - \\tfrac{p}{100}) \\times (1 + \\tfrac{p}{100}) = 1 - (\\tfrac{p}{100})^2$. The raised 2 means the number times itself. That square is greater than 0, so the product is less than 1.",
         "For a money answer, keep every digit until the final step. Then round the final amount to the nearest cent. One cent is $\\tfrac{1}{100}$ of a dollar. An amount exactly halfway between two cents rounds up. Round earlier only if the problem says to.",
       ],
     },
@@ -91,7 +91,7 @@ export const successivePercentChangeMethod: ProblemMethod = {
     "rule",
   ],
   intuition:
-    "Percent means per hundred, and the sign % stands for percent. So 20% of a price is 20 hundredths of it: 20 out of every 100 equal parts. The base is the price a percent is taken of. When a price changes twice, the base for the second change is the new price. A multiplier is the number you multiply a price by to get the changed price. The whole price is 1 times itself. So a 20% decrease keeps $1 - 0.20 = 0.80$ of the price, and a 20% increase makes $1 + 0.20 = 1.20$ of it. Rounding to the nearest cent keeps two decimal places, the two digits after the decimal point. Look at the next digit: 5 or more rounds up, and less than 5 leaves the cents as they are.",
+    "Percent means per hundred, and the sign % stands for percent. So 20% of a price is 20 hundredths of it: 20 out of every 100 equal parts. To write a percent as a decimal, divide it by 100: $20\\% = 0.20$. The base is the price a percent is taken of. When a price changes twice, the base for the second change is the new price. A multiplier is the number you multiply a price by to get the changed price. The whole price is 1 times itself. So a 20% decrease keeps $1 - 0.20 = 0.80$ of the price. A 20% increase makes $1 + 0.20 = 1.20$ of it. Rounding to the nearest cent means choosing the closest amount with two decimal places, the two digits after the decimal point. Look at the next digit: 5 or more rounds up, and less than 5 leaves the cents as they are.",
   terms: [
     ["percent", "The base is the whole that the percent is taken of."],
     [
@@ -105,8 +105,8 @@ export const successivePercentChangeMethod: ProblemMethod = {
     "Round only the final price. Keeping fewer digits and choosing the closest value is called rounding. Rounding to cents keeps two digits after the decimal point. An amount exactly halfway rounds up.",
   ],
   watch:
-    "Take the second percent of the price after the first change. A 20% drop and then a 20% rise use different bases, so they do not cancel.",
+    "Take the second percent of the price after the first change. A 20% drop and then a 20% rise use different bases, so the rise does not undo the drop.",
 };
 
 export const successivePercentChangePrinciple =
-  "Let $P_0$ be a starting price, 0 or greater, and let $p_1$ and $p_2$ be two percents, each 0 or greater. Each multiplier is $1 + \\tfrac{p}{100}$ for an increase or $1 - \\tfrac{p}{100}$ for a decrease, where a decrease is 100% or less. The price after the first change is $P_1 = P_0 \\times m_1$. The final price is $P_2 = P_1 \\times m_2 = P_0 \\times m_1 \\times m_2$. Here $m_1$ and $m_2$ are the two multipliers, and the small numbers count the steps. Round the final money amount to cents, with an exact halfway amount rounding up, unless the problem rounds earlier.";
+  "The small numbers below the letters count the steps. Let $P_0$ be a starting price, 0 or greater. Let $p_1$ and $p_2$ be the two percents, each 0 or greater. For a percent $p$, the multiplier is $1 + \\tfrac{p}{100}$ for an increase or $1 - \\tfrac{p}{100}$ for a decrease. A decrease must be 100% or less. Call the two multipliers $m_1$ and $m_2$. The price after the first change is $P_1 = P_0 \\times m_1$. The final price is $P_2 = P_1 \\times m_2 = P_0 \\times m_1 \\times m_2$. Round the final money amount to cents, with an exact halfway amount rounding up, unless the problem rounds earlier.";
