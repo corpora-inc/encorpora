@@ -1,7 +1,7 @@
 import type { MethodTerm } from "../glossary/types";
 import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
-import { chainLesson } from "./chain-lesson-kit";
+import { chainLesson, type ChainLessonSpec } from "./chain-lesson-kit";
 
 export const m = (
   goal: string,
@@ -9,7 +9,8 @@ export const m = (
   terms: MethodTerm[],
   method: string[],
   watch: string,
-): ProblemMethod => ({ goal, intuition, terms, method, watch });
+  glossary: Pick<ProblemMethod, "senses" | "noLink"> = {},
+): ProblemMethod => ({ goal, intuition, terms, method, watch, ...glossary });
 
 export const regentsAlgebraTwoReasoningMethods: Record<string, ProblemMethod> =
   {
@@ -108,11 +109,13 @@ export const lesson = (
   formal: string[],
   pitfalls: string[],
   parentGuide: string,
+  glossary: Pick<ChainLessonSpec, "senses" | "noLink"> = {},
 ) =>
   chainLesson({
     id,
     title,
     summary,
+    ...glossary,
     templateIds,
     objectives,
     openingTitle: "The idea",

@@ -157,6 +157,8 @@ RUN = re.compile(r'[0-9.()×÷+−/= -]+')
 
 def chains(text):
     """Check every displayed numeric chain a = b = c; return how many were checked."""
+    from worked_math_text import plain_worked_math
+    text = plain_worked_math(text)
     checked = 0
     for m in RUN.finditer(text):
         run = m.group()
@@ -613,7 +615,10 @@ def worked_answer(lesson):
         op = line_relation({'included': m[1] == 'filled', 'direction': m[3]})
         return relation_label(answer, 'x') == (op, number(m[2]))
     if template == 'inequality-number-line-choice':
-        m = re.match(r'Describe the number line that shows the solutions of x ([<>≤≥]) (' + NUMBER + r'):', prompt)
+        from algebra_one_expr import untex
+        displayed = untex(prompt).replace('-', '−')
+        m = re.match(r'Describe the number line that shows the solutions of x ([<>≤≥]) (' + NUMBER + r'):', displayed)
+        require(m is not None, f'{lesson["id"]}: Unsupported worked number-line prompt: {prompt!r}')
         op, c = m[1], m[2]
         return answer == f'A {"filled" if op in "≤≥" else "open"} circle at {c} and a ray pointing {"right" if op in ">≥" else "left"}'
     m = re.fullmatch(r'Which of the numbers (.+) are solutions of x ([<>≤≥]) (' + NUMBER + r')\?', prompt)
@@ -705,10 +710,16 @@ def review_equation_content(data=None):
     for lesson in lessons.values():
         require(worked_answer(lesson), 'Worked example answer: ' + lesson['id'])
         for step in lesson['workedExample']['steps']:
-            checked += chains(step)
+            try:
+                checked += chains(step)
+            except ValueError as error:
+                raise ValueError(f'{lesson["id"]}: {step!r}: {error}') from error
         for section in lesson['sections']:
             for paragraph in section['paragraphs']:
-                checked += chains(paragraph)
+                try:
+                    checked += chains(paragraph)
+                except ValueError as error:
+                    raise ValueError(f'{lesson["id"]}: {paragraph!r}: {error}') from error
     checked += review_figures(data['figures'])
     return {'worksheets': len(data['worksheets']), 'lessons': len(lessons), 'checkedEqualities': checked}
 
@@ -717,7 +728,16 @@ def review_content_mutations():
     data = content()
     mutants = []
     bad = copy.deepcopy(data); bad['lessons'][0]['workedExample']['answer'] = '1.95'; mutants.append(bad)
-    bad = copy.deepcopy(data); bad['lessons'][3]['sections'][1]['paragraphs'][0] = bad['lessons'][3]['sections'][1]['paragraphs'][0].replace('28 ÷ 4 = 7', '28 ÷ 4 = 8'); mutants.append(bad)
+    bad = copy.deepcopy(data)
+    lesson = next(l for l in bad['lessons'] if l['id'] == 'two-step-equation')
+    changed = 0
+    for section in lesson['sections']:
+        for index, paragraph in enumerate(section['paragraphs']):
+            replacement = re.sub(r'(28 (?:÷|\\div) 4 = )7', r'\g<1>8', paragraph)
+            changed += replacement != paragraph
+            section['paragraphs'][index] = replacement
+    require(changed == 1, 'Worked division mutation did not target one claim')
+    mutants.append(bad)
     bad = copy.deepcopy(data); bad['worksheets'][0]['problems'][1] = bad['worksheets'][0]['problems'][0]; mutants.append(bad)
     bad = copy.deepcopy(data); bad['worksheets'][0]['problems'][0]['explanation'].append('A false check: 4 × 3 = 13.'); mutants.append(bad)
     bad = copy.deepcopy(data); bad['worksheets'][-1]['problems'][0]['answer'] = 'option-d' if bad['worksheets'][-1]['problems'][0]['answer'] != 'option-d' else 'option-a'; mutants.append(bad)
@@ -728,13 +748,14 @@ def review_content_mutations():
         require(replaced != html, 'Figure mutation did not apply: ' + figure['kind'])
         bad['figures'][index]['html'] = replaced
         mutants.append(bad)
-    for bad in mutants:
+    for index, bad in enumerate(mutants):
+        require(bad != data, f'Equation content mutation {index} did not apply')
         try:
             review_equation_content(bad)
         except (ValueError, KeyError, TypeError, StopIteration, AttributeError):
             pass
         else:
-            raise ValueError('Corrupted content accepted')
+            raise ValueError(f'Equation content mutation {index} was accepted')
     return len(mutants)
 
 

@@ -6,6 +6,7 @@ import re
 from fractions import Fraction
 from collections import Counter
 from itertools import permutations
+from worked_math_text import plain_worked_math
 
 MISSING_LEG = 'right-triangle-missing-leg'
 CONVERSE = 'pythagorean-converse'
@@ -122,14 +123,30 @@ def review_converse_explanation(public, explanation):
             all(isinstance(step, str) and step for step in explanation), 'Missing converse explanation')
     a, b, c = sorted(givens(public))
     category = triangle_class((a, b, c))
-    text = ' '.join(explanation)
+    # Read the same numeric relation in Unicode or typeset lesson text. Keep
+    # exponents and inequality operators intact; they determine the claim.
+    context = f"prompt={public['prompt']!r}; explanation={explanation!r}"
+    text = re.sub(r'\\(?:neq|ne)(?![A-Za-z])', '≠', ' '.join(explanation))
+    try:
+        text = plain_worked_math(text).replace('²', '^2')
+    except ValueError as error:
+        raise ValueError(f'Unsupported converse explanation: {context}: {error}') from error
+    def complete_relation(match):
+        # A matching substring is not evidence when a spaced sign or another
+        # arithmetic operation changes either side of the displayed relation.
+        operators = tuple('−+-*/^×÷')
+        return (not text[:match.start()].rstrip().endswith(operators)
+                and not text[match.end():].lstrip().startswith(operators))
     if category == 'right':
-        relations = re.findall(r'(?<![0-9])([0-9]+)²\s*\+\s*([0-9]+)²\s*=\s*([0-9]+)²', text)
+        relations = [match.groups() for match in re.finditer(
+            r'(?<![0-9.−+*/^×÷-])([0-9]+)\^2\s*\+\s*([0-9]+)\^2\s*=\s*([0-9]+)\^2(?![0-9^]|\.[0-9])', text)
+            if complete_relation(match)]
         require(any(sorted((int(x), int(y))) == [a, b] and int(z) == c for x, y, z in relations),
-                'Polished converse explanation lost the exact side-square equality')
+                'Polished converse explanation lost the exact side-square equality: ' + context)
     else:
-        require(re.search(rf'(?<![0-9]){a*a+b*b}\s*≠\s*{c*c}(?![0-9])', text) is not None,
-                'Polished nonright explanation must show the exact unequal squared totals')
+        require(any(complete_relation(match) for match in re.finditer(
+            rf'(?<![0-9.−+*/^×÷-]){a*a+b*b}\s*≠\s*{c*c}(?![0-9^]|\.[0-9])', text)),
+                'Polished nonright explanation must show the exact unequal squared totals: ' + context)
 
 
 MISSING_DOMAIN, CONVERSE_DOMAIN = finite_domains()

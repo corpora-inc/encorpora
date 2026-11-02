@@ -23,7 +23,7 @@ env:
 jobs:
   hygiene:
     name: hygiene
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust

@@ -25,7 +25,7 @@ env:
 
 jobs:
   changes:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       browser: ${{ steps.paths.outputs.amp_browser }}
       content: ${{ steps.paths.outputs.amp_content }}
@@ -77,7 +77,7 @@ jobs:
     timeout-minutes: 60
     needs: changes
     if: needs.changes.outputs.browser == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: amp
@@ -182,7 +182,7 @@ jobs:
     timeout-minutes: 120
     needs: changes
     if: needs.changes.outputs.content == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       actions: write
@@ -312,7 +312,7 @@ jobs:
   report:
     needs: [changes, amp-browser, amp-content]
     if: ${{ always() && !cancelled() }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       issues: write
