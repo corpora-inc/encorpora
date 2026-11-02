@@ -16,8 +16,10 @@ export const angleLessons: Lesson[] = [
       center: "center",
       square: "square-shape",
       "more than": "more-than",
+      part: "part",
+      scale: "measuring-scale",
     },
-    noLink: ["scale", "scales", "part", "parts", "whole", "side", "edge"],
+    noLink: ["side", "edge"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Explain a degree as 1 of 360 equal pieces of a full turn, and find an angle that is part of a turn.",
@@ -249,8 +251,11 @@ export const angleMethods: Record<string, ProblemMethod> = {
   "protractor-reading": {
     goal: "Find the measure of an angle on a protractor, in degrees.",
     intuition: `${angleOpening} A degree is one of 360 equal pieces of a full turn. A protractor is a see-through half circle with two rows of degree numbers. One row starts at 0 on the left, and the other starts at 0 on the right.`,
-    senses: { degree: "degree-angle", vertex: "vertex" },
-    noLink: ["scale", "scales"],
+    senses: {
+      degree: "degree-angle",
+      vertex: "vertex",
+      scale: "measuring-scale",
+    },
     terms: terms.measure,
     method: [
       "Find the ray that lies on 0. Find the row of numbers that starts at 0 there.",

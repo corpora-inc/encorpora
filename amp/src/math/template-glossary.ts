@@ -839,7 +839,6 @@ const glossary: Record<
   },
   "equal-area-fraction": {
     senses: { part: "part", parts: "part" },
-    noLink: ["squares"],
   },
   "equal-area-part-size": { senses: { parts: "part" } },
   "equation-after-one-step": {
@@ -1941,7 +1940,6 @@ const glossary: Record<
       parts: "part",
       quarters: "fourth",
     },
-    noLink: ["square"],
   },
   "name-share": {
     senses: {
@@ -1952,7 +1950,6 @@ const glossary: Record<
       thirds: "third",
       whole: "whole",
     },
-    noLink: ["one third", "square"],
   },
   "negative-monomial-power": {
     senses: {
@@ -2427,7 +2424,6 @@ const glossary: Record<
   "price-count-chain": { noLink: ["whole"] },
   "prime-composite-sort": {
     senses: { factors: "factor-number" },
-    noLink: ["factor"],
   },
   "prime-factorization-exponents": {
     senses: {
@@ -2839,10 +2835,9 @@ const glossary: Record<
     },
     noLink: ["base", "center", "part", "square", "whole"],
   },
-  "related-division-sentence": { noLink: ["side"] },
   "related-subtraction-sentence": {
     senses: { part: "part", whole: "whole" },
-    noLink: ["leaves", "parts"],
+    noLink: ["leaves"],
   },
   "relative-frequency-percent": { noLink: ["part", "whole"] },
   "remainder-steps": {
@@ -3003,7 +2998,6 @@ const glossary: Record<
   },
   "same-share-different-shape": {
     senses: { part: "part", parts: "part" },
-    noLink: ["squares"],
   },
   "sample-mean-estimate": {
     senses: {
