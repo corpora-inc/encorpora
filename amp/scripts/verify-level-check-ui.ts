@@ -15,6 +15,11 @@ import { PostgresRepository } from "../src/server/repository";
 import { figureCapabilities } from "../src/math/contracts";
 import { generateProblem, gradeAnswer } from "../src/math/engine";
 import {
+  cardRows,
+  parseMultiPartDraft,
+  serializeMultiPart,
+} from "../src/math/multi-part-choice";
+import {
   parseSelection,
   serializeSelection,
 } from "../src/math/selection-response";
@@ -257,6 +262,8 @@ async function answerOne(page: Page, correct: boolean) {
   assert.ok(problem, `missing served problem for ${template}`);
   const solution = generateProblem(problem.templateId, problem.seed);
   const schema = solution.public.response;
+  if (process.env.LEVEL_DEBUG)
+    console.log("Level answer", { template, kind: schema.kind, correct });
   let response = solution.answer;
   if (!correct) {
     if (schema.kind === "choice")
@@ -265,6 +272,18 @@ async function answerOne(page: Page, correct: boolean) {
       const ids = parseSelection(solution.answer)!;
       const replacement = schema.options.find((o) => !ids.includes(o.id))!.id;
       response = serializeSelection([...ids.slice(1), replacement]);
+    } else if (schema.kind === "multi-part-choice") {
+      const draft = parseMultiPartDraft(response)!;
+      const blank = schema.blanks[0]!;
+      const previous = draft[blank.id]!;
+      const replacement = blank.options.find((o) => o.id !== previous)!.id;
+      if (schema.layout === "cards" && !schema.reuse) {
+        const row = cardRows(schema).find((r) => r.blanks.includes(blank))!;
+        const occupied = row.blanks.find((b) => draft[b.id] === replacement);
+        if (occupied) draft[occupied.id] = previous;
+      }
+      draft[blank.id] = replacement;
+      response = serializeMultiPart(schema, draft);
     } else {
       // Preserve the family's response syntax (e.g. ordered pairs). A generic
       // "999999" can fail input validation and never submit an attempt.
@@ -296,6 +315,37 @@ async function answerOne(page: Page, correct: boolean) {
       .locator(".choice-option:visible")
       .nth(schema.options.findIndex((o) => o.id === response))
       .click();
+    await page.locator(".choice-submit:visible").click();
+  } else if (schema.kind === "multi-part-choice") {
+    const draft = parseMultiPartDraft(response)!;
+    const rows = cardRows(schema);
+    for (const blank of schema.blanks) {
+      const option = draft[blank.id]!;
+      if (schema.layout === "table") {
+        await page
+          .locator(
+            `.multi-part tr[data-blank="${blank.id}"] input[value="${option}"]`,
+          )
+          .check();
+      } else if (schema.layout === "cards") {
+        await page.locator(`.multi-part-box[data-blank="${blank.id}"]`).click();
+        const row = rows.findIndex((r) => r.blanks.includes(blank));
+        await page
+          .locator(".multi-part-tray-row")
+          .nth(row)
+          .locator(".multi-part-card")
+          .nth(rows[row]!.options.findIndex((o) => o.id === option))
+          .click();
+      } else {
+        await page
+          .locator(`.multi-part-blank[data-blank="${blank.id}"]`)
+          .click();
+        await page
+          .locator('.multi-part-menu [role="menuitemradio"]')
+          .nth(blank.options.findIndex((o) => o.id === option))
+          .click();
+      }
+    }
     await page.locator(".choice-submit:visible").click();
   } else {
     const input = page.locator("#answer:visible");
