@@ -249,6 +249,12 @@ export function problemLesson(
   const terms = methodTermDefinitions(methodTerms);
   const band = screenBand(templateId);
   const context = lessonGlossaryContext(lessonTemplateId, template);
+  const choices =
+    response.kind === "multi-select"
+      ? response.options.map((option) => option.label)
+      : undefined;
+  // Every text the lesson view links: the worked example's question,
+  // choices and answer too, so a glossary word met only there opens its card.
   const { glossary, glossaryLexicon } = glossaryPayload(
     [
       goal,
@@ -257,7 +263,10 @@ export function problemLesson(
       watch ?? "",
       principle ?? "",
       ...terms.map((t) => t.meaning),
+      example.public.prompt,
+      ...(choices ?? []),
       ...steps,
+      answer,
     ],
     context,
     methodTerms.map(methodTermId),
@@ -265,7 +274,8 @@ export function problemLesson(
   );
   // The lesson's own words: the method's terms, then the words it uses near
   // its level, in the order the page shows them. Words it already knows are
-  // left out.
+  // left out, and so is the example's question: its words name this one
+  // instance and its answer format ("rounded", "integer"), not the method.
   const near = band ? gradeBandOrder.indexOf(band) - 1 : 0;
   const keyWords = [
     ...methodTerms.map(methodTermId),
@@ -295,9 +305,7 @@ export function problemLesson(
     watch,
     example: {
       prompt: example.public.prompt,
-      ...(response.kind === "multi-select"
-        ? { choices: response.options.map((option) => option.label) }
-        : {}),
+      ...(choices ? { choices } : {}),
       // A private walkthrough of the example, when it has one, replaces its
       // problem figure: the lesson plays it revealed.
       ...(example.walkthrough
