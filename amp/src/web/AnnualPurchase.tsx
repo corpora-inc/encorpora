@@ -26,7 +26,18 @@ export interface AnnualPurchaseProps {
   returnState?: "processing" | "canceled" | "account";
 }
 export function AnnualPurchase(props: AnnualPurchaseProps) {
-  return <PurchasePanel key={props.identity} {...props} />;
+  // A verified return can arrive after the route mounts. Reload that purchase's
+  // learner selection while preserving form state across token renewals.
+  return (
+    <PurchasePanel
+      key={JSON.stringify([
+        props.identity,
+        props.purchaseId,
+        props.returnState,
+      ])}
+      {...props}
+    />
+  );
 }
 class BillingRequestError extends Error {
   constructor(readonly code: string) {

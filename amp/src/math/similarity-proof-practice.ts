@@ -556,7 +556,12 @@ function render(
   return workSurface(built, {
     prompt: `${lead} Given: ${c.given.join(" and ")}. Prove: ${c.goalTex}. ${task}`,
     hint: c.hint,
-    explanation: [...c.why, "A complete proof:", ...lines],
+    explanation: [
+      "Similar triangles have the same shape, so their matching sides are proportional. By AA, two pairs of congruent angles prove two triangles similar.",
+      ...c.why,
+      "A complete proof:",
+      ...lines,
+    ],
     figure: sceneFigure(c.scene),
   });
 }

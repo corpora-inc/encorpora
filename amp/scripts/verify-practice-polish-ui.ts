@@ -629,6 +629,24 @@ async function runCase(
       .click();
     await page.locator("dialog[open]").waitFor();
     await page.waitForTimeout(300);
+    if (label === "work-steps" && width === 768) {
+      // A superscript's invisible KaTeX box overlapped this part of the chip.
+      const word = page.locator("dialog[open] .key-words").getByRole("button", {
+        name: "scientific notation, what does this mean?",
+        exact: true,
+      });
+      const box = (await word.boundingBox())!;
+      await page.mouse.click(
+        box.x + box.width / 2 - 21,
+        box.y + box.height / 2,
+      );
+      const card = page.locator(".term-dialog[open]");
+      await card
+        .getByRole("heading", { name: "scientific notation", exact: true })
+        .waitFor();
+      await card.getByRole("button", { name: "Close", exact: true }).click();
+      await card.waitFor({ state: "detached" });
+    }
     await record("lesson", null, deep ? { axe: await axeDialog(page) } : {});
     await page.keyboard.press("Escape");
     await page.locator("dialog[open]").waitFor({ state: "detached" });

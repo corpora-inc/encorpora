@@ -241,6 +241,7 @@ function exponentialBase(r: Random): Built {
     const pT = growth ? r(12, 95) : r(20, 300); // tenths of a percent
     const base = ((growth ? 1000 + pT : 1000 - pT) / 1000).toString();
     const pct = String(pT / 10);
+    const rate = String(pT / 1000);
     const dir = growth ? "increase" : "decrease";
     const correct = `It ${dir}s by ${pct}% each ${ctx.unit[0]}.`;
     const wrong = (text: string, feedback: string): Wrong => ({
@@ -259,11 +260,11 @@ function exponentialBase(r: Random): Built {
           ),
           wrong(
             `increases by ${pT / 100}%`,
-            "Moving the decimal point two places gives the percent: 0.038 is 3.8%, not 0.38%.",
+            `To write a decimal as a percent, move the decimal point two places right: ${rate} is ${pct}%, not ${pT / 100}%.`,
           ),
           wrong(
             `increases by ${pT}%`,
-            "Moving the decimal point two places turns 0.038 into 3.8%, not 38%.",
+            `Moving the decimal point two places turns ${rate} into ${pct}%, not ${pT}%.`,
           ),
           wrong(
             `decreases by ${pct}%`,
@@ -277,7 +278,7 @@ function exponentialBase(r: Random): Built {
           ),
           wrong(
             `decreases by ${base}%`,
-            "The base 0.85 is a multiplier, not a percent. The change is 1 minus the base, written as a percent.",
+            `The base ${base} is a multiplier, not a percent. The change is 1 minus the base, ${rate}, written as a percent.`,
           ),
           wrong(
             `increases by ${pct}%`,
@@ -285,7 +286,7 @@ function exponentialBase(r: Random): Built {
           ),
           wrong(
             `decreases by ${pT / 100}%`,
-            "Moving the decimal point two places turns 0.15 into 15%, not 0.15%.",
+            `Moving the decimal point two places turns ${rate} into ${pct}%, not ${pT / 100}%.`,
           ),
           wrong(
             `increases by ${(1000 - pT) / 10}%`,
@@ -384,8 +385,7 @@ function exponentialBase(r: Random): Built {
     },
     {
       label: tex(model(`t-${h}`)),
-      feedback:
-        `Subtracting from the exponent shifts the curve. The number of half-lives is ${tex("t")} divided by the half-life of ${h} hours.`,
+      feedback: `Subtracting from the exponent shifts the curve. The number of half-lives is ${tex("t")} divided by the half-life of ${h} hours.`,
     },
   ]);
   return {
@@ -585,8 +585,7 @@ function polynomialZeros(r: Random): Built {
           [-p, a],
           [-q, 1],
         ]),
-        feedback:
-          `The factor ${tex("x")} by itself is also set equal to 0, which gives the zero 0.`,
+        feedback: `The factor ${tex("x")} by itself is also set equal to 0, which gives the zero 0.`,
       },
       {
         label: zeroSet([
@@ -662,7 +661,12 @@ function polynomialZeros(r: Random): Built {
     variant,
     prompt: `Which value is a zero of ${tex(`f(x)=${poly}`)}?`,
     answer: "",
-    hint: `In ${tex(`f(x)=${poly}`)}, group the first two terms ${tex(`x^{3}${sg(a)}x^{2}`.replace('+1x','+x'))} and the last two terms ${tex(polyTex([{ c: -n * n, e: 1 }, { c: -a * n * n, e: 0 }]))}, and factor each pair. The two pairs should leave the same binomial factor.`,
+    hint: `In ${tex(`f(x)=${poly}`)}, group the first two terms ${tex(`x^{3}${sg(a)}x^{2}`.replace("+1x", "+x"))} and the last two terms ${tex(
+      polyTex([
+        { c: -n * n, e: 1 },
+        { c: -a * n * n, e: 0 },
+      ]),
+    )}, and factor each pair. The two pairs should leave the same binomial factor.`,
     explanation: [
       `Group: ${tex(`x^{2}(x${sg(a)})-${n * n}(x${sg(a)})`)}.`,
       `Factor out the common binomial: ${tex(`(x${sg(a)})(x^{2}-${n * n})`)} = ${tex(`(x${sg(a)})(x-${n})(x+${n})`)}.`,
@@ -1280,13 +1284,11 @@ function quadrilateralChoice(r: Random): Built {
     const pool: Wrong[] = [
       {
         label: mk(askA ? D : A),
-        feedback:
-          `That is the other angle. Solve for ${tex("x")}, then substitute into the angle that was asked for.`,
+        feedback: `That is the other angle. Solve for ${tex("x")}, then substitute into the angle that was asked for.`,
       },
       {
         label: mk(x),
-        feedback:
-          `That is the value of ${tex("x")}. The question asks for the angle measure.`,
+        feedback: `That is the value of ${tex("x")}. The question asks for the angle measure.`,
       },
     ];
     if (Number.isInteger(equalX) && equalX > 0)
@@ -1410,28 +1412,23 @@ function segmentProperty(r: Random): Built {
       choices: choicesFrom(r, correct, [
         {
           label: tex("PA=PC"),
-          feedback:
-            `${tex("C")} is not an endpoint of the segment that was bisected. Compare the distances to ${tex("A")} and ${tex("B")}.`,
+          feedback: `${tex("C")} is not an endpoint of the segment that was bisected. Compare the distances to ${tex("A")} and ${tex("B")}.`,
         },
         {
           label: tex("PB=PC"),
-          feedback:
-            `Nothing makes ${tex("P")} equally far from ${tex("B")} and ${tex("C")}. The bisected segment is ${tex("\\overline{AB}")}.`,
+          feedback: `Nothing makes ${tex("P")} equally far from ${tex("B")} and ${tex("C")}. The bisected segment is ${tex("\\overline{AB}")}.`,
         },
         {
           label: tex("\\angle APB=90^\\circ"),
-          feedback:
-            `The right angle is where the bisector meets ${tex("\\overline{AB}")}, not the angle at ${tex("P")}.`,
+          feedback: `The right angle is where the bisector meets ${tex("\\overline{AB}")}, not the angle at ${tex("P")}.`,
         },
         {
           label: tex("AB=2PA"),
-          feedback:
-            `${tex("P")} is not on ${tex("\\overline{AB}")}, so ${tex("PA")} is not half of ${tex("AB")}. Only the midpoint of ${tex("\\overline{AB}")} is half of ${tex("AB")} from ${tex("A")}.`,
+          feedback: `${tex("P")} is not on ${tex("\\overline{AB}")}, so ${tex("PA")} is not half of ${tex("AB")}. Only the midpoint of ${tex("\\overline{AB}")} is half of ${tex("AB")} from ${tex("A")}.`,
         },
         {
           label: tex("P\\text{ is the midpoint of }\\overline{AC}"),
-          feedback:
-            `${tex("P")} is where the bisector of ${tex("\\overline{AB}")} meets ${tex("\\overline{AC}")}. That point need not be the midpoint of ${tex("\\overline{AC}")}.`,
+          feedback: `${tex("P")} is where the bisector of ${tex("\\overline{AB}")} meets ${tex("\\overline{AC}")}. That point need not be the midpoint of ${tex("\\overline{AC}")}.`,
         },
       ]),
     };
@@ -1449,18 +1446,15 @@ function segmentProperty(r: Random): Built {
       const choices = choicesFrom(r, String(pa), [
         {
           label: String(x),
-          feedback:
-            `That is the value of ${tex("x")}. The question asks for the length ${tex("PA")}.`,
+          feedback: `That is the value of ${tex("x")}. The question asks for the length ${tex("PA")}.`,
         },
         {
           label: String(2 * pa),
-          feedback:
-            `${tex("PA")} and ${tex("PB")} are equal; their sum is both lengths together, not ${tex("PA")}.`,
+          feedback: `${tex("PA")} and ${tex("PB")} are equal; their sum is both lengths together, not ${tex("PA")}.`,
         },
         {
           label: String(pa + x),
-          feedback:
-            `Substitute ${tex("x")} into the expression for ${tex("PA")}; do not add ${tex("x")} to the answer.`,
+          feedback: `Substitute ${tex("x")} into the expression for ${tex("PA")}; do not add ${tex("x")} to the answer.`,
         },
         {
           label: String(pa - b),
@@ -1788,6 +1782,53 @@ function leaks(draft: Draft): boolean {
   return text.includes(correct);
 }
 
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const RG_OPENERS: Record<string, string[]> = {
+  "rg-exponential-base-rate": [
+    "In a model like $a(b)^t$, the base $b$ is the number the amount is multiplied by each period. A base greater than one means growth, and a base less than one means decay.",
+  ],
+  "rg-factor-completely": [
+    "Factoring completely means writing the expression as a product, things multiplied, until no factor can be broken down further with whole numbers.",
+  ],
+  "rg-polynomial-zeros-forms": [
+    "A zero of a polynomial is an $x$ that makes its value 0. In factored form, each factor that can equal 0 gives one zero.",
+  ],
+  "rg-exponent-monomial-power": [
+    "A power outside brackets applies to every factor inside. Multiply exponents for a power of a power, and add exponents when multiplying the same base.",
+  ],
+  "rg-rational-exponent-forms": [
+    "A fractional exponent is a root: the bottom number says which root, and the top number says which power.",
+  ],
+  "rg-polynomial-build": [
+    "Each zero $r$ of a polynomial gives a factor $(x - r)$. Multiplying the factors builds a polynomial with exactly those zeros.",
+  ],
+  "rg-solid-density": [
+    "Density is mass per unit of volume. So mass equals density times volume; find the volume first.",
+  ],
+  "rg-quadrilateral-choice": [
+    "A quadrilateral is a four-sided shape. Each special type is named by what is true of its sides, angles and diagonals, the segments joining opposite corners.",
+  ],
+  "rg-parallelogram-perpendicular": [
+    "A parallelogram has opposite sides parallel. Two lines are perpendicular, meeting at a right angle, when their slopes multiply to $-1$.",
+  ],
+  "rg-segment-property-choice": [
+    "Each special segment in a triangle has its own definition, such as a median (to the midpoint of the opposite side) or an altitude (at a right angle to the opposite side).",
+  ],
+  "rg-isosceles-right-decimal": [
+    "An isosceles right triangle has two equal legs and a right angle. Its hypotenuse, the longest side, is a leg times $\\sqrt{2}$.",
+  ],
+  "rg-triangle-area-sas": [
+    "When two sides and the angle between them are known, the area is half the product of the two sides times the sine of that angle.",
+  ],
+  "rg-triangle-third-side-test": [
+    "The triangle inequality says any two sides of a triangle must add to more than the third side. Otherwise the sides cannot meet.",
+  ],
+  "rg-altitude-segment": [
+    "The altitude to the hypotenuse of a right triangle splits it into two smaller triangles similar to the whole one, with the same shape.",
+  ],
+};
+
 /** Private model: the variant is for tests; only the public problem is served. */
 export function regentsGapCase(templateId: string, seed: string) {
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
@@ -1806,7 +1847,13 @@ export function regentsGapCase(templateId: string, seed: string) {
       throw error;
     }
     if (leaks(draft)) continue;
-    return { variant: draft.variant, problem: assemble(meta, seed, r, draft) };
+    return {
+      variant: draft.variant,
+      problem: assemble(meta, seed, r, {
+        ...draft,
+        explanation: [...(RG_OPENERS[templateId] ?? []), ...draft.explanation],
+      }),
+    };
   }
   throw new Error("Could not generate a problem without leaking the answer");
 }

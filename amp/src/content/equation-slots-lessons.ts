@@ -100,187 +100,204 @@ const entries: FormatLessonEntry[] = [
     id: "unit-fraction-division-slots",
     title: "Divide a unit fraction",
     summary:
-      "Share a unit fraction among equal groups, or count unit fractions in a whole number, and write the division.",
+      "A unit fraction, like $\\frac{1}{4}$, is one equal part of a whole. Share it, or count how many fit in some wholes: both are division.",
     objectives: [
-      "Write $\\frac{1}{d}\\div g$ for sharing a unit fraction equally and find $\\frac{1}{dg}$.",
-      "Write $w\\div\\frac{1}{d}$ for counting unit fractions in a whole number and find $w\\times d$.",
+      "Share a unit fraction among equal groups and write the division, such as $\\frac{1}{4}\\div 3=\\frac{1}{12}$.",
+      "Count how many unit fractions fit in a whole number and write the division, such as $3\\div\\frac{1}{4}=12$.",
     ],
     intuition:
-      "A unit fraction names one of $d$ equal parts of a whole, like $\\frac{1}{4}$. If you share $\\frac{1}{4}$ of a pan equally among 3 people, each part of the pan is cut into 3 smaller pieces, so a whole pan has $4\\times 3=12$ of the small pieces, and each share is $\\frac{1}{12}$. If you ask how many $\\frac{1}{4}$ mile laps make 3 miles, each mile holds 4 laps, so 3 miles hold $3\\times 4=12$ laps.",
+      "A fraction such as $\\frac{1}{4}$, one fourth, means 1 of 4 equal parts of a whole. The bottom number, 4, is called the denominator: it tells how many equal parts make the whole. A fraction with 1 on top is called a unit fraction. The sign ÷ means divided by. First story, sharing: share $\\frac{1}{4}$ of a pan of brownies equally among 3 people. Cut that fourth into 3 smaller pieces. Every fourth can be cut the same way, so the whole pan has $4\\times 3=12$ small pieces. Each person gets one: $\\frac{1}{4}\\div 3=\\frac{1}{12}$. Second story, counting: how many $\\frac{1}{4}$ mile laps make 3 miles? Each mile holds 4 laps, so 3 miles hold $3\\times 4=12$ laps: $3\\div\\frac{1}{4}=12$.",
     terms: ["unit-fraction", "quotient"],
     method: [
-      "Decide which story it is: sharing an amount among groups (the amount is divided by the number of groups), or counting how many small pieces fit in a larger amount (the larger amount is divided by the piece).",
-      "Write the division with the amount first and what it is divided by second.",
-      "Find the quotient: $\\frac{1}{d}\\div g=\\frac{1}{dg}$, and $w\\div\\frac{1}{d}=w\\times d$.",
+      "Decide which story it is. Sharing: a part is split among groups, so divide the part by the number of groups. Counting: you ask how many small parts fit in an amount, so divide the amount by the small part.",
+      "Write the division with the amount first and what you divide by second.",
+      "Find the answer. Sharing cuts each part into more pieces: $\\frac{1}{4}\\div 3=\\frac{1}{4\\times 3}=\\frac{1}{12}$. Counting multiplies: $3\\div\\frac{1}{4}=3\\times 4=12$.",
     ],
     watch:
-      "Dividing a unit fraction by a whole number makes it smaller; dividing a whole number by a unit fraction makes it larger.",
+      "Sharing among 2 or more groups makes each share smaller than the part you started with. Counting parts smaller than one whole, like fourths, gives more parts than wholes: 3 wholes hold 12 fourths.",
     principle:
-      "For positive integers, $\\frac{1}{d}\\div g=\\frac{1}{dg}$ because each of the $d$ parts is cut into $g$ equal pieces, and $w\\div\\frac{1}{d}=wd$ because each whole contains $d$ pieces of size $\\frac{1}{d}$. Division by $\\frac{1}{d}$ is multiplication by $d$.",
+      "Whole numbers are 0, 1, 2, 3 and so on. Let the letters $d$, $g$ and $w$ stand for whole numbers more than 0. Then $\\frac{1}{d}\\div g=\\frac{1}{d\\times g}$, because each of the $d$ parts is cut into $g$ equal pieces. And $w\\div\\frac{1}{d}=w\\times d$, because each whole holds $d$ pieces of size $\\frac{1}{d}$. So dividing by $\\frac{1}{d}$ is the same as multiplying by $d$.",
     example: {
       prompt:
         "A pie has $\\frac{1}{3}$ left and it is shared equally among 4 people. Write the division and find each share.",
       steps: [
-        "The amount shared is $\\frac{1}{3}$ and the number of people is 4, so the division is $\\frac{1}{3}\\div 4$.",
-        "Each third is cut into 4 smaller parts, so the whole pie has $3\\times 4=12$ of them.",
-        "Each share is $\\frac{1}{12}$ of the pie.",
+        "The amount shared is $\\frac{1}{3}$ of a pie, and there are 4 people. So the division is $\\frac{1}{3}\\div 4$.",
+        "Cut each third of the pie into 4 smaller pieces, so each person can get one. The whole pie then has $3\\times 4=12$ small pieces.",
+        "Each person gets one small piece, so each share is $\\frac{1}{12}$ of the pie.",
       ],
       answer: "$\\frac{1}{3}\\div 4=\\frac{1}{12}$.",
     },
     methodTitle: "Cut each part, or count the parts",
     methodText: [
-      "Draw a whole as a bar. For sharing, split the shaded part into the number of groups; for counting, split each whole into pieces and count the pieces in the larger amount.",
-      "Check by multiplying: $\\frac{1}{12}\\times 4=\\frac{1}{3}$ and $12\\times\\frac{1}{4}=3$.",
+      "Draw the whole as a bar. To share equally, split the shaded part into equal pieces, one for each group. To count, split each whole into pieces and count the pieces in the larger amount.",
+      "Check by multiplying back. One share times the number of people gives the part you started with: $\\frac{1}{12}\\times 4=\\frac{1}{3}$. The number of laps times one lap gives the distance: $12\\times\\frac{1}{4}=3$.",
     ],
     formal:
-      "Division by $g$ is the inverse of multiplication by $g$: $\\frac{1}{d}\\div g=q$ means $q\\cdot g=\\frac{1}{d}$, which gives $q=\\frac{1}{dg}$. Likewise $w\\div\\frac{1}{d}=q$ means $q\\cdot\\frac{1}{d}=w$, so $q=wd$.",
+      "Let $d$ be the number of equal parts in a whole and $g$ the number of people, both more than 0. Let $q$ be each person's share. Dividing by $g$ undoes multiplying by $g$, so $\\frac{1}{d}\\div g=q$ means $q\\times g=\\frac{1}{d}$. Cut each of the $d$ parts into $g$ equal pieces. The whole then has $d\\times g$ pieces, so $q=\\frac{1}{d\\times g}$. For counting, let $w$ be the number of wholes and $q$ the number of pieces. Then $w\\div\\frac{1}{d}=q$ means $q\\times\\frac{1}{d}=w$. Each whole holds $d$ pieces, so $q=w\\times d$.",
     pitfalls: [
-      "Do not multiply the denominator when the number of groups is not a divisor: sharing among 4 people multiplies the denominator by 4.",
-      "Do not give $\\frac{w}{d}$ for the number of laps; laps are counted by multiplying by $d$.",
+      "When you share $\\frac{1}{3}$ among 4 people, multiply the denominator, the bottom number, by 4. Each share is $\\frac{1}{12}$, not $\\frac{1}{7}$ or $\\frac{4}{3}$.",
+      "To count $\\frac{1}{4}$ mile laps in 3 miles, multiply: $3\\times 4=12$ laps. The answer is not $\\frac{3}{4}$.",
     ],
     parentGuide:
-      "Fold a strip of paper into fourths, shade one fourth, and fold that fourth again to share it; count the folded pieces in the whole strip.",
+      "Fold a strip of paper into fourths and shade one fourth. Fold that fourth again to share it. Then count how many of the small pieces fit in the whole strip.",
+    senses: {
+      whole: "whole",
+      part: "part",
+      fourth: "fourth",
+      fourths: "fourth",
+      "one fourth": "fourth",
+      third: "third",
+      "more than": "more-than",
+    },
   },
   {
     id: "array-division-slots",
     title: "Divide with an array",
     summary:
-      "An array of equal rows has a total; dividing the total by the rows or by the number in a row gives the other factor.",
+      "An array has the same number in every row. Total ÷ rows gives the number in each row. Total ÷ number in each row gives the number of rows.",
     objectives: [
-      "Find the total of an array from its rows and the number in each row.",
-      "Write the division that finds either the number of rows or the number in each row.",
+      "Find the total of an array from its number of rows and the number in each row.",
+      "Write the division that finds the number of rows or the number in each row.",
     ],
     intuition:
-      "An array is objects arranged in equal rows. If there are 7 rows with 8 counters in each, there are $7\\times 8=56$ counters. Division undoes multiplication: if you know the total and the number in each row, $56\\div 8$ tells how many rows. If you know the total and the number of rows, $56\\div 7$ tells how many are in each row.",
-    terms: ["array", "sum"],
+      "An array is objects set out in rows, with the same number in every row. A row goes across. Say there are 7 rows with 8 counters, small counting pieces, in each row. The sign × is read “times,” so there are $7\\times 8=56$ counters in all. Multiplication counts all the things in equal groups. To divide means to split a total into equal groups, and ÷ is read “divided by.” Division undoes multiplication: it starts from the total. If you know the total and the number in each row, $56\\div 8=7$ tells how many rows. If you know the total and the number of rows, $56\\div 7=8$ tells how many are in each row. The answer to a division is called the quotient.",
+    terms: ["array", "quotient"],
     method: [
       "Multiply the number of rows by the number in each row to find the total.",
-      "Write the total first, then divide by the known number: the number in a row, or the number of rows.",
-      "Write the quotient: it is the other factor.",
+      "Write the total first. Then divide by the number you know: the number in each row, or the number of rows.",
+      "The quotient, the answer to the division, is the count you did not know: the rows or the number in each row. Check: the quotient times the number you divided by makes the total.",
     ],
     watch:
-      "The total goes first in the division. Dividing by the total gives a number less than 1, not a count.",
+      "Put the total first in the division. It counts all the counters, so it is never smaller than the other two numbers.",
     principle:
-      "If $r\\times c=T$ with $r$ and $c$ positive whole numbers, then $T\\div c=r$ and $T\\div r=c$. These two divisions and the two multiplications $r\\times c$ and $c\\times r$ are a fact family.",
+      "The numbers 6, 9 and 54 make four facts, or true number sentences: $6\\times 9=54$, $9\\times 6=54$, $54\\div 9=6$ and $54\\div 6=9$. Four facts made from the same three numbers are called a fact family. In general, let $r$ stand for the number of rows and $c$ for the number in each row, both whole numbers more than 0, like 6 and 9. Let $T$ be the total. If $r\\times c=T$, then $T\\div c=r$ and $T\\div r=c$.",
     example: {
       prompt:
         "An array has 6 rows with 9 counters in each row. Write the division that finds the number of rows.",
       steps: [
-        "The total is $6\\times 9=54$ counters.",
-        "To find the number of rows, divide the total by the number in each row: $54\\div 9$.",
-        "$54\\div 9=6$, which is the number of rows.",
+        "Each of the 6 rows has 9 counters, so multiply to find the total: $6\\times 9=54$ counters.",
+        "To find the number of rows, divide the total by the number in each row: $54\\div 9$. This asks how many groups of 9 make 54.",
+        "$54\\div 9=6$, because $6\\times 9=54$. That is the number of rows.",
       ],
       answer: "$54\\div 9=6$.",
     },
     methodTitle: "A fact family",
     methodText: [
-      "Check by multiplying the quotient by the divisor: $6\\times 9=54$.",
-      "Switching which factor you divide by gives the other division in the fact family: $54\\div 6=9$.",
+      "Check: 6 rows of 9 must hold all 54 counters. So multiply the quotient by the number you divided by: $6\\times 9=54$.",
+      "A fact family is the four facts, or true number sentences, made from the same three numbers: $6\\times 9=54$, $9\\times 6=54$, $54\\div 9=6$ and $54\\div 6=9$. Dividing 54 by 9 gives the 6 rows. Dividing 54 by 6 gives the 9 counters in each row.",
     ],
     formal:
-      "In the multiplication fact $r\\times c=T$, division is defined by $T\\div c=r$ exactly when $r\\times c=T$, for $c\\ne0$. Multiplication is commutative, so $c\\times r=T$ also, giving $T\\div r=c$.",
+      "Say an array has $r$ rows with $c$ in each row, and $T$ in all. These letters stand for whole numbers more than 0. Division undoes multiplication: $T\\div c=r$ means exactly that $r\\times c=T$. The order of the factors, the numbers you multiply, does not change the product, the answer. So $c\\times r=T$ too. Since $r$ is not 0, we can divide by it: $T\\div r=c$.",
     pitfalls: [
-      "Do not divide a number that is smaller than the divisor: the total is the greatest number in the equation.",
-      "Do not use the sum of the rows and columns for the total.",
+      "Put the total first. In $54\\div 9$, the total 54 comes before the number you divide by.",
+      "Find the total by multiplying, not adding: 6 rows of 9 is $6\\times 9=54$, not $6+9=15$.",
     ],
     parentGuide:
-      "Lay out counters in rows and ask your learner to cover one row and say how many counters would be left to share into rows.",
+      "Lay out counters in rows. Ask your learner how many there are in all. Then ask which division finds the number of rows, and which finds the number in each row.",
+    senses: {
+      factor: "factor-number",
+      product: "product-multiply",
+      "more than": "more-than",
+    },
+    noLink: ["change"],
   },
   {
     id: "story-operations-slots",
     title: "Choose the operations of a story",
     summary:
-      "Read how the quantities in a story combine and choose multiplication, addition or subtraction for each step.",
+      "Read how a story's numbers fit together. Use × for equal groups (the same number in each), + for extras and − for items taken away.",
     objectives: [
-      "Choose multiplication for equal groups and addition or subtraction for extras and amounts removed.",
-      "Check an equation with the total in the story.",
+      "Choose multiplication for equal groups, and addition or subtraction for extra items and items taken away.",
+      "Check an equation against the total in the story.",
     ],
     intuition:
-      "A story combines quantities in a few ways. Equal groups are multiplied: 4 bags with 6 balls in each is $4\\times 6$. Extra items are added, and items given away are subtracted. When groups are made of groups, such as courts with bags with balls, the sizes multiply again. Read the story in order and decide what each number does to the total.",
+      "A story puts numbers together in a few ways. Equal groups are groups that all hold the same number. They are multiplied: 4 bags with 6 balls in each is $6+6+6+6=24$, written $4\\times 6$ and read “4 times 6.” Extra items are added, and items given away are subtracted. Adding, subtracting and multiplying are called operations. The total is how many there are in all. Sometimes there are groups of groups, like 3 courts, each with 4 bags of 6 balls. Then you multiply again: $3\\times 4=12$ bags, and $12\\times 6=72$ balls. So $3\\times 4\\times 6=72$. An equation is a number sentence with an equals sign, like $4\\times 6+5=29$. Multiply before you add or subtract. That is part of the order of operations, the agreed order for working out a number sentence.",
     terms: ["equal-groups", "order-of-operations"],
     method: [
       "Find the numbers in the story and what each one counts.",
-      "For each pair, choose the operation: multiply for equal groups, add for more, subtract for fewer.",
-      "Compute with the order of operations and check that you reach the total in the story.",
+      "Choose a sign to go between the numbers: × for equal groups, + for extra items, − for items taken away.",
+      "Work it out, multiplying first. Check that you get the number after the equals sign.",
     ],
     watch:
-      "Multiply before you add or subtract. Test your choice: it must give exactly the total shown.",
+      "Choose each operation from what happens in the story. Then multiply before you add or subtract, and check the number after the equals sign.",
     principle:
-      "A total made of $n$ groups of $g$ and $e$ extra is $ng+e$, and of $n$ groups of $g$ with $e$ removed is $ng-e$. In an expression without parentheses, multiplication is done before addition and subtraction.",
+      "4 bags of 6 balls and 5 more make $4\\times 6+5=29$. Giving 5 away instead leaves $4\\times 6-5=19$. Multiply first, then add or subtract, unless parentheses ( ) show a different order.",
     example: {
       prompt:
         "A coach buys 4 bags with 6 balls in each bag and 5 more loose balls. Which operations find the total?",
       steps: [
-        "4 bags with 6 balls in each is an equal-groups story: $4\\times 6$.",
-        "The 5 loose balls are extra, so they are added.",
-        "$4\\times 6+5=24+5=29$ balls.",
+        "4 bags with 6 balls in each are equal groups, so multiply: $4\\times 6$.",
+        "The 5 loose balls are extra, so add them.",
+        "Multiply first, then add: $4\\times 6+5=24+5=29$ balls.",
       ],
       answer: "$4\\times 6+5=29$.",
     },
     methodTitle: "Groups first, then extras",
     methodText: [
-      "Say each step in words before choosing: groups of, plus, minus.",
-      "Check with the order of operations: in $4\\times 6+5$ the product is done first.",
+      "Say each step in words before you choose: groups of, plus, minus.",
+      "Multiply first. In $4\\times 6+5$, find $4\\times 6=24$ before you add 5.",
     ],
     formal:
-      "Multiplication is repeated addition of equal groups, and it binds more tightly than addition and subtraction, so $ng+e$ is $(ng)+e$. Different choices of operations give different totals, so the total identifies the choice.",
+      "Multiplication is a quick way to add equal groups: $4\\times 6=6+6+6+6$. It is done before addition and subtraction. So in $4\\times 6+5$, find $4\\times 6=24$ first, then add 5. Choose each operation by what happens in the story. A total alone may not decide it, because $2+2$ and $2\\times 2$ both make 4.",
     pitfalls: [
-      "Do not add the group size to the number of groups; equal groups are multiplied.",
-      "Do not subtract when items are added to the total.",
+      "Do not add the group size to the number of groups. Equal groups are multiplied: 4 bags of 6 is $4\\times 6=24$, not $4+6=10$.",
+      "Do not subtract items that are added to the total.",
     ],
     parentGuide:
       "Act the story out with small objects and ask what happens to the pile at each step.",
+    noLink: ["leaves", "part"],
   },
   {
     id: "delivery-operations-slots",
     title: "Choose the operations for adding and removing",
     summary:
-      "Read a story in order and choose addition or subtraction for each change to the starting amount.",
+      "Read a story in order. Start with the first amount, add each amount that arrives and subtract each amount that leaves.",
     objectives: [
       "Choose addition for amounts that arrive and subtraction for amounts that leave.",
-      "Write a one-line equation for a start amount with several changes and find the amount left.",
+      "Write one equation for a starting amount with several changes, and find the amount left.",
     ],
     intuition:
-      "A starting amount changes step by step. Items that arrive are added to what you have, and items that leave are subtracted. Reading the story in order gives the equation in order: 18 tulips, plus 25 from one farm, plus 14 from another, minus 30 sold. The amount left is the result of those steps.",
+      "The starting amount is what you have at the beginning. It changes step by step. Items that arrive are added, and items that leave are subtracted. Adding and subtracting are called operations. Write the number sentence in the story's order: the starting number, then + and each amount that arrives, or − and each amount that leaves. A shop has 18 tulips. One farm brings 25 more and another brings 14 more. Then 30 are sold: $18+25+14-30$. Work from left to right, the order things happen in the story: $18+25=43$, $43+14=57$, $57-30=27$. An equation is a number sentence with an equals sign: $18+25+14-30=27$. So 27 tulips are left.",
     terms: [
       [
         "change",
-        "A delivery is items arriving, a change that increases the amount.",
+        "A delivery is items arriving, a change that makes the amount bigger.",
       ],
-      "change",
     ],
     method: [
       "Write the starting amount first.",
-      "Read each change in order: arrival means add, leaving or loss means subtract.",
-      "Compute from left to right and check the result with the story.",
+      "Read each change in order. Something arrives: add. Something is sold, lost or given away: subtract.",
+      "Work from left to right, one step at a time. Check the result with the story.",
     ],
     watch:
-      "Check each change against the story: a number that wilts, sells or is given away is subtracted, even if the sentence is about a delivery.",
+      "Check each number against the story. Flowers that wilt, are sold or are given away are subtracted, even in a sentence about a delivery.",
     principle:
-      "Adding and subtracting are done from left to right, so $a+b-c$ means $(a+b)-c$. The result is the net change applied to $a$: the sum of arrivals minus the sum of losses.",
+      "Parentheses ( ) show what to work out first. Add and subtract from left to right: $18+25-30$ means $(18+25)-30=43-30=13$. With letters that stand for numbers, $a+b-c$ means $(a+b)-c$. The result is the start, plus everything that arrived, minus everything that left.",
     example: {
       prompt:
         "A shop has 18 tulips. One farm delivers 25 more, another delivers 14 more, and 30 are sold. How many are left?",
       steps: [
-        "Start with 18. The two deliveries are added: $18+25+14$.",
-        "The 30 sold are subtracted: $18+25+14-30$.",
-        "$18+25=43$, $43+14=57$, $57-30=27$ tulips.",
+        "Start with 18. The two deliveries arrive, so add them: $18+25+14$.",
+        "The 30 sold leave the shop, so subtract them: $18+25+14-30$.",
+        "Work from left to right: $18+25=43$, $43+14=57$, $57-30=27$ tulips.",
       ],
       answer: "$18+25+14-30=27$.",
     },
     methodTitle: "Follow the story in order",
     methodText: [
-      "Write the equation in the order of the story, then compute step by step.",
-      "A check: the amount left cannot be greater than the start plus all arrivals.",
+      "Write the equation in the order of the story, then work it out step by step.",
+      "A check: the amount left can never be more than the start plus all the arrivals.",
     ],
     formal:
-      "Integer addition and subtraction are performed left to right: $a\\pm b\\pm c=((a\\pm b)\\pm c)$. Subtracting $c$ is adding $-c$, so the result equals $a$ plus the sum of the signed changes.",
+      "Parentheses ( ) show what to work out first. Addition and subtraction are done from left to right, in the order of the story: $18+25-30=(18+25)-30=43-30=13$. With letters that stand for numbers, $a+b-c=(a+b)-c$. Taking away undoes adding. So the result is the start, plus every amount that arrived, minus every amount that left.",
     pitfalls: [
-      "Do not subtract an arrival or add a loss.",
-      "Do not skip a change: each number in the story has an operation in front of it.",
+      "Add what arrives and subtract what leaves, never the other way around.",
+      "Do not skip a change. Each number after the start needs its own sign, plus (+) or minus (−), in front of it.",
     ],
     parentGuide:
-      "Use coins or counters: move counters onto the table for each arrival and away for each loss, saying the operation as you move.",
+      "Use coins or counters. Move counters onto the table for each arrival and away for each loss. Say plus or minus as you move them.",
+    senses: { change: "change", changes: "change", "more than": "more-than" },
+    noLink: ["leaves"],
   },
   {
     id: "table-equation-slots",
@@ -332,45 +349,47 @@ const entries: FormatLessonEntry[] = [
     id: "rule-table-fill-slots",
     title: "Complete a table from its rule",
     summary:
-      "Use a rule to find an output from an input, and undo the rule to find an input from an output.",
+      "A rule, like “add 7,” turns an input number into an output number. Use the rule to find an output. Undo it to find an input.",
     objectives: [
-      "Find $y$ for a given $x$ in a rule that adds, subtracts or multiplies.",
-      "Find $x$ for a given $y$ by undoing the rule with the opposite operation.",
+      "Find $y$ for a given $x$ when the rule adds, subtracts or multiplies.",
+      "Find $x$ for a given $y$ by undoing the rule with the inverse operation.",
     ],
     intuition:
-      "A rule such as $y=x+7$ tells how to get the output $y$ from the input $x$: add 7. To fill a missing output, put the input into the rule. To fill a missing input, work backward: if $y=15$ and the rule added 7, then $x$ was $15-7=8$. Addition and subtraction undo each other, and so do multiplication and division.",
+      "A rule is a set of steps that turns one number into another, like “add 7.” The number you start with is called the input. The number you get is called the output. With “add 7,” input 5 gives output $5+7=12$. We write this rule as $y=x+7$: the letter $x$ stands for the input, and $y$ stands for the output. The rule $y=3x$ means $y$ is 3 times $x$. A table lists the inputs in one row and their outputs in the row below. To fill a missing output, put the input into the rule. To fill a missing input, work backward. If the output is 15 and the rule added 7, the input was $15-7=8$. The inverse operation is the step that undoes another. Adding and subtracting undo each other, and so do multiplying and dividing.",
     terms: ["input", "output", "inverse-operation"],
     method: [
-      "For a missing $y$, replace $x$ in the rule by the given number and compute.",
-      "For a missing $x$, undo the rule: subtract if the rule adds, add if it subtracts, divide if it multiplies.",
-      "Put each value back into the rule to check it.",
+      "For a missing $y$, put the given $x$ into the rule and work it out.",
+      "For a missing $x$, undo the rule: subtract if the rule adds, add if it subtracts, and divide by the same number if it multiplies.",
+      "Put each number back into the rule to check it.",
     ],
     watch:
-      "To find an input, do the opposite operation. Adding 7 again to a given $y$ gives the wrong input.",
+      "To find an input, use the inverse operation, the step that undoes the rule. Adding 7 again to an output gives a wrong input.",
     principle:
-      "A rule $y=f(x)$ pairs each input with one output. For $y=x+k$, $y=x-k$ and $y=kx$, the inputs are recovered from the outputs by $x=y-k$, $x=y+k$ and $x=y/k$.",
+      "The rule $y=x+7$ gives one output for each input, and subtracting 7 brings you back: $x=y-7$. Let $k$ stand for the number in a rule, like 7 or 3. Writing $kx$ means $k$ times $x$. For $y=x+k$, subtract $k$ to find the input: $x=y-k$. For $y=x-k$, add $k$: $x=y+k$. For $y=kx$, divide by $k$: $x=y\\div k$, when $k$ is not 0.",
     example: {
       prompt: "Use $y=x+7$ to find $y$ when $x=5$ and $x$ when $y=15$.",
       steps: [
-        "For $x=5$: $y=5+7=12$.",
-        "For $y=15$: undo adding 7 by subtracting, $x=15-7=8$.",
-        "Check: $8+7=15$.",
+        "For $x=5$, put 5 into the rule: $y=5+7=12$.",
+        "For $y=15$, undo adding 7 by subtracting 7: $x=15-7=8$.",
+        "Check the input in the rule: $8+7=15$. It matches.",
       ],
       answer: "$y=12$ and $x=8$.",
     },
     methodTitle: "Forward and backward",
     methodText: [
-      "Mark the table cells you must fill, then label each one as 'input known' or 'output known'.",
-      "Check each missing value by putting the input into the rule.",
+      "Find the empty boxes in the table. For each one, decide whether you know its input or its output.",
+      "Check each number you found by putting its input into the rule.",
     ],
     formal:
-      "The functions $x\\mapsto x+k$, $x\\mapsto x-k$ and $x\\mapsto kx$ (with $k\\ne0$) are one-to-one, so each output comes from exactly one input, found by applying the inverse function.",
+      "Let $k$ stand for the number a rule adds, subtracts or multiplies by, like 7 or 3. A rule that adds $k$ never gives the same output for two different inputs. The same is true for subtracting $k$, and for multiplying by $k$ when $k$ is not 0. So each output comes from exactly one input. You find it with the inverse operation, the step that undoes the rule.",
     pitfalls: [
-      "Do not apply the rule again to an output; that gives the next output, not the input.",
-      "Do not mix up the rows: the first row is $x$ and the second row is $y$.",
+      "Do not use the rule again on an output. That gives a new output, not the input.",
+      "Keep the rows straight: the first row is $x$, the input, and the second row is $y$, the output.",
     ],
     parentGuide:
-      "Ask your learner to say the rule as 'add 7' and then 'to go back, take 7 away'.",
+      "Ask your learner to say the rule out loud, such as “add 7.” Then ask how to go back: “take 7 away.”",
+    senses: { rule: "rule", rules: "rule" },
+    noLink: ["opposite"],
   },
   {
     id: "unit-price-sentence-slots",

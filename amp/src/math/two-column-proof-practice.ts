@@ -1116,11 +1116,19 @@ function angleCase(r: Random, kind: AngleProof): ProofCase {
 
 /* ------------------------------------------------------------ render */
 
+/** Plain openings: what a two-column proof is and the terms it relies on
+ * (issue #1781). */
+const PROOF_FORM =
+  "A two-column proof lists each statement beside its reason: a given, a definition or a theorem.";
+const CONGRUENCE_OPENER = `${PROOF_FORM} SSS, SAS, ASA and AAS each name three matching parts, sides or angles, that prove two triangles congruent.`;
+const ANGLE_OPENER = `${PROOF_FORM} Vertical angles sit opposite each other where two lines cross. A linear pair forms a straight line, $180^\\circ$.`;
+
 function renderProof(
   c: ProofCase,
   mode: "build" | "fill" | "order",
   r: Random,
   lead: string,
+  opener: string,
 ) {
   const model = assemble(r, c.statements, c.reasons, c.path, c.goal);
   const built = proofWork(
@@ -1143,7 +1151,7 @@ function renderProof(
   return workSurface(built, {
     prompt: `${lead} Given: ${given}. Prove: ${c.goalTex}. ${task}`,
     hint: c.hint,
-    explanation: [...c.why, "A complete proof:", ...lines],
+    explanation: [opener, ...c.why, "A complete proof:", ...lines],
     figure: sceneFigure(c.scene),
   });
 }
@@ -1166,7 +1174,8 @@ const congruence = chainFamily({
     const cpctc = axes.config === "parallel-sides" && r(0, 1) === 1;
     return congruenceCase(r, axes.config, cpctc);
   },
-  render: (c, axes, r) => renderProof(c, axes.mode, r, "Use the figure."),
+  render: (c, axes, r) =>
+    renderProof(c, axes.mode, r, "Use the figure.", CONGRUENCE_OPENER),
   variant: (c) => `${c.config}${c.goal === "seg" ? "-cpctc" : ""}`,
 });
 const angles = chainFamily({
@@ -1186,6 +1195,7 @@ const angles = chainFamily({
       axes.mode,
       r,
       "In the figure, lines $\\ell$ and $m$ are cut by transversal $t$.",
+      ANGLE_OPENER,
     ),
   variant: (c) => c.config,
 });

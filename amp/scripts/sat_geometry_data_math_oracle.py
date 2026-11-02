@@ -77,7 +77,7 @@ def solve_trig(public):
     if (m := re.fullmatch(r'A boat on the level sea is (\d+) meters from the base of a vertical cliff\. From the top of the cliff, the angle of depression to the boat is (\d+)°\. How high is the cliff, in meters\? Round to the nearest tenth\.', t)):
         answer = int(m[1]) * math.tan(rad(int(m[2])))
         unit = 'meters'
-    elif (m := re.fullmatch(r'A ladder must reach a window (\d+) feet above level ground and make a (\d+)° angle with the ground\. How long must the ladder be, in feet\? Round to the nearest tenth\.', t)):
+    elif (m := re.fullmatch(r'A ladder must reach a window (\d+) feet above level ground and make an? (\d+)° angle with the ground\. How long must the ladder be, in feet\? Round to the nearest tenth\.', t)):
         answer = int(m[1]) / math.sin(rad(int(m[2])))
         unit = 'feet'
     elif (m := re.fullmatch(r'From the top of a vertical cliff (\d+) meters high, the angle of depression to a boat on the level sea is (\d+)°\. How far is the boat from the base of the cliff, in meters\? Round to the nearest tenth\.', t)):
@@ -86,10 +86,10 @@ def solve_trig(public):
     elif (m := re.fullmatch(r'A vertical pole (\d+) meters tall casts a shadow (\d+) meters long on level ground\. What is the angle of elevation of the sun, in degrees\? Round to the nearest tenth\.', t)):
         answer = math.degrees(math.atan2(int(m[1]), int(m[2])))
         unit = '°'
-    elif (m := re.fullmatch(r'A (\d+)-foot ladder leans against a vertical wall and makes a (\d+)° angle with the level ground\. How high up the wall does the ladder reach, in feet\? Round to the nearest tenth\.', t)):
+    elif (m := re.fullmatch(r'An? (\d+)-foot ladder leans against a vertical wall and makes an? (\d+)° angle with the level ground\. How high up the wall does the ladder reach, in feet\? Round to the nearest tenth\.', t)):
         answer = int(m[1]) * math.sin(rad(int(m[2])))
         unit = 'feet'
-    elif (m := re.fullmatch(r'A (\d+)-foot ladder leans against a vertical wall and makes a (\d+)° angle with the level ground\. How far is the foot of the ladder from the wall, in feet\? Round to the nearest tenth\.', t)):
+    elif (m := re.fullmatch(r'An? (\d+)-foot ladder leans against a vertical wall and makes an? (\d+)° angle with the level ground\. How far is the foot of the ladder from the wall, in feet\? Round to the nearest tenth\.', t)):
         answer = int(m[1]) * math.cos(rad(int(m[2])))
         unit = 'feet'
     elif (m := re.fullmatch(r'A straight ramp rises (\d+) feet over a horizontal distance of (\d+) feet\. What angle does the ramp make with the level ground, in degrees\? Round to the nearest tenth\.', t)):

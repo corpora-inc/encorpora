@@ -81,9 +81,10 @@ export const heightModelChain = chainFamily({
         answer: String(m.time),
         hint: `At $t=0$ the ball is on the platform, ${c} ${unit} up. Put $t=0$ into $h=-${m.coefficient}t^2+c$ to find the constant $c$ before you solve for the time.`,
         explanation: [
+          `The model $h=-${m.coefficient}t^2+c$ gives the height $h$ after $t$ seconds. The number $c$ is the height when no time has passed.`,
           `At $t=0$ the height is ${c}, so $c=${c}$ and the model is $h=-${m.coefficient}t^2+${c}$.`,
           `The ball reaches the ground when $h=0$: $-${m.coefficient}t^2+${c}=0$, so $${m.coefficient}t^2=${c}$.`,
-          `Divide by ${m.coefficient}: $t^2=${m.time * m.time}$. Time is positive, so $t=${m.time}$.`,
+          `Divide both sides by ${m.coefficient}: $t^2=${m.time * m.time}$. The two square roots are ${m.time} and its negative, but time cannot be negative, so $t=${m.time}$.`,
           `The ball reaches the ground after ${m.time} seconds.`,
         ],
         label: "Answer (seconds)",
@@ -101,7 +102,8 @@ export const heightModelChain = chainFamily({
       answer: decimalText(rounded, 10),
       hint: `Use the vertex form $h=a(x-${x0})^2+${k}$. The landing point $(${zeroAt}, 0)$ must satisfy it, so substitute $x=${zeroAt}$ and $h=0$ to find $a$ first.`,
       explanation: [
-        `The vertex is $(${x0}, ${k})$, so $h=a(x-${x0})^2+${k}$.`,
+        `The path is a parabola, a U-shaped curve, here upside down. Its vertex, the highest point, is $(${x0}, ${k})$.`,
+        `Vertex form writes the height as $h=a(x-${x0})^2+${k}$, where the number $a$ sets how wide the parabola is. Find $a$ from one more point.`,
         `The ball lands at $(${zeroAt}, 0)$: $0=${d * d}a+${k}$, so $a=-\\frac{${k}}{${d * d}}$.`,
         `At $x=${query}$, $x-${x0}=${u}$, so $h=-\\frac{${k}}{${d * d}}\\cdot${u * u}+${k}=\\frac{${k * (d * d - u * u)}}{${d * d}}\\approx${(num / (den * 10)).toFixed(3)}$ before rounding.`,
         `Rounded to the nearest tenth, the height is ${decimalText(rounded, 10)} ${unit}.`,

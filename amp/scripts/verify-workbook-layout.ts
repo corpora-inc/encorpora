@@ -47,22 +47,37 @@ try {
   await browser.close();
 }
 // Every lesson card fits one page with its heading, at every band.
+const cardProofs = [1, 4, 7, 10].flatMap((level) =>
+  (["letter", "a4"] as PaperSize[]).map((paper) => [level, paper] as const),
+);
 {
   const proof = await chromium.launch({ headless: true });
   try {
-    for (const [level, paper] of [
-      [1, "letter"],
-      [4, "letter"],
-      [7, "letter"],
-      [10, "letter"],
-      [1, "a4"],
-    ] as [number, PaperSize][]) {
+    // Every print band (K–2, 3–5, 6–8, high school) on both paper sizes.
+    for (const [level, paper] of cardProofs) {
       const page = await proof.newPage();
       await page.emulateMedia({ media: "print" });
       await page.setContent(lessonCardProofHtml(lessons, { level, paper }), {
         waitUntil: "load",
       });
       await waitForWorkbookLayout(page, 300_000);
+      // Trimming never leaves a gap: no list item (step, paragraph, sentence,
+      // word) shows after one that was left out.
+      const gaps = await page.evaluate(() =>
+        [
+          ...document.querySelectorAll(
+            ".wb-example-steps > li:not([data-steps-more]), .wb-lesson-idea > p, .wb-lesson-idea > p > span, .wb-words dl > div",
+          ),
+        ]
+          .filter(
+            (el) =>
+              !el.hasAttribute("data-trimmed") &&
+              !!el.previousElementSibling?.hasAttribute("data-trimmed"),
+          )
+          .map((el) =>
+            el.closest("[data-lesson]")?.getAttribute("data-lesson"),
+          ),
+      );
       const over = await page.evaluate(() =>
         [...document.querySelectorAll(".wb-page")]
           .filter(
@@ -79,9 +94,9 @@ try {
           ),
       );
       await page.close();
-      if (over.length) failed++;
+      if (over.length || gaps.length) failed++;
       console.log(
-        `${over.length ? "FAIL" : "ok  "} ${lessons.length} lesson cards at level ${level} on ${paper}${over.length ? `: taller than a page: ${over.join(", ")}` : ""}`,
+        `${over.length || gaps.length ? "FAIL" : "ok  "} ${lessons.length} lesson cards at level ${level} on ${paper}${over.length ? `: taller than a page: ${over.join(", ")}` : ""}${gaps.length ? `: a gap after trimming: ${[...new Set(gaps)].join(", ")}` : ""}`,
       );
     }
   } finally {
@@ -115,8 +130,10 @@ for (const engine of [firefox, webkit]) {
 }
 if (failed) {
   console.error(
-    `${failed} of ${cases.length + 11} workbooks failed the layout check`,
+    `${failed} of ${cases.length + cardProofs.length + 6} checks failed the layout check`,
   );
   process.exit(1);
 }
-console.log(`${cases.length + 11} workbooks pass the layout check`);
+console.log(
+  `${cases.length + cardProofs.length + 6} checks pass the layout check`,
+);

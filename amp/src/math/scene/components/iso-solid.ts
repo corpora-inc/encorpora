@@ -1,3 +1,4 @@
+import { count } from "../../agreement";
 import { z } from "zod";
 import { base } from "../base";
 import { registerComponent, type Prim } from "../layout";
@@ -375,7 +376,7 @@ registerComponent("isoSolid", {
   describe(c, reveal) {
     const s = c.solid;
     if (s.form === "cubes")
-      return `A rectangular prism built from unit cubes: ${s.length} cubes long, ${s.width} cubes wide and ${s.height} cubes high. Some cubes are hidden behind the visible faces.${s.counts ? (reveal ? " Running totals beside each layer." : " Running totals beside each layer are to be found.") : ""}`;
+      return `A rectangular prism built from unit cubes: ${count(s.length, "cube")} long, ${count(s.width, "cube")} wide and ${count(s.height, "cube")} high. Some cubes are hidden behind the visible faces.${s.counts ? (reveal ? " Running totals beside each layer." : " Running totals beside each layer are to be found.") : ""}`;
     if (s.form === "steps")
       return `A stepped solid built from unit cubes, ${s.width} ${s.width === 1 ? "cube" : "cubes"} deep. From back to front its columns are ${s.columns.join(", ")} cubes high. Every column is filled to the bottom; some cubes are hidden behind the visible faces.`;
     if (s.form === "box") {

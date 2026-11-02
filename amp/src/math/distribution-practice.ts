@@ -269,20 +269,24 @@ function statisticalQuestion(r: Random): Draft {
     answer: "",
     hint: `“${no[0]}” has one answer. Look for the question whose answer collects many values that differ from one another.`,
     explanation: [
-      "A statistical question anticipates variability: answering it collects many data values that differ from one another.",
+      "A statistical question is one whose answer needs many data values that differ from one another. That spread of answers is called variability.",
       `“${yes}” collects one value from each member of a group, and those values vary.`,
-      "Each of the other questions has a single answer.",
+      "Each of the other questions has a single answer, so there is nothing to vary.",
+      `So “${yes}” is the statistical question.`,
     ],
     choices: [
       { label: yes, correct: true },
       ...no.map((label) => ({
         label,
-        feedback:
-          "This question has one answer, so there is no variability to describe. A statistical question collects many answers that are expected to differ.",
+        feedback: `“${label}” has one answer, so there is nothing that varies. A statistical question collects many answers that are expected to differ, like one answer from each person in a group.`,
       })),
     ],
   };
 }
+
+/** "1 pet", "5/3 pets": a dot-plot unit that agrees with its amount. */
+const unitFor = (amount: string, unit: string) =>
+  amount === "1" ? unit.replace(/s$/, "") : unit;
 
 function dotMean(r: Random): Draft {
   const { context, values, figure } = dotData(r, [6, 10], () => true);
@@ -296,9 +300,10 @@ function dotMean(r: Random): Draft {
     fraction: true,
     hint: `Add the value of every dot; a stack of 3 dots counts its value three times. Then share that total among the ${n} dots.`,
     explanation: [
-      `Add every dot: ${columns.map(([v, c]) => (c === 1 ? `${v}` : `${c} × ${v}`)).join(" + ")} = ${sum}.`,
-      `There are ${n} dots: ${sum} ÷ ${n} = ${shown(sum, n)}.`,
-      "The mean is the balance point: the distances of the dots below it add up to the distances of the dots above it.",
+      `The mean is the fair share: add all the values, then share the total equally among them.`,
+      `Each dot is one value, so a stack counts its value once per dot. Add every dot: ${columns.map(([v, c]) => (c === 1 ? `${v}` : `${c} × ${v}`)).join(" + ")} = ${sum}.`,
+      `There are ${n} dots, so share the total ${n} ways: ${sum} ÷ ${n} = ${shown(sum, n)}.`,
+      `The mean is ${shown(sum, n)} ${unitFor(shown(sum, n), context.unit)} per ${context.unit === "goals" ? "game" : "student"}.`,
     ],
   };
 }
@@ -318,10 +323,11 @@ function missingValue(r: Random): Draft {
     answer: `${missing}`,
     hint: `A mean of ${mean} for ${n} scores means the scores add to ${n} × ${mean}. Subtract the scores you know.`,
     explanation: [
+      `The mean is the total shared equally, so mean × number of scores = total.`,
       `The total of all ${n} scores is ${n} × ${mean} = ${total}.`,
       `The known scores add to ${sumText(known).split(" = ")[0]} = ${sum}.`,
-      `The other score is ${total} − ${sum} = ${missing}.`,
-      `Check: (${sum} + ${missing}) ÷ ${n} = ${mean}.`,
+      `The missing score is what is left of the total: ${total} − ${sum} = ${missing}.`,
+      `Check: (${sum} + ${missing}) ÷ ${n} = ${mean}. The other score is ${missing}.`,
     ],
   };
 }
@@ -379,8 +385,10 @@ function histogram(r: Random): Draft {
       answer: `${total}`,
       hint: "A bar’s height is how many data values fall in its interval. Add the heights of all the bars.",
       explanation: [
-        `Bar heights: ${counts.join(", ")}.`,
-        `${counts.join(" + ")} = ${total}.`,
+        `A histogram groups values into equal intervals. Each bar's height counts the values in its interval.`,
+        `Read the bar heights on the count scale: ${counts.join(", ")}.`,
+        `Every value is in exactly one bar, so add the heights: ${counts.join(" + ")} = ${total}.`,
+        `${c.total.replace(/^How many (\w+) are shown in the histogram\?$/, `${total} $1 are shown.`)}`,
       ],
     };
   }
@@ -392,8 +400,9 @@ function histogram(r: Random): Draft {
       answer: `${counts[i]}`,
       hint: `Find the bar that starts at ${edge(i)}. Its height on the count scale is the answer.`,
       explanation: [
+        `A histogram groups values into intervals. Each bar's height counts the values in its interval.`,
         `The interval from ${edge(i)} to ${edge(i + 1) - 1} is the bar from ${edge(i)} up to ${edge(i + 1)}.`,
-        `Its height is ${counts[i]}.`,
+        `Its height on the count scale is ${counts[i]}, so the answer is ${counts[i]}.`,
       ],
     };
   }
@@ -412,8 +421,9 @@ function histogram(r: Random): Draft {
     explanation: [
       `${atLeast ? `At least ${edge(k)}` : `${less[0]!.toUpperCase()}${less.slice(1)} ${edge(k)}`} means the bars ${atLeast ? `from ${edge(k)} up` : `below ${edge(k)}`}: ${(atLeast ? counts.map((_, i) => i).slice(k) : counts.map((_, i) => i).slice(0, k)).map(bar).join("; ")}.`,
       chosen.length > 1
-        ? `${chosen.join(" + ")} = ${total}.`
-        : `That is ${total}.`,
+        ? `Each bar's height counts its values, so add those heights: ${chosen.join(" + ")} = ${total}.`
+        : `That bar's height counts its values: ${total}.`,
+      `The answer is ${total}.`,
     ],
   };
 }
@@ -472,7 +482,8 @@ function boxPlot(r: Random): Draft {
     unit: c.unit,
   };
   const intro = `The box plot summarizes ${c.describe}.`;
-  const five = `Minimum ${min}, lower quartile ${q1}, median ${median}, upper quartile ${q3}, maximum ${max}.`;
+  const five = `A box plot marks five values: the least (minimum) ${min}, the lower quartile ${q1}, the median ${median}, the upper quartile ${q3}, and the greatest (maximum) ${max}.`;
+  const quarters = `The median is the middle value. The quartiles are the middles of the lower and upper halves, so the five marks cut the data into four quarters.`;
   const question = r(0, 5);
   if (question === 0)
     return {
@@ -480,7 +491,11 @@ function boxPlot(r: Random): Draft {
       figure,
       answer: `${median}`,
       hint: `The line inside the box marks the median. Read where it sits on the ${c.unit} scale.`,
-      explanation: [five, `The line inside the box is at ${median}.`],
+      explanation: [
+        five,
+        `The median, the middle value, is the line inside the box. It sits at ${median} on the scale.`,
+        `The median ${c.what} is ${median} ${c.unit}.`,
+      ],
     };
   if (question === 1)
     return {
@@ -488,7 +503,12 @@ function boxPlot(r: Random): Draft {
       figure,
       answer: `${q3 - q1}`,
       hint: `The box runs from the lower quartile to the upper quartile. Read both ends of the box on the ${c.unit} scale and subtract.`,
-      explanation: [five, `IQR = ${q3} − ${q1} = ${q3 - q1}.`],
+      explanation: [
+        five,
+        `The interquartile range (IQR) is the width of the box, the spread of the middle half: upper quartile minus lower quartile.`,
+        `IQR = ${q3} − ${q1} = ${q3 - q1}.`,
+        `The interquartile range is ${q3 - q1} ${c.unit}.`,
+      ],
     };
   if (question === 2)
     return {
@@ -496,7 +516,12 @@ function boxPlot(r: Random): Draft {
       figure,
       answer: `${max - min}`,
       hint: `The whiskers end at the least and greatest ${c.things}. Read both ends on the ${c.unit} scale and subtract.`,
-      explanation: [five, `Range = ${max} − ${min} = ${max - min}.`],
+      explanation: [
+        five,
+        `The range is the spread of all the data: the greatest value minus the least.`,
+        `Range = ${max} − ${min} = ${max - min}.`,
+        `The range is ${max - min} ${c.unit}.`,
+      ],
     };
   const [phrase, percent, why] = [
     [
@@ -522,6 +547,7 @@ function boxPlot(r: Random): Draft {
     hint: `The five marks split the ${c.things} into four parts, each about one quarter of the data. How many quarters are ${phrase}?`,
     explanation: [
       five,
+      quarters,
       why,
       `About ${percent}% of the ${c.things} are ${phrase}.`,
     ],
@@ -546,10 +572,11 @@ function dotMad(r: Random): Draft {
     fraction: true,
     hint: `First find the mean of the ${n} values. Then find how far each dot is from the mean, and average those ${n} distances.`,
     explanation: [
-      `Mean: (${sorted.join(" + ")}) ÷ ${n} = ${mean * n} ÷ ${n} = ${mean}.`,
-      `Distances from ${mean}: ${distances.join(", ")}.`,
-      `Mean distance: ${total} ÷ ${n} = ${shown(total, n)}.`,
-      "Distances are never negative; the mean absolute deviation is the typical distance from the mean.",
+      `The mean absolute deviation (MAD) is the average distance of the values from their mean. It tells how spread out the data are.`,
+      `First the mean, the fair share: (${sorted.join(" + ")}) ÷ ${n} = ${mean * n} ÷ ${n} = ${mean}.`,
+      `Next, how far each value is from ${mean}. A distance is never negative: ${distances.join(", ")}.`,
+      `Then average the distances: ${total} ÷ ${n} = ${shown(total, n)}.`,
+      `The mean absolute deviation is ${shown(total, n)} ${unitFor(shown(total, n), context.unit)}.`,
     ],
   };
 }
@@ -578,12 +605,14 @@ function dotIqr(r: Random): Draft {
     fraction: true,
     hint: `List the ${n} values in order from left to right. ${n % 2 ? "Leave out the middle one, then split" : "Split"} them into a lower and an upper half of ${half} values each, and find the median of each half.`,
     explanation: [
-      `In order: ${sorted.join(", ")}.`,
+      `The interquartile range (IQR) is the spread of the middle half: the upper quartile minus the lower quartile. A quartile is the median, or middle, of one half of the data.`,
+      `List the dots in order: ${sorted.join(", ")}.`,
       n % 2
         ? `${n} values: leave out the middle one, ${sorted[half]}. Lower half: ${lower.join(", ")}. Upper half: ${upper.join(", ")}.`
         : `${n} values split evenly. Lower half: ${lower.join(", ")}. Upper half: ${upper.join(", ")}.`,
-      `Q1 = ${q1.text}. Q3 = ${q3.text}.`,
+      `The lower quartile (Q1) is the middle of the lower half: ${q1.text}. The upper quartile (Q3) is the middle of the upper half: ${q3.text}.`,
       `IQR = ${shown(q3.n, 2)} − ${shown(q1.n, 2)} = ${shown(q3.n - q1.n, 2)}.`,
+      `The interquartile range is ${shown(q3.n - q1.n, 2)} ${unitFor(shown(q3.n - q1.n, 2), context.unit)}.`,
     ],
   };
 }
@@ -623,9 +652,10 @@ function typicalValue(r: Random): Draft {
     answer: "",
     hint: `One of the ${n} students read ${outlier} books, far from everyone else. Which summary would jump if that one value changed, and which would barely move?`,
     explanation: [
-      `One student read ${outlier} books; every other student read ${Math.min(...cluster)} to ${Math.max(...cluster)}.`,
-      `The mean, ${mean}, is pulled up by that one value: it is greater than every other student’s number.`,
-      `The median, ${median}, depends only on the middle of the ordered data, so it stays among the typical values.`,
+      `One student read ${outlier} books; every other student read ${Math.min(...cluster)} to ${Math.max(...cluster)}. A value far from the rest is called an outlier.`,
+      `The mean, the fair share, is ${mean}. The outlier pulls it up: it is greater than every other student’s number.`,
+      `The median, the middle value in order, is ${median}. It depends only on the middle, so the outlier barely moves it.`,
+      `The median, ${median}, best describes the typical number of books.`,
     ],
     choices: [
       { label: `The median, ${median}`, correct: true },

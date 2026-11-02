@@ -219,6 +219,7 @@ function ResultRowView({
           {sectionNames[row.section]}
         </span>
       </div>
+      {row.label && <p className={styles.resultLabel}>{row.label}</p>}
       <p className={styles.prompt}>
         <MathText text={row.prompt} />
       </p>

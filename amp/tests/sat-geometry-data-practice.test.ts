@@ -181,7 +181,7 @@ test("answers agree with an independent recomputation from the stated givens", (
       checked++;
     } else if (
       (m =
-        /A (\d+)-foot ladder leans against a vertical wall and makes a (\d+)° angle with the level ground. How high/.exec(
+        /An? (\d+)-foot ladder leans against a vertical wall and makes an? (\d+)° angle with the level ground. How high/.exec(
           p,
         ))
     ) {
