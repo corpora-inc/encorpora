@@ -25,6 +25,12 @@ import { lessonUnits, renderUnit } from "../src/content/lesson-units";
 const pageText = (html: string) =>
   html
     .replace(/<annotation[^>]*>.*?<\/annotation>/g, " ")
+    // A glossary term reads as its word: the control and its raised "?"
+    // (decoration, hidden from reading) add nothing to the text.
+    .replace(
+      /<button[^>]*class="glossary-term"[^>]*>([^<]*)<span class="glossary-term-mark"[^>]*>\?<\/span><\/button>/g,
+      "$1",
+    )
     .replace(/<[^>]+>/g, " ")
     .replace(/&#x27;|&#39;/g, "'")
     .replace(/&quot;/g, '"')

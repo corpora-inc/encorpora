@@ -1,6 +1,8 @@
-import { nativeRuntime } from "./native-runtime";
-import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
+import {
+  CurriculumDetailsControl,
+  useCurriculumDetails,
+} from "./features/curriculum/CurriculumDetails";
 import { strandNames } from "./BirthYearPrompt";
 
 import {
@@ -25,9 +27,9 @@ type Props = {
   changeBirthYear: () => void;
 };
 
-/** Home: one action, and each strand's estimated grade level relative to the
- * grade typical for the learner's age, with its uncertainty. */
+/** Home: continue practice, with optional estimates and their uncertainty. */
 export function Home(props: Props) {
+  const { shown } = useCurriculumDetails();
   const f = props.frontier;
   return (
     <main className="home">
@@ -35,21 +37,13 @@ export function Home(props: Props) {
       <section className="home-hero">
         <div>
           <h1>{props.name}</h1>
-          {f && f.overall.answered > 0 && (
-            <div className="home-level">
-              <LevelReadout estimate={f.overall} />
-            </div>
-          )}
+          {shown && <HomeLevel frontier={f} />}
         </div>
         <button className="go-button" disabled={props.busy} onClick={props.go}>
           {props.resuming ? "Continue" : "Go"}
         </button>
       </section>
-      {!nativeRuntime && (
-        <Link to="/pathways" className="text-button">
-          Explore your pathways →
-        </Link>
-      )}
+      <CurriculumDetailsControl />
       <FrontierMap
         name={props.name}
         frontier={props.frontier}
@@ -65,6 +59,35 @@ export function Home(props: Props) {
   );
 }
 
+/** The working level, in space reserved from the first frame: while the
+ * estimate loads an invisible readout holds its place, and before any answer
+ * a short line takes that same place, so the action below never moves. */
+function HomeLevel({ frontier }: { frontier: FrontierMap | null }) {
+  const measured = !!frontier && frontier.overall.answered > 0;
+  return (
+    <div className="home-level" aria-busy={!frontier}>
+      <div
+        className="home-level-readout"
+        aria-hidden={!measured}
+        style={{ visibility: measured ? "visible" : "hidden" }}
+      >
+        <LevelReadout
+          estimate={
+            measured && frontier
+              ? frontier.overall
+              : { level: frontier?.expected ?? 4, sd: 1 }
+          }
+        />
+      </div>
+      {frontier && !measured && (
+        <p className="home-level-empty">
+          Your level appears after a few problems.
+        </p>
+      )}
+    </div>
+  );
+}
+
 /** Each strand's estimated grade level and its uncertainty range, on a scale centred
  * on the grade typical for the learner's age. Rows open to show the data. */
 export function FrontierMap(props: {
@@ -72,6 +95,7 @@ export function FrontierMap(props: {
   frontier: FrontierMap | null;
   strands: readonly string[];
 }) {
+  const { shown } = useCurriculumDetails();
   const [open, setOpen] = useState<string | null>(null);
   const f = props.frontier;
   const center = f?.expected ?? 4;
@@ -79,6 +103,33 @@ export function FrontierMap(props: {
     hi = lo + 6;
   const at = (v: number) =>
     `${((Math.min(hi, Math.max(lo, v)) - lo) / (hi - lo)) * 100}%`;
+  if (!shown)
+    return (
+      <section className="frontier-map" aria-label="Practice by area">
+        <div className="frontier-heading">
+          <h2>Practice by area</h2>
+          <p>
+            Answers recorded in each area. Counts describe practice, not
+            mastery.
+          </p>
+        </div>
+        <ul>
+          {props.strands.map((strand) => {
+            const e = f?.strands[strand];
+            return (
+              <li key={strand} className="frontier-count-row">
+                <span className="frontier-name">{strandNames[strand]}</span>
+                <span>
+                  {e
+                    ? `${e.answered} answered · ${e.independent} correct without help`
+                    : "Not practiced yet"}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    );
   return (
     <section className="frontier-map" aria-label="Where you are">
       <div className="frontier-heading">

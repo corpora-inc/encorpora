@@ -15,6 +15,7 @@ const pairs: [role: string, states: string[]][] = [
   ["surface", ["", "-hover", "-active"]],
   ["surface-raised", ["", "-hover", "-active"]],
   ["surface-sunken", [""]],
+  ["answer", [""]],
   ["menu", ["", "-hover", "-active"]],
   ["primary", ["", "-hover", "-active"]],
   ["secondary", ["", "-hover", "-active"]],
@@ -35,7 +36,7 @@ const canvases = [
   "menu-hover",
 ];
 /** Resting backgrounds that carry control borders and focus rings. */
-const resting = ["surface", "surface-raised", "surface-sunken", "menu"];
+const resting = ["surface", "surface-raised", "surface-sunken", "menu", "answer"];
 
 function check(theme: Theme) {
   const { color } = resolveTheme(theme);
@@ -55,6 +56,9 @@ function check(theme: Theme) {
     need("focus-ring", bg, UI);
   }
   for (const bg of resting) need("border-strong", bg, UI);
+  // An answer field's border reads against the field and the page around it.
+  need("answer-border", "answer", UI);
+  need("answer-border", "surface", UI);
   need("primary", "secondary", TEXT);
   need("primary", "secondary-hover", TEXT);
   for (const tone of ["success", "danger", "warning", "info"]) {

@@ -219,3 +219,34 @@ test("factor large trinomial", () => {
     }
   }
 });
+
+test("negative output: the factoring step names numbers that add to the middle coefficient", () => {
+  for (let i = 0; i < 200; i++) {
+    const p = generateProblem("quadratic-negative-output", `sum:${i}`);
+    const text = p.explanation.join(" ");
+    const zero = /\$x\^2 ([+-]) (\d+)x ([+-]) (\d+) = 0\$/.exec(text);
+    if (!zero) continue;
+    const b = Number(zero[2]) * (zero[1] === "-" ? -1 : 1);
+    const claim = /add to \$(-?\d+)\$/.exec(text);
+    assert.ok(claim, text);
+    assert.equal(Number(claim![1]), b, text);
+  }
+});
+
+test("linear-system-x elimination steps match the equations when the y coefficients are already equal", () => {
+  let checked = 0;
+  for (let i = 0; i < 400; i++) {
+    const p = generateProblem("linear-system-x", `elim:${i}`);
+    const m = /(\d+)x \+ (\d+)y = (-?\d+); (\d+)x \+ (\d+)y = (-?\d+)/.exec(
+      p.public.prompt,
+    );
+    if (!m || m[2] !== m[5]) continue;
+    checked++;
+    const [a, c] = [Number(m[1]), Number(m[4])];
+    assert.ok(
+      p.explanation.join(" ").includes(`(${a} − ${c})x`),
+      p.explanation.join(" "),
+    );
+  }
+  assert.ok(checked > 0);
+});

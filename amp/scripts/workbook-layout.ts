@@ -158,6 +158,33 @@ export async function checkWorkbookLayout(page: Page) {
           `${ratio.toFixed(2)} ${el.tagName}: ${el.textContent?.slice(0, 30)}`,
         );
     }
+    // Answers sit on plain paper: no tinted fill behind an answer box or its
+    // label, inside the box, or anywhere up to the problem, and the workspace
+    // grid ends above the answer row instead of being masked.
+    const tinted: string[] = [];
+    for (const answer of document.querySelectorAll(".wb-answer")) {
+      const item = answer.closest(".wb-item")!;
+      const chain = [
+        answer.querySelector(".wb-answer-box")!,
+        answer.querySelector(".wb-answer-label")!,
+        answer,
+      ];
+      for (let el = answer.parentElement; el && el !== item; el = el.parentElement)
+        chain.push(el);
+      for (const el of chain) {
+        const style = getComputedStyle(el);
+        const c = rgb(style.backgroundColor);
+        const white = c.r === 255 && c.g === 255 && c.b === 255;
+        if ((c.a > 0 && !white) || (el !== answer.parentElement && style.backgroundImage !== "none"))
+          tinted.push(`${label(el)}: ${el.className} ${style.backgroundColor}`);
+      }
+      const grid = answer.parentElement?.querySelector(".wb-work-grid");
+      if (
+        grid &&
+        grid.getBoundingClientRect().bottom > answer.getBoundingClientRect().top + 0.5
+      )
+        tinted.push(`${label(answer)}: grid runs under the answer`);
+    }
     // A word broken across two lines (a label too narrow for its text).
     const midword: string[] = [];
     const walker = document.createTreeWalker(
@@ -220,6 +247,7 @@ export async function checkWorkbookLayout(page: Page) {
       holes,
       mixed,
       contrast: [...new Set(contrast)].slice(0, 10),
+      tinted: [...new Set(tinted)].slice(0, 10),
       midword: [...new Set(midword)].slice(0, 10),
       unstyled: [...new Set(unstyled)],
     };
@@ -243,6 +271,7 @@ export function layoutFailures(
     ...found.holes,
     ...found.mixed,
     ...found.contrast,
+    ...found.tinted.map((t) => `answer on a tint: ${t}`),
     ...found.midword.map((w) => `word broken across lines: ${w}`),
     ...found.unstyled.map((u) => `unstyled figure shape: ${u}`),
     ...(printed === found.pages

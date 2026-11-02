@@ -148,18 +148,57 @@ problem state, on any axe violation and on any invisible focus.
     harmless, but it is noise in error logs. **Deferred:** needs a trace of
     which observer re-enters.
 16. **Skill and topic titles disagree on case** ("Multiplication Facts"
-    beside "Multiplication facts"). **Deferred** to the curriculum catalog
-    owners.
+    beside "Multiplication facts"). **Fixed in round 2.**
 17. **The correct-answer sheet keeps the full dock height.** Above a tall
     dock (multi-select) this leaves an empty band between progress and Next.
-    **Deferred:** the sheet's top edge never jumping is the more important
-    rule.
+    **Fixed in round 2.**
 18. **Check's enable transition (0.12 s) runs under reduced motion.**
-    **Deferred:** a shared theme rule, out of this scope.
+    **Fixed in round 2.**
 19. **Safe areas.** `index.html` does not opt into `viewport-fit=cover`, so
     browser `env()` insets are zero. Practice CSS already pads the shell,
     feedback sheet, calculator and dialogs with `env(safe-area-inset-*)` for
     surfaces that opt in. **No change.**
+
+## Round 2
+
+1. **Feedback sheet sized to its content.** Stacked, the sheet is as tall
+   as what it says, anchored at the bottom where Check was. Next stays in
+   the thumb zone and no empty band opens above it when the dock was taller
+   (multi-select, keypad). Side by side, the sheet sits at the foot of the
+   answer column, where Next has always been. Before, it filled the column
+   and left a gap of up to 500 px between the result and Next. Growing (See
+   why) moves only its top edge. Asserted: `feedback-gap`.
+2. **Reduced motion.** The shared button rule (`theme.css`) eases fills and
+   shrinks a pressed button only under `prefers-reduced-motion:
+   no-preference`. With reduced motion, Check enabling changes at once.
+   Nothing changes for learners who allow motion. Asserted:
+   `motion-under-reduce`.
+3. **Print: no caret.** Worksheets and answer keys print a coefficient and
+   its power as one cell: 3 × 10⁻³ in the key, and on the worksheet a blank
+   × 10 with a raised blank for the exponent. `powerBase` and `powerTex` in
+   `src/math/structured-work.ts` are the one rule for screen and paper.
+   Covered by a render test in `tests/structured-work.test.ts`.
+   `npm run workbook:audit` passes: 0 of 1,151 templates fail on paper.
+4. **Sentence-case skill titles from one source.** Skill titles were
+   built from ids in title case ("Count To 20", "Ten More Less"). Problem-type
+   titles are sentence case (1,148 of 1,151). `skillTitle` in
+   `src/curriculum/catalog.ts` now builds sentence case from the id, keeping
+   names and initialisms (Pythagorean, Cavalieri, GCF, LCM). Every skill
+   title goes through it. Asserted in `tests/curriculum.test.ts`.
+5. **Large tablets and desktops** (1024×768, 1366×1024 and 1440×900, in
+   both orientations). The sheet changes above remove the stretched-phone
+   gaps. Figures in the side-by-side workspace at 1200×760 and up, and on
+   tall portrait tablets, get more height (up to 520 px and 460 px). A
+   labelled figure still stops where its labels reach the figure type size
+   (`FigureTextCap`, enforced by `verify-graphical-ui.ts` and
+   `verify-ui.ts`), so the gain goes to unlabelled and lightly labelled
+   figures. On tall portrait screens the dock and sheet widen to 680 px.
+6. **Not changed (another owner):** `ProgressWorkspace.tsx` re-cases skill
+   titles itself (lowercases, then capitalises the first letter), so GCF
+   and LCM read "Gcf lcm" there. Reported to the app-shell owner.
+
+Screenshots: `round-2/before/` and `round-2/after/` (same seeds), plus
+`round-2/after/print-scientific-notation-{worksheet,key}.png`.
 
 ## Screenshots
 

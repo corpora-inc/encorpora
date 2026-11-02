@@ -1,5 +1,7 @@
 import { track } from "./lib/analytics";
 import { ProblemLesson } from "./ProblemLesson";
+import { Glossary } from "./ui/Glossary";
+import type { HintedProblem } from "./lib/problem-hints";
 import { MathText, spokenMath } from "./MathText";
 import { Calculator, type CalculatorDismissal } from "./Calculator";
 import {
@@ -160,7 +162,8 @@ export function usePracticeViewport(active: boolean) {
 }
 
 type Props = {
-  problem: PublicProblem;
+  /** With the batch's hint, when it sent one (its term cards included). */
+  problem: HintedProblem;
   meta?: TemplateMetadata;
   lesson: Lesson | null;
   response: string;
@@ -1026,18 +1029,20 @@ export function PracticeWorkspace(props: Props) {
         </div>
         {!editorInDock && progressFeedback()}
         {((!outcome.correct && !deferSteps) || (showWhy && !editorInDock)) && (
-          <ol
-            className="feedback-steps"
-            // It scrolls when long, so keyboards must be able to reach it.
-            tabIndex={0}
-            aria-label="Explanation"
-          >
-            {outcome.explanation.map((step, index) => (
-              <li key={index} data-text={step}>
-                <MathText text={step} />
-              </li>
-            ))}
-          </ol>
+          <Glossary payload={outcome} texts={outcome.explanation}>
+            <ol
+              className="feedback-steps"
+              // It scrolls when long, so keyboards must be able to reach it.
+              tabIndex={0}
+              aria-label="Explanation"
+            >
+              {outcome.explanation.map((step, index) => (
+                <li key={index} data-text={step}>
+                  <MathText text={step} />
+                </li>
+              ))}
+            </ol>
+          </Glossary>
         )}
       </>
     );
@@ -1226,8 +1231,8 @@ export function PracticeWorkspace(props: Props) {
             <a
               className="workspace-level"
               href={props.exitHref}
-              aria-label="Your level"
-              title="Your level"
+              aria-label="Your progress"
+              title="Your progress"
               onClick={(event) => {
                 // A modified click opens the view in a new tab as usual.
                 if (
@@ -1247,7 +1252,7 @@ export function PracticeWorkspace(props: Props) {
                 <path d="M7.5 16v-3M12 16V9.5M16.5 16V5.5" />
               </svg>
               <span className="workspace-level-label" aria-hidden="true">
-                Your level
+                Your progress
               </span>
             </a>
           )}
@@ -1304,7 +1309,11 @@ export function PracticeWorkspace(props: Props) {
           tabIndex={0}
           aria-label="Problem workspace"
         >
-          <div className="problem-content" data-template={problem.templateId}>
+          <div
+            className="problem-content"
+            data-template={problem.templateId}
+            data-problem-id={problem.id}
+          >
             <h2
               id="problem-prompt"
               ref={prompt}
@@ -1446,13 +1455,15 @@ export function PracticeWorkspace(props: Props) {
       {outcome && editorInDock && showWhy && (
         <FocusDialog title="Explanation" close={() => setShowWhy(false)}>
           {progressFeedback()}
-          <ol className="feedback-steps" aria-label="Explanation">
-            {outcome.explanation.map((step, index) => (
-              <li key={index}>
-                <MathText text={step} />
-              </li>
-            ))}
-          </ol>
+          <Glossary payload={outcome} texts={outcome.explanation}>
+            <ol className="feedback-steps" aria-label="Explanation">
+              {outcome.explanation.map((step, index) => (
+                <li key={index}>
+                  <MathText text={step} />
+                </li>
+              ))}
+            </ol>
+          </Glossary>
         </FocusDialog>
       )}
       {outcome && props.error && (
@@ -1538,15 +1549,24 @@ export function PracticeWorkspace(props: Props) {
         >
           {panel === "hint" && (
             <>
-              <p className="hint">
-                {hint ? (
-                  <MathText text={hint} />
-                ) : busy ? (
-                  "Finding your hint…"
-                ) : (
-                  "Your hint could not be loaded. Close this panel and try again."
-                )}
-              </p>
+              <Glossary
+                payload={
+                  hint && problem.hintSupport?.hint === hint
+                    ? problem.hintSupport
+                    : null
+                }
+                texts={[hint]}
+              >
+                <p className="hint">
+                  {hint ? (
+                    <MathText text={hint} />
+                  ) : busy ? (
+                    "Finding your hint…"
+                  ) : (
+                    "Your hint could not be loaded. Close this panel and try again."
+                  )}
+                </p>
+              </Glossary>
               {hintScene && (
                 <ScenePlayer
                   scene={hintScene}

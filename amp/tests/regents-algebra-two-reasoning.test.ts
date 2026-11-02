@@ -176,3 +176,18 @@ test("rational abs count", () => {
   }
   assert.ok(seen.has(1) && seen.has(3));
 });
+
+test("cubic quotient: the factoring sentence names numbers that add to the middle coefficient", () => {
+  let checked = 0;
+  for (let i = 0; i < 200; i++) {
+    const p = generateProblem("cubic-quotient-factored", `sum:${i}`);
+    const text = p.explanation.join(" ");
+    const quad = /\$x\^\{2\} ([+-]) (\d*)x ([+-]) (\d+) =/.exec(text);
+    const claim = /add to (-?\d+)/.exec(text);
+    if (!quad || !claim) continue;
+    checked++;
+    const b = Number(quad[2] || "1") * (quad[1] === "-" ? -1 : 1);
+    assert.equal(Number(claim[1]), b, text);
+  }
+  assert.ok(checked > 0);
+});

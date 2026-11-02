@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   expectedHighSchoolStandardIds,
+  skillTitle,
   skills,
   standards,
 } from "../src/curriculum/catalog.js";
@@ -194,4 +195,36 @@ test("production queue fails closed on dangling prerequisites and cycles", () =>
   assert.throws(() => buildProductionQueue([skill]), /unknown prerequisite/);
   skill.prerequisites = [skill.id];
   assert.throws(() => buildProductionQueue([skill]), /cycle/);
+});
+
+test("skill titles are sentence case, like problem-type titles", () => {
+  assert.equal(skillTitle("count-to-20"), "Count to 20");
+  assert.equal(skillTitle("pythagorean-theorem"), "Pythagorean theorem");
+  assert.equal(skillTitle("cavalieri-principle"), "Cavalieri principle");
+  assert.equal(skillTitle("gcf-lcm"), "GCF LCM");
+  assert.equal(skillTitle("statistics-mean"), "Mean of a data set");
+  for (const skill of skills) {
+    assert.equal(skill.title, skillTitle(skill.id));
+    // Only names and initialisms keep capitals after the first letter.
+    const rest = skill.title
+      .replace(/\b(Cavalieri|Pythagorean|GCF|LCM)\b/g, "")
+      .slice(1);
+    assert.doesNotMatch(rest, /[A-Z]/, skill.title);
+  }
+});
+
+test("screens show the catalog's skill title as it is, never re-cased", async () => {
+  const { readFileSync } = await import("node:fs");
+  for (const file of [
+    "src/web/ProgressWorkspace.tsx",
+    "src/web/features/practice/AnswerFeedback.tsx",
+    "src/web/features/pathways/Graph.tsx",
+  ]) {
+    const source = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
+    assert.doesNotMatch(
+      source,
+      /title\s*\.\s*toLowerCase\(\)/,
+      `${file} re-cases a skill title`,
+    );
+  }
 });

@@ -6,7 +6,7 @@
  *   shown work +3, several parts +2, plotting +2, a figure in every problem
  *   +1.5, half a point per explanation step (up to 6), a situation to read
  *   (a prompt over 110 characters) +1.
- * Kindergarten to grade 2 qualify at 3, later grades at 4. Routine one-step
+ * Kindergarten to grade 2 qualify at 3 with a figure, later grades at 4. Routine one-step
  * items that pass the score are listed in `routine` below and left out.
  *
  *   npx tsx scripts/workbook-challenge-pool.ts [--write]
@@ -62,7 +62,9 @@ for (const t of templates) {
     Math.min(steps, 6) / 2 +
     (problems[0]!.public.prompt.length > 110 ? 1 : 0);
   const grade = templateGrade(t, nodes);
-  if (score >= (grade < 3 ? 3 : 4)) chosen.push({ id: t.id, grade, score });
+  // Young learners reason from a picture: below grade 3 a challenge needs one.
+  if (grade < 3 ? figure && score >= 3 : score >= 4)
+    chosen.push({ id: t.id, grade, score });
 }
 chosen.sort((a, b) => a.grade - b.grade || a.id.localeCompare(b.id));
 const byGrade = new Map<number, string[]>();

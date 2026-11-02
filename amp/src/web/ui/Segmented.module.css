@@ -63,3 +63,24 @@
 .detail > * {
   white-space: nowrap;
 }
+
+/* Compact: equal cells, content centred, the same inner padding in every
+   cell, so a selected outline sits at the same inset on both sides. */
+.compact {
+  gap: var(--space-1);
+}
+.compact .segment {
+  justify-items: center;
+  align-content: center;
+  gap: 2px;
+  min-height: calc(var(--target-size) + var(--space-4));
+  padding: var(--space-2) var(--space-3);
+  text-align: center;
+}
+.compact .label {
+  font-size: clamp(15px, 4.2vw, 16px);
+}
+.compact .detail {
+  font-size: clamp(13px, 3.6vw, 14px);
+  white-space: nowrap;
+}

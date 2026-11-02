@@ -19,7 +19,7 @@ from fractions import Fraction as F
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from multi_part_choice_math_oracle import common_response, compact, pick, require  # noqa: E402
+from multi_part_choice_math_oracle import common_response, check_card_use, compact, pick, require  # noqa: E402
 
 SUPPORTED = frozenset({
     "booth-equation-slots", "budget-inequality-slots", "unit-fraction-division-slots", "array-division-slots",
@@ -37,6 +37,8 @@ def value_of(label):
     """A displayed number: plain (with a true minus), $n$, $-n$, $\\frac{p}{q}$ or $-\\frac{p}{q}$."""
     text = label[1:-1] if label.startswith("$") and label.endswith("$") else label
     text = text.replace(MINUS, "-")
+    if re.fullmatch(r"-?\d{1,3}(?:,\d{3})+", text):
+        text = text.replace(",", "")
     m = re.fullmatch(r"(-?)(?:(\d+(?:\.\d+)?)|\\frac\{(\d+)\}\{(\d+)\})", text)
     require(m is not None, f"Not a number option: {label!r}")
     sign, plain, top, bottom = m.groups()
@@ -178,7 +180,7 @@ def solve_detail(public):
                 key = {"whole": pick(blanks[0], F(miles), value_of), "piece": pick(blanks[1], F(1, n), value_of), "count": pick(blanks[2], F(miles * n), value_of)}
                 facts = {"values": [f"{miles}\\times {n}={miles * n}"]}
     elif t == "array-division-slots":
-        m = re.fullmatch(r"Counters are arranged in an array of (\d+) rows with (\d+) counters in each row\. Complete the division equation that uses "
+        m = re.fullmatch(r"(?:Counters are arranged in an array of|The array has) (\d+) rows with (\d+) counters in each row\. Complete the division(?: equation)? that uses "
                          r"(the number of rows to find the number in each row|the number in each row to find the number of rows)\.", prompt)
         require(m is not None, f"Prompt {prompt!r}")
         rows, per, by_rows = int(m[1]), int(m[2]), m[3].startswith("the number of rows")
@@ -351,7 +353,7 @@ def solve_detail(public):
         key = {"coef": pick(blanks[0], F(coefficient), value_of), "exp": pick(blanks[1], F(exponent), value_of)}
         facts = {"last": f"So the quotient is ${coefficient}{v}^{{{exponent}}}$."}
     elif t == "square-root-solutions-slots":
-        m = re.fullmatch(r"Solve \$\(x ([+-]) (\d+)\)\^2 = (\d+)\$\. Choose the lesser and the greater solution\.", prompt)
+        m = re.fullmatch(r"Solve \$\(x ([+-]) (\d+)\)\^2 = (\d+)\$\. (?:Choose the lesser and the greater solution|Put the lesser solution first)\.", prompt)
         require(m is not None, f"Prompt {prompt!r}")
         shift, rhs = int(m[2]) * (1 if m[1] == "+" else -1), int(m[3])
         root = next((r for r in range(1, 40) if r * r == rhs), None)
@@ -431,6 +433,7 @@ def review_problem(problem):
     expected, facts = solve_detail(public)
     require(problem["answer"] == expected, f"Answer {problem['answer']} disagrees with the wording; expected {expected}")
     key = json.loads(expected)
+    check_card_use(public["response"], key)
     require(list(key) == [b["id"] for b in public["response"]["blanks"]], "Answer keys follow blank order")
     require(grade(public, expected, expected), "The key must grade correct")
     for blank in public["response"]["blanks"]:

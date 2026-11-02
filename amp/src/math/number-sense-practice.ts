@@ -204,16 +204,19 @@ function roundingSteps(n: number, unit: number, name: string): string[] {
   const below = Math.floor(n / unit) * unit,
     above = below + unit,
     result = roundTo(n, unit);
+  const meaning = `Rounding to the nearest ${name} means finding the closest number that is a whole number of ${name}s.`;
   if (n === below)
     return [
-      `${formatWhole(n)} is already a multiple of ${formatWhole(unit)}.`,
-      `Rounded to the nearest ${name}, it stays ${formatWhole(n)}.`,
+      meaning,
+      `${formatWhole(n)} is already a whole number of ${name}s, so nothing changes.`,
+      `Rounded to the nearest ${name}, ${formatWhole(n)} stays ${formatWhole(n)}.`,
     ];
   const half = below + unit / 2;
   return [
+    meaning,
     `${formatWhole(n)} is between ${formatWhole(below)} and ${formatWhole(above)}. Halfway between them is ${formatWhole(half)}.`,
     n === half
-      ? `${formatWhole(n)} is exactly halfway. A halfway number rounds up.`
+      ? `${formatWhole(n)} is exactly halfway. By the usual rule, a halfway number rounds up.`
       : n > half
         ? `${formatWhole(n)} is past halfway, so it is closer to ${formatWhole(above)}.`
         : `${formatWhole(n)} is before halfway, so it is closer to ${formatWhole(below)}.`,
@@ -257,11 +260,14 @@ export function generateNumberSenseProblem(
         ? `Counting by tens adds one ten each time. Start from ${before} and count one ten more.`
         : `Each count is one more. Start from ${before}${before % 10 === 9 ? ": after a 9 in the ones place, the next ten begins" : " and count one more"}.`;
       explanation = [
-        `Each number is ${byTens ? "10" : "1"} more than the one before.`,
-        `${values[gap - 1]} + ${byTens ? 10 : 1} = ${missing}.`,
+        `Counting by ${byTens ? "tens" : "ones"} means each number is ${byTens ? "10" : "1"} more than the one before.`,
+        `So the missing number is ${byTens ? "10" : "1"} more than the number before it: ${values[gap - 1]} + ${byTens ? 10 : 1} = ${missing}.`,
         ...(gap < 3
-          ? [`Check: ${missing} + ${byTens ? 10 : 1} = ${values[gap + 1]}.`]
+          ? [
+              `Check with the next number: ${missing} + ${byTens ? 10 : 1} = ${values[gap + 1]}.`,
+            ]
           : []),
+        `The missing number is ${missing}.`,
       ];
       break;
     }
@@ -290,15 +296,17 @@ export function generateNumberSenseProblem(
         : `The square above it is ${neighbor}. Moving down a row adds 10, because each row holds ten numbers.`;
       explanation = left
         ? [
-            `The square to its left is ${neighbor}.`,
-            `One square right is one more: ${neighbor} + 1 = ${value}.`,
+            `In the hundred chart, each step to the right is 1 more, and each step down is 10 more.`,
+            `The square to the left of the empty one is ${neighbor}, so the empty square is 1 more: ${neighbor} + 1 = ${value}.`,
             ...(blank[0] > 0
               ? [`Check from above: ${value - 10} + 10 = ${value}.`]
               : []),
+            `${value} belongs in the empty square.`,
           ]
         : [
-            `The square above it is ${neighbor}.`,
-            `One row down is ten more: ${neighbor} + 10 = ${value}.`,
+            `In the hundred chart, each step to the right is 1 more, and each step down is 10 more.`,
+            `The square above the empty one is ${neighbor}, so the empty square is 10 more: ${neighbor} + 10 = ${value}.`,
+            `${value} belongs in the empty square.`,
           ];
       break;
     }
@@ -318,17 +326,25 @@ export function generateNumberSenseProblem(
           : "Each row of a ten-frame holds 5. Count on from 5 for the bottom row.";
       explanation =
         n === 0
-          ? ["Every place is empty.", "No counters is written 0."]
+          ? [
+              "Every place in the frame is empty.",
+              "The number for none at all is 0, so write 0.",
+            ]
           : n <= 10
             ? [
-                `The top row holds ${Math.min(n, 5)}${n > 5 ? `; the bottom row holds ${n - 5}` : ""}.`,
-                n > 5 ? `5 + ${n - 5} = ${n}.` : `There are ${n} counters.`,
-                n === 10 ? "A full frame is 10." : `Write ${n}.`,
+                `A ten-frame has 2 rows of 5 places, so you can count by rows.`,
+                `The top row holds ${Math.min(n, 5)}${n > 5 ? `, and the bottom row holds ${n - 5}` : ""}.`,
+                n === 10
+                  ? `Both rows are full, so the frame holds 10.`
+                  : n > 5
+                    ? `5 + ${n - 5} = ${n}.`
+                    : `There ${n === 1 ? "is 1 counter" : `are ${n} counters`}.`,
+                `Write ${n}.`,
               ]
             : [
-                "The first frame is full: 10.",
-                `The second frame has ${n - 10}.`,
-                `10 + ${n - 10} = ${n}. Write ${n}: 1 ten and ${n - 10} ones.`,
+                "A full ten-frame holds 10, so the first frame is 10.",
+                `The second frame has ${n - 10}. Count on from 10: 10 + ${n - 10} = ${n}.`,
+                `${n} is 1 ten and ${n - 10 === 1 ? "1 one" : `${n - 10} ones`}${n === 20 ? ", which makes 2 tens" : ""}. Write ${n}.`,
               ];
       break;
     }
@@ -380,9 +396,10 @@ export function generateNumberSenseProblem(
       answer = String(end);
       hint = `A hop of ${tens} moves ${tens / 10} ${tens === 10 ? "ten" : "tens"} ${add ? "right" : "left"}; then count ${ones} ${add ? "right" : "left"} by ones.`;
       explanation = [
-        `The tens hop: ${start} ${add ? "+" : "−"} ${tens} = ${middle}.`,
-        `The ones hop: ${middle} ${add ? "+" : "−"} ${ones} = ${end}.`,
-        `Together: ${start} ${add ? "+" : "−"} ${jump} = ${end}.`,
+        `Hopping ${add ? "forward adds" : "back subtracts"}. Do the hops in order.`,
+        `The tens hop first: ${start} ${add ? "+" : "−"} ${tens} = ${middle}. Only the tens digit changes.`,
+        `Then the ones hop: ${middle} ${add ? "+" : "−"} ${ones} = ${end}.`,
+        `Together the hops ${add ? "add" : "take away"} ${jump}: ${start} ${add ? "+" : "−"} ${jump} = ${end}. You land on ${end}.`,
       ];
       break;
     }
@@ -434,16 +451,17 @@ export function generateNumberSenseProblem(
       explanation =
         pieces.length > 1
           ? [
+              `Count up from the smaller number in friendly jumps, to tens and then by tens.`,
               `${pieces.map(([x, y]) => `from ${x} to ${y} is ${y! - x!}`).join("; ")}.`.replace(
                 /^f/,
                 "F",
               ),
-              `${pieces.map(([x, y]) => y! - x!).join(" + ")} = ${length}.`,
-              `Check: ${high} − ${low} = ${length}.`,
+              `The hop is all of those small jumps together: ${pieces.map(([x, y]) => y! - x!).join(" + ")} = ${length}.`,
+              `Check: ${high} − ${low} = ${length}. The hop is ${length} long.`,
             ]
           : [
-              `The hop covers the distance between ${low} and ${high}.`,
-              `${high} − ${low} = ${length}.`,
+              `The length of a hop is the distance between where it starts and where it ends.`,
+              `${high} − ${low} = ${length}, so the hop is ${length} long.`,
             ];
       break;
     }
@@ -527,11 +545,14 @@ export function generateNumberSenseProblem(
       explanation = [
         ...(exponent
           ? [
-              `10${superscript[k]} = ${powerWord[k]}: ${k} ${k === 1 ? "factor" : "factors"} of 10.`,
+              k === 1
+                ? `10${superscript[k]} is just 10: one factor of 10.`
+                : `The small ${k} means multiply ${k} copies of 10: 10${superscript[k]} = ${Array(k).fill("10").join(" × ")} = ${powerWord[k]}.`,
             ]
           : []),
-        `Each factor of 10 moves every digit one place left.`,
-        `${value} × ${powerWord[k]} = ${result}.`,
+        `Multiplying by 10 makes each digit worth 10 times as much, so every digit moves one place left.`,
+        `With ${k} ${k === 1 ? "factor" : "factors"} of 10, each digit moves ${k} ${k === 1 ? "place" : "places"} left.`,
+        `So ${value} × ${powerWord[k]} = ${result}.`,
       ];
       break;
     }
@@ -551,11 +572,14 @@ export function generateNumberSenseProblem(
       explanation = [
         ...(exponent
           ? [
-              `10${superscript[k]} = ${powerWord[k]}: ${k} ${k === 1 ? "factor" : "factors"} of 10.`,
+              k === 1
+                ? `10${superscript[k]} is just 10: one factor of 10.`
+                : `The small ${k} means multiply ${k} copies of 10: 10${superscript[k]} = ${Array(k).fill("10").join(" × ")} = ${powerWord[k]}.`,
             ]
           : []),
-        `Each division by 10 moves every digit one place right.`,
-        `${value} ÷ ${powerWord[k]} = ${result}.`,
+        `Dividing by 10 makes each digit worth one tenth as much, so every digit moves one place right.`,
+        `Dividing by ${k} ${k === 1 ? "factor" : "factors"} of 10 moves each digit ${k} ${k === 1 ? "place" : "places"} right.`,
+        `So ${value} ÷ ${powerWord[k]} = ${result}.`,
       ];
       break;
     }
@@ -587,7 +611,7 @@ export function generateNumberSenseProblem(
             )
               .fill("10")
               .join(" × ")} = ${formatWhole(ratio)}.`,
-        `${formatWhole(digit * 10 ** low)} × ${formatWhole(ratio)} = ${formatWhole(digit * 10 ** high)}.`,
+        `Check: ${formatWhole(digit * 10 ** low)} × ${formatWhole(ratio)} = ${formatWhole(digit * 10 ** high)}. The first ${digit} is worth ${formatWhole(ratio)} times as much as the second.`,
       ];
       break;
     }

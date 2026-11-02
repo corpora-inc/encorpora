@@ -248,6 +248,9 @@ nav button {
   gap: 12px;
 }
 .workspace-answer-row input {
+  border: 2px solid var(--color-answer-border);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
   flex: 1;
   width: 0;
   min-width: 0;
@@ -257,7 +260,8 @@ nav button {
   height: 52px;
 }
 .workspace-answer-row input[readonly] {
-  background: var(--color-surface-sunken);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
 }
 .answer-action {
   flex: none;

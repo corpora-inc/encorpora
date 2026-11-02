@@ -142,11 +142,11 @@ export function integerExponentPrintCase(
           : `A power of a power multiplies the exponents: ${signed(a)} × ${operand(b)}, not ${signed(a)} + ${operand(b)}.`;
     const calculation = `${signed(a)} ${operation === "product" ? "+" : operation === "quotient" ? "−" : "×"} ${operand(b)} = ${signed(result)}`;
     explanation = [
-      "An exponent counts how many times the base is used as a factor: an exponent of 3 means three factors of $x$ multiplied together. Here $x$ is the same nonzero number throughout, and $k$ is the exponent to find.",
+      "A positive exponent counts how many times the base is used as a factor: $x^3$ means three factors of $x$ multiplied together. A negative exponent means the reciprocal (1 over the power): $x^{-3} = \\frac{1}{x^3}$. Here $x$ is the same nonzero number throughout, and $k$ is the exponent to find.",
       operation === "product"
         ? "When powers with the same base are multiplied, the factors of $x$ just join together, so the exponents add. A negative exponent counts factors that divide instead, so add it with its sign."
         : operation === "quotient"
-          ? "When powers with the same base are divided, each factor of $x$ on the bottom cancels one on the top, so subtract the bottom exponent from the top one."
+          ? "When powers with the same base are divided, subtract the bottom exponent from the top one. With positive exponents, each factor of $x$ on the bottom cancels one on the top; the same rule works for negative exponents too."
           : "Raising a power to a power repeats the same group of factors, so the exponents multiply. A negative outer exponent also flips the result into its reciprocal.",
       `Calculate the exponent: ${calculation}.`,
       `Therefore ${expression} = ${power("x", result)}, so k = ${signed(result)}.`,

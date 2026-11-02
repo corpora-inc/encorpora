@@ -385,7 +385,8 @@ LEADING = re.compile(r'^[−(\d][\d ()×÷+/−]*')
 
 def equalities(step):
     """Check every adjacent pair in each 'a = b = c' chain; return how many were checked."""
-    parts = step.split(' = ')
+    from worked_math_text import plain_worked_math
+    parts = plain_worked_math(step).split(' = ')
     for left, right in zip(parts, parts[1:]):
         a, b = TRAILING.search(left), LEADING.match(right)
         require(a is not None and b is not None, 'Equality without arithmetic: ' + step)
@@ -414,7 +415,7 @@ def review_explanation(problem):
     joined = ' '.join(steps)
     prompt = public['prompt']
     if template == 'counting-principle':
-        m = re.search(r'(?:All together|multiply \d factors of \d+): ([\d ×]+) = (\d+)\.', joined)
+        m = re.search(r'(?:All together|multiply all the counts|multiply \d factors of \d+(?: \([a-z ]+\))?): ([\d ×]+) = (\d+)\.', joined)
         require(m and int(m[2]) == answer, 'Missing complete product')
         require(factors(m[1]) == parse_counting(prompt), 'Product uses the wrong stage counts')
     elif template == 'permutation-count':
@@ -517,11 +518,17 @@ def review_combinatorics_content(data=None):
                                         'response': {'kind': 'number' if template in COUNTING else 'fraction'}})
         require(Fraction(worked['answer'].replace('−', '-')) == expected, 'Worked example answer: ' + template)
         for step in worked['steps']:
-            chains += equalities(step)
+            try:
+                chains += equalities(step)
+            except ValueError as error:
+                raise ValueError(f'{template}: {step!r}: {error}') from error
         # Lesson prose claims are checked too; n! is expanded by direct multiplication.
         for section in lesson['sections']:
             for paragraph in section['paragraphs']:
-                chains += equalities(re.sub(r'(\d+)!', lambda f: str(size(itertools.permutations(range(int(f[1]))))), paragraph))
+                try:
+                    chains += equalities(re.sub(r'(\d+)!', lambda f: str(size(itertools.permutations(range(int(f[1]))))), paragraph))
+                except ValueError as error:
+                    raise ValueError(f'{template}: {paragraph!r}: {error}') from error
     chains += review_figures(data['figures'])
     return {'worksheets': len(data['worksheets']), 'checkedEqualities': chains, 'lessons': len(lessons), 'figures': len(data['figures'])}
 
@@ -575,7 +582,16 @@ def review_content_mutations():
     bad = copy.deepcopy(data); bad['worksheets'][0]['problems'][1] = bad['worksheets'][0]['problems'][0]; mutants.append(bad)
     bad = copy.deepcopy(data); bad['worksheets'][0]['problems'][0]['explanation'].append('A false check: 4 × 3 = 13.'); mutants.append(bad)
     bad = copy.deepcopy(data); bad['worksheets'][-1]['problems'][0]['answer'] = '999'; mutants.append(bad)
-    bad = copy.deepcopy(data); bad['lessons'][1]['sections'][2]['paragraphs'][0] = bad['lessons'][1]['sections'][2]['paragraphs'][0].replace('= 120', '= 121'); mutants.append(bad)
+    bad = copy.deepcopy(data)
+    lesson = next(l for l in bad['lessons'] if l['id'] == 'permutation-count')
+    changed = 0
+    for section in lesson['sections']:
+        for index, paragraph in enumerate(section['paragraphs']):
+            replacement = paragraph.replace('= 120 orders', '= 121 orders')
+            changed += replacement != paragraph
+            section['paragraphs'][index] = replacement
+    require(changed == 1, 'Permutation product mutation did not target one claim')
+    mutants.append(bad)
     for index, kind in enumerate(f['kind'] for f in data['figures']):
         bad = copy.deepcopy(data)
         html = bad['figures'][index]['html']
@@ -583,13 +599,14 @@ def review_content_mutations():
         require(replaced != html, 'Figure mutation did not apply: ' + kind)
         bad['figures'][index]['html'] = replaced
         mutants.append(bad)
-    for bad in mutants:
+    for index, bad in enumerate(mutants):
+        require(bad != data, f'Combinatorics content mutation {index} did not apply')
         try:
             review_combinatorics_content(bad)
         except (ValueError, KeyError, TypeError, StopIteration, AttributeError):
             pass
         else:
-            raise ValueError('Corrupted content accepted')
+            raise ValueError(f'Combinatorics content mutation {index} was accepted')
     return len(mutants)
 
 

@@ -51,7 +51,11 @@ test("each descriptor is named for its file", async () => {
 test("registries append families after their legacy entries, in family-id order", () => {
   const tail = <T>(list: readonly T[], part: readonly T[]) =>
     assert.deepEqual(list.slice(list.length - part.length), [...part]);
-  tail(templates, familyRegistry.templates);
+  // Engine templates add glossary metadata; this assertion checks registry order.
+  tail(
+    templates.map((template) => template.id),
+    familyRegistry.templates.map((template) => template.id),
+  );
   tail(lessons, familyRegistry.lessons);
   tail(actualFacetMappings, familyRegistry.facetMappings);
   tail(archetypes, familyRegistry.archetypes);

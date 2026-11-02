@@ -1,6 +1,7 @@
 import { observeLearningRequest } from "./lib/learning-analytics";
 import { invoke } from "@tauri-apps/api/core";
 import { nativeRuntime } from "./native-runtime";
+import { AccountSessionChanged } from "./lib/account-session";
 
 type NativeRequest = {
   kind: string;
@@ -116,8 +117,7 @@ export async function learningRequest(
       throw new Error(
         "Your native session has expired. Sign out and sign in again.",
       );
-    if (error === "session-changed")
-      throw new Error("Your account session changed.");
+    if (error === "session-changed") throw new AccountSessionChanged();
     throw new Error(
       "The learning service could not be reached. Please try again.",
     );

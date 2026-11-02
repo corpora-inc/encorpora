@@ -38,14 +38,13 @@ test(
       for (const p of problems) {
         publicProblemSchema.parse(p); // unchanged strict protocol for installed clients
         const generated = generateProblem(p.templateId, p.seed);
-        assert.deepEqual(hints[p.id], {
+        // Teaching content only: the hint, its cue and its term cards.
+        const { glossary, glossaryLexicon, ...support } = hints[p.id];
+        assert.deepEqual(support, {
           hint: generated.hint,
           ...(generated.hintCue ? { cue: generated.hintCue } : {}),
         });
-        assert.deepEqual(
-          Object.keys(hints[p.id]).sort(),
-          generated.hintCue ? ["cue", "hint"] : ["hint"],
-        );
+        assert.ok(Array.isArray(glossary) && glossaryLexicon);
         assert.ok(!("answer" in p) && !("explanation" in p));
         const stored = await repository.transaction(account, learner.id, (tx) =>
           tx.problem(p.id),

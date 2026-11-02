@@ -4,9 +4,16 @@ import { chainLesson } from "./chain-lesson-kit";
 
 export const feeChainMethods: Record<string, ProblemMethod> = {
   "fee-plan-chain": {
-    goal: "Recover an extra-hour rate from one total and price a new booking, compare two plans' charges, or time a slow constant decrease.",
+    senses: {
+      change: "change",
+      changes: "change",
+      difference: "difference-subtract",
+      unit: "unit",
+      units: "unit",
+    },
+    goal: "Find an hourly rate from one total and price a new booking, compare two plans, or time a slow steady decrease.",
     intuition:
-      "A flat fee covers some hours; only the hours after that earn the hourly charge. One known total therefore reveals the hourly charge: take away the flat fee and divide by the extra hours. A rate such as 1 unit every 8 days means each unit of change takes 8 days.",
+      "A flat fee is one charge that covers the first few hours. Only the hours after those, the extra hours, cost the hourly rate. So one known total tells you the rate: take away the flat fee, then divide by the extra hours. A rate like 1 unit every 8 days means each 1 unit of change takes 8 days.",
     terms: [
       [
         "rate",
@@ -15,17 +22,19 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
       "rate",
     ],
     method: [
-      "Find the quantity the rate acts on: the extra hours beyond the flat fee, or the total change from start to end.",
-      "Find the rate or the amount: divide the charge beyond the flat fee by the extra hours, or multiply the change by the time one unit takes.",
-      "Use it for the new question: price the new booking, add each plan's charges, or read off the elapsed time.",
+      "Find what the rate acts on: the extra hours beyond the flat fee, or the total change from start to end.",
+      "Find the rate: divide the charge beyond the flat fee by the extra hours. Or find the time: multiply the change by the time 1 unit takes.",
+      "Use it to answer the new question: price the new booking, add up each plan's charges, or read off the time.",
     ],
     watch:
-      "Subtract the flat fee before dividing, and divide by the extra hours only. For a rate like 1 unit every 8 days, multiply the change by 8; do not divide.",
+      "Subtract the flat fee before dividing, and divide by the extra hours only. For 1 unit every 8 days, multiply the change by 8. Do not divide.",
   },
   "fee-rule-choice": {
-    goal: "Choose the equation for a flat fee covering the first hours plus a rate for extra hours, in grouped or expanded form.",
+    noLink: ["rule"],
+    senses: { change: "change", part: "part", terms: "term-expression" },
+    goal: "Choose the equation for a flat fee that covers the first hours plus a rate for each extra hour, grouped or multiplied out.",
     intuition:
-      "The charge is the flat fee plus the rate times the extra hours. The extra hours are $h$ minus the hours the flat fee covers. Expanding the product gives a line whose slope is the rate and whose intercept is the flat fee minus the rate times the covered hours.",
+      "The charge is the flat fee plus the rate times the extra hours. If $h$ is the hours booked, the extra hours are $h$ minus the hours the flat fee covers. Parentheses are the curved brackets ( ). A number written right next to them multiplies what is inside: $9(h - 2)$ means 9 times $(h - 2)$.",
     terms: [
       [
         "expression",
@@ -37,17 +46,18 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write the extra hours as $h$ minus the hours covered by the flat fee.",
-      "Multiply by the rate (recover the rate first if only one total is given) and add the flat fee.",
-      "To match an expanded choice, multiply out the group and combine the constants.",
+      "Write the extra hours as $h$ minus the hours the flat fee covers.",
+      "Multiply the extra hours by the rate and add the flat fee. If only one total is given, find the rate first.",
+      "To match a multiplied-out choice, multiply the rate by each part inside the parentheses, then combine the plain numbers.",
     ],
     watch:
-      "Only the hours after the covered ones earn the rate. Expanding $F+r(h-h_0)$ makes the intercept $F-rh_0$, not $F$.",
+      "Only the hours after the covered ones cost the rate. Multiplying out $40 + 9(h - 2)$ gives $9h + 22$, so the plain number is 22, not 40.",
   },
   "fee-budget-inequality": {
-    goal: "Write the inequality for a one-time fee plus a per-unit cost that must stay within a budget, or choose its solution set.",
+    senses: { part: "part", sides: "side-of-equation" },
+    goal: "Write the inequality for a one-time fee plus a cost per item that must fit a budget, or choose its solution.",
     intuition:
-      "The cost of $x$ units is the fee plus the rate times $x$. Staying within the budget means that cost is not more than the budget, or is less than it when the budget must not be reached. Solving the inequality gives the largest number of units that fit.",
+      "A budget is the most money you plan to spend. The cost of $x$ items is the fee plus the cost per item times $x$. The sign $\\le$ means is less than or equal to, for at most. The sign $<$ means is less than, for under. Solving shows which counts fit. If the question asks for the most items, it is the largest whole number (the numbers 0, 1, 2 and so on) that fits.",
     terms: [
       "at-most",
       [
@@ -56,69 +66,83 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write the cost as the fee plus the rate times $x$.",
-      "Compare the cost with the budget using $\\le$ for at most and $\\lt$ for under.",
-      "To find the solution set, subtract the fee from both sides, then divide by the positive rate.",
+      "Write the cost as the fee plus the cost per item times $x$.",
+      "Compare the cost with the budget. Use $\\le$ for at most and $<$ for under.",
+      "To solve, subtract the fee from both sides (the two parts of the inequality). Then divide both sides by the cost per item, a positive number.",
     ],
     watch:
-      "Subtract the fee from the budget before you divide by the rate. Dividing the budget by the rate alone ignores the fee.",
+      "Subtract the fee from the budget before you divide by the cost per item. Dividing the budget alone ignores the fee.",
   },
 };
 
 export const feeChainPrinciples: Record<string, string> = {
   "fee-plan-chain":
-    "A charge made of a flat fee $F$ for the first $h_0$ hours and a rate $r$ for each hour after is $F+r(h-h_0)$ for $h\\ge h_0$. One known pair $(H, T)$ with $H>h_0$ gives $r=(T-F)/(H-h_0)$. A quantity that changes by 1 unit every $k$ time units takes $kd$ time units to change by $d$.",
+    "A charge made of a flat fee $F$ for the first $h_0$ hours and a rate $r$ for each hour after is $F+r(h-h_0)$ for $h\\ge h_0$. One known pair of $H$ hours and total $T$, with $H>h_0$, gives $r=(T-F)/(H-h_0)$. An amount that changes by 1 unit every $k$ hours, days or minutes takes $kd$ of the same time unit, $k$ times $d$, to change by $d$ units.",
   "fee-rule-choice":
-    "A flat fee $F$ for the first $h_0$ hours plus rate $r$ for each additional hour gives $C=F+r(h-h_0)=rh+(F-rh_0)$ for $h\\ge h_0$. The slope of the line is $r$ and its intercept is $F-rh_0$.",
+    "A flat fee $F$ for the first $h_0$ hours plus rate $r$ for each extra hour gives $C=F+r(h-h_0)=rh+(F-rh_0)$ for $h\\ge h_0$. As a line, its slope (the change in $C$ for each extra hour) is $r$, and its intercept (the plain number) is $F-rh_0$. The rule only applies for $h\\ge h_0$, so the intercept is not itself a booking price.",
   "fee-budget-inequality":
-    "Cost $F+rx$ stays at most $B$ exactly when $x\\le(B-F)/r$ for positive $r$, and stays under $B$ exactly when $x<(B-F)/r$. Subtracting $F$ and dividing by a positive $r$ keep the direction of the inequality.",
+    "For a positive cost per item $r$, the cost $F+rx$ is at most $B$ exactly when $x\\le(B-F)/r$. It is under $B$ exactly when $x<(B-F)/r$. Subtracting $F$ and dividing by a positive $r$ keep the inequality sign pointing the same way.",
 };
 
 export const feeChainLessons = [
-  chainLesson({
-    id: "fee-chain",
-    title: "Fees, rates and budgets",
-    summary:
-      "Separate a flat fee from a rate, recover the rate from one total, and use it to price, compare or set a budget.",
-    templateIds: ["fee-plan-chain", "fee-rule-choice", "fee-budget-inequality"],
-    objectives: [
-      "Recover an hourly rate from a flat fee, an allowance and one total, then price another booking.",
-      "Write a charge as an equation or a budget as an inequality, and solve for the largest count that fits.",
-    ],
-    openingTitle: "A flat fee covers some hours, a rate covers the rest",
-    opening: [
-      "Many charges have two parts. A flat fee is paid once and may cover a number of hours. A rate is paid for each unit after that, such as each extra hour. Only the extra hours earn the rate.",
-      "One known total therefore tells you the rate. Take the flat fee away from the total, then divide what is left by the number of extra hours. With the rate you can price any other booking, or ask how many hours fit in a budget.",
-    ],
-    example: {
-      prompt:
-        "A studio charges 40 dollars for the first 2 hours and a fixed charge for each hour after. A booking of 6 hours costs 76 dollars. Write the charge $C$ for $h$ hours, $h\\ge2$, and find the cost of 9 hours.",
-      steps: [
-        "A 6-hour booking has $6-2=4$ extra hours.",
-        "The extra hours cost $76-40=36$ dollars, so each costs $36\\div4=9$ dollars.",
-        "For $h$ hours, $C=40+9(h-2)$. Expanding gives $C=9h+22$.",
-        "For 9 hours, $C=40+9(9-2)=40+63=103$ dollars.",
+  {
+    ...chainLesson({
+      id: "fee-chain",
+      title: "Fees, rates and budgets",
+      summary:
+        "Many charges have two parts. A flat fee is paid once and covers the first few hours. A rate is the charge for each hour after that. If you know one total, take away the flat fee and divide by the extra hours to find the rate. Then you can price any booking, compare plans, or see how much fits in a budget.",
+      templateIds: [
+        "fee-plan-chain",
+        "fee-rule-choice",
+        "fee-budget-inequality",
       ],
-      answer: "103 dollars",
+      objectives: [
+        "Find an hourly rate from a flat fee, the hours it covers and one total, then price another booking.",
+        "Write a charge as an equation or a budget as an inequality, and find the largest count that fits.",
+      ],
+      openingTitle: "A flat fee covers some hours, a rate covers the rest",
+      opening: [
+        "A studio charges 40 dollars for the first 2 hours. Each hour after that costs the same extra amount. A 6-hour booking costs 76 dollars. How much is each extra hour?",
+        "The 40 dollars is a flat fee: one charge that covers the first 2 hours. A rate is a charge for each unit, here each hour after the first 2. So only the extra hours cost the rate. A 6-hour booking has 6 − 2 = 4 extra hours.",
+        "Take the flat fee away from the total: 76 − 40 = 36 dollars. That is what the 4 extra hours cost, so each costs 36 ÷ 4 = 9 dollars. With the rate, you can price any other booking or see how many hours fit in a budget.",
+      ],
+      example: {
+        prompt:
+          "A studio charges 40 dollars for the first 2 hours and a fixed charge for each hour after. A booking of 6 hours costs 76 dollars. Write the charge $C$ for $h$ hours, $h\\ge2$, and find the cost of 9 hours.",
+        steps: [
+          "The flat fee covers 2 hours, so a 6-hour booking has $6-2=4$ extra hours.",
+          "The extra hours cost $76-40=36$ dollars in all. Share that among the 4 extra hours: each costs $36\\div4=9$ dollars.",
+          "For $h$ hours, the extra hours are $h-2$. So $C=40+9(h-2)$, meaning 40 plus 9 times $(h-2)$. Multiplying out gives $40+9h-18$, which is $C=9h+22$.",
+          "For 9 hours, $C=40+9(9-2)=40+63=103$ dollars.",
+        ],
+        answer: "103 dollars",
+      },
+      methodTitle: "Extra hours, rate, then the new question",
+      method: [
+        "Find the extra hours: the hours booked minus the hours the flat fee covers. Find the rate: the charge beyond the flat fee divided by the extra hours.",
+        "A budget is the most money you plan to spend. Call the budget $B$, the fee $F$, and the cost per item $r$. Then $x$ items cost $F+rx$, meaning $F$ plus $r$ times $x$.",
+        "The sign $\\le$ means is less than or equal to, so use it for at most. The sign $<$ means is less than, so use it for under. Subtract $F$ from both sides (the two parts of the inequality), then divide both sides by $r$. That shows which counts fit. If the question asks for the most items, it is the largest whole number allowed. Otherwise, every whole number from 0 up to that limit fits. With $<$, the boundary, the number where the allowed counts stop, is not allowed itself.",
+      ],
+      formalTitle: "The line behind the charge",
+      formal: [
+        "Let $h_0$ (read “$h$ sub zero”) be the hours the flat fee covers. For $h\\ge h_0$ the charge is $C(h)=F+r(h-h_0)$. Its graph is part of a line, starting at $h_0$ hours. The slope, the rise in charge for each extra hour, is $r$. The intercept, the plain number when multiplied out, is $F-rh_0$. Two points $(h_0, F)$ and $(H, T)$ on the line give $r=(T-F)/(H-h_0)$.",
+        "Since $r>0$, the inequality $F+rx\\le B$ means the same as $x\\le(B-F)/r$. Dividing both sides by a positive number keeps the sign pointing the same way. For a count of items, the answer must be a whole number.",
+      ],
+      pitfalls: [
+        "Subtract the flat fee from the total before dividing by the extra hours.",
+        "Do not charge the rate for the hours the flat fee already covers.",
+        "When solving for the number of items, subtract the fee from the budget first.",
+      ],
+      parentGuide:
+        "Using the numbers in the problem, ask your learner which hours the flat fee pays for and which hours cost the rate.",
+    }),
+    senses: {
+      parts: "part",
+      unit: "unit",
+      sides: "side-of-equation",
+      boundary: "boundary",
     },
-    methodTitle: "Extra hours, rate, then the new question",
-    method: [
-      "Find the extra hours: the hours booked minus the hours the flat fee covers. Find the rate: the charge beyond the flat fee divided by the extra hours.",
-      "For a budget $B$ with fee $F$ and rate $r$, the cost is $F+rx$. Use $\\le$ for at most and $\\lt$ for under. Subtract $F$ from both sides and divide by $r$ to get the largest count that fits.",
-    ],
-    formalTitle: "The line behind the charge",
-    formal: [
-      "For $h\\ge h_0$ the charge is the linear function $C(h)=F+r(h-h_0)$ with slope $r$ and intercept $F-rh_0$. Two points $(h_0, F)$ and $(H, T)$ on the line give $r=(T-F)/(H-h_0)$.",
-      "Since $r>0$, the inequality $F+rx\\le B$ is equivalent to $x\\le(B-F)/r$ and keeps its direction when both sides are divided by $r$. For a count of items the solution set contains only whole numbers.",
-    ],
-    pitfalls: [
-      "Subtract the flat fee from the total before dividing by the extra hours.",
-      "Do not charge the rate for the hours the flat fee already covers.",
-      "Subtract the fee from the budget first when solving for the number of units.",
-    ],
-    parentGuide:
-      "Ask your learner which hours the flat fee pays for and which hours earn the rate, using the numbers in the problem.",
-  }),
+  },
 ];
 
 export const feeChainFacetMappings: FacetMapping[] = [

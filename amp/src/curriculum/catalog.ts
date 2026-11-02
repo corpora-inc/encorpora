@@ -625,6 +625,27 @@ fair-random-decisions|precalculus|probability|Design random selection procedures
 decision-strategies|precalculus|modeling|Compare uncertain strategies using probabilities payoffs and model assumptions|expected-value,conditional-probability|
 `;
 
+/** Words a skill title keeps capitalised: names and initialisms. */
+const titleWords: Record<string, string> = {
+  cavalieri: "Cavalieri",
+  pythagorean: "Pythagorean",
+  gcf: "GCF",
+  lcm: "LCM",
+};
+/** Skills whose id does not read as a title on its own. */
+const titleOverrides: Record<string, string> = {
+  "statistics-mean": "Mean of a data set",
+};
+/** A skill's title from its id, in AMP's sentence case ("Count to 20",
+ * "Pythagorean theorem"), matching problem-type titles. The one source for
+ * every screen: none re-cases it. */
+export function skillTitle(id: string): string {
+  if (titleOverrides[id]) return titleOverrides[id];
+  const words = id.split("-").map((word) => titleWords[word] ?? word);
+  words[0] = words[0]![0]!.toUpperCase() + words[0]!.slice(1);
+  return words.join(" ");
+}
+
 export const skills: Skill[] = outline
   .trim()
   .split("\n")
@@ -635,10 +656,7 @@ export const skills: Skill[] = outline
       parts as [string, GradeBand, string, string, string, string];
     return {
       id,
-      title: id
-        .split("-")
-        .map((word) => word[0]!.toUpperCase() + word.slice(1))
-        .join(" "),
+      title: skillTitle(id),
       description,
       gradeBand,
       strand,

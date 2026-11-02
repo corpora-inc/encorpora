@@ -49,6 +49,7 @@
 }
 .progress-mix {
   flex: none;
+  min-width: 44px;
   white-space: nowrap;
 }
 .progress-controls {
@@ -83,6 +84,7 @@
   border-radius: 12px;
 }
 .progress-filters button {
+  min-height: 44px;
   padding: 8px 16px;
   border: 0;
   background: transparent;
@@ -95,6 +97,8 @@
   color: var(--color-on-surface-raised);
 }
 .progress-card-stage {
+  /* A card with a one-line title; page sizes are counted in these. */
+  --progress-card-estimate: 141px;
   flex: 1;
   min-height: 0;
   overflow: auto;
@@ -401,14 +405,23 @@
   .progress-filters {
     justify-content: stretch;
   }
+  /* A longer label ("Review · 27") takes the room it needs. */
   .progress-filters button {
-    flex: 1;
+    flex: 1 1 auto;
+    min-height: 44px;
     padding: 8px 4px;
     font-size: 0.8125rem;
   }
   .progress-skill-card {
     padding: 14px;
     gap: 7px;
+  }
+  /* Phone cards are shorter, and a tighter gap fits one more on a page. */
+  .progress-card-stage {
+    --progress-card-estimate: 132px;
+  }
+  .progress-cards {
+    gap: 10px;
   }
   .progress-card-title {
     font-size: 1.125rem;

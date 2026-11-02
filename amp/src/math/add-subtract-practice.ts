@@ -134,7 +134,10 @@ export function borrows(a: number, b: number) {
 function additionSteps(a: number, b: number): string[] {
   const x = digits(a),
     y = digits(b),
-    steps: string[] = [];
+    steps: string[] = [
+      `A digit's place gives its value: ones, then tens (groups of 10), then hundreds (groups of 100).`,
+      `Line the numbers up by place, so ones add to ones and tens to tens. Start with the ones, because a trade there can add to the tens.`,
+    ];
   let carry = 0;
   const n = Math.max(x.length, y.length);
   for (let p = 0; p < n; p++) {
@@ -150,7 +153,7 @@ function additionSteps(a: number, b: number): string[] {
       carry
         ? p === n - 1
           ? `${Cap(places[p]!)}: ${sum}. Write ${total % 10} ${places[p]} and 1 ${one(p + 1)}.`
-          : `${Cap(places[p]!)}: ${sum}. Write ${total % 10} and regroup 10 ${places[p]} as 1 ${one(p + 1)}.`
+          : `${Cap(places[p]!)}: ${sum}. A place holds at most 9, so write ${total % 10} and regroup (trade) 10 ${places[p]} as 1 ${one(p + 1)}.`
         : terms.length === 1
           ? `${Cap(places[p]!)}: ${total}, with nothing to add.`
           : `${Cap(places[p]!)}: ${sum}.`,
@@ -166,7 +169,10 @@ function subtractionSteps(a: number, b: number): string[] {
   const top = digits(a),
     original = digits(a),
     bottom = digits(b),
-    steps: string[] = [];
+    steps: string[] = [
+      `A digit's place gives its value: ones, then tens (groups of 10), then hundreds (groups of 100).`,
+      `Line the numbers up by place and subtract one place at a time. Start with the ones, because a trade there takes from the tens.`,
+    ];
   const lastNonzero = digits(a - b).length - 1;
   for (let p = 0; p < top.length; p++) {
     const d = bottom[p] ?? 0;
@@ -177,7 +183,7 @@ function subtractionSteps(a: number, b: number): string[] {
       const chain: string[] = [];
       for (let k = q; k > p; k--)
         chain.push(`1 ${one(k)} as 10 ${places[k - 1]}`);
-      lead = `${top[p]} < ${d}, so regroup ${chain.join(", then ")}. `;
+      lead = `${top[p]} is less than ${d}, so regroup (trade) ${chain.join(", then ")}. `;
       top[q]!--;
       for (let k = q - 1; k > p; k--) top[k] = 9;
       top[p]! += 10;
@@ -193,7 +199,7 @@ function subtractionSteps(a: number, b: number): string[] {
     );
   }
   steps.push(
-    `So ${formatWhole(a)} − ${formatWhole(b)} = ${formatWhole(a - b)}. Check: ${formatWhole(a - b)} + ${formatWhole(b)} = ${formatWhole(a)}.`,
+    `So ${formatWhole(a)} − ${formatWhole(b)} = ${formatWhole(a - b)}. Check by adding back, because addition undoes subtraction: ${formatWhole(a - b)} + ${formatWhole(b)} = ${formatWhole(a)}.`,
   );
   return steps;
 }
@@ -296,13 +302,16 @@ export function generateAddSubtractProblem(
         start % 10 === 0
           ? [
               `${start} is ${start / 10} tens, and 100 is 10 tens.`,
-              `10 − ${start / 10} = ${10 - start / 10} tens, which is ${answer}.`,
-              `Check: ${start} + ${answer} = 100.`,
+              `The box needs the tens that are missing: 10 − ${start / 10} = ${10 - start / 10} tens.`,
+              `${10 - start / 10} tens is ${answer}. Check: ${start} + ${answer} = 100.`,
+              `The number in the box is ${answer}.`,
             ]
           : [
-              `${start} + ${next - start} = ${next}, the next ten.`,
-              `${next} + ${100 - next} = 100.`,
-              `Together: ${next - start} + ${100 - next} = ${answer}. Check: ${start} + ${answer} = 100.`,
+              `Count up from ${start} to 100 in two jumps, because whole tens are easy to count.`,
+              `First jump to the next ten: ${start} + ${next - start} = ${next}.`,
+              `Then jump by tens to 100: ${next} + ${100 - next} = 100.`,
+              `Add the jumps: ${next - start} + ${100 - next} = ${answer}. Check: ${start} + ${answer} = 100.`,
+              `The number in the box is ${answer}.`,
             ];
       break;
     }

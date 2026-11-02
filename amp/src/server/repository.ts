@@ -1,3 +1,4 @@
+import type { GlossaryCard, GlossaryLexicon } from "../glossary/types";
 import {
   defaultPracticeSettings,
   practiceSettingsSchema,
@@ -75,8 +76,6 @@ import type { GeneratedProblem, ProblemVariant } from "../math/contracts";
 import type { PracticeSkip } from "../learning/skip";
 import type { ProblemFlag } from "../feedback/problem-flags";
 import type { WorkbookRecord } from "../workbook/contracts";
-import { purgeWorkbookPdfs } from "../workbook/retention.js";
-import { RETENTION } from "../privacy/retention-periods.js";
 import type {
   StartingBand,
   PracticeStartingPoint,
@@ -103,6 +102,15 @@ export type Outcome = {
   skipped?: true;
   /** The instance's realized variant and axis values, for per-axis evidence. */
   variant?: ProblemVariant;
+  /** Where the answer came from; absent for in-app answers. */
+  evidenceSource?: "paper";
+  /** Below 1 for evidence weaker than a graded answer (a parent's mark
+   * without the answer). Absent means 1. */
+  evidenceWeight?: number;
+  /** Term cards for the explanation's words. Added to the response only,
+   * never stored with the attempt. */
+  glossary?: GlossaryCard[];
+  glossaryLexicon?: GlossaryLexicon;
 };
 export type SavedProblem = GeneratedProblem & {
   /** Serving context is private and immutable for evidence interpretation. */
@@ -180,16 +188,11 @@ export interface LearnerTransaction {
    * returns the stored one either way. */
   saveWorkbook(workbook: WorkbookRecord): Promise<WorkbookRecord>;
   setWorkbookPaper(id: string, paper: WorkbookRecord["paper"]): Promise<void>;
-  /** A rendered PDF of exactly this document, while it is retained. */
-  workbookPdf(key: WorkbookPdfKey): Promise<Buffer | undefined>;
-  /** Stores a rendered PDF and drops every expired one. */
-  saveWorkbookPdf(key: WorkbookPdfKey, pdf: Buffer): Promise<void>;
+  /** The workbook printed with this code (newest when codes repeat). */
+  workbookByCode(code: string): Promise<WorkbookRecord | undefined>;
+  /** Workbooks made in the last day, whose problems mixed practice holds back. */
+  recentWorkbooks(): Promise<WorkbookRecord[]>;
 }
-export type WorkbookPdfKey = {
-  workbookId: string;
-  format: "Letter" | "A4";
-  documentSha256: string;
-};
 export interface Repository {
   /** The anonymous free-trial allowance and its placement length. */
   readonly limits?: TrialLimits;
@@ -653,7 +656,7 @@ export class PgTransaction implements LearnerTransaction {
     const settings = await this.practiceSettings();
     const history = await this.db.query(
       `SELECT a.outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
-        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt", COALESCE((i.content->>'practiceRevision')::int,0) AS "practiceRevision" FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
+        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt",(outcome->>'evidenceWeight')::float8 AS "evidenceWeight", COALESCE((i.content->>'practiceRevision')::int,0) AS "practiceRevision" FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
         WHERE a.learner_id=$1 AND COALESCE((i.content->>'practiceEpoch')::int,0)=$3 ORDER BY a.evidence_sequence LIMIT $2`,
       [this.learnerId, answers, settings.epoch],
     );
@@ -897,29 +900,21 @@ export class PgTransaction implements LearnerTransaction {
       [this.learnerId, id, paper],
     );
   }
-  async workbookPdf(key: WorkbookPdfKey) {
+  async workbookByCode(code: string) {
     const result = await this.db.query(
-      `SELECT p.pdf FROM amp_workbook_pdfs p JOIN amp_workbooks w ON w.id=p.workbook_id
-        WHERE w.learner_id=$1 AND p.workbook_id=$2 AND p.format=$3 AND p.document_sha256=$4
-        AND p.created_at>now()-make_interval(hours=>$5)`,
-      [
-        this.learnerId,
-        key.workbookId,
-        key.format,
-        key.documentSha256,
-        RETENTION.workbookPdfHours,
-      ],
+      `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1 AND code=$2
+        ORDER BY created_at DESC LIMIT 1`,
+      [this.learnerId, code],
     );
-    return result.rows[0]?.pdf as Buffer | undefined;
+    return result.rows[0] ? workbookRow(result.rows[0]) : undefined;
   }
-  async saveWorkbookPdf(key: WorkbookPdfKey, pdf: Buffer) {
-    await purgeWorkbookPdfs(this.db);
-    await this.db.query(
-      `INSERT INTO amp_workbook_pdfs(workbook_id,format,document_sha256,pdf)
-        SELECT id,$3,$4,$5 FROM amp_workbooks WHERE learner_id=$1 AND id=$2
-        ON CONFLICT(workbook_id,format,document_sha256) DO UPDATE SET pdf=EXCLUDED.pdf,created_at=now()`,
-      [this.learnerId, key.workbookId, key.format, key.documentSha256, pdf],
+  async recentWorkbooks() {
+    const result = await this.db.query(
+      `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1
+        AND created_at>now()-interval '24 hours' ORDER BY created_at DESC LIMIT 20`,
+      [this.learnerId],
     );
+    return result.rows.map(workbookRow);
   }
   async trialRemaining() {
     return (await this.trialProgress())?.remaining ?? null;

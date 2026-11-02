@@ -22,7 +22,7 @@ import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { choose } from "./ui-controls";
 import { startTopic } from "./ui-practice";
-import { assertPhoneLandscapeSmoke } from "./ui-viewports";
+import { assertPhoneLandscapeSmoke, problemInView } from "./ui-viewports";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
 if (!database) throw new Error("AMP_TEST_DATABASE_URL is required");
@@ -284,6 +284,12 @@ try {
         }
         const smallest = await smallestLabel(page);
         assert.ok(smallest >= 12, `${tag}: a figure label is ${smallest} px`);
+        // A tablet shows the whole problem, a given graph and every option,
+        // without scrolling the stage.
+        if (width >= 768 && width < 1280) {
+          const scrolls = await problemInView(page);
+          assert.deepEqual(scrolls, [], `${tag}: ${scrolls.join("; ")}`);
+        }
         const check = page.getByRole("button", { name: "Check", exact: true });
         assert.ok(await check.isDisabled(), `${tag}: Check waits for a choice`);
         const checkBox = (await check.boundingBox())!;

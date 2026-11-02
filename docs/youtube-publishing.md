@@ -264,6 +264,55 @@ in private operational playlists; adding an unlisted video to a public playlist
 can expose it. During the weekly review, find public videos without a public
 playlist and assign them. Do not file every video into every playlist.
 
+## Paid-video format and campaign requirements
+
+Every new paid video concept must include the complete Google Ads delivery set:
+
+| Format | Delivery size | Duration |
+| --- | --- | --- |
+| Landscape, 16:9 | 1920 × 1080 | At least 10 seconds |
+| Square, 1:1 | 1080 × 1080 | At least 10 seconds |
+| Portrait, 9:16 | 1080 × 1920 | 10–60 seconds for Shorts coverage |
+| Feed, 4:5 | 1080 × 1350 | Supplemental feed export; never a substitute for square |
+
+Compose and review each orientation independently from the same source concept.
+Keep essential math, product controls, captions and CTA readable at phone size.
+Do not satisfy coverage with distorted crops, padded postage-stamp pictures,
+or obsolete creative. Preserve exact approved voice IDs, source provenance,
+final hashes and per-format review evidence. Larger masters may use the same
+ratios; delivery exports must meet at least the sizes above. A short bumper is
+an additional placement-specific cut, not the complete delivery set.
+[Google Performance Max specifications](https://support.google.com/google-ads/answer/14528532).
+
+Before uploading a new paid concept, run the advertising workbench's
+`python3 -m cinema delivery-check delivery.json`. The paid uploader requires
+this manifest and verifies actual media geometry, duration, audio and hashes
+before authorization or upload requests. Single-format render previews are
+allowed; they do not constitute a finished paid delivery. Other compositors
+must use the same delivery check. See the
+[manifest example](../web/scripts/amp-ads/cinema/README.md#paid-delivery-gate).
+Editorial review and platform checks are separate required steps.
+
+Every active Performance Max asset group must have eligible, owned landscape,
+square and portrait videos and **Excellent** ad strength. Verify live video IDs,
+orientation coverage, policy eligibility and the rating after each campaign
+change and in the daily campaign review. Recheck after processing or policy
+review; **Pending is unfinished**, not Excellent. Keep serving eligible assets
+while repairing gaps. An upload or successful mutation is not proof that the
+asset group uses the video or that Google has recalculated its rating.
+
+Resolve all campaign recommendations in the same review. Apply relevant quality,
+asset, destination and measurement fixes within the authorized scope. Dismiss
+an unsuitable recommendation only after recording its concrete reason and
+reading back the resolved state. Preserve approved spend caps, targeting and
+conversion goals; a recommendation does not authorize changing them. Record
+optimization score and outstanding recommendations from the live account.
+The operating target is 100% with zero unresolved recommendations; report any
+pending platform update or specific remaining action accurately. Never dismiss
+an actionable defect just to improve the displayed score. New recommendations
+can appear between reviews, so a receipt records a check time, not a permanent
+guarantee.
+
 ## Existing videos and paid creative
 
 Apply the editable defaults to the existing library: accurate audience,

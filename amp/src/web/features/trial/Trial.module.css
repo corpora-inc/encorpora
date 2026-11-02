@@ -12,6 +12,9 @@
 }
 .panel {
   width: min(100%, 640px) !important;
+  /* The map and plans are taller than a screen: anchor them, and their
+     skeleton, to the top so the frame never jumps when data arrives. */
+  margin-block: 0 auto !important;
 }
 .start h1,
 .title {

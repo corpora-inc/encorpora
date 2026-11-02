@@ -1,4 +1,4 @@
-import type { MethodTerm } from "../glossary/types";
+import type { GlossarySenses, MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -26,15 +26,20 @@ type Spec = {
   parentGuide: string;
   /** Show the practice figure beside the lesson. */
   figure?: boolean;
+  /** Glossary senses and ordinary-word forms, for the lesson and its method. */
+  senses?: GlossarySenses;
+  noLink?: string[];
 };
 
 const specs: Spec[] = [
   {
+    senses: { unit: "unit", units: "unit" },
+    noLink: ["changes", "mean"],
     id: "proportional-graph",
     templateId: "proportional-graph",
     title: "Read a proportional graph",
     summary:
-      "A proportional graph is a straight line through $(0, 0)$. The point $(1, r)$ gives the unit rate, and every point says how much of one quantity goes with how much of the other.",
+      "Two amounts are proportional when one is always the same number of times the other, like 3 dollars for every pound of apples. The unit rate is the amount for 1: here, 3 dollars per pound. On a graph, each point $(x, y)$ pairs an amount of the first quantity with an amount of the second. A proportional graph is a straight line through $(0, 0)$, the corner where the axes meet. It also passes through $(1, r)$, where $r$ is the unit rate.",
     objectives: [
       "Read the unit rate and the meaning of a point from a graph.",
       "Decide whether a graph shows a proportional relationship.",
@@ -43,24 +48,24 @@ const specs: Spec[] = [
     figure: true,
     intuition: [
       t`Two quantities are in a proportional relationship when one is always the same number of times the other. Apples sold at one price per pound are an example: 2 pounds cost twice as much as 1 pound, and 3 pounds cost three times as much. The cost of 1 pound is the unit rate, the amount of the second quantity for 1 of the first.`,
-      t`On a graph, each point is an ordered pair $(x, y)$. Start at the origin, the point $(0, 0)$ where the axes meet. Go across $x$, then up $y$. In a situation, the pair says that $x$ of the first quantity goes with $y$ of the second. A proportional relationship makes a straight line that passes through the origin, because 0 of the first quantity goes with 0 of the second. The same line passes through $(1, r)$, where $r$ is the unit rate.`,
+      t`A graph has two number lines called axes: one across (horizontal) and one up (vertical). Each point is an ordered pair $(x, y)$: two numbers in a fixed order. Start at the origin, the point $(0, 0)$ where the axes meet. Go across $x$, then up $y$. In a situation, the pair says that $x$ of the first quantity goes with $y$ of the second. A proportional relationship makes a straight line that passes through the origin, because 0 of the first quantity goes with 0 of the second. The same line passes through $(1, r)$, where $r$ is the unit rate.`,
     ],
     terms: ["ordered-pair", "origin", "unit-rate", "proportional-relationship"],
     method: [
       "Say what each axis shows, with its unit.",
       "Read a labeled point as (first quantity, second quantity), and say it in a sentence with the units.",
-      "To find the unit rate, divide the second number of the point by the first. The graph passes through $(1, r)$.",
-      "To decide if the graph is proportional, check two things: it is a straight line, and it passes through $(0, 0)$.",
+      "To find the unit rate, pick a point other than $(0, 0)$ and divide its second number by its first. The graph passes through $(1, r)$.",
+      "To decide if the graph is proportional, check two things: it is a straight line that is not straight up and down, and it passes through $(0, 0)$.",
     ],
     watch:
-      "A line that goes up is not always proportional. If it meets the vertical axis above 0, something is already there at the start, like a fixed fee. Also, the second number of a point is a total, not the rate.",
+      "A line that goes up is not always proportional. If it meets the vertical axis above 0, something is already there at the start, like a fixed fee. Also, the second number of a point is the total for that many units. It equals the unit rate only when the first number is 1.",
     principle: t`A relationship between $x$ and $y$ is proportional when $y = rx$ for one fixed number $r$. Its graph is a straight line through $(0, 0)$ and $(1, r)$, and $r$ is the unit rate. A line $y = rx + b$ with $b \neq 0$ does not pass through $(0, 0)$, and the ratio $y/x$ is not constant on it.`,
     example: {
       prompt: t`Apples are sold at one price for each pound. The graph of cost in dollars against pounds passes through the labeled point $(4, 12)$. What does the point mean, and what is the unit rate?`,
       steps: [
-        t`The horizontal axis shows pounds and the vertical axis shows dollars, so $(4, 12)$ means 4 pounds cost 12 dollars.`,
-        t`The unit rate is the cost of 1 pound: $12 \div 4 = 3$.`,
-        t`Check: the graph passes through $(1, 3)$, and 4 pounds cost $4 \times 3 = 12$ dollars.`,
+        t`The horizontal axis (across) shows pounds, and the vertical axis (up) shows dollars. A point gives pounds first, then dollars, so $(4, 12)$ means 4 pounds cost 12 dollars.`,
+        t`The unit rate is the cost of 1 pound. 4 pounds cost 12 dollars, so share 12 dollars equally among the 4 pounds: $12 \div 4 = 3$.`,
+        t`Check: the graph passes through $(1, 3)$, and 4 pounds at 3 dollars each cost $4 \times 3 = 12$ dollars.`,
       ],
       answer: "3 dollars per pound",
     },
@@ -70,22 +75,29 @@ const specs: Spec[] = [
     ],
     formalTitle: "Why the test works",
     formal: [
-      t`If $y = rx$, then $y/x = r$ for every $x \neq 0$, and $x = 0$ gives $y = 0$. So every point is on the line through $(0, 0)$ with slope $r$. Going the other way, if a graph is a line through $(0, 0)$, every point has $y/x$ equal to the same number, so $y = rx$. A line missing $(0, 0)$ has a nonzero starting value $b$, so $y/x = r + b/x$ changes with $x$.`,
+      t`If $y = rx$, then $y \div x = r$ for every $x \neq 0$ ($x$ not equal to 0), and $x = 0$ gives $y = 0$. So every point is on the line through $(0, 0)$ with slope $r$. Going the other way, take a line through $(0, 0)$ that is not straight up and down. Every point on it other than $(0, 0)$ has the same value of $y \div x$; call it $r$. So $y = rx$. A line missing $(0, 0)$ has a starting value $b$ that is not 0. Then $y \div x = r + b \div x$, which changes with $x$.`,
     ],
     pitfalls: [
       "Read the pair in the order (first quantity, second quantity).",
       "A total for several units is not a unit rate. Divide by the number of units.",
-      "A straight line must also pass through (0, 0) to be proportional.",
+      "A straight line must also pass through $(0, 0)$ to be proportional.",
     ],
     parentGuide:
       "Point to a labeled point on a graph and ask your learner to say it in a sentence with the units, then to name the cost of 1.",
   },
   {
+    senses: {
+      increasing: "increasing",
+      decreasing: "decreasing",
+      scale: "scale-axis",
+      interval: "interval",
+    },
+    noLink: ["parts", "part", "changes", "change", "left side", "mean"],
     id: "story-graph-match",
     templateId: "story-graph-match",
     title: "Match a story to a graph",
     summary:
-      "A graph without numbers still tells the story: going up means increasing, level means constant, going down means decreasing, and steeper means faster.",
+      "A graph can tell a story even without numbers. Time runs from left to right. Where the line goes up, the amount is increasing, which means getting bigger. Where it is level, the amount is constant: it stays the same. Where it goes down, the amount is decreasing, which means getting smaller. A steeper piece, one that rises or falls more sharply, means the amount is changing faster.",
     objectives: [
       "Describe a graph as increasing, constant and decreasing parts in order.",
       "Match a story to a graph and find where a quantity changes fastest or slowest.",
@@ -93,7 +105,7 @@ const specs: Spec[] = [
     goal: "Match a story to a graph with no scale and describe where the quantity increases, decreases, stays constant, or changes fastest or slowest.",
     figure: true,
     intuition: [
-      t`Some graphs have no numbers. They show how one quantity changes over time. Time runs from left to right, so the left side of the graph is the beginning. When the line goes up, the quantity is increasing. When the line is level, the quantity is constant, which means it stays the same. When the line goes down, the quantity is decreasing.`,
+      t`Some graphs have no scale, the numbers marked along the axes. They show how one quantity changes over time. Time runs from left to right, so the left side of the graph is the beginning. Increasing means getting bigger: when the line goes up, the quantity is increasing. When the line is level, the quantity is constant, which means it stays the same. Decreasing means getting smaller: when the line goes down, the quantity is decreasing.`,
       t`A graph is read in order, one piece at a time. A story is matched to a graph by checking each part of the story against the piece that is at the same place.`,
     ],
     terms: [
@@ -118,24 +130,25 @@ const specs: Spec[] = [
       prompt:
         "Ana walks away from home, stops to rest, then walks back toward home. Which description fits the graph of her distance from home over time?",
       steps: [
-        "Walking away from home makes the distance larger, so the first piece goes up: increasing.",
+        "The graph shows distance from home, read from left to right because time moves that way. Walking away from home makes the distance larger, so the first piece goes up: increasing.",
         "Stopping to rest keeps the distance the same, so the second piece is level: constant.",
         "Walking back toward home makes the distance smaller, so the last piece goes down: decreasing.",
+        "So the description must list the three pieces in that order.",
       ],
       answer: "Increasing, then constant, then decreasing.",
     },
     methodTitle: "Which part is fastest",
     methodText: [
-      t`Suppose a graph has four pieces, each covering the same amount of time. Compare how much each piece rises or falls. The piece that rises or falls the most is the steepest, so the quantity changes fastest there. A gentle piece changes slowly. A level piece is not changing. Fast decreasing is also fast: a steep piece going down changes as fast as a steep piece going up.`,
+      t`Suppose a graph has four pieces, each covering the same amount of time. Compare how much each piece rises or falls. The piece that rises or falls the most is the steepest, so the quantity changes fastest there. A gentle piece changes slowly. A level piece is not changing. Fast decreasing is also fast: a piece going down changes as fast as an equally steep piece going up.`,
     ],
     formalTitle: "Rate of change from a graph",
     formal: [
-      t`On a piece that is a line segment, the slope is the change in the output divided by the change in the input. When the input changes by the same amount on two pieces, the one with the larger change in output has the larger $|\text{slope}|$, so the output changes faster there. A sign tells direction: positive is increasing and negative is decreasing. Without numbers on the axes, a graph can only be compared by direction and steepness.`,
+      t`The input is the quantity across the bottom, here time, and the output is the quantity going up. On a piece that is a line segment (a straight piece with two ends), the slope is the change in the output divided by the change in the input. The bars in $|\text{slope}|$ mean the size of the slope, ignoring its sign. Suppose the input changes by the same amount on two pieces. The piece whose output changes by more, ignoring direction, has the larger $|\text{slope}|$. So the output changes faster there. A sign tells direction: positive is increasing and negative is decreasing. Without numbers on the axes, you cannot read exact values, but you can still compare direction, steepness and how high each part sits.`,
     ],
     pitfalls: [
       "Read from left to right: left is earlier.",
       "Steepest means fastest, whether the line goes up or down.",
-      "A level piece means constant, not zero.",
+      "A level piece means constant (staying the same), not zero.",
     ],
     parentGuide:
       "Ask your learner to tell the story of a graph out loud, piece by piece, then to point to the steepest piece.",
@@ -257,19 +270,29 @@ const specs: Spec[] = [
       "Ask your learner to write the first four pairs and say which of subtract or divide gives the same answer each time.",
   },
   {
+    senses: {
+      sides: "side",
+      side: "side",
+      degrees: "degree-angle",
+      "more than": "more-than",
+      vertex: "vertex",
+    },
+    noLink: ["opposite", "third", "rule", "square", "unit"],
     id: "triangle-uniqueness",
     templateId: "triangle-uniqueness",
     title: "How many triangles fit these measures",
     summary:
-      "Some measures fix one triangle, some fit none, and two sides with an angle that is not between them can fit two. Angles alone fit triangles of every size.",
+      "A triangle has three sides and three angles. An angle is the turn at a corner, measured in degrees, the unit for turns. Given some of these measures, you can ask how many different triangles fit them. Some sets of measures fix exactly one triangle. Some fit none, because the sides cannot meet. Two sides and an angle that is not between them can fit two. Three angles that add to 180° fit triangles of every size.",
     objectives: [
       "Decide whether a set of side and angle measures gives no triangle, one or two.",
       "Name which sets of measures fix exactly one triangle.",
     ],
     goal: "Decide how many different triangles have the given side and angle measures, and which sets of measures fix exactly one triangle.",
     intuition: [
-      t`Triangles that match exactly in size and shape count as one triangle. Some sets of measures leave no choice, so there is one triangle. Some cannot be drawn, so there is no triangle. Some leave a choice, so there are many or two.`,
-      t`Three side lengths fix a triangle if the two shorter sides together are longer than the longest side. Two angles and the side between them fix a triangle if the two angles total less than 180°. Two sides and the angle between them fix a triangle. Three angles that total 180° fix the shape but not the size, so many triangles fit.`,
+      t`A triangle has three straight sides and three angles. An angle is the amount of turn between two sides that meet at a corner. It is measured in degrees, the unit for turns, written °. The three angles of any triangle add to 180°.`,
+      t`Triangles that match exactly in size and shape, called congruent triangles, count as one triangle. Some sets of measures leave no choice, so there is one triangle. Some cannot be drawn, so there is no triangle. Some leave a choice, so there are two, or many.`,
+      t`Three side lengths fix a triangle if the two shorter sides together are longer than the longest side. That rule is called the triangle inequality. Two angles and the side between them fix a triangle if the two angles add to less than 180°.`,
+      t`An angle between two given sides is called the included angle. Two sides and their included angle fix a triangle. Three angles that add to 180° fix the shape but not the size, so many triangles fit.`,
     ],
     terms: [
       [
@@ -284,52 +307,55 @@ const specs: Spec[] = [
     ],
     method: [
       "Name what is given: sides, angles, and where each is. Is the angle between the two sides?",
-      "Check whether a triangle can exist: the sides satisfy the triangle inequality, and the angles total less than 180°.",
-      "If two sides and a non-included angle are given, draw the angle and the side along one ray. The other side swings from the end of that side like a gate. See where it can land on the other ray.",
-      "Count the places it lands: none, one or two.",
+      "Check whether a triangle can exist: the sides pass the triangle inequality, any two given angles add to less than 180°, and three given angles add to exactly 180°.",
+      "If two sides and an angle not between them are given, draw the angle and lay one side along one of its rays (straight paths from the corner). The other side swings from the end of that side like a gate. See where it can land on the other ray.",
+      "Count the landing places that make a real triangle: none, one or two. A landing at the starting corner does not count.",
     ],
     watch:
       "Two sides and an angle that is not between them do not always fix one triangle. Check the swing. Also, equal angles alone never fix the size.",
-    principle: t`SSS (when the triangle inequality holds), SAS, ASA and AAS each fix exactly one triangle, up to size and shape. AAA fixes the shape but not the size. For SSA with the angle $A$ and sides $b = AC$ and $a = BC$: if $A$ is right or obtuse there is one triangle when $a > b$ and none otherwise. If $A$ is acute, let $h$ be the shortest distance from $C$ to the other ray: there is no triangle when $a < h$, one when $a = h$ or $a \ge b$, and two when $h < a < b$. When $A = 30^\circ$, $h = b/2$.`,
+    principle: t`When the measures can form a triangle, SSS, SAS, ASA and AAS each fix exactly one triangle: its size and shape are fixed. AAA fixes the shape but not the size. For SSA with the angle $A$ and sides $b = AC$ and $a = BC$: if $A$ is right or obtuse there is one triangle when $a > b$ and none otherwise. If $A$ is acute, let $h$ be the shortest distance from $C$ to the other ray: there is no triangle when $a < h$, one when $a = h$ or $a \ge b$, and two when $h < a < b$. When $A = 30^\circ$, $h = b/2$.`,
     example: {
       prompt: t`A triangle $ABC$ has $\angle A = 30^\circ$, $AC = 10$ cm and $BC = 7$ cm. How many different triangles fit?`,
       steps: [
-        "Draw the 30° angle at $A$ and mark $C$ on one ray, 10 cm from $A$. Side $BC$ must go from $C$ to the other ray.",
-        "The shortest way from $C$ to the other ray is straight across at a right angle. In a right triangle with a 30° angle, the side opposite 30° is half the hypotenuse, so that distance is 10 ÷ 2 = 5 cm.",
-        "BC is 7 cm. That is longer than 5 cm, so it reaches the ray. It is shorter than 10 cm, so both places where it reaches are on the ray.",
+        "Draw the 30° angle at $A$. Its two arms are rays, straight paths starting at $A$. Mark $C$ on one ray, 10 cm from $A$. Side $BC$ must go from $C$ to the other ray, and the 30° angle is not between the two given sides.",
+        "Find the shortest distance from $C$ to the other ray: straight across, meeting it at a right angle (a square corner, 90°). In a right triangle with a 30° angle, the side across from the 30° angle is half the longest side. Here the longest side is $AC$, so that distance is 10 ÷ 2 = 5 cm.",
+        "$BC$ is 7 cm. That is longer than 5 cm, so it can reach the ray. Swinging it like a gate, it lands there in two places.",
+        "$BC$ is shorter than $AC$, 10 cm, so both landing places are on the ray itself, not behind $A$. Each gives a different triangle.",
       ],
       answer: "Exactly two different triangles.",
     },
     methodTitle: "The swinging side",
     methodText: [
-      t`Fix $\angle A = 30^\circ$ and $AC = 10$ cm. With $h = 5$ cm: a side $BC$ shorter than 5 cm cannot reach the other ray, so there is no triangle. A side of exactly 5 cm just touches it at one point: one triangle. A side between 5 cm and 10 cm reaches in two places: two triangles. A side of 10 cm or more reaches the ray in only one place that is on the ray: one triangle.`,
+      t`Fix $\angle A = 30^\circ$ (the angle at $A$ is 30°) and $AC = 10$ cm. Let $h = 5$ cm be the shortest distance from $C$ to the other ray. a side $BC$ shorter than 5 cm cannot reach the other ray, so there is no triangle. A side of exactly 5 cm just touches it at one point: one triangle. A side between 5 cm and 10 cm reaches in two places: two triangles. A side longer than 10 cm reaches the ray in only one place in front of $A$: one triangle. At exactly 10 cm, the second landing point is $A$ itself, so again there is one triangle.`,
     ],
     formalTitle: "Why SSA is different",
     formal: [
-      t`For SAS, ASA, and SSS, the measures leave no freedom. The third vertex is where two circles or rays meet at one point on the correct side. In SSA, the third vertex is where a circle of radius $a$ about $C$ meets a ray from $A$, and a circle can meet a ray in 0, 1 or 2 points. If the angle at $A$ is right or obtuse, the side opposite it must be the longest, so at most one point works. For an acute angle with $h < a < b$, both points are on the ray, so two non-congruent triangles have the same given measures.`,
+      t`Short names list what is given, in order around the triangle: $\text{S}$ for a side and $\text{A}$ for an angle. SAS is two sides and the angle between them. ASA is two angles and the side between them. SSS is three sides, and SSA is two sides and an angle not between them. When SAS, ASA or SSS measures can form a triangle at all, they leave no freedom. The third vertex is where two circles or rays meet at one point on the correct side. In SSA, the third vertex is where a circle of radius $a$ about $C$ meets a ray from $A$, and a circle can meet a ray in 0, 1 or 2 points. If the angle at $A$ is right or obtuse, the side opposite it must be the longest, so at most one point works. For an acute angle with $h < a < b$, both points are on the ray, so two non-congruent triangles have the same given measures.`,
     ],
     pitfalls: [
       "Angles alone fix the shape, not the size.",
-      "SSA can give none, one or two triangles.",
-      "Check that the sides can meet and the angles total less than 180°.",
+      "Two sides and an angle not between them (SSA) can give none, one or two triangles.",
+      "Check that the sides can meet. Two given angles must add to less than 180°, and three given angles must add to exactly 180°.",
     ],
     parentGuide:
       "Ask your learner to describe in words how the third side of the triangle can swing, and where it can land.",
   },
   {
+    senses: { difference: "difference-subtract" },
+    noLink: ["part", "base", "changes", "scale"],
     id: "percent-applications",
     templateId: "percent-applications",
     title: "Percent in tax, tips, sales and interest",
     summary:
-      "Find a percent of the right amount, then add it, take it away, or repeat it for each year. Percent error compares the error with the true amount.",
+      "A percent is a number out of 100: 8% means 8 out of every 100. To find 8% of 40 dollars, multiply 40 by $\\frac{8}{100}$ to get 3.20 dollars. The amount you take the percent of is called the base. Then add the result (a tax or tip), or take it away (a markdown, or price cut). Simple interest is a percent of saved money, earned once each year. Percent error compares a measuring mistake with the true amount.",
     objectives: [
       "Find a tax, tip, commission, markup or markdown and the amount it produces.",
       "Calculate simple interest and percent error.",
     ],
     goal: "Solve exact one-step percent problems: tax, tip, commission, markup, markdown, simple interest and percent error.",
     intuition: [
-      t`A percent means "per hundred." To find 8% of an amount, multiply the amount by $8/100$. The amount that the percent is taken of is the base. In sales tax, the base is the price. In a tip, it is the bill. In a commission, it is the sales. Always ask: "percent of what?"`,
-      t`Tax and tips are added to the base. A markup is added to what a store paid, and a markdown is taken off a price. Simple interest is a percent of the money put in, earned once for every year. Percent error compares the error in a measurement with the true amount.`,
+      t`A percent means “per hundred”, and the sign % stands for it. To find 8% of an amount, multiply the amount by $\frac{8}{100}$. The amount that the percent is taken of is the base. In sales tax, the base is the price. In a tip, it is the bill. In a commission, it is the sales. Always ask: "percent of what?"`,
+      t`Tax and tips are added to the base. A commission is pay that is a percent of what a salesperson sells. A markup is an amount added to what a store paid, and a markdown is an amount taken off a price. Simple interest is a percent of the money put in, earned once for every year. Percent error compares the error in a measurement (how far off it is) with the true amount.`,
     ],
     terms: [
       ["percent", "The base is the amount that the percent is taken of."],
@@ -351,8 +377,9 @@ const specs: Spec[] = [
       prompt:
         "A jacket costs 40 dollars before tax. The sales tax is 8% of the price. What is the total cost?",
       steps: [
-        "The base is the price, 40 dollars. Tax is $40 \\times 8/100 = 3.20$ dollars.",
-        "Tax is added to the price: $40 + 3.20 = 43.20$ dollars.",
+        "Ask “8% of what?” The tax is a percent of the price, so the base is 40 dollars.",
+        "Find 8% of the base by multiplying by $\\frac{8}{100}$: $40 \\times \\frac{8}{100} = \\frac{320}{100} = 3.20$ dollars of tax.",
+        "Tax is added to the price, so the total is $40 + 3.20 = 43.20$ dollars.",
       ],
       answer: "43.20 dollars",
     },
@@ -362,10 +389,10 @@ const specs: Spec[] = [
     ],
     formalTitle: "Why the base matters",
     formal: [
-      t`A percent is a ratio to 100, so $p\%$ of $B$ is $\frac{p}{100}B$. Taking 25% off 80 gives 60, and putting 25% back on 60 gives 75, not 80, because the second 25% is of a different base. So the base must be the amount the problem names. Percent error uses the true amount as the base because it measures the error against what the measurement should have been.`,
+      t`A percent is a ratio to 100 (a comparison with 100), so $p\%$ of $B$ is $\frac{p}{100}B$. Taking 25% off 80 gives 60, and putting 25% back on 60 gives 75, not 80, because the second 25% is of a different base. So the base must be the amount the problem names. Percent error uses the true amount as the base because it measures the error against what the measurement should have been.`,
     ],
     pitfalls: [
-      "Ask 'percent of what?' before multiplying.",
+      "Ask “percent of what?” before multiplying.",
       "Tax and tip add. A markdown subtracts.",
       "Simple interest is earned for every year.",
     ],
@@ -373,19 +400,32 @@ const specs: Spec[] = [
       "At a store or restaurant, ask your learner to find the tax or tip and the total with you.",
   },
   {
+    senses: {
+      trials: "trial",
+      trial: "trial",
+      event: "event",
+      product: "product-multiply",
+      impossible: "impossible",
+      certain: "certain",
+      "more than": "more-than",
+      difference: "difference-subtract",
+      faces: "face-solid",
+    },
+    noLink: ["tails", "mean", "changes", "whole"],
     id: "compound-event-simulation",
     templateId: "compound-event-simulation",
     title: "Sample spaces and simulations",
     summary:
-      "List every outcome to find a compound-event probability, or use random digits to estimate it, and compare the estimate with the exact value.",
+      "Probability is a number from 0 to 1 that tells how likely something is. An outcome is one possible result, such as rolling a 3. A compound event is an event in a chance process with more than one stage, like “the sum is 5” when rolling two dice. To find its probability, list every outcome and count the ones you want. Or estimate it with a simulation: use random digits to act out many tries, called trials, and count. Then compare the estimate with the exact value.",
     objectives: [
       "Find a compound-event probability from a list of all outcomes.",
       "Estimate a probability from simulated trials and compare it with the theoretical probability.",
     ],
     goal: "Find a compound event's probability from its sample space, estimate it from random-digit trials, and compare experimental with theoretical.",
     intuition: [
-      t`A compound event has more than one stage, such as rolling two dice or flipping a coin three times. The sample space is the list of all possible outcomes. When every outcome is equally likely, the probability of an event is the number of outcomes where it happens, divided by the number of outcomes in all.`,
-      t`If it is hard to list outcomes, you can estimate a probability with a simulation. Pick random digits to stand for the outcomes, run many trials, and count how often the event happens. That is the experimental probability: the number of trials where the event happened, divided by the number of trials. The exact value from the sample space is the theoretical probability. The two are usually close, but not equal.`,
+      t`An outcome is one possible result of a chance process, like the number a die lands on. An event is the outcome or outcomes you are asking about, such as “the sum is 5”. Probability tells how likely an event is, as a number from 0 to 1. Impossible means it cannot happen, with probability 0. Certain means it is sure to happen, with probability 1.`,
+      t`A compound event is an event in a chance process with more than one stage. One example is “the sum is 5” when rolling two dice. Another is “2 or more heads” when flipping a coin three times. The sample space is the list of all possible outcomes. When every outcome is equally likely, the probability of an event is the number of outcomes where it happens, divided by the number of outcomes in all.`,
+      t`If it is hard to list outcomes, you can estimate a probability with a simulation, acting out the chance process many times. Random digits are digits picked by chance, each equally likely. Let them stand for the outcomes, run many trials (one full run each), and count how often the event happens. That is the experimental probability: the number of trials where the event happened, divided by the number of trials. The exact value from the sample space is the theoretical probability. With many trials the two are usually close, though rarely exactly equal; with few trials they can be far apart.`,
     ],
     terms: [
       "sample-space",
@@ -400,15 +440,15 @@ const specs: Spec[] = [
       "Divide by the number of trials. To compare with the theoretical probability, compare the two fractions.",
     ],
     watch:
-      "Count trials, not single digits. Do not add the number of outcomes at each stage; multiply. A difference between experimental and theoretical probability is normal, since chance varies.",
+      "Count trials, not single digits. When each stage has the same number of results whatever happened before, multiply those numbers; do not add them. A difference between experimental and theoretical probability is normal, since chance varies.",
     principle: t`If all outcomes of a sample space are equally likely, $P(\text{event}) = \frac{\text{number of outcomes in the event}}{\text{number of outcomes in the sample space}}$. A compound event's sample space has $n_1 \cdot n_2 \cdots$ outcomes when the stages have $n_1, n_2, \dots$ outcomes. The experimental probability of an event in $N$ trials is $\frac{\text{trials with the event}}{N}$, and it tends to be close to the theoretical probability as $N$ grows.`,
     example: {
       prompt:
         "Two fair 4-sided dice, each with faces 1 to 4, are rolled. What is the probability that the sum is 5?",
       steps: [
-        "List the sample space as pairs (first die, second die). There are 4 × 4 = 16 equally likely pairs.",
-        "The pairs with a sum of 5 are (1, 4), (2, 3), (3, 2) and (4, 1): 4 pairs.",
-        "The probability is $4/16 = 1/4$.",
+        "List the sample space as pairs (first die, second die). Each of the 4 faces of the first die goes with each of the 4 faces of the second, so there are 4 × 4 = 16 pairs. The dice are fair, so the pairs are equally likely.",
+        "Find the pairs whose numbers add to 5: (1, 4), (2, 3), (3, 2) and (4, 1). That is 4 pairs. (2, 3) and (3, 2) are different, because the first die differs.",
+        "Divide the pairs you want by all the pairs: $\\frac{4}{16} = \\frac{1}{4}$.",
       ],
       answer: "$\\frac{1}{4}$",
     },
@@ -418,11 +458,11 @@ const specs: Spec[] = [
     ],
     formalTitle: "Experimental and theoretical probability",
     formal: [
-      t`The theoretical probability is a fixed number found from the structure of the experiment. The experimental probability changes from one set of trials to another, because the results are random. As the number of trials grows, the experimental probability tends to get closer to the theoretical probability. To compare $a/b$ and $c/d$ exactly, compare $ad$ with $bc$.`,
+      t`The theoretical probability is a fixed number found from the sample space. When the outcomes are equally likely, it is the number of outcomes in the event divided by the number of all outcomes. The experimental probability changes from one set of trials to another, because the results are random. As the number of trials grows, the experimental probability tends to get closer to the theoretical probability. To compare $a/b$ and $c/d$ exactly, compare $ad$ with $bc$.`,
     ],
     pitfalls: [
       "A trial is one whole group of digits, not one digit.",
-      "Multiply the numbers of outcomes of the stages to count the sample space.",
+      "When each stage has the same number of results whatever happened before, multiply those numbers to count the sample space.",
       "Results of a simulation vary; a small difference is not a mistake.",
     ],
     parentGuide:
@@ -440,6 +480,8 @@ export const k8RepresentationMethods: Record<string, ProblemMethod> =
         terms: s.terms,
         method: s.method,
         watch: s.watch,
+        ...(s.senses ? { senses: s.senses } : {}),
+        ...(s.noLink ? { noLink: s.noLink } : {}),
       },
     ]),
   );
@@ -453,6 +495,8 @@ export const k8RepresentationLessons: Lesson[] = specs.map((s) => ({
   summary: s.summary,
   templateIds: [s.templateId],
   ...(s.figure ? {} : { includeGeneratedRepresentation: false }),
+  ...(s.senses ? { senses: s.senses } : {}),
+  ...(s.noLink ? { noLink: s.noLink } : {}),
   objectives: s.objectives,
   sections: [
     {

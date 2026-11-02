@@ -678,7 +678,7 @@ function compareToPi(r: Random) {
     }),
     lead: [
       variant === "root-greater"
-        ? `$${refTex}$ is the number that times itself makes ${refTex.slice(6, -1)}. It is about ${ref.toFixed(5).replace(/0+$/, "")}.`
+        ? `$${refTex}$ is the positive number that times itself makes ${refTex.slice(6, -1)}. It is about ${ref.toFixed(5).replace(/0+$/, "")}.`
         : "$\\pi$ is the distance around any circle divided by the distance across it. It is about 3.14159.",
       "Write each choice as a decimal, then compare place by place from the left.",
     ],

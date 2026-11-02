@@ -102,6 +102,8 @@ const budgets: Record<
   45: { warmUp: 6, review: 3, guided: 2, practiceMax: 10 },
   60: { warmUp: 8, review: 4, guided: 3, practiceMax: 14 },
 };
+/** How far above the learner's level the Challenge sits, in grades. */
+export const CHALLENGE_WINDOW = [0.5, 1.3] as const;
 /** Reading a lesson card and its worked example. */
 export const LESSON_READING_MINUTES = 5;
 
@@ -383,30 +385,34 @@ export function composeWorkbook(options: {
       Number(confident.indexOf(strandOf(b)) >= 3) || rank(a.id) - rank(b.id);
   const inPool = (t: TemplateMetadata) => challengePool.has(t.id);
   const challengePick = (() => {
-    // Pool problems at or above the strand level, from the nearest bands,
-    // until there are a few to choose from, so the challenge varies from day
-    // to day. Then any template above the level; only at the very top of the
-    // catalog does a pool problem below the level serve.
-    const near: TemplateMetadata[] = [];
-    for (const [lo, hi] of [
-      [0.5, 1.3],
-      [0.2, 1.6],
-      [0, 2],
-    ] as const) {
-      for (const t of band(lo, hi, inPool)) if (!near.includes(t)) near.push(t);
-      if (near.length >= 4) break;
-    }
-    if (near.length) return near.sort(byConfidence)[0];
-    for (const [lo, hi, extra] of [
-      [0.3, 2, undefined],
-      [0, 13, undefined],
-      [-1.5, 0, inPool],
-    ] as const) {
+    // The challenge sits 0.5 to 1.3 grades above the learner: above its
+    // strand's level, and never more than 1.3 above the overall level (a
+    // strand estimate can run ahead of a learner with little evidence).
+    // Pool problems first, chosen among the three most practiced strands so
+    // it changes from day to day; then any template in the window.
+    const [lo, hi] = CHALLENGE_WINDOW;
+    const capped = (t: TemplateMetadata) =>
+      gradeOf.get(t.id)! <= options.frontier.overall.level + hi;
+    for (const extra of [
+      (t: TemplateMetadata) => inPool(t) && capped(t),
+      capped,
+      inPool,
+      undefined,
+    ]) {
       const candidates = band(lo, hi, extra);
       if (candidates.length) return candidates.sort(byConfidence)[0];
     }
+    // Nothing in the window (the ends of the catalog): the template closest
+    // to it, from the pool when the pool has one as close.
+    const distance = (t: TemplateMetadata) => {
+      const offset = gradeOf.get(t.id)! - levelOf(strandOf(t));
+      return offset < lo ? lo - offset : offset > hi ? offset - hi : 0;
+    };
     return band(-13, 13).sort(
-      (a, b) => gradeOf.get(b.id)! - gradeOf.get(a.id)!,
+      (a, b) =>
+        Math.round(distance(a) * 10) - Math.round(distance(b) * 10) ||
+        Number(inPool(b)) - Number(inPool(a)) ||
+        byConfidence(a, b),
     )[0];
   })();
 

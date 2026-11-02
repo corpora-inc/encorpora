@@ -1758,7 +1758,7 @@ function aaSimilarity(r: Random): Built {
       hint: `The angles of a triangle add to $180^\\circ$. Use the two angles given for $DEF$, $${x}^\\circ$ and $${y}^\\circ$, to find the third angle of that triangle.`,
       explanation: [
         `In $DEF$ the two known angles are ${x}° and ${y}°, so the third is $180^\\circ-${x}^\\circ-${y}^\\circ=${third}^\\circ$.`,
-        `The unknown angle is the remaining vertex, $${target}$, so $\\angle ${target}=${third}^\\circ$.`,
+        `The unknown angle is the remaining angle, at vertex $${target}$, so $\\angle ${target}=${third}^\\circ$.`,
         `It equals $\\angle C$ in $ABC$, which is also $180^\\circ-${x}^\\circ-${y}^\\circ$.`,
       ],
       correct: deg(third),

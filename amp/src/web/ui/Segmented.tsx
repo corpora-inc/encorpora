@@ -13,12 +13,17 @@ export function Segmented<T extends string>({
   value,
   onChange,
   disabled = false,
+  compact = false,
 }: {
   label: string;
   options: SegmentedOption<T>[];
   value: T | null;
   onChange: (value: T) => void;
   disabled?: boolean;
+  /** Short choices (30/45/60 min, Letter/A4): content centred in equal
+   * cells, one line each, with type that steps down on the narrowest
+   * phones. */
+  compact?: boolean;
 }) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const current = Math.max(
@@ -43,7 +48,7 @@ export function Segmented<T extends string>({
       role="radiogroup"
       aria-label={label}
       aria-disabled={disabled || undefined}
-      className={styles.group}
+      className={`${styles.group} ${compact ? styles.compact : ""}`}
       style={{
         gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))`,
       }}
@@ -69,9 +74,13 @@ export function Segmented<T extends string>({
             {option.detail !== undefined && (
               <span className={styles.detail}>{option.detail}</span>
             )}
-            <span className={styles.badge} aria-hidden={!option.badge}>
-              {option.badge ?? "\u00a0"}
-            </span>
+            {/* Badges keep one height across a group; a compact group with
+                no badge draws no empty row. */}
+            {(!compact || options.some((o) => o.badge)) && (
+              <span className={styles.badge} aria-hidden={!option.badge}>
+                {option.badge ?? "\u00a0"}
+              </span>
+            )}
           </button>
         );
       })}

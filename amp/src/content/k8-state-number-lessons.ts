@@ -184,7 +184,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "benchmark-percent-estimate": {
     goal: "Round a price, then use 10%, 5% and 25% to estimate a tip, tax, discount or sale price.",
     intuition:
-      "A percent means 'per 100'. 10% is one tenth, 5% is half of that, and 25% is one fourth. With a rounded price these are easy to find in your head.",
+      "A percent means “per 100”: 10% is 10 out of every 100, which is one tenth, so divide by 10. 5% is half of 10%, and 25% is one fourth, so divide by 4. A discount is the amount taken off a price. Round the price first so these are easy to do in your head.",
     terms: [
       "benchmark-percent",
       "discount",
@@ -193,13 +193,19 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
         "The sale price is the price after the discount: price minus discount.",
       ],
     ],
+    senses: {
+      "one fourth": "fourth",
+      multiples: "multiple",
+      estimate: "estimate",
+    },
+    noLink: ["base", "leaves", "half", "fourth", "tenth"],
     method: [
-      "Round the price as directed.",
+      "Round the price as the question says.",
       "Find 10% by dividing by 10. Find 5% by halving 10%. Find 15% by adding 10% and 5%. Find 20% by doubling 10%. Find 25% by dividing by 4.",
       "For a sale price, subtract the discount from the rounded price.",
     ],
     watch:
-      "15% is not $15. And a discount is the amount taken off; the sale price is what remains.",
+      "15% is not 15 dollars. A discount is the amount taken off, and the sale price is what remains.",
   },
 };
 
@@ -229,7 +235,7 @@ export const k8StateNumberPrinciples: Record<string, string> = {
   "compatible-number-estimate":
     "An estimate replaces numbers by nearby numbers that make the calculation easy. Replacing $a$ by a multiple of the divisor $d$ makes $a\\div d$ a whole number; front-end estimation keeps the leading digit and place value of each addend.",
   "benchmark-percent-estimate":
-    "For a base $B$, $10\\%$ of $B$ is $B/10$, $5\\%$ is $B/20$, $25\\%$ is $B/4$ and $50\\%$ is $B/2$. Other percents are sums or multiples of these. A discount of $p\\%$ leaves $(100-p)\\%$ of the price.",
+    "For a base amount $B$, $10\\%$ of $B$ is $B \\div 10$, $5\\%$ is $B \\div 20$, $25\\%$ is $B \\div 4$ and $50\\%$ is $B \\div 2$. Other percents are built by adding or doubling these. A discount of $p\\%$ leaves $(100 - p)\\%$ of the price.",
 };
 
 export const k8StateNumberLessons: Lesson[] = [
@@ -630,18 +636,27 @@ export const k8StateNumberLessons: Lesson[] = [
     id: "benchmark-percent-estimate",
     title: "Estimate a percent with benchmarks",
     summary:
-      "10%, 5% and 25% are easy to find in your head. Round the price, then build tips, taxes and discounts from them.",
+      "A percent is a number out of 100: 15% means 15 out of every 100. Some percents, called benchmarks, are easy to find in your head. 10% is one tenth, so divide by 10. 5% is half of 10%. 25% is one fourth, so divide by 4. Round the price first, then build a tip, a tax or a discount from these.",
     templateIds: ["benchmark-percent-estimate"],
+    senses: {
+      "one fourth": "fourth",
+      multiples: "multiple",
+      whole: "whole",
+      estimate: "estimate",
+    },
+    noLink: ["base", "leaves", "half", "fourth", "tenth"],
     objectives: [
-      "Estimate a tip, tax or discount by rounding and using 10%, 5% and 25%.",
-      "Estimate a sale price.",
+      "Estimate a tip, tax or discount by rounding the price and using 10%, 5% and 25%.",
+      "Estimate a sale price, the price after a discount is taken off.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Percents from tenths and halves",
         paragraphs: [
-          "A percent means per 100. 10% is one tenth, so divide by 10. 5% is half of 10%. 25% is one fourth, so divide by 4. Rounding the price first makes these easy.",
+          "A percent means “per 100”, and the sign % stands for it. So 10% means 10 out of every 100, which is one tenth of the whole amount. To find 10% of a price, divide by 10: 10% of 40 dollars is 4 dollars.",
+          "5% is half of 10%, so halve it: 5% of 40 dollars is 2 dollars. 25% is 25 out of 100, which is one fourth, so divide by 4: 25% of 40 dollars is 10 dollars.",
+          "An estimate is a number close to the exact answer, found quickly. Rounding the price first, such as 38.40 dollars to 40 dollars, makes these steps easy to do in your head.",
         ],
       },
     ],
@@ -649,9 +664,9 @@ export const k8StateNumberLessons: Lesson[] = [
       prompt:
         "A meal costs 38.40 dollars. Round to the nearest 10 dollars and estimate a 15% tip.",
       steps: [
-        "38.40 dollars rounds to 40 dollars.",
-        "10% of 40 is $40\\div10=4$. 5% is half of that: $4\\div2=2$.",
-        "15% is 10% plus 5%: $4+2=6$.",
+        "Round first so the arithmetic is easy: 38.40 dollars is closest to 40 dollars.",
+        "Find 10% by dividing by 10: $40 \\div 10 = 4$ dollars. Find 5% by halving that: $4 \\div 2 = 2$ dollars.",
+        "15% is 10% plus 5%, so add them: $4 + 2 = 6$ dollars. The tip is about 6 dollars.",
       ],
       answer: "About 6 dollars",
     },
@@ -660,7 +675,7 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "method",
         title: "Build from the benchmarks",
         paragraphs: [
-          "10%: divide by 10. 5%: half of 10%. 15%: 10% plus 5%. 20%: twice 10%. 25%: divide by 4. 50%: divide by 2.",
+          "10%: divide by 10. 5%: half of 10%. 15%: 10% plus 5%. 20%: twice 10%. 25%: divide by 4. 50%: divide by 2, because 50 out of 100 is one half.",
           "A discount is the amount taken off. The sale price is the price minus the discount. For 25% off 80 dollars, the discount is $80\\div4=20$ and the sale price is $80-20=60$ dollars.",
         ],
       },
@@ -668,13 +683,13 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "formal",
         title: "Benchmarks from the base",
         paragraphs: [
-          "For a base $B$, $10\\%$ of $B$ is $B/10$, $5\\%$ is $B/20$, $25\\%$ is $B/4$ and $50\\%$ is $B/2$. Other percents are sums or multiples of these, such as $15\\%=10\\%+5\\%$. A discount of $p\\%$ takes off $p\\%$ of the price and leaves $(100-p)\\%$ of it.",
+          "Call the starting amount $B$, the base. Then $10\\%$ of $B$ is $B \\div 10$, $5\\%$ is $B \\div 20$, $25\\%$ is $B \\div 4$ and $50\\%$ is $B \\div 2$. Other percents are built by adding or doubling these, such as $15\\% = 10\\% + 5\\%$ and $20\\% = 2 \\times 10\\%$. A discount of $p\\%$ takes off $p\\%$ of the price and leaves $(100 - p)\\%$ of it.",
         ],
       },
     ],
     pitfalls: [
-      "15% is not 15 dollars. It is 15 out of every 100.",
-      "Subtract the discount to get the sale price.",
+      "15% is not 15 dollars. It is 15 out of every 100 dollars, so 15% of 40 dollars is 6 dollars.",
+      "A discount is the amount taken off. Subtract it from the price to get the sale price.",
     ],
     parentGuide:
       "At a restaurant, ask the learner to estimate a 10% tip, then double it for 20%.",

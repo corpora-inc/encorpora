@@ -6,13 +6,14 @@ Credentials: AMP_YOUTUBE_TOKEN points at an OAuth authorized-user JSON
 scope, kept outside the repo in approved secret storage. AMP_YOUTUBE_CHANNEL_ID
 is the channel the token must resolve to; the upload refuses any other channel.
 """
+import hashlib
 import json
 import os
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
-from .render import sha, stamp, write_json
+from .render import stamp, write_json
 from .spec import SpecError
 
 API = 'https://www.googleapis.com/youtube/v3'
@@ -49,7 +50,7 @@ def _call(method, url, token, data=None, headers=None):
     return urllib.request.urlopen(req, timeout=600)
 
 
-def upload(video, title, description, tags=()):
+def upload(video, title, description, tags=(), *, delivery_manifest=None):
     video = Path(video)
     receipt = video.with_name(video.stem + '-youtube.json')
     if receipt.exists():
@@ -57,6 +58,8 @@ def upload(video, title, description, tags=()):
     expected = os.environ.get('AMP_YOUTUBE_CHANNEL_ID')
     if not expected:
         raise SpecError('set AMP_YOUTUBE_CHANNEL_ID so the upload cannot land on the wrong channel')
+    from .delivery import check
+    coverage = check(delivery_manifest, video)
     body = metadata(title, description, tags)
     token = _token()
     with _call('GET', f'{API}/channels?part=id&mine=true', token) as r:
@@ -64,6 +67,9 @@ def upload(video, title, description, tags=()):
     if expected not in channels:
         raise SpecError('the token does not belong to AMP_YOUTUBE_CHANNEL_ID; nothing uploaded')
     raw = video.read_bytes()
+    approved_sha = next(e['sha256'] for e in coverage.values() if e['file'] == str(video.resolve()))
+    if hashlib.sha256(raw).hexdigest() != approved_sha:
+        raise SpecError('video changed after delivery validation; nothing uploaded')
     with _call('POST', f'{UPLOAD}?uploadType=resumable&part=snippet,status&notifySubscribers=false', token,
                json.dumps(body).encode(), {'Content-Type': 'application/json',
                                            'X-Upload-Content-Length': str(len(raw)),
@@ -74,5 +80,6 @@ def upload(video, title, description, tags=()):
     if result['status']['privacyStatus'] != 'private':
         raise SpecError(f'YouTube reports {result["status"]["privacyStatus"]}; set it to private in Studio now')
     write_json(receipt, {'videoId': result['id'], 'url': f'https://www.youtube.com/watch?v={result["id"]}',
-                         'privacy': 'private', 'title': title, 'sha256': sha(video), 'at': stamp()})
+                         'privacy': 'private', 'title': title, 'sha256': approved_sha, 'at': stamp(),
+                         'deliveryCoverage': coverage})
     return receipt

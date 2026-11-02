@@ -121,9 +121,9 @@ try {
     }),
   );
   await map.goto("http://127.0.0.1:4394/pathways/count-to-20");
-  await map.waitForFunction(() => document.title.includes("Count To 20"));
+  await map.waitForFunction(() => document.title.includes("Count to 20"));
   const skillTitle = await map.title();
-  assert.match(skillTitle, /Count To 20/);
+  assert.match(skillTitle, /Count to 20/);
   await map.locator(".pathways-brand").click();
   await map.waitForURL("http://127.0.0.1:4394/");
   await map.waitForFunction(

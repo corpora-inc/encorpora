@@ -7,7 +7,6 @@ import {
   type Repository,
 } from "../src/server/repository.js";
 import type { WorkbookRecord } from "../src/workbook/contracts.js";
-import type { WorkbookPdfKey } from "../src/server/repository.js";
 import {
   RendererUnavailable,
   type WorkbookRenderer,
@@ -26,9 +25,6 @@ function memoryRepository(
   options: { access?: boolean; learner?: typeof third } = {},
 ) {
   const rows: (WorkbookRecord & { learnerId: string })[] = [];
-  const pdfs = new Map<string, Buffer>();
-  const pdfKey = (k: WorkbookPdfKey) =>
-    `${k.workbookId}:${k.format}:${k.documentSha256}`;
   const simulated = simulateLearner(options.learner ?? third, Date.now());
   const repository = {
     hasConsent: async () => true,
@@ -80,15 +76,11 @@ function memoryRepository(
         ) => {
           mine().find((r) => r.id === workbookId)!.paper = paper;
         },
-        workbookPdf: async (key: WorkbookPdfKey) => pdfs.get(pdfKey(key)),
-        saveWorkbookPdf: async (key: WorkbookPdfKey, pdf: Buffer) => {
-          pdfs.set(pdfKey(key), pdf);
-        },
       } as unknown as LearnerTransaction;
       return run(tx);
     },
   } as unknown as Repository;
-  return { repository, rows, pdfs };
+  return { repository, rows };
 }
 /** Records each document it is asked to print. */
 function fakeRenderer(fail = false) {
@@ -294,8 +286,8 @@ test("workbooks require the learner's parent, a license and a full account", asy
   assert.equal(trial.statusCode, 403);
 });
 
-test("the PDF is rendered once per paper size from the stored workbook, then served from the cache", async () => {
-  const { repository, pdfs } = memoryRepository();
+test("the PDF is rendered from the stored workbook for each request and never stored", async () => {
+  const { repository } = memoryRepository();
   const { renderer, calls } = fakeRenderer();
   const auth = async (request: { headers: Record<string, unknown> }) =>
     String(request.headers.authorization ?? "").replace(/^Bearer /, "");
@@ -324,17 +316,16 @@ test("the PDF is rendered once per paper size from the stored workbook, then ser
   // Each composed page prints its own footer with the code; no browser footer.
   assert.ok(!calls[0]!.footer);
   assert.ok(calls[0]!.html.includes("data-compose"));
-  // Cached: the same document is not rendered again.
+  // Not stored: the same request renders again, from the same document.
   const again = await server.inject({ url: `${url}/${made.id}/pdf`, headers });
-  assert.equal(again.body, "%PDF-1.7 A4 1");
-  assert.equal(calls.length, 1);
+  assert.equal(again.body, "%PDF-1.7 A4 2");
+  assert.equal(calls[1]!.html, calls[0]!.html);
   const letter = await server.inject({
     url: `${url}/${made.id}/pdf?format=Letter`,
     headers,
   });
-  assert.equal(letter.body, "%PDF-1.7 Letter 2");
-  assert.ok(calls[1]!.html.includes("size:letter"));
-  assert.equal(pdfs.size, 2);
+  assert.equal(letter.body, "%PDF-1.7 Letter 3");
+  assert.ok(calls[2]!.html.includes("size:letter"));
   for (const bad of ["format=letter", "format=Legal", "paper=a4"]) {
     const response = await server.inject({
       url: `${url}/${made.id}/pdf?${bad}`,
@@ -350,7 +341,7 @@ test("a renderer that is down or missing answers 503 with a next step, and is lo
   const auth = async (request: { headers: Record<string, unknown> }) =>
     String(request.headers.authorization ?? "").replace(/^Bearer /, "");
   for (const renderer of [fakeRenderer(true).renderer, null]) {
-    const { repository, pdfs } = memoryRepository();
+    const { repository } = memoryRepository();
     const lines: string[] = [];
     const server = buildApp({
       repository,
@@ -380,7 +371,6 @@ test("a renderer that is down or missing answers 503 with a next step, and is lo
       failed.json().error,
       "Your workbook is being prepared; try again in a minute.",
     );
-    assert.equal(pdfs.size, 0);
     const logged = lines.find((l) => l.includes("Workbook PDF render failed"));
     assert.ok(logged, "the failure is logged");
     assert.match(logged!, /^error /);
@@ -440,4 +430,34 @@ test("without a renderer, history says so and the printable document downloads i
   assert.ok(document.body.includes("size:A4"));
   const rendering = app(memoryRepository().repository);
   assert.equal((await rendering.inject({ url, headers })).json().pdf, true);
+});
+
+test("with a public URL, the printed results page carries a QR code to the results route", async () => {
+  const auth = async (request: { headers: Record<string, unknown> }) =>
+    String(request.headers.authorization ?? "").replace(/^Bearer /, "");
+  for (const publicUrl of ["https://amp.example", undefined]) {
+    const { renderer, calls } = fakeRenderer();
+    const server = buildApp({
+      repository: memoryRepository().repository,
+      development: true,
+      authenticate: auth as never,
+      workbookRenderer: renderer,
+      publicUrl,
+    });
+    const made = (
+      await server.inject({
+        method: "POST",
+        url,
+        headers,
+        payload: { date: today, minutes: 30, paper: "letter" },
+      })
+    ).json();
+    const pdf = await server.inject({ url: `${url}/${made.id}/pdf`, headers });
+    assert.equal(pdf.statusCode, 200);
+    const html = calls[0]!.html;
+    if (publicUrl) {
+      assert.ok(html.includes("Scan the code"));
+      assert.ok(html.includes("<svg"), "QR code drawn");
+    } else assert.ok(html.includes("with the workbook code"));
+  }
 });

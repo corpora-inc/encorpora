@@ -1070,3 +1070,30 @@ test("scientific notation reads as one typeset number, never caret text", () => 
     assert.doesNotMatch(prose, /\^|\\times/, text);
   }
 });
+
+test("printed scientific notation never shows a caret: one typeset number or raised blanks", async () => {
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const { createElement } = await import("react");
+  const { PrintExerciseBody } = await import("../src/content/print-exercise");
+  for (const seed of ["sci-0", "sci-1", "sci-2", "sci-3"]) {
+    const problem = generateProblem("scientific-notation-work", seed);
+    for (const solutions of [false, true]) {
+      const html = renderToStaticMarkup(
+        createElement(PrintExerciseBody, { number: 1, problem, solutions }),
+      );
+      // Visible text only: KaTeX's MathML annotation carries the TeX source.
+      const visible = html
+        .replace(/<annotation[^>]*>[\s\S]*?<\/annotation>/g, "")
+        .replace(/<[^>]+>/g, " ");
+      assert.doesNotMatch(visible, /\^|\\times/, `${seed} ${solutions}`);
+      if (solutions)
+        assert.match(html, /\\times10\^\{-?\d+\}/, `${seed}: typeset power`);
+      else
+        assert.match(
+          html,
+          /print-work-blank--power/,
+          `${seed}: the exponent has its own raised blank`,
+        );
+    }
+  }
+});

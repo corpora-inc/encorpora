@@ -5,14 +5,15 @@ import { lesson, m } from "./regents-algebra-two-reasoning-lessons";
 export const regentsAlgebraTwoGraphMethods: Record<string, ProblemMethod> = {
   "log-base-fraction-graph": m(
     "Choose the graph of a logarithm whose base is between 0 and 1.",
-    "Every logarithm graph passes through $(1,0)$ and stays to the right of the $y$-axis. With a base greater than 1 it rises; with a base between 0 and 1 it falls, because larger inputs give smaller logarithms.",
+    "The base is the number being raised to a power, and the exponent is the small raised number. A logarithm is the exponent that turns the base into $x$. The graph of $y = \\log_b x$ passes through $(1,0)$, because any allowed base raised to the power 0 is 1. It stays to the right of the $y$-axis, because only positive numbers have logarithms. With a base greater than 1 it rises. With a base between 0 and 1 it falls, because larger values of $x$ give smaller logarithms.",
     [["logarithm", "The base is the number $b$ in $\\log_b x$."]],
     [
-      "Check that the graph passes through $(1,0)$ and lies right of the $y$-axis.",
+      "Check that the graph passes through $(1,0)$ and lies to the right of the $y$-axis.",
       "Decide from the base whether it rises or falls.",
-      "Rule out exponential curves, which pass through $(0,1)$.",
+      "Set aside exponential curves, which cross the $y$-axis, for example at $(0,1)$.",
     ],
-    "A falling curve through $(0,1)$ is an exponential decay, not a logarithm.",
+    "A curve that crosses the $y$-axis, such as one through $(0,1)$, is not a logarithm graph: a logarithm never reaches $x = 0$.",
+    { senses: { base: "base-exponent", rule: "rule" } },
   ),
   "remainder-zero-graph": m(
     "Use the remainder theorem to find the graph with remainder 0.",
@@ -90,40 +91,43 @@ export const regentsAlgebraTwoGraphLessons = [
   lesson(
     "regents-log-base-fraction-graph",
     "Graphs of logarithms with a base below 1",
-    "Choose the logarithm graph that falls and passes through $(1,0)$.",
+    "In a power like $b^2$, the base is the number being raised and the exponent is the small raised number. A logarithm is the answer to the question: what exponent turns the base into this number? For $y = \\log_{1/2} x$, read “log base one half of $x$”, the base is $\\tfrac{1}{2}$. Every graph of the form $y = \\log_b x$ passes through the point $(1, 0)$, where $x$ is 1 and $y$ is 0. With a base between 0 and 1, the graph falls as $x$ grows.",
     ["log-base-fraction-graph"],
     [
-      "Recognize the common features of logarithm graphs.",
+      "Recognize the features every logarithm graph shares.",
       "Decide from the base whether the graph rises or falls.",
     ],
     [
-      "A logarithm answers the question: to what power must the base be raised to get $x$? Since $b^0=1$, the graph always passes through $(1,0)$, and since powers of a positive base are positive, the graph lies to the right of the $y$-axis.",
-      "If the base is less than 1, raising it to bigger powers gives smaller numbers, so the logarithm falls as $x$ grows.",
+      "A logarithm answers: to what power must the base be raised to get $x$? An exponent, or power, is the small raised number, as in $b^2 = b \\times b$. Since $b^0 = 1$ for any allowed base, $\\log_b 1 = 0$. So every logarithm graph passes through the point $(1, 0)$.",
+      "A positive base raised to any power gives a positive number. So a logarithm exists only for positive $x$, and its graph lies to the right of the $y$-axis, which is the up-and-down line where $x = 0$.",
+      "If the base is greater than 1, bigger powers give bigger numbers, so the graph rises. If the base is between 0 and 1, like $\\tfrac{1}{2}$, bigger powers give smaller numbers: $(\\tfrac{1}{2})^1 = \\tfrac{1}{2}$ and $(\\tfrac{1}{2})^2 = \\tfrac{1}{4}$. So the graph falls as $x$ grows. A negative exponent means one divided by the base raised to the matching positive exponent, so $(\\tfrac{1}{2})^{-2} = \\tfrac{1}{(1/2)^2} = 4$.",
     ],
     {
       prompt:
         "Which of a rising curve through $(1,0)$ and a falling curve through $(1,0)$ is the graph of $y=\\log_{1/2}x$?",
       steps: [
-        "Both pass through $(1,0)$.",
-        "The base $\\frac{1}{2}$ is less than 1.",
-        "So the logarithm falls: the falling curve.",
+        "Both curves pass through $(1, 0)$, so that point does not decide. Every logarithm graph goes through it.",
+        "Look at the base. It is $\\tfrac{1}{2}$, which is between 0 and 1.",
+        "With a base between 0 and 1, bigger values of $x$ give smaller logarithms: $\\log_{1/2} 4 = -2$, because $(\\tfrac{1}{2})^{-2} = 4$. So the graph falls, and the answer is the falling curve.",
       ],
       answer: "the falling curve through $(1,0)$",
     },
     [
-      "Look for $(1,0)$ and a curve right of the $y$-axis.",
-      "Use the base to choose rising or falling.",
-      "Reject curves through $(0,1)$.",
+      "Check that the graph passes through $(1, 0)$ and stays to the right of the $y$-axis.",
+      "Use the base to decide: a base greater than 1 rises, and a base between 0 and 1 falls.",
+      "Set aside exponential curves such as $y = (\\tfrac{1}{2})^x$, which cross the $y$-axis at $(0, 1)$.",
     ],
     [
-      "$\\log_{1/b}x=\\frac{\\ln x}{\\ln(1/b)}=-\\log_b x$, so the graph is the reflection of $y=\\log_b x$ over the $x$-axis.",
+      "For $b > 0$ with $b \\neq 1$ ($\\neq$ means is not equal to), the graph of $y = \\log_b x$ exists for $x > 0$ and passes through $(1, 0)$. It rises if $b > 1$ and falls if $0 < b < 1$.",
+      "$\\ln$ stands for the natural logarithm. With it, $\\log_{1/b} x = \\tfrac{\\ln x}{\\ln(1/b)} = -\\log_b x$. So the graph of $y = \\log_{1/b} x$ is the mirror image of $y = \\log_b x$ across the $x$-axis.",
     ],
     [
-      "An exponential graph also falls but passes through $(0,1)$.",
-      "The base below 1 does not move the graph left or right.",
-      "A logarithm is not defined for $x\\le0$.",
+      "An exponential graph with a base between 0 and 1 also falls, but it passes through $(0, 1)$, not $(1, 0)$.",
+      "A base below 1 does not move the graph left or right.",
+      "A logarithm does not exist for $x$ equal to 0 or less.",
     ],
-    "Ask your learner which point every logarithm graph passes through.",
+    "Ask your learner which point every logarithm graph passes through, and why. Then ask what the base tells you about the graph's direction.",
+    { senses: { base: "base-exponent", rule: "rule" }, noLink: ["image"] },
   ),
   lesson(
     "regents-remainder-zero-graph",

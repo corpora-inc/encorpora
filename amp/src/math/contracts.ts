@@ -1,3 +1,4 @@
+import type { GlossaryPayload } from "../glossary/types";
 import { z } from "zod";
 import {
   MAX_SELECTION_OPTIONS,
@@ -330,8 +331,9 @@ export type ProblemResponse =
   | MultiPartChoiceResponse
   | FigureChoiceResponse
   | StructuredWorkResponse;
-/** Safe teaching content delivered beside a problem; never grading data. */
-export interface ProblemHint {
+/** Safe teaching content delivered beside a problem; never grading data.
+ * Its glossary fields carry the term cards the hint's words open. */
+export interface ProblemHint extends GlossaryPayload {
   hint: string;
   cue?: Step[];
 }

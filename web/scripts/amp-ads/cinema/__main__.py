@@ -4,7 +4,7 @@ import json
 import os
 import sys
 
-from . import gallery, plan, render, spec, voice, youtube
+from . import delivery, gallery, plan, render, spec, voice, youtube
 
 
 def main(argv=None):
@@ -33,11 +33,14 @@ def main(argv=None):
     r.add_argument('--replace', action='store_true', help='move changed artifacts to superseded/ and rerender')
     rv = sub.add_parser('review', help='build review.html for finished ads under an output root')
     rv.add_argument('out_root')
+    d = sub.add_parser('delivery-check', help='verify full-format paid exports, hashes and actual media')
+    d.add_argument('manifest')
     u = sub.add_parser('upload', help='upload one finished video to YouTube as PRIVATE')
     u.add_argument('video')
     u.add_argument('--title', required=True)
     u.add_argument('--description', default='')
     u.add_argument('--tag', action='append', default=[])
+    u.add_argument('--delivery-manifest', required=True)
     a = p.parse_args(argv)
     try:
         if a.cmd == 'validate':
@@ -72,7 +75,9 @@ def main(argv=None):
         elif a.cmd == 'review':
             print(gallery.ads(a.out_root))
         elif a.cmd == 'upload':
-            print(youtube.upload(a.video, a.title, a.description, a.tag))
+            print(youtube.upload(a.video, a.title, a.description, a.tag, delivery_manifest=a.delivery_manifest))
+        elif a.cmd == 'delivery-check':
+            print(json.dumps(delivery.check(a.manifest), indent=2))
     except spec.SpecError as e:
         print(f'error: {e}', file=sys.stderr)
         return 1
