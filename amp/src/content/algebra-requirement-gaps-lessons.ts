@@ -676,7 +676,7 @@ const complexPartsLesson: Lesson = {
   id: "complex-parts",
   title: "Parts of a complex number and its powers",
   summary:
-    "A complex number $a+bi$, where $i^2=-1$, is built from two real numbers: its real part $a$ and its imaginary part $b$. Multiplying by $i$ over and over gives $i$, $-1$, $-i$, $1$, and then the same four values again. So any power of $i$ is one of those four.",
+    "A complex number $a+bi$, where $i^2=-1$, is built from two real numbers: its real part $a$ and its imaginary part $b$. Multiplying by $i$ over and over gives $i$, $-1$, $-i$, $1$, and then the same four values again. So $i$ raised to any whole-number power is one of those four.",
   templateIds: ["complex-parts"],
   senses: {
     square: "square-number",
@@ -729,7 +729,7 @@ const complexPartsLesson: Lesson = {
   pitfalls: [
     "The imaginary part of $3-5i$ is $-5$, not $-5i$.",
     "Do not square the root: $\\sqrt{-16}=4i$, not $16i$.",
-    "Reduce the exponent by 4 before simplifying a power of $i$.",
+    "Replace the exponent by its remainder after dividing by 4 before simplifying a power of $i$.",
   ],
   parentGuide:
     "Ask what $i^2$ and $i^4$ are, then ask how that tells you where $i^{27}$ lands in the cycle.",

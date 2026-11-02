@@ -66,7 +66,7 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
   },
   "complex-quadratic-factors": {
     goal: "Factor a sum of squares or solve or build a quadratic whose roots are not real.",
-    intuition: r`A sum of squares $x^2+k^2$, with $k\ne0$, is never 0 for a real $x$. But $i^2=-1$ gives $(ki)^2=-k^2$, so it has the two roots $ki$ and $-ki$. In the same way, a quadratic whose discriminant, the number under the square root in the quadratic formula, is negative has two roots $p+qi$ and $p-qi$. They are conjugates: they differ only in the sign of the imaginary part.`,
+    intuition: r`A sum of squares $x^2+k^2$, with $k$ a real number other than 0, is never 0 for a real $x$. But $i^2=-1$ gives $(ki)^2=-k^2$, so it has the two roots $ki$ and $-ki$. In the same way, a quadratic whose discriminant, the number under the square root in the quadratic formula, is negative has two roots $p+qi$ and $p-qi$. They are conjugates: they differ only in the sign of the imaginary part.`,
     terms: [
       ["discriminant", "For $x^2 + bx + c$, where $a = 1$, it is $b^2 - 4c$."],
       "complex-conjugate",
@@ -80,7 +80,7 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
   },
   "polynomial-root-count": {
     goal: "Given a polynomial, count its complex roots with multiplicity or use conjugate pairs to restrict its real and nonreal roots.",
-    intuition: r`A root of a polynomial is a value of $x$ that makes it 0, and its degree is its largest exponent of $x$. If the factor $(x-a)$ appears $m$ times, the root $a$ has multiplicity $m$ and counts $m$ times. Counted this way, every polynomial of degree $n\ge1$ has exactly $n$ roots among the complex numbers. When the coefficients are real, a root that is not real always comes with its conjugate.`,
+    intuition: r`A root of a polynomial is a value of $x$ that makes it 0, and its degree is its largest exponent of $x$. If the factor $(x-a)$ appears $m$ times, the root $a$ has multiplicity $m$ and counts $m$ times. Counted this way, every polynomial of degree $n\ge1$ has exactly $n$ roots among the complex numbers, the numbers $a+bi$ with $a$ and $b$ real and $i^2=-1$. When the coefficients are real, a root that is not real always comes with its conjugate.`,
     terms: [
       "multiplicity",
       [
@@ -295,7 +295,7 @@ export const complexConicsLessons: Lesson[] = [
       title: "Three readings of one point",
       paragraphs: [
         r`The modulus of $a+bi$ is the hypotenuse of a right triangle whose legs are $|a|$ and $|b|$, the sizes of the two parts: $\sqrt{a^2+b^2}$. To add two complex numbers, add the real parts and add the imaginary parts. On the plane, the sum is the far corner of the parallelogram built on the two arrows from 0.`,
-        r`To go from $a+bi$ to polar form, find $r=\sqrt{a^2+b^2}$. Then choose the angle in $[0,2\pi)$, from 0 up to but not including a full turn, whose cosine is $a/r$ and whose sine is $b/r$.`,
+        r`To go from $a+bi$, other than 0, to polar form, find $r=\sqrt{a^2+b^2}$. Then choose the angle in $[0,2\pi)$, from 0 up to but not including a full turn, whose cosine is $a/r$ and whose sine is $b/r$.`,
       ],
     },
     formal: {
@@ -325,7 +325,7 @@ export const complexConicsLessons: Lesson[] = [
       title: "Clearing the imaginary unit from a denominator",
       paragraphs: [
         r`A complex number is $a+bi$, where $a$ and $b$ are real numbers and $i^2=-1$. Its conjugate is $a-bi$, the same number with the opposite imaginary part. For $z=a+bi$ it is written $\bar z$. Multiplying them gives $a^2-(bi)^2=a^2-b^2i^2=a^2+b^2$, a real number with no $i$. That number is $|z|^2$, the square of the modulus, the distance from 0.`,
-        r`Standard form for a complex number is $x+yi$ with $x$ and $y$ real. A fraction with $i$ in its denominator, the bottom, is not in that form. Multiplying the top and the bottom by the same number keeps the fraction's value. So multiplying both by the conjugate of the denominator makes the bottom real without changing the answer.`,
+        r`Standard form for a complex number is $x+yi$ with $x$ and $y$ real. A fraction with $i$ in its denominator, the bottom, is not in that form. Multiplying the top and the bottom by the same number, other than 0, keeps the fraction's value. So multiplying both by the conjugate of the denominator makes the bottom real without changing the answer.`,
       ],
     },
     example: {
@@ -370,7 +370,7 @@ export const complexConicsLessons: Lesson[] = [
       differences: "difference-subtract",
     },
     noLink: ["parts"],
-    summary: r`Each complex number $a+bi$ is a point, $a$ across and $b$ up, in the complex plane. So two complex numbers have a distance between them and a midpoint halfway between. Subtracting them gives the distance, $|z-w|$, and averaging them gives the midpoint, $\frac{z+w}{2}$.`,
+    summary: r`Each complex number $a+bi$ is a point, $a$ across and $b$ up, in the complex plane. So two complex numbers have a distance between them and a midpoint halfway between. Subtracting them and taking the size of the result gives the distance, $|z-w|$. Averaging them gives the midpoint, $\frac{z+w}{2}$.`,
     objectives: [
       "Find the distance between two complex numbers and their midpoint.",
       r`Read $|z-w|=r$ as a circle.`,
@@ -483,7 +483,7 @@ export const complexConicsLessons: Lesson[] = [
       factors: "factor-number",
     },
     noLink: ["changes"],
-    summary: r`A polynomial's degree, its highest power of $x$, tells exactly how many roots it has once complex numbers are allowed. A repeated root counts once for each time it repeats. If the coefficients are real, every root that is not real comes with its conjugate, so those roots come in pairs.`,
+    summary: r`A polynomial's degree, its highest power of $x$, tells exactly how many roots it has once complex numbers, numbers $a+bi$ with $i^2=-1$, are allowed. A repeated root counts once for each time it repeats. If the coefficients are real, every root that is not real comes with its conjugate, so those roots come in pairs.`,
     objectives: [
       "Count the complex roots of a polynomial, counting a repeated root each time it repeats.",
       "Use conjugate pairs to find how many roots of a polynomial with real coefficients can be real.",

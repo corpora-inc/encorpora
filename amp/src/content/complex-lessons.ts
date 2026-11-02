@@ -17,7 +17,7 @@ export const complexMethods: Record<string, ProblemMethod> = {
     method: [
       "Multiply the real terms, the two cross pairs, and the two terms containing $i$.",
       "Use $i^2=-1$ to turn the last product into a real number.",
-      "Add the real numbers and add the coefficients of $i$ separately. If one part is zero, write only the nonzero part.",
+      "Add the real numbers and add the coefficients of $i$ separately. If one part is zero, leave it out. If both are zero, the product is 0.",
     ],
     watch:
       "The product of two $i$ terms is real: multiply their coefficients, then reverse that product's sign because $i^2=-1$. Include both cross products in the coefficient of $i$.",

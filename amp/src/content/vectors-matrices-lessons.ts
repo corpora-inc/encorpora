@@ -179,7 +179,7 @@ export const vectorMatrixLessons: Lesson[] = [
         paragraphs: [
           "A vector is an arrow. Its starting point, the tail, is called the initial point, and its ending point, the tip, is called the terminal point. Its components, written $\\langle a,b\\rangle$, are how far it moves across ($a$) and up ($b$) from tail to tip. Right and up are positive, and left and down are negative.",
           "Sliding an arrow without turning it does not change its components, so two arrows with the same components are the same vector. The length of the arrow is called its magnitude, written $|\\mathbf{v}|$. The across and up moves are the legs of a right triangle, and the arrow is its hypotenuse, so the Pythagorean theorem gives the length.",
-          "A scalar is an ordinary number, as opposed to a vector. Multiplying a vector by a scalar $k$ multiplies both components by $k$. That stretches the arrow, and a negative $k$ also turns it around.",
+          "A scalar is an ordinary number, as opposed to a vector. Multiplying a vector by a scalar $k$ multiplies both components by $k$. That makes the arrow $|k|$ times as long, and a negative $k$ also turns it around.",
         ],
       },
     ],
@@ -265,7 +265,7 @@ export const vectorMatrixLessons: Lesson[] = [
         stage: "method",
         title: "Draw the triangle first",
         paragraphs: [
-          "Sketch one leg, then the other leg from its tip at a right angle, then the hypotenuse back to the start. Label the angle you want and decide which leg is opposite it. If you are asked for the angle from the other leg, the opposite and adjacent legs trade places, and the angle is $90^\\circ$ minus the first.",
+          "Sketch one leg, then the other leg from its tip at a right angle. The resultant runs from the start of the first leg to the tip of the second. Label the angle you want and decide which leg is opposite it. If you are asked for the angle from the other leg, the opposite and adjacent legs trade places, and the angle is $90^\\circ$ minus the first.",
           "If the resultant $h$ and one leg $a$ are given, the missing leg is $\\sqrt{h^2-a^2}$. Use degree mode on a calculator, and round only the final answer.",
         ],
       },
@@ -323,7 +323,7 @@ export const vectorMatrixLessons: Lesson[] = [
         stage: "method",
         title: "Rows and columns carry meaning",
         paragraphs: [
-          "Add across a row for the total of everything one row describes: one store, all items. Add down a column for the total of one item over all stores. With more than one row and column, a single entry is neither total.",
+          "Add across a row for the total of everything one row describes: one store, all items. Add down a column for the total of one item over all stores. Do not read a single entry as a row or column total.",
           "Name the dimensions with rows first: three rows and two columns is $3\\times2$, not $2\\times3$.",
         ],
       },

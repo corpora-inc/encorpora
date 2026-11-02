@@ -539,7 +539,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
     id: "regents-powers-of-i-sum",
     title: "Sums of imaginary powers",
     summary:
-      "The imaginary unit $i$ is the number with $i^2=-1$. Multiplying by $i$ over and over gives $i$, $-1$, $-i$, $1$, and then the same four values again. So any power of $i$ is one of those four. Replace each power, then add the terms without $i$ together and the terms with $i$ together, even when the numbers in front are letters.",
+      "The imaginary unit $i$ is the number with $i^2=-1$. Multiplying by $i$ over and over gives $i$, $-1$, $-i$, $1$, and then the same four values again. So $i$ raised to any whole-number power is one of those four. Replace each power, then add the terms without $i$ together and the terms with $i$ together, even when the numbers in front are letters.",
     templateIds: ["powers-of-i-sum"],
     senses: { terms: "term-expression" },
     noLink: ["leaves"],

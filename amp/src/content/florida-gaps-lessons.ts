@@ -703,7 +703,7 @@ export const floridaGapLessons: Lesson[] = [
     id: "vector-dot-product",
     title: "Dot product, angle and projection",
     summary:
-      "Two arrows, or vectors, can point the same way, at a right angle, or in opposite directions. One number, the dot product, measures this. Multiply matching parts of the two vectors and add. The dot product is 0 exactly when the vectors are perpendicular, and with their lengths it gives the angle between them.",
+      "Two arrows, or vectors, can point the same way, at a right angle, or in opposite directions. One number, the dot product, measures this. Multiply matching parts of the two vectors and add. For vectors with nonzero length, the dot product is 0 exactly when they are perpendicular, and with their lengths it gives the angle between them.",
     templateIds: ["fl-vector-dot-product", "fl-vector-angle"],
     senses: { "more than": "more-than" },
     noLink: ["opposite", "parts", "multiple"],

@@ -70,7 +70,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "Read each number as a point: real part across, imaginary part up.",
       "For $z+w$, complete the parallelogram with sides along $z$ and $w$. For $z-w$, use the arrow that starts at $w$ and ends at $z$.",
       "For $\\overline{z}$, reflect in the real axis. For $iz$, turn a quarter turn counterclockwise: $(a,b)\\to(-b,a)$.",
-      "For $w=r(\\cos\\theta+i\\sin\\theta)$ and a point other than 0, multiply its distance from the origin by $r$ and add $\\theta$ to its argument.",
+      "For $w=r(\\cos\\theta+i\\sin\\theta)$ with $r>0$, and a point other than 0, multiply its distance from the origin by $r$ and add $\\theta$ to its argument.",
     ],
     watch:
       "Multiplication by $i$ is a rotation, not a reflection, and the conjugate is a reflection, not a rotation. Moduli multiply and arguments add when you multiply; they do not both add.",
@@ -422,7 +422,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "Scaling and turning",
         paragraphs: [
-          "Write $w=r(\\cos\\theta+i\\sin\\theta)$, where $r$ is the modulus and $\\theta$ the argument. For $z\\ne0$, multiplying $z$ by $w$ multiplies the modulus of $z$ by $r$ and adds $\\theta$ to its argument. (0 has no direction, and $0\\cdot w=0$.) Since $i=\\cos90^\\circ+i\\sin90^\\circ$, multiplying by $i$ adds $90^\\circ$ and keeps the modulus. Then $i^2$ adds $180^\\circ$, $i^3$ adds $270^\\circ$ and $i^4$ returns to the start.",
+          "Write $w=r(\\cos\\theta+i\\sin\\theta)$, where $r$ is the modulus and $\\theta$ the argument. For $z\\ne0$ and $w\\ne0$, multiplying $z$ by $w$ multiplies the modulus of $z$ by $r$ and adds $\\theta$ to its argument. (0 has no direction, and a product with 0 is 0.) Since $i=\\cos90^\\circ+i\\sin90^\\circ$, multiplying by $i$ adds $90^\\circ$ and keeps the modulus. Then $i^2$ adds $180^\\circ$, $i^3$ adds $270^\\circ$ and $i^4$ returns to the start.",
         ],
       },
       {
