@@ -244,8 +244,9 @@ export const shapeMethods: Record<string, ProblemMethod> = {
     terms: terms.flat,
     method: [
       "Say what the named shape must have, such as 6 straight sides for a hexagon.",
-      "Check each shape for all of it: the number of sides and corners, and for a square or rectangle, square corners and equally long sides.",
-      "Choose the one that has it. Its size and direction do not matter.",
+      "Count each shape's sides and corners.",
+      "For a square or a rectangle, also check for square corners. A square's sides must all be equally long.",
+      "Choose the shape that has all of it. Its size and direction do not matter.",
     ],
     watch:
       "Count carefully. A shape with 5 sides is not a hexagon, and an oval, a stretched circle, is not a circle.",
