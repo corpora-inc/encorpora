@@ -312,7 +312,7 @@ test("the PDF is rendered from the stored workbook for each request and never st
   assert.equal(calls[0]!.format, "A4");
   assert.ok(calls[0]!.html.includes("size:A4"));
   assert.ok(calls[0]!.html.includes(made.code));
-  assert.ok(calls[0]!.html.includes("Sample learner"));
+  assert.ok(calls[0]!.html.includes("Workbook for Sample"));
   // Each composed page prints its own footer with the code; no browser footer.
   assert.ok(!calls[0]!.footer);
   assert.ok(calls[0]!.html.includes("data-compose"));

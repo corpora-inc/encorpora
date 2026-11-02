@@ -3,6 +3,8 @@ import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
 import { AppError } from "../../lib/AppError";
 import {
+  workbookAreasSchema,
+  type WorkbookChoicesInput,
   workbookResultsSchema,
   type WorkbookResultEntry,
   workbookHistorySchema,
@@ -34,8 +36,21 @@ export const workbookHistoryOptions = (
       ),
   });
 
+/** The areas a parent can choose for this learner. */
+export const workbookAreasOptions = (session: AuthSession, learnerId: string) =>
+  queryOptions({
+    queryKey: [...workbooksKey(session, learnerId), "areas"],
+    queryFn: ({ signal }) =>
+      request(`${workbookPath(learnerId)}/areas`, workbookAreasSchema, {
+        token: session.token,
+        signal,
+      }),
+    staleTime: 5 * 60_000,
+  });
+
 /** Same date, number and length return the stored workbook, so this is safe
- * to repeat: it reads the workbook, making it the first time. */
+ * to repeat: it reads the workbook, making it the first time (with the
+ * choices given; a stored workbook keeps its own). */
 export const workbookOptions = (
   session: AuthSession,
   learnerId: string,
@@ -44,6 +59,7 @@ export const workbookOptions = (
     number: number;
     minutes: WorkbookMinutes;
     paper: WorkbookPaper;
+    choices: WorkbookChoicesInput;
   },
 ) =>
   queryOptions({
@@ -56,10 +72,16 @@ export const workbookOptions = (
       }),
   });
 
+/** The next workbook for the date ("Roll another"), with these choices. */
 export function anotherWorkbook(
   session: AuthSession,
   learnerId: string,
-  input: { date: string; minutes: WorkbookMinutes; paper: WorkbookPaper },
+  input: {
+    date: string;
+    minutes: WorkbookMinutes;
+    paper: WorkbookPaper;
+    choices: WorkbookChoicesInput;
+  },
 ) {
   return request(workbookPath(learnerId), workbookSummarySchema, {
     token: session.token,

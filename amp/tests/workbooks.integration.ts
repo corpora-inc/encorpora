@@ -107,7 +107,8 @@ test(
         [1, 2, 3, 4].map((n) => [today, n, 45, "letter"]),
       );
       assert.equal(stored.rows[0].code, first.json().code);
-      assert.equal(stored.rows[0].version, "1");
+      // Version 2 specs carry the parent's choices (defaults here).
+      assert.equal(stored.rows[0].version, "2");
 
       const history = await app.inject({ url: `${base}/workbooks` });
       assert.deepEqual(

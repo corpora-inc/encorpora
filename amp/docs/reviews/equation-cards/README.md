@@ -1,6 +1,6 @@
 # Equations built from cards
 
-Screenshots from `npm run test:multi-part-cards-ui` (Chromium; 4 families × 320/390/768/1280 × light/dark, 32 runs) and one page of a printed daily workbook.
+Screenshots from `npm run test:multi-part-cards-ui` (Chromium; 4 families × 320/390/768/1280 × light/dark, 32 runs) and one page of a printed workbook.
 
 | File | Shows |
 | --- | --- |

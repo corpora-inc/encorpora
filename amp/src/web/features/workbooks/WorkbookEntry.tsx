@@ -17,10 +17,10 @@ export function WorkbookEntry({
   return (
     <section className={styles.entry} aria-labelledby={`wb-${learner.id}`}>
       <div>
-        <h4 id={`wb-${learner.id}`}>Daily workbook</h4>
+        <h4 id={`wb-${learner.id}`}>Workbooks</h4>
         <p>
           Printable practice chosen from {learner.name}'s progress, with an
-          answer key.
+          answer key. Print as many as you like.
         </p>
       </div>
       <div className={styles.links}>
@@ -29,7 +29,7 @@ export function WorkbookEntry({
           params={{ learnerId: learner.id, date: localDate() }}
           className={buttonClass("primary")}
         >
-          Download today's workbook
+          Make a workbook
         </Link>
         <Link
           to="/learners/$learnerId/workbooks"
