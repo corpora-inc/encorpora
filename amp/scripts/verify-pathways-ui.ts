@@ -1615,10 +1615,17 @@ try {
       await related
         .getByText("When each kit holds two items", { exact: false })
         .waitFor();
-      assert.equal(
-        await related.locator(".pathways-connection-why").count(),
-        4,
-      );
+      for (const explanation of [
+        "Adding an even number keeps a number odd or even",
+        "An even positive whole number has 2 as a factor",
+        "When each kit holds two items",
+        "Even and odd outcomes form sets",
+      ])
+        assert.equal(
+          await related.getByText(explanation, { exact: false }).count(),
+          1,
+        );
+
       const application = related.getByRole("link", { name: /Event sets/ });
       assert.equal(
         await application.getAttribute("href"),
