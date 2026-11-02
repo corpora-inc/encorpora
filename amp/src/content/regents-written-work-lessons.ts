@@ -59,6 +59,7 @@ const entries: WorkEntry[] = [
   {
     id: "remainder-steps",
     title: "Find a remainder by evaluating at the zero of the divisor",
+    goal: "Find the remainder when a polynomial is divided by $x-r$, showing its value at $x=r$.",
     summary:
       "Dividing a polynomial $f(x)$ by $x-r$ leaves a remainder, the part left over. A shortcut called the remainder theorem says that remainder equals $f(r)$, the polynomial's value at $x=r$. So put $r$ into $f(x)$, working term by term, instead of dividing.",
     objectives: [

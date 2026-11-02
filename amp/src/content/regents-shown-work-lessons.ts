@@ -75,6 +75,7 @@ const entries: WorkEntry[] = [
   {
     id: "sas-area-steps",
     title: "Find a triangle's area from two sides and the angle between them",
+    goal: "Find a triangle's area from two side lengths and the angle between them, showing each calculation.",
     summary:
       "A triangle's area is half its base times its height. When you know two sides and the angle between them, the sine of that angle gives the height, so the area is $\\frac12ab\\sin C$. This works even when the angle is obtuse, more than $90^\\circ$, because an angle and its supplement have the same sine.",
     objectives: [
@@ -467,6 +468,7 @@ const entries: WorkEntry[] = [
     id: "two-radical-steps",
     title:
       "Solve an equation with two square roots and reject the extraneous solution",
+    goal: "Solve an equation with two square roots, then check each possible solution in the original equation.",
     summary:
       "An equation with two square roots usually needs squaring twice: once to remove one root, then again after getting the other root alone. That leaves a quadratic equation to solve. Squaring can add false answers, because a number and its opposite have the same square, so test each answer in the original equation.",
     objectives: [
