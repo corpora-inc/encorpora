@@ -103,6 +103,19 @@
   padding: 4px;
   margin: -4px;
 }
+.choice {
+  display: grid;
+  gap: var(--space-1);
+}
+.choiceLabel {
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  font-weight: 650;
+}
+/* A fade at the end says the row scrolls when it holds more areas. */
+.areas {
+  mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+}
 .areas::-webkit-scrollbar {
   display: none;
 }

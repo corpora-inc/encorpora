@@ -302,52 +302,69 @@ function Today({
             { value: "a4", label: "A4", detail: "Most countries" },
           ]}
         />
-        <Segmented<WorkbookChoicesInput["lean"]>
-          compact
-          label="Level"
-          value={choices.lean}
-          disabled={choosing}
-          onChange={(lean) => roll({ ...choices, lean })}
-          options={[
-            { value: "easier", label: "Easier" },
-            { value: "level", label: "At level" },
-            { value: "stretch", label: "Harder" },
-          ]}
-        />
-        <Segmented<"lesson" | "problems">
-          compact
-          label="Today's idea"
-          value={choices.lesson ? "lesson" : "problems"}
-          disabled={choosing}
-          onChange={(value) => roll({ ...choices, lesson: value === "lesson" })}
-          options={[
-            { value: "lesson", label: "Include" },
-            { value: "problems", label: "Leave out" },
-          ]}
-        />
+        <div className={styles.choice}>
+          <span className={styles.choiceLabel} aria-hidden="true">
+            Level
+          </span>
+          <Segmented<WorkbookChoicesInput["lean"]>
+            compact
+            label="Level"
+            value={choices.lean}
+            disabled={choosing}
+            onChange={(lean) => roll({ ...choices, lean })}
+            options={[
+              { value: "easier", label: "Easier" },
+              { value: "level", label: "At level" },
+              { value: "stretch", label: "Harder" },
+            ]}
+          />
+        </div>
+        <div className={styles.choice}>
+          <span className={styles.choiceLabel} aria-hidden="true">
+            Today&apos;s idea
+          </span>
+          <Segmented<"lesson" | "problems">
+            compact
+            label="Today's idea"
+            value={choices.lesson ? "lesson" : "problems"}
+            disabled={choosing}
+            onChange={(value) =>
+              roll({ ...choices, lesson: value === "lesson" })
+            }
+            options={[
+              { value: "lesson", label: "Include" },
+              { value: "problems", label: "Leave out" },
+            ]}
+          />
+        </div>
       </div>
       {/* One row that scrolls sideways: however many areas a learner has,
           nothing below it moves when they load. */}
-      <div className={styles.areas}>
-        <Chips<string>
-          label="Areas"
-          disabled={choosing}
-          value={choices.areas.length ? choices.areas : ["mixed"]}
-          onChange={(next) => {
-            const picked = next.filter((v) => v !== "mixed");
-            const mixed =
-              !picked.length ||
-              (next.includes("mixed") && choices.areas.length > 0);
-            roll({ ...choices, areas: mixed ? [] : picked });
-          }}
-          options={[
-            { value: "mixed", label: "Mixed (recommended)" },
-            ...(areas.data?.areas ?? []).map((a) => ({
-              value: a.id,
-              label: a.label,
-            })),
-          ]}
-        />
+      <div className={styles.choice}>
+        <span className={styles.choiceLabel} aria-hidden="true">
+          Areas
+        </span>
+        <div className={styles.areas}>
+          <Chips<string>
+            label="Areas"
+            disabled={choosing}
+            value={choices.areas.length ? choices.areas : ["mixed"]}
+            onChange={(next) => {
+              const picked = next.filter((v) => v !== "mixed");
+              const mixed =
+                !picked.length ||
+                (next.includes("mixed") && choices.areas.length > 0);
+              roll({ ...choices, areas: mixed ? [] : picked });
+            }}
+            options={[
+              { value: "mixed", label: "Mixed (recommended)" },
+              ...(areas.data?.areas ?? []).map((a) => ({
+                value: a.id,
+                label: a.label,
+              })),
+            ]}
+          />
+        </div>
       </div>
       {/* An action that fails says so in the shared toast, over the page. */}
       <Toast message={message} onDismiss={() => setMessage("")} />

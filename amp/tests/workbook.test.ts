@@ -659,7 +659,9 @@ test("choices change the workbook deterministically and are stored in the spec",
       i.skillId,
     );
   assert.ok(!mixed.sections.some((s) => s.kind === "lesson"));
-  assert.ok(workbookMinutes(mixed) <= 45);
+  // A few areas still fill the time: practice shares out among them.
+  const total = workbookMinutes(mixed);
+  assert.ok(total <= 45 && total >= 35, `${total} minutes`);
   // Easier review: more review, practice lower than a stretch.
   const easier = compose("third-grade", {
     number: 4,

@@ -338,6 +338,10 @@ export function composeWorkbook(options: {
     }
     return chosen;
   };
+  /** At most two problems from one strand, unless the parent chose a few
+   * areas: then the section shares out among them. */
+  const perStrand = (count: number) =>
+    areas.size ? Math.max(2, Math.ceil(count / areas.size)) : 2;
   const strong = (skillId: string) => {
     const e = evidence.get(skillId);
     return !!e && e.recentIndependentCorrect >= 3;
@@ -397,8 +401,11 @@ export function composeWorkbook(options: {
   // then material comfortably below the strand frontier.
   const warmUpSection: WorkbookSection = {
     kind: "warm-up",
-    items: spread(budget.warmUp, [[-1.5, 0.25]], 2, (t) =>
-      strong(t.skillId),
+    items: spread(
+      budget.warmUp,
+      [[-1.5, 0.25]],
+      perStrand(budget.warmUp),
+      (t) => strong(t.skillId),
     ).map((t) => item(t, "warm-up")),
   };
   warmUpSection.items.push(
@@ -409,7 +416,7 @@ export function composeWorkbook(options: {
         [-3, -0.5],
         [-13, 0],
       ],
-      2,
+      perStrand(budget.warmUp),
     ).map((t) => item(t, "warm-up")),
   );
 
@@ -577,7 +584,7 @@ export function composeWorkbook(options: {
       [-2 + shift, 0.8 + shift],
       [-13, 13],
     ],
-    2,
+    perStrand(practiceMax),
   )) {
     if (remaining < 1) break;
     const next = item(t, "practice");
