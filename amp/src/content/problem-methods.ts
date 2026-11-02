@@ -329,7 +329,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   // Place value
   "continue-count-to-120": {
     intuition:
-      "Counting numbers are the numbers 1, 2, 3 and so on. In order, they make a pattern: each one is the one before plus 1. In 37, the 7 is in the ones place, which counts ones. The 3 is in the tens place, which counts tens.",
+      "We count 0, 1, 2, 3 and so on. In order, the numbers make a pattern: each one is the one before plus 1. In 37, the 7 is in the ones place, which counts ones. The 3 is in the tens place, which counts tens.",
     goal: "Given a counting sequence, find the next number.",
     method: [
       "Each next number is one more.",
@@ -338,20 +338,22 @@ const legacyMethods: Record<string, ProblemMethod> = {
     watch: "After 109 comes 110, not 1010.",
   },
   "tens-ones-model": {
-    senses: { cube: "cube" },
     intuition:
-      "A cube is one small block, and it stands for 1. A rod is ten cubes joined together in a row, so it stands for 10. The number shown is the tens from the rods and the ones from the cubes.",
-    goal: "Given rods and small cubes, find the number shown.",
+      "A small square stands for 1. A rod is ten small squares joined together in a row, so it stands for 10. The number shown is the tens from the rods and the ones from the small squares.",
+    goal: "Given rods and small squares, find the number shown.",
     terms: [
-      ["base-ten-blocks", "A rod stands for 10: ten cubes joined together."],
-      ["base-ten-blocks", "A cube stands for 1."],
+      [
+        "base-ten-blocks",
+        "A rod stands for 10: ten small squares joined together.",
+      ],
+      ["base-ten-blocks", "A small square stands for 1."],
     ],
     method: [
       "Count the rods. That is the tens digit.",
-      "Count the cubes, 9 or fewer here. That is the ones digit.",
-      "Write tens then ones: 3 rods and 8 cubes is 38.",
+      "Count the small squares, 9 or fewer here. That is the ones digit.",
+      "Write tens then ones: 3 rods and 8 small squares is 38.",
     ],
-    watch: "A rod is ten, not one: 3 rods and 8 cubes is 38, not 11.",
+    watch: "A rod is ten, not one: 3 rods and 8 small squares is 38, not 11.",
   },
   "ten-more-or-less": {
     goal: "Given a number, find ten more or ten less.",
@@ -971,10 +973,10 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "fraction-equivalence-choice": {
     intuition:
-      "A fraction such as $\\tfrac{1}{2}$ names equal parts of one whole. Its denominator, the bottom number, says how many equal parts make the whole. Its numerator, the top number, says how many of those parts you have. Two fractions are equivalent when they name the same amount. Cut each half into 3 equal pieces: the whole now has 6 pieces, and you have 3 of them. So $\\tfrac{1}{2} = \\tfrac{3}{6}$.",
+      "A fraction such as $\\tfrac{1}{2}$ names equal parts of one whole. Its denominator, the bottom number, says how many equal parts make the whole. Its numerator, the top number, says how many of those parts you have. Fractions that name the same amount are called equivalent. Cut each half into 3 equal pieces: the whole now has 6 pieces, and you have 3 of them. So $\\tfrac{1}{2} = \\tfrac{3}{6}$.",
     goal: "Given a fraction, choose another fraction that names the same amount.",
     method: [
-      "Find the number that turns the given denominator into the choice's denominator. For $\\tfrac{1}{2}$ and $\\tfrac{3}{6}$, it is 3, because $2 \\times 3 = 6$.",
+      "Find the whole number that turns the given denominator into the choice's denominator. For $\\tfrac{1}{2}$ and $\\tfrac{3}{6}$, it is 3, because $2 \\times 3 = 6$. If no whole number does this, the choice was not made by cutting pieces, so rule it out.",
       "Multiply the numerator by the same number: $1 \\times 3 = 3$. If that gives the choice's numerator, the choice names the same amount, because every part was cut into the same number of pieces.",
       "Dividing both numbers by the same number, other than 0, also keeps the amount. It joins equal pieces back together: $\\tfrac{4}{8} = \\tfrac{4 \\div 4}{8 \\div 4} = \\tfrac{1}{2}$.",
     ],
@@ -1200,7 +1202,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     terms: ["numerator", "denominator"],
     method: [
       "Write both amounts with the same denominator, so both count pieces of the same size.",
-      "Divide the numerators: total pieces ÷ pieces in one container. For $\\tfrac{6}{4}$ liters in containers of $\\tfrac{4}{4}$ liter, $6 \\div 4 = \\tfrac{3}{2}$.",
+      "Divide the numerators: total pieces ÷ pieces in one container. For $\\tfrac{6}{4}$ liters in containers of $\\tfrac{3}{4}$ liter, $6 \\div 3 = 2$.",
       "A leftover part counts as a fraction of a container: $\\tfrac{3}{2}$ means one full container and half of another.",
     ],
     watch:
@@ -1290,7 +1292,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     method: [
       "Simplify the rule first: $y = 3x + 2 - 2$ is $y = 3x$. Then look for the form $y = kx$: $x$ times one fixed number $k$, with nothing left added or subtracted.",
       "Check $x = 0$. A proportional rule gives $y = 0$ there. The rule $y = 3x + 2$ gives $y = 2$, so it is not proportional.",
-      "Numbers can show that a rule is not proportional: if $y \\div x$ is different for two inputs other than 0, it is not. A few matching values do not prove it, so trust the form $y = kx$.",
+      "Numbers can show that a rule is not proportional: if $y \\div x$ is different for two inputs other than 0, it is not. A few matching values are not enough to be sure, so trust the form $y = kx$.",
     ],
     watch:
       "A rule like $y = 3x + 2$, with a number other than 0 added, is not proportional. At $x = 0$ it gives $y = 2$, not 0. So its graph misses the point $(0, 0)$, where both $x$ and $y$ are 0.",
@@ -1326,7 +1328,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "Subtracting a negative number adds its size. From $-7$ to 6 is $6 - (-7) = 13$, not $6 - 7$.",
   },
   "integer-power": {
-    goal: "Find the value of a power such as $3^4$: the exponent counts how many copies of the base are multiplied together.",
+    goal: "Find the value of a power such as $3^4$: the exponent counts the copies of the base multiplied. Exponent 0 gives 1.",
     senses: {
       base: "base-exponent",
       square: "square-number",
@@ -1426,7 +1428,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Solve an equation in which $x$ is multiplied by a fraction.",
     senses: { side: "side-of-equation" },
     intuition:
-      "An equation has two sides: the amount on the left of the equal sign and the amount on the right. It says they are equal. In $\\tfrac{5}{6}x - 7 = 3$, $\\tfrac{5}{6}x$ means $\\tfrac{5}{6}$ times $x$. So the coefficient, the number multiplying $x$, is a fraction. The reciprocal of a fraction other than 0 is the fraction flipped upside down: the reciprocal of $\\tfrac{5}{6}$ is $\\tfrac{6}{5}$. A fraction times its reciprocal is 1.",
+      "An equation has two sides: the amount on the left of the equal sign and the amount on the right. It says they are equal. In $\\tfrac{5}{6}x - 7 = 3$, $\\tfrac{5}{6}x$ means $\\tfrac{5}{6}$ times $x$. So the coefficient, the number multiplying $x$, is a fraction. A fraction other than 0 has a reciprocal: the fraction flipped upside down. The reciprocal of $\\tfrac{5}{6}$ is $\\tfrac{6}{5}$. A fraction times its reciprocal is 1.",
     method: [
       "Undo the added or subtracted number on both sides. In $\\tfrac{5}{6}x - 7 = 3$, add 7: $\\tfrac{5}{6}x = 10$.",
       "Multiply both sides by the reciprocal of the fraction. $\\tfrac{6}{5} \\times \\tfrac{5}{6}x = x$, and $\\tfrac{6}{5} \\times 10 = 12$, so $x = 12$.",
@@ -1701,14 +1703,14 @@ const legacyMethods: Record<string, ProblemMethod> = {
     senses: { rule: "rule", unit: "unit" },
     noLink: ["mean", "whole"],
     intuition:
-      "Each plan's cost depends on $x$. The input is the number $x$, such as a number of hours. The rate is the number multiplying $x$: the cost for each hour. Strictly cheaper means costing less, not the same. First find the tie, where both cost the same, by setting the costs equal. Then look just past the tie. A whole input is one of 0, 1, 2, 3 and so on.",
+      "Each plan's cost depends on $x$. The input is the number $x$, such as a number of hours. The rate is the number multiplying $x$: the cost for each hour. Strictly cheaper means costing less, not the same. First find the tie, where both cost the same, by setting the costs equal. The plan with the smaller rate is cheaper just past the tie, and the other plan is cheaper before it. A whole input is one of 0, 1, 2, 3 and so on.",
     method: [
       "Set the costs equal and solve for the tie: $18 + x = 2x$ gives $x = 18$.",
       "Test a whole input just above the tie to see which plan is cheaper there. At 19, Plan A costs $18 + 19 = 37$ and Plan B costs $2 \\times 19 = 38$.",
       "If the plan asked about has the smaller rate, the answer is the first whole number past the tie; if the tie is a whole number, take the next one. A plan with the larger rate is cheaper only before the tie.",
     ],
     watch:
-      "At the tie the costs are equal, not cheaper. Past the tie, the plan with the smaller rate is cheaper. Take the next whole number, even when the tie is a whole number, and check that it is an allowed input.",
+      "At the tie the costs are equal, not cheaper. Past the tie, the plan with the smaller rate is cheaper. For that plan, take the next whole number, even when the tie is a whole number, and check that it is an allowed input.",
   },
   "function-evaluation": {
     goal: "Given a rule $f(x)$ and an input, find the output.",
