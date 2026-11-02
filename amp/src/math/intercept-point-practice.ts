@@ -200,6 +200,11 @@ function surface(m: Model, r: R) {
     yiW = num(m.yi);
   const xPoint = pt(m.xi, zero),
     yPoint = pt(zero, m.yi);
+  const pairMeaning = `An ordered pair $(x, y)$ names a point: the $x$-coordinate (left or right) comes first, then the $y$-coordinate (up or down).`;
+  // Solving 0 = (p/q) x + k: move the constant, then divide by the slope.
+  const moveConstant = `Move the constant to the other side by ${m.k < 0 ? `adding ${-m.k} to` : `subtracting ${m.k} from`} both sides: $${sf(m.p, m.q)}x = ${n(-m.k)}$.`;
+  const divideSlope = (end: string) =>
+    `Divide both sides by the slope, $${sf(m.p, m.q)}$, the number multiplying $x$: $x = ${n(-m.k)} \\div ${sp(m.p, m.q)} = ${end}$.`;
 
   if (m.ask === "y-intercept-point") {
     const options = [
@@ -244,18 +249,24 @@ function surface(m: Model, r: R) {
     ];
     const steps = graphed
       ? [
-          `The $y$-intercept is the point where the line meets the $y$-axis, so its $x$-coordinate is 0.`,
+          pairMeaning,
+          `The $y$-intercept is the point where the line meets the $y$-axis, the vertical axis. Every point on that axis has $x$-coordinate 0.`,
           `Reading the graph, the line crosses the $y$-axis at $y = ${n(m.yi.n)}$.`,
-          `Write $x$ first: ${yPoint}.`,
+          `Write $x$ first, so the $y$-intercept is ${yPoint}.`,
         ]
       : m.form === "slope-intercept"
         ? [
-            `On the $y$-axis $x = 0$. Substitute $x = 0$ into ${eq}: $y = ${n(m.k)}$.`,
-            `Write $x$ first: ${yPoint}.`,
+            pairMeaning,
+            `The $y$-intercept is where the line meets the $y$-axis, and every point there has $x = 0$.`,
+            `Substitute $x = 0$ into ${eq}. The $x$-term becomes 0, leaving $y = ${n(m.k)}$.`,
+            `Write $x$ first, so the $y$-intercept is ${yPoint}.`,
           ]
         : [
-            `On the $y$-axis $x = 0$. Substitute $x = 0$ into ${eq}: $${termText(m.b, "y")} = ${n(m.c)}$.`,
-            `$y = ${quo(m.c, m.b)}$, so the $y$-intercept is ${yPoint}.`,
+            pairMeaning,
+            `The $y$-intercept is where the line meets the $y$-axis, and every point there has $x = 0$.`,
+            `Substitute $x = 0$ into ${eq}. The $x$-term becomes 0, leaving $${termText(m.b, "y")} = ${n(m.c)}$.`,
+            `Divide both sides by ${n(m.b)}, the number multiplying $y$: $y = ${quo(m.c, m.b)}$.`,
+            `Write $x$ first, so the $y$-intercept is ${yPoint}.`,
           ];
     return choiceSurface(r, {
       prompt: graphed
@@ -300,7 +311,7 @@ function surface(m: Model, r: R) {
                 [
                   rat(-m.k),
                   zero,
-                  `${pt(rat(-m.k), zero)} stops at $-b$. Also divide by the slope: $0 = mx + b$ gives $x = -b \\div m$.`,
+                  `${pt(rat(-m.k), zero)} only moves the constant ${n(m.k)} to the other side. After that, divide by the slope, $${sf(m.p, m.q)}$, as well.`,
                 ],
               ] as [Rational, Rational, string][])
             : []),
@@ -313,19 +324,30 @@ function surface(m: Model, r: R) {
     ];
     const steps = graphed
       ? [
-          `The $x$-intercept is the point where the line meets the $x$-axis, so its $y$-coordinate is 0.`,
+          pairMeaning,
+          `The $x$-intercept is the point where the line meets the $x$-axis, the horizontal axis. Every point on that axis has $y$-coordinate 0.`,
           `Reading the graph, the line crosses the $x$-axis at $x = ${n(m.xi.n)}$.`,
-          `Write $x$ first: ${xPoint}.`,
+          `Write $x$ first, so the $x$-intercept is ${xPoint}.`,
         ]
       : m.form === "slope-intercept"
         ? [
-            `On the $x$-axis $y = 0$. Substitute: $0 = ${sf(m.p, m.q)}x ${m.k < 0 ? "−" : "+"} ${Math.abs(m.k)}$.`,
-            `So $${sf(m.p, m.q)}x = ${n(-m.k)}$, and $x = ${n(-m.k)} \\div ${sp(m.p, m.q)} = ${qt(m.xi)}$.`,
-            `Write $x$ first: ${xPoint}.`,
+            pairMeaning,
+            `The $x$-intercept is where the line meets the $x$-axis, and every point there has $y = 0$.`,
+            `Substitute $y = 0$ into ${eq}: $0 = ${sf(m.p, m.q)}x ${m.k < 0 ? "−" : "+"} ${Math.abs(m.k)}$.`,
+            moveConstant,
+            divideSlope(qt(m.xi)),
+            `Write $x$ first, so the $x$-intercept is ${xPoint}.`,
           ]
         : [
-            `On the $x$-axis $y = 0$. Substitute $y = 0$ into ${eq}: $${termText(m.a, "x")} = ${n(m.c)}$.`,
-            `$x = ${quo(m.c, m.a)}$, so the $x$-intercept is ${xPoint}.`,
+            pairMeaning,
+            `The $x$-intercept is where the line meets the $x$-axis, and every point there has $y = 0$.`,
+            `Substitute $y = 0$ into ${eq}. The $y$-term becomes 0, leaving $${termText(m.a, "x")} = ${n(m.c)}$.`,
+            ...(m.a === 1
+              ? []
+              : [
+                  `Divide both sides by ${n(m.a)}, the number multiplying $x$: $x = ${quo(m.c, m.a)}$.`,
+                ]),
+            `Write $x$ first, so the $x$-intercept is ${xPoint}.`,
           ];
     return choiceSurface(r, {
       prompt: graphed
@@ -359,7 +381,7 @@ function surface(m: Model, r: R) {
         ? ([
             [
               rat(-m.k),
-              `${num(rat(-m.k))} is only $-b$. Divide by the slope as well: $0 = mx + b$ gives $x = -b \\div m$.`,
+              `${num(rat(-m.k))} only moves the constant ${n(m.k)} to the other side. After that, divide by the slope, $${sf(m.p, m.q)}$, as well.`,
             ],
           ] as [Rational, string][])
         : m.form === "standard"
@@ -378,19 +400,31 @@ function surface(m: Model, r: R) {
         wrong.map(([w, feedback]) => ({ label: num(w), feedback })),
       ),
     ];
+    const zeroMeaning = `A zero of $f$ is an input $x$ that makes the output 0, so $f(x) = 0$. Here $f(x)$, read "$f$ of $x$", is the output for input $x$.`;
     const steps = graphed
       ? [
-          `A zero of $f$ is an input $x$ with $f(x) = 0$, which is a point on the $x$-axis.`,
-          `The graph meets the $x$-axis at $x = ${n(v.n)}$, so the zero is ${num(v)}.`,
+          zeroMeaning,
+          `On the graph the output is the height $y$, so a zero is where the line meets the $x$-axis, the horizontal axis.`,
+          `The line meets the $x$-axis at $x = ${n(v.n)}$.`,
+          `So the zero of $f$ is ${num(v)}.`,
         ]
       : m.form === "slope-intercept"
         ? [
-            `A zero of $f$ is an input $x$ with $f(x) = 0$. Solve $0 = ${sf(m.p, m.q)}x ${m.k < 0 ? "−" : "+"} ${Math.abs(m.k)}$.`,
-            `$${sf(m.p, m.q)}x = ${n(-m.k)}$, so $x = ${n(-m.k)} \\div ${sp(m.p, m.q)} = ${num(v)}$.`,
+            zeroMeaning,
+            `Set the rule equal to 0: $0 = ${sf(m.p, m.q)}x ${m.k < 0 ? "−" : "+"} ${Math.abs(m.k)}$.`,
+            moveConstant,
+            divideSlope(num(v)),
+            `So the zero of $f$ is ${num(v)}.`,
           ]
         : [
-            `A zero of $f$ is an input $x$ with $f(x) = 0$, so set $y = 0$ in ${eq}: $${termText(m.a, "x")} = ${n(m.c)}$.`,
-            `$x = ${quo(m.c, m.a)}$, so the zero is ${num(v)}.`,
+            zeroMeaning,
+            `The output is $y$, so set $y = 0$ in ${eq}. The $y$-term becomes 0, leaving $${termText(m.a, "x")} = ${n(m.c)}$.`,
+            ...(m.a === 1
+              ? []
+              : [
+                  `Divide both sides by ${n(m.a)}, the number multiplying $x$: $x = ${quo(m.c, m.a)}$.`,
+                ]),
+            `So the zero of $f$ is ${num(v)}.`,
           ];
     return choiceSurface(r, {
       prompt: graphed
@@ -444,19 +478,22 @@ function surface(m: Model, r: R) {
       wrongSums.map(([w, feedback]) => ({ label: num(w), feedback })),
     ),
   ];
-  const lead = graphed
-    ? [
-        `Reading the graph: the line crosses the $x$-axis at ${xPoint} and the $y$-axis at ${yPoint}.`,
-      ]
-    : m.form === "slope-intercept"
+  const lead = [
+    `$P$ is on the $x$-axis, so it looks like $(x, 0)$. $Q$ is on the $y$-axis, so it looks like $(0, y)$. Each has one coordinate that is not 0.`,
+    ...(graphed
       ? [
-          `Set $x = 0$: $y = ${n(m.k)}$, so the $y$-intercept is ${yPoint}.`,
-          `Set $y = 0$: $x = ${n(-m.k)} \\div ${sp(m.p, m.q)} = ${num(m.xi)}$, so the $x$-intercept is ${xPoint}.`,
+          `Reading the graph: the line crosses the $x$-axis at ${xPoint} and the $y$-axis at ${yPoint}.`,
         ]
-      : [
-          `Set $x = 0$: $${termText(m.b, "y")} = ${n(m.c)}$, so $y = ${quo(m.c, m.b)}$ and the $y$-intercept is ${yPoint}.`,
-          `Set $y = 0$: $${termText(m.a, "x")} = ${n(m.c)}$, so $x = ${quo(m.c, m.a)}$ and the $x$-intercept is ${xPoint}.`,
-        ];
+      : m.form === "slope-intercept"
+        ? [
+            `Set $x = 0$: $y = ${n(m.k)}$, so the $y$-intercept is ${yPoint}.`,
+            `Set $y = 0$: $x = ${n(-m.k)} \\div ${sp(m.p, m.q)} = ${num(m.xi)}$, so the $x$-intercept is ${xPoint}.`,
+          ]
+        : [
+            `Set $x = 0$: $${termText(m.b, "y")} = ${n(m.c)}$${m.b === 1 ? "" : `, so $y = ${quo(m.c, m.b)}$`}, and the $y$-intercept is ${yPoint}.`,
+            `Set $y = 0$: $${termText(m.a, "x")} = ${n(m.c)}$${m.a === 1 ? "" : `, so $x = ${quo(m.c, m.a)}$`}, and the $x$-intercept is ${xPoint}.`,
+          ]),
+  ];
   return choiceSurface(r, {
     prompt: graphed
       ? "The graph shows a line that crosses the $x$-axis at point $P$ and the $y$-axis at point $Q$. What is the sum of the nonzero coordinate of $P$ and the nonzero coordinate of $Q$?"
@@ -467,8 +504,9 @@ function surface(m: Model, r: R) {
       : `Find each crossing point of ${eq || formula(rule(m))}: set $y = 0$ for $P$ and $x = 0$ for $Q$. Each has one coordinate that is not 0.`,
     explanation: [
       ...lead,
-      `The nonzero coordinates are ${xiW} and ${yiW}.`,
-      `Their sum is ${xiW} + ${m.yi.n < 0 ? `(${yiW})` : yiW} = ${num(sum)}.`,
+      `The nonzero coordinates are ${xiW} from $P$ and ${yiW} from $Q$.`,
+      `Add them, keeping each sign: $${xiW} + ${m.yi.n < 0 ? `(${yiW})` : yiW} = ${num(sum)}$.`,
+      `So the sum of the nonzero coordinates is ${num(sum)}.`,
     ],
     label: "Choose the sum",
   });

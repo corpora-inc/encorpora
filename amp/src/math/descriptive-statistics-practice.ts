@@ -157,7 +157,12 @@ export function descriptiveStatisticsPrintCase(id: string, seed: string) {
         : "interquartile range";
   const prompt = `Find the ${name} of these data: ${list(values)}.${id === "interquartile-range-data" ? " Order the values; when there is an odd number of values, exclude the overall median from both halves. Each quartile is the median of its half." : ""}`;
   const explanation = [
-    `Order from least to greatest, keeping repetitions: ${list(sorted)}.`,
+    id === "median-data"
+      ? "The median is the middle value once the data are in order. With an even count, it is halfway between the two middle values."
+      : id === "range-data"
+        ? "The range measures spread: the greatest value minus the least value."
+        : "The interquartile range is the spread of the middle half of the data: the upper quartile minus the lower quartile. A quartile is the median of one half.",
+    `Order from least to greatest, keeping repeated values, so every value is counted: ${list(sorted)}.`,
   ];
   if (id === "median-data")
     explanation.push(
@@ -168,7 +173,7 @@ export function descriptiveStatisticsPrintCase(id: string, seed: string) {
     explanation.push(
       `The least value is ${decimal(sorted[0]!)} and the greatest is ${decimal(sorted.at(-1)!)}.`,
       `Subtract least from greatest: ${decimal(sorted.at(-1)!)} − ${operand(sorted[0]!)} = ${shown(answer)}.`,
-      `The range is ${shown(answer)}; it cannot be negative.`,
+      `The range is ${shown(answer)}. It is never negative, because the greatest value is never less than the least.`,
     );
   else
     explanation.push(
