@@ -380,6 +380,13 @@ try {
             };
           }),
         );
+      await dialog.evaluate(async (element) => {
+        await Promise.all(
+          element
+            .getAnimations({ subtree: true })
+            .map((animation) => animation.finished),
+        );
+      });
       const hiddenCharts = await charts();
       assert(
         hiddenCharts.length > 1,
@@ -402,6 +409,13 @@ try {
       await dialog
         .getByRole("checkbox", { name: "Show grade numbers" })
         .check();
+      await dialog.evaluate(async (element) => {
+        await Promise.all(
+          element
+            .getAnimations({ subtree: true })
+            .map((animation) => animation.finished),
+        );
+      });
       assert.deepEqual(
         await charts(),
         hiddenCharts,

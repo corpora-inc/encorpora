@@ -97,7 +97,7 @@ test("progress modal hides grade text and accessible estimates until explicitly 
         open
         onContinue={proceed}
         age={14}
-        strands={["operations"]}
+        strands={["operations", "fractions"]}
         progress={{
           phase: "practice",
           free: 100,
@@ -178,6 +178,7 @@ test("area charts retain estimates and uncertainty when grade numbers are hidden
     overall: { level: 2, sd: 0.5, answered: 12, independent: 10 },
     strands: {
       operations: { level: 2, sd: 0.5, answered: 12, independent: 10 },
+      fractions: { level: 2, sd: 1, answered: 0, independent: 0 },
     },
   };
   const view = (birthYear: number | null) => (
@@ -187,12 +188,22 @@ test("area charts retain estimates and uncertainty when grade numbers are hidden
         name="Sample learner"
         birthYear={birthYear}
         frontier={frontier}
-        strands={["operations"]}
+        strands={["operations", "fractions"]}
       />
     </CurriculumDetailsProvider>
   );
   const { container, rerender } = render(view(2020));
   const track = container.querySelector(".frontier-track")!;
+  expect(
+    container
+      .querySelector('[data-strand="operations"] .frontier-track')!
+      .classList.contains("estimated"),
+  ).toBe(false);
+  expect(
+    container
+      .querySelector('[data-strand="fractions"] .frontier-track')!
+      .classList.contains("estimated"),
+  ).toBe(true);
   const marker = container.querySelector<HTMLElement>(".frontier-center")!;
   const range = container.querySelector(".frontier-range")!;
   const dot = container.querySelector(".frontier-dot")!;

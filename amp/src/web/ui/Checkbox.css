@@ -1,4 +1,4 @@
-.row {
+.amp-checkbox-row {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
@@ -14,19 +14,19 @@
   text-align: left;
   cursor: pointer;
 }
-.row:hover:not(:has(input:disabled)) {
+.amp-checkbox-row:hover:not(:has(input:disabled)) {
   filter: none;
   background: var(--color-surface-sunken);
 }
-.row:has(input:checked) {
+.amp-checkbox-row:has(input:checked) {
   border-color: var(--color-primary);
   background: var(--color-secondary);
 }
-.row:has(input:focus-visible) {
+.amp-checkbox-row:has(input:focus-visible) {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
-.box {
+.amp-checkbox-box {
   display: grid;
   place-items: center;
   width: 24px;
@@ -35,7 +35,7 @@
   border-radius: 7px;
   background: var(--color-surface-raised);
 }
-.box svg {
+.amp-checkbox-box svg {
   fill: none;
   stroke: var(--color-on-primary);
   stroke-width: 2.4;
@@ -43,19 +43,19 @@
   stroke-linejoin: round;
   visibility: hidden;
 }
-.input:checked + .box {
+.amp-checkbox-input:checked + .amp-checkbox-box {
   border-color: var(--color-primary);
   background: var(--color-primary);
 }
-.input:checked + .box svg {
+.amp-checkbox-input:checked + .amp-checkbox-box svg {
   visibility: visible;
 }
-.text {
+.amp-checkbox-text {
   font-size: var(--text-label);
   line-height: 1.45;
 }
 
-.control {
+.amp-checkbox-control {
   position: relative;
   display: inline-grid;
   place-items: center;
@@ -64,7 +64,7 @@
   flex: 0 0 var(--target-size, 44px);
   vertical-align: middle;
 }
-.control .input {
+.amp-checkbox-control .amp-checkbox-input {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -75,21 +75,21 @@
   opacity: 0;
   cursor: pointer;
 }
-.box {
+.amp-checkbox-box {
   pointer-events: none;
   box-sizing: border-box;
 }
-.input:focus-visible + .box {
+.amp-checkbox-input:focus-visible + .amp-checkbox-box {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 3px;
 }
-.input:disabled {
+.amp-checkbox-input:disabled {
   cursor: default;
 }
-.input:disabled + .box {
+.amp-checkbox-input:disabled + .amp-checkbox-box {
   border-style: dashed;
   opacity: 0.6;
 }
-.row:has(input:disabled) {
+.amp-checkbox-row:has(input:disabled) {
   cursor: default;
 }

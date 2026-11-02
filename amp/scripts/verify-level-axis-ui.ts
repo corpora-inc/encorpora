@@ -11,7 +11,7 @@ const entry = dir + "fixture.tsx",
   html = dir + "index.html";
 await writeFile(
   entry,
-  `import React from 'react';import{createRoot}from'react-dom/client';import{LevelAxis,LevelTrack}from'../../src/web/ui/LevelChart';import{gradeName,FrontierMap}from'../../src/web/Home';import{CurriculumDetailsProvider,CurriculumDetailsControl}from'../../src/web/features/curriculum/CurriculumDetails';import{Checkbox}from'../../src/web/ui/Checkbox';import '../../src/web/ui/tokens.css';import '../../src/web/theme.css';
+  `import React from 'react';import{createRoot}from'react-dom/client';import{LevelAxis,LevelTrack}from'../../src/web/ui/LevelChart';import{gradeName,FrontierMap}from'../../src/web/Home';import{CurriculumDetailsProvider,CurriculumDetailsControl}from'../../src/web/features/curriculum/CurriculumDetails';import{Checkbox}from'../../src/web/ui/Checkbox';import '../../src/web/ui/Checkbox.css';import '../../src/web/ui/tokens.css';import '../../src/web/theme.css';
 const scales=[{lo:4,hi:13,center:12},{lo:7,hi:13,center:13},{lo:0,hi:6,center:0},{lo:0,hi:6,center:3},{lo:0,hi:13,center:12}];
 function Confirmation(){const[checked,set]=React.useState(false);return <Checkbox checked={checked} onChange={set}>Confirm example</Checkbox>};
 const frontiers=[0,1,4,12,null];
@@ -157,6 +157,36 @@ try {
                   `age reference ${expected} is placed on its actual scale`,
                 );
             }
+          }
+          // Negative control: the historical centered marker is wrong on a
+          // clamped Kindergarten scale. Use the same measured position check.
+          if (width === 320 && theme === "light") {
+            const marker = page
+              .locator('[data-home-case="0"] .frontier-center')
+              .first();
+            const offset = () =>
+              marker.evaluate(
+                (node) =>
+                  node.getBoundingClientRect().left -
+                  node.parentElement!.getBoundingClientRect().left,
+              );
+            assert.equal(
+              await offset(),
+              0,
+              "clamped lower-edge reference starts at the track edge",
+            );
+            await marker.evaluate(
+              (node) => ((node as HTMLElement).style.left = "50%"),
+            );
+            const wrong = await offset();
+            assert.throws(
+              () => assert.equal(wrong, 0),
+              "the check rejects a centered marker on the lower-edge scale",
+            );
+            await marker.evaluate(
+              (node) => ((node as HTMLElement).style.left = "0%"),
+            );
+            assert.equal(await offset(), 0);
           }
           await preference.focus();
           await page.keyboard.press("Space");
