@@ -10,6 +10,11 @@ import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { gradeName } from "../../Home";
 import { ChoicePicker, type ListboxOption } from "../../ui/Listbox";
 import { SignedInEmail } from "./SignedInEmail";
+import { clearInitialConsentChallenge } from "../../consent-entry";
+import {
+  clearOwnedPurchaseReturn,
+  clearPurchaseReturn,
+} from "../../purchase-return";
 import styles from "./Navigation.module.css";
 function NavIcon({
   kind,
@@ -314,6 +319,9 @@ export default function DrawerContents({
           <button
             disabled={busy}
             onClick={() => {
+              clearInitialConsentChallenge();
+              clearOwnedPurchaseReturn();
+              clearPurchaseReturn();
               setBusy(true);
               setError("");
               void import("../../auth")

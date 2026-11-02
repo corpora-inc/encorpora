@@ -12,6 +12,23 @@ type Case = {
   tags: string[];
 };
 
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const OPENERS: Record<string, string[]> = {
+  "permutation-count": [
+    "A permutation is an arrangement where order matters. Count the choices for the first place, then the second, and so on, and multiply.",
+  ],
+  "combination-count": [
+    "A combination is a selection where order does not matter. Count the ordered arrangements, then divide by the number of ways to order each group.",
+  ],
+  "combination-probability": [
+    "Probability here is favorable selections divided by all possible selections. Count both with combinations, selections where order does not matter.",
+  ],
+  "expected-value": [
+    "The expected value is the long-run average: multiply each possible value by its probability and add the results.",
+  ],
+};
+
 export const combinatoricsTemplates: readonly TemplateMetadata[] = [
   {
     id: "counting-principle",
@@ -712,7 +729,7 @@ export function combinatoricsPrintCase(
       },
     },
     answer: answerText(c.answer),
-    explanation: c.explanation,
+    explanation: [...(OPENERS[id] ?? []), ...c.explanation],
     hint: c.hint,
   };
   // The prompt states every given, so equal prompts are the same case.
