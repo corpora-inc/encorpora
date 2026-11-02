@@ -88,7 +88,7 @@ export const hsStateGapMethods: Record<string, ProblemMethod> = {
   "polar-graph-identify": {
     goal: "Identify a polar curve from its equation, then use the equation to count petals, find the greatest distance, or name its symmetry.",
     intuition:
-      "In polar coordinates a point is a distance $r$ from the pole at an angle $\\theta$. An equation tells how far to go in each direction, so its form reveals the shape: a constant $r$ gives a circle, a trigonometric multiple of $\\theta$ gives a rose, and a constant plus a trigonometric term gives a limaçon.",
+      "In polar coordinates $(r,\\theta)$, you face the angle $\\theta$ and move $r$ units from the pole, the center point; a negative $r$ means moving backward. An equation tells how far to go in each direction, so its form reveals the shape. A constant $r=a$ with $a\\ne0$ gives a circle. $r=a\\sin(n\\theta)$ or $r=a\\cos(n\\theta)$, with a whole number $n\\ge2$ and $a\\ne0$, gives a rose. $r=a+b\\cos\\theta$ or $r=a+b\\sin\\theta$, with $a$ and $b$ positive, gives a limaçon.",
     terms: [
       [
         "polar-coordinates",
@@ -103,12 +103,12 @@ export const hsStateGapMethods: Record<string, ProblemMethod> = {
       "For symmetry, replace $\\theta$ by $-\\theta$ for the polar axis, or by $\\pi-\\theta$ for the line $\\theta=\\frac{\\pi}{2}$. If the equation is unchanged, the graph has that symmetry.",
     ],
     watch:
-      "The coefficient of the trigonometric function sets the size, and the multiplier of $\\theta$ sets the petal count. Do not mix them up, and use distance $|r|$, not $r$.",
+      "In a rose $r=a\\sin(n\\theta)$, the coefficient $a$ sets the petal length, and the multiplier $n$ of $\\theta$ sets the petal count. Do not mix them up, and use the distance $|r|$, not $r$.",
   },
   "cone-section-name": {
     goal: "Use the angle between a cutting plane and the axis of a double cone to name the conic or degenerate section.",
     intuition:
-      "Slicing a double cone with a plane gives different curves depending on how steeply the plane tilts. A level cut gives a circle. Tilting makes an oval. Tilting until the plane is parallel to a side of the cone gives an open curve, and tilting more cuts both halves.",
+      "Slicing a double cone with a plane gives different curves depending on how steeply the plane tilts. A level cut that misses the shared tip gives a circle. Tilting makes an oval. Tilting until the plane is parallel to a side of the cone gives an open curve, and tilting more cuts both halves.",
     terms: [
       "double-cone",
       [
@@ -136,7 +136,7 @@ export const hsStateGapPrinciples: Record<string, string> = {
   "cube-root-equation":
     "The function $x\\mapsto x^3$ is one-to-one on the real numbers, so $u^3=v^3$ exactly when $u=v$. Every real number has exactly one real cube root, and cubing both sides of an equation is reversible.",
   "polar-graph-identify":
-    "A rose $r=a\\cos(n\\theta)$ or $r=a\\sin(n\\theta)$ has $n$ petals if $n$ is odd and $2n$ if $n$ is even. The limaçon $r=a+b\\cos\\theta$ is symmetric about the polar axis; with $\\sin\\theta$ it is symmetric about the line $\\theta=\\frac{\\pi}{2}$.",
+    "For a whole number $n\\ge2$ and $a\\ne0$, a rose $r=a\\cos(n\\theta)$ or $r=a\\sin(n\\theta)$ has $n$ petals if $n$ is odd and $2n$ if $n$ is even. The limaçon $r=a+b\\cos\\theta$ is symmetric about the polar axis; with $\\sin\\theta$ it is symmetric about the line $\\theta=\\frac{\\pi}{2}$.",
   "cone-section-name":
     "For a right circular double cone whose side lines make angle $\\alpha$ with the axis, a plane making angle $\\beta$ with the axis and missing the vertex gives a circle for $\\beta=90^\\circ$, an ellipse for $\\alpha<\\beta<90^\\circ$, a parabola for $\\beta=\\alpha$ and a hyperbola for $\\beta<\\alpha$.",
 };
@@ -454,8 +454,10 @@ export const hsStateGapLessons: Lesson[] = [
     id: "polar-graph-identify",
     title: "Identify polar graphs from equations",
     summary:
-      "The form of a polar equation tells the shape: circle, line, rose or limaçon. The numbers give petals, size and symmetry.",
+      "A polar equation says how far to go, $r$, for each direction, the angle $\\theta$. Its form tells the shape of the graph: a circle, a line, a flower-shaped rose, or a rounded curve called a limaçon, which may have a dent or a loop. The numbers in it give the number of petals, the size and the symmetry.",
     templateIds: ["polar-graph-identify"],
+    senses: { center: "center" },
+    noLink: ["face", "ranges", "leaves", "changes"],
     objectives: [
       "Name a polar curve from its equation.",
       "Count petals and find the greatest distance from the pole.",
@@ -466,7 +468,8 @@ export const hsStateGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Distance as a function of angle",
         paragraphs: [
-          "You need to locate polar points $(r,\\theta)$. A polar equation gives the distance $r$ for each angle $\\theta$. If $r$ is constant the curve is a circle about the pole. If $r$ varies with the angle, the curve bends toward or away from the pole as $\\theta$ turns.",
+          "In polar coordinates $(r,\\theta)$, you face the angle $\\theta$, measured counterclockwise from the positive $x$-axis, and move $r$ units from the center point, called the pole. A negative $r$ means moving $|r|$ units the opposite way. A polar equation gives the value of $r$ for each angle $\\theta$. If $r$ is constant, the curve is a circle about the pole. If $r$ varies with the angle, the curve bends toward or away from the pole as $\\theta$ turns.",
+          "A rose is a curve $r=a\\sin(n\\theta)$ or $r=a\\cos(n\\theta)$, with a whole number $n\\ge2$: its petals reach out and back as the sine or cosine rises and falls. A limaçon is $r=a+b\\sin\\theta$ or $r=a+b\\cos\\theta$, a rounded curve that may have a dent or an inner loop.",
         ],
       },
     ],
@@ -474,8 +477,8 @@ export const hsStateGapLessons: Lesson[] = [
       prompt: "How many petals does $r=4\\sin(3\\theta)$ have?",
       steps: [
         "The equation has the form $r=a\\sin(n\\theta)$ with $n=3$, so it is a rose.",
-        "For odd $n$, a rose has $n$ petals.",
-        "The coefficient 4 is the length of each petal.",
+        "For odd $n$, a rose has $n$ petals. (For even $n$, it has $2n$.)",
+        "The coefficient 4, the number in front, is the length of each petal, the greatest distance from the pole.",
       ],
       answer: "3 petals",
     },
@@ -484,8 +487,8 @@ export const hsStateGapLessons: Lesson[] = [
         stage: "method",
         title: "Read the form of the equation",
         paragraphs: [
-          "Constant $r=a$ is a circle about the pole. $r=a\\cos\\theta$ or $r=a\\sin\\theta$ is a circle through the pole. $\\theta=\\alpha$ is a line through the pole. $r=a\\cos(n\\theta)$ or $r=a\\sin(n\\theta)$ with $n\\ge2$ is a rose. $r=a+b\\cos\\theta$ or $r=a+b\\sin\\theta$ is a limaçon: a cardioid when $a=b$, with an inner loop when $a<b$.",
-          "Sine and cosine stay between $-1$ and $1$, so $r=a+b\\cos\\theta$ ranges from $a-b$ to $a+b$, and the greatest distance from the pole is the largest $|r|$.",
+          "In each form below, the numbers $a$ and $b$ are not 0. Constant $r=a$ is a circle about the pole. $r=a\\cos\\theta$ or $r=a\\sin\\theta$ is a circle through the pole. $\\theta=\\alpha$ is a line through the pole. $r=a\\cos(n\\theta)$ or $r=a\\sin(n\\theta)$ with a whole number $n\\ge2$ is a rose. $r=a+b\\cos\\theta$ or $r=a+b\\sin\\theta$ is a limaçon: a heart-shaped cardioid when $a=b$, and one with an inner loop when $a<b$ (for positive $a$ and $b$).",
+          "Sine and cosine stay between $-1$ and $1$, so for $b>0$, $r=a+b\\cos\\theta$ ranges from $a-b$ to $a+b$, and the greatest distance from the pole is the largest $|r|$.",
         ],
       },
       {
@@ -507,8 +510,10 @@ export const hsStateGapLessons: Lesson[] = [
     id: "cone-section-name",
     title: "Name a conic section cut from a cone",
     summary:
-      "Compare the cutting plane's angle with the side angle of the cone to name the circle, ellipse, parabola or hyperbola.",
+      "Picture two ice-cream cones joined at their tips, and slice through them with a flat sheet, a plane. When the sheet misses the shared tip, the cut edge is a circle, an oval called an ellipse, a U-shaped parabola, or a hyperbola, a curve in two separate pieces. Which one you get depends on how steeply the plane is tilted compared with the cone's sides.",
     templateIds: ["cone-section-name"],
+    senses: { plane: "plane", vertex: "vertex", centers: "center" },
+    noLink: ["edge", "side", "sides", "changes"],
     objectives: [
       "Name the conic from the plane's angle with the axis.",
       "Describe how tilting the plane changes the curve.",
@@ -519,7 +524,8 @@ export const hsStateGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Slicing a double cone",
         paragraphs: [
-          "A double cone is two cones tip to tip, sharing an axis. Every cut by a plane is called a conic section. The curve depends on the plane's angle $\\beta$ with the axis compared with the angle $\\alpha$ between the cone's side and the axis. A steeper plane gives a more open curve.",
+          "A double cone is two cones tip to tip, sharing an axis, the line through both centers. The shared tip is the vertex, and each of the two cones is called a nappe. A plane is a flat surface that goes on forever. The curve where a plane cuts the double cone is called a conic section.",
+          "The curve depends on two angles: $\\beta$ (beta), the plane's angle with the axis, and $\\alpha$ (alpha), the angle between the cone's side and the axis. A plane closer to the direction of the axis, with smaller $\\beta$, gives a more open curve.",
         ],
       },
     ],
@@ -528,7 +534,7 @@ export const hsStateGapLessons: Lesson[] = [
         "A double cone has side angle 40°. A plane missing the vertex makes a 25° angle with the axis. What curve results?",
       steps: [
         "The side angle is $\\alpha=40^\\circ$ and the plane's angle is $\\beta=25^\\circ$.",
-        "Since $\\beta<\\alpha$, the plane is steeper than the sides and cuts both nappes.",
+        "Since $\\beta<\\alpha$, the plane is closer to the axis direction than the sides are, so it cuts both nappes, both cones.",
         "A plane cutting both nappes and missing the vertex gives a hyperbola.",
       ],
       answer: "A hyperbola",
@@ -539,19 +545,19 @@ export const hsStateGapLessons: Lesson[] = [
         title: "Compare two angles",
         paragraphs: [
           "Let $\\alpha$ be the angle between a side line of the cone and its axis, and $\\beta$ the angle between the plane and the axis. Away from the vertex: $\\beta=90^\\circ$ gives a circle, $\\alpha<\\beta<90^\\circ$ an ellipse, $\\beta=\\alpha$ a parabola, and $\\beta<\\alpha$ a hyperbola.",
-          "If the plane passes through the vertex, the section is degenerate: a single point for $\\beta>\\alpha$, one line for $\\beta=\\alpha$, and two intersecting lines for $\\beta<\\alpha$.",
+          "If the plane passes through the vertex, the section is called degenerate, because the curve collapses: a single point for $\\beta>\\alpha$, one line for $\\beta=\\alpha$, and two intersecting lines for $\\beta<\\alpha$.",
         ],
       },
       {
         stage: "formal",
         title: "Why the angles decide",
         paragraphs: [
-          "A plane that meets every side line of one nappe gives a closed curve, so it is an ellipse, or a circle if it is perpendicular to the axis. A plane parallel to exactly one side line misses that line and gives one open branch, a parabola. A plane steeper than the sides meets both nappes and gives two branches, a hyperbola.",
+          "A plane that misses the vertex and meets every side line of one nappe gives a closed curve, so it is an ellipse, or a circle if it is perpendicular to the axis. A plane parallel to exactly one side line misses that line and gives one open branch, a parabola. A plane steeper than the sides meets both nappes and gives two branches, a hyperbola.",
         ],
       },
     ],
     pitfalls: [
-      "Equal angles give a parabola, not an ellipse.",
+      "When the plane misses the vertex, equal angles give a parabola, not an ellipse.",
       "A plane through the vertex gives a point, a line or two lines.",
     ],
     parentGuide:

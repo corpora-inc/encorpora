@@ -109,8 +109,14 @@ export const combinatoricsLessons: Lesson[] = [
     id: "permutation-count",
     title: "Count ordered arrangements",
     summary:
-      "Fill positions one at a time; each position has one fewer option because nothing is used twice.",
+      "An arrangement puts chosen items into positions where order matters, such as first, second and third place in a race. Fill the positions one at a time. Each position has one fewer option than the one before, because no item can be used twice, so multiply the numbers of options.",
     templateIds: ["permutation-count"],
+    senses: {
+      product: "product-multiply",
+      factors: "factor-number",
+      "more than": "more-than",
+    },
+    noLink: ["third", "decreasing"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Recognize when the order or position of chosen items matters.",
@@ -173,8 +179,15 @@ export const combinatoricsLessons: Lesson[] = [
     id: "combination-count",
     title: "Count groups when order does not matter",
     summary:
-      "Count ordered selections, then divide by the number of orders of each group.",
+      "A combination is a group of items chosen where order does not matter, such as a committee of 3 people. Count the ordered selections first, as if positions mattered. Each group was counted once for every order of its members, so divide by that number of orders.",
     templateIds: ["combination-count"],
+    senses: {
+      combination: "combination",
+      combinations: "combination",
+      factor: "factor-number",
+      factors: "factor-number",
+    },
+    noLink: ["decreasing"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Distinguish combinations, where order does not matter, from arrangements.",
@@ -201,7 +214,7 @@ export const combinatoricsLessons: Lesson[] = [
         title: "Notation and checks",
         paragraphs: [
           "The number of groups of $k$ items chosen from $n$ is written $\\binom{n}{k}$ and read “$n$ choose $k$”. For a committee of 4 from 10 students: arrangements 10 × 9 × 8 × 7 = 5040, orders of one committee 4 × 3 × 2 × 1 = 24, and 5040 ÷ 24 = 210 committees.",
-          "Handshakes are pairs: if each of 9 people shakes hands once with every other person, there are 9 × 8 ÷ 2 = 36 handshakes. Choosing who serves also chooses who does not, so choosing 4 of 10 gives the same count as choosing 6 of 10 to leave out. A group count is always a whole number; a fraction signals a missing factor.",
+          "Handshakes are pairs: if each of 9 people shakes hands once with every other person, there are 9 × 8 ÷ 2 = 36 handshakes. Choosing who serves also chooses who does not, so choosing 4 of 10 gives the same count as choosing 6 of 10 to leave out. A group count is always a whole number, so a result that does not simplify to a whole number signals a mistake in the counting.",
         ],
       },
     ],
@@ -237,8 +250,17 @@ export const combinatoricsLessons: Lesson[] = [
     id: "combination-probability",
     title: "Probability by counting groups",
     summary:
-      "Divide the number of favorable groups by the number of all equally likely groups.",
+      "When a group is chosen so that every possible group is equally likely, as when names are drawn from a well-mixed hat, the probability of an event, how likely it is, is the number of groups that fit the event divided by the number of all possible groups. Combinations count both.",
     templateIds: ["combination-probability"],
+    senses: {
+      event: "event",
+      combination: "combination",
+      combinations: "combination",
+      cube: "cube",
+      face: "face-solid",
+      complement: "complement-probability",
+    },
+    noLink: ["change"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Count all equally likely groups and the favorable groups for a random selection.",
@@ -366,6 +388,8 @@ export const combinatoricsLessons: Lesson[] = [
     summary:
       "A game may pay different amounts. Its expected payoff is the average per play over many repetitions: multiply each possible payoff by its chance and add. Subtract the cost of playing to find the expected gain or loss.",
     templateIds: ["expected-value"],
+    senses: { average: "mean-average" },
+    noLink: ["balance"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Calculate an expected payoff as the sum of each payoff times its probability.",
@@ -477,6 +501,7 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
   },
   "combination-probability": {
     goal: "Find the probability of a random selection by counting equally likely groups.",
+    senses: { combinations: "combination" },
     terms: ["probability", "combination"],
     method: [
       "Count all groups of the drawn size.",

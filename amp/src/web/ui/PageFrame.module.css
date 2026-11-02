@@ -125,7 +125,7 @@
 .cardBrandRow .cardBrand {
   margin: 0;
   padding: 0;
-  min-width: 0;
+  min-width: var(--target-size);
   width: auto;
   font-size: 20px;
 }

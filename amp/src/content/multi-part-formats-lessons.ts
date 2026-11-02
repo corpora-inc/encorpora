@@ -11,46 +11,47 @@ const entries: Entry[] = [
     id: "table-rule-sentence",
     title: "Say the rule of a table",
     summary:
-      "Compare each $x$ with its $y$ to find the one operation and number that work for every pair, then say it in a sentence.",
+      "Find the one step, like “times 9”, that turns every $x$ in a table into its $y$. Then say the rule in a sentence.",
     objectives: [
-      "Find the operation and the number that take each $x$ of a table to its $y$.",
+      "Find the operation and the number that turn each $x$ of a table into its $y$.",
       "Tell an additive rule (add or subtract the same number) from a multiplicative rule (multiply or divide by the same number).",
     ],
     intuition:
-      "A table follows a rule when the same operation with the same number turns every $x$ into the $y$ beside it. Try an operation on the first pair, then test it on the other pairs: one pair can fit several rules by chance, but only the true rule fits all of them. An additive rule changes the outputs by the same amount each time $x$ goes up by the same amount; a multiplicative rule changes them by the same factor.",
+      "A table pairs each input $x$ with an output $y$. A rule is one step, an operation with a number, that turns every $x$ into the $y$ beside it. An operation is add, subtract, multiply or divide. Try a step on the first pair, then test it on the others. One pair can fit several steps by chance. The true rule fits every pair. An additive rule adds or subtracts the same number. A multiplicative rule multiplies or divides by the same number.",
+    senses: { rule: "rule", rules: "rule", difference: "difference-subtract" },
     terms: ["additive-rule", "multiplicative-rule"],
     method: [
-      "Look at the first pair and ask what was done to $x$ to get $y$. Try adding, subtracting, multiplying and dividing.",
-      "Test the operation and number on a second and a last pair. Keep a rule only if it fits every pair.",
-      "Choose the words for the operation and the number. 'Increased by' and 'decreased by' are additive; 'multiplied by' and 'divided by' are multiplicative.",
+      "Look at the first pair. Ask what was done to $x$ to get $y$. Try adding, subtracting, multiplying and dividing.",
+      "Test that step on a second pair and on the last pair. Keep it only if it fits every pair.",
+      "Choose the words. “Increased by” and “decreased by” are additive. “Multiplied by” and “divided by” are multiplicative.",
     ],
     watch:
-      "The first $y$ and the gap between two $y$-values are not the number of the rule unless the table starts at 0 or 1; test the number on a pair.",
+      "The first $y$, or the gap between two $y$ values, is the rule's number only in some tables. Test the number on a pair before you trust it.",
     principle:
-      "A table follows the rule $y = x + n$, $y = x - n$, $y = nx$ or $y = \\frac{x}{n}$ when that equation holds for every pair. Several different rules can match one pair, but two different rules of this kind cannot match three pairs with different $x$-values, so a rule that fits all the pairs is the rule.",
+      "In the table with $x$ = 3, 5, 7, 9 and $y$ = 27, 45, 63, 81, every $y$ is 9 times its $x$. So the rule is $y=9x$, which means $y=9\\times x$. A table follows a rule like $y=x+n$, $y=x-n$, $y=n\\times x$ or $y=x\\div n$ when it works for every pair. One pair can fit several rules. But two rules of these kinds that do not always give the same output cannot both fit three pairs with different $x$ values. So a rule that fits all the pairs is the rule.",
     example: {
       prompt:
         "The table has $x$ = 3, 5, 7, 9 and $y$ = 27, 45, 63, 81. Which words complete 'Each $y$ is the $x$ above it ___ ___': 'increased by 24', 'multiplied by 9', 'multiplied by 27' or 'divided by 9'?",
       steps: [
-        "From $x = 3$ to $y = 27$: $3 \\cdot 9 = 27$. Adding would need 24, and dividing 3 by 9 does not give 27.",
-        "Test $5 \\cdot 9 = 45$ and $9 \\cdot 9 = 81$: the rule fits every pair.",
-        "Multiplying by 9 is a multiplicative rule. The number 27 is only the first $y$, not the number of the rule.",
+        "From $x = 3$ to $y = 27$: $3 \\times 9 = 27$. Adding would need 24, and dividing 3 by 9 does not give 27.",
+        "Test the other pairs: $5 \\times 9 = 45$, $7 \\times 9 = 63$ and $9 \\times 9 = 81$. The rule fits every pair, and adding 24 does not: $5 + 24 = 29$, not 45.",
+        "Multiplying by 9 is a multiplicative rule. 27 is only the first $y$, not the rule's number.",
       ],
       answer: "Multiplied by 9.",
     },
     methodTitle: "Check the last pair",
     methodText: [
-      "A rule that fits the first two pairs can still fail later, so test the last pair as well.",
-      "To tell the kinds apart, compare within each pair: for an additive rule $y - x$ is the same number in every pair, and for a multiplicative rule $y \div x$ is the same.",
+      "A rule that fits the first two pairs can still fail later, so test the last pair too.",
+      "To tell the kinds apart, look inside each pair. For an additive rule, $y - x$ is the same in every pair. For a multiplicative rule, $y \\div x$ is the same in every pair where $x$ is not 0.",
     ],
     formal:
-      "If $y = nx$ for all pairs, then $\\frac{y}{x} = n$ is constant; if $y = x + n$, then $y - x = n$ is constant. A table with at least two pairs, distinct $x$-values and $n \\ne 1$ cannot satisfy both, so the constant quotient or difference identifies the kind of rule and its number.",
+      "If $y = n \\times x$ for every pair, then $y \\div x = n$ is the same in every pair where $x$ is not 0. If $y = x + n$, then $y - x = n$ is the same. So the answer to the divide or the subtract that stays the same shows the kind of rule and its number. A divide answer like $\\frac{1}{4}$ means “divided by 4”, and a subtract answer like $-7$ means “decreased by 7”. If the table has at least two different $x$ values, only a table with every $y$ equal to its $x$ fits both kinds.",
     pitfalls: [
-      "Do not take the first $y$ for the number of the rule: in $y = 9x$ with $x = 3$, the first $y$ is 27.",
-      "Do not mix kinds: dividing and multiplying are multiplicative, adding and subtracting are additive.",
+      "Do not take the first $y$ for the rule's number: in $y = 9x$ with $x = 3$, the first $y$ is 27.",
+      "Do not mix the kinds: multiplying and dividing are multiplicative, and adding and subtracting are additive.",
     ],
     parentGuide:
-      "Ask your learner to try 'what did I do to this number to get the one next to it?' on the first row, then on the last row.",
+      "Ask your learner “what did I do to this number to get the one next to it?” on the first row, then on the last row.",
   },
   {
     id: "substitution-match-table",
