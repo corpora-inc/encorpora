@@ -190,9 +190,11 @@ export const feePlan = chainFamily({
         answer: dollars(answerCents),
         hint: `Only the hours after the first ${m.allowance} earn the hourly charge. The booking of ${m.booked} hours has ${m.booked} - ${m.allowance} extra hours, and the total beyond the flat fee is ${dollars(m.total)} - ${dollars(m.flat)}. Use those two to find the charge for one extra hour.`,
         explanation: [
-          `The flat fee covers the first ${m.allowance} hours, so the booking of ${m.booked} hours has $${m.booked}-${m.allowance}=${extra}$ extra hours.`,
-          `The extra hours cost $${dollars(m.total)}-${dollars(m.flat)}=${dollars(m.total - m.flat)}$ dollars, so one extra hour costs $${dollars(m.total - m.flat)}\\div${extra}=${dollars(m.rate)}$ dollars.`,
-          `A booking of ${m.next} hours has $${m.next}-${m.allowance}=${extraNext}$ extra hours, costing $${extraNext}\\times${dollars(m.rate)}=${dollars(m.rate * extraNext)}$ dollars.`,
+          `A flat fee is a fixed charge paid once per booking. Here it is ${money(m.flat)}, and it already covers the first ${m.allowance} hours.`,
+          `Only the hours after the first ${m.allowance} cost extra. The booking of ${m.booked} hours has $${m.booked}-${m.allowance}=${extra}$ extra hours.`,
+          `Take the flat fee out of the total to see what the extra hours cost: $${dollars(m.total)}-${dollars(m.flat)}=${dollars(m.total - m.flat)}$ dollars.`,
+          `Divide by the number of extra hours to get the rate, the charge for one extra hour: $${dollars(m.total - m.flat)}\\div${extra}=${dollars(m.rate)}$ dollars.`,
+          `A booking of ${m.next} hours has $${m.next}-${m.allowance}=${extraNext}$ extra hours. At ${money(m.rate)} each, they cost $${extraNext}\\times${dollars(m.rate)}=${dollars(m.rate * extraNext)}$ dollars.`,
           `Add the flat fee, which every booking pays once: $${dollars(m.flat)}+${dollars(m.rate * extraNext)}=${dollars(answerCents)}$ dollars.`,
           `A booking of ${m.next} hours costs ${dollars(answerCents)} dollars.`,
         ],
@@ -207,10 +209,12 @@ export const feePlan = chainFamily({
         answer: dollars(tb - ta),
         hint: `Find each bank's total separately. For Harbor Bank, the monthly charge of ${money(m.a[0])} repeats ${m.months} times, and the ${m.a[2]} overdraft charges add to that.`,
         explanation: [
+          `Each bank's fees have two parts: a charge paid every month, and a charge for each overdraft. An overdraft happens when a payment takes more money than the account holds.`,
+          `Find each total by multiplying each charge by how many times it happens, then adding.`,
           `Harbor Bank: $${m.months}\\times${dollars(m.a[0])}+${m.a[2]}\\times${dollars(m.a[1])}=${dollars(m.months * m.a[0])}+${dollars(m.a[1] * m.a[2])}=${dollars(ta)}$ dollars.`,
           `Summit Bank: $${m.months}\\times${dollars(m.b[0])}+${m.b[2]}\\times${dollars(m.b[1])}=${dollars(m.months * m.b[0])}+${dollars(m.b[1] * m.b[2])}=${dollars(tb)}$ dollars.`,
-          `Subtract to compare: $${dollars(tb)}-${dollars(ta)}=${dollars(tb - ta)}$.`,
-          `Summit Bank costs ${dollars(tb - ta)} dollar${tb - ta === 100 ? "" : "s"} more.`,
+          `Subtract the smaller total from the larger one to find how much more Summit Bank costs: $${dollars(tb)}-${dollars(ta)}=${dollars(tb - ta)}$.`,
+          `The customer pays ${money(tb - ta)} more in fees at Summit Bank than at Harbor Bank.`,
         ],
         label: "Answer (dollars)",
       });
@@ -224,9 +228,10 @@ export const feePlan = chainFamily({
       answer: time,
       hint: `Find how far it dropped first: ${tenths(m.start)} - ${tenths(m.end)}. Each ${c.unit} of drop takes ${m.per} ${c.time}.`,
       explanation: [
-        `First find how much it changed: start minus end. The drop is $${tenths(m.start)}-${tenths(m.end)}=${tenths(drop)}$ ${c.units}.`,
-        `Each ${c.unit} takes ${m.per} ${c.time}, so the time is $${tenths(drop)}\\times${m.per}=${time}$ ${c.time}.`,
-        `${time} ${c.time} pass.`,
+        `The amount goes down at a constant rate, the same drop for each equal stretch of time: 1 ${c.unit} every ${m.per} ${c.time}.`,
+        `First find the total drop, the start minus the end: $${tenths(m.start)}-${tenths(m.end)}=${tenths(drop)}$ ${drop === 10 ? c.unit : c.units}.`,
+        `Each ${c.unit} of drop takes ${m.per} ${c.time}, so multiply the drop by ${m.per}: $${tenths(drop)}\\times${m.per}=${time}$.`,
+        `So ${time} ${c.time} pass while it goes from ${tenths(m.start)} to ${tenths(m.end)} ${c.units}.`,
       ],
       label: `Answer (${c.time})`,
     });
@@ -288,6 +293,21 @@ function ruleModel(r: (lo: number, hi: number) => number): RuleModel {
 const signed = (n: number) => (n < 0 ? `-${-n}` : `+${n}`);
 const expanded = (slope: number, intercept: number) =>
   `$C=${slope === 1 ? "" : slope}h${intercept === 0 ? "" : signed(intercept)}$`;
+/** The choices are expanded, so multiply out the parentheses and combine. */
+const expandStep = (
+  form: "grouped" | "expanded",
+  flat: number,
+  rate: number,
+  h0: number,
+): string[] =>
+  form === "grouped"
+    ? []
+    : [
+        `The choices have no parentheses, so multiply them out: ${rate} times $h$ is $${rate}h$, and ${rate} times ${h0} is ${rate * h0}.`,
+        flat === rate * h0
+          ? `The flat fee and the subtracted amount are both ${flat}, so they cancel: $${flat}-${rate * h0}=0$. No plain number is left.`
+          : `Combine the plain numbers, the ones without $h$: $${flat}-${rate * h0}=${flat - rate * h0}$.`,
+      ];
 export const feeRule = chainFamily({
   template: feeRuleTemplate,
   axes: ruleAxes,
@@ -311,7 +331,7 @@ export const feeRule = chainFamily({
             ],
             [
               `$C=${rate}(h-${h0})$`,
-              `This leaves out the flat fee of ${F} dollars that every booking pays.`,
+              `This leaves out the flat fee of ${F} dollars that every booking pays. Add it once to the cost of the extra hours.`,
             ],
             [
               `$C=${F}(h-${h0})+${rate}$`,
@@ -319,17 +339,17 @@ export const feeRule = chainFamily({
             ],
             [
               grouped(F, rate, "+"),
-              `The extra hours are the hours beyond ${h0}, so subtract ${h0} from $h$; adding it counts hours that were never booked.`,
+              `The extra hours are the hours beyond ${h0}, so subtract ${h0} from $h$. Adding ${h0} counts hours that were never booked.`,
             ],
           ]
         : [
             [
               expanded(rate, F),
-              `The first ${h0} hours are covered by the flat fee, so only $h-${h0}$ hours earn the rate. Expanding $${rate}(h-${h0})$ moves the intercept to $${F}-${rate * h0}$, not ${F}.`,
+              `The first ${h0} hours are covered by the flat fee, so only $h-${h0}$ hours earn the rate. Multiplying out $${rate}(h-${h0})$ subtracts ${rate * h0}, so the constant term (the number without $h$) is ${F} minus ${rate * h0}, not ${F}.`,
             ],
             [
               expanded(rate, -rate * h0),
-              `This drops the flat fee of ${F} dollars that every booking pays.`,
+              `This drops the flat fee of ${F} dollars that every booking pays. Add it once to the cost of the extra hours.`,
             ],
             [
               expanded(F, rate - F * h0),
@@ -337,7 +357,7 @@ export const feeRule = chainFamily({
             ],
             [
               expanded(rate, F + rate * h0),
-              `Expanding $${rate}(h-${h0})$ subtracts ${rate * h0}, so the intercept is ${F}-${rate * h0}, not a sum.`,
+              `Multiplying out $${rate}(h-${h0})$ subtracts ${rate * h0}, so the constant term (the number without $h$) is ${F} minus ${rate * h0}, not ${F} plus ${rate * h0}.`,
             ],
           ];
     if (m.kind === "stated-rate")
@@ -349,10 +369,12 @@ export const feeRule = chainFamily({
         ],
         hint: `The flat fee of ${F} dollars already covers the first ${h0} hours, so only the hours after that earn ${rate} dollars each. Write the number of extra hours in terms of $h$ first.`,
         explanation: [
-          `The first ${h0} hours are covered by the flat fee, so the extra hours number $h-${h0}$.`,
-          `The extra hours cost ${rate} dollars each: $${rate}(h-${h0})$.`,
-          `Add the flat fee, paid once: $C=${F}+${rate}(h-${h0})$${a["rule-form"] === "expanded" ? `, which expands to $C=${rate}h${signed(F - rate * h0)}$` : ""}.`,
-          `The rule is for bookings of at least ${h0} hours, where $h-${h0}$ is not negative.`,
+          `A flat fee is a fixed charge paid once. Here ${F} dollars covers the first ${h0} hours, so those hours cost nothing more.`,
+          `For a booking of $h$ hours, the extra hours are the ones beyond the first ${h0}. There are $h-${h0}$ of them.`,
+          `Each extra hour costs ${rate} dollars, so the extra hours cost $${rate}(h-${h0})$, which means ${rate} times $h-${h0}$.`,
+          `Add the flat fee once: $C=${F}+${rate}(h-${h0})$.`,
+          ...expandStep(a["rule-form"], F, rate, h0),
+          `So the rule is ${correct}. It works for bookings of at least ${h0} hours, where $h-${h0}$ is not negative.`,
         ],
       });
     const rateFound = rate;
@@ -373,9 +395,13 @@ export const feeRule = chainFamily({
       ],
       hint: `The booking of ${m.booked} hours has ${m.booked} - ${h0} hours beyond the flat fee. Subtract the flat fee ${F} from the total ${m.total}, then divide by that number of extra hours to find the hourly charge.`,
       explanation: [
-        `The booking has $${m.booked}-${h0}=${extra}$ hours beyond the flat fee.`,
-        `The extra hours cost $${m.total}-${F}=${m.total - F}$ dollars, so each costs $${m.total - F}\\div${extra}=${rateFound}$ dollars.`,
-        `For $h$ hours, $C=${F}+${rateFound}(h-${h0})$${a["rule-form"] === "expanded" ? `, which expands to $C=${rateFound}h${signed(F - rateFound * h0)}$` : ""}.`,
+        `A flat fee is a fixed charge paid once. Here ${F} dollars covers the first ${h0} hours, so only later hours cost extra.`,
+        `The booking of ${m.booked} hours has $${m.booked}-${h0}=${extra}$ hours beyond the flat fee.`,
+        `Take the flat fee out of the total: $${m.total}-${F}=${m.total - F}$ dollars pays for those ${extra} extra hours.`,
+        `Divide to find the charge for one extra hour: $${m.total - F}\\div${extra}=${rateFound}$ dollars.`,
+        `For a booking of $h$ hours, there are $h-${h0}$ extra hours, so $C=${F}+${rateFound}(h-${h0})$.`,
+        ...expandStep(a["rule-form"], F, rateFound, h0),
+        `So the rule is ${correct}.`,
       ],
     });
   },
@@ -454,7 +480,7 @@ export const feeBudget = chainFamily({
           },
           {
             label: `$${m.fee}+${m.rate}x${flip}${budget}$`,
-            feedback: `The cost must not go past the budget, so the cost side is the smaller side. This reverses the inequality.`,
+            feedback: `This reverses the inequality sign. The cost must not go past the budget, so the cost side is the smaller side.`,
           },
           {
             label: `$${m.rate}+${m.fee}x${sym}${budget}$`,
@@ -469,8 +495,12 @@ export const feeBudget = chainFamily({
         ],
         hint: `The cost of $x$ ${c.unit} is the ${c.fee} of ${m.fee} plus ${m.rate} for each of the $x$ ${c.unit}. Write that cost as an expression before you compare it with ${budget}.`,
         explanation: [
-          `The cost of $x$ ${c.unit} is the ${c.fee} plus ${m.rate} dollars for each: $${m.fee}+${m.rate}x$.`,
-          `The cost must ${phrase} ${budget} dollars, so the cost is ${strict ? "less than" : "less than or equal to"} the budget: $${m.fee}+${m.rate}x${sym}${budget}$.`,
+          `An inequality compares two amounts with a sign such as $${sym}$, read "${strict ? "is less than" : "is less than or equal to"}".`,
+          `Let $x$ be the number of ${c.unit}. The ${c.fee} of ${m.fee} dollars is paid once, and each ${c.one} adds ${m.rate} dollars, so the cost is $${m.fee}+${m.rate}x$.`,
+          strict
+            ? `"Stay under" means the cost must be less than ${budget} and may not equal it, so use $\\lt$.`
+            : `"Stay at or under" means the cost may equal ${budget} but may not go past it, so use $\\le$.`,
+          `So the inequality is $${m.fee}+${m.rate}x${sym}${budget}$.`,
         ],
       });
     const boundaryText = decimalText(budget, m.rate);
@@ -489,7 +519,7 @@ export const feeBudget = chainFamily({
         },
         {
           label: `$x${sym}${lateText}$`,
-          feedback: `The ${c.fee} uses up part of the budget, so subtract it from ${budget}; adding it raises the limit wrongly.`,
+          feedback: `This adds the ${c.fee} to the budget. The fee uses up part of the budget, so subtract it from ${budget} before dividing.`,
         },
         {
           label: `$x${other}${m.limit}$`,
@@ -500,10 +530,14 @@ export const feeBudget = chainFamily({
       ],
       hint: `Take the ${c.fee} of ${m.fee} dollars out of the ${budget}-dollar budget first. What remains is what ${c.unit} can cost at ${m.rate} dollars ${c.per}.`,
       explanation: [
-        `Write the cost condition: $${m.fee}+${m.rate}x${sym}${budget}$.`,
-        `Subtract ${m.fee} from both sides: $${m.rate}x${sym}${budget - m.fee}$.`,
-        `Divide both sides by ${m.rate}. Dividing by a positive number keeps the inequality sign the same way: $x${sym}${m.limit}$.`,
-        `So the number of ${c.unit} must satisfy $x${sym}${m.limit}$.`,
+        `Let $x$ be the number of ${c.unit}. The cost is the ${c.fee} plus ${m.rate} dollars for each ${c.one}, and it must ${phrase} the budget: $${m.fee}+${m.rate}x${sym}${budget}$.`,
+        `Subtract ${m.fee} from both sides to take out the ${c.fee}. Doing the same to both sides keeps the comparison true: $${m.rate}x${sym}${budget - m.fee}$.`,
+        `Divide both sides by ${m.rate}. Dividing by a positive number keeps the inequality sign pointing the same way: $x${sym}${m.limit}$.`,
+        `Check the boundary: ${m.limit} ${c.unit} cost $${m.fee}+${m.rate}\\times${m.limit}=${budget}$ dollars, exactly the budget.`,
+        strict
+          ? `A total equal to the budget is not under it, so ${m.limit} itself is left out and the sign stays strict.`
+          : `A total equal to the budget is allowed, so ${m.limit} itself is included.`,
+        `So every number of ${c.unit} that fits the budget satisfies $x${sym}${m.limit}$.`,
       ],
     });
   },

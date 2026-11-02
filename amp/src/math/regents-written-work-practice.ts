@@ -151,6 +151,7 @@ const recursion = chainFamily({
       prompt: `A sequence has $a_1=${m.a1}$ and $${ruleTex(m)}$ for $n\\ge2$. Find $a_${m.last}$, showing each term you need. ${task(axes.mode)}`,
       hint: `Each term comes from the one before it. Put $a_1=${m.a1}$ into $${ruleTex(m)}$ to get $a_2$, then put $a_2$ into the rule to get $a_3$. ${m.rule === "double-plus" ? `Double first, then add ${m.k}` : m.rule === "square-plus" ? `Square first, then add ${m.k}` : `Square first, then double and subtract ${m.k}`}.`,
       explanation: [
+        "A recursive rule builds each term from the term before it. Here $a_n$ means term number $n$, and $a_{n-1}$ is the term just before it.",
         ...terms.slice(1).map((t, i) => `$a_${i + 2}=${sub(i + 2)}=${t}$.`),
         `So $a_${m.last}=${terms[m.last - 1]}$.`,
       ],
@@ -228,6 +229,7 @@ const remainder = chainFamily({
       prompt: `Given $f(x)=${fx}$, find the remainder when $f(x)$ is divided by $${divisor}$. ${task(axes.mode)}`,
       hint: `By the remainder theorem, the remainder of dividing by $${divisor}$ is $f$ at the value of $x$ that makes $${divisor}$ zero. Substitute ${x} for $x$ in each term of $f(x)=${fx}$ and keep each sign.`,
       explanation: [
+        "The remainder theorem says: the remainder when a polynomial $f(x)$ is divided by $x - r$ equals $f(r)$, its value at $x = r$. So no long division is needed.",
         `$${divisor}=0$ when $x=${x}$, so the remainder is $f(${x})$.`,
         `$${polyText([a, b, 0, 0]) || "0"}$ at $x=${x}$: $${a}\\cdot${at(x)}^3${b ? `${b < 0 ? "-" : "+"}${Math.abs(b)}\\cdot${at(x)}^2` : ""}=${high}$.`,
         `$${polyText([c, d]) || "0"}$ at $x=${x}$: $${c}\\cdot${at(x)}${d < 0 ? "-" : "+"}${Math.abs(d)}=${low}$.`,
@@ -318,6 +320,7 @@ const addition = chainFamily({
       prompt: `In a survey of ${g.whole}, ${m.a}% ${g.verb} ${g.a}${tail}, ${m.b}% ${g.verb} ${g.b}${tail}, and ${m.both}% ${g.verb} both. Find the percent who ${g.verb} ${m.ask === "either" ? `${g.a} or ${g.b}` : "neither"}. ${task(axes.mode)}`,
       hint: `The ${m.both}% who ${g.verb} both are counted in the ${m.a}% and again in the ${m.b}%. Add the two percents, then take that overlap away once.`,
       explanation: [
+        "People in both groups are counted once in each group's percent. Adding the two percents counts them twice, so take the overlap away once.",
         `$${m.a}+${m.b}=${sum}$, which counts the ${m.both}% in both groups twice.`,
         `$${sum}-${m.both}=${either}$, so ${either}% ${g.verb} ${g.a} or ${g.b}.`,
         ...(m.ask === "neither"
@@ -409,6 +412,7 @@ const rate = chainFamily({
       prompt: `${m.place.noun} ${m.place.be} recorded every ${m.step} years (${table}). Find the average rate of change of the ${m.place.what} per year between ${year(m.from)} and ${year(m.to)}, rounded to the nearest integer. ${task(axes.mode)}`,
       hint: `The average rate of change is the change in the ${m.place.what} divided by the change in years. Use only the values for ${year(m.from)} and ${year(m.to)}, and subtract the earlier from the later.`,
       explanation: [
+        "The average rate of change is the total change divided by the time it took. It gives the change per year, on average.",
         `Change: $${texNum(m.values[m.to]!)}-${texNum(m.values[m.from]!)}=${change < 0 ? "-" : ""}${texNum(Math.abs(change))}$.`,
         `Years: $${year(m.to)}-${year(m.from)}=${years}$.`,
         `Rate: $\\frac{${change < 0 ? "-" : ""}${texNum(Math.abs(change))}}{${years}}=${decimalText(Math.round((change / years) * 1000), 1000)}$ about, which rounds to ${answer} ${m.place.unit} per year.`,
@@ -521,6 +525,7 @@ const budget = chainFamily({
         ? `The total is the amount already earned plus ${money(m.cost)} times $n$, and it must reach ${money(m.limit)}. Subtract what is already earned to see how much is still needed, then decide whether to round up or down.`
         : `The total spent is ${money(m.fee)} plus ${money(m.cost)} times $n$, and it cannot be more than ${money(m.limit)}. Subtract the fixed amount first, then divide by the price and round down.`,
       explanation: [
+        "Write the total as the fixed amount plus the cost or pay for each item, then compare it with the limit. The answer must be a whole number of items.",
         `The total is $${dollarText(m.fee)}+${dollarText(m.cost)}n$, so $${dollarText(m.fee)}+${dollarText(m.cost)}n${rel}${dollarText(m.limit)}$.`,
         `$${dollarText(m.limit)}-${dollarText(m.fee)}=${dollarText(left)}$ dollars, so $${dollarText(m.cost)}n${rel}${dollarText(left)}$.`,
         `Dividing by ${dollarText(m.cost)} gives $n${rel}${(left / m.cost).toFixed(2)}$ to the nearest hundredth. ${m.goal ? "Fewer items fall short of the goal, so the least whole number" : "More items go over the budget, so the greatest whole number"} is ${n}.`,
