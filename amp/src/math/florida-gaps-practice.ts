@@ -484,11 +484,13 @@ function decimalStep(r: Random): Built {
     hint: `${stepText} is 1 ${place.slice(0, -1)}. Find the ${place} digit of ${shownBase} and change it by 1. If that digit is ${more ? "9" : "0"}, regroup with the next place to the left.`,
     explanation: [
       `${stepText} is 1 ${place.slice(0, -1)}, so ${more ? "add" : "subtract"} 1 in the ${place} place of ${shownBase}.`,
-      (stepH === 10 ? d1 : d2) === (more ? 9 : 0)
-        ? more
-          ? `The ${place} digit is 9, so 1 more makes 10 ${place}. Trade those 10 for 1 in the next place to the left, and write 0 in the ${place} place.`
-          : `The ${place} digit is 0, so there is nothing to take 1 from. Trade 1 from the next place to the left for 10 ${place}, then take 1 away, leaving 9.`
-        : `The ${place} digit is ${stepH === 10 ? d1 : d2}, so it becomes ${(stepH === 10 ? d1 : d2) + (more ? 1 : -1)}; the other digits stay the same.`,
+      stepH === 1 && !more && d1 === 0 && d2 === 0
+        ? "The tenths and hundredths digits are both 0. Trade 1 one for 10 tenths, then trade 1 of those tenths for 10 hundredths. Take 1 hundredth away, leaving 9 tenths and 9 hundredths."
+        : (stepH === 10 ? d1 : d2) === (more ? 9 : 0)
+          ? more
+            ? `The ${place} digit is 9, so 1 more makes 10 ${place}. Trade those 10 for 1 in the next place to the left, and write 0 in the ${place} place.`
+            : `The ${place} digit is 0, so there is nothing to take 1 from. Trade 1 from the next place to the left for 10 ${place}, then take 1 away, leaving 9.`
+          : `The ${place} digit is ${stepH === 10 ? d1 : d2}, so it becomes ${(stepH === 10 ? d1 : d2) + (more ? 1 : -1)}; the other digits stay the same.`,
       `${shownBase} ${more ? "+" : "-"} ${stepText} = ${trimmed(answerH)}. The number is ${trimmed(answerH)}.`,
     ],
   };
