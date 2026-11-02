@@ -158,6 +158,13 @@ nav button {
   flex: 0 1 auto;
   min-height: 0;
 }
+/* A narrow ruler needs its numbered ticks at readable size. Keep room for
+   the scrollbar without reserving an extra gutter on the opposite edge. */
+@media (max-width: 380px) {
+  .problem-stage:has(.scene-figure[data-kind="ruler"]) {
+    scrollbar-gutter: stable;
+  }
+}
 /* While a feedback sheet rises above the dock it replaces, the stage scrolls
    that much further: PracticeWorkspace places this spacer below the problem
    at the overlap's height. Out of flow, so a centred problem does not move. */
