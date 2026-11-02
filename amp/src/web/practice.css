@@ -186,6 +186,12 @@ nav button {
 .problem-content .question:focus {
   outline: none;
 }
+/* KaTeX's vertical-list alignment cell extends 2px past its measured formula.
+   Reserve that space when an inline formula wraps at the stage's edge. */
+.problem-content .question > .math:has(.vlist-s) {
+  box-sizing: border-box;
+  padding-inline-end: 2px;
+}
 /* This prompt introduces a separate table after its question. Keep the table
    centered on its own row instead of appending it to the last prose line. */
 .problem-content[data-template="quadratic-from-data"]

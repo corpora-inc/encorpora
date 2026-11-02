@@ -89,12 +89,26 @@ export async function probe(page: Page): Promise<Finding[]> {
       for (const e of root.querySelectorAll("*")) {
         if (!visible(e) || e.closest(".sr-only, .katex-mathml")) continue;
         const r = e.getBoundingClientRect();
-        if ((r.right > innerWidth + 1 || r.left < -1) && !scrollsX(e))
+        // KaTeX stretches radical SVG paths far beyond their glyph viewport,
+        // then clips the tail. Measure that visible paint, not the source path.
+        const tail =
+          e instanceof SVGElement ? e.closest(".katex .hide-tail") : null;
+        const clip =
+          tail && /^(hidden|clip)$/.test(getComputedStyle(tail).overflowX)
+            ? tail.getBoundingClientRect()
+            : null;
+        const left = clip ? Math.max(r.left, clip.left) : r.left;
+        const right = clip ? Math.min(r.right, clip.right) : r.right;
+        if (
+          right > left &&
+          (right > innerWidth + 1 || left < -1) &&
+          !scrollsX(e)
+        )
           found.push({
             kind: "horizontal-overflow",
             selector: name(e),
             text: text(e),
-            detail: `x ${Math.round(r.left)}..${Math.round(r.right)} of ${innerWidth}`,
+            detail: `x ${Math.round(left)}..${Math.round(right)} of ${innerWidth}`,
           });
       }
     /** A control's effective size: its box, or its absolutely placed
