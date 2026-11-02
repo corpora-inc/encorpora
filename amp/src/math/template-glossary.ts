@@ -728,11 +728,11 @@ const glossary: Record<
   "decompose-flat-shape": { senses: { side: "side", sides: "side" } },
   "degree-radian-conversion": {
     senses: {
-      change: "change",
       unit: "unit",
       units: "unit",
       degrees: "degree-angle",
     },
+    noLink: ["change"],
   },
   "density-context": {
     senses: {
@@ -1378,8 +1378,8 @@ const glossary: Record<
     noLink: ["images", "leaves"],
   },
   "graph-after-shift": {
-    senses: { change: "change", unit: "unit", units: "unit", vertex: "vertex" },
-    noLink: ["whole"],
+    senses: { unit: "unit", units: "unit", vertex: "vertex" },
+    noLink: ["change", "whole"],
   },
   "graph-domain-range": {
     senses: { range: "range-function" },
@@ -2927,8 +2927,10 @@ const glossary: Record<
       vertex: "vertex",
       degree: "degree-angle",
       product: "product-multiply",
+      // "square centimeters": a unit square 1 cm by 1 cm.
+      square: "unit-square",
     },
-    noLink: ["mode", "square"],
+    noLink: ["mode"],
   },
   "sat-entry-absolute-equation": {
     senses: {
@@ -3401,7 +3403,8 @@ const glossary: Record<
     noLink: ["opposite", "plane", "whole"],
   },
   "special-angle-match": {
-    senses: { complement: "complement-probability" },
+    // "the cosine of its complement": the angle that makes 90° with it.
+    senses: { complement: "complementary-angles" },
     noLink: ["opposite"],
   },
   "special-right-triangle": {

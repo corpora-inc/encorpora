@@ -193,7 +193,6 @@ const instruction: Record<string, Instruction> = {
       units: "unit",
       center: "center",
       quarter: "fourth",
-      change: "change",
     },
     noLink: ["edge", "multiple"],
     summary:
