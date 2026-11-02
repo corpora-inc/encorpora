@@ -172,16 +172,31 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
     assert 'git diff --no-renames' in detection
     browser = deep['amp-browser']
     assert browser['strategy']['fail-fast'] is False
-    assert browser['strategy']['matrix']['lane'] == "${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('[\"ui-1\", \"ui-2\", \"family\", \"contrast\"]') || fromJSON('[\"selected\"]') }}"
+    assert browser['strategy']['matrix']['lane'] == '${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON(\'["ui-1", "ui-2", "family", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]\') || fromJSON(\'["selected"]\') }}'
     commands = {step['run']: step for step in browser['steps'] if 'run' in step}
     for command, lane in [('npm run test:ui:1', 'ui-1'), ('npm run test:ui:2', 'ui-2'),
                           ('npm run test:family-ui', 'family'),
-                          ('npm run test:contrast', 'contrast'),
                           ('node scripts/run-ci-tests.mjs browser', 'selected')]:
         assert commands[command]['if'] == f"matrix.lane == '{lane}'"
     assert commands['npm run test:native-session']['if'] == "needs.changes.outputs.native == 'true' && (matrix.lane == 'ui-1' || matrix.lane == 'selected')"
     contrast_report = next(step for step in browser['steps'] if step.get('name') == 'Preserve the contrast sweep report')
-    assert contrast_report['if'] == "always() && (matrix.lane == 'contrast' || matrix.lane == 'selected')"
+    assert contrast_report['if'] == "always() && (startsWith(matrix.lane, 'contrast-') || matrix.lane == 'selected')"
+    assert contrast_report['with']['name'] == 'amp-contrast-${{ matrix.lane }}-${{ github.run_attempt }}'
+    contrast = next(step for step in browser['steps'] if step.get('if') == "startsWith(matrix.lane, 'contrast-')")
+    assert contrast['env'] == {'AMP_CONTRAST_LANE': '${{ matrix.lane }}'}
+    assert contrast['run'].strip() == 'pair="${AMP_CONTRAST_LANE#contrast-}"\nnpm run test:contrast -- "--only=${pair/-/:}"'
+    # Exercise the actual shell mapping: all four pairs occur exactly once.
+    matrix = json.loads(re.findall(r"fromJSON\('([^']+)'\)", browser['strategy']['matrix']['lane'])[0])
+    pairs = []
+    for lane in matrix:
+        if not lane.startswith('contrast-'):
+            continue
+        script = contrast['run'].replace('npm run test:contrast -- ', 'printf "%s\\n" ')
+        pair = subprocess.check_output(['bash', '-eu', '-c', script], env={**os.environ, 'AMP_CONTRAST_LANE': lane}, text=True).strip()
+        pairs.append(pair)
+    assert pairs == ['--only=light:390', '--only=light:1280', '--only=dark:390', '--only=dark:1280']
+    assert 'amp-browser' in deep['report']['needs']
+
 
 
 def test_ui_groups_preserve_the_full_ordered_suite_without_duplicates():

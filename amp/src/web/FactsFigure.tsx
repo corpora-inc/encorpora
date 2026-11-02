@@ -1,3 +1,4 @@
+import { count } from "../math/agreement";
 import type { SemanticFigure } from "../math/contracts.js";
 
 export type FactsFigureData = Extract<
@@ -15,7 +16,7 @@ export function FactsFigure({ figure }: { figure: FactsFigureData }) {
       data-kind="ten-frame-pair"
       viewBox="0 0 300 220"
       role="img"
-      aria-label={`Two ten-frames, each with ten places. The first holds ${figure.first} round counters; the second holds ${figure.second} square counters. Other places are empty.`}
+      aria-label={`Two ten-frames, each with ten places. The first holds ${count(figure.first, "round counter")}; the second holds ${count(figure.second, "square counter")}. Other places are empty.`}
     >
       {[0, 1].map((frame) =>
         Array.from({ length: 10 }, (_, index) => {

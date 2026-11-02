@@ -1,3 +1,4 @@
+import { count } from "./agreement";
 import { createHash } from "node:crypto";
 import { geometryScene } from "./geometry-scenes.js";
 import { sceneSchema, type Scene } from "./scene/spec.js";
@@ -96,8 +97,6 @@ function random(id: string, seed: string) {
     return lo + (value % span);
   };
 }
-const count = (n: number, noun: string) =>
-  `${n} ${n === 1 ? noun : `${noun}s`}`;
 const pair = (x: number, y: number) => `(${x}, ${y})`;
 type Choice = { label: string; correct?: true; feedback?: string };
 

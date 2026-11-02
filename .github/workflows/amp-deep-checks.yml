@@ -79,7 +79,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1", "ui-2", "family", "contrast"]') || fromJSON('["selected"]') }}
+        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui-1", "ui-2", "family", "contrast-light-390", "contrast-light-1280", "contrast-dark-390", "contrast-dark-1280"]') || fromJSON('["selected"]') }}
     timeout-minutes: 60
     needs: changes
     if: needs.changes.outputs.browser == 'true'
@@ -162,13 +162,17 @@ jobs:
       - if: matrix.lane == 'family'
         run: npm run test:family-ui
       # Zero contrast violations: every route and state, light and dark, 390 and 1280.
-      - if: matrix.lane == 'contrast'
-        run: npm run test:contrast
+      - if: startsWith(matrix.lane, 'contrast-')
+        env:
+          AMP_CONTRAST_LANE: ${{ matrix.lane }}
+        run: |
+          pair="${AMP_CONTRAST_LANE#contrast-}"
+          npm run test:contrast -- "--only=${pair/-/:}"
       - name: Preserve the contrast sweep report
-        if: always() && (matrix.lane == 'contrast' || matrix.lane == 'selected')
+        if: always() && (startsWith(matrix.lane, 'contrast-') || matrix.lane == 'selected')
         uses: actions/upload-artifact@v4
         with:
-          name: amp-contrast-${{ github.run_attempt }}
+          name: amp-contrast-${{ matrix.lane }}-${{ github.run_attempt }}
           path: amp/artifacts/contrast/
           if-no-files-found: ignore
           retention-days: 7

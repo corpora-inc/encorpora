@@ -313,11 +313,11 @@ def solve_conditions(public):
         verdict = 'many' if sum(int(k[i]) for i in (1, 2, 3)) == 180 else 'none'
     elif k := re.fullmatch(rf'sides of (\d+) ({U}), (\d+) \2 and (\d+) \2', c):
         verdict = 'one' if triangle_exists([int(k[1]), int(k[3]), int(k[4])]) else 'none'
-    elif k := re.fullmatch(rf'sides of (\d+) ({U}) and (\d+) \2 with a (\d+)° angle between them', c):
+    elif k := re.fullmatch(rf'sides of (\d+) ({U}) and (\d+) \2 with an? (\d+)° angle between them', c):
         verdict = 'one' if 0 < int(k[4]) < 180 else 'none'
-    elif k := re.fullmatch(rf'angles of (\d+)° and (\d+)° with a (\d+) {U} side between them', c):
+    elif k := re.fullmatch(rf'angles of (\d+)° and (\d+)° with an? (\d+) {U} side between them', c):
         verdict = 'one' if int(k[1]) + int(k[2]) < 180 else 'none'
-    elif k := re.fullmatch(rf'angles of (\d+)° and (\d+)° and a (\d+) {U} side', c):
+    elif k := re.fullmatch(rf'angles of (\d+)° and (\d+)° and an? (\d+) {U} side', c):
         verdict = 'one' if int(k[1]) + int(k[2]) < 180 else 'none'
     elif k := re.fullmatch(r'two angles of (\d+)° and (\d+)°', c):
         verdict = 'many' if int(k[1]) + int(k[2]) < 180 else 'none'

@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import {
@@ -211,7 +212,7 @@ export const geometricSeriesTotal = chainFamily({
             "This treats every payment as equal to the first. Each payment is larger than the one before, so the total is more than the first payment times the number of payments.",
         },
       ],
-      hint: `A ${m.p}% increase multiplies each payment by ${factor}, so the payments form a geometric sequence with $a_1=${m.a}$ and $r=${factor}$. Add the first ${m.n} terms with the series formula.`,
+      hint: `${article(m.p, true)} ${m.p}% increase multiplies each payment by ${factor}, so the payments form a geometric sequence with $a_1=${m.a}$ and $r=${factor}$. Add the first ${m.n} terms with the series formula.`,
       explanation: [
         `Each payment is ${m.p}% larger than the one before. That keeps 100% and adds ${m.p}%, so each payment is the last one times $${factor}$.`,
         `Payments that multiply by the same number form a geometric sequence. The first term is $a_1=${m.a}$ and the common ratio is $r=${factor}$.`,
@@ -662,7 +663,7 @@ export const depreciationRecursion = chainFamily({
         { label: `$a_1=${m.value},\\ a_n=${ks}\\,a_{n-1}$`, correct: true },
         {
           label: `$a_1=${m.value},\\ a_n=${lose}\\,a_{n-1}$`,
-          feedback: `This uses the percent lost as the factor. Multiplying by ${lose} keeps only ${m.pct}% of the value. After a ${m.pct}% loss, ${100 - m.pct}% remains, so the factor is ${ks}.`,
+          feedback: `This uses the percent lost as the factor. Multiplying by ${lose} keeps only ${m.pct}% of the value. After ${article(m.pct)} ${m.pct}% loss, ${100 - m.pct}% remains, so the factor is ${ks}.`,
         },
         {
           label: `$a_1=${m.value},\\ a_n=${grow}\\,a_{n-1}$`,
@@ -678,7 +679,7 @@ export const depreciationRecursion = chainFamily({
             "This defines $a_n$ from itself. A recursive rule gives each term from the previous term, $a_{n-1}$.",
         },
       ],
-      hint: `After a ${m.pct}% loss, find what share of the value remains. Write that share as a decimal factor and multiply the previous year's value $a_{n-1}$ by it, starting from ${V}.`,
+      hint: `After ${article(m.pct)} ${m.pct}% loss, find what share of the value remains. Write that share as a decimal factor and multiply the previous year's value $a_{n-1}$ by it, starting from ${V}.`,
       explanation: [
         `A recursive rule gives the first term, then says how to get each term from the one before. $a_n$ is the value in year $n$, and $a_{n-1}$ is the value the year before.`,
         `Losing ${m.pct}% leaves $100\\%-${m.pct}\\%=${100 - m.pct}\\%$ of the value. As a decimal that is ${ks}.`,

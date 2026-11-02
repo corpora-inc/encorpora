@@ -1,3 +1,4 @@
+import { count } from "./agreement";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import {
   assemble,
@@ -222,8 +223,6 @@ function choicesFrom(r: Random, correct: string, wrongs: Wrong[], count = 3) {
     chosen.push(pool.splice(r(0, pool.length - 1), 1)[0]!);
   return [{ label: correct, correct: true as const }, ...chosen];
 }
-const count = (n: number, one: string, many = `${one}s`) =>
-  `${n} ${n === 1 ? one : many}`;
 const cap = (s: string) => s[0]!.toUpperCase() + s.slice(1);
 const NAMES = ["Mia", "Sam", "Ana", "Ben", "Dee", "Leo", "Kim", "Noor"];
 const twoNames = (r: Random): [string, string] => {
