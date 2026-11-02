@@ -39,7 +39,7 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
   "sinusoid-parameters": {
     goal: "Read amplitude, period, midline, extreme values or horizontal shift from $y=A\\sin(B(x-h))+k$, or choose the equation of a graph.",
     intuition:
-      "A sinusoid is a wave-shaped graph. The graph of $y=\\sin x$ rises and falls between $-1$ and $1$ and repeats every $2\\pi$; that length is its period. Each number in $y=A\\sin(B(x-h))+k$ changes one feature: $A$ stretches the height (its size $|A|$ is the amplitude), $B$ squeezes the width, $h$ slides the graph sideways and $k$ lifts it, setting the midline $y=k$.",
+      "A sinusoid is a wave-shaped graph. The graph of $y=\\sin x$ rises and falls between $-1$ and $1$ and repeats every $2\\pi$; that length is its period. Each number in $y=A\\sin(B(x-h))+k$ controls one feature: $A$ stretches the height (its size $|A|$ is the amplitude), $B$ squeezes the width, $h$ slides the graph sideways and $k$ lifts it, setting the midline $y=k$.",
     terms: [
       ["amplitude", "In $y=A\\sin(B(x-h))+k$ it is $|A|$."],
       ["midline", "In $y=A\\sin(B(x-h))+k$ it is $y=k$."],
@@ -79,7 +79,7 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "State the range of the inverse function you need.",
-      "Find the reference angle whose function has the size of the given value.",
+      "Find the reference angle: the acute angle whose sine, cosine or tangent has the size of the given value.",
       "Place it in the range: negative arcsin and arctan values give negative angles; arccos of a negative value gives an angle in quadrant II.",
       "For $\\arcsin(\\sin x)$ with $x$ outside the range, first evaluate the inside, then find the angle in the range with that value.",
     ],
@@ -112,12 +112,12 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
   "trig-identity-value": {
     goal: "Use $\\sin^2\\theta+\\cos^2\\theta=1$ with a quadrant, the angle-sum formulas for exact values, or $\\sin x=\\cos\\left(\\frac{\\pi}{2}-x\\right)$.",
     intuition:
-      "An identity is an equation true for every angle. The point $(\\cos\\theta,\\sin\\theta)$ lies on the unit circle, the circle of radius 1, so its coordinates satisfy $x^2+y^2=1$, that is, $\\sin^2\\theta+\\cos^2\\theta=1$. This is called the Pythagorean identity. When two angles are added, the new point is found from the points of the two parts, which gives the angle-sum formulas.",
+      "An identity is an equation true for every angle. The point $(\\cos\\theta,\\sin\\theta)$ lies on the unit circle, the circle of radius 1, so its coordinates satisfy $x^2+y^2=1$, that is, $\\sin^2\\theta+\\cos^2\\theta=1$. This is called the Pythagorean identity. When two angles are added, the new point is found from the points of the two angles, which gives the angle-sum formulas.",
     terms: ["identity-equation", "cofunction-identity"],
     method: [
       "Pythagorean: solve $\\sin^2\\theta+\\cos^2\\theta=1$ for the missing size, take the square root, and choose the sign from the quadrant. Then $\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}$.",
       "Angle sum: write the angle as a sum or difference of special angles and use $\\sin(A\\pm B)=\\sin A\\cos B\\pm\\cos A\\sin B$, $\\cos(A\\pm B)=\\cos A\\cos B\\mp\\sin A\\sin B$.",
-      "Cofunction: $\\sin x=\\cos\\left(\\frac{\\pi}{2}-x\\right)$; subtract from $\\frac{\\pi}{2}$.",
+      "Cofunction: $\\sin x=\\cos\\left(\\frac{\\pi}{2}-x\\right)$. The sine of an angle is the cosine of its complement, the angle that adds with it to $\\frac{\\pi}{2}$.",
     ],
     watch:
       "Taking a square root gives two signs; do not skip the quadrant. In $\\cos(A+B)$ the product terms are subtracted, in $\\sin(A+B)$ they are added.",
@@ -144,7 +144,7 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
     method: [
       "Identify the two sides and the angle between them.",
       "Compute $\\frac12ab\\sin C$ with the exact or rounded value of $\\sin C$.",
-      "To find a side, solve $A=\\frac12ab\\sin C$ for it: multiply by 2, then divide by the other side and $\\sin C$.",
+      "To find a side, solve $\\text{area}=\\frac12ab\\sin C$ for it: multiply by 2, then divide by the other side and $\\sin C$.",
     ],
     watch:
       "An angle and its supplement have the same sine, so an obtuse included angle gives the same area as its acute partner. Use sine, not cosine.",
@@ -237,7 +237,7 @@ export const trigonometryLessons: Lesson[] = [
     [
       "The unit circle is the circle of radius 1 around the origin, the point $(0, 0)$. An angle $\\theta$ (the Greek letter theta) starts on the positive $x$-axis and turns counterclockwise, or clockwise if it is negative. The ray where it stops is called its terminal side. It meets the circle at the point $(\\cos\\theta, \\sin\\theta)$: the cosine is the $x$-coordinate and the sine is the $y$-coordinate. The tangent is $\\tan\\theta = \\tfrac{\\sin\\theta}{\\cos\\theta}$.",
       "Angles are measured in degrees ($^\\circ$), where a full turn is $360^\\circ$, or in radians, where a full turn is $2\\pi$. So $\\pi$ radians is a half turn, $180^\\circ$, and $\\tfrac{\\pi}{6}$ is $30^\\circ$.",
-      "The axes cut the plane into four quadrants, numbered I to IV counterclockwise from the upper right. In quadrant I, drop a line from the point straight down to the $x$-axis. That makes a right triangle with hypotenuse 1, so its legs are the cosine and the sine. In the other quadrants the same triangle appears, flipped, so only the signs change. The acute angle between the terminal side and the $x$-axis is called the reference angle.",
+      "The axes cut the plane into four quadrants, numbered I to IV counterclockwise from the upper right. In quadrant I, drop a line from the point straight down to the $x$-axis. That makes a right triangle whose longest side, the hypotenuse, is the radius 1. Its two shorter sides, the legs, are the cosine and the sine. In the other quadrants the same triangle appears, flipped, so only the signs change. The acute angle between the terminal side and the $x$-axis is called the reference angle.",
       "For the special angles, the triangle's sides are known. In a $30^\\circ$-$60^\\circ$-$90^\\circ$ triangle with hypotenuse 1, the short leg is $\\tfrac{1}{2}$ and the long leg is $\\tfrac{\\sqrt{3}}{2}$. In a $45^\\circ$-$45^\\circ$-$90^\\circ$ triangle with hypotenuse 1, both legs are $\\tfrac{\\sqrt{2}}{2}$.",
     ],
     {
@@ -355,7 +355,7 @@ export const trigonometryLessons: Lesson[] = [
       "From the equation: amplitude $|A|$, midline $y = k$, period $\\tfrac{2\\pi}{B}$. For the shift, take $B$ out of the bracket and read the number subtracted from $x$. The highest value, the maximum, is $k + |A|$, and the lowest, the minimum, is $k - |A|$.",
       "From a graph: the highest and lowest points give the midline, halfway between them, and the amplitude, half their distance. Measure one cycle for the period, then $B = \\tfrac{2\\pi}{\\text{period}}$. To choose the sign of $A$, see whether the curve rises or falls from the midline at $x = 0$.",
     ],
-    "Why a full turn is divided by the frequency factor",
+    "Where the period formula comes from",
     [
       "The sine repeats when its input grows by $2\\pi$. The input is $B(x - h)$, so $x$ must grow by an amount $\\Delta x$ (read “delta $x$”, a change in $x$) with $B\\,\\Delta x = 2\\pi$. That gives the period $\\tfrac{2\\pi}{B}$. Replacing $x$ by $x - h$ moves every point $h$ units right.",
     ],
@@ -391,7 +391,7 @@ export const trigonometryLessons: Lesson[] = [
       ],
       answer: "$\\frac{\\pi}{6}$",
     },
-    "Find the angle in the range",
+    "Find the angle in the interval",
     [
       "Find the reference angle, the acute angle whose value has the right size, then use the interval to place it. For $\\arcsin$ and $\\arctan$, a negative value gives the negative of the reference angle. For $\\arccos$, a negative value gives $\\pi$ minus the reference angle.",
       "For $\\arcsin(\\sin x)$, $\\arccos(\\cos x)$ or $\\arctan(\\tan x)$ with $x$ outside the interval, work out the inside first, then apply the inverse. For $\\cos(\\arcsin v)$, find the angle in the interval first, then take its cosine.",
@@ -405,7 +405,7 @@ export const trigonometryLessons: Lesson[] = [
       "$\\arccos$ never gives a negative angle.",
       "$\\arcsin$ and $\\arctan$ never give angles in quadrants II or III, the left half of the circle.",
     ],
-    "Ask the learner to say the allowed interval aloud before every inverse evaluation.",
+    "Ask the learner to say the allowed interval aloud before working out any $\\arcsin$, $\\arccos$ or $\\arctan$.",
     {
       senses: {
         inverse: "inverse-function",
@@ -466,7 +466,7 @@ export const trigonometryLessons: Lesson[] = [
   lesson(
     "trig-identity-value",
     "Identities and angle sums",
-    "An identity is an equation that is true for every angle. Because the point $(\\cos\\theta, \\sin\\theta)$ is on a circle of radius 1, its coordinates satisfy $\\cos^2\\theta + \\sin^2\\theta = 1$. That gives a missing sine or cosine from the other one. The angle-sum formulas give exact values at new angles, such as $75^\\circ = 45^\\circ + 30^\\circ$.",
+    "An identity is an equation that is true for every angle. Because the point $(\\cos\\theta, \\sin\\theta)$ is on a circle of radius 1, its coordinates satisfy $\\cos^2\\theta + \\sin^2\\theta = 1$. That gives the size of a missing sine or cosine from the other one. The angle-sum formulas give exact values at new angles, such as $75^\\circ = 45^\\circ + 30^\\circ$.",
     [
       "Find a missing sine, cosine or tangent from one value and the quadrant.",
       "Use the angle-sum and difference formulas to find exact values at new angles.",
@@ -482,7 +482,7 @@ export const trigonometryLessons: Lesson[] = [
       steps: [
         "$75^\\circ$ is not a special angle, but it is a sum of two: $75^\\circ = 45^\\circ + 30^\\circ$.",
         "Use the angle-sum formula $\\sin(A + B) = \\sin A\\cos B + \\cos A\\sin B$ with $A = 45^\\circ$ and $B = 30^\\circ$, because we know both angles' sines and cosines.",
-        "Put in the values: $\\sin 75^\\circ = \\tfrac{\\sqrt{2}}{2} \\times \\tfrac{\\sqrt{3}}{2} + \\tfrac{\\sqrt{2}}{2} \\times \\tfrac{1}{2} = \\tfrac{\\sqrt{6}}{4} + \\tfrac{\\sqrt{2}}{4}$. Each product's bottom is $2 \\times 2 = 4$.",
+        "Put in the values: $\\sin 75^\\circ = \\tfrac{\\sqrt{2}}{2} \\times \\tfrac{\\sqrt{3}}{2} + \\tfrac{\\sqrt{2}}{2} \\times \\tfrac{1}{2} = \\tfrac{\\sqrt{6}}{4} + \\tfrac{\\sqrt{2}}{4}$. Each product's denominator, its bottom number, is $2 \\times 2 = 4$.",
         "Check with a calculator: $\\sin 75^\\circ \\approx 0.966$, and $\\tfrac{2.449 + 1.414}{4} \\approx 0.966$.",
       ],
       answer: "$\\frac{\\sqrt6+\\sqrt2}{4}$",
@@ -499,7 +499,7 @@ export const trigonometryLessons: Lesson[] = [
     [
       "A square root gives two possible signs: choose it from the quadrant.",
       "$\\cos(A + B)$ subtracts the product of the sines.",
-      "When multiplying fractions, the bottoms multiply: $2 \\times 2 = 4$.",
+      "When multiplying fractions, the denominators multiply: $2 \\times 2 = 4$.",
     ],
     "Ask the learner to decide the sign of the answer from the quadrant before working it out.",
     {
@@ -540,10 +540,10 @@ export const trigonometryLessons: Lesson[] = [
     },
     "Pick the law, then check",
     [
-      "An angle and the side across from it are known: use the law of sines. Two sides and the angle between them: use the law of cosines for the third side. Three sides: use the law of cosines to find an angle. With two sides and an angle that is not between them, first work out $h = b\\sin A$, the shortest distance from the far corner to the other side, and compare it with $a$.",
+      "An angle and the side across from it are known: use the law of sines. Two sides and the angle between them: use the law of cosines for the third side. Three sides: use the law of cosines to find an angle. With two sides and an angle that is not between them, first work out $h = b\\sin A$, the shortest distance from corner $C$ to the line along side $c$, and compare it with $a$.",
       "For an acute $A$ (less than $90^\\circ$): if $a < h$ there is no triangle, if $a = h$ one right triangle, if $h < a < b$ two triangles, and if $a$ is at least $b$, one. For an obtuse $A$ (more than $90^\\circ$): one triangle when $a > b$, otherwise none.",
     ],
-    "Why the case analysis works",
+    "Why there can be two triangles",
     [
       "Side $a$ must reach the line along the other side of angle $A$. The shortest distance from corner $C$ to that line is $h = b\\sin A$. When $a$ is between $h$ and $b$, a circle of radius $a$ around $C$ meets the line at two points, so two different triangles fit.",
     ],
