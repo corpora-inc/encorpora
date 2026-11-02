@@ -329,7 +329,7 @@ export const measurementEntries: GlossaryEntry[] = [
     term: "number sentence",
     forms: ["number sentence", "number sentences"],
     plain:
-      "Numbers and signs that make a true statement. A box or a letter can stand for a missing number.",
+      "Numbers and signs that make a statement, such as 8 + 5 = 13. It can be true or false. A box can stand for a missing number.",
     example: "8 + 5 = 13 and $\\square + 120 = 340$ are number sentences.",
     uses: [],
     band: "1",

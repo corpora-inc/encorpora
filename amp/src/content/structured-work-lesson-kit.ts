@@ -20,6 +20,10 @@ export type WorkEntry = {
   formal: string;
   pitfalls: string[];
   parentGuide: string;
+  /** Practice-screen task line (<= 140 characters); defaults to the summary. */
+  goal?: string;
+  /** Intuition sections the reference lesson shows before "What the work shows". */
+  background?: { title: string; paragraphs: string[] }[];
   /** Glossary senses and unlinked words for the lesson, method and hints. */
   senses?: GlossarySenses;
   noLink?: string[];
@@ -30,7 +34,7 @@ export function workContent(entries: readonly WorkEntry[]) {
     entries.map((e) => [
       e.id,
       {
-        goal: e.summary,
+        goal: e.goal ?? e.summary,
         intuition: e.intuition,
         terms: e.terms,
         method: e.method,
@@ -50,6 +54,11 @@ export function workContent(entries: readonly WorkEntry[]) {
     templateIds: [e.id],
     objectives: [...e.objectives],
     sections: [
+      ...(e.background ?? []).map((s) => ({
+        stage: "intuition" as const,
+        title: s.title,
+        paragraphs: s.paragraphs,
+      })),
       {
         stage: "intuition",
         title: "What the work shows",

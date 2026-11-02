@@ -208,6 +208,8 @@ async function serve(page: Page, state: State, faults: string[]) {
       return route.fulfill({ json: { recorded: true } });
     }
     if (path === "/me") return route.fulfill({ json: me(state) });
+    if (path === "/trials/current")
+      return route.fulfill({ json: { trial: null } });
     if (path === "/billing/offer")
       return route.fulfill({
         json: { available: true, offer: offers[0], offers },
@@ -292,6 +294,8 @@ async function serve(page: Page, state: State, faults: string[]) {
     // First-party funnel beacons (verified in verify-funnel-ui).
     if (path === "/events")
       return route.fulfill({ status: 202, json: { accepted: 1 } });
+    if (path === "/events/context")
+      return route.fulfill({ json: { generation: "initial" } });
     // The practice screen loads after the flow ends; it is not under test here.
     if (["/catalog", "/books"].includes(path) || path.startsWith("/learners/"))
       return route.fulfill({ status: 503, json: { error: "fixture_end" } });
