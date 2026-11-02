@@ -21,8 +21,8 @@ export const GlossaryContext = createContext<GlossaryValue | null>(null);
 
 /** A run of texts (a list of steps, a section) that links only the first
  * use of each term: `first` maps a term to the index of the text that links
- * it. MathText links only inside a block, so prompts, choices and answers
- * stay plain. */
+ * it. MathText links only inside a block, so a live problem's prompt,
+ * choices and answer stay plain; a lesson's worked example is a block. */
 export type GlossaryBlockValue = {
   texts: readonly string[];
   first: ReadonlyMap<TermId, number>;
