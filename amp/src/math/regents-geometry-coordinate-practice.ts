@@ -471,9 +471,9 @@ export const dilationLineImage = chainFamily({
       ],
       hint: `The point $(0,\\ ${m.b})$ lies on $\\ell$. A dilation multiplies its distance from the origin by the scale factor $${scaleText}$. Find where that point lands.`,
       explanation: [
-        `A dilation resizes a figure from a fixed point, the center. Every point moves along a line from the center, and its distance from the center is multiplied by the scale factor.`,
+        `A dilation resizes a figure from a fixed point, the center. Each distance from the center is multiplied by the scale factor, and each other point moves along the line from the center through it.`,
         `The line crosses the $y$-axis at $(0,\\ ${m.b})$, its $y$-intercept. Multiply its distance from the origin by $${scaleText}$: it moves to $(0,\\ ${img})$.`,
-        `A dilation changes sizes but not directions, so the image of a line is parallel to it. The slope, the steepness, stays $${m.m}$.`,
+        `This line misses the origin, and a dilation changes sizes but not directions, so its image is a parallel line. The slope, the steepness, stays $${m.m}$.`,
         `A line with slope $${m.m}$ through $(0,\\ ${img})$ has $y$-intercept ${img}.`,
         `The image of $\\ell$ is ${eq(m.m, img)}.`,
       ],

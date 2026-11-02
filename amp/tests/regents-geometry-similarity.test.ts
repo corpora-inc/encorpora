@@ -73,6 +73,12 @@ test("parallel perimeter", () => {
     const perimeter = AB + len("DE") * k + len("AE") * k;
     assert.equal(Number(p.answer), perimeter);
     assert.ok(Number.isInteger(perimeter));
+    // The small triangle ADE must be a real triangle.
+    const [x, y, z] = [AD, len("DE"), len("AE")].sort((a, b) => a - b);
+    assert.ok(
+      x! + y! > z!,
+      `${s}: ADE sides ${AD}, ${len("DE")}, ${len("AE")}`,
+    );
   }
 });
 

@@ -440,7 +440,7 @@ function legs(a: Point, b: Point) {
   return {
     dx,
     dy,
-    text: `The horizontal leg is the change in $x$: ${n(Math.max(a.x, b.x))} − ${Math.min(a.x, b.x) < 0 ? `(${n(Math.min(a.x, b.x))})` : n(Math.min(a.x, b.x))} = ${dx}. The vertical leg is the change in $y$: ${n(Math.max(a.y, b.y))} − ${Math.min(a.y, b.y) < 0 ? `(${n(Math.min(a.y, b.y))})` : n(Math.min(a.y, b.y))} = ${dy}.`,
+    text: `Each leg is as long as the larger coordinate minus the smaller. The horizontal leg uses the $x$-coordinates: ${n(Math.max(a.x, b.x))} − ${Math.min(a.x, b.x) < 0 ? `(${n(Math.min(a.x, b.x))})` : n(Math.min(a.x, b.x))} = ${dx}. The vertical leg uses the $y$-coordinates: ${n(Math.max(a.y, b.y))} − ${Math.min(a.y, b.y) < 0 ? `(${n(Math.min(a.y, b.y))})` : n(Math.min(a.y, b.y))} = ${dy}.`,
   };
 }
 const triples = [
