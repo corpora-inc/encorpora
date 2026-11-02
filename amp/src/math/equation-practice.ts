@@ -1216,7 +1216,8 @@ function relationFeedback(chosen: Relation, op: Relation, said: string) {
   return `This points the wrong way: “${said}” describes values ${pointsRight(op) ? "greater" : "less"} than the boundary, so use ${op}.`;
 }
 
-function contextCase(r: Random): Case {
+/** `retired` replays the archived inequality-from-context text unchanged. */
+function contextCase(r: Random, retired = false): Case {
   const cond = pick(r, conditions);
   const c = r(cond.low, cond.high);
   const v = cond.v,
@@ -1234,9 +1235,15 @@ function contextCase(r: Random): Case {
     label: "Choose the inequality",
     candidates,
     explanation: [
-      `An inequality uses a sign such as $<$ (less than), $>$ (greater than), $\\le$ (at most) or $\\ge$ (at least) to describe many values at once.`,
+      ...(retired
+        ? []
+        : [
+            `An inequality uses a sign such as $<$ (less than), $>$ (greater than), $\\le$ (at most) or $\\ge$ (at least) to describe many values at once.`,
+          ]),
       `The condition “${cond.quote(c)}” describes values ${words[op]} ${int(c)}. On a number line they lie ${pointsRight(op) ? "to the right of" : "to the left of"} ${int(c)}, and ${int(c)} itself is ${inclusive(op) ? "allowed" : "not allowed"}.`,
-      `So the inequality is $${v} ${({ "<": "<", ">": ">", "≤": "\\le", "≥": "\\ge" } as Record<string, string>)[op] ?? op} ${int(c)}$.`,
+      retired
+        ? `So ${v} ${op} ${int(c)}.`
+        : `So the inequality is $${v} ${({ "<": "<", ">": ">", "≤": "\\le", "≥": "\\ge" } as Record<string, string>)[op] ?? op} ${int(c)}$.`,
     ],
     hint: `The condition is “${cond.quote(c)}”. Does it allow values greater or less than ${int(c)}, and does it allow ${int(c)} itself?`,
     tags: [cond.key, `operator:${op}`, c < 0 ? "negative" : "nonnegative"],
@@ -1499,7 +1506,7 @@ const builders: Record<string, (r: Random) => Case> = {
   "two-step-equation-model": twoStepModelCase,
   "balance-two-step": (r) => balanceCase(r, true),
   "inequality-context-bound": contextCase,
-  "inequality-from-context": contextCase,
+  "inequality-from-context": (r) => contextCase(r, true),
   "inequality-from-number-line": numberLineReadCase,
   "inequality-number-line-choice": numberLineChoiceCase,
   "inequality-solution-set": solutionSetCase,

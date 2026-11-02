@@ -443,7 +443,7 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         `The letter $${v}$ stands for the number of ${units}, which we do not know yet.`,
         `Each ${unit} costs ${rate} dollars, so $${v}$ ${units} cost ${rate} times $${v}$, written $${rate}${v}$.`,
         `The ${fee ? "fixed fee" : "discount"} of ${one} dollars happens once, whatever $${v}$ is, so it is ${fee ? "added to" : "subtracted from"} $${rate}${v}$, not multiplied.`,
-        `The group pays ${total} dollars in all, so the equation is $${axes.form === "expression-first" ? `${rate}${v}${fee ? "+" : "-"}${one}=${total}` : `${total}=${rate}${v}${fee ? "+" : "-"}${one}`}$.`,
+        `The total is ${total} dollars, so the equation is $${axes.form === "expression-first" ? `${rate}${v}${fee ? "+" : "-"}${one}=${total}` : `${total}=${rate}${v}${fee ? "+" : "-"}${one}`}$.`,
       ],
     });
   }),
@@ -961,8 +961,8 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         hint: `The price of one pair is the ${show(total)} dollars shared equally among the ${count} pairs. Decide which number is divided and which number it is divided by.`,
         explanation: [
           `A unit price is the cost of one item. Every pair costs the same, so share the total equally.`,
-          `Divide the total cost by the number of items: ${show(total)} dollars $\\div$ ${count} pairs.`,
-          `$${show(total)}\\div ${count}=${show(u)}$, so one pair costs ${show(u)} dollars.`,
+          `Divide the total cost by the number of pairs: $${show(total)}\\div ${count}=${show(u)}$.`,
+          `One pair costs ${show(u)} dollars.`,
         ],
       });
     },
@@ -1101,13 +1101,12 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         label: "Choose the rule for each transformation",
         slots,
         hint: `Test a point such as $(${probe[0]}, ${probe[1]})$. Where does ${slots[0]!.label.replace("The rule for ", "")} send it, and which rule gives that image?`,
-        explanation: [
-          `A rule $(x, y)\\to(\\ldots)$ says where each point lands. Testing one point, such as $(${probe[0]}, ${probe[1]})$, shows which rule fits.`,
-          ...slots.map((s) => {
-            const name = s.label.replace("The rule for ", "");
-            return `${name[0]!.toUpperCase()}${name.slice(1)} gives $(x, y)\\to ${s.correct.replaceAll("$", "")}$.`;
-          }),
-        ],
+        // One line per transformation (the oracle checks the count); the
+        // first line also says what a rule is.
+        explanation: slots.map((s, i) => {
+          const name = s.label.replace("The rule for ", "");
+          return `${i === 0 ? `A rule $(x, y)\\to(\\ldots)$ says where each point lands; testing one point, such as $(${probe[0]}, ${probe[1]})$, shows which rule fits. ` : ""}${name[0]!.toUpperCase()}${name.slice(1)} gives $(x, y)\\to ${s.correct.replaceAll("$", "")}$.`;
+        }),
       });
     },
   ),
