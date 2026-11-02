@@ -27,7 +27,7 @@ import {
 import { SceneFigure } from "../web/scene/SceneFigure";
 import { PrintMathText, printMathStyles } from "./PrintMathText";
 
-/** One printed exercise, shared by lesson workbooks and daily workbooks: the
+/** One printed exercise, shared by lesson workbooks and workbooks for a learner: the
  * prompt, its figure and the paper form of its response. Solutions show the
  * worked steps and answer; otherwise `workspace` (ruled lines by default)
  * gives room to work. Lesson editions depend on this markup byte for byte. */
@@ -109,7 +109,7 @@ function PrintMultiPart({
 }: {
   response: MultiPartChoiceResponse;
   answer?: string;
-  /** Daily workbooks: drawn boxes in an aligned grid of options. Lesson
+  /** Workbooks: drawn boxes in an aligned grid of options. Lesson
    * editions keep the glyph markup byte for byte. */
   drawnBoxes?: boolean;
 }) {
