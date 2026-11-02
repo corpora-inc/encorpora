@@ -129,8 +129,21 @@ export const assessmentGapLessons: Lesson[] = [
     id: "margin-of-error-interval",
     title: "An estimate with room on each side",
     summary:
-      "A population is the whole group; a sample observes part of it. A margin of error gives a distance on either side of the sample estimate for the population quantity.",
+      "A survey usually asks only some people, a sample, about a larger group, the population. A different random sample would give a slightly different answer. The margin of error is a distance on either side of the sample's estimate, and the true population value is likely within that range.",
     templateIds: ["margin-of-error-interval"],
+    senses: {
+      sample: "sample",
+      population: "population",
+      interval: "interval",
+      intervals: "interval",
+      difference: "difference-subtract",
+      differences: "difference-subtract",
+      unit: "unit",
+      units: "unit",
+      mean: "mean-average",
+      parameter: "parameter",
+    },
+    noLink: ["side", "range", "whole", "part"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Build a symmetric interval from an estimate and its margin of error.",
@@ -174,9 +187,9 @@ export const assessmentGapLessons: Lesson[] = [
       prompt:
         "A random survey estimates support at 60%, with a margin of error of 4 percentage points. What interval does this give?",
       steps: [
-        "Lower endpoint: 60 − 4 = 56%.",
-        "Upper endpoint: 60 + 4 = 64%.",
-        "The estimate 60% lies halfway between the endpoints.",
+        "The margin of error is a distance on both sides of the estimate, so subtract it for the lower end: 60% − 4 percentage points = 56%.",
+        "Add it for the upper end: 60% + 4 percentage points = 64%.",
+        "Check: the estimate 60% lies halfway between the endpoints. The interval is the range of likely values for the true support, not a guarantee.",
       ],
       answer: "56% to 64%",
     },

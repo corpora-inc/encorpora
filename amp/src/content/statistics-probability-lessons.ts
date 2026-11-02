@@ -5,21 +5,21 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
   "normal-model-rule": {
     goal: "Given a normal model, find a percent for a region or an interval for a percent, compare by $z$-score, or decide if the model fits.",
     intuition:
-      "The standard deviation (SD) is a typical distance from the mean. For data that are symmetric with one peak, fixed shares lie within 1, 2 and 3 standard deviations of the mean: about 68%, 95% and 99.7%. This is the 68–95–99.7 rule.",
+      "The standard deviation (SD) is a typical distance from the mean. For data that follow a normal model, a bell-shaped curve, fixed shares lie within 1, 2 and 3 standard deviations of the mean: about 68%, 95% and 99.7%. This is the 68–95–99.7 rule.",
     terms: ["normal-distribution", "z-score", "tail"],
     method: [
       "Convert each boundary to a number of standard deviations from the mean: subtract the mean and divide by the SD.",
       "Sketch the bell curve and shade the region. The curve is symmetric, so the shares on the two sides of the mean match.",
       "Use 34%, 13.5% and 2.35% for the strips between 0–1, 1–2 and 2–3 SDs on one side, or use the symmetric 68%, 95% and 99.7% and split the outside share between two tails.",
-      "To compare values from different data sets, compare their $z$-scores: the larger $z$-score is farther above its own mean.",
+      "To compare values from different data sets, compare their $z$-scores: the larger $z$-score is higher relative to its own data, in standard deviations.",
     ],
     watch:
-      "Percent outside the interval is split between two tails, so one tail holds half of it. Also check the shape first: skewed data or data with two peaks should not be given a normal model.",
+      "For an interval centered on the mean, the percent outside is split equally between the two tails, so one tail holds half of it. Also check the shape first: skewed data or data with two peaks should not be given a normal model.",
   },
   "random-variable-distribution": {
     goal: "Define a numerical random variable, find probabilities of its values, read its distribution from a chart and complete a distribution.",
     intuition:
-      "A random variable gives each outcome of a chance experiment a number, such as the number of heads in three tosses. Its probability distribution lists every possible value with the probability of that value. The probabilities add to 1.",
+      "A random variable gives each outcome of a chance experiment a number, such as the number of heads in three tosses. Its probability distribution lists every possible value with the probability of that value. When the values can be listed, the probabilities add to 1.",
     terms: [
       "random-variable",
       "probability-distribution",
@@ -112,7 +112,7 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
       "To repair an unfair split, discard (re-roll) the outcomes that do not fit evenly.",
     ],
     watch:
-      "Adding two dice or counting heads gives values that are not equally likely. Dividing by a number that does not divide the outcomes evenly gives some people more outcomes.",
+      "Adding two dice, or counting heads in two or more tosses, gives values that are not equally likely. Dividing by a number that does not divide the outcomes evenly gives some people more outcomes.",
   },
   "simulation-consistency-check": {
     goal: "Use a chart of simulated results to find the fraction at least as extreme as an observed result and decide if the model is consistent.",
@@ -171,7 +171,7 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
     method: [
       "Who was counted: a random sample from the whole group, or people who volunteered or were convenient?",
       "How many: is the sample large enough for a stable estimate?",
-      "How precise: is a margin of error given, and is the reported difference larger than it?",
+      "How precise: is a margin of error given, and is the lead larger than about twice it?",
       "How shown: does a bar chart's axis start at zero? Name each check that fails; a report can fail more than one.",
     ],
     watch:
@@ -180,11 +180,11 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
   "model-residual-conclusion": {
     goal: "Read residuals to choose the justified conclusion: a curved pattern, no pattern, an extrapolation or which of two models fits better.",
     intuition:
-      "A residual is observed minus predicted. A model that suits the data leaves small residuals with no pattern. A shape in the residuals shows the model has the wrong form, and a prediction far outside the data is not supported by the fit.",
+      "A residual is observed minus predicted. A model that suits the data leaves small residuals with no pattern. A clear shape in the residuals suggests the model has the wrong form, such as a line for curved data. A prediction far outside the data is not supported by the fit.",
     terms: ["residual", "extrapolation", "sum-of-squared-residuals"],
     method: [
       "Compute or read each residual, keeping its sign.",
-      "Look at the order of the signs: random switching is fine, but a run such as positive, negative, positive suggests curvature.",
+      "Look at the order of the signs: switching with no pattern is fine, but a stretch of positives, then negatives, then positives suggests curvature.",
       "To compare models, square the residuals before adding, so that positive and negative residuals cannot cancel.",
       "Compare the input being predicted with the range of the data. Outside that range, the fit gives no evidence.",
     ],
@@ -201,7 +201,7 @@ export const statisticsProbabilityPrinciples: Record<string, string> = {
   "theoretical-distribution-expectation":
     "The expected value of a discrete random variable is $E(X)=\\sum xP(X=x)$. For $k$ successes in $n$ independent trials with success probability $p$, $P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}$ and $E(X)=np$.",
   "empirical-distribution-expectation":
-    "From $N$ observations, the relative frequency $f_x/N$ estimates $P(X=x)$, and $\\sum x\\,(f_x/N)=(\\sum xf_x)/N$ estimates $E(X)$. For $M$ future trials the expected total is $M$ times this estimate. Estimates improve as $N$ grows.",
+    "From $N$ observations, the relative frequency $f_x/N$ estimates $P(X=x)$, and $\\sum x\\,(f_x/N)=(\\sum xf_x)/N$ estimates $E(X)$. For $M$ future trials the expected total is $M$ times this estimate. Estimates tend to improve as $N$ grows.",
   "strategy-expected-value":
     "For payoffs $x_i$ with probabilities $p_i$ and cost $c$, the expected net gain is $\\sum x_ip_i-c$. Comparing expected values tells which option has the better long-run average; it does not account for risk or for probabilities that are only estimated.",
   "fair-selection-procedure":
@@ -245,14 +245,25 @@ export const statisticsProbabilityLessons: Lesson[] = [
     id: "normal-distributions",
     title: "Normal models and the 68–95–99.7 rule",
     summary:
-      "For symmetric, single-peaked data, about 68%, 95% and 99.7% of values lie within 1, 2 and 3 standard deviations of the mean. A $z$-score counts those standard deviations.",
+      "Many measurements, such as adult heights, pile up around their average in a bell shape. For data like that, about 68% of values are within one standard deviation of the mean, about 95% within two and about 99.7% within three. The standard deviation is a typical distance from the mean, and a $z$-score counts how many standard deviations a value is from it.",
     templateIds: ["normal-model-rule"],
+    senses: {
+      average: "mean-average",
+      mean: "mean-average",
+      boundary: "boundary",
+      boundaries: "boundary",
+      tail: "tail",
+      tails: "tail",
+      "more than": "more-than",
+      interval: "interval",
+    },
+    noLink: ["scales", "rule", "side"],
     objectives: [
       "Find the percent of a normal model between, above or below boundaries stated as mean ± a number of standard deviations.",
       "Compare values from different data sets with $z$-scores, and recognize when a normal model is not appropriate.",
     ],
     intuition: [
-      "The standard deviation (SD) is a typical distance of values from the mean. Many measurements, such as heights or the fill weights of boxes from one machine, pile up symmetrically around the mean with one peak. Such data are described by a normal model, a bell-shaped curve.",
+      "The mean is the ordinary average: add the values and divide by how many there are. The standard deviation (SD) is a typical distance of values from the mean. Many measurements, such as heights or the fill weights of boxes from one machine, pile up symmetrically around the mean with one peak. Such data are described by a normal model, a bell-shaped curve.",
       "A normal model has a fixed pattern: about 68% of values lie within 1 SD of the mean, 95% within 2 SDs and 99.7% within 3 SDs. A $z$-score tells how many SDs a value is from its mean, so values from different scales can be compared.",
     ],
     workedExample: {
@@ -272,7 +283,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
       paragraphs: [
         "Compute the $z$-score of each boundary: subtract the mean and divide by the SD. A boundary at $z=1$, $2$ or $3$ is covered by the rule.",
         "Sketch the curve and shade the region. Within $\\pm1$ SD holds 68%, so each strip between the mean and 1 SD holds 34%. The strip from 1 to 2 SDs holds 13.5% on each side, and from 2 to 3 SDs holds 2.35%.",
-        "Add the shaded strips, or subtract from 100%. To compare two values from different data sets, the larger $z$-score is farther above its own mean, whatever the raw scores are.",
+        "Add the shaded strips, or subtract from 100%. To compare two values from different data sets, compare $z$-scores: the larger $z$-score is higher relative to its own data, measured in standard deviations, whatever the raw scores are.",
       ],
     },
     formal: {
@@ -283,7 +294,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
       ],
     },
     pitfalls: [
-      "Split the percent outside an interval between two tails; one tail is half of it.",
+      "For an interval centered on the mean, the percent outside is split equally between the two tails, so one tail is half of it.",
       "Do not compare raw scores from different tests; compare $z$-scores.",
       "Check the shape before applying the rule: a long tail or two peaks means the data are not normal.",
     ],
@@ -294,8 +305,10 @@ export const statisticsProbabilityLessons: Lesson[] = [
     id: "random-variables",
     title: "Random variables and their distributions",
     summary:
-      "A random variable gives each outcome a number. Its distribution lists each value with its probability, and the probabilities add to 1.",
+      "A chance experiment, like tossing three coins, has outcomes such as HTH. A random variable turns each outcome into a number, such as the number of heads. Its probability distribution lists every possible number with its probability, the fraction of the time it happens. When the possible numbers can be listed, as here, those probabilities add to 1.",
     templateIds: ["random-variable-distribution"],
+    senses: { event: "event" },
+    noLink: ["sort"],
     objectives: [
       "Define a numerical random variable for an experiment and find the probability of one of its values.",
       "Read a probability distribution from a bar chart and complete a distribution whose probabilities add to 1.",
@@ -342,15 +355,22 @@ export const statisticsProbabilityLessons: Lesson[] = [
     id: "theoretical-distributions",
     title: "Theoretical distributions and expected value",
     summary:
-      "Count equally likely outcomes, or multiply probabilities of independent trials, to build a distribution. The expected value is each value times its probability, added.",
+      "Before collecting any data, you can often work out the chances by reasoning: count equally likely outcomes, or multiply the chances of trials that do not affect each other. That gives a theoretical distribution. Its expected value, each value times its probability, all added, is the average you would get over many tries.",
     templateIds: ["theoretical-distribution-expectation"],
+    senses: {
+      trials: "trial",
+      average: "mean-average",
+      product: "product-multiply",
+    },
+    noLink: ["change"],
     objectives: [
       "Build the distribution of a sum of two dice and of a count of successes in three independent trials.",
       "Compute an expected value exactly as a weighted sum.",
     ],
     intuition: [
       "A theoretical distribution comes from reasoning about the experiment before any data. For two fair dice, 36 ordered pairs are equally likely, and the sum 7 can happen in 6 pairs while the sum 2 happens in only one.",
-      "The expected value is the long-run average of the random variable. Weight each value by its probability and add; a loss counts as a negative value.",
+      "Trials are independent when the result of one does not change the chances of another, like separate coin tosses. Then the probability that several things all happen is the product of their probabilities.",
+      "The expected value is the long-run average of the random variable. Weight each value by its probability, multiplying them, and add. A loss counts as a negative value.",
     ],
     workedExample: {
       prompt:
@@ -375,7 +395,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
       title: "Definition",
       paragraphs: [
         "For a discrete random variable, $E(X)=\\sum xP(X=x)$. For $n$ independent trials with success probability $p$, the number of successes has $P(X=k)=\\binom nk p^k(1-p)^{n-k}$ and $E(X)=np$.",
-        "The probabilities must be correct for the stated assumptions: equally likely outcomes, and independence between trials.",
+        "The probabilities are only as correct as the assumptions behind them, such as equally likely outcomes or independent trials.",
       ],
     },
     pitfalls: [
@@ -390,8 +410,18 @@ export const statisticsProbabilityLessons: Lesson[] = [
     id: "empirical-distributions",
     title: "Empirical distributions and expected value",
     summary:
-      "Divide each observed count by the total to estimate probabilities, then use those weights to find the expected value per trial and for a larger group.",
+      "When there is no theory to count from, use data. Divide each observed count by the total to estimate how likely each value is. Those estimates give the expected value per trial, the long-run average, and multiplying scales it up to a larger group.",
     templateIds: ["empirical-distribution-expectation"],
+    senses: {
+      trial: "trial",
+      trials: "trial",
+      average: "mean-average",
+      mean: "mean-average",
+      sample: "sample",
+      model: "model",
+      differences: "difference-subtract",
+    },
+    noLink: ["scale", "scales"],
     objectives: [
       "Find relative frequencies from observed counts.",
       "Compute the expected value per trial and scale it to a larger group.",
@@ -416,20 +446,20 @@ export const statisticsProbabilityLessons: Lesson[] = [
       keepTogetherInPrint: true,
       paragraphs: [
         "Total the counts to get the number of observations. Divide each count by that total. To find the expected value, either weight values by relative frequencies, or multiply each value by its count, add, and divide by the total.",
-        "To scale up, multiply by the size of the larger group. The result is an estimate, and it is more trustworthy when it comes from more observations.",
+        "To scale up, multiply by the size of the larger group. The result is an estimate. It is usually more trustworthy when it comes from more observations collected the same way.",
       ],
     },
     formal: {
       title: "Estimates and models",
       paragraphs: [
         "An empirical distribution assigns each value its relative frequency $f_x/N$. Its mean $\\sum x f_x/N$ is the sample mean, and it estimates $E(X)$ under the assumption that future trials resemble the observed ones.",
-        "A theoretical model and an empirical distribution can differ from chance variation; the differences usually shrink as the number of trials grows.",
+        "A theoretical model and an empirical distribution can differ because of chance variation. If the model is right, the differences tend to shrink as the number of trials grows.",
       ],
     },
     pitfalls: [
       "Divide by the total number of observations, not the number of categories.",
-      "Weight each value by its count; the plain average of the values is wrong when counts differ.",
-      "Scale by the ratio of group sizes, not by the sample size.",
+      "Weight each value by its count. The plain average of the values ignores how often each one happened.",
+      "To scale up, multiply the expected value per trial by the size of the larger group, not by the number of observations.",
     ],
     parentGuide:
       "Ask the learner to explain why the expected value (0.85) is not one of the observed values.",
@@ -438,8 +468,17 @@ export const statisticsProbabilityLessons: Lesson[] = [
     id: "decision-strategies",
     title: "Choose a strategy by expected value",
     summary:
-      "Multiply each payoff by its probability, subtract costs and compare the totals. The option with the better average result is the one the numbers support.",
+      "When a choice has uncertain results, such as buying a warranty or playing a game, compare the options by their average result over many repetitions, called the expected value. Multiply each payoff by its chance, add, and subtract any cost. The option with the better average is the one the numbers support.",
     templateIds: ["strategy-expected-value"],
+    senses: {
+      average: "mean-average",
+      units: "unit",
+      model: "model",
+      certain: "certain",
+      event: "event",
+      complement: "complement-probability",
+    },
+    noLink: ["change"],
     objectives: [
       "Compare games, a warranty, or a sure amount versus a gamble by expected value.",
       "State the decision that the expected values justify, and the assumption behind it.",
@@ -486,8 +525,10 @@ export const statisticsProbabilityLessons: Lesson[] = [
     id: "fair-random-decisions",
     title: "Fair random selection",
     summary:
-      "A selection is fair when every person has the same chance. Count the equally likely outcomes and check that each person gets the same number.",
+      "A random choice is fair when every person has the same chance of being picked, like drawing names from a hat. To test a method, list its equally likely outcomes, the results that each have the same chance. Then check that each person matches the same number of them.",
     templateIds: ["fair-selection-procedure"],
+    senses: { multiple: "multiple" },
+    noLink: ["rule"],
     objectives: [
       "Choose a random procedure that gives each person the same chance.",
       "Compute the chance of each person under a given procedure.",
@@ -523,7 +564,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
       ],
     },
     pitfalls: [
-      "A sum of dice or a count of heads has unequally likely values.",
+      "A sum of two dice, or the number of heads in two or more tosses, has values that are not equally likely.",
       "Divide by the total number of equally likely outcomes, not by the number of people.",
       "A remainder rule is fair only when the number of outcomes is a multiple of the number of people.",
     ],
@@ -534,8 +575,10 @@ export const statisticsProbabilityLessons: Lesson[] = [
     id: "simulation-model-checks",
     title: "Is the result consistent with the model?",
     summary:
-      "Simulate the model many times. If the proportion of simulated results as extreme as the observed one is smaller than a stated cutoff, the model is not consistent with the data.",
+      "A model is a claim about how chance works, such as “this spinner lands on blue half the time”. Simulating the model, imitating it many times, shows what results chance alone gives. If very few simulated results are as extreme as the real one, the real result is hard to explain by chance. That is evidence against the model.",
     templateIds: ["simulation-consistency-check"],
+    senses: { model: "model", models: "model", tails: "tail" },
+    noLink: ["center"],
     objectives: [
       "Find the proportion of simulated results at least as extreme as an observed result.",
       "Decide whether the observed result is consistent with the model at a stated cutoff.",
@@ -582,8 +625,14 @@ export const statisticsProbabilityLessons: Lesson[] = [
     id: "randomization-tests",
     title: "Is the treatment difference significant?",
     summary:
-      "Reshuffle the group labels many times. If differences as large as the observed one rarely arise, random assignment alone is an unlikely explanation.",
+      "In an experiment, people are put into groups at random, and the groups' results are compared. To see whether a difference could be just luck, reshuffle the group labels many times and recompute the difference. If differences as large as the real one rarely appear, chance alone is an unlikely explanation.",
     templateIds: ["randomization-test-decision"],
+    senses: {
+      difference: "difference-subtract",
+      differences: "difference-subtract",
+      significant: "statistically-significant",
+      mean: "mean-average",
+    },
     objectives: [
       "Find the proportion of re-randomized differences as or more extreme than the observed difference.",
       "Decide significance at a stated cutoff and say what it supports.",
@@ -624,29 +673,37 @@ export const statisticsProbabilityLessons: Lesson[] = [
       "Not significant does not prove the treatment does nothing.",
     ],
     parentGuide:
-      "Ask the learner what the reshuffling represents and why it is allowed only if the treatment did nothing.",
+      "Ask the learner what the reshuffling represents, and why it shows what chance alone would produce if the treatment did nothing.",
   }),
   lesson({
     id: "statistical-report-critique",
     title: "Find the flaw in a report",
     summary:
-      "Ask who was counted and how, how many, how precise the result is, and how the graph is drawn. Name the checks that fail.",
+      "A headline number is only as good as the data behind it. Ask four questions: who was counted, and how; how many; how precise the result is; and how the graph is drawn. Each question that fails names a flaw.",
     templateIds: ["report-flaw-critique"],
+    senses: {
+      sample: "sample",
+      samples: "sample",
+      population: "population",
+      differences: "difference-subtract",
+    },
+    noLink: ["certain", "whole", "change"],
     objectives: [
       "Identify voluntary response, a convenience sample, a too-small sample, a missing margin of error and a truncated axis.",
       "Pick the two flaws in a report that has two.",
     ],
     intuition: [
       "A headline such as 'Most customers prefer the Garden Melt' sounds certain. But the number depends on whom the company asked, how many it asked, how precise the number is, and how the result is drawn.",
-      "Each question points to a different possible flaw. A report can have any of them, and fixing one does not fix the others.",
+      "Each question points to a different possible flaw. A sample is biased when the people in it differ in a systematic way from the whole group, as volunteers often do. A margin of error tells how far the true value could reasonably be from the reported one, because another random sample would give a slightly different number. A graph's axis is truncated when it starts above zero, which makes small differences look large.",
+      "A report can have any of these flaws, and fixing one does not fix the others.",
     ],
     workedExample: {
       prompt:
         "A website asks visitors to vote for their favorite sandwich. 2,000 visitors vote; 51% choose the Garden Melt and 49% choose the other. The headline says 'Most customers prefer the Garden Melt.' The report gives no margin of error. Which flaws weaken the headline?",
       steps: [
         "Who was counted: visitors chose to vote, so this is voluntary response; they may not represent all customers.",
-        "How many: 2,000 is large, so the sample size is not the problem.",
-        "How precise: no margin of error is given, and each percent is uncertain by about 2 points with 2,000 votes, so a 2-point lead could be an accident of sampling.",
+        "How many: 2,000 is large enough that sample size is not the main problem here.",
+        "How precise: no margin of error is given. Even a random sample of 2,000 would leave each percent uncertain by about 2 points, so a 2-point lead could be an accident of sampling.",
         "The flaws are voluntary response and no margin of error. A larger sample of the same kind would not repair the bias.",
       ],
       answer: "Voluntary response and no margin of error",
@@ -678,15 +735,23 @@ export const statisticsProbabilityLessons: Lesson[] = [
     id: "model-validation",
     title: "Check a model against data",
     summary:
-      "A residual is observed minus predicted. Patternless, small residuals support a model; patterns and predictions outside the data do not.",
+      "A model predicts values, and data show what really happened. The difference, observed minus predicted, is called a residual. Small residuals with no pattern support the model. A pattern in the residuals, or a prediction far outside the data, does not.",
     templateIds: ["model-residual-conclusion"],
+    senses: {
+      model: "model",
+      models: "model",
+      difference: "difference-subtract",
+      square: "square-number",
+      squares: "square-number",
+    },
+    noLink: ["range"],
     objectives: [
       "Read a residual table and decide whether a pattern shows the model has the wrong form.",
       "Compare two models with the sum of squared residuals, and recognize extrapolation.",
     ],
     intuition: [
       "A model predicts a value, and the data give the observed value. The residual is observed minus predicted. A residual of 0 is a perfect prediction; positive means the model predicted too low.",
-      "If a model is a good form for the data, its residuals look like random scatter. If the residuals are positive, then negative, then positive again, the data curve while the model goes straight.",
+      "If a model is a good form for the data, its residuals look like random scatter. For a straight-line model, residuals that are positive, then negative, then positive again mean the data curve while the line goes straight.",
     ],
     workedExample: {
       prompt:
@@ -703,7 +768,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
       title: "Read the residuals",
       keepTogetherInPrint: true,
       paragraphs: [
-        "Compute residuals with their signs. Check the order of the signs and the size compared with the data. Random switching and small size are good; runs and curves are not.",
+        "Compute residuals with their signs. Check the order of the signs and their size compared with the data. Signs that switch with no clear pattern, and small sizes, support the model. A stretch of positives, then negatives, then positives again suggests the data curve away from it.",
         "To compare two models on the same data, square each residual before adding. Positive and negative residuals then cannot cancel. The smaller sum of squares stays closer to the data.",
         "Check the $x$-value you predict at. If it is outside the range of the data, the fit says nothing about it.",
       ],
@@ -711,7 +776,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
     formal: {
       title: "Definitions",
       paragraphs: [
-        "For observed $y_i$ and predicted $\\hat y_i$, the residual is $e_i=y_i-\\hat y_i$. Least-squares lines make the residuals add to zero, so the sum alone cannot detect a poor model.",
+        "For observed $y_i$ and predicted $\\hat y_i$, the residual is $e_i=y_i-\\hat y_i$. The least-squares line, the line that makes the sum of the squared residuals as small as possible, always has residuals that add to zero. So the sum alone cannot detect a poor model.",
         "Predicting for $x$ outside the range of observed $x$-values is extrapolation. The pattern of residuals inside the range gives no evidence that the same form continues beyond it.",
       ],
     },
