@@ -238,7 +238,7 @@ export const shapeMethods: Record<string, ProblemMethod> = {
   "find-named-shape": {
     goal: "Given a shape's name, choose the one shape of that kind.",
     intuition:
-      "A side is one straight part of a flat shape's outline. A corner is the point where two sides meet. Each shape name tells what its sides and corners must be. A hexagon is a shape with 6 sides and 6 corners. A rectangle is a shape with 4 sides and 4 square corners, like the corners of a page. A square is a rectangle whose 4 sides are all equally long. A circle is a perfectly round shape with no sides and no corners.",
+      "A side is one straight part of a flat shape's outline. A corner is the point where two sides meet. Each shape name tells what its sides and corners must be. A hexagon is a shape with 6 sides and 6 corners. A square is a shape with 4 equally long sides and 4 square corners, like the corners of a page. A rectangle is a shape with 4 sides and 4 square corners. Its sides do not all have to be equally long. A circle is a perfectly round shape with no sides and no corners.",
     senses: { side: "side", square: "square-shape" },
     noLink: ["edge", "part"],
     terms: terms.flat,
@@ -254,13 +254,14 @@ export const shapeMethods: Record<string, ProblemMethod> = {
   "name-solid-shape": {
     goal: "Name a solid shape by looking at its faces and surfaces.",
     intuition:
-      "A solid shape is a shape that is not flat, like a block or a ball. A face is one flat part of its outside. A curved surface is a part that bends, like the outside of a can. A circle is a perfectly round flat shape. A corner is where two sides meet. A square is a flat shape with 4 equally long sides and 4 square corners.",
+      "A solid shape is a shape that is not flat, like a block or a ball. A face is one flat part of its outside. A curved surface is a part that bends, like the outside of a can. A circle is a perfectly round flat shape. A side is one straight part of a flat shape's outline. A corner is where two sides meet. A square is a flat shape with 4 equally long sides and 4 square corners.",
     senses: {
       solid: "solid-shape",
       face: "face-solid",
       cube: "cube",
       square: "square-shape",
       side: "side",
+      edge: "edge",
     },
     noLink: ["part"],
     terms: terms.solid,

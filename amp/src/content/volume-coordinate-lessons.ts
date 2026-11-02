@@ -166,7 +166,7 @@ export const volumeCoordinateLessons: Lesson[] = [
       "first-quadrant-coordinates",
       "coordinate-move",
     ],
-    senses: { unit: "unit", square: "square-shape" },
+    senses: { unit: "unit", square: "square-shape", "more than": "more-than" },
     noLink: ["change", "changes", "part"],
     includeGeneratedRepresentation: false,
     objectives: [
