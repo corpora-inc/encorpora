@@ -996,7 +996,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
 }
 
 /** A problem's hint, with the term cards its words open. */
-function hintSupport(problem: GeneratedProblem): ProblemHint {
+export function hintSupport(problem: GeneratedProblem): ProblemHint {
   return {
     hint: problem.hint,
     ...(problem.hintCue ? { cue: problem.hintCue } : {}),
@@ -1011,7 +1011,7 @@ function hintSupport(problem: GeneratedProblem): ProblemHint {
 
 /** An answer's or skip's response, with the term cards its explanation's
  * words open (choice feedback included). Never stored with the attempt. */
-function withGlossary(outcome: Outcome): Outcome {
+export function withGlossary(outcome: Outcome): Outcome {
   return {
     ...outcome,
     ...glossaryPayload(

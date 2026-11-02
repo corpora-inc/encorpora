@@ -8,8 +8,9 @@ import { termsIn, type LinkContext } from "../src/glossary/link";
 import { learnerTexts } from "./fixtures/math-typography";
 
 /** Learner-visible teaching text: lessons, methods, principles, and the
- * hints and explanations of 20 instances of every template. Prompts, choices
- * and titles are not linked. */
+ * hints and explanations of 20 instances of every template. Practice
+ * prompts, choices and titles are not linked; a lesson's worked example is,
+ * and `glossary-rendered.test.ts` checks its lexicon. */
 const LINKED = new Set([
   "hint",
   "explanation",
