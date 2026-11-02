@@ -152,7 +152,6 @@
 .pathways-grade {
   --color-surface-raised: var(--atlas-panel);
   --color-on-surface-raised: var(--atlas-on-panel);
-  --color-on-surface-raised: var(--atlas-on-panel);
   --color-surface-sunken: var(--atlas-surface);
   --color-on-surface-sunken: var(--atlas-on-surface);
   --color-menu: var(--atlas-panel);
@@ -1160,7 +1159,6 @@
   --color-surface-sunken: var(--atlas-surface);
   --color-on-surface-sunken: var(--atlas-muted);
   --color-surface-raised: var(--atlas-panel);
-  --color-on-surface-raised: var(--atlas-on-panel);
   --color-on-surface-raised: var(--atlas-on-panel);
   --color-border: var(--atlas-border);
   flex: none;
