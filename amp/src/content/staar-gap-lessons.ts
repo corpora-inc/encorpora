@@ -3,9 +3,15 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const staarGapMethods: Record<string, ProblemMethod> = {
   "staar-nested-grouping": {
-    goal: "Evaluate an expression with brackets around parentheses, or a product described in words, using the order of operations.",
+    goal: "Work out an expression with brackets around parentheses, or a product described in words, in the right order.",
     intuition:
-      "Grouping symbols tell you what to do first. Parentheses and brackets mark a part of the expression that is worked out as one number before the rest. Words such as “the sum of 42 and 6” describe the same kind of group.",
+      "An expression is numbers and signs, like $+$ and $\\times$, that stand for one number. Parentheses ( ) and brackets [ ] are grouping symbols. They mark a part to work out first, as one number. Brackets are often used around a part that already has parentheses inside. To evaluate an expression means to work out the one number it stands for. Words can make a group too. “The sum of 42 and 6” means $(42+6)$, the answer when you add them.",
+    senses: {
+      product: "product-multiply",
+      difference: "difference-subtract",
+      part: "part",
+    },
+    noLink: ["rule"],
     terms: [
       [
         "parentheses",
@@ -14,41 +20,58 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "order-of-operations",
     ],
     method: [
-      "Find the innermost groups and work them out first.",
-      "Replace each finished group with its value, then work out the next group outward.",
-      "Do multiplication and division, then addition and subtraction, from left to right.",
-      "For a verbal expression, turn “the sum of $a$ and $b$” or “the difference of $a$ and $b$” into a group, then multiply.",
+      "Find the innermost group, the one with no group inside it. Work it out first.",
+      "Replace each finished group with its value. Then work out the next group outward.",
+      "Multiply and divide next, from left to right. Then add and subtract, from left to right.",
+      "For words, write “the sum of 42 and 6” as $(42+6)$ and “the difference of 15 and 7” as $(15-7)$. Then multiply as the words say.",
     ],
     watch:
-      "Do not multiply by the first number in a group before the whole group is finished: in the product of 5 and the sum of 2 and 3, the sum 5 comes first.",
+      "Finish the group before you multiply. “The product of 5 and the sum of 2 and 3” is $5\\times(2+3)=5\\times5=25$, not $5\\times2+3=13$.",
   },
   "staar-signed-exponent-order": {
-    goal: "Evaluate an integer expression with negative numbers, parentheses, a squared number, products, sums and differences.",
+    goal: "Work out an expression with negative numbers, parentheses, a squared number, products, sums and differences.",
     intuition:
-      "A square multiplies a number by itself. It is done before multiplication and before adding or subtracting. A negative number times a negative number is positive, so a difference that is negative can turn a minus sign into a plus.",
+      "A negative number is less than 0, like $-6$. A small raised 2 means squared: $3^{2}$ is $3\\times3=9$. The raised number is called an exponent. To evaluate an expression means to work out the one number it stands for. Work in this order: parentheses first, then exponents, then multiply and divide, then add and subtract. A positive number is more than 0. A negative number times a negative number is positive: $(-6)\\times(-6)=36$.",
+    senses: {
+      product: "product-multiply",
+      products: "product-multiply",
+      difference: "difference-subtract",
+      differences: "difference-subtract",
+      square: "square-number",
+      squared: "square-number",
+      "more than": "more-than",
+      opposite: "opposite-number",
+    },
+    noLink: ["whole"],
     terms: ["square-number", "opposite-number"],
     method: [
-      "Work out what is inside parentheses first, keeping any negative result.",
-      "Do exponents next. The exponent applies only to the number or group right before it.",
-      "Do multiplication and division, then addition and subtraction, from left to right.",
-      "Use the sign rule for products: same signs give a positive result, different signs give a negative result.",
+      "Work out what is inside parentheses first. Keep a negative answer: $2-8=-6$.",
+      "Do exponents next. The exponent works only on the number or group just before it.",
+      "Multiply and divide next, from left to right. Then add and subtract, from left to right.",
+      "When you multiply, the same signs give a positive answer. Different signs give a negative answer.",
     ],
     watch:
-      "In $-6^{2}$ only the 6 is squared, so the result is $-36$. Write $(-6)^{2}$ when the minus sign is part of the number that is squared.",
+      "In $-6^{2}$ only the 6 is squared: $-(6\\times6)=-36$. In $(-6)^{2}$ the whole $-6$ is squared: $(-6)\\times(-6)=36$.",
   },
   "staar-number-word-form": {
     goal: "Choose the words for a number in expanded form, or the number named by counts of hundreds, tens and ones.",
     intuition:
-      "A digit's place decides its value. To say a number in words, say the part in the thousands as a number and then the word “thousand”, then say the rest. A zero holds a place and says nothing aloud. A decimal is read as a whole number followed by its place name, such as thousandths.",
+      "A digit is one of the symbols 0 to 9. Its place in a number gives its value: in 7,305 the 7 means 7 thousands. Expanded form writes a number as the values of its digits added up, like $7{,}000+300+5$. To say a number under a million in words, say the thousands part, the digits left of the comma, then “thousand”, then the rest. A zero holds a place. Inside a whole number like 7,305, the 0 is not said aloud. For a decimal, say the whole part, then “and”, then the digits after the point with the name of the last place, such as thousandths.",
+    senses: {
+      part: "part",
+      term: "term-expression",
+      terms: "term-expression",
+    },
+    noLink: ["change", "changes", "whole"],
     terms: ["expanded-form", "word-form"],
     method: [
-      "Add the terms to write the number in digits. Keep a zero in each place with no term.",
-      "Read the digits in groups of three from the right: the thousands group, then the ones group.",
-      "For a decimal, say the whole part, then “and”, then the digits after the point as a whole number with the name of the last place.",
-      "For counts such as 36 hundreds, change each count to its value (3,600) and add.",
+      "Add the numbers in the expanded form to write the number in digits. Put a 0 in any place that is missing.",
+      "Read the digits in groups of three from the right. Say the thousands group, then “thousand”, then the ones group.",
+      "For a decimal, say the whole part, then “and”. Then say the digits after the point as a whole number, with the name of the last place.",
+      "For counts such as 36 hundreds, change each count to its value: 36 hundreds is 3,600. Then add.",
     ],
     watch:
-      "Check each term's place before reading it: 5,000 is five thousand, and leaving out a zero place changes the number.",
+      "Check each place before you read it: 5,000 is five thousand. Leaving out a zero in a whole number changes it: 605,000 is not 65,000.",
   },
   "staar-rename-percent-fraction-decimal": {
     goal: "Rename a percent as a decimal, a fraction as a decimal or percent, or a decimal as a mixed number (a whole number plus a fraction).",
@@ -84,21 +107,28 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
   "staar-story-model-choice": {
     goal: "Choose the equation or expression that fits a story, or the one that does not.",
     intuition:
-      "An equation says that two amounts are equal. To model a story, say what each group or part is, decide how the parts combine, and write that combination equal to the total. Division and multiplication facts come in families: if $4\\times n=36$ then $36\\div4=n$ and $36\\div n=4$.",
+      "An equation is a number sentence that says two amounts are equal, using the sign $=$. A letter such as $n$ stands for a number the story does not tell. To write a story as an equation, say what each group or part is. Equal groups multiply, and joining parts add. Times and divide facts come in families: if $4\\times n=36$, then $36\\div4=n$ and $36\\div n=4$.",
+    senses: {
+      part: "part",
+      parts: "part",
+      side: "side-of-equation",
+      sides: "side-of-equation",
+    },
     terms: ["unknown", "fact-family"],
     method: [
-      "Name the unknown and say in words what the story combines.",
-      "Write the combination as an equation: equal groups use multiplication, joining parts uses addition.",
-      "Test a choice by putting in the number the story gives for the unknown. A correct model is true; a wrong one is false.",
-      "When asked for the one that does not fit, find the three true choices and take the other one.",
+      "Name the unknown, the number the letter stands for. Say in words what the story puts together.",
+      "Write that as an equation. Equal groups use multiplication. Joining parts uses addition.",
+      "Test a choice. First check that it does what the story does: equal groups or joining. Then work out the unknown and put it in. A matching equation comes out true.",
+      "When asked for the one that does not fit, find the choices that fit the story. The one left over is the answer.",
     ],
     watch:
-      "Division is not commutative: $36\\div4$ and $4\\div36$ are different. Check the order of the numbers.",
+      "Order matters in division: $36\\div4$ is 9, but $4\\div36$ is less than 1. Check the order of the numbers.",
   },
   "staar-rate-equation-choice": {
     goal: "Find the amount for one unit from a total, then choose the equation for any number of units.",
     intuition:
-      "At a steady rate the amount grows by the same number for every unit. Dividing the total by the number of units gives the amount for one unit. The amount for any number of units is that rate times the number of units.",
+      "A rate tells how much for each unit, like 1.5 pounds of food per day. 1.5 means one and a half. Per means for each. At a steady rate, every unit adds the same amount. Divide the total by the number of units to get the amount for one unit. The amount for any number of units is that rate times the number of units.",
+    senses: { unit: "unit", units: "unit" },
     terms: [
       [
         "rate",
@@ -106,40 +136,49 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Divide the total amount by the number of units to get the amount per unit.",
-      "Write $\\text{amount}=\\text{rate}\\times\\text{units}$ with the letters from the story.",
-      "Check a choice with one number of units from the story: the total should come out.",
+      "Divide the total amount by the number of units. For 180 pounds in 120 days, $180\\div120=1.5$ pounds per day.",
+      "Write the amount as the rate times the number of units, with the story's letters: $f=1.5d$. Here $1.5d$ means 1.5 times $d$.",
+      "Check a choice with numbers from the story: 120 days should give 180 pounds.",
     ],
     watch:
-      "Do not flip the rate. Amount per unit is the amount divided by the units, and the amount for several units multiplies by it.",
+      "Do not flip the rate. The amount per unit is the amount divided by the units. The amount for several units is the rate times the units.",
   },
   "staar-order-decimals": {
+    noLink: ["change", "third"],
+    senses: { "more than": "more-than", parts: "part", part: "part" },
     goal: "Order four decimals that have different numbers of places, or find the decimal in a given position.",
     intuition:
-      "A decimal with more places is not always greater. To compare, give every number the same number of decimal places by adding zeros to the right, and then compare place by place from the left.",
+      "A decimal uses a point to show parts of one. The first digit after the point is tenths, then hundredths, then thousandths. A decimal with more digits is not always greater. To compare, give every number the same number of digits after the point by writing zeros on the right. Those zeros do not change the value. Then compare place by place from the left.",
     terms: ["place-value"],
     method: [
-      "Write every number with the same number of decimal places, using zeros on the right.",
+      "Write every number with the same number of digits after the point, using zeros on the right: 0.2 becomes 0.200.",
       "Compare the tenths digits first. If they match, compare the hundredths, then the thousandths.",
-      "Order the numbers as asked, least to greatest or greatest to least.",
-      "For a position such as the third, count in that order.",
+      "Put the numbers in the order asked: least to greatest, or greatest to least.",
+      "For a position such as third, count along that order.",
     ],
     watch:
-      "0.5 is greater than 0.45 even though 45 is greater than 5: 0.500 against 0.450 shows it.",
+      "0.5 is greater than 0.45, even though 45 is greater than 5. Writing 0.500 and 0.450 shows it.",
   },
   "staar-order-mixed-forms": {
+    noLink: ["change"],
+    senses: {
+      root: "root-radical",
+      roots: "root-radical",
+      squares: "square-number",
+      square: "square-number",
+    },
     goal: "Order signed fractions and decimals, a fraction, percent, decimal and root, or choose the true comparison.",
     intuition:
-      "To compare numbers in different forms, write each one as a decimal. A fraction is the numerator divided by the denominator, a percent is divided by 100, and a square root is estimated between two whole numbers. On a number line, the number farther left is less.",
+      "Numbers can be written in different forms: a fraction like $\\frac{3}{4}$, a decimal like 0.75 or a percent like 75%. To compare them, write each one as a decimal. For a fraction, divide the top number, the numerator, by the bottom number, the denominator. For a percent, divide by 100, because percent means out of 100. A square root such as $\\sqrt{7}$ is the number that times itself makes 7, so it is between 2 and 3. On a number line, a number farther left is less. Negative numbers, numbers less than 0, sit to the left of 0.",
     terms: ["square-root"],
     method: [
-      "Rewrite every number as a decimal, estimating roots to two decimal places.",
-      "Place the numbers on a number line. Negative numbers are less than positive numbers.",
-      "Between two negatives, the one with the greater distance from 0 is less.",
-      "Write the answer in the original forms.",
+      "Write every number as a decimal. Place a square root between two whole numbers, then closer: $\\sqrt{7}$ is about 2.65, because $2.65\\times2.65$ is about 7. If two numbers are very close, use more decimal places.",
+      "Place the numbers on a number line. Negative numbers are less than 0 and less than every positive number.",
+      "Between two negative numbers, the one farther from 0 is less: $-1.7$ is less than $-0.6$.",
+      "Give the answer in the original forms.",
     ],
     watch:
-      "250% is 2.5, not 250. Rewrite a percent before comparing it with a decimal or a fraction.",
+      "250% is 2.5, not 250. Change a percent to a decimal before you compare it with a decimal or a fraction.",
   },
   "staar-decimal-operations": {
     goal: "Multiply, divide, add or subtract decimals in money and measurement stories, including a unit fraction such as $\\frac{1}{4}$.",
@@ -180,21 +219,31 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
   "staar-measure-chains": {
     goal: "Chain perimeter and area: find a missing side first, or work with decimal sides and a square.",
     intuition:
-      "Perimeter is the distance around a shape and area is the space it covers. When one is given and the other is asked, a side length connects them. A square has four equal sides, so its perimeter divided by 4 is its side.",
+      "Perimeter is the distance all the way around a shape: add all its side lengths. Area is the space a shape covers, counted in unit squares, squares with sides 1 unit long. A rectangle's area is its length times its width. When one is given and the other is asked, find a missing side first. A square has 4 equal sides, so its perimeter divided by 4 is one side.",
+    senses: {
+      side: "side",
+      sides: "side",
+      square: "square-shape",
+      squares: "square-shape",
+      unit: "unit",
+      units: "unit",
+    },
     terms: ["perimeter", "area"],
     method: [
-      "Write what the shape's perimeter or area says about its sides.",
-      "Subtract the sides you know from the perimeter and split the rest to find a missing side.",
-      "For a square, divide the perimeter by 4 to find the side.",
-      "Use the side lengths for the quantity asked. Keep the units: square units for area.",
+      "Write what the perimeter or area tells you about the sides.",
+      "Subtract the sides you know from the perimeter. Split what is left equally to find a missing side.",
+      "For a square, divide the perimeter by 4 to find one side.",
+      "Use the sides to find what is asked. Area is in square units, like square feet.",
     ],
     watch:
-      "Area is not the perimeter. After finding a side from the perimeter, multiply the sides for area.",
+      "Area is not the perimeter. After you find a side from the perimeter, multiply length times width for the area.",
   },
   "staar-multistep-stories": {
     goal: "Solve a two-step story with whole numbers or units: add then subtract, share then regroup, multiply then divide or convert.",
     intuition:
-      "A two-step story needs a first result before the question can be answered. Find the quantity the story gives indirectly, write it down, and then use it in the second step.",
+      "A two-step story needs a first answer before you can answer the question. Find the amount the story does not say straight out. Write it down. Then use it in the second step. Some stories use decimals: 0.25 liter means 25 hundredths of a liter, which is a quarter of a liter.",
+    senses: { unit: "unit", units: "unit", part: "part" },
+    noLink: ["change", "changes"],
     terms: [
       [
         "remainder",
@@ -202,13 +251,13 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Find what the question asks, then find the quantity you need first.",
+      "Read what the question asks. Then decide what you need to find first.",
       "Do the first step and write its value.",
-      "Use that value in the second step with the other numbers of the story.",
-      "For a conversion row, find the amount for 1 unit by dividing, then multiply.",
+      "Use that value in the second step with the story's other numbers.",
+      "For a table that changes units, find the amount for 1 unit by dividing. Then multiply.",
     ],
     watch:
-      "Answer the question that is asked. The result of the first step is only a stepping stone.",
+      "Answer the question that is asked. The answer to the first step is only a stepping stone.",
   },
   "staar-line-from-points": {
     goal: "Find a line's slope and intercept from two points, its equation from a slope and a point, or the slope of $Ax+By=C$.",
@@ -260,28 +309,30 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
   "staar-money-vocabulary": {
     goal: "Recognize credit, and tell variable expenses from fixed expenses using monthly amounts.",
     intuition:
-      "Credit lets a person get something now and pay for it later, so the money is borrowed. A fixed expense costs the same each month, such as rent. A variable expense changes, such as the amount spent on groceries.",
+      "Credit means you get something now and pay for it later. The money is borrowed. An expense is money spent on something. A fixed expense costs the same each month, like rent. Rent is money paid to live in a home. A variable expense is different from month to month, like food from the store.",
+    noLink: ["change", "changes"],
     terms: ["credit", "fixed-cost", "variable-cost"],
     method: [
-      "For credit, ask whether the person gets the item before paying for it all.",
-      "For fixed or variable, compare the amounts in a row. Equal amounts mean fixed.",
-      "A tax or a deposit is not credit: it is a charge or saved money.",
+      "For credit, ask: does the person get the thing before paying for all of it?",
+      "For fixed or variable, look across one row of months. The same amount every month means fixed.",
+      "A tax or money saved is not credit. A tax is money people must pay to the government. Saved money is not borrowed.",
     ],
     watch:
-      "Paying a bill every month is not the same as a fixed expense. Look at whether the amounts are equal.",
+      "A bill paid every month is not always fixed. Look at the amounts. If they are different, it is variable.",
   },
   "staar-table-rule-choice": {
     goal: "Choose the table in which every pair of values follows a stated add or multiply rule.",
     intuition:
-      "A rule such as “multiply by 6” or $y=x+4$ must work for every pair. To test a table, apply the rule to each input and compare it with the output in the table.",
+      "A table lists pairs of numbers. The input $x$ is the number you start with. The output $y$ is the number you get. A rule, like “subtract 1” or $y=x-1$, says how to get the output from the input. It must work for every pair. To test a table, use the rule on each input and compare with the output in the table.",
+    senses: { rule: "rule" },
     terms: ["input", "output"],
     method: [
-      "Apply the rule to each input $x$ to find the outputs you expect.",
+      "Use the rule on each input $x$ to find the outputs you expect.",
       "Compare the expected outputs with each table, pair by pair.",
-      "Reject a table at the first pair that does not match.",
+      "Throw out a table at the first pair that does not match.",
     ],
     watch:
-      "One wrong pair is enough to rule out a table, even when all the others match.",
+      "One wrong pair is enough to throw out a table, even when all the others match.",
   },
   "staar-multistep-equations": {
     goal: "Solve an equation by multiplying out parentheses, combining like terms or clearing fractions, with $x$ possibly on both sides.",
@@ -338,31 +389,31 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
 
 export const staarGapPrinciples: Record<string, string> = {
   "staar-nested-grouping":
-    "Operations inside grouping symbols are evaluated first, innermost group first. Then multiplication and division are done from left to right, then addition and subtraction from left to right. “The sum of $a$ and $b$” means $(a+b)$.",
+    "Work out $[(2+4)\\times(9-5)]-3\\times4$ from the inside: $2+4=6$ and $9-5=4$, then $6\\times4=24$, then $3\\times4=12$, then $24-12=12$. The rule: grouping symbols first, innermost group first. Then multiply and divide from left to right. Then add and subtract from left to right. “The sum of $a$ and $b$” means $(a+b)$.",
   "staar-signed-exponent-order":
-    "The exponent applies to the number or group immediately before it, so $-c^{2}=-(c\\cdot c)$ while $(-c)^{2}=c^{2}$. The product of two numbers with the same sign is positive and with different signs is negative.",
+    "$(2-8)^{2}=(-6)^{2}=36$, because a negative times a negative is positive. But $-6^{2}=-(6\\times6)=-36$, because the exponent works only on the 6. With letters, $-c^{2}=-(c\\times c)$, while $(-c)^{2}=c\\times c$. Two numbers with the same sign, neither 0, multiply to a positive number. Two with different signs multiply to a negative number.",
   "staar-number-word-form":
-    "A number is the sum of each digit times its place value, so $305{,}062=300{,}000+5{,}000+60+2$. A decimal $0.d_1d_2d_3$ with $n$ digits is the whole number $d_1d_2d_3$ divided by $10^{n}$, read with the place name of the last digit.",
+    "Each digit times its place value, added up, gives the number: $305{,}062=300{,}000+5{,}000+60+2$. It is read three hundred five thousand, sixty-two. A decimal with three digits after the point, like $0.962$, is 962 thousandths: its digits as a whole number, divided by 1,000. It is read with the name of its last place.",
   "staar-rename-percent-fraction-decimal":
     "For any number $p$, $p\\%=\\frac{p}{100}$. A fraction $\\frac{a}{b}$ with $b\\neq0$ ($b$ is not 0) means $a\\div b$, and its percent form is $100\\times(a\\div b)$ percent. A decimal 0 or greater with $n$ digits after the point is its whole-number part plus those digits over $10^{n}$. Here $10^{n}$ is 1 followed by $n$ zeros. So $4.58=4\\frac{58}{100}$.",
   "staar-ratio-statements":
     "For positive amounts $a$ and $b$, the ratios $a:b$ and $ka:kb$ are equivalent for any number $k>0$ ($k$ greater than 0). If two parts are in the ratio $a:b$ and the total is $T$, the first part is $\\frac{a}{a+b}\\times T$. A unit rate is $a\\div b$, the amount of the first quantity for 1 unit of the second.",
   "staar-story-model-choice":
-    "If $g$ equal groups of $n$ make a total $T$, then $gn=T$, $T\\div g=n$ and $T\\div n=g$. If parts $a$, $b$ and $f$ make a total $T$, then $a+b+f=T$. An equation models a story exactly when it is true for the story's values.",
+    "If 5 equal groups of $n$ make 60, then $5\\times n=60$, $60\\div5=n$ and $60\\div n=5$. If parts 6.50, 3.25 and $p$ make 12, then $6.50+3.25+p=12$. With letters, $g$ equal groups of $n$ that make $T$ give $g\\times n=T$. An equation fits a story when it does what the story does and is true for the story's numbers.",
   "staar-rate-equation-choice":
-    "At a constant rate $k$ per unit, the amount for $x$ units is $y=kx$. If $T$ is the amount for $D$ units, then $k=\\frac{T}{D}$.",
+    "At 1.5 pounds per day, 120 days use $1.5\\times120=180$ pounds. With letters, at a steady rate $k$ for each unit, $x$ units give $y=k\\times x$. If $D$ units give a total $T$, the rate is $k=T\\div D$, where $D$ is not 0.",
   "staar-order-decimals":
-    "Decimals are compared place by place from the left after writing them with the same number of places. $0.5=0.500>0.450=0.45$ because $5$ tenths exceeds $4$ tenths.",
+    "$0.5=0.500$ and $0.45=0.450$. Compare from the left: 5 tenths is more than 4 tenths, so $0.5>0.45$. The sign $>$ means “is greater than”. Writing the same number of places and comparing from the left works for any two decimals that are not negative.",
   "staar-order-mixed-forms":
-    "Real numbers are ordered by their position on the number line. Fractions, percents and roots can be compared through their decimal values. For $a>0$, $\\sqrt{a}$ is the positive number whose square is $a$, so $n<\\sqrt{a}<n+1$ when $n^2<a<(n+1)^2$.",
+    "Numbers are ordered by where they sit on the number line: farther left is less. Fractions, percents and roots can be compared by their decimals. $\\sqrt{7}$ is between 2 and 3, because $2\\times2=4$, $3\\times3=9$, and 7 is between 4 and 9. The square root sign means the root that is not negative. In general, if a number is between $3\\times3=9$ and $4\\times4=16$, its square root is between 3 and 4. The same works for any two whole numbers next to each other.",
   "staar-decimal-operations":
     "Hundredths times a whole number are hundredths: $0.01m\\times n=0.01(mn)$, where $mn$ means $m$ times $n$. So the answer has two digits after the point. A unit fraction $\\frac1q$, with $q$ one of the numbers 1, 2, 3 and so on, equals $1\\div q$. Sharing a total $T$ equally among $n$ groups gives $T\\div n$ in each.",
   "staar-salary-percent":
     "$p$ percent of an amount $S$ is $\\frac{p}{100}\\times S$. After a raise of $p$ percent, the new amount is $S+\\frac{p}{100}\\times S$. If one salary is $d$ dollars more every year, then over $n$ years it earns $n\\times d$ dollars more.",
   "staar-measure-chains":
-    "A rectangle with length $\\ell$ and width $w$ has perimeter $2(\\ell+w)$ and area $\\ell w$. A square of side $s$ has perimeter $4s$ and area $s^{2}$.",
+    "A rectangle 18 feet long and 7 feet wide has perimeter $18+7+18+7=50$ feet and area $18\\times7=126$ square feet. With letters, a rectangle with length $\\ell$ and width $w$ has perimeter $2\\times(\\ell+w)$ and area $\\ell\\times w$. A square with side $s$ has perimeter $4\\times s$ and area $s\\times s$.",
   "staar-multistep-stories":
-    "A quantity found in the first step is a given for the second. For $a$ groups of $b$ shared into servings of $c$, the number of full servings is $\\lfloor ab/c\\rfloor$. If $k$ of one unit equal $m$ of another, one unit equals $\\frac{m}{k}$.",
+    "12 trays of 6 rolls is $12\\times6=72$ rolls, and boxes of 4 hold them in $72\\div4=18$ full boxes. The first answer, 72, is used in the second step. With letters, $a$ groups of $b$ packed into boxes of $c$ fill as many full boxes as the whole-number part of $(a\\times b)\\div c$. Any leftover is the remainder. If $k$ of one unit equal $m$ of another, then 1 of the first unit equals $m\\div k$ of the other.",
   "staar-line-from-points":
     "The line through two points $(x_1,y_1)$ and $(x_2,y_2)$ with $x_1\\neq x_2$ has slope $m=\\frac{y_2-y_1}{x_2-x_1}$ and $y$-intercept $b=y_1-mx_1$. (The small 1 and 2 label the first and second point.) For $B\\neq0$, the line $Ax+By=C$ has slope $-\\frac{A}{B}$.",
   "staar-stem-leaf-combine":
@@ -370,9 +421,9 @@ export const staarGapPrinciples: Record<string, string> = {
   "staar-dot-plot-threshold":
     "The number of data items satisfying a condition is the sum over all qualifying values of the number of items equal to that value.",
   "staar-money-vocabulary":
-    "Credit is an agreement to receive goods or money now and repay later, usually with interest or fees. A fixed expense is the same each period and a variable expense can differ each period.",
+    "Rent of 900, 900 and 900 dollars is the same each month, so it is a fixed expense. Groceries of 310, 285 and 342 dollars are different each month, so they are a variable expense. Credit is an agreement to get goods or money now and pay back later, often with an extra fee called interest.",
   "staar-table-rule-choice":
-    "A table matches a rule exactly when every pair $(x,y)$ in it satisfies the rule. A single pair that does not satisfy it shows the table does not match.",
+    "For the rule $y=x+4$, the input 3 must give $3+4=7$. A table that pairs 3 with 8 does not follow the rule, even if every other pair does. A table matches a rule exactly when every pair $(x, y)$ in it follows the rule. Here $(x, y)$ means an input and its output.",
   "staar-multistep-equations":
     "Adding or subtracting the same number on both sides, multiplying or dividing both sides by the same number other than 0, and using the distributive property $a(b+c)=ab+ac$ all give an equation with the same solutions. A linear equation $ax+b=cx+d$ with $a\\neq c$ ($a$ not equal to $c$) has exactly one solution, $x=\\frac{d-b}{a-c}$.",
   "staar-experiment-probability":
@@ -400,41 +451,54 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-grouped-expressions",
     title: "Evaluate expressions with nested groups, negatives and exponents",
     summary:
-      "Work inside the innermost group first, then exponents, then products and quotients, then sums and differences.",
+      "An expression is numbers and signs that stand for one number. Parentheses ( ) and brackets [ ] group a part to work out first. Work from the innermost group outward. Then do exponents, like $3^{2}=3\\times3$. Then multiply and divide. Then add and subtract.",
+    senses: {
+      product: "product-multiply",
+      part: "part",
+      square: "square-number",
+      squared: "square-number",
+      "more than": "more-than",
+    },
     templateIds: ["staar-nested-grouping", "staar-signed-exponent-order"],
     objectives: [
-      "Evaluate brackets around parenthesized groups and verbal products.",
-      "Evaluate expressions with negative numbers and a squared number.",
+      "Work out brackets around parentheses, and products described in words.",
+      "Work out expressions with negative numbers and a squared number.",
     ],
     intuition: [
       "Groups are done first",
       [
-        "You need to add, subtract, multiply and divide whole numbers and integers. Parentheses ( ) and brackets [ ] mark a group that is worked out as one number before the rest of the expression.",
-        "A square such as $3^{2}$ means $3\\times3$ and is done before multiplication. A negative number times a negative number is positive.",
+        "You need to add, subtract, multiply and divide whole numbers. Negative numbers, numbers less than 0 like $-6$, come in too.",
+        "Parentheses ( ) and brackets [ ] mark a group. Work the group out as one number before the rest.",
+        "A small raised 2 means squared: $3^{2}$ is $3\\times3=9$. The raised number is called an exponent. Do it before you multiply.",
+        "A positive number is more than 0. A negative number times a negative number is positive: $(-2)\\times(-3)=6$.",
+        "To evaluate an expression means to work out the one number it stands for.",
       ],
     ],
     workedExample: {
       prompt: "Evaluate $[(2+4)\\times(9-5)]-3\\times4$.",
       steps: [
-        "Inside the bracket: $2+4=6$ and $9-5=4$.",
-        "Multiply the groups: $6\\times4=24$.",
-        "Multiply before subtracting: $3\\times4=12$.",
-        "Subtract: $24-12=12$.",
+        "Start inside the bracket, with the innermost groups: $2+4=6$ and $9-5=4$.",
+        "Finish the bracket by multiplying the two groups: $6\\times4=24$.",
+        "Outside the bracket, multiply before you subtract: $3\\times4=12$.",
+        "Subtract last: $24-12=12$.",
       ],
       answer: "$12$",
     },
     closingSections: [
       method("Inside out, then left to right", [
-        "Find the innermost groups, replace each with its value, and move outward. Then do exponents, multiplication and division, then addition and subtraction, each from left to right.",
-        "“The product of 538 and the sum of 42 and 6” means $538\\times(42+6)$: the sum is a group.",
+        "Find the innermost groups and replace each with its value. Then move outward.",
+        "Next do exponents. Then multiply and divide, from left to right. Then add and subtract, from left to right.",
+        "A sum is the answer to an add, and a product is the answer to a times. So “the product of 538 and the sum of 42 and 6” means $538\\times(42+6)$. The sum is a group, worked out first.",
       ]),
       formal("Order of operations", [
-        "Grouping symbols are evaluated first, then exponents, then multiplication and division from left to right, then addition and subtraction from left to right. The exponent in $-c^{2}$ applies only to $c$.",
+        "This order is called the order of operations. Grouping symbols come first, then exponents.",
+        "Then multiplication and division, from left to right. Then addition and subtraction, from left to right.",
+        "The exponent in $-c^{2}$ works only on $c$. So $-c^{2}$ means $-(c\\times c)$.",
       ]),
     ],
     pitfalls: [
-      "In $-6^{2}$ only 6 is squared, so the value is $-36$.",
-      "Finish a bracket before using what is outside it.",
+      "In $-6^{2}$ only the 6 is squared, so the value is $-36$.",
+      "Finish a bracket before you use what is outside it.",
     ],
     parentGuide:
       "Ask the learner to say which part of $4\\times(7-3)^{2}$ comes first and why.",
@@ -443,7 +507,9 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-number-words",
     title: "Write numbers in words and read place-value units",
     summary:
-      "Read a number's digits by place: thousands first, then the rest, and say a decimal with the name of its last place.",
+      "A digit is one of the symbols 0 to 9. Its place in a number gives its value. To read a number under a million, say the thousands part, the digits left of the comma, then “thousand”, then the rest. A zero holds a place. Inside a whole number, a 0 is not said aloud. Read a decimal with the name of its last place, such as thousandths.",
+    senses: { part: "part", whole: "whole" },
+    noLink: ["change", "changes"],
     templateIds: ["staar-number-word-form"],
     objectives: [
       "Write the word form of a number given in expanded form.",
@@ -452,34 +518,38 @@ export const staarGapLessons: Lesson[] = [
     intuition: [
       "Each digit has a place",
       [
-        "You need to know place value: in 7,305 the 7 is thousands, the 3 is hundreds, the 0 is tens and the 5 is ones. A zero keeps a place but is not said aloud.",
-        "To say a number in words, say the thousands part as a number and then “thousand”, then say the rest.",
+        "In 7,305 the 7 is in the thousands place, so it means 7 thousands. The 3 means 3 hundreds, the 0 means 0 tens and the 5 means 5 ones.",
+        "A zero keeps the other digits in the right places. It is not said aloud: 7,305 is seven thousand, three hundred five.",
+        "Expanded form writes a number as the values of its digits added up: $7{,}000+300+5$.",
+        "To say a number in words, say the thousands part as a number and then “thousand”. Then say the rest.",
       ],
     ],
     workedExample: {
       prompt: "Write $600{,}000+4{,}000+300+8$ in words.",
       steps: [
-        "Add the terms: $600{,}000+4{,}000+300+8=604{,}308$.",
-        "The thousands part is 604: six hundred four thousand.",
-        "The rest is 308: three hundred eight.",
+        "Add the values to write the number in digits: $600{,}000+4{,}000+300+8=604{,}308$. The ten-thousands and tens places are empty, so each gets a 0.",
+        "The thousands part is 604, so say: six hundred four thousand.",
+        "The rest is 308, so say: three hundred eight.",
       ],
       answer: "six hundred four thousand, three hundred eight",
     },
     closingSections: [
       method("Decimals and counts of units", [
-        "A decimal is read as its whole part, “and”, then the digits after the point as a whole number with the name of the last place. $4.193$ is four and 193 thousandths.",
-        "For “36 hundreds, 9 tens and 6 ones”, change each count to its value: $3600+90+6=3696$.",
+        "Read a decimal as its whole part, then “and”, then the digits after the point as a whole number with the name of the last place.",
+        "So $4.193$ is four and 193 thousandths. Its last digit, 3, is in the thousandths place.",
+        "For “36 hundreds, 9 tens and 6 ones”, change each count to its value and add: $3600+90+6=3696$.",
       ]),
       formal("Place value", [
-        "A number is the sum of each digit times its place value. A decimal with three places is the whole number formed by its digits divided by 1000.",
+        "A number is the sum of each digit times its place value. The place value is what the place is worth: ones, tens, hundreds and so on.",
+        "A decimal with three places is the whole number made by its digits, divided by 1000. So $0.193$ is $193\\div1000$.",
       ]),
     ],
     pitfalls: [
-      "Leaving out a zero place changes the number: 605,000 is not 65,000.",
+      "Leaving out a zero in a whole number changes it: 605,000 is not 65,000.",
       "A decimal with three places is read in thousandths, not hundredths.",
     ],
     parentGuide:
-      "Ask the learner to read 20,507 aloud and say what the 0 is for.",
+      "Ask the learner to read 20,507 aloud and say what each 0 is for.",
   }),
   build({
     id: "staar-rename-forms",
@@ -592,77 +662,88 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-story-models",
     title: "Choose the equation that fits a story",
     summary:
-      "Say what the story combines, write it as an equation, and test a choice with the story's numbers.",
+      "An equation says two amounts are equal. A letter such as $n$ stands for a number the story does not tell. Say what the story puts together, then write it as an equation. To check a choice, put in the story's numbers and see whether it is true.",
+    senses: { part: "part", parts: "part", unit: "unit", units: "unit" },
     templateIds: ["staar-story-model-choice", "staar-rate-equation-choice"],
     objectives: [
-      "Choose an equation with an unknown factor or part for a story.",
+      "Choose an equation for a story with one unknown number.",
       "Tell which equation or expression does not fit.",
-      "Choose the equation for a quantity at a steady rate.",
+      "Choose the equation for an amount that grows at a steady rate.",
     ],
     intuition: [
       "An equation says two amounts are equal",
       [
-        "You need to multiply and divide. A letter such as $n$ stands for a number the story does not tell. If 4 friends share 36 stickers, each gets $n$, then 4 groups of $n$ make 36: $4\\times n=36$.",
-        "The same facts give $36\\div4=n$ and $36\\div n=4$. They are in one fact family.",
+        "You need to multiply and divide. A letter such as $n$ stands for a number the story does not tell.",
+        "4 friends share 36 stickers equally, and each gets $n$. Then 4 groups of $n$ make 36: $4\\times n=36$.",
+        "The same numbers also give $36\\div4=n$ and $36\\div n=4$. Facts like these, made from the same three numbers, are called a fact family.",
       ],
     ],
     workedExample: {
       prompt:
         "Eli buys a book for 6.50 dollars and a map for 3.25 dollars. He also buys a pen. He spends 12 dollars in all. Let $p$ be the price of the pen. Write an equation.",
       steps: [
-        "The three prices are added to make the total.",
-        "The known prices are 6.50 and 3.25, and the pen costs $p$.",
-        "The total is 12, so $6.50+3.25+p=12$.",
+        "6.50 dollars is 6 dollars and 50 cents, and 3.25 dollars is 3 dollars and 25 cents. Eli buys three things, so the three prices add up to the total he spends.",
+        "The book is 6.50 and the map is 3.25. The pen's price is unknown, so call it $p$.",
+        "He spends 12 in all, so the three prices add to 12: $6.50+3.25+p=12$.",
       ],
       answer: "$6.50+3.25+p=12$",
     },
     closingSections: [
       method("Test with the story's number", [
-        "To check a choice, put in the value the story gives for the unknown. A true equation fits; a false one does not. For “which can NOT”, find the three true ones.",
-        "For a steady rate, divide the total by the number of units to get the rate, then multiply the rate by the number of units.",
+        "To check a choice, first check that it does what the story does: equal groups multiply, and joining parts add. Then work out the unknown and put it in. A matching equation comes out true. A true equation like $36+4=40$ can still miss the story, so check both.",
+        "For “which can NOT”, find the choices that fit the story. The one left over is the answer.",
+        "A rate is the amount for each unit, such as pounds per day. For a steady rate, divide the total by the number of units. Then multiply the rate by any number of units.",
       ]),
       formal("Equations and rates", [
-        "If $g$ equal groups of $n$ make $T$, then $gn=T$. At a constant rate $k$ per unit, the amount for $x$ units is $y=kx$ where $k=\\frac{T}{D}$ for a total $T$ over $D$ units.",
+        "If $g$ equal groups of $n$ make $T$, then $g\\times n=T$.",
+        "At a steady rate $k$ for each unit, the amount for $x$ units is $y=k\\times x$. If $D$ units give a total $T$, then $k=T\\div D$.",
       ]),
     ],
     pitfalls: [
       "$36\\div4$ and $4\\div36$ are different. Check the order.",
-      "Do not use the total as the rate: 65 pounds in 130 days is 0.5 pounds per day.",
+      "Do not use the total as the rate. 65 pounds in 130 days is $65\\div130=0.5$ pound per day.",
     ],
     parentGuide:
-      "Ask the learner to tell the story that goes with $3\\times n=24$.",
+      "Ask the learner to tell a story that goes with $3\\times n=24$.",
   }),
   build({
+    noLink: ["change"],
+    senses: { "more than": "more-than", parts: "part", part: "part" },
     id: "staar-order-numbers",
     title: "Order decimals, fractions, percents and roots",
     summary:
-      "Write every number as a decimal with the same number of places, then compare from the left.",
+      "A decimal uses a point to show parts of one: in 0.45, the digit 4 means 4 tenths and the 5 means 5 hundredths. To compare numbers, write each one as a decimal. Give every decimal the same number of digits after the point by adding zeros on the right. Line up the points, then compare digits from the left. This works for numbers that are not negative. On a number line, the number farther left is less.",
     templateIds: ["staar-order-decimals", "staar-order-mixed-forms"],
     objectives: [
       "Order decimals with different numbers of places.",
-      "Order signed fractions, decimals, percents and square roots.",
+      "Order fractions, decimals, percents and square roots, including negative numbers.",
     ],
     intuition: [
       "Same form, then compare",
       [
-        "You need to know tenths, hundredths and thousandths. A decimal with more places is not always greater: 0.5 is greater than 0.45 because 5 tenths is more than 4 tenths.",
-        "To compare numbers in different forms, write each as a decimal: a fraction is a division, a percent is divided by 100, and a root is estimated between two whole numbers.",
+        "The digits after a decimal point are tenths, then hundredths, then thousandths. A tenth is one of 10 equal parts of one.",
+        "A decimal with more digits is not always greater. 0.5 is greater than 0.45, because 5 tenths is more than 4 tenths.",
+        "To compare numbers in different forms, write each as a decimal. A fraction is its top number divided by its bottom number. A percent is divided by 100.",
+        "A square root such as $\\sqrt{7}$ is the number that times itself makes 7. It lies between 2 and 3, because $2\\times2=4$ and $3\\times3=9$.",
       ],
     ],
     workedExample: {
       prompt: "Order $0.4$, $0.043$ and $0.35$ from least to greatest.",
       steps: [
-        "Write each with three places: $0.400$, $0.043$, $0.350$.",
-        "Compare tenths: 0, 3 and 4. The order is $0.043$, $0.350$, $0.400$.",
+        "Write each number with three digits after the point: $0.400$, $0.043$, $0.350$. Zeros on the right do not change the value.",
+        "Compare the tenths digits: 4, 0 and 3. The smallest is 0, then 3, then 4.",
+        "So the order is $0.043$, $0.350$, $0.400$, the same as $0.043$, $0.35$, $0.4$.",
       ],
       answer: "$0.043,\\ 0.35,\\ 0.4$",
     },
     closingSections: [
       method("Negatives and roots", [
-        "Between negative numbers the one farther from 0 is less: $-1.1<-0.6$. A square root like $\\sqrt{7}$ is between 2 and 3, about 2.65.",
+        "A negative number is less than 0. Between two negative numbers, the one farther from 0 is less: $-1.1<-0.6$. The sign $<$ means “is less than”.",
+        "A square root like $\\sqrt{7}$ is between 2 and 3. It is about 2.65, because $2.65\\times2.65$ is about 7.",
       ]),
       formal("Order on the number line", [
-        "Of two real numbers, the one to the left on the number line is less. Negative numbers are less than 0, and 0 is less than every positive number.",
+        "Of two numbers, the one to the left on the number line is less.",
+        "Negative numbers are less than 0, and 0 is less than every positive number.",
       ]),
     ],
     pitfalls: [
@@ -778,7 +859,16 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-perimeter-area-chains",
     title: "Chain perimeter and area",
     summary:
-      "Find a missing side from the perimeter, then use the sides for the area; use decimals and squares.",
+      "Perimeter is the distance around a shape. Area is the space it covers, counted in unit squares. A missing side links the two. Find the missing side from the perimeter, then multiply the sides for the area.",
+    senses: {
+      side: "side",
+      sides: "side",
+      square: "square-shape",
+      squares: "square-shape",
+      unit: "unit",
+      units: "unit",
+      squared: "square-number",
+    },
     templateIds: ["staar-measure-chains"],
     objectives: [
       "Find a width from a perimeter and a length, then the area.",
@@ -788,31 +878,34 @@ export const staarGapLessons: Lesson[] = [
     intuition: [
       "Sides connect perimeter and area",
       [
-        "You need to multiply and add decimals. Perimeter is the distance around a rectangle, two lengths and two widths. Area is length times width, in square units.",
-        "A square has four equal sides, so its perimeter divided by 4 is its side.",
+        "You need to multiply and add, with decimals too.",
+        "Perimeter is the distance around a rectangle: two lengths and two widths added up.",
+        "Area is the number of unit squares that cover it. A unit square has sides 1 unit long. For a rectangle, area is length times width.",
+        "A square has 4 equal sides. So its perimeter divided by 4 is one side.",
       ],
     ],
     workedExample: {
       prompt:
         "A rectangle has perimeter 30 cm and length 9 cm. What is its area?",
       steps: [
-        "Two lengths: $2\\times9=18$. The two widths make $30-18=12$.",
-        "One width is $12\\div2=6$ cm.",
-        "Area: $9\\times6=54$ square cm.",
+        "The two lengths make $2\\times9=18$ cm. The rest of the perimeter is the two widths: $30-18=12$ cm.",
+        "The two widths are equal, so one width is $12\\div2=6$ cm.",
+        "Area is length times width: $9\\times6=54$ square cm.",
       ],
       answer: "$54$ square cm",
     },
     closingSections: [
       method("Find the side first", [
-        "Subtract the known sides from the perimeter and share the rest. For a square divide by 4. Then multiply sides for area.",
+        "Subtract the known sides from the perimeter and share the rest equally. For a square, divide the perimeter by 4. Then multiply the sides for the area.",
       ]),
       formal("Formulas", [
-        "A rectangle has perimeter $2(\\ell+w)$ and area $\\ell w$. A square has perimeter $4s$ and area $s^{2}$.",
+        "A rectangle with length $\\ell$ and width $w$ has perimeter $2\\times(\\ell+w)$ and area $\\ell\\times w$.",
+        "A square with side $s$ has perimeter $4\\times s$ and area $s\\times s$, also written $s^{2}$ and read “$s$ squared”.",
       ]),
     ],
     pitfalls: [
       "Do not give the perimeter when the area is asked.",
-      "Area uses square units.",
+      "Area uses square units, like square cm.",
     ],
     parentGuide:
       "Ask the learner to draw a 4 by 3 rectangle and compare its perimeter and area.",
@@ -821,40 +914,48 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-two-step-stories",
     title: "Solve two-step stories",
     summary:
-      "Find the quantity the story gives indirectly first, then use it in the second step.",
+      "Some questions need two steps. First find an amount the story does not say straight out. Write it down. Then use it to answer the question.",
+    senses: { unit: "unit", units: "unit" },
+    noLink: ["change", "changes"],
     templateIds: ["staar-multistep-stories"],
     objectives: [
       "Add and then subtract to compare totals.",
       "Share, then regroup into piles.",
-      "Multiply then divide into full servings, or convert units.",
+      "Multiply then divide into full servings, or change units.",
     ],
     intuition: [
       "Two steps, one question",
       [
-        "You need to add, subtract, multiply and divide whole numbers. Some questions cannot be answered until you find another amount first.",
-        "Write the first result, then use it in the second step.",
+        "You need to add, subtract, multiply and divide whole numbers.",
+        "Some questions cannot be answered until you find another amount first.",
+        "Write the first answer down. Then use it in the second step.",
       ],
     ],
     workedExample: {
       prompt:
         "A bakery has 12 trays with 6 rolls each. A box holds 4 rolls. How many full boxes?",
-      steps: ["All the rolls: $12\\times6=72$.", "Boxes of 4: $72\\div4=18$."],
+      steps: [
+        "First find all the rolls. 12 trays of 6 rolls each is $12\\times6=72$ rolls.",
+        "Then pack them in boxes of 4: $72\\div4=18$. Nothing is left over, so all 18 boxes are full.",
+      ],
       answer: "$18$ boxes",
     },
     closingSections: [
       method("Name the first result", [
-        "Say what the first step finds and write it down. When a conversion row is given, find the amount for 1 unit first.",
-        "Only full groups count when the question asks for full servings.",
+        "Say what the first step finds and write it down.",
+        "When a table changes units, find the amount for 1 unit first.",
+        "When the question asks for full boxes or servings, count only full groups. The amount left over is called the remainder.",
       ]),
-      formal("Composition of steps", [
-        "If $q_1=f(a,b)$ is found first and the answer is $g(q_1,c)$, the answer is $g(f(a,b),c)$. For full groups, use the quotient and ignore the remainder.",
+      formal("Two steps in a row", [
+        "The first answer becomes a number for the second step: $12\\times6=72$, then $72\\div4=18$.",
+        "For full groups, use the whole-number answer and leave out the remainder. 74 rolls make 18 full boxes of 4, with 2 rolls left over.",
       ]),
     ],
     pitfalls: [
       "Do not stop after the first step.",
       "Leftover pieces are not a full serving.",
     ],
-    parentGuide: "Ask what the first thing to find is before solving.",
+    parentGuide: "Before solving, ask what the first thing to find is.",
   }),
   build({
     id: "staar-lines-from-data",
@@ -959,7 +1060,8 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-money-words",
     title: "Credit and fixed or variable expenses",
     summary:
-      "Credit is getting something now and paying later; fixed expenses stay the same and variable expenses change.",
+      "Credit means you get something now and pay for it later. An expense is money spent on something. A fixed expense costs the same each month. A variable expense costs different amounts in different months.",
+    noLink: ["change", "changes", "mean"],
     templateIds: ["staar-money-vocabulary"],
     objectives: [
       "Recognize an example of credit.",
@@ -968,7 +1070,9 @@ export const staarGapLessons: Lesson[] = [
     intuition: [
       "Money words",
       [
-        "You need to compare numbers. Credit means getting something now and paying for it later, so the money is borrowed. A tax is a charge, not a loan.",
+        "You need to compare numbers.",
+        "Credit means getting something now and paying for it later. The money is borrowed.",
+        "A tax is money people must pay to the government. It is not borrowed, so it is not credit.",
         "A fixed expense costs the same each month. A variable expense costs different amounts in different months.",
       ],
     ],
@@ -976,22 +1080,22 @@ export const staarGapLessons: Lesson[] = [
       prompt:
         "Rent was 900, 900 and 900 dollars. Groceries were 310, 285 and 342 dollars. Which is variable?",
       steps: [
-        "Rent is the same each month: fixed.",
-        "Groceries change: variable.",
+        "Rent is 900 dollars every month. It stays the same, so it is fixed.",
+        "Groceries, food from the store, were 310, 285 and 342 dollars. The amounts are different, so groceries are variable.",
       ],
       answer: "Groceries",
     },
     closingSections: [
       method("Compare the row", [
-        "Look at the amounts across months. Equal amounts mean fixed.",
+        "Look at the amounts across the months. The same amount every month means fixed. Different amounts mean variable.",
       ]),
       formal("Definitions", [
-        "Credit is an agreement to receive now and repay later. A fixed expense is the same each period; a variable expense can differ.",
+        "Credit is an agreement to get something now and pay back later. A fixed expense is the same each month. A variable expense can be different each month.",
       ]),
     ],
     pitfalls: [
-      "A bill paid every month can still vary.",
-      "Saving money is not credit.",
+      "A bill paid every month can still be different each month.",
+      "Saving money is not credit. Saved money is yours, not borrowed.",
     ],
     parentGuide:
       "Ask the learner for one fixed and one variable expense at home.",
@@ -1000,7 +1104,8 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-rule-tables",
     title: "Check a table against a rule",
     summary:
-      "Apply the rule to each input and compare it with the table's output; one wrong pair rules the table out.",
+      "A rule says how to get the output, the number you get, from the input, the number you start with. Use the rule on each input and compare with the table's output. One wrong pair means the table does not follow the rule.",
+    senses: { rule: "rule" },
     templateIds: ["staar-table-rule-choice"],
     objectives: [
       "Choose the table that follows an add or multiply rule.",
@@ -1009,30 +1114,34 @@ export const staarGapLessons: Lesson[] = [
     intuition: [
       "A rule must work for every pair",
       [
-        "You need to add and multiply. A table lists pairs of an input $x$ and an output $y$. A rule like $y=x+4$ must give the table's $y$ for every $x$.",
+        "You need to add and multiply.",
+        "A table lists pairs: an input $x$ and an output $y$.",
+        "A rule like $y=x+4$ says: add 4 to the input to get the output. It must give the table's $y$ for every $x$.",
       ],
     ],
     workedExample: {
       prompt: "Does the table with $x=1,2,3$ and $y=5,6,8$ follow $y=x+4$?",
       steps: [
-        "$1+4=5$ and $2+4=6$ match.",
-        "$3+4=7$ but the table says 8, so it does not match.",
+        "Use the rule on the first two inputs: $1+4=5$ and $2+4=6$. Both match the table.",
+        "Use it on the last input: $3+4=7$. The table says 8, so this pair does not match.",
+        "One wrong pair is enough, so the table does not follow the rule.",
       ],
       answer: "No",
     },
     closingSections: [
       method("Compute, then compare", [
-        "Find the expected outputs first and compare each table with them.",
+        "First find the outputs the rule gives. Then compare each table with them, pair by pair.",
       ]),
       formal("Rules and tables", [
-        "A table matches a rule exactly when every pair satisfies it.",
+        "A table matches a rule exactly when every pair follows it. One pair that breaks the rule is enough to reject the table.",
       ]),
     ],
     pitfalls: [
       "Checking only the first pair can miss a wrong later pair.",
       "A table can follow a different rule, such as adding the same number instead of multiplying.",
     ],
-    parentGuide: "Ask the learner to make a table for $y=3x$.",
+    parentGuide:
+      "Ask the learner to make a table for $y=3x$, where $3x$ means 3 times $x$.",
   }),
   build({
     id: "staar-multistep-linear",
