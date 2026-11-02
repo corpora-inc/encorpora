@@ -6,16 +6,16 @@ const specs: SelectContentSpec[] = [
     skillId: "lines-symmetry",
     title: "Parallel and perpendicular sides of shapes",
     summary:
-      "Some shapes have parallel sides, which never meet. Some have perpendicular sides, which meet at a square corner. In this lesson you pick every drawn shape that has the kind of sides the question asks for.",
+      "Some shapes have parallel sides, which never meet. Some have perpendicular sides, which meet at a square corner, or would if you made them longer. In this lesson you pick every drawn shape that has the kind of sides the question asks for.",
     goal: "Select the drawn polygons that have at least one pair of parallel sides, or at least one pair of perpendicular sides.",
     intuition:
-      "A polygon is a flat, closed shape with straight sides. Two sides are parallel when they point the same way and stay the same distance apart, so they never meet. Two sides are perpendicular when they meet at a right angle: a square corner, like the corner of a sheet of paper.",
+      "A polygon is a flat, closed shape with straight sides. Two sides are parallel when they point the same way and stay the same distance apart, so they never meet. Two sides are perpendicular when they meet at a right angle: a square corner, like the corner of a sheet of paper. Sides that do not touch are perpendicular too if they would make a square corner when made longer.",
     more: "A rectangle has both. Its opposite sides, the ones across from each other, are parallel. Sides that meet at a corner are perpendicular. A trapezoid has one pair of parallel sides. A triangle can have a right angle, but it never has a pair of parallel sides.",
     terms: ["parallel", "perpendicular", "right-angle"],
     steps: [
       "Look at one shape at a time. Go around its sides.",
       "For parallel sides, look for two sides that point the same way and never meet.",
-      "For perpendicular sides, look for a square corner where two sides meet.",
+      "For perpendicular sides, look for a square corner where two sides meet. Also check sides that do not touch: would they make a square corner if you made them longer?",
       "Select the shapes that have what the question asks for. Check that you chose as many as the question asks.",
     ],
     watch:
@@ -59,7 +59,7 @@ const specs: SelectContentSpec[] = [
       "A polygon is a flat, closed shape with straight sides. Its name tells how many sides it has. In this lesson you count the sides of a drawn shape. Then you pick every name or description with the same number of sides.",
     goal: "Select the named shapes or descriptions that have as many sides as a drawn polygon.",
     intuition:
-      "A polygon is a flat, closed shape made of straight sides. Its name tells how many sides it has. A triangle has 3, a pentagon 5, a hexagon 6 and an octagon 8. A polygon has as many corners as sides. It also has that many angles, the openings at its corners.",
+      "A polygon is a flat, closed shape made of straight sides. Its name tells how many sides it has. A triangle has 3, a pentagon 5, a hexagon 6 and an octagon 8. A polygon has as many corners as sides, because each side ends at a corner where the next side starts. It also has that many angles, the openings at its corners.",
     more: "A quadrilateral has 4 sides. So do squares, rectangles, rhombuses, trapezoids and parallelograms. Different names can describe shapes with the same number of sides.",
     terms: ["polygon", "side", "corner"],
     steps: [
@@ -71,13 +71,13 @@ const specs: SelectContentSpec[] = [
     watch:
       "Count sides, not names. A square and a rectangle both have 4 sides.",
     principle:
-      "A polygon with $n$ sides has $n$ corners and $n$ angles. Here $n$ stands for a count. The start of its name gives $n$: tri- means 3, quadri- 4, penta- 5, hexa- 6 and octa- 8.",
+      "A polygon with $n$ sides has $n$ corners and $n$ angles. Here $n$ stands for a count. Many names start with a number part: tri- means 3, quadri- 4, penta- 5, hexa- 6 and octa- 8.",
     example: {
       prompt:
         "A drawn polygon has $5$ sides. Which has as many sides: a hexagon or a shape with $5$ corners?",
       steps: [
         "A hexagon has 6 sides.",
-        "A shape with 5 corners has 5 sides, because a polygon has as many sides as corners.",
+        "The choice means a polygon with 5 corners. Each side ends at a corner where the next side starts, so it has 5 sides.",
         "Only the shape with 5 corners matches the drawn shape's 5 sides.",
       ],
       answer: "A shape with $5$ corners",
@@ -108,7 +108,7 @@ const specs: SelectContentSpec[] = [
       "Parallel lines never meet. Perpendicular lines cross at a square corner. In this lesson you find the two parallel lines, or the two perpendicular lines, among five.",
     goal: "Select the two lines of five that appear parallel, or the two that appear perpendicular.",
     intuition:
-      "Parallel lines lean exactly the same amount, so they never meet. Perpendicular lines cross to make a square corner, called a right angle. In each picture, one line has a partner like this. The other lines do not.",
+      "Parallel lines lean exactly the same amount, the same way, so they never meet. Perpendicular lines cross to make a square corner, called a right angle. In each picture, two of the lines make a pair like this. The other three do not.",
     more: "To compare how lines lean, picture each one next to the edge of the page. Two lines that tip the same amount the same way are parallel. A line turned a quarter turn from another line is perpendicular to it.",
     terms: ["parallel", "perpendicular"],
     steps: [
@@ -159,11 +159,11 @@ const specs: SelectContentSpec[] = [
     goal: "Select the drawn angles that are acute, right or obtuse by comparing each with a right angle.",
     intuition:
       "A ray is a straight line that starts at a point and goes on in one direction. An angle is the opening between two rays that start at the same point. A right angle is a square corner. An angle smaller than a right angle is acute. An angle bigger than a right angle, but smaller than a straight line, is obtuse.",
-    more: "The corner of a sheet of paper is a right angle. Hold it against each angle. If the angle fits inside the corner, it is acute. If it opens wider, it is obtuse.",
+    more: "The corner of a sheet of paper is a right angle. Hold it against each angle. If the angle fits inside the corner with room to spare, it is acute. If it matches the corner exactly, it is right. If it opens wider, but not as wide as a straight line, it is obtuse.",
     terms: ["acute-angle", "right-angle", "obtuse-angle"],
     steps: [
       "Compare each angle with a right angle, the square corner of a sheet of paper.",
-      "Narrower than the corner is acute. The same as the corner is right. Wider is obtuse.",
+      "Narrower than the corner is acute. Exactly the corner is right. Wider, but not as wide as a straight line, is obtuse.",
       "Turn the page if it helps. Turning an angle does not change its size.",
       "Select the angles of the kind asked for. Check that you chose as many as the question asks.",
     ],
@@ -176,7 +176,7 @@ const specs: SelectContentSpec[] = [
         "An angle opens wider than the corner of a sheet of paper but is not a straight line. Is it acute, right or obtuse?",
       steps: [
         "It opens wider than a right angle, so it is more than $90^\\circ$.",
-        "It is not a straight line, so it is less than $180^\\circ$.",
+        "It does not open as wide as a straight line, which is $180^\\circ$, so it is less than $180^\\circ$.",
         "An angle between $90^\\circ$ and $180^\\circ$ is obtuse.",
       ],
       answer: "Obtuse",
@@ -213,7 +213,7 @@ const specs: SelectContentSpec[] = [
       "A line of symmetry folds a shape into two halves that match exactly. In this lesson you check the dashed lines drawn on shapes. You pick the shapes where the fold works.",
     goal: "Select the figures whose dashed line, or both dashed lines, are lines of symmetry.",
     intuition:
-      "A line of symmetry cuts a shape into two halves that match exactly when you fold along it. Fold a rectangle along the line down its middle, and the halves match. Fold it from one corner to the far corner, and they do not.",
+      "A line of symmetry cuts a shape into two halves that match exactly when you fold along it. Fold a rectangle along the line down its middle, and the halves match. Fold a long rectangle from one corner to the far corner, and they do not.",
     more: "Some shapes have several lines of symmetry. A square has 4. Some shapes have none, like a parallelogram that leans over and has two different side lengths.",
     terms: ["line-of-symmetry", "reflection"],
     steps: [
@@ -231,7 +231,7 @@ const specs: SelectContentSpec[] = [
         "A dashed line runs from one corner of a rectangle to the opposite corner. Is it a line of symmetry?",
       steps: [
         "Fold along the corner-to-corner line.",
-        "The two triangles are the same size, but a long side lands on a short side.",
+        "The two triangles are the same size, but they do not line up: their corners stick out past each other.",
         "The corners do not match, so it is not a line of symmetry.",
       ],
       answer: "No",
@@ -273,7 +273,7 @@ const specs: SelectContentSpec[] = [
       "Select the statements or angles the question asks for. Check that you chose as many as the question asks.",
     ],
     watch:
-      "Read the scale that starts at 0 on ray $A$. The other scale gives 180 minus the angle.",
+      "Read the scale that starts at 0 on ray $A$. On the other scale, a ray reads 180 minus its angle from ray $A$.",
     principle:
       "Say two rays from a vertex read $a$ and $b$ on the same scale, with $a$ less than $b$. The angle between them measures $b-a$ degrees. Angles side by side add: $\\angle AOB+\\angle BOC=\\angle AOC$ when ray $B$ is between rays $A$ and $C$.",
     example: {
@@ -296,7 +296,7 @@ const specs: SelectContentSpec[] = [
       "Adding the readings instead of subtracting.",
     ],
     parentGuide:
-      "Draw three rays from one point with your learner. Measure all three angles and check that two of them add to the third.",
+      "Draw three rays from the center of a protractor with your learner. Measure all three angles and check that the two smaller ones add up to the largest.",
     assessed:
       "Reading three or four rays drawn on one protractor with readings in multiples of $5^\\circ$, and either selecting the two or three true measures of five or selecting the angles of six whose measure is not a stated value.",
     notAssessed:
@@ -382,7 +382,7 @@ const specs: SelectContentSpec[] = [
       "A solid is a shape that takes up space, like a box or a ball. A face is one flat surface of a solid. In this lesson you pick every drawn solid that has a given property, such as a curved surface or two matching faces.",
     goal: "Select the drawn solids that have a stated property, such as two congruent parallel faces or a curved surface.",
     intuition:
-      "A solid is a shape that takes up space. A face is one flat surface of a solid. A prism has two bases: matching ends that are congruent, the same size and shape, and parallel, the same distance apart everywhere. Think of the top and bottom of a box. Rectangles join the two bases. A pyramid has one base and triangle faces that meet at a point. A cylinder, a cone and a sphere have curved surfaces, which bend instead of lying flat.",
+      "A solid is a shape that takes up space. A face is one flat surface of a solid. A prism has two bases: matching ends that are congruent, the same size and shape, and parallel, the same distance apart everywhere. Think of the top and bottom of a box. In the prisms here, rectangles join the two bases. A pyramid has one base and triangle faces that meet at a point. A cylinder, a cone and a sphere have curved surfaces, which bend instead of lying flat.",
     more: "Dashed lines in a drawing show edges hidden behind the solid. An edge is where two faces meet. Count the hidden faces too when a question asks about faces.",
     terms: [
       "face-solid",
@@ -401,7 +401,7 @@ const specs: SelectContentSpec[] = [
     watch:
       "Questions about faces ask only about prisms and pyramids. A cylinder, a cone and a sphere each have a curved surface, so they do not have only flat surfaces.",
     principle:
-      "A prism whose base has $n$ sides has $n+2$ flat faces: 2 matching parallel bases and $n$ rectangles. A pyramid whose base has $n$ sides has $n+1$ flat faces: 1 base and $n$ triangles. Here $n$ stands for a count. Cylinders, cones and spheres each have a curved surface.",
+      "A prism whose base has $n$ sides has $n+2$ flat faces: 2 matching parallel bases and $n$ side faces, which are rectangles in the prisms here. A pyramid whose base has $n$ sides has $n+1$ flat faces: 1 base and $n$ triangles. Here $n$ stands for a count. Cylinders, cones and spheres each have a curved surface.",
     example: {
       prompt:
         "A solid has one square base and four triangular faces that meet at a point. Does it have two congruent parallel faces?",

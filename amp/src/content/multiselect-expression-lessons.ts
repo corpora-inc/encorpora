@@ -19,7 +19,7 @@ const specs: SelectContentSpec[] = [
       "Select only the choices that fit. Check that you chose as many as the question asks.",
     ],
     watch:
-      "When parts are taken from a total, the answer is less than the total. An expression that adds a removed amount back does not fit.",
+      "When parts are taken from a total, the answer is less than the total. An expression like $500-120+80$, which takes one amount away and then adds the other back, does not fit.",
     principle:
       "A whole is the sum of its parts. So one part is the whole minus the other parts: $T-a-b=T-(a+b)$. Here $T$ is the total, and $a$ and $b$ are the parts taken away. Adding and subtracting undo each other. So if $k$ is the known part, $\\square+k=T$ and $T-k=\\square$ find the same unknown.",
     example: {
@@ -64,7 +64,7 @@ const specs: SelectContentSpec[] = [
     goal: "Select the expressions that have the same value as an expression with a subtraction inside parentheses.",
     intuition:
       "Parentheses ( ) show which part to do first. In $3\\times(9-4)$, subtract first: $9-4=5$. Then multiply: $3\\times5=15$. The value of an expression is the number it works out to.",
-    more: "A rewrite keeps the value when it only swaps the order of the numbers being multiplied. It also keeps the value when it multiplies each number in the parentheses, as in $3\\times9-3\\times4$. Dropping the parentheses, as in $3\\times9-4$, changes the value.",
+    more: "After a $\\times$ sign, the parentheses matter. $3\\times(9-4)$ is the same as multiplying each number in the parentheses, $3\\times9-3\\times4$. Dropping the parentheses, as in $3\\times9-4$, changes the value. After a plus sign, they do not matter: $10+(9-4)=10+9-4$. Dividing a difference works like multiplying: $(12-6)\\div3=12\\div3-6\\div3$. You can add or multiply in either order.",
     terms: ["parentheses", "order-of-operations"],
     steps: [
       "Find the value of the given expression. Do the parentheses first.",
@@ -75,7 +75,7 @@ const specs: SelectContentSpec[] = [
     watch:
       "Do not drop the parentheses: $3\\times(9-4)=15$, but $3\\times9-4=23$.",
     principle:
-      "Work out an expression in this order: parentheses first, then multiply and divide from left to right, then add and subtract from left to right. Multiplying a difference is the same as multiplying each number and then subtracting: $a\\times(b-c)=a\\times b-a\\times c$. Here $a$, $b$ and $c$ stand for numbers. You can multiply in either order: $a\\times b=b\\times a$.",
+      "Work out an expression in this order: parentheses first, then multiply and divide from left to right, then add and subtract from left to right. Multiplying a difference is the same as multiplying each number and then subtracting: $a\\times(b-c)=a\\times b-a\\times c$. Here $a$, $b$ and $c$ stand for numbers. Adding a difference needs no parentheses: $a+(b-c)=a+b-c$. You can add or multiply in either order: $a+b=b+a$ and $a\\times b=b\\times a$.",
     example: {
       prompt:
         "Does $2\\times7-2\\times3$ have the same value as $2\\times(7-3)$?",
@@ -112,7 +112,7 @@ const specs: SelectContentSpec[] = [
       "Customary units are the units used in the United States, like inches, feet, gallons and pounds. One amount can be written in different units. In this lesson you pick every measurement equal to a given one.",
     goal: "Select the measurements equal to a stated length, capacity or weight by changing every measurement to the smallest unit.",
     intuition:
-      "A bigger unit is made of smaller ones. 1 yard is 3 feet, or 36 inches. 1 gallon is 4 quarts. 1 pound is 16 ounces. A measurement can use one unit or two, such as 5 yards 3 feet. Capacity is how much a container holds, and weight is how heavy something is.",
+      "A bigger unit is made of smaller ones. 1 yard is 3 feet, or 36 inches. 1 gallon is 4 quarts, 1 quart is 2 pints, and 1 pint is 2 cups. 1 pound is 16 ounces. A measurement can use one unit or two, such as 5 yards 3 feet. Capacity is how much a container holds, and weight is how heavy something is.",
     more: "To compare, change every measurement to the same small unit. Then compare the numbers. Many different forms name the same amount.",
     terms: ["customary-units", "equivalent"],
     steps: [
@@ -161,7 +161,7 @@ const specs: SelectContentSpec[] = [
     goal: "Select the true statements about a rule that multiplies, $y$ equals a number times $x$, and a rule that adds, $y$ equals $x$ plus a number.",
     intuition:
       "A rule turns each input number $x$ into an output number $y$. In $y=7x$, $7x$ means 7 times $x$. Every $y$ is 7 times its $x$, so the rule is multiplicative: it multiplies. In $y=x+7$, every $y$ is 7 more than its $x$, so the rule is additive: it adds. The two rules give different values. For $x=3$, the first gives 21 and the second gives 10.",
-    more: "Here is a quick test. Find $y$ for two values of $x$. If $y\\div x$ is the same both times, the rule multiplies. If $y-x$ is the same both times, the rule adds.",
+    more: "Here is a quick test. Find $y$ for two values of $x$. Use values of $x$ other than 0. If $y\\div x$ is the same both times, the rule multiplies. If $y-x$ is the same both times, the rule adds. For the two kinds of rules here, that is enough to tell them apart.",
     terms: ["multiplicative-rule", "additive-rule"],
     steps: [
       "Use each rule to find $y$ for two values of $x$, such as $x=1$ and $x=2$.",
@@ -170,9 +170,9 @@ const specs: SelectContentSpec[] = [
       "Select only the true statements. Check that you chose as many as the question asks.",
     ],
     watch:
-      "A rule that multiplies does not add. In $y=7x$, the difference $y-x$ changes when $x$ changes.",
+      "A rule like $y=7x$ does not add. In it, the difference $y-x$ changes when $x$ changes.",
     principle:
-      "A rule $y=kx$ keeps $y\\div x$ the same: it is always $k$. A rule $y=x+c$ keeps $y-x$ the same: it is always $c$. Here $k$ and $c$ stand for fixed numbers. When $k$ is 2 or more and $c$ is 1 or more, one rule cannot be both.",
+      "A rule $y=kx$ keeps $y\\div x$ the same for every $x$ other than 0: it is always $k$. A rule $y=x+c$ keeps $y-x$ the same: it is always $c$. Here $k$ and $c$ stand for fixed numbers. When $k$ is 2 or more and $c$ is 1 or more, one rule cannot be both.",
     example: {
       prompt: "In $y=x+4$, is $y$ always $4$ times $x$?",
       steps: [

@@ -21,7 +21,7 @@ const specs: SelectContentSpec[] = [
     watch:
       "A digit one place off is worth 10 times more or 10 times less. Check the zeros in every part.",
     principle:
-      "A digit's value is the digit times the value of its place. A whole number is the sum of its digit values. You can group the parts any way you like: $36\\times1{,}000+731=36{,}000+731$. To compare two whole numbers, find the first place from the left where their digits differ. The number with the greater digit there is the greater number.",
+      "A digit's value is the digit times the value of its place. A whole number is the sum of its digit values. A count of a place works the same way: $36\\times1{,}000$ is 36 thousands, so $36\\times1{,}000+731=36{,}000+731$. To compare two whole numbers, find the first place from the left where their digits differ. The number with the greater digit there is the greater number.",
     example: {
       prompt: "Is $4\\times1{,}000+52$ equal to $4{,}502$?",
       steps: [
@@ -54,15 +54,15 @@ const specs: SelectContentSpec[] = [
     skillId: "fraction-equivalence",
     title: "Choosing every equivalent fraction",
     summary:
-      "Equivalent fractions name the same amount, like $\\frac{1}{2}$ and $\\frac{2}{4}$ of a pizza. In this lesson you pick every fraction that names the same amount as a given fraction. The test is simple: the top and the bottom must both be multiplied by the same number.",
-    goal: "Select the fractions equal to a given fraction by checking that its top and bottom are multiplied by the same number.",
+      "Equivalent fractions name the same amount, like $\\frac{1}{2}$ and $\\frac{2}{4}$ of a pizza. In this lesson you pick every fraction that names the same amount as a given fraction. The test is simple: the top and the bottom must both be multiplied, or both divided, by the same number.",
+    goal: "Select the fractions equal to a given fraction by checking that its top and bottom are multiplied or divided by one number.",
     intuition:
       "A fraction like $\\frac{1}{3}$ has two numbers. The bottom number, the denominator, says how many equal pieces make one whole. The top number, the numerator, says how many of those pieces you have. Equivalent fractions name the same amount. Cut each third into 2 equal pieces. Now the whole has 6 pieces and you have 2 of them. So $\\frac{1}{3}$ and $\\frac{2}{6}$ are the same amount.",
-    more: "To make an equivalent fraction, multiply the top and the bottom by the same number. Changing only one of them changes the amount. Adding the same number to both also changes it: $\\frac{1}{3}$ is not equal to $\\frac{2}{4}$.",
+    more: "To make an equivalent fraction, multiply the top and the bottom by the same number, other than 0. For the fractions here, changing only one of them changes the amount. Adding the same number to both also changes it: $\\frac{1}{3}$ is not equal to $\\frac{2}{4}$.",
     terms: ["numerator", "denominator", "equivalent"],
     steps: [
-      "Find what you multiply the given denominator by to get the choice's denominator.",
-      "Multiply the given numerator by that same number. If you get the choice's numerator, the fractions are equivalent.",
+      "Find what you multiply the given denominator by to get the choice's denominator. If the choice's denominator is smaller, find what you divide by instead.",
+      "Multiply, or divide, the given numerator by that same number. If you get the choice's numerator, the fractions are equivalent.",
       "If no whole number works, multiply across. $\\frac{2}{4}$ and $\\frac{3}{6}$ are equal because $2\\times6$ and $4\\times3$ are both 12.",
       "Select only the equivalent fractions. Check that you chose as many as the question asks.",
     ],
@@ -98,7 +98,6 @@ const specs: SelectContentSpec[] = [
       factor: "factor-number",
       third: "third",
       whole: "whole",
-      part: "part",
       quarters: "fourth",
     },
     noLink: ["changes"],
@@ -108,10 +107,10 @@ const specs: SelectContentSpec[] = [
     skillId: "fractions-number-line",
     title: "Naming a point on a number line",
     summary:
-      "A number line shows numbers in order along a straight line. Between 0 and 1 it can be cut into equal parts. In this lesson you read a point on that line as a fraction. Then you pick every fraction that names the same point.",
+      "A fraction names part of a whole. In $\\frac{2}{6}$, the bottom number says the whole is cut into 6 equal parts, and the top number says we count 2 of them. A number line shows numbers in order along a straight line. Between 0 and 1 it can be cut into equal parts. In this lesson you read a point on that line as a fraction. Then you pick every fraction that names the same point.",
     goal: "Read the fraction at a point on a number line from 0 to 1, then select every fraction that names the same point.",
     intuition:
-      "Look at the number line from 0 to 1. Small marks called ticks cut it into equal parts. If there are 6 equal parts, each part is one sixth. A point 2 parts from 0 is at $\\frac{2}{6}$. The same point has other names too, such as $\\frac{1}{3}$, because $\\frac{2}{6}$ and $\\frac{1}{3}$ are equal.",
+      "A fraction such as $\\frac{2}{6}$ has a top number and a bottom number. The bottom number says how many equal parts make the whole. The top number says how many of those parts you count. Look at the number line from 0 to 1. Small marks called ticks cut it into equal parts. If there are 6 equal parts, each part is one sixth. A point 2 parts from 0 is at $\\frac{2}{6}$. The same point has other names too, such as $\\frac{1}{3}$, because $\\frac{2}{6}$ and $\\frac{1}{3}$ are equal.",
     more: "The bottom number of the fraction, the denominator, is how many equal parts are between 0 and 1. The top number, the numerator, is how many parts you count from 0 to the point.",
     terms: ["tick-mark", "equal-parts"],
     steps: [
@@ -205,7 +204,7 @@ const specs: SelectContentSpec[] = [
       "To round a number is to swap it for a nearby, simpler number. Many numbers round to the same value. In this lesson you find the boundaries, where rounding to a given value starts and stops. Then you pick every number between them.",
     goal: "Select the numbers that round to a given value by checking each one against the two boundaries of that value.",
     intuition:
-      "To round to the nearest tenth, swap a number for the closest tenth: a number like $124.6$, with one digit after the point. Many numbers round to $124.6$. They are the numbers closer to $124.6$ than to $124.5$ or to $124.7$.",
+      "To round to the nearest tenth, swap a number for the closest tenth: a number like $124.6$, with one digit after the point. Many numbers round to $124.6$. They are the numbers nearer to $124.6$ than to $124.7$, and at least as near to $124.6$ as to $124.5$.",
     more: "A number exactly halfway between two tenths rounds up, to the greater one. So the numbers that round to $124.6$ start at $124.55$. They go up to $124.65$, but $124.65$ itself rounds up to $124.7$. These two numbers, $124.55$ and $124.65$, are the boundaries.",
     terms: [
       "round",
@@ -306,7 +305,7 @@ const specs: SelectContentSpec[] = [
     goal: "Select the multiplication facts in a grid that have a given product.",
     intuition:
       "The numbers you multiply are called factors, and the answer is called the product. One product can come from several pairs of factors. 24 is $3\\times8$, $4\\times6$ and $2\\times12$. Each pair also works in the other order, like $8\\times3$.",
-    more: "To find the facts, think of the numbers that divide the product evenly, with nothing left over. A fact that changes one factor by 1 looks close, but it gives a different product.",
+    more: "The facts here use factors from 2 to 12. To find them, think of the numbers that divide the product evenly, with nothing left over. A fact that changes one factor by 1 looks close, but it gives a different product.",
     terms: ["factor-number", "product-multiply"],
     steps: [
       "List the numbers up to 12 that divide the product evenly.",
@@ -315,7 +314,7 @@ const specs: SelectContentSpec[] = [
       "Select only the facts with that product. Check that you chose as many as the question asks.",
     ],
     watch:
-      "A fact one away from a true fact has a different product: $6\\times8=48$, but $5\\times8=40$.",
+      "Changing just one factor changes the product: $6\\times8=48$, but $5\\times8=40$.",
     principle:
       "A product $p$ equals $a\\times b$ exactly when $a$ divides $p$ evenly and $b=p\\div a$. Here the letters stand for whole numbers, and $a$ is not 0. The order of the factors does not change the product: $a\\times b=b\\times a$.",
     example: {
@@ -355,7 +354,7 @@ const specs: SelectContentSpec[] = [
       "An equation is a number sentence with an equal sign, like $8\\times8=64$. It is true when both sides have the same value. In this lesson you pick the true multiplication and division equations. Some of them multiply a number by itself.",
     goal: "Select the true multiplication and division equations, including a number times itself, with the result first or last.",
     intuition:
-      "An equation is true when both sides of the equal sign have the same value. A number times itself, like $8\\times8=64$, is a fact like any other. Its division fact, $64\\div8=8$, gives back the number you started with.",
+      "An equation is true when both sides of the equal sign have the same value. A number times itself, like $8\\times8=64$, is a fact like any other. Its division fact, $64\\div8=8$, gives back the 8.",
     more: "An equation can be written with the result first, like $64=8\\times8$. Swapping the sides does not change whether it is true.",
     terms: ["equation", "perfect-square"],
     steps: [
