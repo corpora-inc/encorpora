@@ -57,7 +57,7 @@ export const timeUnitChoiceMethods: Record<string, ProblemMethod> = {
 
 export const timeUnitChoicePrinciples: Record<string, string> = {
   "elapsed-time-hm":
-    "One hour is 60 minutes. A clock goes around twice a day: a.m. from midnight to noon and p.m. from noon to midnight. An end time is the start time plus the elapsed time. A start time is the end time minus the elapsed time. When the minutes go past 60, 60 of them make one more hour.",
+    "One hour is 60 minutes. The short hand goes around the clock twice a day: a.m. from midnight to noon and p.m. from noon to midnight. An end time is the start time plus the elapsed time. A start time is the end time minus the elapsed time. When the minutes reach 60, 60 of them make one more hour.",
   "object-for-measure":
     "To match a measure, compare it with things you know. Amounts that are many times apart are easy to tell apart. In metric units, 1 kilogram is 1000 grams and 1 liter is 1000 milliliters. In customary units, 1 pound is 16 ounces and 1 gallon is 4 quarts.",
   "approximate-unit-factor":

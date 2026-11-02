@@ -15,18 +15,18 @@ export const purchaseChainMethods: Record<string, ProblemMethod> = {
       "Check that the answer is less than the total, with two digits of cents.",
     ],
     watch:
-      "Take the coupon off the total of both prices, not off one price. Write coins as dollars before adding them to bills: 25 cents is 0.25 dollars.",
+      "Take the coupon off just once, from the total of both prices. Write coins as dollars before adding them to bills: 25 cents is 0.25 dollars.",
   },
   "mixed-quantity-discount": {
     goal: "Multiply a mixed-number quantity by a decimal unit price, then take a fraction or percent off the total.",
     intuition:
-      "A mixed number is a whole number and a fraction together, like $3\\frac{1}{2}$, which means 3 and one half. A yard is a length, about one big step. The price per yard is the cost of 1 yard. A discount is an amount taken off the price. The cost before the discount is the number of yards times, or ×, the price of 1 yard. Percent means out of 100, so 20%, read 20 percent, is 20 hundredths, or 0.2, of the cost.",
+      "A fraction like $\\frac{1}{2}$, one half, is one of 2 equal parts of a whole. A mixed number is a whole number and a fraction together, like $3\\frac{1}{2}$: 3 wholes and one half more. A price like 13.80 dollars means 13 dollars and 80 cents. A yard is a length, about one big step. The price per yard is the cost of 1 yard. A discount is an amount taken off the price. The cost before the discount is the number of yards times, or ×, the price of 1 yard. Percent means out of 100. 20%, read 20 percent, means 20 cents off every 100 cents of the cost. That is 0.20, or 0.2, of the cost.",
     terms: ["unit-price", "discount"],
     senses: { unit: "unit", part: "part", whole: "whole" },
     noLink: ["leaves"],
     method: [
       "Write the mixed number as a decimal. One half is 0.5, one fourth is 0.25 and three fourths is 0.75, so $3\\frac{1}{2}$ is 3.5. Multiply it by the price for one unit. That is the cost before the discount.",
-      "Find the discount. For one fifth, which is $\\frac{1}{5}$, divide the cost by 5. For a percent, write it as hundredths and multiply: 20% of the cost is the cost times 0.2.",
+      "Find the discount. For a fraction like one fifth, one tenth or one fourth, divide the cost by the bottom number: 5 for $\\frac{1}{5}$, 10 for $\\frac{1}{10}$, 4 for $\\frac{1}{4}$. For a percent, write it as hundredths and multiply: 20% of the cost is the cost times 0.2.",
       "Take the discount away from the cost. That is what the buyer pays.",
     ],
     watch:
@@ -59,7 +59,7 @@ export const purchaseChainLessons = [
       "In a buying story, the first job is a total. It can be prices added together. It can be all the money in a wallet. It can be the cost of several yards of rope. A yard is a length, about one big step. The price per yard is the cost of 1 yard.",
       "The second job takes something off that total. A coupon is a paper that takes an amount off, like 2 dollars off. Paying for something takes its price away from your money.",
       "One dollar is 100 cents. We write 4 dollars and 75 cents as 4.75 dollars. The two digits, the single numbers 0 to 9, after the point are the cents. A quarter is 25 cents, a dime 10 cents and a nickel 5 cents.",
-      "A discount takes a part of the total off. One fifth off means the total is split into 5 equal parts and one part comes off. 10% off, read 10 percent off, means 10 cents off every 100 cents. That is one tenth: one of 10 equal parts.",
+      "A fraction like $\\frac{1}{2}$, one half, is one of 2 equal parts of a whole. So $2\\frac{1}{2}$ yards means 2 whole yards and half of another. A discount takes a part of the total off. One fifth off means the total is split into 5 equal parts and one part comes off. 10% off, read 10 percent off, means 10 cents off every 100 cents. That is one tenth: one of 10 equal parts.",
     ],
     example: {
       prompt:
@@ -75,7 +75,7 @@ export const purchaseChainLessons = [
     methodTitle: "Total, then the part taken off",
     method: [
       "Total: add the prices. Or add the bills and coins, with coins counted in cents first. Or multiply the number of yards by the price of 1 yard.",
-      "Then take a coupon or a price away. For a discount, first find it: divide by 5 for one fifth. A percent can be written as a fraction: 10% is one tenth, 20% is one fifth and 25% is one fourth. Then take the discount away.",
+      "Then take a coupon or a price away. For a discount, first find it: divide by 5 for one fifth, by 10 for one tenth or by 4 for one fourth. A percent can be written as a fraction: 10% is one tenth, 20% is one fifth and 25% is one fourth. Then take the discount away.",
     ],
     formalTitle: "Why the order matters",
     formal: [
@@ -85,7 +85,7 @@ export const purchaseChainLessons = [
     pitfalls: [
       "Line up the points when you add or subtract amounts with cents.",
       "Take the discount from the total cost, not from the price of one unit.",
-      "Count coins in cents first. Then write them after the point: 35 cents is 0.35 dollars.",
+      "Count coins in cents first. Then write them in dollars: 35 cents is 0.35 dollars, and 135 cents is 1 dollar and 35 cents, 1.35 dollars.",
     ],
     parentGuide:
       "Ask your learner to say what the total is before any coupon or discount, and then to estimate the answer to see if it is reasonable.",

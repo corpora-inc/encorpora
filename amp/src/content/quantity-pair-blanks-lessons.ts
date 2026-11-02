@@ -17,14 +17,14 @@ const entries: FormatLessonEntry[] = [
       "Say you pack 50 apples into bags of 12. You fill as many full bags as you can: 4 bags hold 48 apples. 2 apples are left over. Dividing with a remainder finds how many full groups fit. That number of full groups is called the quotient. The amount left over is called the remainder. The remainder is always less than one group. If it were not, another full group would fit.",
     terms: ["quotient", "remainder"],
     method: [
-      "Estimate, or make a close guess, of how many groups fit. Try tens first: do 10 or 20 groups fit in the total?",
+      "Estimate, or make a close guess, of how many groups fit. Try tens first: 10, 20, 30 groups and so on. Use the biggest ten that still fits.",
       "Multiply the group size by your guess. If that is more than the total, the guess is too big: try 1 less. Otherwise, subtract it from the total to get the leftover.",
       "If the leftover is as big as one group or bigger, one more group fits: add 1 to your guess and try again. Stop when the leftover is less than one group.",
     ],
     watch:
       "Check that the leftover is less than the group size. A leftover as big as a group means one more group fits.",
     principle:
-      "For whole numbers $n$ and $d$, with $d$ more than 0, there is exactly one way to write $n = d \\times q + r$ with $r$ less than $d$. Here $n$ is the total, $d$ is the group size, $q$ is the number of full groups and $r$ is what is left over.",
+      "For whole numbers $n$ and $d$, with $d$ more than 0, there is exactly one way to write $n = d \\times q + r$ using whole numbers $q$ and $r$, with $r$ less than $d$. Here $n$ is the total, $d$ is the group size, $q$ is the number of full groups and $r$ is what is left over.",
     example: {
       prompt:
         "A baker packs 500 muffins into trays of 24. How many full trays are there and how many muffins are left over?",

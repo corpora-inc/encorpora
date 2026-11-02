@@ -40,7 +40,7 @@ export const reasonableMeasureLessons = [
     openingTitle: "Compare with something you know",
     opening: [
       "A measurement tells how many units fit an object. Length is how long something is. Mass is how heavy it is. Capacity is how much a container holds.",
-      "A bed is about 2 meters long, which is about 6 feet. It is not 2 inches long: 2 inches is about the width of two fingers. It is not 2 kilometers long either: that is a walk of about twenty minutes.",
+      "A bed is about 2 meters long, which is about 6 feet. It is not 2 inches long: 2 inches is about 5 centimeters, the length of a short crayon. It is not 2 kilometers long either: that is a walk of about twenty minutes.",
       "To check a choice, picture the object next to a thing you know. A paper clip is about 3 centimeters long. A bottle of juice holds about 1 liter. A bag of flour has a mass of about 1 kilogram, and a small car about 1 ton.",
     ],
     example: {

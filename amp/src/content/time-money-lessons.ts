@@ -288,7 +288,7 @@ export const timeMoneyMethods: Record<string, ProblemMethod> = {
     method: [
       "Find the long hand. Count by fives from 12 to it. That gives the minutes.",
       "Find the short hand. If it points right at a number, that is the hour. If it is between two numbers, the hour is the one it has passed.",
-      "Write the hour, a colon, then the minutes. Always write two numbers for the minutes, like 4:05 for 5 minutes.",
+      "Write the hour, a colon, then the minutes. Always write two digits for the minutes, like 4:05 for 5 minutes.",
     ],
     watch: "The long hand at 7 means 35 minutes, not 7 minutes.",
   },
@@ -403,7 +403,7 @@ export const timeMoneyPrinciples: Record<string, string> = {
   "clock-am-pm":
     "A clock shows each time twice a day. a.m. runs from midnight to noon, and p.m. from noon to midnight.",
   "match-clock-five-minutes":
-    "A time sets both hands. The long hand points at the number for the minutes ÷ 5, or at 12 for 0 minutes. The short hand is that far past the hour number.",
+    "A time sets both hands. The long hand points at the number for the minutes ÷ 5, or at 12 for 0 minutes. With 0 minutes, the short hand points at the hour. Otherwise it is part of the way to the next number: at 35 minutes, a bit more than halfway.",
   "coin-total":
     "A group of coins is worth all their values added together. Counting on from the largest makes the adding easy.",
   "money-total-dollars":

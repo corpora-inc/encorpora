@@ -30,7 +30,7 @@ export const attributeLessons: Lesson[] = [
         title: "Length: line up one end",
         paragraphs: [
           "Look at the picture. To see which strip is longer, start both strips at the same line. The strip that reaches farther at the other end is longer.",
-          "At the top of the picture, strip B starts farther to the right. So it also ends farther to the right. But strip A is longer. Line them up, like at the bottom, and you can see it.",
+          "At the top of the picture, strip B starts farther to the right, and it also ends farther to the right. But strip A is longer. Line them up, like at the bottom, and you can see it.",
           "Always check where both strips start, not just where they end.",
         ],
         illustration: "line-up-ends",
@@ -96,7 +96,7 @@ export const attributeLessons: Lesson[] = [
         stage: "intuition",
         title: "Count equal steps along the object",
         paragraphs: [
-          "A cube is a block shaped like a dice, with six flat sides that are all the same size. Line up cubes along a pencil. All the cubes are the same size.",
+          "A cube is a block shaped like a die, the number cube used in games, with six flat sides that are all the same size. Line up cubes along a pencil. All the cubes are the same size.",
           "Start the first cube at one end of the pencil. Make each cube touch the next one. Stop at the other end. Now count the cubes. If there are 6, the pencil is 6 cubes long.",
           "Length is how long something is, from one end to the other. A unit is the equal thing you count with. Here the unit is one cube.",
         ],
@@ -277,7 +277,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   "measure-with-units": {
     goal: "Count equal units laid end to end along an object.",
     intuition:
-      "To measure means to find how long something is. A cube is a block shaped like a dice. A unit is one of the same-size things you count with, like one cube. The units must start at one end and touch. A gap is an empty space between units. An overlap is when one unit lies on top of another. There must be no gaps and no overlaps.",
+      "To measure means to find how long something is. A cube is a block shaped like a die, a number cube. A unit is one of the same-size things you count with, like one cube. The units must start at one end and touch. A gap is an empty space between units. An overlap is when one unit lies on top of another. There must be no gaps and no overlaps.",
     terms: ["unit"],
     senses: { unit: "unit", cube: "cube" },
     method: [
@@ -290,7 +290,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   "correct-unit-measure": {
     goal: "Pick the picture that measures a length correctly.",
     intuition:
-      "To measure means to find how long something is. A cube is a block shaped like a dice. A unit is one of the same-size things you measure with, like one cube. A gap is an empty space between two units. An overlap is when one unit lies on top of another. A correct measurement starts at one end and has no gaps or overlaps.",
+      "To measure means to find how long something is. A cube is a block shaped like a die, a number cube. A unit is one of the same-size things you measure with, like one cube. A gap is an empty space between two units. An overlap is when one unit lies on top of another. A correct measurement starts at one end and has no gaps or overlaps.",
     terms: ["unit"],
     senses: { unit: "unit", cube: "cube" },
     noLink: ["rule", "part"],
@@ -354,7 +354,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
     terms: ["gram", "kilogram", "liter"],
     senses: { unit: "unit", part: "part" },
     method: [
-      "Decide what the story does. Putting amounts together adds. Taking some away subtracts.",
+      "Decide what the story does. Putting amounts together adds. Taking some away, or finding how much heavier or how much more, subtracts.",
       "Finding the total of equal groups multiplies. Sharing a total equally, to find how much each group gets, divides.",
       "Work out the answer and write the unit after it.",
     ],

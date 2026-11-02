@@ -174,7 +174,7 @@ export const measurementLessons: Lesson[] = [
     id: "same-length-different-unit",
     title: "Rename the length before combining it",
     summary:
-      "A unit is the amount you measure with. A meter is about one big step. A centimeter is about as wide as a finger. One meter is the same length as 100 centimeters. Writing a length in a different unit changes the number and the unit, but not how long it is. Lengths must use the same unit before you add them. Grams and kilograms work the same way: 1 kilogram is 1000 grams.",
+      "A unit is the amount you measure with. A meter is about one big step. A centimeter is about as wide as a finger. One meter is the same length as 100 centimeters. Writing a length in a different unit changes the number and the unit, but not how long it is. Lengths must use the same unit before you add them. Grams and kilograms work the same way: 1 kilogram is 1000 grams. So do liters and milliliters: 1 liter is 1000 milliliters.",
     templateIds: [
       "metric-length-rename",
       "metric-length-reverse",
@@ -217,14 +217,14 @@ export const measurementLessons: Lesson[] = [
           "A millimeter, mm, is the smallest of these units. 10 millimeters make 1 centimeter. 100 centimeters make 1 meter. 1000 meters make 1 kilometer, km.",
           "These numbers are different, so write the one for your two units first. Then multiply or divide. To go to a smaller unit, multiply: there will be more of them. To go to a bigger unit, divide: there will be fewer.",
           "To write 1250 m in kilometers, divide by 1000. 1250 m is 1000 m and 250 m more. 250 m is one fourth of a kilometer, written 0.25 km. So 1250 m is 1.25 km. Check by going back: 1 km is 1000 m and 0.25 km is 250 m, which makes 1250 m.",
-          "Mass works the same way. Mass is how heavy something is. 1 kilogram is 1000 grams, written 1 kg = 1000 g. So 7 kg is 7 × 1000 = 7000 g.",
+          "Mass works the same way. Mass is how heavy something is. 1 kilogram is 1000 grams, written 1 kg = 1000 g. So 7 kg is 7 × 1000 = 7000 g. Liquids work the same way too: 1 liter is 1000 milliliters, so 3 L is 3000 mL.",
         ],
       },
       {
         title: "Use one unit before you add",
         paragraphs: [
           "A 2 m strip and a 35 cm strip are 200 cm + 35 cm = 235 cm long in all. Adding 2 + 35 would treat a meter and a centimeter as the same size. They are not.",
-          "Perimeter is the distance all the way around a shape. For a rectangle, first write both side lengths in the unit the question asks for. Then count each side twice, because a rectangle has two of each.",
+          "Perimeter is the distance all the way around a shape. For a rectangle, first write both side lengths in the unit the question asks for. Then count each of those two lengths twice, because a rectangle has two sides of each length.",
         ],
       },
     ],
