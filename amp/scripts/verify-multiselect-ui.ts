@@ -664,11 +664,11 @@ try {
   );
   const prompt = await page.locator("#problem-prompt").textContent();
   await page.getByRole("button", { name: "Open AMP menu" }).click();
-  await page.getByRole("link", { name: "Your level" }).click();
+  await page.getByRole("link", { name: "Your progress" }).click();
   for (let visit = 0; visit < 2; visit++) {
     if (visit > 0) await page.goForward();
     await page.waitForURL(/\/try\/map(?:\?|$)/);
-    await page.getByRole("heading", { name: "Your estimated level" }).waitFor();
+    await page.getByRole("heading", { name: "Your progress" }).waitFor();
     await page.goBack();
     await page.waitForURL(/\/try\/practice(?:\?|$)/);
     assert.equal(await page.locator("#problem-prompt").textContent(), prompt);

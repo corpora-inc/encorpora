@@ -61,7 +61,10 @@ const account = fixtureMe(
 const frontier = {
   expected: 4,
   overall: { level: 4, sd: 0.7, answered: 42, independent: 30 },
-  strands: {},
+  strands: {
+    operations: { level: 2, sd: 0.7, answered: 24, independent: 18 },
+    algebra: { level: 7, sd: 1.1, answered: 18, independent: 12 },
+  },
 };
 async function submit(page: Page, answer: string) {
   const compact = page.locator(".compact-answer-action");
@@ -173,6 +176,8 @@ try {
               },
             });
           }
+          if (path.endsWith("/books"))
+            return route.fulfill({ json: { books: [] } });
           if (path.endsWith("/frontier"))
             return route.fulfill({ json: frontier });
           if (path.endsWith("/practice-state")) {
@@ -234,6 +239,7 @@ try {
           }
           if (path.includes("/events") || path.includes("/engagement"))
             return route.fulfill({ status: 204, body: "" });
+          console.warn("Unmocked fixture route", path);
           return route.fulfill({
             status: 404,
             json: { error: "Synthetic route unavailable" },
@@ -243,7 +249,16 @@ try {
         page.on("pageerror", (error) => errors.push(error.message));
         const routePath = mode === "account" ? "/practice" : "/try/practice";
         await page.goto(origin + routePath);
-        await page.locator(".question").waitFor();
+        await page
+          .locator(".question")
+          .waitFor()
+          .catch(async (error) => {
+            await page.screenshot({
+              path: `${output}/${mode}-${width}-${theme}-failure.png`,
+            });
+            console.error(await page.locator("body").innerText(), errors);
+            throw error;
+          });
         const current = async () => {
           const id = await page
             .locator(".problem-content")
@@ -291,6 +306,37 @@ try {
           exact: true,
         });
         await dialog.waitFor();
+        assert.equal(
+          await dialog.locator('[class*="grade"]').count(),
+          0,
+          "Grades hidden by default",
+        );
+        await dialog
+          .getByRole("button", {
+            name: "Show details: curriculum grades",
+            exact: true,
+          })
+          .click();
+        assert.ok(
+          (await dialog.locator('[class*="grade"]').count()) > 0,
+          "Local reveal exposes actual curriculum grades",
+        );
+        assert.equal(
+          await page.evaluate(() =>
+            localStorage.getItem("amp.curriculum-details"),
+          ),
+          null,
+          "Local reveal must not set persistent preference",
+        );
+        await page.screenshot({
+          path: `${output}/${mode}-${width}-${theme}-details.png`,
+        });
+        await dialog
+          .getByRole("button", {
+            name: "Hide details: curriculum grades",
+            exact: true,
+          })
+          .click();
         await page.screenshot({
           path: `${output}/${mode}-${width}-${theme}-connections.png`,
         });
@@ -408,9 +454,24 @@ try {
           await page
             .getByRole("checkbox", { name: "Haptics", exact: true })
             .check();
+          await page
+            .getByRole("checkbox", {
+              name: "Show grades and estimates",
+              exact: true,
+            })
+            .check();
           await page.keyboard.press("Escape");
           await page.reload();
-          await page.locator(".question").waitFor();
+          await page
+            .locator(".question")
+            .waitFor()
+            .catch(async (error) => {
+              await page.screenshot({
+                path: `${output}/${mode}-${width}-${theme}-failure.png`,
+              });
+              console.error(await page.locator("body").innerText(), errors);
+              throw error;
+            });
           await page.getByRole("button", { name: "Open AMP menu" }).click();
           assert(
             await page
@@ -422,6 +483,40 @@ try {
               .getByRole("checkbox", { name: "Haptics", exact: true })
               .isChecked(),
           );
+        }
+        if (width === 390 && theme === "light") {
+          assert(
+            await page
+              .getByRole("checkbox", {
+                name: "Show grades and estimates",
+                exact: true,
+              })
+              .isChecked(),
+            "Detail preference survives reload",
+          );
+          await page.screenshot({
+            path: `${output}/${mode}-${width}-${theme}-menu-details.png`,
+          });
+        }
+        if (width === 390 && theme === "light") {
+          await page.keyboard.press("Escape");
+          await page.goto(`${origin}${mode === "trial" ? "/try/map" : "/"}`);
+          const details = page.getByRole("checkbox", {
+            name: "Show grades and estimates",
+            exact: true,
+          });
+          await details.uncheck();
+          assert.equal(await page.getByTestId("level-readout").count(), 0);
+          await page.screenshot({
+            path: `${output}/${mode}-390-light-progress-hidden.png`,
+            fullPage: true,
+          });
+          await details.check();
+          await page.getByTestId("level-readout").first().waitFor();
+          await page.screenshot({
+            path: `${output}/${mode}-390-light-progress-details.png`,
+            fullPage: true,
+          });
         }
         assert.deepEqual(errors, []);
         console.log(
