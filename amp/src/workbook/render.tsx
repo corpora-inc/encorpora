@@ -1280,10 +1280,11 @@ background-image:${gridLines};background-size:var(--grid) var(--grid);background
 .wb-try-label .wb-lesson-label{display:inline;margin-right:6px}
 .wb-flow>[data-optional]{display:none}
 
-/* Fractions in running text: text-style, a little larger than KaTeX's
-   default, with no extra padding, so lines stay evenly spaced. */
+/* Fractions in running text: text-style with no extra padding, so lines
+   stay evenly spaced; on student pages a little larger, for reading. The
+   key's narrow columns keep the standard size. */
 .wb .print-math.print-math--prose,.wb .print-math-punctuation:has(.print-math--prose){padding:0}
-.wb .print-math--prose .katex{font-size:1.25em}
+[data-flow="student"] .print-math--prose .katex,.wb-page--student .print-math--prose .katex{font-size:1.25em}
 /* Answer key and results pages. */
 .wb-page-title{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:6px;margin:0 0 0.14in;border-bottom:2.5px solid var(--accent)}
 .wb-page-title h2{margin:0;font-size:21pt;line-height:1.1;color:var(--accent);font-family:"WB Display",Georgia,serif}
