@@ -348,7 +348,7 @@ def solve_decimal_ops(public):
 
 def solve_salary(public):
     prompt = plain(public['prompt'])
-    match = re.fullmatch(r'A worker earns ([\d,]+) dollars a year and gets a (\d+) percent raise\. How many dollars (is the raise each year|a year does the worker earn after the raise)\?', prompt)
+    match = re.fullmatch(r'A worker earns ([\d,]+) dollars a year and gets an? (\d+) percent raise\. How many dollars (is the raise each year|a year does the worker earn after the raise)\?', prompt)
     if match:
         pay, pct = num(match[1]), int(match[2])
         return pay * pct / 100 if match[3].startswith('is') else pay * (100 + pct) / 100
