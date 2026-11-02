@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Contrast sweep: visits every route and interactive state in light and dark,
  * at 390 and 1280 px, and measures every visible text node against its
@@ -9,7 +10,13 @@
  */
 import AxeBuilder from "@axe-core/playwright";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium, type Browser, type CDPSession, type Page } from "playwright";
+import {
+  chromium as rawChromium,
+  type Browser,
+  type CDPSession,
+  type Page,
+} from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";

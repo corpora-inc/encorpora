@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Paper audit: three problems from every template (and K–2 templates again
  * at the early print scale), printed in the daily
@@ -11,7 +12,8 @@
  * src/workbook/paper-exclusions.ts until their printed form is fixed.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { skills } from "../src/curriculum/catalog";
 import { lessons } from "../src/content/lessons";
 import { templates } from "../src/math/engine";

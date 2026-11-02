@@ -1,10 +1,12 @@
+import { secureChromium } from "../../../../amp/browser-security.mjs";
 /** DEV-ONLY spec-eval: screenshot every valid spec at phone size (light) inside the studio's focus
  * stage (the surface learners see) and write a contact sheet grouped by learner state. */
 import { spawn } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { stripVTControlCharacters } from 'node:util';
-import { chromium } from 'playwright';
+import { chromium as rawChromium } from 'playwright';
+const chromium = secureChromium(rawChromium);
 import { JUDGE_CRITERIA } from './analyze.mjs';
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');

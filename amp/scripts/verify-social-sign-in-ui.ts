@@ -1,7 +1,14 @@
+import { secureChromium } from "../browser-security.mjs";
 import { registerParentFollowupRoutes } from "../src/parent-followup/routes.js";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit, type Browser, type Page } from "playwright";
+import {
+  chromium as rawChromium,
+  webkit,
+  type Browser,
+  type Page,
+} from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { exportJWK, generateKeyPair, SignJWT, type JWK } from "jose";
 import { generateKeyPairSync } from "node:crypto";

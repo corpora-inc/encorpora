@@ -22,7 +22,7 @@ examples/    ad.json (a real 30 s ad), shotlist.json
 ## Prerequisites
 
 - Python 3.12+, FFmpeg 6.1+ (`xfade`, `sidechaincompress`, `loudnorm`, `bbox`).
-- Node 22+ with Playwright, from `web/scripts/amp-ads`: `npm ci && npx playwright install chromium`.
+- Node 22+ with Playwright, from `web/scripts/amp-ads`: `npm ci && node ../../../amp/scripts/install-browser.mjs`.
 - `ssh` access to the GPU host, which already runs the guarded batch runner
   (`guard-v1/batch.py`) and the LTX-2.5 generator (`ltx-benchmark.py`).
 - The `elevenlabs` MCP server connected in Claude Code or Codex (remote HTTP, OAuth).

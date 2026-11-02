@@ -1,7 +1,9 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { createServer as httpServer } from "node:http";
 import { mkdir } from "node:fs/promises";
-import { chromium, type Page } from "playwright";
+import { chromium as rawChromium, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { generateProblem } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";

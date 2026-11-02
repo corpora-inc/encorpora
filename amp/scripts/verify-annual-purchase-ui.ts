@@ -1,8 +1,10 @@
+import { secureChromium } from "../browser-security.mjs";
 import type { FamilySummary } from "../src/family/contracts";
 import { fixtureMe } from "./me-fixture";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts.js";
 import { annualOffer } from "../src/billing/stripe/purchase.js";

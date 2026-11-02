@@ -1,8 +1,10 @@
+import { secureChromium } from "../browser-security.mjs";
 import { fixtureMe } from "./me-fixture";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { consentFixture as policy } from "../tests/parent-consent.fixture.js";
 import { noticeDigest } from "../src/parent-consent/crypto.js";

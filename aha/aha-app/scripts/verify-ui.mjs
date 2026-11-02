@@ -1,3 +1,4 @@
+import { secureChromium } from "../../../amp/browser-security.mjs";
 /** Explicit TEST-ONLY browser IPC fixture. Not native SQLite/device/service acceptance. */
 import assert from 'node:assert/strict';
 import { stripVTControlCharacters } from 'node:util';
@@ -6,7 +7,8 @@ import { once } from 'node:events';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 import { readFile } from 'node:fs/promises';
-import { chromium } from 'playwright';
+import { chromium as rawChromium } from 'playwright';
+const chromium = secureChromium(rawChromium);
 import { auditFigureContrast, auditUiContrast } from './figure-contrast.mjs';
 const ownRoot=fileURLToPath(new URL('..',import.meta.url));
 const root=path.resolve(process.env.AHA_UI_APP_ROOT||ownRoot);

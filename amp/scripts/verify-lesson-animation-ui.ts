@@ -1,7 +1,9 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { createServer as httpServer } from "node:http";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { problemLesson } from "../src/content/problem-lessons";
 
@@ -127,7 +129,11 @@ const output = new URL(
 );
 await mkdir(output, { recursive: true });
 const metrics: unknown[] = [];
-async function waitForVisibility(page: Page, visible: boolean, context: string) {
+async function waitForVisibility(
+  page: Page,
+  visible: boolean,
+  context: string,
+) {
   // IntersectionObserver follows browser rendering, not the installed JS clock.
   // Await its real result while time is frozen, then test the playback interval.
   try {

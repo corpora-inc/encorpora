@@ -1,7 +1,9 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import AxeBuilder from "@axe-core/playwright";
 import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts";

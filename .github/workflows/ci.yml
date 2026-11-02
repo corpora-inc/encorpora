@@ -155,8 +155,8 @@ jobs:
           # to the workflow that invokes it).
           set_output amp_native '^(amp/mobile/|amp/src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|amp/src/server/(app|auth)\.|amp/scripts/verify-native-session\.|\.github/workflows/ci\.yml$)'
           # The static site imports AMP analytics, figures, content, audit and theme at build time.
-          set_output corpora_site '^(corpora-site/|amp/(books/|src/(analytics|math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/ui/tokens\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
-          set_output aha_app '^(aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
+          set_output corpora_site '^(corpora-site/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|amp/(books/|src/(analytics|math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/ui/tokens\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
+          set_output aha_app '^(amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
           set_output ci_scripts '^(\.github/scripts/|\.github/workflows/[^/]+\.ya?ml$)'
           # `corpan/packs/shared/` and `corpan/packs/sdk/` are in here because the
           # corpan-app job COMPILES them: `tsconfig.json` maps `@shared/*` onto
@@ -182,8 +182,8 @@ jobs:
           # below gives its two Python helpers.
           set_output packs '^(corpan/packs/|\.github/workflows/(ci|deploy-pages)\.yml$|\.github/scripts/pack_catalog_check\.js$)'
           set_output terraform '^(corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|\.github/workflows/ci\.yml$)'
-          set_output amp_ads '^(web/scripts/amp-ads/|\.github/workflows/ci\.yml$)'
-          set_output web '^(web/(io|data|pages|scripts)/|\.github/workflows/(ci|deploy-pages)\.yml$)'
+          set_output amp_ads '^(web/scripts/amp-ads/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|\.github/workflows/ci\.yml$)'
+          set_output web '^(web/(io|data|pages|scripts)/|amp/(browser-security\.mjs|scripts/(install-browser\.mjs|configure-browser-sandbox\.sh))$|\.github/workflows/(ci|deploy-pages)\.yml$)'
 
           # Dynawalla areas. Every one of them is consumed by a job below.
           #
@@ -847,7 +847,7 @@ jobs:
           python -m pip install -r requirements.txt
           python -m unittest discover -s test -p 'test_*.py' -v
           npm ci
-          npx playwright install --with-deps chromium
+          npx playwright install-deps chromium && node ../../../amp/scripts/install-browser.mjs --configure-linux-sandbox
           sudo apt-get update && sudo apt-get install -y ffmpeg
           npm test
 
@@ -1755,7 +1755,7 @@ jobs:
       - run: npm run tsc
       - run: npm run build
       - name: Install browser for controller regressions
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install-deps chromium && node ../../amp/scripts/install-browser.mjs --configure-linux-sandbox
       - run: npm run test:ui
       - name: Release verifier tests
         working-directory: .
@@ -2141,7 +2141,7 @@ jobs:
         working-directory: amp
       - run: npm ci --no-audit --no-fund
         working-directory: corpora-site
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install-deps chromium && node ../amp/scripts/install-browser.mjs --configure-linux-sandbox
         working-directory: corpora-site
       - run: npm test && npm run tsc && npm run build && npm run test:ui
         working-directory: corpora-site

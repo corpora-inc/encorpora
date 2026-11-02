@@ -1,9 +1,11 @@
+import { secureChromium } from "../browser-security.mjs";
 import { fixtureMe } from "./me-fixture";
 import { choose } from "./ui-controls";
 import assert from "node:assert/strict";
 import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { loadReimbursementPrograms } from "../src/billing/evidence/reimbursement-config.js";
 import { paymentPdf } from "../src/billing/evidence/pdf.js";

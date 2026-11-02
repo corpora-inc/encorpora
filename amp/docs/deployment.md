@@ -169,14 +169,15 @@ Workbook PDFs are rendered on request, so they need a browser, and the API image
 - Logs are one JSON object per line: render time, size and format, or the failure. They never include document content.
 - Sizing: 1 vCPU and 1 GB of memory serve the default concurrency of 2. A 45-minute workbook renders in about 0.5 to 1 s on one CPU.
 
-If `AMP_RENDER_URL` is not set in hosted mode, the API logs a warning at startup. Workbook history then reports `pdf: false`, and downloads fall back to the printable HTML document, which the parent prints from the browser; no download button fails. When the service is configured but unreachable or failing, a PDF request is logged and answers 503: "Your workbook is being prepared; try again in a minute." The screen then downloads the printable document instead, so the parent still gets a workbook to print. Requests waiting longer than `AMP_RENDER_TIMEOUT_MS` for a free slot get 503, and a request whose caller has gone is not rendered. Development without `AMP_RENDER_URL` renders in the API process with the local Playwright Chromium (`npx playwright install chromium`).
+If `AMP_RENDER_URL` is not set in hosted mode, the API logs a warning at startup. Workbook history then reports `pdf: false`, and downloads fall back to the printable HTML document, which the parent prints from the browser; no download button fails. When the service is configured but unreachable or failing, a PDF request is logged and answers 503: "Your workbook is being prepared; try again in a minute." The screen then downloads the printable document instead, so the parent still gets a workbook to print. Requests waiting longer than `AMP_RENDER_TIMEOUT_MS` for a free slot get 503, and a request whose caller has gone is not rendered. Development without `AMP_RENDER_URL` renders in the API process with the pinned Chrome for Testing installation (`node scripts/install-browser.mjs`). See [browser tooling security](browser-security.md) for the required Linux sandbox profile and browser update policy.
 
 Acceptance for a render image:
 
 ```bash
 docker build --target render -t amp-render:check amp
 docker run --rm -d --name amp-render-check --read-only --tmpfs /tmp \
-  --cap-drop ALL -e AMP_RENDER_TOKEN="$(openssl rand -hex 24)" -p 127.0.0.1:8090:8080 amp-render:check
+  --cap-drop ALL --security-opt no-new-privileges \
+  --security-opt seccomp=amp/docker/chromium-seccomp.json -e AMP_RENDER_TOKEN="$(openssl rand -hex 24)" -p 127.0.0.1:8090:8080 amp-render:check
 curl -f http://127.0.0.1:8090/healthz
 ```
 

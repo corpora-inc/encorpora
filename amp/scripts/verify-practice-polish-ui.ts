@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Practice polish verification and audit: drives the real practice app (Vite dev server,
  * synthetic learning API) through every response kind. Each case starts a
@@ -21,12 +22,13 @@ import AxeBuilder from "@axe-core/playwright";
 import { appendFile, mkdir, writeFile } from "node:fs/promises";
 import { createServer } from "vite";
 import {
-  chromium,
+  chromium as rawChromium,
   webkit,
   type Browser,
   type BrowserContext,
   type Page,
 } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { fixtureMe } from "./me-fixture";
 import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";

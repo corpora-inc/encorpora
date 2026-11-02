@@ -1,3 +1,4 @@
+import { secureChromium } from "../../../../amp/browser-security.mjs";
 /**
  * Plays SIEGE for real and reports what it measured.
  *
@@ -9,7 +10,8 @@
  * where the frame budget is actually under pressure. Screenshots land in
  * qa/shots/.
  */
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";

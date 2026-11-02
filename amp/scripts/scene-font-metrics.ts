@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Regenerates src/math/scene/font-metrics.ts: advance widths (em) and em-box
  * extents for the two figure type styles, so scene layout is exact without a
@@ -13,7 +14,8 @@ import { writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 
 const require = createRequire(import.meta.url);
 const katexDir = dirname(require.resolve("katex/package.json"));

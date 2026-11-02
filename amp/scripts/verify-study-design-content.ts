@@ -1,8 +1,10 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import type { GeneratedProblem } from "../src/math/contracts";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { studyDesignCase } from "../src/math/study-design-practice";
 const dir = new URL("../artifacts/study-design/", import.meta.url).pathname;
 await mkdir(dir, { recursive: true });

@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /** Render every reference and short problem lesson with production components.
  * This audit needs no API or database. Set AMP_LESSON_AUDIT_OUTPUT to an
  * external evidence directory before running it. */
@@ -6,7 +7,8 @@ import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { chromium, firefox, webkit } from "playwright";
+import { chromium as rawChromium, firefox, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { lessons } from "../src/content/lessons";
 import { problemLesson } from "../src/content/problem-lessons";

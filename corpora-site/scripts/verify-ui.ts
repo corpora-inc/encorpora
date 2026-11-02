@@ -1,10 +1,12 @@
+import { secureChromium } from "../../amp/browser-security.mjs";
 import assert from "node:assert/strict";
 import { guidedFundingFixture as fundingFixture } from "../tests/funding-fixture.js";
 import { resolve } from "node:path";
 import { buildSite } from "../src/build.js";
 import { configSchema } from "../src/config.js";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import AxeBuilder from "@axe-core/playwright";
 import lighthouse from "lighthouse";
 import { launch } from "chrome-launcher";
@@ -268,7 +270,7 @@ try {
   await fixtureContext.close();
   const chrome = await launch({
     chromePath: chromium.executablePath(),
-    chromeFlags: ["--headless", "--no-sandbox"],
+    chromeFlags: ["--headless"],
   });
   try {
     for (const path of ["/", "/amp/"]) {

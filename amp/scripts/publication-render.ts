@@ -1,7 +1,9 @@
+import { secureChromium } from "../browser-security.mjs";
 /** How a publication PDF is printed. Part of the renderer fingerprint
  * (scripts/publication-cache.ts): any change here re-renders every PDF, so
  * keep orchestration elsewhere. */
-import { chromium, type Browser } from "playwright";
+import { chromium as rawChromium, type Browser } from "playwright";
+const chromium = secureChromium(rawChromium, { trustedBuild: true });
 import type { RenderPdfs } from "./publication-cache";
 
 export function publicationRenderer(): {

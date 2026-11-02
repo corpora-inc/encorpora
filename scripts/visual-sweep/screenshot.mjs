@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { secureChromium } from "../../amp/browser-security.mjs";
 // Visual evidence capture for a PR/batch. Screenshots one or more URLs at a few
 // viewports so a worker can attach them to a PR. NOT a merge gate — it's the
 // thin human practice that shrinks over time (see SWEEP.md).
@@ -7,7 +8,7 @@
 //   node scripts/visual-sweep/screenshot.mjs <url> [<url> ...] [--out dir] [--full]
 //   node scripts/visual-sweep/screenshot.mjs http://localhost:5173 --out /tmp/shots
 //
-// Requires Playwright's chromium once:  npx playwright install chromium
+// Requires Playwright's chromium once:  node amp/scripts/install-browser.mjs
 // (Playwright drives Chrome over CDP under the hood.)
 
 import { mkdir } from "node:fs/promises";
@@ -41,9 +42,10 @@ if (urls.length === 0) {
 let chromium;
 try {
   ({ chromium } = await import("playwright"));
+  chromium = secureChromium(chromium);
 } catch {
   console.error(
-    "Playwright not found. Install it:\n  npm i -D playwright && npx playwright install chromium",
+    "Playwright not found. Install it:\n  npm i -D playwright && node amp/scripts/install-browser.mjs",
   );
   process.exit(1);
 }

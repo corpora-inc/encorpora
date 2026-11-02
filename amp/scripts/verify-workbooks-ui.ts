@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Workbook screens in a real browser: the real Fastify routes compose
  * and store workbooks for a synthetic learner (in memory); only sign-in and
@@ -13,7 +14,8 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
-import { chromium, type Page } from "playwright";
+import { chromium as rawChromium, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { buildApp } from "../src/server/app";
 import {
   ApiError,

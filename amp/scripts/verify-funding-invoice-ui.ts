@@ -1,8 +1,10 @@
+import { secureChromium } from "../browser-security.mjs";
 import { fixtureMe } from "./me-fixture";
 import { retentionNotice } from "../src/family/contracts.js";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import {
   presentOffer,

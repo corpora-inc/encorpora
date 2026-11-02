@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /** Real-browser proof of equations built from cards: the equation is
  * centered under the question, a tapped card fills the box it is aimed at,
  * a placed card leaves its outline, tapping a filled box takes the card
@@ -7,7 +8,8 @@
  * artifacts/multi-part-cards-ui). Requires AMP_TEST_DATABASE_URL. */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";

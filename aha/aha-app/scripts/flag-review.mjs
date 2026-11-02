@@ -1,3 +1,4 @@
+import { secureChromium } from "../../../amp/browser-security.mjs";
 /** DEV-ONLY: review the AI activities a learner flagged (Report) on an attached debug build.
  * Copies the app DB off the device READ-ONLY (adb exec-out run-as … cat; nothing is written to, tapped
  * on or launched on the device), joins each dispute to its stored Activity Spec and re-renders the spec
@@ -11,7 +12,8 @@ import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { fileURLToPath } from 'node:url';
 import { stripVTControlCharacters } from 'node:util';
-import { chromium } from 'playwright';
+import { chromium as rawChromium } from 'playwright';
+const chromium = secureChromium(rawChromium);
 import { collectEntries, parseArgs } from './flag-review/records.mjs';
 
 const APP = 'inc.corpora.aha';

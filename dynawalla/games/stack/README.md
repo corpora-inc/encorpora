@@ -82,7 +82,7 @@ npm run build:pack     # what installs on a tablet: pack.html only, no stub host
 ### Playtest harness
 
 ```sh
-npx playwright install chromium         # once
+node ../../../amp/scripts/install-browser.mjs         # once
 node tools/playtest.mjs --seconds 120 --quality 0.88 --tier ultra
 ```
 

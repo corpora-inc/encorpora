@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { contrast, type Rgba } from "./color-system";
 import { createElement } from "react";
@@ -5,7 +6,13 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
-import { chromium, firefox, webkit, type Page } from "playwright";
+import {
+  chromium as rawChromium,
+  firefox,
+  webkit,
+  type Page,
+} from "playwright";
+const chromium = secureChromium(rawChromium);
 import { problemLesson } from "../src/content/problem-lessons";
 import { skills } from "../src/curriculum/catalog";
 import { generateProblem, templates } from "../src/math/engine";
@@ -1040,9 +1047,7 @@ try {
       await page
         .getByRole("button", { name: "Browse skills", exact: true })
         .click();
-      await page
-        .getByRole("checkbox", { name: "Show grade numbers" })
-        .check();
+      await page.getByRole("checkbox", { name: "Show grade numbers" }).check();
       await page
         .getByRole("button", { name: "Close browser", exact: true })
         .click();

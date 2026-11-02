@@ -1,9 +1,11 @@
+import { secureChromium } from "../browser-security.mjs";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { resolve, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import {
   supplierCatalog,
   catalogCsv,

@@ -1,9 +1,11 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { mkdir } from "node:fs/promises";
 import Fastify from "fastify";
 import { Pool } from "pg";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";

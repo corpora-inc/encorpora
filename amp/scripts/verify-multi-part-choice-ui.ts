@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /** Real-browser proof of multi-part choice practice: blanks in a sentence,
  * a match table and labeled slots. Pointer and touch selection, changing a
  * choice, keyboard menus (Enter, arrows, Escape), Check gating, Clear, server
@@ -6,7 +7,8 @@
  * artifacts/multi-part-choice-ui). Requires AMP_TEST_DATABASE_URL. */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";

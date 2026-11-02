@@ -1,10 +1,12 @@
+import { secureChromium } from "../browser-security.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
 import { createServer, request } from "node:http";
 import type { AddressInfo } from "node:net";
 import type { Browser } from "playwright-core";
-import { chromium } from "playwright-core";
+import { chromium as rawChromium } from "playwright-core";
+const chromium = secureChromium(rawChromium);
 import { createRenderService } from "../src/render-service/server.js";
 
 const token = "render-test-token-0123456789abcdef0123";

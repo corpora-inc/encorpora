@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Workbook samples for synthetic learners, as PDFs, with the layout
  * checks of `workbook-layout.ts` on every composed page.
@@ -11,7 +12,8 @@
  */
 import { execFileSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import {
   WORKBOOK_MINUTES,
   workbookMinutes,

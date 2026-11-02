@@ -10,7 +10,7 @@ human fraction trends toward 0.
 
 ```bash
 # one-time
-npm i -D playwright && npx playwright install chromium
+npm i -D playwright && node amp/scripts/install-browser.mjs
 
 # capture phone/tablet/desktop screenshots of a running build
 node scripts/visual-sweep/screenshot.mjs http://localhost:5173 --out /tmp/shots

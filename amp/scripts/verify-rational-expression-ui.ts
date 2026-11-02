@@ -1,7 +1,9 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { createServer } from "vite";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { publicationHtml } from "../src/content/publications";
 import { rationalExpressionLessons } from "../src/content/rational-expression-lessons";
 

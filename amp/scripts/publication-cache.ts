@@ -69,7 +69,12 @@ export function installedPackages(): string {
 /** Everything besides the HTML that can change a PDF's bytes. */
 export async function rendererFingerprint(
   root: string,
-  files = ["package-lock.json", "Dockerfile", "scripts/publication-render.ts"],
+  files = [
+    "package-lock.json",
+    "Dockerfile",
+    "scripts/publication-render.ts",
+    "browser-security.mjs",
+  ],
   packages = installedPackages(),
 ): Promise<string> {
   const hash = createHash("sha256").update(

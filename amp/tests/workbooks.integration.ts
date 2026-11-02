@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -8,7 +9,8 @@ import { buildApp } from "../src/server/app.js";
 import { FamilyRepository } from "../src/family/repository.js";
 import { generateProblem } from "../src/math/engine.js";
 import { existsSync } from "node:fs";
-import { chromium } from "playwright-core";
+import { chromium as rawChromium } from "playwright-core";
+const chromium = secureChromium(rawChromium);
 import { localRenderer } from "../src/workbook/pdf.js";
 
 test(

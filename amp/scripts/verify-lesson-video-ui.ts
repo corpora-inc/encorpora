@@ -1,7 +1,9 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { createServer as httpServer } from "node:http";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { problemLesson } from "../src/content/problem-lessons";
 import nativeConfig from "../mobile/tauri.conf.json";

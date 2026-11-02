@@ -1,7 +1,8 @@
+import { secureChromium } from "../../../../amp/browser-security.mjs";
 /**
  * Playtest harness for MONUMENT.
  *
- *   npx playwright install chromium      # once
+ *   node ../../../amp/scripts/install-browser.mjs      # once
  *   npm run dev                          # in another shell
  *   node tools/playtest.mjs --seconds 90 --quality 0.86 --tier ultra
  *
@@ -15,7 +16,8 @@
  * escalation, and the collapse.
  */
 
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 

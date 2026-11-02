@@ -1,8 +1,10 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import { mkdir } from "node:fs/promises";
 import { createServer } from "vite";
-import { chromium, type Page } from "playwright";
+import { chromium as rawChromium, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { fixtureMe } from "./me-fixture";
 import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";

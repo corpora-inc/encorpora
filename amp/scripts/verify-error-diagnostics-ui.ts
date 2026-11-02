@@ -1,9 +1,11 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { build, preview } from "vite";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { eventBatchSchema } from "../src/analytics/events";
 
 // Exercise production React/Vite failures through the real entrypoint and

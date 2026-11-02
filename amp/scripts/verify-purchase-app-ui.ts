@@ -1,9 +1,16 @@
+import { secureChromium } from "../browser-security.mjs";
 import { fixtureMe } from "./me-fixture";
 import { choose } from "./ui-controls";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit, type Page, type Request } from "playwright";
+import {
+  chromium as rawChromium,
+  webkit,
+  type Page,
+  type Request,
+} from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts.js";
 import { presentOffer } from "../src/funding-purchase/contracts.js";

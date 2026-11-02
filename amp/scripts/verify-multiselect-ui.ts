@@ -1,7 +1,9 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { createHash, randomUUID } from "node:crypto";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
@@ -16,7 +18,7 @@ import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { assertOpaqueFeedback } from "./feedback-opacity-proof";
 import { choose } from "./ui-controls";
-import { startTopic } from "./ui-practice";
+import { openTopicLesson } from "./ui-practice";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
 if (!database) throw new Error("AMP_TEST_DATABASE_URL is required");
@@ -138,14 +140,17 @@ try {
             });
           },
         );
+      await openTopicLesson(page, templateId);
       const batch = page.waitForResponse(
         (response) =>
           response.url().endsWith("/batches") &&
           response.request().method() === "POST" &&
           response.request().postDataJSON()?.templateId === templateId,
       );
-      await startTopic(page, templateId);
-      const issued = await batch;
+      const [issued] = await Promise.all([
+        batch,
+        page.getByRole("button", { name: "Practice this", exact: true }).click(),
+      ]);
       assert.equal(issued.status(), 200);
       assert.ok(
         issued
@@ -396,13 +401,16 @@ try {
             });
           },
         );
+        await openTopicLesson(page, templateId);
         const correctBatch = page.waitForResponse(
           (response) =>
             response.url().endsWith("/batches") &&
             response.request().postDataJSON()?.templateId === templateId,
         );
-        await startTopic(page, templateId);
-        const correctIssued = await correctBatch;
+        const [correctIssued] = await Promise.all([
+          correctBatch,
+          page.getByRole("button", { name: "Practice this", exact: true }).click(),
+        ]);
         assert.equal(
           (await correctIssued.json()).problems[0]?.id,
           correctProblem.public.id,
@@ -424,14 +432,18 @@ try {
         );
 
         nextProblem = skippedProblem;
+        await openTopicLesson(page, templateId);
         const skippedBatch = page.waitForResponse(
           (response) =>
             response.url().endsWith("/batches") &&
             response.request().postDataJSON()?.templateId === templateId,
         );
-        await startTopic(page, templateId);
+        const [skippedIssued] = await Promise.all([
+          skippedBatch,
+          page.getByRole("button", { name: "Practice this", exact: true }).click(),
+        ]);
         assert.equal(
-          (await (await skippedBatch).json()).problems[0]?.id,
+          (await skippedIssued.json()).problems[0]?.id,
           skippedProblem.public.id,
         );
         await page
@@ -509,14 +521,17 @@ try {
         });
       },
     );
+    await openTopicLesson(graphPage, graphTemplateId);
     const graphBatch = graphPage.waitForResponse(
       (response) =>
         response.url().endsWith("/batches") &&
         response.request().method() === "POST" &&
         response.request().postDataJSON()?.templateId === graphTemplateId,
     );
-    await startTopic(graphPage, graphTemplateId);
-    const graphIssued = await graphBatch;
+    const [graphIssued] = await Promise.all([
+      graphBatch,
+      graphPage.getByRole("button", { name: "Practice this", exact: true }).click(),
+    ]);
     assert.equal(graphIssued.status(), 200);
     assert.equal(
       (await graphIssued.json()).problems[0]?.id,

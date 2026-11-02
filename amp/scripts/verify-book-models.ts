@@ -1,10 +1,12 @@
+import { secureChromium } from "../browser-security.mjs";
 import { algebraModels } from "../tests/fixtures/algebra-models.js";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { resolve } from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { BookScreenFigure } from "../src/web/BookScreenFigure.js";
 import type { Diagram } from "../src/publishing/schema.js";
 import { isPhoneLandscape } from "./ui-viewports";

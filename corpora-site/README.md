@@ -50,7 +50,7 @@ No analytics or advertising capability is enabled by configuration. Adding eithe
 ## Validation
 
 ```sh
-npx playwright install chromium
+node ../amp/scripts/install-browser.mjs
 npm run test:ui
 ```
 
