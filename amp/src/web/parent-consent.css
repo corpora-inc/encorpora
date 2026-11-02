@@ -113,13 +113,6 @@
   line-height: 1.4;
   padding: 8px 0;
 }
-.consent-attestation input {
-  width: 24px;
-  height: 24px;
-  flex: none;
-  margin: 0;
-  accent-color: var(--color-primary);
-}
 .parent-consent-center a {
   color: var(--color-primary);
   text-decoration: underline;

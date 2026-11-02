@@ -12,6 +12,7 @@ import {
 } from "../learning/frontier";
 import { gradeName, levelDetails, levelRange } from "../learning/level-check";
 import { LevelReadout } from "./ui/LevelReadout";
+import { LevelAxis, levelPositionDescription } from "./ui/LevelChart";
 export { gradeName } from "../learning/level-check";
 export type FrontierMap = Frontier;
 const COLLEGE = 13;
@@ -19,6 +20,7 @@ const COLLEGE = 13;
 type Props = {
   navigation?: ReactNode;
   name: string;
+  birthYear?: number | null;
   resuming: boolean;
   frontier: FrontierMap | null;
   strands: readonly string[];
@@ -46,6 +48,7 @@ export function Home(props: Props) {
       <CurriculumDetailsControl />
       <FrontierMap
         name={props.name}
+        birthYear={props.birthYear}
         frontier={props.frontier}
         strands={props.strands}
       />
@@ -92,6 +95,7 @@ function HomeLevel({ frontier }: { frontier: FrontierMap | null }) {
  * on the grade typical for the learner's age. Rows open to show the data. */
 export function FrontierMap(props: {
   name: string;
+  birthYear?: number | null;
   frontier: FrontierMap | null;
   strands: readonly string[];
 }) {
@@ -103,45 +107,23 @@ export function FrontierMap(props: {
     hi = lo + 6;
   const at = (v: number) =>
     `${((Math.min(hi, Math.max(lo, v)) - lo) / (hi - lo)) * 100}%`;
-  if (!shown)
-    return (
-      <section className="frontier-map" aria-label="Practice by area">
-        <div className="frontier-heading">
-          <h2>Practice by area</h2>
-          <p>
-            Answers recorded in each area. Counts describe practice, not
-            mastery.
-          </p>
-        </div>
-        <ul>
-          {props.strands.map((strand) => {
-            const e = f?.strands[strand];
-            return (
-              <li key={strand} className="frontier-count-row">
-                <span className="frontier-name">{strandNames[strand]}</span>
-                <span>
-                  {e
-                    ? `${e.answered} answered · ${e.independent} correct without help`
-                    : "Not practiced yet"}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-    );
+  const reference = props.birthYear != null && f ? center : undefined;
   return (
-    <section className="frontier-map" aria-label="Where you are">
+    <section className="frontier-map" aria-label="Where you are" aria-busy={!f}>
       <div className="frontier-heading">
         <h2>Where you are</h2>
         <p>
-          Estimated grade level in each area. The centre line is typical for{" "}
-          {props.name}’s age. Wider bars mean more uncertainty.
+          Dots show estimates; bands show uncertainty.{" "}
+          {reference !== undefined && (
+            <>Vertical marks show the age reference. </>
+          )}
+          Striped bands mark areas not practiced yet.
         </p>
       </div>
       <ul>
         {props.strands.map((strand) => {
-          const measured = f?.strands[strand];
+          const own = f?.strands[strand];
+          const measured = own && own.answered > 0 ? own : undefined;
           const estimate: Estimate = f
             ? strandEstimate(f, strand)
             : {
@@ -158,6 +140,7 @@ export function FrontierMap(props: {
               <button
                 className="frontier-row"
                 aria-expanded={expanded}
+                aria-label={`${strandNames[strand]}. ${levelPositionDescription(estimate, reference)}`}
                 onClick={() => setOpen(expanded ? null : strand)}
               >
                 <span className="frontier-name">{strandNames[strand]}</span>
@@ -165,7 +148,12 @@ export function FrontierMap(props: {
                   className={`frontier-track ${measured ? "" : "estimated"}`}
                   aria-hidden="true"
                 >
-                  <span className="frontier-center" />
+                  {reference !== undefined && (
+                    <span
+                      className="frontier-center"
+                      style={{ left: at(center) }}
+                    />
+                  )}
                   <span
                     className="frontier-range"
                     style={{
@@ -181,22 +169,23 @@ export function FrontierMap(props: {
               </button>
               {expanded && (
                 <p className="frontier-detail">
-                  {measured
-                    ? `Level ${detail.point} (${gradeName(estimate.level)}). Estimated range ${detail.from} to ${detail.to}. ${measured.answered} answered, ${measured.independent} correct without help.`
-                    : `Not practiced yet. Estimated from other areas: level ${detail.point} (${gradeName(estimate.level)}), range ${detail.from} to ${detail.to}.`}
+                  {shown
+                    ? measured
+                      ? `Level ${detail.point} (${gradeName(estimate.level)}). Estimated range ${detail.from} to ${detail.to}. ${measured.answered} answered, ${measured.independent} correct without help.`
+                      : `Not practiced yet. Estimated level ${detail.point} (${gradeName(estimate.level)}), range ${detail.from} to ${detail.to}.`
+                    : `${measured ? `${measured.answered} answered, ${measured.independent} correct without help.` : "Not practiced yet."} ${levelPositionDescription(estimate, reference)}`}
                 </p>
               )}
             </li>
           );
         })}
       </ul>
-      <div className="frontier-axis" aria-hidden="true">
-        <span>{gradeName(lo)}</span>
-        <span>{gradeName(center)}</span>
-        <span>
-          {gradeName(hi)}
-          {hi < COLLEGE ? "+" : ""}
-        </span>
+      <div className="frontier-axis">
+        <LevelAxis
+          scale={{ lo, hi, center }}
+          name={shown ? gradeName : () => ""}
+          reference={reference !== undefined}
+        />
       </div>
     </section>
   );

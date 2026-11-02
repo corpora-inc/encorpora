@@ -17,6 +17,7 @@ vi.mock("@tanstack/react-router", () => ({
   Link: ({ children }: { children: ReactNode }) => <a>{children}</a>,
 }));
 import { LevelReadout } from "../../../ui/LevelReadout";
+import { FrontierMap } from "../../../Home";
 const fixture = vi.hoisted(() => ({
   learner: "first",
   account: "parent",
@@ -50,9 +51,7 @@ afterEach(() => {
 test("details start hidden and persist for only the selected account and learner", () => {
   const { rerender } = render(<View />);
   expect(screen.queryByTestId("level-readout")).toBeNull();
-  fireEvent.click(
-    screen.getByRole("checkbox", { name: "Show grades and estimates" }),
-  );
+  fireEvent.click(screen.getByRole("checkbox", { name: "Show grade numbers" }));
   expect(screen.getByTestId("level-readout").textContent).toContain("Grade 5");
   expect(
     JSON.parse(localStorage.getItem("amp.curriculum-details")!).state.shown,
@@ -127,11 +126,21 @@ test("progress modal hides grade text and accessible estimates until explicitly 
     "25 problems answered. Your answers help choose what to practice next.",
   );
   expect(within(dialog).queryByTestId("level-readout")).toBeNull();
-  expect(within(dialog).queryByRole("img")).toBeNull();
+  const trend = within(dialog).getByRole("img", {
+    name: /^Estimate over 25 problems/,
+  });
+  expect(trend.textContent).not.toMatch(/Grade|Level \d/);
   const area = dialog.querySelector("li[data-strand]")!;
-  expect(area.getAttribute("aria-label")).toBe(
+  expect(area.getAttribute("aria-label")).toContain(
     "Operations: 25 answered, 18 correct without help",
   );
+  expect(area.getAttribute("aria-label")).toContain("age reference");
+  expect(area.getAttribute("aria-label")).not.toMatch(
+    /Grade|Level \d|likely \d/,
+  );
+  const track = area.lastElementChild;
+  const range = track?.children[1];
+  const rangeStyle = range?.getAttribute("style");
   fireEvent.click(within(dialog).getByRole("checkbox"));
   expect(within(dialog).getByTestId("level-readout").textContent).toContain(
     "Grade 5",
@@ -140,12 +149,78 @@ test("progress modal hides grade text and accessible estimates until explicitly 
     "Estimated range",
   );
   expect(area.getAttribute("aria-label")).toContain("likely");
+  expect(area.lastElementChild).toBe(track);
+  expect(range?.getAttribute("style")).toBe(rangeStyle);
   expect(
     within(dialog).getByRole("img", { name: /The range shows uncertainty/ }),
   ).toBeTruthy();
   expect(dialog.textContent).not.toContain("You’re about 14");
   fireEvent.click(within(dialog).getByRole("checkbox"));
   expect(within(dialog).queryByTestId("level-readout")).toBeNull();
+  expect(area.lastElementChild).toBe(track);
+  expect(
+    within(dialog).getByRole("img", { name: /^Estimate over 25 problems/ }),
+  ).toBe(trend);
   fireEvent.click(within(dialog).getByRole("button", { name: "Continue" }));
   expect(proceed).toHaveBeenCalledOnce();
+});
+
+test("area charts retain estimates and uncertainty when grade numbers are hidden, without inventing an age reference", () => {
+  vi.stubGlobal(
+    "ResizeObserver",
+    class {
+      observe() {}
+      disconnect() {}
+    },
+  );
+  const frontier = {
+    expected: 0,
+    overall: { level: 2, sd: 0.5, answered: 12, independent: 10 },
+    strands: {
+      operations: { level: 2, sd: 0.5, answered: 12, independent: 10 },
+    },
+  };
+  const view = (birthYear: number | null) => (
+    <CurriculumDetailsProvider>
+      <CurriculumDetailsControl />
+      <FrontierMap
+        name="Sample learner"
+        birthYear={birthYear}
+        frontier={frontier}
+        strands={["operations"]}
+      />
+    </CurriculumDetailsProvider>
+  );
+  const { container, rerender } = render(view(2020));
+  const track = container.querySelector(".frontier-track")!;
+  const marker = container.querySelector<HTMLElement>(".frontier-center")!;
+  const range = container.querySelector(".frontier-range")!;
+  const dot = container.querySelector(".frontier-dot")!;
+  expect(marker.style.left).toBe("0%");
+  const before = [range.getAttribute("style"), dot.getAttribute("style")];
+  expect(container.querySelector(".frontier-axis")!.textContent).toBe("");
+  const row = screen.getByRole("button", { name: /^Operations/ });
+  fireEvent.click(row);
+  expect(container.querySelector(".frontier-detail")!.textContent).toContain(
+    "12 answered, 10 correct without help",
+  );
+  expect(container.textContent).not.toMatch(/Grade \d|Level \d/);
+  fireEvent.click(screen.getByRole("checkbox"));
+  expect(container.querySelector(".frontier-track")).toBe(track);
+  expect([range.getAttribute("style"), dot.getAttribute("style")]).toEqual(
+    before,
+  );
+  expect(container.querySelector(".frontier-detail")!.textContent).toContain(
+    "Level 2.00",
+  );
+  fireEvent.click(screen.getByRole("checkbox"));
+  rerender(view(null));
+  expect(container.querySelector(".frontier-center")).toBeNull();
+  expect(
+    container.querySelector(".frontier-heading")!.textContent,
+  ).not.toContain("age reference");
+  expect(row.getAttribute("aria-label")).toContain(
+    "No age reference is available",
+  );
+  expect(container.querySelector(".frontier-track")).toBe(track);
 });

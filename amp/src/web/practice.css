@@ -802,20 +802,12 @@ nav button {
   min-width: 0;
   overflow-wrap: anywhere;
 }
-.choice-option input {
+.choice-option > input {
   position: absolute;
   opacity: 0;
   width: 1px;
   height: 1px;
   margin: 0;
-}
-.multi-select-form .choice-option input {
-  position: static;
-  opacity: 1;
-  width: 22px;
-  height: 22px;
-  flex: none;
-  accent-color: var(--color-primary);
 }
 .choice-option:has(input:focus-visible) {
   outline: 3px solid var(--color-focus-ring);

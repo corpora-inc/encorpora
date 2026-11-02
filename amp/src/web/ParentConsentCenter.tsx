@@ -1,3 +1,4 @@
+import { CheckboxControl } from "./ui/Checkbox";
 import {
   pendingFundedPurchase,
   fundedProgramForPath,
@@ -370,8 +371,7 @@ export function ParentConsentCenter({
             )}
             {(canStart || canAck) && (
               <label className="consent-attestation">
-                <input
-                  type="checkbox"
+                <CheckboxControl
                   checked={attest}
                   onChange={(e) => setAttest(e.target.checked)}
                 />

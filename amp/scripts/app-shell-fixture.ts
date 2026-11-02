@@ -341,13 +341,8 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "home",
       path: "/",
       state: "paid",
-      // Default home settles when recorded practice counts have loaded.
-      ready: (p) =>
-        p
-          .locator(".frontier-count-row")
-          .filter({ hasText: /\d+ answered/ })
-          .first()
-          .waitFor(),
+      // The retained chart settles when its actual frontier has loaded.
+      ready: (p) => p.locator('.frontier-map[aria-busy="false"]').waitFor(),
     },
     {
       id: "drawer",

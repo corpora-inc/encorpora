@@ -17,8 +17,3 @@
   gap: var(--space-4);
   cursor: pointer;
 }
-.preferences input {
-  width: var(--space-5);
-  height: var(--space-5);
-  accent-color: var(--color-primary);
-}

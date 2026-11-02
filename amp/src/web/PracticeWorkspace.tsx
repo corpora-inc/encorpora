@@ -1,3 +1,4 @@
+import { CheckboxControl } from "./ui/Checkbox";
 import { track } from "./lib/analytics";
 import { ProblemLesson } from "./ProblemLesson";
 import { Glossary } from "./ui/Glossary";
@@ -641,8 +642,7 @@ export function PracticeWorkspace(props: Props) {
                 key={option.id}
                 className={`choice-option ${selected.includes(option.id) ? "selected" : ""}`}
               >
-                <input
-                  type="checkbox"
+                <CheckboxControl
                   name={`answer-${problem.id}`}
                   value={option.id}
                   aria-label={spokenMath(option.label)}

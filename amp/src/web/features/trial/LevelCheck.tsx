@@ -14,6 +14,7 @@ import {
   LevelTrack,
   LevelTrend,
   levelScale,
+  levelPositionDescription,
 } from "../../ui/LevelChart";
 import { LevelReadout } from "../../ui/LevelReadout";
 import type { TrialProgress } from "./api";
@@ -100,17 +101,20 @@ export function LevelCheck({
               {copy.title}
             </RadixDialog.Title>
             <CurriculumDetailsControl />
-            {shown && (
-              <div className={styles.overall}>
-                <LevelReadout estimate={frontier.overall} />
-                <LevelTrack
-                  estimate={frontier.overall}
-                  scale={scale}
-                  size="large"
-                />
-                <LevelAxis scale={scale} name={gradeName} />
-              </div>
-            )}
+            <div className={styles.overall}>
+              <LevelReadout estimate={frontier.overall} />
+              <LevelTrack
+                estimate={frontier.overall}
+                scale={scale}
+                size="large"
+                reference={age !== undefined}
+              />
+              <LevelAxis
+                scale={scale}
+                name={shown ? gradeName : () => ""}
+                reference={age !== undefined}
+              />
+            </div>
             <p id="level-check-summary" className={styles.summary}>
               {shown ? (
                 <>
@@ -120,19 +124,23 @@ export function LevelCheck({
                   )}
                 </>
               ) : (
-                `${answered} problems answered. Your answers help choose what to practice next.`
+                `${answered} problems answered. Your answers help choose what to practice next. ${levelPositionDescription(frontier.overall, age !== undefined ? frontier.expected : undefined)}`
               )}
             </p>
-            {shown && trend.length > 1 && first && (
+            {trend.length > 1 && first && (
               <section className={styles.block}>
                 <h3 className={styles.blockTitle}>{copy.trendTitle}</h3>
                 <LevelTrend
                   points={trend}
-                  label={copy.trendLabel({
-                    answered: trend.at(-1)!.answered,
-                    from: gradeName(first.level),
-                    to: words.level,
-                  })}
+                  label={
+                    shown
+                      ? copy.trendLabel({
+                          answered: trend.at(-1)!.answered,
+                          from: gradeName(first.level),
+                          to: words.level,
+                        })
+                      : `Estimate over ${trend.at(-1)!.answered} problems. The shaded band shows uncertainty and can widen as well as narrow.`
+                  }
                 />
               </section>
             )}
@@ -154,7 +162,7 @@ export function LevelCheck({
                                 area: strandNames[strand] ?? strand,
                                 ...area,
                               })
-                            : `${strandNames[strand] ?? strand}: ${estimate.answered} answered, ${estimate.independent} correct without help`
+                            : `${strandNames[strand] ?? strand}: ${estimate.answered} answered, ${estimate.independent} correct without help. ${levelPositionDescription(estimate, age !== undefined ? frontier.expected : undefined)}`
                         }
                       >
                         <span className={styles.areaName} aria-hidden="true">
@@ -165,9 +173,11 @@ export function LevelCheck({
                               : `${estimate.answered} answered · ${estimate.independent} correct without help`}
                           </small>
                         </span>
-                        {shown && (
-                          <LevelTrack estimate={estimate} scale={scale} />
-                        )}
+                        <LevelTrack
+                          estimate={estimate}
+                          scale={scale}
+                          reference={age !== undefined}
+                        />
                       </li>
                     );
                   })}

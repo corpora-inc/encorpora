@@ -236,11 +236,47 @@ try {
   for (const id of ["trial-map", "home"])
     for (const width of [320, 390, 768, 1280]) {
       const { page, context } = await open(id, { width, height: 900 }, "light");
-      await page
-        .getByRole("checkbox", { name: "Show grades and estimates" })
-        .check();
+      const chart = () =>
+        page.locator(".frontier-track").evaluateAll((tracks) =>
+          tracks.map((track) => {
+            const r = track.getBoundingClientRect();
+            return {
+              width: r.width,
+              height: r.height,
+              parts: [...track.children].map((child) => {
+                const b = child.getBoundingClientRect();
+                const style = getComputedStyle(child);
+                return {
+                  kind: child.className,
+                  x: b.x - r.x,
+                  y: b.y - r.y,
+                  width: b.width,
+                  height: b.height,
+                  color: style.background,
+                };
+              }),
+            };
+          }),
+        );
+      const before = await chart();
+      check(before.length > 0, `${id} ${width}: default charts are missing`);
+      check(
+        (await page.locator(".frontier-axis").innerText()).trim() === "",
+        `${id} ${width}: grade labels visible by default`,
+      );
+      await page.getByRole("checkbox", { name: "Show grade numbers" }).check();
+      check(
+        JSON.stringify(await chart()) === JSON.stringify(before),
+        `${id} ${width}: revealing numbers changed the charts`,
+      );
       const geometry = await page.evaluate(() => {
         const labels = [...document.querySelectorAll(".frontier-axis span")]
+          .filter(
+            (s) =>
+              !s.children.length &&
+              s.textContent &&
+              getComputedStyle(s).visibility !== "hidden",
+          )
           .map((s) => s.getBoundingClientRect())
           .filter((r) => r.width > 0);
         const collide = labels.some((a, i) =>

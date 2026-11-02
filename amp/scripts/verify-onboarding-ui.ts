@@ -552,10 +552,7 @@ try {
       const card = page.locator("main section").first(),
         before = await box(card);
       await page.getByRole("checkbox").click();
-      assert.equal(
-        await page.getByRole("checkbox").getAttribute("aria-checked"),
-        "true",
-      );
+      assert.equal(await page.getByRole("checkbox").isChecked(), true);
       assert.deepEqual(
         await box(card),
         before,

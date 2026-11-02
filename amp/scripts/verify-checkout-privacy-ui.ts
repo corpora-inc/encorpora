@@ -219,14 +219,13 @@ try {
 
       await page.goto(origin + "/start/plan");
       await parent.waitFor();
-      assert.equal(await parent.getAttribute("aria-checked"), "false");
+      assert.equal(await parent.isChecked(), false);
       await parent.click();
       await page.evaluate(() => (window as any).switchAccount("amp|other"));
       await page.waitForFunction(
         () =>
-          document
-            .querySelector('[role="checkbox"]')
-            ?.getAttribute("aria-checked") === "false",
+          document.querySelector<HTMLInputElement>('input[type="checkbox"]')
+            ?.checked === false,
       );
       assert.ok(
         await checkout.isDisabled(),

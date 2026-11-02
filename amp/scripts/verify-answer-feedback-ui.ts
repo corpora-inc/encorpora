@@ -456,7 +456,7 @@ try {
             .check();
           await page
             .getByRole("checkbox", {
-              name: "Show grades and estimates",
+              name: "Show grade numbers",
               exact: true,
             })
             .check();
@@ -488,7 +488,7 @@ try {
           assert(
             await page
               .getByRole("checkbox", {
-                name: "Show grades and estimates",
+                name: "Show grade numbers",
                 exact: true,
               })
               .isChecked(),
@@ -502,7 +502,7 @@ try {
           await page.keyboard.press("Escape");
           await page.goto(`${origin}${mode === "trial" ? "/try/map" : "/"}`);
           const details = page.getByRole("checkbox", {
-            name: "Show grades and estimates",
+            name: "Show grade numbers",
             exact: true,
           });
           await details.uncheck();

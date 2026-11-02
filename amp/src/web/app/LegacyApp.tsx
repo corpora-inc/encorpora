@@ -1748,6 +1748,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           <Home
             navigation={!nativeRuntime && <ProgressViews active="level" />}
             name={learner.name}
+            birthYear={learner.birthYear}
             resuming={!!problem}
             frontier={frontierMap}
             strands={homeStrands}
