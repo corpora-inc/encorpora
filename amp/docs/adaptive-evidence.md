@@ -24,7 +24,7 @@ For the overall readout, a rare miss adds a bounded reporting-uncertainty reserv
 
 A correct answer after a hint or lesson contributes half an independent answer's log-likelihood weight. An assisted miss has zero likelihood weight. Both remain recorded attempts; neither earns independent mastery or illumination credit. The skill-evidence support path can revisit that skill to check it without help. Answer correctness and the retained history are unchanged.
 
-**Paper results** from a daily workbook (`src/workbook/results.ts`) are attempts with `evidenceSource: "paper"`. The weights are founder decisions, named constants in that file.
+**Paper results** from a workbook (`src/workbook/results.ts`) are attempts with `evidenceSource: "paper"`. The weights are founder decisions, named constants in that file.
 - A typed answer checked by the app's exact grader is an independent attempt at full weight.
 - A parent's right / not-yet mark without the answer has `evidenceWeight` 0.5. It contributes half the log-likelihood weight and half the drift.
 - A "right" mark never counts as independent: it confirms no band, adds no independent credit, and leaves the retrieval schedule as it was.

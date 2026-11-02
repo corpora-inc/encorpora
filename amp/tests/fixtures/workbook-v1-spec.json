@@ -1,0 +1,259 @@
+{
+  "code": "CN2N-7ENZ",
+  "problems": "7feb1fea8ed37c68814d537e644e9135fafd8d1fcdf437eaaabbca33300e0d0e",
+  "spec": {
+    "version": 1,
+    "date": "2026-10-31",
+    "number": 2,
+    "minutes": 45,
+    "level": 4,
+    "sections": [
+      {
+        "kind": "warm-up",
+        "items": [
+          {
+            "templateId": "rectangle-missing-border-side",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:warm-up:0",
+            "skillId": "perimeter",
+            "strand": "geometry",
+            "grade": 3,
+            "minutes": 1,
+            "space": "answer"
+          },
+          {
+            "templateId": "mcas-round-hundred-select",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:warm-up:1",
+            "skillId": "round-whole-numbers",
+            "strand": "number",
+            "grade": 3.25,
+            "minutes": 1.5,
+            "space": "answer"
+          },
+          {
+            "templateId": "times-as-many-comparison",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:warm-up:2",
+            "skillId": "multiplicative-stories",
+            "strand": "modeling",
+            "grade": 3.3,
+            "minutes": 1,
+            "space": "answer"
+          },
+          {
+            "templateId": "repeating-shape-pattern",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:warm-up:3",
+            "skillId": "arithmetic-patterns",
+            "strand": "algebra",
+            "grade": 2.1,
+            "minutes": 1.5,
+            "space": "answer"
+          },
+          {
+            "templateId": "unit-piece-size",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:warm-up:4",
+            "skillId": "unit-fractions",
+            "strand": "fractions",
+            "grade": 3,
+            "minutes": 1,
+            "space": "answer"
+          },
+          {
+            "templateId": "bag-totals-chain",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:warm-up:5",
+            "skillId": "add-subtract-thousands",
+            "strand": "operations",
+            "grade": 3.4,
+            "minutes": 1,
+            "space": "answer"
+          }
+        ]
+      },
+      {
+        "kind": "lesson",
+        "lessonId": "rounding",
+        "items": [
+          {
+            "templateId": "round-large",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:lesson:0",
+            "skillId": "large-place-value",
+            "strand": "number",
+            "grade": 4,
+            "minutes": 1.5,
+            "space": "standard"
+          },
+          {
+            "templateId": "round-large",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:lesson:1",
+            "skillId": "large-place-value",
+            "strand": "number",
+            "grade": 4,
+            "minutes": 1.5,
+            "space": "standard"
+          }
+        ]
+      },
+      {
+        "kind": "practice",
+        "items": [
+          {
+            "templateId": "find-quadrilateral",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:practice:0",
+            "skillId": "quadrilateral-categories",
+            "strand": "geometry",
+            "grade": 3,
+            "minutes": 2,
+            "space": "answer"
+          },
+          {
+            "templateId": "factor-partner",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:practice:1",
+            "skillId": "factors-multiples",
+            "strand": "number",
+            "grade": 4,
+            "minutes": 1.5,
+            "space": "standard"
+          },
+          {
+            "templateId": "staar-story-model-choice",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:practice:2",
+            "skillId": "multi-operation-stories",
+            "strand": "modeling",
+            "grade": 3.2,
+            "minutes": 1.5,
+            "space": "answer"
+          },
+          {
+            "templateId": "fraction-line-names-select",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:practice:3",
+            "skillId": "fractions-number-line",
+            "strand": "fractions",
+            "grade": 3.2,
+            "minutes": 3,
+            "space": "answer"
+          },
+          {
+            "templateId": "division-remainder",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:practice:4",
+            "skillId": "whole-division",
+            "strand": "operations",
+            "grade": 4,
+            "minutes": 1.5,
+            "space": "standard"
+          },
+          {
+            "templateId": "mass-volume-story",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:practice:5",
+            "skillId": "mass-volume",
+            "strand": "measurement",
+            "grade": 3,
+            "minutes": 1.5,
+            "space": "standard"
+          },
+          {
+            "templateId": "scaled-picture-graph",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:practice:6",
+            "skillId": "scaled-graphs",
+            "strand": "data",
+            "grade": 3,
+            "minutes": 2,
+            "space": "standard"
+          },
+          {
+            "templateId": "rectangle-area",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:practice:7",
+            "skillId": "rectangle-area",
+            "strand": "geometry",
+            "grade": 3,
+            "minutes": 2,
+            "space": "standard"
+          },
+          {
+            "templateId": "fraction-whole-as-parts",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:practice:8",
+            "skillId": "equivalent-fractions",
+            "strand": "fractions",
+            "grade": 3,
+            "minutes": 2,
+            "space": "standard"
+          },
+          {
+            "templateId": "add-multidigit",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:practice:9",
+            "skillId": "whole-add-subtract",
+            "strand": "operations",
+            "grade": 4,
+            "minutes": 1.5,
+            "space": "standard"
+          }
+        ]
+      },
+      {
+        "kind": "review",
+        "items": [
+          {
+            "templateId": "perimeter-area-chain",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:review:0",
+            "skillId": "area-perimeter-models",
+            "strand": "geometry",
+            "grade": 4.4,
+            "minutes": 1.5,
+            "space": "standard"
+          },
+          {
+            "templateId": "pairing-leftover",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:review:1",
+            "skillId": "odd-and-even",
+            "strand": "number",
+            "grade": 2,
+            "minutes": 3,
+            "space": "standard"
+          },
+          {
+            "templateId": "skip-count-missing",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:review:2",
+            "skillId": "skip-counting",
+            "strand": "number",
+            "grade": 2,
+            "minutes": 2,
+            "space": "standard"
+          }
+        ]
+      },
+      {
+        "kind": "challenge",
+        "items": [
+          {
+            "templateId": "fraction-distance-gap",
+            "templateVersion": 1,
+            "seed": "workbook:third-grade:2026-10-31:2:challenge:0",
+            "skillId": "fraction-addition",
+            "strand": "fractions",
+            "grade": 5,
+            "minutes": 5,
+            "space": "roomy"
+          }
+        ]
+      }
+    ]
+  }
+}

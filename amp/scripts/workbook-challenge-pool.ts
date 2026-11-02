@@ -1,5 +1,5 @@
 /**
- * Builds the daily workbook's challenge pool (src/workbook/challenge-pool.ts):
+ * Builds the workbook challenge pool (src/workbook/challenge-pool.ts):
  * printable assessment templates whose problems take several steps or
  * reasoning about a figure. Each template is scored from three generated
  * problems:
