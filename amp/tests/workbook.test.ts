@@ -20,7 +20,12 @@ import {
   type WorkbookMinutes,
   type WorkbookSpec,
 } from "../src/workbook/compose";
-import { cardWords, workbookHtml } from "../src/workbook/render";
+import {
+  cardTrimRanks,
+  cardWords,
+  sentences,
+  workbookHtml,
+} from "../src/workbook/render";
 import { sampleLearners, simulateLearner } from "../src/workbook/synthetic";
 
 const now = Date.parse("2026-10-31T13:00:00Z");
@@ -385,4 +390,66 @@ test("the challenge sits 0.5 to 1.3 grades above the learner wherever the catalo
       }
     }
   }
+});
+
+test("a long lesson card gives up content in one fixed order", () => {
+  assert.deepEqual(
+    sentences("Add the tens. Then add $3.5 + 1.2$ ones. Is it 4.7? Yes."),
+    ["Add the tens.", "Then add $3.5 + 1.2$ ones.", "Is it 4.7?", "Yes."],
+  );
+  assert.deepEqual(sentences("No full stop inside $x. Y$ math"), [
+    "No full stop inside $x. Y$ math",
+  ]);
+  const r = cardTrimRanks({
+    paragraphs: 3,
+    sentences: 3,
+    pitfall: true,
+    visual: true,
+    words: 2,
+    steps: 4,
+    figure: true,
+  });
+  // Extra paragraphs (last first), pitfall, later sentences (last first),
+  // diagram, words (last first), later steps (last first), figure.
+  assert.deepEqual(r.paragraphs, [undefined, 2, 1]);
+  assert.equal(r.pitfall, 3);
+  assert.deepEqual(r.sentences, [undefined, 5, 4]);
+  assert.equal(r.visual, 6);
+  assert.deepEqual(r.words, [8, 7]);
+  assert.deepEqual(r.steps, [undefined, 11, 10, 9]);
+  assert.equal(r.figure, 12);
+  // The first paragraph's first sentence and the first step always stay.
+  const bare = cardTrimRanks({
+    paragraphs: 1,
+    sentences: 1,
+    pitfall: false,
+    visual: false,
+    words: 0,
+    steps: 1,
+    figure: false,
+  });
+  assert.deepEqual(bare.paragraphs, [undefined]);
+  assert.deepEqual(bare.steps, [undefined]);
+});
+
+test("the answer key carries the whole worked example, shown only when the card trims steps", () => {
+  const learner = sampleLearners.find((l) => l.id === "third-grade")!;
+  const { frontier, evidence, attempts } = simulateLearner(learner, now);
+  const spec = composeWorkbook({
+    templates,
+    skills,
+    lessons,
+    frontier,
+    evidence,
+    recentTemplateIds: attempts.slice(-12).map((a) => a.templateId),
+    date: "2026-10-31",
+    learnerKey: learner.id,
+    now,
+  });
+  const lessonId = spec.sections.find((s) => s.kind === "lesson")?.lessonId;
+  assert.ok(lessonId, "the sample has a lesson");
+  const html = workbookHtml(spec, { lessons, skillTitle: (s) => s });
+  assert.match(html, /data-key-example="" hidden/);
+  assert.match(html, /data-steps-more="" hidden/);
+  assert.match(html, /The rest of the steps are in the answer key\./);
 });

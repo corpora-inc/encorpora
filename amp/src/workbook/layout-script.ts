@@ -107,10 +107,12 @@ export const workbookLayoutScript = String.raw`(function () {
       // A single block taller than a page stays; the layout check reports it.
     }
     // A lesson card must fit one page with its heading. A long one stacks
-    // its idea and worked example, then drops,
-    // in order, its extra paragraphs, its pitfall, its diagram and its
-    // words to know, then
-    // prints slightly smaller (never below 75%).
+    // its idea and worked example, then gives up content one rank at a time
+    // in the order render.tsx assigns (cardTrimRanks: extra paragraphs, the
+    // pitfall, later sentences, the diagram, words to know, later example
+    // steps, the example's figure), gives back whatever still fits, then
+    // prints slightly smaller (never below 75%). When example steps go, the
+    // card points to the answer key and the key prints the whole example.
     var probe = newPage("student");
     var pageHeight = height(probe.body);
     pages.removeChild(probe.page);
@@ -120,9 +122,40 @@ export const workbookLayoutScript = String.raw`(function () {
       // A long worked example beside the idea first takes the full width.
       var card = block.querySelector(".wb-lesson");
       if (card && height(block) > limit) card.classList.add("wb-lesson--stacked");
-      for (var level = 1; level <= 4 && height(block) > limit; level++)
-        list(block.querySelectorAll('[data-trim="' + level + '"]')).forEach(function (el) {
-          el.setAttribute("data-trimmed", "");
+      var ranks = [];
+      list(block.querySelectorAll("[data-trim]")).forEach(function (el) {
+        var rank = Number(el.getAttribute("data-trim"));
+        if (ranks.indexOf(rank) < 0) ranks.push(rank);
+      });
+      ranks.sort(function (a, b) { return a - b; });
+      // The pointer to the answer key shows whenever an example step is
+      // left out, and is measured with the card.
+      var more = block.querySelector("[data-steps-more]");
+      function setTrim(rank, on) {
+        list(block.querySelectorAll('[data-trim="' + rank + '"]')).forEach(function (el) {
+          if (on) el.setAttribute("data-trimmed", "");
+          else el.removeAttribute("data-trimmed");
+        });
+        if (!more) return;
+        if (block.querySelector(".wb-example-steps [data-trimmed]")) more.removeAttribute("hidden");
+        else more.setAttribute("hidden", "");
+      }
+      var trimmed = [];
+      for (var r = 0; r < ranks.length && height(block) > limit; r++) {
+        setTrim(ranks[r], true);
+        trimmed.push(ranks[r]);
+      }
+      // Then give back what still fits, most valued first (the reverse of
+      // the trim order): a large figure dropped late can make room for the
+      // steps dropped before it.
+      if (height(block) <= limit)
+        for (var t = trimmed.length - 2; t >= 0; t--) {
+          setTrim(trimmed[t], false);
+          if (height(block) > limit) setTrim(trimmed[t], true);
+        }
+      if (more && !more.hasAttribute("hidden"))
+        list(document.querySelectorAll("[data-key-example]")).forEach(function (el) {
+          el.removeAttribute("hidden");
         });
       for (var zoom = 0.95; zoom >= 0.749 && height(block) > limit; zoom -= 0.05)
         block.style.zoom = zoom.toFixed(2);
