@@ -5,9 +5,7 @@ if (!process.env.AMP_DATABASE_URL || !process.argv[2])
   throw new Error(
     "Set AMP_DATABASE_URL and pass a private reviewed policy JSON file.",
   );
-const pool = createDatabasePool({
-  connectionString: process.env.AMP_DATABASE_URL,
-});
+const pool = createDatabasePool({ connectionString: process.env.AMP_DATABASE_URL });
 try {
   const file = await readFile(process.argv[2]);
   if (file.length > 128 * 1024) throw new Error("Oversized policy");
