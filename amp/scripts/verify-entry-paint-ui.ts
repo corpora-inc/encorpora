@@ -187,6 +187,8 @@ try {
                 json: scenario === "learner" ? learnerMe : trialMe,
               });
             }
+            if (path === "/api/v1/trials/current")
+              return route.fulfill({ json: { trial: null } });
             return route.fulfill({
               status: 503,
               json: { message: "Unavailable in synthetic entry fixture" },
