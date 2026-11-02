@@ -236,6 +236,9 @@ try {
   for (const id of ["trial-map", "home"])
     for (const width of [320, 390, 768, 1280]) {
       const { page, context } = await open(id, { width, height: 900 }, "light");
+      await page
+        .getByRole("checkbox", { name: "Show grades and estimates" })
+        .check();
       const geometry = await page.evaluate(() => {
         const labels = [...document.querySelectorAll(".frontier-axis span")]
           .map((s) => s.getBoundingClientRect())
@@ -251,8 +254,9 @@ try {
         const outside = [...document.querySelectorAll(".frontier-dot")]
           .map((d) => d.getBoundingClientRect())
           .filter((d) => d.left < map.left || d.right > map.right).length;
-        return { collide, outside };
+        return { collide, outside, labels: labels.length };
       });
+      check(geometry.labels > 0, `${id} ${width}: grade axis has no labels`);
       check(!geometry.collide, `${id} ${width}: axis labels collide`);
       check(
         geometry.outside === 0,
