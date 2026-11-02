@@ -18,6 +18,8 @@ const content = new Set([
   "publications.test.ts",
   "instance-hints.test.ts",
   "problem-lessons.test.ts",
+  "glossary-baseline.test.ts",
+  "plain-language.test.ts",
 ]);
 const tests = readdirSync(new URL("../tests/", import.meta.url))
   .filter((name) => name.endsWith(".test.ts"))

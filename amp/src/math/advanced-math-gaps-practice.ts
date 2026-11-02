@@ -172,9 +172,17 @@ function seriesRecursion(r: Random): Built {
       prompt,
       hint,
       explanation: [
-        `The first term is ${a1} and the common difference is ${d}.`,
-        `Term ${n} is ${a1} + ${n - 1}(${d}) = ${last}.`,
-        `The sum is the number of terms times the average of the first and last terms: ${n} × (${a1} + ${last < 0 ? `(${last})` : last})/2 = ${sum}.`,
+        `An arithmetic series adds terms that change by the same amount each time. That amount is the common difference.`,
+        ...(variant === "series-sigma"
+          ? [
+              `The sign $\\sum$ (sigma) means "add up". Put $k = 1, 2, \\ldots, ${n}$ into the expression and add the ${n} results. At $k=1$ the term is ${a1}.`,
+            ]
+          : []),
+        `The first term is ${a1}. Each term is ${Math.abs(d)} ${d < 0 ? "less" : "more"} than the one before, so the common difference is ${d}.`,
+        `Term ${n} is ${n - 1} steps after term 1, so it is ${a1} + ${n - 1}(${d}) = ${last}.`,
+        `Write the sum forwards, then backwards underneath. Each of the ${n} columns adds to the same total, the first plus the last term: ${a1} + ${last < 0 ? `(${last})` : last} = ${a1 + last}.`,
+        `That adds every term twice, so divide by 2: ${n} × ${a1 + last} ÷ 2 = ${sum}.`,
+        `The sum is ${sum}.`,
       ],
       correct: math(String(sum)),
       wrong: [
@@ -218,7 +226,7 @@ function seriesRecursion(r: Random): Built {
       prompt: `A sequence has $a_1=${A}$ and $a_{n+1}=a_n${sgn(D)}${Math.abs(D)}$ for $n\\ge1$. Which explicit rule gives $a_n$?`,
       hint: `The first term is ${A}. To reach term $n$ you apply the rule one fewer time than $n$. Test your rule at $n=1$.`,
       explanation: [
-        `Each step adds ${D}, so the common difference is ${D}.`,
+        `Each step ${D < 0 ? `subtracts ${-D}` : `adds ${D}`}, so the common difference, the fixed change from one term to the next, is ${D}.`,
         `Term $n$ takes $n-1$ steps from the first term: $a_n=${A}+${D < 0 ? `(${D})` : D}(n-1)$.`,
         `Distribute and combine: $a_n=${lin(D, A - D, "n")}$. Check: $n=1$ gives ${A}.`,
       ],
@@ -1540,7 +1548,8 @@ function graphFeatures(r: Random): Built {
         },
         {
           label: dom(0),
-          feedback: "The graph's vertical asymptote is not at the $y$-axis here.",
+          feedback:
+            "The graph's vertical asymptote is not at the $y$-axis here.",
         },
         {
           label: math(`x<${h}`),
@@ -1581,7 +1590,8 @@ function graphFeatures(r: Random): Built {
       },
       {
         label: P(h + base, 1),
-        feedback: "That point is not on the $x$-axis. The $x$-intercept has $y=0$.",
+        feedback:
+          "That point is not on the $x$-axis. The $x$-intercept has $y=0$.",
       },
       {
         label: P(h + 2, 0),

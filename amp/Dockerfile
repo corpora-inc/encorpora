@@ -1,7 +1,14 @@
 # syntax=docker/dockerfile:1.7
-# AMP: one build, two images. `api` runs the Fastify server, its migrations
-# and its scheduled jobs; `web` serves the built browser app.
-ARG NODE_IMAGE=node:22.23.4-bookworm-slim@sha256:5991875dfb80938dd8a6ba3fe3e96fd04929e70792762b3319d8caadbbe229bc
+# AMP: one build, three images. `api` runs the Fastify server, its migrations
+# and its scheduled jobs; `web` serves the built browser app; `render` is the
+# internal HTML-to-PDF service for workbooks (src/render-service).
+# Official node:22.23.4-bookworm-slim index, rebuilt 2026-10-28. Node stays
+# 22.23.4 (October 21 security release). The previous index was the Oct 21 image.
+ARG NODE_IMAGE=node:22.23.4-bookworm-slim@sha256:4b150b48b4116e2a22f2c39cc27025fbf4f153e2078fd3b14d159fdb5c7279da
+# A prior `api` image whose publication PDFs this build may reuse (by the SHA-256
+# of each document's print HTML and the renderer; see scripts/publication-cache.ts).
+# The deploy pipeline passes the previous release; empty by default.
+ARG PDF_SEED=pdf-seed-none
 
 FROM ${NODE_IMAGE} AS node-base
 # Node's bundled roots are independent of Debian's trust store. Install the
@@ -36,6 +43,11 @@ RUN node -e 'const [commit, builtAt] = process.argv.slice(1).map((v) => v || nul
   require("fs").writeFileSync("dist/version.json", JSON.stringify({ commit, builtAt }) + "\n")' \
   "$SOURCE_COMMIT" "$BUILT_AT"
 
+# No seed: an empty publications directory.
+FROM node-base AS pdf-seed-none
+RUN mkdir -p /app/artifacts/publications
+FROM ${PDF_SEED} AS pdf-seed
+
 # PDF tooling is build-only. The browser and Poppler never enter the API image.
 FROM dependencies AS pdf-build
 ENV PLAYWRIGHT_BROWSERS_PATH=/opt/amp-playwright
@@ -44,10 +56,37 @@ RUN apt-get update \
     && npx playwright install --with-deps --only-shell chromium \
     && rm -rf /var/lib/apt/lists/*
 COPY . .
-# Cached PDFs are reused only with matching renderer inputs and verified bytes.
+# PDFs are reused per document (same print HTML, same renderer, verified bytes)
+# from the local cache mount or the seed image; the rest render in parallel.
 # The release directory is outside the cache mount and contains delivery files only.
 RUN --mount=type=cache,id=amp-pdf-build-v1,target=/app/artifacts,sharing=locked \
-    node_modules/.bin/tsx scripts/build-pdf-release.ts /app/pdf-release
+    --mount=type=bind,from=pdf-seed,source=/app/artifacts,target=/pdf-seed \
+    node_modules/.bin/tsx scripts/build-pdf-release.ts /app/pdf-release --seed /pdf-seed/publications
+
+# The render service is one bundled file plus playwright-core (no other
+# dependencies), so its image carries Node, Chromium and nothing else.
+FROM dependencies AS render-build
+COPY src/render-service ./src/render-service
+RUN node_modules/.bin/esbuild src/render-service/main.ts --bundle --platform=node \
+      --format=esm --target=node22 --external:playwright-core --outfile=/out/main.mjs
+
+FROM node-base AS render
+ENV NODE_ENV=production PLAYWRIGHT_BROWSERS_PATH=/opt/amp-playwright \
+    AMP_RENDER_HOST=0.0.0.0 AMP_RENDER_PORT=8080 HOME=/tmp
+WORKDIR /app
+COPY --from=dependencies /app/node_modules/playwright-core ./node_modules/playwright-core
+# The browser build matches this playwright-core exactly; system libraries and
+# fonts come with it. Pages print the same as the publication PDFs.
+RUN node node_modules/playwright-core/cli.js install --with-deps --only-shell chromium \
+    && rm -rf /var/lib/apt/lists/* /tmp/*
+COPY --from=render-build /out/main.mjs ./main.mjs
+RUN printf '{"type":"module"}\n' > package.json
+# Non-root; writes only to /tmp (mount a tmpfs with a read-only root).
+USER 65532:65532
+EXPOSE 8080
+HEALTHCHECK --interval=30s --timeout=6s --start-period=20s --retries=3 \
+  CMD ["node", "-e", "fetch('http://127.0.0.1:'+(process.env.AMP_RENDER_PORT||8080)+'/healthz').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"]
+CMD ["node", "main.mjs"]
 
 FROM node-base AS api
 ENV NODE_ENV=production AMP_HOST=0.0.0.0 AMP_PORT=8080
@@ -71,7 +110,8 @@ RUN --network=none node_modules/.bin/tsx scripts/verify-pdf-delivery.ts
 EXPOSE 8080
 CMD ["node_modules/.bin/tsx", "src/server/main.ts"]
 
-FROM nginxinc/nginx-unprivileged:1.27.5-alpine AS web
+# 1.27 is end of life and misses the October 2026 stable fixes (1.30.6).
+FROM nginxinc/nginx-unprivileged:1.30.6-alpine@sha256:f5116ed4606f3eb015dd4a8e28cb9b351476dc0ad4bc6e9f93b19cec130cdf03 AS web
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/artifacts/pathways-nginx-map.conf /etc/nginx/conf.d/00-pathways-map.conf
 COPY --from=build /app/dist /usr/share/nginx/html

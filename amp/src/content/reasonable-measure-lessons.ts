@@ -7,20 +7,7 @@ export const reasonableMeasureMethods: Record<string, ProblemMethod> = {
     goal: "Choose the length, mass or capacity that fits an everyday object, or the unit that fits a stated amount.",
     intuition:
       "Units come in sizes. A centimeter is about the width of a fingertip, a meter is about a big step, a kilometer is a walk of ten minutes or so. To judge a measurement, picture the object and compare it with something you know that is about that size.",
-    terms: [
-      [
-        "length",
-        "How long or tall something is, measured in inches, feet, centimeters, meters or miles.",
-      ],
-      [
-        "mass",
-        "How heavy something is, measured in grams, kilograms, ounces or pounds.",
-      ],
-      [
-        "capacity",
-        "How much a container holds, measured in milliliters, liters, cups, quarts or gallons.",
-      ],
-    ],
+    terms: ["length", "mass", "capacity"],
     method: [
       "Picture the object and think of something familiar of about that size: a fingertip, a step, a milk carton.",
       "Test each choice with the amount: could the object really be that long, that heavy or hold that much?",

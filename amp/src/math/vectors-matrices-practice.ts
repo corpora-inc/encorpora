@@ -219,6 +219,17 @@ function retry<T>(attempt: (n: number) => T): T {
         throw error;
     }
 }
+/** Plain meanings repeated at first use in every explanation. */
+const VECTOR =
+  "A vector is an arrow with a length and a direction. Its components $\\langle a, b\\rangle$ say how far it moves across ($a$) and up or down ($b$).";
+const MAGNITUDE =
+  "The magnitude $|\\mathbf{v}|$ is the vector's length. The components are the legs of a right triangle, and the length is its hypotenuse.";
+const DETERMINANT =
+  "The determinant of a $2\\times2$ matrix $\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}$ is the single number $ad-bc$: the main-diagonal product minus the other diagonal's product.";
+const INVERSE =
+  "The inverse $A^{-1}$ is the matrix that undoes $A$: $AA^{-1}$ is the identity, the matrix version of 1. It exists only when the determinant is not 0, since we divide by it.";
+const MATRIX =
+  "A matrix is a rectangle of numbers arranged in rows, which run across, and columns, which run down.";
 const nz = (r: Random, max: number) => r(1, max) * (r(0, 1) ? 1 : -1);
 const pick = <T>(r: Random, items: readonly T[]) =>
   items[r(0, items.length - 1)]!;
@@ -246,8 +257,10 @@ function vectorComponentsOnce(seed: string, attempt: number) {
       prompt: `Vector $\\overrightarrow{AB}$ starts at the initial point $A(${x1}, ${y1})$ and ends at the terminal point $B(${x2}, ${y2})$. What are its components?`,
       hint: `The components are how far the vector moves right or left and up or down. Subtract the coordinates of $A(${x1}, ${y1})$ from those of $B(${x2}, ${y2})$ in the order terminal minus initial.`,
       explanation: [
-        `Components are terminal minus initial: $x$: $${x2}-(${x1})=${dx}$ and $y$: $${y2}-(${y1})=${dy}$.`,
-        `The vector is $${vec(dx, dy)}$.`,
+        VECTOR,
+        "The components measure the move from the start (the initial point) to the end (the terminal point). So subtract: end minus start.",
+        `Across: $${x2}-(${x1})=${dx}$. Up or down: $${y2}-(${y1})=${dy}$.`,
+        `So $\\overrightarrow{AB}=${vec(dx, dy)}$.`,
       ],
       correct: dollar(vec(dx, dy)),
       alts: [
@@ -259,7 +272,7 @@ function vectorComponentsOnce(seed: string, attempt: number) {
         {
           label: dollar(vec(x1 + x2, y1 + y2)),
           feedback:
-            "Components come from subtracting the coordinates, not adding them.",
+            "This adds the coordinates. Components come from subtracting: end minus start.",
         },
         {
           label: dollar(vec(dy, dx)),
@@ -274,7 +287,7 @@ function vectorComponentsOnce(seed: string, attempt: number) {
         {
           label: dollar(vec(dx, -dy)),
           feedback:
-            "Subtract each coordinate in the same order; both signs follow from terminal minus initial.",
+            "The second component has the wrong sign. Subtract each coordinate in the same order, end minus start.",
         },
       ],
     });
@@ -298,8 +311,10 @@ function vectorComponentsOnce(seed: string, attempt: number) {
       prompt: `Find the magnitude of $\\mathbf{v}=${vec(a, b)}$. Give the exact value in simplest radical form if it is not a whole number.`,
       hint: `The magnitude is the length of the arrow, the hypotenuse of a right triangle with legs $|${a}|$ and $|${b}|$. Square each component and add before taking the root.`,
       explanation: [
-        `$|\\mathbf{v}|=\\sqrt{(${a})^2+(${b})^2}=\\sqrt{${a * a}+${b * b}}=\\sqrt{${sq}}$.`,
-        `In simplest form this is $${radical(sq)}$.`,
+        VECTOR,
+        MAGNITUDE,
+        `By the Pythagorean theorem, square each component, add, and take the square root: $|\\mathbf{v}|=\\sqrt{(${a})^2+(${b})^2}=\\sqrt{${a * a}+${b * b}}=\\sqrt{${sq}}$.`,
+        `In simplest form, the magnitude of $\\mathbf{v}$ is $${radical(sq)}$.`,
       ],
       correct: dollar(radical(sq)),
       alts: [
@@ -338,9 +353,11 @@ function vectorComponentsOnce(seed: string, attempt: number) {
       prompt: `Let $\\mathbf{u}=${vec(a, b)}$ and $\\mathbf{v}=${vec(c, d)}$. Find $${expr}$.`,
       hint: `Work one component at a time. Multiply $\\mathbf{u}=${vec(a, b)}$ by ${k} first if there is a scalar, then ${minus ? "subtract" : "add"} the matching components of $\\mathbf{v}=${vec(c, d)}$.`,
       explanation: [
-        `Scale: $${k}\\mathbf{u}=${vec(k * a, k * b)}$.`,
-        `Combine matching components: $x$: $${k * a}${minus ? "-" : "+"}(${c})=${ans[0]}$ and $y$: $${k * b}${minus ? "-" : "+"}(${d})=${ans[1]}$.`,
-        `$${expr}=${vec(ans[0], ans[1])}$.`,
+        VECTOR,
+        `A scalar is an ordinary number that multiplies a vector. It multiplies each component: $${k}\\mathbf{u}=${vec(k * a, k * b)}$.`,
+        `To ${minus ? "subtract" : "add"} vectors, ${minus ? "subtract" : "add"} matching components, across with across and up with up.`,
+        `Across: $${k * a}${minus ? "-" : "+"}(${c})=${ans[0]}$. Up or down: $${k * b}${minus ? "-" : "+"}(${d})=${ans[1]}$.`,
+        `So $${expr}=${vec(ans[0], ans[1])}$.`,
       ],
       correct: dollar(vec(ans[0], ans[1])),
       alts: [
@@ -364,11 +381,12 @@ function vectorComponentsOnce(seed: string, attempt: number) {
         {
           label: dollar(vec(ans[0], -ans[1])),
           feedback:
-            "Check the sign of the second component; combine the second components with the same operation.",
+            "The second component has the wrong sign. Combine the second components with the same operation as the first.",
         },
         {
           label: dollar(vec(-(k * a + s * c), -(k * b + s * d))),
-          feedback: "Check each sign; this is the opposite vector.",
+          feedback:
+            "Every sign is flipped, which gives the opposite vector. Recheck each component's sign.",
         },
         {
           label: dollar(vec(a + s * k * c, b + s * k * d)),
@@ -383,7 +401,10 @@ function vectorComponentsOnce(seed: string, attempt: number) {
     if (r(0, 1)) [dx, dy] = [dy || 3, dx];
     // Keep both P and Q strictly inside the plotted axes so the arrow is fully visible.
     const inside = (d: number) =>
-      [Math.max(-4, -(W - 1) - Math.min(0, d)), Math.min(4, W - 1 - Math.max(0, d))] as const;
+      [
+        Math.max(-4, -(W - 1) - Math.min(0, d)),
+        Math.min(4, W - 1 - Math.max(0, d)),
+      ] as const;
     const [xlo, xhi] = inside(dx);
     const [ylo, yhi] = inside(dy);
     const px = r(xlo, xhi);
@@ -400,8 +421,10 @@ function vectorComponentsOnce(seed: string, attempt: number) {
       prompt: `The graph shows vector $\\overrightarrow{PQ}$ from its tail $P$ to its tip $Q$. What are its components?`,
       hint: `Start at the tail $P$ and count the grid steps right or left, then up or down, to reach the tip $Q$. Right and up are positive.`,
       explanation: [
-        `From $P(${px}, ${py})$ to $Q(${qx}, ${qy})$ the horizontal change is $${qx}-(${px})=${dx}$ and the vertical change is $${qy}-(${py})=${dy}$.`,
-        `The vector is $${vec(dx, dy)}$.`,
+        VECTOR,
+        "Read the move from the tail $P$, where the arrow starts, to the tip $Q$, where it ends. Right and up count as positive.",
+        `From $P(${px}, ${py})$ to $Q(${qx}, ${qy})$, the horizontal change is $${qx}-(${px})=${dx}$ and the vertical change is $${qy}-(${py})=${dy}$.`,
+        `So $\\overrightarrow{PQ}=${vec(dx, dy)}$.`,
       ],
       correct: dollar(vec(dx, dy)),
       alts: [
@@ -448,9 +471,11 @@ function vectorComponentsOnce(seed: string, attempt: number) {
       prompt: `The graph shows $\\mathbf{u}=\\overrightarrow{OP}$ and $\\mathbf{v}=\\overrightarrow{PQ}$ placed tip to tail. What are the components of $\\mathbf{u}+\\mathbf{v}$?`,
       hint: `Placed tip to tail, $\\mathbf{u}+\\mathbf{v}$ runs from the start of $\\mathbf{u}$ at $O$ to the end of $\\mathbf{v}$ at $Q$. Read the components of each arrow, or read where $Q$ is.`,
       explanation: [
-        `$\\mathbf{u}=${vec(a, b)}$ and $\\mathbf{v}=${vec(c, d)}$.`,
-        `Add matching components: $${a}+(${c})=${a + c}$ and $${b}+(${d})=${b + d}$.`,
-        `The sum is $${vec(a + c, b + d)}$, the vector from $O$ to $Q$.`,
+        VECTOR,
+        `Reading the arrows: $\\mathbf{u}=${vec(a, b)}$ and $\\mathbf{v}=${vec(c, d)}$.`,
+        "Tip to tail means $\\mathbf{v}$ starts where $\\mathbf{u}$ ends. Doing one move after the other is the sum, so add matching components.",
+        `Across: $${a}+(${c})=${a + c}$. Up or down: $${b}+(${d})=${b + d}$.`,
+        `So $\\mathbf{u}+\\mathbf{v}=${vec(a + c, b + d)}$, the single arrow from $O$ to $Q$.`,
       ],
       correct: dollar(vec(a + c, b + d)),
       alts: [
@@ -470,7 +495,8 @@ function vectorComponentsOnce(seed: string, attempt: number) {
         },
         {
           label: dollar(vec(a + c, b - d)),
-          feedback: "Add both pairs of components with their signs.",
+          feedback:
+            "The second component has a sign error. Add both pairs of components, keeping each sign.",
         },
         {
           label: dollar(vec(b + d, a + c)),
@@ -498,9 +524,12 @@ function vectorComponentsOnce(seed: string, attempt: number) {
     prompt: `Let $\\mathbf{v}=${vec(a, b)}$. What is the magnitude $|${tex(k)}\\mathbf{v}|$?`,
     hint: `Multiplying by ${tex(k)} stretches or flips the arrow but never makes a length negative. First find $|\\mathbf{v}|$ for $\\mathbf{v}=${vec(a, b)}$.`,
     explanation: [
-      `$|\\mathbf{v}|=\\sqrt{(${a})^2+(${b})^2}=${length}$.`,
-      `Scaling multiplies the length by $|${tex(k)}|=${tex(fr(Math.abs(k.n), k.d))}$.`,
-      `$|${tex(k)}\\mathbf{v}|=${tex(fr(Math.abs(k.n), k.d))}\\cdot${length}=${tex(result)}$. Check with components: ${tex(kv[0]!)} and ${tex(kv[1]!)} give $\\sqrt{${tex(fmul(kv[0]!, kv[0]!))}+${tex(fmul(kv[1]!, kv[1]!))}}=${tex(result)}$.`,
+      MAGNITUDE,
+      `First the length of $\\mathbf{v}$: $|\\mathbf{v}|=\\sqrt{(${a})^2+(${b})^2}=${length}$.`,
+      `Multiplying by a scalar, an ordinary number, stretches the arrow by its size and flips it if negative. So the length is multiplied by $|${tex(k)}|=${tex(fr(Math.abs(k.n), k.d))}$.`,
+      `$|${tex(k)}\\mathbf{v}|=${tex(fr(Math.abs(k.n), k.d))}\\cdot${length}=${tex(result)}$.`,
+      `Check with components: ${tex(kv[0]!)} and ${tex(kv[1]!)} give $\\sqrt{${tex(fmul(kv[0]!, kv[0]!))}+${tex(fmul(kv[1]!, kv[1]!))}}=${tex(result)}$.`,
+      `So $|${tex(k)}\\mathbf{v}|=${tex(result)}$.`,
     ],
     correct: dollar(tex(result)),
     alts: [
@@ -639,34 +668,37 @@ function vectorResultantOnce(seed: string, attempt: number) {
       prompt: `${mode.setup(s, c)} ${mode.mag}${rounded ? " Round to the nearest tenth." : ""}`,
       hint: `The two given quantities, ${s} and ${c}, are perpendicular, so they are the legs of a right triangle and the resultant is its hypotenuse. Square both and add.`,
       explanation: [
-        `The perpendicular quantities ${s} ${u} and ${c} ${u} are the legs of a right triangle, and the resultant is the hypotenuse.`,
-        `$\\sqrt{${s}^2+${c}^2}=\\sqrt{${s * s}+${c * c}}=\\sqrt{${s * s + c * c}}$${triple ? `$=${R}$` : `$\\approx${R.toFixed(3)}$, which rounds to ${val.toFixed(1)}`}.`,
-        `The answer is ${val.toFixed(digits)} ${u}.`,
+        "The resultant is the single vector with the same effect as the two together: their sum, placed tip to tail.",
+        `The two quantities, ${s} ${u} and ${c} ${u}, are perpendicular (at right angles). Tip to tail, they form the legs of a right triangle, and the resultant is its hypotenuse.`,
+        `By the Pythagorean theorem, $\\sqrt{${s}^2+${c}^2}=\\sqrt{${s * s}+${c * c}}=\\sqrt{${s * s + c * c}}${triple ? `=${R}` : `\\approx${R.toFixed(3)}`}$${triple ? "" : `, which rounds to ${val.toFixed(1)}`}.`,
+        `So the ${mode === modes[2] ? "resultant force is" : "speed is"} ${val.toFixed(digits)} ${u}.`,
       ],
       correct: lab(val, digits),
       alts: [
         {
           label: lab(s + c),
           feedback:
-            "Perpendicular quantities do not add directly; the resultant is shorter than the sum of the legs. Use the Pythagorean theorem.",
+            "This adds the two numbers, as if they pointed the same way. They are perpendicular, so use the Pythagorean theorem.",
         },
         {
           label: lab(s - c),
           feedback:
-            "Subtracting applies to opposite directions. These quantities are perpendicular, so use the Pythagorean theorem.",
+            "This subtracts, which is right only for opposite directions. These quantities are perpendicular, so use the Pythagorean theorem.",
         },
         {
           label: lab(s * s + c * c),
-          feedback: "That is the sum of squares. Take its square root.",
+          feedback:
+            "That is the sum of the squares, the hypotenuse squared. Take its square root.",
         },
         {
           label: lab(Math.sqrt(s * s - c * c), digits),
           feedback:
-            "The squares are added for a right triangle's hypotenuse, not subtracted.",
+            "This subtracts the squares. For a hypotenuse, the squares of the legs are added.",
         },
         {
           label: lab(Math.max(s, c), digits),
-          feedback: "The resultant is longer than either leg.",
+          feedback:
+            "This is just the larger leg. The resultant, the hypotenuse, is longer than either leg.",
         },
       ],
     });
@@ -681,8 +713,10 @@ function vectorResultantOnce(seed: string, attempt: number) {
       prompt: `${mode.setup(s, c)} ${other ? mode.angleOther : mode.angle} Round to the nearest degree.`,
       hint: `In the right triangle with legs ${s} and ${c}, $\\theta$ sits between the resultant and one leg. Decide which leg is opposite $\\theta$ and which is adjacent, then use the tangent ratio.`,
       explanation: [
-        `Draw the right triangle: the legs are ${s} ${u} and ${c} ${u}. Here the leg opposite $\\theta$ is ${opp} and the adjacent leg is ${near}.`,
-        `$\\tan\\theta=\\dfrac{${opp}}{${near}}$, so $\\theta=\\arctan\\left(\\dfrac{${opp}}{${near}}\\right)\\approx${theta.toFixed(1)}^\\circ$.`,
+        `The two perpendicular quantities, ${s} ${u} and ${c} ${u}, form the legs of a right triangle. The resultant, their combined effect, is the hypotenuse.`,
+        `The angle $\\theta$ sits between the resultant and one leg. The leg across from $\\theta$ (opposite) is ${opp}; the leg beside it (adjacent) is ${near}.`,
+        "With both legs known, use the tangent: $\\tan\\theta=\\frac{\\text{opposite}}{\\text{adjacent}}$.",
+        `$\\tan\\theta=\\dfrac{${opp}}{${near}}$. The inverse tangent, $\\arctan$, gives the angle: $\\theta=\\arctan\\left(\\dfrac{${opp}}{${near}}\\right)\\approx${theta.toFixed(1)}^\\circ$.`,
         `Rounded to the nearest degree, $\\theta=${t}^\\circ$.`,
       ],
       correct: deg(theta),
@@ -690,7 +724,7 @@ function vectorResultantOnce(seed: string, attempt: number) {
         {
           label: deg(90 - theta),
           feedback:
-            "That is the other acute angle of the triangle. Check which leg is opposite $\\theta$.",
+            "That is the other acute angle of the triangle: opposite and adjacent are swapped. Check which leg is across from $\\theta$.",
         },
         {
           label: deg(rad(Math.atan(opp / R))),
@@ -726,29 +760,32 @@ function vectorResultantOnce(seed: string, attempt: number) {
     prompt: `${mode.reverse(R, c)} ${mode.reverseAsk}`,
     hint: `The resultant ${R} is the hypotenuse and ${c} is one leg. Rearrange $a^2+b^2=h^2$ to find the other leg.`,
     explanation: [
-      `The resultant is the hypotenuse, so $${c}^2+x^2=${R}^2$.`,
-      `$x^2=${R * R}-${c * c}=${R * R - c * c}$, so $x=${s}$.`,
-      `The answer is ${s} ${u}.`,
+      "The resultant is the combined effect of two perpendicular vectors. Tip to tail they form the legs of a right triangle, and the resultant is the hypotenuse.",
+      `Let $x$ be the missing leg. The Pythagorean theorem gives $${c}^2+x^2=${R}^2$.`,
+      `Subtract $${c}^2$ from both sides: $x^2=${R * R}-${c * c}=${R * R - c * c}$.`,
+      `Take the square root: $x=${s}$.`,
+      `So the answer is ${s} ${u}.`,
     ],
     correct: lab(s),
     alts: [
       {
         label: lab(R - c),
         feedback:
-          "Lengths along perpendicular directions do not subtract. Use $x^2=h^2-c^2$.",
+          "This subtracts the lengths. Perpendicular lengths combine through their squares: use $x^2=h^2-c^2$.",
       },
       {
         label: lab(Math.sqrt(R * R + c * c), 1),
         feedback:
-          "The resultant is the hypotenuse, so the missing leg is shorter. Subtract the squares.",
+          "This adds the squares, treating the missing side as the hypotenuse. The resultant is the hypotenuse, so subtract the squares.",
       },
       {
         label: lab(R * R - c * c),
-        feedback: "That is $x^2$. Take its square root.",
+        feedback: "That is $x^2$, the leg squared. Take its square root.",
       },
       {
         label: lab(R + c),
-        feedback: "The missing leg is shorter than the resultant.",
+        feedback:
+          "This adds the lengths. The missing leg must be shorter than the resultant, the hypotenuse.",
       },
     ],
   });
@@ -794,8 +831,10 @@ function matrixDataOnce(seed: string, attempt: number) {
       prompt: `${setup} How many ${items[j]} does ${stores[i]} have?`,
       hint: `${stores[i]} is row ${i + 1} and ${items[j]} is column ${j + 1}. Start at the first entry, ${A[0]![0]}, in row 1 and column 1, and move to where that row and that column cross.`,
       explanation: [
-        `Row ${i + 1} is ${stores[i]} and column ${j + 1} is ${items[j]}.`,
-        `The entry in row ${i + 1}, column ${j + 1} is ${A[i]![j]}.`,
+        `${MATRIX} Here each row is a store and each column is an item.`,
+        `${stores[i]} is row ${i + 1}, counting down from the top. ${items[j]} is column ${j + 1}, counting from the left.`,
+        `The entry where row ${i + 1} and column ${j + 1} cross is ${A[i]![j]}.`,
+        `So ${stores[i]} has ${A[i]![j]} ${items[j]}.`,
       ],
       correct: num(A[i]![j]!),
       alts: [
@@ -809,7 +848,8 @@ function matrixDataOnce(seed: string, attempt: number) {
         },
         {
           label: num(A[i2]![j2]!),
-          feedback: "Check both the row and the column.",
+          feedback:
+            "Both the row and the column are wrong. Find the store's row and the item's column.",
         },
         {
           label: num(rowSum(i)),
@@ -822,22 +862,26 @@ function matrixDataOnce(seed: string, attempt: number) {
       prompt: `${setup} What are the dimensions of $A$, written rows $\\times$ columns?`,
       hint: `Each store is a row and each item is a column. Row 1 reads ${A[0]!.join(", ")}; count its entries for the columns, then count the rows. Dimensions are always written with the number of rows first.`,
       explanation: [
+        `${MATRIX} Its dimensions, its size, are written rows $\\times$ columns, rows first.`,
         `$A$ has ${m} rows, one for each of ${m} stores, and ${n} columns, one for each of ${n} items.`,
-        `Its dimensions are $${m}\\times${n}$.`,
+        `So the dimensions of $A$ are $${m}\\times${n}$.`,
       ],
       correct: dollar(`${m}\\times${n}`),
       alts: [
         {
           label: dollar(`${n}\\times${m}`),
-          feedback: "Rows come first. Count the rows, then the columns.",
+          feedback:
+            "The order is reversed. Dimensions give rows first, then columns.",
         },
         {
           label: dollar(`${m}\\times${m}`),
-          feedback: "The second number counts columns, which are the items.",
+          feedback:
+            "This repeats the row count. The second number counts columns, which are the items.",
         },
         {
           label: dollar(`${n}\\times${n}`),
-          feedback: "The first number counts rows, which are the stores.",
+          feedback:
+            "This repeats the column count. The first number counts rows, which are the stores.",
         },
         {
           label: dollar(`${m * n}`),
@@ -851,26 +895,30 @@ function matrixDataOnce(seed: string, attempt: number) {
       prompt: `${setup} Which statement describes the entry ${dollar(ent(i, j))}, in row ${i + 1} and column ${j + 1}?`,
       hint: `The first subscript, ${i + 1}, picks the row and the second, ${j + 1}, picks the column. Row 1 reads ${A[0]!.join(", ")}. Say what the row and the column stand for.`,
       explanation: [
-        `Row ${i + 1} is ${stores[i]}; column ${j + 1} is ${items[j]}.`,
-        `The entry is the number of ${items[j]} at ${stores[i]}, here ${A[i]![j]}.`,
+        `${MATRIX} The entry $a_{rc}$ sits in row $r$ and column $c$: the first small number is the row.`,
+        `Here row ${i + 1} is ${stores[i]} and column ${j + 1} is ${items[j]}.`,
+        `So ${dollar(ent(i, j))} is the number of ${items[j]} at ${stores[i]}, here ${A[i]![j]}.`,
       ],
       correct: `The number of ${items[j]} at ${stores[i]}`,
       alts: [
         {
           label: `The number of ${items[j2]} at ${stores[i]}`,
-          feedback: "The second subscript picks the item (column).",
+          feedback:
+            "This reads the wrong column. The second subscript, the second small number, picks the item.",
         },
         {
           label: `The number of ${items[j]} at ${stores[i2]}`,
-          feedback: "The first subscript picks the store (row).",
+          feedback:
+            "This reads the wrong row. The first subscript, the first small number, picks the store.",
         },
         {
           label: `The total ${items[j]} at all stores`,
-          feedback: "An entry is one cell, not a column total.",
+          feedback:
+            "This is a column total. An entry is one number in one cell.",
         },
         {
           label: `The total of all items at ${stores[i]}`,
-          feedback: "An entry is one cell, not a row total.",
+          feedback: "This is a row total. An entry is one number in one cell.",
         },
       ],
     });
@@ -879,8 +927,10 @@ function matrixDataOnce(seed: string, attempt: number) {
       prompt: `${setup} How many items of all kinds does ${stores[i]} have in stock?`,
       hint: `${stores[i]} is row ${i + 1}. Add every entry in that row: ${A[i]!.join(", ")}.`,
       explanation: [
-        `Row ${i + 1} is ${A[i]!.join(", ")}.`,
-        `Their sum is ${A[i]!.join(" + ")} = ${rowSum(i)}.`,
+        `${MATRIX} Here each row is a store, so a store's whole stock is one row.`,
+        `${stores[i]} is row ${i + 1}: ${A[i]!.join(", ")}.`,
+        `Add them: ${A[i]!.join(" + ")} = ${rowSum(i)}.`,
+        `So ${stores[i]} has ${rowSum(i)} items in stock.`,
       ],
       correct: num(rowSum(i)),
       alts: [
@@ -890,12 +940,13 @@ function matrixDataOnce(seed: string, attempt: number) {
         },
         {
           label: num(total),
-          feedback: "That adds every entry in the matrix. Add one row.",
+          feedback:
+            "That adds every entry, all stores together. Add only this store's row.",
         },
         {
           label: num(Math.max(...A[i]!)),
           feedback:
-            "That is the largest single entry. Add all entries in the row.",
+            "That is one entry, the largest. Add all entries in the row.",
         },
         {
           label: num(rowSum(i2)),
@@ -908,18 +959,22 @@ function matrixDataOnce(seed: string, attempt: number) {
       prompt: `${setup} How many ${items[j]} are in stock at all the stores combined?`,
       hint: `${items[j]} is column ${j + 1}. Add every entry in that column: ${A.map((row) => row[j]).join(", ")}.`,
       explanation: [
-        `Column ${j + 1} is ${A.map((row) => row[j]).join(", ")}.`,
-        `Their sum is ${A.map((row) => row[j]).join(" + ")} = ${colSum(j)}.`,
+        `${MATRIX} Here each column is an item, so one item across all stores is one column.`,
+        `${items[j]} is column ${j + 1}: ${A.map((row) => row[j]).join(", ")}.`,
+        `Add them: ${A.map((row) => row[j]).join(" + ")} = ${colSum(j)}.`,
+        `So the stores have ${colSum(j)} ${items[j]} combined.`,
       ],
       correct: num(colSum(j)),
       alts: [
         {
           label: num(rowSum(i)),
-          feedback: "That adds a row, the total of every item at one store.",
+          feedback:
+            "That adds a row, every item at one store. Add the column for this item.",
         },
         {
           label: num(total),
-          feedback: "That adds every entry. Add only the column for this item.",
+          feedback:
+            "That adds every entry, all items together. Add only the column for this item.",
         },
         {
           label: num(colSum(j2)),
@@ -928,7 +983,7 @@ function matrixDataOnce(seed: string, attempt: number) {
         {
           label: num(Math.max(...A.map((row) => row[j]!))),
           feedback:
-            "That is the largest single entry. Add all entries in the column.",
+            "That is one entry, the largest. Add all entries in the column.",
         },
       ],
     });
@@ -937,8 +992,9 @@ function matrixDataOnce(seed: string, attempt: number) {
     prompt: `${setup} Which entry gives the number of ${items[j]} at ${stores[i]}?`,
     hint: `Write the row number of ${stores[i]} first, then the column number of ${items[j]}. An entry $a_{rc}$ is in row $r$ and column $c$. Row 1 reads ${A[0]!.join(", ")}.`,
     explanation: [
+      `${MATRIX} The entry $a_{rc}$ sits in row $r$ and column $c$, row first.`,
       `${stores[i]} is row ${i + 1} and ${items[j]} is column ${j + 1}.`,
-      `The entry is $${ent(i, j)}$.`,
+      `So the entry is $${ent(i, j)}$.`,
     ],
     correct: dollar(ent(i, j)),
     alts: [
@@ -953,11 +1009,11 @@ function matrixDataOnce(seed: string, attempt: number) {
         : []),
       {
         label: dollar(ent(i, j2)),
-        feedback: `That is ${items[j2]} at ${stores[i]}.`,
+        feedback: `That is ${items[j2]} at ${stores[i]}: the right row but the wrong column.`,
       },
       {
         label: dollar(ent(i2, j)),
-        feedback: `That is ${items[j]} at ${stores[i2]}.`,
+        feedback: `That is ${items[j]} at ${stores[i2]}: the right column but the wrong row.`,
       },
       {
         label: dollar(ent(i2, j2)),
@@ -997,18 +1053,20 @@ function matrixOperationOnce(seed: string, attempt: number) {
         prompt: `Let $A=${bm(A)}$ and $B=${bm(B)}$. Find $A+B$.`,
         hint: `Both matrices are $${rows}\\times${cols}$, so add the entries in matching positions: row 1, column 1 of $A$ with row 1, column 1 of $B$, and so on.`,
         explanation: [
-          `Add entries in the same position of $A$ and $B$.`,
-          `$A+B=${bm(S)}$.`,
+          MATRIX,
+          `To add two matrices of the same size, here $${rows}\\times${cols}$, add the entries in matching positions.`,
+          `For example, row 1, column 1: $${A[0]![0]!.n}+(${B[0]![0]!.n})=${S[0]![0]!.n}$. Do the same for every position.`,
+          `So $A+B=${bm(S)}$.`,
         ],
         correct: lbl(S),
         alts: [
           {
             label: lbl(madd(A, B, -1)),
-            feedback: "That is $A-B$. Add matching entries.",
+            feedback: "That is $A-B$, a subtraction. Add the matching entries.",
           },
           {
             label: lbl(hadamard(A, B)),
-            feedback: "Matching entries are added, not multiplied.",
+            feedback: "This multiplies matching entries. For a sum, add them.",
           },
           {
             label: lbl(
@@ -1016,11 +1074,13 @@ function matrixOperationOnce(seed: string, attempt: number) {
                 i === 0 && j === 0 ? fadd(A[0]![0]!, fneg(B[0]![0]!)) : x,
               ),
             ),
-            feedback: "Check the sign of every sum, including the first entry.",
+            feedback:
+              "The first entry subtracts instead of adding. Add every matching pair, including the first.",
           },
           {
             label: lbl(bump(S)),
-            feedback: "Recheck the arithmetic in the first entry.",
+            feedback:
+              "The first entry has an arithmetic slip. Redo row 1, column 1.",
           },
         ],
       });
@@ -1032,8 +1092,10 @@ function matrixOperationOnce(seed: string, attempt: number) {
         prompt: `Let $A=${bm(A)}$. Find $${k}A$.`,
         hint: `A scalar multiple multiplies every entry. Multiply each of the ${rows * cols} entries of $A$ by ${k}.`,
         explanation: [
-          `Multiply every entry of $A$ by ${k}.`,
-          `$${k}A=${bm(P)}$.`,
+          MATRIX,
+          `A scalar is an ordinary number. $${k}A$ means multiply every entry of $A$ by ${k}.`,
+          `For example, row 1, column 1: $${k}\\cdot(${A[0]![0]!.n})=${P[0]![0]!.n}$. Do the same for every entry, keeping signs.`,
+          `So $${k}A=${bm(P)}$.`,
         ],
         correct: lbl(P),
         alts: [
@@ -1041,19 +1103,21 @@ function matrixOperationOnce(seed: string, attempt: number) {
             label: lbl(
               mmap(A, (x, i, j) => (i === 0 && j === 0 ? fmul(fr(k), x) : x)),
             ),
-            feedback: "A scalar multiplies every entry, not just the first.",
+            feedback:
+              "Only the first entry was multiplied. A scalar multiplies every entry.",
           },
           {
             label: lbl(mmap(A, (x) => fadd(x, fr(k)))),
-            feedback: "Multiply each entry by the scalar; do not add it.",
+            feedback:
+              "This adds the scalar to each entry. Multiply each entry by it.",
           },
           {
             label: lbl(mscale(fr(Math.abs(k)), A)),
-            feedback: `Multiplying by ${k} also changes the sign of each entry.`,
+            feedback: `This ignores the minus sign. Multiplying by ${k} also changes the sign of each entry.`,
           },
           {
             label: lbl(mscale(fr(-k), A)),
-            feedback: `Check the sign: each entry is multiplied by ${k}, not ${-k}.`,
+            feedback: `Every sign is flipped. Each entry is multiplied by ${k}, not ${-k}.`,
           },
         ],
       });
@@ -1065,26 +1129,28 @@ function matrixOperationOnce(seed: string, attempt: number) {
       prompt: `Let $A=${bm(A)}$ and $B=${bm(B)}$. Find $${k}A${minus ? "-" : "+"}B$.`,
       hint: `Do the scalar multiple first: multiply every entry of $A$ by ${k}. Then ${minus ? "subtract" : "add"} the matching entries of $B$.`,
       explanation: [
-        `$${k}A=${bm(mscale(fr(k), A))}$.`,
-        `Now ${minus ? "subtract" : "add"} $B$ entry by entry: $${k}A${minus ? "-" : "+"}B=${bm(R)}$.`,
+        MATRIX,
+        `Multiply first, as in ordinary arithmetic. A scalar multiple multiplies every entry: $${k}A=${bm(mscale(fr(k), A))}$.`,
+        `Then ${minus ? "subtract" : "add"} $B$ entry by entry, matching positions.`,
+        `So $${k}A${minus ? "-" : "+"}B=${bm(R)}$.`,
       ],
       correct: lbl(R),
       alts: [
         {
           label: lbl(madd(mscale(fr(k), A), B, -s)),
-          feedback: `The operation between the terms is ${minus ? "subtraction" : "addition"}.`,
+          feedback: `This ${minus ? "adds" : "subtracts"} $B$. The operation between the terms is ${minus ? "subtraction" : "addition"}.`,
         },
         {
           label: lbl(madd(A, B, s)),
-          feedback: `Multiply $A$ by ${k} before combining.`,
+          feedback: `This skips the scalar. Multiply $A$ by ${k} before combining.`,
         },
         {
           label: lbl(madd(A, mscale(fr(k), B), s)),
-          feedback: `The scalar ${k} multiplies $A$, not $B$.`,
+          feedback: `This multiplies $B$ by ${k}. The scalar ${k} multiplies $A$.`,
         },
         {
           label: lbl(mscale(fr(k), madd(A, B, s))),
-          feedback: `The scalar multiplies only $A$, not the whole result.`,
+          feedback: `This multiplies the whole result. The scalar multiplies only $A$.`,
         },
       ],
     });
@@ -1105,9 +1171,11 @@ function matrixOperationOnce(seed: string, attempt: number) {
       prompt: `Let $A=${bm(A)}$ and $B=${bm(B)}$. Find $AB$.`,
       hint: `Each entry of $AB$ is a row of $A$ times a column of $B$. For row 1, column 1 use $(${A[0]![0]!.n})(${B[0]![0]!.n})+(${A[0]![1]!.n})(${B[1]![0]!.n})$ and continue.`,
       explanation: [
+        MATRIX,
+        "In a product $AB$, the entry in row $i$, column $j$ pairs row $i$ of $A$ with column $j$ of $B$. Multiply the pairs and add.",
         `Entry (1,1): $(${A[0]![0]!.n})(${B[0]![0]!.n})+(${A[0]![1]!.n})(${B[1]![0]!.n})=${P[0]![0]!.n}$. Entry (1,2): $(${A[0]![0]!.n})(${B[0]![1]!.n})+(${A[0]![1]!.n})(${B[1]![1]!.n})=${P[0]![1]!.n}$.`,
         `Entry (2,1): $(${A[1]![0]!.n})(${B[0]![0]!.n})+(${A[1]![1]!.n})(${B[1]![0]!.n})=${P[1]![0]!.n}$. Entry (2,2): $(${A[1]![0]!.n})(${B[0]![1]!.n})+(${A[1]![1]!.n})(${B[1]![1]!.n})=${P[1]![1]!.n}$.`,
-        `$AB=${bm(P)}$.`,
+        `So $AB=${bm(P)}$.`,
       ],
       correct: lbl(P),
       alts: [
@@ -1133,7 +1201,8 @@ function matrixOperationOnce(seed: string, attempt: number) {
         },
         {
           label: lbl(madd(A, B)),
-          feedback: "That is $A+B$. A product multiplies rows by columns.",
+          feedback:
+            "That is $A+B$, a sum. A product multiplies rows by columns.",
         },
       ],
     });
@@ -1149,9 +1218,11 @@ function matrixOperationOnce(seed: string, attempt: number) {
       prompt: `Let $A=${bm(A)}$ and $B=${bm(B)}$. Find $AB$.`,
       hint: `$A$ is $2\\times3$ and $B$ is $3\\times2$, so $AB$ is $2\\times2$. Each entry pairs a row of $A$ with a column of $B$ and adds three products; for row 1, column 1: $(${A[0]![0]!.n})(${B[0]![0]!.n})+(${A[0]![1]!.n})(${B[1]![0]!.n})+(${A[0]![2]!.n})(${B[2]![0]!.n})$.`,
       explanation: [
-        `The inner dimensions match (3 and 3), and the product is $2\\times2$.`,
-        `Each entry is a row of $A$ times a column of $B$: for example entry (1,1) is $(${A[0]![0]!.n})(${B[0]![0]!.n})+(${A[0]![1]!.n})(${B[1]![0]!.n})+(${A[0]![2]!.n})(${B[2]![0]!.n})=${P[0]![0]!.n}$.`,
-        `$AB=${bm(P)}$.`,
+        `${MATRIX} Its size is written rows $\\times$ columns.`,
+        "A product $AB$ exists when $A$ has as many columns as $B$ has rows. Here both are 3. The product has $A$'s rows and $B$'s columns: $2\\times2$.",
+        "Each entry pairs a row of $A$ with a column of $B$: multiply the three pairs and add.",
+        `For example, entry (1,1) is $(${A[0]![0]!.n})(${B[0]![0]!.n})+(${A[0]![1]!.n})(${B[1]![0]!.n})+(${A[0]![2]!.n})(${B[2]![0]!.n})=${P[0]![0]!.n}$.`,
+        `Doing all four entries gives $AB=${bm(P)}$.`,
       ],
       correct: lbl(P),
       alts: [
@@ -1172,11 +1243,12 @@ function matrixOperationOnce(seed: string, attempt: number) {
         },
         {
           label: lbl(mscale(fr(-1), P)),
-          feedback: "Recheck the signs of the products.",
+          feedback: "Every sign is flipped. Recheck the signs of the products.",
         },
         {
           label: lbl(bump(P)),
-          feedback: "Recheck the arithmetic in the first entry.",
+          feedback:
+            "The first entry has an arithmetic slip. Redo row 1 of $A$ times column 1 of $B$.",
         },
       ],
     });
@@ -1206,30 +1278,35 @@ function matrixOperationOnce(seed: string, attempt: number) {
     hint: `Read the dimensions $${p}\\times${q}$ and $${rr}\\times${s}$. Compare the number of columns of the left factor $${L}$ with the number of rows of the right factor $${Rt}$. A product exists only when they are equal; then the result has the rows of $${L}$ and the columns of $${Rt}$.`,
     explanation: defined
       ? [
-          `$${L}$ has ${ly} columns and $${Rt}$ has ${rx} rows; they match, so the product is defined.`,
+          `${MATRIX} Its size is written rows $\\times$ columns.`,
+          "Each entry of a product pairs a row of the left factor with a column of the right factor, number by number. So the row length must equal the column length.",
+          `$${L}$ has ${ly} columns and $${Rt}$ has ${rx} rows. They match, so the product is defined.`,
           `The product has the rows of $${L}$ and the columns of $${Rt}$: $${lx}\\times${ry}$.`,
+          `So $${name}$ is defined and is $${lx}\\times${ry}$.`,
         ]
       : [
-          `$${L}$ has ${ly} columns and $${Rt}$ has ${rx} rows.`,
-          `They are different, so the product $${name}$ is not defined.`,
+          `${MATRIX} Its size is written rows $\\times$ columns.`,
+          "Each entry of a product pairs a row of the left factor with a column of the right factor, number by number. So the row length must equal the column length.",
+          `$${L}$ has ${ly} columns but $${Rt}$ has ${rx} rows. The numbers cannot be paired off.`,
+          `So the product $${name}$ is not defined.`,
         ],
     correct,
     alts: [
       {
         label: `$${name}$ is defined and is $${lx}\\times${ry}$`,
-        feedback: `The columns of $${L}$ (${ly}) must equal the rows of $${Rt}$ (${rx}).`,
+        feedback: `A product needs the columns of $${L}$ (${ly}) to equal the rows of $${Rt}$ (${rx}). Here they differ.`,
       },
       {
         label: `$${name}$ is defined and is $${ry}\\times${lx}$`,
-        feedback: `A product has the rows of the left factor and the columns of the right factor.`,
+        feedback: `The size is reversed. A product has the rows of the left factor and the columns of the right factor.`,
       },
       {
         label: `$${name}$ is defined and is $${ly}\\times${rx}$`,
-        feedback: `Use the rows of the left factor and the columns of the right factor; the inner numbers must match.`,
+        feedback: `This uses the inner numbers, which only need to match. The size uses the outer numbers: rows of the left, columns of the right.`,
       },
       {
         label: `$${name}$ is defined and is $${lx}\\times${rx}$`,
-        feedback: `The second dimension is the number of columns of the right factor.`,
+        feedback: `The second number is wrong. It is the number of columns of the right factor.`,
       },
       {
         label: `$${name}$ is not defined: $${L}$ has ${ly} columns but $${Rt}$ has ${rx} rows`,
@@ -1254,19 +1331,25 @@ function matrixOperationOnce(seed: string, attempt: number) {
 const lawsTrue = [
   [
     "A(B+C)=AB+AC",
-    "Matrix multiplication distributes over addition on the left.",
+    "Matrix multiplication distributes over addition on the left: multiplying a sum by $A$ multiplies each part by $A$, keeping $A$ on the left.",
   ],
   [
     "(A+B)C=AC+BC",
-    "Matrix multiplication distributes over addition on the right.",
+    "Matrix multiplication distributes over addition on the right: multiplying a sum by $C$ multiplies each part by $C$, keeping $C$ on the right.",
   ],
-  ["(AB)C=A(BC)", "Matrix multiplication is associative."],
-  ["AI=IA=A", "The identity matrix leaves a square matrix unchanged."],
+  [
+    "(AB)C=A(BC)",
+    "Matrix multiplication is associative: with the order of the factors kept, the grouping does not matter.",
+  ],
+  [
+    "AI=IA=A",
+    "The identity matrix, with ones on the main diagonal and zeros elsewhere, acts like the number 1: it leaves a square matrix unchanged.",
+  ],
 ] as const;
 const lawsFalse = [
   [
     "AB=BA",
-    "Matrix multiplication is not commutative: the two orders usually differ.",
+    "Matrix multiplication is not commutative: swapping the order usually changes the product.",
   ],
   [
     "(A+B)^2=A^2+2AB+B^2",
@@ -1282,7 +1365,7 @@ const lawsFalse = [
   ],
   [
     "AB=AC\\text{ implies }B=C",
-    "Matrices without inverses cannot be cancelled this way.",
+    "Cancelling $A$ needs an inverse, a matrix that undoes $A$. Matrices without inverses cannot be cancelled this way.",
   ],
 ] as const;
 export const matrixLawsCase = (seed: string) =>
@@ -1332,8 +1415,11 @@ function matrixLawsOnce(seed: string, attempt: number) {
       prompt: `Let $A=${bm(A)}$ and $B=${bm(B)}$. Find $BA$.`,
       hint: `In $BA$ the left factor is $B$: each entry pairs a row of $B$ with a column of $A$. For row 1, column 1: $(${B[0]![0]!.n})(${A[0]![0]!.n})+(${B[0]![1]!.n})(${A[1]![0]!.n})$. For row 2, column 2: $(${B[1]![0]!.n})(${A[0]![1]!.n})+(${B[1]![1]!.n})(${A[1]![1]!.n})$.`,
       explanation: [
-        `Row of $B$ times column of $A$: entry (1,1) is $(${B[0]![0]!.n})(${A[0]![0]!.n})+(${B[0]![1]!.n})(${A[1]![0]!.n})=${BA[0]![0]!.n}$.`,
-        `$BA=${bm(BA)}$. For comparison, $AB=${bm(AB)}$, which is different.`,
+        MATRIX,
+        "In a product, the left factor gives the rows. In $BA$ each entry pairs a row of $B$ with a column of $A$: multiply the pairs and add.",
+        `Entry (1,1): $(${B[0]![0]!.n})(${A[0]![0]!.n})+(${B[0]![1]!.n})(${A[1]![0]!.n})=${BA[0]![0]!.n}$. The other three entries work the same way.`,
+        `For comparison, $AB=${bm(AB)}$. Matrix products depend on order, so $AB$ and $BA$ differ.`,
+        `So $BA=${bm(BA)}$.`,
       ],
       correct: lbl(BA),
       alts: [
@@ -1349,11 +1435,13 @@ function matrixLawsOnce(seed: string, attempt: number) {
         },
         {
           label: lbl(mT(BA)),
-          feedback: "The rows of $BA$ come from the rows of $B$.",
+          feedback:
+            "Rows and columns are swapped. The rows of $BA$ come from the rows of $B$.",
         },
         {
           label: lbl(mmul(B, mT(A))),
-          feedback: "Pair rows of $B$ with columns of $A$.",
+          feedback:
+            "This pairs rows of $B$ with rows of $A$. Pair rows of $B$ with columns of $A$.",
         },
       ],
     });
@@ -1413,7 +1501,8 @@ function matrixLawsOnce(seed: string, attempt: number) {
     const prompt = `Let $A=${bm(A)}$ and $B=${bm(B)}$. Which statement is true?`;
     const hint = `Compute both products, $AB$ and $BA$, at least for the entry in ${where}: pair row ${e.i + 1} of the left factor with column ${e.j + 1} of the right factor, once with $A$ on the left and once with $B$ on the left.`;
     const explanation = [
-      `$AB=${bm(AB)}$ and $BA=${bm(BA)}$.`,
+      "In a product, the left factor gives the rows: each entry pairs a row of the left matrix with a column of the right one.",
+      `Computing both: $AB=${bm(AB)}$ and $BA=${bm(BA)}$.`,
       commute
         ? `The two products are equal, so $AB=BA$ for this pair; the entry in ${where} is ${e.p} in both.`
         : `The products differ, so $AB\\ne BA$; the entry in ${where} is ${e.p} in $AB$ and ${e.q} in $BA$.`,
@@ -1432,12 +1521,13 @@ function matrixLawsOnce(seed: string, attempt: number) {
           },
           {
             label: same(e.p),
-            feedback: "Compute $BA$ too. These two matrices do not commute.",
+            feedback:
+              "This assumes the order does not matter. Compute $BA$ too: these two matrices give different products.",
           },
           {
             label: same(e.q),
             feedback:
-              "Compute both orders; the products are different matrices.",
+              "This assumes the order does not matter. Compute both orders; the products are different matrices.",
           },
           {
             label: differs(e.p, had === e.p ? e.p + 1 : had),
@@ -1474,7 +1564,8 @@ function matrixLawsOnce(seed: string, attempt: number) {
         },
         {
           label: differs(e.p + 1, e.p),
-          feedback: "Recompute $AB$; the two products agree.",
+          feedback:
+            "This has an arithmetic slip in $AB$. Recompute it; the two products agree.",
         },
       ],
     });
@@ -1527,8 +1618,10 @@ function matrixLawsOnce(seed: string, attempt: number) {
       prompt: `Which $2\\times2$ matrix $I$ satisfies $IA=A$ and $AI=A$ for every $2\\times2$ matrix $A$?`,
       hint: `Test each choice on a simple matrix such as $A=${bm(A)}$: multiplying by the right matrix must return $A$ itself, with ones on the main diagonal playing the role of the number 1.`,
       explanation: [
-        `The identity matrix has ones on the main diagonal and zeros elsewhere.`,
-        `For $A=${bm(A)}$: $IA=${bm(mmul(I, A))}$ and $AI=${bm(mmul(A, I))}$, both equal $A$.`,
+        "We want a matrix that acts like the number 1: multiplying by it changes nothing. That is the identity matrix.",
+        "It has ones on the main diagonal (top left to bottom right) and zeros elsewhere. Each row-times-column sum then picks out exactly one entry of $A$.",
+        `Check with $A=${bm(A)}$: $IA=${bm(mmul(I, A))}$ and $AI=${bm(mmul(A, I))}$, both equal to $A$.`,
+        `So $I=${bm(I)}$.`,
       ],
       correct: lbl(I),
       alts: wrong.map(([m, feedback]) => ({ label: lbl(m), feedback })),
@@ -1551,9 +1644,10 @@ function matrixLawsOnce(seed: string, attempt: number) {
         ]),
       )}$. Only a law that always holds can be correct; remember the order of factors matters.`,
       explanation: [
+        "A law must hold for every choice of matrices. One counterexample, a single case where it fails, rules an equation out.",
+        "Unlike numbers, matrix products depend on order: in general $AB\\ne BA$. Equations that swap the order of factors fail.",
         trueLaw[1],
-        `The other equations fail for some matrices; for example, in general $AB\\ne BA$.`,
-        `The equation that holds for all matrices is $${trueLaw[0]}$.`,
+        `So the equation that holds for all matrices is $${trueLaw[0]}$.`,
       ],
       correct: dollar(trueLaw[0]),
       alts: falseLaws.map(([l, feedback]) => ({ label: dollar(l), feedback })),
@@ -1563,7 +1657,11 @@ function matrixLawsOnce(seed: string, attempt: number) {
   return finishV({
     prompt: `$A$, $B$ and $C$ are $2\\times2$ matrices, and $I$ is the $2\\times2$ identity. Which equation does NOT hold for all such matrices?`,
     hint: `Three of the choices are laws that always hold. Look for the one that treats matrices like numbers by changing the order of factors or cancelling.`,
-    explanation: [why, `So $${badLaw}$ is not true for all matrices.`],
+    explanation: [
+      "A law must hold for every choice of matrices. Unlike numbers, matrix products depend on order: in general $AB\\ne BA$.",
+      why,
+      `So $${badLaw}$ is the equation that does not hold for all matrices.`,
+    ],
     correct: dollar(badLaw),
     alts: goodLaws.map(([l, feedback]) => ({
       label: dollar(l),
@@ -1596,34 +1694,42 @@ function matrixInverseOnce(seed: string, attempt: number) {
       )}$.`,
       hint: `For $\\begin{bmatrix}p&q\\\\s&t\\end{bmatrix}$ the determinant is $pt-qs$: multiply the main diagonal, then subtract the product of the other diagonal. Here the diagonals are ${a}, ${d} and ${b}, ${c}.`,
       explanation: [
-        `$\\det A=ad-bc=(${a})(${d})-(${b})(${c})=${a * d}-(${b * c})=${D}$.`,
+        DETERMINANT,
+        `Main diagonal (top left to bottom right): $(${a})(${d})=${a * d}$. Other diagonal: $(${b})(${c})=${b * c}$.`,
+        `Subtract: $\\det A=${a * d}-(${b * c})=${D}$.`,
+        `So the determinant of $A$ is ${D}.`,
       ],
       correct: dollar(`${D}`),
       alts: [
         {
           label: dollar(`${a * d + b * c}`),
           feedback:
-            "Subtract the product of the off-diagonal entries; do not add.",
+            "This adds the two products. The determinant subtracts the other diagonal's product: $ad-bc$.",
         },
         {
           label: dollar(`${-D}`),
           feedback:
-            "The main-diagonal product comes first: $ad-bc$, not $bc-ad$.",
+            "The subtraction is in the wrong order. The main-diagonal product comes first: $ad-bc$, not $bc-ad$.",
         },
         {
           label: dollar(`${a * b - c * d}`),
           feedback:
-            "Multiply down the diagonals: $a$ with $d$, and $b$ with $c$.",
+            "This multiplies across the rows. Multiply along the diagonals: $a$ with $d$, and $b$ with $c$.",
         },
-        { label: dollar(`${a * d}`), feedback: "Subtract $bc$ too." },
+        {
+          label: dollar(`${a * d}`),
+          feedback:
+            "This is only the main-diagonal product. Subtract the other diagonal's product, $bc$, too.",
+        },
         {
           label: dollar(`${-(a * d + b * c)}`),
-          feedback: "Multiply along each diagonal and subtract: $ad-bc$.",
+          feedback:
+            "The signs are mixed up. Multiply along each diagonal and subtract: $ad-bc$.",
         },
         {
           label: dollar(`${a + d - b - c}`),
           feedback:
-            "The determinant uses products of diagonal entries, not sums.",
+            "This adds and subtracts the entries. The determinant multiplies along the diagonals first.",
         },
       ],
     });
@@ -1651,9 +1757,11 @@ function matrixInverseOnce(seed: string, attempt: number) {
       prompt: `Exactly one of these $2\\times2$ matrices has no inverse. Which one?`,
       hint: `A $2\\times2$ matrix has no inverse exactly when its determinant $ad-bc$ is 0. Compute $ad-bc$ for each choice; a zero determinant happens when one row is a multiple of the other.`,
       explanation: [
-        `A $2\\times2$ matrix is invertible exactly when $\\det\\ne0$.`,
-        `For $${bm(S)}$: $\\det=(${a})(${k * b})-(${b})(${k * a})=${a * k * b}-(${b * k * a})=0$, since the second row is ${k} times the first.`,
-        `Each other choice has a nonzero determinant, so it has an inverse.`,
+        INVERSE,
+        DETERMINANT,
+        `For $${bm(S)}$: $\\det=(${a})(${k * b})-(${b})(${k * a})=${a * k * b}-(${b * k * a})=0$. The second row is ${k} times the first, so the two products cancel.`,
+        "Each other choice has a nonzero determinant, so each has an inverse.",
+        `So the matrix with no inverse is $${bm(S)}$.`,
       ],
       correct: lbl(S),
       alts: others.slice(0, 3).map((m) => ({
@@ -1684,18 +1792,22 @@ function matrixInverseOnce(seed: string, attempt: number) {
       prompt: `For which value of $k$ does $\\begin{bmatrix}k&${a}\\\\${b}&${c}\\end{bmatrix}$ have no inverse?`,
       hint: `A matrix has no inverse when $\\det=0$. Write the determinant $kc-${a}\\cdot${b}$ with the numbers from the matrix, set it equal to 0 and solve for $k$.`,
       explanation: [
-        `$\\det=k\\cdot${c}-(${a})(${b})=${c}k-${a * b}$.`,
-        `Set $${c}k-${a * b}=0$, so $k=\\dfrac{${a * b}}{${c}}=${tex(k)}$.`,
+        INVERSE,
+        `${DETERMINANT} Here: $\\det=k\\cdot${c}-(${a})(${b})=${c}k-${a * b}$.`,
+        `No inverse means the determinant is 0. Set $${c}k-${a * b}=0$.`,
+        `Add ${a * b} to both sides, then divide by ${c}: $k=\\dfrac{${a * b}}{${c}}=${tex(k)}$.`,
+        `So the matrix has no inverse when $k=${tex(k)}$.`,
       ],
       correct: dollar(tex(k)),
       alts: [
         {
           label: f(a * b, 1),
-          feedback: `Divide by the coefficient ${c} of $k$ after setting the determinant to 0.`,
+          feedback: `This forgets to divide. After setting the determinant to 0, divide by ${c}, the number multiplying $k$.`,
         },
         {
           label: f(-a * b, c),
-          feedback: "Check the sign when moving the term across the equation.",
+          feedback:
+            "The sign is wrong. Moving $-ab$ across the equals sign makes it $+ab$.",
         },
         {
           label: f(b * c, a),
@@ -1704,7 +1816,8 @@ function matrixInverseOnce(seed: string, attempt: number) {
         },
         {
           label: f(c, a * b),
-          feedback: "Solve $kc=ab$ for $k$ by dividing by $c$.",
+          feedback:
+            "This fraction is upside down. Solve $kc=ab$ for $k$ by dividing both sides by $c$.",
         },
         {
           label: f(a * c, b),
@@ -1714,7 +1827,7 @@ function matrixInverseOnce(seed: string, attempt: number) {
         {
           label: f(a + b, c),
           feedback:
-            "Set the determinant $kc-ab$ to 0 and solve; do not add the entries.",
+            "This adds entries. Set the determinant $kc-ab$ to 0 and solve for $k$.",
         },
       ],
     });
@@ -1727,21 +1840,21 @@ function matrixInverseOnce(seed: string, attempt: number) {
     return [
       [
         adj,
-        `Divide every entry of the swapped matrix by the determinant, ${D}.`,
+        `This forgets the last step. Divide every entry of the swapped matrix by the determinant, ${D}.`,
       ],
       [
         mscale(rat(1), [
           [A[0]![0]!, adj[0]![1]!],
           [adj[1]![0]!, A[1]![1]!],
         ]),
-        "The main-diagonal entries swap places; they are not kept in place.",
+        "The main-diagonal entries were kept in place. They swap places.",
       ],
       [
         mscale(rat(1), [
           [adj[0]![0]!, A[0]![1]!],
           [A[1]![0]!, adj[1]![1]!],
         ]),
-        "Change the signs of the off-diagonal entries; do not leave them.",
+        "The off-diagonal entries kept their signs. Change both of their signs.",
       ],
       [
         mscale(rat(-1), adj),
@@ -1788,9 +1901,11 @@ function matrixInverseOnce(seed: string, attempt: number) {
     prompt: `Find the inverse of $A=${bm(A)}$.`,
     hint: `For $\\begin{bmatrix}p&q\\\\s&t\\end{bmatrix}$ the inverse is $\\frac{1}{pt-qs}\\begin{bmatrix}t&-q\\\\-s&p\\end{bmatrix}$. Swap the main-diagonal entries, change the signs of the other two, and divide everything by the determinant. First find $\\det A$ for $A=${bm(A)}$.`,
     explanation: [
-      `$\\det A=(${a})(${d})-(${b})(${c})=${D}$, which is not 0, so $A^{-1}$ exists.`,
-      `Swap $${a}$ and $${d}$, change the signs of $${b}$ and $${c}$: $${bm(adj)}$.`,
-      `Divide by the determinant ${D}: $A^{-1}=${bm(I)}$. Check: $AA^{-1}=${bm(mmul(A, I))}$.`,
+      INVERSE,
+      `First the determinant: $\\det A=(${a})(${d})-(${b})(${c})=${D}$. It is not 0, so $A^{-1}$ exists.`,
+      `For a $2\\times2$ matrix, swap the main-diagonal entries and change the signs of the other two. Swap $${a}$ and $${d}$; negate $${b}$ and $${c}$: $${bm(adj)}$.`,
+      `Divide every entry by the determinant, ${D}: $A^{-1}=${bm(I)}$.`,
+      `Check: $AA^{-1}=${bm(mmul(A, I))}$, the identity. So $A^{-1}=${bm(I)}$.`,
     ],
     correct: lbl(I),
     alts: wrongInverses(A).map(([m, feedback]) => ({
@@ -1907,29 +2022,31 @@ function matrixTransformOnce(seed: string, attempt: number) {
       prompt: `The matrix $M=${bm(M)}$ transforms each point $(x,y)$ to the point given by $M\\begin{bmatrix}x\\\\y\\end{bmatrix}$. Where does $M$ send $(${x}, ${y})$?`,
       hint: `Write the point as the column $\\begin{bmatrix}${x}\\\\${y}\\end{bmatrix}$. The new $x$ is row 1 of $M$ times the column and the new $y$ is row 2 times the column.`,
       explanation: [
+        "A matrix can move points. Write the point as a column, then multiply: row 1 of $M$ times the column gives the new $x$, and row 2 gives the new $y$.",
+        "Row times column means: multiply matching numbers and add.",
         ptWork(M, x, y) + ".",
-        `The image is $${pt(v[0]![0]!, v[1]![0]!)}$.`,
+        `So $M$ sends $(${x}, ${y})$ to $${pt(v[0]![0]!, v[1]![0]!)}$.`,
       ],
       correct: ptl(v),
       alts: [
         {
           label: ptl([[v[1]![0]!], [v[0]![0]!]]),
           feedback:
-            "The first row gives the new $x$ and the second row the new $y$.",
+            "The coordinates are swapped. The first row gives the new $x$ and the second row the new $y$.",
         },
         {
           label: ptl(mt),
           feedback:
-            "Use the rows of $M$ with the column, not the columns of $M$.",
+            "This uses the columns of $M$. Multiply the rows of $M$ by the column.",
         },
         {
           label: ptl(diag),
           feedback:
-            "Each new coordinate combines both $x$ and $y$: a row times the column.",
+            "This uses only the diagonal entries. Each new coordinate combines both $x$ and $y$: a whole row times the column.",
         },
         {
           label: ptl(mscale(fr(-1), v)),
-          feedback: "Recheck the signs of the products.",
+          feedback: "Every sign is flipped. Recheck the signs of the products.",
         },
       ],
     });
@@ -1945,8 +2062,9 @@ function matrixTransformOnce(seed: string, attempt: number) {
         prompt: `Which matrix ${target.name.replace(/^./, (c) => c.toLowerCase())}, when it multiplies the column $\\begin{bmatrix}x\\\\y\\end{bmatrix}$?`,
         hint: `Follow the points $(1,0)$ and $(0,1)$ under the matrix that ${target.name.replace(/^./, (c) => c.toLowerCase())}. The first column of the matrix is where $(1,0)$ lands and the second column is where $(0,1)$ lands.`,
         explanation: [
-          `Find where $(1,0)$ and $(0,1)$ go; these images are the columns of the matrix.`,
-          `The matrix is $${bm(mat(target.m))}$.`,
+          "Multiplying a matrix by $(1,0)$ picks out its first column, and by $(0,1)$ its second column. So the columns are the images of those two points.",
+          `Under this transformation, $(1,0)$ goes to $(${target.m[0]![0]}, ${target.m[1]![0]})$ and $(0,1)$ goes to $(${target.m[0]![1]}, ${target.m[1]![1]})$.`,
+          `Put those images in as the columns. The matrix that ${target.name.replace(/^./, (c) => c.toLowerCase())} is $${bm(mat(target.m))}$.`,
         ],
         correct: lbl(mat(target.m)),
         alts: rest.map((t) => ({
@@ -1958,8 +2076,10 @@ function matrixTransformOnce(seed: string, attempt: number) {
       prompt: `Multiplying the column $\\begin{bmatrix}x\\\\y\\end{bmatrix}$ by $M=${bm(mat(target.m))}$ transforms points. What does it do?`,
       hint: `The entries of $M$ are ${target.m.flat().join(", ")}. Test the points $(1,0)$ and $(0,1)$: the columns of $M$ are their images. Decide where each point lands.`,
       explanation: [
-        `The first column of $M$ is the image of $(1,0)$ and the second column is the image of $(0,1)$.`,
-        `$(1,0)\\to(${target.m[0]![0]}, ${target.m[1]![0]})$ and $(0,1)\\to(${target.m[0]![1]}, ${target.m[1]![1]})$. ${target.name}.`,
+        "Multiplying $M$ by $(1,0)$ picks out its first column, and by $(0,1)$ its second column. So the columns show where those two points land.",
+        `$(1,0)\\to(${target.m[0]![0]}, ${target.m[1]![0]})$ and $(0,1)\\to(${target.m[0]![1]}, ${target.m[1]![1]})$.`,
+        "Picture those two moves on a grid; every other point moves the same way.",
+        `So $M$ ${target.name.replace(/^./, (c) => c.toLowerCase())}.`,
       ],
       correct: target.name,
       alts: rest.map((t) => ({
@@ -1996,52 +2116,58 @@ function matrixTransformOnce(seed: string, attempt: number) {
         : `A triangle with area ${area} square units is transformed by $M=${bm(M)}$. What is the area of the image?`,
       hint: `The area changes by the factor $|\\det M|$, where $\\det M=ad-bc$ for the entries of $M=${bm(M)}$. Compute the determinant first.`,
       explanation: [
-        `$\\det M=(${a})(${d})-(${b})(${c})=${D}$.`,
-        `The area scale factor is $|\\det M|=${Math.abs(D)}$.`,
+        DETERMINANT,
+        "When a matrix transforms a shape, every area is multiplied by the same number: $|\\det M|$, the determinant without its sign.",
+        `Here $\\det M=(${a})(${d})-(${b})(${c})=${D}$, so areas are multiplied by $|${D}|=${Math.abs(D)}$.`,
         collapse
-          ? `A determinant of 0 flattens the square onto a line or point, so the image has area 0.`
-          : `New area $=${Math.abs(D)}\\cdot${area}=${result}$ square units.`,
+          ? "A determinant of 0 flattens the square onto a line or a point, so the image has area 0."
+          : `New area $=${Math.abs(D)}\\cdot${area}=${result}$.`,
+        `So the image has area ${result} square units.`,
       ],
       correct: dollar(`${result}`),
       alts: [
         {
           label: dollar(`${D * area}`),
           feedback:
-            "Area cannot be negative: use the absolute value of the determinant.",
+            "This keeps the determinant's negative sign. Area cannot be negative: use the absolute value of the determinant.",
         },
         {
           label: dollar(`${Math.abs(D) + area}`),
           feedback:
-            "The determinant is a scale factor: multiply the area by it.",
+            "This adds. The determinant is a scale factor, so multiply the area by it.",
         },
         {
           label: dollar(`${Math.abs(a * d) * area}`),
-          feedback: "The determinant is $ad-bc$, not only $ad$.",
+          feedback:
+            "This uses only the main-diagonal product. The determinant is $ad-bc$.",
         },
         {
           label: dollar(`${Math.abs(D) * Math.abs(D) * area}`),
-          feedback: "Areas are scaled by $|\\det|$ once, not squared.",
+          feedback: "This scales twice. Areas are scaled by $|\\det|$ once.",
         },
         {
           label: dollar(`${area}`),
-          feedback: "The area changes by the factor $|\\det M|$.",
+          feedback:
+            "This leaves the area unchanged. The area changes by the factor $|\\det M|$.",
         },
         {
           label: dollar(Math.abs(D) === 0 ? "1" : tex(fr(area, Math.abs(D)))),
-          feedback: "Multiply the original area by $|\\det M|$; do not divide.",
+          feedback: "This divides. Multiply the original area by $|\\det M|$.",
         },
         {
           label: dollar(`${Math.abs(a) + Math.abs(d)}`),
           feedback:
-            "The determinant multiplies along diagonals; it does not add entries.",
+            "This adds entries. The determinant multiplies along the diagonals and subtracts.",
         },
         {
           label: dollar(`${Math.abs(b * c)}`),
-          feedback: "The determinant is $ad-bc$, not only $bc$.",
+          feedback:
+            "This uses only the other diagonal's product. The determinant is $ad-bc$.",
         },
         {
           label: dollar(`${Math.abs(a * d) + Math.abs(b * c)}`),
-          feedback: "Subtract the products before taking the absolute value.",
+          feedback:
+            "This adds the two products. Subtract them, $ad-bc$, then take the absolute value.",
         },
       ],
     });
@@ -2056,8 +2182,9 @@ function matrixTransformOnce(seed: string, attempt: number) {
     prompt: `The matrix $${bm(M)}$ ${target.name.replace(/^./, (c) => c.toLowerCase())}. Where does it send $(${x}, ${y})$?`,
     hint: `Write $(${x}, ${y})$ as the column $\\begin{bmatrix}${x}\\\\${y}\\end{bmatrix}$ and multiply by the matrix: each row gives one new coordinate.`,
     explanation: [
+      "Write the point as a column and multiply: row 1 of the matrix times the column gives the new $x$, and row 2 gives the new $y$.",
       ptWork(M, x, y) + ".",
-      `The image is $${pt(v[0]![0]!, v[1]![0]!)}$.`,
+      `So the matrix sends $(${x}, ${y})$ to $${pt(v[0]![0]!, v[1]![0]!)}$.`,
     ],
     correct: ptl(v),
     alts: shuffle(r, others).map((t) => ({
@@ -2125,34 +2252,37 @@ function matrixSystemOnce(seed: string, attempt: number) {
         prompt: `Write the system ${sys} as $AX=B$ with $X=\\begin{bmatrix}x\\\\y\\end{bmatrix}$. What is the coefficient matrix $A$?`,
         hint: `Each row of $A$ holds the coefficients of $x$ and then $y$ from one equation, in the order the equations are listed. In ${sys}, write each equation with $x$ first before reading its coefficients.`,
         explanation: [
-          `Write each equation with $x$ first: $${rewritten[0]}$ and $${rewritten[1]}$ (the constants move to the right side).`,
-          `The coefficient rows are $(${A[0]!.join(", ")})$ and $(${A[1]!.join(", ")})$, so $A=${bm(Am)}$.`,
+          "In $AX=B$, $A$ holds the coefficients (the numbers multiplying $x$ and $y$), $X$ holds the unknowns, and $B$ holds the constants.",
+          `Write each equation with $x$ first and the constant on the right: $${rewritten[0]}$ and $${rewritten[1]}$.`,
+          "Each equation gives one row of $A$: its $x$ coefficient, then its $y$ coefficient.",
+          `The rows are $(${A[0]!.join(", ")})$ and $(${A[1]!.join(", ")})$, so $A=${bm(Am)}$.`,
         ],
         correct: lbl(Am),
         alts: [
           {
             label: lbl(mT(Am)),
             feedback:
-              "Each row of $A$ comes from one equation, not each column.",
+              "Rows and columns are swapped. Each row of $A$ comes from one equation.",
           },
           {
             label: lbl(mmap(Am, (_, i, j) => Am[i]![1 - j]!)),
             feedback:
-              "The first column holds the $x$ coefficients and the second column holds the $y$ coefficients.",
+              "The columns are swapped. The first column holds the $x$ coefficients and the second the $y$ coefficients.",
           },
           {
             label: lbl([
               [Am[0]![0]!, fr(e1)],
               [Am[1]![0]!, fr(e2)],
             ]),
-            feedback: "The constants belong in $B$, not in $A$.",
+            feedback:
+              "This puts a constant in $A$. The constants belong in $B$; $A$ holds only coefficients.",
           },
           {
             label: lbl(
               mmap(Am, (x, i, j) => (i === 1 && j === 1 ? fneg(x) : x)),
             ),
             feedback:
-              "Keep each coefficient with the sign written in the equation.",
+              "One coefficient has the wrong sign. Keep each coefficient with the sign written in the equation.",
           },
         ],
       });
@@ -2160,29 +2290,31 @@ function matrixSystemOnce(seed: string, attempt: number) {
       prompt: `Write the system ${sys} as $AX=B$ with $X=\\begin{bmatrix}x\\\\y\\end{bmatrix}$. What is the constant matrix $B$?`,
       hint: `In ${sys}, move each constant term to the right side of its equation so that each equation reads (terms in $x$ and $y$) = (constant). Then list the right sides in the order the equations are given.`,
       explanation: [
-        `Moving the constants gives $${rewritten[0]} = ${e1}$ and $${rewritten[1]} = ${e2}$.`,
-        `The right sides are ${e1} and ${e2}, so $B=${bm(Bm)}$.`,
+        "In $AX=B$, $A$ holds the coefficients, $X$ the unknowns, and $B$ the constants, each on the right side of its equation.",
+        `Move each constant to the right side, changing its sign as it crosses the equals sign: $${rewritten[0]} = ${e1}$ and $${rewritten[1]} = ${e2}$.`,
+        `List the right sides in equation order. So $B=${bm(Bm)}$.`,
       ],
       correct: lbl(Bm),
       alts: [
         {
           label: lbl(col2(-e1, -e2)),
           feedback:
-            "Moving a constant across the equals sign changes its sign.",
+            "Both signs are wrong. Moving a constant across the equals sign changes its sign.",
         },
         {
           label: lbl(col2(e2, e1)),
-          feedback: "List the constants in the order of the equations.",
+          feedback:
+            "The constants are in the wrong order. List them in the order of the equations.",
         },
         {
           label: lbl(col2(-e1, e2)),
           feedback:
-            "Both constants change sign when they move to the right side.",
+            "Only one sign was handled correctly. Each constant changes sign when it moves to the right side.",
         },
         {
           label: lbl(col2(e1, -e2)),
           feedback:
-            "Both constants change sign when they move to the right side.",
+            "Only one sign was handled correctly. Each constant changes sign when it moves to the right side.",
         },
       ],
     });
@@ -2198,20 +2330,24 @@ function matrixSystemOnce(seed: string, attempt: number) {
       prompt: `The system $${form(A[0] as [number, number], ["x", "y"])} = ${B[0]}$, $${form(A[1] as [number, number], ["x", "y"])} = ${B[1]}$ is $AX=B$ with $A=${bm(Am)}$ and $B=${bm(Bm)}$. Solve it using $X=A^{-1}B$.`,
       hint: `First find $\\det A=ad-bc$ for $A=${bm(Am)}$. Then form $A^{-1}=\\frac{1}{\\det A}\\begin{bmatrix}d&-b\\\\-c&a\\end{bmatrix}$ and multiply it by $B$ on the left.`,
       explanation: [
-        `$\\det A=(${A[0]![0]})(${A[1]![1]})-(${A[0]![1]})(${A[1]![0]})=${D.n}$, so $A^{-1}$ exists.`,
-        `$A^{-1}=${bm(inv2(Am))}$.`,
-        `$X=A^{-1}B=${bm(Sol)}$, so $x=${tex(Sol[0]![0]!)}$ and $y=${tex(Sol[1]![0]!)}$.`,
+        INVERSE,
+        "Multiplying both sides of $AX=B$ by $A^{-1}$ on the left undoes $A$: $X=A^{-1}B$.",
+        `$\\det A=(${A[0]![0]})(${A[1]![1]})-(${A[0]![1]})(${A[1]![0]})=${D.n}$, which is not 0, so $A^{-1}$ exists.`,
+        `Swap the diagonal entries, negate the other two, and divide by ${D.n}: $A^{-1}=${bm(inv2(Am))}$.`,
+        `Multiply each row of $A^{-1}$ by the column $B$: $X=A^{-1}B=${bm(Sol)}$.`,
+        `So $x=${tex(Sol[0]![0]!)}$ and $y=${tex(Sol[1]![0]!)}$.`,
       ],
       correct: ask(Sol),
       alts: [
         {
           label: ask([[Sol[1]![0]!], [Sol[0]![0]!]]),
-          feedback: "The first entry of $X$ is $x$ and the second is $y$.",
+          feedback:
+            "The values are swapped. The first entry of $X$ is $x$ and the second is $y$.",
         },
         {
           label: ask(mmul(adj2(Am), Bm)),
           feedback:
-            "Divide the swapped matrix by the determinant to get $A^{-1}$.",
+            "This forgets to divide by the determinant. Divide the swapped matrix by it to get $A^{-1}$.",
         },
         {
           label: ask(mmul(inv2(mT(Am)), Bm)),
@@ -2220,7 +2356,8 @@ function matrixSystemOnce(seed: string, attempt: number) {
         },
         {
           label: ask(mscale(fr(-1), Sol)),
-          feedback: "Recheck the signs in $A^{-1}$ and in the products.",
+          feedback:
+            "Both signs are flipped. Recheck the signs in $A^{-1}$ and in the products.",
         },
       ],
     });
@@ -2248,10 +2385,14 @@ function matrixSystemOnce(seed: string, attempt: number) {
       prompt: `The system $${form([a, b], ["x", "y"])} = ${e1}$, $${form([c, d], ["x", "y"])} = ${e2}$ is written $AX=B$ with $A=${bm(A)}$. Can it be solved as $X=A^{-1}B$?`,
       hint: `$A^{-1}$ exists only when $\\det A=ad-bc$ is not 0. Compute $ad-bc$ for $A=${bm(A)}$.`,
       explanation: [
-        `$\\det A=(${a})(${d})-(${b})(${c})=${D}$.`,
+        INVERSE,
+        `${DETERMINANT} Here $\\det A=(${a})(${d})-(${b})(${c})=${D}$.`,
         sing
-          ? `The determinant is 0, so $A$ has no inverse. The rows of $A$ are proportional, so the system does not have one unique solution.`
-          : `The determinant is not 0, so $A^{-1}$ exists and $X=A^{-1}B$ is the unique solution.`,
+          ? "The determinant is 0, so $A$ has no inverse. The rows of $A$ are proportional (one is a multiple of the other), so the system has no single solution."
+          : "The determinant is not 0, so $A^{-1}$ exists and $X=A^{-1}B$ gives the one solution.",
+        sing
+          ? "So no: the system cannot be solved as $X=A^{-1}B$."
+          : "So yes: the system can be solved as $X=A^{-1}B$.",
       ],
       correct: sing ? no(0) : yes(D),
       alts: sing
@@ -2259,34 +2400,44 @@ function matrixSystemOnce(seed: string, attempt: number) {
             {
               label: yes(a * d + b * c),
               feedback:
-                "A determinant is $ad-bc$; subtract the products. Subtracting gives 0.",
+                "This adds the products. A determinant is $ad-bc$; subtracting gives 0.",
             },
             {
               label: yes(a * d),
-              feedback: "Subtract $bc$ as well. The determinant is $ad-bc$.",
+              feedback:
+                "This uses only the main-diagonal product. Subtract $bc$ as well: the determinant is $ad-bc$.",
             },
             {
               label: yes(0),
-              feedback: "A zero determinant means the inverse does NOT exist.",
+              feedback:
+                "This reads the zero the wrong way. A zero determinant means the inverse does not exist.",
             },
             {
               label: no(a * d + b * c),
               feedback:
-                "Compute $ad-bc$; this value comes from adding the products.",
+                "The conclusion is right but the value is not. This adds the products; $ad-bc$ subtracts them.",
             },
           ]
         : [
-            { label: no(0), feedback: `Compute $ad-bc$: it is ${D}, not 0.` },
+            {
+              label: no(0),
+              feedback: `This claims the determinant is 0. Compute $ad-bc$: it is ${D}, not 0.`,
+            },
             {
               label: yes(a * d + b * c),
               feedback:
-                "The determinant is $ad-bc$; subtract the off-diagonal product.",
+                "This adds the products. The determinant is $ad-bc$; subtract the other diagonal's product.",
             },
             {
               label: yes(b * c - a * d),
-              feedback: "Take the main diagonal first: $ad-bc$.",
+              feedback:
+                "The subtraction is in the wrong order. Take the main diagonal first: $ad-bc$.",
             },
-            { label: yes(a * d), feedback: "Subtract the product $bc$ too." },
+            {
+              label: yes(a * d),
+              feedback:
+                "This uses only the main-diagonal product. Subtract the product $bc$ too.",
+            },
           ],
     });
   }
@@ -2312,27 +2463,32 @@ function matrixSystemOnce(seed: string, attempt: number) {
     prompt: `For $AX=B$, the inverse is $A^{-1}=${factor}${bm(adj)}$ and $B=${bm(Bm)}$. Find $(x, y)$ from $X=A^{-1}B$.`,
     hint: `Multiply the matrix $${bm(adj)}$ by the column $B$ (each row of the matrix times the column), then multiply the result by the scalar $${factor}$.`,
     explanation: [
-      `$${bm(adj)}${bm(Bm)}=${bm(unscaled)}$.`,
-      `Multiply by $${factor}$: $X=${bm(Sol)}$, so $x=${tex(Sol[0]![0]!)}$ and $y=${tex(Sol[1]![0]!)}$.`,
+      INVERSE,
+      "Multiplying both sides of $AX=B$ by $A^{-1}$ undoes $A$, so $X=A^{-1}B$.",
+      `Multiply each row of the matrix by the column $B$ (multiply matching numbers and add): $${bm(adj)}${bm(Bm)}=${bm(unscaled)}$.`,
+      `Then multiply each entry by the scalar $${factor}$: $X=${bm(Sol)}$.`,
+      `So $x=${tex(Sol[0]![0]!)}$ and $y=${tex(Sol[1]![0]!)}$.`,
     ],
     correct: ask(Sol),
     alts: [
       {
         label: ask(unscaled),
-        feedback: `Multiply the product by the scalar $${factor}$ as well.`,
+        feedback: `This skips the scalar. Multiply the product by $${factor}$ as well.`,
       },
       {
         label: ask([[Sol[1]![0]!], [Sol[0]![0]!]]),
-        feedback: "The first entry of $X$ is $x$ and the second is $y$.",
+        feedback:
+          "The values are swapped. The first entry of $X$ is $x$ and the second is $y$.",
       },
       {
         label: ask(mscale(fr(-1), Sol)),
-        feedback: "Recheck the signs in the row-times-column sums.",
+        feedback:
+          "Both signs are flipped. Recheck the signs in the row-times-column sums.",
       },
       {
         label: ask(mscale(fr(1, D), mmul(mT(adj), Bm))),
         feedback:
-          "Pair rows of the matrix with the column $B$, not its columns.",
+          "This uses the columns of the matrix. Pair its rows with the column $B$.",
       },
     ],
   });

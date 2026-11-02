@@ -1152,14 +1152,42 @@ export function fieldText(
   return parsed.ok ? `$${lineTex(parsed.line)}$` : v;
 }
 /** One row as readable text, in TeX-ready form ($…$ around math). */
+/** The base of a power whose exponent is the next field: a number field
+ * whose unit is "× 10^" followed by a number field. Display only; the two
+ * fields stay separate entries for grading. */
+export function powerBase(
+  field: WorkField,
+  next: WorkField | undefined,
+): string | null {
+  const power = /^×\s*(\d+)\s*\^$/.exec(field.unit ?? "");
+  return field.kind === "number" && power && next?.kind === "number"
+    ? power[1]!
+    : null;
+}
+/** One typeset number in scientific form: $3.6\times10^{6}$. */
+export function powerTex(coefficient: string, base: string, power: string) {
+  return `$${numberTex(coefficient)}\\times${base}^{${numberTex(power)}}$`;
+}
 export function rowText(
   r: StructuredWorkResponse,
   shape: WorkRow,
   values: string[],
 ): string {
   const parts = shape.fields.map((f, j) => fieldText(r, f, values[j] ?? ""));
+  // A coefficient whose unit is a power base ("× 10^") reads as one number
+  // with the next field as its exponent: $3.6\times10^{6}$, never the
+  // caret text the two entry boxes show.
+  shape.fields.forEach((f, j) => {
+    const next = shape.fields[j + 1];
+    const base = powerBase(f, next);
+    const a = f.given ?? values[j] ?? "";
+    const n = next?.given ?? values[j + 1] ?? "";
+    if (!base || !a || !n) return;
+    parts[j] = powerTex(a, base, n);
+    parts[j + 1] = "";
+  });
   if (r.layout === "proof") return `${parts[0]} (${parts[1]})`;
-  const body = parts.join(" — ");
+  const body = parts.filter(Boolean).join(" — ");
   return shape.label ? `${shape.label}: ${body}` : body;
 }
 /** The rows of a response (or the answer key) in order, as readable text. */

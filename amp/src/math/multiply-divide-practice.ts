@@ -114,7 +114,9 @@ function quotient(
 
 /** Long division as partial quotients by place: the steps a learner writes. */
 function longDivisionSteps(dividend: number, d: number): string[] {
-  const steps: string[] = [];
+  const steps: string[] = [
+    `Division asks how many groups of ${d} fit in ${f(dividend)}. Take away big, easy groups first, then smaller ones.`,
+  ];
   let rest = dividend;
   const length = String(dividend).length;
   for (let place = length - 1; place >= 0; place--) {
@@ -123,7 +125,7 @@ function longDivisionSteps(dividend: number, d: number): string[] {
     if (!digit) continue;
     const chunk = digit * unit;
     steps.push(
-      `${f(chunk)} × ${d} = ${f(chunk * d)}; ${f(rest)} − ${f(chunk * d)} = ${f(rest - chunk * d)}.`,
+      `${f(chunk)} groups of ${d} is ${f(chunk)} × ${d} = ${f(chunk * d)}. Take ${f(chunk * d)} away: ${f(rest)} − ${f(chunk * d)} = ${f(rest - chunk * d)}.`,
     );
     rest -= chunk * d;
   }
@@ -167,8 +169,9 @@ export function generateMultiplyDivideProblem(
       hint = `Think of ${t * 10} as ${t} ${t === 1 ? "ten" : "tens"}. Multiply ${a} × ${t}, then name that many tens.`;
       explanation = [
         `${t * 10} is ${t} ${t === 1 ? "ten" : "tens"}, so ${left} × ${right} is ${a} × ${t} tens.`,
-        `${a} × ${t} = ${a * t}, so the product is ${a * t} tens.`,
-        `${a * t} tens = ${f(answer)}.`,
+        `Multiply the basic fact first: ${a} × ${t} = ${a * t}. So the answer is ${a * t} tens.`,
+        `${a * t} tens is ${a * t} × 10 = ${f(answer)}, because each ten is worth 10.`,
+        `So ${left} × ${right} = ${f(answer)}.`,
       ];
       break;
     }
@@ -180,11 +183,25 @@ export function generateMultiplyDivideProblem(
       answer = n * d;
       const parts = placeParts(n);
       hint = `Split ${f(n)} into ${parts.map(f).join(" + ")}. Multiply each part by ${d}, then add the partial products.`;
-      explanation = [
-        `Split ${f(n)} by place: ${parts.map(f).join(" + ")}.`,
-        `Multiply each part by ${d}: ${parts.map((p) => `${f(p)} × ${d} = ${f(p * d)}`).join("; ")}.`,
-        `Add the partial products: ${parts.map((p) => f(p * d)).join(" + ")} = ${f(answer)}.`,
-      ];
+      explanation =
+        parts.length > 1
+          ? [
+              `Split ${f(n)} by place value, because each part is easy to multiply: ${parts.map(f).join(" + ")}.`,
+              `Multiply each part by ${d}: ${parts.map((p) => `${f(p)} × ${d} = ${f(p * d)}`).join("; ")}. Each result is a partial product.`,
+              `The parts together make ${f(n)}, so add the partial products: ${parts.map((p) => f(p * d)).join(" + ")} = ${f(answer)}.`,
+              `So ${f(n)} × ${d} = ${f(answer)}.`,
+            ]
+          : (() => {
+              const unit = 10 ** (String(n).length - 1),
+                digit = n / unit,
+                name = { 10: "tens", 100: "hundreds", 1000: "thousands" }[unit];
+              return [
+                `${f(n)} is ${digit} ${name}, so ${f(n)} × ${d} is ${digit} × ${d} ${name}.`,
+                `Multiply the basic fact: ${digit} × ${d} = ${digit * d}. So the answer is ${digit * d} ${name}.`,
+                `${digit * d} ${name} is ${digit * d} × ${f(unit)} = ${f(answer)}.`,
+                `So ${f(n)} × ${d} = ${f(answer)}.`,
+              ];
+            })();
       break;
     }
     case "area-model-product": {
@@ -199,9 +216,11 @@ export function generateMultiplyDivideProblem(
       const products = rows.flatMap((y) => columns.map((x) => x * y));
       hint = `The edges split ${a} into ${columns.join(" + ")} and ${b} into ${rows.join(" + ")}. Multiply width by height in each region, then add the four.`;
       explanation = [
+        `An area model draws the product as a rectangle ${a} by ${b}, cut by place value into smaller rectangles.`,
         `${a} = ${columns.join(" + ")} and ${b} = ${rows.join(" + ")}.`,
-        `The regions: ${rows.flatMap((y) => columns.map((x) => `${x} × ${y} = ${f(x * y)}`)).join("; ")}.`,
-        `Add them: ${products.map(f).join(" + ")} = ${f(answer)}.`,
+        `Each small rectangle's area is its width times its height: ${rows.flatMap((y) => columns.map((x) => `${x} × ${y} = ${f(x * y)}`)).join("; ")}.`,
+        `The small rectangles fill the whole one, so add them: ${products.map(f).join(" + ")} = ${f(answer)}.`,
+        `So ${a} × ${b} = ${f(answer)}.`,
       ];
       break;
     }
@@ -217,13 +236,16 @@ export function generateMultiplyDivideProblem(
       hint = `Split ${b} into ${tens}${ones ? ` + ${ones}` : ""}. Multiply ${f(a)} by each part, then add.`;
       explanation = ones
         ? [
-            `Split ${b} into ${tens} + ${ones}.`,
-            `${f(a)} × ${ones} = ${f(a * ones)} and ${f(a)} × ${tens} = ${f(a * tens)}.`,
-            `Add the partial products: ${f(a * ones)} + ${f(a * tens)} = ${f(answer)}.`,
+            `Split ${b} into tens and ones, ${tens} + ${ones}, so each part is easier to multiply.`,
+            `Multiply ${f(a)} by each part: ${f(a)} × ${ones} = ${f(a * ones)} and ${f(a)} × ${tens} = ${f(a * tens)}.`,
+            `${ones} and ${tens} together make ${b}, so add the two results: ${f(a * ones)} + ${f(a * tens)} = ${f(answer)}.`,
+            `So ${f(a)} × ${b} = ${f(answer)}.`,
           ]
         : [
-            `${b} is ${tens / 10} tens, so multiply ${f(a)} × ${tens / 10} = ${f((a * tens) / 10)}.`,
-            `${f((a * tens) / 10)} tens = ${f(answer)}.`,
+            `${b} is ${tens / 10} tens, so multiply by ${tens / 10} and then make it tens.`,
+            `${f(a)} × ${tens / 10} = ${f((a * tens) / 10)}.`,
+            `${f((a * tens) / 10)} tens is ${f((a * tens) / 10)} × 10 = ${f(answer)}.`,
+            `So ${f(a)} × ${b} = ${f(answer)}.`,
           ];
       break;
     }
@@ -238,7 +260,10 @@ export function generateMultiplyDivideProblem(
       hint = `Ask how many ${d}s fit in ${f(n)}, place by place, starting with the greatest place.`;
       explanation = [
         ...longDivisionSteps(n, d),
-        `${parts.length > 1 ? `Add the partial quotients: ${parts.map(f).join(" + ")} = ${f(q)}.` : `The quotient is ${f(q)}.`} Check: ${f(q)} × ${d} = ${f(n)}.`,
+        parts.length > 1
+          ? `Nothing is left, so add the groups taken: ${parts.map(f).join(" + ")} = ${f(q)}.`
+          : `Nothing is left, so ${f(q)} groups fit.`,
+        `Check: ${f(q)} × ${d} = ${f(n)}. So ${f(n)} ÷ ${d} = ${f(q)}.`,
       ];
       break;
     }
@@ -253,8 +278,9 @@ export function generateMultiplyDivideProblem(
       hint = `Find the largest multiple of ${d} that fits in ${f(n)}. The remainder is what is left, and it is less than ${d}.`;
       explanation = [
         ...longDivisionSteps(n, d),
-        `The quotient is ${parts.length > 1 ? `${parts.map(f).join(" + ")} = ` : ""}${f(q)}, and ${rem} ${rem === 1 ? "is" : "are"} left over.`,
-        `${f(n)} = ${f(q)} × ${d} + ${rem}, and ${rem} < ${d}. The remainder is ${rem}.`,
+        `The groups taken add up to ${parts.length > 1 ? `${parts.map(f).join(" + ")} = ` : ""}${f(q)}. That count is the quotient.`,
+        `${rem} ${rem === 1 ? "is" : "are"} left, fewer than ${d}, so no more full groups fit. What is left is the remainder.`,
+        `Check: ${f(q)} × ${d} + ${rem} = ${f(n)}. The remainder is ${rem}.`,
       ];
       break;
     }
@@ -270,7 +296,10 @@ export function generateMultiplyDivideProblem(
       hint = `Estimate with a rounded divisor: about ${Math.round(d / 10) * 10}. Subtract a multiple of ${d} for each place.`;
       explanation = [
         ...longDivisionSteps(n, d),
-        `${parts.length > 1 ? `Add the partial quotients: ${parts.map(f).join(" + ")} = ${f(q)}.` : `The quotient is ${f(q)}.`} Check: ${f(q)} × ${d} = ${f(n)}.`,
+        parts.length > 1
+          ? `Nothing is left, so add the groups taken: ${parts.map(f).join(" + ")} = ${f(q)}.`
+          : `Nothing is left, so ${f(q)} groups fit.`,
+        `Check: ${f(q)} × ${d} = ${f(n)}. So ${f(n)} ÷ ${d} = ${f(q)}.`,
       ];
       break;
     }

@@ -9,12 +9,12 @@ export const numberOrderMethods: Record<string, ProblemMethod> = {
       "A statement such as $24{,}350<n<24{,}820$ says that $n$ is more than 24,350 and also less than 24,820. Compare numbers from the left: the first place where the digits differ decides which number is greater.",
     terms: [
       [
-        "lower bound",
-        "The smaller number in the statement. The value must be greater than it.",
+        "greater-than",
+        "A lower bound is the smaller number in the statement; the value must be greater than it.",
       ],
       [
-        "upper bound",
-        "The larger number in the statement. The value must be less than it.",
+        "less-than",
+        "An upper bound is the larger number in the statement; the value must be less than it.",
       ],
     ],
     method: [
@@ -29,13 +29,7 @@ export const numberOrderMethods: Record<string, ProblemMethod> = {
     goal: "Choose the true comparison of whole numbers of five to nine digits that share leading digits.",
     intuition:
       "To compare two whole numbers, line up their digits by place and look from the left. Numbers with more digits are greater. When two numbers have the same number of digits, the first place where they differ decides: the number with the greater digit there is the greater number.",
-    terms: [
-      [
-        "place value",
-        "The value of a digit because of its place: ones, tens, hundreds, thousands and so on.",
-      ],
-      [">", "Means is greater than: the larger number is on the open side."],
-    ],
+    terms: ["place-value", "greater-than"],
     method: [
       "Check the number of digits first: more digits means a greater number.",
       "For numbers with the same number of digits, compare place by place from the left and stop at the first difference.",

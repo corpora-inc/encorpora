@@ -93,20 +93,22 @@ function factSteps(a: number, b: number): string {
   const p = a * b;
   const pair = (k: number) => (a === k ? b : b === k ? a : undefined);
   let n;
-  if ((n = pair(2)) !== undefined) return `Double ${n}: ${n} + ${n} = ${p}.`;
-  if ((n = pair(10)) !== undefined) return `${n} tens are ${p}.`;
+  if ((n = pair(2)) !== undefined)
+    return `2 groups of ${n} is ${n} doubled: ${n} + ${n} = ${p}.`;
+  if ((n = pair(10)) !== undefined)
+    return `10 groups of ${n} make ${n} tens, and ${n} tens are ${p}.`;
   if ((n = pair(5)) !== undefined)
-    return `${n} × 10 = ${n * 10}, and half of ${n * 10} is ${p}.`;
+    return `5 is half of 10, so find ${n} × 10 = ${n * 10} and take half: ${p}.`;
   if ((n = pair(9)) !== undefined)
-    return `${n} × 10 = ${n * 10}, and ${n * 10} − ${n} = ${p}.`;
+    return `9 is one less than 10, so find ${n} × 10 = ${n * 10} and take away one ${n}: ${n * 10} − ${n} = ${p}.`;
   if ((n = pair(4)) !== undefined)
-    return `Double ${n} is ${2 * n}; double ${2 * n} is ${p}.`;
+    return `4 is 2 doubled, so double ${n} to get ${2 * n}, then double again to get ${p}.`;
   if ((n = pair(3)) !== undefined)
-    return `Double ${n} is ${2 * n}; ${2 * n} + ${n} = ${p}.`;
+    return `3 groups are 2 groups and 1 more: double ${n} is ${2 * n}, and ${2 * n} + ${n} = ${p}.`;
   const big = Math.max(a, b),
     small = Math.min(a, b),
     rest = big - 5;
-  return `5 × ${small} = ${5 * small} and ${rest} × ${small} = ${rest * small}; ${5 * small} + ${rest * small} = ${p}.`;
+  return `Split ${big} into 5 and ${rest}, two facts you know: 5 × ${small} = ${5 * small} and ${rest} × ${small} = ${rest * small}. Add them: ${5 * small} + ${rest * small} = ${p}.`;
 }
 
 const rowStories = [
@@ -171,37 +173,40 @@ export function generateFactArrayProblem(
       const p = a * b;
       answer = p;
       figure = { kind: "dot-array", show: "edges", rows: a, columns: b };
-      const rows = `${a} rows of ${b} dots make ${a} × ${b}.`;
+      const rows = `${a} × ${b} means ${a} equal groups of ${b}, like ${a} rows of ${b} dots.`;
       if (frame === 0) {
         prompt = `What is ${a} × ${b}?`;
         hint = factHint(a, b);
-        explanation = [rows, factSteps(a, b), `${a} × ${b} = ${p}.`];
+        explanation = [rows, factSteps(a, b), `So ${a} × ${b} = ${p}.`];
       } else if (frame === 1) {
         prompt =
           "A card covers part of this array of dots. How many dots are in the whole array?";
         hint =
           "The top row shows how many dots are in each row; the left column shows how many rows there are. Multiply the two counts.";
         explanation = [
-          `The top row has ${b} dots and the left column has ${a}, so the array is ${a} rows of ${b}.`,
+          `An array is dots in equal rows, so every row has as many dots as the top row.`,
+          `The top row has ${b} dots and the left column has ${a}, so the array is ${a} rows of ${b}: ${a} × ${b}.`,
           factSteps(a, b),
-          `${a} × ${b} = ${p} dots.`,
+          `The whole array has ${p} dots.`,
         ];
       } else if (frame === 2) {
         const [lead, middle, end] = pick(r, rowStories);
+        const noun = end.split(" ")[0];
         prompt = `${lead} ${a} ${middle} ${b} ${end}`;
         hint = `${a} equal rows of ${b} is ${a} × ${b}.`;
         explanation = [
-          `${a} equal rows of ${b} is ${a} × ${b}.`,
+          `Every row has the same number, so the total is ${a} equal groups of ${b}: ${a} × ${b}.`,
           factSteps(a, b),
-          `${a} × ${b} = ${p}.`,
+          `There are ${p} ${noun} in all.`,
         ];
       } else {
         prompt = `The array shows ${a} rows of ${b} dots. Use it to find ${b} × ${a}.`;
         hint = `Turn the array a quarter turn: ${b} rows of ${a} use the same dots as ${a} rows of ${b}.`;
         explanation = [
           `Turned a quarter turn, the ${a} rows of ${b} become ${b} rows of ${a}. No dot is added or lost.`,
+          `So ${b} × ${a} and ${a} × ${b} count the same dots: the order of the factors (the numbers multiplied) does not change the total.`,
           factSteps(a, b),
-          `So ${b} × ${a} = ${a} × ${b} = ${p}.`,
+          `So ${b} × ${a} = ${p}.`,
         ];
       }
       break;
@@ -219,9 +224,9 @@ export function generateFactArrayProblem(
         figure = { kind: "dot-array", show: "first-row", columns: q, total: n };
         hint = `${n} ÷ ${q} = □ means □ × ${q} = ${n}. Compare it with the fact you were given.`;
         explanation = [
-          `${n} ÷ ${q} asks how many groups of ${q} make ${n}.`,
+          `Division undoes multiplication: ${n} ÷ ${q} asks how many groups of ${q} make ${n}.`,
           `The fact ${d} × ${q} = ${n} says ${d} groups of ${q} make ${n}.`,
-          `So ${n} ÷ ${q} = ${d}.`,
+          `That answers the question, so ${n} ÷ ${q} = ${d}.`,
         ];
         break;
       }
@@ -232,9 +237,10 @@ export function generateFactArrayProblem(
         figure = { kind: "dot-array", show: "first-row", columns: q, total: n };
         hint = `Skip-count by ${q} until you reach ${n}; each count is one row.`;
         explanation = [
-          `Each row holds ${q}, so count rows of ${q}: ${skip(q, d)}.`,
-          `That is ${d} rows: ${d} × ${q} = ${n}.`,
-          `${n} ÷ ${q} = ${d}.`,
+          `Each row holds ${q} chairs, so the question is how many groups of ${q} make ${n}: ${n} ÷ ${q}.`,
+          `Skip-count by ${q}, one count per row: ${skip(q, d)}.`,
+          `That is ${d} counts, and ${d} × ${q} = ${n} checks it.`,
+          `There are ${d} rows.`,
         ];
         break;
       }
@@ -248,9 +254,12 @@ export function generateFactArrayProblem(
             : `A teacher sets out ${n} chairs in ${d} equal rows. How many chairs are in each row?`;
       hint = `Think of the multiplication: ${d} × □ = ${n}.`;
       explanation = [
+        `Division splits a total into equal groups. It undoes multiplication.`,
         think,
-        `${d} × ${q} = ${n}.`,
-        `So ${n} ÷ ${d} = ${q}${frame === 0 ? "" : `: ${q} in each row`}.`,
+        `You know ${d} × ${q} = ${n}, so the missing number is ${q}.`,
+        frame === 0
+          ? `So ${n} ÷ ${d} = ${q}.`
+          : `So ${n} ÷ ${d} = ${q}: there are ${q} ${frame === 1 ? "dots" : "chairs"} in each row.`,
       ];
       break;
     }
@@ -268,9 +277,10 @@ export function generateFactArrayProblem(
         figure = { kind: "dot-array", show: "first-column", rows: a, total: n };
         hint = `Skip-count by ${a} until you reach ${n}, and count the skips.`;
         explanation = [
-          `□ is the number of dots in each of ${a} equal rows that hold ${n} in all.`,
-          `Skip-count by ${a}: ${skip(a, b)}. That is ${b} skips.`,
-          `${a} × ${b} = ${n}, so □ = ${b}.`,
+          `${a} × □ = ${n} asks: ${a} times what number makes ${n}?`,
+          `Skip-count by ${a} until you reach ${n}, because each skip adds one more ${a}: ${skip(a, b)}.`,
+          `That is ${b} skips, so ${a} × ${b} = ${n}.`,
+          `The box holds ${b}.`,
         ];
       } else if (frame === 1) {
         prompt = `□ × ${b} = ${n}. What number belongs in the box?`;
@@ -278,9 +288,10 @@ export function generateFactArrayProblem(
         figure = { kind: "dot-array", show: "first-row", columns: b, total: n };
         hint = `Skip-count by ${b} until you reach ${n}, and count the skips.`;
         explanation = [
-          `□ is the number of rows of ${b} that hold ${n} in all.`,
-          `Skip-count by ${b}: ${skip(b, a)}. That is ${a} skips.`,
-          `${a} × ${b} = ${n}, so □ = ${a}.`,
+          `□ × ${b} = ${n} asks: how many groups of ${b} make ${n}?`,
+          `Skip-count by ${b} until you reach ${n}, because each skip is one more group: ${skip(b, a)}.`,
+          `That is ${a} skips, so ${a} × ${b} = ${n}.`,
+          `The box holds ${a}.`,
         ];
       } else {
         // The divisor is unknown: n ÷ □ = b means □ rows of b make n.
@@ -289,9 +300,10 @@ export function generateFactArrayProblem(
         figure = { kind: "dot-array", show: "first-row", columns: b, total: n };
         hint = `${n} ÷ □ = ${b} means □ × ${b} = ${n}. Skip-count by ${b} to ${n}.`;
         explanation = [
-          `${n} ÷ □ = ${b} says ${n} split into □ equal groups gives ${b} in each, so □ × ${b} = ${n}.`,
-          `Skip-count by ${b}: ${skip(b, a)}. That is ${a} groups.`,
-          `${n} ÷ ${a} = ${b}, so □ = ${a}.`,
+          `${n} ÷ □ = ${b} says ${n} split into □ equal groups gives ${b} in each.`,
+          `Division undoes multiplication, so this is the same as □ × ${b} = ${n}.`,
+          `Skip-count by ${b}, one count per group: ${skip(b, a)}. That is ${a} groups.`,
+          `Check: ${n} ÷ ${a} = ${b}. The box holds ${a}.`,
         ];
       }
       break;
@@ -319,9 +331,10 @@ export function generateFactArrayProblem(
             ? `Deal the ${n} counters one at a time, one to each of the ${count} groups, until none are left.`
             : `The number of groups is ${count}. Think: ${count} × □ = ${n}.`;
         explanation = [
-          `There are ${count} groups; the size of each group is unknown.`,
-          `Each round of dealing gives one to every group and uses ${count}: ${skip(count, each)}. That is ${each} rounds.`,
-          `${n} ÷ ${count} = ${each}: each group gets ${each}.`,
+          `Sharing equally means every group gets the same number. We know there are ${count} groups.`,
+          `Deal one to each group in rounds. Each round uses ${count}: ${skip(count, each)}.`,
+          `That is ${each} rounds, so each group gets ${each}.`,
+          `This is division: ${n} ÷ ${count} = ${each}. Each group gets ${each}.`,
         ];
       } else {
         prompt =
@@ -333,9 +346,10 @@ export function generateFactArrayProblem(
             ? `Fill one group of ${count} at a time until all ${n} counters are used, then count the groups.`
             : `Each group holds ${count}. Skip-count by ${count} until you reach ${n}.`;
         explanation = [
-          `Each group holds ${count}; the number of groups is unknown.`,
-          `Skip-count by ${count}: ${skip(count, each)}. That is ${each} groups.`,
-          `${n} ÷ ${count} = ${each}.`,
+          `Each group holds ${count}, and we want to know how many groups fit.`,
+          `Skip-count by ${count}, one count per group, until you reach ${n}: ${skip(count, each)}.`,
+          `That is ${each} counts, so ${each} groups fit.`,
+          `This is division: ${n} ÷ ${count} = ${each}. You can make ${each} groups.`,
         ];
       }
       break;
@@ -360,9 +374,10 @@ export function generateFactArrayProblem(
           "This part of a multiplication table has one empty cell. What product belongs in it?";
         hint = `Across the row for ${R}, each product is ${R} more than the one before it. Start from ${R} × ${C - 1} = ${R * (C - 1)}.`;
         explanation = [
+          `Each cell holds its row number times its column number. That result is called the product.`,
           `The empty cell is in the row for ${R} and the column for ${C}, so it holds ${R} × ${C}.`,
           `Its left neighbor is ${R} × ${C - 1} = ${R * (C - 1)}. One more column adds one more ${R}.`,
-          `${R * (C - 1)} + ${R} = ${answer}.`,
+          `${R * (C - 1)} + ${R} = ${answer}, so the product ${answer} belongs in the cell.`,
         ];
       } else if (frame === 1) {
         const R = r(3, 9),
@@ -374,8 +389,8 @@ export function generateFactArrayProblem(
         prompt = `In the row for ${R} in a multiplication table, each product is ${R} more than the one before it. ${R} × ${C - 1} = ${R * (C - 1)}. What is ${R} × ${C}?`;
         hint = `Add one more ${R} to ${R * (C - 1)}.`;
         explanation = [
-          `${R} × ${C} is one more group of ${R} than ${R} × ${C - 1}.`,
-          `${R * (C - 1)} + ${R} = ${answer}.`,
+          `${R} × ${C} means ${C} groups of ${R}, which is one more group of ${R} than ${R} × ${C - 1}.`,
+          `So add one more ${R} to the product you know: ${R * (C - 1)} + ${R} = ${answer}.`,
           `${R} × ${C} = ${answer}.`,
         ];
       } else if (frame === 2) {
@@ -393,9 +408,10 @@ export function generateFactArrayProblem(
         prompt = `Each product in the row for ${2 * h} is double the product above it, in the row for ${h}. What product belongs in the cell with the question mark?`;
         hint = `Find the product above the question mark, ${h} × ${C}, then double it.`;
         explanation = [
+          `The cell holds ${2 * h} × ${C}, its row number times its column number.`,
           `${2 * h} is double ${h}, so ${2 * h} groups of ${C} are double ${h} groups of ${C}.`,
-          `${h} × ${C} = ${h * C}, and double ${h * C} is ${answer}.`,
-          `${2 * h} × ${C} = ${answer}.`,
+          `The cell above holds ${h} × ${C} = ${h * C}. Double it: ${h * C} + ${h * C} = ${answer}.`,
+          `${answer} belongs in the cell with the question mark.`,
         ];
       } else {
         const a = r(2, 4),
@@ -413,9 +429,10 @@ export function generateFactArrayProblem(
         prompt = `Each product in the row for ${a + b} is the sum of the two products above it. What product belongs in the cell with the question mark?`;
         hint = `The row for ${a + b} is the row for ${a} plus the row for ${b}: add ${a} × ${C} and ${b} × ${C}.`;
         explanation = [
+          `The cell holds ${a + b} × ${C}, its row number times its column number.`,
           `${a + b} groups of ${C} are ${a} groups of ${C} and ${b} more groups of ${C}.`,
-          `${a} × ${C} = ${a * C} and ${b} × ${C} = ${b * C}; ${a * C} + ${b * C} = ${answer}.`,
-          `${a + b} × ${C} = ${answer}.`,
+          `The cells above hold ${a} × ${C} = ${a * C} and ${b} × ${C} = ${b * C}. Add them: ${a * C} + ${b * C} = ${answer}.`,
+          `${answer} belongs in the cell with the question mark.`,
         ];
       }
       figure = { kind: "times-table", rows, columns, ask, blank };

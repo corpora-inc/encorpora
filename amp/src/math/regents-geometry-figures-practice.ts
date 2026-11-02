@@ -123,37 +123,37 @@ export const altitudeHypotenuse = chainFamily({
         ? [
             [
               p * h,
-              "This is a leg. The altitude squared equals the product of the two parts of the hypotenuse, $AD\\cdot DB$.",
+              "This is leg $AC$, which uses the whole hypotenuse. The altitude uses only the two pieces: altitude² $=AD\\cdot DB$.",
             ],
             [
               q * h,
-              "This is the other leg. The altitude squared equals $AD\\cdot DB$, not a part times the whole hypotenuse.",
+              "This is leg $BC$: a piece times the whole hypotenuse. The altitude uses the two pieces instead: altitude² $=AD\\cdot DB$.",
             ],
             [
               h * h,
-              "This is the whole hypotenuse. The altitude is shorter than both legs and the hypotenuse.",
+              "This is the whole hypotenuse, $AD+DB$. The altitude is shorter than every side of the big triangle.",
             ],
             [
               p * p + q * q,
-              "The altitude is the geometric mean of the two parts, $\\sqrt{AD\\cdot DB}$, so it uses their product, not the sum of their squares.",
+              "This adds the squares of the two pieces, as if they were legs. They are not legs. The altitude is $\\sqrt{AD\\cdot DB}$, using their product.",
             ],
           ]
         : [
             [
               p * q,
-              "This is the altitude. A leg is the geometric mean of the whole hypotenuse and the part of it next to that leg.",
+              "This is the altitude, $\\sqrt{AD\\cdot DB}$. A leg uses the whole hypotenuse times the piece of it next to that leg.",
             ],
             [
               ask === "leg" ? q * h : p * h,
-              "This is the other leg: it uses the part of the hypotenuse on the opposite side.",
+              "This is the other leg. It uses the piece of the hypotenuse on the far side, not the piece next to this leg.",
             ],
             [
               h * h,
-              "This is the length of the hypotenuse; each leg is shorter than the hypotenuse.",
+              "This is the whole hypotenuse. A leg is always shorter than the hypotenuse, the side across from the right angle.",
             ],
             [
               p * p + q * q,
-              "The two parts of the hypotenuse are not the legs, so $p^2+q^2$ is not a leg squared.",
+              "This adds the squares of the two pieces of the hypotenuse, as if they were legs. They are pieces of the hypotenuse, not legs.",
             ],
           ];
     const part = ask === "other-leg" ? q : p;
@@ -166,20 +166,26 @@ export const altitudeHypotenuse = chainFamily({
       ],
       hint:
         ask === "altitude"
-          ? `Triangles $ACD$ and $CBD$ are similar, so $CD$ is in proportion to both $AD=${p}$ and $DB=${q}$. Write that proportion and cross-multiply.`
-          : `Triangle $${ask === "leg" ? "ACD" : "BCD"}$ is similar to the whole triangle $ABC$. Match $${name}$ with the part of the hypotenuse beside it, ${ask === "leg" ? p : q}, and with the whole hypotenuse $AB=${h}$.`,
-      explanation:
-        ask === "altitude"
+          ? `The altitude splits the triangle into two smaller triangles, $ACD$ and $CBD$, with the same shape. So $CD$ is in proportion to both pieces, $AD=${p}$ and $DB=${q}$. Write that proportion.`
+          : `Triangle $${ask === "leg" ? "ACD" : "BCD"}$ has the same shape as the whole triangle $ABC$. Match $${name}$ with the piece of the hypotenuse beside it, ${ask === "leg" ? p : q}, and with the whole hypotenuse $AB=${p}+${q}$.`,
+      explanation: [
+        `The altitude $\\overline{CD}$ is the segment from the right angle $C$ that meets the hypotenuse $\\overline{AB}$ at a right angle. The hypotenuse is the side across from the right angle.`,
+        `It splits triangle $ABC$ into two smaller right triangles. All three share the same angles, so they are similar: the same shape, different sizes.`,
+        ...(ask === "altitude"
           ? [
-              `Triangles $ACD$ and $CBD$ are similar, so $\\frac{AD}{CD}=\\frac{CD}{DB}$.`,
-              `$CD^2=AD\\cdot DB=${p}\\cdot${q}=${p * q}$.`,
-              `$CD=\\sqrt{${p * q}}=${radicalTex(p * q)}$.`,
+              `In similar triangles, matching sides are in the same ratio. Matching short leg to long leg in $ACD$ and $CBD$ gives $\\frac{AD}{CD}=\\frac{CD}{DB}$.`,
+              `Cross-multiply, multiplying each side by both denominators: $CD^2=AD\\cdot DB=${p}\\cdot${q}=${p * q}$.`,
+              `Take the square root and simplify: $CD=\\sqrt{${p * q}}=${radicalTex(p * q)}$.`,
+              `The altitude $\\overline{CD}$ has length $${radicalTex(p * q)}$.`,
             ]
           : [
-              `The hypotenuse is $AB=${p}+${q}=${h}$. Triangle $${ask === "leg" ? "ACD" : "BCD"}$ is similar to triangle $ABC$, so $\\frac{${name}}{${h}}=\\frac{${ask === "leg" ? p : q}}{${name}}$.`,
-              `$${name}^2=${ask === "leg" ? p : q}\\cdot${h}=${target}$.`,
-              `$${name}=\\sqrt{${target}}=${radicalTex(target)}$.`,
-            ],
+              `The whole hypotenuse is the two pieces together: $AB=${p}+${q}=${h}$.`,
+              `Triangle $${ask === "leg" ? "ACD" : "BCD"}$ matches triangle $ABC$. In each, compare the hypotenuse with the side along $\\overline{AB}$: $\\frac{AB}{${name}}=\\frac{${name}}{${ask === "leg" ? "AD" : "DB"}}$, so $\\frac{${h}}{${name}}=\\frac{${name}}{${ask === "leg" ? p : q}}$.`,
+              `Cross-multiply, multiplying each side by both denominators: $${name}^2=${ask === "leg" ? p : q}\\cdot${h}=${target}$.`,
+              `Take the square root and simplify: $${name}=\\sqrt{${target}}=${radicalTex(target)}$.`,
+              `The length of $\\overline{${name}}$ is $${radicalTex(target)}$.`,
+            ]),
+      ],
     });
   },
 });
@@ -224,27 +230,27 @@ export const centroidMedian = chainFamily({
       const falses: [string, string][] = [
         [
           `${vg}=${gm}`,
-          "The parts are not equal; that would put $G$ at the midpoint of the median.",
+          "Equal parts would put $G$ at the middle of the median. The centroid sits two thirds of the way from the vertex, so the parts are 2 to 1.",
         ],
         [
           `${gm}=2(${vg})`,
-          "The longer part is the one next to the vertex, so this reverses the 2 to 1 split.",
+          "This reverses the 2 to 1 split. The longer part is the one next to the vertex, not the one next to the midpoint.",
         ],
         [
           `${vg}=\\frac12(${vm})`,
-          "Half of the median would mean the midpoint; the centroid is two thirds of the way from the vertex.",
+          "Half of the median would put $G$ at its middle. The centroid is two thirds of the way from the vertex.",
         ],
         [
           `${vm}=2(${gm})`,
-          "The whole median is three times the short part, not twice.",
+          "The median has 3 equal sections and the short part is 1 of them. So the whole median is three times the short part, not twice.",
         ],
         [
           `${gm}=\\frac12(${vm})`,
-          "The short part is one third of the median, not one half.",
+          "The median has 3 equal sections and the short part is 1 of them, so it is one third of the median, not one half.",
         ],
         [
           `${vg}=3(${gm})`,
-          "The vertex part is twice the short part, not three times.",
+          "The vertex part is 2 of the 3 sections and the short part is 1, so the vertex part is twice the short part, not three times.",
         ],
       ];
       const [good, why] = pick(r, truths);
@@ -257,9 +263,12 @@ export const centroidMedian = chainFamily({
         ],
         hint: `The centroid is where the medians meet. It splits $\\overline{${vm}}$ into two unequal pieces, $${vg}$ next to the vertex $${V}$ and $${gm}$ next to the midpoint $${M}$. Decide which piece is longer, and by what ratio.`,
         explanation: [
-          `The three medians of a triangle meet at the centroid, and the centroid divides each median in the ratio 2 to 1, with the longer part next to the vertex.`,
-          `So $${vg}:${gm}=2:1$, and $${vm}=${vg}+${gm}$ is 3 equal parts of which $${vg}$ is 2.`,
+          `A median of a triangle is a segment from a corner (vertex) to the midpoint of the opposite side. Here $\\overline{${vm}}$ runs from $${V}$ to the midpoint $${M}$.`,
+          `The three medians always cross at one point, the centroid, $G$. It is the triangle's balance point.`,
+          `The centroid splits each median in the ratio 2 to 1: the piece next to the vertex is twice the piece next to the midpoint.`,
+          `So $${vg}:${gm}=2:1$. Think of $\\overline{${vm}}$ as 3 equal sections: $${vg}$ is 2 of them and $${gm}$ is 1.`,
           `${why}`,
+          `So the statement that is always true is $${good}$.`,
         ],
       });
     }
@@ -272,23 +281,26 @@ export const centroidMedian = chainFamily({
         { label: tex(target), correct: true },
         {
           label: tex(m.asksFar ? 2 * m.t : 4 * m.t),
-          feedback: `This is the other piece. The part next to the vertex is the longer one, twice the part next to the midpoint.`,
+          feedback: `This is the other piece. The part next to the vertex is the longer one, 2 of the 3 sections; the part next to the midpoint is 1 section.`,
         },
         {
           label: tex(3 * m.t),
           feedback:
-            "Half of the median would put $G$ at the midpoint; the centroid divides the median 2 to 1.",
+            "This is half the median, which would put $G$ at its middle. The centroid splits the median 2 to 1, into 3 equal sections.",
         },
         {
           label: tex(whole),
-          feedback: "This is the whole median; $G$ divides it into two parts.",
+          feedback:
+            "This is the whole median. $G$ cuts it into two pieces, and the question asks for one of them.",
         },
       ],
       hint: `The whole median $\\overline{${vm}}$ is ${whole}. The centroid cuts it into 3 equal sections, and $${vg}$ takes 2 of them while $${gm}$ takes 1. Find the length of one section.`,
       explanation: [
-        `The centroid divides $\\overline{${vm}}$ in the ratio 2:1, so there are $2+1=3$ equal sections of length $${whole}\\div3=${2 * m.t}$.`,
-        `$${vg}$ is 2 sections, $${2 * m.t}\\cdot2=${4 * m.t}$, and $${gm}$ is 1 section, $${2 * m.t}$.`,
-        `$${asked}=${target}$.`,
+        `A median runs from a corner (vertex) to the midpoint of the opposite side. The three medians cross at the centroid, $G$.`,
+        `The centroid splits each median in the ratio 2 to 1, with the longer piece next to the vertex $${V}$.`,
+        `A 2 to 1 split makes $2+1=3$ equal sections. Each is $${whole}\\div3=${2 * m.t}$ long.`,
+        `$${vg}$ is 2 sections: $${2 * m.t}\\cdot2=${4 * m.t}$. $${gm}$ is 1 section: $${2 * m.t}$.`,
+        `The length of $\\overline{${asked}}$ is ${target}.`,
       ],
     });
   },
@@ -340,18 +352,20 @@ export const polygonRotation = chainFamily({
         const bad = m.angles.find((t) => (t * k) % 360 !== 0)!;
         return {
           label: polyName(k),
-          feedback: `A ${polyName(k).toLowerCase()} maps onto itself only for rotations that are multiples of $360^\\circ\\div${k}=${360 / k}^\\circ$, and $${bad}^\\circ$ is not one.`,
+          feedback: `A ${polyName(k).toLowerCase()} has ${k} equal sides, so its smallest self-matching turn is $360^\\circ\\div${k}=${360 / k}^\\circ$. $${bad}^\\circ$ is not a whole number of those turns, so it does not land on itself.`,
         };
       }),
     ];
     return choiceSurface(r, {
       prompt: `Which polygon maps onto itself when it is rotated ${listed} about its center?${m.angles.length === 1 ? "" : " It must map onto itself under each of the rotations."}`,
       options,
-      hint: `A regular polygon with $n$ sides maps onto itself under rotations that are multiples of $360^\\circ\\div n$. Test whether ${m.angles.map((t) => `$${t}^\\circ$`).join(" and ")} ${m.angles.length === 1 ? "is" : "are"} such multiples for each polygon.`,
+      hint: `A regular polygon with $n$ equal sides lands on itself after turns of $360^\\circ\\div n$, or whole multiples of that. For each polygon, check whether ${m.angles.map((t) => `$${t}^\\circ$`).join(" and ")} ${m.angles.length === 1 ? "is" : "are"} such a multiple.`,
       explanation: [
-        `A regular $n$-gon maps onto itself under a rotation about its center exactly when the angle is a multiple of $\\frac{360^\\circ}{n}$.`,
-        `For a ${polyName(m.n).toLowerCase()}, $\\frac{360^\\circ}{${m.n}}=${360 / m.n}^\\circ$, and ${m.angles.map((t) => `$${t}^\\circ=${t / (360 / m.n)}\\cdot${360 / m.n}^\\circ$`).join(" and ")}.`,
-        `The other polygons listed fail at least one of the rotations, so the answer is the ${polyName(m.n).toLowerCase()}.`,
+        `A regular polygon has all sides equal and all angles equal. "Maps onto itself" means after the turn it covers exactly the same spot.`,
+        `A regular polygon with $n$ sides does this after a turn of $\\frac{360^\\circ}{n}$, one full turn shared among its $n$ corners. Any whole multiple of that turn also works.`,
+        `For a ${polyName(m.n).toLowerCase()}, $\\frac{360^\\circ}{${m.n}}=${360 / m.n}^\\circ$. Then ${m.angles.map((t) => `$${t}^\\circ=${t / (360 / m.n)}\\cdot${360 / m.n}^\\circ$`).join(" and ")}, a whole number of those turns.`,
+        `Each other polygon listed has a smallest turn that does not divide ${m.angles.length === 1 ? "the angle" : "both angles"} evenly.`,
+        `The polygon that maps onto itself is the ${polyName(m.n).toLowerCase()}.`,
       ],
     });
   },
@@ -395,11 +409,14 @@ export const isoscelesExterior = chainFamily({
       answer: String(answer),
       hint: `Since $AB=AC$, the base angles $(${expr(m.a, m.b)})^\\circ$ and $(${expr(m.c, m.d)})^\\circ$ are equal. Set the two expressions equal and solve for $x$ first.`,
       explanation: [
-        `The base angles of an isosceles triangle are equal: $${expr(m.a, m.b)}=${expr(m.c, m.d)}$.`,
-        `Subtract: $${m.a - m.c}x=${m.d - m.b}$, so $x=${m.x}$, and each base angle is $${m.a}(${m.x})${m.b < 0 ? "-" : "+"}${Math.abs(m.b)}=${m.base}^\\circ$.`,
+        `An isosceles triangle has two equal sides, here $AB=AC$. The angles across from those sides, the base angles $B$ and $C$, are equal too.`,
+        `So set the two base angles equal: $${expr(m.a, m.b)}=${expr(m.c, m.d)}$.`,
+        `Subtract $${m.c === 1 ? "" : m.c}x$ and ${m.b < 0 ? "add" : "subtract"} ${Math.abs(m.b)} on both sides to gather $x$ on one side: $${m.a - m.c === 1 ? "" : m.a - m.c === -1 ? "-" : m.a - m.c}x=${m.d - m.b}$, so $x=${m.x}$.`,
+        `Substitute to get a base angle: $${m.a}(${m.x})${m.b < 0 ? "-" : "+"}${Math.abs(m.b)}=${m.base}^\\circ$.`,
         apex
-          ? `An exterior angle equals the sum of the two remote interior angles: $${m.base}+${m.base}=${answer}$.`
-          : `An exterior angle is supplementary to the interior angle at $B$: $180-${m.base}=${answer}$.`,
+          ? `An exterior angle is made by extending one side past a corner. It equals the sum of the two interior angles not touching it, here both base angles: $${m.base}+${m.base}=${answer}$.`
+          : `An exterior angle is made by extending one side past a corner. It and the inside angle at $B$ form a straight line, so they add to $180^\\circ$: $180-${m.base}=${answer}$.`,
+        `The exterior angle at $${apex ? "A" : "B"}$ measures ${answer} degrees.`,
       ],
       label: "Angle (degrees)",
     });
@@ -442,24 +459,27 @@ export const complementaryChoice = chainFamily({
           {
             label: tex(`${P}=${Q}`),
             feedback:
-              "Equal angles have equal sines, but here the sine of one angle equals the cosine of the other, so the angles are not equal in general.",
+              "This sets the angles equal. That would fit $\\sin A=\\sin B$. Here a sine equals a cosine, which happens when the angles add to $90^\\circ$.",
           },
           {
             label: tex(`(${P})+(${Q})=180`),
             feedback:
-              "Angles with equal sine and cosine in this way add to $90^\\circ$ (complementary), not $180^\\circ$ (supplementary).",
+              "This uses $180^\\circ$, the sum for supplementary angles, which make a straight line. A sine equals a cosine when the angles are complementary, adding to $90^\\circ$.",
           },
           {
             label: tex(`(${P})-(${Q})=90`),
             feedback:
-              "The cofunction identity $\\sin\\theta=\\cos(90^\\circ-\\theta)$ adds the angles to $90^\\circ$; it does not subtract them.",
+              "This subtracts the angles. The rule is $\\sin\\theta=\\cos(90^\\circ-\\theta)$: the two angles add to $90^\\circ$.",
           },
         ],
-        hint: `Use the cofunction identity: the sine of an acute angle equals the cosine of its complement. Decide what the sum of $(${P})^\\circ$ and $(${Q})^\\circ$ must be.`,
+        hint: `The sine of an acute angle equals the cosine of its complement, the angle that adds with it to $90^\\circ$. Decide what $(${P})^\\circ$ and $(${Q})^\\circ$ must add to.`,
         explanation: [
-          "For acute angles, $\\sin A=\\cos B$ exactly when $A$ and $B$ are complementary.",
-          `So the two angle expressions add to $90^\\circ$: $(${P})+(${Q})=90$.`,
-          `Solving gives $x=${m.x}$, which makes the angles $${m.A}^\\circ$ and $${m.B}^\\circ$.`,
+          "In a right triangle, the sine of an angle is opposite ÷ hypotenuse, and the cosine is adjacent ÷ hypotenuse.",
+          "The side opposite one acute angle is adjacent to the other. So the sine of one acute angle equals the cosine of the other.",
+          "The two acute angles of a right triangle add to $90^\\circ$; they are complementary. So $\\sin A=\\cos B$ means $A+B=90^\\circ$.",
+          `Write that with the expressions: $(${P})+(${Q})=90$.`,
+          `Check: solving gives $x=${m.x}$, so the angles are $${m.A}^\\circ$ and $${m.B}^\\circ$, which add to $90^\\circ$.`,
+          `The equation to use is $(${P})+(${Q})=90$.`,
         ],
       });
     }
@@ -471,24 +491,27 @@ export const complementaryChoice = chainFamily({
         {
           label: tex(`${Math.max(m.A, m.B)}^\\circ`),
           feedback:
-            "This is the larger acute angle; the question asks for the smallest angle.",
+            "This is the larger of the two acute angles. The question asks for the smallest angle of the triangle.",
         },
         {
           label: tex(`${m.x}^\\circ`),
           feedback:
-            "This is the value of $x$, not an angle. Substitute it into the expressions.",
+            "This is the value of $x$, not an angle. Put it back into each angle expression to get the angles.",
         },
         {
           label: tex("90^\\circ"),
           feedback:
-            "The triangle has a right angle, but it is its largest angle, not the smallest.",
+            "The triangle does have a $90^\\circ$ angle, but a right angle is always the largest angle, not the smallest.",
         },
       ],
       hint: `Since $\\sin A=\\cos B$ for acute angles, $(${P})^\\circ$ and $(${Q})^\\circ$ must add to $90^\\circ$. Write that equation and solve for $x$, then find both angles.`,
       explanation: [
-        `$\\sin A=\\cos B$ with acute angles means $A+B=90^\\circ$: $(${P})+(${Q})=90$.`,
-        `$${m.a + m.c}x${m.b + m.d < 0 ? "-" : "+"}${Math.abs(m.b + m.d)}=90$ gives $x=${m.x}$.`,
-        `$A=${m.A}^\\circ$ and $B=${m.B}^\\circ$, and the third angle is $90^\\circ$, so the smallest angle is $${small}^\\circ$.`,
+        "In a right triangle, the side opposite one acute angle is adjacent to the other. So the sine of one equals the cosine of the other.",
+        "That is why $\\sin A=\\cos B$ means the angles are complementary: they add to $90^\\circ$.",
+        `Write the equation: $(${P})+(${Q})=90$. Combine like terms: $${m.a + m.c}x${m.b + m.d < 0 ? "-" : "+"}${Math.abs(m.b + m.d)}=90$.`,
+        `${m.b + m.d < 0 ? "Add" : "Subtract"} ${Math.abs(m.b + m.d)} on both sides, then divide by ${m.a + m.c}: $x=${m.x}$.`,
+        `Substitute: $A=${m.A}^\\circ$ and $B=${m.B}^\\circ$. The angles of a triangle add to $180^\\circ$, so the third angle is $90^\\circ$.`,
+        `The smallest angle of triangle $ABC$ measures $${small}^\\circ$.`,
       ],
     });
   },
@@ -517,9 +540,11 @@ export const parallelSegment = chainFamily({
         answer: String(c + ec),
         hint: `A segment parallel to $\\overline{BC}$ cuts $\\overline{AB}$ and $\\overline{AC}$ in the same ratio. Use $AD:DB=${m.a}:${m.b}$ to find $EC$ from $AE=${c}$, then add the two pieces of $\\overline{AC}$.`,
         explanation: [
-          `Because $\\overline{DE}\\parallel\\overline{BC}$, $\\frac{AD}{DB}=\\frac{AE}{EC}$, so $\\frac{${m.a}}{${m.b}}=\\frac{${c}}{EC}$.`,
-          `$EC=\\frac{${m.b}\\cdot${c}}{${m.a}}=${ec}$.`,
-          `$AC=AE+EC=${c}+${ec}=${c + ec}$.`,
+          `The symbol $\\parallel$ means parallel: the segments never meet. A segment parallel to one side of a triangle cuts the other two sides in the same ratio.`,
+          `So the pieces of $\\overline{AB}$ and of $\\overline{AC}$ compare the same way: $\\frac{AD}{DB}=\\frac{AE}{EC}$, which is $\\frac{${m.a}}{${m.b}}=\\frac{${c}}{EC}$.`,
+          `Cross-multiply, multiplying both sides by both denominators: $${m.a}\\cdot EC=${m.b}\\cdot${c}$, so $EC=\\frac{${m.b}\\cdot${c}}{${m.a}}=${ec}$.`,
+          `$\\overline{AC}$ is made of the two pieces: $AC=AE+EC=${c}+${ec}=${c + ec}$.`,
+          `The length of $\\overline{AC}$ is ${c + ec}.`,
         ],
         label: "Length of AC",
       });
@@ -529,9 +554,11 @@ export const parallelSegment = chainFamily({
       answer: String(ec),
       hint: `$\\overline{DE}\\parallel\\overline{BC}$ exactly when $\\overline{DE}$ cuts the two sides in the same ratio. Compare $AD:DB=${m.a}:${m.b}$ with $AE:EC=${c}:EC$.`,
       explanation: [
-        `The segment is parallel to $\\overline{BC}$ exactly when $\\frac{AD}{DB}=\\frac{AE}{EC}$.`,
-        `$\\frac{${m.a}}{${m.b}}=\\frac{${c}}{EC}$, so $EC=\\frac{${m.b}\\cdot${c}}{${m.a}}=${ec}$.`,
-        `With $EC=${ec}$ the ratios match, so $\\overline{DE}\\parallel\\overline{BC}$.`,
+        `The symbol $\\parallel$ means parallel: the segments never meet. A segment is parallel to one side of a triangle exactly when it cuts the other two sides in the same ratio.`,
+        `So we need $\\frac{AD}{DB}=\\frac{AE}{EC}$, which is $\\frac{${m.a}}{${m.b}}=\\frac{${c}}{EC}$.`,
+        `Cross-multiply, multiplying both sides by both denominators: $${m.a}\\cdot EC=${m.b}\\cdot${c}$, so $EC=\\frac{${m.b}\\cdot${c}}{${m.a}}=${ec}$.`,
+        `Check: $\\frac{${c}}{${ec}}$ equals $\\frac{${m.a}}{${m.b}}$, so the ratios match.`,
+        `$\\overline{EC}$ must be ${ec} long for $\\overline{DE}$ to be parallel to $\\overline{BC}$.`,
       ],
       label: "Length of EC",
     });
@@ -622,14 +649,16 @@ export const areaChanging = chainFamily({
           { label: `$${bad.label}$`, correct: true },
           ...keeps.map((k) => ({
             label: `$${k.label}$`,
-            feedback: `This is ${k.factor}, so the area stays the same.`,
+            feedback: `This is ${k.factor}. Same size means the same area, so this rule does not change it.`,
           })),
         ],
-        hint: `Check what each rule does to a side of the rectangle. For example, test $${keeps[0]!.label}$: do the coordinates of the corners keep their distances from each other? A rule that multiplies a coordinate by a number other than $1$ or $-1$ changes a length.`,
+        hint: `Check what each rule does to a side of the rectangle. For example, test $${keeps[0]!.label}$: do the corners stay the same distance apart? A rule that multiplies a coordinate by a number other than $1$ or $-1$ changes a length.`,
         explanation: [
-          "Translations, reflections and rotations are rigid motions: they preserve length, so the image is congruent to the rectangle and has the same area.",
+          "The arrow rule says where each point $(x,\\ y)$ goes. Multiplying a coordinate by a number stretches the figure in that direction.",
+          "A translation (slide), a reflection (flip) or a rotation (turn) is a rigid motion. It keeps every length, so the image is congruent, the same size and shape, and the area stays the same.",
+          "Adding a number, or changing a sign, or swapping $x$ and $y$ keeps lengths. Multiplying by 2, 3 or 4 does not.",
           `$${bad.label}$ is ${bad.factor}.`,
-          "So this is the transformation that changes the area.",
+          `The transformation that changes the area is $${bad.label}$.`,
         ],
       });
     }
@@ -659,15 +688,17 @@ export const areaChanging = chainFamily({
         ...wrongs.map((w) => ({
           label: `$${w.label}$`,
           feedback: w.rigid
-            ? `This is ${w.factor}, so the image is always congruent to the rectangle.`
-            : `This is ${w.factor}, so the area changes.`,
+            ? `This is ${w.factor}. Its image is always congruent to the rectangle, so it fails the "not congruent" part.`
+            : `This is ${w.factor}. The area changes, so it fails the "same area" part.`,
         })),
       ],
-      hint: `Two things must hold: the area factor is $1$, and some side length changes. Test the rule $${wrongs[0]!.label}$: find how it changes the width and the height, and multiply those factors.`,
+      hint: `Two things must hold: the area stays the same, and some side length changes. Test the rule $${wrongs[0]!.label}$: find how it changes the width and the height, and multiply those factors.`,
       explanation: [
-        `A rule that only translates, reflects or rotates keeps all lengths, so the image is congruent.`,
-        `A rule that does not multiply the area by exactly one fails the first condition.`,
+        "The arrow rule says where each point $(x,\\ y)$ goes. Two things must hold: the area is unchanged, and the image is not congruent (not the same size and shape).",
+        "A translation (slide), reflection (flip) or rotation (turn) keeps every length. Its image is always congruent, so it fails the second part.",
+        "A stretch multiplies the area by its factor. Unless the factors multiply to 1, the area changes, so it fails the first part.",
         `$${keeper.label}$ is ${keeper.factor}.`,
+        `The transformation that keeps the area but not the shape is $${keeper.label}$.`,
       ],
     });
   },
@@ -701,22 +732,22 @@ export const sectionImpossible = chainFamily({
         bad: [
           [
             "a circle",
-            "A prism is bounded by flat faces, so no cross section has a curved edge.",
+            "A prism has only flat faces, and a flat cut through a flat face makes a straight edge. So no cross section has a curved edge.",
           ],
           [
             "a heptagon",
-            "A prism has six faces, and a plane section has at most one side on each face, so at most six sides.",
+            "A heptagon has seven sides. A prism has six faces, and the cut makes at most one side on each face, so at most six sides.",
           ],
           [
             "an octagon",
-            "A prism has six faces, and a plane section has at most one side on each face, so at most six sides.",
+            "An octagon has eight sides. A prism has six faces, and the cut makes at most one side on each face, so at most six sides.",
           ],
           [
             "an ellipse",
-            "A prism is bounded by flat faces, so no cross section has a curved edge.",
+            "An ellipse is a curved oval. A prism has only flat faces, so every edge of a cross section is straight.",
           ],
         ],
-        why: "A plane meets each of the six flat faces of a prism in at most one segment, so the section is a polygon with at most six sides.",
+        why: "A cross section is the flat shape you see where a plane (a flat cut) slices the solid. A rectangular prism is a box with six flat faces. The cut crosses each face in at most one straight segment, so the section is a polygon with at most six straight sides.",
       },
       cylinder: {
         name: "a cylinder",
@@ -724,18 +755,18 @@ export const sectionImpossible = chainFamily({
         bad: [
           [
             "a triangle",
-            "A plane section of a cylinder is a circle, an ellipse or a rectangle (or a region with curved ends); it has no three straight sides.",
+            "A cylinder has a curved side and two flat circles. A cut can make a circle, an oval or a rectangle, but never three straight sides meeting at three corners.",
           ],
           [
             "a pentagon",
-            "A cylinder has only two flat faces, so a section cannot have five straight sides.",
+            "Straight sides come from cutting the flat circles or running along the side's length. A cylinder allows at most four straight sides, a rectangle, so never five.",
           ],
           [
             "a hexagon",
-            "A cylinder has only two flat faces, so a section cannot have six straight sides.",
+            "Straight sides come from cutting the flat circles or running along the side's length. A cylinder allows at most four straight sides, a rectangle, so never six.",
           ],
         ],
-        why: "A plane parallel to the bases gives a circle, a tilted plane across the side gives an ellipse, and a plane parallel to the axis gives a rectangle. No cut gives a straight-sided polygon with three or more extra sides.",
+        why: "A cross section is the flat shape where a plane (a flat cut) slices the solid. A cylinder is like a can. A level cut gives a circle, a tilted cut gives an ellipse (an oval), and a straight-down cut gives a rectangle.",
       },
       cone: {
         name: "a cone",
@@ -743,18 +774,18 @@ export const sectionImpossible = chainFamily({
         bad: [
           [
             "a rectangle",
-            "A cone narrows to a point, so no plane section is a rectangle.",
+            "A rectangle needs two pairs of parallel sides. A cone narrows to a point, so its straight edges always meet, never run parallel.",
           ],
           [
             "a square",
-            "A cone narrows to a point, so no plane section is a square.",
+            "A square needs two pairs of parallel sides. A cone narrows to a point, so its straight edges always meet, never run parallel.",
           ],
           [
             "a pentagon",
-            "A cone has one flat face and a curved side, so a section cannot have five straight sides.",
+            "A cone has one flat circle and a curved side. A cut can make at most three straight sides, a triangle through the tip, so never five.",
           ],
         ],
-        why: "A plane parallel to the base gives a circle, a tilted plane gives an ellipse, and a plane through the apex gives a triangle. A cone has no parallel straight edges to produce a rectangle.",
+        why: "A cross section is the flat shape where a plane (a flat cut) slices the solid. A cone is like an ice cream cone. A level cut gives a circle, a tilted cut gives an ellipse (an oval), and a cut straight down through the tip gives a triangle.",
       },
     } as const;
     const s = solids[a.solid];
@@ -770,14 +801,14 @@ export const sectionImpossible = chainFamily({
         { label: bad, correct: true },
         ...ok.map((o) => ({
           label: o,
-          feedback: `${o.replace(/^an? /, "").replace(/^./, (c) => c.toUpperCase())} can be a cross section of ${s.name} for a suitable position and tilt of the plane.`,
+          feedback: `${o.replace(/^an? /, "").replace(/^./, (c) => c.toUpperCase())} is possible: some flat cut through ${s.name} makes that shape. The question asks for a shape no cut can make.`,
         })),
       ],
-      hint: `Think about the faces of ${s.name}: how many flat faces and curved surfaces does it have? Each flat face contributes at most one straight side to a section. Start by asking how ${ok[0]} could be cut out of it.`,
+      hint: `Picture slicing ${s.name} with a flat knife. Count its flat faces and curved surfaces: each flat face gives at most one straight side to the cut. Start by asking how ${ok[0]} could be cut out of it.`,
       explanation: [
         s.why,
         why,
-        `So ${bad} is the shape that cannot be a cross section.`,
+        `So ${bad} is the shape that cannot be a cross section of ${s.name}.`,
       ],
     });
   },
@@ -797,19 +828,19 @@ export const parallelogramSpecial = chainFamily({
     const common: [string, string][] = [
       [
         "its opposite sides are congruent",
-        "Every parallelogram has congruent opposite sides, so this adds nothing.",
+        "Every parallelogram already has congruent (equal) opposite sides. A condition every parallelogram meets cannot prove a special one.",
       ],
       [
         "its opposite angles are congruent",
-        "Every parallelogram has congruent opposite angles, so this adds nothing.",
+        "Every parallelogram already has congruent (equal) opposite angles. A condition every parallelogram meets cannot prove a special one.",
       ],
       [
         "its diagonals bisect each other",
-        "The diagonals of every parallelogram bisect each other, so this adds nothing.",
+        "Every parallelogram's diagonals already bisect each other, cutting each other in half. A condition every parallelogram meets cannot prove a special one.",
       ],
       [
         "its consecutive angles are supplementary",
-        "Consecutive angles of every parallelogram are supplementary, so this adds nothing.",
+        "Every parallelogram's neighboring angles already add to $180^\\circ$ (supplementary). A condition every parallelogram meets cannot prove a special one.",
       ],
     ];
     const rhombus = a.target === "rhombus";
@@ -817,47 +848,47 @@ export const parallelogramSpecial = chainFamily({
       ? [
           [
             "its diagonals are perpendicular",
-            "Perpendicular diagonals make the four small triangles congruent right triangles, so all four sides are equal.",
+            "The diagonals cut each other in half. If they also meet at right angles, the four small triangles are congruent right triangles, so all four sides are equal.",
           ],
           [
             "two consecutive sides are congruent",
-            "A parallelogram has congruent opposite sides, so two congruent consecutive sides make all four sides equal.",
+            "Opposite sides of a parallelogram are already equal. If two neighboring sides are equal too, all four sides are equal.",
           ],
           [
             "a diagonal bisects an angle of the parallelogram",
-            "A bisected angle with parallel sides makes an isosceles triangle, so two consecutive sides are equal.",
+            "The diagonal splits the angle into two equal parts. With the parallel sides, that makes an isosceles triangle, so two neighboring sides are equal, and then all four are.",
           ],
         ]
       : [
           [
             "it has a right angle",
-            "Consecutive angles are supplementary, so one right angle makes all four angles right angles.",
+            "Neighboring angles of a parallelogram add to $180^\\circ$, and opposite angles are equal. So one $90^\\circ$ angle makes all four angles $90^\\circ$.",
           ],
           [
             "its diagonals are congruent",
-            "Congruent diagonals make the triangles on each side congruent, so the angles at the base are equal and supplementary, hence right angles.",
+            "Equal diagonals make the two triangles on one side congruent. So two neighboring angles are equal, and since they add to $180^\\circ$, each is $90^\\circ$.",
           ],
         ];
     const bad: [string, string][] = rhombus
       ? [
           [
             "its diagonals are congruent",
-            "Congruent diagonals make a parallelogram a rectangle, not necessarily a rhombus.",
+            "Equal diagonals prove a rectangle, not a rhombus. A long, thin rectangle has equal diagonals but unequal sides.",
           ],
           [
             "it has a right angle",
-            "A right angle makes a parallelogram a rectangle, not necessarily a rhombus.",
+            "A right angle proves a rectangle, not a rhombus. A long, thin rectangle has right angles but unequal sides.",
           ],
           ...common,
         ]
       : [
           [
             "its diagonals are perpendicular",
-            "Perpendicular diagonals make a parallelogram a rhombus, not necessarily a rectangle.",
+            "Perpendicular diagonals prove a rhombus, not a rectangle. A tilted rhombus has perpendicular diagonals but no right angles.",
           ],
           [
             "two consecutive sides are congruent",
-            "Congruent consecutive sides make a parallelogram a rhombus, not necessarily a rectangle.",
+            "Equal neighboring sides prove a rhombus, not a rectangle. A tilted rhombus has equal sides but no right angles.",
           ],
           ...common,
         ];
@@ -870,13 +901,15 @@ export const parallelogramSpecial = chainFamily({
         { label: `${cap(g)}.`, correct: true },
         ...wrongs.map(([l, f]) => ({ label: `${cap(l)}.`, feedback: f })),
       ],
-      hint: `A ${a.target} is a parallelogram with an extra property. Remove any option that every parallelogram already has; for example, ask whether "${wrongs[0]![0]}" is already true of every parallelogram. Then check what remains against the definition of a ${a.target}.`,
+      hint: `A ${a.target} is a parallelogram with an extra property. Cross out any option that every parallelogram already has; for example, ask whether "${wrongs[0]![0]}" is true of every parallelogram. Check what remains against the definition of a ${a.target}.`,
       explanation: [
+        "A parallelogram has two pairs of parallel sides. Its opposite sides are equal, its opposite angles are equal, and its diagonals cut each other in half.",
         rhombus
-          ? "A rhombus is a parallelogram with four congruent sides."
+          ? "A rhombus is a parallelogram with all four sides congruent (equal)."
           : "A rectangle is a parallelogram with four right angles.",
-        `${cap(g)}. ${why}`,
-        "The other conditions are either true of every parallelogram or lead to the other special parallelogram.",
+        "A condition true of every parallelogram cannot prove anything special. A condition that proves the other special shape is not enough either.",
+        `The condition "${g}" works. ${why}`,
+        `So the added condition that proves $ABCD$ is a ${a.target} is: ${g}.`,
       ],
     });
   },

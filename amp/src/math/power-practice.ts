@@ -96,6 +96,9 @@ const words = [
   "ten",
 ];
 const factors = (n: number) => `${words[n]} factor${n === 1 ? "" : "s"}`;
+/** The plain meaning of a power, said at first use in every explanation. */
+const meaning = (b: number, e: number) =>
+  `In ${math(pow(b, e))}, the base ${b} is the number being multiplied, and the small raised number ${e} (the exponent) counts how many times ${b} is used as a factor.`;
 function pick<T>(r: Random, items: readonly T[]): T {
   return items[r(0, items.length - 1)]!;
 }
@@ -194,17 +197,23 @@ function evaluate(r: Random): Draft {
   const explanation =
     e === 0
       ? [
+          `The exponent (the small raised number) counts how many times ${b} is multiplied. Zero factors needs a pattern to explain.`,
+          `Each time the exponent goes down by 1, one factor of ${b} is removed, so the value is divided by ${b}.`,
           `Going down from ${math(`${pow(b, 2)} = ${b * b}`)} to ${math(`${pow(b, 1)} = ${b}`)} divides by ${b}.`,
           `One more step down divides by ${b} again: ${math(`${pow(b, 0)} = ${b} \\div ${b} = 1`)}.`,
+          `So ${math(`${pow(b, 0)} = 1`)}.`,
         ]
       : e === 1
         ? [
-            `${math(pow(b, 1))} is a single factor of ${b}.`,
-            `${math(`${pow(b, 1)} = ${b}`)}.`,
+            meaning(b, e),
+            `When the exponent is 1, ${b} is used only once, with nothing else multiplied.`,
+            `So ${math(`${pow(b, 1)} = ${b}`)}.`,
           ]
         : [
-            `${math(pow(b, e))} means ${factors(e)} of ${b}: ${math(product(b, e))}.`,
-            `${buildSteps(b, e)}.`,
+            meaning(b, e),
+            `So ${math(pow(b, e))} means ${factors(e)} of ${b} multiplied together: ${math(product(b, e))}.`,
+            `Multiply in small groups so each step is a fact you know: ${buildSteps(b, e)}.`,
+            `So ${math(pow(b, e))} is ${prose(value)}.`,
           ];
   return {
     prompt,
@@ -245,10 +254,16 @@ function missingExponent(r: Random): Draft {
     label: frame === 0 ? "Exponent" : "Number of factors",
     hint,
     explanation: [
+      frame === 0
+        ? `In ${math(`${b}^n`)}, the exponent ${math("n")} counts how many times ${b} is multiplied by itself.`
+        : `A factor is a number being multiplied. The question asks how many ${b}s multiply together to make ${prose(value)}.`,
+      b === 10
+        ? `Each factor of 10 puts one more zero after the 1, and ${prose(value)} has ${e} zeros.`
+        : `Undo the multiplying: divide ${prose(value)} by ${b} again and again until you reach 1, counting each division.`,
       `${math(`${product(b, e)} = ${texNumber(value)}`)}: that is ${factors(e)} of ${b}.`,
       frame === 0
-        ? `So ${math(`${b}^{${e}} = ${texNumber(value)}`)} and ${math(`n = ${e}`)}.`
-        : `So ${prose(value)} is ${math(pow(b, e))}: ${e} factors.`,
+        ? `So ${math(`${b}^{${e}} = ${texNumber(value)}`)}, and ${math(`n = ${e}`)}.`
+        : `So it takes ${e} factors of ${b} to make ${prose(value)}.`,
     ],
     tags: [frame === 0 ? "equation" : "count", b === 2 ? "base-two" : "other"],
   };
@@ -281,8 +296,10 @@ function repeatedProduct(r: Random): Draft {
       ],
       hint: `Count how many times ${b} appears as a factor. The repeated factor is the base; the count is the exponent.`,
       explanation: [
-        `The factor ${b} appears ${words[e]} times.`,
-        `${factors(e)[0]!.toUpperCase()}${factors(e).slice(1)} of ${b} is written ${math(pow(b, e))}.`,
+        `A power is a short way to write a number multiplied by itself.`,
+        `The repeated factor (the number being multiplied) is the base. Here the base is ${b}.`,
+        `Count the factors: ${b} appears ${words[e]} times, so the exponent (the small raised number) is ${e}.`,
+        `So ${math(product(b, e))} is written ${math(pow(b, e))}.`,
       ],
       tags: ["to-power"],
     };
@@ -312,8 +329,10 @@ function repeatedProduct(r: Random): Draft {
     ],
     hint: `The exponent ${e} says how many factors of ${b} to write. Multiply them; don't add.`,
     explanation: [
-      `In ${math(pow(b, e))} the base is ${b} and the exponent is ${e}.`,
-      `Write ${factors(e)} of ${b}: ${math(`${pow(b, e)} = ${product(b, e)}`)}.`,
+      meaning(b, e),
+      `So write ${b} down ${words[e]} times and put a multiplication dot between each pair.`,
+      `That gives ${math(`${pow(b, e)} = ${product(b, e)}`)}.`,
+      `The product that equals ${math(pow(b, e))} is ${math(product(b, e))}.`,
     ],
     tags: ["to-product"],
   };
@@ -353,11 +372,12 @@ function compare(r: Random): Draft {
       ),
       hint: `Write each power as its factors: ${math(pow(x, y))} is ${factors(y)} of ${x}, and ${math(pow(y, x))} is ${factors(x)} of ${y}. Multiply both out.`,
       explanation: [
-        `${math(`${pow(x, y)} = ${product(x, y)} = ${left}`)}.`,
-        `${math(`${pow(y, x)} = ${product(y, x)} = ${right}`)}.`,
+        `The exponent (the small raised number) counts how many times the base is multiplied. Swapping them changes the meaning.`,
+        `${math(pow(x, y))} is ${factors(y)} of ${x}: ${math(`${product(x, y)} = ${left}`)}.`,
+        `${math(pow(y, x))} is ${factors(x)} of ${y}: ${math(`${product(y, x)} = ${right}`)}.`,
         left === right
-          ? `Both are ${left}, so they are equal.`
-          : `${Math.max(left, right)} > ${Math.min(left, right)}, so ${math(greater!)} is greater.`,
+          ? `Both equal ${left}, so they are equal. This pair is a rare case where swapping gives the same value.`
+          : `${Math.max(left, right)} is more than ${Math.min(left, right)}, so ${math(greater!)} is greater.`,
       ],
       tags: [left === right ? "equal" : "swap"],
     };
@@ -396,10 +416,12 @@ function compare(r: Random): Draft {
     ),
     hint: `${math(pow(b, e))} is not ${b} times ${e}. Write it as ${factors(e)} of ${b} and multiply.`,
     explanation: [
-      `${math(`${pow(b, e)} = ${product(b, e)} = ${power}`)}, and ${math(`${b} \\cdot ${e} = ${times}`)}.`,
+      meaning(b, e),
+      `So ${math(`${pow(b, e)} = ${product(b, e)} = ${power}`)}.`,
+      `${math(`${b} \\cdot ${e}`)} is ${b} times ${e}, a single multiplication: ${math(`${b} \\cdot ${e} = ${times}`)}.`,
       power === times
         ? `Both are ${power}, so they are equal.`
-        : `${power} > ${times}, so ${math(pow(b, e))} is greater.`,
+        : `${power} is more than ${times}, so ${math(pow(b, e))} is greater.`,
     ],
     tags: [power === times ? "equal" : "times"],
   };
@@ -421,9 +443,11 @@ function orderTrap(r: Random): Draft {
       answer: String(v),
       hint: `The exponent belongs to ${b} alone. Find ${math(pow(b, e))} first, then multiply by ${a}.`,
       explanation: [
-        `Powers come before multiplication: ${math(`${pow(b, e)} = ${b ** e}`)}.`,
-        `Not ${math(`(${a} \\cdot ${b})^{${e}}`)}: the exponent applies only to ${b}.`,
-        `${math(`${a} \\cdot ${b ** e} = ${v}`)}.`,
+        `The exponent (the small raised number) sits on ${b} alone, so it repeats only ${b}.`,
+        `The order of operations says powers come before multiplication: ${math(`${pow(b, e)} = ${b ** e}`)}.`,
+        `It is not ${math(`(${a} \\cdot ${b})^{${e}}`)}, because there are no parentheses around ${a} and ${b}.`,
+        `Now multiply: ${math(`${a} \\cdot ${b ** e} = ${v}`)}.`,
+        `So ${math(`${a} \\cdot ${pow(b, e)} = ${v}`)}.`,
       ],
       tags: ["times-power"],
     };
@@ -441,9 +465,10 @@ function orderTrap(r: Random): Draft {
       answer: String(v),
       hint: `Parentheses first: find ${math(`${a} \\cdot ${b}`)}, then square that product.`,
       explanation: [
-        `Inside the parentheses: ${math(`${a} \\cdot ${b} = ${a * b}`)}.`,
-        `The exponent squares the whole product, not just ${b}.`,
-        `${math(`${a * b}^2 = ${a * b} \\cdot ${a * b} = ${v}`)}.`,
+        `Parentheses come first in the order of operations, so work inside them: ${math(`${a} \\cdot ${b} = ${a * b}`)}.`,
+        `The exponent 2 sits outside the parentheses, so it squares the whole result, not just ${b}.`,
+        `Squaring a number means multiplying it by itself: ${math(`${a * b}^2 = ${a * b} \\cdot ${a * b} = ${v}`)}.`,
+        `So ${math(`(${a} \\cdot ${b})^2 = ${v}`)}.`,
       ],
       tags: ["power-of-product"],
     };
@@ -458,8 +483,10 @@ function orderTrap(r: Random): Draft {
       answer: String(v),
       hint: `Square ${b} before you add: the exponent is on ${b}, not on ${a} + ${b}.`,
       explanation: [
-        `Powers come before addition: ${math(`${pow(b, 2)} = ${b * b}`)}.`,
-        `${math(`${a} + ${b * b} = ${v}`)}.`,
+        `The exponent 2 sits on ${b} alone, so only ${b} is squared (multiplied by itself).`,
+        `The order of operations says powers come before addition: ${math(`${pow(b, 2)} = ${b} \\cdot ${b} = ${b * b}`)}.`,
+        `Now add: ${math(`${a} + ${b * b} = ${v}`)}.`,
+        `So ${math(`${a} + ${pow(b, 2)} = ${v}`)}.`,
       ],
       tags: ["plus-power"],
     };
@@ -476,8 +503,10 @@ function orderTrap(r: Random): Draft {
     answer: String(v),
     hint: `Parentheses first: add ${a} and ${b}, then square the sum. Squaring each number separately gives a different value.`,
     explanation: [
-      `Inside the parentheses: ${math(`${a} + ${b} = ${a + b}`)}.`,
-      `${math(`${a + b}^2 = ${a + b} \\cdot ${a + b} = ${v}`)}, which is not ${math(`${a}^2 + ${b}^2 = ${a * a + b * b}`)}.`,
+      `Parentheses come first in the order of operations, so add inside them: ${math(`${a} + ${b} = ${a + b}`)}.`,
+      `The exponent 2 squares that whole sum. Squaring means multiplying a number by itself.`,
+      `${math(`${a + b}^2 = ${a + b} \\cdot ${a + b} = ${v}`)}.`,
+      `Squaring each number first gives ${math(`${a}^2 + ${b}^2 = ${a * a + b * b}`)}, a different value, because it skips the parentheses.`,
       `So ${math(`(${a} + ${b})^2 = ${v}`)}.`,
     ],
     tags: ["power-of-sum"],
@@ -554,8 +583,12 @@ function doublingStory(r: Random): Draft {
     figure: growthBars(s.base, s.axis),
     hint: `One factor of ${s.base} per ${s.per}, so step ${n} is ${math(pow(s.base, n))}. Start from the last bar, ${math(`${s.base}^3 = ${s.base ** 3}`)}, and multiply by ${s.base} for each ${s.per} after it.`,
     explanation: [
-      `Each ${s.per} multiplies by ${s.base}, so after ${n} the count is ${factors(n)} of ${s.base}: ${math(pow(s.base, n))}.`,
-      `${math(`${pow(s.base, n)} = ${s.base}^3 \\cdot ${pow(s.base, n - 3)} = ${s.base ** 3} \\cdot ${s.base ** (n - 3)} = ${texNumber(v)}`)} ${s.unit}.`,
+      `Each ${s.per} multiplies the count by ${s.base}. The count starts at 1 at ${s.per} 0.`,
+      `After ${n} ${s.per}s, ${s.base} has been used as a factor ${n} times, so the count is ${math(pow(s.base, n))}.`,
+      `The exponent (the small raised number) ${n} counts those factors of ${s.base}.`,
+      `Start from the last bar, ${math(`${s.base}^3 = ${s.base ** 3}`)}, and multiply by ${s.base} once for each ${s.per} after ${s.per} 3.`,
+      `${math(`${pow(s.base, n)} = ${s.base ** 3} \\cdot ${pow(s.base, n - 3)} = ${s.base ** 3} \\cdot ${s.base ** (n - 3)} = ${texNumber(v)}`)}.`,
+      `At ${s.per} ${n}, the count is ${prose(v)} ${s.unit}.`,
     ],
     tags: [s.unit],
   };

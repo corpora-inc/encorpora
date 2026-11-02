@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -148,32 +149,45 @@ export const coordinateCircleLessons: Lesson[] = [
 
 const terms = {
   circle: [
-    ["center $(h, k)$", "The point every point of the circle is $r$ from."],
-    ["r²", "The right side of (x − h)² + (y − k)² = r²."],
+    [
+      "center",
+      "For the circle $(x - h)^2 + (y - k)^2 = r^2$, the center is $(h, k)$.",
+    ],
+    [
+      "radius",
+      "In $(x - h)^2 + (y - k)^2 = r^2$, the right side is the radius squared.",
+    ],
   ],
   measure: [
     [
       "distance",
-      "$\\sqrt{\\text{run}^2 + \\text{rise}^2}$ between two points.",
+      "Between two points, it is $\\sqrt{\\text{run}^2 + \\text{rise}^2}$.",
     ],
-    ["enclosing rectangle", "The grid rectangle just around a polygon."],
+    [
+      "rectangle",
+      "The enclosing rectangle is the grid rectangle drawn just around a polygon.",
+    ],
   ],
   partition: [
     [
-      "$AP : PB = m : n$",
-      "$P$ is $\\frac{m}{m + n}$ of the way from $A$ to $B$.",
+      "directed-segment",
+      "$AP : PB = m : n$ means $P$ is $\\frac{m}{m + n}$ of the way from $A$ to $B$.",
     ],
-    ["run and rise", "The changes in $x$ and $y$ from $A$ to $B$."],
+    "ratio",
+    [
+      "slope",
+      "The run is the change in $x$ and the rise is the change in $y$ from one point to another.",
+    ],
   ],
   slope: [
-    ["parallel", "Equal slopes."],
-    ["perpendicular", "Slopes with product −1: negative reciprocals."],
+    ["parallel", "On a graph, non-vertical parallel lines have equal slopes."],
+    [
+      "perpendicular",
+      "On a graph, the slopes of perpendicular lines multiply to −1: they are negative reciprocals.",
+    ],
   ],
-  angles: [
-    ["inscribed angle", "Vertex on the circle, sides along chords."],
-    ["tangent", "A line touching the circle at one point."],
-  ],
-} satisfies Record<string, [string, string][]>;
+  angles: ["inscribed-angle", "tangent-line"],
+} satisfies Record<string, MethodTerm[]>;
 export const coordinateCircleMethods: Record<string, ProblemMethod> = {
   "circle-equation": {
     goal: "Find a circle's center, radius or r² from its equation, a center and a point, or its graph.",

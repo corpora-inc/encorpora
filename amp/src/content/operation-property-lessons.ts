@@ -8,22 +8,10 @@ export const operationPropertyMethods: Record<string, ProblemMethod> = {
     intuition:
       "A property is a rule that is always true. Some rules say that changing the order, the grouping or a 0 or 1 does not change the answer. To spot which rule an equation shows, compare its left side with its right side and ask what changed.",
     terms: [
-      [
-        "identity property",
-        "Adding 0 or multiplying by 1 leaves a number the same.",
-      ],
-      [
-        "commutative property",
-        "Two numbers can swap places in a sum or a product and the result is the same.",
-      ],
-      [
-        "associative property",
-        "Three numbers in a sum or a product can be grouped in a different way and the result is the same.",
-      ],
-      [
-        "distributive property",
-        "A factor times a sum equals the factor times each addend, added together.",
-      ],
+      "identity-property",
+      "commutative-property",
+      "associative-property",
+      "distributive-property",
     ],
     method: [
       "Write down what is different between the left side and the right side: the order, the grouping, a 0 or a 1, or a factor spread over a sum.",

@@ -9,13 +9,11 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
       "Drawing the altitude from the right angle splits a right triangle into two smaller right triangles. Each is similar to the whole triangle and to the other. Similar triangles have proportional sides, which links the parts of the hypotenuse to the legs and the altitude.",
     terms: [
       [
-        "altitude to the hypotenuse",
-        "The segment from the right angle perpendicular to the hypotenuse.",
+        "altitude",
+        "Here the altitude runs from the right angle, perpendicular to the hypotenuse.",
       ],
-      [
-        "geometric mean",
-        "For positive numbers $a$ and $b$, the number $x=\\sqrt{ab}$, which satisfies $\\frac ax=\\frac xb$.",
-      ],
+      "hypotenuse",
+      "geometric-mean",
     ],
     method: [
       "Add the two parts to get the whole hypotenuse.",
@@ -29,13 +27,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     goal: "Use that the centroid divides each median into parts in the ratio 2 to 1, longer part next to the vertex.",
     intuition:
       "A median joins a vertex to the midpoint of the opposite side. The three medians meet at one point, the centroid, which is the balance point of the triangle. It sits closer to the midpoint than to the vertex, two thirds of the way from the vertex.",
-    terms: [
-      [
-        "median",
-        "A segment from a vertex to the midpoint of the opposite side.",
-      ],
-      ["centroid", "The point where the three medians of a triangle meet."],
-    ],
+    terms: ["median-triangle", "centroid"],
     method: [
       "Name the vertex part and the midpoint part of the median.",
       "The vertex part is twice the midpoint part, so the median is three equal sections.",
@@ -49,14 +41,8 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     intuition:
       "A segment parallel to one side of a triangle cuts off a smaller triangle with the same shape. Its sides are in proportion to the big triangle, so the two sides it cuts are divided in the same ratio. The converse also holds: if the ratios match, the segment is parallel.",
     terms: [
-      [
-        "parallel segment",
-        "A segment that never meets the side it is parallel to, however far extended.",
-      ],
-      [
-        "ratio of parts",
-        "How long one piece of a cut side is compared with the other.",
-      ],
+      "parallel",
+      ["ratio", "Here it compares the two pieces of a side that a line cuts."],
     ],
     method: [
       "Write the ratio of the parts of one side, such as $AD:DB$, and of the other side, $AE:EC$.",
@@ -70,13 +56,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     goal: "Set the base angles of an isosceles triangle equal to find the variable, then find an exterior angle.",
     intuition:
       "The angles opposite the equal sides of an isosceles triangle are equal. If they are written with the same variable, equating them gives an equation. An exterior angle is formed by extending a side, and it equals the sum of the two interior angles that are not next to it.",
-    terms: [
-      ["base angles", "The two angles opposite the equal sides."],
-      [
-        "exterior angle",
-        "An angle between a side of the triangle and the extension of an adjacent side.",
-      ],
-    ],
+    terms: ["base-angle", "exterior-angle"],
     method: [
       "Set the two base angle expressions equal and solve for $x$.",
       "Substitute to get the measure of one base angle.",
@@ -89,13 +69,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     goal: "Use that the sine of an acute angle equals the cosine of its complement to set up and solve an equation.",
     intuition:
       "In a right triangle, the leg opposite one acute angle is the leg next to the other acute angle. The sine of one angle and the cosine of the other are the same ratio. So when $\\sin A=\\cos B$ for acute angles, the angles add to $90^\\circ$.",
-    terms: [
-      ["complementary angles", "Two angles whose measures add to $90^\\circ$."],
-      [
-        "cofunction",
-        "A pair such as sine and cosine, where each of the pair at an angle equals the other at the complement.",
-      ],
-    ],
+    terms: ["complementary-angles", "cofunction-identity"],
     method: [
       "Write the angles of the two expressions and set their sum equal to $90$.",
       "Solve for $x$ and substitute to get each angle.",
@@ -108,13 +82,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     goal: "Work backward from rotation angles to the regular polygon that maps onto itself.",
     intuition:
       "A regular polygon with $n$ sides looks the same after turning by one $n$th of a full turn about its center. It also looks the same after any whole number of those turns. So its rotation angles are the multiples of $360^\\circ\\div n$.",
-    terms: [
-      [
-        "rotational symmetry",
-        "A rotation about a point that maps the figure onto itself.",
-      ],
-      ["regular polygon", "A polygon with all sides and all angles equal."],
-    ],
+    terms: ["rotational-symmetry", "regular-polygon"],
     method: [
       "For each candidate polygon compute $360^\\circ\\div n$.",
       "Check whether each given rotation angle is a whole-number multiple of it.",
@@ -128,13 +96,10 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     intuition:
       "A rigid motion (translation, reflection, rotation) keeps every length and angle, so the image is congruent and has the same area. Other rules change lengths. A stretch multiplies a length, so the area changes by that factor, unless another stretch cancels it.",
     terms: [
+      "rigid-motion",
       [
-        "rigid motion",
-        "A transformation that preserves distance and angle measure.",
-      ],
-      [
-        "stretch",
-        "A transformation that multiplies one coordinate by a number.",
+        "transformation",
+        "A stretch multiplies one coordinate by a number, such as $(x, y) \\to (2x, y)$.",
       ],
     ],
     method: [
@@ -149,10 +114,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     goal: "Decide which shapes a plane can cut from a prism, a cylinder or a cone, and which it cannot.",
     intuition:
       "A cross section is the shape where a plane cuts through a solid. Each flat face contributes at most one straight side, and a curved surface contributes a curved edge. So the faces of the solid limit which shapes are possible.",
-    terms: [
-      ["cross section", "The shape formed where a plane meets a solid."],
-      ["face", "A flat surface of a solid."],
-    ],
+    terms: ["cross-section", "face-solid"],
     method: [
       "List the faces and curved surfaces of the solid.",
       "Count the most sides a section could have; a flat solid has at most one side per face.",
@@ -165,10 +127,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     goal: "Choose the added condition that is enough to make a parallelogram a rhombus or a rectangle.",
     intuition:
       "A parallelogram already has two pairs of parallel sides, equal opposite sides and angles, and diagonals that bisect each other. A rhombus adds equal adjacent sides, and a rectangle adds a right angle. A useful new condition must give one of those extras.",
-    terms: [
-      ["rhombus", "A parallelogram with four congruent sides."],
-      ["rectangle", "A parallelogram with four right angles."],
-    ],
+    terms: ["rhombus", "rectangle"],
     method: [
       "Cross out every condition that all parallelograms already satisfy.",
       "Keep the conditions that force four equal sides (rhombus) or a right angle (rectangle).",

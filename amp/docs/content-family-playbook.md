@@ -37,12 +37,17 @@ Adding a family adds files; it does not edit a shared registry. The lists in `sr
    export const family = {
      id: "<id>",
      practice: { templates, generate, preserveAlgebra: true },
-     lessons, methods, principles, facetMappings, archetypeLinks,
+     lessons,
+     methods,
+     principles,
+     facetMappings,
+     archetypeLinks,
      // optional: archetypes, connections, satTasks, satTaskTemplates, releasedLedgers
    } satisfies ContentFamily;
    ```
 
    `preserveAlgebra: true` keeps authored strings verbatim; `false` applies the legacy noun/number copy-edit. `satTaskTemplates` appends templates to an existing SAT task; `satTasks` adds rows. A released-item ledger without practice is a descriptor with only `id` and `releasedLedgers`; it appends after the legacy saturation order. A descriptor and its imports must not import a registry value (engine, lessons, methods and the other lists above), because the registries import the descriptors.
+
 4. `npm run families:index` adds the descriptor's one line to `src/families/index.ts`, sorted by file name. This is the only shared line a family adds; sorted one-line inserts merge cleanly unless two new families sort next to each other. `tests/family-index.test.ts` fails when the index is stale.
 5. `scripts/<id_with_underscores>_math_oracle.py` defines `SUPPORTED`, `solve(public)`, `review_problem(problem)` and `self_test()`. The review script discovers it by file name. By default `review_problem` is a check and `solve` gives the expected answer, compared as an exact number. Set `REVIEW_RETURNS_ANSWER = True` when `review_problem` returns the expected answer; set `CHOICE_REVIEW` to the template ids whose `solve` returns an option id (or `'choice-response'` for every template with a choice response).
 6. `tests/<id>-practice.test.ts`.
@@ -70,19 +75,24 @@ Add an axis when the task, its answer and its misconceptions are unchanged and o
 
 ## Lesson structure
 
-Every lesson builds through these layers:
+Every lesson builds through these layers, written to the [plain-language standard](../src/content/AGENTS.md#plain-language-standard):
 
-1. Simple statement and intuition: explain the idea in plain language and give a short meaning for any term needed immediately.
-2. Example: state the givens and requested answer, show justified steps, and check the result.
-3. Method: generalize the example into reusable steps. Place each visualization beside the explanation it supports. Include a real application only when it teaches a useful relationship.
-4. Watch for: explain the likely mistake and how to avoid or detect it.
-5. Principle and definitions: collect the precise rule, notation, assumptions, restrictions and appropriate justification or proof.
+1. **Plain statement and intuition.** Say what the idea is and why it works, in everyday words, with concrete numbers. Define each term in the sentence where it first appears, or leave it out. Name no property or theorem yet.
+2. **Example.** State the givens and the requested answer. Each step says what to do and why, and the last step checks the result.
+3. **Method.** Generalize the example into reusable steps, moving from numbers to letters. Explain each symbol before its first use. Place each visualization beside the explanation it supports. Include a real application only when it teaches a useful relationship.
+4. **Watch for.** Name the likely mistake and how to avoid or detect it.
+5. **Principle and definitions.** Collect the precise rule, notation, assumptions, restrictions and justification or proof. Name the property here, after it has been shown.
 
-Reference lessons mark sections as `intuition`, `method` or `formal`; the shared library/PDF renderer orders them around the example and pitfalls. Problem lessons put the plain `intuition` before their generated example and the formal `principle` and `terms` at the end. Mathematical conditions must be accurate throughout. Explain essential vocabulary briefly at first use even when its fuller definition belongs at the end.
+Reference lessons mark sections as `intuition`, `method` or `formal`, and the shared library and PDF renderer orders them around the example and pitfalls. Problem lessons put the plain `intuition` before their generated example, and the formal `principle` and `terms` at the end. Each layer and each practice screen defines the terms it uses again, because a closing definition comes too late for the learner who needs it. Conditions stay accurate in every layer.
 
-Independently review elementary, middle-school and high-school examples before extending a revised authoring pattern across the inventory. Keep diagrams and intermediate reasoning that teach the idea; remove repetition and intimidating openings rather than stripping explanations to slogans.
+The rules every layer meets:
 
-Each lesson must stand on its own: a reader should understand the example's givens, local terms and notation, and explanations without completing another AMP lesson first. Repeat short, useful definitions across lessons when needed.
+- Write for a learner one band below the lesson, and never assume vocabulary from an earlier grade.
+- Write one idea per sentence. Aim for 20 words or fewer, and never write more than 35.
+- Repeat a definition when a term returns after a gap, and in every lesson that uses it.
+- Keep diagrams and intermediate reasoning that teach the idea. Cut repetition that has no purpose and intimidating openings, but never cut the explanation down to slogans.
+
+Before extending a revised pattern across the inventory, run `npm run review:plain` on elementary, middle-school and high-school examples, and review them independently. A rewrite batch quotes the judge's before and after counts in its PR.
 
 Inspect mobile widths 320 and 390, larger widths 768 and 1280, both themes, reduced motion, and Letter/A4 pages. Check first-time comprehension, not just overflow. Practice and feedback belong in the active view.
 

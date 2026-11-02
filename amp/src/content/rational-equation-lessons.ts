@@ -1,20 +1,15 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
-const terms: [string, string][] = [
-  [
-    "rational equation",
-    "An equation containing a quotient of polynomials. A polynomial is a sum of constant multiples of nonnegative whole-number powers of a variable.",
-  ],
+const terms: MethodTerm[] = [
+  "rational-equation",
   [
     "domain",
-    "The inputs for which every expression in the original equation is defined.",
+    "For an equation, it is every input for which every expression in the original equation is defined.",
   ],
-  ["solution", "An allowed input that makes the original equation true."],
-  [
-    "excluded input",
-    "An input that makes an original denominator zero; division by zero is undefined.",
-  ],
+  ["solution", "It must also be an allowed input: no denominator may equal 0."],
+  "excluded-value",
 ];
 const method: ProblemMethod = {
   goal: "Solve the equation while preserving its original domain.",

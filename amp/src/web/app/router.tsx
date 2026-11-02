@@ -12,6 +12,7 @@ import {
   useRouter,
 } from "@tanstack/react-router";
 import { z } from "zod";
+import { CurriculumDetailsProvider } from "../features/curriculum/CurriculumDetails";
 import { nativeRuntime } from "../native-runtime";
 import {
   authConfigOptions,
@@ -34,6 +35,7 @@ import { chosenPlan } from "../lib/pending-trial";
 import { hasInitialConsentChallenge } from "../consent-entry";
 import { hasPurchaseReturn } from "../purchase-return";
 import { knownStale, onSignedOut } from "../lib/app-recovery";
+import { workbookSearchSchema } from "../features/workbooks/model";
 const searchSchema = z
   .object({
     return: z
@@ -73,7 +75,11 @@ function RouterError({ error }: { error: unknown }) {
   return <RouteError error={error} reset={() => void router.invalidate()} />;
 }
 const root = createRootRoute({
-  component: Outlet,
+  component: () => (
+    <CurriculumDetailsProvider>
+      <Outlet />
+    </CurriculumDetailsProvider>
+  ),
   validateSearch: (search): z.infer<typeof searchSchema> & CampaignSearch => {
     const parsed = searchSchema.parse(search);
     const { utm_source, utm_medium, utm_campaign, utm_content, ...rest } =
@@ -407,6 +413,41 @@ const pathwaySkill = createRoute({
     "PathwaysScreen",
   ),
 });
+/** Daily paper workbooks for one learner (features/workbooks). */
+const workbookHistory = createRoute({
+  getParentRoute: () => root,
+  path: "/learners/$learnerId/workbooks",
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/workbooks/WorkbookHistoryScreen"),
+    "WorkbookHistoryScreen",
+  ),
+});
+const workbookDay = createRoute({
+  getParentRoute: () => root,
+  path: "/learners/$learnerId/workbooks/$date",
+  validateSearch: (search) => workbookSearchSchema.parse(search),
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/workbooks/WorkbookDayScreen"),
+    "WorkbookDayScreen",
+  ),
+});
+const workbookResults = createRoute({
+  getParentRoute: () => root,
+  path: "/learners/$learnerId/workbooks/$workbookId/results",
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/workbooks/WorkbookResultsScreen"),
+    "WorkbookResultsScreen",
+  ),
+});
 const funded = createRoute({
   getParentRoute: () => root,
   path: "/purchase/arkansas-efa",
@@ -487,6 +528,9 @@ export const router = createRouter({
     inventory,
     pathways,
     pathwaySkill,
+    workbookHistory,
+    workbookDay,
+    workbookResults,
     funded,
     fundedNewHampshire,
     fundedArizona,

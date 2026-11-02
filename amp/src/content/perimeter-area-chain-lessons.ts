@@ -7,13 +7,7 @@ export const perimeterAreaChainMethods: Record<string, ProblemMethod> = {
     goal: "Find a square's or rectangle's area from its perimeter and a side, or its perimeter from its area and a side.",
     intuition:
       "Perimeter is the distance around a shape and area is the amount of flat space inside. Both come from the side lengths, so one measure lets you find the sides and then the other measure. A square has four equal sides.",
-    terms: [
-      ["perimeter", "The total length of all the sides."],
-      [
-        "area",
-        "The number of unit squares that cover the shape, found for a rectangle as length times width.",
-      ],
-    ],
+    terms: ["perimeter", "area"],
     method: [
       "Use the given measure to find a side: divide a square's perimeter by 4, find the side whose square is the area, divide half the perimeter minus the known side, or divide the area by the known side.",
       "Find the other measure from the sides: multiply for area, add all sides for perimeter.",

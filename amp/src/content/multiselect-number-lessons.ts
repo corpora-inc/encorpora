@@ -11,16 +11,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "In a number such as $36{,}731$ each digit is worth its face value times its place: the $3$ is in the ten-thousands place, so it is worth $30{,}000$. A number equals the sum of what its digits are worth, and two numbers are compared place by place from the left.",
     more: "Different expressions can have the same value. $36\\times1{,}000+731$ groups the thousands into one count and is still $36{,}731$, but $36\\times100+731$ is not, because $36$ hundreds is only $3{,}600$.",
-    terms: [
-      [
-        "place value",
-        "What a digit is worth because of where it sits in a number.",
-      ],
-      [
-        "expanded form",
-        "A number written as the sum of what each digit is worth.",
-      ],
-    ],
+    terms: ["place-value", "expanded-form"],
     steps: [
       "Write what each digit of the given number is worth, such as $30{,}000+6{,}000+700+30+1$.",
       "Find the value of each statement: add the parts of an expression, or change a number in words to a numeral.",
@@ -67,17 +58,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "Equivalent fractions name the same amount. Cut every part of a whole into $2$ equal pieces and you have twice as many pieces in the whole and twice as many pieces counted, so $\\frac{1}{3}$ and $\\frac{2}{6}$ are the same size.",
     more: "To make an equivalent fraction, multiply the numerator and the denominator by the same number. Changing only one of them changes the amount, and adding the same number to both also changes it.",
-    terms: [
-      [
-        "numerator",
-        "The number above the fraction bar: how many parts are counted.",
-      ],
-      [
-        "denominator",
-        "The number below the bar: how many equal parts make the whole.",
-      ],
-      ["equivalent", "Naming the same amount."],
-    ],
+    terms: ["numerator", "denominator", "equivalent"],
     steps: [
       "Find the number that takes the given denominator to the choice's denominator.",
       "Multiply the given numerator by that same number. The choice is equivalent when it has that numerator.",
@@ -123,13 +104,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "A number line from $0$ to $1$ cut into $6$ equal parts has ticks at sixths. A point $2$ ticks from $0$ is at $\\frac{2}{6}$. The same point also has other names, such as $\\frac{1}{3}$, because they are equal.",
     more: "The number of equal parts in the whole is the denominator, and the number of parts counted from $0$ is the numerator.",
-    terms: [
-      ["tick", "A small mark that divides the line into equal parts."],
-      [
-        "equal parts",
-        "Parts that are the same length, so each is the same fraction of the whole.",
-      ],
-    ],
+    terms: ["tick-mark", "equal-parts"],
     steps: [
       "Count the equal parts between $0$ and $1$. That is the denominator.",
       "Count the parts from $0$ to the point. That is the numerator.",
@@ -175,16 +150,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "A ratio compares two amounts. If a recipe uses $5$ cups of flour for every $2$ cups of milk, a double batch uses $10$ and $4$, and a triple batch uses $15$ and $6$. Each batch multiplies both amounts by the same number.",
     more: "A group keeps the ratio when both amounts are the same multiple of the ratio's two numbers. Adding the same amount to both parts, or switching the order of the parts, does not keep the ratio.",
-    terms: [
-      [
-        "ratio",
-        "A comparison of two amounts, written with a colon such as $5:2$.",
-      ],
-      [
-        "equivalent ratios",
-        "Ratios that compare amounts in the same proportion, so one is the other scaled.",
-      ],
-    ],
+    terms: ["ratio", "equivalent-ratios"],
     steps: [
       "Divide a group's first amount by the first number of the ratio to find the scale factor.",
       "Multiply the ratio's second number by that factor. The group keeps the ratio when this equals the group's second amount.",
@@ -231,10 +197,10 @@ const specs: SelectContentSpec[] = [
       "Rounding to the nearest tenth replaces a number with the closest multiple of $0.1$. Many different numbers round to the same value: everything within half a tenth of it.",
     more: "A number halfway between two tenths rounds up, to the greater tenth. So the numbers that round to $124.6$ start at $124.55$ and stop just below $124.65$.",
     terms: [
-      ["round", "Replace a number with the closest number at a chosen place."],
+      "round",
       [
-        "boundary",
-        "The lowest and highest numbers that still round to the value.",
+        "round",
+        "Here, the lowest and highest numbers that still round to the value.",
       ],
     ],
     steps: [
@@ -282,16 +248,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "Numbers in different forms can be compared by writing each as a decimal. $\\pi$ is a never-ending decimal that starts $3.14159\\ldots$, so $3.14$ is less than $\\pi$ and $3.15$ is greater.",
     more: "A square root of a whole number between two perfect squares is between their roots. $\\sqrt{10}$ is between $\\sqrt{9}=3$ and $\\sqrt{16}=4$, and since $3.14^2<10$ it is greater than $3.14$.",
-    terms: [
-      [
-        "$\\pi$",
-        "The number $3.14159\\ldots$: a circle's circumference divided by its diameter.",
-      ],
-      [
-        "square root",
-        "$\\sqrt{n}$ is the positive number that multiplies by itself to give $n$.",
-      ],
-    ],
+    terms: ["pi", "square-root"],
     steps: [
       "Write the number to compare with, such as $\\pi\\approx3.14159$, to at least four decimal places.",
       "Write each choice as a decimal to the same number of places: divide a fraction, and square a decimal to place a square root.",
@@ -338,13 +295,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "A product can come from several pairs of factors. $24$ is $3\\times8$, $4\\times6$ and $2\\times12$, and each pair also works in the other order.",
     more: "To find the facts with a product, think of the factors of the product: the numbers that divide it evenly. Facts that change one factor by $1$ look close but give a different product.",
-    terms: [
-      [
-        "factor",
-        "A number that is multiplied, or a number that divides a product evenly.",
-      ],
-      ["product", "The result of multiplying."],
-    ],
+    terms: ["factor-number", "product-multiply"],
     steps: [
       "List the numbers up to $12$ that divide the stated product evenly.",
       "Work out the product of each fact in the grid, or check whether each factor is on your list with the right partner.",
@@ -392,10 +343,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "An equation is true when both sides have the same value. A number times itself, such as $8\\times8=64$, is a multiplication fact like any other, and the matching division $64\\div8=8$ gives back the factor.",
     more: "An equation can be written with the result first, such as $64=8\\times8$. Swapping the sides does not change whether it is true.",
-    terms: [
-      ["equation", "A statement that two expressions have the same value."],
-      ["square number", "A number times itself, such as $49=7\\times7$."],
-    ],
+    terms: ["equation", "perfect-square"],
     steps: [
       "For a multiplication, work out the product and compare it with the other side.",
       "For a division, ask what number times the divisor gives the number you start with, and compare with the other side.",

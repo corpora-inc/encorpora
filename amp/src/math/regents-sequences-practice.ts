@@ -92,9 +92,12 @@ export const arithmeticDistantTerm = chainFamily({
       ],
       hint: `Subtract neighbouring terms, $${f(term(2))}-${par(f(term(1)))}$, to find the common difference. Then count how many steps lead from term 1 to term ${m.n}.`,
       explanation: [
-        `The common difference is $${f(term(2))}-${par(f(term(1)))}=${f(m.d)}$, and the later differences agree.`,
-        `Term ${m.n} is ${steps} steps after term 1: $a_{${m.n}}=a_1+${steps}d=${f(m.a1)}+${steps}\\cdot${par(f(m.d))}$.`,
+        `An arithmetic sequence adds the same number at every step. That number is the common difference, $d$. The small number in $a_{${m.n}}$ says which term it is.`,
+        `Subtract one term from the next to find it: $${f(term(2))}-${par(f(term(1)))}=${f(m.d)}$. The later differences agree.`,
+        `From term 1 to term ${m.n} is ${steps} steps, one fewer than ${m.n}, because term 1 has taken no steps yet.`,
+        `So $a_{${m.n}}=a_1+${steps}d=${f(m.a1)}+${steps}\\cdot${par(f(m.d))}$.`,
         `$${steps}\\cdot${par(f(m.d))}=${f(steps * m.d)}$, so $a_{${m.n}}=${f(term(m.n))}$.`,
+        `Term ${m.n} is $${f(term(m.n))}$.`,
       ],
     });
   },
@@ -164,11 +167,14 @@ export const geometricSignedTerm = chainFamily({
         ? `Divide neighbouring terms, $${term(2)}\\div${par(term(1))}$, to find the ratio. Then multiply $a_1=${term(1)}$ by it once for each step up to term ${m.k}.`
         : `Starting from $a_1=${m.a1}$, each step multiplies by $${m.ratio}$. Count how many steps lead from term 1 to term ${m.k}, and track the sign as you go.`,
       explanation: [
+        `A geometric sequence multiplies by the same number at every step. That number is the common ratio, $r$.`,
         listed
-          ? `The common ratio is $r=${term(2)}\\div${par(term(1))}=${m.ratio}$.`
+          ? `Divide one term by the one before it to find it: $r=${term(2)}\\div${par(term(1))}=${m.ratio}$.`
           : `The common ratio is given as $r=${m.ratio}$.`,
+        `From term 1 to term ${m.k} is ${power} steps, so $a_1$ is multiplied by $r$ ${power} times. The exponent ${power} counts those multiplications.`,
         `Term ${m.k} is $a_1r^{${power}}=${m.a1}\\cdot${par(m.ratio)}^{${power}}$.`,
         `$${par(m.ratio)}^{${power}}=${m.ratio ** power}$, so $a_{${m.k}}=${m.a1}\\cdot${par(m.ratio ** power)}=${correct}$.`,
+        `Term ${m.k} is $${correct}$.`,
       ],
     });
   },

@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { generatedProblemSchema } from "../src/math/contracts.js";
+import { methodTermId } from "../src/glossary/resolve";
 import {
   generateQuadrilateralHierarchyMultiselect,
   quadrilateralHierarchyMultiselectTemplate,
@@ -114,7 +115,9 @@ test("the family uses the existing skill, lesson, and narrow partial hierarchy f
   assert.ok(method.intuition);
   assert.ok(method.method.length >= 2);
   assert.ok(method.watch);
-  assert.ok(method.terms?.some(([term]) => term === "counterexample"));
+  assert.ok(
+    method.terms?.some((term) => methodTermId(term) === "counterexample"),
+  );
   assert.match(polygonPrinciples[id]!, /one counterexample/);
   const facet = polygonFacetMappings.find(
     (mapping) => mapping.templateId === id,

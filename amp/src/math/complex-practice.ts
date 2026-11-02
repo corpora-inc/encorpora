@@ -56,27 +56,27 @@ export function complexMultiplicationCase(seed: string) {
     {
       value: { real: ac + bd, imaginary: ad + bc },
       feedback:
-        "Replace $i^2$ by −1: multiplying the two $i$ terms contributes the negative of their coefficient product to the real part.",
+        "This treats $i^2$ as $+1$. In fact $i^2=-1$, so the product of the two $i$ terms is subtracted from the real part.",
     },
     {
       value: { real: ac - bd, imaginary: ad - bc },
       feedback:
-        "Add both cross products to make the coefficient of $i$; keep their signed values.",
+        "This subtracts one cross product. The $i$ part is the sum of both cross products, each with its own sign.",
     },
     {
       value: { real: ac, imaginary: ad + bc },
       feedback:
-        "Include the product of the two imaginary terms. It becomes a real number because $i^2=-1$.",
+        "This drops the product of the two $i$ terms. It does not vanish: it becomes a real number, because $i^2=-1$.",
     },
     {
       value: { real: ac - bd, imaginary: ad },
       feedback:
-        "Distribute the imaginary term in the first factor to the real term in the second factor too.",
+        "This misses a cross product: the $i$ term of the first factor must also multiply the real term of the second.",
     },
     {
       value: { real: ac - bd, imaginary: bc },
       feedback:
-        "Distribute the real term in the first factor to the imaginary term in the second factor too.",
+        "This misses a cross product: the real term of the first factor must also multiply the $i$ term of the second.",
     },
   ];
   const key = ({ real, imaginary }: Complex) => `${real},${imaginary}`;
@@ -103,10 +103,12 @@ export function complexMultiplicationCase(seed: string) {
       answer: "",
       hint: `For $(${first})(${second})$, multiply each term in the first parentheses by each term in the second. Keep the $i^2$ term until you use $i^2=-1$.`,
       explanation: [
+        `A complex number has a real part and an imaginary part, a multiple of $i$. The number $i$ is defined by $i^2=-1$.`,
+        `Multiply like two binomials: each term of the first factor times each term of the second. That gives four products.`,
         `Multiply the real terms: $(${a})(${c})=${ac}$.`,
         `Multiply the cross terms: $(${a})(${d}i)=${ad}i$ and $(${b}i)(${c})=${bc}i$.`,
         `Multiply the imaginary terms: $(${b}i)(${d}i)=${bd}i^2=${-bd}$ because $i^2=-1$.`,
-        `Combine the real terms: $${ac}+(${-bd})=${correct.real}$. Combine the imaginary terms: $${ad}i+(${bc}i)=${correct.imaginary}i$.`,
+        `Add the real numbers: $${ac}+(${-bd})=${correct.real}$. Add the $i$ terms: $${ad}i+(${bc}i)=${correct.imaginary}i$.`,
         `The exact product is ${label(correct)}.`,
       ],
       choices: [

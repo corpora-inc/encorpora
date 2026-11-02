@@ -209,6 +209,36 @@ def tex_of(value):
 # ---------------------------------------------------------------- shared response checks
 
 def common_response(response, layout, label):
+    """Read both picker and card payloads without changing mathematical givens."""
+    if response.get("layout") != "cards":
+        require("reuse" not in response, "Only cards allow reuse")
+        return legacy_response(response, layout, label)
+    require(layout == "inline", "Only sentence families use cards")
+    require(response.get("label") in ("Put a card in each box", "Put a symbol card in each box"), "Card response label")
+    require("reuse" not in response or response["reuse"] is True, "Card reuse must be true")
+    adapted = {**response, "layout": "inline", "label": label}
+    blanks = legacy_response(adapted, layout, label)
+    rows = []
+    for blank in blanks:
+        options = blank["options"]
+        if options not in rows:
+            require(not any(o["label"] == old["label"] for row in rows for old in row for o in options),
+                    "Card tray rows must not overlap")
+            rows.append(options)
+    return blanks
+
+
+def check_card_use(response, key):
+    if response.get("layout") != "cards" or response.get("reuse") is True:
+        return
+    chosen = []
+    for blank in response["blanks"]:
+        label = next(o["label"] for o in blank["options"] if o["id"] == key[blank["id"]])
+        require(label not in chosen, "A non-reusable card cannot fill two boxes")
+        chosen.append(label)
+
+
+def legacy_response(response, layout, label):
     require(response.get("kind") == "multi-part-choice", "Response kind")
     require(response.get("layout") == layout, "Layout")
     require(response.get("label") == label, "Response label")

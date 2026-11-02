@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { FacetMapping } from "./coverage";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
@@ -19,7 +20,7 @@ export interface SelectContentSpec {
   goal: string;
   intuition: string;
   more: string;
-  terms: [string, string][];
+  terms: MethodTerm[];
   steps: string[];
   watch: string;
   principle: string;

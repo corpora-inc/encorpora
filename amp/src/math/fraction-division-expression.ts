@@ -58,27 +58,25 @@ export function fractionDivisionExpressionCase(seed: string) {
       left: denominator,
       operation: "divide",
       right: numerator,
-      feedback:
-        "The top number is the total being shared; the bottom number counts equal shares. Reversing them answers a different question.",
+      feedback: `You put the bottom number first. In a fraction, the top number is the total being shared and the bottom number counts the equal shares, so ${numerator} is divided by ${denominator}, not ${denominator} by ${numerator}.`,
     },
     {
       left: numerator,
       operation: "multiply",
       right: denominator,
-      feedback:
-        "A fraction bar represents equal sharing, which divides the total by the number of shares.",
+      feedback: `You multiplied. The fraction bar means divide: ${numerator} shared equally into ${denominator} parts is ${numerator} ÷ ${denominator}.`,
     },
     {
       left: numerator,
       operation: "divide",
       right: denominator + 1,
-      feedback: `The bottom number is ${denominator}, so there are ${denominator} equal shares, not ${denominator + 1}.`,
+      feedback: `This divides by ${denominator + 1}. The bottom number is ${denominator}, so the total is split into ${denominator} equal shares, not ${denominator + 1}.`,
     },
     {
       left: numerator + 1,
       operation: "divide",
       right: denominator,
-      feedback: `The top number is ${numerator}; sharing one more whole would change the amount.`,
+      feedback: `This shares ${numerator + 1} wholes. The top number is ${numerator}, so the total being shared is ${numerator}; one more whole makes each share bigger.`,
     },
   ];
   const seen = new Set([valueKey(correct)]);
@@ -99,9 +97,11 @@ export function fractionDivisionExpressionCase(seed: string) {
       answer: "",
       hint: `For $\\frac{${numerator}}{${denominator}}$, imagine sharing ${numerator} whole unit${numerator === 1 ? "" : "s"} equally among ${denominator} people. Identify the total and the share count before choosing.`,
       explanation: [
-        `Think of $\\frac{${numerator}}{${denominator}}$ as one share when ${numerator} whole unit${numerator === 1 ? " is" : "s are"} shared equally among ${denominator} people.`,
-        `The total is ${numerator} and the share count is ${denominator}, so the matching division is ${expressionLabel(correct)}.`,
-        `Check: ${denominator} shares of $\\frac{${numerator}}{${denominator}}$ make ${numerator} whole unit${numerator === 1 ? "" : "s"}.`,
+        `A fraction bar also means "divided by": the top number is shared equally into the number of parts on the bottom.`,
+        `Picture ${numerator} whole unit${numerator === 1 ? "" : "s"} shared equally among ${denominator} people. Each person gets $\\frac{${numerator}}{${denominator}}$ of a unit.`,
+        `The total being shared is ${numerator}, and the number of shares is ${denominator}, so the division is ${expressionLabel(correct)}.`,
+        `Check: ${denominator} shares of $\\frac{${numerator}}{${denominator}}$ make ${numerator} whole unit${numerator === 1 ? "" : "s"}, the whole total.`,
+        `So ${expressionLabel(correct)} has the same value as $\\frac{${numerator}}{${denominator}}$.`,
       ],
       choices: [
         { label: expressionLabel(correct), correct: true },

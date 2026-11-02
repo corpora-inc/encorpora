@@ -1,3 +1,4 @@
+import type { GlossaryPayload } from "../glossary/types";
 import { z } from "zod";
 import {
   MAX_SELECTION_OPTIONS,
@@ -302,6 +303,11 @@ export interface TemplateMetadata {
   skillId: string;
   gradeBand: "K–2" | "3–5" | "6–8" | "9–12";
   description: string;
+  /** The glossary entry an ambiguous word means in this template's generated
+   * hints and explanations: lowercase form → term id (`src/glossary/`). */
+  glossarySenses?: Record<string, string>;
+  /** Glossary forms that are ordinary words in this template's generated text. */
+  glossaryNoLink?: string[];
 }
 export type MultiSelectResponse = {
   kind: "multi-select";
@@ -325,8 +331,9 @@ export type ProblemResponse =
   | MultiPartChoiceResponse
   | FigureChoiceResponse
   | StructuredWorkResponse;
-/** Safe teaching content delivered beside a problem; never grading data. */
-export interface ProblemHint {
+/** Safe teaching content delivered beside a problem; never grading data.
+ * Its glossary fields carry the term cards the hint's words open. */
+export interface ProblemHint extends GlossaryPayload {
   hint: string;
   cue?: Step[];
 }

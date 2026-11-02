@@ -68,10 +68,10 @@ export const successivePercentChangeMethod: ProblemMethod = {
   intuition:
     "A percent means parts per hundred of a price. Change the starting price once, then use that new price for the next change.",
   terms: [
-    ["base", "The price used as the whole for a percentage."],
+    ["percent", "The base is the whole that the percent is taken of."],
     [
       "multiplier",
-      "The number multiplied by a price to get its changed price; add the percent fraction to 1 for an increase, or subtract it from 1 for a decrease.",
+      "For a percent change, add the percent to 1 for an increase or subtract it from 1 for a decrease: 1.20 or 0.80.",
     ],
   ],
   method: [

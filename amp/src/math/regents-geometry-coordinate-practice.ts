@@ -108,24 +108,24 @@ export const segmentPartitionPoint = chainFamily({
         label: label(m.x1 + dx / 2, m.y1 + dy / 2),
         ok: whole(dx / 2) && whole(dy / 2),
         feedback:
-          "This is the midpoint, which divides the segment in the ratio 1:1.",
+          "This is the midpoint, the point halfway along, which splits the segment 1:1. The ratio here has unequal parts, so $P$ is not in the middle.",
       },
       {
         label: label(m.x1 + (m.a * dx) / m.b, m.y1 + (m.a * dy) / m.b),
         ok: whole((m.a * dx) / m.b) && whole((m.a * dy) / m.b),
-        feedback: `The ratio ${m.a}:${m.b} splits the segment into ${tot} equal parts; use ${m.a}/${tot} of the way, not ${m.a}/${m.b}.`,
+        feedback: `This uses the fraction $\\frac{${m.a}}{${m.b}}$, one part of the ratio over the other. The ratio ${m.a}:${m.b} makes ${tot} equal parts in all, so $P$ is $\\frac{${m.a}}{${tot}}$ of the way, not $\\frac{${m.a}}{${m.b}}$.`,
       },
       {
         label: label(py, px),
         ok: true,
         feedback:
-          "Write the coordinates in the order $(x,\\ y)$; this pair has them swapped.",
+          "The coordinates are swapped. A point is written $(x,\\ y)$: the across value first, then the up-and-down value.",
       },
       {
         label: label(px, m.y1 + dy / 2),
         ok: whole(dy / 2),
         feedback:
-          "Both coordinates must be found with the same fraction of the way along the segment.",
+          "This uses the right fraction for $x$ but stops halfway for $y$. Both coordinates move the same fraction of the way along the segment.",
       },
     ]
       .filter((o) => o.ok)
@@ -136,7 +136,7 @@ export const segmentPartitionPoint = chainFamily({
         { label: label(px, py), correct: true },
         {
           label: label(swapped.x, swapped.y),
-          feedback: `This point is ${m.b} of the ${tot} equal parts from $A$, which divides the segment in the ratio ${m.b}:${m.a} instead of ${m.a}:${m.b}.`,
+          feedback: `This point is ${m.b} of the ${tot} equal parts from $A$, so it splits the segment ${m.b}:${m.a}, the ratio reversed. Count the parts from $A$: $AP$ gets ${m.a} of them.`,
         },
         ...extra,
       ],
@@ -144,9 +144,14 @@ export const segmentPartitionPoint = chainFamily({
         ? `Add the two numbers of the ratio ${m.a}:${m.b} to count ${tot} equal parts in all. $P$ is ${m.a} of them from $A(${m.x1},\\ ${m.y1})$; find the horizontal and vertical change from $A$ to $B$ first.`
         : `Add the two numbers of $BP:PA=${m.b}:${m.a}$ to count ${tot} equal parts in all, with ${m.b} of them between $B$ and $P$. Work out how far $P$ is from $A$ along the segment from $A(${m.x1},\\ ${m.y1})$ to $B$.`,
       explanation: [
-        `The horizontal change from $A$ to $B$ is $${m.x2}-${sgn(m.x1) ? `(${m.x1})` : m.x1}=${dx}$ and the vertical change is $${m.y2}-${sgn(m.y1) ? `(${m.y1})` : m.y1}=${dy}$.`,
-        `The ratio gives ${tot} equal parts, and $P$ is ${m.a} of them from $A$, so $P$ is $\\frac{${m.a}}{${tot}}$ of the way from $A$ to $B$.`,
-        `$x=${m.x1}+\\frac{${m.a}}{${tot}}(${dx})=${px}$ and $y=${m.y1}+\\frac{${m.a}}{${tot}}(${dy})=${py}$, so $P=(${px},\\ ${py})$.`,
+        first
+          ? `The ratio $AP:PB=${m.a}:${m.b}$ means: cut the segment into ${m.a}+${m.b}=${tot} equal parts. $AP$ takes ${m.a} of them and $PB$ takes ${m.b}.`
+          : `The ratio $BP:PA=${m.b}:${m.a}$ means: cut the segment into ${m.b}+${m.a}=${tot} equal parts. $BP$ takes ${m.b} of them, so $AP$ takes the other ${m.a}.`,
+        `So $P$ is $\\frac{${m.a}}{${tot}}$ of the way from $A$ to $B$.`,
+        `Find how far you travel from $A$ to $B$. Across: $${m.x2}-${sgn(m.x1) ? `(${m.x1})` : m.x1}=${dx}$. Up or down: $${m.y2}-${sgn(m.y1) ? `(${m.y1})` : m.y1}=${dy}$.`,
+        `Start at $A$ and go $\\frac{${m.a}}{${tot}}$ of each change, because $P$ is that fraction of the way along.`,
+        `$x=${m.x1}+\\frac{${m.a}}{${tot}}(${dx})=${px}$ and $y=${m.y1}+\\frac{${m.a}}{${tot}}(${dy})=${py}$.`,
+        `The coordinates of $P$ are $(${px},\\ ${py})$.`,
       ],
     });
   },
@@ -183,11 +188,11 @@ export const circleGeneralForm = chainFamily({
       { label: lab(m.h, m.k, m.rad), correct: true as const },
       {
         label: lab(-m.h, -m.k, m.rad),
-        feedback: `The center takes the opposite sign of half the $x$ and $y$ coefficients: $x^2-2hx$ means the center has $x=h$.`,
+        feedback: `The signs are flipped. $(x-h)^2$ expands to $x^2-2hx+h^2$, so a term $-2hx$ means the center's $x$-coordinate is $+h$. Each center coordinate has the opposite sign of its linear term.`,
       },
       {
         label: lab(m.h, m.k, sq),
-        feedback: `${sq} is $r^2$. The completed-square equation gives $r^2$ on the right, so the radius is its square root.`,
+        feedback: `${sq} is the radius squared, $r^2$, the number on the right of $(x-h)^2+(y-k)^2=r^2$. Take its square root to get the radius.`,
       },
       {
         label:
@@ -196,28 +201,31 @@ export const circleGeneralForm = chainFamily({
             : lab(m.c * m.h, m.c * m.k, m.rad),
         feedback:
           m.c === 1
-            ? "The center is half the coefficient of each linear term, with the opposite sign, not the whole coefficient."
-            : "Divide every term by the common factor first; otherwise the coordinates come out multiplied by that factor.",
+            ? "This uses the whole coefficient (the number in front of $x$ or $y$). Completing the square halves it: $x^2-2hx$ comes from $(x-h)^2$, so take half, with the opposite sign."
+            : "The equation was not divided by the common factor first. Every term must be divided so $x^2$ and $y^2$ have coefficient 1; otherwise the center comes out multiplied by that factor.",
       },
       {
         label: lab(m.h, m.k, Math.round(Math.sqrt(Math.abs(F)))),
         feedback:
-          "The constant term is not $-r^2$. Complete the square so that $h^2+k^2$ is added to both sides too.",
+          "This treats the constant term as $-r^2$. Completing the square adds $h^2$ and $k^2$ to both sides, and they change the right side too.",
       },
     ];
     return choiceSurface(r, {
       prompt: `A circle has the equation $${left(m.c)}$. What are its center and radius?`,
       options,
-      hint: `${m.c === 1 ? "" : `Divide every term by ${m.c} first. `}The linear terms are ${m.c * D === 0 ? "" : `$${m.c * D}x$`}${m.c * D !== 0 && m.c * E !== 0 ? " and " : ""}${m.c * E === 0 ? "" : `$${m.c * E}y$`}. ${m.c * F === 0 ? "" : `The constant term is $${m.c * F}$. `}Group the $x$ terms and the $y$ terms, halve each linear coefficient${m.c === 1 ? "" : " (after dividing)"}, square each half, and add those squares to both sides.`,
+      hint: `${m.c === 1 ? "" : `Divide every term by ${m.c} first, so $x^2$ and $y^2$ stand alone. `}The linear terms, the ones with just $x$ or just $y$, are ${m.c * D === 0 ? "" : `$${m.c * D}x$`}${m.c * D !== 0 && m.c * E !== 0 ? " and " : ""}${m.c * E === 0 ? "" : `$${m.c * E}y$`}. ${m.c * F === 0 ? "" : `The constant term is $${m.c * F}$. `}Group the $x$ terms and the $y$ terms. Halve each linear coefficient, the number in front, square each half, and add those squares to both sides.`,
       explanation: [
         ...(m.c === 1
           ? []
           : [
               `Divide every term by ${m.c}: $x^2+y^2${term(D, "x")}${term(E, "y")}${F === 0 ? "" : ` ${F < 0 ? "-" : "+"} ${Math.abs(F)}`}=0$.`,
             ]),
-        `Move the constant and complete the squares: $(x^2${term(D, "x")} + ${m.h * m.h}) + (y^2${term(E, "y")} + ${m.k * m.k}) = ${-F} + ${m.h * m.h} + ${m.k * m.k}$.`,
-        `$(${m.h === 0 ? "x" : `x${m.h > 0 ? " - " : " + "}${Math.abs(m.h)}`})^2 + (${m.k === 0 ? "y" : `y${m.k > 0 ? " - " : " + "}${Math.abs(m.k)}`})^2 = ${sq}$.`,
-        `The center is $(${m.h},\\ ${m.k})$ and the radius is $\\sqrt{${sq}}=${m.rad}$.`,
+        `The goal is center-radius form, $(x-h)^2+(y-k)^2=r^2$. In it, $(h,\\ k)$ is the center and $r$ is the radius, the distance from the center to the circle.`,
+        `Completing the square turns $x^2-2hx$ into a perfect square by adding $h^2$: half the $x$-coefficient, squared. Do the same for $y$.`,
+        `Here that adds ${m.h * m.h} and ${m.k * m.k}. Add them to both sides so the equation stays balanced, and move the constant to the right: $(x^2${term(D, "x")} + ${m.h * m.h}) + (y^2${term(E, "y")} + ${m.k * m.k}) = ${-F} + ${m.h * m.h} + ${m.k * m.k}$.`,
+        `Write each group as a square: $(${m.h === 0 ? "x" : `x${m.h > 0 ? " - " : " + "}${Math.abs(m.h)}`})^2 + (${m.k === 0 ? "y" : `y${m.k > 0 ? " - " : " + "}${Math.abs(m.k)}`})^2 = ${sq}$.`,
+        `Read the center with the opposite signs of the numbers inside the squares: $(${m.h},\\ ${m.k})$. The right side is $r^2$, so $r=\\sqrt{${sq}}=${m.rad}$.`,
+        `The circle's center is $(${m.h},\\ ${m.k})$ and its radius is ${m.rad}.`,
       ],
     });
   },
@@ -268,32 +276,35 @@ export const linePointSlope = chainFamily({
         {
           label: mk(perp ? num : -num, perp ? den : den, m.qx, m.qy),
           feedback: perp
-            ? "This keeps the slope of the given line, so it is parallel, not perpendicular."
-            : "This negates the slope, which is not the slope of a parallel line.",
+            ? "This keeps the given line's slope, which makes a parallel line. A perpendicular line needs the opposite reciprocal: flip the fraction and change the sign."
+            : "This changes the sign of the slope. Parallel lines point the same way, so they have exactly the same slope.",
         },
         {
           label: mk(den, num, m.qx, m.qy),
           feedback: perp
-            ? "A perpendicular slope is the opposite reciprocal; flipping the fraction without changing the sign is not enough."
-            : "Parallel lines have equal slopes; this option flips the fraction, which is not the same slope.",
+            ? "This flips the fraction but keeps the sign. A perpendicular slope is the opposite reciprocal: flip the fraction and change the sign."
+            : "This flips the fraction. Parallel lines have exactly the same slope, so keep the fraction as it is.",
         },
         {
           label: mk(sn, sd, -m.qx, -m.qy),
           feedback:
-            "In $y-y_1=m(x-x_1)$ the coordinates of the point are subtracted, so a negative coordinate becomes a plus sign. This option has the signs of the point reversed.",
+            "This has the point's signs reversed. In $y-y_1=m(x-x_1)$ the point's coordinates are subtracted, so $x_1=3$ shows as $x-3$ and $x_1=-3$ shows as $x+3$.",
         },
         {
           label: mk(sn, sd, m.px, m.py),
-          feedback: `The new line must pass through $(${m.qx},\\ ${m.qy})$, not through a point of the given line.`,
+          feedback: `This uses a point of the given line. The new line must pass through $(${m.qx},\\ ${m.qy})$, so that is the point to put in $y-y_1=m(x-x_1)$.`,
         },
       ],
-      hint: `Find the slope of the line through $(${m.px},\\ ${m.py})$ and $(${x2},\\ ${y2})$ as rise over run. Decide what slope the ${a.relation} line needs, then put the point $(${m.qx},\\ ${m.qy})$ into $y-y_1=m(x-x_1)$.`,
+      hint: `Find the slope, the steepness, of the line through $(${m.px},\\ ${m.py})$ and $(${x2},\\ ${y2})$ as rise over run: change in $y$ ÷ change in $x$. Then decide what slope a ${a.relation} line needs.`,
       explanation: [
-        `The given slope is $\\frac{${y2}-${m.py < 0 ? `(${m.py})` : m.py}}{${x2}-${m.px < 0 ? `(${m.px})` : m.px}}=${slopeTex(num, den)}$.`,
+        `The slope of a line is its steepness: rise over run, the change in $y$ divided by the change in $x$.`,
+        `The given line's slope is $\\frac{${y2}-${m.py < 0 ? `(${m.py})` : m.py}}{${x2}-${m.px < 0 ? `(${m.px})` : m.px}}=${slopeTex(num, den)}$.`,
         perp
-          ? `A perpendicular line has the opposite reciprocal slope, $${slopeTex(sn, sd)}$.`
-          : `A parallel line has the same slope, $${slopeTex(sn, sd)}$.`,
-        `With the point $(${m.qx},\\ ${m.qy})$, point-slope form $y-y_1=m(x-x_1)$ gives ${mk(sn, sd, m.qx, m.qy)}.`,
+          ? `Perpendicular lines meet at a right angle. Their slopes are opposite reciprocals: flip the fraction and change the sign. So the new slope is $${slopeTex(sn, sd)}$.`
+          : `Parallel lines never meet, so they rise at the same rate. The new slope is the same, $${slopeTex(sn, sd)}$.`,
+        `Point-slope form, $y-y_1=m(x-x_1)$, writes a line from its slope $m$ and one point $(x_1,\\ y_1)$ on it.`,
+        `Put in $m=${slopeTex(sn, sd)}$ and the point $(${m.qx},\\ ${m.qy})$. Subtracting a negative coordinate shows as a plus sign.`,
+        `The equation of the ${a.relation} line is ${mk(sn, sd, m.qx, m.qy)}.`,
       ],
     });
   },
@@ -352,24 +363,24 @@ export const linePairRelationship = chainFamily({
       neither: "neither parallel nor perpendicular",
     } as const;
     const why = {
-      parallel: `The slopes $${t1}$ and $${t2}$ are equal, but the $y$-intercepts differ, so the lines never meet.`,
-      same: `The slopes are equal and the second equation reduces to the first, so every point of one line is on the other.`,
-      perpendicular: `The slopes $${t1}$ and $${t2}$ multiply to $-1$.`,
-      neither: `The slopes $${t1}$ and $${t2}$ are neither equal nor opposite reciprocals.`,
+      parallel: `The slopes $${t1}$ and $${t2}$ are equal, so the lines rise at the same rate. Their $y$-intercepts differ, so they never meet.`,
+      same: `The slopes are equal and so are the $y$-intercepts: the second equation is the first one multiplied through. Every point of one line is on the other.`,
+      perpendicular: `The slopes $${t1}$ and $${t2}$ multiply to $-1$. Slopes that are opposite reciprocals (flipped, with the sign changed) make a right angle.`,
+      neither: `The slopes $${t1}$ and $${t2}$ are not equal, so the lines are not parallel. They are not opposite reciprocals either: their product is not $-1$.`,
     } as const;
     const keys = ["parallel", "perpendicular", "same", "neither"] as const;
     const feedbackFor = (kind: (typeof keys)[number]) => {
       if (kind === "same" && a.kind === "parallel")
-        return "The slopes are equal but the $y$-intercepts differ, so these are two different lines.";
+        return "The slopes are equal, but the $y$-intercepts, where each line crosses the $y$-axis, differ. So these are two different lines that never meet.";
       if (kind === "parallel" && a.kind === "same")
-        return "Equal slopes alone do not make a pair of distinct parallel lines: here the second equation reduces to the first, so the lines coincide.";
+        return "The slopes are equal, but so are the $y$-intercepts. Dividing the second equation through gives the first, so the lines lie on top of each other.";
       if (kind === "parallel")
-        return `Parallel lines have equal slopes, but the slopes here are $${t1}$ and $${t2}$.`;
+        return `Parallel lines have equal slopes, but the slopes here are $${t1}$ and $${t2}$. Solve the second equation for $y$ to read its slope.`;
       if (kind === "perpendicular")
-        return `Perpendicular lines have slopes whose product is $-1$; $${t1}$ and $${t2}$ do not multiply to $-1$.`;
+        return `Perpendicular lines have opposite reciprocal slopes, which multiply to $-1$. Here $${t1}$ and $${t2}$ do not multiply to $-1$.`;
       if (kind === "same")
-        return `The same line needs equal slopes and equal intercepts; the slopes here are $${t1}$ and $${t2}$.`;
-      return `The slopes $${t1}$ and $${t2}$ are related (equal or opposite reciprocals), so the pair is not unrelated.`;
+        return `The same line needs equal slopes and equal $y$-intercepts. The slopes here are $${t1}$ and $${t2}$, which differ.`;
+      return `Compare the slopes $${t1}$ and $${t2}$ carefully. Equal slopes or slopes that multiply to $-1$ mean the lines are related, so "neither" does not fit.`;
     };
     return choiceSurface(r, {
       prompt: `Line $\\ell$ has the equation $${eq1}$ and line $m$ has the equation $${eq2}$. Which statement describes lines $\\ell$ and $m$?`,
@@ -379,12 +390,13 @@ export const linePairRelationship = chainFamily({
           ? { correct: true as const }
           : { feedback: feedbackFor(kind) }),
       })),
-      hint: `Rewrite $${eq2}$ as $y=mx+b$ by solving for $y$, then compare its slope with the slope in $${eq1}$. Check whether the two slopes are equal, and whether their product is $-1$.`,
+      hint: `Rewrite $${eq2}$ as $y=mx+b$ by getting $y$ alone, so you can read its slope $m$. Then compare that slope with the slope in $${eq1}$.`,
       explanation: [
+        `In $y=mx+b$, the number $m$ multiplying $x$ is the slope, the steepness. The number $b$ is the $y$-intercept, where the line crosses the $y$-axis.`,
         `For $\\ell$, the slope is $${t1}$ and the $y$-intercept is $${m.b}$.`,
-        `Solving $${eq2}$ for $y$ gives the slope $${t2}$.`,
+        `Get $y$ alone in $${eq2}$: move the $x$ term to the other side, then divide by the number multiplying $y$. The slope of $m$ is $${t2}$.`,
         why[a.kind],
-        `The lines are ${labels[a.kind]}.`,
+        `Lines $\\ell$ and $m$ are ${labels[a.kind]}.`,
       ],
     });
   },
@@ -428,25 +440,25 @@ export const dilationLineImage = chainFamily({
             slope: m.m,
             icept: m.b,
             feedback:
-              "A dilation centered at the origin moves a line that misses the center. Its $y$-intercept is a point of the line and is scaled.",
+              "This leaves the line unchanged. A dilation moves every point except its center, so a line that misses the origin moves. Its $y$-intercept point is scaled too.",
           },
           {
             slope: m.m * m.k,
             icept: img,
             feedback:
-              "A dilation keeps the slope of a line: the image of a line is parallel to the line.",
+              "This multiplies the slope by the scale factor. A dilation changes size, not direction, so the image line is parallel and keeps the same slope.",
           },
           {
             slope: m.m,
             icept: enlarge ? m.b + m.k : m.b - m.k,
             feedback:
-              "The intercept is multiplied by the scale factor; adding or subtracting it does not model a dilation.",
+              "This adds or subtracts the scale factor. A dilation multiplies every distance from the center by the scale factor, so multiply the intercept.",
           },
           {
             slope: m.m,
             icept: enlarge ? m.b * m.k * m.k : m.b / (m.k * m.k),
             feedback:
-              "Distances from the center are multiplied by the scale factor once, not squared.",
+              "This multiplies by the scale factor twice, as if squaring it. Distances from the center are multiplied by the scale factor just once.",
           },
           {
             slope: m.m,
@@ -457,11 +469,13 @@ export const dilationLineImage = chainFamily({
           .filter((o) => Number.isInteger(o.icept) && Number.isInteger(o.slope))
           .map((o) => ({ label: eq(o.slope, o.icept), feedback: o.feedback })),
       ],
-      hint: `The point $(0,\\ ${m.b})$ lies on $\\ell$. Multiply its distance from the origin by the scale factor $${scaleText}$ to find where the image crosses the $y$-axis, and decide what happens to the slope $${m.m}$.`,
+      hint: `The point $(0,\\ ${m.b})$ lies on $\\ell$. A dilation multiplies its distance from the origin by the scale factor $${scaleText}$. Find where that point lands.`,
       explanation: [
-        `The $y$-intercept point $(0,\\ ${m.b})$ moves to $(0,\\ ${img})$, because every distance from the origin is multiplied by $${scaleText}$.`,
-        `A dilation maps a line to a parallel line, so the slope stays $${m.m}$.`,
-        `The image is ${eq(m.m, img)}.`,
+        `A dilation resizes a figure from a fixed point, the center. Every point moves along a line from the center, and its distance from the center is multiplied by the scale factor.`,
+        `The line crosses the $y$-axis at $(0,\\ ${m.b})$, its $y$-intercept. Multiply its distance from the origin by $${scaleText}$: it moves to $(0,\\ ${img})$.`,
+        `A dilation changes sizes but not directions, so the image of a line is parallel to it. The slope, the steepness, stays $${m.m}$.`,
+        `A line with slope $${m.m}$ through $(0,\\ ${img})$ has $y$-intercept ${img}.`,
+        `The image of $\\ell$ is ${eq(m.m, img)}.`,
       ],
     });
   },

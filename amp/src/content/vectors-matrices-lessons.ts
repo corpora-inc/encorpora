@@ -8,15 +8,12 @@ export const vectorMatrixMethods: Record<string, ProblemMethod> = {
       "A vector is an arrow with a length and a direction. Its components $\\langle a,b\\rangle$ say how far it moves horizontally ($a$) and vertically ($b$); right and up are positive. Two arrows with the same components are the same vector wherever they are drawn.",
     terms: [
       [
-        "initial point and terminal point",
-        "The tail and the tip of the arrow.",
+        "vector",
+        "The initial point is the tail of the arrow; the terminal point is its tip.",
       ],
-      [
-        "components",
-        "The horizontal and vertical changes from tail to tip, written $\\langle a,b\\rangle$.",
-      ],
-      ["magnitude", "The length of the arrow, written $|\\mathbf{v}|$."],
-      ["scalar", "An ordinary number that multiplies a vector."],
+      "component",
+      "magnitude",
+      "scalar",
     ],
     method: [
       "For points, subtract tail from tip: terminal coordinates minus initial coordinates, $x$ first.",
@@ -30,16 +27,7 @@ export const vectorMatrixMethods: Record<string, ProblemMethod> = {
     goal: "Two perpendicular velocities or forces act together; find the size or direction of the combined vector, or a missing component.",
     intuition:
       "A velocity or a force has a size and a direction, so it is a vector. Two vectors acting together have the effect of their sum, called the resultant. When the two are perpendicular they are the legs of a right triangle and the resultant is its hypotenuse.",
-    terms: [
-      [
-        "resultant",
-        "The single vector with the same effect as the vectors combined.",
-      ],
-      [
-        "arctangent",
-        "The angle whose tangent is a given ratio, written $\\arctan$; use degree mode for angles in degrees.",
-      ],
-    ],
+    terms: ["resultant", "inverse-trig-function"],
     method: [
       "Draw the two perpendicular vectors as the legs of a right triangle. The resultant is the hypotenuse.",
       "Magnitude: $\\sqrt{a^2+b^2}$. A missing leg: $\\sqrt{h^2-a^2}$.",
@@ -54,12 +42,12 @@ export const vectorMatrixMethods: Record<string, ProblemMethod> = {
       "A matrix is a rectangular grid of numbers that organizes data. Each row and each column has a meaning, such as a store and an item, so each number belongs to exactly one row and one column.",
     terms: [
       [
-        "entry",
-        "One number in the matrix; $a_{ij}$ is in row $i$ and column $j$.",
+        "matrix",
+        "Each number in it is an entry; $a_{ij}$ is in row $i$ and column $j$.",
       ],
       [
-        "dimensions",
-        "The size $m\\times n$: $m$ rows and $n$ columns, rows first.",
+        "matrix",
+        "Its dimensions $m\\times n$ mean $m$ rows and $n$ columns, rows first.",
       ],
     ],
     method: [
@@ -74,16 +62,7 @@ export const vectorMatrixMethods: Record<string, ProblemMethod> = {
     goal: "Add, scale or multiply small matrices, or decide from dimensions whether a product exists.",
     intuition:
       "Matrices of the same size add by adding matching entries, and a scalar multiplies every entry. A product combines a row of the first matrix with a column of the second, multiplying matching entries and adding them.",
-    terms: [
-      [
-        "scalar multiple",
-        "A matrix with every entry multiplied by the same number.",
-      ],
-      [
-        "product $AB$",
-        "The matrix whose entry in row $i$, column $j$ is row $i$ of $A$ times column $j$ of $B$.",
-      ],
-    ],
+    terms: ["scalar", "matrix-product"],
     method: [
       "Sums and differences need equal dimensions; combine matching entries. Do any scalar multiple first.",
       "For a product, first compare the columns of the left matrix with the rows of the right matrix. They must be equal; the result has the rows of the left and the columns of the right.",
@@ -97,14 +76,8 @@ export const vectorMatrixMethods: Record<string, ProblemMethod> = {
     intuition:
       "Matrix multiplication keeps most of the rules of number multiplication, but not the order rule. Swapping the order of two matrices usually changes the product.",
     terms: [
-      [
-        "identity matrix $I$",
-        "The square matrix with ones on the main diagonal and zeros elsewhere; $IA=AI=A$.",
-      ],
-      [
-        "commute",
-        "Two matrices commute when $AB=BA$. Some pairs do; most do not.",
-      ],
+      "identity-matrix",
+      ["commute", "For matrices, $AB=BA$. Some pairs commute; most do not."],
     ],
     method: [
       "To test whether two matrices commute, compute both $AB$ and $BA$ and compare entry by entry; one differing entry is enough to show $AB\\ne BA$.",
@@ -118,13 +91,7 @@ export const vectorMatrixMethods: Record<string, ProblemMethod> = {
     goal: "Find a $2\\times2$ determinant, decide whether an inverse exists, or compute the inverse.",
     intuition:
       "The inverse of a matrix undoes it, as dividing undoes multiplying. A $2\\times2$ matrix has an inverse exactly when its determinant is not 0.",
-    terms: [
-      [
-        "determinant",
-        "For $\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}$, the number $ad-bc$.",
-      ],
-      ["inverse $A^{-1}$", "The matrix with $AA^{-1}=A^{-1}A=I$."],
-    ],
+    terms: ["determinant", "inverse-matrix"],
     method: [
       "Compute $\\det A=ad-bc$. If it is 0, there is no inverse.",
       "Otherwise swap $a$ and $d$, change the signs of $b$ and $c$, and divide every entry by $\\det A$.",
@@ -137,13 +104,7 @@ export const vectorMatrixMethods: Record<string, ProblemMethod> = {
     goal: "Apply a $2\\times2$ matrix to a point, match a matrix with a rotation, reflection or dilation, or find an area after a transformation.",
     intuition:
       "A $2\\times2$ matrix moves every point of the plane. Write a point as a column and multiply: the matrix sends the point to a new point. The columns of the matrix are where the points $(1,0)$ and $(0,1)$ go.",
-    terms: [
-      ["image", "The point or figure after the transformation."],
-      [
-        "determinant",
-        "For $\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}$, the number $ad-bc$.",
-      ],
-    ],
+    terms: ["image-transformation", "determinant"],
     method: [
       "To apply a matrix, multiply it by the column $\\begin{bmatrix}x\\\\y\\end{bmatrix}$: each row gives one new coordinate.",
       "To identify a transformation, find the images of $(1,0)$ and $(0,1)$; they are the columns.",
@@ -158,12 +119,12 @@ export const vectorMatrixMethods: Record<string, ProblemMethod> = {
       "A system of two linear equations can be written as one matrix equation $AX=B$. If $A$ has an inverse, multiplying both sides by $A^{-1}$ gives the solution $X=A^{-1}B$.",
     terms: [
       [
-        "coefficient matrix $A$",
-        "The coefficients of $x$ and $y$, one equation per row.",
+        "matrix",
+        "The coefficient matrix $A$ holds the coefficients of $x$ and $y$, one equation per row.",
       ],
       [
-        "constant matrix $B$",
-        "The numbers on the right sides, in the same order as the equations.",
+        "matrix",
+        "The constant matrix $B$ holds the numbers on the right sides, in the same order as the equations.",
       ],
     ],
     method: [

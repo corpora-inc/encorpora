@@ -112,7 +112,7 @@ def conversion(public):
     require(second_p.rstrip("s") == second.rstrip("s") and first_p.rstrip("s") == first.rstrip("s"),
             "The target converts the first unit into the second")
     amount = F(n[2].replace(",", ""))
-    sentence = sentence_of(public["response"])
+    sentence = sentence_of(public["response"]).replace("\n", " ")
     require(sentence == f"{first_p.capitalize()} to {second_p}: " + "{a} : {b} = {c} : {d}", "Both ratios put the first unit on the left")
     wanted = {
         f"The {first_p} in the conversion factor": N(1),

@@ -242,7 +242,10 @@ const family = chainFamily({
           : m.shape === "squared-binomial"
             ? `Squaring means multiplying $${tex(m.f)}$ by itself, so every term meets every term: first, outer, inner and last. Squaring does not square each term alone: the outer and inner products appear too.${sign}`
             : `Each of the 2 terms of $${tex(m.f)}$ multiplies each of the ${terms} terms of $${tex(m.g)}$: first, outer, inner, last, then combine like terms.${sign}`,
-      explanation: [...route],
+      explanation: [
+        "To multiply two polynomials, multiply every term of the first by every term of the second, then combine like terms, terms with the same power of $x$.",
+        ...route,
+      ],
     });
   },
   variant: (m) => m.shape,

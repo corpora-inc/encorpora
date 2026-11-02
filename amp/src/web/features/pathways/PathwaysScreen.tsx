@@ -1,3 +1,7 @@
+import {
+  CurriculumDetailsControl,
+  useCurriculumDetails,
+} from "../curriculum/CurriculumDetails";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
 import { ProgressViews } from "../navigation/ProgressViews";
 import {
@@ -208,8 +212,13 @@ function LearnerMap({ session }: { session: AuthSession }) {
       learnerName={learner?.name}
       controls={
         <>
-          {learners.length > 0 && (
-            <div className="pathways-learner">
+          {/* The learner row holds its place while the family loads. */}
+          {(me.isPending || learners.length > 0) && (
+            <div
+              className="pathways-learner"
+              aria-hidden={me.isPending || undefined}
+              style={me.isPending ? { visibility: "hidden" } : undefined}
+            >
               <span aria-hidden="true">Learner</span>
               <ListboxDisclosure
                 label="Learner"
@@ -296,6 +305,7 @@ export function MapView({
       ? search.filter
       : "";
   const navigate = useNavigate();
+  const { shown } = useCurriculumDetails();
   const [browse, setBrowse] = useState(false);
   const [lesson, setLesson] = useState<string | null>(null);
   useEffect(() => setLesson(null), [selectedId]);
@@ -428,6 +438,12 @@ export function MapView({
         </div>
       )}
       <div className="pathways-status">
+        {/* Phones: the count shares the learner's row (the full sentence
+            above stays for screen readers), so the map starts on the first
+            screen. */}
+        <p className="pathways-phone-summary" aria-hidden="true">
+          {earned} of {skills?.length ?? "…"} skills illuminated
+        </p>
         <p role="status" data-priority={noticeImportant}>
           {notice}
         </p>
@@ -497,7 +513,14 @@ export function MapView({
               aria-label="Find a skill"
               hidden={!browse}
             >
-              <div className="pathways-grade">
+              <CurriculumDetailsControl />
+              <div className="pathways-grade" hidden={!shown && !band}>
+                {!shown && band && (
+                  <small>
+                    A curriculum filter is active. Choose All grades to clear
+                    it.
+                  </small>
+                )}
                 <span aria-hidden="true">Grade or course</span>
                 <ListboxDisclosure
                   label="Grade or course"
@@ -531,7 +554,7 @@ export function MapView({
                       <span>
                         {s.title}
                         <small>
-                          {bandLabel(s.gradeBand)} ·{" "}
+                          {shown && <>{bandLabel(s.gradeBand)} · </>}
                           {stats.get(s.id)?.independentCorrect ?? 0} independent
                           successes
                         </small>
@@ -549,7 +572,7 @@ export function MapView({
               evidence={evidence}
               selected={selectedId}
               onSelect={select}
-              range={range}
+              range={shown ? range : null}
               rangeStrand={selected?.strand}
             />
             {selected && (
@@ -559,9 +582,11 @@ export function MapView({
                 aria-live="polite"
               >
                 <div className="pathways-detail-top">
-                  <span className="pathways-eyebrow">
-                    {bandLabel(selected.gradeBand)}
-                  </span>
+                  {shown && (
+                    <span className="pathways-eyebrow">
+                      Curriculum band: {bandLabel(selected.gradeBand)}
+                    </span>
+                  )}
                   <button aria-label="Close skill" onClick={() => select("")}>
                     ×
                   </button>
@@ -669,7 +694,7 @@ export function MapView({
                   Related skills
                 </h3>
                 {connectionList("related", neighbors.related)}
-                {range && (
+                {shown && range && (
                   <p className="pathways-range">
                     {strandNames[selected.strand] ?? selected.strand} frontier:{" "}
                     {gradeName(range.lo)} to {gradeName(range.hi)} · estimated
@@ -705,7 +730,7 @@ export function MapView({
                 grade. Prerequisites do not earn credit automatically. The map
                 includes skills whose practice is being developed.
               </p>
-              {range && !selected && (
+              {shown && range && !selected && (
                 <p>
                   Overall frontier: {gradeName(range.lo)} to{" "}
                   {gradeName(range.hi)} · estimated range shown by faint

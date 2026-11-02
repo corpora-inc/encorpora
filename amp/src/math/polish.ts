@@ -1,7 +1,12 @@
 /** Final copy-edit for generated text. Generators build sentences from
  * numbers; this pass makes them read correctly for every number, including 1. */
-const invariant = new Set([
+/** Words after a bare 1 that keep their final s (not plural nouns). */
+export const keptAfterOne: readonly string[] = [
   "is",
+  "as",
+  "us",
+  "its",
+  "thus",
   "has",
   "was",
   "plus",
@@ -12,7 +17,40 @@ const invariant = new Set([
   "bus",
   "makes",
   "leaves",
-]);
+  // Verbs that follow a bare 1 ("adding 1 moves 1 right", "the key 1 means
+  // 10"): never plural nouns, so the s stays.
+  "adds",
+  "moves",
+  "gives",
+  "belongs",
+  "means",
+  "needs",
+  "stays",
+  "keeps",
+  "shows",
+  "takes",
+  "goes",
+  "covers",
+  "equals",
+  "holds",
+  "contains",
+  "becomes",
+  "remains",
+  "tells",
+  "says",
+  "lies",
+  "comes",
+  "rises",
+  "sits",
+  "passes",
+  "reaches",
+  "appears",
+  "stands",
+  "represents",
+  "fits",
+  "gets",
+];
+const invariant = new Set(keptAfterOne);
 function singular(word: string) {
   if (word === "buses") return "bus";
   if (invariant.has(word) || word.endsWith("ss")) return word;
@@ -29,9 +67,37 @@ function atMostOne(token: string) {
   if (fraction) return Number(fraction[1]) <= Number(fraction[2]);
   return Number(token) === 1;
 }
+/** Words that describe a counted noun: "1 square counters" → "1 square counter". */
+const describing =
+  "red|blue|green|yellow|orange|purple|pink|black|white|gray|brown|round|square|cubic|long|short|tall|small|big|large|shaded|unshaded|extra|complete|full|empty|equal|whole";
+/** Words ending in s after a describing word that are not plural nouns. */
+const notPlural =
+  "is|as|has|was|its|this|thus|plus|minus|times|less|contains|makes|holds|uses|gives|stays|remains|equals|means|goes|does|leaves|takes|needs|fits|shows|sits|lies|ends|starts|stands|represents|awards";
+const describedPlural = new RegExp(
+  `(^|[^\\d./−+×÷*-]\\s|^\\s|[^\\d./−+×÷*\\s-])1 (${describing}) (?!(?:${notPlural})\\b)([a-z]+s)\\b( (?:contain|use|have|are|make|remain|hold|become|give|cover)\\b)?`,
+  "g",
+);
+/** A noun shared by a list keeps its plural: "3 purple and 1 green sections". */
+const sharedByList = /\d [a-z]+,? (?:and|or) $/;
 export function polish(text: string): string {
   return (
     text
+      // "1 square counters" → "1 square counter"
+      .replace(
+        describedPlural,
+        (
+          match: string,
+          before: string,
+          word: string,
+          noun: string,
+          verb: string | undefined,
+          offset: number,
+          whole: string,
+        ) =>
+          sharedByList.test(whole.slice(0, offset + before.length))
+            ? match
+            : `${before}1 ${word} ${singular(noun)}${verb ? agree(verb) : ""}`,
+      )
       // "There are 1 dots" → "There is 1 dot"
       .replace(/\b([Tt]here) are 1 /g, "$1 is 1 ")
       .replace(/\b([Tt]here) were 1 /g, "$1 was 1 ")

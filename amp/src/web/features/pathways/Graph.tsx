@@ -1,3 +1,4 @@
+import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -34,6 +35,9 @@ type Label = {
   anchorY?: number;
 };
 /** GPU-rendered atlas. Geometry is stable; continuous motion stops when hidden or reduced. */
+/** Height of the map toolbar plus its inset; callouts stay below it. */
+const TOOLBAR_CLEARANCE = 64;
+
 export function Graph({
   skills,
   evidence,
@@ -57,6 +61,7 @@ export function Graph({
   } | null>(null);
   const lastFocused = useRef("");
   const earnedMemory = useRef(new Map<string, number>());
+  const { shown } = useCurriculumDetails();
   const [failed, setFailed] = useState(false);
   const [orbit, setOrbit] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
@@ -409,6 +414,7 @@ export function Graph({
           p.z,
         ).unproject(reference);
     };
+    const labelSizes: { width: number; height: number }[] = [];
     const moveAreas = () => {
       if (!labelHost.current) return;
       camera.updateMatrixWorld();
@@ -424,9 +430,24 @@ export function Graph({
           anchor = project(areaCenters[i]!);
         label.style.left = `${p.x}px`;
         label.style.top = `${p.y}px`;
-        label.style.visibility = p.visible ? "visible" : "hidden";
+        // A callout shows whole or not at all: never cut by the map's edge
+        // or under its toolbar when the camera is close in.
+        // Callout text never changes: measure each once, not every frame.
+        const size = (labelSizes[i] ??= {
+          width: label.offsetWidth,
+          height: label.offsetHeight,
+        });
+        const half = size.width / 2,
+          tall = size.height / 2;
+        const inside =
+          p.x - half >= 4 &&
+          p.x + half <= width - 4 &&
+          p.y - tall >= TOOLBAR_CLEARANCE &&
+          p.y + tall <= height - 4;
+        const shown = p.visible && inside;
+        label.style.visibility = shown ? "visible" : "hidden";
         leader.style.visibility =
-          p.visible && anchor.visible ? "visible" : "hidden";
+          shown && anchor.visible ? "visible" : "hidden";
         leader.setAttribute("x1", String(anchor.x));
         leader.setAttribute("y1", String(anchor.y));
         leader.setAttribute("x2", String(p.x));
@@ -958,9 +979,11 @@ export function Graph({
       {hover && (
         <p className="pathways-hover">
           {skills.find((s) => s.id === hover)?.title}{" "}
-          <small>
-            {bandLabel(skills.find((s) => s.id === hover)!.gradeBand)}
-          </small>
+          {shown && (
+            <small>
+              {bandLabel(skills.find((s) => s.id === hover)!.gradeBand)}
+            </small>
+          )}
         </p>
       )}
       {failed && (

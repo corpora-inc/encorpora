@@ -52,9 +52,12 @@ export function rationalEquationCase(id: string, seed: string) {
         answer,
         hint: `Start with the denominator $${den}$ in $\\dfrac{${n(a)}}{${den}} = ${n(c)}$. Record where it is zero, then multiply both sides by that denominator on the allowed domain.`,
         explanation: [
-          `The original denominator must be nonzero: $x \\ne ${n(h)}$.`,
-          `For an allowed input, multiply both sides by $${den}$: $${n(a)} = ${n(c)}(${den})$. Divide by the nonzero number ${n(c)} to get $${den} = ${tex(rat(a, c))}$.`,
-          `Solving gives $x = ${tex(answer)}$. Its denominator value is $${tex(rat(a, c))}$, which is nonzero. Substitution gives $${n(a)} \\div \\left(${tex(rat(a, c))}\\right) = ${n(c)}$, as required.`,
+          `The denominator is the bottom of the fraction, $${den}$. Dividing by zero is undefined, so $${den}$ cannot be 0. That rules out $x = ${n(h)}$.`,
+          `To clear the fraction, multiply both sides by $${den}$: $${n(a)} = ${n(c)}(${den})$.`,
+          `Divide both sides by ${n(c)}: $${den} = ${tex(rat(a, c))}$.`,
+          `${h === 0 ? "So" : `${h > 0 ? "Add" : "Subtract"} ${Math.abs(h)} ${h > 0 ? "to" : "from"} both sides:`} $x = ${tex(answer)}$.`,
+          `Check: the denominator is then $${tex(rat(a, c))}$, not 0. And $${n(a)} \\div \\left(${tex(rat(a, c))}\\right) = ${n(c)}$, as required.`,
+          `The solution is $x = ${tex(answer)}$.`,
         ],
         tags: [
           "one-denominator",
@@ -107,14 +110,15 @@ export function rationalEquationCase(id: string, seed: string) {
           : {
               feedback:
                 i === 1
-                  ? `The original denominator $${den}$ is zero at $x = ${n(h)}$. That input is excluded regardless of the cleared equation.`
-                  : `On the domain $x \\ne ${n(h)}$, clearing the denominator gives ${reduced}. ${outcome}`,
+                  ? `This picks the value that makes the denominator $${den}$ zero. Dividing by zero is undefined, so $x = ${n(h)}$ can never be a solution.`
+                  : `This misreads the equation after clearing the fraction. For $x \\ne ${n(h)}$, multiplying by $${den}$ gives ${reduced}. ${outcome}`,
             }),
       })),
       hint: `In $\\dfrac{${num}}{${den}} = ${n(c)}$, first exclude the zero of $${den}$. Multiply both sides by $${den}$ only for allowed inputs; keep that restriction when interpreting the result.`,
       explanation: [
-        `The original domain is $x \\ne ${n(h)}$, because $${den}$ cannot be zero.`,
-        `For allowed inputs, multiplying by $${den}$ gives $${num} = ${n(c)}(${den})$. Collecting variable terms on the left and constants on the right gives ${reduced}.`,
+        `The denominator is the bottom of the fraction, $${den}$. Dividing by zero is undefined, so $x = ${n(h)}$ is not allowed. The allowed inputs are the domain.`,
+        `To clear the fraction, multiply both sides by $${den}$: $${num} = ${n(c)}(${den})$.`,
+        `Multiply out the right side. Collect the $x$ terms on the left and the numbers on the right. This gives ${reduced}.`,
         outcome,
       ],
       tags: [

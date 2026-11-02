@@ -273,11 +273,12 @@ function anglePairCase(r: Random): Case {
         mode === 0
           ? `$${R}$, $${s.O}$ and $${P}$ lie on a line, so $\\angle ${P}${s.O}${R}$ is a straight angle: 180°. Ray $${s.O}${Q}$ splits it into ${knownName} and ${unknownName}, which do not overlap.`
           : `$\\angle ${P}${s.O}${R}$ is a right angle: 90°. Ray $${s.O}${Q}$ splits it into ${knownName} and ${unknownName}, which do not overlap.`,
-        `Adjacent parts add to the whole: ${known}° + ${unknownName} = ${whole}°.`,
-        `Subtract: ${unknownName} = ${whole}° − ${known}° = ${unknown}°.`,
+        `Adjacent angles share a side and do not overlap, so their measures add to the whole: ${known}° + ${unknownName} = ${whole}°.`,
+        `Subtraction undoes adding: ${unknownName} = ${whole}° − ${known}° = ${unknown}°.`,
         mode === 0
-          ? `The two angles are supplementary: ${known}° + ${unknown}° = 180°.`
-          : `The two angles are complementary: ${known}° + ${unknown}° = 90°.`,
+          ? `Two angles that add to 180° are called supplementary: ${known}° + ${unknown}° = 180°.`
+          : `Two angles that add to 90° are called complementary: ${known}° + ${unknown}° = 90°.`,
+        `${unknownName} measures ${unknown}°.`,
       ],
       tags: [mode === 0 ? "straight" : "right"],
     };
@@ -308,12 +309,13 @@ function anglePairCase(r: Random): Case {
         ? [
             `${name(start)} and ${name(target)} are vertical angles: they sit opposite each other where the lines cross.`,
             `Each of them forms a straight angle with the same angle between them, ${name((start + 1) % 4)}. So each equals 180° minus that angle, and vertical angles are equal.`,
-            `${name(target)} = ${known}°.`,
+            `So ${name(target)} measures ${known}°, the same as ${name(start)}.`,
           ]
         : [
             `${name(start)} and ${name(target)} are adjacent, and together they fill one side of line $${[P + R, Q + S][target === (start + 1) % 4 ? start % 2 : (start + 1) % 2]}$: a straight angle.`,
-            `They are supplementary: ${known}° + ${name(target)} = 180°.`,
-            `${name(target)} = 180° − ${known}° = ${unknown}°.`,
+            `Angles that add to 180° are called supplementary: ${known}° + ${name(target)} = 180°.`,
+            `Subtract: ${name(target)} = 180° − ${known}° = ${unknown}°.`,
+            `${name(target)} measures ${unknown}°.`,
           ],
       tags: [vertical ? "vertical" : "linear-pair"],
     };
@@ -340,7 +342,9 @@ function anglePairCase(r: Random): Case {
     response: { kind: "number", label: "Angle measure in degrees" },
     explanation: [
       `The three angles fill the full turn around $${s.O}$ without overlapping, so they add to 360°.`,
-      `${p}° + ${q}° + ${s.name(2, 0)} = 360°, so ${s.name(2, 0)} = 360° − ${p + q}° = ${third}°.`,
+      `${p}° + ${q}° + ${s.name(2, 0)} = 360°.`,
+      `Add the known angles, ${p}° + ${q}° = ${p + q}°, and subtract from the full turn: 360° − ${p + q}° = ${third}°.`,
+      `${s.name(2, 0)} measures ${third}°.`,
     ],
     tags: ["full-turn"],
   };
@@ -367,6 +371,7 @@ function angleEquationCase(r: Random): Case {
       L2 = angleLabel(e2.a, e2.b);
     const [hi, lo] = e1.a > e2.a ? [e1, e2] : [e2, e1];
     const steps = [
+      `Vertical angles are the pair of opposite angles where two lines cross. They are always equal.`,
       `${name(first)} and ${name(second)} are vertical angles, so they are equal: ${linear(e1.a, e1.b)} = ${linear(e2.a, e2.b)}.`,
       `Subtract $${linear(lo.a, 0)}$ from both sides: ${linear(hi.a - lo.a, hi.b)} = ${num(lo.b)}.`,
       ...(hi.b !== 0
@@ -514,9 +519,11 @@ function triangleSumCase(r: Random): Case {
       },
       response: { kind: "number", label: "Angle measure in degrees" },
       explanation: [
-        `The three angles of a triangle add to 180°: ${k1}° + ${k2}° + $\\angle ${names[missing]}$ = 180°.`,
+        `The three angles of every triangle add to 180°: torn off and set side by side, they make a straight line.`,
+        `So ${k1}° + ${k2}° + $\\angle ${names[missing]}$ = 180°.`,
         `Add the known angles: ${k1}° + ${k2}° = ${k1 + k2}°.`,
-        `Subtract from 180°: $\\angle ${names[missing]}$ = 180° − ${k1 + k2}° = ${angles[missing]}°.`,
+        `The missing angle is what is left of 180°: 180° − ${k1 + k2}° = ${angles[missing]}°.`,
+        `$\\angle ${names[missing]}$ measures ${angles[missing]}°.`,
       ],
       tags: ["numeric", right ? "right" : "no-right", `missing-${missing}`],
     };
@@ -536,6 +543,7 @@ function triangleSumCase(r: Random): Case {
   const A1 = exprs.reduce((s, e) => s + e.a, 0),
     B1 = exprs.reduce((s, e) => s + e.b, 0);
   const steps = [
+    `The three angles of every triangle add to 180°, so their expressions add to 180.`,
     `The three angles of a triangle add to 180°: ${exprs.map((e) => `(${linear(e.a, e.b)})`).join(" + ")} = 180.`,
     ...solveSteps(A1, B1, 180, x),
     `Check: ${exprs.map((e) => substitute(e.a, e.b, x)).join(", ")}; ${angles.join(" + ")} = 180.`,
@@ -585,9 +593,11 @@ function exteriorCase(r: Random): Case {
         },
         response: { kind: "number", label: "Angle measure in degrees" },
         explanation: [
+          `An exterior angle is the angle outside a triangle made when one side is extended past a corner.`,
           `${exteriorName} and $\\angle ${A}${B}${C}$ form a straight angle along line $${A}${D}$, so ${exteriorName} = 180° − $\\angle ${B}$.`,
           `The triangle's angles add to 180°, so $\\angle ${B}$ = 180° − ($\\angle ${A}$ + $\\angle ${C}$). Then ${exteriorName} = $\\angle ${A}$ + $\\angle ${C}$.`,
           `${exteriorName} = ${angles[0]}° + ${angles[2]}° = ${ext}°.`,
+          `${exteriorName} measures ${ext}°.`,
         ],
         tags: ["find-exterior"],
       };
@@ -608,9 +618,11 @@ function exteriorCase(r: Random): Case {
       },
       response: { kind: "number", label: "Angle measure in degrees" },
       explanation: [
+        `An exterior angle is the angle outside a triangle made when one side is extended past a corner.`,
         `An exterior angle equals the sum of the two interior angles that are not next to it: ${exteriorName} = $\\angle ${A}$ + $\\angle ${C}$.`,
         `${ext}° = ${findA ? `$\\angle ${A}$ + ${angles[2]}°` : `${angles[0]}° + $\\angle ${C}$`}.`,
-        `$\\angle ${names[target]}$ = ${ext}° − ${angles[known]}° = ${angles[target]}°.`,
+        `Subtract the known angle: ${ext}° − ${angles[known]}° = ${angles[target]}°.`,
+        `$\\angle ${names[target]}$ measures ${angles[target]}°.`,
       ],
       tags: ["find-remote"],
     };
@@ -649,6 +661,7 @@ function exteriorCase(r: Random): Case {
     },
     response: { kind: "number", label: "Value of $x$" },
     explanation: [
+      `An exterior angle is the angle outside a triangle made when one side is extended past a corner. The two inside angles not next to it are its remote interior angles.`,
       `An exterior angle equals the sum of the two remote interior angles: (${linear(ea.a, ea.b)}) + (${linear(ec.a, ec.b)}) = ${linear(ee.a, ee.b)}.`,
       `Collect the $x$-terms on the left and the numbers on the right: ${linear(a, 0)} = ${num(-c)}.`,
       ...(a !== 1
@@ -758,8 +771,9 @@ function parallelCase(r: Random): Case {
     unknown = measure(p2);
   const equal = p1 % 2 === p2 % 2;
   const setup = `Lines $${m}$ and $${n}$ are parallel, and line $${t}$ crosses both.`;
+  const transversal = `A transversal is a line that crosses two other lines. Here line $${t}$ crosses the parallel lines $${m}$ and $${n}$, making four angles at each crossing.`;
   if (!algebra) {
-    const explanation: string[] = [];
+    const explanation: string[] = [transversal];
     if (relation)
       explanation.push(
         `The marked angles are ${relation.name}.`,
@@ -778,8 +792,9 @@ function parallelCase(r: Random): Case {
       );
     explanation.push(
       equal
-        ? `x = ${given}.`
-        : `x + ${given} = 180, so x = 180 − ${given} = ${unknown}.`,
+        ? `So the angle marked $x$° equals the ${given}° angle: $x = ${given}$.`
+        : `So $x + ${given} = 180$, and $x = 180 - ${given} = ${unknown}$.`,
+      `The value of $x$ is ${unknown}.`,
     );
     return {
       prompt: `${setup} One marked angle measures ${given}°. What is the value of $x$?`,
@@ -811,7 +826,8 @@ function parallelCase(r: Random): Case {
   const L1 = angleLabel(e1.a, e1.b),
     L2 = angleLabel(e2.a, e2.b);
   const explanation = [
-    `The marked angles are ${relation!.name}, so they are ${equal ? "equal" : "supplementary"}.`,
+    transversal,
+    `The marked angles are ${relation!.name}, so they are ${equal ? "equal" : "supplementary (they add to 180°)"}.`,
   ];
   if (equal) {
     const [hi, lo] = e1.a > e2.a ? [e1, e2] : [e2, e1];
@@ -922,7 +938,7 @@ function sideTestCase(r: Random): Case {
     explanation: [
       `In every set the longest length is ${c} ${u}. Three lengths form a triangle only when the two shorter ones add to more than the longest.`,
       ...order.map((k, i) => `Choice ${"ABCD"[i]}: ${verdict(triples[k]!)}`),
-      `Only ${shown[0]} works.`,
+      `Only ${shown[0]} can be the side lengths of a triangle.`,
     ],
     tags: [twoDegenerate ? "two-degenerate" : "one-degenerate"],
   };
@@ -950,14 +966,15 @@ function thirdSideCase(r: Random): Case {
       label: ask === 2 ? "Number of lengths" : `Length in ${plural}`,
     },
     explanation: [
-      `Call the third side $s$. Each side must be shorter than the other two together.`,
+      `Call the third side $s$. Each side must be shorter than the other two together, or the two shorter sides could not meet to close the triangle.`,
       `s < ${a} + ${b} = ${hi}, so $s$ is less than ${hi}.`,
       `The longer given side, ${Math.max(a, b)}, must be less than ${Math.min(a, b)} + s, so s > ${Math.max(a, b)} − ${Math.min(a, b)} = ${lo}.`,
+      `So $s$ must be between ${lo} and ${hi}, not equal to either.`,
       ask === 0
-        ? `The greatest whole number less than ${hi} is ${hi - 1}.`
+        ? `The greatest whole number less than ${hi} is ${hi - 1}. The greatest possible length is ${hi - 1} ${plural}.`
         : ask === 1
-          ? `The least whole number greater than ${lo} is ${lo + 1}.`
-          : `The whole numbers from ${lo + 1} through ${hi - 1} work: ${hi - 1} − ${lo + 1} + 1 = ${answer} lengths.`,
+          ? `The least whole number greater than ${lo} is ${lo + 1}. The least possible length is ${lo + 1} ${plural}.`
+          : `The whole numbers from ${lo + 1} through ${hi - 1} work. Count them: ${hi - 1} − ${lo + 1} + 1 = ${answer}. There are ${answer} possible lengths.`,
     ],
     tags: [["greatest", "least", "count"][ask]!],
   };
@@ -1062,8 +1079,20 @@ function conditionsCase(r: Random): Case {
   }
   const answer = conditionOptions[verdict]!.id;
   const feedback: Record<string, string> = {};
+  const misread = [
+    // Chose "exactly one".
+    verdict === 1
+      ? "A triangle exists, but nothing here fixes its size, so more than one fits."
+      : "No triangle can be built from these parts at all, so there is not even one.",
+    // Chose "more than one".
+    verdict === 0
+      ? "These parts leave only one way to build the triangle, so every triangle that fits is the same one."
+      : "No triangle can be built from these parts at all.",
+    // Chose "no triangle".
+    "A triangle can be built from these parts.",
+  ];
   conditionOptions.forEach((o, i) => {
-    if (i !== verdict) feedback[o.id] = reason.join(" ");
+    if (i !== verdict) feedback[o.id] = `${misread[i]} ${reason.join(" ")}`;
   });
   return {
     prompt: `A triangle must have ${condition}. How many different triangles meet these conditions? Triangles with the same size and shape count as one.`,
@@ -1075,8 +1104,9 @@ function conditionsCase(r: Random): Case {
     },
     choiceFeedback: feedback,
     explanation: [
+      "Ask two questions: can a triangle be built from these parts at all, and do the parts fix one size and shape?",
       ...reason,
-      `Answer: ${conditionOptions[verdict]!.label.toLowerCase()}.`,
+      `So the answer is: ${conditionOptions[verdict]!.label.toLowerCase()}.`,
     ],
     tags: [kind, ["one", "many", "none"][verdict]!],
   };
@@ -1213,7 +1243,17 @@ function sectionShapeCase(r: Random): Case {
           ? `A square needs four equal sides. ${reason[plane].join(" ")}`
           : o.label === "Rectangle" && shape === "Square"
             ? `It is a rectangle, but all four sides are equal, so the most specific name is square. ${reason[plane].join(" ")}`
-            : reason[plane].join(" ");
+            : `${
+                {
+                  Rectangle:
+                    "A rectangle needs four sides that meet at square corners.",
+                  Triangle:
+                    "A triangle would need the plane to cross exactly three faces.",
+                  Trapezoid:
+                    "A trapezoid needs four sides, with one pair parallel and unequal.",
+                  Square: "",
+                }[o.label]
+              } ${reason[plane].join(" ")}`;
   });
   return {
     prompt: `A ${solidName} is ${dims}. A plane slices it ${planeText(plane, { l, w, u })}. What is the most specific name for the shape of the cross-section?`,
@@ -1266,34 +1306,42 @@ function sectionAreaCase(r: Random): Case {
   if (plane === "parallel-base") {
     answer = l * w;
     explanation = [
+      `A cross-section is the flat shape where a plane cuts through a solid.`,
       `A slice parallel to the base copies the base: a ${l} ${u} by ${w} ${u} rectangle.`,
-      `Area = ${l} × ${w} = ${answer} ${squares}.`,
+      `A rectangle's area is length times width: ${l} × ${w} = ${answer}.`,
+      `The cross-section has an area of ${answer} ${squares}.`,
     ];
   } else if (plane === "perpendicular-front") {
     answer = l * h;
     explanation = [
+      `A cross-section is the flat shape where a plane cuts through a solid.`,
       `A vertical slice parallel to the ${l} ${u} edges of the base copies the faces that contain those edges: ${l} ${u} long and ${h} ${u} tall.`,
-      `Area = ${l} × ${h} = ${answer} ${squares}.`,
+      `A rectangle's area is length times height: ${l} × ${h} = ${answer}.`,
+      `The cross-section has an area of ${answer} ${squares}.`,
     ];
   } else if (plane === "perpendicular-side") {
     answer = w * h;
     explanation = [
+      `A cross-section is the flat shape where a plane cuts through a solid.`,
       `A vertical slice parallel to the ${w} ${u} edges of the base copies the faces that contain those edges: ${w} ${u} wide and ${h} ${u} tall.`,
-      `Area = ${w} × ${h} = ${answer} ${squares}.`,
+      `A rectangle's area is width times height: ${w} × ${h} = ${answer}.`,
+      `The cross-section has an area of ${answer} ${squares}.`,
     ];
   } else if (plane === "through-apex") {
     answer = (l * h) / 2;
     explanation = [
       `The slice passes through the apex and the center of the base, parallel to the ${l} ${u} edge. It is a triangle whose base crosses the whole pyramid: ${l} ${u}.`,
       `Its top vertex is the apex, straight above the base's center, so the triangle's height is the pyramid's height, ${h} ${u}.`,
-      `Area = ½ × ${l} × ${h} = ${answer} ${squares}.`,
+      `A triangle's area is half of base times height: ½ × ${l} × ${h} = ${answer}.`,
+      `The cross-section has an area of ${answer} ${squares}.`,
     ];
   } else {
     answer = (l / 2) * (w / 2);
     explanation = [
       `Halfway up, the plane meets every slanted edge at its midpoint. Each side of the section joins two midpoints, so it is half as long as the base edge below it.`,
       `The section is a ${l / 2} ${u} by ${w / 2} ${u} rectangle.`,
-      `Area = ${l / 2} × ${w / 2} = ${answer} ${squares}, one quarter of the base area ${l * w}.`,
+      `Its area is ${l / 2} × ${w / 2} = ${answer}, one quarter of the base area ${l * w}.`,
+      `The cross-section has an area of ${answer} ${squares}.`,
     ];
   }
   return {

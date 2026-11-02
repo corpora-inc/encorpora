@@ -11,6 +11,8 @@ import json
 import re
 from fractions import Fraction as F
 
+from multi_part_choice_math_oracle import common_response, check_card_use
+
 OPTION_IDS = "abcdef"
 BLANK_ID = re.compile(r"[a-z][a-z0-9]{0,7}")
 MINUS = "−"
@@ -87,7 +89,9 @@ def check_label_typography(label):
 def response_of(public, layout=None, blank_ids=None):
     response = public["response"]
     require(response.get("kind") == "multi-part-choice", "Response protocol")
-    if layout:
+    if response.get("layout") == "cards":
+        common_response(response, layout or "inline", "Choose")
+    elif layout:
         require(response["layout"] == layout, f"Layout {response['layout']} instead of {layout}")
     blanks = response["blanks"]
     require(2 <= len(blanks) <= 6, "Two to six blanks")
@@ -189,6 +193,7 @@ def check_no_leak(problem, picks):
 def review(problem, solve_picks):
     public = problem["public"]
     picks = solve_picks(public)
+    check_card_use(public["response"], picks)
     expected = finish(problem, picks)
     check_no_leak(problem, picks)
     return expected

@@ -131,8 +131,16 @@ export function planMixedPractice(options: {
   skips?: readonly PracticeSkip[];
   /** Scripted opener table; defaults to the production `openerSlots`. */
   openers?: OpenerSlots;
+  /** Templates printed in today's workbooks (workbook/results.ts): held
+   * back so the app does not repeat the paper, unless nothing else is left. */
+  reservedTemplateIds?: ReadonlySet<string>;
 }): PracticeChoice[] {
-  const { templates, skills, evidence, seed } = options;
+  const { skills, evidence, seed } = options;
+  const reserved = options.reservedTemplateIds;
+  const unreserved = reserved?.size
+    ? options.templates.filter((t) => !reserved.has(t.id))
+    : options.templates;
+  const templates = unreserved.length ? unreserved : options.templates;
   const policy = options.policy ?? DEFAULT_PRACTICE_POLICY;
   assertPracticePolicy(policy);
   const { scoring, support, variety } = policy;
@@ -262,7 +270,10 @@ export function planMixedPractice(options: {
         ?.recentOutcomes.slice(-support.demonstratedSuccesses) ?? [];
     return (
       recent.length === support.demonstratedSuccesses &&
-      recent.every((a) => a.correct && !a.assisted)
+      // A paper mark without the answer is not a demonstration.
+      recent.every(
+        (a) => a.correct && !a.assisted && (a.evidenceWeight ?? 1) >= 1,
+      )
     );
   };
   // Cross catalog gaps to the nearest teachable ancestors on each branch.

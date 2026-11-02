@@ -1,3 +1,4 @@
+import type { GlossaryCard, GlossaryLexicon } from "../glossary/types";
 import {
   defaultPracticeSettings,
   practiceSettingsSchema,
@@ -74,6 +75,7 @@ import type { LearnerSkillProgress } from "./progress";
 import type { GeneratedProblem, ProblemVariant } from "../math/contracts";
 import type { PracticeSkip } from "../learning/skip";
 import type { ProblemFlag } from "../feedback/problem-flags";
+import type { WorkbookRecord } from "../workbook/contracts";
 import type {
   StartingBand,
   PracticeStartingPoint,
@@ -100,6 +102,15 @@ export type Outcome = {
   skipped?: true;
   /** The instance's realized variant and axis values, for per-axis evidence. */
   variant?: ProblemVariant;
+  /** Where the answer came from; absent for in-app answers. */
+  evidenceSource?: "paper";
+  /** Below 1 for evidence weaker than a graded answer (a parent's mark
+   * without the answer). Absent means 1. */
+  evidenceWeight?: number;
+  /** Term cards for the explanation's words. Added to the response only,
+   * never stored with the attempt. */
+  glossary?: GlossaryCard[];
+  glossaryLexicon?: GlossaryLexicon;
 };
 export type SavedProblem = GeneratedProblem & {
   /** Serving context is private and immutable for evidence interpretation. */
@@ -170,6 +181,17 @@ export interface LearnerTransaction {
     key: { requestId: string } | { problemId: string },
   ): Promise<{ id: string; requestId: string } | undefined>;
   saveFlag(flag: ProblemFlag): Promise<void>;
+  /** This learner's workbooks, newest first (one date, or all). */
+  workbooks(date?: string): Promise<WorkbookRecord[]>;
+  workbook(id: string): Promise<WorkbookRecord | undefined>;
+  /** Stores a workbook unless one exists for its date, number and length;
+   * returns the stored one either way. */
+  saveWorkbook(workbook: WorkbookRecord): Promise<WorkbookRecord>;
+  setWorkbookPaper(id: string, paper: WorkbookRecord["paper"]): Promise<void>;
+  /** The workbook printed with this code (newest when codes repeat). */
+  workbookByCode(code: string): Promise<WorkbookRecord | undefined>;
+  /** Workbooks made in the last day, whose problems mixed practice holds back. */
+  recentWorkbooks(): Promise<WorkbookRecord[]>;
 }
 export interface Repository {
   /** The anonymous free-trial allowance and its placement length. */
@@ -496,6 +518,19 @@ export class PostgresRepository implements Repository {
     }
   }
 }
+const workbookColumns = `id,to_char(workbook_date,'YYYY-MM-DD') AS date,number,minutes,paper,spec,code,created_at AS "createdAt"`;
+function workbookRow(row: Record<string, unknown>): WorkbookRecord {
+  return {
+    id: row.id as string,
+    date: row.date as string,
+    number: row.number as number,
+    minutes: row.minutes as WorkbookRecord["minutes"],
+    paper: row.paper as WorkbookRecord["paper"],
+    spec: row.spec as WorkbookRecord["spec"],
+    code: row.code as string,
+    createdAt: (row.createdAt as Date).toISOString(),
+  };
+}
 export class PgTransaction implements LearnerTransaction {
   private settingsCache?: Promise<PracticeSettings>;
   practiceSettings(): Promise<PracticeSettings> {
@@ -621,7 +656,7 @@ export class PgTransaction implements LearnerTransaction {
     const settings = await this.practiceSettings();
     const history = await this.db.query(
       `SELECT a.outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
-        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt", COALESCE((i.content->>'practiceRevision')::int,0) AS "practiceRevision" FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
+        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt",(outcome->>'evidenceWeight')::float8 AS "evidenceWeight", COALESCE((i.content->>'practiceRevision')::int,0) AS "practiceRevision" FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
         WHERE a.learner_id=$1 AND COALESCE((i.content->>'practiceEpoch')::int,0)=$3 ORDER BY a.evidence_sequence LIMIT $2`,
       [this.learnerId, answers, settings.epoch],
     );
@@ -818,6 +853,68 @@ export class PgTransaction implements LearnerTransaction {
         flag.viewport.height,
       ],
     );
+  }
+  async workbooks(date?: string) {
+    const result = await this.db.query(
+      `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1
+        AND ($2::date IS NULL OR workbook_date=$2::date)
+        ORDER BY workbook_date DESC,number DESC,minutes
+        LIMIT CASE WHEN $2::date IS NULL THEN 400 END`,
+      [this.learnerId, date ?? null],
+    );
+    return result.rows.map(workbookRow);
+  }
+  async workbook(id: string) {
+    const result = await this.db.query(
+      `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1 AND id=$2`,
+      [this.learnerId, id],
+    );
+    return result.rows[0] ? workbookRow(result.rows[0]) : undefined;
+  }
+  async saveWorkbook(workbook: WorkbookRecord) {
+    await this.db.query(
+      `INSERT INTO amp_workbooks(id,learner_id,workbook_date,number,minutes,paper,spec,code)
+        VALUES($1,$2,$3,$4,$5,$6,$7,$8)
+        ON CONFLICT(learner_id,workbook_date,number,minutes) DO NOTHING`,
+      [
+        workbook.id,
+        this.learnerId,
+        workbook.date,
+        workbook.number,
+        workbook.minutes,
+        workbook.paper,
+        JSON.stringify(workbook.spec),
+        workbook.code,
+      ],
+    );
+    const result = await this.db.query(
+      `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1
+        AND workbook_date=$2 AND number=$3 AND minutes=$4`,
+      [this.learnerId, workbook.date, workbook.number, workbook.minutes],
+    );
+    return workbookRow(result.rows[0]);
+  }
+  async setWorkbookPaper(id: string, paper: WorkbookRecord["paper"]) {
+    await this.db.query(
+      "UPDATE amp_workbooks SET paper=$3 WHERE learner_id=$1 AND id=$2",
+      [this.learnerId, id, paper],
+    );
+  }
+  async workbookByCode(code: string) {
+    const result = await this.db.query(
+      `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1 AND code=$2
+        ORDER BY created_at DESC LIMIT 1`,
+      [this.learnerId, code],
+    );
+    return result.rows[0] ? workbookRow(result.rows[0]) : undefined;
+  }
+  async recentWorkbooks() {
+    const result = await this.db.query(
+      `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1
+        AND created_at>now()-interval '24 hours' ORDER BY created_at DESC LIMIT 20`,
+      [this.learnerId],
+    );
+    return result.rows.map(workbookRow);
   }
   async trialRemaining() {
     return (await this.trialProgress())?.remaining ?? null;

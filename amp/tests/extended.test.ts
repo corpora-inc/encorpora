@@ -170,3 +170,13 @@ test("every extended family has one original companion lesson and mathematically
   assert.equal(2 * x + y, 7);
   assert.equal(x + y, 5);
 });
+
+test("unit-price asks about a different number of notebooks than it gives", () => {
+  for (let i = 0; i < 400; i++) {
+    const [given, , asked] = generateExtendedProblem(
+      "unit-price",
+      `oracle-${i}`,
+    ).public.prompt.match(/\d+/g)!;
+    assert.notEqual(asked, given, `oracle-${i}`);
+  }
+});

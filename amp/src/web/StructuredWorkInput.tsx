@@ -228,7 +228,7 @@ function Given({ r, field }: { r: StructuredWorkResponse; field: WorkField }) {
           .find((b) => b.id === field.bank)
           ?.options.find((o) => o.id === v)?.label ?? v)
       : field.kind === "number"
-        ? `$${numberTex(v)}$${field.unit ? ` ${field.unit}` : ""}`
+        ? `$${numberTex(v)}$`
         : (() => {
             const parsed = parseLine(v, fieldParseOptions(field));
             return parsed.ok ? `$${lineTex(parsed.line)}$` : v;
@@ -238,8 +238,27 @@ function Given({ r, field }: { r: StructuredWorkResponse; field: WorkField }) {
       {/* One inline run: words and formulas keep their spaces. */}
       <span>
         <MathText text={text} />
+        {/* The unit reads exactly as beside an entry box: plain text, so a
+            power base ("× 10^") is never typeset as broken TeX. */}
+        {field.kind === "number" && field.unit && (
+          <span className="work-unit"> {unitLabel(field.unit)}</span>
+        )}
       </span>
     </span>
+  );
+}
+
+/** A power base ("× 10^", whose exponent is the next box) reads as the
+ * row's own notation, × 10ⁿ, never as a caret. Other units are words. */
+function unitLabel(unit: string) {
+  const power = /^×\s*(\d+)\s*\^$/.exec(unit);
+  return power ? (
+    <>
+      × {power[1]}
+      <sup>n</sup>
+    </>
+  ) : (
+    unit
   );
 }
 
@@ -407,7 +426,7 @@ export function StructuredWorkInput({
           />
           {f.kind === "number" && f.unit && (
             <span className="work-unit" aria-hidden="true">
-              {f.unit}
+              {unitLabel(f.unit)}
             </span>
           )}
         </span>

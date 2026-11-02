@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -199,18 +200,15 @@ export const volumeCoordinateLessons: Lesson[] = [
 
 const terms = {
   cube: [
-    ["unit cube", "A cube with edges 1 unit long; its volume is 1 cubic unit."],
-    ["layer", "One flat level of cubes covering the prism's base."],
+    "unit-cube",
+    [
+      "volume",
+      "A layer is one flat level of cubes covering the base; volume is cubes per layer times layers.",
+    ],
   ],
-  prism: [
-    ["base area", "Length times width: the cubes in one layer."],
-    ["volume", "The number of unit cubes that fill a solid."],
-  ],
-  grid: [
-    ["ordered pair", "$(x, y)$: $x$ across from 0, then $y$ up."],
-    ["origin", "The point (0, 0), where the axes meet."],
-  ],
-} satisfies Record<string, [string, string][]>;
+  prism: ["base-area", "volume"],
+  grid: ["ordered-pair", "origin"],
+} satisfies Record<string, MethodTerm[]>;
 export const volumeCoordinateMethods: Record<string, ProblemMethod> = {
   "unit-cube-volume": {
     goal: "Given a prism of unit cubes, find its volume in cubic units.",

@@ -486,8 +486,10 @@ function primeCompositeSort(r: Random): Built {
       answer: "",
       hint: `A prime number has exactly two factors, 1 and itself. Look for a factor pair other than 1 and the number; a number that has one is not prime.`,
       explanation: [
+        `A prime number has exactly two factors, 1 and itself. A composite number has another factor pair too.`,
+        `To test a number, try dividing it by small primes such as 2, 3, 5 and 7.`,
         ...wrong.map((n) => `${compositeWhy(n)}, so it is composite.`),
-        `${primeFeedback(right)} It is the prime number.`,
+        `${primeFeedback(right)} ${right} is the prime number.`,
       ],
       choices: [
         { label: `${right}`, correct: true },
@@ -510,8 +512,10 @@ function primeCompositeSort(r: Random): Built {
       answer: "",
       hint: `A composite number has a factor pair other than 1 and itself. Try dividing each number by 2, 3, 5 and 7 until one divides evenly.`,
       explanation: [
+        `A prime number has exactly two factors, 1 and itself. A composite number has another factor pair too.`,
+        `To test a number, try dividing it by small primes such as 2, 3, 5 and 7.`,
         ...wrong.map((n) => primeFeedback(n)),
-        `${compositeWhy(right)}, so ${right} is composite.`,
+        `${compositeWhy(right)}, so ${right} is the composite number.`,
       ],
       choices: [
         { label: `${right}`, correct: true },
@@ -625,9 +629,11 @@ function primeFactorizationExponents(r: Random): Built {
         ? `Keep splitting ${isPrime(start[0]) ? start[1] : start[0]}${isPrime(start[0]) || isPrime(start[1]) ? "" : " and the other factor"} into smaller factors until every branch ends in a prime. Then count how many times each prime appears.`
         : `Split ${n} into two factors, then keep splitting any factor that is not prime. Stop when every branch ends in a prime, then count how many times each prime appears.`,
     explanation: [
+      `A prime factorization writes a number as a product of primes, numbers whose only factors are 1 and themselves.`,
       `Split ${n} until every factor is prime: ${n} = ${primeFactors(n).join(" × ")}.`,
-      `Group equal primes: ${ps.map(([b, e]) => `${b} appears ${e === 1 ? "once" : `${e} times`}`).join("; ")}.`,
-      `The prime factorization is ${correct}. Check: ${plainProduct(ps)} = ${n}.`,
+      `An exponent counts how many times a factor repeats, so group equal primes: ${ps.map(([b, e]) => `${b} appears ${e === 1 ? "once" : `${e} times`}`).join("; ")}.`,
+      `Check by multiplying back: ${plainProduct(ps)} = ${n}.`,
+      `The prime factorization of ${n} is ${correct}.`,
     ],
     choices: choicesFrom(correct, wrong),
   };
@@ -653,6 +659,7 @@ function primeFactorizationValue(r: Random): Built {
       responseLabel: "The number",
       hint: `Work out each power first, starting with ${ps.find(([, e]) => e > 1)![0]}^${ps.find(([, e]) => e > 1)![1]}: an exponent tells how many times its base is a factor. Then multiply the results.`,
       explanation: [
+        `An exponent tells how many times its base is used as a factor. Work out each power first, then multiply.`,
         ...ps
           .filter(([, e]) => e > 1)
           .map(
@@ -660,6 +667,7 @@ function primeFactorizationValue(r: Random): Built {
               `${b}^${e} = ${Array(e).fill(b).join(" × ")} = ${b ** e}.`,
           ),
         `Multiply: ${ps.map(([b, e]) => b ** e).join(" × ")} = ${n}.`,
+        `The number with prime factorization ${label} is ${n}.`,
       ],
     };
   }
@@ -677,8 +685,10 @@ function primeFactorizationValue(r: Random): Built {
       responseLabel: "The prime",
       hint: `Split ${n} into factors, and keep splitting until every factor is prime. Then compare the primes you found.`,
       explanation: [
-        `${n} = ${primeFactors(n).join(" × ")}.`,
+        `A prime factor is a factor that is a prime number: its only factors are 1 and itself.`,
+        `Split ${n} into factors, and keep splitting until every factor is prime: ${n} = ${primeFactors(n).join(" × ")}.`,
         `The different primes are ${ps.map(([b]) => b).join(", ")}. The greatest is ${g}.`,
+        `The greatest prime factor of ${n} is ${g}.`,
       ],
     };
   }
@@ -690,8 +700,10 @@ function primeFactorizationValue(r: Random): Built {
     responseLabel: "Number of primes",
     hint: `Split ${n} until every factor is prime. Count every prime in the product, including repeats.`,
     explanation: [
+      `A prime is a whole number greater than 1 whose only factors are 1 and itself. Split ${n} until every factor is prime.`,
       `${n} = ${primeFactors(n).join(" × ")}.`,
-      `The product has ${count} primes, counting each repeat.`,
+      `Count every prime in the product, including repeats, because each one is a separate factor.`,
+      `The product has ${count} primes.`,
     ],
   };
 }
@@ -750,7 +762,7 @@ function decimalMoneyChange(r: Random): Built {
       responseLabel: label,
       hint: `Change is what is left of the ${bill / 100} dollars after paying ${dl(price)} dollars. Subtract, or count up from ${dl(price)} to ${bill / 100}.00. Keep the cents in line with the cents.`,
       explanation: [
-        `Change = amount paid − price = ${dl(bill)} − ${dl(price)}.`,
+        `Change is the money you get back: the amount paid minus the price. Here that is ${dl(bill)} − ${dl(price)}.`,
         countUp(price, bill),
         `The change is ${dl(bill - price)} dollars.`,
       ],
@@ -1203,7 +1215,7 @@ function customaryUnitReverse(r: Random): Built {
       hint: `${factOf(c.big, c.small)}. Find how many groups of ${c.per} ${U[c.small].many} fit in ${commas(small)} ${U[c.small].many}. Divide.`,
       explanation: [
         `${factOf(c.big, c.small)}, so ${c.per} ${U[c.small].many} make one ${U[c.big].one}.`,
-        `${commas(small)} ÷ ${c.per} = ${n}.`,
+        `Count how many groups of ${c.per} fit, so divide: ${commas(small)} ÷ ${c.per} = ${n}.`,
         `${withUnit(small, c.small)} = ${withUnit(n, c.big)}.`,
       ],
     };
@@ -1217,9 +1229,10 @@ function customaryUnitReverse(r: Random): Built {
     responseLabel: `Whole ${U[c.big].many}`,
     hint: `${factOf(c.big, c.small)}. Find how many full groups of ${c.per} ${U[c.small].many} fit in ${commas(small)} ${U[c.small].many}. Ignore any ${U[c.small].many} left over.`,
     explanation: [
+      `${factOf(c.big, c.small)}, so each whole ${U[c.big].one} uses ${c.per} ${U[c.small].many}. Count the full groups of ${c.per} by dividing.`,
       `${commas(small)} ÷ ${c.per} = ${n} with ${extra} left over.`,
       `${n} × ${c.per} = ${commas(n * c.per)}, and ${commas(small)} − ${commas(n * c.per)} = ${extra}.`,
-      `${withUnit(n, c.big)} are whole, with ${withUnit(extra, c.small)} left over.`,
+      `The ${withUnit(extra, c.small)} left over cannot make another whole ${U[c.big].one}, so ${n === 1 ? `1 whole ${U[c.big].one} can` : `${n} whole ${U[c.big].many} can`} be made.`,
     ],
   };
 }
@@ -1566,6 +1579,7 @@ function compatibleNumberEstimate(r: Random): Built {
       answer: "",
       hint: `Compatible numbers are close to the real numbers and easy to divide. List the multiples of ${10 * d} near ${D}, pick the closest, then divide it by ${d}.`,
       explanation: [
+        `Compatible numbers are numbers close to the real ones that divide easily. A multiple of ${10 * d} divides evenly by ${d}.`,
         `The multiples of ${10 * d} near ${D} are ${Math.min(m, far)} and ${Math.max(m, far)}. ${m} is closer to ${D}.`,
         `${m} ÷ ${d} = ${q}, since ${d} × ${q} = ${m}.`,
         `${D} ÷ ${d} is about ${q}.`,
@@ -1606,6 +1620,7 @@ function compatibleNumberEstimate(r: Random): Built {
       answer: "",
       hint: `Compatible numbers are close to the real numbers and easy to multiply. Multiples of ${step} times ${k} make ${step * k}, a number that is easy to scale. List the multiples of ${step} near ${x} and pick the closest.`,
       explanation: [
+        `Compatible numbers are numbers close to the real ones that multiply easily. ${step} × ${k} = ${step * k}, so multiples of ${step} are easy to multiply by ${k}.`,
         `The multiples of ${step} near ${x} are ${Math.min(m, far)} and ${Math.max(m, far)}. ${m} is closer to ${x}.`,
         `${m} × ${k} = ${commas(est)}.`,
         `${x} × ${k} is about ${commas(est)}.`,
@@ -1645,6 +1660,7 @@ function compatibleNumberEstimate(r: Random): Built {
     answer: "",
     hint: `Keep the first digit of each number and replace every other digit with a zero: ${commas(nums[0]!)} becomes ${commas(lead(nums[0]!))}. Then add the new numbers.`,
     explanation: [
+      `Front-end estimation keeps only the first digit of each number and makes the rest zeros, because the first digit is worth the most.`,
       `Keep the first digit of each number: ${nums.map((n) => `${commas(n)} → ${commas(lead(n))}`).join("; ")}.`,
       `Add: ${nums.map((n) => commas(lead(n))).join(" + ")} = ${commas(front)}.`,
       `The front-end estimate is ${commas(front)}.`,
@@ -1723,8 +1739,9 @@ function benchmarkPercentEstimate(r: Random): Built {
       answer: "",
       hint: `Round ${dl(Math.round(price * 100))} to the nearest 10 dollars first. 10% of a number is one tenth of it; ${pct === 15 ? "5% is half of that, and 15% is 10% plus 5%" : pct === 20 ? "20% is twice 10%" : pct === 5 ? "5% is half of 10%" : "move the decimal point one place left"}.`,
       explanation: [
-        `${dl(Math.round(price * 100))} dollars rounds to ${base} dollars.`,
-        `10% of ${base} is ${base} ÷ 10 = ${money(ten)}.`,
+        `Percent means "out of 100". Benchmark percents like 10% are easy to find, so build the others from them.`,
+        `${dl(Math.round(price * 100))} dollars rounds to ${base} dollars, a friendly number to work with.`,
+        `10% is 10 out of 100, which is one tenth. 10% of ${base} is ${base} ÷ 10 = ${money(ten)}.`,
         pct === 10
           ? `So the ${what} is about ${money(est)} ${dollarWord(est)}.`
           : pct === 15

@@ -8,13 +8,10 @@ export const lineGraphReadMethods: Record<string, ProblemMethod> = {
     intuition:
       "A line graph is a list of values in order. Each point stands for one measurement: its place along the bottom names the day or week, and its height tells the amount. The line joins neighboring points so you can see whether the amount went up or down.",
     terms: [
-      [
-        "scale",
-        "The numbers along an axis. Check what each gridline counts by before reading a height.",
-      ],
+      "scale-axis",
       [
         "change",
-        "A later value minus an earlier value. It is positive for an increase and negative for a decrease.",
+        "Here it is the later value minus the earlier value: positive for an increase, negative for a decrease.",
       ],
     ],
     method: [
@@ -29,16 +26,7 @@ export const lineGraphReadMethods: Record<string, ProblemMethod> = {
     goal: "Use every dot of a dot plot to find a total, a range or a missing value.",
     intuition:
       "Each dot is one measurement. A stack of three dots over 4 means three measurements of 4, so it adds 4 three times. Reading the plot gives a list of numbers, and the question is ordinary arithmetic on that list.",
-    terms: [
-      [
-        "range",
-        "The greatest value minus the least value, how far the data spread.",
-      ],
-      [
-        "mixed number",
-        "A whole number plus a fraction, such as $2\\frac{1}{4}$.",
-      ],
-    ],
+    terms: ["range-statistics", "mixed-number"],
     method: [
       "Read every dot and write the list of values, counting a stack of dots once for each dot.",
       "For the total, add them all. For the range, subtract the least from the greatest. For a missing value, subtract the total of the dots from the given total.",

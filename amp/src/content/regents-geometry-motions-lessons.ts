@@ -7,16 +7,7 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
     goal: "Find the scale factor and the center of a dilation from a figure and its image.",
     intuition:
       "A dilation stretches or shrinks a figure from a fixed point, its center. Every point moves along a line through the center, and every distance from the center is multiplied by the same scale factor. The center is the one point that does not move.",
-    terms: [
-      [
-        "center of dilation",
-        "The fixed point from which every point of the figure is stretched or shrunk.",
-      ],
-      [
-        "scale factor",
-        "The number that multiplies every distance from the center.",
-      ],
-    ],
+    terms: ["center-of-dilation", "scale-factor"],
     method: [
       "Draw lines through two pairs of corresponding points, such as $A$ and $A'$, and $B$ and $B'$.",
       "The lines cross at the center of dilation.",
@@ -30,8 +21,11 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
     intuition:
       "A dilation sends a line to a parallel line, or to itself. If the center is on the line, every point moves along the line, so the line does not change. If the center is off the line, the image is a different line with the same slope.",
     terms: [
-      ["parallel", "Lines with the same slope, which never meet."],
-      ["image", "The figure after the dilation."],
+      [
+        "parallel",
+        "On a graph, non-vertical parallel lines have equal slopes.",
+      ],
+      "image-transformation",
     ],
     method: [
       "Test whether the center satisfies the line's equation.",
@@ -45,16 +39,7 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
     goal: "Name the type of each rigid motion in a sequence from the coordinates of three triangles.",
     intuition:
       "A reflection reverses the order of the labels around a triangle, from counterclockwise to clockwise. A translation slides every vertex by the same amount. A rotation keeps the order of the labels but turns the sides.",
-    terms: [
-      [
-        "rigid motion",
-        "A translation, reflection or rotation, which keeps lengths and angle measures.",
-      ],
-      [
-        "orientation",
-        "The order, clockwise or counterclockwise, of the labels around a figure.",
-      ],
-    ],
+    terms: ["rigid-motion", "orientation"],
     method: [
       "For each step, compare how the vertices move.",
       "Equal moves of every vertex mean a translation.",
@@ -70,11 +55,11 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
     terms: [
       [
         "reflection",
-        "A flip across a line, which sends $(x,y)$ to $(x,-y)$ over the $x$-axis and to $(-x,y)$ over the $y$-axis.",
+        "Over the $x$-axis, $(x, y)$ goes to $(x, -y)$; over the $y$-axis, it goes to $(-x, y)$.",
       ],
       [
-        "image of a side",
-        "The segment between the images of its two endpoints.",
+        "image-transformation",
+        "The image of a side is the segment joining the images of its two endpoints.",
       ],
     ],
     method: [
@@ -89,13 +74,7 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
     goal: "Decide which statement must be true after a sequence of rigid motions.",
     intuition:
       "Rigid motions move a figure without changing its size or shape: lengths and angles stay the same, so the image is congruent. Things that can change are the position, the direction of sides, and the order of labels around the figure.",
-    terms: [
-      [
-        "congruent",
-        "The same size and shape, so one can be moved onto the other by rigid motions.",
-      ],
-      ["corresponding", "Matching parts of the original and its image."],
-    ],
+    terms: ["congruent", "corresponding"],
     method: [
       "List what a rigid motion keeps: lengths, angle measures, area.",
       "Test each statement against that list.",

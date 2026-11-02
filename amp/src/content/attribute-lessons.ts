@@ -201,7 +201,7 @@ export const attributeLessons: Lesson[] = [
 export const attributeMethods: Record<string, ProblemMethod> = {
   "compare-lengths": {
     goal: "Decide which of two strips is longer or shorter, or that they are equal.",
-    terms: [["Length", "How long something is from one end to the other."]],
+    terms: ["length"],
     method: [
       "Check whether the strips start at the same line.",
       "Compare from the same start: the one that reaches further is longer.",
@@ -211,7 +211,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   },
   "compare-weights": {
     goal: "Read a balance to decide which object is heavier or lighter.",
-    terms: [["Balance", "A beam with two pans; it drops on the heavier side."]],
+    terms: ["balance-scale"],
     method: [
       "Find the lower pan: its object is heavier.",
       "A level beam means the objects weigh the same.",
@@ -220,7 +220,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   },
   "compare-capacity": {
     goal: "Decide which container holds more after pouring one into the other.",
-    terms: [["Capacity", "How much a container can hold."]],
+    terms: ["capacity"],
     method: [
       "Look at container $B$ after all of the water from $A$ is poured in.",
       "Room left: $B$ holds more. Spilled: A holds more. Exactly full: the same.",
@@ -229,7 +229,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   },
   "measure-with-units": {
     goal: "Count equal units laid end to end along an object.",
-    terms: [["Unit", "One of the equal pieces used to measure."]],
+    terms: ["unit"],
     method: [
       "Check the units start at one end and touch without overlapping.",
       "Count the units from one end of the object to the other.",
@@ -238,7 +238,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   },
   "correct-unit-measure": {
     goal: "Pick the picture that measures a length correctly.",
-    terms: [["Unit", "One of the equal pieces used to measure."]],
+    terms: ["unit"],
     method: [
       "Rule out pictures with gaps or overlaps between units.",
       "Rule out pictures whose first unit does not start at the object's end.",
@@ -247,7 +247,12 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   },
   "order-lengths": {
     goal: "Find the longest or shortest of three ribbons from two comparisons.",
-    terms: [["Compare", "Decide which of two is longer or shorter."]],
+    terms: [
+      [
+        "length",
+        "To compare lengths, decide which of two is longer or shorter.",
+      ],
+    ],
     method: [
       "Find the ribbon named in both sentences: it is in the middle.",
       "Put the longer one before it and the shorter one after it.",
@@ -256,7 +261,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   },
   "read-liquid-volume": {
     goal: "Read a liquid volume in liters on a container scale.",
-    terms: [["Liter ($L$)", "A unit of liquid volume."]],
+    terms: ["liter"],
     method: [
       "Find a tick's value: the jump between labels ÷ the spaces between them.",
       "Start at the label below the water and count on by the tick value.",
@@ -265,7 +270,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   },
   "balance-mass": {
     goal: "Find an object's mass from the standard masses that balance it.",
-    terms: [["Gram ($g$)", "A unit of mass; 1000 g is 1 kilogram."]],
+    terms: ["gram"],
     method: [
       "Check the beam is level: then both pans hold the same mass.",
       "Add the standard masses on the other pan, largest first, in grams.",
@@ -274,10 +279,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
   },
   "mass-volume-story": {
     goal: "Solve a one-step story with grams, kilograms or liters.",
-    terms: [
-      ["Gram and kilogram", "Units of mass; 1 kg = 1000 g."],
-      ["Liter", "A unit of liquid volume."],
-    ],
+    terms: ["gram", "kilogram", "liter"],
     method: [
       "Decide the operation: join, take away, equal groups or equal sharing.",
       "Compute with the numbers and keep the unit in the answer.",

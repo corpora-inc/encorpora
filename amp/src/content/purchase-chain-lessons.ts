@@ -7,13 +7,7 @@ export const purchaseChainMethods: Record<string, ProblemMethod> = {
     goal: "Add two prices and subtract a coupon, or count a wallet of bills and coins and subtract a purchase price, in dollars and cents.",
     intuition:
       "Money amounts are decimals: the digits after the point are cents. A total adds every amount that is paid or held, and a coupon or purchase is then taken away from it.",
-    terms: [
-      ["coupon", "An amount taken off the total that would otherwise be paid."],
-      [
-        "value of a coin",
-        "A quarter is 25 cents, a dime 10 cents and a nickel 5 cents.",
-      ],
-    ],
+    terms: ["coupon", "coin"],
     method: [
       "Find the first total: add the two prices, or add the bills and then the coins, lining up the decimal points.",
       "Subtract the coupon or the purchase price from that total, again lining up the decimal points.",
@@ -26,10 +20,7 @@ export const purchaseChainMethods: Record<string, ProblemMethod> = {
     goal: "Multiply a mixed-number quantity by a decimal unit price, then take a fraction or percent off the total.",
     intuition:
       "The cost before a discount is the quantity times the price for one unit. A discount of $\\frac{1}{10}$ or 10% is taken from that whole cost, so the customer pays the rest.",
-    terms: [
-      ["unit price", "The cost of one unit, such as one yard."],
-      ["discount", "A fraction or percent of the cost that is taken off."],
-    ],
+    terms: ["unit-price", "discount"],
     method: [
       "Write the mixed number as a decimal and multiply it by the unit price to get the cost before the discount.",
       "Find the discount: divide the cost by the fraction's denominator, or multiply by the percent as a decimal.",

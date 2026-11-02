@@ -8,10 +8,10 @@ export const repeatingPatternMethods: Record<string, ProblemMethod> = {
     intuition:
       "Some patterns are made of a short part that is repeated again and again, like circle, square, square, circle, square, square. To continue the pattern or fill a gap, find the repeating part and see where in it you are.",
     terms: [
-      ["pattern", "Shapes or numbers that follow a rule."],
+      "pattern",
       [
-        "repeating part",
-        "The shortest group of shapes that is repeated over and over.",
+        "pattern",
+        "The repeating part is the shortest group of shapes that repeats over and over.",
       ],
     ],
     method: [

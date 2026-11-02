@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -196,21 +197,10 @@ export const angleLessons: Lesson[] = [
 ];
 
 const terms = {
-  measure: [
-    ["degree", "One 360th of a full turn, written 1°."],
-    ["vertex", "The point where the two rays of an angle meet."],
-  ],
-  lines: [
-    ["ray", "Part of a line that starts at a point and goes on one way."],
-    ["right angle", "A square corner: 90°."],
-  ],
-  symmetry: [
-    [
-      "line of symmetry",
-      "A fold line that makes the two halves match exactly.",
-    ],
-  ],
-} satisfies Record<string, [string, string][]>;
+  measure: ["degree-angle", "vertex"],
+  lines: ["ray", "right-angle"],
+  symmetry: ["line-of-symmetry"],
+} satisfies Record<string, MethodTerm[]>;
 export const angleMethods: Record<string, ProblemMethod> = {
   "protractor-reading": {
     goal: "Given an angle on a protractor, find its measure in degrees.",

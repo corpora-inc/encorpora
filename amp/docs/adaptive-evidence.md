@@ -24,6 +24,14 @@ For the overall readout, a rare miss adds a bounded reporting-uncertainty reserv
 
 A correct answer after a hint or lesson contributes half an independent answer's log-likelihood weight. An assisted miss has zero likelihood weight. Both remain recorded attempts; neither earns independent mastery or illumination credit. The skill-evidence support path can revisit that skill to check it without help. Answer correctness and the retained history are unchanged.
 
+**Paper results** from a daily workbook (`src/workbook/results.ts`) are attempts with `evidenceSource: "paper"`. The weights are founder decisions, named constants in that file.
+- A typed answer checked by the app's exact grader is an independent attempt at full weight.
+- A parent's right / not-yet mark without the answer has `evidenceWeight` 0.5. It contributes half the log-likelihood weight and half the drift.
+- A "right" mark never counts as independent: it confirms no band, adds no independent credit, and leaves the retrieval schedule as it was.
+- A "not yet" mark is a miss.
+
+The skill summary (migration 0079 and `projectSkillEvidence`) and the frontier (`FrontierObservation.evidenceWeight`) apply this. Attempts without a weight are unchanged.
+
 A choice item adds a guessing term: with k options a learner who cannot solve it still picks the key with chance c = 1/k, so P(correct) = c + (1 − c) × P(typed correct). The option count comes from the family's answer schema (`src/math/guess-chance.ts`, smallest count across sampled instances). A correct pick is weaker evidence than a correct typed answer; a wrong pick multiplies the typed likelihood by the constant 1 − c. Reporting surprise uses success excluding choice guessing so that this constant does not make a choice miss count more heavily.
 
 `createFrontierPolicy` validates and freezes injected parameters. Save the full policy JSON with experiment results; its version is a human-readable identifier. `LEGACY_FRONTIER_POLICY` reproduces the former pooled likelihood and recency for paired replays. `tests/frontier-working-level.test.ts` checks isolated slips, genuine sustained difficulty, recent versus thousand-answer-old evidence, help, boundary initialization, and guessing. Existing mixed-frontier tests check that fraction repair and advanced algebra coexist. These are algorithm regression checks, not evidence of measured learning gains or national grade norms. The [public-data calibration pilot](https://github.com/corpora-inc/encorpora/issues/1544) tracks empirical grade and family anchors. Production replays retained attempts under the active policy; no evidence migration is needed, and historical trend points are recomputed consistently with that policy.

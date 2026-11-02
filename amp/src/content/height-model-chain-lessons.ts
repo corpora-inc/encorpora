@@ -8,11 +8,8 @@ export const heightModelChainMethods: Record<string, ProblemMethod> = {
     intuition:
       "A height model has a constant that depends on the situation. At time zero the height equals the starting height, which fixes the constant. A parabola with vertex $(h,k)$ has the form $y=a(x-h)^2+k$, and a point on it, such as where it lands at height 0, fixes $a$.",
     terms: [
-      ["constant", "The term without $t$; it is the height at time $t=0$."],
-      [
-        "vertex form",
-        "$y=a(x-h)^2+k$, whose highest or lowest point is $(h,k)$.",
-      ],
+      ["constant-term", "In a height model, it is the height at time $t = 0$."],
+      "vertex-form",
     ],
     method: [
       "Fix the unknown constant or coefficient from a known point: the start for the constant, or the landing point for $a$.",

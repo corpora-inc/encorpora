@@ -1,3 +1,4 @@
+import type { GlossarySenses, MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -9,7 +10,7 @@ export type FormatLessonEntry = {
   summary: string;
   objectives: [string, string];
   intuition: string;
-  terms: [string, string][];
+  terms: MethodTerm[];
   method: string[];
   watch: string;
   principle: string;
@@ -19,6 +20,9 @@ export type FormatLessonEntry = {
   formal: string;
   pitfalls: string[];
   parentGuide: string;
+  /** Glossary senses and unlinked words for the lesson, method and hints. */
+  senses?: GlossarySenses;
+  noLink?: string[];
 };
 
 export function formatLessons(entries: readonly FormatLessonEntry[]) {
@@ -31,6 +35,8 @@ export function formatLessons(entries: readonly FormatLessonEntry[]) {
         terms: e.terms,
         method: e.method,
         watch: e.watch,
+        ...(e.senses && { senses: e.senses }),
+        ...(e.noLink && { noLink: e.noLink }),
       },
     ]),
   );
@@ -61,6 +67,8 @@ export function formatLessons(entries: readonly FormatLessonEntry[]) {
     ],
     pitfalls: e.pitfalls,
     parentGuide: e.parentGuide,
+    ...(e.senses && { senses: e.senses }),
+    ...(e.noLink && { noLink: e.noLink }),
   }));
   return { lessons, methods, principles };
 }

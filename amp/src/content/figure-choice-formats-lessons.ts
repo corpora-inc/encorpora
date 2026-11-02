@@ -1,7 +1,12 @@
 import type { FacetMapping } from "./coverage";
 import { formatLessons, type FormatLessonEntry } from "./format-lesson-entry";
 
-const entries: FormatLessonEntry[] = [
+type Entry = FormatLessonEntry & {
+  /** The practice-screen task, at most 140 characters; defaults to the summary. */
+  goal?: string;
+};
+
+const entries: Entry[] = [
   {
     id: "graph-of-paired-values",
     title: "Match paired values with their graph",
@@ -14,13 +19,10 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "A table or a rule gives pairs of numbers, and a graph shows each pair as one dot. The first number of a pair is the distance across from the origin and the second is the distance up, so the pair $(2, 5)$ is not the pair $(5, 2)$. A correct graph has exactly one dot for every pair: no dot missing and no extra dot.",
     terms: [
+      "ordered-pair",
       [
-        "ordered pair",
-        "Two numbers in a fixed order, $(x, y)$: across first, then up.",
-      ],
-      [
-        "relationship",
-        "A rule that gives $y$ from $x$, such as '$y$ is 1.5 times $x$' or '$y$ is 5 less than $x$'.",
+        "rule",
+        "Here the relationship is a rule that gives $y$ from $x$, such as $y$ is 1.5 times $x$.",
       ],
     ],
     method: [
@@ -60,36 +62,33 @@ const entries: FormatLessonEntry[] = [
   {
     id: "point-on-signed-grid",
     title: "Choose the graph of a signed point",
+    goal: "Choose the graph that shows one point given by two signed numbers, or by its distances from the axes.",
     summary:
-      "The signs tell the direction: negative $x$ is left of the $y$-axis, negative $y$ is below the $x$-axis. The first number is always $x$.",
+      "The coordinate plane is a flat grid with two number lines, called axes, crossing at a point called the origin. A point is written $(x, y)$: the first number moves you across and the second moves you up or down. A negative $x$ means left of the up-and-down axis. A negative $y$ means below the across axis. The first number is always $x$.",
+    senses: { unit: "unit", units: "unit" },
+    noLink: ["third", "fourth", "rule", "changes", "plane", "image"],
     objectives: [
       "Place an ordered pair of signed numbers, or two distances from the axes, in the correct quadrant.",
       "Choose the graph with that one point, ruling out flipped signs and swapped coordinates.",
     ],
     intuition:
-      "Start at the origin where the axes cross. The first number moves you across: right if it is positive, left if it is negative. The second moves you up if positive and down if negative. The two signs together decide the quadrant: for example, both negative puts the point down and to the left.",
-    terms: [
-      [
-        "quadrant",
-        "One of the four regions the axes cut the plane into; the signs of $x$ and $y$ decide which.",
-      ],
-      ["origin", "The point $(0, 0)$ where the $x$-axis and $y$-axis cross."],
-    ],
+      "The coordinate plane is a flat grid with two number lines, called axes. They cross at a point called the origin, $(0, 0)$. The first number of a point moves you across: right if it is positive, left if it is negative. The second moves you up if it is positive and down if it is negative. A quadrant is one of the four regions the axes cut the plane into. The two signs together decide the quadrant: both negative puts the point down and to the left.",
+    terms: ["quadrant", "origin"],
     method: [
       "Read $x$ first and $y$ second. When distances are given, 'left of the $y$-axis' means $x$ is negative and 'below the $x$-axis' means $y$ is negative.",
-      "Name the quadrant from the two signs and rule out graphs whose point is in another quadrant.",
+      "Name the quadrant from the two signs, and rule out graphs whose point is in another quadrant.",
       "Of the points left, rule out any with the numbers in the other order.",
     ],
     watch:
-      "Changing one sign moves the point across an axis to a different quadrant; swapping the numbers reflects it over the line $y = x$.",
+      "For a point off the axes, changing one sign moves it across an axis into a different quadrant. Swapping the numbers gives its reflection, its mirror image, across the line $y = x$.",
     principle:
-      "The point $(a, b)$ is $|a|$ units from the $y$-axis, on the right if $a > 0$ and on the left if $a < 0$, and $|b|$ units from the $x$-axis, above if $b > 0$ and below if $b < 0$. The pair is ordered: $(a, b) \\ne (b, a)$ unless $a = b$.",
+      "The point $(a, b)$ is $|a|$ units from the $y$-axis, where $|a|$ is $a$ without its sign. It is on the right if $a > 0$ and on the left if $a < 0$. It is $|b|$ units from the $x$-axis, above if $b > 0$ and below if $b < 0$. The pair is ordered: $(a, b) \\ne (b, a)$ unless $a = b$.",
     example: {
       prompt:
         "Which graph shows the point $(-3, 4)$: a point at (3, 4), at (−3, −4), at (4, −3) or at (−3, 4)?",
       steps: [
         "The first number is −3: 3 units left of the $y$-axis. The second is 4: 4 units above the $x$-axis.",
-        "That is the second quadrant (left and up). The point (3, 4) has the wrong sign for $x$ and the point (−3, −4) has the wrong sign for $y$.",
+        "Left and up is the second quadrant. The point (3, 4) has the wrong sign for $x$, and the point (−3, −4) has the wrong sign for $y$.",
         "The point (4, −3) swaps the two numbers.",
       ],
       answer: "The point at (−3, 4).",
@@ -97,10 +96,10 @@ const entries: FormatLessonEntry[] = [
     methodTitle: "Say the moves",
     methodText: [
       "Say the moves from the origin out loud: 'left 3, up 4'. The graph whose dot is at that place is the one.",
-      "When a graph shows a point on the right instead of the left, only the sign of $x$ is wrong. Fix one thing at a time.",
+      "When a graph shows the point on the right instead of the left, the sign of $x$ is wrong. Check the distances too, one thing at a time.",
     ],
     formal:
-      "The coordinate plane assigns to each point $P$ the pair $(x, y)$ of signed distances: $x$ measured along the horizontal axis from the origin, $y$ along the vertical axis. Reflecting $P$ across the $y$-axis changes the sign of $x$ only; across the $x$-axis, the sign of $y$ only.",
+      "The coordinate plane gives each point $P$ a pair $(x, y)$ of signed distances: $x$ measured along the horizontal axis from the origin, $y$ along the vertical axis. Reflecting $P$ across the $y$-axis changes the sign of $x$ only. Reflecting it across the $x$-axis changes the sign of $y$ only.",
     pitfalls: [
       "A negative $x$ goes left, not down.",
       "Keep $x$ first: $(−3, 4)$ and $(4, −3)$ are different points.",
@@ -120,13 +119,10 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "Moving a graph does not change its shape, only its position, so pick one point you can read, such as a vertex or an intercept, and follow where it goes. Adding to the output $f(x)$ lifts every point; subtracting lowers it. A number inside the parentheses works on the input, so it acts backward: $f(x - 2)$ needs $x$ to be 2 larger to get the old output, so the graph moves 2 to the right.",
     terms: [
+      "translation",
       [
         "translation",
-        "A move of the whole graph without turning or stretching it.",
-      ],
-      [
-        "$f(x - h) + k$",
-        "The graph of $f$ moved $h$ units right (left if $h < 0$) and $k$ units up (down if $k < 0$).",
+        "$f(x-h)+k$ moves the graph of $f$ right $h$ and up $k$; a negative $h$ or $k$ reverses that direction.",
       ],
     ],
     method: [
@@ -166,7 +162,12 @@ const entries: FormatLessonEntry[] = [
 
 const built = formatLessons(entries);
 export const figureChoiceFormatsLessons = built.lessons;
-export const figureChoiceFormatsMethods = built.methods;
+export const figureChoiceFormatsMethods = Object.fromEntries(
+  entries.map((e) => [
+    e.id,
+    { ...built.methods[e.id]!, ...(e.goal ? { goal: e.goal } : {}) },
+  ]),
+);
 export const figureChoiceFormatsPrinciples = built.principles;
 
 export const figureChoiceFormatsFacetMappings: readonly FacetMapping[] = [

@@ -15,46 +15,56 @@ const complexFigure = graph({ x: [-5, 5], y: [-5, 5], tick: 1 })
 
 export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
   "arc-sector-derivation": {
-    goal: "Relate arc length to radius with similar circles, define radian measure as arc over radius, and find sector area as a fraction.",
+    goal: "Scale arc lengths between circles, measure an angle in radians (arc length divided by radius), and find a sector's area.",
+    senses: {
+      similar: "similar-figures",
+      vertex: "vertex",
+      degrees: "degree-angle",
+      side: "side",
+      radius: "radius",
+      multiple: "multiple",
+      center: "center",
+      squared: "square-number",
+    },
+    noLink: [
+      "factor",
+      "whole",
+      "unit",
+      "units",
+      "square",
+      "scale",
+      "scales",
+      "rule",
+      "part",
+      "factors",
+    ],
     intuition:
-      "Every circle is an enlargement of every other circle. When a circle is enlarged by a factor $k$, every length in it is multiplied by $k$, including the radius and the arc cut off by a fixed central angle. So for one angle, arc length divided by radius is the same number in every circle. That number measures the angle.",
+      "The middle point of a circle is called the center. A circle's radius is the distance from the center to the circle. A central angle has its corner at the center. The piece of the circle between its two sides is called an arc. Every circle is an enlarged or shrunken copy of every other circle. Enlarge a circle by a factor $k$, so every length is multiplied by $k$. Then the radius and the arc of a fixed angle are both multiplied by $k$. So for one angle, arc length divided by radius is the same in every circle. That number measures the angle in radians. A sector is the pie-slice region between the two radii and the arc.",
     terms: [
-      [
-        "central angle",
-        "An angle whose vertex is the center of a circle. It cuts off an arc of the circle.",
-      ],
+      "central-angle",
       [
         "radian",
-        "The measure of a central angle that cuts off an arc exactly as long as the radius. A central angle of $\\theta$ radians cuts off an arc of length $\\theta r$.",
+        "A central angle of $\\theta$ radians cuts off an arc of length $\\theta r$.",
       ],
-      [
-        "sector",
-        "The region between two radii and the arc they cut off. Its area is the same fraction of the disk as its angle is of a full turn.",
-      ],
+      "sector",
     ],
     method: [
-      "For a proportion between two circles, divide each arc by its own radius and set the two ratios equal.",
-      "For radian measure, divide the arc length by the radius: $\\theta=s/r$. For an arc, multiply: $s=\\theta r$.",
-      "For a sector, take the fraction $\\theta/2\\pi$ of the disk's area $\\pi r^2$. The factor $\\pi$ cancels, leaving $\\tfrac12\\theta r^2$.",
-      "Keep units: arc length in length units, area in square units, radians with no unit.",
+      "To scale between two circles, divide each arc by its own radius and set the two results equal.",
+      "For radian measure, divide arc length by radius: $\\theta=s/r$. Here $\\theta$ (theta) is the angle, $s$ the arc length and $r$ the radius. To find an arc, multiply: $s=\\theta r$.",
+      "For a sector, take the fraction $\\theta/2\\pi$ of the disk's area $\\pi r^2$, because a full turn is $2\\pi$ radians. The $\\pi$ cancels, leaving $\\tfrac12\\theta r^2$.",
+      "Keep units: arc length in length units and area in square units. Label an angle in radians, so it is not mistaken for degrees.",
     ],
     watch:
-      "Arc length scales with the radius, not with its square. Area scales with the square. A sector uses a fraction of $2\\pi$ when the angle is in radians, and a fraction of $360$ when it is in degrees; do not mix them.",
+      "Arc length grows with the radius, but area grows with the radius squared, meaning $r$ times $r$. Use a fraction of $2\\pi$ when the angle is in radians and a fraction of 360 when it is in degrees. Do not mix them.",
   },
   "complex-plane-operations": {
     goal: "Read sums, differences, conjugates and products of complex numbers as moves of points in the complex plane.",
     intuition:
       "A complex number $a+bi$ is the point with $a$ across (the real part) and $b$ up (the imaginary part). Adding complex numbers adds the arrows from the origin, so the sum is the far corner of a parallelogram. Subtracting gives the arrow between the two points. The conjugate flips the sign of the imaginary part, which reflects the point in the horizontal axis. Multiplying by $i$ turns the point a quarter turn counterclockwise about the origin.",
     terms: [
-      ["modulus", "The distance of a point from the origin, written $|z|$."],
-      [
-        "argument",
-        "The counterclockwise angle from the positive real axis to the arrow from the origin to the point.",
-      ],
-      [
-        "conjugate",
-        "The conjugate of $a+bi$ is $a-bi$, written $\\overline{z}$.",
-      ],
+      "modulus",
+      "argument",
+      ["complex-conjugate", "It is written $\\overline{z}$."],
     ],
     method: [
       "Read each number as a point: real part across, imaginary part up.",
@@ -66,65 +76,72 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "Multiplication by $i$ is a rotation, not a reflection, and the conjugate is a reflection, not a rotation. Moduli multiply and arguments add when you multiply; they do not both add.",
   },
   "conditional-everyday-reasoning": {
-    goal: "Read statements about rates as conditional probabilities, tell $P(A\\mid B)$ from $P(B\\mid A)$, and decide independence from described rates.",
-    intuition:
-      "A conditional probability $P(A\\mid B)$ is the chance of $A$ when you look only at the cases where $B$ happened. The group you restrict to goes after the bar. Two events are independent when learning that $B$ happened does not change the chance of $A$.",
-    terms: [
-      [
-        "conditional probability",
-        "The probability of one event inside a smaller group: $P(A\\mid B)$ is the share of the cases with $B$ that also have $A$.",
-      ],
-      [
-        "independent events",
-        "Events $A$ and $B$ with $P(A\\mid B)=P(A)$, which is the same as $P(A\\cap B)=P(A)\\,P(B)$.",
-      ],
-      ["intersection", "The event that both happen, written $A\\cap B$."],
+    goal: "Read “among those who …” rates as conditional probabilities, tell $P(A\\mid B)$ from $P(B\\mid A)$, and test independence.",
+    senses: {
+      event: "event",
+      impossible: "impossible",
+      intersection: "intersection",
+    },
+    noLink: [
+      "rate",
+      "rates",
+      "change",
+      "group",
+      "groups",
+      "whole",
+      "certain",
+      "product",
+      "difference",
     ],
+    intuition:
+      "An event is a result that may or may not happen, such as a student riding the bus. A probability is a chance, a number from 0 to 1, and $P(A)$ means the probability that event $A$ happens. A conditional probability is the chance of $A$ when you look only at the cases where $B$ happened. It is written $P(A\\mid B)$ and read “the probability of $A$ given $B$”. The group you look inside goes after the bar. If 20 of 50 bus riders play in the band, then $P(\\text{band}\\mid\\text{bus})=\\frac{20}{50}$. Two events are independent when learning that $B$ happened does not change the chance of $A$.",
+    terms: ["conditional-probability", "independent-events", "intersection"],
     method: [
-      'Find the group the percentage is taken of. "Among those who $B$" names the condition: the probability is $P(\\cdot\\mid B)$.',
+      "Find the group the percentage is taken of. A phrase such as “among the bus riders” names the condition, and the condition goes after the bar.",
       "To compute from counts, divide the count with both events by the size of the condition group.",
-      "To test independence, compare $P(A\\mid B)$ with $P(A)$, or $P(A\\cap B)$ with $P(A)P(B)$.",
-      "If $P(A\\mid B)>P(A)$, then $B$ makes $A$ more likely; if it is smaller, less likely.",
+      "To test independence, compare $P(A\\mid B)$ with $P(A)$. Or compare $P(A\\cap B)$, the chance that both happen, with $P(A)\\times P(B)$.",
+      "If $P(A\\mid B)$ is bigger than $P(A)$, then $B$ makes $A$ more likely. If it is smaller, $B$ makes $A$ less likely.",
     ],
     watch:
-      "$P(A\\mid B)$ and $P(B\\mid A)$ divide by different group sizes, so they are usually different. Independent events can occur together; the test is a match of rates, not an absence of overlap.",
+      "$P(A\\mid B)$ and $P(B\\mid A)$ divide by different group sizes, so they are usually different. Independent events can happen together. The test is whether the rates match, not whether the events overlap.",
   },
   "congruence-by-rigid-motion": {
-    goal: "Choose or predict the rigid motions that carry one triangle onto another, and decide congruence by whether such a sequence exists.",
+    goal: "Find the rigid motions (slides, turns and flips) that carry one triangle onto another, and decide whether the triangles are congruent.",
+    senses: {
+      side: "side",
+      vertices: "vertex",
+      image: "image-transformation",
+      change: "change",
+    },
+    noLink: ["corresponding angles", "opposite", "scale"],
     intuition:
-      "A rigid motion moves a figure without stretching it: a translation slides, a rotation turns, a reflection flips. Lengths and angles stay the same. Two figures are congruent when some sequence of rigid motions carries one exactly onto the other.",
+      "A rigid motion moves a figure without stretching it. A translation slides it in one direction. A rotation turns it around a fixed point. A reflection flips it across a line, like a mirror. Side lengths and angles (the amount of turn at each corner) stay the same. Two figures are congruent when some list of rigid motions carries one exactly onto the other.",
     terms: [
+      "rigid-motion",
       [
-        "rigid motion",
-        "A translation, rotation or reflection, or a sequence of them. It preserves every distance and angle.",
+        "corresponding",
+        "If $A \\to D$, $B \\to E$ and $C \\to F$, then $AB$ corresponds to $DE$ and $\\angle C$ to $\\angle F$.",
       ],
-      [
-        "corresponding parts",
-        "The sides and angles that land on each other. If $A\\to D$, $B\\to E$ and $C\\to F$, then $AB$ corresponds to $DE$ and $\\angle C$ to $\\angle F$.",
-      ],
-      [
-        "orientation",
-        "The direction $A\\to B\\to C$ runs around a triangle, clockwise or counterclockwise. A reflection reverses it.",
-      ],
+      "orientation",
     ],
     method: [
-      "Compare sides: if matching lengths differ, no rigid motion exists and the triangles are not congruent.",
-      "Compare orientation. If it is reversed, the sequence includes a reflection.",
-      "Track one vertex through the motions in the stated order and check a second vertex.",
-      "State the conclusion: the sequence exists, so the triangles are congruent, and corresponding parts are equal.",
+      "Compare matching side lengths. If any pair differs, no rigid motion exists, and the triangles are not congruent.",
+      "Compare orientation: whether $A\\to B\\to C$ runs clockwise or counterclockwise. If the other triangle runs the opposite way, the list must include a reflection, because only a flip reverses the direction.",
+      "Follow one vertex (corner) through the motions in the order given. Then check that all three vertices land on their partners.",
+      "State the conclusion: such a list exists, so the triangles are congruent. Their corresponding sides (the sides that land on each other) have equal lengths, and their corresponding angles have equal measures.",
     ],
     watch:
-      "Position does not decide congruence, and neither does a mirror image: translations, rotations and reflections are all allowed. Equal angles alone do not make congruent triangles; the sizes must match too.",
+      "Where a triangle sits does not decide congruence, and a mirror image still counts, because a flip is allowed. Equal angles alone are not enough. The side lengths must match too.",
   },
   "conic-foci": {
     goal: "Find foci from an ellipse or hyperbola equation, and find the equation from the foci and a constant sum or difference.",
     intuition:
       "Two fixed points called foci define these curves. An ellipse is every point whose distances to the two foci add to a constant. A hyperbola is every point whose distances to the two foci differ by a constant. The foci lie on the axis that holds the vertices, at distance $c$ from the center.",
     terms: [
-      ["foci", "The two fixed points used to define an ellipse or hyperbola."],
+      ["focus", "An ellipse or a hyperbola has two foci."],
       [
-        "$a$, $b$ and $c$",
-        "For an ellipse or hyperbola centered at the origin, $a$ is the distance from the center to a vertex on the axis through the foci, $c$ is the distance from the center to a focus, and the other denominator is $b^2$.",
+        "focus",
+        "For a conic centered at the origin, $a$ runs center to vertex, $c$ center to focus, and the other denominator is $b^2$.",
       ],
     ],
     method: [
@@ -137,92 +154,118 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "For an ellipse $c<a$ and $c^2=a^2-b^2$. For a hyperbola $c>a$ and $c^2=a^2+b^2$. The constant sum or difference is $2a$, not $a$.",
   },
   "choose-the-plot": {
-    goal: "Match a dot plot, histogram or box plot to the data it displays, and find the bar heights or five numbers a data set produces.",
+    goal: "Match a dot plot, histogram or box plot to the list of data it shows, and find the bar heights or five numbers a list makes.",
+    senses: { interval: "interval" },
+    noLink: [
+      "whole",
+      "line",
+      "border",
+      "range",
+      "side",
+      "sort",
+      "sorting",
+      "changes",
+      "fourth",
+      "boundary",
+    ],
     intuition:
-      "A dot plot puts one dot for each value, so every data value can be read back. A histogram groups values into equal intervals and shows only how many fall in each. A box plot shows five numbers: the least value, the lower quartile, the median, the upper quartile and the greatest value.",
+      "A data set is a list of numbers. A dot plot puts one dot above a number line for each value, so you can read every value back. A histogram groups the values into equal intervals, stretches of the number line such as 20 to 30. Each bar's height, how tall it is, shows only how many values fall in each interval. A box plot shows five numbers: the least value, the lower quartile, the median, the upper quartile and the greatest value. The median is the middle value of the ordered list. With an even count, the median is halfway between the two middle values. The quartiles are the middle values of its lower half and its upper half.",
     terms: [
       [
         "interval",
-        "A range of values of equal width. In a histogram a value equal to the left end of an interval is counted in that interval.",
+        "In a histogram, a value equal to an interval's left end is counted in that interval.",
       ],
       [
-        "quartiles",
-        "The medians of the lower and upper halves of the ordered data. With an odd number of values the overall median is left out of both halves.",
+        "quartile",
+        "With an odd number of values, the overall median is left out of both halves.",
       ],
     ],
     method: [
-      "Dot plot: count the dots at each value and compare with the number of copies in each list.",
-      "Histogram: sort each list into the intervals and compare the counts bar by bar.",
-      "Box plot: order the list, find the minimum, the median, the medians of the two halves, and the maximum, and compare the five numbers.",
-      "To build a plot from data, work in the other direction with the same counts or five numbers.",
+      "Dot plot: count the dots at each value. Compare with how many times each value appears in each list.",
+      "Histogram: sort each list into the intervals. Compare the counts with the bars, one bar at a time.",
+      "Box plot: put the list in order. Find the least value, the median, the middle of each half, and the greatest value, then compare these five numbers.",
+      "To build a plot from data, work the other way, using the same counts or five numbers.",
     ],
     watch:
-      "Order the data before taking a median or quartile. A histogram does not show the individual values, so two lists can share a histogram. Boundary values go into the interval that starts at them.",
+      "Put the data in order before finding a median or quartile. A histogram does not show single values, so two lists can share a histogram. A value on the border between two intervals goes in the interval that starts at it.",
   },
   "similarity-by-transformation": {
-    goal: "Choose the dilation and rigid motions that map one triangle onto another, and decide similarity by whether such a sequence exists.",
-    intuition:
-      "A dilation enlarges or shrinks a figure by a scale factor about a center without changing its shape. Two figures are similar when some dilation followed by rigid motions maps one onto the other. The scale factor is the ratio of corresponding side lengths.",
-    terms: [
-      [
-        "dilation",
-        "A transformation about a center that multiplies every distance from the center by a scale factor $k$. It keeps angles and multiplies lengths by $k$.",
-      ],
-      [
-        "similar figures",
-        "Figures that a sequence of dilations and rigid motions maps onto each other.",
-      ],
+    goal: "Find the resizing (dilation) and moves that carry one triangle onto another, and decide whether the triangles are similar.",
+    senses: {
+      similar: "similar-figures",
+      side: "side",
+      vertex: "vertex",
+      image: "image-transformation",
+      center: "center",
+    },
+    noLink: [
+      "factor",
+      "factors",
+      "unit",
+      "units",
+      "change",
+      "mean",
+      "square",
+      "scale",
     ],
+    intuition:
+      "A dilation resizes a figure. It multiplies every distance from a fixed center point by the same positive number, the scale factor $k$. It keeps the shape and every angle. A rigid motion moves a figure without changing its size: a slide (translation), a turn (rotation) or a flip (reflection). Two figures are similar, meaning the same shape, when a dilation followed by rigid motions carries one exactly onto the other. The scale factor is then a ratio, the result of dividing two lengths: a side of the new figure divided by the matching side of the original. Matching sides, also called corresponding sides, are sides that land on each other.",
+    terms: ["dilation", "similar-figures"],
     method: [
-      "Compare one pair of corresponding sides to find the scale factor $k$, and check the other sides give the same $k$.",
-      "Dilate about the origin by $k$, then find the rigid motion (reflection, rotation, translation) that lands one vertex on its image.",
-      "Check a second vertex. If the sides scale by different factors, no such sequence exists.",
+      "Compare one pair of matching sides to find the scale factor $k$. Check that every other pair gives the same $k$.",
+      "Dilate about the origin, the point $(0,0)$, by multiplying both coordinates by $k$. Then find the rigid motion that lands one vertex (corner) on its partner.",
+      "Check all three vertices. If the sides grow by different factors, no such list of moves exists, and the triangles are not similar.",
     ],
     watch:
-      "A dilation about the origin multiplies the coordinates, so translate after dilating, not before. Two right triangles are similar only if their legs scale by the same factor.",
+      "It is simplest to dilate about the origin first and slide afterward. Sliding first needs a different slide, because the dilation then stretches the slide too. Two right triangles are similar only if both legs grow by the same factor.",
   },
   "aa-similarity": {
-    goal: "Decide whether two triangles are similar by AA from stated angles, name the correspondence, and write the matching proportion of sides.",
+    goal: "Use given angles to decide whether two triangles are similar (the same shape), match their corners, and pair up the matching sides.",
+    noLink: ["third"],
+    senses: {
+      side: "side",
+      similar: "similar-figures",
+      degrees: "degree-angle",
+      image: "image-transformation",
+      vertex: "vertex",
+    },
     intuition:
-      "The angles of every triangle add to $180^\\circ$, so two angles fix the third. If two angles of one triangle equal two angles of another, all three match and the triangles have the same shape. They are similar, and the vertices with equal angles correspond.",
+      "A triangle is a flat shape with three straight sides and three corners. An angle is the amount of turn at a corner, measured in degrees (°); a full turn is 360°. A triangle's three angles always add to $180^\\circ$, so two angles fix the third. Similar triangles have the same shape: every length of one is multiplied by the same number to give the other. If two angles of one triangle equal two angles of another, all three match, and the triangles are similar. This is the AA (angle-angle) test. Corners (vertices) with equal angles correspond, meaning they match up.",
     terms: [
+      "aa-similarity",
       [
-        "AA similarity",
-        "If two angles of one triangle equal two angles of another triangle, the triangles are similar.",
-      ],
-      [
-        "correspondence",
-        "The matching of vertices. In $\\triangle ABC\\sim\\triangle EFD$, $A$ matches $E$, $B$ matches $F$ and $C$ matches $D$.",
+        "corresponding",
+        "In $\\triangle ABC \\sim \\triangle EFD$, $A$ matches $E$, $B$ matches $F$ and $C$ matches $D$.",
       ],
     ],
     method: [
-      "Find the third angle of each triangle: $180^\\circ$ minus the two stated angles.",
-      "Pair the vertices that have equal angles. If at least two pairs match, the triangles are similar by AA; one equal pair is not enough.",
-      "Write the similarity statement with matching vertices in the same position.",
-      "Write corresponding sides as a proportion by following the vertex matches.",
+      "Find the third angle of each triangle: $180^\\circ$ minus the two given angles.",
+      "Pair the corners that have equal angles. If at least two pairs match, the triangles are similar by AA. One equal pair is not enough.",
+      "Write the similarity statement, such as $\\triangle ABC\\sim\\triangle EFD$ ($\\triangle$ means triangle and $\\sim$ means is similar to), with matching corners in the same positions.",
+      "Match each side by its two end corners; $AB$ stands for the length of the side from $A$ to $B$. Each side divided by its partner gives the same number, so write them as equal fractions: $\\frac{AB}{EF}=\\frac{BC}{FD}$.",
     ],
     watch:
-      "Name the correspondence by equal angles, not by alphabetical order. One shared angle does not make triangles similar, and two stated angles are enough to find the third.",
+      "Match corners by equal angles, not by alphabetical order. One shared angle does not make triangles similar. Two given angles are enough to find the third.",
   },
 };
 
 export const geometryRequirementGapPrinciples: Record<string, string> = {
   "arc-sector-derivation":
-    "In a circle of radius $r$, a central angle of $\\theta$ radians cuts off an arc of length $s=\\theta r$, because arc length is proportional to radius for a fixed angle and one radian is the angle whose arc equals the radius. The sector has area $\\tfrac{\\theta}{2\\pi}\\cdot\\pi r^2=\\tfrac12\\theta r^2$. In degrees $d$, the area is $\\tfrac{d}{360}\\pi r^2$.",
+    "In a circle of radius $r$, a central angle of $\\theta$ radians cuts off an arc of length $s=\\theta r$. This holds because, for a fixed angle, arc length is proportional to the radius, and one radian is the angle whose arc equals the radius. The sector has area $\\tfrac{\\theta}{2\\pi}\\cdot\\pi r^2=\\tfrac12\\theta r^2$. For an angle of $d$ degrees, the area is $\\tfrac{d}{360}\\pi r^2$.",
   "complex-plane-operations":
     "Identify $a+bi$ with the point $(a,b)$. Then $z+w$ is vector addition, $z-w$ is the vector from $w$ to $z$, $\\overline{z}$ is the reflection in the real axis, and for $w=r(\\cos\\theta+i\\sin\\theta)$ multiplication by $w$ scales by $r$ and rotates counterclockwise by $\\theta$. In particular $i=\\cos90^\\circ+i\\sin90^\\circ$ rotates by $90^\\circ$.",
   "conditional-everyday-reasoning":
-    "For $P(B)>0$, $P(A\\mid B)=P(A\\cap B)/P(B)$. Events $A$ and $B$ are independent exactly when $P(A\\cap B)=P(A)P(B)$, equivalently $P(A\\mid B)=P(A)$. In general $P(A\\mid B)\\ne P(B\\mid A)$; they are related by $P(A\\mid B)P(B)=P(B\\mid A)P(A)$.",
+    "When $P(B)>0$, $P(A\\mid B)=P(A\\cap B)/P(B)$, where $A\\cap B$ means that both $A$ and $B$ happen. Events $A$ and $B$ are independent exactly when $P(A\\cap B)=P(A)P(B)$. When $P(B)>0$, this is the same as $P(A\\mid B)=P(A)$. In general $P(A\\mid B)\\ne P(B\\mid A)$, where $\\ne$ means is not equal to. When $P(A)>0$ and $P(B)>0$, they are related by $P(A\\mid B)P(B)=P(B\\mid A)P(A)$.",
   "congruence-by-rigid-motion":
-    "Translations, rotations and reflections preserve distance and angle measure. Figures are congruent exactly when a sequence of rigid motions maps one onto the other, so corresponding sides and angles are equal. A reflection reverses orientation; a translation or rotation preserves it.",
+    "Translations (slides), rotations (turns) and reflections (flips) keep every distance and angle measure. Two figures are congruent exactly when a sequence of these rigid motions maps one onto the other. Then corresponding sides (named by their end points, such as $AB$ and $DE$) have equal lengths, and corresponding angles have equal measures. A reflection reverses orientation, turning clockwise into counterclockwise; a translation or rotation keeps it.",
   "conic-foci":
     "For an ellipse with foci $(\\pm c,0)$ and $d_1+d_2=2a$, the equation is $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ with $b^2=a^2-c^2$. For a hyperbola with foci $(\\pm c,0)$ and $|d_1-d_2|=2a$, it is $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ with $b^2=c^2-a^2$. With foci $(0,\\pm c)$, the roles of $x$ and $y$ swap.",
   "choose-the-plot":
-    "A dot plot shows every value, a histogram shows the count in each interval (a value equal to an interval's left end belongs to that interval), and a box plot shows the minimum, the first quartile, the median, the third quartile and the maximum. Quartiles are the medians of the lower and upper halves of the ordered data, excluding the overall median when the count is odd.",
+    "A dot plot shows every value. A histogram shows the count in each interval; a value equal to an interval's left end belongs to that interval. A box plot shows the minimum (the least value), the first quartile, the median, the third quartile and the maximum (the greatest value). The quartiles are the medians of the lower and upper halves of the ordered data. When the count is odd, the overall median is left out of both halves.",
   "similarity-by-transformation":
-    "A dilation about the origin with scale factor $k$ sends $(x,y)$ to $(kx,ky)$, multiplies distances by $k$ and preserves angles. Figures are similar exactly when a dilation followed by rigid motions maps one onto the other; corresponding sides are then in the common ratio $k$.",
+    "A dilation about the origin with positive scale factor $k$ sends the point $(x,y)$ to $(kx,ky)$. It multiplies distances by $k$ and keeps angles. Figures are similar exactly when a dilation followed by rigid motions maps one onto the other. Corresponding sides are then all in the same ratio $k$.",
   "aa-similarity":
-    "If $\\angle A=\\angle D$ and $\\angle B=\\angle E$ in triangles $ABC$ and $DEF$, then $\\angle C=\\angle F$ and $\\triangle ABC\\sim\\triangle DEF$, so $\\frac{AB}{DE}=\\frac{BC}{EF}=\\frac{CA}{FD}$. Dilate $ABC$ by $DE/AB$ to make $AB=DE$; the image has the same two angles on $DE$, so it is congruent to $DEF$ by ASA, and a rigid motion finishes the map.",
+    "If $\\angle A=\\angle D$ and $\\angle B=\\angle E$ in triangles $ABC$ and $DEF$, then $\\angle C=\\angle F$ and $\\triangle ABC\\sim\\triangle DEF$. So $\\frac{AB}{DE}=\\frac{BC}{EF}=\\frac{CA}{FD}$. Proof: a dilation multiplies every length by the same number. Multiplying $ABC$ by $\\frac{DE}{AB}$ gives a copy, called the image, whose side matching $AB$ has length $DE$, with the same two angles at its ends. By ASA (two angles and the side between them match), the image is congruent to $DEF$ (same size and shape). So a rigid motion (a slide, turn or flip) carries it onto $DEF$.",
 };
 
 const triangleFigure = trianglePair(
@@ -257,20 +300,44 @@ export const geometryRequirementGapLessons: Lesson[] = [
     id: "arc-sector-derivation",
     title: "Arc length, radians and sector area from proportion",
     summary:
-      "Circles are enlargements of each other, so a fixed angle cuts arcs proportional to the radius. Radian measure and the sector formula follow.",
+      "An arc is a piece of a circle. Every circle has a middle point, called the center. Draw the same angle at the center of a small circle and of a big circle. The big circle is an enlarged copy, so its arc is longer by the same factor as its radius. So arc length divided by radius depends only on the angle. That number is the angle's measure in radians, and it leads to a formula for a pie-slice region's area, the space it covers.",
     templateIds: ["arc-sector-derivation"],
+    senses: {
+      similar: "similar-figures",
+      vertex: "vertex",
+      degrees: "degree-angle",
+      side: "side",
+      radius: "radius",
+      multiple: "multiple",
+      center: "center",
+      squared: "square-number",
+    },
+    noLink: [
+      "factor",
+      "whole",
+      "unit",
+      "units",
+      "square",
+      "scale",
+      "scales",
+      "rule",
+      "part",
+      "factors",
+    ],
     objectives: [
-      "Use similar circles to scale an arc length to a different radius.",
-      "Define radian measure as arc length divided by radius and use it both ways.",
-      "Find a sector's area as a fraction of the disk.",
+      "Use similar circles, enlarged copies of each other, to scale an arc length to a different radius.",
+      "Measure an angle in radians, arc length divided by radius, and use that rule both ways.",
+      "Find a sector's area, the area of a pie slice, as a fraction of the whole disk.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "One angle, every circle",
         paragraphs: [
-          "A central angle has its vertex at the center of a circle and cuts off an arc. Draw the same angle in a small circle and in a large one. The large circle is an enlargement of the small one, so every length in it, including the radius and the arc, is multiplied by the same factor.",
-          "That means arc length divided by radius is the same number for the angle in every circle. This ratio is the natural measure of the angle. One radian is the angle whose arc is exactly one radius long.",
+          "A circle is all the points at one distance from a center point. That distance is the radius, $r$. A central angle has its corner (vertex) at the center. The part of the circle between its two sides is called the arc it cuts off. A sector is the pie-slice region between the two radii and the arc.",
+          "The disk is the whole flat region inside the circle. Its area is $\\pi r^2$. The diameter is the distance across the circle through the center, twice the radius. Here $\\pi$ (pi), about 3.14, is how many times the diameter fits around the circle, and $r^2$ means $r$ times $r$.",
+          "Draw the same angle in a circle of radius 1 cm and in a circle of radius 3 cm. The big circle is the small one enlarged 3 times, so every length in it is 3 times as long. Its radius is 3 times as long, and so is its arc. If the small arc is 2 cm, the big arc is 6 cm.",
+          "So arc length divided by radius is the same for that angle in every circle: $2 \\div 1 = 6 \\div 3 = 2$. This ratio, the result of dividing one length by the other, measures the angle in units called radians. One radian is the angle whose arc is exactly one radius long. We write $\\theta$ (the Greek letter theta) for the angle, $s$ for the arc length and $r$ for the radius.",
         ],
       },
     ],
@@ -278,10 +345,10 @@ export const geometryRequirementGapLessons: Lesson[] = [
       prompt:
         "A central angle cuts off an arc 4 cm long in a circle of radius 3 cm. (1) How long an arc does the same angle cut off in a circle of radius 9 cm? (2) What is the angle in radians? (3) What is the area of the sector in the circle of radius 3 cm?",
       steps: [
-        "(1) The radius is multiplied by $9/3=3$, so the arc is too: $4\\times3=12$ cm. Check the ratios: $4/3=12/9$.",
-        "(2) Radian measure is arc over radius: $\\theta=4/3$ radians.",
-        "(3) One full turn is $2\\pi$ radians, so the sector is the fraction $\\frac{4/3}{2\\pi}$ of the disk. The disk's area is $\\pi\\cdot3^2=9\\pi$. Then $\\frac{4/3}{2\\pi}\\cdot9\\pi=\\frac{4}{6}\\cdot9=6$.",
-        "Check with the shortcut $\\tfrac12\\theta r^2=\\tfrac12\\cdot\\tfrac43\\cdot9=6$.",
+        "(1) The new radius is $9 \\div 3 = 3$ times as long, so the arc is 3 times as long too: $4\\times3=12$ cm. Check that arc divided by radius matches: $4/3=12/9$.",
+        "(2) Radian measure is arc length divided by radius: $\\theta=4/3$ radians.",
+        "(3) One full turn is $2\\pi$ radians, so the sector is the fraction $\\frac{4/3}{2\\pi}$ of the disk. The disk's area is $\\pi\\cdot3^2=9\\pi$ square centimeters. Multiply: $\\frac{4/3}{2\\pi}\\cdot9\\pi=\\frac{4}{6}\\cdot9=6$.",
+        "Check with the shortcut $\\tfrac12\\theta r^2=\\tfrac12\\cdot\\tfrac43\\cdot9=6$ square centimeters.",
       ],
       answer: "(1) 12 cm; (2) $\\tfrac43$ radians; (3) 6 square centimeters",
     },
@@ -290,25 +357,25 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "Three formulas from one ratio",
         paragraphs: [
-          "Because $\\theta=s/r$, the arc cut off by $\\theta$ radians in a circle of radius $r$ is $s=\\theta r$. A full turn is the whole circumference, $2\\pi r$, so a full turn measures $2\\pi$ radians.",
-          "A sector is the fraction $\\theta/2\\pi$ of the disk, so its area is $\\frac{\\theta}{2\\pi}\\cdot\\pi r^2=\\tfrac12\\theta r^2$. For an angle of $d$ degrees the fraction is $d/360$.",
+          "Because $\\theta=s/r$, multiplying both sides by $r$ gives the arc: $s=\\theta r$. A full turn's arc is the whole circumference, the distance around the circle, which is $2\\pi r$. So a full turn measures $2\\pi r \\div r = 2\\pi$ radians.",
+          "A sector with angle $\\theta$ is the fraction $\\theta/2\\pi$ of a full turn. So its area is that fraction of the disk: $\\frac{\\theta}{2\\pi}\\cdot\\pi r^2=\\tfrac12\\theta r^2$. For an angle of $d$ degrees, the fraction is $d/360$, because a full turn is 360 degrees.",
         ],
       },
       {
         stage: "formal",
         title: "Why arc length is proportional to radius",
         paragraphs: [
-          "Dilating a circle by a factor $k$ about its center maps it to a circle of radius $kr$ and maps an arc of length $s$ and central angle $\\theta$ to an arc with the same central angle and length $ks$. Since the angle is unchanged, $s/r$ depends only on the angle. Define radian measure to be this ratio.",
+          "A dilation is a resizing: about the center, by a factor $k$, it multiplies every distance from the center by $k$. It maps a circle of radius $r$ to a circle of radius $kr$. It maps an arc of length $s$ to an arc of length $ks$ with the same central angle, because a dilation keeps angles. So $s/r = ks/kr$ depends only on the angle. Radian measure is defined to be this ratio.",
         ],
       },
     ],
     pitfalls: [
-      "Arc length scales with the radius; area scales with the square of the radius.",
+      "Arc length grows with the radius. Area grows with the radius squared, meaning the radius times itself.",
       "Use $\\theta/2\\pi$ for radians and $d/360$ for degrees.",
-      "The ratio is arc over radius, not radius over arc.",
+      "Radian measure is arc divided by radius, not radius divided by arc.",
     ],
     parentGuide:
-      "Ask the learner to draw two circles with the same angle and explain why the longer radius gives the longer arc in the same ratio.",
+      "Ask the learner to draw two circles with the same angle at the center. Ask them to explain why the longer radius gives a longer arc, in the same ratio.",
   },
   {
     id: "complex-plane-operations",
@@ -370,18 +437,35 @@ export const geometryRequirementGapLessons: Lesson[] = [
     id: "conditional-everyday-reasoning",
     title: "Conditional probability and independence in everyday situations",
     summary:
-      'Restrict to the group named after "among", divide by that group\'s size, and compare with the overall rate to judge independence.',
+      "A rate like “40% of bus riders play in the band” looks only at one group, the bus riders. An event is a result that may or may not happen, such as a student riding the bus. The chance of an event inside a group is called a conditional probability. To find it, divide by the size of that group, not of everyone. Then compare it with the rate for everyone. If the two match, the events are called independent: knowing one tells you nothing about the other.",
     templateIds: ["conditional-everyday-reasoning"],
+    senses: {
+      event: "event",
+      impossible: "impossible",
+      intersection: "intersection",
+    },
+    noLink: [
+      "rate",
+      "rates",
+      "change",
+      "group",
+      "groups",
+      "whole",
+      "certain",
+      "product",
+      "difference",
+    ],
     objectives: [
-      "Tell $P(A\\mid B)$ from $P(B\\mid A)$ in a described situation.",
-      "Decide independence by comparing a conditional rate with the overall rate.",
+      "Tell $P(A\\mid B)$, the chance of $A$ among the cases of $B$, from $P(B\\mid A)$ in a described situation.",
+      "Decide whether two events are independent by comparing a rate inside a group with the overall rate.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Which group are you looking at?",
         paragraphs: [
-          'A rate such as "40% of students on the bus play in the band" looks only at the students on the bus. That is a conditional probability: the chance of one event within the group where another happened. The group goes after the vertical bar, so this is $P(\\text{band}\\mid\\text{bus})$.',
+          "A probability is a chance, written as a number from 0 to 1. Impossible means it cannot happen: an impossible event has probability 0, and a sure event has probability 1. An event is something that may or may not happen, such as a student playing in the band. $P(\\text{band})$ means the probability that a student chosen at random plays in the band.",
+          "A rate such as “40% of students on the bus play in the band” looks only at the students on the bus. That is a conditional probability: the chance of one event within the group where another event happened. We write it with a vertical bar, read “given”: $P(\\text{band}\\mid\\text{bus})$. The group you look inside goes after the bar.",
           "Two events are independent when knowing about one does not change the chance of the other. Then the rate inside the group equals the rate for everyone.",
         ],
       },
@@ -390,10 +474,10 @@ export const geometryRequirementGapLessons: Lesson[] = [
       prompt:
         "Of 200 students, 80 play in the band, 50 take the bus, and 20 do both. Find $P(\\text{band}\\mid\\text{bus})$ and $P(\\text{bus}\\mid\\text{band})$, and decide whether the events are independent.",
       steps: [
-        "Among the 50 bus riders, 20 play in the band: $P(\\text{band}\\mid\\text{bus})=\\frac{20}{50}=\\frac25$.",
-        "Among the 80 band members, 20 take the bus: $P(\\text{bus}\\mid\\text{band})=\\frac{20}{80}=\\frac14$. The two differ because the groups have different sizes.",
-        "Overall, $P(\\text{band})=\\frac{80}{200}=\\frac25$, which equals $P(\\text{band}\\mid\\text{bus})$. Check the other direction: $P(\\text{bus})=\\frac{50}{200}=\\frac14=P(\\text{bus}\\mid\\text{band})$.",
-        "Knowing a student rides the bus does not change the chance that the student plays in the band, so the events are independent. Check the product: $\\frac25\\cdot\\frac14=\\frac1{10}=\\frac{20}{200}=P(\\text{both})$.",
+        "Look inside the 50 bus riders. Of them, 20 play in the band, so $P(\\text{band}\\mid\\text{bus})=\\frac{20}{50}=\\frac25$.",
+        "Now look inside the 80 band members. Of them, 20 take the bus, so $P(\\text{bus}\\mid\\text{band})=\\frac{20}{80}=\\frac14$. The two answers differ because the groups have different sizes.",
+        "Find the overall rates. $P(\\text{band})=\\frac{80}{200}=\\frac25$, which equals $P(\\text{band}\\mid\\text{bus})$. In the other direction, $P(\\text{bus})=\\frac{50}{200}=\\frac14=P(\\text{bus}\\mid\\text{band})$.",
+        "Knowing that a student rides the bus does not change the chance of playing in the band, so the events are independent. Check with a product: $\\frac25\\times\\frac14=\\frac1{10}$, and $P(\\text{both})=\\frac{20}{200}=\\frac1{10}$ too.",
       ],
       answer: "$\\tfrac25$ and $\\tfrac14$; independent",
     },
@@ -402,43 +486,71 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "Compare the rates",
         paragraphs: [
-          "If the rate inside the group is higher than the overall rate, the condition makes the event more likely; if lower, less likely; if equal, the events are independent. The comparison needs only these two rates, not the size of the group.",
+          "If the rate inside the group is higher than the overall rate, the condition makes the event more likely. If it is lower, the condition makes the event less likely. If they are equal, the events are independent. This comparison needs only the two rates, not the size of the group.",
         ],
       },
       {
         stage: "formal",
         title: "Definition and relation",
         paragraphs: [
-          "For $P(B)>0$, $P(A\\mid B)=P(A\\cap B)/P(B)$. Events $A$ and $B$ are independent exactly when $P(A\\cap B)=P(A)P(B)$, which is the same as $P(A\\mid B)=P(A)$. Because $P(A\\cap B)$ equals both $P(A\\mid B)P(B)$ and $P(B\\mid A)P(A)$, the two conditional probabilities are equal only when $P(A)=P(B)$ or when the overlap is empty.",
+          "The symbol $A\\cap B$ means the event that both $A$ and $B$ happen. When $P(B)>0$, $P(A\\mid B)=P(A\\cap B)/P(B)$. Events $A$ and $B$ are independent exactly when $P(A\\cap B)=P(A)P(B)$. When $P(B)>0$, that is the same as $P(A\\mid B)=P(A)$.",
+          "When $P(A)>0$ and $P(B)>0$, both $P(A\\mid B)P(B)$ and $P(B\\mid A)P(A)$ equal $P(A\\cap B)$. So the two conditional probabilities are equal only when $P(A)=P(B)$ or when the events never happen together.",
         ],
       },
     ],
     pitfalls: [
-      "$P(A\\mid B)$ divides by the size of $B$; $P(B\\mid A)$ divides by the size of $A$.",
-      "Independent events can occur together, and exclusive events with positive chance are not independent.",
-      "Compare the conditional rate with the overall rate for the same event.",
+      "$P(A\\mid B)$ divides by the size of group $B$. $P(B\\mid A)$ divides by the size of group $A$.",
+      "Independent events can happen together. Two events that cannot happen together, each with a chance above 0, are not independent.",
+      "Compare the rate inside the group with the overall rate for the same event.",
     ],
     parentGuide:
-      'Ask the learner to read "of the people who carry umbrellas, 80% are wet" and say which group is the condition.',
+      "Ask the learner to read “of the people who carry umbrellas, 80% are wet”. Then ask which group is the condition, and what the 80% is a fraction of.",
   },
   {
     id: "congruence-by-rigid-motion",
     title: "Congruence by rigid motions",
     summary:
-      "Translations, rotations and reflections keep lengths and angles. Triangles are congruent exactly when some sequence of them maps one onto the other.",
+      "Two shapes are congruent when they are exactly the same size and shape: one could be laid exactly on top of the other. Sliding, turning or flipping a shape never changes its side lengths or its angles (the amount of turn at each corner). So two triangles are congruent when some list of slides, turns and flips carries one exactly onto the other.",
     templateIds: ["congruence-by-rigid-motion"],
+    senses: {
+      side: "side",
+      vertices: "vertex",
+      degrees: "degree-angle",
+      image: "image-transformation",
+    },
+    noLink: [
+      "change",
+      "changes",
+      "corresponding angles",
+      "mean",
+      "opposite",
+      "parts",
+      "third",
+      "unit",
+      "units",
+    ],
     objectives: [
-      "Choose a sequence of rigid motions that maps one triangle onto another.",
-      "Predict the image of a point under a sequence in order.",
-      "Decide congruence and match corresponding parts.",
+      "Choose a list of slides, turns and flips (rigid motions) that carries one triangle onto another.",
+      "Follow a point through a list of motions, in order, to find where it lands.",
+      "Decide whether two triangles are congruent, and match their corresponding parts (the parts that land on each other).",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Moving without stretching",
         paragraphs: [
-          "A rigid motion moves a figure the way you move a cut-out: slide it (translation), turn it (rotation) or flip it over (reflection). Nothing is stretched, so every length and angle stays the same.",
-          "Two figures are congruent when you can move one exactly onto the other. When $A$ goes to $D$, $B$ to $E$ and $C$ to $F$, side $AB$ lands on $DE$ and $\\angle C$ lands on $\\angle F$.",
+          "Cut a triangle out of paper and move it around a table. You can slide it, turn it, or flip it over. In math these moves are called a translation (a slide in one direction), a rotation (a turn around a fixed point) and a reflection (a flip across a line, like a mirror image). Together they are called rigid motions, because the shape stays rigid: nothing stretches or bends.",
+          "A triangle has three straight sides, and its corners are called vertices (one corner is a vertex). An angle is the amount of turn between two sides at a vertex, measured in degrees (°). A full turn is 360°, so a quarter-turn, like the corner of a page, is 90°. Because nothing stretches, a rigid motion keeps every side length and every angle exactly the same.",
+          "Two figures are congruent when a rigid motion, or a list of them done one after another, moves one exactly onto the other. The parts that land on each other are called corresponding parts. We write $A\\to D$ to mean that point $A$ lands on point $D$, and we say the motions map $A$ to $D$. Suppose $A\\to D$, $B\\to E$ and $C\\to F$. Then side $AB$, the side from $A$ to $B$, lands on side $DE$. The angle at corner $C$, written $\\angle C$, lands on $\\angle F$.",
+        ],
+      },
+      {
+        stage: "intuition",
+        title: "Which way around",
+        paragraphs: [
+          "Walk around a triangle from $A$ to $B$ to $C$. You go either clockwise (the way clock hands turn) or counterclockwise (the opposite way). This direction is called the triangle's orientation. Slides and turns keep the orientation. A flip reverses it, the way a right hand looks like a left hand in a mirror.",
+          "Suppose the walk from $A$ to $B$ to $C$ runs counterclockwise, but the walk from $D$ to $E$ to $F$ runs clockwise. Then the list of moves must include a reflection. If both walks run the same way and the triangles are congruent, slides and turns are enough.",
+          "Points on a grid are named by coordinates. The point $(1, 2)$ is 1 unit right of the origin, the point $(0, 0)$, and 2 units up. Negative numbers mean left or down.",
         ],
       },
     ],
@@ -447,10 +559,11 @@ export const geometryRequirementGapLessons: Lesson[] = [
         "Triangle $ABC$ has $A(1,1)$, $B(4,2)$, $C(2,5)$. Triangle $DEF$ has $D(6,-4)$, $E(3,-3)$, $F(5,0)$. Is there a sequence of rigid motions mapping $A\\to D$, $B\\to E$, $C\\to F$? Name one.",
       figure: triangleFigure,
       steps: [
-        "Going $A\\to B\\to C$ turns counterclockwise, while $D\\to E\\to F$ turns clockwise. The order is reversed, so the sequence must include a reflection.",
-        "Reflect over the $y$-axis: $(x,y)\\to(-x,y)$. Then $A(1,1)\\to(-1,1)$. To reach $D(6,-4)$, translate by $(x,y)\\to(x+7,y-5)$.",
-        "Check the other vertices: $B(4,2)\\to(-4,2)\\to(3,-3)=E$ and $C(2,5)\\to(-2,5)\\to(5,0)=F$.",
-        "A sequence of rigid motions maps $ABC$ onto $DEF$, so the triangles are congruent.",
+        "Check orientation first. Walking from $A$ to $B$ to $C$ turns counterclockwise, but walking from $D$ to $E$ to $F$ turns clockwise. Only a reflection reverses the direction, so the list must include one.",
+        "Reflect over the $y$-axis, the vertical line where $x = 0$. Like a mirror, it sends each point to the same distance on the other side. So $x$ changes sign and $y$ stays the same: $(x,y)\\to(-x,y)$. Then $A(1,1)\\to(-1,1)$.",
+        "Now slide the reflected $A$ onto $D$. From $(-1,1)$ to $(6,-4)$, $x$ goes up by $6-(-1)=7$ and $y$ goes down by $1-(-4)=5$. So translate by $(x,y)\\to(x+7,y-5)$.",
+        "Check all three vertices, because motions that work for two corners can still send the third to the wrong place: $A(1,1)\\to(-1,1)\\to(6,-4)=D$, $B(4,2)\\to(-4,2)\\to(3,-3)=E$ and $C(2,5)\\to(-2,5)\\to(5,0)=F$.",
+        "The reflection followed by the translation carries $ABC$ exactly onto $DEF$, so the triangles are congruent.",
       ],
       answer:
         "Yes: reflect over the $y$-axis, then translate $(x,y)\\to(x+7,y-5)$",
@@ -460,24 +573,26 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "Order and the first test",
         paragraphs: [
-          "Apply the motions in the order stated: reflecting and then translating is usually not the same as translating and then reflecting. To test congruence, first compare matching side lengths. If they differ, no rigid motion exists. If they agree, find a sequence and confirm it with every vertex.",
+          "Do the motions in the order given. Reflecting and then sliding usually lands a shape somewhere different from sliding and then reflecting.",
+          "To test whether two triangles are congruent, first compare the lengths of matching sides. If any pair differs, no rigid motion can work, because rigid motions never change lengths. If all three pairs match, find a list of motions and check it on all three vertices. Checking two is not enough, because the third could land on the wrong side.",
         ],
       },
       {
         stage: "formal",
         title: "The definition",
         paragraphs: [
-          "Two figures are congruent if and only if a sequence of rigid motions maps one onto the other. Because rigid motions preserve distance and angle measure, corresponding sides and angles of congruent triangles are equal. The criteria SSS, SAS and ASA guarantee that such a sequence exists.",
+          "Two figures are congruent exactly when some sequence of rigid motions maps one onto the other. To map means to send every point to a matching point. Some points may stay put, such as points on a mirror line. Rigid motions keep every distance and every angle measure. So corresponding sides of congruent triangles have equal lengths, and corresponding angles have equal measures.",
+          "There are shortcut tests for triangles. Matching all three side lengths is enough; this is called SSS (side-side-side). For example, any two triangles with sides 3, 4 and 5 cm are congruent. So is matching two sides and the angle between them (SAS), or two angles and the side between them (ASA). Each test guarantees that a sequence of rigid motions exists.",
         ],
       },
     ],
     pitfalls: [
-      "A mirror image is still congruent; a reflection is a rigid motion.",
-      "Different positions do not matter; different sizes do.",
-      "Match parts by the vertex arrows, not by alphabetical order.",
+      "A mirror image is still congruent, because a reflection is a rigid motion.",
+      "Where the triangles sit does not matter. Different sizes do: a triangle and an enlarged copy of it are not congruent.",
+      "Match parts by the arrows, such as $A\\to D$, not by alphabetical order.",
     ],
     parentGuide:
-      "Ask the learner to trace a triangle on paper, cut it out, and slide, turn or flip it onto a second copy.",
+      "Ask the learner to trace a triangle on paper and cut it out. Then have them slide, turn or flip it onto a second drawn copy, saying each move out loud. Ask whether a flip was needed, and how they could tell.",
   },
   {
     id: "conic-foci",
@@ -537,19 +652,34 @@ export const geometryRequirementGapLessons: Lesson[] = [
     id: "choose-the-plot",
     title: "Match raw data to its dot plot, histogram or box plot",
     summary:
-      "A dot plot keeps every value, a histogram keeps the count in each interval, and a box plot keeps five numbers. Check a list against each by counting.",
+      "The same list of numbers can be drawn three ways. A dot plot shows every value. A histogram shows how many values fall in each stretch of the number line. A box plot shows just five numbers that mark the middle and the spread. To match a list to a plot, work out what the plot would show for that list and compare.",
     templateIds: ["choose-the-plot"],
+    senses: { interval: "interval" },
+    noLink: [
+      "whole",
+      "line",
+      "border",
+      "range",
+      "side",
+      "sort",
+      "sorting",
+      "changes",
+      "fourth",
+      "boundary",
+    ],
     objectives: [
-      "Choose the data set a dot plot, histogram or box plot displays.",
-      "Find bar heights and the five numbers of a box plot from raw data.",
+      "Choose the data list that a dot plot, histogram or box plot shows.",
+      "Find the bar heights of a histogram and the five numbers of a box plot from a list.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Three views of the same numbers",
         paragraphs: [
-          "A data set is a list of numbers. A dot plot puts one dot above the number line for each value, so stacks show repeats. A histogram splits the line into equal intervals and draws a bar whose height is the count of values in the interval. A box plot shows only five numbers: the least value, the lower quartile, the median, the upper quartile and the greatest value.",
-          "To match a plot to a list, compute what the plot would show for the list and compare it with the picture.",
+          "A data set is a list of numbers, such as test scores. A dot plot puts one dot above a number line for each value. Repeated values make stacks of dots, so you can read every value back.",
+          "A histogram splits the number line into equal intervals, stretches such as 20 to 25 and 25 to 30. Each interval gets a bar, and the bar's height is the count of values in that interval. A value on a border, like 25, goes in the interval that starts there.",
+          "A box plot shows only five numbers. First put the list in order. The median is the middle value. With an even count there are two middle values, and the median is halfway between them. The lower quartile is the middle of the lower half, and the upper quartile is the middle of the upper half. Together with the least and greatest values, these make five numbers. The box runs from one quartile to the other, with a line at the median. Lines called whiskers reach out to the least and greatest values.",
+          "To match a plot to a list, work out what the plot would show for that list. Then compare it with the picture.",
         ],
       },
     ],
@@ -565,10 +695,10 @@ export const geometryRequirementGapLessons: Lesson[] = [
         unit: "points",
       },
       steps: [
-        "Order the values: 20, 25, 25, 30, 40, 45, 50. The least is 20 and the greatest is 50.",
-        "The median is the middle of the seven values, the fourth: 30.",
-        "The lower half is 20, 25, 25, with median 25. The upper half is 40, 45, 50, with median 45. The overall median is left out of both halves.",
-        "The five numbers are 20, 25, 30, 45 and 50. The plot has its box from 25 to 45 with a line at 30, and whiskers to 20 and 50.",
+        "Put the values in order, so the middle is easy to find: 20, 25, 25, 30, 40, 45, 50. The least is 20 and the greatest is 50.",
+        "There are seven values, so the median is the fourth, with three values on each side: 30.",
+        "Leave the median out and split the rest. The lower half is 20, 25, 25, with middle value 25. The upper half is 40, 45, 50, with middle value 45. These are the quartiles.",
+        "The five numbers are 20, 25, 30, 45 and 50. The box runs from 25 to 45 with a line at 30, and the whiskers reach 20 and 50.",
       ],
       answer: "20, 25, 30, 45, 50",
     },
@@ -577,43 +707,63 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "Check a list against each plot",
         paragraphs: [
-          "Dot plot: count the dots at each value; the list must repeat each value that many times. Histogram: sort the list into the intervals, putting a value equal to an interval's left end in that interval, and compare the counts with the bar heights. Box plot: order the list and compute the five numbers. A different list that changes any one of them does not match.",
+          "Dot plot: count the dots at each value. The list must have each value that many times.",
+          "Histogram: sort the list into the intervals, putting a border value in the interval that starts there. Compare the counts with the bar heights.",
+          "Box plot: put the list in order and find its five numbers. If a list changes any one of them, it does not match.",
         ],
       },
       {
         stage: "formal",
         title: "What each plot keeps",
         paragraphs: [
-          "A dot plot determines the data exactly. A histogram determines only the counts in the intervals, and a box plot only the five-number summary, so different lists can give the same histogram or box plot. That is why a list must be checked against the numbers the plot actually shows.",
+          "A dot plot pins down the data exactly. A histogram keeps only the count in each interval. A box plot keeps only the five-number summary. Those are the minimum (the least value), the lower quartile, the median, the upper quartile and the maximum (the greatest value). So different lists can give the same histogram or the same box plot. That is why you check a list against the numbers the plot actually shows.",
         ],
       },
     ],
     pitfalls: [
-      "Order the data before finding a median or quartile.",
+      "Put the data in order before finding a median or quartile.",
       "Count a value on an interval's left end in the interval that starts there.",
-      "When the count is odd, leave the median out of both halves for the quartiles.",
+      "When the count is odd, leave the median out of both halves before finding the quartiles.",
     ],
     parentGuide:
-      "Ask the learner to make a dot plot of ten numbers and then group them in intervals of 5 to see what the histogram hides.",
+      "Ask the learner to make a dot plot of ten numbers. Then group them in intervals of 5 to see what the histogram hides.",
   },
   {
     id: "similarity-by-transformation",
     title: "Similarity by dilation and rigid motion",
     summary:
-      "Triangles are similar when a dilation followed by rigid motions maps one onto the other. The scale factor is the ratio of corresponding sides.",
+      "Two triangles are called similar when they have the same shape, maybe at different sizes. You can show this with moves. First resize one triangle, multiplying every length by the same number. Then slide, turn or flip it exactly onto the other. That number is called the scale factor: a side of the new triangle divided by the matching side of the old one.",
     templateIds: ["similarity-by-transformation"],
+    senses: {
+      similar: "similar-figures",
+      side: "side",
+      vertex: "vertex",
+      image: "image-transformation",
+      center: "center",
+    },
+    noLink: [
+      "factor",
+      "factors",
+      "unit",
+      "units",
+      "change",
+      "mean",
+      "square",
+      "scale",
+    ],
     objectives: [
       "Find the scale factor between two triangles on a grid.",
-      "Choose the dilation and rigid motions that map one triangle onto the other.",
-      "Decide that triangles are not similar when sides scale unequally.",
+      "Choose a dilation (resizing) and rigid motions (slides, turns and flips) that carry one triangle onto the other.",
+      "Decide that triangles are not similar when their sides grow by different factors.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Same shape, different size",
         paragraphs: [
-          "A dilation about a center multiplies every distance from the center by a scale factor $k$. It enlarges when $k>1$ and shrinks when $0<k<1$, and it keeps every angle. Two figures are similar when a dilation followed by moves that do not change size (rigid motions) turns one into the other.",
-          "That means corresponding sides are all in the same ratio $k$. If two matching pairs of sides scale by different factors, no dilation can fix it.",
+          "Points on a grid are named by coordinates. The point $(1, 2)$ is 1 unit right of the origin, the point $(0, 0)$, and 2 units up. Negative numbers mean left or down.",
+          "A dilation resizes a figure from a fixed point, called the center. It multiplies every distance from the center by the same number, called the scale factor $k$. If $k$ is bigger than 1, the figure grows. If $k$ is between 0 and 1, it shrinks. Every angle stays the same, so the shape stays the same. A dilation about the origin multiplies both coordinates by $k$: with $k = 2$, the point $(1, 2)$ goes to $(2, 4)$.",
+          "A rigid motion moves a figure without changing its size: a translation slides it, a rotation turns it, and a reflection flips it. Two figures are similar when a dilation followed by rigid motions turns one into the other. Then every side divided by its matching side gives the same number, $k$. Matching sides, also called corresponding sides, are sides that land on each other. If two pairs of matching sides grow by different factors, no dilation can fix that, and the figures are not similar.",
         ],
       },
     ],
@@ -622,10 +772,11 @@ export const geometryRequirementGapLessons: Lesson[] = [
         "Triangle $ABC$ has $A(1,2)$, $B(3,2)$, $C(1,5)$. Triangle $DEF$ has $D(-3,1)$, $E(1,1)$, $F(-3,7)$. Find the dilation about the origin and the translation that map $A\\to D$, $B\\to E$, $C\\to F$.",
       figure: similarFigure,
       steps: [
-        "Compare $AB$ and $DE$: $AB=2$ and $DE=4$. Compare $AC$ and $DF$: $AC=3$ and $DF=6$. Both pairs scale by $2$, so the triangles are similar with $k=2$.",
-        "Dilate by $2$ about the origin: $A(1,2)\\to(2,4)$, $B(3,2)\\to(6,4)$, $C(1,5)\\to(2,10)$.",
-        "To move $(2,4)$ to $D(-3,1)$, translate by $(x,y)\\to(x-5,y-3)$.",
-        "Check: $(6,4)\\to(1,1)=E$ and $(2,10)\\to(-3,7)=F$.",
+        "Compare matching sides. $AB$ runs from $x = 1$ to $x = 3$, so $AB = 2$, and $DE$ runs from $x = -3$ to $x = 1$, so $DE = 4$. Likewise $AC = 5 - 2 = 3$ and $DF = 7 - 1 = 6$.",
+        "Both pairs grow by 2. Each triangle also has a square corner at $A$ or $D$, where a flat side meets an upright one. So the triangles are similar with scale factor $k = 2$.",
+        "Dilate by 2 about the origin, multiplying each coordinate by 2: $A(1,2)\\to(2,4)$, $B(3,2)\\to(6,4)$, $C(1,5)\\to(2,10)$.",
+        "Slide the new $A$ onto $D$. From $(2,4)$ to $(-3,1)$, $x$ goes down by 5 and $y$ goes down by 3. So translate by $(x,y)\\to(x-5,y-3)$.",
+        "Check the other two vertices: $(6,4)\\to(1,1)=E$ and $(2,10)\\to(-3,7)=F$. All three corners land on their partners.",
       ],
       answer:
         "Dilate by a factor of 2 about the origin, then translate $(x,y)\\to(x-5,y-3)$",
@@ -635,42 +786,61 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "Order matters",
         paragraphs: [
-          "A dilation about the origin multiplies the coordinates, so do it first and translate afterward. Translating first and then dilating also multiplies the translation by $k$ and lands elsewhere. If the image is reflected or rotated, insert that motion between the dilation and the translation and check every vertex.",
+          "A dilation about the origin multiplies the coordinates, so the simplest order is to dilate first and slide afterward. If you slide first, the dilation also stretches that slide by the scale factor. The same slide then lands the triangle somewhere else, so you would need a different slide. If the image (the moved copy) is flipped or turned, put that motion between the dilation and the slide. Then check every vertex.",
         ],
       },
       {
         stage: "formal",
         title: "The definition",
         paragraphs: [
-          "Two figures are similar if and only if a sequence of dilations and rigid motions maps one onto the other. A dilation with scale factor $k$ multiplies all lengths by $k$ and preserves angles, and rigid motions preserve both, so similar figures have equal corresponding angles and corresponding sides in the ratio $k$.",
+          "Two figures are similar exactly when some sequence of dilations and rigid motions maps one onto the other. A dilation with a positive scale factor $k$ multiplies all lengths by $k$ and keeps angles. Rigid motions keep both lengths and angles. So similar figures have equal matching angles, and every side divided by its matching side gives $k$.",
         ],
       },
     ],
     pitfalls: [
-      "Dilate first, then translate, when the dilation is about the origin.",
-      "Right triangles are similar only if their legs scale by the same factor.",
-      "A scale factor below 1 is a shrink, written as a fraction.",
+      "When the dilation is about the origin, dilate first, then slide. A slide done first gets stretched by the dilation.",
+      "Right triangles are similar only if both legs grow by the same factor.",
+      "A scale factor between 0 and 1, such as one half, means the figure shrinks.",
     ],
     parentGuide:
-      "Ask the learner to compare two photos of the same picture in different sizes and say what ratio relates matching lengths.",
+      "Ask the learner to compare two prints of the same photo at different sizes. Which number relates matching lengths, and is it the same everywhere on the photo?",
   },
   {
     id: "aa-similarity",
     title: "Angle-angle similarity and correspondence",
     summary:
-      "Two equal pairs of angles fix the third pair, so the triangles are similar. Match vertices by equal angles and write sides in the same order.",
+      "A triangle is a flat shape with three straight sides. Two triangles are similar when they have the same shape, though maybe not the same size: one is an enlarged or shrunken copy of the other. An angle is the amount of turn at a corner, measured in degrees (°). The three angles of any triangle add to 180°. So if two angles of one triangle match two angles of another, the third angles match too, and the triangles are similar.",
     templateIds: ["aa-similarity"],
+    senses: {
+      degrees: "degree-angle",
+      side: "side",
+      similar: "similar-figures",
+      image: "image-transformation",
+      vertices: "vertex",
+    },
+    noLink: ["third"],
     objectives: [
-      "Decide whether two triangles are similar by AA from stated angles.",
-      "Name the vertex correspondence and the matching proportion of sides.",
+      "Decide from two given angles whether two triangles are similar.",
+      "Match the corners that have equal angles, and write the matching sides as equal fractions.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Two angles are enough",
         paragraphs: [
-          "The angles of a triangle add to $180^\\circ$. If you know two of them, the third is what remains. So if two angles of one triangle equal two angles of another, the third angles are equal too, and the triangles have the same shape: they are similar.",
-          "In a similarity statement such as $\\triangle ABC\\sim\\triangle EFD$, the vertices are matched in order: $A$ with $E$, $B$ with $F$, $C$ with $D$. Matching vertices have equal angles, and the sides between matching vertices correspond.",
+          "A triangle has three straight sides and three corners, called vertices. An angle is the amount of turn between two sides at a corner. It is measured in degrees, written °, and a full turn is 360°. We write $\\angle A$ for the angle at corner $A$.",
+          "The three angles of every triangle add to $180^\\circ$. So if you know two of them, subtract them from $180^\\circ$ to find the third. A triangle with angles $50^\\circ$ and $60^\\circ$ has third angle $180^\\circ - 50^\\circ - 60^\\circ = 70^\\circ$.",
+          "Two triangles are similar when one is a scaled copy of the other: the same shape, with every length multiplied by the same number. A photo and its enlargement are similar. Similar triangles have equal angles. For triangles the reverse is true too: equal angles force the same shape.",
+          "Now suppose two angles of one triangle equal two angles of another. Each third angle is $180^\\circ$ minus the same two numbers, so the third angles are equal too. All three angles match, so the triangles are similar. This test is called AA, short for angle-angle.",
+        ],
+      },
+      {
+        stage: "intuition",
+        title: "Matching corners and sides",
+        paragraphs: [
+          "Corners with equal angles correspond, meaning they match up. We write $\\triangle ABC\\sim\\triangle EFD$, read triangle $ABC$ is similar to triangle $EFD$. The symbol $\\triangle$ means triangle, and $\\sim$ means is similar to. The order of the letters shows the matching: $A$ with $E$, $B$ with $F$, and $C$ with $D$. This matching of corners is called the correspondence.",
+          "Sides correspond too. Side $AB$ joins $A$ and $B$, which match $E$ and $F$, so $AB$ corresponds to side $EF$. In similar triangles every side is multiplied by the same number, called the scale factor. So each side divided by its partner gives the same answer. Writing $AB$ for the length of side $AB$, $\\frac{AB}{EF}=\\frac{BC}{FD}=\\frac{CA}{DE}$. An equation saying that fractions are equal, like this one, is called a proportion.",
+          "For example, suppose $AB = 4$, $BC = 6$ and $EF = 8$. Every length in $EFD$ is twice its partner in $ABC$, because $8 \\div 4 = 2$. So $FD = 6 \\times 2 = 12$. Each fraction is then the same: $\\frac{AB}{EF} = \\frac{4}{8} = \\frac{1}{2}$ and $\\frac{BC}{FD} = \\frac{6}{12} = \\frac{1}{2}$.",
         ],
       },
     ],
@@ -678,10 +848,10 @@ export const geometryRequirementGapLessons: Lesson[] = [
       prompt:
         "Triangle $ABC$ has $\\angle A=50^\\circ$ and $\\angle B=60^\\circ$. Triangle $DEF$ has $\\angle D=70^\\circ$ and $\\angle E=50^\\circ$. Are they similar by AA? If so, name the correspondence and write a proportion of sides.",
       steps: [
-        "Find the third angles: $\\angle C=180^\\circ-50^\\circ-60^\\circ=70^\\circ$ and $\\angle F=180^\\circ-70^\\circ-50^\\circ=60^\\circ$.",
-        "The angles of $ABC$ are $50^\\circ,60^\\circ,70^\\circ$ and those of $DEF$ are $70^\\circ,50^\\circ,60^\\circ$, the same three values, so at least two pairs match: the triangles are similar by AA.",
-        "Match equal angles: $A$ ($50^\\circ$) with $E$, $B$ ($60^\\circ$) with $F$, $C$ ($70^\\circ$) with $D$. So $\\triangle ABC\\sim\\triangle EFD$.",
-        "Side $AB$ joins $A,B$, whose matches are $E,F$, so it corresponds to $EF$. Likewise $BC$ corresponds to $FD$. Then $\\frac{AB}{EF}=\\frac{BC}{FD}=\\frac{CA}{DE}$.",
+        "Each triangle has two known angles. Subtract them from $180^\\circ$ to find the third, because a triangle's angles add to $180^\\circ$: $\\angle C=180^\\circ-50^\\circ-60^\\circ=70^\\circ$ and $\\angle F=180^\\circ-70^\\circ-50^\\circ=60^\\circ$.",
+        "Triangle $ABC$ has angles $50^\\circ$, $60^\\circ$ and $70^\\circ$. Triangle $DEF$ has $70^\\circ$, $50^\\circ$ and $60^\\circ$. These are the same three angles, so at least two pairs match, and the triangles are similar by AA.",
+        "Match the corners with equal angles: $A$ ($50^\\circ$) with $E$, $B$ ($60^\\circ$) with $F$, and $C$ ($70^\\circ$) with $D$. Write the letters in that matching order: $\\triangle ABC\\sim\\triangle EFD$.",
+        "Match the sides by their end corners. $AB$ joins $A$ and $B$, which match $E$ and $F$, so $AB$ goes with $EF$. Likewise $BC$ goes with $FD$, and $CA$ goes with $DE$. Each side of $ABC$ divided by its partner in $EFD$ gives the same number: $\\frac{AB}{EF}=\\frac{BC}{FD}=\\frac{CA}{DE}$.",
       ],
       answer:
         "Similar; $\\triangle ABC\\sim\\triangle EFD$; $\\frac{AB}{EF}=\\frac{BC}{FD}$",
@@ -691,23 +861,25 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "When AA fails",
         paragraphs: [
-          "If the two triangles share only one angle, AA does not apply. For example, angles $50^\\circ,60^\\circ,70^\\circ$ against $50^\\circ,65^\\circ,65^\\circ$ share only the $50^\\circ$, and the triangles are not similar. Compute all three angles of both triangles before deciding.",
+          "If two triangles share only one equal angle, they need not be similar. For example, angles $50^\\circ$, $60^\\circ$, $70^\\circ$ and angles $50^\\circ$, $65^\\circ$, $65^\\circ$ share only the $50^\\circ$. Their shapes differ, so the triangles are not similar. Find all three angles of both triangles before you decide.",
         ],
       },
       {
         stage: "formal",
         title: "Why AA works",
         paragraphs: [
-          "Suppose $\\angle A=\\angle D$ and $\\angle B=\\angle E$. Dilate $ABC$ by the factor $DE/AB$ so that its image has a side equal to $DE$. The image keeps both angles, so it has the same two angles on a side of length $DE$ as $DEF$. By ASA the image is congruent to $DEF$, so a rigid motion maps it onto $DEF$. A dilation followed by a rigid motion maps $ABC$ onto $DEF$, which is the definition of similarity.",
+          "A dilation is a resizing: it multiplies every length by the same number, the scale factor, and keeps every angle. The resized copy is called the image. Two triangles are congruent when a rigid motion (a slide, turn or flip) moves one exactly onto the other. The ASA test says that two triangles with two equal angles and an equal side between them are congruent.",
+          "Suppose $\\angle A=\\angle D$ and $\\angle B=\\angle E$. Resize triangle $ABC$ by the scale factor $\\frac{DE}{AB}$, chosen so that side $AB$ grows or shrinks to exactly the length $DE$: $AB \\times \\frac{DE}{AB} = DE$. The image still has the angles of $A$ and $B$ at the ends of that side. So it has two angles, and the side between them, equal to those of $DEF$. By ASA the image is congruent to $DEF$, and a rigid motion moves it onto $DEF$.",
+          "So a dilation followed by a rigid motion maps $ABC$ onto $DEF$: it moves $ABC$ to fit exactly on top of $DEF$. That is exactly what it means for the triangles to be similar.",
         ],
       },
     ],
     pitfalls: [
-      "Name the correspondence by equal angles, not by the order of the letters.",
+      "Match corners by equal angles, not by the order of the letters.",
       "One pair of equal angles is not enough.",
-      "Two stated angles are enough to find the third, so nothing is missing.",
+      "Two given angles are enough to find the third, so nothing is missing.",
     ],
     parentGuide:
-      "Ask the learner to draw two triangles with angles $40^\\circ$ and $60^\\circ$ at different sizes and compare their shapes.",
+      "Ask the learner to draw two triangles of different sizes, each with angles of $40^\\circ$ and $60^\\circ$. Measure the third angles and compare the shapes. Then ask why the third angles had to match.",
   },
 ];

@@ -1,0 +1,28 @@
+.entry {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+}
+.entry h4 {
+  margin: 0;
+  font-size: var(--text-label);
+}
+.entry p {
+  margin: var(--space-1) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+}
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.links > * {
+  flex: 1 1 200px;
+  min-height: var(--target-size);
+  text-align: center;
+}

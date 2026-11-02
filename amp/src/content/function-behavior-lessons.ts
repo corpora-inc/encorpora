@@ -8,22 +8,13 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
       "For very large positive or negative $x$, the highest power of $x$ outweighs every other term, so only the degree and the sign of the leading coefficient decide where the ends go. Near a zero, a factor raised to an odd power changes sign and the graph crosses the $x$-axis; an even power keeps the sign and the graph touches the axis and turns back.",
     terms: [
       [
-        "degree",
-        "The highest power of $x$ after the polynomial is multiplied out. For a factored polynomial, add the exponents.",
+        "degree-polynomial",
+        "For a factored polynomial, add the degrees of the factors.",
       ],
-      ["leading coefficient", "The coefficient of the highest power of $x$."],
-      [
-        "zero",
-        "An input $x$ at which the polynomial equals 0; the graph meets the $x$-axis there.",
-      ],
-      [
-        "multiplicity",
-        "The exponent of a factor $(x-r)$: how many times $r$ is a zero.",
-      ],
-      [
-        "turning point",
-        "A point where the graph changes from rising to falling or from falling to rising.",
-      ],
+      "leading-coefficient",
+      "zero-of-a-function",
+      "multiplicity",
+      "turning-point",
     ],
     method: [
       "Add the exponents of all the factors to get the degree. In a sum of terms, find the term with the highest exponent.",
@@ -39,22 +30,13 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
     intuition:
       "A zero of the polynomial is a point where the graph meets the $x$-axis, and each zero comes from a factor $(x-r)$. A graph that passes straight through the axis comes from a factor used an odd number of times; a graph that touches the axis and turns back comes from a factor used an even number of times. The far right of the graph tells the sign of the leading coefficient.",
     terms: [
+      "zero-of-a-function",
       [
-        "zero",
-        "An input $x$ at which the polynomial equals 0; the graph meets the $x$-axis there.",
+        "factor-number",
+        "A zero $r$ gives the factor $(x - r)$; the zero $x = -2$ gives $(x + 2)$.",
       ],
-      [
-        "factor",
-        "A zero $r$ gives the factor $(x-r)$; the zero $x=-2$ gives $(x+2)$.",
-      ],
-      [
-        "multiplicity",
-        "The exponent of a factor: 1 crosses the axis, 2 touches it and turns back.",
-      ],
-      [
-        "leading coefficient",
-        "The coefficient of the highest power of $x$; here $1$ or $-1$.",
-      ],
+      "multiplicity",
+      "leading-coefficient",
     ],
     method: [
       "Read every $x$-value where the graph meets the axis and write one factor $(x-r)$ for each. Mind the sign: the zero at $x=-2$ gives $(x+2)$.",
@@ -71,18 +53,12 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
       "A rational function is one polynomial divided by another. Dividing by something near zero makes the output huge, which produces a vertical line the graph approaches. If the same factor sits in the numerator and denominator, it cancels and leaves a single missing point instead. For large $x$, the highest powers dominate both parts, so comparing degrees tells where the graph levels off.",
     terms: [
       [
-        "vertical asymptote",
-        "A vertical line $x=c$ that the graph approaches without reaching, where a denominator factor stays after canceling.",
+        "vertical-asymptote",
+        "It sits where a factor of the denominator remains after canceling.",
       ],
-      [
-        "hole",
-        "A single missing point of the graph where a factor cancels from the numerator and the denominator.",
-      ],
-      [
-        "horizontal asymptote",
-        "A horizontal line $y=h$ that the graph approaches as $x$ becomes very large in magnitude.",
-      ],
-      ["domain", "The set of inputs for which the function is defined."],
+      "hole",
+      "horizontal-asymptote",
+      "domain",
     ],
     method: [
       "Find all zeros of the denominator. These are the inputs left out of the domain.",
@@ -99,12 +75,12 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
       "A solution of $f(x)=g(x)$ is an input at which both functions give the same output. On graphs these are the $x$-coordinates of the points where the two curves meet. In a table, watch which function is larger: if $f$ is above $g$ in one row and below it in the next, the curves must have crossed in between.",
     terms: [
       [
-        "solution of $f(x)=g(x)$",
-        "An input $x$ at which $f(x)$ and $g(x)$ are equal; it is the horizontal coordinate of an intersection, not the shared output.",
+        "intersection-graphs",
+        "A solution of $f(x)=g(x)$ is the $x$-coordinate of an intersection, not the shared output.",
       ],
       [
-        "bracket",
-        "Two inputs, close together, such that $f-g$ has opposite signs at them; a solution lies between them.",
+        "solution",
+        "Here a bracket is two close inputs where $f - g$ changes sign, so a solution lies between them.",
       ],
     ],
     method: [
@@ -119,16 +95,7 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
     goal: "Use an identity to compute a number quickly, to build a Pythagorean triple, or to decide which equation is true for every value of $x$.",
     intuition:
       "An identity is an equation that is true for every value of its variables, such as $(a+b)^2=a^2+2ab+b^2$. Unlike an equation you solve, you can use an identity as a shortcut: replace a hard product with an easier equal expression, or test whether a proposed rewrite is really equal.",
-    terms: [
-      [
-        "identity",
-        "An equation that holds for all values of its variables, so both sides always have the same value.",
-      ],
-      [
-        "difference of squares",
-        "The expression $a^2-b^2$, which equals $(a+b)(a-b)$.",
-      ],
-    ],
+    terms: ["identity-equation", "difference-of-squares"],
     method: [
       "Match the problem to an identity: a square of a sum or difference, a product $(a+b)(a-b)$, or a relation among given sums and products.",
       "Choose $a$ and $b$ so the arithmetic is easy, such as a round number and a small adjustment.",
@@ -142,15 +109,12 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
     intuition:
       "$(ax+b)^n$ means multiplying $n$ copies of $ax+b$. Each term of the product chooses either $ax$ or $b$ from every copy. The term with $x^k$ picks $ax$ from $k$ copies and $b$ from the other $n-k$, and the number of ways to choose which $k$ copies is the binomial coefficient, a row entry of Pascal's triangle.",
     terms: [
-      ["binomial", "A sum of two terms, such as $ax+b$."],
+      "binomial",
       [
-        "binomial coefficient $\\binom{n}{k}$",
-        "The number of ways to choose $k$ items from $n$; entry $k$ of row $n$ of Pascal's triangle, counting from 0.",
+        "binomial-coefficient",
+        "It is entry $k$ of row $n$ of Pascal's triangle, counting both from 0.",
       ],
-      [
-        "Pascal's triangle",
-        "Rows of numbers in which each entry is the sum of the two entries above it. Row 0 is $1$, row 1 is $1,\\ 1$, row 2 is $1,\\ 2,\\ 1$.",
-      ],
+      "pascals-triangle",
     ],
     method: [
       "Write the term with $x^k$ as $\\binom{n}{k}(ax)^k b^{\\,n-k}$.",
@@ -165,16 +129,7 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
     goal: "Decide whether a sum or product involving rational and irrational numbers is rational or irrational.",
     intuition:
       "A rational number can be written as a fraction of two integers; an irrational number cannot. Sums, differences, products and quotients (not by zero) of rational numbers are rational. Mixing in an irrational number usually keeps the result irrational, because otherwise you could undo the operation and get the irrational number from rational ones. Two irrational numbers can still combine to a rational number, as when opposites cancel.",
-    terms: [
-      [
-        "rational number",
-        "A number equal to $\\frac{p}{q}$ for integers $p$ and $q\\ne0$.",
-      ],
-      [
-        "irrational number",
-        "A real number that is not rational, such as $\\sqrt2$ or $\\pi$.",
-      ],
-    ],
+    terms: ["rational-number", "irrational-number"],
     method: [
       "Rational plus irrational is irrational. Suppose the sum were rational; subtracting the rational number would make the irrational one rational, which is impossible.",
       "A nonzero rational times an irrational is irrational by the same argument with division. If the rational factor is 0, the product is 0, which is rational.",

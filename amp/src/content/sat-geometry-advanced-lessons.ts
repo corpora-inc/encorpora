@@ -7,18 +7,9 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
     intuition:
       "In a statement such as $\\triangle ABC\\sim\\triangle EFD$, the letters match in order: $A$ with $E$, $B$ with $F$, $C$ with $D$. Similar or congruent triangles have equal corresponding angles. A scale factor changes side lengths only.",
     terms: [
-      [
-        "corresponding angles",
-        "Angles at matching vertices of two triangles. Similar triangles have equal corresponding angles.",
-      ],
-      [
-        "similar triangles",
-        "Triangles with equal corresponding angles and corresponding sides in one common ratio.",
-      ],
-      [
-        "congruent triangles",
-        "Triangles with all corresponding angles and sides equal; they are similar with ratio 1.",
-      ],
+      ["corresponding", "Similar triangles have equal corresponding angles."],
+      "similar-figures",
+      "congruent",
     ],
     method: [
       "Write the vertex pairs from the order of the letters in the statement.",
@@ -32,16 +23,7 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
     goal: "Two segments cross; use the similar triangles they form to find a missing length.",
     intuition:
       "Where two segments cross at $E$, the angles on opposite sides of $E$ are vertical angles and are equal. One more equal pair, from a parallel segment or a stated equal angle, makes the two triangles similar.",
-    terms: [
-      [
-        "vertical angles",
-        "Opposite angles formed by two crossing lines; they are equal.",
-      ],
-      [
-        "alternate interior angles",
-        "Angles on opposite sides of a transversal and between two parallel lines; they are equal.",
-      ],
-    ],
+    terms: ["vertical-angles", "alternate-interior-angles"],
     method: [
       "Name the two triangles and pair their vertices: the crossing point matches itself, and the other vertices match through the equal angles.",
       "Write an equation that sets two ratios of corresponding sides equal, with the unknown in one of them.",
@@ -54,16 +36,7 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
     goal: "Combine vertical angles, a triangle angle sum and angles made by parallel lines to find one angle.",
     intuition:
       "Each fact gives one angle from another: vertical angles are equal, angles on a straight line add to 180°, and a line cutting parallel lines makes equal corresponding angles and supplementary same-side interior angles. A chain uses several of these in a row.",
-    terms: [
-      [
-        "same-side interior angles",
-        "Two angles between parallel lines on the same side of a transversal; they add to 180°.",
-      ],
-      [
-        "corresponding angles",
-        "Angles in the same position at the two crossings of a transversal with parallel lines; they are equal.",
-      ],
-    ],
+    terms: ["same-side-interior-angles", "corresponding-angles"],
     method: [
       "List what each given fact lets you find: an equation for a variable, or a third angle of a triangle.",
       "Solve for the variable or the third angle first.",
@@ -76,12 +49,7 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
     goal: "Decide which angle measure is possible, how two angles compare, or which expression cannot be an angle sum.",
     intuition:
       "Some angle questions have a set of allowed values rather than one answer. Every triangle angle is positive, so each angle is less than 180° minus any other angle. Crossing lines make only two kinds of angle: a given angle and its supplement.",
-    terms: [
-      [
-        "supplementary angles",
-        "Two angles that add to 180°, such as the adjacent angles formed by crossing lines.",
-      ],
-    ],
+    terms: ["supplementary"],
     method: [
       "For a triangle, subtract the known angle from 180°. The other two angles are positive and add to that amount, so each is smaller than it.",
       "For two crossing lines, the four angles are two equal to the given angle and two equal to its supplement.",
@@ -94,13 +62,7 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
     goal: "Use equal radii to find an angle or length in the triangle formed by two radii and a chord.",
     intuition:
       "Every radius of a circle has the same length. Two radii and a chord form a triangle with two equal sides, so it is isosceles and the angles opposite the equal sides are equal.",
-    terms: [
-      ["chord", "A segment with both endpoints on the circle."],
-      [
-        "central angle",
-        "An angle whose vertex is the center of the circle; it has the same measure as the arc it cuts off.",
-      ],
-    ],
+    terms: ["chord", "central-angle"],
     method: [
       "Mark both radii equal in the triangle formed by the center and the chord.",
       "For angles, the base angles at the chord are equal and add to 180° minus the central angle.",
@@ -114,14 +76,8 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
     intuition:
       "In $g(x)=f(x+c)$ the input is changed first, so the graph moves the opposite way from the sign: $f(x+3)$ moves 3 units left. In $g(x)=f(x)+k$ the output is changed, so the graph moves $k$ units up.",
     terms: [
-      [
-        "$x$-intercept",
-        "A point where the graph meets the $x$-axis; its $x$-value makes the function equal 0.",
-      ],
-      [
-        "vertex",
-        "The turning point of a parabola. For $ax^2+bx+c$ it is at $x=-\\frac{b}{2a}$.",
-      ],
+      "x-intercept",
+      ["vertex-parabola", "For $ax^2+bx+c$ it is at $x=-\\frac{b}{2a}$."],
     ],
     method: [
       "Find the feature of the original function $f$: its vertex $x$-value, its intercepts, or $f$ at a given input.",
@@ -135,16 +91,7 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
     goal: "Find a hypotenuse in simplest radical form and report its radicand or coefficient, or find a leg of a decimal right triangle.",
     intuition:
       "The Pythagorean theorem $a^2+b^2=c^2$ often gives a hypotenuse that is not a whole number. A simplified radical $m\\sqrt{n}$ takes the largest perfect square out of the root.",
-    terms: [
-      [
-        "radicand",
-        "The number under the root sign. In $m\\sqrt{n}$ it is $n$.",
-      ],
-      [
-        "simplest radical form",
-        "A form $m\\sqrt{n}$ in which $n$ has no perfect-square factor except 1.",
-      ],
-    ],
+    terms: ["radicand", "simplest-radical-form"],
     method: [
       "Compute $c^2=a^2+b^2$, or $b^2=c^2-a^2$ for a missing leg.",
       "For a radical, factor $c^2$ as a perfect square times a smaller whole number and take the square root of the perfect square out front.",
@@ -158,13 +105,10 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
     intuition:
       "Two kinds of right triangle have fixed side ratios. A 45-45-90 triangle has equal legs and a hypotenuse $\\sqrt{2}$ times a leg. A 30-60-90 triangle has legs in the ratio $1:\\sqrt{3}$ and a hypotenuse twice the shorter leg. Squares and equilateral triangles split into these.",
     terms: [
+      "altitude",
       [
-        "altitude",
-        "The perpendicular segment from a vertex to the opposite side; in an equilateral triangle it also bisects that side.",
-      ],
-      [
-        "circumradius",
-        "The radius of the circle through all three vertices of a polygon.",
+        "radius",
+        "The circumradius is the radius of the circle through all the vertices of a polygon.",
       ],
     ],
     method: [

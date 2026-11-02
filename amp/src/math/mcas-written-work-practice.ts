@@ -297,10 +297,12 @@ const scaleDrawing = chainFamily({
       prompt: `${m.rooms.owner} draws a scale drawing of a ${m.rooms.what}. The drawing is a rectangle ${length} ${u.first.long} long and ${width} ${u.first.long} wide. The scale is $1\\text{ ${u.first.short}}=${m.perUnit}\\text{ ${u.actual.short}}$. She makes a new drawing of the same ${m.rooms.what} that is ${newLength} ${u.next.long} long. ${task(axes.mode)}`,
       hint: `Every ${one[u.first.short]} of the drawing stands for ${m.perUnit} ${u.actual.long}, so the actual length is the drawing length times ${m.perUnit}. Area uses the actual length and width, not the drawing's. For the new scale, divide the actual length by the new drawing's length of ${newLength} ${u.next.short}.`,
       explanation: [
-        `Length: $${length}\\times${m.perUnit}=${L}$ ${u.actual.long}. Width: $${width}\\times${m.perUnit}=${W}$ ${u.actual.long}.`,
-        `Area: $${L}\\times${W}=${L * W}$ ${u.actual.area}.`,
-        `New scale: $${L}\\div${newLength}=${m.perNew}$, so 1 ${one[u.next.short]} stands for ${m.perNew} ${u.actual.long}.`,
-        `New width: $${W}\\div${m.perNew}=${newWidth}$ ${u.next.long}.`,
+        `A scale drawing is a smaller copy. Its scale says what real length each unit on the drawing stands for: here 1 ${one[u.first.short]} stands for ${m.perUnit} ${u.actual.long}.`,
+        `So multiply each drawing length by ${m.perUnit}. Length: $${length}\\times${m.perUnit}=${L}$ ${u.actual.long}. Width: $${width}\\times${m.perUnit}=${W}$ ${u.actual.long}.`,
+        `Area is length times width, using the real sizes, not the drawing's: $${L}\\times${W}=${L * W}$ ${u.actual.area}.`,
+        `The new drawing shows the same real length, ${L} ${u.actual.long}, in ${newLength} ${u.next.long}. Divide to find what 1 ${one[u.next.short]} stands for: $${L}\\div${newLength}=${m.perNew}$ ${u.actual.long}.`,
+        `The real width is ${W} ${u.actual.long}, and each ${one[u.next.short]} stands for ${m.perNew}, so divide: $${W}\\div${m.perNew}=${newWidth}$.`,
+        `The new drawing is ${newWidth} ${u.next.long} wide.`,
       ],
     });
   },
@@ -454,9 +456,11 @@ const sciNotation = chainFamily({
       prompt: `${c.big} ${standard(m.big)} ${c.unit}. ${c.small} ${standard(m.small)} ${c.unit}. The average ${c.qty} of ${c.cmp1} is $${sciTex(m.first)}$ ${c.unit} and of ${c.cmp2} is $${sciTex(m.second)}$ ${c.unit}. A count finds ${count} ${c.many}; use the average ${c.qty} of ${c.cmp2} for each one. Write each ${c.qty} as $a\\times10^{n}$ with $1\\le a<10$. ${task(axes.mode)}`,
       hint: `For ${standard(m.big)}, count how many places the decimal point moves to leave one nonzero digit in front. Moving it left gives a positive power of 10; for ${standard(m.small)} it moves right, so the power is negative. To compare ${c.cmp1} with ${c.cmp2}, divide their ${c.plural}.`,
       explanation: [
-        `$${texNum(standard(m.big))}=${sciTex(m.big)}$, and $${standard(m.small)}=${sciTex(m.small)}$.`,
-        `Times as ${c.heavy}: $\\frac{${sciTex(m.first)}}{${sciTex(m.second)}}=\\frac{${m.first.m * 10 ** m.first.e}}{${m.second.m * 10 ** m.second.e}}=${ratio}$.`,
-        `Total ${c.qty}: $${texNum(count)}\\times${standard(m.second)}=${texNum(standard({ m: totalValue, e: m.second.e }))}=${sciTex({ m: totalValue, e: m.second.e })}$ ${c.unit}.`,
+        `Scientific notation writes a number as $a\\times10^{n}$, with $a$ at least 1 and less than 10. The power $n$ counts how many places the decimal point moves.`,
+        `Large numbers get a positive power and tiny numbers a negative one: $${texNum(standard(m.big))}=${sciTex(m.big)}$, and $${standard(m.small)}=${sciTex(m.small)}$.`,
+        `"How many times as ${c.heavy}" asks how many copies of one fit into the other, so divide: $\\frac{${sciTex(m.first)}}{${sciTex(m.second)}}=\\frac{${m.first.m * 10 ** m.first.e}}{${m.second.m * 10 ** m.second.e}}=${ratio}$.`,
+        `Use the average ${c.qty} for each of the ${c.many}, so multiply: $${texNum(count)}\\times${standard(m.second)}=${texNum(standard({ m: totalValue, e: m.second.e }))}$.`,
+        `In scientific notation, the total ${c.qty} is $${sciTex({ m: totalValue, e: m.second.e })}$ ${c.unit}.`,
       ],
     });
   },

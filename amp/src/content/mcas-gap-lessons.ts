@@ -12,13 +12,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Decide which multiplication and division equations are true, with the result written on either side.",
     intuition:
       "An equation is true when both sides name the same number. A multiplication fact and its division facts say the same thing: if $6\\times8=48$ then $48\\div6=8$ and $48\\div8=6$. So you can test any division by multiplying the answer back.",
-    terms: [
-      ["quotient", "The answer to a division, such as 8 in $48\\div6=8$."],
-      [
-        "fact family",
-        "The multiplication and division equations that use the same three numbers.",
-      ],
-    ],
+    terms: ["quotient", "fact-family"],
     method: [
       "Find the side with the operation. It can be on either side: $7=63\\div9$ says the same as $63\\div9=7$.",
       "For a division, multiply the quotient by the divisor. The result must be the dividend.",
@@ -33,10 +27,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "Rounding to the nearest hundred moves a number to the closest multiple of 100. The halfway point decides: numbers from 50 below a hundred up to 49 above it round to that hundred, so 250 rounds to 300 but 249 rounds to 200.",
     terms: [
-      [
-        "nearest hundred",
-        "The multiple of 100 that is closest to the number. A number exactly halfway between two hundreds rounds up.",
-      ],
+      ["round", "To the nearest hundred means to the closest multiple of 100."],
     ],
     method: [
       "Find the two hundreds the number lies between.",
@@ -51,13 +42,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the prime numbers in a list, or the factors of a number that include no multiples of it.",
     intuition:
       "A factor of a number divides it with nothing left over. A prime number has exactly two factors, 1 and itself, so a number with any other factor is composite. A multiple of a number, such as 128 for 64, is larger than it and is never a factor.",
-    terms: [
-      [
-        "prime number",
-        "A whole number greater than 1 whose only factors are 1 and itself.",
-      ],
-      ["factor", "A whole number that divides another with no remainder."],
-    ],
+    terms: ["prime-number", "factor-number"],
     method: [
       "For a prime question, look for a small factor: 2 for an even number, 3 when the digits add to a multiple of 3, 5 for a last digit of 0 or 5, then 7.",
       "For a factor question, divide the number by each candidate. Keep it only when the division leaves no remainder.",
@@ -71,13 +56,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the equations that find the unknown in a times-as-many or more-than story, with the larger or the smaller amount unknown.",
     intuition:
       "A story about “times as many” has the multiplication and the two related divisions. A story about “more than” has the addition and the two related subtractions. Each true equation is one of these, and an equation that mixes the operations is not.",
-    terms: [
-      [
-        "times as many",
-        "A comparison by multiplication: 4 times as many as 12 is $4\\times12$.",
-      ],
-      ["more than", "A comparison by addition: 4 more than 12 is $12+4$."],
-    ],
+    terms: ["times-as-many", "more-than"],
     method: [
       "Decide whether the story compares by multiplication or by addition, and which amount the letter stands for.",
       "Find the letter's value. When the larger amount is given, divide or subtract to find the smaller one.",
@@ -91,12 +70,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Decide which stated products of a three-digit and a one-digit number are correct.",
     intuition:
       "Multiplying place by place splits a number into hundreds, tens and ones, multiplies each part, then adds. Mistakes come from forgetting to add a regrouped ten or hundred, or from putting a part in the wrong place.",
-    terms: [
-      [
-        "regroup",
-        "Carry ten ones to the tens place, or ten tens to the hundreds place.",
-      ],
-    ],
+    terms: ["regroup"],
     method: [
       "Split the three-digit number into hundreds, tens and ones.",
       "Multiply each part by the one-digit number: for $453\\times6$ that is $2{,}400+300+18$.",
@@ -111,10 +85,10 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "The volume of a rectangular prism is its length times its width times its height, in cubic units. Volume adds: two prisms together hold the sum of their volumes.",
     terms: [
-      ["volume", "The number of unit cubes that fill a solid."],
+      "volume",
       [
-        "cubic centimeter",
-        "The volume of a cube whose edges are 1 centimeter.",
+        "unit-cube",
+        "A cubic centimeter is the volume of a unit cube with 1 cm edges.",
       ],
     ],
     method: [
@@ -129,25 +103,14 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-ratio-statements-select": {
     goal: "Choose the true statements that compare counts as part to part, part to whole or whole to part.",
     intuition:
-      "A ratio compares two quantities in a stated order, and the order matters: 5 red to 12 blue is $5:12$, not $12:5$. A part-to-whole ratio uses the total as its second number, and a whole-to-part ratio uses it as the first.",
-    terms: [
-      [
-        "part-to-part ratio",
-        "Compares one group with another group, such as red to blue.",
-      ],
-      [
-        "part-to-whole ratio",
-        "Compares one group with the total of all groups.",
-      ],
-      [
-        "equal ratios",
-        "Ratios such as $2:5$ and $4:10$ whose numbers can both be multiplied or divided by one number to match.",
-      ],
-    ],
+      "A ratio is a comparison of two amounts in a set order. We write 5 red to 12 blue as $5:12$, read “5 to 12”. The order matters: $5:12$ is not $12:5$. A part is one group, such as the red marbles. The whole is all the objects together. A part-to-whole ratio is a ratio that puts the total second. A whole-to-part ratio puts it first. Equivalent ratios are ratios that compare the same way. You get one by multiplying or dividing both numbers by the same number, not 0: $6:15=2:5$.",
+    senses: { part: "part", whole: "whole", square: "square-shape" },
+    noLink: ["terms"],
+    terms: ["part-to-part-ratio", "part-to-whole-ratio", "equivalent-ratios"],
     method: [
       "Write each count and the total of all the objects.",
-      "Put the counts in the order the words give, first quantity first.",
-      "A stated ratio is true if it equals that ratio or an equal ratio, found by multiplying or dividing both numbers by the same number.",
+      "Put the counts in the order the words give: the first amount named goes first.",
+      "A stated ratio is true if it equals that ratio, or an equal ratio made by multiplying or dividing both numbers by the same number other than 0.",
       selectStep,
     ],
     watch:
@@ -157,10 +120,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the true division equations with two-digit divisors and multidigit dividends.",
     intuition:
       "A quotient is correct when multiplying it by the divisor gives back the dividend. An estimate with friendly numbers shows whether the size of the quotient is right before any exact check.",
-    terms: [
-      ["dividend", "The number being divided."],
-      ["divisor", "The number you divide by."],
-    ],
+    terms: ["dividend", "divisor"],
     method: [
       "Estimate: round the divisor and dividend to friendly numbers and divide to see the size of the quotient.",
       "Multiply the stated quotient by the divisor, place by place.",
@@ -174,9 +134,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the true statements about the cubes, count and volume of a prism packed with cubes of unit-fraction edge.",
     intuition:
       "A cube with edge $\\frac{1}{n}$ unit needs $n$ of them to span 1 unit. Its volume is $\\frac{1}{n^{3}}$ cubic unit, because it takes $n\\times n\\times n$ of them to make a cube of edge 1. Counting the small cubes and multiplying the edge lengths give the same volume.",
-    terms: [
-      ["unit fraction", "A fraction with numerator 1, such as $\\frac{1}{4}$."],
-    ],
+    terms: ["unit-fraction"],
     method: [
       "Divide each edge of the prism by the cube's edge to count the cubes along it.",
       "Multiply the three counts to find the number of cubes.",
@@ -187,39 +145,26 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
       "The volume of one cube is $\\frac{1}{n^{3}}$, not $\\frac{1}{n}$: all three edges are shortened.",
   },
   "mcas-statistical-question-select": {
-    goal: "Choose the questions that expect different answers from different people, items or times.",
+    goal: "Choose the questions that expect data with different values from different people, items or times.",
     intuition:
-      "A statistical question has an answer that varies, so you need to collect data to answer it and the answer describes the whole spread. A question with one fixed answer, or about one person on one day, is not statistical.",
-    terms: [
-      [
-        "statistical question",
-        "A question that you expect to have different answers, so you must collect data to answer it.",
-      ],
-      [
-        "variability",
-        "How much the values in a set of data differ from one another.",
-      ],
-    ],
+      "Data is a set of values collected by asking or measuring. A statistical question is a question answered with data whose values vary, meaning they differ. “How many minutes does each student read?” is statistical, because the students give different values. “How many minutes did Sam read today?” is not: it asks for one value. A question about one person can still be statistical if it asks for many values, such as Sam's time for each lap of a swim. The final answer may be one summary number. What matters is that the data behind it vary.",
+    noLink: ["whole"],
+    terms: ["statistical-question", "variability"],
     method: [
-      "Imagine asking the question of many people or on many days.",
-      "If the answers would be the same every time, it is not statistical.",
-      "If the answers would differ, it is statistical.",
+      "Ask what data you would collect to answer the question.",
+      "If you would get one fixed value, it is not statistical.",
+      "If you would get many values that differ, it is statistical.",
       selectStep,
     ],
     watch:
-      "A question about one named person or one moment, such as “How many cakes did Sam order today?”, has one answer and is not statistical.",
+      "A question about one person at one moment, such as “How many cakes did Sam order today?”, asks for one value and is not statistical.",
   },
   "mcas-fraction-rate-select": {
     goal: "Check stated speeds in miles per hour by dividing fractional distances by fractional times.",
     intuition:
-      "A speed in miles per hour is the distance divided by the time. When both are fractions or mixed numbers, write them as fractions and divide by multiplying by the reciprocal. The reciprocal division in the wrong order gives hours per mile, a different rate.",
-    terms: [
-      ["unit rate", "The amount for one unit, such as miles for 1 hour."],
-      [
-        "reciprocal",
-        "The fraction turned upside down: the reciprocal of $\\frac{3}{4}$ is $\\frac{4}{3}$.",
-      ],
-    ],
+      "A rate is a comparison of two different kinds of amounts, such as miles and hours. A speed is the distance traveled in one unit of time, such as miles per hour. It is the distance divided by the time. In a fraction, the top number is called the numerator and the bottom number is called the denominator. A mixed number is a whole number and a fraction together, such as $2\\frac{1}{2}$. Write it as one fraction first: $2\\frac{1}{2}=\\frac{5}{2}$. A reciprocal is a fraction flipped over: the reciprocal of $\\frac{3}{4}$ is $\\frac{4}{3}$. Dividing by a fraction is the same as multiplying by its reciprocal. Dividing in the wrong order, time by distance, gives hours per mile, a different rate.",
+    senses: { unit: "unit" },
+    terms: ["unit-rate", "reciprocal"],
     method: [
       "Write each mixed number as a fraction.",
       "Divide the distance by the time: multiply the distance by the reciprocal of the time.",
@@ -232,14 +177,12 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-negative-fraction-forms": {
     goal: "Choose the expressions equal to a stated fraction by counting negative signs and checking the fraction's orientation.",
     intuition:
-      "A negative sign can sit in the numerator, in the denominator or in front, and all three places give the same value: $\\frac{-3}{4}=\\frac{3}{-4}=-\\frac{3}{4}$. Two negative signs cancel, because multiplying by $-1$ twice returns the original value.",
-    terms: [
-      ["opposite", "The number with the same size on the other side of 0."],
-    ],
+      "A fraction bar means division: $\\frac{3}{4}$ is $3\\div4$. The top number is called the numerator, and the bottom number is called the denominator. A negative sign can sit on the numerator, on the denominator or in front. All three places give the same value: $\\frac{-3}{4}=\\frac{3}{-4}=-\\frac{3}{4}$. That is because a negative divided by a positive is negative, and so is a positive divided by a negative. Two negative signs cancel: $\\frac{-3}{-4}=\\frac{3}{4}$, because a negative divided by a negative is positive.",
+    terms: ["opposite-number"],
     method: [
-      "Count the negative signs in the numerator, the denominator and the front.",
-      "An odd count gives a negative value. An even count gives a positive value.",
-      "Check that the numerator and denominator are the same numbers as in the target, not swapped.",
+      "Count the negative signs in the numerator, the denominator and in front.",
+      "For a fraction that is not 0, an odd count (1 or 3) gives a negative value. An even count (0 or 2) gives a positive value.",
+      "Check the size too. Without its signs, the choice must equal the target without its signs, with the numerator and denominator not swapped.",
       selectStep,
     ],
     watch:
@@ -248,8 +191,9 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-markup-price-select": {
     goal: "Choose the items whose selling price is correct for a stated percent above or below the cost.",
     intuition:
-      "A percent of the cost is a part of the cost: 40 percent of 50 is 20. A price 40 percent above cost adds that part, and a price 40 percent below cost subtracts it. The percent alone, or the percent added as dollars, are different amounts.",
-    terms: [["percent", "A rate per 100: 40 percent is $\\frac{40}{100}$."]],
+      "A percent is a number out of 100: 40 percent means 40 out of every 100. So 40 percent of a 50-dollar cost is $\\frac{40}{100}\\times50=20$ dollars. A price 40 percent above the cost adds that amount: $50+20=70$ dollars. A price 40 percent below the cost subtracts it: $50-20=30$ dollars. The 20 dollars alone is not the price.",
+    noLink: ["part"],
+    terms: ["percent"],
     method: [
       "Find the stated percent of the cost: multiply the cost by the percent over 100.",
       "Add it for a price above the cost, or subtract it for a price below.",
@@ -262,36 +206,38 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-rational-irrational-select": {
     goal: "Choose the rational numbers among radicals, or among sums, products and powers of roots and $\\pi$.",
     intuition:
-      "A rational number is a ratio of two integers, and an irrational number is not. The square root of a perfect square is a whole number, so it is rational. A rational number plus an irrational number is irrational, but two irrational numbers can combine to a rational one: $\\sqrt{2}\\cdot\\sqrt{8}=4$.",
-    terms: [
-      [
-        "rational number",
-        "A number that can be written as a ratio of two integers.",
-      ],
-      [
-        "irrational number",
-        "A number that cannot be written as a ratio of two integers, such as $\\pi$ or $\\sqrt{2}$.",
-      ],
-    ],
+      "An integer is a whole number or its negative, such as $-3$, 0 or 7. A rational number is a number that can be written as one integer divided by another, not by 0, such as $\\frac{3}{4}$ or $5=\\frac{5}{1}$. An irrational number is a number that cannot be written that way, such as $\\sqrt{2}$ or $\\pi$. A square root is a number that times itself gives the number inside: $\\sqrt{49}=7$, because $7\\times7=49$. A cube root is a number that times itself three times gives the number inside: $\\sqrt[3]{8}=2$. A perfect square is a whole number times itself, like 49, so its square root is rational. A perfect cube is a whole number times itself three times, like 27. An expression is a math phrase made of numbers and operations. A product is the result of multiplying, and to square a number means to multiply it by itself. A rational number other than 0 times an irrational number is irrational. A rational plus an irrational number is irrational too. But two irrational numbers can combine to a rational one: $\\sqrt{2}\\cdot\\sqrt{8}=\\sqrt{16}=4$.",
+    senses: {
+      root: "root-radical",
+      roots: "root-radical",
+      product: "product-multiply",
+      products: "product-multiply",
+      factor: "factor-number",
+      factors: "factor-number",
+      squaring: "square-number",
+      difference: "difference-subtract",
+    },
+    terms: ["rational-number", "irrational-number"],
     method: [
-      "Simplify each expression. Evaluate roots of perfect squares and perfect cubes.",
-      "For a product of roots, multiply under one root and check for a perfect square. Simplify powers: $\\left(\\sqrt{a}\\right)^{2}=a$ and $\\left(\\sqrt[3]{a}\\right)^{3}=a$, but $\\left(\\sqrt{a}\\right)^{3}=a\\sqrt{a}$ keeps the root and $\\pi^{2}$ is irrational.",
-      "A nonzero rational times an irrational number, and a rational plus an irrational number, are irrational.",
+      "Simplify each expression. Work out roots of perfect squares and perfect cubes, such as $\\sqrt{36}=6$ and $\\sqrt[3]{27}=3$.",
+      "For a product of roots, multiply under one root and check for a perfect square: $\\sqrt{3}\\cdot\\sqrt{12}=\\sqrt{36}=6$. Squaring undoes a square root: $\\left(\\sqrt{a}\\right)^{2}=a$. But $\\left(\\sqrt{2}\\right)^{3}=2\\sqrt{2}$ keeps a root, and $\\pi^{2}$ is irrational.",
+      "A rational number other than 0 times an irrational number is irrational. A rational number plus an irrational number is irrational.",
       selectStep,
     ],
     watch:
-      "A radical sign does not make a number irrational: $\\sqrt{49}=7$. And $\\pi$ in an expression does not always matter: $\\frac{6\\pi}{2\\pi}=3$.",
+      "A root sign does not make a number irrational: $\\sqrt{49}=7$. And $\\pi$ in an expression does not always matter: $\\frac{6\\pi}{2\\pi}=3$.",
   },
   "mcas-sci-notation-select": {
     goal: "Choose the true equations that write a digit times a power of ten as a standard numeral.",
     intuition:
-      "Multiplying by 10 moves the decimal point one place right, and multiplying by $10^{-1}$ moves it one place left. A positive exponent makes the number larger and a negative exponent makes it smaller but still positive.",
+      "A power of 10 is a product of 10s, 10 multiplied by itself some number of times: $10^{3}=10\\times10\\times10=1000$. The small raised 3 is called the exponent. Scientific notation is a way to write a number as a number that is 1 or more and less than 10, times a power of 10, such as $2\\times10^{3}=2000$. Multiplying by 10 moves the decimal point one place right. A negative exponent means dividing instead: $10^{-1}=\\frac{1}{10}$. So multiplying by $10^{-1}$ moves the point one place left. For a positive number, a positive exponent makes it larger. A negative exponent makes it smaller, but it stays positive: $2\\times10^{-3}=0.002$.",
+    senses: { product: "product-multiply" },
     terms: [
+      "scientific-notation",
       [
-        "scientific notation",
-        "A number written as a number from 1 up to 10 times a power of 10, such as $2\\times10^{4}$.",
+        "standard-form-number",
+        "The standard numeral for $2 \\times 10^4$ is 20,000.",
       ],
-      ["standard numeral", "The number written with digits, such as 20,000."],
     ],
     method: [
       "Look at the sign of the exponent: positive moves the decimal point right, negative moves it left.",
@@ -305,17 +251,12 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-table-intercept-select": {
     goal: "Find the $y$-intercept of each linear table and choose those above or below a stated $y$-intercept.",
     intuition:
-      "The $y$-intercept is the value of $y$ at $x=0$. In a linear table $y$ changes by the same amount for each step in $x$, so you can step backward from any row to $x=0$.",
-    terms: [
-      [
-        "$y$-intercept",
-        "The value of $y$ when $x=0$, where the graph crosses the $y$-axis.",
-      ],
-      ["slope", "The change in $y$ for each increase of 1 in $x$."],
-    ],
+      "A linear function is a rule whose graph is a straight line. In its table, $y$ changes by the same amount each time $x$ goes up by 1. That amount is called the slope. The $y$-intercept is the value of $y$ when $x=0$, where the line crosses the $y$-axis. If the table does not list $x=0$, step from a listed row to $x=0$, backward or forward. Each step of 1 in $x$ changes $y$ by the slope.",
+    senses: { change: "change", changes: "change", rule: "rule" },
+    terms: ["y-intercept", "slope"],
     method: [
-      "Find the slope: the change in $y$ divided by the change in $x$ between two rows.",
-      "If $x=0$ is listed, read $y$. Otherwise move back from a row to $x=0$, changing $y$ by the slope for each step.",
+      "Find the slope: divide the change in $y$ by the change in $x$ between two rows.",
+      "If $x=0$ is listed, read its $y$. Otherwise move from a row to $x=0$, changing $y$ by the slope for each step of 1 in $x$.",
       "Compare each intercept with the stated one. A table with an equal intercept is neither above nor below.",
       selectStep,
     ],
@@ -325,16 +266,13 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-quadratic-zeros-select": {
     goal: "Choose the two values of $x$ that make a quadratic expression equal to 0.",
     intuition:
-      "A product is 0 only when one of its factors is 0, so a factored quadratic is 0 at the value that zeroes each factor. A value is a zero of any expression if substituting it gives 0.",
-    terms: [
-      [
-        "zero of an expression",
-        "A value of $x$ for which the expression equals 0.",
-      ],
-    ],
+      "An expression is a math phrase made of numbers, letters and operations. A quadratic is an expression with an $x^{2}$ part ($x$ times $x$) and no higher power of $x$, such as $x^{2}-2x-15$. A zero of the expression is a value of $x$ that makes it equal 0. Factored form is a way of writing it as a product of factors, the parts being multiplied: $x^{2}-2x-15=(x+3)(x-5)$. A product is 0 only when one of its factors is 0. So it is 0 when $x+3=0$ or $x-5=0$, at $x=-3$ or $x=5$. To substitute means to put a value in place of $x$. Any value is a zero if substituting it gives 0.",
+    senses: { factor: "factor-number", factors: "factor-number" },
+    noLink: ["part", "parts"],
+    terms: ["zero-of-a-function"],
     method: [
       "If the expression is factored, set each factor equal to 0 and solve.",
-      "If it is not factored, factor it first or substitute each value and evaluate.",
+      "If it is not factored, factor it first, or substitute each value and work out the result.",
       "Keep the two values that give 0.",
       selectStep,
     ],
@@ -344,20 +282,13 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-congruence-statement-select": {
     goal: "From a congruence statement, choose the true statements about corresponding sides and angles.",
     intuition:
-      "Congruent triangles can be moved to fit exactly. In the statement $\\triangle ABC\\cong\\triangle QRP$ the letters match in order: $A$ with $Q$, $B$ with $R$, $C$ with $P$. Each angle matches the angle at its matching vertex, and each side matches the side between its matching vertices.",
-    terms: [
-      [
-        "corresponding parts",
-        "The sides and angles that match when one triangle is placed on the other.",
-      ],
-      [
-        "congruent",
-        "Having the same size and shape, so corresponding parts are equal.",
-      ],
-    ],
+      "Congruent triangles have the same size and shape, so one can be moved to fit exactly on the other. We write $\\triangle ABC$ for the triangle with corners $A$, $B$ and $C$, and $\\overline{AC}$ for its side from $A$ to $C$. The sign $\\cong$ means “is congruent to”. In $\\triangle ABC\\cong\\triangle QRP$ the letters match in order: $A$ with $Q$, $B$ with $R$, $C$ with $P$. Corresponding parts are the parts that match when one triangle is placed on the other. Each angle matches the angle at its matching corner. Each side matches the side between its matching corners.",
+    senses: { side: "side", sides: "side" },
+    noLink: ["parts"],
+    terms: ["corresponding", "congruent"],
     method: [
-      "Write the pairs of vertices by position in the statement.",
-      "For an angle, find the matching vertex of the other triangle.",
+      "Write the pairs of corners by their positions in the statement.",
+      "For an angle, find the matching corner of the other triangle.",
       "For a side, match both of its endpoints. The order of the two letters in a side does not matter.",
       selectStep,
     ],
@@ -367,17 +298,25 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-circle-equation-select": {
     goal: "From the equation of a circle, choose the true statements about its center, radius, points and the origin.",
     intuition:
-      "The equation $(x-h)^{2}+(y-k)^{2}=r^{2}$ says every point at distance $r$ from the center $(h,k)$. The signs inside the parentheses are opposite to the center's coordinates, and the number on the right is the square of the radius.",
+      "A circle is all the points at one distance from a point called the center. That distance is called the radius. Coordinates are the two numbers $(x,y)$ that locate a point: across $x$, then up $y$. The origin is the point $(0,0)$. The equation $(x-h)^{2}+(y-k)^{2}=r^{2}$ says a point $(x,y)$ is at distance $r$ from the center $(h,k)$. For example, $(x-2)^{2}+(y+1)^{2}=9$ has center $(2,-1)$ and radius 3. The opposite of a number has the other sign: the opposite of 2 is $-2$. Each coordinate of the center is the number that makes its parentheses 0: $x-2=0$ at $x=2$, and $y+1=0$ at $y=-1$. So each is the opposite of the number written inside. The right side, the part after the equals sign, is the radius squared: $3\\times3=9$. A square root is a number that times itself gives a given number, so the radius is the square root of the right side.",
+    senses: {
+      center: "center",
+      opposite: "opposite-number",
+      opposites: "opposite-number",
+      "right side": "side-of-equation",
+      "left side": "side-of-equation",
+    },
+    noLink: ["part"],
     terms: [
       [
         "center",
-        "The point $(h,k)$ at the same distance from every point of the circle.",
+        "For the circle $(x - h)^2 + (y - k)^2 = r^2$, the center is $(h, k)$.",
       ],
-      ["radius", "The distance from the center to the circle."],
+      "radius",
     ],
     method: [
-      "Read $h$ and $k$ with the opposite sign of the numbers in the parentheses, and take the square root of the right side for $r$.",
-      "A point is on the circle if substituting it makes the left side equal the right side.",
+      "Read $h$ and $k$ as the numbers that make each parentheses 0, the opposites of the numbers written inside. The radius $r$ is the square root of the right side.",
+      "A point is on the circle if putting its coordinates into the left side gives the right side.",
       "The origin is inside if its distance from the center is less than $r$, outside if it is greater, and on the circle if it equals $r$.",
       selectStep,
     ],
@@ -387,7 +326,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the true statements about how a cylinder's volume changes when its radius or height is multiplied.",
     intuition:
       "In $V=\\pi r^{2}h$ the radius appears twice, so multiplying it by a factor multiplies the volume by that factor squared. The height appears once, so multiplying it by a factor multiplies the volume by that factor.",
-    terms: [["factor", "The number a quantity is multiplied by."]],
+    terms: ["factor-number"],
     method: [
       "Replace the changed dimension by its factor times itself in the formula.",
       "Radius multiplied by $f$ multiplies the volume by $f^{2}$. Height multiplied by $g$ multiplies it by $g$.",
@@ -400,17 +339,10 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-circle-radius-distance": {
     goal: "Give the distance from a circle's center to a point on the circle from its radius, diameter or circumference.",
     intuition:
-      "A circle is every point at one fixed distance from its center, and that distance is the radius. So every point on the circle is a radius away from the center, wherever the point is.",
-    terms: [
-      [
-        "radius",
-        "The distance from the center of a circle to any point on it.",
-      ],
-      [
-        "diameter",
-        "The distance across a circle through its center, twice the radius.",
-      ],
-    ],
+      "A circle is all the points at one fixed distance from a point called the center. That distance is called the radius. So every point on the circle is one radius away from the center, wherever the point is. The diameter is the distance straight across the circle through the center, twice the radius. The circumference is the distance all the way around, $2\\pi r$, where $\\pi$ is about 3.14.",
+    senses: { center: "center" },
+    noLink: ["part"],
+    terms: ["radius", "diameter"],
     method: [
       "Find the radius. It is given, or half the diameter, or the circumference divided by $2\\pi$.",
       "The distance from the center to any point on the circle equals the radius.",
@@ -422,10 +354,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the statement that describes an expression with a parenthesized sum or difference, without evaluating it.",
     intuition:
       "Parentheses make the numbers inside one quantity. In $8\\times(24+2)$ the sum is one number and 8 multiplies all of it, so the expression is 8 times as large as the sum.",
-    terms: [
-      ["sum", "The result of adding."],
-      ["difference", "The result of subtracting."],
-    ],
+    terms: ["sum", "difference-subtract"],
     method: [
       "Name the quantity inside the parentheses, such as “the sum of 24 and 2”.",
       "Say what the operation outside does to it: “8 times as large as” for multiplication.",
@@ -437,38 +366,28 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-slope-sign-description": {
     goal: "Decide whether a linear function's slope is positive, negative or zero from how its output changes with its input.",
     intuition:
-      "The slope is the change in the output divided by the change in the input. When both change in the same direction the quotient is positive, when they change in opposite directions it is negative, and when the output does not change it is zero.",
-    terms: [
-      [
-        "slope",
-        "The change in output divided by the change in input for a linear function.",
-      ],
-    ],
+      "A function is a rule that turns each input, the number you put in, into exactly one output, the number you get out. A linear function has a straight-line graph. Its slope is the change in the output divided by the change in the input. When both go up, or both go down, the slope is positive. When one goes up while the other goes down, the slope is negative. When the output stays the same, the slope is zero.",
+    senses: { change: "change", changes: "change", rule: "rule" },
+    noLink: ["opposite"],
+    terms: ["slope"],
     method: [
       "Decide whether the input goes up or down.",
       "Decide whether the output goes up or down, or stays the same.",
-      "Same direction: positive. Opposite directions: negative. Output unchanged: zero.",
+      "Same direction: positive. One up and one down: negative. Output unchanged: zero.",
     ],
     watch:
-      "When the input decreases and the output decreases, the slope is positive: both changes are negative and their quotient is positive.",
+      "When the input decreases and the output decreases, the slope is positive: a negative change divided by a negative change is positive.",
   },
   "mcas-rotational-symmetry": {
     goal: "Decide which figure maps onto itself in a turn of less than a full circle about its center.",
     intuition:
-      "A figure has rotational symmetry if turning it less than 360° about a point leaves it looking the same. A rectangle looks the same after a half turn. A kite or an isosceles trapezoid has a line of symmetry but no turn of less than 360° fits it back on itself.",
-    terms: [
-      [
-        "rotational symmetry",
-        "A turn of less than 360° about a center that maps a figure onto itself.",
-      ],
-      [
-        "line of symmetry",
-        "A line that splits a figure into two mirror images.",
-      ],
-    ],
+      "Rotational symmetry means that some turn about its center lands a figure exactly on itself. The turn must be more than 0° and less than a full turn of 360°. A rectangle lands on itself after a half turn of 180°. A line of symmetry is a fold line that makes the two halves of a figure match. Parallel means running the same direction without meeting. A parallelogram is a four-sided shape with two pairs of parallel sides. A kite that is not a rhombus has a line of symmetry, but no turn of less than 360° fits it back on itself. Isosceles means having two equal sides. An isosceles trapezoid (a shape with exactly one pair of parallel sides and two equal slanted sides) has no turn that fits either. A regular polygon is a shape with all sides equal and all angles equal.",
+    senses: { center: "center", side: "side", sides: "side" },
+    noLink: ["more than"],
+    terms: ["rotational-symmetry", "line-of-symmetry"],
     method: [
       "Picture the figure turning about its center.",
-      "Test a half turn and a turn of $\\frac{360^\\circ}{n}$ for a figure with $n$ equal sides.",
+      "Test a half turn. For a regular polygon with $n$ sides, also test a turn of $\\frac{360^\\circ}{n}$.",
       "If the figure lands on itself, it has rotational symmetry. A line of symmetry alone does not count.",
     ],
     watch:
@@ -478,7 +397,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Decide whether a product is greater than, less than or equal to a fraction factor without multiplying.",
     intuition:
       "Multiplying by a number is taking that many copies of a quantity. Fewer than one copy, a number between 0 and 1, makes the result smaller. Exactly one copy changes nothing. More than one copy makes it larger.",
-    terms: [["factor", "A number that is multiplied."]],
+    terms: ["factor-number"],
     method: [
       "Compare the other factor with 1.",
       "Greater than 1: the product is greater than the first factor. Equal to 1: equal. Between 0 and 1: less.",
@@ -503,29 +422,29 @@ export const mcasGapPrinciples: Record<string, string> = {
   "mcas-prism-range-select":
     "A rectangular prism with edges $\\ell$, $w$, $h$ has volume $V=\\ell wh$. Volumes of solids that do not overlap add.",
   "mcas-ratio-statements-select":
-    "The ratio $a:b$ is equivalent to $ka:kb$ for $k\\neq0$. Two ratios $a:b$ and $c:d$ are equivalent when $ad=bc$. The order of the terms follows the order of the quantities named.",
+    "The ratio $a:b$ is equivalent to $ka:kb$ for any number $k\\neq0$ ($k$ is not 0). Two ratios $a:b$ and $c:d$ of nonzero numbers are equivalent when $ad=bc$. The order of the numbers follows the order of the amounts named.",
   "mcas-true-quotient-equations":
     "$a\\div b=q$ exactly when $b\\cdot q=a$ and $b\\neq0$. An estimate $\\frac{a'}{b'}$ with $a'\\approx a$ and $b'\\approx b$ approximates $q$.",
   "mcas-cube-prism-statements":
     "A cube of edge $\\frac{1}{n}$ has volume $\\left(\\frac{1}{n}\\right)^{3}=\\frac{1}{n^{3}}$. A prism with edges $\\frac{a}{n},\\frac{b}{n},\\frac{c}{n}$ holds $abc$ such cubes, and its volume $\\frac{abc}{n^{3}}$ equals the product of its edges.",
   "mcas-statistical-question-select":
-    "A statistical question anticipates variability in the data: the answers differ across the individuals or occasions it asks about.",
+    "Variability means the values in a set of data differ. A statistical question expects variability in the data collected to answer it, across the people, items or times it asks about.",
   "mcas-fraction-rate-select":
-    "The unit rate for distance $d$ over time $t$ is $\\frac{d}{t}=d\\cdot\\frac{1}{t}$. For fractions, $\\frac{a}{b}\\div\\frac{c}{d}=\\frac{a}{b}\\cdot\\frac{d}{c}$.",
+    "The unit rate for distance $d$ over time $t$ is $\\frac{d}{t}$, the distance for 1 unit of time. For fractions of nonzero numbers, $\\frac{a}{b}\\div\\frac{c}{d}=\\frac{a}{b}\\cdot\\frac{d}{c}$.",
   "mcas-negative-fraction-forms":
-    "For integers $a$ and $b\\neq0$, $-\\frac{a}{b}=\\frac{-a}{b}=\\frac{a}{-b}$ and $\\frac{-a}{-b}=\\frac{a}{b}$. Each negative sign multiplies the value by $-1$, so $k$ signs give $(-1)^{k}$.",
+    "An integer is a whole number or its negative. For integers $a$ and $b$ with $b\\neq0$, $-\\frac{a}{b}=\\frac{-a}{b}=\\frac{a}{-b}$ and $\\frac{-a}{-b}=\\frac{a}{b}$. Each negative sign multiplies the value by $-1$, so $k$ signs multiply it by $(-1)^{k}$.",
   "mcas-markup-price-select":
     "A price $p$ percent above cost $c$ is $c\\left(1+\\frac{p}{100}\\right)$, and $p$ percent below is $c\\left(1-\\frac{p}{100}\\right)$.",
   "mcas-rational-irrational-select":
-    "A rational number equals $\\frac{p}{q}$ for integers $p$ and $q\\neq0$. $\\sqrt{n}$ is rational exactly when $n$ is a perfect square of a rational number. The sum of a rational and an irrational number is irrational, and so is the product of a nonzero rational and an irrational. For $a>0$, $\\left(\\sqrt{a}\\right)^{2k}=a^{k}$ is rational, and $\\pi^{k}$ is irrational for every integer $k\\neq0$.",
+    "A rational number equals $\\frac{p}{q}$ for integers $p$ and $q$ with $q\\neq0$. For a whole number $n$, $\\sqrt{n}$ is rational exactly when $n$ is a perfect square. The sum of a rational and an irrational number is irrational, and so is the product of a nonzero rational and an irrational. For a whole number $a$ and a positive whole number $k$, $\\left(\\sqrt{a}\\right)^{2k}=a^{k}$ is rational, while $\\pi^{k}$ is irrational.",
   "mcas-sci-notation-select":
-    "Multiplying by $10^{k}$ moves the decimal point $k$ places right when $k>0$ and $|k|$ places left when $k<0$, so $c\\times10^{-k}=\\frac{c}{10^{k}}$ is positive when $c>0$.",
+    "Multiplying by $10^{k}$ moves the decimal point $k$ places right when $k>0$, and $|k|$ places left when $k<0$, where $|k|$ is $k$ without its sign. So for a positive number $c$, $c\\times10^{-k}=\\frac{c}{10^{k}}$ is still positive.",
   "mcas-table-intercept-select":
-    "For a linear function $y=mx+b$, the $y$-intercept is $b=y_0-mx_0$ for any point $(x_0,y_0)$ of the table, where $m=\\frac{y_1-y_0}{x_1-x_0}$.",
+    "For a linear function $y=mx+b$, the slope is $m=\\frac{y_1-y_0}{x_1-x_0}$ for any two rows $(x_0,y_0)$ and $(x_1,y_1)$ of the table, and the $y$-intercept is $b=y_0-mx_0$.",
   "mcas-quadratic-zeros-select":
-    "If $(x-p)(x-q)=0$ then $x=p$ or $x=q$ (zero-product property). A value $v$ is a zero of $f$ exactly when $f(v)=0$.",
+    "If $(x-p)(x-q)=0$, then $x=p$ or $x=q$, because a product is 0 only when one of its factors is 0. A value $v$ is a zero of $f$ exactly when $f(v)=0$, where $f(v)$, read “$f$ of $v$”, is the value at $x=v$.",
   "mcas-congruence-statement-select":
-    "If $\\triangle ABC\\cong\\triangle DEF$, then $A\\leftrightarrow D$, $B\\leftrightarrow E$, $C\\leftrightarrow F$: corresponding angles are congruent, and so are the sides joining corresponding vertices.",
+    "If $\\triangle ABC\\cong\\triangle DEF$, then $A$ matches $D$, $B$ matches $E$ and $C$ matches $F$. Corresponding angles are congruent, and so are the sides joining corresponding corners.",
   "mcas-circle-equation-select":
     "The circle with center $(h,k)$ and radius $r>0$ is the set of points with $(x-h)^{2}+(y-k)^{2}=r^{2}$. A point is inside if the left side is less than $r^{2}$ and outside if it is greater.",
   "mcas-cylinder-scaling-select":
@@ -535,9 +454,9 @@ export const mcasGapPrinciples: Record<string, string> = {
   "mcas-parenthesized-product-statement":
     "In $n\\times(a+b)$ the parentheses group $a+b$ as one quantity, so the value is $n$ times $(a+b)$. By the distributive property it equals $na+nb$, not $na+b$.",
   "mcas-slope-sign-description":
-    "The slope is $m=\\frac{\\Delta y}{\\Delta x}$. It is positive when $\\Delta y$ and $\\Delta x$ have the same sign, negative when they have opposite signs and zero when $\\Delta y=0$.",
+    "The slope is $m=\\frac{\\Delta y}{\\Delta x}$, where $\\Delta y$ (read “delta $y$”) is the change in output and $\\Delta x$ is the change in input. It is positive when the two changes have the same sign, negative when their signs differ, and zero when $\\Delta y=0$.",
   "mcas-rotational-symmetry":
-    "A figure has rotational symmetry of order $n>1$ if rotating it by $\\frac{360^\\circ}{n}$ about a center maps it onto itself. A regular polygon with $n$ sides has order $n$, and a parallelogram has order 2.",
+    "A figure has rotational symmetry if a rotation (a turn) about a center by an angle between 0° and 360° maps it onto itself. A regular polygon with $n$ sides maps onto itself after a turn of $\\frac{360^\\circ}{n}$. Every parallelogram maps onto itself after a half turn of 180°.",
   "mcas-product-factor-size":
     "For $a>0$: $a\\cdot g>a$ when $g>1$, $a\\cdot g=a$ when $g=1$ and $a\\cdot g<a$ when $0<g<1$.",
 };
@@ -650,7 +569,9 @@ export const mcasGapLessons: Lesson[] = [
     id: "mcas-ratio-rate-percent-statements",
     title: "Judge ratio, rate and percent statements",
     summary:
-      "Check each stated ratio, speed or price against the quantities it describes, keeping order and units straight.",
+      "A ratio is a comparison of two amounts in a set order, such as 6 red marbles to 9 blue ones. A rate is a ratio of two different kinds of amounts, such as miles per hour. A percent is a number out of 100. Check each stated ratio, rate or price against the real amounts. Keep the order and the units straight.",
+    senses: { part: "part", whole: "whole", unit: "unit" },
+    noLink: ["units", "more than", "changes", "change"],
     templateIds: [
       "mcas-ratio-statements-select",
       "mcas-fraction-rate-select",
@@ -664,26 +585,28 @@ export const mcasGapLessons: Lesson[] = [
     intuition: [
       "A statement is true when its numbers match the situation",
       [
-        "You need to simplify fractions and multiply and divide with them. A ratio, a rate and a percent change each compare quantities in a set order. A statement is true only if it uses the right quantities in the right order and gets the right number.",
+        "We write the ratio of 6 red to 9 blue as $6:9$, read “6 to 9”. The order follows the words: red to blue is $6:9$, and blue to red is $9:6$. Equivalent ratios are ratios that compare the same way. Multiply or divide both numbers by the same number, not 0, to get one: $6:9=2:3$.",
+        "A speed is the distance traveled in one unit of time, so it is a rate: distance divided by time. A mixed number is a whole number and a fraction together, such as $1\\frac{1}{2}$, which equals $\\frac{3}{2}$. A reciprocal is a fraction flipped over. To divide by a fraction, multiply by its reciprocal: dividing by $\\frac{3}{2}$ is multiplying by $\\frac{2}{3}$.",
+        "A percent change is a change written as a percent of the starting amount. A price 40 percent above a cost of 50 dollars adds 40 percent of 50, which is $\\frac{40}{100}\\times50=20$ dollars. So the price is $50+20=70$ dollars.",
       ],
     ],
     workedExample: {
       prompt:
         "A bag has 6 red marbles and 9 blue marbles. Is “the ratio of red marbles to all marbles is $2:5$” true?",
       steps: [
-        "There are $6+9=15$ marbles in all.",
-        "Red to all is $6:15$.",
-        "Divide both numbers by 3: $6:15=2:5$.",
+        "Find the whole: there are $6+9=15$ marbles in all.",
+        "Red to all puts the red count first and the total second: $6:15$.",
+        "Divide both numbers by 3: $6:15=2:5$. So the statement is true.",
       ],
       answer: "True",
     },
     closingSections: [
       method("Order, orientation and the starting amount", [
-        "For a ratio, put the first quantity named first. For a speed, put the distance over the time: miles divided by hours gives miles per hour, and hours divided by miles does not. Write mixed numbers as fractions and divide by multiplying by the reciprocal.",
+        "For a ratio, put the first amount named first. For a speed, put the distance over the time: miles divided by hours gives miles per hour. Hours divided by miles gives hours per mile, a different rate. Write mixed numbers as fractions, and divide by multiplying by the reciprocal.",
         "For a percent change, find the percent of the original cost, then add it or subtract it. The percent of the cost alone is not the new price.",
       ]),
       formal("Equal ratios and percent change", [
-        "$a:b=c:d$ exactly when $ad=bc$. For distance $d$ and time $t$, the rate is $\\frac{d}{t}$. A price $p$ percent above cost $c$ is $c\\left(1+\\frac{p}{100}\\right)$.",
+        "For nonzero numbers, $a:b=c:d$ exactly when $ad=bc$. For distance $d$ and time $t$, the speed is $\\frac{d}{t}$. A price $p$ percent above cost $c$ is $c\\left(1+\\frac{p}{100}\\right)$, and $p$ percent below is $c\\left(1-\\frac{p}{100}\\right)$.",
       ]),
     ],
     pitfalls: [
@@ -746,7 +669,8 @@ export const mcasGapLessons: Lesson[] = [
     id: "mcas-statistical-questions-select",
     title: "Which questions are statistical?",
     summary:
-      "A statistical question expects different answers, so it needs data. A question with one answer does not.",
+      "Data is a set of values collected by asking or measuring. A statistical question is a question answered with data whose values vary, meaning they differ. “How tall is each student in my class?” is statistical. “How tall is Ana?” is not, because it asks for one value.",
+    noLink: ["change", "changes"],
     templateIds: ["mcas-statistical-question-select"],
     objectives: [
       "Tell a statistical question from a question with a single answer.",
@@ -755,27 +679,31 @@ export const mcasGapLessons: Lesson[] = [
     intuition: [
       "Will the answers vary?",
       [
-        "You need to know what data is: a set of values collected by asking or measuring. Some questions have one answer that never changes, such as the number of lanes in a pool. Others have different answers for different people, items or days, such as how long each swimmer stays.",
-        "A statistical question is of the second kind. You cannot answer it from one value, so you collect data and look at how the values spread.",
+        "Some questions ask for one value that stays the same, such as the number of lanes in a pool. Others ask for many values that differ, such as how long each swimmer stays in the pool.",
+        "A statistical question is of the second kind. You collect the data, then describe the values: how spread out they are, or a typical value. That summary can be one number, but the data behind it vary.",
+        "A question about one person can still be statistical if it asks for many values. “How long does Sam take to swim each lap this week?” has a different value for each lap.",
       ],
     ],
     workedExample: {
       prompt:
         "Is “How many minutes does each student spend on homework?” a statistical question? Is “How many students are in Room 12?”?",
       steps: [
-        "Homework time differs from student to student, so the answers vary and you would collect data. The first question is statistical.",
-        "The number of students in Room 12 is one fixed number, so the second question is not.",
+        "Homework time differs from student to student. You would collect many different values, so the first question is statistical.",
+        "The number of students in Room 12 is one fixed number. Nothing varies, so the second question is not statistical.",
       ],
       answer: "Only the first",
     },
     closingSections: [
       method("A test you can apply", [
-        "Imagine asking the question of many people or on many days. If every answer would be the same, it is not statistical. If the answers would differ, it is.",
-        "A question about one named person or one moment has a single answer, even if it begins with “how many”.",
+        "Imagine collecting the data to answer the question. If you would get one fixed value, it is not statistical. If you would get many values that differ, it is.",
+        "A question about one person at one moment asks for a single value, even if it begins with “how many”.",
+      ]),
+      formal("Statistical questions", [
+        "Variability means the values in a set of data differ. A statistical question expects variability in the data collected to answer it, across the people, items or times it asks about.",
       ]),
     ],
     pitfalls: [
-      "“How many” does not make a question statistical. Check whether the answer varies.",
+      "“How many” does not make a question statistical. Check whether the data would vary.",
       "A question about a group is not statistical if it has one fixed answer, such as the number of students in one room.",
     ],
     parentGuide:
@@ -785,7 +713,12 @@ export const mcasGapLessons: Lesson[] = [
     id: "mcas-number-forms-select",
     title: "Negative fractions, rational numbers and scientific notation",
     summary:
-      "Decide whether forms of a number are equal by counting signs, simplifying radicals and moving the decimal point.",
+      "One number can be written in many forms. $\\frac{-3}{4}$, $\\frac{3}{-4}$ and $-\\frac{3}{4}$ are the same number, and so are $2\\times10^{3}$ and 2,000. A square root is a number that times itself gives another number: $\\sqrt{49}=7$. This lesson decides whether two forms are equal. It counts negative signs, checks square roots and moves the decimal point.",
+    senses: {
+      root: "root-radical",
+      roots: "root-radical",
+      product: "product-multiply",
+    },
     templateIds: [
       "mcas-negative-fraction-forms",
       "mcas-rational-irrational-select",
@@ -799,31 +732,33 @@ export const mcasGapLessons: Lesson[] = [
     intuition: [
       "Different forms, one value",
       [
-        "You need to multiply integers and know that a fraction bar means division. A number can be written in many forms: $\\frac{-3}{4}$, $\\frac{3}{-4}$ and $-\\frac{3}{4}$ are the same number, and $2\\times10^{3}$ and 2,000 are the same number. The skill is deciding whether two forms are equal.",
+        "A fraction bar means division: $\\frac{3}{4}$ is $3\\div4$. The top number is called the numerator, and the bottom number is called the denominator. A negative divided by a positive is negative, and so is a positive divided by a negative. A negative divided by a negative is positive.",
+        "An integer is a whole number or its negative, such as $-3$, 0 or 7. A rational number is a number that can be written as one integer divided by another, not by 0. An irrational number is a number that cannot be written that way, such as $\\sqrt{2}$ or $\\pi$. A square root is a number that times itself gives the number inside: $\\sqrt{49}=7$. A perfect square is a whole number times itself, such as 49.",
+        "A power of 10 is a product of 10s, such as $10^{3}=10\\times10\\times10=1000$. Scientific notation is a way to write a number as a number that is 1 or more and less than 10, times a power of 10, such as $2\\times10^{3}$. The small raised number is called the exponent. A negative exponent means dividing by 10 that many times: $10^{-2}=\\frac{1}{100}$.",
       ],
     ],
     workedExample: {
       prompt: "Is $\\frac{-7}{-2}$ equal to $-\\frac{7}{2}$?",
       steps: [
         "$\\frac{-7}{-2}$ has two negative signs. A negative divided by a negative is positive, so it equals $\\frac{7}{2}$.",
-        "$-\\frac{7}{2}$ has one negative sign and is negative.",
-        "A positive number and a negative number are not equal.",
+        "$-\\frac{7}{2}$ has one negative sign, so it is negative.",
+        "A positive number and a negative number are never equal.",
       ],
       answer: "No",
     },
     closingSections: [
       method("Count signs, simplify roots, move the point", [
-        "For signs in a fraction, count the negative signs: an odd count is negative, an even count is positive, and the numerator and denominator must not be swapped.",
-        "For rational numbers, simplify roots of perfect squares. A rational plus an irrational number is irrational, but roots can combine: $\\sqrt{2}\\cdot\\sqrt{8}=\\sqrt{16}=4$.",
+        "For signs in a fraction that is not 0, count the negative signs. An odd count gives a negative value, and an even count gives a positive value. The sizes must match too: the numerator and denominator must not be swapped.",
+        "For rational numbers, work out square roots of perfect squares. A rational plus an irrational number is irrational. But square roots can combine: $\\sqrt{2}\\cdot\\sqrt{8}=\\sqrt{16}=4$.",
         "For scientific notation, move the decimal point right for a positive exponent and left for a negative one.",
       ]),
       formal("Rules", [
-        "$-\\frac{a}{b}=\\frac{-a}{b}=\\frac{a}{-b}$ and $\\frac{-a}{-b}=\\frac{a}{b}$. $c\\times10^{k}$ moves the decimal point of $c$ by $k$ places.",
+        "For integers $a$ and $b$ with $b\\neq0$: $-\\frac{a}{b}=\\frac{-a}{b}=\\frac{a}{-b}$ and $\\frac{-a}{-b}=\\frac{a}{b}$. Multiplying $c$ by $10^{k}$ moves its decimal point right $k$ places when $k>0$, and left $|k|$ places when $k<0$. Here $|k|$ is $k$ without its sign.",
       ]),
     ],
     pitfalls: [
       "Two negative signs cancel and give a positive value.",
-      "A radical is irrational only if the number under it is not a perfect power.",
+      "The square root of a whole number is irrational unless the number is a perfect square: $\\sqrt{49}=7$ is rational, but $\\sqrt{8}$ is irrational.",
       "A negative exponent gives a small positive number, not a negative number.",
     ],
     parentGuide:
@@ -833,7 +768,16 @@ export const mcasGapLessons: Lesson[] = [
     id: "mcas-function-equation-statements",
     title: "Intercepts, zeros, circle equations and slope sign",
     summary:
-      "Read the intercept from a table, the zeros from a factored form, the center and radius from a circle's equation and the sign of a slope from a description.",
+      "A function is a rule that turns each input, the number you put in, into exactly one output, the number you get out. A table, an equation and a description can all show the same function. Each form makes one feature easy to read. This lesson reads a starting value from a table, zeros from a factored form, a circle from its equation, and a slope's sign from words.",
+    senses: {
+      center: "center",
+      change: "change",
+      changes: "change",
+      factor: "factor-number",
+      factors: "factor-number",
+      product: "product-multiply",
+    },
+    noLink: ["opposite", "rule", "part", "parts"],
     templateIds: [
       "mcas-table-intercept-select",
       "mcas-quadratic-zeros-select",
@@ -849,31 +793,36 @@ export const mcasGapLessons: Lesson[] = [
     intuition: [
       "Each form shows one feature",
       [
-        "You need to substitute numbers for letters. A table, an equation and a description show the same function in different ways, and each makes one feature easy to read. A factored quadratic shows its zeros, the equation of a circle shows its center and radius, and a table shows the change in $y$ for each step in $x$.",
+        "A linear function is a function whose graph is a straight line. Its slope is the change in $y$ for each increase of 1 in $x$. Its $y$-intercept is the value of $y$ when $x=0$. A table shows the change in $y$ for each step in $x$, so you can step back to $x=0$.",
+        "A quadratic is an expression with an $x^{2}$ part ($x$ times $x$) and no higher power. A zero is a value of $x$ that makes it equal 0. Factored form is a way of writing it as factors, the parts being multiplied, such as $(x+3)(x-5)$. A product is 0 only when one of its factors is 0.",
+        "A circle is all the points at one distance from a point called the center. That distance is called the radius. Coordinates are the two numbers $(x,y)$ that locate a point. The equation of a circle shows its center and radius.",
+        "To substitute means to put a number in place of a letter. Substituting is a quick way to check each statement.",
       ],
     ],
     workedExample: {
       prompt:
         "A linear table has $x$ values 2, 3, 4 and $y$ values 7, 10, 13. What is the $y$-intercept?",
       steps: [
-        "$y$ increases by 3 for each increase of 1 in $x$, so the slope is 3.",
-        "Going back from $x=2$ to $x=0$ is 2 steps of 1, which changes $y$ by $-6$.",
-        "$7-6=1$.",
+        "Each time $x$ goes up by 1, $y$ goes up by 3. So the slope is 3.",
+        "Going back from $x=2$ to $x=0$ is 2 steps of 1. That changes $y$ by $2\\times(-3)=-6$.",
+        "Start from $y=7$ at $x=2$: $7-6=1$. So the $y$-intercept is 1.",
       ],
       answer: "1",
     },
     closingSections: [
       method("Read the feature you need", [
-        "For a zero of $(x+3)(x-5)$, set each factor to 0: $x=-3$ and $x=5$. For a circle $(x+2)^{2}+(y-5)^{2}=16$, the center is $(-2,5)$ and the radius is 4. For a slope, compare the directions of the change in input and the change in output: the same direction gives a positive slope and opposite directions give a negative one.",
+        "For the zeros of $(x+3)(x-5)$, set each factor to 0: $x=-3$ and $x=5$.",
+        "For the circle $(x+2)^{2}+(y-5)^{2}=16$, the center is $(-2,5)$ and the radius is $\\sqrt{16}=4$. The signs inside the parentheses are the opposite of the center's coordinates.",
+        "For a slope, compare the directions of the change in input and the change in output. The same direction gives a positive slope, and opposite directions give a negative one.",
       ]),
       formal("Standard forms", [
-        "A circle with center $(h,k)$ and radius $r$ has equation $(x-h)^{2}+(y-k)^{2}=r^{2}$. If $(x-p)(x-q)=0$ then $x=p$ or $x=q$. The slope is $m=\\frac{\\Delta y}{\\Delta x}$.",
+        "A circle with center $(h,k)$ and radius $r$ has the equation $(x-h)^{2}+(y-k)^{2}=r^{2}$. If $(x-p)(x-q)=0$, then $x=p$ or $x=q$. The slope is $m=\\frac{\\Delta y}{\\Delta x}$, the change in $y$ divided by the change in $x$.",
       ]),
     ],
     pitfalls: [
       "The first $y$ in a table is the intercept only when the first $x$ is 0.",
       "The zero of $x+3$ is $-3$.",
-      "The right side of a circle's equation is $r^{2}$, not $r$.",
+      "The number after the equals sign in a circle's equation is $r^{2}$, not $r$.",
     ],
     parentGuide:
       "Ask the learner what the graph of $(x-1)^{2}+y^{2}=9$ looks like, using its center and radius.",
@@ -882,7 +831,9 @@ export const mcasGapLessons: Lesson[] = [
     id: "mcas-geometry-part-statements",
     title: "Corresponding parts, radius distance and rotational symmetry",
     summary:
-      "Match the parts of congruent triangles by position, use that every point on a circle is a radius from the center, and test a figure with a turn.",
+      "Congruent figures have the same size and shape, so their parts match in pairs. A circle is all the points at one distance from a point called the center. That distance is called the radius. Rotational symmetry means a turn of less than a full circle lands a figure on itself. This lesson uses these facts to judge statements.",
+    senses: { center: "center", side: "side", sides: "side" },
+    noLink: ["parts", "vertex", "vertices", "more than"],
     templateIds: [
       "mcas-congruence-statement-select",
       "mcas-circle-radius-distance",
@@ -896,7 +847,9 @@ export const mcasGapLessons: Lesson[] = [
     intuition: [
       "Match, measure and turn",
       [
-        "You need to know what a triangle, a circle and a vertex are. Congruent figures have the same size and shape, so their parts match in pairs. A circle is all points at one distance from its center. A figure with rotational symmetry looks the same after a turn of less than a full circle.",
+        "Congruent triangles fit exactly on each other. We write $\\triangle ABC$ for the triangle with corners $A$, $B$ and $C$, and $\\overline{AC}$ for its side from $A$ to $C$. The sign $\\cong$ means “is congruent to”. Corresponding parts are the parts that match when one triangle is placed on the other.",
+        "The diameter is the distance across a circle through its center, twice the radius. The circumference is the distance around the circle. Every point on the circle is one radius from the center.",
+        "The turn for rotational symmetry must be more than 0° and less than a full turn of 360°. A line of symmetry is a fold line that makes two matching halves. Having one does not give rotational symmetry.",
       ],
     ],
     workedExample: {
@@ -910,7 +863,12 @@ export const mcasGapLessons: Lesson[] = [
     },
     closingSections: [
       method("Position, radius, turn", [
-        "In a congruence statement, list vertices by position, then read each side or angle through those pairs. For a circle, find the radius from the given length: half the diameter, or the circumference divided by $2\\pi$. For symmetry, picture turning the figure about its center: a rectangle, parallelogram or rhombus lands on itself after a half turn; a scalene triangle, kite or isosceles trapezoid never does.",
+        "In a congruence statement, pair the corners by position, then read each side or angle through those pairs. For a circle, find the radius from the given length: half the diameter, or the circumference divided by $2\\pi$.",
+        "For a turn, picture the figure turning about its center. Parallel means running the same direction without meeting. A parallelogram is a four-sided shape with two pairs of parallel sides. Every parallelogram lands on itself after a half turn, including a rectangle and a rhombus (a shape with four equal sides).",
+        "A triangle with no equal sides never lands on itself. A kite is a four-sided shape with two pairs of equal sides that meet. A kite that is not a rhombus never lands on itself either. Nor does an isosceles trapezoid (a shape with exactly one pair of parallel sides and two equal slanted sides).",
+      ]),
+      formal("Definitions", [
+        "If $\\triangle ABC\\cong\\triangle DEF$, then $A$ matches $D$, $B$ matches $E$ and $C$ matches $F$, and corresponding sides and angles are congruent. A circle with center $O$ and radius $r$ is the set of points $P$ with $OP=r$. A figure has rotational symmetry if a rotation about its center by an angle between 0° and 360° maps it onto itself.",
       ]),
     ],
     pitfalls: [
@@ -918,7 +876,7 @@ export const mcasGapLessons: Lesson[] = [
       "The diameter is the distance across a circle, not from its center to the circle.",
     ],
     parentGuide:
-      "Ask the learner to place a rectangle drawn on paper and turn it a half turn to see that it lands on itself.",
+      "Ask the learner to cut out a paper rectangle and turn it a half turn to see that it lands on itself.",
   }),
   build({
     id: "mcas-describe-and-size-products",

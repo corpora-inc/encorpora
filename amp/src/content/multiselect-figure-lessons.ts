@@ -11,14 +11,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "Two sides are parallel when they point the same way and stay the same distance apart, so they never meet. Two sides are perpendicular when they meet at a right angle, like the corner of a sheet of paper.",
     more: "A rectangle has both: its opposite sides are parallel and its neighbors are perpendicular. A trapezoid has one pair of parallel sides, and a triangle can have a right angle but never a pair of parallel sides.",
-    terms: [
-      [
-        "parallel sides",
-        "Two sides of a shape that never meet, however far they are extended.",
-      ],
-      ["perpendicular sides", "Two sides that meet at a right angle."],
-      ["right angle", "A square corner, $90^\\circ$."],
-    ],
+    terms: ["parallel", "perpendicular", "right-angle"],
     steps: [
       "Look at one shape at a time and go around its sides.",
       "For parallel sides, look for two sides that point the same way and never meet.",
@@ -66,14 +59,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "A polygon is a closed shape made of straight sides. Its name tells how many sides it has: a triangle has $3$, a pentagon $5$, a hexagon $6$ and an octagon $8$. A polygon has as many corners and as many angles as it has sides.",
     more: "A quadrilateral has $4$ sides, and so do squares, rectangles, rhombuses, trapezoids and parallelograms. Different names can describe shapes with the same number of sides.",
-    terms: [
-      ["polygon", "A closed shape made only of straight sides."],
-      ["side", "A straight edge of a polygon."],
-      [
-        "corner",
-        "A point where two sides meet. A polygon has as many corners as sides.",
-      ],
-    ],
+    terms: ["polygon", "side", "corner"],
     steps: [
       "Count the sides of the drawn shape by going around it once.",
       "For each choice, find how many sides that shape has, from its name or from its corners or angles.",
@@ -121,10 +107,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "Parallel lines lean exactly the same amount, so they never meet. Perpendicular lines cross to make a square corner. One of the five lines in each picture has a partner with that relationship, and the others do not.",
     more: "To compare slants, picture each line against the page's edge. Two lines that tip by the same amount in the same direction are parallel. A line that tips a quarter turn from another is perpendicular to it.",
-    terms: [
-      ["parallel lines", "Lines that lean the same amount and never meet."],
-      ["perpendicular lines", "Lines that meet at a right angle."],
-    ],
+    terms: ["parallel", "perpendicular"],
     steps: [
       "Look at how each line leans compared with the edge of the page.",
       "For parallel lines, find two that lean by the same amount in the same direction.",
@@ -171,17 +154,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "An angle is formed where two rays meet. A right angle is a square corner. An angle smaller than a right angle is acute, and one larger than a right angle but smaller than a straight line is obtuse.",
     more: "A corner of a sheet of paper is a right angle. Hold it against each angle: if the angle fits inside the corner, it is acute, and if it opens wider, it is obtuse.",
-    terms: [
-      [
-        "acute angle",
-        "An angle smaller than a right angle, less than $90^\\circ$.",
-      ],
-      ["right angle", "A square corner, exactly $90^\\circ$."],
-      [
-        "obtuse angle",
-        "An angle greater than $90^\\circ$ and less than $180^\\circ$.",
-      ],
-    ],
+    terms: ["acute-angle", "right-angle", "obtuse-angle"],
     steps: [
       "Compare each angle with a right angle, the square corner of a sheet of paper.",
       "If the opening is narrower than the corner, it is acute; the same, right; wider, obtuse.",
@@ -228,16 +201,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "A line of symmetry cuts a figure into two halves that match exactly when folded. A rectangle can be folded along the line down its middle, so that line is a line of symmetry. A fold along a diagonal of a rectangle does not make the halves match.",
     more: "Some figures have several lines of symmetry, such as a square with four, and some have none, such as a parallelogram that is not a rectangle or rhombus.",
-    terms: [
-      [
-        "line of symmetry",
-        "A line that folds a figure so the two halves match exactly.",
-      ],
-      [
-        "reflection",
-        "A flip across a line; a line of symmetry flips the figure onto itself.",
-      ],
-    ],
+    terms: ["line-of-symmetry", "reflection"],
     steps: [
       "Imagine folding the figure along the dashed line.",
       "Check that every corner and side on one side lands on a matching corner and side on the other.",
@@ -285,14 +249,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "A protractor measures an angle in degrees. When one ray lies on $0$, the other ray's reading is the measure of the angle between them. When two rays are both away from $0$, the angle between them is the difference of their readings.",
     more: "Several rays from one point make several angles. If ray $A$ is at $0^\\circ$, ray $B$ at $40^\\circ$ and ray $C$ at $110^\\circ$, then $\\angle AOB=40^\\circ$, $\\angle AOC=110^\\circ$ and $\\angle BOC=70^\\circ$.",
-    terms: [
-      ["degree", "A unit of angle measure; a right angle is $90$ degrees."],
-      ["vertex", "The point where the rays of an angle meet."],
-      [
-        "protractor",
-        "A tool with a scale from $0$ to $180$ degrees that measures angles.",
-      ],
-    ],
+    terms: ["degree-angle", "vertex", "protractor"],
     steps: [
       "Use the scale on which ray $A$ is at $0$, and read where each other ray crosses it.",
       "The angle from $A$ to a ray is that ray's reading. The angle between two other rays is the greater reading minus the lesser.",
@@ -341,13 +298,10 @@ const specs: SelectContentSpec[] = [
       "The volume of a rectangular prism is how many unit cubes fill it. A prism $2$ cm long, $3$ cm wide and $4$ cm tall holds $2\\times3\\times4=24$ cubes of $1$ cubic centimeter, so its volume is $24$ cubic centimeters.",
     more: "Different prisms can have the same volume: $2\\times3\\times4$ and $1\\times4\\times6$ both make $24$. The order of the edges does not matter.",
     terms: [
+      "volume",
       [
-        "volume",
-        "The amount of space inside a solid, measured in cubic units.",
-      ],
-      [
-        "cubic centimeter",
-        "The volume of a cube with edges $1$ centimeter long.",
+        "unit-cube",
+        "A cubic centimeter is the volume of a unit cube with 1 cm edges.",
       ],
     ],
     steps: [
@@ -398,14 +352,11 @@ const specs: SelectContentSpec[] = [
       "A solid is a shape that fills space. A prism has two bases that are the same size and shape and are parallel, joined by rectangles. A pyramid has one base and triangular faces that meet at a point. A cylinder, a cone and a sphere have curved surfaces.",
     more: "Dashed lines in a drawing show edges that are hidden behind the solid. Count them too when a question asks about the faces.",
     terms: [
-      ["face", "A flat surface of a solid."],
+      "face-solid",
+      "base-shape",
       [
-        "base",
-        "The face a prism or pyramid is named for: a prism has two, a pyramid has one.",
-      ],
-      [
-        "curved surface",
-        "A surface that is not flat, such as the side of a cylinder.",
+        "cylinder",
+        "A curved surface bends instead of lying flat, like the side of a cylinder.",
       ],
     ],
     steps: [
@@ -455,10 +406,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "A stem-and-leaf plot writes each number in two parts: the stem is the leading digits and the leaf is the last digit. With tens as stems, the row $3\\mid2\\ 5$ shows the numbers $32$ and $35$.",
     more: "Reading a plot back into numbers lets you compare it with a list. The leaves in a row can be in order or in the order of the data. Both show the same values.",
-    terms: [
-      ["stem", "The leading digits of a value, shown at the left of the line."],
-      ["leaf", "The last digit of a value, shown to the right of its stem."],
-    ],
+    terms: ["stem", "leaf"],
     steps: [
       "Read one plot back into numbers: join each stem with each of its leaves.",
       "Count the values. A plot with a different count cannot show the list.",

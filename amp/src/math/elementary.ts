@@ -5,6 +5,10 @@ import type {
   TemplateMetadata,
 } from "./contracts.js";
 import { wasWere, hasHave, isAre } from "./agreement.js";
+
+/** "1 ten", "3 tens": a count with its noun in agreement. */
+const count = (n: number, word: string) =>
+  `${n} ${n === 1 ? word : `${word}s`}`;
 const definitions = [
   [
     "join-within-10",
@@ -195,12 +199,14 @@ export function generateElementaryProblem(
       const a = r(1, 8),
         b = r(1, 10 - a);
       figure = { kind: "ten-frame", first: a, second: b, capacity: 10 };
-      prompt = `There are ${a} round counters and ${b} square counters. How many counters altogether?`;
+      prompt = `There ${isAre(a)} ${count(a, "round counter")} and ${count(b, "square counter")}. How many counters altogether?`;
       answer = a + b;
-      hint = `Say ${a} for the ${a} round counters. Then count on one number for each of the ${b} square counters.`;
+      hint = `Say ${a} for the ${count(a, "round counter")}. Then count on one number for each of the ${count(b, "square counter")}.`;
       explanation = [
-        `The two parts are ${a} and ${b}.`,
-        `Join the parts: ${a} + ${b} = ${answer}.`,
+        `"Altogether" means put the two groups together, so add.`,
+        `There ${isAre(a)} ${a} round and ${b} square: those are the two parts.`,
+        `Start at ${a} and count on ${b}: ${Array.from({ length: b }, (_, i) => a + i + 1).join(", ")}.`,
+        `${a} + ${b} = ${answer}, so there are ${count(answer, "counter")} altogether.`,
       ];
       break;
     }
@@ -212,9 +218,10 @@ export function generateElementaryProblem(
       answer = a - b;
       hint = `Start with all ${a} counters. Cover ${b} of them, then count the counters still showing.`;
       explanation = [
-        `Start with ${a} counters.`,
-        `Remove ${b}: ${a} − ${b} = ${answer}.`,
-        `Check: ${answer} + ${b} = ${a}.`,
+        `"Take away" means some leave the group, so subtract.`,
+        `Start with ${a} counters and remove ${b}: ${a} − ${b} = ${answer}.`,
+        `Check by putting them back: ${answer} + ${b} = ${a}.`,
+        `${answer === 1 ? "1 counter is" : `${answer} counters are`} left.`,
       ];
       break;
     }
@@ -228,9 +235,10 @@ export function generateElementaryProblem(
           ? "A ten-frame has 10 places, and the top row is full. Count the empty places in the bottom row."
           : "A ten-frame has 10 places. The bottom row is all empty, so start at 5 and count on the empty places in the top row.";
       explanation = [
-        `The frame has 10 places and ${n} counters.`,
-        `There are 10 − ${n} = ${answer} empty places.`,
-        `${n} + ${answer} = 10.`,
+        `A ten-frame has 10 places, so a full frame holds 10 counters.`,
+        `${count(n, "place")} ${n === 1 ? "is" : "are"} filled, so the empty places are what is missing.`,
+        `Count the empty places, or find 10 − ${n} = ${answer}.`,
+        `Check: ${n} + ${answer} = 10. ${answer === 1 ? "1 more counter fills" : `${answer} more counters fill`} the frame.`,
       ];
       break;
     }
@@ -245,9 +253,10 @@ export function generateElementaryProblem(
           ? "The full frame is 10. In the other frame, the top row adds 5 more; then count on through its bottom row."
           : "The full frame is 10. Say 10, then count on one number for each counter in the other frame.";
       explanation = [
-        `The full frame has 10 counters.`,
-        `The other frame has ${extra}.`,
-        `10 + ${extra} = ${answer}.`,
+        `A full ten-frame always holds 10 counters, so you do not need to count it.`,
+        `Say 10, then count on the ${extra} in the other frame.`,
+        `10 + ${extra} = ${answer}: a teen number is 1 ten and some ones.`,
+        `There are ${answer} counters altogether.`,
       ];
       break;
     }
@@ -259,9 +268,10 @@ export function generateElementaryProblem(
       answer = total;
       hint = `At first the box held both groups: the ${removed} taken out and the ${left} that stayed. Put them back together.`;
       explanation = [
-        `The starting group was split into ${removed} removed and ${left} remaining.`,
-        `The start was ${removed} + ${left} = ${total}.`,
-        `Check: ${total} − ${removed} = ${left}.`,
+        `Every block that was in the box either was taken out or stayed.`,
+        `So put the two groups back together: ${removed} + ${left} = ${total}.`,
+        `Check: start with ${total} and take out ${removed}; then ${left} ${isAre(left)} left in the box.`,
+        `There were ${count(total, "block")} in the box at first.`,
       ];
       break;
     }
@@ -274,9 +284,10 @@ export function generateElementaryProblem(
       answer = b - needed;
       hint = `Split ${b} into two parts: the ${needed} that moves to the ${a}, and the part that stays.`;
       explanation = [
-        `${a} needs ${needed} more to make 10.`,
-        `Split ${b} into ${needed} and ${answer}.`,
-        `Then ${a} + ${b} = 10 + ${answer} = ${a + b}.`,
+        `Making a ten first helps, because 10 plus a number is easy to read.`,
+        `${a} needs ${needed} more to make 10, so move ${needed} from the ${b} to the ${a}.`,
+        `What stays is ${b} − ${needed} = ${answer}, because ${needed} + ${answer} = ${b}.`,
+        `So ${a} + ${b} = 10 + ${answer} = ${a + b}. The part of ${b} left is ${answer}.`,
       ];
       break;
     }
@@ -288,9 +299,11 @@ export function generateElementaryProblem(
       answer = b - first;
       hint = `You take away ${b} in all, in two parts: ${first} first, then the rest: ${first} + □ = ${b}.`;
       explanation = [
-        `You must remove ${b} in all.`,
-        `${first} ${hasHave(first)} been removed, leaving ${b} − ${first} = ${answer} more to remove.`,
-        `The final amount is 10 − ${answer} = ${a - b}.`,
+        `Subtracting in two parts through 10 keeps each part small.`,
+        `You take away ${b} in all. Taking ${first} first lands on 10, because ${a} − ${first} = 10.`,
+        `${first} ${hasHave(first)} been taken, so the rest is ${b} − ${first} = ${answer}.`,
+        `Then 10 − ${answer} = ${a - b}, so ${a} − ${b} = ${a - b}.`,
+        `You must take away ${answer} more.`,
       ];
       break;
     }
@@ -302,8 +315,14 @@ export function generateElementaryProblem(
       answer = 10 * tens + ones;
       hint = `There ${isAre(tens)} ${tens} ${tens === 1 ? "rod" : "rods"} of ten. Count ${tens === 1 ? "it" : "them"} by tens, then count on one for each small square.`;
       explanation = [
-        `${tens} tens have the value ${tens * 10}.`,
-        `Add ${ones} ones: ${tens * 10} + ${ones} = ${answer}.`,
+        `Each rod is a ten (10 small squares joined), and each small square is a one.`,
+        tens === 1
+          ? `There is 1 rod, which is 10.`
+          : `Count the rods by tens: ${Array.from({ length: tens }, (_, i) => (i + 1) * 10).join(", ")}. That is ${tens * 10}.`,
+        ones
+          ? `Then count on ${count(ones, "one")}: ${tens * 10} + ${ones} = ${answer}.`
+          : `There are no small squares, so there are 0 ones.`,
+        `The blocks show ${answer}.`,
       ];
       break;
     }
@@ -315,8 +334,10 @@ export function generateElementaryProblem(
       answer = n + (more ? 10 : -10);
       hint = `${n} is ${Math.floor(n / 10)} tens and ${n % 10} ones. Ten ${more ? "more adds" : "less removes"} one ten; the ${n % 10} ones stay.`;
       explanation = [
-        `${n} is ${Math.floor(n / 10)} tens and ${n % 10} ones.`,
-        `${more ? "One more" : "One fewer"} ten gives ${Math.floor(answer / 10)} tens and ${answer % 10} ones: ${answer}.`,
+        `${n} is ${count(Math.floor(n / 10), "ten")} and ${count(n % 10, "one")}.`,
+        `Ten ${more ? "more adds" : "less takes away"} exactly one ten, so only the tens digit changes.`,
+        `${count(Math.floor(n / 10), "ten")} ${more ? "plus" : "minus"} 1 ten is ${count(Math.floor(answer / 10), "ten")}. The ones digit stays ${n % 10}.`,
+        `Ten ${more ? "more" : "less"} than ${n} is ${answer}.`,
       ];
       break;
     }
@@ -330,9 +351,11 @@ export function generateElementaryProblem(
       answer = a + b;
       hint = `The ones make ${ones} + ${b}, more than 9. Trade 10 of those ones for one new ten.`;
       explanation = [
-        `The ones give ${ones} + ${b} = ${ones + b}.`,
-        `Exchange 10 ones for a ten, leaving ${ones + b - 10} ones.`,
-        `There are ${tens + 1} tens and ${ones + b - 10} ones: ${answer}.`,
+        `${a} is ${count(tens, "ten")} and ${count(ones, "one")}. Add the ones first.`,
+        `${ones} + ${b} = ${ones + b} ones, which is more than 9.`,
+        `A place can hold at most 9, so trade 10 ones for 1 new ten. That leaves ${count(ones + b - 10, "one")}.`,
+        `Now there are ${count(tens + 1, "ten")} and ${count(ones + b - 10, "one")}.`,
+        `The new total is ${answer}.`,
       ];
       break;
     }
@@ -344,9 +367,10 @@ export function generateElementaryProblem(
       answer = a - b;
       hint = `${a} is ${a / 10} tens and ${b} is ${b / 10} tens. Take ${b / 10} tens from ${a / 10} tens.`;
       explanation = [
-        `${a} is ${a / 10} tens; ${b} is ${b / 10} tens.`,
-        `${a / 10} − ${b / 10} = ${answer / 10} tens.`,
-        `${answer / 10} tens have value ${answer}.`,
+        `Both numbers are whole tens, so subtract tens like counting objects.`,
+        `${a} is ${count(a / 10, "ten")} and ${b} is ${count(b / 10, "ten")}.`,
+        `${a / 10} − ${b / 10} = ${answer / 10}, so ${count(answer / 10, "ten")} ${answer / 10 === 1 ? "is" : "are"} left.`,
+        `${count(answer / 10, "ten")} ${answer / 10 === 1 ? "is" : "make"} ${answer}, so ${answer} is left.`,
       ];
       break;
     }
@@ -359,9 +383,13 @@ export function generateElementaryProblem(
       answer = h * 100 + t * 10 + o;
       hint = `There ${isAre(h)} ${h} ${h === 1 ? "flat" : "flats"} of one hundred: that is the hundreds digit. Then count the rods for the tens digit and the small squares for the ones digit.`;
       explanation = [
-        `${h} hundreds = ${100 * h}; ${t} tens = ${10 * t}; ${o} ones = ${o}.`,
-        `${100 * h} + ${10 * t} + ${o} = ${answer}.`,
-        `A place with no blocks has digit 0.`,
+        `A flat is a hundred, a rod is a ten, and a small square is a one.`,
+        `${count(h, "flat")} ${h === 1 ? "is" : "make"} ${100 * h}, ${count(t, "rod")} ${t === 1 ? "is" : "make"} ${10 * t}, and ${count(o, "small square")} ${o === 1 ? "is" : "make"} ${o}.`,
+        ...(t === 0 || o === 0
+          ? [`A place with no blocks still gets a digit: 0 holds its place.`]
+          : []),
+        `Add the parts: ${100 * h} + ${10 * t} + ${o} = ${answer}.`,
+        `The model shows ${answer}.`,
       ];
       break;
     }
@@ -376,9 +404,10 @@ export function generateElementaryProblem(
         ? `${n} has the digit ${t} in the tens place. The box needs the value of ${t} tens, not the digit.`
         : `Read the tens digit of ${n}, its middle digit. The box needs that many tens, as a value.`;
       explanation = [
-        `${n} has ${h} hundreds, ${t} tens, and ${o} ones.`,
-        `${t} tens have value ${answer}.`,
-        `${100 * h} + ${answer} + ${o} = ${n}.`,
+        `Expanded form writes a number as the sum of its place values.`,
+        `${n} has ${count(h, "hundred")}, ${count(t, "ten")} and ${count(o, "one")}.`,
+        `The box sits in the tens spot, so it needs the value of ${count(t, "ten")}: ${t} × 10 = ${answer}.`,
+        `Check: ${100 * h} + ${answer} + ${o} = ${n}. The box holds ${answer}.`,
       ];
       break;
     }
@@ -395,14 +424,16 @@ export function generateElementaryProblem(
         : `Ten of the ${t} tens become one new hundred, which joins the hundreds. Trading never changes the total.`;
       explanation = tradeOnes
         ? [
-            `Exchange 10 of the ${o} ones for one ten.`,
-            `The ${t} tens become ${answer} tens; ${o - 10} ones remain.`,
-            `The value stays ${100 * h + 10 * t + o}.`,
+            `10 ones are worth the same as 1 ten, so a trade keeps the total the same.`,
+            `Take 10 of the ${o} ones and swap them for 1 ten. ${count(o - 10, "one")} ${o - 10 === 1 ? "stays" : "stay"}.`,
+            `The new ten joins the ${count(t, "ten")}: ${t} + 1 = ${answer}.`,
+            `The total is still ${100 * h + 10 * t + o}, and there will be ${count(answer, "ten")}.`,
           ]
         : [
-            `Exchange 10 of the ${t} tens for one hundred.`,
-            `The ${h} hundreds become ${answer} hundreds; ${t - 10} tens remain.`,
-            `The value stays ${100 * h + 10 * t + o}.`,
+            `10 tens are worth the same as 1 hundred, so a trade keeps the total the same.`,
+            `Take 10 of the ${t} tens and swap them for 1 hundred. ${count(t - 10, "ten")} ${t - 10 === 1 ? "stays" : "stay"}.`,
+            `The new hundred joins the ${count(h, "hundred")}: ${h} + 1 = ${answer}.`,
+            `The total is still ${100 * h + 10 * t + o}, and there will be ${count(answer, "hundred")}.`,
           ];
       break;
     }
@@ -414,9 +445,12 @@ export function generateElementaryProblem(
       answer = values.reduce((s, v) => s + v, 0);
       hint = `Add the tens, ${values.map((v) => v - (v % 10)).join(" + ")}, and the ones, ${values.map((v) => v % 10).join(" + ")}, separately. Then combine them.`;
       explanation = [
-        `The tens contribute ${tens * 10}; the ones contribute ${ones}.`,
-        `${tens * 10} + ${ones} = ${answer}.`,
-        `Check by adding one number at a time.`,
+        `Each number has tens (groups of ten) and ones. In ${values[0]}, the tens digit is ${Math.floor(values[0]! / 10)}: it stands for ${values[0]! - (values[0]! % 10)}.`,
+        `Add tens with tens and ones with ones, so each place stays separate.`,
+        `Tens: ${values.map((v) => v - (v % 10)).join(" + ")} = ${tens * 10}.`,
+        `Ones: ${values.map((v) => v % 10).join(" + ")} = ${ones}.`,
+        `Put the parts together: ${tens * 10} + ${ones} = ${answer}.`,
+        `The total is ${answer}.`,
       ];
       break;
     }
@@ -430,9 +464,11 @@ export function generateElementaryProblem(
       answer = a + b;
       hint = `Start with the ones: ${a % 10} + ${b % 10} is more than 9, so trade 10 of those ones for 1 ten.`;
       explanation = [
-        `Ones: ${a % 10} + ${b % 10} = ${o}. Keep ${o - 10} ones and exchange 10 ones for 1 ten.`,
-        `Tens including that exchange: ${t}. ${t >= 10 ? `Exchange 10 tens for 1 hundred and keep ${t - 10} tens.` : `Keep ${t} tens.`}`,
-        `Hundreds: ${h} + ${t >= 10 ? 1 : 0} = ${h + (t >= 10 ? 1 : 0)}. The sum is ${answer}.`,
+        `Add one place at a time, starting with the ones. A place can hold at most 9.`,
+        `Ones: ${a % 10} + ${b % 10} = ${o}. That is too many, so keep ${count(o - 10, "one")} and trade 10 ones for 1 ten.`,
+        `Tens: ${Math.floor(a / 10) % 10} + ${Math.floor(b / 10) % 10} + 1 traded ten = ${t}. ${t >= 10 ? `Keep ${count(t - 10, "ten")} and trade 10 tens for 1 hundred.` : `That fits, so keep ${count(t, "ten")}.`}`,
+        `Hundreds: ${Math.floor(a / 100)} + ${Math.floor(b / 100)}${t >= 10 ? " + 1 traded hundred" : ""} = ${h + (t >= 10 ? 1 : 0)}.`,
+        `The sum is ${answer}.`,
       ];
       break;
     }
@@ -448,29 +484,34 @@ export function generateElementaryProblem(
         tt = t,
         oo = o;
       explanation = [];
+      explanation.push(
+        `Subtract one place at a time, starting with the ones. Trade from the next place when a place is too small.`,
+      );
+      const tradedHundred = tt === 0;
       if (tt === 0) {
         hh--;
         tt = 10;
         explanation.push(
-          `Exchange 1 hundred for 10 tens: ${hh} hundreds and ${tt} tens.`,
+          `You cannot take ${count(b % 10, "one")} from ${count(o, "one")}, and there are no tens to trade. So first trade 1 hundred for 10 tens: now ${count(hh, "hundred")} and ${count(tt, "ten")}.`,
         );
       }
       tt--;
       oo += 10;
       explanation.push(
-        `Exchange 1 ten for 10 ones: ${tt} tens and ${oo} ones.`,
+        tradedHundred
+          ? `Now trade 1 of those tens for 10 ones. That leaves ${count(tt, "ten")} and ${count(oo, "one")}.`
+          : `You cannot take ${count(b % 10, "one")} from ${count(o, "one")}, so trade 1 ten for 10 ones. Now there ${isAre(tt)} ${count(tt, "ten")} and ${count(oo, "one")}.`,
       );
       if (tt < Math.floor(b / 10) % 10) {
         hh--;
         tt += 10;
         explanation.push(
-          `Exchange another hundred: there are ${hh} hundreds and ${tt} tens.`,
+          `You cannot take ${count(Math.floor(b / 10) % 10, "ten")} from ${count(tt - 10, "ten")}, so trade 1 hundred for 10 tens. Now there ${isAre(hh)} ${count(hh, "hundred")} and ${count(tt, "ten")}.`,
         );
       }
       explanation.push(
-        `Subtract ones: ${oo} − ${b % 10} = ${oo - (b % 10)}.`,
-        `Subtract tens: ${tt} − ${Math.floor(b / 10) % 10} = ${tt - (Math.floor(b / 10) % 10)}.`,
-        `Subtract hundreds: ${hh} − ${Math.floor(b / 100)} = ${hh - Math.floor(b / 100)}. The difference is ${answer}.`,
+        `Ones: ${oo} − ${b % 10} = ${oo - (b % 10)}. Tens: ${tt} − ${Math.floor(b / 10) % 10} = ${tt - (Math.floor(b / 10) % 10)}. Hundreds: ${hh} − ${Math.floor(b / 100)} = ${hh - Math.floor(b / 100)}.`,
+        `The difference is ${answer}. Check: ${answer} + ${b} = ${a}.`,
       );
       hint = t
         ? `The ones are ${o} − ${b % 10}: not enough ones. Trade 1 of the ${t} tens in ${a} for 10 ones.`
@@ -484,8 +525,10 @@ export function generateElementaryProblem(
       answer = start + 3 * step;
       hint = `Each number is ${step} more than the one before: ${start} + ${step} is ${start + step}. Go up ${step} more from ${start + 2 * step}.`;
       explanation = [
-        `Each step adds ${step}.`,
-        `${start + 2 * step} + ${step} = ${answer}.`,
+        `Counting by ${step} means each number is ${step} more than the one before.`,
+        `Check the pattern: ${start} + ${step} = ${start + step}, and ${start + step} + ${step} = ${start + 2 * step}.`,
+        `So add ${step} once more: ${start + 2 * step} + ${step} = ${answer}.`,
+        `The next number is ${answer}.`,
       ];
       break;
     }
@@ -499,8 +542,11 @@ export function generateElementaryProblem(
           ? `${last} ends in 9, so one more starts a new ${(last + 1) % 100 ? "ten" : "hundred"}: the ones digit becomes 0.`
           : `Each number is one more than the one before. Say the number after ${last}.`;
       explanation = [
-        `The count increases by 1 each time.`,
-        `${start + 2} + 1 = ${answer}.`,
+        `Counting on by ones means each number is 1 more than the one before.`,
+        last % 10 === 9
+          ? `${last} ends in 9, so 1 more fills the ones place and starts a new ${(last + 1) % 100 ? "ten" : "hundred"}: the ones digit becomes 0.`
+          : `Only the ones digit changes: it goes up by 1.`,
+        `${last} + 1 = ${answer}, so the next number is ${answer}.`,
       ];
       break;
     }

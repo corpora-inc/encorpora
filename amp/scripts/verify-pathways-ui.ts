@@ -690,6 +690,15 @@ async function verifySearchFilters() {
       });
       await input.waitFor();
       assert.equal(await input.inputValue(), "L");
+      // The map's stylesheet arrives with its lazy route chunk; under load
+      // the field can paint a frame before it. Readable once styled.
+      await page
+        .waitForFunction(
+          (el) => parseFloat(getComputedStyle(el!).fontSize) >= 16,
+          await input.elementHandle(),
+          { timeout: 5000 },
+        )
+        .catch(() => undefined);
       assert(
         (await input.evaluate((el) =>
           parseFloat(getComputedStyle(el).fontSize),
@@ -709,6 +718,9 @@ async function verifySearchFilters() {
         "Deleting keeps the keyboard focused on search",
       );
       assert.equal(new URL(page.url()).searchParams.get("filter"), "K");
+      await page
+        .getByRole("checkbox", { name: "Show grades and estimates" })
+        .check();
       const grade = page.getByRole("button", { name: /^Grade or course/ });
       assert.equal(await grade.getAttribute("data-value"), "K");
       const gradeBox = await grade.boundingBox();
@@ -792,24 +804,24 @@ async function verifySearchFilters() {
       await page.waitForURL(
         (url) => url.searchParams.get("topic") === "linear",
       );
-      await input.fill("Count To 20");
+      await input.fill("Count to 20");
       await page.waitForURL(
-        (url) => url.searchParams.get("topic") === "Count To 20",
+        (url) => url.searchParams.get("topic") === "Count to 20",
       );
-      await page.getByRole("link", { name: /Count To 20/ }).click();
+      await page.getByRole("link", { name: /Count to 20/ }).click();
       await page.waitForURL((url) => url.pathname === "/pathways/count-to-20");
       await page.goBack();
       await input.waitFor();
       assert.equal(
         await input.inputValue(),
-        "Count To 20",
+        "Count to 20",
         "Browser Back restores the search",
       );
       await page.goForward();
       await input.waitFor();
       assert.equal(
         await input.inputValue(),
-        "Count To 20",
+        "Count to 20",
         "Browser Forward restores the search",
       );
       await input.fill("");
@@ -900,10 +912,7 @@ try {
         await page.locator('link[rel="canonical"]').getAttribute("href"),
         `https://amp.corpora.inc/pathways/${target.id}`,
       );
-      assert.equal(
-        await page.title(),
-        `${target.title} · Algebra 2 | AMP Pathways`,
-      );
+      assert.equal(await page.title(), `${target.title} | AMP Pathways`);
       assert.match(
         (await page
           .getByRole("link", { name: "Try a problem" })
@@ -973,6 +982,19 @@ try {
           .getByRole("heading", { name: target.title, exact: true })
           .waitFor();
       }
+      assert.equal(
+        await page.getByText("Algebra frontier:", { exact: false }).count(),
+        0,
+      );
+      await page
+        .getByRole("button", { name: "Browse skills", exact: true })
+        .click();
+      await page
+        .getByRole("checkbox", { name: "Show grades and estimates" })
+        .check();
+      await page
+        .getByRole("button", { name: "Close browser", exact: true })
+        .click();
       await page.getByText("Algebra frontier:", { exact: false }).waitFor();
       await page.getByRole("button", { name: "Zoom in", exact: true }).click();
       await noOverflow(page);
@@ -1123,7 +1145,7 @@ try {
   );
   const related = trialPage
     .locator(".pathways-detail a")
-    .filter({ hasText: "Nonlinear Intersection Reading" });
+    .filter({ hasText: "Nonlinear intersection reading" });
   assert.match((await related.getAttribute("href")) ?? "", /context=trial/);
   await related.click();
   await trialPage.waitForURL(/pathways\/nonlinear-intersection-reading/);
@@ -1193,7 +1215,7 @@ try {
   );
   const parentLink = guest
     .locator(".pathways-detail a")
-    .filter({ hasText: "Nonlinear Intersection Reading" });
+    .filter({ hasText: "Nonlinear intersection reading" });
   const parentUrl = new URL((await parentLink.getAttribute("href"))!, origin);
   assert.equal(parentUrl.pathname, "/pathways/nonlinear-intersection-reading");
   assert.equal(parentUrl.searchParams.get("topic"), "systems");
@@ -1405,12 +1427,12 @@ try {
       "long skill card grows the phone document",
     );
     await phone
-      .locator(".pathways-detail > ul li:last-child")
+      .locator(".pathways-detail .pathways-connections li:last-child")
       .last()
       .evaluate((el) => el.scrollIntoView({ block: "end" }));
     assert(
       await phone
-        .locator(".pathways-detail > ul li:last-child")
+        .locator(".pathways-detail .pathways-connections li:last-child")
         .last()
         .evaluate((el) => el.getBoundingClientRect().bottom <= innerHeight + 1),
       "last relationship stays reachable by page scroll",
@@ -1593,13 +1615,23 @@ try {
       await related
         .getByText("When each kit holds two items", { exact: false })
         .waitFor();
-      assert.equal(await related.locator("p").count(), 4);
-      const application = related.getByRole("link", { name: /Event Sets/ });
+      for (const explanation of [
+        "Adding an even number keeps a number odd or even",
+        "An even positive whole number has 2 as a factor",
+        "When each kit holds two items",
+        "Even and odd outcomes form sets",
+      ])
+        assert.equal(
+          await related.getByText(explanation, { exact: false }).count(),
+          1,
+        );
+
+      const application = related.getByRole("link", { name: /Event sets/ });
       assert.equal(
         await application.getAttribute("href"),
         "/pathways/event-sets",
       );
-      await related.scrollIntoViewIfNeeded();
+      await application.scrollIntoViewIfNeeded();
       await noOverflow(parity);
       if (width <= 390)
         assert(
@@ -1614,15 +1646,15 @@ try {
       await application.click();
       await parity.waitForURL("**/pathways/event-sets");
       await parity
-        .getByRole("heading", { name: "Event Sets", exact: true })
+        .getByRole("heading", { name: "Event sets", exact: true })
         .waitFor();
       await parity
         .locator(".pathways-connections")
-        .getByRole("link", { name: /Odd And Even/ })
+        .getByRole("link", { name: /Odd and even/ })
         .click();
       await parity.waitForURL("**/pathways/odd-and-even");
       await parity
-        .getByRole("heading", { name: "Odd And Even", exact: true })
+        .getByRole("heading", { name: "Odd and even", exact: true })
         .waitFor();
       await parity.close();
     }

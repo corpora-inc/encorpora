@@ -1054,3 +1054,46 @@ test("an ordering is never shown already solved, and a lesson never works the sa
         );
     }
 });
+
+test("scientific notation reads as one typeset number, never caret text", () => {
+  for (const seed of ["sci-0", "sci-1", "sci-2", "sci-3"]) {
+    const problem = generateProblem("scientific-notation-work", seed);
+    const response = problem.public.response;
+    assert.equal(response.kind, "structured-work");
+    if (response.kind !== "structured-work") continue;
+    const text = structuredWorkAnswerText(response, problem.answer);
+    // Every power base pairs with its exponent inside math.
+    assert.match(text, /\$[\d.]+\\times10\^\{-?\d+\}\$/, text);
+    // No caret or TeX command is left in prose, where MathText would
+    // show it raw.
+    const prose = text.replace(/\$[^$]*\$/g, "");
+    assert.doesNotMatch(prose, /\^|\\times/, text);
+  }
+});
+
+test("printed scientific notation never shows a caret: one typeset number or raised blanks", async () => {
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const { createElement } = await import("react");
+  const { PrintExerciseBody } = await import("../src/content/print-exercise");
+  for (const seed of ["sci-0", "sci-1", "sci-2", "sci-3"]) {
+    const problem = generateProblem("scientific-notation-work", seed);
+    for (const solutions of [false, true]) {
+      const html = renderToStaticMarkup(
+        createElement(PrintExerciseBody, { number: 1, problem, solutions }),
+      );
+      // Visible text only: KaTeX's MathML annotation carries the TeX source.
+      const visible = html
+        .replace(/<annotation[^>]*>[\s\S]*?<\/annotation>/g, "")
+        .replace(/<[^>]+>/g, " ");
+      assert.doesNotMatch(visible, /\^|\\times/, `${seed} ${solutions}`);
+      if (solutions)
+        assert.match(html, /\\times10\^\{-?\d+\}/, `${seed}: typeset power`);
+      else
+        assert.match(
+          html,
+          /print-work-blank--power/,
+          `${seed}: the exponent has its own raised blank`,
+        );
+    }
+  }
+});

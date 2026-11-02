@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -145,27 +146,12 @@ export const similarityTrigLessons: Lesson[] = [
 ];
 
 const terms = {
-  dilation: [
-    ["scale factor", "The number every length is multiplied by."],
-    ["center", "The fixed point the dilation stretches away from."],
-  ],
-  similar: [
-    ["similar", "Same angles, with all sides in one ratio."],
-    ["matching sides", "Sides joining matching vertices, in name order."],
-  ],
-  special: [
-    ["45°-45°-90°", "Sides $s$, $s$ and $s\\sqrt{2}$."],
-    ["30°-60°-90°", "Sides $s$, $s\\sqrt 3$ and $2s$."],
-  ],
-  trig: [
-    ["opposite", "The leg across from the angle."],
-    ["adjacent", "The leg that touches the angle."],
-  ],
-  complement: [
-    ["complementary", "Two angles that add to 90°."],
-    ["cofunction", "$\\sin A = \\cos(90° - A)$."],
-  ],
-} satisfies Record<string, [string, string][]>;
+  dilation: ["scale-factor", "center-of-dilation"],
+  similar: ["similar-figures", "corresponding"],
+  special: ["45-45-90-triangle", "30-60-90-triangle"],
+  trig: ["opposite-side-angle", "adjacent-leg"],
+  complement: ["complementary-angles", "cofunction-identity"],
+} satisfies Record<string, MethodTerm[]>;
 export const similarityTrigMethods: Record<string, ProblemMethod> = {
   "dilation-measure": {
     goal: "Use a dilation's scale factor and center to find lengths, the factor, image points or what is kept.",

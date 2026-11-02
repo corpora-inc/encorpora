@@ -191,17 +191,17 @@ export const operationSentenceChoice = chainFamily({
           {
             label: tex(`${g} + ${s} = n`),
             value: g + s,
-            feedback: `Adding ${g} and ${s} counts one ${t.holder} and ${s} more ${t.unit}, not ${g} equal groups of ${s}.`,
+            feedback: `Adding ${g} and ${s} gives ${g + s}. It counts ${s} only once, not ${g} equal groups of ${s}.`,
           },
           {
             label: tex(`${Math.max(g, s)} ${M} ${Math.min(g, s)} = n`),
             value: Math.abs(g - s),
-            feedback: `Nothing is taken away here. Equal groups are joined, so subtracting does not find the total.`,
+            feedback: `Subtracting finds how far apart ${Math.max(g, s)} and ${Math.min(g, s)} are. Nothing is taken away here; ${g} equal groups of ${s} are joined.`,
           },
           {
             label: tex(`${g} ${D} ${s} = n`),
             value: g / s,
-            feedback: `Dividing splits a total into equal groups. Here the groups are already made and the total is unknown.`,
+            feedback: `Dividing splits a total into equal groups. Here the ${g} groups of ${s} are already made, and the total is what you need.`,
           },
         ],
       );
@@ -224,9 +224,12 @@ export const operationSentenceChoice = chainFamily({
           ? `Look at one group: it holds ${s} ${t.unit}. Count how many equal groups there are, then choose the operation that joins equal groups.`
           : `${g} ${t.holders} with ${s} ${t.unit} in each are equal groups. Decide which operation joins ${g} groups of ${s}.`,
         explanation: [
-          `The ${t.unit} are in ${g} equal groups of ${s}.`,
-          `Joining equal groups is multiplication: $${g} ${T} ${s} = ${total}$.`,
-          `The sentence ${times} fits; the total is ${total} ${t.unit}.`,
+          drawn
+            ? `The picture shows ${g} groups, and each group has ${s} ${t.unit}. Groups that are all the same size are called equal groups.`
+            : `Each of the ${g} ${t.holders} holds the same number, ${s}, so they are ${g} equal groups of ${s}.`,
+          `Multiplication is the operation that joins equal groups: $${g} ${T} ${s}$ means ${g} groups of ${s}.`,
+          `Adding, taking away or sharing would not count ${g} groups of ${s}, so the sentence is ${times}.`,
+          `$${g} ${T} ${s} = ${total}$, so there are ${total} ${t.unit} in all.`,
         ],
         label: "Choose the number sentence",
       });
@@ -238,8 +241,10 @@ export const operationSentenceChoice = chainFamily({
         options: sentences(),
         hint: `There are ${g} jumps and each jump is ${s} long. The jumps are all the same size, so think about joining ${g} equal groups of ${s}.`,
         explanation: [
-          `There are ${g} jumps and each is ${s} long.`,
-          `${g} jumps of ${s} is $${g} ${T} ${s} = ${total}$, or $${Array(g).fill(s).join("+")}=${total}$.`,
+          `The jumps start at 0. There are ${g} jumps, and each one is ${s} long.`,
+          `All the jumps are the same size, so they are ${g} equal groups of ${s}. Multiplication joins equal groups.`,
+          `Adding ${s} once for each jump gives the same result: $${Array(g).fill(s).join("+")}=${total}$.`,
+          `So the sentence is ${times}, and $${g} ${T} ${s} = ${total}$.`,
           `The last jump lands on ${total}.`,
         ],
         label: "Choose the number sentence",
@@ -256,25 +261,53 @@ export const operationSentenceChoice = chainFamily({
     }
     if (m.task === "cannot-find-total") {
       const valid: Candidate[] = [
-        { label: tex(`${g} ${T} ${s} = n`), value: 0, feedback: "" },
-        { label: tex(`${s} ${T} ${g} = n`), value: 0, feedback: "" },
+        {
+          label: tex(`${g} ${T} ${s} = n`),
+          value: 0,
+          feedback: `This multiplies ${g} jumps by ${s} for each jump, which gives the total, ${total}. You need the sentence that cannot.`,
+        },
+        {
+          label: tex(`${s} ${T} ${g} = n`),
+          value: 0,
+          feedback: `Multiplying in either order gives the same answer: $${s} ${T} ${g} = ${total}$, the total. You need the sentence that cannot.`,
+        },
         {
           label: tex(`${Array(g).fill(s).join(" + ")} = n`),
           value: 0,
-          feedback: "",
+          feedback: `This adds ${s} once for each of the ${g} jumps, which gives the total, ${total}. You need the sentence that cannot.`,
         },
-        { label: tex(`n ${D} ${s} = ${g}`), value: 0, feedback: "" },
-        { label: tex(`n ${D} ${g} = ${s}`), value: 0, feedback: "" },
+        {
+          label: tex(`n ${D} ${s} = ${g}`),
+          value: 0,
+          feedback: `This says the distance cut into jumps of ${s} makes ${g} jumps. That is true when $n = ${total}$, so it can find the total.`,
+        },
+        {
+          label: tex(`n ${D} ${g} = ${s}`),
+          value: 0,
+          feedback: `This says the distance split over ${g} jumps is ${s} per jump. That is true when $n = ${total}$, so it can find the total.`,
+        },
       ];
       const bad: Candidate[] = [
         {
           label: tex(`${g} + ${s} = n`),
           value: 1,
-          feedback: "",
+          feedback: `$${g} + ${s} = n$ adds the number of jumps to the length of one jump. That gives ${g + s}, not ${total}.`,
         },
-        { label: tex(`${g} ${T} ${g} = n`), value: 1, feedback: "" },
-        { label: tex(`${s} ${T} ${s} = n`), value: 1, feedback: "" },
-        { label: tex(`${g} ${D} ${s} = n`), value: 1, feedback: "" },
+        {
+          label: tex(`${g} ${T} ${g} = n`),
+          value: 1,
+          feedback: `$${g} ${T} ${g} = n$ uses the number of jumps, ${g}, twice and never uses the jump length, ${s}.`,
+        },
+        {
+          label: tex(`${s} ${T} ${s} = n`),
+          value: 1,
+          feedback: `$${s} ${T} ${s} = n$ uses the jump length, ${s}, twice and never uses the number of jumps, ${g}.`,
+        },
+        {
+          label: tex(`${g} ${D} ${s} = n`),
+          value: 1,
+          feedback: `$${g} ${D} ${s} = n$ splits the number of jumps by the jump length. Splitting does not join equal jumps into a total.`,
+        },
       ];
       const chosen = draw(r, valid, 3);
       const wrong = pick(r, bad);
@@ -286,7 +319,7 @@ export const operationSentenceChoice = chainFamily({
         },
         ...chosen.map((c) => ({
           label: c.label,
-          feedback: `This sentence does find the total of ${g} jumps of ${s}, so it is not the one that cannot.`,
+          feedback: c.feedback,
         })),
       ];
       return choiceSurface(r, {
@@ -294,9 +327,11 @@ export const operationSentenceChoice = chainFamily({
         options: rows,
         hint: `The total is ${g} jumps of ${s}. Check each sentence: does it join ${g} equal jumps of ${s}, or relate the total to ${g} and ${s} by division?`,
         explanation: [
-          `${g} jumps of ${s} give a total of ${total}.`,
-          `Multiplying in either order, repeated addition of ${s}, and dividing the total by ${s} or by ${g} all describe this total.`,
-          `The other sentence uses ${g} and ${s} in a way that does not give ${total}, so it cannot find the total.`,
+          `The frog makes ${g} equal jumps of ${s}, so the total distance is $${g} ${T} ${s} = ${total}$.`,
+          `A sentence can find that total if it multiplies ${g} and ${s} in either order, or adds ${s} once for each jump.`,
+          `A division sentence also works when it splits the total, $n$, back into ${g} jumps of ${s}.`,
+          wrong.feedback,
+          `So ${wrong.label} is the sentence that cannot find how far the frog jumps.`,
         ],
         label: "Choose the sentence that cannot",
       });
@@ -311,7 +346,7 @@ export const operationSentenceChoice = chainFamily({
       {
         label: `A ${m.other.holder} has ${Math.max(g, s) + 2} ${m.other.unit}. ${Math.min(g, s) + 1} are taken out. How many ${m.other.unit} are left?`,
         value: 2,
-        feedback: `Taking some away is subtraction. The expression joins equal groups.`,
+        feedback: `This story takes ${Math.min(g, s) + 1} away from ${Math.max(g, s) + 2}. Taking away is subtraction, but $${g} ${T} ${s}$ joins equal groups.`,
       },
       {
         label: `${g * s} ${m.other.unit} are shared equally among ${g} ${m.other.holders}. How many ${m.other.unit} does each ${m.other.holder} get?`,
@@ -321,7 +356,7 @@ export const operationSentenceChoice = chainFamily({
       {
         label: `${g + s} ${m.other.unit} are in ${s} equal groups. How many ${m.other.unit} are in each group?`,
         value: 4,
-        feedback: `Finding the size of each group is division, not multiplication.`,
+        feedback: `This story starts with the total, ${g + s}, and asks for the size of each group. That is division, not $${g} ${T} ${s}$.`,
       },
     ];
     return choiceSurface(r, {
@@ -338,9 +373,11 @@ export const operationSentenceChoice = chainFamily({
       ],
       hint: `$${g} ${T} ${s}$ means ${g} groups of ${s}. Look for the story with ${g} equal groups that each have ${s}.`,
       explanation: [
-        `$${g} ${T} ${s}$ means ${g} equal groups of ${s}.`,
-        `The story with ${g} ${m.thing.holders} of ${s} ${m.thing.unit} each asks for the total of equal groups.`,
-        `The product is ${total}, so there are ${total} ${m.thing.unit}.`,
+        `$${g} ${T} ${s}$ means ${g} equal groups with ${s} in each group. Equal groups all have the same number.`,
+        `The story with ${g} ${m.thing.holders} that each hold ${s} ${m.thing.unit} has exactly ${g} groups of ${s}.`,
+        `It asks for the total, and multiplication finds the total of equal groups.`,
+        `The other stories add, take away or share a total, so they need $+$, $${M}$ or $${D}$ instead.`,
+        `$${g} ${T} ${s} = ${total}$, so that story has ${total} ${m.thing.unit} in all.`,
       ],
       label: "Choose the story",
     });
@@ -411,9 +448,10 @@ export const relatedDivisionSentence = chainFamily({
         ],
         hint: `The fact says ${x} groups of ${y} make ${c}. Division undoes it: start with the total ${c} and split it by one of the factors.`,
         explanation: [
-          `The fact $${x} ${T} ${y} = ${c}$ has product ${c} and factors ${x} and ${y}.`,
-          `Dividing the product by a factor gives the other factor: $${c} ${D} ${x} = ${y}$.`,
-          `So $${c} ${D} ${x} = n$ is the division sentence the fact helps solve.`,
+          `In $${x} ${T} ${y} = ${c}$, the numbers being multiplied, ${x} and ${y}, are the factors. The answer, ${c}, is the total.`,
+          `Division undoes multiplication: it starts with the total and splits it into equal groups.`,
+          `So start with ${c} and divide by one factor. The other factor is left: $${c} ${D} ${x} = ${y}$.`,
+          `The division sentence this fact helps solve is $${c} ${D} ${x} = n$.`,
         ],
         label: "Choose the division sentence",
       });
@@ -424,7 +462,7 @@ export const relatedDivisionSentence = chainFamily({
         {
           label: tex(`${c} ${T} ${a} = n`),
           value: c * a === q ? 1 : 0,
-          feedback: `${c} is the total. It cannot be one of the factors that makes a product of ${a}.`,
+          feedback: `This puts the total, ${c}, in as a number being multiplied. In the division, ${c} is the total, so it belongs alone on one side of the equals sign.`,
         },
         {
           label: tex(`${a} ${T} ${c} = n`),
@@ -434,12 +472,12 @@ export const relatedDivisionSentence = chainFamily({
         {
           label: tex(`n ${T} ${c} = ${a}`),
           value: -2,
-          feedback: `The total ${c} must be the product, not a factor.`,
+          feedback: `This multiplies the unknown by the total, ${c}. The total is the answer of the multiplication, so write ${a} times $n$ equals ${c}.`,
         },
         {
           label: tex(`${a} + n = ${c}`),
           value: a + q === c ? q : -3,
-          feedback: `This is addition. Division is undone by multiplication.`,
+          feedback: `This adds ${a} to the unknown. Division is undone by multiplication, not by addition.`,
         },
       ];
       const all = options(
@@ -456,9 +494,10 @@ export const relatedDivisionSentence = chainFamily({
         options: all,
         hint: `Dividing ${c} by ${a} asks what number of groups of ${a} make ${c}. Write that as a multiplication with the total ${c} as the product.`,
         explanation: [
-          `$${c} ${D} ${a} = n$ asks: ${a} times what number is ${c}?`,
-          `That is $${a} ${T} n = ${c}$.`,
-          `Since $${a} ${T} ${b} = ${c}$, $n = ${b}$.`,
+          `Division and multiplication undo each other, so every division can be read as a missing-number multiplication.`,
+          `$${c} ${D} ${a} = n$ asks how many groups of ${a} make ${c}. In other words: ${a} times what number is ${c}?`,
+          `Written as a multiplication, that is $${a} ${T} n = ${c}$, with the total ${c} alone on one side.`,
+          `Since $${a} ${T} ${b} = ${c}$, the missing number is $n = ${b}$.`,
         ],
         label: "Choose the multiplication sentence",
       });
@@ -472,7 +511,7 @@ export const relatedDivisionSentence = chainFamily({
       {
         label: tex(`${total} ${T} n = ${d}`),
         value: total * q === d ? q : -1,
-        feedback: `${total} is the total, so it is the product. It cannot be a factor.`,
+        feedback: `This puts the total, ${total}, in as a number being multiplied. The total belongs alone on one side of the equals sign.`,
       },
       {
         label: tex(`${d} ${T} ${total} = n`),
@@ -487,7 +526,7 @@ export const relatedDivisionSentence = chainFamily({
       {
         label: tex(`${d} ${T} ${total / 10} = n`),
         value: -4,
-        feedback: `This multiplies instead of finding the missing factor.`,
+        feedback: `This multiplies ${d} by ${total / 10}, numbers you already know. The sentence needs the unknown $n$ as a missing factor.`,
       },
     ];
     return choiceSurface(r, {
@@ -500,9 +539,11 @@ export const relatedDivisionSentence = chainFamily({
       ),
       hint: `${d} is ${stripped} tens. Dividing ${total} by ${d} asks which number of groups of ${d} make ${total}; write that with ${total} as the product.`,
       explanation: [
-        `$${total} ${D} ${d} = n$ asks: ${d} times what number is ${total}?`,
-        `That is $${d} ${T} n = ${total}$.`,
-        `Using ${stripped} ${T} ${q} = ${stripped * q} and one more zero, $n = ${q}$.`,
+        `Division and multiplication undo each other, so every division can be read as a missing-number multiplication.`,
+        `$${total} ${D} ${d} = n$ asks how many groups of ${d} make ${total}. In other words: ${d} times what number is ${total}?`,
+        `Written as a multiplication, that is $${d} ${T} n = ${total}$.`,
+        `${d} is ${stripped} tens, so use the fact $${stripped} ${T} ${q} = ${stripped * q}$. Then ${stripped * q} tens is ${total}.`,
+        `So $${d} ${T} ${q} = ${total}$, and the missing number is $n = ${q}$.`,
       ],
       label: "Choose the multiplication sentence",
     });
@@ -542,23 +583,23 @@ export const relatedSubtractionSentence = chainFamily({
           [
             {
               label: tex(`${a} ${M} ${c} = n`),
-              feedback: `You cannot take ${c} away from ${a}. The whole, ${c}, comes first.`,
+              feedback: `This takes the whole, ${c}, away from the part ${a}, but ${a} is smaller. Start with the whole, ${c}, and take a part away.`,
             },
             {
               label: tex(`${b} ${M} ${a} = n`),
-              feedback: `This takes one part from the other. Subtract a part from the whole ${c}.`,
+              feedback: `This takes one part, ${a}, from the other part, ${b}. Start with the whole, ${c}, and take a part away.`,
             },
             {
               label: tex(`${c} ${T} ${a} = n`),
-              feedback: `This is multiplication. A subtraction sentence takes away.`,
+              feedback: `The $${T}$ sign means multiply. A subtraction sentence uses $${M}$ to take away.`,
             },
             {
               label: tex(`${c} ${D} ${a} = n`),
-              feedback: `This is division. A subtraction sentence takes away.`,
+              feedback: `The $${D}$ sign means divide. A subtraction sentence uses $${M}$ to take away.`,
             },
             {
               label: tex(`${c} + ${a} = n`),
-              feedback: `This adds again. Subtraction undoes the addition.`,
+              feedback: `This adds ${a} to the whole again. Subtraction undoes addition, so take ${a} away from ${c} instead.`,
             },
           ],
           3,
@@ -566,9 +607,10 @@ export const relatedSubtractionSentence = chainFamily({
       ],
       hint: `In $${a} + ${b} = ${c}$, the whole is ${c} and the parts are ${a} and ${b}. Subtraction starts from the whole and takes away a part.`,
       explanation: [
-        `The fact $${a} + ${b} = ${c}$ has parts ${a} and ${b} and whole ${c}.`,
-        `Taking a part from the whole gives the other part: $${c} ${M} ${a} = ${b}$.`,
-        `So $${c} ${M} ${a} = n$ is the subtraction the fact helps solve.`,
+        `In $${a} + ${b} = ${c}$, the numbers ${a} and ${b} are the parts. Together they make the whole, ${c}.`,
+        `Subtraction undoes addition: start with the whole and take one part away.`,
+        `Taking the part ${a} from the whole ${c} leaves the other part: $${c} ${M} ${a} = ${b}$.`,
+        `So the fact helps solve $${c} ${M} ${a} = n$, and $n$ is ${b}.`,
       ],
       label: "Choose the subtraction sentence",
     });
@@ -684,6 +726,8 @@ const trueEquationFamily = (template: TemplateMetadata) =>
     render: (m, _ax, r) => {
       const [truth, ...wrong] = m.eqs;
       const show = (e: Eq) => tex(`${e.left} = ${e.right}`);
+      // A retired template replays its saved text byte for byte.
+      const retired = template.id === historicalTrueEquationTemplate.id;
       return choiceSurface(r, {
         prompt:
           m.form === "products-of-three-factors"
@@ -693,15 +737,28 @@ const trueEquationFamily = (template: TemplateMetadata) =>
           { label: show(truth!), correct: true },
           ...wrong.map((e) => ({
             label: show(e),
-            feedback: `The left side is ${e.l} and the right side is ${e.r}, so the two sides are not equal.`,
+            feedback: retired
+              ? `The left side is ${e.l} and the right side is ${e.r}, so the two sides are not equal.`
+              : `$${e.left} = ${e.l}$, but $${e.right} = ${e.r}$. The equals sign needs the same value on both sides, and ${e.l} is not ${e.r}.`,
           })),
         ],
         hint: `Work out the value of both sides of one equation at a time. For example, find ${wrong[0]!.left.replaceAll(T, "times")} and then the other side; the sides of a true equation have the same value.`,
-        explanation: [
-          `Find the value of each side of every equation.`,
-          `${wrong.map((e) => `$${e.left}=${e.l}$ but the other side is ${e.r}`).join("; ")}.`,
-          `Only $${truth!.left} = ${truth!.right}$ has the same value, ${truth!.l}, on both sides.`,
-        ],
+        explanation: retired
+          ? [
+              `Find the value of each side of every equation.`,
+              `${wrong.map((e) => `$${e.left}=${e.l}$ but the other side is ${e.r}`).join("; ")}.`,
+              `Only $${truth!.left} = ${truth!.right}$ has the same value, ${truth!.l}, on both sides.`,
+            ]
+          : [
+              `An equation is true when both sides of the equals sign have the same value.`,
+              `So work out each side of every equation and compare.`,
+              ...wrong.map(
+                (e) =>
+                  `$${e.left} = ${e.l}$, but $${e.right} = ${e.r}$. They differ, so it is false.`,
+              ),
+              `$${truth!.left} = ${truth!.l}$ and $${truth!.right} = ${truth!.r}$. Both sides are ${truth!.l}.`,
+              `So the true equation is $${truth!.left} = ${truth!.right}$.`,
+            ],
         label: "Choose the true equation",
       });
     },

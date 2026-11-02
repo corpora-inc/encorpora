@@ -43,13 +43,31 @@ const names: Record<PropertyId, string> = {
 /** What the property says, in one clause, for feedback. */
 const meaning: Record<PropertyId, string> = {
   "identity-add": "adding 0 leaves a number unchanged",
-  "identity-mult": "a number times 1 is the same number",
-  "commutative-add": "swapping the order of two addends keeps the sum",
-  "commutative-mult": "swapping the order of two factors keeps the product",
-  "associative-add": "regrouping three addends keeps the sum",
-  "associative-mult": "regrouping three factors keeps the product",
+  "identity-mult": "a number times 1 is still the same number",
+  "commutative-add":
+    "swapping the order of two numbers being added keeps the same total",
+  "commutative-mult":
+    "swapping the order of two numbers being multiplied keeps the same answer",
+  "associative-add":
+    "moving the parentheses to group three added numbers differently keeps the same total",
+  "associative-mult":
+    "moving the parentheses to group three multiplied numbers differently keeps the same answer",
   distributive:
-    "a factor multiplies each addend of a sum and the products are added",
+    "multiplying a sum by a number equals multiplying each part by it, then adding",
+};
+/** What changes between the two sides of each property's equation. */
+const change: Record<PropertyId, string> = {
+  "identity-add": "a number is added to 0 and stays the same",
+  "identity-mult": "a number is multiplied by 1 and stays the same",
+  "commutative-add": "the same two numbers are added in the opposite order",
+  "commutative-mult":
+    "the same two numbers are multiplied in the opposite order",
+  "associative-add":
+    "the same three numbers are added in the same order, with the parentheses moved",
+  "associative-mult":
+    "the same three numbers are multiplied in the same order, with the parentheses moved",
+  distributive:
+    "one number multiplies a sum on the left, and each part of the sum on the right",
 };
 
 /** The equation that shows a property, written with the instance's numbers. */
@@ -123,7 +141,7 @@ export const operationPropertyFamily = chainFamily({
         { label: equationOf(m.property, a, b, c), correct: true },
         ...others.map((p) => ({
           label: equationOf(p, a, b, c),
-          feedback: `This equation shows the ${names[p]}: ${meaning[p]}. The question names the ${names[m.property]}, where ${meaning[m.property]}.`,
+          feedback: `This equation shows the ${names[p]}: ${meaning[p]}. The question asks for the ${names[m.property]}.`,
         })),
       ];
       // Keep the near-miss of the other operation, then fill from the rest.
@@ -149,11 +167,13 @@ export const operationPropertyFamily = chainFamily({
       return choiceSurface(r, {
         prompt: `Which equation shows the ${names[m.property]}?`,
         options: [options[0]!, ...picks],
-        hint: `Each left side begins with $${a}$. Compare it with the right side of each equation. The ${names[m.property]} says that ${meaning[m.property]}, so look for the equation where only that change happens.`,
+        hint: `Each left side begins with $${a}$. Compare it with the right side of each equation. The ${names[m.property]} says that ${meaning[m.property]}. Look for the equation where only that change happens.`,
         explanation: [
-          `The ${names[m.property]}: ${meaning[m.property]}.`,
-          `${equationOf(m.property, a, b, c)} changes exactly that between its two sides, and both sides are equal.`,
-          "The other equations are also true, but each one shows a different property.",
+          `A property is a rule that is true for every number. The ${names[m.property]} says that ${meaning[m.property]}.`,
+          `In ${equationOf(m.property, a, b, c)}, ${change[m.property]}.`,
+          `Both sides equal ${sides(m.property, a, b, c)[0]}, so the equation is true, and that change is the only one.`,
+          "The other equations are true too, but each makes a different change, so each shows a different property.",
+          `So ${equationOf(m.property, a, b, c)} shows the ${names[m.property]}.`,
         ],
       });
     }
@@ -175,13 +195,16 @@ export const operationPropertyFamily = chainFamily({
         { label: names[m.property], correct: true },
         ...picks.map((p) => ({
           label: names[p],
-          feedback: `The ${names[p]} says that ${meaning[p]}. Compare how $${a}$, $${b}$ and $${c}$ sit on the left and right of the equation: that is not the change here.`,
+          feedback: `The ${names[p]} says that ${meaning[p]}. In ${shown}, ${change[m.property]}, so it shows a different property.`,
         })),
       ],
       hint: `Compare the left side and the right side of ${shown}. Ask what changed between them: the order of the numbers, how they are grouped, or nothing but a 0 or a 1 being combined.`,
       explanation: [
-        `Compare the two sides of ${shown}: ${m.property.startsWith("identity") ? "one number is combined with 0 or 1 and stays the same" : m.property.startsWith("commutative") ? "the same two numbers are in the opposite order" : m.property.startsWith("associative") ? "the same three numbers are in the same order with the parentheses moved" : "one factor multiplies a sum on the left and each addend on the right"}.`,
-        `That is the ${names[m.property]}: ${meaning[m.property]}.`,
+        `A property is a rule that is true for every number. Each property names one kind of change between two equal sides.`,
+        `Compare the two sides of ${shown}: ${change[m.property]}.`,
+        `Both sides equal ${sides(m.property, a, b, c)[0]}, so the change keeps the value.`,
+        `The ${names[m.property]} says that ${meaning[m.property]}.`,
+        `So the equation shows the ${names[m.property]}.`,
       ],
     });
   },

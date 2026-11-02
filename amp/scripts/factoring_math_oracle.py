@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 import subprocess
 import xml.etree.ElementTree as ET
+from worked_math_text import plain_worked_math
 
 FACTORING = frozenset({'greatest-monomial-factor', 'monic-quadratic-factorization',
                       'nonmonic-quadratic-factorization'})
@@ -204,10 +205,21 @@ def solve_factoring(public):
     return answers[0]
 
 
-def review_equalities(text):
+def review_equalities(text, coefficients=None):
     """Check every numerical or polynomial equality in these worked steps."""
     # This sentence states a permitted value of x, not an identity x = 0.
+    text = plain_worked_math(text)
     text = text.replace('Multiplication verifies the identity even when x = 0.', '')
+    # These are named coefficients of the given quadratic, not polynomial
+    # identities. Validate them against the prompt before checking the rest.
+    def coefficient(match):
+        name, value = match[1], int(match[2].replace('−', '-'))
+        require(coefficients is not None and name in coefficients
+                and coefficients[name] == value, 'Incorrect named coefficient: ' + match[0])
+        return ''
+    text = re.sub(r'\b([bc]) = (−?\d+)(?=$|[.,;](?:\s|$))', coefficient, text)
+    text = re.sub(r'\^([23])(?!\d)', lambda m: {'2': '²', '3': '³'}[m[1]], text)
+    require('^' not in text, 'Unsupported worked polynomial power')
     alphabet = r'[0-9x²³()−+×*\-\s]'
     chains = re.findall(rf'(?<![A-Za-z]){alphabet}+(?:={alphabet}+)+', text)
     for chain in chains:
@@ -230,7 +242,8 @@ def review_explanation(problem):
     chains = sum(review_equalities(step) for step in steps)
     require(chains >= 2, 'Factoring explanation lacks explicit equality steps')
     labels = {option['id']: option['label'] for option in public['response']['options']}
-    require(labels[key] in ' '.join(steps), 'Explanation omits the factored answer')
+    # The closing summary restates the answer; the derivation before it must reach it too.
+    require(labels[key] in ' '.join(steps[:-1]), 'Explanation omits the factored answer')
     feedback = problem.get('choiceFeedback', {})
     require(set(feedback) == set(labels)-{key}, 'Missing or extraneous choice feedback')
     for option, text in feedback.items():
@@ -242,10 +255,12 @@ def review_explanation(problem):
         common, power = greatest_monomial(target)
         divisors = [d for d in range(1, common+1) if all(v % d == 0 for v in target)]
         expected = 'Common positive coefficient factors: '+', '.join(map(str, divisors))+f'. The greatest is {common}.'
-        require(steps[0] == expected, 'Incorrect common coefficient factors')
+        derived = [step for step in steps if step.startswith('Common positive coefficient factors: ')]
+        require(derived == [expected], 'Incorrect common coefficient factors')
+        after = steps[steps.index(expected) + 1]
         expected = (f'The smallest exponent of $x$ among the nonzero terms is {power}. The common variable factor is $'+{1:'x',2:'x²'}[power]+'$.'
                     if power else 'A nonzero constant term has no factor $x$, so no power of $x$ is common to every term.')
-        require(steps[1] == expected, 'Incorrect common variable factor')
+        require(after == expected, 'Incorrect common variable factor')
     else:
         require(len(public['response']['options']) >= 3, 'Quadratic practice must have at least three distinct middle coefficients')
         claim = [step for step in steps if step.startswith('For ')]
@@ -261,7 +276,8 @@ def review_explanation(problem):
         if public['templateId'] == 'nonmonic-quadratic-factorization':
             common, _ = greatest_monomial(target)
             magnitudes = ', '.join(str(abs(int(value))) for value in reversed(target) if value)
-            require(steps[0] == f'The GCF of the nonzero coefficient magnitudes {magnitudes} is {common}.',
+            gcf_steps = [step for step in steps if step.startswith('The GCF of the nonzero coefficient magnitudes ')]
+            require(gcf_steps == [f'The GCF of the nonzero coefficient magnitudes {magnitudes} is {common}.'],
                     'Incorrect or missing numerical-content derivation')
             sign_step = 'The leading coefficient is negative. Extract the negative of the coefficient GCF to leave a positive leading coefficient inside.'
             require((sign_step in steps) == (target[2] < 0), 'Wrong explanation for extracting a negative common factor')
@@ -462,7 +478,13 @@ def check_lesson(record):
     require(expand(example['answer']) == target, 'Incorrect standalone worked answer')
     if template == 'greatest-monomial-factor':
         read_factorization(template, example['answer'])
-    require(sum(review_equalities(step) for step in example['steps']) >= 2, 'Missing explicit lesson arithmetic')
+    claims = 0
+    for step in example['steps']:
+        try:
+            claims += review_equalities(step, {'b': target[1], 'c': target[0]})
+        except ValueError as error:
+            raise ValueError(f'{template}: {step!r}: {error}') from error
+    require(claims >= 2, 'Missing explicit lesson arithmetic')
     require(any('Check' in step or 'Expanding' in step for step in example['steps']), 'Missing standalone expansion check')
     text = publication_tree(record['html']).text()
     require(example['prompt'] in text and example['answer'] in text
@@ -488,6 +510,7 @@ def review_content_mutations(records):
             return
         raise ValueError('Factoring corruption escaped its independent gate')
     bad = copy.deepcopy(runtime['problem']); bad['answer'] = 'option-invalid'; reject(review_explanation,bad)
+    bad = copy.deepcopy(runtime['problem']); bad['explanation'] = bad['explanation'][:2]; reject(review_explanation,bad)
     bad = copy.deepcopy(runtime['problem']); bad['explanation'][0] = 'Common positive coefficient factors: 1. The greatest is 1.'
     if bad['explanation'][0] == runtime['problem']['explanation'][0]:
         bad['explanation'][0] = 'Common positive coefficient factors: 1, 2. The greatest is 2.'
@@ -507,7 +530,11 @@ def review_content_mutations(records):
     bad = copy.deepcopy(figure); bad['html'] = bad['html'].replace('width="260"','width="259"',1); reject(check_figure,bad)
     quadratic = next(record['problem'] for record in records if record['kind'] == 'factoring-runtime'
                      and record['templateId'] == 'nonmonic-quadratic-factorization')
-    bad = copy.deepcopy(quadratic); bad['explanation'][0] += ' Ignore the GCF.'; reject(review_explanation,bad)
+    bad = copy.deepcopy(quadratic)
+    gcf_index = next(i for i, step in enumerate(bad['explanation'])
+                     if step.startswith('The GCF of the nonzero coefficient magnitudes '))
+    bad['explanation'][gcf_index] += ' Ignore the GCF.'
+    reject(review_explanation,bad)
     bad = copy.deepcopy(quadratic)
     options = bad['public']['response']['options']; key = bad['answer']
     bad['public']['response']['options'] = [option for option in options if option['id'] == key] + [next(option for option in options if option['id'] != key)]

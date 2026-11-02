@@ -8,13 +8,10 @@ export const thermometerReadingMethods: Record<string, ProblemMethod> = {
     intuition:
       "A thermometer is a number line stood on its end. The liquid rises higher when it is warmer, and the height of the top of the liquid shows the temperature. You read it the way you read any scale: find what one mark is worth, then count from a labeled mark.",
     terms: [
+      "degree-temperature",
       [
-        "degree",
-        "The unit for temperature. Degrees Fahrenheit and degrees Celsius are two scales.",
-      ],
-      [
-        "gridline",
-        "A mark across the scale. Not every gridline has a number written beside it.",
+        "tick-mark",
+        "A gridline is a mark across the scale; not every gridline has a number beside it.",
       ],
     ],
     method: [

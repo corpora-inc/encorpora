@@ -280,6 +280,9 @@ export class FamilyRepository {
     const flags = !!(
       await client.query("SELECT to_regclass('amp_problem_flags') AS relation")
     ).rows[0]?.relation;
+    const workbooks = !!(
+      await client.query("SELECT to_regclass('amp_workbooks') AS relation")
+    ).rows[0]?.relation;
     let retained = 0,
       linked =
         !learnerId && stripe
@@ -347,6 +350,12 @@ export class FamilyRepository {
       await client.query("DELETE FROM amp_skill_evidence WHERE learner_id=$1", [
         row.id,
       ]);
+      // Workbooks name the learner's problems; a retained billing tombstone
+      // keeps none of them.
+      if (workbooks)
+        await client.query("DELETE FROM amp_workbooks WHERE learner_id=$1", [
+          row.id,
+        ]);
       await client.query("DELETE FROM amp_instances WHERE learner_id=$1", [
         row.id,
       ]);
@@ -484,6 +493,14 @@ export class FamilyRepository {
             `SELECT to_jsonb(p) AS value FROM ${table} p JOIN amp_learners l ON l.id=p.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY ${order}`,
           ]);
       }
+      if (
+        (await client.query("SELECT to_regclass('amp_workbooks') AS relation"))
+          .rows[0]?.relation
+      )
+        datasets.push([
+          "workbook",
+          "SELECT to_jsonb(w) AS value FROM amp_workbooks w JOIN amp_learners l ON l.id=w.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY w.learner_id,w.workbook_date,w.number,w.minutes",
+        ]);
       if (
         (
           await client.query(

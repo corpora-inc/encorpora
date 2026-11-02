@@ -29,6 +29,10 @@ export type FrontierObservation = {
   assisted: boolean;
   /** ISO time of the answer; drives how much the estimate may have moved. */
   createdAt?: string;
+  /** Strength of the evidence, 1 when absent. A parent's paper mark without
+   * the answer weighs less (src/workbook/results.ts) and never confirms a
+   * band on its own. */
+  evidenceWeight?: number;
 };
 /** Curriculum coordinate, uncertainty width, and evidence counts. Overall sd
  * includes a bounded surprise reserve; it is not calibrated confidence. */
@@ -152,6 +156,7 @@ type Evidence = {
   success: boolean;
   assisted: boolean;
   at: number;
+  weight: number;
 };
 function fold(
   start: number[],
@@ -169,11 +174,12 @@ function fold(
   for (const item of items) {
     const correct =
       item.assisted && policy.assisted.treatAsFailure ? false : item.success;
-    const weight = item.assisted
-      ? correct
-        ? policy.assisted.correctWeight
-        : policy.assisted.incorrectWeight
-      : 1;
+    const weight =
+      (item.assisted
+        ? correct
+          ? policy.assisted.correctWeight
+          : policy.assisted.incorrectWeight
+        : 1) * item.weight;
     // Assisted success provides partial evidence, never independent mastery.
     // An assisted miss can be neutral without losing the recorded attempt.
     if (weight === 0) continue;
@@ -232,7 +238,8 @@ function fold(
   return summarize(
     log,
     items.length,
-    items.filter((item) => item.success && !item.assisted).length,
+    items.filter((item) => item.success && !item.assisted && item.weight >= 1)
+      .length,
     uncertainty,
   );
 }
@@ -271,6 +278,7 @@ export function estimateFrontier(options: {
       strand: options.strandOf(observation.templateId),
       success: observation.correct,
       assisted: observation.assisted,
+      weight: Math.min(1, Math.max(0, observation.evidenceWeight ?? 1)),
       at: observation.createdAt
         ? Date.parse(observation.createdAt)
         : index * 60000,
@@ -311,7 +319,7 @@ export function estimateFrontier(options: {
     const c = policy.confirmation;
     for (const strand of new Set(evidence.map((item) => item.strand))) {
       const independent = evidence.filter(
-        (e) => e.strand === strand && !e.assisted,
+        (e) => e.strand === strand && !e.assisted && e.weight >= 1,
       );
       const supports = (grade: number, spaced: boolean, foundation = false) => {
         // Success on harder material supports a working band. A harder miss

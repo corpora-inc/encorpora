@@ -311,11 +311,7 @@ export const factArrayLessons: Lesson[] = [
 export const factArrayMethods: Record<string, ProblemMethod> = {
   "multiply-facts": {
     goal: "Given two one-digit factors, an array or a story of equal rows, find the product.",
-    terms: [
-      ["factor", "A number being multiplied."],
-      ["product", "The result of multiplying."],
-      ["array", "Objects in equal rows and equal columns."],
-    ],
+    terms: ["factor-number", "product-multiply", "array"],
     method: [
       "Read 7 × 8 as 7 rows of 8.",
       "Start from a fact you know: double for 2, double twice for 4, half of 10 for 5, ten minus one group for 9.",
@@ -326,11 +322,7 @@ export const factArrayMethods: Record<string, ProblemMethod> = {
   },
   "divide-facts": {
     goal: "Given a division within 100, find the quotient from a multiplication fact.",
-    terms: [
-      ["dividend", "The number being divided."],
-      ["divisor", "The number you divide by."],
-      ["quotient", "The result of dividing."],
-    ],
+    terms: ["dividend", "divisor", "quotient"],
     method: [
       "Rewrite $n \\div  d = \\boxed{\\phantom{0}}$ as $d \\times  \\boxed{\\phantom{0}} = n$.",
       "Find the missing factor from a fact you know or by skip-counting by $d$.",
@@ -362,8 +354,8 @@ export const factArrayMethods: Record<string, ProblemMethod> = {
     goal: "Given part of a multiplication table and a pattern, find a missing product.",
     terms: [
       [
-        "row for 6",
-        "The products 6 × 1, 6 × 2, 6 × 3, … in one row of the table.",
+        "product-multiply",
+        "The row for 6 lists the products 6 × 1, 6 × 2, 6 × 3, and so on.",
       ],
     ],
     method: [

@@ -17,6 +17,9 @@ import {
 import {
   draftRows,
   fieldText,
+  numberTex,
+  powerBase,
+  powerTex,
   rowShape,
   rowText,
   type StructuredWorkResponse,
@@ -86,13 +89,30 @@ const printCard = {
 function PrintMultiPart({
   response,
   answer,
+  drawnBoxes = false,
 }: {
   response: MultiPartChoiceResponse;
   answer?: string;
+  /** Daily workbooks: drawn boxes in an aligned grid of options. Lesson
+   * editions keep the glyph markup byte for byte. */
+  drawnBoxes?: boolean;
 }) {
   const key = answer ? draftChoices(response, answer) : {};
-  const box = (blankId: string, optionId: string) =>
-    key[blankId] === optionId ? "☑" : "☐";
+  const box = (blankId: string, optionId: string): ReactNode =>
+    drawnBoxes ? (
+      <span
+        className={
+          key[blankId] === optionId
+            ? "print-check print-check--on"
+            : "print-check"
+        }
+        aria-hidden="true"
+      />
+    ) : key[blankId] === optionId ? (
+      "☑"
+    ) : (
+      "☐"
+    );
   const number = (blankId: string) =>
     response.blanks.findIndex((b) => b.id === blankId) + 1;
   if (response.layout === "table") {
@@ -188,23 +208,62 @@ function PrintMultiPart({
           )}
         </p>
       )}
-      <ol className="print-parts print-choices">
-        {response.blanks.map((b) => (
-          <li key={b.id}>
-            <PrintMathText
-              text={b.label.charAt(0).toUpperCase() + b.label.slice(1)}
-            />
-            :{" "}
-            {b.options.map((o) => (
-              <span key={o.id} className="print-part-option">
-                {box(b.id, o.id)} <PrintMathText text={o.label} />
+      {drawnBoxes ? (
+        <ol className="print-parts print-parts--grid">
+          {response.blanks.map((b) => (
+            <li key={b.id}>
+              <span className="print-part-label">
+                <PrintMathText
+                  text={b.label.charAt(0).toUpperCase() + b.label.slice(1)}
+                />
               </span>
-            ))}
-          </li>
-        ))}
-      </ol>
+              <span
+                className={`print-part-options print-part-options--${optionColumns(b.options.map((o) => o.label))}`}
+              >
+                {b.options.map((o) => (
+                  <span key={o.id} className="print-part-option">
+                    {box(b.id, o.id)}
+                    <span className="print-part-text">
+                      <PrintMathText text={o.label} />
+                    </span>
+                  </span>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <ol className="print-parts print-choices">
+          {response.blanks.map((b) => (
+            <li key={b.id}>
+              <PrintMathText
+                text={b.label.charAt(0).toUpperCase() + b.label.slice(1)}
+              />
+              :{" "}
+              {b.options.map((o) => (
+                <span key={o.id} className="print-part-option">
+                  {box(b.id, o.id)} <PrintMathText text={o.label} />
+                </span>
+              ))}
+            </li>
+          ))}
+        </ol>
+      )}
     </>
   );
+}
+/** Options of one printed blank: four across when every label is short, two
+ * when they fit half a column, otherwise one per line. */
+function optionColumns(labels: string[]): 1 | 2 | 4 {
+  const longest = Math.max(
+    ...labels.map(
+      (l) =>
+        l
+          .replace(/\\(frac|dfrac)\{([^}]*)\}\{([^}]*)\}/g, "$2/$3")
+          .replace(/\\[a-zA-Z]+|[{}$^_]/g, "").length,
+    ),
+  );
+  return longest <= 7 ? 4 : longest <= 18 ? 2 : 1;
 }
 /** Structured work on paper. The workbook prints every step with blank
  * lines for the learner's fields (and the banks to choose from, lettered);
@@ -313,19 +372,56 @@ function PrintStructuredWork({
                   <PrintMathText text={row.label ?? ""} />
                 </td>
               )}
-              {row.fields.map((f, j) => (
-                <td key={j}>
-                  {f.given !== undefined || values ? (
-                    <PrintMathText
-                      text={fieldText(r, f, values?.[i]?.[j] ?? "")}
-                    />
-                  ) : f.kind === "choice" ? (
-                    <span className="print-work-blank print-work-blank--short" />
-                  ) : (
-                    <span className="print-work-blank" />
-                  )}
-                </td>
-              ))}
+              {row.fields.map((f, j) => {
+                // A power's exponent prints inside its coefficient's cell.
+                if (j > 0 && powerBase(row.fields[j - 1]!, f)) return null;
+                const next = row.fields[j + 1];
+                const base = powerBase(f, next);
+                const shown = (field: typeof f, k: number) =>
+                  field.given ?? values?.[i]?.[k] ?? "";
+                if (base && next) {
+                  const a = shown(f, j);
+                  const n = shown(next, j + 1);
+                  return (
+                    <td key={j} colSpan={labeled ? undefined : 2}>
+                      {a && n ? (
+                        <PrintMathText text={powerTex(a, base, n)} />
+                      ) : (
+                        // Coefficient × base, with the exponent's blank
+                        // raised where the exponent is written.
+                        <span className="print-work-power">
+                          {a ? (
+                            <PrintMathText text={`$${numberTex(a)}$`} />
+                          ) : (
+                            <span className="print-work-blank print-work-blank--short" />
+                          )}
+                          {` × ${base}`}
+                          <sup>
+                            {n ? (
+                              <PrintMathText text={`$${numberTex(n)}$`} />
+                            ) : (
+                              <span className="print-work-blank print-work-blank--power" />
+                            )}
+                          </sup>
+                        </span>
+                      )}
+                    </td>
+                  );
+                }
+                return (
+                  <td key={j}>
+                    {f.given !== undefined || values ? (
+                      <PrintMathText
+                        text={fieldText(r, f, values?.[i]?.[j] ?? "")}
+                      />
+                    ) : f.kind === "choice" ? (
+                      <span className="print-work-blank print-work-blank--short" />
+                    ) : (
+                      <span className="print-work-blank" />
+                    )}
+                  </td>
+                );
+              })}
             </tr>
           ))}
         </tbody>
@@ -363,16 +459,24 @@ export function PrintExerciseBody({
   problem,
   solutions,
   workspace,
+  numberLabel,
+  drawnBoxes = false,
 }: {
   number: number;
   problem: GeneratedProblem;
   solutions: boolean;
   workspace?: ReactNode;
+  /** Replaces the default "7. " prefix; lesson editions never pass it. */
+  numberLabel?: ReactNode;
+  /** Drawn checkboxes in an aligned grid for multi-part items (daily
+   * workbooks); lesson editions never pass it. */
+  drawnBoxes?: boolean;
 }) {
   return (
     <>
       <h2>
-        {number}. <PrintMathText text={problem.public.prompt} />
+        {numberLabel ?? <>{number}. </>}
+        <PrintMathText text={problem.public.prompt} />
       </h2>
       {problem.public.figure && <Figure figure={problem.public.figure} />}
       {problem.public.response.kind === "point-plot" && (
@@ -390,6 +494,7 @@ export function PrintExerciseBody({
         <PrintMultiPart
           response={problem.public.response}
           answer={solutions ? problem.answer : undefined}
+          drawnBoxes={drawnBoxes}
         />
       )}
       {problem.public.response.kind === "structured-work" && (
@@ -482,4 +587,4 @@ export function printFigureCss() {
   return figureRules;
 }
 /** Page styles of printed lessons and their exercises. */
-export const publicationCss = `@page{margin:18mm}:root{--scene-sans:Arial,Helvetica,sans-serif}body{font-family:Arial,sans-serif;color:#18332f;line-height:1.55;font-size:10.5pt}header{display:flex;justify-content:space-between;font-size:9pt;letter-spacing:1.3px;border-bottom:1px solid #abc;padding-bottom:10px}h1{font-family:Georgia,serif;font-size:27pt;line-height:1.2;margin:24px 0 8px}h2{font-size:12.5pt;line-height:1.5}h2,h3{break-after:avoid}p,li{orphans:3;widows:3}li{margin:3px 0}section{margin:20px 0}.keep-together{break-inside:avoid}.reference-lesson [data-lesson-stage="watch"] ul,.reference-lesson [data-lesson-stage="watch"] li{break-inside:avoid}.publication-kind{font-size:10pt;letter-spacing:1px;margin:0 0 20px;color:#47635d}.example{padding:22px;border:1px solid #9ab;break-inside:avoid}.example>h2{margin-top:0}.example>ol>li,.exercise>ol:not(.print-choices)>li{margin:0;padding:5px 0;line-height:1.6}.worked-answer{border-top:1px solid #ccd;padding-top:14px;margin:16px 0 0}.representation{break-inside:avoid}.exercise{break-inside:avoid;border-bottom:1px solid #ccd;padding-top:1px;padding-bottom:15px}.exercise--solutions{break-inside:auto}.exercise--solutions>h2,.exercise--solutions>.figure,.exercise--solutions>.print-choices,.exercise--solutions>.print-sentence,.exercise--solutions>.print-match,.exercise--solutions>.print-figures,.exercise--solutions>.print-work,.exercise--solutions>.print-work-start,.exercise--solutions>.figure-text-cap{break-inside:avoid;break-after:avoid}.exercise--solutions>.figure-text-cap{display:block!important}.exercise--solutions>ol:not(.print-choices)>li,.exercise--solutions>p:last-child{break-inside:avoid}.exercise--solutions>ol:not(.print-choices)>li:last-child{break-after:avoid}.exercise--solutions>p:last-child{break-before:avoid}${printMathStyles}.figure{display:block;width:480px;max-width:100%;max-height:400px;margin:15px auto}.figure text{fill:#183e3a;font:18px Arial}.dataset{display:flex;gap:20px;justify-content:center;font-size:18pt}.print-choices{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;padding-left:24px;line-height:1.8;row-gap:2px}.figure[data-kind="coordinate-plane"]{width:320px;height:300px;max-height:none}.print-match{border-collapse:collapse;margin:12px 0;break-inside:avoid}.print-match th,.print-match td{border:1px solid #9ab;padding:6px 12px;text-align:center}.print-match tbody th{text-align:left;font-weight:normal}.print-sentence{line-height:2}.print-blank{display:inline-block;min-width:64px;border-bottom:1px solid #18332f;text-align:center;margin:0 4px}.print-parts{display:block;padding-left:24px;line-height:1.9}.print-part-option{display:inline-block;margin-right:18px;white-space:nowrap}.print-figures{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 18px;margin:12px 0;break-inside:avoid}.print-figure{border:1px solid #9ab;border-radius:8px;padding:6px 10px 8px;break-inside:avoid}.print-figure--answer{border:2.5px solid #18332f}.print-figure-letter{font-weight:bold;font-size:11pt}.print-figure .figure{width:100%;max-width:168px!important;max-height:none;margin:4px auto 0}.print-work{border-collapse:collapse;margin:10px 0;width:100%;break-inside:avoid}.print-work th,.print-work td{border:1px solid #9ab;padding:5px 8px;text-align:left;vertical-align:top}.print-work th{font-size:9pt}.print-work td:first-child{width:28px;text-align:center}.print-work-blank{display:inline-block;width:100%;min-width:120px;height:20px;border-bottom:1px solid #18332f}.print-work-blank--short{width:56px;min-width:56px;margin:0 6px}.print-work-start{margin:6px 0}.print-work-order{line-height:1.8}.print-work-order-line{margin-top:8px}.print-work-bank{font-size:9.5pt;margin:6px 0;break-inside:avoid}.print-work-bank ol{columns:2;column-gap:24px;margin:4px 0}.writing{height:75px;background:repeating-linear-gradient(white,white 24px,#ddd 25px)}footer{break-before:avoid;break-inside:avoid;font-size:8pt;margin-top:18px;color:#567;border-top:1px solid #ccd;padding-top:10px}`;
+export const publicationCss = `@page{margin:18mm}:root{--scene-sans:Arial,Helvetica,sans-serif}body{font-family:Arial,sans-serif;color:#18332f;line-height:1.55;font-size:10.5pt}header{display:flex;justify-content:space-between;font-size:9pt;letter-spacing:1.3px;border-bottom:1px solid #abc;padding-bottom:10px}h1{font-family:Georgia,serif;font-size:27pt;line-height:1.2;margin:24px 0 8px}h2{font-size:12.5pt;line-height:1.5}h2,h3{break-after:avoid}p,li{orphans:3;widows:3}li{margin:3px 0}section{margin:20px 0}.keep-together{break-inside:avoid}.reference-lesson [data-lesson-stage="watch"] ul,.reference-lesson [data-lesson-stage="watch"] li{break-inside:avoid}.publication-kind{font-size:10pt;letter-spacing:1px;margin:0 0 20px;color:#47635d}.example{padding:22px;border:1px solid #9ab;break-inside:avoid}.example>h2{margin-top:0}.example>ol>li,.exercise>ol:not(.print-choices)>li{margin:0;padding:5px 0;line-height:1.6}.worked-answer{border-top:1px solid #ccd;padding-top:14px;margin:16px 0 0}.representation{break-inside:avoid}.exercise{break-inside:avoid;border-bottom:1px solid #ccd;padding-top:1px;padding-bottom:15px}.exercise--solutions{break-inside:auto}.exercise--solutions>h2,.exercise--solutions>.figure,.exercise--solutions>.print-choices,.exercise--solutions>.print-sentence,.exercise--solutions>.print-match,.exercise--solutions>.print-figures,.exercise--solutions>.print-work,.exercise--solutions>.print-work-start,.exercise--solutions>.figure-text-cap{break-inside:avoid;break-after:avoid}.exercise--solutions>.figure-text-cap{display:block!important}.exercise--solutions>ol:not(.print-choices)>li,.exercise--solutions>p:last-child{break-inside:avoid}.exercise--solutions>ol:not(.print-choices)>li:last-child{break-after:avoid}.exercise--solutions>p:last-child{break-before:avoid}${printMathStyles}.figure{display:block;width:480px;max-width:100%;max-height:400px;margin:15px auto}.figure text{fill:#183e3a;font:18px Arial}.dataset{display:flex;gap:20px;justify-content:center;font-size:18pt}.print-choices{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;padding-left:24px;line-height:1.8;row-gap:2px}.figure[data-kind="coordinate-plane"]{width:320px;height:300px;max-height:none}.print-match{border-collapse:collapse;margin:12px 0;break-inside:avoid}.print-match th,.print-match td{border:1px solid #9ab;padding:6px 12px;text-align:center}.print-match tbody th{text-align:left;font-weight:normal}.print-sentence{line-height:2}.print-blank{display:inline-block;min-width:64px;border-bottom:1px solid #18332f;text-align:center;margin:0 4px}.print-parts{display:block;padding-left:24px;line-height:1.9}.print-part-option{display:inline-block;margin-right:18px;white-space:nowrap}.print-figures{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 18px;margin:12px 0;break-inside:avoid}.print-figure{border:1px solid #9ab;border-radius:8px;padding:6px 10px 8px;break-inside:avoid}.print-figure--answer{border:2.5px solid #18332f}.print-figure-letter{font-weight:bold;font-size:11pt}.print-figure .figure{width:100%;max-width:168px!important;max-height:none;margin:4px auto 0}.print-work{border-collapse:collapse;margin:10px 0;width:100%;break-inside:avoid}.print-work th,.print-work td{border:1px solid #9ab;padding:5px 8px;text-align:left;vertical-align:top}.print-work th{font-size:9pt}.print-work td:first-child{width:28px;text-align:center}.print-work-blank{display:inline-block;width:100%;min-width:120px;height:20px;border-bottom:1px solid #18332f}.print-work-blank--short{width:56px;min-width:56px;margin:0 6px}.print-work-power{white-space:nowrap}.print-work-power sup{font-size:.8em}.print-work-blank--power{width:28px;min-width:28px;height:.9em;margin:0 2px;vertical-align:.5em}.print-work-start{margin:6px 0}.print-work-order{line-height:1.8}.print-work-order-line{margin-top:8px}.print-work-bank{font-size:9.5pt;margin:6px 0;break-inside:avoid}.print-work-bank ol{columns:2;column-gap:24px;margin:4px 0}.writing{height:75px;background:repeating-linear-gradient(white,white 24px,#ddd 25px)}footer{break-before:avoid;break-inside:avoid;font-size:8pt;margin-top:18px;color:#567;border-top:1px solid #ccd;padding-top:10px}`;

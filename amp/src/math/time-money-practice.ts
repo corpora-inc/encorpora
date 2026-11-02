@@ -120,6 +120,7 @@ function misreadings(h: number, m: number): Misread[] {
 }
 function readClockSteps(h: number, m: number): string[] {
   return [
+    "A clock has two hands: the long hand shows the minutes and the short hand shows the hour.",
     m === 0
       ? "The long minute hand points at 12: 0 minutes past the hour."
       : `The long minute hand points at ${numeral(m)}. Counting by fives from 12, that is ${m} minutes past the hour.`,
@@ -249,8 +250,9 @@ function amPm(r: Random): Draft {
     hint: `Read the clock first. Then think about when ${name} ${activity}: a.m. runs from midnight to noon, and p.m. from noon to midnight.`,
     figure: single(h, m),
     explanation: [
-      ...readClockSteps(h, m).slice(0, 2),
-      `a.m. times run from midnight to noon; p.m. times run from noon to midnight. ${name} ${activity} in the ${part}, so the time is ${t} ${period}.`,
+      ...readClockSteps(h, m).slice(0, 3),
+      `Every clock time happens twice a day. a.m. times run from midnight to noon; p.m. times run from noon to midnight.`,
+      `${name} ${activity} in the ${part}, so the time is ${t} ${period}`,
     ],
     choices: [
       { label: `${t} ${period}`, correct: true },
@@ -430,7 +432,10 @@ function draft(templateId: string, r: Random): Draft {
             : "The long minute hand points at 6, so the time is half past an hour.",
           m === 0
             ? `The short hour hand points at ${h}.`
-            : `The short hour hand is halfway between ${h} and ${next(h)}. It has passed ${h} but not reached ${next(h)}, so it is half past ${h}.`,
+            : `The short hour hand is halfway between ${h} and ${next(h)}. It has passed ${h} but not reached ${next(h)}.`,
+          m === 0
+            ? `The time is ${h} o'clock, so the hour is ${h}.`
+            : `The time is half past ${h}, so the hour is ${h}.`,
         ],
         answer: `${h}`,
         responseLabel: "Hour",
@@ -444,8 +449,8 @@ function draft(templateId: string, r: Random): Draft {
         hint: `The long hand points at ${numeral(m)}. Count by fives from 12, one five for each numeral, up to ${numeral(m)}.`,
         figure: single(h, m),
         explanation: [
-          `The long minute hand points at ${numeral(m)}.`,
-          `Each numeral is 5 more minutes: ${Array.from({ length: numeral(m) }, (_, i) => 5 * (i + 1)).join(", ")}.`,
+          `The long hand shows the minutes. It points at ${numeral(m)}.`,
+          `Between two numerals there are 5 minutes, so count by fives from 12: ${Array.from({ length: numeral(m) }, (_, i) => 5 * (i + 1)).join(", ")}.`,
           `The clock shows ${m} minutes past the hour.`,
         ],
         answer: `${m}`,
@@ -490,7 +495,8 @@ function draft(templateId: string, r: Random): Draft {
               " and ",
             )} make ${dollars} ${dollars === 1 ? "dollar" : "dollars"}.`,
           `The coins: ${countOn(coins).join(", ")}, so ${cents(c)}.`,
-          `${dollars} ${dollars === 1 ? "dollar" : "dollars"} and ${c} cents is written ${(total(items) / 100).toFixed(2)} dollars.`,
+          `In a money amount, the point separates whole dollars from cents, and cents always use two digits.`,
+          `So ${dollars} ${dollars === 1 ? "dollar" : "dollars"} and ${c} ${c === 1 ? "cent" : "cents"} is written ${(total(items) / 100).toFixed(2)} dollars.`,
         ],
         answer: (total(items) / 100).toFixed(2),
         responseLabel: "Dollars",
@@ -506,7 +512,8 @@ function draft(templateId: string, r: Random): Draft {
         figure: coinFigure(items),
         explanation: [
           ...coinSteps(items),
-          `The coins are worth ${cents(t)}. From ${t} up to 100 is ${100 - t}: ${t} + ${100 - t} = 100.`,
+          `The coins are worth ${cents(t)}. A dollar is 100 cents, so count up from ${t} to 100.`,
+          `${t} + ${100 - t} = 100, so the coins need ${100 - t} more cents to make one dollar.`,
         ],
         answer: `${100 - t}`,
         responseLabel: "Cents",

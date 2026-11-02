@@ -5,6 +5,8 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { snakeRegions, type PartitionedShape } from "./part-whole-models";
+import { fractionBar } from "./scene/author";
+import type { Scene } from "./scene/spec";
 
 type Response = "choice" | "fraction" | "number";
 // id | title | skill | grade band | response | description
@@ -147,6 +149,8 @@ type Draft = {
   choices?: Choice[];
   /** Choices are already in display order (labels name figure positions). */
   ordered?: boolean;
+  /** The lesson's worked model, which may show the answer. */
+  walkthrough?: Scene;
 };
 
 function findEqualShares(r: Random, targets: number[], counts: number[]) {
@@ -180,10 +184,11 @@ function findEqualShares(r: Random, targets: number[], counts: number[]) {
     hint: `${capital(units(n))} are ${parts(n)} of one whole. Check each shape two ways: are there exactly ${WORDS[n]} parts, and are they all the same size?`,
     figure: { kind: "partitioned-shapes", shapes },
     explanation: [
-      `${capital(units(n))} means the whole is cut into ${parts(n)}.`,
+      `${capital(units(n))} means the whole is cut into ${parts(n)}. Equal parts are all the same size.`,
+      `So check two things for each shape: are there ${WORDS[n]} parts, and are they the same size?`,
       `${name("unequal")} has ${WORDS[n]} parts, but they are not the same size, so they are not ${units(n)}.`,
       `${name("count")} has equal parts, but ${WORDS[m]} of them: those are ${units(m)}.`,
-      `${name("correct")} has ${parts(n)}: it is cut into ${units(n)}.`,
+      `${name("correct")} has ${parts(n)}, so ${name("correct")} is cut into ${units(n)}.`,
     ],
     ordered: true,
     choices: roles.map(({ role }, i) => {
@@ -228,10 +233,12 @@ function nameShare(r: Random, k: number, n: number, pool: [number, number][]) {
     hint: `The ${noun} has ${WORDS[n]} equal parts, so the parts are ${units(n)}. Count how many of them are shaded.`,
     figure: { kind: "partitioned-shapes", shapes: [shape] },
     explanation: [
+      `First count all the equal parts. The count tells the name of each part.`,
       `The ${noun} is cut into ${parts(n)}, so each part is one ${unit(n)}.`,
+      `Next count only the shaded parts: ${WORDS[k]}.`,
       k === n
-        ? `All ${WORDS[n]} parts are shaded: ${answer} make the whole ${noun}.`
-        : `${capital(WORDS[k])} of the ${WORDS[n]} parts ${k === 1 ? "is" : "are"} shaded: ${answer}.`,
+        ? `All ${WORDS[n]} parts are shaded, so ${answer} make the whole ${noun}. The whole ${noun} is shaded.`
+        : `${capital(WORDS[k])} of the ${WORDS[n]} parts ${k === 1 ? "is" : "are"} shaded, so ${answer} of the ${noun} ${k === 1 ? "is" : "are"} shaded.`,
     ],
     choices,
   };
@@ -277,11 +284,15 @@ function sameShare(r: Random, equal: boolean): Draft {
     hint: `${capital(shape)}s A and B are the same size. Count the equal parts in each: the ${shape} cut into more parts has smaller parts, whatever their shape.`,
     figure: { kind: "partitioned-shapes", shapes: [a, b] },
     explanation: [
+      `The two ${shape}s are the same size, so compare how many equal parts each one has.`,
       describe("A", n1),
       describe("B", n2),
       equal
         ? `Both are one ${unit(n1)} of the same-size ${shape}, so they are the same amount, even though their shapes are different.`
         : `One ${unit(Math.min(n1, n2))} is larger than one ${unit(Math.max(n1, n2))}: cutting the same whole into more equal parts makes each part smaller.`,
+      equal
+        ? `So the shaded parts are the same amount.`
+        : `So ${larger}'s shaded part is larger.`,
     ],
     choices: [
       {
@@ -384,9 +395,15 @@ function compareDraft(
         { parts: d, shaded: 0, label: second },
       ],
     },
+    // The practice figure leaves the bars blank so it does not show the
+    // answer; the lesson's worked model shades each fraction.
+    walkthrough: fractionBar(
+      { parts: b, shaded: a, label: first },
+      { parts: d, shaded: c, label: second },
+    ).scene({ title: "Fraction bars", width: 360 }),
     explanation: [
       ...explain(greater, lesser),
-      `${greater} > ${lesser}, so the ${ask === "greater" ? "greater" : "lesser"} fraction is ${ask === "greater" ? greater : lesser}.`,
+      `${greater} is more than ${lesser}, so the ${ask === "greater" ? "greater" : "lesser"} fraction is ${ask === "greater" ? greater : lesser}.`,
     ],
     answer: ask === "greater" ? greater : lesser,
   };
@@ -463,8 +480,9 @@ function draft(templateId: string, r: Random): Draft {
         explanation: [
           `Shape ${h} is cut into 2 equal pieces, so its shaded piece is one half.`,
           `Shape ${q} is cut into 4 equal pieces, so its shaded piece is one quarter.`,
-          "The same whole cut into more equal pieces has smaller pieces. Two quarters fill one half.",
-          `One half is larger than one quarter, so the ${ask} piece is one ${ask === "larger" ? "half" : "quarter"}.`,
+          "The same whole cut into more equal pieces has smaller pieces, because the whole is shared among more pieces.",
+          "Two quarters fill one half, so one quarter is smaller than one half.",
+          `So the ${ask} piece is one ${ask === "larger" ? "half" : "quarter"}.`,
         ],
         choices: [
           {
@@ -505,9 +523,11 @@ function draft(templateId: string, r: Random): Draft {
         hint: `The rectangle covers ${cells} unit squares. Count the squares in the shaded part: what fraction of all ${cells} is it?`,
         figure,
         explanation: [
+          `Area is how much space a shape covers, counted in unit squares. Parts with equal area cover the same number of squares, even if their shapes differ.`,
           `The rectangle covers ${cells} unit squares, and each part covers ${size} of them.`,
           `${n} parts of ${size} squares fill the rectangle: ${n} × ${size} = ${cells}.`,
-          `The shaded part is one of ${n} equal shares, so it is 1/${n} of the area.`,
+          `The shaded part is one of ${n} equal shares, and one of ${n} equal shares is written 1/${n}.`,
+          `So the shaded part is 1/${n} of the rectangle's area.`,
         ],
         answer: `1/${n}`,
       };
@@ -519,9 +539,11 @@ function draft(templateId: string, r: Random): Draft {
         hint: `Count the equal parts, the shaded one included. They share the ${cells} square units equally.`,
         figure,
         explanation: [
-          `The rectangle is split into ${n} parts with equal area, so the shaded part is 1/${n} of the area.`,
-          `${cells} ÷ ${n} = ${cells / n}, so each part has an area of ${cells / n} square units.`,
+          `Area is how much space a shape covers. Parts with equal area cover the same amount, even if their shapes differ.`,
+          `The rectangle is split into ${n} parts with equal area, so the ${cells} square units are shared equally ${n} ways.`,
+          `Sharing equally is division: ${cells} ÷ ${n} = ${cells / n}.`,
           `Check: ${n} × ${cells / n} = ${cells}.`,
+          `The shaded part has an area of ${cells / n} square units.`,
         ],
         answer: `${cells / n}`,
       };
@@ -533,7 +555,7 @@ function draft(templateId: string, r: Random): Draft {
       if (b >= a) b++;
       const sameSize = `${a}/${d} and ${b}/${d} both count pieces of size 1/${d}. Which has more of those pieces?`;
       return compareDraft(r, [a, d], [b, d], sameSize, (greater, lesser) => [
-        `Both fractions use the same piece: 1/${d} of the whole.`,
+        `The bottom number of a fraction (the denominator) tells the size of each piece. Both fractions use the same piece: 1/${d} of the whole.`,
         `${greater} is ${pieces(Number(greater.split("/")[0]))}; ${lesser} is ${pieces(Number(lesser.split("/")[0]))}. More pieces of the same size make more of the whole.`,
       ]);
     }
@@ -546,7 +568,7 @@ function draft(templateId: string, r: Random): Draft {
       const [few, many] = b < d ? [b, d] : [d, b];
       const sameCount = `${a}/${b} and ${a}/${d} both have ${pieces(a)}. Is a whole cut into ${b} pieces or into ${d} pieces made of larger pieces?`;
       return compareDraft(r, [a, b], [a, d], sameCount, () => [
-        `Both fractions have ${pieces(a)}, so compare the size of one piece.`,
+        `The top number of a fraction (the numerator) counts the pieces. Both fractions have ${pieces(a)}, so compare the size of one piece.`,
         `A whole cut into ${few} equal pieces has larger pieces than the same whole cut into ${many}: 1/${few} > 1/${many}.`,
         `${pieces(a)} of size 1/${few} ${a === 1 ? "is" : "make"} more than ${pieces(a)} of size 1/${many}.`,
       ]);
@@ -585,7 +607,8 @@ function draft(templateId: string, r: Random): Draft {
           );
         }
         steps.push(
-          `Rename both with the common denominator ${l}: ${[
+          `To compare exactly, cut both into pieces of the same size. ${l} is a common denominator: both ${b} and ${d} divide into it evenly.`,
+          `Rename both with the denominator ${l}: ${[
             [a, b],
             [c, d],
           ]
@@ -595,7 +618,7 @@ function draft(templateId: string, r: Random): Draft {
                 : `${n}/${m} = ${(n! * l) / m!}/${l}`,
             )
             .join(" and ")}.`,
-          `Now the pieces are the same size, so compare the counts: ${Math.max((a * l) / b, (c * l) / d)}/${l} > ${Math.min((a * l) / b, (c * l) / d)}/${l}.`,
+          `Now the pieces are the same size, so compare the counts (the top numbers): ${Math.max((a * l) / b, (c * l) / d)}/${l} > ${Math.min((a * l) / b, (c * l) / d)}/${l}.`,
         );
         return steps;
       });
@@ -640,6 +663,7 @@ export function generatePartWholeProblem(
       answer: d.answer!,
       explanation: d.explanation,
       hint: d.hint,
+      ...(d.walkthrough ? { walkthrough: d.walkthrough } : {}),
     };
   }
   const choices = d.ordered ? d.choices : shuffle(r, [...d.choices]);

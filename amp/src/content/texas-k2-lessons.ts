@@ -15,12 +15,16 @@ type Spec = {
   formal: string[];
   pitfalls: string[];
   parentGuide: string;
+  senses?: Lesson["senses"];
+  noLink?: string[];
 };
 
 const lesson = (s: Spec): Lesson => ({
   id: s.id,
   title: s.title,
   summary: s.summary,
+  ...(s.senses ? { senses: s.senses } : {}),
+  ...(s.noLink ? { noLink: s.noLink } : {}),
   templateIds: [s.id],
   objectives: s.objectives,
   sections: [
@@ -45,14 +49,8 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     intuition:
       "Every United States coin has a name and a value. The value is how many cents the coin is worth. The cent symbol ¢ goes after the number: 5¢ means five cents.",
     terms: [
-      [
-        "cent",
-        "The smallest unit of United States money. One cent is written 1¢.",
-      ],
-      [
-        "cent symbol",
-        "The mark ¢, written right after a number to show cents, as in 10¢.",
-      ],
+      "cent",
+      ["cent", "The cent symbol ¢ goes right after the number, as in 10¢."],
     ],
     method: [
       "Read the number of cents on the coin, or in the question. If the picture shows no value, name the coin by how it looks: the penny is the only copper coin; of the silver coins, the dime is the smallest, the nickel has a smooth edge and the quarter is the largest, with a ridged edge.",
@@ -66,10 +64,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Given a solid standing on a table, name the flat shape of the face that touches the table.",
     intuition:
       "A solid is a shape you can hold, such as a box, a can or a ball. A face is a flat side of a solid. When a solid stands on a face, that face touches the table and is the bottom face.",
-    terms: [
-      ["face", "A flat side of a solid."],
-      ["corner", "A point where two sides of a flat shape meet."],
-    ],
+    terms: ["face-solid", "corner"],
     method: [
       "Look at the face on the table. If it is round with no corners, it is a circle.",
       "If it has straight sides, count them. Three sides make a triangle.",
@@ -82,11 +77,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Given a question or a goal about an object, name the attribute (length, capacity or weight) that should be measured.",
     intuition:
       "An attribute is something about an object that you can measure with a unit. How long, how tall and how wide are about length. How much a container can hold is capacity. How heavy something is tells its weight.",
-    terms: [
-      ["length", "How long, how tall or how wide something is."],
-      ["capacity", "How much a container can hold."],
-      ["weight", "How heavy something is."],
-    ],
+    terms: ["length", "capacity", "weight"],
     method: [
       "Find the key words in the question: long, tall or wide; hold; heavy.",
       "Match the key words to the attribute: length, capacity or weight.",
@@ -98,12 +89,9 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
   "dot-group-compared-to-number": {
     goal: "Given groups of up to 20 dots, find the group that has more than, fewer than or the same number as a given number or group.",
     intuition:
-      "To compare a group with a number, count the group, then ask: is my count more than, fewer than or the same as that number? More means a greater number. Fewer means a lesser number.",
-    terms: [
-      ["more than", "A greater number. 9 is more than 7."],
-      ["fewer than", "A lesser number. 5 is fewer than 7."],
-      ["the same as", "Equal. 7 is the same as 7."],
-    ],
+      "Count each group first, touching each dot once. More than means a bigger number. Fewer than means a smaller number. Equal to means the same as: the count and the number match. For example, 8 dots are more than 6, because you say 8 after 6 when you count.",
+    terms: ["more-than", "less-than", "equal"],
+    senses: { "more than": "more-than" },
     method: [
       "Count the dots in each group. Touch each dot once.",
       "Compare each count with the number in the question.",
@@ -117,11 +105,11 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     intuition:
       "A number sentence tells a story with numbers. In these problems a box □ stands for the number we want to find. To match a story with a sentence, ask what happens in the story, and which number is not known.",
     terms: [
+      "number-sentence",
       [
-        "number sentence",
-        "Numbers and signs that say something is equal, such as 8 + 5 = 13.",
+        "unknown",
+        "Here a box $\\square$ holds the place of the unknown number.",
       ],
-      ["box □", "A box that stands for the number we do not know yet."],
     ],
     method: [
       "Decide what happens: things are put together, some are taken away, or two groups are compared.",
@@ -137,11 +125,11 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     intuition:
       "A number sentence tells a story with numbers, and the numbers can be as large as 1,000. A box □ stands for the number we want to find. The match depends on what happens in the story and which number is not known, not on how big the numbers are.",
     terms: [
+      "number-sentence",
       [
-        "number sentence",
-        "Numbers and signs that say something is equal, such as 267 + 469 = 736.",
+        "unknown",
+        "Here a box $\\square$ holds the place of the unknown number.",
       ],
-      ["box □", "A box that stands for the number we do not know yet."],
     ],
     method: [
       "Decide what happens: things are put together, some are taken away, or two groups are compared.",
@@ -155,32 +143,33 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
   "open-number-line-to-120": {
     goal: "On a number line with only three labels, find the point at a given number or read the number at a marked point, up to 120.",
     intuition:
-      "A number line has tick marks that are the same distance apart. Often only a few ticks have numbers. You can still find every other number, because each tick adds the same amount to the one before it.",
+      "A number line is a row of numbers in order, with equal spaces between them. Tick marks are the short marks where the numbers sit, and only a few have their number written. A jump is a move from one tick to the next. Each jump to the right adds the same amount, called the step, and each jump to the left takes it away. A point is a dot that marks one spot, named with a letter. Labeled means the number is written. From a labeled tick, count by the step, such as 10, 20, 30 for a step of 10, to find the number at any tick.",
+    senses: { jump: "jump", jumps: "jump" },
     terms: [
+      "tick-mark",
       [
-        "tick mark",
-        "A short line on a number line that stands for one number.",
+        "tick-mark",
+        "The step is how much each tick mark adds to the one before it.",
       ],
-      ["step", "How much each tick mark adds to the one before it."],
     ],
     method: [
-      "Pick two labeled numbers next to each other. Count the steps between their ticks.",
-      "Find the size of one step: the difference of the labels divided by the number of steps.",
-      "Start at the labeled number nearest the point. Count steps and add the step size each time, or subtract if you go left.",
+      "Pick two labeled numbers next to each other. Count the jumps between their ticks.",
+      "Find the step. Try a step such as 1, 2, 5 or 10, and count by it that many times from the first label. If you land exactly on the next label, that is the step.",
+      "Start at the labeled number nearest the point. Count up by the step for each jump to the right, or count back by the step for each jump to the left.",
     ],
     watch:
-      "Do not count the labeled tick as a step. Count the jumps between ticks, and use the step size shown by the labels.",
+      "Do not count the labeled tick as a jump. Count the jumps between ticks, and use the step that the labels show.",
   },
   "open-number-line-to-1000": {
     goal: "On a number line with only three labels, find the point at a given number or read the number at a marked point, up to 1,000.",
     intuition:
       "A number line has tick marks that are the same distance apart. Often only three ticks have numbers. You can still find every other number, because each tick adds the same amount to the one before it.",
     terms: [
+      "tick-mark",
       [
-        "tick mark",
-        "A short line on a number line that stands for one number.",
+        "tick-mark",
+        "The step is how much each tick mark adds to the one before it.",
       ],
-      ["step", "How much each tick mark adds to the one before it."],
     ],
     method: [
       "Pick two labeled numbers next to each other. Count the steps between their ticks.",
@@ -194,11 +183,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Name shaded eighths, find how many equal parts make one whole, and describe shaded parts that go past one whole.",
     intuition:
       "A whole can be cut into equal parts. When there are 8 equal parts, each part is one eighth. Eight eighths fill one whole. If more than 8 eighths are shaded, you have shaded one whole and some more.",
-    terms: [
-      ["equal parts", "Parts that are the same size."],
-      ["eighth", "One of 8 equal parts of a whole."],
-      ["whole", "All of one bar, shape or object."],
-    ],
+    terms: ["equal-parts", "eighth", "whole"],
     method: [
       "Count all the equal parts in one whole. That number gives the name: 2 halves, 3 thirds, 4 fourths, 8 eighths.",
       "Count the shaded parts. Say the number and the name: 3 eighths.",
@@ -211,13 +196,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Given a square or rectangle cut into equal parts, say how many parts there are and name the shape of the parts.",
     intuition:
       "To decompose a shape means to cut it into smaller shapes. Count the parts the cuts make. Then name one part by counting its sides and corners.",
-    terms: [
-      ["decompose", "To break a shape into smaller shapes."],
-      [
-        "diagonal",
-        "A straight line from one corner of a shape to the opposite corner.",
-      ],
-    ],
+    terms: ["decompose", "diagonal"],
     method: [
       "Count the parts the cuts make.",
       "Pick one part and count its sides. Three sides: triangle. Four sides with all sides equal: square. Four sides with two longer sides: rectangle.",
@@ -231,8 +210,8 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     intuition:
       "To measure a length, you cover it with copies of a unit, end to end, with no gaps. A longer unit covers more each time, so you need fewer copies. A shorter unit covers less each time, so you need more copies.",
     terms: [
-      ["unit", "A length used to measure, such as a paper clip or a block."],
-      ["copies", "How many times the unit is laid end to end."],
+      "unit",
+      ["unit", "Copies counts how many times the unit is laid end to end."],
     ],
     method: [
       "Compare the size of one unit in each row. Which is longer?",
@@ -246,10 +225,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Estimate a length by repeating a benchmark length, and choose the reasonable estimate for a familiar object.",
     intuition:
       "A benchmark is a length you know well, such as a ruler that is 12 inches long. To estimate, compare a new length with the benchmark. If something is about 3 benchmarks long, repeat the benchmark length 3 times.",
-    terms: [
-      ["benchmark", "A length you know, used to estimate other lengths."],
-      ["estimate", "A careful guess that is close to the real amount."],
-    ],
+    terms: ["benchmark", "estimate"],
     method: [
       "Find the benchmark length in the problem or think of one you know.",
       "To estimate a length that is a number of benchmarks long, add the benchmark length that many times, or multiply.",
@@ -262,10 +238,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Read an analog clock to the minute and match it with a digital time, or find the clock that matches a digital time.",
     intuition:
       "The short hand shows the hour. The long hand shows the minutes after the hour. Each numeral is 5 minutes, and the small tick marks between numerals are single minutes.",
-    terms: [
-      ["minute hand", "The long hand. It shows the minutes after the hour."],
-      ["hour hand", "The short hand. It shows the hour it has passed."],
-    ],
+    terms: ["minute-hand", "hour-hand"],
     method: [
       "Read the hour: the numeral the short hand has passed.",
       "Read the minutes: count by fives to the numeral before the long hand, then count single tick marks.",
@@ -278,16 +251,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     goal: "Read a tally chart to find a count, a difference or a total, and choose the T-chart that organizes a list of answers.",
     intuition:
       "A tally chart records counts with marks. The T-chart has two columns, one for the name of each choice and one for its count. Tally marks come in groups of five: four lines and one line across them.",
-    terms: [
-      [
-        "tally mark",
-        "A line that stands for one count. A group of five has a line across four lines.",
-      ],
-      [
-        "T-chart",
-        "A chart with two columns and a line down the middle that lists each choice with its count.",
-      ],
-    ],
+    terms: ["tally-mark", "t-chart"],
     method: [
       "Count each group of five as 5. Add the lines left over.",
       "To find how many more, subtract the smaller count from the greater. For a total, add all the counts.",
@@ -301,10 +265,13 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     intuition:
       "Money you earn by working is income. Money someone gives you without work is a gift. You can spend money to buy something now, or save it to use later. A bank account has deposits that put money in and withdrawals that take money out.",
     terms: [
-      ["income", "Money earned by working."],
-      ["gift", "Something given to you without work, such as birthday money."],
-      ["producer", "A person who makes goods or services to sell."],
-      ["consumer", "A person who buys and uses goods or services."],
+      "income",
+      [
+        "income",
+        "A gift is something given to you without working for it, such as birthday money.",
+      ],
+      "producer",
+      "consumer",
     ],
     method: [
       "Ask what the question is about: pay for work, buying or keeping, putting in or taking out, making or buying.",
@@ -324,13 +291,13 @@ export const texasK2Principles: Record<string, string> = {
   "measurable-attribute-choice":
     "An attribute is a property of an object that can be measured with a unit. Length, capacity and weight are three such attributes, and each question about an amount asks about one of them.",
   "dot-group-compared-to-number":
-    "For whole numbers, exactly one is true: $a$ is more than $b$, $a$ is fewer than $b$, or $a$ is the same as $b$. Counting each object once gives the number of a group.",
+    "Take two numbers from the count 0, 1, 2, 3 and so on. Exactly one is true: the first is more than the second, fewer than the second, or the same as the second. Counting each object once gives how many are in a group.",
   "story-sentence-match-20":
     "A story that joins parts has the form part + part = whole. A story that takes away has the form whole − part = part. The unknown number can be in any position, and the sentence matches the story by what happens and where the unknown is.",
   "story-sentence-match-1000":
     "A story that joins parts has the form part + part = whole. A story that takes away has the form whole − part = part. The unknown number can be in any position, and the sentence matches the story by what happens and where the unknown is.",
   "open-number-line-to-120":
-    "On a number line the tick marks are equally spaced. If two ticks labeled $a$ and $b$ are $n$ steps apart, each step is $(b-a)\\div n$, and the number at $k$ steps from $a$ is $a+k\\cdot\\text{step}$.",
+    "On a number line the tick marks are equally spaced, so each jump to the right adds the same step. Adding the step once for each jump takes you from a label to the next label on its right. A point a few jumps right of a label is that label plus one step per jump. A point to the left is the label minus one step per jump.",
   "open-number-line-to-1000":
     "On a number line the tick marks are equally spaced. If two ticks labeled $a$ and $b$ are $n$ steps apart, each step is $(b-a)\\div n$, and the number at $k$ steps from $a$ is $a+k\\cdot\\text{step}$.",
   "eighths-and-parts-beyond-one":
@@ -475,37 +442,40 @@ export const texasK2Lessons: Lesson[] = [
     id: "dot-group-compared-to-number",
     title: "More, fewer or the same",
     summary:
-      "Count each group, then compare each count with the number. More is greater, fewer is less, and the same is equal.",
+      "More than means a bigger number. Fewer than means a smaller number. To compare a group with a number means to find whether the group has more, fewer or the same. First count the group, touching each dot once. The same as means the count and the number match.",
+    senses: { "more than": "more-than" },
     objectives: [
       "Count groups of up to 20 dots.",
       "Choose the group that has more than, fewer than or the same as a number.",
     ],
     intuitionTitle: "Count, then compare",
     intuition: [
-      "To compare a group with a number, first count the group. Touch each dot once so that you do not count any twice.",
-      "Then ask: is this count more than the number, fewer than the number or the same as the number?",
+      "Count the dots in a group. Touch each dot once, so you never count a dot twice.",
+      "Then ask: is my count more than the number, fewer than the number, or the same?",
+      "Say the number is 6. A group of 8 dots has more than 6, because 8 comes after 6 when you count. A group of 5 has fewer than 6, because 5 comes before 6. A group of 6 has the same as 6.",
     ],
     example: {
       prompt:
         "Group A has 5 dots, group B has 8 dots and group C has 6 dots. Which group has more dots than 6?",
       steps: [
-        "Compare each count with 6. 5 is fewer than 6. 8 is more than 6. 6 is the same as 6.",
+        "Each group is already counted: 5, 8 and 6 dots.",
+        "Compare each count with 6. You say 5 before 6, so 5 is fewer. You say 8 after 6, so 8 is more. 6 is the same as 6.",
         "Only group B has more than 6.",
       ],
       answer: "Group B.",
     },
     methodTitle: "Check every group",
     method: [
-      "Count the dots in each group and say each count.",
-      "Check each count against the number. Skip the groups that are not what the question asks.",
+      "Count the dots in each group, and say each count.",
+      "Compare each count with the number in the question. Skip the groups that do not fit what the question asks.",
     ],
     formalTitle: "Comparing numbers",
     formal: [
-      "For two whole numbers, exactly one is true: the first is more than the second, fewer than the second, or the same as the second.",
+      "Take two numbers from the count 0, 1, 2, 3 and so on. Exactly one of these is true: the first is more than the second, fewer than the second, or the same as the second.",
     ],
     pitfalls: [
       "A group with the same number is not more and not fewer.",
-      "Count each dot once. Pushing counted dots aside can help.",
+      "Count each dot once. Go in order, row by row, so you do not lose your place.",
     ],
     parentGuide:
       "Put out 7 coins. Ask the learner to make a group with more than 7 and a group with fewer than 7.",
@@ -596,38 +566,42 @@ export const texasK2Lessons: Lesson[] = [
     id: "open-number-line-to-120",
     title: "Open number lines to 120",
     summary:
-      "Only a few ticks are labeled. Find how much each tick adds, then count from a labeled number to the point.",
+      "A number line is a row of numbers in order, with equal spaces between them. Tick marks are the short marks where the numbers sit. Only a few ticks are labeled, which means their number is written. Moving one tick to the right adds the same amount each time, called the step. Find the step. Then start at a labeled tick and count the jumps, the moves from one tick to the next.",
+    senses: { jump: "jump", jumps: "jump" },
     objectives: [
       "Read the number at a marked point on a number line labeled at three numbers.",
       "Find the point at a given number.",
     ],
     intuitionTitle: "Equal steps between the labels",
     intuition: [
-      "A number line shows numbers in order. The tick marks are the same distance apart, so each tick adds the same amount to the one before it. Only a few ticks have numbers.",
-      "You can find any number by counting steps from a labeled tick.",
+      "The tick marks are evenly spaced. So each jump from one tick to the next adds the same amount. That amount is the step.",
+      "Say 0 and 50 are labeled, with 5 jumps between them. The 5 equal jumps must add up to 50. Count by 10 five times: 10, 20, 30, 40, 50. That lands on 50, so each step is 10.",
+      "A point is a dot that marks one spot, named with a letter such as $P$. Moving right adds one step for each jump. Moving left takes one step away for each jump. This way you can find the number at any tick.",
     ],
     example: {
       prompt:
         "A number line goes from 0 to 100 with a tick for every 10. Only 0, 50 and 100 are labeled. What number is at point $P$, 3 ticks to the right of 50?",
       steps: [
-        "From 0 to 50 there are 5 steps. Each step is 50 ÷ 5 = 10.",
-        "$P$ is 3 steps right of 50: 50 + 10 + 10 + 10 = 80.",
+        "Count the jumps from 0 to 50: there are 5. Counting by 10 five times goes 10, 20, 30, 40, 50, so each step is 10.",
+        "$P$ is 3 jumps to the right of 50. Moving right adds, so count up by 10 three times: 60, 70, 80.",
+        "We can write it as 50 + 10 + 10 + 10 = 80.",
       ],
       answer: "80.",
     },
     methodTitle: "Find the step size first",
     method: [
-      "Count the steps between two labels. Divide the difference of the labels by the number of steps.",
-      "Count from the labeled number nearest the point, adding one step each time you move right, or subtracting each time you move left.",
-      "To place a number, count steps from a label until you reach that number, then find the point there.",
+      "Pick two labels next to each other. Count the jumps between their ticks.",
+      "Find the step. Try a step such as 1, 2, 5 or 10, and count by it that many times from the first label. If you land exactly on the next label, that is the step.",
+      "Start at the label nearest the point. Count up by the step for each jump to the right. Count back by the step for each jump to the left.",
+      "To place a number, count by the step from a label until you reach that number. The point there is the answer.",
     ],
     formalTitle: "Equal spacing",
     formal: [
-      "On a number line equal distances stand for equal changes in value. If labels $a$ and $b$ are $n$ steps apart, each step is $(b-a)\\div n$.",
+      "On a number line, equal spaces stand for equal steps between the numbers. Say two labels are some jumps apart. Each jump to the right adds the same step. So adding the step once for each jump takes you from the smaller label to the larger one.",
     ],
     pitfalls: [
       "Count the jumps between ticks, not the ticks themselves.",
-      "Work out the step size from the labels. It is not always 1 or 10.",
+      "Work out the step from the labels. It is not always 1 or 10.",
     ],
     parentGuide:
       "Draw a line from 0 to 100 and label 0, 50 and 100. Ask the learner to find where 30 and 70 go.",

@@ -233,8 +233,10 @@ function similarCase(r: Random): Case {
       prompt,
       answer,
       explanation: [
-        `$${names[0][known]}$ matches $${names[1][known]}$, so the scale factor from triangle ${reverse ? "$DEF$ to $ABC$" : "$ABC$ to $DEF$"} is ${kn} ÷ ${kd} = ${kText}.`,
-        `$${names[reverse ? 0 : 1][asked]}$ matches $${names[reverse ? 1 : 0][asked]}$, which is ${frac(len(full, asked))}.`,
+        `Similar triangles have the same shape: matching angles are equal, and every side is multiplied by the same number, the scale factor.`,
+        `The order of the letters tells which sides match: $A$, $B$, $C$ go with $D$, $E$, $F$. So $${names[0][known]}$ matches $${names[1][known]}$.`,
+        `The scale factor from triangle ${reverse ? "$DEF$ to $ABC$" : "$ABC$ to $DEF$"} is one matching length divided by the other: ${kn} ÷ ${kd} = ${kText}.`,
+        `$${names[reverse ? 0 : 1][asked]}$ matches $${names[reverse ? 1 : 0][asked]}$, which is ${frac(len(full, asked))}. Multiply it by the scale factor.`,
         `$${names[reverse ? 0 : 1][asked]}$ = ${frac(len(full, asked))} × ${kText} = ${frac(answer)}.`,
       ],
       hint: `$${names[0][known]}$ and $${names[1][known]}$ are matching sides: divide ${kn} by ${kd} for the scale factor, then apply it to the side that matches $${names[reverse ? 0 : 1][asked]}$.`,
@@ -347,11 +349,14 @@ function similarCase(r: Random): Case {
       }`,
       answer,
       explanation: [
-        "$DE$ ∥ $BC$ makes the corresponding angles at $D$ and $B$ equal, and at $E$ and $C$. With the shared angle $A$, triangle $ADE$ ~ triangle $ABC$.",
-        `Matching sides $AD$ and $AB$ give the scale factor from $ABC$ to $ADE$: ${ad} ÷ ${ab} = ${frac(q(ad, ab))}. Note $AB = AD + DB = ${ad} + ${db} = ${ab}$, not ${db}.`,
+        "The symbol ∥ means parallel: the segments never meet. Where $AB$ crosses the parallel segments, the corresponding angles (in matching positions) at $D$ and $B$ are equal. So are the angles at $E$ and $C$.",
+        "Angle $A$ is in both triangles too. Equal angles make triangle $ADE$ similar to triangle $ABC$: a smaller copy with the same shape.",
+        `Match the small triangle's side $AD$ with the big triangle's whole side $AB$, not the piece $DB$. $AB = AD + DB = ${ad} + ${db} = ${ab}$.`,
+        `The scale factor from $ABC$ down to $ADE$ is ${ad} ÷ ${ab} = ${frac(q(ad, ab))}. Every side of $ADE$ is that fraction of the matching side of $ABC$.`,
         askBC
-          ? `$DE = BC × ${frac(q(ad, ab))}$, so $BC = ${de} ÷ ${frac(q(ad, ab))} = ${frac(answer)}$.`
+          ? `$DE = BC × ${frac(q(ad, ab))}$, so undo the multiplication by dividing: $BC = ${de} ÷ ${frac(q(ad, ab))} = ${frac(answer)}$.`
           : `$DE = ${frac(bc)} × ${frac(q(ad, ab))} = ${frac(answer)}$.`,
+        askBC ? `So $BC$ is ${frac(answer)}.` : `So $DE$ is ${frac(answer)}.`,
       ],
       hint: `Triangle $ADE$ is the small copy of $ABC$. Its side $AD = ${ad}$ matches the whole side $AB = ${ad} + ${db}$, not $DB$.`,
       tags: ["splitter", askBC ? "ask-base" : "ask-part"],
@@ -384,9 +389,11 @@ function similarCase(r: Random): Case {
       prompt: `At the same time of day, a person ${h} feet tall casts a shadow ${s} feet long, and a tree casts a shadow ${S} feet long. How tall is the tree, in feet?`,
       answer,
       explanation: [
-        "The sun's rays meet the ground at the same angle for both, and both stand at right angles to the ground, so the two right triangles are similar.",
-        `Shadows match shadows: the tree's triangle is ${S} ÷ ${s} = ${frac(k)} times as large.`,
-        `Tree height = ${h} × ${frac(k)} = ${frac(answer)} feet.`,
+        "The person and the tree each make a right triangle: height up, shadow along the ground, and a sun ray as the slanted side.",
+        "At the same moment the sun's rays hit the ground at the same angle, and both stand straight up. Two matching angles make the triangles similar: the same shape.",
+        "In similar triangles, every side is scaled by the same number. Shadow matches shadow and height matches height.",
+        `The tree's shadow is ${S} ÷ ${s} = ${frac(k)} times the person's, so its triangle is ${frac(k)} times as large.`,
+        `Tree height = ${h} × ${frac(k)} = ${frac(answer)}. The tree is ${frac(answer)} feet tall.`,
       ],
       hint: `The person's height and shadow, ${h} and ${s}, are in the same ratio as the tree's height and its ${S}-foot shadow.`,
       tags: ["shadow"],
@@ -427,11 +434,13 @@ function similarCase(r: Random): Case {
     prompt: `Two similar triangles have matching sides of length ${small} and ${big}. The smaller triangle has ${areaKind ? "an area" : "a perimeter"} of ${known}. What is the ${areaKind ? "area" : "perimeter"} of the larger triangle?`,
     answer,
     explanation: [
+      "Similar triangles have the same shape, with every side multiplied by one number, the scale factor.",
       `The scale factor from the smaller triangle to the larger is ${big} ÷ ${small} = ${frac(k)}.`,
       areaKind
-        ? `Every length grows by ${frac(k)}, and area is length times length, so area grows by ${frac(k)} × ${frac(k)} = ${frac(mul(k, k))}.`
-        : "A perimeter is a sum of lengths, so it grows by the same factor.",
+        ? `Area is length times length. Both lengths grow by ${frac(k)}, so area grows by ${frac(k)} × ${frac(k)} = ${frac(mul(k, k))}, the scale factor squared.`
+        : "A perimeter is the distance around, a sum of side lengths. Each side grows by the scale factor, so the sum does too.",
       `${areaKind ? "Area" : "Perimeter"}: ${known} × ${frac(areaKind ? mul(k, k) : k)} = ${frac(answer)}.`,
+      `The larger triangle's ${areaKind ? "area" : "perimeter"} is ${frac(answer)}.`,
     ],
     hint: areaKind
       ? `The sides scale by ${big} ÷ ${small}. Area scales by that factor squared, not by the factor itself.`
@@ -494,8 +503,9 @@ function dilationCase(r: Random): Case {
         prompt: `A dilation with center $O$ and scale factor ${frac(k)} maps $A$ to $A'$ and $B$ to $B'$. $AB = ${L}$. What is $A'B'$?`,
         answer: image,
         explanation: [
-          `A dilation multiplies the distance between any two points by the scale factor, ${frac(k)}.`,
-          `$A'B' = ${L} × ${frac(k)} = ${frac(image)}$.`,
+          `A dilation resizes a figure from a fixed point, the center. Every distance in the figure is multiplied by the scale factor.`,
+          `So the image segment $A'B'$ is ${frac(k)} times as long as $AB$, wherever the center is.`,
+          `$A'B' = ${L} × ${frac(k)} = ${frac(image)}$. The image segment has length ${frac(image)}.`,
         ],
         hint: `Every length in the image is ${frac(k)} times the matching length, whatever the center. Apply that to $AB = ${L}$.`,
         tags: ["image-length", kv < 1 ? "reduction" : "enlargement"],
@@ -506,11 +516,12 @@ function dilationCase(r: Random): Case {
       prompt: `A dilation with center $O$ maps segment $AB$, of length ${L}, to segment $A'B'$, of length ${frac(image)}. What is the scale factor?`,
       answer: k,
       explanation: [
-        "The scale factor is the image length divided by the original length.",
+        "A dilation resizes a figure from a fixed point, the center. Every distance in the figure is multiplied by the scale factor.",
+        "So the scale factor is the image length divided by the original length.",
         `${frac(image)} ÷ ${L} = ${frac(k)}.`,
         kv < 1
-          ? `The scale factor ${frac(k)} is less than 1, so the dilation shrinks the segment.`
-          : `The scale factor ${frac(k)} is greater than 1, so the dilation enlarges the segment.`,
+          ? `It is less than 1, so the dilation shrinks the segment. The scale factor is ${frac(k)}.`
+          : `It is greater than 1, so the dilation enlarges the segment. The scale factor is ${frac(k)}.`,
       ],
       hint: `Compare the image to the original: how many times ${L} is ${frac(image)}?`,
       tags: ["scale-factor", kv < 1 ? "reduction" : "enlargement"],
@@ -543,9 +554,11 @@ function dilationCase(r: Random): Case {
       prompt: `A dilation with center $C${pt(C)}$ and scale factor ${frac(k)} maps $P${pt(P)}$ to $P'$. What is the $${name}$-coordinate of $P'$?`,
       answer,
       explanation: [
-        `The step from $C$ to $P$ is ${pt([P[0] - C[0], P[1] - C[1]])}.`,
-        `The dilation multiplies that step by ${frac(k)}: (${frac(mul(k, q(P[0] - C[0])))}, ${frac(mul(k, q(P[1] - C[1])))}).`,
-        `Add it to $C$: the $${name}$-coordinate is $${frac(q(c))} ${p - c < 0 ? "−" : "+"} ${frac(mul(k, q(Math.abs(p - c))))} = ${frac(answer)}$.`,
+        `A dilation resizes a figure from a fixed point, the center. Every distance in the figure is multiplied by the scale factor. Each point slides along the line from the center through it.`,
+        `So measure from the center, not the origin. The step from $C$ to $P$ is ${pt([P[0] - C[0], P[1] - C[1]])}: across, then up or down.`,
+        `Multiply that step by ${frac(k)}: (${frac(mul(k, q(P[0] - C[0])))}, ${frac(mul(k, q(P[1] - C[1])))}).`,
+        `Start at $C$ and take the new step: $${frac(q(c))} ${p - c < 0 ? "−" : "+"} ${frac(mul(k, q(Math.abs(p - c))))} = ${frac(answer)}$.`,
+        `The $${name}$-coordinate of $P'$ is ${frac(answer)}.`,
       ],
       hint: `Measure the step from the center $C$ to $P$, not from the origin. Multiply that step by ${frac(k)}, then add it to $C$.`,
       tags: ["center", `axis-${name}`],
@@ -574,8 +587,10 @@ function dilationCase(r: Random): Case {
       prompt: `Line ℓ has slope ${frac(m)} and does not pass through the center of a dilation with scale factor ${frac(k)}. What is the slope of the image of ℓ?`,
       answer: m,
       explanation: [
-        "A dilation maps a line that misses its center to a parallel line: every step along the line is multiplied by the same factor, rise and run alike.",
-        `Multiplying rise and run by ${frac(k)} leaves rise ÷ run unchanged, so the slope is still ${frac(m)}.`,
+        "A dilation resizes from a center, multiplying every distance by the scale factor. It changes sizes but not directions.",
+        "Slope is rise ÷ run, the steepness of a line. A step along the line has its rise and its run both multiplied by the same factor.",
+        `Multiplying the top and bottom of a fraction by ${frac(k)} leaves its value unchanged. So rise ÷ run stays ${frac(m)}.`,
+        `The image line is parallel to ℓ, and its slope is ${frac(m)}.`,
       ],
       hint: `Under a dilation by ${frac(k)}, both the rise and the run of any step along ℓ are multiplied by ${frac(k)}. What happens to their ratio?`,
       tags: ["slope"],
@@ -587,8 +602,9 @@ function dilationCase(r: Random): Case {
     prompt: `Triangle $ABC$ has $\\angle B = ${angle}°$. A dilation with scale factor ${frac(k)} maps it to triangle $A'B'C'$. What is the measure of $\\angle B'$, in degrees?`,
     answer: q(angle),
     explanation: [
-      "A dilation multiplies lengths but keeps the shape: it maps each angle to an angle of the same measure.",
-      `$\\angle B' = \\angle B = ${angle}°$.`,
+      "A dilation resizes a figure from a center: lengths are multiplied by the scale factor, but the shape stays the same.",
+      "Keeping the shape means keeping every angle. Stretching both sides of an angle by the same factor does not open or close it.",
+      `So $\\angle B' = \\angle B = ${angle}°$. Angle $B'$ measures ${angle} degrees.`,
     ],
     hint: `A dilation by ${frac(k)} changes lengths. Does it change the angle between two sides at $B$?`,
     tags: ["angle"],
@@ -621,7 +637,9 @@ function specialCase(r: Random): Case {
         prompt: `A 45°-45°-90° triangle has legs of length ${a}. Its hypotenuse is c√2. What is $c$?`,
         answer: q(a),
         explanation: [
-          "The two legs are equal, so the hypotenuse is $\\sqrt{\\text{leg}^2 + \\text{leg}^2} = \\text{leg} \\times \\sqrt{2}$.",
+          "A 45°-45°-90° triangle is a right triangle with two equal legs, the sides that form the right angle. The hypotenuse is the longest side, across from the right angle.",
+          `The Pythagorean theorem says leg² + leg² = hypotenuse². Here that is ${a}² + ${a}² = 2 × ${a}².`,
+          `Take the square root: the hypotenuse is $\\sqrt{2 \\times ${a}^2} = ${a}\\sqrt{2}$. In every 45°-45°-90° triangle, the hypotenuse is a leg times $\\sqrt{2}$.`,
           `The hypotenuse is ${a}√2, so c = ${a}.`,
         ],
         hint: `With legs ${a} and ${a}, the Pythagorean theorem gives hypotenuse² = ${a}² + ${a}² = 2 × ${a}². Take the square root.`,
@@ -634,8 +652,10 @@ function specialCase(r: Random): Case {
         prompt: `A 45°-45°-90° triangle has a hypotenuse of length ${a}√2. How long is each leg?`,
         answer: q(a),
         explanation: [
-          "In a 45°-45°-90° triangle, hypotenuse = leg $\\times  \\sqrt 2$.",
-          `${a}√2 ÷ √2 = ${a}, so each leg is ${a}.`,
+          "A 45°-45°-90° triangle is a right triangle with two equal legs. Its hypotenuse, the longest side, is always a leg times √2.",
+          `This comes from the Pythagorean theorem: leg² + leg² = 2 × leg², and the square root of that is the leg times $\\sqrt{2}$.`,
+          `To go back from the hypotenuse to a leg, divide by √2: ${a}√2 ÷ √2 = ${a}.`,
+          `Each leg is ${a}.`,
         ],
         hint: `The hypotenuse is a leg times √2. Undo that multiplication on ${a}√2.`,
         tags: ["45", "hypotenuse-to-leg"],
@@ -647,8 +667,10 @@ function specialCase(r: Random): Case {
       prompt: `A 45°-45°-90° triangle has a hypotenuse of length ${h}. Each leg is c√2. What is $c$?`,
       answer: q(a),
       explanation: [
-        `Each leg is the hypotenuse divided by √2: ${h}/√2.`,
-        `Multiply by √2/√2: ${h}√2/2 = ${a}√2, so c = ${a}.`,
+        "A 45°-45°-90° triangle has two equal legs, and its hypotenuse is a leg times √2.",
+        `So a leg is the hypotenuse divided by √2: ${h}/√2.`,
+        `A root left in the bottom is usually cleared. Multiply the top and bottom by √2, which is the same as multiplying by 1: ${h}√2/2 = ${a}√2.`,
+        `Each leg is ${a}√2, so c = ${a}.`,
       ],
       hint: `A leg is ${h} ÷ √2. Rationalize: multiply the top and bottom by √2.`,
       tags: ["45", "rationalize"],
@@ -691,8 +713,9 @@ function specialCase(r: Random): Case {
       prompt: `In a 30°-60°-90° triangle, the shorter leg has length ${a}. How long is the hypotenuse?`,
       answer: q(2 * a),
       explanation: [
-        "The hypotenuse is twice the shorter leg, the side opposite the 30° angle.",
-        `${a} × 2 = ${2 * a}.`,
+        "A 30°-60°-90° triangle is half of an equilateral triangle, a triangle with three equal sides. Cutting it in half makes the shorter leg half a full side.",
+        "So the hypotenuse, a full side, is twice the shorter leg. The shorter leg is the one across from the 30° angle.",
+        `${a} × 2 = ${2 * a}. The hypotenuse is ${2 * a}.`,
       ],
       hint: `The shorter leg, ${a}, is opposite 30°. Halve an equilateral triangle to see why the hypotenuse is twice it.`,
       tags: ["30", "short-to-hypotenuse"],
@@ -703,6 +726,7 @@ function specialCase(r: Random): Case {
       prompt: `In a 30°-60°-90° triangle, the hypotenuse has length ${2 * a}. The longer leg is c√3. What is $c$?`,
       answer: q(a),
       explanation: [
+        "A 30°-60°-90° triangle is half of an equilateral triangle. Its sides follow the pattern 1 : √3 : 2 (short leg : long leg : hypotenuse).",
         `The shorter leg is half the hypotenuse: ${2 * a} ÷ 2 = ${a}.`,
         `The longer leg is the shorter leg times √3: ${a}√3, so c = ${a}.`,
       ],
@@ -715,8 +739,9 @@ function specialCase(r: Random): Case {
       prompt: `In a 30°-60°-90° triangle, the longer leg has length ${a}√3. How long is the hypotenuse?`,
       answer: q(2 * a),
       explanation: [
-        `The longer leg is the shorter leg times √3, so the shorter leg is ${a}.`,
-        `The hypotenuse is twice the shorter leg: ${2 * a}.`,
+        "A 30°-60°-90° triangle is half of an equilateral triangle. Its sides follow the pattern 1 : √3 : 2 (short leg : long leg : hypotenuse).",
+        `The longer leg is the shorter leg times √3. The longer leg is ${a}√3, so the shorter leg is ${a}.`,
+        `The hypotenuse is twice the shorter leg: ${a} × 2 = ${2 * a}.`,
       ],
       hint: `Divide ${a}√3 by √3 for the shorter leg, then double it.`,
       tags: ["30", "long-to-hypotenuse"],
@@ -727,8 +752,10 @@ function specialCase(r: Random): Case {
       prompt: `In a 30°-60°-90° triangle, the longer leg has length ${3 * a}. The shorter leg is c√3. What is $c$?`,
       answer: q(a),
       explanation: [
+        "A 30°-60°-90° triangle is half of an equilateral triangle. Its sides follow the pattern 1 : √3 : 2 (short leg : long leg : hypotenuse).",
         `The shorter leg is the longer leg divided by √3: ${3 * a}/√3.`,
-        `Multiply by √3/√3: ${3 * a}√3/3 = ${a}√3, so c = ${a}.`,
+        `Clear the root from the bottom: multiply the top and bottom by √3, which is multiplying by 1. ${3 * a}√3/3 = ${a}√3.`,
+        `The shorter leg is ${a}√3, so c = ${a}.`,
       ],
       hint: `The shorter leg is ${3 * a} ÷ √3. Rationalize the denominator.`,
       tags: ["30", "rationalize"],
@@ -828,6 +855,8 @@ function trigCase(r: Random): Case {
       answer: exact[fn],
       explanation: [
         ...(third ? [third] : []),
+        "In a right triangle, the side opposite an angle is across from it, the adjacent side touches it, and the hypotenuse is the longest side, across from the right angle.",
+        "Sine is opposite ÷ hypotenuse, cosine is adjacent ÷ hypotenuse, and tangent is opposite ÷ adjacent.",
         `For angle $${at}$, the ${parts[fn][0]} side is ${num} and the ${parts[fn][1]} is ${den}.`,
         `$\\${fn} ${at} = \\frac{\\text{${parts[fn][0]}}}{\\text{${parts[fn][1]}}}$ = ${ratio(num, den)}.`,
       ],
@@ -853,8 +882,9 @@ function trigCase(r: Random): Case {
       prompt: `In right triangle $ABC$, the right angle is at $C$ and $AB = ${hyp}$. ${math(`${f} ${at} = ${frac(ratioV)}`)}. How long is the side ${f === "sin" ? "opposite" : "adjacent to"} angle $${at}$?`,
       answer,
       explanation: [
-        `${math(`${f} ${at}`)} = ${parts[f][0]} ÷ hypotenuse, so ${parts[f][0]} = hypotenuse × ${math(`${f} ${at}`)}.`,
-        `${hyp} × ${frac(ratioV)} = ${num}.`,
+        "The hypotenuse is the longest side, across from the right angle. The other two sides are the legs: opposite the angle (across from it) or adjacent (touching it).",
+        `${math(`${f} ${at}`)} = ${parts[f][0]} ÷ hypotenuse. Multiply both sides by the hypotenuse: ${parts[f][0]} = hypotenuse × ${math(`${f} ${at}`)}.`,
+        `${hyp} × ${frac(ratioV)} = ${num}. The side ${parts[f][0]} to angle $${at}$ is ${num} long.`,
       ],
       hint: `${math(`${f} ${at}`)} compares the ${parts[f][0]} side to the hypotenuse, ${hyp}. Take ${frac(ratioV)} of ${hyp}.`,
       tags: ["side-from-ratio", f],
@@ -870,7 +900,8 @@ function trigCase(r: Random): Case {
     prompt: `A ${hyp}-foot ladder leans against a vertical wall. Its foot is ${x} feet from the wall, and its top is ${y} feet above the ground. What is ${math(`${f} θ`)}, where θ is the angle between the ladder and the ground?`,
     answer: v,
     explanation: [
-      `The ladder is the hypotenuse, ${hyp}. From θ at the foot, the height ${y} is opposite and the ground distance ${x} is adjacent.`,
+      "In a right triangle, the hypotenuse is the longest side, across from the right angle. Sine is opposite ÷ hypotenuse, cosine is adjacent ÷ hypotenuse, and tangent is opposite ÷ adjacent.",
+      `The ladder is the slanted side, the hypotenuse: ${hyp}. From θ (theta) at the foot, the height ${y} is opposite and the ground distance ${x} is adjacent.`,
       `${math(`${f} θ`)} = ${f === "sin" ? `${y}/${hyp}` : f === "cos" ? `${x}/${hyp}` : `${y}/${x}`}${frac(v) === (f === "sin" ? `${y}/${hyp}` : f === "cos" ? `${x}/${hyp}` : `${y}/${x}`) ? "" : ` = ${frac(v)}`}.`,
     ],
     hint: `At the foot of the ladder, the wall height ${y} is opposite θ, the ground distance ${x} is adjacent, and the ladder ${hyp} is the hypotenuse.`,
@@ -897,7 +928,8 @@ function complementaryCase(r: Random): Case {
       prompt: `${math(`${f} ${a}° = ${g} x°`)}, where $x$ is between 0 and 90. What is $x$?`,
       answer: q(90 - a),
       explanation: [
-        "In a right triangle the two acute angles add to 90°, and the side opposite one is adjacent to the other. So the sine of an angle is the cosine of its complement.",
+        "In a right triangle the two acute (sharp) angles add to 90°. Two angles that add to 90° are complements.",
+        "The side opposite one acute angle is adjacent to the other. So the sine of an angle equals the cosine of its complement.",
         `${math(`${f} ${a}° = ${g}(90 − ${a})°`)}, so x = 90 − ${a} = ${90 - a}.`,
       ],
       hint: `${f} of an angle equals ${g} of its complement, the angle that adds with ${a}° to 90°.`,
@@ -925,9 +957,9 @@ function complementaryCase(r: Random): Case {
       prompt: `${math(`sin(${term(p, b)})° = cos(${term(s, c)})°`)}, and both angles are acute. What is $x$?`,
       answer: q(x),
       explanation: [
-        "For acute angles, the sine of one equals the cosine of the other exactly when the angles add to 90°.",
+        "In a right triangle, the side opposite one acute angle is adjacent to the other. So for acute angles, the sine of one equals the cosine of the other exactly when the angles add to 90°.",
         `(${term(p, b)}) + (${term(s, c)}) = 90, so ${p + s}x ${b + c < 0 ? "−" : "+"} ${Math.abs(b + c)} = 90.`,
-        `${p + s}x = ${90 - b - c}, so x = ${x}.`,
+        `${b + c === 0 ? "" : `${b + c < 0 ? "Add" : "Subtract"} ${Math.abs(b + c)} on both sides: ${p + s}x = ${90 - b - c}. `}Divide by ${p + s}: x = ${x}.`,
       ],
       hint: `The two angles, ${term(p, b)} and ${term(s, c)}, must be complementary. Set their sum equal to 90.`,
       tags: ["equation"],
@@ -950,8 +982,9 @@ function complementaryCase(r: Random): Case {
       prompt: `In right triangle $ABC$, the right angle is at $C$, and ${math(`${given} = ${frac(v)}`)}. Find ${math(asked)}.`,
       answer: v,
       explanation: [
-        "$A$ and $B$ are the two acute angles of a right triangle, so A + B = 90°.",
-        "The side opposite $A$ is the side adjacent to $B$, and both ratios divide it by the hypotenuse: $\\sin A = \\cos B$.",
+        "$A$ and $B$ are the two acute (sharp) angles of a right triangle, so A + B = 90°.",
+        "Sine is opposite ÷ hypotenuse, and cosine is adjacent ÷ hypotenuse.",
+        "The side opposite $A$ is the side adjacent to $B$. Both ratios divide that same side by the hypotenuse, so $\\sin A = \\cos B$ and $\\cos A = \\sin B$.",
         `${math(`${asked} = ${frac(v)}`)}.`,
       ],
       hint: `${math(`${given} = ${frac(v)}`)} compares one leg with the hypotenuse. Find that leg: it is opposite one acute angle and next to the other.`,
@@ -983,8 +1016,9 @@ function complementaryCase(r: Random): Case {
     prompt: `For an acute angle $A$, ${math(`sin A = ${frac(v2)}`)}. Find ${math("cos(90° − A)")}.`,
     answer: v2,
     explanation: [
-      "90° − $A$ is the complement of $A$: the other acute angle in a right triangle with angle $A$.",
-      `The cosine of the complement is the sine of the angle, so ${math(`cos(90° − A) = sin A = ${frac(v2)}`)}.`,
+      "90° − $A$ is the complement of $A$, the angle that adds with it to 90°. In a right triangle with angle $A$, it is the other acute angle.",
+      "The side opposite $A$ is adjacent to that other angle. Sine uses the opposite side and cosine uses the adjacent side, both over the hypotenuse.",
+      `So the cosine of the complement equals the sine of $A$: ${math(`cos(90° − A) = sin A = ${frac(v2)}`)}.`,
     ],
     hint: `$A$ and 90° − $A$ are the two acute angles of one right triangle. The side opposite $A$, which gives ${math(`sin A = ${frac(v2)}`)}, is adjacent to the other angle.`,
     tags: ["cofunction"],

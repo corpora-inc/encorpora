@@ -27,7 +27,11 @@ import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { choose } from "./ui-controls";
 import { startTopic } from "./ui-practice";
-import { assertPhoneLandscapeSmoke } from "./ui-viewports";
+import {
+  assertPhoneLandscapeSmoke,
+  assertProblemReachable,
+  problemInView,
+} from "./ui-viewports";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
 if (!database) throw new Error("AMP_TEST_DATABASE_URL is required");
@@ -371,6 +375,14 @@ try {
           "The client declares structured work",
         );
         await page.evaluate(() => document.fonts.ready.then(() => undefined));
+        if (width === 768 || width === 1024) {
+          await assertProblemReachable(page, tag);
+          assert.deepEqual(
+            await problemInView(page, { allowStructuredWorkScroll: true }),
+            [],
+            `${tag}: the question and figure fit before scrolling the answer`,
+          );
+        }
         await observeShifts(page);
         const before = await geometry(page);
         assert.ok(before.overflow <= 0, `${tag}: overflow ${before.overflow}`);

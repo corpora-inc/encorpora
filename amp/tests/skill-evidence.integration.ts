@@ -268,3 +268,76 @@ test(
       );
     }),
 );
+test(
+  "paper marks: the SQL projection matches the TypeScript one; a mark is practice, not independent credit",
+  enabled,
+  async () =>
+    fixture(async (pool) => {
+      await pool.query(await sql("0008-skill-evidence.sql"));
+      await pool.query(await sql("0010-starting-point.sql"));
+      await pool.query(await sql("0079-paper-evidence.sql"));
+      const mark = (o: Outcome): Outcome => ({
+        ...o,
+        evidenceSource: "paper",
+        evidenceWeight: 0.5,
+      });
+      const day = 86400000;
+      const sequence: Outcome[] = [
+        outcome(1),
+        outcome(2),
+        outcome(3),
+        mark(
+          outcome(4, "multiplication-facts", true, false, origin + 3.5 * day),
+        ),
+        outcome(5),
+        outcome(6),
+        mark(
+          outcome(7, "multiplication-facts", false, false, origin + 7.5 * day),
+        ),
+        outcome(8, "statistics-mean"),
+        mark(outcome(9, "statistics-mean", true)),
+        { ...outcome(10), evidenceSource: "paper" as const },
+      ];
+      const project = (rows: { outcome: Outcome; sequence: string }[]) =>
+        projectSkillEvidence(
+          rows.map((row) => ({
+            ...row.outcome,
+            ingestionSequence: row.sequence,
+          })),
+        ).sort((a, b) => a.skillId.localeCompare(b.skillId));
+      const facts = async () =>
+        (
+          await pool.query(
+            "SELECT outcome,evidence_sequence::text AS sequence FROM amp_attempts WHERE learner_id='child' ORDER BY evidence_sequence",
+          )
+        ).rows;
+      let previous: Record<string, unknown> | undefined;
+      for (const o of sequence) {
+        await insert(pool, o);
+        assert.deepEqual(await states(pool), project(await facts()));
+        const facts3 = (await states(pool)).find(
+          (s) => s.skillId === "multiplication-facts",
+        );
+        if (o.id === sequence[3]!.id) {
+          // A right mark adds practice but no independent credit, and keeps
+          // the review schedule.
+          assert.equal(facts3.attempts, 4);
+          assert.equal(facts3.independentCorrect, 3);
+          assert.equal(facts3.creditedRetrievals, previous!.creditedRetrievals);
+          assert.equal(facts3.reviewDueAt, previous!.reviewDueAt);
+          assert.equal(facts3.recentIndependentCorrect, 3);
+        }
+        if (o.id === sequence[6]!.id) {
+          // A "not yet" mark is a miss.
+          assert.equal(facts3.creditedRetrievals, 0);
+        }
+        previous = facts3;
+      }
+      // An exactly graded paper answer counts like an app answer.
+      const last = (await states(pool)).find(
+        (s) => s.skillId === "multiplication-facts",
+      );
+      assert.equal(last.independentCorrect, 6);
+      assert.equal(last.creditedRetrievals, 1);
+    }),
+);

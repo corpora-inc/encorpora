@@ -99,6 +99,12 @@ function decimalModel(r: (lo: number, hi: number) => number): DecimalModel {
   return { a, b, c, d: b + (a - c) * x, x };
 }
 const dec = (t: number) => roundText(t / 10, 1);
+/** A tenths value without a trailing ".0" (10 → "1", 7 → "0.7"). */
+const plainDec = (t: number) => dec(t).replace(/\.0$/, "");
+const moveX = (c: number) =>
+  c < 0
+    ? `Add $${plainDec(-c)}x$ to both sides`
+    : `Subtract $${plainDec(c)}x$ from both sides`;
 export const decimalBothSides = chainFamily({
   template: decimalBothSidesTemplate,
   axes: decimalAxes,
@@ -119,11 +125,11 @@ export const decimalBothSides = chainFamily({
         { label: xv(m.x, 1), correct: true },
         {
           label: xv(dd, m.a + m.c),
-          feedback: `To collect the $x$ terms, subtract $${dec(m.c)}x$ from both sides; adding it changes the coefficient to $${dec(m.a + m.c)}$.`,
+          feedback: `This moved the $x$ term with the wrong sign, giving $${dec(m.a + m.c)}x$. To clear $${dec(m.c)}x$ from the right, do its opposite: ${m.c < 0 ? "add" : "subtract"} $${plainDec(Math.abs(m.c))}x$ on both sides.`,
         },
         {
           label: xv(m.d + m.b, m.a - m.c),
-          feedback: `Subtract the constant $${dec(m.b)}$ from both sides to move it across; adding it doubles its effect.`,
+          feedback: `This moved the constant $${dec(m.b)}$ with the wrong sign. To clear it from the left, do its opposite: ${m.b < 0 ? "add" : "subtract"} $${dec(Math.abs(m.b))}$ on both sides.`,
         },
         {
           label: xv(m.x, 10),
@@ -143,10 +149,14 @@ export const decimalBothSides = chainFamily({
       ],
       hint: `Collect the $x$ terms on one side first: subtract $${dec(m.c)}x$ from both sides, then move the constant $${dec(m.b)}$.`,
       explanation: [
-        `Subtract $${dec(m.c)}x$ from both sides: $${dec(m.a - m.c)}x ${signedConst(dec(m.b))} = ${dec(m.d)}$.`,
-        `${m.b < 0 ? "Add" : "Subtract"} $${dec(Math.abs(m.b))}$ ${m.b < 0 ? "to" : "from"} both sides: $${dec(m.a - m.c)}x = ${dec(m.d - m.b)}$.`,
-        `Divide by $${dec(m.a - m.c)}$: $x = ${m.x}$.`,
-        `Check: the left side is $${dec(m.a * m.x + m.b * 1)}$ and the right side is $${dec(m.c * m.x + m.d)}$.`,
+        `The goal is $x$ alone on one side. Do the same thing to both sides at every step, so the two sides stay equal.`,
+        `First gather the $x$ terms on the left. ${moveX(m.c)}, the opposite of the $x$ term on the right: $${plainDec(m.a - m.c) === "1" ? "" : plainDec(m.a - m.c) === "-1" ? "-" : plainDec(m.a - m.c)}x ${signedConst(dec(m.b))} = ${dec(m.d)}$.`,
+        `Next move the plain number. ${m.b < 0 ? "Add" : "Subtract"} $${dec(Math.abs(m.b))}$ ${m.b < 0 ? "to" : "from"} both sides: $${plainDec(m.a - m.c) === "1" ? "" : plainDec(m.a - m.c) === "-1" ? "-" : plainDec(m.a - m.c)}x = ${plainDec(m.d - m.b)}$.`,
+        m.a - m.c === 10
+          ? `The $x$ term is now just $x$, so $x = ${m.x}$.`
+          : `Divide both sides by $${plainDec(m.a - m.c)}$, the number multiplying $x$: $x = ${m.x}$. Decimals divide like whole numbers once you line up the tenths.`,
+        `Check by substituting $x = ${m.x}$: the left side is $${dec(m.a * m.x + m.b * 1)}$ and the right side is $${dec(m.c * m.x + m.d)}$. They match.`,
+        `The solution is $x = ${m.x}$.`,
       ],
     });
   },
@@ -193,11 +203,20 @@ export const groupedBothSides = chainFamily({
       label: "Answer",
       hint: `Distribute the ${m.p} across $(x ${signedConst(String(m.q))})$ first. Then collect every $x$ term on one side before moving the constants.`,
       explanation: [
-        `Distribute and combine like terms on the side with the group: $${linear(m.p + m.r, m.p * m.q)}$. The equation is $${linear(m.p + m.r, m.p * m.q)} = ${rhs}$.`,
+        `Distribute first: multiply ${m.p} by each term inside the brackets. $${m.p}(x ${signedConst(String(m.q))}) = ${linear(m.p, m.p * m.q)}$.`,
+        m.r === 0
+          ? `That side is now $${linear(m.p + m.r, m.p * m.q)}$. The equation is $${linear(m.p + m.r, m.p * m.q)} = ${rhs}$.`
+          : `Combine like terms, the terms with $x$: $${linear(m.p, 0)} ${m.r < 0 ? "-" : "+"} ${linear(Math.abs(m.r), 0)} = ${linear(m.p + m.r, 0)}$. The equation is $${linear(m.p + m.r, m.p * m.q)} = ${rhs}$.`,
         m.s === 0
-          ? `There is no $x$ term on the other side, so move the constant ${m.p * m.q} across: $${linear(m.p + m.r, 0)} = ${m.t - m.p * m.q}$.`
-          : `Subtract $${linear(m.s, 0)}$ from both sides: $${linear(net, m.p * m.q)} = ${m.t}$. Then ${m.p * m.q < 0 ? "add" : "subtract"} ${Math.abs(m.p * m.q)} ${m.p * m.q < 0 ? "to" : "from"} both sides: $${linear(net, 0)} = ${m.t - m.p * m.q}$.`,
-        `Divide by ${net}: $x = ${m.x}$.`,
+          ? `There is no $x$ term on the other side. ${m.p * m.q < 0 ? "Add" : "Subtract"} ${Math.abs(m.p * m.q)} ${m.p * m.q < 0 ? "to" : "from"} both sides: $${linear(m.p + m.r, 0)} = ${m.t - m.p * m.q}$.`
+          : `Gather the $x$ terms on one side. ${m.s < 0 ? `Add $${linear(-m.s, 0)}$ to` : `Subtract $${linear(m.s, 0)}$ from`} both sides: $${linear(net, m.p * m.q)} = ${m.t}$.`,
+        ...(m.s === 0
+          ? []
+          : [
+              `Move the plain number. ${m.p * m.q < 0 ? "Add" : "Subtract"} ${Math.abs(m.p * m.q)} ${m.p * m.q < 0 ? "to" : "from"} both sides: $${linear(net, 0)} = ${m.t - m.p * m.q}$.`,
+            ]),
+        `Divide both sides by ${net}, the number multiplying $x$: $x = ${m.x}$.`,
+        `The solution is $x = ${m.x}$.`,
       ],
     });
   },
@@ -279,9 +298,12 @@ export const pointSlopeTwoPoints = chainFamily({
       ],
       hint: `Find the slope first: the change in $y$ from $${m.y1}$ to $${m.y2}$ over the change in $x$ from $${m.x1}$ to $${m.x2}$. Then pair one point's $x$ and $y$ in $y-y_1=m(x-x_1)$.`,
       explanation: [
-        `Slope: $m=\\frac{${m.y2}-${par(m.y1)}}{${m.x2}-${par(m.x1)}}=${frac(dy, dx)}$.`,
-        `Use the point $(${m.x1}, ${m.y1})$ in $y-y_1=m(x-x_1)$.`,
-        `The equation is ${eq(dy, dx, m.x1, m.y1)}. Either given point can be used; the other point gives an equivalent equation.`,
+        `Point-slope form is $y-y_1=m(x-x_1)$. Here $m$ is the slope and $(x_1, y_1)$ is any one point on the line.`,
+        `The slope is the steepness: the change in $y$ divided by the change in $x$. Subtract in the same order, second point minus first, on top and bottom.`,
+        `$m=\\frac{${m.y2}-${par(m.y1)}}{${m.x2}-${par(m.x1)}}=\\frac{${dy}}{${dx}}=${frac(dy, dx)}$.`,
+        `Use the point $(${m.x1}, ${m.y1})$: $x_1 = ${m.x1}$ and $y_1 = ${m.y1}$. Both numbers must come from the same point.`,
+        `Substitute the slope and the point. Either given point works; the other gives an equivalent equation, the same line written differently.`,
+        `An equation of the line is ${eq(dy, dx, m.x1, m.y1)}.`,
       ],
     });
   },
@@ -384,9 +406,12 @@ export const totalAndCostEquation = chainFamily({
       ],
       hint: `If $n$ of the ${m.count} ${s.unit} are ${name}, how many are ${other}? Write each group's money as price times count, then set the sum equal to $${total}$.`,
       explanation: [
-        `The ${name} number $n$, so the ${other} number $${m.count}-n$.`,
-        `The ${name} bring in $${P}n$ dollars and the ${other} bring in $${Q}(${m.count}-n)$ dollars.`,
-        `Together they bring in $${total}$ dollars: $${P}n + ${Q}(${m.count}-n) = ${total}$.`,
+        `The variable $n$, a letter for an unknown number, counts the ${name}. Write every other quantity using $n$.`,
+        `There are ${m.count} ${s.unit} in all. If $n$ are ${name}, the rest are ${other}: $${m.count}-n$ of them.`,
+        `Money for each group is price times count. The ${name} bring in $${P}n$ dollars.`,
+        `The ${other} bring in $${Q}(${m.count}-n)$ dollars. The brackets keep $${m.count}-n$ together, so ${Q} multiplies the whole count.`,
+        `Together they bring in $${total}$ dollars, so add the two amounts and set the sum equal to $${total}$.`,
+        `The equation is $${P}n + ${Q}(${m.count}-n) = ${total}$.`,
       ],
     });
   },
@@ -437,8 +462,11 @@ export const isolateTwoTermFormula = chainFamily({
         ],
         hint: "The height appears only in the term $2\\pi r h$. Subtract the term $2\\pi r^2$, which has no $h$, from both sides before you divide.",
         explanation: [
+          "Solving a formula for $h$ means getting $h$ alone on one side. Treat every other letter as a known number.",
+          "$h$ appears only in the term $2\\pi r h$. The other term, $2\\pi r^2$, is added on, so undo it first.",
           "Subtract $2\\pi r^2$ from both sides: $S - 2\\pi r^2 = 2\\pi r h$.",
-          "Divide both sides by $2\\pi r$: $h = \\frac{S - 2\\pi r^2}{2\\pi r}$.",
+          "Now $h$ is multiplied by $2\\pi r$. Divide both sides by $2\\pi r$, and divide the whole left side, not just $S$.",
+          "The formula for $h$ is $h = \\frac{S - 2\\pi r^2}{2\\pi r}$.",
         ],
       });
     }
@@ -471,8 +499,11 @@ export const isolateTwoTermFormula = chainFamily({
         ],
         hint: "The slant height appears only in the term $\\pi r s$ of $A = \\pi r^2 + \\pi r s$. Subtract the term without $s$ from both sides, then divide by what multiplies $s$.",
         explanation: [
+          "Solving a formula for $s$ means getting $s$ alone on one side. Treat every other letter as a known number.",
+          "$s$ appears only in the term $\\pi r s$. The other term, $\\pi r^2$ (the base area), is added on, so undo it first.",
           "Subtract $\\pi r^2$ from both sides: $A - \\pi r^2 = \\pi r s$.",
-          "Divide both sides by $\\pi r$: $s = \\frac{A - \\pi r^2}{\\pi r}$.",
+          "Now $s$ is multiplied by $\\pi r$. Divide both sides by $\\pi r$, and divide the whole left side, not just $A$.",
+          "The formula for $s$ is $s = \\frac{A - \\pi r^2}{\\pi r}$.",
         ],
       });
     }
@@ -505,8 +536,11 @@ export const isolateTwoTermFormula = chainFamily({
         ],
         hint: "In $S = 2b^2 + 4bh$ only the term $4bh$ contains $h$. Subtract the term $2b^2$ from both sides first, then divide by what multiplies $h$.",
         explanation: [
+          "Solving a formula for $h$ means getting $h$ alone on one side. Treat every other letter as a known number.",
+          "$h$ appears only in the term $4bh$. The other term, $2b^2$, is added on, so undo it first.",
           "Subtract $2b^2$ from both sides: $S - 2b^2 = 4bh$.",
-          "Divide both sides by $4b$: $h = \\frac{S - 2b^2}{4b}$.",
+          "Now $h$ is multiplied by $4b$. Divide both sides by $4b$, and divide the whole left side, not just $S$.",
+          "The formula for $h$ is $h = \\frac{S - 2b^2}{4b}$.",
         ],
       });
     }
@@ -538,9 +572,11 @@ export const isolateTwoTermFormula = chainFamily({
       ],
       hint: "The sum $b_1 + b_2$ is multiplied by $\\frac{1}{2}h$ in $A = \\frac{1}{2}(b_1 + b_2)h$. Undo that multiplication by clearing the $\\frac{1}{2}$ and dividing by $h$, then subtract $b_2$.",
       explanation: [
-        "Multiply both sides by 2: $2A = (b_1 + b_2)h$.",
-        "Divide both sides by $h$: $\\frac{2A}{h} = b_1 + b_2$.",
-        "Subtract $b_2$: $b_1 = \\frac{2A}{h} - b_2$.",
+        "Solving a formula for $b_1$ means getting $b_1$ alone on one side. Undo each operation on it, the last one first.",
+        "The $\\frac{1}{2}$ multiplies everything. Multiply both sides by 2 to clear it: $2A = (b_1 + b_2)h$.",
+        "The whole sum $b_1 + b_2$ is multiplied by $h$. Divide both sides by $h$: $\\frac{2A}{h} = b_1 + b_2$.",
+        "Now $b_2$ is added to $b_1$. Subtract $b_2$ from both sides.",
+        "The formula for $b_1$ is $b_1 = \\frac{2A}{h} - b_2$.",
       ],
     });
   },
@@ -608,8 +644,11 @@ export const substituteIntoEquation = chainFamily({
       ],
       hint: `In $${second}$ the $y$ term is $-y$. Move $${m.u}x$ or $y$ so that $y$ is alone on one side, watching every sign, then place that expression in for $y$ in $${first}$.`,
       explanation: [
-        `From $${second}$, add $y$ and subtract $${m.w}$: $y=${y}$.`,
-        `Replace $y$ in $${first}$ with $(${y})$: $${sub(y)}$.`,
+        `Substitution means replacing a variable with an expression equal to it. First get $y$ alone in $${second}$.`,
+        `Add $y$ to both sides to make it positive: $${m.u}x = ${m.w} + y$.`,
+        `${m.w < 0 ? `Add ${-m.w} to` : `Subtract ${m.w} from`} both sides: $y=${y}$.`,
+        `Now replace $y$ in $${first}$ with $(${y})$. Keep the brackets, because ${m.b} multiplies the whole expression.`,
+        `The resulting equation is $${sub(y)}$.`,
       ],
     });
   },

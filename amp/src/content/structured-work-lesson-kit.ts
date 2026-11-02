@@ -1,3 +1,4 @@
+import type { GlossarySenses, MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -9,7 +10,7 @@ export type WorkEntry = {
   summary: string;
   objectives: [string, string];
   intuition: string;
-  terms: [string, string][];
+  terms: MethodTerm[];
   method: string[];
   watch: string;
   principle: string;
@@ -19,6 +20,13 @@ export type WorkEntry = {
   formal: string;
   pitfalls: string[];
   parentGuide: string;
+  /** Practice-screen task line (<= 140 characters); defaults to the summary. */
+  goal?: string;
+  /** Intuition sections the reference lesson shows before "What the work shows". */
+  background?: { title: string; paragraphs: string[] }[];
+  /** Glossary senses and unlinked words for the lesson, method and hints. */
+  senses?: GlossarySenses;
+  noLink?: string[];
 };
 
 export function workContent(entries: readonly WorkEntry[]) {
@@ -26,11 +34,13 @@ export function workContent(entries: readonly WorkEntry[]) {
     entries.map((e) => [
       e.id,
       {
-        goal: e.summary,
+        goal: e.goal ?? e.summary,
         intuition: e.intuition,
         terms: e.terms,
         method: e.method,
         watch: e.watch,
+        ...(e.senses && { senses: e.senses }),
+        ...(e.noLink && { noLink: e.noLink }),
       },
     ]),
   );
@@ -44,6 +54,11 @@ export function workContent(entries: readonly WorkEntry[]) {
     templateIds: [e.id],
     objectives: [...e.objectives],
     sections: [
+      ...(e.background ?? []).map((s) => ({
+        stage: "intuition" as const,
+        title: s.title,
+        paragraphs: s.paragraphs,
+      })),
       {
         stage: "intuition",
         title: "What the work shows",
@@ -61,6 +76,8 @@ export function workContent(entries: readonly WorkEntry[]) {
     ],
     pitfalls: e.pitfalls,
     parentGuide: e.parentGuide,
+    ...(e.senses && { senses: e.senses }),
+    ...(e.noLink && { noLink: e.noLink }),
   }));
   return { methods, principles, lessons };
 }

@@ -89,6 +89,8 @@ LEAD = re.compile(r'^\s*[−(\d|][\d ()×÷+/−²³|.^·]*')
 def arithmetic_claims(step):
     """Check every 'arithmetic = arithmetic' pair, powers and absolute values
     included; equations between variables are skipped."""
+    from worked_math_text import plain_worked_math
+    step = plain_worked_math(step)
     checked = 0
     parts = step.split(' = ')
     for left, right in zip(parts, parts[1:]):

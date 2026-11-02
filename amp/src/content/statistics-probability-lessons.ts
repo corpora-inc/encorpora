@@ -6,20 +6,7 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
     goal: "Given a normal model, find a percent for a region or an interval for a percent, compare by $z$-score, or decide if the model fits.",
     intuition:
       "The standard deviation (SD) is a typical distance from the mean. For data that are symmetric with one peak, fixed shares lie within 1, 2 and 3 standard deviations of the mean: about 68%, 95% and 99.7%. This is the 68–95–99.7 rule.",
-    terms: [
-      [
-        "normal model",
-        "A symmetric, single-peaked, bell-shaped distribution described by its mean and standard deviation.",
-      ],
-      [
-        "$z$-score",
-        "The number of standard deviations a value is above (positive) or below (negative) the mean: $z=(x-\\text{mean})\\div\\text{SD}$.",
-      ],
-      [
-        "tail",
-        "The part of the distribution beyond a boundary, far from the mean.",
-      ],
-    ],
+    terms: ["normal-distribution", "z-score", "tail"],
     method: [
       "Convert each boundary to a number of standard deviations from the mean: subtract the mean and divide by the SD.",
       "Sketch the bell curve and shade the region. The curve is symmetric, so the shares on the two sides of the mean match.",
@@ -34,17 +21,11 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
     intuition:
       "A random variable gives each outcome of a chance experiment a number, such as the number of heads in three tosses. Its probability distribution lists every possible value with the probability of that value. The probabilities add to 1.",
     terms: [
+      "random-variable",
+      "probability-distribution",
       [
-        "random variable",
-        "A rule that assigns one number to each outcome of a chance experiment.",
-      ],
-      [
-        "probability distribution",
-        "A list or graph of every value of the random variable and its probability.",
-      ],
-      [
-        "$P(X=k)$",
-        "The probability that the random variable $X$ takes the value $k$.",
+        "random-variable",
+        "$P(X = k)$ is the probability that $X$ takes the value $k$.",
       ],
     ],
     method: [
@@ -62,17 +43,11 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
       "A theoretical distribution comes from counting equally likely outcomes or multiplying probabilities of independent trials. The expected value is the long-run average: each value times its probability, added together.",
     terms: [
       [
-        "expected value",
-        "$E(X)=x_1P(x_1)+x_2P(x_2)+\\cdots$, the average of $X$ over many repetitions.",
+        "expected-value",
+        "$E(X) = x_1P(x_1) + x_2P(x_2) + \\cdots$ for a random variable $X$.",
       ],
-      [
-        "independent trials",
-        "Trials in which the result of one does not change the probabilities of another.",
-      ],
-      [
-        "binomial count",
-        "The number of successes in a fixed number of independent trials with the same success probability.",
-      ],
+      "independent-events",
+      "binomial-count",
     ],
     method: [
       "Name the random variable and list its possible values.",
@@ -87,16 +62,7 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
     goal: "From observed frequencies, find relative frequencies, the expected value per trial and the expected total for a larger group.",
     intuition:
       "An empirical distribution comes from data instead of a theory. Divide each observed count by the total number of observations to estimate its probability. The expected value uses those estimates as weights.",
-    terms: [
-      [
-        "relative frequency",
-        "A count divided by the total number of observations.",
-      ],
-      [
-        "empirical distribution",
-        "A distribution built from observed data rather than from a theoretical model.",
-      ],
-    ],
+    terms: ["relative-frequency", "empirical-distribution"],
     method: [
       "Read each count and the total number of observations.",
       "Divide each count by the total to get relative frequencies, which estimate probabilities.",
@@ -111,8 +77,14 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
     intuition:
       "When outcomes are uncertain, a fair way to compare options is the average result over many repetitions: the expected value. Count the cost, the payoff of every outcome and each outcome's probability.",
     terms: [
-      ["expected net gain", "Expected payoff minus the cost to play."],
-      ["strategy", "A choice made before the chance outcome is known."],
+      [
+        "expected-value",
+        "Expected net gain is the expected payoff minus the cost to play.",
+      ],
+      [
+        "expected-value",
+        "A strategy is a choice made before the chance outcome is known; compare strategies by their expected values.",
+      ],
     ],
     method: [
       "For each option, multiply every payoff by its probability and add; include costs as negative amounts.",
@@ -128,13 +100,10 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
       "A selection is fair when every person has exactly the same probability of being chosen. With equally likely outcomes, that means every person matches the same number of outcomes.",
     terms: [
       [
-        "fair procedure",
-        "A random procedure in which each person has the same chance of being chosen.",
+        "equally-likely",
+        "A fair procedure gives every person an equally likely chance of being chosen, such as drawing names from a hat.",
       ],
-      [
-        "equally likely outcomes",
-        "Outcomes that each have the same probability.",
-      ],
+      "equally-likely",
     ],
     method: [
       "List the equally likely outcomes of the procedure, such as the 36 ordered pairs of two dice or the 12 faces of a die.",
@@ -150,17 +119,11 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
     intuition:
       "If a model is true, simulating it many times shows how much results vary by chance alone. An observed result that falls in the far tail of those simulated results would rarely happen under the model, which is evidence against the model.",
     terms: [
+      "simulation",
+      "at-least-as-extreme",
       [
-        "simulation",
-        "Repeating a chance process many times, with a computer or by hand, to see what outcomes the model produces.",
-      ],
-      [
-        "at least as extreme",
-        "As far from the model's expected result as the observed result, or farther, in the directions that matter.",
-      ],
-      [
-        "cutoff",
-        "A stated proportion; a result rarer than this is treated as inconsistent with the model.",
+        "statistically-significant",
+        "The cutoff is the stated proportion; a result rarer than it is treated as inconsistent with the model.",
       ],
     ],
     method: [
@@ -176,16 +139,7 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
     goal: "Find the proportion of re-randomized differences as or more extreme than the observed one and decide significance at a stated cutoff.",
     intuition:
       "In an experiment, people are assigned to groups at random. If the treatment did nothing, the group labels would not matter. Reshuffling the labels many times shows how big a difference random assignment alone can create.",
-    terms: [
-      [
-        "re-randomization",
-        "Reshuffling the group labels among the same results and recomputing the difference.",
-      ],
-      [
-        "significant",
-        "Rare enough under chance alone, by a stated cutoff, that chance is an unlikely explanation.",
-      ],
-    ],
+    terms: ["re-randomization", "statistically-significant"],
     method: [
       "Find the observed difference between the group means, with the order stated in the problem.",
       "Add the re-randomization counts that are as large or larger; for a two-sided question, add both directions.",
@@ -201,20 +155,17 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
       "A statistic is only as good as how the data were gathered and shown. Ask who was counted and how, how many, how precise the result is, and how the graph is drawn.",
     terms: [
       [
-        "voluntary response",
-        "A sample made of people who chose to respond; they tend to feel strongly.",
+        "biased-sample",
+        "A voluntary response sample is people who chose to respond; they tend to feel strongly.",
       ],
       [
-        "convenience sample",
-        "People chosen because they are easy to reach, who may differ from the whole group.",
+        "biased-sample",
+        "A convenience sample uses people who are easy to reach, who may differ from the whole group.",
       ],
+      "margin-of-error",
       [
-        "margin of error",
-        "A range of plausible sampling error around a reported percent.",
-      ],
-      [
-        "truncated axis",
-        "A graph scale that starts above zero, making a small difference look large.",
+        "y-axis",
+        "A truncated axis starts above zero, which makes small differences look large.",
       ],
     ],
     method: [
@@ -230,14 +181,7 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
     goal: "Read residuals to choose the justified conclusion: a curved pattern, no pattern, an extrapolation or which of two models fits better.",
     intuition:
       "A residual is observed minus predicted. A model that suits the data leaves small residuals with no pattern. A shape in the residuals shows the model has the wrong form, and a prediction far outside the data is not supported by the fit.",
-    terms: [
-      ["residual", "Observed value minus predicted value."],
-      ["extrapolation", "Predicting for inputs outside the range of the data."],
-      [
-        "sum of squared residuals",
-        "The sum of each residual squared; smaller means the model stays closer to the data.",
-      ],
-    ],
+    terms: ["residual", "extrapolation", "sum-of-squared-residuals"],
     method: [
       "Compute or read each residual, keeping its sign.",
       "Look at the order of the signs: random switching is fine, but a run such as positive, negative, positive suggests curvature.",

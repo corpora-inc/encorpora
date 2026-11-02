@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -200,27 +201,17 @@ export const polygonLessons: Lesson[] = [
 ];
 
 const terms = {
-  polygon: [
-    ["polygon", "A closed flat shape with straight sides."],
-    ["angle", "Where two sides of a polygon meet."],
-  ],
-  solid: [
-    ["face", "A flat surface of a solid."],
-    ["edge", "Where two faces meet."],
-    ["vertex", "A corner where edges meet. Plural: vertices."],
-  ],
+  polygon: ["polygon", "angle"],
+  solid: ["face-solid", "edge", "vertex"],
   quad: [
-    ["right angle", "A square corner, marked with a small square."],
-    ["tick marks", "Sides with the same number of ticks are equal."],
-  ],
-  tree: [
-    ["parallelogram", "A quadrilateral with 2 pairs of parallel sides."],
+    "right-angle",
     [
-      "subcategory",
-      "A category inside a larger one, like squares inside rectangles.",
+      "tick-mark",
+      "Sides with the same number of tick marks are equal in length.",
     ],
   ],
-} satisfies Record<string, [string, string][]>;
+  tree: ["parallelogram", "subcategory"],
+} satisfies Record<string, MethodTerm[]>;
 export const polygonMethods: Record<string, ProblemMethod> = {
   "name-polygon": {
     goal: "Given a polygon, name it by its number of sides.",
@@ -306,27 +297,18 @@ export const polygonMethods: Record<string, ProblemMethod> = {
     intuition:
       "A quadrilateral is a closed flat shape with four straight sides. A rectangle has four right angles, or square corners; a rhombus has four equal sides. A square has both, so it belongs to both groups. A parallelogram has two pairs of parallel opposite sides: the lines containing them never meet. A shape keeps every name whose description it meets.",
     terms: [
-      ["quadrilateral", "A closed flat shape with four straight sides."],
-      ["right angle", "A square corner, measuring $90^\\circ$ (90 degrees)."],
-      ["opposite sides", "Sides that do not share a corner."],
+      "quadrilateral",
+      "right-angle",
       [
-        "parallel sides",
-        "Sides on lines that never meet and stay the same distance apart.",
+        "side",
+        "Opposite sides of a polygon do not share a corner, like the top and bottom of a rectangle.",
       ],
-      [
-        "parallelogram",
-        "A quadrilateral with two pairs of parallel opposite sides.",
-      ],
-      ["rectangle", "A quadrilateral with four right angles."],
-      ["rhombus", "A quadrilateral with four equal sides."],
-      [
-        "square",
-        "A quadrilateral with four equal sides and four right angles.",
-      ],
-      [
-        "counterexample",
-        "One example that fits the starting description but makes the claim false.",
-      ],
+      "parallel",
+      "parallelogram",
+      "rectangle",
+      "rhombus",
+      "square-shape",
+      "counterexample",
     ],
     method: [
       "For each statement, compare the properties required by its starting description with the properties it claims.",

@@ -8,13 +8,10 @@ export const conversionChainMethods: Record<string, ProblemMethod> = {
     intuition:
       "An equivalent such as 1 gallon = 4 quarts says how many of the smaller unit fit in one of the larger. To change to a smaller unit, multiply by that number. A chain of equivalents is applied one link at a time, each result becoming the next amount.",
     terms: [
+      "equivalent",
       [
-        "equivalent",
-        "A statement that two units measure the same amount, such as 1 meter = 100 centimeters.",
-      ],
-      [
-        "whole pieces",
-        "The number of full pieces that fit; any leftover shorter than one piece does not count.",
+        "remainder",
+        "Only full pieces count; a leftover shorter than one piece is the remainder.",
       ],
     ],
     method: [

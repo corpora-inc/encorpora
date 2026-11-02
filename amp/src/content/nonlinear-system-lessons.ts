@@ -1,19 +1,11 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
-const terms: [string, string][] = [
-  [
-    "system",
-    "Equations that must hold for the same values of their variables.",
-  ],
-  [
-    "intersection",
-    "A point shared by two graphs; its coordinates satisfy both equations.",
-  ],
-  [
-    "parabola",
-    "The curved graph of a quadratic function, whose highest variable power is two.",
-  ],
+const terms: MethodTerm[] = [
+  "system-of-equations",
+  "intersection-graphs",
+  "parabola",
 ];
 export const nonlinearSystemMethods: Record<string, ProblemMethod> = {
   "nonlinear-system-read": {
@@ -41,13 +33,7 @@ export const nonlinearSystemMethods: Record<string, ProblemMethod> = {
     goal: "Count distinct real intersections without finding every coordinate.",
     intuition:
       "A system asks where two equations are true for the same point. Set the line and parabola outputs equal to get a quadratic equation. For $Ax^2+Bx+C=0$ with $A\\ne0$, its discriminant $B^2-4AC$ tells whether there are two, one, or no real shared points.",
-    terms: [
-      ...terms,
-      [
-        "discriminant",
-        "For $Ax^2 + Bx + C = 0$, the quantity $B^2 - 4AC$ determines the number of real roots when $A$ is nonzero.",
-      ],
-    ],
+    terms: [...terms, "discriminant"],
     method: [
       "Set the two expressions for $y$ equal and collect terms to obtain a quadratic equal to zero.",
       "Compute its discriminant. Positive gives two distinct real roots; zero gives one; negative gives none.",

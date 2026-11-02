@@ -336,8 +336,14 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   "coordinate-side-length": {
     goal: "Find the length of a horizontal or vertical side from its endpoints' coordinates.",
     terms: [
-      ["horizontal side", "Its endpoints share a $y$-coordinate."],
-      ["vertical side", "Its endpoints share an $x$-coordinate."],
+      [
+        "side",
+        "A horizontal side's endpoints share a $y$-coordinate, so its length is the difference of their $x$-coordinates.",
+      ],
+      [
+        "side",
+        "A vertical side's endpoints share an $x$-coordinate, so its length is the difference of their $y$-coordinates.",
+      ],
     ],
     method: [
       "Find the coordinate the endpoints share; the other coordinates change.",
@@ -347,10 +353,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "coordinate-rectangle-measure": {
     goal: "Find a rectangle's perimeter or area from its vertices.",
-    terms: [
-      ["perimeter", "The distance around: all four sides added."],
-      ["area", "The number of unit squares inside: width × height."],
-    ],
+    terms: ["perimeter", "area"],
     method: [
       "Find the width from a horizontal side and the height from a vertical side.",
       "Perimeter = 2 × (width + height); area = width × height.",
@@ -360,8 +363,11 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   "coordinate-distance": {
     goal: "Find the distance between two points with the Pythagorean theorem.",
     terms: [
-      ["legs", "The changes in $x$ and in $y$, which meet at a right angle."],
-      ["hypotenuse", "The segment itself, opposite the right angle."],
+      [
+        "leg",
+        "Here the legs are the changes in $x$ and in $y$, which meet at a right angle.",
+      ],
+      "hypotenuse",
     ],
     method: [
       "Find the change in $x$ and the change in $y$.",
@@ -372,8 +378,11 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   "coordinate-distance-exact": {
     goal: "Find an exact distance as a whole number or a simplified square root.",
     terms: [
-      ["exact distance", "The square root itself, not a decimal estimate."],
-      ["simplest form", "No square factor greater than 1 under the root."],
+      [
+        "distance",
+        "An exact distance keeps the square root, such as $\\sqrt{20}$, instead of a decimal estimate.",
+      ],
+      "simplest-radical-form",
     ],
     method: [
       "Find the change in $x$ and the change in $y$.",
@@ -384,10 +393,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "transformation-image": {
     goal: "Find where a vertex lands after a translation, reflection or rotation.",
-    terms: [
-      ["image", "Where a point lands; the image of $B$ is $B'$."],
-      ["rigid motion", "A move that keeps every length and angle."],
-    ],
+    terms: ["image-transformation", "rigid-motion"],
     method: [
       "Write the motion's coordinate rule: a translation adds, a reflection changes one sign, a rotation swaps or negates.",
       "Apply the rule to the vertex's coordinates.",
@@ -397,9 +403,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "identify-rigid-motion": {
     goal: "Name the single motion that carries a triangle onto its labeled image.",
-    terms: [
-      ["corresponding vertices", "$A$ and $A'$, $B$ and $B'$, $C$ and $C'$."],
-    ],
+    terms: ["corresponding"],
     method: [
       "Pair each vertex with its image.",
       "Find the rule that fits all three pairs: added amounts, one sign change, both signs, or a swap.",
@@ -408,12 +412,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "dilation-image": {
     goal: "Find a vertex's image under a dilation centered at the origin.",
-    terms: [
-      [
-        "scale factor",
-        "The number every distance from the center is multiplied by.",
-      ],
-    ],
+    terms: ["scale-factor"],
     method: [
       "Find the scale factor and the vertex asked about.",
       "Multiply both of its coordinates by the scale factor.",
@@ -424,8 +423,8 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   "dilation-scale-factor": {
     goal: "Find the scale factor of a dilation centered at the origin.",
     terms: [
-      ["enlargement", "A scale factor greater than 1."],
-      ["reduction", "A scale factor between 0 and 1."],
+      ["dilation", "An enlargement has a scale factor greater than 1."],
+      ["dilation", "A reduction has a scale factor between 0 and 1."],
     ],
     method: [
       "Divide an image coordinate by the matching original coordinate.",
@@ -435,10 +434,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "similar-triangles-side": {
     goal: "Find a missing side of similar triangles.",
-    terms: [
-      ["similar", "Same shape: corresponding sides share one ratio."],
-      ["corresponding sides", "Sides that join corresponding vertices."],
-    ],
+    terms: ["similar-figures", "corresponding"],
     method: [
       "Pair the sides by vertex order.",
       "Divide a known pair to get the scale factor.",
@@ -448,7 +444,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "scale-drawing": {
     goal: "Convert between a scale drawing and real lengths or areas.",
-    terms: [["scale", "How much real length one unit of drawing stands for."]],
+    terms: ["scale"],
     method: [
       "Drawing to actual: multiply lengths by the scale; actual to drawing: divide.",
       "For areas, multiply by the square of the scale.",

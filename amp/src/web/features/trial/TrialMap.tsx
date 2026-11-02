@@ -1,3 +1,7 @@
+import {
+  CurriculumDetailsControl,
+  useCurriculumDetails,
+} from "../curriculum/CurriculumDetails";
 import { ProgressViews } from "../navigation/ProgressViews";
 import { useQuery } from "@tanstack/react-query";
 import { Link, Navigate } from "@tanstack/react-router";
@@ -38,6 +42,7 @@ export function TrialMap() {
 }
 
 function MapView({ session }: { session: TrialSession }) {
+  const { shown } = useCurriculumDetails();
   const progress = useQuery(progressOptions(session));
   const catalog = useQuery(catalogOptions);
   const evidence = useQuery(trialEvidenceOptions(session));
@@ -99,7 +104,10 @@ function MapView({ session }: { session: TrialSession }) {
         <p className={styles.eyebrow}>
           {p.phase === "placement" ? "Placement in progress" : "Free practice"}
         </p>
-        <h1 className={styles.title}>Your estimated level</h1>
+        <h1 className={styles.title}>
+          {shown ? "Your estimated level" : "Your progress"}
+        </h1>
+        <CurriculumDetailsControl />
         <LevelReadout estimate={frontier.overall} />
         <p className={styles.lede}>
           {p.phase === "placement"
@@ -111,14 +119,6 @@ function MapView({ session }: { session: TrialSession }) {
         <div className={styles.meterRow}>
           <FreeMeter answered={p.totals.answered} free={p.free} />
         </div>
-        <FrontierMap name="the learner" frontier={frontier} strands={strands} />
-        <Link
-          to="/pathways"
-          search={{ context: "trial" }}
-          className={buttonClass("secondary")}
-        >
-          See your illuminated pathways →
-        </Link>
         <div className={styles.actions}>
           {left > 0 ? (
             <>
@@ -145,6 +145,15 @@ function MapView({ session }: { session: TrialSession }) {
             </Link>
           )}
         </div>
+        {/* The next step sits above the fold; the map is the evidence. */}
+        <FrontierMap name="the learner" frontier={frontier} strands={strands} />
+        <Link
+          to="/pathways"
+          search={{ context: "trial" }}
+          className={buttonClass("quiet")}
+        >
+          See your illuminated pathways →
+        </Link>
         {p.phase !== "placement" && (
           <ShareAssessment
             level={gradeName(frontier.overall.level)}

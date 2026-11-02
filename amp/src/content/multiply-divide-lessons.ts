@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -299,15 +300,8 @@ export const multiplyDivideLessons: Lesson[] = [
   },
 ];
 
-const placeTerm: [string, string] = [
-  "Partial product",
-  "The product of one place-value part of a factor, such as 40 × 6.",
-];
-const divisionTerms: [string, string][] = [
-  ["Divisor", "The number you divide by."],
-  ["Quotient", "The number of groups, the result of dividing."],
-  ["Remainder", "The amount left over, always less than the divisor."],
-];
+const placeTerm: MethodTerm = "partial-product";
+const divisionTerms: MethodTerm[] = ["divisor", "quotient", "remainder"];
 export const multiplyDivideMethods: Record<string, ProblemMethod> = {
   "multiply-by-tens": {
     goal: "Given a one-digit number and a multiple of ten, find their product.",

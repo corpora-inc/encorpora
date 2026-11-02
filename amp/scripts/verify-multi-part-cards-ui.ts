@@ -79,13 +79,25 @@ const families = [
   "compare-symbol-blanks",
 ] as const;
 type Family = (typeof families)[number];
-/** The widest instance a family makes, so narrow screens see the worst. */
+/** Select the widest sampled fixture, ranking comparisons by formula length. */
 function instance(family: Family, key: string): GeneratedProblem {
   let best: GeneratedProblem | undefined;
   let widest = -1;
   for (let i = 0; i < 60; i++) {
-    const p = generateProblem(family, `${learner.id}:${key}:${i}`);
-    const width = JSON.stringify(p.public.response).length;
+    const p = generateProblem(family, `cards-review:${family}:${key}:${i}`);
+    const response = p.public.response as MultiPartChoiceResponse;
+    const width =
+      family === "compare-symbol-blanks"
+        ? Math.max(
+            ...(response.sentence ?? []).flatMap((part) =>
+              "text" in part
+                ? [...part.text.matchAll(/\$([^$]+)\$/g)].map(
+                    (m) => m[1]!.length,
+                  )
+                : [],
+            ),
+          )
+        : JSON.stringify(response).length;
     if (width > widest) [best, widest] = [p, width];
   }
   return best!;
@@ -119,6 +131,13 @@ async function geometry(page: Page) {
       tray: at(".multi-part-tray"),
       dock: at(".answer-dock"),
       overflow: document.documentElement.scrollWidth - innerWidth,
+      stageOverflow: stage.scrollWidth - stage.clientWidth,
+      sentenceOverflow: (() => {
+        const sentence = stage.querySelector<HTMLElement>(
+          ".multi-part-sentence",
+        )!;
+        return sentence.scrollWidth - sentence.clientWidth;
+      })(),
     };
   });
 }
@@ -137,7 +156,10 @@ async function lineMargins(page: Page) {
       const [l, rr] = lines.get(near ?? key) ?? [Infinity, -Infinity];
       lines.set(near ?? key, [Math.min(l, r.left), Math.max(rr, r.right)]);
     };
-    for (const node of sentence.querySelectorAll(".multi-part-box, .katex"))
+    // KaTeX's base spans are the unbroken terms; a whole formula may wrap.
+    for (const node of sentence.querySelectorAll(
+      ".multi-part-box, .katex-html > .base",
+    ))
       add(node.getBoundingClientRect());
     return [...lines.values()].map(([l, r]) => [
       Math.round(l - outer.left),
@@ -279,6 +301,17 @@ try {
         );
         await startTopic(page, family);
         await page.locator(".multi-part[data-layout=cards]").waitFor();
+        if (family === "compare-symbol-blanks" && width === 320) {
+          // The deep-check incident had 258px available inside a 320px phone.
+          // Keep that regression even when the surrounding shell gets wider.
+          await page.locator(".multi-part-sentence").evaluate((node) => {
+            Object.assign((node as HTMLElement).style, {
+              width: "258px",
+              maxWidth: "100%",
+              marginInline: "auto",
+            });
+          });
+        }
         assert.ok(
           capabilities.includes("multi-part-cards-v1"),
           "The client declares cards",
@@ -307,9 +340,26 @@ try {
         const expectCorrect = wrongAt < 0;
 
         await page.evaluate(() => document.fonts.ready.then(() => undefined));
+        // Finish fixture sizing before measuring shifts caused by interaction.
+        await page.evaluate(
+          () =>
+            new Promise<void>((resolve) =>
+              requestAnimationFrame(() =>
+                requestAnimationFrame(() => resolve()),
+              ),
+            ),
+        );
         await observeShifts(page);
         const before = await geometry(page);
         assert.ok(before.overflow <= 0, `${tag}: overflow ${before.overflow}`);
+        assert.ok(
+          before.stageOverflow <= 1,
+          `${tag}: stage overflow ${before.stageOverflow}`,
+        );
+        assert.ok(
+          before.sentenceOverflow <= 1,
+          `${tag}: sentence overflow ${before.sentenceOverflow}`,
+        );
         for (const [x, , w, h] of [...before.boxes, ...before.cards]) {
           assert.ok(w! >= 44 && h! >= 44, `${tag}: target ${w}×${h}`);
           assert.ok(

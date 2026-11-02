@@ -70,7 +70,10 @@ python3 -m cinema review "$B/out"
 
 # 6. Upload the approved cut privately (4K master for YouTube).
 python3 -m cinema render "$B/ads/01-when-it-clicks.json" --out "$B/out" --master --format portrait
-python3 -m cinema upload "$B/out/01-when-it-clicks/portrait-4k.mp4" --title "When it clicks, everything moves"
+# Review all three orientations and write delivery.json with their exact hashes.
+python3 -m cinema delivery-check "$B/delivery.json"
+python3 -m cinema upload "$B/out/01-when-it-clicks/portrait-4k.mp4" \
+  --delivery-manifest "$B/delivery.json" --title "When it clicks, everything moves"
 ```
 
 `python3 -m cinema validate <spec>...` checks specs without rendering.
@@ -143,7 +146,7 @@ Scripted alternative: `ELEVENLABS_API_KEY=... python3 -m cinema voice <spec> --g
 | `id`, `title` | lowercase slug (output folder), human title |
 | `duration` | seconds, 5-60; use 15, 20 or 30 |
 | `fps` | 24 (LTX native), 25 or 30 |
-| `formats` | any of `portrait` 9:16 1080x1920, `feed` 4:5 1080x1350, `square` 1:1 1080x1080, `wide` 16:9 1920x1080 |
+| `formats` | must include `portrait`, `square`, `wide`; optional `feed`. Presets: `portrait` 9:16 1080x1920, `feed` 4:5 1080x1350, `square` 1:1 1080x1080, `wide` 16:9 1920x1080 |
 | `shots[]` | `id`, `source`, `in`, `out`, `duration`, optional `transition` into the next shot, `fit`, `retime` |
 | `shots[].source` | a path with optional `{orientation}` (`portrait` for portrait/feed, `wide` for square/wide) or `{format}`, or a map keyed by format, orientation or `default` |
 | `shots[].transition` | `{"type": "fade", "duration": 0.25}`; any FFmpeg `xfade` type or `cut` |
@@ -212,3 +215,40 @@ discover -s test -p 'test_*.py'` runs `test/test_cinema.py`: spec rules, safe
 zones, filtergraphs (including the edit offsets of the 2026-10-27 renders), batch
 planning, supervisor quarantine, pages, voice and upload guards. Both run in the
 path-gated `web-io` CI job.
+
+## Paid delivery gate
+
+Every paid concept needs landscape, square and portrait exports. The spec
+validator requires all three; `--format` may render one preview at a time.
+A complete delivery requires the actual Full HD media, audio, and matching
+hashes. Feed (4:5) cannot fill the square (1:1) slot. Review each export visually
+and with sound before delivery; this technical check cannot judge composition.
+
+Keep `delivery.json` with the private production package. Paths are relative
+to that file; obtain each SHA-256 from the exact reviewed export:
+
+```json
+{
+  "exports": {
+    "wide": {"file": "out/wide.mp4", "sha256": "<reviewed SHA-256>"},
+    "square": {"file": "out/square.mp4", "sha256": "<reviewed SHA-256>"},
+    "portrait": {"file": "out/portrait.mp4", "sha256": "<reviewed SHA-256>"}
+  }
+}
+```
+
+```sh
+python3 -m cinema delivery-check "$AMP_MEDIA_ROOT/<production>/delivery.json"
+python3 -m cinema upload "$AMP_MEDIA_ROOT/<production>/out/square.mp4" \
+  --delivery-manifest "$AMP_MEDIA_ROOT/<production>/delivery.json" \
+  --title "<reviewed viewer-facing title>" --description "<reviewed copy>"
+```
+
+The upload function requires `delivery_manifest=` too. It checks coverage before
+OAuth or upload requests and records the checked files in its private receipt.
+Landscape and square require at least 10 seconds; portrait requires 10–60 seconds.
+The normal renderer's shorter or reduced-resolution previews cannot pass delivery.
+
+Follow the [campaign requirements](../../../../docs/youtube-publishing.md#paid-video-format-and-campaign-requirements)
+to verify live attachment, eligibility, Excellent ad strength and resolved
+recommendations. This local media gate does not inspect or mutate campaigns.

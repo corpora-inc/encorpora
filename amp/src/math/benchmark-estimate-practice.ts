@@ -118,6 +118,35 @@ const wordings = {
   ],
 } as const;
 
+/** Each wording's closing sentence for an estimate of `a` (text) units;
+ * `s` pluralizes the unit for amounts other than 1 or less. */
+type Close = (a: string, s: string) => string;
+const measures: Record<Model["ask"], readonly Close[]> = {
+  sum: [
+    (a, s) =>
+      `The recipe uses about ${a} cup${s} of flour and sugar altogether.`,
+    (a, s) => `Ana walked about ${a} mile${s} altogether.`,
+    (a, s) => `The ropes are about ${a} meter${s} long together.`,
+  ],
+  difference: [
+    (a, s) => `The board is about ${a} meter${s} longer than the pipe.`,
+    (a, s) => `Omar ran about ${a} mile${s} farther than Lena.`,
+    (a, s) => `The jug holds about ${a} liter${s} more than the bottle.`,
+  ],
+  left: [
+    (a) => `About ${a} of the ribbon is left.`,
+    (a) => `About ${a} of the pizza is left.`,
+    (a) => `About ${a} of the garden is left.`,
+  ],
+};
+/** Why a fraction is near its benchmark, from its own numerator and denominator. */
+const nearWhy = (f: Frac) =>
+  f.bench2 === 0
+    ? `${tex(f)} is close to 0, because ${f.n} is tiny next to ${f.d}.`
+    : f.bench2 === 1
+      ? `${tex(f)} is close to $\\frac{1}{2}$, because ${f.n} is about half of ${f.d}.`
+      : `${tex(f)} is close to 1, because ${f.n} is almost all of ${f.d}.`;
+
 export const benchmarkEstimate = chainFamily({
   template: benchmarkEstimateTemplate,
   axes,
@@ -150,18 +179,23 @@ export const benchmarkEstimate = chainFamily({
         { label: aboutLabel(est), correct: true as const },
         ...wrong.map((h) => ({
           label: aboutLabel(h),
-          feedback: `${slip(h)} Round ${tex(x)} to ${benchName(x.bench2)} and ${tex(y)} to ${benchName(y.bench2)} first.`,
+          feedback: `${slip(h)} Round ${tex(x)} to ${benchName(x.bench2)} and ${tex(y)} to ${benchName(y.bench2)} first, then ${m.ask === "sum" ? "add them" : m.ask === "difference" ? "subtract them" : "take their total away from 1"}.`,
         })),
       ],
       hint: `Round each fraction to the nearest of 0, $\\frac{1}{2}$ and 1. Start with ${tex(x)}: is it closest to 0, to $\\frac{1}{2}$ or to 1? Then do the same for ${tex(y)}.`,
       explanation: [
-        `${tex(x)} is close to ${benchName(x.bench2)}, and ${tex(y)} is close to ${benchName(y.bench2)}.`,
+        `A benchmark is a friendly number to compare with. Round each fraction to the nearest of 1, $\\frac{1}{2}$ or 0, because those are quick to work with.`,
+        nearWhy(x),
+        nearWhy(y),
         m.ask === "sum"
           ? `Adding the benchmarks: ${benchName(x.bench2)} + ${benchName(y.bench2)} is ${aboutLabel(est).slice(6)}.`
           : m.ask === "difference"
             ? `Subtracting the benchmarks: ${benchName(x.bench2)} − ${benchName(y.bench2)} is ${aboutLabel(est).slice(6)}.`
             : `The two parts are about ${aboutLabel(x.bench2 + y.bench2).slice(6)} together, so what is left is 1 − ${aboutLabel(x.bench2 + y.bench2).slice(6)}, which is ${aboutLabel(est).slice(6)}.`,
-        `The estimate is ${aboutLabel(est).toLowerCase()}.`,
+        measures[m.ask][m.wording]!(
+          aboutLabel(est).slice(6),
+          est === 0 || est > 2 ? "s" : "",
+        ),
       ],
     });
   },

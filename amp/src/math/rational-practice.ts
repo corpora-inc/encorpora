@@ -155,9 +155,10 @@ function sumCase(r: Random): Case {
   const explanation = [
     subtract
       ? `Subtracting a number is adding its opposite: $${prompt} = ${tex(a)} + ${operand(addend)}$.`
-      : `The expression is a sum: $${prompt}$. Each fraction keeps its own sign.`,
-    `The least common denominator of ${a.d} and ${b.d} is ${l}, the smallest number that both denominators divide.`,
-    `Rename both fractions with denominator ${l}, add the signed numerators and reduce: $${sumSteps(a, addend)}$.`,
+      : `The expression is a sum: $${prompt}$. Each fraction keeps its own sign, + or −.`,
+    `To add fractions by counting pieces, the pieces must be the same size. The bottom number, the denominator, sets the piece size, so first rename the fractions to a shared denominator.`,
+    `The least common denominator of ${a.d} and ${b.d} is ${l}: the smallest number that both ${a.d} and ${b.d} divide into evenly.`,
+    `Rename both fractions with denominator ${l}. Add the top numbers, the numerators, keeping their signs. Then reduce, dividing top and bottom by any shared factor: $${sumSteps(a, addend)}$.`,
     `Check: $${tex(value)} - ${operand(addend)} = ${tex(a)}$.`,
   ];
   return {
@@ -193,12 +194,12 @@ function productCase(r: Random): Case {
     sign = value.n < 0 ? "-" : "";
   const explanation = [
     divide
-      ? `Dividing by a fraction is multiplying by its reciprocal: $${prompt} = ${tex(a)} \\times ${operand(factor)}$.`
-      : `Multiply the two signed fractions: $${prompt}$.`,
+      ? `Dividing by a fraction is multiplying by its reciprocal, the fraction flipped upside down: $${prompt} = ${tex(a)} \\times ${operand(factor)}$.`
+      : `Multiply the two signed fractions: $${prompt}$. Signed means each keeps its + or − sign.`,
     a.n < 0 === b.n < 0
-      ? "The factors have the same sign, so the result is positive."
-      : "The factors have opposite signs, so the result is negative.",
-    `Multiply numerators and denominators${gcd(numerator, denominator) > 1 ? ", then reduce" : "; the result is in lowest terms"}: $${tex(a)} \\times ${operand(factor)} = ${sign}\\frac{${Math.abs(a.n)} \\times ${Math.abs(factor.n)}}{${a.d} \\times ${factor.d}} = ${sign}\\frac{${numerator}}{${denominator}}${gcd(numerator, denominator) > 1 ? ` = ${tex(value)}` : ""}$.`,
+      ? "Find the sign first. The two numbers have the same sign, so the result is positive."
+      : "Find the sign first. The two numbers have opposite signs, so the result is negative.",
+    `Multiply the top numbers, the numerators, together. Multiply the bottom numbers, the denominators, together${gcd(numerator, denominator) > 1 ? ". Then reduce: divide top and bottom by their shared factor" : ". The result is already in lowest terms"}: $${tex(a)} \\times ${operand(factor)} = ${sign}\\frac{${Math.abs(a.n)} \\times ${Math.abs(factor.n)}}{${a.d} \\times ${factor.d}} = ${sign}\\frac{${numerator}}{${denominator}}${gcd(numerator, denominator) > 1 ? ` = ${tex(value)}` : ""}$.`,
     divide
       ? `Check by multiplying the quotient by the divisor: $${tex(value)} \\times ${operand(b)} = ${tex(a)}$.`
       : `Check by dividing the product by one factor: $${tex(value)} \\div ${operand(b)} = ${tex(a)}$.`,
@@ -277,14 +278,14 @@ function complexExplanation(
     sign = numerator < 0 ? "-" : "";
   const source = `\\dfrac{${top.text}}{${bottom.text}}`;
   const explanation = [
-    `The main fraction bar means division: $${source} = ${top.step ? `\\left(${top.text}\\right)` : top.text} \\div ${bottom.step || bottom.value.n < 0 ? `\\left(${bottom.text}\\right)` : bottom.text}$.`,
+    `The main fraction bar, the longest one, means division: $${source} = ${top.step ? `\\left(${top.text}\\right)` : top.text} \\div ${bottom.step || bottom.value.n < 0 ? `\\left(${bottom.text}\\right)` : bottom.text}$.`,
     top.step
       ? `Simplify the numerator: $${top.step}$.`
       : `The numerator is already a single fraction: $${tex(top.value)}$.`,
     bottom.step
       ? `Simplify the denominator: $${bottom.step}$.`
       : `The denominator is already a single fraction: $${tex(bottom.value)}$.`,
-    `Multiply by the reciprocal of the denominator: $${tex(top.value)} \\div ${operand(bottom.value)} = ${tex(top.value)} \\times ${operand(flip)} = ${sign}\\frac{${Math.abs(numerator)}}{${denominator}}${gcd(numerator, denominator) > 1 ? ` = ${tex(value)}` : ""}$.`,
+    `Dividing by a fraction is multiplying by its reciprocal, the fraction flipped upside down: $${tex(top.value)} \\div ${operand(bottom.value)} = ${tex(top.value)} \\times ${operand(flip)} = ${sign}\\frac{${Math.abs(numerator)}}{${denominator}}${gcd(numerator, denominator) > 1 ? ` = ${tex(value)}` : ""}$.`,
     `Check: $${tex(value)} \\times ${operand(bottom.value)} = ${tex(top.value)}$.`,
   ];
   return {
@@ -337,8 +338,9 @@ function powerCase(r: Random): Case {
     powered = q(root.n ** Math.abs(m), root.d ** Math.abs(m)),
     source = `${baseText}^{${m}/${n}}`;
   const explanation = [
-    `In the exponent $${m < 0 ? "-" : ""}\\frac{${Math.abs(m)}}{${n}}$, the denominator ${n} calls for a ${rootName} and the numerator gives the power, ${Math.abs(m)}${m < 0 ? "; the negative sign calls for a reciprocal" : ""}.`,
-    `Take the ${rootName}: $${radical} = ${tex(root)}$, because $${rootText}^{${n}} = ${tex(base)}$.`,
+    `The exponent, the small raised number, is a fraction: $${m < 0 ? "-" : ""}\\frac{${Math.abs(m)}}{${n}}$. Each part of it has a job.`,
+    `The bottom number, ${n}, means take the ${rootName}. The top number, ${Math.abs(m)}, is the power to raise it to.${m < 0 ? " The minus sign means take the reciprocal, one over the result." : ""}`,
+    `Take the ${rootName} first, which keeps the numbers small: $${radical} = ${tex(root)}$, because $${rootText}^{${n}} = ${tex(base)}$.`,
     Math.abs(m) === 1
       ? `The power is 1, so the value stays $${tex(root)}$.`
       : `Raise the root to the power ${Math.abs(m)}: $${rootText}^{${Math.abs(m)}} = ${tex(powered)}$.`,

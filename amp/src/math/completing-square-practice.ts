@@ -137,10 +137,12 @@ export function completingSquarePrintCase(
         ? `The ${Math.abs(b)} $x$ strips of $${given}$ are split evenly between the two sides of the $x^2$ square. The missing corner is a square whose side is one of those halves: find its area.`
         : `$(x + h)^2$ expands to $x^2 + 2hx + h^2$. Match $2h$ to $${b}$, the coefficient of $x$ in $${given}$, then square $h$.`;
     explanation = [
+      "A perfect square is a bracket multiplied by itself, such as $(x + h)^2$. Completing the square means adding the one constant that makes an expression into one.",
       "Multiplying the two identical factors gives $(x + h)^2 = x^2 + 2hx + h^2$.",
       `The coefficients of $x$ must agree: $2h = ${b}$. Divide by 2: $h = \\frac{${b}}{2} = ${tex(h)}$.`,
       `The constant must be $h^2$, so $c = ${h.n < 0 || h.d > 1 ? `(${tex(h)})` : tex(h)}^2 = ${tex(square)}$.`,
       `Check by expanding: $${shifted(h)} = ${expanded(1, b, 0)}${tail(square)}$.`,
+      `The constant that completes the square is ${tex(square).includes("\\") ? `$${tex(square)}$` : tex(square)}.`,
     ];
     const problem: GeneratedProblem = {
       public: {
@@ -240,7 +242,10 @@ export function completingSquarePrintCase(
     a === 1
       ? `In $(x + h)^2$ the coefficient of $x$ is $2h$, so $h$ is half of $${b}$. Add and subtract $h^2$ in $${given}$, then group the perfect square.`
       : `Take $${a}$ out of the $x^2$ and $x$ terms of $${given}$ first. Halve the new coefficient of $x$; the square you add inside is multiplied by $${a}$, so subtract $${a}$ times it outside.`;
-  explanation = [];
+  explanation = [
+    "Completed-square form writes a quadratic as a number times a squared bracket, plus a constant. It shows the vertex, the turning point of the graph.",
+    "The idea: add the constant that turns the $x$ terms into a perfect square, a bracket times itself. Then subtract the same amount, so the value does not change.",
+  ];
   if (a !== 1)
     explanation.push(
       `Factor ${a} out of the variable terms: $${expanded(a, b, c)} = ${a}(x^2${tail(normalized, "x")})${tail(q(c))}$.`,
@@ -259,6 +264,9 @@ export function completingSquarePrintCase(
   );
   explanation.push(
     `Check the expansion: the coefficient of $x$ is $2 \\times ${operand(q(a))} \\times ${operand(h)} = ${b}$; the constant is $${tex(scaled)} + ${operand(k)} = ${c}$. The coefficient of $x^2$ stays ${a}.`,
+  );
+  explanation.push(
+    `In completed-square form, $${given}$ is $${completed(a, h, k)}$.`,
   );
   choiceFeedback = Object.fromEntries(
     options

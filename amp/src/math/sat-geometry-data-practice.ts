@@ -179,6 +179,10 @@ function trigCase(r: Random): SatGeometryDataCase {
       correct = "",
       wrong: Option[] = [],
       explanation: string[] = [];
+    const sides =
+      "In a right triangle, the leg opposite an angle is across from it, the adjacent leg touches it, and the hypotenuse is the longest side, across from the right angle.";
+    const ratios =
+      "The tangent of an angle is the opposite side divided by the adjacent side. The sine is the opposite side divided by the hypotenuse, and the cosine is the adjacent side divided by the hypotenuse.";
     const unitMixup =
       "The angle is measured from the horizontal, so the horizontal leg is adjacent to it and the vertical leg is opposite it.";
     if (tag === "elevation-height" || tag === "elevation-eye-height") {
@@ -215,11 +219,13 @@ function trigCase(r: Random): SatGeometryDataCase {
           : []),
       ];
       explanation = [
-        `The ${d}-foot ground distance is adjacent to the ${t}° angle and the pole is opposite it, so $\\tan ${t}^\\circ=\\frac{\\text{height}}{${d}}$.`,
-        `Height above eye level: $${d}\\tan ${t}^\\circ\\approx ${up.toFixed(2)}$ feet.`,
+        `The angle of elevation is how far you look up from level to see the top, here ${t}°.`,
+        sides,
+        `The ${d}-foot ground distance touches the ${t}° angle, so it is adjacent. The ${eye ? "pole above eye level" : "pole"} is opposite. Tangent uses exactly those two legs: $\\tan ${t}^\\circ=\\frac{\\text{opposite}}{${d}}$.`,
+        `Multiply both sides by ${d}: $${d}\\tan ${t}^\\circ\\approx ${up.toFixed(2)}$ feet.`,
         eye
-          ? `Add the ${eye} feet from the ground to her eyes: ${up.toFixed(2)} + ${eye} = ${ans.toFixed(2)}, which is ${ans.toFixed(1)} feet.`
-          : `The pole is about ${ans.toFixed(1)} feet tall.`,
+          ? `That is only the part above her eyes. Add the ${eye} feet from the ground to her eyes: ${up.toFixed(2)} + ${eye} = ${ans.toFixed(2)}. The pole is about ${ans.toFixed(1)} feet tall.`
+          : `The pole is about ${ans.toFixed(1)} feet tall, to the nearest tenth.`,
       ];
     } else if (tag === "depression-distance" || tag === "depression-height") {
       const base = 5 * r(6, 30);
@@ -248,11 +254,18 @@ function trigCase(r: Random): SatGeometryDataCase {
         ],
       ];
       explanation = [
-        `The horizontal line from the top of the cliff is parallel to the sea. By alternate interior angles, the angle at the boat in the right triangle is also ${t}°.`,
+        `The angle of depression is how far you look down from level, here ${t}°, measured from a level line through the top of the cliff.`,
+        `That level line is parallel to the sea. Alternate interior angles, between parallel lines on opposite sides of the line of sight, are equal. So the angle at the boat is also ${t}°.`,
+        sides,
         dist
-          ? `The cliff is opposite that angle and the distance is adjacent: $\\tan ${t}^\\circ=\\frac{${base}}{\\text{distance}}$, so distance = $\\frac{${base}}{\\tan ${t}^\\circ}\\approx ${ans.toFixed(2)}$.`
-          : `The distance is adjacent to that angle and the cliff is opposite: $\\tan ${t}^\\circ=\\frac{\\text{height}}{${base}}$, so height = $${base}\\tan ${t}^\\circ\\approx ${ans.toFixed(2)}$.`,
-        `Rounded to the nearest tenth, the answer is ${ans.toFixed(1)} meters.`,
+          ? `From the boat, the cliff is opposite and the distance is adjacent. The tangent of an angle is the opposite side divided by the adjacent side: $\\tan ${t}^\\circ=\\frac{${base}}{\\text{distance}}$.`
+          : `From the boat, the distance is adjacent and the cliff is opposite. The tangent of an angle is the opposite side divided by the adjacent side: $\\tan ${t}^\\circ=\\frac{\\text{height}}{${base}}$.`,
+        dist
+          ? `Solve for the distance: distance $=\\frac{${base}}{\\tan ${t}^\\circ}\\approx ${ans.toFixed(2)}$.`
+          : `Multiply both sides by ${base}: height $=${base}\\tan ${t}^\\circ\\approx ${ans.toFixed(2)}$.`,
+        dist
+          ? `The boat is about ${ans.toFixed(1)} meters from the base of the cliff.`
+          : `The cliff is about ${ans.toFixed(1)} meters high.`,
       ];
     } else if (tag.startsWith("ladder-")) {
       const L = r(10, 40);
@@ -284,11 +297,15 @@ function trigCase(r: Random): SatGeometryDataCase {
           ],
         ];
         explanation = [
-          `The ladder is the hypotenuse, ${L} feet. The ${lt}° angle is at the foot, so the height on the wall is opposite it and the ground distance is adjacent.`,
+          sides,
+          `The ladder is the slanted side, across from the right angle at the wall, so it is the hypotenuse: ${L} feet.`,
+          `The ${lt}° angle is at the foot. The height on the wall is opposite it, and the ground distance is adjacent.`,
           reach
-            ? `$\\sin ${lt}^\\circ=\\frac{\\text{height}}{${L}}$, so height = $${L}\\sin ${lt}^\\circ\\approx ${ans.toFixed(2)}$.`
-            : `$\\cos ${lt}^\\circ=\\frac{\\text{distance}}{${L}}$, so distance = $${L}\\cos ${lt}^\\circ\\approx ${ans.toFixed(2)}$.`,
-          `Rounded to the nearest tenth: ${ans.toFixed(1)} feet.`,
+            ? `Sine is opposite ÷ hypotenuse: $\\sin ${lt}^\\circ=\\frac{\\text{height}}{${L}}$. Multiply by ${L}: height $=${L}\\sin ${lt}^\\circ\\approx ${ans.toFixed(2)}$.`
+            : `Cosine is adjacent ÷ hypotenuse: $\\cos ${lt}^\\circ=\\frac{\\text{distance}}{${L}}$. Multiply by ${L}: distance $=${L}\\cos ${lt}^\\circ\\approx ${ans.toFixed(2)}$.`,
+          reach
+            ? `The ladder reaches about ${ans.toFixed(1)} feet up the wall.`
+            : `The foot of the ladder is about ${ans.toFixed(1)} feet from the wall.`,
         ];
       } else {
         const h = r(8, 30);
@@ -316,9 +333,11 @@ function trigCase(r: Random): SatGeometryDataCase {
           ],
         ];
         explanation = [
-          `Height ${h} is opposite the ${lt}° angle and the ladder is the hypotenuse: $\\sin ${lt}^\\circ=\\frac{${h}}{\\text{length}}$.`,
-          `Length = $\\frac{${h}}{\\sin ${lt}^\\circ}\\approx ${ans.toFixed(2)}$.`,
-          `Rounded to the nearest tenth: ${ans.toFixed(1)} feet.`,
+          sides,
+          `The ${h}-foot height is opposite the ${lt}° angle at the foot. The ladder is the slanted side, the hypotenuse.`,
+          `Sine is opposite ÷ hypotenuse: $\\sin ${lt}^\\circ=\\frac{${h}}{\\text{length}}$.`,
+          `The unknown is on the bottom, so multiply both sides by the length, then divide by $\\sin ${lt}^\\circ$: length $=\\frac{${h}}{\\sin ${lt}^\\circ}\\approx ${ans.toFixed(2)}$.`,
+          `The ladder must be about ${ans.toFixed(1)} feet long.`,
         ];
       }
     } else if (tag === "ramp-angle" || tag === "shadow-angle") {
@@ -359,9 +378,13 @@ function trigCase(r: Random): SatGeometryDataCase {
         ],
       ];
       explanation = [
-        `Relative to the angle at the ground, ${rise} is the opposite leg and ${run} is the adjacent leg.`,
-        `$\\tan\\theta=\\frac{${rise}}{${run}}$, so $\\theta=\\tan^{-1}\\!\\left(\\frac{${rise}}{${run}}\\right)\\approx ${a.toFixed(2)}^\\circ$.`,
-        `Rounded to the nearest tenth: ${a.toFixed(1)}°.`,
+        sides,
+        `Call the angle at the ground $\\theta$ (theta). The ${rise} is the opposite leg, across from it, and ${run} is the adjacent leg, touching it.`,
+        `The tangent of an angle is the opposite side divided by the adjacent side, so $\\tan\\theta=\\frac{${rise}}{${run}}$.`,
+        `The inverse tangent, $\\tan^{-1}$, works backward from a ratio to its angle: $\\theta=\\tan^{-1}\\!\\left(\\frac{${rise}}{${run}}\\right)\\approx ${a.toFixed(2)}^\\circ$.`,
+        tag === "ramp-angle"
+          ? `The ramp makes an angle of about ${a.toFixed(1)}° with the ground.`
+          : `The angle of elevation of the sun is about ${a.toFixed(1)}°.`,
       ];
     } else if (tag === "shadow-length") {
       const h = r(6, 60);
@@ -385,9 +408,11 @@ function trigCase(r: Random): SatGeometryDataCase {
         ],
       ];
       explanation = [
-        `The pole (${h} feet) is opposite the ${t}° angle at the end of the shadow, and the shadow is adjacent to it.`,
-        `$\\tan ${t}^\\circ=\\frac{${h}}{\\text{shadow}}$, so shadow = $\\frac{${h}}{\\tan ${t}^\\circ}\\approx ${ans.toFixed(2)}$.`,
-        `Rounded to the nearest tenth: ${ans.toFixed(1)} feet.`,
+        `The angle of elevation of the sun is how high the sun is above level: ${t}°. It sits at the tip of the shadow.`,
+        sides,
+        `The pole, ${h} feet, is opposite that angle. The shadow touches it, so the shadow is adjacent.`,
+        `The tangent of an angle is the opposite side divided by the adjacent side: $\\tan ${t}^\\circ=\\frac{${h}}{\\text{shadow}}$. Solve: shadow $=\\frac{${h}}{\\tan ${t}^\\circ}\\approx ${ans.toFixed(2)}$.`,
+        `The shadow is about ${ans.toFixed(1)} feet long.`,
       ];
     } else {
       // Placement of the depression angle in the triangle.
@@ -438,14 +463,17 @@ function trigCase(r: Random): SatGeometryDataCase {
           ];
       explanation = top
         ? [
-            `The horizontal through $T$ is parallel to $BS$, so by alternate interior angles angle $BST$ equals the ${t}° angle of depression.`,
-            `Triangle $TBS$ has a right angle at $B$, so its acute angles total 90°.`,
+            `The angle of depression is how far you look down from level: from a level line through $T$ down to the line of sight $TS$.`,
+            `That level line is parallel to the sea $BS$. Alternate interior angles, between parallel lines on opposite sides of $TS$, are equal. So angle $BST$ is ${t}°.`,
+            `Triangle $TBS$ has a right angle at $B$. Its angles add to 180°, so the two sharp angles share 90°.`,
             `Angle $BTS$ = 90° − ${t}° = ${90 - t}°.`,
+            `Angle $BTS$ at the top measures ${90 - t}°.`,
           ]
         : [
-            `The horizontal line through $T$ is parallel to the sea $BS$, and $TS$ crosses both lines.`,
-            `The angle of depression and angle $BST$ are alternate interior angles, so they are equal.`,
-            `Angle $BST$ = ${t}°.`,
+            `The angle of depression is how far you look down from level: from a level line through $T$ down to the line of sight $TS$.`,
+            `The level line through $T$ is parallel to the sea $BS$, and $TS$ crosses both.`,
+            `The angle of depression and angle $BST$ are alternate interior angles: between the parallel lines, on opposite sides of $TS$. Such angles are equal.`,
+            `Angle $BST$ at the ship measures ${t}°.`,
           ];
     }
     const choices = choose(correct, wrong);
@@ -507,9 +535,10 @@ function midpointCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `The midpoint is halfway between the endpoints in each coordinate. For the $x$-coordinate, use ${A[0]} and ${B[0]}; then do the same for $y$.`,
           explanation: [
-            `The midpoint's coordinates are the averages of the endpoints' coordinates.`,
+            `The midpoint is the point exactly halfway between the endpoints.`,
+            `Halfway in each direction means the average: add the two coordinates and divide by 2.`,
             `$x=\\frac{${A[0]}+${par(B[0])}}{2}=${m[0]}$ and $y=\\frac{${A[1]}+${par(B[1])}}{2}=${m[1]}$.`,
-            `The midpoint is $(${m[0]},\\ ${m[1]})$.`,
+            `The midpoint of $\\overline{AB}$ is $(${m[0]},\\ ${m[1]})$.`,
           ],
           choices,
         },
@@ -560,11 +589,13 @@ function midpointCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `Each midpoint coordinate is the average of the endpoint coordinates. For the $x$-coordinate write $\\frac{${A[0]}+x_B}{2}=${M[0]}$, and solve for $x_B$; then do the same for $y$.`,
           explanation: [
-            `The midpoint averages the endpoints: $\\frac{${A[0]}+x_B}{2}=${M[0]}$ and $\\frac{${A[1]}+y_B}{2}=${M[1]}$.`,
-            `Multiply by 2 and subtract: $x_B=2(${M[0]})-${par(A[0])}=${B[0]}$ and $y_B=2(${M[1]})-${par(A[1])}=${B[1]}$.`,
+            `The midpoint is halfway between the endpoints, so each of its coordinates is the average of the endpoints' coordinates.`,
+            `Write that with the unknown $B=(x_B,\\ y_B)$: $\\frac{${A[0]}+x_B}{2}=${M[0]}$ and $\\frac{${A[1]}+y_B}{2}=${M[1]}$.`,
+            `Multiply both sides by 2 to undo the division, then subtract $A$'s coordinate: $x_B=2(${M[0]})-${par(A[0])}=${B[0]}$ and $y_B=2(${M[1]})-${par(A[1])}=${B[1]}$.`,
+            `Check: $M$ is the same step from $A$ as $B$ is from $M$.`,
             sum
-              ? `$B=(${B[0]},\\ ${B[1]})$, and ${B[0]} + ${par(B[1])} = ${B[0] + B[1]}.`
-              : `$B=(${B[0]},\\ ${B[1]})$.`,
+              ? `So $B=(${B[0]},\\ ${B[1]})$, and the sum of its coordinates is ${B[0]} + ${par(B[1])} = ${B[0] + B[1]}.`
+              : `The coordinates of $B$ are $(${B[0]},\\ ${B[1]})$.`,
           ],
           choices,
         },
@@ -606,9 +637,10 @@ function midpointCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `Every diameter passes through the center and the center is halfway between its endpoints. Average the $x$-coordinates ${A[0]} and ${B[0]}, then the $y$-coordinates.`,
           explanation: [
-            "The center of a circle is the midpoint of any diameter.",
+            "A diameter is a segment through the center, from one side of the circle to the other. The center sits exactly halfway along it.",
+            "So the center is the midpoint of $\\overline{AB}$: average the $x$-coordinates, then the $y$-coordinates.",
             `$x=\\frac{${A[0]}+${par(B[0])}}{2}=${h}$ and $y=\\frac{${A[1]}+${par(B[1])}}{2}=${k}$.`,
-            `The center is $(${h},\\ ${k})$.`,
+            `The center of the circle is $(${h},\\ ${k})$.`,
           ],
           choices,
         },
@@ -639,9 +671,11 @@ function midpointCase(r: Random): SatGeometryDataCase {
         answer: "",
         hint: `Find the center first: it is the midpoint of the diameter with endpoints $(${sgn(A[0])},\\ ${sgn(A[1])})$ and $(${sgn(B[0])},\\ ${sgn(B[1])})$. Then find the distance from the center to one endpoint; that is the radius, and the equation needs its square.`,
         explanation: [
-          `The center is the midpoint: $(\\frac{${A[0]}+${par(B[0])}}{2},\\ \\frac{${A[1]}+${par(B[1])}}{2})=(${h},\\ ${k})$.`,
-          `The radius is the distance from the center to $(${B[0]},\\ ${B[1]})$: $r^2=(${B[0]}-${par(h)})^2+(${B[1]}-${par(k)})^2=${p * p}+${q * q}=${r2}$.`,
-          `The equation $(x-h)^2+(y-k)^2=r^2$ becomes $(${shiftTex("x", h)})^2+(${shiftTex("y", k)})^2=${r2}$.`,
+          `A circle's equation is $(x-h)^2+(y-k)^2=r^2$, where $(h,\\ k)$ is the center and $r$ is the radius, the distance from the center to the circle.`,
+          `A diameter passes through the center, so the center is its midpoint: $(\\frac{${A[0]}+${par(B[0])}}{2},\\ \\frac{${A[1]}+${par(B[1])}}{2})=(${h},\\ ${k})$.`,
+          `The radius reaches from the center to an endpoint. The distance formula squares the change in $x$ and in $y$ and adds: $r^2=(${B[0]}-${par(h)})^2+(${B[1]}-${par(k)})^2=${p * p}+${q * q}=${r2}$.`,
+          `Put the center and $r^2$ into the form. Subtracting a negative coordinate shows as a plus sign.`,
+          `The equation of the circle is $(${shiftTex("x", h)})^2+(${shiftTex("y", k)})^2=${r2}$.`,
         ],
         choices,
       },
@@ -717,9 +751,11 @@ function spaceCase(r: Random): SatGeometryDataCase {
             answer: "",
             hint: `The segment between opposite corners of a box has length $\\sqrt{\\ell^2+w^2+h^2}$. Square the known lengths ${l}, ${w} and ${d}, and use them to get $h^2$.`,
             explanation: [
-              `The diagonal satisfies $d^2=\\ell^2+w^2+h^2$.`,
-              `$${d}^2=${l}^2+${w}^2+h^2$, so $${d * d}=${l * l + w * w}+h^2$ and $h^2=${h * h}$.`,
-              `The height is ${lenOf(h, unit)}.`,
+              `The longest segment in a box runs from one corner to the opposite corner, through the inside. Call its length $d$.`,
+              `Using the Pythagorean theorem twice (once across the base, once up the height) gives $d^2=\\ell^2+w^2+h^2$: length, width and height, each squared.`,
+              `Substitute: $${d}^2=${l}^2+${w}^2+h^2$, so $${d * d}=${l * l + w * w}+h^2$.`,
+              `Subtract to get $h^2$ alone: $h^2=${d * d}-${l * l + w * w}=${h * h}$. Take the square root: $h=${h}$.`,
+              `The height of the box is ${lenOf(h, unit)}.`,
             ],
             choices,
           },
@@ -754,9 +790,13 @@ function spaceCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `First find the diagonal of the base using ${l} and ${w}. That diagonal and the ${lenOf(h, unit)} height are the legs of a second right triangle whose hypotenuse is the corner-to-corner segment.`,
           explanation: [
-            `The base diagonal $f$ satisfies $f^2=${l}^2+${w}^2=${l * l + w * w}$.`,
-            `The space diagonal $d$ is the hypotenuse of a right triangle with legs $f$ and ${h}: $d^2=f^2+${h}^2=${l * l + w * w}+${h * h}=${d * d}$.`,
-            `So $d=${d}$ ${unit[1]}.`,
+            `The Pythagorean theorem says that in a right triangle, leg² + leg² = hypotenuse², where the hypotenuse is the longest side, across from the right angle.`,
+            `First cross the bottom of the box. The base diagonal $f$ is the hypotenuse of a right triangle with legs ${l} and ${w}: $f^2=${l}^2+${w}^2=${l * l + w * w}$.`,
+            `Now go up. The corner-to-corner segment $d$ is the hypotenuse of a right triangle with legs $f$ and the height ${h}: $d^2=f^2+${h}^2=${l * l + w * w}+${h * h}=${d * d}$.`,
+            `Take the square root: $d=\\sqrt{${d * d}}=${d}$.`,
+            tag === "box-diagonal"
+              ? `The distance from one corner to the opposite corner is ${lenOf(d, unit)}.`
+              : `The longest rod that fits is ${lenOf(d, unit)} long.`,
           ],
           choices,
         },
@@ -790,9 +830,11 @@ function spaceCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `Each edge is ${edge} centimeters. Find a face diagonal first; then use it and one more edge as the legs of a right triangle.`,
           explanation: [
-            `A face diagonal is $\\sqrt{${edge}^2+${edge}^2}=\\sqrt{${2 * edge * edge}}$.`,
-            `The space diagonal $d$ satisfies $d^2=${2 * edge * edge}+${edge * edge}=${3 * edge * edge}$.`,
-            `Thus $d=${edge}\\sqrt{3}$ centimeters.`,
+            `The Pythagorean theorem says that in a right triangle, leg² + leg² = hypotenuse², where the hypotenuse is the longest side, across from the right angle.`,
+            `A face diagonal crosses one square face. Its legs are two edges: $\\sqrt{${edge}^2+${edge}^2}=\\sqrt{${2 * edge * edge}}$.`,
+            `The vertex-to-vertex segment $d$ has legs: that face diagonal and one more edge going up. So $d^2=${2 * edge * edge}+${edge * edge}=${3 * edge * edge}$.`,
+            `Simplify: $d=\\sqrt{${3 * edge * edge}}=\\sqrt{${edge * edge}\\cdot 3}=${edge}\\sqrt{3}$.`,
+            `The distance between opposite vertices is $${edge}\\sqrt{3}$ centimeters.`,
           ],
           choices,
         },
@@ -828,9 +870,10 @@ function spaceCase(r: Random): SatGeometryDataCase {
         answer: "",
         hint: `The corner-to-corner segment is the hypotenuse of a right triangle whose legs are the base diagonal (found from ${l} and ${w}) and the ${h}-inch height. Keep the squares exact and simplify at the end.`,
         explanation: [
-          `$d^2=${l}^2+${w}^2+${h}^2=${l * l}+${w * w}+${h * h}=${S}$.`,
-          `$d=\\sqrt{${S}}$${simplifyRoot(S)[0] > 1 ? `, and $${S}=${simplifyRoot(S)[0] ** 2}\\cdot ${simplifyRoot(S)[1]}$ gives $d=${rootTex(S)}$` : ""}.`,
-          `The distance is $${rootTex(S)}$ inches.`,
+          `The Pythagorean theorem says that in a right triangle, leg² + leg² = hypotenuse², where the hypotenuse is the longest side, across from the right angle.`,
+          `Use it twice: across the base (legs ${l} and ${w}), then up the height ${h}. Together that gives $d^2=${l}^2+${w}^2+${h}^2=${l * l}+${w * w}+${h * h}=${S}$.`,
+          `So $d=\\sqrt{${S}}$.${simplifyRoot(S)[0] > 1 ? ` To simplify, pull out the largest perfect square: $${S}=${simplifyRoot(S)[0] ** 2}\\cdot ${simplifyRoot(S)[1]}$, so $d=${rootTex(S)}$.` : ""}`,
+          `The exact distance between opposite corners is $${rootTex(S)}$ inches.`,
         ],
         choices,
       },
@@ -921,9 +964,13 @@ function circleSegmentCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `For two chords meeting inside a circle, the two parts of one chord multiply to the same number as the two parts of the other. Start with $AE\\cdot EB$ using ${a} and ${b}.`,
           explanation: [
-            `Intersecting chords satisfy $AE\\cdot EB=CE\\cdot ED$.`,
-            `${a}·${b} = ${c}·$ED$, so $ED=${prod}\\div ${c}=${d}$.`,
-            whole ? `$CD=CE+ED=${c}+${d}=${c + d}$.` : `$ED=${d}$.`,
+            `A chord is a segment joining two points on a circle. When two chords cross inside a circle, each is cut into two pieces.`,
+            `The two pieces of one chord multiply to the same number as the two pieces of the other: $AE\\cdot EB=CE\\cdot ED$. This holds because the crossing makes two similar triangles.`,
+            `Substitute: $${a}\\cdot ${b}=${c}\\cdot ED$, so $${prod}=${c}\\cdot ED$.`,
+            `Divide both sides by ${c}: $ED=${prod}\\div ${c}=${d}$.`,
+            whole
+              ? `The whole chord is both pieces: $CD=CE+ED=${c}+${d}=${c + d}$. So $\\overline{CD}$ has length ${c + d}.`
+              : `$\\overline{ED}$ has length ${d}.`,
           ],
           choices,
         },
@@ -983,11 +1030,13 @@ function circleSegmentCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `For two secants from one outside point, the outside part times the whole secant is the same for both. Use $PA\\cdot PB$ with ${e1} and ${w1} to get that common product.`,
           explanation: [
-            `$PA\\cdot PB=PC\\cdot PD$, with each product made from an outside part and the whole secant.`,
-            `${e1}·${w1} = ${P}, so $PD=${P}\\div ${e2}=${w2}$.`,
+            `A secant is a line that cuts through a circle at two points. From one outside point $P$, each secant has an outside part and a whole length.`,
+            `For two secants from the same point, outside part × whole secant is the same for both: $PA\\cdot PB=PC\\cdot PD$.`,
+            `Substitute: $${e1}\\cdot ${w1}=${P}$, so $${e2}\\cdot PD=${P}$.`,
+            `Divide both sides by ${e2}: $PD=${P}\\div ${e2}=${w2}$.`,
             internal
-              ? `The chord $CD=PD-PC=${w2}-${e2}=${w2 - e2}$.`
-              : `$PD=${w2}$.`,
+              ? `The chord is the part inside the circle: whole minus outside part. $CD=PD-PC=${w2}-${e2}=${w2 - e2}$, so chord $\\overline{CD}$ is ${w2 - e2} long.`
+              : `The whole secant $\\overline{PD}$ is ${w2} long.`,
           ],
           choices,
         },
@@ -1079,15 +1128,16 @@ function circleSegmentCase(r: Random): SatGeometryDataCase {
               ? `A tangent segment squared equals the outside part of a secant times the whole secant. Multiply ${e} and ${w}.`
               : `A tangent segment squared equals the outside part of a secant times the whole secant. Start with $PT^2$ using ${t}.`,
           explanation: [
-            `The tangent-secant relation is $PT^2=PA\\cdot PB$, with the outside part $PA$ and the whole secant $PB$.`,
+            `A tangent touches a circle at exactly one point, here $T$. A secant cuts through the circle at two points, here $A$ and $B$.`,
+            `From one outside point, the tangent squared equals the secant's outside part times its whole length: $PT^2=PA\\cdot PB$.`,
             kind === "tangent"
-              ? `$PT^2=${e}\\cdot ${w}=${e * w}$, so $PT=${t}$.`
-              : `${t}² = ${e}·$PB$, so $PB=${t * t}\\div ${e}=${w}$.`,
+              ? `Substitute: $PT^2=${e}\\cdot ${w}=${e * w}$. Take the square root: $PT=${t}$.`
+              : `Substitute: $${t}^2=${e}\\cdot PB$, so $${t * t}=${e}\\cdot PB$. Divide by ${e}: $PB=${t * t}\\div ${e}=${w}$.`,
             kind === "chord"
-              ? `The chord $AB=PB-PA=${w}-${e}=${w - e}$.`
+              ? `The chord is the part inside the circle: $AB=PB-PA=${w}-${e}=${w - e}$. So $\\overline{AB}$ is ${w - e} long.`
               : kind === "whole"
-                ? `$PB=${w}$.`
-                : `$PT=${t}$.`,
+                ? `The whole secant $\\overline{PB}$ is ${w} long.`
+                : `The tangent segment $\\overline{PT}$ is ${t} long.`,
           ],
           choices,
         },
@@ -1163,10 +1213,11 @@ function circleSegmentCase(r: Random): SatGeometryDataCase {
         answer: "",
         hint: `The tangent at $P(${sgn(P[0])},\\ ${sgn(P[1])})$ is perpendicular to the radius that ends at $P$. First find the slope of that radius using the center $(${sgn(h)},\\ ${sgn(k)})$ and $P$.`,
         explanation: [
-          `The radius from the center to $P$ has rise ${Y} and run ${X}.`,
+          `A tangent line touches the circle at one point, $P$, and makes a right angle with the radius to that point. The radius runs from the center to the circle.`,
+          `The radius from the center to $P$ has rise ${Y} (change in $y$) and run ${X} (change in $x$).`,
           axis
             ? `That radius is ${Y === 0 ? "horizontal" : "vertical"}, and the tangent is perpendicular to it, so it is ${Y === 0 ? "vertical" : "horizontal"}.`
-            : `Its slope is $\\frac{${Y}}{${X}}$. The tangent is perpendicular to the radius, so its slope is the negative reciprocal.`,
+            : `The radius's slope, rise over run, is $\\frac{${Y}}{${X}}$. Perpendicular lines have opposite reciprocal slopes: flip the fraction and change the sign.`,
           ans === "undefined"
             ? "The slope of the tangent at $P$ is undefined, because the tangent is a vertical line."
             : `The slope of the tangent at $P$ is ${ans}.`,
@@ -1266,9 +1317,11 @@ function freqCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `Each value occurs as many times as its frequency. Multiply each value by its frequency, add those products, and also add the frequencies to learn how many data values there are.`,
           explanation: [
-            `Sum of the data: ${d.values.map((v, i) => `${v}·${d.freq[i]}`).join(" + ")} = ${T}.`,
-            `Number of data values: ${d.freq.join(" + ")} = ${n}.`,
-            `Mean = ${T} ÷ ${n} = ${mean}.`,
+            `The mean is the average: add all the data values, then divide by how many there are.`,
+            `In a frequency table, the frequency says how many times each value occurs. So a value with frequency 3 is counted 3 times.`,
+            `Total of all the data: multiply each value by its frequency and add. ${d.values.map((v, i) => `${v}·${d.freq[i]}`).join(" + ")} = ${T}.`,
+            `Number of data values: add the frequencies. ${d.freq.join(" + ")} = ${n}.`,
+            `Divide: ${T} ÷ ${n} = ${mean}. The mean of the data is ${mean}.`,
           ],
           choices,
         },
@@ -1316,14 +1369,16 @@ function freqCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `There are ${n} data values in all. Decide which position${n % 2 ? "" : "s"} in the ordered list hold${n % 2 ? "s" : ""} the middle, then add frequencies from the smallest value until you reach ${n % 2 ? "it" : "them"}.`,
           explanation: [
-            `The total frequency is ${n}, so the median is ${pos} value in order${n % 2 ? "" : ", averaged"}.`,
+            `The median is the middle value when all the data are listed in order. The frequency says how many times each value appears.`,
+            `Adding the frequencies gives ${n} data values, so the median is ${pos} value in order${n % 2 ? "" : ", averaged"}.`,
             `Running totals of the frequencies: ${d.values
               .map(
                 (v, i) =>
                   `${v}: ${d.freq.slice(0, i + 1).reduce((a, b) => a + b, 0)}`,
               )
               .join(", ")}.`,
-            `${pos.replace("the ", "The ")}${n % 2 ? " value is" : " values are"} ${n % 2 ? med : `${xs[n / 2 - 1]} and ${xs[n / 2]}`}, so the median is ${med}.`,
+            `A running total counts how many values are at or below each value, so it shows where each position lands. ${pos.replace("the ", "The ")}${n % 2 ? " value is" : " values are"} ${n % 2 ? med : `${xs[n / 2 - 1]} and ${xs[n / 2]}`}.`,
+            `The median of the data is ${med}.`,
           ],
           choices,
         },
@@ -1365,8 +1420,9 @@ function freqCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `Each average counts in proportion to its percentage: ${wts[0]}%, ${wts[1]}% and ${wts[2]}%. Multiply each average by its percentage written as a decimal, and add the three products.`,
           explanation: [
-            `Weighted mean = ${sc[0]}(${wts[0] / 100}) + ${sc[1]}(${wts[1] / 100}) + ${sc[2]}(${wts[2] / 100}).`,
-            `= ${dec(sc[0]! * wts[0], 100)} + ${dec(sc[1]! * wts[1], 100)} + ${dec(sc[2]! * wts[2], 100)}.`,
+            `A weighted mean lets some parts count more than others. Each average counts by its percentage, its weight.`,
+            `Write each percentage as a decimal (divide by 100) and multiply it by its average: ${sc[0]}(${wts[0] / 100}) + ${sc[1]}(${wts[1] / 100}) + ${sc[2]}(${wts[2] / 100}).`,
+            `Multiply and add: ${dec(sc[0]! * wts[0], 100)} + ${dec(sc[1]! * wts[1], 100)} + ${dec(sc[2]! * wts[2], 100)}. The weights add to 100%, so no further dividing is needed.`,
             `The course grade is ${dec(T, 100)}.`,
           ],
           choices,
@@ -1408,9 +1464,10 @@ function freqCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `A group's total is its size times its mean, such as ${n1} students with mean ${m1}. Find the total score of each class, add them, and then divide by the number of students in both classes.`,
           explanation: [
+            `The mean is total ÷ count, so total = mean × count. A bigger class counts more in the combined mean.`,
             `Class totals: ${n1}·${m1} = ${n1 * m1} and ${n2}·${m2} = ${n2 * m2}.`,
-            `Combined total: ${n1 * m1} + ${n2 * m2} = ${T}, for ${n1 + n2} students.`,
-            `Combined mean = ${T} ÷ ${n1 + n2} = ${dec(T, n1 + n2)}.`,
+            `Combined total: ${n1 * m1} + ${n2 * m2} = ${T}, for ${n1} + ${n2} = ${n1 + n2} students.`,
+            `Divide: ${T} ÷ ${n1 + n2} = ${dec(T, n1 + n2)}. The mean test score of all ${n1 + n2} students is ${dec(T, n1 + n2)}.`,
           ],
           choices,
         },
@@ -1457,11 +1514,11 @@ function freqCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `The mean times the number of values gives the total. Find the original total from ${n} and ${m}, ${add ? "add" : "subtract"} ${v}, and divide by the new number of values.`,
           explanation: [
-            `Original total: ${n}·${m} = ${n * m}.`,
+            `The mean is total ÷ count, so total = mean × count. Original total: ${n}·${m} = ${n * m}.`,
             add
               ? `New total: ${n * m} + ${v} = ${n * m + v}, for ${n + 1} numbers.`
               : `Remaining total: ${n * m} − ${v} = ${n * m - v}, for ${n - 1} numbers.`,
-            `New mean = ${add ? n * m + v : n * m - v} ÷ ${add ? n + 1 : n - 1} = ${m2}.`,
+            `Divide by the new count: ${add ? n * m + v : n * m - v} ÷ ${add ? n + 1 : n - 1} = ${m2}. The mean of the ${add ? "new set" : "remaining numbers"} is ${m2}.`,
           ],
           choices,
         },
@@ -1516,6 +1573,7 @@ function freqCase(r: Random): SatGeometryDataCase {
         answer: "",
         hint: `Compare the new value ${v} with the current mean of ${dec(T, n)}: a value above the mean pulls the mean up and a value below pulls it down. For the median, count how the middle position moves in the ordered data.`,
         explanation: [
+          `The mean is the total divided by the count. The median is the middle value when the data are in order.`,
           `Before: ${n} values, total ${T}, mean ${dec(T, n)}; the median is ${fmtHalf(twiceMedian(xs))}.`,
           `After adding ${v}: ${n + 1} values, total ${T + v}, mean ${dec(T + v, n + 1)}; the median is ${fmtHalf(twiceMedian(ys))}.`,
           `${word("mean", meanDir)}, and ${word("median", medDir).replace("The", "the")}.`,
@@ -1689,9 +1747,11 @@ function independenceCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `Two events are independent when the proportion answering Yes within the group equals the proportion answering Yes overall. Find the overall proportion from the Total row, then compare it with each group's proportion.`,
           explanation: [
-            `Overall, ${overall} of ${N} answered Yes, a proportion of ${rational(overall, N)}.`,
-            `Within the groups the Yes proportions are ${ctx.groups.map((name, i) => `${name}: ${share(i)}`).join(", ")}.`,
-            `Only ${ctx.groups[g]} matches ${rational(overall, N)}, so being in ${ctx.groups[g]} is independent of answering Yes.`,
+            `Two events are independent when knowing one does not change the chance of the other.`,
+            `So being in a group is independent of answering Yes when that group says Yes at the same rate as everyone.`,
+            `Overall, ${overall} of ${N} answered Yes, a proportion (fraction of the whole) of ${rational(overall, N)}.`,
+            `Within each group, the Yes proportions are ${ctx.groups.map((name, i) => `${name}: ${share(i)}`).join(", ")}.`,
+            `Only ${ctx.groups[g]} matches the overall ${rational(overall, N)}. So being in ${ctx.groups[g]} is independent of answering Yes.`,
           ],
           choices,
         },
@@ -1759,6 +1819,7 @@ function independenceCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `Find $P(A\\mid B)$ by restricting to the ${colB} people in column $B$ and counting those also in $A$. Find $P(A)$ from the whole table of ${N} people, and compare the two.`,
           explanation: [
+            `$P(A)$ is the probability of $A$ among everyone. $P(A\\mid B)$, read "the probability of $A$ given $B$", is the probability of $A$ among only those with $B$.`,
             `$P(A\\mid B)=\\frac{${joint}}{${colB}}=${rational(joint, colB)}$ and $P(A)=\\frac{${rowA}}{${N}}=${rational(rowA, N)}$.`,
             dir === "same"
               ? "The two proportions are equal, so knowing $B$ does not change the probability of $A$."
@@ -1812,9 +1873,11 @@ function independenceCase(r: Random): SatGeometryDataCase {
             answer: "",
             hint: `Write the share answering Yes to each question as a fraction of ${N}. For independent events the share answering both is the product of those two shares; then convert back to a count.`,
             explanation: [
-              `$P(\\text{Yes to 1})=\\frac{${nA}}{${N}}$ and $P(\\text{Yes to 2})=\\frac{${nB}}{${N}}$.`,
-              `Independent: $P(\\text{both})=\\frac{${nA}}{${N}}\\cdot\\frac{${nB}}{${N}}$.`,
-              `Expected count = ${N}·that product = ${nA}·${nB} ÷ ${N} = ${both}.`,
+              `Independent means one answer does not change the chance of the other.`,
+              `The probability of Yes to each question: $P(\\text{Yes to 1})=\\frac{${nA}}{${N}}$ and $P(\\text{Yes to 2})=\\frac{${nB}}{${N}}$.`,
+              `For independent events, the chance of both is the product of the chances: $P(\\text{both})=\\frac{${nA}}{${N}}\\cdot\\frac{${nB}}{${N}}$.`,
+              `Multiply by the ${N} people to turn a probability into a count: ${N}·that product = ${nA}·${nB} ÷ ${N} = ${both}.`,
+              `So ${both} people would be expected to answer Yes to both.`,
             ],
             choices,
           },
@@ -1850,9 +1913,10 @@ function independenceCase(r: Random): SatGeometryDataCase {
           answer: "",
           hint: `Independence means knowing one event gives no information about the other. Write $P(A)=${pa}\\%$ and $P(B)=${pb}\\%$ as decimals and use the product rule for independent events.`,
           explanation: [
-            `For independent events, $P(A\\text{ and }B)=P(A)\\cdot P(B)$.`,
-            `$${pa / 100}\\times ${pb / 100}=${Number(((pa * pb) / 10000).toFixed(4))}$.`,
-            `That is ${fmt(joint)}.`,
+            `Independent events do not affect each other's chances.`,
+            `For independent events, the probability of both is the product: $P(A\\text{ and }B)=P(A)\\cdot P(B)$.`,
+            `Write the percents as decimals and multiply: $${pa / 100}\\times ${pb / 100}=${Number(((pa * pb) / 10000).toFixed(4))}$.`,
+            `The probability that both happen is ${fmt(joint)}.`,
           ],
           choices,
         },
@@ -1886,9 +1950,10 @@ function independenceCase(r: Random): SatGeometryDataCase {
         answer: "",
         hint: `In $P(${X.letter}\\mid ${Y.letter})$, the event after the bar is the condition: first restrict attention to the respondents for whom $${Y.letter}$ is true. Then ask what share of that restricted group has $${X.letter}$; the given probability is ${p / 100}.`,
         explanation: [
-          `The vertical bar reads "given that". The event $${Y.letter}$ after the bar defines the group considered: ${c.all} who ${Y.pred}.`,
-          `The probability ${p / 100} is the share of that group for whom $${X.letter}$ occurs.`,
-          `So among ${c.all} who ${Y.pred}, ${p}% ${X.pred}.`,
+          `A conditional probability is a chance within a smaller group. The vertical bar reads "given that".`,
+          `The event after the bar, $${Y.letter}$, names the group: ${c.all} who ${Y.pred}.`,
+          `The probability ${p / 100}, or ${p}%, is the share of that group for whom $${X.letter}$ happens.`,
+          `So the correct reading is: among ${c.all} who ${Y.pred}, ${p}% ${X.pred}.`,
         ],
         choices,
       },
