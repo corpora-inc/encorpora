@@ -41,8 +41,8 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       squared: "square-number",
       "more than": "more-than",
       opposite: "opposite-number",
-      whole: "whole",
     },
+    noLink: ["whole"],
     terms: ["square-number", "opposite-number"],
     method: [
       "Work out what is inside parentheses first. Keep a negative answer: $2-8=-6$.",
@@ -61,9 +61,8 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       part: "part",
       term: "term-expression",
       terms: "term-expression",
-      whole: "whole",
     },
-    noLink: ["change", "changes"],
+    noLink: ["change", "changes", "whole"],
     terms: ["expanded-form", "word-form"],
     method: [
       "Add the numbers in the expanded form to write the number in digits. Put a 0 in any place that is missing.",
@@ -528,7 +527,7 @@ export const staarGapLessons: Lesson[] = [
     workedExample: {
       prompt: "Write $600{,}000+4{,}000+300+8$ in words.",
       steps: [
-        "Add the values to write the number in digits: $600{,}000+4{,}000+300+8=604{,}308$. The tens place is empty, so it gets a 0.",
+        "Add the values to write the number in digits: $600{,}000+4{,}000+300+8=604{,}308$. The ten-thousands and tens places are empty, so each gets a 0.",
         "The thousands part is 604, so say: six hundred four thousand.",
         "The rest is 308, so say: three hundred eight.",
       ],
