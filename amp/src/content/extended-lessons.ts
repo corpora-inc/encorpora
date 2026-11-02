@@ -917,7 +917,7 @@ export const extendedLessons: Lesson[] = [
     id: "multiplying-decimals",
     title: "Multiply decimal-sized parts",
     summary:
-      "A decimal uses a point to show parts of one whole. 1.2 is 12 tenths, and 0.3 is 3 tenths. The numbers you multiply are called factors. Multiply the counts like whole numbers: $12\\times3=36$. Then name the piece size: tenths times tenths make hundredths, so $1.2\\times0.3=0.36$. The answer has as many decimal places, digits after the point, as both factors together.",
+      "A decimal uses a point to show parts of one whole. 1.2 is 12 tenths, and 0.3 is 3 tenths. The numbers you multiply are called factors. Multiply the counts like whole numbers: $12\\times3=36$. Then name the piece size: tenths times tenths make hundredths, so $1.2\\times0.3=0.36$. Before any zeros at the end are dropped, the answer has as many decimal places, digits after the point, as both factors together: $0.5\\times0.2=0.10$, which is 0.1.",
     senses: {
       part: "part",
       parts: "part",
