@@ -3,37 +3,40 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const financeIncomeMethods: Record<string, ProblemMethod> = {
   "profit-cost-breakeven": {
+    senses: { "more than": "more-than", parts: "part" },
     goal: "Find profit or loss, total cost, the break-even number, or the variable cost from a price and costs.",
     intuition:
-      "Revenue is the money a sale brings in. Costs are the money spent. Profit is revenue minus all costs; a negative result is a loss. A fixed cost is paid once no matter how many items are made, such as renting a table. A variable cost is paid again for each item, such as the beads in one bracelet.",
+      "Revenue is the money sales bring in: the price times the number sold. Costs are the money spent. Profit is revenue minus all the costs. If that is below zero, it is a loss. A fixed cost stays the same however many items are made, like renting a table. A variable cost is paid again for each item, like the beads in one bracelet. The break-even number is how many you must sell so that revenue equals total cost.",
+    noLink: ["change", "leaves"],
     terms: ["revenue", "fixed-cost", "variable-cost", "break-even-number"],
     method: [
-      "Total cost = fixed costs + (making cost per item × number made).",
-      "Revenue = price × number sold. Profit = revenue − total cost. A negative profit is a loss.",
-      "Break-even: each sale leaves price − making cost to pay the fixed costs, so the break-even number is fixed costs ÷ (price − making cost).",
+      "Total cost is the fixed costs plus the cost to make one item times the number made.",
+      "Revenue is the price times the number sold. Profit is revenue minus total cost. A profit below 0 is a loss.",
+      "Each sale leaves the price minus the making cost to pay the fixed costs. When the price is more than the making cost, the break-even number is the fixed costs divided by (price minus making cost). If that is not a whole number, round up to get the first number of sales with no loss.",
     ],
     watch:
-      "Pay the fixed costs once and the variable cost for every item. Divide the fixed costs by the price minus the making cost, not by the price alone.",
+      "Count the fixed costs once and the variable cost for every item. Divide the fixed costs by the price minus the making cost, not by the price alone.",
   },
   "tax-kinds-defined": {
     goal: "Name the kind of tax, income, payroll, sales or property, from a description or example.",
     intuition:
-      "A tax is money people and businesses pay to a government. The four common kinds are told apart by what the amount is based on and when it is paid.",
+      "A tax is money people and businesses must pay to a government. It pays for things such as schools and roads. There are four common kinds. You can tell them apart by what the amount is based on and when it is paid. Earnings are the money a person is paid for work.",
+    noLink: ["whole"],
     terms: ["income-tax", "payroll-tax", "sales-tax", "property-tax"],
     method: [
-      "Find what the amount is based on: earnings over a year, one paycheck, one price, or the value of property.",
-      "Find when it is paid: when filing a yearly return, at each paycheck, at each purchase, or each year on what is owned.",
+      "Find what the amount is based on: earnings over a year, one paycheck, one price, or the value of what a person owns.",
+      "Then check how it is collected. Payroll tax comes out of each paycheck for set programs. Sales tax is added at each purchase. Property tax is billed on what is owned.",
       "Match those two clues to the kind of tax.",
     ],
     watch:
-      "Payroll tax and income tax both come from earnings. Payroll tax is taken from each paycheck for specific programs; income tax is figured on the year's income.",
+      "Payroll tax and income tax both come from earnings. Payroll tax is taken from each paycheck for set programs. Income tax is worked out on the whole year's income.",
   },
   "tax-bracket-owed": {
-    senses: { part: "part" },
     noLink: ["jumps", "whole"],
     goal: "Use a three-bracket tax table to find the tax owed or the tax on part of an income.",
     intuition:
       "An income tax is a tax on what you earn: money paid to the government. A bracket table cuts income into slices called brackets. Each slice has its own rate, a percent taken from only the dollars in that slice. If extra earnings reach a higher bracket, only those new dollars get the higher rate.",
+    senses: { part: "part" },
     terms: [
       "tax-bracket",
       "taxable-income",
@@ -51,10 +54,10 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
       "Do not tax all of the income at the top row's rate. Only the part of income inside a row is taxed at that row's rate.",
   },
   "payroll-property-tax": {
-    senses: { unit: "unit", units: "unit" },
     goal: "Find a payroll, sales or property tax, or the pay left after two taxes are taken out.",
     intuition:
       "A tax is money paid to the government. Percent means per hundred, so an 8% tax takes 8 dollars from every 100 dollars. A property tax is often given as dollars for each 100 dollars of value. Then count how many hundreds the value holds and multiply by the rate.",
+    senses: { unit: "unit", units: "unit" },
     terms: [
       [
         "payroll-tax",
@@ -148,9 +151,9 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
 
 export const financeIncomePrinciples: Record<string, string> = {
   "profit-cost-breakeven":
-    "For price $p$, making cost $c$ per item, fixed costs $F$ and $n$ items sold, profit is $P(n)=pn-(F+cn)=(p-c)n-F$. It is zero at $n=F/(p-c)$ when $p>c$, a loss for smaller $n$ and a profit for larger $n$.",
+    "Bracelets sell for 6 dollars, beads cost 2 dollars for each one, and fixed costs are 20 dollars. Each sale leaves $6-2=4$ dollars, so $20\\div4=5$ sales break even. With letters, for price $p$, making cost $c$ per item, fixed costs $F$ and $n$ items sold, profit is $p\\times n-(F+c\\times n)=(p-c)\\times n-F$. When $p$ is more than $c$, profit is 0 at $n=F\\div(p-c)$. It is a loss for fewer items and a profit for more.",
   "tax-kinds-defined":
-    "An income tax is figured on income earned over a year. A payroll tax is withheld from wages to fund programs such as Social Security and Medicare. A sales tax is a percent of a purchase price. A property tax is a yearly amount based on the assessed value of real property.",
+    "A 1.75-dollar tax on a 25-dollar shirt is a sales tax: 7% of the price, added when you buy. An income tax is worked out on what a person earns in a year. A payroll tax is taken out of each paycheck to pay for programs such as Social Security and Medicare. A property tax is paid each year, based on the value of land and buildings a person owns.",
   "tax-bracket-owed":
     "Let $t_1<t_2$ be where the rows end and $r_1<r_2<r_3$ the rates as decimals. Here $\\min$ picks the smaller number and $\\max$ the larger. The tax on taxable income $I$ is $r_1\\min(I,t_1)+r_2\\max(0,\\min(I,t_2)-t_1)+r_3\\max(0,I-t_2)$. The tax rises with income, with no jumps. Inside each row it rises by that row's rate for each extra dollar.",
   "payroll-property-tax":
@@ -168,7 +171,8 @@ export const financeIncomeLessons: Lesson[] = [
     id: "profit-cost-breakeven",
     title: "Profit, cost and break-even",
     summary:
-      "Profit is revenue minus total cost. Fixed costs are paid once; variable costs are paid for each item.",
+      "Revenue is the money sales bring in. Profit is revenue minus total cost. A fixed cost stays the same however many items are made, and a variable cost is paid for each item. To break even means revenue equals total cost.",
+    senses: { "more than": "more-than" },
     templateIds: ["profit-cost-breakeven"],
     objectives: [
       "Find total cost from fixed and variable costs.",
@@ -179,8 +183,10 @@ export const financeIncomeLessons: Lesson[] = [
         stage: "intuition",
         title: "Money in, money out",
         paragraphs: [
-          "Revenue is the money a sale brings in: the price times the number sold. Costs are the money spent to make and sell. Profit is revenue minus total cost. If the result is below zero, it is a loss.",
-          "A fixed cost is paid once, however many items are made, such as renting a table. A variable cost is paid again for each item, such as the beads in one bracelet. Total cost is the fixed costs plus the variable cost times the number made.",
+          "Revenue is the money sales bring in: the price times the number sold. Costs are the money spent to make and sell things.",
+          "Profit is revenue minus total cost. If the answer is below zero, it is a loss.",
+          "A fixed cost stays the same however many items are made, like renting a table. A variable cost is paid again for each item, like the beads in one bracelet.",
+          "Total cost is the fixed costs plus the variable cost times the number made.",
         ],
       },
     ],
@@ -188,10 +194,11 @@ export const financeIncomeLessons: Lesson[] = [
       prompt:
         "A club sells bracelets for 6 dollars each. The fixed costs are 12 dollars for a table and 8 dollars for a banner. Beads for each bracelet cost 2 dollars. How many bracelets must be sold to break even?",
       steps: [
-        "Each bracelet sold brings in 6 dollars and costs 2 dollars in beads, so $6-2=4$ dollars of each sale is left to pay the fixed costs.",
+        "To break even means revenue equals total cost, so the profit is 0.",
+        "Each bracelet sold brings in 6 dollars and costs 2 dollars in beads. So $6-2=4$ dollars of each sale is left to pay the fixed costs.",
         "The fixed costs total $12+8=20$ dollars.",
         "Break-even is where those leftovers cover the fixed costs: $20\\div4=5$ bracelets.",
-        "Check: revenue is $5\\times6=30$ dollars and total cost is $20+5\\times2=30$ dollars, so profit is 0.",
+        "Check: revenue is $5\\times6=30$ dollars, and total cost is $20+5\\times2=30$ dollars. So profit is 0.",
       ],
       answer: "5",
       answerUnit: "bracelets",
@@ -201,31 +208,34 @@ export const financeIncomeLessons: Lesson[] = [
         stage: "method",
         title: "From break-even to profit",
         paragraphs: [
-          "Below the break-even number there is a loss; above it, a profit. After 5 sales, each extra bracelet adds 4 dollars of profit. Selling 8 gives revenue $8\\times6=48$ and cost $20+8\\times2=36$, a profit of $48-36=12$ dollars, which is also $(8-5)\\times4$.",
-          "To find a profit or loss directly, find revenue, find total cost, then subtract. Name the result a profit when it is positive, a loss when negative.",
+          "Below the break-even number there is a loss. Above it, there is a profit. After 5 sales, each extra bracelet adds 4 dollars of profit.",
+          "Selling 8 gives revenue $8\\times6=48$ and cost $20+8\\times2=36$. The profit is $48-36=12$ dollars, which is also $(8-5)\\times4$.",
+          "To find a profit or loss, find revenue, find total cost, then subtract. Call the answer a profit when it is above 0 and a loss when it is below 0.",
         ],
       },
       {
         stage: "formal",
-        title: "Profit as a linear function",
+        title: "Profit for any number sold",
         paragraphs: [
-          "With price $p$, making cost $c$, fixed costs $F$ and $n$ items sold, profit is $P(n)=(p-c)n-F$. It equals zero at $n=F/(p-c)$ when $p>c$. If $p\\le c$, no number sold ever covers the fixed costs.",
+          "With price $p$, making cost $c$ per item, fixed costs $F$ and $n$ items sold, profit is $(p-c)\\times n-F$.",
+          "It equals 0 at $n=F\\div(p-c)$ when $p$ is more than $c$. If that is not a whole number, the next whole number up is the first number of sales with no loss. If $p$ is not more than $c$ and the fixed costs are more than 0, no number of sales ever covers them.",
         ],
       },
     ],
     pitfalls: [
-      "Pay the fixed costs once, not for each item.",
+      "Count the fixed costs once, not for each item.",
       "Divide the fixed costs by the price minus the making cost, not by the price.",
-      "A negative profit is a loss; name it as a loss.",
+      "A profit below 0 is a loss, so call it a loss.",
     ],
     parentGuide:
-      "Ask the learner to plan a small stand: list one fixed cost and one variable cost, then find how many sales cover the fixed cost.",
+      "Ask the learner to plan a small stand. List one fixed cost and one variable cost, then find how many sales cover the fixed cost.",
   },
   {
     id: "tax-kinds-defined",
     title: "Kinds of taxes",
     summary:
-      "Income, payroll, sales and property taxes differ in what they are based on and when they are paid.",
+      "A tax is money people must pay to a government. Income, payroll, sales and property taxes differ in what they are based on and when they are paid.",
+    noLink: ["whole"],
     templateIds: ["tax-kinds-defined"],
     objectives: [
       "Tell income, payroll, sales and property taxes apart.",
@@ -236,8 +246,12 @@ export const financeIncomeLessons: Lesson[] = [
         stage: "intuition",
         title: "What the amount is based on",
         paragraphs: [
-          "A tax is money people and businesses pay to a government. Four common kinds are told apart by what the amount is based on and when it is paid.",
-          "An income tax is a share of what a person earns in a year, reported once a year. A payroll tax is taken out of each paycheck to pay for programs such as Social Security and Medicare. A sales tax is a percent of a price, added when something is bought. A property tax is a yearly amount based on the value of land and buildings a person owns.",
+          "A tax is money people and businesses must pay to a government. It pays for things such as schools and roads.",
+          "Four common kinds are told apart by what the amount is based on and when it is paid.",
+          "An income tax is a share of what a person earns in a year. It is reported once a year.",
+          "A payroll tax is taken out of each paycheck. It pays for programs such as Social Security and Medicare, which help older people.",
+          "A sales tax is a percent of a price, added when something is bought. A percent means out of 100.",
+          "A property tax is paid each year. It is based on the value of land and buildings a person owns.",
         ],
       },
     ],
@@ -245,8 +259,8 @@ export const financeIncomeLessons: Lesson[] = [
       prompt:
         "A receipt shows 25.00 dollars for a shirt and 1.75 dollars added at the register. Which kind of tax is the 1.75 dollars?",
       steps: [
-        "It is added when something is bought, so it is based on a purchase, not on earnings or on property.",
-        "Compare with the price: $1.75\\div25.00=0.07$, which is 7% of the price.",
+        "The 1.75 dollars is added when something is bought. So it is based on a purchase, not on earnings or on property.",
+        "Compare it with the price: $1.75\\div25.00=0.07$, which is 7% of the price.",
         "A percent of a price, added at the register, is a sales tax.",
       ],
       answer: "Sales tax",
@@ -256,23 +270,25 @@ export const financeIncomeLessons: Lesson[] = [
         stage: "method",
         title: "Two clues",
         paragraphs: [
-          "Ask two questions. What is the amount based on: a year of earnings, one paycheck, one price, or what a person owns? When is it paid: with a yearly return, at each paycheck, at each purchase, or each year? The two answers point to one kind.",
+          "Ask two questions. First, what is the amount based on: a year of earnings, one paycheck, one price, or what a person owns?",
+          "Second, how is it collected: worked out for the whole year, taken from each paycheck for set programs, added at each purchase, or billed on what is owned? Together the two answers point to one kind.",
         ],
       },
       {
         stage: "formal",
         title: "Definitions",
         paragraphs: [
-          "Income tax: a tax on income earned during a year. Payroll tax: a tax withheld from wages to fund programs such as Social Security and Medicare. Sales tax: a tax on the price of goods or services bought. Property tax: a recurring tax on the value of real property.",
+          "Income tax: a tax on income earned during a year. Payroll tax: a tax taken from wages, the pay for work, to fund programs such as Social Security and Medicare.",
+          "Sales tax: a tax on the price of things bought. Property tax: a tax paid each year on the value of land and buildings.",
         ],
       },
     ],
     pitfalls: [
-      "Payroll tax and income tax both come from earnings; payroll tax is taken from each paycheck for specific programs.",
-      "A tax added at the register is a sales tax even though it is a percent of the price.",
+      "Payroll tax and income tax both come from earnings. Payroll tax is taken from each paycheck for set programs.",
+      "A tax added at the register is a sales tax, not an income tax.",
     ],
     parentGuide:
-      "Look at a pay stub and a store receipt together and ask which lines are payroll tax and sales tax and what each is based on.",
+      "Look at a pay stub and a store receipt together. Ask which lines are payroll tax and sales tax, and what each is based on.",
   },
   {
     id: "tax-bracket-owed",

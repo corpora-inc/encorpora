@@ -6,45 +6,46 @@ const entries: FormatLessonEntry[] = [
     id: "fixed-variable-expense-table",
     title: "Fixed and variable expenses",
     summary:
-      "A fixed expense is the same every month; a variable expense changes with use or choices.",
+      "A fixed expense costs the same every month. A variable expense changes with how much you use or buy.",
     objectives: [
-      "Tell a fixed expense, which stays the same each month, from a variable expense, which changes.",
-      "Use several months of amounts to decide.",
+      "Tell a fixed expense, the same each month, from a variable expense, which changes.",
+      "Use the amounts for several months to decide.",
     ],
     intuition:
-      "An expense is money spent regularly. A fixed expense is the same amount every month, such as rent or a phone plan agreed in advance. A variable expense changes from month to month because it depends on how much you use or buy, such as groceries or electricity. To decide from records, compare the amounts: if they are all alike the expense is fixed, and if they differ it varies.",
+      "An expense is money spent on something. Many expenses come every month. A fixed expense is set at the same amount every month, like rent. Rent is money paid to live in a home. A variable expense depends on how much you use or buy, like food or electricity, so it changes from month to month. The tables in these problems show a few months. Here, an expense with the same amount every month is a fixed expense, and one whose amount differs is a variable expense.",
     terms: ["fixed-cost", "variable-cost"],
     method: [
-      "Look at the amounts for each expense across the months.",
-      "If every month shows the same amount, the expense is fixed. If any month differs, it varies.",
-      "With no amounts, ask whether the bill is set in advance (fixed) or depends on use (variable).",
+      "Look at the amounts for one expense across all the months.",
+      "If every month shows the same amount, the expense is fixed. If any month is different, it is variable.",
+      "If there are no amounts, ask: is the monthly amount agreed ahead of time (fixed)? Or does it depend on how much you use (variable)?",
     ],
     watch:
-      "Compare all the months. Two equal months do not prove an expense is fixed if a third differs.",
+      "Check every month. Two months that match do not make an expense fixed if a third month is different.",
     principle:
-      "An expense with monthly amounts $a_1,a_2,a_3$ is fixed when $a_1=a_2=a_3$ and variable otherwise. An agreed price makes a fixed expense, while a price per use makes a variable one.",
+      "Rent of 700, 700 and 700 dollars is a fixed expense, because every month is the same. Groceries of 210, 185 and 240 dollars are a variable expense. With letters, monthly amounts $a_1$, $a_2$ and $a_3$ make a fixed expense when $a_1=a_2=a_3$, and a variable one if any two differ. The small numbers 1, 2 and 3 name the months. A monthly price agreed ahead of time makes a fixed expense, and paying for how much you use makes a variable one.",
     example: {
       prompt:
         "Rent was 700, 700, 700 and groceries were 210, 185, 240 dollars in three months. Which varies?",
       steps: [
-        "Rent: 700, 700, 700 are all the same, so rent stays the same.",
-        "Groceries: 210, 185, 240 are different, so groceries vary.",
+        "Rent is 700, 700 and 700 dollars. All three months are the same, so rent stays the same.",
+        "Groceries are 210, 185 and 240 dollars. The months are different, so groceries vary.",
       ],
       answer: "Groceries vary; rent stays the same.",
     },
     methodTitle: "Same every month, or not",
     methodText: [
-      "Write the amounts in a row and check whether they are all equal.",
-      "A budget can plan for a fixed expense exactly, but must estimate a variable one.",
+      "Write the amounts in a row. Check whether they are all equal.",
+      "A family budget, a plan for spending, can plan a fixed expense exactly. For a variable expense it has to estimate, or make a close guess.",
     ],
     formal:
-      "Treating each expense as a sequence of monthly amounts, a fixed expense is a constant sequence and a variable expense is a nonconstant one.",
+      "Think of each expense as a list of monthly amounts. A fixed expense has the same amount in every month. A variable expense has at least two months that differ.",
     pitfalls: [
-      "Do not call an expense fixed because it is large; size does not decide.",
-      "Do not call an expense variable because it was paid late; only the amount matters.",
+      "Do not call an expense fixed because it is large. Size does not decide.",
+      "Do not call an expense variable because it was paid late. Only the amount matters.",
     ],
     parentGuide:
-      "Look at the family's recent bills together and sort them into those that are always the same and those that change.",
+      "Look at recent family bills together. Sort them into bills that are always the same and bills that change.",
+    noLink: ["change", "changes", "third", "sort"],
   },
   {
     id: "pythagorean-sort-table",
@@ -201,116 +202,119 @@ const entries: FormatLessonEntry[] = [
     id: "gross-net-sentence",
     title: "Gross pay and take-home pay",
     summary:
-      "Gross pay is earnings before anything is taken out; take-home pay is gross pay minus taxes and deductions.",
+      "Gross pay is what you earn before anything is taken out. Take-home pay is gross pay minus taxes and deductions.",
+    noLink: ["leaves", "sample"],
     objectives: [
       "Describe gross pay and take-home pay in words.",
       "Find take-home pay from gross pay, taxes and deductions.",
     ],
     intuition:
-      "Gross pay is all the money a worker earns, before anything is taken out. Taxes and other deductions, such as insurance, are taken out of it. What is left, the take-home pay, is the money the worker actually receives. So take-home pay is gross pay minus taxes and deductions, and it is always less than gross pay when something is taken out.",
+      "Gross pay is all the money a worker earns, before anything is taken out. Then some money is taken out. A tax is money people must pay to the government. A deduction is another amount taken out, such as a payment for health insurance. Some pay stubs call taxes deductions too, so count each amount only once. What is left is the take-home pay, also called net pay. It is the money the worker actually gets. So take-home pay is gross pay minus taxes and deductions. When anything is taken out, it is less than gross pay.",
     terms: ["gross-pay", "deduction", "net-pay"],
     method: [
-      "Add taxes and deductions to find everything taken out.",
-      "Subtract that total from gross pay.",
-      "The result is take-home pay, which is less than gross pay.",
+      "Add the taxes and the deductions to find everything taken out.",
+      "Subtract that total from the gross pay.",
+      "The answer is the take-home pay. It is less than gross pay when anything is taken out.",
     ],
     watch:
-      "Add all the amounts taken out before subtracting, and subtract from gross pay, not from another amount.",
+      "Add up everything taken out first. Then subtract it from the gross pay, not from another amount.",
     principle:
-      "Take-home pay $=$ gross pay $-$ (taxes $+$ deductions). Gross pay $=$ take-home pay $+$ taxes $+$ deductions.",
+      "Gross pay of 500 dollars, with 80 dollars of taxes and 20 dollars of deductions, leaves $500-(80+20)=400$ dollars of take-home pay. In words: take-home pay $=$ gross pay $-$ (taxes $+$ deductions). Adding back gives gross pay $=$ take-home pay $+$ taxes $+$ deductions.",
     example: {
       prompt:
         "Gross pay is 500 dollars, taxes are 80 dollars and deductions are 20 dollars. Find take-home pay.",
       steps: [
-        "Taken out in all: $80+20=100$ dollars.",
-        "Take-home pay: $500-100=400$ dollars.",
+        "Add everything taken out: $80+20=100$ dollars.",
+        "Subtract it from the gross pay: $500-100=400$ dollars of take-home pay.",
       ],
       answer: "400 dollars.",
     },
     methodTitle: "Everything taken out, then subtract",
     methodText: [
-      "Check by adding back: $400+100=500$.",
-      "In words: gross pay is counted before deductions, and take-home pay after.",
+      "Check by adding back: $400+100=500$, the gross pay.",
+      "In words: gross pay is counted before taxes and deductions, and take-home pay after.",
     ],
     formal:
-      "If $G$ is gross pay and $T_1,\\dots,T_n$ the amounts withheld, net pay is $N=G-\\sum T_i$, so $G=N+\\sum T_i$.",
+      "Say $G$ is the gross pay and $T$ is the total of all taxes and deductions. Then the take-home pay, or net pay, is $N=G-T$. So $G=N+T$: adding back what was taken out gives the gross pay.",
     pitfalls: [
-      "Do not add the taxes to gross pay.",
+      "Do not add the taxes to gross pay. They are taken out.",
       "Do not forget one of the deductions.",
     ],
     parentGuide:
-      "Look at a sample pay stub and find the gross pay, what was taken out, and the net pay.",
+      "Look at a sample pay stub, the paper that comes with pay. Find the gross pay, what was taken out, and the take-home pay.",
   },
   {
     id: "coordinate-terms-slots",
     title: "Names for the parts of a coordinate plane",
     summary:
-      "The axes are the two number lines, the origin is where they cross, and an ordered pair names a point by its two coordinates.",
+      "The axes are the two number lines of a coordinate plane. The origin is where they cross. An ordered pair names a point.",
+    senses: { plane: "plane" },
     objectives: [
       "Name the $x$-axis, the $y$-axis and the origin.",
       "Tell the $x$-coordinate and the $y$-coordinate of an ordered pair.",
     ],
     intuition:
-      "A coordinate plane has two number lines that cross at right angles. The horizontal one is the $x$-axis and the vertical one is the $y$-axis. They cross at the origin, the point $(0,0)$. A point is named by an ordered pair of numbers in a set order: the first number, the $x$-coordinate, tells how far to move along the $x$-axis, and the second, the $y$-coordinate, how far to move up.",
+      "A coordinate plane is a flat grid with two number lines that cross like a plus sign. The number line going across is the $x$-axis. The one going up and down is the $y$-axis. Together they are called the axes. They cross at the origin, the point $(0,0)$. A point is named by an ordered pair: two numbers in a set order, like $(3,5)$. The first number, the $x$-coordinate, says how far to move across. The second number, the $y$-coordinate, says how far to move up.",
     terms: ["x-axis", "y-axis", "origin", "ordered-pair"],
     method: [
-      "Decide whether the description is about a line, a point, or one of the numbers of a pair.",
-      "For a line, decide whether it runs across (the $x$-axis) or up (the $y$-axis).",
-      "For a number of a pair, the first is the $x$-coordinate and the second is the $y$-coordinate.",
+      "Decide what the description is about: a line, a point, or one of the numbers in a pair.",
+      "For a line, decide whether it goes across (the $x$-axis) or up and down (the $y$-axis).",
+      "For a number in a pair, the first is the $x$-coordinate and the second is the $y$-coordinate.",
     ],
     watch:
       "Do not mix up the $x$-coordinate, a number, with the $x$-axis, a line.",
     principle:
-      "The coordinate plane assigns to each point a unique ordered pair $(x,y)$: $x$ is its signed distance along the horizontal axis from the origin and $y$ its distance along the vertical axis.",
+      "The point $(3,5)$ is 3 across and 5 up from the origin. Each point has exactly one ordered pair $(x,y)$. Here $x$ is how far the point is across from the origin, and $y$ is how far up. A negative number means left or down.",
     example: {
       prompt:
         "Name: the vertical number line; the first number of the pair $(3,5)$; the point $(0,0)$.",
       steps: [
-        "The vertical number line is the $y$-axis.",
-        "The first number of the pair $(3,5)$ is 3, the $x$-coordinate.",
-        "The point $(0,0)$ is the origin.",
+        "The vertical number line, the one going up and down, is the $y$-axis.",
+        "In $(3,5)$, the first number, 3, says how far to move across. It is the $x$-coordinate.",
+        "The point $(0,0)$, where the axes cross, is the origin.",
       ],
       answer: "$y$-axis, $x$-coordinate, origin.",
     },
     methodTitle: "Line, point or number",
     methodText: [
-      "Say the order of a pair as 'across, then up'.",
-      "Both coordinates of the origin are 0.",
+      "Say the order of a pair as “across, then up”.",
+      "Both coordinates of the origin are 0, because you do not move at all.",
     ],
     formal:
-      "The Cartesian plane is $\\mathbb{R}\\times\\mathbb{R}$. Its axes are $\\{(x,0)\\}$ and $\\{(0,y)\\}$, the origin is $(0,0)$, and $x$ and $y$ are the coordinate functions.",
+      "The $x$-axis is every point whose $y$-coordinate is 0. The $y$-axis is every point whose $x$-coordinate is 0. The origin $(0,0)$ is on both. Each point has one ordered pair: how far across, then how far up.",
     pitfalls: [
-      "Do not read the pair as 'up, then across'.",
-      "Do not call the origin an axis; it is a point.",
+      "Do not read the pair as “up, then across”.",
+      "Do not call the origin an axis. It is a point.",
     ],
     parentGuide:
-      "Draw the plane on paper and label the axes, the origin and one point together.",
+      "Draw the plane on paper. Label the axes, the origin and one point together.",
   },
   {
     id: "point-on-axis-sentence",
     title: "A point on an axis",
     summary:
-      "A point with a coordinate of 0 lies on an axis; the other coordinate tells how far to move from the origin.",
+      "A point with a coordinate of 0 lies on an axis. The other coordinate tells how far, and which way, to move from the origin.",
     objectives: [
       "Tell which axis a point lies on from its coordinates.",
       "Say how far and in which direction to move from the origin.",
     ],
     intuition:
-      "In an ordered pair the first number says how far to move right and the second how far to move up. If the second number is 0, you do not move up at all, so the point is on the $x$-axis: $(5,0)$ is 5 units right of the origin. If the first number is 0, you do not move right, so the point is on the $y$-axis: $(0,3)$ is 3 units up.",
+      "An ordered pair, like $(5,0)$, names a point on a grid. Its two numbers are called coordinates. The first number says how far to move right from the origin, the point $(0,0)$ where the two number lines cross. The second number says how far to move up. A negative number means left or down instead. If the second number is 0, you do not move up at all. So the point is on the $x$-axis, the number line going across: $(5,0)$ is 5 units right of the origin. If the first number is 0, you do not move right. So the point is on the $y$-axis, the number line going up: $(0,3)$ is 3 units up.",
+    senses: { unit: "unit", units: "unit" },
     terms: ["coordinate", "origin"],
     method: [
-      "Find which coordinate is 0.",
-      "If the second is 0 the point is on the $x$-axis; if the first is 0 it is on the $y$-axis.",
-      "Move from the origin the number of units of the other coordinate: right for the first, up for the second.",
+      "Find which coordinate, which number of the pair, is 0.",
+      "If the second is 0, the point is on the $x$-axis. If the first is 0, it is on the $y$-axis.",
+      "Move from the origin by the other number: right for the first number, up for the second. A negative number means left or down.",
     ],
     watch:
-      "The axis is named by the coordinate that is not zero: a point with $y=0$ is on the $x$-axis.",
+      "A second number of 0 puts the point on the $x$-axis, not the $y$-axis: $(7,0)$ is on the $x$-axis.",
     principle:
-      "The point $(a,0)$ lies on the $x$-axis at distance $|a|$ from the origin, and $(0,b)$ lies on the $y$-axis at distance $|b|$ from the origin.",
+      "$(7,0)$ is on the $x$-axis, 7 units right of the origin. $(0,4)$ is on the $y$-axis, 4 units up. With letters, $(a,0)$ is on the $x$-axis and $(0,b)$ is on the $y$-axis. The distance from the origin is the other number without its sign, so $(-3,0)$ is 3 units left.",
     example: {
       prompt: "Describe the point $(0,4)$.",
       steps: [
-        "The first coordinate is 0, so you do not move right: the point is on the $y$-axis.",
+        "The first coordinate is 0, so you do not move right. The point is on the $y$-axis.",
         "The second coordinate is 4, so move 4 units up from the origin.",
       ],
       answer: "It is on the $y$-axis, 4 units up from the origin.",
@@ -318,28 +322,30 @@ const entries: FormatLessonEntry[] = [
     methodTitle: "Which number is zero",
     methodText: [
       "Check by plotting: start at the origin and make the moves.",
-      "Right for the first number, up for the second.",
+      "Move right for the first number and up for the second.",
     ],
     formal:
-      "The $x$-axis is the set $\\{(x,0)\\}$ where $y=0$, and the $y$-axis is $\\{(0,y)\\}$ where $x=0$.",
+      "The $x$-axis is every point whose second number, $y$, is 0. The $y$-axis is every point whose first number, $x$, is 0.",
     pitfalls: [
-      "Do not say the point is on the $x$-axis because its $x$-coordinate is nonzero without checking the other number.",
-      "Do not move up for the first coordinate.",
+      "Check both numbers before you name the axis. $(7,0)$ is on the $x$-axis because its second number is 0.",
+      "Do not move up for the first number.",
     ],
     parentGuide:
-      "Plot a few points with a 0 together and describe each as 'on the ... axis, ... units from the origin'.",
+      "Plot a few points with a 0 together. Describe each one as “on the … axis, … units from the origin”.",
   },
   {
     id: "times-as-many-blanks",
     title: "Times as many",
     summary:
-      "A count is $k$ times as many as another when it is $k$ times that count; likelihood follows the counts.",
+      "One count is 3 times as many as another when it is 3 groups of that count. A bigger count is more likely to be picked.",
+    noLink: ["third"],
     objectives: [
-      "Find how many times as many one count is than another by dividing.",
-      "Compare likelihoods of choosing from counts, such as more than twice as likely.",
+      "Find how many times as many one count is as another by dividing.",
+      "Compare how likely two kinds are to be picked from their counts, such as more than twice as likely.",
     ],
     intuition:
-      "'3 times as many' compares by multiplying: 24 cups and 8 mugs means 24 is 3 times 8, because $24\\div 8=3$. This differs from 'how many more', which subtracts. When one item is chosen at random from a collection, a type with a bigger count is more likely, and 'more than twice as likely' means its count is more than double the other count.",
+      "“3 times as many” compares by multiplying. With 24 cups and 8 mugs, 24 is 3 groups of 8, so there are 3 times as many cups as mugs. Divide to find it: $24\\div8=3$. “How many more” is different. It subtracts: 24 is 16 more than 8. Now pick one thing at random, without looking. A kind with a bigger count is more likely to be picked. “More than twice as likely” means its count is more than 2 times the other count.",
+    senses: { "more than": "more-than" },
     terms: [
       "times-as-many",
       [
@@ -348,80 +354,88 @@ const entries: FormatLessonEntry[] = [
       ],
     ],
     method: [
-      "Divide the greater count by the lesser count; if the result is a whole number $k$, the greater is $k$ times as many.",
-      "For likelihood, double the lesser count and check whether the greater count is more than that.",
-      "Complete the sentence with the right items in the right places.",
+      "Divide the greater count by the smaller count. If the answer is a whole number, the greater count is that many times as many: $36\\div12=3$, so 3 times as many.",
+      "For how likely, double the smaller count, which means times 2. Check whether the greater count is more than that.",
+      "Fill in the sentence with the right things in the right places. The greater count goes first.",
     ],
     watch:
-      "Divide the greater count by the lesser, not the reverse, and do not subtract: 24 is 16 more than 8 but 3 times as many.",
+      "Divide the greater count by the smaller one, and do not subtract. 24 is 16 more than 8, but 3 times as many.",
     principle:
-      "$a$ is $k$ times as many as $b$ when $a=kb$, so $k=a/b$. When an item is chosen at random from $T$ items, the chance of a type with $a$ items is $a/T$, so its chance is more than twice another's exactly when $a>2b$.",
+      "With 36 mugs and 12 cups, $36\\div12=3$, so there are 3 times as many mugs as cups. With letters, $a$ is $k$ times as many as $b$ when $a=k\\times b$, so $k=a\\div b$. When one item is picked at random from all of them, a kind with twice the count has twice the chance. So kind $A$ is more than twice as likely as kind $B$ exactly when $A$'s count is more than 2 times $B$'s count.",
     example: {
       prompt:
         "A table shows 12 cups, 36 mugs and 7 bottles. Complete: there are __ times as many __ as __.",
       steps: [
-        "Try the counts in pairs: $36\\div12=3$ is a whole number, and 7 does not divide 12 or 36.",
-        "So there are 3 times as many mugs as cups.",
+        "Try the counts in pairs. $36\\div12=3$ is a whole number, and 7 does not divide 12 or 36 evenly.",
+        "So the 36 mugs are 3 groups of the 12 cups: there are 3 times as many mugs as cups.",
       ],
       answer: "3 times as many mugs as cups.",
     },
     methodTitle: "Divide to compare",
     methodText: [
       "Check by multiplying: $3\\times12=36$.",
-      "A likelihood comparison needs only the counts, since they share the same total.",
+      "To compare how likely, you only need the counts, because both kinds are picked from the same total.",
     ],
     formal:
-      "A multiplicative comparison relates quantities by a scale factor $k=a/b$; additive comparison uses the difference $a-b$. For equally likely individual choices the probabilities are proportional to the counts.",
+      "Times as many compares by multiplying: $k=a\\div b$. How many more compares by subtracting: $a-b$. When every item is equally likely to be picked, a kind with $k$ times the count has $k$ times the chance.",
     pitfalls: [
-      "Do not subtract to find 'times as many'.",
-      "Do not put the items in the wrong order: the greater count goes first.",
+      "Do not subtract to find “times as many”.",
+      "Do not put the things in the wrong order. The greater count goes first.",
     ],
     parentGuide:
-      "Make the counts with small objects and group the larger pile into piles the size of the smaller one to count the piles.",
+      "Make the counts with small objects. Split the bigger pile into piles the size of the smaller one, and count the piles.",
   },
   {
     id: "compare-fractions-reason-blanks",
     title: "Compare fractions and explain why",
     summary:
-      "With the same denominator, more pieces is greater; with the same numerator, smaller pieces make a smaller fraction.",
+      "Same denominator: more pieces is greater. Same top number, not 0: the smaller denominator has bigger pieces, so it is greater.",
     objectives: [
       "Choose the greater of two fractions with the same numerator or the same denominator.",
-      "State the reason that makes it greater.",
+      "Say the reason that makes it greater.",
     ],
     intuition:
-      "If two fractions have the same denominator, the whole is cut into equal parts of the same size in both, so the fraction with more parts is greater: $\\frac{5}{8}$ is greater than $\\frac{3}{8}$. If they have the same numerator, both have the same number of parts, but a smaller denominator means larger parts: $\\frac{5}{6}$ is greater than $\\frac{5}{8}$ because sixths are larger than eighths.",
+      "A fraction like $\\frac{5}{8}$ names equal pieces of a whole. The bottom number, the denominator, says how many equal pieces the whole is cut into. The top number, the numerator, says how many pieces you have. Same denominator: the pieces are the same size, so more pieces is greater. $\\frac{5}{8}$ is greater than $\\frac{3}{8}$. Same numerator: you have the same number of pieces. A smaller denominator means fewer cuts, so each piece is bigger. $\\frac{5}{6}$ is greater than $\\frac{5}{8}$, because sixths are bigger than eighths.",
+    senses: {
+      whole: "whole",
+      part: "part",
+      parts: "part",
+      eighth: "eighth",
+      eighths: "eighth",
+      "more than": "more-than",
+    },
     terms: ["numerator", "denominator"],
     method: [
-      "Check which part is the same: the denominators or the numerators.",
-      "Same denominator: the greater numerator is the greater fraction. Same numerator: the smaller denominator is the greater fraction.",
-      "Give the reason in words about the number or size of the pieces.",
+      "Check which numbers match: the denominators or the numerators.",
+      "Same denominator: the greater numerator makes the greater fraction. Same numerator, not 0: the smaller denominator makes the greater fraction.",
+      "Give the reason in words about the number of pieces or the size of the pieces.",
     ],
     watch:
-      "With the same numerator, do not choose the greater denominator: more cuts make smaller pieces.",
+      "With the same numerator, do not choose the bigger denominator. More cuts make smaller pieces.",
     principle:
-      "For positive integers, $\\frac{a}{n}<\\frac{b}{n}$ when $a<b$, and $\\frac{a}{m}>\\frac{a}{n}$ when $m<n$, because $\\frac{1}{m}>\\frac{1}{n}$.",
+      "$\\frac{5}{8}>\\frac{3}{8}$, because 5 eighths is more than 3 eighths. $\\frac{5}{6}>\\frac{5}{8}$, because one sixth is bigger than one eighth. The sign $>$ means “is greater than”, and $<$ means “is less than”. With letters, for whole numbers more than 0: $\\frac{a}{n}<\\frac{b}{n}$ when $a<b$, and $\\frac{a}{m}>\\frac{a}{n}$ when $m<n$.",
     example: {
       prompt: "Compare $\\frac{5}{6}$ and $\\frac{5}{8}$, and say why.",
       steps: [
         "Both have the numerator 5, so each has 5 pieces.",
-        "Sixths are larger pieces than eighths, since a whole cut into 6 parts has larger parts than one cut into 8.",
-        "So $\\frac{5}{6}$ is greater, because the pieces are larger when the denominator is smaller.",
+        "A whole cut into 6 equal parts has bigger parts than one cut into 8. So sixths are bigger pieces than eighths.",
+        "So $\\frac{5}{6}$ is greater, because its pieces are bigger when the denominator is smaller.",
       ],
       answer: "$\\frac{5}{6}$ is greater because its pieces are larger.",
     },
     methodTitle: "Same part, then the other part",
     methodText: [
-      "Draw two bars of the same length, cut into sixths and eighths, and shade 5 parts of each.",
-      "The reason always names the part that is the same.",
+      "Draw two bars of the same length. Cut one into sixths and one into eighths, and shade 5 parts of each.",
+      "The reason always names the number that is the same.",
     ],
     formal:
-      "$\\frac{a}{m}-\\frac{a}{n}=\\frac{a(n-m)}{mn}$ is positive exactly when $n>m$, and $\\frac{a}{n}-\\frac{b}{n}=\\frac{a-b}{n}$ is positive exactly when $a>b$.",
+      "With the same denominator, the fraction with more pieces is greater, because all the pieces are the same size. With the same numerator, compare one piece: $\\frac{1}{6}$ is bigger than $\\frac{1}{8}$, so 5 sixths is more than 5 eighths. With letters, $\\frac{a}{m}$ is greater than $\\frac{a}{n}$ exactly when $m$ is less than $n$, for whole numbers more than 0.",
     pitfalls: [
       "Do not say a greater denominator means a greater fraction.",
-      "Do not give 'the numerators are different' as a reason when they are the same.",
+      "Do not give “the numerators are different” as the reason when they are the same.",
     ],
     parentGuide:
-      "Fold two strips of paper into sixths and eighths and compare five folded parts of each.",
+      "Fold two strips of paper into sixths and eighths. Compare five parts of each.",
   },
   {
     id: "inequality-number-blanks",

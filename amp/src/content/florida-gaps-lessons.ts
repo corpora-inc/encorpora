@@ -10,13 +10,15 @@ const truthMethod = (
 ): ProblemMethod => ({
   goal,
   intuition:
-    "The equal sign does not mean “the answer comes next.” It says that what is on the left has the same value as what is on the right. An equation can have an operation on both sides, or the result on the left, and it can be false.",
+    "An equation is a number sentence with an equal sign, $=$. The equal sign does not mean “the answer comes next”. It means the left side and the right side have the same value, the same amount. An equation can have an operation, like $+$ or $-$, on both sides, or the answer on the left. It can also be false. It is true only when both sides have the same value. The sign $\\times$ means times, and $\\div$ means divide. A point in a number shows parts of one: 26.2 is 26 and 2 tenths.",
+  senses: { side: "side-of-equation", sides: "side-of-equation", part: "part" },
+  noLink: ["mean", "leaves"],
   terms: truthTerms,
   method: [
-    "Find the value of the left side. Do any operation inside parentheses first.",
+    "Find the value of the left side. Do any part inside parentheses ( ) first.",
     "Find the value of the right side the same way.",
     ...extra,
-    "Compare the two values. The equation is true exactly when they are equal.",
+    "Compare the two values. The equation is true only when they are equal.",
   ],
   watch,
 });
@@ -24,29 +26,31 @@ const truthMethod = (
 export const floridaGapMethods: Record<string, ProblemMethod> = {
   "fl-equation-truth-20": truthMethod(
     "Given addition and subtraction equations within 20, choose the one that is true or false.",
-    "Do not stop at the first operation sign. In $9-1=7$ the value on the left is 8, not 7, even though 7 sits right after the sign.",
+    "Do not stop at the first sign. In $9-1=7$ the left side is 8, not 7, so the equation is false.",
   ),
   "fl-equation-truth-100": truthMethod(
     "Given addition and subtraction equations within 100, choose the one that is true or false.",
-    "Two sums can have different addends and the same value, as in $27+13=26+14$. Compare values, not the individual numbers.",
+    "Two sums can use different numbers and still be equal: $27+13=26+14$, because both are 40. Compare values, not the numbers you see.",
   ),
   "multiplication-division-equation-truth": truthMethod(
     "Given multiplication and division equations with facts within 12, choose the one that is true or false.",
-    "Division is not commutative: $24\\div 6$ is 4, but $6\\div 24$ is not. Evaluate each side as written.",
+    "Order matters in division: $24\\div 6$ is 4, but $6\\div 24$ is less than 1. Work out each side as it is written.",
   ),
   "whole-number-equation-truth": truthMethod(
     "Given whole-number equations that use any of the four operations, choose the one that is true or false.",
-    "Repeated subtraction counts how many times a number fits, but its value is what is left: $32-8-8-8-8=0$, not 4.",
+    "Taking away 8 again and again counts how many 8s fit, but its value is what is left: $32-8-8-8-8=0$, not 4.",
   ),
   "fl-equation-truth-grouped": truthMethod(
     "Given equations with parentheses, decimals and any of the four operations, choose the true or false one.",
-    "Work inside parentheses first, then multiplication and division, then addition and subtraction. Line up decimal points when adding or subtracting.",
-    ["Keep decimals aligned by place value when you add or subtract."],
+    "Work inside parentheses first, then multiply and divide, then add and subtract. Line up the decimal points when you add or subtract.",
+    ["Line up decimals by place value when you add or subtract."],
   ),
   "fl-decimal-tenth-hundredth-step": {
     goal: "Given a decimal with up to two places, find the decimal that is 0.1 or 0.01 more or less than it.",
     intuition:
-      "The decimal 0.1 is one tenth and 0.01 is one hundredth. Adding or subtracting one tenth changes the digit in the tenths place by 1, and one hundredth changes the digit in the hundredths place by 1. Other digits stay the same unless a digit passes 9 or 0.",
+      "A decimal uses a point to show parts of one whole. The first digit after the point is in the tenths place, and the second is in the hundredths place. 0.1 is one tenth, and 0.01 is one hundredth. Adding or taking away 0.1 changes the tenths digit by 1. Adding or taking away 0.01 changes the hundredths digit by 1. The other digits stay the same, unless a digit would go past 9 or below 0. Then you regroup: trade 10 of one place for 1 of the place to its left, or the other way.",
+    senses: { whole: "whole", part: "part", parts: "part" },
+    noLink: ["change", "changes"],
     terms: [
       [
         "place",
@@ -59,17 +63,23 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
       "regroup",
     ],
     method: [
-      "Write the number with two decimal places so every place has a digit.",
-      "Change the digit in the tenths place (for 0.1) or hundredths place (for 0.01) by 1.",
-      "If the digit would pass 9 or go below 0, regroup with the next place to the left.",
+      "Write the number with two digits after the point, so every place has a digit: 3.5 becomes 3.50.",
+      "Change the tenths digit by 1 for 0.1, or the hundredths digit by 1 for 0.01.",
+      "If the digit would go past 9 or below 0, regroup with the place to its left.",
     ],
     watch:
-      "Changing 0.01 less than $1.10$ means a hundredth, not a tenth: the answer is $1.09$, not $1.00$.",
+      "0.01 less than $1.10$ changes a hundredth, not a tenth. The answer is $1.09$, not $1.00$.",
   },
   "fl-decimal-by-tenth-hundredth": {
     goal: "Multiply or divide a decimal by 0.1 or 0.01, or find the missing factor, using place value.",
     intuition:
-      "Multiplying by 0.1 takes one tenth of a number, which is the same as dividing by 10. Multiplying by 0.01 takes one hundredth, the same as dividing by 100. Dividing by 0.1 asks how many tenths fit, which is the same as multiplying by 10. Dividing by 0.01 is the same as multiplying by 100.",
+      "0.1 is one tenth, and 0.01 is one hundredth. Multiplying by 0.1 takes one tenth of a number, the same as dividing by 10. Multiplying by 0.01 takes one hundredth, the same as dividing by 100. Dividing by 0.1 asks how many tenths fit in the number. Each whole holds 10 tenths, so that is the same as multiplying by 10. Dividing by 0.01 is the same as multiplying by 100.",
+    senses: {
+      factor: "factor-number",
+      whole: "whole",
+      "more than": "more-than",
+    },
+    noLink: ["changes", "opposite"],
     terms: [
       [
         "place-value",
@@ -77,17 +87,18 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Turn the decimal factor into its meaning: $0.1=\\frac{1}{10}$ and $0.01=\\frac{1}{100}$.",
-      "Multiplying by 0.1 or 0.01 makes the number smaller: shift the digits right 1 or 2 places. Dividing by them makes it larger: shift left 1 or 2 places.",
-      "For a missing factor, undo the operation with the opposite shift.",
+      "Say what the decimal means: $0.1=\\frac{1}{10}$ and $0.01=\\frac{1}{100}$.",
+      "Multiplying by 0.1 or 0.01 moves each digit 1 or 2 places right, so a number more than 0 gets smaller. Dividing by them moves each digit 1 or 2 places left, so it gets bigger.",
+      "For a missing factor, a missing number in a times, undo the step with the opposite move.",
     ],
     watch:
-      "Dividing by a number less than 1 makes the result larger. $12.3\\div0.01$ is 1230, not 0.123.",
+      "For a number more than 0, dividing by 0.1 or 0.01 makes the answer bigger. $12.3\\div0.01$ is 1230, not 0.123.",
   },
   "fl-expression-description-match": {
     goal: "Choose the numerical expression that matches a written description, or the description that matches an expression.",
     intuition:
-      "A written description such as “add 3 and 4, then multiply by 5” names the operations in the order they happen. Parentheses in an expression show which operation happens first. Without them, multiplication and division happen before addition and subtraction.",
+      "An expression is numbers and signs, like $+$ and $\\times$, that stand for one number. A description in words, like “add 3 and 4, then multiply by 5”, names the steps in the order they happen. Parentheses ( ) in an expression mark the step done first. Without them, multiply and divide come before add and subtract.",
+    senses: { part: "part", product: "product-multiply" },
     terms: [
       [
         "expression",
@@ -96,25 +107,27 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
       "order-of-operations",
     ],
     method: [
-      "Read the description (or expression) and list its operations in the order they happen.",
-      "The operation that happens first and is not the usual first one needs parentheses.",
-      "Check each choice by naming its operations in order and comparing the list.",
+      "Read the description, or the expression, and list its steps in the order they happen.",
+      "If an add or subtract has to happen before a times or divide, it goes inside parentheses.",
+      "Check each choice: list its steps in order and compare the lists.",
     ],
     watch:
-      "“Multiply the sum” means the addition comes first, so it goes inside parentheses: $(3+4)\\times5$, not $3+4\\times5$.",
+      "“Multiply the sum” means the add comes first, so it goes inside parentheses: $(3+4)\\times5$, not $3+4\\times5$.",
   },
   "fl-two-step-story-equation": {
     goal: "Choose the equation with a variable and two different operations that models a whole-number story.",
     intuition:
-      "A story with equal groups and one more step has two operations. Name the unknown with a letter, write what happens to it in the order of the story, and set that equal to the total the story gives.",
+      "An equation says two amounts are equal. A letter called a variable, like $p$, stands for the number you do not know. $4p$ means 4 times $p$: 4 equal groups of $p$. A story with equal groups and one more step has two steps. Write what happens to the unknown. Check whether the extra step happens once, after the groups, or to every group. Then set it equal to the total the story gives.",
+    senses: { model: "model", models: "model" },
+    noLink: ["leaves"],
     terms: ["variable", ["equal-groups", "$6n$ means 6 groups of $n$."]],
     method: [
       "Say what the letter stands for.",
-      "Write what happens to the unknown in the order of the story: multiply for equal groups, add or subtract for the extra step.",
-      "If the extra step happens to each group, put it in parentheses before multiplying by the number of groups.",
+      "Write what happens to the unknown in the order of the story: multiply for equal groups, then add or subtract for the extra step.",
+      "If the extra step happens to each group, put it in parentheses before you multiply by the number of groups.",
     ],
     watch:
-      "Compare “6 groups of $n$, then 4 more”, written $6n+4$, with “4 more in each of 6 groups”, written $6(n+4)$. They are different stories.",
+      "“6 groups of $n$, then 4 more” is $6n+4$. “4 more in each of 6 groups” is $6(n+4)$, which means 6 times $(n+4)$. They are different stories.",
   },
   "fl-metric-customary-conversion": {
     goal: "Use a given conversion factor to change a measurement or an amount of money from one unit to another.",
@@ -258,23 +271,23 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
 
 export const floridaGapPrinciples: Record<string, string> = {
   "fl-equation-truth-20":
-    "An equation $L=R$ is true exactly when the number $L$ and the number $R$ are equal. The equal sign is symmetric: if $L=R$ then $R=L$.",
+    "$12=6+6$ is true: the left side is 12, and the right side is $6+6=12$. An equation is true when both sides have the same value. It can be read either way: if $12=6+6$, then $6+6=12$.",
   "fl-equation-truth-100":
-    "Different sums can have the same value. For whole numbers, $a+b=(a-k)+(b+k)$ and $a-b=(a+k)-(b+k)$. Transferring $k$ between addends keeps a sum, and adding the same $k$ to both terms keeps a difference.",
+    "Different sums can have the same value. Moving 1 from 27 to 13 gives $26+14$, and the total stays 40. Adding the same number to both numbers in a subtraction keeps the answer: $45-23=47-25$, because both are 22.",
   "multiplication-division-equation-truth":
-    "Division by a nonzero $b$ undoes multiplication by $b$: $a\\div b=c$ exactly when $c\\times b=a$. Multiplication is commutative, $a\\times b=b\\times a$, but division is not.",
+    "Division undoes multiplication: $20\\div4=5$ because $5\\times4=20$. Order does not matter when you multiply, $10\\times2=2\\times10$, but it does when you divide. With letters, $a\\div b=c$ exactly when $c\\times b=a$, and $b$ is not 0.",
   "whole-number-equation-truth":
-    "Subtracting $b$ from $a$ a total of $k$ times gives $a-kb$. When $a=kb$, this is 0, while $a\\div b=k$. The two expressions count the same repetitions but have different values.",
+    "$32-8-8-8-8=0$: taking 8 away four times leaves nothing. But $32\\div8=4$ counts the four 8s. They are about the same four 8s, but their values are different. With letters, taking $b$ from $a$ a total of $k$ times leaves $a-k\\times b$.",
   "fl-equation-truth-grouped":
-    "Expressions are evaluated by the order of operations: parentheses, then multiplication and division from left to right, then addition and subtraction from left to right. Two expressions are equal exactly when they have the same value.",
+    "Work out each side in the order of operations: parentheses first, then multiply and divide from left to right, then add and subtract from left to right. So $6.6+(3\\times5)=6.6+15=21.6$. Two sides are equal exactly when they have the same value.",
   "fl-decimal-tenth-hundredth-step":
-    "In base ten, $0.1=\\frac{1}{10}$ and $0.01=\\frac{1}{100}$. Ten hundredths make one tenth and ten tenths make one whole, so adding $0.01$ to a hundredths digit of 9 carries 1 to the tenths place.",
+    "0.1 is one tenth, $\\frac{1}{10}$, and 0.01 is one hundredth, $\\frac{1}{100}$. Ten hundredths make one tenth, and ten tenths make one whole. So adding 0.01 to $4.79$ makes 10 hundredths, which become 1 more tenth: $4.80$.",
   "fl-decimal-by-tenth-hundredth":
-    "Multiplying by $0.1=\\frac{1}{10}$ is the same as dividing by 10, and dividing by $0.1$ is the same as multiplying by 10. For every nonzero number $x$, $x\\div\\frac{1}{10}=10x$ and $x\\div\\frac{1}{100}=100x$.",
+    "Multiplying by 0.1, one tenth, is the same as dividing by 10: $76.2\\times0.1=7.62$. Dividing by 0.1 is the same as multiplying by 10, because each whole holds 10 tenths: $4\\div0.1=40$. With letters, for any number $x$, $x\\div0.1=10\\times x$ and $x\\div0.01=100\\times x$.",
   "fl-expression-description-match":
-    "In an expression, parentheses group the operations inside them as one value. Without grouping, multiplication and division are done before addition and subtraction, so $a+b\\times c$ means $a+(b\\times c)$.",
+    "Parentheses make what is inside them one value, worked out first: $(4+6)\\times3=10\\times3=30$. Without them, multiply and divide before you add and subtract: $4+6\\times3=4+18=22$. With letters, $a+b\\times c$ means $a+(b\\times c)$.",
   "fl-two-step-story-equation":
-    "If each of $g$ equal groups holds $n$ objects, the total is $gn$. Adding $e$ objects outside the groups gives $gn+e$. Adding $e$ objects to every group gives $g(n+e)=gn+ge$, a different total.",
+    "4 rows of $p$ books hold $4p$ books, which means 4 times $p$. Selling 7 leaves $4p-7$. Adding 3 books to every row instead gives $4\\times(p+3)$, a different total. With letters, $g$ equal groups of $n$ make $g\\times n$. Adding $e$ outside the groups gives $g\\times n+e$. Adding $e$ to every group gives $g\\times(n+e)=g\\times n+g\\times e$.",
   "fl-metric-customary-conversion":
     "If $1\\,A=k\\,B$ for units $A$ and $B$ and a positive number $k$, then $x\\,A=kx\\,B$ and $y\\,B=\\frac{y}{k}\\,A$. For areas, the amount of flat space covered, use a factor between square units, such as $1\\text{ in}^2=6.45\\text{ cm}^2$ (square inches and square centimeters).",
   "fl-integer-multiply-divide":
@@ -306,7 +319,14 @@ export const floridaGapLessons: Lesson[] = [
     id: "equation-truth-check",
     title: "Decide whether an equation is true",
     summary:
-      "An equation is true when both sides have the same value. Find each side's value and compare.",
+      "An equation is a number sentence with an equal sign. The equal sign means both sides have the same value. Find the value of each side. If they match, the equation is true.",
+    senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      balance: "balance-scale",
+      "more than": "more-than",
+    },
+    noLink: ["mean"],
     templateIds: [
       "fl-equation-truth-20",
       "fl-equation-truth-100",
@@ -321,8 +341,11 @@ export const floridaGapLessons: Lesson[] = [
     intuition: [
       "The equal sign is a balance",
       [
-        "You need to add, subtract, multiply and divide whole numbers. An equation joins two expressions with an equal sign. The sign says both sides have the same value, like a balanced scale.",
-        "An equation can have an operation on both sides, and the number can be on the left: $12=5+7$ is as good as $5+7=12$. An equation is true when the sides match and false when they do not.",
+        "You need to add and subtract whole numbers, the counting numbers and 0. Harder equations also use times, divide or decimals.",
+        "An equation joins two sides with an equal sign, $=$. The sign says both sides have the same value.",
+        "Think of a balance scale. It stays level when both sides weigh the same.",
+        "The answer can be on the left: $12=5+7$ is just as true as $5+7=12$.",
+        "An equation is true when the two sides match. It is false when they do not.",
       ],
     ],
     workedExample: {
@@ -330,8 +353,8 @@ export const floridaGapLessons: Lesson[] = [
       steps: [
         "Find the value of the left side: $27+13=40$.",
         "Find the value of the right side: $26+14=40$.",
-        "The values are both 40, so the sides balance.",
-        "Check: 26 is 1 less than 27 and 14 is 1 more than 13, so the sum does not change.",
+        "Both sides are 40, so they balance. The equation is true.",
+        "Check another way: 26 is 1 less than 27, and 14 is 1 more than 13. Moving 1 from one number to the other keeps the total.",
       ],
       answer: "True. Both sides equal 40.",
     },
@@ -340,22 +363,24 @@ export const floridaGapLessons: Lesson[] = [
         stage: "method",
         title: "Find both values, then compare",
         paragraphs: [
-          "Work out each side separately. Inside parentheses first, then multiplication and division, then addition and subtraction, from left to right. Do not carry the answer of the left side into the right side.",
-          "Compare the two values. If they are equal the equation is true. If they differ it is false, and the equal sign should be replaced by $\\ne$.",
+          "Work out each side on its own. Do parentheses first. Then multiply and divide. Then add and subtract, from left to right.",
+          "Do not carry the answer of the left side into the right side.",
+          "Compare the two values. Equal means true. Different means false, and then the sign $\\ne$, which means “is not equal to”, fits instead.",
         ],
       },
       {
         stage: "formal",
         title: "Equality of values",
         paragraphs: [
-          "An equation $L=R$ is true exactly when the numbers $L$ and $R$ are equal. Because equality is symmetric, $L=R$ and $R=L$ say the same thing.",
+          "An equation is true exactly when both sides are the same number. So $12=5+7$ and $5+7=12$ say the same thing.",
+          "With letters, $L=R$ is true exactly when $L$ and $R$ are the same number. Then $R=L$ is true too.",
         ],
       },
     ],
     pitfalls: [
-      "The equal sign does not mean “find the answer.” In $9-1=7$ the left side is 8, so the equation is false.",
-      "Different numbers on each side can still be equal in value: $27+13=26+14$.",
-      "Evaluate repeated subtraction as written: $32-8-8-8-8=0$, which is not 4.",
+      "The equal sign does not mean “find the answer”. In $9-1=7$ the left side is 8, so the equation is false.",
+      "Different numbers on each side can still have the same value: $27+13=26+14$.",
+      "Work out taking away again and again as written: $32-8-8-8-8=0$, which is not 4.",
     ],
     parentGuide:
       "Ask the learner to say the value of each side of $8+5=10+3$ aloud before deciding whether the equal sign is right.",
@@ -364,7 +389,14 @@ export const floridaGapLessons: Lesson[] = [
     id: "decimal-tenth-hundredth-step",
     title: "Add or subtract 0.1 and 0.01",
     summary:
-      "0.1 is one tenth and 0.01 is one hundredth. Change the matching place by 1, regrouping when a digit passes 9 or 0.",
+      "0.1 is one tenth, and 0.01 is one hundredth. To add or take away one of them, change that place by 1. Regroup when a digit would go past 9 or below 0.",
+    senses: {
+      whole: "whole",
+      part: "part",
+      parts: "part",
+      "more than": "more-than",
+    },
+    noLink: ["change", "changes"],
     templateIds: ["fl-decimal-tenth-hundredth-step"],
     objectives: [
       "Name the place that 0.1 or 0.01 changes.",
@@ -373,8 +405,10 @@ export const floridaGapLessons: Lesson[] = [
     intuition: [
       "One tenth and one hundredth",
       [
-        "You need to read decimals through hundredths. The decimal 0.1 is 1 tenth, and 0.01 is 1 hundredth. A decimal such as 1.10 is 1 one, 1 tenth and 0 hundredths.",
-        "To add or subtract one tenth, change the tenths digit by 1. To add or subtract one hundredth, change the hundredths digit by 1. Regroup when the digit would go above 9 or below 0.",
+        "A decimal uses a point to show parts of one whole. The first digit after the point is tenths. The second is hundredths.",
+        "0.1 is 1 tenth, and 0.01 is 1 hundredth. A decimal such as 1.10 is 1 one, 1 tenth and 0 hundredths.",
+        "To add or take away one tenth, change the tenths digit by 1. To add or take away one hundredth, change the hundredths digit by 1.",
+        "If a digit would go above 9 or below 0, regroup. To regroup means to trade 10 of one place for 1 of the place to its left, or the other way.",
       ],
     ],
     workedExample: {
@@ -392,21 +426,21 @@ export const floridaGapLessons: Lesson[] = [
         stage: "method",
         title: "Change one place and regroup",
         paragraphs: [
-          "Write the number with two decimal places. Identify the place: tenths for 0.1, hundredths for 0.01. Change that digit by 1 and leave the others.",
-          "If the digit would pass 9, write 0 and add 1 to the place on its left. If it would go below 0, borrow 1 from the place on its left.",
+          "Write the number with two digits after the point. Find the place: tenths for 0.1, hundredths for 0.01. Change that digit by 1 and leave the others.",
+          "If the digit would pass 9, write 0 and add 1 to the place on its left. If it would go below 0, take 1 from the place on its left. That 1 becomes 10 in your place.",
         ],
       },
       {
         stage: "formal",
         title: "Place value",
         paragraphs: [
-          "$0.1=\\frac{1}{10}$ and $0.01=\\frac{1}{100}$. Ten hundredths equal one tenth and ten tenths equal one whole, which is why regrouping works across places.",
+          "$0.1=\\frac{1}{10}$ and $0.01=\\frac{1}{100}$. Ten hundredths make one tenth, and ten tenths make one whole. That is why you can regroup across places.",
         ],
       },
     ],
     pitfalls: [
       "A hundredth is not a tenth: $1.10-0.01=1.09$, not $1.00$.",
-      "Do not change the digit in the wrong place when the number has one decimal place; write a zero in the hundredths place first.",
+      "If the number has only one digit after the point, write a 0 in the hundredths place first. Then change the right digit.",
     ],
     parentGuide: "Ask what is 0.1 more than 2.95, and which two places change.",
   }),
@@ -414,26 +448,32 @@ export const floridaGapLessons: Lesson[] = [
     id: "decimal-by-tenth-hundredth",
     title: "Multiply and divide by 0.1 and 0.01",
     summary:
-      "Multiplying by 0.1 or 0.01 divides by 10 or 100. Dividing by 0.1 or 0.01 multiplies by 10 or 100.",
+      "Multiplying by 0.1 or 0.01 is the same as dividing by 10 or 100. Dividing by 0.1 or 0.01 is the same as multiplying by 10 or 100.",
+    senses: {
+      factor: "factor-number",
+      whole: "whole",
+      "more than": "more-than",
+    },
     templateIds: ["fl-decimal-by-tenth-hundredth"],
     objectives: [
-      "Explain why multiplying by 0.1 and dividing by 10 agree.",
+      "Explain why multiplying by 0.1 and dividing by 10 give the same answer.",
       "Multiply and divide a decimal by 0.1 and 0.01, and find a missing factor.",
     ],
     intuition: [
       "A tenth of a number and how many tenths fit",
       [
-        "You need to multiply and divide by 10 and 100 by moving digits. Multiplying by 0.1 takes one tenth of a number. Taking one tenth is the same as dividing by 10.",
-        "Dividing by 0.1 asks how many tenths fit in the number. Each whole holds 10 tenths, so the result is 10 times as large.",
+        "You need to multiply and divide by 10 and 100 by moving digits. Multiplying by 10 moves each digit one place left, so it is worth 10 times as much.",
+        "0.1 is one tenth. Multiplying by 0.1 takes one tenth of a number. Taking one tenth is the same as dividing by 10.",
+        "Dividing by 0.1 asks how many tenths fit in the number. Each whole holds 10 tenths, so the answer is 10 times as big.",
       ],
     ],
     workedExample: {
       prompt: "Find $12.3\\div0.01$.",
       steps: [
         "0.01 is one hundredth. Each whole holds 100 hundredths.",
-        "So $12.3\\div0.01$ is $12.3\\times100$.",
+        "So dividing by 0.01 is the same as multiplying by 100: $12.3\\div0.01=12.3\\times100$.",
         "Multiplying by 100 moves each digit 2 places left: 12.3 becomes 1230.",
-        "Check: $1230\\times0.01=12.3$.",
+        "Check by multiplying back: $1230\\times0.01=12.3$.",
       ],
       answer: "$1230$",
     },
@@ -442,21 +482,22 @@ export const floridaGapLessons: Lesson[] = [
         stage: "method",
         title: "Use the opposite shift for the opposite operation",
         paragraphs: [
-          "Multiply by 0.1: digits move 1 place right. Multiply by 0.01: 2 places right. Divide by 0.1: 1 place left. Divide by 0.01: 2 places left.",
-          "To find a missing factor in $?\\times0.01=3.7$, undo the multiplication by dividing by 0.01, which moves the digits 2 places left: $?=370$.",
+          "Multiply by 0.1: digits move 1 place right. Multiply by 0.01: 2 places right.",
+          "Divide by 0.1: digits move 1 place left. Divide by 0.01: 2 places left.",
+          "A missing factor is a missing number in a times. To find it in $?\\times0.01=3.7$, undo the times by dividing by 0.01. That moves the digits 2 places left: $?=370$.",
         ],
       },
       {
         stage: "formal",
         title: "Why the shifts work",
         paragraphs: [
-          "$x\\times0.1=x\\times\\frac{1}{10}=x\\div10$ and $x\\div0.1=x\\times10$. The same is true for $0.01=\\frac{1}{100}$ and 100.",
+          "$x\\times0.1=x\\times\\frac{1}{10}=x\\div10$, and $x\\div0.1=x\\times10$. Here $x$ is any number. The same is true for $0.01=\\frac{1}{100}$ and 100.",
         ],
       },
     ],
     pitfalls: [
-      "Dividing by a number less than 1 gives a larger result.",
-      "Count places carefully: 0.01 shifts two places, not one.",
+      "Dividing a number more than 0 by 0.1 or 0.01 gives a bigger answer.",
+      "Count places carefully: 0.01 moves digits two places, not one.",
     ],
     parentGuide: "Ask how many tenths are in 4 and why $4\\div0.1$ is 40.",
   }),
@@ -464,24 +505,26 @@ export const floridaGapLessons: Lesson[] = [
     id: "expression-description-match",
     title: "Match an expression to its description",
     summary:
-      "Parentheses show which operation comes first. Match each description to the expression that does the same steps.",
+      "An expression is numbers and signs that stand for one number. Parentheses show which step comes first. Match each description to the expression that does the same steps in the same order.",
+    noLink: ["rule"],
     templateIds: ["fl-expression-description-match"],
     objectives: [
-      "Write an expression for a description with a grouped operation.",
-      "Describe an expression in words in the correct order.",
+      "Write an expression for a description with a grouped step.",
+      "Describe an expression in words, with its steps in the right order.",
     ],
     intuition: [
       "Words in order become an expression",
       [
-        "You need to know the order of operations: parentheses first, then multiplication and division, then addition and subtraction. A numerical expression is a group of numbers and operations. A description in words lists the operations in the order they happen.",
-        "When a description says to add and then multiply the sum, the addition must happen first, so it goes inside parentheses.",
+        "You need the order of operations, the shared rule for which step comes first: parentheses, then multiply and divide, then add and subtract.",
+        "A numerical expression is numbers and signs, with no letters. A description in words lists the steps in the order they happen.",
+        "When a description says to add and then multiply the sum, the add must happen first. So it goes inside parentheses.",
       ],
     ],
     workedExample: {
       prompt:
         "Which expression matches: “Add 4 and 6, then multiply the sum by 3”?",
       steps: [
-        "The first operation is the addition $4+6$. Put it in parentheses: $(4+6)$.",
+        "The first step is the add, $4+6$. It must come before the times, so put it in parentheses: $(4+6)$.",
         "Then multiply that sum by 3: $(4+6)\\times3$.",
         "Compare $4+6\\times3$: it multiplies 6 by 3 first, so it does not match.",
       ],
@@ -492,21 +535,21 @@ export const floridaGapLessons: Lesson[] = [
         stage: "method",
         title: "List the steps in order",
         paragraphs: [
-          "Number the operations in the description. The first operation goes in parentheses when it is not what the order of operations would do first.",
-          "To describe an expression, read it as the order of operations does and write the steps in that order.",
+          "Number the steps in the description. The first step goes in parentheses if the order of operations would not do it first.",
+          "To describe an expression, work it out in the order of operations. Write the steps in that order.",
         ],
       },
       {
         stage: "formal",
         title: "Grouping",
         paragraphs: [
-          "Parentheses make the operations inside them one value. Without them, $a+b\\times c$ means $a+(b\\times c)$.",
+          "Parentheses make the steps inside them one value. Without them, $a+b\\times c$ means $a+(b\\times c)$: multiply first.",
         ],
       },
     ],
     pitfalls: [
-      "“The sum of 4 and 6, times 3” groups the sum. Without parentheses the multiplication would go first.",
-      "Subtraction and division are not commutative: “subtract 4 from 9” is $9-4$.",
+      "“The sum of 4 and 6, times 3” groups the sum. Without parentheses, the times would go first.",
+      "Order matters when you subtract or divide: “subtract 4 from 9” is $9-4$.",
     ],
     parentGuide:
       "Ask the learner to write “subtract 2 from 10, then multiply by 3” as an expression.",
@@ -515,26 +558,27 @@ export const floridaGapLessons: Lesson[] = [
     id: "two-step-story-equation",
     title: "Write an equation for a two-step story",
     summary:
-      "Name the unknown, write what happens to it in story order, and set it equal to the total.",
+      "Use a letter for the unknown number. Write what happens to it, and check whether the extra step happens once or to each group. Then set it equal to the total.",
     templateIds: ["fl-two-step-story-equation"],
     objectives: [
       "Choose the operation for equal groups and the operation for the extra step.",
-      "Tell apart extra items in total from extra items in each group.",
+      "Tell extra items added once from extra items added to each group.",
     ],
     intuition: [
       "Follow the story",
       [
-        "You need to solve stories with multiplication, addition and subtraction. A variable is a letter for the unknown number. $6n$ means 6 groups of $n$.",
-        "A two-step story does two things to the unknown. Write them in the order of the story, then set the result equal to the total.",
+        "You need to solve stories with multiplication, addition and subtraction.",
+        "A variable is a letter that stands for the unknown number. $6n$ means 6 times $n$: 6 groups of $n$.",
+        "A two-step story does two things to the unknown. Write them in the order of the story. Then set the result equal to the total.",
       ],
     ],
     workedExample: {
       prompt:
         "A store puts 5 equal rows of books on a shelf and 3 more books on a cart. There are 38 books in all. Let $b$ be the number of books in one row. Write an equation.",
       steps: [
-        "The 5 equal rows hold $5b$ books.",
-        "The 3 books on the cart are added to those, so the total is $5b+3$.",
-        "The story says the total is 38.",
+        "Each of the 5 equal rows holds $b$ books, so the rows hold $5b$ books.",
+        "The 3 books on the cart are added once, so the total is $5b+3$.",
+        "The story says there are 38 books in all, so $5b+3=38$.",
       ],
       answer: "$5b+3=38$",
     },
@@ -543,15 +587,17 @@ export const floridaGapLessons: Lesson[] = [
         stage: "method",
         title: "Where does the extra step happen?",
         paragraphs: [
-          "If the extra items are added once to the total, add them after multiplying: $gn+e$. If each group gets extra items, add inside parentheses first: $g(n+e)$.",
-          "The same applies to taking away: $gn-e$ takes away once from the total, and $g(n-e)$ takes the same amount from each group.",
+          "If the extra items are added once to the total, add after multiplying: $5b+3$.",
+          "If every group gets the extra items, add inside parentheses first: $5(b+3)$ means 5 times $(b+3)$.",
+          "Taking away works the same way: $5b-3$ takes 3 away once, and $5(b-3)$ takes 3 from each group.",
         ],
       },
       {
         stage: "formal",
         title: "Equal groups",
         paragraphs: [
-          "If each of $g$ equal groups holds $n$, the total is $gn$. The distributive property gives $g(n+e)=gn+ge$, which is why adding to each group is a different story from adding once.",
+          "If each of $g$ equal groups holds $n$, the total is $g\\times n$. Adding $e$ to each group gives $g\\times(n+e)=g\\times n+g\\times e$.",
+          "So adding to each group adds $g\\times e$ in all, not just $e$. That is why it is a different story.",
         ],
       },
     ],
@@ -559,7 +605,7 @@ export const floridaGapLessons: Lesson[] = [
       "Do not add the number of groups: “5 rows of $b$” is $5b$, not $5+b$.",
       "Match each equation to a story out loud before choosing.",
     ],
-    parentGuide: "Ask how $4n+2$ and $4(n+2)$ describe two different stories.",
+    parentGuide: "Ask how $4n+2$ and $4(n+2)$ tell two different stories.",
   }),
   build({
     id: "metric-customary-conversion",
