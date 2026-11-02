@@ -718,6 +718,9 @@ async function verifySearchFilters() {
         "Deleting keeps the keyboard focused on search",
       );
       assert.equal(new URL(page.url()).searchParams.get("filter"), "K");
+      await page
+        .getByRole("checkbox", { name: "Show grades and estimates" })
+        .check();
       const grade = page.getByRole("button", { name: /^Grade or course/ });
       assert.equal(await grade.getAttribute("data-value"), "K");
       const gradeBox = await grade.boundingBox();
@@ -909,10 +912,7 @@ try {
         await page.locator('link[rel="canonical"]').getAttribute("href"),
         `https://amp.corpora.inc/pathways/${target.id}`,
       );
-      assert.equal(
-        await page.title(),
-        `${target.title} · Algebra 2 | AMP Pathways`,
-      );
+      assert.equal(await page.title(), `${target.title} | AMP Pathways`);
       assert.match(
         (await page
           .getByRole("link", { name: "Try a problem" })

@@ -1,3 +1,7 @@
+import {
+  CurriculumDetailsControl,
+  useCurriculumDetails,
+} from "../curriculum/CurriculumDetails";
 import * as RadixDialog from "@radix-ui/react-dialog";
 import type { ReactNode } from "react";
 import { levelRange, levelDetails } from "../../../learning/level-check";
@@ -52,6 +56,7 @@ export function LevelCheck({
   /** Further actions after the two defaults (sharing). */
   actions?: ReactNode;
 }) {
+  const { shown } = useCurriculumDetails();
   const frontier = progress.frontier.current;
   const answered = progress.totals.answered;
   const words = levelWords(frontier.overall);
@@ -94,20 +99,31 @@ export function LevelCheck({
             <RadixDialog.Title className={styles.title}>
               {copy.title}
             </RadixDialog.Title>
-            <div className={styles.overall}>
-              <LevelReadout estimate={frontier.overall} />
-              <LevelTrack
-                estimate={frontier.overall}
-                scale={scale}
-                size="large"
-              />
-              <LevelAxis scale={scale} name={gradeName} />
-            </div>
+            <CurriculumDetailsControl />
+            {shown && (
+              <div className={styles.overall}>
+                <LevelReadout estimate={frontier.overall} />
+                <LevelTrack
+                  estimate={frontier.overall}
+                  scale={scale}
+                  size="large"
+                />
+                <LevelAxis scale={scale} name={gradeName} />
+              </div>
+            )}
             <p id="level-check-summary" className={styles.summary}>
-              {copy.range({ answered, from: words.from, to: words.to, age })}
-              {words.from !== words.to && <> {copy.bestGuess(words.level)}</>}
+              {shown ? (
+                <>
+                  {copy.range({ answered, from: words.from, to: words.to })}
+                  {words.from !== words.to && (
+                    <> {copy.bestGuess(words.level)}</>
+                  )}
+                </>
+              ) : (
+                `${answered} problems answered. Your answers help choose what to practice next.`
+              )}
             </p>
-            {trend.length > 1 && first && (
+            {shown && trend.length > 1 && first && (
               <section className={styles.block}>
                 <h3 className={styles.blockTitle}>{copy.trendTitle}</h3>
                 <LevelTrend
@@ -132,18 +148,26 @@ export function LevelCheck({
                       <li
                         key={strand}
                         data-strand={strand}
-                        aria-label={copy.areaLabel({
-                          area: strandNames[strand] ?? strand,
-                          ...area,
-                        })}
+                        aria-label={
+                          shown
+                            ? copy.areaLabel({
+                                area: strandNames[strand] ?? strand,
+                                ...area,
+                              })
+                            : `${strandNames[strand] ?? strand}: ${estimate.answered} answered, ${estimate.independent} correct without help`
+                        }
                       >
                         <span className={styles.areaName} aria-hidden="true">
                           {strandNames[strand] ?? strand}
                           <small>
-                            {detail.point} · {detail.from}–{detail.to}
+                            {shown
+                              ? `${detail.point} · ${detail.from}–${detail.to}`
+                              : `${estimate.answered} answered · ${estimate.independent} correct without help`}
                           </small>
                         </span>
-                        <LevelTrack estimate={estimate} scale={scale} />
+                        {shown && (
+                          <LevelTrack estimate={estimate} scale={scale} />
+                        )}
                       </li>
                     );
                   })}

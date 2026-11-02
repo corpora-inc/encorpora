@@ -1,0 +1,71 @@
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, expect, test, vi } from "vitest";
+import {
+  CurriculumDetailsProvider,
+  CurriculumDetailsControl,
+  useCurriculumPreferences,
+} from "../CurriculumDetails";
+import { LevelReadout } from "../../../ui/LevelReadout";
+const fixture = vi.hoisted(() => ({
+  learner: "first",
+  account: "parent",
+  trial: false,
+}));
+vi.mock("../useCurriculumScope", () => ({
+  useCurriculumScope: () => ({
+    ready: true,
+    scope: fixture.trial
+      ? "trial:trial-learner"
+      : `account:${fixture.account}:${fixture.learner}`,
+  }),
+}));
+function View() {
+  return (
+    <CurriculumDetailsProvider>
+      <CurriculumDetailsControl />
+      <LevelReadout estimate={{ level: 5, sd: 1 }} />
+    </CurriculumDetailsProvider>
+  );
+}
+afterEach(() => {
+  cleanup();
+  useCurriculumPreferences.setState({ shown: {} });
+  localStorage.clear();
+  fixture.learner = "first";
+  fixture.account = "parent";
+  fixture.trial = false;
+});
+test("details start hidden and persist for only the selected account and learner", () => {
+  const { rerender } = render(<View />);
+  expect(screen.queryByTestId("level-readout")).toBeNull();
+  fireEvent.click(
+    screen.getByRole("checkbox", { name: "Show grades and estimates" }),
+  );
+  expect(screen.getByTestId("level-readout").textContent).toContain("Grade 5");
+  expect(
+    JSON.parse(localStorage.getItem("amp.curriculum-details")!).state.shown,
+  ).toEqual({ "account:parent:first": true });
+  fixture.learner = "second";
+  rerender(<View />);
+  expect(screen.queryByTestId("level-readout")).toBeNull();
+  fixture.learner = "first";
+  fixture.account = "another";
+  rerender(<View />);
+  expect(screen.queryByTestId("level-readout")).toBeNull();
+  fixture.account = "parent";
+  rerender(<View />);
+  expect(screen.getByTestId("level-readout")).toBeTruthy();
+  fixture.trial = true;
+  rerender(<View />);
+  expect(screen.queryByTestId("level-readout")).toBeNull();
+});
+test("an explicit hide is remembered and cannot alter assessment inputs", () => {
+  render(<View />);
+  const toggle = screen.getByRole("checkbox");
+  fireEvent.click(toggle);
+  fireEvent.click(toggle);
+  expect(screen.queryByTestId("level-readout")).toBeNull();
+  expect(
+    useCurriculumPreferences.getState().shown["account:parent:first"],
+  ).toBe(false);
+});

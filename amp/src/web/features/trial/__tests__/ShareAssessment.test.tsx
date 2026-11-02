@@ -75,13 +75,13 @@ test("Copy link writes exactly one clean public URL, without image paths or resu
   );
   expect(screen.getByRole("status").textContent).toBe("Link copied.");
 });
-test("Copy result writes the estimate and public URL without a file attachment", async () => {
+test("Copy result omits estimates by default", async () => {
   const writeText = vi.fn().mockResolvedValue(undefined);
   feature("clipboard", { writeText });
   render(<ShareAssessment level="Algebra 1" />);
   open();
   fireEvent.click(screen.getByRole("button", { name: "Copy result" }));
-  const payload = assessmentShare("Algebra 1");
+  const payload = assessmentShare("");
   await waitFor(() =>
     expect(writeText).toHaveBeenCalledExactlyOnceWith(
       `${payload.text}\n${payload.url}`,
@@ -104,4 +104,17 @@ test("clipboard denial keeps selectable text in the panel, and closing returns f
   expect(field.value).toBe("https://amp.corpora.inc/try");
   fireEvent.click(screen.getByRole("button", { name: "Close" }));
   await waitFor(() => expect(document.activeElement).toBe(trigger));
+});
+
+test("sharing an estimate requires a separate explicit opt-in", async () => {
+  render(<ShareAssessment level="Grade 6" />);
+  open();
+  const link = screen.getByRole("link", { name: "Post on X" });
+  expect(link.getAttribute("href")).not.toContain("Grade");
+  fireEvent.click(
+    screen.getByRole("checkbox", {
+      name: "Include my estimated level in this share",
+    }),
+  );
+  expect(link.getAttribute("href")).toContain("Grade+6");
 });

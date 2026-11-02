@@ -1,3 +1,7 @@
+import {
+  CurriculumDetailsControl,
+  useCurriculumDetails,
+} from "../curriculum/CurriculumDetails";
 import { useId, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { bandLabel, type MapSkill } from "./model";
@@ -22,6 +26,7 @@ export function ConnectionList({
   onNavigate: () => void;
   visible?: number;
 }) {
+  const { shown: detailsShown } = useCurriculumDetails();
   const [all, setAll] = useState(false);
   const listId = useId();
   if (!items.length) return <p className="pathways-muted">None listed.</p>;
@@ -48,9 +53,9 @@ export function ConnectionList({
               >
                 {item.skill.title}
                 <small>
-                  {bandLabel(item.skill.gradeBand)}
+                  {detailsShown && bandLabel(item.skill.gradeBand)}
                   {label &&
-                    ` · ${label}${group === "builds-on" && item.connection ? " · Not required" : ""}`}
+                    `${detailsShown ? " · " : ""}${label}${group === "builds-on" && item.connection ? " · Not required" : ""}`}
                 </small>
                 {item.connection && (
                   <small className="pathways-connection-why">

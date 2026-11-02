@@ -23,7 +23,7 @@ import { migrate } from "./migrate";
 
 /**
  * The free assessment's level check, against the real learning API: the
- * practice drawer's "Your level" link opens /try/map with a real route
+ * practice drawer's "Your progress" link opens /try/map with a real route
  * (back returns to the same problem). Runs at 320x568, 384x700, 390x844,
  * 768x1024, 1024x768, 1180x820 and 1280x800, light and dark, and asserts no
  * horizontal overflow and nothing overlapping in the toolbar.
@@ -378,10 +378,16 @@ try {
 
       // A real route: the map opens, back returns to the same problem.
       await level.click();
-      await page.getByRole("link", { name: "Your level", exact: true }).click();
+      await page
+        .getByRole("link", { name: "Your progress", exact: true })
+        .click();
       await page.waitForURL("**/try/map*");
       await page.locator(".frontier-map").waitFor();
       await fits(page, `${tag} map`);
+      assert.equal(await page.getByTestId("level-readout").count(), 0);
+      await page
+        .getByRole("checkbox", { name: "Show grades and estimates" })
+        .check();
       assert.match(
         await page.getByTestId("level-readout").innerText(),
         /Working level[\s\S]*-?\d+\.\d{2}[\s\S]*Estimated range/,
@@ -434,6 +440,10 @@ try {
       assert.ok(page.url().endsWith("/try/practice"), `${tag}: same route`);
       const text = (await dialog.textContent()) ?? "";
       assert.match(text, /Level check · 25 answered/);
+      assert.equal(await dialog.getByTestId("level-readout").count(), 0);
+      await dialog
+        .getByRole("checkbox", { name: "Show grades and estimates" })
+        .check();
       assert.match(
         await dialog.getByTestId("level-readout").innerText(),
         /Working level[\s\S]*-?\d+\.\d{2}[\s\S]*Estimated range/,
@@ -611,7 +621,7 @@ try {
     `Level check: every ${5} problems between problems (never over feedback), Escape / tap outside / Continue close it, no answer sent, count unchanged, the problem never moves, focus returns; "See your full map" → earned /pathways and back.`,
   );
   console.log(
-    `Level check: AMP menu → Your level → /try/map (back, forward and refresh restore it) at ${viewports.map(([w, h]) => `${w}x${h}`).join(", ")} × light/dark; 44px navigation target, no overflow, no toolbar overlap.`,
+    `Level check: AMP menu → Your progress → /try/map (back, forward and refresh restore it) at ${viewports.map(([w, h]) => `${w}x${h}`).join(", ")} × light/dark; 44px navigation target, no overflow, no toolbar overlap.`,
   );
 } finally {
   for (const context of contexts) await context.close().catch(() => {});
