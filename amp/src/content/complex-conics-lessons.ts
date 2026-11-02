@@ -98,18 +98,19 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
   },
   "polar-cartesian-conversion": {
     goal: "Convert between polar and Cartesian coordinates at special angles, and recognize different polar names for one point.",
-    intuition: r`A point can be located by two steps: turn through an angle $\theta$ from the positive $x$-axis, then move $r$ units. If $r$ is negative, move that distance in the opposite direction. Different turns can end at the same point.`,
+    intuition: r`Polar coordinates $(r,\theta)$ locate a point in two steps: turn through an angle $\theta$ counterclockwise from the positive $x$-axis, then move $r$ units. If $r$ is negative, move that distance the opposite way. Cartesian coordinates $(x,y)$ give the same point as across and up. Different turns can end at the same point.`,
     terms: ["polar-coordinates", "reference-angle"],
     method: [
       r`For polar to Cartesian, use $x=r\cos\theta$ and $y=r\sin\theta$, keeping the sign of $r$.`,
-      r`For Cartesian to polar, use $r=\sqrt{x^2+y^2}$, then the angle in $[0,2\pi)$ whose cosine is $x/r$ and sine is $y/r$.`,
+      r`For Cartesian to polar, for a point other than the origin, use $r=\sqrt{x^2+y^2}$, then the angle in $[0,2\pi)$ whose cosine is $x/r$ and sine is $y/r$.`,
       r`For another name, add $2\pi$ to the angle, or change the sign of $r$ and add $\pi$.`,
     ],
     watch: r`Choose the quadrant from the signs of $x$ and $y$; the reference angle alone fits four points. A negative $r$ reverses direction, so the angle must also turn by $\pi$ to keep the same point.`,
   },
   "parametric-linear-motion": {
     goal: "Given linear equations $x(t)$ and $y(t)$ for a moving object, find its position, path, speed, a time, or its direction.",
-    intuition: r`A parametric model gives each coordinate as its own function of time. At each time $t$ the pair $(x(t),y(t))$ is the object's position. When both functions are linear, the object moves along a line at a steady speed.`,
+    senses: { rule: "rule", rules: "rule", parameter: "parameter" },
+    intuition: r`A parametric model gives each coordinate as its own rule depending on time $t$, called the parameter. At each time $t$ the pair $(x(t),y(t))$ is the object's position. When both rules are linear, like $x(t)=2+3t$, the object moves along a straight line at a steady speed.`,
     terms: [
       [
         "parametric-equations",
@@ -122,14 +123,14 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       r`To find a position or a time, substitute into, or solve, the equation for the coordinate you are given.`,
-      r`To eliminate $t$, solve one equation for $t$ and substitute into the other. The slope of the path is $\frac{b}{a}$, the ratio of the rates.`,
+      r`To eliminate $t$, solve one equation for $t$ and substitute into the other. When $a\ne0$, the slope of the path is $\frac{b}{a}$, the ratio of the rates.`,
       r`Read direction from the signs of the rates, and speed from $\sqrt{a^2+b^2}$.`,
     ],
     watch: r`Include the starting position when evaluating. The slope of the path is $y$'s rate divided by $x$'s rate, and the speed combines both rates.`,
   },
   "conic-standard-form": {
     goal: "Given a conic equation, name the curve, read its center or axis ends, or complete the square to find its center and size.",
-    intuition: r`Circles, ellipses, parabolas and hyperbolas are the curves made by slicing a cone. Their equations differ in which variables are squared, whether the squared terms are added or subtracted, and whether their denominators match.`,
+    intuition: r`Circles, ellipses (ovals), parabolas (U shapes) and hyperbolas (two opposite curves) are the curves made by slicing a cone, called conic sections. Their equations differ in which variables are squared, whether the squared terms are added or subtracted, and whether their denominators match.`,
     terms: [
       [
         "center",
@@ -215,7 +216,7 @@ export const complexConicsPrinciples: Record<string, string> = {
   "polynomial-root-count": r`A polynomial of degree $n\ge1$ has exactly $n$ complex roots counting multiplicity. If its coefficients are real and $p+qi$ is a root, then $p-qi$ is a root with the same multiplicity.`,
   "polar-cartesian-conversion": r`For $(r,\theta)$, $x=r\cos\theta$ and $y=r\sin\theta$; conversely $r^2=x^2+y^2$. The pairs $(r,\theta)$, $(r,\theta+2\pi)$ and $(-r,\theta+\pi)$ name the same point.`,
   "parametric-linear-motion": r`For $x(t)=x_0+at$ and $y(t)=y_0+bt$ the object moves along a line with slope $\frac{b}{a}$ (when $a\ne0$) at constant speed $\sqrt{a^2+b^2}$.`,
-  "conic-standard-form": r`Each conic is the set of points satisfying a second-degree equation. $(x-h)^2+(y-k)^2=r^2$ is a circle, $\frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1$ with $a\ne b$ is an ellipse, and a minus sign between the squared terms gives a hyperbola. An equation with one squared variable is a parabola.`,
+  "conic-standard-form": r`Each conic is the set of points satisfying a second-degree equation. $(x-h)^2+(y-k)^2=r^2$ is a circle, $\frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1$ with $a\ne b$ is an ellipse, and a minus sign between the squared terms gives a hyperbola. An equation with one squared variable and no $xy$ term is a parabola. These names apply when the graph is a curve, not a point, a line or nothing.`,
   "parabola-focus-directrix": r`The parabola with focus $(h, k + p)$ and directrix $y = k - p$ is $(x - h)^2 = 4p(y - k)$. A point $(x, y)$ is the same distance from the focus and the directrix exactly when this equation holds.`,
 };
 
@@ -529,7 +530,9 @@ export const complexConicsLessons: Lesson[] = [
   lesson({
     id: "polar-cartesian-conversion",
     title: "Polar and Cartesian coordinates",
-    summary: r`A point can be named by $(x,y)$ or by a distance $r$ and angle $\theta$; many polar names describe one point.`,
+    senses: { units: "unit" },
+    noLink: ["face", "faces", "opposite", "side"],
+    summary: r`There are two ways to give directions to a point. Cartesian coordinates $(x,y)$ say how far across and how far up. Polar coordinates $(r,\theta)$ say which way to face, an angle $\theta$, and how far to walk, $r$, where a negative $r$ means walking backward. One point has many polar names, because turning a full circle faces the same way again.`,
     objectives: [
       "Convert between polar and Cartesian coordinates at special angles.",
       "Find equivalent polar names, including with negative $r$.",
@@ -538,23 +541,24 @@ export const complexConicsLessons: Lesson[] = [
       title: "Turn, then travel",
       paragraphs: [
         r`Cartesian coordinates $(x,y)$ say how far to go across and up. Polar coordinates $(r,\theta)$ say to turn counterclockwise by the angle $\theta$ from the positive $x$-axis, then travel $r$ units in that direction. If $r$ is negative you travel $|r|$ units the opposite way.`,
-        r`A full turn of $2\pi$ returns to the same direction, so adding $2\pi$ to $\theta$ names the same point.`,
+        r`Angles here are in radians: a full turn is $2\pi$ radians, the same as $360^\circ$. A full turn returns to the same direction, so adding $2\pi$ to $\theta$ names the same point.`,
+        r`On the unit circle, the point at angle $\theta$ is $(\cos\theta,\sin\theta)$. Walking $r$ units instead of 1 multiplies both coordinates by $r$, so $x=r\cos\theta$ and $y=r\sin\theta$.`,
       ],
     },
     example: {
       prompt: r`Convert $\left(4,\frac{5\pi}{6}\right)$ to Cartesian coordinates.`,
       steps: [
-        r`$\frac{5\pi}{6}=150^\circ$ has reference angle $30^\circ$ and lies in the second quadrant: $\cos=-\frac{\sqrt3}{2}$, $\sin=\frac12$.`,
-        r`$x=4\cdot\left(-\frac{\sqrt3}{2}\right)=-2\sqrt3$.`,
-        r`$y=4\cdot\frac12=2$.`,
-        r`Check: $\sqrt{12+4}=4$, the given $r$.`,
+        r`$\frac{5\pi}{6}=150^\circ$, in the second quadrant, the upper left. Its reference angle, the acute angle to the $x$-axis, is $30^\circ$. So $\cos\frac{5\pi}{6}=-\frac{\sqrt3}{2}$, negative because the point is left of the $y$-axis, and $\sin\frac{5\pi}{6}=\frac12$.`,
+        r`Here $r=4$, so $x=r\cos\theta=4\cdot\left(-\frac{\sqrt3}{2}\right)=-2\sqrt3$.`,
+        r`$y=r\sin\theta=4\cdot\frac12=2$.`,
+        r`Check: the distance from the origin is $\sqrt{(-2\sqrt3)^2+2^2}=\sqrt{12+4}=4$, the given $r$.`,
       ],
       answer: r`$(-2\sqrt3,\,2)$`,
     },
     method: {
       title: "Both directions",
       paragraphs: [
-        r`Polar to Cartesian: $x=r\cos\theta$, $y=r\sin\theta$. Cartesian to polar: $r=\sqrt{x^2+y^2}$, then choose the angle by the signs of $x$ and $y$.`,
+        r`Polar to Cartesian: $x=r\cos\theta$, $y=r\sin\theta$. Cartesian to polar, for a point other than the origin: $r=\sqrt{x^2+y^2}$, then the angle whose cosine is $x/r$ and whose sine is $y/r$. Whether $x$ and $y$ are positive or negative tells you the quadrant. A point on an axis has angle $0$, $\frac{\pi}{2}$, $\pi$ or $\frac{3\pi}{2}$.`,
         r`Equivalent names of $(r,\theta)$: $(r,\theta+2\pi)$ and $(-r,\theta+\pi)$. To remove a negative $r$, flip its sign and add $\pi$.`,
       ],
     },
@@ -574,7 +578,18 @@ export const complexConicsLessons: Lesson[] = [
   lesson({
     id: "parametric-linear-motion",
     title: "Linear parametric motion",
-    summary: r`Two functions of time give an object's coordinates; eliminating the time shows its path.`,
+    senses: {
+      rule: "rule",
+      rules: "rule",
+      parameter: "parameter",
+      model: "model",
+      change: "change",
+      changes: "change",
+      unit: "unit",
+      terms: "term-expression",
+    },
+    noLink: ["third"],
+    summary: r`To describe something moving, give its position at each moment: one rule for how far across, $x$, and one for how far up, $y$, both depending on the time $t$. These are called parametric equations. Removing $t$ from the two rules gives one equation for the path, and the rates of change give the speed and direction.`,
     objectives: [
       "Find position, timing, speed and direction from $x(t)$ and $y(t)$.",
       "Eliminate the parameter to write a linear path.",
@@ -583,14 +598,14 @@ export const complexConicsLessons: Lesson[] = [
       title: "One clock, two coordinates",
       paragraphs: [
         r`Instead of writing $y$ as a function of $x$, a parametric model writes both coordinates as functions of a third variable, the parameter, usually time $t$. At each $t$ the point $(x(t),y(t))$ is where the object is.`,
-        r`In a linear model $x(t)=x_0+at$ and $y(t)=y_0+bt$: $x_0,y_0$ is the starting position and $a,b$ are the changes per unit of time.`,
+        r`In a linear model $x(t)=x_0+at$ and $y(t)=y_0+bt$, the point $(x_0,y_0)$ (read “$x$ naught, $y$ naught”) is the starting position, at $t=0$. The numbers $a$ and $b$ are the rates: how much $x$ and $y$ change in each unit of time. Each unit of time, the object moves $a$ across and $b$ up, so by the Pythagorean theorem it travels $\sqrt{a^2+b^2}$, its speed.`,
       ],
     },
     example: {
       prompt: r`A cart has $x(t)=2+3t$ and $y(t)=1-2t$ (meters, seconds). Find its path as $y$ in terms of $x$ and its speed.`,
       steps: [
-        r`Solve $x=2+3t$ for $t$: $t=\frac{x-2}{3}$.`,
-        r`Substitute: $y=1-2\cdot\frac{x-2}{3}=1-\frac23x+\frac43=-\frac23x+\frac73$.`,
+        r`To remove $t$, first solve $x=2+3t$ for $t$: $t=\frac{x-2}{3}$.`,
+        r`Substitute it into the rule for $y$: $y=1-2\cdot\frac{x-2}{3}=1-\frac23x+\frac43=-\frac23x+\frac73$.`,
         r`Each second $x$ changes by $3$ and $y$ by $-2$, so the speed is $\sqrt{3^2+(-2)^2}=\sqrt{13}$ m/s.`,
         r`Check at $t=1$: the position $(5,-1)$ satisfies $y=-\frac23(5)+\frac73=-1$.`,
       ],
@@ -599,14 +614,14 @@ export const complexConicsLessons: Lesson[] = [
     method: {
       title: "Evaluate, solve, eliminate",
       paragraphs: [
-        r`Position at a time: substitute. A time for a given coordinate: set that coordinate's equation equal to the value and solve. Path: solve one equation for $t$ and substitute into the other; the slope is $\frac{b}{a}$.`,
+        r`Position at a time: substitute. A time for a given coordinate: set that coordinate's equation equal to the value and solve. Path: solve one equation for $t$ and substitute into the other. When $a\ne0$, the slope is $\frac{b}{a}$.`,
         r`Direction: $a>0$ moves right and $a<0$ left; $b>0$ moves up and $b<0$ down. Speed: $\sqrt{a^2+b^2}$.`,
       ],
     },
     formal: {
       title: "Linear parametric equations",
       paragraphs: [
-        r`If $x(t)=x_0+at$ and $y(t)=y_0+bt$ with $a\ne0$, then every position satisfies $y-y_0=\frac{b}{a}(x-x_0)$. The distance moved in time $t$ is $t\sqrt{a^2+b^2}$.`,
+        r`If $x(t)=x_0+at$ and $y(t)=y_0+bt$ with $a\ne0$, then every position satisfies $y-y_0=\frac{b}{a}(x-x_0)$. From time 0 to a time $t\ge0$, the object moves a distance $t\sqrt{a^2+b^2}$.`,
       ],
     },
     pitfalls: [
@@ -619,7 +634,18 @@ export const complexConicsLessons: Lesson[] = [
   lesson({
     id: "conic-standard-form",
     title: "Conic sections from equations",
-    summary: r`The squared terms of an equation tell whether the graph is a circle, ellipse, parabola or hyperbola, and completing the square reveals its center.`,
+    senses: {
+      squared: "square-number",
+      square: "square-number",
+      squares: "square-number",
+      center: "center",
+      term: "term-expression",
+      terms: "term-expression",
+      sides: "side-of-equation",
+      factor: "factor-number",
+    },
+    noLink: ["opposite"],
+    summary: r`Slicing a cone, like an ice-cream cone, at different angles gives four curves: a circle, an oval called an ellipse, a U-shaped parabola, and a two-piece hyperbola. These are the conic sections. In an equation, which variables are squared, and how, tells which curve it is. Rewriting the equation by completing the square, turning $x^2+bx$ into a perfect square, shows where the curve sits: its center, or a parabola's vertex.`,
     objectives: [
       "Identify a conic from its equation.",
       "Read a center or axis ends, and complete the square in general form.",
@@ -627,16 +653,17 @@ export const complexConicsLessons: Lesson[] = [
     intuition: {
       title: "Four curves from one idea",
       paragraphs: [
-        r`Slicing a cone gives four curves. In an equation, look at the squared variables. If only one variable is squared, the graph is a parabola. If both are squared and added, it is a circle (equal coefficients) or an ellipse (different ones). If both are squared and subtracted, it is a hyperbola.`,
-        r`Shifting a graph $h$ right and $k$ up replaces $x$ by $x-h$ and $y$ by $y-k$, so the center is the point that makes both bracketed expressions zero.`,
+        r`Slicing a cone gives four curves. In an equation with no $xy$ term, look at the squared variables. If only one variable is squared, the graph is a parabola. If both are squared and added, it is a circle (equal coefficients) or an ellipse (different ones). If both are squared and subtracted, it is a hyperbola. A few equations of these shapes give only a point, a line or no graph at all, such as $x^2+y^2=0$, which is just the origin.`,
+        r`The coefficient of a squared term is the number multiplying it. Shifting a graph $h$ right and $k$ up replaces $x$ by $x-h$ and $y$ by $y-k$. So the center is the point that makes both bracketed expressions zero.`,
+        r`Completing the square rewrites $x^2+bx$ as a square minus a number: add $\left(\frac b2\right)^2$, the square of half the coefficient of $x$, to make $\left(x+\frac b2\right)^2$. Adding the same amount to both sides keeps the equation true.`,
       ],
     },
     example: {
       prompt: r`Find the center and radius of the circle $x^2+y^2-6x+4y-12=0$.`,
       steps: [
-        r`Group: $(x^2-6x)+(y^2+4y)=12$.`,
-        r`Half of $-6$ is $-3$ and $(-3)^2=9$. Half of $4$ is $2$ and $2^2=4$. Add $9$ and $4$ to both sides.`,
-        r`$(x-3)^2+(y+2)^2=25$.`,
+        r`Group the $x$ terms and the $y$ terms, and move the constant to the right: $(x^2-6x)+(y^2+4y)=12$.`,
+        r`Half of $-6$ is $-3$ and $(-3)^2=9$. Half of $4$ is $2$ and $2^2=4$. Add $9$ and $4$ to both sides to complete both squares.`,
+        r`Since $x^2-6x+9=(x-3)^2$ and $y^2+4y+4=(y+2)^2$, this gives $(x-3)^2+(y+2)^2=12+9+4=25$.`,
         r`The center is $(3,-2)$ and the radius is $\sqrt{25}=5$. Check: $(3,3)$ gives $0+25=25$ and satisfies the original equation.`,
       ],
       answer: r`Center $(3,-2)$, radius $5$`,
@@ -644,7 +671,7 @@ export const complexConicsLessons: Lesson[] = [
     method: {
       title: "Identify, then read or complete",
       paragraphs: [
-        r`A center is the opposite of the numbers inside the brackets. An ellipse $\frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1$ extends $a$ horizontally and $b$ vertically from $(h,k)$; the longer axis follows the larger denominator.`,
+        r`In completed-square form, such as $(x-h)^2$ and $(y-k)^2$, the center is $(h,k)$: each coordinate is the opposite of the number added inside its bracket. An ellipse $\frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1$ extends $a$ horizontally and $b$ vertically from $(h,k)$; the longer axis follows the larger denominator.`,
         r`In general form, group each variable. If a variable has a leading coefficient other than 1, factor it out first; the amount added on the right is multiplied by that coefficient.`,
       ],
     },
