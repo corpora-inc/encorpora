@@ -347,75 +347,102 @@ export const baseLessons: Lesson[] = [
   },
   {
     id: "addition",
+    noLink: ["change", "changes", "leaves"],
     title: "Join groups and count on",
     summary:
-      "Addition puts amounts together. If you have some objects and get a few more, adding tells you how many you have altogether. You can start with one group and count on, or make a group of ten to make counting easier.",
+      "To add means to put groups together and find how many in all. The sign + means add, and = means is the same amount as. The answer is called the sum. In 6 + 3 = 9, the sum is 9. You can count on: start at one number and keep counting. Or make a ten first, because adding to 10 is easy. A number line shows numbers in order, so you can count on by moving right. Adding 0 adds nothing, so the number stays the same.",
     templateIds: ["add-within-20"],
+    senses: { part: "part", parts: "part" },
     objectives: [
-      "Model addition by joining two groups.",
-      "Use counting on or making ten to add within twenty.",
+      "Add by joining two groups.",
+      "Add within 20 by counting on or by making a ten.",
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Put groups together",
+        paragraphs: [
+          "Put 6 counters on a table. Add 3 more. How many are there in all?",
+          "Count them all: 1, 2, 3, up to 9. Or start at 6 and count on 3 more: 7, 8, 9. Either way there are 9.",
+        ],
+      },
+      {
         title: "Join two parts",
         paragraphs: [
-          "In 6 + 3, six and three are the parts. The sum tells how many are in the combined group. Start with six counters and add three more.",
-          "You can count every counter, or start at six and count three steps: seven, eight, nine. The starting number is not one of the added steps.",
+          "In 6 + 3, the numbers 6 and 3 are the parts. The sum is how many there are when the parts are together.",
+          "To count on, say the first number, 6. Then say one new number for each one you add: 7, 8, 9. Do not count the 6 again.",
         ],
       },
       {
         title: "Make a ten",
         paragraphs: [
-          "Ten is a useful stopping place. To find 8 + 5, split five into two and three. Eight plus two makes ten; three more makes thirteen.",
-          "Changing the order of the parts does not change the total. Adding zero adds no objects, so the starting number stays the same.",
+          "10 is a handy stop. To find 8 + 5, split 5 into 2 and 3. 8 and 2 make 10. Then 3 more make 13.",
+          "Changing the order does not change the sum: 8 + 5 and 5 + 8 both make 13.",
+          "Adding 0 adds nothing, so the number stays the same: 16 + 0 = 16.",
         ],
       },
     ],
     closingSections: [
       {
         stage: "formal",
-        title: "Addition and regrouping",
+        title: "Addition facts",
         paragraphs: [
-          "For nonnegative whole numbers $a$ and $b$, their sum $a+b$ is the number of objects in two separate collections of sizes $a$ and $b$ taken together. The result of addition is called the sum.",
-          "Addition is commutative: $a+b=b+a$. It is associative: $(a+b)+c=a+(b+c)$. Adding zero leaves a number unchanged: $a+0=a$. These properties justify changing the order and grouping when making ten.",
+          "The sum of two numbers is how many things there are when two groups are put together.",
+          "The order does not change the sum: 8 + 5 = 5 + 8. Which pair you add first does not change it either: (8 + 2) + 3 = 8 + (2 + 3). The parentheses ( ) show which numbers to add first.",
+          "Adding 0 leaves a number the same: 16 + 0 = 16. These facts are why making a ten works.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 8 + 5?",
-      steps: ["Split 5 into 2 + 3.", "8 + 2 = 10.", "10 + 3 = 13."],
+      steps: [
+        "8 needs 2 more to make 10. So split 5 into 2 and 3.",
+        "Add the 2 first: 8 + 2 = 10.",
+        "Then add the 3 that is left: 10 + 3 = 13.",
+      ],
       answer: "13",
     },
     pitfalls: [
-      "When counting on, begin the first new step after the starting number.",
-      "Breaking apart a number must preserve its total.",
+      "When you count on, do not count the start number again. Start with the next number.",
+      "When you split a number, the pieces must add back to it: 5 is 2 and 3.",
     ],
     parentGuide:
-      "Use two colors of counters and ask how the learner sees a group of ten. Encourage a clear strategy before asking for speed.",
+      "Use two colors of counters. Ask how the learner sees a group of 10. Ask them to explain how they found the sum before asking them to go faster.",
   },
   {
     id: "subtraction",
+    noLink: ["leaves"],
     title: "Take away and find the difference",
     summary:
-      "Subtraction tells you what is left when you take some away. It can also tell you how far apart two amounts are. You can remove objects, count backward, or count up from the smaller amount to the larger one.",
+      "To subtract means to take some away and find how many are left. The sign − means take away, and = means is the same amount as. In 9 − 4 = 5, the answer, 5, is called the difference. It also tells how far apart 9 and 4 are. You can take away objects, count back, or count up from the smaller number to the bigger one. Adding checks a take-away.",
     templateIds: ["subtract-within-20"],
+    senses: { difference: "difference-subtract" },
     objectives: [
-      "Model subtraction with objects.",
-      "Check a subtraction answer with addition.",
+      "Subtract by taking objects away.",
+      "Check a subtraction answer by adding.",
     ],
     sections: [
       {
-        title: "Remove a part",
+        stage: "intuition",
+        title: "Take some away",
         paragraphs: [
-          "In 14 − 6, begin with fourteen and remove six. The difference is the amount left. Mark removed objects so you do not subtract an object twice.",
-          "You can also count backward six steps. When crossing ten, remove four to reach ten and then remove two more.",
+          "Start with 14 counters. Take 6 away. Count the ones that are left: 8.",
+          "Put the 6 back. 8 and 6 make 14 again. That is how adding checks a take-away.",
+        ],
+      },
+      {
+        title: "Take away a part",
+        paragraphs: [
+          "In 14 − 6, start with 14 and take away 6. The difference is what is left.",
+          "You can count back 6 from 14: 13, 12, 11, 10, 9, 8. Or go down to 10 first. Take away 4 to reach 10, then 2 more to reach 8.",
         ],
       },
       {
         title: "Find what is missing",
         paragraphs: [
-          "Think of 14 − 6 as the question: six plus what equals fourteen? Count up from six to fourteen, keeping track of the steps.",
-          "Addition checks the result: the amount removed plus the amount remaining must equal the starting amount.",
+          "You can also think of 14 − 6 as a question: 6 and what make 14?",
+          "Count up from 6 to 14: 7, 8, 9, 10, 11, 12, 13, 14. You said 8 numbers, so the difference is 8.",
+          "Check by adding. What you took away plus what is left makes the start: 6 + 8 = 14.",
         ],
       },
     ],
@@ -424,50 +451,62 @@ export const baseLessons: Lesson[] = [
         stage: "formal",
         title: "Subtraction and its addition check",
         paragraphs: [
-          "For whole numbers $a$ and $b$ with $a \\ge b$, the difference $a-b$ is the whole number $c$ satisfying $b+c=a$. This is why adding the removed part to the remaining part checks a subtraction.",
-          "Subtracting zero preserves the number: $a-0=a$. Subtracting a number from itself gives zero: $a-a=0$. Subtraction is not commutative: exchanging its inputs generally changes its value.",
+          "For 14 − 6, the difference is the number that goes with 6 to make 14. That is why 6 + 8 = 14 checks 14 − 6 = 8.",
+          "Taking away 0 leaves a number the same: 9 − 0 = 9. Taking a number away from itself leaves 0: 9 − 9 = 0.",
+          "Order matters. Taking 6 from 14 is not the same as taking 14 from 6.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 14 − 6?",
       steps: [
-        "Remove 4 from 14 to reach 10.",
-        "There are 2 more to remove: 10 − 2 = 8.",
-        "Check: 6 + 8 = 14.",
+        "Take away 4 first to reach 10, because 10 is easy to take from: 14 − 4 = 10.",
+        "You must take away 6 in all, and you took 4. So take away 2 more: 10 − 2 = 8.",
+        "Check by adding: 6 + 8 = 14.",
       ],
       answer: "8",
     },
     pitfalls: [
-      "Subtraction order matters: taking six from fourteen is different from taking fourteen from six.",
-      "Subtracting zero leaves the amount unchanged.",
+      "Order matters. Taking 6 from 14 is different from taking 14 from 6.",
+      "Taking away 0 leaves the number the same.",
     ],
     parentGuide:
-      "Give the learner fourteen small objects and ask them to show both taking away six and building six up to fourteen.",
+      "Give the learner 14 small objects. Ask them to show taking away 6. Then ask them to start with 6 and add objects up to 14, counting how many they add.",
   },
   {
     id: "fractions",
+    noLink: ["change", "changes", "mean"],
     title: "Equal parts of one whole",
     summary:
-      "A fraction tells you how many equal pieces of a whole you have. Cut a rectangle into eight equal pieces and shade four: four out of eight pieces are shaded. That is also half the rectangle; both names describe the same amount.",
+      "A fraction names part of a whole. The whole is one full thing, like one rectangle. Cut it into equal parts, parts that are all the same size. We write a fraction like 3/8, with 3 on top and 8 on the bottom. The bottom number, 8, is the denominator. It counts the equal parts in the whole. The top number, 3, is the numerator. It counts the parts you mean, such as the shaded ones. Two fractions, like 4/8 and 1/2, can name the same amount.",
     templateIds: ["fraction-model"],
+    senses: {
+      whole: "whole",
+      part: "part",
+      parts: "part",
+      eighth: "eighth",
+      eighths: "eighth",
+    },
     objectives: [
-      "Identify numerator and denominator in a fraction model.",
-      "Recognize equivalent fractions.",
+      "Find the numerator and the denominator in a fraction picture.",
+      "Tell when two fractions name the same amount.",
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Name the whole first",
         paragraphs: [
-          "Choose one whole, such as one rectangle. Divide it into equal-area parts. The denominator counts all the equal parts in that whole; the numerator counts the selected parts.",
-          "If three of eight equal parts are shaded, the shaded amount is 3/8. The unshaded parts are included when counting the denominator.",
+          "Choose one whole, like one rectangle. Cut it into 8 parts that are all the same size. Shade 3 of them.",
+          "The whole has 8 equal parts, so the denominator is 8. 3 parts are shaded, so the numerator is 3. The shaded amount is 3/8, read “three eighths.”",
+          "Count the parts that are not shaded too. The denominator counts every equal part in the whole.",
         ],
       },
       {
         title: "Rename without changing the amount",
         paragraphs: [
-          "Four of eight equal parts cover the same amount as one of two equal parts of the same whole. That is why 4/8 = 1/2.",
-          "Divide the numerator and denominator by the same nonzero number to simplify. The labels change, but the amount stays fixed.",
+          "Shade 4 of the 8 equal parts. That covers the same amount as 1 of 2 equal parts of the same whole. So 4/8 = 1/2.",
+          "Fractions that name the same amount are called equivalent fractions.",
+          "To find a simpler name, divide the top and bottom numbers by the same whole number that goes into both evenly. For 4/8, 4 goes into both: 4 ÷ 4 = 1 and 8 ÷ 4 = 2. So 4/8 = 1/2. The name changes, but the amount stays the same.",
         ],
       },
     ],
@@ -476,8 +515,9 @@ export const baseLessons: Lesson[] = [
         stage: "formal",
         title: "Fractions and equivalent names",
         paragraphs: [
-          "For a positive integer $b$, divide a chosen whole into $b$ equal parts. Each part has size $1/b$ of that whole. For a nonnegative integer $a$, the fraction $a/b$ counts $a$ of those parts. The numerator $a$ is the count; the denominator $b$ determines the part size.",
-          "Fractions are equivalent when they represent the same number. Multiplying both numerator and denominator by the same nonzero number preserves the value. To simplify an integer fraction, divide both by a common positive integer factor. Fraction models being compared must use the same-sized whole.",
+          "Cut a whole into equal parts. The denominator is the number of parts, and it is never 0. The fraction 3/8 means 3 of the 8 equal parts, so 3 eighths.",
+          "Two fractions are equivalent when they name the same amount of the same whole. Multiplying the top and bottom numbers by the same whole number, not 0, keeps the amount the same. So does dividing both by a whole number that goes into both evenly.",
+          "To compare fraction pictures, the wholes must be the same size.",
         ],
       },
     ],
@@ -485,43 +525,59 @@ export const baseLessons: Lesson[] = [
       prompt:
         "A rectangle has eight equal parts. Four are shaded. What fraction is shaded?",
       steps: [
-        "There are 8 equal parts in the whole and 4 shaded parts.",
-        "Write 4/8.",
-        "Divide both numbers in the fraction by 4: 4/8 = 1/2.",
+        "Count all the equal parts in the whole: 8. That is the denominator, the bottom number.",
+        "Count the shaded parts: 4. That is the numerator, the top number. So the fraction is 4/8.",
+        "4 of 8 parts is half of them. Divide the top and bottom by 4: 4 ÷ 4 = 1 and 8 ÷ 4 = 2. So 4/8 = 1/2.",
       ],
       answer: "1/2",
     },
     pitfalls: [
-      "Parts must have equal size; merely counting unequal regions does not define a fraction of area.",
-      "Compare fractions using the same-sized whole.",
+      "Count only equal parts, all the same size. If the parts are different sizes, counting them does not tell the shaded amount.",
+      "When you compare fraction pictures, make sure the wholes are the same size.",
     ],
     parentGuide:
-      "Fold a paper into equal parts. Shade half, then add more folds. Ask why the shaded amount stays the same even though its fraction name changes.",
+      "Fold a sheet of paper in half and shade one half. Then fold it again, and again. Ask why the shaded amount stays the same even though its fraction name changes.",
   },
   fractionAdditionLesson,
   {
     id: "area",
     title: "Cover a rectangle with unit squares",
     summary:
-      "Area tells you how much space a flat shape covers. One square centimeter is a square one centimeter wide on each side. Cover a rectangle with these squares, without gaps or overlaps, then count the squares in one row and the number of rows.",
+      "Area is how much flat space a shape covers. We measure it with unit squares. A unit square is a square with sides 1 unit long, like 1 centimeter. A centimeter, written cm, is about the width of a fingernail. Cover a rectangle with unit squares, with no gaps and no overlaps. Count the squares in one row, and count the rows. Then multiply: the sign × means times. The area is in square units, like square centimeters.",
     templateIds: ["rectangle-area"],
+    senses: {
+      square: "square-shape",
+      squares: "square-shape",
+      unit: "unit",
+      side: "side",
+      sides: "side",
+    },
     objectives: [
-      "Explain the rectangle area formula using rows of squares.",
-      "Distinguish square units from length units.",
+      "Explain why the area of a rectangle is width times height, using rows of squares.",
+      "Tell square units for area from length units.",
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Count a covering",
         paragraphs: [
-          "A rectangle six centimeters wide fits six one-centimeter squares across a row. If it is four centimeters high, it has four rows. Multiplying counts every square once.",
-          "Area = width × height. The side lengths must describe perpendicular dimensions of the rectangle in compatible units.",
+          "Draw a rectangle 6 centimeters wide and 4 centimeters high on grid paper. Fill it with unit squares.",
+          "Each row has 6 squares, one for each centimeter of width. There are 4 rows, one for each centimeter of height.",
+          "4 rows of 6 squares is 4 × 6 = 24 squares. The sign × means times: 4 groups of 6. Multiplying counts every square once.",
+        ],
+      },
+      {
+        title: "Width times height",
+        paragraphs: [
+          "So the area of a rectangle is its width times its height. Width is how wide it is. Height is how tall it is.",
+          "Both lengths must use the same unit, like both in centimeters.",
         ],
       },
       {
         title: "Keep the units",
         paragraphs: [
-          "Centimeters measure length. Square centimeters measure area: one square centimeter is the area of a square with sides one centimeter long.",
-          "Perimeter measures the distance around the boundary. It is not the same as the number of squares covering the inside.",
+          "Centimeters measure length. Square centimeters measure area. One square centimeter is the space inside a square with sides 1 centimeter long.",
+          "Perimeter is the distance all the way around a shape. It is not the number of squares inside. Adding the side lengths gives perimeter, not area.",
         ],
       },
     ],
@@ -530,8 +586,9 @@ export const baseLessons: Lesson[] = [
         stage: "formal",
         title: "Area of a rectangle",
         paragraphs: [
-          "One square unit is the area of a square whose side length is one unit. A rectangle with perpendicular side lengths $w$ and $h$, measured in the same length unit, has area $A=wh$ in the corresponding square units.",
-          "For positive whole-number side lengths, this product counts unit squares in rows. The same formula applies to positive real side lengths. Perimeter measures boundary length; area measures the covered surface.",
+          "One square unit is the area of a square with sides 1 unit long. A rectangle 6 units wide and 4 units high has area 6 × 4 = 24 square units.",
+          "With letters, a rectangle with width $w$ and height $h$, in the same unit, has area $A = w \\times h$ square units. The letters stand for the numbers. This works for any side lengths, not only whole numbers.",
+          "Perimeter measures the length around the outside. Area measures the space inside.",
         ],
       },
     ],
@@ -539,18 +596,18 @@ export const baseLessons: Lesson[] = [
       prompt:
         "A rectangle is 6 cm wide and 4 cm high. What is its area in square centimeters?",
       steps: [
-        "Each row contains 6 unit squares.",
-        "There are 4 rows.",
-        "6 × 4 = 24 square centimeters.",
+        "Each unit square is 1 cm by 1 cm. The rectangle is 6 cm wide, so each row holds 6 squares.",
+        "It is 4 cm high, so there are 4 rows.",
+        "4 rows of 6 squares: 6 × 4 = 24. The area is 24 square centimeters.",
       ],
       answer: "24",
     },
     pitfalls: [
-      "Adding the side lengths does not give area.",
-      "Do not report area in centimeters alone.",
+      "Adding the side lengths does not give area. Multiply the width by the height.",
+      "Write area in square units, like square centimeters, not just centimeters.",
     ],
     parentGuide:
-      "Have the learner cover or draw a rectangle on centimeter grid paper. Ask them to explain why multiplication counts the squares.",
+      "Have the learner draw a rectangle on centimeter grid paper and count its squares. Ask them to explain why rows times squares in a row gives the same count.",
   },
   {
     id: "linear-equations",
