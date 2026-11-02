@@ -99,7 +99,7 @@ export const trigPrecalcEntries: GlossaryEntry[] = [
     term: "angular speed",
     forms: ["angular speed", "angular velocity"],
     plain:
-      "How much angle something turns through in each unit of time, such as radians per second.",
+      "How much angle something turns through in each unit of time, such as radians per second. Angular velocity also shows the direction of turning, by its sign.",
     example:
       "A wheel making 2 full turns each second has angular speed $4\\pi$ radians per second.",
     uses: ["angle", "unit", "radian"],

@@ -2006,8 +2006,8 @@ function squareRootExtraneousCase(seed: string) {
     const rad = a * x + b;
     const right = rhsAt(x);
     return right >= 0
-      ? `At $x=${x}$: $\\sqrt{${rad}}=${right}$ and the right side is ${right}. They agree.`
-      : `At $x=${x}$: $\\sqrt{${rad}}=${Math.abs(right)}$ but the right side is ${right}. They disagree.`;
+      ? `At $x=${x}$: $\\sqrt{${rad}}=${right}$ and the right side, $${isolated}$, is ${right}. They agree.`
+      : `At $x=${x}$: $\\sqrt{${rad}}=${Math.abs(right)}$ but the right side, $${isolated}$, is ${right}. They disagree.`;
   };
   const steps: string[] = [
     ...(d === 0
@@ -2018,7 +2018,9 @@ function squareRootExtraneousCase(seed: string) {
       .sort((u, v) => Number(v === 0) - Number(u === 0))
       .map((z) => (z === 0 ? "x" : `(x${z < 0 ? "+" : "-"}${Math.abs(z)})`))
       .join("")}$, so the candidates are $x=${lo}$ and $x=${hi}$.`,
-    "Check each candidate in the original equation, because squaring may have added one.",
+    d === 0
+      ? "Check each candidate in the original equation, because squaring may have added one."
+      : `Check each candidate, because squaring may have added one. Use $\\sqrt{${radicand}}=${isolated}$: it is the original equation with ${Math.abs(d)} ${d < 0 ? "added to" : "subtracted from"} both sides, so it has the same solutions.`,
     checkText(lo),
     checkText(hi),
   ];

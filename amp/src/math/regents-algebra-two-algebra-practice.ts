@@ -918,7 +918,7 @@ export const powersOfISum = chainFamily({
         `$i$ is the imaginary unit: $i^2=-1$. Its powers repeat in a cycle of 4: $i^1=i$, $i^2=-1$, $i^3=-i$, $i^4=1$, then $i^5=i$ again.`,
         `So only the remainder after dividing the exponent by 4 matters. Every $i^4$ is 1 and drops out.`,
         `Reduce each power: ${lines.join(", ")}.`,
-        `Substitute these values. Terms with no $i$ left form the real part, and terms with $i$ form the imaginary part.`,
+        `Substitute these values. The terms with no $i$ left add up to the real part. The terms with $i$ add up to a number times $i$; that number, the coefficient of $i$, is the imaginary part.`,
         `The real part is $${polyTex([good.re[0]!, good.re[1]!], m.v)}$ and the number multiplying $i$ is $${polyTex([good.im[0]!, good.im[1]!], m.v)}$.`,
         `The sum is $${iText(good, m.v)}$.`,
       ],

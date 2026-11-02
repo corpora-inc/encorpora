@@ -494,7 +494,7 @@ def solve_transform_point(public):
         y = spec_fn(g['curves'][0]['fn'])(x)
         require(y == int(y) and g['y'][0] < y < g['y'][1] and g['x'][0] < x < g['x'][1], 'f(x) is readable on the grid')
         return A * y + K
-    m = re.fullmatch(r'The point \$(.+?)\$ is on the graph of \$y = f\(x\)\$\. The graph of \$y = (.+?)\$ passes through \$(.+?)\$\. What is \$(p|q)\$\?', p)
+    m = re.fullmatch(r'The point \$(.+?)\$ is on the graph of \$y = f\(x\)\$\. On the graph of \$y = (.+?)\$, that point moves to \$(.+?)\$\. What is \$(p|q)\$\?', p)
     if m:
         x0, y0 = (number(v) for v in point(m[1]))
         rule = m[2]
@@ -847,9 +847,9 @@ def review_function_toolkit_fixtures():
               choice('Shift 3 units left', 'Shift 3 units right', 'Shift 3 units up', 'Shift 3 units down')), 'option-a'),
         (case('transform-equation', 'How does the graph of $y = f(2x)$ compare with the graph of $y = f(x)$?',
               choice('Multiply every $y$-coordinate by 2', 'Divide every $y$-coordinate by 2', 'Multiply every $x$-coordinate by 2', 'Divide every $x$-coordinate by 2')), 'option-d'),
-        (case('transform-point', 'The point $(2, 5)$ is on the graph of $y = f(x)$. The graph of $y = f(x + 3)$ passes through $\\left(p, 5\\right)$. What is $p$?'), -1),
-        (case('transform-point', 'The point $(4, 6)$ is on the graph of $y = f(x)$. The graph of $y = f(3x)$ passes through $\\left(p, 6\\right)$. What is $p$?'), Fraction(4, 3)),
-        (case('transform-point', 'The point $(3, -2)$ is on the graph of $y = f(x)$. The graph of $y = -f(x)$ passes through $\\left(3, q\\right)$. What is $q$?'), 2),
+        (case('transform-point', 'The point $(2, 5)$ is on the graph of $y = f(x)$. On the graph of $y = f(x + 3)$, that point moves to $\\left(p, 5\\right)$. What is $p$?'), -1),
+        (case('transform-point', 'The point $(4, 6)$ is on the graph of $y = f(x)$. On the graph of $y = f(3x)$, that point moves to $\\left(p, 6\\right)$. What is $p$?'), Fraction(4, 3)),
+        (case('transform-point', 'The point $(3, -2)$ is on the graph of $y = f(x)$. On the graph of $y = -f(x)$, that point moves to $\\left(3, q\\right)$. What is $q$?'), 2),
         (case('transform-point', '$f$ is an odd function and $f(3) = 7$. What is $f(-3)$?'), -7),
         (case('transform-point', 'The point $(2,5)$ is on the graph of $y=f(x)$. Where does this point move on the graph of $y=f(x+3)$? Give its new $x$-coordinate.'), -1),
         (case('transform-point', 'The point $(-2,7)$ is on the graph of $y = f(x)$. Where does this point move on the graph of $y = f(x - 4)$? Give its new x-coordinate.'), 2),
