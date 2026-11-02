@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { createServer as httpServer } from "node:http";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium, webkit } from "playwright";
+import { chromium, webkit, type Page } from "playwright";
 import { createServer } from "vite";
 import { problemLesson } from "../src/content/problem-lessons";
 
@@ -127,6 +127,27 @@ const output = new URL(
 );
 await mkdir(output, { recursive: true });
 const metrics: unknown[] = [];
+async function waitForVisibility(page: Page, visible: boolean, context: string) {
+  // IntersectionObserver follows browser rendering, not the installed JS clock.
+  // Await its real result while time is frozen, then test the playback interval.
+  try {
+    await page
+      .locator(`.lesson-animation[data-visible="${visible}"]`)
+      .waitFor({ state: "attached", timeout: 5000 });
+  } catch (cause) {
+    const state = await page.locator(".lesson-animation").evaluate((panel) => ({
+      visible: panel.getAttribute("data-visible"),
+      step: panel.getAttribute("data-step"),
+      documentVisibility: document.visibilityState,
+      bounds: panel.getBoundingClientRect().toJSON(),
+      viewport: { width: innerWidth, height: innerHeight },
+    }));
+    throw new Error(
+      `${context}: expected visibility=${visible}; ${JSON.stringify(state)}`,
+      { cause },
+    );
+  }
+}
 try {
   for (const width of [320, 390, 1280]) {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
@@ -150,6 +171,8 @@ try {
     for (let skipped = 0; skipped < start; skipped++)
       await page.getByRole("button", { name: "Open next lesson" }).click();
     for (let i = start; i < limit; i++) {
+      const context = `${browserName}/${names[i]}/${width}`;
+      console.log(`Animation ${context}`);
       await page.getByRole("button", { name: "Open next lesson" }).click();
       const panel = page.getByRole("region", { name: "Explore the example" });
       await panel.waitFor();
@@ -182,6 +205,7 @@ try {
           path: new URL(`${names[i]}-${width}-initial.png`, output).pathname,
         });
       }
+      await waitForVisibility(page, true, context);
       await page.clock.runFor(100);
       assert.equal(await panel.getAttribute("data-visible"), "true");
       await page.clock.runFor(2400);
@@ -411,8 +435,8 @@ try {
       });
       if (i === 0) {
         await panel.scrollIntoViewIfNeeded();
+        await waitForVisibility(page, true, `${context}/loop`);
         await page.clock.runFor(100);
-        await page.waitForTimeout(100);
         assert.equal(
           await panel.getAttribute("data-visible"),
           "true",
@@ -436,8 +460,8 @@ try {
         await panel.evaluate((el) => {
           (el as HTMLElement).style.display = "none";
         });
+        await waitForVisibility(page, false, `${context}/hidden`);
         await page.clock.runFor(100);
-        await page.waitForTimeout(100);
         assert.equal(
           await page.locator(".lesson-animation").getAttribute("data-visible"),
           "false",
@@ -452,8 +476,8 @@ try {
           (el as HTMLElement).style.display = "";
         });
         await panel.scrollIntoViewIfNeeded();
+        await waitForVisibility(page, true, `${context}/resume`);
         await page.clock.runFor(100);
-        await page.waitForTimeout(100);
         assert.equal(await panel.getAttribute("data-visible"), "true");
         await page.clock.runFor(2400);
         assert.equal(
@@ -524,6 +548,13 @@ try {
   await remountPage.goto(`http://127.0.0.1:${address.port}/animation-review`);
   await remountPage.getByRole("button", { name: "Open next lesson" }).click();
   await remountPage.locator(".lesson-animation").scrollIntoViewIfNeeded();
+  const remountNow = await remountPage.evaluate(() => Date.now());
+  await remountPage.clock.pauseAt(remountNow + 500);
+  assert.equal(
+    await remountPage.locator(".lesson-animation").getAttribute("data-step"),
+    "0",
+  );
+  await waitForVisibility(remountPage, true, `${browserName}/remount`);
   await remountPage.clock.runFor(100);
   await remountPage.clock.runFor(2400);
   assert.equal(
