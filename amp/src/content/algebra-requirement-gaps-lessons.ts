@@ -1062,7 +1062,7 @@ const rationalExtraneousSingleMethod: ProblemMethod = {
     "Substitute any remaining candidate into the original equation to confirm.",
   ],
   watch:
-    "Reject a candidate only when it makes a denominator zero, not because it looks unusual. A difference of squares over a matching linear factor simplifies only for inputs other than that factor's zero.",
+    "When the only step was clearing denominators, reject a candidate only when it makes a denominator zero, not because it looks unusual. A difference of squares over a matching linear factor simplifies only for inputs other than that factor's zero.",
 };
 
 const rationalExtraneousSinglePrinciple =
@@ -1072,8 +1072,9 @@ const rationalExtraneousSingleLesson: Lesson = {
   id: "rational-extraneous-single",
   title: "When the answer makes the denominator zero",
   summary:
-    "Clearing a denominator can produce a candidate that the original equation does not allow. Compare every candidate with the excluded value.",
+    "In an equation with the unknown in a fraction's bottom, its denominator, a value that makes that bottom zero is excluded from the start, because dividing by zero has no answer. Multiplying both sides by the bottom clears the fraction, but the cleared equation can produce the excluded value as a possible answer, which must then be rejected.",
   templateIds: ["rational-extraneous-single"],
+  senses: { sides: "side-of-equation", factors: "factor-number" },
   objectives: [
     "Solve a rational equation with one linear denominator and test the candidate against the excluded value.",
     "Explain why multiplying by the denominator can introduce an extraneous candidate.",
@@ -1083,7 +1084,7 @@ const rationalExtraneousSingleLesson: Lesson = {
       stage: "intuition",
       title: "Multiplying by zero loses information",
       paragraphs: [
-        "A fraction like $\\frac{3}{x-2}$ is not defined at $x=2$ because division by zero has no value. When we multiply both sides of an equation by $x-2$, we implicitly assume it is not zero. At $x=2$ the multiplier is zero and the cleared equation can be true even though the original is undefined.",
+        "A fraction like $\\frac{3}{x-2}$ is not defined at $x=2$ because division by zero has no value. Multiplying both sides of an equation by $x-2$ can be undone, by dividing, only where $x-2$ is not zero. At $x=2$ the multiplier is zero and the cleared equation can be true even though the original is undefined.",
         "So after solving, every candidate is checked against the excluded value.",
       ],
     },
@@ -1117,7 +1118,7 @@ const rationalExtraneousSingleLesson: Lesson = {
   ],
   pitfalls: [
     "Write the excluded value before solving, not after.",
-    "A candidate is extraneous only if it makes a denominator zero. Otherwise it is a solution.",
+    "When the only step was clearing denominators, a candidate is extraneous only if it makes a denominator zero. Otherwise it is a solution.",
     "If the only candidate is rejected, the answer is no solution, not “$x$ equals the candidate.”",
   ],
   parentGuide:
@@ -1126,6 +1127,7 @@ const rationalExtraneousSingleLesson: Lesson = {
 
 const squareRootExtraneousMethod: ProblemMethod = {
   goal: "Solve a square-root equation by squaring, identify the extraneous candidate, and explain why squaring creates it.",
+  noLink: ["opposite"],
   intuition:
     "A principal square root is never negative. Squaring both sides also keeps the case where the right side is the negative of the square root, so the squared equation can have a candidate that the original equation does not.",
   terms: ["principal-square-root", "extraneous-solution"],
@@ -1146,8 +1148,16 @@ const squareRootExtraneousLesson: Lesson = {
   id: "square-root-extraneous",
   title: "Why squaring adds a candidate",
   summary:
-    "Squaring both sides can add a candidate that satisfies $\\sqrt A=-B$ instead of $\\sqrt A=B$. Check each candidate in the original equation.",
+    "Once a square root is alone on one side, squaring both sides removes it, but it also loses the sign: $3^2$ and $(-3)^2$ are both 9. So a possible answer from the squared equation may actually solve $\\sqrt A=-B$ instead of $\\sqrt A=B$. Such a false answer is called extraneous, so check each possible answer in the original equation.",
   templateIds: ["square-root-extraneous"],
+  senses: {
+    squaring: "square-number",
+    squared: "square-number",
+    square: "square-number",
+    sides: "side-of-equation",
+    "right side": "side-of-equation",
+    root: "root-radical",
+  },
   objectives: [
     "Solve a square-root equation with a linear right side and keep only the valid candidates.",
     "Explain from the sign of the right side why a candidate is extraneous.",
@@ -1185,7 +1195,7 @@ const squareRootExtraneousLesson: Lesson = {
       stage: "formal",
       title: "Why the squared equation has more solutions",
       paragraphs: [
-        "For real $A\\ge0$, $A^2=B^2$ holds exactly when $A=B$ or $A=-B$. The original equation $\\sqrt{R}=B$ asks for $\\sqrt R=B$. The squared equation $R=B^2$ also holds when $\\sqrt R=-B$. These two cases agree only when $B\\ge0$.",
+        "For real $A\\ge0$, $A^2=B^2$ holds exactly when $A=B$ or $A=-B$. The original equation $\\sqrt{R}=B$ asks for $\\sqrt R=B$. The squared equation $R=B^2$ also holds when $\\sqrt R=-B$. Since $\\sqrt R$ is never negative, a solution of the squared equation solves the original exactly when $B\\ge0$.",
       ],
     },
   ],

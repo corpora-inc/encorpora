@@ -51,7 +51,7 @@ const definitions: [string, string, string, string, boolean, boolean][] = [
     "exponential-model-rule",
     "Choose the exponential rule",
     "exponential-models",
-    "Choose $y = a·b$ˣ from a table, a graph through marked points, or a growth or decay story.",
+    "Choose $y = a \\cdot b^{x}$ from a table, a graph through marked points, or a growth or decay story.",
     true,
     true,
   ],

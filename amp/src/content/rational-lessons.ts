@@ -248,8 +248,18 @@ export const rationalLessons: Lesson[] = [
     id: "rational-power",
     title: "Evaluate a fractional power",
     summary:
-      "A fractional exponent uses its bottom number for a root and its top number for a power; a negative exponent takes a reciprocal.",
+      "A whole-number exponent counts how many copies of a number are multiplied: $2^3=2\\times2\\times2=8$. A fraction as an exponent combines two steps. Its bottom number names a root, such as a cube root, and its top number names a power: $8^{2/3}$ is the cube root of 8, which is 2, squared, which is 4. A negative exponent also flips the result into its reciprocal, 1 divided by it.",
     templateIds: ["rational-power"],
+    senses: {
+      root: "root-radical",
+      squared: "square-number",
+      quarters: "fourth",
+      unit: "unit",
+      base: "base-exponent",
+      bases: "base-exponent",
+      factors: "factor-number",
+    },
+    noLink: ["whole", "parts", "part", "third", "fourth", "rule"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Interpret $x^{m/n} = \\left(\\sqrt[n]{x}\\right)^m$ as the nth root of $x$ raised to the power $m$, and a negative exponent as a reciprocal.",
@@ -267,7 +277,7 @@ export const rationalLessons: Lesson[] = [
       {
         title: "Powers and roots of fractions",
         paragraphs: [
-          "In $x^3$, the base $x$ is multiplied by itself 3 times; the exponent 3 counts the factors. A power of a fraction powers its numerator and denominator: $\\left(\\frac{2}{3}\\right)^{3} = \\frac{2 \\times 2 \\times 2}{3 \\times 3 \\times 3} = \\frac{8}{27}$. A negative exponent means the reciprocal of the power, $x^{-p} = \\frac{1}{x^p}$, and $x^0 = 1$ for every nonzero $x$.",
+          "In $x^3$, three copies of the base $x$ are multiplied: $x\\cdot x\\cdot x$. The exponent 3 counts the copies. A power of a fraction powers its numerator and denominator: $\\left(\\frac{2}{3}\\right)^{3} = \\frac{2 \\times 2 \\times 2}{3 \\times 3 \\times 3} = \\frac{8}{27}$. A negative exponent means the reciprocal of the power, $x^{-p} = \\frac{1}{x^p}$, and $x^0 = 1$ for every nonzero $x$.",
           "The nth root of a positive number $x$ is the positive number whose nth power is $x$. The square root is the second root and the cube root is the third: $\\sqrt[3]{\\frac{8}{27}} = \\frac{2}{3}$ because $\\left(\\frac{2}{3}\\right)^{3} = \\frac{8}{27}$. These lessons use positive bases, so every root here is one positive number.",
         ],
       },
@@ -300,7 +310,7 @@ export const rationalLessons: Lesson[] = [
       answer: "$\\frac{27}{8}$",
     },
     pitfalls: [
-      "The exponent's denominator is the root and its numerator is the power.",
+      "The exponent's denominator says which root to take, and its numerator says which power.",
       "A negative exponent gives a reciprocal, not a negative number.",
       "Take the root of the numerator and of the denominator separately.",
     ],
@@ -383,7 +393,7 @@ export const rationalMethods: Record<string, ProblemMethod> = {
       "A root undoes a power: the fourth root of 16 is 2 because 2 to the fourth power is 16. In a fractional exponent, the bottom number names the root and the top number names the power. A negative exponent takes the reciprocal, swapping the top and bottom of the result.",
     terms: [...fractionTerms, "nth-root"],
     method: [
-      "Read the exponent m/n: $n$ names the root, $m$ the power.",
+      "For a positive base, read the exponent $\\frac{m}{n}$, with $n$ a positive whole number: $n$ names the root, $m$ the power.",
       "Take the nth root of the numerator and of the denominator.",
       "Raise the root to the power $m$.",
       "If the exponent is negative, take the reciprocal.",

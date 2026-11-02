@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { AnimationBoundary } from "./lesson-animation/AnimationBoundary";
 import { animationModel } from "./lesson-animation/model";
 import type { ProblemLessonView } from "../content/problem-lessons";
+import { examplePartsTexts, type ExampleParts } from "../content/example-parts";
 import { Figure } from "./Figure";
 import { MathText, withSeparators } from "./MathText";
 import { ScenePlayer } from "./scene/ScenePlayer";
@@ -21,10 +22,11 @@ export function lessonGlossaryBlocks(lesson: ProblemLessonView) {
   return {
     opening: [lesson.intuition ?? lesson.goal],
     // The worked example is one block, read top to bottom: its question,
-    // choices, steps and answer.
+    // choices or sentence and blanks, steps and answer.
     example: [
       lesson.example.prompt,
       ...(lesson.example.choices ?? []),
+      ...examplePartsTexts(lesson.example.parts),
       ...lesson.example.steps,
       withSeparators(lesson.example.answer),
     ],
@@ -35,6 +37,65 @@ export function lessonGlossaryBlocks(lesson: ProblemLessonView) {
       ...lesson.terms.map((t) => t.meaning),
     ],
   };
+}
+
+/** A read-only numbered box standing for one blank. */
+function Blank({ n }: { n: number }) {
+  return (
+    <span className="lesson-blank" role="img" aria-label={`blank ${n}`}>
+      {n}
+    </span>
+  );
+}
+
+function OptionList({ options }: { options: readonly string[] }) {
+  return (
+    <span className="lesson-example-options">
+      {options.map((option, i) => (
+        <span key={`${i}:${option}`}>
+          {i > 0 && <span aria-hidden="true"> · </span>}
+          <MathText text={option} />
+        </span>
+      ))}
+    </span>
+  );
+}
+
+/** A multi-part example's sentence with numbered blanks, then what each
+ * blank asks for and what it offers. Nothing here is a control. */
+function ExamplePartsView({ parts }: { parts: ExampleParts }) {
+  return (
+    <div className="lesson-example-parts">
+      {parts.sentence && (
+        <p className="lesson-example-sentence">
+          {parts.sentence.map((part, i) =>
+            "text" in part ? (
+              <MathText key={i} text={part.text} />
+            ) : (
+              <Blank key={i} n={part.blank} />
+            ),
+          )}
+        </p>
+      )}
+      <ul className="lesson-example-blanks" aria-label="Example blanks">
+        {parts.blanks.map((blank, i) => (
+          <li key={i}>
+            <Blank n={i + 1} />
+            <span>
+              <MathText text={blank.label} />
+              {blank.options && <OptionList options={blank.options} />}
+            </span>
+          </li>
+        ))}
+      </ul>
+      {parts.options && (
+        <p className="lesson-example-shared">
+          <span className="lesson-example-shared-label">Choices</span>
+          <OptionList options={parts.options} />
+        </p>
+      )}
+    </div>
+  );
 }
 
 /** Build from a plain explanation and example to the general rule. */
@@ -80,6 +141,9 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
                   </li>
                 ))}
               </ol>
+            )}
+            {lesson.example.parts && (
+              <ExamplePartsView parts={lesson.example.parts} />
             )}
             {animation?.kind === "exchange" && lesson.example.figure && (
               <Figure figure={lesson.example.figure} />
