@@ -3,7 +3,7 @@ import { choose } from "./ui-controls";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium, webkit, type Page, type Request } from "playwright";
 import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts.js";
 import { presentOffer } from "../src/funding-purchase/contracts.js";
@@ -63,7 +63,10 @@ async function setup(
   page.setDefaultTimeout(12000);
   const faults: string[] = [];
   let release: (() => void) | undefined;
+  let heldNetwork: Promise<void> | undefined;
+  let heldHandler: Promise<void> | undefined;
   let lookupStarted = false;
+  let holdLookup = !!options.hold;
   let familyReads = 0;
   let status = "payment-processing";
   const checkoutBodies: { interval: string; offerId: string }[] = [];
@@ -143,15 +146,35 @@ async function setup(
       });
     if (path.includes("/billing/purchase/")) {
       lookupStarted = true;
-      if (options.hold)
+      let finishHandler: (() => void) | undefined;
+      if (holdLookup) {
+        const request = route.request();
+        heldNetwork = new Promise<void>((resolve) => {
+          const settled = (completed: Request) => {
+            if (completed !== request) return;
+            page.off("requestfinished", settled);
+            page.off("requestfailed", settled);
+            resolve();
+          };
+          page.on("requestfinished", settled);
+          page.on("requestfailed", settled);
+        });
+        heldHandler = new Promise<void>((resolve) => {
+          finishHandler = resolve;
+        });
         await new Promise<void>((resolve) => {
           release = resolve;
         });
-      return route.fulfill(
-        options.foreign
-          ? { status: 404, json: { error: "purchase_not_found" } }
-          : { json: { learnerId: `child-${parent}-2` } },
-      );
+      }
+      try {
+        return await route.fulfill(
+          options.foreign
+            ? { status: 404, json: { error: "purchase_not_found" } }
+            : { json: { learnerId: `child-${parent}-2` } },
+        );
+      } finally {
+        finishHandler?.();
+      }
     }
     if (
       path === "/api/v1/payments/reimbursement-programs" &&
@@ -194,6 +217,13 @@ async function setup(
     // First-party funnel beacons (verified in verify-funnel-ui).
     if (path.endsWith("/events"))
       return route.fulfill({ status: 202, json: { accepted: 1 } });
+    if (
+      path === "/api/v1/trials/current" &&
+      route.request().method() === "POST"
+    )
+      return route.fulfill({ json: { trial: null } });
+    if (path === "/api/v1/events/context" && route.request().method() === "GET")
+      return route.fulfill({ json: { generation: "initial" } });
     faults.push(`Unexpected ${route.request().method()} ${path}`);
     return route.fulfill({
       status: 404,
@@ -203,7 +233,29 @@ async function setup(
   return {
     page,
     faults,
-    release: () => release?.(),
+    releaseAndWait: async () => {
+      assert.ok(
+        release && heldNetwork && heldHandler,
+        "an ownership request is held",
+      );
+      holdLookup = false;
+      release();
+      let timeout: ReturnType<typeof setTimeout> | undefined;
+      try {
+        await Promise.race([
+          Promise.all([heldNetwork, heldHandler]),
+          new Promise<never>((_, reject) => {
+            timeout = setTimeout(
+              () =>
+                reject(new Error("Released ownership request did not settle")),
+              12_000,
+            );
+          }),
+        ]);
+      } finally {
+        clearTimeout(timeout);
+      }
+    },
     started: () => lookupStarted,
     familyReads: () => familyReads,
     checkoutBodies,
@@ -382,7 +434,8 @@ try {
     `http://127.0.0.1:4390/?billing=processing&purchase=${purchaseId}`,
   );
   await foreign.page
-    .getByText(/purchase return could not be matched/)
+    .getByRole("alert")
+    .filter({ hasText: /purchase return could not be matched/ })
     .waitFor();
   assert.equal(await foreign.page.locator(".annual-purchase").count(), 0);
   assert.equal(
@@ -393,6 +446,21 @@ try {
   );
   assert.deepEqual(foreign.faults, []);
   await foreign.page.close();
+  const delayed = await setup(390, 844, { hold: true });
+  await delayed.page.goto(
+    `http://127.0.0.1:4390/?billing=processing&purchase=${purchaseId}`,
+  );
+  await until(delayed.page, delayed.started, "delayed return lookup begins");
+  await delayed.page.getByRole("heading", { name: "Annual access" }).waitFor();
+  await delayed.releaseAndWait();
+  await delayed.page.waitForFunction(
+    () =>
+      document
+        .querySelector<HTMLButtonElement>(".annual-learner .premium-select")
+        ?.getAttribute("data-value") === "child-a-2",
+  );
+  assert.deepEqual(delayed.faults, []);
+  await delayed.page.close();
   const ready = await setup(320, 568);
   ready.setStatus("ready");
   await ready.page.goto("http://127.0.0.1:4390");
@@ -495,8 +563,14 @@ try {
     `http://127.0.0.1:4390/?billing=processing&purchase=${purchaseId}`,
   );
   await until(navigated.page, navigated.started, "return lookup begins");
-  await openAccess(navigated.page);
-  navigated.release();
+  await navigated.page
+    .getByRole("button", { name: "Back to family", exact: true })
+    .click();
+  await navigated.page
+    .getByRole("heading", { name: "Purchases and records" })
+    .waitFor();
+  assert.equal(await navigated.page.locator(".annual-purchase").count(), 0);
+  await navigated.releaseAndWait();
   await frames(navigated.page);
   await navigated.page
     .getByRole("heading", { name: "Purchases and records" })
@@ -516,7 +590,7 @@ try {
         accountId: "parent-b",
       }),
     );
-    f.release();
+    await f.releaseAndWait();
     await frames(f.page);
     await f.page
       .getByRole("button", { name: "Learner", exact: true })

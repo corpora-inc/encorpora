@@ -415,7 +415,7 @@ def review_explanation(problem):
     joined = ' '.join(steps)
     prompt = public['prompt']
     if template == 'counting-principle':
-        m = re.search(r'(?:All together|multiply \d factors of \d+): ([\d ×]+) = (\d+)\.', joined)
+        m = re.search(r'(?:All together|multiply all the counts|multiply \d factors of \d+(?: \([a-z ]+\))?): ([\d ×]+) = (\d+)\.', joined)
         require(m and int(m[2]) == answer, 'Missing complete product')
         require(factors(m[1]) == parse_counting(prompt), 'Product uses the wrong stage counts')
     elif template == 'permutation-count':

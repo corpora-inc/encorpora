@@ -80,6 +80,7 @@ export function geometryProofCase(id: string, seed: string) {
             },
       ),
       explanation: [
+        "A proof is a chain of statements. Each one needs a reason: a definition or a theorem (a fact already proved).",
         item.explanation,
         `Therefore ${item.target}. The reason is: ${item.reason}`,
       ],

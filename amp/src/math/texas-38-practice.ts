@@ -598,8 +598,9 @@ function timesAsManyComparison(r: Random): Built {
     prompt: `${a} has ${s} ${thing}. ${b} has ${big} ${thing}. Which sentence compares the amounts correctly with "times as many"?`,
     hint: `Ask how many groups of ${a}'s ${s} ${thing} fit in ${b}'s ${big}. That number goes in front of "times as many".`,
     explanation: [
+      `"Times as many" asks how many groups of ${a}'s ${s} make ${b}'s ${big}.`,
       `${big} ÷ ${s} = ${k}, because ${k} × ${s} = ${big}.`,
-      `${b} has ${k} times as many ${thing} as ${a}.`,
+      `So ${b} has ${k} times as many ${thing} as ${a}.`,
     ],
     choices: choicesFrom(`${b} has ${k} times as many ${thing} as ${a}.`, [
       {
@@ -616,7 +617,7 @@ function timesAsManyComparison(r: Random): Built {
       },
       {
         label: `${b} has ${k} more ${thing} than ${a}.`,
-        feedback: `${big} is ${big - s} more than ${s}. "${k}" counts equal groups, so it is ${k} times as many.`,
+        feedback: `${b} has ${big - s} more, not ${k} more. ${k} is how many groups of ${s} make ${big}, so it goes with "times as many".`,
       },
     ]),
   };
@@ -2870,8 +2871,9 @@ function categoricalSummary(r: Random): Built {
       prompt: `A percent bar shows the ${set.title} of ${total} students, from left to right: ${names.join(", ")}. How many students chose ${names[askIdx]}?`,
       hint: `The bar shows percents of ${total} students. Find ${names[askIdx]}'s part of the bar, then take that percent of ${total}.`,
       explanation: [
-        `${names[askIdx]} is ${percents[askIdx]}% of the ${total} students.`,
-        `${percents[askIdx]}% of ${total} = ${percents[askIdx]! / 100} × ${total} = ${count}.`,
+        `${names[askIdx]} is part ${askIdx + 1} of the bar from the left, labeled ${percents[askIdx]}%. So ${percents[askIdx]}% of the ${total} students chose it.`,
+        `${percents[askIdx]}% means ${percents[askIdx]} per 100, or ${percents[askIdx]! / 100}. ${percents[askIdx]}% of ${total} = ${percents[askIdx]! / 100} × ${total} = ${count}.`,
+        `So ${count} students chose ${names[askIdx]}.`,
       ],
       figure: {
         kind: "scene",
@@ -2924,7 +2926,7 @@ function categoricalSummary(r: Random): Built {
       hint: `The mode of categorical data is the category that occurs most often. Compare the counts of the ${total} students in the table.`,
       explanation: [
         `The counts are ${cats.map((c, i) => `${c} ${counts[i]}`).join(", ")}.`,
-        `${mode} has the greatest count, ${top}, so ${mode} is the mode.`,
+        `The mode is the category chosen most often. ${mode} has the greatest count, ${top}, so ${mode} is the mode.`,
       ],
       figure,
       choices: choicesFrom(
@@ -2949,7 +2951,8 @@ function categoricalSummary(r: Random): Built {
     hint: `The relative frequency of a category is its count divided by the total, ${total}. Then write the result as a percent.`,
     explanation: [
       `${cats[idx]} was chosen by ${counts[idx]} of ${total} students.`,
-      `${counts[idx]} ÷ ${total} = ${exactDec(counts[idx]! / total)}, which is ${trimNum(p)}%.`,
+      `Divide the part by the whole to find the share that chose it: ${counts[idx]} ÷ ${total} = ${exactDec(counts[idx]! / total)}.`,
+      `A percent counts hundredths. ${exactDec(counts[idx]! / total)} is ${trimNum(p)} hundredths, so ${trimNum(p)}% of the students chose ${cats[idx]}.`,
     ],
     figure,
     answer: trimNum(p),
@@ -3046,16 +3049,19 @@ function checkRegisterBalance(r: Random): Built {
       responseLabel: "Dollars",
     };
   }
-  const steps = entries.map(
-    (e) => `${e.cents < 0 ? "−" : "+"} ${dl(Math.abs(e.cents))}`,
-  );
+  let running = start;
+  const steps = entries.map((e) => {
+    const before = running;
+    running += e.cents;
+    return `${dl(before)} ${e.cents < 0 ? "−" : "+"} ${dl(Math.abs(e.cents))} = ${dl(running)}`;
+  });
   return {
     variant,
     prompt: `A check register starts with ${dl(start)} dollars. Each deposit is added and each check, transfer or fee is subtracted. What is the balance after the last entry, in dollars?`,
     hint: `Start from ${dl(start)} and go down the table. Add a deposit to the balance; subtract a check, a transfer or a fee. Each row's balance is the next row's starting balance.`,
     explanation: [
-      `Start: ${dl(start)}.`,
-      `Apply each entry in order: ${steps.join(" ")}.`,
+      `Start with ${dl(start)}. A deposit adds money, and a check, transfer or fee takes money out.`,
+      `Go down the entries in order: ${steps.join("; ")}.`,
       `The final balance is ${dl(balance)} dollars.`,
     ],
     figure: figure(-1),
@@ -3402,8 +3408,8 @@ function cylinderPrismSurfaceArea(r: Random): Built {
       prompt: `A cylinder has a radius of ${rad} cm and a height of ${h} cm. Its total surface area, including both circular bases, is $a\\pi$ square centimeters. What is $a$?`,
       hint: `Add the area of the two circular bases, radius ${rad} cm, to the area of the unrolled curved side, ${h} cm tall.`,
       explanation: [
-        `Two bases: $2\\times\\pi\\times${rad}^2=${2 * rad * rad}\\pi$.`,
-        `Curved side: $2\\pi\\times${rad}\\times${h}=${2 * rad * h}\\pi$.`,
+        `Each circular base has area $\\pi r^2$. Two bases: $2\\times\\pi\\times${rad}^2=${2 * rad * rad}\\pi$.`,
+        `The curved side unrolls into a rectangle: the circumference $2\\pi\\times${rad}$ by the height ${h}. Curved side: $2\\pi\\times${rad}\\times${h}=${2 * rad * h}\\pi$.`,
         `Total: $${2 * rad * rad}\\pi+${2 * rad * h}\\pi=${2 * rad * rad + 2 * rad * h}\\pi$, so $a=${2 * rad * rad + 2 * rad * h}$.`,
       ],
       answer: String(2 * rad * rad + 2 * rad * h),
@@ -3432,8 +3438,9 @@ function cylinderPrismSurfaceArea(r: Random): Built {
     prompt: `A right triangular prism has bases that are right triangles with legs ${p} cm and ${q} cm and hypotenuse ${c} cm. The prism is ${L} cm long. What is its total surface area, in square centimeters?`,
     hint: `The prism has two triangle bases and three rectangular faces. Each rectangle is one side of the triangle by the length ${L} cm.`,
     explanation: [
-      `Two triangles: $2\\times\\tfrac12\\times${p}\\times${q}=${p * q}$.`,
-      `Three rectangles: $(${p}+${q}+${c})\\times${L}=${(p + q + c) * L}$.`,
+      `Surface area is the total area of all the faces. This prism has 2 triangle bases and 3 rectangle sides.`,
+      `In a right triangle the two legs are the base and the height, so each triangle has area $\\tfrac12\\times${p}\\times${q}=${(p * q) / 2}$. Two triangles: $2\\times${(p * q) / 2}=${p * q}$.`,
+      `Each rectangle is one side of the triangle by the length ${L} cm. Three rectangles: $(${p}+${q}+${c})\\times${L}=${(p + q + c) * L}$.`,
       `Total: $${p * q}+${(p + q + c) * L}=${sa}$ square centimeters.`,
     ],
     answer: String(sa),
@@ -3536,7 +3543,7 @@ function bothSidesSituationEquation(r: Random): Built {
       prompt: `${setup} Which equation can be used to find the number of ${c.what}, $${v}$, for which the two total costs are equal?`,
       hint: `Write each total cost as the fee plus the rate times $${v}$: ${c.a} charges ${a0} dollars plus ${a1} dollars ${c.per}, and ${c.b} charges ${b0} dollars plus ${b1} dollars ${c.per}. The costs are equal, so connect the two totals with an equal sign.`,
       explanation: [
-        `${c.a}: ${a0} + ${a1}${v}. ${c.b}: ${b0} + ${b1}${v}.`,
+        `Each total is the fee plus the rate times the number of ${c.what}. For $${v}$ ${c.what}, ${c.a} costs ${a0} + ${a1}${v} dollars and ${c.b} costs ${b0} + ${b1}${v} dollars.`,
         `The costs are equal when ${same}.`,
       ],
       choices: choicesFrom(same, [
@@ -3559,7 +3566,7 @@ function bothSidesSituationEquation(r: Random): Built {
     prompt: `${setup} Which inequality can be used to find the numbers of ${c.what}, $${v}$, for which ${c.a} costs less than ${c.b}?`,
     hint: `Write each total cost as the fee plus the rate times $${v}$, using the ${a0} and ${a1} for ${c.a} and the ${b0} and ${b1} for ${c.b}. "Costs less than" puts ${c.a}'s total on the smaller side of the inequality symbol.`,
     explanation: [
-      `${c.a}: ${a0} + ${a1}${v}. ${c.b}: ${b0} + ${b1}${v}.`,
+      `Each total is the fee plus the rate times the number of ${c.what}. For $${v}$ ${c.what}, ${c.a} costs ${a0} + ${a1}${v} dollars and ${c.b} costs ${b0} + ${b1}${v} dollars.`,
       `${c.a} costs less than ${c.b} when ${a0} + ${a1}${v} < ${b0} + ${b1}${v}.`,
     ],
     choices: choicesFrom(`${a0} + ${a1}${v} < ${b0} + ${b1}${v}`, [

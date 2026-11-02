@@ -348,7 +348,7 @@ def solve_decimal_ops(public):
 
 def solve_salary(public):
     prompt = plain(public['prompt'])
-    match = re.fullmatch(r'A worker earns ([\d,]+) dollars a year and gets a (\d+) percent raise\. How many dollars (is the raise each year|a year does the worker earn after the raise)\?', prompt)
+    match = re.fullmatch(r'A worker earns ([\d,]+) dollars a year and gets an? (\d+) percent raise\. How many dollars (is the raise each year|a year does the worker earn after the raise)\?', prompt)
     if match:
         pay, pct = num(match[1]), int(match[2])
         return pay * pct / 100 if match[3].startswith('is') else pay * (100 + pct) / 100
@@ -452,7 +452,7 @@ def solve_dot_plot(public):
 
 def solve_probability(public):
     prompt = plain(public['prompt'])
-    match = re.fullmatch(r'A box holds (\d+) cards\. (\d+) of the cards are red and (\d+) of the cards are labeled 0\. A card is drawn at random and put back\. Then a second card is drawn\. What is the probability that the first card is red and the second card is labeled 0\? Give a fraction in simplest form\.', prompt)
+    match = re.fullmatch(r'A box holds (\d+) cards\. (\d+) of the cards are red and (\d+) of the cards (?:is|are) labeled 0\. A card is drawn at random and put back\. Then a second card is drawn\. What is the probability that the first card is red and the second card is labeled 0\? Give a fraction in simplest form\.', prompt)
     if match:
         total, red, zero = map(int, match.groups())
         return Fraction(red, total) * Fraction(zero, total)

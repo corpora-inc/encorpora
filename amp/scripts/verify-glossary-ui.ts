@@ -28,6 +28,23 @@ import { generateProblem } from "../src/math/engine";
 
 const TEMPLATE = "pythagorean-converse";
 const lesson = problemLesson(TEMPLATE, "glossary-review");
+// Exercise the overflow boundary with seven real cards from this lesson's
+// payload, independently of its editorial key-word selection.
+lesson.keyWords = [
+  "right-angle",
+  "leg",
+  "hypotenuse",
+  "square-number",
+  "converse",
+  "pythagorean-theorem",
+  "right-triangle",
+];
+assert.equal(new Set(lesson.keyWords).size, lesson.keyWords.length);
+for (const id of lesson.keyWords)
+  assert.ok(
+    lesson.glossary.some((term) => term.id === id),
+    `the overflow fixture needs a real ${id} card`,
+  );
 const problem = generateProblem(TEMPLATE, "glossary-review");
 const context = lessonGlossaryContext(TEMPLATE);
 const band = screenBand(TEMPLATE);

@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   assemble,
@@ -33,6 +34,83 @@ const make = (
   ...(scene ? { requiredFigureCapability: "scenes-v1" as const } : {}),
   description,
 });
+
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const OPENERS: Record<string, string[]> = {
+  "line-equation-forms": [
+    "A line's equation can be written in different forms that describe the same line. Slope-intercept form $y=mx+b$ shows the slope $m$, the steepness, and the $y$-intercept $b$, where it crosses the $y$-axis.",
+  ],
+  "line-relationship-equations": [
+    "Parallel lines have equal slopes and never meet. Perpendicular lines meet at a right angle, and their slopes multiply to $-1$.",
+  ],
+  "system-equation-choice": [
+    "A system of equations describes two conditions that must both be true. Write one equation for each condition in the story.",
+  ],
+  "graph-estimate-system-solution": [
+    "The solution of a system is the point where the two graphs cross, because that point makes both equations true.",
+  ],
+  "exponential-domain-range": [
+    "The domain is the set of inputs a function accepts, and the range is the set of outputs it gives. An exponential function accepts every input but its outputs stay on one side of a horizontal line.",
+  ],
+  "absolute-value-equation-formulate": [
+    'An absolute value, written with bars, is a distance from a center. So "within a tolerance of a target" becomes the distance from the target is at most the tolerance.',
+  ],
+  "rational-equation-formulate": [
+    "A rate is an amount per unit of time. Work done equals rate times time, and rates of people working together add.",
+  ],
+  "rational-exponent-equation": [
+    "A fractional exponent is a root: the bottom number says which root, and the top number says which power. Undo it by raising both sides to the flipped fraction.",
+  ],
+  "transformation-composition-image": [
+    "A composition of transformations applies one move, then the next, to the result. Order matters, so follow the moves in the order given.",
+  ],
+  "counterexample-choice": [
+    "A counterexample is one case that makes a general claim false. One counterexample is enough to disprove a claim.",
+  ],
+  "spherical-geometry-compare": [
+    "On a sphere, the straightest paths are great circles, circles whose center is the sphere's center. Some flat-plane facts, such as triangle angles adding to 180 degrees, change there.",
+  ],
+  "regular-polygon-area": [
+    "A regular polygon has all sides and all angles equal. Its area is half the perimeter times the apothem, the distance from the center to the middle of a side.",
+  ],
+  "curved-solid-surface-area": [
+    "Surface area is the total area covering a solid. Add the area of each flat or curved face, using the formula for each shape.",
+  ],
+  "area-probability": [
+    "A geometric probability compares areas: the chance of landing in a region is the region's area divided by the whole area.",
+  ],
+  "composition-order-choice": [
+    'In a composition $f(g(x))$, read "$f$ of $g$ of $x$", apply the inside function $g$ first and then $f$ to its output.',
+  ],
+  "one-sided-behavior-choice": [
+    "One-sided behavior describes what the outputs do as $x$ comes close to a number from just one side, the left or the right.",
+  ],
+  "parametric-rectangular-convert": [
+    "Parametric equations give $x$ and $y$ separately in terms of a third variable $t$. Solve one equation for $t$ and substitute into the other to get one equation in $x$ and $y$.",
+  ],
+  "angular-velocity-problem": [
+    "Angular velocity is how fast something turns, such as radians per second. A point at distance $r$ from the center travels $r$ times the angle in radians.",
+  ],
+  "reference-angle-standard-position": [
+    "An angle in standard position starts on the positive $x$-axis. Its reference angle is the acute angle between where it ends and the $x$-axis.",
+  ],
+  "bearing-trig-problem": [
+    "A bearing gives a direction as an angle measured clockwise from north. Drawing it makes a right triangle, so sine and cosine find the distances east and north.",
+  ],
+  "sigma-notation-represent": [
+    "The sign $\\sum$ (sigma) means add up. The numbers below and above it say where the counting starts and stops.",
+  ],
+  "infinite-geometric-sum": [
+    "An infinite geometric series keeps multiplying by the same ratio $r$. If $r$ is between $-1$ and 1, the terms shrink and the sum settles at the first term divided by $1 - r$.",
+  ],
+  "polynomial-inequality-solve": [
+    "To solve a polynomial inequality, find the zeros, where it equals 0. They split the number line into intervals; the sign stays the same within each interval, so test one value in each.",
+  ],
+  "rational-inequality-solve": [
+    "For a rational inequality, the sign can change only where the top or the bottom is 0. Mark those numbers, test one value in each interval, and leave out values that make the bottom 0.",
+  ],
+};
 
 export const lineEquationFormsTemplate = make(
   "line-equation-forms",
@@ -276,7 +354,7 @@ function finish(meta: TemplateMetadata, seed: string, r: Random, spec: Spec) {
         : {}),
       answer: "",
       hint: spec.hint,
-      explanation: spec.explanation,
+      explanation: [...(OPENERS[meta.id] ?? []), ...spec.explanation],
       choices: [
         { label: spec.correct, correct: true as const },
         ...wrong
@@ -1957,21 +2035,21 @@ export function counterexampleChoiceCase(seed: string): TexasHsCase {
       hint: `A counterexample needs two rectangles with equal perimeters but different areas. Find $2(\\text{length}+\\text{width})$ and length $\\times$ width for each pair.`,
       explanation: [
         `A counterexample has equal perimeters and different areas.`,
-        `A ${l1} by ${w1} rectangle has perimeter ${per} and area ${l1 * w1}. A ${l2} by ${w2} rectangle has perimeter ${per} and area ${l2 * w2}.`,
+        `${article(l1, true)} ${l1} by ${w1} rectangle has perimeter ${per} and area ${l1 * w1}. ${article(l2, true)} ${l2} by ${w2} rectangle has perimeter ${per} and area ${l2 * w2}.`,
         `The perimeters are equal and the areas are different, so this pair refutes the conjecture.`,
       ],
-      correct: `A ${l1} by ${w1} rectangle and a ${l2} by ${w2} rectangle`,
+      correct: `${article(l1, true)} ${l1} by ${w1} rectangle and ${article(l2)} ${l2} by ${w2} rectangle`,
       wrong: [
         {
-          label: `A ${l1} by ${w1} rectangle and a ${w1} by ${l1} rectangle`,
+          label: `${article(l1, true)} ${l1} by ${w1} rectangle and ${article(w1)} ${w1} by ${l1} rectangle`,
           feedback: `Both rectangles have perimeter ${per} and area ${l1 * w1}. The areas agree, so this pair supports the conjecture.`,
         },
         {
-          label: `A ${l1} by ${w1} rectangle and a ${l1 + 1} by ${w1} rectangle`,
+          label: `${article(l1, true)} ${l1} by ${w1} rectangle and ${article(l1 + 1)} ${l1 + 1} by ${w1} rectangle`,
           feedback: `Their perimeters are ${per} and ${per + 2}, which are not equal, so the "if" part is false.`,
         },
         {
-          label: `A ${l2} by ${w2} rectangle and a ${l2} by ${w2 + 2} rectangle`,
+          label: `${article(l2, true)} ${l2} by ${w2} rectangle and ${article(l2)} ${l2} by ${w2 + 2} rectangle`,
           feedback: `Their perimeters are ${per} and ${per + 4}, which are not equal, so the "if" part is false.`,
         },
       ],
@@ -2582,7 +2660,7 @@ export function areaProbabilityCase(seed: string): TexasHsCase {
     const comp = fracTex(L * W - l * w, L * W);
     return finish(meta, seed, r, {
       variant: "rectangle-in-rectangle",
-      prompt: `A point is chosen at random on a ${L} by ${W} rectangular board. A shaded ${l} by ${w} rectangle lies entirely on the board. What is the probability that the point is in the shaded rectangle? Give a fraction in simplest form.`,
+      prompt: `A point is chosen at random on ${article(L)} ${L} by ${W} rectangular board. A shaded ${l} by ${w} rectangle lies entirely on the board. What is the probability that the point is in the shaded rectangle? Give a fraction in simplest form.`,
       hint: `The probability is the shaded area divided by the board's area. Multiply length by width for the ${l} by ${w} rectangle and for the ${L} by ${W} board.`,
       explanation: [
         `The board's area is $${L}\\times${W}=${L * W}$. The shaded area is $${l}\\times${w}=${l * w}$.`,

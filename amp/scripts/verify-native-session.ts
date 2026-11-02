@@ -439,7 +439,7 @@ try {
     handle: session.token,
     request: { kind: "learners" },
   });
-  assert.deepEqual(own.data.learners, [learnerA]);
+  assert.deepEqual(own.data.learners, [{ ...learnerA, satMathFocus: false }]);
   const initialPreference = await rpc("request", {
     handle: session.token,
     request: { kind: "starting-point", learnerId: learnerA.id },
@@ -725,6 +725,14 @@ try {
   );
   await page.getByRole("button", { name: "2016", exact: true }).click();
   await page.getByRole("button", { name: "Go", exact: true }).waitFor();
+  const curriculumDetails = page.getByRole("checkbox", {
+    name: "Show grades and estimates",
+    exact: true,
+  });
+  assert.equal(await curriculumDetails.isChecked(), false);
+  await curriculumDetails.check();
+  assert.equal(await curriculumDetails.isChecked(), true);
+  await curriculumDetails.uncheck();
   assert.equal(
     (
       await repository.pool.query(

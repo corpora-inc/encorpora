@@ -565,7 +565,7 @@ test("rate-combination-model matches an independent exact derivation", () => {
       continue;
     }
     hit =
-      /mixes (\d+) liters? of a (\d+)% salt solution with (\d+) liters? of a (\d+)% salt solution/.exec(
+      /mixes (\d+) liters? of an? (\d+)% salt solution with (\d+) liters? of an? (\d+)% salt solution/.exec(
         t,
       );
     if (hit) {
@@ -574,7 +574,7 @@ test("rate-combination-model matches an independent exact derivation", () => {
       continue;
     }
     hit =
-      /How many liters of a (\d+)% salt solution must be added to (\d+) liters? of a (\d+)% salt solution to make a mixture that is (\d+)% salt/.exec(
+      /How many liters of an? (\d+)% salt solution must be added to (\d+) liters? of an? (\d+)% salt solution to make a mixture that is (\d+)% salt/.exec(
         t,
       );
     if (hit) {

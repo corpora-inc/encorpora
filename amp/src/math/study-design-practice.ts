@@ -1,6 +1,14 @@
 import type { GeneratedProblem, TemplateMetadata } from "./contracts.js";
 import { assemble, random, type Draft } from "./distribution-practice.js";
 
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const OPENERS: Record<string, string[]> = {
+  "scope-of-inference-choice": [
+    "Two questions decide what a study shows. Random sampling lets results extend to the whole population; random assignment of treatments lets a difference show cause and effect.",
+  ],
+};
+
 export const studyDesignTemplate: TemplateMetadata = {
   id: "scope-of-inference-choice",
   version: 1,
@@ -158,6 +166,12 @@ export function studyDesignCase(seed: string): {
     frame,
     sampling,
     assigned,
-    problem: assemble(studyDesignTemplate, seed, r, draft),
+    problem: assemble(studyDesignTemplate, seed, r, {
+      ...draft,
+      explanation: [
+        ...OPENERS["scope-of-inference-choice"]!,
+        ...draft.explanation,
+      ],
+    }),
   };
 }

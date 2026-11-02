@@ -118,7 +118,7 @@ test("the family uses the existing skill, lesson, and narrow partial hierarchy f
   assert.ok(
     method.terms?.some((term) => methodTermId(term) === "counterexample"),
   );
-  assert.match(polygonPrinciples[id]!, /one counterexample/);
+  assert.match(polygonPrinciples[id]!, /one counterexample/i);
   const facet = polygonFacetMappings.find(
     (mapping) => mapping.templateId === id,
   );

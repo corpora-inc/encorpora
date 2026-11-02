@@ -6,12 +6,14 @@ export const dataListMethods: Record<string, ProblemMethod> = {
   "data-list-for-display": {
     goal: "Choose the list of data that matches a dot plot or a table of counts, including a table of counts in ranges.",
     intuition:
-      "A dot plot and a table of counts both summarize a list of data. Each dot or each count stands for one value in the list. To check a list, count how many times each value appears, or how many values fall in each range, and compare with the display.",
+      "Data are numbers someone collected, like test scores. A number line is a line with numbers in order, evenly spaced. A dot plot puts one dot above a number line for each number in the list. A value is one of the numbers. A table of counts gives each value with a count: how many times that value is in the list. A range like 10 to 19 means every number from 10 up to 19. To check a list, count how many times each value appears and compare with the display.",
     terms: ["data", "dot-plot", "interval"],
+    senses: { interval: "interval" },
+    noLink: ["range", "ranges"],
     method: [
-      "Add the counts or count the dots. The list must have that many values.",
-      "Count how many times each value appears in a list, or how many values fall in each range.",
-      "Choose the list whose counts match the display for every value or range, not only for the first one.",
+      "Add the counts, or count the dots. The list must have that many numbers.",
+      "In each list, count how many times each value appears, or how many numbers fall in each range.",
+      "Choose the list whose counts match the display for every value or range, not only the first one.",
     ],
     watch:
       "A list can have the right number of values and still have one value wrong. Check every value or range.",
@@ -20,7 +22,7 @@ export const dataListMethods: Record<string, ProblemMethod> = {
 
 export const dataListPrinciples: Record<string, string> = {
   "data-list-for-display":
-    "A dot plot, a table of counts and a table of counts in ranges are summaries of the same list of data: the number of dots or the count for a value is the number of times that value appears, and the count for a range is the number of values between its ends. Lists with the same counts for every value or range show the same display.",
+    "A dot plot and a table of counts show the same list of data. The number of dots, or the count, for a value is how many times it is in the list. The count for a range is how many numbers in the list lie between its ends. Lists with the same counts make the same display, in any order.",
 };
 
 export const dataListLessons = [
@@ -28,41 +30,45 @@ export const dataListLessons = [
     id: "data-list-for-display-lesson",
     title: "Matching a list of data to its display",
     summary:
-      "Check a list of data against a dot plot or a table of counts by counting each value or range.",
+      "Data are numbers someone collected, like test scores. A dot plot shows them with one dot for each number. A table of counts shows them with a count for each number: how many times it is in the list. To check a list against a dot plot or table, count how many times each number appears.",
     templateIds: ["data-list-for-display"],
+    senses: { interval: "interval" },
+    noLink: ["range", "ranges"],
     objectives: [
-      "Read how many times each value appears in a dot plot or a count table.",
-      "Count the values of a list in each value or range and compare with the display.",
+      "Read how many times each value appears in a dot plot or a table of counts.",
+      "Count the values in a list, or in each range, and compare with the display.",
     ],
-    openingTitle: "Each dot or count is one value",
+    openingTitle: "Dots and counts show how many times",
     opening: [
-      "A dot plot puts one dot above the number line for each value in the data. If there are 3 dots above 5, the value 5 appears 3 times in the list. A table of counts says the same thing with a number instead of dots.",
-      "A table with ranges, such as 10 to 19, counts how many values fall in each range. Two different lists can give the same table, so check that a list gives the counts in every range.",
+      "A number line is a line with numbers in order, evenly spaced. A dot plot puts one dot above a number line for each number in the data. If there are 3 dots above 5, the number 5 is in the list 3 times.",
+      "A table of counts says the same thing with a number instead of dots. A count of 3 next to 5 means 5 is in the list 3 times.",
+      "Some tables use ranges instead of single numbers. A range like 10 to 19 means every number from 10 up to 19. Its count says how many numbers in the list fall in that range.",
+      "The order of the list does not matter. 3, 5, 3 and 3, 3, 5 make the same dot plot.",
     ],
     example: {
       prompt:
         "A dot plot has 2 dots above 3, 1 dot above 5 and 3 dots above 6. Which list matches: 3, 3, 5, 6, 6, 6 or 3, 5, 5, 6, 6, 6?",
       steps: [
-        "The plot has $2+1+3=6$ dots, so the list has 6 values. Both lists have 6.",
-        "The value 3 appears 2 times, 5 appears 1 time and 6 appears 3 times.",
-        "The first list has 3 twice, 5 once and 6 three times. The second has 5 twice, so it does not match.",
+        "Each dot is one number in the list. The plot has $2+1+3=6$ dots, so the list needs 6 numbers. Both lists have 6.",
+        "Now check each value, each different number. The plot shows 3 two times, 5 one time and 6 three times.",
+        "The first list has 3 twice, 5 once and 6 three times, so it matches. The second list has 5 twice, so it does not.",
       ],
       answer: "3, 3, 5, 6, 6, 6",
     },
     methodTitle: "Count the values, then check each one",
     method: [
-      "Add the dots or the counts to find how many values the list needs.",
-      "Count each value, or each range, in a list and compare with the display.",
+      "Add the dots or the counts to find how many numbers the list needs.",
+      "In each list, count each value. For a range, count the numbers that fall inside it. Compare with the display.",
     ],
     formalTitle: "Frequencies",
     formal: [
-      "The frequency of a value is the number of times it appears in the list. A dot plot shows frequencies as stacks of dots.",
-      "A table with ranges shows the number of values in each range; lists that put the same number of values in each range give the same table.",
+      "The frequency of a value is the number of times it is in the list. A dot plot shows frequencies as stacks of dots.",
+      "A table with ranges shows how many numbers fall in each range. Lists that put the same number of values in each range make the same table.",
     ],
     pitfalls: [
-      "Checking only the number of values and not each count.",
-      "Counting a value that is on the edge of a range in the wrong range.",
-      "Choosing a list that has the right values but the wrong number of times each appears.",
+      "Do not check only how many numbers there are. Check each count.",
+      "A number at the end of a range belongs in that range. 19 is in 10 to 19.",
+      "Do not pick a list with the right values but the wrong number of times for one of them.",
     ],
     parentGuide:
       "Ask your learner to put a tally mark next to each value of a list and compare it with the display.",
