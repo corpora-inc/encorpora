@@ -49,6 +49,7 @@ const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
   cacheDir: "node_modules/.vite-level-check",
   server: {
+    watch: { ignored: ["**/artifacts/**"] },
     host: "127.0.0.1",
     port,
     strictPort: true,

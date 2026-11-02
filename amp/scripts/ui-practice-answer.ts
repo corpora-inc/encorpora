@@ -56,8 +56,12 @@ export async function answerOne(
     .locator(".problem-content")
     .getAttribute("data-template");
   const served = servedProblems.get(page)!;
-  const problem = [...served.values()].find((p) => p.templateId === template);
-  assert.ok(problem, `missing served problem for ${template}`);
+  const problemId = await page
+    .locator(".problem-content")
+    .getAttribute("data-problem-id");
+  assert.ok(problemId, `${template}: visible problem ID`);
+  const problem = served.get(problemId);
+  assert.ok(problem, `missing served problem for ${template}/${problemId}`);
   const solution =
     savedFixture ?? generateProblem(problem.templateId, problem.seed);
   if (savedFixture) {
@@ -66,9 +70,9 @@ export async function answerOne(
     assert.equal(savedFixture.public.seed, problem.seed);
   }
   assert.deepEqual(
-    solution.public.response,
+    JSON.parse(JSON.stringify(solution.public.response)),
     problem.response,
-    "Planned controls match the actual served schema",
+    "Planned controls match the actual JSON response schema",
   );
   const schema = solution.public.response;
   if (process.env.LEVEL_DEBUG)

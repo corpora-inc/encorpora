@@ -79,6 +79,7 @@ const vite = await createServer({
     },
   ],
   server: {
+    watch: { ignored: ["**/artifacts/**"] },
     host: "127.0.0.1",
     port,
     strictPort: true,

@@ -90,6 +90,7 @@ export async function startShellFixture({
   const origin = `http://127.0.0.1:${webPort}`;
   const stopApi = await startApi(url, origin, apiPort);
   const serverOptions = {
+    watch: { ignored: ["**/artifacts/**"] },
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,

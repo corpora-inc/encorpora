@@ -49,6 +49,7 @@ await app.listen({ host: "127.0.0.1", port: 4955 });
 const vite = await createServer({
   cacheDir: "node_modules/.vite-practice-answer",
   server: {
+    watch: { ignored: ["**/artifacts/**"] },
     host: "127.0.0.1",
     port: 4954,
     strictPort: true,
@@ -100,6 +101,7 @@ try {
     page.getByRole("button", { name: "Learner", exact: true }),
     learner.id,
   );
+  let repeatedTemplateDecoyId: string | undefined;
   for (const [signature, representative] of representatives) {
     const template = representative.public.templateId;
     for (const correct of [true, false]) {
@@ -111,6 +113,21 @@ try {
       await repository.transaction("development-household", learner.id, (tx) =>
         tx.saveProblem(problem),
       );
+      const batchProblems = [problem.public];
+      if (signature === "number" && correct) {
+        // Keep an unused prefetched problem with the same template and a
+        // different seed. The next attempt must identify its rendered ID,
+        // rather than selecting this older entry by template alone.
+        const decoy = generateProblem(template, "response-controls-stale");
+        decoy.public.id = randomUUID();
+        repeatedTemplateDecoyId = decoy.public.id;
+        await repository.transaction(
+          "development-household",
+          learner.id,
+          (tx) => tx.saveProblem(decoy),
+        );
+        batchProblems.push(decoy.public);
+      }
       const batches = `**/api/v1/learners/${learner.id}/batches`;
       await page.unroute(batches);
       await page.route(batches, (route) => {
@@ -121,24 +138,37 @@ try {
           return route.continue();
         return route.fulfill({
           json: {
-            problems: [problem.public],
+            problems: batchProblems,
             hints: { [problem.public.id]: { hint: problem.hint } },
             lesson: null,
           },
         });
       });
-      served.clear();
       await startTopic(page, template);
       await page.locator(".problem-stage .question").waitFor();
-      const actual = [...served.values()].find(
-        (problem) => problem.templateId === template,
-      );
+      const visibleId = await page
+        .locator(".problem-content")
+        .getAttribute("data-problem-id");
+      const actual = served.get(visibleId!);
       assert.ok(actual, `${signature}: served problem exists`);
       assert.equal(
         actual.id,
         problem.public.id,
         "The exact saved fixture was served",
       );
+      if (signature === "number" && !correct) {
+        const older = served.get(repeatedTemplateDecoyId!);
+        assert.ok(
+          older,
+          "An older same-template prefetched problem remains tracked",
+        );
+        assert.equal(older.templateId, actual.templateId);
+        assert.notEqual(
+          older.seed,
+          actual.seed,
+          "The regression includes distinct seeds",
+        );
+      }
       assert.equal(
         responseShape(actual.response),
         signature,
