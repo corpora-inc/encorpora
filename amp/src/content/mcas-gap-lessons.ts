@@ -698,6 +698,9 @@ export const mcasGapLessons: Lesson[] = [
         "Imagine collecting the data to answer the question. If you would get one fixed value, it is not statistical. If you would get many values that differ, it is.",
         "A question about one person at one moment asks for a single value, even if it begins with “how many”.",
       ]),
+      formal("Statistical questions", [
+        "Variability means the values in a set of data differ. A statistical question expects variability in the data collected to answer it, across the people, items or times it asks about.",
+      ]),
     ],
     pitfalls: [
       "“How many” does not make a question statistical. Check whether the data would vary.",
@@ -862,7 +865,10 @@ export const mcasGapLessons: Lesson[] = [
       method("Position, radius, turn", [
         "In a congruence statement, pair the corners by position, then read each side or angle through those pairs. For a circle, find the radius from the given length: half the diameter, or the circumference divided by $2\\pi$.",
         "For a turn, picture the figure turning about its center. Parallel means running the same direction without meeting. A parallelogram is a four-sided shape with two pairs of parallel sides. Every parallelogram lands on itself after a half turn, including a rectangle and a rhombus (a shape with four equal sides).",
-        "A triangle with no equal sides never lands on itself. Neither does a kite that is not a rhombus. Nor does an isosceles trapezoid (a shape with exactly one pair of parallel sides and two equal slanted sides).",
+        "A triangle with no equal sides never lands on itself. A kite is a four-sided shape with two pairs of equal sides that meet. A kite that is not a rhombus never lands on itself either. Nor does an isosceles trapezoid (a shape with exactly one pair of parallel sides and two equal slanted sides).",
+      ]),
+      formal("Definitions", [
+        "If $\\triangle ABC\\cong\\triangle DEF$, then $A$ matches $D$, $B$ matches $E$ and $C$ matches $F$, and corresponding sides and angles are congruent. A circle with center $O$ and radius $r$ is the set of points $P$ with $OP=r$. A figure has rotational symmetry if a rotation about its center by an angle between 0° and 360° maps it onto itself.",
       ]),
     ],
     pitfalls: [
