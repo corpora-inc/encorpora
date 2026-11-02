@@ -565,10 +565,10 @@ export const numberEntries: GlossaryEntry[] = [
     term: "regroup",
     forms: ["regroup", "regroups", "regrouped", "regrouping"],
     plain:
-      "Trade 10 of one place for 1 of the next place to the left, or trade 1 for 10 going the other way.",
+      "Trade 1 of a bigger unit for the smaller units it equals, or trade them back. For example, 1 ten for 10 ones, or 1 hour for 60 minutes.",
     example:
       "In 38 + 5, the 13 ones regroup as 1 ten and 3 ones, so the sum is 43.",
-    uses: ["sum"],
+    uses: ["sum", "unit"],
     band: "2",
   },
   {

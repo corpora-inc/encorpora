@@ -164,7 +164,7 @@ export const attributeLessons: Lesson[] = [
     senses: {
       unit: "unit",
       balance: "balance-scale",
-      scale: "scale-axis",
+      scale: "measuring-scale",
       "more than": "more-than",
     },
     includeGeneratedRepresentation: false,
@@ -326,7 +326,7 @@ export const attributeMethods: Record<string, ProblemMethod> = {
     intuition:
       "A liter is a unit for how much liquid there is. A large water bottle holds about 1 liter. The scale on the container is a row of marks, like a ruler standing up. Each small mark is a tick. Only some ticks have a number, called a label.",
     terms: ["liter"],
-    senses: { scale: "scale-axis", unit: "unit" },
+    senses: { scale: "measuring-scale", unit: "unit" },
     method: [
       "Find what one tick is worth. Subtract the smaller of two labels next to each other from the bigger one. Then divide by the equal spaces between them.",
       "Find the label just below the top of the water.",
