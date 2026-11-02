@@ -325,10 +325,10 @@ function equivalentFractions(r: Random) {
       ask: (k) => `Select the ${k} fractions that are equivalent to it.`,
       one: "fraction",
       hint: () =>
-        `Equivalent fractions come from multiplying the numerator and the denominator of $${fr(a, b)}$ by the same number. For each choice, ask whether one number multiplies $${a}$ to give its numerator and $${b}$ to give its denominator.`,
+        `Equivalent fractions come from multiplying, or dividing, the numerator and the denominator of $${fr(a, b)}$ by the same number, other than 0. For each choice, ask whether one number multiplies $${a}$ to give its numerator and $${b}$ to give its denominator.`,
     }),
     lead: [
-      "Equivalent fractions name the same amount. Multiply the top (the numerator) and the bottom (the denominator) by the same number to make one.",
+      "Equivalent fractions name the same amount. To make one, multiply the top (the numerator) and the bottom (the denominator) by the same number, other than 0. Dividing both by the same number, other than 0, also works when both divide evenly.",
       "Changing only one part, or adding the same number to both parts, changes the amount.",
     ],
     tail: [`The fractions marked true are equivalent to $${fr(a, b)}$.`],
@@ -498,7 +498,7 @@ function equivalentRatios(r: Random) {
         `The ratio is $${a}:${b}$. A group keeps it when both amounts are the same multiple of $${a}$ and $${b}$. Find what $${a}$ is multiplied by to give each group's first amount, then check the second.`,
     }),
     lead: [
-      `A ratio such as $${a}:${b}$ compares two amounts. An equivalent ratio multiplies both amounts by the same number.`,
+      `A ratio such as $${a}:${b}$ compares two amounts. An equivalent ratio multiplies both amounts by the same number, other than 0.`,
       "Adding the same number to both amounts does not keep the ratio.",
     ],
     tail: [`The groups marked true keep the ratio $${a}:${b}$.`],
@@ -583,7 +583,7 @@ function roundsTo(r: Random) {
     }),
     lead: [
       `Rounding to the nearest ${name} means replacing a number with the closest ${name} value.`,
-      `A number rounds to ${unitText} when it is less than half a ${name} away from it. A number exactly halfway rounds up.`,
+      `A number rounds to ${unitText} when it is at least $${toText(target - 50)}$ and less than $${toText(target + 50)}$. Both of those are exactly halfway between two ${name === "whole number" ? "whole numbers" : `${name}s`}. A number exactly halfway rounds up, so $${toText(target - 50)}$ rounds up to ${unitText}, and $${toText(target + 50)}$ rounds up to the next ${name}.`,
     ],
     tail: [`The numbers marked true round to ${unitText}.`],
   };

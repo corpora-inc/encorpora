@@ -92,7 +92,16 @@ export const numberBetween = chainFamily({
       explanation: [
         `$n$ must be greater than ${tex(m.low)} and less than ${tex(m.high)}.`,
         `${tex(inside)} is greater than ${tex(m.low)} and less than ${tex(m.high)}.`,
-        "The others are below the lower number, above the upper number, or equal to a bound.",
+        `The other choices do not fit. ${m.options
+          .filter((o) => o.kind !== "between")
+          .map((o) =>
+            o.kind === "below"
+              ? `${tex(o.n)} is less than ${tex(m.low)}, so it is too small.`
+              : o.kind === "above"
+                ? `${tex(o.n)} is greater than ${tex(m.high)}, so it is too large.`
+                : `${tex(o.n)} equals a bound, and a bound itself is not between the two numbers.`,
+          )
+          .join(" ")}`,
       ],
     });
   },
@@ -186,7 +195,10 @@ export const trueComparison = chainFamily({
         explanation: [
           `For each statement, compare the digits from the left. The first place where they differ decides which number is greater.`,
           `${tex(correct.x)} ${correct.sym === ">" ? "is greater than" : "is less than"} ${tex(correct.y)}, so ${label(correct)} is true.`,
-          "In each other statement the sign points the wrong way.",
+          `The sign points the wrong way in each other statement: ${m.statements
+            .filter((s) => !s.ok)
+            .map(label)
+            .join(", ")}.`,
         ],
       });
     }
@@ -207,7 +219,10 @@ export const trueComparison = chainFamily({
       explanation: [
         "Compare the numbers from the left. The number with the smaller digit in the first place that differs is the smaller number.",
         `The order from least to greatest is ${plain(lo)}, ${plain(mid)}, ${plain(hi)}.`,
-        "The other statements put a greater number before a smaller one.",
+        `Each other statement puts a greater number before a smaller one: ${m.orders
+          .filter((o) => !(o[0] === lo && o[1] === mid && o[2] === hi))
+          .map(label)
+          .join(", ")}.`,
       ],
     });
   },

@@ -724,7 +724,7 @@ function areaTiling(r: Random): Built {
     return {
       variant,
       figure,
-      prompt: `A rectangle is tiled with unit squares: ${rows} rows of ${columns} squares. The heavy line splits it into region A and region B. Which number sentence uses the two regions to find the total number of squares?`,
+      prompt: `A rectangle is tiled with unit squares: ${rows} rows of ${columns} squares. The heavy line splits it into region A and region B. Which expression uses the two regions to find the total number of squares? An expression is numbers joined by signs such as + and ×.`,
       answer: "",
       hint: `Region A is the top ${upper} ${upper === 1 ? "row" : "rows"} and region B is the rest of the ${rows} rows. Each row has ${columns} squares, so count each region as rows times ${columns}, then add the two regions.`,
       explanation: [
@@ -917,7 +917,7 @@ function areaTiling(r: Random): Built {
   return {
     variant,
     figure,
-    prompt: `The rectangle is ${a} units tall and ${t + u2} units wide. It is split into parts ${t} and ${u2} units wide. Which number sentence does NOT give the area of the rectangle?`,
+    prompt: `The rectangle is ${a} units tall and ${t + u2} units wide. It is split into parts ${t} and ${u2} units wide. Which expression does NOT give the area of the rectangle? An expression is numbers joined by signs such as + and ×.`,
     answer: "",
     hint: `The area is height ${a} times width ${t + u2}. Work out the value of each choice. Three of them equal the area of the rectangle, and one does not.`,
     explanation: [
@@ -1377,13 +1377,13 @@ function fractionOfSet(r: Random): Built {
     };
   return {
     variant,
-    prompt: `${frac(1)} of the ${things} in a box is ${g} ${things}. How many ${things} are in ${frac(a)} of the box?`,
+    prompt: `${frac(1)} of the ${things} in a box is ${g} ${things}. How many ${things} make up ${frac(a)} of the ${things} in the box?`,
     answer: String(a * g),
     hint: `${frac(1)} is one of ${b} equal parts, and that part is ${g} ${things}. ${frac(a)} is ${a} of those equal parts.`,
     explanation: [
-      `${frac(1)} means one of ${b} equal parts of the box. That one part is ${g} ${things}.`,
-      `${frac(a)} means ${a} of those equal parts, so multiply: ${a} × ${g} = ${a * g}.`,
-      `So ${a * g} ${things} are in ${frac(a)} of the box.`,
+      `${frac(1)} means one of ${b} equal groups of the ${things} in the box. That one group is ${g} ${things}.`,
+      `${frac(a)} means ${a} of those equal groups, so multiply: ${a} × ${g} = ${a * g}.`,
+      `So ${frac(a)} of the ${things} in the box is ${a * g} ${things}.`,
     ],
   };
 }

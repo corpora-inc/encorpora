@@ -543,7 +543,7 @@ export const oddSineParameters = chainFamily({
         `Sine is odd, because $\\sin(-x)=-\\sin(x)$. So with no shifts, $${rule.replace("-C", "").replace("+D", "")}$ is odd.`,
         `$D$ is a vertical shift, a slide up or down. If $D\\ne0$, then $f(0)=D$, not 0, so the function is not odd.`,
         `$C$ is a phase shift, a slide left or right. With $C=\\frac{\\pi}{2}$, sine turns into cosine, which is even: $f(-x)=f(x)$.`,
-        `The other nonzero choices for $C$ make $\\sin(-C)$ nonzero, so $f(0)$ is not 0 even when $D=0$.`,
+        `The other nonzero choice, $C=${quarter}$, makes $\\sin(-C)$ nonzero, so $f(0)$ is not 0 even when $D=0$.`,
         "So both shifts must be 0: $C=0$ and $D=0$.",
         "The function is odd when $C=0$ and $D=0$.",
       ],

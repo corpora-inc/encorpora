@@ -341,7 +341,7 @@ function draft(
             ]
           : mode === 1
             ? [
-                `Every value, and therefore the mean, is multiplied by ${scale}.`,
+                `Every value is multiplied by ${scale}. The mean, the sum divided by the count, is then multiplied by ${scale} too.`,
                 `Every distance from the mean is multiplied by ${scale}. The standard deviation of B is ${scale} times that of A.`,
               ]
             : [
@@ -410,8 +410,8 @@ function draft(
         answer: String(v * 5),
         hint: `Start with ${v * 18} kilometers per hour. Convert the distance to meters and the time to seconds.`,
         explanation: [
+          "Convert both units of the rate. Each kilometer is 1000 meters, so multiply the distance by 1000. Each hour is 3600 seconds, so divide by 3600 to find the distance covered in one second.",
           `${v * 18} × 1000 ÷ 3600 = ${v * 5} meters per second.`,
-          "Both the numerator and denominator units must be converted.",
         ],
       },
       {

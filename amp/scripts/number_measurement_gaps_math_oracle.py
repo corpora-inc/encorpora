@@ -333,7 +333,7 @@ def solve_area_tiling(public):
     require(figure is not None, 'Every area-tiling problem has a figure')
     kind = figure['kind']
     if kind == 'area-model':
-        sentence = re.fullmatch(r'The rectangle is (\d+) units tall and (\d+) units wide\. It is split into parts (\d+) and (\d+) units wide\. Which number sentence does NOT give the area of the rectangle\?', prompt)
+        sentence = re.fullmatch(r'The rectangle is (\d+) units tall and (\d+) units wide\. It is split into parts (\d+) and (\d+) units wide\. Which expression does NOT give the area of the rectangle\? An expression is numbers joined by signs such as \+ and ×\.', prompt)
         if sentence:
             h, w, a, b = (int(g) for g in sentence.groups())
             require(figure['rows'] == [h] and figure['columns'] == [a, b] and a + b == w, 'Figure disagrees with the stated dimensions')
@@ -348,7 +348,7 @@ def solve_area_tiling(public):
         require(len({Fraction(clean(o['label']).replace(',', '')) for o in options}) == 4, 'Duplicate numeric choices')
         return single(options, flags, 'Missing or ambiguous area')
     if kind == 'unit-array':
-        stated = re.fullmatch(r'A rectangle is tiled with unit squares: (\d+) rows of (\d+) squares\. The heavy line splits it into region A and region B\. Which number sentence uses the two regions to find the total number of squares\?', prompt)
+        stated = re.fullmatch(r'A rectangle is tiled with unit squares: (\d+) rows of (\d+) squares\. The heavy line splits it into region A and region B\. Which expression uses the two regions to find the total number of squares\? An expression is numbers joined by signs such as \+ and ×\.', prompt)
         require(stated is not None, 'Unit-array prompt not recognised')
         rows, columns = int(stated[1]), int(stated[2])
         split = figure['splitAfterRow']
@@ -506,7 +506,7 @@ def solve_fraction_set(public):
         require(figure['total'] == total and figure['unit'] == noun and figure['groupSize'] * bottom == total, 'Counter figure disagrees with the counts')
         group = Fraction(total, bottom)
         return group * (top if counting[6] == 'red' else bottom - top)
-    stated = re.fullmatch(r'\$\\frac\{1\}\{(\d+)\}\$ of the (\w+) in a box is (\d+) \2\. How many \2 are in \$\\frac\{(\d+)\}\{\1\}\$ of the box\?', prompt)
+    stated = re.fullmatch(r'\$\\frac\{1\}\{(\d+)\}\$ of the (\w+) in a box is (\d+) \2\. How many \2 make up \$\\frac\{(\d+)\}\{\1\}\$ of the \2 in the box\?', prompt)
     require(stated is not None, 'Fraction-of-set prompt not recognised')
     require(figure is None, 'Unexpected figure')
     require(0 < int(stated[4]) <= int(stated[1]), 'Fraction of the box must not exceed the whole')
@@ -571,11 +571,11 @@ def self_test():
                ['$-25 + 5x - x$', '$-25 + 4x$', '$4x - 25$', '$5x - 25$'], 3),
         choice('equivalent-expressions-check', 'Sam checks whether $3(x + 6)$ and $x + 18$ are equivalent by substituting x = 0. Both expressions give 18. Which conclusion is correct?',
                ['Equivalent, because both contain 18.', 'Not equivalent: at x = 1 the first gives 21 and the second gives 19.', 'Equivalent, because they give the same value at x = 0.', 'Not equivalent, because one expression has parentheses and the other does not.'], 1),
-        choice('area-tiling-distributive', 'The rectangle is 4 units tall and 23 units wide. It is split into parts 20 and 3 units wide. Which number sentence does NOT give the area of the rectangle?',
+        choice('area-tiling-distributive', 'The rectangle is 4 units tall and 23 units wide. It is split into parts 20 and 3 units wide. Which expression does NOT give the area of the rectangle? An expression is numbers joined by signs such as + and ×.',
                ['4 + 20 × 3', '4 × 23', '23 × 4', '4 × 3 + 4 × 20'], 0, {'kind': 'area-model', 'columns': [20, 3], 'rows': [4]}),
         choice('area-tiling-distributive', 'The rectangle is 4 units tall. It is split into a left part 5 units wide and a right part 2 units wide. The left part has area 20 square units. What is the area of the whole rectangle, in square units?',
                ['28', '27', '40', '8'], 0, {'kind': 'area-model', 'columns': [5, 2], 'rows': [4]}),
-        choice('area-tiling-distributive', 'A rectangle is tiled with unit squares: 9 rows of 4 squares. The heavy line splits it into region A and region B. Which number sentence uses the two regions to find the total number of squares?',
+        choice('area-tiling-distributive', 'A rectangle is tiled with unit squares: 9 rows of 4 squares. The heavy line splits it into region A and region B. Which expression uses the two regions to find the total number of squares? An expression is numbers joined by signs such as + and ×.',
                ['3 × 4 + 6 × 4', '3 × 4 + 6', '3 × 4 + 6 × 9', '3 × 6 × 4'], 0, {'kind': 'unit-array', 'rows': 9, 'columns': 4, 'splitAfterRow': 3}),
         choice('area-tiling-distributive', 'All corners of the figure are right angles. The dashed line splits it into two rectangles. Lengths are in inches. What is the area of the figure, in square inches?',
                ['35', '24', '41', '29'], 3, {'kind': 'measured-polygon', 'unit': 'in', 'vertices': [[0, 0], [7, 0], [7, 3], [4, 3], [4, 5], [0, 5]], 'sides': [7, 3, 3, 2, 4, 5],
@@ -592,11 +592,11 @@ def self_test():
         numeric('unit-chain-conversion', 'A rectangular floor measures 8 meters by 3 meters. It is covered with no gaps or overlaps by square tiles, each 25 centimeters on a side. Given 1 meter = 100 centimeters, how many tiles are needed?', 'fraction', '384'),
         numeric('unit-chain-conversion', 'A tank is a rectangular box 6 meters long, 6 meters wide and 1 meter high. Given 1 meter = 100 centimeters and 1 liter = 1000 cubic centimeters, how many liters does it hold when full?', 'fraction', '36000'),
         numeric('unit-chain-conversion', 'A solid block of metal has mass 13 kilograms and density 4 grams per cubic centimeter. Given 1 kilogram = 1000 grams, what is its volume in cubic centimeters?', 'fraction', '3250'),
-        numeric('fraction-of-set', r'$\frac{1}{6}$ of the buttons in a box is 7 buttons. How many buttons are in $\frac{3}{6}$ of the box?', 'number', '21'),
+        numeric('fraction-of-set', r'$\frac{1}{6}$ of the buttons in a box is 7 buttons. How many buttons make up $\frac{3}{6}$ of the buttons in the box?', 'number', '21'),
         numeric('fraction-of-set', r'A set has 36 counters. $\frac{3}{6}$ of the counters are red and the rest are blue. How many are blue?', 'number', '18',
                 {'kind': 'grouped-counters', 'total': 36, 'groupSize': 6, 'unit': 'counters'}),
         numeric('unit-chain-conversion', "A doctor orders 40 milligrams of a medicine per kilogram of body mass per day. A patient's mass is 10 kilograms. The daily amount is split into 4 equal doses. Each tablet contains 50 milligrams. How many tablets are in one dose?", 'fraction', '2'),
-        choice('area-tiling-distributive', 'The rectangle is 5 units tall and 16 units wide. It is split into parts 10 and 6 units wide. Which number sentence does NOT give the area of the rectangle?',
+        choice('area-tiling-distributive', 'The rectangle is 5 units tall and 16 units wide. It is split into parts 10 and 6 units wide. Which expression does NOT give the area of the rectangle? An expression is numbers joined by signs such as + and ×.',
                ['(5 + 10) × 6', '5 × 16', '5 × 10 + 5 × 6', '16 × 5'], 0, {'kind': 'area-model', 'columns': [10, 6], 'rows': [5]}),
         choice('signed-context-order', 'Height above sea level is positive and depth below sea level is negative. A submarine is at $-230$ meters and a gull is at $265$ meters. Which statement is correct about distance from sea level?',
                ['A submarine is farther, because $-230$ is less than $265$.', 'They cannot be compared, because one number is negative.', 'They are the same distance, because one is above and one is below sea level.', 'A gull is farther, because $|265|=265$ is greater than $|-230|=230$.'], 3),

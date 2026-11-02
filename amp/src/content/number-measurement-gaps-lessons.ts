@@ -42,7 +42,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
   "area-tiling-distributive": {
     goal: "Given a rectangle tiled with unit squares, a rectangle split into two parts, or an L-shaped figure, use the parts to find or write its area.",
     intuition:
-      "Area is how many unit squares cover a shape, with no gaps and no overlaps. A unit square is a square with sides 1 unit long. A rectangle with 5 rows of 7 squares has $5\\times7=35$ squares. The sign $\\times$ means times: 5 groups of 7. A line can split a shape into two rectangles. An L-shape is two rectangles joined into one bent shape. Find the area of each part, then add. The total stays the same, because every square is in just one part. In a number sentence, multiply before you add, unless parentheses ( ) say to do a part first.",
+      "Area is how many unit squares cover a shape, with no gaps and no overlaps. A unit square is a square with sides 1 unit long. A rectangle with 5 rows of 7 squares has $5\\times7=35$ squares. The sign $\\times$ means times: 5 groups of 7. A line can split a shape into two rectangles. An L-shape is two rectangles joined into one bent shape. Find the area of each part, then add. The total stays the same, because every square is in just one part. An expression is numbers joined by signs such as + and ×, like $3\\times7+2\\times7$. In an expression, multiply before you add, unless parentheses ( ) say to do a part first.",
     senses: {
       product: "product-multiply",
       products: "product-multiply",
@@ -65,7 +65,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
     method: [
       "Find a line that splits the figure into rectangles that do not overlap. Use the dashed line if one is drawn.",
       "For each rectangle, multiply its height by its width. That counts its squares: rows times squares in a row.",
-      "Add the areas of the parts. If a number sentence is asked for, write one product, the answer to a times, for each part. Join them with $+$.",
+      "Add the areas of the parts. If an expression is asked for, write one product, the answer to a times, for each part. Join them with $+$.",
       "Check: if the whole figure is a rectangle, the parts must add up to its height times its whole width.",
     ],
     watch:
@@ -333,7 +333,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
         title: "Split, multiply, add",
         paragraphs: [
           "Both parts have rows of 7. So the 5 rows split into 2 rows and 3 rows: $5\\times7=2\\times7+3\\times7$.",
-          "In a number sentence, multiply before you add. Parentheses ( ) mean do that part first. In $(2+3)\\times7$, add $2+3=5$ first, then multiply by 7.",
+          "In an expression, multiply before you add. Parentheses ( ) mean do that part first. In $(2+3)\\times7$, add $2+3=5$ first, then multiply by 7.",
           "So $(2+3)\\times7=2\\times7+3\\times7$. Multiplying each part of a sum like this is called the distributive property. It works for any whole numbers.",
           "For an L-shape, two rectangles joined into one bent shape, use the dashed line to split it. Find each rectangle's sides from the labels, multiply, and add. Adding all the side lengths around the figure gives its perimeter, not its area.",
         ],

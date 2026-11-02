@@ -483,11 +483,15 @@ function coinNameAndValue(
 const SHAPE_DESC: Record<string, string> = {
   triangle: "3 straight sides and 3 corners",
   square: "4 equal sides and 4 square corners",
-  rectangle:
-    "4 square corners, with its long sides longer than its short sides",
+  rectangle: "4 straight sides and 4 square corners",
   circle: "no corners and no straight sides",
   hexagon: "6 straight sides and 6 corners",
 };
+/** What the drawn face shows. A drawn rectangle face is never a square. */
+const faceDesc = (shape: string) =>
+  shape === "rectangle"
+    ? "4 square corners, with 2 long sides and 2 short sides"
+    : SHAPE_DESC[shape]!;
 type SolidKind =
   | "cube"
   | "box"
@@ -589,15 +593,15 @@ function solidBottomFace(r: Random): Built {
     answer: "",
     hint: `The solid is a ${SOLID_NAME[kind]}. Look at the face of the ${SOLID_NAME[kind]} that touches the table. Is it round or does it have straight sides? Count its straight sides and corners.`,
     explanation: [
-      `The face on the table has ${SHAPE_DESC[correct]}.`,
-      `A ${correct} has ${SHAPE_DESC[correct]}, so the bottom face is a ${correct}.`,
+      `The face on the table has ${faceDesc(correct)}.`,
+      `A ${correct} has ${SHAPE_DESC[correct]}, so the bottom face is a ${correct}.${correct === "rectangle" ? " Its sides are not all the same length, so it is not a square." : ""}`,
     ],
     choices: choicesFrom(
       r,
       correct,
       pool.map((s) => ({
         label: s,
-        feedback: `A ${s} has ${SHAPE_DESC[s]}. The face on the table has ${SHAPE_DESC[correct]}.`,
+        feedback: `A ${s} has ${SHAPE_DESC[s]}. The face on the table has ${faceDesc(correct)}.`,
       })),
     ),
   };
@@ -689,7 +693,7 @@ function measurableAttribute(r: Random): Built {
       answer: "",
       hint: `${ATTRIBUTE_MEANING[attr]} Find the question with key words that ask about it.`,
       explanation: [
-        "An attribute is something about an object that you can measure, like how long or how heavy it is.",
+        "An attribute is something about an object, like its length, its weight or its color. Some attributes, like how long or how heavy it is, can be measured with units.",
         ATTRIBUTE_MEANING[attr],
         `"${asks[attr]}" uses those key words, so it asks about the ${attr}.`,
       ],
@@ -715,7 +719,7 @@ function measurableAttribute(r: Random): Built {
       ? "Ask what the goal needs to know: how long something is, how much it can hold, or how heavy it is. Then pick that attribute."
       : hint,
     explanation: [
-      "An attribute is something about an object that you can measure, like how long or how heavy it is.",
+      "An attribute is something about an object, like its length, its weight or its color. Some attributes, like how long or how heavy it is, can be measured with units.",
       ATTRIBUTE_MEANING[attr],
       `${deciding ? "The goal" : "The question"} asks about the ${attr}, so you measure the ${attr}.`,
     ],
@@ -1763,7 +1767,7 @@ function benchmarkEstimate(r: Random): Built {
       hint: "Think of a length you know: a ruler is 12 inches, one big step is about 1 foot, and a paper clip is about 3 centimeters. Which choice is close to the real object?",
       explanation: [
         "An estimate is a close guess. Compare each choice with a length you know: a ruler is 12 inches, and one foot is about the length of a big step.",
-        "The other choices are much too long or much too short for this object.",
+        `The other choices are much too long or much too short. ${item.wrong.map((w) => w.feedback).join(" ")}`,
         `So the best estimate is that ${item.what} is about ${item.right}.`,
       ],
       choices: choicesFrom(r, item.right, item.wrong),
@@ -1799,7 +1803,7 @@ function benchmarkEstimate(r: Random): Built {
     hint: `Lay ${k} copies of the benchmark end to end. Each copy is about ${label(b.len)}. What do you do to find the total length?`,
     explanation: [
       `Each ${b.one.slice(2)} is about ${label(b.len)}.`,
-      `${cap(target)} is ${k} of them: ${Array.from({ length: k }, () => b.len).join(" + ")} = ${total}.`,
+      `${cap(target)} is about ${k} of them: ${Array.from({ length: k }, () => b.len).join(" + ")} = ${total}.`,
       `${cap(target)} is about ${label(total)} long.`,
     ],
     choices: choicesFrom(r, label(total), wrongs),

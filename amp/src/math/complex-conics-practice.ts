@@ -1315,8 +1315,8 @@ function rootCountCase(r: Random): Spec {
         `By the Fundamental Theorem of Algebra, a degree-${n} polynomial has ${n} complex roots, counting repeats.`,
         "With real coefficients, nonreal roots come in conjugate pairs: $a+bi$ always comes with $a-bi$. So the number of nonreal roots is even.",
         `The real roots are what is left: ${n} minus an even number. So their count is ${n % 2 === 0 ? "even" : "odd"}, like ${n}.`,
-        `Among the choices only ${ok} works: it leaves $${n}-${ok}=${n - ok}$ nonreal roots, which form ${(n - ok) / 2} pair${(n - ok) / 2 === 1 ? "" : "s"}.`,
-        `So the polynomial can have ${ok} real roots.`,
+        `A count that is ${n % 2 === 0 ? "odd" : "even"}, or more than ${n}, cannot work. ${ok} real root${ok === 1 ? "" : "s"} can: ${n === ok ? `that leaves no nonreal roots.` : `it leaves $${n}-${ok}=${n - ok}$ nonreal roots, which form ${(n - ok) / 2} pair${(n - ok) / 2 === 1 ? "" : "s"}.`}`,
+        `So the polynomial can have ${ok} real root${ok === 1 ? "" : "s"}.`,
       ],
       correct: num(ok),
       wrong: [
