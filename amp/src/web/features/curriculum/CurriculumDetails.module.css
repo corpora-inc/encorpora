@@ -1,0 +1,79 @@
+/* A quiet display preference, with a full-size native checkbox hit surface. */
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: var(--target-size);
+  padding: var(--space-2) 0;
+  color: var(--color-muted-text);
+  cursor: pointer;
+}
+.copy {
+  min-width: 0;
+  font-size: var(--text-small);
+  font-weight: 400;
+  line-height: 1.5;
+}
+.copy > span {
+  font-weight: 600;
+}
+.copy small {
+  display: block;
+  font-size: inherit;
+}
+.check {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--target-size);
+  height: var(--target-size);
+  flex: 0 0 var(--target-size);
+}
+.check input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+.indicator {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 4px;
+  background: var(--color-answer);
+  color: var(--color-on-answer);
+  pointer-events: none;
+}
+.indicator svg {
+  width: 16px;
+  height: 16px;
+  visibility: hidden;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.check input:checked + .indicator {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+}
+.check input:checked + .indicator svg {
+  visibility: visible;
+}
+.check input:focus-visible + .indicator {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+.control:has(input:disabled) {
+  cursor: default;
+}
+.control:has(input:disabled) .indicator {
+  border-style: dashed;
+}

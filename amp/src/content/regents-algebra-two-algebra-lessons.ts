@@ -68,7 +68,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   "nonmonic-complex-quadratic": {
     goal: "Use the quadratic formula when $a\\ne1$ and the discriminant is negative, and write the solutions with $i$.",
     intuition:
-      "A quadratic with a negative discriminant has no real solutions. The quadratic formula still gives two solutions, written with $i=\\sqrt{-1}$, and the denominator is $2a$ even when $a$ is not 1.",
+      "In the quadratic formula $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$, the number under the square root, $b^2-4ac$, is called the discriminant. When it is negative, there are no real solutions. The formula still gives two solutions, written with the imaginary unit $i$, where $i^2=-1$. The denominator is $2a$ even when $a$ is not 1.",
     terms: [
       "discriminant",
       [
@@ -165,7 +165,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   "powers-of-i-sum": {
     goal: "Reduce each power of $i$ using the four-step cycle and collect real and imaginary parts.",
     intuition:
-      "The powers of $i$ repeat in a cycle of four: $i,-1,-i,1$. Divide the exponent by 4 and use the remainder to replace each power, then add like terms.",
+      "The imaginary unit $i$ has $i^2=-1$, so its powers repeat in a cycle of four: $i,-1,-i,1$. Divide each exponent by 4 and use the remainder to replace the power. Then add like terms: real terms together, and terms with $i$ together.",
     terms: ["imaginary-unit", "real-part"],
     method: [
       "Reduce each exponent: remainder 0 gives 1, 1 gives $i$, 2 gives $-1$, 3 gives $-i$.",
@@ -269,40 +269,48 @@ export const regentsAlgebraTwoAlgebraLessons = [
     id: "regents-nonmonic-complex-quadratic",
     title: "Nonreal solutions of a non-monic quadratic",
     summary:
-      "Use the quadratic formula on $ax^2+bx+c=0$ with a negative discriminant.",
+      "Some quadratic equations, such as $3x^2+2x+1=0$, have no real solutions, because the quadratic formula asks for the square root of a negative number. With the imaginary unit $i$, the number with $i^2=-1$, that square root exists. So the formula still gives two solutions, which contain $i$. When the number in front of $x^2$ is not 1, it stays in the denominator.",
     templateIds: ["nonmonic-complex-quadratic"],
+    senses: {
+      term: "term-expression",
+      terms: "term-expression",
+      square: "square-number",
+      factor: "factor-number",
+    },
+    noLink: ["whole"],
     objectives: [
-      "Read $a$, $b$, $c$ and find the discriminant.",
-      "Write the solutions with $i$ over $2a$ and a simplified radical.",
+      "Read $a$, $b$ and $c$ from $ax^2+bx+c=0$, and find the discriminant, $b^2-4ac$.",
+      "Write the solutions with $i$, over $2a$, with the radical simplified.",
     ],
     openingTitle: "A negative discriminant gives imaginary solutions",
     opening: [
-      "The quadratic formula gives $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$. When $b^2-4ac$ is negative, the square root is of a negative number, so the solutions contain $i=\\sqrt{-1}$ and are not real.",
-      "When $a$ is not 1, the denominator is $2a$ for both terms.",
+      "A quadratic equation can be written $ax^2+bx+c=0$, where $a$, $b$ and $c$ are numbers and $a\\ne0$. When $a$ is not 1, the quadratic is called non-monic. The quadratic formula gives its solutions: $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$, where $\\pm$ means one solution with $+$ and one with $-$.",
+      "The number under the square root, $b^2-4ac$, is called the discriminant. When it is negative, no real number is its square root, so there are no real solutions. The imaginary unit $i$, with $i^2=-1$, gives $\\sqrt{-n}=i\\sqrt{n}$ for $n>0$. So the two solutions contain $i$, and they differ only in the sign of the $i$ term.",
+      "Both terms of the top are divided by $2a$, the whole denominator, even when $a$ is not 1.",
     ],
     example: {
       prompt: "Solve $3x^2+2x+1=0$.",
       steps: [
-        "$a=3$, $b=2$, $c=1$, so $b^2-4ac=4-12=-8$.",
-        "$x=\\frac{-2\\pm\\sqrt{-8}}{6}=\\frac{-2\\pm2i\\sqrt2}{6}=\\frac{-1\\pm i\\sqrt2}{3}$.",
+        "Read the coefficients: $a=3$, $b=2$, $c=1$. The discriminant is $b^2-4ac=4-12=-8$, which is negative, so the solutions contain $i$.",
+        "Use $\\sqrt{-8}=i\\sqrt8=2i\\sqrt2$, since $8=4\\cdot2$ and $\\sqrt4=2$. Then $x=\\frac{-2\\pm\\sqrt{-8}}{6}=\\frac{-2\\pm2i\\sqrt2}{6}=\\frac{-1\\pm i\\sqrt2}{3}$, dividing the top and bottom by the common factor 2.",
       ],
       answer: "$x=\\dfrac{-1\\pm i\\sqrt2}{3}$",
     },
     methodTitle: "Discriminant first",
     method: [
-      "Compute $b^2-4ac$ and check its sign.",
-      "Write $\\sqrt{-n}=i\\sqrt{n}$.",
-      "Reduce common factors in the whole fraction.",
+      "Compute $b^2-4ac$ and check its sign. A negative value means the solutions contain $i$.",
+      "Write $\\sqrt{-n}=i\\sqrt{n}$, and simplify the radical by taking out any square factor.",
+      "Divide the whole top by $2a$, and cancel any factor common to every term.",
     ],
     formalTitle: "The formula",
     formal: [
       "Completing the square on $ax^2+bx+c=0$ gives $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$ for $a\\ne0$.",
-      "For real $a,b,c$ and a negative discriminant, the two solutions are complex conjugates.",
+      "If $a$, $b$ and $c$ are real and the discriminant is negative, the two solutions are $p+qi$ and $p-qi$. Such a pair is called complex conjugates.",
     ],
     pitfalls: [
       "The denominator is $2a$, not $a$.",
       "Use $-b$, so a positive $b$ gives a negative first term.",
-      "The radicand under $i\\sqrt{\\ }$ is $4ac-b^2$.",
+      "The number under $i\\sqrt{\\ }$ is $4ac-b^2$, the discriminant with its sign changed.",
     ],
     parentGuide:
       "Ask your learner to compute the discriminant before anything else and say what its sign means.",
@@ -531,32 +539,38 @@ export const regentsAlgebraTwoAlgebraLessons = [
     id: "regents-powers-of-i-sum",
     title: "Sums of imaginary powers",
     summary:
-      "Reduce powers of $i$ and collect real and imaginary parts with letters as coefficients.",
+      "The imaginary unit $i$ is the number with $i^2=-1$. Multiplying by $i$ over and over gives $i$, $-1$, $-i$, $1$, and then the same four values again. So $i$ raised to any whole-number power is one of those four. Replace each power, then add the terms without $i$ together and the terms with $i$ together, even when the numbers in front are letters.",
     templateIds: ["powers-of-i-sum"],
+    senses: { terms: "term-expression" },
+    noLink: ["leaves"],
     objectives: [
       "Reduce $i^n$ using the cycle of four.",
-      "Collect real and imaginary parts when coefficients contain a letter.",
+      "Collect the real part and the imaginary part when the coefficients contain a letter.",
     ],
     openingTitle: "The powers repeat every four",
     opening: [
-      "The imaginary unit $i$ satisfies $i^2=-1$. Then $i^3=-i$, $i^4=1$, and the pattern repeats: $i,-1,-i,1$.",
-      "To reduce $i^n$, divide $n$ by 4 and use the remainder: 0 gives 1, 1 gives $i$, 2 gives $-1$, 3 gives $-i$.",
+      "The imaginary unit $i$ satisfies $i^2=-1$. Then $i^3=i^2\\cdot i=-i$ and $i^4=i^2\\cdot i^2=1$. After that the pattern repeats: $i,-1,-i,1$.",
+      "So to reduce $i^n$, divide $n$ by 4 and use the remainder: 0 gives 1, 1 gives $i$, 2 gives $-1$, 3 gives $-i$.",
+      "A complex number is written $A+Bi$, where $A$, the real part, and $B$, the imaginary part, are real numbers. A letter such as $x$ stands for a real number, so terms with $x$ but no $i$ belong to the real part.",
     ],
     example: {
       prompt: "Simplify $3xi^{6}+2i^{7}-xi^{4}$.",
-      steps: ["$i^6=-1$, $i^7=-i$, $i^4=1$.", "$-3x-2i-x=-4x-2i$."],
+      steps: [
+        "Reduce each power by its remainder after dividing by 4: 6 leaves 2, so $i^6=-1$; 7 leaves 3, so $i^7=-i$; 4 leaves 0, so $i^4=1$.",
+        "Multiply by the coefficients: $3x(-1)+2(-i)-x(1)=-3x-2i-x$. The terms with $x$ are real, so they combine: $-4x-2i$.",
+      ],
       answer: "$-4x-2i$",
     },
     methodTitle: "Reduce, multiply, collect",
     method: [
-      "Reduce each power.",
-      "Multiply by the coefficient.",
-      "Add real terms together and terms with $i$ together.",
+      "Reduce each power of $i$ using the remainder after dividing the exponent by 4.",
+      "Multiply each result by the coefficient in front of it.",
+      "Add the real terms together and the terms with $i$ together.",
     ],
     formalTitle: "Why four",
     formal: [
-      "$i^4=1$, so $i^{n+4}=i^n$ for every integer $n$.",
-      "Letters representing real numbers combine like ordinary variables; the form $A+Bi$ has $A$ and $B$ real.",
+      "$i^4=1$, so $i^{n+4}=i^n\\cdot i^4=i^n$ for every integer $n$.",
+      "Letters that stand for real numbers combine like ordinary variables. The form $A+Bi$ has $A$ and $B$ real.",
     ],
     pitfalls: [
       "$i^2=-1$, not $1$.",

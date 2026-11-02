@@ -68,8 +68,8 @@ const entries: Entry[] = [
     goal: "Choose the graph that shows one point given by two signed numbers, or by its distances from the axes.",
     summary:
       "The coordinate plane is a flat grid with two number lines, called axes, crossing at a point called the origin. A point is written $(x, y)$: the first number moves you across and the second moves you up or down. A negative $x$ means left of the up-and-down axis. A negative $y$ means below the across axis. The first number is always $x$.",
-    senses: { unit: "unit", units: "unit" },
-    noLink: ["third", "fourth", "rule", "changes", "plane", "image"],
+    senses: { unit: "unit", units: "unit", plane: "plane" },
+    noLink: ["third", "fourth", "rule", "changes", "image"],
     objectives: [
       "Place an ordered pair of signed numbers, or two distances from the axes, in the correct quadrant.",
       "Choose the graph with that one point, ruling out flipped signs and swapped coordinates.",

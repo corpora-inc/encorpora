@@ -69,8 +69,8 @@ export const regentsSequenceMethods: Record<string, ProblemMethod> = {
         "Its term number is its position $n$ in the list, counted from 1.",
       ],
     ],
-    senses: seqSenses,
-    noLink: seqNoLink,
+    senses: { ...seqSenses, decreasing: "decreasing" },
+    noLink: seqNoLink.filter((w) => !["decreasing"].includes(w)),
     method: [
       "Subtract two neighbouring terms, later minus earlier, to get the common difference $d$. Check that another pair gives the same answer.",
       "Count the steps from term 1 to term $n$: there are $n - 1$ of them.",

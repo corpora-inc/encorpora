@@ -55,7 +55,8 @@ const entries: WorkEntry[] = [
     ],
     parentGuide:
       "Ask your learner to check the number of items by working forward from it to the amount spent.",
-    noLink: ["whole", "product", "rule", "change"],
+    senses: { rule: "rule" },
+    noLink: ["whole", "product", "change"],
   },
   {
     id: "show-work-percent-count",
