@@ -56,7 +56,7 @@ def canon(label):
     text = plain(label)
     if m := match(NUM + r' dollars?', text):
         return ('$', num(m[1]))
-    if m := match(r'(\d+) months', text):
+    if m := match(r'(\d+) months?', text):
         return ('months', int(m[1]))
     if m := match(NUM + '%', text):
         return ('%', num(m[1]))

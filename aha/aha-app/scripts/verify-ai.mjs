@@ -46,7 +46,7 @@ function fixture(specs){
   const gatewayKey='aha-test-gateway';
   const gateway=()=>JSON.parse(localStorage.getItem(gatewayKey)||'{}');
   /** TEST "model": answers the batch prompt with fixture specs whose skills are in the standards window it was shown. */
-  const batchText=user=>{
+  const batchText=(user,operationId)=>{
     const allowed=new Set(user.split('\nSTANDARDS\n')[1].split('\nWrite ')[0].split('\n').map(line=>line.split(' ')[0]));
     const usable=specs.filter(f=>f.skillIds.every(id=>allowed.has(id)));
     const pool=usable.length>=3?usable:specs;
@@ -60,6 +60,7 @@ function fixture(specs){
     if(ai.difficulties)chosen=chosen.map((c,i)=>({...c,difficulty:ai.difficulties[i]??c.difficulty}));
     if(ai.malformedNext){
       ai.malformedNext=false;
+      ai.malformedBatch={operationId,validIds:[chosen[0].id,chosen[2].id]};
       // Fenced, with chatter, and one activity whose key disagrees with its own keyCheck.
       const broken={...chosen[1],id:'broken-key',keyCheck:{value:'1+1000'}};
       return 'Here is the batch:\n```json\n'+JSON.stringify({rationale:'TEST fixture batch',activities:[chosen[0],broken,chosen[2]]})+'\n```';
@@ -118,7 +119,7 @@ function fixture(specs){
       }
       ledger[key]={callId:FIXTURE_CALL,charged2z:'1'};localStorage.setItem(gatewayKey,JSON.stringify(ledger));
       const user=args.request.messages[1].content[0].text;
-      const text=user.startsWith('LEARNER ')?batchText(user):'You can use this idea to share ingredients fairly.';
+      const text=user.startsWith('LEARNER ')?batchText(user,args.operation.operationId):'You can use this idea to share ingredients fairly.';
       // TEST-ONLY: `outOfRoomModel` makes that model's batches end at their budget after hidden reasoning (finish_reason length).
       const outOfRoom=ai.outOfRoomModel===args.request.model;
       streams.set(args.operation.operationId,[
@@ -304,7 +305,8 @@ try {
   await page.getByRole('button',{name:'Hint',exact:true}).click();
   await page.locator('.help-panel').waitFor();
   await page.waitForFunction(id=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.find(o=>o.id===id).consumed===true,unacked.id);
-  await page.evaluate(()=>{window.__ahaAI.enforced=true;});
+  // Saving this answer can prefetch before Next, so arm the malformed reply first.
+  await page.evaluate(()=>{window.__ahaAI.enforced=true;window.__ahaAI.malformedNext=true;});
   await answerCurrent(true);
   const hinted=await lastAttempt();
   assert.equal(hinted.source,'ai-spec');
@@ -314,18 +316,19 @@ try {
   assert.match(hinted.spec.hash,/^[0-9a-f]{16}$/);
   assert.deepEqual(hinted.spec.content,s1.aiActivity.spec,'the exact spec is stored with its evidence');
   await aiCard.getByText('Yes, that’s it.',{exact:true}).waitFor();
-  // The queue drops to one: the next batch is prefetched in the background while the learner works.
-  await page.evaluate(()=>{window.__ahaAI.malformedNext=true;});
-  await nextButton.click();
-  await aiCard.waitFor();
-  await page.waitForFunction(()=>window.__ahaAI.starts.length===1);
-  const malformedOp=await page.evaluate(()=>window.__ahaAI.starts[0].operationId);
-  await page.waitForFunction(op=>(Object.values(window.__ahaFixture.read().sessions)[0].data.aiQueue??[]).some(q=>q.operationId===op),malformedOp);
-  await page.getByRole('button',{name:'Check',exact:true}).waitFor({timeout:5000});
+  // Identify the injected reply, not whichever request happened to start first. Wait for the
+  // durable acknowledgement so a partially streamed queue cannot satisfy the salvage check.
+  await page.waitForFunction(()=>!!window.__ahaAI.malformedBatch);
+  const {operationId:malformedOp,validIds}=await page.evaluate(()=>window.__ahaAI.malformedBatch);
+  await page.waitForFunction(op=>window.__ahaFixture.read().journals['aha-billing-v1'].operations.some(o=>o.id===op&&o.consumed),malformedOp);
   const prefetched=(await session()).aiQueue.filter(q=>q.operationId===malformedOp);
   assert.equal(prefetched.length,2,'malformed batch: the two valid activities are kept, the bad key is dropped');
+  assert.deepEqual(prefetched.map(q=>q.spec.id).sort(),validIds.sort(),'the intended valid activities survive the malformed reply');
   assert.ok(prefetched.every(q=>q.spec.id!=='broken-key'));
   assert.ok(await page.evaluate(()=>(localStorage.getItem('aha-diagnostics-log')??'').includes('rejected 1')),'rejected activities are logged as model-quality telemetry');
+  await nextButton.click();
+  await aiCard.waitFor();
+  await page.getByRole('button',{name:'Check',exact:true}).waitFor({timeout:5000});
   await answerCurrent(false);
   const wrong=await lastAttempt();
   assert.equal(wrong.source,'ai-spec');assert.equal(wrong.correct,false);assert.equal(wrong.independent,false);

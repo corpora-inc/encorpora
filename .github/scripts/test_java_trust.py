@@ -162,7 +162,7 @@ class WorkflowJavaTrustTests(unittest.TestCase):
                     repair = steps[index + 1]
                     self.assertEqual(repair.get("name"), "Remove distrusted Java CA roots")
                     self.assertEqual(repair["run"], 'sudo "$JAVA_HOME/bin/java" "$GITHUB_WORKSPACE/.github/scripts/RemoveDistrustedRoots.java" "$JAVA_HOME/lib/security/cacerts"')
-                    self.assertEqual(job["runs-on"], "ubuntu-latest")
+                    self.assertEqual(job["runs-on"], "ubuntu-24.04")
                     self.assertEqual(repair.get("if"), steps[index + 2].get("if"))
                     self.assertTrue(str(steps[index + 2].get("uses", "")).startswith("android-actions/setup-android@"))
             self.assertEqual(found, 1, name + ": expected one configured Android JDK")
