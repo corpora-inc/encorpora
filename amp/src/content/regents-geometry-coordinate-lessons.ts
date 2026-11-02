@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
@@ -50,7 +51,7 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
   "geo-segment-partition-point": {
     goal: "Find the point that divides a segment in a ratio by taking a fraction of the way from one endpoint to the other.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["change"].includes(w)),
     intuition:
       "A segment is the straight piece of a line between two endpoints. A ratio $a:b$, read “$a$ to $b$”, cuts the segment into $a+b$ equal parts. The dividing point is $a$ parts from the first endpoint and $b$ parts from the second. So it is $\\frac{a}{a+b}$ of the way along, both across ($x$) and up ($y$). For $1:4$ there are 5 parts, and the point is $\\frac15$ of the way.",
     terms: [
@@ -71,8 +72,10 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
   },
   "geo-circle-general-form": {
     goal: "Complete the square in $x$ and in $y$ to read a circle's center and radius from an expanded equation.",
-    senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    senses: { ...GEO_SENSES, side: "side-of-equation" },
+    noLink: GEO_NOLINK.filter(
+      (w) => !["square", "squares", "term", "terms"].includes(w),
+    ),
     intuition:
       "A circle with center $(h,k)$ and radius $r$ has the equation $(x-h)^2+(y-k)^2=r^2$. The radius is the distance from the center to the circle, and $(x-h)^2$ means $(x-h)$ times itself. Multiplying out the squares hides the center and radius. Completing the square undoes that. It rewrites $x^2-6x$ as $(x-3)^2-9$ by adding, and taking away, the square of half the number in front of $x$.",
     terms: ["general-form", "completing-the-square"],
@@ -87,7 +90,7 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
   "geo-line-point-slope-choice": {
     goal: "Write a line's point-slope equation using the slope of a parallel or perpendicular line and a given point.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["change", "product"].includes(w)),
     intuition:
       "A line is fixed by its slope and one point. Slope is steepness: the change in $y$ divided by the change in $x$ between two points. Parallel lines are lines that never meet. When they are not vertical, they have the same slope. Perpendicular lines are lines that meet at a right angle, a square corner. When neither is vertical or horizontal, their slopes are opposite reciprocals: flip the fraction and change the sign, so $\\frac32$ pairs with $-\\frac23$. Point-slope form, $y-y_1=m(x-x_1)$, uses a slope $m$ and a known point $(x_1,y_1)$; the small 1 just marks that point.",
     terms: ["point-slope-form", "negative-reciprocal"],
@@ -101,8 +104,8 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
   },
   "geo-line-pair-relationship": {
     goal: "Compare the slopes of two lines, one in standard form, to decide whether they are parallel, perpendicular, the same line or neither.",
-    senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    senses: { ...GEO_SENSES, side: "side-of-equation" },
+    noLink: GEO_NOLINK.filter((w) => !["product", "term"].includes(w)),
     intuition:
       "Two lines in a flat plane either cross, never meet, or are the same line. The slopes, their steepness, and the $y$-intercepts tell which. Equal slopes mean parallel lines or the same line. Slopes that multiply to $-1$ mean the lines meet at a right angle: they are perpendicular. Standard form is $Ax+By=C$. When $B\\ne0$, solving for $y$ shows that the slope is $-\\frac{A}{B}$. The $y$-intercept is where a line crosses the $y$-axis.",
     terms: [
@@ -122,7 +125,7 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
   },
   "geo-dilation-line-image": {
     goal: "Find the image of a line under a dilation centered at the origin by scaling its intercept and keeping its slope.",
-    senses: GEO_SENSES,
+    senses: sensesWithout(GEO_SENSES, "center"),
     noLink: GEO_NOLINK,
     intuition:
       "A line written $y=mx+b$ has slope $m$, its steepness, and crosses the $y$-axis at $(0,b)$. A dilation about the origin, the point $(0,0)$, multiplies every point's coordinates by the scale factor $k$, a positive number. When $k$ is not 1, a line that misses the origin is sent to a parallel line, with the same slope. Its $y$-intercept point $(0,b)$, where it crosses the $y$-axis, goes to $(0,kb)$. A line through the origin stays where it is.",

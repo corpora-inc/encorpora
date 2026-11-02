@@ -406,8 +406,6 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
       range: "range-statistics",
       tail: "tail",
       mean: "mean-average",
-      part: "part",
-      parts: "part",
       change: "change",
     },
     noLink: ["side", "sides", "center"],
@@ -454,7 +452,6 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
       part: "part",
       differences: "difference-subtract",
     },
-    noLink: ["mean"],
     intuition:
       "A conditional percent is a count divided by the total of one row or one column of a two-way table: the group named after “of”. Two questions are associated when the same answer is clearly more common in one group than in another. So compare the percent giving that answer within each group.",
     terms: ["conditional-relative-frequency"],
@@ -527,7 +524,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
   "correlation-choice": {
     goal: "Interpret correlation and residual plots.",
     senses: { model: "model" },
-    noLink: ["jump", "rules"],
+    noLink: ["jump"],
     intuition:
       "A scatter plot is a graph with one dot for each person or thing. The correlation coefficient $r$ is a number from −1 to 1 that tells how closely those dots follow a straight line. Its sign gives the direction: positive when the dots rise from left to right, negative when they fall. The closer $r$ is to 1 or −1, the tighter the dots hug a line. A residual is a point's measured value minus the line's prediction. A residual plot is a graph of those gaps.",
     terms: ["correlation-coefficient"],

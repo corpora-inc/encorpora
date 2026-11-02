@@ -17,7 +17,6 @@ const entries: Entry[] = [
       side: "side",
       sides: "side",
       similar: "similar-figures",
-      factor: "factor-number",
     },
     noLink: ["third", "sort", "parts"],
     objectives: [

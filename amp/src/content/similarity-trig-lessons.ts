@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
@@ -203,7 +204,7 @@ const terms = {
 export const similarityTrigMethods: Record<string, ProblemMethod> = {
   "dilation-measure": {
     goal: "Use a dilation's scale factor and center to find lengths, the factor, image points or what is kept.",
-    senses: GEO_SENSES,
+    senses: sensesWithout(GEO_SENSES, "center"),
     noLink: GEO_NOLINK,
     intuition:
       "A dilation resizes a figure from a fixed point, called the center. Each point moves along the ray (a half-line) from the center through it, to $k$ times as far away. The number $k$, which is positive, is the scale factor. So every length is multiplied by $k$, and every angle stays the same. A scale factor above 1 enlarges, and one between 0 and 1 shrinks. To dilate point $P$ about center $C$, multiply the step from $C$ to $P$ by $k$, then add it back to $C$.",
@@ -219,7 +220,7 @@ export const similarityTrigMethods: Record<string, ProblemMethod> = {
   "similar-triangle-side": {
     goal: "Find a missing length from similar triangles.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["square"].includes(w)),
     intuition:
       "Two triangles are called similar when they have the same shape: one is a resized copy of the other. Every side of one is the same number, the scale factor, times its matching side in the other. Two pairs of equal angles are enough to make triangles similar, because the third angles then match too. A perimeter, the distance around, is multiplied by the scale factor. An area is multiplied by the scale factor times itself.",
     terms: terms.similar,

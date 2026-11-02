@@ -241,8 +241,8 @@ extra mathematical claim before or after those verdicts, must not be ignored.
                 [f"The expressions marked true are the ones whose value is exactly ${target}$."])
     if template == 'equivalent-fractions-select':
         target = only_span(prompt)
-        return (["Equivalent fractions name the same amount. Multiply the top (the numerator) and the bottom (the denominator) by the same number to make one.",
-                 "Changing only one part, or adding the same number to both parts, changes the amount."],
+        return (["Equivalent fractions name the same amount. To make one, multiply the top (the numerator) and the bottom (the denominator) by the same number, other than 0. Dividing both by the same number, other than 0, also works when both divide evenly.",
+                 "Changing only one part changes the amount. Adding the same number to both parts also changes it, unless the fraction equals 1."],
                 [f"The fractions marked true are equivalent to ${target}$."])
     if template == 'fraction-line-names-select':
         (line,) = [e for e in kit.elements(public) if e['type'] == 'numberLine']
@@ -255,14 +255,18 @@ extra mathematical claim before or after those verdicts, must not be ignored.
     if template == 'equivalent-ratios-select':
         m = re.search(r'\$(\d+)\$ .+? for every \$(\d+)\$', prompt)
         ratio = f'{m[1]}:{m[2]}'
-        return ([f"A ratio such as ${ratio}$ compares two amounts. An equivalent ratio multiplies both amounts by the same number.",
+        return ([f"A ratio such as ${ratio}$ compares two amounts. An equivalent ratio multiplies both amounts by the same number, other than 0.",
                  "Adding the same number to both amounts does not keep the ratio."],
                 [f"The groups marked true keep the ratio ${ratio}$."])
     if template == 'rounds-to-select':
         m = re.fullmatch(r'Select the \d+ numbers that round to (\$[\d.]+\$) at the nearest (whole number|tenth|hundredth)\.', prompt)
         target, place = m[1], m[2]
+        half = Decimal(5).scaleb(-{'whole number': 1, 'tenth': 2, 'hundredth': 3}[place])
+        value = Decimal(target.strip('$'))
+        low, high = (format((value + d).normalize(), 'f') for d in (-half, half))
+        plural = 'whole numbers' if place == 'whole number' else place + 's'
         return ([f"Rounding to the nearest {place} means replacing a number with the closest {place} value.",
-                 f"A number rounds to {target} when it is less than half a {place} away from it. A number exactly halfway rounds up."],
+                 f"A number rounds to {target} when it is at least ${low}$ and less than ${high}$. Both of those are exactly halfway between two {plural}. A number exactly halfway rounds up, so ${low}$ rounds up to {target}, and ${high}$ rounds up to the next {place}."],
                 [f"The numbers marked true round to {target}."])
     if template == 'compare-to-pi-select':
         m = re.fullmatch(r'Select the \d+ numbers that are (less|greater) than \$(.+)\$\.', prompt)

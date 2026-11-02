@@ -436,7 +436,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     goal: "Decide which figure maps onto itself in a turn of less than a full circle about its center.",
     intuition:
       "Rotational symmetry means that some turn about its center lands a figure exactly on itself. The turn must be more than 0° and less than a full turn of 360°. A rectangle lands on itself after a half turn of 180°. A line of symmetry is a fold line that makes the two halves of a figure match. Parallel means running the same direction without meeting. A parallelogram is a four-sided shape with two pairs of parallel sides. A kite that is not a rhombus has a line of symmetry, but no turn of less than 360° fits it back on itself. Isosceles means having two equal sides. An isosceles trapezoid (a shape with exactly one pair of parallel sides and two equal slanted sides) has no turn that fits either. A regular polygon is a shape with all sides equal and all angles equal.",
-    senses: { center: "center", side: "side", sides: "side" },
+    senses: { side: "side", sides: "side" },
     noLink: ["more than"],
     terms: ["rotational-symmetry", "line-of-symmetry"],
     method: [

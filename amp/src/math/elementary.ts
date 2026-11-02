@@ -349,7 +349,7 @@ export function generateElementaryProblem(
       explanation = [
         `${a} is ${count(tens, "ten")} and ${count(ones, "one")}. Add the ones first.`,
         `${ones} + ${b} = ${ones + b} ones, which is more than 9.`,
-        `A place can hold at most 9, so trade 10 ones for 1 new ten. That leaves ${count(ones + b - 10, "one")}.`,
+        `Each place shows just one digit, 0 to 9. So trade 10 of the ones for 1 new ten. That leaves ${count(ones + b - 10, "one")}.`,
         `Now there are ${count(tens + 1, "ten")} and ${count(ones + b - 10, "one")}.`,
         `The new total is ${answer}.`,
       ];
@@ -460,8 +460,8 @@ export function generateElementaryProblem(
       answer = a + b;
       hint = `Start with the ones: ${a % 10} + ${b % 10} is more than 9, so trade 10 of those ones for 1 ten.`;
       explanation = [
-        `Add one place at a time, starting with the ones. A place can hold at most 9.`,
-        `Ones: ${a % 10} + ${b % 10} = ${o}. That is too many, so keep ${count(o - 10, "one")} and trade 10 ones for 1 ten.`,
+        `Add one place at a time, starting with the ones. Each place shows just one digit, 0 to 9, so a place that adds to 10 or more trades 10 of them for 1 of the next place.`,
+        `Ones: ${a % 10} + ${b % 10} = ${o}. That is 10 or more, so keep ${count(o - 10, "one")} and trade 10 ones for 1 ten.`,
         `Tens: ${Math.floor(a / 10) % 10} + ${Math.floor(b / 10) % 10} + 1 traded ten = ${t}. ${t >= 10 ? `Keep ${count(t - 10, "ten")} and trade 10 tens for 1 hundred.` : `That fits, so keep ${count(t, "ten")}.`}`,
         `Hundreds: ${Math.floor(a / 100)} + ${Math.floor(b / 100)}${t >= 10 ? " + 1 traded hundred" : ""} = ${h + (t >= 10 ? 1 : 0)}.`,
         `The sum is ${answer}.`,

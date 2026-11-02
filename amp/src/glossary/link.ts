@@ -40,6 +40,39 @@ function matcher(): Matcher {
   return (cached = { owners, pattern: formPattern(owners.keys()) });
 }
 
+/** Forms a context lists both as a sense and in `noLink`. noLink would win
+ * and silently mute the sense, so a context must never do this
+ * (`tests/glossary-contexts.test.ts`). */
+export function contextConflicts(context: LinkContext): string[] {
+  if (!context.senses || !context.noLink?.length) return [];
+  const ordinary = new Set(
+    context.noLink.map((word) => normalizeForm(word.toLowerCase())),
+  );
+  return Object.keys(context.senses).filter((form) =>
+    ordinary.has(normalizeForm(form.toLowerCase())),
+  );
+}
+
+const isDev = () =>
+  (globalThis as { process?: { env?: Record<string, string | undefined> } })
+    .process?.env?.NODE_ENV !== "production";
+
+const warned = new Set<string>();
+
+/** Warns once per conflicting form set outside production: a context that
+ * names a form under both `senses` and `noLink` mutes a mathematical word. */
+function warnConflicts(context: LinkContext) {
+  if (!isDev()) return;
+  const forms = contextConflicts(context);
+  if (!forms.length) return;
+  const key = forms.join("|") + "\n" + JSON.stringify(context.senses);
+  if (warned.has(key)) return;
+  warned.add(key);
+  console.warn(
+    `glossary: ${forms.map((f) => `"${f}"`).join(", ")} listed under both senses and noLink; noLink wins and the sense is muted. Keep one.`,
+  );
+}
+
 /** The entry a form means here, null for an ordinary word, or the
  * candidates when only a sense could decide. */
 function resolve(
@@ -70,6 +103,7 @@ function scanProse(
   onUnresolved?: (u: Unresolved) => void,
   onMatch?: (form: string, id: TermId | null) => void,
 ): { start: number; end: number; id: TermId }[] {
+  warnConflicts(context);
   const out: { start: number; end: number; id: TermId }[] = [];
   for (const { start, end, form } of scanForms(prose, matcher().pattern)) {
     const id = resolve(form, context);
@@ -156,10 +190,12 @@ export function firstUses(block: readonly LinkSpan[][]): LinkSpan[][] {
  * it lists in `uses`. */
 export function entryContext(entry: GlossaryEntry): LinkContext {
   const senses: GlossarySenses = {};
-  for (const id of entry.uses)
-    for (const form of glossaryEntry(id).forms) senses[form] ??= id;
   // Its own forms stay ordinary words: an entry never links to itself.
-  return { senses, noLink: [...(entry.noLink ?? []), ...entry.forms] };
+  const noLink = [...(entry.noLink ?? []), ...entry.forms];
+  for (const id of entry.uses)
+    for (const form of glossaryEntry(id).forms)
+      if (!noLink.includes(form)) senses[form] ??= id;
+  return { senses, noLink };
 }
 
 /** Every form the linker finds in these texts, with the entry it means

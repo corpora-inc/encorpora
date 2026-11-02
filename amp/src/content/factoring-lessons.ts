@@ -372,7 +372,7 @@ export const factoringMethods: Record<string, ProblemMethod> = {
       "In $x^2 + bx + c$, $x^2$ means $x$ times $x$, $b$ multiplies $x$, and $c$ is the number with no $x$. Factoring means writing it as factors, the parts multiplied together. Multiplying out $(x + 2)(x + 3)$ gives $x^2 + 5x + 6$: the 5 is $2 + 3$ and the 6 is $2 \\times 3$. So look for two numbers that add to $b$ and multiply to $c$.",
     terms: ["monic", "linear-factor"],
     senses: methodSenses,
-    noLink,
+    noLink: noLink.filter((w) => !["opposite"].includes(w)),
     method: [
       "Read $c$ and $b$ with their signs. The part $-x$ means $b = -1$.",
       "Find two integers $p$ and $q$ that multiply to $c$ and add to $b$. Integers are the numbers 0, 1, 2, 3, … and their negatives.",
@@ -394,7 +394,7 @@ export const factoringMethods: Record<string, ProblemMethod> = {
       "factoring-by-grouping",
     ],
     senses: methodSenses,
-    noLink,
+    noLink: noLink.filter((w) => !["opposite"].includes(w)),
     method: [
       "Take out the largest number all coefficients share. If the $x^2$ term is negative, take out a negative number (one less than 0) so the inside starts positive.",
       "For the inside $Ax^2 + Bx + C$, find two integers (the numbers 0, 1, 2, 3, … and their negatives) that multiply to $A \\times C$ and add to $B$.",

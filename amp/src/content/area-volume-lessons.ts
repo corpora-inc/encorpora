@@ -1002,7 +1002,6 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
       side: "side",
       "left side": "side",
       "right side": "side",
-      square: "square-shape",
     },
     noLink: ["stem", "boundary", "parts"],
     intuition:

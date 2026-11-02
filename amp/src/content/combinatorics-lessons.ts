@@ -518,7 +518,7 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
       cube: "cube",
       change: "change",
     },
-    noLink: ["tails", "multiple"],
+    noLink: ["tails"],
     intuition:
       "An event is a result you ask about, such as the coin landing heads up. Its probability is the number of outcomes in it divided by all the equally likely outcomes. Two events are independent when one result does not change the chance of the other. The chance that an event fails is 1 minus its chance. For both, multiply the chances. For neither, multiply the chances of failing. At least one is everything except neither.",
     terms: ["independent-events", "complement-probability"],

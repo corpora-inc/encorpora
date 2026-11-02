@@ -157,7 +157,6 @@ const entries: Entry[] = [
       term: "term-expression",
       terms: "term-expression",
     },
-    noLink: ["factor", "factors"],
     title: "Enter a quadratic solution",
     goal: "Factor the quadratic, set each factor to 0, then choose the solution described: the greater, the positive or the only one.",
     summary:
@@ -322,105 +321,135 @@ const entries: Entry[] = [
   },
   {
     id: "sat-entry-radical-equation",
+    senses: {
+      square: "square-number",
+      squared: "square-number",
+      squaring: "square-number",
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      "left side": "side-of-equation",
+      "right side": "side-of-equation",
+      factor: "factor-number",
+      term: "term-expression",
+    },
+    noLink: ["part", "root"],
     title: "Enter a radical-equation solution",
+    goal: "Square both sides, solve the quadratic, then test each candidate in the original equation and enter the one that works.",
     summary:
-      "Square both sides, solve the resulting quadratic, then test each candidate because squaring can add values that do not work.",
+      "A radical equation has the unknown under a square root sign, as in $\\sqrt{x+6}=x$. The square root $\\sqrt{u}$ is the number, 0 or positive, that times itself gives $u$. Squaring both sides, multiplying each side by itself, removes the root. But squaring can add answers that do not work, so test each answer in the original equation.",
     objectives: [
       "Square a radical equation and solve the resulting quadratic.",
       "Reject a candidate that makes the right side negative and enter the valid solution or sum.",
     ],
     intuition:
-      "The square root symbol means the non-negative root, so $\\sqrt{u}$ is never negative. Squaring both sides removes the root but also accepts the case where the right side is negative. Candidates must be checked in the original equation.",
+      "The square root sign always means the root that is 0 or positive. So $\\sqrt{9} = 3$, never $-3$, and $\\sqrt{u}$ is never negative. Squaring both sides removes the root. But it also turns a false equation such as $3 = -3$ into a true one, $9 = 9$. So a possible answer, called a candidate, may fail in the original equation. A candidate that fails is called an extraneous solution, a false answer that squaring added.",
     terms: ["extraneous-solution"],
     method: [
-      "Isolate the square root, then square both sides.",
-      "Move everything to one side and solve the quadratic.",
-      "Substitute each candidate into the original equation and keep the valid ones. " +
+      "Get the square root alone on one side of the equal sign. Then square both sides to remove it.",
+      "Move every term to one side so that side equals 0. Solve the quadratic, the equation with an $x^2$ part, often by factoring it into two brackets multiplied together.",
+      "Put each candidate into the original equation. Keep only those that make it true. " +
         entry,
     ],
     watch:
-      "Check the right side before squaring: if it is negative, the candidate fails even though the squared equation holds.",
+      "Check the right side for each candidate. If it is negative, the candidate fails, because a square root is never negative, even though the squared equation is true.",
     principle:
-      "If $\\sqrt{u}=w$, then $w\\ge0$ and $u=w^2$. Conversely, $u=w^2$ gives $\\sqrt{u}=|w|$, which equals $w$ only when $w\\ge0$.",
+      "If $\\sqrt{u}=w$, then $w\\ge0$ and $u=w^2$. In the other direction, $u=w^2$ gives $\\sqrt{u}=|w|$, the size of $w$ without its sign. That equals $w$ only when $w\\ge0$.",
     example: {
       prompt: "What is the solution of $\\sqrt{x+6}=x$?",
       steps: [
-        "Square both sides: $x+6=x^2$, so $x^2-x-6=0$ and $(x-3)(x+2)=0$.",
-        "Candidates: $x=3$ and $x=-2$.",
-        "Test $x=-2$: $\\sqrt{4}=2$ but the right side is $-2$, so reject it.",
-        "Test $x=3$: $\\sqrt9=3$. It works.",
+        "Square both sides to remove the root: $x+6=x^2$.",
+        "Subtract $x$ and 6 from both sides so one side is 0: $x^2-x-6=0$. Factor it into two brackets multiplied together: $(x-3)(x+2)=0$, because $-3 \\cdot 2 = -6$ and $-3 + 2 = -1$.",
+        "Two numbers multiply to 0 only when one of them is 0. So the candidates are $x=3$ and $x=-2$.",
+        "Test $x=-2$ in the original equation. The left side is $\\sqrt{-2+6}=\\sqrt{4}=2$, but the right side is $-2$. They differ, so reject $-2$.",
+        "Test $x=3$. The left side is $\\sqrt{3+6}=\\sqrt9=3$, and the right side is 3. They match, so 3 works.",
       ],
       answer: "$3$",
     },
     methodTitle: "Square, solve, test",
     methodText: [
-      "Squaring turns the radical equation into a quadratic that may have two solutions. The test decides which are real solutions.",
-      "A sum of solutions adds only values that pass the test. " + entry,
+      "Squaring turns the radical equation into a quadratic, which may have two solutions. The test in the original equation decides which of them really work.",
+      "If the question asks for a sum of solutions, add only the values that pass the test. " +
+        entry,
     ],
     formal:
-      "For real $u,w$: $\\sqrt{u}=w$ is equivalent to $u=w^2$ together with $w\\ge0$. If both roots of the squared equation satisfy $w\\ge0$, both are solutions.",
+      "For real numbers $u$ and $w$: $\\sqrt{u}=w$ is true exactly when $u=w^2$ and $w\\ge0$. If both solutions of the squared equation make $w\\ge0$, both are solutions.",
     pitfalls: [
       "Check candidates in the original equation, not the squared one.",
-      "A candidate can make the radicand positive and still fail.",
+      "A candidate can make the radicand, the number under the root, positive and still fail.",
     ],
     parentGuide: "Ask your learner why $\\sqrt{4}$ equals 2 and not $-2$.",
   },
   {
     id: "sat-entry-rational-equation",
+    senses: {
+      factor: "factor-number",
+      terms: "term-expression",
+    },
+    noLink: ["part"],
     title: "Enter a rational-equation solution",
+    goal: "List the values that make a denominator 0, solve the equation, then throw out any listed value and enter what is left.",
     summary:
-      "A fraction equals 0 only when its numerator is 0 and its denominator is not; exclude any value that makes a denominator 0.",
+      "The equations here have the unknown in a denominator, the bottom of a fraction, as in $\\frac{x^2-x-6}{x-3}=0$. Dividing by 0 has no answer, so a value that makes a denominator 0 can never be a solution. A fraction equals 0 only when its numerator, the top, is 0 and its denominator is not 0.",
     objectives: [
       "Find the values that make a denominator 0 before solving.",
       "Cross-multiply or factor and enter the valid solution or sum.",
     ],
     intuition:
-      "A rational expression is a fraction with $x$ in the denominator. Division by 0 is undefined, so the value that makes the denominator 0 can never be a solution, even if it solves the simplified equation.",
+      "A rational expression is a fraction whose top and bottom are polynomials, sums of terms such as $x^2$, $-x$ and $-6$. In these equations, $x$ appears in a denominator, the bottom of a fraction. Dividing by 0 has no answer. So a value of $x$ that makes a denominator 0 is called an excluded value, and it can never be a solution. This stays true even if it solves the equation you get after simplifying or cross-multiplying.",
     terms: ["excluded-value"],
     method: [
-      "List the excluded values from the denominators.",
-      "Solve: set the numerator to 0, or cross-multiply when two fractions are equal.",
-      "Discard any excluded value and enter what remains. " + entry,
+      "List the excluded values: for each denominator, find the $x$ that makes it 0.",
+      "Solve. If one fraction equals 0, set its numerator (the top) equal to 0. If two fractions are equal, cross-multiply: multiply each top by the other fraction's bottom.",
+      "Throw out any excluded value and enter what is left. " + entry,
     ],
     watch:
-      "A root of the numerator that equals an excluded value is not a solution.",
+      "A value that makes the numerator 0 is not a solution if it is also an excluded value.",
     principle:
-      "For $D(x)\\ne0$, $\\frac{N(x)}{D(x)}=0$ if and only if $N(x)=0$. For nonzero denominators, $\\frac ab=\\frac cd$ is equivalent to $ad=bc$.",
+      "For $D(x)\\ne0$ (not equal to 0), $\\frac{N(x)}{D(x)}=0$ exactly when $N(x)=0$. When $b$ and $d$ are not 0, $\\frac ab=\\frac cd$ is true exactly when $ad=bc$.",
     example: {
       prompt: "What is the solution of $\\frac{x^2-x-6}{x-3}=0$?",
       steps: [
-        "The denominator is 0 at $x=3$, so $x\\ne3$.",
-        "Factor the numerator: $x^2-x-6=(x-3)(x+2)$, which is 0 at $x=3$ and $x=-2$.",
-        "Reject 3. The solution is $-2$.",
+        "First find the excluded value. The denominator $x-3$ is 0 at $x=3$, so $x\\ne3$: $x$ cannot be 3.",
+        "A fraction is 0 only when its numerator is 0. Factor the numerator into two brackets multiplied together: $x^2-x-6=(x-3)(x+2)$. It is 0 at $x=3$ and at $x=-2$.",
+        "Reject 3, because it makes the denominator 0. The solution is $-2$.",
       ],
       answer: "$-2$",
     },
     methodTitle: "Exclude first, then solve",
     methodText: [
       "Write the excluded values before any algebra so they cannot be forgotten.",
-      "When cross-multiplying, the $x^2$ terms may cancel and leave a linear equation. " +
+      "When you cross-multiply, the $x^2$ terms may cancel. Then what is left is usually a linear equation, one with no power of $x$ above 1. " +
         entry,
     ],
     formal:
-      "The domain of $\\frac{N}{D}$ is all real $x$ with $D(x)\\ne0$. A solution must lie in the domain of every fraction in the equation.",
+      "The domain of $\\frac{N}{D}$, its set of allowed inputs, is every real $x$ with $D(x)\\ne0$. A solution must be in the domain of every fraction in the equation.",
     pitfalls: [
-      "Do not cancel a factor without noting that it excludes a value.",
-      "Cross-multiplying correctly: multiply numerator by the other denominator.",
+      "Before you cancel a factor containing $x$, a part being multiplied, note the value that makes it 0. That value stays excluded.",
+      "To cross-multiply, multiply each numerator by the other fraction's denominator.",
     ],
     parentGuide:
       "Ask your learner what happens to $\\frac{5}{x-3}$ when $x=3$.",
   },
   {
     id: "sat-entry-polynomial-zeros",
+    senses: {
+      factor: "factor-number",
+      factors: "factor-number",
+      product: "product-multiply",
+      terms: "term-expression",
+      squared: "square-number",
+    },
+    noLink: ["part", "parts"],
     title: "Enter a zero of a factored polynomial",
+    goal: "Set each factor equal to 0 to find the zeros, count a repeated one once, and enter the zero or the sum the question asks for.",
     summary:
-      "Each factor equal to 0 gives a zero. List each once, ignore constant multipliers; a factor like $x^2+4$ has no real zero.",
+      "A zero of a function is an input that makes its output 0. In $f(x)=2(x-4)(x+1)$, the parts being multiplied, $2$, $x-4$ and $x+1$, are called factors. A product, the result of multiplying, is 0 only when one of its factors is 0. So set each factor that contains $x$ equal to 0: here the zeros are 4 and $-1$. A nonzero plain number such as 2 is never 0, so it gives no zero.",
     objectives: [
       "Read zeros from a polynomial written as a product of factors.",
       "Enter the least, positive or distinct-sum value, including a fractional zero.",
     ],
     intuition:
-      "A zero of a polynomial is an input that makes its value 0. A product is 0 only when one of its factors is 0, so you can read zeros by setting each factor equal to 0.",
+      "A polynomial is a sum of terms such as $3x^2$, $-5x$ and 7, where $x$ has only whole-number powers. A zero of a polynomial is an input that makes its value 0. A product is 0 only when one of its factors is 0. So you can read the zeros by setting each factor equal to 0. A factor that appears twice, such as $(x-4)^2$, still gives just one zero, 4.",
     terms: [
       "zero-of-a-function",
       [
@@ -429,35 +458,35 @@ const entries: Entry[] = [
       ],
     ],
     method: [
-      "Set each factor equal to 0 and solve. A constant factor gives no zero.",
-      "Count a repeated factor once. A factor such as $x^2+4$ has no real zero.",
-      "Choose the zero the question asks for or add the distinct ones. " +
+      "Set each factor that contains $x$ equal to 0 and solve. A nonzero constant factor, a plain number such as 2, gives no zero.",
+      "Count a repeated factor once. A factor such as $x^2+4$ has no real zero, because $x^2$ is never negative.",
+      "Choose the zero the question asks for, or add the distinct (different) zeros. " +
         entry,
     ],
     watch:
-      "A factor $(3x-2)$ gives $\\frac23$, not $2$. A squared factor still gives a single zero.",
+      "A factor $(3x-2)$ gives $\\frac23$, not $2$: solve $3x-2=0$ all the way. A squared factor such as $(x-4)^2$ gives the same zero as $x-4$, counted once.",
     principle:
-      "If $f(x)=a(x-r_1)^{m_1}\\cdots(x-r_k)^{m_k}g(x)$ and $g$ has no real zero, the real zeros of $f$ are exactly $r_1,\\dots,r_k$. Multiplicity does not change the set of zeros.",
+      "Suppose $f(x)=a(x-r_1)^{m_1}\\cdots(x-r_k)^{m_k}g(x)$, with $a\\ne0$, real numbers $r_1,\\dots,r_k$, positive whole-number powers, and $g$ with no real zero. Then the real zeros of $f$ are exactly $r_1,\\dots,r_k$. The powers $m_1,\\dots,m_k$, called multiplicities, count how often each factor repeats. They do not change which numbers are zeros.",
     example: {
       prompt:
         "What is the sum of the distinct real zeros of $f(x)=2(x-4)^2(x+1)(2x-3)$?",
       steps: [
-        "Set each factor to 0: $x-4=0$ gives 4, $x+1=0$ gives $-1$, and $2x-3=0$ gives $\\frac32$.",
-        "The squared factor gives the single zero 4, and the constant 2 gives none.",
-        "Add the distinct zeros: $4+(-1)+\\frac32=\\frac92$.",
+        "A product is 0 only when a factor is 0, so set each factor with $x$ equal to 0. $x-4=0$ gives 4, and $x+1=0$ gives $-1$. $2x-3=0$ gives $2x=3$, so $x=\\frac32$.",
+        "The squared factor $(x-4)^2$ is $(x-4)(x-4)$, so it gives the same zero, 4, twice. Count it once. The constant 2 is never 0, so it gives no zero.",
+        "Add the distinct (different) zeros: $4+(-1)+\\frac32=3+\\frac32=\\frac92$.",
       ],
       answer: "$\\frac92$",
     },
     methodTitle: "One zero per factor",
     methodText: [
-      "Write each factor's zero beside it, then cross out repeats and constants.",
-      "To test a quadratic factor, ask whether $x^2=-k$ for a positive $k$ is possible. It is not. " +
+      "Write each factor's zero beside it. Then cross out repeats and constants.",
+      "To test a factor such as $x^2+k$ with a positive number $k$, ask whether $x^2=-k$ is possible. It is not, because a real number times itself is never negative. " +
         entry,
     ],
     formal:
-      "A real polynomial factor $x^2+k$ with $k>0$ is positive for every real $x$, so it contributes no real zero. A factor $(mx-n)$ has the zero $\\frac nm$.",
+      "For a positive number $k$, the factor $x^2+k$ is positive for every real $x$, so it gives no real zero. A factor $mx-n$, with $m\\ne0$, has the zero $\\frac nm$.",
     pitfalls: [
-      "Solve $mx-n=0$ fully; do not stop at $n$.",
+      "For $m\\ne0$, solve $mx-n=0$ all the way, to $x=\\frac nm$. Do not stop at $n$.",
       "Do not add a repeated zero twice.",
     ],
     parentGuide:
@@ -465,44 +494,52 @@ const entries: Entry[] = [
   },
   {
     id: "sat-entry-quadratic-context",
+    senses: {
+      vertex: "vertex-parabola",
+      average: "mean-average",
+    },
+    noLink: ["part"],
     title: "Enter a quadratic-model value",
+    goal: "Find the time of greatest height with $t=-\\frac{b}{2a}$, then put it into the formula, or solve for the landing time.",
     summary:
-      "For $h(t)=-at^2+bt+c$, the peak is at $t=\\frac{b}{2a}$. Substitute for the greatest height, or factor to find when it is 0.",
+      "A ball hit upward rises, reaches its highest point, then falls. Its height $h(t)$ after $t$ seconds is often a quadratic, a formula with a $t^2$ part, such as $h(t)=-4t^2+12t+7$. Its graph is an upside-down U-shaped curve called a parabola. The top is at the time $t=-\\frac{b}{2a}$. Here $a=-4$ is the number multiplying $t^2$ and $b=12$ is the number multiplying $t$. Put that time into $h$ to get the greatest height.",
     objectives: [
       "Find the time and value of the greatest height from an expanded quadratic.",
       "Find the landing time from a zero of the height function.",
     ],
     intuition:
-      "A parabola that opens downward has a highest point on its axis of symmetry, halfway between the two points where the height is 0. The height there is the greatest height. The height is 0 when the object is at ground level.",
+      "A parabola that opens downward has a highest point, called its vertex. A vertical line through the vertex, the axis of symmetry, splits the parabola into two mirror halves. So the vertex is halfway between the two times where the formula gives height 0, when both exist. The height at the vertex is the greatest height. The ball lands when its height is 0, at the positive one of those times.",
     terms: ["axis-of-symmetry", "vertex-parabola"],
     method: [
-      "Find the time of greatest height with $t=\\frac{-b}{2a}$ (for $a<0$).",
-      "Substitute that time into $h$ for the greatest height, or set $h=0$ and factor for the landing time.",
-      "Use only meaningful values (positive times). " + entry,
+      "For $h(t)=at^2+bt+c$ with $a<0$, the time of greatest height is $t=\\frac{-b}{2a}$. Keep the signs: $a$ is negative.",
+      "Put that time into $h$ for the greatest height. For the landing time, set $h(t)=0$ and solve, by factoring if you can.",
+      "Use only values that make sense, such as times from the launch, $t=0$, until the landing. " +
+        entry,
     ],
-    watch: "Use the signed coefficients: for $-4t^2+12t+7$, $a=-4$ and $b=12$.",
+    watch:
+      "Use the signed coefficients, the numbers with their signs: for $-4t^2+12t+7$, $a=-4$ and $b=12$.",
     principle:
-      "For $h(t)=at^2+bt+c$, the vertex is at $t=-\\frac{b}{2a}$ and has height $c-\\frac{b^2}{4a}$. The two zeros, when real, are symmetric about this time.",
+      "For $h(t)=at^2+bt+c$ with $a\\ne0$, the vertex is at $t=-\\frac{b}{2a}$ and has height $c-\\frac{b^2}{4a}$. Two different real zeros are the same distance from this time, one before it and one after it.",
     example: {
       prompt:
         "A ball is hit upward. Its height, in meters, $t$ seconds after it is hit is $h(t)=-4t^2+12t+7$ for $t\\ge0$ until it lands. What is the greatest height, in meters, that the ball reaches?",
       steps: [
-        "With $a=-4$ and $b=12$ the axis is $t=\\frac{-12}{2(-4)}=\\frac32$.",
-        "Substitute: $h(\\frac32)=-4\\cdot\\frac94+12\\cdot\\frac32+7=-9+18+7=16$.",
+        "The highest point is the vertex, at $t=\\frac{-b}{2a}$. Here $a=-4$ multiplies $t^2$ and $b=12$ multiplies $t$. So $t=\\frac{-12}{2(-4)}=\\frac{-12}{-8}=\\frac32$.",
+        "Put this time into $h$, using $(\\frac32)^2=\\frac94$: $h(\\frac32)=-4\\cdot\\frac94+12\\cdot\\frac32+7=-9+18+7=16$.",
         "The greatest height is 16 meters.",
       ],
       answer: "$16$",
     },
     methodTitle: "Vertex first",
     methodText: [
-      "The vertex time is the average of the two zeros, so it is also the midpoint of the flight. Substituting it gives the maximum.",
+      "When both zeros are real, the vertex time is their average, the time halfway between them. Putting that time into $h$ gives the greatest height.",
       "A landing time is the positive solution of $h(t)=0$. " + entry,
     ],
     formal:
-      "Completing the square gives $at^2+bt+c=a\\left(t+\\frac{b}{2a}\\right)^2+c-\\frac{b^2}{4a}$. For $a<0$ the maximum value is $c-\\frac{b^2}{4a}$, reached at $t=-\\frac{b}{2a}$.",
+      "Completing the square gives $at^2+bt+c=a\\left(t+\\frac{b}{2a}\\right)^2+c-\\frac{b^2}{4a}$. For $a<0$, the first part is never positive, and it is 0 at $t=-\\frac{b}{2a}$. So the greatest value is $c-\\frac{b^2}{4a}$, reached at that time.",
     pitfalls: [
-      "Keep the sign of $a$ when applying the formula.",
-      "Reject a negative zero time when asked when the object lands.",
+      "Keep the sign of $a$ when you use the formula.",
+      "When asked when the object lands, reject a zero that is a negative time.",
     ],
     parentGuide:
       "Ask your learner to explain why the ball is highest halfway between launch and landing when it starts at ground level.",
@@ -565,44 +602,56 @@ const entries: Entry[] = [
   },
   {
     id: "sat-entry-radian-conversion",
+    senses: {
+      degree: "degree-angle",
+      degrees: "degree-angle",
+      unit: "unit",
+      units: "unit",
+      center: "center",
+      "more than": "more-than",
+    },
+    noLink: ["change", "edge"],
     title: "Enter a degree-radian conversion",
+    goal: "Change degrees to radians by multiplying by $\\frac{\\pi}{180}$, or radians to degrees by multiplying by $\\frac{180}{\\pi}$.",
     summary:
-      "A half turn is 180 degrees and $\\pi$ radians. Multiply by $\\frac{\\pi}{180}$ or $\\frac{180}{\\pi}$, then enter the number.",
+      "Degrees and radians are two units for measuring an angle, the amount of turn. A half turn is 180 degrees, written $180^\\circ$. The same half turn is $\\pi$ radians, where $\\pi$ (pi) is the number about 3.14. So to change degrees to radians, multiply by $\\frac{\\pi}{180}$. To change radians to degrees, multiply by $\\frac{180}{\\pi}$.",
     objectives: [
       "Write a degree measure as $k\\pi$ radians and enter $k$.",
       "Convert a radian measure to degrees, including negative angles and angles beyond a full turn.",
     ],
     intuition:
-      "Degrees and radians measure the same turning with different units. A half turn is 180 degrees, and it is also $\\pi$ radians, so one degree is $\\frac{\\pi}{180}$ radians.",
+      "One radian is the angle that sweeps out a piece of a circle's edge as long as its radius, the distance from the center to the edge. A half turn sweeps out $\\pi$ radius-lengths, so a half turn is $\\pi$ radians. It is also 180 degrees. So one degree is $\\frac{\\pi}{180}$ radians, and one radian is $\\frac{180}{\\pi}$ degrees.",
     terms: ["radian"],
     method: [
-      "To get radians, multiply degrees by $\\frac{\\pi}{180}$ and simplify the fraction; the coefficient of $\\pi$ is $k$.",
-      "To get degrees, replace $\\pi$ by 180 and simplify.",
-      "Keep a negative sign for a clockwise angle. " + entry,
+      "To get radians, multiply the degrees by $\\frac{\\pi}{180}$ and simplify the fraction. The number in front of $\\pi$ is $k$.",
+      "To get degrees, multiply by $\\frac{180}{\\pi}$. When the measure is a number times $\\pi$, the two $\\pi$s cancel, so this is the same as putting 180 in place of $\\pi$. Then simplify.",
+      "Keep a minus sign for an angle measured clockwise, the way a clock's hands turn. " +
+        entry,
     ],
     watch:
-      "Enter only the coefficient $k$ when the question writes the measure as $k\\pi$.",
+      "When the question writes the measure as $k\\pi$, enter only $k$, the number in front of $\\pi$.",
     principle:
-      "$180^\\circ=\\pi$ radians. Hence $d^\\circ=\\frac{d}{180}\\pi$ radians and $\\theta$ radians $=\\frac{180\\theta}{\\pi}$ degrees.",
+      "$180^\\circ=\\pi$ radians. So $d$ degrees is $\\frac{d}{180}\\pi$ radians, and $\\theta$ radians is $\\frac{180\\theta}{\\pi}$ degrees. Here $\\theta$ (theta) names an angle.",
     example: {
       prompt:
         "An angle measures $150^\\circ$. In radians its measure is $k\\pi$. What is the value of $k$?",
       steps: [
-        "Multiply by $\\frac{\\pi}{180}$: $150\\cdot\\frac{\\pi}{180}=\\frac{150}{180}\\pi$.",
-        "Simplify: $\\frac{150}{180}=\\frac56$, so the measure is $\\frac56\\pi$ and $k=\\frac56$.",
+        "Each degree is $\\frac{\\pi}{180}$ radians, so multiply by $\\frac{\\pi}{180}$: $150\\cdot\\frac{\\pi}{180}=\\frac{150}{180}\\pi$.",
+        "Simplify by dividing the top and the bottom by 30: $\\frac{150}{180}=\\frac56$. So the measure is $\\frac56\\pi$, and $k=\\frac56$.",
       ],
       answer: "$\\frac56$",
     },
     methodTitle: "Fraction of a half turn",
     methodText: [
-      "The coefficient is the fraction of a half turn: $150^\\circ$ is $\\frac{150}{180}$ of 180 degrees.",
-      "Angles beyond $360^\\circ$ give $k>2$. " + entry,
+      "The number $k$ is the fraction of a half turn: $150^\\circ$ is $\\frac{150}{180}$ of a $180^\\circ$ half turn.",
+      "An angle of more than $360^\\circ$, a full turn, gives $k$ greater than 2. " +
+        entry,
     ],
     formal:
-      "The conversion is linear: $\\theta_{\\text{rad}}=\\frac{\\pi}{180}\\theta_{\\text{deg}}$. Negative angles keep their sign; angles beyond a full turn keep their full value.",
+      "The conversion multiplies by a fixed number: $\\theta_{\\text{rad}}=\\frac{\\pi}{180}\\theta_{\\text{deg}}$. Here $\\theta_{\\text{rad}}$ and $\\theta_{\\text{deg}}$ are the same angle in radians and in degrees. A negative angle keeps its sign. An angle of more than a full turn keeps its full value.",
     pitfalls: [
-      "Do not multiply by $\\pi$ alone; also divide by 180.",
-      "Simplify the fraction completely.",
+      "Do not multiply by $\\pi$ alone. Also divide by 180.",
+      "Simplify the fraction completely, until no whole number greater than 1 divides both the top and the bottom.",
     ],
     parentGuide:
       "Ask your learner how many degrees are in $\\frac\\pi2$ radians and why.",

@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
@@ -57,8 +58,14 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
     },
     "tangent-quadrant-cosine": {
       goal: "Build a reference triangle from the tangent, find the hypotenuse, and choose the sign of cosine from the quadrant.",
+      senses: {
+        side: "side",
+        sides: "side",
+        squared: "square-number",
+        root: "root-radical",
+      },
       intuition:
-        "The tangent is opposite over adjacent, so it gives the two legs of a reference triangle. The hypotenuse follows from the Pythagorean theorem, and the quadrant tells whether cosine, the horizontal coordinate, is positive or negative.",
+        "For an angle in a quadrant, the reference triangle is the right triangle its ending side makes with the $x$-axis. Its legs are the two shorter sides, and its hypotenuse is the longest side. The tangent is the opposite leg divided by the adjacent leg, with a sign, so it gives the two legs. The hypotenuse is the square root of the legs squared and added. Cosine is the $x$-coordinate divided by the hypotenuse, so the quadrant tells whether it is positive or negative.",
       terms: [
         [
           "reference-angle",
@@ -67,17 +74,19 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
         "rationalize",
       ],
       method: [
-        "Take opposite $=|\\tan\\theta|$ numerator and adjacent $=$ denominator (1 for an integer).",
-        "Hypotenuse $=\\sqrt{\\text{opp}^2+\\text{adj}^2}$ and $|\\cos\\theta|=\\frac{\\text{adj}}{\\text{hyp}}$, rationalized.",
-        "Cosine is positive in Quadrants I and IV, negative in II and III.",
+        "Take the opposite leg as the top of $|\\tan\\theta|$, the tangent without its sign. Take the adjacent leg as the bottom, which is 1 for a whole number.",
+        "The hypotenuse is $\\sqrt{\\text{opp}^2+\\text{adj}^2}$. The size of cosine, $|\\cos\\theta|$, is $\\frac{\\text{adj}}{\\text{hyp}}$. Multiply its top and bottom by the root to clear the root from the bottom.",
+        "Cosine is positive in Quadrants I and IV, where $x$ is positive. It is negative in Quadrants II and III.",
       ],
       watch:
         "Cosine uses the adjacent side. Choose the sign from the quadrant, not from the sign of the tangent.",
     },
     "special-angle-match": {
       goal: "Use reference angles, quadrant signs and cofunctions to match the exact value of a trigonometric expression.",
+      senses: { plane: "plane" },
+      noLink: ["part", "leaves", "change"],
       intuition:
-        "An obtuse angle has the same sine as its reference angle and the opposite cosine. The sine of an angle also equals the cosine of its complement. Together these let you rewrite one expression in many equal ways.",
+        "Draw an angle from the positive $x$-axis to a point on a circle of radius 1 centered at the origin. The cosine of the angle is that point's $x$-coordinate, and the sine is its $y$-coordinate. Angles here are in radians: $\\pi$ radians is a half turn, $180^\\circ$. An obtuse angle, between $\\frac{\\pi}{2}$ and $\\pi$, ends in Quadrant II, the upper left. Its reference angle is the acute angle back to the $x$-axis: $\\pi$ minus the angle. The angle has the same sine as its reference angle and the opposite cosine, because $x$ is negative in Quadrant II. Also, for any angle $\\alpha$ (alpha), $\\sin\\alpha=\\cos\\left(\\frac{\\pi}{2}-\\alpha\\right)$. For an acute $\\alpha$, the angles $\\alpha$ and $\\frac{\\pi}{2}-\\alpha$ add up to a right angle. Together these let you write one value in several ways.",
       terms: [
         "reference-angle",
         [
@@ -86,17 +95,19 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
         ],
       ],
       method: [
-        "Find the reference angle and the sign for the quadrant.",
+        "Find the reference angle and the sign for the quadrant. In Quadrant II, sine has the sign of $y$, positive, and cosine has the sign of $x$, negative.",
         "Write the exact value of the expression.",
-        "Compare it with the exact value of each choice; only one matches.",
+        "Find the exact value of each choice and compare. Only one matches in both size and sign.",
       ],
       watch:
-        "Check the sign: cosine is negative in Quadrant II. Two functions can share a magnitude but differ in sign.",
+        "Check the sign: cosine is negative in Quadrant II. Two expressions can have the same size but different signs.",
     },
     "odd-sine-parameters": {
       goal: "Use $f(-x)=-f(x)$ to decide which shifts keep a sine function odd.",
+      senses: { opposite: "opposite-number", quarter: "fourth" },
+      noLink: ["rule"],
       intuition:
-        "An odd function is symmetric about the origin: its graph passes through $(0,0)$ and turns into itself when rotated half a turn. Sine has this symmetry; moving the graph up or sideways usually destroys it.",
+        "An odd function has $f(-x)=-f(x)$ for every $x$. Its graph looks the same after a half turn about the origin $(0,0)$, and it passes through the origin if 0 is an allowed input. Sine has this symmetry. In $A\\sin(Bx-C)+D$ with $A\\ne0$ and $B>0$, the number $D$ slides the graph up or down, and $C$ slides it sideways by $\\frac{C}{B}$. Either slide usually breaks the symmetry. Angles are in radians: $\\pi$ radians is a half turn.",
       terms: [
         "odd-function",
         [
@@ -105,12 +116,12 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
         ],
       ],
       method: [
-        "Compute $f(0)$: an odd function must give 0.",
+        "Compute $f(0)$. An odd function defined at 0 must give 0, because $f(0)=-f(0)$ only when $f(0)=0$.",
         "Test $f(-x)$ against $-f(x)$ with the given $C$ and $D$.",
-        "Remember that a quarter-period phase shift turns sine into cosine, which is even.",
+        "A quarter-period phase shift, a slide by a quarter of one full wave, turns sine into cosine. Cosine is even, not odd.",
       ],
       watch:
-        "A vertical shift makes $f(0)\\ne0$, so the function cannot be odd.",
+        "A vertical shift $D\\ne0$ means the function cannot be odd. With $C=0$, it makes $f(0)=D$, not 0.",
     },
     "parabola-vertex-distance": {
       goal: "Place the vertex of a parabola halfway between its directrix (a line) and its focus (a point).",
@@ -123,7 +134,7 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
           "It also passes through the focus and is perpendicular to the directrix.",
         ],
       ],
-      senses: r2fParabolaSenses,
+      senses: sensesWithout(r2fParabolaSenses, "side"),
       noLink: [
         "part",
         "parts",
@@ -156,8 +167,6 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
         "rules",
         "opposite",
         "opposites",
-        "unit",
-        "units",
         "average",
         "decreasing",
         "increasing",
@@ -236,11 +245,11 @@ export const regentsAlgebraTwoFunctionsPrinciples: Record<string, string> = {
   "normal-probability":
     "If $X$ is normal with mean $\\mu$ and standard deviation $\\sigma$, then $z=\\frac{X-\\mu}{\\sigma}$ is standard normal. $P(a<X<b)=\\Phi(z_b)-\\Phi(z_a)$ and $P(X>a)=1-\\Phi(z_a)$, where $\\Phi$ is the area to the left.",
   "tangent-quadrant-cosine":
-    "For an angle in standard position, $\\tan\\theta=\\frac yx$, $\\cos\\theta=\\frac xr$ and $r=\\sqrt{x^2+y^2}>0$. The sign of $\\cos\\theta$ is the sign of $x$: positive in Quadrants I and IV.",
+    "Draw the angle $\\theta$ (theta) in standard position, starting on the positive $x$-axis. For a point $(x,y)$ other than the origin on its ending side, $r=\\sqrt{x^2+y^2}>0$, $\\cos\\theta=\\frac xr$, and $\\tan\\theta=\\frac yx$ when $x\\ne0$. The sign of $\\cos\\theta$ is the sign of $x$: positive in Quadrants I and IV.",
   "special-angle-match":
-    "For $0<\\alpha<\\frac{\\pi}{2}$: $\\sin(\\pi-\\alpha)=\\sin\\alpha$, $\\cos(\\pi-\\alpha)=-\\cos\\alpha$ and $\\sin\\alpha=\\cos(\\frac{\\pi}{2}-\\alpha)$.",
+    "Let $\\alpha$ (alpha) be an angle with $0<\\alpha<\\frac{\\pi}{2}$. Then $\\sin(\\pi-\\alpha)=\\sin\\alpha$, $\\cos(\\pi-\\alpha)=-\\cos\\alpha$ and $\\sin\\alpha=\\cos\\left(\\frac{\\pi}{2}-\\alpha\\right)$.",
   "odd-sine-parameters":
-    "A function is odd when $f(-x)=-f(x)$. For $f(x)=A\\sin(Bx-C)+D$ with $A,B\\ne0$, $f$ is odd exactly when $D=0$ and $C$ is a multiple of $\\pi$. The choices here use $C=0$ as the only such value.",
+    "A function is odd when $f(-x)=-f(x)$ for every $x$. For $f(x)=A\\sin(Bx-C)+D$ with $A\\ne0$ and $B\\ne0$, $f$ is odd exactly when $D=0$ and $C$ is an integer multiple of $\\pi$, such as $-\\pi$, 0 or $\\pi$. The answer choices in these problems include only one such value, $C=0$.",
   "parabola-vertex-distance":
     "A parabola with focus $F$ and directrix $\\ell$ is the set of points the same distance from both. Its vertex lies on the line through $F$ at a right angle to $\\ell$, halfway between $F$ and $\\ell$.",
   "event-complement-set":
@@ -298,41 +307,52 @@ export const regentsAlgebraTwoFunctionsLessons = [
     id: "regents-tangent-quadrant-cosine",
     title: "Cosine from tangent and quadrant",
     summary:
-      "Use a reference triangle and the quadrant to find an exact cosine.",
+      "An angle $\\theta$ (theta) starts on the positive $x$-axis and turns about the origin. Take a point $(x, y)$ on its ending side, a distance $r$ from the origin. Then its tangent is $\\tan\\theta = \\frac{y}{x}$, and its cosine is $\\cos\\theta = \\frac{x}{r}$. For example, $\\tan\\theta = -2$ in Quadrant II, the upper left, fits the point $(-1, 2)$. Its distance is $r = \\sqrt{1 + 4} = \\sqrt{5}$, so $\\cos\\theta = -\\frac{1}{\\sqrt5}$.",
     templateIds: ["tangent-quadrant-cosine"],
+    senses: {
+      side: "side",
+      sides: "side",
+      tangent: "tangent-trig",
+      "opposite leg": "opposite-side-angle",
+      squared: "square-number",
+      plane: "plane",
+      root: "root-radical",
+    },
+    noLink: ["change", "opposite"],
     objectives: [
       "Build a reference triangle from a tangent value.",
       "Find the exact cosine, rationalize, and choose the sign by quadrant.",
     ],
     openingTitle: "Tangent gives the legs, quadrant gives the sign",
     opening: [
-      "In a right triangle, tangent is opposite over adjacent. A tangent of 6 means legs 6 and 1 (or any proportional pair). The hypotenuse follows from the Pythagorean theorem.",
-      "Cosine is adjacent over hypotenuse. In standard position cosine is the $x$-coordinate over the radius, so it is negative in Quadrants II and III.",
+      "In a right triangle, the hypotenuse is the longest side, across from the right angle. The other two sides are the legs. For an acute angle, the tangent is the opposite leg (across from the angle) divided by the adjacent leg (next to it). A tangent of 6 fits legs 6 and 1, or any pair in the same ratio, such as 12 and 2. The Pythagorean theorem says the two legs squared add up to the hypotenuse squared. So the hypotenuse is $\\sqrt{6^2+1^2}=\\sqrt{37}$.",
+      "The cosine is the adjacent leg divided by the hypotenuse. For an angle drawn on the coordinate plane, the reference triangle is the right triangle its ending side makes with the $x$-axis. Its horizontal leg is $|x|$, the size of $x$, and its hypotenuse is $r$. So cosine is $\\frac{x}{r}$, which has the sign of $x$. The axes cut the plane into four quadrants, numbered I to IV counterclockwise from the upper right. $x$ is negative in Quadrants II and III, so cosine is negative there.",
     ],
     example: {
       prompt:
         "Angle $\\theta$ is in Quadrant II and $\\tan\\theta=-2$. Find $\\cos\\theta$.",
       steps: [
-        "Legs 2 and 1, hypotenuse $\\sqrt5$.",
-        "$|\\cos\\theta|=\\frac1{\\sqrt5}=\\frac{\\sqrt5}{5}$.",
-        "Cosine is negative in Quadrant II: $-\\frac{\\sqrt5}{5}$.",
+        "In Quadrant II, $x$ is negative and $y$ is positive. $\\tan\\theta=\\frac{y}{x}=-2$ fits $y=2$ and $x=-1$. So the reference triangle has legs 2 and 1.",
+        "The legs squared add up to the hypotenuse squared, so the hypotenuse is $\\sqrt{2^2+1^2}=\\sqrt5$.",
+        "Cosine is adjacent over hypotenuse, so its size is $\\frac{1}{\\sqrt5}$. Multiply the top and bottom by $\\sqrt5$ to clear the root from the bottom: $\\frac{\\sqrt5}{5}$.",
+        "In Quadrant II, $x$ is negative, so cosine is negative: $\\cos\\theta=-\\frac{\\sqrt5}{5}$.",
       ],
       answer: "$-\\dfrac{\\sqrt5}{5}$",
     },
     methodTitle: "Legs, hypotenuse, sign",
     method: [
-      "Legs from the tangent.",
-      "Hypotenuse by the Pythagorean theorem.",
-      "Cosine as adjacent over hypotenuse, rationalized, with the quadrant's sign.",
+      "Read the legs from the tangent: the opposite leg is the top of $|\\tan\\theta|$, the tangent without its sign. The adjacent leg is the bottom, which is 1 for a whole number.",
+      "Find the hypotenuse: the square root of the two legs squared and added.",
+      "Divide the adjacent leg by the hypotenuse, and clear any root from the bottom. Give the result the sign of $x$ in that quadrant.",
     ],
     formalTitle: "Coordinates",
     formal: [
-      "For a point $(x,y)$ on the terminal side, $r=\\sqrt{x^2+y^2}$, $\\tan\\theta=\\frac yx$, $\\cos\\theta=\\frac xr$.",
-      "$\\frac{1}{\\sqrt n}=\\frac{\\sqrt n}{n}$ for $n>0$.",
+      "For a point $(x,y)$ other than the origin on the ending side of $\\theta$: $r=\\sqrt{x^2+y^2}$, $\\cos\\theta=\\frac xr$, and $\\tan\\theta=\\frac yx$ when $x\\ne0$.",
+      "For $n>0$, $\\frac{1}{\\sqrt n}=\\frac{\\sqrt n}{n}$. Multiplying the top and bottom by $\\sqrt n$ does not change the value.",
     ],
     pitfalls: [
-      "Adjacent over hypotenuse is cosine; opposite over hypotenuse is sine.",
-      "A negative tangent does not by itself make cosine negative: it is Quadrant II or IV.",
+      "Adjacent over hypotenuse is cosine. Opposite over hypotenuse is sine.",
+      "A negative tangent alone does not decide the sign of cosine. It only says the angle is in Quadrant II or IV.",
     ],
     parentGuide:
       "Ask your learner to draw the angle in its quadrant and label the coordinates' signs.",
@@ -341,40 +361,44 @@ export const regentsAlgebraTwoFunctionsLessons = [
     id: "regents-special-angle-match",
     title: "Equal values at special angles",
     summary:
-      "Match the sine or cosine of an obtuse special angle with another expression.",
+      "Draw an angle from the positive $x$-axis, and mark where it meets a circle of radius 1 centered at the origin. The cosine of the angle, $\\cos$, is that point's $x$-coordinate, and the sine, $\\sin$, is its $y$-coordinate. Different angles can have the same sine or cosine. For example, $\\sin 150^\\circ = \\sin 30^\\circ = \\frac12$, and $\\cos 60^\\circ$ is also $\\frac12$. To match two expressions, find the exact value of each and compare. The size comes from the reference angle, the acute angle back to the $x$-axis. The sign comes from the quadrant the angle ends in.",
     templateIds: ["special-angle-match"],
+    senses: { quarter: "fourth", square: "square-number" },
+    noLink: ["change", "complement"],
     objectives: [
       "Use reference angles and quadrant signs.",
       "Use the cofunction identity to rewrite sine as cosine.",
     ],
     openingTitle: "Reference angle, sign, cofunction",
     opening: [
-      "The angle $\\frac{2\\pi}{3}$ is in Quadrant II. Its reference angle is $\\pi-\\frac{2\\pi}{3}=\\frac{\\pi}{3}$. Sine is positive in Quadrant II, so $\\sin\\frac{2\\pi}{3}=\\sin\\frac{\\pi}{3}=\\frac{\\sqrt3}{2}$.",
-      "Sine and cosine are cofunctions: $\\sin\\alpha=\\cos\\left(\\frac{\\pi}{2}-\\alpha\\right)$. So $\\frac{\\sqrt3}{2}$ is also $\\cos\\frac{\\pi}{6}$.",
+      "This lesson measures angles in radians: a half turn is $\\pi$ radians, the same as $180^\\circ$. So $\\frac{\\pi}{2}$ is a quarter turn, $90^\\circ$. The angle $\\frac{2\\pi}{3}$ is between $\\frac{\\pi}{2}$ and $\\pi$, so it ends in Quadrant II, the upper left.",
+      "The reference angle of $\\frac{2\\pi}{3}$ is $\\pi-\\frac{2\\pi}{3}=\\frac{\\pi}{3}$. Sine and cosine have the same size as at the reference angle, and only the sign can change. Sine, the $y$-coordinate, is positive in Quadrant II. So $\\sin\\frac{2\\pi}{3}=\\sin\\frac{\\pi}{3}=\\frac{\\sqrt3}{2}$, where $\\sqrt3$ is the positive number whose square is 3.",
+      "Two angles are complementary when they add up to $\\frac{\\pi}{2}$, a right angle. The sine of an angle equals the cosine of its complement: $\\sin\\alpha=\\cos\\left(\\frac{\\pi}{2}-\\alpha\\right)$, where $\\alpha$ (alpha) names the angle. This is called the cofunction identity. So $\\frac{\\sqrt3}{2}=\\sin\\frac{\\pi}{3}$ is also $\\cos\\frac{\\pi}{6}$.",
     ],
     example: {
       prompt:
         "Which equals $\\sin\\frac{2\\pi}{3}$: $\\cos\\frac{\\pi}{6}$ or $\\cos\\frac{\\pi}{3}$?",
       steps: [
-        "$\\sin\\frac{2\\pi}{3}=\\frac{\\sqrt3}{2}$.",
-        "$\\cos\\frac{\\pi}{6}=\\frac{\\sqrt3}{2}$ and $\\cos\\frac{\\pi}{3}=\\frac12$.",
+        "The reference angle of $\\frac{2\\pi}{3}$ is $\\frac{\\pi}{3}$, and sine is positive in Quadrant II. So $\\sin\\frac{2\\pi}{3}=\\sin\\frac{\\pi}{3}=\\frac{\\sqrt3}{2}$.",
+        "Find each choice from the right triangle with angles $\\frac{\\pi}{6}$, $\\frac{\\pi}{3}$ and $\\frac{\\pi}{2}$ ($30^\\circ$, $60^\\circ$ and $90^\\circ$): $\\cos\\frac{\\pi}{6}=\\frac{\\sqrt3}{2}$ and $\\cos\\frac{\\pi}{3}=\\frac12$.",
+        "Only $\\cos\\frac{\\pi}{6}$ has the same value and sign, $\\frac{\\sqrt3}{2}$.",
       ],
       answer: "$\\cos\\frac{\\pi}{6}$",
     },
     methodTitle: "Exact values side by side",
     method: [
-      "Exact value of the target.",
-      "Exact value of each choice.",
-      "Keep the one that matches in size and sign.",
+      "Find the exact value of the given expression, from its reference angle and its quadrant's sign.",
+      "Find the exact value of each choice the same way.",
+      "Keep the choice that matches in both size and sign.",
     ],
     formalTitle: "Identities",
     formal: [
-      "$\\sin(\\pi-\\alpha)=\\sin\\alpha$, $\\cos(\\pi-\\alpha)=-\\cos\\alpha$.",
-      "$\\sin\\alpha=\\cos(\\frac{\\pi}{2}-\\alpha)$.",
+      "For every angle $\\alpha$: $\\sin(\\pi-\\alpha)=\\sin\\alpha$ and $\\cos(\\pi-\\alpha)=-\\cos\\alpha$.",
+      "Also $\\sin\\alpha=\\cos\\left(\\frac{\\pi}{2}-\\alpha\\right)$ for every angle $\\alpha$.",
     ],
     pitfalls: [
-      "Cosine is negative in Quadrant II.",
-      "Do not match only the magnitude; the sign must agree.",
+      "Cosine, the $x$-coordinate, is negative in Quadrant II.",
+      "Do not match only the size. The sign must agree too.",
     ],
     parentGuide:
       "Ask your learner to write the exact value next to every choice.",
@@ -382,39 +406,46 @@ export const regentsAlgebraTwoFunctionsLessons = [
   chainLesson({
     id: "regents-odd-sine-parameters",
     title: "When is a sine function odd?",
-    summary: "Decide which shifts of $A\\sin(Bx-C)+D$ keep it odd.",
+    summary:
+      "A function is called odd when $f(-x) = -f(x)$ for every $x$. Its graph looks the same after a half turn about the origin $(0, 0)$. The sine function is odd: $\\sin(-x) = -\\sin x$. Sliding its graph up, down or sideways can break this symmetry. This lesson finds which slides keep $f(x)=A\\sin(Bx-C)+D$ odd.",
     templateIds: ["odd-sine-parameters"],
+    senses: {
+      opposite: "opposite-number",
+      quarter: "fourth",
+      period: "period",
+    },
     objectives: [
       "State and test $f(-x)=-f(x)$.",
       "Explain why a vertical or quarter-period shift removes oddness.",
     ],
     openingTitle: "Symmetry about the origin",
     opening: [
-      "An odd function satisfies $f(-x)=-f(x)$, so its graph is unchanged by a half-turn about the origin. Sine is odd.",
-      "Shifting a sine graph up breaks this because $f(0)$ is no longer 0. Shifting it a quarter period sideways turns it into a cosine, which is even.",
+      "An odd function has $f(-x)=-f(x)$ for every $x$ in its domain, its set of allowed inputs. If 0 is an allowed input, put in $x=0$: $f(0)=-f(0)$. Only 0 equals its own opposite, so $f(0)=0$. Angles here are in radians, where $\\pi$ radians is a half turn. Sine is odd: for example, $\\sin\\left(-\\frac{\\pi}{2}\\right)=-1=-\\sin\\frac{\\pi}{2}$.",
+      "In $f(x)=A\\sin(Bx-C)+D$, the number $D$ is a vertical shift: it slides the graph up or down. Shifting $A\\sin(Bx)$ up by $D$ breaks the symmetry, because $f(0)$ becomes $D$, not 0. Here $A\\ne0$ and $B>0$. The number $C$ slides the graph sideways by $\\frac{C}{B}$, which is called a phase shift. Sliding by a quarter of one full wave, a quarter period, turns sine into cosine. Cosine is even, $\\cos(-x)=\\cos x$, so it is not odd.",
     ],
     example: {
       prompt: "Is $f(x)=2\\sin(3x)+1$ odd?",
       steps: [
-        "$f(0)=1\\ne0$.",
-        "An odd function must have $f(0)=0$, so $f$ is not odd.",
+        "An odd function must have $f(0)=0$, so test $x=0$ first.",
+        "$\\sin 0=0$, so $f(0)=2 \\cdot 0+1=1$. This is not 0.",
+        "So $f$ is not odd. The $+1$, a vertical shift, broke the symmetry.",
       ],
       answer: "No",
     },
     methodTitle: "Test the origin, then the symmetry",
     method: [
-      "Check $f(0)=0$.",
-      "Compare $f(-x)$ with $-f(x)$.",
-      "Name the effect of each shift.",
+      "Check whether $f(0)=0$. If it is not, the function is not odd.",
+      "If $f(0)=0$, compare $f(-x)$ with $-f(x)$ for every $x$.",
+      "Name the effect of each shift: $D\\ne0$ slides the graph up or down, and a quarter-period phase shift turns sine into cosine.",
     ],
     formalTitle: "Definition and conditions",
     formal: [
-      "$f$ is odd if $f(-x)=-f(x)$ for all $x$ in the domain.",
-      "Since $\\sin(-u)=-\\sin u$, $A\\sin(Bx)$ is odd for every $A,B$.",
+      "$f$ is odd if $f(-x)=-f(x)$ for all $x$ in its domain.",
+      "Since $\\sin(-u)=-\\sin u$ for every $u$, $A\\sin(Bx)$ is odd for all numbers $A$ and $B$.",
     ],
     pitfalls: [
-      "A phase shift of $\\frac{\\pi}{2}$ gives an even function.",
-      "A vertical shift $D\\ne0$ is never odd.",
+      "Taking $C=\\frac{\\pi}{2}$ turns $\\sin(Bx-C)$ into $-\\cos(Bx)$, an even function, not an odd one.",
+      "A vertical shift $D\\ne0$ never gives an odd function. With $C=0$, it makes $f(0)=D$, not 0.",
     ],
     parentGuide:
       "Ask your learner what the graph does at $x=0$ for each choice.",

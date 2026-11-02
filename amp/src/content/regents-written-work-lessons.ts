@@ -165,7 +165,7 @@ const entries: WorkEntry[] = [
     ],
     parentGuide:
       "Ask your learner to draw two overlapping circles. Put the percent in both groups in the middle first, then fill in the rest.",
-    noLink: ["leaves", "whole", "more than", "mean", "rule", "event", "events"],
+    noLink: ["leaves", "whole", "more than", "mean", "rule", "event"],
   },
   {
     id: "average-rate-steps",

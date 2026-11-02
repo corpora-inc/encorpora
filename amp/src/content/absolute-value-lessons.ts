@@ -54,7 +54,7 @@ export const absoluteValueMethods: Record<string, ProblemMethod> = {
   "absolute-value-affine-equation": {
     goal: "Find every $x$ that makes an equation like $|2x - 3| = 5$ true.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["opposite"].includes(w)),
     intuition: `${barsIntuition} In $|2x - 3| = 5$, the whole amount $2x - 3$ is 5 steps from 0. So $2x - 3$ is 5 or $-5$. Each of those two equations is called a branch; solve both.`,
     terms,
     method: [

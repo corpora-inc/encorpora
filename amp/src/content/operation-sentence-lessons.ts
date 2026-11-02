@@ -8,7 +8,7 @@ export const operationSentenceMethods: Record<string, ProblemMethod> = {
     goal: "Choose the number sentence for equal groups told in a story, drawn as groups or as jumps, or judge which sentence cannot find the total.",
     intuition:
       "Equal groups are groups that each have the same number of things. Joining equal groups is called multiplication, written ×. So 3 groups of 5 is 3 × 5 = 15. Adding the group size once for each group, 5 + 5 + 5, gives the same total. A number sentence uses numbers and signs, and a letter such as $n$ can stand for the number you want to find.",
-    senses: { jump: "jump", jumps: "jump" },
+    senses: { jumps: "jump" },
     terms: ["equal-groups", "number-sentence"],
     method: [
       "Find the number of groups and the size of each group, from the story, the picture or the jumps.",

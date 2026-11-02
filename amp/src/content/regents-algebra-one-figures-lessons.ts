@@ -8,7 +8,7 @@ export const regentsAlgebraOneFigureMethods: Record<string, ProblemMethod> = {
     goal: "Read the vertex of a graphed parabola and write the equation of its axis of symmetry.",
     intuition:
       "A parabola is a U-shaped curve, like the graph of $y=x^{2}$. A turning point is where a curve stops going down and starts going up, or the reverse. The turning point of a parabola is called the vertex. It is the lowest point if the parabola opens up, and the highest point if it opens down. A point's coordinates are its two numbers $(x, y)$: across, then up. A line of symmetry is a fold line that makes the two halves of a shape match. A parabola's line of symmetry is a vertical line, straight up and down, through the vertex. It is called the axis of symmetry. A vertical line's equation names the $x$ value it passes through, such as $x=-2$.",
-    senses: { vertex: "vertex-parabola", side: "side", sides: "side" },
+    senses: { vertex: "vertex-parabola", side: "side" },
     noLink: ["units"],
     terms: ["vertex-parabola", "axis-of-symmetry"],
     method: [

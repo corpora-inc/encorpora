@@ -97,7 +97,9 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
       rule: "rule",
       average: "mean-average",
     },
-    noLink: amgNoLink.filter((w) => !["average", "rule", "rules"].includes(w)),
+    noLink: amgNoLink.filter(
+      (w) => !["average", "rule", "rules", "change", "more than"].includes(w),
+    ),
     method: [
       "Find the first term and the common difference. From two table entries, divide the change in value by the number of steps between them.",
       "To jump to term $n$, count $n - 1$ steps from the first term: $a_n = a_1 + (n - 1)d$. To check a rule you converted, put in $n = 1$.",
@@ -125,7 +127,9 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     senses: compoundSenses,
-    noLink: amgNoLink,
+    noLink: amgNoLink.filter(
+      (w) => !["change", "one quarter", "quarters", "units"].includes(w),
+    ),
     method: [
       "Write the yearly rate as a decimal. For $n$ compoundings a year, use $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$. For continuous compounding, use $A = Pe^{rt}$.",
       "To change time units, keep the same total growth. A yearly factor $F$ becomes $F^{1/12}$ per month, and a monthly factor $G$ becomes $G^{12}$ per year.",
@@ -183,15 +187,15 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
   "function-graph-features": {
     goal: "Read the intercept, asymptote, domain, range or end behavior of an exponential or logarithmic function from its equation or graph.",
     intuition:
-      "An exponential function $a\\cdot b^x+k$ levels off at the height $k$ in one direction and grows or falls without bound in the other. A logarithmic function $a\\log_b(x-h)+k$ is built from the inverse of an exponential function: it lives to the right of a vertical line $x=h$ and climbs or falls slowly.",
+      "An exponential function $a\\cdot b^x+k$, with $a\\ne0$, $b>0$ and $b\\ne1$, multiplies $b^x$ by $b$ each time $x$ goes up 1. Its graph levels off toward the line $y=k$ in one direction and grows or falls without end in the other. An asymptote is a line that a graph gets closer and closer to as it runs off toward one end. The graphs here never touch theirs. A logarithm undoes an exponential: $\\log_b(x)$ is the power of $b$ that gives $x$, such as $\\log_2 8=3$. So $a\\log_b(x-h)+k$ needs $x-h>0$. Its graph lives to the right of the vertical line $x=h$. Far from that line, it climbs or falls more and more slowly.",
     terms: ["horizontal-asymptote", "vertical-asymptote", "end-behavior"],
     method: [
-      "For $a\\cdot b^x+k$: the horizontal asymptote is $y=k$; the $y$-intercept is $a+k$; the range is above $k$ when $a>0$ and below $k$ when $a<0$. It is increasing when $a>0,b>1$ or $a<0,b<1$.",
-      "For $a\\log_b(x-h)+k$: the input must be positive, so the domain is $x>h$ and the vertical asymptote is $x=h$. When $k=0$ the $x$-intercept is $(h+1,0)$.",
-      "For end behavior, decide which direction makes $b^x$ grow and which makes it approach 0. Apply the sign of $a$ and the shift $k$. On a graph, read each feature from the grid.",
+      "For $a\\cdot b^x+k$: the horizontal asymptote is $y=k$, and the $y$-intercept is $a+k$. The range, the set of outputs, is above $k$ when $a>0$ and below $k$ when $a<0$. The function is increasing when $a>0$ and $b>1$, or when $a<0$ and $0<b<1$.",
+      "For $a\\log_b(x-h)+k$: the input $x-h$ must be positive. So the domain, the set of allowed inputs, is $x>h$, and the vertical asymptote is $x=h$. When $k=0$, the $x$-intercept is $(h+1,0)$, because $\\log_b 1=0$.",
+      "For end behavior, what the graph does far left and far right, decide which direction makes $b^x$ grow and which makes it approach 0. Then apply the sign of $a$ and the shift $k$. On a graph, read each feature from the grid.",
     ],
     watch:
-      "The asymptote is set by the added constant, not by the $y$-intercept. In $\\log_b(x+3)$ the shift moves the asymptote to $x=-3$, the opposite sign of the number written.",
+      "For an exponential, the horizontal asymptote is the line $y=k$, set by the added number $k$, not by the $y$-intercept. For a logarithm, the vertical asymptote is set by $h$: in $\\log_b(x+3)$ it is $x=-3$, the opposite sign of the number written.",
   },
 };
 
@@ -205,7 +209,7 @@ export const advancedMathGapPrinciples: Record<string, string> = {
   "residual-function-fit":
     "For a model $\\hat{y} = f(x)$ and a data point $(x, y)$, the residual is $y - f(x)$, observed minus predicted. Equally spaced exact data are linear when first differences are equal, quadratic when second differences are equal and not 0, and exponential when neighbouring ratios are equal and positive, not 1. A pattern in the residuals shows the model type misses something in the data.",
   "function-graph-features":
-    "For $f(x)=a\\,b^x+k$ with $a\\ne0$, $b>0$, $b\\ne1$, the line $y=k$ is a horizontal asymptote and the range is $y>k$ if $a>0$, $y<k$ if $a<0$. For $g(x)=a\\log_b(x-h)+k$, the domain is $x>h$ and $x=h$ is a vertical asymptote.",
+    "For $f(x)=a\\,b^x+k$ with $a\\ne0$, $b>0$ and $b\\ne1$, the line $y=k$ is a horizontal asymptote. The range is $y>k$ if $a>0$, and $y<k$ if $a<0$. For $g(x)=a\\log_b(x-h)+k$ with $a\\ne0$, $b>0$ and $b\\ne1$, the domain is $x>h$ and the line $x=h$ is a vertical asymptote.",
 };
 
 export const advancedMathGapLessons: Lesson[] = [
@@ -468,8 +472,14 @@ export const advancedMathGapLessons: Lesson[] = [
     id: "function-graph-features",
     title: "Features of exponential and logarithmic graphs",
     summary:
-      "The constants in $a\\cdot b^x+k$ and $a\\log_b(x-h)+k$ set the asymptote, domain, range, direction and intercepts of their graphs.",
+      "An exponential function multiplies by the same number again and again: $y = 2^x$ doubles each time $x$ goes up 1. A logarithm undoes that: $\\log_2 8 = 3$, because $2^3 = 8$. The numbers $a$, $b$, $h$ and $k$ in $a\\cdot b^x+k$ and $a\\log_b(x-h)+k$ decide where each graph levels off, where it can go, and where it crosses the axes.",
     templateIds: ["function-graph-features"],
+    senses: {
+      range: "range-function",
+      base: "base-exponent",
+      increasing: "increasing",
+    },
+    noLink: ["whole", "part", "inverse", "side", "opposite", "change"],
     objectives: [
       "Find the horizontal asymptote, range and intercept of an exponential graph or equation.",
       "Find the domain and vertical asymptote of a logarithmic function from its equation or graph.",
@@ -480,8 +490,9 @@ export const advancedMathGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Where the curve flattens, and where it cannot go",
         paragraphs: [
-          "You need to read a graph and evaluate a power. The power $b^x$ with $b>1$ is always positive, grows quickly to the right and flattens toward 0 on the left. Adding $k$ lifts the whole graph, so it flattens toward $y=k$. A negative coefficient flips the graph over that level.",
-          'A logarithm is the inverse of a power: $\\log_b(x)$ answers "which power of $b$ gives $x$?" It exists only for positive $x$, so its graph hugs a vertical line it never reaches. Shifting the input to $x-h$ moves that line to $x=h$.',
+          "You need to read a graph and work out a power. In $b^x$, the base $b$ is positive and not 1, and $x$ is the exponent. Take $b=2$: $2^{-2}=\\frac14$, $2^0=1$ and $2^3=8$. So $2^x$ is always positive. It grows quickly to the right and flattens toward 0 on the left, without reaching it. An asymptote is a line that a graph gets closer and closer to as it runs off toward one end. The graphs here never touch theirs.",
+          "Adding $k$ moves the whole graph up by $k$, or down if $k$ is negative. So $b^x+k$ flattens toward the horizontal line $y=k$, its horizontal asymptote. A number $a$ in front multiplies each distance from that line by $|a|$, the size of $a$. A negative $a$ also flips the graph over the line. The range, the set of all outputs, is the part above $k$ if $a>0$, or below $k$ if $a<0$.",
+          "A logarithm is the inverse of a power: $\\log_b(x)$ answers “which power of $b$ gives $x$?” For example, $\\log_2 8=3$. A positive base raised to any power gives a positive number. So $\\log_b(x)$ exists only for positive $x$: its domain, the set of allowed inputs, is $x>0$. Its graph hugs the vertical line $x=0$ without reaching it. Changing the input to $x-h$ moves that vertical asymptote to $x=h$.",
         ],
       },
     ],
@@ -489,10 +500,10 @@ export const advancedMathGapLessons: Lesson[] = [
       prompt:
         "For $f(x)=2\\cdot3^x-4$, find the horizontal asymptote, the range, the $y$-intercept and the end behavior.",
       steps: [
-        "The power $3^x$ approaches 0 as $x\\to-\\infty$, so $f$ approaches $-4$. The horizontal asymptote is $y=-4$.",
-        "The coefficient 2 is positive, so $f$ stays above $-4$. The range is $y>-4$.",
-        "At $x=0$: $f(0)=2\\cdot1-4=-2$. The $y$-intercept is $(0,-2)$.",
-        "Since $b=3>1$ and $a>0$, $f\\to\\infty$ as $x\\to\\infty$ and $f\\to-4$ as $x\\to-\\infty$. The function is increasing.",
+        "As $x$ goes far to the left, written $x\\to-\\infty$, the power $3^x$ gets closer and closer to 0. So $f(x)$ gets close to $2\\cdot0-4=-4$. The horizontal asymptote is $y=-4$.",
+        "$3^x$ is always positive, and the number in front, 2, is positive. So $2\\cdot3^x$ is positive, and $f$ stays above $-4$. The range is $y>-4$.",
+        "At $x=0$, $3^0=1$, so $f(0)=2\\cdot1-4=-2$. The $y$-intercept, where the graph crosses the $y$-axis, is $(0,-2)$.",
+        "End behavior is what the graph does at the far left and far right. Since $b=3>1$ and $a=2>0$, $f(x)$ grows without end as $x$ goes far right: $f\\to\\infty$ as $x\\to\\infty$. It approaches $-4$ as $x\\to-\\infty$. So the function is increasing: its outputs go up as $x$ goes right.",
       ],
       answer: "$y=-4$; range $y>-4$; $(0,-2)$; increasing",
     },
@@ -501,22 +512,22 @@ export const advancedMathGapLessons: Lesson[] = [
         stage: "method",
         title: "Read each feature",
         paragraphs: [
-          "Exponential $a\\cdot b^x+k$: asymptote $y=k$; $y$-intercept $a+k$; range above $k$ if $a>0$, below if $a<0$; increasing if $a>0$ with $b>1$, or $a<0$ with $0<b<1$.",
-          "Logarithmic $a\\log_b(x-h)+k$: domain $x>h$; vertical asymptote $x=h$. With $k=0$ the graph crosses the $x$-axis at $(h+1,0)$, because $\\log_b(1)=0$. For $\\log_2(x+3)$, $h=-3$: the domain is $x>-3$.",
+          "Exponential $a\\cdot b^x+k$, with $a\\ne0$: the horizontal asymptote is $y=k$. The $y$-intercept is $a+k$, because $b^0=1$. The range is above $k$ if $a>0$, and below $k$ if $a<0$. The function is increasing if $a>0$ with $b>1$, or if $a<0$ with $0<b<1$.",
+          "Logarithmic $a\\log_b(x-h)+k$, with $a\\ne0$: the input $x-h$ must be positive, so the domain is $x>h$ and the vertical asymptote is $x=h$. With $k=0$, the graph crosses the $x$-axis at $(h+1,0)$, because $\\log_b(1)=0$. For $\\log_2(x+3)$, $h=-3$, so the domain is $x>-3$.",
         ],
       },
       {
         stage: "formal",
         title: "Why the features follow",
         paragraphs: [
-          "For $b>1$, $b^x\\to0$ as $x\\to-\\infty$ and $b^x\\to\\infty$ as $x\\to\\infty$; for $0<b<1$ the two ends swap. Multiplying by $a$ and adding $k$ gives $a\\,b^x+k\\to k$ at the flat end. Since $b^x>0$ for every $x$, $a\\,b^x+k$ lies on one side of $k$, above for $a>0$ and below for $a<0$. The logarithm is defined where its input is positive, so $a\\log_b(x-h)+k$ has domain $x>h$, and its values grow without bound in magnitude as $x\\to h^{+}$.",
+          "For $b>1$, $b^x\\to0$ as $x\\to-\\infty$ and $b^x\\to\\infty$ as $x\\to\\infty$. For $0<b<1$ the two ends swap. Multiplying by $a$ and adding $k$ gives $a\\,b^x+k\\to k$ at the flat end. Since $b^x>0$ for every $x$, $a\\,b^x+k$ stays on one side of $k$: above for $a>0$ and below for $a<0$. The logarithm is defined only where its input is positive, so $a\\log_b(x-h)+k$ has domain $x>h$. As $x$ gets close to $h$ from the right, written $x\\to h^{+}$, its values grow without end in size.",
         ],
       },
     ],
     pitfalls: [
-      "The asymptote is the added constant $k$, not the $y$-intercept.",
+      "An exponential's horizontal asymptote is the line $y=k$, from the added number $k$, not from the $y$-intercept.",
       "In $\\log_b(x+3)$ the asymptote is $x=-3$, the opposite sign of the 3 written.",
-      "A shift outside the logarithm moves the graph up or down and does not change the domain.",
+      "A shift outside the logarithm moves the graph up or down. It does not change the domain.",
     ],
     parentGuide:
       "Sketch $y=2^x$ and $y=2^x-3$ side by side on the same grid and ask where each flattens out and where each crosses the $y$-axis.",

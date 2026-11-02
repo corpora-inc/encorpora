@@ -266,8 +266,6 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
       event: "event",
       events: "event",
       products: "product-multiply",
-      part: "part",
-      face: "face-solid",
     },
     noLink: ["rule"],
     intuition:

@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
@@ -58,6 +59,8 @@ type Entry = {
   goal?: string;
   /** Senses that differ from the shared ones (a polygon's corners). */
   senses?: Record<string, string>;
+  /** Shared senses that are ordinary words here ("both sides" of a parabola). */
+  ordinary?: string[];
   summary: string;
   objectives: [string, string];
   intuition: string;
@@ -270,6 +273,7 @@ const entries: Entry[] = [
   {
     id: "graph-quadratic-points",
     title: "Graph a parabola by placing points",
+    ordinary: ["side", "sides"],
     goal: "Graph a parabola by finding its turning point, the vertex, and then points on both sides of it.",
     summary:
       "A graph shows, as points $(x, y)$ on a grid, every pair that makes an equation true. An equation with $x^2$ ($x$ times $x$) and no higher power, such as $y = 2(x - 1)^2 - 3$, makes a U-shaped graph called a parabola. Its turning point is called the vertex. The two sides are mirror images of each other. So find the vertex first, then put in integers (the whole numbers and their negatives) next to it to find more points.",
@@ -436,27 +440,29 @@ const entries: Entry[] = [
   {
     id: "graph-sqrt-points",
     title: "Graph a square root function by placing points",
+    senses: { root: "root-radical", roots: "root-radical" },
+    goal: "Find where the graph of $y = a\\sqrt{x - h} + k$ starts, then place points where the number under the root is a perfect square.",
     summary:
-      "The graph of $y = a\\sqrt{x - h} + k$ starts at $(h, k)$ and exists only for $x \\ge h$. Whole-number points need perfect-square radicands.",
+      "The square root $\\sqrt{u}$ is the number, 0 or positive, that times itself gives $u$. A negative number has no real square root. So the graph of $y = a\\sqrt{x - h} + k$ starts where $x - h = 0$, at the point $(h, k)$, and goes only to the right. For example, $y = \\sqrt{x - 2} + 1$ starts at $(2, 1)$. When $a$, $h$ and $k$ are integers, whole numbers or their negatives, points land on the grid where $x - h$ is a perfect square, such as 0, 1, 4 or 9.",
     objectives: [
       "Find the starting point and the domain of $y = a\\sqrt{x - h} + k$.",
       "Choose $x$-values that make the radicand a perfect square, and find the points.",
     ],
     intuition:
-      "A square root is defined only when what is under it is 0 or positive, so the graph of $y = a\\sqrt{x - h} + k$ begins at $x = h$ and goes right. It rises or falls steeply at first and then flattens. To land on grid points, make $x - h$ equal 0, 1, 4 or 9, whose square roots are the whole numbers 0, 1, 2 and 3.",
+      "The number under the root sign is called the radicand. A square root is a real number only when the radicand is 0 or positive. So the graph of $y = a\\sqrt{x - h} + k$ begins at $x = h$ and goes right: its domain, the set of allowed inputs, is $x \\ge h$. For a positive $a$, it rises steeply at first and then flattens. For a negative $a$, it falls that way. A perfect square is a whole number times itself, such as $0$, $1 = 1 \\cdot 1$, $4 = 2 \\cdot 2$ and $9 = 3 \\cdot 3$. When $a$, $h$ and $k$ are whole numbers or their negatives, make $x - h$ equal 0, 1, 4 or 9 to land on grid points. Their square roots are the whole numbers 0, 1, 2 and 3.",
     terms: [
       "radicand",
       ["domain", "Here it is $x\\ge h$, where the radicand is not negative."],
     ],
     method: [
-      "Set the radicand to 0: $x = h$. Then $y = k$, so the graph starts at $(h, k)$ and no point lies to its left.",
-      "Choose $x = h + 1$, $h + 4$ and $h + 9$ so the root is 1, 2 and 3. Compute $y = a \\cdot \\text{root} + k$.",
-      "Place the points the question asks for. Any points that satisfy the equation are correct.",
+      "Set the radicand to 0: $x = h$. Then $y = k$, so the graph starts at $(h, k)$. No point lies to its left, because there the radicand is negative.",
+      "Choose $x = h + 1$, $h + 4$ and $h + 9$, so the square root is 1, 2 and 3. Compute $y = a \\cdot (\\text{root}) + k$.",
+      "Place the points the question asks for. Any points that make the equation true are correct.",
     ],
     watch:
-      "$x - h$ must be a perfect square for $y$ to be a whole number: $\\sqrt{3}$ is not whole, so $x = h + 3$ is not a lattice point.",
+      "With integer $a$, $h$, $k$ and $x$, pick $x$ so that $x - h$ is a perfect square, or $y$ will not be an integer. For example, $\\sqrt{3}$ is not a whole number, so $x = h + 3$ does not give a grid point.",
     principle:
-      "The function $y = \\sqrt{x}$ is defined for $x \\ge 0$ and increasing. The graph of $y = a\\sqrt{x - h} + k$ is that curve stretched by $|a|$ (and reflected over the $x$-axis if $a < 0$), then moved $h$ right and $k$ up.",
+      "The function $y = \\sqrt{x}$ is defined for $x \\ge 0$, and its outputs grow as $x$ grows. The graph of $y = a\\sqrt{x - h} + k$, with $a \\ne 0$, is that curve stretched by $|a|$, the size of $a$. It is flipped over the $x$-axis if $a < 0$, then moved $h$ right and $k$ up.",
     example: {
       prompt:
         "Graph $y = 2\\sqrt{x + 3} - 1$ by placing its starting point and 2 more points.",
@@ -470,22 +476,22 @@ const entries: Entry[] = [
         "The curve through (-3, -1), (-2, 1) and (1, 3)",
       ),
       steps: [
-        "$x + 3 = 0$ at $x = -3$, where $y = 2 \\cdot 0 - 1 = -1$: the graph starts at $(-3, -1)$.",
-        "$x = -2$ makes the radicand 1: $y = 2 \\cdot 1 - 1 = 1$, so $(-2, 1)$ is on the curve.",
-        "$x = 1$ makes the radicand 4: $y = 2 \\cdot 2 - 1 = 3$, so $(1, 3)$ is on the curve.",
+        "The radicand $x + 3$ is 0 at $x = -3$. There $y = 2 \\cdot \\sqrt{0} - 1 = 2 \\cdot 0 - 1 = -1$, so the graph starts at $(-3, -1)$.",
+        "Choose $x$ so the radicand is the next perfect square, 1: that is $x = -2$. Then $y = 2 \\cdot \\sqrt{1} - 1 = 2 \\cdot 1 - 1 = 1$, so $(-2, 1)$ is on the curve.",
+        "The next perfect square is 4, at $x = 1$. Then $y = 2 \\cdot \\sqrt{4} - 1 = 2 \\cdot 2 - 1 = 3$, so $(1, 3)$ is on the curve.",
       ],
       answer: "$(-3, -1)$, $(-2, 1)$ and $(1, 3)$",
     },
     methodTitle: "Perfect squares under the root",
     methodText: [
-      "List the radicands 0, 1, 4 and 9 and add $h$ to each to get the $x$-values. The $y$-values rise (or fall, if $a < 0$) by $a$ times the roots 0, 1, 2, 3.",
+      "List the radicands 0, 1, 4 and 9, and add $h$ to each to get the $x$-values. The $y$-values are $k$ plus $a$ times the roots 0, 1, 2 and 3. They rise if $a > 0$ and fall if $a < 0$.",
       "The grid is limited, so some of these $x$-values may fall outside it.",
     ],
     formal:
-      "$\\sqrt{t}$ is a real number only for $t \\ge 0$, so the domain of $a\\sqrt{x - h} + k$ is $x \\ge h$. For $a \\ne 0$ the value is rational exactly when $x - h$ is the square of a rational number, and a whole number when $x - h$ is a perfect square.",
+      "$\\sqrt{t}$ is a real number only for $t \\ge 0$, so the domain of $a\\sqrt{x - h} + k$ is $x \\ge h$. Suppose $a$, $h$, $k$ and $x$ are integers, whole numbers or their negatives, with $a \\ne 0$. Then $y$ is an integer when $x - h$ is a perfect square. If $x - h$ is positive but not a perfect square, $\\sqrt{x - h}$ is not a fraction, so $y$ cannot be an integer.",
     pitfalls: [
       "Read $h$ with the opposite sign: $\\sqrt{x + 3}$ starts at $x = -3$.",
-      "Do not place points left of the starting point; the function is not defined there.",
+      "Do not place points left of the starting point. The function is not defined there.",
     ],
     parentGuide:
       "Ask your learner where the graph starts and which $x$-values make the number under the root a perfect square.",
@@ -530,7 +536,7 @@ const noLink = [
 
 const stripFormat = (e: Entry): ProblemMethod => ({
   goal: e.goal ?? e.summary,
-  senses: { ...senses, ...e.senses },
+  senses: sensesWithout({ ...senses, ...e.senses }, ...(e.ordinary ?? [])),
   noLink,
   intuition: e.intuition,
   terms: e.terms,
@@ -549,7 +555,7 @@ export const pointPlotLessons: Lesson[] = entries.map((e) => ({
   id: e.id,
   title: e.title,
   summary: e.summary,
-  senses: { ...senses, ...e.senses },
+  senses: sensesWithout({ ...senses, ...e.senses }, ...(e.ordinary ?? [])),
   noLink,
   templateIds: [e.id],
   objectives: [...e.objectives],

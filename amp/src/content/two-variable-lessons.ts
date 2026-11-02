@@ -408,7 +408,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
   "parameter-solution-count": {
     goal: "Find the value of a letter that gives an equation or system no solution, or endlessly many.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["difference"].includes(w)),
     intuition:
       "A solution is a value of $x$ that makes an equation true. Gather the $x$ terms on one side and the plain numbers on the other. If the number in front of $x$ becomes 0, the $x$ disappears. Then the equation is either always true (endlessly many solutions) or never true (no solution).",
     method: [

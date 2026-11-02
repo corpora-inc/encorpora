@@ -121,6 +121,26 @@ export const geometryEntries: GlossaryEntry[] = [
     noLink: ["square"],
   },
   {
+    id: "base-flat-shape",
+    term: "base",
+    forms: ["base", "bases"],
+    plain:
+      "The side of a triangle, rectangle or parallelogram that its height is measured from, at a right angle. Any side can be the base.",
+    example:
+      "A triangle with base 6 and height 4 has area $\\tfrac{1}{2} \\times 6 \\times 4 = 12$.",
+    uses: [
+      "side",
+      "triangle",
+      "rectangle",
+      "parallelogram",
+      "height",
+      "right-angle",
+      "area",
+    ],
+    band: "5",
+    autoLink: false,
+  },
+  {
     id: "biconditional",
     term: "biconditional",
     forms: ["biconditional", "biconditionals", "if and only if"],
@@ -271,7 +291,7 @@ export const geometryEntries: GlossaryEntry[] = [
       "composite solids",
     ],
     plain:
-      "A shape or solid made by joining simpler ones. Find its area or volume by adding up the parts.",
+      "A shape or solid made by joining simpler ones that do not overlap. Its area, or its volume, is the sum of the areas or volumes of the parts.",
     example:
       "An L-shape is two rectangles joined, so its area is the sum of their areas.",
     uses: ["solid-shape", "area", "volume", "rectangle", "sum"],

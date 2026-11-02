@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
@@ -49,7 +50,7 @@ const GEO_NOLINK = [
 export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
   "geo-dilation-center": {
     goal: "Find the scale factor and the center of a dilation from a figure and its image.",
-    senses: GEO_SENSES,
+    senses: sensesWithout(GEO_SENSES, "center"),
     noLink: GEO_NOLINK,
     intuition:
       "A dilation resizes a figure from a fixed point, called its center. Every distance from the center is multiplied by the same positive number, the scale factor. When the scale factor is not 1, every other point moves along the line from the center through it. The moved point is called the image, named with a prime mark: $A'$, read “$A$ prime”. When the scale factor is not 1, the center is the only point that does not move.",
@@ -64,7 +65,7 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
   },
   "geo-dilation-line-center": {
     goal: "Find the image of a line under a dilation whose center is not the origin, when the center is on the line or off it.",
-    senses: GEO_SENSES,
+    senses: sensesWithout(GEO_SENSES, "center"),
     noLink: GEO_NOLINK,
     intuition:
       "A dilation resizes a figure from a fixed point, its center, multiplying distances from the center by the scale factor. It sends a line to a parallel line, one that never meets it, or to the line itself. A parallel line that is not vertical has the same slope (steepness). If the center is on the line, every point slides along the line, so the line does not change. If the center is off the line and the scale factor is not 1, the image is a different, parallel line. For $y=mx+b$, that means the same slope $m$. A line written $y=mx+b$ has slope $m$ and crosses the $y$-axis at $b$, its $y$-intercept.",
@@ -86,7 +87,7 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
   "geo-motion-chain": {
     goal: "Name the type of each rigid motion in a sequence from the coordinates of three triangles.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["mean"].includes(w)),
     intuition:
       "A rigid motion is a move that keeps a figure's size and shape. A translation slides every corner (vertex) by the same amount in the same direction. A reflection is a flip across a line, like a mirror. It reverses the order of the labels around the triangle, from counterclockwise to clockwise or back. Clockwise is the way clock hands turn, and counterclockwise is the other way. A rotation turns the figure about a point. It keeps the order of the labels, but the sides point new ways.",
     terms: ["rigid-motion", "orientation"],

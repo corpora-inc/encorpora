@@ -429,6 +429,12 @@ const circleWatch: Record<string, string> = {
   "sector-area-coefficient":
     "Take the angle's fraction of the area, $\\pi r^2$, not of the circumference.",
 };
+/** Lesson noLink words that its template's hints use mathematically, so the
+ * practice lesson links them by the template's sense. */
+const methodLinked: Record<string, string[]> = {
+  "arc-length-coefficient": ["multiple", "one quarter"],
+  "sector-area-coefficient": ["multiple", "one quarter", "quarter", "square"],
+};
 export const circleMeasurementMethods: Record<string, ProblemMethod> =
   Object.fromEntries(
     circleMeasurementLessons.map((lesson) => [
@@ -436,7 +442,9 @@ export const circleMeasurementMethods: Record<string, ProblemMethod> =
       {
         goal: circleGoal[lesson.id]!,
         senses: lesson.senses,
-        noLink: lesson.noLink,
+        noLink: lesson.noLink?.filter(
+          (w) => !(methodLinked[lesson.id] ?? []).includes(w),
+        ),
         intuition:
           lesson.sections
             .find((section) => section.stage === "intuition")

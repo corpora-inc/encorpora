@@ -79,7 +79,7 @@ export const oneStepResultMethods: Record<string, ProblemMethod> = {
   "step-reason-table": {
     goal: "Choose the list of properties that says why each line of a shown equation solution follows from the line before.",
     senses: { side: "side-of-equation" },
-    noLink: ["product", "opposite", "whole", "rule", "rules", "part"],
+    noLink: ["opposite", "whole", "rule", "rules", "part"],
     intuition:
       "An equation is a statement that two amounts are equal, such as $2x + 6 = 18$. The two amounts are called the sides of the equation. A solution is a value of $x$ that makes the sides equal. A worked solution is a list of equations, one per line, that ends with $x$ alone. Each line comes from the line before it by one step. A property is a rule that says why a step is allowed. An operation is adding, subtracting, multiplying or dividing. A rule that lets you do the same operation to both sides is called a property of equality. You may add or subtract any number, or multiply or divide by any number other than 0. Going from $2x + 6 = 18$ to $2x = 12$ subtracts 6 from both sides, so its reason is the subtraction property of equality. Multiplying both sides by the same number is called the multiplication property of equality. Dividing both sides by the same number is called the division property of equality. Parentheses (the curved brackets) group what is inside, and a number written before them multiplies the whole group. For example, $3(4 + 2) = 3 \\times 6 = 18$, and also $3 \\times 4 + 3 \\times 2 = 12 + 6 = 18$. So multiplying the 3 into each part keeps the value the same: $3(x + 2) = 3x + 6$. That rule is called the distributive property.",
     terms: [

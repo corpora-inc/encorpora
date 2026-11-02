@@ -1482,7 +1482,15 @@ function solutionSetCase(r: Random): Case {
     explanation: [
       `x ${op} ${int(c)} is true for every number ${words[op]} ${int(c)}; ${int(c)} itself is ${inclusive(op) ? "a solution" : "not a solution"}.`,
       `In the list ${list(correctValues)}, every number is ${words[op]} ${int(c)}, so each one is a solution.`,
-      `Every other list contains a number that makes x ${op} ${int(c)} false.`,
+      `Every other list contains a number that makes x ${op} ${int(c)} false: ${candidates
+        .filter((cand) => !cand.correct)
+        .map((cand) => {
+          const bad = cand.label
+            .split(", ")
+            .find((t) => !holds(parseDecimal(t), op, c))!;
+          return `${bad} in the list ${cand.label}`;
+        })
+        .join("; ")}.`,
     ],
     hint: `Substitute each number for $x$ and ask whether the comparison with ${int(c)} is true. One false value rules out the list.`,
     tags: [`operator:${op}`, "lists", c < 0 ? "negative" : "nonnegative"],

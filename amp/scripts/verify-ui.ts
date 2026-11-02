@@ -568,15 +568,17 @@ try {
     }
     await within(
       (async () => {
-        await startTopic(page, template.id).catch(async (failure) => {
-          console.error(
-            "Lesson navigation failed",
-            template.id,
-            new URL(page.url()).pathname,
-            await page.locator("body").innerText(),
-          );
-          throw failure;
-        });
+        await startTopic(page, template.id, { entry: "lesson-url" }).catch(
+          async (failure) => {
+            console.error(
+              "Lesson navigation failed",
+              template.id,
+              new URL(page.url()).pathname,
+              await page.locator("body").innerText(),
+            );
+            throw failure;
+          },
+        );
         await page
           .locator(
             "#answer, .choice-form, .point-plot-form, .multi-part-form, .figure-choice-form, .work-form, .compact-answer-action",

@@ -168,7 +168,7 @@ export function slopeTriangleStatementsCase(seed: string): {
   ] as const;
   const angleReason =
     `Right angles are at $${b}$ and $${e}$. The acute pairs $${a}$/$${d}$ and $${c}$/$${f}$ match because their rise-to-run ratios match. ` +
-    `The crossed acute pairs differ since $${firstRun}\\ne${abs(firstRise)}$.`;
+    `The other acute pairs, $${a}$/$${f}$ and $${c}$/$${d}$, do not match: for them the rise and the run trade places, and $${firstRun}\\ne${abs(firstRise)}$.`;
   const angleForms = anglePairs.map(([left, right]) => ({
     label: `Angles at $${first.names[left]}$ and $${second.names[right]}$ have equal measures.`,
     truth: angleEqual(first, left, second, right),

@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -387,7 +388,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   "context-domain-range": {
     goal: "Choose the inputs or outputs that make sense for a function that describes a real situation.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["more than"].includes(w)),
     intuition: `${functionWords} The domain is every input that makes sense, and the range is every output those inputs give. A count of things, like people, can only be a whole number. An amount like time or water can take any value in between.`,
     terms: ["domain", "range-function"],
     method: [
@@ -401,7 +402,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   "function-relation-test": {
     goal: "Decide which relation gives exactly one output for each input.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["mean", "opposite"].includes(w)),
     intuition:
       "A relation is a set of pairs that matches inputs $x$ with outputs $y$, such as $(1, 4)$ and $(2, 3)$. It is called a function when each input has exactly one output. An output may repeat. But if one input comes with two different outputs, it is not a function.",
     terms: ["function"],
@@ -415,7 +416,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   "average-rate-formula": {
     goal: "Find the average rate of change of a function between two inputs, from its rule or two of its values.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["change", "difference"].includes(w)),
     intuition: `${functionWords} From input $a$ to input $b$, the average rate of change is the change in output divided by the change in input: $\\frac{f(b) - f(a)}{b - a}$. It tells how much the output changes, on average, for each step of 1 in the input.`,
     terms: ["average-rate-of-change"],
     method: [
@@ -429,7 +430,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   "average-rate-display": {
     goal: "Find the average rate of change between two inputs, from a graph or a table.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["change", "difference"].includes(w)),
     intuition: `${functionWords} The average rate of change between two inputs is the change in output divided by the change in input. It uses only the two end points, not the values between them.`,
     method: [
       "Read the output at each end: the marked points on the graph, or the shaded columns of the table.",
@@ -441,7 +442,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   "linear-model-value": {
     goal: "Write an equation or inequality for a real situation, then solve it.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["more than"].includes(w)),
     intuition:
       "Many real totals have two parts. The starting amount is paid once, such as a 3-dollar taxi fee. The rate is paid for each unit, such as 2 dollars per mile, so it multiplies the letter. Together they give a linear model: total $= 2d + 3$, where $2d$ means 2 times $d$. “At most” gives an inequality with $\\le$, meaning “less than or equal to”.",
     terms: ["initial-value", "rate"],
@@ -455,8 +456,8 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   },
   "linear-model-equation": {
     goal: "Choose the equation that matches a situation given in words, a graph or a table.",
-    senses,
-    noLink,
+    senses: sensesWithout(senses, "terms"),
+    noLink: noLink.filter((w) => !["change"].includes(w)),
     intuition:
       "The rate is how much the output changes each time the input goes up by 1. A linear model is written output $=$ rate $\\times$ input $+$ starting amount, like $y = 2x + 3$. The starting amount is the output when the input is 0. On a graph, it is where the line meets the up-and-down axis.",
     method: [
@@ -483,7 +484,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
   },
   "formula-value": {
     goal: "Find one letter of a formula from the values of the others.",
-    senses,
+    senses: sensesWithout(senses, "side"),
     noLink,
     intuition:
       "A formula is an equation that links amounts with letters. The perimeter is the distance around a shape. For a rectangle it is $P = 2l + 2w$, with length $l$ and width $w$. If you know every letter but one, put in the known numbers. Then undo what was done to the unknown, last step first, doing the same to both sides.",
