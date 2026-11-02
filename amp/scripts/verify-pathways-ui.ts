@@ -1631,7 +1631,7 @@ try {
         await application.getAttribute("href"),
         "/pathways/event-sets",
       );
-      await related.scrollIntoViewIfNeeded();
+      await application.scrollIntoViewIfNeeded();
       await noOverflow(parity);
       if (width <= 390)
         assert(
