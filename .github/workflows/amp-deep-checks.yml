@@ -326,8 +326,12 @@ jobs:
           AMP_SWEEP_RECEIPTS: ${{ runner.temp }}/amp-ui-sweep
         run: python3 .github/scripts/verify_amp_ui_sweep.py "$AMP_SWEEP_RECEIPTS" --shards 8
 
-  amp-content:
-    name: amp-content
+  amp-content-checks:
+    name: amp-content (${{ matrix.lane }})
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [publications, inventory]
     timeout-minutes: 120
     needs: changes
     if: needs.changes.outputs.content == 'true'
@@ -338,6 +342,8 @@ jobs:
     defaults:
       run:
         working-directory: amp
+    env:
+      CONTENT_LANE: ${{ matrix.lane }}
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -373,12 +379,12 @@ jobs:
         run: |
           inputs=$(python3 ../.github/scripts/amp_inventory_paths.py --fingerprint)
           environment=$(printf '%s\n' "$ImageOS" "$ImageVersion" "$(node --version)" "$(python3 --version)" | sha256sum | cut -d ' ' -f1)
-          echo "key=amp-content-success-v1-${inputs}-${environment}" >> "$GITHUB_OUTPUT"
+          echo "key=amp-content-success-v2-${CONTENT_LANE}-${inputs}-${environment}" >> "$GITHUB_OUTPUT"
       - uses: actions/cache/restore@v4
         id: content-cache
         if: github.event_name == 'push' && needs.changes.outputs.content_force != 'true'
         with:
-          path: amp/artifacts/content-check-success.txt
+          path: amp/artifacts/content-check-${{ matrix.lane }}-success.txt
           key: ${{ steps.content-key.outputs.key }}
       - name: Verify reusable result
         id: reuse
@@ -387,7 +393,7 @@ jobs:
           EXPECTED: ${{ steps.content-key.outputs.key }}
         run: |
           reuse=false
-          if [ "$EXACT_HIT" = true ] && [ -f artifacts/content-check-success.txt ] && [ "$(cat artifacts/content-check-success.txt)" = "$EXPECTED" ]; then
+          if [ "$EXACT_HIT" = true ] && [ -f "artifacts/content-check-${CONTENT_LANE}-success.txt" ] && [ "$(cat "artifacts/content-check-${CONTENT_LANE}-success.txt")" = "$EXPECTED" ]; then
             reuse=true
           fi
           echo "verified=$reuse" >> "$GITHUB_OUTPUT"
@@ -411,52 +417,90 @@ jobs:
               if (error.status !== 404) throw error;
             }
       - name: Install PDF inspection tools
-        if: steps.reuse.outputs.verified != 'true'
+        if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - if: steps.reuse.outputs.verified != 'true'
         run: npm ci
-      - if: steps.reuse.outputs.verified != 'true'
+      - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
         run: npm run audit
       # publications renders PDFs with Playwright's Chromium.
-      - if: steps.reuse.outputs.verified != 'true'
+      - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
         run: npx playwright install --with-deps chromium
-      - if: steps.reuse.outputs.verified != 'true'
+      - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
         run: npm run publications
-      - if: steps.reuse.outputs.verified != 'true'
+      - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
         run: npm run production:queue
-      - if: steps.reuse.outputs.verified != 'true'
+      - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
         run: npm run review:math
       # The paired 900-learner placement simulation (about a minute).
-      - if: steps.reuse.outputs.verified != 'true'
+      - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
         run: npm run test:placement-sim
       - name: Complete-catalog regression sweeps
-        if: steps.reuse.outputs.verified != 'true'
+        if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
         run: npm run test:content
       - name: Full independent inventory and corruption checks
-        if: steps.reuse.outputs.verified != 'true'
+        if: matrix.lane == 'inventory' && steps.reuse.outputs.verified != 'true'
         run: npm run test:inventory
       - name: Record successful content check
-        if: steps.reuse.outputs.verified != 'true'
+        if: success() && steps.reuse.outputs.verified != 'true'
         env:
           EXPECTED: ${{ steps.content-key.outputs.key }}
         run: |
           mkdir -p artifacts
-          printf '%s\n' "$EXPECTED" > artifacts/content-check-success.txt
+          printf '%s\n' "$EXPECTED" > "artifacts/content-check-${CONTENT_LANE}-success.txt"
       - uses: actions/cache/save@v4
-        if: steps.reuse.outputs.verified != 'true' && github.ref == 'refs/heads/main'
+        if: success() && steps.reuse.outputs.verified != 'true' && github.ref == 'refs/heads/main'
         with:
-          path: amp/artifacts/content-check-success.txt
+          path: amp/artifacts/content-check-${{ matrix.lane }}-success.txt
           key: ${{ steps.content-key.outputs.key }}
       - name: Preserve synthetic book overflow screenshots
-        if: failure()
+        if: failure() && matrix.lane == 'publications'
         uses: actions/upload-artifact@v4
         with:
-          name: amp-book-overflow-${{ github.run_attempt }}
+          name: amp-book-overflow-${{ matrix.lane }}-${{ github.run_attempt }}
           path: |
             amp/artifacts/book-reader/*/overflow-*.png
             amp/artifacts/progress-review/overflow-*.png
           if-no-files-found: ignore
           retention-days: 3
+
+  amp-content:
+    name: amp-content
+    needs: [changes, amp-content-checks]
+    if: ${{ always() && needs.changes.outputs.content == 'true' }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - name: Require both content lanes
+        env:
+          CONTENT_RESULT: ${{ needs.amp-content-checks.result }}
+        run: |
+          if [ "$CONTENT_RESULT" != success ]; then
+            echo "Both content lanes must succeed; aggregate result: $CONTENT_RESULT" >&2
+            exit 1
+          fi
 
   report:
     needs: [changes, amp-browser, amp-ui-sweep, amp-ui-coverage, amp-content]
