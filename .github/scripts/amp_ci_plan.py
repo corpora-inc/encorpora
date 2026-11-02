@@ -13,6 +13,7 @@ POLICY = {
     '.github/workflows/ci.yml', '.github/workflows/amp-deep-checks.yml',
     '.github/scripts/amp_ci_plan.py', '.github/scripts/test_amp_ci_plan.py',
     '.github/scripts/amp_inventory_paths.py', '.github/scripts/test_amp_inventory_paths.py',
+    '.github/scripts/verify_amp_ui_sweep.py', '.github/scripts/test_amp_ui_sweep.py',
 }
 # These directories contain application screens/providers, not the shared
 # mathematical figures imported by publication rendering on the server.
