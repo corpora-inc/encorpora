@@ -260,7 +260,7 @@ function uniqueSteps(rows: [Row, Row], solution: Point): string[] {
       coefficient = known === 0 ? first.a + second.a : first.b + second.b,
       constant = add(first.c, second.c);
     steps.push(
-      `Eliminate $${key === "a" ? "x" : "y"}$ by making its coefficients opposites. ${m === 1 ? `Keep the first equation: ${equation(first)}` : `Multiply every term in the first equation by ${num(q(m))}: ${equation(first)}`}.`,
+      `A solution must make both equations true at once. Add the equations so one letter cancels out (elimination). For $${key === "a" ? "x" : "y"}$ to cancel, its two coefficients, the numbers multiplying it, must be opposites. ${m === 1 ? `Keep the first equation: ${equation(first)}` : `Multiply every term in the first equation by ${num(q(m))}: ${equation(first)}`}.`,
     );
     steps.push(
       `${n === 1 ? "Keep the second equation" : `Multiply every term in the second equation by ${num(q(n))}`}: ${equation(second)}.`,

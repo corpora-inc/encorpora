@@ -204,10 +204,14 @@ export function successivePercentChangeCase(seed: string): {
     `${input.first === 1 ? "add" : "subtract"} it to find the price after the first change. ` +
     `Use that new price for the ${secondRate}% change.`;
   const explanation = [
+    `A change of ${firstRate}% ${input.first === 1 ? "adds" : "removes"} ${firstRate} hundredths of the price. Multiplying by $1 ${firstOperator} ${firstRate}/100$ does that in one step.`,
     `First change: $${original} \\times (1 ${firstOperator} ${firstRate}/100) = ${firstExact}$ dollars.`,
-    `The second change uses the exact ${firstExact} dollar price after the first change as its base.`,
+    `The ${secondRate}% is taken of the new price, ${firstExact} dollars, not the starting price. Keep it exact, because rounding early can change the cents.`,
     `Second change: $${firstExact} \\times (1 ${secondOperator} ${secondRate}/100) = ${finalExact}$ dollars.`,
-    `Round only the final ${finalExact} dollars to the nearest cent, with halfway amounts rounded up: ${answer} dollars.`,
+    finalExact === answer
+      ? `${finalExact} dollars is already a whole number of cents, so no rounding is needed.`
+      : `A cent is 0.01 dollar. Round ${finalExact} to two decimal places, with halfway amounts rounded up: ${answer}.`,
+    `The final price is ${answer} dollars.`,
   ];
   const remainder = finalNumerator % finalDenominator;
   const tags = [

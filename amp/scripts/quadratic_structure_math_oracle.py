@@ -546,7 +546,10 @@ def review_quadratic_structure_content(data=None):
     for lesson in lessons.values():
         require(worked_answer(lesson) == lesson['workedExample']['answer'], 'Worked example answer: ' + lesson['id'])
         for text in lesson['workedExample']['steps'] + [p for s in lesson['sections'] for p in s['paragraphs']]:
-            checked += arithmetic_claims(text)
+            try:
+                checked += arithmetic_claims(text)
+            except ValueError as error:
+                raise ValueError(f'{lesson["id"]}: {text!r}: {error}') from error
     figures = review_scene_illustrations(data['figures'])
     return {'worksheets': len(data['worksheets']), 'checkedClaims': checked, 'lessons': len(lessons), 'figures': figures}
 

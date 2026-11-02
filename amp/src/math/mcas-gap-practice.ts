@@ -1,3 +1,4 @@
+import { nounFor } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
@@ -412,6 +413,22 @@ function fromCategories(r: Random, cats: Option[][], k: number): Option[] {
   throw new Error("Need three retry: no category assignment");
 }
 
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const OPENERS: Record<string, string> = {
+  "mcas-quadratic-zeros-select":
+    "A zero of an expression is an $x$-value that makes it equal 0. Substitute each choice to test it.",
+  "mcas-congruence-statement-select":
+    "Congruent figures have the same size and shape. In a congruence statement, letters in the same position name matching vertices.",
+  "mcas-circle-equation-select":
+    "A circle is every point at one distance, the radius, from its center. Its equation is $(x-h)^{2}+(y-k)^{2}=r^{2}$, with center $(h,k)$ and radius $r$.",
+  "mcas-cylinder-scaling-select":
+    "Volume is the space inside a solid. In $V=\\pi r^{2}h$ the radius is used twice, as $r^{2}$, but the height only once.",
+  "mcas-rotational-symmetry":
+    "A figure has rotational symmetry when a turn of less than 360° about its center maps it onto itself.",
+};
+const opener = (id: string) => (OPENERS[id] ? [OPENERS[id]] : []);
+
 function assembleSelect(
   template: TemplateMetadata,
   seed: string,
@@ -443,6 +460,7 @@ function assembleSelect(
     answer: serializeSelection(correct),
     hint: built.hint,
     explanation: [
+      ...opener(template.id),
       ...(built.lead ?? []),
       ...options.map(
         (o) =>
@@ -1257,12 +1275,12 @@ function fractionRateSelect(r: Random): Built {
     const form = (rate: Fr): Option => {
       const holds = feq(fmul(rate, t), d);
       return {
-        label: `${day}: $${mixed(rate)}$ miles per hour`,
+        label: `${day}: $${mixed(rate)}$ ${nounFor(mixed(rate), "mile")} per hour`,
         holds,
         js: `${rate[0]}/${rate[1]}*${t[0]}/${t[1]}===${d[0]}/${d[1]}`,
         why: holds
-          ? `$${mixed(d)}\\div${mixed(t)}${mixed(d) === ftex(d) && mixed(t) === ftex(t) ? "" : `=${ftex(d)}\\div${ftex(t)}`}=${mixed(s)}$ miles per hour.`
-          : `Distance divided by time gives $${mixed(s)}$ miles per hour, not $${mixed(rate)}$.`,
+          ? `$${mixed(d)}\\div${mixed(t)}${mixed(d) === ftex(d) && mixed(t) === ftex(t) ? "" : `=${ftex(d)}\\div${ftex(t)}`}=${mixed(s)}$ ${nounFor(mixed(s), "mile")} per hour.`
+          : `Distance divided by time gives $${mixed(s)}$ ${nounFor(mixed(s), "mile")} per hour, not $${mixed(rate)}$.`,
       };
     };
     return [form(s), ...unique.map(form)];
@@ -2330,11 +2348,11 @@ function circleRadiusDistance(r: Random): Single {
       ],
       [
         rad * 2 * rad,
-        `${rad * 2 * rad} multiplies the radius and the circumference. A distance from the center is the radius.`,
+        `${rad * 2 * rad} is the radius times ${2 * rad}, the number in front of $\\pi$. A distance from the center is just the radius, so stop after finding $r$.`,
       ],
       [
         rad + 2,
-        `${rad + 2} cm is not related to the circumference $2\\pi r$ by any rule. Solve $2\\pi r=${2 * rad}\\pi$ for $r$.`,
+        `${rad + 2} cm does not fit the circumference: $2\\pi\\times${rad + 2}=${2 * rad + 4}\\pi$, not $${2 * rad}\\pi$. Solve $2\\pi r=${2 * rad}\\pi$ for $r$.`,
       ],
     ]),
     model: { rad },
@@ -2433,8 +2451,10 @@ function slopeSignDescription(r: Random): Single {
     Zero: "The output does not change, so the change in output is 0 and the slope is $0$.",
   };
   const feedback: Record<string, string> = {
-    Negative: "The quantities do not move in opposite directions here.",
-    Positive: "The quantities do not move in the same direction here.",
+    Negative:
+      "A negative slope means one quantity goes up while the other goes down. These quantities do not move in opposite directions.",
+    Positive:
+      "A positive slope means both quantities go up together or down together. These quantities do not move in the same direction.",
     Zero: "The output does change as the input changes, so the slope is not 0.",
     Depends:
       "The slope depends only on how the output changes as the input changes, not on the starting value.",
@@ -2848,7 +2868,7 @@ export function mcasGapCase(
       const draft: Draft = {
         prompt: single.prompt,
         hint: single.hint,
-        explanation: single.explanation,
+        explanation: [...opener(templateId), ...single.explanation],
         answer: "",
         choices: single.choices,
         ...(single.figure ? { figure: single.figure } : {}),

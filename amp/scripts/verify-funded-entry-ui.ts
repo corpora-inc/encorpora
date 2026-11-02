@@ -20,7 +20,20 @@ const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 const clientPath = fileURLToPath(
   new URL("../src/web/account-client.ts", import.meta.url),
 );
-const auth = `export async function accessSession(){return localStorage.getItem('synthetic-signed-in') ? {token:'synthetic',accountId:localStorage.getItem('synthetic-account')||'synthetic-parent'} : null;}export function onSessionChanged(){return()=>{};}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}`;
+const auth = `
+const listeners = new Set();
+let revision = 0;
+export async function accessSession(){return localStorage.getItem('synthetic-signed-in') ? {token:'synthetic',accountId:localStorage.getItem('synthetic-account')||'synthetic-parent'} : null;}
+export function onSessionChanged(update){listeners.add(update);return()=>listeners.delete(update);}
+export async function signIn(){}
+export async function signOut(){}
+export function notifyAccountSessionChanged(checked){
+  const current = ++revision;
+  if(checked !== undefined){for(const listener of listeners) listener(checked);return;}
+  void accessSession().then(session=>{if(current === revision) for(const listener of listeners) listener(session);});
+}
+export async function authConfig(){return {mode:'accounts',passwords:true,providers:[]};}
+`;
 const client = `async function success(input){window.syntheticCallback=input?.callbackURL;localStorage.setItem('synthetic-signed-in','yes');return {data:{token:'synthetic'},error:null};}export const accountClient={signUp:{email:success},signIn:{email:success},sendVerificationEmail:success};`;
 const vite = await createServer({
   cacheDir: "node_modules/.vite-funded-entry",
@@ -153,8 +166,25 @@ async function serve(page: Page, state: State, faults: string[]) {
     if (path === "/funding/invoices")
       return route.fulfill({ json: { invoices: [] } });
     if (path === "/me") return route.fulfill({ json: me(state) });
+    if (path === "/trials/current")
+      return route.fulfill({
+        json: {
+          trial:
+            req.postDataJSON()?.token === "synthetic-free-trial" &&
+            !state.adopted
+              ? {
+                  token: "synthetic-free-trial",
+                  learnerId: "synthetic-trial-learner",
+                  birthYear: 2016,
+                  expiresAt: "2099-01-01T00:00:00.000Z",
+                }
+              : null,
+        },
+      });
     if (path === "/events")
       return route.fulfill({ status: 202, json: { accepted: 1 } });
+    if (path === "/events/context")
+      return route.fulfill({ json: { generation: "initial" } });
     if (path === "/funding/classwallet/capabilities")
       return route.fulfill({ json: { offerIds: [] } });
     if (path === "/funding/offers")
@@ -358,6 +388,10 @@ try {
           .click();
         await original.close();
         await page.getByLabel("Learner name").fill("Sample learner");
+        if (adopting)
+          await page
+            .getByRole("button", { name: "Use these answers", exact: true })
+            .click();
         await page
           .getByRole("button", { name: "Continue", exact: true })
           .click();

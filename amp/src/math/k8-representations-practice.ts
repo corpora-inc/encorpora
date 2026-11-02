@@ -1,3 +1,4 @@
+import { count, plural } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, pick, seeded, shuffle } from "./algebra-one-kit";
 import type { Case, Choice, Random } from "./algebra-one-kit";
@@ -1617,16 +1618,16 @@ function percentApplications(r: Random): Built {
       const d = (actual * e) / 100;
       const high = r(0, 1) === 1;
       const measured = high ? actual + d : actual - d;
-      const g = pick(r, ["grams", "centimeters", "liters", "seconds"] as const);
+      const g = pick(r, ["gram", "centimeter", "liter", "second"] as const);
       const wrong: Wrong[] = [
         [
           pct(100 * d, measured),
           "Percent error compares the error with the true value, not with the measured value.",
         ],
         [
-          `${d} ${g}`,
+          count(d, g),
           "The error is the difference in " +
-            g +
+            plural(g) +
             ". Percent error divides it by the true value to get a percent.",
         ],
         [
@@ -1640,15 +1641,15 @@ function percentApplications(r: Random): Built {
           "Percent error uses the size of the difference, so it is not negative.",
         ]);
       return {
-        prompt: `A scale shows ${measured} ${g} for an object whose true amount is ${actual} ${g}. What is the percent error, the size of the error as a percent of the true amount?`,
+        prompt: `A scale shows ${count(measured, g)} for an object whose true amount is ${count(actual, g)}. What is the percent error, the size of the error as a percent of the true amount?`,
         choices: options(pct(e, 1), wrong),
         explanation: [
           `Percent error tells how far off a measurement is, compared with the true amount, as a percent.`,
-          `The error is the size of the gap between ${measured} and ${actual}, ignoring which is bigger: ${d} ${d === 1 ? g.slice(0, -1) : g}.`,
+          `The error is the size of the gap between ${measured} and ${actual}, ignoring which is bigger: ${count(d, g)}.`,
           `Divide by the true amount, because that is the standard: ${d} ÷ ${actual} = ${d / actual}, which is ${pct(e, 1)}.`,
           `The percent error is ${pct(e, 1)}.`,
         ],
-        hint: `Find the size of the difference between the measured ${measured} ${g} and the true ${actual} ${g}. Then divide by the amount that is the standard: the true one.`,
+        hint: `Find the size of the difference between the measured ${count(measured, g)} and the true ${count(actual, g)}. Then divide by the amount that is the standard: the true one.`,
         tags: [variant],
         model: { measured, actual, e },
       };
@@ -1842,15 +1843,19 @@ function compoundEventSimulation(r: Random): Built {
         }
       if (distinct < 3) continue;
       const text = trials.map((t) => t.join("")).join(", ");
+      const unit = (n: number) =>
+        n === 1 ? ctx.unitWord.replace(/s$/, "") : ctx.unitWord;
+      // Each counted trial shows its decoded count, so the learner can check it.
       const hitTrials = trials
-        .filter((_, i) => event.test(marks[i]!))
-        .map((t) => t.join(""));
+        .map((t, i) => [t, marks[i]!] as const)
+        .filter(([, m]) => event.test(m))
+        .map(([t, m]) => `${t.join("")} (${m} ${unit(m)})`);
       return {
         prompt: `${ctx.intro} Here are ${N} trials: ${text}. Based on these trials, what is the estimated probability that ${event.text}?`,
         choices: options(correct, candidates),
         explanation: [
           `A simulation uses random digits to act out a chance event many times. Each group of ${ctx.digits} digits is one trial.`,
-          `Go through each of the ${N} trials and count the ${ctx.unitWord}.`,
+          `Decode every digit first: ${ctx.id === "family" ? "an even digit (0, 2, 4, 6, 8) is a girl, and an odd digit is a boy" : "0 to 5 is a made shot, and 6 to 9 is a miss"}. Then count the ${ctx.unitWord} in each of the ${N} trials.`,
           `Trials where ${event.text}: ${hitTrials.join(", ")}. That is ${hits} of the ${N} trials.`,
           `An estimated probability is the number of times the event happened divided by the number of trials.`,
           `The estimated probability is ${hits} out of ${N}, which is ${correct}.`,

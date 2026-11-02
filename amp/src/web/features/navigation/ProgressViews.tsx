@@ -8,7 +8,7 @@ export function ProgressViews({
   trial?: boolean;
 }) {
   const views = [
-    { id: "level", label: "Level", path: trial ? "/try/map" : "/" },
+    { id: "level", label: "Progress", path: trial ? "/try/map" : "/" },
     { id: "pathways", label: "Pathways", path: "/pathways" },
     { id: "inventory", label: "Inventory", path: "/inventory" },
   ];

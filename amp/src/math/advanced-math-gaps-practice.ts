@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   assemble,
@@ -553,7 +554,7 @@ function compoundGrowth(r: Random): Built {
       return {
         variant,
         prompt: `A quantity ${growth ? "increases" : "decreases"} by ${p}% each ${unit}, with each change applied to the previous ${unit}'s value. By what percent does it ${growth ? "increase" : "decrease"} over one year? Round to the nearest tenth of a percent.`,
-        hint: `One year contains ${per} ${unit}s. Write the factor for a ${p}% ${growth ? "increase" : "decrease"} in one ${unit}, repeat it ${per} times, then convert the yearly factor to a percent change.`,
+        hint: `One year contains ${per} ${unit}s. Write the factor for ${article(p)} ${p}% ${growth ? "increase" : "decrease"} in one ${unit}, repeat it ${per} times, then convert the yearly factor to a percent change.`,
         explanation: [
           `The factor for one ${unit} is ${(1 + (s * p) / 100).toFixed(4).replace(/0+$/, "")}.`,
           `Over a year, it is applied ${per} times: $(${(1 + (s * p) / 100).toFixed(4).replace(/0+$/, "")})^{${per}}\\approx${factor.toFixed(4)}$.`,

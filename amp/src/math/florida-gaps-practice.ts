@@ -484,8 +484,14 @@ function decimalStep(r: Random): Built {
     hint: `${stepText} is 1 ${place.slice(0, -1)}. Find the ${place} digit of ${shownBase} and change it by 1. If that digit is ${more ? "9" : "0"}, regroup with the next place to the left.`,
     explanation: [
       `${stepText} is 1 ${place.slice(0, -1)}, so ${more ? "add" : "subtract"} 1 in the ${place} place of ${shownBase}.`,
-      `Regroup with the next place to the left if the ${place} digit cannot ${more ? "increase" : "decrease"}.`,
-      `${shownBase} ${more ? "+" : "-"} ${stepText} = ${trimmed(answerH)}.`,
+      stepH === 1 && !more && d1 === 0 && d2 === 0
+        ? "The tenths and hundredths digits are both 0. Trade 1 one for 10 tenths, then trade 1 of those tenths for 10 hundredths. Take 1 hundredth away, leaving 9 tenths and 9 hundredths."
+        : (stepH === 10 ? d1 : d2) === (more ? 9 : 0)
+          ? more
+            ? `The ${place} digit is 9, so 1 more makes 10 ${place}. Trade those 10 for 1 in the next place to the left, and write 0 in the ${place} place.`
+            : `The ${place} digit is 0, so there is nothing to take 1 from. Trade 1 from the next place to the left for 10 ${place}, then take 1 away, leaving 9.`
+          : `The ${place} digit is ${stepH === 10 ? d1 : d2}, so it becomes ${(stepH === 10 ? d1 : d2) + (more ? 1 : -1)}; the other digits stay the same.`,
+      `${shownBase} ${more ? "+" : "-"} ${stepText} = ${trimmed(answerH)}. The number is ${trimmed(answerH)}.`,
     ],
   };
 }
@@ -521,7 +527,7 @@ function decimalByTenth(r: Random): Built {
       hint: `Multiplying by 0.1 takes one tenth of ${d}. Think about how the digits move one place when you divide by 10.`,
       explanation: [
         "0.1 is one tenth, so multiplying by 0.1 is the same as dividing by 10.",
-        "Each digit of the number moves one place to the right.",
+        "Dividing by 10 makes each digit worth one tenth as much, so each digit moves one place to the right.",
         `$${d}\\times0.1=${fromThousandths(t * 10)}$.`,
       ],
     };
@@ -533,7 +539,7 @@ function decimalByTenth(r: Random): Built {
       hint: `Multiplying by 0.01 takes one hundredth of ${d}. Think about how the digits move when you divide by 100.`,
       explanation: [
         "0.01 is one hundredth, so multiplying by 0.01 is the same as dividing by 100.",
-        "Each digit moves two places to the right.",
+        "Dividing by 100 makes each digit worth one hundredth as much, so each digit moves two places to the right.",
         `$${d}\\times0.01=${fromThousandths(t)}$.`,
       ],
     };
@@ -544,8 +550,8 @@ function decimalByTenth(r: Random): Built {
       answer: fromThousandths(t * 1000),
       hint: `Ask how many tenths fit in ${d}. There are 10 tenths in every 1, so each digit changes place value by a factor of 10.`,
       explanation: [
-        "There are 10 tenths in 1, so dividing by 0.1 is the same as multiplying by 10.",
-        "Each digit moves one place to the left.",
+        "There are 10 tenths in 1, so dividing by 0.1 asks how many tenths fit, which is the same as multiplying by 10.",
+        "Multiplying by 10 makes each digit worth 10 times as much, so each digit moves one place to the left.",
         `$${d}\\div0.1=${fromThousandths(t * 1000)}$.`,
       ],
     };
@@ -556,8 +562,8 @@ function decimalByTenth(r: Random): Built {
       answer: fromThousandths(t * 10000),
       hint: `Ask how many hundredths fit in ${d}. There are 100 hundredths in every 1, so each digit changes place value by a factor of 100.`,
       explanation: [
-        "There are 100 hundredths in 1, so dividing by 0.01 is the same as multiplying by 100.",
-        "Each digit moves two places to the left.",
+        "There are 100 hundredths in 1, so dividing by 0.01 asks how many hundredths fit, which is the same as multiplying by 100.",
+        "Multiplying by 100 makes each digit worth 100 times as much, so each digit moves two places to the left.",
         `$${d}\\div0.01=${fromThousandths(t * 10000)}$.`,
       ],
     };
@@ -745,8 +751,8 @@ function expressionMatch(r: Random): Built {
       answer: "",
       hint: `Read ${expr} in order. Find the operation inside the parentheses (or the one that is done first) and say it first.`,
       explanation: [
-        `In ${expr}, do the operations in the order the parentheses and operation rules require.`,
-        `That order is described by: "${desc}"`,
+        `Parentheses mark the part to do first. Without parentheses, multiply or divide before you add or subtract.`,
+        `So in ${expr}, the first step and then the next are described by: "${desc}"`,
       ],
       choices: [
         { label: desc, correct: true as const },
@@ -878,8 +884,9 @@ function storyEquation(r: Random): Built {
     answer: "",
     hint: `Decide which operation joins the ${g} groups to the unknown $${v}$, and whether the ${e} is added or taken away before or after that. Then write the steps in the same order as the story.`,
     explanation: [
+      `An equation says two amounts are equal. Here the letter $${v}$ stands for the unknown amount, and the result of the story is ${t}.`,
       `Name the steps of the story in order: ${storyForms[kind].says(g, e)}.`,
-      `Write those steps with $${v}$ as the unknown and ${t} as the result.`,
+      `Write those steps with $${v}$ as the unknown and set them equal to ${t}.`,
       `The equation is ${correct}.`,
     ],
     choices: choicesFrom(r, correct, wrongs),
@@ -1100,7 +1107,7 @@ function integerMulDiv(r: Random): Built {
         ]
       : [
           `Without signs, $${absText}=${Math.abs(value)}$.`,
-          `The signs are ${sameSigns ? "the same" : "different"}, so the result is ${sameSigns ? "positive" : "negative"}.`,
+          `Multiplying or dividing by a negative number flips the sign. ${sameSigns ? "Two negatives flip it twice, and two positives flip it not at all, so the result is positive." : "Exactly one number is negative, so the sign flips once and the result is negative."}`,
           `$${exprText}=${value}$.`,
         ],
   };
@@ -1134,9 +1141,12 @@ function vectorDot(r: Random): Built {
       answer: String(answer),
       hint: `The dot product multiplies matching components and adds. Multiply the first components ${a} and ${c}, then the second components ${b} and ${d}.`,
       explanation: [
+        `A vector is an arrow with a length and a direction. It is written by its components, its horizontal and vertical parts, like $${vec(a, b)}$.`,
+        "The dot product $\\mathbf{u}\\cdot\\mathbf{v}$ multiplies matching components and adds the results. It gives a single number, not a vector.",
         "Multiply the first components and the second components: " +
           `$(${a})(${c})=${a * c}$ and $(${b})(${d})=${b * d}$.`,
         `Add the products: $${a * c}+(${b * d})=${answer}$.`,
+        `So the dot product $\\mathbf{u}\\cdot\\mathbf{v}$ is ${answer}.`,
       ],
     };
   }
@@ -1153,8 +1163,11 @@ function vectorDot(r: Random): Built {
       answer: String(k),
       hint: `Two vectors are perpendicular exactly when their dot product is 0. Write $\\mathbf{u}\\cdot\\mathbf{v}$ using the components of $${u}$ and $${vec(c, d)}$ and set it equal to 0.`,
       explanation: [
-        `Perpendicular vectors have dot product 0: $${c}k+(${b})(${d})=0$.`,
-        `$${c}k=${-b * d}$, so $k=${k}$.`,
+        "Two vectors are perpendicular when they meet at a right angle. That happens exactly when their dot product, the sum of the products of matching components, is 0.",
+        `Perpendicular vectors have dot product 0: $${c === 1 ? "" : c}k+(${b})(${d})=0$.`,
+        `The known product is $(${b})(${d})=${b * d}$. ${b * d > 0 ? `Subtract ${b * d} from` : `Add ${-b * d} to`} both sides: $${c === 1 ? "" : c}k=${-b * d}$.`,
+        ...(c === 1 ? [] : [`Divide both sides by ${c}: $k=${k}$.`]),
+        `So $k=${k}$.`,
       ],
     };
   }
@@ -1180,9 +1193,13 @@ function vectorDot(r: Random): Built {
     answer: String(dot / len),
     hint: `Find $\\mathbf{u}\\cdot\\mathbf{v}$ first, using ${u[0]} and ${v[0]} for the first components. Then find the length $|\\mathbf{v}|$ with the Pythagorean theorem.`,
     explanation: [
+      "The scalar projection of $\\mathbf{u}$ on $\\mathbf{v}$ is how far $\\mathbf{u}$ reaches along the direction of $\\mathbf{v}$. It is negative when $\\mathbf{u}$ points partly backward.",
+      "The dot product multiplies matching components and adds the results.",
       `Dot product: $(${u[0]})(${v[0]})+(${u[1]})(${v[1]})=${dot}$.`,
+      "The length of a vector comes from the Pythagorean theorem: square each component, add, and take the square root.",
       `Length of $\\mathbf{v}$: $\\sqrt{(${v[0]})^2+(${v[1]})^2}=\\sqrt{${p * p + q * q}}=${len}$.`,
       `Divide: $${dot}\\div${len}=${dot / len}$.`,
+      `So the scalar projection of $\\mathbf{u}$ on $\\mathbf{v}$ is ${dot / len}.`,
     ],
   };
 }
@@ -1237,9 +1254,13 @@ function vectorAngle(r: Random): Built {
       answer: "",
       hint: `Use $\\cos\\theta=\\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$. Start with the dot product of $${vec(u[0], u[1])}$ and $${vec(v[0], v[1])}$.`,
       explanation: [
+        "The angle between two vectors comes from the dot product: $\\cos\\theta=\\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$. Here $|\\mathbf{u}|$ is the length of $\\mathbf{u}$.",
+        "The dot product multiplies matching components and adds the results.",
         `Dot product: $(${u[0]})(${v[0]})+(${u[1]})(${v[1]})=${dot}$.`,
+        "Each length is the square root of the sum of the squared components, by the Pythagorean theorem.",
         `Lengths: $|\\mathbf{u}|=${lu}$ and $|\\mathbf{v}|=${lv}$.`,
         `$\\cos\\theta=\\dfrac{${dot}}{${lu}\\cdot${lv}}=${cosText[theta]}$, so $\\theta=${theta}^\\circ$.`,
+        `So the angle between the vectors is $${theta}^\\circ$.`,
       ],
       choices: choicesFrom(r, label(theta), wrongs),
     };
@@ -1288,11 +1309,23 @@ function vectorAngle(r: Random): Built {
     neither:
       "The dot product is not 0, and neither vector is a multiple of the other.",
   };
+  const misread: Record<keyof typeof labels, string> = {
+    perpendicular: `Perpendicular vectors have a dot product of 0, but here the dot product is ${dot}. ${why[kind]}`,
+    same:
+      cross === 0
+        ? "These vectors are parallel, but one is a negative multiple of the other, so they point in opposite directions."
+        : `Parallel vectors are multiples of each other, so the cross-check $u_{1}v_{2}-u_{2}v_{1}$ is 0. Here it is ${cross}. ${why[kind]}`,
+    opposite:
+      cross === 0
+        ? "These vectors are parallel, and one is a positive multiple of the other, so they point the same way."
+        : `Parallel vectors are multiples of each other, so the cross-check $u_{1}v_{2}-u_{2}v_{1}$ is 0. Here it is ${cross}. ${why[kind]}`,
+    neither: `These vectors do have a special relationship. ${why[kind]}`,
+  };
   const wrongs: Wrong[] = (Object.keys(labels) as (keyof typeof labels)[])
     .filter((k) => k !== kind)
     .map((k) => ({
       label: labels[k],
-      feedback: `That does not fit: for these vectors the dot product is ${dot} and the cross-check $u_{1}v_{2}-u_{2}v_{1}$ is ${cross}. ${why[kind]}`,
+      feedback: misread[k],
     }));
   return {
     variant: `relationship-${kind}`,
@@ -1300,9 +1333,12 @@ function vectorAngle(r: Random): Built {
     answer: "",
     hint: `Find the dot product of $${vec(u[0], u[1])}$ and $${vec(v[0], v[1])}$. A dot product of 0 means perpendicular. If it is not 0, check whether one vector is a multiple of the other.`,
     explanation: [
+      "Two vectors are perpendicular, at a right angle, when their dot product is 0. The dot product multiplies matching components and adds the results.",
+      "Two vectors are parallel when one is a multiple of the other. Then the cross-check $u_{1}v_{2}-u_{2}v_{1}$ is 0, where $u_{1}$ and $u_{2}$ are the components of $\\mathbf{u}$.",
       `Dot product: $(${u[0]})(${v[0]})+(${u[1]})(${v[1]})=${dot}$.`,
       `Check for a multiple: $u_{1}v_{2}-u_{2}v_{1}=(${u[0]})(${v[1]})-(${u[1]})(${v[0]})=${cross}$.`,
       why[kind]!,
+      `So ${labels[kind].charAt(0).toLowerCase()}${labels[kind].slice(1)}`,
     ],
     choices: choicesFrom(r, labels[kind], wrongs),
   };
@@ -1384,6 +1420,10 @@ const parityName: Record<Parity, string> = {
   neither: "neither even nor odd",
 };
 
+const parityWords = [
+  "An even function has $f(-x)=f(x)$: its graph is a mirror image across the $y$-axis. An odd function has $f(-x)=-f(x)$: its graph looks the same after a half turn about the origin.",
+  "Replacing $x$ by $-x$ flips the sign of each odd power of $x$ and keeps the sign of each even power, because an even number of minus signs multiply to a plus.",
+];
 function evenOdd(r: Random): Built {
   if (r(0, 1)) {
     const want = pick(r, ["even", "odd", "neither"] as Parity[]);
@@ -1410,9 +1450,16 @@ function evenOdd(r: Random): Built {
       answer: "",
       hint: `A term $kx^n$ becomes $k(-x)^n$ when $x$ is replaced by $-x$. Its sign changes when $n$ is odd and stays when $n$ is even. ${want === "even" ? "Every term of an even function keeps its sign." : want === "odd" ? "Every term of an odd function changes sign." : "A function that is neither has some terms that change sign and some that do not."}`,
       explanation: [
+        ...parityWords,
         `A function is even when $f(-x)=f(x)$, odd when $f(-x)=-f(x)$, and neither otherwise.`,
-        `For ${label}, $f(-x)=${polyText(polyAt(correct))}$, which is ${parityName[want]}.`,
+        `For ${label}, $f(-x)=${polyText(polyAt(correct))}$.`,
+        want === "even"
+          ? "That equals $f(x)$, so this function is even."
+          : want === "odd"
+            ? `That equals $-f(x)=${polyText(polyNeg(correct))}$, so this function is odd.`
+            : `That equals neither $f(x)$ nor $-f(x)=${polyText(polyNeg(correct))}$, so this function is neither even nor odd.`,
         `The other three functions have a different relationship between $f(-x)$ and $f(x)$.`,
+        `So the function that is ${parityName[want]} is ${label}.`,
       ],
       choices,
     };
@@ -1455,6 +1502,7 @@ function evenOdd(r: Random): Built {
     answer: "",
     hint: `Replace every $x$ in $f(x)=${fx}$ by $-x$. A term $kx^n$ becomes $k(-x)^n$, whose sign depends on whether $n$ is even or odd.`,
     explanation: [
+      ...parityWords,
       `Replace $x$ by $-x$: $f(-x)=${fnegText}$.`,
       `Compare with $f(x)=${fx}$ and with $-f(x)=${polyText(polyNeg(c))}$.`,
       `$f(-x)$ ${want === "even" ? "equals $f(x)$" : want === "odd" ? "equals $-f(x)$" : "equals neither"}, so $f$ is ${parityName[want]}.`,
@@ -1542,11 +1590,14 @@ function functionArithmetic(r: Random): Built {
       answer: "",
       hint: `$(${diff ? "f-g" : "f+g"})(x)$ means $f(x)${diff ? "-" : "+"}g(x)$, here $(${fTex(f)})${diff ? "-" : "+"}(${fTex(g)})$. ${diff ? "Keep $g(x)$ in parentheses so the minus sign reaches every term." : "Line up like terms with the same power of $x$."}`,
       explanation: [
+        `$(${diff ? "f-g" : "f+g"})(x)$ means the output of $f$ ${diff ? "minus" : "plus"} the output of $g$ for the same input $x$.`,
         `$(${diff ? "f-g" : "f+g"})(x)=f(x)${diff ? "-" : "+"}g(x)=(${fTex(f)})${diff ? "-" : "+"}(${fTex(g)})$.`,
         diff
-          ? "Change the sign of every term in $g(x)$, then combine like terms."
+          ? "Change the sign of every term in $g(x)$, because the minus sign applies to all of $g$. Then combine like terms."
           : "Combine like terms.",
+        "Like terms have the same power of $x$. Combine them by adding their coefficients, the numbers in front.",
         `The result is ${label(correct)}.`,
+        `So $(${diff ? "f-g" : "f+g"})(x)$ is ${label(correct)}.`,
       ],
       choices: choicesFrom(r, label(correct), wrongs),
     };
@@ -1573,7 +1624,7 @@ function functionArithmetic(r: Random): Built {
           f[1]! * g[1]!,
         ]),
         feedback:
-          "Check the middle term: add the two cross products $f_{0}g_{1}$ and $f_{1}g_{0}$ exactly.",
+          "Check the middle term: it is the sum of the two cross products, the first term of each factor times the last term of the other.",
       },
       {
         label: label([
@@ -1590,9 +1641,11 @@ function functionArithmetic(r: Random): Built {
       answer: "",
       hint: `$(fg)(x)=f(x)\\cdot g(x)$. Multiply every term of $(${fTex(f)})$ by every term of $(${fTex(g)})$, then combine like terms.`,
       explanation: [
+        "$(fg)(x)$ means the output of $f$ times the output of $g$ for the same input $x$.",
         `$(fg)(x)=(${fTex(f)})(${fTex(g)})$.`,
-        "Multiply each term of the first factor by each term of the second.",
-        `Combine like terms to get ${label(correct)}.`,
+        "Multiply each term of the first factor by each term of the second. Two terms times two terms gives four products.",
+        `Combine like terms, the terms with the same power of $x$, to get ${label(correct)}.`,
+        `So $(fg)(x)$ is ${label(correct)}.`,
       ],
       choices: choicesFrom(r, label(correct), wrongs),
     };
@@ -1618,18 +1671,18 @@ function functionArithmetic(r: Random): Built {
       {
         label: lab([s]),
         feedback:
-          "That excludes the zero of $f$, the numerator. A quotient is undefined only where the denominator $g(x)$ is 0.",
+          "That excludes the zero of $f$, the numerator. A quotient has no value only where the denominator $g(x)$ is 0.",
       },
       {
         label: two ? lab([p]) : tex("\\text{all real numbers}"),
         feedback: two
           ? "$g$ has two zeros. Exclude both of them."
-          : "$g(x)$ is 0 at one value of $x$, and the quotient is undefined there.",
+          : "$g(x)$ is 0 at one value of $x$, and the quotient has no value there.",
       },
       {
         label: tex("\\text{all real numbers}"),
         feedback:
-          "The quotient is undefined where $g(x)=0$, so some values must be excluded.",
+          "The quotient has no value where $g(x)=0$, so some values must be excluded.",
       },
       {
         label: lab(two ? [-q] : [p + 1]),
@@ -1640,8 +1693,9 @@ function functionArithmetic(r: Random): Built {
       variant: two ? "domain-two-zeros" : "domain-one-zero",
       prompt: `${header(f, g)} What is the domain of $\\left(\\dfrac{f}{g}\\right)(x)$?`,
       answer: "",
-      hint: `$\\dfrac{f(x)}{g(x)}$ is undefined where $g(x)=0$. Set $${fTex(g)}=0$ and solve.`,
+      hint: `$\\dfrac{f(x)}{g(x)}$ has no value where $g(x)=0$. Set $${fTex(g)}=0$ and solve.`,
       explanation: [
+        "The domain is the set of inputs $x$ the function accepts. A fraction has no value where its denominator, the bottom, is 0.",
         `$\\left(\\frac{f}{g}\\right)(x)=\\frac{f(x)}{g(x)}$ is defined when $g(x)\\ne0$.`,
         two
           ? `Factor $${fTex(g)}=(x-${p})(x+${q})$, so $g(x)=0$ at $x=${p}$ and $x=${-q}$.`
@@ -1677,8 +1731,10 @@ function functionArithmetic(r: Random): Built {
     answer: "",
     hint: `$\\left(\\frac{f}{g}\\right)(${a})=\\dfrac{f(${a})}{g(${a})}$. Evaluate the top and bottom functions at $x=${a}$ separately.`,
     explanation: [
+      `$\\left(\\frac{f}{g}\\right)(${a})$ means $f(${a})$ divided by $g(${a})$. Find each output by putting ${a} in for $x$.`,
       `$f(${a})=${fa}$ and $g(${a})=${ga}$.`,
       `$\\left(\\frac{f}{g}\\right)(${a})=\\frac{${fa}}{${ga}}$, which is ${correct}.`,
+      `So $\\left(\\frac{f}{g}\\right)(${a})$ is ${correct}.`,
     ],
     choices: choicesFrom(r, correct, wrongs),
   };
@@ -1688,6 +1744,10 @@ function functionArithmetic(r: Random): Built {
 /* Trapezoids                                                              */
 /* ---------------------------------------------------------------------- */
 
+const trapezoidWords =
+  "A trapezoid is a four-sided shape with one pair of parallel sides, the bases. The other two sides are the legs.";
+const midsegmentWords =
+  "The midsegment joins the midpoints of the two legs. It is parallel to the bases, and its length is the average of the two base lengths: add them and divide by 2.";
 function trapezoid(r: Random): Built {
   const variant = [
     "midsegment",
@@ -1707,8 +1767,10 @@ function trapezoid(r: Random): Built {
       answer: String((b1 + b2) / 2),
       hint: `The segment joining the midpoints of the legs is parallel to the bases. Its length uses both bases: think of the average of ${b1} and ${b2}.`,
       explanation: [
-        "The midsegment of a trapezoid is parallel to the bases and its length is the average of the base lengths.",
+        trapezoidWords,
+        midsegmentWords,
         `$MN=\\frac{${b1}+${b2}}{2}=\\frac{${b1 + b2}}{2}=${(b1 + b2) / 2}$.`,
+        `So the midsegment $MN$ is ${(b1 + b2) / 2} long.`,
       ],
     };
   }
@@ -1721,9 +1783,12 @@ function trapezoid(r: Random): Built {
       answer: String(2 * m - b1),
       hint: `The midsegment is the average of the two bases. Write $${m}=\\frac{${b1}+DC}{2}$ and solve for $DC$.`,
       explanation: [
+        trapezoidWords,
+        midsegmentWords,
         `$MN=\\frac{AB+DC}{2}$, so $${m}=\\frac{${b1}+DC}{2}$.`,
-        `Multiply both sides by 2: $${2 * m}=${b1}+DC$.`,
-        `$DC=${2 * m}-${b1}=${2 * m - b1}$.`,
+        `Multiply both sides by 2 to clear the fraction: $${2 * m}=${b1}+DC$.`,
+        `Subtract ${b1} from both sides: $DC=${2 * m}-${b1}=${2 * m - b1}$.`,
+        `So the base $DC$ is ${2 * m - b1} long.`,
       ],
     };
   }
@@ -1745,9 +1810,14 @@ function trapezoid(r: Random): Built {
       answer: String(p1 * x + q1),
       hint: `Set the average of the two bases equal to ${m}: $\\frac{(${top})+(${bottom})}{2}=${m}$. Solve for $x$ first, then substitute into the expression for $AB$.`,
       explanation: [
+        trapezoidWords,
+        midsegmentWords,
         `The midsegment is the average of the bases: $\\frac{(${top})+(${bottom})}{2}=${m}$.`,
-        `Combine: $\\frac{${coefficient}x+${constant}}{2}=${m}$, so $${coefficient}x+${constant}=${2 * m}$ and $x=${x}$.`,
-        `$AB=${top}$ with $x=${x}$ is ${p1 * x + q1}.`,
+        `Combine like terms on top: $\\frac{${coefficient}x+${constant}}{2}=${m}$.`,
+        `Multiply both sides by 2: $${coefficient}x+${constant}=${2 * m}$.`,
+        `Subtract ${constant} from both sides: $${coefficient}x=${2 * m - constant}$. Divide both sides by ${coefficient}: $x=${x}$.`,
+        `Substitute $x=${x}$ into $AB=${top}$: $${p1 === 1 ? "" : `${p1}\\cdot `}${x}+${q1}=${p1 * x + q1}$.`,
+        `So $AB$ is ${p1 * x + q1} long.`,
       ],
     };
   }
@@ -1767,9 +1837,12 @@ function trapezoid(r: Random): Built {
       answer: String(angle),
       hint: `$\\angle D$ and $\\angle C$ are the two angles on the same base $\\overline{DC}$. Think about what the equal legs say about $(${polyText([k1, m1])})^\\circ$ and $(${polyText([k2, m2])})^\\circ$, then write an equation in $x$.`,
       explanation: [
-        "The base angles of an isosceles trapezoid are congruent: the two angles on the same base have equal measure.",
-        `$\\angle C$ and $\\angle D$ are both on base $\\overline{DC}$, so $${polyText([k2, m2])}=${polyText([k1, m1])}$ and $x=${x}$.`,
+        trapezoidWords,
+        "An isosceles trapezoid has legs of equal length. Its base angles are congruent: the two angles on the same base have equal measure.",
+        `$\\angle C$ and $\\angle D$ are both on base $\\overline{DC}$, so $${polyText([k2, m2])}=${polyText([k1, m1])}$.`,
+        `Collect the $x$ terms on one side and the numbers on the other: $${m2 - m1 === 1 ? "" : m2 - m1}x=${k1 - k2}$, so $x=${x}$.`,
         `$m\\angle C=${polyText([k2, m2])}$ with $x=${x}$ is $${angle}^\\circ$.`,
+        `So $\\angle C$ measures $${angle}^\\circ$.`,
       ],
     };
   }
@@ -1781,8 +1854,11 @@ function trapezoid(r: Random): Built {
       answer: String(180 - d),
       hint: `Leg $\\overline{AD}$ is a transversal of the parallel lines $AB$ and $DC$. Decide how $\\angle A$ and the $${d}^\\circ$ angle $\\angle D$ are related.`,
       explanation: [
-        "$\\overline{AB}\\parallel\\overline{DC}$, so $\\angle A$ and $\\angle D$ are consecutive interior angles along the leg $\\overline{AD}$. They are supplementary.",
+        trapezoidWords,
+        "$\\overline{AB}\\parallel\\overline{DC}$, so $\\angle A$ and $\\angle D$ are consecutive interior angles along the leg $\\overline{AD}$: both lie between the parallel lines, on the same side of the leg.",
+        "Consecutive interior angles are supplementary, meaning their measures add to $180^\\circ$.",
         `$m\\angle A=180^\\circ-${d}^\\circ=${180 - d}^\\circ$.`,
+        `So $\\angle A$ measures $${180 - d}^\\circ$.`,
       ],
     };
   }
@@ -1798,9 +1874,13 @@ function trapezoid(r: Random): Built {
     answer: String(m1 * x - k1),
     hint: `The diagonals of an isosceles trapezoid are congruent. Set $${polyText([-k1, m1])}=${polyText([k2, m2])}$, solve for $x$, then substitute into $AC$.`,
     explanation: [
-      "The diagonals of an isosceles trapezoid are congruent, so $AC=BD$.",
-      `$${polyText([-k1, m1])}=${polyText([k2, m2])}$ gives $x=${x}$.`,
-      `$AC=${polyText([-k1, m1])}$ with $x=${x}$ is ${m1 * x - k1}.`,
+      trapezoidWords,
+      "An isosceles trapezoid has legs of equal length. Its diagonals, the segments joining opposite corners, are congruent, so $AC=BD$.",
+      `$${polyText([-k1, m1])}=${polyText([k2, m2])}$.`,
+      `Subtract $x$ from both sides and add ${k1} to both sides: $${m1 - 1 === 1 ? "" : m1 - 1}x=${k2 + k1}$.`,
+      ...(m1 - 1 === 1 ? [] : [`Divide both sides by ${m1 - 1}: $x=${x}$.`]),
+      `Substitute $x=${x}$ into $AC=${polyText([-k1, m1])}$: $${m1}\\cdot ${x}-${k1}=${m1 * x - k1}$.`,
+      `So the diagonal $AC$ is ${m1 * x - k1} long.`,
     ],
   };
 }

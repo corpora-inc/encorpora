@@ -39,14 +39,19 @@ A sense maps a lowercase form to an id (`{ range: "range-function" }`); it also 
 
 `glossaryFor(texts, context, extra)` (`src/glossary/resolve.ts`) returns the entries a payload needs.
 
-## The unresolved baseline
+## Linking, defining and the reports
 
-`tests/glossary-baseline.test.ts` (a content test) reads every lesson, method and principle, and the hints and explanations of 20 instances of every template. An ambiguous form with no sense or `noLink` is unresolved. `tests/fixtures/glossary-unresolved-baseline.json` records the occurrences that existed when the glossary landed, per owner and form. It only shrinks:
+A word links wherever it is a glossary term in that sense, whether or not its screen defines it there. A link matters most exactly where the screen does not yet define the word. An ambiguous word with no named sense simply does not link, which is the safe default.
 
-- a new unresolved occurrence fails the test: add a sense or `noLink` where the text lives;
-- a resolved occurrence still in the baseline also fails: run `GLOSSARY_BASELINE=write node --import tsx --test tests/glossary-baseline.test.ts` to shrink the file. The write refuses to add occurrences.
+- Name a sense (`senses`, `glossarySenses`) for every mathematical use of an ambiguous word.
+- Use `noLink` only for an ordinary-English use where the glossary sense does not apply: "third" as an ordinal, "the mean time", "side by side". Never use it to hide a link because the screen does not define the word yet.
 
-The test also requires an entry for each word of its core vocabulary list.
+Defining each term at its first use is a writing rule (`src/content/AGENTS.md`, plain-language standard), not a reason to unlink. Two content tests report progress and never fail:
+
+- `tests/glossary-baseline.test.ts` counts ambiguous words with no sense or `noLink` in every lesson, method and principle, and in the hints and explanations of 20 instances of every template. It writes `artifacts/glossary/unresolved-report.json`.
+- `tests/plain-language.test.ts` counts, per screen, the terms used before they are defined and the overlong opening sentences. It writes `artifacts/plain-language/report.json`. `npm run plain:baseline` prints the same counts per band.
+
+Hard glossary gates stay in `tests/glossary.test.ts`: ids exist, `uses` is acyclic and never reaches a later band, forms are unique, senses name real entries, and the core vocabulary has entries.
 
 ## Term cards in the app
 

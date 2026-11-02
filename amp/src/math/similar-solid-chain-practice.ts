@@ -45,6 +45,11 @@ function model(r: (lo: number, hi: number) => number): Model {
     knownLarge: r(0, 1) === 1,
   };
 }
+/** Plain opening: what similar solids share and how measures scale
+ * (issue #1781). */
+const OPENER =
+  "Similar solids have the same shape. If every length is doubled, each area is multiplied by 4 and the volume by 8.";
+
 export const similarSolidChain = chainFamily({
   template: similarSolidChainTemplate,
   axes,
@@ -71,6 +76,7 @@ export const similarSolidChain = chainFamily({
         answer: String(askSa),
         hint: `Volumes scale with the cube of the length scale. Divide ${Math.max(v1, v2)} by ${Math.min(v1, v2)} and take the cube root to find the length scale first.`,
         explanation: [
+          OPENER,
           `The volume ratio is $${Math.max(v1, v2)}\\div${Math.min(v1, v2)}=${q ** 3}\\div${p ** 3}$, so the length scale is $${q}\\div${p}$ because $${q}^3=${q ** 3}$ and $${p}^3=${p ** 3}$.`,
           `Surface areas scale with the square of the length scale: $\\left(\\frac{${q}}{${p}}\\right)^2=\\frac{${q * q}}{${p * p}}$.`,
           `The ${askName} prism has surface area ${m.knownLarge ? `$${haveSa}\\times${p * p}/${q * q}` : `$${haveSa}\\times${q * q}/${p * p}`}=${askSa}$ square centimeters.`,
@@ -94,7 +100,7 @@ export const similarSolidChain = chainFamily({
         prompt: `${intro} The ${haveName} prism has volume ${haveV} cubic centimeters. What is the volume of the ${askName} prism, in cubic centimeters?`,
         answer: String(askV),
         hint: `Surface area is measured in squares, so the ratio of the two surface areas, ${sa2} to ${sa1}, is the square of the length scale. Reduce that ratio and take its square root first.`,
-        explanation: scaleSteps,
+        explanation: [OPENER, ...scaleSteps],
         label: "Answer (cubic centimeters)",
       });
     return numberSurface({
@@ -102,6 +108,7 @@ export const similarSolidChain = chainFamily({
       answer: String(v1 + v2),
       hint: `Surface area is measured in squares, so the ratio of the two surface areas, ${sa2} to ${sa1}, is the square of the length scale. Reduce that ratio and take its square root first.`,
       explanation: [
+        OPENER,
         ...scaleSteps,
         `The total is $${v1}+${v2}=${v1 + v2}$ cubic centimeters.`,
       ],
