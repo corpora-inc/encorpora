@@ -51,8 +51,20 @@ export const radicalEquationLessons: Lesson[] = [
     id: "square-root-equations-and-checks",
     title: "Square carefully, check the answer",
     summary:
-      "Solve equations with square roots and see why squaring can introduce a false candidate.",
+      "To solve an equation with a square root, such as $\\sqrt{x+2}=x$, get the root alone and square both sides to remove it. Squaring can let in a false answer, because a number and its opposite have the same square. So every possible answer must be checked in the original equation.",
     templateIds: Object.keys(radicalEquationMethods),
+    senses: {
+      root: "root-radical",
+      square: "square-number",
+      squares: "square-number",
+      squaring: "square-number",
+      squared: "square-number",
+      sides: "side-of-equation",
+      side: "side-of-equation",
+      factor: "factor-number",
+      product: "product-multiply",
+    },
+    noLink: ["opposite", "change"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Isolate a square root before squaring.",
@@ -63,7 +75,7 @@ export const radicalEquationLessons: Lesson[] = [
         stage: "intuition",
         title: "Undo the root without losing its sign",
         paragraphs: [
-          "You need to solve linear equations; the harder examples also use factoring of quadratics. The principal square root is the nonnegative number whose square is the number under the root symbol: $\\sqrt{9} = 3$, even though both 3 and −3 have square 9. The expression under the symbol is the radicand. For real numbers, it must be nonnegative.",
+          "The principal square root is the nonnegative number whose square is the number under the root symbol: $\\sqrt{9} = 3$, even though both 3 and −3 have square 9. The expression under the symbol is the radicand. For real numbers, it must be nonnegative.",
           "First get the root alone. For $\\sqrt{2x + 1} + 3 = 8$, subtract 3 from both sides to get $\\sqrt{2x + 1} = 5$. Both sides are nonnegative, so squaring preserves equivalence: $2x + 1 = 25$, then $2x = 24$ and $x = 12$. Check: $\\sqrt{2(12) + 1} + 3 = 5 + 3 = 8$.",
           "When the other side contains the unknown, its sign can change. Squaring may then introduce an extraneous candidate: a value that works after squaring but fails in the original equation. For example, 3 and −3 have equal squares but are not equal.",
         ],

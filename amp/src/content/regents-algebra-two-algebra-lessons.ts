@@ -123,7 +123,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
       "Solve, then discard any root that equals an excluded value.",
     ],
     watch:
-      "Check every root against the excluded values before you finish; a rational equation can lose one of two roots.",
+      "Check every root of the cleared equation against the excluded values before you finish. One of the two may not solve the original equation.",
   },
   "trinomial-product": {
     goal: "Multiply two three-term expressions term by term, then combine the terms with the same power of $x$.",
@@ -142,8 +142,9 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   },
   "cubic-quotient-remainder": {
     goal: "Divide a cubic by a linear binomial and write the quotient plus the remainder over the divisor.",
+    noLink: ["part"],
     intuition:
-      "Dividing like long division gives a quotient and a remainder: $\\frac{p(x)}{d(x)}=q(x)+\\frac{R}{d(x)}$. The remainder stays over the divisor because it was never divided.",
+      "Dividing like long division gives a quotient and a remainder: $\\frac{p(x)}{d(x)}=q(x)+\\frac{R}{d(x)}$. The remainder is the part the divisor does not go into evenly, so it is written over the divisor, as in $17\\div5=3+\\frac25$.",
     terms: [
       [
         "quotient",
@@ -178,7 +179,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   "two-radical-equation": {
     goal: "Solve an equation with two square roots by isolating and squaring twice, then test every candidate.",
     intuition:
-      "Squaring removes a square root but can create solutions that do not fit the original equation. With two radicals you square twice, so you must check each candidate in the original equation.",
+      "Squaring removes a square root but can create solutions that do not fit the original equation. With two radicals you usually square twice, so check each candidate in the original equation.",
     terms: ["radicand", "extraneous-solution"],
     method: [
       "Isolate one radical and square both sides, expanding the square of the right side carefully.",
@@ -227,7 +228,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   "rational-exponent-product": {
     goal: "Write roots as rational exponents and combine powers of one variable by adding and subtracting exponents.",
     intuition:
-      "A cube root is the exponent $\\frac13$. Multiplying powers of the same variable adds exponents and dividing subtracts them, so a root, a product and a quotient can all be written as one power.",
+      "A cube root can be written with the exponent $\\frac13$: $\\sqrt[3]{a}=a^{1/3}$. Multiplying powers of the same variable adds exponents and dividing subtracts them, so a root, a product and a quotient can all be written as one power.",
     terms: ["rational-exponent", "perfect-cube"],
     method: [
       "Rewrite each radical as a power: $\\sqrt[3]{a}=a^{1/3}$ and $\\sqrt[3]{d^3x^m}=d\\,x^{m/3}$.",
@@ -235,7 +236,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
       "Use a common denominator when adding fractions.",
     ],
     watch:
-      "Add exponents when multiplying powers; do not multiply them. The cube root of a coefficient is taken separately.",
+      "Add exponents when multiplying powers of the same base; do not multiply them. The cube root of a coefficient is taken separately.",
   },
 };
 
@@ -407,8 +408,16 @@ export const regentsAlgebraTwoAlgebraLessons = [
     id: "regents-rational-two-denominators",
     title: "Rational equations with an extraneous root",
     summary:
-      "Clear two denominators, solve the quadratic and reject the excluded value.",
+      "When an equation has fractions with the unknown in two different bottoms, their denominators, multiplying both sides by both bottoms clears every fraction. That usually leaves a quadratic equation with two possible answers. Any value that makes an original bottom zero is excluded, because dividing by zero has no answer, so reject it.",
     templateIds: ["rational-two-denominators"],
+    senses: {
+      sides: "side-of-equation",
+      "right side": "side-of-equation",
+      root: "root-equation",
+      roots: "root-equation",
+      term: "term-expression",
+    },
+    noLink: ["leaves"],
     objectives: [
       "List excluded values from each denominator.",
       "Clear fractions, solve, and reject a root that is excluded.",
@@ -498,8 +507,9 @@ export const regentsAlgebraTwoAlgebraLessons = [
     id: "regents-cubic-quotient-remainder",
     title: "Quotient plus remainder over the divisor",
     summary:
-      "Divide a cubic by $x\\pm k$ and write the quotient with the remainder fraction.",
+      "Dividing a cubic, a polynomial whose highest power is $x^3$, by $x+k$ or $x-k$ works like long division of numbers. The result is a quotient, the main answer, plus a remainder left over. The full answer is written as the quotient plus the remainder over the divisor, just as $17\\div5=3+\\frac25$.",
     templateIds: ["cubic-quotient-remainder"],
+    noLink: ["leaves"],
     objectives: [
       "Use synthetic division with the zero of the divisor.",
       "Write $q(x)+\\frac{R}{x+k}$ with the right signs.",
@@ -513,8 +523,10 @@ export const regentsAlgebraTwoAlgebraLessons = [
       prompt:
         "Write $\\frac{x^3+2x^2-x+4}{x+1}$ as a quotient plus a remainder.",
       steps: [
-        "The zero of $x+1$ is $-1$. Bring down 1; $2-1=1$; $-1-1=-2$; $4+2=6$.",
-        "Quotient $x^2+x-2$, remainder 6.",
+        "The divisor $x+1$ is 0 at $x=-1$, so use $-1$. Write the coefficients of the top in a row: 1, 2, $-1$, 4.",
+        "Bring down the first coefficient, 1. Multiply it by $-1$ and add to the next coefficient: $2+(1)(-1)=1$.",
+        "Repeat with each new result: $-1+(1)(-1)=-2$, then $4+(-2)(-1)=6$.",
+        "The bottom row is 1, 1, $-2$ and 6. The last number, 6, is the remainder. The others are the quotient's coefficients, one power lower than the top: $x^2+x-2$.",
       ],
       answer: "$x^2+x-2+\\dfrac{6}{x+1}$",
     },
@@ -585,8 +597,17 @@ export const regentsAlgebraTwoAlgebraLessons = [
     id: "regents-two-radical-equation",
     title: "Two square roots and an extraneous solution",
     summary:
-      "Isolate and square twice, then test candidates in the original equation.",
+      "An equation with two square roots, such as $\\sqrt{x+9}-\\sqrt x=1$, usually needs squaring twice: once to remove one root, and again after getting the other root alone. Squaring can let in false answers, because a number and its opposite have the same square. So test every possible answer in the original equation.",
     templateIds: ["two-radical-equation"],
+    senses: {
+      squaring: "square-number",
+      squared: "square-number",
+      square: "square-number",
+      root: "root-radical",
+      term: "term-expression",
+      sides: "side-of-equation",
+    },
+    noLink: ["opposite", "leaves"],
     objectives: [
       "Square an equation with two radicals twice without dropping the middle term.",
       "Reject a candidate that does not satisfy the original equation.",
@@ -721,15 +742,22 @@ export const regentsAlgebraTwoAlgebraLessons = [
     id: "regents-rational-exponent-product",
     title: "Roots and powers as one exponent",
     summary:
-      "Combine a cube root, powers and a quotient into one power, or take a perfect-cube coefficient out of a radical.",
+      "A cube root can be written as a power with a fractional exponent: $\\sqrt[3]{x}=x^{1/3}$, because three copies of $x^{1/3}$ multiply to $x$. Then the exponent rules combine roots, powers and quotients into one power. A perfect cube, such as 8, which is $2\\cdot2\\cdot2$, comes out of a cube root as 2.",
     templateIds: ["rational-exponent-product"],
+    senses: {
+      root: "root-radical",
+      roots: "root-radical",
+      base: "base-exponent",
+      product: "product-multiply",
+    },
+    noLink: ["rules", "part", "cube"],
     objectives: [
       "Write a cube root as the exponent $\\frac13$ and combine exponents of one variable.",
       "Take the cube root of a perfect-cube coefficient separately from the variable part.",
     ],
     openingTitle: "A root is a fractional exponent",
     opening: [
-      "A cube root is the exponent $\\frac13$: $\\sqrt[3]{a}=a^{1/3}$. Multiplying powers of the same base adds exponents; dividing subtracts them.",
+      "A cube root can be written with the exponent $\\frac13$: $\\sqrt[3]{a}=a^{1/3}$. Multiplying powers of the same base adds exponents; dividing subtracts them.",
       "So a root, a product and a quotient of powers of $a$ can be combined into a single power by adding and subtracting fractions.",
     ],
     example: {
@@ -752,7 +780,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
       "$\\sqrt[3]{d^3x^m}=d\\,x^{m/3}$ for $d>0$ and $x>0$.",
     ],
     pitfalls: [
-      "Exponents add when multiplying; they do not multiply.",
+      "When multiplying powers of the same base, exponents add; they do not multiply.",
       "Take the root of the coefficient too.",
     ],
     parentGuide:

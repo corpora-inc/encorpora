@@ -10,6 +10,8 @@ const terms: MethodTerm[] = [
 export const nonlinearSystemMethods: Record<string, ProblemMethod> = {
   "nonlinear-system-read": {
     goal: "Read the requested coordinate of a shared point.",
+    intuition:
+      "A system of equations asks for points that make both equations true. On a graph, those are the points where the two graphs meet: here a solid parabola, a U-shaped curve, and a dashed line. Each meeting point has a horizontal coordinate $x$ and a vertical coordinate $y$.",
     terms,
     method: [
       "Find where the solid parabola meets the dashed line. Both graphs must contain the same point.",
@@ -20,6 +22,9 @@ export const nonlinearSystemMethods: Record<string, ProblemMethod> = {
   },
   "nonlinear-system-solve": {
     goal: "Find the requested coordinate by substitution and factoring.",
+    noLink: ["leaves"],
+    intuition:
+      "When both equations give $y$, a shared point has the same $y$ from each. Setting the two right sides equal, called substitution, leaves one equation in $x$: a quadratic. Its roots, the values of $x$ that make it 0, are the horizontal coordinates of the meeting points.",
     terms,
     method: [
       "Both equations give $y$, so set their right sides equal and move all terms to one side.",
@@ -55,7 +60,23 @@ export const nonlinearSystemLessons: Lesson[] = [
   {
     id: "line-meets-parabola",
     title: "Where a line meets a parabola",
-    summary: "Find the places where two rules give the same point.",
+    summary:
+      "A straight line and a U-shaped curve called a parabola can cross twice, touch once, or miss each other. At a crossing point, both equations give the same $y$ for the same $x$. So setting the two expressions for $y$ equal gives a quadratic equation, whose solutions are the $x$-values of the crossings.",
+    senses: {
+      intersection: "intersection-graphs",
+      intersections: "intersection-graphs",
+      factor: "factor-number",
+      factors: "factor-number",
+      rule: "rule",
+      rules: "rule",
+      square: "square-number",
+      squared: "square-number",
+      root: "root-equation",
+      roots: "root-equation",
+      sides: "side-of-equation",
+      product: "product-multiply",
+    },
+    noLink: ["leaves", "whole"],
     templateIds: [
       "nonlinear-system-read",
       "nonlinear-system-solve",

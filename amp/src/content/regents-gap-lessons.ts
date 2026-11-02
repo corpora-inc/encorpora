@@ -50,12 +50,12 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
   "rg-polynomial-zeros-forms": {
     goal: "Find the zeros of a product with a nonmonic factor, or a zero of an expanded cubic by factoring by grouping.",
     intuition:
-      "A zero of a function is an input that makes the output 0. A product is 0 only when one of its factors is 0, so each factor gives a zero. For a factor such as $3x+2$, solve $3x+2=0$ and get $-\\frac{2}{3}$. An expanded cubic with four terms can sometimes be factored by grouping its terms in pairs.",
+      "A zero of a function is an input that makes the output 0. A product is 0 only when one of its factors is 0, so the zeros of the product are the zeros of its factors. For a factor such as $3x+2$, solve $3x+2=0$ and get $-\\frac{2}{3}$. An expanded cubic with four terms can sometimes be factored by grouping its terms in pairs.",
     terms: ["zero-product-property", "factoring-by-grouping"],
     method: [
       "If the function is a product, set each factor equal to 0, including a factor that is only $x$.",
-      "Solve each factor completely. For $ax+b=0$ the zero is $-\\frac{b}{a}$.",
-      "If the cubic is expanded, group the first two terms and the last two terms and factor each pair.",
+      "Solve each factor completely. For $ax+b=0$ with $a\\ne0$, the zero is $-\\frac{b}{a}$.",
+      "If the cubic is multiplied out, try grouping the first two terms and the last two terms. This works when both pairs share the same binomial factor.",
       "Pull out the shared binomial, factor what is left, and read each zero from its factor.",
     ],
     watch:
@@ -89,7 +89,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Write each radical as a power: $\\sqrt[q]{x}=x^{1/q}$.",
-      "To multiply, multiply the coefficients and add the exponents, using a common denominator.",
+      "To multiply, multiply the coefficients and add the exponents of the same base, using a common denominator.",
       "For a negative exponent, flip the fraction and make the exponent positive.",
       "Read an exponent $\\frac{p}{q}$ as the $q$-th root of the $p$-th power.",
     ],
@@ -437,8 +437,15 @@ export const regentsGapLessons: Lesson[] = [
     id: "zeros-nonmonic-grouping",
     title: "Zeros of a nonmonic product and of a cubic by grouping",
     summary:
-      "Set each factor to 0 and solve it completely. Factor an expanded cubic by grouping first.",
+      "The zeros of a polynomial are the inputs that make it equal 0. When a polynomial is written as factors multiplied together, it is 0 exactly when one factor is 0, so set each factor to 0 and solve. A multiplied-out cubic, highest power $x^3$, can often be factored first by grouping its terms in pairs.",
     templateIds: ["rg-polynomial-zeros-forms"],
+    senses: {
+      factor: "factor-number",
+      factors: "factor-number",
+      terms: "term-expression",
+      product: "product-multiply",
+    },
+    noLink: ["leaves", "whole", "parts"],
     objectives: [
       "Find the zeros of a product that includes a factor such as $3x+2$.",
       "Find a zero of an expanded cubic by grouping its terms in pairs.",
@@ -446,7 +453,7 @@ export const regentsGapLessons: Lesson[] = [
     intuition: [
       "A product is zero when a factor is zero",
       [
-        "A zero of $f$ is an input where $f(x)=0$. A product is 0 only when at least one factor is 0, so each factor gives its own zero. The factor $3x+2$ is 0 when $3x=-2$, which is $x=-\\frac{2}{3}$.",
+        "A zero of $f$ is an input where $f(x)=0$. A product is 0 only when at least one factor is 0, so the zeros of the product are the zeros of its factors. The factor $3x+2$ is 0 when $3x=-2$, which is $x=-\\frac{2}{3}$.",
         "A cubic written as four terms can often be split into two pairs. If each pair leaves the same binomial, that binomial is a common factor and the cubic becomes a product.",
       ],
     ],
@@ -462,13 +469,13 @@ export const regentsGapLessons: Lesson[] = [
     method: [
       "Solve each factor, or group first",
       [
-        "For a product, write one equation per factor and solve each one, dividing by the coefficient last. For an expanded cubic, group the first two and last two terms, factor out the shared binomial, then factor what is left.",
+        "For a product, write one equation per factor and solve each one, dividing by the coefficient last. For a multiplied-out cubic, try grouping the first two and last two terms. When both pairs share a binomial, factor it out, then factor what is left.",
       ],
     ],
     formal: [
       "Zero-product property",
       [
-        "If $ab=0$ then $a=0$ or $b=0$. The zero of $ax+b$ with $a\\neq0$ is $-\\frac{b}{a}$. In $x^{2}(x+a)-n^{2}(x+a)=(x+a)(x-n)(x+n)$ the zeros are $-a$, $n$ and $-n$.",
+        "If $ab=0$ then $a=0$ or $b=0$. The zero of $ax+b$ with $a\\neq0$ is $-\\frac{b}{a}$. In $x^{2}(x+a)-n^{2}(x+a)$, both parts share the factor $(x+a)$, so it equals $(x+a)(x^{2}-n^{2})$. The difference of squares $x^{2}-n^{2}$ factors as $(x-n)(x+n)$, so the zeros are $-a$, $n$ and $-n$.",
       ],
     ],
     pitfalls: [
@@ -536,8 +543,14 @@ export const regentsGapLessons: Lesson[] = [
     id: "rational-exponent-radical-forms",
     title: "Rational exponents, radicals and negative powers of fractions",
     summary:
-      "Write radicals as powers, add exponents with a common denominator, and flip a fraction for a negative exponent.",
+      "A root can be written as a power with a fractional exponent: $\\sqrt{x}=x^{1/2}$ and $\\sqrt[3]{x}=x^{1/3}$. Then roots follow the exponent rules. Multiplying powers of the same base adds their exponents, which may need a common denominator. A negative exponent means a reciprocal, so it flips a fraction.",
     templateIds: ["rg-rational-exponent-forms"],
+    senses: {
+      root: "root-radical",
+      roots: "root-radical",
+      base: "base-exponent",
+    },
+    noLink: ["rules"],
     objectives: [
       "Combine a radical and a rational power into one power with a coefficient.",
       "Write a fraction raised to a negative rational exponent in radical form or find its value.",
