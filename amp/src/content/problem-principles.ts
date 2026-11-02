@@ -196,7 +196,7 @@ const legacyPrinciples: Record<string, string> = {
   "count-objects":
     "Counting: match each object with exactly one counting number, one at a time. The last number you say tells how many objects there are in the group.",
   "join-within-10":
-    "Addition joins two sets: the cardinality of the union of disjoint sets is the sum of their cardinalities.",
+    "Putting two groups together and counting them all gives the same number as adding. 3 counters and 4 more counters are 7 counters, and 3 + 4 = 7. No counter is in both groups, so none is counted twice.",
   "take-away-within-10":
     "Subtraction removes a part from a whole: whole − part = remaining part, and part + remaining part = whole.",
   "number-bond-missing":
@@ -208,15 +208,15 @@ const legacyPrinciples: Record<string, string> = {
   "add-within-20":
     "Associative property of addition: (a + b) + c = a + (b + c). Regrouping one addend to complete a ten does not change the sum.",
   "subtract-within-20":
-    "Subtraction is the inverse of addition: a − b = c exactly when b + c = a.",
+    "Taking away undoes adding. 13 − 5 = 8 is true exactly when 5 + 8 = 13 is true. So you can check a subtraction by adding.",
   "three-addend-story":
     "Commutative and associative properties of addition: addends may be added in any order and any grouping.",
   "make-ten-remainder":
-    "Decomposing an addend: if a + k = 10, then a + b = 10 + (b − k). This uses the associative property of addition.",
+    "A number can be split into two parts. To add 8 + 5, split 5 into 2 and 3, because 8 + 2 = 10. Then 8 + 5 = 10 + 3 = 13. The part left after making ten is 3. Moving part of a number from one addend to the other does not change the total.",
   "subtract-through-ten":
-    "Decomposing the subtrahend: a − b = (a − k) − (b − k). Choosing k = a − 10 takes a down to 10 first; the rest, b − k, is subtracted from 10.",
+    "You can take away a number in two parts that add up to it. For 14 − 6, first take away 4 to land on 10. 4 + 2 = 6, so 2 more must go: 10 − 2 = 8. So 14 − 6 = 8.",
   "unknown-addend-story":
-    "Addition and subtraction are inverse operations: start + ? = total means ? = total − start.",
+    "Taking away undoes adding. If 5 + □ = 12, then □ = 12 − 5 = 7. The same is true for □ + 5 = 12, because two numbers make the same total in either order.",
   "missing-start-story":
     "Inverse operations: if start − removed = remaining, then start = removed + remaining.",
   "balanced-addition":
@@ -226,13 +226,13 @@ const legacyPrinciples: Record<string, string> = {
   "tens-ones-model":
     "Place value: in a two-digit number, the left digit counts tens and the right digit counts ones. So 3 tens and 8 ones is $3 \\times 10 + 8 = 38$.",
   "ten-more-or-less":
-    "Place value: adding or subtracting 10 changes only the tens digit when no regrouping occurs.",
+    "Adding 10 adds one ten, and taking away 10 takes one ten away. The ones stay the same. So 47 + 10 = 57 and 47 − 10 = 37. With 9 tens, one more ten makes 10 tens, which is 1 hundred: 96 + 10 = 106.",
   "add-ones-regroup":
-    "Regrouping: 10 ones equal 1 ten, so a sum of ones of 10 or more becomes one more ten.",
+    "10 ones make 1 ten. When the ones add up to 10 or more, trade 10 of them for 1 ten and keep the rest as ones. 8 ones and 5 ones are 13 ones, which is 1 ten and 3 ones. So 38 + 5 = 43. This trade is called regrouping.",
   "subtract-whole-tens":
-    "Distributive property: 10a − 10b = 10(a − b). Subtract the tens, then name their value.",
+    "Tens can be taken away like any objects. 5 tens take away 2 tens leaves 3 tens. 3 tens is 30, so 50 − 20 = 30.",
   "hundreds-model":
-    "Place value in base ten: a three-digit number abc has value 100a + 10b + c.",
+    "In a three-digit number, the left digit counts hundreds, the middle digit counts tens and the right digit counts ones. So 3 hundreds, 4 tens and 6 ones is 300 + 40 + 6 = 346. A place with nothing in it gets the digit 0: 4 hundreds and 6 ones is 406.",
   "place-value-digit":
     "Place value: a digit's value is the digit multiplied by the value of its place (1, 10, 100, …).",
   "expanded-form-missing":
@@ -244,11 +244,11 @@ const legacyPrinciples: Record<string, string> = {
   "add-several-two-digit":
     "Commutative and associative properties: sum the tens and the ones separately, then combine.",
   "add-with-regrouping":
-    "The standard addition algorithm adds by place value, regrouping 10 of one place into 1 of the next.",
+    "Add place by place, starting with the ones. 10 of one place make 1 of the next place to the left: 10 ones make 1 ten, and 10 tens make 1 hundred. This trade is called regrouping. For 158 + 267: 8 + 7 = 15 ones, so write 5 and trade 10 ones for 1 ten. 5 + 6 + 1 = 12 tens, so write 2 and trade 10 tens for 1 hundred. 1 + 2 + 1 = 4 hundreds, so the sum is 425. Trading never changes the total.",
   "subtract-with-regrouping":
     "The standard subtraction algorithm subtracts by place value, decomposing 1 of a higher place into 10 of the next lower place when needed.",
   "two-step-change":
-    "Changes apply in order, $(\\text{start} + a) - b$, and each change is undone by its inverse: $\\text{start} = (\\text{end} + b) - a$.",
+    "Changes happen in order. Each change starts from the amount the change before it left: 30 + 12 = 42, then 42 − 5 = 37. A change can add or take away, in either order. To undo a change, do the opposite, and undo the last change first: 37 + 5 = 42, then 42 − 12 = 30.",
   // Multiplication and division
   "small-array-total":
     "Multiplication as an array: $r$ rows of $c$ objects contain r × c objects.",
@@ -367,7 +367,7 @@ const legacyPrinciples: Record<string, string> = {
   "mixed-fraction-difference":
     "Regrouping a whole: $w \\tfrac{a}{b} = (w - 1) (a + b)/b$, which allows the fractional parts to be subtracted.",
   "add-fractions":
-    "For integers $a,c$ and positive integers $b,d$, $\\frac{a}{b}+\\frac{c}{d}=\\frac{ad+bc}{bd}$. Multiplying a fraction’s numerator and denominator by the same nonzero number preserves its value. With a common denominator, add the numerators and keep the denominator.",
+    "With the same denominator, fractions add like counts of equal pieces: $\\tfrac{3}{12} + \\tfrac{2}{12} = \\tfrac{5}{12}$. To add $\\tfrac{1}{4} + \\tfrac{1}{6}$, first rename both with a common denominator: $\\tfrac{1}{4} = \\tfrac{3}{12}$ and $\\tfrac{1}{6} = \\tfrac{2}{12}$. Multiplying the top and bottom of a fraction by the same number, other than 0, keeps its value. In general, for integers $a$ and $c$ (whole numbers or their negatives) and whole numbers $b$ and $d$ greater than 0, $\\frac{a}{b}+\\frac{c}{d}=\\frac{ad+bc}{bd}$.",
   "unlike-fraction-difference":
     "Subtracting unlike fractions: a/b − c/d = (ad − bc)/(bd), using a common denominator.",
   "fraction-distance-gap":
@@ -394,7 +394,7 @@ const legacyPrinciples: Record<string, string> = {
   "decimal-addition":
     "Decimal place value: aligning decimal points adds digits of equal place value.",
   "decimal-multiplication":
-    "Decimals as fractions: ($a$/10ᵐ$) × (b$/10ⁿ$) = (a × b$)/10ᵐ⁺ⁿ, so the product has m + n decimal places.",
+    "A decimal is a fraction with 10, 100, 1000 and so on as its denominator: $0.3 = \\tfrac{3}{10}$ and $0.25 = \\tfrac{25}{100}$. So $0.3 \\times 0.25 = \\tfrac{3 \\times 25}{10 \\times 100} = \\tfrac{75}{1000} = 0.075$. The denominator 1000 has 1 + 2 = 3 zeros, so the product has 3 decimal places, digits after the decimal point. In general, a factor with $m$ decimal places times a factor with $n$ decimal places gives $m + n$ decimal places, counting any zeros at the end.",
   "ratio-missing":
     "Equivalent ratios are ratios that describe the same mix. Let $a$ and $b$ stand for the two amounts in a ratio. Multiplying both by the same number $k$ greater than 0 keeps the mix: $a : b$ and $ka : kb$ are equivalent ratios. Here $ka$ means $k$ times $a$, and $kb$ means $k$ times $b$. Adding the same number to both usually gives a different mix.",
   "unit-price":
