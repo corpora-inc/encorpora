@@ -201,6 +201,7 @@ function signedContextOrder(r: Random): Built {
       answer: "",
       hint: `Distance from sea level is the distance from 0 on the number line, no matter which side of 0 the position is on. Find the absolute values of ${tex(`-${low}`)} and ${tex(String(high))}.`,
       explanation: [
+        `Distance from sea level is the absolute value: how far a number is from 0, ignoring its sign. It is written with bars, like $|-5| = 5$.`,
         `The distances are ${tex(`|-${low}|=${low}`)} meters and ${tex(`|${high}|=${high}`)} meters.`,
         `${Math.max(low, high)} is greater than ${Math.min(low, high)}, so ${far} is farther from sea level.`,
         `Comparing ${tex(String(nearV))} and ${tex(String(farV))} as ordered numbers answers which is higher, not which is farther.`,
@@ -415,9 +416,10 @@ function fractionalFactorNotEquivalent(r: Random): Built {
     answer: "",
     hint: `Multiply ${tex(`\\frac{${n}}{${d}}`)} by each term inside the parentheses of ${tex(original)}, then compare. An equivalent expression has the same value for every $x$. Check each choice at $x=1$ if you want a quick test.`,
     explanation: [
-      `Distribute: ${tex(`\\frac{${n}}{${d}}\\cdot ${A}x=${term(m)}`)} and ${tex(`\\frac{${n}}{${d}}\\cdot ${K < 0 ? `\\left(${K}\\right)` : K}=${k}`)}.`,
+      `Equivalent expressions have the same value for every $x$. Rewrite the original without parentheses to compare.`,
+      `Distribute, which means multiply the fraction by each term inside the parentheses: ${tex(`\\frac{${n}}{${d}}\\cdot ${A}x=${term(m)}`)} and ${tex(`\\frac{${n}}{${d}}\\cdot ${K < 0 ? `\\left(${K}\\right)` : K}=${k}`)}.`,
       `So the original equals ${tex(lin(m, k))}.`,
-      `At x = 1 the original is ${at1}. ${tex(label)} gives ${wrong.m + wrong.k}, so it is the one that is not equivalent.`,
+      `A quick check at $x = 1$: the original is ${at1}, but ${tex(label)} gives ${wrong.m + wrong.k}. One different value is enough, so ${tex(label)} is not equivalent.`,
     ],
     choices: choicesFrom(
       r,
@@ -1371,8 +1373,8 @@ function fractionOfSet(r: Random): Built {
     answer: String(a * g),
     hint: `${frac(1)} is one of ${b} equal parts, and that part is ${g} ${things}. ${frac(a)} is ${a} of those equal parts.`,
     explanation: [
-      `One equal part is ${g} ${things}.`,
-      `${frac(a)} is ${a} equal parts: ${a} × ${g} = ${a * g}.`,
+      `${frac(1)} means one of ${b} equal parts of the box. That one part is ${g} ${things}.`,
+      `${frac(a)} means ${a} of those equal parts, so multiply: ${a} × ${g} = ${a * g}.`,
       `So ${a * g} ${things} are in ${frac(a)} of the box.`,
     ],
   };

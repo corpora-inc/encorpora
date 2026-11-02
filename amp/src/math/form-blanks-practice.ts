@@ -462,9 +462,12 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
         sentence: built.sentence,
         hint: `At $t=0$ the base is raised to the power 0, which equals 1, so see what is left. For the yearly change compare the base ${baseText} with 1: is it greater or less, and by how much?`,
         explanation: [
+          `An exponential model has the form starting amount times base raised to the power $t$. The base is the factor the amount is multiplied by each year.`,
+          `The starting amount is the value when no time has passed, $t=0$. Any nonzero number to the power 0 is 1.`,
           `At $t=0$: $${letter}(0)=${grouped(initial)}\\times 1=${grouped(initial)}$, so the starting amount is ${grouped(initial)} ${unit}.`,
           `The base is ${baseText}, which is ${growth ? "greater" : "less"} than 1, so the amount ${growth ? "increases" : "decreases"}.`,
           `The base ${baseText} is $1${growth ? "+" : "-"}${dec(pct / 100)}$, so each year the amount ${growth ? "increases" : "decreases"} by ${pct} percent.`,
+          `A percent is a number out of 100, so ${dec(pct / 100)} is ${pct} percent. The model starts at ${grouped(initial)} ${unit} and ${growth ? "grows" : "shrinks"} by ${pct} percent each year.`,
         ],
       });
     },

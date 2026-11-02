@@ -53,20 +53,24 @@ const accounts = await createAccounts(repository.pool, {
 });
 const authenticate = accountsAuth(accounts);
 // Use account-owned trials, as hosted deployments do.
-const app = buildApp({ repository, authenticate, development: false });
-await registerAccountRoutes(app, accounts);
-await registerParentFollowupRoutes(app, {
-  pool: repository.pool,
-  origin,
-  authenticate,
-  enabled: true,
-});
-await registerFamilyRoutes(app, {
-  pool: repository.pool,
-  authenticate,
-  development: true,
-});
-await app.listen({ host: "127.0.0.1", port: 4367 });
+async function startAccountsServer() {
+  const server = buildApp({ repository, authenticate, development: false });
+  await registerAccountRoutes(server, accounts);
+  await registerParentFollowupRoutes(server, {
+    pool: repository.pool,
+    origin,
+    authenticate,
+    enabled: true,
+  });
+  await registerFamilyRoutes(server, {
+    pool: repository.pool,
+    authenticate,
+    development: true,
+  });
+  await server.listen({ host: "127.0.0.1", port: 4367 });
+  return server;
+}
+let app = await startAccountsServer();
 const vite = await createServer({
   root: new URL("../", import.meta.url).pathname,
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
@@ -364,6 +368,12 @@ try {
   // The longest translations still fit the narrowest phone.
   for (const lang of ["de", "fi", "ta", "ml", "ar", "ja"])
     await checkScreen(browser, "/sign-up", "light", sizes[0], lang);
+
+  // Independent presentation cases share one loopback address and exhaust the
+  // harness's authentication request window. Start the real signup journey with
+  // a fresh server limiter while preserving accounts and database state.
+  await app.close();
+  app = await startAccountsServer();
 
   const context = await browser.newContext({ viewport: sizes[2] });
   const page = await context.newPage();

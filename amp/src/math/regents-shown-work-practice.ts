@@ -300,7 +300,10 @@ const density = chainFamily({
     return workSurface(rowsWork(rows, axes.mode, r, "Your work"), {
       prompt,
       hint,
-      explanation,
+      explanation: [
+        "Density is mass per unit of volume. So mass equals density times volume; find the volume first.",
+        ...explanation,
+      ],
     });
   },
   variant: (m) => m.kind,
@@ -346,6 +349,7 @@ const sasArea = chainFamily({
       prompt: `Two sides of a triangle measure ${tex(fix(m.a / 10, 1))} cm and ${tex(fix(m.b / 10, 1))} cm, and the angle between them measures ${tex(`${m.angle}^\\circ`)}. Find the area of the triangle to the nearest tenth of a square centimeter. Use a calculator in degree mode. ${task(axes.mode)}`,
       hint: `The ${m.angle}° angle is between the sides ${fix(m.a / 10, 1)} and ${fix(m.b / 10, 1)}, so use $\\frac12ab\\sin C$ with that angle. ${m.angle > 90 ? "The sine of an obtuse angle is positive; read it from the calculator in degree mode." : "Find the sine in degree mode."}`,
       explanation: [
+        "Two sides and the angle between them, called the included angle, fix a triangle. The sine of that angle turns one slanted side into the height.",
         `The area is ${tex("\\frac12ab\\sin C")} with the angle between the two sides.`,
         `${tex(`\\frac12(${fix(m.a / 10, 1)})(${fix(m.b / 10, 1)})=${decimalText(m.a * m.b, 200)}`)} and ${tex(`\\sin ${m.angle}^\\circ\\approx${dec(sin, 4)}`)}.`,
         `${tex(`${decimalText(m.a * m.b, 200)}\\times${dec(sin, 4)}\\approx${dec(area, 2)}`)}, so the area is ${dec(area, 1)} square centimeters.`,
@@ -391,6 +395,7 @@ const trigLeg = chainFamily({
       prompt: `In right triangle $ABC$ the right angle is at $C$, $AB=${m.hyp}$ and $m\\angle A=${m.angle}^\\circ$. Find $${target}$ to the nearest tenth. Use a calculator in degree mode. ${task(axes.mode)}`,
       hint: `$AB=${m.hyp}$ is the hypotenuse. Side $${target}$ is ${m.opp ? "opposite" : "adjacent to"} the ${m.angle}° angle at $A$, so choose the ratio that links that side to the hypotenuse and solve for $${target}$.`,
       explanation: [
+        "In a right triangle, sine is the opposite leg divided by the hypotenuse, cosine is the adjacent leg divided by the hypotenuse, and tangent is the opposite leg divided by the adjacent leg.",
         `$${target}$ is the leg ${m.opp ? "opposite" : "adjacent to"} $\\angle A$, so $\\${fn}\\,${m.angle}^\\circ=\\frac{${target}}{${m.hyp}}$.`,
         `$\\${fn}\\,${m.angle}^\\circ\\approx${dec(ratio, 4)}$.`,
         `$${target}=${m.hyp}\\cdot${dec(ratio, 4)}\\approx${dec(leg, 2)}$, which is ${dec(leg, 1)} to the nearest tenth.`,
@@ -438,6 +443,7 @@ const elevation = chainFamily({
       prompt: `A lookout is ${tex(m.d)} feet from a ${m.thing}, measured along level ground. From the lookout, the angle of elevation to the top of the ${m.thing} is ${tex(`${m.up}^\\circ`)} and the angle of depression to its base is ${tex(`${m.down}^\\circ`)}. What is the height of the ${m.thing}, to the nearest foot? ${task(axes.mode)}`,
       hint: `A horizontal line through the lookout splits the ${m.thing} into a part above it and a part below it. Each part is the opposite side of a right triangle whose adjacent side is the ${m.d} feet along the ground, so use the tangent of ${m.up}° for the upper part and of ${m.down}° for the lower part.`,
       explanation: [
+        "Angles of elevation and depression are measured from a horizontal line. Each makes a right triangle, so the tangent ratio, opposite leg over adjacent leg, gives the height of each part.",
         `Above: ${tex(`${m.d}\\tan ${m.up}^\\circ\\approx${dec(upPart, 3)}`)} feet.`,
         `Below: ${tex(`${m.d}\\tan ${m.down}^\\circ\\approx${dec(downPart, 3)}`)} feet.`,
         `Total: ${tex(`${dec(upPart, 3)}+${dec(downPart, 3)}=${dec(upPart + downPart, 3)}`)}, so the ${m.thing} is ${dec(h, 0)} feet tall.`,
@@ -490,6 +496,7 @@ const isosceles = chainFamily({
       prompt: `An isosceles triangle has an apex angle of ${tex(`${m.apex}^\\circ`)}. The altitude from the apex to the base is ${tex(m.h)} cm long. Find the perimeter of the triangle to the nearest tenth of a centimeter. Use a calculator in degree mode. ${task(axes.mode)}`,
       hint: `The altitude from the apex halves the ${m.apex}° angle and the base, making two right triangles with a leg of ${m.h} cm. In one of them use the tangent for the leg along the base and the cosine for the hypotenuse, then add all three sides of the original triangle.`,
       explanation: [
+        "An isosceles triangle has two equal sides. Its altitude, the height from the top corner, cuts it into two matching right triangles.",
         `The altitude gives right triangles with an angle of ${tex(`${half}^\\circ`)} at the apex and a leg of ${tex(m.h)} cm.`,
         `Half the base: ${tex(`${m.h}\\tan ${half}^\\circ\\approx${dec(hb, 3)}`)}. Equal side: ${tex(`\\frac{${m.h}}{\\cos ${half}^\\circ}\\approx${dec(leg, 3)}`)}.`,
         `Perimeter: ${tex(`2(${dec(hb, 3)})+2(${dec(leg, 3)})=${dec(2 * Number(dec(hb, 3)) + 2 * Number(dec(leg, 3)), 3)}`)}, which is ${dec(p, 1)} cm to the nearest tenth.`,
@@ -545,6 +552,7 @@ const ring = chainFamily({
       prompt: `${pool}. A walkway ${tex(m.border)} ${m.unit} wide surrounds it. Find the area of the walkway to the nearest square ${m.unit === "feet" ? "foot" : "meter"}. ${task(axes.mode)}`,
       hint: `The walkway is the large circle that includes it minus the pool. ${m.diameter ? `Halve the ${2 * m.inner}-${m.unit === "feet" ? "foot" : "meter"} diameter to get the pool's radius, then add the walkway's width of ${m.border}` : `Add the walkway's width of ${m.border} to the pool's radius of ${m.inner}`} to get the radius of the large circle. Subtract the two squared radii before multiplying by $\\pi$.`,
       explanation: [
+        "A ring is the region between two circles with the same center. Its area is the big circle's area minus the small circle's area.",
         `The large circle has radius ${tex(`${m.inner}+${m.border}=${outer}`)} ${m.unit}.`,
         `${tex(`\\pi(${outer})^2-\\pi(${m.inner})^2=\\pi(${outer * outer}-${m.inner * m.inner})=${k}\\pi`)}.`,
         `${tex(`${k}\\pi\\approx${dec(area, 2)}`)}, so the walkway's area is ${dec(area, 0)} square ${m.unit}.`,
@@ -600,6 +608,7 @@ const parallelogram = chainFamily({
         ? `With $m\\angle ${given}=${m.angle}^\\circ$, the angles $\\angle ${given}$ and $\\angle ${first}$ lie on the straight line through $E$, $${v}$ and $C$. Find $\\angle ${first}$ first, then use the right angle at $E$ in the triangle.`
         : `With $m\\angle ${given}=${m.angle}^\\circ$ and point $E$ on side $${side}$, $\\angle ${first}$ is the same angle as $\\angle ${given}$. Then use the right angle at $E$ and the angle sum of the triangle.`,
       explanation: [
+        "A parallelogram has opposite sides parallel. Angles along one straight line add to 180 degrees, and so do two angles next to each other inside a parallelogram.",
         outside
           ? `$E$, $${v}$ and $C$ are on one line, so $\\angle ${first}$ and $\\angle ${given}$ are supplementary: $180-${m.angle}=${adjacent}$.`
           : `$E$ is on side $${side}$, so $\\angle ${first}$ is $\\angle ${given}$: ${adjacent} degrees.`,
@@ -650,6 +659,7 @@ const parallelSegment = chainFamily({
         : `${base} What must the length of $\\overline{EC}$ be so that $\\overline{DE}\\parallel\\overline{BC}$? ${task(axes.mode)}`,
       hint: `A segment parallel to $\\overline{BC}$ cuts $\\overline{AB}$ and $\\overline{AC}$ in the same ratio, so $AE$ is $AD=${m.a}$ scaled by some factor and $EC$ is $DB=${m.b}$ scaled by the same factor.${m.whole ? " The whole side is $AE$ plus $EC$." : ""}`,
       explanation: [
+        "A line parallel to one side of a triangle cuts the other two sides in the same ratio. That proportion finds the missing length.",
         `$\\overline{DE}\\parallel\\overline{BC}$ exactly when $\\frac{AE}{AD}=\\frac{EC}{DB}$. Here $\\frac{${ae}}{${m.a}}=${m.k}$.`,
         `$EC=${m.k}\\cdot${m.b}=${ec}$.`,
         ...(m.whole ? [`$AC=AE+EC=${ae}+${ec}=${ae + ec}$.`] : []),
@@ -750,6 +760,7 @@ const twoRadical = chainFamily({
       prompt: `Solve $${eq}$ for $x$. Square to remove the radicals, collect every term on the left with $x^2$ first and no common factor divided out, and enter the quadratic's coefficients. Then enter the solution that satisfies the equation and the extraneous one. ${task(axes.mode)}`,
       hint: `Write $\\sqrt{${R1}}=\\sqrt{${R2}}+${m.c}$ and square both sides: the right side keeps one radical. Isolate that radical, square again, and collect the terms. Test each solution in the original equation.`,
       explanation: [
+        "To remove a square root, square both sides. Squaring can add false answers, called extraneous solutions, so check each one in the original equation.",
         `Square both sides of $\\sqrt{${R1}}=${m.c}+\\sqrt{${R2}}$: $${R1}=${m.c * m.c}+${2 * m.c}\\sqrt{${R2}}+${R2}$, so $${lin}=${2 * m.c}\\sqrt{${R2}}$.`,
         `Square again: $(${lin})^2=${4 * m.c * m.c}(${R2})$, which collects to $${A === 1 ? "" : A}x^2${B < 0 ? "-" : "+"}${Math.abs(B) === 1 ? "" : Math.abs(B)}x${C === 0 ? "" : `${C < 0 ? "-" : "+"}${Math.abs(C)}`}=0$.`,
         `The solutions are $x=${m.good}$ and $x=${m.bad}$. At $x=${m.good}$ both radicands are perfect squares and the difference is ${m.c}, so it works. At $x=${m.bad}$ the equation is false or a radicand is negative, so it is extraneous.`,
@@ -830,6 +841,7 @@ const grouped = chainFamily({
       prompt: `Solve $${eq}$ for $x$. Move the $x$ terms to the side that has the parentheses and the plain numbers to the other side. ${task(axes.mode)}`,
       hint: `Multiply ${m.p} by each term inside $${m.p}(x${sign(m.q)})$ first, then combine the result with the $${term(m.r, true)}$ term on that side. Then move the $x$ terms to one side and the plain numbers to the other, keeping each sign, and divide by the coefficient of $x$.`,
       explanation: [
+        "First multiply out the brackets. Then gather the terms with $x$ on one side and the plain numbers on the other, doing the same to both sides each time.",
         `Distribute ${m.p}: $${m.p}(x${sign(m.q)})=${m.p}x${sign(m.p * m.q)}$, so the grouped side is $${term(m.p + m.r, true)}${sign(m.p * m.q)}$.`,
         `Move the $x$ terms to the side with the parentheses and the plain numbers to the other side: $${net}x=${k}$.`,
         `Divide by ${net}: $x=${m.x0}$. Check by substituting ${m.x0} into both sides of the original equation.`,
@@ -903,6 +915,7 @@ const expTime = chainFamily({
       prompt: `${m.s.lead} is modeled by $${rule}$, where $t$ is in ${m.s.unit}. After how many ${m.s.unit} does the model reach ${m.target}? Round to the nearest hundredth. ${task(axes.mode)}`,
       hint: `Set the model equal to ${m.target} and divide both sides by ${m.start}, so the exponential part is alone. Then take the natural logarithm of both sides to bring $t$ down${m.natural ? `, and divide by ${m.base}` : `, and divide by the logarithm of ${fix(m.base, 2)}`}.`,
       explanation: [
+        "The unknown is in the exponent, so after isolating the power, use a logarithm, the exponent that gives a number, to bring the time down.",
         `Set the model equal to ${m.target}: $${m.start}${m.natural ? `e^{${m.base}t}` : `\\cdot${fix(m.base, 2)}^{t}`}=${m.target}$. Divide by ${m.start}: $${m.natural ? `e^{${m.base}t}` : `${fix(m.base, 2)}^{t}`}=${m.ratio}$.`,
         m.natural
           ? `Take natural logarithms: $${m.base}t=\\ln ${m.ratio}\\approx${dec(lnR, 4)}$.`
