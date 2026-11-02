@@ -296,7 +296,7 @@ def pick_pv(public, expected, unit=None):
     def read(label):
         s = label
         if unit == 'cm^2':
-            s = s.replace('cm$^2$', '').replace('cm^2', '').replace('square centimeters', '')
+            s = re.sub(r'\bsquare centimeters?\b', '', s.replace('cm$^2$', '').replace('cm^2', ''))
         elif unit == 'cm':
             s = s.replace('cm', '')
         return pv(s)

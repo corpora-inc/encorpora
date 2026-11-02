@@ -19,10 +19,10 @@ import { templateGrade } from "../src/server/mixed-practice";
 import type { WorkbookItem, WorkbookSpec } from "../src/workbook/compose";
 import { paperExclusions } from "../src/workbook/paper-exclusions";
 import { waitForWorkbookLayout } from "../src/workbook/pdf";
-import { workbookHtml } from "../src/workbook/render";
-import { composeWorkbook, printable } from "../src/workbook/compose";
+import { resultsProofHtml, workbookHtml } from "../src/workbook/render";
+import { printable } from "../src/workbook/compose";
 import { resultLabel } from "../src/workbook/result-labels";
-import { sampleLearners, simulateLearner } from "../src/workbook/synthetic";
+import { largestResultsSpec } from "./workbook-layout";
 
 const nodes = new Map(skills.map((s) => [s.id, s]));
 const skillTitle = (id: string) => nodes.get(id)?.title ?? id;
@@ -132,22 +132,11 @@ try {
       process.stdout.write(`${Math.min(start + chunk, pass.list.length)} `);
     }
   // Results-page labels: every printable problem type's label in the
-  // narrowest results tile (the 4-column grid of a 60-minute workbook).
+  // narrowest results tile: four columns on Letter. (The densities after it
+  // pad tiles less, and printing smaller keeps the line breaks.)
   const labelPage = await browser.newPage();
-  const sample = sampleLearners.find((l) => l.id === "eighth-grade")!;
-  const simulated = simulateLearner(sample, Date.parse("2026-11-01T12:00:00Z"));
-  const dense = composeWorkbook({
-    templates,
-    skills,
-    lessons,
-    frontier: simulated.frontier,
-    evidence: simulated.evidence,
-    date: "2026-11-01",
-    minutes: 60,
-    learnerKey: sample.id,
-  });
   await labelPage.setContent(
-    workbookHtml(dense, { lessons, skillTitle, paper: "letter" }),
+    resultsProofHtml([largestResultsSpec(7)], { level: 7, paper: "letter" }),
     { waitUntil: "load" },
   );
   await waitForWorkbookLayout(labelPage);
@@ -155,8 +144,9 @@ try {
     .filter((t) => printable(t))
     .map((t) => ({ id: t.id, label: resultLabel(t.id) }));
   const tooLong = await labelPage.evaluate((labels) => {
-    if (!document.querySelector(".wb-results-grid--dense"))
-      return ["the sample results grid is not the dense one"];
+    const fit = document.querySelector("[data-results-fit]")!;
+    fit.setAttribute("data-density", "1");
+    (document.querySelector(".wb-results-grid") as HTMLElement).style.zoom = "";
     const tile = document.querySelector(".wb-tile-skill") as HTMLElement;
     const line = parseFloat(getComputedStyle(tile).lineHeight);
     return labels

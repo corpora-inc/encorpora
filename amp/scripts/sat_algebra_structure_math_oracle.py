@@ -411,11 +411,11 @@ def solve_rate(public):
         d, a, d2, b = (Q(m[i]) for i in (1, 2, 3, 4))
         require(d == d2, 'Return distance must match')
         return pick_numeric(public, 2 * d / (d / a + d / b))
-    m = re.fullmatch(rf'A lab mixes {n} liters? of a {n}% salt solution with {n} liters? of a {n}% salt solution\. What is the salt concentration of the mixture, as a percent\?', prompt)
+    m = re.fullmatch(rf'A lab mixes {n} liters? of an? {n}% salt solution with {n} liters? of an? {n}% salt solution\. What is the salt concentration of the mixture, as a percent\?', prompt)
     if m:
         v1, p1, v2, p2 = (Q(m[i]) for i in (1, 2, 3, 4))
         return pick_numeric(public, (v1 * p1 + v2 * p2) / (v1 + v2))
-    m = re.fullmatch(rf'How many liters of a {n}% salt solution must be added to {n} liters? of a {n}% salt solution to make a mixture that is {n}% salt\?', prompt)
+    m = re.fullmatch(rf'How many liters of an? {n}% salt solution must be added to {n} liters? of an? {n}% salt solution to make a mixture that is {n}% salt\?', prompt)
     if m:
         p_add, v, p0, target = (Q(m[i]) for i in (1, 2, 3, 4))
         require(min(p_add, p0) < target < max(p_add, p0), 'Target must lie strictly between the two strengths')

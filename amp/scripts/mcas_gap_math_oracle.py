@@ -425,7 +425,7 @@ def fraction_rate(public):
     require(len(trips) == 3, "Three hiking days")
     truths, key = [], []
     for o in public["response"]["options"]:
-        m = re.fullmatch(r"(Monday|Wednesday|Friday): \$(.+?)\$ miles per hour", o["label"])
+        m = re.fullmatch(r"(Monday|Wednesday|Friday): \$(.+?)\$ miles? per hour", o["label"])
         require(m is not None, "Rate label")
         truths.append(trips[m.group(1)] == number(m.group(2)))
         key.append((m.group(1), number(m.group(2))))

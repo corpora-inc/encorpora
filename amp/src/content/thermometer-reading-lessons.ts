@@ -14,7 +14,7 @@ export const thermometerReadingMethods: Record<string, ProblemMethod> = {
         "A gridline is a mark across the scale; not every gridline has a number beside it.",
       ],
     ],
-    senses: { degree: "degree-temperature", scale: "scale-axis" },
+    senses: { degree: "degree-temperature", scale: "measuring-scale" },
     noLink: ["change"],
     method: [
       "Find how many degrees one space is worth. Subtract the smaller of two labels next to each other from the bigger one, then divide by the equal spaces between them.",
@@ -40,7 +40,7 @@ export const thermometerReadingLessons = [
     templateIds: ["read-thermometer"],
     senses: {
       degree: "degree-temperature",
-      scale: "scale-axis",
+      scale: "measuring-scale",
       difference: "difference-subtract",
     },
     noLink: ["change"],
