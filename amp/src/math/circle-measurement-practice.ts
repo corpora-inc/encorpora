@@ -181,6 +181,9 @@ export function circleMeasurementPrintCase(
     const comparison = angle < 180 ? "<" : angle === 180 ? "=" : ">";
     const half = divide(full, q(2));
     explanation = [
+      isArc
+        ? "An arc is part of a circle. Its length is the same fraction of the circumference as its central angle is of 360 degrees."
+        : "A sector is a pie-shaped slice of a circle. Its area is the same fraction of the circle's area as its central angle is of 360 degrees.",
       radiusStep,
       `A full turn is 360 degrees. The ${isArc ? "arc" : "sector"} covers $\\frac{${angle}}{360} = ${tex(part)}$ of the full circle.`,
       fullStep,

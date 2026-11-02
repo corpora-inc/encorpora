@@ -162,6 +162,7 @@ const similar = chainFamily({
       prompt: `Triangle $${first}$ is similar to triangle $${second}$, with ${[...first].map((v, i) => `$${v}$ corresponding to $${second[i]}$`).join(", ")}. In triangle $${first}$, $\\angle ${first[0]}=${alpha}^\\circ$ and $\\angle ${first[1]}=${beta}^\\circ$. The sides of triangle $${first}$ are $${side(first, 0)}=${first3[0]}$, $${side(first, 1)}=${first3[1]}$ and $${side(first, 2)}=${first3[2]}$ ${m.unit}, and $${side(second, kn)}=${second3[kn]}$ ${m.unit}. ${task(axes.mode)}`,
       hint: `Corresponding angles of similar triangles are equal, and the three angles of a triangle add to $180^\\circ$. The scale factor compares a side of triangle $${second}$ with its corresponding side $${side(first, kn)}$ of triangle $${first}$: ${second3[kn]} and ${first3[kn]} ${m.unit}.`,
       explanation: [
+        "Similar triangles have the same shape. Matching angles are equal, and matching sides share one scale factor, the number each side is multiplied by.",
         `The angles of triangle $${first}$ add to $180^\\circ$, so $\\angle ${first[2]}=180-${alpha}-${beta}=${third}^\\circ$. Corresponding angles are equal, so $\\angle ${second[2]}=${third}^\\circ$.`,
         `Scale factor from $${first}$ to $${second}$: $\\frac{${side(second, kn)}}{${side(first, kn)}}=\\frac{${second3[kn]}}{${first3[kn]}}=${factorTex}$.`,
         `Each side of $${second}$ is $${factorTex}$ times its corresponding side: $${side(second, x)}=${first3[x]}\\times${factorTex}=${second3[x]}$ ${m.unit}.`,

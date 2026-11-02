@@ -22,7 +22,13 @@ import {
   familyRevision,
   clearFamilyAccount,
 } from "../lib/family-cache";
-import { consumeInitialConsentChallenge } from "../consent-entry";
+import {
+  claimInitialConsentChallenge,
+  clearInitialConsentChallenge,
+  consumeInitialConsentChallenge,
+  hasInitialConsentChallenge,
+  rememberConsentChallenge,
+} from "../consent-entry";
 import { useLoggedError, requestMessage } from "../feedback";
 import { Toast } from "../ui/Toast";
 import { AccountSessionChanged } from "../lib/account-session";
@@ -49,6 +55,9 @@ import { FundingPurchaseCenter } from "../FundingPurchaseCenter";
 import {
   capturePurchaseReturn,
   clearPurchaseReturn,
+  clearOwnedPurchaseReturn,
+  readOwnedPurchaseReturn,
+  rememberOwnedPurchaseReturn,
   parsePurchaseReturn,
   type PurchaseReturn,
 } from "../purchase-return";
@@ -163,7 +172,7 @@ addEventListener(
   true,
 );
 let initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
-if (nativeRuntime) consumeInitialConsentChallenge();
+if (nativeRuntime) clearInitialConsentChallenge();
 export function LegacyApp() {
   const session = useQuery(sessionOptions);
   if (session.isPending) return <LoadingScreen />;
@@ -287,11 +296,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
 
   const [consentChallenge, setConsentChallenge] =
     useState<ConsentChallenge | null>(null);
-  const pendingConsent = useRef<ConsentChallenge | null | undefined>(undefined);
-  if (pendingConsent.current === undefined)
-    pendingConsent.current = consumeInitialConsentChallenge();
   const [hasPendingConsent, setHasPendingConsent] = useState(
-    !!pendingConsent.current,
+    hasInitialConsentChallenge,
   );
   const consentEpoch = useRef(0);
   const renderedConsentEpoch = consentEpoch.current;
@@ -301,7 +307,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     "annual" | "funded" | undefined
   >();
   const [purchaseReturn, setPurchaseReturn] = useState<PurchaseReturn | null>(
-    null,
+    () => readOwnedPurchaseReturn(accountId ?? ""),
   );
   const pendingPurchaseReturn = useRef(initialPurchaseReturn);
   const returnIdentity = useRef<string | null>(null);
@@ -408,12 +414,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     if (tokenRef.current === next && accountRef.current === identity) return;
     tokenRef.current = next;
     if (accountRef.current === identity) return;
-    const openingConsent =
-      accountRef.current === null ? (pendingConsent.current ?? null) : null;
-    pendingConsent.current = null;
     setHasPendingConsent(false);
     consentEpoch.current++;
-    setConsentChallenge(openingConsent);
+    setConsentChallenge(null);
 
     setConsentReturn(false);
     if (accountRef.current !== null) {
@@ -421,7 +424,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       pendingPurchaseReturn.current = null;
     }
 
-    setPurchaseReturn(null);
+    setPurchaseReturn(readOwnedPurchaseReturn(identity ?? ""));
     const openingSecurity =
       !nativeRuntime &&
       accountRef.current === null &&
@@ -436,8 +439,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     familyRequest.current++;
     navigationEpoch.current++;
     learnerRef.current = undefined;
-    if (openingConsent) navigate("/consent", { replace: true });
-    else if (previousIdentity && previousIdentity !== identity)
+    if (previousIdentity && previousIdentity !== identity)
       navigate("/", { replace: true });
     if (previousIdentity !== identity) clearFamilyAccount(previousIdentity);
     setFamilySummary(null);
@@ -466,12 +468,19 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   function openConsent(challenge: ConsentChallenge | null = null) {
     consentEpoch.current++;
     navigationEpoch.current++;
-    setConsentChallenge(challenge);
+    if (challenge) rememberConsentChallenge(challenge, accountRef.current);
+    else clearInitialConsentChallenge();
+    setConsentChallenge(
+      route.location.pathname === "/consent" && accountRef.current
+        ? consumeInitialConsentChallenge(accountRef.current)
+        : null,
+    );
     setConsentOpen(true);
 
     setReadingBook(null);
   }
   function closeConsent() {
+    clearInitialConsentChallenge();
     consentEpoch.current++;
 
     setConsentChallenge(null);
@@ -484,7 +493,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       if (!challenge) return;
       if (tokenRef.current) openConsent(challenge);
       else {
-        pendingConsent.current = challenge;
+        rememberConsentChallenge(challenge, null);
         setHasPendingConsent(true);
       }
     };
@@ -526,6 +535,17 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     }
   }
   useLayoutEffect(() => updateAuth(session), [session]);
+  useLayoutEffect(() => {
+    if (nativeRuntime || !accountId || !claimInitialConsentChallenge(accountId))
+      return;
+    if (route.location.pathname !== "/consent") {
+      navigate("/consent", { replace: true });
+      return;
+    }
+    consentEpoch.current++;
+    setConsentChallenge(consumeInitialConsentChallenge(accountId));
+    setHasPendingConsent(false);
+  }, [accountId, route.location.pathname]);
   useEffect(() => {
     void learningCatalog()
       .then(setCatalog)
@@ -573,6 +593,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           !parsePurchaseReturn(context)
         )
           return;
+        if (!rememberOwnedPurchaseReturn(accountId, context)) return;
         navigationEpoch.current++;
         setReadingBook(null);
         setPurchaseReturn(context);
@@ -777,6 +798,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     error,
   ]);
   function closePurchase() {
+    navigationEpoch.current++;
+    clearOwnedPurchaseReturn();
     // A purchase opened from "how to pay" returns there.
     if (purchaseView !== "choose" && purchaseFromChoice) {
       setPurchaseFromChoice(false);
@@ -802,6 +825,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   );
   const [purchaseFromChoice, setPurchaseFromChoice] = useState(false);
   function openPurchase(view: "choose" | "annual" | "funded") {
+    clearOwnedPurchaseReturn();
     setPurchaseInterval("year");
     setPurchaseFromChoice(false);
     navigationEpoch.current++;
@@ -1311,7 +1335,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                   onSelect={() => {
                     clearPurchaseReturn();
                     pendingPurchaseReturn.current = null;
-                    pendingConsent.current = null;
+                    clearInitialConsentChallenge();
+                    clearOwnedPurchaseReturn();
                     setHasPendingConsent(false);
                     setConsentChallenge(null);
                     consentEpoch.current++;

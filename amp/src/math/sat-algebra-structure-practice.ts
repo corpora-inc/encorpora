@@ -708,8 +708,10 @@ function fractionalDirectVariation(r: Random): Built {
       answer: "",
       hint: `Direct variation means $${ctx.y}=k${ctx.x}$ for one constant $k$. Use the pair $${ctx.x}=${mixedNumber(x1)}$, $${ctx.y}=${mixedNumber(y1)}$ to find $k$ first.`,
       explanation: [
-        `Direct variation: $${ctx.y}=k${ctx.x}$. From $${mixedNumber(y1)}=k\\cdot ${mixedNumber(x1)}$, $k=${mixedNumber(y1)}\\div ${mixedNumber(x1)}=${tex(k)}$.`,
-        `Then $${ctx.y}=${tex(k)}\\cdot ${mixedNumber(x2)}=${mixedNumber(y2)}$.`,
+        `"Varies directly" means $${ctx.y}$ is always the same number $k$ times $${ctx.x}$: $${ctx.y}=k${ctx.x}$.`,
+        `Find $k$ from the pair you know. $${mixedNumber(y1)}=k\\cdot ${mixedNumber(x1)}$, so divide: $k=${mixedNumber(y1)}\\div ${mixedNumber(x1)}=${tex(k)}$.`,
+        `The same $k$ works for every pair, so $${ctx.y}=${tex(k)}\\cdot ${mixedNumber(x2)}=${mixedNumber(y2)}$.`,
+        `When $${ctx.x}=${mixedNumber(x2)}$, $${ctx.y}=${mixedNumber(y2)}$.`,
       ],
       choices: choices(label(y2), [
         {
@@ -761,8 +763,10 @@ function variationConstant(r: Random, axes?: Record<string, string>): Built {
         answer: "",
         hint: `Direct variation means $${ctx.y}=k${ctx.x}$ for one constant $k$. Use the pair $${ctx.x}=${x1}$, $${ctx.y}=${y1}$ to find $k$ first.`,
         explanation: [
-          `Direct variation: $${ctx.y}=k${ctx.x}$. From $${y1}=k\\cdot ${x1}$, $k=\\frac{${y1}}{${x1}}=${tex(k)}$.`,
-          `Then $${ctx.y}=${tex(k)}\\cdot ${x2}=${answer}$.`,
+          `"Varies directly" means $${ctx.y}$ is always the same number $k$ times $${ctx.x}$: $${ctx.y}=k${ctx.x}$.`,
+          `Find $k$ from the pair you know. $${y1}=k\\cdot ${x1}$, so divide: $k=\\frac{${y1}}{${x1}}=${tex(k)}$.`,
+          `The same $k$ works for every pair, so $${ctx.y}=${tex(k)}\\cdot ${x2}=${answer}$.`,
+          `When $${ctx.x}=${x2}$, $${ctx.y}=${answer}$.`,
         ],
         choices: choices(`$${answer}$`, [
           qc(
@@ -806,8 +810,10 @@ function variationConstant(r: Random, axes?: Record<string, string>): Built {
         answer: "",
         hint: `Inverse variation means $${ctx.y}=\\frac{k}{${ctx.x}}$, so $${ctx.x}${ctx.y}$ is constant. Use $${ctx.x}=${x1}$ and $${ctx.y}=${y1}$ to find $k$ first.`,
         explanation: [
-          `Inverse variation: $${ctx.y}=\\frac{k}{${ctx.x}}$, so $k=${ctx.x}${ctx.y}=${x1}\\cdot ${y1}=${K}$.`,
-          `Then $${ctx.y}=\\frac{${K}}{${x2}}=${answer}$.`,
+          `"Varies inversely" means the product $${ctx.x}\\cdot ${ctx.y}$ always equals the same number $k$: $${ctx.y}=\\frac{k}{${ctx.x}}$. As one grows, the other shrinks.`,
+          `Find $k$ from the pair you know: $k=${x1}\\cdot ${y1}=${K}$.`,
+          `The product stays ${K}, so $${ctx.y}=\\frac{${K}}{${x2}}=${answer}$.`,
+          `When $${ctx.x}=${x2}$, $${ctx.y}=${answer}$.`,
         ],
         choices: choices(`$${answer}$`, [
           qc(
@@ -903,11 +909,13 @@ function variationConstant(r: Random, axes?: Record<string, string>): Built {
           : `Inverse variation has the form $${ctx.y}=\\frac{k}{${ctx.x}}$. Substitute $${ctx.x}=${x1}$ and $${ctx.y}=${y1}$ and solve for $k$.`,
         explanation: direct
           ? [
-              `Direct variation: $${ctx.y}=k${ctx.x}$. Substituting gives $${y1}=k\\cdot ${x1}$, so $k=${tex(k)}$.`,
+              `"Varies directly" means $${ctx.y}$ is always the same number $k$ times $${ctx.x}$: $${ctx.y}=k${ctx.x}$.`,
+              `Put in the pair you know: $${y1}=k\\cdot ${x1}$. Divide both sides by ${x1}: $k=${tex(k)}$.`,
               `The equation is $${correct}$.`,
             ]
           : [
-              `Inverse variation: $${ctx.y}=\\frac{k}{${ctx.x}}$. Substituting gives $${y1}=\\frac{k}{${x1}}$, so $k=${x1}\\cdot ${y1}=${x1 * y1}$.`,
+              `"Varies inversely" means the product of the two quantities stays the same number $k$: $${ctx.y}=\\frac{k}{${ctx.x}}$.`,
+              `Put in the pair you know: $${y1}=\\frac{k}{${x1}}$. Multiply both sides by ${x1}: $k=${x1}\\cdot ${y1}=${x1 * y1}$.`,
               `The equation is $${correct}$.`,
             ],
         choices: choices(`$${correct}$`, candidates),
@@ -965,7 +973,7 @@ function variationConstant(r: Random, axes?: Record<string, string>): Built {
       ];
     }
     reason.unshift(
-      `Check each row for a constant ratio $y\\div x$ and a constant product $xy$. The ratios are ${xs.map((x, i) => `$${tex(q(ys[i]!, x))}$`).join(", ")}; the products are ${xs.map((x, i) => `$${x * ys[i]!}$`).join(", ")}.`,
+      `In direct variation $y\\div x$ is the same in every row; in inverse variation $x\\cdot y$ is. Check each row for both. The ratios are ${xs.map((x, i) => `$${tex(q(ys[i]!, x))}$`).join(", ")}; the products are ${xs.map((x, i) => `$${x * ys[i]!}$`).join(", ")}.`,
     );
     const [x1, x2, x3] = xs as [number, number, number];
     const [y1, y2, y3] = ys as [number, number, number];
@@ -1050,6 +1058,9 @@ function variationConstant(r: Random, axes?: Record<string, string>): Built {
           : `Inverse variation means $y=\\frac{k}{x}$. Compare $y$ at $x=${a}$ with $y$ at $x=${b}$ using the same $k$ and divide the second by the first.`,
         explanation: [
           direct
+            ? `"Varies directly" means $y=kx$ for one number $k$, so $y$ grows by the same factor as $x$.`
+            : `"Varies inversely" means $y=\\frac{k}{x}$ for one number $k$, so $y$ changes by the flipped factor.`,
+          direct
             ? `With $y=kx$, the new value is $k\\cdot ${b}$ and the old value is $k\\cdot ${a}$. Their ratio is $\\frac{${b}}{${a}}=${tex(factor)}$.`
             : `With $y=\\frac{k}{x}$, the new value is $\\frac{k}{${b}}$ and the old value is $\\frac{k}{${a}}$. Their ratio is $\\frac{${a}}{${b}}=${tex(factor)}$.`,
           `So ${times(factor)}.`,
@@ -1097,12 +1108,16 @@ function variationConstant(r: Random, axes?: Record<string, string>): Built {
       hint: `Substitute $${ctx.x}=${x1}$ and $${ctx.y}=${y1}$ into $${form}$ and solve for $k$.`,
       explanation: direct
         ? [
-            `Substitute: $${y1}=k\\cdot ${x1}$.`,
-            `Divide both sides by ${x1}: $k=\\frac{${y1}}{${x1}}=${tex(constant)}$.`,
+            `The constant of variation $k$ is the fixed number in $${form}$.`,
+            `Put in the pair you know: $${y1}=k\\cdot ${x1}$.`,
+            `Divide both sides by ${x1} to get $k$ alone: $k=\\frac{${y1}}{${x1}}=${tex(constant)}$.`,
+            `The constant of variation is $k=${tex(constant)}$.`,
           ]
         : [
-            `Substitute: $${y1}=\\frac{k}{${x1}}$.`,
-            `Multiply both sides by ${x1}: $k=${x1}\\cdot ${y1}=${x1 * y1}$.`,
+            `The constant of variation $k$ is the fixed number in $${form}$.`,
+            `Put in the pair you know: $${y1}=\\frac{k}{${x1}}$.`,
+            `Multiply both sides by ${x1} to get $k$ alone: $k=${x1}\\cdot ${y1}=${x1 * y1}$.`,
+            `The constant of variation is $k=${x1 * y1}$.`,
           ],
       choices: choices(
         m(constant),
