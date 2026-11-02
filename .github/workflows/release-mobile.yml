@@ -35,7 +35,7 @@ jobs:
   # ---- decide whether this push is actually a release ---------------------
   gate:
     name: Gate · version-change detect
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       release: ${{ steps.decide.outputs.release }}
       version: ${{ steps.decide.outputs.version }}
@@ -319,7 +319,7 @@ jobs:
     name: Android · build + Play internal
     needs: gate
     if: needs.gate.outputs.do_android == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Initialize verified client trust
         id: ci-trust
