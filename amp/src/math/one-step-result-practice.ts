@@ -555,12 +555,17 @@ export const stepReasonTable = chainFamily({
   render: (e, _ax, r) => {
     const { a, b, x } = e;
     const move = (n: number) => (n > 0 ? R.sub : R.add);
+    // What each move did, in words, with this problem's numbers.
+    const moved = (n: number) =>
+      n > 0 ? `subtract ${n} from both sides` : `add ${-n} to both sides`;
     let lines: string[];
     let reasons: string[];
+    let did: string[];
     if (e.form === "two-step") {
       const c = a * x + b;
       lines = [`${poly([a], ["x"], b)}=${c}`, `${a}x=${c - b}`, `x=${x}`];
       reasons = [move(b), R.div];
+      did = [moved(b), `divide both sides by ${a}`];
     } else if (e.form === "fraction-coefficient") {
       const c = x + b;
       if (c === 0) throw new Error("Need three retries");
@@ -570,6 +575,7 @@ export const stepReasonTable = chainFamily({
         `x=${a * (c - b)}`,
       ];
       reasons = [move(b), R.mul];
+      did = [moved(b), `multiply both sides by ${a}`];
     } else {
       const c = a * (x + b);
       lines = [
@@ -579,7 +585,24 @@ export const stepReasonTable = chainFamily({
         `x=${x}`,
       ];
       reasons = [R.dist, move(a * b), R.div];
+      did = [
+        `multiply the ${a} outside the parentheses by each term inside`,
+        moved(a * b),
+        `divide both sides by ${a}`,
+      ];
     }
+    const meaning: Record<string, string> = {
+      [R.add]:
+        "The addition property of equality says adding the same number to both sides keeps them equal.",
+      [R.sub]:
+        "The subtraction property of equality says subtracting the same number from both sides keeps them equal.",
+      [R.mul]:
+        "The multiplication property of equality says multiplying both sides by the same number keeps them equal.",
+      [R.div]:
+        "The division property of equality says dividing both sides by the same nonzero number keeps them equal.",
+      [R.dist]:
+        "The distributive property says a number times a sum equals the number times each part, added.",
+    };
     const show = (rs: string[]) =>
       rs.map((t, i) => `${i + 1}: ${t}`).join("; ");
     const correct = show(reasons);
@@ -594,7 +617,13 @@ export const stepReasonTable = chainFamily({
     const feedback = (label: string) => {
       const rs = label.split("; ").map((p) => p.replace(/^\d+: /, ""));
       const i = rs.findIndex((s, k) => s !== reasons[k]);
-      return `Step ${i + 1} is not named correctly. Compare line ${i + 1} with line ${i + 2} and name what was done to get from one to the other.`;
+      const named = rs[i]!;
+      const what = `Step ${i + 1} goes from line ${i + 1} to line ${i + 2}, where you ${did[i]}.`;
+      if (rs.length > 1 && rs.every((s, k) => s === reasons[rs.length - 1 - k]))
+        return `This list is in reverse order. ${what} Name the steps in the order they happen.`;
+      if (named === "Commutative property")
+        return `The commutative property only swaps the order of terms. ${what} That is the distributive property.`;
+      return `Step ${i + 1} names the ${named.toLowerCase()}, the opposite operation. ${what} Name the operation that was done to both sides.`;
     };
     const work = lines.map((l, i) => `Line ${i + 1}: ${m(l)}.`).join(" ");
     const wrong = wrongLabels
@@ -608,11 +637,12 @@ export const stepReasonTable = chainFamily({
       wrong,
       `Compare ${m(lines[0]!)} with the line after it: what was done to both sides, or to the group, to get ${m(lines[1]!)}? Then do the same for each later pair of lines.`,
       [
-        ...reasons.map(
-          (t, i) =>
-            `Step ${i + 1}, from $${lines[i]}$ to $${lines[i + 1]}$: ${t}.`,
-        ),
-        `Only one list names these properties in this order.`,
+        `A property justifies a step when it names the rule that makes the new line follow from the line before it.`,
+        ...reasons.flatMap((t, i) => [
+          `Step ${i + 1}, from $${lines[i]}$ to $${lines[i + 1]}$: ${did[i]}. That is the ${t.toLowerCase()}.`,
+          meaning[t]!,
+        ]),
+        `So the list is ${correct}.`,
       ],
     );
   },

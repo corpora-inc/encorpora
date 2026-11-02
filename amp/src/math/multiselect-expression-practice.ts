@@ -583,6 +583,17 @@ const mulLin = (p: number, q: number, rr: number, s: number): Poly => [
 ];
 const eqPoly = (x: Poly, y: Poly) => x.every((v, i) => v === y[i]);
 
+/** Teaching lines around the verdicts; the family oracle rebuilds them from
+ * the prompt, so change both together. */
+export const trinomialLead = (variant: string, givenTex: string) => [
+  variant === "given-trinomial"
+    ? `Two expressions are equivalent when they are equal for every value of $x$. To check, expand each choice and compare it with $${givenTex}$.`
+    : `Two expressions are equivalent when they are equal for every value of $x$. To check, expand $${givenTex}$ and each choice, then compare.`,
+  "To expand a product of two binomials (expressions with two terms), multiply every term of one by every term of the other. Then combine like terms, the terms with the same power of $x$.",
+];
+export const trinomialTail =
+  "So the equivalent expressions are exactly the ones that expand to the same $x^2$ term, $x$ term and constant term.";
+
 function equivalentTrinomial(r: Random) {
   const variant = pick(r, ["given-trinomial", "given-factored"]);
   let p = 1;
@@ -599,36 +610,75 @@ function equivalentTrinomial(r: Random) {
   }
   const target = mulLin(p, q, rr, s);
   const [a, b, c] = target;
-  type Cand = { tex: string; poly: Poly };
+  /** `fits` says why a matching form matches; `slip` names the error in a
+   * form that does not match. */
+  type Cand = { tex: string; poly: Poly; fits?: string; slip?: string };
   const f1: Cand = { tex: `${lin(p, q)}${lin(rr, s)}`, poly: target };
+  const middle = "$x$ coefficient (the number multiplying $x$)";
   const cands: Cand[] = [
     f1,
-    { tex: `${lin(-p, -q)}${lin(-rr, -s)}`, poly: mulLin(-p, -q, -rr, -s) },
+    {
+      tex: `${lin(-p, -q)}${lin(-rr, -s)}`,
+      poly: mulLin(-p, -q, -rr, -s),
+      fits: "Both factors have every sign changed, and two sign changes cancel in a product.",
+    },
     {
       tex: `${polyTex([0, p, 0])}${lin(rr, s)}${q < 0 ? "-" : "+"}${Math.abs(q)}${lin(rr, s)}`,
       poly: [p * rr, p * s + q * rr, q * s],
+      fits: "It is each term of the first factor times the whole second factor, a step partway through expanding.",
     },
     {
       tex: `${polyTex([p * rr, 0, 0])}${term(p * s, "x", false)}${term(q * rr, "x", false)}${term(q * s, "", false)}`,
       poly: [p * rr, p * s + q * rr, q * s],
+      fits: "It is the four products before the two $x$ terms are combined.",
     },
     { tex: `x${lin(a, b)}${term(c, "", false)}`, poly: [a, b, c] },
     // errors
-    { tex: `${lin(p, q)}${lin(rr, -s)}`, poly: mulLin(p, q, rr, -s) },
-    { tex: `${lin(p, s)}${lin(rr, q)}`, poly: mulLin(p, s, rr, q) },
-    { tex: `${lin(p, -q)}${lin(rr, s)}`, poly: mulLin(p, -q, rr, s) },
-    { tex: `${lin(-p, -q)}${lin(rr, s)}`, poly: mulLin(-p, -q, rr, s) },
+    {
+      tex: `${lin(p, q)}${lin(rr, -s)}`,
+      poly: mulLin(p, q, rr, -s),
+      slip: "The constant in the second factor has the wrong sign.",
+    },
+    {
+      tex: `${lin(p, s)}${lin(rr, q)}`,
+      poly: mulLin(p, s, rr, q),
+      slip: "The two constants are swapped between the factors.",
+    },
+    {
+      tex: `${lin(p, -q)}${lin(rr, s)}`,
+      poly: mulLin(p, -q, rr, s),
+      slip: "The constant in the first factor has the wrong sign.",
+    },
+    {
+      tex: `${lin(-p, -q)}${lin(rr, s)}`,
+      poly: mulLin(-p, -q, rr, s),
+      slip: "Only one factor has its signs changed, which changes the sign of the whole product.",
+    },
     {
       tex: `${polyTex([0, p, 0])}${lin(rr, s)}${q < 0 ? "+" : "-"}${Math.abs(q)}${lin(rr, s)}`,
       poly: [p * rr, p * s - q * rr, -q * s],
+      slip: "The second part has the wrong sign: the constant of the first factor keeps its own sign.",
     },
     {
       tex: `${polyTex([p * rr, 0, 0])}${term(p * s, "x", false)}${term(-q * rr, "x", false)}${term(q * s, "", false)}`,
       poly: [p * rr, p * s - q * rr, q * s],
+      slip: "One of the two middle products has the wrong sign.",
     },
-    { tex: `x${lin(a, b + 1)}${term(c, "", false)}`, poly: [a, b + 1, c] },
-    { tex: `x${lin(a, b)}${term(-c, "", false)}`, poly: [a, b, -c] },
-    { tex: `x${lin(a, c)}${term(b, "", false)}`, poly: [a, c, b] },
+    {
+      tex: `x${lin(a, b + 1)}${term(c, "", false)}`,
+      poly: [a, b + 1, c],
+      slip: `Its ${middle} is one more than it should be.`,
+    },
+    {
+      tex: `x${lin(a, b)}${term(-c, "", false)}`,
+      poly: [a, b, -c],
+      slip: "Its constant term has the wrong sign.",
+    },
+    {
+      tex: `x${lin(a, c)}${term(b, "", false)}`,
+      poly: [a, c, b],
+      slip: `It swaps the ${middle} and the constant term.`,
+    },
   ];
   let shown: Cand[];
   let givenTex: string;
@@ -639,10 +689,26 @@ function equivalentTrinomial(r: Random) {
     givenTex = f1.tex;
     const std: Cand[] = [
       { tex: polyTex(target), poly: target },
-      { tex: polyTex([a, c, b]), poly: [a, c, b] },
-      { tex: polyTex([a, -b, c]), poly: [a, -b, c] },
-      { tex: polyTex([a, b, -c]), poly: [a, b, -c] },
-      { tex: polyTex([a, b + 1, c]), poly: [a, b + 1, c] },
+      {
+        tex: polyTex([a, c, b]),
+        poly: [a, c, b],
+        slip: `It swaps the ${middle} and the constant term.`,
+      },
+      {
+        tex: polyTex([a, -b, c]),
+        poly: [a, -b, c],
+        slip: `Its ${middle} has the wrong sign.`,
+      },
+      {
+        tex: polyTex([a, b, -c]),
+        poly: [a, b, -c],
+        slip: "Its constant term has the wrong sign.",
+      },
+      {
+        tex: polyTex([a, b + 1, c]),
+        poly: [a, b + 1, c],
+        slip: `Its ${middle} is one more than it should be.`,
+      },
     ];
     shown = [...std, ...cands.slice(2)];
   }
@@ -660,16 +726,19 @@ function equivalentTrinomial(r: Random) {
       .map((x) => {
         const holds = eqPoly(x.poly, target);
         const expanded = x.tex === polyTex(x.poly);
+        // A slip that happens to give the same product is not a slip.
+        const why = holds ? x.fits : x.slip;
+        const note = why ? ` ${why}` : "";
         return st(
           `$${x.tex}$`,
           holds,
           holds
             ? expanded
-              ? `$${x.tex}$ is the expanded form of $${givenTex}$.`
-              : `Expanding $${x.tex}$ gives $${polyTex(target)}$.`
+              ? `Multiplying out $${givenTex}$ and combining like terms gives exactly $${x.tex}$.`
+              : `Expanding $${x.tex}$ gives $${polyTex(target)}$, the same trinomial.${note}`
             : expanded
-              ? `$${x.tex}$ is a different trinomial from $${polyTex(target)}$.`
-              : `Expanding $${x.tex}$ gives $${polyTex(x.poly)}$, not $${polyTex(target)}$.`,
+              ? `$${x.tex}$ is a different trinomial from $${polyTex(target)}$.${note}`
+              : `Expanding $${x.tex}$ gives $${polyTex(x.poly)}$, not $${polyTex(target)}$.${note}`,
         );
       }),
   );
@@ -678,6 +747,8 @@ function equivalentTrinomial(r: Random) {
     pool,
     total: 5,
     k: r(2, 3),
+    lead: trinomialLead(variant, givenTex),
+    tail: [trinomialTail],
     context:
       variant === "given-trinomial"
         ? `Look at the trinomial $${givenTex}$.`
@@ -726,6 +797,21 @@ const regContexts = [
     who: "A person who exercises for",
   },
 ];
+/** Teaching lines around the verdicts; the family oracle rebuilds them from
+ * the prompt, so change both together. */
+export const regressionLead = (
+  eq: string,
+  slope: string,
+  intercept: string,
+) => [
+  `A line of best fit is a line drawn close to the data points. In $${eq}$, $\\hat{y}$, read "$y$-hat", is the predicted value for an input $x$.`,
+  `The slope, the number multiplying $x$, is $${slope}$. It is the predicted change in $\\hat{y}$ when $x$ goes up by $1$.`,
+  `The intercept, the number added on, is $${intercept}$. It is the prediction at $x=0$.`,
+  "To predict, substitute the value of $x$ and work out $\\hat{y}$.",
+];
+export const regressionTail =
+  "So the true statements are exactly the ones that match the line's predictions, its slope and its intercept.";
+
 function regressionPrediction(r: Random) {
   const c = pick(r, regContexts);
   const negative = r(0, 1) === 1;
@@ -737,15 +823,31 @@ function regressionPrediction(r: Random) {
   const pred = (x: number) => mT * x + bT; // tenths
   const eq = `\\hat{y}=${mT < 0 ? "-" : ""}${fmt(Math.abs(mT))}x+${fmt(bT)}`;
   const pool: Statement[] = [];
+  const work = (x: number) =>
+    `$\\hat{y}=${fmt(mT)}(${x})+${fmt(bT)}=${fmt(pred(x))}$`;
   for (const x of [2, 4, 6, 8]) {
+    const slips = new Map<number, string>([
+      [
+        mT * x,
+        ` $${fmt(mT * x)}$ is only the slope times $${x}$. It leaves out the intercept, $${fmt(bT)}$.`,
+      ],
+      [
+        pred(x) + mT,
+        ` $${fmt(pred(x) + mT)}$ is the prediction for $${x + 1}$ ${c.xu}s, one ${c.xu} too many.`,
+      ],
+      [
+        bT - mT * x,
+        ` $${fmt(bT - mT * x)}$ subtracts the slope times $${x}$ instead of adding it.`,
+      ],
+    ]);
     for (const v of [pred(x), mT * x, pred(x) + mT, bT - mT * x]) {
       pool.push(
         st(
           `The line predicts $${fmt(v)}$ ${c.yu} for $${x}$ ${x === 1 ? c.xu : `${c.xu}s`}`,
           v === pred(x),
           v === pred(x)
-            ? `Substituting $x=${x}$ gives $\\hat{y}=${fmt(pred(x))}$.`
-            : `Substituting $x=${x}$ gives $\\hat{y}=${fmt(pred(x))}$, not $${fmt(v)}$.`,
+            ? `Substituting $x=${x}$ gives ${work(x)}.`
+            : `Substituting $x=${x}$ gives ${work(x)}, not $${fmt(v)}$.${slips.get(v) ?? ""}`,
         ),
       );
     }
@@ -756,8 +858,8 @@ function regressionPrediction(r: Random) {
         `Each added ${c.xu} changes the predicted ${c.y} by $${fmt(v)}$`,
         v === mT,
         v === mT
-          ? `The slope $${fmt(mT)}$ is the predicted change in $\\hat{y}$ for each added unit of $x$.`
-          : `The predicted change per added ${c.xu} is the slope, $${fmt(mT)}$.`,
+          ? `The slope, the number multiplying $x$, is $${fmt(mT)}$. It is the predicted change in $\\hat{y}$ for each added ${c.xu}.`
+          : `The predicted change per added ${c.xu} is the slope, the number multiplying $x$, which is $${fmt(mT)}$.${v === -mT ? " This statement has the opposite sign." : v === bT ? ` $${fmt(bT)}$ is the intercept, the prediction at $x=0$.` : ""}`,
       ),
     );
   }
@@ -767,8 +869,8 @@ function regressionPrediction(r: Random) {
         `For $0$ ${c.xu}s, the predicted ${c.y} is $${fmt(v)}$`,
         v === bT,
         v === bT
-          ? `At $x=0$, $\\hat{y}$ is the intercept, $${fmt(bT)}$.`
-          : `At $x=0$, $\\hat{y}=${fmt(bT)}$, the intercept.`,
+          ? `At $x=0$ the $x$-term is 0, so $\\hat{y}$ equals the intercept, $${fmt(bT)}$.`
+          : `At $x=0$ the $x$-term is 0, so $\\hat{y}=${fmt(bT)}$, the intercept.${v === mT ? ` $${fmt(mT)}$ is the slope.` : ` $${fmt(v)}$ is the prediction for $1$ ${c.xu}.`}`,
       ),
     );
   }
@@ -784,7 +886,7 @@ function regressionPrediction(r: Random) {
       st(
         `The predicted ${c.y} is greater for $${hi}$ ${c.xu}s than for $${lo}$ ${lo === 1 ? c.xu : `${c.xu}s`}`,
         more,
-        `The line predicts $${fmt(pred(hi))}$ for $${hi}$ and $${fmt(pred(lo))}$ for $${lo}$, so the prediction for $${hi}$ is ${more ? "greater" : "less"}.`,
+        `The slope is ${mT < 0 ? "negative, so predictions go down" : "positive, so predictions go up"} as $x$ grows. The line predicts $${fmt(pred(hi))}$ for $${hi}$ and $${fmt(pred(lo))}$ for $${lo}$, so the prediction for $${hi}$ is ${more ? "greater" : "less"}.`,
       ),
     );
   }
@@ -793,6 +895,8 @@ function regressionPrediction(r: Random) {
     pool: dedupe(pool),
     total: 5,
     k: r(2, 3),
+    lead: regressionLead(eq, fmt(mT), fmt(bT)),
+    tail: [regressionTail],
     context: `A line of best fit for ${c.x} ($x$) and ${c.y} ($\\hat{y}$) is $${eq}$. The data have $x$ between $0$ and $10$.`,
     ask: (k) => `Select the ${k} true statements.`,
     hint: () =>
