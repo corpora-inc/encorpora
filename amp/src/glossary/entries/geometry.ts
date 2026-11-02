@@ -125,17 +125,16 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "base",
     forms: ["base", "bases"],
     plain:
-      "The side of a triangle, rectangle or parallelogram that its height is measured from, at a right angle. Any side can be the base.",
+      "The side of a triangle, rectangle or parallelogram measured from, at a right angle, to the corner or side across from it. Any side can be the base.",
     example:
-      "A triangle with base 6 and height 4 has area $\\tfrac{1}{2} \\times 6 \\times 4 = 12$.",
+      "Stand a triangle on any of its sides, and that side is its base. A rectangle 5 wide and 3 tall, standing on a long side, has base 5.",
     uses: [
       "side",
       "triangle",
       "rectangle",
       "parallelogram",
-      "height",
       "right-angle",
-      "area",
+      "corner",
     ],
     band: "5",
     autoLink: false,
@@ -739,7 +738,7 @@ export const geometryEntries: GlossaryEntry[] = [
       "A triangle with base 6 and height 4 has area $\\tfrac{1}{2} \\times 6 \\times 4 = 12$.",
     uses: [
       "distance",
-      "base-shape",
+      "base-flat-shape",
       "right-angle",
       "triangle",
       "area",
@@ -1800,9 +1799,9 @@ export const geometryEntries: GlossaryEntry[] = [
     ],
     plain:
       "A quadrilateral with exactly one pair of parallel sides. The parallel sides are its bases; the other two are its legs.",
-    uses: ["quadrilateral", "parallel", "base-shape"],
+    uses: ["quadrilateral", "parallel"],
     band: "4",
-    noLink: ["legs"],
+    noLink: ["legs", "bases"],
   },
   {
     id: "triangle",
