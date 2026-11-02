@@ -154,32 +154,36 @@ export const graphicalLessons: Lesson[] = [
     id: "bar-chart-totals",
     title: "Combine counts from a chart",
     summary:
-      "Each bar shows one category's count; add the requested categories to find a total.",
+      "A bar chart shows counts with bars. Each bar is one group, like oak trees. Read how tall a bar is on the scale, the numbers up the side. That number is the count. The total is how many there are in all. To find it, add the counts of the groups you need.",
     templateIds: ["bar-chart-total"],
+    senses: { scale: "scale-axis" },
+    noLink: ["part"],
     objectives: [
-      "Read category labels and value scales.",
-      "Add all named category counts.",
+      "Read each bar's count on the scale.",
+      "Add the counts of all the groups a question names.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Read each bar before adding",
         paragraphs: [
-          "A bar chart gives one count for each category. If a question asks for the total across several categories, first read their heights using the chart's scale, then add those counts.",
+          "A bar chart is a picture of counts. Each bar stands for one group of things, like oak trees. A taller bar means more things.",
+          "The scale is the row of numbers up the side. To read a bar, look across from its top to the scale. That number is the count for the group.",
+          "To find how many in all, read every bar you need first. Then add those counts.",
         ],
       },
       {
         title: "Read what each bar counts",
         paragraphs: [
-          "Each bar represents one category. Its height shows the count on the vertical scale. The label above each bar gives that same count.",
-          "The category name tells which objects are counted. The vertical-axis label tells the unit: this chart counts trees.",
+          "The name under each bar tells which group it counts. The words beside the scale tell what is counted. In these charts, it is trees.",
+          "Sometimes each line on the scale counts by 1. Sometimes it counts by 2 or 5. So read the numbers on the scale, not the number of lines.",
         ],
       },
       {
-        title: "Find the combined count",
+        title: "Find the total",
         paragraphs: [
-          "When categories do not overlap, add their counts to find how many objects are represented altogether. Include each category exactly once.",
-          "Read the numbers before calculating. Counting bars tells how many categories there are, not how many trees there are.",
+          "Each tree is in only one group. So add the counts to find how many trees there are in all. Add each group once.",
+          "Do not count the bars. The number of bars tells how many groups there are, not how many trees.",
         ],
       },
     ],
@@ -188,19 +192,23 @@ export const graphicalLessons: Lesson[] = [
         stage: "formal",
         title: "Bar values and totals",
         paragraphs: [
-          "A bar's height represents the count for its category on the chart's stated scale. When categories do not overlap and cover the requested group, add their counts to obtain the total.",
+          "A bar's height on the scale is the count for its group.",
+          "When each thing is in just one group, the total is all the groups' counts added together.",
         ],
       },
     ],
     workedExample: {
       prompt:
         "A chart shows 4 oak trees, 7 pine trees, and 3 maple trees. How many trees are shown?",
-      steps: ["Add the three category counts.", "4 + 7 + 3 = 14."],
+      steps: [
+        "Each tree is in just one group, so add the three counts to find how many in all.",
+        "4 + 7 + 3 = 14. There are 14 trees.",
+      ],
       answer: "14",
     },
     pitfalls: [
-      "Do not add tick labels from the axis.",
-      "Do not count the same category twice.",
+      "Do not add the numbers on the scale. Add the counts the bars show.",
+      "Do not count the same group twice.",
     ],
     parentGuide:
       "Make a chart of three kinds of household objects and compare its total with a direct count.",
@@ -209,53 +217,59 @@ export const graphicalLessons: Lesson[] = [
     id: "bar-chart-comparison",
     title: "Compare two chart categories",
     summary:
-      "The difference between two bars tells how many more one category has.",
+      "A bar chart shows counts with bars. Each bar is one group. The scale is the row of numbers up the side. A bar's height on the scale is its count. To find how many more one group has than another, subtract, or take away, the smaller count from the bigger count. The answer is called the difference.",
     templateIds: ["bar-chart-difference"],
+    senses: { scale: "scale-axis", difference: "difference-subtract" },
     objectives: [
-      "Select the two categories named in a question.",
+      "Find the two groups a question names.",
       "Subtract to find how many more.",
     ],
     sections: [
       {
         stage: "intuition",
-        title: "Compare the two requested counts",
+        title: "Compare the two counts",
         paragraphs: [
-          "If one bar shows twelve and another shows eight, the first has four more. You need the difference between their heights, not the sum of every bar on the chart.",
+          "A bar chart shows counts with bars. Each bar is one group, like oak trees. The scale is the row of numbers up the side. Look across from the top of a bar to the scale to read its count.",
+          "Say one bar shows 12 and another shows 8. The first group has 4 more, because 12 − 8 = 4. The answer to a subtraction is called the difference.",
         ],
       },
       {
-        title: "Select the relevant bars",
+        title: "Use only the bars you need",
         paragraphs: [
-          "A comparison question may name only two categories even when the chart has more bars. Read the two requested counts and leave other categories out of the calculation.",
-          "Both counts use the same unit and scale. Compare the values represented by the bars rather than measuring their physical heights on the page.",
+          "A question may name only two groups, even when the chart has more bars. Read those two counts. Leave the other bars out.",
+          "Both bars use the same scale. Read the numbers on the scale. Do not measure the bars with a ruler.",
         ],
       },
       {
-        title: "Find the unmatched amount",
+        title: "Match, then count what is left",
         paragraphs: [
-          "Imagine matching one tree from the smaller group with one from the larger group. The unmatched trees show how many more the larger group contains.",
-          "Subtract the smaller count from the larger count. Check by adding the difference back to the smaller count.",
+          "Picture matching each tree in the smaller group with one tree in the bigger group. Some trees in the bigger group have no partner. Those are how many more the bigger group has.",
+          "Subtracting finds that number faster. Subtract the smaller count from the bigger count. Check by adding the difference back to the smaller count.",
         ],
       },
     ],
     closingSections: [
       {
         stage: "formal",
-        title: "Compare bar heights numerically",
+        title: "Compare bar heights with numbers",
         paragraphs: [
-          "When bars use one common scale, the difference between two category counts is the larger count minus the smaller. The distance between their tops represents this difference, not either bar's full height.",
+          "When two bars use the same scale, how many more is the bigger count minus the smaller count.",
+          "On the chart, read it on the scale: count from the top of the shorter bar up to the top of the taller bar, using the scale's numbers.",
         ],
       },
     ],
     workedExample: {
       prompt:
         "A chart shows 9 oak trees and 5 pine trees. How many more oak trees are there?",
-      steps: ["Find the difference: 9 − 5 = 4.", "Check: 5 + 4 = 9."],
+      steps: [
+        "Match each pine tree with an oak tree. The oak trees left with no partner are how many more. Taking away the smaller count finds them: 9 − 5 = 4.",
+        "Check by adding back: the pine trees plus the extra oak trees should make the oak count. 5 + 4 = 9, so there are 4 more oak trees.",
+      ],
       answer: "4",
     },
     pitfalls: [
-      "“How many more” asks for a difference, not a combined total.",
-      "Use only the named categories.",
+      "How many more asks you to subtract, not to add.",
+      "Use only the groups the question names.",
     ],
     parentGuide:
       "Arrange two rows of counters and pair them before connecting the unmatched counters to subtraction.",
@@ -264,32 +278,35 @@ export const graphicalLessons: Lesson[] = [
     id: "clock-duration",
     title: "Count elapsed minutes",
     summary:
-      "Count forward from the starting clock time to the ending time to find how long passed.",
+      "Elapsed time is how much time passes from a start time to an end time. One hour is 60 minutes. To find it, count on in minutes from the start time to the end time. If the end time is in a later hour, count to the next o'clock first.",
     templateIds: ["clock-elapsed-minutes"],
+    noLink: ["boundary"],
     objectives: [
-      "Read an analog starting time.",
-      "Find elapsed time across an hour boundary.",
+      "Read a start time on a clock with hands.",
+      "Find the minutes that pass, even when the hour changes.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Move from start to finish",
         paragraphs: [
-          "If a trip starts at 2:45 and ends at 3:10, count fifteen minutes to 3:00 and ten more to 3:10. That is twenty-five minutes altogether. Crossing an hour does not restart time.",
+          "Say a trip starts at 2:45 and ends at 3:10. Count on from the start. At 2:45 the long hand is at 9. Moving to 12 passes 3 numbers, and each is 5 minutes. So from 2:45 to 3:00 is 15 minutes. From 3:00 to 3:10 is 10 more minutes. In all, 15 + 10 = 25 minutes.",
+          "Going past 3:00 does not start the count over. Keep adding.",
         ],
       },
       {
         title: "Read both hands",
         paragraphs: [
-          "The shorter hand indicates the hour. The longer hand indicates minutes: each numbered step represents five minutes.",
-          "Between hours, the short hand moves gradually toward the next number. At 3:30 it is halfway between 3 and 4, not exactly on 3.",
+          "A clock has two hands. The short hand shows the hour. The long hand shows the minutes. Each time the long hand moves from one number to the next, 5 minutes pass.",
+          "The short hand moves slowly between the numbers. At 3:30 it is halfway between 3 and 4, not right on 3.",
         ],
       },
       {
         title: "Count forward",
         paragraphs: [
-          "Count from the starting time to the next convenient hour, then from that hour to the ending time. Add those minute intervals.",
-          "These questions give a later ending time on the same morning, so there is no midnight or next-day ambiguity.",
+          "If the end time is in a later hour, count from the start time to the next o'clock. Then add 60 minutes for each whole hour after that. Then count on to the end time. Add up those minutes.",
+          "If both times are in the same hour, just subtract, or take away, the minutes. From 3:15 to 3:40 is 40 − 15 = 25 minutes.",
+          "In these questions, the end time is later in the same morning.",
         ],
       },
     ],
@@ -298,7 +315,8 @@ export const graphicalLessons: Lesson[] = [
         stage: "formal",
         title: "Elapsed time",
         paragraphs: [
-          "Elapsed time is the forward difference between an ending clock time and a starting clock time. Crossing an hour or noon does not restart the count; convert to a common minute count or count through the boundary.",
+          "Elapsed time is how long it is from the start time forward to the end time. One hour is 60 minutes.",
+          "Passing an o'clock, or noon, does not start the count over. Count through it and keep adding.",
         ],
       },
     ],
@@ -306,15 +324,15 @@ export const graphicalLessons: Lesson[] = [
       prompt:
         "A lesson begins at 3:45 and ends at 4:20 the same morning. How long does it last?",
       steps: [
-        "From 3:45 to 4:00 is 15 minutes.",
-        "From 4:00 to 4:20 is 20 minutes.",
-        "15 + 20 = 35 minutes.",
+        "The lesson ends in the next hour, so count to 4:00 first. From 3:45 to 4:00 is 15 minutes.",
+        "Then count on to the end time. From 4:00 to 4:20 is 20 minutes.",
+        "Add the two parts: 15 + 20 = 35 minutes.",
       ],
       answer: "35",
     },
     pitfalls: [
-      "An hour contains sixty minutes, not one hundred.",
-      "Elapsed minutes describe a duration, not a clock reading.",
+      "An hour has 60 minutes, not 100.",
+      "The answer is an amount of time, like 35 minutes, not a time on the clock.",
     ],
     parentGuide:
       "Move clock hands forward while counting minutes; include practice where the hour changes.",

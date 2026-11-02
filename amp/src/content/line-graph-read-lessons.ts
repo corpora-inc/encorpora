@@ -6,7 +6,7 @@ export const lineGraphReadMethods: Record<string, ProblemMethod> = {
   "line-graph-reader": {
     goal: "Read values, greatest and least points, changes and comparisons from a line graph.",
     intuition:
-      "A line graph is a list of values in order. Each point stands for one measurement: its place along the bottom names the day or week, and its height tells the amount. The line joins neighboring points so you can see whether the amount went up or down.",
+      "A line graph is a picture of how an amount goes up and down over time. Each point is a dot that shows one measurement. Its place along the bottom tells the day or week. Its height tells the amount, read on the scale: the numbers up the side. A line joins each point to the next, so you can see whether the amount went up or down.",
     terms: [
       "scale-axis",
       [
@@ -14,23 +14,25 @@ export const lineGraphReadMethods: Record<string, ProblemMethod> = {
         "Here it is the later value minus the earlier value: positive for an increase, negative for a decrease.",
       ],
     ],
+    senses: { scale: "scale-axis", change: "change" },
     method: [
-      "Check what the vertical scale counts by, then read the height of each point you need against it.",
-      "Write the values you read as a list. A question about the greatest, least or closest value is answered from this list.",
-      "For a change, subtract the earlier value from the later one. For the greatest increase or decrease, find the change for every pair of neighboring points and compare them.",
+      "Check what the scale counts by. Then read the height of each point you need.",
+      "Write the amounts you read as a list, in order. Answer greatest, least or closest questions from the list.",
+      "For a change, subtract the earlier amount from the later one. For the greatest increase, find the change between every pair of neighboring points and pick the biggest one above 0.",
     ],
     watch:
-      "The highest point is not where the line rises the most. A big rise can begin from a low point and end below the maximum.",
+      "The highest point and the biggest rise are different questions. A big rise can start from a low point and still end below the highest point.",
   },
   "dot-plot-arithmetic": {
     goal: "Use every dot of a dot plot to find a total, a range or a missing value.",
     intuition:
-      "Each dot is one measurement. A stack of three dots over 4 means three measurements of 4, so it adds 4 three times. Reading the plot gives a list of numbers, and the question is ordinary arithmetic on that list.",
+      "A number line is a line with numbers in order, evenly spaced. A dot plot puts one dot above a number line for each measurement. A stack of three dots over 4 means three measurements of 4. So 4 is added three times in the total. Reading every dot gives a list of numbers. Then the question is adding or subtracting with that list.",
     terms: ["range-statistics", "mixed-number"],
+    senses: { range: "range-statistics", whole: "whole" },
     method: [
-      "Read every dot and write the list of values, counting a stack of dots once for each dot.",
-      "For the total, add them all. For the range, subtract the least from the greatest. For a missing value, subtract the total of the dots from the given total.",
-      "With mixed numbers, add or subtract the fraction parts on a common denominator and carry whole numbers.",
+      "Write the value of every dot as a list. A stack of dots puts that value in the list once for each dot.",
+      "For the total, add them all. For the range, subtract the least value from the greatest. When one value is missing from a given total, the missing value is the given total minus the total of the dots shown.",
+      "A mixed number, like 2 1/4, is a whole number and a fraction together. In these plots, all the values use the same size of parts, like fourths. Add or subtract the fraction parts, then the whole numbers. If the fraction parts make a whole or more, take out the whole. If a fraction part is too small to subtract from, trade 1 whole for 4 fourths first.",
     ],
     watch:
       "Do not add each different value only once. A value with two dots is added twice.",
@@ -39,9 +41,9 @@ export const lineGraphReadMethods: Record<string, ProblemMethod> = {
 
 export const lineGraphReadPrinciples: Record<string, string> = {
   "line-graph-reader":
-    "A line graph of a quantity against time pairs each time with one value. The value at a time is the height of its point on the vertical scale. The change from time $a$ to time $b$ is $y_b - y_a$: positive means an increase, negative a decrease, and the greatest increase is the largest positive change between consecutive times. The greatest value is the highest point; the line rising steeply does not make a point the highest.",
+    "A line graph pairs each time with one amount, the height of its point on the scale. The change from one time to a later time is the later amount minus the earlier amount. A positive change is an increase and a negative change is a decrease. The greatest increase is the biggest positive change between neighboring times. It need not end at the highest point.",
   "dot-plot-arithmetic":
-    "A dot plot shows a data set with one dot per value. If a value $v$ has $k$ dots, it contributes $k \\times v$ to the total. The range is the greatest value minus the least value. If the total of $n + 1$ values is $T$ and $n$ of them sum to $S$, the remaining value is $T - S$.",
+    "A dot plot shows a list of data with one dot for each value. If a value has 3 dots, it adds 3 times that value to the total. The range is the greatest value minus the least value. If you know the total of all the values and the total of all but one, the missing value is the difference.",
 };
 
 export const lineGraphReadLessons = [
@@ -49,41 +51,44 @@ export const lineGraphReadLessons = [
     id: "line-graph-reader-lesson",
     title: "Reading a line graph",
     summary:
-      "Read heights against the scale, then find greatest, least, change and increases between points.",
+      "A line graph shows how an amount goes up and down over time. Each point, a dot on the graph, has a height read on the scale, the numbers up the side. You can read the greatest and least amounts. You can also find the change from one point to another: the later amount minus the earlier one.",
     templateIds: ["line-graph-reader"],
+    senses: { scale: "scale-axis", change: "change" },
     objectives: [
-      "Read the value of a point against the vertical scale.",
-      "Find the greatest and least values, and a change between two points.",
+      "Read the amount at a point on the scale.",
+      "Find the greatest and least amounts, and the change between two points.",
     ],
     openingTitle: "Each point is one measurement",
     opening: [
-      "A line graph shows how an amount changes over days, weeks or hours. Each point sits above a day and at a height that tells the amount on that day.",
-      "Before reading a height, check what the gridlines count by. If they count by 5, a point halfway between 20 and 30 is at 25, not 24 or 26.",
+      "A line graph shows how an amount changes over days, weeks or hours. The times are along the bottom. Each point sits above one time. Its height on the scale, the numbers up the side, is the amount at that time.",
+      "Gridlines are the lines across the graph. Before reading a height, check what the gridlines count by. If they count by 5, a point halfway between 20 and 30 is at 25.",
+      "Consecutive times are times next to each other, like Day 2 and Day 3. A change is the later amount minus the earlier amount. If the amount went up, the change is positive, more than 0. That is an increase. If it went down, the change is negative, less than 0. That is a decrease.",
     ],
     example: {
       prompt:
         "A graph shows temperatures 40, 45, 58, 50 and 60 on Days 1 to 5. Between which two consecutive days did the temperature increase the most?",
       steps: [
-        "Find each change by subtracting the earlier value: Day 1 to 2 is $45 - 40 = 5$; Day 2 to 3 is $58 - 45 = 13$; Day 3 to 4 is $50 - 58 = -8$; Day 4 to 5 is $60 - 50 = 10$.",
-        "The greatest increase is the largest positive change, 13, from Day 2 to Day 3.",
-        "Day 5 has the highest temperature, 60, but the rise into it is only 10.",
+        "Consecutive days are days next to each other. Find each change by subtracting the earlier temperature from the later one: Day 1 to 2 is $45 - 40 = 5$. Day 2 to 3 is $58 - 45 = 13$. Day 3 to 4 is $50 - 58 = -8$. Day 4 to 5 is $60 - 50 = 10$.",
+        "The greatest increase is the biggest change above 0. That is 13, from Day 2 to Day 3.",
+        "Day 5 has the highest temperature, 60. But the rise into Day 5 is only 10, so it is not the greatest increase.",
       ],
       answer: "Day 2 to Day 3",
     },
-    methodTitle: "Make a list of values, then compare",
+    methodTitle: "Make a list of amounts, then compare",
     method: [
-      "Read each needed point against the vertical scale and write the values down in order.",
-      "Greatest and least: the largest and smallest on the list. Closest to a number: find each value's distance from that number and take the smallest.",
-      "Change: later value minus earlier value. Greatest increase: the largest positive change between neighbors; greatest decrease: the most negative.",
+      "Read each point you need on the scale, and write the amounts down in order.",
+      "Greatest and least: the biggest and smallest numbers on the list. Closest to a number: find how far each amount is from that number, and take the smallest distance.",
+      "Change: later amount minus earlier amount. Greatest increase: the biggest positive change between neighbors. Greatest decrease: the negative change farthest below 0.",
     ],
     formalTitle: "Change between two points",
     formal: [
-      "The change from time $a$ to time $b$ is $y_b - y_a$. It is positive for an increase and negative for a decrease. The greatest value need not follow the greatest increase.",
+      "The change from one time to a later time is the later amount minus the earlier amount. It is positive for an increase and negative for a decrease.",
+      "The greatest amount does not always come right after the greatest increase.",
     ],
     pitfalls: [
-      "Reading a height one gridline off because the scale does not count by 1.",
-      "Choosing the highest point when asked for the greatest increase. The greatest increase is a change between two points.",
-      "Reversing the direction of a change. Subtract the earlier value from the later one.",
+      "Do not read a height one gridline off. Check whether the scale counts by 1, 2, 5 or 10.",
+      "Do not pick the highest point when the question asks for the greatest increase. An increase is a change between two points.",
+      "Do not reverse a change. Subtract the earlier amount from the later one.",
     ],
     parentGuide:
       "Ask your learner to say the scale first, then read two points aloud and subtract before choosing an answer.",
@@ -92,41 +97,45 @@ export const lineGraphReadLessons = [
     id: "dot-plot-arithmetic-lesson",
     title: "Arithmetic from a dot plot",
     summary:
-      "Read every dot, then add, subtract or find a missing value including mixed numbers.",
+      "A number line is a line with numbers in order, evenly spaced. A dot plot puts one dot above a number line for each measurement. Read every dot to make a list of numbers. Then add or subtract to find a total, a missing value or the range: the greatest value minus the least. Some values may be mixed numbers, a whole number and a fraction together, like 2 1/2.",
     templateIds: ["dot-plot-arithmetic"],
+    senses: { range: "range-statistics", whole: "whole" },
     objectives: [
-      "List the values of a dot plot, counting every dot.",
-      "Find a total, a range or a missing value, with whole or mixed numbers.",
+      "Write the values of a dot plot as a list, counting every dot.",
+      "Find a total, a range or a missing value, with whole numbers or mixed numbers.",
     ],
     openingTitle: "One dot is one measurement",
     opening: [
-      "A dot plot puts one dot for each measurement above a number line. If three dots stand over 4, three measurements were 4.",
-      "That means the plot is a list in disguise. Write the list from left to right and the question becomes arithmetic on it.",
+      "A dot plot puts one dot above a number line for each measurement. A number line is a line with numbers in order, evenly spaced. If three dots stand over 4, then three measurements were 4.",
+      "So the plot is really a list. Write the list from left to right. Then the question is adding or subtracting with that list.",
+      "The range is how spread out the values are: the greatest value minus the least value. A whole number is 0, 1, 2, 3 and so on. A fraction like 1/2 names equal parts of a whole. A mixed number is a whole number and a fraction together, like 2 1/2, which means 2 and one half.",
     ],
     example: {
       prompt:
         "A dot plot has dots at 2, 3, 3, 5 and 5 miles. What is the total number of miles?",
       steps: [
-        "Count every dot: the values are 2, 3, 3, 5, 5.",
-        "Add them all: $2 + 3 + 3 + 5 + 5 = 18$.",
-        "Adding 2, 3 and 5 once each would give 10, which leaves out two dots.",
+        "Write a value for every dot, so a stack of two dots gives the value twice: 2, 3, 3, 5, 5.",
+        "The total is all the values added together: $2 + 3 + 3 + 5 + 5 = 18$.",
+        "Adding 2, 3 and 5 only once each would give 10. That would leave out two dots.",
       ],
       answer: "18 miles",
     },
     methodTitle: "List, then calculate",
     method: [
-      "Write the value of each dot, repeating a value for each dot over it.",
-      "Total: add the list. Range: greatest minus least. Missing value: given total minus the total of the dots.",
-      "For mixed numbers, add fractions with a common denominator, then add the whole numbers.",
+      "Write the value of each dot, repeating a value once for each dot above it.",
+      "Total: add the list. Range: greatest minus least.",
+      "Missing value: the story gives the total of all the values, but one dot is missing. The given total is the dots shown plus the missing value. So the missing value is the given total minus the total of the dots.",
+      "For mixed numbers in these plots, all the values use the same size of parts, like fourths. Add the fraction parts, then the whole numbers. If the fraction parts make a whole or more, like 5/4, take out the whole: 5/4 is 1 and 1/4.",
     ],
     formalTitle: "Total, range and the missing value",
     formal: [
-      "If value $v$ has $k$ dots it contributes $kv$. The range is the greatest value minus the least. If $T$ is the total of $n + 1$ values and $S$ the sum of $n$ of them, the last is $T - S$.",
+      "A value with 3 dots adds 3 times that value to the total. The range is the greatest value minus the least.",
+      "If you know the total of all the values, and the total of all but one, the missing value is the first total minus the second.",
     ],
     pitfalls: [
-      "Adding each different value once. Add one value for every dot.",
-      "Adding the greatest and least for the range. Subtract them.",
-      "Forgetting to carry when fractions add to more than one whole.",
+      "Do not add each different value once. Add one value for every dot.",
+      "Do not add the greatest and least for the range. Subtract them.",
+      "When the fraction parts add to a whole or more, take out the whole and add it to the whole numbers.",
     ],
     parentGuide:
       "Have your learner write the list of dot values before doing any arithmetic and check that the list has as many numbers as the plot has dots.",

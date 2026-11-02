@@ -6,21 +6,21 @@ export const tableFitsMethods: Record<string, ProblemMethod> = {
   "table-fits-description": {
     goal: "Check each table against the totals and the number of choices a survey fixes, and choose the one that fits.",
     intuition:
-      "A survey fixes some facts before any results are in: how many people answered and how many choices there were. A table that could show the results must obey those facts. Check them one at a time and rule out a table as soon as one fails.",
+      "A survey asks people a question and records their answers. A table shows how many people gave each answer. Here each person gives exactly one answer. The story tells you some facts: how many people answered, and how many choices there were. The right table must match every fact. Check them one at a time.",
     terms: ["survey", "two-way-table"],
     method: [
-      "Write down what the story fixes: the total number of people, the number of choices, or the total of each row and column.",
-      "Add the counts in each table, and for a two-way table add each row and the matching column.",
-      "Keep the table that matches every fact, and say which fact each other table breaks.",
+      "Write down what the story tells you: the number of people, the number of choices, or the total for each row and column. A row goes across a table, and a column goes up and down.",
+      "Add the counts in each table. A two-way table sorts people two ways at once, so add each row and each column.",
+      "Keep the table that matches every fact. Each other table breaks at least one fact.",
     ],
     watch:
-      "A table can have the right total and still have the wrong number of choices, or right row totals and wrong column totals. Check every fact.",
+      "A table can have the right total and still have the wrong number of choices. Check every fact.",
   },
 };
 
 export const tableFitsPrinciples: Record<string, string> = {
   "table-fits-description":
-    "Each person in a survey is counted once, so the counts in a one-way table add to the number of people. In a two-way table, the row totals add to the number of people, the column totals add to the same number, and each total is the sum of its cells.",
+    "When each person in a survey gives exactly one answer, each person is counted once. So the counts in a table add up to the number of people. In a two-way table, the row totals add up to the number of people, and so do the column totals.",
 };
 
 export const tableFitsLessons = [
@@ -28,44 +28,45 @@ export const tableFitsLessons = [
     id: "table-fits-lesson",
     title: "Which table fits the survey?",
     summary:
-      "Use totals and the number of choices to tell which table could show a survey.",
+      "A survey asks people a question and counts their answers. A table shows the counts. To pick the right table, check two things. When each person gives exactly one answer, the counts must add up to the number of people. The table must have the right number of choices.",
     templateIds: ["table-fits-description"],
     objectives: [
-      "Use the total and the number of choices of a survey to check a table of counts.",
-      "Check the row totals and a column total of a two-way table.",
+      "Use the number of people and the number of choices to check a table.",
+      "Check the row totals and the column totals of a two-way table.",
     ],
-    openingTitle: "Check the facts the survey fixes",
+    openingTitle: "Check the facts the survey gives",
     opening: [
-      "Suppose 14 students each pick one of 4 lunches. Every student is counted once, so the counts must add to 14, and the table must have 4 lunches. A table that adds to 13 or has 5 lunches cannot be right.",
-      "A two-way table sorts the same students two ways, such as grade and boy or girl. The cells in each row add to that grade's total, and the cells in a column add to the number of boys or of girls.",
+      "A survey asks people a question. Say 14 students each pick one of 4 lunches.",
+      "Each student picks exactly one lunch, so every student is counted once. The counts must add up to 14. The table must also show 4 lunches. A table that adds up to 13 is wrong. A table with 5 lunches is wrong too.",
+      "A two-way table sorts the same students two ways at once, like by grade and by lunch. A row goes across, and a column goes up and down. Each grade has a row, and each lunch has a column. A total is how many altogether. The counts across a row add up to that row's total. The counts down a column add up to that column's total.",
     ],
     example: {
       prompt:
         "20 students each chose one of 3 pets. Which table fits: Dogs 9, Cats 7, Fish 3, or Dogs 9, Cats 7, Fish 4?",
       steps: [
-        "The counts must add to 20, and the table must have 3 pets.",
-        "First table: $9+7+3=19$, which is not 20.",
-        "Second table: $9+7+4=20$, and it lists 3 pets, so it fits.",
+        "Each student is counted once, so the counts must add up to 20. There must also be 3 pets.",
+        "Add the first table: $9+7+3=19$. That is not 20, so it does not fit.",
+        "Add the second table: $9+7+4=20$. It also shows 3 pets, so it fits.",
       ],
       answer: "Dogs 9, Cats 7, Fish 4",
     },
     methodTitle: "Total, choices, then rows and columns",
     method: [
-      "Add the counts of each table and compare with the total.",
-      "Count the choices. For a two-way table, add each row and then the column that should match.",
+      "Add the counts in each table and compare with the number of people.",
+      "Count the choices. For a two-way table, add each row and each column too. Each sum must match the total the story gives for that group.",
     ],
     formalTitle: "Totals in tables",
     formal: [
-      "In a one-way table of $n$ people, each in exactly one category, the counts add to $n$.",
-      "In a two-way table, the row totals add to $n$ and so do the column totals; every total equals the sum of its cells.",
+      "When each person is in exactly one group, the counts add up to the number of people.",
+      "In a two-way table, the row totals add up to the number of people, and so do the column totals. Each total is the counts in its row or column added together.",
     ],
     pitfalls: [
-      "Checking only the total and ignoring the number of choices.",
-      "Checking only the row totals of a two-way table and not the column total.",
-      "Choosing a table because the biggest count looks right.",
+      "Do not check only the total. Check the number of choices too.",
+      "In a two-way table, do not check only the rows. Check the columns too.",
+      "Do not pick a table just because its biggest count looks right.",
     ],
     parentGuide:
-      "Ask your learner which number the survey tells you first, and to add it up in each table.",
+      "Ask your learner which totals the survey gives first. Then have them add the counts in each table and compare with those totals.",
   }),
 ];
 
