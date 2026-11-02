@@ -238,7 +238,7 @@ try {
       await page.locator(".problem-stage .question").waitFor();
       await trigger.waitFor();
       assert.equal(
-        await page.getByRole("link", { name: "Your level" }).count(),
+        await page.getByRole("link", { name: "Your progress" }).count(),
         0,
       );
       assert.equal(

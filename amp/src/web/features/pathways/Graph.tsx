@@ -1,3 +1,4 @@
+import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -60,6 +61,7 @@ export function Graph({
   } | null>(null);
   const lastFocused = useRef("");
   const earnedMemory = useRef(new Map<string, number>());
+  const { shown } = useCurriculumDetails();
   const [failed, setFailed] = useState(false);
   const [orbit, setOrbit] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
@@ -977,9 +979,11 @@ export function Graph({
       {hover && (
         <p className="pathways-hover">
           {skills.find((s) => s.id === hover)?.title}{" "}
-          <small>
-            {bandLabel(skills.find((s) => s.id === hover)!.gradeBand)}
-          </small>
+          {shown && (
+            <small>
+              {bandLabel(skills.find((s) => s.id === hover)!.gradeBand)}
+            </small>
+          )}
         </p>
       )}
       {failed && (
