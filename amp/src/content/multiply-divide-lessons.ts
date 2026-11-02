@@ -13,7 +13,7 @@ export const multiplyDivideLessons: Lesson[] = [
     id: "multiply-by-tens",
     title: "Multiply by a multiple of ten",
     summary:
-      "A multiple of ten is a number you reach by counting by tens: 10, 20, 30 and so on. Seventy is 7 tens. So 6 × 70 means 6 groups of 7 tens. The fact 6 × 7 = 42 tells you that makes 42 tens. Forty-two tens is 420.",
+      "A multiple of ten is a number you reach by counting by tens: 10, 20, 30 and so on. Seventy is 7 tens. So 6 × 70 means 6 groups of 7 tens. You know 6 groups of 7 make 42. So 6 groups of 7 tens make 42 tens. Forty-two tens is 420.",
     templateIds: ["multiply-by-tens"],
     senses: multiplySenses,
     objectives: [
@@ -27,7 +27,7 @@ export const multiplyDivideLessons: Lesson[] = [
         paragraphs: [
           "A ten-rod is a stick of 10 small cubes joined together. Seven ten-rods make 70, so 70 is 7 tens.",
           "Now take 6 groups of 70. That is 6 groups of 7 ten-rods. You know 6 groups of 7 make 42. So there are 42 ten-rods, or 42 tens.",
-          "The answer to a multiplication is called the product. Here the product is 42 tens, and 42 tens is 420.",
+          "Multiplication counts all the things in equal groups. Its answer is called the product. Here the product is 42 tens, and 42 tens is 420.",
         ],
       },
       {
@@ -53,7 +53,8 @@ export const multiplyDivideLessons: Lesson[] = [
         stage: "formal",
         title: "Multiplying tens",
         paragraphs: [
-          "Let $a$ and $b$ stand for whole numbers. Then $a$ tens are worth $10 \\times a$. Taking $b$ groups of them gives $b \\times (10 \\times a) = (b \\times a) \\times 10$. So multiply $b \\times a$ first, then name that many tens.",
+          "Whole numbers are 0, 1, 2, 3 and so on. Let the letters $a$ and $b$ stand for whole numbers. If $a$ is 7, then $a$ tens are 7 tens, worth $10 \\times 7 = 70$. In the same way, $a$ tens are worth $10 \\times a$.",
+          "Parentheses ( ) show what to work out first. Taking $b$ groups of $a$ tens gives $b \\times (10 \\times a)$. That is $b \\times a$ tens, so it equals $(b \\times a) \\times 10$. So multiply $b \\times a$ first, then name that many tens.",
         ],
       },
     ],
@@ -77,7 +78,7 @@ export const multiplyDivideLessons: Lesson[] = [
     id: "multiply-partial-products",
     title: "Multiply with partial products",
     summary:
-      "To multiply a big number, split it into easy parts by place value. Place value means a digit's worth depends on its place: the 4 in 46 means 4 tens, or 40. So 46 is 40 + 6. Multiply each part, then add the answers. Each part's answer is called a partial product.",
+      "To multiply a big number, split it into easy parts. A digit is one of the symbols 0 to 9 we use to write numbers. Place value means a digit's worth depends on its place. In 46, the 4 means 4 tens, or 40. So 46 is 40 + 6. Multiply each part, then add the answers. Each part's answer is called a partial product.",
     templateIds: ["multiply-by-one-digit", "area-model-product"],
     senses: multiplySenses,
     objectives: [
@@ -98,7 +99,7 @@ export const multiplyDivideLessons: Lesson[] = [
         title: "Split by place value",
         paragraphs: [
           "A factor is one of the numbers you multiply. In 46 × 23, the factors are 46 and 23. Split each factor by place value: 46 = 40 + 6 and 23 = 20 + 3.",
-          "An area model shows this with a rectangle. The area of a rectangle is the space it covers. You find it by multiplying its width by its height.",
+          "The area of a rectangle is the space it covers. You find it by multiplying its width by its height. An area model is a rectangle drawing that shows a multiplication.",
           "Look at the picture: a 46 by 23 rectangle cut into four smaller rectangles. Their areas are 40 × 20 = 800, 6 × 20 = 120, 40 × 3 = 120 and 6 × 3 = 18.",
         ],
         illustration: "area-model-product",
@@ -116,7 +117,7 @@ export const multiplyDivideLessons: Lesson[] = [
         stage: "formal",
         title: "The distributive property",
         paragraphs: [
-          "A sum is the answer to an addition. Multiplying a sum gives the same answer as multiplying each part and adding: $6 \\times (40 + 7) = 6 \\times 40 + 6 \\times 7 = 240 + 42 = 282$. With letters, $a \\times (b + c) = a \\times b + a \\times c$. This rule is called the distributive property. Splitting a factor by place value uses it.",
+          "A sum is the answer to an addition. Parentheses ( ) show what to work out first, so $6 \\times (40 + 7)$ means 6 times 47. Multiplying a sum gives the same answer as multiplying each part and adding: $6 \\times (40 + 7) = 6 \\times 40 + 6 \\times 7 = 240 + 42 = 282$. The same is true for any numbers. With letters that stand for numbers, $a \\times (b + c) = a \\times b + a \\times c$. This rule is called the distributive property. Splitting a factor by place value uses it.",
         ],
       },
     ],
@@ -125,12 +126,12 @@ export const multiplyDivideLessons: Lesson[] = [
       steps: [
         "Split 357 by place value: 300 + 50 + 7. Each part is easy to multiply.",
         "Multiply each part by 6: 300 × 6 = 1,800, 50 × 6 = 300 and 7 × 6 = 42. These are the partial products.",
-        "The parts make 357, so add their products: 1,800 + 300 + 42 = 2,142.",
+        "The parts make 357, so add the partial products: 1,800 + 300 + 42 = 2,142.",
       ],
       answer: "2142",
     },
     pitfalls: [
-      "In an area model, every small rectangle counts. 46 × 23 needs four products, including the two mixed ones, 6 × 20 and 40 × 3.",
+      "In an area model, every small rectangle counts. 46 × 23 needs four products. Two of them mix ones with tens: 6 × 20 and 40 × 3.",
       "Multiply what each digit is worth, not the digit alone: the 4 in 46 means 40.",
     ],
     parentGuide:
@@ -140,7 +141,7 @@ export const multiplyDivideLessons: Lesson[] = [
     id: "multiply-multidigit",
     title: "Multiply multidigit numbers",
     summary:
-      "To multiply 346 × 27, split 27 into 20 + 7. Find 346 × 7 and 346 × 20, then add the two answers. Each of those answers is called a partial product. The whole answer is called the product.",
+      "A factor is one of the numbers you multiply. To multiply 346 × 27, split the factor 27 into 20 + 7. Find 346 × 7 and 346 × 20, then add the two answers. Each of those answers is called a partial product. The whole answer is called the product.",
     templateIds: ["multiply-multidigit"],
     senses: multiplySenses,
     objectives: [
@@ -160,10 +161,12 @@ export const multiplyDivideLessons: Lesson[] = [
       {
         title: "One row for each digit",
         paragraphs: [
-          "Look at the picture of 346 × 27. The first row is 346 × 7 = 2,422. It uses the ones digit of 27, which is 7.",
+          "A digit is one of the symbols 0 to 9 in a number, like the 2 and the 7 in 27. Look at the picture of 346 × 27. The first row is 346 × 7 = 2,422. It uses the ones digit of 27, which is 7.",
           "The second row is 346 × 20 = 6,920. It uses the tens digit, 2, which means 2 tens or 20. It ends in 0 because 346 × 2 tens is 692 tens.",
           "Add the rows to get the product: 2,422 + 6,920 = 9,342.",
-          "To regroup means to trade 10 of one place for 1 of the next place, like 10 ones for 1 ten. In 346 × 7, first 6 × 7 = 42 ones. Write 2 ones and carry 4 tens. Then 4 × 7 = 28 tens, and the 4 carried tens make 32 tens.",
+          "To regroup means to trade 10 of one place for 1 of the next place, like 10 ones for 1 ten. In 346 × 7, first 6 × 7 = 42 ones. That is 4 tens and 2 ones. Write the 2 ones and carry the 4 tens, which means keep them to add to the tens.",
+          "The 4 in 346 means 4 tens, and 4 tens × 7 = 28 tens. Add the 4 carried tens to make 32 tens. That is 3 hundreds and 2 tens, so write the 2 tens and carry 3 hundreds.",
+          "Last, 3 hundreds × 7 = 21 hundreds. Add the 3 carried hundreds to make 24 hundreds. So the row reads 2,422.",
         ],
         illustration: "standard-algorithm-product",
       },
@@ -181,18 +184,18 @@ export const multiplyDivideLessons: Lesson[] = [
         stage: "formal",
         title: "Place-value partial products",
         paragraphs: [
-          "Each digit of a whole number stands for an amount set by its place: in 27, the 2 stands for 20 and the 7 stands for 7. To multiply, multiply the other factor by each of these amounts, then add the partial products. A tens digit stands for a multiple of 10, so its partial product always ends in 0.",
+          "Whole numbers are 0, 1, 2, 3 and so on. Each digit of a whole number stands for an amount set by its place. In 27, the 2 stands for 20 and the 7 stands for 7. To multiply, multiply the other factor by each of these amounts. Then add those answers, the partial products. A tens digit stands for a number of tens, so its partial product always ends in 0.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 208 × 34?",
       steps: [
-        "Split 34 into its tens and ones, 30 + 4. Each part is easier to multiply.",
+        "34 is 3 tens and 4 ones, so split it into 30 + 4. Each part is easier to multiply.",
         "Ones row: 208 × 4 = 832.",
         "Tens row: 208 × 30 = 6,240. It ends in 0 because 30 is 3 tens.",
         "The parts make 34, so add the rows: 832 + 6,240 = 7,072.",
-        "Check with an estimate: 200 × 34 = 6,800. That is close to 7,072, so the answer makes sense.",
+        "Check with an estimate, a close answer made with easy numbers. 208 is close to 200, and 200 × 34 = 6,800. That is close to 7,072, so the answer makes sense.",
       ],
       answer: "7072",
     },
@@ -207,7 +210,7 @@ export const multiplyDivideLessons: Lesson[] = [
     id: "divide-by-one-digit",
     title: "Divide by a one-digit number",
     summary:
-      "To divide means to split a number into equal groups. For 1,476 ÷ 6, ask how many groups of 6 fit in 1,476. Take away big, easy groups first, like 200 groups of 6. Then take smaller groups from what is left. Add up the groups you took to get the answer.",
+      "To divide means to split a number into equal groups. The sign ÷ is read “divided by.” For 1,476 ÷ 6, ask how many groups of 6 fit in 1,476. Take away big, easy groups first, like 200 groups of 6. Then take smaller groups from what is left. Add up the groups you took to get the answer.",
     templateIds: ["divide-by-one-digit", "division-remainder"],
     objectives: [
       "Divide a number with up to four digits by a one-digit number (a number from 1 to 9).",
@@ -226,7 +229,7 @@ export const multiplyDivideLessons: Lesson[] = [
       {
         title: "Take away groups by place",
         paragraphs: [
-          "Look at the picture. For 1,476 ÷ 6, start with the biggest place. 200 groups of 6 are 200 × 6 = 1,200. Take them away: 1,476 − 1,200 = 276.",
+          "Look at the picture. For 1,476 ÷ 6, start with the biggest place that fits. 1,000 groups of 6 would be 6,000, too many, so try hundreds of groups. 200 groups of 6 are 200 × 6 = 1,200. Take them away: 1,476 − 1,200 = 276.",
           "40 groups of 6 are 240. Take them away: 276 − 240 = 36. Then 6 groups of 6 are 36. Take them away: 36 − 36 = 0. Nothing is left.",
           "Add the groups you took: 200 + 40 + 6 = 246. Each of these numbers is called a partial quotient, one piece of the answer. Check by multiplying: 246 × 6 = 1,476.",
         ],
@@ -236,8 +239,8 @@ export const multiplyDivideLessons: Lesson[] = [
         title: "Remainders",
         paragraphs: [
           "Sometimes a few are left that cannot make a full group. That amount is called the remainder.",
-          "For 389 ÷ 4: 90 groups of 4 are 360, leaving 29. Then 7 groups of 4 are 28, leaving 1. So the quotient is 97 and the remainder is 1.",
-          "Check: 97 × 4 + 1 = 389. The remainder is always less than the divisor. If it is not, another group still fits.",
+          "For 389 ÷ 4: 90 groups of 4 are 360, leaving 29. Then 7 groups of 4 are 28, leaving 1. We took 90 + 7 = 97 full groups, so the quotient is 97. The 1 left over is the remainder.",
+          "Check: 97 groups of 4 are 97 × 4 = 388, and the 1 left over makes 389. The remainder is always less than the divisor, the number in each group. If it is not, another group still fits.",
         ],
       },
     ],
@@ -246,17 +249,18 @@ export const multiplyDivideLessons: Lesson[] = [
         stage: "formal",
         title: "Quotient and remainder",
         paragraphs: [
-          "Divide a whole number $n$ by a whole number $d$ that is more than 0. You get a whole-number quotient $q$ and a remainder $r$, with $n = d \\times q + r$. The remainder is 0 or more and less than $d$, written $0 \\le r < d$. The sign $\\le$ means “is less than or equal to.” Each step takes groups away and counts them, so the groups taken and what is left always make $n$.",
+          "Whole numbers are 0, 1, 2, 3 and so on. For 389 ÷ 4, the quotient is 97 and the remainder is 1, and 389 = 4 × 97 + 1. Letters can stand for any such numbers.",
+          "Divide a whole number $n$ by a whole number $d$ that is more than 0. You get a whole-number quotient $q$ and a whole-number remainder $r$, with $n = d \\times q + r$. The sign $\\le$ means “is less than or equal to,” and $<$ means “is less than.” The remainder is 0 or more and less than $d$, written $0 \\le r < d$. Each step takes groups away and counts them, so the groups taken and what is left always make $n$.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 1,830 ÷ 6?",
       steps: [
-        "Start with hundreds: 300 groups of 6 are 300 × 6 = 1,800. Take them away: 1,830 − 1,800 = 30.",
+        "Start with hundreds of groups. 300 groups of 6 are 300 × 6 = 1,800, and 400 groups would be 2,400, too many. Take 1,800 away to see what is left: 1,830 − 1,800 = 30.",
         "Try tens: 10 groups of 6 are 60, which is more than 30. No tens of groups fit, so the tens digit of the quotient is 0.",
         "Try ones: 5 groups of 6 are 30. Take them away: 30 − 30 = 0, so nothing is left.",
-        "Add the groups: 300 + 0 + 5 = 305. Check: 305 × 6 = 1,830.",
+        "Add the groups: 300 + 0 + 5 = 305. Check: 305 groups of 6 are 305 × 6 = 1,830, the number we started with.",
       ],
       answer: "305",
     },
@@ -271,7 +275,7 @@ export const multiplyDivideLessons: Lesson[] = [
     id: "divide-by-two-digit",
     title: "Divide by a two-digit number",
     summary:
-      "To find 1,512 ÷ 24, ask how many groups of 24 fit in 1,512. Twenty-four is hard to think with, so use a nearby easy number like 25. Make a first guess, multiply to check it, and fix it if needed. The answer is called the quotient.",
+      "To divide means to split a number into equal groups. The sign ÷ is read “divided by.” To find 1,512 ÷ 24, ask how many groups of 24 fit in 1,512. Twenty-four is hard to think with, so use a nearby easy number like 25. Make a first guess, multiply to check it, and fix it if needed. The answer is called the quotient.",
     templateIds: ["divide-by-two-digit"],
     objectives: [
       "Divide a number with up to four digits by a two-digit number.",
@@ -283,7 +287,7 @@ export const multiplyDivideLessons: Lesson[] = [
         title: "Use a nearby easy number to guess",
         paragraphs: [
           "The number you divide by is called the divisor. In 1,512 ÷ 24, the divisor is 24.",
-          "An estimate is a close guess made with easy numbers. To round a number means to change it to a nearby easy one. Round 24 to 25: four 25s make 100, so 1,500 holds 60 of them.",
+          "An estimate is a close guess made with easy numbers. To round a number means to change it to a nearby easy one. Round 24 to 25, because 25 is close and easy to multiply. Four 25s make 100. There are 15 hundreds in 1,500, so 1,500 holds 15 × 4 = 60 of them.",
           "So about 60 groups of 24 fit. Multiply to check: 60 × 24 = 1,440. That is not more than 1,512, so the guess fits.",
         ],
       },
@@ -292,15 +296,15 @@ export const multiplyDivideLessons: Lesson[] = [
         paragraphs: [
           "Look at the picture. Take 60 groups of 24: 60 × 24 = 1,440. What is left is 1,512 − 1,440 = 72.",
           "Then 3 groups of 24 make 72. Take them away: 72 − 72 = 0.",
-          "Add the groups you took: 60 + 3 = 63. So 1,512 ÷ 24 = 63. If a product is ever bigger than what is left, the guess was too big. Try one less.",
+          "Add the groups you took: 60 + 3 = 63. So 1,512 ÷ 24 = 63. If a product, the answer to a multiplication, is ever bigger than what is left, the guess was too big. Try fewer groups and multiply again.",
         ],
         illustration: "partial-quotients-two-digit",
       },
       {
         title: "Check by multiplying",
         paragraphs: [
-          "Division undoes multiplication. So multiply the quotient by the divisor: 63 × 24 = 1,512. That matches, so 63 is right.",
-          "A zero in the quotient holds a place. For 2,520 ÷ 24, take 100 groups of 24, which is 2,400. That leaves 120. 10 groups of 24 make 240, which is more than 120, so the tens digit is 0. Then 5 groups of 24 make 120. So 2,520 ÷ 24 = 105.",
+          "Division undoes multiplication. So multiply the quotient, the answer, by the divisor, the number you divided by: 63 × 24 = 1,512. That matches, so 63 is right.",
+          "A zero in the quotient holds a place. For 2,520 ÷ 24, take 100 groups of 24, which is 2,400. That leaves 120. 10 groups of 24 make 240, which is more than 120, so no tens of groups fit. Then 5 groups of 24 make 120. Add the groups: 100 + 5 = 105. That is 1 hundred, 0 tens and 5 ones.",
         ],
       },
     ],
@@ -309,23 +313,23 @@ export const multiplyDivideLessons: Lesson[] = [
         stage: "formal",
         title: "Check every quotient digit",
         paragraphs: [
-          "Divide by a two-digit divisor $d$. Choose each part of the quotient so that it times $d$ is not more than what is left, then subtract. At the end, the remainder must be 0 or more and less than $d$. The quotient times $d$, plus the remainder, gives back the number you started with.",
+          "Let the letter $d$ stand for a two-digit divisor, a number from 10 to 99. Choose each part of the quotient so that it times $d$ is not more than what is left. Then subtract. The remainder is what is left after all the full groups. It must be 0 or more and less than $d$, or another group would fit. The quotient times $d$, plus the remainder, gives back the number you started with.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 1,872 ÷ 36?",
       steps: [
-        "Guess the tens first. Round 36 to 40 and 1,872 to 2,000. Since 2,000 ÷ 40 = 50, try 50 groups.",
-        "Check: 50 × 36 = 1,800 fits in 1,872, but 60 × 36 = 2,160 is too big. Take 1,800 away: 1,872 − 1,800 = 72.",
+        "First guess the number of groups in tens: 10, 20, 30 and so on. Round 36 to 40 and 1,872 to 2,000. Since 2,000 ÷ 40 = 50, try 50 groups.",
+        "Check: 50 × 36 = 1,800 fits in 1,872, but 60 × 36 = 2,160 is too big. The 50 groups use 1,800, so subtract to see what is left: 1,872 − 1,800 = 72.",
         "Now 2 groups of 36 make 72. Take them away: 72 − 72 = 0, so nothing is left.",
         "Add the groups: 50 + 2 = 52. Check: 52 × 36 = 1,872.",
       ],
       answer: "52",
     },
     pitfalls: [
-      "If a guess times the divisor is bigger than what is left, the guess is too big. Try one less.",
-      "Keep a 0 in the quotient when a place has no full group: 2,520 ÷ 24 = 105, not 15.",
+      "If a guess times the divisor is bigger than what is left, the guess is too big. Try fewer groups and multiply again.",
+      "Write 0 for the tens when no ten groups fit: 2,520 ÷ 24 = 105, not 15.",
     ],
     parentGuide:
       "Ask for a rough answer first: 1,512 ÷ 24 is about 1,500 ÷ 25, which is 60. Then compare it with the exact answer.",
@@ -338,7 +342,7 @@ export const multiplyDivideMethods: Record<string, ProblemMethod> = {
   "multiply-by-tens": {
     goal: "Multiply a one-digit number by a multiple of ten, such as 6 × 70.",
     intuition:
-      "A multiple of ten is a number you reach by counting by tens, like 20, 50 or 70. Seventy is 7 tens, or 7 groups of 10. A one-digit number is a number from 0 to 9. A times-table fact is a multiplication you know, like 6 × 7 = 42. The answer to a multiplication is called the product.",
+      "A multiple of ten is a number you reach by counting by tens, like 20, 50 or 70. Seventy is 7 tens, or 7 groups of 10. A one-digit number is a number from 0 to 9. Multiplication counts all the things in equal groups. A times-table fact is a multiplication you know, like 6 × 7 = 42. The answer to a multiplication is called the product.",
     senses: multiplySenses,
     method: [
       "Write the multiple of ten as a number of tens: 70 is 7 tens.",
@@ -346,12 +350,12 @@ export const multiplyDivideMethods: Record<string, ProblemMethod> = {
       "Each ten is worth 10, so 42 tens is 42 × 10 = 420.",
     ],
     watch:
-      "Keep the zero from the fact and the zero from the tens: 5 × 40 is 20 tens, which is 200.",
+      "Keep both zeros. For 5 × 40, find 5 × 4 = 20 first. That is 20 tens, which is 200.",
   },
   "multiply-by-one-digit": {
     goal: "Multiply a number with up to four digits by a one-digit number.",
     intuition:
-      "Place value means a digit's worth depends on its place: in 357, the 3 means 300 and the 5 means 50. A factor is one of the numbers you multiply. A one-digit number is a number from 0 to 9. Split the big factor into parts and multiply each part. Each part's answer is called a partial product. All of them added make the full answer, called the product.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. Place value means a digit's worth depends on its place. In 357, the 3 means 300 and the 5 means 50. A factor is one of the numbers you multiply. A one-digit number is a number from 0 to 9. Split the big factor into parts and multiply each part. Each part's answer is called a partial product. All of them added make the full answer, called the product.",
     terms: [placeTerm],
     senses: multiplySenses,
     method: [
@@ -365,7 +369,7 @@ export const multiplyDivideMethods: Record<string, ProblemMethod> = {
   "area-model-product": {
     goal: "Find a product from an area model split by place value.",
     intuition:
-      "An area model is a rectangle that shows a multiplication. A factor is one of the numbers you multiply. The rectangle's width and height are the two factors. Each factor is split by place value: 29 = 20 + 9, because the 2 means 2 tens. Lines cut the big rectangle into smaller rectangles. A rectangle's area, the space it covers, is its width times its height. Each small area is called a partial product. The whole answer is called the product.",
+      "An area model is a rectangle that shows a multiplication. A factor is one of the numbers you multiply. The rectangle's width and height are the two factors. A digit is one of the symbols 0 to 9. Place value means a digit's worth depends on its place. In 29, the 2 means 2 tens, so 29 = 20 + 9. Each side is split this way, and lines cut the big rectangle into smaller rectangles. A rectangle's area, the space it covers, is its width times its height. Each small area is called a partial product. The whole answer is called the product.",
     terms: [placeTerm],
     senses: multiplySenses,
     method: [
@@ -374,18 +378,18 @@ export const multiplyDivideMethods: Record<string, ProblemMethod> = {
       "The small rectangles fill the big one, so add all the partial products.",
     ],
     watch:
-      "Count every small rectangle, including the two mixed ones such as 9 × 20 and 20 × 8.",
+      "Count every small rectangle. Two of them mix tens with ones, like 9 × 20 and 20 × 8.",
   },
   "multiply-multidigit": {
     goal: "Multiply a two- or three-digit number by a two-digit number.",
     intuition:
-      "A factor is one of the numbers you multiply. In a two-digit number like 45, the 4 is the tens digit, so it means 40. The 5 is the ones digit. Split 45 into 40 + 5 and multiply the other factor by each part. Each answer is called a partial product. An estimate is a close answer made with easy, rounded numbers, like 800 × 50 for 775 × 45.",
+      "A factor is one of the numbers you multiply. A digit is one of the symbols 0 to 9. In a two-digit number like 45, the 4 is the tens digit: it means 4 tens, or 40. The 5 is the ones digit: it means 5 ones. Split 45 into 40 + 5 and multiply the other factor by each part. Each answer is called a partial product. An estimate is a close answer made with easy numbers. To round means to change a number to a nearby easy one, like 775 to 800. So 800 × 50 is an estimate for 775 × 45.",
     terms: [placeTerm],
     senses: multiplySenses,
     method: [
       "Multiply by the ones digit of the two-digit factor.",
-      "Multiply by its tens part, such as 40. That row ends in 0.",
-      "The two parts make the two-digit factor, so add the two partial products. Compare the sum with an estimate.",
+      "Multiply by its tens part, such as 40. That row is a number of tens, so it ends in 0.",
+      "The two parts make the two-digit factor, so add the two partial products. Compare the answer with an estimate.",
     ],
     watch:
       "The tens row is multiplied by tens, so it ends in 0: 208 × 30 = 6,240, not 624.",
@@ -393,25 +397,25 @@ export const multiplyDivideMethods: Record<string, ProblemMethod> = {
   "divide-by-one-digit": {
     goal: "Divide a number with up to four digits by a one-digit number.",
     intuition:
-      "To divide means to split a number into equal groups. The number you divide by is called the divisor. The answer, how many groups fit, is called the quotient. You can take away big groups first, like 600 groups at once. Each count of groups you take is called a partial quotient, one piece of the answer.",
+      "To divide means to split a number into equal groups. The sign ÷ is read “divided by.” The number you divide by is called the divisor. The answer, how many groups fit, is called the quotient. You can take away big groups first, like 600 groups at once. Each count of groups you take is called a partial quotient, one piece of the answer.",
     terms: divisionTerms,
     method: [
-      "Start with the biggest place. Find how many groups of the divisor fit, such as 600 groups of 3.",
+      "Start with the biggest place that fits. If 1,000 groups are too many, try hundreds of groups, such as 600 groups of 3.",
       "Take those groups away. Keep going with what is left, using smaller groups.",
       "Add the partial quotients to get the quotient. Check by multiplying it by the divisor.",
     ],
     watch:
-      "If no group fits in a place, that digit of the quotient is 0: 1,830 ÷ 6 = 305, not 35.",
+      "Write 0 for a place where no group fits. In 1,830 ÷ 6, 300 groups leave 30, and ten groups need 60. So the tens digit is 0, and the answer is 305, not 35.",
   },
   "division-remainder": {
     goal: "Divide a number by a one-digit number and find the remainder, the amount left over.",
     intuition:
-      "To divide means to split a number into equal groups. The number you divide by is called the divisor. The count of full groups is called the quotient. The amount left over, too small to make one more group, is called the remainder.",
+      "To divide means to split a number into equal groups. The sign ÷ is read “divided by.” The number you divide by is called the divisor. The count of full groups is called the quotient. The amount left over, too small to make one more group, is called the remainder.",
     terms: divisionTerms,
     method: [
       "Take away groups of the divisor, big groups first, until no more fit.",
       "What is left is the remainder. It must be less than the divisor.",
-      "Check: the quotient times the divisor, plus the remainder, gives the number you started with.",
+      "Check: the quotient times the divisor, plus the remainder, gives the number you started with. The full groups and what is left make up everything.",
     ],
     watch:
       "If what is left is as big as the divisor or bigger, another group still fits.",
@@ -419,30 +423,30 @@ export const multiplyDivideMethods: Record<string, ProblemMethod> = {
   "divide-by-two-digit": {
     goal: "Divide a number with up to four digits by a two-digit number.",
     intuition:
-      "To divide means to split a number into equal groups. The number you divide by is called the divisor, here a two-digit number like 23. The answer, how many groups fit, is called the quotient. An estimate is a close guess made with easy numbers. To round a number means to change it to a nearby easy one, like 23 to 20.",
+      "To divide means to split a number into equal groups. The sign ÷ is read “divided by.” The number you divide by is called the divisor, here a two-digit number like 23. A two-digit number is a number from 10 to 99. The answer, how many groups fit, is called the quotient. An estimate is a close guess made with easy numbers. To round a number means to change it to a nearby easy one, like 23 to 20, the closest number that ends in 0.",
     terms: divisionTerms,
     method: [
       "Round the divisor to guess how many groups fit, such as 70 groups of 23.",
-      "Multiply and take those groups away. If the product is bigger than what is left, try fewer groups.",
-      "Add the groups you took to get the quotient. Check by multiplying it by the divisor.",
+      "Multiply and take those groups away. If the product, the answer to the multiplication, is bigger than what is left, try fewer groups.",
+      "Add the groups you took to get the quotient. Check: the quotient times the divisor should give the number you started with.",
     ],
     watch:
-      "If the product is bigger than what is left, the guess was too big. Try one less.",
+      "If the product is bigger than what is left, the guess was too big. Try fewer groups and multiply again.",
   },
 };
 export const multiplyDividePrinciples: Record<string, string> = {
   "multiply-by-tens":
-    "6 × 70 = 6 × (7 × 10) = (6 × 7) × 10 = 420. When you multiply three numbers, you can group them either way and the product stays the same. This rule is called the associative property of multiplication.",
+    "Parentheses ( ) show what to work out first. 70 is 7 × 10, so 6 × 70 = 6 × (7 × 10). That is 6 × 7 = 42 tens, so it also equals (6 × 7) × 10 = 420. When you multiply three numbers, you can group them either way and the product stays the same. This rule is called the associative property of multiplication.",
   "multiply-by-one-digit":
-    "Multiplying a sum is the same as multiplying each part and adding: (300 + 50 + 7) × 6 = 300 × 6 + 50 × 6 + 7 × 6. This rule is called the distributive property.",
+    "A sum is the answer to an addition. Parentheses ( ) show what to work out first. Multiplying a sum is the same as multiplying each part and adding: (300 + 50 + 7) × 6 = 300 × 6 + 50 × 6 + 7 × 6. This rule is called the distributive property.",
   "area-model-product":
-    "The area of a rectangle equals the sum of the areas of the smaller rectangles that fill it with no gaps or overlaps: (20 + 9) × (20 + 8) = 400 + 180 + 160 + 72.",
+    "The small rectangles fill the big one with no gaps or overlaps. So add their areas to get the big rectangle's area. Parentheses ( ) show what to work out first: (20 + 9) × (20 + 8) is 29 × 28, and it equals 400 + 180 + 160 + 72.",
   "multiply-multidigit":
-    "Multiplying by a sum is the same as multiplying by each part and adding: 346 × 27 = 346 × 7 + 346 × 20. This rule is called the distributive property.",
+    "27 is 20 + 7, so 346 × 27 = 346 × 7 + 346 × 20. You can split a factor into parts, multiply by each part and add the answers. This rule is called the distributive property.",
   "divide-by-one-digit":
-    "Division undoes multiplication. The partial quotients add up to how many groups of the divisor fit in the dividend, the number being divided.",
+    "Multiplication counts the things in equal groups, and division undoes it. The partial quotients add up to how many groups of the divisor fit in the dividend, the number being divided.",
   "division-remainder":
-    "For whole numbers $n$ and $d$ with $d > 0$, there is exactly one way to write $n = q \\times d + r$ with $0 \\le r < d$. Here $q$ is the quotient, $r$ is the remainder, and $\\le$ means “is less than or equal to.”",
+    "Whole numbers are 0, 1, 2, 3 and so on. For 17 ÷ 5, the quotient is 3 and the remainder is 2: 17 = 3 × 5 + 2. Letters can stand for any such numbers. The sign $\\le$ means “is less than or equal to,” and $<$ means “is less than.” For whole numbers $n$ and $d$, with $d$ more than 0, there is exactly one pair of whole numbers $q$ and $r$ with $n = q \\times d + r$ and $0 \\le r < d$. Here $q$ is the quotient and $r$ is the remainder.",
   "divide-by-two-digit":
-    "Division undoes multiplication. However big the divisor is, the partial quotients add up to the whole quotient.",
+    "Division undoes multiplication. Each count of groups you take, like 70 and then 7, is called a partial quotient. However big the divisor is, the partial quotients add up to the whole quotient: 70 + 7 = 77.",
 };

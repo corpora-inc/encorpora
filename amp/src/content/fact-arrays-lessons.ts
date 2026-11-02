@@ -12,7 +12,7 @@ export const factArrayLessons: Lesson[] = [
     id: "multiplication",
     title: "Multiplication facts from arrays",
     summary:
-      "Multiplication is a fast way to count equal groups, groups that all have the same number. The sign × is read “times.” So 4 × 6 means 4 groups of 6. You can count 6, 12, 18, 24 instead of counting every dot. So 4 × 6 = 24.",
+      "Multiplication is a fast way to count equal groups, groups that all have the same number. The sign × is read “times.” So 4 × 6 means 4 groups of 6. You can count 6, 12, 18, 24 instead of counting every dot. So 4 × 6 = 24. A multiplication and its answer, like 4 × 6 = 24, is called a multiplication fact.",
     templateIds: ["multiply-facts"],
     senses: factSenses,
     objectives: [
@@ -51,8 +51,9 @@ export const factArrayLessons: Lesson[] = [
         title: "Build from a known fact",
         paragraphs: [
           "Split a hard array into easy ones. Look at the picture: 7 rows of 6 are 5 rows of 6 and 2 more rows of 6. That is 30 + 12 = 42.",
-          "Each factor has a quick way. Times 2: double, which means add a number to itself. Times 4: double, then double again. Times 5: times 10, then take half.",
-          "Times 9: times 10, then take away one group. Times 3: double, then add one more group. For 6, 7 and 8, split off 5 rows.",
+          "Each factor has a quick way. Here they are for groups of 6. Times 2: double, which means add a number to itself. So 2 × 6 = 6 + 6 = 12. Times 4: double, then double again, because 4 groups are 2 groups twice. So 4 × 6 = 12 + 12 = 24.",
+          "Times 5: 5 groups are half of 10 groups. 10 × 6 = 60, and half of 60 is 30. Times 9: 9 groups are 10 groups less one group. So 9 × 6 = 60 − 6 = 54.",
+          "Times 3: double, then add one more group: 12 + 6 = 18. For 6, 7 and 8, split off 5 rows, then add the rows that are left.",
         ],
         illustration: "split-array",
       },
@@ -62,7 +63,9 @@ export const factArrayLessons: Lesson[] = [
         stage: "formal",
         title: "Equal groups and products",
         paragraphs: [
-          "Multiplication counts equal groups. The number of groups times the size of each group gives the total. Turning an array swaps the factors but keeps the total, so $a \\times b = b \\times a$. Splitting a factor into parts splits the product into smaller products that add up to it: $7 \\times 6 = 5 \\times 6 + 2 \\times 6$.",
+          "Multiplication counts equal groups. The number of groups times the size of each group gives the total. An array, objects in equal rows, shows this.",
+          "Turning an array swaps the factors, the numbers you multiply, but keeps the total: 3 × 5 = 5 × 3 = 15. With letters that stand for any numbers, $a \\times b = b \\times a$.",
+          "Splitting a factor into parts splits the product, the answer, into smaller products that add up to it: $7 \\times 6 = 5 \\times 6 + 2 \\times 6 = 30 + 12 = 42$.",
         ],
       },
     ],
@@ -70,7 +73,7 @@ export const factArrayLessons: Lesson[] = [
       prompt: "What is 7 × 8?",
       steps: [
         "Split the 7 rows into 5 rows and 2 rows, because 5 and 2 are easy to multiply.",
-        "Find each part: 5 × 8 = 40 and 2 × 8 = 16.",
+        "Find each part. Count 5 rows of 8: 8, 16, 24, 32, 40, so 5 × 8 = 40. Two rows of 8 are 8 + 8 = 16.",
         "The two parts make all 7 rows, so add them: 40 + 16 = 56. So 7 × 8 = 56.",
       ],
       answer: "56",
@@ -100,7 +103,7 @@ export const factArrayLessons: Lesson[] = [
         paragraphs: [
           "Say 28 dots are put in 4 equal rows. How many dots are in each row?",
           "Ask: 4 rows of what number make 28? You know 4 × 7 = 28. So each row holds 7 dots.",
-          "So a multiplication fact you know gives you the missing number.",
+          "A multiplication and its answer, like 4 × 7 = 28, is called a multiplication fact. So a fact you know gives you the missing number.",
         ],
       },
       {
@@ -114,10 +117,10 @@ export const factArrayLessons: Lesson[] = [
       {
         title: "One array, four facts",
         paragraphs: [
-          "Look at the picture: 4 rows of 7. It shows 4 × 7 = 28. Turned, it shows 7 × 4 = 28.",
+          "An array is objects set out in equal rows. Look at the picture: an array of 4 rows of 7. It shows 4 × 7 = 28. Turned, it shows 7 × 4 = 28.",
           "The same array also shows 28 ÷ 4 = 7, the number in each of 4 rows. And it shows 28 ÷ 7 = 4, the number of rows of 7.",
           "These four facts are called a fact family. So one multiplication fact gives you four facts.",
-          "Two more facts help. Dividing by 1 leaves a number the same: 9 ÷ 1 = 9. Dividing a number by itself gives 1: 9 ÷ 9 = 1.",
+          "Two more facts help. Dividing by 1 leaves a number the same: 9 ÷ 1 = 9. Dividing a number other than 0 by itself gives 1: 9 ÷ 9 = 1.",
         ],
         illustration: "fact-family-array",
       },
@@ -127,7 +130,8 @@ export const factArrayLessons: Lesson[] = [
         stage: "formal",
         title: "Division undoes multiplication",
         paragraphs: [
-          "The quotient is the number that multiplies the divisor to make the dividend. The divisor can never be 0. With letters, $n \\div d = q$ means exactly the same as $d \\times q = n$. So every division fact matches a multiplication fact.",
+          "In 28 ÷ 4 = 7, the dividend is 28, the divisor is 4 and the quotient is 7. Check: 4 × 7 = 28. So the quotient is the number that multiplies the divisor to make the dividend. The divisor can never be 0.",
+          "Letters can stand for any numbers. Then $n \\div d = q$ means exactly the same as $d \\times q = n$. So every division fact matches a multiplication fact.",
         ],
       },
     ],
@@ -173,7 +177,7 @@ export const factArrayLessons: Lesson[] = [
         paragraphs: [
           "In 6 × □ = 42, the box is the number that 6 multiplies to make 42. It is the number of dots in each of 6 rows when there are 42 dots in all.",
           "To skip-count by 6 means to count 6 at a time. Look at the picture: 6, 12, 18, 24, 30, 36, 42. That is 7 jumps.",
-          "So □ = 7. Check: 6 × 7 = 42.",
+          "Each jump puts one more dot in each of the 6 rows. After 7 jumps, each row has 7 dots. So □ = 7. Check: 6 × 7 = 42.",
         ],
         illustration: "missing-factor-skip",
       },
@@ -191,7 +195,8 @@ export const factArrayLessons: Lesson[] = [
         stage: "formal",
         title: "An unknown factor",
         paragraphs: [
-          "In a multiplication sentence, the missing factor is the number that makes the product, the answer, come out right. If you know one factor and the product, divide the product by the known factor. The known factor must not be 0.",
+          "A multiplication sentence shows numbers being multiplied and their answer, like 6 × 7 = 42. The numbers multiplied are the factors, and the answer is the product. The missing factor is the number that makes the product come out right.",
+          "If you know one factor and the product, divide the product by the known factor. For 6 × □ = 42, split 42 into 6 equal rows: 42 ÷ 6 = 7. The known factor must not be 0.",
         ],
       },
     ],
@@ -199,14 +204,14 @@ export const factArrayLessons: Lesson[] = [
       prompt: "□ × 8 = 48. What number belongs in the box?",
       steps: [
         "The box is the number of groups of 8 that make 48.",
-        "Skip-count by 8, because each count is one more group: 8, 16, 24, 32, 40, 48. That is 6 counts.",
+        "Skip-count by 8, which means count 8 at a time. Each count is one more group: 8, 16, 24, 32, 40, 48. That is 6 counts.",
         "Check: 6 × 8 = 48, so □ = 6.",
       ],
       answer: "6",
     },
     pitfalls: [
       "The box is a factor, not the total. In 6 × □ = 42, the box is 7, not 42.",
-      "In 42 ÷ □ = 6, find the box with 42 ÷ 6 = 7. Do not try 6 ÷ 42.",
+      "In 42 ÷ □ = 6, each group gets 6. So the box is how many groups of 6 make 42: 42 ÷ 6 = 7. Do not try 6 ÷ 42.",
     ],
     parentGuide:
       "Hide some coins under a cup in equal rows. Tell the learner the total and the number of rows. Ask how many are in each row, then lift the cup to check.",
@@ -226,15 +231,15 @@ export const factArrayLessons: Lesson[] = [
         stage: "intuition",
         title: "A total can be split two ways",
         paragraphs: [
-          "You have 12 counters. You could share them equally on 3 plates. Or you could put them in groups of 3.",
+          "You have 12 counters, small round pieces used for counting. You could share them equally on 3 plates. Or you could put them in groups of 3.",
           "Both use 12 and 3. But sharing asks how many counters go on each plate. Grouping asks how many groups you can make.",
         ],
       },
       {
         title: "Sharing: you know the number of groups",
         paragraphs: [
-          "Look at the picture. Share 12 counters on 3 plates by dealing: one to each plate, then another to each plate, until none are left.",
-          "Each round uses 3 counters. There are 4 rounds, so each plate gets 4.",
+          "Look at the picture. Share 12 counters on 3 plates by dealing. Put one on each plate, then another on each plate. Keep going until none are left.",
+          "Putting one on every plate is called a round. Each round uses 3 counters. There are 4 rounds, so each plate gets 4.",
           "This finds the size of each group: 12 ÷ 3 = 4. The sign ÷ is read “divided by.”",
         ],
         illustration: "share-measure",
@@ -262,7 +267,7 @@ export const factArrayLessons: Lesson[] = [
         "30 stickers are shared equally by 5 friends. How many stickers does each friend get?",
       steps: [
         "You know the number of groups: 5 friends. You want the size of each share. So this is sharing.",
-        "Deal the stickers in rounds. Each round gives every friend 1 and uses 5 stickers: 5, 10, 15, 20, 25, 30. That is 6 rounds.",
+        "Deal the stickers. Giving every friend 1 sticker is one round, and it uses 5 stickers. Count the stickers given out after each round: 5, 10, 15, 20, 25, 30. That is 6 rounds.",
         "Each friend got one sticker per round, so each gets 6: 30 ÷ 5 = 6.",
       ],
       answer: "6",
@@ -278,7 +283,7 @@ export const factArrayLessons: Lesson[] = [
     id: "times-table-patterns",
     title: "Patterns in the multiplication table",
     summary:
-      "A multiplication table is a chart of times facts. Each row lists one number times 1, 2, 3 and so on. Moving one step along a row adds one more group. So a fact you know helps you find the next one.",
+      "A multiplication table is a chart of multiplication facts, like 3 × 7 = 21. A row is a line of boxes going across. Each row lists one number times 1, 2, 3 and so on. Moving one box right along a row adds one more group. So a fact you know helps you find the next one.",
     templateIds: ["times-table-pattern"],
     senses: factSenses,
     objectives: [
@@ -300,7 +305,7 @@ export const factArrayLessons: Lesson[] = [
         paragraphs: [
           "A row goes across, and a column goes down. Each box in the table is called a cell. The cell in the row for 3 and the column for 7 holds 3 × 7.",
           "Look at the picture. Moving one column right adds one more group of 3. So the row for 3 reads 12, 15, 18, 21, 24 as the columns go 4, 5, 6, 7, 8.",
-          "So a product you do not know is the one on its left plus the row's number: 3 × 8 = 21 + 3 = 24.",
+          "So a product you do not know is the one on its left plus the row's number. For 3 × 8, take 3 × 7 = 21 and add 3: 21 + 3 = 24.",
         ],
         illustration: "table-patterns",
       },
@@ -317,26 +322,27 @@ export const factArrayLessons: Lesson[] = [
         stage: "formal",
         title: "Patterns from equal groups",
         paragraphs: [
-          "Each step across a multiplication row adds one more group of the row's number. Doubling a factor, one of the numbers you multiply, doubles the product. Splitting a factor into two parts splits the product into two products that add up to it: $5 \\times 7 = 2 \\times 7 + 3 \\times 7$.",
+          "Each step right along a multiplication row adds one more group of the row's number. Doubling one factor, one of the numbers you multiply, doubles the product when the other factor stays the same: 3 × 7 = 21 and 6 × 7 = 42.",
+          "Splitting a factor into two parts splits the product into two products that add up to it: $5 \\times 7 = 2 \\times 7 + 3 \\times 7 = 14 + 21 = 35$.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "Each product in the row for 8 is double the product above it, in the row for 4. 4 × 7 = 28. What is 8 × 7?",
+        "Each answer in the row for 8 is double the answer in the row for 4. 4 × 7 = 28. What is 8 × 7?",
       steps: [
         "8 groups of 7 are 4 groups of 7 and 4 more groups of 7.",
-        "So 8 × 7 is double 4 × 7. Double 28: 28 + 28 = 56.",
+        "So 8 × 7 is double 4 × 7. To double means to add a number to itself: 28 + 28 = 56.",
         "So 8 × 7 = 56.",
       ],
       answer: "56",
     },
     pitfalls: [
-      "Moving one column along a row adds the row's number, not 1. In the row for 3, 3 × 7 = 21 and 3 × 8 = 24.",
-      "Double only when the factor doubles. The row for 6 is double the row for 3, but the row for 7 is not double any row.",
+      "Moving one column right adds the row's number, not 1. Moving one column left takes it away. In the row for 3, 3 × 7 = 21 and 3 × 8 = 24.",
+      "A factor is one of the numbers you multiply. Double the answer only when one factor doubles and the other stays the same. The row for 6 is double the row for 3, but the row for 7 is not double any row.",
     ],
     parentGuide:
-      "Write the rows for 2, 4 and 8, one under another. Ask the learner what each row does to the one before it. Then predict the next product before checking it.",
+      "Write the rows for 2, 4 and 8, one under another. Ask the learner what each row does to the one before it. Then ask them to predict the next answer in the row before checking it.",
   },
 ];
 
@@ -344,13 +350,13 @@ export const factArrayMethods: Record<string, ProblemMethod> = {
   "multiply-facts": {
     goal: "Find the product of two one-digit numbers from a multiplication, an array or a story of equal rows.",
     intuition:
-      "The sign × is read “times.” So 7 × 8 means 7 groups of 8. An array is objects set out in equal rows. The numbers you multiply are called factors. The answer is called the product. A one-digit number is a number from 0 to 9. To double means to add a number to itself.",
+      "The sign × is read “times.” So 7 × 8 means 7 groups of 8. An array is objects set out in equal rows. A row goes across, and a column goes up and down. The numbers you multiply are called factors. The answer is called the product. A multiplication and its answer, like 2 × 8 = 16, is called a multiplication fact. A one-digit number is a number from 0 to 9. To double means to add a number to itself.",
     terms: ["factor-number", "product-multiply", "array"],
     senses: factSenses,
     method: [
       "Read 7 × 8 as 7 rows of 8.",
-      "Start from a fact you know. Times 2: double. Times 4: double twice. Times 5: half of times 10. Times 9: times 10, then take away one group.",
-      "For 6, 7 or 8 rows, split off 5 rows. Find both parts and add them.",
+      "Start from a fact you know. Times 2: double. Times 4: double twice, because 4 groups are 2 groups twice. Times 5: half of times 10, because 5 groups are half of 10 groups. Times 9: times 10, then take away one group.",
+      "For 6, 7 or 8 rows, split off 5 rows. Find both parts and add them, because together they hold every dot.",
     ],
     watch:
       "Turning the array swaps the factors but keeps the product: 3 × 8 = 8 × 3.",
@@ -358,12 +364,12 @@ export const factArrayMethods: Record<string, ProblemMethod> = {
   "divide-facts": {
     goal: "Find the answer to a division within 100 from a multiplication fact.",
     intuition:
-      "To divide means to split a total into equal groups. The sign ÷ is read “divided by.” In 56 ÷ 8 = 7, the number being split, 56, is called the dividend. The number you divide by, 8, is called the divisor. The answer, 7, is called the quotient. The box □ stands for a missing number. A factor is one of the numbers you multiply.",
+      "To divide means to split a total into equal groups. The sign ÷ is read “divided by.” In 56 ÷ 8 = 7, the number being split, 56, is called the dividend. The number you divide by, 8, is called the divisor. The answer, 7, is called the quotient. The box □ stands for a missing number. Multiplication counts all the things in equal groups: 8 groups of 7 make 56. A factor is one of the numbers you multiply. An array is objects set out in equal rows.",
     terms: ["dividend", "divisor", "quotient"],
     senses: factSenses,
     method: [
-      "Write $n \\div d = \\boxed{\\phantom{0}}$ as $d \\times \\boxed{\\phantom{0}} = n$. Division undoes multiplication, so both ask for the same number.",
-      "Find the missing factor from a fact you know, or skip-count by $d$: count $d$ at a time up to $n$.",
+      "Turn the division into a multiplication: 56 ÷ 8 = □ asks 8 × □ = 56. Division undoes multiplication, so both ask for the same number.",
+      "Find the missing factor from a fact you know. Or skip-count by the divisor up to the total, and count the jumps. Each jump is one more group.",
       "Check: divisor × quotient = dividend.",
     ],
     watch:
@@ -372,23 +378,24 @@ export const factArrayMethods: Record<string, ProblemMethod> = {
   "missing-factor-fact": {
     goal: "Find the number in the box in a multiplication or division sentence.",
     intuition:
-      "The box □ stands for a missing number. A factor is one of the numbers you multiply. The answer to a multiplication is called the product. The sign ÷ means divided by: split into equal groups. To skip-count by 9 means to count 9 at a time: 9, 18, 27.",
+      "The box □ stands for a missing number. Multiplication counts all the things in equal groups. A factor is one of the numbers you multiply. The answer to a multiplication is called the product. The sign ÷ means divided by: split into equal groups. To skip-count by 9 means to count 9 at a time: 9, 18, 27.",
     senses: factSenses,
     method: [
-      "Write the sentence as a multiplication: $a \\times \\boxed{\\phantom{0}} = n$, $\\boxed{\\phantom{0}} \\times b = n$, or for $n \\div \\boxed{\\phantom{0}} = q$, $\\boxed{\\phantom{0}} \\times q = n$.",
-      "Skip-count by the known factor up to $n$. Count the skips, because each skip is one more group.",
+      "Write the sentence as a multiplication with a box. □ × 9 = 72 already is one. For 72 ÷ □ = 9, each group gets 9, so write □ × 9 = 72.",
+      "Skip-count by the number you know until you reach the total. Count the skips, because each skip is one more group.",
       "Put the number in the box and check that the sentence is true.",
     ],
-    watch: "The box is a factor, never the total: in 6 × □ = 42 it is 7.",
+    watch:
+      "The box is a missing factor, not the total: in 6 × □ = 42 the box is 7, because 6 × 7 = 42.",
   },
   "share-or-group": {
     goal: "Use a total and either the number of groups or the size of each group to find the other.",
     intuition:
-      "To divide means to split a total into equal groups. Sharing is when you know how many groups, like 3 plates, and want how many go in each. Grouping is when you know how many go in each group, like teams of 4, and want how many groups. The sign ÷ is read “divided by.”",
+      "To divide means to split a total into equal groups. Sharing is when you know how many groups, like 3 plates, and want how many go in each. Grouping is when you know how many go in each group, like teams of 4, and want how many groups. The sign ÷ is read “divided by.” To skip-count by 4 means to count 4 at a time: 4, 8, 12.",
     method: [
       "Decide what you know: the number of groups (sharing) or the size of each group (grouping).",
-      "Sharing: deal one to each group per round and count the rounds. Grouping: fill groups of the given size and count the groups.",
-      "Both are total ÷ the number you know. Check with a multiplication.",
+      "Sharing: give one to each group; that is one round. Count the rounds, because each round adds one to every group. Grouping: fill groups of the given size and count the groups.",
+      "Both are total ÷ the number you know. Check: the number of groups times the size of each group makes the total.",
     ],
     watch:
       "Answer the question asked: the size of each group or the number of groups.",
@@ -396,7 +403,7 @@ export const factArrayMethods: Record<string, ProblemMethod> = {
   "times-table-pattern": {
     goal: "Find a missing product in part of a multiplication table, using a pattern.",
     intuition:
-      "A multiplication table is a chart of times facts. A row goes across, and a column goes down. Each box is called a cell. A cell holds its row number times its column number. That answer is called the product. To double means to add a number to itself.",
+      "A multiplication table is a chart of multiplication facts, like 3 × 7 = 21. A row goes across, and a column goes down. Each box is called a cell. A cell holds its row number times its column number. That answer is called the product. A factor is one of the numbers you multiply. To double means to add a number to itself.",
     terms: [
       [
         "product-multiply",
@@ -406,7 +413,7 @@ export const factArrayMethods: Record<string, ProblemMethod> = {
     senses: factSenses,
     method: [
       "Name the cell: its row number times its column number.",
-      "Use a pattern. Add the row number to the cell on the left. Or double the row for half the number. Or add two rows whose numbers add to this row's number.",
+      "Use a pattern. Add the row number to the cell on the left, because one more column is one more group. Or, in the same column, double the answer in the row for half the number. Or, in the same column, add the answers from two rows whose numbers add to this row's number.",
       "Check by multiplying the row number by the column number.",
     ],
     watch: "One column to the right adds the row's number, not 1.",
@@ -415,13 +422,13 @@ export const factArrayMethods: Record<string, ProblemMethod> = {
 
 export const factArrayPrinciples: Record<string, string> = {
   "multiply-facts":
-    "The order of the factors does not change the product: 3 × 8 = 8 × 3. Splitting a factor splits the product into parts that add up to it: (5 + 2) × 8 = 5 × 8 + 2 × 8.",
+    "The order of the factors does not change the product: 3 × 8 = 8 × 3. Splitting a factor splits the product into parts that add up to it. Parentheses ( ) show what to work out first: (5 + 2) × 8 is 7 × 8, and it equals 5 × 8 + 2 × 8 = 40 + 16 = 56.",
   "divide-facts":
-    "Division undoes multiplication: $n \\div d = q$ exactly when $d \\times q = n$. The divisor $d$ is never 0.",
+    "Division undoes multiplication: 56 ÷ 8 = 7 because 8 × 7 = 56. With letters that stand for numbers, $n \\div d = q$ exactly when $d \\times q = n$. The divisor $d$ is never 0.",
   "missing-factor-fact":
-    "A missing factor or divisor comes from the matching multiplication: $a \\times \\boxed{\\phantom{0}} = n$ and $n \\div \\boxed{\\phantom{0}} = q$ each ask for a number that multiplies to make $n$.",
+    "The divisor is the number you divide by. A missing factor or a missing divisor comes from the matching multiplication. Both 6 × □ = 42 and 42 ÷ □ = 6 ask: what number times 6 makes 42? The answer is 7.",
   "share-or-group":
-    "$n \\div d$ answers both questions: how many are in each of $d$ equal groups, and how many groups of $d$ make $n$. Both work because $d \\times q = q \\times d$.",
+    "8 ÷ 4 answers two questions. Share 8 into 4 equal groups, and each group gets 2. Or make groups of 4 from 8, and you get 2 groups. Both work because 4 × 2 = 2 × 4 = 8.",
   "times-table-pattern":
-    "One more group adds the row's number: $a \\times (c + 1) = a \\times c + a$. Doubling a factor doubles the product: $(2 \\times a) \\times c = 2 \\times (a \\times c)$. Splitting a factor adds two products: $(a + b) \\times c = a \\times c + b \\times c$.",
+    "One more column adds one more group: 3 × 8 = 3 × 7 + 3 = 21 + 3 = 24. Doubling one factor, while the other stays the same, doubles the product: 6 × 7 = 2 × 21 = 42. Splitting a factor adds two products: 5 × 7 = 2 × 7 + 3 × 7 = 14 + 21 = 35.",
 };

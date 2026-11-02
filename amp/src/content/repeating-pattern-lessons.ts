@@ -6,7 +6,7 @@ export const repeatingPatternMethods: Record<string, ProblemMethod> = {
   "repeating-shape-pattern": {
     goal: "Find the shapes that continue or complete a pattern that repeats the same short part.",
     intuition:
-      "A pattern is something that happens again and again in the same way. Some patterns repeat a short group of shapes, like circle, square, square, circle, square, square. That short group is called the repeating part. Its length is how many shapes it has: here, 3. To fill an empty box, find the repeating part and see where in it the box falls.",
+      "A pattern is something that happens again and again in the same way. Some patterns repeat a short group of shapes, like circle, square, square, circle, square, square. The shortest group that repeats is called the repeating part. Its length is how many shapes it has: here, 3. A shape's position is its place in the row, counting from the left. To fill an empty box, find the repeating part and see where in it the box falls.",
     senses: { square: "square-shape" },
     terms: [
       "pattern",
@@ -27,7 +27,7 @@ export const repeatingPatternMethods: Record<string, ProblemMethod> = {
 
 export const repeatingPatternPrinciples: Record<string, string> = {
   "repeating-shape-pattern":
-    "With a repeating part of 3 shapes, positions 1, 4, 7 and 10 all hold the same shape. In general, if the repeating part has $k$ shapes, positions $n$ and $n+k$ hold the same shape. Take away whole repeats from the $n-1$ shapes before position $n$. If $r$ shapes are left over, position $n$ holds shape number $r+1$ of the repeating part.",
+    "With a repeating part of 3 shapes, positions 1, 4, 7 and 10 all hold the same shape. In general, let $k$ stand for the number of shapes in the repeating part and $n$ for a position. Then positions $n$ and $n+k$ hold the same shape. Before position $n$ there are $n-1$ shapes. Take away as many whole repeats as you can. If $r$ shapes are left over, position $n$ holds shape number $r+1$ of the repeating part.",
 };
 
 export const repeatingPatternLessons = [
@@ -35,7 +35,7 @@ export const repeatingPatternLessons = [
     id: "repeating-shape-pattern-lesson",
     title: "Repeating patterns of shapes",
     summary:
-      "Some patterns use the same short group of shapes over and over. That group is called the repeating part. Find it, and you can tell which shape goes in any empty box.",
+      "A pattern is something that happens again and again in the same way. Some patterns use the same short group of shapes over and over. The shortest group that repeats is called the repeating part. Find it, and you can tell which shape goes in any empty box.",
     senses: { square: "square-shape" },
     templateIds: ["repeating-shape-pattern"],
     objectives: [
@@ -66,7 +66,8 @@ export const repeatingPatternLessons = [
     ],
     formalTitle: "Position in a repeat",
     formal: [
-      "A shape's position is its place in the row: 1st, 2nd, 3rd and so on. If the repeating part has $k$ shapes, positions $n$ and $n+k$ hold the same shape.",
+      "A shape's position is its place in the row: 1st, 2nd, 3rd and so on. For circle, square, square, each repeat has 3 shapes, so positions 1, 4 and 7 all hold circles.",
+      "Let the letter $k$ stand for the number of shapes in the repeating part, and $n$ for a position. Then positions $n$ and $n+k$ hold the same shape.",
       "Before position $n$ there are $n-1$ shapes. Take away as many whole repeats of $k$ as you can. If $r$ shapes are left over, position $n$ holds shape number $r+1$ of the repeating part.",
     ],
     pitfalls: [
