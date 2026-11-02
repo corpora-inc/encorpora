@@ -64,7 +64,7 @@ const specs: SelectContentSpec[] = [
     goal: "Select the expressions that have the same value as an expression with a subtraction inside parentheses.",
     intuition:
       "Parentheses ( ) show which part to do first. In $3\\times(9-4)$, subtract first: $9-4=5$. Then multiply: $3\\times5=15$. The value of an expression is the number it works out to.",
-    more: "After a $\\times$ sign, the parentheses matter. $3\\times(9-4)$ is the same as multiplying each number in the parentheses, $3\\times9-3\\times4$. Dropping the parentheses, as in $3\\times9-4$, changes the value. After a plus sign, they do not matter: $10+(9-4)=10+9-4$. Dividing a difference works like multiplying: $(12-6)\\div3=12\\div3-6\\div3$. You can add or multiply in either order.",
+    more: "After a $\\times$ sign, the parentheses matter. $3\\times(9-4)$ is the same as multiplying each number in the parentheses, $3\\times9-3\\times4$. Dropping the parentheses, as in $3\\times9-4$, changes the value. When an expression has only + and − signs, parentheses after a plus sign do not matter: $10+(9-4)=10+9-4$. Dividing a difference works like multiplying: $(12-6)\\div3=12\\div3-6\\div3$. You can add or multiply in either order.",
     terms: ["parentheses", "order-of-operations"],
     steps: [
       "Find the value of the given expression. Do the parentheses first.",

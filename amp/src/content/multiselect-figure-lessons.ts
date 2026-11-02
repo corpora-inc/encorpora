@@ -60,11 +60,11 @@ const specs: SelectContentSpec[] = [
     goal: "Select the named shapes or descriptions that have as many sides as a drawn polygon.",
     intuition:
       "A polygon is a flat, closed shape made of straight sides. Its name tells how many sides it has. A triangle has 3, a pentagon 5, a hexagon 6 and an octagon 8. A polygon has as many corners as sides, because each side ends at a corner where the next side starts. It also has that many angles, the openings at its corners.",
-    more: "A quadrilateral has 4 sides. So do squares, rectangles, rhombuses, trapezoids and parallelograms. Different names can describe shapes with the same number of sides.",
+    more: "A quadrilateral has 4 sides. So do squares, rectangles, rhombuses, trapezoids and parallelograms. Different names can describe shapes with the same number of sides. In this lesson every shape is a polygon, so a shape with 5 corners has 5 sides.",
     terms: ["polygon", "side", "corner"],
     steps: [
       "Count the sides of the drawn shape. Go around it once.",
-      "For each choice, find its number of sides, from its name or from its corners or angles.",
+      "For each choice, find its number of sides, from its name or from its corners or angles. Every shape here has straight sides.",
       "Compare with the drawn shape's count.",
       "Select the choices with the same number. Check that you chose as many as the question asks.",
     ],
@@ -155,7 +155,7 @@ const specs: SelectContentSpec[] = [
     skillId: "lines-symmetry",
     title: "Acute, right and obtuse angles",
     summary:
-      "An angle is the opening where two straight lines meet. A right angle is a square corner. In this lesson you sort angles by comparing each one with a square corner: smaller is acute, and bigger is obtuse.",
+      "An angle is the opening where two straight lines meet. A right angle is a square corner. In this lesson you sort angles by comparing each one with a square corner. Smaller is acute. Bigger, but less than a straight line, is obtuse.",
     goal: "Select the drawn angles that are acute, right or obtuse by comparing each with a right angle.",
     intuition:
       "A ray is a straight line that starts at a point and goes on in one direction. An angle is the opening between two rays that start at the same point. A right angle is a square corner. An angle smaller than a right angle is acute. An angle bigger than a right angle, but smaller than a straight line, is obtuse.",
@@ -176,7 +176,7 @@ const specs: SelectContentSpec[] = [
         "An angle opens wider than the corner of a sheet of paper but is not a straight line. Is it acute, right or obtuse?",
       steps: [
         "It opens wider than a right angle, so it is more than $90^\\circ$.",
-        "It does not open as wide as a straight line, which is $180^\\circ$, so it is less than $180^\\circ$.",
+        "The angles here never open wider than a straight line, which is $180^\\circ$. This one is not a straight line, so it is less than $180^\\circ$.",
         "An angle between $90^\\circ$ and $180^\\circ$ is obtuse.",
       ],
       answer: "Obtuse",
@@ -230,7 +230,7 @@ const specs: SelectContentSpec[] = [
       prompt:
         "A dashed line runs from one corner of a rectangle to the opposite corner. Is it a line of symmetry?",
       steps: [
-        "Fold along the corner-to-corner line.",
+        "This rectangle is longer than it is wide, so it is not a square. Fold it along the corner-to-corner line.",
         "The two triangles are the same size, but they do not line up: their corners stick out past each other.",
         "The corners do not match, so it is not a line of symmetry.",
       ],
@@ -291,7 +291,7 @@ const specs: SelectContentSpec[] = [
       "Find the angle between two rays by subtracting their readings.",
     ],
     pitfalls: [
-      "Reading the wrong scale, which gives 180 minus the angle.",
+      "Reading the wrong scale for a ray's angle from ray $A$, which gives 180 minus that angle.",
       "Using one ray's reading as the angle between two rays when neither is on 0.",
       "Adding the readings instead of subtracting.",
     ],

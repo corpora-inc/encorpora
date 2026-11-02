@@ -6,22 +6,22 @@ const specs: SelectContentSpec[] = [
     skillId: "large-place-value",
     title: "Expressions and word forms equal to a number",
     summary:
-      "A digit is one of the symbols 0 to 9. In a big number, each digit is worth a different amount, set by its place. In this lesson you check statements about a number. Some add up what its digits are worth. Some write a number in words.",
+      "A digit is one of the symbols 0 to 9. In a big number, what a digit is worth depends on its place. In this lesson you check statements about a number. Some add up what its digits are worth. Some write a number in words.",
     goal: "Select the statements that are true for a number by finding what each of its digits is worth.",
     intuition:
       "A digit is one of the symbols 0 to 9. Its place in a number sets what it is worth. In $36{,}731$, the first 3 is in the ten-thousands place, so it is worth $30{,}000$. The 6 is worth $6{,}000$, the 7 is worth 700, the next 3 is worth 30 and the 1 is worth 1. Add those values and you get the number back: $30{,}000+6{,}000+700+30+1=36{,}731$.",
-    more: "One number can be written in many ways. $36\\times1{,}000+731$ means 36 thousands and 731 more. That is $36{,}000+731=36{,}731$, so it is equal. But $36\\times100+731$ means 36 hundreds, which is only $3{,}600$, so it is not equal. To compare two numbers, start at the left. The first place where the digits differ decides which number is greater.",
+    more: "One number can be written in many ways. $36\\times1{,}000+731$ means 36 thousands and 731 more. That is $36{,}000+731=36{,}731$, so it is equal. But $36\\times100+731$ means 36 hundreds and 731 more. That is $3{,}600+731=4{,}331$, so it is not equal. To compare two whole numbers, first count their digits: the one with more digits is greater. If they have the same number of digits, start at the left. The first place where the digits differ decides which number is greater.",
     terms: ["place-value", "expanded-form"],
     steps: [
       "Write what each digit of the number is worth, such as $30{,}000+6{,}000+700+30+1$.",
       "Find the value of each statement. Add up its parts, or write its number words in digits.",
-      "Compare that value with the number. Start at the left, with the biggest place.",
+      "Compare that value with the number. A number with more digits is greater. With the same number of digits, start at the left, with the biggest place.",
       "Select only the true statements. Check that you chose as many as the question asks.",
     ],
     watch:
       "A digit one place off is worth 10 times more or 10 times less. Check the zeros in every part.",
     principle:
-      "A digit's value is the digit times the value of its place. A whole number is the sum of its digit values. A count of a place works the same way: $36\\times1{,}000$ is 36 thousands, so $36\\times1{,}000+731=36{,}000+731$. To compare two whole numbers, find the first place from the left where their digits differ. The number with the greater digit there is the greater number.",
+      "A digit's value is the digit times the value of its place. A whole number is the sum of its digit values. A count of a place works the same way: $36\\times1{,}000$ is 36 thousands, so $36\\times1{,}000+731=36{,}000+731$. To compare two whole numbers, a number with more digits is greater. With the same number of digits, find the first place from the left where the digits differ. The number with the greater digit there is the greater number.",
     example: {
       prompt: "Is $4\\times1{,}000+52$ equal to $4{,}502$?",
       steps: [
@@ -54,7 +54,7 @@ const specs: SelectContentSpec[] = [
     skillId: "fraction-equivalence",
     title: "Choosing every equivalent fraction",
     summary:
-      "Equivalent fractions name the same amount, like $\\frac{1}{2}$ and $\\frac{2}{4}$ of a pizza. In this lesson you pick every fraction that names the same amount as a given fraction. The test is simple: the top and the bottom must both be multiplied, or both divided, by the same number.",
+      "Equivalent fractions name the same amount, like $\\frac{1}{2}$ and $\\frac{2}{4}$ of a pizza. In this lesson you pick every fraction that names the same amount as a given fraction. The test is simple: the top and the bottom must both be multiplied, or both divided, by the same number, other than 0.",
     goal: "Select the fractions equal to a given fraction by checking that its top and bottom are multiplied or divided by one number.",
     intuition:
       "A fraction like $\\frac{1}{3}$ has two numbers. The bottom number, the denominator, says how many equal pieces make one whole. The top number, the numerator, says how many of those pieces you have. Equivalent fractions name the same amount. Cut each third into 2 equal pieces. Now the whole has 6 pieces and you have 2 of them. So $\\frac{1}{3}$ and $\\frac{2}{6}$ are the same amount.",
@@ -206,15 +206,9 @@ const specs: SelectContentSpec[] = [
     intuition:
       "To round to the nearest tenth, swap a number for the closest tenth: a number like $124.6$, with one digit after the point. Many numbers round to $124.6$. They are the numbers nearer to $124.6$ than to $124.7$, and at least as near to $124.6$ as to $124.5$.",
     more: "A number exactly halfway between two tenths rounds up, to the greater one. So the numbers that round to $124.6$ start at $124.55$. They go up to $124.65$, but $124.65$ itself rounds up to $124.7$. These two numbers, $124.55$ and $124.65$, are the boundaries.",
-    terms: [
-      "round",
-      [
-        "round",
-        "Here, the lowest and highest numbers that still round to the value.",
-      ],
-    ],
+    terms: ["round"],
     steps: [
-      "Find the two boundaries. Go half a step of the rounding place below and above the value. For $124.6$ at the tenths, they are $124.55$ and $124.65$.",
+      "Find the two boundaries, where rounding to the value starts and stops. Go half a step of the rounding place below and above the value. For $124.6$ at the tenths, they are $124.55$ and $124.65$.",
       "A number rounds to the value when it is at least the lower boundary and less than the upper boundary.",
       "Compare each number with both boundaries, digit by digit from the left.",
       "Select only the numbers between the boundaries. Check that you chose as many as the question asks.",
@@ -351,8 +345,8 @@ const specs: SelectContentSpec[] = [
     skillId: "multiplication-division-equality",
     title: "True equations with a number times itself",
     summary:
-      "An equation is a number sentence with an equal sign, like $8\\times8=64$. It is true when both sides have the same value. In this lesson you pick the true multiplication and division equations. Some of them multiply a number by itself.",
-    goal: "Select the true multiplication and division equations, including a number times itself, with the result first or last.",
+      "An equation is a number sentence with an equal sign, like $8\\times8=64$. It is true when both sides have the same value. In this lesson you decide whether multiplication and division equations are true or false. Some of them multiply a number by itself.",
+    goal: "Decide whether each multiplication or division equation is true or false, including a number times itself.",
     intuition:
       "An equation is true when both sides of the equal sign have the same value. A number times itself, like $8\\times8=64$, is a fact like any other. Its division fact, $64\\div8=8$, gives back the 8.",
     more: "An equation can be written with the result first, like $64=8\\times8$. Swapping the sides does not change whether it is true.",
@@ -361,7 +355,7 @@ const specs: SelectContentSpec[] = [
       "For a multiplication, work out the product. Compare it with the other side.",
       "For a division, ask what number times the divisor, the number you divide by, gives the starting number. Compare that with the other side.",
       "If the result is written first, work out the side with the $\\times$ or $\\div$ sign.",
-      "Select the true equations. Check that you chose as many as the question asks.",
+      "For each equation, choose the statement that says correctly whether it is true or false. Choose one statement for each equation.",
     ],
     watch:
       "A number times itself, divided by that number, gives the number back. $49\\div7=7$, not 6 or 8.",
