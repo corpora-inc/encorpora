@@ -120,7 +120,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
     senses: { part: "part", parts: "part", whole: "whole" },
     goal: "Given a set of objects and a fraction, find how many objects the fraction names.",
     intuition:
-      "A set is a group of objects, like 12 marbles. A fraction such as $\\frac{3}{4}$ has two numbers. The bottom number, 4, is the denominator. It says to split the set into 4 equal groups. The top number, 3, is the numerator. It says to take 3 of those groups. So $\\frac{3}{4}$ of 12 marbles means 4 groups of 3 marbles, and 3 of those groups make 9 marbles.",
+      "A set is a group of objects, like 12 marbles. A fraction such as $\\frac{3}{4}$ has two numbers. The bottom number, 4, is the denominator. It says to split the set into 4 equal groups. The top number, 3, is the numerator. It says to take 3 of those groups. So for $\\frac{3}{4}$ of 12 marbles, split the 12 into 4 equal groups of 3 marbles. Then 3 of those groups make 9 marbles.",
     terms: [
       [
         "denominator",

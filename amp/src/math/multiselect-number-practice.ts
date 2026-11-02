@@ -329,7 +329,7 @@ function equivalentFractions(r: Random) {
     }),
     lead: [
       "Equivalent fractions name the same amount. To make one, multiply the top (the numerator) and the bottom (the denominator) by the same number, other than 0. Dividing both by the same number, other than 0, also works when both divide evenly.",
-      "Changing only one part, or adding the same number to both parts, changes the amount.",
+      "Changing only one part changes the amount. Adding the same number to both parts also changes it, unless the fraction equals 1.",
     ],
     tail: [`The fractions marked true are equivalent to $${fr(a, b)}$.`],
   };

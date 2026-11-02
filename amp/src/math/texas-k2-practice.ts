@@ -484,7 +484,8 @@ const SHAPE_DESC: Record<string, string> = {
   triangle: "3 straight sides and 3 corners",
   square: "4 equal sides and 4 square corners",
   rectangle: "4 straight sides and 4 square corners",
-  circle: "no corners and no straight sides",
+  circle:
+    "no corners and no straight sides, and it is the same width across every way",
   hexagon: "6 straight sides and 6 corners",
 };
 /** What the drawn face shows. A drawn rectangle face is never a square. */

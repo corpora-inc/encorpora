@@ -242,7 +242,7 @@ extra mathematical claim before or after those verdicts, must not be ignored.
     if template == 'equivalent-fractions-select':
         target = only_span(prompt)
         return (["Equivalent fractions name the same amount. To make one, multiply the top (the numerator) and the bottom (the denominator) by the same number, other than 0. Dividing both by the same number, other than 0, also works when both divide evenly.",
-                 "Changing only one part, or adding the same number to both parts, changes the amount."],
+                 "Changing only one part changes the amount. Adding the same number to both parts also changes it, unless the fraction equals 1."],
                 [f"The fractions marked true are equivalent to ${target}$."])
     if template == 'fraction-line-names-select':
         (line,) = [e for e in kit.elements(public) if e['type'] == 'numberLine']
