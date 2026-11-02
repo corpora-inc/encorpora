@@ -237,7 +237,6 @@ export const measurementEntries: GlossaryEntry[] = [
     example:
       "Between 3 and 4, it has just passed 3, so it is after 3 o'clock. Between 12 and 1, it is after 12 o'clock.",
     uses: [],
-    noLink: ["points"],
     band: "1",
   },
   {
