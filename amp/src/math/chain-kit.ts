@@ -86,6 +86,19 @@ export interface ChoiceOption {
 /** Single choice: the correct option plus distinct wrong options, each with
  * feedback naming the slip. Returns null when fewer than three distinct wrong
  * options exist so the model can redraw. */
+/** The wrong options `choiceSurface` shows: the first three distinct labels.
+ * A worked step that rules out "the other choices" names exactly these. */
+export function shownWrongOptions(options: ChoiceOption[]): ChoiceOption[] {
+  const correct = options.find((o) => o.correct)!;
+  const seen = new Set([correct.label]);
+  return options
+    .filter((o) => {
+      if (o.correct || seen.has(o.label)) return false;
+      seen.add(o.label);
+      return true;
+    })
+    .slice(0, 3);
+}
 export function choiceSurface(
   r: Random,
   s: {
@@ -97,14 +110,9 @@ export function choiceSurface(
   },
 ): Surface | null {
   const correct = s.options.find((o) => o.correct)!;
-  const seen = new Set([correct.label]);
-  const wrong = s.options.filter((o) => {
-    if (o.correct || seen.has(o.label)) return false;
-    seen.add(o.label);
-    return true;
-  });
+  const wrong = shownWrongOptions(s.options);
   if (wrong.length < 3) return null;
-  const chosen = shuffle(r, [correct, ...wrong.slice(0, 3)]);
+  const chosen = shuffle(r, [correct, ...wrong]);
   const choiceFeedback: Record<string, string> = {};
   let answer = "";
   const options = chosen.map((o, i) => {

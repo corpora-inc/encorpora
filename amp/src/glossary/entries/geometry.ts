@@ -291,7 +291,7 @@ export const geometryEntries: GlossaryEntry[] = [
       "composite solids",
     ],
     plain:
-      "A shape or solid made by joining simpler ones. Find its area or volume by adding up the parts.",
+      "A shape or solid made by joining simpler ones that do not overlap. Its area, or its volume, is the sum of the areas or volumes of the parts.",
     example:
       "An L-shape is two rectangles joined, so its area is the sum of their areas.",
     uses: ["solid-shape", "area", "volume", "rectangle", "sum"],

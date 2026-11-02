@@ -546,12 +546,12 @@ export function generateNumberSenseProblem(
         ...(exponent
           ? [
               k === 1
-                ? `10${superscript[k]} is just 10: one factor of 10.`
+                ? `10${superscript[k]} is just 10, a single 10.`
                 : `The small ${k} means multiply ${k} copies of 10: 10${superscript[k]} = ${Array(k).fill("10").join(" × ")} = ${powerWord[k]}.`,
             ]
           : []),
         `Multiplying by 10 makes each digit worth 10 times as much, so every digit moves one place left.`,
-        `With ${k} ${k === 1 ? "factor" : "factors"} of 10, each digit moves ${k} ${k === 1 ? "place" : "places"} left.`,
+        `Multiplying by ${powerWord[k]} is multiplying by 10 ${k === 1 ? "once" : `${k} times`}, so each digit moves ${k} ${k === 1 ? "place" : "places"} left.`,
         `So ${value} × ${powerWord[k]} = ${result}.`,
       ];
       break;
@@ -573,12 +573,12 @@ export function generateNumberSenseProblem(
         ...(exponent
           ? [
               k === 1
-                ? `10${superscript[k]} is just 10: one factor of 10.`
+                ? `10${superscript[k]} is just 10, a single 10.`
                 : `The small ${k} means multiply ${k} copies of 10: 10${superscript[k]} = ${Array(k).fill("10").join(" × ")} = ${powerWord[k]}.`,
             ]
           : []),
         `Dividing by 10 makes each digit worth one tenth as much, so every digit moves one place right.`,
-        `Dividing by ${k} ${k === 1 ? "factor" : "factors"} of 10 moves each digit ${k} ${k === 1 ? "place" : "places"} right.`,
+        `Dividing by ${powerWord[k]} is dividing by 10 ${k === 1 ? "once" : `${k} times`}, so each digit moves ${k} ${k === 1 ? "place" : "places"} right.`,
         `So ${value} ÷ ${powerWord[k]} = ${result}.`,
       ];
       break;
@@ -606,11 +606,11 @@ export function generateNumberSenseProblem(
         `The first ${digit} is in the ${placeName[high]} place: ${formatWhole(digit * 10 ** high)}. The second is in the ${placeName[low]} place: ${formatWhole(digit * 10 ** low)}.`,
         high - low === 1
           ? "The places are next to each other, so the first is worth 10 times as much."
-          : `The places are ${high - low} apart, so the ratio is ${Array(
+          : `The places are ${high - low} apart, and each place is worth 10 times the one to its right. So the first is worth ${Array(
               high - low,
             )
               .fill("10")
-              .join(" × ")} = ${formatWhole(ratio)}.`,
+              .join(" × ")} = ${formatWhole(ratio)} times as much.`,
         `Check: ${formatWhole(digit * 10 ** low)} × ${formatWhole(ratio)} = ${formatWhole(digit * 10 ** high)}. The first ${digit} is worth ${formatWhole(ratio)} times as much as the second.`,
       ];
       break;

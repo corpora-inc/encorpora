@@ -1645,7 +1645,7 @@ function matrixLawsOnce(seed: string, attempt: number) {
       )}$. Only a law that always holds can be correct; remember the order of factors matters.`,
       explanation: [
         "A law must hold for every choice of matrices. One counterexample, a single case where it fails, rules an equation out.",
-        "Unlike numbers, matrix products depend on order: in general $AB\\ne BA$. Equations that swap the order of factors fail.",
+        "Unlike numbers, matrix products depend on order: in general $AB\\ne BA$. So an equation that swaps the order of two general matrices is not a law. It holds for some pairs, such as a matrix and the identity, but fails for others.",
         trueLaw[1],
         `So the equation that holds for all matrices is $${trueLaw[0]}$.`,
       ],
