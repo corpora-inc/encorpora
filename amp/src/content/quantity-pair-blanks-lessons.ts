@@ -8,43 +8,43 @@ const entries: FormatLessonEntry[] = [
     id: "quotient-remainder-blanks",
     title: "Full groups and what is left over",
     summary:
-      "Divide to find how many full groups fit; the remainder is what is left and is always less than the group size.",
+      "Divide to find how many full groups fit. The remainder is what is left over, and it is always less than one group.",
     objectives: [
-      "Find the number of full groups and the remainder when a total is divided by a two-digit group size.",
+      "Find the number of full groups and the remainder when a total is split into groups of a two-digit size.",
       "Check that the remainder is less than the group size.",
     ],
     intuition:
-      "When you pack items into groups of the same size, you fill as many full groups as you can and some items may be left over. Dividing the total by the group size gives the number of full groups, the quotient. Multiplying the quotient by the group size and subtracting from the total gives the leftover, the remainder. The remainder is always less than the group size; if it is not, another full group fits.",
+      "Say you pack 50 apples into bags of 12. You fill as many full bags as you can: 4 bags hold 48 apples. 2 apples are left over. Dividing with a remainder finds how many full groups fit. That number of full groups is called the quotient. The amount left over is called the remainder. The remainder is always less than one group. If it were not, another full group would fit.",
     terms: ["quotient", "remainder"],
     method: [
-      "Estimate how many groups fit, using tens: how many tens of groups are in the total?",
-      "Multiply the group size by your quotient and subtract from the total to get the leftover.",
-      "If the leftover is as large as a group, increase the quotient by one and subtract again. The leftover must be less than the group size.",
+      "Estimate, or make a close guess, of how many groups fit. Try tens first: do 10 or 20 groups fit in the total?",
+      "Multiply the group size by your guess. If that is more than the total, the guess is too big: try 1 less. Otherwise, subtract it from the total to get the leftover.",
+      "If the leftover is as big as one group or bigger, one more group fits: add 1 to your guess and try again. Stop when the leftover is less than one group.",
     ],
     watch:
       "Check that the leftover is less than the group size. A leftover as big as a group means one more group fits.",
     principle:
-      "For positive integers $n$ and $d$ there are unique whole numbers $q$ and $r$ with $n=dq+r$ and $0\\le r<d$. Here $q$ is the number of full groups and $r$ the number left over.",
+      "For whole numbers $n$ and $d$, with $d$ more than 0, there is exactly one way to write $n = d \\times q + r$ with $r$ less than $d$. Here $n$ is the total, $d$ is the group size, $q$ is the number of full groups and $r$ is what is left over.",
     example: {
       prompt:
         "A baker packs 500 muffins into trays of 24. How many full trays are there and how many muffins are left over?",
       steps: [
-        "Estimate: $24\\times 20=480$, which is less than 500, and $24\\times 21=504$, which is more.",
-        "So 20 trays are full, and $500-480=20$ muffins are left over.",
-        "The leftover 20 is less than 24, so no other tray can be filled.",
+        "Estimate, or make a close guess, using tens: 20 trays hold $24\\times 20=480$ muffins. That is less than 500, so at least 20 trays are full. Try one more: $24\\times 21=504$, which is more than 500.",
+        "So 20 trays are full. Subtract the muffins in them from the total: $500-480=20$ muffins are left over.",
+        "Check the leftover: 20 is less than 24, so no other tray can be filled.",
       ],
       answer: "20 full trays and 20 left over.",
     },
     methodTitle: "Divide, multiply back, subtract",
     methodText: [
-      "Check with $d\\times q+r$: it must equal the total.",
-      "A common slip is to choose the next quotient, 21 here; that needs more muffins than there are.",
+      "Check your answer: group size times full groups, plus the leftover, must make the total. Here $24 \\times 20 + 20 = 500$.",
+      "A common slip is to pick the next number of groups, 21 here. That needs 504 muffins, more than the baker has.",
     ],
     formal:
-      "The division algorithm states that for integers $n\\ge0$ and $d>0$ there exist unique integers $q\\ge 0$ and $0\\le r<d$ with $n=dq+r$; $q=\\lfloor n/d\\rfloor$.",
+      "Whole numbers are 0, 1, 2, 3 and so on. Let $n$ be the total and $d$ the group size, with $d$ more than 0. Then there is exactly one pair of whole numbers $q$ and $r$ with $n = d \\times q + r$ and $r$ less than $d$. The quotient $q$ is the number of full groups. The remainder $r$ is what is left over.",
     pitfalls: [
-      "Do not round the quotient up; only full groups count.",
-      "Do not give the leftover as the amount missing to fill another group.",
+      "Do not count a group that is not full. Only full groups count.",
+      "Do not give the amount missing for another group. Give the amount left over.",
     ],
     parentGuide:
       "Use buttons or coins: make groups of the given size until you cannot make another one, then count what is left.",
@@ -53,46 +53,46 @@ const entries: FormatLessonEntry[] = [
     id: "meters-to-kilometers-blanks",
     title: "Add meters and write kilometers and meters",
     summary:
-      "Add distances in meters, then split the total into whole kilometers and the meters that remain.",
+      "A kilometer is 1,000 meters, about a ten-minute walk. Add the meters, then split the total into kilometers and the meters left over.",
     objectives: [
       "Add three distances given in meters.",
       "Write a total as kilometers and meters using 1 kilometer = 1,000 meters.",
     ],
     intuition:
-      "A kilometer is 1,000 meters, so a total of 2,396 meters is 2 groups of 1,000 meters and 396 meters more: 2 kilometers and 396 meters. First add all the distances in meters. Then see how many thousands the sum holds; that is the number of kilometers, and the three digits that remain are the meters.",
+      "A meter is about one big step. A kilometer is 1,000 meters, a walk of about ten minutes. 2,396 meters is 2 groups of 1,000 meters and 396 meters more. So it is 2 kilometers and 396 meters. First add all the distances in meters. Then count the thousands in the total: that is the number of kilometers. The meters left over stay as meters.",
     terms: [
       "kilometer",
       ["regroup", "Here 2,396 meters regroups as 2 kilometers 396 meters."],
     ],
     method: [
       "Add the distances in meters.",
-      "Find how many 1,000s are in the sum: that is the number of kilometers.",
-      "The meters left are the sum minus the kilometers times 1,000. Write both parts with their units.",
+      "Count how many 1,000s are in the total. That is the number of kilometers.",
+      "Take away 1,000 meters for each kilometer. What is left is the meters. Write both parts, with the words kilometers and meters.",
     ],
     watch:
-      "Take away 1,000 for each kilometer. Reading the digits of the total as 23 kilometers and 96 meters is wrong.",
+      "Take away 1,000 meters for each kilometer. 2,396 meters is 2 kilometers and 396 meters, not 23 kilometers and 96 meters.",
     principle:
-      "Since $1\\text{ km}=1{,}000\\text{ m}$, a length of $m$ meters is $\\lfloor m/1000\\rfloor$ km and $m-1000\\lfloor m/1000\\rfloor$ m.",
+      "1 kilometer is 1,000 meters. So a distance in meters is the number of whole thousands as kilometers, plus the meters left over, which are always fewer than 1,000.",
     example: {
       prompt:
         "A path has three parts of 850 meters, 920 meters and 640 meters. Write its length in kilometers and meters.",
       steps: [
-        "Add: $850+920+640=2{,}410$ meters.",
-        "$2{,}410=2\\times1{,}000+410$.",
-        "The path is 2 kilometers and 410 meters long.",
+        "The path is all three parts together, so add them: $850+920+640=2{,}410$ meters.",
+        "Each 1,000 meters is 1 kilometer, so find the thousands in 2,410: $2{,}410=2\\times1{,}000+410$.",
+        "The 2 thousands are 2 kilometers, and the 410 meters left over stay as meters. The path is 2 kilometers and 410 meters long.",
       ],
       answer: "2 kilometers and 410 meters.",
     },
-    methodTitle: "Add, then regroup",
+    methodTitle: "Add, then make kilometers",
     methodText: [
-      "Check by converting back: 2 kilometers is 2,000 meters, and $2{,}000+410=2{,}410$.",
-      "If the meters part would be 1,000 or more, another kilometer can be made.",
+      "Check by changing back: 2 kilometers is 2,000 meters, and $2{,}000+410=2{,}410$.",
+      "If the meters left over were 1,000 or more, they would make another kilometer.",
     ],
     formal:
-      "Writing $m=1000q+r$ with $0\\le r<1000$ expresses the length as $q$ km $+\\,r$ m; the representation is unique, like the remainder of a division by 1,000.",
+      "Writing a distance as kilometers and meters is like dividing by 1,000. The kilometers are the number of full thousands. The meters are what is left over, always fewer than 1,000. There is only one way to do this.",
     pitfalls: [
-      "Do not read the first digits of the total as kilometers.",
-      "Do not forget the meters that remain after the kilometers are taken out.",
+      "Split the total at the right place: 2,396 meters is 2 kilometers 396 meters, not 23 kilometers 96 meters.",
+      "Do not forget the meters left over after the kilometers are taken out.",
     ],
     parentGuide:
       "Ask how many 1,000-meter kilometers fit in the total and how much road is left over.",
@@ -479,42 +479,42 @@ const entries: FormatLessonEntry[] = [
     id: "rectangle-chain-blanks",
     title: "Length from area, then perimeter",
     summary:
-      "Divide the area by the width to find the length, then add the length and the width and double it.",
+      "Area is length times width, so divide it by the width to get the length. The perimeter, the distance around, is 2 × (length + width).",
     objectives: [
       "Find a missing side of a rectangle from its area and the other side.",
       "Find the perimeter from both sides.",
     ],
     intuition:
-      "The area of a rectangle is its length times its width, so the length is the area divided by the width. Once both sides are known, the perimeter is the distance around: two lengths and two widths, which is $2\\times(\\text{length}+\\text{width})$. The first step must come first, because the perimeter needs the length.",
+      "A rectangle is a flat shape with 4 straight sides and 4 square corners. Its area is how many equal squares, 1 unit on each side, cover it with no gaps or overlaps. That is length times width. So if you know the area and the width, divide to find the length. Its perimeter is the distance all the way around: two lengths and two widths. You need the length before you can find the perimeter.",
     terms: ["area", "perimeter"],
     method: [
-      "Divide the area by the width to find the length.",
-      "Add the length and the width.",
-      "Multiply the sum by 2 to find the perimeter.",
+      "Divide the area by the width. That gives the length, because length times width is the area.",
+      "Add the length and the width. That is halfway around.",
+      "Multiply that total by 2 to go all the way around. That is the perimeter.",
     ],
     watch:
       "The perimeter is a length, not an area. Add the sides; do not multiply them.",
     principle:
-      "For a rectangle of length $\\ell$ and width $w$, $A=\\ell w$ and $P=2(\\ell+w)$. If $A$ and $w$ are known, $\\ell=A/w$ and then $P=2(A/w+w)$.",
+      "For a rectangle of length $\\ell$ and width $w$, the area is $A = \\ell \\times w$ and the perimeter is $P = 2 \\times (\\ell + w)$. If you know $A$ and $w$, then $\\ell = A \\div w$, and after that $P = 2 \\times (\\ell + w)$.",
     example: {
       prompt:
         "A rectangle has an area of 72 square centimeters and a width of 6 centimeters. Find its length and perimeter.",
       steps: [
-        "The length is $72\\div6=12$ centimeters.",
-        "The sum of length and width is $12+6=18$ centimeters.",
-        "The perimeter is $2\\times18=36$ centimeters.",
+        "Length times 6 is 72. Dividing undoes multiplying, so the length is $72\\div6=12$ centimeters.",
+        "Halfway around is one length and one width: $12+6=18$ centimeters.",
+        "All the way around is twice that, so the perimeter is $2\\times18=36$ centimeters.",
       ],
       answer: "Length 12 centimeters; perimeter 36 centimeters.",
     },
     methodTitle: "Area to length to perimeter",
     methodText: [
-      "Check the length: $12\\times6=72$.",
-      "The units of area are square units and of perimeter are plain units.",
+      "Check the length: $12\\times6=72$, the area.",
+      "Area counts squares, so it is in square centimeters: squares 1 centimeter on each side. Perimeter is a length, so it is in centimeters.",
     ],
     formal:
-      "Area is multiplicative in the two side lengths and perimeter is additive. The step $\\ell=A/w$ uses that division undoes multiplication by $w\\ne0$.",
+      "Area multiplies the two side lengths. Perimeter adds all four sides. Finding the length uses division, which undoes multiplying by the width. The width is never 0.",
     pitfalls: [
-      "Do not add the area and the width to find the length.",
+      "Do not add the area and the width to find the length. Divide.",
       "Do not use the area as the perimeter.",
     ],
     parentGuide:
@@ -667,6 +667,16 @@ const entries: FormatLessonEntry[] = [
 
 /** How each lesson and its practice screen read ambiguous words. */
 const glossary: Record<string, Pick<ProblemMethod, "senses" | "noLink">> = {
+  "quotient-remainder-blanks": {
+    senses: { "more than": "more-than" },
+  },
+  "meters-to-kilometers-blanks": {
+    senses: { part: "part", unit: "unit" },
+    noLink: ["whole"],
+  },
+  "rectangle-chain-blanks": {
+    senses: { side: "side", square: "square-shape", unit: "unit" },
+  },
   "loan-offer-compare-blanks": {
     senses: {
       difference: "difference-subtract",
