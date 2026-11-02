@@ -25,7 +25,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       multiple: "multiple",
       center: "center",
       squared: "square-number",
-      factor: "factor-number",
+      factor: "scale-factor",
     },
     noLink: [
       "whole",
@@ -197,8 +197,8 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       vertex: "vertex",
       image: "image-transformation",
       center: "center",
-      factors: "factor-number",
-      factor: "factor-number",
+      factors: "scale-factor",
+      factor: "scale-factor",
     },
     noLink: ["unit", "units", "change", "mean", "square", "scale"],
     intuition:
@@ -304,7 +304,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
       multiple: "multiple",
       center: "center",
       squared: "square-number",
-      factor: "factor-number",
+      factor: "scale-factor",
       rule: "rule",
     },
     noLink: [
@@ -733,8 +733,8 @@ export const geometryRequirementGapLessons: Lesson[] = [
       vertex: "vertex",
       image: "image-transformation",
       center: "center",
-      factors: "factor-number",
-      factor: "factor-number",
+      factors: "scale-factor",
+      factor: "scale-factor",
     },
     noLink: ["unit", "units", "change", "mean", "square", "scale"],
     objectives: [

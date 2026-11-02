@@ -409,10 +409,10 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       "Answer what is asked: $x$, or the angle's measure after substituting $x$.",
   },
   "triangle-angle-sum": {
-    noLink: ["side", "unit"],
+    noLink: ["sides", "side", "unit"],
     goal: "Find an unknown angle of a triangle, or the value of $x$, using the fact that a triangle's three angles add to 180°.",
     terms: ["interior-angle"],
-    senses: { degrees: "degree-angle", sides: "side" },
+    senses: { degrees: "degree-angle" },
     intuition:
       "A triangle has three straight sides and three corners. The angle inside each corner is an interior angle. Angles are measured in degrees, the unit for turns, written °. In every triangle, the three interior angles add to 180°, a straight line's worth of turn.",
     method: [

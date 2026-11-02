@@ -485,10 +485,10 @@ const specs: Spec[] = [
       multiple: "multiple",
       "one third": "third",
       squared: "square-number",
-      square: "square-number",
       factors: "factor-number",
     },
     noLink: [
+      "square",
       "opposite",
       "part",
       "parts",
@@ -1204,7 +1204,7 @@ const specs: Spec[] = [
       tangent: "tangent-line",
       multiple: "multiple",
       "one third": "third",
-      factor: "factor-number",
+      factor: "scale-factor",
       square: "square-number",
     },
     noLink: [

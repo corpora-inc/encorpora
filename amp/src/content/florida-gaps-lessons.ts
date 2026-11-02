@@ -569,10 +569,10 @@ export const floridaGapLessons: Lesson[] = [
     senses: {
       unit: "unit",
       "more than": "more-than",
-      factor: "factor-number",
+      factor: "conversion-factor",
       squares: "square-shape",
       side: "side",
-      factors: "factor-number",
+      factors: "conversion-factor",
     },
     noLink: ["square", "change", "changes"],
     templateIds: ["fl-metric-customary-conversion"],

@@ -8,8 +8,8 @@ export const percentChainMethods: Record<string, ProblemMethod> = {
       change: "change",
       changes: "change",
       "more than": "more-than",
-      factor: "factor-number",
-      factors: "factor-number",
+      factor: "growth-factor",
+      factors: "growth-factor",
     },
 
     goal: "Work with two percent changes in a row: undo both to find the start, combine them into one, or apply them in order.",

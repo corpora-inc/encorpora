@@ -50,8 +50,8 @@ export const quadraticStructureLessons: Lesson[] = [
       "The graph of $y = x^2$ ($x$ times $x$) is a U-shaped curve called a parabola. Its lowest point, $(0, 0)$, is where it turns around. That turning point is called the vertex. The curve is a mirror image on either side of the vertical line through the vertex. Changing some numbers in the equation slides the curve, and the equation tells you exactly where the vertex goes.",
     templateIds: ["parabola-vertex", "parabola-axis", "parabola-shift"],
     includeGeneratedRepresentation: false,
-    senses: { ...parabolaSenses, image: "image-transformation" },
-    noLink: ["means", "mirror image", "units"],
+    senses: parabolaSenses,
+    noLink: ["means", "image", "units"],
     objectives: [
       "Find the vertex (the turning point) of a parabola from vertex form, from standard form, or from its graph.",
       "Find the axis of symmetry (the mirror line) from the zeros, from two points at the same height, or from $x = -\\frac{b}{2a}$.",
@@ -352,7 +352,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
       "Squaring means multiplying a number by itself. A parabola is the U-shaped graph of a rule like $y = ax^2 + bx + c$, where $x^2$ means $x$ times $x$ and $a \\ne 0$. Its turning point, the lowest point or the highest if it opens downward, is called the vertex. In vertex form $y = a(x - h)^2 + k$, with $a \\ne 0$, the square $(x - h)^2$ is 0 at $x = h$ and positive everywhere else. So the vertex is $(h, k)$. In the form $y = ax^2 + bx + c$, the vertex is at $x = -\\frac{b}{2a}$.",
     terms: ["vertex-parabola", "vertex-form"],
     senses: { ...parabolaSenses, rule: "rule", opposite: "opposite-number" },
-    noLink: ["changes", "means", "image", "mirror image"],
+    noLink: ["changes", "means", "image"],
     method: [
       "Vertex form: $h$ is the $x$ that makes the squared bracket 0, and $k$ is the number added after the square.",
       "The form $y = ax^2 + bx + c$ is called standard form. For it, find $x = -\\frac{b}{2a}$, then put it into the equation to find $y$.",

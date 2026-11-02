@@ -329,13 +329,8 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     goal: "Find the curved or total surface area of a cylinder using $\\pi$, a missing height, or a triangular prism's surface area.",
     intuition:
       "Surface area is the total area of a solid's outside. A cylinder, a can shape, unrolls into two circles (its bases) and one rectangle (the curved part). For radius $r$, each circle has area $\\pi r^2$ ($\\pi$ times $r$ times $r$). The rectangle is as wide as the distance around, $2\\pi r$. A triangular prism has two triangles and three rectangles.",
-    senses: {
-      base: "base-shape",
-      face: "face-solid",
-      solid: "solid-shape",
-      side: "side",
-    },
-    noLink: ["square", "terms", "parts", "part"],
+    senses: { base: "base-shape", face: "face-solid", solid: "solid-shape" },
+    noLink: ["side", "square", "terms", "parts", "part"],
     terms: ["lateral-area", "surface-area"],
     method: [
       "Cylinder: the curved part unrolls to a rectangle $2\\pi r$ wide and $h$ tall, so its area is $2\\pi rh$. Each base has area $\\pi r^2$.",
