@@ -192,6 +192,13 @@ export function composeWorkbook(options: {
             : "standard",
     };
   };
+  /** The minutes `item` would give this template next, without taking it. */
+  const estimate = (t: TemplateMetadata, kind: SectionKind) =>
+    minutesFor(
+      generateProblem(t.id, `${seed}:${kind}:${serial.get(kind) ?? 0}`),
+      gradeOf.get(t.id)!,
+      kind,
+    );
   /** Fresh assessment templates within [lo, hi] of their strand's level, in
    * this workbook's order. Recently answered templates go last. */
   const band = (
@@ -384,6 +391,19 @@ export function composeWorkbook(options: {
     Number(confident.indexOf(strandOf(a)) >= 3) -
       Number(confident.indexOf(strandOf(b)) >= 3) || rank(a.id) - rank(b.id);
   const inPool = (t: TemplateMetadata) => challengePool.has(t.id);
+  // A long multi-step problem at 2.5x can run past 20 minutes; the
+  // challenge keeps to a fifth of the workbook. The first candidate in order
+  // that fits, else the quickest of them.
+  const challengeCap = minutes / 5;
+  const fitting = (ordered: TemplateMetadata[]) => {
+    let quickest: { t: TemplateMetadata; m: number } | undefined;
+    for (const t of ordered) {
+      const m = estimate(t, "challenge");
+      if (m <= challengeCap) return t;
+      if (!quickest || m < quickest.m) quickest = { t, m };
+    }
+    return quickest?.t;
+  };
   const challengePick = (() => {
     // The challenge sits 0.5 to 1.3 grades above the learner: above its
     // strand's level, and never more than 1.3 above the overall level (a
@@ -393,41 +413,64 @@ export function composeWorkbook(options: {
     const [lo, hi] = CHALLENGE_WINDOW;
     const capped = (t: TemplateMetadata) =>
       gradeOf.get(t.id)! <= options.frontier.overall.level + hi;
+    const ordered: TemplateMetadata[] = [];
     for (const extra of [
       (t: TemplateMetadata) => inPool(t) && capped(t),
       capped,
       inPool,
       undefined,
-    ]) {
-      const candidates = band(lo, hi, extra);
-      if (candidates.length) return candidates.sort(byConfidence)[0];
-    }
-    // Nothing in the window (the ends of the catalog): the template closest
-    // to it, from the pool when the pool has one as close.
+    ])
+      for (const t of band(lo, hi, extra).sort(byConfidence))
+        if (!ordered.includes(t)) ordered.push(t);
+    // Then (the ends of the catalog, or nothing in the window that fits the
+    // time) the templates closest to it, from the pool when as close.
     const distance = (t: TemplateMetadata) => {
       const offset = gradeOf.get(t.id)! - levelOf(strandOf(t));
       return offset < lo ? lo - offset : offset > hi ? offset - hi : 0;
     };
-    return band(-13, 13).sort(
+    // Every candidate in order, so a challenge that fits the time is found
+    // before a long one is accepted.
+    for (const t of band(-13, 13).sort(
       (a, b) =>
         Math.round(distance(a) * 10) - Math.round(distance(b) * 10) ||
         Number(inPool(b)) - Number(inPool(a)) ||
         byConfidence(a, b),
-    )[0];
+    ))
+      if (!ordered.includes(t)) ordered.push(t);
+    return fitting(ordered);
   })();
 
   const challengeSection: WorkbookSection = {
     kind: "challenge",
     items: challengePick ? [item(challengePick, "challenge")] : [],
   };
-  // Practice at the frontier fills the remaining time across strands.
-  const fixed =
-    [warmUpSection, reviewSection, challengeSection, lessonSection]
-      .flatMap((s) => s?.items ?? [])
-      .reduce((sum, i) => sum + i.minutes, 0) +
-    (lessonSection ? LESSON_READING_MINUTES : 0);
+  // The estimate never exceeds the chosen length. Long problems (high school
+  // runs 1.3x) can fill the budget before practice: the warm-up gives way to
+  // half, then the guided problems to two, then review to two (then each to
+  // one), so practice keeps about a quarter of the time.
+  const minutesOf = (list: readonly WorkbookItem[]) =>
+    list.reduce((sum, i) => sum + i.minutes, 0);
+  const fixedMinutes = () =>
+    minutesOf(
+      [warmUpSection, reviewSection, challengeSection, lessonSection].flatMap(
+        (s) => s?.items ?? [],
+      ),
+    ) + (lessonSection ? LESSON_READING_MINUTES : 0);
+  const giveWay: [WorkbookItem[], number][] = [
+    [warmUpSection.items, Math.ceil(budget.warmUp / 2)],
+    [lessonSection?.items ?? [], 2],
+    [reviewSection.items, 2],
+    [warmUpSection.items, 1],
+    [lessonSection?.items ?? [], 1],
+    [reviewSection.items, 1],
+  ];
+  for (const [list, floor] of giveWay)
+    while (fixedMinutes() > minutes * 0.75 && list.length > floor) list.pop();
+
+  // Practice at the frontier fills the remaining time across strands. A
+  // problem longer than the time left is passed over for a shorter one.
   const practiceItems: WorkbookItem[] = [];
-  let remaining = minutes - fixed;
+  let remaining = minutes - fixedMinutes();
   for (const t of spread(
     budget.practiceMax,
     [
@@ -438,11 +481,26 @@ export function composeWorkbook(options: {
     ],
     2,
   )) {
-    if (practiceItems.length >= 3 && remaining <= 1) break;
+    if (remaining < 1) break;
     const next = item(t, "practice");
+    if (next.minutes > remaining) continue;
     practiceItems.push(next);
     remaining -= next.minutes;
   }
+  // Last resort (a catalog of only long problems): drop from the end of the
+  // warm-up, practice, review and guided problems, keeping one of each.
+  const lastResort = [
+    warmUpSection.items,
+    practiceItems,
+    reviewSection.items,
+    lessonSection?.items ?? [],
+  ];
+  for (const list of lastResort)
+    while (
+      fixedMinutes() + minutesOf(practiceItems) > minutes &&
+      list.length > 1
+    )
+      list.pop();
   const sections: WorkbookSection[] = [];
   sections.push(warmUpSection);
   if (lessonSection) sections.push(lessonSection);
