@@ -20,6 +20,9 @@ const argument = (name: string) => {
   const index = process.argv.indexOf(`--${name}`);
   return index > 0 ? process.argv[index + 1] : undefined;
 };
+const selectedCase = argument("case");
+if (selectedCase && selectedCase !== "frontier-switch")
+  throw new Error(`Unknown app-shell case: ${selectedCase}`);
 const engine = argument("engine") ?? "chromium";
 const shots = argument("shots");
 if (shots) await mkdir(shots, { recursive: true });
@@ -81,7 +84,7 @@ async function open(
 const box = (page: Page, selector: string) =>
   page.locator(selector).first().boundingBox();
 
-try {
+async function verifyShell() {
   // 1. Every screen: no overflow, no overlapping controls, no broken words.
   for (const scenario of shellScenarios(fixture))
     for (const theme of ["light", "dark"] as const)
@@ -386,10 +389,129 @@ try {
     check(!cut.length, `pathway-skill ${width}: callouts cut off: ${cut}`);
     await context.close();
   }
+}
+
+async function verifyFrontierSwitch() {
+  const { page, context } = await open(
+    "home",
+    { width: 390, height: 844 },
+    "light",
+  );
+  const map = page.locator(".frontier-map");
+  const preference = page.getByRole("checkbox", { name: "Show grade numbers" });
+  await preference.check();
+  const oldBox = await map.boundingBox();
+  const oldDots = await map
+    .locator(".frontier-dot")
+    .evaluateAll((nodes) =>
+      nodes.map((node) => (node as HTMLElement).style.left),
+    );
+  let release!: () => void;
+  const held = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  await page.route(
+    `**/api/v1/learners/${fixture.paid.avery.id}/frontier`,
+    async (route) => {
+      await held;
+      await route.continue();
+    },
+  );
+  async function selectHome(id: string) {
+    await page.getByRole("button", { name: "Open AMP menu" }).click();
+    await page
+      .getByRole("listbox", { name: "Current learner" })
+      .locator(`[role="option"][data-value="${id}"]`)
+      .click();
+    await page.getByRole("button", { name: "Open AMP menu" }).click();
+    await page
+      .getByRole("link", { name: "Your progress", exact: true })
+      .click();
+  }
+  try {
+    await selectHome(fixture.paid.avery.id);
+    await page
+      .getByRole("heading", { name: fixture.paid.avery.name, exact: true })
+      .waitFor();
+    assert.equal(
+      await map.getAttribute("aria-busy"),
+      "true",
+      "a new learner must not inherit the previous learner's chart while loading",
+    );
+    assert.equal(
+      await map
+        .locator(".frontier-dot,.frontier-range,.frontier-center")
+        .count(),
+      0,
+      "loading retains tracks without fabricated or stale estimates",
+    );
+    assert.equal(
+      await preference.isChecked(),
+      false,
+      "the new learner starts with their own number preference",
+    );
+    const loadingBox = await map.boundingBox();
+    assert.equal(loadingBox?.width, oldBox?.width);
+    assert.equal(
+      loadingBox?.height,
+      oldBox?.height,
+      "loading preserves the chart's reserved space",
+    );
+    if (shots)
+      await page.screenshot({
+        path: `${shots}/${engine}-frontier-switch-loading.png`,
+      });
+    release();
+    await page.locator('.frontier-map[aria-busy="false"]').waitFor();
+    const newDots = await map
+      .locator(".frontier-dot")
+      .evaluateAll((nodes) =>
+        nodes.map((node) => (node as HTMLElement).style.left),
+      );
+    assert.equal(newDots.length, oldDots.length);
+    assert.notDeepEqual(
+      newDots,
+      oldDots,
+      "the completed map belongs to the new learner",
+    );
+    assert.equal(
+      await map.locator(".frontier-track.estimated").count(),
+      newDots.length,
+      "the unpracticed learner's areas remain explicitly unmeasured",
+    );
+    await map.locator(".frontier-row").first().click();
+    assert.match(
+      await map.locator(".frontier-detail").innerText(),
+      /Not practiced yet/,
+    );
+    assert.equal(await preference.isChecked(), false);
+    if (shots)
+      await page.screenshot({
+        path: `${shots}/${engine}-frontier-switch-loaded.png`,
+      });
+    await selectHome(fixture.paid.jordan.id);
+    await page.locator('.frontier-map[aria-busy="false"]').waitFor();
+    assert.equal(
+      await preference.isChecked(),
+      true,
+      "returning restores the original learner's number preference",
+    );
+  } finally {
+    release();
+    await page.unrouteAll({ behavior: "wait" });
+    await context.close();
+  }
+}
+
+try {
+  if (!selectedCase) await verifyShell();
+  await verifyFrontierSwitch();
 } finally {
   await browser.close();
   await fixture.close();
 }
 assert.deepEqual(failures, [], `App-shell polish:\n${failures.join("\n")}`);
-console.log(`App-shell polish verified in ${engine}.`);
+console.log(
+  `${selectedCase ? "Frontier learner switching" : "App-shell polish"} verified in ${engine}.`,
+);
 process.exit(0);

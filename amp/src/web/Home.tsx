@@ -111,10 +111,10 @@ export function FrontierMap(props: {
   return (
     <section className="frontier-map" aria-label="Where you are" aria-busy={!f}>
       <div className="frontier-heading">
-        <h2>Where you are</h2>
+        <h2>{f ? "Where you are" : "Loading estimates…"}</h2>
         <p>
           Dots show estimates; bands show uncertainty.{" "}
-          {reference !== undefined && (
+          {props.birthYear != null && (
             <>Vertical marks show the age reference. </>
           )}
           Striped bands mark areas not practiced yet.
@@ -140,7 +140,12 @@ export function FrontierMap(props: {
               <button
                 className="frontier-row"
                 aria-expanded={expanded}
-                aria-label={`${strandNames[strand]}. ${levelPositionDescription(estimate, reference)}`}
+                aria-label={
+                  f
+                    ? `${strandNames[strand]}. ${levelPositionDescription(estimate, reference)}`
+                    : `${strandNames[strand]}. Loading estimate.`
+                }
+                disabled={!f}
                 onClick={() => setOpen(expanded ? null : strand)}
               >
                 <span className="frontier-name">{strandNames[strand]}</span>
@@ -148,26 +153,30 @@ export function FrontierMap(props: {
                   className={`frontier-track ${measured ? "" : "estimated"}`}
                   aria-hidden="true"
                 >
-                  {reference !== undefined && (
-                    <span
-                      className="frontier-center"
-                      style={{ left: at(center) }}
-                    />
+                  {f && (
+                    <>
+                      {reference !== undefined && (
+                        <span
+                          className="frontier-center"
+                          style={{ left: at(center) }}
+                        />
+                      )}
+                      <span
+                        className="frontier-range"
+                        style={{
+                          left: at(from),
+                          width: `calc(${at(to)} - ${at(from)})`,
+                        }}
+                      />
+                      <span
+                        className="frontier-dot"
+                        style={{ left: at(estimate.level) }}
+                      />
+                    </>
                   )}
-                  <span
-                    className="frontier-range"
-                    style={{
-                      left: at(from),
-                      width: `calc(${at(to)} - ${at(from)})`,
-                    }}
-                  />
-                  <span
-                    className="frontier-dot"
-                    style={{ left: at(estimate.level) }}
-                  />
                 </span>
               </button>
-              {expanded && (
+              {expanded && f && (
                 <p className="frontier-detail">
                   {shown
                     ? measured
@@ -183,7 +192,7 @@ export function FrontierMap(props: {
       <div className="frontier-axis">
         <LevelAxis
           scale={{ lo, hi, center }}
-          name={shown ? gradeName : () => ""}
+          name={shown && f ? gradeName : () => ""}
           reference={reference !== undefined}
         />
       </div>

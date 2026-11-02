@@ -181,13 +181,16 @@ test("area charts retain estimates and uncertainty when grade numbers are hidden
       fractions: { level: 2, sd: 1, answered: 0, independent: 0 },
     },
   };
-  const view = (birthYear: number | null) => (
+  const view = (
+    birthYear: number | null,
+    map: typeof frontier | null = frontier,
+  ) => (
     <CurriculumDetailsProvider>
       <CurriculumDetailsControl />
       <FrontierMap
         name="Sample learner"
         birthYear={birthYear}
-        frontier={frontier}
+        frontier={map}
         strands={["operations", "fractions"]}
       />
     </CurriculumDetailsProvider>
@@ -234,4 +237,18 @@ test("area charts retain estimates and uncertainty when grade numbers are hidden
     "No age reference is available",
   );
   expect(container.querySelector(".frontier-track")).toBe(track);
+  rerender(view(2020, null));
+  expect(
+    container.querySelector(".frontier-map")!.getAttribute("aria-busy"),
+  ).toBe("true");
+  expect(container.querySelectorAll(".frontier-track")).toHaveLength(2);
+  expect(
+    container.querySelectorAll(
+      ".frontier-dot,.frontier-range,.frontier-center",
+    ),
+  ).toHaveLength(0);
+  expect(
+    (screen.getByRole("button", { name: /^Operations/ }) as HTMLButtonElement)
+      .disabled,
+  ).toBe(true);
 });
