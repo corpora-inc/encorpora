@@ -97,7 +97,7 @@ for (const { content: book } of books) {
       () => false,
     );
   if (!current) {
-    run("scripts/publish-book.ts", "browser-security.mjs", [
+    run("scripts/publish-book.ts", [
       "--book",
       book.id,
       "--output",
