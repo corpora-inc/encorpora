@@ -29,7 +29,7 @@ const OPENERS: Record<string, string[]> = {
     "A larger random sample gives a smaller margin of error, because averages of more values vary less.",
   ],
   "compound-unit-conversion": [
-    "A compound unit, such as miles per hour, has a unit on top and a unit underneath. Convert each with a factor equal to 1 so the old units cancel.",
+    "A compound unit is built from other units, such as square meters or miles per hour. Convert each unit inside with a factor equal to 1 so the old units cancel.",
   ],
   "degree-radian-conversion": [
     "Degrees and radians are two units for angles. A half turn is 180 degrees, which is $\\pi$ radians.",
