@@ -353,7 +353,7 @@ export const radicalMethods: Record<string, ProblemMethod> = {
   "combine-square-roots": {
     goal: "Simplify each given square-root term, then add or subtract like terms.",
     intuition:
-      "In $4\\sqrt3$, the coefficient 4 counts copies of $\\sqrt3$, and 3 is the radicand, the number under the root. Terms with the same radicand are like terms, and they combine by adding their coefficients: $2\\sqrt3+4\\sqrt3=6\\sqrt3$. Terms with different radicands stay separate. Simplifying a root first can reveal a match: $\\sqrt{12}=2\\sqrt3$.",
+      "In $4\\sqrt3$, the coefficient 4 counts copies of $\\sqrt3$, and 3 is the radicand, the number under the root. Terms with the same radicand are like terms, and they combine by adding their coefficients: $2\\sqrt3+4\\sqrt3=6\\sqrt3$. After simplifying, terms with different radicands stay separate. Simplifying a root first can reveal a match: $\\sqrt{12}=2\\sqrt3$.",
     terms,
     method: [
       "Extract square factors from each root and include its signed coefficient.",

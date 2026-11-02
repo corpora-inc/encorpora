@@ -60,7 +60,7 @@ export const rationalEquationLessons: Lesson[] = [
         title: "Which numbers can solve it?",
         paragraphs: [
           "A denominator is the expression below a fraction bar. In $1/(x-2)$, choosing $x=2$ would divide by zero, so that choice is forbidden before any solving begins. A solution must make the original equation defined and true.",
-          "A rational equation contains a quotient of polynomials. A polynomial is a sum of terms like $5x^2$ or $-3x$ or 7: a number times a whole-number power of the variable, such as $2x+1$.",
+          "A rational equation contains a quotient of polynomials. A polynomial is a sum of terms, each a number times a whole-number power of the variable, such as $5x^2-3x+7$ or $2x+1$.",
           "The domain of an equation is every input for which all its expressions are defined. A value that makes a denominator zero is an excluded value: it can never be a solution, even if a later step seems to produce it.",
         ],
       },

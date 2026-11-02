@@ -1072,7 +1072,7 @@ const rationalExtraneousSingleLesson: Lesson = {
   id: "rational-extraneous-single",
   title: "When the answer makes the denominator zero",
   summary:
-    "In an equation with the unknown in a fraction's bottom, its denominator, some value makes that bottom zero, and dividing by zero has no answer. That value is excluded from the start. Multiplying both sides by the bottom clears the fraction, but the cleared equation can produce the excluded value as a possible answer, which must then be rejected.",
+    "In an equation with the unknown in a fraction's bottom, its denominator, a value that makes that bottom zero is excluded from the start, because dividing by zero has no answer. Multiplying both sides by the bottom clears the fraction, but the cleared equation can produce the excluded value as a possible answer, which must then be rejected.",
   templateIds: ["rational-extraneous-single"],
   senses: { sides: "side-of-equation", factors: "factor-number" },
   objectives: [
@@ -1148,7 +1148,7 @@ const squareRootExtraneousLesson: Lesson = {
   id: "square-root-extraneous",
   title: "Why squaring adds a candidate",
   summary:
-    "Squaring both sides removes a square root, but it also loses the sign: $3^2$ and $(-3)^2$ are both 9. So a possible answer from the squared equation may actually solve $\\sqrt A=-B$ instead of $\\sqrt A=B$. Such a false answer is called extraneous, so check each possible answer in the original equation.",
+    "Once a square root is alone on one side, squaring both sides removes it, but it also loses the sign: $3^2$ and $(-3)^2$ are both 9. So a possible answer from the squared equation may actually solve $\\sqrt A=-B$ instead of $\\sqrt A=B$. Such a false answer is called extraneous, so check each possible answer in the original equation.",
   templateIds: ["square-root-extraneous"],
   senses: {
     squaring: "square-number",

@@ -248,7 +248,7 @@ export const rationalLessons: Lesson[] = [
     id: "rational-power",
     title: "Evaluate a fractional power",
     summary:
-      "An exponent counts how many times a number is multiplied by itself: $2^3=2\\times2\\times2=8$. A fraction as an exponent combines two steps. Its bottom number names a root, such as a cube root, and its top number names a power: $8^{2/3}$ is the cube root of 8, which is 2, squared, which is 4. A negative exponent also flips the result into its reciprocal, 1 divided by it.",
+      "A whole-number exponent counts how many copies of a number are multiplied: $2^3=2\\times2\\times2=8$. A fraction as an exponent combines two steps. Its bottom number names a root, such as a cube root, and its top number names a power: $8^{2/3}$ is the cube root of 8, which is 2, squared, which is 4. A negative exponent also flips the result into its reciprocal, 1 divided by it.",
     templateIds: ["rational-power"],
     senses: {
       root: "root-radical",
@@ -393,7 +393,7 @@ export const rationalMethods: Record<string, ProblemMethod> = {
       "A root undoes a power: the fourth root of 16 is 2 because 2 to the fourth power is 16. In a fractional exponent, the bottom number names the root and the top number names the power. A negative exponent takes the reciprocal, swapping the top and bottom of the result.",
     terms: [...fractionTerms, "nth-root"],
     method: [
-      "Read the exponent m/n: $n$ names the root, $m$ the power.",
+      "For a positive base, read the exponent $\\frac{m}{n}$, with $n$ a positive whole number: $n$ names the root, $m$ the power.",
       "Take the nth root of the numerator and of the denominator.",
       "Raise the root to the power $m$.",
       "If the exponent is negative, take the reciprocal.",

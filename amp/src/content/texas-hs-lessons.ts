@@ -309,7 +309,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "For a rational function, cancel common factors first. If a factor cancels completely and the simplified expression is defined at that input, there is a hole, whose height comes from the simplified expression.",
       "For an asymptote, test the sign of $f$ just left and just right of the zero of the denominator.",
       "If the factor that makes the denominator 0 is squared and the numerator is not 0 there, the expression keeps one sign on both sides, so both sides head the same way.",
-      "For a piecewise function, use the rule for each side and evaluate it at the break.",
+      "For a piecewise function, one given by different rules on different intervals, use the rule for each side and evaluate it at the break.",
     ],
     watch:
       "Test each side separately. A hole is not an asymptote, and a squared factor keeps the same sign on both sides.",
@@ -778,7 +778,7 @@ export const texasHsLessons: Lesson[] = [
     id: "rational-exponent-equations",
     title: "Solve equations with rational exponents",
     summary:
-      "An equation like $x^{2/3}=9$ has the unknown raised to a fraction. Raising both sides to the flipped fraction, the reciprocal power $\\frac32$, undoes it. But even roots and powers hide signs: $(-27)^{2/3}$ and $27^{2/3}$ are both 9, so check which signs the equation allows.",
+      "An equation like $x^{2/3}=9$ has the unknown raised to a fraction. Raising both sides to the flipped fraction, the reciprocal power $\\frac32$, gives the possible values of $x$. But even roots and powers hide signs: $(-27)^{2/3}$ and $27^{2/3}$ are both 9, so check which signs the equation allows.",
     templateIds: ["rational-exponent-equation"],
     senses: {
       sides: "side-of-equation",
@@ -808,13 +808,13 @@ export const texasHsLessons: Lesson[] = [
     method: {
       title: "Reciprocal power, then sign cases",
       paragraphs: [
-        "Raise both sides to $\\frac{q}{p}$. If the numerator $p$ is even and the right side is positive, give both $\\pm$ values; for example $x^{2/3}=4$ gives $x=\\pm8$. If the denominator is even, keep only nonnegative $x$.",
+        "With the exponent $\\frac{p}{q}$ in lowest terms, raise both sides to $\\frac{q}{p}$. If the numerator $p$ is even and the right side is positive, give both $\\pm$ values; for example $x^{2/3}=4$ gives $x=\\pm8$. If the denominator is even, keep only nonnegative $x$.",
       ],
     },
     formal: {
       title: "Why the reciprocal works",
       paragraphs: [
-        "For $x\\ge0$, $\\left(x^{p/q}\\right)^{q/p}=x^{1}=x$ because exponents multiply. For negative $x$ with odd $q$, $x^{p/q}=(\\sqrt[q]{x})^p$, which is negative when $p$ is odd and positive when $p$ is even.",
+        "For $x>0$ and $p\\ne0$, $\\left(x^{p/q}\\right)^{q/p}=x^{1}=x$ because exponents multiply. For negative $x$ with odd $q$, $x^{p/q}=(\\sqrt[q]{x})^p$, which is negative when $p$ is odd and positive when $p$ is even.",
       ],
     },
     pitfalls: [
@@ -1300,7 +1300,7 @@ export const texasHsLessons: Lesson[] = [
     formal: {
       title: "Relations",
       paragraphs: [
-        "Angles $\\theta$ and $\\theta+2\\pi k$ are coterminal for integer $k$. Arc length is $s=r\\theta$ for $\\theta$ in radians, so a point at radius $r$ moving with angular speed $\\omega$ has speed $v=r\\omega$.",
+        "Angles $\\theta$ and $\\theta+2\\pi k$ are coterminal for integer $k$. Arc length is $s=r\\theta$ for $\\theta\\ge0$ in radians, so a point at radius $r$ moving with angular speed $\\omega$ has speed $v=r\\omega$.",
       ],
     },
     pitfalls: [

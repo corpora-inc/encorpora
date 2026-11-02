@@ -466,7 +466,7 @@ const entries: WorkEntry[] = [
     title:
       "Solve an equation with two square roots and reject the extraneous solution",
     summary:
-      "An equation with two square roots needs squaring twice: once to remove one root, then again after getting the other root alone. That leaves a quadratic equation to solve. Squaring can add false answers, because a number and its opposite have the same square, so test each answer in the original equation.",
+      "An equation with two square roots usually needs squaring twice: once to remove one root, then again after getting the other root alone. That leaves a quadratic equation to solve. Squaring can add false answers, because a number and its opposite have the same square, so test each answer in the original equation.",
     objectives: [
       "Square both sides, isolate the remaining radical and square again to get a quadratic.",
       "Test each solution in the original equation and reject the one that fails.",
@@ -502,7 +502,7 @@ const entries: WorkEntry[] = [
       "A negative radicand rules a value out, because the square root of a negative number is not real.",
     ],
     formal:
-      "Squaring is not reversible: $a^2=b^2$ means $a=b$ or $a=-b$. A value that makes the two sides of the original equation opposite satisfies the squared equation but not the original.",
+      "Squaring is not reversible: $a^2=b^2$ means $a=b$ or $a=-b$. A value that makes the two sides of the original equation opposite, and not both 0, satisfies the squared equation but not the original.",
     pitfalls: [
       "Test each solution in the original equation before keeping it.",
       "After the first squaring, isolate the radical before squaring again.",

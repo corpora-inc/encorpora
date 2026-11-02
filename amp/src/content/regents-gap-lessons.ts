@@ -54,8 +54,8 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     terms: ["zero-product-property", "factoring-by-grouping"],
     method: [
       "If the function is a product, set each factor equal to 0, including a factor that is only $x$.",
-      "Solve each factor completely. For $ax+b=0$ the zero is $-\\frac{b}{a}$.",
-      "If the cubic is expanded, group the first two terms and the last two terms and factor each pair.",
+      "Solve each factor completely. For $ax+b=0$ with $a\\ne0$, the zero is $-\\frac{b}{a}$.",
+      "If the cubic is multiplied out, try grouping the first two terms and the last two terms. This works when both pairs share the same binomial factor.",
       "Pull out the shared binomial, factor what is left, and read each zero from its factor.",
     ],
     watch:
@@ -89,7 +89,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Write each radical as a power: $\\sqrt[q]{x}=x^{1/q}$.",
-      "To multiply, multiply the coefficients and add the exponents, using a common denominator.",
+      "To multiply, multiply the coefficients and add the exponents of the same base, using a common denominator.",
       "For a negative exponent, flip the fraction and make the exponent positive.",
       "Read an exponent $\\frac{p}{q}$ as the $q$-th root of the $p$-th power.",
     ],
@@ -469,7 +469,7 @@ export const regentsGapLessons: Lesson[] = [
     method: [
       "Solve each factor, or group first",
       [
-        "For a product, write one equation per factor and solve each one, dividing by the coefficient last. For an expanded cubic, group the first two and last two terms, factor out the shared binomial, then factor what is left.",
+        "For a product, write one equation per factor and solve each one, dividing by the coefficient last. For a multiplied-out cubic, try grouping the first two and last two terms. When both pairs share a binomial, factor it out, then factor what is left.",
       ],
     ],
     formal: [

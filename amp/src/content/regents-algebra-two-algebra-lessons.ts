@@ -123,7 +123,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
       "Solve, then discard any root that equals an excluded value.",
     ],
     watch:
-      "Check every root against the excluded values before you finish; a rational equation can lose one of two roots.",
+      "Check every root of the cleared equation against the excluded values before you finish. One of the two may not solve the original equation.",
   },
   "trinomial-product": {
     goal: "Multiply two three-term expressions term by term, then combine the terms with the same power of $x$.",
@@ -179,7 +179,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   "two-radical-equation": {
     goal: "Solve an equation with two square roots by isolating and squaring twice, then test every candidate.",
     intuition:
-      "Squaring removes a square root but can create solutions that do not fit the original equation. With two radicals you square twice, so you must check each candidate in the original equation.",
+      "Squaring removes a square root but can create solutions that do not fit the original equation. With two radicals you usually square twice, so check each candidate in the original equation.",
     terms: ["radicand", "extraneous-solution"],
     method: [
       "Isolate one radical and square both sides, expanding the square of the right side carefully.",
@@ -228,7 +228,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   "rational-exponent-product": {
     goal: "Write roots as rational exponents and combine powers of one variable by adding and subtracting exponents.",
     intuition:
-      "A cube root is the exponent $\\frac13$. Multiplying powers of the same variable adds exponents and dividing subtracts them, so a root, a product and a quotient can all be written as one power.",
+      "A cube root can be written with the exponent $\\frac13$: $\\sqrt[3]{a}=a^{1/3}$. Multiplying powers of the same variable adds exponents and dividing subtracts them, so a root, a product and a quotient can all be written as one power.",
     terms: ["rational-exponent", "perfect-cube"],
     method: [
       "Rewrite each radical as a power: $\\sqrt[3]{a}=a^{1/3}$ and $\\sqrt[3]{d^3x^m}=d\\,x^{m/3}$.",
@@ -597,7 +597,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
     id: "regents-two-radical-equation",
     title: "Two square roots and an extraneous solution",
     summary:
-      "An equation with two square roots, such as $\\sqrt{x+9}-\\sqrt x=1$, needs squaring twice: once to remove one root, and again after getting the other root alone. Squaring can let in false answers, because a number and its opposite have the same square. So test every possible answer in the original equation.",
+      "An equation with two square roots, such as $\\sqrt{x+9}-\\sqrt x=1$, usually needs squaring twice: once to remove one root, and again after getting the other root alone. Squaring can let in false answers, because a number and its opposite have the same square. So test every possible answer in the original equation.",
     templateIds: ["two-radical-equation"],
     senses: {
       squaring: "square-number",
@@ -757,7 +757,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
     ],
     openingTitle: "A root is a fractional exponent",
     opening: [
-      "A cube root is the exponent $\\frac13$: $\\sqrt[3]{a}=a^{1/3}$. Multiplying powers of the same base adds exponents; dividing subtracts them.",
+      "A cube root can be written with the exponent $\\frac13$: $\\sqrt[3]{a}=a^{1/3}$. Multiplying powers of the same base adds exponents; dividing subtracts them.",
       "So a root, a product and a quotient of powers of $a$ can be combined into a single power by adding and subtracting fractions.",
     ],
     example: {
