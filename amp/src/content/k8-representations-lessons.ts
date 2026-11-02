@@ -168,9 +168,9 @@ const specs: Spec[] = [
     noLink: ["part", "square"],
     figure: true,
     intuition: [
-      t`A graph has two number lines that meet at a square corner. Each number line is called an axis. The horizontal axis goes across, and it might count weeks. The vertical axis goes up, and it might show a plant's height, how tall it is. The point where they meet is called the origin. Both numbers there are 0, so we write it $(0, 0)$.`,
-      t`A point stands for two numbers written in order, like $(4, 6)$. This is called an ordered pair. Start at the origin. Go across the first number, 4. Then go up the second number, 6. This graph shows only the upper-right part, where both numbers are 0 or more. Inside it, where both numbers are more than 0, is the first quadrant. A point with a 0 sits on an axis.`,
-      t`The labels on the axes tell what each number means. On a graph of weeks and plant height, the point $(4, 6)$ means that after 4 weeks the plant is 6 centimeters tall.`,
+      t`A number line is a line with numbers marked in order, evenly spaced. A graph has two number lines that meet at a square corner. Each number line is called an axis. The horizontal axis goes across, and it might count weeks. The vertical axis goes up, and it might show a plant's height, how tall it is. The point where they meet is called the origin. Both numbers there are 0, so we write it $(0, 0)$.`,
+      t`A point is an exact spot on the graph, often marked with a dot. It stands for two numbers written in order, like $(4, 6)$. This is called an ordered pair. Start at the origin. Go across the first number, 4. Then go up the second number, 6. This graph shows only the upper-right part, where both numbers are 0 or more. Inside it, where both numbers are more than 0, is the first quadrant. A point with a 0 sits on an axis.`,
+      t`The labels on the axes tell what each number means. On a graph of weeks and plant height, the point $(4, 6)$ means that after 4 weeks the plant is 6 centimeters tall. A centimeter, cm for short, is a small unit of length, about the width of a fingernail.`,
     ],
     terms: [
       "ordered-pair",
@@ -183,8 +183,8 @@ const specs: Spec[] = [
     method: [
       "Read the label on each axis. The first number goes with the horizontal axis, and the second goes with the vertical axis.",
       "To read a point, count across from the origin, then up. Write the pair.",
-      "Say the pair as a sentence with its units, such as weeks and centimeters.",
-      "To compare two points, find what is the same. If they have the same first number, subtract the second numbers to find how far apart they are.",
+      "Say the pair as a sentence with its units, the things it counts or measures, such as weeks and centimeters.",
+      "To compare two points, find what is the same. If they have the same first number, the points are straight above each other. Subtract the smaller second number from the bigger one to find how far apart they are.",
     ],
     watch:
       "The order matters: $(4, 6)$ and $(6, 4)$ are different points. Count across the horizontal axis first, then up.",
@@ -200,7 +200,7 @@ const specs: Spec[] = [
     },
     methodTitle: "Two points above each other",
     methodText: [
-      t`Plant A is at $(5, 5)$ and Plant B is at $(5, 7)$. Both points have the same first number, 5 weeks, so they sit straight above one another. Only the heights are different. Subtract them: $7 - 5 = 2$. So Plant B is 2 centimeters taller.`,
+      t`Plant A is at $(5, 5)$ and Plant B is at $(5, 7)$. Both points have the same first number, 5 weeks, so they sit straight above one another. Only the heights are different. Subtract the shorter height from the taller one: $7 - 5 = 2$. So Plant B is 2 centimeters taller.`,
     ],
     formalTitle: "Why the order matters",
     formal: [
@@ -248,7 +248,7 @@ const specs: Spec[] = [
       "Write the first few terms of each pattern from its start and its rule.",
       "Pair the terms in the same spot into ordered pairs. If the question asks for a pair, you are done.",
       "To find a relationship, try two checks on every pair: subtract (second − first) and divide (second ÷ first). Skip dividing when the first number is 0, because you cannot divide by 0.",
-      "The relationship is the check that gives the same answer for every pair. Use it to find a later term.",
+      "The relationship is the check that gives the same answer for every pair. Use it to find a later term. Sometimes neither check works, and then the question asks only for terms or pairs.",
     ],
     watch:
       "Check every pair, not only the first. Two patterns that add the same number each time always differ by the same amount. Two patterns that add different numbers do not.",
@@ -271,7 +271,7 @@ const specs: Spec[] = [
     formalTitle: "Why one relationship holds for every pair",
     formal: [
       t`A pattern that starts at 2 and adds 3 has 2, then 2 + 3, then 2 + 3 + 3, and so on. A pattern that starts at 4 and adds 6 has 4, then 4 + 6, then 4 + 6 + 6. Every part of the second is 2 times the matching part of the first, so every term is 2 times the matching term.`,
-      t`If instead both patterns add the same number, the second just starts higher, and that head start stays the same. Checking only one pair cannot show that a relationship holds for all of them.`,
+      t`If instead both patterns add the same number each time, the gap between them stays the same as it was at the start. Checking only one pair cannot show that a relationship holds for all of them.`,
     ],
     pitfalls: [
       "The 1st term has no additions yet, so the 10th term has 9 additions, not 10.",

@@ -5,7 +5,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "divisibility-rule-check": {
     goal: "Choose the number that is divisible by a given number, or the hidden digit that makes a number divisible.",
     intuition:
-      "A digit is one of the symbols 0 to 9 we use to write numbers. A whole number is one of the numbers 0, 1, 2, 3 and so on. When you divide, the amount left over is called the remainder. A number is divisible by another when dividing leaves no remainder. 12 is divisible by 4, because 12 ÷ 4 = 3 with nothing left over. A divisibility rule is a quick check that looks at a few digits instead of dividing the whole number. Some rules use the digit sum: add up all the digits. For 4,512 the digit sum is 4 + 5 + 1 + 2 = 12. The box ▢ stands for a hidden digit.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A whole number is one of the numbers 0, 1, 2, 3 and so on. When you divide, the amount left over is called the remainder. A number is divisible by another when dividing leaves no remainder. 12 is divisible by 4, because 12 ÷ 4 = 3 with nothing left over. A divisibility rule is a quick check that looks at a few digits instead of dividing the whole number. Some rules use the digit sum: add up all the digits. For 4,512 the digit sum is 4 + 5 + 1 + 2 = 12. This works because each ten or hundred is a group of 9s with 1 left over. A multiple of 9 is 9 times a whole number: 0, 9, 18, 27 and so on. The box ▢ stands for a hidden digit.",
     terms: [
       "divisible-by",
       [
@@ -27,7 +27,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "prime-composite-sort": {
     goal: "Given four whole numbers, choose the prime one, the composite one, or the one that is neither.",
     intuition:
-      "A whole number is one of the numbers 0, 1, 2, 3 and so on. A factor of a number is a number that divides it with nothing left over. The factors of 6 are 1, 2, 3 and 6. A factor pair is two factors that multiply to make the number, like 2 × 3 = 6. A prime number has exactly two factors, 1 and itself: 7 is prime. A composite number has more than two factors: 6 is composite. The number 1 has only one factor, itself, so it is neither prime nor composite.",
+      "A whole number is one of the numbers 0, 1, 2, 3 and so on. A factor of a number is a number that divides it with nothing left over. The factors of 6 are 1, 2, 3 and 6. A factor pair is two factors that multiply to make the number, like 2 × 3 = 6. A prime number has exactly two factors, 1 and itself: 7 is prime. A composite number is a whole number bigger than 1 with more than two factors: 6 is composite. The number 1 has only one factor, itself, so it is neither prime nor composite.",
     terms: ["prime-number", "composite-number", "factor-pair"],
     senses: { factor: "factor-number", "more than": "more-than" },
     method: [
@@ -41,7 +41,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "prime-factorization-exponents": {
     goal: "Choose the prime factorization of a composite number, written with exponents for factors that repeat.",
     intuition:
-      "A whole number is one of the numbers 0, 1, 2, 3 and so on. A factor is a number you multiply to make another number: 2 × 6 = 12, so 2 and 6 are factors of 12. The answer to a multiplication is called the product. A prime number has exactly two factors, 1 and itself, like 2, 3, 5 and 7. A composite number has more than two factors. Every composite number can be written as primes multiplied together. That is its prime factorization: 12 = 2 × 2 × 3. A factor tree finds it. Split the number into two factors, then split any factor that is not prime, until every branch ends in a prime. A repeated prime can be written with an exponent: 2 × 2 × 2 is $2^3$, read “2 to the third power.” The small 3 is the exponent. It counts how many 2s are multiplied.",
+      "A whole number is one of the numbers 0, 1, 2, 3 and so on. A factor is a number you multiply to make another number: 2 × 6 = 12, so 2 and 6 are factors of 12. The answer to a multiplication is called the product. A prime number has exactly two factors, 1 and itself, like 2, 3, 5 and 7. A composite number is a whole number bigger than 1 with more than two factors. Every composite number can be written as primes multiplied together. That is its prime factorization: 12 = 2 × 2 × 3. A factor tree finds it. Split the number into two factors, then split any factor that is not prime, until every branch ends in a prime. A repeated prime can be written with an exponent: 2 × 2 × 2 is $2^3$, read “2 to the third power.” The small 3 is the exponent. It counts how many 2s are multiplied.",
     terms: ["prime-factorization", "exponent", "factor-tree"],
     senses: {
       factor: "factor-number",
@@ -83,12 +83,12 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "decimal-money-change": {
     goal: "Given prices and an amount paid in dollars and cents, find the change, the total, the amount still needed, or an unknown cost.",
     intuition:
-      "A cent is the smallest amount of US money, and 1 dollar is 100 cents. We write 3 dollars and 45 cents as 3.45 dollars. The dot is called the decimal point. A digit is one of the symbols 0 to 9, and the two digits after the point are the cents. Change is the money you get back. It is the amount you paid minus the cost. The total is all the prices added together.",
+      "A cent is the smallest amount of US money, and 1 dollar is 100 cents. We write 3 dollars and 45 cents as 3.45 dollars. The dot is called the decimal point. A digit is one of the symbols 0 to 9, and the two digits after the point are the cents. The total is all the prices added together. Change is the money you get back. It is the amount you paid minus the cost. Minus means take away. For 2 things at 40 cents each, 2 × 0.40 means 0.40 + 0.40. The sign × means times: equal amounts added together.",
     terms: ["change-money", "decimal-point"],
     senses: { change: "change-money", difference: "difference-subtract" },
     method: [
       "Add the prices of everything bought. For items that cost the same, multiply the price by how many.",
-      "Subtract the total from the amount paid. Line up the decimal points, so cents are under cents. Or count up from the cost to the amount paid.",
+      "Subtract, or take away, the total from the amount paid. Write one amount under the other with the decimal points lined up, so cents are under cents. Or count up from the cost to the amount paid.",
       "To find a cost you do not know, subtract the change from the amount paid. Check: cost plus change is the amount paid.",
     ],
     watch:
@@ -97,22 +97,22 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "fewest-coins-change": {
     goal: "Find the fewest bills and coins that make an amount of change.",
     intuition:
-      "Change is the money you get back after you pay. A coin is a round metal piece of money, and a cent is the smallest amount of US money. A 1-dollar bill is 100 cents. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. To use the fewest pieces, use big pieces first. Take the biggest piece that fits. Then do it again with what is left.",
+      "Change is the money you get back after you pay. A coin is a round metal piece of money, and a cent is the smallest amount of US money. A 1-dollar bill is 100 cents. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. 4.16 dollars means 4 dollars and 16 cents, which is 416 cents. To use the fewest pieces, take the piece worth the most that is not more than what is left. Then do it again with what is left.",
     terms: ["coin"],
     senses: { change: "change-money" },
     noLink: ["quarter", "quarters", "one quarter"],
     method: [
       "Write the amount in cents. 4.16 dollars is 416 cents.",
-      "Use only the pieces the question names. Take as many 1-dollar bills as fit, then as many quarters as fit in what is left. Then dimes, nickels and pennies.",
+      "The question says which pieces you may use: 1-dollar bills and the four coins, or just the coins. Take as many of the biggest piece as fit, then as many quarters as fit in what is left. Then dimes, nickels and pennies.",
       "Add up how many pieces you used.",
     ],
     watch:
-      "Do not start with pennies or dimes. One quarter does the job of 25 pennies, so use big pieces first.",
+      "Start with the biggest piece that fits, not with pennies. One quarter does the job of 25 pennies.",
   },
   "compare-money-sets": {
     goal: "Read three drawn sets of bills and coins and choose the one worth the most, the least, or an exact amount.",
     intuition:
-      "A set is a group of bills and coins. A coin is a round metal piece of money, and a cent is the smallest amount of US money. Its value is how much money it is worth. A 1-dollar bill is 100 cents. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. The value depends on which pieces a set has, not how many. Two quarters, 50 cents, are worth more than five pennies, 5 cents.",
+      "A set is a group of bills and coins. A coin is a round metal piece of money, and a cent is the smallest amount of US money. A set's value is how much money it is worth. We write 87 cents as 0.87 dollars: the 0 means no whole dollars, and the two digits after the dot are the cents. A 1-dollar bill is 100 cents. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. The value depends on what each piece is worth, not just on how many pieces there are. Two quarters, 50 cents, are worth more than five pennies, 5 cents.",
     terms: [
       [
         "dollar",
@@ -123,7 +123,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     noLink: ["quarter", "quarters"],
     method: [
       "Find each set's value on its own. Count the 1-dollar bills, then the quarters, dimes, nickels and pennies.",
-      "Write each value in dollars and cents. Compare the dollars first, then the cents.",
+      "Write each value in dollars and cents. The set with more whole dollars is worth more. If the dollars match, the set with more cents is worth more.",
       "Choose the set the question asks for: worth the most, the least, or exactly the amount named.",
     ],
     watch:
@@ -163,8 +163,14 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "customary-mixed-units": {
     goal: "Rename a mixed measure such as 3 ft 8 in as one unit or the reverse, and add or subtract mixed measures.",
     intuition:
-      "A mixed measure uses two units together. 3 ft 8 in means 3 feet and 8 more inches: ft is short for feet and in is short for inches. 1 foot is 12 inches, so 3 feet is 36 inches, and 3 ft 8 in is 44 inches. The fact that links two units, like 1 foot = 12 inches, is called the unit fact. To regroup means to trade one big unit for small units, or small units for one big unit. You regroup by the unit fact, not by 10.",
-    terms: ["mixed-measure", "regroup"],
+      "A unit is a fixed amount we measure with, like a foot or an inch. A mixed measure is a measure that uses two units together. 3 ft 8 in means 3 feet and 8 more inches. Short forms: ft is feet, in is inches, lb is pounds, oz is ounces, gal is gallons and qt is quarts. 1 foot is 12 inches, so 3 feet is 3 × 12 = 36 inches, and 3 ft 8 in is 36 + 8 = 44 inches. The fact that links two units, like 1 foot = 12 inches, is called the unit fact. To regroup means to trade one big unit for small units, or small units for one big unit. You regroup by the unit fact, not by 10. The sum is the answer when you add, and the difference is the answer when you subtract. The sign < means is less than.",
+    terms: [
+      "mixed-measure",
+      [
+        "regroup",
+        "With measures, trade by the unit fact, such as 1 foot for 12 inches, not by 10.",
+      ],
+    ],
     senses: {
       unit: "unit",
       rename: "rename",
@@ -199,7 +205,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "compatible-number-estimate": {
     goal: "Estimate a quotient or product by changing a number to a compatible number, and estimate a sum by its front-end digits.",
     intuition:
-      "An estimate is a close answer that is quick to find. Compatible numbers are numbers close to the real ones that are easy to divide or multiply in your head. For 347 ÷ 6, use 360 ÷ 6 = 60, because 36 ÷ 6 = 6. Front-end estimation keeps only the first digit of each number and makes the other digits zeros. For 347 + 285, add 300 + 200 = 500. The zeros keep each digit in its place. The answer to a division is called the quotient, and the answer to a multiplication is the product.",
+      "An estimate is a close answer that is quick to find. Compatible numbers are numbers close to the real ones that are easy to divide or multiply in your head. For 347 ÷ 6, use 360 instead of 347. 360 is 36 tens, and 36 tens ÷ 6 = 6 tens, so 360 ÷ 6 = 60. A digit is one of the symbols 0 to 9 we use to write numbers. Front-end estimation keeps only the first digit of each number and makes the other digits zeros. For 347 + 285, add 300 + 200 = 500. The zeros keep each digit in its place, so the 3 still means 300. A whole number is one of the numbers 0, 1, 2, 3 and so on. The answer when you divide is called the quotient, and the answer when you multiply is called the product. The answer when you add is the sum.",
     terms: ["compatible-numbers", "front-end-estimation"],
     senses: {
       multiple: "multiple",
@@ -277,7 +283,7 @@ export const k8StateNumberLessons: Lesson[] = [
     id: "divisibility-rules",
     title: "Divisibility rules",
     summary:
-      "When you divide, the amount left over is called the remainder. “Divisible by 4” means dividing by 4 leaves no remainder. 12 is divisible by 4, because 12 ÷ 4 = 3 exactly. Quick checks on a few digits tell you this for 2, 3, 4, 5, 6, 9 and 10 without dividing.",
+      "When you divide, the amount left over is called the remainder. “Divisible by 4” means dividing by 4 leaves no remainder. 12 is divisible by 4, because 12 ÷ 4 = 3 exactly. A digit is one of the symbols 0 to 9. Quick checks on a few digits tell you this for 2, 3, 4, 5, 6, 9 and 10 without dividing.",
     templateIds: ["divisibility-rule-check"],
     noLink: ["rule", "rules"],
     senses: { multiple: "multiple", multiples: "multiple" },
@@ -290,7 +296,7 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "intuition",
         title: "Check a few digits, not the whole division",
         paragraphs: [
-          "A digit is one of the symbols 0 to 9 we use to write numbers. You can always divide to check for a remainder. But each of these numbers has a shortcut, called a divisibility rule, that looks at only some digits.",
+          "A digit is one of the symbols 0 to 9 we use to write numbers. You can always divide to check for a remainder. But each of these numbers has a shortcut, called a divisibility rule, that uses the digits instead. Some rules look at the last digits. Others add up all the digits.",
           "For 2, 5 and 10, look at the last digit. For 4, look at the number made by the last two digits.",
           "For 3 and 9, find the digit sum: add up all the digits. For 6, the number must pass both the rule for 2 and the rule for 3.",
         ],
@@ -300,8 +306,8 @@ export const k8StateNumberLessons: Lesson[] = [
       prompt: "Is 4,512 divisible by 4? Is it divisible by 9?",
       steps: [
         "For 4, look at the number made by the last two digits: 12. Since $12=4\\times3$, 12 is divisible by 4, so 4,512 is too.",
-        "For 9, add the digits: $4+5+1+2=12$. A number is divisible by 9 only when its digit sum is. 12 is not a multiple of 9, a number in the count 9, 18, 27, and so on, so 4,512 is not divisible by 9.",
-        "Check by dividing: $4{,}512\\div4=1{,}128$ with no remainder, and $4{,}512\\div9=501$ with remainder 3.",
+        "For 9, add the digits: $4+5+1+2=12$. A number is divisible by 9 only when its digit sum is. 12 is not a multiple of 9, a number you get from 9 times a whole number: 0, 9, 18, 27 and so on. So 4,512 is not divisible by 9.",
+        "Check by dividing: $4{,}512\\div4=1{,}128$ with no remainder. But $4{,}512\\div9$ gives 501 with remainder 3, because $9\\times501+3=4{,}512$.",
       ],
       answer: "4,512 is divisible by 4 but not by 9.",
     },
@@ -312,7 +318,7 @@ export const k8StateNumberLessons: Lesson[] = [
         paragraphs: [
           "2: the last digit is 0, 2, 4, 6 or 8. 5: the last digit is 0 or 5. 10: the last digit is 0. 4: the last two digits make a number divisible by 4.",
           "3: the digit sum is divisible by 3. 9: the digit sum is divisible by 9. 6: the number is even, ending in 0, 2, 4, 6 or 8, and it is divisible by 3.",
-          "To find a hidden digit, add the digits you can see. For 18▢ to be divisible by 9, the digit sum $1+8+{\\square}$ must be a multiple of 9. The digits you can see add to 9. So the hidden digit must make the total 9 or 18: it is 0 or 9.",
+          "To find a hidden digit, add the digits you can see. In 18▢ the box stands for one hidden digit, 0 to 9. For 18▢ to be divisible by 9, the digit sum $1+8+{\\square}$ must be a multiple of 9. The digits you can see add to 9, so the total can be anything from 9 to 18. Only 9 and 18 are multiples of 9 there. So the hidden digit is 0 or 9.",
         ],
       },
       {
@@ -357,7 +363,7 @@ export const k8StateNumberLessons: Lesson[] = [
         title: "Primes are the building blocks",
         paragraphs: [
           "A factor of a number divides it with nothing left over. The factors of 12 are 1, 2, 3, 4, 6 and 12. Two factors that multiply to make the number are a factor pair, like 3 × 4 = 12.",
-          "A prime number has exactly two factors, 1 and itself: 2, 3, 5, 7, 11 and 13 are prime. A composite number has more than two factors, like 12. The number 1 has only one factor, so it is neither prime nor composite.",
+          "A prime number has exactly two factors, 1 and itself: 2, 3, 5, 7, 11 and 13 are prime. A composite number is a whole number bigger than 1 with more than two factors, like 12. The number 1 has only one factor, so it is neither prime nor composite.",
           "Every composite number can be written as primes multiplied together. This is called its prime factorization. A factor tree finds it. Split the number into two factors. Then split any factor that is not prime, until every branch ends in a prime.",
         ],
       },
@@ -378,7 +384,7 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "method",
         title: "Test for primes, then count the repeats",
         paragraphs: [
-          "To test a number up to 144, look for a factor pair other than 1 and itself. Try dividing by the primes 2, 3, 5, 7 and 11 that are smaller than the number. If one divides with nothing left over, the number is composite. If none does, it is prime. 91 looks prime, but $91=7\\times13$.",
+          "To test a whole number from 2 to 144, look for a factor pair other than 1 and itself. Try dividing by the primes 2, 3, 5, 7 and 11 that are smaller than the number. If one divides with nothing left over, the number is composite. If none does, it is prime. 91 looks prime, but $91=7\\times13$.",
           "To write a factorization, list the primes from least to greatest. Count how many times each appears, and write the count as a small raised number called an exponent. $2^3$, read “2 to the third power,” means $2\\times2\\times2$, not $2\\times3$. A prime that appears once gets no exponent.",
           "Reading a factorization: $2^3\\times3^2=8\\times9=72$. It has $3+2=5$ prime factors counting repeats, and its greatest prime factor is 3.",
         ],
@@ -388,7 +394,7 @@ export const k8StateNumberLessons: Lesson[] = [
         title: "Every tree ends the same way",
         paragraphs: [
           "Every whole number bigger than 1 is a prime or a product of primes. Whatever factor tree you draw, you end with the same primes, each the same number of times. Only the order can change.",
-          "To test whether a number is prime, try the primes in order. You can stop once a prime times itself is bigger than the number. In any factor pair, the smaller factor times itself is no bigger than the number. So if a factor pair exists, you find its smaller factor before you stop.",
+          "To test whether a number is prime, try the primes in order. You can stop once a prime times itself is bigger than the number. Suppose the number has a factor pair with both factors bigger than 1. The smaller factor times itself is no bigger than the number. That factor is a prime, or a prime divides it, so testing the primes finds one before you stop.",
         ],
       },
     ],
@@ -415,22 +421,22 @@ export const k8StateNumberLessons: Lesson[] = [
     sections: [
       {
         stage: "intuition",
-        title: "Dollars and cents are one decimal number",
+        title: "Dollars and cents in one number",
         paragraphs: [
-          "In 3.45 dollars, the dot is called the decimal point. The number before it is the dollars. A digit is one of the symbols 0 to 9, and the two digits after the point are the cents. A coin is a round metal piece of money.",
+          "In 3.45 dollars, the dot is called the decimal point. The number before it is the dollars. A digit is one of the symbols 0 to 9, and the two digits after the point are the cents. A coin is a round metal piece of money. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent.",
           "Change is the money you get back. It is the amount paid minus the cost.",
-          "You can find change by counting up. Start at the cost. Count up to the next whole dollar. Then count up to the amount paid. What you counted is the change.",
+          "You can find change by counting up. Start at the cost. Count up to the next whole dollar, an amount with no cents, like 4.00. Then count up to the amount paid. What you counted is the change.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "A notebook costs 3.45 dollars. You pay with a 5-dollar bill. What is the change, and what is the fewest number of bills and coins for it?",
+        "A notebook costs 3.45 dollars. You pay with a 5-dollar bill. What is the change? What is the fewest number of pieces that make it, using 1-dollar bills, quarters, dimes, nickels and pennies?",
       steps: [
-        "Count up from the cost: $3.45+0.55=4.00$, then $4.00+1.00=5.00$.",
+        "Count up from the cost. 45 cents and 55 cents make 100 cents, a whole dollar, so $3.45+0.55=4.00$. Then 1 more dollar reaches 5: $4.00+1.00=5.00$.",
         "Add what you counted: $0.55+1.00=1.55$ dollars. Check by subtracting: $5.00-3.45=1.55$.",
-        "Make 155 cents with the biggest pieces first. One 1-dollar bill is 100 cents. That leaves 55 cents.",
-        "Two quarters are 50 cents. That leaves 5 cents. One nickel is 5 cents. That is $1+2+1=4$ pieces.",
+        "1.55 dollars is 155 cents. Use the piece worth the most that is not more than what is left. One 1-dollar bill is 100 cents. That leaves 55 cents.",
+        "Two quarters are 25 + 25 = 50 cents. A third quarter would be too much. That leaves 5 cents, and one nickel is 5 cents. That is $1+2+1=4$ pieces.",
       ],
       answer:
         "1.55 dollars, made with 4 pieces: one 1-dollar bill, two quarters and one nickel.",
@@ -440,9 +446,9 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "method",
         title: "Line up the cents and take the largest piece",
         paragraphs: [
-          "Add the prices to get the total. For items that cost the same, multiply the price by how many.",
+          "The total is the cost of everything together, so add the prices. For items that cost the same, multiply the price by how many. That is the same as adding the price that many times.",
           "Subtract the total from the amount paid. Line up the decimal points first. To find a cost you do not know, subtract the change from the amount paid.",
-          "For the fewest pieces when you have only 1-dollar bills and coins, use the biggest piece that fits each time. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. Using 25 pennies instead of 1 quarter uses 24 extra pieces.",
+          "For the fewest pieces when you have only 1-dollar bills and coins, use the piece worth the most that is not more than what is left. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. Using 25 pennies instead of 1 quarter uses 24 extra pieces.",
         ],
       },
       {
@@ -466,7 +472,7 @@ export const k8StateNumberLessons: Lesson[] = [
     id: "compare-money-sets",
     title: "Compare sets of bills and coins",
     summary:
-      "A set is a group of bills and coins. A coin is a round metal piece of money, and a cent is the smallest amount. Its value is how much money a set is worth. Find each set's value. Then compare the values.",
+      "A set is a group of bills and coins. A coin is a round metal piece of money, and a cent is the smallest amount. A set's value is how much money it is worth. Find each set's value. Then compare: find which set is worth more, which is worth less, or if they are the same.",
     templateIds: ["compare-money-sets"],
     noLink: ["quarter", "quarters"],
     objectives: [
@@ -488,9 +494,9 @@ export const k8StateNumberLessons: Lesson[] = [
       prompt:
         "Set A has 1 dollar bill, 2 dimes and 3 pennies. Set B has 4 quarters and 1 nickel. Which is worth more?",
       steps: [
-        "Set A: 100 for the bill, 20 for the dimes, 3 for the pennies. $100+20+3=123$ cents, which is 1.23 dollars.",
-        "Set B: 4 quarters are $4\\times25=100$ cents. Add the nickel: $100+5=105$ cents, which is 1.05 dollars.",
-        "Compare 1.23 and 1.05. Both have 1 dollar. Then 23 cents is more than 5 cents.",
+        "Set A: the bill is 100 cents. The 2 dimes are 10 + 10 = 20 cents. The 3 pennies are 1 + 1 + 1 = 3 cents. Add them: $100+20+3=123$ cents, which is 1 dollar and 23 cents, or 1.23 dollars.",
+        "Set B: 4 quarters are 25 + 25 + 25 + 25 = 100 cents. Add the nickel: $100+5=105$ cents. That is 1 dollar and 5 cents. Cents always get two digits, so we write 1.05 dollars.",
+        "Compare 1.23 and 1.05. Both have 1 whole dollar, so look at the cents. 23 cents is more than 5 cents.",
       ],
       answer: "Set A is worth more.",
     },
@@ -499,8 +505,8 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "method",
         title: "Value first, then compare",
         paragraphs: [
-          "Count the bills first. Then count the coins from the biggest to the smallest.",
-          "Write each value in dollars and cents. Compare the dollars first, then the cents. For an exact amount, find the set whose value matches it.",
+          "Count the bills first. Then count the coins, starting with the one worth the most: quarters, dimes, nickels, then pennies.",
+          "Write each value in dollars and cents. The set with more whole dollars is worth more. If the dollars match, compare the cents. For an exact amount, find the set whose value matches it.",
         ],
       },
       {
@@ -587,7 +593,7 @@ export const k8StateNumberLessons: Lesson[] = [
     id: "customary-mixed-units",
     title: "Mixed customary measures",
     summary:
-      "A mixed measure is a measure with two units together, like 3 ft 8 in: 3 feet and 8 inches. You can write it in one unit, or add and subtract two of them. You regroup with the unit fact, like 12 inches in a foot, not with 10.",
+      "A unit is a fixed amount we measure with, like a foot or an inch. A mixed measure is a measure with two units together, like 3 ft 8 in: 3 feet and 8 inches. You can write it in one unit, or add and subtract two of them. You regroup with the unit fact, like 12 inches in a foot, not with 10.",
     templateIds: ["customary-mixed-units"],
     senses: {
       unit: "unit",
@@ -613,10 +619,10 @@ export const k8StateNumberLessons: Lesson[] = [
       prompt:
         "Add 2 lb 9 oz and 1 lb 12 oz. Write the sum with fewer than 16 ounces.",
       steps: [
-        "Add the small units first: $9+12=21$ oz.",
+        "Add the small units first, to see if they make another pound: $9+12=21$ oz.",
         "16 oz make 1 lb, so trade 16 of the ounces for 1 pound: $21$ oz $=1$ lb $5$ oz.",
         "Add the pounds, including the traded pound: $2+1+1=4$ lb.",
-        "The sum is 4 lb 5 oz. Check in ounces: 2 lb 9 oz is 41 oz and 1 lb 12 oz is 28 oz. $41+28=69$, and $4\\times16+5=69$.",
+        "The sum is 4 lb 5 oz. Check in ounces: 2 lb 9 oz is $2\\times16+9=41$ oz, and 1 lb 12 oz is $16+12=28$ oz. $41+28=69$, and $4\\times16+5=69$.",
       ],
       answer: "4 lb 5 oz",
     },
@@ -625,9 +631,9 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "method",
         title: "Regroup by the unit fact",
         paragraphs: [
-          "To write feet and inches as inches, multiply the feet by 12. Then add the inches. To write inches as feet and inches, divide by 12. The answer is the feet, and the remainder, what is left over, is the inches.",
+          "To write feet and inches as inches, multiply the feet by 12. Then add the inches. To write inches as feet and inches, count the whole groups of 12. For 44 inches, 3 groups of 12 use 36 inches, and 8 inches are left over. So 44 inches is 3 ft 8 in.",
           "To add, add the small units first. Trade each full group for 1 big unit, then add the big units.",
-          "To subtract, check the small units first. If there are not enough, trade 1 big unit for small units. Example: 5 ft 3 in − 2 ft 8 in. You cannot take 8 inches from 3 inches. So trade 1 foot for 12 inches: 5 ft 3 in is 4 ft 15 in. Then subtract: 2 ft 7 in.",
+          "To subtract, check the small units first. If there are not enough, trade 1 big unit for small units. Example: 5 ft 3 in − 2 ft 8 in. You cannot take 8 inches from 3 inches. So trade 1 foot for 12 inches: 5 ft 3 in is 4 ft 15 in. Then subtract inches from inches, 15 − 8 = 7, and feet from feet, 4 − 2 = 2. The answer is 2 ft 7 in.",
         ],
       },
       {
@@ -651,7 +657,7 @@ export const k8StateNumberLessons: Lesson[] = [
     id: "compatible-number-estimate",
     title: "Estimate with compatible and front-end numbers",
     summary:
-      "An estimate is a close answer that is quick to find. Compatible numbers are close numbers that are easy to divide or multiply in your head. Front-end estimation means adding only the first digit of each number.",
+      "An estimate is a close answer that is quick to find. Compatible numbers are close numbers that are easy to divide or multiply in your head. Front-end estimation keeps the first digit of each number and makes the other digits zeros, then adds: 347 + 285 becomes 300 + 200 = 500.",
     templateIds: ["compatible-number-estimate"],
     senses: {
       multiple: "multiple",
@@ -668,8 +674,8 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "intuition",
         title: "Change a number to make it easy",
         paragraphs: [
-          "An estimate is close to the exact answer but easier to find. Compatible numbers are numbers near the real ones that are easy to work with.",
-          "To estimate $347\\div6$, change 347 to 360. A multiple of 6 is 6 times a whole number, and 360 is a multiple of 6. So $360\\div6=60$ is easy, because $36\\div6=6$. The estimate, 60, is close to the exact answer, which is a bit less than 58.",
+          "An estimate is close to the exact answer but easier to find. Compatible numbers are numbers near the real ones that are easy to work with. A digit is one of the symbols 0 to 9 we use to write numbers.",
+          "To estimate $347\\div6$, change 347 to 360. A whole number is one of the numbers 0, 1, 2, 3 and so on. A multiple of 6 is 6 times a whole number, and 360 is a multiple of 6. 360 is 36 tens, and 36 tens ÷ 6 = 6 tens. So $360\\div6=60$. The estimate, 60, is close to the exact answer, which is a bit less than 58.",
         ],
       },
     ],
@@ -677,7 +683,7 @@ export const k8StateNumberLessons: Lesson[] = [
       prompt:
         "Estimate $347\\div6$ with compatible numbers: change 347 to the closest multiple of 60, then divide by 6.",
       steps: [
-        "The multiples of 60 near 347 are 300 and 360. 347 is 13 away from 360 and 47 away from 300, so 360 is closer.",
+        "60 is 6 × 10, so every multiple of 60 divides easily by 6. The multiples of 60 near 347 are 300 and 360. 347 is 13 away from 360 and 47 away from 300, so 360 is closer.",
         "Divide: $360\\div6=60$, because $6\\times60=360$.",
         "Check: $6\\times58=348$, which is close to 347. So an answer near 60 makes sense.",
       ],
@@ -689,7 +695,7 @@ export const k8StateNumberLessons: Lesson[] = [
         title: "Three estimating moves",
         paragraphs: [
           "Division: the question names a number, like 60. Find its multiples near the number being divided, and choose the closest. Multiplication: change one number to a close number that is easy to multiply, such as a multiple of 4 when you multiply by 25.",
-          "Front-end estimation keeps the first digit of each number and changes the other digits to zeros. For $8{,}071+7{,}193+8{,}248$ it adds $8{,}000+7{,}000+8{,}000=23{,}000$. The exact sum is 23,512.",
+          "Front-end estimation keeps the first digit of each number and changes the other digits to zeros. For $8{,}071+7{,}193+8{,}248$ it adds $8{,}000+7{,}000+8{,}000=23{,}000$. The exact sum, the answer when you add, is 23,512.",
         ],
       },
       {

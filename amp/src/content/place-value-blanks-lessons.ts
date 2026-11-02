@@ -85,7 +85,7 @@ const entries: Entry[] = [
     watch:
       "Look at the digit right next to the rounding place, not at the last digit. When that digit is exactly 5, round up.",
     principle:
-      "A number rounds to the nearer of the two numbers around it that end in zeros at that place, like 4,700 and 4,800. A number exactly halfway, like 4,750, rounds up. The digit just right of the rounding place shows which side of halfway the number is on.",
+      "To the nearest hundred, a number rounds to the nearer of the two numbers around it that end in 00, like 4,700 and 4,800. A number exactly halfway, like 4,750, rounds up. The digit just right of the rounding place shows which side of halfway the number is on.",
     example: {
       prompt: "Round 4,758 to the nearest thousand, hundred and ten.",
       steps: [
@@ -101,7 +101,7 @@ const entries: Entry[] = [
       "Check each answer. It has zeros in every place right of the rounding place. To the nearest hundred, it is never more than 50 away from the number.",
     ],
     formal:
-      "Every number sits between two numbers that end in zeros at the rounding place, like 4,700 and 4,800. Halfway between them is 4,750, which has a 5 just right of the rounding place. If that digit is 5 or more, the number is halfway or past it, so round up. If it is 4 or less, the number is before halfway, so round down. When a number is exactly halfway, we agree to round up.",
+      "To the nearest hundred, every number sits between two numbers that end in 00, like 4,700 and 4,800. Halfway between them is 4,750, which has a 5 just right of the rounding place. If that digit is 5 or more, the number is halfway or past it, so round up. If it is 4 or less, the number is before halfway, so round down. When a number is exactly halfway, we agree to round up.",
     pitfalls: [
       "Cutting off digits is not rounding. 4,758 cut at the tens is 4,750, but it rounds to 4,760.",
       "Do not round in steps. 4,449 rounds to 4,400 to the nearest hundred. Rounding it to 4,450 first and then to 4,500 gives the wrong answer.",
@@ -131,7 +131,7 @@ const entries: Entry[] = [
     watch:
       "Round each place from the original number. 4.396 to the nearest tenth is 4.4, because its hundredths digit is 9.",
     principle:
-      "A decimal rounds to the nearer of the two numbers around it at the rounding place, like 6.2 and 6.3. A number exactly halfway, like 6.25, rounds up. A next digit of 5 or more shows that the number is halfway or past.",
+      "To the nearest tenth, a decimal rounds to the nearer of the two tenths around it, like 6.2 and 6.3. A number exactly halfway, like 6.25, rounds up. A next digit of 5 or more shows that the number is halfway or past.",
     example: {
       prompt: "Round 6.274 to the nearest tenth and the nearest hundredth.",
       steps: [
@@ -146,7 +146,7 @@ const entries: Entry[] = [
       "The two answers can differ in more than the last digit, so check each one against the original number.",
     ],
     formal:
-      "Every decimal sits between two neighbors at the rounding place, like 6.2 and 6.3. Halfway between them is 6.25. If the next digit is 5 or more, the number is halfway or past it, so round up. If it is 4 or less, the number is before halfway, so round down. When a number is exactly halfway, we agree to round up.",
+      "To the nearest tenth, every decimal sits between two tenths, like 6.2 and 6.3. Halfway between them is 6.25. If the next digit is 5 or more, the number is halfway or past it, so round up. If it is 4 or less, the number is before halfway, so round down. When a number is exactly halfway, we agree to round up.",
     pitfalls: [
       "Do not just cut off digits. 2.678 cut at the hundredths is 2.67, but it rounds to 2.68.",
       "When a 9 rounds up, write 0 and add 1 to the digit on its left. Never write 10 in one place.",
@@ -194,7 +194,7 @@ const entries: Entry[] = [
     formal:
       "Rounding 47 up to 50 adds 3. Rounding 36 up to 40 adds 4. So the estimate is 3 + 4 = 7 more than the exact sum: 90 = 83 + 7. To the nearest ten, each addend moves 5 or less, so the estimate is never more than 10 away from the exact sum.",
     pitfalls: [
-      "Do not give the exact sum as the estimate.",
+      "Find the estimate by adding the rounded numbers, not by working out the exact sum. Sometimes the two are the same.",
       "Do not round one addend to the nearest ten and the other to the nearest hundred.",
     ],
     parentGuide:
@@ -361,13 +361,13 @@ const entries: Entry[] = [
     noLink: ["third"],
     goal: "A number has the same digit in two places. Find how many times as much the digit is worth in one place as in the other.",
     summary:
-      "The same digit, other than 0, is worth more when it sits farther left. Each step left makes it worth 10 times as much, which means 10 groups of the old value. So count the steps between the two places.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. Its place is its spot in the number. The same digit, other than 0, is worth more when it sits farther left. Each step left makes it worth 10 times as much, which means 10 groups of the old value. So count the steps between the two places.",
     objectives: [
       "Find what a digit is worth in each of two places.",
       "Tell how many times as much one value is as the other from the number of steps between the places.",
     ],
     intuition:
-      "Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. So a digit, other than 0, is worth 10 times as much each time it moves one place left. In 380,286 the left 8 is in the ten thousands place, so it is worth 80,000. The right 8 is in the tens place, so it is worth 80. From tens to ten thousands is 3 steps: tens to hundreds, hundreds to thousands, thousands to ten thousands. Each step multiplies by 10, so 3 steps multiply by 10 × 10 × 10 = 1,000. So 80,000 is 1,000 times as much as 80, which means 80 × 1,000 = 80,000. We can write 10 × 10 × 10 as $10^{3}$, read “10 to the third power.” The small 3 counts how many 10s are multiplied.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. From the right, the places are ones, tens, hundreds, thousands and so on. Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. So a digit, other than 0, is worth 10 times as much each time it moves one place left. In 380,286 the left 8 is in the ten thousands place, so it is worth 80,000. The right 8 is in the tens place, so it is worth 80. From tens to ten thousands is 3 steps: tens to hundreds, hundreds to thousands, thousands to ten thousands. Each step multiplies by 10, so 3 steps multiply by 10 × 10 × 10 = 1,000. So 80,000 is 1,000 times as much as 80, which means 80 × 1,000 = 80,000. We can write 10 × 10 × 10 as $10^{3}$. The small raised 3 means three 10s multiplied together. We read it “10 to the third power.”",
     terms: [
       [
         "place-value",
@@ -393,7 +393,7 @@ const entries: Entry[] = [
       steps: [
         "The left 8 is in the ten thousands place, so it is worth 80,000. The right 8 is in the tens place, so it is worth 80.",
         "Count the steps from tens to ten thousands: tens to hundreds, hundreds to thousands, thousands to ten thousands. That is 3 steps.",
-        "Each step multiplies by 10, so 3 steps multiply by $10\\times10\\times10=1{,}000=10^{3}$. Check: $80{,}000\\div80=1{,}000$.",
+        "Each step multiplies by 10, so 3 steps multiply by $10\\times10\\times10=1{,}000=10^{3}$. Check: dividing finds how many 80s make 80,000, and $80{,}000\\div80=1{,}000$.",
       ],
       answer: "1,000 times as great.",
     },

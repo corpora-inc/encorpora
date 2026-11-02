@@ -153,8 +153,8 @@ export const numberSenseLessons: Lesson[] = [
       {
         title: "Hop the tens, then the ones",
         paragraphs: [
-          "Every step of 1 on the line is the same length. Hopping back means hopping left. In 46, the 4 is the tens digit: it tells how many tens.",
-          "Look at the picture. To find 46 − 23, hop back 20 to 26. Then hop back 3 to 23.",
+          "Every step of 1 on the line is the same length. Hopping back means hopping left. A ten is a group of 10 ones. 46 is 4 tens and 6 ones. The 4 is the tens digit: it tells how many tens.",
+          "Look at the picture. To find 46 − 23, split 23 into 20 and 3. Hop back 20 to 26. Then hop back 3 to 23.",
           "Two short hops are easier than counting back 23 ones.",
         ],
         illustration: "number-line-hop-pair",
@@ -235,7 +235,7 @@ export const numberSenseLessons: Lesson[] = [
         stage: "formal",
         title: "Nearest multiple",
         paragraphs: [
-          "Every number sits between two numbers that end in zeros at the rounding place, like 340 and 350. Rounding picks the nearer one.",
+          "To the nearest ten, every number sits between two numbers that end in 0, like 340 and 350. Rounding picks the nearer one.",
           "When a number is exactly halfway, like 345, we agree to pick the greater one.",
         ],
       },
@@ -259,7 +259,7 @@ export const numberSenseLessons: Lesson[] = [
     id: "powers-of-ten",
     title: "Multiply and divide by powers of ten",
     summary:
-      "Each place is worth 10 times the place on its right. So multiplying by 10 moves every digit one place left, and dividing by 10 moves every digit one place right. 10, 100 and 1,000 are called powers of ten, because each is made by multiplying 10s.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. From the right, the places are ones, tens, hundreds, thousands and so on. Each place is worth 10 times the place on its right. So multiplying by 10 moves every digit one place left, and dividing by 10 moves every digit one place right. 10, 100 and 1,000 are called powers of ten, because each is made by multiplying 10s.",
     templateIds: [
       "multiply-power-of-ten",
       "divide-power-of-ten",
@@ -283,7 +283,7 @@ export const numberSenseLessons: Lesson[] = [
         paragraphs: [
           "The decimal point is the dot between the ones place and the tenths place. One tenth is one of 10 equal parts of 1.",
           "Look at the chart: 4.7 × 10 = 47, and 47 × 10 = 470. Each time, every digit moves one place left. The 4 ones become 4 tens, and the 7 tenths become 7 ones. The decimal point stays where it is. When the ones place is empty, a 0 fills it.",
-          "Dividing by 10 moves every digit one place right. 100 is 10 × 10, so dividing by 100 moves digits two places right: 52 ÷ 100 = 0.52.",
+          "Dividing by 10 undoes multiplying by 10, so it moves every digit one place right: 470 ÷ 10 = 47. 100 is 10 × 10, so dividing by 100 moves digits two places right: 52 ÷ 100 = 0.52.",
           "We can write 10 × 10 as $10^{2}$, read “10 to the second power.” The small 2 counts how many 10s are multiplied. So multiplying by $10^{2}$ moves digits two places left.",
         ],
         illustration: "power-of-ten-shift",
@@ -303,7 +303,7 @@ export const numberSenseLessons: Lesson[] = [
         title: "Each place is ten times larger",
         paragraphs: [
           "Moving a digit one place left multiplies its value by 10. Moving it one place right divides its value by 10.",
-          "So multiplying by 10, 100 or 1,000 moves every digit 1, 2 or 3 places left, and dividing moves every digit right. Zeros fill the empty places before the decimal point.",
+          "So multiplying by 10, 100 or 1,000 moves every digit 1, 2 or 3 places left, and dividing moves every digit right. Zeros hold empty places, like the ones place in 360 or the tenths place in 0.07.",
         ],
       },
     ],
@@ -311,12 +311,12 @@ export const numberSenseLessons: Lesson[] = [
       prompt: "What is 3.6 × 100?",
       steps: [
         "100 is 10 × 10, two 10s. So every digit moves two places left.",
-        "The 3 ones become 3 hundreds, and the 6 tenths become 6 tens. The ones place is now empty, so a 0 fills it: 360.",
+        "A tenth is one of 10 equal parts of 1. The 3 ones become 3 hundreds, and the 6 tenths become 6 tens. The ones place is now empty, so a 0 fills it: 360.",
       ],
       answer: "360",
     },
     pitfalls: [
-      "Do not just write zeros after a decimal. 3.6 × 100 is 360, not 3.600.",
+      "Do not just write zeros after a decimal. 3.600 is still 3.6, because the zeros add nothing. 3.6 × 100 is 360.",
       "Dividing moves the digits right, not left.",
     ],
     parentGuide:
@@ -365,7 +365,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
     goal: "Start at a number, hop by tens, then hop by ones. Find where you land.",
     noLink: ["whole"],
     intuition:
-      "A number line is a line with numbers marked in order, evenly spaced. Bigger numbers are to the right. A hop to the right adds. A hop back, to the left, subtracts. Hop the tens first, then the ones. In 46, the tens digit is 4: it tells how many tens. Hopping back 20 from 46 lands on 26, so only the tens digit changes.",
+      "A number line is a line with numbers marked in order, evenly spaced. Bigger numbers are to the right. A hop to the right adds. A hop back, to the left, subtracts. A ten is a group of 10 ones, so 46 is 4 tens and 6 ones. Hop the tens first, then the ones. In 46, the tens digit is 4: it tells how many tens. Hopping back 20 from 46 lands on 26, so only the tens digit changes.",
     method: [
       "Start on the first number. Do not count it as a step.",
       "Hop the tens first. Forward means add, and back means subtract.",
@@ -378,9 +378,9 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
     goal: "Given the two ends of a hop, find its length.",
     senses: { difference: "difference-subtract" },
     intuition:
-      "A number line is a line with numbers marked in order, evenly spaced. The length of a hop is how many steps of 1 it covers. It is the bigger number minus the smaller one. To find it, count up from the smaller number in easy pieces: to the next ten, then by tens, then the ones left over. Add the pieces.",
+      "A number line is a line with numbers marked in order, evenly spaced. The length of a hop is how many steps of 1 it covers. It is the bigger number minus the smaller one. A hop covers the same steps whichever way it points, so you can always count up from the smaller number. Count in easy pieces: to the next number ending in 0, then 10 at a time, then by ones, steps of 1. Add the pieces. The sum, the answer when you add, is the length.",
     method: [
-      "Count up from the smaller number to the next ten. If it already ends in 0, skip this.",
+      "Count up from the smaller number to the next number ending in 0. Skip this if the smaller number already ends in 0, or if the next ten is past the bigger number.",
       "Count by tens as far as you can without passing the bigger number. Then count the ones left.",
       "Add the pieces. That sum is the length of the hop.",
     ],
@@ -425,7 +425,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
   "multiply-power-of-ten": {
     goal: "Given a number times 10, 100 or 1,000, find the product.",
     intuition:
-      "Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. Multiplying by 10 makes every digit worth 10 times as much, so every digit moves one place left. 100 is 10 × 10, two factors of 10, so it moves digits two places. 1,000 is 10 × 10 × 10, three factors of 10, so it moves them three places. A factor is a number being multiplied. The decimal point stays where it is. Empty places before the point fill with 0. The answer to a multiplication is called the product.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. From the right, the places are ones, tens, hundreds, thousands and so on. Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. Multiplying by 10 makes every digit worth 10 times as much, so every digit moves one place left. A factor is a number being multiplied. 100 is 10 × 10, two factors of 10, so it moves digits two places. 1,000 is 10 × 10 × 10, three factors of 10, so it moves them three places. The decimal point stays where it is. Empty places before the point fill with 0. The answer to a multiplication is called the product.",
     terms: ["power-of-10"],
     senses: {
       factor: "factor-number",
@@ -441,7 +441,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
   "divide-power-of-ten": {
     goal: "Given a whole number divided by 10, 100 or 1,000, find the quotient.",
     intuition:
-      "Each place is worth one tenth of the place on its left. A tenth is one of 10 equal parts. Dividing by 10 makes every digit worth one tenth as much, so every digit moves one place right. 100 is 10 × 10, two factors of 10, so dividing by 100 moves digits two places right. A factor is a number being multiplied. Digits that move past the ones place go into the tenths, hundredths and thousandths places, after the decimal point. The answer to a division is called the quotient.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. From the right, the places are ones, tens, hundreds, thousands and so on. Each place is worth one tenth of the place on its left. A tenth is one of 10 equal parts. Dividing by 10 makes every digit worth one tenth as much, so every digit moves one place right. A factor is a number being multiplied. 100 is 10 × 10, two factors of 10, so dividing by 100 moves digits two places right. Zeros hold any empty places between the point and a digit: 7 ÷ 1,000 = 0.007. Digits that move past the ones place go into the tenths, hundredths and thousandths places, after the decimal point. The answer to a division is called the quotient.",
     terms: ["power-of-10"],
     senses: { factor: "factor-number", factors: "factor-number" },
     method: [
@@ -454,7 +454,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
   "digit-value-ratio": {
     goal: "Given a number with one digit in two places, compare the two values.",
     intuition:
-      "Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. So a digit is worth 10 times as much for each place it moves left. In 35,932 the first 3 is in the ten thousands place, worth 30,000. The second 3 is in the tens place, worth 30. The places are 3 steps apart, so the first is worth 10 × 10 × 10 = 1,000 times as much. How many times as much one value is as another is called their ratio.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. From the right, the places are ones, tens, hundreds, thousands and so on. Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. So a digit is worth 10 times as much for each place it moves left. In 35,932 the first 3 is in the ten thousands place, worth 30,000. The second 3 is in the tens place, worth 30. The places are 3 steps apart, so the first is worth 10 × 10 × 10 = 1,000 times as much. How many times as much one value is as another is called their ratio.",
     method: [
       "Name the place of each copy of the digit, and count the steps between them.",
       "Each step left multiplies the value by 10. Multiply one 10 for each step.",

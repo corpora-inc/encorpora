@@ -74,7 +74,7 @@ const entries: Entry[] = [
       "Use one half to order fractions with different denominators.",
     ],
     intuition:
-      "A fraction names equal parts of one whole. The denominator, the bottom number, tells how many equal parts the whole is cut into. The numerator, the top number, counts the parts. Same denominator: the parts are the same size, so more parts is more. $\\frac{5}{8}$ is greater than $\\frac{3}{8}$. Same numerator: there are the same number of parts. A bigger denominator cuts the whole into more parts, so each part is smaller. $\\frac{2}{5}$ is less than $\\frac{2}{3}$. When both numbers differ, compare each fraction with one half, $\\frac{1}{2}$. One half is called a benchmark: a number you know well and compare with. Double the numerator. If that is less than the denominator, the fraction is less than one half. If it equals the denominator, the fraction is exactly one half. If it is more, the fraction is more than one half. The sign < means is less than.",
+      "A fraction names equal parts of one whole. The denominator, the bottom number, tells how many equal parts the whole is cut into. The numerator, the top number, counts the parts. Same denominator: the parts are the same size, so more parts is more. $\\frac{5}{8}$ is greater than $\\frac{3}{8}$. Same numerator: there are the same number of parts. A bigger denominator cuts the whole into more parts, so each part is smaller. $\\frac{2}{5}$ is less than $\\frac{2}{3}$. When both numbers differ, compare each fraction with one half, $\\frac{1}{2}$. One half is called a benchmark: a number you know well and compare with. Double the numerator. Doubling shows what two copies of the fraction make. For $\\frac{3}{8}$, two copies are $\\frac{6}{8}$, less than a whole, so $\\frac{3}{8}$ is less than one half. So if the doubled numerator is less than the denominator, the fraction is less than one half. If it equals the denominator, the fraction is exactly one half. If it is more, the fraction is more than one half. The sign < means is less than.",
     terms: ["numerator", "denominator", "benchmark-fraction"],
     method: [
       "Look at the denominators and the numerators. Same denominator: more parts is greater. Same numerator: the bigger denominator is smaller.",
@@ -82,7 +82,7 @@ const entries: Entry[] = [
       "Write the fractions in order. Fill the spots in the direction the question asks.",
     ],
     watch:
-      "With the same numerator, the bigger denominator makes the smaller fraction. Do not order by the size of the denominators.",
+      "A bigger denominator does not mean a bigger fraction. When the numerators match, the bigger denominator makes the smaller fraction.",
     principle:
       "With the same denominator, the fraction with the bigger numerator is greater. With the same numerator, the fraction with the bigger denominator is smaller. A fraction is less than, equal to or more than $\\frac{1}{2}$ when twice its numerator is less than, equal to or more than its denominator.",
     example: {
@@ -91,7 +91,7 @@ const entries: Entry[] = [
       steps: [
         "Compare each with $\\frac{1}{2}$. For $\\frac{3}{8}$, double 3 to get 6. That is less than 8, so $\\frac{3}{8}$ is less than one half.",
         "For $\\frac{5}{12}$, double 5 to get 10. That is less than 12, so it is less than one half too. For $\\frac{4}{8}$, double 4 to get 8, the same as the denominator. So $\\frac{4}{8}$ is exactly one half, and it is the greatest.",
-        "Now compare $\\frac{3}{8}$ and $\\frac{5}{12}$. One half is $\\frac{4}{8}$, so $\\frac{3}{8}$ is $\\frac{1}{8}$ less than one half. One half is also $\\frac{6}{12}$, so $\\frac{5}{12}$ is $\\frac{1}{12}$ less. Twelfths are smaller parts than eighths, so $\\frac{5}{12}$ is closer to one half: $\\frac{3}{8}<\\frac{5}{12}$.",
+        "Now compare $\\frac{3}{8}$ and $\\frac{5}{12}$. One half is $\\frac{4}{8}$, so $\\frac{3}{8}$ is $\\frac{1}{8}$ less than one half. One half is also $\\frac{6}{12}$, so $\\frac{5}{12}$ is $\\frac{1}{12}$ less. Twelfths are smaller parts than eighths, so $\\frac{5}{12}$ is missing less. Both are below one half, so the one missing less is greater: $\\frac{3}{8}<\\frac{5}{12}$.",
       ],
       answer: "$\\frac{3}{8}$, $\\frac{5}{12}$, $\\frac{4}{8}$.",
     },
@@ -107,7 +107,7 @@ const entries: Entry[] = [
       "Do not compare numerators alone when the denominators differ.",
     ],
     parentGuide:
-      "Draw each fraction as a strip cut into equal parts and shade the parts. The longer shaded part shows the greater fraction.",
+      "Draw each fraction on a strip of the same length, cut into equal parts, and shade the parts. The longer shaded part shows the greater fraction.",
   },
   {
     id: "order-rationals-slots",
