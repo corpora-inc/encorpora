@@ -203,7 +203,7 @@ export const volumeCoordinateLessons: Lesson[] = [
         stage: "formal",
         title: "Ordered pairs locate points",
         paragraphs: [
-          "The first quadrant is the part of the grid where both coordinates are 0 or more. It is the upper-right part. There, an ordered pair $(x, y)$ means $x$ units across from the $y$-axis and $y$ units up from the $x$-axis. Swapping the two numbers names a different point, unless they are equal.",
+          "The first quadrant is the upper-right part of the grid, where both coordinates are more than 0. These problems also use points on the two axes that border it. There, an ordered pair $(x, y)$ means $x$ units across from the $y$-axis and $y$ units up from the $x$-axis. Swapping the two numbers names a different point, unless they are equal.",
         ],
       },
     ],

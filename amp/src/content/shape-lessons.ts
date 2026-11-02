@@ -38,14 +38,14 @@ export const shapeLessons: Lesson[] = [
           "Look at the picture. Each shape has its name under it.",
           "A triangle has 3 straight sides and 3 corners. A rectangle has 4 straight sides and 4 square corners. A square is a rectangle whose 4 sides are all equally long. A hexagon has 6 straight sides and 6 corners.",
           "A circle is a perfectly round flat shape. Every spot on its outline is just as far from the middle. It has no straight sides and no corners. An oval is round too, but it is stretched, so it is not a circle.",
-          "In the picture, one square stands on a corner. It is still a square. A bigger or smaller triangle is still a triangle.",
+          "In the picture, one square stands on a corner. It is still a square. The two squares are different sizes. Both are still squares.",
         ],
         illustration: "flat-shape-names",
       },
       {
         title: "Solid shapes",
         paragraphs: [
-          "A solid shape is a shape that is not flat. It takes up space, like a block, a can or a ball. You cannot draw all of it flat on paper.",
+          "A solid shape is a shape that is not flat. It takes up space, like a block, a can or a ball. A drawing on paper can only show it from one side.",
           "A face is one flat part of a solid shape's outside. You could set a box down on any of its faces. Some solid shapes also have a curved surface. A curved surface is a part that bends, like the outside of a can.",
           "A cube is a solid shape like a toy block. It has 6 square faces, all the same size. A cylinder is a solid shape like a can. It has 2 flat circle faces with a curved surface wrapped around them. A cone is a solid shape like a party hat. It has 1 flat circle face, a curved surface and a pointed tip. A sphere is a solid shape like a ball. It is perfectly round all over, with no flat faces.",
         ],
@@ -238,13 +238,13 @@ export const shapeMethods: Record<string, ProblemMethod> = {
   "find-named-shape": {
     goal: "Given a shape's name, choose the one shape of that kind.",
     intuition:
-      "A side is one straight part of a flat shape's outline. A corner is the point where two sides meet. Each shape name means a set number of sides and corners. A hexagon is a shape with 6 sides and 6 corners. A circle is a perfectly round shape with no sides and no corners.",
+      "A side is one straight part of a flat shape's outline. A corner is the point where two sides meet. Each shape name tells what its sides and corners must be. A hexagon is a shape with 6 sides and 6 corners. A rectangle is a shape with 4 sides and 4 square corners, like the corners of a page. A square is a rectangle whose 4 sides are all equally long. A circle is a perfectly round shape with no sides and no corners.",
     senses: { side: "side", square: "square-shape" },
     noLink: ["edge", "part"],
     terms: terms.flat,
     method: [
       "Say what the named shape must have, such as 6 straight sides for a hexagon.",
-      "Check each shape for exactly that number of sides and corners.",
+      "Check each shape for all of it: the number of sides and corners, and for a square or rectangle, square corners and equally long sides.",
       "Choose the one that has it. Its size and direction do not matter.",
     ],
     watch:
@@ -259,9 +259,9 @@ export const shapeMethods: Record<string, ProblemMethod> = {
       face: "face-solid",
       cube: "cube",
       square: "square-shape",
-      edge: "edge",
+      side: "side",
     },
-    noLink: ["side", "part", "sides"],
+    noLink: ["part"],
     terms: terms.solid,
     method: [
       "Is it perfectly round all over, with no flat faces? It is a sphere.",
@@ -334,7 +334,7 @@ export const shapePrinciples: Record<string, string> = {
   "name-flat-shape":
     "A flat shape is named by its sides and corners, not by its size or the way it is turned.",
   "find-named-shape":
-    "Every shape of one kind has the same number of sides and corners, however it is drawn.",
+    "Every shape of one kind has that kind's sides and corners, however it is drawn.",
   "name-solid-shape":
     "A solid shape is named by its flat faces and curved surfaces: what shape they are and how many.",
   "compose-shape-name":

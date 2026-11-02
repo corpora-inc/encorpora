@@ -168,9 +168,17 @@ export const angleLessons: Lesson[] = [
     senses: {
       side: "side",
       square: "square-shape",
-      image: "image-transformation",
     },
-    noLink: ["edge", "leaves", "opposite", "parts", "face", "faces"],
+    noLink: [
+      "edge",
+      "leaves",
+      "opposite",
+      "parts",
+      "face",
+      "faces",
+      "image",
+      "images",
+    ],
     includeGeneratedRepresentation: false,
     objectives: [
       "Decide whether a line is a line of symmetry.",
@@ -335,9 +343,8 @@ export const angleMethods: Record<string, ProblemMethod> = {
     senses: {
       side: "side",
       square: "square-shape",
-      image: "image-transformation",
     },
-    noLink: ["leaves", "opposite", "edge"],
+    noLink: ["leaves", "opposite", "edge", "image", "images"],
     terms: terms.symmetry,
     method: [
       "Try every fold that could work. Fold through two corners, through the middles of two sides, and from a corner to the middle of a side.",
@@ -353,9 +360,8 @@ export const angleMethods: Record<string, ProblemMethod> = {
     senses: {
       side: "side",
       square: "square-shape",
-      image: "image-transformation",
     },
-    noLink: ["opposite", "edge"],
+    noLink: ["opposite", "edge", "image", "images"],
     terms: terms.symmetry,
     method: [
       "Imagine folding the shape along each dashed line.",
