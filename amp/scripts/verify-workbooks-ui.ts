@@ -399,15 +399,20 @@ try {
         });
       await assertLayout(page, label);
       await assertSegments(page, label);
-      // The date heading keeps its word spaces.
+      // The date heading keeps its word spaces. A space where the title
+      // wraps has no width, so measure the widest.
       const space = await page.evaluate(() => {
         const h1 = document.querySelector("main h1")!;
         const text = h1.firstChild!;
-        const at = text.textContent!.indexOf(" ");
-        const range = document.createRange();
-        range.setStart(text, at);
-        range.setEnd(text, at + 1);
-        return range.getBoundingClientRect().width;
+        const widths: number[] = [];
+        for (let at = 0; at < text.textContent!.length; at++) {
+          if (text.textContent![at] !== " ") continue;
+          const range = document.createRange();
+          range.setStart(text, at);
+          range.setEnd(text, at + 1);
+          widths.push(range.getBoundingClientRect().width);
+        }
+        return Math.max(0, ...widths);
       });
       assert.ok(space >= 4, `${label}: title word space is ${space}px`);
       // No empty band between the actions and the contents card.
