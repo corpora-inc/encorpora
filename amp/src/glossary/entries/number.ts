@@ -526,7 +526,7 @@ export const numberEntries: GlossaryEntry[] = [
     forms: ["prime number", "prime numbers", "prime", "primes"],
     plain: "A whole number greater than 1 whose only factors are 1 and itself.",
     example:
-      "7 is prime because only 1 × 7 makes 7. 9 is not prime, since 3 × 3 = 9.",
+      "7 is prime: only 1 × 7 and 7 × 1 make 7, so its only factors are 1 and 7, itself. 9 is not prime, since 3 × 3 = 9 makes 3 a factor too.",
     uses: ["whole-number", "greater-than", "factor-number"],
     band: "4",
   },

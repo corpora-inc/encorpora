@@ -156,8 +156,9 @@ export const algebra2Entries: GlossaryEntry[] = [
     term: "identity matrix",
     forms: ["identity matrix", "identity matrices"],
     plain:
-      "A square matrix with 1s down the main diagonal and 0s everywhere else. Multiplying by it leaves any matrix unchanged.",
-    example: "$I=\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}$, and $IA=AI=A$.",
+      "A square matrix with 1s down the main diagonal and 0s everywhere else. Multiplying a matrix by an identity matrix of the matching size leaves it unchanged.",
+    example:
+      "$I=\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}$. For every $2\\times2$ matrix $A$, $IA=AI=A$.",
     uses: ["matrix", "diagonal"],
     band: "precalculus",
     noLink: ["square", "leaves"],
