@@ -107,7 +107,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
     method: [
       "Test or solve: substitute a variable from the line into the circle equation.",
       "For a vertical line $x=c$, the circle equation leaves a square of the $y$-part equal to a number.",
-      "Classify: a positive perfect square gives rational $y$, other positive values give irrational $y$, zero gives one solution, negative gives nonreal solutions.",
+      "Classify $r^2-c^2$ when it is a whole number: a positive perfect square gives rational $y$, other positive values give irrational $y$, zero gives one solution, and a negative value gives solutions that are not real.",
     ],
     watch:
       "A point is a solution only if it satisfies both equations. A point on the circle alone is not enough.",
@@ -365,16 +365,17 @@ export const regentsAlgebraTwoAlgebraLessons = [
     id: "regents-circle-line-system",
     title: "A circle and a line",
     summary:
-      "Find the points where a line meets a circle, or say what kind of numbers they are.",
+      "A circle and a straight line can cross at two points, touch at one, or miss each other. The crossing points are the solutions of the system, the pair of equations, because they make both equations true. Checking a point in both equations, or solving for $y$, tells how many solutions there are and whether they are real numbers.",
     templateIds: ["circle-line-system"],
+    senses: { root: "root-radical", intersections: "intersection-graphs" },
     objectives: [
       "Check candidate points in both equations of a circle-and-line system.",
       "Classify the solutions of a circle and a vertical line using the value under the root.",
     ],
     openingTitle: "A solution lies on both graphs",
     opening: [
-      "A circle $x^2+y^2=r^2$ and a line can meet at two points, one point or none. A solution is a point that satisfies both equations.",
-      "For a vertical line $x=c$, substituting leaves $y^2=r^2-c^2$ (for a circle at the origin). The sign and type of $r^2-c^2$ decide the kind of solutions.",
+      "The circle $x^2+y^2=r^2$ is every point at distance $r$ from the origin. It and a line can meet at two points, one point or none. A solution of the system is a point that satisfies both equations, so it lies on both graphs.",
+      "For a vertical line $x=c$, substitute $c$ for $x$ in the circle's equation: $y^2=r^2-c^2$. If $r^2-c^2$ is positive, there are two real solutions, $y=\\pm\\sqrt{r^2-c^2}$. If it is 0, there is one. If it is negative, the solutions are not real numbers: they contain $i$, the number with $i^2=-1$, and the graphs do not meet.",
     ],
     example: {
       prompt: "Does the line $x+y=7$ meet $x^2+y^2=25$ at $(3,4)$?",

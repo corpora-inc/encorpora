@@ -599,8 +599,19 @@ export const geometryRequirementGapLessons: Lesson[] = [
     id: "conic-foci",
     title: "Foci of ellipses and hyperbolas",
     summary:
-      "An ellipse has a constant sum of distances to its foci and a hyperbola a constant difference. These give $c^2=a^2-b^2$ and $c^2=a^2+b^2$.",
+      "An ellipse, an oval, and a hyperbola, a two-piece curve, are each built from two fixed points called foci. On an ellipse, the distances from any point to the two foci always add to the same number. On a hyperbola, they always differ by the same number. Those facts tell where the foci are from the equation: $c^2=a^2-b^2$ for an ellipse and $c^2=a^2+b^2$ for a hyperbola.",
     templateIds: ["conic-foci"],
+    senses: {
+      difference: "difference-subtract",
+      vertex: "vertex",
+      vertices: "vertex",
+      center: "center",
+      focus: "focus",
+      term: "term-expression",
+      root: "root-radical",
+      squaring: "square-number",
+    },
+    noLink: ["side", "part"],
     objectives: [
       "Find the foci of an ellipse or hyperbola from its equation.",
       "Write the equation from the foci and a constant sum or difference of distances.",
@@ -611,7 +622,8 @@ export const geometryRequirementGapLessons: Lesson[] = [
         title: "Two special points",
         paragraphs: [
           "Pin the ends of a string at two points, hold the string tight with a pencil and draw: you trace an ellipse. The pins are the foci. The string has fixed length, so the distances from the pencil to the two pins always add to the same number.",
-          "A hyperbola uses the same two points, but the distances to them differ by a fixed amount instead. In both curves the foci lie on the axis through the vertices, the same distance $c$ on each side of the center.",
+          "A hyperbola uses the same two points, but the distances to them differ by a fixed amount instead. In both curves the foci lie on the axis through the vertices, the points where the curve crosses that axis, the same distance $c$ on each side of the center.",
+          "Centered at the origin, an ellipse is $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ and a hyperbola is $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$. Here $a$ is the distance from the center to a vertex along the axis through the foci, and $c$ is the distance from the center to a focus.",
         ],
       },
     ],
@@ -619,7 +631,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
       prompt:
         "(1) Find the foci of $\\frac{x^2}{25}+\\frac{y^2}{9}=1$. (2) Find the equation of the ellipse with foci $(\\pm4,0)$ whose distances to the foci always add to $10$.",
       steps: [
-        "(1) The larger denominator is $a^2=25$ and the smaller is $b^2=9$. For an ellipse $c^2=a^2-b^2=25-9=16$, so $c=4$. The larger denominator is under $x^2$, so the foci are $(\\pm4,0)$.",
+        "(1) For an ellipse, the larger denominator is $a^2$, because the vertices on the longer axis are farther out: $a^2=25$ and $b^2=9$. Then $c^2=a^2-b^2=25-9=16$, so $c=4$. The larger denominator is under $x^2$, so the foci are $(\\pm4,0)$.",
         "(2) The constant sum is $2a=10$, so $a=5$ and $a^2=25$. The foci give $c=4$, so $b^2=a^2-c^2=25-16=9$.",
         "The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\frac{x^2}{25}+\\frac{y^2}{9}=1$. This is the curve in part (1), a consistency check.",
       ],
