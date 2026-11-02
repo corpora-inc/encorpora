@@ -18,8 +18,16 @@ type Instruction = ProblemMethod & {
 const instruction: Record<string, Instruction> = {
   "sample-mean-estimate": {
     goal: "Use a random sample average to estimate a population average or total.",
+    senses: {
+      population: "population",
+      sample: "sample",
+      average: "mean-average",
+      mean: "mean-average",
+      units: "unit",
+    },
+    noLink: ["whole"],
     intuition:
-      "A population is the whole group of interest; a sample is the smaller group observed. A simple random sample gives every group of the chosen size an equal chance of selection. Its average can estimate the population average, with uncertainty because another sample can give a different result.",
+      "A population is the whole group you want to know about, and a sample is the smaller group you actually measure. In a simple random sample, every possible group of that size has the same chance of being chosen. Then the sample's average, its mean, is a fair estimate of the population's average. It may not be exact, because another sample could give a different result.",
     terms: [
       [
         "mean-average",
@@ -117,12 +125,19 @@ const instruction: Record<string, Instruction> = {
   },
   "sample-size-margin": {
     goal: "Explain how a larger comparable random sample affects margin of error.",
+    senses: {
+      sample: "sample",
+      samples: "sample",
+      population: "population",
+      averages: "mean-average",
+    },
+    noLink: ["part", "whole"],
     intuition:
-      "A sample is the part of a population that we observe. Different random samples give different estimates. A margin of error describes sampling uncertainty around an estimate; information from more people generally reduces that uncertainty.",
+      "A sample is the part of a population, the whole group of interest, that we actually observe. Different random samples give slightly different estimates. A margin of error says how far the true value could reasonably be from the estimate. Asking more people, chosen the same random way, generally makes that margin smaller.",
     terms: ["confidence-level"],
     method: [
-      "Check that the population, random sampling method, confidence level, and quantity estimated are comparable.",
-      "Under comparable conditions, choose the larger sample for a generally smaller margin of error. Keep bias separate from random sampling uncertainty.",
+      "Check that the two studies are comparable: the same population, the same random sampling method, the same confidence level (how sure the margin is meant to be) and the same quantity estimated.",
+      "Under comparable conditions, choose the larger sample for a generally smaller margin of error. Bias, a sampling method that leans one way, is a separate problem that a larger sample does not fix.",
     ],
     watch:
       "A larger sample does not guarantee an exact answer and does not repair a biased sampling method.",
@@ -472,7 +487,7 @@ const furtherPitfalls: Record<string, string> = {
   "rational-function-representation":
     "In the denominator $x-h$, a positive $h$ moves the vertical gap to the right, not left.",
   "sample-mean-estimate":
-    "Use population size for a population total. Sample size gives only an estimated total for the sampled group.",
+    "Use population size for a population total. Multiplying by the sample size gives the total for the sample, not for the population.",
   "probability-missing-count":
     "Check that the count you find is a whole number: 0, 1, 2 and so on. Then check that it gives back the stated probability.",
 };
@@ -509,13 +524,9 @@ export const satCompletionLessons: Lesson[] = satCompletionTemplates.map(
       title: meta.title,
       summary: text.summary ?? text.intuition,
       templateIds: [meta.id],
-      ...(text.explain
-        ? {
-            // The worked example is generated: read its words as the method does.
-            senses: text.senses,
-            noLink: text.noLink,
-          }
-        : {}),
+      // The lesson and its generated worked example read words as the method does.
+      ...(text.senses ? { senses: text.senses } : {}),
+      ...(text.noLink ? { noLink: text.noLink } : {}),
       includeGeneratedRepresentation: false,
       objectives: text.objectives ?? [text.goal, text.method[0]!],
       sections: text.explain

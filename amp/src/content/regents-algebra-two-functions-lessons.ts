@@ -34,6 +34,7 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
   {
     "normal-probability": {
       goal: "Turn values into $z$-scores and use technology to find the area between two values or above one value.",
+      noLink: ["whole"],
       intuition:
         "In a normal distribution the share of values between two numbers is the area under the bell curve between them. A calculator or table gives the area below any value once you know how many standard deviations it is from the mean.",
       terms: [
@@ -52,7 +53,7 @@ export const regentsAlgebraTwoFunctionsMethods: Record<string, ProblemMethod> =
         "For a count, multiply the area by the sample size and round at the end.",
       ],
       watch:
-        "Divide by $\\sigma$, not $\\sigma^2$. The 68-95-99.7 rule gives the area only at whole numbers of standard deviations.",
+        "Divide by $\\sigma$, not $\\sigma^2$. The 68-95-99.7 rule, about 68%, 95% and 99.7% within 1, 2 and 3 standard deviations of the mean, gives approximate areas only for boundaries a whole number of standard deviations from the mean. For other boundaries, use technology.",
     },
     "tangent-quadrant-cosine": {
       goal: "Build a reference triangle from the tangent, find the hypotenuse, and choose the sign of cosine from the quadrant.",
@@ -251,8 +252,10 @@ export const regentsAlgebraTwoFunctionsLessons = [
     id: "regents-normal-probability",
     title: "Normal probabilities with technology",
     summary:
-      "Find the share between two values, or the count above one, in a normal distribution.",
+      "Many measurements, such as test scores, follow a bell-shaped pattern called a normal distribution. The share of values between two numbers is the area under the bell curve between them. A calculator gives that area, which turns into a percent, or a count when multiplied by the group size.",
     templateIds: ["normal-probability"],
+    senses: { mean: "mean-average", interval: "interval" },
+    noLink: ["rule"],
     objectives: [
       "Convert values to $z$-scores.",
       "Use areas to find a percent between two values or a count above one.",

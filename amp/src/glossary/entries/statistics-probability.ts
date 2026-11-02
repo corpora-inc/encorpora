@@ -83,9 +83,9 @@ export const statisticsProbabilityEntries: GlossaryEntry[] = [
     term: "causal inference",
     forms: ["causal inference", "causal inferences"],
     plain:
-      "A conclusion that changing one thing causes a change in another. A study supports it only when treatments were handed out by random assignment.",
+      "A conclusion that changing one thing causes a change in another. The strongest support comes from an experiment where treatments were handed out by random assignment.",
     example:
-      "If volunteers are randomly assigned to sleep 6 or 9 hours, a difference in test scores can be credited to sleep.",
+      "If volunteers are randomly assigned to sleep 6 or 9 hours and the test-score difference is too large to be chance, it can be credited to sleep.",
     uses: ["random-assignment", "difference-subtract"],
     noLink: ["change"],
     band: "algebra-2",
