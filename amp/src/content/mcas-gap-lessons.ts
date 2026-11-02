@@ -11,11 +11,16 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "fact-equation-truth-select": {
     goal: "Decide which multiplication and division equations are true, with the result written on either side.",
     intuition:
-      "An equation is true when both sides name the same number. A multiplication fact and its division facts say the same thing: if $6\\times8=48$ then $48\\div6=8$ and $48\\div8=6$. So you can test any division by multiplying the answer back.",
+      "An equation says two amounts are equal. It is true when both sides name the same number. A times fact and its divide facts go together: if $6\\times8=48$, then $48\\div6=8$ and $48\\div8=6$. Facts like these are called a fact family. So you can check a divide by multiplying the answer back. The answer to a divide is called the quotient.",
+    senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      product: "product-multiply",
+    },
     terms: ["quotient", "fact-family"],
     method: [
       "Find the side with the operation. It can be on either side: $7=63\\div9$ says the same as $63\\div9=7$.",
-      "For a division, multiply the quotient by the divisor. The result must be the dividend.",
+      "For a divide, multiply the quotient by the number you divided by, called the divisor. The answer should be the number being divided, called the dividend.",
       "Compare with the number on the other side. The equation is true only if they match.",
       judgeStep,
     ],
@@ -25,42 +30,55 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-round-hundred-select": {
     goal: "Choose every number that rounds to a stated hundred.",
     intuition:
-      "Rounding to the nearest hundred moves a number to the closest multiple of 100. The halfway point decides: numbers from 50 below a hundred up to 49 above it round to that hundred, so 250 rounds to 300 but 249 rounds to 200.",
+      "To round to the nearest hundred means to swap a number for the closest hundred, like 100, 200 or 300. Look at the tens digit. 5 or more rounds up to the bigger hundred. 4 or less rounds down. So 250 rounds to 300, but 249 rounds to 200.",
     terms: [
       ["round", "To the nearest hundred means to the closest multiple of 100."],
     ],
     method: [
       "Find the two hundreds the number lies between.",
-      "Look at its tens digit. A digit of 5 or more rounds up to the larger hundred, and 4 or less rounds down.",
+      "Look at its tens digit. A digit of 5 or more rounds up to the bigger hundred, and 4 or less rounds down.",
       "Keep the numbers that land on the stated hundred.",
       selectStep,
     ],
     watch:
-      "A number just past the halfway point goes to the next hundred: 650 rounds to 700, not 600.",
+      "A number at or past the halfway point goes to the next hundred: 650 rounds to 700, not 600.",
   },
   "mcas-prime-factor-select": {
     goal: "Choose the prime numbers in a list, or the factors of a number that include no multiples of it.",
     intuition:
-      "A factor of a number divides it with nothing left over. A prime number has exactly two factors, 1 and itself, so a number with any other factor is composite. A multiple of a number, such as 128 for 64, is larger than it and is never a factor.",
+      "A factor of a number divides it with nothing left over: 3 is a factor of 12, because $12\\div3=4$. A prime number has exactly two factors, 1 and itself, like 7. A number with any other factor is called composite. A multiple of a number is that number times a whole number, like 128 for 64. A multiple bigger than the number is never a factor of it.",
+    senses: {
+      factor: "factor-number",
+      factors: "factor-number",
+      "more than": "more-than",
+      multiple: "multiple",
+      multiples: "multiple",
+    },
+    noLink: ["leaves"],
     terms: ["prime-number", "factor-number"],
     method: [
-      "For a prime question, look for a small factor: 2 for an even number, 3 when the digits add to a multiple of 3, 5 for a last digit of 0 or 5, then 7.",
-      "For a factor question, divide the number by each candidate. Keep it only when the division leaves no remainder.",
-      "Reject any candidate larger than the number, because it is a multiple.",
+      "For a prime question, look for a small factor other than 1 and the number itself: 2 for an even number, 3 when the digits add to a multiple of 3, 5 for a last digit of 0 or 5, then 7. For numbers less than 121 that is enough. For bigger numbers, keep trying 11, 13 and so on.",
+      "For a factor question, divide the number by each choice. Keep it only when the division leaves nothing over.",
+      "Throw out any choice bigger than the number: a factor of a number more than 0 is never bigger than the number.",
       selectStep,
     ],
     watch:
-      "Odd numbers are not all prime: 51 is $3\\times17$ and 91 is $7\\times13$.",
+      "Not every odd number is prime: 51 is $3\\times17$ and 91 is $7\\times13$.",
   },
   "mcas-comparison-equations-select": {
     goal: "Choose the equations that find the unknown in a times-as-many or more-than story, with the larger or the smaller amount unknown.",
     intuition:
-      "A story about “times as many” has the multiplication and the two related divisions. A story about “more than” has the addition and the two related subtractions. Each true equation is one of these, and an equation that mixes the operations is not.",
+      "Stories about “times as many” compare by multiplying. “4 times as many as 6” is $4\\times6=24$, and it goes with two divides: $24\\div4=6$ and $24\\div6=4$. Stories about “more than” compare by adding. “4 more than 6” is $6+4=10$, and it goes with two subtractions: $10-6=4$ and $10-4=6$. Each true equation is one of these. An equation that mixes them up is false.",
+    senses: {
+      "more than": "more-than",
+      side: "side-of-equation",
+      sides: "side-of-equation",
+    },
     terms: ["times-as-many", "more-than"],
     method: [
-      "Decide whether the story compares by multiplication or by addition, and which amount the letter stands for.",
-      "Find the letter's value. When the larger amount is given, divide or subtract to find the smaller one.",
-      "Substitute that value for the letter in each equation and see whether both sides match.",
+      "Decide whether the story compares by multiplying or by adding. Find what the letter stands for.",
+      "Find the letter's value. When the bigger amount is given, divide or subtract to find the smaller one.",
+      "Put that value in place of the letter in each equation. Check whether both sides match.",
       selectStep,
     ],
     watch:
@@ -69,12 +87,19 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-true-product-equations": {
     goal: "Decide which stated products of a three-digit and a one-digit number are correct.",
     intuition:
-      "Multiplying place by place splits a number into hundreds, tens and ones, multiplies each part, then adds. Mistakes come from forgetting to add a regrouped ten or hundred, or from putting a part in the wrong place.",
+      "To multiply a three-digit number by a one-digit number, split it into hundreds, tens and ones. Multiply each part, then add the parts. So $453\\times6$ is $400\\times6+50\\times6+3\\times6$. The answer to a times is called the product. Mistakes come from forgetting a regrouped ten or hundred, or from putting a part in the wrong place.",
+    senses: {
+      product: "product-multiply",
+      products: "product-multiply",
+      part: "part",
+      parts: "part",
+      side: "side-of-equation",
+    },
     terms: ["regroup"],
     method: [
-      "Split the three-digit number into hundreds, tens and ones.",
-      "Multiply each part by the one-digit number: for $453\\times6$ that is $2{,}400+300+18$.",
-      "Add the three products and compare with the product in the equation, on whichever side it is written.",
+      "Split the three-digit number into hundreds, tens and ones: 453 is $400+50+3$.",
+      "Multiply each part by the one-digit number: $400\\times6=2{,}400$, $50\\times6=300$ and $3\\times6=18$.",
+      "Add the three answers: $2{,}400+300+18=2{,}718$. Compare with the product in the equation, on whichever side it is written.",
       judgeStep,
     ],
     watch:
@@ -83,7 +108,18 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-prism-range-select": {
     goal: "Find the volume of each prism, then choose the two whose volumes together meet a condition.",
     intuition:
-      "The volume of a rectangular prism is its length times its width times its height, in cubic units. Volume adds: two prisms together hold the sum of their volumes.",
+      "Volume is the space inside a solid, counted in unit cubes, cubes with edges 1 unit long. A rectangular prism is a box shape. Its volume is its length times its width times its height, in cubic units. Volume adds: two prisms together hold the sum of their volumes.",
+    senses: {
+      unit: "unit",
+      units: "unit",
+      solid: "solid-shape",
+      edge: "edge",
+      edges: "edge",
+      cube: "cube",
+      cubes: "cube",
+      "more than": "more-than",
+    },
+    noLink: ["range"],
     terms: [
       "volume",
       [
@@ -92,13 +128,13 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Multiply length, width and height to find each volume.",
+      "Multiply the length, width and height to find each volume.",
       "Add the volumes of two prisms at a time.",
       "Keep the pair whose total fits the condition. Only one pair does.",
-      selectStep,
+      "Choose both prisms of that pair. A prism counts only together with its partner.",
     ],
     watch:
-      "Compare the sum of the two volumes, not each volume alone, with the range.",
+      "Compare the sum of the two volumes with the range, not each volume alone.",
   },
   "mcas-ratio-statements-select": {
     goal: "Choose the true statements that compare counts as part to part, part to whole or whole to part.",
@@ -119,30 +155,41 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-true-quotient-equations": {
     goal: "Choose the true division equations with two-digit divisors and multidigit dividends.",
     intuition:
-      "A quotient is correct when multiplying it by the divisor gives back the dividend. An estimate with friendly numbers shows whether the size of the quotient is right before any exact check.",
+      "In a divide, the dividend is the number being divided, the divisor is the number you divide by, and the quotient is the answer. A quotient is right when the quotient times the divisor gives back the dividend. First estimate: round to friendly, easy numbers to see how big the quotient should be.",
     terms: ["dividend", "divisor"],
     method: [
-      "Estimate: round the divisor and dividend to friendly numbers and divide to see the size of the quotient.",
+      "Estimate: round the divisor and the dividend to friendly numbers and divide, to see the size of the quotient.",
       "Multiply the stated quotient by the divisor, place by place.",
-      "The equation is true only if the product equals the dividend.",
+      "The equation is true only if that product equals the dividend.",
       judgeStep,
     ],
+    senses: { product: "product-multiply" },
     watch:
       "A zero in the quotient is easy to lose: $4{,}305\\div21=205$, not 25. The estimate shows the quotient must be in the hundreds.",
   },
   "mcas-cube-prism-statements": {
     goal: "Choose the true statements about the cubes, count and volume of a prism packed with cubes of unit-fraction edge.",
     intuition:
-      "A cube with edge $\\frac{1}{n}$ unit needs $n$ of them to span 1 unit. Its volume is $\\frac{1}{n^{3}}$ cubic unit, because it takes $n\\times n\\times n$ of them to make a cube of edge 1. Counting the small cubes and multiplying the edge lengths give the same volume.",
+      "A unit fraction has 1 on top, like $\\frac{1}{3}$. Picture small cubes with edges $\\frac{1}{3}$ unit long. It takes 3 of them, end to end, to make 1 unit. So a unit cube, 1 unit along each edge, holds $3\\times3\\times3=27$ small cubes, and each has volume $\\frac{1}{27}$ cubic unit. In general, a cube with edge $\\frac{1}{n}$ unit has volume $\\frac{1}{n\\times n\\times n}$ cubic unit. Counting the small cubes and multiplying the edge lengths give the same volume.",
+    senses: {
+      unit: "unit",
+      units: "unit",
+      edge: "edge",
+      edges: "edge",
+      cube: "cube",
+      cubes: "cube",
+      face: "face-solid",
+      faces: "face-solid",
+    },
     terms: ["unit-fraction"],
     method: [
       "Divide each edge of the prism by the cube's edge to count the cubes along it.",
       "Multiply the three counts to find the number of cubes.",
-      "Multiply the number of cubes by the volume of one cube. This equals the product of the three edge lengths.",
+      "Multiply the number of cubes by the volume of one cube. This equals the three edge lengths multiplied together.",
       selectStep,
     ],
     watch:
-      "The volume of one cube is $\\frac{1}{n^{3}}$, not $\\frac{1}{n}$: all three edges are shortened.",
+      "A cube with edge $\\frac{1}{3}$ has volume $\\frac{1}{27}$, not $\\frac{1}{3}$: all three edges are shorter.",
   },
   "mcas-statistical-question-select": {
     goal: "Choose the questions that expect data with different values from different people, items or times.",
@@ -325,11 +372,16 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-cylinder-scaling-select": {
     goal: "Choose the true statements about how a cylinder's volume changes when its radius or height is multiplied.",
     intuition:
-      "In $V=\\pi r^{2}h$ the radius appears twice, so multiplying it by a factor multiplies the volume by that factor squared. The height appears once, so multiplying it by a factor multiplies the volume by that factor.",
+      "A cylinder is a can shape. Its volume is $V=\\pi r^{2}h$. Here $\\pi$ (pi) is a fixed number, about 3.14. The radius $r$ is the distance from the center of the round end to its rim, and $h$ is the height. $r^{2}$, read “$r$ squared”, means $r\\times r$. The radius is used twice, so multiplying it by 3 multiplies the volume by $3\\times3=9$. The height is used once, so multiplying it by 3 multiplies the volume by 3.",
+    senses: {
+      squared: "square-number",
+      center: "center",
+      solid: "solid-shape",
+    },
     terms: ["factor-number"],
     method: [
-      "Replace the changed dimension by its factor times itself in the formula.",
-      "Radius multiplied by $f$ multiplies the volume by $f^{2}$. Height multiplied by $g$ multiplies it by $g$.",
+      "In the formula, replace the changed length by its multiplier times the old length.",
+      "A radius multiplied by $f$ multiplies the volume by $f\\times f$. A height multiplied by $g$ multiplies it by $g$.",
       "If both change, multiply the two effects.",
       selectStep,
     ],
@@ -353,12 +405,14 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-parenthesized-product-statement": {
     goal: "Choose the statement that describes an expression with a parenthesized sum or difference, without evaluating it.",
     intuition:
-      "Parentheses make the numbers inside one quantity. In $8\\times(24+2)$ the sum is one number and 8 multiplies all of it, so the expression is 8 times as large as the sum.",
+      "Parentheses ( ) make the numbers inside them one amount. In $8\\times(24+2)$, the sum, the answer to $24+2$, is one number. 8 multiplies all of it. So the expression is 8 times as large as the sum.",
+    senses: { difference: "difference-subtract" },
+    noLink: ["whole"],
     terms: ["sum", "difference-subtract"],
     method: [
-      "Name the quantity inside the parentheses, such as “the sum of 24 and 2”.",
+      "Name the amount inside the parentheses, such as “the sum of 24 and 2”.",
       "Say what the operation outside does to it: “8 times as large as” for multiplication.",
-      "Reject statements that use a different operation or apply the multiplication to only one number.",
+      "Throw out statements that use a different operation or multiply only one of the numbers.",
     ],
     watch:
       "Without parentheses, $8\\times24+2$ multiplies only 24. The parentheses make 8 multiply the whole sum.",
@@ -396,11 +450,19 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-product-factor-size": {
     goal: "Decide whether a product is greater than, less than or equal to a fraction factor without multiplying.",
     intuition:
-      "Multiplying by a number is taking that many copies of a quantity. Fewer than one copy, a number between 0 and 1, makes the result smaller. Exactly one copy changes nothing. More than one copy makes it larger.",
+      "A factor is a number you multiply, and the product is the answer. Multiplying an amount more than 0 by a number is like taking that many copies of it. Less than one copy, a number between 0 and 1, makes the answer smaller. Exactly one copy changes nothing. More than one copy makes it bigger. A fraction can be more than 1: $\\frac{7}{4}$ is 1 whole and $\\frac{3}{4}$ more.",
+    senses: {
+      factor: "factor-number",
+      factors: "factor-number",
+      product: "product-multiply",
+      whole: "whole",
+      "more than": "more-than",
+    },
+    noLink: ["changes", "leaves"],
     terms: ["factor-number"],
     method: [
       "Compare the other factor with 1.",
-      "Greater than 1: the product is greater than the first factor. Equal to 1: equal. Between 0 and 1: less.",
+      "More than 1: the product is greater than the first factor. Equal to 1: they are equal. Between 0 and 1: the product is less.",
       "Choose the product whose other factor has the size the question needs.",
     ],
     watch:
@@ -410,23 +472,23 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
 
 export const mcasGapPrinciples: Record<string, string> = {
   "fact-equation-truth-select":
-    "An equation $a\\times b=c$ is true when $ab$ equals $c$, and $c\\div b=a$ exactly when $a\\times b=c$ with $b\\neq0$. The fact family $a\\times b$, $b\\times a$, $c\\div a$, $c\\div b$ shares one set of three numbers.",
+    "$48\\div6=8$ is true because $8\\times6=48$. A fact family uses one set of three numbers: $6\\times8$, $8\\times6$, $48\\div6$ and $48\\div8$. With letters, $c\\div b=a$ exactly when $a\\times b=c$, and $b$ is not 0.",
   "mcas-round-hundred-select":
-    "A whole number $n$ rounds to the nearest hundred $H$ exactly when $H-50\\le n<H+50$. Halfway values $H+50$ round up.",
+    "649 is between 600 and 700. It is less than 650, the halfway point, so it rounds to 600. 650 up to 749 round to 700. With letters, a whole number $n$ rounds to the hundred $H$ when $n$ is at least $H-50$ and less than $H+50$.",
   "mcas-prime-factor-select":
-    "A whole number $p>1$ is prime if its only positive divisors are 1 and $p$. If $n$ has no divisor from 2 to $\\sqrt{n}$, it is prime. $d$ is a factor of $n$ if $n=d\\cdot q$ for a whole number $q$.",
+    "13 is prime: only 1 and 13 divide it with nothing left over. 51 is not prime, because $51=3\\times17$. To test a number, try dividing by 2, 3, 5, 7 and so on. You can stop once the divisor times itself is more than the number. With letters, $d$ is a factor of $n$ when $n=d\\times q$ for a whole number $q$.",
   "mcas-comparison-equations-select":
-    "If $N$ is $m$ times as many as $a$, then $N=ma$, which gives $N\\div m=a$ and $N\\div a=m$. If $N$ is $m$ more than $a$, then $N=a+m$, which gives $N-a=m$ and $N-m=a$. The letter can stand for $N$ or for $a$; the true equations are the ones that hold for its value.",
+    "If 24 is 4 times as many as 6, then $24=4\\times6$, $24\\div4=6$ and $24\\div6=4$. If 10 is 4 more than 6, then $10=6+4$, $10-6=4$ and $10-4=6$. With letters, $N$ is $m$ times as many as $a$ when $N=m\\times a$, and $N$ is $m$ more than $a$ when $N=a+m$. The letter can stand for either amount. The true equations are the ones that hold for its value.",
   "mcas-true-product-equations":
-    "By the distributive property, $\\overline{hto}\\times b=100h\\cdot b+10t\\cdot b+o\\cdot b$ for a three-digit number with digits $h$, $t$, $o$.",
+    "$453\\times6=400\\times6+50\\times6+3\\times6=2{,}400+300+18=2{,}718$. Splitting a number into parts, multiplying each part and adding gives the same answer. With digits $h$, $t$ and $o$ for the hundreds, tens and ones, the number is $100\\times h+10\\times t+o$. Times $b$, it is $100\\times h\\times b+10\\times t\\times b+o\\times b$.",
   "mcas-prism-range-select":
-    "A rectangular prism with edges $\\ell$, $w$, $h$ has volume $V=\\ell wh$. Volumes of solids that do not overlap add.",
+    "A box 2 by 3 by 4 units holds $2\\times3\\times4=24$ unit cubes. With letters, a rectangular prism with edges $\\ell$, $w$ and $h$ has volume $\\ell\\times w\\times h$. The volumes of solids that do not overlap add up.",
   "mcas-ratio-statements-select":
     "The ratio $a:b$ is equivalent to $ka:kb$ for any number $k\\neq0$ ($k$ is not 0). Two ratios $a:b$ and $c:d$ of nonzero numbers are equivalent when $ad=bc$. The order of the numbers follows the order of the amounts named.",
   "mcas-true-quotient-equations":
-    "$a\\div b=q$ exactly when $b\\cdot q=a$ and $b\\neq0$. An estimate $\\frac{a'}{b'}$ with $a'\\approx a$ and $b'\\approx b$ approximates $q$.",
+    "$4{,}305\\div21=205$ because $21\\times205=4{,}305$. An estimate, $4{,}000\\div20=200$, shows the quotient is in the hundreds. With letters, $a\\div b=q$ exactly when $b\\times q=a$, and $b$ is not 0.",
   "mcas-cube-prism-statements":
-    "A cube of edge $\\frac{1}{n}$ has volume $\\left(\\frac{1}{n}\\right)^{3}=\\frac{1}{n^{3}}$. A prism with edges $\\frac{a}{n},\\frac{b}{n},\\frac{c}{n}$ holds $abc$ such cubes, and its volume $\\frac{abc}{n^{3}}$ equals the product of its edges.",
+    "A cube with edge $\\frac{1}{3}$ unit has volume $\\frac{1}{3}\\times\\frac{1}{3}\\times\\frac{1}{3}=\\frac{1}{27}$. A prism $\\frac{2}{3}$ by 1 by $\\frac{4}{3}$ units holds $2\\times3\\times4=24$ of them, so its volume is $\\frac{24}{27}$. That equals $\\frac{2}{3}\\times1\\times\\frac{4}{3}=\\frac{8}{9}=\\frac{24}{27}$. With letters, a prism with edges $\\frac{a}{n}$, $\\frac{b}{n}$ and $\\frac{c}{n}$ holds $a\\times b\\times c$ cubes of edge $\\frac{1}{n}$.",
   "mcas-statistical-question-select":
     "Variability means the values in a set of data differ. A statistical question expects variability in the data collected to answer it, across the people, items or times it asks about.",
   "mcas-fraction-rate-select":
@@ -448,17 +510,17 @@ export const mcasGapPrinciples: Record<string, string> = {
   "mcas-circle-equation-select":
     "The circle with center $(h,k)$ and radius $r>0$ is the set of points with $(x-h)^{2}+(y-k)^{2}=r^{2}$. A point is inside if the left side is less than $r^{2}$ and outside if it is greater.",
   "mcas-cylinder-scaling-select":
-    "For $V=\\pi r^{2}h$, replacing $r$ by $fr$ and $h$ by $gh$ gives $\\pi(fr)^{2}(gh)=f^{2}g\\,V$.",
+    "Multiply the radius by 2: $\\pi(2r)^{2}h=\\pi\\times4\\times r^{2}h$, so the volume is 4 times as large. With letters, replacing $r$ by $f\\times r$ and $h$ by $g\\times h$ gives $\\pi(fr)^{2}(gh)=f\\times f\\times g\\times V$.",
   "mcas-circle-radius-distance":
     "A circle with center $O$ and radius $r$ is the set of points $P$ with $OP=r$. The diameter is $2r$ and the circumference is $2\\pi r$.",
   "mcas-parenthesized-product-statement":
-    "In $n\\times(a+b)$ the parentheses group $a+b$ as one quantity, so the value is $n$ times $(a+b)$. By the distributive property it equals $na+nb$, not $na+b$.",
+    "$8\\times(24+2)$ is 8 times the sum: $8\\times26=208$. It is also $8\\times24+8\\times2=192+16=208$, but it is not $8\\times24+2=194$. With letters, $n\\times(a+b)$ equals $n\\times a+n\\times b$. Multiplying only $a$, as in $n\\times a+b$, usually gives a different number.",
   "mcas-slope-sign-description":
     "The slope is $m=\\frac{\\Delta y}{\\Delta x}$, where $\\Delta y$ (read “delta $y$”) is the change in output and $\\Delta x$ is the change in input. It is positive when the two changes have the same sign, negative when their signs differ, and zero when $\\Delta y=0$.",
   "mcas-rotational-symmetry":
     "A figure has rotational symmetry if a rotation (a turn) about a center by an angle between 0° and 360° maps it onto itself. A regular polygon with $n$ sides maps onto itself after a turn of $\\frac{360^\\circ}{n}$. Every parallelogram maps onto itself after a half turn of 180°.",
   "mcas-product-factor-size":
-    "For $a>0$: $a\\cdot g>a$ when $g>1$, $a\\cdot g=a$ when $g=1$ and $a\\cdot g<a$ when $0<g<1$.",
+    "$\\frac{3}{4}\\times\\frac{5}{4}=\\frac{15}{16}$ is more than $\\frac{3}{4}=\\frac{12}{16}$, because $\\frac{5}{4}$ is more than 1. With letters, for $a$ more than 0: $a\\times g$ is more than $a$ when $g$ is more than 1. It equals $a$ when $g$ is 1. It is less than $a$ when $g$ is between 0 and 1.",
 };
 
 type LessonInput = Omit<Lesson, "sections"> & {
@@ -480,7 +542,14 @@ export const mcasGapLessons: Lesson[] = [
     id: "mcas-check-equations",
     title: "Check each equation, then select all that are true",
     summary:
-      "Test a stated equation by working out its sides or by using the inverse operation, one statement at a time.",
+      "An equation says two amounts are equal. Check each one on its own: work out both sides, or check a divide by multiplying. Then choose all the true ones.",
+    senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      "more than": "more-than",
+      part: "part",
+      product: "product-multiply",
+    },
     templateIds: [
       "fact-equation-truth-select",
       "mcas-true-product-equations",
@@ -495,32 +564,35 @@ export const mcasGapLessons: Lesson[] = [
     intuition: [
       "A true equation has the same number on both sides",
       [
-        "You need to multiply and divide whole numbers. An equation says two amounts are equal. It is true when both sides work out to the same number and false otherwise, even when the numbers look familiar.",
-        "Division can be checked by multiplying: $48\\div6=8$ is true because $6\\times8=48$. This inverse check works for any size of number.",
+        "You need to multiply and divide whole numbers.",
+        "An equation says two amounts are equal. It is true when both sides work out to the same number. It is false when they do not, even if the numbers look familiar.",
+        "You can check a divide by multiplying: $48\\div6=8$ is true because $6\\times8=48$. Multiplying undoes dividing, so this check works for numbers of any size.",
       ],
     ],
     workedExample: {
       prompt: "Is $4{,}020\\div15=268$ true?",
       steps: [
-        "Estimate: $4{,}000\\div 20=200$, so the quotient should be a little more than 200. The stated 268 is a reasonable size.",
-        "Multiply the quotient by the divisor: $15\\times268=15\\times200+15\\times68=3{,}000+1{,}020$.",
-        "$3{,}000+1{,}020=4{,}020$, which is the dividend.",
+        "Estimate first: $4{,}000\\div 20=200$. The real divisor, 15, is less than 20, so the quotient, the answer, should be more than 200. The stated 268 is a sensible size.",
+        "Multiply the quotient by the divisor, the number you divide by: $15\\times268=15\\times200+15\\times68=3{,}000+1{,}020$.",
+        "$3{,}000+1{,}020=4{,}020$, the dividend, the number being divided. So the equation is true.",
       ],
       answer: "True",
     },
     closingSections: [
       method("Selecting all the true statements", [
-        "Decide each statement separately and keep a count: the question says how many are true. For a product of a three-digit and a one-digit number, split the number into hundreds, tens and ones, multiply each part and add.",
-        "For a story, find the amount, then substitute it for the letter in each equation. A times-as-many story has $n=ma$ and its division forms $n\\div m=a$ and $n\\div a=m$. A more-than story has $n=a+m$ and the subtractions $n-a=m$ and $n-m=a$.",
+        "Decide each equation on its own and keep count. The question says how many are true.",
+        "For a three-digit number times a one-digit number, split the big number into hundreds, tens and ones. Multiply each part, then add.",
+        "For a story, find the letter's value first, then put it into each equation. If 24 is 4 times as many as 6, then $24=4\\times6$, $24\\div4=6$ and $24\\div6=4$ are true. If 10 is 4 more than 6, then $10=6+4$, $10-6=4$ and $10-4=6$ are true.",
       ]),
       formal("Inverse operations", [
-        "$a\\div b=q$ exactly when $b\\cdot q=a$, and $c-a=b$ exactly when $a+b=c$. An equation is true if and only if both sides have the same value.",
+        "Operations that undo each other are called inverse operations. Dividing undoes multiplying, and subtracting undoes adding.",
+        "With letters, $a\\div b=q$ exactly when $b\\times q=a$, with $b$ not 0. And $c-a=b$ exactly when $a+b=c$.",
       ]),
     ],
     pitfalls: [
       "A wrong product can have the right last digit. Check every place.",
-      "A zero in a quotient is a place holder: $4{,}305\\div21=205$, not 25.",
-      "“$m$ more than” adds. “$m$ times as many” multiplies.",
+      "A zero in a quotient holds a place: $4{,}305\\div21=205$, not 25.",
+      "“4 more than” adds. “4 times as many” multiplies.",
     ],
     parentGuide:
       "Ask the learner to say how they would check $72\\div 8=9$ by multiplying, and why that proves it.",
@@ -529,17 +601,25 @@ export const mcasGapLessons: Lesson[] = [
     id: "mcas-select-by-number-property",
     title: "Rounding, primes and factors: select all that apply",
     summary:
-      "Decide whether each number rounds to a hundred, is prime or is a factor, using the digit or the divisions that settle it.",
+      "To round to the nearest hundred, look at the tens digit. A factor divides a number with nothing left over. A prime number has only two factors: 1 and itself.",
+    senses: {
+      factor: "factor-number",
+      factors: "factor-number",
+      "more than": "more-than",
+      multiple: "multiple",
+    },
     templateIds: ["mcas-round-hundred-select", "mcas-prime-factor-select"],
     objectives: [
       "Round whole numbers to the nearest hundred, including numbers near halfway.",
-      "Identify prime numbers and factors of a number.",
+      "Find the prime numbers in a list and the factors of a number.",
     ],
     intuition: [
       "One test settles each number",
       [
-        "You need to know place value and division. To round to the nearest hundred, look only at the tens digit: 5 or more rounds up and 4 or less rounds down. To test a factor, divide and see whether anything is left over.",
-        "A prime number has no factors except 1 and itself, so one small factor is enough to show that a number is not prime.",
+        "You need place value and division.",
+        "To round to the nearest hundred, swap the number for the closest hundred. Look only at the tens digit: 5 or more rounds up, and 4 or less rounds down.",
+        "A factor of a number divides it with nothing left over. To test a factor, divide and see whether anything is left.",
+        "A prime number has exactly two factors: 1 and itself. So 1 is not prime, and finding one other factor shows that a number is not prime.",
       ],
     ],
     workedExample: {
@@ -552,10 +632,12 @@ export const mcasGapLessons: Lesson[] = [
     },
     closingSections: [
       method("Primes and factors", [
-        "To test a prime, look for 2, 3, 5 and 7 as factors: a number with a factor in that list, other than the number itself, is composite. To test a factor, divide the number by the candidate. A candidate larger than the number is a multiple, not a factor.",
+        "To test for prime, try 2, 3, 5 and 7 as factors. A number with one of these as a factor, other than itself, is composite: it has more than two factors. For numbers less than 121, those four tests are enough.",
+        "To test a factor, divide the number by it. A number more than 0 has no factor bigger than itself.",
       ]),
       formal("Definitions", [
-        "$n$ rounds to the nearest hundred $H$ exactly when $H-50\\le n<H+50$. A prime has exactly two positive factors. $d$ is a factor of $n$ when $n\\div d$ is a whole number.",
+        "A number rounds to the nearest hundred $H$ when it is at least $H-50$ and less than $H+50$.",
+        "A prime number has exactly two factors, 1 and itself. $d$ is a factor of $n$ when $n\\div d$ is a whole number.",
       ]),
     ],
     pitfalls: [
@@ -621,49 +703,66 @@ export const mcasGapLessons: Lesson[] = [
     id: "mcas-prism-cylinder-volume-statements",
     title: "Volume statements: prisms, small cubes and cylinders",
     summary:
-      "Find volumes by multiplying edge lengths, counting cubes or scaling a formula, and use them to judge statements.",
+      "Volume is the space inside a solid, counted in unit cubes. Find it by multiplying edge lengths, by counting small cubes, or with a formula. Then use it to judge each statement.",
+    senses: {
+      unit: "unit",
+      units: "unit",
+      solid: "solid-shape",
+      solids: "solid-shape",
+      edge: "edge",
+      edges: "edge",
+      squared: "square-number",
+      cube: "cube",
+      cubes: "cube",
+      factor: "factor-number",
+    },
+    noLink: ["change", "range"],
     templateIds: [
       "mcas-prism-range-select",
       "mcas-cube-prism-statements",
       "mcas-cylinder-scaling-select",
     ],
     objectives: [
-      "Compare the combined volume of prisms with a range.",
-      "Describe a prism packed with cubes whose edge is a unit fraction.",
-      "Find the factor by which scaling a cylinder's radius or height changes its volume.",
+      "Compare the total volume of two prisms with a range.",
+      "Describe a prism packed with cubes whose edge is a unit fraction, a fraction with 1 on top.",
+      "Find how much a cylinder's volume grows when its radius or height is multiplied.",
     ],
     intuition: [
       "Volume counts cubes",
       [
-        "You need to multiply whole numbers and fractions. The volume of a solid is the number of unit cubes that fill it. For a rectangular prism you find it by multiplying length, width and height, and volumes of separate solids add.",
-        "If the cubes are smaller than a unit, you count them and multiply by the volume of one cube. A cube with edge $\\frac{1}{3}$ unit needs 3 along each edge to make 1 unit, so 27 of them fill a unit cube and each has volume $\\frac{1}{27}$.",
+        "You need to multiply whole numbers and fractions.",
+        "Volume is the number of unit cubes that fill a solid. A unit cube has edges 1 unit long.",
+        "For a rectangular prism, a box shape, multiply the length, width and height. The volumes of separate solids add.",
+        "Cubes can be smaller than a unit. A cube with edge $\\frac{1}{3}$ unit needs 3 along each edge to make 1 unit. So 27 of them fill a unit cube, and each has volume $\\frac{1}{27}$.",
       ],
     ],
     workedExample: {
       prompt:
         "A cylinder's radius is multiplied by 3 and its height stays the same. By what factor does the volume change?",
       steps: [
-        "The volume is $V=\\pi r^{2}h$.",
-        "With radius $3r$ the volume is $\\pi(3r)^{2}h=\\pi\\cdot9r^{2}h=9\\cdot\\pi r^{2}h$.",
-        "The volume is 9 times as large.",
+        "The volume of a cylinder is $V=\\pi r^{2}h$. Here $r$ is the radius, $h$ is the height and $\\pi$ is about 3.14. $r^{2}$ means $r\\times r$, so the radius is used twice.",
+        "With radius $3r$, the volume is $\\pi(3r)^{2}h=\\pi\\times9r^{2}h=9\\times\\pi r^{2}h$.",
+        "So the volume is 9 times as large. The height did not change, so it adds nothing more.",
       ],
       answer: "9",
     },
     closingSections: [
       method("Count, then multiply", [
-        "To find which two prisms meet a condition, find each volume first, then add pairs. To describe a prism of small cubes, divide each edge by the cube's edge to count cubes along it, multiply the three counts and then multiply by one cube's volume.",
-        "For a cylinder, the radius is squared in $V=\\pi r^{2}h$, so a factor on the radius is squared. A factor on the height is not.",
+        "To find which two prisms meet a condition, find each volume first. Then add pairs.",
+        "For a prism of small cubes, divide each edge by the cube's edge to count the cubes along it. Multiply the three counts, then multiply by one cube's volume.",
+        "For a cylinder, the radius is used twice in $V=\\pi r^{2}h$. So a number that multiplies the radius gets used twice too. A number that multiplies the height is used once.",
       ]),
       formal("Formulas", [
-        "$V=\\ell wh$ for a rectangular prism, $V=\\pi r^{2}h$ for a cylinder, and a cube of edge $\\frac{1}{n}$ has volume $\\frac{1}{n^{3}}$.",
+        "A rectangular prism has $V=\\ell\\times w\\times h$. A cylinder has $V=\\pi r^{2}h$, where $\\pi$ is about 3.14.",
+        "A cube with edge $\\frac{1}{n}$ has volume $\\frac{1}{n}\\times\\frac{1}{n}\\times\\frac{1}{n}$.",
       ]),
     ],
     pitfalls: [
-      "A cube of edge $\\frac{1}{3}$ has volume $\\frac{1}{27}$, not $\\frac{1}{3}$.",
+      "A cube with edge $\\frac{1}{3}$ has volume $\\frac{1}{27}$, not $\\frac{1}{3}$.",
       "Doubling the radius makes the volume 4 times as large, not 2.",
     ],
     parentGuide:
-      "Ask how many cubes of edge $\\frac{1}{2}$ unit fill a cube of edge 1 unit, and why the answer is 8.",
+      "Ask how many cubes with edge $\\frac{1}{2}$ unit fill a cube with edge 1 unit, and why the answer is 8.",
   }),
   build({
     id: "mcas-statistical-questions-select",
@@ -883,38 +982,54 @@ export const mcasGapLessons: Lesson[] = [
     id: "mcas-describe-and-size-products",
     title: "Describing a parenthesized product and its size",
     summary:
-      "Read an expression with parentheses as one quantity, and judge a product's size from the size of its factors.",
+      "Parentheses make the numbers inside them one amount. A product is the answer to a times. For an amount more than 0, multiplying by more than 1 makes a bigger product. Multiplying by a number between 0 and 1 makes a smaller one.",
+    senses: {
+      product: "product-multiply",
+      factor: "factor-number",
+      factors: "factor-number",
+      fourths: "fourth",
+      "more than": "more-than",
+    },
+    noLink: ["whole"],
     templateIds: [
       "mcas-parenthesized-product-statement",
       "mcas-product-factor-size",
     ],
     objectives: [
-      "Describe $n\\times(a+b)$ in words without evaluating it.",
-      "Decide whether a product is greater or less than a factor from the other factor.",
+      "Describe $n\\times(a+b)$ in words without working it out.",
+      "Decide whether a product is greater or less than a factor by looking at the other factor.",
     ],
     intuition: [
       "Parentheses make one quantity, and a factor scales",
       [
-        "You need to multiply whole numbers and fractions. Parentheses group the numbers inside into one quantity before the rest is done. Multiplying by a number scales a quantity: by more than 1 enlarges it, by 1 keeps it, and by a number between 0 and 1 shrinks it.",
+        "You need to multiply whole numbers and fractions.",
+        "Parentheses ( ) group the numbers inside into one amount. Work it out before the rest.",
+        "A factor is a number you multiply. Multiplying by more than 1 makes an amount bigger. Multiplying by 1 keeps it the same. Multiplying by a number between 0 and 1 makes it smaller.",
       ],
     ],
     workedExample: {
       prompt:
         "Is $\\frac{3}{4}\\times\\frac{5}{4}$ greater or less than $\\frac{3}{4}$?",
       steps: [
-        "The other factor, $\\frac{5}{4}$, is greater than 1.",
-        "Multiplying by a number greater than 1 makes the result larger.",
-        "So the product is greater than $\\frac{3}{4}$. Check: $\\frac{3}{4}\\times\\frac{5}{4}=\\frac{15}{16}$ and $\\frac{3}{4}=\\frac{12}{16}$.",
+        "The other factor, $\\frac{5}{4}$, is greater than 1, because 5 fourths is more than 4 fourths.",
+        "Multiplying by a number greater than 1 makes the answer bigger.",
+        "So the product is greater than $\\frac{3}{4}$. Check: $\\frac{3}{4}\\times\\frac{5}{4}=\\frac{15}{16}$, and $\\frac{3}{4}=\\frac{12}{16}$.",
       ],
       answer: "Greater",
     },
     closingSections: [
       method("Compare with 1; name the group", [
-        "To judge a product's size, compare the other factor with 1. To describe $8\\times(24+2)$, name the group first, “the sum of 24 and 2”, then say what 8 does to it: “8 times as large as the sum of 24 and 2”.",
+        "To judge a product's size, compare the other factor with 1.",
+        "To describe $8\\times(24+2)$, name the group first: “the sum of 24 and 2”. Then say what 8 does to it: “8 times as large as the sum of 24 and 2”.",
+      ]),
+      formal("Size of a product", [
+        "Take an amount $a$ more than 0. Then $a\\times g$ is more than $a$ when $g$ is more than 1, and equal to $a$ when $g$ is 1.",
+        "It is less than $a$ when $g$ is between 0 and 1.",
+        "Parentheses group a sum as one amount, so $n\\times(a+b)$ is $n$ times the whole sum. It equals $n\\times a+n\\times b$. Multiplying only $a$, as in $n\\times a+b$, usually gives a different number.",
       ]),
     ],
     pitfalls: [
-      "A fraction can be greater than 1, as $\\frac{5}{4}$ is, and then it enlarges the product.",
+      "A fraction can be greater than 1, as $\\frac{5}{4}$ is. Then it makes the product bigger.",
       "Parentheses make the multiplication apply to the whole sum.",
     ],
     parentGuide:

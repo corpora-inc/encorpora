@@ -21,15 +21,21 @@ const ratios: Lesson["sections"][number] = {
 const equalGroups: Lesson["sections"][number] = {
   title: "Three numbers in every equal-groups story",
   paragraphs: [
-    "This lesson uses multiplication and division facts within 100. Many stories describe equal groups: bags that each hold the same number of apples, rows that each hold the same number of chairs, or pieces of ribbon that are all the same length. Every such story has three numbers: the number of groups, the size of each group, and the total.",
-    "The total is the number of groups times the size of each group: 6 bags of 8 apples hold 6 × 8 = 48 apples. Arrays are equal groups too, with each row as one group. So are measurement stories: each piece of ribbon is a group, and its length in centimeters is the group size.",
+    "This lesson uses times and divide facts up to 100.",
+    "Many stories are about equal groups: bags that each hold the same number of apples, rows with the same number of chairs, or ribbon pieces that are all the same length.",
+    "Every such story has three numbers: the number of groups, the size of each group, and the total, the amount in all.",
+    "The total is the number of groups times the size of each group: 6 bags of 8 apples hold 6 × 8 = 48 apples.",
+    "An array is equal groups set out in rows, and each row is one group. Measuring stories work too: each piece of ribbon is a group, and its length in centimeters is the group size.",
   ],
 };
 const tapes: Lesson["sections"][number] = {
   title: "Which number is missing?",
   paragraphs: [
-    "A tape diagram draws the total as one bar split into equal parts. The figure shows the same story three ways: 6 groups of 8 make 48. When the total is unknown, the parts are known, so multiply: 6 × 8 = ?. When the size of each part is unknown, a known total is split into a known number of parts: 48 ÷ 6 = ?. When the number of parts is unknown, a known total is measured out in parts of a known size: 48 ÷ 8 = ?.",
-    "So the question is always which of the three numbers the story leaves out. Multiplication finds a total; division finds a part of a known total. Words such as each and in all appear in both kinds of story, so read what is given instead of hunting for a key word.",
+    "A tape diagram draws the total as one long bar cut into equal parts. The figure shows one story three ways: 6 groups of 8 make 48.",
+    "When the total is unknown, you know the parts, so multiply: 6 × 8 = ?.",
+    "When the size of each part is unknown, a known total is split into a known number of parts: 48 ÷ 6 = ?.",
+    "When the number of parts is unknown, a known total is measured out in parts of a known size: 48 ÷ 8 = ?.",
+    "So always ask which of the three numbers the story leaves out. Multiplying finds a total. Dividing starts from a known total and finds either the size of each group or the number of groups. Words like each and in all show up in both kinds of story, so read what is given instead of hunting for one word.",
   ],
   illustration: "story-tapes",
 };
@@ -370,19 +376,24 @@ export const ratioRateLessons: Lesson[] = [
     id: "story-operation-choice",
     title: "Multiply or divide?",
     summary:
-      "Use multiplication for an unknown total and division for an unknown group count or size.",
+      "Equal groups are groups with the same number in each. An equation is a number sentence with an equal sign. Multiply to find an unknown total. Divide to find an unknown number of groups or size of each group.",
+    senses: { model: "model", models: "model", part: "part", parts: "part" },
+    noLink: ["key", "leaves"],
     templateIds: ["story-operation-choice"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Identify the number of groups, the group size and the total in a story.",
-      "Choose multiplication or division to model the story.",
+      "Find the number of groups, the group size and the total in a story.",
+      "Choose multiplication or division to match the story.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Find which equal-group amount is missing",
         paragraphs: [
-          "Every equal-groups story has a group count, a size for each group, and a total. If you know both group count and size, multiply to find the total. If you know the total and one of those two, divide to find the other. An equation writes that relationship with numbers and a symbol for the unknown.",
+          "Every equal-groups story has three numbers: how many groups, how many in each group, and the total.",
+          "If you know how many groups and how many in each, multiply to find the total.",
+          "If you know the total and one of the other two, divide to find the last one.",
+          "An equation writes this with numbers and a ? for the unknown, like 42 ÷ 7 = ?.",
         ],
       },
       equalGroups,
@@ -393,7 +404,8 @@ export const ratioRateLessons: Lesson[] = [
         stage: "formal",
         title: "Three equal-group quantities",
         paragraphs: [
-          "For equal groups, total equals number of groups times size of each group. Multiplication finds an unknown total; division by a known nonzero factor finds the other factor.",
+          "For equal groups, the total equals the number of groups times the size of each group.",
+          "Multiplying finds an unknown total. Dividing the total by the known number, which is not 0, finds the other number.",
         ],
       },
     ],
@@ -401,29 +413,31 @@ export const ratioRateLessons: Lesson[] = [
       prompt:
         "Omar sets up 42 chairs in rows of 7 chairs. Which equation can be used to find the number of rows?",
       steps: [
-        "The total, 42 chairs, is known, and so is the size of each row, 7 chairs.",
+        "The total, 42 chairs, is known. So is the size of each row, 7 chairs.",
         "The number of rows is unknown. Measuring a total out in groups of a known size is division: 42 ÷ 7 = 6.",
-        "The equation 42 ÷ 7 = ? models the story.",
+        "So the equation 42 ÷ 7 = ? matches the story.",
       ],
       answer: "42 ÷ 7 = ?",
     },
     pitfalls: [
-      "Do not multiply the two numbers just because both appear; check whether the total is one of them.",
-      "Do not subtract one group at a time; division counts all the groups at once.",
+      "Do not multiply two numbers just because both are in the story. Check whether one of them is the total.",
+      "Taking away one group at a time works, but it is slow. Dividing finds the answer in one step.",
       "In a division equation, the total comes first: 42 ÷ 7, not 7 ÷ 42.",
     ],
     parentGuide:
-      "Use 24 coins. Make 4 equal piles and ask how many are in each pile; then make piles of 3 and ask how many piles there are. Name the equation each time.",
+      "Use 24 coins. Make 4 equal piles and ask how many are in each pile. Then make piles of 3 and ask how many piles there are. Say the equation each time.",
   },
   {
+    senses: { part: "part", parts: "part", unit: "unit" },
     id: "multiplication-division-story",
     title: "Solve equal-groups stories",
     summary:
-      "Name the number of groups, the size of each, and the total before calculating.",
+      "Equal groups have the same number in each group. Name the number of groups, the size of each group and the total. Multiply to find the total. Divide to find a missing number of groups or group size.",
+    noLink: ["changes", "leaves", "opposite"],
     templateIds: ["multiplication-division-story"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Decide whether an equal-groups, array or measurement story calls for multiplication or division.",
+      "Decide whether an equal-groups, array or measuring story needs multiplication or division.",
       "Solve the story and check the answer with the opposite operation.",
     ],
     sections: [
@@ -431,7 +445,9 @@ export const ratioRateLessons: Lesson[] = [
         stage: "intuition",
         title: "Name the groups before choosing",
         paragraphs: [
-          "A story about six bags with eight apples each gives a number of bags and a number in each bag. It asks for the total. A story with 48 apples and six bags asks how many go in each bag. The same three amounts make both stories.",
+          "6 bags hold 8 apples each. That story gives the number of bags and the number in each bag. It asks for the total.",
+          "Another story has 48 apples in 6 equal bags. It asks how many go in each bag.",
+          "The same three numbers make both stories. Only the missing one changes.",
         ],
       },
       equalGroups,
@@ -439,8 +455,9 @@ export const ratioRateLessons: Lesson[] = [
       {
         title: "Solve and check",
         paragraphs: [
-          "After choosing the operation, compute and check with the opposite operation. If 48 ÷ 6 = 8, then 6 × 8 = 48 confirms that 6 groups of 8 rebuild the total.",
-          "Give the answer with its unit, because the unit says which number was found: 8 apples in each bag, 6 bags, or 8 centimeters for each piece.",
+          "After you choose, work it out. Then check with the opposite operation: multiply to check a divide.",
+          "If 48 ÷ 6 = 8, then 6 × 8 = 48. So 6 groups of 8 build back the total.",
+          "Give the answer with its unit, because the unit says which number you found: 8 apples in each bag, 6 bags, or 8 centimeters for each piece.",
         ],
       },
     ],
@@ -449,7 +466,8 @@ export const ratioRateLessons: Lesson[] = [
         stage: "formal",
         title: "Check the group relationship",
         paragraphs: [
-          "The same equation connects all equal-group stories: total equals group count times group size. A quotient is correct when multiplying it by the known factor reconstructs the total.",
+          "Every equal-groups story uses one equation: the total equals the number of groups times the size of each group.",
+          "A division answer is right when multiplying it by the known number gives back the total.",
         ],
       },
     ],
@@ -457,15 +475,15 @@ export const ratioRateLessons: Lesson[] = [
       prompt:
         "Lena cuts a 36-centimeter ribbon into 4 pieces of equal length. How long is each piece, in centimeters?",
       steps: [
-        "The total length, 36 centimeters, and the number of pieces, 4, are known. The length of each piece is unknown.",
+        "The total length, 36 centimeters, is known. So is the number of pieces, 4. The length of each piece is unknown.",
         "Splitting a total into a known number of equal parts is division: 36 ÷ 4 = 9.",
-        "Check: 4 × 9 = 36. Each piece is 9 centimeters long.",
+        "Check by multiplying: 4 × 9 = 36. Each piece is 9 centimeters long.",
       ],
       answer: "9",
     },
     pitfalls: [
-      "Multiply only when the total is unknown.",
-      "Check a quotient by multiplying it back to the total.",
+      "Multiply to find the total only when the total is unknown. When the total is known, divide, and multiply only to check.",
+      "Check a division answer by multiplying it back to the total.",
       "Say what the answer counts: groups, items in each group, or the total.",
     ],
     parentGuide:
@@ -546,24 +564,27 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
   },
   "story-operation-choice": {
     goal: "Choose the equation that models an equal-groups story.",
+    senses: { model: "model", models: "model" },
+    noLink: ["key", "leaves"],
     terms: ["equal-groups"],
     method: [
       "Name the number of groups, the size of each group and the total.",
       "Find which of the three the story leaves out.",
       "Unknown total: multiply. Known total: divide it by the other known number.",
     ],
-    watch:
-      "Look for whether the total is given, not for key words such as each.",
+    watch: "Look at whether the total is given, not at key words such as each.",
   },
   "multiplication-division-story": {
     goal: "Solve an equal-groups, array or measurement story.",
+    noLink: ["opposite"],
     terms: ["equal-groups"],
     method: [
       "Name the number of groups, the size of each group and the total.",
       "Unknown total: multiply. Known total: divide it by the other known number.",
-      "Check by multiplying the number of groups by the group size.",
+      "Check by multiplying the number of groups by the group size. It should give the total.",
     ],
-    watch: "Multiply only when the total is unknown.",
+    watch:
+      "Multiply to find the total only when the total is unknown. When the total is known, divide, and multiply only to check.",
   },
 };
 
@@ -579,7 +600,7 @@ export const ratioRatePrinciples: Record<string, string> = {
   "fraction-unit-rate":
     "Dividing by a fraction $\\tfrac{c}{d}$, with $c$ and $d$ not 0, is the same as multiplying by its reciprocal $\\tfrac{d}{c}$. The reciprocal $\\tfrac{d}{c}$ is how many copies of $\\tfrac{c}{d}$ make 1.",
   "story-operation-choice":
-    "In equal groups, total = number of groups × size of each group; an unknown total is found by multiplying, and an unknown factor by dividing the total by the known factor.",
+    "6 bags of 8 apples hold $6\\times8=48$ apples. If the total, 48, is known, divide it by the other known number: $48\\div6=8$ apples in each bag, or $48\\div8=6$ bags. In equal groups, total $=$ number of groups $\\times$ size of each group.",
   "multiplication-division-story":
-    "In equal groups, total = number of groups × size of each group; an unknown total is found by multiplying, and an unknown factor by dividing the total by the known factor.",
+    "6 bags of 8 apples hold $6\\times8=48$ apples. If the total, 48, is known, divide it by the other known number: $48\\div6=8$ apples in each bag, or $48\\div8=6$ bags. In equal groups, total $=$ number of groups $\\times$ size of each group.",
 };
