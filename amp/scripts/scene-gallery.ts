@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Scene gallery: every reference scene, and every ported legacy figure beside
  * its old renderer, at 320, 390, 768 and 1280 px in light and dark.
@@ -13,7 +14,8 @@
 import assert from "node:assert/strict";
 import { createServer as httpServer } from "node:http";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 
 const entry = `

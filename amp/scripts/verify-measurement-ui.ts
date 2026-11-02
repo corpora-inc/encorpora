@@ -1,9 +1,11 @@
+import { secureChromium } from "../browser-security.mjs";
 import { choose } from "./ui-controls";
 import { spokenMath } from "../src/web/MathText";
 import { startTopic } from "./ui-practice";
 import { measurementTemplates } from "../src/math/measurement-practice.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { mkdir, writeFile } from "node:fs/promises";
 import assert from "node:assert/strict";

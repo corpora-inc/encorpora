@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Term cards in a real browser: a lesson on its own and inside a practice
  * panel, an answer's explanation, and a hint, in Chromium and WebKit at
@@ -15,7 +16,8 @@ import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { createServer as httpServer } from "node:http";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import {
   lessonGlossaryContext,

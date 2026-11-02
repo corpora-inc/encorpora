@@ -1,10 +1,17 @@
+import { secureChromium } from "../browser-security.mjs";
 import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { realpathSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
-import { chromium, type Locator, type Page, type Route } from "playwright";
+import {
+  chromium as rawChromium,
+  type Locator,
+  type Page,
+  type Route,
+} from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts";
 import { noticeDigest } from "../src/parent-consent/crypto";

@@ -1,6 +1,8 @@
+import { secureChromium } from "../browser-security.mjs";
 import { choose } from "./ui-controls";
 import { registerFamilyRoutes } from "../src/family/routes.js";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import assert from "node:assert/strict";
 import { buildApp } from "../src/server/app";

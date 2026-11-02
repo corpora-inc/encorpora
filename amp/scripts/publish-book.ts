@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 import { createHash } from "node:crypto";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
@@ -5,7 +6,8 @@ import { fileURLToPath } from "node:url";
 import { parsePublishingArgs } from "../src/publishing/options.js";
 import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium, { trustedBuild: true });
 import { bookFor } from "../src/books/catalog.js";
 import { publicationSourceHashes } from "../src/publishing/source-manifest.js";
 import { renderBook } from "../src/publishing/book.js";

@@ -1,10 +1,12 @@
+import { secureChromium } from "../../../../amp/browser-security.mjs";
 // Render full-frame transparent text-card PNGs with Playwright.
 // Every card is laid out in a flex box centred on the frame and shrunk until it
 // fits the centred text area the Python side passes in (spec.text_area). Each
 // card is written twice from the same DOM: <name>.png (with its darkening scrim,
 // composited into the video) and <name>.text.png (text only, which the Python
 // safe-zone gate measures pixel by pixel). Usage: node cards.mjs <job.json>
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { readFile } from "node:fs/promises";
 
 const esc = (s) =>

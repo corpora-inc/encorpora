@@ -1,10 +1,12 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 
 // The bootstrap screenshot deliberately holds JavaScript before DOMContentLoaded.
 // WebKit waits for document.fonts.ready until those scripts finish.
 process.env.PW_TEST_SCREENSHOT_NO_FONTS_READY = "1";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer, preview } from "vite";
 import { fixtureMe } from "./me-fixture";
 import { retentionNotice } from "../src/family/contracts";

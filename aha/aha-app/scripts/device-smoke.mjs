@@ -1,3 +1,4 @@
+import { secureChromium } from "../../../amp/browser-security.mjs";
 /**
  * Real-device smoke for the installed AHA debug build (Android, over adb).
  *
@@ -17,7 +18,8 @@
 import { execFileSync } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { chromium } from 'playwright';
+import { chromium as rawChromium } from 'playwright';
+const chromium = secureChromium(rawChromium);
 
 const args = process.argv.slice(2);
 const opt = name => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : undefined; };

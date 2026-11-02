@@ -1,6 +1,12 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, type BrowserContext, type Page } from "playwright";
+import {
+  chromium as rawChromium,
+  type BrowserContext,
+  type Page,
+} from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";

@@ -1,3 +1,4 @@
+import { secureChromium } from "../../../amp/browser-security.mjs";
 /**
  * BZ-19 — the screenshot set, and the perf and flash measurements taken while
  * walking the street.
@@ -13,7 +14,8 @@
  *   perf   measured RAF p90 and fps while scrolling
  */
 
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { spawn } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";

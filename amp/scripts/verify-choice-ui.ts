@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 import { verifyLandscapeSmokeChecks } from "./verify-ui-viewports";
 import { absoluteValueTemplates } from "../src/math/absolute-value-practice.js";
 import { choose } from "./ui-controls";
@@ -7,7 +8,8 @@ import { algebraTemplates } from "../src/math/algebra-practice.js";
 import { linearSystemTemplates } from "../src/math/linear-system-practice.js";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app.js";
 import { PostgresRepository } from "../src/server/repository.js";

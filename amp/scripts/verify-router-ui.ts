@@ -1,6 +1,8 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { fixtureMe } from "./me-fixture";
 import { retentionNotice } from "../src/family/contracts";

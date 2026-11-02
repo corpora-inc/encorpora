@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * The scenes-v2 components inside real practice problems: each component's
  * migrated family rendered by the practice
@@ -19,7 +20,8 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { generateProblem, templates } from "../src/math/engine";
 import type { GeneratedProblem } from "../src/math/contracts";

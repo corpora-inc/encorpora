@@ -1,13 +1,15 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { realpathSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import {
-  chromium,
+  chromium as rawChromium,
   firefox,
   webkit,
   type BrowserContext,
   type Page,
 } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";

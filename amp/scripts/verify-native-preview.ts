@@ -1,6 +1,8 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 const directory = new URL("../artifacts/native-preview/", import.meta.url);

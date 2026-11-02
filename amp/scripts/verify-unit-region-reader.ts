@@ -1,7 +1,9 @@
+import { secureChromium } from "../browser-security.mjs";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createServer } from "vite";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { PDFDocument } from "pdf-lib";
 import { unitRegionModels } from "../tests/fixtures/unit-regions.js";
 import { renderBook } from "../src/publishing/book.js";

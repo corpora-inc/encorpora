@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Lesson library findability, against the real API and catalog
  * (app-shell-fixture.ts): instant search over titles, summaries and glossary
@@ -10,7 +11,8 @@
  */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { probe, settle } from "./app-shell-probe";
 import { startShellFixture } from "./app-shell-fixture";
 import { choose } from "./ui-controls";
@@ -290,9 +292,7 @@ try {
     await settle(page, 200);
     check((await visibleRows(page)) === geometry, "Forward restores the area");
     // Curriculum grouping is optional; revealing it preserves all rows.
-    await page
-      .getByRole("checkbox", { name: "Show grade numbers" })
-      .check();
+    await page.getByRole("checkbox", { name: "Show grade numbers" }).check();
     // A band section folds and unfolds without leaving the page.
     const band = page.locator("section[data-band]:visible").first();
     const toggle = band.getByRole("button", { expanded: true });

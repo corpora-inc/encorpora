@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /** Real-browser proof of figure-choice practice: choosing among drawn
  * graphs and number lines. Whole-card pointer and touch selection, changing
  * a choice, arrow keys between cards, Check gating, server feedback marking
@@ -8,7 +9,8 @@
  * (default artifacts/figure-choice-ui). Requires AMP_TEST_DATABASE_URL. */
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";

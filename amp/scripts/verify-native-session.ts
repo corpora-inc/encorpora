@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 import { choose } from "./ui-controls";
 import { exitPractice, startTopic } from "./ui-practice";
 /** Controlled system-browser/OS-callback adapter around the production Rust session core. */
@@ -9,7 +10,8 @@ import { createInterface } from "node:readline";
 import { mkdir } from "node:fs/promises";
 import { Pool } from "pg";
 import { generateKeyPair, exportJWK, SignJWT } from "jose";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app.js";
 import { ApiError, PostgresRepository } from "../src/server/repository.js";

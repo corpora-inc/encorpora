@@ -1,8 +1,10 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { congruenceCase } from "../src/math/congruence-practice";
 import { congruenceLessons } from "../src/content/congruence-lessons";
 import { publicationHtml } from "../src/content/publications";

@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Every reference scene on printed pages: problem figures at their start
  * frame, lesson figures revealed at their final frame, on Letter and A4,
@@ -10,7 +11,8 @@ import { spawnSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { printMathCss } from "../src/content/print-fonts";
 import { galleryCases } from "../src/math/scene/gallery";
 import { makeTenHops, partialProducts } from "../src/math/scene/explanations";

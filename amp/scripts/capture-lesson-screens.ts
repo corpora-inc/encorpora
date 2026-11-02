@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Render lessons in the app's reading view (ReferenceLesson) and practice view
  * (ProblemLesson) for a rewrite review.
@@ -14,7 +15,8 @@ import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { createServer } from "vite";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { lessons } from "../src/content/lessons";
 import { problemLesson } from "../src/content/problem-lessons";
 

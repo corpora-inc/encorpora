@@ -148,7 +148,7 @@ jobs:
           cache: npm
           cache-dependency-path: amp/package-lock.json
       - run: npm ci
-      - run: npx playwright install --with-deps chromium firefox webkit
+      - run: npx playwright install --with-deps firefox webkit && npx playwright install-deps chromium && node scripts/install-browser.mjs --configure-linux-sandbox
       # test:payment-ui and the print suites inspect PDFs with pdfinfo.
       - name: Install PDF inspection tools and the Android UI font
         run: sudo apt-get install -y poppler-utils fonts-roboto && fc-match system-ui && fc-match sans-serif
@@ -267,7 +267,7 @@ jobs:
           cache: npm
           cache-dependency-path: amp/package-lock.json
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install-deps chromium && node scripts/install-browser.mjs --configure-linux-sandbox
       # test:payment-ui and the print suites inspect PDFs with pdfinfo.
       - name: Install PDF inspection tools and the Android UI font
         run: sudo apt-get install -y poppler-utils fonts-roboto && fc-match system-ui && fc-match sans-serif
@@ -439,7 +439,7 @@ jobs:
         run: npm run audit
       # publications renders PDFs with Playwright's Chromium.
       - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install-deps chromium && node scripts/install-browser.mjs --configure-linux-sandbox
       - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'
         run: npm run publications
       - if: matrix.lane == 'publications' && steps.reuse.outputs.verified != 'true'

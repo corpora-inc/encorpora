@@ -1,8 +1,10 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir, writeFile, rm } from "node:fs/promises";
 import { realpathSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { chromium, firefox } from "playwright";
+import { chromium as rawChromium, firefox } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 const root = new URL("../", import.meta.url).pathname;
 const dir = root + "artifacts/level-axis/";

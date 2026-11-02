@@ -1,7 +1,9 @@
+import { secureChromium } from "../browser-security.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { build } from "esbuild";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 
 test("real Google tag emits sanitized pages/actions and stops on learning routes", async () => {
   const bundle = await build({

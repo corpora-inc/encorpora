@@ -1,4 +1,6 @@
-import { chromium } from "playwright";
+import { secureChromium } from "../../../amp/browser-security.mjs";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { readFile, writeFile, mkdir, copyFile } from "node:fs/promises";
 import { resolve, dirname, extname, basename } from "node:path";
 import { createHash } from "node:crypto";

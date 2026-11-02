@@ -1,7 +1,9 @@
+import { secureChromium } from "../browser-security.mjs";
 import { choose } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 import { registerFamilyRoutes } from "../src/family/routes.js";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { mkdir, writeFile } from "node:fs/promises";
 import assert from "node:assert/strict";
@@ -171,7 +173,11 @@ async function waitForApiSlot() {
 async function paceApi(page: import("playwright").Page) {
   await page.context().route("**/api/**", async (route) => {
     await waitForApiSlot();
-    if (new URL(route.request().url()).pathname.startsWith("/api/v1/problem-lessons/")) {
+    if (
+      new URL(route.request().url()).pathname.startsWith(
+        "/api/v1/problem-lessons/",
+      )
+    ) {
       const response = await route.fetch();
       assert.ok(response.ok(), `Lesson fetch failed: ${response.status()}`);
       await route.fulfill({ response });

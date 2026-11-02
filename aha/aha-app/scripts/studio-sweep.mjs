@@ -1,3 +1,4 @@
+import { secureChromium } from "../../../amp/browser-security.mjs";
 /** DEV-ONLY visual sweep of every studio screen and state outside the activity format
  * (src/ui/gallery, TEST FIXTURE props) at five viewports, light and dark, motion on and reduced.
  * Writes PNGs, one contact sheet per scenario (sheets/<id>.png) and index.html to .sweep/<label>/
@@ -8,7 +9,8 @@ import { mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { stripVTControlCharacters } from 'node:util';
-import { chromium } from 'playwright';
+import { chromium as rawChromium } from 'playwright';
+const chromium = secureChromium(rawChromium);
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const arg = (name) => { const i = process.argv.indexOf(`--${name}`); return i > 0 ? process.argv[i + 1] : undefined; };

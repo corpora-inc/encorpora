@@ -1,3 +1,4 @@
+import { secureChromium } from "../../browser-security.mjs";
 import type { Browser, Page } from "playwright-core";
 // playwright-core is a development dependency: the API image never loads it.
 // The local renderer imports it only when used, in development.
@@ -66,11 +67,13 @@ export function localRenderer(): WorkbookRenderer & { close(): Promise<void> } {
   let browser: Promise<Browser> | null = null;
   const launch = () =>
     (browser ??= import("playwright-core")
-      .then(({ chromium }) => chromium.launch({ headless: true }))
+      .then(({ chromium }) =>
+        secureChromium(chromium).launch({ headless: true }),
+      )
       .catch((error) => {
         browser = null;
         throw new RendererUnavailable(
-          `Local Chromium unavailable (npx playwright install chromium): ${error instanceof Error ? error.message : String(error)}`,
+          `Local Chromium unavailable (node scripts/install-browser.mjs): ${error instanceof Error ? error.message : String(error)}`,
         );
       }));
   return {
@@ -130,14 +133,15 @@ export async function workbookRendererFromEnv(
   if (!development) return null;
   // Without a local Chromium, downloads use the printable document.
   try {
-    const { chromium } = await import("playwright-core");
+    const { chromium: rawChromium } = await import("playwright-core");
+    const chromium = secureChromium(rawChromium);
     const { existsSync } = await import("node:fs");
     if (existsSync(chromium.executablePath())) return localRenderer();
   } catch {
     // playwright-core is a development dependency and may be absent.
   }
   console.warn(
-    "No local Chromium (npx playwright install chromium): workbook downloads use the printable document",
+    "No local Chromium (node scripts/install-browser.mjs): workbook downloads use the printable document",
   );
   return null;
 }

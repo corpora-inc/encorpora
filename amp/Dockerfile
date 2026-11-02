@@ -49,11 +49,22 @@ RUN mkdir -p /app/artifacts/publications
 FROM ${PDF_SEED} AS pdf-seed
 
 # PDF tooling is build-only. The browser and Poppler never enter the API image.
-FROM dependencies AS pdf-build
+FROM node-base AS chrome
+WORKDIR /app
+ENV CORPORA_CHROME_CACHE=/opt/corpora-chrome
+COPY --from=dependencies /app/node_modules/playwright-core ./node_modules/playwright-core
+COPY browser-security.mjs ./browser-security.mjs
+COPY scripts/install-browser.mjs ./scripts/install-browser.mjs
+RUN apt-get update && apt-get install -y --no-install-recommends curl unzip \
+    && node node_modules/playwright-core/cli.js install-deps chromium \
+    && node scripts/install-browser.mjs \
+    && rm -rf /var/lib/apt/lists/*
+
+FROM chrome AS pdf-build
+COPY --from=dependencies /app/node_modules ./node_modules
 ENV PLAYWRIGHT_BROWSERS_PATH=/opt/amp-playwright
 RUN apt-get update \
     && apt-get install -y --no-install-recommends poppler-utils \
-    && npx playwright install --with-deps --only-shell chromium \
     && rm -rf /var/lib/apt/lists/*
 COPY . .
 # PDFs are reused per document (same print HTML, same renderer, verified bytes)
@@ -61,24 +72,23 @@ COPY . .
 # The release directory is outside the cache mount and contains delivery files only.
 RUN --mount=type=cache,id=amp-pdf-build-v1,target=/app/artifacts,sharing=locked \
     --mount=type=bind,from=pdf-seed,source=/app/artifacts,target=/pdf-seed \
-    node_modules/.bin/tsx scripts/build-pdf-release.ts /app/pdf-release --seed /pdf-seed/publications
+    CORPORA_PDF_BUILD=1 node_modules/.bin/tsx scripts/build-pdf-release.ts /app/pdf-release --seed /pdf-seed/publications
 
 # The render service is one bundled file plus playwright-core (no other
 # dependencies), so its image carries Node, Chromium and nothing else.
 FROM dependencies AS render-build
+COPY browser-security.mjs ./browser-security.mjs
 COPY src/render-service ./src/render-service
 RUN node_modules/.bin/esbuild src/render-service/main.ts --bundle --platform=node \
       --format=esm --target=node22 --external:playwright-core --outfile=/out/main.mjs
 
-FROM node-base AS render
+FROM chrome AS render
 ENV NODE_ENV=production PLAYWRIGHT_BROWSERS_PATH=/opt/amp-playwright \
     AMP_RENDER_HOST=0.0.0.0 AMP_RENDER_PORT=8080 HOME=/tmp
 WORKDIR /app
 COPY --from=dependencies /app/node_modules/playwright-core ./node_modules/playwright-core
-# The browser build matches this playwright-core exactly; system libraries and
-# fonts come with it. Pages print the same as the publication PDFs.
-RUN node node_modules/playwright-core/cli.js install --with-deps --only-shell chromium \
-    && rm -rf /var/lib/apt/lists/* /tmp/*
+# Runtime and publication builds share the patched browser and system fonts.
+RUN rm -rf /tmp/*
 COPY --from=render-build /out/main.mjs ./main.mjs
 RUN printf '{"type":"module"}\n' > package.json
 # Non-root; writes only to /tmp (mount a tmpfs with a read-only root).
@@ -93,6 +103,7 @@ ENV NODE_ENV=production AMP_HOST=0.0.0.0 AMP_PORT=8080
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
+COPY --from=build /app/browser-security.mjs ./browser-security.mjs
 COPY --from=build /app/src ./src
 COPY --from=build /app/scripts ./scripts
 # External configuration (scripts/external-config.ts) runs from this image at deploy.

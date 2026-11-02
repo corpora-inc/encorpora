@@ -14,7 +14,7 @@ npm ci
 npm test
 npm run tsc
 npm run build
-npx playwright install chromium
+node ../../amp/scripts/install-browser.mjs
 npm run test:ui
 npm run dev
 ```

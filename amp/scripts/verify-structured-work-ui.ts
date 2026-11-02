@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /** Real-browser proof of structured-work practice: a derivation built line
  * by line (an open list of steps), a two-column proof from statement and
  * reason banks, labeled values with some given, an ordering, and a
@@ -9,7 +10,8 @@
  * artifacts/structured-work-ui). Requires AMP_TEST_DATABASE_URL. */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
