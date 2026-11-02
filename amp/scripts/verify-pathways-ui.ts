@@ -982,6 +982,13 @@ try {
           .getByRole("heading", { name: target.title, exact: true })
           .waitFor();
       }
+      assert.equal(
+        await page.getByText("Algebra frontier:", { exact: false }).count(),
+        0,
+      );
+      await page
+        .getByRole("checkbox", { name: "Show grades and estimates" })
+        .check();
       await page.getByText("Algebra frontier:", { exact: false }).waitFor();
       await page.getByRole("button", { name: "Zoom in", exact: true }).click();
       await noOverflow(page);

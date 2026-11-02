@@ -99,6 +99,7 @@ export function CurriculumDetailsControl() {
         <span>Show grades and estimates</span>
         <input
           type="checkbox"
+          style={{ width: 44, height: 44 }}
           checked={shown}
           disabled={!ready}
           onChange={(e) => setShown(e.target.checked)}
