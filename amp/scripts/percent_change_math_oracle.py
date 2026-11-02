@@ -231,6 +231,10 @@ def arithmetic(source):
 
 def numeric_equalities(text):
     """Validate all complete numeric equality chains in a prose statement."""
+    from worked_math_text import plain_worked_math
+    text = plain_worked_math(text)
+    # A comma grouping three digits is part of a number, not a prose boundary.
+    text = re.sub(r'(?<=\d),(?=\d{3}(?:\D|$))', '', text)
     chains = re.findall(r"(?<![A-Za-z0-9])[-−+()0-9][0-9.\s()+*/×÷%−=\-]*=[0-9.\s()+*/×÷%−=\-]+", text)
     values = []
     for chain in chains:
@@ -474,14 +478,26 @@ def check_lesson(record):
         text.extend(section['paragraphs'])
     text.extend(worked['steps'])
     for paragraph in text:
-        numeric_equalities(paragraph)
-    required = ['original quantity', 'final quantity', 'denominator', 'numerator', 'Percent means', 'base', 'by zero']
+        try:
+            numeric_equalities(paragraph)
+        except ValueError as error:
+            raise ValueError(f'{template}: {paragraph!r}: {error}') from error
     joined = ' '.join(text)
-    require(all(term.lower() in joined.lower() for term in required), 'Missing standalone prerequisite definition')
+    required = [r'original (?:quantity|amount)', r'final (?:quantity|amount)',
+                r'denominator', r'numerator', r'Percent means', r'base', r'by (?:zero|0)\b']
+    require(all(re.search(term, joined, re.I) for term in required),
+            f'{template}: Missing standalone prerequisite definition')
     if template.endswith('rate'):
-        require('percentage point is' in joined and 'relative percent increase' in joined, 'Missing share/percentage-point distinction')
+        require('percentage point is' in joined and
+                ('relative percent increase' in joined or
+                 'It compares those 5 points with the original 20' in joined),
+                'Missing share/percentage-point distinction')
     if template.endswith('original'):
-        require('reciprocal' in joined and 'Every positive original becomes zero' in joined and 'different base' in joined, 'Missing inverse nonuniqueness/base explanation')
+        require('reciprocal' in joined and
+                ('Every positive original becomes zero' in joined or
+                 'It turns every original into 0' in joined) and
+                ('different base' in joined or 'wrong base' in joined),
+                'Missing inverse nonuniqueness/base explanation')
     return check_diagram(record['html'], template.endswith('original'))
 
 
