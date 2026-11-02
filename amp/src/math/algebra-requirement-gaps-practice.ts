@@ -1607,7 +1607,7 @@ function quadraticFormConversionCase(seed: string) {
         },
         {
           label: tex(`${c - h * h}`),
-          feedback: `The number added inside the parentheses is multiplied by ${a}: subtract $${a}\\cdot ${h * h}=${a * h * h}$, not ${h * h}.`,
+          feedback: `The number added inside the parentheses is multiplied by ${a}, so outside you must undo $${a}\\cdot ${h * h}=${a * h * h}$, not just ${h * h}: ${a * h * h < 0 ? `add ${-a * h * h}` : `subtract ${a * h * h}`}.`,
         },
         {
           label: tex(`${-k}`),
