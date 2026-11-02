@@ -97,7 +97,7 @@ const entries: WorkEntry[] = [
       "Multiply and round to the stated place.",
     ],
     watch:
-      "Use the angle between the two sides. An angle at another vertex gives the wrong sine.",
+      "Use the angle between the two known sides. An angle at another vertex usually has a different sine.",
     principle:
       "For sides $a$ and $b$ with included angle $C$, the area is $\\frac12ab\\sin C$, because the height onto side $b$ is $a\\sin C$.",
     example: {

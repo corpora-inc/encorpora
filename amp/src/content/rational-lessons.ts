@@ -277,7 +277,7 @@ export const rationalLessons: Lesson[] = [
       {
         title: "Powers and roots of fractions",
         paragraphs: [
-          "In $x^3$, the base $x$ is multiplied by itself 3 times; the exponent 3 counts the factors. A power of a fraction powers its numerator and denominator: $\\left(\\frac{2}{3}\\right)^{3} = \\frac{2 \\times 2 \\times 2}{3 \\times 3 \\times 3} = \\frac{8}{27}$. A negative exponent means the reciprocal of the power, $x^{-p} = \\frac{1}{x^p}$, and $x^0 = 1$ for every nonzero $x$.",
+          "In $x^3$, three copies of the base $x$ are multiplied: $x\\cdot x\\cdot x$. The exponent 3 counts the copies. A power of a fraction powers its numerator and denominator: $\\left(\\frac{2}{3}\\right)^{3} = \\frac{2 \\times 2 \\times 2}{3 \\times 3 \\times 3} = \\frac{8}{27}$. A negative exponent means the reciprocal of the power, $x^{-p} = \\frac{1}{x^p}$, and $x^0 = 1$ for every nonzero $x$.",
           "The nth root of a positive number $x$ is the positive number whose nth power is $x$. The square root is the second root and the cube root is the third: $\\sqrt[3]{\\frac{8}{27}} = \\frac{2}{3}$ because $\\left(\\frac{2}{3}\\right)^{3} = \\frac{8}{27}$. These lessons use positive bases, so every root here is one positive number.",
         ],
       },
@@ -310,7 +310,7 @@ export const rationalLessons: Lesson[] = [
       answer: "$\\frac{27}{8}$",
     },
     pitfalls: [
-      "The exponent's denominator is the root and its numerator is the power.",
+      "The exponent's denominator says which root to take, and its numerator says which power.",
       "A negative exponent gives a reciprocal, not a negative number.",
       "Take the root of the numerator and of the denominator separately.",
     ],

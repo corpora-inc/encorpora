@@ -1062,7 +1062,7 @@ const rationalExtraneousSingleMethod: ProblemMethod = {
     "Substitute any remaining candidate into the original equation to confirm.",
   ],
   watch:
-    "Reject a candidate only when it makes a denominator zero, not because it looks unusual. A difference of squares over a matching linear factor simplifies only for inputs other than that factor's zero.",
+    "When the only step was clearing denominators, reject a candidate only when it makes a denominator zero, not because it looks unusual. A difference of squares over a matching linear factor simplifies only for inputs other than that factor's zero.",
 };
 
 const rationalExtraneousSinglePrinciple =
@@ -1084,7 +1084,7 @@ const rationalExtraneousSingleLesson: Lesson = {
       stage: "intuition",
       title: "Multiplying by zero loses information",
       paragraphs: [
-        "A fraction like $\\frac{3}{x-2}$ is not defined at $x=2$ because division by zero has no value. When we multiply both sides of an equation by $x-2$, we implicitly assume it is not zero. At $x=2$ the multiplier is zero and the cleared equation can be true even though the original is undefined.",
+        "A fraction like $\\frac{3}{x-2}$ is not defined at $x=2$ because division by zero has no value. Multiplying both sides of an equation by $x-2$ can be undone, by dividing, only where $x-2$ is not zero. At $x=2$ the multiplier is zero and the cleared equation can be true even though the original is undefined.",
         "So after solving, every candidate is checked against the excluded value.",
       ],
     },
@@ -1118,7 +1118,7 @@ const rationalExtraneousSingleLesson: Lesson = {
   ],
   pitfalls: [
     "Write the excluded value before solving, not after.",
-    "A candidate is extraneous only if it makes a denominator zero. Otherwise it is a solution.",
+    "When the only step was clearing denominators, a candidate is extraneous only if it makes a denominator zero. Otherwise it is a solution.",
     "If the only candidate is rejected, the answer is no solution, not “$x$ equals the candidate.”",
   ],
   parentGuide:
@@ -1195,7 +1195,7 @@ const squareRootExtraneousLesson: Lesson = {
       stage: "formal",
       title: "Why the squared equation has more solutions",
       paragraphs: [
-        "For real $A\\ge0$, $A^2=B^2$ holds exactly when $A=B$ or $A=-B$. The original equation $\\sqrt{R}=B$ asks for $\\sqrt R=B$. The squared equation $R=B^2$ also holds when $\\sqrt R=-B$. These two cases agree only when $B\\ge0$.",
+        "For real $A\\ge0$, $A^2=B^2$ holds exactly when $A=B$ or $A=-B$. The original equation $\\sqrt{R}=B$ asks for $\\sqrt R=B$. The squared equation $R=B^2$ also holds when $\\sqrt R=-B$. Since $\\sqrt R$ is never negative, a solution of the squared equation solves the original exactly when $B\\ge0$.",
       ],
     },
   ],

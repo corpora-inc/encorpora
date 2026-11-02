@@ -439,7 +439,7 @@ export const hsStateGapLessons: Lesson[] = [
         stage: "method",
         title: "Isolate, cube, solve",
         paragraphs: [
-          "Get the cube root alone on one side, then cube both sides. Solve the resulting equation and check in the original. For $ax^3+b=c$, isolate $x^3$ and take the cube root of both sides: there is exactly one real value.",
+          "Get the cube root alone on one side, then cube both sides. Solve the resulting equation and check in the original. For $ax^3+b=c$ with $a\\ne0$, isolate $x^3$ and take the cube root of both sides: there is exactly one real value.",
           "Square-root equations can have extraneous solutions because squaring loses the sign. Cubing does not: each real number has one cube, and each cube has one real cube root.",
         ],
       },
@@ -453,7 +453,7 @@ export const hsStateGapLessons: Lesson[] = [
     ],
     pitfalls: [
       "A cube root can equal a negative number.",
-      "An odd power gives one real solution, not plus-or-minus.",
+      "Taking the cube root of both sides gives one real value, not plus-or-minus.",
     ],
     parentGuide:
       "Ask why a negative number can have a real cube root but not a real square root.",

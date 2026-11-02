@@ -143,7 +143,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   "cubic-quotient-remainder": {
     goal: "Divide a cubic by a linear binomial and write the quotient plus the remainder over the divisor.",
     intuition:
-      "Dividing like long division gives a quotient and a remainder: $\\frac{p(x)}{d(x)}=q(x)+\\frac{R}{d(x)}$. The remainder stays over the divisor because it was never divided.",
+      "Dividing like long division gives a quotient and a remainder: $\\frac{p(x)}{d(x)}=q(x)+\\frac{R}{d(x)}$. The remainder is the part the divisor does not go into evenly, so it is written over the divisor, as in $17\\div5=3+\\frac25$.",
     terms: [
       [
         "quotient",
@@ -235,7 +235,7 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
       "Use a common denominator when adding fractions.",
     ],
     watch:
-      "Add exponents when multiplying powers; do not multiply them. The cube root of a coefficient is taken separately.",
+      "Add exponents when multiplying powers of the same base; do not multiply them. The cube root of a coefficient is taken separately.",
   },
 };
 
@@ -522,8 +522,10 @@ export const regentsAlgebraTwoAlgebraLessons = [
       prompt:
         "Write $\\frac{x^3+2x^2-x+4}{x+1}$ as a quotient plus a remainder.",
       steps: [
-        "The zero of $x+1$ is $-1$. Bring down 1; $2-1=1$; $-1-1=-2$; $4+2=6$.",
-        "Quotient $x^2+x-2$, remainder 6.",
+        "The divisor $x+1$ is 0 at $x=-1$, so use $-1$. Write the coefficients of the top in a row: 1, 2, $-1$, 4.",
+        "Bring down the first coefficient, 1. Multiply it by $-1$ and add to the next coefficient: $2+(1)(-1)=1$.",
+        "Repeat with each new result: $-1+(1)(-1)=-2$, then $4+(-2)(-1)=6$.",
+        "The bottom row is 1, 1, $-2$ and 6. The last number, 6, is the remainder. The others are the quotient's coefficients, one power lower than the top: $x^2+x-2$.",
       ],
       answer: "$x^2+x-2+\\dfrac{6}{x+1}$",
     },
@@ -777,7 +779,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
       "$\\sqrt[3]{d^3x^m}=d\\,x^{m/3}$ for $d>0$ and $x>0$.",
     ],
     pitfalls: [
-      "Exponents add when multiplying; they do not multiply.",
+      "When multiplying powers of the same base, exponents add; they do not multiply.",
       "Take the root of the coefficient too.",
     ],
     parentGuide:

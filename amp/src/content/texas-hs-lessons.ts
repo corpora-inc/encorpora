@@ -151,9 +151,9 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "A power $p/q$ means a $q$th root and then a $p$th power. To undo it, raise both sides to the reciprocal power $q/p$. An even power of $x$ cannot tell $x$ from $-x$, and an even root needs $x\\ge0$.",
     terms: ["rational-exponent", "reciprocal"],
     method: [
-      "Raise both sides to the power $\\frac{q}{p}$. The left side becomes $x$.",
+      "Write the exponent $\\frac{p}{q}$ in lowest terms, then raise both sides to the power $\\frac{q}{p}$.",
       "Evaluate the right side, using a root and a power.",
-      "If the numerator $p$ is even, include both the positive and negative value. If the denominator $q$ is even, keep only $x\\ge0$.",
+      "If the numerator $p$ is even and the right side is positive, include both the positive and the negative value. If the denominator $q$ is even, keep only $x\\ge0$.",
       "Substitute to check.",
     ],
     watch:
@@ -306,9 +306,9 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "Near a break in the graph, the two sides can behave differently. Left-sided behavior, written $x\\to c^-$, uses $x$ values just below $c$, and right-sided behavior, $x\\to c^+$, uses values just above $c$.",
     terms: ["vertical-asymptote", "hole", "jump-discontinuity"],
     method: [
-      "For a rational function, cancel common factors first. A canceled factor gives a hole whose height comes from the simplified expression.",
+      "For a rational function, cancel common factors first. If a factor cancels completely and the simplified expression is defined at that input, there is a hole, whose height comes from the simplified expression.",
       "For an asymptote, test the sign of $f$ just left and just right of the zero of the denominator.",
-      "A factor that is squared does not change sign, so both sides head the same way.",
+      "If the factor that makes the denominator 0 is squared and the numerator is not 0 there, the expression keeps one sign on both sides, so both sides head the same way.",
       "For a piecewise function, use the rule for each side and evaluate it at the break.",
     ],
     watch:
@@ -1201,7 +1201,7 @@ export const texasHsLessons: Lesson[] = [
     formal: {
       title: "Notation",
       paragraphs: [
-        "$(f\\circ g)(x)=f(g(x))$. A vertical asymptote at $c$ means $|f(x)|$ grows without bound as $x\\to c$. A hole is a removable discontinuity, where both sides approach the same finite value but the function is undefined. A jump has different finite one-sided limits.",
+        "$(f\\circ g)(x)=f(g(x))$. A vertical asymptote at $c$ means $|f(x)|$ grows without bound as $x$ approaches $c$ from at least one side. A hole is a removable discontinuity, where both sides approach the same finite value but the function is undefined. A jump has different finite one-sided limits.",
       ],
     },
     pitfalls: [
@@ -1278,7 +1278,7 @@ export const texasHsLessons: Lesson[] = [
     ],
     intuition: [
       "An angle in standard position starts on the positive $x$-axis. Positive angles turn counterclockwise and negative angles clockwise. A full turn brings you back to the same direction.",
-      "A point on a wheel that turns through $\\theta$ radians travels $r\\theta$ along the rim, because a radian is the angle that cuts off an arc as long as the radius.",
+      "A point on a wheel of radius $r$ that turns through $\\theta$ radians, with $\\theta\\ge0$, travels $r\\theta$ along the rim, because a radian is the angle that cuts off an arc as long as the radius.",
     ],
     example: {
       prompt:
@@ -1451,7 +1451,7 @@ export const texasHsLessons: Lesson[] = [
       "Exclude values where a rational expression is undefined.",
     ],
     intuition: [
-      "An expression can change sign only at a zero, or at a value where it is undefined. Between two such values, its sign stays the same.",
+      "A polynomial, or a fraction of polynomials, can change sign only at a zero or at a value where it is undefined. Between two such values, its sign stays the same.",
       "So list those values, test one number in each gap, and keep the gaps that make the inequality true.",
     ],
     example: {

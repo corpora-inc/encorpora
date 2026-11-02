@@ -17,7 +17,7 @@ const foundations: Lesson["sections"] = [
     paragraphs: [
       "A factor is a number that multiplies another to make a given number. In $18 = 9 \\times 2$, both 9 and 2 are factors of 18. The factor 9 is a perfect square, so $\\sqrt{18} = \\sqrt{9}\\sqrt{2} = 3\\sqrt{2}$. The coefficient 3 multiplies the root; it counts three copies of $\\sqrt{2}$.",
       "For any nonnegative numbers $a$ and $b$, $\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$. The product on the right is nonnegative and its square is ab, so it is the principal square root of ab. This product rule justifies taking a square factor outside a radical. It does not give a rule for adding radicands.",
-      "In simplest radical form, no square factor greater than 1 remains inside a square root. Such a radicand is called square-free. For example, 6 is square-free, but 12 contains the square factor 4. Look for square factors 4, 9, 16, 25 and so on. Using the largest one finishes the extraction in a single step.",
+      "In simplest radical form, no square factor greater than 1 remains inside a square root. Such a radicand is called square-free. For example, 6 is square-free, but 12 contains the square factor 4. Look for square factors 4, 9, 16, 25 and so on. For a radicand greater than 0, using the largest one finishes the extraction in a single step.",
       "Multiplying two numbers with the same sign gives a positive product; different signs give a negative product. Keep a signed coefficient outside the root while simplifying the nonnegative radicand.",
     ],
   },
@@ -219,8 +219,8 @@ export const radicalLessons: Lesson[] = [
       {
         title: "Carry signs and finish simplifying",
         paragraphs: [
-          "A negative coefficient multiplies the whole radical term. For example, $(-2\\sqrt{3})(3\\sqrt{6}) = -6\\sqrt{18} = -18\\sqrt{2}$. The coefficient product is negative because its factors have different signs. The square root itself is nonnegative.",
-          "The product of two square-free radicands need not be square-free. Although 6 and 10 contain no square factors, $\\sqrt{6}\\sqrt{10} = \\sqrt{60} = 2\\sqrt{15}$. Inspect the product for square factors rather than stopping after multiplying the radicands.",
+          "A negative coefficient stays in front of the root, and its sign carries into the product. For example, $(-2\\sqrt{3})(3\\sqrt{6}) = -6\\sqrt{18} = -18\\sqrt{2}$. The coefficient product is negative because its factors have different signs. The square root itself is nonnegative.",
+          "The product of two square-free radicands need not be square-free. Although 6 and 10 contain no square factors greater than 1, $\\sqrt{6}\\sqrt{10} = \\sqrt{60} = 2\\sqrt{15}$. Inspect the product for square factors rather than stopping after multiplying the radicands.",
         ],
       },
     ],
@@ -344,7 +344,7 @@ export const radicalMethods: Record<string, ProblemMethod> = {
       "The square root of a number that is not negative is the number, also not negative, whose square equals it: $\\sqrt{36}=6$. The number under the root is the radicand. If the radicand has a perfect-square factor, like 36 in $72=36\\times2$, its root can move outside as a coefficient: $\\sqrt{72}=6\\sqrt2$. A root is in simplest form when no square factor greater than 1 is left inside.",
     terms,
     method: [
-      "Find the largest square factor of the radicand.",
+      "If the radicand is 0, the root is 0. Otherwise find the largest square factor of the radicand.",
       "Split the root into a product and take the square factor's root outside.",
       "Keep the remaining square-free root; a perfect-square radicand becomes a whole number.",
     ],

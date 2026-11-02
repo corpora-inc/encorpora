@@ -50,7 +50,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
   "rg-polynomial-zeros-forms": {
     goal: "Find the zeros of a product with a nonmonic factor, or a zero of an expanded cubic by factoring by grouping.",
     intuition:
-      "A zero of a function is an input that makes the output 0. A product is 0 only when one of its factors is 0, so each factor gives a zero. For a factor such as $3x+2$, solve $3x+2=0$ and get $-\\frac{2}{3}$. An expanded cubic with four terms can sometimes be factored by grouping its terms in pairs.",
+      "A zero of a function is an input that makes the output 0. A product is 0 only when one of its factors is 0, so the zeros of the product are the zeros of its factors. For a factor such as $3x+2$, solve $3x+2=0$ and get $-\\frac{2}{3}$. An expanded cubic with four terms can sometimes be factored by grouping its terms in pairs.",
     terms: ["zero-product-property", "factoring-by-grouping"],
     method: [
       "If the function is a product, set each factor equal to 0, including a factor that is only $x$.",
@@ -453,7 +453,7 @@ export const regentsGapLessons: Lesson[] = [
     intuition: [
       "A product is zero when a factor is zero",
       [
-        "A zero of $f$ is an input where $f(x)=0$. A product is 0 only when at least one factor is 0, so each factor gives its own zero. The factor $3x+2$ is 0 when $3x=-2$, which is $x=-\\frac{2}{3}$.",
+        "A zero of $f$ is an input where $f(x)=0$. A product is 0 only when at least one factor is 0, so the zeros of the product are the zeros of its factors. The factor $3x+2$ is 0 when $3x=-2$, which is $x=-\\frac{2}{3}$.",
         "A cubic written as four terms can often be split into two pairs. If each pair leaves the same binomial, that binomial is a common factor and the cubic becomes a product.",
       ],
     ],
@@ -475,7 +475,7 @@ export const regentsGapLessons: Lesson[] = [
     formal: [
       "Zero-product property",
       [
-        "If $ab=0$ then $a=0$ or $b=0$. The zero of $ax+b$ with $a\\neq0$ is $-\\frac{b}{a}$. In $x^{2}(x+a)-n^{2}(x+a)=(x+a)(x-n)(x+n)$ the zeros are $-a$, $n$ and $-n$.",
+        "If $ab=0$ then $a=0$ or $b=0$. The zero of $ax+b$ with $a\\neq0$ is $-\\frac{b}{a}$. In $x^{2}(x+a)-n^{2}(x+a)$, both parts share the factor $(x+a)$, so it equals $(x+a)(x^{2}-n^{2})$. The difference of squares $x^{2}-n^{2}$ factors as $(x-n)(x+n)$, so the zeros are $-a$, $n$ and $-n$.",
       ],
     ],
     pitfalls: [
