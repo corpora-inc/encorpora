@@ -1,14 +1,18 @@
-import type { MethodTerm } from "../glossary/types";
+import type { GlossarySenses, MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 const entry =
-  "Type a whole number, a negative number, a fraction such as 7/2, or a decimal such as 3.5; equivalent exact forms are accepted. The SAT field holds 5 characters, or 6 for a negative answer. A fraction such as 2/3 is correct as typed. If you use a decimal for an answer that does not end, fill the space by truncating or rounding: 2/3 is .6666, .6667, 0.666 or 0.667, but not .67 or 0.66. Never type a mixed number such as 3 1/2; type 7/2 or 3.5.";
+  "To enter the answer, type a whole number (one of 0, 1, 2, 3 and so on), a negative number (a number below 0), a fraction such as 7/2, or a decimal such as 3.5. Any way of writing the exact same value is accepted. The SAT answer box holds 5 characters, or 6 for a negative answer. A fraction such as 2/3 is correct as typed. A decimal that never ends must fill the box: cut it off or round it. So 2/3 can be .6666, .6667, 0.666 or 0.667, but not .67 or 0.66. Never type a mixed number (a whole number with a fraction) such as 3 1/2. Type 7/2 or 3.5.";
 
 type Entry = {
   id: string;
   title: string;
+  /** The practice-screen task, at most 140 characters; defaults to the summary. */
+  goal?: string;
   summary: string;
+  senses?: GlossarySenses;
+  noLink?: string[];
   objectives: [string, string];
   intuition: string;
   terms: MethodTerm[];
@@ -26,90 +30,112 @@ type Entry = {
 const entries: Entry[] = [
   {
     id: "sat-entry-system-solve",
+    senses: {
+      opposite: "opposite-number",
+      opposites: "opposite-number",
+      parts: "part",
+      "right side": "side-of-equation",
+      sides: "side-of-equation",
+      term: "term-expression",
+      terms: "term-expression",
+    },
+    noLink: ["leaves"],
     title: "Enter a variable from a 2×2 system",
+    goal: "Make one letter cancel by giving it opposite numbers in front, solve what is left, and type the value, even a fraction.",
     summary:
-      "Cancel one variable by making its coefficients opposite, solve what remains, and type the value, even a fraction.",
+      "A system of equations is two equations that must both be true for the same $x$ and $y$. To find $x$, make the $y$ parts cancel out (to find $y$, cancel the $x$ parts instead). Multiply one or both equations so the numbers in front of $y$ are opposites (a pair like $3$ and $-3$ that adds to 0). Then add the equations. These systems have exactly one answer pair, so only $y$ cancels and $x$ is left. Solve for it. The answer may be a fraction.",
     objectives: [
-      "Eliminate one variable from two linear equations by multiplying and adding.",
+      "Remove one variable (letter) from two equations by multiplying and adding them.",
       "Enter the exact value of $x$ or $y$, including a negative or fractional value.",
     ],
     intuition:
-      "A system of equations is two equations that must both be true for the same $x$ and $y$. If the $y$ terms are opposites, adding the equations removes $y$ and leaves one equation in $x$. A coefficient is the number multiplying a variable.",
+      "A system of equations is two equations that must both be true for the same $x$ and $y$. A coefficient is the number multiplying a variable: in $3y$, the coefficient is 3. Opposites are numbers like 3 and $-3$ that add to 0. If the $y$ coefficients are opposites, adding the two equations removes $y$. These systems have exactly one answer pair, so one equation with only $x$ is left.",
     terms: ["system-of-equations", "elimination"],
     method: [
-      "Choose the variable that is not requested. Multiply one or both equations by nonzero numbers so that variable has opposite coefficients.",
-      "Add the equations. Solve the single equation that remains for the requested variable.",
-      "Check by substituting into the other equation, then enter the value.",
+      "Pick the letter the question does not ask for. Multiply one or both equations by a number (not 0) so the coefficients of that letter are opposites: numbers like 3 and $-3$ that add to 0.",
+      "Add the equations, so that letter cancels. Solve the equation that is left.",
+      "Check: find the other letter from one equation, then make sure both equations are true. Then enter the value.",
     ],
     watch:
-      "Multiply every term of an equation, including the constant on the right. A fraction is a valid answer; do not round it.",
+      "Multiply every term (each part joined by + or −) of an equation, including the number on the right side (the side after the equal sign). A fraction is a correct answer, so do not round it.",
     principle:
-      "Adding equal quantities to both sides of an equation keeps it true, so the sum of two true equations is true. Multiplying both sides of an equation by a nonzero number gives an equivalent equation. For $ax+by=c$ and $dx+ey=f$ with $ae-bd\\ne0$, the pair has exactly one solution.",
+      "Adding equal amounts to both sides of an equation keeps it true, so the sum of two true equations is true. Multiplying both sides of an equation by a number other than 0 gives an equation with the same solutions. For $ax+by=c$ and $dx+ey=f$ with $ae-bd\\ne0$ (not equal to 0), the pair has exactly one solution.",
     example: {
       prompt: "In the system $2x+3y=7$ and $4x-y=1$, what is the value of $x$?",
       steps: [
-        "To remove $y$, multiply the second equation by 3: $12x-3y=3$.",
-        "Add it to the first equation: $2x+3y+12x-3y=7+3$, so $14x=10$.",
-        "Divide by 14: $x=\\frac{10}{14}=\\frac57$.",
-        "Check: from $4x-y=1$, $y=\\frac{13}{7}$, and $2\\cdot\\frac57+3\\cdot\\frac{13}{7}=\\frac{49}{7}=7$.",
+        "The question asks for $x$, so remove $y$. Its coefficients are $3$ and $-1$. Multiply every term (each part joined by + or −) of the second equation by 3 to make them opposites: $12x-3y=3$.",
+        "Add this to the first equation. The $y$ parts cancel: $2x+3y+12x-3y=7+3$, so $14x=10$.",
+        "Divide both sides (the parts on each side of the equal sign) by 14 to get $x$ alone: $x=\\frac{10}{14}=\\frac57$.",
+        "Check: from $4x-y=1$, $y=4\\cdot\\frac57-1=\\frac{13}{7}$. Then $2\\cdot\\frac57+3\\cdot\\frac{13}{7}=\\frac{10}{7}+\\frac{39}{7}=\\frac{49}{7}=7$, as the first equation says. (The dot $\\cdot$ means times.)",
       ],
       answer: "$\\frac57$",
     },
     methodTitle: "Make one variable cancel",
     methodText: [
-      "Look at the coefficients of the variable you want to remove. If they are $3$ and $-1$, multiplying the second equation by 3 makes them $3$ and $-3$, which cancel when added.",
-      "After the sum, one equation in one variable remains. When the coefficient does not divide the right side evenly, the answer is a fraction. " +
+      "Look at the coefficients of the letter you want to remove. If they are $3$ and $-1$, multiply the second equation by 3. That makes them $3$ and $-3$, which add to 0.",
+      "After adding, one equation with one letter is left. If the coefficient does not divide the right side evenly, the answer is a fraction. " +
         entry,
     ],
     formal:
-      "If $ae-bd\\ne0$, multiplying $ax+by=c$ by $e$ and $dx+ey=f$ by $b$ and subtracting gives $(ae-bd)x=ce-bf$, so $x=\\frac{ce-bf}{ae-bd}$. In the same way $y=\\frac{af-cd}{ae-bd}$. A fractional value occurs when $ae-bd$ does not divide the numerator.",
+      "Here $a$, $b$, $c$, $d$, $e$ and $f$ stand for given numbers. Suppose $ae-bd\\ne0$. Multiply $ax+by=c$ by $e$ and $dx+ey=f$ by $b$, then subtract. That gives $(ae-bd)x=ce-bf$, so $x=\\frac{ce-bf}{ae-bd}$. In the same way, $y=\\frac{af-cd}{ae-bd}$. The answer is a fraction when $ae-bd$ does not divide the top number evenly.",
     pitfalls: [
-      "Multiply the right-hand constant by the same number as the rest of the equation.",
+      "Multiply the number on the right side by the same number as the rest of the equation.",
       "Watch signs when subtracting: subtracting $-3y$ adds $3y$.",
     ],
     parentGuide:
-      "Ask your learner which variable they are removing first and why the two coefficients must be opposites.",
+      "Ask your learner which letter they are removing first, and why its two coefficients must be opposites.",
   },
   {
     id: "sat-entry-system-expression",
+    senses: {
+      part: "part",
+      difference: "difference-subtract",
+      differences: "difference-subtract",
+      "left side": "side-of-equation",
+      "right side": "side-of-equation",
+      side: "side-of-equation",
+      sides: "side-of-equation",
+    },
+    noLink: ["multiple", "multiples"],
     title: "Enter the value of an expression from a system",
+    goal: "Find the value of an expression such as $4x+6y$ by adding, subtracting or multiplying two equations, without finding $x$ and $y$.",
     summary:
-      "The question may ask for $4x+6y$, not $x$ and $y$. Add, subtract or scale the equations so the left side becomes that expression.",
+      "Sometimes a question gives two equations and asks for an expression, such as $4x+6y$, not for $x$ or $y$. An expression is numbers and letters joined by operations. You can add two true equations together. Add the left sides (the parts before the equal signs), and add the right sides (the parts after them). If the new left side is exactly the expression, the new right side is its value.",
     objectives: [
-      "Find a combination of two equations whose left side is a requested expression.",
-      "Apply the same combination to the right sides, including a half or negative multiple.",
+      "Find a way to combine two equations so the left side becomes the expression asked for.",
+      "Do the same thing to the right sides, including taking half or a negative multiple.",
     ],
     intuition:
-      "An equation stays true when you add the same quantity to both sides, and a pair of true equations can be added side by side. If the sum of the left sides is exactly the expression asked for, the sum of the right sides is its value, and you never need $x$ or $y$ separately.",
+      "An equation says two amounts are equal. If $A=B$ and $C=D$, then $A+C=B+D$: you can add two true equations, left side (the part before the equal sign) to left side and right side to right side. A coefficient is the number multiplying a letter, such as 3 in $3x$. If the left sides add up to exactly the expression asked for, the right sides add up to its value. You never need $x$ or $y$ alone.",
     terms: ["expression", "linear-combination"],
     method: [
-      "Compare the coefficients of $x$ and $y$ in the requested expression with those in the equations.",
-      "Find multipliers (often 1, $-1$, or $\\frac12$) so the left sides combine into the expression.",
-      "Apply the same multipliers to the right sides and add. " + entry,
+      "Compare the coefficients of $x$ and $y$ in the expression asked for with those in the equations.",
+      "Choose what to multiply each equation by (often 1, $-1$, or $\\frac12$) so the left sides combine into that expression.",
+      "Do the same to the right sides and add. " + entry,
     ],
     watch:
-      "If the sum of the left sides is twice the expression, halve the right side too; the answer may be a fraction.",
+      "If the left sides add to twice the expression, halve the right side too. The answer may be a fraction.",
     principle:
-      "If $L_1=R_1$ and $L_2=R_2$, then $\\lambda L_1+\\mu L_2=\\lambda R_1+\\mu R_2$ for any numbers $\\lambda$ and $\\mu$. When the left side equals the target expression, the right side is its value.",
+      "If $L_1=R_1$ and $L_2=R_2$, then $mL_1+nL_2=mR_1+nR_2$ for any numbers $m$ and $n$. Here $L_1$ and $R_1$ (read “$L$ one” and “$R$ one”) are the two sides of the first equation. When the left side equals the expression asked for, the right side is its value.",
     example: {
       prompt: "If $3x+y=7$ and $x+5y=9$, what is the value of $4x+6y$?",
       steps: [
-        "The coefficients $3+1=4$ of $x$ and $1+5=6$ of $y$ match $4x+6y$, so add the equations.",
-        "Left sides: $(3x+y)+(x+5y)=4x+6y$.",
-        "Right sides: $7+9=16$, so $4x+6y=16$.",
+        "Look at the coefficients. For $x$: $3+1=4$. For $y$: $1+5=6$. They match $4x+6y$, so simply add the two equations.",
+        "Add the left sides: $(3x+y)+(x+5y)=4x+6y$.",
+        "Add the right sides the same way: $7+9=16$. So $4x+6y=16$.",
       ],
       answer: "$16$",
     },
     methodTitle: "Combine the equations directly",
     methodText: [
-      "Write the coefficients of $x$ and $y$ of the target, then ask which multiples of the equations produce them. Adding gives the sum of the coefficients; subtracting gives their difference.",
-      "If the combined left side is twice the target, divide the right side by 2. " +
+      "Write down the coefficients of $x$ and $y$ in the expression asked for. Then ask what multiples of the two equations give those numbers. Adding equations adds their coefficients. Subtracting gives the differences.",
+      "If the combined left side is twice the expression, divide the right side by 2. " +
         entry,
     ],
     formal:
-      "Suppose the target is $px+qy$. Look for $\\lambda,\\mu$ with $\\lambda a+\\mu d=p$ and $\\lambda b+\\mu e=q$. Then the target equals $\\lambda c+\\mu f$. A solution exists whenever the system has a unique solution, but this method avoids computing it.",
+      "Say the equations are $ax+by=c$ and $dx+ey=f$, and the expression is $px+qy$. Look for numbers $m$ and $n$ with $ma+nd=p$ and $mb+ne=q$. Then the expression equals $mc+nf$. Such numbers exist whenever the system has exactly one solution, but this way you never have to find it.",
     pitfalls: [
-      "Apply the multiplier to both sides of an equation before combining.",
+      "Multiply both sides of an equation by the same number before combining.",
       "When subtracting, subtract the right sides in the same order as the left sides.",
     ],
     parentGuide:
@@ -117,15 +143,31 @@ const entries: Entry[] = [
   },
   {
     id: "sat-entry-quadratic-solution",
+    senses: {
+      "left side": "side-of-equation",
+      "more than": "more-than",
+      opposite: "opposite-number",
+      part: "part",
+      parts: "part",
+      product: "product-multiply",
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      square: "square-number",
+      squared: "square-number",
+      term: "term-expression",
+      terms: "term-expression",
+    },
+    noLink: ["factor", "factors"],
     title: "Enter a quadratic solution",
+    goal: "Factor the quadratic, set each factor to 0, then choose the solution described: the greater, the positive or the only one.",
     summary:
-      "Factor the quadratic, set each factor to 0, then choose the solution described: the greater, the positive or the only one.",
+      "Squared means times itself: in $2x^2+5x-3=0$, $x^2$ is $x$ times $x$. An equation with an $x^2$ part and no higher power is called a quadratic. If two numbers multiply to make 0, one or both of them must be 0. So write the quadratic as two parts multiplied together, set each part equal to 0, and solve. Then pick the solution the question asks for.",
     objectives: [
-      "Solve a quadratic by factoring, including a leading coefficient other than 1 and a perfect square.",
-      "Select and enter the requested solution as an integer or fraction.",
+      "Solve a quadratic by factoring (writing it as a product), including one with a number other than 1 in front of $x^2$, and a perfect square.",
+      "Choose the solution the question asks for and enter it as a whole number or a fraction.",
     ],
     intuition:
-      "A quadratic equation has $x^2$ as its highest power. If two numbers multiply to 0, one of them is 0. So once the equation is $0=(\\text{factor})(\\text{factor})$, each factor can be set to 0 to find a solution.",
+      "Squared means times itself: $x^2$ is $x$ times $x$. A quadratic equation has an $x^2$ part and no higher power. Factors are the parts being multiplied: in $(2x-1)(x+3)$, the factors are $2x-1$ and $x+3$. If two numbers multiply to 0, one of them is 0. So once the equation reads (factor)(factor) $=0$, set each factor to 0 to find the solutions.",
     terms: [
       "solution",
       [
@@ -134,127 +176,146 @@ const entries: Entry[] = [
       ],
     ],
     method: [
-      "Move every term to one side so the equation equals 0.",
-      "Factor the quadratic into two binomials.",
+      "Move every term (each part joined by + or −) to one side (one side of the equal sign), so the equation equals 0.",
+      "Factor the quadratic into two parts multiplied together, such as $(2x-1)(x+3)$.",
       "Set each factor equal to 0, solve, and pick the solution the question asks for. " +
         entry,
     ],
     watch:
-      "A repeated factor gives one solution, not two. Read the question: the greater solution of a negative pair is the one closer to 0.",
+      "A factor that repeats gives one solution, not two. Read the question: of two negative solutions, the greater one is closer to 0.",
     principle:
-      "Zero-product property: if $uv=0$ then $u=0$ or $v=0$. For $mx+n$ times $m'x+n'$ the solutions are $-\\frac nm$ and $-\\frac{n'}{m'}$.",
+      "If two numbers multiply to 0, one or both of them is 0: if $uv=0$ then $u=0$ or $v=0$. This is called the zero-product property. For $(mx+n)(kx+j)=0$, with $m$ and $k$ not 0, the solutions are $-\\frac nm$ and $-\\frac jk$.",
     example: {
       prompt: "What is the positive solution of $2x^2+5x-3=0$?",
       steps: [
-        "Factor: $2x^2+5x-3=(2x-1)(x+3)$, because $2x\\cdot x=2x^2$, $(-1)(3)=-3$, and $2x\\cdot3+(-1)x=5x$.",
-        "Set each factor to 0: $2x-1=0$ gives $x=\\frac12$; $x+3=0$ gives $x=-3$.",
-        "The positive solution is $\\frac12$.",
+        "Factor: $2x^2+5x-3=(2x-1)(x+3)$. Check by multiplying back: $2x\\cdot x=2x^2$, $(-1)(3)=-3$, and $2x\\cdot3+(-1)x=5x$. (The dot $\\cdot$ means times.)",
+        "The product (the answer when you multiply) is 0, so one factor is 0. $2x-1=0$ gives $x=\\frac12$. $x+3=0$ gives $x=-3$.",
+        "The question asks for the positive solution, which is $\\frac12$.",
       ],
       answer: "$\\frac12$",
     },
     methodTitle: "Factor, then read off the solution",
     methodText: [
-      "For $x^2+bx+c$ look for two numbers with product $c$ and sum $b$. For a leading coefficient above 1, try pairs of binomials until the middle term matches.",
+      "For $x^2+bx+c$, look for two numbers that multiply to $c$ and add to $b$. When the number in front of $x^2$ is more than 1, try pairs of factors until the middle term (the $x$ part) matches.",
       "Then compare the two solutions with the wording: greater, positive, or only. " +
         entry,
     ],
     formal:
-      "A quadratic $ax^2+bx+c$ with real solutions $r_1,r_2$ equals $a(x-r_1)(x-r_2)$. It has exactly one real solution when $b^2-4ac=0$, in which case it is $a(x-r)^2$ and $r=-\\frac{b}{2a}$.",
+      "A quadratic $ax^2+bx+c$, with $a\\ne0$, whose real-number solutions are $r_1$ and $r_2$ can be written $a(x-r_1)(x-r_2)$. It has exactly one real solution when $b^2-4ac=0$. Then it is $a(x-r)^2$, with $r=-\\frac{b}{2a}$.",
     pitfalls: [
-      "Set the equation equal to 0 before factoring.",
-      "Check the sign of each factor's solution: $x+3=0$ gives $-3$.",
+      "Make the equation equal 0 before factoring.",
+      "Check the sign of each solution: $x+3=0$ gives $-3$.",
     ],
     parentGuide:
       "Ask your learner to multiply the factors back together to check the middle term.",
   },
   {
     id: "sat-entry-root-relations",
+    senses: {
+      "left side": "side-of-equation",
+      part: "part",
+      parts: "part",
+      product: "product-multiply",
+      sides: "side-of-equation",
+      terms: "term-expression",
+    },
     title: "Enter a sum or product of quadratic solutions",
+    goal: "Find the sum or product of a quadratic's two solutions straight from its numbers, without solving it.",
     summary:
-      "The sum and product of a quadratic's solutions come straight from its coefficients, so you can answer without solving.",
+      "A quadratic equation has an $x^2$ part ($x$ times $x$) and no higher power, like $3x^2-8x+2=0$. A solution is a value of $x$ that makes the equation true. When it has two, call them $p$ and $q$. Their sum $p+q$ and their product (the result of multiplying), $pq$, can be read straight from the numbers in the equation. So some questions can be answered without finding $p$ and $q$ at all.",
     objectives: [
       "Use $p+q=-\\frac ba$ and $pq=\\frac ca$ for the solutions of $ax^2+bx+c=0$.",
-      "Rewrite $\\frac1p+\\frac1q$ or $p^2+q^2$ in terms of $p+q$ and $pq$.",
+      "Rewrite $\\frac1p+\\frac1q$ or $p^2+q^2$ using only $p+q$ and $pq$.",
     ],
     intuition:
-      "If $p$ and $q$ solve a quadratic with leading coefficient $a$, the quadratic equals $a(x-p)(x-q)$. Multiplying out shows that the coefficient of $x$ holds the sum $p+q$ and the constant holds the product $pq$, so you can read them without finding $p$ and $q$.",
+      "In $ax^2+bx+c=0$, the coefficients $a$, $b$ and $c$ are the numbers in the equation: $a$ multiplies $x^2$, $b$ multiplies $x$, and $c$ stands alone. Each term, a part joined to the rest by + or −, has a coefficient. If $p$ and $q$ are the solutions, the left side (the part before the equal sign) equals $a(x-p)(x-q)$. Multiplying that out gives $ax^2-a(p+q)x+apq$. So $b=-a(p+q)$ and $c=apq$. Divide by $a$ and fix the sign: the sum is $p+q=-\\frac ba$, and the product (the result of multiplying) is $pq=\\frac ca$.",
     terms: ["coefficient"],
     method: [
-      "Identify $a$, $b$ and $c$ in $ax^2+bx+c=0$.",
-      "Compute $p+q=-\\frac ba$ and $pq=\\frac ca$.",
-      "Rewrite the requested quantity using them: $\\frac1p+\\frac1q=\\frac{p+q}{pq}$ and $p^2+q^2=(p+q)^2-2pq$. " +
+      "Find $a$, $b$ and $c$ in $ax^2+bx+c=0$.",
+      "Work out $p+q=-\\frac ba$ and $pq=\\frac ca$.",
+      "Rewrite the quantity asked for using them: $\\frac1p+\\frac1q=\\frac{p+q}{pq}$ (when neither solution is 0) and $p^2+q^2=(p+q)^2-2pq$. " +
         entry,
     ],
     watch:
-      "The sum is $-\\frac ba$ with a minus sign, and both formulas divide by $a$ when $a\\ne1$.",
+      "The sum is $-\\frac ba$, with a minus sign. When $a$ is not 1, both formulas divide by $a$.",
     principle:
-      "If $ax^2+bx+c=a(x-p)(x-q)$ then $b=-a(p+q)$ and $c=a(pq)$. These hold for any quadratic with solutions $p$ and $q$ (Vieta's formulas).",
+      "If $ax^2+bx+c=a(x-p)(x-q)$, with $a\\ne0$, then $b=-a(p+q)$ and $c=apq$. So $p+q=-\\frac ba$ and $pq=\\frac ca$. These are called Vieta's formulas, and they hold for any quadratic with solutions $p$ and $q$.",
     example: {
       prompt:
         "The equation $3x^2-8x+2=0$ has two distinct real solutions, $p$ and $q$. What is the value of $\\frac1p+\\frac1q$?",
       steps: [
-        "Here $a=3$, $b=-8$ and $c=2$, so $p+q=\\frac83$ and $pq=\\frac23$.",
-        "Combine: $\\frac1p+\\frac1q=\\frac{p+q}{pq}=\\frac{8/3}{2/3}=4$.",
+        "Read the coefficients: $a=3$, $b=-8$ and $c=2$. So $p+q=-\\frac{-8}{3}=\\frac83$ and $pq=\\frac23$.",
+        "Add the fractions over a common bottom: $\\frac1p+\\frac1q=\\frac{q+p}{pq}$. Put in the values: $\\frac{8/3}{2/3}=\\frac83\\times\\frac32=4$.",
       ],
       answer: "$4$",
     },
     methodTitle: "Read the sum and product from the coefficients",
     methodText: [
-      "Expand $a(x-p)(x-q)=ax^2-a(p+q)x+a(pq)$ and match each coefficient with $ax^2+bx+c$.",
-      "Then express the question in terms of $p+q$ and $pq$ before substituting. " +
+      "Multiply out $a(x-p)(x-q)=ax^2-a(p+q)x+apq$. Match each part with $ax^2+bx+c$: the $x$ parts give $b=-a(p+q)$, and the plain numbers give $c=apq$.",
+      "Then write the question using only $p+q$ and $pq$ before putting in numbers. " +
         entry,
     ],
     formal:
-      "For real $p\\ne q$ with $ax^2+bx+c=a(x-p)(x-q)$, equating coefficients gives $p+q=-\\frac ba$ and $pq=\\frac ca$. Quantities symmetric in $p$ and $q$ can be written using these two numbers.",
+      "Let $p$ and $q$ be different real numbers (the numbers on the number line) with $ax^2+bx+c=a(x-p)(x-q)$ and $a\\ne0$. Matching coefficients gives $p+q=-\\frac ba$ and $pq=\\frac ca$. An expression is a mix of numbers, letters and operations. Any expression that stays the same when $p$ and $q$ swap places can be written using these two numbers.",
     pitfalls: [
       "Do not forget the minus sign in $-\\frac ba$.",
-      "Divide by $a$, not only by the constant.",
+      "Divide by $a$, not only by the plain number $c$.",
     ],
     parentGuide:
-      "Ask your learner to expand $(x-2)(x-5)$ and see where 7 and 10 appear.",
+      "Ask your learner to multiply out $(x-2)(x-5)$ and see where 7 and 10 appear.",
   },
   {
     id: "sat-entry-absolute-equation",
+    senses: {
+      part: "part",
+      "left side": "side-of-equation",
+      opposite: "opposite-number",
+      "right side": "side-of-equation",
+      sides: "side-of-equation",
+    },
+    noLink: ["mean", "square", "squaring", "whole"],
     title: "Enter an absolute-value solution",
+    goal: "Split an absolute-value equation into two cases, solve each, and reject any value that makes the right side negative.",
     summary:
-      "Split an absolute-value equation into two cases, solve each, and reject any value that makes the right side negative.",
+      "The absolute value of a number, written with bars like $|-5|$, is its distance from 0, so $|-5|=5$ and $|5|=5$. An absolute value is never negative. If $|u|=3$, then $u$ is $3$ or $-3$. So split the equation into two cases, solve each, and check each answer in the original equation.",
     objectives: [
-      "Split $|u|=v$ into $u=v$ and $u=-v$ and solve both.",
-      "Reject an extraneous candidate and enter the remaining solution or a sum.",
+      "Split $|u|=v$ into $u=v$ and $u=-v$, and solve both.",
+      "Throw out a candidate that does not really work, and enter the remaining solution or a sum.",
     ],
     intuition:
-      "The absolute value $|u|$ is the distance of $u$ from 0, so it is never negative. If $|u|=v$, then $u$ is either $v$ or $-v$. When $v$ itself contains $x$, a candidate may make $v$ negative; that candidate cannot be a solution.",
+      "The absolute value $|u|$ is the distance of $u$ from 0 on the number line, so it is never negative. If $|u|=v$, then $u$ is either $v$ or $-v$. When $v$ itself contains $x$, a candidate (a possible answer) may make $v$ negative. That candidate cannot be a solution. A candidate that fails this check is called extraneous.",
     terms: ["absolute-value", "extraneous-solution"],
     method: [
       "Write the two cases: the inside equals $v$, and the inside equals $-v$.",
       "Solve each case.",
-      "Substitute each candidate into the original equation; keep only those that work. " +
+      "Put each candidate into the original equation. Keep only those that make it true. " +
         entry,
     ],
     watch:
-      "If the right side contains $x$, test it: a negative right side cannot equal an absolute value.",
+      "If the right side (the part after the equal sign) contains $x$, test it. A negative right side can never equal an absolute value.",
     principle:
-      "For a real number $v$, $|u|=v$ requires $v\\ge0$ and is equivalent to $u=v$ or $u=-v$. If $v<0$ there is no solution.",
+      "For a real number $v$, $|u|=v$ needs $v\\ge0$ ($v$ is 0 or more). Then it means $u=v$ or $u=-v$. If $v<0$, there is no solution.",
     example: {
       prompt: "What is the solution of $|x-4|=2x+2$?",
       steps: [
-        "Case 1: $x-4=2x+2$ gives $x=-6$. Case 2: $-(x-4)=2x+2$ gives $4-x=2x+2$, so $x=\\frac23$.",
-        "Test $x=-6$: the right side is $2(-6)+2=-10$, which is negative, so reject it.",
-        "Test $x=\\frac23$: $|\\frac23-4|=\\frac{10}{3}$ and $2\\cdot\\frac23+2=\\frac{10}{3}$. It works.",
+        "Case 1, the inside equals the right side: $x-4=2x+2$. Subtract $x$ and 2 from both sides: $x=-6$.",
+        "Case 2, the inside equals the opposite (the same number with the other sign) of the right side: $-(x-4)=2x+2$, which is $4-x=2x+2$. Add $x$ and subtract 2: $2=3x$, so $x=\\frac23$.",
+        "Test $x=-6$: the right side is $2(-6)+2=-10$. That is negative, and an absolute value cannot be negative, so reject it.",
+        "Test $x=\\frac23$: the left side is $|\\frac23-4|=|-\\frac{10}{3}|=\\frac{10}{3}$, and the right side is $2\\cdot\\frac23+2=\\frac{10}{3}$ (the dot means times). They match, so it works.",
       ],
       answer: "$\\frac23$",
     },
     methodTitle: "Two cases, then check",
     methodText: [
-      "Squaring is not needed. The two cases cover both signs of the inside expression.",
-      "Always finish by substituting. A sum of solutions counts only the values that pass. " +
+      "The two cases cover both signs of the inside: positive or zero, and negative. You do not need to multiply anything by itself.",
+      "Always finish by putting each answer back in. A sum of solutions counts only the values that pass. " +
         entry,
     ],
     formal:
-      "For real $a\\ne0$, $|ax+b|=k$ with $k>0$ has the two solutions $\\frac{k-b}{a}$ and $\\frac{-k-b}{a}$, whose sum is $-\\frac{2b}{a}$. For $|u|=|w|$ the cases are $u=w$ and $u=-w$.",
+      "For real numbers (the numbers on the number line) with $a\\ne0$ and $k>0$, $|ax+b|=k$ has two solutions, $\\frac{k-b}{a}$ and $\\frac{-k-b}{a}$. Their sum is $-\\frac{2b}{a}$. For $|u|=|w|$, the two cases are $u=w$ and $u=-w$.",
     pitfalls: [
-      "Negate the whole inside expression in the second case.",
-      "Do not skip the substitution check when $x$ appears on the right.",
+      "In the second case, take the opposite of the whole inside expression.",
+      "Do not skip the check when $x$ appears on the right side.",
     ],
     parentGuide:
       "Ask your learner to describe $|x-4|=3$ as a distance on a number line.",
@@ -448,46 +509,55 @@ const entries: Entry[] = [
   },
   {
     id: "sat-entry-rate-numeric",
+    senses: {
+      change: "change",
+      difference: "difference-subtract",
+      part: "part",
+      unit: "unit",
+    },
+    noLink: ["average", "balance", "net", "whole"],
     title: "Enter a combined-rate or mixture value",
+    goal: "Add rates (jobs per hour), not times, subtract a draining rate, or balance the amount of a substance before and after mixing.",
     summary:
-      "Add rates (job per hour) rather than times, subtract a draining rate, or balance the amount of acid before and after mixing.",
+      "A rate tells how much gets done in one unit of time, such as $\\frac14$ of a job per hour. When two machines work together, add their rates, not their times. A drain works against a fill, so subtract its rate. In a mixture, the amount of a substance, such as acid, is the same before and after mixing.",
     objectives: [
-      "Combine, subtract or sequence constant rates exactly.",
+      "Combine, subtract or take turns with steady rates, exactly.",
       "Write a mixture balance and solve it for the unknown amount.",
     ],
     intuition:
-      "A rate says how much happens in one unit of time. If one machine does $\\frac14$ of a job per hour and another does $\\frac16$, together they do $\\frac14+\\frac16$ of the job per hour. The time is 1 job divided by that rate.",
+      "A rate says how much happens in one unit of time. A machine that finishes a job in 4 hours does $\\frac14$ of the job each hour. If a second machine does $\\frac16$ of the job each hour, together they do $\\frac14+\\frac16$ of the job each hour. The time for 1 whole job is 1 divided by that rate. Concentration is the part of a mixture that is one substance, such as 20% acid.",
     terms: ["rate", "concentration"],
     method: [
-      "Write each rate as a fraction of the job per time unit.",
-      "Add rates that work together and subtract a rate that works against; for a mixture, set the substance before mixing equal to the substance after.",
-      "Divide the total job by the rate, or solve the balance equation. " +
+      "Write each rate as a fraction of the job per unit of time. A job done in 4 hours is $\\frac14$ of the job per hour.",
+      "Add rates that work together, and subtract a rate that works against them. For a mixture, set the substance before mixing equal to the substance after. If the machines work one after another, find the time for each part and add the times.",
+      "Divide the whole job by the combined rate, or solve the balance equation. " +
         entry,
     ],
-    watch: "Add rates, not times. A drain subtracts its rate.",
+    watch:
+      "When machines work at the same time, add their rates, not their times. A drain subtracts its rate. When they work one after another, add the time for each part.",
     principle:
-      "If work $W$ is done at rate $r$, time is $\\frac Wr$. Constant rates working together add. In a mixture, amount of substance = volume $\\times$ concentration, and it is conserved.",
+      "If an amount of work $W$ is done at a rate $r$, the time is $\\frac Wr$. Steady rates working together add. In a mixture, amount of substance = volume $\\times$ concentration (a percent by volume), and the total amount of substance stays the same when mixtures are combined.",
     example: {
       prompt:
         "Working alone, one machine finishes a job in 4 hours and a second machine finishes the same job in 6 hours. Working together at these constant rates, how many hours do they need to finish the job?",
       steps: [
-        "The rates are $\\frac14$ and $\\frac16$ of the job per hour.",
-        "Combined rate: $\\frac14+\\frac16=\\frac{5}{12}$ of the job per hour.",
-        "Time: $1\\div\\frac5{12}=\\frac{12}{5}=2.4$ hours.",
+        "Turn each time into a rate. The first machine does $\\frac14$ of the job per hour, and the second does $\\frac16$ of the job per hour.",
+        "Working together, their rates add. Use 12 as a common bottom: $\\frac14+\\frac16=\\frac3{12}+\\frac2{12}=\\frac{5}{12}$ of the job per hour.",
+        "Time = whole job ÷ rate: $1\\div\\frac5{12}=1\\times\\frac{12}{5}=\\frac{12}{5}=2.4$ hours. That is less than 4 hours, as it should be.",
       ],
       answer: "$\\frac{12}{5}$",
     },
     methodTitle: "Work in rates",
     methodText: [
-      "Convert each time to a rate before combining anything. The combined time is shorter than either machine alone.",
-      "For a mixture, write one equation for the substance: old amount plus added amount equals the new total amount. " +
+      "Change each time into a rate before combining anything. The time together is shorter than either machine's time alone.",
+      "For a mixture, write one equation for the substance: old amount plus added amount equals the new total amount. Each amount is the volume (how much liquid there is) times the concentration, with the percent written as a decimal (20% is 0.2). " +
         entry,
     ],
     formal:
-      "If two agents complete a job in $a$ and $b$ time units, together they need $\\frac{ab}{a+b}$. With a drain, the net time is $\\frac{ab}{b-a}$ when $b>a$.",
+      "Suppose two workers finish a job alone in $a$ and $b$ hours. Their rates are $\\frac1a$ and $\\frac1b$, so together they need $1\\div(\\frac1a+\\frac1b)=\\frac{ab}{a+b}$ hours. If one fills in $a$ hours while a drain empties in $b$ hours, with $b>a$, the net time is $\\frac{ab}{b-a}$ hours.",
     pitfalls: [
       "Do not average the times.",
-      "Convert percentages to decimals in a mixture equation.",
+      "In a mixture equation, write percents as decimals.",
     ],
     parentGuide:
       "Ask your learner whether two workers together should take longer or shorter than the faster worker alone.",
@@ -538,43 +608,50 @@ const entries: Entry[] = [
   },
   {
     id: "sat-entry-inequality-integer",
+    senses: {
+      part: "part",
+      boundary: "boundary",
+      side: "side-of-equation",
+      sides: "side-of-equation",
+    },
+    noLink: ["leaves", "range", "whole"],
     title: "Enter an integer satisfying an inequality",
+    goal: "Solve the inequality for $x$, then decide which integers are inside it, watching strict signs and negative numbers in front of $x$.",
     summary:
-      "Solve the inequality for $x$, then decide which integers are inside it, paying attention to strict signs and negative coefficients.",
+      "An inequality compares two amounts that may not be equal. The sign $<$ means is less than, so $x<4$ is true for every number below 4. An integer is a whole number or its negative, such as $-2$, 0 or 3. To answer, solve the inequality the way you solve an equation. Then find the integers it allows.",
     objectives: [
-      "Solve a linear inequality and reverse its direction when dividing by a negative.",
+      "Solve an inequality, and flip its sign when multiplying or dividing by a negative number.",
       "Find the greatest or least integer solution, or count the positive integer solutions.",
     ],
     intuition:
-      "An inequality such as $x<4$ describes a whole range of numbers. The integers are the whole numbers in that range. If the sign is strict (<), the boundary is not included.",
+      "An inequality such as $x<4$ is true for a whole range of numbers. The sign $<$ means is less than, and $\\le$ means is less than or equal to. An integer is a whole number or its negative. The boundary is the number where the solutions stop, such as 4 in $x<4$. A strict sign ($<$ or $>$) leaves out the boundary itself, so 4 does not count for $x<4$. Dividing both sides (the two parts of the inequality) by a negative number (a number below 0) flips the sign.",
     terms: ["strict-inequality", "integer"],
     method: [
-      "Solve the inequality for $x$; reverse the sign when dividing by a negative number.",
-      "Mark the boundary: included for $\\le$ and $\\ge$, excluded for $<$ and $>$.",
-      "Pick the greatest or least integer in the range, or count them. " +
-        entry,
+      "Solve for $x$ as you would an equation. Flip the sign when you multiply or divide both sides by a negative number.",
+      "Look at the boundary number: it counts for $\\le$ and $\\ge$, but not for $<$ and $>$.",
+      "Pick the greatest or least integer in the range, or count them. Type the integer, with a minus sign if it is negative.",
     ],
     watch:
-      "If the boundary is an integer and the sign is strict, step one integer inside.",
+      "If the boundary is an integer and the sign is strict, step one integer inside. For $x<4$, the greatest integer is 3.",
     principle:
-      "Adding a number to both sides keeps an inequality's direction; multiplying or dividing both sides by a negative number reverses it.",
+      "Adding or subtracting the same number on both sides keeps an inequality's direction. So does multiplying or dividing both sides by a positive number. Multiplying or dividing both sides by a negative number reverses it.",
     example: {
       prompt: "What is the greatest integer $x$ that satisfies $4x-5<11$?",
       steps: [
-        "Add 5: $4x<16$. Divide by 4: $x<4$.",
-        "The boundary 4 is not allowed because the inequality is strict.",
-        "The greatest integer less than 4 is 3.",
+        "Add 5 to both sides to undo the $-5$: $4x<16$. Divide both sides by 4, a positive number, so the sign stays: $x<4$.",
+        "The sign is strict, so the boundary 4 is not allowed.",
+        "The greatest integer less than 4 is 3. Check: $4\\times3-5=7$, and 7 is less than 11.",
       ],
       answer: "$3$",
     },
     methodTitle: "Boundary, then integers",
     methodText: [
-      "After solving, picture the boundary on a number line and shade the side of the solutions.",
-      "A count of positive integers starts at 1; if the boundary is below 1, the count is 0. " +
-        entry,
+      "After solving, picture the boundary on a number line, a line with evenly spaced marks for numbers. Shade the side where the solutions are.",
+      "To count the positive integers up to the boundary, start at 1. If the boundary is less than 1, there are none, so the count is 0.",
+      "Type the integer or the count. Type a negative integer with its minus sign.",
     ],
     formal:
-      "For real boundary $b$: the greatest integer with $x\\le b$ is $\\lfloor b\\rfloor$; with $x<b$ it is $\\lceil b\\rceil-1$. The least integer with $x>b$ is $\\lfloor b\\rfloor+1$.",
+      "Let $b$ be a real-number boundary. The symbol $\\lfloor b\\rfloor$ means the greatest integer that is $b$ or less, and $\\lceil b\\rceil$ means the least integer that is $b$ or more. The greatest integer with $x\\le b$ is $\\lfloor b\\rfloor$. With $x<b$, it is $\\lceil b\\rceil-1$. The least integer with $x>b$ is $\\lfloor b\\rfloor+1$.",
     pitfalls: [
       "Reverse the inequality when dividing by a negative number.",
       "Round toward the inside of the solution range, not to the nearest integer.",
@@ -585,7 +662,9 @@ const entries: Entry[] = [
 ];
 
 const stripFormat = (e: Entry): ProblemMethod => ({
-  goal: e.summary,
+  goal: e.goal ?? e.summary,
+  ...(e.senses ? { senses: e.senses } : {}),
+  ...(e.noLink ? { noLink: e.noLink } : {}),
   intuition: e.intuition,
   terms: e.terms,
   method: e.method,
@@ -603,6 +682,8 @@ export const satNumericEntryLessons: Lesson[] = entries.map((e) => ({
   title: e.title,
   summary: e.summary,
   templateIds: [e.id],
+  ...(e.senses ? { senses: e.senses } : {}),
+  ...(e.noLink ? { noLink: e.noLink } : {}),
   objectives: [...e.objectives],
   sections: [
     {

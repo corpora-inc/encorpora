@@ -1,4 +1,5 @@
 import { gradeName, levelDetails } from "../../learning/level-check";
+import { useCurriculumDetails } from "../features/curriculum/CurriculumDetails";
 import styles from "./LevelReadout.module.css";
 
 /** A continuous working level beside its uncertainty, on the curriculum scale.
@@ -8,6 +9,8 @@ export function LevelReadout({
 }: {
   estimate: { level: number; sd: number };
 }) {
+  const { shown } = useCurriculumDetails();
+  if (!shown) return null;
   const { point, from, to } = levelDetails(estimate);
   const label =
     estimate.level < 0 ? "Before kindergarten" : gradeName(estimate.level);

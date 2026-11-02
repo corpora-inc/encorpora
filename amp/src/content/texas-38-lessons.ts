@@ -119,17 +119,18 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       "$0.4\\times0.6$ is $0.24$, not $2.4$ and not $0.024$. Tenths times tenths are hundredths, so the product has two decimal places.",
   },
   "number-set-venn": {
-    goal: "Place numbers in nested sets of natural, whole, integer and rational numbers and judge subset statements.",
+    goal: "Place numbers in rings of natural numbers, whole numbers, integers and rational numbers, and judge “every … is a …” statements.",
     intuition:
-      "Each set of numbers contains the one before it. Natural numbers sit inside whole numbers, whole numbers inside integers and integers inside rational numbers.",
+      "Natural numbers are the counting numbers 1, 2, 3, …. Whole numbers add 0. Integers add the negatives, such as $-3$. Rational numbers add every fraction of integers (with a bottom that is not 0), such as $\\frac{1}{2}$. Each set sits inside the next. Picture each set as a ring, a loop drawn around its numbers, with rings inside rings.",
+    noLink: ["whole", "sort"],
     terms: ["natural-number", "whole-number", "integer", "rational-number"],
     method: [
-      "Simplify first: $12/4$ equals $3$ and $-9/3$ equals $-3$.",
+      "Simplify first: $12/4$ equals $3$ and $-9/3$ equals $-3$. The slash / means divide.",
       "Start from the innermost set and move outward until the number fits. The number is in that set and every larger set.",
-      'A statement "every $X$ is a $Y$" is true only when the circle for $X$ lies inside the circle for $Y$.',
+      "A statement “every $X$ is a $Y$” is true only when the ring for $X$ lies inside the ring for $Y$.",
     ],
     watch:
-      "Zero is whole but not natural. Negative numbers are integers but not whole. A fraction that simplifies to an integer is an integer.",
+      "Zero is whole but not natural. Negative integers, like $-3$, are integers but not whole numbers. A fraction that simplifies to an integer is an integer.",
   },
   "reciprocal-division-choice": {
     goal: "Choose the multiplication that equals a division by a fraction or whole number, using the reciprocal.",
@@ -158,22 +159,26 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       "Multiplication does not always make a number bigger. A fraction can be greater than 1, as in $\\tfrac{8}{3}$, or equal to 1, as in $\\tfrac66$.",
   },
   "percent-grid-model": {
-    goal: "Read the percent, fraction or decimal for the shaded part of a 10 by 10 grid.",
+    goal: "Read the percent, fraction or decimal for the shaded part of a grid of 10 rows and 10 columns.",
     intuition:
-      "The grid has 100 equal squares, and percent means out of 100. The number of shaded squares is the percent.",
+      "Percent means “out of 100,” and % is read “percent.” Each 10 by 10 grid has 100 equal squares, so each square is 1% of the grid. The number of shaded squares is the percent. As a fraction it is that number over 100. A hundredth is one of 100 equal parts, so as a decimal it is that many hundredths.",
+    senses: { part: "part", whole: "whole", square: "square-shape" },
+    noLink: ["change"],
     terms: ["percent"],
     method: [
-      "Count shaded squares: full columns of 10, then the extra squares.",
+      "Count the shaded squares: full columns of 10 first, then the extra squares.",
       "The count is the percent. As a fraction it is the count over 100, which can be simplified.",
       "As a decimal it is the count in hundredths: 35 squares is $0.35$.",
     ],
     watch:
-      "Name the shaded part, not the unshaded part. The unshaded part is $100$ minus the percent.",
+      "Name the shaded part, not the unshaded part. The unshaded part is 100 minus the shaded count.",
   },
   "percent-forms-and-parts": {
-    goal: "Convert among fractions, decimals and percents, and find a whole or a percent from a part.",
+    goal: "Change among fractions, decimals and percents, and find a whole or a percent from a part.",
     intuition:
-      "A percent, a decimal and a fraction can name the same part of a whole. Percent is the version with 100 as the denominator.",
+      "Percent means “out of 100.” So a fraction, a decimal and a percent can all name the same amount: $\\frac{1}{4}$, 0.25 and 25%. The whole is the full amount, which is 100%. A part is a piece of it. If you know a part's amount and what percent of the whole it is, you can find 1% and then the whole.",
+    senses: { part: "part", whole: "whole", square: "square-shape" },
+    noLink: ["change"],
     terms: [
       [
         "part",
@@ -182,43 +187,52 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       ["whole", "As a percent, the whole is $100\\%$."],
     ],
     method: [
-      "Fraction to percent: divide the numerator by the denominator and multiply by 100. Decimal to percent: multiply by 100.",
+      "Fraction to percent: divide the top number by the bottom number, then multiply by 100. Decimal to percent: multiply by 100.",
       "Percent to fraction: write the percent over 100 and simplify.",
-      "To find a whole, divide the part by the percent to find $1\\%$, then multiply by 100. To find a percent, divide the part by the whole and multiply by 100.",
+      "To find a whole, divide the part by the percent to get 1%, then multiply by 100. To find a percent, divide the part by the whole and multiply by 100.",
     ],
     watch:
-      "Keep part and whole in the right order. The percent that 12 is of 48 is $12\\div48$, not $48\\div12$.",
+      "Keep part and whole in the right order. The percent that 12 is of 48 comes from $12\\div48 = 0.25$, which is 25%, not from $48\\div12$.",
   },
   "independent-dependent-roles": {
-    goal: "Name the independent and dependent quantity in a table of two related quantities.",
+    goal: "Name the independent quantity (the one you choose) and the dependent quantity (the one that follows) in a table.",
     intuition:
-      "In a relationship one quantity determines the other. The quantity you choose or set is independent; the quantity it determines is dependent.",
+      "When two quantities are linked, one often decides the other. The quantity you choose or set is called independent. The quantity that follows from it is called dependent, because it depends on the first. Tickets at 5 dollars each: you choose the number of tickets, and the cost follows.",
+    senses: { square: "square-shape", side: "side" },
     terms: ["independent-variable", "dependent-variable"],
     method: [
       "Ask: which quantity do I choose, and which one then follows from it?",
       "The one that follows is dependent. The one it follows from is independent.",
-      "On a graph, the independent quantity is on the horizontal axis.",
+      "On a graph, the independent quantity goes on the horizontal axis, the line across the bottom.",
     ],
     watch:
-      "The first column of a table is not always the independent one, and the larger numbers do not decide the roles. Ask which quantity determines the other.",
+      "The first column of a table is not always the independent one, and the larger numbers do not decide the roles. Ask which quantity depends on the other.",
   },
   "expression-or-equation": {
-    goal: "Tell an expression from an equation in numeric, algebraic and verbal forms.",
+    goal: "Tell an expression (a math phrase with no equals sign) from an equation (a math sentence with one) in numbers, letters or words.",
     intuition:
-      "An expression is a mathematical phrase that names a value. An equation is a sentence that says two quantities are equal, so it has an equal sign.",
+      "An expression is a math phrase that names an amount, like $3x + 5$, where $3x$ means 3 times $x$. An equation is a math sentence that says two amounts are equal, like $3x + 5 = 20$. So an equation has an equals sign, or in words “is” or “equals” joining two amounts.",
+    senses: { "more than": "more-than", product: "product-multiply" },
     terms: ["expression", "equation"],
     method: [
-      'Look for an equal sign, or for a word such as "is" or "equals" in a phrase.',
-      "With one, it is an equation, true or false. Without one, it is an expression.",
+      "Look for an equals sign, or for a word such as “is” or “equals” joining two amounts.",
+      "With one, it is an equation. With no equals sign and no comparison sign such as $<$, it is an expression.",
       "An equation can also be false, such as $2+2=5$; it is still an equation.",
     ],
     watch:
-      "An equation is not an equation because it has a variable. $3x+5$ has a variable and is an expression; $3+5=8$ has none and is an equation.",
+      "A letter does not make an equation. $3x+5$ has a letter and is an expression; $3+5=8$ has none and is an equation.",
   },
   "rational-area-volume-equation": {
-    goal: "Write the equation for the area or volume of a figure with fractional dimensions and one unknown measure.",
+    goal: "Write the equation for the area or volume of a shape whose measures are fractions, with one measure unknown.",
     intuition:
-      "An area or volume formula is an equation. Put the known measures and the total in the formula and leave the unknown measure as a letter.",
+      "A formula is a rule that gives an area or volume from a shape's measures, such as area of a rectangle = length × width. A formula is already an equation. Put the known measures and the given total into it, and keep a letter for the unknown measure. Fractions go in just like whole numbers (the numbers 0, 1, 2 and so on).",
+    senses: {
+      edge: "edge",
+      face: "face-solid",
+      factor: "factor-number",
+      side: "side",
+    },
+    noLink: ["base", "change", "rule"],
     terms: [
       [
         "length",
@@ -226,12 +240,12 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write the formula: triangle $\\tfrac12bh$, rectangle $lw$, rectangular prism $lwh$.",
+      "Write the formula: triangle area $\\tfrac12bh$ (half of base times height, the straight-up distance to the top), rectangle area $lw$ (length times width), box volume $lwh$.",
       "Replace the known measures and the area or volume with the given numbers.",
       "Leave the unknown as a letter. Do not change the operations to make the numbers easier.",
     ],
     watch:
-      "A triangle is half of a rectangle, so its equation keeps the $\\tfrac12$. Volume multiplies all three edges and surface area adds faces.",
+      "A triangle has half the area of a rectangle with the same base and height, so its equation keeps the $\\tfrac12$. A box's volume multiplies all three edge lengths; surface area adds the areas of the faces.",
   },
   "categorical-summary": {
     goal: "Find the mode, a relative frequency as a percent, and a category count from a percent bar.",
@@ -249,7 +263,12 @@ export const texas38Methods: Record<string, ProblemMethod> = {
   "check-register-balance": {
     goal: "Find a running balance or a missing amount in a check register with deposits, checks, transfers and fees.",
     intuition:
-      "A check register tracks an account. A deposit adds money and a check, a transfer out or a fee takes money away, so each balance is the one before plus or minus the entry.",
+      "A check register is a table that tracks a bank account in order. The balance is the money in the account right now. A deposit puts money in, so add it. A check, a transfer out or a fee takes money out, so subtract it. Each new balance is the one just above it, with the entry added or taken away.",
+    senses: {
+      balance: "balance-account",
+      difference: "difference-subtract",
+      change: "change",
+    },
     terms: ["balance-account", "deposit"],
     method: [
       "Start from the balance at the top.",
@@ -257,27 +276,31 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       "To find a missing amount, find the difference between the balance before and after the entry.",
     ],
     watch:
-      "Line up the cents and subtract payments, do not add them. Each row starts from the previous row's balance, not from the first balance.",
+      "Line up the decimal points, and subtract payments, do not add them. Each row starts from the balance just above it, not from the first balance.",
   },
   "lifetime-income-salary": {
-    goal: "Find total earnings over a career from a yearly or monthly pay and a number of years, and compare two salaries.",
+    goal: "Find total earnings over a career from a yearly or monthly pay and a number of years, or compare two salaries.",
     intuition:
-      "If the pay is the same every year, total earnings are the yearly pay times the number of years. A small difference in yearly pay becomes a large difference over a career.",
+      "A salary is the pay for one year of work, and a career is all the years a person works. If the pay is the same every year, total earnings are the yearly pay times the number of years. Monthly pay times 12 gives yearly pay. A small difference in yearly pay becomes a large difference over many years.",
+    senses: { difference: "difference-subtract" },
+    noLink: ["change", "period", "periods"],
     terms: [
       ["income", "A salary is a fixed amount of pay for a year of work."],
     ],
     method: [
-      "Find the number of years: retirement age minus starting age.",
+      "Find the number of years worked: ending age minus starting age.",
       "If the pay is monthly, multiply by 12 for the pay in one year.",
       "Multiply the yearly pay by the number of years. To compare, subtract the yearly pays first and multiply the difference.",
     ],
     watch:
-      "Use the years worked, not the retirement age. For monthly pay, change to yearly pay before multiplying by years.",
+      "Use the years worked, not the ending age. For monthly pay, change to yearly pay before multiplying by years.",
   },
   "pi-as-ratio": {
-    goal: "Describe $\\pi$ as the circumference divided by the diameter and compute it from a measured circle.",
+    goal: "Describe $\\pi$ as a circle's circumference divided by its diameter, and work it out from a measured circle.",
     intuition:
-      "Measure around any circle and across it through the center. The distance around is always a bit more than three times the distance across, and that number is $\\pi$.",
+      "The circumference is the distance around a circle. The center is the middle point. The diameter is the distance across through the center, twice the radius. For every circle, circumference divided by diameter is the same number, a little more than 3. That number is called $\\pi$ (pi), about 3.14.",
+    senses: { center: "center", "more than": "more-than" },
+    noLink: ["scales", "change"],
     terms: ["circumference", "diameter", "pi"],
     method: [
       "Find the diameter. If you are given the radius, double it.",
@@ -288,43 +311,55 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       "Dividing the circumference by the radius gives about $6.28$, which is $2\\pi$. The ratio $\\pi$ uses the diameter.",
   },
   "experimental-probability-predict": {
-    goal: "Find an experimental probability from trials, predict counts for more trials, and compare with expected counts.",
+    goal: "Find an experimental probability from trials, predict counts for more trials, and compare with the counts theory expects.",
     intuition:
-      "An experiment gives data. The share of trials in which an event happened is the experimental probability, and it helps predict what happens in more trials.",
+      "A trial is one try of an experiment, such as one spin. An event is the result you are counting, such as landing on blue. An experimental probability is the number of times it happened divided by the number of trials. Use it to predict: multiply it by a new number of trials. The theoretical probability is what the setup says should happen, such as $\\frac{1}{2}$ for heads on a fair coin.",
+    senses: { trial: "trial", event: "event" },
+    noLink: ["scale", "side"],
     terms: ["experimental-probability", "theoretical-probability"],
     method: [
-      "Experimental probability is successes divided by trials.",
-      "To predict, scale the observed count by the number of times as many trials.",
-      "To compare, multiply the theoretical probability by the trials and subtract it from the observed count.",
+      "Experimental probability is the number of times the event happened divided by the number of trials.",
+      "To predict, multiply the observed count by how many times as many trials there will be.",
+      "To compare, multiply the theoretical probability by the number of trials, then subtract that from the observed count.",
     ],
     watch:
-      "Few trials can be far from the true probability by chance. More trials usually give an experimental probability closer to it.",
+      "A few trials can be far from the true probability just by chance. More trials usually give an experimental probability closer to it.",
   },
   "cylinder-prism-surface-area": {
-    goal: "Find the lateral or total surface area of a cylinder in terms of $\\pi$, a missing height, or a triangular prism's surface area.",
+    goal: "Find the curved or total surface area of a cylinder using $\\pi$, a missing height, or a triangular prism's surface area.",
     intuition:
-      "Surface area is the area of all the faces. A cylinder unrolls into two circles and one rectangle; a triangular prism has two triangles and three rectangles.",
+      "Surface area is the total area of a solid's outside. A cylinder, a can shape, unrolls into two circles (its bases) and one rectangle (the curved part). For radius $r$, each circle has area $\\pi r^2$ ($\\pi$ times $r$ times $r$). The rectangle is as wide as the distance around, $2\\pi r$. A triangular prism has two triangles and three rectangles.",
+    senses: { base: "base-shape", face: "face-solid", solid: "solid-shape" },
+    noLink: ["side", "square", "terms", "parts", "part"],
     terms: ["lateral-area", "surface-area"],
     method: [
-      "Cylinder: the side unrolls to a rectangle $2\\pi r$ wide and $h$ tall, so it has area $2\\pi rh$. Each base has area $\\pi r^2$.",
-      "Triangular prism: add the two triangles to the three rectangles, each the length of one triangle side times the prism's length.",
-      "To find a missing height, subtract the other parts from the total and divide.",
+      "Cylinder: the curved part unrolls to a rectangle $2\\pi r$ wide and $h$ tall, so its area is $2\\pi rh$. Each base has area $\\pi r^2$.",
+      "Triangular prism: add the two triangles to the three rectangles. Each rectangle is one triangle side times the prism's length.",
+      "To find a missing height, subtract the two bases from the total, then divide by $2\\pi r$.",
     ],
     watch:
-      "A cylinder has two bases. The lateral area has none, and the rectangle's width is the circumference, not the radius.",
+      "A cylinder has two bases. The lateral area, the curved part only, has none, and the rectangle's width is the circumference, not the radius.",
   },
   "both-sides-situation-equation": {
     goal: "Write an equation or inequality for two situations that each have a starting amount and a rate.",
     intuition:
-      "Each situation is an expression: starting amount plus or minus the rate times the number of units. Setting them equal, or comparing them, gives a variable on both sides.",
+      "Each situation's total is an expression: its starting amount, plus or minus its rate times the variable. For 20 dollars to join and 5 dollars a visit, $v$ visits cost $20 + 5v$ ($5v$ means 5 times $v$). Setting two totals equal, or comparing them with $<$ (less than) or $>$ (greater than), puts the variable on both sides: to the left and to the right of the sign.",
+    senses: {
+      side: "side-of-equation",
+      unit: "unit",
+      increasing: "increasing",
+      decreasing: "decreasing",
+      "more than": "more-than",
+    },
+    noLink: ["changes"],
     terms: ["rate"],
     method: [
-      "Write each situation as starting amount, then plus (increasing) or minus (decreasing) rate times the variable.",
+      "Write each situation as its starting amount, then plus its rate times the variable if the amount is increasing (that is, getting larger). Subtract it if the amount is decreasing (that is, getting smaller).",
       "Join the two expressions with $=$ for equal, or with $<$ or $>$ for less than or more than.",
       "Keep each starting amount with its own rate. Do not combine fees and rates.",
     ],
     watch:
-      '"Less than" is $<$, which does not include equal. Put each rate with its own plan and subtract when the quantity is decreasing.',
+      "“Less than” is $<$, which does not include equal. Put each rate with its own plan, and subtract when the amount is decreasing.",
   },
 };
 
@@ -346,35 +381,35 @@ export const texas38Principles: Record<string, string> = {
   "decimal-area-model":
     "A square of side 1 has area 1. A rectangle $\\frac{a}{10}$ tall and $\\frac{b}{10}$ wide has area $\\frac{ab}{100}$. If the area $A$ and one side $d$ are known, the other side is $A\\div d$, since $d\\times(A\\div d)=A$.",
   "number-set-venn":
-    "$\\mathbb N\\subset\\mathbb W\\subset\\mathbb Z\\subset\\mathbb Q$. An integer $n$ is rational because $n=n/1$. Numbers such as $12/4$ are named by their simplified value, so they belong to the smallest set containing that value.",
+    "Write $\\mathbb N$, $\\mathbb W$, $\\mathbb Z$ and $\\mathbb Q$ for the natural numbers, whole numbers, integers and rational numbers. Each is a subset of the next (every member of one is in the next): $\\mathbb N\\subset\\mathbb W\\subset\\mathbb Z\\subset\\mathbb Q$. An integer $n$ is rational because $n=n/1$. A number such as $12/4$ is named by its simplified value, so it is placed in the smallest set holding that value (it also belongs to every larger set).",
   "reciprocal-division-choice":
     "For nonzero $b$ and $c$, $\\dfrac{a}{b}\\div\\dfrac{c}{d}=\\dfrac{a}{b}\\times\\dfrac{d}{c}$, because multiplying a number by $\\dfrac{c}{d}\\cdot\\dfrac{d}{c}=1$ does not change the quotient.",
   "scaling-direction-choice":
     "For a positive number $N$ and a positive multiplier $m$, $mN<N$ when $m<1$, $mN=N$ when $m=1$, and $mN>N$ when $m>1$.",
   "percent-grid-model":
-    "A 10 by 10 grid has 100 equal squares. If $k$ are shaded, the shaded part is $\\tfrac{k}{100}=k\\%=k\\times0.01$ of the whole.",
+    "A 10 by 10 grid has 100 equal squares. If $k$ of them are shaded, the shaded part is $\\tfrac{k}{100}=k\\%=k\\times0.01$ of the whole grid.",
   "percent-forms-and-parts":
-    "$p\\%=\\tfrac{p}{100}$. If a part $P$ is $p\\%$ of a whole $W$, then $P=\\tfrac{p}{100}W$, so $W=\\dfrac{100P}{p}$ and $p=\\dfrac{100P}{W}$.",
+    "For a percent $p$, $p\\%=\\tfrac{p}{100}$. If a part $P$ is $p\\%$ of a whole $W$, then $P=\\tfrac{p}{100}\\times W$. So $W=\\dfrac{100P}{p}$ when $p$ is not 0, and $p=\\dfrac{100P}{W}$ when $W$ is not 0.",
   "independent-dependent-roles":
-    "In a function relationship each value of the independent quantity determines one value of the dependent quantity. By convention the independent quantity is shown on the horizontal axis and the dependent quantity on the vertical axis.",
+    "When each value of the independent quantity gives exactly one value of the dependent quantity, the relationship is a function. By agreement, the independent quantity is shown on the horizontal axis and the dependent quantity on the vertical axis.",
   "expression-or-equation":
-    "An expression is a collection of numbers, variables and operations. An equation is a statement $E_1=E_2$ that two expressions are equal; it may be true, false or true only for some values.",
+    "An expression is built from numbers, variables (letters that stand for numbers) and operations. An equation is a statement $E_1=E_2$ that two expressions $E_1$ and $E_2$ are equal. It may be true, false, or true only for some values of its variables.",
   "rational-area-volume-equation":
-    "Area of a triangle $=\\tfrac12bh$; area of a rectangle $=lw$; volume of a rectangular prism $=lwh$. These equations hold for fractional lengths, and an unknown measure is found by inverse operations.",
+    "Area of a triangle $=\\tfrac12bh$ (base $b$, height $h$); area of a rectangle $=lw$ (length $l$, width $w$); volume of a rectangular prism $=lwh$. These equations hold for fraction lengths too, and an unknown measure is found by dividing, which undoes multiplying.",
   "categorical-summary":
     "For categorical data the mode is the category with the greatest frequency. The relative frequency of a category is its frequency divided by the total, and $p\\%$ of a total $N$ is $\\tfrac{p}{100}N$.",
   "check-register-balance":
-    "If the balance before an entry is $B$ and the entry is $x$ dollars, the new balance is $B+x$ for a deposit and $B-x$ for a payment. The change in balance across an entry is its signed amount.",
+    "If the balance before an entry is $B$ dollars and the entry is $x$ dollars, the new balance is $B+x$ for a deposit and $B-x$ for a payment. So the change in balance across an entry is its amount with a sign: plus for money in, minus for money out.",
   "lifetime-income-salary":
-    "Earnings with constant pay $S$ per period over $n$ periods are $nS$. With a monthly pay $M$, a year is $12M$, so $y$ years earn $12My$. The difference between two constant salaries over $y$ years is $y(S_2-S_1)$.",
+    "With the same pay $S$ each year for $y$ years, total earnings are $S\\times y$. With a monthly pay $M$, a year earns $12M$ ($12$ times $M$), so $y$ years earn $12\\times M\\times y$. Two constant yearly salaries $S_1$ and $S_2$ differ over $y$ years by $y\\times(S_2-S_1)$, when $S_2$ is the larger salary.",
   "pi-as-ratio":
-    "For every circle, $\\dfrac{C}{d}=\\pi\\approx3.14159$, so $C=\\pi d=2\\pi r$. Since the ratio is the same for all circles, scaling a circle scales $C$ and $d$ equally.",
+    "For every circle, the circumference $C$ divided by the diameter $d$ is the same number: $\\dfrac{C}{d}=\\pi\\approx3.14159$ ($\\approx$ means “is about”). So $C=\\pi d=2\\pi r$, where $r$ is the radius. Because the ratio is the same for all circles, enlarging a circle multiplies $C$ and $d$ by the same number.",
   "experimental-probability-predict":
-    "If an event occurs $s$ times in $n$ trials, its experimental probability is $s/n$. A prediction for $N$ trials is $N\\cdot s/n$. By the law of large numbers, the experimental probability tends to approach the theoretical probability as $n$ grows.",
+    "If an event happens $s$ times in $n$ trials, its experimental probability is $s\\div n$. A prediction for $N$ trials is $N\\times s\\div n$. As $n$ grows, the experimental probability tends to get closer to the true probability; that is the theoretical probability when the setup is fair as assumed. This is called the law of large numbers.",
   "cylinder-prism-surface-area":
-    "A cylinder of radius $r$ and height $h$ has lateral area $2\\pi rh$ and total surface area $2\\pi r^2+2\\pi rh$. A right triangular prism has total surface area $2\\cdot\\tfrac12pq+(p+q+c)L$ for legs $p,q$, hypotenuse $c$ and length $L$.",
+    "A cylinder of radius $r$ and height $h$ has lateral area $2\\pi rh$ and total surface area $2\\pi r^2+2\\pi rh$. A triangular prism whose end triangles have a square corner between legs $p$ and $q$, and longest side $c$, with length $L$, has total surface area $2\\times\\tfrac12pq+(p+q+c)L$.",
   "both-sides-situation-equation":
-    "A quantity with starting amount $a$ and rate $r$ after $x$ units is $a+rx$, with $r$ negative for a decreasing quantity. Two quantities are equal when $a_1+r_1x=a_2+r_2x$, and the first is less when $a_1+r_1x<a_2+r_2x$.",
+    "A quantity with starting amount $a$ that changes by $r$ for each unit has value $a+rx$ after $x$ units, with $r$ negative for a decreasing quantity. Two such quantities are equal when $a_1+r_1x=a_2+r_2x$, and the first is less when $a_1+r_1x<a_2+r_2x$. The small 1 and 2 label the two situations.",
 };
 
 type L = Lesson;
@@ -751,27 +786,34 @@ export const texas38Lessons: Lesson[] = [
     id: "nested-number-sets",
     title: "Nested sets of numbers",
     summary:
-      "Natural numbers sit inside whole numbers, whole numbers inside integers and integers inside rational numbers.",
+      "Numbers come in families, and each family fits inside a bigger one. The counting numbers 1, 2, 3, … are the natural numbers; the dots mean “and so on.” Add 0 and you get the whole numbers. Add the negatives of those, numbers below 0 like $-3$, and you get the integers. Add the fractions of integers, like $\\frac{1}{2}$, and decimals that end or repeat, like 0.75, and you get the rational numbers. To place a number, first simplify it, which means work out its simplest value: $12/4$ is 3, a natural number.",
+    senses: { opposite: "opposite-number" },
+    noLink: ["whole", "sort", "mean"],
     templateIds: ["number-set-venn"],
     objectives: [
-      "Place a number in the correct region of the nested-set diagram.",
-      "Name the smallest set that contains a number, and judge subset statements.",
+      "Place a number in the right ring of a diagram of sets inside sets.",
+      "Name the smallest set that holds a number, and decide whether statements like “every integer is rational” are true.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Each set holds the one before it",
         paragraphs: [
-          "Natural numbers are the counting numbers $1,2,3,\\ldots$. Add zero to get the whole numbers. Add the negatives to get the integers. Add fractions and decimals to get the rational numbers.",
-          "Because each set grows from the one before, a natural number is also whole, an integer and rational.",
+          "A set is a group of numbers that belong together. Picture each set as a ring, a closed loop drawn around its numbers.",
+          "The natural numbers are the counting numbers 1, 2, 3, and so on. The three dots … mean “keep going the same way.”",
+          "The whole numbers are the natural numbers plus 0: 0, 1, 2, 3, ….",
+          "The integers are the whole numbers plus their negatives, the numbers less than 0: …, −2, −1, 0, 1, 2, ….",
+          "The rational numbers are all numbers that can be written as a fraction of two integers, with a bottom that is not 0. That includes $\\frac{3}{4}$, 0.5 (which is $\\frac{1}{2}$) and $-\\frac{7}{2}$.",
+          "Each set grows from the one before, so the rings sit one inside another. A natural number like 5 is also whole, an integer and rational. It is in its own ring and every ring around it.",
         ],
       },
     ],
     workedExample: {
       prompt: "Which is the smallest set that contains $-9/3$?",
       steps: [
-        "Simplify: $-9/3=-3$.",
-        "$-3$ is negative, so it is not a natural or whole number. It is an integer.",
+        "Simplify first, because a fraction can equal an integer. The slash / means divide: $-9/3 = -9 \\div 3 = -3$.",
+        "Check the rings from the inside out. $-3$ is not a counting number, so it is not natural. It is negative, so it is not whole.",
+        "It is the opposite of the whole number 3, so it is an integer. The smallest set that holds it is the integers.",
       ],
       answer: "Integers",
     },
@@ -780,23 +822,27 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Simplify, then move outward",
         paragraphs: [
-          "Write the number in simplest form. Check the sets from the smallest outward and stop at the first one that holds it.",
+          "Write the number in simplest form. Then check the sets from the smallest ring outward: natural, whole, integer, rational. Stop at the first one that holds it.",
+          "A statement “every $X$ is a $Y$” is true when the ring for $X$ sits inside the ring for $Y$. “Every whole number is an integer” is true. “Every integer is a whole number” is false, because $-1$ is an integer but not whole.",
         ],
       },
       {
         stage: "formal",
         title: "Subsets",
         paragraphs: [
-          '$\\mathbb N\\subset\\mathbb W\\subset\\mathbb Z\\subset\\mathbb Q$. "Every $X$ is a $Y$" is true exactly when $X$ is a subset of $Y$.',
+          "Set $X$ is a subset of set $Y$ when every member of $X$ is also in $Y$. We write $X \\subset Y$.",
+          "Mathematicians name the sets with letters: $\\mathbb N$ for natural numbers, $\\mathbb W$ for whole numbers, $\\mathbb Z$ for integers and $\\mathbb Q$ for rational numbers. Then $\\mathbb N \\subset \\mathbb W \\subset \\mathbb Z \\subset \\mathbb Q$.",
+          "“Every $X$ is a $Y$” is true exactly when $X$ is a subset of $Y$. Every integer $n$ is rational, because $n = n/1$.",
         ],
       },
     ],
     pitfalls: [
       "Zero is a whole number but not a natural number.",
-      "A fraction can be an integer: $12/4=3$.",
+      "A fraction can be an integer: $12/4 = 3$. Simplify before you place it.",
+      "Negative integers are not whole numbers.",
     ],
     parentGuide:
-      "Write numbers on cards and have the learner sort them into rings drawn on paper.",
+      "Write numbers such as 0, 7, $-2$ and 0.5 on cards. Draw four rings inside each other on paper, and have the learner put each card in its smallest ring.",
   }),
   lesson({
     id: "fraction-scaling-reciprocals",
@@ -853,27 +899,34 @@ export const texas38Lessons: Lesson[] = [
     id: "percent-grids-conversions",
     title: "Percent models, conversions and parts",
     summary:
-      "Percent means out of 100. Grids show it, and the same amount can be written as a fraction, a decimal or a percent.",
+      "Percent means “out of 100,” and the sign % is read “percent.” Picture a grid of 10 rows and 10 columns: it has 100 small squares. If 35 are shaded, 35% is shaded. The same amount can also be written as a fraction (a part over a whole), $\\frac{35}{100}$, or as a decimal (a number with a decimal point), 0.35. If you know a part and what percent it is, you can find the whole. When 30% of something is 45, then 1% is $45 \\div 30 = 1.5$, so 100% is 150.",
+    senses: { part: "part", whole: "whole", square: "square-shape" },
+    noLink: ["change"],
     templateIds: ["percent-grid-model", "percent-forms-and-parts"],
     objectives: [
-      "Name the percent, fraction or decimal for a shaded part of a 10 by 10 grid.",
-      "Convert among fractions, decimals and percents, and find a whole or a percent from a part.",
+      "Name the percent, fraction and decimal for the shaded part of a 10 by 10 grid.",
+      "Change between fractions, decimals and percents.",
+      "Find a whole, or a percent, from a part.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "One part, three names",
         paragraphs: [
-          "A 10 by 10 grid has 100 squares. If 35 are shaded, the shaded part is $35\\%$, $\\tfrac{35}{100}=\\tfrac{7}{20}$ and $0.35$.",
-          "To go from a fraction to a percent, find the fraction out of 100: $\\tfrac38=0.375=37.5\\%$.",
+          "Percent means “out of 100.” So 35% means 35 out of every 100.",
+          "A 10 by 10 grid has 100 equal squares, so each square is 1% of the grid. If 35 squares are shaded, the shaded part is 35%. Count full columns of 10 first, then the extra squares.",
+          "The same amount has three names. As a fraction it is $\\frac{35}{100}$, which simplifies to $\\frac{7}{20}$ by dividing top and bottom by 5. As a decimal it is 0.35. A hundredth is one of 100 equal parts, so 0.35 is 35 hundredths. As a percent it is 35%.",
+          "To turn a fraction into a percent, divide the top by the bottom, then multiply by 100. For $\\frac{3}{8}$: $3 \\div 8 = 0.375$, and $0.375 \\times 100 = 37.5$, so it is 37.5%.",
+          "The whole is the full amount, which is 100%. A part is a piece of it. If a part is 30% of the whole, the whole is bigger than the part.",
         ],
       },
     ],
     workedExample: {
       prompt: "A part of 45 is $30\\%$ of the whole. Find the whole.",
       steps: [
-        "$30\\%$ of the whole is 45, so $1\\%$ is $45\\div30=1.5$.",
-        "The whole is $100\\%$: $1.5\\times100=150$.",
+        "30% of the whole is 45. Find 1% by sharing 45 into 30 equal pieces: $45 \\div 30 = 1.5$.",
+        "The whole is 100%, so multiply 1% by 100: $1.5 \\times 100 = 150$.",
+        "Check: 30% of 150 is $150 \\times 30 \\div 100 = 45$. That is the part we were given.",
       ],
       answer: "150",
     },
@@ -882,41 +935,48 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Convert and find",
         paragraphs: [
-          "Decimal to percent: multiply by 100. Percent to fraction: put the percent over 100 and simplify.",
-          "Finding the percent: part $\\div$ whole $\\times100$. Finding the whole: part $\\div$ percent $\\times100$.",
+          "Decimal to percent: multiply by 100, so 0.6 is 60%. Percent to fraction: put the percent over 100 and simplify, so 60% is $\\frac{60}{100} = \\frac{3}{5}$.",
+          "To find a percent: divide the part by the whole, then multiply by 100. 12 out of 48 is $12 \\div 48 = 0.25$, which is 25%.",
+          "To find a whole: divide the part by the percent to get 1%, then multiply by 100.",
         ],
       },
       {
         stage: "formal",
         title: "Percent relationships",
         paragraphs: [
-          "If $P$ is $p\\%$ of $W$, then $P=\\tfrac{p}{100}W$, so $W=\\tfrac{100P}{p}$ and $p=\\tfrac{100P}{W}$.",
+          "Let $P$ be a part, $W$ the whole, and $p$ the percent. If $P$ is $p\\%$ of $W$, then $P = \\tfrac{p}{100} \\times W$.",
+          "Solving for the other letters gives $W = \\tfrac{100P}{p}$ (when $p$ is not 0) and $p = \\tfrac{100P}{W}$ (when $W$ is not 0). Here $100P$ means 100 times $P$.",
         ],
       },
     ],
     pitfalls: [
-      "Name the shaded part, not the part that is left.",
-      "Keep part and whole in order: 12 out of 48 is $12\\div48$.",
+      "Name the shaded part, not the part left over. The unshaded part is 100% minus the shaded percent.",
+      "Keep part and whole in order: the percent that 12 is of 48 comes from $12 \\div 48 = 0.25$, which is 25%. It does not come from $48 \\div 12$.",
+      "A whole found from a part should be bigger than the part when the percent is less than 100%.",
     ],
     parentGuide:
-      "Shade squares on a 10 by 10 grid and have the learner say the percent, fraction and decimal.",
+      "Shade squares on a 10 by 10 grid and have the learner say the percent, the fraction and the decimal.",
   }),
   lesson({
     id: "independent-dependent",
     title: "Independent and dependent quantities",
     summary:
-      "In a relationship, the quantity you set is independent and the quantity it determines is dependent.",
+      "When two amounts are linked, one often decides the other. An amount you can measure or count is called a quantity. The cost of tickets depends on how many tickets you buy. The quantity you choose, the number of tickets, is called the independent quantity. The quantity that follows from it, the cost, is called the dependent quantity, because it depends on the first.",
+    senses: { square: "square-shape", side: "side" },
     templateIds: ["independent-dependent-roles"],
     objectives: [
-      "Name the independent and dependent quantity in a table.",
-      "Say which goes on the horizontal axis of a graph.",
+      "Name the independent quantity (the one you choose) and the dependent quantity (the one that follows) in a table.",
+      "Say which quantity goes on the horizontal axis, the left-to-right line, of a graph.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Which quantity determines the other?",
         paragraphs: [
-          "The cost of tickets depends on how many tickets you buy. The number of tickets is the one you choose, so it is independent, and the cost is dependent on it.",
+          "A quantity is an amount you can measure or count, such as a cost in dollars or a number of days.",
+          "Tickets cost 5 dollars each. You decide how many to buy. Once you choose, the cost is fixed: 3 tickets cost 15 dollars. The number of tickets is the independent quantity, because you choose it freely. The cost is the dependent quantity, because it depends on how many tickets you chose.",
+          "A good test is to ask: “Which one do I pick, and which one then follows?” The one that follows is dependent.",
+          "Tables and graphs show both. On a graph, the independent quantity goes on the horizontal axis, the line across the bottom. The dependent quantity goes on the vertical axis, the line up the side.",
         ],
       },
     ],
@@ -924,8 +984,8 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "A table shows the height of a plant for each number of days since planting. Which quantity is dependent?",
       steps: [
-        "The number of days is the time you choose to look at the plant.",
-        "The height is determined by the day, so it depends on it.",
+        "Ask which one you pick. You can choose any day to look at the plant, so the number of days is the independent quantity.",
+        "Ask which one follows. The height on that day is settled by how many days the plant has grown. So the height depends on the days.",
       ],
       answer: "The height of the plant",
     },
@@ -934,49 +994,55 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Ask which follows from which",
         paragraphs: [
-          "Choose a value for one quantity and see whether the other is then determined. The determined one is dependent. On a graph, the independent quantity is on the horizontal axis.",
+          "Find the quantity you choose freely; it is independent. The quantity that is then settled by your choice is dependent.",
+          "Do not go by position or size. The first column of a table is not always independent, and the bigger numbers do not decide anything.",
         ],
       },
       {
         stage: "formal",
         title: "Convention",
         paragraphs: [
-          "In a function relationship, each independent value determines exactly one dependent value; the independent quantity is graphed on the horizontal axis.",
+          "When each value of one quantity gives exactly one value of the other, the relationship is called a function. The first quantity is independent and the second is dependent.",
+          "By agreement, the independent quantity is graphed on the horizontal axis and the dependent quantity on the vertical axis.",
         ],
       },
     ],
     pitfalls: [
-      "The first column is not always independent.",
-      "Larger numbers do not decide the roles; the dependence does.",
+      "The first column of a table is not always the independent quantity.",
+      "Larger numbers do not decide the roles. Ask which quantity depends on the other.",
     ],
     parentGuide:
-      "Use daily examples, such as hours of practice and pieces learned, and ask which one the learner can choose.",
+      "Use daily examples, such as minutes of practice and songs learned. Ask which one the learner can choose, and which one follows.",
   }),
   lesson({
     id: "expressions-and-equations",
     title: "Expressions and equations",
     summary:
-      "An expression names a value. An equation has an equal sign and says two values are the same.",
+      "An expression is a math phrase that names an amount, like $3x + 5$ or $10 - 2$. It has no equals sign. An equation is a math sentence that says two amounts are equal, like $3x + 5 = 20$. It always has an equals sign. An equation can be true or false, and it is still an equation.",
+    senses: { "more than": "more-than", product: "product-multiply" },
     templateIds: ["expression-or-equation"],
     objectives: [
-      "Tell an expression from an equation in numbers, letters and words.",
-      "Recognize that a false statement with an equal sign is still an equation.",
+      "Tell an expression from an equation when it is written in numbers, in letters or in words.",
+      "See that a false statement with an equals sign, such as $2 + 2 = 5$, is still an equation.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "A phrase and a sentence",
         paragraphs: [
-          '$3x+5$ is a phrase, like "five more than three times a number". $3x+5=20$ is a full sentence: it says that value equals 20.',
-          "A sentence is an equation. A phrase is an expression.",
+          "A variable is a letter, such as $x$, that stands for a number. Writing $3x$ means 3 times $x$.",
+          "An expression is like a phrase in English. $3x + 5$ reads “five more than three times a number.” It names an amount, but it does not say anything about it.",
+          "An equation is like a full sentence. $3x + 5 = 20$ says “five more than three times a number is 20.” The equals sign = joins two amounts and says they are the same.",
+          "In words, look for “is” or “equals” joining two amounts. “Ten minus two” is a phrase. “Ten minus two is eight” is a sentence, an equation.",
+          "Letters do not decide it. $3x + 5$ has a letter and is an expression. $3 + 5 = 8$ has no letter and is an equation.",
         ],
       },
     ],
     workedExample: {
       prompt: "Which is an equation: $4y-2$, $4y-2=10$ or $10-2$?",
       steps: [
-        "$4y-2$ and $10-2$ have no equal sign, so each is an expression.",
-        "$4y-2=10$ has an equal sign.",
+        "Look for an equals sign, because only an equation has one. $4y - 2$ and $10 - 2$ have none, so each is an expression. Each just names an amount.",
+        "$4y - 2 = 10$ has an equals sign joining two amounts. It says $4y - 2$ and 10 are the same, so it is an equation.",
       ],
       answer: "$4y-2=10$",
     },
@@ -985,40 +1051,53 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Look for equality",
         paragraphs: [
-          'Look for an equal sign in symbols, or a word such as "is" or "equals" in a phrase. An equation can be true or false.',
+          "In symbols, look for an equals sign. In words, look for “is” or “equals” joining two amounts. With one, it is an equation. With no equals sign and no comparison sign such as $<$, it is an expression.",
+          "An equation can be true, like $3 + 5 = 8$, or false, like $2 + 2 = 5$. Either way it is an equation.",
         ],
       },
       {
         stage: "formal",
         title: "Definitions",
         paragraphs: [
-          "An expression is built from numbers, variables and operations. An equation states that two expressions are equal.",
+          "An expression is built from numbers, variables and operations, such as adding and multiplying.",
+          "An equation states that two expressions are equal. It may be true, false, or true only for some values of its variables.",
         ],
       },
     ],
     pitfalls: [
-      "A letter in the item does not make it an equation.",
+      "A letter does not make something an equation. Look for the equals sign.",
       "$2+2=5$ is false, but it is still an equation.",
     ],
     parentGuide:
-      "Read items aloud. A phrase sounds unfinished; an equation is a complete sentence.",
+      "Read items aloud. A phrase sounds unfinished. An equation is a complete sentence that says two things are equal.",
   }),
   lesson({
     id: "rational-area-volume-equations",
     title: "Equations for area and volume with fractions",
     summary:
-      "Put the known measures and the total into the area or volume formula and keep the unknown as a letter.",
+      "A formula is a rule written with letters, such as “area of a rectangle = length × width.” Every formula is already an equation. When one measure is unknown, put the numbers you know into the formula and keep a letter for the unknown. A mixed number is a whole number with a fraction, like $1\\tfrac{1}{2}$. Fractions and mixed numbers go into a formula just like whole numbers (the numbers 0, 1, 2 and so on).",
+    senses: {
+      edge: "edge",
+      face: "face-solid",
+      factor: "factor-number",
+      side: "side",
+      solid: "solid-shape",
+    },
+    noLink: ["base", "change", "rule", "square"],
     templateIds: ["rational-area-volume-equation"],
     objectives: [
-      "Write an equation for a triangle's or rectangle's area or a prism's volume with fractional measures.",
-      "Reject equations that add, drop a factor or use the wrong formula.",
+      "Write an equation for a triangle's area, a rectangle's area or a box's volume when the measures are fractions.",
+      "Reject equations that add instead of multiply, drop the $\\tfrac{1}{2}$ or use the wrong formula.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "The formula is already an equation",
         paragraphs: [
-          "The area of a triangle is $\\tfrac12bh$. If the area is $1\\tfrac{9}{16}$ and the base is $2\\tfrac12$, the equation is $\\tfrac12\\times2\\tfrac12\\times h=1\\tfrac{9}{16}$. The fractions do not change the structure.",
+          "Area is the amount of flat space inside a shape. Volume is the amount of space inside a solid, such as a box. A mixed number, such as $2\\tfrac{1}{2}$, is a whole number and a fraction together: 2 and one half.",
+          "Each shape has a formula, a rule that gives its area or volume from its measures. Letters stand for the measures. Writing two letters next to each other, such as $lw$, means multiply them.",
+          "A rectangle's area is $lw$: length times width. Any side of a triangle can be its base; picture the triangle resting on it. The height is the straight-up distance from the base to the top corner, measured square to the base, like a wall standing on a floor. A triangle's area is $\\tfrac12 bh$: half of the base times the height. A rectangular prism, a box shape, has volume $lwh$: length times width times height.",
+          "A formula is already an equation. If a triangle's area is $1\\tfrac{9}{16}$ and its base is $2\\tfrac12$, put those in and keep $h$ for the height: $\\tfrac12 \\times 2\\tfrac12 \\times h = 1\\tfrac{9}{16}$. Fractions do not change the formula.",
         ],
       },
     ],
@@ -1026,8 +1105,8 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "A rectangle has area $2\\tfrac{1}{4}$ and length $1\\tfrac12$. Write an equation for its width $w$.",
       steps: [
-        "Area is length times width.",
-        "Put in the known values and leave $w$ unknown.",
+        "Choose the formula. A rectangle's area is its length times its width, $A = lw$.",
+        "Put in what is known: the length is $1\\tfrac12$ and the area is $2\\tfrac14$. Keep the letter $w$ for the unknown width, because we do not know it yet. The equation is $1\\tfrac12 \\times w = 2\\tfrac14$.",
       ],
       answer: "$1\\tfrac12\\times w=2\\tfrac14$",
     },
@@ -1036,23 +1115,25 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Formula, substitute, leave the unknown",
         paragraphs: [
-          "Write the formula, substitute the known measures and the total, and leave the unknown as a letter. Do not solve yet.",
+          "Write the formula first. Then substitute, which means put each known number in place of its letter. Put the given area or volume after the equals sign.",
+          "Leave the unknown measure as a letter. Do not change the operations to make the numbers easier, and do not solve yet unless asked.",
         ],
       },
       {
         stage: "formal",
         title: "Formulas",
         paragraphs: [
-          "Triangle: $A=\\tfrac12bh$. Rectangle: $A=lw$. Rectangular prism: $V=lwh$.",
+          "Triangle: $A = \\tfrac12 bh$, where $b$ is the base and $h$ is the height. Rectangle: $A = lw$, length times width. Rectangular prism: $V = lwh$, length times width times height.",
+          "These formulas work for fraction lengths too. An unknown measure can then be found by dividing, which undoes multiplying.",
         ],
       },
     ],
     pitfalls: [
-      "A triangle needs the $\\tfrac12$.",
-      "Volume multiplies three edges. Adding them or using two edges gives the wrong measure.",
+      "A triangle has half the area of a rectangle with the same base and height, so its equation needs the $\\tfrac12$.",
+      "A box's volume multiplies all three measures. Adding them, or using only two, gives the wrong amount.",
     ],
     parentGuide:
-      "Have the learner say the formula in words before writing it with the numbers.",
+      "Have the learner say the formula in words, such as “length times width,” before writing it with the numbers.",
   }),
   lesson({
     id: "categorical-summaries",
@@ -1107,7 +1188,12 @@ export const texas38Lessons: Lesson[] = [
     id: "check-registers",
     title: "Balancing a check register",
     summary:
-      "A check register records each deposit and payment so you always know the balance.",
+      "A bank account holds money. Its balance is how much money is in it right now. A check register is a table that lists every change to the account in order. Money put in, a deposit, makes the balance go up. Money taken out makes it go down, such as a check (a written payment) or a fee (a charge from the bank). Each row's balance is the balance in the row before, with that entry added or taken away.",
+    senses: {
+      balance: "balance-account",
+      difference: "difference-subtract",
+      change: "change",
+    },
     templateIds: ["check-register-balance"],
     objectives: [
       "Keep a running balance through deposits, checks, transfers and fees.",
@@ -1118,7 +1204,10 @@ export const texas38Lessons: Lesson[] = [
         stage: "intuition",
         title: "Add what comes in, subtract what goes out",
         paragraphs: [
-          "A deposit puts money into the account, so the balance goes up. A check, a transfer out or a fee takes money out, so the balance goes down. Each row's new balance is the old balance plus or minus the entry.",
+          "You need to add and subtract decimals, which are numbers with a decimal point. Money amounts have two digits for cents after the point: 38.75 dollars is 38 dollars and 75 cents.",
+          "A deposit puts money into the account, so the balance goes up. Add it.",
+          "A check is a written note that pays someone from the account. A transfer out moves money to another account. A fee is a charge from the bank. Each one takes money out, so the balance goes down. Subtract it.",
+          "The register goes row by row. Each new balance starts from the balance just above it.",
         ],
       },
     ],
@@ -1126,8 +1215,8 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "The balance is 245.50. A check for 38.75 is written, then 120.00 is deposited. What is the balance?",
       steps: [
-        "After the check: $245.50-38.75=206.75$.",
-        "After the deposit: $206.75+120.00=326.75$.",
+        "A check takes money out, so subtract it. Line up the decimal points: $245.50 - 38.75 = 206.75$.",
+        "A deposit puts money in, so add it to the new balance, not the first one: $206.75 + 120.00 = 326.75$.",
       ],
       answer: "326.75 dollars",
     },
@@ -1136,40 +1225,47 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Go row by row",
         paragraphs: [
-          "Start from the top balance. Apply each entry in order. To find a missing amount, subtract the smaller balance from the larger one.",
+          "Start from the balance at the top. Apply each entry in order: add deposits, subtract checks, transfers and fees.",
+          "To find a missing amount, compare the balances before and after that row. Subtract the smaller from the larger. If the balance went up, the entry was money in. If it went down, it was money out.",
         ],
       },
       {
         stage: "formal",
         title: "Signed changes",
         paragraphs: [
-          "Treat a deposit as $+x$ and a payment as $-x$. The new balance is the old balance plus the signed amount.",
+          "Treat a deposit of $x$ dollars as $+x$ and a payment of $x$ dollars as $-x$. If the balance before is $B$, the new balance is $B + x$ after a deposit and $B - x$ after a payment.",
         ],
       },
     ],
     pitfalls: [
       "Subtract payments; do not add them.",
-      "Line up the cents. 38.75 has 75 cents, not 7.5.",
+      "Line up the decimal points. 38.75 has 75 cents, not 7.5.",
+      "Start each row from the balance just above it, not from the first balance.",
     ],
     parentGuide:
-      "Keep a pretend check register for a week of allowance and spending.",
+      "Keep a pretend check register together for a week of allowance and spending.",
   }),
   lesson({
     id: "lifetime-income",
     title: "Income over a career",
     summary:
-      "Yearly pay times the number of years gives career earnings, and a difference in pay grows with every year.",
+      "A salary is the pay for one year of work. A career is all the years a person works. If the pay stays the same each year, the total earned is the yearly pay times the number of years. So 62,000 dollars a year for 40 years is 2,480,000 dollars. Even a small difference in yearly pay adds up to a lot over a career.",
+    senses: { difference: "difference-subtract" },
+    noLink: ["change", "period", "periods", "whole"],
     templateIds: ["lifetime-income-salary"],
     objectives: [
-      "Find total earnings from a yearly or monthly pay and a career length.",
-      "Compare two salaries over a career.",
+      "Find total career earnings from a yearly or monthly pay and the number of years worked.",
+      "Compare two salaries over a whole career.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "The same pay, year after year",
         paragraphs: [
-          "If someone earns 62,000 dollars a year for 40 years, the total is $62{,}000\\times40=2{,}480{,}000$ dollars. A raise of 6,000 dollars a year adds $6{,}000\\times40=240{,}000$ dollars over the career.",
+          "You need to multiply and subtract whole numbers (the numbers 0, 1, 2 and so on). A salary is a fixed amount of pay for one year of work. Some jobs state pay per month instead. There are 12 months in a year, so a year's pay is 12 times the monthly pay.",
+          "If someone earns 62,000 dollars every year for 40 years, the total is $62{,}000 \\times 40 = 2{,}480{,}000$ dollars.",
+          "Now suppose a second job pays 6,000 dollars more each year. That extra is earned again every year. Over 40 years it adds $6{,}000 \\times 40 = 240{,}000$ dollars.",
+          "The number of years worked is the age at the end minus the age at the start. Working from age 22 to age 62 is $62 - 22 = 40$ years.",
         ],
       },
     ],
@@ -1177,8 +1273,8 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "A person works from age 22 to age 62 and earns 54,000 dollars a year. Find the total earned.",
       steps: [
-        "Years worked: $62-22=40$.",
-        "Total: $54{,}000\\times40=2{,}160{,}000$.",
+        "Find the years worked by subtracting the starting age from the ending age: $62 - 22 = 40$ years.",
+        "The pay is the same each year, so multiply the yearly pay by the years: $54{,}000 \\times 40 = 2{,}160{,}000$ dollars.",
       ],
       answer: "2,160,000 dollars",
     },
@@ -1187,40 +1283,49 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Years first, then multiply",
         paragraphs: [
-          "Find the years worked. For a monthly pay, multiply by 12 to get a yearly pay. Multiply yearly pay by years. To compare, find the yearly difference and multiply by the years.",
+          "Find the years worked: ending age minus starting age.",
+          "If the pay is monthly, multiply it by 12 to get the yearly pay.",
+          "Multiply the yearly pay by the years. To compare two jobs, subtract the yearly pays first, then multiply that difference by the years.",
         ],
       },
       {
         stage: "formal",
         title: "Constant pay",
         paragraphs: [
-          "With constant yearly pay $S$ for $y$ years, total earnings are $Sy$. For monthly pay $M$, they are $12My$.",
+          "With the same yearly pay $S$ for $y$ years, total earnings are $S \\times y$.",
+          "With a monthly pay $M$, one year is $12M$ ($12$ times $M$), so $y$ years earn $12 \\times M \\times y$.",
+          "Two yearly salaries $S_1$ and $S_2$ (read “$S$ one” and “$S$ two”) differ over $y$ years by $y \\times (S_2 - S_1)$, when $S_2$ is the larger salary.",
         ],
       },
     ],
     pitfalls: [
-      "Use years worked, not the retirement age.",
+      "Multiply by the years worked, not by the ending age.",
       "Change monthly pay to yearly pay before multiplying by years.",
     ],
     parentGuide:
-      "Compare two job offers together and talk about what the difference is over 40 years.",
+      "Compare two job offers together, and talk about what their yearly difference adds up to over 40 years.",
   }),
   lesson({
     id: "pi-ratio",
     title: "The circumference-to-diameter ratio",
     summary:
-      "The ratio $\\pi$ (pi) is the circumference of any circle divided by its diameter, about 3.14.",
+      "The circumference is the distance around a circle. The center is the circle's middle point. The diameter is the distance straight across, through the center. For every circle, big or small, the circumference divided by the diameter is the same number, a little more than 3. This number is called $\\pi$ (pi), and it is about 3.14.",
+    senses: { center: "center", "more than": "more-than" },
+    noLink: ["scales", "change", "edge"],
     templateIds: ["pi-as-ratio"],
     objectives: [
-      "Name the ratio $\\pi$ as circumference divided by diameter.",
-      "Compute circumference divided by diameter from measured values.",
+      "Describe $\\pi$ as a circle's circumference divided by its diameter.",
+      "Find circumference divided by diameter from measured values, and see that it is about 3.14 for every circle.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "The same ratio for every circle",
         paragraphs: [
-          "Measure the distance around a can and the distance across it through the center. Divide the first by the second. You get about 3.14. A tiny coin and a giant wheel give the same number, which is called $\\pi$.",
+          "A circle is a round shape where every point is the same distance from a middle point, the center. The circumference is the distance around the circle. The diameter is the distance across, passing through the center. The radius is the distance from the center to the edge, half the diameter.",
+          "Wrap a string around a can to measure its circumference. Then measure straight across the top for the diameter. Divide the circumference by the diameter. You get about 3.14.",
+          "Try a tiny coin and then a giant wheel. The numbers you measure are very different, but dividing gives about the same answer each time. With perfect measuring it would be exactly the same. A ratio compares two amounts by dividing. This ratio, the same for every circle, is called $\\pi$ (pi).",
+          "$\\pi$ is a little more than 3. So the distance around any circle is a little more than 3 times the distance across.",
         ],
       },
     ],
@@ -1228,8 +1333,8 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "A lid has a diameter of 8 cm and a circumference of 25.1 cm. Find the ratio to the nearest hundredth.",
       steps: [
-        "Divide the circumference by the diameter: $25.1\\div8=3.1375$.",
-        "Round to the nearest hundredth.",
+        "The ratio is circumference divided by diameter, so divide: $25.1 \\div 8 = 3.1375$.",
+        "Round to the nearest hundredth, two places after the point. The next digit after 3.13 is 7, which is 5 or more, so round up to 3.14. That is close to $\\pi$, as it should be.",
       ],
       answer: "3.14",
     },
@@ -1238,38 +1343,49 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Use the diameter",
         paragraphs: [
-          "If a radius is given, double it to get the diameter. Divide the circumference by the diameter.",
+          "If you are given the radius, double it to get the diameter. Then divide the circumference by the diameter.",
+          "Measured values are never exact, so the answer is close to 3.14 but may not match it perfectly.",
         ],
       },
       {
         stage: "formal",
         title: "Definition",
-        paragraphs: ["$\\pi=C/d$ for every circle, so $C=\\pi d=2\\pi r$."],
+        paragraphs: [
+          "Write $C$ for the circumference, $d$ for the diameter and $r$ for the radius. For every circle, $\\pi = C \\div d$.",
+          "So $C = \\pi d$ ($\\pi$ times $d$). Because $d = 2r$, also $C = 2\\pi r$.",
+          "$\\pi$ is about 3.14159. Its digits go on forever without repeating.",
+        ],
       },
     ],
     pitfalls: [
-      "Circumference divided by radius is about 6.28, which is $2\\pi$.",
-      "Scaling a circle does not change the ratio.",
+      "Divide by the diameter, not the radius. Circumference divided by radius is about 6.28, which is $2\\pi$.",
+      "Making a circle bigger or smaller does not change the ratio.",
     ],
     parentGuide:
-      "Measure a few round objects with string and a ruler, and divide.",
+      "Measure a few round objects with string and a ruler. Divide the distance around by the distance across, and compare the answers.",
   }),
   lesson({
     id: "experimental-probability",
     title: "Experimental probability and predictions",
     summary:
-      "Collected data give an experimental probability, which predicts what happens in more trials.",
+      "Probability tells how likely something is. An experiment is a test you repeat and record, like spinning a spinner. An experimental probability is a probability found from what actually happened in an experiment. Count how often something happened and divide by the number of tries. A spinner landed on blue 18 times in 60 spins, so the experimental probability of blue is $\\frac{18}{60} = 0.3$. You can use it to predict: in 200 spins, expect about $0.3 \\times 200 = 60$ blues.",
+    senses: { trial: "trial", event: "event" },
+    noLink: ["scale", "side", "sides"],
     templateIds: ["experimental-probability-predict"],
     objectives: [
-      "Find an experimental probability from the results of trials.",
-      "Predict a count for more trials, compare with the expected count and judge which experiment to trust.",
+      "Find an experimental probability from the results of trials (repeated tries).",
+      "Predict a count for more trials, compare it with the count the theory expects, and judge which experiment to trust.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "What happened, and what will happen",
         paragraphs: [
-          "A spinner lands on blue 18 times in 60 spins. The experimental probability of blue is $\\tfrac{18}{60}=0.3$. In 200 spins, we expect about $0.3\\times200=60$ blues.",
+          "You need to work with fractions and decimals (which are numbers with a decimal point). A trial is one try of an experiment, such as one spin of a spinner. An event is the result you are counting, such as landing on blue.",
+          "The experimental probability of an event is the number of times it happened divided by the number of trials. Blue 18 times in 60 spins gives $\\frac{18}{60} = 0.3$.",
+          "To predict, assume the same share will happen again. In 200 spins, about 0.3 of them should be blue: $0.3 \\times 200 = 60$.",
+          "The theoretical probability is what the setup says should happen. A fair coin has 2 equal sides, so heads has theoretical probability $\\frac{1}{2}$. In 40 tosses, theory expects $\\frac{1}{2} \\times 40 = 20$ heads.",
+          "Results vary by chance. Few trials can be far from the theoretical probability. Many trials are usually closer to it.",
         ],
       },
     ],
@@ -1277,8 +1393,9 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "A cup lands on its side 12 times in 40 tosses. Predict how many times it will in 200 tosses.",
       steps: [
-        "200 tosses is $200\\div40=5$ times as many.",
-        "$5\\times12=60$.",
+        "Compare the numbers of tosses: 200 tosses is $200 \\div 40 = 5$ times as many as 40.",
+        "Five times as many tosses should give about five times as many landings on its side: $5 \\times 12 = 60$.",
+        "Check another way: the experimental probability is $\\frac{12}{40} = 0.3$, and $0.3 \\times 200 = 60$. The two ways agree.",
       ],
       answer: "About 60 times",
     },
@@ -1287,39 +1404,66 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Successes over trials, then scale",
         paragraphs: [
-          "Divide successes by trials. Multiply the result by the number of new trials, or scale the count. For expected counts from theory, multiply the theoretical probability by the trials.",
+          "Divide the number of times the event happened by the number of trials. That is the experimental probability.",
+          "To predict for more trials, multiply that probability by the new number of trials. Or multiply the count by how many times as many trials there are.",
+          "To compare with theory, multiply the theoretical probability by the number of trials. Then subtract to see how far apart the counts are.",
         ],
       },
       {
         stage: "formal",
         title: "Larger samples",
         paragraphs: [
-          "As the number of trials grows, the experimental probability tends to get closer to the theoretical probability.",
+          "If an event happens $s$ times in $n$ trials, its experimental probability is $s \\div n$. A prediction for $N$ trials is $N \\times s \\div n$.",
+          "As the number of trials grows, the experimental probability tends to get closer to the true probability. When the setup really is fair, that is the theoretical probability. So a careful experiment with more trials is usually more trustworthy.",
         ],
       },
     ],
     pitfalls: [
-      "A prediction is not a promise. Real results vary around it.",
-      "Few trials can be far from the true probability.",
+      "A prediction is an estimate, not a promise. Real results vary around it.",
+      "A few trials can be far from the true probability. If two experiments were run the same careful way, trust the one with more trials.",
+      "Divide by the number of trials, not by the number of times something else happened.",
     ],
-    parentGuide: "Toss a coin 20 times, record the heads, and compare with 10.",
+    parentGuide:
+      "Toss a coin 20 times and record the heads. Compare the count with 10, the number theory expects.",
   }),
   lesson({
     id: "cylinder-prism-surface-area",
     title: "Surface area of cylinders and triangular prisms",
-    summary: "Unroll a solid into its faces and add their areas.",
+    summary:
+      "Surface area is the total area of all the outside surfaces of a solid. Area is counted in square units, the little squares 1 unit on each side, such as square centimeters. Imagine unrolling a can: the label lays flat as a rectangle, and the top and bottom are circles. Add the areas of those pieces to get the surface area.",
+    senses: {
+      base: "base-shape",
+      face: "face-solid",
+      solid: "solid-shape",
+      unit: "unit",
+    },
+    noLink: [
+      "side",
+      "square",
+      "terms",
+      "parts",
+      "edge",
+      "squared",
+      "part",
+      "whole",
+      "squares",
+      "sides",
+    ],
     templateIds: ["cylinder-prism-surface-area"],
     objectives: [
-      "Find the lateral and total surface area of a cylinder in terms of $\\pi$.",
-      "Find a cylinder's height from its surface area and the surface area of a right triangular prism.",
+      "Find the curved surface area and the total surface area of a cylinder, written using $\\pi$.",
+      "Find a cylinder's missing height from its surface area, and the surface area of a triangular prism.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Faces laid flat",
         paragraphs: [
-          "A can has a top, a bottom and a curved side. Unrolled, the side is a rectangle as tall as the can and as wide as the distance around it, the circumference. The top and bottom are circles.",
-          "A triangular prism has two triangles and three rectangles.",
+          "A cylinder is a can shape. It has two flat circles, the top and bottom, called its bases. Around them is one curved surface.",
+          "The radius $r$ is the distance from the middle of a circle to its edge. The height $h$ is how tall the cylinder is. A circle's area is $\\pi r^2$, where $r^2$ ($r$ squared) means $r$ times $r$. The number $\\pi$ (pi) is about 3.14. The distance around a circle, its circumference, is $2\\pi r$.",
+          "Peel the label off a can and lay it flat. It is a rectangle. Its height is the can's height. Its width is the distance around the can, the circumference $2\\pi r$. So the curved part has area $2\\pi r \\times h$. This curved part alone is called the lateral area.",
+          "A triangular prism is a solid with two matching triangles at its ends and three rectangles joining them. Its surface area is the two triangles plus the three rectangles.",
+          "Answers “in terms of $\\pi$” keep the symbol $\\pi$ instead of using 3.14. For example, $48\\pi$ means 48 times $\\pi$.",
         ],
       },
     ],
@@ -1327,9 +1471,9 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "A cylinder has radius 3 cm and height 5 cm. Find its total surface area in terms of $\\pi$.",
       steps: [
-        "Two bases: $2\\times\\pi\\times3^2=18\\pi$.",
-        "Side: $2\\pi\\times3\\times5=30\\pi$.",
-        "Total: $18\\pi+30\\pi=48\\pi$.",
+        "Find the two circular bases. Each has area $\\pi \\times 3^2 = 9\\pi$, so two have $2 \\times \\pi \\times 3^2 = 18\\pi$.",
+        "Find the curved part. It unrolls to a rectangle $2\\pi \\times 3$ wide and 5 tall: $2\\pi \\times 3 \\times 5 = 30\\pi$.",
+        "Add all the pieces, because surface area covers the whole outside: $18\\pi + 30\\pi = 48\\pi$.",
       ],
       answer: "$48\\pi$ square centimeters",
     },
@@ -1338,47 +1482,66 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Add the faces",
         paragraphs: [
-          "For a missing height, subtract the bases from the total to get the side, then divide by $2\\pi r$. For a triangular prism, add the two triangle areas to the three rectangles.",
+          "Total surface area of a cylinder: two bases plus the curved part. Lateral area: the curved part only, with no bases.",
+          "For a missing height, start from the total. Subtract the two bases to get the curved part. Then divide by the circumference $2\\pi r$.",
+          "For a triangular prism, add the areas of the two triangles to the areas of the three rectangles. Each rectangle is one side of the triangle times the prism's length.",
         ],
       },
       {
         stage: "formal",
         title: "Formulas",
         paragraphs: [
-          "Cylinder: lateral $2\\pi rh$, total $2\\pi r^2+2\\pi rh$. Right triangular prism: $pq+(p+q+c)L$.",
+          "Cylinder with radius $r$ and height $h$: lateral area $2\\pi rh$, total surface area $2\\pi r^2 + 2\\pi rh$.",
+          "Take a triangular prism whose end triangles each have a square corner. The legs are the two sides that form that corner, $p$ and $q$. The longest side is $c$, and the prism's length is $L$. Its total surface area is $pq + (p + q + c)L$. The $pq$ is the two triangles, each $\\tfrac12 pq$.",
         ],
       },
     ],
     pitfalls: [
-      "A cylinder has two circular bases.",
-      "The rectangle's width is the circumference, not the radius.",
+      "A cylinder has two circular bases. Count both for total surface area, and neither for lateral area.",
+      "The rectangle's width is the circumference, $2\\pi r$, not the radius.",
     ],
     parentGuide:
-      "Peel the label off a can and lay it flat to see the rectangle.",
+      "Peel the label off a can and lay it flat to see the rectangle. Measure its width and compare it with the distance around the can.",
   }),
   lesson({
     id: "both-sides-situations",
     title: "Equations with a variable on both sides from a situation",
     summary:
-      "When two situations each have a start and a rate, comparing them gives an equation or inequality with the variable on both sides.",
+      "Two plans can each have a starting amount and a rate, an amount added or taken away each time. Gym A costs 20 dollars to join plus 5 dollars a visit, so $v$ visits cost $20 + 5v$. Gym B costs $8 + 8v$. Writing $20 + 5v = 8 + 8v$ asks when the costs are equal. The parts to the left and right of the equals sign are called the sides of the equation. The letter $v$ appears on both sides.",
+    senses: {
+      side: "side-of-equation",
+      unit: "unit",
+      increasing: "increasing",
+      decreasing: "decreasing",
+      "more than": "more-than",
+    },
+    noLink: ["changes", "parts"],
     templateIds: ["both-sides-situation-equation"],
     objectives: [
-      "Write an expression for each situation and join them with $=$, $<$ or $>$.",
-      "Handle a decreasing quantity by subtracting its rate.",
+      "Write an expression for each situation, then join the two with $=$, $<$ (less than) or $>$ (greater than).",
+      "Handle an amount that goes down by subtracting its rate.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Two totals, one variable",
         paragraphs: [
-          "Gym A charges 20 dollars to join plus 5 dollars a visit: $20+5v$. Gym B charges 8 dollars plus 8 dollars a visit: $8+8v$. The costs are the same when $20+5v=8+8v$.",
+          "A variable is a letter that stands for an unknown number, such as the number of visits $v$. Writing $5v$ means 5 times $v$.",
+          "An expression is a math phrase that names an amount. Each plan's total is an expression: its starting amount, plus its rate times the variable.",
+          "Gym A charges 20 dollars to join plus 5 dollars a visit: $20 + 5v$. Gym B charges 8 dollars plus 8 dollars a visit: $8 + 8v$.",
+          "An equation says two amounts are equal. The costs are the same when $20 + 5v = 8 + 8v$. Now the letter is on both sides of the equals sign.",
+          "To compare instead, use an inequality sign. $<$ means “is less than” and $>$ means “is greater than.” Gym A costs less than Gym B when $20 + 5v < 8 + 8v$.",
+          "When an amount goes down over time, subtract its rate. A tank with 67 liters that loses 3 liters a minute holds $67 - 3t$ liters after $t$ minutes.",
         ],
       },
     ],
     workedExample: {
       prompt:
         "Tank A has 67 liters and loses 3 liters a minute. Tank B has 11 liters and gains 5 liters a minute. Write the equation for when they hold the same amount.",
-      steps: ["Tank A: $67-3t$. Tank B: $11+5t$.", "Set them equal."],
+      steps: [
+        "Let $t$ be the number of minutes. Tank A starts at 67 and loses 3 each minute, so subtract: $67 - 3t$. Tank B starts at 11 and gains 5 each minute, so add: $11 + 5t$.",
+        "“The same amount” means equal, so join the two expressions with an equals sign.",
+      ],
       answer: "$67-3t=11+5t$",
     },
     closingSections: [
@@ -1386,22 +1549,26 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Start, rate, variable",
         paragraphs: [
-          "For each situation write start $\\pm$ rate $\\times$ variable. Use $+$ when the amount grows and $-$ when it shrinks. Join with $=$ for equal, $<$ for less than and $>$ for more than.",
+          "For each situation, write the starting amount, then the rate times the variable. Use + when the amount grows and − when it shrinks.",
+          "Join the two expressions: $=$ for “the same,” $<$ for “less than,” $>$ for “more than.”",
+          "Keep each starting amount with its own rate. A joining fee is not a rate, so do not add it to the rate.",
         ],
       },
       {
         stage: "formal",
         title: "Linear expressions",
         paragraphs: [
-          "A quantity that starts at $a$ and changes at rate $r$ is $a+rx$ after $x$ units. The quantities are equal when $a_1+r_1x=a_2+r_2x$.",
+          "A quantity that starts at $a$ and changes by $r$ for each unit has the value $a + rx$ after $x$ units. Here $r$ is negative when the quantity decreases.",
+          "Two such quantities are equal when $a_1 + r_1x = a_2 + r_2x$. The small 1 and 2 label the first and second situation. The first is less than the second when $a_1 + r_1x < a_2 + r_2x$.",
         ],
       },
     ],
     pitfalls: [
-      "Do not combine a fee and a rate into one number.",
-      '"Less than" is $<$. It does not include equal.',
+      "Do not combine a fee and a rate into one number. In $20 + 5v$, the 20 is paid once and the 5 is paid each visit.",
+      "“Less than” is $<$, which does not include equal.",
+      "Subtract the rate when the amount goes down.",
     ],
     parentGuide:
-      "Compare two phone plans or two savings plans and write each total with a letter.",
+      "Compare two phone plans or two savings plans. Write each total with a letter, then write when they are equal.",
   }),
 ];

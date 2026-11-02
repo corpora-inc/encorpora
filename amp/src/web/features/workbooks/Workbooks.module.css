@@ -52,6 +52,8 @@
   line-height: 1.15;
   /* Relative to the title's size: words keep their spaces at 320 px. */
   letter-spacing: -0.01em;
+  /* "No. 1 · Sunday, November 1" never leaves a lone "1" on its own line. */
+  text-wrap: balance;
 }
 .lede {
   margin: 0;
@@ -386,9 +388,10 @@
 .saveBar {
   position: sticky;
   bottom: 0;
+  z-index: 1;
   display: grid;
   gap: var(--space-2);
-  padding: var(--space-3) 0 var(--space-2);
+  padding: var(--space-3) 0 max(var(--space-3), env(safe-area-inset-bottom));
   border-top: 1px solid var(--color-border);
   background: var(--color-surface-raised);
 }

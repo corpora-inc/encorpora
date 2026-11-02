@@ -29,22 +29,32 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
       "Payroll tax and income tax both come from earnings. Payroll tax is taken from each paycheck for specific programs; income tax is figured on the year's income.",
   },
   "tax-bracket-owed": {
+    senses: { part: "part" },
+    noLink: ["jumps", "whole"],
     goal: "Use a three-bracket tax table to find the tax owed or the tax on part of an income.",
     intuition:
-      "In a bracket table, income is cut into slices. Each slice has its own rate, and a rate applies only to the dollars in its own slice. Earning more moves only the new dollars into a higher rate; it never raises the rate on the dollars below.",
-    terms: ["tax-bracket", "taxable-income", "deduction"],
+      "An income tax is a tax on what you earn: money paid to the government. A bracket table cuts income into slices called brackets. Each slice has its own rate, a percent taken from only the dollars in that slice. If extra earnings reach a higher bracket, only those new dollars get the higher rate.",
+    terms: [
+      "tax-bracket",
+      "taxable-income",
+      [
+        "deduction",
+        "Here a deduction is an amount subtracted from income before the tax table is used.",
+      ],
+    ],
     method: [
-      "If a deduction is given, subtract it from earned income to get taxable income.",
-      "Split taxable income by row: the first row's full width, then the next rows' widths, then the rest. Skip rows the income does not reach.",
-      "Multiply each slice by its row's rate, writing the percent as hundredths, then add the results.",
+      "If a deduction (an amount you may subtract) is given, subtract it from earned income. What is left is the taxable income.",
+      "Fill the rows in order. Put as much income as fits into the first row, then into the next row, then the rest. Skip rows the income does not reach.",
+      "Multiply each slice by its row's rate, written as a decimal (a number with a decimal point, such as 0.12 for 12%). Then add the results.",
     ],
     watch:
-      "Do not tax all of the income at the rate of its top row. Only the part of income inside a row is taxed at that row's rate.",
+      "Do not tax all of the income at the top row's rate. Only the part of income inside a row is taxed at that row's rate.",
   },
   "payroll-property-tax": {
-    goal: "Find a payroll, sales or property tax, or net pay after two withholdings.",
+    senses: { unit: "unit", units: "unit" },
+    goal: "Find a payroll, sales or property tax, or the pay left after two taxes are taken out.",
     intuition:
-      "A percent tax takes that many hundredths of an amount. A property tax is often stated as dollars for each 100 dollars of value, so count how many hundreds the taxable value holds and multiply by the rate.",
+      "A tax is money paid to the government. Percent means per hundred, so an 8% tax takes 8 dollars from every 100 dollars. A property tax is often given as dollars for each 100 dollars of value. Then count how many hundreds the value holds and multiply by the rate.",
     terms: [
       [
         "payroll-tax",
@@ -60,17 +70,24 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "For a percent tax, write the percent as hundredths and multiply: 6% of 500 dollars is 0.06 × 500.",
-      "For net pay, subtract every tax from gross pay. For a sales total, tax only the taxable items, then add all prices and the tax.",
-      "For property tax, subtract any exemption from the value, divide by 100 to count the hundreds, and multiply by the rate per hundred.",
+      "For a percent tax, write the percent as a decimal (a number with a decimal point, such as 0.12) and multiply: 6% of 500 dollars is 0.06 × 500 = 30 dollars.",
+      "Net pay is the pay left after taxes: subtract every tax from gross pay, the pay before taxes. For a sales total, tax only the taxable items, then add all prices and the tax.",
+      "For property tax, subtract any exemption from the value. Divide by 100 to count the hundreds, then multiply by the rate for each 100.",
     ],
     watch:
-      "Read what the rate applies to: the taxable items only, or each 100 dollars of value, not each 1,000.",
+      "Read what the rate applies to: only the taxable items, or each 100 dollars of value, not each 1,000.",
   },
   "budget-percent-share": {
+    senses: {
+      change: "change",
+      "more than": "more-than",
+      part: "part",
+      parts: "part",
+      whole: "whole",
+    },
     goal: "Find a budget category's percent of the total, its dollar amount, or a missing percent.",
     intuition:
-      "A budget plans how income is spent. A category's share is its part divided by the whole, written as a percent. Fixed expenses stay the same each month, such as rent; variable expenses change, such as food or fun; savings is money set aside. All the shares of a complete budget add to 100%.",
+      "A budget is a plan for how to use income, the money that comes in. Percent means per hundred. A category's share is its amount divided by the whole budget, written as a percent. Fixed expenses, such as rent, stay the same each month. Variable expenses, such as food, change. All the shares of a full budget add to 100%.",
     terms: [
       "fixed-cost",
       "variable-cost",
@@ -80,30 +97,37 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Share of the budget = category amount ÷ total, written as a percent.",
-      "Dollar amount of a category = its percent (as hundredths) × the total.",
-      "To combine categories, add their amounts or percents first. A missing percent is 100% minus the others. Expenses above income give a percent above 100%.",
+      "Share of the budget = category amount ÷ total. Multiply by 100 to write it as a percent.",
+      "Write the percent as a decimal (a number with a decimal point, such as 0.12). Dollar amount of a category = that decimal × the total.",
+      "To combine categories, add their amounts or percents first. A missing percent is 100% minus the others.",
     ],
     watch:
-      "The whole is the total of the budget, not the rest of it. A deficit means expenses are more than 100% of income.",
+      "Divide by the whole budget, not by what is left of it. Spending more than income gives a share above 100%.",
   },
   "net-worth-statement": {
-    goal: "Classify assets and liabilities, find net worth, or decide how a transaction changes it.",
+    senses: {
+      balance: "balance-account",
+      change: "change",
+      changes: "change",
+      sort: "sort",
+    },
+    noLink: ["side"],
+    goal: "Sort assets and liabilities, find net worth, or decide how a purchase or payment changes it.",
     intuition:
-      "An asset is something a person owns that has value. A liability is money the person owes. Net worth is what would be left if every asset were sold and every liability paid: assets minus liabilities. It can be negative.",
+      "An asset is something you own that has value, such as savings or a bike. A liability is money you owe, such as a loan. Net worth is what would be left if you sold every asset and paid every liability: assets minus liabilities. It can be below 0.",
     terms: ["asset", "liability", "net-worth"],
     method: [
-      "Sort each item as owned or owed. Add the assets and, separately, the liabilities.",
-      "Net worth = total assets − total liabilities. If liabilities are larger, the net worth is negative.",
-      "For a transaction, find the change in assets and the change in liabilities. Net worth changes by the change in assets minus the change in liabilities.",
+      "Sort each item as owned or owed. Add up the assets. Separately, add up the liabilities.",
+      "Net worth = total assets − total liabilities. If liabilities are larger, the net worth is negative (below 0).",
+      "For a purchase or payment, find how much assets change and how much liabilities change. Net worth changes by the asset change minus the liability change.",
     ],
     watch:
-      "Debts are subtracted, not added. Paying a debt from savings lowers both totals equally, so net worth stays the same.",
+      "Subtract debts. Do not add them. Paying a debt from savings lowers both totals by the same amount, so net worth stays the same.",
   },
   "incentive-compare": {
     goal: "Find the lowest final cost among a coupon, percent discount and rebate, or compare stores.",
     intuition:
-      "Different offers save money in different ways. A coupon takes dollars off. A percent discount takes a share of the price off. A mail-in rebate is paid back after the full price is paid. To compare, find the dollars each one saves, or the final cost.",
+      "A coupon takes a set number of dollars off. A percent discount takes a percent of the price off; percent means per hundred. A mail-in rebate pays money back after you pay the full price. To compare offers, find the final cost under each one.",
     terms: [
       "coupon",
       "rebate",
@@ -113,9 +137,9 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Turn each offer into dollars saved or a final cost: percent off saves price × percent ÷ 100.",
-      "When two offers are used, apply them in the stated order. A percent is taken from the price it is applied to.",
-      "Compare the final costs; the lowest is the best deal.",
+      "Turn each offer into a final cost. Percent off saves price × percent ÷ 100.",
+      "When two offers are used, apply them in the order given. A percent is taken of the price at that moment.",
+      "Compare the final costs. The lowest is the best deal.",
     ],
     watch:
       "A percent taken before a coupon is a different amount from a percent taken after it. Compare final prices, not just the size of the discounts.",
@@ -128,15 +152,15 @@ export const financeIncomePrinciples: Record<string, string> = {
   "tax-kinds-defined":
     "An income tax is figured on income earned over a year. A payroll tax is withheld from wages to fund programs such as Social Security and Medicare. A sales tax is a percent of a purchase price. A property tax is a yearly amount based on the assessed value of real property.",
   "tax-bracket-owed":
-    "For thresholds $t_1<t_2$ and rates $r_1<r_2<r_3$, tax on taxable income $I$ is $r_1\\min(I,t_1)+r_2\\max(0,\\min(I,t_2)-t_1)+r_3\\max(0,I-t_2)$, with rates written as hundredths. The tax is a continuous, increasing function of $I$; its slope on each row is that row's rate.",
+    "Let $t_1<t_2$ be where the rows end and $r_1<r_2<r_3$ the rates as decimals. Here $\\min$ picks the smaller number and $\\max$ the larger. The tax on taxable income $I$ is $r_1\\min(I,t_1)+r_2\\max(0,\\min(I,t_2)-t_1)+r_3\\max(0,I-t_2)$. The tax rises with income, with no jumps. Inside each row it rises by that row's rate for each extra dollar.",
   "payroll-property-tax":
-    "A tax of $p\\%$ on amount $A$ is $A\\cdot p/100$. If gross pay $G$ has withholdings of $p\\%$ and $q\\%$, net pay is $G(1-(p+q)/100)$. A property tax of $k$ dollars per 100 dollars of taxable value $V$ is $kV/100$.",
+    "A tax of $p\\%$ on an amount $A$ is $A\\cdot p/100$, where $\\cdot$ means times. If gross pay $G$ has taxes of $p\\%$ and $q\\%$ withheld, net pay is $G(1-(p+q)/100)$. A property tax of $k$ dollars for each 100 dollars of taxable value $V$ is $kV/100$.",
   "budget-percent-share":
-    "For total $T$ and part $A$, the share is $100A/T$ percent. A part with share $s\\%$ of $T$ is $sT/100$. The shares of all parts of a whole sum to $100\\%$, and a part larger than the reference total has a share above $100\\%$.",
+    "For a total $T$ and a part $A$, the share is $100A/T$ percent. A part with a share of $s\\%$ of $T$ is $sT/100$. The shares of all parts of a whole add to $100\\%$. An amount larger than the total it is compared with, such as expenses above income, is more than $100\\%$ of it.",
   "net-worth-statement":
-    "Net worth is $N=A-L$ for total assets $A$ and total liabilities $L$. A transaction that changes assets by $\\Delta A$ and liabilities by $\\Delta L$ changes net worth by $\\Delta A-\\Delta L$.",
+    "Net worth is $N=A-L$ for total assets $A$ and total liabilities $L$. The symbol $\\Delta$ (delta) means change in. A purchase or payment that changes assets by $\\Delta A$ and liabilities by $\\Delta L$ changes net worth by $\\Delta A-\\Delta L$.",
   "incentive-compare":
-    "For price $P$, a coupon of $a$ dollars gives $P-a$; a $p\\%$ discount gives $P(1-p/100)$; a rebate of $b$ dollars gives $P-b$. Applied in sequence, percent first then coupon gives $P(1-p/100)-a$, and coupon first then percent gives $(P-a)(1-p/100)$; these differ by $ap/100$.",
+    "For a price $P$, a coupon of $a$ dollars gives $P-a$. A $p\\%$ discount gives $P(1-p/100)$. A rebate of $b$ dollars gives $P-b$. Used one after the other, percent first then coupon gives $P(1-p/100)-a$, and coupon first then percent gives $(P-a)(1-p/100)$. These differ by $ap/100$.",
 };
 
 export const financeIncomeLessons: Lesson[] = [
@@ -252,21 +276,24 @@ export const financeIncomeLessons: Lesson[] = [
   },
   {
     id: "tax-bracket-owed",
+    senses: { term: "term-expression" },
+    noLink: ["edge", "jumps"],
     title: "Income tax from a bracket table",
     summary:
-      "Each rate applies only to the part of income inside its own bracket. Tax each slice, then add.",
+      "An income tax is a tax on what you earn: money paid to the government. A tax table cuts income into slices called brackets. Each slice has its own rate, a percent taken from only the dollars in that slice. To find the tax, work out the tax on each slice, then add them.",
     templateIds: ["tax-bracket-owed"],
     objectives: [
-      "Split income into the slices of a bracket table.",
-      "Find the tax owed, with dollars and cents.",
+      "Split an income into the slices, or brackets, of a tax table.",
+      "Find the tax owed, in dollars and cents.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Rates apply to slices",
         paragraphs: [
-          "An income tax table cuts income into slices called brackets. Each bracket has a rate, a percent of the dollars in that slice. Income inside the first bracket is taxed at the first rate, income inside the second at the second rate, and so on.",
-          "Earning more moves only the new dollars into a higher rate. The dollars below are taxed exactly as before.",
+          "Percent means per hundred, so a rate of 10% takes 10 dollars from every 100 dollars. An income tax table cuts income into slices called brackets. Each bracket has a rate.",
+          "Income inside the first bracket is taxed at the first rate. Income inside the second bracket is taxed at the second rate, and so on. For example, if the first 10,000 dollars is taxed at 10%, that slice costs 10,000 × 0.10 = 1,000 dollars, whatever else you earn.",
+          "If extra earnings reach a higher bracket, only those new dollars are taxed at the higher rate. The dollars below are taxed exactly as before.",
         ],
       },
     ],
@@ -274,10 +301,10 @@ export const financeIncomeLessons: Lesson[] = [
       prompt:
         "A table taxes the first 10,000 dollars of taxable income at 10%, the next 30,000 dollars (from 10,000 to 40,000) at 12%, and income above 40,000 dollars at 22%. How much tax is owed on 50,000 dollars?",
       steps: [
-        "Split 50,000 into slices: the first row holds 10,000, the second holds 30,000 (up to 40,000), and the rest is $50{,}000-40{,}000=10{,}000$.",
-        "Tax each slice: $10{,}000\\times0.10=1{,}000$, $30{,}000\\times0.12=3{,}600$, and $10{,}000\\times0.22=2{,}200$.",
-        "Add: $1{,}000+3{,}600+2{,}200=6{,}800$ dollars.",
-        "Check: taxing all 50,000 dollars at 22% would give 11,000 dollars, far too much, because only 10,000 dollars is in the 22% row.",
+        "Split 50,000 into the table's slices. The first row holds 10,000. The second holds 30,000, up to 40,000. The rest is $50{,}000-40{,}000=10{,}000$.",
+        "Tax each slice at its own rate, written as a decimal: $10{,}000\\times0.10=1{,}000$, $30{,}000\\times0.12=3{,}600$, and $10{,}000\\times0.22=2{,}200$.",
+        "Add the three slices' taxes: $1{,}000+3{,}600+2{,}200=6{,}800$ dollars.",
+        "Check: taxing all 50,000 dollars at 22% would give 11,000 dollars. That is far too much, because only 10,000 dollars is in the 22% row.",
       ],
       answer: "6,800.00",
       answerUnit: "dollars",
@@ -287,43 +314,48 @@ export const financeIncomeLessons: Lesson[] = [
         stage: "method",
         title: "Deductions and raises",
         paragraphs: [
-          "If a deduction is allowed, subtract it from earned income first. The table applies to what is left, called taxable income. A person earning 62,000 dollars with a 12,000-dollar deduction has 50,000 dollars of taxable income.",
-          "A raise that stays in one row is taxed at that row's rate: a 1,000-dollar raise in the 12% row adds $1{,}000\\times0.12=120$ dollars of tax. Dollars of income exactly at a row's upper boundary belong to that row.",
+          "A deduction is an amount you are allowed to subtract from your income before tax. If one is allowed, subtract it from earned income first. The table applies to what is left, called taxable income. A person earning 62,000 dollars with a 12,000-dollar deduction has 62,000 − 12,000 = 50,000 dollars of taxable income.",
+          "A raise that stays inside one row is taxed at that row's rate. A 1,000-dollar raise in the 12% row adds $1{,}000\\times0.12=120$ dollars of tax. Income exactly at the top edge of a row belongs to that row.",
         ],
       },
       {
         stage: "formal",
         title: "The tax function",
         paragraphs: [
-          "For thresholds $t_1<t_2$ and rates $r_1,r_2,r_3$ written as hundredths, tax on income $I$ is $r_1\\min(I,t_1)+r_2\\max(0,\\min(I,t_2)-t_1)+r_3\\max(0,I-t_2)$. This is increasing and continuous in $I$: on each row its slope is that row's rate.",
+          "Let $t_1$ and $t_2$ be where the rows end, with $t_1<t_2$, and let $r_1$, $r_2$ and $r_3$ be the rates as decimals. Here $\\min(a,b)$ means the smaller of $a$ and $b$, and $\\max(a,b)$ means the larger.",
+          "The tax on taxable income $I$ is $r_1\\min(I,t_1)+r_2\\max(0,\\min(I,t_2)-t_1)+r_3\\max(0,I-t_2)$. Each term is one slice times its rate. The tax always rises as income rises, with no jumps. Inside each row it rises by that row's rate for each extra dollar.",
         ],
       },
     ],
     pitfalls: [
-      "Tax each slice at its own rate; do not tax all income at the top row's rate.",
+      "Tax each slice at its own rate. Do not tax all of the income at the top row's rate.",
       "The first slice is taxed too, at the first rate.",
-      "Subtract a deduction from income before using the table, not from the tax.",
+      "Subtract a deduction from the income before using the table, not from the tax.",
     ],
     parentGuide:
-      "Make a two-row table with the learner and find the tax on an income that reaches the second row, then ask why one rate does not apply to all of it.",
+      "Make a two-row tax table with the learner. Find the tax on an income that reaches the second row. Then ask why one rate does not apply to all of it.",
   },
   {
     id: "payroll-property-tax",
+    senses: { unit: "unit", units: "unit" },
+    noLink: ["rule"],
     title: "Payroll, sales and property tax amounts",
     summary:
-      "A percent tax takes that many hundredths of an amount; property tax often charges a rate for each 100 dollars of value.",
+      "A tax is money paid to the government. Percent means per hundred, so an 8% tax takes 8 dollars from every 100 dollars. A payroll tax is a tax taken out of a paycheck. A sales tax is added to a price. A property tax, on land and buildings, is often a set number of dollars for each 100 dollars of value.",
     templateIds: ["payroll-property-tax"],
     objectives: [
-      "Find a percent tax, net pay after two withholdings and a sales total with an exempt item.",
-      "Find a property tax from a rate per 100 dollars of value.",
+      "Find a percent tax, the pay left after two taxes are taken out, and a sales total that includes an untaxed item.",
+      "Find a property tax from a rate for each 100 dollars of value.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "A tax is a part of an amount",
         paragraphs: [
-          "A tax of 8% takes 8 hundredths of an amount. Withheld means taken out of pay before the worker receives it. An item that is exempt is not taxed, but it is still paid for at its price.",
-          "A property tax is often stated per 100 dollars of value: for example, 1.20 dollars for every 100 dollars. To use it, count how many hundreds the taxable value holds, then multiply by the rate.",
+          "A tax of 8% takes 8 hundredths of an amount. On 400 dollars of pay, that is 400 × 0.08 = 32 dollars.",
+          "A payroll tax is withheld from pay. Withheld means taken out before the worker receives the money. Gross pay is the pay before any tax is taken out. Net pay is what is left after.",
+          "A sales tax is added to the price of something you buy. An item that is exempt is not taxed, but you still pay its price.",
+          "A property tax is often stated per 100 dollars of value, for example 1.20 dollars for every 100 dollars. To use it, count how many hundreds the value holds. Then multiply by the rate.",
         ],
       },
     ],
@@ -331,9 +363,9 @@ export const financeIncomeLessons: Lesson[] = [
       prompt:
         "A county charges 1.20 dollars of property tax for each 100 dollars of taxable value. A home has a taxable value of 150,000 dollars. What is the yearly tax?",
       steps: [
-        "Count the 100-dollar units: $150{,}000\\div100=1{,}500$.",
-        "Charge 1.20 dollars for each: $1{,}500\\times1.20=1{,}800$.",
-        "Check by percent: 1.20 per 100 is 1.2%, and $150{,}000\\times0.012=1{,}800$.",
+        "The rate is for each 100 dollars, so count the 100-dollar units: $150{,}000\\div100=1{,}500$.",
+        "Charge 1.20 dollars for each unit: $1{,}500\\times1.20=1{,}800$.",
+        "Check with a percent. 1.20 dollars for every 100 dollars is 1.2%, and $150{,}000\\times0.012=1{,}800$.",
       ],
       answer: "1,800.00",
       answerUnit: "dollars",
@@ -343,43 +375,52 @@ export const financeIncomeLessons: Lesson[] = [
         stage: "method",
         title: "Other cases",
         paragraphs: [
-          "Net pay with two withholdings: subtract both taxes from gross pay, or multiply gross pay by 1 minus the two percents as hundredths. With 8% and 12% withheld from 400 dollars, net pay is $400\\times(1-0.20)=320$ dollars.",
-          "A sales tax on one taxable item: tax only that item's price, then add every price and the tax. An exemption lowers taxable property value first: subtract it before counting hundreds.",
+          "Net pay with two taxes withheld: subtract both taxes from gross pay. Or multiply gross pay by 1 minus the two percents, each written as a decimal (a number with a decimal point, such as 0.12). With 8% and 12% withheld from 400 dollars, the taxes add to 20%, so net pay is $400\\times(1-0.20)=320$ dollars.",
+          "Sales tax on one taxable item: tax only that item's price. Then add every price and the tax.",
+          "An exemption is an amount subtracted from a property's value before the tax is figured. Subtract it first, then count the hundreds.",
         ],
       },
       {
         stage: "formal",
         title: "Formulas",
         paragraphs: [
-          "A tax of $p\\%$ on amount $A$ is $Ap/100$. A property tax of $k$ dollars per 100 dollars on taxable value $V$ is $kV/100$. The stated percents and rates here are for practice; real rates differ by place and year.",
+          "A tax of $p\\%$ on an amount $A$ is $Ap/100$, meaning $A$ times $p$ divided by 100. A property tax of $k$ dollars for each 100 dollars of taxable value $V$ is $kV/100$. The rates here are for practice. Real rates differ by place and year.",
         ],
       },
     ],
     pitfalls: [
       "Divide a percent by 100 before multiplying.",
-      "Tax only what the rule taxes; exempt items are still paid for.",
-      "Property tax per 100 dollars is not per 1,000 dollars.",
+      "Tax only what the rule taxes. Exempt items are still paid for.",
+      "A property tax for each 100 dollars is not the same as for each 1,000 dollars.",
     ],
     parentGuide:
-      "Use a real receipt and pay stub: ask the learner to recompute one tax line from its stated rate.",
+      "Use a real receipt or pay stub. Ask the learner to work out one tax line again from its stated rate.",
   },
   {
     id: "budget-percent-share",
+    senses: {
+      change: "change",
+      "more than": "more-than",
+      part: "part",
+      parts: "part",
+      whole: "whole",
+    },
     title: "Budget shares as percents",
     summary:
-      "A category's share of a budget is its part divided by the whole, written as a percent.",
+      "A budget is a plan for how to use the money that comes in. Each part of the plan, such as rent or food, is a category. Percent means per hundred. A category's share is its amount divided by the whole budget, written as a percent. For example, 320 dollars of an 800-dollar budget is 320 ÷ 800 = 0.40, which is 40%.",
     templateIds: ["budget-percent-share"],
     objectives: [
       "Find a category's percent of a budget, and a dollar amount from a percent.",
-      "Combine fixed and variable expenses and savings.",
+      "Combine fixed expenses, variable expenses and savings.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Parts of one whole",
         paragraphs: [
-          "A budget plans how income is used. Fixed expenses stay the same each month, such as rent. Variable expenses can change, such as food or fun. Savings is money set aside. A category's share is its part divided by the whole budget, written as a percent.",
-          "In a complete budget every dollar is planned, so the shares add to 100%.",
+          "A budget plans how income, the money that comes in, is used. An expense is the money spent on something. Fixed expenses stay the same each month, such as rent. Variable expenses can change, such as food or fun. Savings is money set aside.",
+          "A category's share is its part divided by the whole budget. Writing it per hundred makes it a percent. For example, 80 dollars of an 800-dollar budget is 80 ÷ 800 = 0.10, which is 10%.",
+          "In a complete budget every dollar is planned. So all the shares add to 100%.",
         ],
       },
     ],
@@ -387,10 +428,10 @@ export const financeIncomeLessons: Lesson[] = [
       prompt:
         "A monthly budget of 800 dollars plans 320 dollars for rent, 160 for food, 80 for transport, 80 for fun and 160 for savings. What percent of the budget is rent?",
       steps: [
-        "The whole is 800 dollars and the part is 320 dollars.",
+        "The whole is the full budget, 800 dollars. The part is rent, 320 dollars.",
         "Divide the part by the whole: $320\\div800=0.40$.",
-        "Write 0.40 as a percent: 40%.",
-        "Check: $0.40\\times800=320$. The other shares are 20%, 10%, 10% and 20%; with 40% they add to 100%.",
+        "Write 0.40 per hundred: 0.40 = 40 hundredths, which is 40%.",
+        "Check: $0.40\\times800=320$. The other shares are 20%, 10%, 10% and 20%. With 40% they add to 100%.",
       ],
       answer: "40%",
     },
@@ -399,35 +440,41 @@ export const financeIncomeLessons: Lesson[] = [
         stage: "method",
         title: "Groups, missing shares and deficits",
         paragraphs: [
-          "To find a group's share, such as all fixed expenses, add their amounts first, then divide by the total. To find a dollar amount from a percent, multiply the total by the percent as hundredths. A missing share is 100% minus the others.",
-          "If expenses are more than income, they are more than 100% of income. Expenses of 440 dollars on an income of 400 dollars are $440\\div400=1.10$, or 110% of income.",
+          "To find a group's share, such as all fixed expenses, add their amounts first. Then divide by the total. To find a dollar amount from a percent, multiply the total by the percent written as a decimal (a number with a decimal point, such as 0.12). A missing share is 100% minus the others.",
+          "A deficit means spending more than comes in. Then expenses are more than 100% of income. Expenses of 440 dollars on an income of 400 dollars are $440\\div400=1.10$, which is 110% of income.",
         ],
       },
       {
         stage: "formal",
         title: "Share of a whole",
         paragraphs: [
-          "The share of part $A$ in total $T>0$ is $100A/T$ percent. A part with share $s\\%$ is $sT/100$. Shares of all parts of a whole sum to 100%.",
+          "The share of a part $A$ in a total $T$, with $T$ greater than 0, is $100A/T$ percent. A part with a share of $s\\%$ is $sT/100$. The shares of all parts of a whole add to 100%.",
         ],
       },
     ],
     pitfalls: [
-      "Divide by the whole budget, not by the rest of it.",
-      "Add the group before dividing.",
+      "Divide by the whole budget, not by what is left of it.",
+      "Add up a group before dividing.",
       "Expenses larger than income are more than 100% of income.",
     ],
     parentGuide:
-      "List the family's or learner's monthly spending in three groups (fixed, variable, saved) and find what percent each group is.",
+      "List monthly spending in three groups: fixed, variable and saved. Find what percent of the total each group is.",
   },
   {
     id: "net-worth-statement",
+    senses: {
+      change: "change",
+      changes: "change",
+      "more than": "more-than",
+      sort: "sort",
+    },
     title: "Assets, liabilities and net worth",
     summary:
-      "Net worth is total assets minus total liabilities, and it can be negative.",
+      "An asset is something you own that has value, such as savings or a bike. A liability is money you owe, such as a loan. Net worth is assets minus liabilities: what you would have left after paying everything you owe. If you owe more than you own, net worth is negative, below 0.",
     templateIds: ["net-worth-statement"],
     objectives: [
-      "Sort items into assets and liabilities.",
-      "Find net worth and decide how a transaction changes it.",
+      "Sort items into assets (owned) and liabilities (owed).",
+      "Find net worth, and decide how a purchase or payment changes it.",
     ],
     sections: [
       {
@@ -435,7 +482,8 @@ export const financeIncomeLessons: Lesson[] = [
         title: "Owned and owed",
         paragraphs: [
           "An asset is something a person owns that has value, such as savings or a bicycle. A liability is money the person owes, such as a loan or a bill not yet paid.",
-          "Net worth is what would remain if every asset were turned into money and every liability paid: total assets minus total liabilities. If a person owes more than they own, net worth is negative.",
+          "Net worth is what would be left if every asset were turned into money and every liability were paid. So net worth = total assets − total liabilities. Someone who owns 1,000 dollars of things and owes 480 dollars has a net worth of 1,000 − 480 = 520 dollars.",
+          "If a person owes more than they own, net worth is negative, a number below 0.",
         ],
       },
     ],
@@ -443,9 +491,9 @@ export const financeIncomeLessons: Lesson[] = [
       prompt:
         "A person has a savings account of 600 dollars, a bicycle worth 150 dollars, a phone worth 250 dollars, a loan from family of 400 dollars and an unpaid phone bill of 80 dollars. What is the net worth?",
       steps: [
-        "Assets are what is owned: $600+150+250=1{,}000$ dollars.",
-        "Liabilities are what is owed: $400+80=480$ dollars.",
-        "Net worth = assets − liabilities = $1{,}000-480=520$ dollars.",
+        "Add up the assets, the things owned: $600+150+250=1{,}000$ dollars.",
+        "Add up the liabilities, the money owed: $400+80=480$ dollars.",
+        "Subtract what is owed from what is owned: net worth = $1{,}000-480=520$ dollars.",
       ],
       answer: "520",
       answerUnit: "dollars",
@@ -453,44 +501,48 @@ export const financeIncomeLessons: Lesson[] = [
     closingSections: [
       {
         stage: "method",
-        title: "Transactions",
+        title: "Purchases and payments",
         paragraphs: [
-          "To see how a transaction changes net worth, find its effect on assets and on liabilities. Paying 100 dollars from savings toward a loan lowers assets by 100 and liabilities by 100, so net worth is unchanged: $520-100-(480-100)=520$. Spending 100 dollars on something used up lowers assets by 100 with no change in liabilities, so net worth falls by 100.",
-          "If total assets are 900 dollars and net worth is −200 dollars, liabilities are $900-(-200)=1{,}100$ dollars.",
+          "To see how a purchase or payment changes net worth, find its effect on assets and on liabilities.",
+          "Paying 100 dollars from savings toward a loan lowers assets by 100 and liabilities by 100. So net worth does not change: $(1{,}000-100)-(480-100)=900-380=520$.",
+          "Spending 100 dollars on something that gets used up lowers assets by 100. Liabilities stay the same, so net worth falls by 100.",
+          "Working backward: if total assets are 900 dollars and net worth is −200 dollars, liabilities are $900-(-200)=1{,}100$ dollars.",
         ],
       },
       {
         stage: "formal",
         title: "Relationship",
         paragraphs: [
-          "Net worth $N=A-L$. A transaction changing assets by $\\Delta A$ and liabilities by $\\Delta L$ changes net worth by $\\Delta A-\\Delta L$.",
+          "Net worth is $N=A-L$, for total assets $A$ and total liabilities $L$. The symbol $\\Delta$ (delta) means change in. A purchase or payment that changes assets by $\\Delta A$ and liabilities by $\\Delta L$ changes net worth by $\\Delta A-\\Delta L$.",
         ],
       },
     ],
     pitfalls: [
-      "Subtract liabilities; do not add them.",
+      "Subtract liabilities. Do not add them.",
       "A negative net worth means liabilities are larger than assets.",
       "Using savings to pay a debt does not change net worth.",
     ],
     parentGuide:
-      "Have the learner list what they own and owe, find the net worth, and then say what happens to it when they buy something with savings.",
+      "Have the learner list what they own and what they owe, and find the net worth. Then ask what happens to it when they buy something with savings.",
   },
   {
     id: "incentive-compare",
     title: "Compare coupons, discounts and rebates",
     summary:
-      "Find the final cost under each offer, using stated order for combined offers, and compare.",
+      "Stores offer different ways to save. A coupon takes a set number of dollars off. A percent discount takes a percent of the price off. A rebate pays money back after you pay full price. To compare offers, find the final cost under each one, the amount you really pay. The lowest final cost is the best deal.",
     templateIds: ["incentive-compare"],
     objectives: [
-      "Compare a coupon, a percent discount and a rebate by final cost.",
-      "Apply a percent discount and a coupon in a stated order.",
+      "Compare a coupon, a percent discount and a rebate by their final costs.",
+      "Apply a percent discount and a coupon in a given order.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Three ways to save",
         paragraphs: [
-          "A coupon takes a stated number of dollars off. A percent discount takes a share of the price off. A mail-in rebate returns money after the purchase; the full price is paid first. To compare, find each offer's final cost.",
+          "A coupon takes a set number of dollars off, such as 10 dollars off. A percent discount takes a percent of the price off. Percent means per hundred, so 20% off an 80-dollar jacket takes off 80 × 0.20 = 16 dollars.",
+          "A mail-in rebate gives money back after the purchase. You pay the full price first, then get the rebate later.",
+          "The offers save money in different ways, so compare the final cost of each: what you really pay after the offer.",
         ],
       },
     ],
@@ -498,10 +550,10 @@ export const financeIncomeLessons: Lesson[] = [
       prompt:
         "A jacket costs 80 dollars. Offer A is a coupon for 10 dollars off. Offer B is 20% off. Offer C is a rebate of 12 dollars after paying full price. Which offer gives the lowest final cost?",
       steps: [
-        "Coupon: $80-10=70$ dollars.",
-        "Percent discount: 20% of 80 is $80\\times0.20=16$, so the cost is $80-16=64$ dollars.",
-        "Rebate: $80-12=68$ dollars.",
-        "The lowest final cost is 64 dollars, from the percent discount.",
+        "Coupon: take 10 dollars off the price. $80-10=70$ dollars.",
+        "Percent discount: 20% of 80 is $80\\times0.20=16$ dollars. So the cost is $80-16=64$ dollars.",
+        "Rebate: pay 80, then get 12 back. $80-12=68$ dollars.",
+        "Compare the three final costs: 70, 64 and 68. The lowest is 64 dollars, from the percent discount.",
       ],
       answer: "The percent discount, 64 dollars",
     },
@@ -510,24 +562,26 @@ export const financeIncomeLessons: Lesson[] = [
         stage: "method",
         title: "Two offers in a stated order",
         paragraphs: [
-          "A percent is taken from the price it is applied to, so the order matters. With the 20% discount first, then the 10-dollar coupon: $80-16=64$, then $64-10=54$ dollars. With the coupon first, then the discount: $80-10=70$, and 20% of 70 is 14, so $70-14=56$ dollars.",
-          "To compare two stores, find each store's final price, then subtract the lower from the higher.",
+          "A percent is taken of the price at the moment it is used, so the order matters.",
+          "With the 20% discount first and then the 10-dollar coupon: $80-16=64$, then $64-10=54$ dollars. With the coupon first and then the discount: $80-10=70$. 20% of 70 is 14, so the cost is $70-14=56$ dollars.",
+          "To compare two stores, find each store's final price. Then subtract the lower from the higher.",
         ],
       },
       {
         stage: "formal",
         title: "Final cost formulas",
         paragraphs: [
-          "For price $P$: coupon $a$ gives $P-a$; $p\\%$ off gives $P(1-p/100)$; rebate $b$ gives $P-b$. Percent first then coupon gives $P(1-p/100)-a$; coupon first then percent gives $(P-a)(1-p/100)$. They differ by $ap/100$.",
+          "Let $P$ be the price. A coupon of $a$ dollars gives $P-a$. A discount of $p\\%$ gives $P(1-p/100)$, meaning $P$ times $(1-p/100)$. A rebate of $b$ dollars gives $P-b$.",
+          "Percent first and then coupon gives $P(1-p/100)-a$. Coupon first and then percent gives $(P-a)(1-p/100)$. The two results differ by $ap/100$ dollars. With the jacket, $10\\times20/100=2$, and 56 − 54 = 2.",
         ],
       },
     ],
     pitfalls: [
       "Compare final costs, not just the size of each discount.",
-      "A rebate is received after paying the full price.",
-      "Follow the stated order when a percent and a coupon are combined.",
+      "A rebate comes after you pay the full price.",
+      "Follow the given order when a percent and a coupon are combined.",
     ],
     parentGuide:
-      "At a store or on a flyer, ask the learner to compute the final price under two different offers and say which is lower.",
+      "At a store or on a flyer, ask the learner to work out the final price under two different offers and say which is lower.",
   },
 ];

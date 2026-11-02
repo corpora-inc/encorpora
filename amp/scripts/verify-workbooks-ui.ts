@@ -204,6 +204,8 @@ const me = fixtureMe(
 let failNextDownload: false | "pdf" | "all" = false;
 /** Every workbook read fails until cleared (the API is unreachable). */
 let failLoads = false;
+/** The next results save fails. */
+let failNextSave = false;
 async function fixture(page: Page) {
   const errors: string[] = [];
   page.on("console", (message) => {
@@ -213,6 +215,17 @@ async function fixture(page: Page) {
   await page.route("**/api/v1/**", async (route) => {
     const request = route.request();
     const url = new URL(request.url());
+    if (
+      failNextSave &&
+      request.method() === "POST" &&
+      url.pathname.endsWith("/results")
+    ) {
+      failNextSave = false;
+      return route.fulfill({
+        status: 503,
+        json: { error: "Results can't be saved right now. Try again." },
+      });
+    }
     if (url.pathname.includes("/workbooks") && failLoads)
       return route.fulfill({
         status: 503,
@@ -532,6 +545,76 @@ try {
         .last()
         .getByRole("radio", { name: "Right" })
         .click();
+      // The title never strands its last word on a line of its own.
+      const lastLine = await page.evaluate(() => {
+        const h1 = document.querySelector("main h1")!;
+        const range = document.createRange();
+        range.selectNodeContents(h1);
+        const lines = [...range.getClientRects()].filter((r) => r.width);
+        const bottom = Math.max(...lines.map((r) => r.top));
+        return lines
+          .filter((r) => Math.abs(r.top - bottom) < 2)
+          .reduce((sum, r) => sum + r.width, 0);
+      });
+      assert.ok(
+        lastLine > 60,
+        `${label}: title ends with a ${lastLine}px line`,
+      );
+      // Mid-list, Save stays on screen in a bar one button tall.
+      await page
+        .getByRole("list", { name: "Problems" })
+        .getByRole("listitem")
+        .nth(8)
+        .scrollIntoViewIfNeeded();
+      const bar = await page.evaluate(() => {
+        const button = [...document.querySelectorAll("main button")].find((b) =>
+          /result/.test(b.textContent ?? ""),
+        )!;
+        const box = button.getBoundingClientRect();
+        const pinned = button.parentElement!.getBoundingClientRect();
+        return { top: box.top, bottom: box.bottom, height: pinned.height };
+      });
+      const viewportHeight = page.viewportSize()!.height;
+      assert.ok(
+        bar.top >= 0 && bar.bottom <= viewportHeight,
+        `${label}: Save is off screen mid-list`,
+      );
+      assert.ok(
+        bar.height <= 80,
+        `${label}: save bar is ${Math.round(bar.height)}px tall`,
+      );
+      // A failed save says so in a toast and moves nothing; the entries stay.
+      const saveBox = await page
+        .getByRole("button", { name: "Save 2 results" })
+        .boundingBox();
+      failNextSave = true;
+      await page.getByRole("button", { name: "Save 2 results" }).click();
+      await page
+        .getByRole("alert")
+        .filter({ hasText: "can't be saved" })
+        .waitFor();
+      assert.deepEqual(
+        await page
+          .getByRole("button", { name: "Save 2 results" })
+          .boundingBox(),
+        saveBox,
+        `${label}: a failed save moved the save bar`,
+      );
+      // The message never covers the button that retries.
+      const toast = await page
+        .getByRole("alert")
+        .filter({ hasText: "can't be saved" })
+        .boundingBox();
+      assert.ok(
+        toast &&
+          saveBox &&
+          (toast.y + toast.height <= saveBox.y ||
+            toast.y >= saveBox.y + saveBox.height),
+        `${label}: the save error covers Save`,
+      );
+      if (width <= 390)
+        await page.screenshot({ path: `${output}results-error-${label}.png` });
+      errors.length = 0;
       await page.getByRole("button", { name: "Save 2 results" }).click();
       // Radix also mirrors a toast into a live region: either copy will do.
       await page

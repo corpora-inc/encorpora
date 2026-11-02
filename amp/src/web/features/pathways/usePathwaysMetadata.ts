@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import type { MapSkill } from "./model";
-import { bandLabel } from "./model";
 
 /** Public map metadata is derived only from the catalog, never visitor state. */
 const publicOrigin = "https://amp.corpora.inc";
@@ -81,7 +80,7 @@ export function usePathwaysMetadata(skill?: MapSkill, unknownSkill = false) {
 
   useEffect(() => {
     document.title = skill
-      ? `${skill.title} · ${bandLabel(skill.gradeBand)} | AMP Pathways`
+      ? `${skill.title} | AMP Pathways`
       : "Explore Math Skills | AMP Pathways";
     let description = document.querySelector<HTMLMetaElement>(
       'meta[name="description"]',

@@ -211,9 +211,9 @@ export const numberEntries: GlossaryEntry[] = [
     term: "exponent",
     forms: ["exponent", "exponents"],
     plain:
-      "A small raised number written after a number. It tells how many copies of that number to multiply together.",
+      "A small raised number written after a number. When it is a whole number, it tells how many copies of that number to multiply together.",
     example: "$2^3 = 2 \\times 2 \\times 2 = 8$. The exponent is 3.",
-    uses: [],
+    uses: ["whole-number"],
     band: "4",
   },
   {
@@ -337,7 +337,7 @@ export const numberEntries: GlossaryEntry[] = [
     term: "least common multiple",
     forms: ["least common multiple", "least common multiples", "lcm"],
     plain:
-      "The smallest number, other than 0, that is a multiple of each of the numbers.",
+      "The smallest positive number that is a multiple of each of the numbers.",
     example:
       "Multiples of 4 are 4, 8, 12, …; multiples of 6 are 6, 12, …; the least common multiple is 12.",
     uses: ["multiple"],
@@ -450,7 +450,8 @@ export const numberEntries: GlossaryEntry[] = [
     id: "opposite-number",
     term: "opposite",
     forms: ["opposite", "opposites"],
-    plain: "The number the same distance from 0 on the other side of 0.",
+    plain:
+      "The number the same distance from 0 on the other side of 0. The opposite of 0 is 0. A number plus its opposite is 0.",
     example: "The opposite of 9 is $-9$, and the opposite of $-5$ is 5.",
     uses: ["distance"],
     noLink: ["side"],
@@ -462,11 +463,11 @@ export const numberEntries: GlossaryEntry[] = [
     term: "partial product",
     forms: ["partial product", "partial products"],
     plain:
-      "The product of one place-value part of a factor and the other factor. The partial products add up to the full product.",
+      "The product of place-value parts of the factors. The partial products add up to the full product.",
     example: "24 × 6 = 20 × 6 + 4 × 6 = 120 + 24 = 144.",
     uses: ["product-multiply", "place-value", "factor-number"],
     band: "4",
-    noLink: ["part"],
+    noLink: ["part", "parts"],
   },
   {
     id: "place",
@@ -630,9 +631,9 @@ export const numberEntries: GlossaryEntry[] = [
     term: "scientific notation",
     forms: ["scientific notation"],
     plain:
-      "A way to write a number as a number from 1 up to but not including 10, times a power of 10.",
+      "Writing a number as a number from 1 up to but not including 10, times a power of 10, with a minus sign in front if negative.",
     example: "$20{,}000 = 2 \\times 10^4$ and $0.003 = 3 \\times 10^{-3}$.",
-    uses: ["power-of-10"],
+    uses: ["power-of-10", "negative-number"],
     band: "8",
   },
   {

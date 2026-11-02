@@ -4,6 +4,10 @@ import type { TemplateMetadata } from "../math/contracts";
 import type { Lesson } from "../content/lessons";
 import type { GlossaryEntry } from "../glossary/types";
 import { gradeOrder, strandNames } from "./BirthYearPrompt";
+import {
+  CurriculumDetailsControl,
+  useCurriculumDetails,
+} from "./features/curriculum/CurriculumDetails";
 import { bandLabel } from "./features/pathways/model";
 import { Select } from "./ui/Select";
 import { MathText } from "./MathText";
@@ -38,6 +42,7 @@ export function LessonLibrary(props: {
   openReference: (lesson: Lesson, trigger: HTMLElement) => void;
   openTopic: (templateId: string) => void;
 }) {
+  const { shown: detailsShown } = useCurriculumDetails();
   const { location, navigate } = useAppRoute();
   const params = new URLSearchParams(location.search);
   const urlQuery = (params.get("q") ?? "").slice(0, 80);
@@ -211,6 +216,7 @@ export function LessonLibrary(props: {
           ))}
         </Select>
       </div>
+      <CurriculumDetailsControl />
       <p className={styles.summary} role="status" aria-live="polite">
         {summary}
       </p>
@@ -233,7 +239,7 @@ export function LessonLibrary(props: {
             group.list.filter((item) => shown.has(`type:${item.id}`)).length,
           0,
         );
-        const open = !closed.has(band);
+        const open = !detailsShown || !closed.has(band);
         return (
           <section
             key={band}
@@ -241,7 +247,7 @@ export function LessonLibrary(props: {
             data-band={band}
             hidden={!visibleLessons && !visibleTypes}
           >
-            <h2 className={styles.bandHeading}>
+            <h2 className={styles.bandHeading} hidden={!detailsShown}>
               <button
                 type="button"
                 aria-expanded={open}
@@ -266,7 +272,9 @@ export function LessonLibrary(props: {
             <div className={styles.bandBody} hidden={!open}>
               <ul
                 className={styles.lessons}
-                aria-label={`${bandLabel(band)} lessons`}
+                aria-label={
+                  detailsShown ? `${bandLabel(band)} lessons` : "Lessons"
+                }
                 hidden={!visibleLessons}
               >
                 {bandLessons.map((item) => (
@@ -302,7 +310,11 @@ export function LessonLibrary(props: {
                       key={group.strand}
                       className="topic-list"
                       data-strand={group.strand}
-                      aria-label={`${strandNames[group.strand]}, ${bandLabel(band)}`}
+                      aria-label={
+                        detailsShown
+                          ? `${strandNames[group.strand]}, ${bandLabel(band)}`
+                          : strandNames[group.strand]
+                      }
                       hidden={!visible}
                     >
                       {group.list.map((item) => (

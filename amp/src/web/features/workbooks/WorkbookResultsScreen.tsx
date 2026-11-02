@@ -161,14 +161,10 @@ function Results({
               />
             ))}
           </ol>
+          {/* The save bar stays one button tall while pinned; a failed save
+              says so in the shared toast, and a problem it names is also
+              marked on that problem's row. */}
           <div className={styles.saveBar}>
-            <p
-              className={styles.message}
-              role={message ? "alert" : undefined}
-              aria-live="polite"
-            >
-              {message}
-            </p>
             <Button
               variant="primary"
               className={styles.download}
@@ -188,6 +184,12 @@ function Results({
         </>
       )}
       <Toast message={saved} tone="status" onDismiss={() => setSaved("")} />
+      {/* At the top: the pinned Save button below stays free for a retry. */}
+      <Toast
+        message={message}
+        placement="top"
+        onDismiss={() => setMessage("")}
+      />
     </>
   );
 }

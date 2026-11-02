@@ -98,9 +98,11 @@ export const parabolaAxisVertexGraph = chainFamily({
       ],
       hint: `The axis of symmetry is the vertical line through the vertex. This parabola opens ${m.a > 0 ? "up" : "down"}, so its vertex is its ${m.a > 0 ? "lowest" : "highest"} point: read its coordinates: across from the $y$-axis first, then up or down from the $x$-axis.`,
       explanation: [
-        `The vertex is the point where the parabola turns: ${m.a > 0 ? "its lowest point" : "its highest point"}, at $(${sg(h)}, ${sg(k)})$.`,
-        `The axis of symmetry is the vertical line through the vertex, $x = ${h}$.`,
-        "The axis is written as an equation of a vertical line, and the vertex as an ordered pair.",
+        `A parabola is the U-shaped graph of a quadratic. Its vertex is the point where it turns: here ${m.a > 0 ? "its lowest point, since it opens up" : "its highest point, since it opens down"}.`,
+        `Read the vertex from the grid: ${sg(h)} across from the $y$-axis, then ${sg(k)} up or down. As an ordered pair $(x, y)$ it is $(${sg(h)}, ${sg(k)})$.`,
+        `The axis of symmetry is the vertical line through the vertex that splits the parabola into mirror halves.`,
+        `Every point on a vertical line has the same $x$-coordinate, so its equation is $x = ${h}$, not a $y =$ equation.`,
+        `The axis of symmetry is $x = ${h}$ and the vertex is $(${sg(h)}, ${sg(k)})$.`,
       ],
     });
     if (!surface) return null;
@@ -231,9 +233,11 @@ function graphIsFunction(seed: string): GeneratedProblem {
     ),
     hint: `A graph represents a function when each input $x$ has exactly one output $y$. Picture the vertical line $x = ${probe}$ on each graph, then slide it left and right: it must never touch the graph in more than one place.`,
     explanation: (name) => [
-      "A function gives one output for each input, so a vertical line may cross its graph at most once.",
+      "A function gives exactly one output $y$ for each input $x$.",
+      "Every point on a vertical line has the same input $x$. If a vertical line crosses a graph twice, that input has two outputs.",
+      "So a graph is a function when no vertical line crosses it more than once. This is the vertical line test.",
       "Each of the other three graphs has a vertical line that crosses it in two or more points.",
-      `${name} passes the vertical line test.`,
+      `${name} passes the vertical line test, so it represents a function.`,
     ],
     walkthrough: sceneOf(good.plot).build({
       title: "A graph that passes the vertical line test",
@@ -341,10 +345,16 @@ function inequalityBothSides(seed: string): GeneratedProblem {
       distractors,
       hint: `Collect the $x$ terms on one side: subtract $${linear(c, 0)}$ from both sides, and move the constant ${b} across. Then divide by ${A}${A < 0 ? " and reverse the inequality sign, since you divide by a negative number" : ""}.`,
       explanation: (name) => [
-        `Subtract $${linear(c, 0)}$ from both sides: $${linear(A, b)} ${texOp[op]} ${d}$.`,
-        `Move ${b} to the other side: $${linear(A, 0)} ${texOp[op]} ${D}$.`,
-        `Divide by ${A}${A < 0 ? ", reversing the inequality sign" : ""}: $${boundaryTex}$.`,
-        `${name} has ${closed(answerOp) ? "a closed" : "an open"} circle at ${halfPlain(x0)} with the ray to the ${rightward(answerOp) ? "right" : "left"}.`,
+        `Solve an inequality like an equation, with one extra rule: dividing or multiplying by a negative number flips the sign.`,
+        `Gather the $x$ terms on the left. ${c < 0 ? `Add $${linear(-c, 0)}$ to` : `Subtract $${linear(c, 0)}$ from`} both sides: $${linear(A, b)} ${texOp[op]} ${d}$.`,
+        b === 0
+          ? `There is no plain number on the left to move: $${linear(A, 0)} ${texOp[op]} ${D}$.`
+          : `Move the plain number. ${b < 0 ? `Add ${-b} to` : `Subtract ${b} from`} both sides: $${linear(A, 0)} ${texOp[op]} ${D}$.`,
+        A < 0
+          ? `Divide both sides by ${A}. It is negative, so the sign flips. For example, 2 < 3 but −2 > −3. That gives $${boundaryTex}$.`
+          : `Divide both sides by ${A}. It is positive, so the sign stays: $${boundaryTex}$.`,
+        `On a number line, a closed (filled) circle means the endpoint is included, for ≤ or ≥. An open circle means it is not, for < or >.`,
+        `${name} shows the solutions: ${closed(answerOp) ? "a closed" : "an open"} circle at ${halfPlain(x0)} with the ray to the ${rightward(answerOp) ? "right" : "left"}.`,
       ],
       walkthrough: numberLine({ min: lo, max: hi, step: 1, denominator: 2 })
         .interval(

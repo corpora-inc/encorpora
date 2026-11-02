@@ -272,7 +272,7 @@ extra mathematical claim before or after those verdicts, must not be ignored.
         else:
             radicand = re.fullmatch(r'\\sqrt\{(\d+)\}', target)[1]
             approximation = format(Decimal(radicand).sqrt().quantize(Decimal('0.00001')), 'f').rstrip('0')
-            lead = f"${target}$ is the number that times itself makes {radicand}. It is about {approximation}."
+            lead = f"${target}$ is the positive number that times itself makes {radicand}. It is about {approximation}."
         return ([lead, "Write each choice as a decimal, then compare place by place from the left."],
                 [f"The numbers marked true are {direction} than ${target}$."])
     if template == 'multiplication-fact-grid-select':
