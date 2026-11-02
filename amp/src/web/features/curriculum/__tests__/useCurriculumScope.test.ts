@@ -89,3 +89,25 @@ test("unresolved or failed identity cannot reveal persisted details", () => {
     }),
   ).toEqual({ scope: "guest", ready: true });
 });
+
+test("an account with no learners can inspect its active trial on shared progress routes", () => {
+  const trialAccount = {
+    ...account,
+    pathname: "/inventory",
+    me: { ...account.me, learners: [] },
+  };
+  expect(resolveCurriculumScope(trialAccount)).toEqual({
+    scope: "trial:visitor",
+    ready: true,
+  });
+  expect(resolveCurriculumScope({ ...trialAccount, loading: true }).ready).toBe(
+    false,
+  );
+  expect(
+    resolveCurriculumScope({ ...trialAccount, identityError: true }).ready,
+  ).toBe(false);
+  expect(
+    resolveCurriculumScope({ ...trialAccount, session: { accountId: "other" } })
+      .ready,
+  ).toBe(false);
+});

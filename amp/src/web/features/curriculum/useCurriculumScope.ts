@@ -63,7 +63,12 @@ export function resolveCurriculumScope({
     learners.find((l) => l.id === selected) ??
     (learners.length === 1 ? learners[0] : undefined);
   const explicitTrial = pathname.startsWith("/try") || trialContext;
-  const trialMode = explicitTrial || (!loading && !session && !!trial);
+  const trialMode =
+    explicitTrial ||
+    (!loading &&
+      !identityError &&
+      !!trial &&
+      (!session || (!!account && learners.length === 0)));
   if (trialMode)
     return {
       scope: trial ? `trial:${trial.learnerId}` : "pending",

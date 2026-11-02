@@ -448,8 +448,15 @@ try {
         await dialog.getByTestId("level-readout").innerText(),
         /Working level[\s\S]*-?\d+\.\d{2}[\s\S]*Estimated range/,
       );
-      assert.match(text, /You’re about 10 and have answered 25 problems/);
-      assert.match(text, /Our current best guess is /);
+      assert.match(
+        text,
+        /25 problems answered. Your answers help choose what to practice next/,
+      );
+      assert.doesNotMatch(text, /You’re about|Grade [0-9]|Estimated range/);
+      assert.match(
+        (await dialog.textContent()) ?? "",
+        /Our current best guess is /,
+      );
       assert.match(text, /Keep answering and we’ll sharpen this\./);
       assert.ok(
         await dialog

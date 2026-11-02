@@ -987,8 +987,14 @@ try {
         0,
       );
       await page
+        .getByRole("button", { name: "Browse skills", exact: true })
+        .click();
+      await page
         .getByRole("checkbox", { name: "Show grades and estimates" })
         .check();
+      await page
+        .getByRole("button", { name: "Close browser", exact: true })
+        .click();
       await page.getByText("Algebra frontier:", { exact: false }).waitFor();
       await page.getByRole("button", { name: "Zoom in", exact: true }).click();
       await noOverflow(page);
