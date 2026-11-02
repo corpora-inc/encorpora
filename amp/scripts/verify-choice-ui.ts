@@ -2,7 +2,7 @@ import { verifyLandscapeSmokeChecks } from "./verify-ui-viewports";
 import { absoluteValueTemplates } from "../src/math/absolute-value-practice.js";
 import { choose } from "./ui-controls";
 import { segments, spokenMath } from "../src/web/MathText";
-import { startTopic } from "./ui-practice";
+import { openTopicLesson } from "./ui-practice";
 import { algebraTemplates } from "../src/math/algebra-practice.js";
 import { linearSystemTemplates } from "../src/math/linear-system-practice.js";
 import assert from "node:assert/strict";
@@ -103,16 +103,22 @@ try {
       console.log(
         `Choice journey: ${template.id} at ${size.width}x${size.height}`,
       );
-      const batchPromise = page.waitForResponse(
-        (response) =>
-          response.url().endsWith("/batches") &&
-          response.request().method() === "POST" &&
-          response.request().postDataJSON()?.templateId === template.id,
-      );
-      const [batchResponse] = await Promise.all([
-        batchPromise,
-        startTopic(page, template.id),
-      ]).catch(async (error) => {
+      const batchResponse = await (async () => {
+        await openTopicLesson(page, template.id);
+        // Budget the batch response from its triggering action, after the
+        // independently bounded library navigation has finished.
+        const batchPromise = page.waitForResponse(
+          (response) =>
+            response.url().endsWith("/batches") &&
+            response.request().method() === "POST" &&
+            response.request().postDataJSON()?.templateId === template.id,
+        );
+        const [response] = await Promise.all([
+          batchPromise,
+          page.getByRole("button", { name: "Practice this", exact: true }).click(),
+        ]);
+        return response;
+      })().catch(async (error) => {
         await page.screenshot({
           path: new URL("failure.png", directory).pathname,
         });
