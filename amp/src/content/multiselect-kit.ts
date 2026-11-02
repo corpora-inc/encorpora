@@ -1,4 +1,4 @@
-import type { MethodTerm } from "../glossary/types";
+import type { GlossarySenses, MethodTerm } from "../glossary/types";
 import type { FacetMapping } from "./coverage";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
@@ -31,6 +31,10 @@ export interface SelectContentSpec {
   assessed: string;
   notAssessed: string;
   facet?: string;
+  /** Glossary senses and ordinary-word forms, for both the method (and so
+   * the template's generated hints) and the lesson. */
+  senses?: GlossarySenses;
+  noLink?: string[];
 }
 
 export function buildSelectContent(specs: readonly SelectContentSpec[]) {
@@ -45,6 +49,8 @@ export function buildSelectContent(specs: readonly SelectContentSpec[]) {
       terms: s.terms,
       method: s.steps,
       watch: s.watch,
+      ...(s.senses ? { senses: s.senses } : {}),
+      ...(s.noLink ? { noLink: s.noLink } : {}),
     };
     principles[s.id] = s.principle;
     lessons.push(
@@ -63,6 +69,8 @@ export function buildSelectContent(specs: readonly SelectContentSpec[]) {
         formal: [s.principle],
         pitfalls: s.pitfalls,
         parentGuide: s.parentGuide,
+        ...(s.senses ? { senses: s.senses } : {}),
+        ...(s.noLink ? { noLink: s.noLink } : {}),
       }),
     );
     facetMappings.push({
