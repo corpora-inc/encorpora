@@ -480,8 +480,12 @@ function linePair(r: Random) {
       `Line $${L[slot]}$`,
       pair.includes(di),
       pair.includes(di)
-        ? `Line $${L[slot]}$ is one of the two lines that are ${variant}.`
-        : `Line $${L[slot]}$ is not ${variant} to any other line.`,
+        ? variant === "parallel"
+          ? `Lines $${L[slot]}$ and $${L[order.indexOf(pair[0] === di ? pair[1] : pair[0])]}$ lean the same amount in the same direction, so they would never meet: they are parallel.`
+          : `Lines $${L[slot]}$ and $${L[order.indexOf(pair[0] === di ? pair[1] : pair[0])]}$ would cross at a square corner: they are perpendicular.`
+        : variant === "parallel"
+          ? `Line $${L[slot]}$ leans differently from every other line, so it is not parallel to any of them.`
+          : `Line $${L[slot]}$ makes a square corner with no other line, so it is not perpendicular to any of them.`,
     ),
   );
   return selectModel({
@@ -1271,8 +1275,9 @@ function stemLeafMatch(r: Random) {
     data = Array.from({ length: n }, () => r(lo * 10, (lo + 2) * 10 + 9));
     const stems = new Set(data.map((v) => Math.floor(v / 10)));
     const ones = (stem: number) =>
-      new Set(data.filter((v) => Math.floor(v / 10) === stem).map((v) => v % 10))
-        .size;
+      new Set(
+        data.filter((v) => Math.floor(v / 10) === stem).map((v) => v % 10),
+      ).size;
     // A row with two different leaves lets the listed order differ from the sorted one.
     if (
       stems.size >= 3 &&
