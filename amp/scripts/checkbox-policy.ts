@@ -48,17 +48,14 @@ export function rawCheckboxes(source: string): number[] {
 /** One implementation owns native checkbox behavior; screens compose it. */
 export function checkboxPolicyViolations(web: string): string[] {
   const files = screens(web);
+  const owner = join(web, "ui", "Checkbox.tsx");
   const violations = files
     .filter(
       (file) =>
-        relative(web, file) !== "ui/Checkbox.tsx" &&
-        rawCheckboxes(readFileSync(file, "utf8")).length,
+        file !== owner && rawCheckboxes(readFileSync(file, "utf8")).length,
     )
     .map((file) => relative(web, file));
-  if (
-    rawCheckboxes(readFileSync(join(web, "ui/Checkbox.tsx"), "utf8")).length !==
-    1
-  )
+  if (rawCheckboxes(readFileSync(owner, "utf8")).length !== 1)
     violations.push("ui/Checkbox.tsx must own exactly one native checkbox");
   return violations;
 }
