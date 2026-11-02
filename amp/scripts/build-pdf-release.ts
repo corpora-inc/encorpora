@@ -14,9 +14,15 @@ import { books } from "../src/books/catalog";
 import { loadBookPdf } from "../src/books/publication";
 import { verifyPublications, verifyPdfRelease } from "./pdf-release";
 const root = fileURLToPath(new URL("../", import.meta.url));
-if (process.argv.length !== 3)
-  throw new Error("Pass one empty PDF release output directory");
-const output = resolve(process.argv[2]!);
+// <empty output directory> [--seed <prior publications directory>]
+const [outputArg, ...rest] = process.argv.slice(2);
+const seed =
+  rest.length === 2 && rest[0] === "--seed" ? resolve(rest[1]!) : undefined;
+if (!outputArg || (rest.length && !seed))
+  throw new Error(
+    "Pass one empty PDF release output directory, and optionally --seed <directory>",
+  );
+const output = resolve(outputArg);
 await mkdir(output, { recursive: true });
 if ((await readdir(output)).length)
   throw new Error("PDF release output directory must be empty");
@@ -35,7 +41,9 @@ async function files(path: string): Promise<string[]> {
     )
   ).flat();
 }
-// Conservative cache boundary includes shared scene/rendering code and the toolchain.
+// Books: a conservative cache boundary (shared scene/rendering code and the
+// toolchain). Publications are keyed per document by their print HTML and the
+// renderer instead (scripts/publication-cache.ts).
 const inputs = [
   ...(await files("src")),
   ...(await files("books")),
@@ -73,7 +81,12 @@ function run(script: string, args: string[] = []) {
   if (child.status !== 0)
     throw new Error(`${script} failed (${child.status ?? child.signal})`);
 }
-run("scripts/publications.ts", unchanged ? [] : ["--force"]);
+// The seed (CI: the previous release image's publications) lets a content
+// change re-render only the documents whose print HTML changed.
+run("scripts/publications.ts", [
+  "--no-html",
+  ...(seed ? ["--seed", seed] : []),
+]);
 let rebuiltBooks = 0;
 for (const { content: book } of books) {
   let current = false;

@@ -36,19 +36,21 @@ export const dataDisplayStateMethods: Record<string, ProblemMethod> = {
   "frequency-table-build": {
     goal: "Count whole-number data into a frequency table, from a list, a dot plot or equal-width intervals.",
     intuition:
-      "A frequency table lists each value, or each interval of values, and how many times it occurs. The number of times is the frequency. A table turns a long list into counts you can read at once.",
+      "A frequency table shows how many times each number comes up in a list. That count is called the frequency. A number line is a line with numbers in order, evenly spaced. A dot plot shows the same thing: one dot above the number line, right above each number in the list. Sometimes the table uses intervals, groups of numbers like 0 to 9, instead of single numbers. Each group includes both of its end numbers.",
     terms: [
       "frequency",
       ["interval", "Here each interval includes both of its end values."],
       "dot-plot",
     ],
+    senses: { interval: "interval" },
+    noLink: ["range"],
     method: [
-      "Make one row for each value in the range, or one row for each interval. Include a row for a value that never occurs, with frequency 0.",
-      "Go through the data once. Mark each value as you count it so none is counted twice or skipped.",
-      "Add the frequencies. The sum must equal the number of values.",
+      "Make one row for each number the question asks for, from smallest to largest, or one row for each group. A number that never comes up still gets a row, with frequency 0.",
+      "Go through the list once. Mark each number as you count it, so none is counted twice or skipped.",
+      "Add the frequencies. The total must be how many numbers are in the list.",
     ],
     watch:
-      "A frequency is a count, not a value multiplied by its count. With intervals, place a value equal to an end value in the interval that includes it; do not move it to the neighboring interval.",
+      "A frequency counts how many times a number comes up. It is not that number added up. A number at the end of a group belongs in that group.",
   },
   "circle-graph-read": {
     goal: "Use percent, central angle and count to read and compare the sectors of a circle graph.",
@@ -137,7 +139,7 @@ export const dataDisplayStatePrinciples: Record<string, string> = {
   "stem-leaf-construct":
     "For whole numbers, the value $10s + \\ell$, with last digit $\\ell$, has leaf $\\ell$ and stem $s$. With one decimal place, the stem is the whole-number part and the leaf is the tenths digit. A correct plot has a row for every stem from the least value's stem to the greatest value's stem, each row in order, and exactly one leaf per data value.",
   "frequency-table-build":
-    "The frequency $f_i$ of a value or interval is the number of data values it holds. For $n$ values and $k$ rows, $f_1+f_2+\\dots+f_k=n$. An interval of whole numbers from $a$ to $b$ includes both $a$ and $b$, and equal-width intervals do not overlap.",
+    "The frequency of a number, or of a group, is how many numbers in the list it holds. Each number goes in exactly one row, so the frequencies add up to how many numbers there are. A group like 10 to 19 includes both 10 and 19, and the groups do not share any numbers.",
   "circle-graph-read":
     "A sector with fraction $p$ of the data has percent $100p$ and central angle $360^\\circ p$. For a total of $N$ values, the sector holds $pN$ values. The sector percents add to $100\\%$ and the central angles add to $360^\\circ$.",
   "best-display-choice":
@@ -220,20 +222,23 @@ export const dataDisplayStateLessons: Lesson[] = [
     id: "frequency-table-build",
     title: "Build a frequency table",
     summary:
-      "Count how many times each value or interval occurs, including values that never occur, and check the total.",
+      "A frequency table shows how many times each number is in a list. That count is called the frequency. Make a row for every number from the smallest to the largest the question asks for, even one that never comes up. Then count each number in the list. The frequencies must add up to how many numbers the list has.",
     templateIds: ["frequency-table-build"],
+    senses: { interval: "interval" },
+    noLink: ["range"],
     objectives: [
-      "Count each whole-number value in a list or dot plot.",
-      "Keep a row for a value with frequency 0.",
-      "Group values into equal intervals that include both end values.",
+      "Count each whole number in a list or a dot plot.",
+      "Keep a row for a number that never comes up, with frequency 0.",
+      "Put numbers into equal groups, like 0 to 9, that include both end numbers.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Turn a list into counts",
         paragraphs: [
-          "A long list of numbers is hard to read. A frequency table lists each value and how many times it occurs. The number of times is the frequency.",
-          "Count each value once. Check at the end that the frequencies add up to the number of values in the list.",
+          "A long list of numbers is hard to read. A frequency table makes it easy. It lists each number and how many times it comes up. How many times is called the frequency.",
+          "Count every time a number comes up. If 2 is in the list 4 times, its frequency is 4.",
+          "At the end, add the frequencies. They should add up to how many numbers are in the list.",
         ],
       },
     ],
@@ -241,33 +246,35 @@ export const dataDisplayStateLessons: Lesson[] = [
       prompt:
         "A team scored these goals in 10 games: 2, 0, 3, 2, 1, 2, 0, 4, 2, 1. Make a frequency table for 0 to 4 goals.",
       steps: [
-        "Make a row for each value from 0 to 4.",
-        "Count each value: 0 appears 2 times, 1 appears 2 times, 2 appears 4 times, 3 appears 1 time and 4 appears 1 time.",
-        "Check: 2 + 2 + 4 + 1 + 1 = 10, the number of games.",
+        "Make a row for each number from 0 to 4, so no number is left out.",
+        "Count every time each number comes up: 0 comes up 2 times, 1 comes up 2 times, 2 comes up 4 times, 3 comes up 1 time and 4 comes up 1 time.",
+        "Check by adding the frequencies: 2 + 2 + 4 + 1 + 1 = 10. That matches the 10 games. If it did not, look again for a game missed, counted twice or added wrong.",
+        "Write each number with its frequency after a colon, the two dots: 0: 2 means 0 goals came up 2 times.",
       ],
       answer: "0: 2, 1: 2, 2: 4, 3: 1, 4: 1",
     },
     closingSections: [
       {
         stage: "method",
-        title: "Dot plots and intervals",
+        title: "Dot plots and groups",
         paragraphs: [
-          "A dot plot shows the same counts. The frequency of a value is the number of dots above it. A value with no dots has frequency 0, and it still gets a row.",
-          "When the values are spread over a wide range, group them into equal intervals such as 0–9, 10–19 and 20–29. Each interval includes both of its end values, so 10 belongs to 10–19. The frequency of an interval is the number of values in that range.",
+          "A number line is a line with numbers in order, evenly spaced. A dot plot shows the same counts with dots. It puts one dot above the number line for each number in the list, right above that number. The frequency of a number is the number of dots above it. A number with no dots has frequency 0, and it still gets a row.",
+          "When the numbers are very spread out, put them in equal groups, called intervals, like 0 to 9, 10 to 19 and 20 to 29. Each group includes both of its end numbers, so 10 belongs in 10 to 19. The frequency of a group is how many numbers in the list fall in it.",
         ],
       },
       {
         stage: "formal",
         title: "The total",
         paragraphs: [
-          "If the data have $n$ values and the table has $k$ rows, the frequencies add to $n$. Each value belongs to exactly one row, so no value is skipped or counted twice.",
+          "Each number in the list goes in exactly one row. So no number is skipped or counted twice.",
+          "That is why the frequencies always add up to how many numbers the list has.",
         ],
       },
     ],
     pitfalls: [
-      "A frequency is a count. Do not multiply it by the value.",
-      "Keep a row for a value that never occurs, with frequency 0.",
-      "A value equal to an interval's end value belongs in that interval.",
+      "A frequency counts how many times a number comes up. It is not that number added up again and again.",
+      "Keep a row for a number that never comes up, with frequency 0.",
+      "A number at the end of a group belongs in that group. 19 goes in 10 to 19.",
     ],
     parentGuide:
       "Give the learner a list of 10 numbers and ask them to tally each value and check that the frequencies add to 10.",

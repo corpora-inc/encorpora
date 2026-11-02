@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { chromium, webkit } from "playwright";
 import { problemInView } from "./ui-viewports";
 
+console.log("Tablet fit: script started");
 for (const engine of [chromium, webkit]) {
   const browser = await engine.launch();
   try {
@@ -59,6 +60,22 @@ for (const engine of [chromium, webkit]) {
       `${engine.name()}: structured answer scrolling preserves strict question and figure fit`,
     );
   } finally {
-    await browser.close();
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    try {
+      await Promise.race([
+        browser.close(),
+        new Promise<never>((_, reject) => {
+          timer = setTimeout(
+            () =>
+              reject(new Error(`${engine.name()}: browser close timed out`)),
+            30_000,
+          );
+        }),
+      ]);
+    } finally {
+      clearTimeout(timer);
+    }
+    console.log(`${engine.name()}: browser closed`);
   }
 }
+console.log("Tablet fit: complete");

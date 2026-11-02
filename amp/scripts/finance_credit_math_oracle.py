@@ -56,7 +56,7 @@ def canon(label):
     text = plain(label)
     if m := match(NUM + r' dollars?', text):
         return ('$', num(m[1]))
-    if m := match(r'(\d+) months', text):
+    if m := match(r'(\d+) months?', text):
         return ('months', int(m[1]))
     if m := match(NUM + '%', text):
         return ('%', num(m[1]))
@@ -196,7 +196,7 @@ def solve_loan_compare(prompt):
         require(totals[1] != totals[2], 'Tie between offers')
         cheaper = 1 if totals[1] < totals[2] else 2
         return ('offer', cheaper, abs(totals[1] - totals[2]))
-    if m := match(r'\w+ needs ' + NUM + r' dollars\. Offer 1 has no fee: (\d+) monthly payments of ' + NUM + r' dollars\. Offer 2 has a ' + NUM + r' dollars fee paid at the start, then (\d+) monthly payments of ' + NUM + r' dollars\. Counting the fee, which offer costs less overall, and by how much\?', prompt):
+    if m := match(r'\w+ needs ' + NUM + r' dollars\. Offer 1 has no fee: (\d+) monthly payments of ' + NUM + r' dollars\. Offer 2 has an? ' + NUM + r' dollars fee paid at the start, then (\d+) monthly payments of ' + NUM + r' dollars\. Counting the fee, which offer costs less overall, and by how much\?', prompt):
         totals = {1: int(m[2]) * num(m[3]), 2: num(m[4]) + int(m[5]) * num(m[6])}
         require(totals[1] != totals[2], 'Tie between offers')
         cheaper = 1 if totals[1] < totals[2] else 2
@@ -265,17 +265,17 @@ def solve_card(prompt):
 
 
 def solve_credit_concept(prompt):
-    if m := match(r"\w+ carries a balance of " + NUM + r" dollars for one month\. Card X has a (\d+)% APR and Card Y has a (\d+)% APR\. Each card's monthly rate is its APR ÷ 12, and each month's interest is rounded to the nearest cent\. How much less interest does Card X charge for the month\?", prompt):
+    if m := match(r"\w+ carries a balance of " + NUM + r" dollars for one month\. Card X has an? (\d+)% APR and Card Y has an? (\d+)% APR\. Each card's monthly rate is its APR ÷ 12, and each month's interest is rounded to the nearest cent\. How much less interest does Card X charge for the month\?", prompt):
         bal = num(m[1])
         x, y = cents(bal * Q(m[2]) / 1200), cents(bal * Q(m[3]) / 1200)
         require(y > x, 'Card X must charge less')
         return ('$', y - x)
-    if m := match(r"\w+'s statement balance is " + NUM + r" dollars on a card with a (\d+)% APR, so the monthly rate is ([\d.]+)%\. Paying the full balance by the due date costs no interest\. If \w+ instead pays only the " + NUM + r" dollars minimum, interest for the month is charged on the unpaid part of the balance, rounded to the nearest cent\. How much more interest does \w+ pay by paying only the minimum than by paying in full\?", prompt):
+    if m := match(r"\w+'s statement balance is " + NUM + r" dollars on a card with an? (\d+)% APR, so the monthly rate is ([\d.]+)%\. Paying the full balance by the due date costs no interest\. If \w+ instead pays only the " + NUM + r" dollars minimum, interest for the month is charged on the unpaid part of the balance, rounded to the nearest cent\. How much more interest does \w+ pay by paying only the minimum than by paying in full\?", prompt):
         require(num(m[3]) == Q(m[2]) / 12, 'Stated monthly rate is not APR/12')
         bal, minimum = num(m[1]), num(m[4])
         require(0 < minimum < bal, 'Minimum payment must be below the balance')
         return ('$', cents((bal - minimum) * num(m[3]) / 100))
-    if m := match(r"\w+'s card statement starts at " + NUM + r" dollars\. The APR is (\d+)% \(monthly rate ([\d.]+)%\)\. During the month, interest is charged on the starting balance, rounded to the nearest cent\. \w+ also buys " + NUM + r" dollars of items, is charged a " + NUM + r" dollars late fee, and makes a " + NUM + r" dollars payment\. What is the new balance\?", prompt):
+    if m := match(r"\w+'s card statement starts at " + NUM + r" dollars\. The APR is (\d+)% \(monthly rate ([\d.]+)%\)\. During the month, interest is charged on the starting balance, rounded to the nearest cent\. \w+ also buys " + NUM + r" dollars of items, is charged an? " + NUM + r" dollars late fee, and makes an? " + NUM + r" dollars payment\. What is the new balance\?", prompt):
         require(num(m[3]) == Q(m[2]) / 12, 'Stated monthly rate is not APR/12')
         bal = num(m[1])
         return ('$', bal + cents(bal * num(m[3]) / 100) + num(m[4]) + num(m[5]) - num(m[6]))

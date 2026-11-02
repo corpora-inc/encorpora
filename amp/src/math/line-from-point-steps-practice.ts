@@ -121,7 +121,7 @@ const family = chainFamily({
       m.given === "slope-and-point"
         ? `A line has slope $${frac(p, q)}$ and passes through the point $(${x1},${y1})$. Write its equation in slope-intercept form, $y=mx+b$. ${task}`
         : `A line passes through the points $(${x1},${y1})$ and $(${m.x2},${m.y2})$. Write its equation in slope-intercept form, $y=mx+b$. ${task}`;
-    const tail = `Substitute $x=${x1}$ and $y=${y1}$: $${y1}=${product}+b$, so $b=${y1}${product < 0 ? "+" : "-"}${Math.abs(product)}=${b}$. The equation is $y=${frac(p, q)}x${signed(b)}$.`;
+    const tail = `Put in $y=${y1}$: $${y1}=${product}+b$. Undo the adding to get $b$ alone: $b=${y1}${product < 0 ? "+" : "-"}${Math.abs(product)}=${b}$. So the equation of the line is $y=${frac(p, q)}x${signed(b)}$.`;
     return workSurface(built, {
       prompt,
       hint:
@@ -129,12 +129,13 @@ const family = chainFamily({
           ? `Write $y=${frac(p, q)}x+b$. The point $(${x1},${y1})$ is on the line, so $x=${x1}$ and $y=${y1}$ make the equation true. Solve for $b$.`
           : `Slope is rise over run: the change in $y$ from $${y1}$ to $${m.y2}$ over the change in $x$ from $${x1}$ to $${m.x2}$. Then use one of the points to find $b$.`,
       explanation: [
+        `In $y=mx+b$, $m$ is the slope (how steep the line is: the change in $y$ for each 1 step in $x$) and $b$ is where the line crosses the $y$-axis.`,
         ...(m.given === "two-points"
           ? [
-              `Slope: $\\frac{${m.y2}-${y1 < 0 ? `(${y1})` : y1}}{${m.x2}-${x1 < 0 ? `(${x1})` : x1}}=\\frac{${m.y2 - y1}}{${m.x2 - x1}}=${frac(p, q)}$.`,
+              `Slope is the change in $y$ divided by the change in $x$ between the two points: $\\frac{${m.y2}-${y1 < 0 ? `(${y1})` : y1}}{${m.x2}-${x1 < 0 ? `(${x1})` : x1}}=\\frac{${m.y2 - y1}}{${m.x2 - x1}}=${frac(p, q)}$.`,
             ]
           : []),
-        `Slope times $x$: $${frac(p, q)}\\cdot${x1 < 0 ? `(${x1})` : x1}=${product}$.`,
+        `The point $(${x1},${y1})$ is on the line, so its numbers make $y=mx+b$ true. Multiply the slope by its $x$: $${frac(p, q)}\\cdot${x1 < 0 ? `(${x1})` : x1}=${product}$.`,
         tail,
       ],
     });

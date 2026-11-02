@@ -1,3 +1,4 @@
+import { count } from "../math/agreement";
 import React from "react";
 import type { SemanticFigure } from "../math/contracts.js";
 export type ElementaryFigureData = Extract<
@@ -15,7 +16,7 @@ export function ElementaryFigure({ figure }: { figure: ElementaryFigureData }) {
         className="figure elementary-figure"
         viewBox={`0 0 300 ${frames === 1 ? 116 : 220}`}
         role="img"
-        aria-label={`${frames === 1 ? "One ten-frame" : "Two ten-frames"}, each with ten places. ${figure.first} round counters and ${figure.second} square counters. Other places are empty.`}
+        aria-label={`${frames === 1 ? "One ten-frame with ten places" : "Two ten-frames, each with ten places"}. ${count(figure.first, "round counter")} and ${count(figure.second, "square counter")}. Other places are empty.`}
       >
         {Array.from({ length: figure.capacity }, (_, index) => {
           const frame = Math.floor(index / 10),
@@ -131,7 +132,7 @@ export function ElementaryFigure({ figure }: { figure: ElementaryFigureData }) {
       className="figure elementary-figure base-ten-figure"
       viewBox={`0 0 ${width} ${height}`}
       role="img"
-      aria-label={`Base-ten model: ${figure.hundreds} hundred flats, ${figure.tens} ten rods, and ${figure.ones} one cubes. A hundred flat has ten rows of ten units; a rod has ten units.`}
+      aria-label={`Base-ten model: ${count(figure.hundreds, "hundred flat")}, ${count(figure.tens, "ten rod")}, and ${count(figure.ones, "unit cube")}. A hundred flat has ten rows of ten units; a rod has ten units.`}
     >
       {placed.map((c) => (
         <g key={c.key}>

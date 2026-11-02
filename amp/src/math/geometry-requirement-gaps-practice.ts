@@ -1,3 +1,4 @@
+import { nounFor, article } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -356,7 +357,7 @@ function arcSectorDerivation(r: Random): Built {
       [1, 6],
     ] as const);
     const rad = r(2, 9);
-    const area = (t: string) => `${M(t)} square centimeters`;
+    const area = (t: string) => `${M(t)} ${nounFor(t, "square centimeter")}`;
     const correct = area(piMul(p * rad * rad, 2 * q));
     return {
       variant,
@@ -396,7 +397,7 @@ function arcSectorDerivation(r: Random): Built {
   const rad = r(2, 10);
   const thetaText = `${theta2 / 2}`;
   const quarters = (v: number) => `${v / 4}`; // exact: v is a count of quarters
-  const area = (t: string) => `${M(t)} square centimeters`;
+  const area = (t: string) => `${M(t)} ${nounFor(t, "square centimeter")}`;
   const correctQ = theta2 * rad * rad;
   return {
     variant,
@@ -405,7 +406,7 @@ function arcSectorDerivation(r: Random): Built {
     explanation: [
       `Area $=\\frac{\\theta}{2\\pi}\\cdot\\pi r^2=\\frac{1}{2}\\theta r^2$, because the $\\pi$ in the numerator cancels the $\\pi$ in the denominator.`,
       `$\\frac{1}{2}\\times${thetaText}\\times${rad}^2=${quarters(correctQ)}$.`,
-      `The sector's area is ${quarters(correctQ)} square centimeters.`,
+      `The sector's area is ${quarters(correctQ)} ${nounFor(quarters(correctQ), "square centimeter")}.`,
     ],
     correct: area(quarters(correctQ)),
     wrong: [
@@ -1926,7 +1927,7 @@ function aaSimilarity(r: Random): Built {
     ),
     wrong: [
       {
-        label: `Similar by AA: both triangles have a ${kept}° angle`,
+        label: `Similar by AA: both triangles have ${article(kept)} ${kept}° angle`,
         feedback:
           "One pair of equal angles is not enough. AA needs two pairs of equal angles.",
       },
@@ -2649,6 +2650,32 @@ const builders: Record<string, (r: Random) => Built> = {
 };
 
 /** Private exact model; the variant name is kept for tests only. */
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const GAP_OPENERS: Record<string, string[]> = {
+  "arc-sector-derivation": [
+    "An arc is a piece of a circle, and a sector is the slice between two radii. Both are the same fraction of the whole circle as their central angle is of a full turn.",
+  ],
+  "complex-plane-operations": [
+    "A complex number $a+bi$ is plotted as the point $(a, b)$: real part across, imaginary part up. Adding complex numbers adds these coordinates, like joining arrows.",
+  ],
+  "conditional-everyday-reasoning": [
+    'A conditional probability, written $P(A\\mid B)$ and read "the probability of $A$ given $B$", counts only the cases where $B$ happened.',
+  ],
+  "congruence-by-rigid-motion": [
+    "Rigid motions are slides, flips and turns. They keep every length and angle, so a figure mapped onto another by them is congruent: same shape and size.",
+  ],
+  "conic-foci": [
+    "An ellipse or hyperbola has two fixed points called foci. Their distance $c$ from the center comes from $a$ and $b$, the distances to the curve along its two axes.",
+  ],
+  "similarity-by-transformation": [
+    "A dilation stretches a figure from a center by a scale factor. A dilation followed by rigid motions keeps the shape, so the figures are similar.",
+  ],
+  "aa-similarity": [
+    "Two triangles are similar, the same shape, when two angles of one equal two angles of the other. The angles of a triangle add to 180 degrees, so the third angles match too.",
+  ],
+};
+
 export function geometryRequirementGapCase(
   id: string,
   seed: string,
@@ -2676,7 +2703,7 @@ export function geometryRequirementGapCase(
       ...(built.figure ? { figure: built.figure } : {}),
       answer: "",
       hint: built.hint,
-      explanation: built.explanation,
+      explanation: [...(GAP_OPENERS[template.id] ?? []), ...built.explanation],
       choices: [
         { label: built.correct, correct: true },
         ...wrong.map((w) => ({ label: w.label, feedback: w.feedback })),

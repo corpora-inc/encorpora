@@ -1406,6 +1406,12 @@ html[data-input="pointer"] :focus-visible {
 .frontier-map li {
   display: block;
 }
+.frontier-map li.frontier-count-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+  padding: 12px 0;
+}
 .frontier-row {
   display: grid;
   grid-template-columns: min(132px, 34%) 1fr;

@@ -1,3 +1,4 @@
+import { count, article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, random } from "./distribution-practice";
 
@@ -228,6 +229,10 @@ const interestTable = (rows: [string, number[]][], cents: boolean) =>
     )
     .join("\\\\")}\\end{array}$`;
 
+const interestWords = [
+  "Simple interest is paid only on the original deposit, the principal, so it is the same amount every year.",
+  "Compound interest is paid on the whole balance, including earlier interest, so the yearly interest grows.",
+];
 export function interestCompareYearsCase(seed: string): FinanceCase {
   checkSeed(seed);
   const m = interestCompareYearsTemplate;
@@ -252,6 +257,7 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
           prompt: `Two accounts each start with ${usd(Pc)} and earn ${pct}% interest a year. Account S pays simple interest on the original deposit only. Account C pays compound interest: each year's interest is added to the balance at the end of the year, rounded to the nearest cent, and earns interest the next year. Nothing else is added or withdrawn. After ${t} years, how much more does Account C hold than Account S?`,
           hint: `Account S earns ${usd((Pc * pct) / 100)} every year, the same amount. Find Account C's balance one year at a time, using ${pct}% of the balance at the start of that year, then subtract Account S's balance.`,
           explanation: [
+            ...interestWords,
             `Account S earns ${pct}% of ${usd(Pc)} = ${usd((Pc / 100) * pct)} each year, so after ${t} years it holds ${usd(Pc)} + ${t} × ${usd((Pc / 100) * pct)} = ${usd(S(t))}.`,
             `Account C's year-end balances are ${C.slice(1)
               .map(usd)
@@ -259,6 +265,7 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
                 ", ",
               )}, each found by adding ${pct}% of the previous balance, rounded to the cent.`,
             `The gap is ${usd(C[t]!)} − ${usd(S(t))} = ${usd(diff)}.`,
+            `After ${t} years, Account C holds ${usd(diff)} more than Account S.`,
           ],
           correct: usd(diff),
           wrong: mw([
@@ -334,9 +341,11 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
           prompt: `Account ${simpleName} starts with ${usd(Pc)} and pays ${rateS}% simple interest a year. Account ${compName} also starts with ${usd(Pc)} and pays ${rateC}% interest a year, compounded: each year's interest, rounded to the nearest cent, is added to the balance. With no deposits or withdrawals, which account holds more after ${t} years, and by how much?`,
           hint: `Account ${simpleName} adds ${usd((Pc / 100) * rateS)} every year. Build Account ${compName}'s balance year by year at ${rateC}% of the balance at the start of each year, then compare the two balances after ${t} years.`,
           explanation: [
+            ...interestWords,
             `Account ${simpleName} earns ${usd((Pc / 100) * rateS)} each year, so it holds ${usd(Pc)} + ${t} × ${usd((Pc / 100) * rateS)} = ${usd(A)}.`,
             `Account ${compName} compounds at ${rateC}%. Its year-end balances are ${C.slice(1).map(usd).join(", ")}, so it holds ${usd(C[t]!)}.`,
             `Account ${winner} holds more. The gap is ${usd(Math.max(A, C[t]!))} − ${usd(Math.min(A, C[t]!))} = ${usd(diff)}.`,
+            `After ${t} years, Account ${winner} holds ${usd(diff)} more than Account ${loser}.`,
           ],
           correct: lab(winner, diff),
           wrong: cand,
@@ -375,6 +384,7 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
           prompt: `Both accounts started with ${usd(Pc)} and earn the same yearly rate; nothing is added or withdrawn. One account pays simple interest and one pays compound interest. The table shows year-end balances in dollars. Which statement is true?\n${interestTable(rows, cents)}`,
           hint: `Look at how much each account grows from one year to the next. The account that earns simple interest grows by the same amount every year; find the other account's increases, then compare the year ${t} balances.`,
           explanation: [
+            ...interestWords,
             `Account ${other} grows by ${usd((Pc / 100) * pct)} every year, so it earns simple interest.`,
             `Account ${compName} grows by a larger amount each year: ${C.slice(
               1,
@@ -382,6 +392,7 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
               .map((v, i) => usd(v - C[i]!))
               .join(", ")}. It earns compound interest.`,
             `After ${t} years the balances are ${usd(C[t]!)} and ${usd(S[t]!)}, a gap of ${usd(diff)}.`,
+            `So Account ${compName} earns compound interest, and after ${t} years it holds ${usd(diff)} more than Account ${other}.`,
           ],
           correct: lab(compName, diff),
           wrong: [
@@ -420,9 +431,11 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
         prompt: `Account S pays ${pct}% simple interest and Account C pays ${pct}% interest compounded yearly with each year's interest rounded to the nearest cent. Each starts with ${usd(Pc)} and nothing else is added or withdrawn. During year 2, how much more interest does Account C earn than Account S?`,
         hint: `Account S earns the same interest every year, ${pct}% of ${usd(Pc)}. In year 2 Account C earns ${pct}% of its balance at the end of year 1, which includes year 1's interest.`,
         explanation: [
+          ...interestWords,
           `Each account earns ${pct}% of ${usd(Pc)} = ${usd(int1)} in year 1. Account S earns ${usd(int1)} in year 2 as well.`,
           `Account C starts year 2 with ${usd(C[1]!)}, so it earns ${pct}% of that, ${usd(int2)}, rounded to the cent.`,
           `The difference is ${usd(int2)} − ${usd(int1)} = ${usd(diff)}, the interest earned on year 1's interest.`,
+          `So Account C earns ${usd(diff)} more interest than Account S during year 2.`,
         ],
         correct: usd(diff),
         wrong: mw([
@@ -485,7 +498,7 @@ export function loanTotalCostCase(seed: string): FinanceCase {
       value: c(total),
       problem: finish(m, seed, r, {
         prompt: `${who} borrows ${usd(c(L.P))} to ${thing}. The loan is repaid with ${L.n} equal monthly payments of ${usd(c(L.p))}. How much does ${who} pay back in all?`,
-        hint: `Each of the ${L.n} months, ${who} pays ${usd(c(L.p))}. Total paid is the payment times the number of payments.`,
+        hint: `Each of the ${count(L.n, "month")}, ${who} pays ${usd(c(L.p))}. Total paid is the payment times the number of payments.`,
         explanation: [
           `${L.n} payments of ${usd(c(L.p))} total ${L.n} × ${L.p} = ${group(total)} dollars.`,
           `That is more than the ${usd(c(L.P))} borrowed; the extra, ${usd(c(total - L.P))}, is the cost of borrowing.`,
@@ -561,7 +574,7 @@ export function loanTotalCostCase(seed: string): FinanceCase {
       given: { P: L.P, n1, p1, n2, p2 },
       value: c(diff),
       problem: finish(m, seed, r, {
-        prompt: `${who} can borrow ${usd(c(L.P))} to ${thing} at the same interest rate for two different terms. Over ${n1} months the payment is ${usd(c(p1))}. Over ${n2} months the payment is ${usd(c(p2))}. How much more is the total finance charge for the longer loan?`,
+        prompt: `${who} can borrow ${usd(c(L.P))} to ${thing} at the same interest rate for two different terms. Over ${count(n1, "month")} the payment is ${usd(c(p1))}. Over ${count(n2, "month")} the payment is ${usd(c(p2))}. How much more is the total finance charge for the longer loan?`,
         hint: `For each loan, multiply the payment by its number of months. Both loans borrow ${usd(c(L.P))}, so the difference in finance charges equals the difference in totals repaid.`,
         explanation: [
           `${n1}-month loan: ${n1} × ${p1} = ${group(p1 * n1)} dollars repaid.`,
@@ -604,8 +617,8 @@ export function loanTotalCostCase(seed: string): FinanceCase {
       given: { P: L.P, n: L.n, p1, p2 },
       value: c(diff),
       problem: finish(m, seed, r, {
-        prompt: `${who} borrows ${usd(c(L.P))} for ${L.n} months. At ${a1}% interest the monthly payment is ${usd(c(p1))}. At ${a2}% interest it is ${usd(c(p2))}. How much more does ${who} repay in total with the ${a2}% loan?`,
-        hint: `The loans last the same ${L.n} months. The monthly payments differ by ${usd(c(p2 - p1))}; think about how many times that difference is paid.`,
+        prompt: `${who} borrows ${usd(c(L.P))} for ${count(L.n, "month")}. At ${a1}% interest the monthly payment is ${usd(c(p1))}. At ${a2}% interest it is ${usd(c(p2))}. How much more does ${who} repay in total with the ${a2}% loan?`,
+        hint: `The loans last the same ${count(L.n, "month")}. The monthly payments differ by ${usd(c(p2 - p1))}; think about how many times that difference is paid.`,
         explanation: [
           `${a1}% loan: ${L.n} × ${p1} = ${group(L.n * p1)} dollars.`,
           `${a2}% loan: ${L.n} × ${p2} = ${group(L.n * p2)} dollars.`,
@@ -641,7 +654,7 @@ export function loanTotalCostCase(seed: string): FinanceCase {
       value: c(L.p),
       problem: finish(m, seed, r, {
         prompt: `${who} borrows ${usd(c(L.P))} to ${thing} and repays it in ${L.n} equal monthly payments. The finance charge is ${usd(c(F))}. How much is each monthly payment?`,
-        hint: `Total repaid is the amount borrowed plus the ${usd(c(F))} finance charge. Equal payments split that total across ${L.n} months.`,
+        hint: `Total repaid is the amount borrowed plus the ${usd(c(F))} finance charge. Equal payments split that total across ${count(L.n, "month")}.`,
         explanation: [
           `Total repaid = borrowed + finance charge = ${group(L.P)} + ${group(F)} = ${group(L.P + F)} dollars.`,
           `Monthly payment = ${group(L.P + F)} ÷ ${L.n} = ${group(L.p)} dollars.`,
@@ -705,7 +718,7 @@ export function loanTotalCostCase(seed: string): FinanceCase {
         ],
         [
           c(p * (months + 12)),
-          `A ${years}-year loan has ${months} monthly payments.`,
+          `${article(years, true)} ${years}-year loan has ${months} monthly payments.`,
         ],
       ]),
     }),
@@ -792,7 +805,7 @@ export function loanCompareOptionsCase(seed: string): FinanceCase {
         given: { P, n1, p1, n2, p2, fee },
         value: c(diff),
         problem: finish(m, seed, r, {
-          prompt: `${who} needs ${usd(c(P))}. Offer 1 has no fee: ${n1} monthly payments of ${usd(c(p1))}. Offer 2 has a ${usd(c(fee))} fee paid at the start, then ${n2} monthly payments of ${usd(c(p2))}. Counting the fee, which offer costs less overall, and by how much?`,
+          prompt: `${who} needs ${usd(c(P))}. Offer 1 has no fee: ${n1} monthly payments of ${usd(c(p1))}. Offer 2 has ${article(usd(c(fee)))} ${usd(c(fee))} fee paid at the start, then ${n2} monthly payments of ${usd(c(p2))}. Counting the fee, which offer costs less overall, and by how much?`,
           hint: `Offer 2's cost is its fee plus ${n2} payments of ${usd(c(p2))}. Offer 1's cost is only its payments. Compare the two totals.`,
           explanation: [
             `Offer 1: ${n1} × ${p1} = ${group(T1)} dollars.`,
@@ -1188,7 +1201,7 @@ export function creditCostConceptsCase(seed: string): FinanceCase {
         given: { B, apr, minimum: min },
         value: i,
         problem: finish(m, seed, r, {
-          prompt: `${who}'s statement balance is ${usd(B)} on a card with a ${apr}% APR, so the monthly rate is ${mr}. Paying the full balance by the due date costs no interest. If ${who} instead pays only the ${usd(min * 100)} minimum, interest for the month is charged on the unpaid part of the balance, rounded to the nearest cent. How much more interest does ${who} pay by paying only the minimum than by paying in full?`,
+          prompt: `${who}'s statement balance is ${usd(B)} on a card with ${article(apr)} ${apr}% APR, so the monthly rate is ${mr}. Paying the full balance by the due date costs no interest. If ${who} instead pays only the ${usd(min * 100)} minimum, interest for the month is charged on the unpaid part of the balance, rounded to the nearest cent. How much more interest does ${who} pay by paying only the minimum than by paying in full?`,
           hint: `Paying in full costs 0 interest, so the extra interest is the whole interest charge. The unpaid part is ${usd(B)} minus the ${usd(min * 100)} payment; take ${mr} of that.`,
           explanation: [
             `Unpaid part: ${usd(B)} − ${usd(min * 100)} = ${usd(unpaid)}.`,
@@ -1232,7 +1245,7 @@ export function creditCostConceptsCase(seed: string): FinanceCase {
         given: { B, apr1: apr, apr2 },
         value: diff,
         problem: finish(m, seed, r, {
-          prompt: `${who} carries a balance of ${usd(B)} for one month. Card X has a ${apr}% APR and Card Y has a ${apr2}% APR. Each card's monthly rate is its APR ÷ 12, and each month's interest is rounded to the nearest cent. How much less interest does Card X charge for the month?`,
+          prompt: `${who} carries a balance of ${usd(B)} for one month. Card X has ${article(apr)} ${apr}% APR and Card Y has ${article(apr2)} ${apr2}% APR. Each card's monthly rate is its APR ÷ 12, and each month's interest is rounded to the nearest cent. How much less interest does Card X charge for the month?`,
           hint: `Find each card's monthly rate by dividing its APR by 12. Take that percent of ${usd(B)} for each card, round each to the cent, then subtract.`,
           explanation: [
             `Card X: ${pctText(apr / 12)} of ${usd(B)} = ${usd(i1)}.`,
@@ -1306,7 +1319,7 @@ export function creditCostConceptsCase(seed: string): FinanceCase {
       given: { B, apr, purchases, fee, pay },
       value: nb,
       problem: finish(m, seed, r, {
-        prompt: `${who}'s card statement starts at ${usd(B)}. The APR is ${apr}% (monthly rate ${mr}). During the month, interest is charged on the starting balance, rounded to the nearest cent. ${who} also buys ${usd(purchases * 100)} of items, is charged a ${usd(fee * 100)} late fee, and makes a ${usd(pay * 100)} payment. What is the new balance?`,
+        prompt: `${who}'s card statement starts at ${usd(B)}. The APR is ${apr}% (monthly rate ${mr}). During the month, interest is charged on the starting balance, rounded to the nearest cent. ${who} also buys ${usd(purchases * 100)} of items, is charged ${article(usd(fee * 100))} ${usd(fee * 100)} late fee, and makes ${article(usd(pay * 100))} ${usd(pay * 100)} payment. What is the new balance?`,
         hint: `Start from ${usd(B)}. Add the month's interest (${mr} of ${usd(B)}), the purchases and the late fee, then subtract the payment.`,
         explanation: [
           `Interest: ${mr} of ${usd(B)} = ${usd(i)}.`,
@@ -1383,23 +1396,23 @@ export function savingsPlanGrowthCase(seed: string): FinanceCase {
           `${group(G - S)} ÷ ${d} = ${parseFloat(((G - S) / d).toFixed(3))}. The balance only grows at month ends, so use the next whole month: ${need}.`,
           `Check: after ${need} deposits ${group(S + d * need)} dollars is at least ${group(G)}.`,
         ],
-        correct: `${need} months`,
+        correct: `${count(need, "month")}`,
         wrong: [
           [
-            `${floorN} months`,
+            `${count(floorN, "month")}`,
             "After that many months the balance is still below the goal.",
           ],
           [
-            `${Math.ceil(G / d)} months`,
+            `${count(Math.ceil(G / d), "month")}`,
             "The starting amount already counts toward the goal; subtract it first.",
           ],
-          [`${need + 1} months`, "One fewer month is already enough."],
+          [`${count(need + 1, "month")}`, "One fewer month is already enough."],
           [
-            `${Math.max(need - 1, 1)} months`,
+            `${count(Math.max(need - 1, 1), "month")}`,
             "After that many months the balance is still below the goal.",
           ],
           [
-            `${need + 2} months`,
+            `${count(need + 2, "month")}`,
             "A smaller number of months already reaches the goal.",
           ],
         ],
@@ -1414,7 +1427,7 @@ export function savingsPlanGrowthCase(seed: string): FinanceCase {
       given: { S, G, n },
       value: c(d),
       problem: finish(m, seed, r, {
-        prompt: `${who} has ${usd(c(S))} and wants exactly ${usd(c(G))} in ${n} months, with no interest counted. ${who} will make ${n} equal monthly deposits. How much should each deposit be?`,
+        prompt: `${who} has ${usd(c(S))} and wants exactly ${usd(c(G))} in ${count(n, "month")}, with no interest counted. ${who} will make ${n} equal monthly deposits. How much should each deposit be?`,
         hint: `Subtract the ${usd(c(S))} already saved from the ${usd(c(G))} goal, then share what is left equally among ${n} deposits.`,
         explanation: [
           `Still needed: ${G} − ${S} = ${group(G - S)} dollars.`,
@@ -1464,11 +1477,14 @@ export function savingsPlanGrowthCase(seed: string): FinanceCase {
             `Count how many monthly gains of ${dA - dB} close the ${SB - SA}-dollar lead: ${SB - SA} ÷ ${dA - dB} = ${k}.`,
             `Check: A holds ${SA} + ${k} × ${dA} = ${SA + k * dA} dollars and B holds ${SB} + ${k} × ${dB} = ${SB + k * dB} dollars.`,
           ],
-          correct: `${k} months`,
+          correct: `${count(k, "month")}`,
           wrong: [
-            [`${k + 1} months`, "At that many months Plan A is already ahead."],
             [
-              `${Math.max(k - 1, 1)} months`,
+              `${count(k + 1, "month")}`,
+              "At that many months Plan A is already ahead.",
+            ],
+            [
+              `${count(Math.max(k - 1, 1), "month")}`,
               "At that many months Plan B is still ahead.",
             ],
             [
@@ -1476,7 +1492,7 @@ export function savingsPlanGrowthCase(seed: string): FinanceCase {
               "Plan A closes the gap by the difference between the deposits, not by its whole deposit.",
             ],
             [
-              `${k * 2} months`,
+              `${count(k * 2, "month")}`,
               "Plan A gains the difference in deposits each month; divide the starting gap by that difference.",
             ],
           ],

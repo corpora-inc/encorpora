@@ -256,8 +256,11 @@ function quadraticParts(seed: string): CurveParts {
         );
       };
       method = [
-        `Vertex form $y = a(x - h)^2 + k$ has its vertex at $(h, k)$ and opens ${an > 0 ? "upward" : "downward"} when $a$ is ${an > 0 ? "positive" : "negative"}. Here $a = ${a2}$, $h = ${h}$ and $k = ${k}$, so the vertex is ${pointTex(vertex)}.`,
-        `The parabola is symmetric about the line $x = ${h}$, so points the same distance left and right of the vertex have equal $y$-values. Substitute whole-number values of $x$ and keep the points whose $y$ is a whole number${a[1] > 1 ? " (with $a = " + a2 + "$ that happens when $x - h$ is even)" : ""}.`,
+        "A parabola is the U-shaped graph of a quadratic. Its vertex is the turning point, the lowest or highest point of the graph.",
+        `Vertex form $y = a(x - h)^2 + k$ has its vertex at $(h, k)$.${h < 0 ? ` Here $x + ${-h}$ means $x - (${h})$.` : h === 0 ? " Here $x^2$ means $(x - 0)^2$." : ""} So $a = ${a2}$, $h = ${h}$ and $k = ${k}$, and the vertex is ${pointTex(vertex)}.`,
+        `The number $a$ is ${an > 0 ? "positive" : "negative"}, so the parabola opens ${an > 0 ? "upward" : "downward"}.`,
+        `The parabola is symmetric about its axis of symmetry, the line $x = ${h}$. So points the same distance left and right of the vertex have equal $y$-values.`,
+        `Substitute whole-number values of $x$ and keep the points whose $y$ is a whole number.${a[1] > 1 ? " With $a = " + a2 + "$, that happens when $x - h$ is even." : ""}`,
       ];
       hint = `In $${equation}$, the vertex is $(h, k)$: $h$ is the number that $x$ is shifted by, taken with the opposite sign from the one inside the parentheses, and $k$ is the number added at the end. Find the vertex first, then substitute $x$-values near $h$ to find other points.`;
     } else {
@@ -284,8 +287,11 @@ function quadraticParts(seed: string): CurveParts {
       };
       const ya = an * h * h + b * h + c;
       method = [
+        "A parabola is the U-shaped graph of a quadratic. Its vertex is the turning point, the lowest or highest point of the graph.",
         `For $y = ax^2 + bx + c$ the vertex has $x = -\\frac{b}{2a}$. Here $a = ${an}$ and $b = ${b}$, so $x = -\\frac{${paren(b)}}{2 \\cdot ${paren(an)}} = ${h}$.`,
-        `Then $y = ${work(h, ya).split("y = ")[1]}$, so the vertex is ${pointTex(vertex)} and the parabola opens ${an > 0 ? "upward" : "downward"}. Substitute whole-number values of $x$ near $x = ${h}$ to find other points${variant === 4 ? `; the $y$-intercept is $(0, ${c})$ because $y = c$ when $x = 0$` : ""}.`,
+        `Then $y = ${work(h, ya).split("y = ")[1]}$, so the vertex is ${pointTex(vertex)}.`,
+        `The number $a$ is ${an > 0 ? "positive" : "negative"}, so the parabola opens ${an > 0 ? "upward" : "downward"}.`,
+        `Substitute whole-number values of $x$ near $x = ${h}$ to find other points.${variant === 4 ? ` The $y$-intercept, where the graph crosses the $y$-axis, is $(0, ${c})$, because $y = c$ when $x = 0$.` : ""}`,
       ];
       hint =
         variant === 4
@@ -334,8 +340,11 @@ function absoluteParts(seed: string): CurveParts {
         work,
         center: h,
         method: [
-          `The graph of $y = a|x - h| + k$ is V-shaped with its vertex at $(h, k)$, which opens ${a[0] > 0 ? "upward" : "downward"} because $a$ is ${a[0] > 0 ? "positive" : "negative"}. Here the vertex is ${pointTex([h, k])}.`,
-          `Each side is a straight ray: $y$ changes by $${ratTex(a)}$ for every unit $x$ moves from $h$, ${a[1] > 1 ? "so whole-number points appear every 2 units" : "so whole-number points appear at every unit"}. Equal distances left and right of $x = ${h}$ give equal $y$-values.`,
+          "The absolute value of a number is its distance from 0, so it is never negative.",
+          `The graph of $y = a|x - h| + k$ is V-shaped with its vertex, the corner point, at $(h, k)$. Here the vertex is ${pointTex([h, k])}.`,
+          `The graph opens ${a[0] > 0 ? "upward" : "downward"} because $a$, the number in front, is ${a[0] > 0 ? "positive" : "negative"}.`,
+          `Each side is a straight ray, a half-line. $y$ changes by $${ratTex(a)}$ for every unit $x$ moves from $h$, ${a[1] > 1 ? "so whole-number points appear every 2 units" : "so whole-number points appear at every unit"}.`,
+          `Equal distances left and right of $x = ${h}$ give equal $y$-values.`,
         ],
         hint: `In $${equation}$, the vertex is where the expression inside the absolute value is 0, because $|0| = 0$ leaves only the number added at the end. Find that $x$-value, then substitute $x$-values on both sides of it.`,
       },
@@ -374,8 +383,10 @@ function exponentialParts(seed: string): CurveParts {
         equation,
         work,
         method: [
-          `In $y = a \\cdot b^x$, the starting value is $a = ${a[0]}$ at $x = 0$ and each step of 1 in $x$ multiplies $y$ by $b = ${ratTex(b)}$. The curve ${b[0] > b[1] ? "rises" : "falls"} as $x$ increases and never reaches $y = 0$.`,
-          `A negative exponent takes the reciprocal of the base: $b^{-1} = ${b[1] === 1 ? `\\frac{1}{${b[0]}}` : `${b[1]}`}$. Only some $x$-values give a whole-number $y$ inside the grid, so test $x$-values and keep those.`,
+          `In $y = a \\cdot b^x$, the starting value is $a = ${a[0]}$, the $y$-value at $x = 0$. The base, $b = ${ratTex(b)}$, is the number raised to the power $x$.`,
+          `Each step of 1 in $x$ multiplies $y$ by the base. The base is ${b[0] > b[1] ? "greater than 1, so the curve rises" : "between 0 and 1, so the curve falls"} as $x$ increases, and it never reaches $y = 0$.`,
+          `A negative exponent takes the reciprocal of the base, 1 divided by it: $b^{-1} = ${b[1] === 1 ? `\\frac{1}{${b[0]}}` : `${b[1]}`}$.`,
+          "Only some $x$-values give a whole-number $y$ inside the grid, so test $x$-values and keep those.",
         ],
         hint: `Make a table for $${equation}$. Start at $x = 0$, where $b^0 = 1$, then try $x = 1$, $x = 2$ and negative values such as $x = -1$. Keep a point only when $y$ is a whole number that fits on the grid (a fraction such as $\\frac{3}{2}$ is not a lattice point).`,
       },
@@ -416,8 +427,9 @@ function sqrtParts(seed: string): CurveParts {
         work,
         center: h,
         method: [
-          `The expression under a square root cannot be negative, so $x - h \\ge 0$: here $x \\ge ${h}$. The graph starts at ${pointTex([h, k])}, where the root is 0, and extends to the right, ${a[0] > 0 ? "rising" : "falling"} because $a$ is ${a[0] > 0 ? "positive" : "negative"}.`,
-          `To land on grid points, choose $x$-values where $x - h$ is a perfect square: 0, 1, 4 or 9, which gives $x = ${[0, 1, 4, 9].map((s) => `${h + s}`).join(", ")}$.`,
+          `A negative number has no real square root, so the expression under the root, $${shiftTex(h)}$, must be at least 0. That means $x \\ge ${h}$.`,
+          `The graph starts at ${pointTex([h, k])}, where the root is 0. It extends to the right, ${a[0] > 0 ? "rising" : "falling"} because the number in front of the root is ${a[0] > 0 ? "positive" : "negative"}.`,
+          `To land on grid points, make $${shiftTex(h)}$ a perfect square, a whole number times itself: 0, 1, 4 or 9. That gives $x = ${[0, 1, 4, 9].map((s) => `${h + s}`).join(", ")}$.`,
         ],
         hint: `Find where $${shiftTex(h)}$ is 0: that is the $x$-coordinate where the graph starts, and no point lies to its left. For other points, choose $x$-values that make $${shiftTex(h)}$ equal to 1, 4 or 9, so the square root is a whole number.`,
       },

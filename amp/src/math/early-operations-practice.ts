@@ -4,7 +4,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
-import { isAre, wasWere } from "./agreement.js";
+import { isAre, wasWere, count } from "./agreement.js";
 
 type Random = (low: number, high: number) => number;
 /** Grade levels of the catalog skills these families serve. */
@@ -67,8 +67,6 @@ function random(id: string, seed: string): Random {
 }
 const pick = <T>(r: Random, items: readonly T[]) =>
   items[r(0, items.length - 1)]!;
-/** "1 block", "3 blocks". */
-const count = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
 const countOn = (from: number, to: number) =>
   Array.from({ length: to - from }, (_, i) => from + i + 1).join(", ");
 

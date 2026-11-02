@@ -279,6 +279,7 @@ function sceneKind(scene: Scene) {
         shapePuzzle: "shape-puzzle",
         solid: "solid-shape",
         isoSolid: "iso-solid",
+        ruler: "ruler",
       } as Record<string, string>
     )[first.type] ?? "scene"
   );

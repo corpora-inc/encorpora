@@ -645,7 +645,7 @@ def solve_bivariate(public):
     require(m is not None and [int(v) for v in m.groups()] == [x1, y1, x2, y2], 'Stated line contradicts the drawn line')
     slope = Fraction(y2 - y1, x2 - x1)
     if template == 'trend-line-predict':
-        m = re.search(r'(?:who studies (\d+) hours?|car that is (\d+) years? old|sell on a (\d+)°F day)\.$', prompt)
+        m = re.search(r'(?:who studies (\d+) hours?|car that is (\d+) years? old|sell on an? (\d+)°F day)\.$', prompt)
         require(m is not None, f'Unexpected prediction {prompt}')
         x = int(next(g for g in m.groups() if g is not None))
         value = y1 + slope * (x - x1)

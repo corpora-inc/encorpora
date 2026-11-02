@@ -1,35 +1,66 @@
 import type { Lesson } from "./lessons.js";
+/** Glossary readings for the grade 6 and 8 graph lessons. */
+const GRID_SENSES = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
+  unit: "unit",
+  units: "unit",
+  difference: "difference-subtract",
+  square: "square-shape",
+  squares: "square-shape",
+} as const;
+const GRID_NO_LINK = [
+  "whole",
+  "part",
+  "parts",
+  "change",
+  "changes",
+  "opposite",
+  "opposite sides",
+  "mean",
+  "means",
+  "rule",
+  "center",
+  "scale",
+  "rules",
+];
+
 export const graphicalLessons: Lesson[] = [
   {
     id: "coordinate-reading",
     title: "Read a point on a coordinate grid",
     summary:
-      "Read how far a point lies across from zero and how far it lies up or down.",
+      "A number line is a line with evenly spaced numbers. A coordinate grid has two of them that cross at 0: one going across and one going up and down. A point is an exact spot on the grid, named by two numbers written $(x, y)$. Start at the crossing point. The first number, $x$, says how far across (left if negative). The second, $y$, says how far up (down if negative).",
     templateIds: ["coordinate-point-reading"],
+    senses: GRID_SENSES,
+    noLink: GRID_NO_LINK,
     objectives: [
-      "Identify horizontal and vertical coordinates.",
-      "Interpret positive negative and zero coordinates.",
+      "Tell the across number ($x$) of a point from its up-and-down number ($y$).",
+      "Read positive, negative and zero coordinates from a grid.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Two scales locate one point",
         paragraphs: [
-          "The origin is where the two number lines cross at zero. A point's $x$-coordinate tells how far it is left or right of that origin; its $y$-coordinate tells how far it is up or down. Read the two scales separately.",
+          "A coordinate grid has two number lines. The across line is called the $x$-axis, and the up-and-down line is called the $y$-axis. They cross at 0. That crossing point is called the origin.",
+          "A point's $x$-coordinate tells how far it is to the right or left of the origin. Its $y$-coordinate tells how far it is up or down. Read the two number lines one at a time.",
         ],
       },
       {
         title: "Start at the origin",
         paragraphs: [
-          "The origin is where the two zero lines meet. In an ordered pair ($x$, $y$), $x$ describes horizontal position and $y$ describes vertical position.",
-          "Follow the horizontal scale to locate $x$. Positive values are to the right and negative values are to the left. Then use the vertical scale: positive values go up and negative values go down.",
+          "A point is written as an ordered pair $(x, y)$: two numbers in a set order, across first and up-and-down second. The order matters, because $(2, 3)$ and $(3, 2)$ are different points.",
+          "To read $x$, follow the across line. Numbers to the right of the origin are positive, and numbers to the left are negative, less than 0. Then read $y$ on the up-and-down line. Up is positive and down is negative.",
         ],
       },
       {
         title: "Read the requested coordinate",
         paragraphs: [
-          "For a point at (−3, 2), the $x$-coordinate is −3 and the $y$-coordinate is 2. A question asking for just one coordinate needs one number, not both.",
-          "Check the grid scale before counting squares. These practice grids use one unit per step.",
+          "For the point $(-3, 2)$, the $x$-coordinate is $-3$ and the $y$-coordinate is 2. If a question asks for just one coordinate, give one number, not both.",
+          "Check how much each grid square stands for before counting squares. These practice grids use 1 for each square.",
         ],
       },
     ],
@@ -38,7 +69,7 @@ export const graphicalLessons: Lesson[] = [
         stage: "formal",
         title: "Coordinates and axes",
         paragraphs: [
-          "An ordered pair $(x,y)$ names a point's horizontal coordinate first and vertical coordinate second. Each axis has its own marked scale; read both positions relative to the shared origin.",
+          "An ordered pair $(x, y)$ names a point's across position first and its up-and-down position second. Each axis has its own number scale. Both positions are measured from the same origin, $(0, 0)$.",
         ],
       },
     ],
@@ -46,48 +77,51 @@ export const graphicalLessons: Lesson[] = [
       prompt:
         "Point $P$ is three units left and two units above the origin. What is its $x$-coordinate?",
       steps: [
-        "Left corresponds to negative horizontal values.",
-        "The horizontal position is −3; the vertical position is 2.",
+        "The $x$-coordinate is the across position. Left of the origin means a negative number, a number less than 0, so 3 units left is $-3$.",
+        "The point is at $(-3, 2)$: across $-3$, up 2. The question asks only for $x$, which is $-3$.",
       ],
       answer: "−3",
     },
     pitfalls: [
-      "Do not reverse $x$ and $y$.",
-      "A point on an axis has one coordinate equal to zero.",
+      "Do not swap $x$ and $y$. The across number comes first.",
+      "A point on an axis has one coordinate equal to 0.",
     ],
     parentGuide:
-      "Place a counter on graph paper and ask the learner to describe horizontal and vertical position separately.",
+      "Place a counter on graph paper and ask your learner to say the across position and the up-and-down position separately.",
   },
   {
     id: "graph-slope",
     title: "Slope measures change",
     summary:
-      "Slope compares a line's vertical change with its horizontal change.",
+      "The slope of a line says how steep it is. Pick two points on the line with different across positions. The rise is how far up you go between them (negative if you go down). The run is how far across you go. The slope is the rise divided by the run. A line going up to the right has a positive slope; going down, negative.",
     templateIds: ["graphed-line-slope"],
+    senses: GRID_SENSES,
+    noLink: GRID_NO_LINK,
     objectives: [
-      "Read two points from a graph.",
-      "Compute an exact signed slope.",
+      "Read the coordinates of two points from a graph.",
+      "Work out the exact slope, with its sign, as a fraction.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Count up compared with across",
         paragraphs: [
-          "A line may rise three units while moving two units right. Its slope is the vertical change divided by the horizontal change, here three divided by two. A point written (−2, 1) lies two units left and one unit up from zero.",
+          "A point is written $(x, y)$. Start at $(0, 0)$, the origin, where the two axes cross. Go across $x$ (left if negative), then up $y$ (down if negative). So $(-2, 1)$ is 2 units left and 1 unit up.",
+          "Say a line rises 3 units while it moves 2 units right. Its slope is the up-and-down change divided by the across change: 3 divided by 2, or $\\frac{3}{2}$. A slope farther from 0, such as 3 or $-3$, means a steeper line.",
         ],
       },
       {
         title: "Use the same direction twice",
         paragraphs: [
-          "Choose a starting point and an ending point. Subtract their $y$-coordinates to find vertical change, then subtract their $x$-coordinates in the same order to find horizontal change.",
-          "Slope is vertical change divided by horizontal change. Moving right along a rising line gives a positive slope; moving right along a falling line gives a negative slope.",
+          "Choose a starting point and an ending point on the line. Subtract their $y$-coordinates to find the up-and-down change, called the rise. Subtract their $x$-coordinates in the same order to find the across change, called the run.",
+          "Slope is the rise divided by the run. Moving right along a line that goes up gives a positive slope. Moving right along a line that goes down gives a negative slope.",
         ],
       },
       {
         title: "Keep the ratio exact",
         paragraphs: [
-          "A rise of three units over a run of four units gives slope 3/4. Fractions can express slope exactly without rounding.",
-          "A horizontal line has zero vertical change and slope zero. A vertical line has zero horizontal change and undefined slope; these practice questions use distinct horizontal coordinates.",
+          "A rise of 3 units over a run of 4 units gives a slope of $\\frac{3}{4}$. A fraction gives the slope exactly, with no rounding.",
+          "A flat (horizontal) line has no rise, so its slope is 0. A straight up-and-down (vertical) line has no run, and you cannot divide by 0, so its slope is undefined. The practice questions always use two points with different $x$-coordinates.",
         ],
       },
     ],
@@ -96,56 +130,60 @@ export const graphicalLessons: Lesson[] = [
         stage: "formal",
         title: "Rate of change on a graph",
         paragraphs: [
-          "For two points on a nonvertical line with distinct horizontal coordinates, slope is vertical change divided by horizontal change. Using the same start and end for both changes makes the ratio independent of which two points on that line are chosen.",
+          "For two points on a line that is not vertical, with different $x$-coordinates, the slope is the change in $y$ divided by the change in $x$. Use the same start and end for both changes. Then any two different points on the line give the same slope.",
         ],
       },
     ],
     workedExample: {
       prompt: "A line passes through (−2, 1) and (2, 3). Find its slope.",
       steps: [
-        "Vertical change: 3 − 1 = 2.",
-        "Horizontal change: 2 − (−2) = 4.",
-        "Divide: 2/4 = 1/2.",
+        "Start at $(-2, 1)$ and end at $(2, 3)$. The rise is the change in $y$: $3 - 1 = 2$.",
+        "The run is the change in $x$, in the same order: $2 - (-2) = 2 + 2 = 4$.",
+        "Divide the rise by the run: $\\frac{2}{4} = \\frac{1}{2}$. The slope is positive because the line goes up to the right.",
       ],
       answer: "1/2",
     },
     pitfalls: [
-      "Subtract both coordinates in the same point order.",
-      "Use changes between points, not either point’s $y$/$x$ ratio.",
+      "Subtract both coordinates in the same order: if you start with $(2, 3)$ for $y$, start with it for $x$ too.",
+      "Use the changes between two points, not one point's $y$ divided by its $x$.",
     ],
     parentGuide:
-      "Ask the learner to trace a horizontal move and a vertical move between the two plotted points.",
+      "Ask your learner to trace the across move and then the up-or-down move between the two plotted points, and say each length.",
   },
   {
     id: "bar-chart-totals",
     title: "Combine counts from a chart",
     summary:
-      "Each bar shows one category's count; add the requested categories to find a total.",
+      "A bar chart shows counts with bars. Each bar is one group, like oak trees. Read how tall a bar is on the scale, the numbers up the side. That number is the count. The total is how many there are in all. To find it, add the counts of the groups you need.",
     templateIds: ["bar-chart-total"],
+    senses: { scale: "scale-axis" },
+    noLink: ["part"],
     objectives: [
-      "Read category labels and value scales.",
-      "Add all named category counts.",
+      "Read each bar's count on the scale.",
+      "Add the counts of all the groups a question names.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Read each bar before adding",
         paragraphs: [
-          "A bar chart gives one count for each category. If a question asks for the total across several categories, first read their heights using the chart's scale, then add those counts.",
+          "A bar chart is a picture of counts. Each bar stands for one group of things, like oak trees. A taller bar means more things.",
+          "The scale is the row of numbers up the side. To read a bar, look across from its top to the scale. That number is the count for the group.",
+          "To find how many in all, read every bar you need first. Then add those counts.",
         ],
       },
       {
         title: "Read what each bar counts",
         paragraphs: [
-          "Each bar represents one category. Its height shows the count on the vertical scale. The label above each bar gives that same count.",
-          "The category name tells which objects are counted. The vertical-axis label tells the unit: this chart counts trees.",
+          "The name under each bar tells which group it counts. The words beside the scale tell what is counted. In these charts, it is trees.",
+          "Each line on the scale counts by 1. The numbers may be written only on every other line, like 0, 2, 4. A bar that ends on the line between 4 and 6 shows 5.",
         ],
       },
       {
-        title: "Find the combined count",
+        title: "Find the total",
         paragraphs: [
-          "When categories do not overlap, add their counts to find how many objects are represented altogether. Include each category exactly once.",
-          "Read the numbers before calculating. Counting bars tells how many categories there are, not how many trees there are.",
+          "Each tree is in only one group. So add the counts to find how many trees there are in all. Add each group once.",
+          "Do not count the bars. The number of bars tells how many groups there are, not how many trees.",
         ],
       },
     ],
@@ -154,19 +192,23 @@ export const graphicalLessons: Lesson[] = [
         stage: "formal",
         title: "Bar values and totals",
         paragraphs: [
-          "A bar's height represents the count for its category on the chart's stated scale. When categories do not overlap and cover the requested group, add their counts to obtain the total.",
+          "A bar's height on the scale is the count for its group.",
+          "When each thing is in just one group, the total is all the groups' counts added together.",
         ],
       },
     ],
     workedExample: {
       prompt:
         "A chart shows 4 oak trees, 7 pine trees, and 3 maple trees. How many trees are shown?",
-      steps: ["Add the three category counts.", "4 + 7 + 3 = 14."],
+      steps: [
+        "Each tree is in just one group, so add the three counts to find how many in all.",
+        "4 + 7 + 3 = 14. There are 14 trees.",
+      ],
       answer: "14",
     },
     pitfalls: [
-      "Do not add tick labels from the axis.",
-      "Do not count the same category twice.",
+      "Do not add the numbers on the scale. Add the counts the bars show.",
+      "Do not count the same group twice.",
     ],
     parentGuide:
       "Make a chart of three kinds of household objects and compare its total with a direct count.",
@@ -175,53 +217,59 @@ export const graphicalLessons: Lesson[] = [
     id: "bar-chart-comparison",
     title: "Compare two chart categories",
     summary:
-      "The difference between two bars tells how many more one category has.",
+      "A bar chart shows counts with bars. Each bar is one group. The scale is the row of numbers up the side. A bar's height on the scale is its count. To find how many more one group has than another, subtract, or take away, the smaller count from the bigger count. The answer is called the difference.",
     templateIds: ["bar-chart-difference"],
+    senses: { scale: "scale-axis", difference: "difference-subtract" },
     objectives: [
-      "Select the two categories named in a question.",
+      "Find the two groups a question names.",
       "Subtract to find how many more.",
     ],
     sections: [
       {
         stage: "intuition",
-        title: "Compare the two requested counts",
+        title: "Compare the two counts",
         paragraphs: [
-          "If one bar shows twelve and another shows eight, the first has four more. You need the difference between their heights, not the sum of every bar on the chart.",
+          "A bar chart shows counts with bars. Each bar is one group, like oak trees. The scale is the row of numbers up the side. Look across from the top of a bar to the scale to read its count.",
+          "Say one bar shows 12 and another shows 8. The first group has 4 more, because 12 − 8 = 4. The answer to a subtraction is called the difference.",
         ],
       },
       {
-        title: "Select the relevant bars",
+        title: "Use only the bars you need",
         paragraphs: [
-          "A comparison question may name only two categories even when the chart has more bars. Read the two requested counts and leave other categories out of the calculation.",
-          "Both counts use the same unit and scale. Compare the values represented by the bars rather than measuring their physical heights on the page.",
+          "A question may name only two groups, even when the chart has more bars. Read those two counts. Leave the other bars out.",
+          "Both bars use the same scale. Read the numbers on the scale. Do not measure the bars with a ruler.",
         ],
       },
       {
-        title: "Find the unmatched amount",
+        title: "Match, then count what is left",
         paragraphs: [
-          "Imagine matching one tree from the smaller group with one from the larger group. The unmatched trees show how many more the larger group contains.",
-          "Subtract the smaller count from the larger count. Check by adding the difference back to the smaller count.",
+          "Picture matching each tree in the smaller group with one tree in the bigger group. Some trees in the bigger group have no partner. Those are how many more the bigger group has.",
+          "Subtracting finds that number faster. Subtract the smaller count from the bigger count. Check by adding the difference back to the smaller count.",
         ],
       },
     ],
     closingSections: [
       {
         stage: "formal",
-        title: "Compare bar heights numerically",
+        title: "Compare bar heights with numbers",
         paragraphs: [
-          "When bars use one common scale, the difference between two category counts is the larger count minus the smaller. The distance between their tops represents this difference, not either bar's full height.",
+          "When two bars use the same scale, how many more is the bigger count minus the smaller count.",
+          "On the chart, read it on the scale: count from the top of the shorter bar up to the top of the taller bar, using the scale's numbers.",
         ],
       },
     ],
     workedExample: {
       prompt:
         "A chart shows 9 oak trees and 5 pine trees. How many more oak trees are there?",
-      steps: ["Find the difference: 9 − 5 = 4.", "Check: 5 + 4 = 9."],
+      steps: [
+        "Match each pine tree with an oak tree. The oak trees left with no partner are how many more. Taking away the smaller count finds them: 9 − 5 = 4.",
+        "Check by adding back: the pine trees plus the extra oak trees should make the oak count. 5 + 4 = 9, so there are 4 more oak trees.",
+      ],
       answer: "4",
     },
     pitfalls: [
-      "“How many more” asks for a difference, not a combined total.",
-      "Use only the named categories.",
+      "How many more asks you to subtract, not to add.",
+      "Use only the groups the question names.",
     ],
     parentGuide:
       "Arrange two rows of counters and pair them before connecting the unmatched counters to subtraction.",
@@ -230,32 +278,35 @@ export const graphicalLessons: Lesson[] = [
     id: "clock-duration",
     title: "Count elapsed minutes",
     summary:
-      "Count forward from the starting clock time to the ending time to find how long passed.",
+      "Elapsed time is how much time passes from a start time to an end time. One hour is 60 minutes. To find it, count on in minutes from the start time to the end time. If the end time is in a later hour, count to the next o'clock first.",
     templateIds: ["clock-elapsed-minutes"],
+    noLink: ["boundary"],
     objectives: [
-      "Read an analog starting time.",
-      "Find elapsed time across an hour boundary.",
+      "Read a start time on a clock with hands.",
+      "Find the minutes that pass, even when the hour changes.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Move from start to finish",
         paragraphs: [
-          "If a trip starts at 2:45 and ends at 3:10, count fifteen minutes to 3:00 and ten more to 3:10. That is twenty-five minutes altogether. Crossing an hour does not restart time.",
+          "Say a trip starts at 2:45 and ends at 3:10. Count on from the start. At 2:45 the long hand is at 9. Moving from 9 to 12 is 3 jumps, and each jump is 5 minutes. So from 2:45 to 3:00 is 15 minutes. From 3:00 to 3:10 is 10 more minutes. In all, 15 + 10 = 25 minutes.",
+          "Going past 3:00 does not start the count over. Keep adding.",
         ],
       },
       {
         title: "Read both hands",
         paragraphs: [
-          "The shorter hand indicates the hour. The longer hand indicates minutes: each numbered step represents five minutes.",
-          "Between hours, the short hand moves gradually toward the next number. At 3:30 it is halfway between 3 and 4, not exactly on 3.",
+          "A clock has two hands. The short hand shows the hour. The long hand shows the minutes. Each time the long hand moves from one number to the next, 5 minutes pass.",
+          "The short hand moves slowly between the numbers. At 3:30 it is halfway between 3 and 4, not right on 3.",
         ],
       },
       {
         title: "Count forward",
         paragraphs: [
-          "Count from the starting time to the next convenient hour, then from that hour to the ending time. Add those minute intervals.",
-          "These questions give a later ending time on the same morning, so there is no midnight or next-day ambiguity.",
+          "If the end time is in a later hour, count from the start time to the next o'clock. Then add 60 minutes for each whole hour after that. Then count on to the end time. Add up those minutes.",
+          "If both times are in the same hour, just subtract, or take away, the minutes. From 3:15 to 3:40 is 40 − 15 = 25 minutes.",
+          "In these questions, the end time is later in the same morning.",
         ],
       },
     ],
@@ -264,7 +315,8 @@ export const graphicalLessons: Lesson[] = [
         stage: "formal",
         title: "Elapsed time",
         paragraphs: [
-          "Elapsed time is the forward difference between an ending clock time and a starting clock time. Crossing an hour or noon does not restart the count; convert to a common minute count or count through the boundary.",
+          "Elapsed time is how long it is from the start time forward to the end time. One hour is 60 minutes.",
+          "Passing an o'clock, or noon, does not start the count over. Count through it and keep adding.",
         ],
       },
     ],
@@ -272,15 +324,15 @@ export const graphicalLessons: Lesson[] = [
       prompt:
         "A lesson begins at 3:45 and ends at 4:20 the same morning. How long does it last?",
       steps: [
-        "From 3:45 to 4:00 is 15 minutes.",
-        "From 4:00 to 4:20 is 20 minutes.",
-        "15 + 20 = 35 minutes.",
+        "The lesson ends in the next hour, so count to 4:00 first. From 3:45 to 4:00 is 15 minutes.",
+        "Then count on to the end time. From 4:00 to 4:20 is 20 minutes.",
+        "Add the two parts: 15 + 20 = 35 minutes.",
       ],
       answer: "35",
     },
     pitfalls: [
-      "An hour contains sixty minutes, not one hundred.",
-      "Elapsed minutes describe a duration, not a clock reading.",
+      "An hour has 60 minutes, not 100.",
+      "The answer is an amount of time, like 35 minutes, not a time on the clock.",
     ],
     parentGuide:
       "Move clock hands forward while counting minutes; include practice where the hour changes.",
@@ -289,32 +341,35 @@ export const graphicalLessons: Lesson[] = [
     id: "number-line-separation",
     title: "Distance between signed numbers",
     summary:
-      "The spaces between two points show how far apart the numbers are.",
+      "A number line shows numbers in order, with tick marks (short lines) evenly spaced and negative numbers (the numbers less than 0) to the left of 0. When neighboring ticks are 1 apart, each space is one unit. The distance between two numbers is how many units apart they are. Count the spaces between them, not the tick marks. A distance is never negative.",
     templateIds: ["number-line-distance"],
+    senses: GRID_SENSES,
+    noLink: GRID_NO_LINK,
     objectives: [
-      "Locate signed integers.",
-      "Calculate a nonnegative distance.",
+      "Find positive and negative whole numbers on a number line.",
+      "Work out the distance between two of them, which is never negative.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Count the spaces between points",
         paragraphs: [
-          "From negative two to three, move two spaces to zero and three more to three. The points are five units apart. Count intervals, not the printed labels you pass.",
+          "A number line has evenly spaced marks, called ticks, with 0 in the middle. Negative numbers sit to the left of 0 and positive numbers to the right.",
+          "From $-2$ to 3, move 2 spaces to reach 0, then 3 more to reach 3. So the points are $2 + 3 = 5$ units apart. Count the spaces you move across, not the labels you pass.",
         ],
       },
       {
         title: "Count spaces between locations",
         paragraphs: [
-          "Each tick marks a number. The distance between neighboring ticks is one unit. Count the spaces traveled, not the number of tick marks you see.",
-          "If one point is left of zero and the other is right of zero, travel to zero and then continue to the other point. Add those two distances.",
+          "Each tick marks a number. Here the distance between neighboring ticks is one unit. Count the spaces traveled, not the tick marks you see: from 1 to 4 passes 4 ticks but only 3 spaces.",
+          "If one point is left of 0 and the other is right of 0, travel to 0 first. Then keep going to the other point. Add those two distances.",
         ],
       },
       {
         title: "Subtract positions",
         paragraphs: [
-          "Subtract the left point from the right point to get their distance. Equivalently, use the absolute value of the difference in either order.",
-          "Distance has no direction, so it cannot be negative. The distance from −3 to 4 equals the distance from 4 to −3.",
+          "You can also subtract: the right point minus the left point gives the distance. For $-3$ and 4, that is $4 - (-3) = 4 + 3 = 7$.",
+          "Distance has no direction, so it cannot be negative. The distance from $-3$ to 4 is the same as the distance from 4 to $-3$. The size of a number without its sign is called its absolute value, written with bars: $|-7| = 7$. So subtracting in either order and taking the absolute value also works.",
         ],
       },
     ],
@@ -323,24 +378,24 @@ export const graphicalLessons: Lesson[] = [
         stage: "formal",
         title: "Distance on a number line",
         paragraphs: [
-          "For positions $a$ and $b$ on a number line with equal units, their separation is $|b-a|$. This nonnegative distance counts intervals between the positions, regardless of which one is farther right.",
+          "For numbers $a$ and $b$ on a number line with equal spaces, the distance between them is $|b - a|$, the size of their difference without its sign. When each space is one unit, it counts the spaces between them, whichever one is farther right. It is never negative.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is the distance between −3 and 4?",
       steps: [
-        "From −3 to 0 is 3 units.",
-        "From 0 to 4 is 4 units.",
-        "3 + 4 = 7 units.",
+        "The numbers are on opposite sides of 0, so go through 0. From $-3$ to 0 is 3 units.",
+        "From 0 to 4 is 4 more units.",
+        "Add the two parts: $3 + 4 = 7$ units.",
       ],
       answer: "7",
     },
     pitfalls: [
-      "Do not count both endpoint ticks as extra units.",
-      "A negative position can have a positive distance from another position.",
+      "Do not count the end ticks as extra units. Count spaces, not ticks.",
+      "A negative number can be a positive distance from another number. The distance is never negative.",
     ],
     parentGuide:
-      "Draw a number line and move a counter one interval per step, including journeys across zero.",
+      "Draw a number line and move a counter one space at a time, including trips across 0. Count the moves aloud.",
   },
 ];
