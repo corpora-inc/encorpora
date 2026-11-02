@@ -151,9 +151,9 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "A power $p/q$ means a $q$th root and then a $p$th power. To undo it, raise both sides to the reciprocal power $q/p$. An even power of $x$ cannot tell $x$ from $-x$, and an even root needs $x\\ge0$.",
     terms: ["rational-exponent", "reciprocal"],
     method: [
-      "Raise both sides to the power $\\frac{q}{p}$. The left side becomes $x$.",
+      "Write the exponent $\\frac{p}{q}$ in lowest terms, then raise both sides to the power $\\frac{q}{p}$.",
       "Evaluate the right side, using a root and a power.",
-      "If the numerator $p$ is even, include both the positive and negative value. If the denominator $q$ is even, keep only $x\\ge0$.",
+      "If the numerator $p$ is even and the right side is positive, include both the positive and the negative value. If the denominator $q$ is even, keep only $x\\ge0$.",
       "Substitute to check.",
     ],
     watch:
@@ -306,10 +306,10 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "Near a break in the graph, the two sides can behave differently. Left-sided behavior, written $x\\to c^-$, uses $x$ values just below $c$, and right-sided behavior, $x\\to c^+$, uses values just above $c$.",
     terms: ["vertical-asymptote", "hole", "jump-discontinuity"],
     method: [
-      "For a rational function, cancel common factors first. A canceled factor gives a hole whose height comes from the simplified expression.",
+      "For a rational function, cancel common factors first. If a factor cancels completely and the simplified expression is defined at that input, there is a hole, whose height comes from the simplified expression.",
       "For an asymptote, test the sign of $f$ just left and just right of the zero of the denominator.",
-      "A factor that is squared does not change sign, so both sides head the same way.",
-      "For a piecewise function, use the rule for each side and evaluate it at the break.",
+      "If the factor that makes the denominator 0 is squared and the numerator is not 0 there, the expression keeps one sign on both sides, so both sides head the same way.",
+      "For a piecewise function, one given by different rules on different intervals, use the rule for each side and evaluate it at the break.",
     ],
     watch:
       "Test each side separately. A hole is not an asymptote, and a squared factor keeps the same sign on both sides.",
@@ -778,8 +778,16 @@ export const texasHsLessons: Lesson[] = [
     id: "rational-exponent-equations",
     title: "Solve equations with rational exponents",
     summary:
-      "Raise both sides to the reciprocal power, and check which signs are possible.",
+      "An equation like $x^{2/3}=9$ has the unknown raised to a fraction. Raising both sides to the flipped fraction, the reciprocal power $\\frac32$, gives the possible values of $x$. But even roots and powers hide signs: $(-27)^{2/3}$ and $27^{2/3}$ are both 9, so check which signs the equation allows.",
     templateIds: ["rational-exponent-equation"],
+    senses: {
+      sides: "side-of-equation",
+      "right side": "side-of-equation",
+      root: "root-radical",
+      roots: "root-radical",
+      square: "square-number",
+    },
+    noLink: ["cube"],
     objectives: [
       "Solve $x^{p/q}=k$ and decide whether $x$ can be negative.",
       "Check each candidate in the original equation.",
@@ -800,13 +808,13 @@ export const texasHsLessons: Lesson[] = [
     method: {
       title: "Reciprocal power, then sign cases",
       paragraphs: [
-        "Raise both sides to $\\frac{q}{p}$. If the numerator $p$ is even and the right side is positive, give both $\\pm$ values; for example $x^{2/3}=4$ gives $x=\\pm8$. If the denominator is even, keep only nonnegative $x$.",
+        "With the exponent $\\frac{p}{q}$ in lowest terms, raise both sides to $\\frac{q}{p}$. If the numerator $p$ is even and the right side is positive, give both $\\pm$ values; for example $x^{2/3}=4$ gives $x=\\pm8$. If the denominator is even, keep only nonnegative $x$.",
       ],
     },
     formal: {
       title: "Why the reciprocal works",
       paragraphs: [
-        "For $x\\ge0$, $\\left(x^{p/q}\\right)^{q/p}=x^{1}=x$ because exponents multiply. For negative $x$ with odd $q$, $x^{p/q}=(\\sqrt[q]{x})^p$, which is negative when $p$ is odd and positive when $p$ is even.",
+        "For $x>0$ and $p\\ne0$, $\\left(x^{p/q}\\right)^{q/p}=x^{1}=x$ because exponents multiply. For negative $x$ with odd $q$, $x^{p/q}=(\\sqrt[q]{x})^p$, which is negative when $p$ is odd and positive when $p$ is even.",
       ],
     },
     pitfalls: [
@@ -1157,8 +1165,16 @@ export const texasHsLessons: Lesson[] = [
     id: "composition-and-one-sided-behavior",
     title: "Composition order and one-sided behavior",
     summary:
-      "Compare $f(g(x))$ with $g(f(x))$, and describe what a function approaches on each side of a break.",
+      "Doing one function and then another is called composition: $f(g(x))$ means apply $g$ first, then $f$. The order matters, so $f(g(x))$ and $g(f(x))$ usually differ. This lesson also describes what a function's outputs get close to as the input approaches a break in the graph from the left or from the right.",
     templateIds: ["composition-order-choice", "one-sided-behavior-choice"],
+    senses: {
+      hole: "hole",
+      jump: "jump",
+      squared: "square-number",
+      factor: "factor-number",
+      product: "product-multiply",
+    },
+    noLink: ["left side", "right side", "side", "sides"],
     objectives: [
       "Decide whether two functions give the same result in both orders.",
       "Describe left- and right-sided behavior at an asymptote, hole or jump.",
@@ -1185,7 +1201,7 @@ export const texasHsLessons: Lesson[] = [
     formal: {
       title: "Notation",
       paragraphs: [
-        "$(f\\circ g)(x)=f(g(x))$. A vertical asymptote at $c$ means $|f(x)|$ grows without bound as $x\\to c$. A hole is a removable discontinuity, where both sides approach the same finite value but the function is undefined. A jump has different finite one-sided limits.",
+        "$(f\\circ g)(x)=f(g(x))$. A vertical asymptote at $c$ means $|f(x)|$ grows without bound as $x$ approaches $c$ from at least one side. A hole is a removable discontinuity, where both sides approach the same finite value but the function is undefined. A jump has different finite one-sided limits.",
       ],
     },
     pitfalls: [
@@ -1249,18 +1265,20 @@ export const texasHsLessons: Lesson[] = [
     id: "rotation-angles-and-speed",
     title: "Angles in standard position and rotation speed",
     summary:
-      "Use reference angles for any angle, and radians for angular and linear speed.",
+      "Angles can be any size, even more than a full turn or negative. Any angle's sine and cosine come from its reference angle, the acute angle it makes with the $x$-axis. Measuring angles in radians, where a full turn is $2\\pi$, links turning to distance: a wheel of radius $r$ turning through $\\theta$ radians rolls $r\\theta$.",
     templateIds: [
       "reference-angle-standard-position",
       "angular-velocity-problem",
     ],
+    senses: { "more than": "more-than" },
+    noLink: ["change"],
     objectives: [
       "Find reference angles, quadrants and coterminal angles.",
       "Relate angular speed, linear speed and distance on a rotating wheel.",
     ],
     intuition: [
       "An angle in standard position starts on the positive $x$-axis. Positive angles turn counterclockwise and negative angles clockwise. A full turn brings you back to the same direction.",
-      "A point on a wheel that turns through $\\theta$ radians travels $r\\theta$ along the rim, because a radian is the angle that cuts off an arc as long as the radius.",
+      "A point on a wheel of radius $r$ that turns through $\\theta$ radians, with $\\theta\\ge0$, travels $r\\theta$ along the rim, because a radian is the angle that cuts off an arc as long as the radius.",
     ],
     example: {
       prompt:
@@ -1282,7 +1300,7 @@ export const texasHsLessons: Lesson[] = [
     formal: {
       title: "Relations",
       paragraphs: [
-        "Angles $\\theta$ and $\\theta+2\\pi k$ are coterminal for integer $k$. Arc length is $s=r\\theta$ for $\\theta$ in radians, so a point at radius $r$ moving with angular speed $\\omega$ has speed $v=r\\omega$.",
+        "Angles $\\theta$ and $\\theta+2\\pi k$ are coterminal for integer $k$. Arc length is $s=r\\theta$ for $\\theta\\ge0$ in radians, so a point at radius $r$ moving with angular speed $\\omega$ has speed $v=r\\omega$.",
       ],
     },
     pitfalls: [
@@ -1420,14 +1438,20 @@ export const texasHsLessons: Lesson[] = [
     id: "polynomial-and-rational-inequalities",
     title: "Polynomial and rational inequalities",
     summary:
-      "Find the zeros, test each interval and write the solution in interval notation.",
+      "An inequality such as $\\frac{x-1}{x+2}\\ge0$ asks where an expression is positive or negative. It can change sign only where it is zero or undefined. So mark those values on a number line, test one number in each gap between them, and write the gaps that work in interval notation.",
     templateIds: ["polynomial-inequality-solve", "rational-inequality-solve"],
+    senses: {
+      interval: "interval",
+      squared: "square-number",
+      factor: "factor-number",
+    },
+    noLink: ["change"],
     objectives: [
       "Solve polynomial and rational inequalities and write interval notation.",
       "Exclude values where a rational expression is undefined.",
     ],
     intuition: [
-      "An expression can change sign only at a zero, or at a value where it is undefined. Between two such values, its sign stays the same.",
+      "A polynomial, or a fraction of polynomials, can change sign only at a zero or at a value where it is undefined. Between two such values, its sign stays the same.",
       "So list those values, test one number in each gap, and keep the gaps that make the inequality true.",
     ],
     example: {

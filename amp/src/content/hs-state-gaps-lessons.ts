@@ -400,8 +400,16 @@ export const hsStateGapLessons: Lesson[] = [
     id: "cube-root-equation",
     title: "Solve equations with cube roots",
     summary:
-      "Isolate the cube root and cube both sides. Unlike square roots, cube roots never produce extraneous solutions.",
+      "A cube root undoes cubing: $\\sqrt[3]{8}=2$ because $2\\cdot2\\cdot2=8$, and $\\sqrt[3]{-8}=-2$. To solve an equation with a cube root, get the root alone and cube both sides. Unlike squaring, cubing keeps the sign, so it never adds false (extraneous) answers.",
     templateIds: ["cube-root-equation"],
+    senses: {
+      root: "root-radical",
+      sides: "side-of-equation",
+      side: "side-of-equation",
+      squaring: "square-number",
+      increasing: "increasing",
+    },
+    noLink: ["cube"],
     objectives: [
       "Solve equations containing a cube root or a cube.",
       "Work with negative values.",
@@ -431,7 +439,7 @@ export const hsStateGapLessons: Lesson[] = [
         stage: "method",
         title: "Isolate, cube, solve",
         paragraphs: [
-          "Get the cube root alone on one side, then cube both sides. Solve the resulting equation and check in the original. For $ax^3+b=c$, isolate $x^3$ and take the cube root of both sides: there is exactly one real value.",
+          "Get the cube root alone on one side, then cube both sides. Solve the resulting equation and check in the original. For $ax^3+b=c$ with $a\\ne0$, isolate $x^3$ and take the cube root of both sides: there is exactly one real value.",
           "Square-root equations can have extraneous solutions because squaring loses the sign. Cubing does not: each real number has one cube, and each cube has one real cube root.",
         ],
       },
@@ -445,7 +453,7 @@ export const hsStateGapLessons: Lesson[] = [
     ],
     pitfalls: [
       "A cube root can equal a negative number.",
-      "An odd power gives one real solution, not plus-or-minus.",
+      "Taking the cube root of both sides gives one real value, not plus-or-minus.",
     ],
     parentGuide:
       "Ask why a negative number can have a real cube root but not a real square root.",
