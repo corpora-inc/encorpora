@@ -275,9 +275,9 @@ function generateInequalityCase(
         label: `x ${direction} ${number(boundary)}`,
         correct: equal(boundary, target) && direction === solvedOp,
         feedback: equal(boundary, target)
-          ? `The boundary ${number(target)} is right, but the sign points the wrong way. ${coefficient.n < 0 ? `You divided by ${number(coefficient)}, a negative number, so the sign must flip` : `You divided by ${number(coefficient)}, a positive number, so the sign must not flip`}. The solution is $x$ ${solvedOp} ${number(target)}.`
+          ? `The boundary ${number(target)} is right, but the sign points the wrong way. ${coefficient.n < 0 ? `You divided by ${number(coefficient)}, a negative number, so the sign must flip` : number(coefficient) === "1" ? `The $x$ term is already alone, so nothing is divided and the sign must not flip` : `You divided by ${number(coefficient)}, a positive number, so the sign must not flip`}. The solution is $x$ ${solvedOp} ${number(target)}.`
           : direction === solvedOp
-            ? `The sign points the right way, but the boundary number is wrong. After moving the plain number, divide ${number(remaining)} by ${number(coefficient)}: that gives ${number(target)}.`
+            ? `The sign points the right way, but the boundary number is wrong. ${lhsConstant.n ? "After moving the plain number, divide" : "Divide"} ${number(remaining)} by ${number(coefficient)}: that gives ${number(target)}.`
             : `Both the boundary number and the sign are wrong. Divide ${number(remaining)} by ${number(coefficient)} to get ${number(target)}, and ${coefficient.n < 0 ? "flip the sign because you divided by a negative" : "keep the sign because you divided by a positive"}: $x$ ${solvedOp} ${number(target)}.`,
       })),
     );

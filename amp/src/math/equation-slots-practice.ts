@@ -765,7 +765,7 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         sentence: built.sentence,
         hint: `Start from ${nums[0]} tulips and read the story in order. For each number that follows, ask whether it adds tulips to the shop or takes them away.`,
         explanation: [
-          `Tulips that wilt and are thrown away make fewer, so subtract. Deliveries bring more, so add.`,
+          `Tulips that leave the shop, sold or thrown away, make fewer, so subtract. Deliveries bring more, so add.`,
           `Read the story in order: ${want.map((op, i) => `${op === "+" ? "add" : "subtract"} ${nums[i + 1]}`).join(", ")}.`,
           `The equation is $${nums[0]}${want.map((op, i) => `${op}${nums[i + 1]}`).join("")}=${total}$.`,
         ],

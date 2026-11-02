@@ -448,11 +448,11 @@ export function generateAlgebraProblem(
         { label: `y = ${term(k)}`, correct: true },
         {
           label: `y = ${linear(k, b)}`,
-          feedback: `This rule adds ${b}, so at x = 0 it gives y = ${b}, not 0. A proportional rule only multiplies $x$ by one number.`,
+          feedback: `This rule ${b < 0 ? `subtracts ${-b}` : `adds ${b}`}, so at x = 0 it gives y = ${b}, not 0. A proportional rule only multiplies $x$ by one number.`,
         },
         {
           label: `y = ${linear(-k, -b)}`,
-          feedback: `This rule adds ${-b}, so at x = 0 it gives y = ${-b}, not 0. Its graph misses the origin, (0, 0), so it is not proportional.`,
+          feedback: `This rule ${-b < 0 ? `subtracts ${b}` : `adds ${-b}`}, so at x = 0 it gives y = ${-b}, not 0. Its graph misses the origin, (0, 0), so it is not proportional.`,
         },
       ];
       explanation = [

@@ -693,7 +693,7 @@ function placeTransformedImage(seed: string): GeneratedProblem {
       grading: { mode: "exact" },
       hint: motionHint(motion, names[0]!, vertices[0]!),
       explanation: [
-        `A transformation moves every point of a figure the same way; the moved point is its image, named with a prime mark ($A'$).`,
+        `A transformation moves every point of a figure by the same rule; each moved point is its image, named with a prime mark ($${names[0]}'$).`,
         `For this ${motionWords(motion).replace(/^(rotated|reflected|translated)/, (w) => ({ rotated: "rotation", reflected: "reflection", translated: "translation" })[w as "rotated"])}, the coordinate rule is ${motionRule(motion)}: apply it to each vertex.`,
         ...vertices.map(
           (p, i) =>

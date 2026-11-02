@@ -770,7 +770,9 @@ export const quantityPairBlanksGenerate = defineGenerate(
         sentence: built.sentence,
         hint: `Use the ${yellow} yellow gumballs to find how many gumballs one part of the ratio stands for: divide ${yellow} by the ratio number for yellow. Then use that for the blue part and for the whole.`,
         explanation: [
-          `A ratio of ${yellowParts} to ${blueParts} means that for every ${yellowParts} yellow there are ${blueParts} blue. Think of equal-sized parts.`,
+          axes.order === "blue-to-yellow"
+            ? `A ratio of blue to yellow of ${blueParts} to ${yellowParts} means that for every ${blueParts} blue there are ${yellowParts} yellow. Think of equal-sized parts.`
+            : `A ratio of yellow to blue of ${yellowParts} to ${blueParts} means that for every ${yellowParts} yellow there are ${blueParts} blue. Think of equal-sized parts.`,
           `The yellow gumballs are ${yellowParts} parts, so one part is $${yellow}\\div ${yellowParts}=${f}$ gumballs.`,
           `Blue is ${blueParts} parts: $${blueParts}\\times ${f}=${blue}$ gumballs.`,
           `In all there are $${blueParts}+${yellowParts}=${blueParts + yellowParts}$ parts, so $${blueParts + yellowParts}\\times ${f}=${total}$ gumballs, or $${blue}+${yellow}=${total}$.`,
