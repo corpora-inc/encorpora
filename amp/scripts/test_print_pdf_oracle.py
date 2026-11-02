@@ -18,7 +18,7 @@ class PrintLayoutBatchTests(unittest.TestCase):
     @staticmethod
     def successful_run(_args, **kwargs):
         return subprocess.CompletedProcess([], 0, json.dumps({
-            'documents': len(json.loads(kwargs['input'])), 'rejectedMutations': 14}), '')
+            'documents': len(json.loads(kwargs['input'])), 'rejectedMutations': 24}), '')
 
     def review(self):
         with contextlib.redirect_stderr(io.StringIO()):
@@ -27,7 +27,7 @@ class PrintLayoutBatchTests(unittest.TestCase):
     def test_every_document_is_checked_once_with_bounded_batches(self):
         with patch('print_pdf_oracle.subprocess.run', side_effect=self.successful_run) as run:
             self.assertEqual(self.review(), {
-                'documents': len(self.documents), 'rejectedMutations': 14, 'batches': 3})
+                'documents': len(self.documents), 'rejectedMutations': 24, 'batches': 3})
         submitted = []
         for call in run.call_args_list:
             batch = json.loads(call.kwargs['input'])
@@ -52,7 +52,7 @@ class PrintLayoutBatchTests(unittest.TestCase):
         self.assertEqual(calls, 2)
 
     def test_incomplete_document_or_mutation_report_fails_closed(self):
-        for report in ({'documents': 119, 'rejectedMutations': 14},
+        for report in ({'documents': 119, 'rejectedMutations': 24},
                        {'documents': 120, 'rejectedMutations': 0}):
             with self.subTest(report=report), patch('print_pdf_oracle.subprocess.run',
                     return_value=subprocess.CompletedProcess([], 0, json.dumps(report), '')) as run:
