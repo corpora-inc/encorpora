@@ -525,6 +525,10 @@ test("fractions in workbook prose print text-style; standalone mathematics and o
   assert.match(render(sentence, true), /\\textstyle/);
   // A card or choice holding only the fraction keeps the large form.
   assert.doesNotMatch(render("\\(\\frac{3}{4}\\)", true), /print-math--prose/);
+  assert.doesNotMatch(
+    render("\\(\\frac{3}{4}\\) cup.", true),
+    /print-math--prose/,
+  );
   // Books and lesson printables are unchanged.
   assert.doesNotMatch(render(sentence, false), /print-math--prose/);
   assert.match(render(sentence, false), /\\displaystyle/);

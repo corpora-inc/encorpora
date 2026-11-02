@@ -23,9 +23,12 @@ export const PrintMathProse = createContext(false);
 /** Static, accessible mathematics. The original source is the only fallback. */
 export function PrintMathText({ text }: { text: string }) {
   const segments = segmentPrintText(text);
-  const prose =
-    useContext(PrintMathProse) &&
-    segments.some((s) => s.kind === "text" && s.source.trim());
+  // Running text has a few words around the mathematics; a label with a
+  // unit or a full stop ("3/4 cup.") is still standalone.
+  const words = segments
+    .filter((s) => s.kind === "text")
+    .flatMap((s) => s.source.match(/[A-Za-z]{2,}/g) ?? []).length;
+  const prose = useContext(PrintMathProse) && words >= 3;
   let attachedPunctuationLength = 0;
   return (
     <>
