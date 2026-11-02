@@ -30,6 +30,29 @@ export function scaleAt(scale: LevelScale, level: number) {
 }
 const pct = (fraction: number) => `${(fraction * 100).toFixed(2)}%`;
 
+/** Describe the existing dot and uncertainty band without exposing grade values. */
+export function levelPositionDescription(
+  estimate: LevelEstimate,
+  reference?: number,
+) {
+  if (reference === undefined)
+    return "The band shows uncertainty. No age reference is available.";
+  const [from, to] = levelRange(estimate);
+  const dot =
+    estimate.level < reference
+      ? "left of"
+      : estimate.level > reference
+        ? "right of"
+        : "at";
+  const band =
+    to < reference
+      ? "is left of"
+      : from > reference
+        ? "is right of"
+        : "includes";
+  return `The dot is ${dot} the age reference. The uncertainty band ${band} the reference.`;
+}
+
 /** One estimate on the scale: the likely range as a band, the best guess as
  * a dot, the age-typical grade as a tick. `estimated` draws the band
  * dashed for an area without its own answers yet. */
@@ -38,11 +61,13 @@ export function LevelTrack({
   scale,
   estimated = false,
   size = "regular",
+  reference = true,
 }: {
   estimate: LevelEstimate;
   scale: LevelScale;
   estimated?: boolean;
   size?: "regular" | "large";
+  reference?: boolean;
 }) {
   const [from, to] = levelRange(estimate);
   const left = scaleAt(scale, from),
@@ -52,10 +77,12 @@ export function LevelTrack({
       className={`${styles.track} ${styles[size]} ${estimated ? styles.estimated : ""}`}
       aria-hidden="true"
     >
-      <span
-        className={styles.center}
-        style={{ left: pct(scaleAt(scale, scale.center)) }}
-      />
+      {reference && (
+        <span
+          className={styles.center}
+          style={{ left: pct(scaleAt(scale, scale.center)) }}
+        />
+      )}
       <span
         className={styles.range}
         style={{ left: pct(left), width: pct(Math.max(0, right - left)) }}
@@ -72,14 +99,16 @@ export function LevelTrack({
 export function LevelAxis({
   scale,
   name,
+  reference = true,
 }: {
   scale: LevelScale;
   name: (level: number) => string;
+  reference?: boolean;
 }) {
   const axis = useRef<HTMLSpanElement>(null);
   const [showCenter, setShowCenter] = useState(false);
   const low = name(scale.lo),
-    center = name(scale.center),
+    center = reference ? name(scale.center) : "",
     high = name(scale.hi);
   useLayoutEffect(() => {
     const element = axis.current;
@@ -90,7 +119,8 @@ export function LevelAxis({
         label.getBoundingClientRect(),
       );
       setShowCenter(
-        center !== low &&
+        center !== "" &&
+          center !== low &&
           center !== high &&
           middle!.left >= left!.right + 8 &&
           middle!.right + 8 <= right!.left,
@@ -116,7 +146,7 @@ export function LevelAxis({
       </span>
       <span className={styles.axisEnd}>
         {high}
-        {scale.hi < COLLEGE ? "+" : ""}
+        {high && scale.hi < COLLEGE ? "+" : ""}
       </span>
     </span>
   );

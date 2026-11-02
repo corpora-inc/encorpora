@@ -158,14 +158,11 @@ try {
           await page.reload();
           await control.waitFor();
         }
-        assert.equal(await control.getAttribute("aria-checked"), "false");
+        assert.equal(await control.isChecked(), false);
         assert.ok(await save.isDisabled());
         await control.click();
         assert.ok(await save.isEnabled());
-        assert.equal(
-          await other.getByRole("checkbox").getAttribute("aria-checked"),
-          "false",
-        );
+        assert.equal(await other.getByRole("checkbox").isChecked(), false);
         assert.ok(
           await other
             .getByRole("button", {
@@ -273,16 +270,14 @@ try {
             .count(),
           1,
         );
-        assert.equal(await control.getAttribute("aria-checked"), "false");
+        assert.equal(await control.isChecked(), false);
         await control.click();
         await page.evaluate(() => (window as any).switchAccount("amp|other"));
         await page.waitForFunction(
           (recipient) =>
-            document
-              .querySelector(
-                `[data-purchase-measurement="${recipient}"] [role="checkbox"]`,
-              )
-              ?.getAttribute("aria-checked") === "false",
+            document.querySelector<HTMLInputElement>(
+              `[data-purchase-measurement="${recipient}"] input[type="checkbox"]`,
+            )?.checked === false,
           provider,
         );
         assert.ok(await save.isDisabled());
@@ -298,11 +293,9 @@ try {
         await sent;
         await page.waitForFunction(
           (recipient) =>
-            document
-              .querySelector(
-                `[data-purchase-measurement="${recipient}"] [role="checkbox"]`,
-              )
-              ?.getAttribute("aria-checked") === "false",
+            document.querySelector<HTMLInputElement>(
+              `[data-purchase-measurement="${recipient}"] input[type="checkbox"]`,
+            )?.checked === false,
           provider,
         );
         assert.ok(await save.isDisabled());

@@ -1,3 +1,4 @@
+import { CheckboxControl } from "../../ui/Checkbox";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { buttonClass } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
@@ -200,8 +201,7 @@ export function ShareAssessment({
       >
         <div className={styles.panel}>
           <label>
-            <input
-              type="checkbox"
+            <CheckboxControl
               checked={includeEstimate}
               onChange={(e) => setIncludeEstimate(e.target.checked)}
             />{" "}

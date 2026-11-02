@@ -1182,7 +1182,18 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   // Home shows where the learner stands in each strand; refresh it on return.
-  const [frontierMap, setFrontierMap] = useState<FrontierMap | null>(null);
+  // LegacyScreen is keyed by account. Bind each response to the learner and
+  // birth-year context too, so a switch cannot display the preceding map.
+  const [loadedFrontier, setLoadedFrontier] = useState<{
+    learnerId: string;
+    birthYear: number | null | undefined;
+    map: FrontierMap;
+  } | null>(null);
+  const frontierMap =
+    loadedFrontier?.learnerId === learner?.id &&
+    loadedFrontier?.birthYear === learner?.birthYear
+      ? (loadedFrontier?.map ?? null)
+      : null;
   const homeStrands = Object.keys(strandNames).filter((strand) =>
     catalog?.skills.some(
       (skill) =>
@@ -1197,7 +1208,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     void loadFrontier(
       () => api<FrontierMap>(`/learners/${id}/frontier`),
       () => active && learnerRef.current === id,
-      setFrontierMap,
+      (map) =>
+        setLoadedFrontier({ learnerId: id, birthYear: learner.birthYear, map }),
     );
     return () => {
       active = false;
@@ -1746,8 +1758,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           />
         ) : (learner.birthYear != null || problem) && !changingBirthYear ? (
           <Home
+            key={learner.id}
             navigation={!nativeRuntime && <ProgressViews active="level" />}
             name={learner.name}
+            birthYear={learner.birthYear}
             resuming={!!problem}
             frontier={frontierMap}
             strands={homeStrands}

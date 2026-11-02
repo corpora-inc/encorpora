@@ -333,6 +333,8 @@
   /* Display preferences share the atlas palette in either system theme. */
   --color-muted-text: var(--atlas-muted);
   --color-answer: var(--atlas-panel);
+  --color-surface-raised: var(--atlas-panel);
+  --color-on-surface-raised: var(--atlas-on-panel);
   --color-on-answer: var(--atlas-on-panel);
   --color-border-strong: var(--atlas-muted);
   --color-primary: var(--atlas-accent);

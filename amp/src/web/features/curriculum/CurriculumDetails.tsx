@@ -3,6 +3,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { useCurriculumScope } from "./useCurriculumScope";
 import styles from "./CurriculumDetails.module.css";
+import { CheckboxControl } from "../../ui/Checkbox";
 
 type State = {
   shown: Record<string, boolean>;
@@ -95,24 +96,16 @@ export function CurriculumDetailsControl() {
   return (
     <label className={styles.control}>
       <span className={styles.copy}>
-        <span>Show grades and estimates</span>
+        <span>Show grade numbers</span>
         <small>For this learner on this device.</small>
       </span>
-      <span className={styles.check}>
-        <input
-          type="checkbox"
-          aria-label="Show grades and estimates"
-          aria-description="Remembered for this learner on this device. Practice stays the same."
-          checked={shown}
-          disabled={!ready}
-          onChange={(e) => setShown(e.target.checked)}
-        />
-        <span className={styles.indicator} aria-hidden="true">
-          <svg viewBox="0 0 16 16" fill="none">
-            <path d="m3 8 3 3 7-7" />
-          </svg>
-        </span>
-      </span>
+      <CheckboxControl
+        aria-label="Show grade numbers"
+        aria-description="Remembered for this learner on this device. Practice stays the same."
+        checked={shown}
+        disabled={!ready}
+        onChange={(e) => setShown(e.target.checked)}
+      />
     </label>
   );
 }

@@ -1,3 +1,4 @@
+import { CheckboxControl } from "../../ui/Checkbox";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Dialog } from "../../ui/Dialog";
@@ -60,9 +61,9 @@ export function PracticeControls({
       ) : (
         <label>
           <span>Working together</span>
-          <input
+          <CheckboxControl
             disabled={disabled}
-            type="checkbox"
+
             checked={state.data?.workingTogether ?? false}
             onChange={(e) =>
               void save({

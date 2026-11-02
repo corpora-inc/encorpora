@@ -726,7 +726,7 @@ try {
   await page.getByRole("button", { name: "2016", exact: true }).click();
   await page.getByRole("button", { name: "Go", exact: true }).waitFor();
   const curriculumDetails = page.getByRole("checkbox", {
-    name: "Show grades and estimates",
+    name: "Show grade numbers",
     exact: true,
   });
   assert.equal(await curriculumDetails.isChecked(), false);

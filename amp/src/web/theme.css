@@ -1466,12 +1466,6 @@ html[data-input="pointer"] :focus-visible {
 .frontier-map li {
   display: block;
 }
-.frontier-map li.frontier-count-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 4px;
-  padding: 12px 0;
-}
 .frontier-row {
   display: grid;
   grid-template-columns: min(132px, 34%) 1fr;
@@ -1538,40 +1532,18 @@ html[data-input="pointer"] :focus-visible {
   font-weight: 600;
   color: var(--color-subtle-text);
 }
-.frontier-axis span {
-  position: absolute;
-  white-space: nowrap;
-}
-.frontier-axis span:nth-child(1) {
-  left: 0;
-}
-.frontier-axis span:nth-child(2) {
-  left: 50%;
-  transform: translateX(-50%);
-}
-.frontier-axis span:nth-child(3) {
-  right: 0;
-}
 /* The dot is centred on its value: inset the track by its radius so a value
    at either end stays inside the card, and the end labels with it. */
 .frontier-track {
   margin-inline: 8px;
 }
-.frontier-axis span:nth-child(1) {
-  left: 8px;
+/* The axis shares the track's dot-radius inset. Its shared component hides
+   center labels when the available space would make them collide. */
+.frontier-axis {
+  padding-inline: 8px;
 }
-.frontier-axis span:nth-child(3) {
-  right: 8px;
-}
-/* Three labels need about 240px of track; below that the heading explains
-   the centre line and the two end labels stay clear of each other. */
 .frontier-map {
   container-type: inline-size;
-}
-@container (max-width: 420px) {
-  .frontier-axis span:nth-child(2) {
-    display: none;
-  }
 }
 
 .answer-dock > div > .practice-tools {
@@ -2027,10 +1999,6 @@ html[data-input="pointer"] :focus-visible {
   .frontier-detail {
     margin-left: 108px;
   }
-  /* The heading explains the centre line; two end labels fit. */
-  .frontier-axis span:nth-child(2) {
-    display: none;
-  }
 }
 /* Signed out: the welcome card sits in the app column, on the hero's edges,
    and both of its actions share one control size. */
@@ -2471,8 +2439,5 @@ html[data-input="pointer"] :focus-visible {
   .frontier-axis,
   .frontier-detail {
     margin-left: 0;
-  }
-  .frontier-axis span:nth-child(2) {
-    display: block;
   }
 }

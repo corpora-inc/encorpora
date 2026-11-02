@@ -720,7 +720,7 @@ async function verifySearchFilters() {
       );
       assert.equal(new URL(page.url()).searchParams.get("filter"), "K");
       const preference = page.getByRole("checkbox", {
-        name: "Show grades and estimates",
+        name: "Show grade numbers",
       });
       assert.equal(await preference.isChecked(), false);
       assert(
@@ -1041,7 +1041,7 @@ try {
         .getByRole("button", { name: "Browse skills", exact: true })
         .click();
       await page
-        .getByRole("checkbox", { name: "Show grades and estimates" })
+        .getByRole("checkbox", { name: "Show grade numbers" })
         .check();
       await page
         .getByRole("button", { name: "Close browser", exact: true })

@@ -146,7 +146,12 @@ function MapView({ session }: { session: TrialSession }) {
           )}
         </div>
         {/* The next step sits above the fold; the map is the evidence. */}
-        <FrontierMap name="the learner" frontier={frontier} strands={strands} />
+        <FrontierMap
+          name="the learner"
+          birthYear={session.birthYear}
+          frontier={frontier}
+          strands={strands}
+        />
         <Link
           to="/pathways"
           search={{ context: "trial" }}

@@ -306,9 +306,7 @@ try {
       await page.locator(".frontier-map").waitFor();
       await fits(page, `${tag} map`);
       assert.equal(await page.getByTestId("level-readout").count(), 0);
-      await page
-        .getByRole("checkbox", { name: "Show grades and estimates" })
-        .check();
+      await page.getByRole("checkbox", { name: "Show grade numbers" }).check();
       assert.match(
         await page.getByTestId("level-readout").innerText(),
         /Working level[\s\S]*-?\d+\.\d{2}[\s\S]*Estimated range/,
@@ -362,9 +360,75 @@ try {
       const text = (await dialog.textContent()) ?? "";
       assert.match(text, /Level check · 25 answered/);
       assert.equal(await dialog.getByTestId("level-readout").count(), 0);
+      const charts = () =>
+        dialog.locator('span[class*="_track_"]').evaluateAll((tracks) =>
+          tracks.map((track) => {
+            const r = track.getBoundingClientRect();
+            return {
+              width: r.width,
+              height: r.height,
+              parts: [...track.children].map((child) => {
+                const b = child.getBoundingClientRect();
+                return {
+                  x: b.x - r.x,
+                  y: b.y - r.y,
+                  width: b.width,
+                  height: b.height,
+                  color: getComputedStyle(child).background,
+                };
+              }),
+            };
+          }),
+        );
+      await dialog.evaluate(async (element) => {
+        await Promise.all(
+          element
+            .getAnimations({ subtree: true })
+            .map((animation) => animation.finished),
+        );
+      });
+      const hiddenCharts = await charts();
+      assert(
+        hiddenCharts.length > 1,
+        `${tag}: default overall and area charts remain visible`,
+      );
+      const trend = dialog.getByRole("img", {
+        name: /^Estimate over 25 problems/,
+      });
+      assert.equal(
+        await trend.count(),
+        1,
+        `${tag}: default trend retains uncertainty`,
+      );
+      const trendShape = await trend.locator("svg").innerHTML();
+      assert.doesNotMatch(
+        await dialog.ariaSnapshot(),
+        /Grade \d|Level \d|Estimated range \d|\d+\.\d{2}/,
+        `${tag}: accessible default does not leak grade numbers`,
+      );
       await dialog
-        .getByRole("checkbox", { name: "Show grades and estimates" })
+        .getByRole("checkbox", { name: "Show grade numbers" })
         .check();
+      await dialog.evaluate(async (element) => {
+        await Promise.all(
+          element
+            .getAnimations({ subtree: true })
+            .map((animation) => animation.finished),
+        );
+      });
+      assert.deepEqual(
+        await charts(),
+        hiddenCharts,
+        `${tag}: reveal preserves chart geometry and colors`,
+      );
+      assert.equal(
+        await dialog
+          .getByRole("img", { name: /^Best guess over 25 problems/ })
+          .locator("svg")
+          .innerHTML(),
+        trendShape,
+        `${tag}: reveal preserves the trend and uncertainty polygon`,
+      );
       assert.match(
         await dialog.getByTestId("level-readout").innerText(),
         /Working level[\s\S]*-?\d+\.\d{2}[\s\S]*Estimated range/,

@@ -121,7 +121,9 @@ try {
       );
       await toggle.click();
       await page.waitForFunction(() =>
-        document.querySelector('[role="checkbox"]')?.hasAttribute("disabled"),
+        document
+          .querySelector('input[type="checkbox"]')
+          ?.hasAttribute("disabled"),
       );
       const during = await toggle.boundingBox();
       assert.equal(during?.y, before.y, "Saving moved the toggle");
@@ -129,19 +131,19 @@ try {
       await page
         .getByText("Practice setting saved. It applies to the next problem.")
         .waitFor();
-      assert.equal(await toggle.getAttribute("aria-checked"), "true");
+      assert.equal(await toggle.isChecked(), true);
       await noOverflow(page);
       await page.screenshot({
         path: `${output}/settings-${width}-${theme}.png`,
         fullPage: true,
       });
       await page.reload();
-      assert.equal(await toggle.getAttribute("aria-checked"), "true");
+      assert.equal(await toggle.isChecked(), true);
       await choose(
         page.getByRole("button", { name: "Family learner", exact: true }),
         sibling.id,
       );
-      assert.equal(await toggle.getAttribute("aria-checked"), "false");
+      assert.equal(await toggle.isChecked(), false);
       await choose(
         page.getByRole("button", { name: "Family learner", exact: true }),
         learner.id,
@@ -162,7 +164,7 @@ try {
           "Could not confirm the practice setting. Refresh your family details and try again.",
         )
         .waitFor();
-      assert.equal(await toggle.getAttribute("aria-checked"), "true");
+      assert.equal(await toggle.isChecked(), true);
       await noOverflow(page);
       await page.getByRole("button", { name: "Back", exact: true }).click();
       // Representative symbolic, data, geometry and contextual tasks, all with

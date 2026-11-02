@@ -210,6 +210,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
       }
       frontier={frontier.data}
       learnerName={learner?.name}
+      birthYear={learner?.birthYear}
       controls={
         <>
           {/* The learner row holds its place while the family loads. */}
@@ -270,6 +271,7 @@ export function MapView({
   controls,
   frontier,
   learnerName,
+  birthYear,
   trialMode = false,
   guestMode = false,
   actionLabel = "Start learning",
@@ -282,6 +284,7 @@ export function MapView({
   controls?: ReactNode;
   frontier?: Frontier;
   learnerName?: string;
+  birthYear?: number | null;
   trialMode?: boolean;
   guestMode?: boolean;
   actionLabel?: string;
@@ -572,7 +575,7 @@ export function MapView({
               evidence={evidence}
               selected={selectedId}
               onSelect={select}
-              range={shown ? range : null}
+              range={range}
               rangeStrand={selected?.strand}
             />
             {selected && (
@@ -694,11 +697,17 @@ export function MapView({
                   Related skills
                 </h3>
                 {connectionList("related", neighbors.related)}
-                {shown && range && (
+                {range && (
                   <p className="pathways-range">
-                    {strandNames[selected.strand] ?? selected.strand} frontier:{" "}
-                    {gradeName(range.lo)} to {gradeName(range.hi)} · estimated
-                    range.
+                    {shown ? (
+                      <>
+                        {strandNames[selected.strand] ?? selected.strand}{" "}
+                        frontier: {gradeName(range.lo)} to {gradeName(range.hi)}{" "}
+                        · estimated range.
+                      </>
+                    ) : (
+                      "Faint outlines show the estimated range of skills to practice."
+                    )}
                   </p>
                 )}
               </section>
@@ -730,17 +739,24 @@ export function MapView({
                 grade. Prerequisites do not earn credit automatically. The map
                 includes skills whose practice is being developed.
               </p>
-              {shown && range && !selected && (
+              {range && !selected && (
                 <p>
-                  Overall frontier: {gradeName(range.lo)} to{" "}
-                  {gradeName(range.hi)} · estimated range shown by faint
-                  outlines.
+                  {shown ? (
+                    <>
+                      Overall frontier: {gradeName(range.lo)} to{" "}
+                      {gradeName(range.hi)} · estimated range shown by faint
+                      outlines.
+                    </>
+                  ) : (
+                    "Faint outlines show the estimated range of skills to practice."
+                  )}
                 </p>
               )}
               {frontier && learnerName && (
                 <FrontierMap
                   name={learnerName}
                   frontier={frontier}
+                  birthYear={birthYear}
                   strands={Object.keys(frontier.strands)}
                 />
               )}

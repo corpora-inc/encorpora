@@ -1,3 +1,4 @@
+import { CheckboxControl } from "../../ui/Checkbox";
 import {
   prepareFeedbackSound,
   useFeedbackPreferences,
@@ -12,8 +13,7 @@ export function FeedbackPreferences() {
       <legend>Answer feedback</legend>
       <label>
         <span>Sound</span>
-        <input
-          type="checkbox"
+        <CheckboxControl
           checked={preferences.sound}
           onChange={(event) => {
             preferences.set("sound", event.target.checked);
@@ -24,8 +24,7 @@ export function FeedbackPreferences() {
       {haptics && (
         <label>
           <span>Haptics</span>
-          <input
-            type="checkbox"
+          <CheckboxControl
             checked={preferences.haptics}
             onChange={(event) =>
               preferences.set("haptics", event.target.checked)

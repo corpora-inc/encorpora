@@ -1,0 +1,95 @@
+.amp-checkbox-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: var(--target-size);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.amp-checkbox-row:hover:not(:has(input:disabled)) {
+  filter: none;
+  background: var(--color-surface-sunken);
+}
+.amp-checkbox-row:has(input:checked) {
+  border-color: var(--color-primary);
+  background: var(--color-secondary);
+}
+.amp-checkbox-row:has(input:focus-visible) {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.amp-checkbox-box {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--color-border-strong);
+  border-radius: 7px;
+  background: var(--color-surface-raised);
+}
+.amp-checkbox-box svg {
+  fill: none;
+  stroke: var(--color-on-primary);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  visibility: hidden;
+}
+.amp-checkbox-input:checked + .amp-checkbox-box {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+}
+.amp-checkbox-input:checked + .amp-checkbox-box svg {
+  visibility: visible;
+}
+.amp-checkbox-text {
+  font-size: var(--text-label);
+  line-height: 1.45;
+}
+
+.amp-checkbox-control {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: var(--target-size, 44px);
+  height: var(--target-size, 44px);
+  flex: 0 0 var(--target-size, 44px);
+  vertical-align: middle;
+}
+.amp-checkbox-control .amp-checkbox-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.amp-checkbox-box {
+  pointer-events: none;
+  box-sizing: border-box;
+}
+.amp-checkbox-input:focus-visible + .amp-checkbox-box {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+.amp-checkbox-input:disabled {
+  cursor: default;
+}
+.amp-checkbox-input:disabled + .amp-checkbox-box {
+  border-style: dashed;
+  opacity: 0.6;
+}
+.amp-checkbox-row:has(input:disabled) {
+  cursor: default;
+}
