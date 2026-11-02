@@ -484,8 +484,12 @@ function decimalStep(r: Random): Built {
     hint: `${stepText} is 1 ${place.slice(0, -1)}. Find the ${place} digit of ${shownBase} and change it by 1. If that digit is ${more ? "9" : "0"}, regroup with the next place to the left.`,
     explanation: [
       `${stepText} is 1 ${place.slice(0, -1)}, so ${more ? "add" : "subtract"} 1 in the ${place} place of ${shownBase}.`,
-      `Regroup with the next place to the left if the ${place} digit cannot ${more ? "increase" : "decrease"}.`,
-      `${shownBase} ${more ? "+" : "-"} ${stepText} = ${trimmed(answerH)}.`,
+      (stepH === 10 ? d1 : d2) === (more ? 9 : 0)
+        ? more
+          ? `The ${place} digit is 9, so 1 more makes 10 ${place}. Trade those 10 for 1 in the next place to the left, and write 0 in the ${place} place.`
+          : `The ${place} digit is 0, so there is nothing to take 1 from. Trade 1 from the next place to the left for 10 ${place}, then take 1 away, leaving 9.`
+        : `The ${place} digit is ${stepH === 10 ? d1 : d2}, so it becomes ${(stepH === 10 ? d1 : d2) + (more ? 1 : -1)}; the other digits stay the same.`,
+      `${shownBase} ${more ? "+" : "-"} ${stepText} = ${trimmed(answerH)}. The number is ${trimmed(answerH)}.`,
     ],
   };
 }
@@ -521,7 +525,7 @@ function decimalByTenth(r: Random): Built {
       hint: `Multiplying by 0.1 takes one tenth of ${d}. Think about how the digits move one place when you divide by 10.`,
       explanation: [
         "0.1 is one tenth, so multiplying by 0.1 is the same as dividing by 10.",
-        "Each digit of the number moves one place to the right.",
+        "Dividing by 10 makes each digit worth one tenth as much, so each digit moves one place to the right.",
         `$${d}\\times0.1=${fromThousandths(t * 10)}$.`,
       ],
     };
@@ -533,7 +537,7 @@ function decimalByTenth(r: Random): Built {
       hint: `Multiplying by 0.01 takes one hundredth of ${d}. Think about how the digits move when you divide by 100.`,
       explanation: [
         "0.01 is one hundredth, so multiplying by 0.01 is the same as dividing by 100.",
-        "Each digit moves two places to the right.",
+        "Dividing by 100 makes each digit worth one hundredth as much, so each digit moves two places to the right.",
         `$${d}\\times0.01=${fromThousandths(t)}$.`,
       ],
     };
@@ -544,8 +548,8 @@ function decimalByTenth(r: Random): Built {
       answer: fromThousandths(t * 1000),
       hint: `Ask how many tenths fit in ${d}. There are 10 tenths in every 1, so each digit changes place value by a factor of 10.`,
       explanation: [
-        "There are 10 tenths in 1, so dividing by 0.1 is the same as multiplying by 10.",
-        "Each digit moves one place to the left.",
+        "There are 10 tenths in 1, so dividing by 0.1 asks how many tenths fit, which is the same as multiplying by 10.",
+        "Multiplying by 10 makes each digit worth 10 times as much, so each digit moves one place to the left.",
         `$${d}\\div0.1=${fromThousandths(t * 1000)}$.`,
       ],
     };
@@ -556,8 +560,8 @@ function decimalByTenth(r: Random): Built {
       answer: fromThousandths(t * 10000),
       hint: `Ask how many hundredths fit in ${d}. There are 100 hundredths in every 1, so each digit changes place value by a factor of 100.`,
       explanation: [
-        "There are 100 hundredths in 1, so dividing by 0.01 is the same as multiplying by 100.",
-        "Each digit moves two places to the left.",
+        "There are 100 hundredths in 1, so dividing by 0.01 asks how many hundredths fit, which is the same as multiplying by 100.",
+        "Multiplying by 100 makes each digit worth 100 times as much, so each digit moves two places to the left.",
         `$${d}\\div0.01=${fromThousandths(t * 10000)}$.`,
       ],
     };
@@ -745,8 +749,8 @@ function expressionMatch(r: Random): Built {
       answer: "",
       hint: `Read ${expr} in order. Find the operation inside the parentheses (or the one that is done first) and say it first.`,
       explanation: [
-        `In ${expr}, do the operations in the order the parentheses and operation rules require.`,
-        `That order is described by: "${desc}"`,
+        `Parentheses mark the part to do first. Without parentheses, multiply or divide before you add or subtract.`,
+        `So in ${expr}, the first step and then the next are described by: "${desc}"`,
       ],
       choices: [
         { label: desc, correct: true as const },
@@ -878,8 +882,9 @@ function storyEquation(r: Random): Built {
     answer: "",
     hint: `Decide which operation joins the ${g} groups to the unknown $${v}$, and whether the ${e} is added or taken away before or after that. Then write the steps in the same order as the story.`,
     explanation: [
+      `An equation says two amounts are equal. Here the letter $${v}$ stands for the unknown amount, and the result of the story is ${t}.`,
       `Name the steps of the story in order: ${storyForms[kind].says(g, e)}.`,
-      `Write those steps with $${v}$ as the unknown and ${t} as the result.`,
+      `Write those steps with $${v}$ as the unknown and set them equal to ${t}.`,
       `The equation is ${correct}.`,
     ],
     choices: choicesFrom(r, correct, wrongs),
@@ -1100,7 +1105,7 @@ function integerMulDiv(r: Random): Built {
         ]
       : [
           `Without signs, $${absText}=${Math.abs(value)}$.`,
-          `The signs are ${sameSigns ? "the same" : "different"}, so the result is ${sameSigns ? "positive" : "negative"}.`,
+          `Multiplying or dividing by a negative number flips the sign. ${sameSigns ? "Two negatives flip it twice, and two positives flip it not at all, so the result is positive." : "Exactly one number is negative, so the sign flips once and the result is negative."}`,
           `$${exprText}=${value}$.`,
         ],
   };
