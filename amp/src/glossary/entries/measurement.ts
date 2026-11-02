@@ -204,8 +204,9 @@ export const measurementEntries: GlossaryEntry[] = [
     term: "fixed cost",
     forms: ["fixed cost", "fixed costs", "fixed expense", "fixed expenses"],
     plain:
-      "A cost that stays the same no matter what: the same every month, or the same however many items are made.",
-    example: "Rent of 800 dollars every month is a fixed expense.",
+      "A cost that is set ahead and does not depend on how much you use, buy or make. Rent is one: it is the same each month.",
+    example:
+      "Rent of 800 dollars every month is a fixed expense. A bakery pays that same 800 dollars whether it bakes 10 cakes or 500.",
     uses: [],
     band: "2",
   },
@@ -471,9 +472,9 @@ export const measurementEntries: GlossaryEntry[] = [
       "variable expenses",
     ],
     plain:
-      "A cost that changes: from month to month, or with the number of items made.",
+      "A cost that goes up or down with how much you use, buy or make. Using or making more costs more.",
     example:
-      "Groceries might cost 90 dollars one month and 120 dollars the next.",
+      "A family that buys more food one month pays more: 90 dollars, then 120 dollars. A bakery spends 2 dollars of flour per cake, so 10 cakes cost 20 dollars.",
     uses: [],
     noLink: ["changes"],
     band: "2",
