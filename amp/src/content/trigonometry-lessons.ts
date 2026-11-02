@@ -19,7 +19,7 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
   "trig-symmetry-value": {
     goal: "Given one value of $\\sin\\theta$ or $\\cos\\theta$, find the value of the function at $-\\theta$, $\\pi\\pm\\theta$ or $\\theta$ plus whole turns.",
     intuition:
-      "On the unit circle, the circle of radius 1 around the origin, the angle $\\theta$ marks the point $(\\cos\\theta,\\sin\\theta)$: the cosine is the $x$-coordinate and the sine the $y$-coordinate. Turning the angle to $-\\theta$ flips the point across the $x$-axis. Adding $\\pi$, a half turn, moves it to the opposite side of the circle. Adding $2\\pi$, a full turn, returns to the same point. Each move changes the signs of the coordinates in a simple way.",
+      "On the unit circle, the circle of radius 1 around the origin, the angle $\\theta$ marks the point $(\\cos\\theta,\\sin\\theta)$: the cosine is the $x$-coordinate and the sine the $y$-coordinate. Turning the angle to $-\\theta$ flips the point across the $x$-axis. Adding $\\pi$, a half turn, moves it straight across the origin. Adding $2\\pi$, a full turn, returns to the same point. Each move changes the signs of the coordinates in a simple way.",
     terms: [
       ["odd-function", "Sine and tangent are odd."],
       ["even-function", "Cosine is even: $\\cos(-x)=\\cos x$."],
@@ -139,7 +139,7 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
   "trig-triangle-area": {
     goal: "Find the area of a triangle from two sides and the angle between them, or find a side from the area.",
     intuition:
-      "The area of a triangle is half its base times its height, the straight-up distance to the opposite corner. If $a$ is the base and $b$ is another side meeting it at angle $C$, the angle between them, the height is $b\\sin C$. So the area is $\\frac12ab\\sin C$.",
+      "The area of a triangle is half its base times its height. The height is the straight-up distance from the base to the corner across from it. If $a$ is the base and $b$ is another side meeting it at angle $C$, the angle between them, the height is $b\\sin C$. So the area is $\\frac12ab\\sin C$.",
     terms: ["included-angle"],
     method: [
       "Identify the two sides and the angle between them.",
@@ -199,10 +199,12 @@ const lesson = (
   formal: string[],
   pitfalls: string[],
   parentGuide: string,
+  glossary: Pick<Lesson, "senses" | "noLink"> = {},
 ): Lesson => ({
   id,
   title,
   summary,
+  ...glossary,
   templateIds: [id],
   objectives,
   sections: [
@@ -243,7 +245,7 @@ export const trigonometryLessons: Lesson[] = [
       steps: [
         "Change to degrees to see where the angle points: $\\tfrac{5\\pi}{6} = \\tfrac{5}{6} \\times 180^\\circ = 150^\\circ$. That is between $90^\\circ$ and $180^\\circ$, so the terminal side is in quadrant II, the upper left.",
         "The reference angle is the gap to the negative $x$-axis: $\\pi - \\tfrac{5\\pi}{6} = \\tfrac{\\pi}{6}$, which is $30^\\circ$.",
-        "At $30^\\circ$, the sine is the leg opposite the angle in the special triangle, $\\tfrac{1}{2}$.",
+        "At $30^\\circ$, the sine is the short leg of the special triangle, the leg across from the $30^\\circ$ angle: $\\tfrac{1}{2}$.",
         "In quadrant II the $y$-coordinate is positive, so the sine is positive. Check: the point is $\\left(-\\tfrac{\\sqrt{3}}{2}, \\tfrac{1}{2}\\right)$, and $\\left(-\\tfrac{\\sqrt{3}}{2}\\right)^2 + \\left(\\tfrac{1}{2}\\right)^2 = \\tfrac{3}{4} + \\tfrac{1}{4} = 1$, so it is on the circle.",
       ],
       answer: "$\\frac12$",
@@ -255,7 +257,7 @@ export const trigonometryLessons: Lesson[] = [
     ],
     "Why the signs and sizes work",
     [
-      "A reflection across an axis keeps distances, so the reference angle gives the same sizes of the coordinates. The sign of each coordinate comes from which side of the axis the point is on. Since $\\tan\\theta = \\tfrac{y}{x}$, it is undefined exactly when $x = 0$, at $\\tfrac{\\pi}{2} + n\\pi$ for any integer $n$ (a whole number or its negative).",
+      "A reflection across an axis keeps distances, so the reference angle gives the same sizes of the coordinates. The sign of each coordinate comes from the quadrant the point is in. Since $\\tan\\theta = \\tfrac{y}{x}$, it is undefined exactly when $x = 0$, at $\\tfrac{\\pi}{2} + n\\pi$ for any integer $n$ (a whole number or its negative).",
     ],
     [
       "Measure the reference angle from the $x$-axis, not the $y$-axis.",
@@ -263,11 +265,21 @@ export const trigonometryLessons: Lesson[] = [
       "Tangent at $90^\\circ$ and $270^\\circ$ is undefined, not 0.",
     ],
     "Ask the learner to say the quadrant and the reference angle of $\\frac{7\\pi}{6}$ before giving any value.",
+    {
+      senses: {
+        degrees: "degree-angle",
+        quarter: "fourth",
+        plane: "plane",
+        tangent: "tangent-trig",
+        sides: "side",
+      },
+      noLink: ["change", "whole"],
+    },
   ),
   lesson(
     "trig-symmetry-value",
     "Unit-circle symmetry",
-    "On the unit circle, the circle of radius 1 around the origin, an angle $\\theta$ marks the point $(\\cos\\theta, \\sin\\theta)$. Changing the angle in simple ways moves that point in simple ways. A negative angle flips the point across the $x$-axis, a half turn moves it to the opposite side, and a full turn brings it back. So the new sine or cosine is the old one, perhaps with its sign changed.",
+    "On the unit circle, the circle of radius 1 around the origin, an angle $\\theta$ marks the point $(\\cos\\theta, \\sin\\theta)$. Changing the angle in simple ways moves that point in simple ways. A negative angle flips the point across the $x$-axis, a half turn moves it straight across the origin, and a full turn brings it back. So the new sine or cosine is the old one, perhaps with its sign changed.",
     [
       "Find the sine or cosine of $-\\theta$, $\\pi - \\theta$, $\\theta + \\pi$ or $\\theta + 2\\pi$ from the value at $\\theta$.",
       "Find a missing sine or cosine from the other one and the quadrant, the quarter of the plane the angle ends in.",
@@ -276,7 +288,7 @@ export const trigonometryLessons: Lesson[] = [
     [
       "On the unit circle, the angle $\\theta$ (the Greek letter theta) marks the point $(\\cos\\theta, \\sin\\theta)$: the cosine is the $x$-coordinate and the sine is the $y$-coordinate. A full turn is $2\\pi$ radians, the same as $360^\\circ$, so a half turn is $\\pi$.",
       "Replacing $\\theta$ by $-\\theta$ turns the other way, which flips the point across the $x$-axis. The $x$-coordinate stays the same and the $y$-coordinate changes sign. So $\\cos(-\\theta) = \\cos\\theta$ and $\\sin(-\\theta) = -\\sin\\theta$.",
-      "Adding $\\pi$ turns the point halfway around the circle, to the opposite side of the origin, so both coordinates change sign. Adding $2\\pi$ is a full turn and returns to the same point. The angle $\\pi - \\theta$ flips the point across the $y$-axis: the $x$-coordinate changes sign and the $y$-coordinate stays.",
+      "Adding $\\pi$ turns the point halfway around the circle, straight across the origin, so both coordinates change sign. Adding $2\\pi$ is a full turn and returns to the same point. The angle $\\pi - \\theta$ flips the point across the $y$-axis: the $x$-coordinate changes sign and the $y$-coordinate stays.",
     ],
     {
       prompt:
@@ -295,7 +307,7 @@ export const trigonometryLessons: Lesson[] = [
     ],
     "Parity and period",
     [
-      "A function is called odd if $f(-x) = -f(x)$ and even if $f(-x) = f(x)$. Sine is odd and cosine is even. The period of a function, the length after which it repeats, is $2\\pi$ for sine and cosine and $\\pi$ for tangent. The supplement rules follow: $\\sin(\\pi - \\theta) = \\sin\\theta$ and $\\cos(\\pi - \\theta) = -\\cos\\theta$.",
+      "A function is called odd if $f(-x) = -f(x)$ and even if $f(-x) = f(x)$. Sine is odd and cosine is even. The period of a function, the length after which it repeats, is $2\\pi$ for sine and cosine and $\\pi$ for tangent. Two angles that add to $\\pi$ are called supplementary, and for them $\\sin(\\pi - \\theta) = \\sin\\theta$ and $\\cos(\\pi - \\theta) = -\\cos\\theta$.",
     ],
     [
       "A flip across the $x$-axis changes only the sign of the $y$-coordinate, the sine. Do not change both signs.",
@@ -303,11 +315,20 @@ export const trigonometryLessons: Lesson[] = [
       "Tangent repeats every $\\pi$, not every $2\\pi$.",
     ],
     "Have the learner sketch the unit circle and mark $\\theta$ and $\\pi - \\theta$ before working anything out.",
+    {
+      senses: {
+        quarter: "fourth",
+        plane: "plane",
+        tangent: "tangent-trig",
+        period: "period",
+      },
+      noLink: ["change", "changes"],
+    },
   ),
   lesson(
     "sinusoid-parameters",
     "Amplitude, period, midline and shift",
-    "A sinusoid is a wave-shaped graph like $y = \\sin x$. In $y = A\\sin(B(x - h)) + k$, each letter is a dial that changes one feature. $A$ sets the height of the wave, $B$ sets how long one cycle takes, $h$ slides the wave left or right, and $k$ lifts it up or down.",
+    "A sinusoid is a wave-shaped graph like $y = \\sin x$. In $y = A\\sin(B(x - h)) + k$, each letter is a dial for one feature. $A$ sets the height of the wave, $B$ sets how long one cycle takes, $h$ slides the wave left or right, and $k$ lifts it up or down.",
     [
       "Read the amplitude, period, midline and horizontal shift from an equation.",
       "Read the same features from a graph, and choose the sign in front.",
@@ -332,7 +353,7 @@ export const trigonometryLessons: Lesson[] = [
     "Reading the equation or the graph",
     [
       "From the equation: amplitude $|A|$, midline $y = k$, period $\\tfrac{2\\pi}{B}$. For the shift, take $B$ out of the bracket and read the number subtracted from $x$. The highest value, the maximum, is $k + |A|$, and the lowest, the minimum, is $k - |A|$.",
-      "From a graph: the highest and lowest points give the midline, halfway between them, and the amplitude, half their distance. Measure one cycle for the period, then $B = \\tfrac{2\\pi}{\\text{period}}$. See whether the curve rises or falls as it leaves the midline at $x = 0$ to choose the sign of $A$.",
+      "From a graph: the highest and lowest points give the midline, halfway between them, and the amplitude, half their distance. Measure one cycle for the period, then $B = \\tfrac{2\\pi}{\\text{period}}$. To choose the sign of $A$, see whether the curve rises or falls from the midline at $x = 0$.",
     ],
     "Why a full turn is divided by the frequency factor",
     [
@@ -344,6 +365,7 @@ export const trigonometryLessons: Lesson[] = [
       "The midline is $y = k$, not the $x$-axis unless $k = 0$.",
     ],
     "Ask the learner to sketch one cycle after finding the midline, amplitude and period.",
+    { senses: { change: "change", period: "period", units: "unit" } },
   ),
   lesson(
     "inverse-trig-value",
@@ -384,6 +406,14 @@ export const trigonometryLessons: Lesson[] = [
       "$\\arcsin$ and $\\arctan$ never give angles in quadrants II or III, the left half of the circle.",
     ],
     "Ask the learner to say the allowed interval aloud before every inverse evaluation.",
+    {
+      senses: {
+        inverse: "inverse-function",
+        interval: "interval",
+        tangent: "tangent-trig",
+      },
+      noLink: ["square"],
+    },
   ),
   lesson(
     "trig-equation-solutions",
@@ -411,7 +441,7 @@ export const trigonometryLessons: Lesson[] = [
     },
     "List, then check the interval",
     [
-      "Get the function alone and find the reference angle. For sine or cosine of a value strictly between $-1$ and 1, there are two solutions in each full turn. At 1 or $-1$ there is one, and outside that range there are none. Tangent repeats every half turn, so it has one solution per half turn: two per full turn.",
+      "Get the function alone and find the reference angle. For sine or cosine of a value strictly between $-1$ and 1, there are two solutions in each full turn. At 1 or $-1$ there is one, and for any other value there are none. Tangent repeats every half turn, so it has one solution per half turn: two per full turn.",
       "For $\\sin(2x) = v$, the angle $2x$ runs from 0 to $4\\pi$ while $x$ runs from 0 to $2\\pi$, so there are twice as many solutions. Solve for $2x$, then halve. In $0 \\le x < 2\\pi$, the angle $2\\pi$ itself is not included.",
     ],
     "All solutions and a restricted interval",
@@ -424,6 +454,14 @@ export const trigonometryLessons: Lesson[] = [
       "Sine and cosine never have a value larger than 1 or smaller than $-1$.",
     ],
     "Ask the learner to mark both solution points on a unit circle before writing the angles.",
+    {
+      senses: {
+        interval: "interval",
+        tangent: "tangent-trig",
+        image: "image-transformation",
+        sides: "side-of-equation",
+      },
+    },
   ),
   lesson(
     "trig-identity-value",
@@ -437,7 +475,7 @@ export const trigonometryLessons: Lesson[] = [
     [
       "On the unit circle, the circle of radius 1 around the origin, the angle $\\theta$ ends at the point $(\\cos\\theta, \\sin\\theta)$. Its distance from the origin is 1, so by the Pythagorean theorem its coordinates satisfy $x^2 + y^2 = 1$. Written with sine and cosine, $\\sin^2\\theta + \\cos^2\\theta = 1$, where $\\sin^2\\theta$ means $(\\sin\\theta)^2$. This is called the Pythagorean identity.",
       "If one coordinate is known, the identity gives the size of the other. Its sign depends on the quadrant, the quarter of the plane the angle ends in.",
-      "Adding two angles gives a point whose coordinates combine those of the two parts. That gives the angle-sum formula $\\sin(A + B) = \\sin A\\cos B + \\cos A\\sin B$, and similar ones for cosine and for differences.",
+      "Adding two angles gives a point whose coordinates combine those of the two angles. That gives the angle-sum formula $\\sin(A + B) = \\sin A\\cos B + \\cos A\\sin B$, and others like it for cosine and for differences.",
     ],
     {
       prompt: "Find the exact value of $\\sin 75^\\circ$.",
@@ -456,7 +494,7 @@ export const trigonometryLessons: Lesson[] = [
     ],
     "The formulas",
     [
-      "$\\sin(A \\pm B) = \\sin A\\cos B \\pm \\cos A\\sin B$ and $\\cos(A \\pm B) = \\cos A\\cos B \\mp \\sin A\\sin B$. Here $\\pm$ means plus or minus, and $\\mp$ means the opposite sign: minus when the other is plus. Putting $A = B$ in the cosine difference formula gives $\\cos 0 = \\cos^2 A + \\sin^2 A = 1$, the Pythagorean identity again.",
+      "$\\sin(A \\pm B) = \\sin A\\cos B \\pm \\cos A\\sin B$ and $\\cos(A \\pm B) = \\cos A\\cos B \\mp \\sin A\\sin B$. Here $\\pm$ means plus or minus, and $\\mp$ means minus where $\\pm$ is plus, and plus where it is minus. Putting $A = B$ in the cosine difference formula gives $\\cos 0 = \\cos^2 A + \\sin^2 A = 1$, the Pythagorean identity again.",
     ],
     [
       "A square root gives two possible signs: choose it from the quadrant.",
@@ -464,11 +502,21 @@ export const trigonometryLessons: Lesson[] = [
       "When multiplying fractions, the bottoms multiply: $2 \\times 2 = 4$.",
     ],
     "Ask the learner to decide the sign of the answer from the quadrant before working it out.",
+    {
+      senses: {
+        identity: "identity-equation",
+        tangent: "tangent-trig",
+        difference: "difference-subtract",
+        quarter: "fourth",
+        plane: "plane",
+        product: "product-multiply",
+      },
+    },
   ),
   lesson(
     "oblique-triangle-solve",
     "Law of sines and law of cosines",
-    "An oblique triangle is one with no right angle. Two rules solve it. The law of sines works when you know an angle and the side across from it. The law of cosines works when you know two sides and the angle between them, or all three sides.",
+    "An oblique triangle is one with no right angle. Two laws solve it. The law of sines works when you know an angle and the side across from it. The law of cosines works when you know two sides and the angle between them, or all three sides.",
     [
       "Choose the law of sines or the law of cosines from what is known, and find a missing side or angle.",
       "Decide how many triangles fit when two sides and an angle not between them are given.",
@@ -477,7 +525,7 @@ export const trigonometryLessons: Lesson[] = [
     [
       "In a right triangle, the sine of an angle is the opposite side divided by the hypotenuse, the longest side. For any triangle, name the sides $a$, $b$, $c$ and the angles across from them $A$, $B$, $C$.",
       "The law of sines says each side divided by the sine of the angle across from it gives the same number: $\\tfrac{a}{\\sin A} = \\tfrac{b}{\\sin B} = \\tfrac{c}{\\sin C}$.",
-      "The law of cosines changes the Pythagorean theorem, $c^2 = a^2 + b^2$ for a right triangle, into $c^2 = a^2 + b^2 - 2ab\\cos C$. That works when the angle $C$ between sides $a$ and $b$ is not a right angle.",
+      "The law of cosines extends the Pythagorean theorem, $c^2 = a^2 + b^2$ for a right triangle, to $c^2 = a^2 + b^2 - 2ab\\cos C$. That works when the angle $C$ between sides $a$ and $b$ is not a right angle.",
     ],
     {
       prompt:
@@ -505,6 +553,15 @@ export const trigonometryLessons: Lesson[] = [
       "Keep the calculator in degree mode and round only at the end.",
     ],
     "Ask the learner to label all the sides and the angles across from them on a sketch before choosing a law.",
+    {
+      senses: {
+        sides: "side",
+        "opposite side": "opposite-side-angle",
+        degree: "degree-angle",
+        "more than": "more-than",
+      },
+      noLink: ["third", "mode"],
+    },
   ),
   lesson(
     "trig-triangle-area",
@@ -512,11 +569,11 @@ export const trigonometryLessons: Lesson[] = [
     "The area of a triangle is half its base times its height. When you know two sides and the angle between them, the sine of that angle gives the height. So the area is half the product of the two sides times the sine of the angle between them: $\\tfrac{1}{2}ab\\sin C$.",
     [
       "Find a triangle's area from two sides and the angle between them.",
-      "Find a missing side from the area, two of the parts, and the sine.",
+      "Find a missing side from the area, the other side and the angle between them.",
     ],
     "Height from an angle",
     [
-      "A triangle's area is $\\tfrac{1}{2} \\times \\text{base} \\times \\text{height}$, where the height is the straight-up distance from the base to the opposite corner.",
+      "A triangle's area is $\\tfrac{1}{2} \\times \\text{base} \\times \\text{height}$, where the height is the straight-up distance from the base to the corner across from it.",
       "Take side $a$ as the base. Side $b$ leans away from the base at angle $C$, the angle between the two sides. In a right triangle, the sine of an angle is the opposite side over the hypotenuse, so the height above the base is $b\\sin C$.",
       "So the area is $\\tfrac{1}{2} \\times a \\times b\\sin C = \\tfrac{1}{2}ab\\sin C$. The angle must be the one between the two sides, called the included angle.",
     ],
@@ -546,6 +603,17 @@ export const trigonometryLessons: Lesson[] = [
       "The angle must be between the two known sides.",
     ],
     "Ask the learner to say which angle lies between the two given sides.",
+    {
+      senses: {
+        base: "base-shape",
+        sides: "side",
+        product: "product-multiply",
+        "opposite side": "opposite-side-angle",
+        "more than": "more-than",
+        units: "unit",
+        factor: "factor-number",
+      },
+    },
   ),
   lesson(
     "sinusoid-model",
@@ -587,5 +655,13 @@ export const trigonometryLessons: Lesson[] = [
       "Check that the model gives the stated value at $t = 0$.",
     ],
     "Ask the learner to check the finished model at $t = 0$ and at half a period.",
+    {
+      senses: {
+        period: "period",
+        model: "model",
+        average: "mean-average",
+        difference: "difference-subtract",
+      },
+    },
   ),
 ];
