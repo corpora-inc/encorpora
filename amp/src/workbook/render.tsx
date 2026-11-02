@@ -248,17 +248,106 @@ export function cardWords(lesson: Lesson): GlossaryEntry[] {
   return ids.slice(0, 6).map(glossaryEntry);
 }
 
+/** Words whose full stop does not end a sentence. */
+const abbreviation =
+  /(?:^|\s)(?:Mr|Mrs|Ms|Dr|St|Fig|No|vs|approx|e\.g|i\.e)\.$/i;
+/** A paragraph's sentences, so a long first paragraph can shorten from its
+ * end. Never splits inside math (\(…\) or $…$, as segmentPrintText reads
+ * them) or after an abbreviation; joined with spaces they give the text back. */
+export function sentences(text: string): string[] {
+  const math: [number, number][] = [];
+  for (const m of text.matchAll(/\\\(([\s\S]*?)\\\)|\$([^$\n]+)\$/g)) {
+    const inner = m[1] ?? m[2]!;
+    // Prose caught between two prices ("$3 and a pen costs $") is not math.
+    if (m[1] !== undefined || !/^\s|\s$/.test(inner))
+      math.push([m.index!, m.index! + m[0].length]);
+  }
+  const inMath = (i: number) => math.some(([a, b]) => i >= a && i < b);
+  const out: string[] = [];
+  let start = 0;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i]!;
+    if (
+      (c === "." || c === "?" || c === "!") &&
+      !inMath(i) &&
+      text[i + 1] === " " &&
+      /[A-Z0-9“"($\\]/.test(text[i + 2] ?? "") &&
+      !abbreviation.test(text.slice(start, i + 1))
+    ) {
+      out.push(text.slice(start, i + 1));
+      start = i + 2;
+    }
+  }
+  out.push(text.slice(start));
+  return out.filter((t) => t.trim());
+}
+
+/**
+ * The order a card gives up content to fit one page with its heading
+ * (layout-script.ts applies one rank at a time, lowest first, then zooms to
+ * no less than 75%): extra paragraphs, last first; the pitfall; the first
+ * paragraph's later sentences, last first; the diagram; words to know, last
+ * first; the worked example's later steps, last first (the full example then
+ * prints in the answer key); the example's figure. Deterministic: the same
+ * lesson trims the same way at the same print scale.
+ */
+export function cardTrimRanks(parts: {
+  paragraphs: number;
+  sentences: number;
+  pitfall: boolean;
+  visual: boolean;
+  words: number;
+  steps: number;
+  figure: boolean;
+}) {
+  let rank = 0;
+  const next = () => ++rank;
+  const fromEnd = (count: number, keep: number) => {
+    const ranks: (number | undefined)[] = Array(count).fill(undefined);
+    for (let i = count - 1; i >= keep; i--) ranks[i] = next();
+    return ranks;
+  };
+  const paragraphs = fromEnd(parts.paragraphs, 1);
+  const pitfall = parts.pitfall ? next() : undefined;
+  const sentences = fromEnd(parts.sentences, 1);
+  const visual = parts.visual ? next() : undefined;
+  const words = fromEnd(parts.words, 0);
+  const steps = fromEnd(parts.steps, 1);
+  const figure = parts.figure ? next() : undefined;
+  return { paragraphs, pitfall, sentences, visual, words, steps, figure };
+}
+
 function LessonCard({ lesson }: { lesson: Lesson }) {
   const section = cardSection(lesson);
   const example = lesson.workedExample;
   const words = cardWords(lesson);
   const visual = section?.illustration;
+  const paragraphs = section ? cardParagraphs(section) : [];
+  const first = paragraphs[0] ? sentences(paragraphs[0]) : [];
+  const trim = cardTrimRanks({
+    paragraphs: paragraphs.length,
+    sentences: first.length,
+    pitfall: !!lesson.pitfalls[0],
+    visual: !!visual,
+    words: words.length,
+    steps: example.steps.length,
+    figure: !!example.figure,
+  });
   const idea = section && (
     <div className="wb-lesson-idea">
       <h4 className="wb-lesson-label">The idea</h4>
-      {cardParagraphs(section).map((p, i) => (
-        <p key={i} data-trim={i > 0 ? "1" : undefined}>
-          <PrintMathText text={p} />
+      {paragraphs.map((p, i) => (
+        <p key={i} data-trim={trim.paragraphs[i]}>
+          {i === 0 ? (
+            first.map((sentence, j) => (
+              <span key={j} data-trim={trim.sentences[j]}>
+                {j > 0 && " "}
+                <PrintMathText text={sentence} />
+              </span>
+            ))
+          ) : (
+            <PrintMathText text={p} />
+          )}
         </p>
       ))}
     </div>
@@ -269,7 +358,11 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
       <p className="wb-example-prompt">
         <PrintMathText text={example.prompt} />
       </p>
-      {example.figure && <Figure figure={example.figure} />}
+      {example.figure && (
+        <div className="wb-example-figure" data-trim={trim.figure}>
+          <Figure figure={example.figure} />
+        </div>
+      )}
       {example.choices && (
         <ol type="A" className="print-choices">
           {example.choices.map((c, i) => (
@@ -281,10 +374,13 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
       )}
       <ol className="wb-example-steps">
         {example.steps.map((s, i) => (
-          <li key={i}>
+          <li key={i} data-trim={trim.steps[i]}>
             <PrintMathText text={s} />
           </li>
         ))}
+        <li className="wb-steps-more" data-steps-more="" hidden>
+          The rest of the steps are in the answer key.
+        </li>
       </ol>
       <p className="wb-example-answer">
         <span className="wb-example-answer-label">Answer</span>{" "}
@@ -306,7 +402,7 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
         <>
           <div className="wb-lesson-grid">
             {idea}
-            <div className="wb-lesson-visual" data-trim="3">
+            <div className="wb-lesson-visual" data-trim={trim.visual}>
               <LessonIllustration kind={visual} print />
             </div>
           </div>
@@ -319,11 +415,11 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
         </div>
       )}
       {words.length > 0 && (
-        <div className="wb-words" data-trim="4">
+        <div className="wb-words">
           <h4 className="wb-lesson-label">Words to know</h4>
           <dl>
-            {words.map((w) => (
-              <div key={w.id}>
+            {words.map((w, i) => (
+              <div key={w.id} data-trim={trim.words[i]}>
                 <dt>{w.term}</dt>
                 <dd>
                   <PrintMathText text={w.plain} />
@@ -334,11 +430,39 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
         </div>
       )}
       {lesson.pitfalls[0] && (
-        <p className="wb-watch" data-trim="2">
+        <p className="wb-watch" data-trim={trim.pitfall}>
           <span className="wb-watch-label">Watch for</span>{" "}
           <PrintMathText text={lesson.pitfalls[0]} />
         </p>
       )}
+    </div>
+  );
+}
+
+/** The whole worked example, printed in the answer key only when the card
+ * had to leave out some of its steps (layout-script.ts reveals it). */
+function KeyWorkedExample({ lesson }: { lesson: Lesson }) {
+  const example = lesson.workedExample;
+  return (
+    <div className="wb-key-example wb-sec--lesson" data-key-example="" hidden>
+      <p className="wb-key-answer">
+        <span className="wb-key-answer-text">
+          Today's idea, worked example: <PrintMathText text={example.prompt} />
+        </span>
+      </p>
+      {example.figure && <Figure figure={example.figure} />}
+      <ol className="wb-key-steps">
+        {example.steps.map((step, j) => (
+          <li key={j}>
+            <PrintMathText text={step} />
+          </li>
+        ))}
+      </ol>
+      <p className="wb-key-answer">
+        <PrintMathText
+          text={`Answer: ${[example.answer, example.answerUnit].filter(Boolean).join(" ")}`}
+        />
+      </p>
     </div>
   );
 }
@@ -648,6 +772,8 @@ export function workbookHtml(
       </div>
     </div>,
   ];
+  if (lesson)
+    keyBlocks.push(<KeyWorkedExample key="key-example" lesson={lesson} />);
   for (const section of spec.sections) {
     const entries = numbered.filter((e) => section.items.includes(e.item));
     entries.forEach((e, i) => {
@@ -1042,6 +1168,9 @@ background-image:${gridLines};background-size:var(--grid) var(--grid);background
 .wb-lesson-idea p{margin:0 0 5px}
 .wb-lesson-visual{display:flex;justify-content:center;min-width:0}
 .wb .wb-lesson [data-trimmed]{display:none}
+.wb-words:not(:has(dl>div:not([data-trimmed]))){display:none}
+.wb-example-steps li.wb-steps-more{counter-increment:none;padding-left:0;font-style:italic;color:var(--muted)}
+.wb-example-steps li.wb-steps-more::before{content:none}
 .wb-lesson--stacked .wb-lesson-grid{grid-template-columns:minmax(0,1fr)!important}
 .wb-lesson--stacked .wb-example{margin-top:0.08in}
 .wb-lesson--visual:has(.wb-lesson-visual[data-trimmed]) .wb-lesson-grid{grid-template-columns:minmax(0,1fr)}
@@ -1088,7 +1217,7 @@ background-image:${gridLines};background-size:var(--grid) var(--grid);background
 .wb-key-col,.wb-flow--key{font-size:9.5pt;line-height:1.42}
 .wb-key-section{margin:0 0 6px;padding:2px 0 3px;border-bottom:1.5px solid var(--section);font-size:8pt;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--section)}
 .wb-key-item+.wb-key-section{margin-top:10px}
-.wb-key-item{margin:0 0 9px;break-inside:avoid}
+.wb-key-item,.wb-key-example{margin:0 0 9px;break-inside:avoid}
 .wb-key-answer{display:flex;align-items:baseline;gap:8px;margin:0 0 2px;font-weight:700}
 .wb-key-num{flex:none;display:inline-grid;place-items:center;min-width:0.22in;height:0.22in;padding:0 3px;box-sizing:border-box;border-radius:5px;background:var(--section);color:var(--color-on-primary);font-size:8.5pt;font-weight:800;line-height:1;position:relative;top:-1px}
 .wb--high .wb-key-num{background:none;color:var(--accent);border:1.3px solid var(--accent)}
@@ -1096,6 +1225,7 @@ background-image:${gridLines};background-size:var(--grid) var(--grid);background
 .wb-key-steps{margin:0;padding:0 0 0 calc(0.22in + 8px + 14px);color:var(--muted)}
 .wb-key-steps li{margin:0 0 1px;padding:0}
 .wb-key-item .figure{display:none}
+.wb-key-example svg{max-width:100%;max-height:1.6in;height:auto}
 .wb-results-intro{display:flex;justify-content:space-between;align-items:center;gap:0.3in;margin:0 0 0.16in}
 .wb-results-steps{margin:0;padding-left:20px;font-size:11pt;line-height:1.6}
 .wb-results-code{flex:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0.1in 0.14in;border:1.5px solid var(--ink);border-radius:var(--radius)}

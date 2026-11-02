@@ -881,9 +881,11 @@ export function stemLeafCase(seed: string) {
     const leaves = rows.flatMap((x) => x.leaves);
     hint = `The range is the greatest value minus the least value. Read the first leaf of the top row and the last leaf of the bottom row, each with the key.`;
     explanation = [
+      `The range of a data set is how far it spreads: the greatest value minus the least value.`,
       scaleNote,
       `The greatest value is ${show(max)} and the least value is ${show(min)}.`,
       `Range = ${show(max)} − ${show(min)} = ${answer}${unitText}.`,
+      `The range of the data is ${answer}${unitText}.`,
     ];
     wrong = [
       {
@@ -1140,7 +1142,8 @@ export function budgetCase(seed: string) {
       answer: "",
       hint: `Add the ${known.length} listed expenses first. The ${open} amount is what remains of ${money(income)} after that total.`,
       explanation: [
-        `Add the listed expenses: ${plus(known)} = ${dollars(knownTotal)}.`,
+        `The whole income is spent, so the planned expenses, Fun included, must add up to the income.`,
+        `Add the listed expenses, lining up the decimal points: ${plus(known)} = ${dollars(knownTotal)}.`,
         `Subtract from the income: ${dollars(income)} − ${dollars(knownTotal)} = ${dollars(missing)}.`,
         `${open} can be ${ok}.`,
       ],
@@ -1375,8 +1378,9 @@ export function grossNetCase(seed: string) {
       answer: "",
       hint: `Gross pay is the amount before deductions, and each deduction is one amount withheld. Take-home pay is gross pay, ${money(grossPay)}, minus all ${deductions.length} deductions.`,
       explanation: [
-        `Gross pay is ${dollars(grossPay)}. The deductions total ${plus(deductions)} = ${dollars(totalDeductions)}.`,
-        `Take-home (net) pay = ${dollars(grossPay)} − ${dollars(totalDeductions)} = ${dollars(netPay)}.`,
+        `Gross pay is the amount earned before anything is taken out. Deductions are amounts taken out, such as taxes.`,
+        `Gross pay is ${dollars(grossPay)}. Add the deductions, lining up the decimal points: ${plus(deductions)} = ${dollars(totalDeductions)}.`,
+        `Take-home (net) pay is what is left after every deduction: ${dollars(grossPay)} − ${dollars(totalDeductions)} = ${dollars(netPay)}.`,
         `The paycheck is ${ok}.`,
       ],
       choices: options(ok, [

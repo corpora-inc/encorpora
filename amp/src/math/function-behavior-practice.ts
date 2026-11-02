@@ -130,7 +130,8 @@ function start(meta: TemplateMetadata, seed: string) {
     throw new Error("Seed must contain 1–128 characters");
   return random(meta.id, seed);
 }
-const pickOf = <T>(r: Random, items: readonly T[]) => items[r(0, items.length - 1)]!;
+const pickOf = <T>(r: Random, items: readonly T[]) =>
+  items[r(0, items.length - 1)]!;
 const sign = (r: Random) => (r(0, 1) ? 1 : -1);
 const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : Math.abs(a));
 /** A reduced fraction [numerator, positive denominator]. */
@@ -144,8 +145,7 @@ const fracTex = ([n, d]: [number, number]) =>
 const lead = (c: number) => (c === 1 ? "" : c === -1 ? "-" : `${c}`);
 /** (x − root)^m as LaTeX; root 0 gives x^m. */
 function factor(root: number, m = 1) {
-  const base =
-    root === 0 ? "x" : `(x${root < 0 ? "+" : "-"}${Math.abs(root)})`;
+  const base = root === 0 ? "x" : `(x${root < 0 ? "+" : "-"}${Math.abs(root)})`;
   return m > 1 ? `${base}^{${m}}` : base;
 }
 /** Terms [coefficient, degree] as a polynomial in the order given. */
@@ -157,7 +157,9 @@ function termsText(terms: [number, number][]) {
         d === 0
           ? `${mag}`
           : `${mag === 1 ? "" : mag}x${d === 1 ? "" : `^{${d}}`}`;
-      return i === 0 ? `${c < 0 ? "-" : ""}${body}` : ` ${c < 0 ? "-" : "+"} ${body}`;
+      return i === 0
+        ? `${c < 0 ? "-" : ""}${body}`
+        : ` ${c < 0 ? "-" : "+"} ${body}`;
     })
     .join("");
 }
@@ -182,6 +184,17 @@ const endText = (degree: number, a: number) =>
     : a > 0
       ? "Falls on the left, rises on the right"
       : "Rises on the left, falls on the right";
+
+const degreeWords =
+  "The degree of a polynomial is its highest power of $x$. In factored form it is the sum of the exponents, because multiplying out multiplies all the $x$'s together.";
+const endRules = (degree: number, a: number) => [
+  `Far from 0, the leading term, the highest-power term, is much bigger than the rest. So it alone sets the end behavior, which way the graph heads at the far left and far right.`,
+  degree % 2 === 0
+    ? `An even power is positive on both sides of 0, so both ends go the same way.`
+    : `An odd power changes sign from one side of 0 to the other, so the two ends go opposite ways.`,
+  `A ${a > 0 ? "positive" : "negative"} leading coefficient, the number in front of that term, sends the right end ${a > 0 ? "up" : "down"}.`,
+];
+const lowerFirst = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
 
 export function polynomialBehaviorCase(seed: string) {
   const meta = polynomialBehaviorTemplate;
@@ -224,9 +237,11 @@ export function polynomialBehaviorCase(seed: string) {
         prompt: `Let $${poly}$. Which description of the end behavior of the graph is correct?`,
         hint: degreeHint,
         explanation: [
-          `Multiplying out, the highest-degree term has degree equal to the sum of the exponents: $${mult.join("+")}=${degree}$.`,
-          `Its coefficient is the product of $${a}$ and the leading coefficients 1 of the factors, so it is $${a}$, which is ${a > 0 ? "positive" : "negative"}.`,
-          `${degree % 2 === 0 ? "An even" : "An odd"} degree with a ${a > 0 ? "positive" : "negative"} leading coefficient: ${endText(degree, a).toLowerCase()}.`,
+          degreeWords,
+          `Here the degree is $${mult.join("+")}=${degree}$.`,
+          `Each factor starts with $x$, whose coefficient is 1. So the leading coefficient is $${a}$, which is ${a > 0 ? "positive" : "negative"}.`,
+          ...endRules(degree, a),
+          `So the graph ${lowerFirst(endText(degree, a))}.`,
         ],
         correct: endText(degree, a),
         wrong: [flipSign, flipParity, both],
@@ -243,9 +258,11 @@ export function polynomialBehaviorCase(seed: string) {
         prompt: `Let $${poly}$. What is the greatest number of turning points that the graph of any polynomial with the same degree as $P$ can have? A turning point is where the graph changes from rising to falling or from falling to rising.`,
         hint: `Add the exponents of the factors in $${poly}$ to find its degree. A polynomial of degree $n$ has at most one fewer turning point than its degree.`,
         explanation: [
+          degreeWords,
           `The degree is the sum of the exponents: $${mult.join("+")}=${degree}$.`,
-          `A polynomial of degree $n$ has at most $n-1$ turning points.`,
+          `A polynomial of degree $n$ has at most $n-1$ turning points, one fewer than its degree.`,
           `So the greatest number is $${degree}-1=${turns}$.`,
+          `A polynomial of degree ${degree} can have at most ${turns} ${turns === 1 ? "turning point" : "turning points"}.`,
         ],
         correct: word(turns),
         wrong: [
@@ -285,7 +302,10 @@ export function polynomialBehaviorCase(seed: string) {
   }
   if (variant === 3) {
     const d = r(3, 6);
-    const lower = shuffle(r, [1, 2, 3, 4, 5].filter((x) => x < d)).slice(0, 2);
+    const lower = shuffle(
+      r,
+      [1, 2, 3, 4, 5].filter((x) => x < d),
+    ).slice(0, 2);
     const lowC = lower.map(() => r(1, 6) * sign(r));
     const c = r(1, 5) * sign(r);
     const terms: [number, number][] = shuffle(r, [
@@ -301,8 +321,9 @@ export function polynomialBehaviorCase(seed: string) {
         hint: `Find the term of $P(x)=${termsText(terms)}$ with the highest exponent; only that term controls the ends.`,
         explanation: [
           `The highest exponent is ${d}, so the leading term is $${c}x^{${d}}$, whatever order the terms are written in.`,
-          `The degree ${d} is ${d % 2 === 0 ? "even" : "odd"} and the coefficient $${c}$ is ${c > 0 ? "positive" : "negative"}.`,
-          `${endText(d, c)}.`,
+          `The degree, the highest power, is ${d}, which is ${d % 2 === 0 ? "even" : "odd"}. The coefficient $${c}$ is ${c > 0 ? "positive" : "negative"}.`,
+          ...endRules(d, c),
+          `So the graph ${lowerFirst(endText(d, c))}.`,
         ],
         correct: endText(d, c),
         wrong: [
@@ -348,11 +369,15 @@ export function polynomialBehaviorCase(seed: string) {
       prompt: `Let $${poly}$. Choose the description that matches the graph's end behavior and its behavior at each zero.`,
       hint: `For each factor in $${poly}$, look at its exponent: an odd exponent and an even exponent act differently at the zero. Then add the exponents and check the sign of $${a}$ for the ends.`,
       explanation: [
+        `A zero is an $x$-value where $P(x)=0$, so the graph meets the $x$-axis there. Its multiplicity is the exponent on its factor.`,
+        `With an odd multiplicity, $P$ changes sign at the zero, so the graph crosses the axis. With an even one, it does not change sign, so the graph touches and turns back.`,
         ...roots.map(
           (z, i) =>
             `The zero $x=${z}$ has multiplicity ${mult[i]}, which is ${mult[i]! % 2 ? "odd, so the graph crosses" : "even, so the graph touches and turns back at"} the $x$-axis there.`,
         ),
-        `The degree is $${mult.join("+")}=${degree}$ and the leading coefficient is $${a}$: ${endText(degree, a).toLowerCase()}.`,
+        `The degree, the sum of the exponents, is $${mult.join("+")}=${degree}$. The leading coefficient, the number in front, is $${a}$.`,
+        ...endRules(degree, a),
+        `So the graph ${lowerFirst(good)}.`,
       ],
       correct: good,
       wrong: [
@@ -434,10 +459,12 @@ export function rationalFunctionCase(seed: string) {
     };
     const fb = {
       zero: "The graph approaches $y=0$ only when the denominator has the greater degree.",
-      ratio: "The ratio of leading coefficients is the asymptote only when the two degrees are equal.",
+      ratio:
+        "The ratio of leading coefficients is the asymptote only when the two degrees are equal.",
       none: "A horizontal asymptote exists unless the numerator has the greater degree.",
       one: "The height is the ratio of the leading coefficients, not 1 unless they are equal.",
-      inverse: "Divide the numerator's leading coefficient by the denominator's, not the other way around.",
+      inverse:
+        "Divide the numerator's leading coefficient by the denominator's, not the other way around.",
     };
     const key = rel === 0 ? "zero" : rel === 1 ? "ratio" : "none";
     const order = (["zero", "none", "ratio", "inverse", "one"] as const).filter(
@@ -447,13 +474,17 @@ export function rationalFunctionCase(seed: string) {
       prompt: `For $${rationalText(f)}$, what is the horizontal asymptote of the graph?`,
       hint: `Count the factors in the numerator and in the denominator of $${rationalText(f)}$ to find each degree, then compare them.`,
       explanation: [
+        "A horizontal asymptote is a level line that the graph gets closer and closer to as $x$ grows very large in either direction.",
+        "The degree of the numerator (the top) or the denominator (the bottom) is its number of $x$ factors, its highest power of $x$.",
         `The numerator has degree ${dn} and the denominator has degree ${dd}.`,
         rel === 0
           ? "The denominator grows faster, so the fraction approaches 0 as $x$ becomes very large in either direction."
           : rel === 1
-            ? `The degrees are equal, so the fraction approaches the ratio of the leading coefficients, $\\frac{${a}}{${b}}=${fracTex(ratio)}$.`
-            : "The numerator grows faster, so the fraction grows without approaching a fixed height. There is no horizontal asymptote.",
-        `The horizontal asymptote is ${labels[key].startsWith("$") ? labels[key] : "absent: " + labels[key].toLowerCase()}.`,
+            ? `The degrees are equal, so the fraction approaches the ratio of the leading coefficients, the numbers in front: $\\frac{${a}}{${b}}=${fracTex(ratio)}$.`
+            : "The numerator grows faster, so the fraction grows without approaching a fixed height.",
+        key === "none"
+          ? "So the graph has no horizontal asymptote."
+          : `So the horizontal asymptote is ${labels[key]}.`,
       ],
       correct: labels[key],
       wrong: order.map((k) => ({ label: labels[k], feedback: fb[k] })),
@@ -473,9 +504,11 @@ export function rationalFunctionCase(seed: string) {
       prompt: `The graph of $${rationalText(f)}$ has a hole. Which point is the hole?`,
       hint: `Find the factor that appears in both the numerator and the denominator of $${rationalText(f)}$. Its zero is the hole's $x$-value; find the $y$-value from what remains after canceling.`,
       explanation: [
+        `A hole is a single missing point on a graph. It appears where a factor cancels from the top and the bottom, because there the original fraction is 0 over 0.`,
         `The factor $(x${c < 0 ? "+" : "-"}${Math.abs(c)})$ is in both the numerator and the denominator, so the graph has a hole at $x=${c}$.`,
-        `After canceling, $f(x)=\\dfrac{${lead(a)}${factor(n1)}}{${lead(b)}${factor(d1)}}$ for $x\\ne${c}$.`,
-        `Substitute $x=${c}$: $\\dfrac{${a}(${c - n1})}{${b}(${c - d1})}=${fracTex(y)}$. The hole is at ${point(c, y)}.`,
+        `After canceling, $f(x)=\\dfrac{${lead(a)}${factor(n1)}}{${lead(b)}${factor(d1)}}$ for $x\\ne${c}$. Everywhere else the graph follows this simpler fraction.`,
+        `So the height of the hole is the simpler fraction at $x=${c}$: $\\dfrac{${a}(${c - n1})}{${b}(${c - d1})}=${fracTex(y)}$.`,
+        `The hole is at the point ${point(c, y)}.`,
       ],
       correct: point(c, y),
       wrong: [
@@ -513,20 +546,21 @@ export function rationalFunctionCase(seed: string) {
       prompt: `What is the domain of $${rationalText(f)}$?`,
       hint: `The domain excludes every input that makes the denominator of $${rationalText(f)}$ zero, before any canceling.`,
       explanation: [
+        "The domain is the set of inputs $x$ the function accepts. A fraction has no value where its denominator, the bottom, is 0.",
         `The denominator is zero at ${xs([c, ...dens])}.`,
-        `The factor for $x=${c}$ cancels, so the graph has a hole there, but $f(${c})$ is still undefined.`,
+        `The factor for $x=${c}$ cancels, so the graph has a hole there. But $f(${c})$ still has no value, because the original denominator is 0 there.`,
         `The domain is ${label([c, ...dens]).toLowerCase()}.`,
       ],
       correct: label([c, ...dens]),
       wrong: [
         {
           label: label(dens),
-          feedback: `The function is also undefined at $x=${c}$, even though that factor cancels and leaves a hole instead of an asymptote.`,
+          feedback: `The function also has no value at $x=${c}$, even though that factor cancels and leaves a hole instead of an asymptote.`,
         },
         {
           label: label(nums),
           feedback:
-            "Zeros of the numerator make the function zero, not undefined. Look at the denominator.",
+            "Zeros of the numerator make the function equal 0; the function still has a value there. Look at the denominator.",
         },
         {
           label: label([-c, ...dens.map((d) => -d)]),
@@ -552,15 +586,20 @@ export function rationalFunctionCase(seed: string) {
       prompt: `Which lists all the vertical asymptotes of $${rationalText(f)}$?`,
       hint: `Look for zeros of the denominator of $${rationalText(f)}$ that remain after any common factor is canceled.`,
       explanation: [
+        "A vertical asymptote is a vertical line that the graph shoots up or down beside. It comes from a zero of the denominator, an input that makes the bottom 0, that does not cancel.",
         hole === undefined
           ? "No factor is common to the numerator and denominator, so no zero of the denominator cancels."
           : `The factor $(x${hole < 0 ? "+" : "-"}${Math.abs(hole)})$ is in both the numerator and the denominator; it cancels and gives a hole at $x=${hole}$, not an asymptote.`,
-        `The remaining zeros of the denominator are ${list(va)}.`,
-        `The vertical asymptotes are ${list(va)}.`,
+        `The remaining ${va.length > 1 ? "zeros of the denominator are" : "zero of the denominator is"} ${list(va)}.`,
+        `So the vertical ${va.length > 1 ? "asymptotes are" : "asymptote is"} ${list(va)}.`,
       ],
       correct: list(va),
       wrong: [
-        { label: list(nums), feedback: "Zeros of the numerator are where the graph meets the axis, not where it has asymptotes. Use the denominator." },
+        {
+          label: list(nums),
+          feedback:
+            "Zeros of the numerator are where the graph meets the axis, not where it has asymptotes. Use the denominator.",
+        },
         ...(hole === undefined
           ? []
           : [
@@ -570,15 +609,25 @@ export function rationalFunctionCase(seed: string) {
               },
               {
                 label: list([hole]),
-                feedback: "A common factor gives a hole. Look at the denominator zeros that remain after canceling.",
+                feedback:
+                  "A common factor gives a hole. Look at the denominator zeros that remain after canceling.",
               },
             ]),
         {
           label: list(va.map((v) => -v)),
-          feedback: "A factor $(x-c)$ is zero at $x=c$; check the sign of each zero.",
+          feedback:
+            "A factor $(x-c)$ is zero at $x=c$; check the sign of each zero.",
         },
-        { label: list([...va, ...nums]), feedback: "Only zeros of the denominator can be asymptotes; numerator zeros are intercepts." },
-        { label: "There are no vertical asymptotes", feedback: "A zero of the denominator that does not cancel gives a vertical asymptote." },
+        {
+          label: list([...va, ...nums]),
+          feedback:
+            "Only zeros of the denominator can be asymptotes; numerator zeros are intercepts.",
+        },
+        {
+          label: "There are no vertical asymptotes",
+          feedback:
+            "A zero of the denominator that does not cancel gives a vertical asymptote.",
+        },
       ],
     });
   }
@@ -593,19 +642,27 @@ export function rationalFunctionCase(seed: string) {
     prompt: `Which lists the $x$-intercepts and the $y$-intercept of the graph of $${rationalText(f)}$?`,
     hint: `For the $x$-intercepts, find where the numerator of $${rationalText(f)}$ is zero while the function is still defined. For the $y$-intercept, substitute $x=0$.`,
     explanation: [
+      "An $x$-intercept is where the graph meets the $x$-axis, so $f(x)=0$. A fraction is 0 when its numerator, the top, is 0 and its denominator, the bottom, is not.",
       `The numerator is zero at ${xs(sortedNum([...nums, ...(hole === undefined ? [] : [hole])]))}.${hole === undefined ? "" : ` At $x=${hole}$ the denominator is also zero, so that is a hole, not an intercept.`}`,
       `The $x$-intercept${nums.length > 1 ? "s are" : " is"} ${xs(sortedNum(nums))}.`,
+      "The $y$-intercept is where the graph meets the $y$-axis, where $x=0$.",
       `At $x=0$ each factor $(x-c)$ becomes $-c$, so $f(0)=${fracTex(yInt)}$, the $y$-intercept.`,
+      `So the $x$-intercept${nums.length > 1 ? "s are" : " is"} ${xs(sortedNum(nums))}, and the $y$-intercept is $y=${fracTex(yInt)}$.`,
     ],
     correct: label(nums, yInt),
     wrong: [
       {
-        label: label(nums.map((v) => -v), yInt),
-        feedback: "A factor $(x-c)$ is zero at $x=c$; check the sign of each zero.",
+        label: label(
+          nums.map((v) => -v),
+          yInt,
+        ),
+        feedback:
+          "A factor $(x-c)$ is zero at $x=c$; check the sign of each zero.",
       },
       {
         label: label(nums, [-yInt[0], yInt[1]]),
-        feedback: "Substitute $x=0$ into every factor, keeping each sign: $(0-c)=-c$.",
+        feedback:
+          "Substitute $x=0$ into every factor, keeping each sign: $(0-c)=-c$.",
       },
       hole === undefined
         ? {
@@ -618,16 +675,21 @@ export function rationalFunctionCase(seed: string) {
             feedback: `The factor at $x=${hole}$ is also in the denominator, so there is a hole there, not an intercept.`,
           },
       {
-        label: label(nums.map((v) => -v), [-yInt[0], yInt[1]]),
+        label: label(
+          nums.map((v) => -v),
+          [-yInt[0], yInt[1]],
+        ),
         feedback: "Check the sign of each zero and substitute $x=0$ carefully.",
       },
       {
         label: label(nums, reduce(yInt[1], yInt[0])),
-        feedback: "The $y$-intercept is $f(0)$, numerator over denominator, not the reciprocal.",
+        feedback:
+          "The $y$-intercept is $f(0)$, numerator over denominator, not the reciprocal.",
       },
       {
         label: label(nums, reduce(a * nums.reduce((p, z) => p * -z, 1), 1)),
-        feedback: "Include the denominator when substituting $x=0$: $f(0)$ is a quotient.",
+        feedback:
+          "Include the denominator when substituting $x=0$: $f(0)$ is a quotient.",
       },
     ],
   });
@@ -655,7 +717,9 @@ export function graphicalSolutionCase(seed: string) {
     const c = r(-6, 6);
     const f = (x: number) => (exponential ? 2 ** x + c : x * x + c);
     const g = (x: number) => m * x + b;
-    const ftext = exponential ? `2^x${c === 0 ? "" : c < 0 ? c : `+${c}`}` : `x^2${c === 0 ? "" : c < 0 ? c : `+${c}`}`;
+    const ftext = exponential
+      ? `2^x${c === 0 ? "" : c < 0 ? c : `+${c}`}`
+      : `x^2${c === 0 ? "" : c < 0 ? c : `+${c}`}`;
     const gtext = lineText(m, b);
     const head = `Let $f(x)=${ftext}$ and $g(x)=${gtext}$.`;
     const makeFigure = (rows: { x: string; f: string; g: string }[]) => ({
@@ -688,9 +752,11 @@ export function graphicalSolutionCase(seed: string) {
           figure: makeFigure(rows),
           hint: `A solution of $f(x)=g(x)$ is an input where the two columns of the table show the same number. Scan the rows for $f(x)=${ftext}$ and $g(x)=${gtext}$ side by side.`,
           explanation: [
+            `A solution of $f(x)=g(x)$ is an input $x$ where the two functions give the same output. On a graph, it is where the two graphs meet.`,
             `Compare the two output columns row by row.`,
             `At $x=${k}$, $f(${k})=${out}$ and $g(${k})=${out}$, so the outputs are equal.`,
-            `The solution is the input, $x=${k}$. The shared output ${out} is the height of the intersection, not the solution.`,
+            `The shared output ${out} is the height where the graphs meet. The question asks for the input.`,
+            `So the solution is $x=${k}$.`,
           ],
           correct: pick(k),
           wrong: [
@@ -746,9 +812,11 @@ export function graphicalSolutionCase(seed: string) {
           figure: makeFigure(rows),
           hint: `In each row compare $f(x)=${ftext}$ with $g(x)=${gtext}$ and note which is larger. The solution is between two rows where the larger function changes.`,
           explanation: [
+            `A solution of $f(x)=g(x)$ is an input $x$ where the two functions give the same output. Look for the step where the larger function switches.`,
             `At $x=${lo}$, $f(${lo})=${f(lo)}$ and $g(${lo})=${g(lo)}$, so $f$ is ${f(lo) > g(lo) ? "above" : "below"} $g$.`,
             `At $x=${lo + 1}$, $f(${lo + 1})=${f(lo + 1)}$ and $g(${lo + 1})=${g(lo + 1)}$, so $f$ is now ${f(lo + 1) > g(lo + 1) ? "above" : "below"} $g$.`,
-            `The functions are continuous, so their graphs must meet between these inputs: the solution lies ${between(lo)}.`,
+            `Both functions are continuous, meaning their graphs have no breaks or jumps. So to switch sides, the graphs must meet between these inputs.`,
+            `So the solution lies ${between(lo)}.`,
           ],
           correct: between(lo),
           wrong: others.map((j) => ({
@@ -760,8 +828,7 @@ export function graphicalSolutionCase(seed: string) {
     }
     // Variant 3: refine to the nearest tenth; hundredths X = 100x, H = 10^4 (f - g).
     if (exponential) continue;
-    const H = (X: number) =>
-      X * X + 10000 * c - 100 * m * X - 10000 * b;
+    const H = (X: number) => X * X + 10000 * c - 100 * m * X - 10000 * b;
     const brackets: number[] = [];
     for (let x = -6; x < 6; x++)
       if (
@@ -799,9 +866,12 @@ export function graphicalSolutionCase(seed: string) {
         figure: makeFigure(rows),
         hint: `Compare $f(x)=${ftext}$ and $g(x)=${gtext}$ in each row of the table and find which of the two steps contains the change in which function is larger. The solution lies in that step.`,
         explanation: [
+          `A solution of $f(x)=g(x)$ is an input where the outputs are equal. The table shows the two ends of the bracket and the midpoint, halfway between.`,
           `At $x=${dec(X0, 100)}$, $f=${rows[0]!.f}$ and $g=${rows[0]!.g}$: $f$ is ${H(X0) > 0 ? "above" : "below"} $g$.`,
           `At $x=${dec(X0 + 5, 100)}$, $f=${rows[1]!.f}$ and $g=${rows[1]!.g}$: $f$ is ${H(X0 + 5) > 0 ? "above" : "below"} $g$.`,
           `The change happens ${nearLow ? "before" : "after"} the middle row, so the solution is in the ${nearLow ? "first" : "second"} half-step. It is closer to ${dec(answerX, 100)}.`,
+          `Every number strictly inside that half-step rounds to ${(answerX / 100).toFixed(1)} to the nearest tenth.`,
+          `So the solution, to the nearest tenth, is $x=${(answerX / 100).toFixed(1)}$.`,
         ],
         correct: tenthLabel(answerX),
         wrong: [
@@ -812,11 +882,13 @@ export function graphicalSolutionCase(seed: string) {
           },
           {
             label: tenthLabel(X0 - 10),
-            feedback: "The solution is inside the bracketed interval, so it cannot round to a value outside it.",
+            feedback:
+              "The solution is inside the bracketed interval, so it cannot round to a value outside it.",
           },
           {
             label: tenthLabel(X0 + 20),
-            feedback: "The solution is inside the bracketed interval, so it cannot round to a value outside it.",
+            feedback:
+              "The solution is inside the bracketed interval, so it cannot round to a value outside it.",
           },
         ],
       }),
@@ -854,16 +926,37 @@ export function polynomialIdentityCase(seed: string) {
         prompt: `Use an identity to find $${v}^2$ without a calculator: write $${v}$ as a sum or difference of a round number and a small one.`,
         hint: `Write $${v}$ as $${m}${up ? "+" : "-"}${s}$, then square it with $(a${up ? "+" : "-"}b)^2=a^2${up ? "+" : "-"}2ab+b^2$.`,
         explanation: [
+          `An identity is an equation that is true for every value of its letters, so it can turn a hard square into easy pieces.`,
+          `Squaring a ${up ? "sum" : "difference"} gives three terms: the first number squared, ${up ? "plus" : "minus"} twice the product of the two numbers, plus the second number squared.`,
           `$${v}=${m}${up ? "+" : "-"}${s}$, so $a=${m}$ and $b=${s}$.`,
           `$a^2=${m * m}$, $2ab=${mid}$, $b^2=${s * s}$.`,
           `$${v}^2=${m * m}${up ? "+" : "-"}${mid}+${s * s}=${good}$.`,
+          `So $${v}^2$ is ${good}.`,
         ],
         correct: $(good),
         wrong: [
-          { label: $(m * m + s * s), feedback: "The middle term $2ab$ is missing. A square of a sum or difference has three terms." },
-          { label: $(up ? m * m + mid - s * s : m * m - mid - s * s), feedback: "The last term $b^2$ is always added, because a square is never negative." },
-          { label: $(up ? m * m - mid + s * s : m * m + mid + s * s), feedback: `The middle term has the sign of $${up ? "+" : "-"}$ in $a${up ? "+" : "-"}b$.` },
-          { label: $(up ? (m + s) * (m + s) - 2 * s * s : (m - s) * (m - s) + 2 * s * s), feedback: "Check the arithmetic of each of the three terms." },
+          {
+            label: $(m * m + s * s),
+            feedback:
+              "The middle term $2ab$ is missing. A square of a sum or difference has three terms.",
+          },
+          {
+            label: $(up ? m * m + mid - s * s : m * m - mid - s * s),
+            feedback:
+              "The last term $b^2$ is always added, because a square is never negative.",
+          },
+          {
+            label: $(up ? m * m - mid + s * s : m * m + mid + s * s),
+            feedback: `The middle term has the sign of $${up ? "+" : "-"}$ in $a${up ? "+" : "-"}b$.`,
+          },
+          {
+            label: $(
+              up
+                ? (m + s) * (m + s) - 2 * s * s
+                : (m - s) * (m - s) + 2 * s * s,
+            ),
+            feedback: "Check the arithmetic of each of the three terms.",
+          },
         ],
       }),
     };
@@ -878,16 +971,34 @@ export function polynomialIdentityCase(seed: string) {
         prompt: `Use an identity to find $${m + s}\\times${m - s}$.`,
         hint: `The numbers $${m + s}$ and $${m - s}$ are the same distance from one round number. Write them as a sum and a difference of that number and a small one.`,
         explanation: [
+          `An identity is an equation that is true for every value of its letters. A sum times a difference of the same two numbers is the first squared minus the second squared.`,
           `$${m + s}=${m}+${s}$ and $${m - s}=${m}-${s}$, so the product has the form $(a+b)(a-b)$ with $a=${m}$, $b=${s}$.`,
+          `Multiplying out, the two middle terms $+ab$ and $-ab$ cancel, so no middle term is left.`,
           `$(a+b)(a-b)=a^2-b^2=${m * m}-${s * s}$.`,
-          `The product is $${good}$.`,
+          `So $${m + s}\\times${m - s}=${good}$.`,
         ],
         correct: $(good),
         wrong: [
-          { label: $(m * m + s * s), feedback: "The identity is a difference of squares, $a^2-b^2$, not a sum." },
-          { label: $((m - s) ** 2), feedback: "That is $(a-b)^2$. The product $(a+b)(a-b)$ has no middle term and equals $a^2-b^2$." },
-          { label: $(m * m - s), feedback: "Square $b$ before subtracting: the product is $a^2-b^2$." },
-          { label: $((m + s) ** 2), feedback: "That is $(a+b)^2$; the second factor is $a-b$, not $a+b$." },
+          {
+            label: $(m * m + s * s),
+            feedback:
+              "The identity is a difference of squares, $a^2-b^2$, not a sum.",
+          },
+          {
+            label: $((m - s) ** 2),
+            feedback:
+              "That is $(a-b)^2$. The product $(a+b)(a-b)$ has no middle term and equals $a^2-b^2$.",
+          },
+          {
+            label: $(m * m - s),
+            feedback:
+              "Square $b$ before subtracting: the product is $a^2-b^2$.",
+          },
+          {
+            label: $((m + s) ** 2),
+            feedback:
+              "That is $(a+b)^2$; the second factor is $a-b$, not $a+b$.",
+          },
         ],
       }),
     };
@@ -903,10 +1014,26 @@ export function polynomialIdentityCase(seed: string) {
       return `legs $${p}$ and $${q}$, hypotenuse $${hyp}$`;
     };
     const candidates: { legs: [number, number]; hyp: number; why: string }[] = [
-      { legs: [d, x * y], hyp: h, why: "The second leg is $2xy$, with the factor 2." },
-      { legs: [d, t], hyp: (x + y) ** 2, why: "The hypotenuse is $x^2+y^2$, not $(x+y)^2$." },
-      { legs: [h, t], hyp: d, why: "The hypotenuse is the longest side, $x^2+y^2$; the legs are $x^2-y^2$ and $2xy$." },
-      { legs: [x * x, y * y], hyp: h, why: "The legs are $x^2-y^2$ and $2xy$; squares of $x$ and $y$ alone do not satisfy the identity." },
+      {
+        legs: [d, x * y],
+        hyp: h,
+        why: "The second leg is $2xy$, with the factor 2.",
+      },
+      {
+        legs: [d, t],
+        hyp: (x + y) ** 2,
+        why: "The hypotenuse is $x^2+y^2$, not $(x+y)^2$.",
+      },
+      {
+        legs: [h, t],
+        hyp: d,
+        why: "The hypotenuse is the longest side, $x^2+y^2$; the legs are $x^2-y^2$ and $2xy$.",
+      },
+      {
+        legs: [x * x, y * y],
+        hyp: h,
+        why: "The legs are $x^2-y^2$ and $2xy$; squares of $x$ and $y$ alone do not satisfy the identity.",
+      },
     ];
     return {
       variant,
@@ -914,6 +1041,8 @@ export function polynomialIdentityCase(seed: string) {
         prompt: `The identity $(x^2+y^2)^2=(x^2-y^2)^2+(2xy)^2$ holds for all numbers $x$ and $y$. With $x=${x}$ and $y=${y}$, which describes a right triangle with these side lengths?`,
         hint: `Put $x=${x}$ and $y=${y}$ into $x^2-y^2$, $2xy$ and $x^2+y^2$. The identity says the square of the last equals the sum of the squares of the first two.`,
         explanation: [
+          `In a right triangle, the legs are the two sides that form the right angle, and the hypotenuse is the longest side. The Pythagorean theorem says leg squared plus leg squared equals hypotenuse squared.`,
+          `The identity has that same shape. So $x^2-y^2$ and $2xy$ are the legs, and $x^2+y^2$ is the hypotenuse.`,
           `$x^2-y^2=${x * x}-${y * y}=${d}$, $2xy=${t}$, $x^2+y^2=${h}$.`,
           `By the identity, $${d}^2+${t}^2=${h}^2$, which is $${d * d}+${t * t}=${h * h}$.`,
           `So the legs are ${d} and ${t} and the hypotenuse is ${h}.`,
@@ -921,7 +1050,10 @@ export function polynomialIdentityCase(seed: string) {
         correct: triple(d, t, h),
         wrong: candidates
           .filter((c) => !isTriple(c.legs, c.hyp))
-          .map((c) => ({ label: triple(c.legs[0], c.legs[1], c.hyp), feedback: c.why })),
+          .map((c) => ({
+            label: triple(c.legs[0], c.legs[1], c.hyp),
+            feedback: c.why,
+          })),
       }),
     };
   }
@@ -929,7 +1061,11 @@ export function polynomialIdentityCase(seed: string) {
     const a = r(2, 7);
     const k = pickOf(r, [1, 1, 2, 3]);
     const family = r(0, 4);
-    type Eq = { lhs: string; truth: number[]; wrong: { rhs: number[]; why: string }[] };
+    type Eq = {
+      lhs: string;
+      truth: number[];
+      wrong: { rhs: number[]; why: string }[];
+    };
     let eq: Eq;
     if (family === 0 || family === 1) {
       const s = family === 0 ? 1 : -1;
@@ -938,10 +1074,22 @@ export function polynomialIdentityCase(seed: string) {
         lhs,
         truth: [a * a, 2 * s * k * a, k * k],
         wrong: [
-          { rhs: [a * a, 0, k * k], why: "A square of a two-term sum or difference has a middle term $2ab$." },
-          { rhs: [a * a, s * k * a, k * k], why: "The middle term is twice the product of the two terms, $2ab$." },
-          { rhs: [a * a, 2 * s * k * a, k], why: "Squaring the first term also squares its coefficient, and the $x^2$ term is $(kx)^2$." },
-          { rhs: [-a * a, 2 * s * k * a, k * k], why: "The last term is $+b^2$ because a square is not negative." },
+          {
+            rhs: [a * a, 0, k * k],
+            why: "A square of a two-term sum or difference has a middle term $2ab$.",
+          },
+          {
+            rhs: [a * a, s * k * a, k * k],
+            why: "The middle term is twice the product of the two terms, $2ab$.",
+          },
+          {
+            rhs: [a * a, 2 * s * k * a, k],
+            why: "Squaring the first term also squares its coefficient, and the $x^2$ term is $(kx)^2$.",
+          },
+          {
+            rhs: [-a * a, 2 * s * k * a, k * k],
+            why: "The last term is $+b^2$ because a square is not negative.",
+          },
         ],
       };
     } else if (family === 2) {
@@ -949,10 +1097,22 @@ export function polynomialIdentityCase(seed: string) {
         lhs: `(x+${a})(x-${a})`,
         truth: [-a * a, 0, 1],
         wrong: [
-          { rhs: [a * a, 0, 1], why: "The two factors differ in sign, so the constant is $-a^2$, not $+a^2$." },
-          { rhs: [a * a, -2 * a, 1], why: "That is $(x-a)^2$; the factors $(x+a)(x-a)$ have no middle term." },
-          { rhs: [-a, 0, 1], why: "Square the constant: the product is $x^2-a^2$." },
-          { rhs: [-a * a, a, 1], why: "The $x$ terms cancel, so there is no middle term." },
+          {
+            rhs: [a * a, 0, 1],
+            why: "The two factors differ in sign, so the constant is $-a^2$, not $+a^2$.",
+          },
+          {
+            rhs: [a * a, -2 * a, 1],
+            why: "That is $(x-a)^2$; the factors $(x+a)(x-a)$ have no middle term.",
+          },
+          {
+            rhs: [-a, 0, 1],
+            why: "Square the constant: the product is $x^2-a^2$.",
+          },
+          {
+            rhs: [-a * a, a, 1],
+            why: "The $x$ terms cancel, so there is no middle term.",
+          },
         ],
       };
     } else if (family === 3) {
@@ -962,10 +1122,22 @@ export function polynomialIdentityCase(seed: string) {
         lhs: `(x+${a})(x+${b})`,
         truth: [a * b, a + b, 1],
         wrong: [
-          { rhs: [a + b, a * b, 1], why: "The coefficient of $x$ is the sum $a+b$ and the constant is the product $ab$." },
-          { rhs: [a + b, a + b, 1], why: "The constant term is the product $ab$, not the sum." },
-          { rhs: [a * b, 0, 1], why: "The two cross products give a middle term $(a+b)x$." },
-          { rhs: [a * b, a * b, 1], why: "The coefficient of $x$ is the sum of the numbers, $a+b$, not the product." },
+          {
+            rhs: [a + b, a * b, 1],
+            why: "The coefficient of $x$ is the sum $a+b$ and the constant is the product $ab$.",
+          },
+          {
+            rhs: [a + b, a + b, 1],
+            why: "The constant term is the product $ab$, not the sum.",
+          },
+          {
+            rhs: [a * b, 0, 1],
+            why: "The two cross products give a middle term $(a+b)x$.",
+          },
+          {
+            rhs: [a * b, a * b, 1],
+            why: "The coefficient of $x$ is the sum of the numbers, $a+b$, not the product.",
+          },
         ],
       };
     } else {
@@ -973,10 +1145,22 @@ export function polynomialIdentityCase(seed: string) {
         lhs: `(x+${a})^3`,
         truth: [a ** 3, 3 * a * a, 3 * a, 1],
         wrong: [
-          { rhs: [a ** 3, 0, 0, 1], why: "A cube of a two-term sum has two middle terms; the cubes alone are not enough." },
-          { rhs: [a ** 3, 3 * a, 3 * a, 1], why: "The $x$ coefficient is $3a^2$: the number is squared." },
-          { rhs: [a ** 3, 3 * a * a, 3 * a * a, 1], why: "The coefficients are $3a$ for $x^2$ and $3a^2$ for $x$." },
-          { rhs: [a * a * a, 3 * a, 3 * a * a, 1], why: "The coefficients are $3a$ for $x^2$ and $3a^2$ for $x$, not the reverse." },
+          {
+            rhs: [a ** 3, 0, 0, 1],
+            why: "A cube of a two-term sum has two middle terms; the cubes alone are not enough.",
+          },
+          {
+            rhs: [a ** 3, 3 * a, 3 * a, 1],
+            why: "The $x$ coefficient is $3a^2$: the number is squared.",
+          },
+          {
+            rhs: [a ** 3, 3 * a * a, 3 * a * a, 1],
+            why: "The coefficients are $3a$ for $x^2$ and $3a^2$ for $x$.",
+          },
+          {
+            rhs: [a * a * a, 3 * a, 3 * a * a, 1],
+            why: "The coefficients are $3a$ for $x^2$ and $3a^2$ for $x$, not the reverse.",
+          },
         ],
       };
     }
@@ -1002,6 +1186,8 @@ export function polynomialIdentityCase(seed: string) {
         prompt: "Which equation is true for every value of $x$?",
         hint: `Expand the left side $${eq.lhs}$ by multiplying out, or substitute a simple value such as $x=1$ and compare each equation.`,
         explanation: [
+          "An identity is an equation that is true for every value of $x$. To find it, multiply out the left side and compare.",
+          "Multiply each term of one bracket by each term of the other. Then combine like terms, the terms with the same power of $x$.",
           `Expand the left side: $${eq.lhs}=${coeffText(eq.truth)}$.`,
           "Each other equation changes a term of this expansion, so it fails for some value of $x$.",
           `The equation ${text(eq.truth)} is the identity.`,
@@ -1022,16 +1208,33 @@ export function polynomialIdentityCase(seed: string) {
         prompt: `Suppose $x+y=${s}$ and $x-y=${d}$. What is $x^2-y^2$?`,
         hint: `Factor $x^2-y^2$ as a product of $x+y$ and $x-y$, then use the two values you are given.`,
         explanation: [
+          "A difference of squares, one square minus another, factors into a sum times a difference. This identity is true for every $x$ and $y$:",
           "$x^2-y^2=(x+y)(x-y)$.",
+          "The identity holds for all $x$ and $y$, so $x$ and $y$ need not be found separately. Replace each bracket by its given value.",
           `Substitute: $${s}\\times${d}=${s * d}$.`,
-          "The identity holds for all $x$ and $y$, so $x$ and $y$ need not be found separately.",
+          `So $x^2-y^2$ is ${s * d}.`,
         ],
         correct: $(s * d),
         wrong: [
-          { label: $(s * s - d * d), feedback: "Squaring $x+y$ and $x-y$ and subtracting gives $4xy$, not $x^2-y^2$. Multiply the two given numbers." },
-          { label: $(s + d), feedback: "Adding the two given numbers gives $2x$. The difference of squares is their product." },
-          { label: $(s * s + d * d), feedback: "That equals $2(x^2+y^2)$. Use $x^2-y^2=(x+y)(x-y)$." },
-          { label: $(s - d), feedback: "Subtracting the given numbers gives $2y$. The difference of squares is their product." },
+          {
+            label: $(s * s - d * d),
+            feedback:
+              "Squaring $x+y$ and $x-y$ and subtracting gives $4xy$, not $x^2-y^2$. Multiply the two given numbers.",
+          },
+          {
+            label: $(s + d),
+            feedback:
+              "Adding the two given numbers gives $2x$. The difference of squares is their product.",
+          },
+          {
+            label: $(s * s + d * d),
+            feedback: "That equals $2(x^2+y^2)$. Use $x^2-y^2=(x+y)(x-y)$.",
+          },
+          {
+            label: $(s - d),
+            feedback:
+              "Subtracting the given numbers gives $2y$. The difference of squares is their product.",
+          },
         ],
       }),
     };
@@ -1047,16 +1250,32 @@ export function polynomialIdentityCase(seed: string) {
       prompt: `Suppose $x+y=${s}$ and $xy=${p}$. What is $x^2+y^2$?`,
       hint: `Square the equation $x+y=${s}$ with $(x+y)^2=x^2+2xy+y^2$, then replace $xy$ by the value you are given.`,
       explanation: [
+        "Squaring a sum gives three terms: the first squared, twice the product, and the second squared. Here $xy$ means $x$ times $y$.",
         "$(x+y)^2=x^2+2xy+y^2$, so $x^2+y^2=(x+y)^2-2xy$.",
+        "This identity holds for all $x$ and $y$, so $x$ and $y$ need not be found separately. Replace $x+y$ and $xy$ by their given values.",
         `$(${s})^2-2(${p})=${s * s}${-2 * p < 0 ? "-" : "+"}${Math.abs(2 * p)}=${good}$.`,
-        "The identity holds for all $x$ and $y$, so $x$ and $y$ need not be found separately.",
+        `So $x^2+y^2$ is ${good}.`,
       ],
       correct: $(good),
       wrong: [
-        { label: $(s * s - p), feedback: "The cross term in $(x+y)^2$ is $2xy$, so subtract $2xy$, not $xy$." },
-        { label: $(s * s + 2 * p), feedback: "Rearranging $(x+y)^2=x^2+2xy+y^2$ subtracts $2xy$ from $(x+y)^2$." },
-        { label: $(s * s), feedback: "$(x+y)^2$ also contains the cross term $2xy$; remove it." },
-        { label: $(s * s - 4 * p), feedback: "That is $(x-y)^2$. Subtract only $2xy$ from $(x+y)^2$." },
+        {
+          label: $(s * s - p),
+          feedback:
+            "The cross term in $(x+y)^2$ is $2xy$, so subtract $2xy$, not $xy$.",
+        },
+        {
+          label: $(s * s + 2 * p),
+          feedback:
+            "Rearranging $(x+y)^2=x^2+2xy+y^2$ subtracts $2xy$ from $(x+y)^2$.",
+        },
+        {
+          label: $(s * s),
+          feedback: "$(x+y)^2$ also contains the cross term $2xy$; remove it.",
+        },
+        {
+          label: $(s * s - 4 * p),
+          feedback: "That is $(x-y)^2$. Subtract only $2xy$ from $(x+y)^2$.",
+        },
       ],
     }),
   };
@@ -1069,7 +1288,8 @@ const choose = (n: number, k: number) => {
   for (let i = 1; i <= k; i++) v = (v * (n - k + i)) / i;
   return Math.round(v);
 };
-const pascalRow = (n: number) => Array.from({ length: n + 1 }, (_, k) => choose(n, k));
+const pascalRow = (n: number) =>
+  Array.from({ length: n + 1 }, (_, k) => choose(n, k));
 const binomialLinear = (a: number, b: number) =>
   `${lead(a)}x${b < 0 ? "-" : "+"}${Math.abs(b)}`;
 
@@ -1084,7 +1304,9 @@ export function binomialCoefficientCase(seed: string) {
     const wrongRows = [
       pascalRow(n - 1),
       pascalRow(n + 1),
-      row.map((_, k) => (k === 0 ? 1 : n ** Math.min(k, 1) * k)).map((v, k) => (k === n ? 1 : v)),
+      row
+        .map((_, k) => (k === 0 ? 1 : n ** Math.min(k, 1) * k))
+        .map((v, k) => (k === n ? 1 : v)),
       row.map((v) => v + 1),
     ];
     return {
@@ -1094,16 +1316,33 @@ export function binomialCoefficientCase(seed: string) {
         prompt: `Pascal's triangle starts with row 0, which is $1$; each later entry is the sum of the two entries above it. Which row gives the coefficients in the expansion of $(x+y)^{${n}}$?`,
         hint: `The expansion of $(x+y)^{${n}}$ has ${n + 1} terms, and row $n$ of Pascal's triangle has $n+1$ entries. Row 0 is $1$ and row 1 is $1,\\ 1$.`,
         explanation: [
+          "Pascal's triangle is a triangle of numbers. Each row starts and ends with 1, and each inside entry is the sum of the two entries above it.",
+          `Multiplying out $(x+y)^{${n}}$ gives ${n + 1} terms. Their coefficients, the numbers in front of each term, form one row of the triangle.`,
           `The expansion of $(x+y)^{${n}}$ has ${n + 1} terms, so the row has ${n + 1} entries: row ${n}, counting the top row as row 0.`,
           `Building down from row 0, row ${n} is ${text(row)}.`,
           `Check: the row reads the same in both directions, and its entries add to $2^{${n}}=${2 ** n}$.`,
+          `So the coefficients of $(x+y)^{${n}}$ are ${text(row)}.`,
         ],
         correct: text(row),
         wrong: [
-          { label: text(wrongRows[0]!), feedback: `That row is row ${n - 1}. Row $n$ has $n+1$ entries, matching the $n+1$ terms.` },
-          { label: text(wrongRows[1]!), feedback: `That row is row ${n + 1}. Row $n$ has $n+1$ entries, matching the $n+1$ terms.` },
-          { label: text(wrongRows[3]!), feedback: "Each entry is the sum of the two entries above it; recompute the row from the one before." },
-          { label: text(wrongRows[2]!), feedback: "Each entry is the sum of the two entries above it, so the row is not made of multiples of $n$." },
+          {
+            label: text(wrongRows[0]!),
+            feedback: `That row is row ${n - 1}. Row $n$ has $n+1$ entries, matching the $n+1$ terms.`,
+          },
+          {
+            label: text(wrongRows[1]!),
+            feedback: `That row is row ${n + 1}. Row $n$ has $n+1$ entries, matching the $n+1$ terms.`,
+          },
+          {
+            label: text(wrongRows[3]!),
+            feedback:
+              "Each entry is the sum of the two entries above it; recompute the row from the one before.",
+          },
+          {
+            label: text(wrongRows[2]!),
+            feedback:
+              "Each entry is the sum of the two entries above it, so the row is not made of multiples of $n$.",
+          },
         ],
       }),
     };
@@ -1118,24 +1357,61 @@ export function binomialCoefficientCase(seed: string) {
   const good = coef(k);
   const exprText = binomialLinear(aa, b);
   const pool: Wrong[] = [
-    { label: `$${aa ** k * b ** (n - k)}$`, feedback: "Multiply by the binomial coefficient $\\binom{n}{k}$ from Pascal's triangle." },
-    { label: `$${choose(n, k) * b ** (n - k)}$`, feedback: `The factor $x$ in $${exprText}$ has coefficient ${aa}, and it is raised to the power ${k} too.` },
-    { label: `$${choose(n, k) * aa ** k}$`, feedback: `The constant ${b} is raised to the power $${n - k}$ and keeps its sign.` },
-    { label: `$${choose(n, k) * aa ** (n - k) * b ** k}$`, feedback: `In the term with $x^{${k}}$, the $ax$ part is raised to ${k} and the constant to ${n - k}.` },
-    { label: `$${choose(n, k) * aa ** k * Math.abs(b) ** (n - k)}$`, feedback: "Keep the sign of the constant: an odd power of a negative number is negative." },
-    ...(k + 1 <= n ? [{ label: `$${coef(k + 1)}$`, feedback: `That is the coefficient of $x^{${k + 1}}$. Check which power of $x$ is asked for.` }] : []),
-    ...(k - 1 >= 0 ? [{ label: `$${coef(k - 1)}$`, feedback: `That is the coefficient of $x^{${k - 1}}$. Check which power of $x$ is asked for.` }] : []),
-    { label: `$${-good}$`, feedback: "Check the sign: it comes from the odd or even power of the constant." },
+    {
+      label: `$${aa ** k * b ** (n - k)}$`,
+      feedback:
+        "Multiply by the binomial coefficient $\\binom{n}{k}$ from Pascal's triangle.",
+    },
+    {
+      label: `$${choose(n, k) * b ** (n - k)}$`,
+      feedback: `The factor $x$ in $${exprText}$ has coefficient ${aa}, and it is raised to the power ${k} too.`,
+    },
+    {
+      label: `$${choose(n, k) * aa ** k}$`,
+      feedback: `The constant ${b} is raised to the power $${n - k}$ and keeps its sign.`,
+    },
+    {
+      label: `$${choose(n, k) * aa ** (n - k) * b ** k}$`,
+      feedback: `In the term with $x^{${k}}$, the $ax$ part is raised to ${k} and the constant to ${n - k}.`,
+    },
+    {
+      label: `$${choose(n, k) * aa ** k * Math.abs(b) ** (n - k)}$`,
+      feedback:
+        "Keep the sign of the constant: an odd power of a negative number is negative.",
+    },
+    ...(k + 1 <= n
+      ? [
+          {
+            label: `$${coef(k + 1)}$`,
+            feedback: `That is the coefficient of $x^{${k + 1}}$. Check which power of $x$ is asked for.`,
+          },
+        ]
+      : []),
+    ...(k - 1 >= 0
+      ? [
+          {
+            label: `$${coef(k - 1)}$`,
+            feedback: `That is the coefficient of $x^{${k - 1}}$. Check which power of $x$ is asked for.`,
+          },
+        ]
+      : []),
+    {
+      label: `$${-good}$`,
+      feedback:
+        "Check the sign: it comes from the odd or even power of the constant.",
+    },
   ];
   const label = `$${good}$`;
   const xk = k === 1 ? "x" : `x^{${k}}`;
   const what = k === 0 ? "the constant term" : `the coefficient of $${xk}$`;
-  const rowNote = variant === 4
-    ? ` Row ${n} of Pascal's triangle is $${pascalRow(n).join(",\\ ")}$.`
-    : "";
-  const prompt = k === 0
-    ? `What is the constant term in the expansion of $(${exprText})^{${n}}$?${rowNote}`
-    : `What is the coefficient of $${xk}$ in the expansion of $(${exprText})^{${n}}$?${rowNote}`;
+  const rowNote =
+    variant === 4
+      ? ` Row ${n} of Pascal's triangle is $${pascalRow(n).join(",\\ ")}$.`
+      : "";
+  const prompt =
+    k === 0
+      ? `What is the constant term in the expansion of $(${exprText})^{${n}}$?${rowNote}`
+      : `What is the coefficient of $${xk}$ in the expansion of $(${exprText})^{${n}}$?${rowNote}`;
   return {
     variant,
     n,
@@ -1143,9 +1419,12 @@ export function binomialCoefficientCase(seed: string) {
       prompt,
       hint: `The term with $${xk}$ in $(${exprText})^{${n}}$ is $\\binom{${n}}{${k}}(${lead(aa)}x)^{${k}}(${b})^{${n - k}}$. Find the binomial coefficient from row ${n} of Pascal's triangle, then raise each part to its power.`,
       explanation: [
+        `Multiplying out $(${exprText})^{${n}}$ means multiplying ${n} copies of $(${exprText})$. Each term picks the $x$ part from some copies and the constant ${b} from the rest.`,
+        `A term with ${k === 0 ? "no $x$" : `$${xk}$`} picks the $x$ part from ${k} of the ${n} copies. The number of ways to choose them is $\\binom{${n}}{${k}}$, read "${n} choose ${k}", an entry of row ${n} of Pascal's triangle.`,
         `The term with ${k === 0 ? "no $x$" : `$${xk}$`} is $\\binom{${n}}{${k}}(${lead(aa)}x)^{${k}}(${b})^{${n - k}}$.`,
         `$\\binom{${n}}{${k}}=${choose(n, k)}$, $${aa}^{${k}}=${aa ** k}$, and $(${b})^{${n - k}}=${b ** (n - k)}$.`,
         `The product is $${choose(n, k)}\\cdot${aa ** k}\\cdot(${b ** (n - k)})=${good}$, ${what}.`,
+        `So ${what} is ${good}.`,
       ],
       correct: label,
       wrong: pool,
@@ -1169,6 +1448,7 @@ export function numberSystemClosureCase(seed: string) {
     { t: "5", u: "5" },
     { t: "-\\frac13", u: "-\\frac13" },
   ]);
+  const rationalWords = `A rational number can be written as a fraction of two whole numbers, like $\\frac{3}{4}$ or $-2$. An irrational number cannot, and its decimal never ends or repeats.`;
   const depends = (about: string) =>
     `It cannot be decided: ${about} can be rational or irrational`;
   if (variant === 0 || variant === 1) {
@@ -1186,11 +1466,15 @@ export function numberSystemClosureCase(seed: string) {
           : `Suppose $${expr}$ were rational. Divide by the nonzero rational number $${rat.t}$ and see what that would say about $${root}$.`,
         explanation: sum
           ? [
+              rationalWords,
+              "Use proof by contradiction: assume the opposite and show that it leads to something false.",
               `Suppose $${expr}=q$ with $q$ rational.`,
               `Then $${root}=q-(${rat.t})$, a difference of two rational numbers, which is rational.`,
               `That contradicts the fact that $${root}$ is irrational, so $${expr}$ is irrational.`,
             ]
           : [
+              rationalWords,
+              "Use proof by contradiction: assume the opposite and show that it leads to something false.",
               `Suppose $${expr}=q$ with $q$ rational.`,
               `Then $${root}=q\\div(${rat.t})$, a quotient of rational numbers with a nonzero divisor, which is rational.`,
               `That contradicts the fact that $${root}$ is irrational, so $${expr}$ is irrational.`,
@@ -1209,7 +1493,11 @@ export function numberSystemClosureCase(seed: string) {
               "Every irrational number has a decimal approximation, but its decimal never ends or repeats. A decimal approximation does not make it rational.",
           },
           {
-            label: depends(sum ? "a rational number plus an irrational number" : "a rational number times an irrational number"),
+            label: depends(
+              sum
+                ? "a rational number plus an irrational number"
+                : "a rational number times an irrational number",
+            ),
             feedback: sum
               ? "A rational plus an irrational is always irrational. Only a sum of two irrational numbers can go either way."
               : "A nonzero rational times an irrational is always irrational.",
@@ -1227,23 +1515,29 @@ export function numberSystemClosureCase(seed: string) {
         prompt: `The number $${root}$ is irrational. Is $${expr}$ rational or irrational?`,
         hint: `Compute $${expr}$ first: what is any number multiplied by 0?`,
         explanation: [
+          rationalWords,
           `Any number times 0 is 0, so $${expr}=0$.`,
           "The number 0 is rational, because $0=\\frac01$.",
           "A product of a rational and an irrational number is irrational only when the rational factor is not zero.",
+          `So $${expr}$ is rational: it equals 0.`,
         ],
         correct: "Rational: it equals $0$, the exception for a zero factor",
         wrong: [
           {
-            label: "Irrational: a rational times an irrational is always irrational",
-            feedback: "The rule needs a nonzero rational factor. With the factor 0 the product is 0.",
+            label:
+              "Irrational: a rational times an irrational is always irrational",
+            feedback:
+              "The rule needs a nonzero rational factor. With the factor 0 the product is 0.",
           },
           {
             label: `Irrational: it contains $${root}$, which is irrational`,
-            feedback: "An irrational number inside a product does not make the product irrational: here the product is 0.",
+            feedback:
+              "An irrational number inside a product does not make the product irrational: here the product is 0.",
           },
           {
             label: depends("a product that includes an irrational number"),
-            feedback: "The product can be computed exactly: it is 0, which is rational.",
+            feedback:
+              "The product can be computed exactly: it is 0, which is rational.",
           },
         ],
       }),
@@ -1252,10 +1546,26 @@ export function numberSystemClosureCase(seed: string) {
   if (variant === 3) {
     const s = r(2, 4);
     const cases = [
-      { e: `${root}+(-${root})`, v: 0, why: `$${root}$ and $-${root}$ are opposites, so they add to 0.` },
-      { e: `${root}\\cdot${root}`, v: k, why: `$${root}\\cdot${root}=${k}$ by the definition of the square root.` },
-      { e: `${root}\\cdot\\sqrt{${k * s * s}}`, v: k * s, why: `$\\sqrt{${k * s * s}}=${s}${root}$, so the product is $${s}\\cdot${k}=${k * s}$.` },
-      { e: `\\pi+(${s + 1}-\\pi)`, v: s + 1, why: `The $\\pi$ terms cancel, leaving ${s + 1}.` },
+      {
+        e: `${root}+(-${root})`,
+        v: 0,
+        why: `$${root}$ and $-${root}$ are opposites, so they add to 0.`,
+      },
+      {
+        e: `${root}\\cdot${root}`,
+        v: k,
+        why: `$${root}\\cdot${root}=${k}$ by the definition of the square root.`,
+      },
+      {
+        e: `${root}\\cdot\\sqrt{${k * s * s}}`,
+        v: k * s,
+        why: `$\\sqrt{${k * s * s}}=${s}${root}$, so the product is $${s}\\cdot${k}=${k * s}$.`,
+      },
+      {
+        e: `\\pi+(${s + 1}-\\pi)`,
+        v: s + 1,
+        why: `The $\\pi$ terms cancel, leaving ${s + 1}.`,
+      },
     ];
     const c = pickOf(r, cases);
     const irrationalFacts = c.e.includes("\\pi")
@@ -1266,27 +1576,40 @@ export function numberSystemClosureCase(seed: string) {
       problem: finish(meta, seed, r, {
         prompt: `Both numbers in $${c.e}$ are irrational. Is the result rational or irrational?`,
         hint: `Simplify $${c.e}$ exactly before deciding what kind of number it is.`,
-        explanation: [c.why, `The result $${c.v}$ is rational, even though ${irrationalFacts}.`],
+        explanation: [
+          rationalWords,
+          c.why,
+          `The result $${c.v}$ is rational, even though ${irrationalFacts}.`,
+        ],
         correct: `Rational: it equals $${c.v}$`,
         wrong: [
           {
-            label: "Irrational: irrational numbers are closed under this operation",
-            feedback: "Sums and products of two irrational numbers can be rational. Simplify to see this case.",
+            label:
+              "Irrational: irrational numbers are closed under this operation",
+            feedback:
+              "Sums and products of two irrational numbers can be rational. Simplify to see this case.",
           },
           {
             label: `Irrational: it still contains ${c.e.includes("\\pi") ? "$\\pi$" : `$${root}$`}`,
-            feedback: "The irrational parts cancel or combine into a whole number, so the result can be rational.",
+            feedback:
+              "The irrational parts cancel or combine into a whole number, so the result can be rational.",
           },
           {
-            label: depends("the result of combining two irrational numbers in general"),
-            feedback: "That is true in general, but this particular result can be computed: simplify it.",
+            label: depends(
+              "the result of combining two irrational numbers in general",
+            ),
+            feedback:
+              "That is true in general, but this particular result can be computed: simplify it.",
           },
         ],
       }),
     };
   }
   if (variant === 4) {
-    const k2 = pickOf(r, [2, 3, 5, 6, 7].filter((v) => v !== k));
+    const k2 = pickOf(
+      r,
+      [2, 3, 5, 6, 7].filter((v) => v !== k),
+    );
     const pair = (u: string, v: string) => `$${u}$ and $${v}$`;
     return {
       variant,
@@ -1294,22 +1617,30 @@ export function numberSystemClosureCase(seed: string) {
         prompt: `A student claims: "The sum of two irrational numbers is always irrational." Which pair of numbers is a counterexample?`,
         hint: `A counterexample needs two irrational numbers whose sum is rational. Look for a pair that cancels, and check that both numbers in a pair really are irrational.`,
         explanation: [
+          rationalWords,
+          "A counterexample is one example that shows a claim is false. Here it needs two irrational numbers whose sum is rational.",
           `$${root}$ and $-${root}$ are both irrational, and their sum is 0, which is rational.`,
-          `The other pairs fail: $${root}$ and $\\sqrt{${k2}}$ have an irrational sum, one number in the next pair is rational, and $\\sqrt{${(k + 1) ** 2}}=${k + 1}$ shows the last pair is made of whole numbers.`,
+          `The sum of $${root}$ and $\\sqrt{${k2}}$ is irrational, so that pair agrees with the claim.`,
+          `In the pair $${root}$ and $${rat.t}$, the second number is rational.`,
+          `$\\sqrt{${(k + 1) ** 2}}=${k + 1}$ and $\\sqrt{${(k + 2) ** 2}}=${k + 2}$, so the last pair is made of whole numbers.`,
+          `So the pair $${root}$ and $-${root}$ is a counterexample.`,
         ],
         correct: pair(root, `-${root}`),
         wrong: [
           {
             label: pair(root, `\\sqrt{${k2}}`),
-            feedback: "Both are irrational, but their sum is irrational too, so this pair supports the claim and is not a counterexample.",
+            feedback:
+              "Both are irrational, but their sum is irrational too, so this pair supports the claim and is not a counterexample.",
           },
           {
             label: pair(root, `${rat.t}`),
-            feedback: "The number in this pair is rational. A counterexample needs two irrational numbers.",
+            feedback:
+              "The number in this pair is rational. A counterexample needs two irrational numbers.",
           },
           {
             label: pair(`\\sqrt{${(k + 1) ** 2}}`, `\\sqrt{${(k + 2) ** 2}}`),
-            feedback: "Both numbers are whole numbers, so they are rational. A counterexample needs two irrational numbers.",
+            feedback:
+              "Both numbers are whole numbers, so they are rational. A counterexample needs two irrational numbers.",
           },
         ],
       }),
@@ -1321,16 +1652,31 @@ export function numberSystemClosureCase(seed: string) {
       prompt: `The number $${root}$ is irrational. For which rational number $q$ is $q\\cdot${root}$ not irrational?`,
       hint: `The product of a nonzero rational number and the irrational number $${root}$ is irrational, so look for the one rational number that is excluded from that rule.`,
       explanation: [
+        rationalWords,
         `If $q\\ne0$, then $q\\cdot${root}$ is irrational: if the product were rational, dividing it by $q$ would make $${root}$ rational.`,
         "If $q=0$, the product is 0, which is rational.",
         "So $q=0$ is the only rational number that works.",
       ],
       correct: "$q=0$",
       wrong: [
-        { label: "$q=1$", feedback: `Then the product is $${root}$ itself, which is irrational.` },
-        { label: "$q=-1$", feedback: `Then the product is $-${root}$, which is irrational.` },
-        { label: `$q=${rat.t === "5" || rat.t === "3" ? "\\frac12" : rat.t}$`, feedback: "A nonzero rational times an irrational number is irrational." },
-        { label: "$q=\\frac{1}{3}$", feedback: "A nonzero rational times an irrational number is irrational." },
+        {
+          label: "$q=1$",
+          feedback: `Then the product is $${root}$ itself, which is irrational.`,
+        },
+        {
+          label: "$q=-1$",
+          feedback: `Then the product is $-${root}$, which is irrational.`,
+        },
+        {
+          label: `$q=${rat.t === "5" || rat.t === "3" ? "\\frac12" : rat.t}$`,
+          feedback:
+            "A nonzero rational times an irrational number is irrational.",
+        },
+        {
+          label: "$q=\\frac{1}{3}$",
+          feedback:
+            "A nonzero rational times an irrational number is irrational.",
+        },
       ],
     }),
   };
@@ -1454,9 +1800,13 @@ export function polynomialGraphMatchCase(seed: string) {
         "The graph of a polynomial $P$ is shown. Its zeros are integers, and its leading coefficient is $1$ or $-1$. Which factored form gives this graph?",
       hint: `The graph meets the $x$-axis at ${roots.length} points. Find where, and whether it crosses or touches there: a crossing needs an odd exponent and a touch needs an even one. Then check which way the right end goes.`,
       explanation: [
+        `A zero of a polynomial is an $x$-value where the graph meets the $x$-axis. A zero at $x=${roots[0]}$ comes from the factor $${factor(roots[0]!)}$, which is 0 there.`,
+        "The exponent on a factor sets the shape at its zero. An odd exponent makes the graph cross the axis. An even exponent makes it touch and turn back.",
         `The graph meets the $x$-axis at ${andList(roots.map((z) => `$x=${z}$`))}, so the factors are ${andList(roots.map((z) => `$${factor(z)}$`))}.`,
         `It crosses at ${andList(cross.map((z) => `$x=${z}$`))} (exponent 1) and touches and turns back at ${andList(touch.map((z) => `$x=${z}$`))} (exponent 2), so the degree is $${degree}$.`,
+        "The leading coefficient, the number in front, sets the right end: positive rises and negative falls.",
         `The right end ${a > 0 ? "rises" : "falls"}, so the leading coefficient is $${a}$: ${polyText(shape)}.`,
+        `The factored form that gives this graph is ${polyText(shape)}.`,
       ],
       figure: { kind: "scene", scene: figure },
       correct: polyText(shape),
@@ -1465,7 +1815,10 @@ export function polynomialGraphMatchCase(seed: string) {
   };
 }
 
-const generators: Record<string, (seed: string) => { problem: GeneratedProblem }> = {
+const generators: Record<
+  string,
+  (seed: string) => { problem: GeneratedProblem }
+> = {
   "polynomial-behavior-description": polynomialBehaviorCase,
   "rational-function-features": rationalFunctionCase,
   "graphical-solution-table": graphicalSolutionCase,

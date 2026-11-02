@@ -115,6 +115,10 @@ export function generateGraphicalProblem(
           ? "For the $x$-coordinate, count grid steps from the vertical axis straight across to $P$: right is positive, left is negative. Ignore how high $P$ is."
           : "For the $y$-coordinate, count grid steps from the horizontal axis straight up or down to $P$: up is positive, down is negative. Ignore how far across $P$ is.";
       explanation = [
+        `A point's coordinates are two numbers $(x, y)$: how far across from the vertical axis, then how far up or down from the horizontal axis.`,
+        coordinate === "x"
+          ? `Count across from the vertical axis to $P$: ${x === 0 ? "it is on the axis, so 0 steps" : `${Math.abs(x)} ${Math.abs(x) === 1 ? "step" : "steps"} ${x > 0 ? "right, so positive" : "left, so negative"}`}.`
+          : `Count up or down from the horizontal axis to $P$: ${y === 0 ? "it is on the axis, so 0 steps" : `${Math.abs(y)} ${Math.abs(y) === 1 ? "step" : "steps"} ${y > 0 ? "up, so positive" : "down, so negative"}`}.`,
         `Point $P$ is at (${x}, ${y}).`,
         `Its $${coordinate}$-coordinate is ${answer}.`,
       ];
@@ -148,9 +152,11 @@ export function generateGraphicalProblem(
         ? `Count from $A$ to $B$: steps right for the run, then steps ${rise < 0 ? "down for the rise, which is negative because the line falls" : "up for the rise"}. Slope = rise ÷ run.`
         : "$A$ and $B$ are at the same height. Count the rise from $A$ to $B$, then divide it by the run.";
       explanation = [
-        `$A = (${x1}, ${y1})$ and $B = (${x2}, ${y2})$.`,
-        `The vertical change is ${y2} − (${y1}) = ${rise}; the horizontal change is ${x2} − (${x1}) = ${run}.`,
-        `Slope = ${rise}/${run} = ${answer}.`,
+        `Slope measures steepness: how far the line goes up (the rise) for each step it goes right (the run).`,
+        `Read the points from the grid: $A = (${x1}, ${y1})$ and $B = (${x2}, ${y2})$.`,
+        `Rise, the change in height from $A$ to $B$: ${y2} − (${y1}) = ${rise}.${rise < 0 ? " It is negative because the line goes down." : ""}`,
+        `Run, the change across from $A$ to $B$: ${x2} − (${x1}) = ${run}.`,
+        `Slope = rise ÷ run = ${rise}/${run}${answer === `${rise}/${run}` ? "" : ` = ${answer}`}. The slope is ${answer}.`,
       ];
       break;
     }
@@ -167,8 +173,10 @@ export function generateGraphicalProblem(
         answer = `${values.reduce((sum, value) => sum + value, 0)}`;
         hint = `Read each bar's top against the Trees scale: Oak is ${values[0]}. Read Pine and Maple the same way, then add all three.`;
         explanation = [
+          `Read each bar where its top meets the scale, the numbers up the side.`,
           `Oak: ${values[0]}, Pine: ${values[1]}, Maple: ${values[2]}.`,
-          `${values.join(" + ")} = ${answer} trees.`,
+          `"Altogether" means add all three: ${values.join(" + ")} = ${answer}.`,
+          `${answer} trees are shown altogether.`,
         ];
       } else {
         const larger = values[0]! > values[1]! ? 0 : 1,
@@ -177,8 +185,10 @@ export function generateGraphicalProblem(
         answer = `${values[larger]! - values[smaller]!}`;
         hint = `Read the ${categories[larger]} bar and the ${categories[smaller]} bar on the scale. Subtract the ${categories[smaller]} count from the ${categories[larger]} count; ignore Maple.`;
         explanation = [
+          `Read each bar where its top meets the scale, the numbers up the side.`,
           `There are ${values[larger]} ${categories[larger]} trees and ${values[smaller]} ${categories[smaller]} trees.`,
-          `${values[larger]} − ${values[smaller]} = ${answer} trees.`,
+          `"How many more" asks for the difference, so subtract: ${values[larger]} − ${values[smaller]} = ${answer}.`,
+          `There ${answer === "1" ? "is 1 more" : `are ${answer} more`} ${categories[larger]} ${answer === "1" ? "tree" : "trees"} than ${categories[smaller]} trees.`,
         ];
       }
       break;
@@ -198,9 +208,17 @@ export function generateGraphicalProblem(
           ? `Read the start time on the clock. Count on to ${time(nextHour)} first, then on to ${time(end)}.`
           : `Read the start time on the clock. Count on by fives from there to ${time(end)}.`;
       explanation = [
-        `The clock shows ${time(start)} in the morning.`,
-        `The ending time is ${time(start + duration)} that morning.`,
-        `Subtract minute totals: ${start + duration} − ${start} = ${duration} minutes.`,
+        `Elapsed time is how much time passes from the start to the end.`,
+        `The short hand shows the hour and the long hand the minutes: the clock shows ${time(start)}. The lesson ends at ${time(end)}.`,
+        end > nextHour
+          ? `Count on in two jumps. From ${time(start)} to ${time(nextHour)} is ${nextHour - start} minutes; from ${time(nextHour)} to ${time(end)} is ${end - nextHour} minutes.`
+          : `Count on by fives from ${time(start)} to ${time(end)}: that is ${duration} minutes.`,
+        ...(end > nextHour
+          ? [
+              `Add the jumps: ${nextHour - start} + ${end - nextHour} = ${duration}.`,
+            ]
+          : []),
+        `The lesson lasts ${duration} minutes.`,
       ];
       break;
     }
@@ -221,8 +239,12 @@ export function generateGraphicalProblem(
           ? `The points are on both sides of 0. Count the steps from ${left} to 0, then from 0 to ${right}, and add.`
           : `Count the unit steps from ${left} to ${right}. A distance is never negative.`;
       explanation = [
+        `Distance is how many unit steps lie between two points. It is never negative.`,
         `The points are at ${left} and ${right}.`,
-        `Distance = |${right} − (${left})| = ${answer} units.`,
+        left < 0 && right > 0
+          ? `They are on opposite sides of 0: ${-left} ${-left === 1 ? "step" : "steps"} from ${left} to 0, and ${right} ${right === 1 ? "step" : "steps"} from 0 to ${right}. Together, ${-left} + ${right} = ${answer}.`
+          : `Subtract the smaller from the larger: ${right} − (${left}) = ${answer}.`,
+        `The distance is ${answer} units.`,
       ];
       break;
     }
