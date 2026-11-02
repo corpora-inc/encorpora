@@ -163,7 +163,7 @@ jobs:
       - if: matrix.lane == 'contrast'
         run: npm run test:contrast
       - name: Preserve the contrast sweep report
-        if: always() && matrix.lane == 'contrast'
+        if: always() && (matrix.lane == 'contrast' || matrix.lane == 'selected')
         uses: actions/upload-artifact@v4
         with:
           name: amp-contrast-${{ github.run_attempt }}

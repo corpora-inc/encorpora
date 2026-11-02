@@ -179,7 +179,7 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
         assert commands[command]['if'] == f"matrix.lane == '{lane}'"
     assert commands['npm run test:native-session']['if'] == "needs.changes.outputs.native == 'true' && (matrix.lane == 'ui' || matrix.lane == 'selected')"
     contrast_report = next(step for step in browser['steps'] if step.get('name') == 'Preserve the contrast sweep report')
-    assert contrast_report['if'] == "always() && matrix.lane == 'contrast'"
+    assert contrast_report['if'] == "always() && (matrix.lane == 'contrast' || matrix.lane == 'selected')"
 
 
 def test_pending_main_runtime_validation_cannot_be_displaced_by_a_later_doc_commit():
