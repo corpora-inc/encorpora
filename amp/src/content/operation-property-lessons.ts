@@ -6,7 +6,7 @@ export const operationPropertyMethods: Record<string, ProblemMethod> = {
   "operation-property-identify": {
     goal: "Match an equation to the property of addition or multiplication it shows, or name the property.",
     intuition:
-      "An equation is a number sentence with an equals sign, like 2 + 5 = 5 + 2. The part left of = is its left side, and the part right of = is its right side. A property is a rule that works for every number. Swapping the order, as in 2 + 5 = 5 + 2, is the commutative property. Moving the parentheses, the curved marks ( ) that show what to work out first, is the associative property. Adding 0 or multiplying by 1 leaves a number the same: that is the identity property. Multiplying a sum, an addition, by multiplying each part and adding is the distributive property: 5 × (2 + 7) = 5 × 2 + 5 × 7.",
+      "An equation is a number sentence with an equals sign, like 2 + 5 = 5 + 2. The part left of the = is the left side. The part right of it is the right side. A property is a rule that works for every number. Each property below changes one thing and keeps the answer the same. Swapping the order is the commutative property: 2 + 5 = 5 + 2. Parentheses are the curved marks $(\\;)$ around the part you work out first. Moving them is the associative property: (1 + 2) + 3 = 1 + (2 + 3). Adding 0, or multiplying by 1, keeps a number the same. That is the identity property: 7 + 0 = 7. A sum is the answer to an addition. Multiplying a sum is the same as multiplying each part, then adding. That is the distributive property: 5 × (2 + 7) = 5 × 2 + 5 × 7.",
     terms: [
       "identity-property",
       "commutative-property",
