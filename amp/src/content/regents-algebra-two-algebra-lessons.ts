@@ -2,6 +2,68 @@ import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
+const r2aSenses = {
+  factor: "factor-number",
+  factors: "factor-number",
+  product: "product-multiply",
+  products: "product-multiply",
+  term: "term-expression",
+  terms: "term-expression",
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  square: "square-number",
+  squared: "square-number",
+  degree: "degree-polynomial",
+  base: "base-exponent",
+  bases: "base-exponent",
+  identity: "identity-equation",
+  "standard form": "standard-form-polynomial",
+  "left side": "side-of-equation",
+  "right side": "side-of-equation",
+};
+const r2aNoLink = [
+  "part",
+  "parts",
+  "whole",
+  "more than",
+  "change",
+  "changes",
+  "leaves",
+  "key",
+  "jumps",
+  "jump",
+  "third",
+  "mean",
+  "means",
+  "sort",
+  "image",
+  "images",
+  "solid",
+  "scales",
+  "net",
+  "inverse",
+  "population",
+  "period",
+  "periods",
+  "quarter",
+  "quarters",
+  "one quarter",
+  "mirror image",
+  "rule",
+  "rules",
+  "opposite",
+  "opposites",
+  "unit",
+  "units",
+  "average",
+  "decreasing",
+  "increasing",
+  "model",
+  "models",
+  "pattern",
+  "patterns",
+];
+
 export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   "nonmonic-complex-quadratic": {
     goal: "Use the quadratic formula when $a\\ne1$ and the discriminant is negative, and write the solutions with $i$.",
@@ -64,17 +126,19 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
       "Check every root against the excluded values before you finish; a rational equation can lose one of two roots.",
   },
   "trinomial-product": {
-    goal: "Multiply two trinomials term by term and combine terms with the same power.",
+    goal: "Multiply two three-term expressions term by term, then combine the terms with the same power of $x$.",
     intuition:
-      "Each term of the first trinomial multiplies each term of the second, so there are nine products. Products with the same power of $x$ are like terms and are added.",
+      "An expression is a calculation written with numbers and letters. In $x^2 + x + 1$, the parts joined by $+$ or $-$ are called terms, and an expression with three terms is called a trinomial. To multiply two trinomials, multiply each term of the first by each term of the second. Each result is called a product, so that makes $3 \\times 3 = 9$ products. Products with the same power of $x$, such as $-x^3$ and $x^3$, are called like terms, and they are added. The number in front of a power of $x$ is called its coefficient. The degree is the highest power of $x$. Multiplying powers adds their exponents: $x^2 \\times x = x^3$.",
     terms: ["trinomial", "like-terms"],
+    senses: r2aSenses,
+    noLink: r2aNoLink,
     method: [
-      "Multiply the first term of one trinomial by all three terms of the other, then repeat for the second and third terms.",
-      "Collect like terms by power: $x^4$, $x^3$, $x^2$, $x$ and the constant.",
-      "Check by substituting a small value such as $x=1$ into the factors and the product.",
+      "Multiply the first term of one trinomial by all three terms of the other. Repeat for the second and third terms.",
+      "Group the products by power: $x^4$, $x^3$, $x^2$, $x$ and the number with no $x$. Add each group.",
+      "Check by putting a small value such as $x = 1$ into the two brackets and into your answer.",
     ],
     watch:
-      "The $x^2$ coefficient has three products and the $x^3$ coefficient has two. It is easy to skip one.",
+      "The $x^2$ terms come from three different products, and the $x^3$ terms from two. It is easy to miss one.",
   },
   "cubic-quotient-remainder": {
     goal: "Divide a cubic by a linear binomial and write the quotient plus the remainder over the divisor.",
@@ -125,22 +189,24 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
       "$(c+\\sqrt{u})^2=c^2+2c\\sqrt{u}+u$, not $c^2+u$. A candidate that makes a radicand negative fails.",
   },
   "absolute-value-linear": {
-    goal: "Solve $|x-p|=qx+r$ in two cases and keep only the solutions that satisfy the original equation.",
+    goal: "Solve $|x - p| = qx + r$ in two cases, and keep only the answers that make the original equation true.",
     intuition:
-      "The absolute value $|u|$ equals $u$ when $u\\ge0$ and $-u$ when $u<0$. So an equation with an absolute value splits into two cases, and each case's answer must be checked because it might not fit its own case.",
+      "The absolute value $|u|$ is the distance of $u$ from 0, so it is never negative: $|3| = 3$ and $|-3| = 3$. So $|u| = w$ means $u = w$ or $u = -w$, and $w$ must be 0 or more. That splits the equation into two cases. An equation has two sides: the parts left and right of the equals sign. Each case usually gives an answer, but an answer can fail if it makes the right side negative. An answer that comes out of the work but does not fit the original equation is called extraneous. Extraneous answers often appear after squaring, which means multiplying something by itself.",
     terms: ["absolute-value", "extraneous-solution"],
+    senses: r2aSenses,
+    noLink: r2aNoLink,
     method: [
-      "Case 1: set the inside equal to the right side. Case 2: set the inside equal to the opposite of the right side.",
+      "Case 1: set what is inside the bars equal to the right side. Case 2: set it equal to the opposite of the whole right side.",
       "Solve each case.",
-      "Substitute each answer into the original equation; the right side must not be negative.",
+      "Put each answer into the original equation. The right side must not be negative.",
     ],
     watch:
-      "A negative right side cannot equal an absolute value, so check both answers.",
+      "An absolute value can never equal a negative number, one less than 0. So check both answers in the original equation.",
   },
   "shifted-trinomial-factor": {
-    goal: "Factor a trinomial written in terms of $x-k$, then write the factors in terms of $x$.",
+    goal: "Factor a three-term expression written with $x - k$, then write its factors using $x$.",
     intuition:
-      "A trinomial such as $(x-4)^2-5(x-4)-14$ has the form $u^2-5u-14$ with $u=x-4$. Factor it as you would factor in $u$, then put $x-4$ back and simplify.",
+      "In $(x - 4)^2 - 5(x - 4) - 14$, the bracket $x - 4$ appears twice. Calling it $u$ turns the expression into $u^2 - 5u - 14$, where $u^2$ means $u$ times $u$. An expression like this is called a quadratic. Factoring means writing it as parts multiplied together, called factors. Factor it as usual: find two numbers that multiply to $-14$ and add to $-5$. Then put $x - 4$ back in place of $u$ and combine the numbers in each bracket. A product is the result of multiplying.",
     terms: [
       [
         "substitute",
@@ -148,13 +214,15 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
       ],
       "factor-number",
     ],
+    senses: r2aSenses,
+    noLink: r2aNoLink,
     method: [
-      "Let $u$ stand for the repeated binomial.",
-      "Factor the trinomial in $u$, using product and sum conditions.",
-      "Replace $u$ by the binomial and combine constants in each factor.",
+      "Let $u$ stand for the repeated bracket.",
+      "Factor the expression in $u$: find two numbers that multiply to the last number and add to the middle one.",
+      "Put the whole bracket back in place of $u$, and combine the numbers in each factor.",
     ],
     watch:
-      "Replace $u$ by the whole binomial, not just by $x$, and with a leading coefficient multiply it over the shift.",
+      "Replace $u$ with the whole bracket, not just $x$. If a number multiplies $u$, it multiplies the shift too.",
   },
   "rational-exponent-product": {
     goal: "Write roots as rational exponents and combine powers of one variable by adding and subtracting exponents.",
@@ -181,7 +249,7 @@ export const regentsAlgebraTwoAlgebraPrinciples: Record<string, string> = {
   "rational-two-denominators":
     "Multiplying both sides by a nonzero common denominator gives an equivalent equation only for $x$ values that keep every denominator nonzero. Roots that make a denominator zero are rejected.",
   "trinomial-product":
-    "By the distributive law, $(a_1+a_2+a_3)(b_1+b_2+b_3)=\\sum a_ib_j$, nine products. The product of two quadratics has degree 4.",
+    "By the distributive property, each of the three terms of one bracket multiplies each of the three terms of the other, giving nine products. Like terms are then added. The product of two quadratics has degree 4.",
   "cubic-quotient-remainder":
     "For a polynomial $p$ and divisor $x-c$, $p(x)=(x-c)q(x)+p(c)$, so $\\dfrac{p(x)}{x-c}=q(x)+\\dfrac{p(c)}{x-c}$ for $x\\ne c$.",
   "powers-of-i-sum":
@@ -189,9 +257,9 @@ export const regentsAlgebraTwoAlgebraPrinciples: Record<string, string> = {
   "two-radical-equation":
     "If $u=v$ then $u^2=v^2$, but not conversely. Every solution of the original equation is a root of the squared equation, so candidates must be checked in the original.",
   "absolute-value-linear":
-    "$|u|=w$ holds exactly when $w\\ge0$ and ($u=w$ or $u=-w$). Solutions of the two cases that give $w<0$ are rejected.",
+    "$|u| = w$ is true exactly when $w \\ge 0$ and either $u = w$ or $u = -w$. An answer from either case that makes $w < 0$ is rejected.",
   "shifted-trinomial-factor":
-    "If $u$ stands for $x-k$, any factoring of $Au^2+Bu+C$ in $u$ gives a factoring in $x$ after the substitution $u=x-k$.",
+    "If $u$ stands for $x - k$, then any factoring of $Au^2 + Bu + C$ in $u$ becomes a factoring in $x$ when $x - k$ is put back in place of $u$.",
   "rational-exponent-product":
     "For $a>0$, $a^{m}a^{n}=a^{m+n}$, $a^{m}/a^{n}=a^{m-n}$ and $\\sqrt[n]{a}=a^{1/n}$. For $d>0$, $\\sqrt[3]{d^3x^m}=d\\,x^{m/3}$.",
 };
@@ -369,45 +437,54 @@ export const regentsAlgebraTwoAlgebraLessons = [
     parentGuide:
       "Ask your learner which values make a denominator zero before they solve anything.",
   }),
-  chainLesson({
-    id: "regents-trinomial-product",
-    title: "Multiplying trinomials",
-    summary: "Multiply two three-term polynomials and combine like terms.",
-    templateIds: ["trinomial-product"],
-    objectives: [
-      "Multiply each term of one trinomial by each term of the other.",
-      "Combine like terms in standard form.",
-    ],
-    openingTitle: "Nine products, five powers",
-    opening: [
-      "The distributive law says each term of the first polynomial multiplies each term of the second. Two trinomials give nine products.",
-      "Products with the same power of $x$ are like terms. Adding them gives the coefficients of $x^4$, $x^3$, $x^2$, $x$ and the constant.",
-    ],
-    example: {
-      prompt: "Multiply $(x^2+x+1)(x^2-x+2)$.",
-      steps: [
-        "$x^4$: 1. $x^3$: $-1+1=0$. $x^2$: $2-1+1=2$. $x$: $2-1=1$. constant: 2.",
-        "The product is $x^4+2x^2+x+2$.",
+  {
+    ...chainLesson({
+      id: "regents-trinomial-product",
+      title: "Multiplying trinomials",
+      summary:
+        "An expression is a calculation written with numbers and letters. One with three parts joined by $+$ or $-$, like $x^2 + x + 1$, is called a trinomial. To multiply two of them, multiply each part of the first by each part of the second. Each result is called a product, so that makes nine products. Then add the ones with the same power of $x$.",
+      templateIds: ["trinomial-product"],
+      objectives: [
+        "Multiply each term of one trinomial by each term of the other.",
+        "Combine like terms and write the answer from the highest power down.",
       ],
-      answer: "$x^4+2x^2+x+2$",
-    },
-    methodTitle: "Organize by power",
-    method: [
-      "Multiply the first term by all terms, then the second, then the third.",
-      "Group by exponent and add coefficients.",
-      "Check with $x=1$: the factors multiply to the sum of the product's coefficients.",
-    ],
-    formalTitle: "Degree and check",
-    formal: [
-      "The degree of a product is the sum of the degrees: $2+2=4$.",
-      "At $x=1$ the product of the factors equals the sum of the coefficients of the product.",
-    ],
-    pitfalls: [
-      "The $x^2$ coefficient has three products.",
-      "Do not multiply only the matching terms.",
-    ],
-    parentGuide: "Ask your learner to check the result by substituting $x=1$.",
-  }),
+      openingTitle: "Nine products, five powers",
+      opening: [
+        "The parts of an expression joined by $+$ or $-$ are called terms. Each keeps the sign in front of it, so $x^2 - x + 2$ has the terms $x^2$, $-x$ and 2.",
+        "Multiplying a sum by something multiplies each of its terms. This is the distributive property. So each term of the first trinomial multiplies each term of the second, and two trinomials give $3 \\times 3 = 9$ products.",
+        "To multiply powers of $x$, add the exponents (the small raised numbers): $x^2 \\times x^2 = x^4$ and $x^2 \\times x = x^3$.",
+        "Products with the same power of $x$ are called like terms. Adding them gives the number in front of $x^4$, $x^3$, $x^2$ and $x$, and the number with no $x$.",
+      ],
+      example: {
+        prompt: "Multiply $(x^2+x+1)(x^2-x+2)$.",
+        steps: [
+          "Multiply $x^2$ by each term of the second trinomial: $x^4 - x^3 + 2x^2$. Multiply $x$ by each: $x^3 - x^2 + 2x$. Multiply 1 by each: $x^2 - x + 2$.",
+          "Add like terms. $x^4$: just $x^4$. $x^3$: $-x^3 + x^3 = 0$. $x^2$: $2x^2 - x^2 + x^2 = 2x^2$. $x$: $2x - x = x$. Numbers: 2.",
+          "The product is $x^4 + 2x^2 + x + 2$. Check with $x = 1$: the two brackets give $3 \\times 2 = 6$, and the answer gives $1 + 2 + 1 + 2 = 6$.",
+        ],
+        answer: "$x^4+2x^2+x+2$",
+      },
+      methodTitle: "Organize by power",
+      method: [
+        "Multiply the first term by all three terms, then the second, then the third.",
+        "Group the products by exponent and add their coefficients (the numbers in front).",
+        "Check with $x = 1$: the two brackets multiplied should equal the sum of the answer's coefficients.",
+      ],
+      formalTitle: "Degree and check",
+      formal: [
+        "The degree is the highest power of $x$ in a polynomial. The degree of a product is the sum of the degrees: $2 + 2 = 4$.",
+        "At $x = 1$, every power of $x$ is 1. So the value of the product there is the sum of its coefficients.",
+      ],
+      pitfalls: [
+        "The $x^2$ terms come from three products. Find all three.",
+        "Do not multiply only the matching terms, such as first by first.",
+      ],
+      parentGuide:
+        "Ask your learner to check the result by putting $x = 1$ into both the factors and the answer.",
+    }),
+    senses: r2aSenses,
+    noLink: r2aNoLink,
+  },
   chainLesson({
     id: "regents-cubic-quotient-remainder",
     title: "Quotient plus remainder over the divisor",
@@ -530,83 +607,101 @@ export const regentsAlgebraTwoAlgebraLessons = [
     parentGuide:
       "Ask your learner to write the check for every candidate, even the one they believe is right.",
   }),
-  chainLesson({
-    id: "regents-absolute-value-linear",
-    title: "Absolute value equal to a linear function",
-    summary: "Solve $|x-p|=qx+r$ in two cases and check both answers.",
-    templateIds: ["absolute-value-linear"],
-    objectives: [
-      "Split an absolute-value equation into two cases.",
-      "Reject a case answer that makes the right side negative.",
-    ],
-    openingTitle: "Two cases, then check",
-    opening: [
-      "The absolute value $|u|$ is the distance of $u$ from 0, so it is never negative. $|u|=w$ means $u=w$ or $u=-w$, and $w$ must not be negative.",
-      "When the right side is a linear function, each case gives one answer, and an answer can fail if it makes the right side negative.",
-    ],
-    example: {
-      prompt: "Solve $|x-1|=2x-4$.",
-      steps: [
-        "Case 1: $x-1=2x-4$, so $x=3$. Case 2: $x-1=-(2x-4)$, so $x=\\frac53$.",
-        "Check $x=3$: $2=2$. Check $x=\\frac53$: $\\frac23\\ne-\\frac23$.",
+  {
+    ...chainLesson({
+      id: "regents-absolute-value-linear",
+      title: "Absolute value equal to a linear function",
+      summary:
+        "The absolute value of a number is its distance from 0, written with bars: $|-5| = 5$ and $|5| = 5$. A distance is never negative. So when $|x - 1|$ equals something, the inside is either that something or its opposite. An equation has two sides: the parts left and right of the equals sign. Solve both cases, then check each answer, because one may make the other side negative.",
+      templateIds: ["absolute-value-linear"],
+      objectives: [
+        "Split an absolute-value equation into two cases.",
+        "Reject a case answer that makes the right side negative.",
       ],
-      answer: "$x=3$",
-    },
-    methodTitle: "Cases, solve, check",
-    method: [
-      "Write both cases.",
-      "Solve each.",
-      "Substitute each in the original equation.",
-    ],
-    formalTitle: "The condition",
-    formal: [
-      "$|u|=w$ holds exactly when $w\\ge0$ and ($u=w$ or $u=-w$).",
-      "A case answer is valid only if $w\\ge0$ at that $x$.",
-    ],
-    pitfalls: [
-      "Do not skip the check.",
-      "Negate the whole right side in Case 2.",
-    ],
-    parentGuide:
-      "Ask your learner whether the right side is negative at each answer.",
-  }),
-  chainLesson({
-    id: "regents-shifted-trinomial-factor",
-    title: "Factoring in terms of a binomial",
-    summary: "Factor a trinomial in $x-k$ and write the factors in $x$.",
-    templateIds: ["shifted-trinomial-factor"],
-    objectives: [
-      "Rename the repeated binomial $u$ and factor the trinomial in $u$.",
-      "Substitute back and simplify each factor.",
-    ],
-    openingTitle: "See the binomial as one thing",
-    opening: [
-      "In $(x-4)^2-5(x-4)-14$ the binomial $x-4$ appears twice. Calling it $u$ turns the expression into $u^2-5u-14$.",
-      "Factor that trinomial, then put $x-4$ back for $u$ and combine the constants.",
-    ],
-    example: {
-      prompt: "Factor $(x-4)^2-5(x-4)-14$.",
-      steps: ["$u^2-5u-14=(u-7)(u+2)$.", "$(x-4-7)(x-4+2)=(x-11)(x-2)$."],
-      answer: "$(x-11)(x-2)$",
-    },
-    methodTitle: "Substitute, factor, substitute back",
-    method: [
-      "Let $u$ stand for the binomial.",
-      "Factor in $u$: find two numbers with the product and sum.",
-      "Replace $u$ and simplify each factor.",
-    ],
-    formalTitle: "Why it works",
-    formal: [
-      "An identity in $u$ stays an identity when $u$ is replaced by any expression, here $x-4$.",
-      "For a factor $pu+q$, the constant becomes $q-pk$ after $u=x-k$.",
-    ],
-    pitfalls: [
-      "Replace $u$ by the whole binomial.",
-      "With a leading coefficient, multiply it by the shift.",
-    ],
-    parentGuide:
-      "Ask your learner to check by multiplying the two factors back.",
-  }),
+      openingTitle: "Two cases, then check",
+      opening: [
+        "The absolute value $|u|$ is the distance of $u$ from 0, so it is never negative. Both 3 and $-3$ are 3 away from 0.",
+        "So $|u| = w$ means $u = w$ or $u = -w$. And $w$ must be 0 or more, because a distance cannot be negative.",
+        "In this lesson, the right side is a straight-line expression in $x$, like $2x - 4$. Each case usually gives one answer. But an answer can make the right side negative, and then it does not work.",
+        "An answer that comes out of the steps but does not make the original equation true is called extraneous. It is thrown away.",
+      ],
+      example: {
+        prompt: "Solve $|x-1|=2x-4$.",
+        steps: [
+          "Case 1, the inside equals the right side: $x - 1 = 2x - 4$. Subtract $x$ from both sides and add 4: $x = 3$.",
+          "Case 2, the inside equals the opposite of the whole right side: $x - 1 = -(2x - 4) = -2x + 4$. Add $2x$ and 1 to both sides: $3x = 5$, so $x = \\frac{5}{3}$.",
+          "Check $x = 3$: the left side is $|3 - 1| = 2$ and the right side is $6 - 4 = 2$. They match, so 3 works.",
+          "Check $x = \\frac{5}{3}$: the left side is $\\left|\\frac{2}{3}\\right| = \\frac{2}{3}$, but the right side is $\\frac{10}{3} - 4 = -\\frac{2}{3}$. A distance cannot be negative, so $\\frac{5}{3}$ is extraneous.",
+        ],
+        answer: "$x=3$",
+      },
+      methodTitle: "Cases, solve, check",
+      method: [
+        "Write both cases: inside = right side, and inside = the opposite of the right side.",
+        "Solve each case.",
+        "Put each answer into the original equation, and keep only those that make it true.",
+      ],
+      formalTitle: "The condition",
+      formal: [
+        "$|u| = w$ is true exactly when $w \\ge 0$ and either $u = w$ or $u = -w$. Here $\\ge$ means greater than or equal to.",
+        "So an answer from either case is valid only if $w \\ge 0$ at that value of $x$.",
+      ],
+      pitfalls: [
+        "Do not skip the check. One case often gives an extraneous answer.",
+        "In Case 2, take the opposite of the whole right side, not just its first term (its first part).",
+      ],
+      parentGuide:
+        "Ask your learner whether the right side is negative at each answer, and what that means.",
+    }),
+    senses: r2aSenses,
+    noLink: r2aNoLink,
+  },
+  {
+    ...chainLesson({
+      id: "regents-shifted-trinomial-factor",
+      title: "Factoring in terms of a binomial",
+      summary:
+        "In $(x - 4)^2 - 5(x - 4) - 14$, the bracket $x - 4$ shows up twice. Give it a nickname, $u$, and the expression becomes $u^2 - 5u - 14$, which is easier to factor, or write as parts multiplied together. Factoring means writing it as parts multiplied together: $(u - 7)(u + 2)$. Then put $x - 4$ back in place of $u$ and tidy up.",
+      templateIds: ["shifted-trinomial-factor"],
+      objectives: [
+        "Name the repeated bracket $u$, and factor the expression in $u$.",
+        "Put the bracket back in place of $u$, and simplify each factor.",
+      ],
+      openingTitle: "See the binomial as one thing",
+      opening: [
+        "A two-term expression like $x - 4$ is called a binomial. In $(x - 4)^2 - 5(x - 4) - 14$, it appears twice. Calling it $u$ turns the expression into $u^2 - 5u - 14$. Here $u^2$ means $u$ times $u$, and $5u$ means 5 times $u$.",
+        "To factor $u^2 - 5u - 14$, find two numbers that multiply to $-14$ and add to $-5$. They are $-7$ and 2. So $u^2 - 5u - 14 = (u - 7)(u + 2)$. The parts being multiplied, $u - 7$ and $u + 2$, are called factors.",
+        "Then put $x - 4$ back in place of $u$ in each factor, and combine the numbers.",
+      ],
+      example: {
+        prompt: "Factor $(x-4)^2-5(x-4)-14$.",
+        steps: [
+          "Let $u = x - 4$. The expression becomes $u^2 - 5u - 14$. The numbers $-7$ and 2 multiply to $-14$ and add to $-5$, so it factors as $(u - 7)(u + 2)$.",
+          "Put $x - 4$ back in place of $u$: $(x - 4 - 7)(x - 4 + 2)$. Combine the numbers in each bracket: $(x - 11)(x - 2)$.",
+        ],
+        answer: "$(x-11)(x-2)$",
+      },
+      methodTitle: "Substitute, factor, substitute back",
+      method: [
+        "Let $u$ stand for the repeated bracket.",
+        "Factor in $u$: find two numbers with the right product (the result of multiplying) and sum.",
+        "Put the whole bracket back in place of $u$, and simplify each factor.",
+      ],
+      formalTitle: "Why it works",
+      formal: [
+        "An equation that is true for every value of $u$ stays true when $u$ is replaced by any expression, here $x - 4$.",
+        "For a factor $pu + q$, putting $u = x - k$ gives $p(x - k) + q = px + (q - pk)$. So the number in the factor becomes $q - pk$.",
+      ],
+      pitfalls: [
+        "Replace $u$ with the whole bracket, not just $x$.",
+        "If a number multiplies $u$, multiply it by the shift too: $2u$ becomes $2(x - 4) = 2x - 8$.",
+      ],
+      parentGuide:
+        "Ask your learner to check the answer by multiplying the two factors back out and comparing with the original.",
+    }),
+    senses: r2aSenses,
+    noLink: r2aNoLink,
+  },
   chainLesson({
     id: "regents-rational-exponent-product",
     title: "Roots and powers as one exponent",

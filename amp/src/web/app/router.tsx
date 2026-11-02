@@ -12,6 +12,7 @@ import {
   useRouter,
 } from "@tanstack/react-router";
 import { z } from "zod";
+import { CurriculumDetailsProvider } from "../features/curriculum/CurriculumDetails";
 import { nativeRuntime } from "../native-runtime";
 import {
   authConfigOptions,
@@ -74,7 +75,11 @@ function RouterError({ error }: { error: unknown }) {
   return <RouteError error={error} reset={() => void router.invalidate()} />;
 }
 const root = createRootRoute({
-  component: Outlet,
+  component: () => (
+    <CurriculumDetailsProvider>
+      <Outlet />
+    </CurriculumDetailsProvider>
+  ),
   validateSearch: (search): z.infer<typeof searchSchema> & CampaignSearch => {
     const parsed = searchSchema.parse(search);
     const { utm_source, utm_medium, utm_campaign, utm_content, ...rest } =

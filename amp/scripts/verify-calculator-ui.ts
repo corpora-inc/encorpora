@@ -320,7 +320,7 @@ try {
   // A tap outside closes the calculator without pressing what lies beneath.
   await toggle.tap();
   await calculator(page).waitFor();
-  const exit = page.getByRole("link", { name: "Your level" });
+  const exit = page.getByRole("link", { name: "Your progress" });
   await exit.tap();
   await calculator(page).waitFor({ state: "detached" });
   await page.waitForTimeout(100);
@@ -329,7 +329,7 @@ try {
       () => (window as unknown as { pressed: string[] }).pressed,
     ),
     [],
-    "The tap outside also pressed Your level",
+    "The tap outside also pressed Your progress",
   );
   assert(
     await toggle.evaluate((el) => el === document.activeElement),
@@ -398,14 +398,14 @@ try {
   assert(await deskToggle.evaluate((el) => el === document.activeElement));
   await deskToggle.click();
   await calculator(desktop).waitFor();
-  await desktop.getByRole("link", { name: "Your level" }).click();
+  await desktop.getByRole("link", { name: "Your progress" }).click();
   await calculator(desktop).waitFor({ state: "detached" });
   assert.deepEqual(
     await desktop.evaluate(
       () => (window as unknown as { pressed: string[] }).pressed,
     ),
     [],
-    "The click outside also pressed Your level",
+    "The click outside also pressed Your progress",
   );
   await desktop.close();
 

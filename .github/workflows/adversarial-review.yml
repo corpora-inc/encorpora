@@ -69,7 +69,7 @@ env:
 jobs:
   adversarial-review:
     name: adversarial-review
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     # The merge queue's check_response_timeout_minutes is 60. Without an explicit
     # limit this job inherits the 360-minute default, so a hung run would burn
     # the queue's entire budget before reporting. Bounded well under 60, and the

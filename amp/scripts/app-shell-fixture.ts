@@ -90,6 +90,7 @@ export async function startShellFixture({
   const origin = `http://127.0.0.1:${webPort}`;
   const stopApi = await startApi(url, origin, apiPort);
   const serverOptions = {
+    watch: { ignored: ["**/artifacts/**"] },
     host: "127.0.0.1",
     port: webPort,
     strictPort: true,
@@ -340,9 +341,13 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "home",
       path: "/",
       state: "paid",
-      // Settled once the working level has loaded (aria-busy clears).
+      // Default home settles when recorded practice counts have loaded.
       ready: (p) =>
-        p.locator(".home-level:not([aria-busy=true])").first().waitFor(),
+        p
+          .locator(".frontier-count-row")
+          .filter({ hasText: /\d+ answered/ })
+          .first()
+          .waitFor(),
     },
     {
       id: "drawer",
@@ -352,7 +357,7 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       then: async (p) => {
         await p.locator("[data-navigation-trigger]").click();
         await p.getByRole("dialog").waitFor();
-        await p.getByRole("link", { name: /Your level/ }).waitFor();
+        await p.getByRole("link", { name: /Your progress/ }).waitFor();
         await p.waitForTimeout(400);
       },
     },

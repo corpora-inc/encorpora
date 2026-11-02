@@ -1,4 +1,8 @@
 import { useState, type ReactNode } from "react";
+import {
+  CurriculumDetailsControl,
+  useCurriculumDetails,
+} from "./features/curriculum/CurriculumDetails";
 import { strandNames } from "./BirthYearPrompt";
 
 import {
@@ -23,9 +27,9 @@ type Props = {
   changeBirthYear: () => void;
 };
 
-/** Home: one action, and each strand's estimated grade level relative to the
- * grade typical for the learner's age, with its uncertainty. */
+/** Home: continue practice, with optional estimates and their uncertainty. */
 export function Home(props: Props) {
+  const { shown } = useCurriculumDetails();
   const f = props.frontier;
   return (
     <main className="home">
@@ -33,12 +37,13 @@ export function Home(props: Props) {
       <section className="home-hero">
         <div>
           <h1>{props.name}</h1>
-          <HomeLevel frontier={f} />
+          {shown && <HomeLevel frontier={f} />}
         </div>
         <button className="go-button" disabled={props.busy} onClick={props.go}>
           {props.resuming ? "Continue" : "Go"}
         </button>
       </section>
+      <CurriculumDetailsControl />
       <FrontierMap
         name={props.name}
         frontier={props.frontier}
@@ -90,6 +95,7 @@ export function FrontierMap(props: {
   frontier: FrontierMap | null;
   strands: readonly string[];
 }) {
+  const { shown } = useCurriculumDetails();
   const [open, setOpen] = useState<string | null>(null);
   const f = props.frontier;
   const center = f?.expected ?? 4;
@@ -97,6 +103,33 @@ export function FrontierMap(props: {
     hi = lo + 6;
   const at = (v: number) =>
     `${((Math.min(hi, Math.max(lo, v)) - lo) / (hi - lo)) * 100}%`;
+  if (!shown)
+    return (
+      <section className="frontier-map" aria-label="Practice by area">
+        <div className="frontier-heading">
+          <h2>Practice by area</h2>
+          <p>
+            Answers recorded in each area. Counts describe practice, not
+            mastery.
+          </p>
+        </div>
+        <ul>
+          {props.strands.map((strand) => {
+            const e = f?.strands[strand];
+            return (
+              <li key={strand} className="frontier-count-row">
+                <span className="frontier-name">{strandNames[strand]}</span>
+                <span>
+                  {e
+                    ? `${e.answered} answered · ${e.independent} correct without help`
+                    : "Not practiced yet"}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    );
   return (
     <section className="frontier-map" aria-label="Where you are">
       <div className="frontier-heading">

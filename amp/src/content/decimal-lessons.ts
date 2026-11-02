@@ -5,26 +5,37 @@ import type { ProblemMethod } from "./problem-lessons";
 const places: Lesson["sections"][number] = {
   title: "Each place is one tenth of the place to its left",
   paragraphs: [
-    "Cut one whole into 10 equal parts and each part is one tenth, written 0.1. Cut one tenth into 10 equal parts and each is one hundredth, 0.01. Cut again and each is one thousandth, 0.001.",
-    "So the places after the decimal point count tenths, hundredths and thousandths, in that order. In 2.47 the 2 counts ones, the 4 counts tenths and the 7 counts hundredths.",
+    "Cut one whole into 10 equal parts, and each part is a tenth, written 0.1. Cut one tenth into 10 equal parts, and each part is a hundredth, written 0.01. Cut one hundredth into 10 equal parts, and each part is a thousandth, written 0.001.",
+    "The decimal point is the dot in a decimal. The places after it count tenths, hundredths and thousandths, in that order. In 2.47, the 2 counts ones, the 4 counts tenths and the 7 counts hundredths.",
   ],
 };
+const decimalSenses = {
+  whole: "whole",
+  part: "part",
+  square: "square-shape",
+  rename: "rename",
+  interval: "interval",
+  "more than": "more-than",
+};
+const decimalNoLink = ["change", "changes", "mean", "means", "rule"];
 
 export const decimalLessons: Lesson[] = [
   {
     id: "tenths-and-hundredths",
     title: "Tenths and hundredths",
     summary:
-      "Decimals count equal parts of one whole. A tenth is larger than a hundredth because ten hundredths make one tenth.",
+      "A decimal is a number written with a decimal point, such as 0.4. The digits after the point count small equal parts of one whole. A tenth is one of 10 equal parts, written 0.1. A hundredth is one of 100 equal parts, written 0.01. Ten hundredths make one tenth.",
     templateIds: [
       "decimal-grid-read",
       "tenths-as-hundredths",
       "decimal-line-point",
     ],
+    senses: decimalSenses,
+    noLink: decimalNoLink,
     includeGeneratedRepresentation: false,
     objectives: [
       "Name shaded tenths and hundredths of one whole as a fraction and as a decimal.",
-      "Rename tenths as hundredths and add tenths to hundredths.",
+      "Rename tenths as hundredths, and add tenths to hundredths.",
       "Read a decimal on a number line cut into tenths or hundredths.",
     ],
     sections: [
@@ -32,23 +43,26 @@ export const decimalLessons: Lesson[] = [
         stage: "intuition",
         title: "Cut the same whole into smaller pieces",
         paragraphs: [
-          "Imagine one square as a whole. Cut it into 10 equal strips: each strip is one tenth. Cut every strip into 10 smaller equal pieces: the whole has 100 hundredths, and one tenth is 10 hundredths.",
+          "Look at one square. It is one whole. Cut it into 10 equal strips. Each strip is one tenth of the square.",
+          "Now cut every strip into 10 smaller equal pieces. The whole square now has 100 pieces, and each piece is one hundredth. One strip holds 10 of those pieces. So one tenth is the same amount as 10 hundredths.",
+          "Writing an amount another way, without changing how much it is, is called renaming. You can rename 1 tenth as 10 hundredths.",
         ],
       },
       places,
       {
-        title: "Columns are tenths, squares are hundredths",
+        title: "Columns are tenths, small squares are hundredths",
         paragraphs: [
-          "A square cut into 100 equal small squares shows both places at once. Each small square is one hundredth. Each column of 10 small squares is one tenth.",
-          "Shade 4 full columns and 7 more squares: 4 tenths and 7 hundredths, or 47 hundredths in all. Both say the same amount, and both are written 0.47.",
+          "Look at the picture. The big square is one whole, cut into 100 equal small squares. Each small square is one hundredth. Each column, a stack of 10 small squares from top to bottom, is one tenth.",
+          "4 full columns are shaded, or colored in. That is 4 tenths. 7 more small squares are shaded. That is 7 hundredths. Together they make 4 tenths and 7 hundredths, or 47 hundredths in all. Both name the same amount, and both are written 0.47.",
         ],
         illustration: "decimal-tenths-hundredths",
       },
       {
         title: "One tenth is ten hundredths",
         paragraphs: [
-          "Because each tenth is 10 hundredths, 3/10 = 30/100. To add 3/10 + 5/100, rename the tenths first: 30/100 + 5/100 = 35/100 = 0.35.",
-          "On a number line, count equal intervals. If 10 intervals make one whole, each is 0.1; if 10 intervals make one tenth, each is 0.01.",
+          "Each tenth is 10 hundredths. So 3 tenths are 30 hundredths: 3/10 = 30/100.",
+          "To add 3/10 + 5/100, first rename the tenths as hundredths. Then add hundredths to hundredths: 30/100 + 5/100 = 35/100 = 0.35.",
+          "On a number line, the tick marks cut the line into equal spaces. Each space between two marks next to each other is called an interval. Count the intervals, not the marks. If 10 intervals make one whole, each interval is 0.1. If 10 intervals make one tenth, each interval is 0.01.",
         ],
       },
     ],
@@ -57,60 +71,65 @@ export const decimalLessons: Lesson[] = [
         stage: "formal",
         title: "Decimal parts of one whole",
         paragraphs: [
-          "A tenth is one of 10 equal parts of a whole; a hundredth is one of 100 equal parts. Ten hundredths equal one tenth, so a decimal can be renamed using equivalent place-value parts without changing its value.",
+          "A tenth is one of 10 equal parts of a whole. A hundredth is one of 100 equal parts. Ten hundredths equal one tenth. So tenths can be renamed as hundredths without changing the amount: 0.6 = 0.60.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 6/10 + 4/100 written as a decimal?",
       steps: [
-        "One tenth is 10 hundredths, so 6/10 = 60/100.",
-        "60/100 + 4/100 = 64/100.",
-        "64 hundredths is 6 tenths and 4 hundredths: 0.64.",
+        "One tenth is 10 hundredths, so 6 tenths are 60 hundredths: 6/10 = 60/100. Now both parts are hundredths.",
+        "Add the hundredths: 60/100 + 4/100 = 64/100.",
+        "64 hundredths is 6 tenths and 4 hundredths. Write 6 in the tenths place and 4 in the hundredths place: 0.64.",
       ],
       answer: "0.64",
     },
     pitfalls: [
-      "0.4 is 4 tenths, not 4 hundredths; 4 hundredths is 0.04.",
-      "Count intervals between tick marks, not the tick marks themselves.",
+      "0.4 is 4 tenths, not 4 hundredths. 4 hundredths is written 0.04.",
+      "On a number line, count the spaces between tick marks, not the tick marks themselves.",
     ],
     parentGuide:
-      "Draw a 10 by 10 square and shade a few columns and squares. Ask for the amount in hundredths, then in tenths and hundredths, then as a decimal.",
+      "Draw a square 10 small squares wide and 10 small squares tall. Shade a few columns and a few single squares. Ask your child for the amount in hundredths, then in tenths and hundredths, then as a decimal.",
   },
   {
     id: "compare-decimals",
     title: "Compare decimals",
     summary:
-      "Look at the largest place where two decimals differ, just as you do with whole numbers.",
+      "A decimal is a number written with a decimal point, such as 0.45. To compare two decimals, line up their decimal points. Then compare the digits in each place, starting from the left. The first place where the digits are different tells which decimal is greater.",
     templateIds: ["compare-decimals-hundredths"],
+    senses: decimalSenses,
+    noLink: decimalNoLink,
     includeGeneratedRepresentation: false,
     objectives: [
       "Line up two decimals by place value.",
-      "Explain why a zero on the right does not change a decimal's value.",
-      "Choose the greater or lesser of two decimals, including when the shorter one is greater.",
+      "Explain why a zero at the right end does not change a decimal's value.",
+      "Choose the greater or lesser of two decimals, even when the shorter one is greater.",
     ],
     sections: [
       {
         stage: "intuition",
-        title: "Compare pieces of the same size",
+        title: "Compare parts of the same size",
         paragraphs: [
-          "A number with more written digits is not always larger: 0.9 is greater than 0.12. Nine tenths cover more of a whole than twelve hundredths. Rename or line up the parts so the same places can be compared.",
+          "A number with more digits is not always greater. Compare 0.9 and 0.12. A tenth is one of 10 equal parts of a whole, so 0.9 is 9 of those parts. A hundredth is one of 100 equal parts, so 0.12 is 12 of those much smaller parts.",
+          "Nine tenths cover more of the whole than twelve hundredths. We write 0.9 > 0.12, where the sign > means is greater than. The sign < means is less than.",
+          "To compare fairly, compare digits that count the same size of part. Lining up the decimal points does that.",
         ],
       },
       places,
       {
         title: "Line up the points, then compare from the left",
         paragraphs: [
-          "Write both decimals in a place-value chart with the decimal points lined up. Fill an empty place on the right with 0: 0.5 = 0.50, because 5 tenths is 50 hundredths.",
-          "Then compare from the left. The first place where the digits differ decides, because one unit of that place is worth more than everything to its right. In 0.50 and 0.45, the tenths differ: 5 > 4, so 0.5 > 0.45.",
+          "Look at the picture. It is a place-value chart: a table with one column for each place, ones, tenths and hundredths. Both decimals are written with their decimal points lined up.",
+          "0.5 has nothing in the hundredths place, so fill it with 0: 0.5 = 0.50. That is fine, because 5 tenths is the same amount as 50 hundredths.",
+          "Then compare from the left. The first place where the digits are different decides. One of that place is worth more than all the smaller places to its right put together. In 0.50 and 0.45, the tenths are different: 5 > 4. So 0.5 > 0.45.",
         ],
         illustration: "decimal-compare-chart",
       },
       {
         title: "More digits is not more",
         paragraphs: [
-          "0.45 has more digits than 0.5 but is less. The digits after the point are not a whole number to compare; each counts a smaller piece than the one before.",
-          "With different whole numbers, the ones decide first: 1.2 > 0.95, because one whole is more than any amount of tenths and hundredths below one.",
+          "0.45 has more digits than 0.5, but it is less. The digits after the point are not one big number to compare. Each digit counts a smaller part than the digit before it.",
+          "The whole-number part is the part left of the decimal point. When the whole-number parts are different, they decide first. 1.2 > 0.95, because 1 whole is more than any number of tenths and hundredths that adds up to less than 1.",
         ],
       },
     ],
@@ -119,64 +138,69 @@ export const decimalLessons: Lesson[] = [
         stage: "formal",
         title: "Compare equal place values",
         paragraphs: [
-          "For nonnegative decimals, zeros may be appended after the last fractional digit without changing value. Once decimal points are aligned, compare corresponding places from greatest to least; the first unequal place determines the order. For negative decimals, compare absolute values and reverse the order.",
+          "For decimals that are 0 or greater, zeros written at the right end, after the decimal point, do not change the value. Line up the decimal points. Then compare the digits in each place, from the biggest place to the smallest. The first place where the digits differ decides which decimal is greater.",
         ],
       },
     ],
     workedExample: {
       prompt: "Which is greater: 0.7 or 0.68?",
       steps: [
-        "Line up the points and fill the empty place: 0.7 = 0.70.",
-        "The ones match. In the tenths, 7 > 6.",
-        "So 0.7 > 0.68, and the greater decimal is 0.7.",
+        "Line up the decimal points. 0.7 has no hundredths digit, so fill that place with 0: 0.7 = 0.70. Now both decimals have the same places.",
+        "Compare from the left. The ones digits are both 0. In the tenths place, 7 > 6, so the tenths decide.",
+        "So 0.7 > 0.68. The greater decimal is 0.7.",
       ],
       answer: "0.7",
     },
     pitfalls: [
       "A decimal with more digits is not always greater: 0.5 > 0.45.",
-      "Compare digits in the same place, never the first digit of one with the last digit of the other.",
+      "Compare digits in the same place. Never compare the first digit of one decimal with the last digit of the other.",
     ],
     parentGuide:
-      "Write 0.5 and 0.45 as money: 50 cents and 45 cents. Ask which is more, then why 0.5 and 0.50 are the same amount.",
+      "Write 0.5 and 0.45 as money: 50 cents and 45 cents. Ask your child which is more. Then ask why 0.5 and 0.50 are the same amount.",
   },
   {
     id: "decimal-place-value",
     title: "Decimals to thousandths",
     summary:
-      "Read a decimal by the size of each place: ones, tenths, hundredths, and beyond.",
+      "A decimal is a number written with a decimal point, such as 3.608. Each digit sits in a place, and the place tells what the digit is worth. A tenth is one of 10 equal parts of a whole. A hundredth is one of 100 equal parts. A thousandth is one of 1,000 equal parts.",
     templateIds: [
       "decimal-digit-value",
       "expanded-decimal",
       "compare-decimals-thousandths",
       "round-decimal",
     ],
+    senses: decimalSenses,
+    noLink: decimalNoLink,
     includeGeneratedRepresentation: false,
     objectives: [
       "Name the value of a digit in the tenths, hundredths or thousandths place.",
       "Write a decimal from expanded form, with a 0 in any empty place.",
-      "Compare decimals to thousandths and round to the nearest whole, tenth or hundredth.",
+      "Compare decimals to thousandths, and round to the nearest whole number, tenth or hundredth.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "The point separates ones from smaller parts",
         paragraphs: [
-          "To the left of the decimal point are whole-number places. To the right are tenths, hundredths, and still smaller equal parts. Every step right makes a place ten times smaller, so each digit counts a different-sized piece.",
+          "The decimal point is the dot in a decimal. To its left are the places for whole numbers, the numbers 0, 1, 2, 3 and so on: ones, tens, hundreds. To its right are tenths, hundredths and thousandths.",
+          "Each step to the right makes the place 10 times smaller. So each digit counts a different size of part.",
+          "Rounding means replacing a number with the nearer of two simpler numbers. For example, 2.37 rounded to one digit after the point is 2.4. The halfway point is the number exactly in the middle of the two choices.",
         ],
       },
       places,
       {
         title: "Value and expanded form",
         paragraphs: [
-          "A digit's value is the digit times its place. In 3.608 the 6 is 6 × 1/10 = 0.6 and the 8 is 8 × 1/1000 = 0.008.",
-          "Expanded form adds those values: 3.608 = 3 × 1 + 6 × 1/10 + 8 × 1/1000. There are no hundredths, so the hundredths place holds 0. Without it, 3.68 would be a different number.",
+          "A digit's value is what it is worth: the digit times its place. In 3.608, the 6 is in the tenths place, so it is worth 6 × 1/10 = 0.6. The 8 is in the thousandths place, so it is worth 8 × 1/1000 = 0.008.",
+          "Expanded form writes a number as the sum of what its digits are worth: 3.608 = 3 × 1 + 6 × 1/10 + 8 × 1/1000. There are no hundredths, so the hundredths place holds a 0. Without that 0, you would write 3.68, which is a different number.",
         ],
       },
       {
         title: "Round to the nearer neighbor",
         paragraphs: [
-          "To round 2.37 to the nearest tenth, find the tenths on either side: 2.3 and 2.4. Halfway between them is 2.35.",
-          "2.37 is past halfway, so it is nearer 2.4. A number exactly halfway rounds up by convention.",
+          "To round 2.37 to the nearest tenth, find the tenths just below and just above it: 2.3 and 2.4. The halfway point between them is 2.35.",
+          "Look at the picture. 2.37 is past the halfway point, so it is nearer 2.4. So 2.37 rounds to 2.4.",
+          "A number exactly at the halfway point is just as near to both. In this lesson it rounds up, which is the usual rule.",
         ],
         illustration: "decimal-rounding-line",
       },
@@ -184,52 +208,57 @@ export const decimalLessons: Lesson[] = [
     closingSections: [
       {
         stage: "formal",
-        title: "Powers of ten on both sides",
+        title: "Each place is ten times the next",
         paragraphs: [
-          "Each place immediately to the left is ten times the value of the place to its right. Each place immediately to the right is one tenth as large. The value of a decimal is the sum of each digit's count of its place unit.",
+          "Each place is 10 times the value of the place just to its right. Each place is one tenth of the value of the place just to its left. A decimal's value is the sum of what all its digits are worth.",
         ],
       },
     ],
     workedExample: {
       prompt: "Round 4.862 to the nearest hundredth.",
       steps: [
-        "The hundredths on either side are 4.86 and 4.87.",
-        "Halfway between them is 4.865, and 4.862 is below it.",
-        "So 4.862 is nearer 4.86.",
+        "Find the hundredths just below and just above 4.862. They are 4.86 and 4.87, the numbers with two digits after the point just below and just above it.",
+        "Find the halfway point between them: 4.865. 4.862 is less than 4.865, so it has not reached halfway.",
+        "So 4.862 is nearer 4.86, and it rounds down to 4.86.",
       ],
       answer: "4.86",
     },
     pitfalls: [
-      "An empty place still needs its 0: 3 + 6/10 + 8/1000 is 3.608, not 3.68.",
-      "Rounding to the nearest tenth keeps one decimal place: 2.37 rounds to 2.4, not 2.40 or 2.",
+      "An empty place between other digits still needs its 0. 3 + 6/10 + 8/1000 is 3.608, not 3.68.",
+      "Rounding to the nearest tenth keeps one digit after the point. 2.37 rounds to 2.4. Rounding it to 2 would be rounding to the nearest whole number instead.",
     ],
     parentGuide:
-      "Read a price such as 3.608 aloud by places: 3 ones, 6 tenths, 0 hundredths, 8 thousandths. Ask what changes if the 0 is dropped.",
+      "Read a number such as 3.608 aloud by places: 3 ones, 6 tenths, 0 hundredths, 8 thousandths. Ask your child what changes if the 0 is left out.",
   },
   {
     id: "inverse-decimal-rounding",
     title: "Which decimal rounds to this value?",
     summary:
-      "Many nearby decimals can round to the same value. Find the two halfway boundaries to see which ones do.",
+      "A decimal is a number written with a decimal point, such as 4.68. Rounding means replacing a number with the nearer of two simpler numbers. Many decimals round to the same answer: 4.676 and 4.684 both round to 4.68 at the nearest hundredth. A halfway point is the number exactly between two rounded values. The halfway points on each side of 4.68 show which decimals round to it.",
     templateIds: ["inverse-round-decimal"],
+    senses: decimalSenses,
+    noLink: [...decimalNoLink, "side"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Choose one positive decimal that rounds to a given tenth or hundredth.",
-      "Use the rule that a halfway value rounds up to decide which boundary is included.",
+      "Choose one decimal greater than 0 that rounds to a given tenth or hundredth.",
+      "Use the rule that a halfway value rounds up to decide which halfway point is included.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "A rounded value covers nearby numbers",
         paragraphs: [
-          "A value written as 4.68 to the nearest hundredth may have come from a number a little below or above 4.68. The two halfway points around 4.68 mark where rounding changes to the neighboring hundredths. Find those boundaries before checking a choice.",
+          "A hundredth is one of 100 equal parts of a whole, written 0.01. A tenth is one of 10 equal parts, written 0.1.",
+          "Suppose a number was rounded to the nearest hundredth, and the answer was 4.68. The number may have been a little below 4.68, or a little above it. The hundredths next to 4.68 are 4.67 and 4.69.",
+          "The halfway point between 4.67 and 4.68 is 4.675. The halfway point between 4.68 and 4.69 is 4.685. These two points mark where rounding switches to a different hundredth.",
         ],
       },
       {
         title: "Work backward from the rounded value",
         paragraphs: [
-          "Rounding to the nearest hundredth replaces a decimal with the nearer number having two digits after the decimal point. A hundredth is 0.01; the decimals beside 4.68 are 4.67 and 4.69. A tenth is 0.1, so rounding to the nearest tenth keeps one digit after the point. A halfway value is equally far from two neighboring rounded values. Here, halfway values round up.",
-          "To find an original decimal that rounds to 4.68, find the halfway points between 4.67 and 4.68, and between 4.68 and 4.69. Check the choices against both points; matching the first two decimal digits alone is insufficient.",
+          "Rounding to the nearest hundredth keeps two digits after the decimal point. Rounding to the nearest tenth keeps one digit after the point. A number exactly at a halfway point is just as near to both rounded values. The usual rule is that it rounds up.",
+          "So 4.675 rounds up to 4.68, and it counts. But 4.685 rounds up to 4.69, so it does not count. The words at least mean equal to or greater than. A decimal rounds to 4.68 when it is at least 4.675 and less than 4.685.",
+          "Check every choice against both halfway points. Matching the first two digits after the point is not enough: 4.686 starts like 4.68 but rounds to 4.69.",
         ],
       },
     ],
@@ -237,36 +266,36 @@ export const decimalLessons: Lesson[] = [
       prompt:
         "Which decimal rounds to 4.68 to the nearest hundredth: 4.674, 4.675, 4.685, or 4.686? Round halfway values up.",
       steps: [
-        "The hundredths beside 4.68 are 4.67 and 4.69.",
-        "The halfway points are 4.675 and 4.685. The first rounds up to 4.68; the second rounds up to 4.69.",
-        "4.674 is below the lower point. 4.685 and 4.686 are at or above the upper point. Only 4.675 lies in the range that rounds to 4.68.",
+        "Find the hundredths next to 4.68. They are 4.67, just below it, and 4.69, just above it.",
+        "Find the halfway points. Between 4.67 and 4.68 it is 4.675, which rounds up to 4.68. Between 4.68 and 4.69 it is 4.685, which rounds up to 4.69.",
+        "Check each choice. 4.674 is below 4.675, so it rounds to 4.67. 4.685 and 4.686 are at 4.685 or above, so they round to 4.69. Only 4.675 rounds to 4.68.",
       ],
       answer: "4.675",
     },
     closingSections: [
       {
         stage: "method",
-        title: "See the rounding region",
+        title: "See which decimals round to 4.68",
         keepTogetherInPrint: true,
         paragraphs: [
-          "The shaded part of the number line starts at 4.675 with a filled point and stops before 4.685 with an open point. Every decimal in that part rounds to 4.68.",
+          "Look at the picture. The shaded part of the number line starts at 4.675. The dot there is a filled dot, one that is colored in. A filled dot means that number is included. The shaded part stops at 4.685. The dot there is an open dot, one that is empty inside. An open dot means that number is left out. Every decimal in the shaded part rounds to 4.68.",
         ],
         illustration: "inverse-decimal-rounding-line",
       },
       {
         stage: "formal",
-        title: "Precise rule",
+        title: "The exact rule",
         paragraphs: [
-          "For positive decimals written with a last digit and rounded to the nearest tenth or hundredth, find the two adjacent rounded values and the halfway point on each side of the target. With halfway rounding up, the lower halfway point is included and the upper halfway point is excluded. A choice is correct exactly when it is at least the lower point and less than the upper point.",
+          "Take decimals greater than 0, and a target rounded to the nearest tenth or hundredth. Find the rounded values just below and just above the target. Then find the halfway point on each side of the target. When halfway values round up, the lower halfway point is included and the upper one is left out. A decimal rounds to the target exactly when it is at least the lower halfway point and less than the upper one.",
         ],
       },
     ],
     pitfalls: [
-      "Check both halfway points; a decimal can match the target through the hundredths place and still round up to the next hundredth.",
-      "Include the lower halfway point and exclude the upper one when halfway values round up.",
+      "Check both halfway points. A decimal can start with the same digits as the target and still round up to the next hundredth, like 4.686.",
+      "Include the lower halfway point and leave out the upper one, because halfway values round up.",
     ],
     parentGuide:
-      "Write a rounded hundredth and the two hundredths beside it. Ask your learner to place the halfway points and check each choice.",
+      "Write a rounded hundredth, such as 4.68, and the two hundredths beside it. Ask your child to find the halfway points and check each choice against them.",
   },
   {
     id: "multidigit-decimal-operations",
@@ -349,95 +378,112 @@ export const decimalLessons: Lesson[] = [
 
 const placeTerms: MethodTerm[] = ["tenth", "hundredth"];
 const compareMethod = [
-  "Line up the decimal points; fill empty places on the right with 0.",
-  "Compare digits from the left; the first place that differs decides.",
-  "Answer with the decimal the question asks for.",
+  "Line up the decimal points. Fill any empty place at the right end with 0, which does not change the value.",
+  "Compare digits in the same place, starting from the left. The first place where the digits are different decides.",
+  "Answer with the decimal the question asks for: the greater or the lesser.",
 ];
+const roundIntuition =
+  "A decimal is a number written with a decimal point, such as 2.37. A tenth is one of 10 equal parts of a whole, written 0.1. A hundredth is one of 100 equal parts, written 0.01. Rounding means replacing a number with the nearer of two simpler numbers. The halfway point is the number exactly in the middle of those two.";
 export const decimalMethods: Record<string, ProblemMethod> = {
   "decimal-grid-read": {
     goal: "Name the shaded part of a tenths strip or hundredths grid as a decimal.",
+    senses: decimalSenses,
     terms: placeTerms,
     method: [
-      "Count full columns or strips: each is one tenth.",
-      "Count single squares left over: each is one hundredth.",
-      "Write tenths in the first place after the point, hundredths in the second.",
+      "Count the full columns or strips. Each one is one tenth.",
+      "Count the single small squares left over. Each one is one hundredth.",
+      "Write the tenths in the first place after the point, and the hundredths in the second place.",
     ],
     watch: "4 shaded hundredths is 0.04, not 0.4.",
   },
   "tenths-as-hundredths": {
     goal: "Rename tenths as hundredths and add tenths to hundredths.",
+    senses: decimalSenses,
     terms: placeTerms,
     method: [
-      "Rename each tenth as 10 hundredths: 3/10 = 30/100.",
+      "Renaming means writing an amount another way without changing it. Rename each tenth as 10 hundredths: 3/10 = 30/100.",
       "Add hundredths to hundredths.",
-      "As a decimal, tenths take the first place and hundredths the second.",
+      "As a decimal, the tenths go in the first place after the point and the hundredths in the second.",
     ],
     watch: "3/10 + 5/100 is 35/100, not 8/100.",
   },
   "decimal-line-point": {
     goal: "Read a point on a number line cut into tenths or hundredths.",
+    senses: decimalSenses,
     terms: [
       ["interval", "Here, the space between two neighboring tick marks."],
       ...placeTerms,
     ],
     method: [
-      "Find the distance between the two labeled numbers.",
-      "Divide it by the number of intervals to get one interval.",
-      "Count intervals from the left label to the point.",
+      "Find how far apart the two labeled numbers are.",
+      "The space between two tick marks next to each other is called an interval. Divide the distance by the number of intervals to find the size of one interval.",
+      "Count the intervals from the left label to the point. Multiply that count by the size of one interval, and add the result to the left label.",
     ],
-    watch: "Count spaces between ticks, not the ticks.",
+    watch: "Count the spaces between tick marks, not the tick marks.",
   },
   "compare-decimals-hundredths": {
     goal: "Choose the greater or lesser of two decimals to hundredths.",
+    senses: decimalSenses,
+    noLink: ["mean", "change", "changes"],
     terms: placeTerms,
     method: compareMethod,
     watch: "More digits does not mean greater: 0.5 > 0.45.",
   },
   "decimal-digit-value": {
     goal: "Name the value of one digit of a decimal.",
+    senses: decimalSenses,
+    noLink: ["third"],
     terms: [...placeTerms, "thousandth"],
     method: [
       "Name the digit's place: tenths, hundredths or thousandths.",
-      "Multiply the digit by that place: 7 × 0.01 = 0.07.",
+      "Multiply the digit by the value of that place: 7 × 0.01 = 0.07.",
     ],
-    watch: "The value includes the place, not only the digit.",
+    watch: "The value uses the place, not only the digit.",
   },
   "expanded-decimal": {
     goal: "Write a decimal from ones, tenths, hundredths and thousandths.",
+    senses: decimalSenses,
     terms: [...placeTerms, "thousandth"],
     method: [
       "List the count for each place: ones, tenths, hundredths, thousandths.",
       "Write 0 for a place with nothing in it.",
-      "Write the digits in order after the ones and the point.",
+      "Write the ones, then the decimal point, then the other digits in order.",
     ],
-    watch: "Leaving out a 0 moves every later digit to the wrong place.",
+    watch:
+      "Keep a 0 that sits between other digits. Leaving it out slides digits into the wrong places: 3.608 would become 3.68.",
   },
   "compare-decimals-thousandths": {
     goal: "Choose the greater or lesser of two decimals to thousandths.",
+    senses: decimalSenses,
+    noLink: ["mean"],
     terms: [...placeTerms, "thousandth"],
     method: compareMethod,
     watch: "More digits does not mean greater: 0.3 > 0.299.",
   },
   "round-decimal": {
     goal: "Round a decimal to the nearest whole number, tenth or hundredth.",
+    senses: decimalSenses,
+    intuition: roundIntuition,
     terms: ["round", "halfway-point"],
     method: [
-      "Find the two neighbors with the target number of places.",
+      "Find the two nearby numbers with the number of places the question asks for, one below and one above. If the number already equals one of them, like 5.20 = 5.2 for tenths, it rounds to itself.",
       "Find the halfway point between them.",
-      "Below halfway, round down; at or above halfway, round up.",
+      "Below halfway, round down to the lower one. At halfway or above, round up to the upper one.",
     ],
-    watch: "Keep only the target places: to the nearest tenth, 2.37 is 2.4.",
+    watch: "Keep only the places asked for. To the nearest tenth, 2.37 is 2.4.",
   },
   "inverse-round-decimal": {
     goal: "Choose one original decimal that rounds to a given tenth or hundredth.",
+    senses: decimalSenses,
+    noLink: ["side"],
     terms: ["halfway-point", "round"],
     method: [
-      "Find the rounded values immediately below and above the target.",
+      "Find the rounded values just below and just above the target.",
       "Find the halfway point on each side of the target.",
-      "Choose the original decimal at or above the lower halfway point and below the upper halfway point.",
+      "At least means equal to or greater. Choose the decimal that is at least the lower halfway point and less than the upper halfway point.",
     ],
     watch:
-      "Include the lower halfway point, but exclude the upper halfway point: halfway rounds up.",
+      "Include the lower halfway point, but leave out the upper one, because halfway rounds up.",
   },
   "multidigit-decimal-sum": {
     noLink: ["changes", "opposite"],
@@ -493,23 +539,23 @@ export const decimalMethods: Record<string, ProblemMethod> = {
 };
 export const decimalPrinciples: Record<string, string> = {
   "decimal-grid-read":
-    "One tenth is 10 hundredths, so a decimal can be read as tenths and hundredths or as hundredths alone.",
+    "One tenth is 10 hundredths. So a decimal with digits only in the tenths and hundredths places can be read as tenths and hundredths, or as hundredths alone.",
   "tenths-as-hundredths":
     "Cutting each tenth into 10 equal parts renames tenths as hundredths without changing the amount.",
   "decimal-line-point":
-    "Equal intervals between two labeled points each have the same size: the distance divided by the number of intervals.",
+    "Equal intervals between two labeled points are all the same size: the distance divided by the number of intervals.",
   "compare-decimals-hundredths":
-    "One unit of a place is worth more than everything to its right, so the first differing place decides.",
+    "One of a place is worth more than everything to its right. So the first place where the digits differ decides.",
   "decimal-digit-value":
-    "A digit's value is the digit times its place, and each place is one tenth of the place to its left.",
+    "A digit's value is the digit times the value of its place. Each place is one tenth of the place to its left.",
   "expanded-decimal":
-    "A decimal is the sum of its digits' values; a 0 holds an empty place so later digits keep their places.",
+    "A decimal is the sum of what its digits are worth. A 0 holds an empty place, so later digits keep their places.",
   "compare-decimals-thousandths":
-    "Zeros on the right change nothing, so line up the places and let the first differing place decide.",
+    "Zeros at the right end after the point change nothing. Line up the places, and the first place where the digits differ decides.",
   "round-decimal":
-    "Rounding chooses the nearer of the two neighbors with the target number of places.",
+    "Rounding picks the nearer of the two nearby numbers with the places asked for. A number exactly halfway rounds up.",
   "inverse-round-decimal":
-    "With halfway values rounding up, a decimal rounds to the target exactly when it is at least the lower halfway point and less than the upper halfway point.",
+    "When halfway values round up, a decimal rounds to the target exactly when it is at least the lower halfway point and less than the upper halfway point.",
   "multidigit-decimal-sum":
     "Only like places combine, so lining up the decimal points lines up tenths with tenths and hundredths with hundredths.",
   "multidigit-decimal-product":
