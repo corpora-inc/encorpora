@@ -1053,11 +1053,11 @@ export const geometryEntries: GlossaryEntry[] = [
       "parallel segments",
     ],
     plain:
-      "Running side by side, always the same distance apart, so they never meet however far they are extended.",
+      "Pointing the same way, or exactly the opposite way. Two parallel lines stay the same distance apart and never meet, however far they are extended.",
     example: "The top and bottom edges of a door are parallel.",
     uses: ["distance"],
     band: "4",
-    noLink: ["side", "edges"],
+    noLink: ["side", "edges", "opposite"],
   },
   {
     id: "parallelogram",
