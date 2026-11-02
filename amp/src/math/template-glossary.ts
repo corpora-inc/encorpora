@@ -125,7 +125,7 @@ const glossary: Record<
   },
   "area-probability": {
     senses: { center: "center", side: "side" },
-    noLink: ["base", "part", "square", "whole"],
+    noLink: ["base"],
   },
   "arithmetic-distant-term": {
     senses: {
@@ -707,7 +707,7 @@ const glossary: Record<
   },
   "counterexample-choice": {
     senses: { product: "product-multiply", side: "side" },
-    noLink: ["part", "parts", "square", "squares", "third"],
+    noLink: ["part", "parts", "third"],
   },
   "crossing-segment-similarity": {
     senses: {
@@ -740,12 +740,9 @@ const glossary: Record<
   "curved-solid-surface-area": {
     senses: {
       edge: "edge",
-      side: "side",
-      sides: "side",
       solids: "solid-shape",
-      square: "square-number",
     },
-    noLink: ["base", "bases", "face", "faces"],
+    noLink: ["bases", "faces"],
   },
   "customary-unit-reverse": { noLink: ["whole"] },
   "decimal-both-sides-equation": {
@@ -909,7 +906,7 @@ const glossary: Record<
       base: "base-exponent",
       model: "model",
     },
-    noLink: ["boundary", "side"],
+    noLink: ["side"],
   },
   "exponential-initial-value": {
     senses: { model: "model", factor: "factor-number" },
@@ -1646,7 +1643,7 @@ const glossary: Record<
     },
   },
   "line-relationship-equations": {
-    senses: { change: "change", product: "product-multiply" },
+    senses: { product: "product-multiply" },
   },
   "line-slope": { senses: { change: "change", changes: "change" } },
   "linear-model-equation": {
@@ -3537,15 +3534,13 @@ const glossary: Record<
   },
   "spherical-geometry-compare": {
     senses: {
-      change: "change",
-      changes: "change",
       quarter: "fourth",
       sides: "side",
       vertex: "vertex",
       vertices: "vertex",
       center: "center",
     },
-    noLink: ["opposite", "plane"],
+    noLink: ["opposite"],
   },
   "square-root-extraneous": {
     senses: {
@@ -3714,7 +3709,7 @@ const glossary: Record<
     noLink: ["image", "rule"],
   },
   "transformation-composition-image": {
-    senses: { change: "change", image: "image-transformation", units: "unit" },
+    senses: { image: "image-transformation", units: "unit" },
     noLink: ["center", "scale", "scales"],
   },
   "transformation-invariant-claims": {
