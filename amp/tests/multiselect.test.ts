@@ -267,7 +267,11 @@ test("worked lessons display every option and avoid the current set despite a fi
     (choices.match(/<li>/g) ?? []).length,
     lesson.example.choices.length,
   );
+  // A choice's glossary words are buttons; compare the text a learner reads.
+  const shown = choices
+    .replace(/<span class="glossary-term-mark"[^>]*>\?<\/span>/g, "")
+    .replace(/<[^>]+>/g, "");
   for (const label of lesson.example.choices)
-    assert.ok(choices.includes(label));
+    assert.ok(shown.includes(label), label);
   assert.equal(lesson.example.answer.includes("option-"), false);
 });

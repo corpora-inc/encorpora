@@ -408,6 +408,7 @@ const glossary: Record<
       term: "term-sequence",
       terms: "term-sequence",
     },
+    noLink: ["leaves"],
   },
   "complete-square-monic": {
     senses: {
@@ -776,6 +777,7 @@ const glossary: Record<
       population: "population",
       square: "square-number",
     },
+    noLink: ["sample"],
   },
   "density-volume-steps": {
     senses: {
@@ -1487,7 +1489,7 @@ const glossary: Record<
       changes: "change",
       opposite: "opposite-number",
     },
-    noLink: ["intersection", "intervals", "side"],
+    noLink: ["intersection", "intervals", "side", "range"],
   },
   "greatest-common-factor": {
     senses: { factor: "factor-number", factors: "factor-number" },
@@ -1620,8 +1622,14 @@ const glossary: Record<
     noLink: ["left side", "part", "right side", "side", "sides", "whole"],
   },
   "isosceles-perimeter-steps": {
-    senses: { side: "side", sides: "side", tangent: "tangent-trig" },
-    noLink: ["base", "whole"],
+    senses: {
+      side: "side",
+      sides: "side",
+      tangent: "tangent-trig",
+      degree: "degree-angle",
+      degrees: "degree-angle",
+    },
+    noLink: ["base", "whole", "mode"],
   },
   "larger-share": { senses: { wholes: "whole", whole: "whole" } },
   "least-common-multiple": {
@@ -2656,6 +2664,7 @@ const glossary: Record<
       difference: "difference-subtract",
       differences: "difference-subtract",
       significant: "statistically-significant",
+      mean: "mean-average",
     },
   },
   "rate-combination-model": {
@@ -2813,6 +2822,7 @@ const glossary: Record<
       difference: "difference-subtract",
       unit: "unit",
       units: "unit",
+      degrees: "degree-temperature",
     },
   },
   "regression-prediction-select": {
@@ -2961,7 +2971,7 @@ const glossary: Record<
       unit: "unit",
       units: "unit",
     },
-    noLink: ["base", "part", "whole"],
+    noLink: ["base", "part", "whole", "key"],
   },
   "rg-triangle-area-sas": {
     senses: {
@@ -3182,6 +3192,7 @@ const glossary: Record<
       changes: "change",
       unit: "unit",
       units: "unit",
+      plane: "plane",
     },
   },
   "scale-drawing-work": { senses: { unit: "unit" } },
@@ -3323,6 +3334,7 @@ const glossary: Record<
       "corresponding angle": "corresponding-angles",
       "corresponding angles": "corresponding-angles",
       similar: "similar-figures",
+      degrees: "degree-angle",
     },
     noLink: ["factor", "side", "sides", "similar triangles", "third"],
   },
@@ -3393,6 +3405,7 @@ const glossary: Record<
       model: "model",
       models: "model",
       period: "period",
+      range: "range-function",
     },
     noLink: ["part"],
   },
@@ -3416,7 +3429,7 @@ const glossary: Record<
       side: "side-of-equation",
       sides: "side-of-equation",
     },
-    noLink: ["center", "part", "parts"],
+    noLink: ["center", "part", "parts", "commute"],
   },
   "solid-volume-context": {
     senses: {
@@ -3695,7 +3708,7 @@ const glossary: Record<
       units: "unit",
     },
   },
-  "tide-cosine-equation": { senses: { period: "period" } },
+  "tide-cosine-equation": { senses: { period: "period", models: "model" } },
   "total-and-cost-equation": {
     senses: { "right side": "side-of-equation" },
     noLink: ["whole"],
@@ -3928,7 +3941,7 @@ const glossary: Record<
       tail: "tail",
       tangent: "tangent-trig",
     },
-    noLink: ["opposite", "sides"],
+    noLink: ["opposite", "sides", "plane"],
   },
   "whole-number-equality-choice": { senses: { sides: "side-of-equation" } },
   "whole-sharing-fraction": { senses: { part: "part", parts: "part" } },
