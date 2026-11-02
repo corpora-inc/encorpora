@@ -332,7 +332,7 @@ export const regentsGeometrySimilarityLessons = [
         steps: [
           "The part above eye level is the distance times the tangent of the elevation angle: $100\\tan30^\\circ\\approx57.74$ feet. The sign $\\approx$ means about equal.",
           "The part below eye level uses the depression angle: $100\\tan20^\\circ\\approx36.40$ feet.",
-          "Add the parts, then round once: $57.74+36.40=94.14$, about 94.1 feet.",
+          "Add the parts before rounding, then round once: $100\\tan30^\\circ+100\\tan20^\\circ\\approx94.13$, about 94.1 feet.",
         ],
         answer: "$94.1$ feet",
       },

@@ -166,9 +166,9 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Name what each rule does: slide, flip, turn, stretch or resize.",
+      "Name what each rule does: slide, flip, turn, stretch, resize or shear. A shear, such as $(x,y)\\to(x+2y,y)$, slides each row sideways by an amount set by its height, so the base, the height and the area stay the same.",
       "For a stretch, find the factor on width and the factor on height, and multiply them to get the area factor.",
-      "An area factor of 1 keeps area. If the width and height factors are not both 1 or $-1$, the rule does not always keep congruence.",
+      "For a stretch, the area factor is the width factor times the height factor, ignoring the sign, and area stays the same when that is 1. Unless each factor is 1 or $-1$, the rule does not always keep congruence.",
     ],
     watch:
       "Keeping area does not mean congruent. Two stretches with factors $k$ and $\\frac1k$, for a positive $k$ other than 1, keep area but can change the shape.",

@@ -667,7 +667,7 @@ export const rigidStatement = chainFamily({
         "A rigid motion moves a figure without stretching or shrinking it. A translation (slide), a reflection (flip) and a rotation (turn) are all rigid motions.",
         "Each one keeps every length and every angle measure the same. So a chain of them does too.",
         "Same lengths and angles mean the image is congruent to the original: the same size and shape. Its area is the same as well.",
-        `Other things can change: the position, the coordinates and the direction of each side. ${even ? `The ${m.reflections === 0 ? "lack of reflections keeps" : `${m.reflections} reflections each reverse the order of the vertices, and the reversals cancel in pairs, keeping`} that order.` : "An odd number of reflections reverses the order of the vertices."}`,
+        `Other things can change: the position, the coordinates and the direction of each side. ${even ? `${m.reflections === 0 ? "With no reflections, the order of the vertices stays the same." : `The ${m.reflections} reflections each reverse the order of the vertices, and the reversals cancel in pairs, keeping that order.`}` : "An odd number of reflections reverses the order of the vertices."}`,
         `The statement that must be true is: ${key}`,
       ],
     });
