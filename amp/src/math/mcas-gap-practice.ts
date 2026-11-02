@@ -1937,7 +1937,7 @@ function cubePrismStatements(
       {
         label: `It takes ${a + b + c} cubes to fill the prism.`,
         holds: false,
-        why: `Adding ${a}, ${b} and ${c} counts edges, not cubes. The prism holds $${a}${times}${b}${times}${c}=${N}$ cubes.`,
+        why: `Adding ${a}, ${b} and ${c} counts only the cubes in one row along the length, one along the width and one along the height. Filling the prism takes ${b} rows of ${a} in each layer and ${c} layers: $${a}${times}${b}${times}${c}=${N}$ cubes.`,
       },
       {
         label: `It takes ${N * n} cubes to fill the prism.`,
@@ -2631,10 +2631,19 @@ function productFactorSize(r: Random): Single {
         ? "less than"
         : "equal to";
   const rightLabel = `$${term(correctG)}$`;
+  const wrongLabels = wrongs.map(({ g }) => `$${term(g)}$`);
   const choices: Choice[] = [
     { label: rightLabel, correct: true },
-    ...wrongs.map(({ g, why }) => ({ label: `$${term(g)}$`, feedback: why })),
+    ...wrongs.map(({ why }, i) => ({ label: wrongLabels[i]!, feedback: why })),
   ];
+  const size = (g: Fr) =>
+    g[0] === g[1]
+      ? "equal to 1"
+      : g[0] > g[1]
+        ? "greater than 1"
+        : "less than 1";
+  const otherFactor = (label: string, g: Fr) =>
+    `In ${label}, the other factor, $${show(g)}$, is ${size(g)}.`;
   const sign = cmp(correctG);
   if (
     (variant === "greater" && sign <= 0) ||
@@ -2655,7 +2664,10 @@ function productFactorSize(r: Random): Single {
     hint: `Every product here has $${fx}$ as one factor, so compare the other factor with $1$ instead of multiplying. Multiplying by a number greater than $1$ makes a number larger, multiplying by $1$ leaves it the same, and multiplying by a number between $0$ and $1$ makes it smaller.`,
     explanation: [
       `The product of $${fx}$ and a number is ${want} $${fx}$ when that number is ${variant === "greater" ? "greater than 1" : variant === "less" ? "between 0 and 1" : "equal to 1"}.`,
-      `Only ${rightLabel} has a ${variant === "greater" ? "factor greater than 1" : variant === "less" ? "factor less than 1" : "factor equal to 1"}.`,
+      `Every choice has $${fx}$ as one factor, so compare only its other factor with 1.`,
+      otherFactor(rightLabel, correctG),
+      wrongs.map(({ g }, i) => otherFactor(wrongLabels[i]!, g)).join(" "),
+      `So only ${rightLabel} is ${want} $${fx}$.`,
     ],
     choices,
     model: { f, correctG },

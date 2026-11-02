@@ -2599,7 +2599,10 @@ function expressionOrEquation(r: Random): Built {
       hint: `An equation says two quantities are equal, using a word such as "is" or "equals". An expression only names a quantity.`,
       explanation: [
         `"${equationText}" says that a quantity is equal to a number, so it describes an equation.`,
-        `The other phrases only name a quantity, so they describe expressions.`,
+        `The other phrases, ${phrases
+          .slice(1)
+          .map((q) => `"${q}"`)
+          .join(", ")}, only name a quantity, so they describe expressions.`,
       ],
       choices: choicesFrom(
         equationText,
@@ -2622,7 +2625,7 @@ function expressionOrEquation(r: Random): Built {
       hint: `Look for an equal sign. An expression is a mathematical phrase without one; an equation sets two quantities equal.`,
       explanation: [
         `${exprs[0]} has no equal sign, so it is an expression.`,
-        `The others each have an equal sign, so they are equations.`,
+        `The other choices, ${eqs.join(", ")}, each have an equal sign, so they are equations.`,
       ],
       choices: choicesFrom(
         exprs[0]!,
@@ -2647,7 +2650,7 @@ function expressionOrEquation(r: Random): Built {
     hint: `Look for an equal sign. An equation sets two quantities equal; an expression has no equal sign.${variant === "numeric" ? " An equation is still an equation if it is false." : ""}`,
     explanation: [
       `${eq} has an equal sign, so it is an equation.`,
-      `The others have no equal sign, so they are expressions.`,
+      `The other choices, ${exprs.join(", ")}, have no equal sign, so they are expressions.`,
     ],
     choices: choicesFrom(
       eq,

@@ -282,13 +282,13 @@ function shapeRelation(r: Random) {
     context:
       variant === "parallel"
         ? "Parallel sides are always the same distance apart and never meet."
-        : "Perpendicular sides meet at a right angle, like the corner of a sheet of paper.",
+        : "Perpendicular sides meet at a right angle, like the corner of a sheet of paper, or would meet that way if they were extended.",
     ask: (n) => `Select the ${n} shapes that have ${phrase}.`,
     one: "shape",
     hint: (shown) =>
       variant === "parallel"
         ? `The question asks for ${numberOfTrue(shown)} shapes. Go around each shape and look for two sides that point the same way and would never meet if extended. A shape can have one such pair or several.`
-        : `The question asks for ${numberOfTrue(shown)} shapes. Go around each shape and look for a corner like the corner of a sheet of paper. Two sides that meet at that corner are perpendicular.`,
+        : `The question asks for ${numberOfTrue(shown)} shapes. Go around each shape and look for a corner like the corner of a sheet of paper: the two sides that meet there are perpendicular. Also compare sides that do not touch. Two sides are perpendicular when they would meet at that kind of corner if they were extended.`,
     figure: { kind: "scene", scene },
   });
 }
