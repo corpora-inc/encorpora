@@ -730,7 +730,7 @@ const glossary: Record<
   },
   "cubic-graph-statement": {
     senses: { changes: "change", factor: "factor-number" },
-    noLink: ["decreasing", "increasing", "increasing intervals", "interval"],
+    noLink: ["decreasing", "increasing", "increasing intervals"],
   },
   "cubic-quotient-factored": {
     senses: { factor: "factor-number", product: "product-multiply" },
@@ -839,7 +839,6 @@ const glossary: Record<
   },
   "equal-area-fraction": {
     senses: { part: "part", parts: "part" },
-    noLink: ["squares"],
   },
   "equal-area-part-size": { senses: { parts: "part" } },
   "equation-after-one-step": {
@@ -1607,8 +1606,12 @@ const glossary: Record<
     noLink: ["image", "inverse"],
   },
   "inverse-trig-value": {
-    senses: { tangent: "tangent-trig" },
-    noLink: ["interval", "intervals", "inverse", "range"],
+    senses: {
+      tangent: "tangent-trig",
+      interval: "interval",
+      inverse: "inverse-function",
+      range: "range-function",
+    },
   },
   "inverse-value": { noLink: ["inverse"] },
   "isolate-two-term-formula": {
@@ -1702,7 +1705,6 @@ const glossary: Record<
   },
   "log-base-fraction-graph": {
     senses: { base: "base-exponent" },
-    noLink: ["rule"],
   },
   "log-equation": {
     senses: {
@@ -1941,7 +1943,6 @@ const glossary: Record<
       parts: "part",
       quarters: "fourth",
     },
-    noLink: ["square"],
   },
   "name-share": {
     senses: {
@@ -1952,7 +1953,6 @@ const glossary: Record<
       thirds: "third",
       whole: "whole",
     },
-    noLink: ["one third", "square"],
   },
   "negative-monomial-power": {
     senses: {
@@ -2141,11 +2141,10 @@ const glossary: Record<
   },
   "parabola-shift": {
     senses: { unit: "unit", units: "unit", vertex: "vertex-parabola" },
-    noLink: ["opposite", "solid", "square"],
+    noLink: ["opposite", "solid"],
   },
   "parabola-vertex": {
     senses: {
-      changes: "change",
       term: "term-expression",
       vertex: "vertex-parabola",
       factor: "factor-number",
@@ -2153,7 +2152,7 @@ const glossary: Record<
       squared: "square-number",
       "standard form": "standard-form-line",
     },
-    noLink: ["base", "image", "opposite"],
+    noLink: ["image", "opposite"],
   },
   "parabola-vertex-distance": {
     senses: {
@@ -2427,7 +2426,6 @@ const glossary: Record<
   "price-count-chain": { noLink: ["whole"] },
   "prime-composite-sort": {
     senses: { factors: "factor-number" },
-    noLink: ["factor"],
   },
   "prime-factorization-exponents": {
     senses: {
@@ -2839,10 +2837,9 @@ const glossary: Record<
     },
     noLink: ["base", "center", "part", "square", "whole"],
   },
-  "related-division-sentence": { noLink: ["side"] },
   "related-subtraction-sentence": {
     senses: { part: "part", whole: "whole" },
-    noLink: ["leaves", "parts"],
+    noLink: ["leaves"],
   },
   "relative-frequency-percent": { noLink: ["part", "whole"] },
   "remainder-steps": {
@@ -3003,7 +3000,6 @@ const glossary: Record<
   },
   "same-share-different-shape": {
     senses: { part: "part", parts: "part" },
-    noLink: ["squares"],
   },
   "sample-mean-estimate": {
     senses: {
@@ -3610,12 +3606,10 @@ const glossary: Record<
     senses: {
       base: "base-exponent",
       change: "change",
-      population: "population",
       rule: "rule",
       unit: "unit",
       term: "term-expression",
     },
-    noLink: ["factor"],
   },
   "structure-rewrite": {
     senses: {
@@ -3802,20 +3796,20 @@ const glossary: Record<
     ],
   },
   "trig-equation-solutions": {
-    senses: { period: "period", tangent: "tangent-trig" },
-    noLink: ["interval", "leaves", "range", "side", "sides"],
+    senses: { period: "period", tangent: "tangent-trig", interval: "interval" },
+    noLink: ["leaves", "range", "side", "sides"],
   },
   "trig-identity-value": {
     senses: {
-      complement: "complement-probability",
+      complement: "complementary-angles",
       difference: "difference-subtract",
-      mean: "mean-average",
+      identity: "identity-equation",
       tangent: "tangent-trig",
       terms: "term-expression",
       unit: "unit",
       product: "product-multiply",
     },
-    noLink: ["identity", "opposite", "part", "parts", "rule", "side"],
+    noLink: ["mean", "opposite", "part", "parts", "rule", "side"],
   },
   "trig-leg-steps": {
     senses: { side: "side", degree: "degree-angle" },
@@ -3843,8 +3837,8 @@ const glossary: Record<
     noLink: ["opposite", "rule", "whole"],
   },
   "trig-triangle-area": {
-    senses: { degree: "degree-angle", units: "unit" },
-    noLink: ["base", "mode", "side", "sides"],
+    senses: { degree: "degree-angle", units: "unit", base: "base-shape" },
+    noLink: ["mode", "side", "sides"],
   },
   "trinomial-product": {
     senses: {
