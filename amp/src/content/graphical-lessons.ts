@@ -354,7 +354,7 @@ export const graphicalLessons: Lesson[] = [
         stage: "intuition",
         title: "Count the spaces between points",
         paragraphs: [
-          "A number line has evenly spaced marks, called ticks, with 0 in the middle. Negative numbers sit to the left of 0 and positive numbers to the right.",
+          "A number line has evenly spaced marks, called ticks. Numbers increase as you move right, so negative numbers sit to the left of 0 and positive numbers to its right.",
           "From $-2$ to 3, move 2 spaces to reach 0, then 3 more to reach 3. So the points are $2 + 3 = 5$ units apart. Count the spaces you move across, not the labels you pass.",
         ],
       },

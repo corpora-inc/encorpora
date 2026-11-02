@@ -57,7 +57,7 @@ const instruction: Record<string, Instruction> = {
       "Sketch the right triangle. Mark the right angle, the given angle and the given side. For an angle of depression, draw a level line through the viewer. The same angle sits at the object, inside the triangle, because the level line and the ground are parallel, which means they never meet.",
       "Name the sides from the angle you use: opposite, adjacent and hypotenuse. Choose the ratio that holds the given side and the unknown side: sine for opposite and hypotenuse, cosine for adjacent and hypotenuse, tangent for opposite and adjacent.",
       "Solve. If the unknown is on top of the ratio, multiply: height $= 65 \\times \\tan 52^\\circ \\approx 83.2$. If it is on the bottom, divide the known side by the ratio's value. To find an angle, use the inverse ratio. Round only at the end.",
-      "Adjust for any extra height the problem gives, such as how high the viewer's eyes are above the ground. Add it when the triangle starts at eye level and rises. Subtract when the triangle reaches down below eye level.",
+      "Adjust for any extra height the problem gives, such as how high the viewer's eyes are above the ground. When the triangle starts at eye level and rises, the object's height above the ground is the eye height plus the triangle's upright side. When the triangle reaches down from eye level, the object's height is the eye height minus that upright side: eyes 6 feet up and a side of 4 feet give $6 - 4 = 2$ feet.",
     ],
     watch:
       "Name the sides from the angle you use: a side opposite one acute angle is adjacent to the other. Measure an angle of depression down from a level line, not from an upright one.",

@@ -216,7 +216,7 @@ export const polygonLessons: Lesson[] = [
     },
     pitfalls: [
       "A square has more than one name. It is a rectangle, a rhombus, a parallelogram and a quadrilateral too.",
-      "The names fit one way only. Every square is a rectangle, but not every rectangle is a square.",
+      "Check the direction. Every square is a rectangle, but not every rectangle is a square: a rectangle can have two long sides and two short sides.",
       "When several statements may be true, check every choice before you submit.",
     ],
     parentGuide:
@@ -336,7 +336,7 @@ export const polygonMethods: Record<string, ProblemMethod> = {
       "If one example of the first shape lacks it, the statement is false. That example is called a counterexample.",
     ],
     watch:
-      "The names fit one way only. Every square is a rectangle, but not every rectangle is a square.",
+      "Check the direction. Every square is a rectangle, but not every rectangle is a square: a rectangle can have two long sides and two short sides.",
   },
   "inherited-property": {
     goal: "Choose the shape that must have a property of a bigger group.",

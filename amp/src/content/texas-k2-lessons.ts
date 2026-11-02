@@ -290,8 +290,8 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
       "An analog clock has the numbers 1 to 12 around it and two hands. The short hand is the hour hand. It shows the hour. The long hand is the minute hand. It shows the minutes after the hour. Start at the 12. Each number the long hand reaches adds 5 minutes. Each small tick mark between numbers adds 1 minute. A digital time is written with digits, like 4:07.",
     terms: ["minute-hand", "hour-hand"],
     method: [
-      "Read the hour: the last number the short hand has passed.",
-      "Read the minutes. Count by fives from the 12 to the last number the long hand passed. Then count on by ones for each small tick mark.",
+      "Read the hour. If the short hand points right at a number, that number is the hour. If it is between two numbers, the hour is the number it has just passed.",
+      "Read the minutes. Count by fives from the 12 to the last number the long hand has reached. Then count on by ones for each small tick mark. A long hand on the 12 means 0 minutes.",
       "Write the hour, a colon, then two digits for the minutes: 4:37. If the minutes are less than 10, write a 0 first: 4:07.",
     ],
     watch:
@@ -958,7 +958,7 @@ export const texasK2Lessons: Lesson[] = [
     intuitionTitle: "Two hands, hours and minutes",
     intuition: [
       "Look at a clock face. The numbers 1 to 12 go around it. Between each pair of numbers are 4 small tick marks.",
-      "The short hand moves slowly, from one number to the next in one hour. It shows the last hour it has passed.",
+      "The short hand moves slowly, from one number to the next in one hour. If it points right at a number, that number is the hour. Between two numbers, the hour is the number it has just passed.",
       "The long hand moves faster. Start at the 12. Each number it reaches adds 5 minutes: 5, 10, 15, and so on. Each small tick mark adds 1 minute.",
     ],
     example: {
@@ -974,8 +974,8 @@ export const texasK2Lessons: Lesson[] = [
     },
     methodTitle: "Hour first, then minutes",
     method: [
-      "Read the hour from the short hand: the last number it has passed.",
-      "Count by fives from the 12 to the last number the long hand passed. Then count on by ones for the small tick marks.",
+      "Read the hour from the short hand. If it points right at a number, that number is the hour. Between two numbers, the hour is the number it has just passed.",
+      "Count by fives from the 12 to the last number the long hand has reached. Then count on by ones for the small tick marks. A long hand on the 12 means 0 minutes.",
       "Write the digital time. If the minutes are less than 10, write a 0 first, as in 4:07.",
     ],
     formalTitle: "Reading a clock",

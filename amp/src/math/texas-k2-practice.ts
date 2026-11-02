@@ -1959,7 +1959,7 @@ function clockMinuteMatch(r: Random): Built {
     prompt: "Which digital time matches the clock?",
     figure,
     answer: "",
-    hint: "Read the hour from the short hand: the numeral it has passed. Then read the minutes from the long hand by counting by fives and then single minutes.",
+    hint: "Read the hour from the short hand: the numeral it points at, or the one it has just passed. Then read the minutes from the long hand by counting by fives and then single minutes.",
     explanation: [
       "On a clock, the short hand shows the hour and the long hand shows the minutes.",
       `The short hand has passed ${h} but not reached the next numeral, so the hour is ${h}.`,

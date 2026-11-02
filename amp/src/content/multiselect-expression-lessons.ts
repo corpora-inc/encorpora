@@ -222,7 +222,7 @@ const specs: SelectContentSpec[] = [
       "Select only the equal expressions and check the count.",
     ],
     watch:
-      "The middle coefficient is the sum of two cross products, $p\\times s+q\\times r$, so a sign error in one factor changes it.",
+      "The middle coefficient is the sum of two cross products, $p\\times s+q\\times r$, so a sign error in one factor can change it. It can also leave it the same, as in $(x+2)(x-2)$ and $(-x-2)(x-2)$, so compare the $x^2$ coefficient and the constant too.",
     principle:
       "Two quadratic expressions are equal exactly when their coefficients of $x^2$, $x$ and the constants match after expanding. $(px+q)(rx+s)=prx^2+(ps+qr)x+qs$.",
     example: {

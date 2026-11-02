@@ -689,6 +689,13 @@ function monoTex({ c, a, b }: Mono) {
   return tex(`${coef}${body}` || "1");
 }
 const monoPlain = ({ c, a, b }: Mono) => monoTex({ c, a, b }).slice(1, -1);
+/** "3 copies of 2 multiplied: $2\\times2\\times2$" — a power as copies, never "multiplied by itself n times". */
+const copiesOf = (c: number, n: number) =>
+  `${n} copies of ${c} multiplied, ${tex(
+    Array(n)
+      .fill(c < 0 ? `(${c})` : `${c}`)
+      .join("\\times"),
+  )}`;
 
 function exponentMonomialPower(r: Random): Built {
   const variant = (["power-of-monomial", "power-then-product"] as const)[
@@ -704,11 +711,11 @@ function exponentMonomialPower(r: Random): Built {
     const choices = choicesFrom(r, monoTex(correct), [
       {
         label: monoTex({ c, a: a * n, b: b * n }),
-        feedback: `The power applies to the coefficient too: ${c} is multiplied by itself ${n} times.`,
+        feedback: `The power applies to the coefficient too: it is ${copiesOf(c, n)}.`,
       },
       {
         label: monoTex({ c: c * n, a: a * n, b: b * n }),
-        feedback: `A power is repeated multiplication. ${c} to the power ${n} is ${c} multiplied by itself ${n} times, not ${c} times ${n}.`,
+        feedback: `A power is repeated multiplication. ${c} to the power ${n} is ${copiesOf(c, n)}, not ${c} times ${n}.`,
       },
       {
         label: monoTex({ c: c ** n, a: a + n, b: b + n }),
@@ -732,7 +739,7 @@ function exponentMonomialPower(r: Random): Built {
       answer: "",
       hint: `The outer power ${n} applies to every factor inside the parentheses: the coefficient ${c} and each variable. Raise the coefficient to the power and multiply each exponent by ${n}.`,
       explanation: [
-        `The power ${n} applies to every factor: the coefficient ${c} is multiplied by itself ${n} times, and each exponent is multiplied by ${n}.`,
+        `The power ${n} applies to every factor: the coefficient becomes ${copiesOf(c, n)}, and each exponent is multiplied by ${n}.`,
         `The coefficient becomes ${c ** n}, the exponent of ${tex("x")} becomes ${a} × ${n} = ${a * n}, and the exponent of ${tex("y")} becomes ${b} × ${n} = ${b * n}.`,
         `${tex(base)} = ${monoTex(correct)}.`,
       ],
@@ -764,7 +771,7 @@ function exponentMonomialPower(r: Random): Built {
     },
     {
       label: monoTex({ c: c * n * d, a: a * n + b, b: e }),
-      feedback: `${c} to the power ${n} is ${c} multiplied by itself ${n} times, not ${c} times ${n}.`,
+      feedback: `${c} to the power ${n} is ${copiesOf(c, n)}, not ${c} times ${n}.`,
     },
   ]);
   return {
@@ -1792,7 +1799,7 @@ const RG_OPENERS: Record<string, string[]> = {
     "Factoring completely means writing the expression as a product, things multiplied, until no factor can be broken down further with whole numbers.",
   ],
   "rg-polynomial-zeros-forms": [
-    "A zero of a polynomial is an $x$ that makes its value 0. In factored form, each factor that can equal 0 gives one zero.",
+    "A zero of a polynomial is an $x$ that makes its value 0. In factored form, the zeros are the inputs that make some factor 0. A factor like $x - 6$ gives one zero, 6. A factor like $x^2 - 9$ gives two, 3 and $-3$.",
   ],
   "rg-exponent-monomial-power": [
     "A power outside brackets applies to every factor inside. Multiply exponents for a power of a power, and add exponents when multiplying the same base.",

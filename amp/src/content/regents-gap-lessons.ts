@@ -69,7 +69,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     noLink: ["part"],
     terms: ["coefficient", "monomial"],
     method: [
-      "Raise the coefficient to the outer power: multiply it by itself that many times.",
+      "Raise the coefficient to the outer power: multiply as many copies of it as the power says, so $3^{2}=3\\times3=9$.",
       "Multiply each exponent inside the parentheses by the outer power. A letter written with no exponent has exponent 1.",
       "If another monomial follows, multiply the two coefficients. Then add the exponents of the same letter.",
     ],
@@ -508,13 +508,13 @@ export const regentsGapLessons: Lesson[] = [
       [
         "$x^{3}$ means $x\\cdot x\\cdot x$: three copies of $x$ multiplied. The number in front of the letters is called the coefficient. In $2x^{3}$ the coefficient is 2.",
         "$(2x^{3})^{2}$ means two copies of $2x^{3}$ multiplied: $2x^{3}\\cdot2x^{3}$. The numbers give $2\\cdot2=4$. The letters give $x^{3}\\cdot x^{3}=x^{6}$, because that is 3 copies of $x$ and 3 more. So $(2x^{3})^{2}=4x^{6}$.",
-        "Each part being multiplied is called a factor. Every factor inside the parentheses, the curved brackets, gets the power. The coefficient is multiplied by itself, and each exponent is multiplied by the power.",
+        "Each part being multiplied is called a factor. Every factor inside the parentheses, the curved brackets, gets the power. The coefficient is raised to the power: as many copies of it as the power are multiplied. Each exponent is multiplied by the power.",
       ],
     ],
     workedExample: {
       prompt: "Simplify $(2x^{3}y)^{4}$.",
       steps: [
-        "Raise the coefficient to the 4th power by multiplying it by itself 4 times: $2^{4}=2\\cdot2\\cdot2\\cdot2=16$.",
+        "Raise the coefficient to the 4th power by multiplying four copies of it: $2^{4}=2\\cdot2\\cdot2\\cdot2=16$.",
         "Multiply each exponent by 4. The exponent of $x$ becomes $3\\cdot4=12$. The letter $y$ has exponent 1, so it becomes $1\\cdot4=4$.",
         "Put the parts together: $16x^{12}y^{4}$.",
       ],

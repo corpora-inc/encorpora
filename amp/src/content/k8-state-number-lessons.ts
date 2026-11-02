@@ -19,7 +19,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
       "Rules that look at the end: for 2, the last digit is 0, 2, 4, 6 or 8. For 5, it is 0 or 5. For 10, it is 0. For 4, the number made by the last two digits is divisible by 4.",
       "Rules that use the digit sum: for 3, the digit sum is divisible by 3. For 9, the digit sum is divisible by 9.",
       "For 6, the number must pass both the rule for 2 and the rule for 3.",
-      "To find a hidden digit, add the digits you can see. Then find the digit that makes the total pass the rule.",
+      "To find a hidden digit for 3 or 9, add the digits you can see, then find every digit that makes the total pass the rule. For 6, the digit must also make the number even. For 2, 5 or 10, try each digit in the last-digit rule instead, and for 4 in the last-two-digits rule.",
     ],
     watch:
       "A digit sum divisible by 3 only shows the number is divisible by 3. For 9, the digit sum itself must be divisible by 9. A number ending in 5 is divisible by 5 but not by 10.",
@@ -318,7 +318,7 @@ export const k8StateNumberLessons: Lesson[] = [
         paragraphs: [
           "2: the last digit is 0, 2, 4, 6 or 8. 5: the last digit is 0 or 5. 10: the last digit is 0. 4: the last two digits make a number divisible by 4.",
           "3: the digit sum is divisible by 3. 9: the digit sum is divisible by 9. 6: the number is even, ending in 0, 2, 4, 6 or 8, and it is divisible by 3.",
-          "To find a hidden digit, add the digits you can see. In 18▢ the box stands for one hidden digit, 0 to 9. For 18▢ to be divisible by 9, the digit sum $1+8+{\\square}$ must be a multiple of 9. The digits you can see add to 9, so the total can be anything from 9 to 18. Only 9 and 18 are multiples of 9 there. So the hidden digit is 0 or 9.",
+          "To find a hidden digit for 3 or 9, add the digits you can see. For 2, 4, 5 or 10, use the rule about the last digit or two instead. In 18▢ the box stands for one hidden digit, 0 to 9. For 18▢ to be divisible by 9, the digit sum $1+8+{\\square}$ must be a multiple of 9. The digits you can see add to 9, so the total can be anything from 9 to 18. Only 9 and 18 are multiples of 9 there. So the hidden digit is 0 or 9.",
         ],
       },
       {

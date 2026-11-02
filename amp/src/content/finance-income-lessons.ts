@@ -10,7 +10,7 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     noLink: ["change", "leaves"],
     terms: ["revenue", "fixed-cost", "variable-cost", "break-even-number"],
     method: [
-      "Total cost is the fixed costs plus the cost to make one item times the number made.",
+      "Total cost is the fixed costs plus the cost to make one item times the number made. These problems assume every item made is sold, so the number made is the number sold.",
       "Revenue is the price times the number sold. Profit is revenue minus total cost. A profit below 0 is a loss.",
       "Each sale leaves the price minus the making cost to pay the fixed costs. When the price is more than the making cost, the break-even number is the fixed costs divided by (price minus making cost). If that is not a whole number, round up to get the first number of sales with no loss.",
     ],
@@ -151,7 +151,7 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
 
 export const financeIncomePrinciples: Record<string, string> = {
   "profit-cost-breakeven":
-    "Bracelets sell for 6 dollars, beads cost 2 dollars for each one, and fixed costs are 20 dollars. Each sale leaves $6-2=4$ dollars, so $20\\div4=5$ sales break even. With letters, for price $p$, making cost $c$ per item, fixed costs $F$ and $n$ items sold, profit is $p\\times n-(F+c\\times n)=(p-c)\\times n-F$. When $p$ is more than $c$, profit is 0 at $n=F\\div(p-c)$. It is a loss for fewer items and a profit for more.",
+    "Bracelets sell for 6 dollars, beads cost 2 dollars for each one, and fixed costs are 20 dollars. Each sale leaves $6-2=4$ dollars, so $20\\div4=5$ sales break even. With letters, for price $p$, making cost $c$ per item, fixed costs $F$ and $n$ items made and sold, profit is $p\\times n-(F+c\\times n)=(p-c)\\times n-F$. When $p$ is more than $c$, profit is 0 at $n=F\\div(p-c)$. It is a loss for fewer items and a profit for more.",
   "tax-kinds-defined":
     "A 1.75-dollar tax on a 25-dollar shirt is a sales tax: 7% of the price, added when you buy. An income tax is worked out on what a person earns in a year. A payroll tax is taken out of each paycheck to pay for programs such as Social Security and Medicare. A property tax is paid each year, based on the value of land and buildings a person owns.",
   "tax-bracket-owed":
@@ -186,7 +186,7 @@ export const financeIncomeLessons: Lesson[] = [
           "Revenue is the money sales bring in: the price times the number sold. Costs are the money spent to make and sell things.",
           "Profit is revenue minus total cost. If the answer is below zero, it is a loss.",
           "A fixed cost stays the same however many items are made, like renting a table. A variable cost is paid again for each item, like the beads in one bracelet.",
-          "Total cost is the fixed costs plus the variable cost times the number made.",
+          "Total cost is the fixed costs plus the variable cost times the number made. These problems assume every item made is sold, so the number made is also the number sold.",
         ],
       },
     ],
@@ -217,7 +217,7 @@ export const financeIncomeLessons: Lesson[] = [
         stage: "formal",
         title: "Profit for any number sold",
         paragraphs: [
-          "With price $p$, making cost $c$ per item, fixed costs $F$ and $n$ items sold, profit is $(p-c)\\times n-F$.",
+          "Assume every item made is sold. With price $p$, making cost $c$ per item, fixed costs $F$ and $n$ items made and sold, profit is $(p-c)\\times n-F$.",
           "It equals 0 at $n=F\\div(p-c)$ when $p$ is more than $c$. If that is not a whole number, the next whole number up is the first number of sales with no loss. If $p$ is not more than $c$ and the fixed costs are more than 0, no number of sales ever covers them.",
         ],
       },

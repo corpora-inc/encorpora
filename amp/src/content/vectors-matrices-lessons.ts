@@ -92,7 +92,7 @@ export const vectorMatrixMethods: Record<string, ProblemMethod> = {
   "matrix-inverse-determinant": {
     goal: "Find a $2\\times2$ determinant, decide whether an inverse exists, or compute the inverse.",
     intuition:
-      "The inverse of a matrix undoes it, as dividing undoes multiplying: the matrix times its inverse is the identity matrix $I$. For a $2\\times2$ matrix $\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}$, the number $ad-bc$ is called its determinant. The matrix has an inverse exactly when its determinant is not 0.",
+      "Two matrices multiply row by column: each entry of the product pairs a row of the first with a column of the second, multiplies matching numbers and adds. The inverse of a matrix undoes it, as dividing undoes multiplying: the matrix times its inverse is the identity matrix $I$. For a $2\\times2$ matrix $\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}$, the number $ad-bc$ is called its determinant. The matrix has an inverse exactly when its determinant is not 0.",
     terms: ["determinant", "inverse-matrix"],
     method: [
       "Compute $\\det A=ad-bc$. If it is 0, there is no inverse.",
@@ -483,6 +483,7 @@ export const vectorMatrixLessons: Lesson[] = [
         stage: "intuition",
         title: "Undoing a matrix",
         paragraphs: [
+          "Two matrices multiply row by column. Each entry of the product pairs a row of the first matrix with a column of the second: multiply matching numbers, then add. In $\\begin{bmatrix}2&1\\\\4&3\\end{bmatrix}\\begin{bmatrix}5&0\\\\1&2\\end{bmatrix}$, row 1 with column 1 gives $2\\cdot5+1\\cdot1=11$, the top-left entry of the product.",
           "The identity matrix $I=\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}$ acts like the number 1: multiplying by it changes nothing. The inverse of a matrix $A$, written $A^{-1}$, is the matrix that undoes it: $AA^{-1}$ and $A^{-1}A$ both equal $I$.",
           "Not every matrix has an inverse, just as 0 has no reciprocal. For $\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}$, the number $ad-bc$ is called the determinant, written $\\det A$. An inverse exists exactly when the determinant is not 0.",
         ],

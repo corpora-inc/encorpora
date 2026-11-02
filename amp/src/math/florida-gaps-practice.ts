@@ -1161,9 +1161,9 @@ function vectorDot(r: Random): Built {
       variant,
       prompt: `The vectors $\\mathbf{u}=${u}$ and $\\mathbf{v}=${vec(c, d)}$ are perpendicular. Find $k$.`,
       answer: String(k),
-      hint: `Two vectors are perpendicular exactly when their dot product is 0. Write $\\mathbf{u}\\cdot\\mathbf{v}$ using the components of $${u}$ and $${vec(c, d)}$ and set it equal to 0.`,
+      hint: `Two nonzero vectors are perpendicular exactly when their dot product is 0. Write $\\mathbf{u}\\cdot\\mathbf{v}$ using the components of $${u}$ and $${vec(c, d)}$ and set it equal to 0.`,
       explanation: [
-        "Two vectors are perpendicular when they meet at a right angle. That happens exactly when their dot product, the sum of the products of matching components, is 0.",
+        "Two vectors are perpendicular when they meet at a right angle. For vectors other than $\\langle0,0\\rangle$, that happens exactly when their dot product, the sum of the products of matching components, is 0.",
         `Perpendicular vectors have dot product 0: $${c === 1 ? "" : c}k+(${b})(${d})=0$.`,
         `The known product is $(${b})(${d})=${b * d}$. ${b * d > 0 ? `Subtract ${b * d} from` : `Add ${-b * d} to`} both sides: $${c === 1 ? "" : c}k=${-b * d}$.`,
         ...(c === 1 ? [] : [`Divide both sides by ${c}: $k=${k}$.`]),
@@ -1333,8 +1333,8 @@ function vectorAngle(r: Random): Built {
     answer: "",
     hint: `Find the dot product of $${vec(u[0], u[1])}$ and $${vec(v[0], v[1])}$. A dot product of 0 means perpendicular. If it is not 0, check whether one vector is a multiple of the other.`,
     explanation: [
-      "Two vectors are perpendicular, at a right angle, when their dot product is 0. The dot product multiplies matching components and adds the results.",
-      "Two vectors are parallel when one is a multiple of the other. Then the cross-check $u_{1}v_{2}-u_{2}v_{1}$ is 0, where $u_{1}$ and $u_{2}$ are the components of $\\mathbf{u}$.",
+      "Two nonzero vectors are perpendicular, at a right angle, when their dot product is 0. The dot product multiplies matching components and adds the results.",
+      "Two nonzero vectors are parallel when one is a multiple of the other. Then the cross-check $u_{1}v_{2}-u_{2}v_{1}$ is 0, where $u_{1}$ and $u_{2}$ are the components of $\\mathbf{u}$.",
       `Dot product: $(${u[0]})(${v[0]})+(${u[1]})(${v[1]})=${dot}$.`,
       `Check for a multiple: $u_{1}v_{2}-u_{2}v_{1}=(${u[0]})(${v[1]})-(${u[1]})(${v[0]})=${cross}$.`,
       why[kind]!,

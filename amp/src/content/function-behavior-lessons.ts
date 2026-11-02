@@ -52,7 +52,7 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
     goal: "Given a rational function with small linear factors, find its vertical asymptotes, hole, horizontal asymptote, intercepts, or domain.",
     senses: { rational: "rational-expression" },
     intuition:
-      "A rational function is one polynomial divided by another. Its top is the numerator and its bottom the denominator. Where the denominator is 0, the function is undefined. If that factor stays after canceling, the graph shoots up or down beside a vertical line, a vertical asymptote. If it cancels completely with the same factor on top, there is just one missing point, a hole. For large $x$, comparing the degrees (highest powers) of the top and bottom tells where the graph levels off.",
+      "A rational function is one polynomial divided by another. Its top is the numerator and its bottom the denominator. Where the denominator is 0, the function is undefined. If that factor stays after canceling, the graph shoots up or down beside a vertical line, a vertical asymptote. If it cancels completely with the same factor on top, there is just one missing point, a hole. For inputs far from 0, comparing the degrees (highest powers) of the top and bottom tells whether the graph levels off toward a flat line, and which one. If the top's degree is larger, it does not level off.",
     terms: [
       [
         "vertical-asymptote",
@@ -320,7 +320,7 @@ export const functionBehaviorLessons: Lesson[] = [
           "A rational function divides one polynomial by another, such as $f(x) = \\tfrac{2(x - 1)}{(x - 1)(x + 3)}$. The top is called the numerator and the bottom the denominator. A fraction is undefined when its denominator is 0. So $x = 1$ and $x = -3$ are not in the domain, the set of inputs the function allows.",
           "Near $x = -3$ the denominator is close to 0 while the numerator is not, so the outputs grow very large. The graph runs beside the vertical line $x = -3$ without touching it. A line like this is called a vertical asymptote.",
           "The factor $(x - 1)$ is on both the top and the bottom, once each. Away from $x = 1$ it cancels, leaving $\\tfrac{2}{x + 3}$. So the graph looks like $y = \\tfrac{2}{x + 3}$ with one point missing at $x = 1$. That missing point is called a hole.",
-          "For very large inputs, only the highest powers matter. Comparing the degrees, the highest powers, of the top and the bottom tells which flat line $y = c$ the graph levels off toward. That line is called a horizontal asymptote.",
+          "For very large inputs, only the highest powers matter. Compare the degrees, the highest powers, of the top and the bottom. If the top's degree is the same or smaller, the graph levels off toward a flat line $y = c$, called a horizontal asymptote. If the top's degree is larger, there is no such line.",
         ],
       },
     ],
