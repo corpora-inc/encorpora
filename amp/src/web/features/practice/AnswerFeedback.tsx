@@ -1,3 +1,4 @@
+import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { useQuery } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 import type { Outcome } from "../../../server/repository";
@@ -30,6 +31,9 @@ export function AnswerFeedback({
   choose?: (templateId: string, skillId?: string) => void;
   busy: boolean;
 }) {
+  const { shown, scope } = useCurriculumDetails();
+  const [reveal, setReveal] = useState<string | null>(null);
+  const details = shown || reveal === scope;
   const paths = answerPathways(outcome.skillId, skills, templates);
   const progress = useQuery({
     queryKey: [...identity, "answer-feedback", outcome.id],
@@ -155,13 +159,34 @@ export function AnswerFeedback({
           <p className={styles.intro}>
             Choose a skill to practice. Return to mixed practice from the menu.
           </p>
+          {!shown && (
+            <button
+              type="button"
+              className="text-button"
+              aria-label={
+                details
+                  ? "Hide details: curriculum grades"
+                  : "Show details: curriculum grades"
+              }
+              aria-pressed={details}
+              onClick={() => setReveal(details ? null : scope)}
+            >
+              {details ? "Hide details" : "Show details"}
+            </button>
+          )}
+          {details && (
+            <p className={styles.intro}>
+              Grades describe each skill’s curriculum placement, not your
+              estimated level.
+            </p>
+          )}
           <ul className={styles.choices}>
             {paths[direction].map((skill, index) => (
               <li key={skill.id}>
                 {skill.foundation &&
                   !paths[direction][index - 1]?.foundation && (
                     <h3 className={styles.foundationHeading}>
-                      Earlier foundations
+                      Supporting skills
                     </h3>
                   )}
                 <button
@@ -172,7 +197,7 @@ export function AnswerFeedback({
                   }}
                 >
                   <span className={styles.choiceContent}>
-                    {skill.gradeBand && (
+                    {details && skill.gradeBand && (
                       <span className={styles.grade}>
                         {bandLabel(skill.gradeBand)}
                       </span>

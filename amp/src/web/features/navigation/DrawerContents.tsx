@@ -1,3 +1,7 @@
+import {
+  CurriculumDetailsControl,
+  useCurriculumDetails,
+} from "../curriculum/CurriculumDetails";
 import { useState, type ReactNode } from "react";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useLearningView } from "../../lib/learning-view";
@@ -35,6 +39,7 @@ export default function DrawerContents({
   practiceControls?: ReactNode;
 }) {
   const view = useLearningView();
+  const { shown } = useCurriculumDetails();
   const navigate = useNavigate();
   const location = useLocation();
   const [busy, setBusy] = useState(false);
@@ -216,10 +221,12 @@ export default function DrawerContents({
           </div>
         ) : null}
         <div className={styles.stats} aria-live="polite">
-          <span>
-            <strong>{level ?? "—"}</strong>
-            <small>Estimated level</small>
-          </span>
+          {shown && (
+            <span>
+              <strong>{level ?? "—"}</strong>
+              <small>Estimated level</small>
+            </span>
+          )}
           <span>
             <strong>{earned ?? "—"}</strong>
             <small>Skills illuminated</small>
@@ -252,9 +259,11 @@ export default function DrawerContents({
           <h2>Your progress</h2>
           {nav(
             trialMode || !learner ? "/try/map" : "/",
-            "Your level",
+            "Your progress",
             "level",
-            "Estimated grade level by area",
+            shown
+              ? "Estimated grade level by area"
+              : "Practice and progress by area",
             true,
           )}
           {nav(
@@ -298,6 +307,7 @@ export default function DrawerContents({
         </div>
       </nav>
       {practiceControls}
+      <CurriculumDetailsControl />
       <FeedbackPreferences />
       {view.session.data && (
         <div className={styles.signOut}>
