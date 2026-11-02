@@ -330,6 +330,14 @@
   line-height: 1.6;
 }
 .pathways-browser {
+  /* Display preferences share the atlas palette in either system theme. */
+  --color-muted-text: var(--atlas-muted);
+  --color-answer: var(--atlas-panel);
+  --color-on-answer: var(--atlas-on-panel);
+  --color-border-strong: var(--atlas-muted);
+  --color-primary: var(--atlas-accent);
+  --color-on-primary: var(--atlas-on-accent);
+  --color-focus-ring: var(--atlas-accent);
   width: 260px;
   flex-shrink: 0;
   overflow: auto;
@@ -338,7 +346,8 @@
   border-radius: 16px;
   padding: 14px;
 }
-.pathways-browser[hidden] {
+.pathways-browser[hidden],
+.pathways-grade[hidden] {
   display: none;
 }
 .pathways-grade {

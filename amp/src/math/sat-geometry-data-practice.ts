@@ -222,7 +222,7 @@ function trigCase(r: Random): SatGeometryDataCase {
       explanation = [
         `The angle of elevation is how far you look up from level to see the top, here ${t}°.`,
         sides,
-        `The ${d}-foot ground distance touches the ${t}° angle, so it is adjacent. The ${eye ? "pole above eye level" : "pole"} is opposite. Tangent uses exactly those two legs: $\\tan ${t}^\\circ=\\frac{\\text{opposite}}{${d}}$.`,
+        `${eye ? `The level line from her eyes to the pole is ${d} feet long, the same as the ground distance. It touches the ${t}° angle, so it is adjacent.` : `The ${d}-foot ground distance touches the ${t}° angle, so it is adjacent.`} The ${eye ? "pole above eye level" : "pole"} is opposite. Tangent uses exactly those two legs: $\\tan ${t}^\\circ=\\frac{\\text{opposite}}{${d}}$.`,
         `Multiply both sides by ${d}: $${d}\\tan ${t}^\\circ\\approx ${up.toFixed(2)}$ feet.`,
         eye
           ? `That is only the part above her eyes. Add the ${eye} feet from the ground to her eyes: ${up.toFixed(2)} + ${eye} = ${ans.toFixed(2)}. The pole is about ${ans.toFixed(1)} feet tall.`
