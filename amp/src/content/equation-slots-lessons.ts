@@ -278,7 +278,7 @@ const entries: FormatLessonEntry[] = [
       "Addition and subtraction are done from left to right: $a+b-c=(a+b)-c$. Taking away $c$ undoes adding $c$. So the result is the start $a$, plus every amount that arrived, minus every amount that left.",
     pitfalls: [
       "Add what arrives and subtract what leaves, never the other way around.",
-      "Do not skip a change. Each number after the start gets a + or a − in front of it.",
+      "Do not skip a change. Each number after the start needs its own sign, plus (+) or minus (−), in front of it.",
     ],
     parentGuide:
       "Use coins or counters. Move counters onto the table for each arrival and away for each loss. Say plus or minus as you move them.",
