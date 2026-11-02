@@ -154,10 +154,22 @@ async function geometry(page: Page) {
       const node = document.querySelector(selector);
       return node ? box(node) : null;
     };
+    const rows = [...document.querySelectorAll(".work-row")];
+    const edge = (node: Element, side: "top" | "bottom") => {
+      const scroller = node.closest<HTMLElement>(
+        ".answer-editor, .problem-stage",
+      );
+      return node.getBoundingClientRect()[side] + (scroller?.scrollTop ?? 0);
+    };
     return {
+      // Read each outer edge directly. Adding rounded y and height can change
+      // the reported bottom when unequal-height rows swap without any shift.
+      orderSpan: rows.length
+        ? [edge(rows[0]!, "top"), edge(rows.at(-1)!, "bottom")]
+        : null,
       prompt: at("#problem-prompt"),
       start: at(".work-start"),
-      rows: [...document.querySelectorAll(".work-row")].map(box),
+      rows: rows.map(box),
       controls: [
         ...document.querySelectorAll(
           ".work-input, .work-choice, .work-move-button, .work-list-actions button",
@@ -168,6 +180,67 @@ async function geometry(page: Page) {
     };
   });
 }
+/** Exercise the same browser measurement with fractional, unequal rows. */
+async function assertOrderSpanMeasurement(page: Page) {
+  await page.setContent(`<style>
+    body { margin: 0; }
+    .problem-stage { margin-top: 377.015625px; height: 60px; overflow: auto; }
+  </style><div class="problem-stage">
+    <div class="work-row" style="height:44px"></div>
+    <div class="work-row" style="height:64.046875px"></div>
+  </div>`);
+  const before = await geometry(page);
+  assert.deepEqual(before.orderSpan, [377.015625, 485.0625]);
+  await page
+    .locator(".problem-stage")
+    .evaluate((node) => node.append(node.firstElementChild!));
+  const reordered = await geometry(page);
+  const roundedBottom = (rows: number[][]) =>
+    rows.at(-1)![1]! + rows.at(-1)![3]!;
+  assert.notEqual(
+    roundedBottom(before.rows),
+    roundedBottom(reordered.rows),
+    "The fixture must expose the separately rounded edge error",
+  );
+  assert.deepEqual(
+    reordered.orderSpan,
+    before.orderSpan,
+    "Reordering keeps the span",
+  );
+  assert.equal(
+    await page.locator(".problem-stage").evaluate((node) => {
+      node.scrollTop = 16;
+      return node.scrollTop;
+    }),
+    16,
+    "The fixture must actually scroll",
+  );
+  assert.deepEqual(
+    (await geometry(page)).orderSpan,
+    before.orderSpan,
+    "Scrolling is not a layout shift",
+  );
+  await page.locator(".problem-stage").evaluate((node) => {
+    (node as HTMLElement).style.transform = "translateY(0.0625px)";
+  });
+  const shifted = await geometry(page);
+  assert.throws(
+    () => assert.deepEqual(shifted.orderSpan, before.orderSpan),
+    assert.AssertionError,
+    "A real subpixel translation must fail the equality check",
+  );
+  await page.locator(".problem-stage").evaluate((node) => {
+    (node as HTMLElement).style.transform = "";
+    (node.lastElementChild as HTMLElement).style.height = "45px";
+  });
+  const resized = await geometry(page);
+  assert.throws(
+    () => assert.deepEqual(resized.orderSpan, before.orderSpan),
+    assert.AssertionError,
+    "A taller list must fail the equality check",
+  );
+}
+
 /** Layout shift not caused by recent input (typing or a tap that adds a
  * row is the learner's own change). */
 async function observeShifts(page: Page) {
@@ -283,6 +356,11 @@ const optionIndex = (r: StructuredWorkResponse, bank: string, id: string) =>
 
 let checked = 0;
 try {
+  const measurementPage = await browser.newPage();
+  await measurementPage.addInitScript("globalThis.__name = (f) => f");
+  await measurementPage.goto("about:blank");
+  await assertOrderSpanMeasurement(measurementPage);
+  await measurementPage.close();
   // AMP_SW_ONLY (family ids) and AMP_SW_WIDTHS narrow a local rerun.
   const only = process.env.AMP_SW_ONLY?.split(",");
   const widths = process.env.AMP_SW_WIDTHS?.split(",").map(Number);
@@ -601,13 +679,9 @@ try {
             `${tag}: filling moved a step`,
           );
         else {
-          const span = (rows: number[][]) => [
-            rows[0]![1],
-            rows.at(-1)![1]! + rows.at(-1)![3]!,
-          ];
           assert.deepEqual(
-            span(filled.rows),
-            span(before.rows),
+            filled.orderSpan,
+            before.orderSpan,
             `${tag}: the list moved`,
           );
         }
