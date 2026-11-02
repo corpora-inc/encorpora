@@ -34,8 +34,16 @@ export const complexLessons: Lesson[] = [
     id: "complex-multiplication",
     title: "Multiply complex numbers",
     summary:
-      "The special number $i$ has $i^2=-1$. Multiply all four pairs of terms, then collect ordinary numbers and multiples of $i$.",
+      "No real number squares to −1, so mathematics adds one: the number $i$, with $i^2=-1$. A complex number such as $2+3i$ is a real number plus a multiple of $i$. To multiply two of them, multiply every pair of terms, replace $i^2$ with −1, and collect the ordinary numbers and the multiples of $i$.",
     templateIds: ["complex-multiplication"],
+    senses: {
+      term: "term-expression",
+      terms: "term-expression",
+      product: "product-multiply",
+      products: "product-multiply",
+      identity: "identity-equation",
+    },
+    noLink: ["squares", "multiple", "multiples", "changes"],
     objectives: [
       "Distribute across two sums that contain $i$.",
       "Use $i^2=-1$ and write the exact product as a real part plus a multiple of $i$.",
@@ -45,8 +53,8 @@ export const complexLessons: Lesson[] = [
         stage: "intuition",
         title: "A new number with one useful rule",
         paragraphs: [
-          "You need to multiply signed whole numbers and distribute one sum across another. No real number squares to −1. The number $i$ is defined so that $i^2=-1$. A complex number has the form $a+bi$: $a$ is its real part, $b$ is its imaginary part, and $bi$ is the imaginary term. The values $a$ and $b$ can be zero or negative.",
-          "Multiplying complex numbers uses ordinary distribution. Two copies of $i$ multiply to −1, so an $i^2$ term becomes real and its coefficient changes sign.",
+          "No real number squares to −1: a positive times a positive is positive, and a negative times a negative is positive too. So we name a new number $i$, called the imaginary unit, and agree that $i^2=-1$. A complex number has the form $a+bi$, where $a$ and $b$ are real numbers. $a$ is its real part, $b$ is its imaginary part, and $bi$ is the imaginary term. The values $a$ and $b$ can be zero or negative.",
+          "Multiplying complex numbers uses the distributive property, as for any two sums: multiply each term of one by each term of the other, then add. Two copies of $i$ multiply to −1. So an $i^2$ term becomes real, and its coefficient, the number in front, changes sign.",
         ],
       },
     ],
@@ -54,7 +62,7 @@ export const complexLessons: Lesson[] = [
       prompt:
         "Multiply $(2+3i)(4-i)$ and write the product as a real part plus a multiple of $i$.",
       steps: [
-        "Multiply each term in the first parentheses by each term in the second: $2\\cdot4=8$, $2\\cdot(-i)=-2i$, $3i\\cdot4=12i$, and $3i\\cdot(-i)=-3i^2$.",
+        "Multiply each term in the first parentheses by each term in the second, so that no pair is missed: $2\\cdot4=8$, $2\\cdot(-i)=-2i$, $3i\\cdot4=12i$, and $3i\\cdot(-i)=-3i^2$.",
         "Use $i^2=-1$: $-3i^2=-3(-1)=3$. The real products total $8+3=11$.",
         "The terms with one $i$ total $-2i+12i=10i$. The product is $11+10i$.",
         "Check by distributing again: $2(4-i)=8-2i$ and $3i(4-i)=12i-3i^2$. Since $-3i^2=3$, the real part is 11 and the imaginary part is 10.",
@@ -69,7 +77,7 @@ export const complexLessons: Lesson[] = [
         paragraphs: [
           "The top row multiplies 2 by each term of $4-i$; the bottom row does the same with $3i$. The bottom-right product is $3i(-i)=-3i^2=3$ because $i^2=-1$. The two cross products total $-2i+12i=10i$.",
           "$\\begin{array}{cc}2\\cdot4=8 & 2(-i)=-2i \\\\ (3i)4=12i & (3i)(-i)=3\\end{array}$",
-          "For any two sums containing $i$, make all four products. Replace $i^2$ by −1, add the real terms, and add the terms with one $i$.",
+          "For two complex numbers $a+bi$ and $c+di$, make all four products. Replace $i^2$ by −1, add the real terms, and add the terms with one $i$.",
         ],
       },
       {
