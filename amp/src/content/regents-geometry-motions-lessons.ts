@@ -55,7 +55,7 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
       "A dilation resizes a figure from a fixed point, called its center. Every distance from the center is multiplied by the same positive number, the scale factor. When the scale factor is not 1, every other point moves along the line from the center through it. The moved point is called the image, named with a prime mark: $A'$, read “$A$ prime”. When the scale factor is not 1, the center is the only point that does not move.",
     terms: ["center-of-dilation", "scale-factor"],
     method: [
-      "Draw the line through $A$ and its image $A'$, and the line through $B$ and $B'$.",
+      "Draw the line through $A$ and its image $A'$, and the line through $B$ and $B'$. Here the scale factor is not 1, so each point moved.",
       "If the two lines are different, they cross at the center of dilation. If they are the same line, use $C$ and $C'$ in place of $B$ and $B'$.",
       "Divide the distance from the center to $A'$ by the distance from the center to $A$. That is the scale factor.",
     ],
@@ -167,7 +167,7 @@ export const regentsGeometryMotionLessons = [
       openingTitle: "The center is the point that does not move",
       opening: [
         "A dilation resizes a figure from a fixed point, called the center of dilation. Every distance from the center is multiplied by the same positive number, called the scale factor. A scale factor above 1 enlarges, and one between 0 and 1 shrinks. The new point is called the image, named with a prime mark: $A'$, read “$A$ prime”, is the image of $A$.",
-        "A point and its image lie on one line through the center. Pick two points, not the center, that are not on one line through the center. The line through each point and its image then passes through the center, so the two lines cross there. The origin is the point $(0, 0)$, where the axes cross. The point $(x, y)$ is $x$ units across and $y$ units up from it.",
+        "A point and its image lie on one line through the center. When the scale factor is not 1, pick two points, not the center, that are not on one line through the center. The line through each point and its image then passes through the center, so the two lines cross there. The origin is the point $(0, 0)$, where the axes cross. The point $(x, y)$ is $x$ units across and $y$ units up from it.",
         "A line through the center lands on itself, because each of its points slides along it. When the scale factor is not 1, a line that misses the center lands on a parallel line: one that never meets it. If the line is not vertical, the parallel line has the same slope (steepness).",
       ],
       example: {

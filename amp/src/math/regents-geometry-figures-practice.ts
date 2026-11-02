@@ -696,9 +696,9 @@ export const areaChanging = chainFamily({
       explanation: [
         "The arrow rule says where each point $(x,\\ y)$ goes. Two things must hold: the area is unchanged, and the image is not always congruent (the same size and shape).",
         "A translation (slide), reflection (flip) or rotation (turn) keeps every length. Its image is always congruent, so it fails the second part.",
-        "A stretch multiplies the area by its factor. Unless the factors multiply to 1, the area changes, so it fails the first part.",
+        "A stretch multiplies the area by its width factor times its height factor, ignoring signs. Unless that product is 1, the area changes, so it fails the first part.",
         `$${keeper.label}$ is ${keeper.factor}.`,
-        `The transformation that keeps the area but not the shape is $${keeper.label}$.`,
+        `The transformation that keeps the area but does not always keep the shape is $${keeper.label}$.`,
       ],
     });
   },

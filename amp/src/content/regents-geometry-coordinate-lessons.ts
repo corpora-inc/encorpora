@@ -252,7 +252,7 @@ export const regentsGeometryCoordinateLessons = [
       id: "regents-geometry-lines-and-dilations",
       title: "Parallel, perpendicular and dilated lines",
       summary:
-        "Slope measures how steep a line is. Parallel lines, which never meet, have the same slope when they are not vertical. Perpendicular lines, which meet at a square corner, have slopes that multiply to $-1$, as long as neither line is vertical or horizontal. A dilation about the origin keeps a line's slope and multiplies its $y$-intercept by the scale factor.",
+        "Slope measures how steep a line is. Parallel lines, which never meet, have the same slope when they are not vertical. Perpendicular lines, which meet at a square corner, have slopes that multiply to $-1$, as long as neither line is vertical or horizontal. A dilation about the origin keeps the slope of a line that is not vertical, and multiplies its $y$-intercept by the scale factor.",
       templateIds: [
         "geo-line-point-slope-choice",
         "geo-line-pair-relationship",
