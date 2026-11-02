@@ -68,8 +68,8 @@ export function WorkbookFrame({
       <div className={styles.notice}>
         <h1 className={styles.title}>Workbooks for {learner.name}</h1>
         <p>
-          Daily workbooks come with {learner.name}'s practice. Finish setting up
-          their access to print one.
+          Workbooks come with {learner.name}'s practice. Finish setting up their
+          access to print one.
         </p>
         <Link
           to="/$"

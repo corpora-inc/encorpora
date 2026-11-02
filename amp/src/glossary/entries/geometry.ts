@@ -504,7 +504,7 @@ export const geometryEntries: GlossaryEntry[] = [
     plain:
       "The unit for measuring angles, written °. A full turn is 360°, and a square corner is 90°.",
     example: "A right angle measures 90 degrees.",
-    uses: ["unit", "angle", "corner", "right-angle"],
+    uses: ["unit", "angle", "corner", "right-angle", "square-corner"],
     band: "4",
     autoLink: false,
     noLink: ["square"],
@@ -571,7 +571,7 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "dilation",
     forms: ["dilation", "dilations", "dilate", "dilated"],
     plain:
-      "A transformation that enlarges or shrinks a figure from a fixed point, multiplying every distance from that point by the scale factor.",
+      "A transformation that resizes a figure from a fixed point, multiplying every distance from that point by the scale factor.",
     example:
       "A dilation with scale factor 2 turns a 3 cm side into a 6 cm side.",
     uses: ["transformation", "point", "distance", "scale-factor", "side"],
@@ -1285,7 +1285,7 @@ export const geometryEntries: GlossaryEntry[] = [
     forms: ["rectangle", "rectangles"],
     plain: "A flat shape with 4 straight sides and 4 square corners.",
     example: "A door and a sheet of paper are rectangles.",
-    uses: ["side", "corner"],
+    uses: ["side", "corner", "square-corner"],
     band: "2",
     noLink: ["square"],
   },
@@ -1326,7 +1326,7 @@ export const geometryEntries: GlossaryEntry[] = [
     forms: ["rhombus", "rhombuses", "rhombi"],
     plain:
       "A quadrilateral with four equal sides. A square is a rhombus with square corners.",
-    uses: ["quadrilateral", "side", "square-shape", "corner"],
+    uses: ["quadrilateral", "side", "square-shape", "corner", "square-corner"],
     band: "5",
   },
   {
@@ -1335,7 +1335,7 @@ export const geometryEntries: GlossaryEntry[] = [
     forms: ["right angle", "right angles"],
     plain:
       "An angle that makes a square corner, like the corner of a page: exactly 90°. It is often marked with a small square.",
-    uses: ["angle", "corner", "square-shape"],
+    uses: ["angle", "corner", "square-shape", "square-corner"],
     band: "3",
   },
   {
@@ -1614,12 +1614,22 @@ export const geometryEntries: GlossaryEntry[] = [
     autoLink: false,
   },
   {
+    id: "square-corner",
+    term: "square corner",
+    forms: ["square corner", "square corners"],
+    plain:
+      "A corner shaped exactly like the corner of a sheet of paper or a book.",
+    example: "Each corner of a door is a square corner.",
+    uses: ["corner"],
+    band: "1",
+  },
+  {
     id: "square-shape",
     term: "square",
     forms: ["square", "squares"],
     plain:
       "A flat shape with 4 equal sides and 4 square corners. Every square is also a rectangle.",
-    uses: ["side", "corner", "rectangle"],
+    uses: ["side", "corner", "rectangle", "square-corner"],
     band: "2",
     autoLink: false,
   },

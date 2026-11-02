@@ -1,5 +1,5 @@
 /**
- * Daily workbook samples for synthetic learners, as PDFs, with the layout
+ * Workbook samples for synthetic learners, as PDFs, with the layout
  * checks of `workbook-layout.ts` on every composed page.
  *
  *   npx tsx scripts/workbook-samples.ts [30|45|60|all] [--paper letter|a4|all]

@@ -12,7 +12,6 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       side: "side-of-equation",
       term: "term-expression",
     },
-    noLink: ["change", "changes", "factor"],
     terms: ["slope", "point-slope-form", "standard-form-line"],
     method: [
       "If two points are given, find the slope: the change in $y$ divided by the change in $x$.",
@@ -48,7 +47,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "An amount that starts at some value and grows by the same rate each step is written $y = mx + b$. The rate $m$ multiplies $x$, and the starting value $b$ is added on. For 10 dollars to join plus 4 dollars a month, $y = 4x + 10$. A system is a pair of such equations, one for each amount.",
     senses: { model: "model" },
-    noLink: ["change", "changes", "mean", "balances"],
+    noLink: ["mean", "balances"],
     terms: [
       "system-of-equations",
       [
@@ -71,7 +70,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "Each line shows one amount as it changes. A point on a graph is written $(x, y)$: the across value, then the up value. Where the two lines cross, both amounts have the same $x$ and the same $y$. So that point answers questions such as “when do the two plans cost the same?”",
     senses: { model: "model" },
-    noLink: ["change", "changes", "mean", "balances"],
+    noLink: ["mean", "balances"],
     terms: [
       "intersection-graphs",
       [
@@ -205,7 +204,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       center: "center",
       "more than": "more-than",
     },
-    noLink: ["opposite", "quarter", "change", "changes"],
+    noLink: ["opposite", "change", "changes"],
     terms: [
       [
         "sphere",
@@ -230,7 +229,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "A regular polygon is a flat shape with equal straight sides and equal angles. Lines from its center to each corner cut it into identical triangles. Each triangle has one side of the polygon as its bottom and the apothem, the distance from the center to the middle of a side, as its height. So the area is half the apothem times the perimeter.",
     senses: { side: "side", vertex: "vertex" },
-    noLink: ["center", "square", "squared", "base", "part", "whole", "factor"],
+    noLink: ["center", "square", "base", "part", "whole"],
     terms: ["regular-polygon", "apothem"],
     method: [
       "Find the perimeter: the number of sides times the side length.",
@@ -374,7 +373,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "A bearing is a direction given as an angle turned clockwise from north: east is $090^\\circ$. Unless the trip goes straight north, south, east or west, it is the hypotenuse (longest side) of a right triangle whose legs point north-south and east-west. For one of the two smaller angles in that triangle, the leg touching it is adjacent and the leg across from it is opposite. Opposite = hypotenuse × sine, adjacent = hypotenuse × cosine.",
     senses: { side: "side" },
-    noLink: ["tangent", "opposite", "plane", "parts", "part"],
+    noLink: ["opposite", "plane", "parts", "part"],
     terms: [
       "bearing",
       [
@@ -392,34 +391,36 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "Measure from north, not from east. Decide adjacent or opposite from the angle in your sketch.",
   },
   "sigma-notation-represent": {
-    goal: "Choose the sigma notation that represents an arithmetic or geometric series listed by its first and last terms.",
+    goal: "Choose the sigma notation that matches an arithmetic or geometric series given by its terms.",
     intuition:
-      "Sigma notation $\\sum_{k=a}^{b}t(k)$ adds the terms $t(a), t(a+1), \\ldots, t(b)$. The rule $t(k)$ gives the term in each position, and the bounds say how many terms.",
+      "A series is a sum of numbers made by a rule, and each number is called a term. For example, $2+4+6$ adds 2 times 1, 2 and 3. The symbol $\\Sigma$, the Greek capital sigma, means add. The letter $k$, called the index, counts the positions. It starts at the bound below $\\Sigma$ and stops at the bound above it. So $\\sum_{k=1}^{3}2k$ means put $k=1, 2, 3$ into the rule $2k$ and add, which gives $2+4+6$. Writing $t(k)$ for the term the rule gives at position $k$, $\\sum_{k=a}^{b}t(k)$ adds $t(a), t(a+1), \\ldots, t(b)$, where the dots mean every position in between. That is $b-a+1$ terms. In an arithmetic series, each term is the one before plus the same number $d$, the common difference. In a geometric series, each term is the one before times the same number $r$, the common ratio.",
     terms: ["sigma-notation", "index-summation"],
+    noLink: ["mean"],
     method: [
-      "Find the common difference $d$ or the common ratio $r$.",
-      "Write the rule: first term plus $d(k-1)$, or first term times $r^{k-1}$, for an index starting at 1.",
-      "Choose bounds that give the right number of terms.",
-      "Check the first and last terms.",
+      "Find the common difference $d$ by subtracting a term from the next. Or find the common ratio $r$ by dividing a term by the one before, which must not be 0.",
+      "Write the rule for an index starting at 1. Position $k$ comes after $k-1$ steps, so the rule is first term plus $d(k-1)$, or first term times $r^{k-1}$.",
+      "Count the terms, and choose bounds that give that many.",
+      "Check that the rule gives the first and last terms.",
     ],
     watch:
-      "Count the terms. An index from 0 to $n$ has $n+1$ terms, and a rule with $k$ instead of $k-1$ shifts the first term.",
+      "Count the terms. An index from 0 to $n$ has $n+1$ terms, and a rule with $k$ instead of $k-1$ shifts every term by one position.",
   },
   "infinite-geometric-sum": {
-    goal: "Find the sum of an infinite geometric series when it exists, and recognize when the ratio is too large.",
+    goal: "Find the sum of an infinite geometric series when it exists, and recognize when the common ratio is too large in size for a sum.",
     intuition:
-      "If each term is a fraction of the one before, the terms shrink and the running total settles on one number. If the ratio is 1 or larger in size, the terms do not shrink and the total never settles.",
+      "An infinite geometric series adds terms forever, each one the one before times the same number, the common ratio $r$. In $8+4+2+1+\\cdots$, $r=\\frac12$, and the dots mean the pattern never stops. The absolute value $|r|$ is the size of $r$ without its sign. If $|r|<1$, meaning $r$ is between $-1$ and 1, the terms shrink toward 0. Then the running total settles on one number, called the sum of the series. If $|r|\\ge1$ and the first term is not 0, the terms do not shrink, the total never settles, and there is no sum.",
     terms: [
       [
         "geometric-series",
-        "An infinite geometric series $a+ar+ar^2+\\cdots$ has no last term; it has a total only when $|r|<1$.",
+        "An infinite geometric series $a+ar+ar^2+\\cdots$ has no last term. When $a$ is not 0, it has a total only when $|r|<1$.",
       ],
       "common-ratio",
     ],
+    noLink: ["mean"],
     method: [
-      "Find the first term $a$ the series starts with, and the ratio $r$.",
-      "Check $|r|<1$. If not, the series has no finite sum.",
-      "Compute $\\frac{a}{1-r}$.",
+      "Find the first term $a$ in the sum. If $a=0$, every term is 0 and the sum is 0.",
+      "Otherwise, find the common ratio $r$ by dividing a term by the one before.",
+      "If $|r|\\ge1$, the series has no finite sum: stop. If $|r|<1$, the sum is $\\frac{a}{1-r}$.",
     ],
     watch:
       "Use the first term that is actually in the sum, and check $|r|<1$ before using the formula.",
@@ -498,7 +499,7 @@ export const texasHsPrinciples: Record<string, string> = {
   "sigma-notation-represent":
     "$\\sum_{k=a}^{b}t(k)=t(a)+t(a+1)+\\cdots+t(b)$ has $b-a+1$ terms. An arithmetic series with first term $a_1$ and difference $d$ has terms $a_1+d(k-1)$, and a geometric series with ratio $r$ has terms $a_1r^{k-1}$.",
   "infinite-geometric-sum":
-    "For $|r|<1$, $\\sum_{k=0}^{\\infty}ar^k=\\frac{a}{1-r}$, where $a$ is the first term. If $|r|\\ge1$ and $a\\ne0$, the partial sums do not approach a number, so the series has no finite sum.",
+    "For $|r|<1$, $\\sum_{k=0}^{\\infty}ar^k=\\frac{a}{1-r}$, where $a$ is the first term. If $|r|\\ge1$ and $a\\ne0$, the partial sums, the totals of the first $n$ terms, do not approach a number, so the series has no finite sum.",
   "polynomial-inequality-solve":
     "A polynomial is continuous, so it can change sign only at a zero. Its sign changes at a zero of odd multiplicity and does not change at a zero of even multiplicity.",
   "rational-inequality-solve":
@@ -605,7 +606,7 @@ export const texasHsLessons: Lesson[] = [
     summary:
       "Many situations have an amount that starts somewhere and grows by the same amount each step. A gym plan costs 10 dollars to join plus 4 dollars a month. After $x$ months, its total cost $y$ is $y = 4x + 10$ dollars. Two such plans give two equations. Together they are called a system. On a graph, each plan is a line, and where the lines cross, the two costs are equal.",
     senses: { model: "model", side: "side-of-equation" },
-    noLink: ["change", "changes", "mean", "balances"],
+    noLink: ["mean", "balances"],
     templateIds: ["system-equation-choice", "graph-estimate-system-solution"],
     objectives: [
       "Write the system of two equations for two amounts that change at steady rates, from a story, tables or a graph.",
@@ -1347,44 +1348,59 @@ export const texasHsLessons: Lesson[] = [
     id: "series-notation-and-infinite-sums",
     title: "Sigma notation and infinite geometric sums",
     summary:
-      "Write finite series with sigma notation, and add an infinite geometric series when its ratio is small enough.",
+      "A sequence is a list of numbers made by a rule. Its numbers are called terms, and adding them gives a series. Sigma notation, named for the Greek capital letter sigma, $\\Sigma$, writes a long sum in a short form. A series can also go on forever. Suppose each term is the one before times the same number, between $-1$ and 1. Then the terms shrink toward 0, and the total settles on one number, called the sum of the series.",
     templateIds: ["sigma-notation-represent", "infinite-geometric-sum"],
+    senses: {
+      rule: "rule",
+      term: "term-sequence",
+      terms: "term-sequence",
+      index: "index-summation",
+      sides: "side-of-equation",
+    },
+    noLink: ["mean"],
     objectives: [
-      "Write an arithmetic or geometric series in sigma notation.",
-      "Find the sum of an infinite geometric series with $|r|<1$.",
+      "Write an arithmetic or geometric series in sigma notation, with a rule and bounds that give the right first and last terms.",
+      "Find the sum of an infinite geometric series when its common ratio is between $-1$ and 1, and recognize when it has no sum.",
     ],
     intuition: [
-      "Sigma notation writes a sum compactly: $\\sum_{k=1}^{4}3k$ means $3+6+9+12$. The rule after the sigma gives each term, and the bounds say where to start and stop.",
-      "If each term of an infinite series is a fraction of the one before, the terms shrink fast enough that the total approaches a fixed number.",
+      "A sequence is a list of numbers made by a rule, such as 3, 6, 9, 12. Each number in it is called a term. Adding the terms gives a series: $3 + 6 + 9 + 12$. In an arithmetic sequence, the same number, the common difference $d$, is added each time. In a geometric sequence, each term is multiplied by the same number, the common ratio $r$.",
+      "Sigma notation writes a sum compactly. In $\\sum_{k=1}^{4} 3k$, read “the sum of $3k$ for $k$ from 1 to 4”, the letter $k$ is called the index: it counts the positions. The numbers below and above $\\Sigma$ are the bounds, where the index starts and stops. Put $k = 1, 2, 3, 4$ into the rule $3k$ and add: $3 + 6 + 9 + 12 = 30$.",
+      "An infinite series never stops, as in $8 + 4 + 2 + 1 + \\cdots$, where the dots mean the pattern goes on forever. Each term is half the one before, so $r = \\tfrac{1}{2}$. Adding one more term at a time gives the totals 8, 12, 14, 15, 15.5, …. Each total falls short of 16 by exactly the last term added: 8, 4, 2, 1, 0.5, …. That gap halves every time, so the totals get as close to 16 as we like. So 16 is called the sum of the series.",
+      "The absolute value of $r$, written $|r|$, is its size without its sign. If the first term is not 0, the totals settle like this exactly when $r$ is between $-1$ and 1, written $|r| < 1$. If $|r| \\ge 1$, meaning its size is at least 1, the terms do not shrink. Then the totals never settle on a number. (If the first term is 0, every term and every total is 0.)",
     ],
     example: {
       prompt:
         "Write $3+6+12+24+48$ in sigma notation, and find $8+4+2+1+\\cdots$.",
       steps: [
-        "The first sum is geometric with first term 3 and ratio 2, with 5 terms: $\\sum_{k=1}^{5}3\\cdot2^{k-1}$.",
-        "The second series has $a=8$ and $r=\\frac12$, and $|r|<1$.",
-        "Its sum is $\\frac{8}{1-\\frac12}=16$.",
+        "In the first sum, each term is 2 times the one before, so it is geometric with first term 3 and common ratio 2. The term in position $k$ is $3 \\cdot 2^{k - 1}$, where the dot means times. Position $k$ comes after $k - 1$ doublings, so position 1, with none, gives $3 \\cdot 2^0 = 3$.",
+        "There are 5 terms, so $k$ runs from 1 to 5: $\\sum_{k=1}^{5} 3 \\cdot 2^{k - 1}$. Check the last term: $3 \\cdot 2^4 = 48$.",
+        "The second series starts at $a = 8$, and each term is half the one before, so $r = \\tfrac{1}{2}$. Since $|r| < 1$, the series has a sum.",
+        "The sum of such a series is $\\tfrac{a}{1 - r}$, a formula explained in the last section. Here it is $\\tfrac{a}{1 - r} =\\tfrac{8}{1 - \\frac{1}{2}} = \\tfrac{8}{\\frac{1}{2}} = 16$, the number the totals 8, 12, 14, 15, … approach.",
       ],
       answer: "$\\sum_{k=1}^{5}3\\cdot2^{k-1}$; 16",
     },
     method: {
       title: "Rule, bounds, then the check",
       paragraphs: [
-        "Find $d$ or $r$, write the term rule for position $k$, and count terms. Check the first and last terms. For an infinite series, confirm $|r|<1$ and use $\\frac{a}{1-r}$ with $a$ the first term in the sum.",
+        "For a series that stops, first decide its pattern. If the same number is added each time, it is arithmetic: find $d$ by subtracting a term from the next. If each term is the one before times the same number, it is geometric: find $r$ by dividing a term by the one before, choosing a term that is not 0 to divide by.",
+        "Write the rule for position $k$, with $k$ starting at 1. Position $k$ comes after $k - 1$ steps, so the rule is first term plus $d(k - 1)$, or first term times $r^{k - 1}$. Count the terms to set the top bound, then check that the rule gives the first and last terms.",
+        "For an infinite geometric series, first check $|r| < 1$. If it holds, the sum is $\\tfrac{a}{1 - r}$, where $a$ is the first term in the sum. If it does not, and $a$ is not 0, the series has no sum.",
       ],
     },
     formal: {
       title: "Why the infinite sum formula works",
       paragraphs: [
-        "The partial sum of $n$ terms is $a\\frac{1-r^n}{1-r}$. When $|r|<1$, $r^n\\to0$, so the sums approach $\\frac{a}{1-r}$. When $|r|\\ge1$ they do not approach a number.",
+        "The total of the first $n$ terms is called a partial sum, written $S_n$ (read “$S$ sub $n$”): $S_n = a + ar + \\cdots + ar^{n - 1}$. Multiplying by $r$ gives $rS_n = ar + ar^2 + \\cdots + ar^n$. Subtract $rS_n$ from $S_n$. Every term from $ar$ to $ar^{n - 1}$ appears in both and subtracts to 0, leaving $S_n - rS_n = a - ar^n$. On the left, $S_n$ is multiplied in both parts, and on the right $a$ is, so $(1 - r)S_n = a(1 - r^n)$. Dividing both sides by $1 - r$ gives $S_n = a\\tfrac{1 - r^n}{1 - r}$, as long as $r \\ne 1$, meaning $r$ is not 1.",
+        "When $|r| < 1$, $r^n$ gets closer to 0 as $n$ grows, so $S_n$ approaches $\\tfrac{a}{1 - r}$. When $|r| \\ge 1$, meaning $|r|$ is at least 1, and $a \\ne 0$, the partial sums do not approach any number.",
       ],
     },
     pitfalls: [
-      "An index from 0 to $n$ counts $n+1$ terms.",
-      "Check $|r|<1$ before using the formula.",
+      "An index from 0 to $n$ counts $n + 1$ terms, not $n$.",
+      "Check $|r| < 1$ before using $\\tfrac{a}{1 - r}$. For $8 + 16 + 32 + \\cdots$, with $r = 2$, it would give $-8$, but the totals only grow.",
+      "Use the first term actually in the sum as $a$.",
     ],
     parentGuide:
-      "Ask the learner to add $\\frac12+\\frac14+\\frac18$ and say what number the total approaches.",
+      "Ask the learner to add $\\frac12+\\frac14+\\frac18$, then add $\\frac{1}{16}$, keep halving, and say what number the total approaches.",
   }),
   lesson({
     id: "polynomial-and-rational-inequalities",

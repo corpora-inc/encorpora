@@ -671,6 +671,10 @@ export function workbookHtml(
   const early = band === "early";
   const paper = pageGeometry[options.paper ?? "letter"];
   const lessonById = new Map(options.lessons.map((l) => [l.id, l]));
+  // The cover and footers name the learner by first name. Outside the spec,
+  // so stored workbooks of every version print the same way.
+  const firstName = options.learnerName?.trim().split(/\s+/)[0] ?? "";
+  const title = firstName ? `Workbook for ${firstName}` : "Workbook";
   const numbered: {
     n: number;
     kind: SectionKind;
@@ -726,21 +730,19 @@ export function workbookHtml(
         <span className="wb-brand">
           <Mark />
           <span className="wb-brand-name">{brand.name}</span>
-          <span className="wb-brand-kind">Daily workbook</span>
         </span>
-        <span className="wb-mast-date">{dateLabel(spec.date)}</span>
       </div>
       <div className="wb-mast-main">
-        <p className="wb-name">
-          {options.learnerName ? (
-            <span className="wb-name-text">{options.learnerName}</span>
-          ) : (
-            <>
+        <div className="wb-name">
+          <h1 className="wb-name-text">{title}</h1>
+          <p className="wb-mast-date">{dateLabel(spec.date)}</p>
+          {!firstName && (
+            <p className="wb-name-write">
               <span className="wb-name-label">Name</span>
               <span className="wb-name-line" />
-            </>
+            </p>
           )}
-        </p>
+        </div>
         <dl className="wb-facts">
           <div>
             <dt>Workbook</dt>
@@ -907,7 +909,7 @@ export function workbookHtml(
     ? workbookResultsUrl(options.results)
     : undefined;
 
-  const footBase = `${brand.name} · Daily workbook · ${dateLabel(spec.date, "short")} · No. ${spec.number} · ${code}`;
+  const footBase = `${brand.name} · ${title} · ${dateLabel(spec.date, "short")} · No. ${spec.number} · ${code}`;
   const body = (
     <article
       className={`wb wb--${band}`}
@@ -927,7 +929,7 @@ export function workbookHtml(
     </article>
   );
   return documentHtml({
-    title: `${brand.name} daily workbook · ${spec.date} · No. ${spec.number}`,
+    title: `${brand.name} · ${title} · ${spec.date} · No. ${spec.number}`,
     early,
     paper,
     body,
@@ -1140,14 +1142,14 @@ body{margin:0}
 .wb-brand{display:inline-flex;align-items:center;gap:8px;color:var(--accent)}
 .wb-mark{width:0.42in;height:0.3in;fill:none;stroke:currentColor;stroke-width:34;stroke-linecap:round}
 .wb-brand-name{font-size:19pt;line-height:1;font-weight:700}
-.wb-brand-kind{font-size:var(--small);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);padding-left:8px;border-left:1px solid var(--rule-strong)}
-.wb-mast-date{font-size:var(--small);color:var(--muted);white-space:nowrap}
+.wb .wb-mast-date{margin:0;font-size:calc(var(--body) * 1.05);color:var(--muted)}
 .wb-mast-main{display:flex;justify-content:space-between;align-items:flex-end;gap:0.3in;padding:0.14in 0 0.12in}
-.wb-name{margin:0;display:flex;align-items:baseline;gap:10px;flex:1 1 auto;min-width:0}
+.wb-name{margin:0;display:flex;flex-direction:column;gap:3px;flex:1 1 auto;min-width:0}
+.wb .wb-name-write{margin:8px 0 0;display:flex;align-items:baseline;gap:10px}
 .wb-name-label{font-size:var(--small);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted)}
 .wb-name-line{flex:1 1 auto;max-width:3.6in;height:calc(var(--body) * 1.6);border-bottom:1.4px solid var(--ink)}
-.wb-name-text{font-size:24pt;line-height:1.1}
-.wb--early .wb-name-text{font-size:30pt}
+.wb .wb-name-text{margin:0;font-size:24pt;line-height:1.1}
+.wb--early .wb-name-text{font-size:27pt}
 .wb-facts{display:flex;gap:0.26in;margin:0}
 .wb-facts div{display:flex;flex-direction:column}
 .wb-facts dt{font-size:7.5pt;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}

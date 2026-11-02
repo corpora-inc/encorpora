@@ -1,5 +1,5 @@
 /**
- * Daily workbook layout in a real browser, for CI: every synthetic learner at
+ * Workbook layout in a real browser, for CI: every synthetic learner at
  * 45 minutes on Letter, and the youngest, middle and oldest at 30 and 60
  * minutes on A4, printed with `printWorkbookPdf` and checked page by page
  * (`workbook-layout.ts`). Then a randomized sweep (fixed samples once let a

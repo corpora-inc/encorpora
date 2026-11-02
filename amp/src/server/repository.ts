@@ -181,8 +181,9 @@ export interface LearnerTransaction {
     key: { requestId: string } | { problemId: string },
   ): Promise<{ id: string; requestId: string } | undefined>;
   saveFlag(flag: ProblemFlag): Promise<void>;
-  /** This learner's workbooks, newest first (one date, or all). */
-  workbooks(date?: string): Promise<WorkbookRecord[]>;
+  /** This learner's workbooks, newest first (one date, or all; at most
+   * `limit` when given). */
+  workbooks(date?: string, limit?: number): Promise<WorkbookRecord[]>;
   workbook(id: string): Promise<WorkbookRecord | undefined>;
   /** Stores a workbook unless one exists for its date, number and length;
    * returns the stored one either way. */
@@ -854,13 +855,13 @@ export class PgTransaction implements LearnerTransaction {
       ],
     );
   }
-  async workbooks(date?: string) {
+  async workbooks(date?: string, limit?: number) {
     const result = await this.db.query(
       `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1
         AND ($2::date IS NULL OR workbook_date=$2::date)
         ORDER BY workbook_date DESC,number DESC,minutes
-        LIMIT CASE WHEN $2::date IS NULL THEN 400 END`,
-      [this.learnerId, date ?? null],
+        LIMIT COALESCE($3::integer, CASE WHEN $2::date IS NULL THEN 400 END)`,
+      [this.learnerId, date ?? null, limit ?? null],
     );
     return result.rows.map(workbookRow);
   }
