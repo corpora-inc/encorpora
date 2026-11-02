@@ -98,9 +98,9 @@ export const expressionsEquationsEntries: GlossaryEntry[] = [
       "level balance",
     ],
     plain:
-      "A beam with a pan on each side. The heavier side drops. When both sides weigh the same, the beam stays level.",
+      "A bar with a pan on each end. Put things in both pans. The heavier pan goes down. If both pans weigh the same, the bar stays flat.",
     example:
-      "3 blocks on one pan and 3 blocks on the other: the beam stays level.",
+      "3 blocks in one pan and 3 blocks in the other: the bar stays flat.",
     uses: [],
     band: "K",
     autoLink: false,
@@ -960,7 +960,14 @@ export const expressionsEquationsEntries: GlossaryEntry[] = [
     forms: ["right triangle", "right triangles"],
     plain: "A triangle with one right angle: a square corner of 90 degrees.",
     example: "A triangle with sides 3 cm, 4 cm and 5 cm is a right triangle.",
-    uses: ["triangle", "right-angle", "corner", "degree-angle", "side"],
+    uses: [
+      "triangle",
+      "right-angle",
+      "corner",
+      "degree-angle",
+      "side",
+      "square-corner",
+    ],
     band: "4",
     noLink: ["square"],
   },

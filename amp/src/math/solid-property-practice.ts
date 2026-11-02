@@ -63,7 +63,7 @@ export const properties = {
     test: (s: Solid) => s.prism,
     why: (s: Solid) =>
       s.prism
-        ? `${s.name} is a prism: its two bases are congruent (the same size and shape) and parallel (they face each other and never meet).`
+        ? `${s.name} is a prism: its two bases are congruent (the same size and shape) and parallel (they stay the same distance apart, like the top and bottom of a box).`
         : `${s.name} is a pyramid: it has one base and its other faces are triangles that meet at a point, so no two faces are parallel.`,
   },
   "triangle-faces": {

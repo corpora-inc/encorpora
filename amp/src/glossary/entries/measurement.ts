@@ -232,18 +232,30 @@ export const measurementEntries: GlossaryEntry[] = [
     id: "hour-hand",
     term: "hour hand",
     forms: ["hour hand", "hour hands"],
-    plain: "The short hand on a clock. It points to the hour, or just past it.",
-    example: "If the hour hand is between 3 and 4, it is after 3 o'clock.",
+    plain:
+      "The short pointer on a clock. It shows the hour. When it is between two numbers, the hour is the number it has just passed.",
+    example:
+      "Between 3 and 4, it has just passed 3, so it is after 3 o'clock. Between 12 and 1, it is after 12 o'clock.",
     uses: [],
-    noLink: ["points"],
     band: "1",
+  },
+  {
+    id: "measuring-scale",
+    term: "scale",
+    forms: ["scale", "scales"],
+    plain:
+      "The row of marks with numbers on a measuring tool, like a ruler, a thermometer or a jug. You read the number at the mark you reach.",
+    example: "On a thermometer, the red liquid stops at the mark labeled 20.",
+    uses: [],
+    band: "2",
+    autoLink: false,
   },
   {
     id: "income",
     term: "income",
     forms: ["income"],
     plain:
-      "Money that comes in, such as pay for work or money given as a gift.",
+      "Money a person earns, such as pay for doing a job. Money given as a gift is not income.",
     uses: [],
     band: "2",
   },
