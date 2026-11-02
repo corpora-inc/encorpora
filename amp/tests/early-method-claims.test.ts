@@ -27,6 +27,7 @@ const early = [
   "hundreds-model",
   "add-with-regrouping",
   "two-step-change",
+  "expanded-form-missing",
 ];
 
 test("every whole-number sum or difference these screens write is true", () => {
@@ -57,12 +58,12 @@ test("ten more than a number with 9 tens makes a new hundred", () => {
 });
 
 test("taking away down to 10 first is offered only when it crosses 10", () => {
-  // "First down to 10, then the rest" fails for 7 − 2 and 14 − 2.
+  // "First down to 10, then the rest" fails for 7 − 2, 14 − 2 and 20 − 1.
   const step = methods["subtract-within-20"]!.method.find((s) =>
     /down to 10/.test(s),
   );
   assert.ok(step);
-  assert.match(step, /more than 10/);
+  assert.match(step, /between 11 and 19/);
 });
 
 test("a missing part can come first or second", () => {

@@ -236,7 +236,7 @@ const legacyPrinciples: Record<string, string> = {
   "place-value-digit":
     "Place value: a digit's value is the digit multiplied by the value of its place (1, 10, 100, …).",
   "expanded-form-missing":
-    "Expanded form writes a number as the sum of its place values: $\\overline{abc} = 100a + 10b + c$.",
+    "Expanded form writes a number as the sum of its place values. In 346, the 3 is worth 3 hundreds, the 4 is worth 4 tens and the 6 is worth 6 ones, so 346 = 300 + 40 + 6. The tens part is the middle digit times 10: 4 × 10 = 40.",
   "exchange-base-ten":
     "Equivalent representations: 10 units of one place equal 1 unit of the next place; regrouping preserves value.",
   "skip-count-missing":
@@ -367,7 +367,7 @@ const legacyPrinciples: Record<string, string> = {
   "mixed-fraction-difference":
     "Regrouping a whole: $w \\tfrac{a}{b} = (w - 1) (a + b)/b$, which allows the fractional parts to be subtracted.",
   "add-fractions":
-    "With the same denominator, fractions add like counts of equal pieces: $\\tfrac{3}{12} + \\tfrac{2}{12} = \\tfrac{5}{12}$. To add $\\tfrac{1}{4} + \\tfrac{1}{6}$, first rename both with a common denominator: $\\tfrac{1}{4} = \\tfrac{3}{12}$ and $\\tfrac{1}{6} = \\tfrac{2}{12}$. Multiplying the top and bottom of a fraction by the same number, other than 0, keeps its value. In general, for integers $a$ and $c$ (whole numbers or their negatives) and whole numbers $b$ and $d$ greater than 0, $\\frac{a}{b}+\\frac{c}{d}=\\frac{ad+bc}{bd}$.",
+    "With the same denominator, fractions add like counts of equal pieces: $\\tfrac{3}{12} + \\tfrac{2}{12} = \\tfrac{5}{12}$. To add $\\tfrac{1}{4} + \\tfrac{1}{6}$, first rename both with a common denominator: $\\tfrac{1}{4} = \\tfrac{3}{12}$ and $\\tfrac{1}{6} = \\tfrac{2}{12}$. Multiplying the top and bottom of a fraction by the same number, other than 0, keeps its value. With letters standing for the numbers: for whole numbers $a$ and $c$, and whole numbers $b$ and $d$ greater than 0, $\\frac{a}{b}+\\frac{c}{d}=\\frac{ad+bc}{bd}$. Here $ad$ means $a$ times $d$, and so on.",
   "unlike-fraction-difference":
     "Subtracting unlike fractions: a/b − c/d = (ad − bc)/(bd), using a common denominator.",
   "fraction-distance-gap":

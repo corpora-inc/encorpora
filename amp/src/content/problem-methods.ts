@@ -271,7 +271,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     method: [
       "Count up from the number taken away to the starting number: for 13 − 5, count 6, 7, 8, 9, 10, 11, 12, 13.",
       "How many numbers you counted is the difference, the amount left. That is 8 numbers, so 13 − 5 = 8.",
-      "When the starting number is more than 10 and you take away more than its ones, you can also take away in two steps: first down to 10, then the rest. For 14 − 6, take away 4 to reach 10, then 2 more: 10 − 2 = 8.",
+      "When the starting number is between 11 and 19 and you take away more than its ones digit, you can also take away in two steps: first down to 10, then the rest. For 14 − 6, take away 4 to reach 10, then 2 more: 10 − 2 = 8.",
     ],
     watch: "Check by adding: difference + second number = first number.",
   },
@@ -359,10 +359,9 @@ const legacyMethods: Record<string, ProblemMethod> = {
   "ten-more-or-less": {
     goal: "Given a number, find ten more or ten less.",
     method: [
-      "Ten more adds one ten, so the tens digit goes up by 1: 47 + 10 = 57.",
-      "Ten less takes away one ten, so the tens digit goes down by 1: 47 − 10 = 37.",
-      "Keep the ones digit the same, because no ones were added or taken away.",
-      "With 9 tens, ten more makes 10 tens, which is 1 hundred: 96 + 10 = 106.",
+      "Ten more adds one ten, and ten less takes one ten away. Keep the ones digit the same, because no ones were added or taken away.",
+      "For ten more, a tens digit from 0 to 8 goes up by 1: 47 + 10 = 57. A tens digit of 9 becomes 10 tens, which is 1 hundred: 96 + 10 = 106.",
+      "For ten less, the tens digit goes down by 1: 47 − 10 = 37. Every number here has at least 2 tens, so there is always a ten to take away.",
     ],
     watch:
       "Change the tens digit, not the ones digit: ten more than 47 is 57, not 48.",
@@ -1073,10 +1072,10 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "To add fractions, first make their pieces the same size. The bottom number, called the denominator, tells how many equal pieces make one whole. The top number, called the numerator, counts the pieces you have. Once both fractions use the same-sized pieces, add their counts.",
     terms: ["denominator", "numerator", "common-denominator"],
     method: [
-      "Find a common denominator: a number that both denominators divide into evenly. Multiplying the two denominators always gives one. For $\\tfrac{1}{4} + \\tfrac{1}{6}$, $4 \\times 6 = 24$ works, and 12 is smaller.",
-      "Rename each fraction with that denominator. Multiply its top and bottom by the same number, so it still names the same amount: $\\tfrac{1}{4} = \\tfrac{3}{12}$ and $\\tfrac{1}{6} = \\tfrac{2}{12}$.",
+      "Find a common denominator: a number that both denominators divide into evenly. Multiplying the two denominators always gives one. For $\\tfrac{1}{4} + \\tfrac{1}{6}$, $4 \\times 6 = 24$ works. 4 and 6 also both divide 12 evenly, and 12 is smaller, so use 12.",
+      "Rename each fraction with that denominator. Multiply its top and bottom by the same number, so it still names the same amount. $12 \\div 4 = 3$, so $\\tfrac{1}{4} = \\tfrac{1 \\times 3}{4 \\times 3} = \\tfrac{3}{12}$. $12 \\div 6 = 2$, so $\\tfrac{1}{6} = \\tfrac{1 \\times 2}{6 \\times 2} = \\tfrac{2}{12}$.",
       "Add the numerators and keep the denominator, because the pieces are now the same size: $\\tfrac{3}{12} + \\tfrac{2}{12} = \\tfrac{5}{12}$.",
-      "Simplify if you can: divide the top and bottom by the same whole number greater than 1, until no such number divides both.",
+      "Simplify if you can, so the fraction uses the smallest numbers. Divide the top and bottom by the same whole number greater than 1. It must divide both with nothing left over. Repeat until no such number is left.",
     ],
     watch:
       "Keep the whole the same size. Add the counts of equal-sized pieces, not their denominators.",
