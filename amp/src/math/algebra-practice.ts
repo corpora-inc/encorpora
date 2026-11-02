@@ -459,7 +459,12 @@ export function generateAlgebraProblem(
         `A rule is proportional when $y$ is always the same number times $x$: y = kx, for one number $k$.`,
         `Then x = 0 always gives y = 0, and the graph is a line through (0, 0).`,
         `y = ${term(k)} only multiplies $x$ by ${k}, so it is proportional. The multiplier may be negative.`,
-        `The other rules add a number, so x = 0 does not give 0. The proportional rule is y = ${term(k)}.`,
+        `The other rules, ${choices
+          .filter((choice) => !choice.correct)
+          .map((choice) => choice.label)
+          .join(
+            " and ",
+          )}, each add or subtract a number, so x = 0 does not give 0. The proportional rule is y = ${term(k)}.`,
       ];
       break;
     }

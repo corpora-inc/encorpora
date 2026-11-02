@@ -61,15 +61,15 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
   "shift-function-notation": {
     goal: "Write a shifted function in function notation, keeping the horizontal and vertical directions straight.",
     intuition:
-      "Adding to the output moves the graph up by that amount. Changing the input moves the graph the opposite way you might expect: $f(x-3)$ needs a larger $x$ to give the same output, so the graph moves right by 3.",
+      "$f(x)$, read “$f$ of $x$”, is the output of $f$ for the input $x$. A shift, or translation, slides a graph without changing its shape. Adding to the output moves the graph up by that amount. Changing the input moves the graph the opposite way you might expect. $f(x-3)$ needs an $x$ that is 3 larger to give the same output, so the graph moves 3 to the right. Vertex form, $y=(x-h)^2+k$, shows a parabola's turning point, its vertex $(h, k)$.",
     terms: ["translation", "vertex-form"],
     method: [
-      "Horizontal shift: replace $x$ by $x-h$ to move right $h$ units, or by $x+h$ to move left.",
-      "Vertical shift: add $k$ to the output to move up $k$ units, or subtract to move down.",
-      "For a rule that is already in vertex form, change the number inside the parentheses and the constant by the matching amounts.",
+      "Horizontal shift: replace $x$ by $x-h$ to move right $h$ units, or by $x+h$ to move left $h$ units.",
+      "Vertical shift: add $k$ to the output to move up $k$ units, or subtract $k$ to move down.",
+      "For a rule already in vertex form, change the number inside the parentheses and the plain number outside by the matching amounts.",
     ],
     watch:
-      "Inside the function the sign is opposite the direction; outside it matches the direction. Do not swap the horizontal and vertical amounts.",
+      "Inside the function, the sign is opposite to the direction. Outside, it matches the direction. Do not swap the horizontal and vertical amounts.",
   },
   "radical-function-value": {
     goal: "Find the value of a function with a square root in it, working out the inside of the root first.",
@@ -179,7 +179,7 @@ export const regentsAlgebraOneFunctionPrinciples: Record<string, string> = {
   "function-missing-input":
     "A relation is a function exactly when no two of its ordered pairs have the same input and different outputs. Adding a pair $(k, y)$ keeps a function if $k$ is a new input, or if $y$ equals the output already paired with $k$.",
   "shift-function-notation":
-    "The graph of $g(x)=f(x-h)+k$ is the graph of $f$ moved $h$ units to the right and $k$ units up; negative $h$ or $k$ move it left or down. A parabola $y=(x-h)^2+k$ has its vertex at $(h,k)$.",
+    "The graph of $g(x)=f(x-h)+k$ is the graph of $f$ moved $h$ units to the right and $k$ units up. A negative $h$ moves it left, and a negative $k$ moves it down. A parabola $y=(x-h)^2+k$ has its vertex at $(h,k)$.",
   "radical-function-value":
     "For $f(x) = a\\sqrt{x + b} + c$, the value at an input $x_0$ is $a\\sqrt{x_0 + b} + c$, using the square root that is 0 or positive. The input must make the radicand (the number under the root) at least 0.",
   "zeros-of-factored-product":
@@ -247,42 +247,45 @@ export const regentsAlgebraOneFunctionLessons = [
     id: "regents-shift-function-notation",
     title: "Shifting a function in function notation",
     summary:
-      "Write $g(x)=f(x-h)+k$ for a graph moved right $h$ and up $k$, and apply the same shifts to a parabola in vertex form.",
+      "Shifting a graph slides it without changing its shape. Here $f(x)$, read “$f$ of $x$”, is the output of the function $f$ for the input $x$. To move the graph of $f$ up 4, add 4 to every output: $g(x)=f(x)+4$. To move it right 3, write $g(x)=f(x-3)$, with a minus sign. Together, a move right $h$ and up $k$ is $g(x)=f(x-h)+k$.",
     templateIds: ["shift-function-notation"],
+    senses: { vertex: "vertex-parabola", units: "unit", rule: "rule" },
+    noLink: ["change", "changes"],
     objectives: [
       "Write a horizontal and a vertical shift using function notation.",
       "Change the vertex form of a parabola to match a stated shift.",
     ],
     openingTitle: "Inside moves left and right, outside moves up and down",
     opening: [
-      "Adding to the output lifts every point of the graph by that amount, so $f(x)+5$ is $f$ moved up 5.",
-      "Changing the input works the other way around from what many expect. $f(x-3)$ gives at $x=5$ the value that $f$ gave at $x=2$, so each point has moved 3 to the right.",
+      "A function gives each input one output, and on its graph the output is the height. Adding to the output lifts every point by that amount. So $f(x)+5$ is the graph of $f$ moved up 5.",
+      "Changing the input works the other way from what many expect. $g(x)=f(x-3)$ gives at $x=5$ the value $f(5-3)=f(2)$. So the height that $f$ had at $x=2$ now appears at $x=5$. Every point has moved 3 to the right.",
+      "A parabola, the U-shaped graph of a quadratic, can be written in vertex form, $y=a(x-p)^2+q$. This form shows its turning point, the vertex, at $(p,q)$. Shifting the parabola moves the vertex by the same amounts.",
     ],
     example: {
       prompt:
         "The graph of $f(x)=(x+2)^2-1$ is shifted 3 units to the right and 4 units up. Write the new equation.",
       steps: [
-        "Move right 3: replace $x$ by $x-3$. Then $x+2$ becomes $x-3+2=x-1$.",
-        "Move up 4: add 4 to the constant, $-1+4=3$.",
-        "The new equation is $g(x)=(x-1)^2+3$.",
+        "To move right 3, replace every $x$ by $x-3$. Then $x+2$ becomes $(x-3)+2=x-1$, so the rule is $(x-1)^2-1$.",
+        "To move up 4, add 4 to the output. That changes the plain number at the end: $-1+4=3$.",
+        "The new equation is $g(x)=(x-1)^2+3$. Check: the vertex moved from $(-2,-1)$ to $(1,3)$, which is 3 right and 4 up.",
       ],
       answer: "$g(x)=(x-1)^2+3$",
     },
     methodTitle: "Handle each direction separately",
     method: [
-      "Horizontal: right by $h$ means $x\\to x-h$; left by $h$ means $x\\to x+h$.",
-      "Vertical: up by $k$ means $+k$; down by $k$ means $-k$.",
-      "Check by tracking the vertex: it moves right $h$ and up $k$.",
+      "Horizontal: right by $h$ means replace $x$ by $x-h$. Left by $h$ means replace $x$ by $x+h$.",
+      "Vertical: up by $k$ means add $k$ to the output. Down by $k$ means subtract $k$.",
+      "Check by following the vertex: it should move right $h$ and up $k$.",
     ],
     formalTitle: "Translations of graphs",
     formal: [
-      "The point $(a,b)$ is on the graph of $f$ exactly when $(a+h,b+k)$ is on the graph of $g(x)=f(x-h)+k$. So the translation vector is $(h,k)$.",
-      "For $y=(x-p)^2+q$ the vertex is $(p,q)$; the shifted graph has vertex $(p+h,q+k)$.",
+      "The point $(a,b)$ is on the graph of $f$ exactly when $(a+h,b+k)$ is on the graph of $g(x)=f(x-h)+k$. So every point moves $h$ across and $k$ up: a translation, or slide, by $(h,k)$.",
+      "For $y=(x-p)^2+q$, the vertex is $(p,q)$. The shifted graph has vertex $(p+h,q+k)$.",
     ],
     pitfalls: [
       "A shift to the right puts a minus sign inside the function, not a plus.",
-      "The horizontal amount goes inside with $x$ and the vertical amount outside; do not swap them.",
-      "Shifting left by 3 changes $(x+2)^2$ to $(x+5)^2$, not $(x-1)^2$.",
+      "The horizontal amount goes inside, with $x$, and the vertical amount goes outside. Do not swap them.",
+      "Shifting $(x+2)^2$ left by 3 gives $(x+5)^2$, not $(x-1)^2$.",
     ],
     parentGuide:
       "Have your learner track where the vertex goes after the shift and check it against the new rule.",

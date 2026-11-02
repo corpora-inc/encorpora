@@ -76,7 +76,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     },
     terms: ["face-solid", "corner"],
     method: [
-      "Look at the face on the table. If it is round with no corners, it is a circle.",
+      "Look at the face on the table. If it is perfectly round, the same width across every way, with no corners, it is a circle.",
       "If it has straight sides, count them. 3 sides make a triangle.",
       "4 sides and 4 square corners: compare the sides. All 4 sides the same length make a square. 2 long sides and 2 short sides make a rectangle that is not a square.",
     ],
@@ -446,13 +446,13 @@ export const texasK2Lessons: Lesson[] = [
         "A can of soup stands on a table. What is the shape of the face on the table?",
       steps: [
         "Look at the bottom of the can. It is round, with no corners and no straight sides.",
-        "A flat round shape is a circle, so the bottom face is a circle.",
+        "A flat shape that is perfectly round, the same width across every way, is a circle. So the bottom face is a circle.",
       ],
       answer: "A circle.",
     },
     methodTitle: "Look, then count",
     method: [
-      "First, is the face round? A flat round shape is a circle.",
+      "First, is the face perfectly round, the same width across every way? Then it is a circle.",
       "If not, count its straight sides. 3 sides make a triangle.",
       "4 sides and 4 square corners: compare the sides. All 4 sides the same length make a square. 2 long sides and 2 short sides make a rectangle that is not a square.",
     ],

@@ -390,13 +390,13 @@ export function generateMeasurementProblem(
             `1 ${large} means one ${word[large]}, and it is the same amount as ${factor} ${small}, or ${factor} ${word[small]}s.`,
             `A ${word[large]} is the bigger unit, so the amount takes fewer of them. Divide by ${factor}.`,
             `${n} ÷ ${factor} = ${answer}, which is ${n / factor} as a decimal.`,
-            `The amount does not change; only the unit does. ${n} ${from} = ${answer} ${to}.`,
+            `The quantity itself stays the same size. Only the unit changes, and with it the number of units: ${n} ${from} = ${answer} ${to}.`,
           ]
         : [
             `1 ${large} means one ${word[large]}, and it is the same amount as ${factor} ${small}, or ${factor} ${word[small]}s.`,
             `A ${word[small]} is the smaller unit, so it takes more of them. Each ${large} becomes ${factor} ${small}, so multiply by ${factor}.`,
             `${n} × ${factor} = ${answer}.`,
-            `The amount does not change; only the unit does. ${n} ${from} = ${answer} ${to}.`,
+            `The quantity itself stays the same size. Only the unit changes, and with it the number of units: ${n} ${from} = ${answer} ${to}.`,
           ];
       break;
     }

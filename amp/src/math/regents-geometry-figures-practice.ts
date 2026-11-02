@@ -364,7 +364,13 @@ export const polygonRotation = chainFamily({
         `A regular polygon has all sides equal and all angles equal. "Maps onto itself" means after the turn it covers exactly the same spot.`,
         `A regular polygon with $n$ sides does this after a turn of $\\frac{360^\\circ}{n}$, one full turn shared among its $n$ corners. Any whole multiple of that turn also works.`,
         `For a ${polyName(m.n).toLowerCase()}, $\\frac{360^\\circ}{${m.n}}=${360 / m.n}^\\circ$. Then ${m.angles.map((t) => `$${t}^\\circ=${t / (360 / m.n)}\\cdot${360 / m.n}^\\circ$`).join(" and ")}, a whole number of those turns.`,
-        `Each other answer choice has a smallest turn that does not divide ${m.angles.length === 1 ? "the angle" : "both angles"} evenly.`,
+        `The other choices fail. ${others
+          .slice(0, 3)
+          .map((k) => {
+            const bad = m.angles.find((t) => (t * k) % 360 !== 0)!;
+            return `A ${polyName(k).toLowerCase()} lands on itself after turns of $360^\\circ\\div${k}=${360 / k}^\\circ$, and $${bad}^\\circ$ is not a whole number of those turns.`;
+          })
+          .join(" ")}`,
         `The polygon that maps onto itself is the ${polyName(m.n).toLowerCase()}.`,
       ],
     });

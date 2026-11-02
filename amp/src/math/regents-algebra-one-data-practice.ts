@@ -8,6 +8,7 @@ import {
   numberSurface,
   pick,
   type ChoiceOption,
+  shownWrongOptions,
 } from "./chain-kit";
 import { table } from "./scene/author";
 import { frac, roundText } from "./regents-kit";
@@ -353,34 +354,37 @@ export const exponentialDecayTable = chainFamily({
       ax.spacing === "one-step"
         ? "each time $x$ increases by 1"
         : "each time $x$ increases by 2";
+    const options: ChoiceOption[] = [
+      { label: csv(decay), correct: true },
+      {
+        label: csv(growth),
+        feedback: `Each value is ${m.den / m.num === Math.floor(m.den / m.num) ? `${m.den / m.num} times` : `$\\frac{${m.den}}{${m.num}}$ times`} the one before, a constant ratio greater than 1. This is exponential growth.`,
+      },
+      {
+        label: csv(linear),
+        feedback: `The values drop by the same amount, ${d1}, ${perStep}. A constant difference is linear, not exponential.`,
+      },
+      {
+        label: csv(accelerating),
+        feedback: `The drops ${d2}, ${2 * d2}, ${3 * d2} keep growing and the ratios are not constant, so this is neither linear nor exponential.`,
+      },
+      {
+        label: csv(rising),
+        feedback: `The values increase by ${e} ${perStep}. They are not decreasing, so this is not decay.`,
+      },
+    ];
     return choiceSurface(r, {
       prompt: `Each choice lists the values of $y$ for $x = ${xs}$, in order. Which choice shows exponential decay?`,
       label: "Choose the table",
-      options: [
-        { label: csv(decay), correct: true },
-        {
-          label: csv(growth),
-          feedback: `Each value is ${m.den / m.num === Math.floor(m.den / m.num) ? `${m.den / m.num} times` : `$\\frac{${m.den}}{${m.num}}$ times`} the one before, a constant ratio greater than 1. This is exponential growth.`,
-        },
-        {
-          label: csv(linear),
-          feedback: `The values drop by the same amount, ${d1}, ${perStep}. A constant difference is linear, not exponential.`,
-        },
-        {
-          label: csv(accelerating),
-          feedback: `The drops ${d2}, ${2 * d2}, ${3 * d2} keep growing and the ratios are not constant, so this is neither linear nor exponential.`,
-        },
-        {
-          label: csv(rising),
-          feedback: `The values increase by ${e} ${perStep}. They are not decreasing, so this is not decay.`,
-        },
-      ],
+      options,
       hint: `Exponential decay has a constant ratio less than 1 between values at equal steps. Several lists start at ${start}, for $x = ${xs}$: for each list, divide the second value by the first and the third by the second, and look for equal quotients less than 1.`,
       explanation: [
         `Exponential decay means the values shrink by the same factor at each equal step. Each value is the same fraction of the one before, less than 1.`,
         `So divide each value by the one before it. That quotient is called the ratio.`,
         `In ${csv(decay)} the ratios are $${decay[1]}\\div${decay[0]}$, $${decay[2]}\\div${decay[1]}$ and $${decay[3]}\\div${decay[2]}$. All equal $\\frac{${m.num}}{${m.den}}$, which is less than 1.`,
-        `Compare the others. A constant difference, the same amount subtracted each time, is linear. Values that grow are not decay.`,
+        `The other lists are not exponential decay. ${shownWrongOptions(options)
+          .map((o) => `In ${o.label}: ${o.feedback}`)
+          .join(" ")}`,
         `The list that shows exponential decay is ${csv(decay)}.`,
       ],
     });
