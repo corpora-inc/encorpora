@@ -61,6 +61,23 @@ const cardProofs = [1, 4, 7, 10].flatMap((level) =>
         waitUntil: "load",
       });
       await waitForWorkbookLayout(page, 300_000);
+      // Trimming never leaves a gap: no list item (step, paragraph, sentence,
+      // word) shows after one that was left out.
+      const gaps = await page.evaluate(() =>
+        [
+          ...document.querySelectorAll(
+            ".wb-example-steps > li:not([data-steps-more]), .wb-lesson-idea > p, .wb-lesson-idea > p > span, .wb-words dl > div",
+          ),
+        ]
+          .filter(
+            (el) =>
+              !el.hasAttribute("data-trimmed") &&
+              !!el.previousElementSibling?.hasAttribute("data-trimmed"),
+          )
+          .map((el) =>
+            el.closest("[data-lesson]")?.getAttribute("data-lesson"),
+          ),
+      );
       const over = await page.evaluate(() =>
         [...document.querySelectorAll(".wb-page")]
           .filter(
@@ -77,9 +94,9 @@ const cardProofs = [1, 4, 7, 10].flatMap((level) =>
           ),
       );
       await page.close();
-      if (over.length) failed++;
+      if (over.length || gaps.length) failed++;
       console.log(
-        `${over.length ? "FAIL" : "ok  "} ${lessons.length} lesson cards at level ${level} on ${paper}${over.length ? `: taller than a page: ${over.join(", ")}` : ""}`,
+        `${over.length || gaps.length ? "FAIL" : "ok  "} ${lessons.length} lesson cards at level ${level} on ${paper}${over.length ? `: taller than a page: ${over.join(", ")}` : ""}${gaps.length ? `: a gap after trimming: ${[...new Set(gaps)].join(", ")}` : ""}`,
       );
     }
   } finally {

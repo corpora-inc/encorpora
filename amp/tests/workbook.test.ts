@@ -400,6 +400,23 @@ test("a long lesson card gives up content in one fixed order", () => {
   assert.deepEqual(sentences("No full stop inside $x. Y$ math"), [
     "No full stop inside $x. Y$ math",
   ]);
+  assert.deepEqual(sentences("Mr. Lee has 3 pens. See Fig. 2 now."), [
+    "Mr. Lee has 3 pens.",
+    "See Fig. 2 now.",
+  ]);
+  assert.deepEqual(sentences("Use \\(x. Y\\) here. Then stop."), [
+    "Use \\(x. Y\\) here.",
+    "Then stop.",
+  ]);
+  // Prose between two prices is not math: it still splits.
+  assert.deepEqual(sentences("A pen is $3. A book costs $5."), [
+    "A pen is $3.",
+    "A book costs $5.",
+  ]);
+  for (const lesson of lessons)
+    for (const section of lesson.sections)
+      for (const p of section.paragraphs)
+        assert.equal(sentences(p).join(" "), p.trim(), lesson.id);
   const r = cardTrimRanks({
     paragraphs: 3,
     sentences: 3,

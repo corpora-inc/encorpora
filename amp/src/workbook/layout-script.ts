@@ -148,12 +148,23 @@ export const workbookLayoutScript = String.raw`(function () {
       // Then give back what still fits, most valued first (the reverse of
       // the trim order): a large figure dropped late can make room for the
       // steps dropped before it.
+      // An item comes back only after the one before it in its list (steps,
+      // paragraphs, sentences, words), so nothing prints with a gap.
+      function gapped(rank) {
+        return list(block.querySelectorAll('[data-trim="' + rank + '"]')).some(function (el) {
+          var before = el.previousElementSibling;
+          return !!before && before.hasAttribute("data-trimmed");
+        });
+      }
       if (height(block) <= limit)
         for (var t = trimmed.length - 2; t >= 0; t--) {
+          if (gapped(trimmed[t])) continue;
           setTrim(trimmed[t], false);
           if (height(block) > limit) setTrim(trimmed[t], true);
         }
-      if (more && !more.hasAttribute("hidden"))
+      // The key prints the whole worked example when the card left out any
+      // of it (a step or its figure).
+      if (block.querySelector(".wb-example [data-trimmed]"))
         list(document.querySelectorAll("[data-key-example]")).forEach(function (el) {
           el.removeAttribute("hidden");
         });

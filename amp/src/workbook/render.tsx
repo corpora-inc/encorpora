@@ -248,20 +248,31 @@ export function cardWords(lesson: Lesson): GlossaryEntry[] {
   return ids.slice(0, 6).map(glossaryEntry);
 }
 
-/** A paragraph's sentences, split only outside $…$ math, so a long first
- * paragraph can shorten from its end. */
+/** Words whose full stop does not end a sentence. */
+const abbreviation =
+  /(?:^|\s)(?:Mr|Mrs|Ms|Dr|St|Fig|No|vs|approx|e\.g|i\.e)\.$/i;
+/** A paragraph's sentences, so a long first paragraph can shorten from its
+ * end. Never splits inside math (\(…\) or $…$, as segmentPrintText reads
+ * them) or after an abbreviation; joined with spaces they give the text back. */
 export function sentences(text: string): string[] {
+  const math: [number, number][] = [];
+  for (const m of text.matchAll(/\\\(([\s\S]*?)\\\)|\$([^$\n]+)\$/g)) {
+    const inner = m[1] ?? m[2]!;
+    // Prose caught between two prices ("$3 and a pen costs $") is not math.
+    if (m[1] !== undefined || !/^\s|\s$/.test(inner))
+      math.push([m.index!, m.index! + m[0].length]);
+  }
+  const inMath = (i: number) => math.some(([a, b]) => i >= a && i < b);
   const out: string[] = [];
-  let math = false;
   let start = 0;
   for (let i = 0; i < text.length; i++) {
     const c = text[i]!;
-    if (c === "$") math = !math;
-    else if (
-      !math &&
+    if (
       (c === "." || c === "?" || c === "!") &&
+      !inMath(i) &&
       text[i + 1] === " " &&
-      /[A-Z0-9“"($]/.test(text[i + 2] ?? "")
+      /[A-Z0-9“"($\\]/.test(text[i + 2] ?? "") &&
+      !abbreviation.test(text.slice(start, i + 1))
     ) {
       out.push(text.slice(start, i + 1));
       start = i + 2;
@@ -348,7 +359,7 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
         <PrintMathText text={example.prompt} />
       </p>
       {example.figure && (
-        <div data-trim={trim.figure}>
+        <div className="wb-example-figure" data-trim={trim.figure}>
           <Figure figure={example.figure} />
         </div>
       )}
@@ -439,6 +450,7 @@ function KeyWorkedExample({ lesson }: { lesson: Lesson }) {
           Today's idea, worked example: <PrintMathText text={example.prompt} />
         </span>
       </p>
+      {example.figure && <Figure figure={example.figure} />}
       <ol className="wb-key-steps">
         {example.steps.map((step, j) => (
           <li key={j}>
@@ -1157,7 +1169,8 @@ background-image:${gridLines};background-size:var(--grid) var(--grid);background
 .wb-lesson-visual{display:flex;justify-content:center;min-width:0}
 .wb .wb-lesson [data-trimmed]{display:none}
 .wb-words:not(:has(dl>div:not([data-trimmed]))){display:none}
-.wb-steps-more{list-style:none;margin-left:-1.2em;font-style:italic;color:var(--muted)}
+.wb-example-steps li.wb-steps-more{counter-increment:none;padding-left:0;font-style:italic;color:var(--muted)}
+.wb-example-steps li.wb-steps-more::before{content:none}
 .wb-lesson--stacked .wb-lesson-grid{grid-template-columns:minmax(0,1fr)!important}
 .wb-lesson--stacked .wb-example{margin-top:0.08in}
 .wb-lesson--visual:has(.wb-lesson-visual[data-trimmed]) .wb-lesson-grid{grid-template-columns:minmax(0,1fr)}
@@ -1212,6 +1225,7 @@ background-image:${gridLines};background-size:var(--grid) var(--grid);background
 .wb-key-steps{margin:0;padding:0 0 0 calc(0.22in + 8px + 14px);color:var(--muted)}
 .wb-key-steps li{margin:0 0 1px;padding:0}
 .wb-key-item .figure{display:none}
+.wb-key-example svg{max-width:100%;max-height:1.6in;height:auto}
 .wb-results-intro{display:flex;justify-content:space-between;align-items:center;gap:0.3in;margin:0 0 0.16in}
 .wb-results-steps{margin:0;padding-left:20px;font-size:11pt;line-height:1.6}
 .wb-results-code{flex:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0.1in 0.14in;border:1.5px solid var(--ink);border-radius:var(--radius)}
