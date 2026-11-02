@@ -10,7 +10,7 @@
  * - the space a page has left is shared out as extra workspace, so pages end
  *   level instead of leaving holes;
  * - the answer key fills two columns per page and never shares a page with
- *   student work; the results page is last;
+ *   student work; the results page is last, fitted to one page;
  * - every page gets a footer with the workbook and "Page n of N".
  *
  * Without it (a browser with scripts off) the same blocks still print in
@@ -292,13 +292,23 @@ export const workbookLayoutScript = String.raw`(function () {
       key.parentNode.removeChild(key);
     }
 
-    // Results: one page.
-    var results = wb.querySelector('[data-flow="results"]');
-    if (results) {
+    // Results: always one page. The roomiest density that fits (three
+    // columns, four columns, a compact heading, compact tiles), then the
+    // tiles print smaller, never below 70%. A results proof holds many.
+    list(wb.querySelectorAll('[data-flow="results"]')).forEach(function (results) {
       var rp = newPage("results");
       list(results.children).forEach(function (b) { rp.content.appendChild(b); });
       results.parentNode.removeChild(results);
-    }
+      var fit = rp.content.querySelector("[data-results-fit]");
+      if (!fit) return;
+      var grid = fit.querySelector(".wb-results-grid");
+      for (var density = 0; density <= 3; density++) {
+        fit.setAttribute("data-density", String(density));
+        if (fits(rp)) break;
+      }
+      for (var shrink = 0.95; grid && shrink >= 0.699 && !fits(rp); shrink -= 0.05)
+        grid.style.zoom = shrink.toFixed(2);
+    });
 
     // Footers.
     var total = made.length;

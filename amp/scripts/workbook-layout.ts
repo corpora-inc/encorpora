@@ -7,14 +7,18 @@ import type { Page } from "playwright";
 import { skills } from "../src/curriculum/catalog";
 import { lessons } from "../src/content/lessons";
 import { templates } from "../src/math/engine";
+import { templateGrade } from "../src/server/mixed-practice";
 import {
   composeWorkbook,
+  printable,
   workbookCode,
   type WorkbookMinutes,
   type WorkbookSpec,
 } from "../src/workbook/compose";
 import { workbookHtml, type PaperSize } from "../src/workbook/render";
+import { resultLabel } from "../src/workbook/result-labels";
 import {
+  sampleLearners,
   simulateLearner,
   type SyntheticLearner,
 } from "../src/workbook/synthetic";
@@ -169,19 +173,27 @@ export async function checkWorkbookLayout(page: Page) {
         answer.querySelector(".wb-answer-label")!,
         answer,
       ];
-      for (let el = answer.parentElement; el && el !== item; el = el.parentElement)
+      for (
+        let el = answer.parentElement;
+        el && el !== item;
+        el = el.parentElement
+      )
         chain.push(el);
       for (const el of chain) {
         const style = getComputedStyle(el);
         const c = rgb(style.backgroundColor);
         const white = c.r === 255 && c.g === 255 && c.b === 255;
-        if ((c.a > 0 && !white) || (el !== answer.parentElement && style.backgroundImage !== "none"))
+        if (
+          (c.a > 0 && !white) ||
+          (el !== answer.parentElement && style.backgroundImage !== "none")
+        )
           tinted.push(`${label(el)}: ${el.className} ${style.backgroundColor}`);
       }
       const grid = answer.parentElement?.querySelector(".wb-work-grid");
       if (
         grid &&
-        grid.getBoundingClientRect().bottom > answer.getBoundingClientRect().top + 0.5
+        grid.getBoundingClientRect().bottom >
+          answer.getBoundingClientRect().top + 0.5
       )
         tinted.push(`${label(answer)}: grid runs under the answer`);
     }
@@ -278,4 +290,165 @@ export function layoutFailures(
       ? []
       : [`PDF has ${printed} pages, layout composed ${found.pages}`]),
   ];
+}
+
+/** A small seeded generator (mulberry32), so a failing sweep reproduces
+ * from the seed it prints. */
+export function seededRandom(seed: number): () => number {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** Synthetic learners from kindergarten to precalculus for the sweep: the
+ * samples, plus a grade 4–5 learner and a grade 10 geometry learner. */
+export const sweepLearners: readonly SyntheticLearner[] = [
+  ...sampleLearners,
+  { id: "grade-4-5", birthYear: 2016, ability: 4.6, days: 14, perDay: 18 },
+  { id: "geometry-10", birthYear: 2011, ability: 10.4, days: 14, perDay: 18 },
+];
+
+export interface SweepCase {
+  label: string;
+  spec: WorkbookSpec;
+  paper: PaperSize;
+}
+
+/** Random compositions: learners from K to precalculus, any date and
+ * number, every length and both paper sizes, with the whole catalog, a few
+ * strands or one course (gradeBand) as the template pool. 60 minutes is
+ * drawn most often, because the longest workbooks have the most problems. */
+export function sweepCases(seed: number, count: number): SweepCase[] {
+  const random = seededRandom(seed);
+  const pick = <T>(list: readonly T[]) =>
+    list[Math.floor(random() * list.length)]!;
+  const simulated = new Map(
+    sweepLearners.map((l) => [l.id, simulateLearner(l, now)]),
+  );
+  const strandOf = new Map(skills.map((s) => [s.id, s.strand]));
+  const skillNodes = new Map(skills.map((s) => [s.id, s]));
+  const strands = [...new Set(skills.map((s) => s.strand))];
+  const courses = [...new Set(skills.map((s) => String(s.gradeBand)))];
+  const courseOf = new Map(skills.map((s) => [s.id, String(s.gradeBand)]));
+  const cases: SweepCase[] = [];
+  for (
+    let attempt = 0;
+    cases.length < count && attempt < count * 4;
+    attempt++
+  ) {
+    const learner = pick(sweepLearners);
+    const minutes = pick([30, 45, 60, 60] as const);
+    const paper = pick(["letter", "a4"] as const);
+    const date = new Date(
+      Date.parse("2026-11-01T00:00:00Z") +
+        Math.floor(random() * 240) * 86_400_000,
+    )
+      .toISOString()
+      .slice(0, 10);
+    const number = 1 + Math.floor(random() * 999);
+    const filter = random();
+    let pool = templates;
+    let scope = "all";
+    // Courses and strands with work near the learner's level, as a parent
+    // would choose them.
+    const near = templates.filter(
+      (t) =>
+        Math.abs(
+          templateGrade(t, skillNodes) - Math.max(learner.ability, 0.5),
+        ) <= 1.5,
+    );
+    const nearCourses = courses.filter((c) =>
+      near.some((t) => courseOf.get(t.skillId) === c),
+    );
+    const nearStrands = strands.filter((st) =>
+      near.some((t) => strandOf.get(t.skillId) === st),
+    );
+    if (filter > 0.75) {
+      const course = pick(nearCourses);
+      pool = templates.filter((t) => courseOf.get(t.skillId) === course);
+      scope = `course ${course}`;
+    } else if (filter > 0.5) {
+      const chosen = new Set(
+        Array.from({ length: 1 + Math.floor(random() * 3) }, () =>
+          pick(nearStrands),
+        ),
+      );
+      pool = templates.filter((t) => chosen.has(strandOf.get(t.skillId)!));
+      scope = `strands ${[...chosen].join("+")}`;
+    }
+    const { frontier, evidence, attempts } = simulated.get(learner.id)!;
+    let spec: WorkbookSpec;
+    try {
+      spec = composeWorkbook({
+        templates: pool,
+        skills,
+        lessons,
+        frontier,
+        evidence,
+        recentTemplateIds: attempts.slice(-12).map((a) => a.templateId),
+        date,
+        number,
+        minutes,
+        learnerKey: learner.id,
+        now,
+      });
+    } catch (error) {
+      // A pool with nothing printable is not a composition; anything else is.
+      if (String(error).includes("No printable templates")) continue;
+      throw error;
+    }
+    cases.push({
+      label: `${learner.id} ${minutes} min ${paper} ${date} #${number} ${scope}`,
+      spec,
+      paper,
+    });
+  }
+  return cases;
+}
+
+/** The most demanding results page the composer can produce at a level:
+ * every section at its largest (a 60-minute workbook: 8 warm-up, 3 guided,
+ * 14 practice, 4 review, 1 challenge) and the longest result labels. */
+export function largestResultsSpec(level: number): WorkbookSpec {
+  const longest = templates
+    .filter((t) => printable(t))
+    .sort(
+      (a, b) =>
+        resultLabel(b.id).length - resultLabel(a.id).length ||
+        a.id.localeCompare(b.id),
+    );
+  let next = 0;
+  const items = (count: number) =>
+    Array.from({ length: count }, () => {
+      const t = longest[next++]!;
+      return {
+        templateId: t.id,
+        templateVersion: t.version,
+        seed: `largest:${t.id}`,
+        skillId: t.skillId,
+        strand: t.skillId,
+        grade: level,
+        minutes: 2,
+        space: "standard" as const,
+      };
+    });
+  return {
+    version: 1,
+    date: "2026-11-02",
+    number: 999,
+    minutes: 60,
+    level,
+    sections: [
+      { kind: "warm-up", items: items(8) },
+      { kind: "lesson", items: items(3) },
+      { kind: "practice", items: items(14) },
+      { kind: "review", items: items(4) },
+      { kind: "challenge", items: items(1) },
+    ],
+  };
 }

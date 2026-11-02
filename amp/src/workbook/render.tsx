@@ -552,6 +552,102 @@ function QrCode({ text }: { text: string }) {
   );
 }
 
+/** Fewest problems that start the results page at the four-column density;
+ * the composition script then picks the roomiest density that fits one page
+ * (`fitResults` in layout-script.ts). Without scripts this one prints. */
+const DENSE_RESULTS = 18;
+
+/** The results page: a Right / Not yet tile per problem, the workbook code
+ * and the QR code that opens the results entry. Always one page. */
+function ResultsPage({
+  spec,
+  code,
+  url,
+}: {
+  spec: WorkbookSpec;
+  code: string;
+  url?: string;
+}) {
+  let n = 0;
+  const sections = spec.sections.map((section) => ({
+    kind: section.kind,
+    entries: section.items.map((item) => ({ n: ++n, item })),
+  }));
+  return (
+    <div
+      className="wb-results"
+      data-results-fit=""
+      data-density={n > DENSE_RESULTS ? 1 : 0}
+    >
+      <div className="wb-page-title">
+        <h2>Results</h2>
+        <p>
+          {dateLabel(spec.date)} · No. {spec.number}
+        </p>
+      </div>
+      <div className="wb-results-intro">
+        <ol className="wb-results-steps">
+          <li>Check each problem with the answer key.</li>
+          <li>
+            Tick <strong>Right</strong> or <strong>Not yet</strong> for each
+            one.
+          </li>
+          <li>
+            {url
+              ? "Scan the code to enter the marks in AMP."
+              : "Enter the marks in AMP with the workbook code."}
+          </li>
+        </ol>
+        <div className="wb-results-code">
+          {url && <QrCode text={url} />}
+          <p className="wb-code-label">Workbook code</p>
+          <p className="wb-code">{code}</p>
+        </div>
+      </div>
+      <div className="wb-results-grid">
+        {sections.map((section) => (
+          <div
+            key={section.kind}
+            className={`wb-results-section wb-sec--${section.kind}`}
+          >
+            <p className="wb-results-section-title">
+              {sectionCopy[section.kind].title}
+            </p>
+            <ul className="wb-tiles">
+              {section.entries.map((e) => (
+                <li key={e.n} className="wb-tile">
+                  <span className="wb-tile-num">{e.n}</span>
+                  <span className="wb-tile-skill">
+                    {resultLabel(e.item.templateId)}
+                  </span>
+                  <span className="wb-tile-marks">
+                    <span className="wb-tick">
+                      <span className="wb-box" />
+                      Right
+                    </span>
+                    <span className="wb-tick">
+                      <span className="wb-box" />
+                      Not yet
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div className="wb-results-total">
+        <span>
+          Right <span className="wb-fill" /> of {n}
+        </span>
+        <span>
+          Time spent <span className="wb-fill" /> min
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export interface WorkbookHtmlOptions {
   lessons: readonly Lesson[];
   skillTitle: (skillId: string) => string;
@@ -810,78 +906,6 @@ export function workbookHtml(
   const resultsUrl = options.results
     ? workbookResultsUrl(options.results)
     : undefined;
-  const resultsBlocks: ReactNode[] = [
-    <div key="results-head" className="wb-page-title">
-      <h2>Results</h2>
-      <p>
-        {dateLabel(spec.date)} · No. {spec.number}
-      </p>
-    </div>,
-    <div key="results-intro" className="wb-results-intro">
-      <ol className="wb-results-steps">
-        <li>Check each problem with the answer key.</li>
-        <li>
-          Tick <strong>Right</strong> or <strong>Not yet</strong> for each one.
-        </li>
-        <li>
-          {resultsUrl
-            ? "Scan the code to enter the marks in AMP."
-            : "Enter the marks in AMP with the workbook code."}
-        </li>
-      </ol>
-      <div className="wb-results-code">
-        {resultsUrl && <QrCode text={resultsUrl} />}
-        <p className="wb-code-label">Workbook code</p>
-        <p className="wb-code">{code}</p>
-      </div>
-    </div>,
-    <div
-      key="results-grid"
-      className={`wb-results-grid${numbered.length > 18 ? " wb-results-grid--dense" : ""}`}
-    >
-      {spec.sections.map((section) => {
-        const entries = numbered.filter((e) => section.items.includes(e.item));
-        return (
-          <div
-            key={section.kind}
-            className={`wb-results-section wb-sec--${section.kind}`}
-          >
-            <p className="wb-results-section-title">
-              {sectionCopy[section.kind].title}
-            </p>
-            <ul className="wb-tiles">
-              {entries.map((e) => (
-                <li key={e.n} className="wb-tile">
-                  <span className="wb-tile-num">{e.n}</span>
-                  <span className="wb-tile-skill">
-                    {resultLabel(e.item.templateId)}
-                  </span>
-                  <span className="wb-tile-marks">
-                    <span className="wb-tick">
-                      <span className="wb-box" />
-                      Right
-                    </span>
-                    <span className="wb-tick">
-                      <span className="wb-box" />
-                      Not yet
-                    </span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        );
-      })}
-    </div>,
-    <div key="results-total" className="wb-results-total">
-      <span>
-        Right <span className="wb-fill" /> of {numbered.length}
-      </span>
-      <span>
-        Time spent <span className="wb-fill" /> min
-      </span>
-    </div>,
-  ];
 
   const footBase = `${brand.name} · Daily workbook · ${dateLabel(spec.date, "short")} · No. ${spec.number} · ${code}`;
   const body = (
@@ -898,7 +922,7 @@ export function workbookHtml(
         {keyBlocks}
       </div>
       <div className="wb-flow wb-flow--results" data-flow="results">
-        {resultsBlocks}
+        <ResultsPage spec={spec} code={code} url={resultsUrl} />
       </div>
     </article>
   );
@@ -988,6 +1012,52 @@ export function lessonCardProofHtml(
   );
   return documentHtml({
     title: "Lesson card proof",
+    early: band === "early",
+    paper: pageGeometry[options.paper ?? "letter"],
+    body,
+  });
+}
+
+/** Results pages for many workbooks at one print band and paper size,
+ * composed by the same layout: the check that every composition's results
+ * fit one page (`verify-workbook-layout.ts`). */
+export function resultsProofHtml(
+  specs: readonly WorkbookSpec[],
+  options: { level: number; paper?: PaperSize; baseUrl?: string },
+): string {
+  const band = workbookBand(options.level);
+  const body = (
+    <article
+      className={`wb wb--${band}`}
+      data-foot="Results proof"
+      data-foot-key="Results proof"
+      data-foot-results="Results proof"
+    >
+      <div className="wb-flow" data-flow="student" />
+      {specs.map((spec, i) => {
+        const code = workbookCode(spec);
+        return (
+          <div key={i} className="wb-flow wb-flow--results" data-flow="results">
+            <ResultsPage
+              spec={spec}
+              code={code}
+              url={
+                options.baseUrl
+                  ? workbookResultsUrl({
+                      baseUrl: options.baseUrl,
+                      learnerId: "00000000-0000-4000-8000-000000000000",
+                      workbookId: "00000000-0000-4000-8000-000000000000",
+                    })
+                  : undefined
+              }
+            />
+          </div>
+        );
+      })}
+    </article>
+  );
+  return documentHtml({
+    title: "Results proof",
     early: band === "early",
     paper: pageGeometry[options.paper ?? "letter"],
     body,
@@ -1244,12 +1314,26 @@ background-image:${gridLines};background-size:var(--grid) var(--grid);background
 .wb-tile-marks{display:flex;gap:12px;font-size:9pt;font-weight:700}
 .wb-tick{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
 .wb-box{display:inline-block;width:0.2in;height:0.2in;border:1.4px solid var(--ink);border-radius:4px}
-.wb-results-grid--dense{gap:0.08in}
-.wb-results-grid--dense .wb-tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
-.wb-results-grid--dense .wb-tile{padding:5px 7px;row-gap:3px;column-gap:7px}
-.wb-results-grid--dense .wb-tile-num{min-width:0.26in;height:0.26in;font-size:9pt}
-.wb-results-grid--dense .wb-tile-marks{gap:8px;font-size:8.5pt}
-.wb-results-grid--dense .wb-box{width:0.17in;height:0.17in}
+/* Results densities, roomiest first; the layout uses the first that fits. */
+.wb-results[data-density="1"] .wb-results-grid,.wb-results[data-density="2"] .wb-results-grid,.wb-results[data-density="3"] .wb-results-grid{gap:0.08in}
+.wb-results:not([data-density="0"]) .wb-tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+.wb-results:not([data-density="0"]) .wb-tile{padding:5px 7px;row-gap:3px;column-gap:7px}
+.wb-results:not([data-density="0"]) .wb-tile-num{min-width:0.26in;height:0.26in;font-size:9pt}
+.wb-results:not([data-density="0"]) .wb-tile-marks{gap:8px;font-size:8.5pt}
+.wb-results:not([data-density="0"]) .wb-box{width:0.17in;height:0.17in}
+.wb-results[data-density="2"] .wb-page-title,.wb-results[data-density="3"] .wb-page-title{margin-bottom:0.08in;padding-bottom:4px}
+.wb-results[data-density="2"] .wb-page-title h2,.wb-results[data-density="3"] .wb-page-title h2{font-size:17pt}
+.wb-results[data-density="2"] .wb-results-intro,.wb-results[data-density="3"] .wb-results-intro{margin-bottom:0.1in}
+.wb-results[data-density="2"] .wb-results-steps,.wb-results[data-density="3"] .wb-results-steps{font-size:10pt;line-height:1.45}
+.wb-results[data-density="2"] .wb-results-code,.wb-results[data-density="3"] .wb-results-code{padding:0.06in 0.1in}
+.wb-results[data-density="2"] .wb-qr,.wb-results[data-density="3"] .wb-qr{width:0.95in;height:0.95in}
+.wb-results[data-density="2"] .wb-code,.wb-results[data-density="3"] .wb-code{font-size:13pt}
+.wb-results[data-density="2"] .wb-results-grid,.wb-results[data-density="3"] .wb-results-grid{gap:0.06in}
+.wb-results[data-density="2"] .wb-results-section-title,.wb-results[data-density="3"] .wb-results-section-title{margin-bottom:3px}
+.wb-results[data-density="2"] .wb-results-total,.wb-results[data-density="3"] .wb-results-total{margin-top:0.12in;padding-top:0.08in}
+.wb-results[data-density="3"] .wb-tile{padding:3px 6px;row-gap:2px}
+.wb-results[data-density="3"] .wb-tile-num{min-width:0.24in;height:0.24in}
+.wb-results[data-density="3"] .wb-box{width:0.15in;height:0.15in}
 .wb-results-total{display:flex;gap:0.5in;margin-top:0.2in;padding-top:0.12in;border-top:1px solid var(--rule-strong);font-size:11pt;font-weight:700}
 .wb-fill{display:inline-block;width:0.8in;border-bottom:1.3px solid var(--ink);margin:0 4px}
 footer{display:none}

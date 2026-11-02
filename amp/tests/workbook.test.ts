@@ -100,10 +100,35 @@ test("every workbook has the full structure at every level and length", () => {
       assert.equal(spec.sections.at(-1)!.items.length, 1);
       const total = workbookMinutes(spec);
       assert.ok(
-        total >= minutes - 6 && total <= minutes + 8,
+        total >= minutes - 6 && total <= minutes,
         `${id} ${minutes}: ${total} minutes`,
       );
     }
+});
+
+test("a workbook's estimate never exceeds its length, and practice is never empty", () => {
+  // Many numbers at every length: high school problems run long, and once
+  // a 60-minute geometry workbook estimated 68 minutes.
+  for (const id of learners.keys())
+    for (const minutes of [30, 45, 60] as const)
+      for (let number = 1; number <= 12; number++) {
+        const spec = compose(id, { minutes, number });
+        const total = workbookMinutes(spec);
+        assert.ok(total <= minutes, `${id} ${minutes} #${number}: ${total}`);
+        assert.ok(
+          total >= minutes - 10,
+          `${id} ${minutes} #${number}: ${total}`,
+        );
+        assert.ok(
+          spec.sections.some((s) => s.kind === "practice" && s.items.length),
+          `${id} ${minutes} #${number}: practice`,
+        );
+        const challenge = spec.sections.find((s) => s.kind === "challenge")!;
+        assert.ok(
+          challenge.items[0]!.minutes <= minutes / 5,
+          `${id} ${minutes} #${number}: challenge ${challenge.items[0]!.minutes} min`,
+        );
+      }
 });
 
 test("only lesson problems share a template; every problem is valid", () => {
