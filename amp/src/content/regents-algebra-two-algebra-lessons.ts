@@ -365,7 +365,7 @@ export const regentsAlgebraTwoAlgebraLessons = [
     id: "regents-circle-line-system",
     title: "A circle and a line",
     summary:
-      "A circle and a straight line can cross at two points, touch at one, or miss each other. The crossing points are the solutions of the system, the pair of equations, because they make both equations true. Checking a point in both equations, or solving for $y$, tells how many solutions there are and whether they are real numbers.",
+      "A circle and a straight line can cross at two points, touch at one, or miss each other. The crossing points are the solutions of the system, the pair of equations, because they make both equations true. Checking a point in both equations tells whether it is a solution. Substituting the line into the circle and solving tells how many solutions there are and whether they are real numbers.",
     templateIds: ["circle-line-system"],
     senses: { root: "root-radical", intersections: "intersection-graphs" },
     objectives: [

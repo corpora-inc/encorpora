@@ -454,7 +454,7 @@ export const hsStateGapLessons: Lesson[] = [
     id: "polar-graph-identify",
     title: "Identify polar graphs from equations",
     summary:
-      "A polar equation says how far to go, $r$, for each direction, the angle $\\theta$. Its form tells the shape of the graph: a circle, a line, a flower-shaped rose, or a looped curve called a limaçon. The numbers in it give the number of petals, the size and the symmetry.",
+      "A polar equation says how far to go, $r$, for each direction, the angle $\\theta$. Its form tells the shape of the graph: a circle, a line, a flower-shaped rose, or a rounded curve called a limaçon, which may have a dent or a loop. The numbers in it give the number of petals, the size and the symmetry.",
     templateIds: ["polar-graph-identify"],
     senses: { center: "center" },
     noLink: ["face", "ranges", "leaves", "changes"],
@@ -477,7 +477,7 @@ export const hsStateGapLessons: Lesson[] = [
       prompt: "How many petals does $r=4\\sin(3\\theta)$ have?",
       steps: [
         "The equation has the form $r=a\\sin(n\\theta)$ with $n=3$, so it is a rose.",
-        "For odd $n$, a rose has $n$ petals: as $\\theta$ goes once around, each petal is traced once. (For even $n$, there are $2n$.)",
+        "For odd $n$, a rose has $n$ petals. (For even $n$, it has $2n$.)",
         "The coefficient 4, the number in front, is the length of each petal, the greatest distance from the pole.",
       ],
       answer: "3 petals",
@@ -488,7 +488,7 @@ export const hsStateGapLessons: Lesson[] = [
         title: "Read the form of the equation",
         paragraphs: [
           "In each form below, the numbers $a$ and $b$ are not 0. Constant $r=a$ is a circle about the pole. $r=a\\cos\\theta$ or $r=a\\sin\\theta$ is a circle through the pole. $\\theta=\\alpha$ is a line through the pole. $r=a\\cos(n\\theta)$ or $r=a\\sin(n\\theta)$ with a whole number $n\\ge2$ is a rose. $r=a+b\\cos\\theta$ or $r=a+b\\sin\\theta$ is a limaçon: a heart-shaped cardioid when $a=b$, and one with an inner loop when $a<b$ (for positive $a$ and $b$).",
-          "Sine and cosine stay between $-1$ and $1$, so $r=a+b\\cos\\theta$ ranges from $a-b$ to $a+b$, and the greatest distance from the pole is the largest $|r|$.",
+          "Sine and cosine stay between $-1$ and $1$, so for $b>0$, $r=a+b\\cos\\theta$ ranges from $a-b$ to $a+b$, and the greatest distance from the pole is the largest $|r|$.",
         ],
       },
       {
@@ -510,7 +510,7 @@ export const hsStateGapLessons: Lesson[] = [
     id: "cone-section-name",
     title: "Name a conic section cut from a cone",
     summary:
-      "Picture two ice-cream cones joined at their tips, and slice through them with a flat sheet, a plane. The cut edge is a circle, an oval called an ellipse, a U-shaped parabola or a two-piece hyperbola. Which one you get depends on how steeply the plane is tilted compared with the cone's sides.",
+      "Picture two ice-cream cones joined at their tips, and slice through them with a flat sheet, a plane. When the sheet misses the shared tip, the cut edge is a circle, an oval called an ellipse, a U-shaped parabola, or a hyperbola, a curve in two separate pieces. Which one you get depends on how steeply the plane is tilted compared with the cone's sides.",
     templateIds: ["cone-section-name"],
     senses: { plane: "plane", vertex: "vertex", centers: "center" },
     noLink: ["edge", "side", "sides", "changes"],
@@ -552,7 +552,7 @@ export const hsStateGapLessons: Lesson[] = [
         stage: "formal",
         title: "Why the angles decide",
         paragraphs: [
-          "A plane that meets every side line of one nappe gives a closed curve, so it is an ellipse, or a circle if it is perpendicular to the axis. A plane parallel to exactly one side line misses that line and gives one open branch, a parabola. A plane steeper than the sides meets both nappes and gives two branches, a hyperbola.",
+          "A plane that misses the vertex and meets every side line of one nappe gives a closed curve, so it is an ellipse, or a circle if it is perpendicular to the axis. A plane parallel to exactly one side line misses that line and gives one open branch, a parabola. A plane steeper than the sides meets both nappes and gives two branches, a hyperbola.",
         ],
       },
     ],

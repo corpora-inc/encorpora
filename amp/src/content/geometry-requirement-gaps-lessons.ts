@@ -623,7 +623,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
         paragraphs: [
           "Pin the ends of a string at two points, hold the string tight with a pencil and draw: you trace an ellipse. The pins are the foci. The string has fixed length, so the distances from the pencil to the two pins always add to the same number.",
           "A hyperbola uses the same two points, but the distances to them differ by a fixed amount instead. In both curves the foci lie on the axis through the vertices, the points where the curve crosses that axis, the same distance $c$ on each side of the center.",
-          "Centered at the origin, an ellipse is $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ and a hyperbola is $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$. Here $a$ is the distance from the center to a vertex along the axis through the foci, and $c$ is the distance from the center to a focus.",
+          "Centered at the origin with its foci on the $x$-axis, an ellipse is $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ and a hyperbola is $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$. Here $a$ is the distance from the center to a vertex along the axis through the foci, and $c$ is the distance from the center to a focus.",
         ],
       },
     ],

@@ -216,7 +216,7 @@ export const complexConicsPrinciples: Record<string, string> = {
   "polynomial-root-count": r`A polynomial of degree $n\ge1$ has exactly $n$ complex roots counting multiplicity. If its coefficients are real and $p+qi$ is a root, then $p-qi$ is a root with the same multiplicity.`,
   "polar-cartesian-conversion": r`For $(r,\theta)$, $x=r\cos\theta$ and $y=r\sin\theta$; conversely $r^2=x^2+y^2$. The pairs $(r,\theta)$, $(r,\theta+2\pi)$ and $(-r,\theta+\pi)$ name the same point.`,
   "parametric-linear-motion": r`For $x(t)=x_0+at$ and $y(t)=y_0+bt$ the object moves along a line with slope $\frac{b}{a}$ (when $a\ne0$) at constant speed $\sqrt{a^2+b^2}$.`,
-  "conic-standard-form": r`Each conic is the set of points satisfying a second-degree equation. $(x-h)^2+(y-k)^2=r^2$ is a circle, $\frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1$ with $a\ne b$ is an ellipse, and a minus sign between the squared terms gives a hyperbola. An equation with one squared variable is a parabola. These names apply when the graph is a curve, not a point, a line or nothing.`,
+  "conic-standard-form": r`Each conic is the set of points satisfying a second-degree equation. $(x-h)^2+(y-k)^2=r^2$ is a circle, $\frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1$ with $a\ne b$ is an ellipse, and a minus sign between the squared terms gives a hyperbola. An equation with one squared variable and no $xy$ term is a parabola. These names apply when the graph is a curve, not a point, a line or nothing.`,
   "parabola-focus-directrix": r`The parabola with focus $(h, k + p)$ and directrix $y = k - p$ is $(x - h)^2 = 4p(y - k)$. A point $(x, y)$ is the same distance from the focus and the directrix exactly when this equation holds.`,
 };
 
@@ -558,7 +558,7 @@ export const complexConicsLessons: Lesson[] = [
     method: {
       title: "Both directions",
       paragraphs: [
-        r`Polar to Cartesian: $x=r\cos\theta$, $y=r\sin\theta$. Cartesian to polar, for a point other than the origin: $r=\sqrt{x^2+y^2}$, then the angle whose cosine is $x/r$ and whose sine is $y/r$. The signs of $x$ and $y$ tell you the quadrant.`,
+        r`Polar to Cartesian: $x=r\cos\theta$, $y=r\sin\theta$. Cartesian to polar, for a point other than the origin: $r=\sqrt{x^2+y^2}$, then the angle whose cosine is $x/r$ and whose sine is $y/r$. Whether $x$ and $y$ are positive or negative tells you the quadrant. A point on an axis has angle $0$, $\frac{\pi}{2}$, $\pi$ or $\frac{3\pi}{2}$.`,
         r`Equivalent names of $(r,\theta)$: $(r,\theta+2\pi)$ and $(-r,\theta+\pi)$. To remove a negative $r$, flip its sign and add $\pi$.`,
       ],
     },
@@ -653,7 +653,7 @@ export const complexConicsLessons: Lesson[] = [
     intuition: {
       title: "Four curves from one idea",
       paragraphs: [
-        r`Slicing a cone gives four curves. In an equation, look at the squared variables. If only one variable is squared, the graph is a parabola. If both are squared and added, it is a circle (equal coefficients) or an ellipse (different ones). If both are squared and subtracted, it is a hyperbola. A few equations of these shapes give only a point, a line or no graph at all, such as $x^2+y^2=0$, which is just the origin.`,
+        r`Slicing a cone gives four curves. In an equation with no $xy$ term, look at the squared variables. If only one variable is squared, the graph is a parabola. If both are squared and added, it is a circle (equal coefficients) or an ellipse (different ones). If both are squared and subtracted, it is a hyperbola. A few equations of these shapes give only a point, a line or no graph at all, such as $x^2+y^2=0$, which is just the origin.`,
         r`The coefficient of a squared term is the number multiplying it. Shifting a graph $h$ right and $k$ up replaces $x$ by $x-h$ and $y$ by $y-k$. So the center is the point that makes both bracketed expressions zero.`,
         r`Completing the square rewrites $x^2+bx$ as a square minus a number: add $\left(\frac b2\right)^2$, the square of half the coefficient of $x$, to make $\left(x+\frac b2\right)^2$. Adding the same amount to both sides keeps the equation true.`,
       ],
