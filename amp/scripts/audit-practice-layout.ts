@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /** Synthetic-only production component audit. AMP_LAYOUT_SERVE=1 starts preview;
  * AMP_LAYOUT_LIMIT/FILTER (comma-separated ID substrings) bound runs. No database or account data is used. */
 import { createServer } from "vite";
@@ -5,7 +6,8 @@ import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
-import { chromium, firefox, webkit } from "playwright";
+import { chromium as rawChromium, firefox, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { mkdir, writeFile, appendFile } from "node:fs/promises";
 import { templates, generateProblem } from "../src/math/engine";
 import { problemLesson } from "../src/content/problem-lessons";

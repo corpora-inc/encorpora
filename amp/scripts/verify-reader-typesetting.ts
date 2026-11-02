@@ -1,9 +1,11 @@
+import { secureChromium } from "../browser-security.mjs";
 /** Independent regression for actual app CSS and punctuation at narrow widths. */
 import assert from "node:assert/strict";
 import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { PrintMathText, printMathStyles } from "../src/content/PrintMathText";
 import {
   RightTriangleOrientation,

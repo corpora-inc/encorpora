@@ -1,8 +1,10 @@
+import { secureChromium } from "../browser-security.mjs";
 import { choose } from "./ui-controls";
 import { exitPractice, resume } from "./ui-practice";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app.js";
 import { PostgresRepository } from "../src/server/repository.js";

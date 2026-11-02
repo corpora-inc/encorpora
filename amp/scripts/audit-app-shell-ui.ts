@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * App-shell audit: every screen outside the practice flow, with realistic
  * data, in Chromium and WebKit at the review widths, light and dark, plus a
@@ -14,7 +15,8 @@
  */
 import AxeBuilder from "@axe-core/playwright";
 import { appendFile, mkdir, writeFile } from "node:fs/promises";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import {
   focusWalk,
   probe,

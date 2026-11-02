@@ -1,6 +1,8 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { realpathSync } from "node:fs";
-import { chromium, firefox, type Page } from "playwright";
+import { chromium as rawChromium, firefox, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
@@ -66,9 +68,10 @@ await vite.listen();
 async function attempt(page: Page) {
   const { problem, submit } = await preparePracticeAnswer(page, true);
   const [response] = await Promise.all([
-    page.waitForResponse((r) =>
-      r.url().endsWith("/attempts") &&
-      r.request().postDataJSON()?.problemId === problem.id,
+    page.waitForResponse(
+      (r) =>
+        r.url().endsWith("/attempts") &&
+        r.request().postDataJSON()?.problemId === problem.id,
     ),
     submit(),
   ]);
@@ -102,7 +105,8 @@ try {
         const fallback = mode === "fallback";
         const [hintedFamily, independentFamily] =
           families[name as keyof typeof families][mode];
-        let servingFamily = mode === "account" ? hintedFamily : "multiply-facts";
+        let servingFamily =
+          mode === "account" ? hintedFamily : "multiply-facts";
         const created = await app.inject({
           method: "POST",
           url: "/api/v1/trials",
@@ -263,7 +267,9 @@ try {
           await page.locator(".question").waitFor();
         }
         assert.equal(
-          await page.locator(".problem-content").getAttribute("data-problem-id"),
+          await page
+            .locator(".problem-content")
+            .getAttribute("data-problem-id"),
           hintedId,
           "navigation keeps the hinted problem",
         );
@@ -298,11 +304,14 @@ try {
             "cannot reveal extra help while retrying an immutable answer",
           );
           const [retried] = await Promise.all([
-            page.waitForResponse((r) =>
-              r.url().endsWith("/attempts") &&
-              r.request().postDataJSON()?.problemId === planned.problem.id,
+            page.waitForResponse(
+              (r) =>
+                r.url().endsWith("/attempts") &&
+                r.request().postDataJSON()?.problemId === planned.problem.id,
             ),
-            page.locator(".answer-action:visible, .choice-submit:visible").click(),
+            page
+              .locator(".answer-action:visible, .choice-submit:visible")
+              .click(),
           ]);
           assert.equal(retried.status(), 200);
           assert.equal((await retried.json()).problemId, planned.problem.id);

@@ -1,10 +1,12 @@
+import { secureChromium } from "../browser-security.mjs";
 import { exitPractice } from "./ui-practice";
 import { createOTP } from "@better-auth/utils/otp";
 import { base32 } from "@better-auth/utils/base32";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { setTimeout as delay } from "node:timers/promises";
-import { chromium, type Page } from "playwright";
+import { chromium as rawChromium, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";

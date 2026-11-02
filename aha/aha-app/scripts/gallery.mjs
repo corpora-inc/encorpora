@@ -1,3 +1,4 @@
+import { secureChromium } from "../../../amp/browser-security.mjs";
 /** DEV-ONLY: screenshot every Activity Spec TEST FIXTURE at phone/tablet/desktop, light/dark.
  * Writes PNGs + a contact sheet to .gallery/ (gitignored). Usage: npm run gallery [-- fixture-id ...] */
 import { spawn } from 'node:child_process';
@@ -5,7 +6,8 @@ import { mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { stripVTControlCharacters } from 'node:util';
-import { chromium } from 'playwright';
+import { chromium as rawChromium } from 'playwright';
+const chromium = secureChromium(rawChromium);
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const out = path.join(root, '.gallery');

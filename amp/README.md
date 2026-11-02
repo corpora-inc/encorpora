@@ -39,7 +39,7 @@ npm run build
 npm run audit
 export AMP_TEST_DATABASE_URL=postgres://amp:amp@127.0.0.1:55439/amp
 npm run test:db
-npx playwright install chromium
+node scripts/install-browser.mjs
 npm run test:ui
 npm run publications
 npm run production:queue

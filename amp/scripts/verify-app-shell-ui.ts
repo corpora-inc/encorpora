@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * App-shell polish, asserted in a real browser against realistic data (see
  * app-shell-fixture.ts and docs/reviews/app-shell-polish/README.md).
@@ -12,7 +13,8 @@
  */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { probe, settle } from "./app-shell-probe";
 import { shellScenarios, startShellFixture } from "./app-shell-fixture";
 

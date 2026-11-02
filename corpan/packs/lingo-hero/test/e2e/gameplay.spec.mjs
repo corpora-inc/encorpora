@@ -1,3 +1,4 @@
+import { secureChromium } from "../../../../../amp/browser-security.mjs";
 /**
  * Headless gameplay test for Lingo Hero — "CATCH THE TRANSLATION" (batch CHART).
  *
@@ -30,7 +31,8 @@
  *       node test/e2e/gameplay.spec.mjs   (needs `playwright` + chromium available)
  * Exits non-zero on any failed assertion so it can gate in CI.
  */
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { mkdirSync } from "node:fs";

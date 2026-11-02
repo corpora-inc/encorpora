@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Workbook layout in a real browser, for CI: every synthetic learner at
  * 45 minutes on Letter, and the youngest, middle and oldest at 30 and 60
@@ -14,7 +15,8 @@
  *
  *   npx tsx scripts/verify-workbook-layout.ts
  */
-import { chromium, firefox, webkit } from "playwright";
+import { chromium as rawChromium, firefox, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import type { WorkbookMinutes } from "../src/workbook/compose";
 import { printWorkbookPdf, waitForWorkbookLayout } from "../src/workbook/pdf";
 import {

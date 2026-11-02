@@ -1,3 +1,4 @@
+import { secureChromium } from "../../../../amp/browser-security.mjs";
 // Browser runner: the demo, in a real browser, under real CPU throttling.
 //
 // Node numbers are honest about the SOLVER but say nothing about the renderer,
@@ -51,7 +52,8 @@ if (has("serve")) {
   }
 }
 
-const { chromium, webkit } = await import("playwright")
+const { chromium: rawChromium, webkit } = await import("playwright")
+const chromium = secureChromium(rawChromium);
 
 const engineName = has("webkit") ? "WebKit (JavaScriptCore)" : "Chrome (V8)"
 const browser = has("webkit")

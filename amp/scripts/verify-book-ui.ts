@@ -1,8 +1,10 @@
+import { secureChromium } from "../browser-security.mjs";
 import { choose } from "./ui-controls";
 import { exitPractice } from "./ui-practice";
 import { assertPhoneLandscapeSmoke, isPhoneLandscape } from "./ui-viewports";
 import { registerFamilyRoutes } from "../src/family/routes.js";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { mkdir } from "node:fs/promises";
 import assert from "node:assert/strict";

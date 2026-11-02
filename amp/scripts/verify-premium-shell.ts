@@ -1,7 +1,9 @@
+import { secureChromium } from "../browser-security.mjs";
 import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, type Page, type Locator } from "playwright";
+import { chromium as rawChromium, type Page, type Locator } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer, preview } from "vite";
 import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";

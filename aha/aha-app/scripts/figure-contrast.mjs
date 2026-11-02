@@ -1,3 +1,4 @@
+import { secureChromium } from "../../../amp/browser-security.mjs";
 /** Diagram contrast guard (TEST-ONLY). Renders every Activity Spec TEST FIXTURE and every local task
  * visual in light AND dark, then measures, in the browser, what a learner actually sees:
  *   - every SVG <text>/<tspan> (and every text run in a figure's HTML) against the effective colour
@@ -161,7 +162,8 @@ export async function auditFigureContrast(browser, base) {
 }
 
 if (import.meta.main) {
-  const { chromium } = await import('playwright');
+  const { chromium: rawChromium } = await import('playwright');
+const chromium = secureChromium(rawChromium);
   const root = fileURLToPath(new URL('..', import.meta.url));
   const port = Number(process.env.AHA_CONTRAST_PORT || 1441), base = `http://127.0.0.1:${port}`;
   const vite = spawn(process.execPath, [path.join(root, 'node_modules/vite/bin/vite.js'), '--host', '127.0.0.1', '--port', String(port), '--strictPort'], { cwd: root, stdio: ['ignore', 'pipe', 'pipe'] });

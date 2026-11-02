@@ -1,7 +1,9 @@
+import { secureChromium } from "../browser-security.mjs";
 /** Real API/browser regression for every response shape used by journey tests. */
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";

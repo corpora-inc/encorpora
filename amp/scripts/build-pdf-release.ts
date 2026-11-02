@@ -53,6 +53,7 @@ const inputs = [
   "Dockerfile",
   "scripts/publications.ts",
   "scripts/publish-book.ts",
+  "browser-security.mjs",
   "scripts/build-pdf-release.ts",
   "scripts/pdf-release.ts",
 ].sort();
@@ -96,7 +97,7 @@ for (const { content: book } of books) {
       () => false,
     );
   if (!current) {
-    run("scripts/publish-book.ts", [
+    run("scripts/publish-book.ts", "browser-security.mjs", [
       "--book",
       book.id,
       "--output",

@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /** Real-browser proof of point-plot practice: tap, click, keyboard and drag
  * placement, removal, Check gating, the live readout, server feedback drawn
  * over the learner's points, and zero layout shift, at 320/390/768/1280 px in
@@ -5,7 +6,8 @@
  * artifacts/point-plot-ui). Requires AMP_TEST_DATABASE_URL. */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, webkit, type Page } from "playwright";
+import { chromium as rawChromium, webkit, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";

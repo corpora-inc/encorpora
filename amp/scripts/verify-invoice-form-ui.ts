@@ -1,6 +1,8 @@
+import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { presentOffer } from "../src/funding-purchase/contracts.js";
 import { testFundingOffer } from "../tests/funding-purchase.fixture.js";

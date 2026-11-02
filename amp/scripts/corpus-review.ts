@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Learner-eye review of the problem corpus.
  *
@@ -13,7 +14,8 @@
  * Providers: ollama uses AMP_OLLAMA_URL (default the DGX Spark over Tailscale);
  * anthropic uses ANTHROPIC_API_KEY; codex uses the local `codex exec` CLI.
  */
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { renderToStaticMarkup } from "react-dom/server";
 import React from "react";
 import { mkdir, readFile, writeFile, appendFile } from "node:fs/promises";

@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Scene timelines in a real browser: manual lesson/hint walkthroughs and
  * short looping circle and single-step hints, at 320, 390, 768 and 1280 px
@@ -15,7 +16,8 @@
 import assert from "node:assert/strict";
 import { createServer as httpServer } from "node:http";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { problemLesson } from "../src/content/problem-lessons";
 import { generateProblem } from "../src/math/engine";

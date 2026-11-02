@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * Problem scenes: sample problems of the named templates (or every template
  * that emits a scene), each drawn as the learner sees it — prompt, figure and
@@ -12,7 +13,8 @@
 import assert from "node:assert/strict";
 import { createServer as httpServer } from "node:http";
 import { mkdir, writeFile } from "node:fs/promises";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { generateProblem, templates } from "../src/math/engine";
 import type { GeneratedProblem } from "../src/math/contracts";
@@ -160,9 +162,7 @@ try {
         for (const card of document.querySelectorAll<HTMLElement>(
           ".gallery-card",
         )) {
-          const svg = card.querySelector<SVGSVGElement>(
-            "svg.scene-figure",
-          );
+          const svg = card.querySelector<SVGSVGElement>("svg.scene-figure");
           if (!svg) {
             found.push(`${card.id}: no scene svg`);
             continue;

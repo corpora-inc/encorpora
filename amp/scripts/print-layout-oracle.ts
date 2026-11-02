@@ -1,6 +1,8 @@
+import { secureChromium } from "../browser-security.mjs";
 /** Independent print layout inspection of exported HTML, before PDF text loss. */
 import { readFileSync } from "node:fs";
-import { chromium } from "playwright";
+import { chromium as rawChromium } from "playwright";
+const chromium = secureChromium(rawChromium);
 
 type Document = { file: string; format: "Letter" | "A4" };
 const documents = JSON.parse(readFileSync(0, "utf8")) as Document[];

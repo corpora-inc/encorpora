@@ -1,3 +1,4 @@
+import { secureChromium } from "../../../amp/browser-security.mjs";
 // Ad-hoc device probe: attach to the running AHA debug WebView (phone or emulator) and run an action module.
 // Screenshots come from `adb screencap` (real pixels incl. system bars), downscaled to 900px for review.
 //   node scripts/device-probe.mjs actions.mjs   (actions.mjs: export default async ({page, shot, adb, sleep}) => {...})
@@ -5,7 +6,8 @@ import { execFileSync } from 'node:child_process';
 import { writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { chromium } from 'playwright';
+import { chromium as rawChromium } from 'playwright';
+const chromium = secureChromium(rawChromium);
 const ADB = process.env.ADB || `${process.env.HOME}/Library/Android/sdk/platform-tools/adb`;
 const out = path.resolve(process.env.OUT || 'probe-out'); mkdirSync(out, { recursive: true });
 const adb = (...a) => execFileSync(ADB, a, { encoding: 'buffer', maxBuffer: 64 << 20, stdio: ['ignore', 'pipe', 'pipe'] });

@@ -1,3 +1,4 @@
+import { secureChromium } from "../browser-security.mjs";
 /**
  * A realistic, disposable AMP for app-shell browser checks: the real API in
  * accounts mode (loopback only) against a fixture database, the web app
@@ -15,11 +16,12 @@ import { spawn } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import pg from "pg";
 import {
-  chromium,
+  chromium as rawChromium,
   type Browser,
   type BrowserContext,
   type Page,
 } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer, preview } from "vite";
 import { generateProblem, templates } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";

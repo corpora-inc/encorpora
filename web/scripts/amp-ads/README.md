@@ -8,7 +8,7 @@ Use Node 22 or newer, Python 3.12 or newer, and FFmpeg with the `subtitles` filt
 
 ```sh
 npm ci
-npx playwright install chromium
+node ../../../amp/scripts/install-browser.mjs
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 npm test

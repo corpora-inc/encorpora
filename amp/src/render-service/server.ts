@@ -1,3 +1,4 @@
+import { secureChromium } from "../../browser-security.mjs";
 /**
  * AMP render service: HTML in, PDF out, through headless Chromium. Internal
  * only: the API checks the parent's access, builds the document and calls
@@ -52,7 +53,8 @@ export const jsonLog = (entry: Record<string, unknown>) =>
   );
 
 async function defaultLaunch(): Promise<Browser> {
-  const { chromium } = await import("playwright-core");
+  const { chromium: rawChromium } = await import("playwright-core");
+  const chromium = secureChromium(rawChromium);
   return chromium.launch({
     headless: true,
     // The image runs as an unprivileged user with a read-only root; Chromium

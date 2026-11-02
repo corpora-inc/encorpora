@@ -1,3 +1,4 @@
+import { secureChromium } from "../../../../amp/browser-security.mjs";
 // Cross-engine determinism: does the SAME scene produce the SAME state in
 // Node/V8, Chrome/V8 and WebKit/JavaScriptCore?
 //
@@ -54,7 +55,8 @@ export function probe(w) {
 const node = await runNode()
 console.log(`Node ${process.version} / V8`.padEnd(34) + node.hash)
 
-const { chromium, webkit } = await import("playwright")
+const { chromium: rawChromium, webkit } = await import("playwright")
+const chromium = secureChromium(rawChromium);
 const engines = [
   ["Chrome / V8", () => chromium.launch({ channel: "chrome" })],
   ["WebKit / JavaScriptCore", () => webkit.launch()],

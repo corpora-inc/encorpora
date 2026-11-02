@@ -1,6 +1,8 @@
+import { secureChromium } from "../browser-security.mjs";
 /** Regression for question fit versus scrollable structured answer rows. */
 import assert from "node:assert/strict";
-import { chromium, webkit } from "playwright";
+import { chromium as rawChromium, webkit } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { problemInView } from "./ui-viewports";
 
 console.log("Tablet fit: script started");

@@ -1,9 +1,11 @@
+import { secureChromium } from "../browser-security.mjs";
 import { META_PURCHASE_MEASUREMENT_NOTICE } from "../src/advertising/permission-contracts";
 import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
-import { chromium, type Locator, type Page } from "playwright";
+import { chromium as rawChromium, type Locator, type Page } from "playwright";
+const chromium = secureChromium(rawChromium);
 import { createServer } from "vite";
 import { retentionNotice } from "../src/family/contracts";
 import { noticeDigest } from "../src/parent-consent/crypto";
