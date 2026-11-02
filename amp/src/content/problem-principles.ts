@@ -466,7 +466,7 @@ const legacyPrinciples: Record<string, string> = {
   "quadratic-vertex":
     "Vertex form f(x) = a(x − h)² + k: since (x − h)² ≥ 0, when a > 0 the minimum value is $k$, at x = h.",
   "logarithm-integer":
-    "Definition of a logarithm: $\\log_b N = p$ exactly when $b^p = N$, where $b > 0$, $b \\neq 1$ and $N > 0$.",
+    "Definition of a logarithm: $\\log_b N = p$ exactly when $b^p = N$, where $b > 0$, $b \\neq 1$ ($\\neq$ means is not equal to) and $N > 0$.",
 };
 /** Frozen legacy entries, then families from src/families/. */
 export const principles: Record<string, string> = withFamilyEntries(

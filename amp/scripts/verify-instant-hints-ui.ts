@@ -25,13 +25,16 @@ const root = new URL("../", import.meta.url).pathname;
 const vite = await createServer({
   root,
   configFile: root + "vite.config.ts",
+  cacheDir: "node_modules/.vite-instant-hints",
   plugins: [
     {
       name: "hint-test-auth",
       enforce: "pre",
       load(id) {
+        // Route guards require a parent session. Trial/fallback keep the
+        // local development trial token; account mode uses its /me fixture.
         if (id.split("?")[0] === root + "src/web/auth.ts")
-          return `export async function accessSession(){return localStorage.getItem("fixture.parent")?{token:"amp-local-development",accountId:"development-household"}:null;}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return {mode:"accounts",passwords:true,providers:[]}}`;
+          return `export async function accessSession(){return {token:"amp-local-development",accountId:"development-household"};}export function onSessionChanged(){return()=>{}}export async function signIn(){}export async function signOut(){}export function notifyAccountSessionChanged(){}export async function authConfig(){return localStorage.getItem("fixture.parent")?{mode:"accounts",passwords:true,providers:[]}:{mode:"development"}}`;
       },
     },
   ],
@@ -58,9 +61,11 @@ async function submit(page: Page) {
 }
 try {
   for (const [name, engine] of Object.entries({ chromium, firefox })) {
+    console.log(`${name}: starting hint browser`);
     const browser = await engine.launch();
     try {
       for (const mode of ["trial", "fallback", "account"]) {
+        console.log(`${name}/${mode}: opening hint journey`);
         const fallback = mode === "fallback";
         const created = await app.inject({
           method: "POST",
@@ -68,7 +73,7 @@ try {
           payload: { birthYear: 2016 },
         });
         assert.equal(created.statusCode, 201);
-        const { token } = created.json();
+        const { token, learnerId } = created.json();
         const context = await browser.newContext({
           viewport: { width: 390, height: 844 },
         });
@@ -77,6 +82,17 @@ try {
           [trialKey, token],
         );
         const page = await context.newPage();
+        const navigations: string[] = [];
+        page.on("framenavigated", (frame) => {
+          if (frame === page.mainFrame()) navigations.push(frame.url());
+        });
+        const learningAuth = new Set<string>();
+        page.on("request", (request) => {
+          if (/\/(batches|attempts)$/.test(request.url()))
+            learningAuth.add(
+              (request.headers().authorization ?? "").split(" ")[0]!,
+            );
+        });
         if (mode === "account") {
           const learner = await repository.create(
             "development-household",
@@ -130,7 +146,34 @@ try {
         await page.goto(
           `http://127.0.0.1:4462/${mode === "account" ? "practice" : "try/practice"}`,
         );
-        await page.locator(".question").waitFor();
+        await page
+          .locator(".question")
+          .waitFor()
+          .catch(async (error) => {
+            throw new Error(
+              `${name}/${mode}: ${page.url()}: ${errors.join("; ")}; ${(await page.locator("body").innerText()).slice(0, 2000)}`,
+              { cause: error },
+            );
+          });
+        if (mode !== "account") {
+          // A placement map needs a recorded answer; an empty placement
+          // intentionally redirects to practice instead of showing the map.
+          const first = page.waitForResponse((r) =>
+            r.url().endsWith("/attempts"),
+          );
+          await submit(page);
+          assert.equal((await first).status(), 200);
+          const progress = await app.inject({
+            method: "GET",
+            url: `/api/v1/learners/${learnerId}/trial-progress`,
+            headers: { authorization: `Trial ${token}` },
+          });
+          assert.equal(progress.statusCode, 200);
+          assert.equal(progress.json().totals.answered, 1);
+          await page.locator(".next-action").click();
+          await page.locator(".feedback").waitFor({ state: "detached" });
+          await page.locator(".question").waitFor();
+        }
         const hint = page.getByRole("button", { name: "Hint", exact: true });
         await hint.click();
         const dialog = page.getByRole("dialog", { name: "Hint", exact: true });
@@ -144,9 +187,31 @@ try {
         await page.keyboard.press("Escape");
         if (mode !== "account") {
           await page.getByRole("button", { name: "Open AMP menu" }).click();
-          await page.getByRole("link", { name: "Your level" }).click();
-          await page.waitForURL("**/try/map");
-          await page.goBack();
+          await page
+            .getByRole("link", { name: "Your progress" })
+            .click({ noWaitAfter: true });
+          await page
+            .waitForURL((url) => url.pathname === "/try/map")
+            .catch((error) => {
+              throw new Error(
+                `${name}/${mode}: progress navigation reached ${page.url()}`,
+                { cause: error },
+              );
+            });
+          await page
+            .getByRole("heading", { name: "Your progress", exact: true })
+            .waitFor();
+          await page.locator(".frontier-map").waitFor();
+          console.log(`${name}/${mode}: returning from progress`);
+          await page
+            .goBack({ waitUntil: "domcontentloaded" })
+            .catch((error) => {
+              throw new Error(
+                `${name}/${mode}: Back stopped at ${page.url()}; navigations=${JSON.stringify(navigations)}; errors=${JSON.stringify(errors)}`,
+                { cause: error },
+              );
+            });
+          await page.waitForURL((url) => url.pathname === "/try/practice");
           await page.locator(".question").waitFor();
         }
         await hint.click();
@@ -213,6 +278,11 @@ try {
           "preloading alone is independent; help resets between problems",
         );
         assert.deepEqual(errors, []);
+        assert.deepEqual(
+          [...learningAuth],
+          [mode === "account" ? "Bearer" : "Trial"],
+          `${name}/${mode}: learning requests use the intended identity`,
+        );
         await page.unrouteAll({ behavior: "wait" });
         await context.close();
         console.log(

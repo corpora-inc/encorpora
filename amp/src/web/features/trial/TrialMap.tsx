@@ -1,3 +1,7 @@
+import {
+  CurriculumDetailsControl,
+  useCurriculumDetails,
+} from "../curriculum/CurriculumDetails";
 import { ProgressViews } from "../navigation/ProgressViews";
 import { useQuery } from "@tanstack/react-query";
 import { Link, Navigate } from "@tanstack/react-router";
@@ -38,6 +42,7 @@ export function TrialMap() {
 }
 
 function MapView({ session }: { session: TrialSession }) {
+  const { shown } = useCurriculumDetails();
   const progress = useQuery(progressOptions(session));
   const catalog = useQuery(catalogOptions);
   const evidence = useQuery(trialEvidenceOptions(session));
@@ -99,7 +104,10 @@ function MapView({ session }: { session: TrialSession }) {
         <p className={styles.eyebrow}>
           {p.phase === "placement" ? "Placement in progress" : "Free practice"}
         </p>
-        <h1 className={styles.title}>Your estimated level</h1>
+        <h1 className={styles.title}>
+          {shown ? "Your estimated level" : "Your progress"}
+        </h1>
+        <CurriculumDetailsControl />
         <LevelReadout estimate={frontier.overall} />
         <p className={styles.lede}>
           {p.phase === "placement"

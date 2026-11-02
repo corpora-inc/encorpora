@@ -18,9 +18,9 @@ export const ratioEntries: GlossaryEntry[] = [
     term: "APR",
     forms: ["apr", "annual percentage rate"],
     plain:
-      "Annual percentage rate: the yearly interest rate on a loan or credit card. The monthly rate is the APR divided by 12.",
+      "Annual percentage rate: the yearly interest rate on money owed, as a percent. Dividing the APR by 12 gives a monthly rate.",
     example: "An APR of 18% is a monthly rate of 18% ÷ 12 = 1.5%.",
-    uses: ["interest", "rate", "loan", "credit-card"],
+    uses: ["interest", "rate", "loan", "credit-card", "percent"],
     band: "7",
   },
   {
@@ -99,7 +99,7 @@ export const ratioEntries: GlossaryEntry[] = [
     term: "equivalent ratios",
     forms: ["equivalent ratios", "equivalent ratio", "equal ratios"],
     plain:
-      "Ratios that make the same comparison. Multiply or divide both numbers of one ratio by the same number to get the other.",
+      "Ratios that make the same comparison. Multiply or divide both numbers of one ratio by the same nonzero number to get the other.",
     example:
       "$2:5$ and $4:10$ are equivalent ratios: multiply both numbers by 2.",
     uses: ["ratio"],
@@ -159,8 +159,8 @@ export const ratioEntries: GlossaryEntry[] = [
     term: "minimum payment",
     forms: ["minimum payment", "minimum payments"],
     plain:
-      "The smallest amount a credit card lets you pay by the due date. Interest is charged on whatever you leave unpaid.",
-    uses: ["credit-card", "interest"],
+      "The smallest payment a credit card requires by the due date. Paying less can bring a late fee, and any unpaid balance usually collects interest.",
+    uses: ["credit-card", "interest", "balance-account"],
     band: "7",
   },
   {
@@ -297,8 +297,8 @@ export const ratioEntries: GlossaryEntry[] = [
     term: "simplest ratio",
     forms: ["simplest ratio", "simplest form of a ratio"],
     plain:
-      "A ratio whose two numbers cannot both be divided evenly by the same number, other than 1, such as $3:4$ instead of $6:8$.",
-    uses: ["ratio"],
+      "A ratio of whole numbers that cannot both be divided evenly by any whole number greater than 1, such as $3:4$ instead of $6:8$.",
+    uses: ["ratio", "whole-number", "greater-than"],
     band: "6",
   },
   {
@@ -325,8 +325,9 @@ export const ratioEntries: GlossaryEntry[] = [
     term: "unit rate",
     forms: ["unit rate", "unit rates"],
     plain:
-      "A rate for exactly 1 unit of the second quantity, such as 9 miles per hour. Per means for each one.",
-    example: "120 pages in 4 minutes is 120 ÷ 4 = 30 pages per minute.",
+      "A rate that tells how much of the first quantity goes with exactly 1 of the second, such as 9 miles per 1 hour. Per means for each.",
+    example:
+      "120 pages in 4 minutes: divide pages by minutes, 120 ÷ 4 = 30, so 30 pages per minute.",
     uses: ["rate", "unit"],
     band: "6",
   },
