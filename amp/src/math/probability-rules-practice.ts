@@ -21,6 +21,23 @@ type Case = {
 };
 
 const scenes = { requiredFigureCapability: "scenes-v1" } as const;
+/** Plain openings: the idea each template rests on, with its terms defined
+ * (issue #1781). */
+const OPENERS: Record<string, string[]> = {
+  "event-set-count": [
+    'An event is a set of outcomes. The union, written with ∪ and read "or", holds outcomes in either set; the intersection, written ∩ and read "and", holds outcomes in both.',
+  ],
+  "addition-rule-probability": [
+    "The addition rule finds the chance of $A$ or $B$: add the two probabilities, then subtract the chance of both once, because it was counted twice.",
+  ],
+  "conditional-probability-value": [
+    'A conditional probability, $P(A\\mid B)$, read "the probability of $A$ given $B$", counts only the cases where $B$ happened. Divide the cases with both by the cases with $B$.',
+  ],
+  "multiplication-rule-probability": [
+    "The multiplication rule finds the chance of $A$ and then $B$: multiply the chance of $A$ by the chance of $B$ once $A$ has happened.",
+  ],
+};
+
 export const probabilityRulesTemplates: readonly TemplateMetadata[] = [
   {
     id: "event-set-count",
@@ -1366,7 +1383,7 @@ export function probabilityRulesCase(
         : {}),
     },
     answer: answerText(c.answer),
-    explanation: c.explanation,
+    explanation: [...(OPENERS[id] ?? []), ...c.explanation],
     hint: c.hint,
   };
   return {
