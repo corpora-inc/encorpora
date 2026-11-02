@@ -1,7 +1,4 @@
-import {
-  CurriculumDetailsControl,
-  useCurriculumDetails,
-} from "../curriculum/CurriculumDetails";
+import { useCurriculumDetails } from "../curriculum/CurriculumDetails";
 import { useId, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { bandLabel, type MapSkill } from "./model";

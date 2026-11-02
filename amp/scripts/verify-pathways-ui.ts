@@ -1427,12 +1427,12 @@ try {
       "long skill card grows the phone document",
     );
     await phone
-      .locator(".pathways-detail > ul li:last-child")
+      .locator(".pathways-detail .pathways-connections li:last-child")
       .last()
       .evaluate((el) => el.scrollIntoView({ block: "end" }));
     assert(
       await phone
-        .locator(".pathways-detail > ul li:last-child")
+        .locator(".pathways-detail .pathways-connections li:last-child")
         .last()
         .evaluate((el) => el.getBoundingClientRect().bottom <= innerHeight + 1),
       "last relationship stays reachable by page scroll",
