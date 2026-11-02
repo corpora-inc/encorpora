@@ -62,7 +62,7 @@ const OPENERS: Record<string, string[]> = {
     "The discriminant, $b^2-4ac$, is the part under the square root in the quadratic formula. When it equals 0, the quadratic has exactly one real solution.",
   ],
   "rational-function-representation": [
-    "A rational function is a fraction with $x$ in the denominator, the bottom. It has no value where the denominator is 0, so that input is excluded.",
+    "A rational function is one polynomial divided by another, such as $\\frac{x+1}{x-2}$. A polynomial is a sum of terms like $3x^2$, $-x$ and 5. The function has no value where the denominator, the bottom, is 0, so that input is excluded.",
   ],
 };
 

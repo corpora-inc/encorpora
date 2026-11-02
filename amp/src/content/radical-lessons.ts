@@ -255,7 +255,7 @@ export const radicalLessons: Lesson[] = [
     id: "rationalize-radical-denominator",
     title: "Remove a square root from a denominator",
     summary:
-      "A fraction with a square root in its bottom, such as $\\frac{1}{\\sqrt2}$, is usually rewritten so the bottom has no root. Multiply the top and the bottom by that same root. This multiplies the fraction by 1, so its value does not change, and $\\sqrt2\\cdot\\sqrt2=2$ clears the root: $\\frac{1}{\\sqrt2}=\\frac{\\sqrt2}{2}$.",
+      "A fraction with a square root in its bottom, such as $\\frac{1}{\\sqrt2}$, is usually rewritten so the bottom has no root. When the bottom is a single square root, or a number times one, multiply the top and the bottom by that root. This multiplies the fraction by 1, so its value does not change, and $\\sqrt2\\cdot\\sqrt2=2$ clears the root: $\\frac{1}{\\sqrt2}=\\frac{\\sqrt2}{2}$.",
     templateIds: ["rationalize-radical-denominator"],
     senses: {
       root: "root-radical",
@@ -377,7 +377,7 @@ export const radicalMethods: Record<string, ProblemMethod> = {
   "rationalize-radical-denominator": {
     goal: "Write an equivalent simplified fraction with a rational denominator.",
     intuition:
-      "A fraction's denominator is its bottom, which is never 0. A rational number can be written as a fraction of two integers, and a root such as $\\sqrt2$ is not rational. To remove a root from the denominator, multiply the top and bottom by that root. That multiplies the fraction by 1, so its value stays the same, and $\\sqrt2\\cdot\\sqrt2=2$ makes the bottom rational.",
+      "A fraction's denominator is its bottom, which is never 0. A rational number can be written as a fraction of two integers, and a root such as $\\sqrt2$ is not rational. When the denominator is a single square root, or a number times one, multiply the top and bottom by that root to remove it. That multiplies the fraction by 1, so its value stays the same, and $\\sqrt2\\cdot\\sqrt2=2$ makes the bottom rational.",
     terms: [...terms, "denominator", "rational-number"],
     method: [
       "Simplify the root in the denominator.",

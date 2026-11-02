@@ -87,7 +87,7 @@ export function nonlinearSystemCase(id: string, seed: string) {
         `A solution of the system is a point on both graphs: the parabola and the line. There both equations give the same $y$.`,
         `So set the two right sides equal: $${quadratic} = ${line}$. Subtract the line's expression from both sides: $${reduced} = 0$.`,
         `Each real solution $x$ of this quadratic is one crossing point. To count them without solving, use the discriminant.`,
-        `For $Ax^2 + Bx + C = 0$, the discriminant is $B^2 - 4AC$, the part under the square root in the quadratic formula. Here it is $${p(B)}^2 - 4 \\cdot ${p(a)} \\cdot ${p(C)} = ${n(discriminant)}$.`,
+        `The quadratic formula solves $Ax^2 + Bx + C = 0$: $x=\\frac{-B\\pm\\sqrt{B^2-4AC}}{2A}$, where $\\pm$ means once with $+$ and once with $-$. The square root sign asks for a number that, times itself, gives what is under it. The part under it, $B^2 - 4AC$, is called the discriminant. Here it is $${p(B)}^2 - 4 \\cdot ${p(a)} \\cdot ${p(C)} = ${n(discriminant)}$.`,
         discriminant > 0
           ? `It is positive, so it has a positive square root. Adding it and subtracting it in the quadratic formula give two different values: two real roots.`
           : discriminant === 0

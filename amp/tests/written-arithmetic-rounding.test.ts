@@ -23,3 +23,25 @@ test("sas-area-steps rounds the product it writes", () => {
     );
   }
 });
+
+test("normal-probability turns the fraction it writes into the percent it states", () => {
+  let seen = 0;
+  for (let i = 0; i < 300; i++) {
+    const p = generateProblem("normal-probability", `round-${i}`);
+    const step = p.explanation.find((s) =>
+      s.startsWith("The fraction between them"),
+    );
+    if (!step) continue;
+    seen++;
+    const m = /\$([\d.]+)-([\d.]+)=([\d.]+)\$.*about ([\d.]+)%/.exec(step)!;
+    const [a, b, d, pct] = [m[1], m[2], m[3], m[4]].map(Number) as [
+      number,
+      number,
+      number,
+      number,
+    ];
+    assert.ok(Math.abs(a - b - d) < 1e-9, step);
+    assert.ok(Math.abs(d * 100 - pct) <= 0.05 + 1e-9, step);
+  }
+  assert.ok(seen > 0);
+});

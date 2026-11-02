@@ -429,9 +429,9 @@ export const algebra2Entries: GlossaryEntry[] = [
       "fractional exponents",
     ],
     plain:
-      "An exponent that is a fraction. The bottom number names the root and the top number the power: $a^{m/n}=\\sqrt[n]{a^m}$.",
+      "An exponent that is a fraction. In lowest terms, the bottom number names the root and the top number the power: $a^{m/n}=\\sqrt[n]{a^m}$, for $a\\ge0$.",
     example: "$8^{2/3}=(\\sqrt[3]{8})^2=2^2=4$.",
-    uses: ["exponent", "fraction", "root-radical"],
+    uses: ["exponent", "fraction", "root-radical", "lowest-terms"],
     band: "algebra-2",
     noLink: ["power"],
   },
