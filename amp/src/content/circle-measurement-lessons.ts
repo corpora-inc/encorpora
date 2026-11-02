@@ -40,6 +40,7 @@ export const circleMeasurementLessons: Lesson[] = [
     templateIds: ["circle-circumference-coefficient"],
     includeGeneratedRepresentation: false,
     senses: {
+      square: "unit-square",
       squaring: "square-number",
       "more than": "more-than",
       squared: "square-number",
@@ -59,7 +60,6 @@ export const circleMeasurementLessons: Lesson[] = [
       "quarters",
       "quarter",
       "edge",
-      "square",
       "squares",
       "boundary",
       "sides",
@@ -149,7 +149,6 @@ export const circleMeasurementLessons: Lesson[] = [
       "quarters",
       "quarter",
       "edge",
-      "square",
       "squares",
       "boundary",
       "sides",
@@ -229,6 +228,7 @@ export const circleMeasurementLessons: Lesson[] = [
     templateIds: ["arc-length-coefficient"],
     includeGeneratedRepresentation: false,
     senses: {
+      square: "unit-square",
       squaring: "square-number",
       "more than": "more-than",
       squared: "square-number",
@@ -249,7 +249,6 @@ export const circleMeasurementLessons: Lesson[] = [
       "quarters",
       "quarter",
       "edge",
-      "square",
       "squares",
       "boundary",
       "side",
@@ -321,6 +320,7 @@ export const circleMeasurementLessons: Lesson[] = [
     templateIds: ["sector-area-coefficient"],
     includeGeneratedRepresentation: false,
     senses: {
+      square: "unit-square",
       squaring: "square-number",
       "more than": "more-than",
       squared: "square-number",
@@ -341,7 +341,6 @@ export const circleMeasurementLessons: Lesson[] = [
       "quarters",
       "quarter",
       "edge",
-      "square",
       "squares",
       "boundary",
       "side",
@@ -432,8 +431,13 @@ const circleWatch: Record<string, string> = {
 /** Lesson noLink words that its template's hints use mathematically, so the
  * practice lesson links them by the template's sense. */
 const methodLinked: Record<string, string[]> = {
-  "arc-length-coefficient": ["multiple", "one quarter"],
+  "arc-length-coefficient": ["multiple", "one quarter", "quarter"],
   "sector-area-coefficient": ["multiple", "one quarter", "quarter", "square"],
+};
+/** The sector hints say "square the radius": there "square" means multiply
+ * by itself, not the unit square the lesson's "square centimeters" names. */
+const methodSenses: Record<string, Record<string, string>> = {
+  "sector-area-coefficient": { square: "square-number" },
 };
 export const circleMeasurementMethods: Record<string, ProblemMethod> =
   Object.fromEntries(
@@ -441,7 +445,7 @@ export const circleMeasurementMethods: Record<string, ProblemMethod> =
       lesson.id,
       {
         goal: circleGoal[lesson.id]!,
-        senses: lesson.senses,
+        senses: { ...lesson.senses, ...methodSenses[lesson.id] },
         noLink: lesson.noLink?.filter(
           (w) => !(methodLinked[lesson.id] ?? []).includes(w),
         ),

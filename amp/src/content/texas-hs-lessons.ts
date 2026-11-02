@@ -229,7 +229,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "A regular polygon is a flat shape with equal straight sides and equal angles. Lines from its center to each corner cut it into identical triangles. Each triangle has one side of the polygon as its bottom and the apothem, the distance from the center to the middle of a side, as its height. So the area is half the apothem times the perimeter.",
     senses: { side: "side", vertex: "vertex" },
-    noLink: ["center", "square", "base", "part", "whole"],
+    noLink: ["center", "base", "part", "whole"],
     terms: ["regular-polygon", "apothem"],
     method: [
       "Find the perimeter: the number of sides times the side length.",
@@ -249,7 +249,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       solid: "solid-shape",
       center: "center",
     },
-    noLink: ["side", "sides", "square", "part", "bases", "parts"],
+    noLink: ["side", "sides", "square", "part", "parts"],
     terms: [
       "slant-height",
       [

@@ -75,8 +75,8 @@ export const transformationLessons: Lesson[] = [
     summary:
       "Points on a grid are named by two numbers, their coordinates. When two corners share one coordinate, the side between them is flat (horizontal) or straight up and down (vertical). Its length is the distance between the other two coordinates. From those lengths you get a rectangle's perimeter, the distance around, and its area, the space inside.",
     templateIds: ["coordinate-side-length", "coordinate-rectangle-measure"],
-    senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    senses: { ...GEO_SENSES, squares: "square-shape" },
+    noLink: GEO_NOLINK.filter((w) => !["squares"].includes(w)),
     includeGeneratedRepresentation: false,
     objectives: [
       "Recognize horizontal and vertical sides from the coordinates of their endpoints.",
@@ -143,7 +143,7 @@ export const transformationLessons: Lesson[] = [
       "Two points on a grid can be joined by a slanted segment. Going across and then up makes a right triangle, with the segment as its longest side. The Pythagorean theorem, $a^2+b^2=c^2$, then gives the segment's length from the distance across and the distance up. From $(-3,-1)$ to $(5,5)$ is 8 across and 6 up, so the length is 10.",
     templateIds: ["coordinate-distance", "coordinate-distance-exact"],
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["square", "squares"].includes(w)),
     includeGeneratedRepresentation: false,
     objectives: [
       "Find the horizontal and vertical legs of the right triangle under a segment.",
@@ -337,8 +337,8 @@ export const transformationLessons: Lesson[] = [
     summary:
       "A scale drawing is an accurate picture of a real object, drawn smaller or larger. Every real length is the same number times its length on the drawing. Areas are multiplied by that number times itself, because an area has two directions.",
     templateIds: ["scale-drawing"],
-    senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    senses: { ...GEO_SENSES, squares: "square-shape" },
+    noLink: GEO_NOLINK.filter((w) => !["square", "squares"].includes(w)),
     includeGeneratedRepresentation: false,
     objectives: [
       "Use a scale to convert lengths from a drawing to actual lengths and back.",
@@ -417,8 +417,8 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   },
   "coordinate-rectangle-measure": {
     goal: "Find a rectangle's perimeter or area from its vertices.",
-    senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    senses: { ...GEO_SENSES, squares: "square-shape" },
+    noLink: GEO_NOLINK.filter((w) => !["squares"].includes(w)),
     intuition:
       "A point $(x, y)$ is $x$ units across and $y$ units up from the origin, $(0, 0)$; negative numbers mean left or down. The first number is the $x$-coordinate and the second is the $y$-coordinate. A rectangle has four square corners, and its opposite sides are equal. When its sides are horizontal (flat) and vertical (straight up and down), a horizontal side gives the width and a vertical side gives the height. Its perimeter, the distance around, adds two widths and two heights: a rectangle 3 wide and 2 tall has perimeter $3+2+3+2=10$. Add width and height first, then double: $2\\times(\\text{width}+\\text{height})$. Its area is the number of unit squares inside, squares 1 unit on each side. It is $\\text{width}\\times\\text{height}$, so $3\\times2=6$ square units.",
     terms: ["perimeter", "area"],
@@ -431,7 +431,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   "coordinate-distance": {
     goal: "Find the distance between two points with the Pythagorean theorem.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["square"].includes(w)),
     intuition:
       "The hypotenuse is the longest side of a right triangle, across from its square corner. A slanted segment between two grid points is the hypotenuse of one. The other two sides are the legs. Their lengths are the change in $x$ (across) and the change in $y$ (up or down), without any minus sign, because a length is never negative. The Pythagorean theorem is the rule $\\text{leg}^2+\\text{leg}^2=\\text{hypotenuse}^2$, where the raised 2 means a number times itself. Squaring makes a negative change positive, so the sign does not matter there. So square the two changes, add them, and take the square root: the number, 0 or more, whose square is that sum.",
     terms: [
@@ -450,7 +450,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   "coordinate-distance-exact": {
     goal: "Find an exact distance as a whole number or a simplified square root.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["square", "squares"].includes(w)),
     intuition:
       "The hypotenuse is the longest side of a right triangle, across from its square corner. A slanted segment between two grid points is the hypotenuse of one. Its legs are as long as the change in $x$ and the change in $y$, without any minus sign, because a length is never negative. By the Pythagorean theorem, the distance squared, the distance times itself, is the sum of the two changes squared. The distance is the square root of that sum: the number, 0 or more, whose square is the sum. When the sum is not a perfect square, a whole number times itself, such as 20, keep the root and simplify it: $\\sqrt{20}=\\sqrt{4\\times5}=2\\sqrt{5}$, because $\\sqrt{4}=2$.",
     terms: [
@@ -542,7 +542,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
   "scale-drawing": {
     goal: "Convert between a scale drawing and real lengths or areas.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["square"].includes(w)),
     intuition:
       "A scale drawing is an accurate picture of an object, drawn smaller or larger. Its scale says how drawing lengths compare with real lengths, such as 1 cm for every 5 m. Every real length is the same multiple of its drawing length. An area has two directions, so areas are multiplied by that number times itself.",
     terms: ["scale"],

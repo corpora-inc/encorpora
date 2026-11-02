@@ -85,10 +85,7 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
   "angle-chase-chain": {
     goal: "Combine vertical angles, a triangle angle sum and angles made by parallel lines to find one angle.",
     senses: GEO_SENSES,
-    noLink: [
-      ...GEO_NOLINK.filter((w) => !["more than"].includes(w)),
-      "corresponding angle",
-    ],
+    noLink: [...GEO_NOLINK.filter((w) => !["more than"].includes(w))],
     intuition:
       "Each angle fact gives one angle from another. Vertical angles are the angles across from each other at a crossing, and they are equal. Angles along a straight line add to $180^\\circ$. Parallel lines are lines that never meet. When a line crosses two of them, it makes angles at two crossings. Corresponding angles are the angles in matching spots at the two crossings, and they are equal. Its same-side interior angles, between the parallel lines on one side of the crossing line, add to $180^\\circ$. The angles of a triangle add to $180^\\circ$. A chain uses several of these in a row.",
     terms: ["same-side-interior-angles", "corresponding-angles"],

@@ -37,7 +37,7 @@ export const k8TemplateGlossary: Record<
   },
   "circle-area-coefficient": {
     senses: { "more than": "more-than" },
-    noLink: ["edge", "square"],
+    noLink: ["edge"],
   },
   "circle-estimate-blanks": { noLink: ["edge"] },
   "classify-quadrilateral": {
@@ -94,7 +94,7 @@ export const k8TemplateGlossary: Record<
   "equal-area-part-size": { senses: { parts: "part" } },
   "equation-after-one-step": {
     senses: { balance: "balance-scale" },
-    noLink: ["left side", "sides", "terms", "whole"],
+    noLink: ["terms", "whole"],
   },
   "equivalent-denominator": { senses: { whole: "whole", rename: "rename" } },
   "equivalent-fractions-select": { noLink: ["changes", "part", "parts"] },
@@ -107,7 +107,6 @@ export const k8TemplateGlossary: Record<
   "find-quadrilateral": { senses: { sides: "side", square: "square-shape" } },
   "fraction-choice-compare": {
     senses: { "more than": "more-than", multiple: "multiple" },
-    noLink: ["parts", "wholes"],
   },
   "fraction-division-expression": {
     senses: { parts: "part", unit: "unit" },
@@ -148,7 +147,7 @@ export const k8TemplateGlossary: Record<
   },
   "join-within-10": { noLink: ["square"] },
   "kit-leftovers": { noLink: ["leaves"] },
-  "larger-share": { noLink: ["wholes"] },
+  "larger-share": {},
   "like-fraction-difference": { senses: { whole: "whole" } },
   "like-fraction-missing-part": { senses: { part: "part" } },
   "line-pair-select": { senses: { square: "square-shape" } },
@@ -156,7 +155,7 @@ export const k8TemplateGlossary: Record<
     senses: { square: "square-shape" },
   },
   "line-slope": { senses: { change: "change" }, noLink: ["changes"] },
-  "linear-equation": { noLink: ["sides"] },
+  "linear-equation": {},
   "make-hundred": {
     senses: { jump: "jump", jumps: "jump" },
     noLink: ["whole"],
@@ -206,7 +205,7 @@ export const k8TemplateGlossary: Record<
     senses: { part: "part" },
     noLink: ["change", "opposite", "rule"],
   },
-  "operation-sentence-choice": { noLink: ["jump"] },
+  "operation-sentence-choice": {},
   "pairing-leftover": { noLink: ["leaves"] },
   "pattern-pair-relationship": {
     senses: {
@@ -223,8 +222,8 @@ export const k8TemplateGlossary: Record<
     senses: { "more than": "more-than" },
     noLink: ["changes"],
   },
-  "power-doubling-story": { noLink: ["factors"] },
-  "power-missing-exponent": { noLink: ["factors"] },
+  "power-doubling-story": {},
+  "power-missing-exponent": {},
   "power-order-trap": {
     senses: {
       squared: "square-number",
@@ -249,14 +248,13 @@ export const k8TemplateGlossary: Record<
   "purchase-change": { noLink: ["more than"] },
   "pythagorean-converse": {
     senses: { side: "side", sides: "side" },
-    noLink: ["squaring"],
   },
   "quadrilateral-names": {
     senses: { "more than": "more-than" },
     noLink: ["rules"],
   },
   "quotient-of-powers-exponent": { noLink: ["rule"] },
-  "read-thermometer": { noLink: ["degrees"] },
+  "read-thermometer": {},
   "reasonable-measure-choice": { senses: { unit: "unit" } },
   "rectangle-area": { senses: { squares: "square-shape" } },
   "rectangle-border-length": {
@@ -281,7 +279,7 @@ export const k8TemplateGlossary: Record<
   "rename-time-units": { senses: { unit: "unit" } },
   "repeating-decimal-to-fraction": { noLink: ["tail", "whole"] },
   "right-triangle": { senses: { side: "side", sides: "side" } },
-  "right-triangle-missing-leg": { senses: { side: "side" }, noLink: ["sides"] },
+  "right-triangle-missing-leg": { senses: { side: "side" } },
   "root-between-integers": { senses: { factor: "factor-number" } },
   "round-large": { noLink: ["rule"] },
   "round-to-hundred": { noLink: ["changes", "rule"] },
@@ -302,7 +300,7 @@ export const k8TemplateGlossary: Record<
   },
   "share-remainder-fractions": { senses: { part: "part", parts: "part" } },
   "signed-changes-sum": { senses: { changes: "change" } },
-  "signed-fraction-product": { noLink: ["factors"] },
+  "signed-fraction-product": {},
   "similar-triangles-side": {
     senses: { side: "side", "similar triangles": "similar-figures" },
   },

@@ -52,7 +52,7 @@ export const linearSystemMethods: Record<string, ProblemMethod> = {
   "linear-system-pair": {
     goal: "Find the ordered pair $(x, y)$ that makes both equations true at the same time.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["opposite"].includes(w)),
     intuition: `${systemIntuition} To find it, remove one letter by combining the equations. Solve for the other letter, then go back for the first.`,
     terms: [...terms, "elimination"],
     method: [

@@ -237,7 +237,7 @@ export const regentsGeometryMeasureLessons = [
         "Ask whether the answer is a sensible part of the whole circle. A 140 degree arc should be a bit more than a third of the circumference.",
     }),
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["third"].includes(w)),
   },
   {
     ...chainLesson({

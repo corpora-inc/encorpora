@@ -104,6 +104,18 @@ export const functionsEntries: GlossaryEntry[] = [
     noLink: ["period"],
   },
   {
+    id: "compounding-period",
+    term: "compounding period",
+    forms: ["compounding period", "compounding periods"],
+    plain:
+      "The stretch of time after which interest is added to the balance, such as one month or one year.",
+    example:
+      "Interest compounded monthly has 12 compounding periods each year, so a yearly rate of 6% gives 0.5% each period.",
+    uses: ["interest", "balance-account", "percent", "rate"],
+    band: "algebra-1",
+    noLink: ["period"],
+  },
+  {
     id: "decreasing",
     term: "decreasing",
     forms: ["decreasing", "decreasing interval", "decreasing intervals"],

@@ -38,7 +38,7 @@ export const rationalLessons: Lesson[] = [
       whole: "whole",
       unit: "unit",
     },
-    noLink: ["side", "change", "parts", "part", "quarters"],
+    noLink: ["side", "change", "parts", "part"],
     objectives: [
       "Rewrite subtracting a signed fraction as adding its opposite, the number with the other sign.",
       "Add signed fractions with different denominators and simplify the result.",
@@ -113,7 +113,7 @@ export const rationalLessons: Lesson[] = [
       whole: "whole",
       unit: "unit",
     },
-    noLink: ["side", "rule", "parts", "part", "quarters"],
+    noLink: ["side", "rule", "parts", "part"],
     objectives: [
       "Find the sign of a product or quotient (the answer to a multiplication or a division) of signed fractions.",
       "Divide by a fraction by multiplying by its reciprocal, and simplify the result.",
@@ -183,7 +183,7 @@ export const rationalLessons: Lesson[] = [
       whole: "whole",
       unit: "unit",
     },
-    noLink: ["rule", "parts", "part", "quarters"],
+    noLink: ["rule", "parts", "part"],
     objectives: [
       "Read the main fraction bar of a complex fraction as dividing the whole top by the whole bottom.",
       "Simplify the top and the bottom, then divide using a reciprocal, the flipped fraction.",
