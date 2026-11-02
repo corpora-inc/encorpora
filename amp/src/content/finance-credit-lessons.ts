@@ -429,8 +429,9 @@ export const financeCreditLessons: Lesson[] = [
       change: "change",
       difference: "difference-subtract",
       part: "part",
+      rule: "rule",
     },
-    noLink: ["rule", "whole"],
+    noLink: ["whole"],
     titles: [
       "Credit costs interest on the unpaid part",
       "Turn a credit choice into numbers",

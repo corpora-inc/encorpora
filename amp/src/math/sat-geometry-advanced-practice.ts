@@ -378,7 +378,7 @@ function crossingCase(r: Random): SatGeometryAdvancedCase {
         premise.includes("parallel")
           ? `${reason}. Alternate interior angles sit between the parallel segments, on opposite sides of the crossing line.`
           : `${reason}.`,
-        `Two pairs of equal angles make the triangles similar: the same shape, different sizes. Triangle $AEC$ matches triangle $BED$, with $A\\leftrightarrow B$, $E\\leftrightarrow E$ and $C\\leftrightarrow D$.`,
+        `Two pairs of equal angles make the triangles similar: the same shape, possibly different sizes. Triangle $AEC$ matches triangle $BED$, with $A\\leftrightarrow B$, $E\\leftrightarrow E$ and $C\\leftrightarrow D$.`,
         `In similar triangles every side is scaled by the same number, so matching sides form equal ratios: ${ratioLine}`,
         `Cross-multiply, multiplying each side by both denominators, then divide to get the unknown alone.`,
         `The length of segment ${ask} is ${answer}.`,

@@ -97,6 +97,7 @@ export const quadraticIrrationalLesson: Lesson = {
     "standard form": "standard-form-polynomial",
     "left side": "side-of-equation",
     "right side": "side-of-equation",
+    opposite: "opposite-number",
   },
   noLink: [
     "part",
@@ -128,7 +129,6 @@ export const quadraticIrrationalLesson: Lesson = {
     "mirror image",
     "rule",
     "rules",
-    "opposite",
     "opposites",
     "unit",
     "units",

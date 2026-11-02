@@ -571,7 +571,7 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "dilation",
     forms: ["dilation", "dilations", "dilate", "dilated"],
     plain:
-      "A transformation that enlarges or shrinks a figure from a fixed point, multiplying every distance from that point by the scale factor.",
+      "A transformation that resizes a figure from a fixed point, multiplying every distance from that point by the scale factor.",
     example:
       "A dilation with scale factor 2 turns a 3 cm side into a 6 cm side.",
     uses: ["transformation", "point", "distance", "scale-factor", "side"],
