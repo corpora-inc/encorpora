@@ -10,7 +10,7 @@ import { templateGrade } from "../server/mixed-practice";
 import { challengePool } from "./challenge-pool";
 import { paperExclusions } from "./paper-exclusions";
 
-/** A daily workbook: about 30, 45 or 60 minutes of printed work chosen from
+/** A workbook: about 30, 45 or 60 minutes of printed work chosen from
  * one learner's evidence. The spec names every problem by template and seed,
  * so the same spec always prints the same pages, and a new seed is a new
  * workbook. Selection is a scheduling heuristic like mixed practice: it aims

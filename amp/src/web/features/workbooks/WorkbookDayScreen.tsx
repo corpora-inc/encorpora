@@ -40,7 +40,6 @@ import {
   dateLabel,
   defaultPaper,
   isDate,
-  leanNames,
   localDate,
   sameChoices,
   searchChoices,
@@ -281,13 +280,9 @@ function Today({
           disabled={choosing}
           onChange={(lean) => roll({ ...choices, lean })}
           options={[
-            { value: "easier", label: leanNames.easier, detail: "More review" },
-            { value: "level", label: leanNames.level, detail: "Recommended" },
-            {
-              value: "stretch",
-              label: leanNames.stretch,
-              detail: "A bit above",
-            },
+            { value: "easier", label: "Easier", detail: "More review" },
+            { value: "level", label: "At level", detail: "Recommended" },
+            { value: "stretch", label: "Stretch", detail: "A bit above" },
           ]}
         />
         <Segmented<"lesson" | "problems">

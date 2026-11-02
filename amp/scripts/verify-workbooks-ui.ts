@@ -1,9 +1,10 @@
 /**
- * Daily workbook screens in a real browser: the real Fastify routes compose
+ * Workbook screens in a real browser: the real Fastify routes compose
  * and store workbooks for a synthetic learner (in memory); only sign-in and
  * the family summary are fixtures. Checks overflow, touch targets, that no
  * control moves while workbooks load, change, fail or download, real URLs
- * (Back, reload), and the unlicensed state. Screenshots at 320/390/768/1280
+ * (Back, reload), mixing and matching (areas, level, problems only), and
+ * the unlicensed state. Screenshots at 320/390/768/1280
  * in light and dark go to docs/reviews/workbooks/.
  *
  *   npx tsx scripts/verify-workbooks-ui.ts
@@ -434,19 +435,19 @@ try {
       await page.getByText(/About (55|60|65) minutes/).waitFor();
       assert.deepEqual(await controlBoxes(page), before, `${label}: length`);
 
-      // Another one: a new number, a new URL, nothing moves.
+      // Roll another: a new number, a new URL, nothing moves.
       const firstCode = await page
         .getByLabel("Workbook code")
         .first()
         .textContent();
-      await page.getByRole("button", { name: "Another one" }).click();
+      await page.getByRole("button", { name: "Roll another" }).click();
       await page.getByRole("heading", { name: "No. 2" }).waitFor();
       assert.match(page.url(), /number=2/);
       assert.notEqual(
         await page.getByLabel("Workbook code").first().textContent(),
         firstCode,
       );
-      assert.deepEqual(await controlBoxes(page), before, `${label}: another`);
+      assert.deepEqual(await controlBoxes(page), before, `${label}: roll`);
 
       // A renderer outage still gives the parent a printable copy.
       failNextDownload = "pdf";
@@ -511,6 +512,60 @@ try {
         "true",
       );
 
+      // Mix and match: each choice rolls a new workbook with it, at its own
+      // URL, and nothing moves. An area, then a stretch, then problems only.
+      const area = page
+        .getByRole("group", { name: "Areas" })
+        .getByRole("button")
+        .nth(1);
+      await area.waitFor();
+      const areaLabel = (await area.textContent())!.trim();
+      await area.click();
+      await page.getByRole("heading", { name: "No. 3" }).waitFor();
+      assert.match(page.url(), /areas=/);
+      assert.equal(await area.getAttribute("aria-pressed"), "true");
+      await page
+        .getByText(new RegExp(`^${areaLabel}`))
+        .first()
+        .waitFor();
+      assert.deepEqual(await controlBoxes(page), before, `${label}: area`);
+      await page.getByRole("radio", { name: /^Stretch/ }).click();
+      await page.getByRole("heading", { name: "No. 4" }).waitFor();
+      assert.match(page.url(), /lean=stretch/);
+      assert.deepEqual(await controlBoxes(page), before, `${label}: lean`);
+      await page.getByRole("radio", { name: /^Problems only/ }).click();
+      await page.getByRole("heading", { name: "No. 5" }).waitFor();
+      assert.match(page.url(), /lesson=off/);
+      assert.equal(
+        await page
+          .getByLabel("Workbook contents")
+          .getByText("Today's idea")
+          .count(),
+        0,
+      );
+      assert.deepEqual(await controlBoxes(page), before, `${label}: lesson`);
+      await assertLayout(page, `${label} mixed`);
+      await assertSegments(page, `${label} mixed`);
+      await page.screenshot({
+        path: `${output}day-mixed-${label}.png`,
+        fullPage: true,
+      });
+      // Back restores the previous workbook and its choices.
+      await page.goBack();
+      await page.getByRole("heading", { name: "No. 4" }).waitFor();
+      assert.equal(
+        await page
+          .getByRole("radio", { name: /^With a lesson/ })
+          .getAttribute("aria-checked"),
+        "true",
+      );
+      assert.equal(
+        await page
+          .getByRole("radio", { name: /^Stretch/ })
+          .getAttribute("aria-checked"),
+        "true",
+      );
+
       // History lists every stored workbook, newest first.
       await page.getByRole("link", { name: "Past workbooks" }).click();
       await page.waitForURL(new RegExp(`/learners/${learnerId}/workbooks$`));
@@ -519,7 +574,7 @@ try {
         .getByRole("list", { name: "Workbooks" })
         .getByRole("listitem")
         .count();
-      assert.equal(items, 5);
+      assert.equal(items, 8);
       await assertLayout(page, `${label} history`);
       await page.screenshot({
         path: `${output}history-${label}.png`,

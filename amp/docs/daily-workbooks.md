@@ -1,6 +1,6 @@
-# Daily workbooks
+# Workbooks
 
-A daily workbook is a printable document of about 30, 45 or 60 minutes of work, chosen for one learner from their practice evidence. Each workbook is new and they never run out. The layout and structure are the same at every level; only the problems change. Issue [#1776](https://github.com/corpora-inc/encorpora/issues/1776) tracks the feature. Parent entry points stay off until release: `workbooksEnabled` in `src/web/features/workbooks/config.ts` is the one switch. The routes work by URL either way.
+A workbook is a printable document of about 30, 45 or 60 minutes of work, chosen for one learner from their practice evidence. Parents print as many or as few as they like: every roll is a different workbook at the learner's level, and they never run out. Parents can mix and match areas, the level and whether a lesson is included. The layout and structure are the same at every level; only the problems change. Issue [#1776](https://github.com/corpora-inc/encorpora/issues/1776) tracks the feature. Parent entry points stay off until release: `workbooksEnabled` in `src/web/features/workbooks/config.ts` is the one switch. The routes work by URL either way.
 
 ## Structure
 
@@ -18,9 +18,30 @@ The estimate never exceeds the chosen length. The challenge keeps to a fifth of 
 
 Selection is a scheduling heuristic, like mixed practice. Success levels per section are targets, not measurements. Problem times in `minutesFor` are editorial estimates, to be calibrated against in-app response times.
 
+## Choices
+
+A workbook's choices are stored in its spec (`choices`, spec version 2):
+
+| Choice | Values | Effect |
+| --- | --- | --- |
+| Areas | Mixed (recommended), or strands near the learner's level | Every section draws only from the chosen strands. The areas offered are strands with printable work from 1.5 grades below to 1 grade above the strand's estimate (`workbookAreas`) |
+| Level | Easier (review), At level, Stretch | Moves practice and today's idea by −0.5, 0 or +0.4 grades. Easier also has half again as much review. The warm-up and the challenge keep their windows |
+| Today's idea | With a lesson, Problems only | Problems only leaves out the lesson; practice takes its time |
+
+Version 1 specs have no `choices` and read as mixed, at level, with a lesson (`specChoices`). They reprint the same problems under the same code; `tests/fixtures/workbook-v1-spec.json` checks it.
+
+## Variety
+
+Each roll is composed after the learner's recent workbooks (the last 12, `WORKBOOK_HISTORY`), so it avoids what they printed. The newest weighs most:
+- Practice, warm-up, the challenge and review templates put work no recent workbook printed first, then skills not practised recently, then this workbook's own order.
+- Today's idea rotates among the eligible frontier lessons: a lesson no recent workbook taught comes first, then started-but-unsecured skills, then new skills near the frontier.
+- Review brings back due skills that a recent workbook has not reviewed first, then the longest overdue (by week).
+
+The selection windows stay the same, so a roll is varied but never off level. Over six rolls in a day, the mean template overlap between consecutive workbooks (Jaccard) is 0.035, against 0.170 before history-aware selection, and every roll has a different lesson (`tests/workbook.test.ts`).
+
 ## Determinism
 
-`composeWorkbook` (`src/workbook/compose.ts`) returns a `WorkbookSpec` that names every problem by template, version and seed. The seed derives from learner key, date and workbook number, so the same inputs reprint the same workbook, and "another one" (the next number) is new. `workbookCode` is a short hash of the spec, printed on every page so results can be entered against exactly those problems.
+`composeWorkbook` (`src/workbook/compose.ts`) returns a `WorkbookSpec` that names every problem by template, version and seed. The seed derives from learner key, date, workbook number and choices. With the same evidence and history, the same inputs compose the same workbook, and a stored spec always reprints the same pages. "Roll another" (the next number) is new. `workbookCode` is a short hash of the spec, printed on every page so results can be entered against exactly those problems.
 
 ## Rendering
 
@@ -30,6 +51,7 @@ Selection is a scheduling heuristic, like mixed practice. Success levels per sec
 - **Bands.** The working level sets the print scale: kindergarten to grade 2 (Andika, the single-storey letters children learn to write; 14–15 pt; round badges and large answer boxes), grades 3–5 (12 pt, graph-paper workspace), grades 6–8 (11 pt) and high school (10.75 pt, dot-grid workspace, outlined number badges and a single ink colour). Reading text is IBM Plex Sans (1, l and I differ; 0 is a plain oval); headings are Fraunces. All are embedded (SIL OFL 1.1), so every renderer prints the same letters.
 - **Problems.** Problems sit two to a row with a hanging number badge coloured by section. Worked steps, tables and long formulas take a full row. Each row is one block that a page break never splits. Workspace is a light grid sized to the work: a short answer zone for choices, room to work for typed answers, a large area for the challenge.
 - **Today's idea.** The lesson card shows the summary, one explanation under "The idea" (an illustrated section, else the plain-words introduction), its diagram when the lesson has one, the worked example with numbered steps, "Words to know" (up to six shared-glossary entries the card's own text uses, in first-use order, each with its plain definition; the lesson's senses decide ambiguous words) and the first pitfall. A card always fits one page with its heading, however long the lesson: the composition script measures it and gives up content one step at a time, in a fixed order (`cardTrimRanks`): extra paragraphs (last first), the pitfall, the first paragraph's later sentences, the diagram, words to know (one at a time), the worked example's later steps (the card then says the rest is in the answer key, and the key prints the whole example), the example's figure; only then does it print smaller, never below 75%. `test:workbook-paper-ui` composes every lesson card at every print band on Letter and A4 and fails any taller than a page. When the card's page has room left, a "Your turn" space follows it. Multi-part items print each blank's options as an aligned grid of drawn boxes.
+- **Cover and footers.** The cover reads "Workbook for <first name>" and the workbook's date written out (the parent's local date when it was made); every footer reads "AMP · Workbook for <first name> · <short date> · No. n · <code>". The name comes from the learner's display name at print time, outside the spec, so stored workbooks of every version print the same cover. Without a name (samples), the cover says "Workbook" with a line to write a name.
 - **Results.** The results page is always one page. The composition script tries four densities in order and keeps the first that fits: three tile columns, four columns, a compact heading and smaller QR code, then compact tiles. Only past those do the tiles print smaller, never below 70%. Pass `results: { baseUrl, learnerId, workbookId }` to print a QR code for `<baseUrl>/learners/<learnerId>/workbooks/<workbookId>/results` (`src/workbook/links.ts`). The code is drawn as SVG from the `qrcode` package's module matrix.
 
 ## Storage and API
@@ -40,8 +62,9 @@ The routes (`src/workbook/routes.ts`) require the learner's parent with consent 
 
 | Route | Result |
 | --- | --- |
-| `POST /api/v1/learners/:id/workbooks` `{date, minutes: 30\|45\|60, paper: letter\|a4, number?}` | The workbook for that date, number and length: stored the first time (201), returned unchanged afterwards (200). No `number` means the next number for the date ("Another one"). A new workbook is for today (within a day of the server's UTC date); stored ones of any date stay available. A changed paper size is saved; the problems are not |
-| `GET /api/v1/learners/:id/workbooks[?date=]` | History, newest first, as summaries (sections, problem counts, estimated minutes, code), and `pdf`: whether downloads are PDFs. Without a configured renderer the screens download the printable document instead |
+| `POST /api/v1/learners/:id/workbooks` `{date, minutes: 30\|45\|60, paper: letter\|a4, number?, choices?: {areas, lean, lesson}}` | The workbook for that date, number and length: stored the first time (201), with the choices given; returned unchanged afterwards (200), with its own. No `number` means the next number for the date ("Roll another"). Up to 999 a day. Areas must be among those offered (400 otherwise). A new workbook is for today (within a day of the server's UTC date); stored ones of any date stay available. A changed paper size is saved; the problems are not |
+| `GET /api/v1/learners/:id/workbooks/areas` | The areas a parent can choose for this learner, in curriculum order, with their names |
+| `GET /api/v1/learners/:id/workbooks[?date=]` | History, newest first, as summaries (sections, problem counts, estimated minutes, choices, code), and `pdf`: whether downloads are PDFs. Without a configured renderer the screens download the printable document instead |
 | `GET /api/v1/learners/:id/workbooks/:workbookId/pdf[?format=Letter\|A4]` | The workbook PDF, rendered by the [render service](deployment.md#workbook-render-service) for each request. PDFs are never stored; only the spec is. A renderer that is down answers a logged 503, "Your workbook is being prepared; try again in a minute.", and the screen downloads the printable document instead. 410 as below |
 | `GET /api/v1/learners/:id/workbooks/:workbookId/document[?paper=]` | The printable workbook as one HTML document. 410 when a template has changed version since the workbook was made, because its problems would no longer reprint exactly |
 
@@ -75,9 +98,9 @@ The weights are in [adaptive evidence](adaptive-evidence.md).
 
 ## Parent screens
 
-- `/learners/:id/workbooks/:date` (today): length and paper size as segmented controls, Download and Another one. Length, paper and number live in the URL (`?minutes=&paper=&number=`), so Back, reload and shared links restore the screen. Opening it makes today's first workbook, from the starting estimate when the learner has no answers yet. Other dates list that day's workbooks.
+- `/learners/:id/workbooks/:date` (today): length, paper size, level and today's idea as segmented controls, areas as one row of chips that scrolls sideways (so loading them never moves anything), Download and Roll another. Changing a level, area or today's idea rolls a new workbook with that choice. Length, paper, number and choices live in the URL (`?minutes=&paper=&number=&areas=&lean=&lesson=off`), so Back, reload and shared links restore the screen. A stored workbook keeps its own choices, and the URL follows them. Opening it makes today's first workbook, from the starting estimate when the learner has no answers yet. Other dates list that day's workbooks.
 - `/learners/:id/workbooks`: every workbook, newest first, each downloadable again.
-- Family → Learners shows "Download today's workbook" and "Past workbooks" when `workbooksEnabled` is on and the learner can practice.
+- Family → Learners shows "Make a workbook" and "Past workbooks" when `workbooksEnabled` is on and the learner can practice.
 
 `npm run test:workbooks-ui` runs the real routes (in memory) in Chromium at 320, 390, 768 and 1280 px, light and dark: overflow, touch targets, controls that never move while workbooks load, change, fail or download, Back and reload, and the unlicensed state. Screenshots: `docs/reviews/workbooks/`.
 
