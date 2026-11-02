@@ -1309,7 +1309,11 @@ export function PracticeWorkspace(props: Props) {
           tabIndex={0}
           aria-label="Problem workspace"
         >
-          <div className="problem-content" data-template={problem.templateId}>
+          <div
+            className="problem-content"
+            data-template={problem.templateId}
+            data-problem-id={problem.id}
+          >
             <h2
               id="problem-prompt"
               ref={prompt}
