@@ -42,42 +42,55 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
   "area-tiling-distributive": {
     goal: "Given a rectangle tiled with unit squares, a rectangle split into two parts, or an L-shaped figure, use the parts to find or write its area.",
     intuition:
-      "Area is the number of unit squares that cover a shape with no gaps and no overlaps. A rectangle with 5 rows of 7 squares has $5\\times7=35$ squares. If a line splits the rectangle into two smaller rectangles, count each part and add. The total does not change, because every square is in exactly one part.",
+      "Area is how many unit squares cover a shape, with no gaps and no overlaps. A unit square is a square with sides 1 unit long. A rectangle with 5 rows of 7 squares has $5\\times7=35$ squares. The sign $\\times$ means times: 5 groups of 7. A line can split a shape into two rectangles. An L-shape is two rectangles joined into one bent shape. Find the area of each part, then add. The total stays the same, because every square is in just one part. In a number sentence, multiply before you add, unless parentheses ( ) say to do a part first.",
+    senses: {
+      product: "product-multiply",
+      products: "product-multiply",
+      square: "square-shape",
+      part: "part",
+      parts: "part",
+      side: "side",
+      sides: "side",
+      unit: "unit",
+      units: "unit",
+      whole: "whole",
+    },
     terms: [
       "unit-square",
       [
         "composite-figure",
-        "A rectilinear figure's sides all meet at right angles, like an L-shape.",
+        "Here an L-shaped figure: two rectangles joined into one bent shape, with only square corners.",
       ],
     ],
     method: [
-      "Find a line that splits the figure into rectangles with no overlap. Use the dashed line if one is drawn.",
-      "For each rectangle, multiply its two side lengths.",
-      "Add the areas of the parts. If a sentence is asked for, write one product for each part, joined by $+$.",
-      "Check against one big rectangle when the figure is a rectangle: the sum of the parts must equal rows times columns.",
+      "Find a line that splits the figure into rectangles that do not overlap. Use the dashed line if one is drawn.",
+      "For each rectangle, multiply its height by its width. That counts its squares: rows times squares in a row.",
+      "Add the areas of the parts. If a number sentence is asked for, write one product, the answer to a times, for each part. Join them with $+$.",
+      "Check: if the whole figure is a rectangle, the parts must add up to its height times its whole width.",
     ],
     watch:
-      "Every part is multiplied by its own two sides. In $a\\times(b+c)$, the $a$ multiplies both $b$ and $c$, so write $a\\times b+a\\times c$, not $a\\times b+c$. In an L-shape do not count a region twice.",
+      "Multiply each part by its own two sides. If the height is 5 and the widths are 2 and 3, write $5\\times2+5\\times3$, not $5\\times2+3$. In an L-shape, do not count a part twice.",
   },
   "estimate-reasonableness": {
     goal: "Given a story with numbers, round them to choose the best estimate, or use an estimate to decide whether a calculated answer is reasonable.",
     intuition:
-      "An estimate is a number close to the exact answer that is easy to find. To estimate, round each number to a place where the arithmetic is easy, then do the operation the story calls for. An estimate cannot confirm every digit of an answer, but it can show that an answer is the wrong size, such as ten times too large.",
+      "An estimate is a number close to the exact answer that is quick to find. To round a number means to swap it for a close, easy number. Rounding to the nearest ten gives the closest number that ends in 0, so 48 rounds to 50. Round the numbers the way the question says. Then do the operation the story calls for: add, subtract, multiply or divide. An answer is reasonable if it is close to the estimate. An estimate cannot check every digit, but it can catch an answer of the wrong size, like ten times too big.",
+    senses: { product: "product-multiply" },
     terms: [
       "estimate",
       [
         "estimate",
-        "An answer is reasonable when it is close to the estimate; one far from it likely has an error.",
+        "An answer is reasonable when it is close to the estimate. An answer far from it likely has a mistake.",
       ],
     ],
     method: [
-      "Decide the operation from the story: equal groups multiply, sharing equally divides, combining adds.",
-      "Round each number as the question says, for example to the nearest ten.",
+      "Choose the operation from what the story asks. The total of equal groups: multiply. How many in each group, or how many groups: divide. Putting amounts together: add.",
+      "Round each number the way the question says, for example to the nearest ten.",
       "Do the operation with the rounded numbers.",
-      "To check an answer, compare it with the estimate. If it is close, it is reasonable. If it is far off, look for a place-value or operation error.",
+      "To check an answer, compare it with the estimate. If it is close, it is reasonable. If it is far off, look for a mistake in the place value or the operation.",
     ],
     watch:
-      "Do not add when the story gives equal groups. Count the zeros in the rounded product: a result ten times too large or too small is a place-value error.",
+      "Do not add when the story asks for the total of equal groups. Count the zeros in a rounded product, the answer to a times. When you multiply, an answer ten times too big or too small has a mistake, often a digit in the wrong place.",
   },
   "unit-chain-conversion": {
     goal: "Given a quantity in one set of units and the conversion facts, find it in the requested units by multiplying through a chain of conversions.",
@@ -104,9 +117,10 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
       "For area, multiply by the length number twice; for volume, three times: $1\\text{ m}^3 = 100^3\\text{ cm}^3 = 1{,}000{,}000\\text{ cm}^3$, not 100. Convert time units too when a rate mixes hours and minutes.",
   },
   "fraction-of-set": {
+    senses: { part: "part", parts: "part", whole: "whole" },
     goal: "Given a set of objects and a fraction, find how many objects the fraction names.",
     intuition:
-      "In a fraction such as $\\frac{3}{4}$, the denominator 4 says to split the whole set into 4 equal groups. The numerator 3 says to take 3 of those groups. So $\\frac{3}{4}$ of 12 objects means 4 groups of 3 objects, and 3 of those groups make 9 objects.",
+      "A set is a group of objects, like 12 marbles. A fraction such as $\\frac{3}{4}$ has two numbers. The bottom number, 4, is the denominator. It says to split the set into 4 equal groups. The top number, 3, is the numerator. It says to take 3 of those groups. So $\\frac{3}{4}$ of 12 marbles means 4 groups of 3 marbles, and 3 of those groups make 9 marbles.",
     terms: [
       [
         "denominator",
@@ -118,12 +132,12 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Divide the set by the denominator to find how many objects are in one equal group.",
-      "Multiply by the numerator to find how many objects are in that many groups.",
-      "For the rest of the set, take the groups that remain: denominator minus numerator.",
+      "Divide the set by the denominator. That gives the number of objects in one equal group.",
+      "Multiply by the numerator. That gives the number of objects in that many groups.",
+      "For the rest of the set, count the groups that are left: the denominator minus the numerator. Multiply by the number in one group.",
     ],
     watch:
-      "The fraction names groups, not objects. $\\frac{3}{4}$ of 12 is not 3. First find the size of one group, then count 3 groups.",
+      "The fraction names groups, not objects. $\\frac{3}{4}$ of 12 is not 3. First find the size of one group, then take 3 groups.",
   },
 };
 
@@ -133,13 +147,13 @@ export const numberMeasurementGapPrinciples: Record<string, string> = {
   "equivalent-expressions-check":
     "Two expressions are equivalent when they have equal values for every allowed value of the variable. The distributive property $a(b+c)=ab+ac$ and combining like terms $px+qx=(p+q)x$ turn an expression into an equivalent one. A linear expression $mx+k$ is determined by its values at two different inputs, so equal values at two inputs show that two linear expressions are equivalent, while different values at one input show that they are not.",
   "area-tiling-distributive":
-    "The area of a region covered by unit squares without gaps or overlaps is the number of squares. A rectangle with $a$ rows of $b$ squares has area $a\\times b$. Area is additive for regions that do not overlap, so splitting the width $b+c$ gives $a\\times(b+c)=a\\times b+a\\times c$.",
+    "Area is the number of unit squares that cover a shape with no gaps and no overlaps. A rectangle with 5 rows of 7 squares has area $5\\times7=35$. The areas of parts that do not overlap add up to the whole area. So splitting a width of 7 into $4+3$ gives $5\\times(4+3)=5\\times4+5\\times3$. This is called the distributive property.",
   "estimate-reasonableness":
-    "Rounding a number to the nearest ten changes it by at most 5, so an operation on rounded numbers gives a value close to the exact result. An estimate that differs from a calculated result by a factor of about 10 shows a place-value or operation error. An estimate cannot verify exact digits.",
+    "Rounding to the nearest ten moves a number by 5 or less. When you add or multiply numbers that are big compared with 5, working with rounded numbers gives an answer near the exact one. Subtracting two numbers that are close together can give a poor estimate. When you multiply numbers that are 10 or more, an answer ten times bigger or smaller than the estimate cannot be right. An estimate cannot show that every digit is right.",
   "unit-chain-conversion":
     "If $1\\text{ A} = k\\text{ B}$, then $\\frac{k\\text{ B}}{1\\text{ A}} = 1$, and multiplying a quantity by this ratio changes its units without changing its size. For lengths, $1\\text{ A}^2 = k^2\\text{ B}^2$ and $1\\text{ A}^3 = k^3\\text{ B}^3$.",
   "fraction-of-set":
-    "For whole numbers $a$, $b$ and $n$ with $b$ dividing $n$, $\\frac{a}{b}$ of $n$ objects is $a\\times\\frac{n}{b}$. The unit fraction $\\frac{1}{b}$ of $n$ is one of $b$ equal groups, and $\\frac{a}{b}$ is $a$ of them.",
+    "To find $\\frac{3}{4}$ of 12, split 12 into 4 equal groups of 3, then take 3 groups: $3\\times3=9$. With letters, $\\frac{a}{b}$ of $n$ objects is $a\\times(n\\div b)$. Here $b$ is not 0, $n$ splits evenly into $b$ groups, and $a$ is no more than $b$. One of those groups is $\\frac{1}{b}$ of the set.",
 };
 
 export const numberMeasurementGapLessons: Lesson[] = [
@@ -269,12 +283,25 @@ export const numberMeasurementGapLessons: Lesson[] = [
   },
   {
     id: "area-tiling-distributive",
+    noLink: ["leaves", "mean"],
     title: "Find area by splitting a rectangle",
     summary:
-      "Area counts unit squares. Split a rectangle or an L-shape into rectangles, find each area, and add.",
+      "Area is how many unit squares cover a shape, with no gaps and no overlaps. A unit square is a square with sides 1 unit long. A rectangle with 5 rows of 7 squares has an area of $5\\times7=35$ square units. The sign $\\times$ means times. You can split a rectangle, or an L-shape, into smaller rectangles. Find the area of each part, then add.",
     templateIds: ["area-tiling-distributive"],
+    senses: {
+      product: "product-multiply",
+      products: "product-multiply",
+      square: "square-shape",
+      part: "part",
+      parts: "part",
+      side: "side",
+      sides: "side",
+      unit: "unit",
+      units: "unit",
+      whole: "whole",
+    },
     objectives: [
-      "Write the area of a split rectangle as a sum of two products.",
+      "Write the area of a split rectangle as the sum of two products.",
       "Find the area of an L-shaped figure by splitting it into two rectangles.",
     ],
     sections: [
@@ -282,8 +309,10 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Count squares in parts",
         paragraphs: [
-          "You need to multiply two whole numbers and know that a rectangle's area is rows times squares in a row. A unit square has sides of length 1 and an area of 1 square unit.",
-          "A rectangle with 5 rows of 7 squares has $5\\times7=35$ squares. Draw a line that splits it into a top part and a bottom part. Each part is a rectangle, each square is in exactly one part, and so the two counts add to 35.",
+          "You will multiply small numbers, like $2\\times7$. A product is the answer to a times: the product of 2 and 7 is 14.",
+          "Look at a rectangle with 5 rows of 7 squares. It has $5\\times7=35$ squares: 5 groups of 7.",
+          "Draw a line after the second row. Now there is a top part with 2 rows and a bottom part with 3 rows. Each part is a rectangle.",
+          "Every square is in just one part. So the two parts add up to all 35 squares.",
         ],
       },
     ],
@@ -291,10 +320,10 @@ export const numberMeasurementGapLessons: Lesson[] = [
       prompt:
         "A rectangle has 5 rows of 7 unit squares. A line splits it after the second row. Write the area as a sum of two products and find it.",
       steps: [
-        "The top part has 2 rows of 7 squares: $2\\times7=14$.",
-        "The bottom part has the other $5-2=3$ rows of 7 squares: $3\\times7=21$.",
-        "Add the parts: $14+21=35$ square units.",
-        "Check with the whole rectangle: $5\\times7=35$.",
+        "The top part has 2 rows of 7 squares. Its area is $2\\times7=14$.",
+        "The bottom part has the other $5-2=3$ rows of 7 squares. Its area is $3\\times7=21$.",
+        "Add the parts, because every square is in one part: $14+21=35$ square units.",
+        "Check with the whole rectangle: $5\\times7=35$. Both ways match.",
       ],
       answer: "$2\\times7+3\\times7=35$ square units",
     },
@@ -303,44 +332,50 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "method",
         title: "Split, multiply, add",
         paragraphs: [
-          "Both parts have the same row length, 7, so the number of rows is split: $5=2+3$ and $5\\times7=2\\times7+3\\times7$. This is the distributive property for whole numbers: $a\\times(b+c)=a\\times b+a\\times c$.",
-          "For an L-shaped figure, use the dashed line to split it into two rectangles that do not overlap. Find each rectangle's sides from the labels, multiply, and add. Adding all the side lengths around the figure gives its perimeter, not its area.",
+          "Both parts have rows of 7. So the 5 rows split into 2 rows and 3 rows: $5\\times7=2\\times7+3\\times7$.",
+          "In a number sentence, multiply before you add. Parentheses ( ) mean do that part first. In $(2+3)\\times7$, add $2+3=5$ first, then multiply by 7.",
+          "So $(2+3)\\times7=2\\times7+3\\times7$. Multiplying each part of a sum like this is called the distributive property. It works for any whole numbers.",
+          "For an L-shape, two rectangles joined into one bent shape, use the dashed line to split it. Find each rectangle's sides from the labels, multiply, and add. Adding all the side lengths around the figure gives its perimeter, not its area.",
         ],
       },
       {
         stage: "formal",
         title: "Why the parts add",
         paragraphs: [
-          "The area of a region covered by unit squares without gaps or overlaps is its number of squares. Area is additive: if a region is split into parts that share no squares, its area is the sum of the parts' areas.",
-          "A rectangle $a$ units by $(b+c)$ units splits into rectangles $a$ by $b$ and $a$ by $c$, so $a\\times(b+c)=a\\times b+a\\times c$.",
+          "The area of a shape covered by unit squares, with no gaps or overlaps, is its number of squares.",
+          "If a shape is split into parts that share no squares, its area is the sum of the parts' areas.",
+          "So a rectangle $a$ units tall and $b+c$ units wide splits into one $a$ by $b$ and one $a$ by $c$. The letters stand for whole numbers. This gives $a\\times(b+c)=a\\times b+a\\times c$.",
         ],
       },
     ],
     pitfalls: [
-      "Multiply each part by its own sides. $a\\times b+c$ leaves out the second part's $a$.",
-      "Do not count squares in an overlap twice.",
-      "Area counts squares inside. Adding all the side lengths gives perimeter.",
+      "Multiply each part by its own two sides. $5\\times2+3$ leaves the 5 off the second part. Write $5\\times2+5\\times3$.",
+      "Do not count any squares twice.",
+      "Area counts the squares inside. Adding all the side lengths gives perimeter.",
     ],
     parentGuide:
-      "Ask the learner to split a 4 by 6 rectangle two different ways and show that both give the same area.",
+      "Ask the learner to split a 4 by 6 rectangle in two different ways, and to show that both give the same area.",
   },
   {
     id: "estimate-reasonableness",
+    noLink: ["mean"],
     title: "Estimate and check reasonableness",
     summary:
-      "Round to easy numbers, do the operation the story calls for, and use the estimate to catch answers of the wrong size.",
+      "An estimate is a number close to the exact answer that is quick to find. To round a number means to swap it for a close, easy number, like 48 to 50. Round the numbers, then do the operation the story calls for. An answer is reasonable if it is close to the estimate. If it is far off, like ten times too big, look for a mistake.",
     templateIds: ["estimate-reasonableness"],
+    senses: { product: "product-multiply" },
     objectives: [
-      "Round numbers as asked and choose the best estimate.",
-      "Use an estimate to decide whether a calculated answer is reasonable.",
+      "Round numbers as the question asks and choose the best estimate.",
+      "Use an estimate to decide whether a worked-out answer is reasonable.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Close is useful",
         paragraphs: [
-          "You need to round a number to the nearest ten and multiply or divide whole numbers. An estimate is a number close to the exact answer that is easy to find. To estimate, round each number, then do the operation the story calls for.",
-          "An estimate cannot confirm every digit. It can show that a calculated answer has the wrong size, for example ten times too large.",
+          "You will round to the nearest ten and multiply. Rounding to the nearest ten gives the closest number that ends in 0. So 48 rounds to 50, and 19 rounds to 20.",
+          "48 × 19 is hard to work out in your head. 50 × 20 is easy: 5 tens times 2 tens is 10 hundreds, or 1,000. So 48 × 19 is about 1,000.",
+          "An estimate cannot check every digit. But it can catch an answer of the wrong size. 9,120 is about ten times too big to be 48 × 19.",
         ],
       },
     ],
@@ -348,10 +383,10 @@ export const numberMeasurementGapLessons: Lesson[] = [
       prompt:
         "A school orders 48 boxes with 19 pencils in each box. Kai calculated 912 pencils. Round each number to the nearest ten. Is 912 reasonable?",
       steps: [
-        "Equal groups call for multiplication.",
-        "Round: 48 is about 50 and 19 is about 20.",
+        "The story has 48 equal groups of 19 pencils, so multiply.",
+        "Round each number to the nearest ten: 48 is about 50, and 19 is about 20.",
         "Multiply the rounded numbers: $50\\times20=1000$.",
-        "Compare: 912 is close to 1000, so the answer is reasonable. An answer of 9,120 or 91 would be far from 1000.",
+        "912 is close to 1000, so it is reasonable. An answer of 9,120 or 91 would be far from 1000, so it would be wrong.",
       ],
       answer: "Yes, 912 is reasonable because the estimate is 1000.",
     },
@@ -360,26 +395,27 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "method",
         title: "Operation, rounding, comparison",
         paragraphs: [
-          "First decide the operation from the story. Equal groups mean multiply, sharing equally means divide, and joining amounts means add. Then round every number as the question says and compute with the rounded numbers.",
-          "To judge a calculated answer, compare its size with the estimate. A product ten times too large or too small is a place-value error. Close does not mean exact, so a close answer is reasonable, not guaranteed correct.",
+          "First choose the operation from what the story asks. To find the total of equal groups, multiply. To find how many are in each group, or how many groups, divide. To put amounts together, add.",
+          "Then round every number the way the question says. Work out the answer with the rounded numbers.",
+          "To judge an answer, compare its size with the estimate. A product, the answer to a times, that is ten times too big or too small has a mistake. Often a digit is in the wrong place, or the wrong operation was used. Close does not mean exact. A close answer is reasonable, but it could still have a small mistake.",
         ],
       },
       {
         stage: "formal",
         title: "How close an estimate is",
         paragraphs: [
-          "Rounding to the nearest ten changes a number by at most 5, so a product of rounded numbers is close to the exact product when the numbers are not small. The estimate gives the size, not the exact digits.",
-          "An answer that differs from the estimate by about a factor of 10 cannot be right, so rounding can prove an answer wrong but not prove it right.",
+          "Rounding to the nearest ten moves each number by 5 or less. So when you add or multiply numbers that are big compared with 5, working with rounded numbers gives an answer near the exact one. Subtracting two numbers that are close together can give a poor estimate.",
+          "When you multiply numbers that are 10 or more, an answer ten times bigger or smaller than the estimate cannot be right. So an estimate can show an answer is wrong, but it cannot prove it is right.",
         ],
       },
     ],
     pitfalls: [
-      "Do not add rounded numbers when the story has equal groups.",
-      "Round every number before computing, not just one.",
-      "Count the zeros of a rounded product to avoid a place-value slip.",
+      "Do not add the rounded numbers when the story has equal groups.",
+      "Round each number the way the question says before you work it out.",
+      "Count the zeros in a rounded product so no digit lands in the wrong place.",
     ],
     parentGuide:
-      "Ask the learner to estimate 31 × 29 by rounding and to explain why 8,990 cannot be the exact product.",
+      "Ask the learner to estimate 31 × 29 by rounding to 30 × 30 = 900. Then ask why 8,990 cannot be the exact answer.",
   },
   {
     id: "unit-chain-conversion",
@@ -453,19 +489,26 @@ export const numberMeasurementGapLessons: Lesson[] = [
     id: "fraction-of-set",
     title: "A fraction of a set",
     summary:
-      "The denominator splits a set into equal groups and the numerator tells how many groups to take.",
+      "A set is a group of objects, like 12 marbles. A fraction such as $\\frac{3}{4}$ can name part of a set. The bottom number, 4, is the denominator. It says to split the set into 4 equal groups. The top number, 3, is the numerator. It says to take 3 of those groups. So $\\frac{3}{4}$ of 12 marbles is 3 groups of 3 marbles, which is 9 marbles.",
     templateIds: ["fraction-of-set"],
+    senses: {
+      fourth: "fourth",
+      part: "part",
+      parts: "part",
+      whole: "whole",
+    },
     objectives: [
-      "Find a fraction of a set by finding the size of one equal group.",
-      "Find the rest of the set, and the amount for a multiple of a unit fraction.",
+      "Find a fraction of a set by first finding the size of one equal group.",
+      "Find the rest of the set, and find several groups from the size of one group.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Equal groups",
         paragraphs: [
-          "You need to divide a whole number into equal groups and multiply whole numbers. In a fraction such as $\\frac{3}{4}$, the denominator 4 says to split the set into 4 equal groups. The numerator 3 says to take 3 of those groups.",
-          "A fraction of a set names a number of objects. $\\frac{3}{4}$ of 12 marbles is 3 groups of 3 marbles, which is 9 marbles.",
+          "You will split a number into equal groups and multiply. Put 12 marbles into 4 equal groups. Each group has $12\\div4=3$ marbles.",
+          "Each group is $\\frac{1}{4}$ of the set, one fourth. Three groups are $\\frac{3}{4}$ of the set: $3\\times3=9$ marbles.",
+          "A fraction of a set is a number of objects. It is not the numerator itself: $\\frac{3}{4}$ of 12 is 9, not 3.",
         ],
       },
     ],
@@ -473,10 +516,10 @@ export const numberMeasurementGapLessons: Lesson[] = [
       prompt:
         "A set has 12 marbles. $\\frac{3}{4}$ of the marbles are red. How many are red?",
       steps: [
-        "The denominator is 4, so split 12 marbles into 4 equal groups: $12\\div4=3$ marbles in each group.",
-        "The numerator is 3, so 3 groups are red: $3\\times3=9$.",
-        "The other group is not red: $12-9=3$ marbles, which is $\\frac{1}{4}$ of the set.",
-        "Check: $9+3=12$.",
+        "The denominator is 4, so split the 12 marbles into 4 equal groups: $12\\div4=3$ marbles in each group.",
+        "The numerator is 3, so 3 of the groups are red: $3\\times3=9$.",
+        "The one group left is not red: $12-9=3$ marbles, which is $\\frac{1}{4}$ of the set.",
+        "Check: $9+3=12$, the whole set.",
       ],
       answer: "9 red marbles",
     },
@@ -485,24 +528,26 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "method",
         title: "Group size first",
         paragraphs: [
-          "Find the size of one group by dividing the set by the denominator. Then multiply by the numerator. For the part not named, use the remaining groups: for $\\frac{3}{4}$, the remaining fraction is $\\frac{1}{4}$.",
-          "If you know that $\\frac{1}{5}$ of a set is 7 objects, then each of the 5 equal groups has 7 objects, so $\\frac{3}{5}$ of the set is $3\\times7=21$.",
+          "Find the size of one group: divide the set by the denominator. Then multiply by the numerator.",
+          "For the part that is not named, use the groups that are left. For $\\frac{3}{4}$, 1 group of the 4 is left, so the rest is $\\frac{1}{4}$ of the set.",
+          "If $\\frac{1}{5}$ of a set is 7 objects, then each of the 5 equal groups has 7 objects. So $\\frac{3}{5}$ of the set is $3\\times7=21$.",
         ],
       },
       {
         stage: "formal",
         title: "Fraction times whole number",
         paragraphs: [
-          "For whole numbers $a$, $b$ and $n$ with $b$ dividing $n$, $\\frac{a}{b}$ of $n$ is $a\\times\\frac{n}{b}$. The fraction $\\frac{a}{b}$ is $a$ copies of the unit fraction $\\frac{1}{b}$, and $\\frac{1}{b}$ of $n$ is one of $b$ equal groups.",
+          "Finding $\\frac{3}{4}$ of 12 means $3\\times(12\\div4)=3\\times3=9$.",
+          "With letters, let $a$, $b$ and $n$ be whole numbers. Here $b$ is not 0, $n$ objects split evenly into $b$ groups, and $a$ is no more than $b$. Then $\\frac{a}{b}$ of $n$ is $a\\times(n\\div b)$. The fraction $\\frac{1}{b}$ of $n$ is one of the $b$ equal groups, and $\\frac{a}{b}$ is $a$ of them.",
         ],
       },
     ],
     pitfalls: [
       "$\\frac{3}{4}$ of 12 is not 3. Find the size of one group first.",
-      "Use the denominator to divide and the numerator to count groups, not the other way around.",
-      "For the rest of the set, subtract the numerator from the denominator to count the remaining groups.",
+      "Divide by the denominator and count groups with the numerator, not the other way around.",
+      "For the rest of the set, subtract the numerator from the denominator to count the groups left.",
     ],
     parentGuide:
-      "Ask the learner to draw 20 dots, circle $\\frac{2}{5}$ of them, and explain how many groups and how many dots are in each.",
+      "Ask the learner to draw 20 dots, circle $\\frac{2}{5}$ of them, and explain how many groups there are and how many dots are in each.",
   },
 ];
