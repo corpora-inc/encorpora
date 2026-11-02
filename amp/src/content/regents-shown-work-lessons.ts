@@ -76,7 +76,7 @@ const entries: WorkEntry[] = [
     id: "sas-area-steps",
     title: "Find a triangle's area from two sides and the angle between them",
     summary:
-      "The area of a triangle is half the product of two sides times the sine of the angle between them, even for an obtuse angle.",
+      "A triangle's area is half its base times its height. When you know two sides and the angle between them, the sine of that angle gives the height, so the area is $\\frac12ab\\sin C$. This works even when the angle is obtuse, more than $90^\\circ$, because an angle and its supplement have the same sine.",
     objectives: [
       "Use $\\frac12ab\\sin C$ with the angle between the two given sides.",
       "Read the sine of an acute or obtuse angle from a calculator in degree mode.",
@@ -97,7 +97,7 @@ const entries: WorkEntry[] = [
       "Multiply and round to the stated place.",
     ],
     watch:
-      "Use the angle between the two sides. An angle at another vertex gives the wrong sine.",
+      "Use the angle between the two known sides. An angle at another vertex usually has a different sine.",
     principle:
       "For sides $a$ and $b$ with included angle $C$, the area is $\\frac12ab\\sin C$, because the height onto side $b$ is $a\\sin C$.",
     example: {
@@ -123,6 +123,16 @@ const entries: WorkEntry[] = [
     ],
     parentGuide:
       "Ask your learner to point to the angle that sits between the two known sides before using the formula.",
+    senses: {
+      side: "side",
+      sides: "side",
+      "more than": "more-than",
+      degree: "degree-angle",
+      degrees: "degree-angle",
+      vertex: "vertex",
+      product: "product-multiply",
+    },
+    noLink: ["mode", "base", "square"],
   },
   {
     id: "trig-leg-steps",
@@ -456,7 +466,7 @@ const entries: WorkEntry[] = [
     title:
       "Solve an equation with two square roots and reject the extraneous solution",
     summary:
-      "Square twice to remove both radicals, solve the quadratic, and test each solution because squaring can add false ones.",
+      "An equation with two square roots usually needs squaring twice: once to remove one root, then again after getting the other root alone. That leaves a quadratic equation to solve. Squaring can add false answers, because a number and its opposite have the same square, so test each answer in the original equation.",
     objectives: [
       "Square both sides, isolate the remaining radical and square again to get a quadratic.",
       "Test each solution in the original equation and reject the one that fails.",
@@ -492,13 +502,21 @@ const entries: WorkEntry[] = [
       "A negative radicand rules a value out, because the square root of a negative number is not real.",
     ],
     formal:
-      "Squaring is not reversible: $a^2=b^2$ means $a=b$ or $a=-b$. A value that makes the two sides of the original equation opposite satisfies the squared equation but not the original.",
+      "Squaring is not reversible: $a^2=b^2$ means $a=b$ or $a=-b$. A value that makes the two sides of the original equation opposite, and not both 0, satisfies the squared equation but not the original.",
     pitfalls: [
       "Test each solution in the original equation before keeping it.",
       "After the first squaring, isolate the radical before squaring again.",
     ],
     parentGuide:
       "Ask your learner to say why the check is needed and to show it for both values.",
+    senses: {
+      squaring: "square-number",
+      squared: "square-number",
+      square: "square-number",
+      root: "root-radical",
+      sides: "side-of-equation",
+    },
+    noLink: ["leaves", "opposite", "part", "rules"],
   },
   {
     id: "grouped-both-sides-steps",

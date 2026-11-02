@@ -60,7 +60,7 @@ const entries: WorkEntry[] = [
     id: "remainder-steps",
     title: "Find a remainder by evaluating at the zero of the divisor",
     summary:
-      "The remainder of $f(x)$ divided by $x-r$ is the value $f(r)$, found term by term.",
+      "Dividing a polynomial $f(x)$ by $x-r$ leaves a remainder, the part left over. A shortcut called the remainder theorem says that remainder equals $f(r)$, the polynomial's value at $x=r$. So put $r$ into $f(x)$, working term by term, instead of dividing.",
     objectives: [
       "Name the value of $x$ that makes a linear divisor equal to zero.",
       "Evaluate a cubic at that value, term by term, to find the remainder.",
@@ -111,6 +111,8 @@ const entries: WorkEntry[] = [
     ],
     parentGuide:
       "Ask your learner which value of $x$ makes the divisor zero and to check it by substituting into the divisor.",
+    senses: { term: "term-expression", terms: "term-expression" },
+    noLink: ["leaves", "part", "changes"],
   },
   {
     id: "addition-rule-steps",
