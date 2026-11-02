@@ -215,7 +215,7 @@ export const altitudeRatio = chainFamily({
         const word = { opp: "opposite", adj: "adjacent", hyp: "hypotenuse" };
         return [
           `The altitude $\\overline{CD}$ is the segment from $C$ that meets the hypotenuse $\\overline{AB}$ at a right angle. It splits triangle $ABC$ into two smaller right triangles, $ACD$ and $BCD$.`,
-          `All three triangles have the same three angles, so they are similar: the same shape, different sizes. ${role.at.length > 1 ? `In triangle $${role.tri}$, ${angleTex(role)} equals angle $${m.angle}$.` : `Angle $${m.angle}$ is a corner of triangle $${role.tri}$.`}`,
+          `All three triangles have the same three angles, so they are similar: the same shape, possibly different sizes. ${role.at.length > 1 ? `In triangle $${role.tri}$, ${angleTex(role)} equals angle $${m.angle}$.` : `Angle $${m.angle}$ is a corner of triangle $${role.tri}$.`}`,
           `In right triangle $${role.tri}$, look from ${angleTex(role)}. The opposite side, across from it, is $${role.opp}$. The adjacent side, touching it, is $${role.adj}$. The hypotenuse, across from the right angle, is $${role.hyp}$.`,
           `The ${fnWord} of an angle, written $\\${m.fn}$, is ${ratioWords[m.fn]}. Here that is ${word[top]} $${role[top]}$ over ${word[bottom]} $${role[bottom]}$.`,
           `The equation that is true is ${tex(good)}.`,
@@ -240,7 +240,10 @@ export const parallelPerimeter = chainFamily({
       [4, 7],
       [5, 7],
     ] as Array<[number, number]>);
-    return { m: mm, n: nn, u: r(1, 4), v: r(1, 4), w: r(1, 4) };
+    const [u, v, w] = [r(1, 4), r(1, 4), r(1, 4)];
+    // Sides AD : AE : DE are u : v : w, so they must form a real triangle.
+    if (u + v <= w || u + w <= v || v + w <= u) retry();
+    return { m: mm, n: nn, u, v, w };
   },
   variant: (m) => `ratio-${m.m}-${m.n}`,
   render: (m, ax) => {
@@ -470,10 +473,10 @@ export const elevationDepression = chainFamily({
       explanation: [
         `Draw a level (horizontal) line from the lookout to the ${thing}. It splits the ${thing} into a top part and a bottom part.`,
         `The angle of elevation is how far you look up from level, ${m.up}°. The angle of depression is how far you look down from level, ${m.down}°.`,
-        `Each part is a right triangle. The level distance, ${m.d} feet, is the leg adjacent to (touching) the angle. The part of the ${thing} is the leg opposite it.`,
+        `Each part of the ${thing}, the level line and the line of sight make a right triangle. The level distance, ${m.d} feet, is the leg adjacent to (touching) the angle. The part of the ${thing} is the leg opposite it.`,
         `The tangent of an angle is the opposite side divided by the adjacent side, so the opposite side equals the adjacent side times the tangent. Top part: $${m.d}\\tan ${m.up}^\\circ\\approx${roundText(m.d * tanD(m.up), 2)}$ feet.`,
         `Bottom part: $${m.d}\\tan ${m.down}^\\circ\\approx${roundText(m.d * tanD(m.down), 2)}$ feet.`,
-        `Add the two parts for the whole height: $${roundText(m.d * tanD(m.up), 2)}+${roundText(m.d * tanD(m.down), 2)}\\approx${roundText(h, 2)}$ feet.`,
+        `Add the two parts before rounding them, so the answer stays accurate: $${m.d}\\tan ${m.up}^\\circ+${m.d}\\tan ${m.down}^\\circ\\approx${roundText(h, 2)}$ feet.`,
         `The ${thing} is about ${roundText(h, places)} feet tall, to the nearest ${unit}.`,
       ],
     });

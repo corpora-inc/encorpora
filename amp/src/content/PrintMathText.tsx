@@ -15,7 +15,7 @@ export const printMathStyles = `
 .print-math-break{white-space:normal}
 `;
 
-/** On (daily workbooks): mathematics inside running text prints its
+/** On (workbooks): mathematics inside running text prints its
  * fractions text-style, so they do not push lines apart. Mathematics that
  * stands alone (a choice, a card, a box) stays display-style. */
 export const PrintMathProse = createContext(false);

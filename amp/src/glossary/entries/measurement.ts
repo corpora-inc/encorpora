@@ -255,7 +255,7 @@ export const measurementEntries: GlossaryEntry[] = [
     term: "income",
     forms: ["income"],
     plain:
-      "Money that comes in, such as pay for work or money given as a gift.",
+      "Money a person earns, such as pay for doing a job. Money given as a gift is not income.",
     uses: [],
     band: "2",
   },
