@@ -53,7 +53,7 @@ export const successivePercentChangeLesson: Lesson = {
         "A percent is $\\tfrac{1}{100}$ of a base: $p\\%$ means $\\tfrac{p}{100}$ of that base. Let $P_0$ be the starting price, a number 0 or greater. The small numbers below the letters count the steps: $P_1$ is the price after one change and $P_2$ after two.",
         "For a percent $p_1$ that is 0 or greater, the first multiplier $m_1$ is $1 + \\tfrac{p_1}{100}$ for an increase. It is $1 - \\tfrac{p_1}{100}$ for a decrease. The second multiplier $m_2$ comes from the second percent $p_2$ in the same way. A decrease can be 100% or less, so the price never goes below 0. An increase may be more than 100%.",
         "Then $P_1 = P_0 \\times m_1$ and $P_2 = P_1 \\times m_2 = P_0 \\times m_1 \\times m_2$. The second percent is taken of $P_1$, even though the three numbers can be multiplied in any order.",
-        "Equal decrease and increase percents do not undo each other. For a percent $p$ from 1 to 100, $(1 - \\tfrac{p}{100}) \\times (1 + \\tfrac{p}{100}) = 1 - (\\tfrac{p}{100})^2$, which is less than 1. For example, $0.80 \\times 1.20 = 0.96$. So a positive price ends lower than it started.",
+        "Equal decrease and increase percents do not undo each other. For any percent $p$ greater than 0 and at most 100, $(1 - \\tfrac{p}{100}) \\times (1 + \\tfrac{p}{100}) = 1 - (\\tfrac{p}{100})^2$, which is less than 1. For example, $0.80 \\times 1.20 = 0.96$. So a positive price ends lower than it started.",
         "For a money answer, keep every digit until the final step. Then round the final amount to the nearest cent. One cent is $\\tfrac{1}{100}$ of a dollar. An amount exactly halfway between two cents rounds up. Round earlier only if the problem says to.",
       ],
     },
@@ -91,7 +91,7 @@ export const successivePercentChangeMethod: ProblemMethod = {
     "rule",
   ],
   intuition:
-    "Percent means per hundred, and the sign % stands for percent. So 20% of a price is 20 out of every 100 parts of it. The base is the price a percent is taken of. When a price changes twice, the base for the second change is the new price. A multiplier is the number you multiply a price by to get the changed price: 0.80 for a 20% decrease, 1.20 for a 20% increase.",
+    "Percent means per hundred, and the sign % stands for percent. So 20% of a price is 20 hundredths of it: 20 out of every 100 equal parts. The base is the price a percent is taken of. When a price changes twice, the base for the second change is the new price. A multiplier is the number you multiply a price by to get the changed price: 0.80 for a 20% decrease, 1.20 for a 20% increase.",
   terms: [
     ["percent", "The base is the whole that the percent is taken of."],
     [

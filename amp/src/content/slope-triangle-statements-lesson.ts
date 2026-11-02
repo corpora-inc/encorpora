@@ -43,7 +43,7 @@ export const slopeTriangleStatementsLesson: Lesson = {
   id: templateId,
   title: "What two slope triangles share",
   summary:
-    "Pick two stretches of the same straight line. Under each one, move right and then straight up to the line. Those two moves and the stretch make a triangle with a square corner. In the picture, one triangle goes 2 right and 3 up, and the other goes 4 right and 6 up. The big one is twice as wide and twice as tall. So both show the same steepness: 3 up for every 2 right.",
+    "Pick two stretches of the same straight line. From the lower end of each stretch, move right, then straight up until you reach the line again. Those two moves and the stretch make a triangle with a square corner. In the picture, one triangle goes 2 right and 3 up, and the other goes 4 right and 6 up. The big one is twice as wide and twice as tall. So both show the same steepness: 3 up for every 2 right.",
   templateIds: [templateId],
   includeGeneratedRepresentation: false,
   senses: {
@@ -69,7 +69,7 @@ export const slopeTriangleStatementsLesson: Lesson = {
         "A triangle is a shape with three straight sides and three corners. To build one along a line, start at a point on the line. Move horizontally, straight across to the right. Then move vertically, straight up or down, until you reach the line again. These two moves meet at a square corner, called a right angle.",
         "A triangle with a right angle is called a right triangle. Its legs are the two sides that meet at the right angle. The third side, the slanted one along the line, is called the hypotenuse.",
         "A coordinate grid is a sheet of equal squares with two number lines, called axes, that cross at $(0, 0)$. A point such as $A(0, 1)$ has two coordinates, the numbers that give its place. The first says how far across, and the second says how far up. Two letters name a side: $AB$ is the side from $A$ to $B$. A corner of a triangle is also called a vertex; the plural is vertices.",
-        "$\\angle B$ means the angle at corner $B$. A degree is the size of a tiny turn: a full turn is 360 degrees. So $90^\\circ$, read 90 degrees, is the size of a right angle.",
+        "$\\angle B$ means the angle at corner $B$. A degree is a small unit for the size of a turn: a full turn is 360 degrees. So $90^\\circ$, read 90 degrees, is the size of a right angle.",
         "The run is how far you move right. The rise is how far you move up or down, with a sign: positive for up, negative for down. Slope is the rise divided by the run. It tells how steep the line is. If the line falls as you move right, the rise and the slope are negative. A side length is a distance, so it is always positive.",
         "Similar triangles are triangles with the same shape. Congruent triangles are triangles with the same shape and the same size.",
       ],
@@ -92,7 +92,7 @@ export const slopeTriangleStatementsLesson: Lesson = {
       stage: "formal",
       title: "Equal ratios, corresponding parts",
       paragraphs: [
-        "Take two points on a line, $P(x_1, y_1)$ and $Q(x_2, y_2)$, with $Q$ to the right of $P$. The small numbers 1 and 2 tell which point each coordinate belongs to. The run is $r = x_2 - x_1$, which is positive. The rise is $h = y_2 - y_1$, which keeps its sign. The slope is $m = \\tfrac{h}{r}$. The leg lengths are $r$ and $|h|$, The bars mean absolute value: $|h|$ is $h$ without its minus sign.",
+        "Take two points on a line, $P(x_1, y_1)$ and $Q(x_2, y_2)$, with $Q$ to the right of $P$. The small numbers 1 and 2 tell which point each coordinate belongs to. The run is $r = x_2 - x_1$, which is positive. The rise is $h = y_2 - y_1$, which keeps its sign. The slope is $m = \\tfrac{h}{r}$. The leg lengths are $r$ and $|h|$. The bars mean absolute value: $|h|$ is $h$ without its minus sign.",
         "Now take two stretches of one line that is neither horizontal nor vertical. Both slope triangles have a right angle. Their horizontal legs are parallel, which means they never meet. Their slanted sides lie on the same line. So the angles where the slanted side meets the horizontal leg are equal too.",
         "Two triangles with two pairs of equal angles are similar. Then their corresponding sides are proportional: each side is the same number times its match.",
         "Let that number be $k = \\tfrac{r_2}{r_1}$, which is positive. Similarity makes the second vertical leg $k$ times the first. Both stretches go the same way along the line, so the rises have the same sign: $h_2 = k \\times h_1$. Then $\\tfrac{h_2}{r_2} = \\tfrac{k \\times h_1}{k \\times r_1} = \\tfrac{h_1}{r_1}$, because the $k$ on top and bottom divide out. So the slopes are equal. The triangles are congruent exactly when $k = 1$.",
@@ -130,10 +130,11 @@ export const slopeTriangleStatementsMethod: ProblemMethod = {
     degree: "degree-angle",
     unit: "unit",
     scale: "scale-factor",
+    squared: "square-number",
   },
   noLink: ["whole", "change", "changes", "part", "parts", "third", "mean"],
   intuition:
-    "A point such as $A(0, 1)$ gives how far across first and how far up second. A right triangle is a triangle with a square corner, called a right angle. A right angle measures 90 degrees, where a degree is $\\tfrac{1}{360}$ of a full turn. Its legs are the two sides at the right angle, and the slanted side is its hypotenuse. Two letters name a side: $BC$ is the side from $B$ to $C$. Slope is the rise divided by the run: the change up (negative if down) divided by the change to the right. Corresponding parts are parts in matching places. Similar triangles have the same shape. Congruent triangles have the same shape and the same size.",
+    "A point such as $A(0, 1)$ gives how far across first and how far up second. A right triangle is a triangle with a square corner, called a right angle. A right angle measures 90 degrees, where a degree is $\\tfrac{1}{360}$ of a full turn. An acute angle is smaller than a right angle. The legs are the two sides at the right angle, and the slanted side is the hypotenuse. Two letters name a side: $BC$ is the side from $B$ to $C$. Slope is the rise divided by the run: the change up (negative if down) divided by the change to the right. Corresponding parts are parts in matching places. Similar triangles have the same shape. Congruent triangles have the same shape and the same size. The Pythagorean theorem finds a slanted side: leg squared plus leg squared equals hypotenuse squared, where squared means multiplied by itself. The sign $\\ne$ means “is not equal to”.",
   terms: [
     "right-triangle",
     [

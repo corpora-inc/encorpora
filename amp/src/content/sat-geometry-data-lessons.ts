@@ -26,7 +26,7 @@ const instruction: Record<string, Instruction> = {
       "Find a side or an angle with sine, cosine or tangent.",
     ],
     intuition:
-      "A right triangle has one right angle, a square corner of $90^\\circ$ (90 degrees). The legs are the two sides that form the right angle. The other two angles are acute, which means smaller than $90^\\circ$. Pick one acute angle and call it $\\theta$, the Greek letter theta. The hypotenuse is the longest side, across from the right angle. The opposite side is the side across from $\\theta$. The adjacent side is the other side that touches $\\theta$. A ratio is one side length divided by another. Sine means opposite ÷ hypotenuse; cosine means adjacent ÷ hypotenuse; tangent means opposite ÷ adjacent. An angle of elevation is the angle measured up from a level line. An angle of depression is the angle measured down from a level line. Height means how far up something reaches.",
+      "A right triangle has one right angle, a square corner of $90^\\circ$ (90 degrees). The legs are the two sides that form the right angle. The other two angles are acute, which means smaller than $90^\\circ$. Pick one acute angle and call it $\\theta$, the Greek letter theta. The hypotenuse is the longest side, across from the right angle. The opposite side is the side across from $\\theta$. The adjacent side is the other side that touches $\\theta$. A ratio is one side length divided by another. Sine means opposite ÷ hypotenuse. Cosine means adjacent ÷ hypotenuse. Tangent means opposite ÷ adjacent. We write $\\tan 52^\\circ$ for the tangent of a $52^\\circ$ angle. A calculator in degree mode gives its value. An angle of elevation is the angle measured up from a level line. An angle of depression is the angle measured down from a level line. Parallel lines never meet, so a level line at the top and the level ground below are parallel. That is why an angle of depression from the top equals the angle of elevation from the bottom. Height means how far up something reaches. The sign $\\approx$ means “is about equal to”. Rounding to the nearest tenth keeps one digit after the decimal point.",
     explain: {
       title: "Same angle, same shape",
       paragraphs: [
@@ -75,7 +75,7 @@ const instruction: Record<string, Instruction> = {
       "Find the center and equation of a circle from the ends of a diameter.",
     ],
     intuition:
-      "A segment is the straight piece of a line between two points, called its endpoints. We write $\\overline{AB}$, with a bar on top, for the segment from $A$ to $B$. A point $(x, y)$ is $x$ across and $y$ up. The midpoint is the point halfway between the endpoints. It is halfway across and halfway up. So each of its coordinates is the average of the endpoints' coordinates: add the two and divide by 2. A circle's radius is the distance from its center to the circle.",
+      "A segment is the straight piece of a line between two points, called its endpoints. We write $\\overline{AB}$, with a bar on top, for the segment from $A$ to $B$. The $xy$-plane is a flat grid where a point $(x, y)$ is $x$ across and $y$ up. The two numbers are the point's coordinates. The midpoint is the point halfway between the endpoints. It is halfway across and halfway up. So each of its coordinates is the average of the endpoints' coordinates: add the two and divide by 2. A circle is all the points at one distance from a center point. That distance is the radius. A diameter is a segment through the center with both ends on the circle, so the center is its midpoint. A circle with center $(h, k)$ and radius $r$ has the equation $(x - h)^2 + (y - k)^2 = r^2$. The small 2 means squared: a number multiplied by itself.",
     explain: {
       title: "Halfway in each direction",
       paragraphs: [
@@ -84,7 +84,7 @@ const instruction: Record<string, Instruction> = {
         "A circle is all the points at one distance from a center point. That distance is called the radius. A diameter is a segment through the center with both ends on the circle. The center is the midpoint of any diameter, and the radius is half a diameter. The circle with center $(h, k)$ and radius $r$ has the equation $(x - h)^2 + (y - k)^2 = r^2$, where $r^2$ means $r$ times $r$.",
       ],
     },
-    senses: { square: "square-number" },
+    senses: { square: "square-number", plane: "plane" },
     terms: ["midpoint", "diameter"],
     method: [
       "For a midpoint, average the $x$-coordinates and average the $y$-coordinates of the endpoints: add each pair and divide by 2.",
@@ -107,7 +107,7 @@ const instruction: Record<string, Instruction> = {
       "Find a missing edge from the space diagonal and the other two edges.",
     ],
     intuition:
-      "A rectangular box has three edges that meet at each corner. The length $\\ell$ and the width $w$ run along the floor. The height is how tall the box is, and we call it $h$. A right triangle is a triangle with a right angle, a square corner. Its two shorter sides are the legs, and the longest side is the hypotenuse. Squared means multiplied by itself. The Pythagorean theorem is the rule that leg squared plus leg squared equals hypotenuse squared. The floor diagonal and an upright edge meet at a square corner. So they are the legs of a second right triangle, and its hypotenuse is the space diagonal.",
+      "A rectangular box has six flat faces, each a rectangle. An edge is a straight line where two faces meet, and three edges meet at each corner. The three dimensions of the box are its length $\\ell$, its width $w$ and its height $h$. The length and width run along the floor, and the height is how tall the box is. A diagonal is a straight line from one corner to a corner that is not next to it. Opposite corners are the two corners farthest apart, such as a bottom corner and the top corner across from it. The straight line between them is the space diagonal. A right triangle is a triangle with a right angle, a square corner. Its two shorter sides are the legs, and the longest side is the hypotenuse. Squared means multiplied by itself, and we write $3^2$ for 3 squared. The Pythagorean theorem is the rule that leg squared plus leg squared equals hypotenuse squared. The floor diagonal and an upright edge meet at a square corner. So they are the legs of a second right triangle, and its hypotenuse is the space diagonal. A square root undoes squaring: $\\sqrt{25} = 5$, because $5 \\times 5 = 25$. An answer written with the root sign is called a radical. To simplify a radical, take out a square factor: $\\sqrt{50} = \\sqrt{25 \\times 2} = 5\\sqrt{2}$.",
     explain: {
       title: "Across the floor, then up",
       paragraphs: [
@@ -122,6 +122,7 @@ const instruction: Record<string, Instruction> = {
       edge: "edge",
       face: "face-solid",
       side: "side",
+      factor: "factor-number",
     },
     noLink: ["rule"],
     terms: [
@@ -152,7 +153,7 @@ const instruction: Record<string, Instruction> = {
       "Find the slope of a tangent line from the radius to the point where it touches.",
     ],
     intuition:
-      "A circle is all the points at one distance from one point. That point is called the center, and the distance is called the radius. A chord is a segment with both ends on the circle. A secant is a line that crosses the circle at two points. A tangent line is a line that touches the circle at exactly one point, called the point of tangency. Where two such lines meet, multiply the two pieces of each line, measured from the meeting point. The two products, the results of multiplying, are equal. Slope means how steep a line is: rise ÷ run. Lines that meet at a right angle, a square corner, are called perpendicular.",
+      "A circle is all the points at one distance from one point. That point is called the center, and the distance is called the radius. A segment is a straight piece of a line between two points, and $\\overline{PT}$ names the segment from $P$ to $T$. A chord is a segment with both ends on the circle. A secant is a line that crosses the circle at two points. A tangent line is a line that touches the circle at exactly one point, called the point of tangency. An external point is a point outside the circle. When two of these lines meet, multiply lengths measured from the meeting point. For two crossing chords, multiply the two pieces of each chord. For two lines from an outside point, multiply the outside piece of each line by its whole length. A tangent's outside piece is its whole length, so it is multiplied by itself, written $PT^2$. The two products, the results of multiplying, are equal. Slope means how steep a line is: rise ÷ run. Lines that meet at a right angle, a square corner, are called perpendicular. A fraction's reciprocal is the fraction flipped upside down. Perpendicular slopes are negative reciprocals: flip the fraction and change its sign.",
     explain: {
       title: "Pieces that multiply to the same number",
       paragraphs: [
@@ -168,8 +169,8 @@ const instruction: Record<string, Instruction> = {
       product: "product-multiply",
       square: "square-shape",
       squared: "square-number",
+      plane: "plane",
     },
-    noLink: ["plane"],
     terms: ["chord", "secant", "tangent-line"],
     method: [
       "Find the pieces, measured from the point where the lines meet. For crossing chords, use the two pieces of each chord. For lines from an outside point, use the outside piece and the whole secant, out to the far crossing.",
@@ -186,13 +187,13 @@ const instruction: Record<string, Instruction> = {
   "frequency-table-center": {
     goal: "Find or compare a mean or median when the data come as a frequency table, as weights, or as a changed list.",
     summary:
-      "A frequency table lists each value once, with how many times it appears. The mean is the total of all the data divided by how many values there are. The median is the middle value when all the data are put in order. For the scores 2, 2, 2, 5, 9, the table says “2 appears 3 times”. The mean is $20 \\div 5 = 4$, and the median is 2.",
+      "A frequency table lists each value once, with how many times it appears. The mean is the total of all the data divided by how many values there are. The median is the middle value when all the data are put in order. For the scores 2, 2, 2, 5, 9, the table says “2 appears 3 times”. The five scores add to 20, so the mean is $20 \\div 5 = 4$. The median, the middle score, is 2.",
     objectives: [
       "Find the mean and the median from a frequency table.",
       "Find a weighted mean, and the new mean after a value is added or removed.",
     ],
     intuition:
-      "Data are the numbers you collect, and each one is a value. A frequency is how many times a value appears. The mean is the total of all the values divided by how many values there are. The median is the middle value once the values are in order from least to greatest. A weighted mean is a mean that counts some values more than others, such as a test that counts twice.",
+      "Data are the numbers you collect, and each one is a value. A frequency is how many times a value appears. The mean is the total of all the values divided by how many values there are. The median is the middle value once the values are in order from least to greatest. A weighted mean is a mean that counts some values more than others, such as a test that counts twice. A raised dot means times: $4 \\cdot 32$ is 4 times 32.",
     explain: {
       title: "Each row stands for many values",
       paragraphs: [
@@ -224,7 +225,7 @@ const instruction: Record<string, Instruction> = {
       "Read a statement such as $P(A \\mid B) = 0.2$ in words.",
     ],
     intuition:
-      "An event is a result that may or may not happen, such as “plays a sport”. Probability means chance: a number from 0 to 1, written $P(A)$ for an event $A$. An outcome is one possible result, such as one student chosen. A conditional probability is a chance inside a smaller group. We write $P(A \\mid B)$, read “the probability of $A$ given $B$”: among the outcomes in $B$, the share that are also in $A$. Events $A$ and $B$ are independent when $P(A \\mid B) = P(A)$.",
+      "An event is a result that may or may not happen, such as “plays a sport”. Probability means chance: a number from 0 to 1, written $P(A)$ for an event $A$. An outcome is one possible result, such as one student chosen. A respondent is a person who answers a survey. Randomly selected means every person has the same chance of being chosen. A two-way table counts people by two questions at once, one along the rows and one along the columns. A share is the part of a group that has some feature, written as a fraction, a decimal or a percent. A conditional probability is a chance inside a smaller group. We write $P(A \\mid B)$, read “the probability of $A$ given $B$”: among the outcomes in $B$, the share that are also in $A$. Events $A$ and $B$ are independent when knowing $B$ does not change the chance of $A$: $P(A \\mid B) = P(A)$.",
     explain: {
       title: "Compare a share inside a group with the overall share",
       paragraphs: [
@@ -234,7 +235,7 @@ const instruction: Record<string, Instruction> = {
       ],
     },
     senses: { event: "event" },
-    noLink: ["mean", "average", "averages", "sorts"],
+    noLink: ["sorts", "proportion"],
     terms: [
       [
         "independent-events",
@@ -253,7 +254,7 @@ const instruction: Record<string, Instruction> = {
       "For the count expected if the events were independent, multiply the two overall probabilities, then the total number of people. To read $P(A \\mid B) = p$, say: among those in $B$, a share $p$ are in $A$.",
     ],
     watch:
-      "Divide by the group named after the bar. $P(A \\mid B)$ and $P(B \\mid A)$ are usually different, and events that overlap can still be dependent.",
+      "Divide by the group named after the bar. $P(A \\mid B)$ and $P(B \\mid A)$ are usually different. Events that overlap, so both can happen, are not automatically independent.",
     principle:
       "Events $A$ and $B$, with $P(B) > 0$ (greater than 0), are independent exactly when $P(A \\mid B) = P(A)$. This is the same as $P(A \\text{ and } B) = P(A) \\times P(B)$. Mutually exclusive means that two events cannot both happen. Such events are never independent when both have a probability greater than 0.",
     parentGuide:
