@@ -28,7 +28,7 @@ export const numberOrderMethods: Record<string, ProblemMethod> = {
   },
   "true-comparison-statement": {
     goal: "Choose the true comparison of whole numbers of five to nine digits that share their first digits.",
-    noLink: ["side", "faces", "change", "third"],
+    noLink: ["side", "faces", "change", "third", "mean"],
     intuition:
       "A whole number is one of the numbers 0, 1, 2, 3 and so on. A digit is one of the symbols 0 to 9. To compare two numbers means to find which is greater (bigger) or less (smaller), or that they are equal. The sign > means is greater than, < means is less than, and = means is equal to. The open side of > or < faces the greater number. Two signs in a row, like 400 < 500 < 600, mean both comparisons are true. A statement is true when it says what really is so. A digit's place is its spot in the number, and each place is worth 10 times the place on its right. From the right the places are ones, tens, hundreds, thousands, ten thousands, hundred thousands, millions, ten millions and hundred millions. To compare two whole numbers, first count their digits. More digits means a greater number. With the same number of digits, line up the places and read from the left. Skip the places that match. The first place where the digits differ decides: the number with the bigger digit there is greater. The digits after that place cannot change the answer: 499 is less than 530, because 4 hundreds and any tens and ones stay below 500.",
     terms: ["place-value", "greater-than"],

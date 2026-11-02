@@ -99,7 +99,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
     intuition:
       "Change is the money you get back after you pay. A coin is a round metal piece of money, and a cent is the smallest amount of US money. A 1-dollar bill is 100 cents. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. 4.16 dollars means 4 dollars and 16 cents, which is 416 cents. To use the fewest pieces, take the piece worth the most that is not more than what is left. Then do it again with what is left.",
     terms: ["coin"],
-    senses: { change: "change-money" },
+    senses: { change: "change-money", "more than": "more-than" },
     noLink: ["quarter", "quarters", "one quarter"],
     method: [
       "Write the amount in cents. 4.16 dollars is 416 cents.",
@@ -120,7 +120,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
       ],
     ],
     senses: { "more than": "more-than" },
-    noLink: ["quarter", "quarters"],
+    noLink: ["quarter", "quarters", "whole"],
     method: [
       "Find each set's value on its own. Count the 1-dollar bills, then the quarters, dimes, nickels and pennies.",
       "Write each value in dollars and cents. The set with more whole dollars is worth more. If the dollars match, the set with more cents is worth more.",
@@ -474,7 +474,7 @@ export const k8StateNumberLessons: Lesson[] = [
     summary:
       "A set is a group of bills and coins. A coin is a round metal piece of money, and a cent is the smallest amount. A set's value is how much money it is worth. Find each set's value. Then compare: find which set is worth more, which is worth less, or if they are the same.",
     templateIds: ["compare-money-sets"],
-    noLink: ["quarter", "quarters"],
+    noLink: ["quarter", "quarters", "whole"],
     objectives: [
       "Find the value of a set of 1-dollar bills and coins.",
       "Compare sets by value, not by how many pieces they have.",

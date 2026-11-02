@@ -69,22 +69,23 @@ const entries: Entry[] = [
     summary:
       "A fraction names equal parts of one whole. In $\\frac{3}{8}$, read “three eighths,” the bottom number, 8, is the denominator: the whole is cut into 8 equal parts. The top number, 3, is the numerator: it counts 3 of those parts. To order fractions, compare the parts.",
     senses: { "more than": "more-than", whole: "whole", part: "part" },
+    noLink: ["mean"],
     objectives: [
       "Compare fractions that share a denominator or a numerator by thinking about the size of the parts.",
       "Use one half to order fractions with different denominators.",
     ],
     intuition:
-      "A fraction names equal parts of one whole. The denominator, the bottom number, tells how many equal parts the whole is cut into. The numerator, the top number, counts the parts. Same denominator: the parts are the same size, so more parts is more. $\\frac{5}{8}$ is greater than $\\frac{3}{8}$. Same numerator: there are the same number of parts. A bigger denominator cuts the whole into more parts, so each part is smaller. $\\frac{2}{5}$ is less than $\\frac{2}{3}$. When both numbers differ, compare each fraction with one half, $\\frac{1}{2}$. One half is called a benchmark: a number you know well and compare with. Double the numerator. Doubling shows what two copies of the fraction make. For $\\frac{3}{8}$, two copies are $\\frac{6}{8}$, less than a whole, so $\\frac{3}{8}$ is less than one half. So if the doubled numerator is less than the denominator, the fraction is less than one half. If it equals the denominator, the fraction is exactly one half. If it is more, the fraction is more than one half. The sign < means is less than.",
+      "A fraction names equal parts of one whole. The denominator, the bottom number, tells how many equal parts the whole is cut into. The numerator, the top number, counts the parts. Same denominator: the parts are the same size, so more parts is more. $\\frac{5}{8}$ is greater than $\\frac{3}{8}$. Same numerator: there are the same number of parts. In these questions that number is always more than 0. A bigger denominator cuts the whole into more parts, so each part is smaller. $\\frac{2}{5}$ is less than $\\frac{2}{3}$. When both numbers differ, compare each fraction with one half, $\\frac{1}{2}$. One half is called a benchmark: a number you know well and compare with. Double the numerator. Doubling shows what two copies of the fraction make. For $\\frac{3}{8}$, two copies are $\\frac{6}{8}$, less than a whole, so $\\frac{3}{8}$ is less than one half. So if the doubled numerator is less than the denominator, the fraction is less than one half. If it equals the denominator, the fraction is exactly one half. If it is more, the fraction is more than one half. The sign < means is less than.",
     terms: ["numerator", "denominator", "benchmark-fraction"],
     method: [
-      "Look at the denominators and the numerators. Same denominator: more parts is greater. Same numerator: the fraction with the bigger denominator is smaller.",
+      "Look at the denominators and the numerators. Same denominator: more parts is greater. Same numerator, more than 0: the fraction with the bigger denominator is smaller.",
       "If neither matches, compare each fraction with $\\frac{1}{2}$: double its numerator and compare it with its denominator.",
       "Write the fractions in order. Fill the spots in the direction the question asks.",
     ],
     watch:
-      "A bigger denominator does not mean a bigger fraction. When the numerators match, the bigger denominator makes the smaller fraction.",
+      "A bigger denominator does not mean a bigger fraction. When the numerators match and are more than 0, the bigger denominator makes the smaller fraction.",
     principle:
-      "With the same denominator, the fraction with the bigger numerator is greater. With the same numerator, the fraction with the bigger denominator is smaller. A fraction is less than, equal to or more than $\\frac{1}{2}$ when twice its numerator is less than, equal to or more than its denominator.",
+      "With the same denominator, the fraction with the bigger numerator is greater. With the same numerator, more than 0, the fraction with the bigger denominator is smaller. A fraction is less than, equal to or more than $\\frac{1}{2}$ when twice its numerator is less than, equal to or more than its denominator.",
     example: {
       prompt:
         "Put $\\frac{3}{8}$, $\\frac{5}{12}$ and $\\frac{4}{8}$ in order from least to greatest.",
@@ -101,7 +102,7 @@ const entries: Entry[] = [
       "Different numerators and denominators: sort the fractions into less than one half, exactly one half and more than one half. Then compare inside a group if you need to.",
     ],
     formal:
-      "Think of a paper strip as one whole. Cutting it into more equal parts makes each part smaller. So with the same number of parts, the fraction with the bigger denominator is smaller. With parts of the same size, more parts cover more of the strip. A fraction is exactly one half when its numerator is half its denominator, so doubling the numerator checks it.",
+      "Think of a paper strip as one whole. Cutting it into more equal parts makes each part smaller. So with the same number of parts, more than 0, the fraction with the bigger denominator is smaller. With parts of the same size, more parts cover more of the strip. A fraction is exactly one half when its numerator is half its denominator, so doubling the numerator checks it.",
     pitfalls: [
       "Do not read a bigger denominator as a bigger fraction when the numerators are equal.",
       "Do not compare numerators alone when the denominators differ.",
