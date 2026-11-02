@@ -122,7 +122,7 @@ export const coordinateCircleLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "A circle with center $(h, k)$ and radius $r$ is the set of points with $(x-h)^2+(y-k)^2=r^2$: the distance formula, squared.",
-          "Lengths on the grid come from the distance formula, $\\sqrt{\\text{run}^2+\\text{rise}^2}$. Areas come from an enclosing rectangle minus its corner pieces.",
+          "Lengths on the grid come from the distance formula, $\\sqrt{\\text{run}^2+\\text{rise}^2}$. Areas come from an enclosing rectangle minus the pieces outside the polygon, cut into right triangles and rectangles.",
           "The point dividing $AB$ in the ratio $m:n$ is $A$ plus $\\frac{m}{m+n}$ of the change from $A$ to $B$, in each coordinate.",
           "Nonvertical parallel lines have equal slopes. Perpendicular nonvertical lines have slopes whose product is $-1$. A vertical line is perpendicular to a horizontal line, and its slope is undefined.",
         ],
@@ -140,7 +140,7 @@ export const coordinateCircleLessons: Lesson[] = [
     id: "angles-in-circles",
     title: "Angles in circles",
     summary:
-      "A central angle has its corner at a circle's center, the point in its middle. An inscribed angle has its corner on the circle itself. When both open onto the same arc, a piece of the circle, the inscribed angle is half the central angle. This one fact explains why an angle with its corner on a half circle, and its sides through the two ends of the diameter, is always a right angle.",
+      "A central angle has its corner, called its vertex, at a circle's center, the point in its middle, and its sides reach the circle at two points. An inscribed angle has its vertex on the circle, and its sides reach the circle at two other points. The piece of the circle between those two points, on the side away from the vertex, is the arc the angle opens onto. When both angles open onto the same arc, the inscribed angle is half the central angle. So an inscribed angle on a half circle is always a right angle, a square corner of $90^\\circ$.",
     templateIds: ["circle-angles"],
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
@@ -154,8 +154,8 @@ export const coordinateCircleLessons: Lesson[] = [
         stage: "intuition",
         title: "Inscribed angles are half the central angle",
         paragraphs: [
-          "A circle's center is the point in its middle. An arc is a piece of the circle between two points, and a chord is the straight segment joining them. A central angle has its vertex (corner) at the center. An inscribed angle has its vertex on the circle.",
-          "When the two angles open onto the same arc, the inscribed angle is half the central angle: $70^\\circ$ at the center gives $35^\\circ$ at $C$.",
+          "A circle's center is the point in its middle. A radius is a segment, a straight piece of line, from the center to the circle. An arc is a piece of the circle between two points, and a chord is the segment joining them. A central angle has its vertex (corner) at the center, and an inscribed angle has its vertex on the circle. In both, the two sides end on the circle, and the arc between those ends, away from the vertex, is the arc the angle opens onto. Angles are measured in degrees: a full turn is $360^\\circ$. A name like $\\angle ACB$ means the angle with its vertex at the middle letter, $C$.",
+          "When the two angles open onto the same arc, the inscribed angle is half the central angle. If points $A$ and $B$ are on the circle, a $70^\\circ$ angle at the center opening onto arc $AB$ gives $35^\\circ$ at a point $C$ on the circle.",
           "Chord $AB$ splits the circle into two arcs. Let the central angle open onto the shorter one, and put $C$ anywhere on the longer one. Every such angle $ACB$ opens onto the same shorter arc. So each is half of the same central angle, and all of them are equal.",
         ],
         illustration: "circle-inscribed-slide",
@@ -233,7 +233,7 @@ const terms = {
     ["parallel", "On a graph, non-vertical parallel lines have equal slopes."],
     [
       "perpendicular",
-      "On a graph, the slopes of perpendicular lines multiply to −1: they are negative reciprocals.",
+      "On a graph, when neither line is vertical or horizontal, the slopes of perpendicular lines multiply to −1: they are negative reciprocals.",
     ],
   ],
   angles: ["inscribed-angle", "tangent-line"],
@@ -263,7 +263,7 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
     terms: terms.measure,
     method: [
       "Perimeter: find horizontal and vertical sides by subtracting, and slanted sides with $\\sqrt{\\text{run}^2 + \\text{rise}^2}$. Then add all the sides.",
-      "Area: draw a grid rectangle just around the polygon, and subtract the triangles and rectangles in its corners.",
+      "Area: draw a grid rectangle just around the polygon. Cut the pieces outside the polygon into right triangles and rectangles, and subtract their areas.",
     ],
     watch:
       "A slanted side is not its run plus its rise. Use the distance formula.",
@@ -303,7 +303,7 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A central angle has its corner at the circle's center. An inscribed angle has its corner on the circle. Each opens onto an arc, the piece of the circle between its sides. On the same arc, the inscribed angle is half the central angle. A diameter, a chord through the center, cuts off a half circle, so an angle inscribed in it is $90^\\circ$. A tangent is a line that touches the circle at exactly one point, called the point of tangency. It meets the radius there at $90^\\circ$.",
+      "Angles are measured in degrees, and a full turn is $360^\\circ$. A central angle has its corner at the circle's center, and an inscribed angle has its corner on the circle. In both, the two sides end on the circle. The arc they open onto is the piece of the circle between those ends, away from the corner. On the same arc, the inscribed angle is half the central angle. A chord is a segment joining two points of the circle, and a diameter is a chord through the center. An inscribed angle whose sides go to the two ends of a diameter is $90^\\circ$, a right angle. A radius is a segment from the center to the circle. A tangent is a line that touches the circle at exactly one point, called the point of tangency. It meets the radius to that point at $90^\\circ$.",
     terms: terms.angles,
     method: [
       "Find the arc each angle opens onto, and whether its corner is at the center or on the circle.",
@@ -317,7 +317,7 @@ export const coordinateCirclePrinciples: Record<string, string> = {
   "circle-equation":
     "A circle with center $(h, k)$ and radius $r$ is the set of points with $(x-h)^2+(y-k)^2=r^2$: the distance formula, squared.",
   "coordinate-polygon":
-    "Lengths on the plane come from the distance formula, $\\sqrt{\\text{run}^2+\\text{rise}^2}$. Areas come from an enclosing rectangle minus its corner pieces.",
+    "Lengths on the plane come from the distance formula, $\\sqrt{\\text{run}^2+\\text{rise}^2}$. Areas come from an enclosing rectangle minus the pieces outside the polygon, cut into right triangles and rectangles.",
   "segment-partition":
     "The point dividing $AB$ in the ratio $m:n$ is $A$ plus $\\frac{m}{m+n}$ of the change from $A$ to $B$, in each coordinate.",
   "perpendicular-slopes":

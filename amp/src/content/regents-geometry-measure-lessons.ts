@@ -115,14 +115,14 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
       "Multiply the hypotenuse by that ratio. Check that the calculator is in degree mode.",
     ],
     watch:
-      "A leg is shorter than the hypotenuse. If your answer is longer, you used the wrong ratio or the calculator is set to radians instead of degrees.",
+      "A leg is shorter than the hypotenuse, so check your answer against it. Also check that the calculator is in degree mode: in radian mode, $\\sin 31$ gives a different number.",
   },
   "geo-sas-triangle-area": {
     goal: "Use two sides and the angle between them to find the area, including for an obtuse angle.",
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A triangle's area is half its base times its height, where the height is measured straight up from the base, at a right angle (a square corner). Suppose you know two sides, $a$ and $b$, and the angle $C$ between them. Then the height to side $a$ is $b\\sin C$: side $b$ times the sine of the angle, a number a calculator gives. That is because the height and side $b$ form a right triangle with side $b$ as its longest side, and sine is the opposite side divided by that longest side. So the area is $\\frac12ab\\sin C$, and no separate height is needed.",
+      "A triangle's area is half its base times its height, where the height is measured straight up from the base, at a right angle (a square corner). Suppose you know two sides, $a$ and $b$, and the angle $C$ between them. Then the height to side $a$ is $b\\sin C$: side $b$ times the sine of the angle, a number a calculator gives. When $C$ is acute (under $90^\\circ$), the height and side $b$ form a right triangle with side $b$ as its longest side. Sine is the side opposite $C$ divided by that longest side, so the height is $b\\sin C$. When $C$ is obtuse (over $90^\\circ$), the height falls outside the triangle and the right triangle uses the angle $180^\\circ-C$. Its sine equals $\\sin C$, so the height is still $b\\sin C$. So the area is $\\frac12ab\\sin C$, and no separate height is needed.",
     terms: ["included-angle", "sine"],
     method: [
       "Find the two sides, and check that the angle sits between them.",
@@ -258,7 +258,7 @@ export const regentsGeometryMeasureLessons = [
       opening: [
         "A degree is the usual unit for angles, and a full turn is 360 degrees. A right triangle has one right angle, a square corner of $90^\\circ$. The side across from it is the hypotenuse, the longest side. The other two sides are called the legs. Pick one of the other angles, $A$. The leg across from $A$ is the opposite leg, and the leg touching $A$ is the adjacent leg.",
         "All right triangles with the same angle $A$ have the same shape, so their side ratios match. The sine of $A$, written $\\sin A$, is the opposite leg divided by the hypotenuse. The cosine, $\\cos A$, is the adjacent leg divided by the hypotenuse. Tangent is a third ratio: the opposite leg divided by the adjacent leg, written $\\tan A$.",
-        "A triangle that is not a right triangle can often be cut into right triangles. An altitude is a segment from a corner that meets the opposite side at a right angle. Drawing one does this. That is how the area formula with a sine comes about. Set the calculator to degree mode, because these angles are in degrees.",
+        "A triangle that is not a right triangle can often be cut into right triangles. An altitude is a segment from a corner straight to the line through the opposite side, meeting it at a right angle. Drawing one inside the triangle does this. That is how the area formula with a sine comes about. Set the calculator to degree mode, because these angles are in degrees.",
       ],
       example: {
         prompt:

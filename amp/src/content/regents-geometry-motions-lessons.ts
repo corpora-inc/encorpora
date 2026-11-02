@@ -52,11 +52,11 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A dilation resizes a figure from a fixed point, called its center. Every point moves along the line from the center through it. Its distance from the center is multiplied by the same positive number, the scale factor. The moved point is called the image, named with a prime mark: $A'$, read “$A$ prime”. When the scale factor is not 1, the center is the only point that does not move.",
+      "A dilation resizes a figure from a fixed point, called its center. Every distance from the center is multiplied by the same positive number, the scale factor. When the scale factor is not 1, every other point moves along the line from the center through it. The moved point is called the image, named with a prime mark: $A'$, read “$A$ prime”. When the scale factor is not 1, the center is the only point that does not move.",
     terms: ["center-of-dilation", "scale-factor"],
     method: [
       "Draw the line through $A$ and its image $A'$, and the line through $B$ and $B'$.",
-      "The two lines cross at the center of dilation.",
+      "If the two lines are different, they cross at the center of dilation. If they are the same line, use $C$ and $C'$ in place of $B$ and $B'$.",
       "Divide the distance from the center to $A'$ by the distance from the center to $A$. That is the scale factor.",
     ],
     watch:
@@ -67,7 +67,7 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A dilation resizes a figure from a fixed point, its center, multiplying distances from the center by the scale factor. It sends a line to a parallel line, one with the same slope (steepness) that never meets it, or to the line itself. If the center is on the line, every point slides along the line, so the line does not change. If the center is off the line, the image is a different line with the same slope. A line written $y=mx+b$ has slope $m$ and crosses the $y$-axis at $b$, its $y$-intercept.",
+      "A dilation resizes a figure from a fixed point, its center, multiplying distances from the center by the scale factor. It sends a line to a parallel line, one that never meets it, or to the line itself. A parallel line that is not vertical has the same slope (steepness). If the center is on the line, every point slides along the line, so the line does not change. If the center is off the line and the scale factor is not 1, the image is a different, parallel line. For $y=mx+b$, that means the same slope $m$. A line written $y=mx+b$ has slope $m$ and crosses the $y$-axis at $b$, its $y$-intercept.",
     terms: [
       [
         "parallel",
@@ -78,7 +78,7 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
     method: [
       "Test whether the center makes the line's equation true.",
       "If it does, the center is on the line, so the image is the same line.",
-      "If not, keep the slope. Dilate one point of the line about the center, and find the line with that slope through the new point.",
+      "If not, keep the slope $m$ of $y=mx+b$. Dilate one point of the line about the center, and find the line with that slope through the new point.",
     ],
     watch:
       "The slope never changes. Multiplying the $y$-intercept by the scale factor is a shortcut for a center at the origin, the point $(0,0)$. For another center, dilate a point of the line instead.",
@@ -88,12 +88,12 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A rigid motion is a move that keeps a figure's size and shape. A translation slides every corner (vertex) by the same amount. A reflection is a flip across a line, like a mirror. It reverses the order of the labels around the triangle, from counterclockwise to clockwise or back. Clockwise is the way clock hands turn, and counterclockwise is the other way. A rotation turns the figure about a point. It keeps the order of the labels, but the sides point new ways.",
+      "A rigid motion is a move that keeps a figure's size and shape. A translation slides every corner (vertex) by the same amount in the same direction. A reflection is a flip across a line, like a mirror. It reverses the order of the labels around the triangle, from counterclockwise to clockwise or back. Clockwise is the way clock hands turn, and counterclockwise is the other way. A rotation turns the figure about a point. It keeps the order of the labels, but the sides point new ways.",
     terms: ["rigid-motion", "orientation"],
     method: [
       "For each step, compare where the vertices move.",
-      "If every vertex moves by the same amount, the step is a translation.",
-      "If the order of the labels is reversed, it is a reflection. If the order is the same and the sides are turned, it is a rotation.",
+      "If every vertex moves by the same amount in the same direction (the same shift across and the same shift up), the step is a translation.",
+      "Of a slide, a flip and a turn, only a flip reverses the order of the labels, so a reversed order means a reflection. If the order is the same and the sides are turned, it is a rotation.",
     ],
     watch:
       "Check each step separately, and keep the steps in order. Swapping two different motions usually gives a different answer.",
@@ -141,9 +141,9 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
 
 export const regentsGeometryMotionPrinciples: Record<string, string> = {
   "geo-dilation-center":
-    "A dilation with center $O$ and scale factor $k>0$ sends each point $P$ to the point $P'$ on ray $OP$, the half-line from $O$ through $P$, with $OP'=k\\cdot OP$. In coordinates, $P'=O+k(P-O)$. So when $k\\ne1$, the center is $O=\\frac{P'-kP}{1-k}$.",
+    "A dilation with center $O$ and scale factor $k>0$ sends each point $P$ other than $O$ to the point $P'$ on ray $OP$, the half-line from $O$ through $P$, with $OP'=k\\cdot OP$. In coordinates, $P'=O+k(P-O)$. So when $k\\ne1$, the center is $O=\\frac{P'-kP}{1-k}$.",
   "geo-dilation-line-center":
-    "A dilation sends a line to a parallel line or to itself. It sends the line to itself exactly when the center is on the line. For the line $y=mx+b$, a center $(c,d)$ and scale factor $k$, the image is $y=mx+b'$, where $b'=(1-k)(d-mc)+kb$.",
+    "A dilation sends a line to a parallel line or to itself. When $k\\ne1$ ($k$ is not 1), it sends the line to itself exactly when the center is on the line. For the line $y=mx+b$, a center $(c,d)$ and scale factor $k$, the image is $y=mx+b'$, where $b'=(1-k)(d-mc)+kb$.",
   "geo-motion-chain":
     "Translations and rotations keep orientation, the clockwise or counterclockwise order of the labels. Reflections reverse it. A translation moves every vertex by the same amount, and a rotation about a point turns every side by the same angle.",
   "geo-reflection-side":
@@ -158,7 +158,7 @@ export const regentsGeometryMotionLessons = [
       id: "regents-geometry-dilation-centers",
       title: "Dilations about any center",
       summary:
-        "A dilation resizes a figure from a fixed point, called the center. Each point slides along the line from the center through it, and its distance from the center is multiplied by the scale factor. The moved point is called the image. So the lines joining each point to its image all meet at the center. A line through the center lands on itself, and any other line lands on a parallel line.",
+        "A dilation resizes a figure from a fixed point, called the center. Each point slides along the line from the center through it, and its distance from the center is multiplied by the scale factor. The moved point is called the image. When the scale factor is not 1, the line through any other point and its image passes through the center. A line through the center lands on itself. When the scale factor is not 1, any other line lands on a parallel line.",
       templateIds: ["geo-dilation-center", "geo-dilation-line-center"],
       objectives: [
         "Locate the center of a dilation where lines through matching points cross.",
@@ -167,8 +167,8 @@ export const regentsGeometryMotionLessons = [
       openingTitle: "The center is the point that does not move",
       opening: [
         "A dilation resizes a figure from a fixed point, called the center of dilation. Every distance from the center is multiplied by the same positive number, called the scale factor. A scale factor above 1 enlarges, and one between 0 and 1 shrinks. The new point is called the image, named with a prime mark: $A'$, read “$A$ prime”, is the image of $A$.",
-        "A point and its image lie on one line through the center. So the lines through two points and their images cross at the center. The origin is the point $(0, 0)$, where the axes cross. The point $(x, y)$ is $x$ units across and $y$ units up from it.",
-        "A line through the center lands on itself, because each of its points slides along it. A line that misses the center lands on a parallel line: one with the same slope (steepness) that never meets it.",
+        "A point and its image lie on one line through the center. Pick two points, not the center, that are not on one line through the center. The line through each point and its image then passes through the center, so the two lines cross there. The origin is the point $(0, 0)$, where the axes cross. The point $(x, y)$ is $x$ units across and $y$ units up from it.",
+        "A line through the center lands on itself, because each of its points slides along it. When the scale factor is not 1, a line that misses the center lands on a parallel line: one that never meets it. If the line is not vertical, the parallel line has the same slope (steepness).",
       ],
       example: {
         prompt:
@@ -183,8 +183,8 @@ export const regentsGeometryMotionLessons = [
       },
       methodTitle: "Lines through pairs, then the ratio",
       method: [
-        "Draw the line through $A$ and $A'$, and the line through $B$ and $B'$. They cross at the center.",
-        "Divide the distance from the center to an image point by the distance from the center to the original point. That gives the scale factor.",
+        "Draw the line through $A$ and $A'$, and the line through $B$ and $B'$, using points other than the center. When the two lines are different, they cross at the center.",
+        "Pick a point other than the center. Divide the distance from the center to its image by the distance from the center to the point. That gives the scale factor.",
         "For a line, test whether the center is on it. If not, keep the slope and dilate one point of the line to find the new line.",
       ],
       formalTitle: "Dilations in coordinates",
@@ -242,7 +242,7 @@ export const regentsGeometryMotionLessons = [
       ],
       formalTitle: "Preserved properties",
       formal: [
-        "A rigid motion keeps distance, angle measure and area, so the image is congruent to the original. In general it does not keep each side pointing the same way as its image, and it changes the coordinates and possibly the order of the labels.",
+        "A rigid motion keeps distance, angle measure and area, so the image is congruent to the original. It can change the direction each side points. It can also change the coordinates of points and the order of the labels.",
         "An even number of reflections restores the order of the labels, and an odd number reverses it.",
       ],
       pitfalls: [

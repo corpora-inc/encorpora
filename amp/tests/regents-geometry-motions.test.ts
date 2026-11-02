@@ -28,6 +28,13 @@ test("dilation center", () => {
       m.c[0] + ((p[0] - m.c[0]) * m.k[0]) / m.k[1],
       m.c[1] + ((p[1] - m.c[1]) * m.k[0]) / m.k[1],
     ]);
+    // The explanation crosses lines AA' and BB'; they must be two lines.
+    const [a, b] = m.tri;
+    assert.notEqual(
+      (a[0] - m.c[0]) * (b[1] - m.c[1]) - (a[1] - m.c[1]) * (b[0] - m.c[0]),
+      0,
+      `${s}: A, B and the center are collinear`,
+    );
     const both = axes.ask === "factor-and-center";
     for (const o of options(problem)) {
       const center = o.label.match(/enter \$\((-?\d+), (-?\d+)\)\$/)!;

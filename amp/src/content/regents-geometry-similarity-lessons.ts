@@ -86,7 +86,7 @@ export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "When a line crosses two parallel lines, angles in matching spots are equal. Angles at a shared corner are equal, and so are angles across from each other where two straight lines cross. Alternate interior angles are the angles between the parallel lines on opposite sides of the crossing line, and they are equal too. So the two triangles have the same angles, which makes them similar: the same shape. Similar triangles have proportional sides, each side the same multiple of its partner. Having the same angles does not make them the same size.",
+      "When a line crosses two parallel lines, angles in matching spots are equal. An angle that both triangles share gives one pair of equal angles. Angles across from each other where two straight lines cross are equal too. Alternate interior angles are the angles between the parallel lines on opposite sides of the crossing line, and they are equal too. So the two triangles have the same angles, which makes them similar: the same shape. Similar triangles have proportional sides, each side the same multiple of its partner. Having the same angles does not make them the same size.",
     terms: ["alternate-interior-angles", "aa-similarity"],
     method: [
       "Find the equal angles: from the parallel lines, and from a shared angle or angles across a crossing.",
@@ -94,7 +94,7 @@ export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
       "Any claim of equal sides, congruence (same size and shape) or equal area needs more information.",
     ],
     watch:
-      "Similar does not mean congruent. Equal sides appear only in special cases, such as a line through the middle points of two sides, or a crossing at the middle.",
+      "Similar does not mean congruent. The triangles are congruent only if a pair of matching sides is also equal, such as when the crossing point is the middle of both segments.",
   },
   "geo-equal-legs-radical": {
     goal: "Find a leg or a hypotenuse of a similar triangle with equal legs, using a factor of $\\sqrt{2}$.",
@@ -159,7 +159,7 @@ export const regentsGeometrySimilarityPrinciples: Record<string, string> = {
   "geo-equal-legs-radical":
     "In a right triangle with legs $a$ and $a$, the hypotenuse is $c=\\sqrt{a^2+a^2}=a\\sqrt{2}$. All such triangles are similar. So if a hypotenuse is $c$, each leg is $\\frac{c}{\\sqrt{2}}=\\frac{c\\sqrt{2}}{2}$.",
   "geo-elevation-depression":
-    "In a right triangle with acute angle $\\theta$ (under $90^\\circ$) and horizontal leg $d$, the vertical leg across from $\\theta$ is $d\\tan\\theta$. With an angle of elevation $\\alpha$ and an angle of depression $\\beta$ (the Greek letters alpha and beta) from the same point, the total height is $d(\\tan\\alpha+\\tan\\beta)$.",
+    "In a right triangle with horizontal leg $d$, let $\\theta$ be the acute angle (under $90^\\circ$) between $d$ and the longest side. Then the vertical leg across from $\\theta$ is $d\\tan\\theta$. With an angle of elevation $\\alpha$ and an angle of depression $\\beta$ (the Greek letters alpha and beta) from the same point, the total height is $d(\\tan\\alpha+\\tan\\beta)$.",
   "geo-density-rank":
     "Population density is $\\frac{\\text{population}}{\\text{area}}$. Ordering regions by density means ordering these quotients, the results of the divisions, and that order can differ from the order of the populations or of the areas.",
 };
@@ -232,11 +232,11 @@ export const regentsGeometrySimilarityLessons = [
       ],
       example: {
         prompt:
-          "In triangle $ABC$, $D$ is on $\\overline{AB}$ and $E$ is on $\\overline{AC}$ with $\\overline{DE}\\parallel\\overline{BC}$. $AD=3$, $DB=2$, $DE=6$ and $AE=9$. Find the perimeter of $ABC$.",
+          "In triangle $ABC$, $D$ is on $\\overline{AB}$ and $E$ is on $\\overline{AC}$ with $\\overline{DE}\\parallel\\overline{BC}$. $AD=3$, $DB=3$, $DE=5$ and $AE=7$. Find the perimeter of $ABC$.",
         steps: [
-          "Find a whole side: $AB=AD+DB=3+2=5$. Its part in the small triangle is $AD=3$, so the scale factor from $ADE$ to $ABC$ is $\\frac{5}{3}$.",
-          "Scale the other sides of the small triangle: $BC=6\\cdot\\frac{5}{3}=10$ and $AC=9\\cdot\\frac{5}{3}=15$.",
-          "Add the three sides of the big triangle: $5+10+15=30$.",
+          "Find a whole side: $AB=AD+DB=3+3=6$. Its part in the small triangle is $AD=3$, so the scale factor from $ADE$ to $ABC$ is $\\frac{6}{3}=2$. Every side of $ABC$ is 2 times its partner in $ADE$.",
+          "Scale the other sides of the small triangle: $BC=5\\times2=10$ and $AC=7\\times2=14$.",
+          "Add the three sides of the big triangle: $6+10+14=30$.",
         ],
         answer: "$30$",
       },

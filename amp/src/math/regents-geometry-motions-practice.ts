@@ -120,6 +120,9 @@ export const dilationCenter = chainFamily({
       return [c[0] + step * r(-3, 3), c[1] + step * r(-3, 3)] as P;
     }) as [P, P, P];
     if (cross(tri[0], tri[1], tri[2]) === 0) retry();
+    // The explanation finds the center where lines AA' and BB' cross, so A, B
+    // and the center must not be collinear (those lines would coincide).
+    if (cross(c, tri[0], tri[1]) === 0) retry();
     const images = tri.map((p) => dilate(p, c, k));
     const all = [...tri, ...images];
     if (
@@ -449,8 +452,8 @@ export const motionChain = chainFamily({
       ],
       hint: `Compare ${verts(m.tri, ["A", "B", "C"])} with ${verts(m.t2, ["D", "E", "F"])} one vertex at a time. If every vertex moves the same amount, the step is a translation. If the order of the labels around the triangle reverses, it is a reflection. Then do the same for the second step.`,
       explanation: [
-        `A rigid motion moves a figure without changing its size or shape. There are three kinds: a translation (slide), a reflection (flip) and a rotation (turn).`,
-        `Two tests tell them apart. A translation moves every vertex the same amount. A reflection reverses the direction the labels run around the triangle, clockwise or counterclockwise.`,
+        `A rigid motion moves a figure without changing its size or shape. The basic kinds are a translation (slide), a reflection (flip) and a rotation (turn).`,
+        `Two tests tell them apart. A translation moves every vertex the same amount in the same direction. A reflection reverses the direction the labels run around the triangle, clockwise or counterclockwise.`,
         `First step, $ABC$ to $DEF$: ${reason(steps[0]!, k1)}`,
         `Second step, $DEF$ to $GHI$: ${reason(steps[1]!, k2)}`,
         `The sequence is ${text([k1, k2]).toLowerCase()}.`,
@@ -664,7 +667,7 @@ export const rigidStatement = chainFamily({
         "A rigid motion moves a figure without stretching or shrinking it. A translation (slide), a reflection (flip) and a rotation (turn) are all rigid motions.",
         "Each one keeps every length and every angle measure the same. So a chain of them does too.",
         "Same lengths and angles mean the image is congruent to the original: the same size and shape. Its area is the same as well.",
-        `Other things can change: the position, the coordinates and the direction of each side. ${even ? `The ${m.reflections === 0 ? "lack of reflections keeps" : `${m.reflections} reflections cancel in pairs, keeping`} the order of the vertices.` : "An odd number of reflections reverses the order of the vertices."}`,
+        `Other things can change: the position, the coordinates and the direction of each side. ${even ? `The ${m.reflections === 0 ? "lack of reflections keeps" : `${m.reflections} reflections each reverse the order of the vertices, and the reversals cancel in pairs, keeping`} that order.` : "An odd number of reflections reverses the order of the vertices."}`,
         `The statement that must be true is: ${key}`,
       ],
     });

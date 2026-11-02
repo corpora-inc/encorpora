@@ -57,7 +57,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "In a right triangle, the longest side, across from the square corner, is the hypotenuse, and the other two sides are the legs. The altitude from the right angle is the segment that meets the hypotenuse at a right angle. It splits the triangle into two smaller right triangles. Each is similar to the whole triangle and to the other: the same shape, with proportional sides. That links the two parts of the hypotenuse to the legs and the altitude. The geometric mean is the number whose square is the product of two numbers: 6 for 4 and 9, because $6\\times6=4\\times9$. A square root is a number that times itself gives a given number, and lengths use the positive one.",
+      "In a right triangle, the longest side, across from the square corner, is the hypotenuse, and the other two sides are the legs. The altitude from the right angle is the segment that meets the hypotenuse at a right angle. It splits the triangle into two smaller right triangles. Each is similar to the whole triangle and to the other: the same shape, with proportional sides. That links the two parts of the hypotenuse to the legs and the altitude. The geometric mean of two positive numbers is the positive number whose square equals them multiplied together. For 4 and 9 it is 6, because $6\\times6=36=4\\times9$. A square root is a number that times itself gives a given number, and lengths use the positive one.",
     terms: [
       [
         "altitude",
@@ -127,7 +127,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "Acute means under $90^\\circ$. In a right triangle, the other two angles are acute, and they add to $90^\\circ$. Angles that add to $90^\\circ$ are called complementary. The hypotenuse is the longest side, across from the square corner. The sine of an angle is the leg across from it divided by the hypotenuse, and the cosine is the leg next to it divided by the hypotenuse. The leg across from one acute angle is the leg next to the other. So the sine of one equals the cosine of the other, and $\\sin A=\\cos B$ means $A+B=90^\\circ$.",
+      "An acute angle is more than $0^\\circ$ and less than $90^\\circ$. In a right triangle, the other two angles are acute, and they add to $90^\\circ$. Angles that add to $90^\\circ$ are called complementary. The hypotenuse is the longest side, across from the square corner. The sine of an angle is the leg across from it divided by the hypotenuse, and the cosine is the leg next to it divided by the hypotenuse. The leg across from one acute angle is the leg next to the other. So the sine of one equals the cosine of the other, and $\\sin A=\\cos B$ means $A+B=90^\\circ$.",
     terms: ["complementary-angles", "cofunction-identity"],
     method: [
       "Write the angles from the two expressions, and set their sum equal to 90.",
@@ -142,7 +142,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A regular polygon has equal sides and equal angles. One with $n$ sides looks the same after a turn of $360^\\circ\\div n$ about its center, because each corner moves onto the next. It also looks the same after any whole number of those turns. Multiples are the results of multiplying by 1, 2, 3 and so on. So the angles that work are exactly the multiples of $360^\\circ\\div n$.",
+      "A polygon is a flat closed shape with straight sides, such as a triangle or a square. A regular polygon has all sides equal and all angles, the openings at its corners, equal. Turns are measured in degrees, and a full turn is $360^\\circ$. A regular polygon with $n$ sides looks the same after a turn of $360^\\circ\\div n$ about its center, because each corner moves onto the next. It also looks the same after any whole number of those turns. Multiples are the results of multiplying by 1, 2, 3 and so on. So the angles that work are exactly the multiples of $360^\\circ\\div n$.",
     terms: ["rotational-symmetry", "regular-polygon"],
     method: [
       "For each candidate polygon, compute $360^\\circ\\div n$.",
@@ -157,7 +157,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A rigid motion, a slide, flip or turn, keeps every length and angle. So the image, the moved figure, is congruent (same size and shape) and has the same area. A stretch is different: $(x,y)\\to(2x,y)$ doubles every width and keeps every height. Area then grows by the width factor times the height factor. Two stretches can cancel, such as doubling widths and halving heights, which keeps area but changes the shape.",
+      "A rigid motion, a slide, flip or turn, keeps every length and angle. So the image, the moved figure, is congruent (same size and shape) and has the same area. A point on a grid is named by its coordinates $(x,y)$: how far across, then how far up. A rule such as $(x,y)\\to(2x,y)$ says where each point goes: the arrow means “goes to”, and $2x$ means 2 times $x$. This rule is a stretch. It doubles every width and keeps every height. The area, the space inside, of a rectangle is width times height. So a stretch multiplies the area by the width factor times the height factor, the numbers that multiply the width and the height. Two stretches can cancel, such as doubling widths and halving heights. That keeps the area but can change the shape: a 2 by 2 square becomes a 4 by 1 rectangle.",
     terms: [
       "rigid-motion",
       [
@@ -168,21 +168,21 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     method: [
       "Name what each rule does: slide, flip, turn, stretch or resize.",
       "For a stretch, find the factor on width and the factor on height, and multiply them to get the area factor.",
-      "An area factor of 1 with a changed side length keeps area but not congruence.",
+      "An area factor of 1 keeps area. If the width and height factors are not both 1 or $-1$, the rule does not always keep congruence.",
     ],
     watch:
-      "Keeping area does not mean congruent. Two stretches with factors $k$ and $\\frac1k$, for a positive $k$ other than 1, keep area but change the shape.",
+      "Keeping area does not mean congruent. Two stretches with factors $k$ and $\\frac1k$, for a positive $k$ other than 1, keep area but can change the shape.",
   },
   "geo-section-impossible": {
     goal: "Decide which shapes a plane can cut from a prism, a cylinder or a cone, and which it cannot.",
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A plane is a flat surface that goes on forever. A cross section is the flat shape where a plane cuts through a solid. A face is a flat surface of a solid, like one side of a box. Each flat face can add at most one straight side to the cut. A curved surface can add a curve, and it can also add straight sides: a cut straight down a cylinder gives two straight sides along its length, and a cut through a cone's tip gives two straight sides meeting there. So the surfaces of the solid limit which shapes are possible.",
+      "A plane is a flat surface that goes on forever. A cross section is the flat shape where a plane cuts through a solid. A face is a flat surface of a solid, like one side of a box. A face of a box is a rectangle, with no dents, so a flat cut crosses it in at most one straight segment. So each such face adds at most one straight side to the cut. A cylinder is a can shape, and a cone narrows from a circle to a point, its tip. A curved surface can add a curve to the cut. It can also add straight sides. A cut straight down a cylinder gives two straight sides along its length. A cut through a cone's tip gives two straight sides meeting there. So the surfaces of the solid limit which shapes are possible.",
     terms: ["cross-section", "face-solid"],
     method: [
       "List the flat faces and curved surfaces of the solid.",
-      "For a solid with only flat faces, such as a prism, a cut has at most one side per face. For a cylinder or cone, also count the straight sides its curved surface can give.",
+      "For a solid whose faces are all flat with no dents, such as a box, a cut has at most one side per face. For a cylinder or cone, also count the straight sides its curved surface can give.",
       "Reject a shape with a curve for a solid with only flat faces, or with straight sides the surfaces cannot give.",
     ],
     watch:
@@ -193,7 +193,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A parallelogram is a four-sided shape with two pairs of parallel sides. Every parallelogram has equal opposite sides, equal opposite angles, and diagonals, the lines joining opposite corners, that cut each other in half. A rhombus is a parallelogram with four equal sides. A rectangle is a parallelogram with a right angle. A useful new condition must give one of those extras, not something every parallelogram has.",
+      "A parallelogram is a four-sided shape with two pairs of parallel sides. Every parallelogram has equal opposite sides, equal opposite angles, and diagonals, the segments joining opposite corners, that cut each other in half. A rhombus is a parallelogram with four equal sides. A rectangle is a parallelogram with a right angle. A useful new condition must give one of those extras, not something every parallelogram has.",
     terms: ["rhombus", "rectangle"],
     method: [
       "Cross out every condition that all parallelograms already have.",
@@ -201,7 +201,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
       "Remember: perpendicular diagonals, meeting at a right angle, give a rhombus. Diagonals of equal length give a rectangle.",
     ],
     watch:
-      "Perpendicular diagonals do not make a rectangle, and equal diagonals do not make a rhombus.",
+      "Perpendicular diagonals alone do not prove a rectangle, and equal diagonals alone do not prove a rhombus. A square has both, and it is both shapes.",
   },
 };
 
@@ -211,7 +211,7 @@ export const regentsGeometryFiguresPrinciples: Record<string, string> = {
   "geo-centroid-median":
     "The medians of a triangle meet at one point, the centroid $G$. For each median from vertex $V$ to midpoint $M$, $VG=\\frac23VM$ and $GM=\\frac13VM$.",
   "geo-parallel-segment-length":
-    "A segment joining a point $D$ on $\\overline{AB}$ and a point $E$ on $\\overline{AC}$ is parallel to $\\overline{BC}$ exactly when $\\frac{AD}{DB}=\\frac{AE}{EC}$. This is the side-splitter theorem and its converse.",
+    "Let $D$ lie between $A$ and $B$, and $E$ between $A$ and $C$. Then $\\overline{DE}$ is parallel to $\\overline{BC}$ exactly when $\\frac{AD}{DB}=\\frac{AE}{EC}$. This is the side-splitter theorem and its converse.",
   "geo-isosceles-exterior-angle":
     "In an isosceles triangle the base angles are equal. An exterior angle of a triangle equals the sum of the two inside angles that are not next to it. It also adds to $180^\\circ$ with the inside angle next to it.",
   "geo-complementary-trig-choice":
@@ -219,9 +219,9 @@ export const regentsGeometryFiguresPrinciples: Record<string, string> = {
   "geo-polygon-rotation":
     "A regular polygon with $n$ sides maps onto itself under a turn about its center through $\\theta$ degrees exactly when $\\theta$ is a multiple of $\\frac{360}{n}$.",
   "geo-area-changing-transformation":
-    "A rigid motion keeps area and gives a congruent figure. The rule $(x,y)\\to(ax,by)$ multiplies area by $|ab|$, the size of $ab$ ignoring its sign. So it keeps area exactly when $|ab|=1$, and keeps congruence only when $|a|=|b|=1$.",
+    "A rigid motion keeps area and gives a congruent figure. The rule $(x,y)\\to(ax,by)$ multiplies area by $|ab|$, the size of $ab$ ignoring its sign. So it keeps area exactly when $|ab|=1$, and keeps every figure congruent only when $|a|=|b|=1$.",
   "geo-section-impossible":
-    "A plane meets each flat face of a solid in at most one segment. So a cut through a solid with $F$ flat faces and no curved surface has at most $F$ sides. Curved outlines come only from curved surfaces.",
+    "A plane that cuts across a flat face with no dents (a convex face) meets it in at most one segment. So a cut through a solid with $F$ such faces and no curved surface has at most $F$ sides. Curved outlines come only from curved surfaces.",
   "geo-parallelogram-sufficient":
     "A parallelogram is a rhombus exactly when its diagonals are perpendicular, or when two neighboring sides are equal. It is a rectangle exactly when it has a right angle, or when its diagonals are equal.",
 };
@@ -262,12 +262,12 @@ export const regentsGeometryFiguresLessons = [
       methodTitle: "Match the similar triangles, then write the proportion",
       method: [
         "Altitude to the hypotenuse: $\\text{leg}^2=\\text{part next to it}\\times\\text{whole hypotenuse}$, and $\\text{altitude}^2=\\text{part}\\times\\text{other part}$.",
-        "Parallel segment: $AD:DB=AE:EC$. To prove a segment parallel, check that the ratios match.",
+        "Parallel segment: with $D$ on side $AB$ and $E$ on side $AC$, $DE$ is parallel to $BC$ exactly when $AD:DB=AE:EC$. To prove it parallel, check that the ratios match.",
         "Centroid: the vertex part of a median is twice the midpoint part, so it is $\\frac23$ of the median.",
       ],
       formalTitle: "The theorems",
       formal: [
-        "The altitude to the hypotenuse makes two triangles, each similar to the original. So the square of a leg equals the whole hypotenuse times the part next to that leg. That makes the leg a geometric mean: the number whose square is the product of two others.",
+        "The altitude to the hypotenuse makes two triangles, each similar to the original. So the square of a leg equals the whole hypotenuse times the part next to that leg. That makes the leg a geometric mean of the two lengths: the positive number whose square equals the two positive numbers multiplied together.",
         "A theorem is a proved rule. The side-splitter theorem says $DE\\parallel BC$ exactly when $\\frac{AD}{DB}=\\frac{AE}{EC}$. The medians meet at the centroid, which divides each median in the ratio $2:1$.",
       ],
       pitfalls: [
@@ -320,7 +320,7 @@ export const regentsGeometryFiguresLessons = [
       formalTitle: "The facts used",
       formal: [
         "The base angles of an isosceles triangle are congruent, meaning equal. An exterior angle equals the sum of the two inside angles that are not next to it.",
-        "For acute angles, under $90^\\circ$, $\\sin A=\\cos B$ exactly when $A+B=90^\\circ$. This is because $\\cos B=\\sin(90^\\circ-B)$, and sine grows steadily as an acute angle grows.",
+        "For acute angles, between $0^\\circ$ and $90^\\circ$, $\\sin A=\\cos B$ exactly when $A+B=90^\\circ$. This is because $\\cos B=\\sin(90^\\circ-B)$, and sine grows steadily as an acute angle grows.",
       ],
       pitfalls: [
         "For equal base angles, check by putting your $x$ into both expressions. They must match.",
@@ -338,7 +338,7 @@ export const regentsGeometryFiguresLessons = [
       id: "regents-geometry-symmetry-transformations-sections",
       title: "Symmetry, transformations and sections",
       summary:
-        "A change to a shape can keep some things the same. A regular polygon has equal sides and equal angles. A turn keeps it looking the same only for certain angles. A slide, flip or turn keeps every length, while a stretch changes lengths and often area. A flat cut through a solid can make only shapes its faces allow.",
+        "A change to a shape can keep some things the same. A regular polygon has equal sides and equal angles. A turn keeps it looking the same only for certain angles. A slide, flip or turn keeps every length, while a stretch changes lengths and often area. A solid is a shape that takes up space, like a box or a can. A flat cut through it makes a flat shape, and the solid's flat faces and curved surfaces limit which shapes it can be.",
       templateIds: [
         "geo-polygon-rotation",
         "geo-area-changing-transformation",
@@ -353,15 +353,15 @@ export const regentsGeometryFiguresLessons = [
       opening: [
         "A transformation is a rule that moves every point of a figure. Some keep every length and angle, some keep only area, and some keep neither. Asking what a change keeps answers questions about symmetry and area.",
         "A regular polygon has equal sides and equal angles. One with $n$ sides lands on itself after a turn of $360^\\circ\\div n$ about its center, the point in its middle. It also does after two, three or more of those turns. A rotation is a turn about a point. A degree is a small unit of turn, and a full turn is 360 degrees.",
-        "A cross section is the flat shape made when a plane, a flat surface, cuts a solid. The solid's faces, its flat surfaces, decide which shapes a cut can make.",
+        "A cross section is the flat shape made when a plane, a flat surface, cuts a solid. The solid's faces, its flat surfaces, and any curved surfaces decide which shapes a cut can make.",
       ],
       example: {
         prompt:
-          "Which regular polygon maps onto itself under rotations of $120^\\circ$ and $180^\\circ$ about its center?",
+          "Which regular polygon with the fewest sides maps onto itself under rotations of $120^\\circ$ and $180^\\circ$ about its center?",
         steps: [
-          "A regular polygon with $n$ sides turns onto itself by multiples of $360^\\circ\\div n$.",
-          "For a hexagon, with 6 sides, $360\\div6=60$. Both angles are multiples of 60: $120=2\\cdot60$ and $180=3\\cdot60$.",
-          "A triangle (multiples of $120^\\circ$) fails at $180^\\circ$, and a square (multiples of $90^\\circ$) fails at $120^\\circ$. So the regular hexagon works, and it is the polygon with the fewest sides that does.",
+          "A regular polygon with $n$ sides turns onto itself by multiples of $360^\\circ\\div n$: that angle times 1, 2, 3 and so on. Each such turn moves every corner onto another corner.",
+          "For a hexagon, with 6 sides, $360\\div6=60$. Both angles are multiples of 60: $120=2\\times60$ and $180=3\\times60$.",
+          "Check the polygons with fewer sides. A triangle (multiples of $120^\\circ$) fails at $180^\\circ$. A square (multiples of $90^\\circ$) and a pentagon (multiples of $72^\\circ$) fail at $120^\\circ$. So the regular hexagon is the polygon with the fewest sides that works.",
         ],
         answer: "regular hexagon",
       },
@@ -374,7 +374,7 @@ export const regentsGeometryFiguresLessons = [
       formalTitle: "Why these tests work",
       formal: [
         "A turn maps a regular polygon with $n$ sides onto itself exactly when it carries corners to corners. The corners are $\\frac{360^\\circ}{n}$ apart around the center.",
-        "The rule $(x,y)\\to(ax,by)$ multiplies area by $|ab|$, the size of $ab$ ignoring its sign. A plane meets each flat face of a prism in at most one segment, so a cut through a prism has at most as many sides as the prism has faces.",
+        "The rule $(x,y)\\to(ax,by)$ multiplies area by $|ab|$, the size of $ab$ ignoring its sign. A plane that cuts across a flat face with no dents, such as a rectangle, meets it in at most one segment, a straight piece. So a cut through a box-shaped prism has at most as many sides as the prism has faces, six.",
       ],
       pitfalls: [
         "A polygon must work for every listed turn, not just one.",

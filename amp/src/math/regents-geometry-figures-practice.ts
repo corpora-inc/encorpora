@@ -170,7 +170,7 @@ export const altitudeHypotenuse = chainFamily({
           : `Triangle $${ask === "leg" ? "ACD" : "BCD"}$ has the same shape as the whole triangle $ABC$. Match $${name}$ with the piece of the hypotenuse beside it, ${ask === "leg" ? p : q}, and with the whole hypotenuse $AB=${p}+${q}$.`,
       explanation: [
         `The altitude $\\overline{CD}$ is the segment from the right angle $C$ that meets the hypotenuse $\\overline{AB}$ at a right angle. The hypotenuse is the side across from the right angle.`,
-        `It splits triangle $ABC$ into two smaller right triangles. All three share the same angles, so they are similar: the same shape, different sizes.`,
+        `It splits triangle $ABC$ into two smaller right triangles. All three share the same angles, so they are similar: the same shape, possibly different sizes.`,
         ...(ask === "altitude"
           ? [
               `In similar triangles, matching sides are in the same ratio. Matching short leg to long leg in $ACD$ and $CBD$ gives $\\frac{AD}{CD}=\\frac{CD}{DB}$.`,
@@ -180,7 +180,7 @@ export const altitudeHypotenuse = chainFamily({
             ]
           : [
               `The whole hypotenuse is the two pieces together: $AB=${p}+${q}=${h}$.`,
-              `Triangle $${ask === "leg" ? "ACD" : "BCD"}$ matches triangle $ABC$. In each, compare the hypotenuse with the side along $\\overline{AB}$: $\\frac{AB}{${name}}=\\frac{${name}}{${ask === "leg" ? "AD" : "DB"}}$, so $\\frac{${h}}{${name}}=\\frac{${name}}{${ask === "leg" ? p : q}}$.`,
+              `Triangle $${ask === "leg" ? "ACD" : "BCD"}$ matches triangle $ABC$: they share the angle at $${ask === "leg" ? "A" : "B"}$. In each, divide the hypotenuse by the leg that touches $${ask === "leg" ? "A" : "B"}$: $\\frac{AB}{${name}}=\\frac{${name}}{${ask === "leg" ? "AD" : "DB"}}$, so $\\frac{${h}}{${name}}=\\frac{${name}}{${ask === "leg" ? p : q}}$.`,
               `Cross-multiply, multiplying each side by both denominators: $${name}^2=${ask === "leg" ? p : q}\\cdot${h}=${target}$.`,
               `Take the square root and simplify: $${name}=\\sqrt{${target}}=${radicalTex(target)}$.`,
               `The length of $\\overline{${name}}$ is $${radicalTex(target)}$.`,
@@ -364,7 +364,7 @@ export const polygonRotation = chainFamily({
         `A regular polygon has all sides equal and all angles equal. "Maps onto itself" means after the turn it covers exactly the same spot.`,
         `A regular polygon with $n$ sides does this after a turn of $\\frac{360^\\circ}{n}$, one full turn shared among its $n$ corners. Any whole multiple of that turn also works.`,
         `For a ${polyName(m.n).toLowerCase()}, $\\frac{360^\\circ}{${m.n}}=${360 / m.n}^\\circ$. Then ${m.angles.map((t) => `$${t}^\\circ=${t / (360 / m.n)}\\cdot${360 / m.n}^\\circ$`).join(" and ")}, a whole number of those turns.`,
-        `Each other polygon listed has a smallest turn that does not divide ${m.angles.length === 1 ? "the angle" : "both angles"} evenly.`,
+        `Each other answer choice has a smallest turn that does not divide ${m.angles.length === 1 ? "the angle" : "both angles"} evenly.`,
         `The polygon that maps onto itself is the ${polyName(m.n).toLowerCase()}.`,
       ],
     });
@@ -540,7 +540,7 @@ export const parallelSegment = chainFamily({
         answer: String(c + ec),
         hint: `A segment parallel to $\\overline{BC}$ cuts $\\overline{AB}$ and $\\overline{AC}$ in the same ratio. Use $AD:DB=${m.a}:${m.b}$ to find $EC$ from $AE=${c}$, then add the two pieces of $\\overline{AC}$.`,
         explanation: [
-          `The symbol $\\parallel$ means parallel: the segments never meet. A segment parallel to one side of a triangle cuts the other two sides in the same ratio.`,
+          `The symbol $\\parallel$ means parallel: the segments point in the same direction, so the lines through them never meet. A segment parallel to one side of a triangle cuts the other two sides in the same ratio.`,
           `So the pieces of $\\overline{AB}$ and of $\\overline{AC}$ compare the same way: $\\frac{AD}{DB}=\\frac{AE}{EC}$, which is $\\frac{${m.a}}{${m.b}}=\\frac{${c}}{EC}$.`,
           `Cross-multiply, multiplying both sides by both denominators: $${m.a}\\cdot EC=${m.b}\\cdot${c}$, so $EC=\\frac{${m.b}\\cdot${c}}{${m.a}}=${ec}$.`,
           `$\\overline{AC}$ is made of the two pieces: $AC=AE+EC=${c}+${ec}=${c + ec}$.`,
@@ -554,7 +554,7 @@ export const parallelSegment = chainFamily({
       answer: String(ec),
       hint: `$\\overline{DE}\\parallel\\overline{BC}$ exactly when $\\overline{DE}$ cuts the two sides in the same ratio. Compare $AD:DB=${m.a}:${m.b}$ with $AE:EC=${c}:EC$.`,
       explanation: [
-        `The symbol $\\parallel$ means parallel: the segments never meet. A segment is parallel to one side of a triangle exactly when it cuts the other two sides in the same ratio.`,
+        `The symbol $\\parallel$ means parallel: the segments point in the same direction, so the lines through them never meet. A segment is parallel to one side of a triangle exactly when it cuts the other two sides in the same ratio.`,
         `So we need $\\frac{AD}{DB}=\\frac{AE}{EC}$, which is $\\frac{${m.a}}{${m.b}}=\\frac{${c}}{EC}$.`,
         `Cross-multiply, multiplying both sides by both denominators: $${m.a}\\cdot EC=${m.b}\\cdot${c}$, so $EC=\\frac{${m.b}\\cdot${c}}{${m.a}}=${ec}$.`,
         `Check: $\\frac{${c}}{${ec}}$ equals $\\frac{${m.a}}{${m.b}}$, so the ratios match.`,
@@ -694,7 +694,7 @@ export const areaChanging = chainFamily({
       ],
       hint: `Two things must hold: the area stays the same, and some side length changes. Test the rule $${wrongs[0]!.label}$: find how it changes the width and the height, and multiply those factors.`,
       explanation: [
-        "The arrow rule says where each point $(x,\\ y)$ goes. Two things must hold: the area is unchanged, and the image is not congruent (not the same size and shape).",
+        "The arrow rule says where each point $(x,\\ y)$ goes. Two things must hold: the area is unchanged, and the image is not always congruent (the same size and shape).",
         "A translation (slide), reflection (flip) or rotation (turn) keeps every length. Its image is always congruent, so it fails the second part.",
         "A stretch multiplies the area by its factor. Unless the factors multiply to 1, the area changes, so it fails the first part.",
         `$${keeper.label}$ is ${keeper.factor}.`,
@@ -907,7 +907,7 @@ export const parallelogramSpecial = chainFamily({
         rhombus
           ? "A rhombus is a parallelogram with all four sides congruent (equal)."
           : "A rectangle is a parallelogram with four right angles.",
-        "A condition true of every parallelogram cannot prove anything special. A condition that proves the other special shape is not enough either.",
+        "A condition true of every parallelogram cannot prove anything special. A condition that proves only the other special shape is not enough either.",
         `The condition "${g}" works. ${why}`,
         `So the added condition that proves $ABCD$ is a ${a.target} is: ${g}.`,
       ],

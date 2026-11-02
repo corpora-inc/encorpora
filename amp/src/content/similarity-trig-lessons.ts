@@ -66,7 +66,7 @@ export const similarityTrigLessons: Lesson[] = [
         title: "A dilation scales every length",
         paragraphs: [
           "A dilation with center $O$ and scale factor $k$ moves each point $P$ along the ray from $O$ through $P$, to the point $k$ times as far from $O$. When $k>1$ the figure grows, and when $0<k<1$ it shrinks.",
-          "Every length is multiplied by $k$, wherever the center is. Angles keep their measure. A line that misses the center maps to a parallel line, so slopes are kept too. With a center $C$ other than the origin, scale the step from $C$ to $P$, then add it back to $C$: $P'$ = $C$ + $k(P - C)$.",
+          "Every length is multiplied by $k$, wherever the center is. Angles keep their measure. A line that misses the center maps to a parallel line, or to itself when $k=1$, so slopes are kept too. With a center $C$ other than the origin, scale the step from $C$ to $P$, then add it back to $C$: $P'$ = $C$ + $k(P - C)$.",
         ],
         illustration: "similarity-dilation",
       },
@@ -101,7 +101,7 @@ export const similarityTrigLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "For $k>0$, a dilation multiplies every distance by $k$ and keeps every angle; a line that misses the center maps to a parallel line.",
+          "For $k>0$, a dilation multiplies every distance by $k$ and keeps every angle; a line that misses the center maps to a parallel line, or to itself when $k=1$.",
           "Matching sides of similar triangles share one ratio, the scale factor; perimeters scale by it and areas by its square.",
         ],
       },
@@ -240,8 +240,8 @@ export const similarityTrigMethods: Record<string, ProblemMethod> = {
     terms: terms.special,
     method: [
       "Name the given side: a leg, the hypotenuse, the shorter leg or the longer leg.",
-      "Find $s$ from it: divide by $\\sqrt2$, $\\sqrt3$ or 2 as the pattern says.",
-      "Build the asked side from $s$. If a square root is left on the bottom of a fraction, multiply the top and bottom by that root to clear it.",
+      "Find $s$ from it. A shorter leg, or a leg of the $45^\\circ$ triangle, already is $s$; otherwise divide by $\\sqrt2$, $\\sqrt3$ or 2 as the pattern says.",
+      "Build the asked side from $s$. If the bottom of a fraction is a single square root, such as $\\sqrt3$, multiply the top and bottom by that root to clear it.",
     ],
     watch:
       "In a 30°-60°-90° triangle the shorter leg is opposite 30°, not 60°.",
@@ -278,7 +278,7 @@ export const similarityTrigMethods: Record<string, ProblemMethod> = {
 };
 export const similarityTrigPrinciples: Record<string, string> = {
   "dilation-measure":
-    "A dilation with scale factor $k$ multiplies every distance by $k$ and keeps every angle; a line that misses the center maps to a parallel line.",
+    "A dilation with scale factor $k$ multiplies every distance by $k$ and keeps every angle; a line that misses the center maps to a parallel line, or to itself when $k=1$.",
   "similar-triangle-side":
     "Matching sides of similar triangles share one ratio, the scale factor; perimeters scale by it and areas by its square.",
   "special-right-triangle":

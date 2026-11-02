@@ -79,7 +79,7 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
       "Cross-multiply and solve. Check that the unknown is the side matched with the side you used in its ratio.",
     ],
     watch:
-      "Pair sides across the crossing point, not along one segment. $AE$ pairs with $BE$, and $CE$ with $DE$, when $A$ corresponds to $B$ and $C$ to $D$.",
+      "Pair sides by their matching corners, not by where they lie. When $A$ corresponds to $B$ and $C$ to $D$, $AE$ pairs with $BE$, and $CE$ with $DE$.",
   },
   "angle-chase-chain": {
     goal: "Combine vertical angles, a triangle angle sum and angles made by parallel lines to find one angle.",
@@ -171,12 +171,12 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Find the side the figure gives: a side from a perimeter (the distance around), or a diagonal as a diameter (a chord through the center).",
+      "Find the length the figure gives. A perimeter, the distance around, divided by the number of equal sides gives one side. When a square's four corners lie on a circle, its diagonal is a diameter: twice the radius.",
       "Draw the altitude of an equilateral triangle, or a diagonal of a square. Name the special right triangle that results.",
       "Apply its ratio, then read off the requested number.",
     ],
     watch:
-      "The shorter leg is opposite the smaller angle. In an equilateral triangle the altitude is the longer leg, not the hypotenuse.",
+      "The shorter leg is opposite the smaller angle. When an altitude cuts an equilateral triangle into two right triangles, the altitude is the longer leg of each, not the hypotenuse (the longest side).",
   },
 };
 
@@ -255,7 +255,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
     pitfalls: [
       "Pair vertices by the order of the letters in the statement.",
       "Do not multiply an angle by a side scale factor.",
-      "Set up ratios across the crossing point: $AE$ goes with $BE$ when $A$ matches $B$.",
+      "Pair sides by their matching corners: $AE$ goes with $BE$ when $A$ matches $B$.",
     ],
     parentGuide:
       "Ask the learner to write the three vertex pairs in $\\triangle ABC\\sim\\triangle EFD$ before looking for any angle.",
@@ -320,7 +320,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
     id: "sat-radii-and-special-triangles",
     title: "Radii, right triangles and special triangles in figures",
     summary:
-      "Look for a triangle you know inside a figure. Two radii of a circle are equal, so with a chord they make a triangle with two equal sides. A right triangle's longest side comes from the Pythagorean theorem, often written with a root sign. And cutting a square along a diagonal, or an equilateral triangle along an altitude, makes right triangles with fixed side ratios.",
+      "Look for a triangle you know inside a figure. A radius goes from a circle's center to the circle, and all radii of one circle are equal. So two radii and the segment joining their ends make a triangle with two equal sides. In a triangle with a square corner, the longest side follows from the other two, and it is often a square root. Cutting a square corner to corner, or a triangle with three equal sides down its middle, makes triangles whose sides always keep the same proportions.",
     templateIds: [
       "circle-radii-triangle",
       "radical-side-entry",
@@ -338,8 +338,9 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         stage: "intuition",
         title: "Look for the right or isosceles triangle",
         paragraphs: [
-          "A circle's center is the point in its middle. A radius is a segment from the center to the circle, and every radius has the same length. A chord joins two points of the circle. So two radii and a chord form an isosceles triangle, a triangle with two equal sides, with equal angles at the chord. A central angle has the same measure in degrees as the arc it cuts off, so the base angles are half of 180° minus the arc.",
-          "In a right triangle, the hypotenuse is the longest side and the legs are the other two. The Pythagorean theorem is the rule $c^2=a^2+b^2$ for a hypotenuse $c$ and legs $a$ and $b$. When $c^2$ has a perfect-square factor, the root simplifies to $m\\sqrt{n}$. A square cut along a diagonal or an equilateral triangle cut along an altitude produces right triangles with fixed side ratios.",
+          "A circle's center is the point in its middle. A radius is a segment from the center to the circle, and every radius has the same length. A chord joins two points of the circle. So two radii and a chord form an isosceles triangle, a triangle with two equal sides, with equal angles at the chord. A central angle has the same measure in degrees as the arc it cuts off, The three angles of a triangle add to 180°, so each equal angle at the chord is half of 180° minus the central angle.",
+          "A right triangle has one right angle, a square corner. Its longest side, across from the right angle, is the hypotenuse, and the other two sides are the legs. The Pythagorean theorem is the rule $c^2=a^2+b^2$ for a hypotenuse $c$ and legs $a$ and $b$. So $c$ is the square root of $a^2+b^2$: the positive number whose square is $a^2+b^2$, written with the root sign $\\sqrt{\\ }$. A perfect square is a whole number times itself, such as 9. When $c^2$ has a perfect-square factor, take its root out front: $\\sqrt{90}=\\sqrt{9\\cdot10}=3\\sqrt{10}$. This is called simplest radical form, written $m\\sqrt{n}$.",
+          "A diagonal of a square is the segment joining opposite corners. It cuts the square into two right triangles with angles of 45, 45 and 90 degrees, called 45-45-90 triangles. An equilateral triangle has three equal sides and three 60-degree angles. Its altitude is the segment from a corner that meets the opposite side at a right angle. It cuts the triangle into two 30-60-90 triangles. In each kind, the sides always keep the same ratio, the same comparison by division, whatever the size. A square is inscribed in a circle when all four of its corners lie on the circle.",
         ],
       },
     ],

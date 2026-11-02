@@ -1013,7 +1013,7 @@ export const expressionsEquationsEntries: GlossaryEntry[] = [
     term: "slope",
     forms: ["slope", "slopes"],
     plain:
-      "How steep a line is: the change in $y$ divided by the change in $x$ between any two of its points. Positive slopes rise left to right.",
+      "How steep a line is: the change in $y$ divided by the change in $x$ between two of its points. Up-and-down lines have none. Positive slopes rise left to right.",
     example: "From $(1, 2)$ to $(3, 8)$: slope $= \\frac{8 - 2}{3 - 1} = 3$.",
     figure: "slope-rise-run",
     uses: ["line", "point"],

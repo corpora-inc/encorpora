@@ -89,7 +89,7 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A line is fixed by its slope and one point. Slope is steepness: the change in $y$ divided by the change in $x$ between two points. Parallel lines are lines that never meet, and they have the same slope. Perpendicular lines are lines that meet at a right angle, a square corner. When neither is vertical or horizontal, their slopes are opposite reciprocals: flip the fraction and change the sign, so $\\frac32$ pairs with $-\\frac23$. Point-slope form, $y-y_1=m(x-x_1)$, uses a slope $m$ and a known point $(x_1,y_1)$; the small 1 just marks that point.",
+      "A line is fixed by its slope and one point. Slope is steepness: the change in $y$ divided by the change in $x$ between two points. Parallel lines are lines that never meet. When they are not vertical, they have the same slope. Perpendicular lines are lines that meet at a right angle, a square corner. When neither is vertical or horizontal, their slopes are opposite reciprocals: flip the fraction and change the sign, so $\\frac32$ pairs with $-\\frac23$. Point-slope form, $y-y_1=m(x-x_1)$, uses a slope $m$ and a known point $(x_1,y_1)$; the small 1 just marks that point.",
     terms: ["point-slope-form", "negative-reciprocal"],
     method: [
       "Find the slope of the given line: change in $y$ divided by change in $x$.",
@@ -97,16 +97,16 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
       "Put the new point in as $(x_1,y_1)$. Its coordinates are subtracted.",
     ],
     watch:
-      "A negative coordinate becomes a plus sign: through $(-4,3)$ gives $y-3$ and $x+4$. Do not use a point from the given line.",
+      "A negative coordinate becomes a plus sign: through $(-4,3)$ gives $y-3$ and $x+4$. Use the point the question gives for the new line.",
   },
   "geo-line-pair-relationship": {
     goal: "Compare the slopes of two lines, one in standard form, to decide whether they are parallel, perpendicular, the same line or neither.",
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "Two lines in a flat plane either cross, never meet, or are the same line. Slope, the steepness, tells which. Equal slopes mean parallel lines or the same line. Slopes that multiply to $-1$ mean the lines meet at a right angle: they are perpendicular. Standard form is $Ax+By=C$. When $B\\ne0$, solving for $y$ shows that the slope is $-\\frac{A}{B}$. The $y$-intercept is where a line crosses the $y$-axis.",
+      "Two lines in a flat plane either cross, never meet, or are the same line. The slopes, their steepness, and the $y$-intercepts tell which. Equal slopes mean parallel lines or the same line. Slopes that multiply to $-1$ mean the lines meet at a right angle: they are perpendicular. Standard form is $Ax+By=C$. When $B\\ne0$, solving for $y$ shows that the slope is $-\\frac{A}{B}$. The $y$-intercept is where a line crosses the $y$-axis.",
     terms: [
-      ["standard-form-line", "Its slope is $-\\frac{A}{B}$."],
+      ["standard-form-line", "When $B\\ne0$, its slope is $-\\frac{A}{B}$."],
       [
         "line",
         "Two equations give the same line when they have exactly the same solutions.",
@@ -115,7 +115,7 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
     method: [
       "Find the slope of each line. Solve a standard-form equation for $y$ if needed.",
       "If the slopes are equal, compare the $y$-intercepts. Different intercepts mean parallel lines, and equal ones mean the same line.",
-      "If the slopes multiply to $-1$, the lines are perpendicular. Otherwise they are neither.",
+      "If the slopes multiply to $-1$, the lines are perpendicular. A vertical line and a horizontal line are perpendicular too. Otherwise they are neither.",
     ],
     watch:
       "Slopes such as 2 and $-2$ have opposite signs but multiply to $-4$, so they are not perpendicular. Equal slopes with equal intercepts are the same line, not parallel lines.",
@@ -125,7 +125,7 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A line written $y=mx+b$ has slope $m$, its steepness, and crosses the $y$-axis at $(0,b)$. A dilation about the origin, the point $(0,0)$, multiplies every point's coordinates by the scale factor $k$. A line that misses the origin is sent to a parallel line, with the same slope. Its $y$-intercept point $(0,b)$, where it crosses the $y$-axis, goes to $(0,kb)$. A line through the origin stays where it is.",
+      "A line written $y=mx+b$ has slope $m$, its steepness, and crosses the $y$-axis at $(0,b)$. A dilation about the origin, the point $(0,0)$, multiplies every point's coordinates by the scale factor $k$, a positive number. When $k$ is not 1, a line that misses the origin is sent to a parallel line, with the same slope. Its $y$-intercept point $(0,b)$, where it crosses the $y$-axis, goes to $(0,kb)$. A line through the origin stays where it is.",
     terms: ["scale-factor", "image-transformation"],
     method: [
       "Pick a point on the line that is easy to scale, such as the $y$-intercept $(0,b)$.",
@@ -147,7 +147,7 @@ export const regentsGeometryCoordinatePrinciples: Record<string, string> = {
   "geo-line-pair-relationship":
     "Two lines that are not vertical, with slopes $m_1$ and $m_2$, are parallel or the same line when $m_1=m_2$, and perpendicular when $m_1m_2=-1$. The same line also has the same $y$-intercept.",
   "geo-dilation-line-image":
-    "A dilation with center $O$ and scale factor $k$ maps a line not through $O$ to a parallel line. With its center at the origin, it maps $y=mx+b$ to $y=mx+kb$.",
+    "A dilation with center $O$ and scale factor $k\\ne1$ maps a line not through $O$ to a parallel line. With its center at the origin, it maps $y=mx+b$ to $y=mx+kb$.",
 };
 
 export const regentsGeometryCoordinateLessons = [
@@ -193,7 +193,7 @@ export const regentsGeometryCoordinateLessons = [
         "Use the same fraction for both coordinates.",
       ],
       parentGuide:
-        "Ask your learner to check that the point lies between the endpoints, closer to the end with fewer parts.",
+        "Ask your learner to check that the point lies between the endpoints, closer to the end with fewer parts, or halfway for a ratio such as 1:1.",
     }),
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
@@ -239,7 +239,7 @@ export const regentsGeometryCoordinateLessons = [
       pitfalls: [
         "The center's signs are opposite to those inside the parentheses.",
         "The number on the right is $r^2$, so take its square root.",
-        "Add each completed square to both sides, not to one side only.",
+        "Add the number that completes each square, such as 9 for $x^2-6x$, to both sides, not to one side only.",
       ],
       parentGuide:
         "Ask your learner to check a point. The center moved right by the radius, $(8,-2)$ here, must make the original equation true.",
@@ -252,7 +252,7 @@ export const regentsGeometryCoordinateLessons = [
       id: "regents-geometry-lines-and-dilations",
       title: "Parallel, perpendicular and dilated lines",
       summary:
-        "Slope measures how steep a line is. Parallel lines, which never meet, have the same slope. Perpendicular lines, which meet at a square corner, have slopes that multiply to $-1$, as long as neither line is vertical or horizontal. A dilation about the origin keeps a line's slope and multiplies its $y$-intercept by the scale factor.",
+        "Slope measures how steep a line is. Parallel lines, which never meet, have the same slope when they are not vertical. Perpendicular lines, which meet at a square corner, have slopes that multiply to $-1$, as long as neither line is vertical or horizontal. A dilation about the origin keeps a line's slope and multiplies its $y$-intercept by the scale factor.",
       templateIds: [
         "geo-line-point-slope-choice",
         "geo-line-pair-relationship",
@@ -267,7 +267,7 @@ export const regentsGeometryCoordinateLessons = [
       opening: [
         "The slope of a line says how steep it is and which way it leans. It is the change in $y$ divided by the change in $x$ between two points. Lines with the same slope point the same way, so they are parallel or are the same line.",
         "Perpendicular lines meet at a right angle, a square corner. If neither is vertical (straight up and down) or horizontal, their slopes multiply to $-1$. So each slope is the opposite reciprocal of the other: flip the fraction and change its sign. For example, $\\frac32\\times(-\\frac23)=-1$.",
-        "A line's $y$-intercept is where it crosses the $y$-axis. A dilation about the origin, the point $(0,0)$, multiplies both numbers of every point, $x$ and $y$, by the scale factor $k$. It keeps directions, so a line that misses the origin goes to a parallel line, and its $y$-intercept $b$ goes to $kb$. A line through the origin stays put.",
+        "A line's $y$-intercept is where it crosses the $y$-axis. A dilation about the origin, the point $(0,0)$, multiplies both numbers of every point, $x$ and $y$, by the scale factor $k$, a positive number. It keeps directions. So when $k$ is not 1, a line that misses the origin goes to a parallel line, and its $y$-intercept $b$ goes to $kb$. A line through the origin stays put.",
       ],
       example: {
         prompt:
@@ -293,10 +293,10 @@ export const regentsGeometryCoordinateLessons = [
       pitfalls: [
         "Do not stop at the reciprocal. Change the sign too.",
         "Equal slopes and equal intercepts mean the same line, not two parallel lines.",
-        "A dilation about the origin multiplies the $y$-intercept by the scale factor; it does not leave it unchanged.",
+        "A dilation about the origin multiplies the $y$-intercept by the scale factor. A nonzero intercept changes unless the factor is 1.",
       ],
       parentGuide:
-        "Have your learner test a perpendicular slope by checking that the two slopes multiply to $-1$.",
+        "Have your learner test a perpendicular slope by checking that the two slopes multiply to $-1$. This check is for lines that are neither vertical nor horizontal.",
     }),
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,

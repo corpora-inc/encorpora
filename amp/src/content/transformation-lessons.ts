@@ -156,7 +156,7 @@ export const transformationLessons: Lesson[] = [
         title: "A right triangle under every segment",
         paragraphs: [
           "A right triangle has one right angle, a square corner. The two sides that form the right angle are the legs, and the longest side, opposite the right angle, is the hypotenuse. Squared means multiplied by itself: $8^2=8\\times8=64$. The Pythagorean theorem says that for every right triangle, leg² + leg² = hypotenuse².",
-          "From $A(−3, −1)$, move horizontally to (5, −1), then vertically to $B(5, 5)$. These moves are the legs of a right triangle whose hypotenuse is $AB$. The horizontal leg is the change in x: 5 − (−3) = 8. The vertical leg is the change in y: 5 − (−1) = 6. So $AB^2 = 8^2 + 6^2 = 64 + 36 = 100$, and $AB = 10$, because 10 × 10 = 100.",
+          "From $A(−3, −1)$, move horizontally to (5, −1), then vertically to $B(5, 5)$. These moves are the legs of a right triangle whose hypotenuse is $AB$. The horizontal leg is as long as the change in $x$: 5 − (−3) = 8. The vertical leg is as long as the change in $y$: 5 − (−1) = 6. A change can come out negative when you move left or down. A length is never negative, so a leg is the size of its change, without the minus sign. So $AB^2 = 8^2 + 6^2 = 64 + 36 = 100$, and $AB = 10$, because 10 × 10 = 100.",
         ],
         illustration: "distance-triangle",
       },
@@ -171,7 +171,7 @@ export const transformationLessons: Lesson[] = [
     workedExample: {
       prompt: "What is the distance between the points (−3, −1) and (5, 5)?",
       steps: [
-        "The horizontal leg is the change in x: 5 − (−3) = 8. The vertical leg is the change in y: 5 − (−1) = 6.",
+        "The horizontal leg is as long as the change in $x$: 5 − (−3) = 8. The vertical leg is as long as the change in $y$: 5 − (−1) = 6.",
         "By the Pythagorean theorem, the distance squared is 8² + 6² = 64 + 36 = 100.",
         "The distance is √100 = 10, because 10 × 10 = 100.",
       ],
@@ -280,13 +280,13 @@ export const transformationLessons: Lesson[] = [
         stage: "intuition",
         title: "One scale for every matched side",
         paragraphs: [
-          "A dilation uses a positive multiplier $k$ to move each point other than the center farther from it or closer to it. If $k=2$, every side becomes twice as long while the angles stay equal. Figures related by a dilation and a rigid motion are similar. Their corresponding sides match the same corners, and each side of the new figure, called the image, is $k$ times its matching original side.",
+          "A dilation multiplies each point's distance from a fixed center by a positive number $k$, the scale factor. If $k$ is more than 1, points move away from the center. If $k$ is between 0 and 1, they move closer, and if $k=1$, nothing moves. If $k=2$, every side becomes twice as long, while every angle (the opening at a corner) stays the same size. The new figure is called the image. A rigid motion is a slide, flip or turn, which changes no lengths. Two figures are called similar when a dilation, maybe followed by a rigid motion, carries one onto the other. Corresponding sides are sides in matching positions: they join matching corners. Each side of the image is $k$ times its corresponding original side.",
         ],
       },
       {
         title: "Dilations change size, not shape",
         paragraphs: [
-          "A dilation with center $O$ and scale factor $k$ moves every point $P$ along the ray from $O$ through $P$, to the point $P'$ whose distance from $O$ is $k$ times the distance $OP$. With the center at the origin, both coordinates are multiplied by $k$: ($x$, $y$) → (kx, ky).",
+          "A dilation with center $O$ and scale factor $k$ moves every point $P$ along the ray from $O$ through $P$. A ray is a straight path that starts at one point and goes on forever in one direction. The image of $P$ is named $P'$, read “$P$ prime”, and its distance from $O$ is $k$ times the distance $OP$. With the center at the origin, $(0, 0)$, each coordinate is a distance across or up from the center, so both coordinates are multiplied by $k$. The arrow means “goes to”: $(x, y) \\to (kx, ky)$.",
           "In the figure, triangle $ABC$ with $A(2, 1)$, $B(4, 1)$ and $C(2, 3)$ is dilated by 2. The images are $A'(4, 2)$, $B'(8, 2)$ and $C'(4, 6)$, each on the ray from the origin through its point. Every side of the image is 2 times as long, and every angle is unchanged. A scale factor greater than 1 enlarges; one between 0 and 1 reduces.",
           "To find the scale factor from coordinates, divide one image coordinate by its matching original coordinate only when that original coordinate is nonzero. For $A(2,1)$ and $A'(4,2)$, $k=4\\div2=2$.",
         ],
@@ -296,7 +296,7 @@ export const transformationLessons: Lesson[] = [
         title: "Similar figures and corresponding sides",
         paragraphs: [
           "Two figures are similar when one can be carried onto the other by rigid motions and a dilation. Similar figures have the same shape: corresponding angles are equal, and every side of one is the same number of times its corresponding side in the other. That number is the scale factor.",
-          "Triangle $ABC$ ∼ triangle $DEF$ means $A$ corresponds to $D$, $B$ to $E$ and $C$ to $F$, so side $AB$ corresponds to $DE$, $BC$ to $EF$ and $CA$ to $FD$. In the figure, $AB = 4$ and $DE = 6$, so the scale factor from $ABC$ to $DEF$ is 6 ÷ 4 = 3/2. Then $EF = 6 × 3/2 = 9$ and $FD = 5 × 3/2 = 7.5$. Equal numbers of arcs mark corresponding angles.",
+          "The sign ∼ means “is similar to”. Triangle $ABC$ is the triangle with corners $A$, $B$ and $C$, and $AB$ names the side from $A$ to $B$, or its length. Triangle $ABC$ ∼ triangle $DEF$ matches the letters in order: $A$ with $D$, $B$ with $E$ and $C$ with $F$. So side $AB$ corresponds to $DE$, $BC$ to $EF$ and $CA$ to $FD$. In the figure, $AB = 4$ and $DE = 6$, so the scale factor from $ABC$ to $DEF$ is 6 ÷ 4 = 3/2. Then $EF = 6 × 3/2 = 9$ and $FD = 5 × 3/2 = 7.5$. In the figure, small curves drawn in the corners, called arcs, mark corresponding angles: equal numbers of arcs mean equal angles.",
         ],
         illustration: "similar-triangles-marked",
       },
@@ -305,9 +305,9 @@ export const transformationLessons: Lesson[] = [
       prompt:
         "Triangle $ABC$ is similar to triangle $DEF$, with $A$ corresponding to $D$, $B$ corresponding to $E$ and $C$ corresponding to $F$. In centimeters, $AB = 4$, $BC = 6$, $CA = 5$ and $DE = 6$. What is $EF$, in centimeters?",
       steps: [
-        "Corresponding sides join corresponding vertices: $AB$ ↔ $DE$, $BC$ ↔ $EF$ and $CA$ ↔ $FD$.",
-        "The scale factor from $ABC$ to $DEF$ is $DE ÷ AB = 6 ÷ 4 = 3/2$.",
-        "$EF = BC × 3/2 = 6 × 3/2 = 9$.",
+        "Corresponding sides join corresponding vertices (corners). The arrow ↔ means “matches”: $AB$ ↔ $DE$, $BC$ ↔ $EF$ and $CA$ ↔ $FD$.",
+        "The scale factor from $ABC$ to $DEF$ is the number that multiplies each side of $ABC$ to give its match in $DEF$. So divide the new length by the old one: $DE ÷ AB = 6 ÷ 4 = 3/2$.",
+        "$EF$ corresponds to $BC$, so multiply $BC$ by the same scale factor: $EF = BC × 3/2 = 6 × 3/2 = 9$.",
       ],
       answer: "9",
       answerUnit: "cm",
@@ -318,7 +318,7 @@ export const transformationLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "For a positive scale factor $k$, a dilation centered at the origin sends $(x,y)$ to $(kx,ky)$.",
-          "Such a dilation multiplies every distance by $k$ and preserves every angle; $k>1$ enlarges and $0<k<1$ reduces the figure.",
+          "Such a dilation multiplies every distance by $k$ and keeps every angle. It enlarges the figure when $k>1$ ($k$ is greater than 1) and reduces it when $0<k<1$ ($k$ is between 0 and 1).",
           "In similar triangles, every side of one is the same multiple, the scale factor, of its corresponding side in the other.",
         ],
       },
@@ -326,7 +326,7 @@ export const transformationLessons: Lesson[] = [
     pitfalls: [
       "A dilation centered at the origin multiplies coordinates by the scale factor. Adding the scale factor would slide the figure instead.",
       "Match sides by vertex order, not by position on the page: $BC$ corresponds to $EF$ when $B$ ↔ $E$ and $C$ ↔ $F$.",
-      "The scale factor from the image back to the original is the reciprocal: 2/3, not 3/2, from $DEF$ to $ABC$.",
+      "Going back from the image to the original, use the reciprocal, the fraction flipped upside down. From $DEF$ to $ABC$ the scale factor is 2/3, not 3/2.",
     ],
     parentGuide:
       "Photocopy a picture at 150% and measure one length in both copies. Ask which number multiplies every length, and check it on a second length.",
@@ -398,7 +398,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A point $(x, y)$ is $x$ units across and $y$ units up from the origin, where the two axes cross; negative numbers mean left or down. Two points with the same $y$-coordinate lie on one horizontal (flat) line. Two with the same $x$-coordinate lie on one vertical line. The side's length is the distance between the coordinates that differ. If both are on the same side of 0, subtract their distances from 0. If they are on opposite sides, add them: from $-4$ to 5 is $4+5=9$.",
+      "A grid has two number lines, the axes: the $x$-axis across and the $y$-axis up and down. They cross at the origin, $(0, 0)$. A point $(x, y)$ is $x$ grid steps (units) across and $y$ units up from the origin. Negative numbers mean left or down. The first number is the $x$-coordinate and the second is the $y$-coordinate. Two points with the same $y$-coordinate lie on one horizontal (flat) line. Two with the same $x$-coordinate lie on one vertical (straight up and down) line. The side's length is the distance between the coordinates that differ. If both are on the same side of 0, subtract the smaller distance from 0 from the larger: from 2 to 7 is $7-2=5$. If they are on opposite sides, the side passes through 0, so add the two distances: from $-4$ to 5 is $4+5=9$.",
     terms: [
       [
         "side",
@@ -410,7 +410,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Find the coordinate the endpoints share; the other coordinates change.",
+      "Find the coordinate the two endpoints (the ends of the side) share. The other coordinates change along the side.",
       "Same side of 0: subtract their distances from 0. Opposite sides: add them.",
     ],
     watch: "Across an axis, add the distances from 0: from −4 to 5 is 9.",
@@ -420,7 +420,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A rectangle has four square corners, and its opposite sides are equal. When its sides are horizontal and vertical, a horizontal side gives the width and a vertical side gives the height. Its perimeter, the distance around, is $2\\times(\\text{width}+\\text{height})$. Its area, the number of unit squares inside, is $\\text{width}\\times\\text{height}$.",
+      "A point $(x, y)$ is $x$ units across and $y$ units up from the origin, $(0, 0)$; negative numbers mean left or down. The first number is the $x$-coordinate and the second is the $y$-coordinate. A rectangle has four square corners, and its opposite sides are equal. When its sides are horizontal (flat) and vertical (straight up and down), a horizontal side gives the width and a vertical side gives the height. Its perimeter, the distance around, adds two widths and two heights: a rectangle 3 wide and 2 tall has perimeter $3+2+3+2=10$. Add width and height first, then double: $2\\times(\\text{width}+\\text{height})$. Its area is the number of unit squares inside, squares 1 unit on each side. It is $\\text{width}\\times\\text{height}$, so $3\\times2=6$ square units.",
     terms: ["perimeter", "area"],
     method: [
       "Find the width from a horizontal side and the height from a vertical side.",
@@ -433,11 +433,11 @@ export const transformationMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "The hypotenuse is the longest side of a right triangle, across from its square corner. A slanted segment between two grid points is the hypotenuse of one. The other two sides, the legs, are the change in $x$ (across) and the change in $y$ (up or down). The Pythagorean theorem is the rule $\\text{leg}^2+\\text{leg}^2=\\text{hypotenuse}^2$, where the raised 2 means a number times itself. So square the two changes, add them, and take the square root: the number, 0 or more, whose square is that sum.",
+      "The hypotenuse is the longest side of a right triangle, across from its square corner. A slanted segment between two grid points is the hypotenuse of one. The other two sides are the legs. Their lengths are the change in $x$ (across) and the change in $y$ (up or down), without any minus sign, because a length is never negative. The Pythagorean theorem is the rule $\\text{leg}^2+\\text{leg}^2=\\text{hypotenuse}^2$, where the raised 2 means a number times itself. Squaring makes a negative change positive, so the sign does not matter there. So square the two changes, add them, and take the square root: the number, 0 or more, whose square is that sum.",
     terms: [
       [
         "leg",
-        "Here the legs are the changes in $x$ and in $y$, which meet at a right angle.",
+        "Here the legs are the across and up-or-down sides, which meet at a right angle. Their lengths are the changes in $x$ and in $y$, without any minus sign.",
       ],
       "hypotenuse",
     ],
@@ -452,7 +452,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "The hypotenuse is the longest side of a right triangle, across from its square corner. A slanted segment between two grid points is the hypotenuse of one. Its legs are the change in $x$ and the change in $y$. By the Pythagorean theorem, the distance squared, the distance times itself, is the sum of the two changes squared. The distance is the square root of that sum: the number, 0 or more, whose square is the sum. When the sum is not a perfect square, a whole number times itself, such as 20, keep the root and simplify it: $\\sqrt{20}=\\sqrt{4\\times5}=2\\sqrt{5}$, because $\\sqrt{4}=2$.",
+      "The hypotenuse is the longest side of a right triangle, across from its square corner. A slanted segment between two grid points is the hypotenuse of one. Its legs are as long as the change in $x$ and the change in $y$, without any minus sign, because a length is never negative. By the Pythagorean theorem, the distance squared, the distance times itself, is the sum of the two changes squared. The distance is the square root of that sum: the number, 0 or more, whose square is the sum. When the sum is not a perfect square, a whole number times itself, such as 20, keep the root and simplify it: $\\sqrt{20}=\\sqrt{4\\times5}=2\\sqrt{5}$, because $\\sqrt{4}=2$.",
     terms: [
       [
         "distance",
@@ -500,7 +500,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A dilation centered at the origin, the point $(0,0)$, resizes a figure from that point. It multiplies both coordinates of every point by the same positive number, the scale factor. With scale factor 2, the point $(3,1)$ goes to $(6,2)$. The moved point is called the image. Each image point lies on the ray, the half-line, from the origin through the original point.",
+      "A point's coordinates are its two numbers $(x, y)$: how far across, then how far up, from the origin, the point $(0,0)$ where the axes cross. A dilation centered at the origin resizes a figure from that point. It multiplies both coordinates of every point by the same positive number, the scale factor. With scale factor 2, the point $(3,1)$ goes to $(6,2)$. The moved point is called the image. Each image point lies on the ray from the origin through the original point: the straight path that starts at the origin and goes on forever through that point.",
     terms: ["scale-factor"],
     method: [
       "Find the scale factor and the vertex asked about.",
@@ -514,7 +514,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A dilation centered at the origin, the point $(0,0)$, multiplies both coordinates of every point by the same positive number, the scale factor. So the scale factor is an image coordinate divided by the matching original coordinate, using one that is not 0. A scale factor above 1 enlarges, and one between 0 and 1 shrinks.",
+      "A point's coordinates are its two numbers $(x, y)$: how far across, then how far up, from the origin, the point $(0,0)$ where the axes cross. A dilation centered at the origin multiplies both coordinates of every point by the same positive number, the scale factor. The moved point is called the image. So the scale factor is an image coordinate divided by the matching original coordinate, using one that is not 0. A scale factor above 1 enlarges, and one between 0 and 1 shrinks.",
     terms: [
       ["dilation", "An enlargement has a scale factor greater than 1."],
       ["dilation", "A reduction has a scale factor between 0 and 1."],
@@ -530,7 +530,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "Two triangles are called similar when they have the same shape: every side of one is the same number, the scale factor, times its matching side in the other. In $\\triangle ABC\\sim\\triangle DEF$, where $\\sim$ means is similar to, the letters match in order: $A$ with $D$, $B$ with $E$, and $C$ with $F$. So side $BC$ matches side $EF$.",
+      "Two triangles are called similar when they have the same shape: every side of one is the same number, the scale factor, times its matching side in the other. Triangle $ABC$, written $\\triangle ABC$, has corners $A$, $B$ and $C$, and $BC$ is the side from $B$ to $C$. The sign $\\sim$ means “is similar to”. In $\\triangle ABC\\sim\\triangle DEF$, the letters match in order: $A$ with $D$, $B$ with $E$, and $C$ with $F$. So side $BC$ matches side $EF$.",
     terms: ["similar-figures", "corresponding"],
     method: [
       "Pair the sides by vertex order.",
