@@ -9,6 +9,17 @@ import {
   sessionOptions,
 } from "../query";
 import type { AuthSession } from "../../auth";
+import {
+  clearInitialConsentChallenge,
+  hasInitialConsentChallenge,
+  rememberConsentChallenge,
+} from "../../consent-entry";
+import {
+  clearOwnedPurchaseReturn,
+  readOwnedPurchaseReturn,
+  rememberOwnedPurchaseReturn,
+  purchaseReturnSlot,
+} from "../../purchase-return";
 const runtime = vi.hoisted(() => ({ nativeRuntime: false }));
 vi.mock("../../native-runtime", () => runtime);
 vi.mock("../../NativeGate", () => ({
@@ -40,8 +51,62 @@ afterEach(() => {
   cleanup();
   runtime.nativeRuntime = false;
   queryClient.clear();
+  clearInitialConsentChallenge();
+  clearOwnedPurchaseReturn();
+  sessionStorage.clear();
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
+});
+test("session notifications preserve same-owner entry handoffs and erase them on signout or account switch", async () => {
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async () => new Response(JSON.stringify(signedOut))),
+  );
+  const challenge = {
+    requestId: "a0000000-0000-4000-8000-000000000001",
+    stage: "initial" as const,
+    token: "synthetic-proof",
+    noticeDigest: "synthetic-notice",
+  };
+  const entry = {
+    state: "processing" as const,
+    purchaseId: challenge.requestId,
+    expiresAt: Date.now() + 60_000,
+  };
+  queryClient.setQueryData(sessionOptions.queryKey, null);
+  const onAccountExit = vi.fn(() =>
+    queryClient.getQueryData(sessionOptions.queryKey),
+  );
+  render(
+    <Providers onAccountExit={onAccountExit}>
+      <p>Workspace</p>
+    </Providers>,
+  );
+  rememberConsentChallenge(challenge, null);
+  await act(async () => events.update(parent));
+  expect(hasInitialConsentChallenge()).toBe(true);
+  expect(onAccountExit).not.toHaveBeenCalled();
+  for (const next of [null, { accountId: "parent-b", token: "other" }]) {
+    queryClient.setQueryData(sessionOptions.queryKey, parent);
+    rememberConsentChallenge(challenge, parent.accountId);
+    rememberOwnedPurchaseReturn(parent.accountId, entry);
+    sessionStorage.setItem(purchaseReturnSlot, JSON.stringify(entry));
+    const exitsBefore = onAccountExit.mock.calls.length;
+    await act(async () => events.update({ ...parent, token: "renewed" }));
+    expect(onAccountExit).toHaveBeenCalledTimes(exitsBefore);
+    expect(hasInitialConsentChallenge()).toBe(true);
+    expect(readOwnedPurchaseReturn(parent.accountId)).toEqual(entry);
+    expect(sessionStorage.getItem(purchaseReturnSlot)).not.toBeNull();
+    await act(async () => events.update(next));
+    expect(onAccountExit).toHaveBeenCalledTimes(exitsBefore + 1);
+    expect(onAccountExit.mock.results.at(-1)?.value).toEqual(next);
+    expect(hasInitialConsentChallenge()).toBe(false);
+    expect(readOwnedPurchaseReturn(parent.accountId)).toBeNull();
+    expect(sessionStorage.getItem(purchaseReturnSlot)).toBeNull();
+    await act(async () => events.update(parent));
+    expect(hasInitialConsentChallenge()).toBe(false);
+    expect(readOwnedPurchaseReturn(parent.accountId)).toBeNull();
+  }
 });
 test("a mutation refresh cancels the old response before it can overwrite the canonical snapshot", async () => {
   let release!: (response: Response) => void;

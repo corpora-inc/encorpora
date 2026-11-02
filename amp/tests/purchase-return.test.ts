@@ -4,9 +4,43 @@ import {
   hasPurchaseReturn,
   parsePurchaseReturn,
   purchaseReturnSlot,
+  rememberOwnedPurchaseReturn,
+  readOwnedPurchaseReturn,
+  clearOwnedPurchaseReturn,
 } from "../src/web/purchase-return.js";
 const now = 1_800_000_000_000;
 const purchaseId = "a0000000-0000-4000-8000-000000000001";
+test("verified return navigation is private to its owner, expires, and clears on dismissal", () => {
+  const entry = {
+    state: "processing" as const,
+    purchaseId,
+    expiresAt: now + 60_000,
+  };
+  clearOwnedPurchaseReturn();
+  assert.equal(rememberOwnedPurchaseReturn("parent-a", entry, now), true);
+  assert.deepEqual(readOwnedPurchaseReturn("parent-a", now), entry);
+  assert.deepEqual(readOwnedPurchaseReturn("parent-a", now), entry);
+  assert.equal(readOwnedPurchaseReturn("parent-b", now), null);
+  assert.equal(readOwnedPurchaseReturn("parent-a", now), null);
+  assert.equal(rememberOwnedPurchaseReturn("parent-a", entry, now), true);
+  assert.equal(readOwnedPurchaseReturn("parent-a", entry.expiresAt), null);
+  assert.equal(readOwnedPurchaseReturn("parent-a", now), null);
+  rememberOwnedPurchaseReturn("parent-a", entry, now);
+  clearOwnedPurchaseReturn();
+  assert.equal(readOwnedPurchaseReturn("parent-a", now), null);
+  rememberOwnedPurchaseReturn("parent-a", entry, now);
+  assert.equal(rememberOwnedPurchaseReturn("", entry, now), false);
+  assert.equal(readOwnedPurchaseReturn("parent-a", now), null);
+  assert.equal(
+    rememberOwnedPurchaseReturn(
+      "parent-a",
+      { ...entry, learnerId: "foreign" } as typeof entry,
+      now,
+    ),
+    false,
+  );
+  assert.equal(readOwnedPurchaseReturn("parent-a", now), null);
+});
 test("purchase return is a bounded navigation hint, without authority fields", () => {
   for (const state of ["processing", "canceled"] as const) {
     const entry = { state, purchaseId, expiresAt: now + 60_000 };

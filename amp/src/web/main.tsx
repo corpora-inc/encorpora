@@ -37,7 +37,14 @@ createRoot(document.getElementById("root")!, {
       screen: screenForPath(location.pathname),
     }),
 }).render(
-  <Providers>
+  <Providers
+    onAccountExit={() => {
+      // A purchase view belongs to the parent who opened it. The provider has
+      // already cleared that parent's private state and installed the new session.
+      if (/^\/purchase(?:\/|$)/.test(router.state.location.pathname))
+        void router.navigate({ to: "/", replace: true });
+    }}
+  >
     <RouterView />
   </Providers>,
 );
