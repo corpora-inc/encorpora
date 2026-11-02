@@ -92,6 +92,10 @@
   margin: 0;
 }
 .key-word {
+  /* Formula positioning boxes can extend above their visible glyphs. Keep
+     these controls clickable where those invisible boxes overlap them. */
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
