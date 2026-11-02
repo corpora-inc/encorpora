@@ -6,185 +6,203 @@ const specs: SelectContentSpec[] = [
     skillId: "multi-operation-stories",
     title: "Expressions and number sentences that fit a story",
     summary:
-      "Choose every expression or number sentence that finds the unknown part of a story.",
+      "An expression is numbers joined by operation signs, like $300-90-60$. One story can be written in more than one way. In this lesson you pick every expression or number sentence that finds the unknown number in a story.",
     goal: "Select the expressions or number sentences that find the unknown in a story by saying what each number and operation does.",
     intuition:
-      "A story with a total and parts can be written in more than one way. If a stand has $300$ apples and sells $90$ and then $60$, the apples left come from taking away $90$ and then $60$, or from taking away $90+60$ at once.",
-    more: "A number sentence with a box for the unknown also has several forms. If a trip is $340$ miles and $120$ miles are left, then $340-120=\\square$ and $\\square+120=340$ both find the miles already driven.",
+      "An expression is numbers joined by signs such as + and −. A number sentence has an equal sign, like $340-120=\\square$. The box stands for the unknown number. Parentheses ( ) mean do that part first. One story can fit several expressions. A stand has 300 apples and sells 90, then 60. The apples left are $300-90-60$. They are also $300-(90+60)$: take away both amounts at once.",
+    more: "A number sentence with a box can also be written in several ways. A trip is 340 miles, and 120 miles are left. Both $340-120=\\square$ and $\\square+120=340$ find the miles already driven.",
     terms: ["expression", "number-sentence"],
     steps: [
-      "Say the story in words: what is the whole, and what is taken away or put together?",
-      "For each expression, say in order what its operations do, and compare with the story.",
-      "For each sentence with a box, work out the box and check that it is the unknown the story asks for.",
-      "Select only the choices that fit and check the count.",
+      "Say the story in words. What is the whole? What is taken away or put together?",
+      "For each expression, say what its operations do, in order. Compare with the story.",
+      "For each sentence with a box, work out the box. Check that it is the number the story asks for.",
+      "Select only the choices that fit. Check that you chose as many as the question asks.",
     ],
     watch:
-      "When parts are taken from a total, the answer is less than the total. An expression that adds a removed amount does not fit.",
+      "When parts are taken from a total, the answer is less than the total. An expression that adds a removed amount back does not fit.",
     principle:
-      "A whole is the sum of its parts, so one part is the whole minus the other parts: $T-a-b=T-(a+b)$. Addition and subtraction undo each other, so $\\square+k=T$ and $T-k=\\square$ describe the same unknown.",
+      "A whole is the sum of its parts. So one part is the whole minus the other parts: $T-a-b=T-(a+b)$. Here $T$ is the total, and $a$ and $b$ are the parts taken away. Adding and subtracting undo each other. So if $k$ is the known part, $\\square+k=T$ and $T-k=\\square$ find the same unknown.",
     example: {
       prompt:
         "A tank holds $500$ liters. $120$ liters are used, then $80$ liters. Does $500-(120+80)$ find the liters left?",
       steps: [
-        "Both $120$ and $80$ are taken from $500$.",
-        "$500-(120+80)$ takes the two amounts away together.",
+        "Both 120 and 80 are taken from 500.",
+        "$500-(120+80)$ adds the two amounts first, then takes them away together.",
         "That is the same as taking them away one at a time, so it fits.",
       ],
       answer: "Yes, it equals $300$",
     },
     objectives: [
-      "Write more than one expression for the same story and tell which fit.",
+      "Write more than one expression for the same story, and tell which ones fit.",
       "Choose the number sentences with a box that find a missing part of a total.",
     ],
     pitfalls: [
-      "Adding an amount the story removes, as in $500-120+80$.",
+      "Adding an amount the story takes away, as in $500-120+80$.",
       "Subtracting in the wrong order, such as $120-500$.",
-      "Using only the first operation of a story that has two.",
+      "Using only the first step of a story that has two.",
     ],
     parentGuide:
-      "Act out a story with a pile of objects and ask your learner to say each step aloud before writing it.",
+      "Act out a story with a pile of objects. Ask your learner to say each step aloud before writing it.",
     assessed:
       "Selecting the two or three expressions or number sentences of five that find an unknown part: a total with two amounts taken away, or a part of a total whose other part is known, with the box in any position.",
     notAssessed:
       "Does not assess solving the story, choosing multiplication or division models, or stories with more than two steps.",
+    senses: {
+      part: "part",
+      parts: "part",
+      whole: "whole",
+      "more than": "more-than",
+    },
+    noLink: ["mean", "leaves"],
   },
   {
     id: "equal-expression-select",
     skillId: "numerical-expressions",
     title: "Expressions with the same value",
     summary:
-      "Find which rewrites of an expression with parentheses keep its value.",
+      "An expression is numbers joined by operation signs, like $3\\times(9-4)$. Parentheses show which part to do first. In this lesson you pick every rewrite of an expression that keeps the same value.",
     goal: "Select the expressions that have the same value as an expression with a subtraction inside parentheses.",
     intuition:
-      "Parentheses tell you which operation to do first. In $3\\times(9-4)$ the subtraction comes first, so the value is $3\\times5=15$.",
-    more: "A rewrite keeps the value when it only changes the order of factors or shares a multiplication over the parentheses, as in $3\\times9-3\\times4$. Dropping the parentheses, as in $3\\times9-4$, changes the value.",
+      "Parentheses ( ) show which part to do first. In $3\\times(9-4)$, subtract first: $9-4=5$. Then multiply: $3\\times5=15$. The value of an expression is the number it works out to.",
+    more: "A rewrite keeps the value when it only swaps the order of the numbers being multiplied. It also keeps the value when it multiplies each number in the parentheses, as in $3\\times9-3\\times4$. Dropping the parentheses, as in $3\\times9-4$, changes the value.",
     terms: ["parentheses", "order-of-operations"],
     steps: [
-      "Find the value of the given expression, doing the parentheses first.",
-      "Find the value of each choice in the same order.",
+      "Find the value of the given expression. Do the parentheses first.",
+      "Find the value of each choice the same way.",
       "Compare each value with the given expression's value.",
-      "Select only the choices with the same value and check the count.",
+      "Select only the choices with the same value. Check that you chose as many as the question asks.",
     ],
-    watch: "Do not drop parentheses: $3\\times(9-4)=15$, but $3\\times9-4=23$.",
+    watch:
+      "Do not drop the parentheses: $3\\times(9-4)=15$, but $3\\times9-4=23$.",
     principle:
-      "Expressions are worked out by the order of operations. The distributive property gives $a\\times(b-c)=a\\times b-a\\times c$, and addition and multiplication can be done in either order: $a\\times b=b\\times a$.",
+      "Work out an expression in this order: parentheses first, then multiply and divide from left to right, then add and subtract from left to right. Multiplying a difference is the same as multiplying each number and then subtracting: $a\\times(b-c)=a\\times b-a\\times c$. Here $a$, $b$ and $c$ stand for numbers. You can multiply in either order: $a\\times b=b\\times a$.",
     example: {
       prompt:
         "Does $2\\times7-2\\times3$ have the same value as $2\\times(7-3)$?",
       steps: [
-        "$2\\times(7-3)=2\\times4=8$.",
-        "$2\\times7-2\\times3=14-6=8$.",
-        "Both are $8$.",
+        "Do the parentheses first: $2\\times(7-3)=2\\times4=8$.",
+        "Multiply before subtracting: $2\\times7-2\\times3=14-6=8$.",
+        "Both are 8, so they have the same value.",
       ],
       answer: "Yes",
     },
     objectives: [
-      "Work out expressions with grouped subtraction by the order of operations.",
-      "Tell value-keeping rewrites from rewrites that move or drop parentheses.",
+      "Work out expressions with parentheses in the right order.",
+      "Tell rewrites that keep the value from rewrites that move or drop the parentheses.",
     ],
     pitfalls: [
       "Working left to right and ignoring the parentheses.",
-      "Sharing the multiplier with only one number in the parentheses.",
-      "Subtracting in the other order, which gives a negative value.",
+      "Multiplying only one of the numbers inside the parentheses.",
+      "Swapping the numbers inside the parentheses. $4-9$ is not the same as $9-4$.",
     ],
     parentGuide:
-      "Write two expressions that differ only by parentheses and ask your learner to work out both.",
+      "Write two expressions that differ only by parentheses. Ask your learner to work out both.",
     assessed:
       "Selecting the two or three expressions of five that equal an expression with one subtraction inside parentheses multiplied, added to or divided, using whole numbers; rewrites reorder factors, share the multiplier or move the parentheses.",
     notAssessed:
       "Does not assess evaluating by entry, expressions with exponents, or expressions with variables.",
+    senses: { difference: "difference-subtract" },
+    noLink: ["part", "changes"],
   },
   {
     id: "customary-equivalent-select",
     skillId: "unit-conversion",
     title: "Equal customary measurements",
     summary:
-      "Find the measurements equal to a length, capacity or weight, including two-unit forms.",
+      "Customary units are the units used in the United States, like inches, feet, gallons and pounds. One amount can be written in different units. In this lesson you pick every measurement equal to a given one.",
     goal: "Select the measurements equal to a stated length, capacity or weight by changing every measurement to the smallest unit.",
     intuition:
-      "A larger unit is made of smaller ones: $1$ yard is $3$ feet or $36$ inches, $1$ gallon is $4$ quarts, and $1$ pound is $16$ ounces. A measurement can be written in one unit or in two, such as $5$ yards $3$ feet.",
-    more: "To compare, change every measurement to the same small unit and compare the numbers. Many different forms name the same length.",
+      "A bigger unit is made of smaller ones. 1 yard is 3 feet, or 36 inches. 1 gallon is 4 quarts. 1 pound is 16 ounces. A measurement can use one unit or two, such as 5 yards 3 feet. Capacity is how much a container holds, and weight is how heavy something is.",
+    more: "To compare, change every measurement to the same small unit. Then compare the numbers. Many different forms name the same amount.",
     terms: ["customary-units", "equivalent"],
     steps: [
-      "Change the stated measurement to the smallest unit in the choices by multiplying by the size of its unit.",
-      "Change each choice to that unit: multiply each count by its unit's size and add the parts of a two-unit measurement.",
-      "Compare each total with the stated measurement.",
-      "Select only the equal measurements and check the count.",
+      "Change the given measurement to the smallest unit in the choices. Multiply by how many small units are in one big unit.",
+      "Change each choice to that unit too. For a measurement in two units, change each part and add.",
+      "Compare each total with the given measurement.",
+      "Select only the equal measurements. Check that you chose as many as the question asks.",
     ],
     watch:
-      "In a two-unit measurement, convert each part separately and add: $4$ yards $3$ feet is $144+36=180$ inches, not $4\\times3$.",
+      "In a two-unit measurement, change each part and add. 4 yards 3 feet is $144+36=180$ inches, not $4\\times3$.",
     principle:
-      "Converting to a smaller unit multiplies by the number of small units in one large unit: $1\\text{ yd}=3\\text{ ft}=36\\text{ in}$, $1\\text{ gal}=4\\text{ qt}=8\\text{ pt}=16\\text{ c}$, $1\\text{ lb}=16\\text{ oz}$. Two measurements are equal when they have the same total in one unit.",
+      "To change to a smaller unit, multiply by the number of small units in one big unit: $1\\text{ yd}=3\\text{ ft}=36\\text{ in}$, $1\\text{ gal}=4\\text{ qt}=8\\text{ pt}=16\\text{ cups}$, and $1\\text{ lb}=16\\text{ oz}$. Here yd means yards, ft feet, in inches, gal gallons, qt quarts, pt pints, lb pounds and oz ounces. Two measurements are equal when they have the same total in one unit.",
     example: {
       prompt: "Is $5$ feet $6$ inches equal to $66$ inches?",
       steps: [
-        "$5$ feet is $5\\times12=60$ inches.",
-        "$60+6=66$ inches.",
-        "That equals $66$ inches.",
+        "1 foot is 12 inches, so 5 feet is $5\\times12=60$ inches.",
+        "Add the 6 inches: $60+6=66$ inches.",
+        "That equals 66 inches, so they match.",
       ],
       answer: "Yes",
     },
     objectives: [
-      "Convert a measurement written in one or two units to the smallest unit.",
+      "Change a measurement in one or two units to the smallest unit.",
       "Compare measurements in different units by their totals.",
     ],
     pitfalls: [
-      "Using $12$ inches for a yard or $4$ quarts for a pint.",
-      "Adding the counts of two units without converting.",
-      "Converting only part of a two-unit measurement.",
+      "Mixing up unit sizes, such as using 12 inches for a yard instead of 36.",
+      "Adding the numbers of two units without changing them first.",
+      "Changing only one part of a two-unit measurement.",
     ],
     parentGuide:
-      "Measure a table in feet and then in inches with your learner and ask how the two measurements are related.",
+      "Measure a table in feet and then in inches with your learner. Ask how the two measurements are related.",
     assessed:
       "Selecting the two or three measurements of five that equal a stated whole number of yards, gallons or pounds, written in one unit or two units, in length, capacity and weight.",
     notAssessed:
       "Does not assess converting by entry, fractional or decimal measurements, or metric units.",
+    senses: { part: "part", unit: "unit" },
+    noLink: ["change"],
   },
   {
     id: "additive-multiplicative-select",
     skillId: "related-patterns",
     title: "Additive and multiplicative rules",
     summary:
-      "Decide which statements are true about a rule that multiplies and a rule that adds.",
-    goal: "Select the true statements about a multiplicative rule, $y$ equals a number times $x$, and an additive rule, $y$ equals $x$ plus a number.",
+      "A rule tells how to get one number from another. Some rules multiply, like 7 times $x$. Some rules add, like $x$ plus 7. In this lesson you decide which statements about two rules are true.",
+    goal: "Select the true statements about a rule that multiplies, $y$ equals a number times $x$, and a rule that adds, $y$ equals $x$ plus a number.",
     intuition:
-      "In the rule $y=7x$, every $y$ is $7$ times its $x$, so it is multiplicative. In the rule $y=x+7$, every $y$ is $7$ more than its $x$, so it is additive. The two rules give different values: for $x=3$, the first gives $21$ and the second gives $10$.",
-    more: "A quick test is to compare $y$ with $x$ for two values of $x$. If $y\\div x$ is the same each time, the rule multiplies. If $y-x$ is the same each time, the rule adds.",
+      "A rule turns each input number $x$ into an output number $y$. In $y=7x$, $7x$ means 7 times $x$. Every $y$ is 7 times its $x$, so the rule is multiplicative: it multiplies. In $y=x+7$, every $y$ is 7 more than its $x$, so the rule is additive: it adds. The two rules give different values. For $x=3$, the first gives 21 and the second gives 10.",
+    more: "Here is a quick test. Find $y$ for two values of $x$. If $y\\div x$ is the same both times, the rule multiplies. If $y-x$ is the same both times, the rule adds.",
     terms: ["multiplicative-rule", "additive-rule"],
     steps: [
-      "Find $y$ for two values of $x$ from each rule, such as $x=1$ and $x=2$.",
-      "Check whether $y\\div x$ stays the same (multiplicative) or $y-x$ stays the same (additive).",
-      "Test each statement against those values, and substitute for any statement about a particular $x$.",
-      "Select only the true statements and check the count.",
+      "Use each rule to find $y$ for two values of $x$, such as $x=1$ and $x=2$.",
+      "Check which stays the same: $y\\div x$ (the rule multiplies) or $y-x$ (the rule adds).",
+      "Test each statement with those values. If a statement names a value of $x$, put that number in for $x$.",
+      "Select only the true statements. Check that you chose as many as the question asks.",
     ],
     watch:
-      "A rule that multiplies is not additive: in $y=7x$ the difference $y-x$ changes as $x$ changes.",
+      "A rule that multiplies does not add. In $y=7x$, the difference $y-x$ changes when $x$ changes.",
     principle:
-      "A rule $y=kx$ keeps the ratio $y\\div x=k$ constant. A rule $y=x+c$ keeps the difference $y-x=c$ constant. For $k\\ge2$ and $c\\ge1$, one rule cannot be both.",
+      "A rule $y=kx$ keeps $y\\div x$ the same: it is always $k$. A rule $y=x+c$ keeps $y-x$ the same: it is always $c$. Here $k$ and $c$ stand for fixed numbers. When $k$ is 2 or more and $c$ is 1 or more, one rule cannot be both.",
     example: {
       prompt: "In $y=x+4$, is $y$ always $4$ times $x$?",
       steps: [
-        "For $x=1$, $y=5$, and $4\\times1=4$.",
-        "$5$ is not $4$, so $y$ is not $4$ times $x$.",
-        "In this rule $y$ is always $4$ more than $x$.",
+        "Try $x=1$: the rule gives $y=1+4=5$, but $4\\times1=4$.",
+        "5 is not 4, so $y$ is not 4 times $x$.",
+        "In this rule, $y$ is always 4 more than $x$.",
       ],
       answer: "No",
     },
     objectives: [
-      "Tell a multiplicative rule from an additive rule using ratios and differences.",
-      "Substitute a value of $x$ into either rule to check a statement.",
+      "Tell a rule that multiplies from a rule that adds by checking $y\\div x$ and $y-x$.",
+      "Put a value of $x$ into either rule to check a statement.",
     ],
     pitfalls: [
-      "Treating $y=7x$ as $y=x+7$ because both contain a $7$.",
-      "Adding the numbers in a multiplicative rule when finding $y$.",
-      "Judging a rule from a single value of $x$ where the two rules give the same $y$.",
+      "Treating $y=7x$ as $y=x+7$ because both have a 7.",
+      "Adding when a rule multiplies.",
+      "Judging a rule from one value of $x$ only.",
     ],
     parentGuide:
-      "Make a two-row table for each rule and ask what happens to the bottom row when the top row goes up by $1$.",
+      "Make a two-row table for each rule. Ask what happens to the bottom row when the top row goes up by 1.",
     assessed:
       "Selecting the two or three true statements of six about one rule $y=mx$ and one rule $y=x+c$ with numbers from $2$ to $9$: the name of each rule, the constant relationship, and the value of $y$ for $x=3$, $4$ or $5$.",
     notAssessed:
       "Does not assess writing a rule from a table, graphing the rules, or rules with both a multiplier and an addend.",
+    senses: {
+      rule: "rule",
+      difference: "difference-subtract",
+      "more than": "more-than",
+    },
+    noLink: ["changes"],
   },
   {
     id: "equivalent-trinomial-select",
