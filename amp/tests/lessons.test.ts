@@ -5,6 +5,30 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { lessons, baseLessons } from "../src/content/lessons.js";
 import { normalizeAnswer, templates } from "../src/math/engine.js";
+import { methods } from "../src/content/problem-methods.js";
+import { principles } from "../src/content/problem-principles.js";
+
+test("every problem type has an authored lesson and no lesson is orphaned", () => {
+  const ids = new Set(templates.map((template) => template.id));
+  const missing = [...ids].filter((id) => !methods[id]);
+  assert.deepEqual(missing, [], `Missing lessons: ${missing.join(", ")}`);
+  const unprincipled = [...ids].filter((id) => !principles[id]);
+  assert.deepEqual(
+    unprincipled,
+    [],
+    `Missing principles: ${unprincipled.join(", ")}`,
+  );
+  assert.deepEqual(
+    Object.keys(principles).filter((id) => !ids.has(id)),
+    [],
+  );
+  const orphaned = Object.keys(methods).filter((id) => !ids.has(id));
+  assert.deepEqual(orphaned, []);
+  for (const [id, method] of Object.entries(methods)) {
+    assert.ok(method.goal.length <= 140, `${id} goal is concise`);
+    assert.ok(method.method.length >= 1 && method.method.length <= 4, id);
+  }
+});
 
 test("each implemented family has a reference lesson or validated book-page teaching binding", () => {
   const ids = new Set<string>();
