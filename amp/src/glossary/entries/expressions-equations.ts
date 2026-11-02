@@ -98,9 +98,9 @@ export const expressionsEquationsEntries: GlossaryEntry[] = [
       "level balance",
     ],
     plain:
-      "A beam with a pan on each side. The heavier side drops. When both sides weigh the same, the beam stays level.",
+      "A bar with a pan on each end. Put things in both pans. The heavier pan goes down. If both pans weigh the same, the bar stays flat.",
     example:
-      "3 blocks on one pan and 3 blocks on the other: the beam stays level.",
+      "3 blocks in one pan and 3 blocks in the other: the bar stays flat.",
     uses: [],
     band: "K",
     autoLink: false,
