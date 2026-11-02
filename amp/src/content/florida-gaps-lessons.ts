@@ -10,9 +10,13 @@ const truthMethod = (
 ): ProblemMethod => ({
   goal,
   intuition:
-    "An equation is a number sentence with an equal sign, $=$. The equal sign does not mean “the answer comes next”. It means the left side and the right side have the same value, the same amount. An equation can have an operation, like $+$ or $-$, on both sides, or the answer on the left. It can also be false. It is true only when both sides have the same value. The sign $\\times$ means times, and $\\div$ means divide. A point in a number shows parts of one: 26.2 is 26 and 2 tenths.",
-  senses: { side: "side-of-equation", sides: "side-of-equation", part: "part" },
-  noLink: ["mean", "leaves"],
+    "An equation is a number sentence with an equal sign, $=$. The equal sign does not mean “the answer comes next”. It means the left side and the right side have the same value, the same amount. An equation can have an operation, like $+$ or $-$, on both sides, or the answer on the left. It can also be false. It is true only when both sides have the same value. The sign $\\times$ means times: $3\\times2$ is 3 groups of 2, which is 6. The sign $\\div$ means divide, or share equally: $6\\div2$ is 3. A point in a number shows parts of one: 26.2 is 26 and 2 tenths, and a tenth is one of 10 equal parts.",
+  senses: {
+    side: "side-of-equation",
+    sides: "side-of-equation",
+    parts: "part",
+  },
+  noLink: ["mean", "leaves", "part"],
   terms: truthTerms,
   method: [
     "Find the value of the left side. Do any part inside parentheses ( ) first.",

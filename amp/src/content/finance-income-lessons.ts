@@ -25,18 +25,18 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     terms: ["income-tax", "payroll-tax", "sales-tax", "property-tax"],
     method: [
       "Find what the amount is based on: earnings over a year, one paycheck, one price, or the value of what a person owns.",
-      "Then check how it is collected. Payroll tax comes out of each paycheck for set programs. Sales tax is added at each purchase. Property tax is billed on what is owned.",
+      "Then check how it is collected. Income tax is worked out for the whole year. Payroll tax comes out of each paycheck for set programs. Sales tax is added at each purchase. Property tax is billed on what is owned.",
       "Match those two clues to the kind of tax.",
     ],
     watch:
       "Payroll tax and income tax both come from earnings. Payroll tax is taken from each paycheck for set programs. Income tax is worked out on the whole year's income.",
   },
   "tax-bracket-owed": {
+    senses: { part: "part" },
     noLink: ["jumps", "whole"],
     goal: "Use a three-bracket tax table to find the tax owed or the tax on part of an income.",
     intuition:
       "An income tax is a tax on what you earn: money paid to the government. A bracket table cuts income into slices called brackets. Each slice has its own rate, a percent taken from only the dollars in that slice. If extra earnings reach a higher bracket, only those new dollars get the higher rate.",
-    senses: { part: "part" },
     terms: [
       "tax-bracket",
       "taxable-income",
@@ -54,10 +54,10 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
       "Do not tax all of the income at the top row's rate. Only the part of income inside a row is taxed at that row's rate.",
   },
   "payroll-property-tax": {
+    senses: { unit: "unit", units: "unit" },
     goal: "Find a payroll, sales or property tax, or the pay left after two taxes are taken out.",
     intuition:
       "A tax is money paid to the government. Percent means per hundred, so an 8% tax takes 8 dollars from every 100 dollars. A property tax is often given as dollars for each 100 dollars of value. Then count how many hundreds the value holds and multiply by the rate.",
-    senses: { unit: "unit", units: "unit" },
     terms: [
       [
         "payroll-tax",
@@ -249,7 +249,7 @@ export const financeIncomeLessons: Lesson[] = [
           "A tax is money people and businesses must pay to a government. It pays for things such as schools and roads.",
           "Four common kinds are told apart by what the amount is based on and when it is paid.",
           "An income tax is a share of what a person earns in a year. It is reported once a year.",
-          "A payroll tax is taken out of each paycheck. It pays for programs such as Social Security and Medicare, which help older people.",
+          "A payroll tax is taken out of each paycheck. It pays for programs such as Social Security and Medicare, which help older people, people with disabilities and families.",
           "A sales tax is a percent of a price, added when something is bought. A percent means out of 100.",
           "A property tax is paid each year. It is based on the value of land and buildings a person owns.",
         ],

@@ -17,7 +17,7 @@ const entries: Entry[] = [
       "Tell an additive rule (add or subtract the same number) from a multiplicative rule (multiply or divide by the same number).",
     ],
     intuition:
-      "A table pairs each input $x$ with an output $y$. A rule is one step, an operation with a number, that turns every $x$ into the $y$ beside it. An operation is add, subtract, multiply or divide. Try a step on the first pair, then test it on the others. One pair can fit several steps by chance, but only the true rule fits every pair. An additive rule adds or subtracts the same number. A multiplicative rule multiplies or divides by the same number.",
+      "A table pairs each input $x$ with an output $y$. A rule is one step, an operation with a number, that turns every $x$ into the $y$ beside it. An operation is add, subtract, multiply or divide. Try a step on the first pair, then test it on the others. One pair can fit several steps by chance. The true rule fits every pair. An additive rule adds or subtracts the same number. A multiplicative rule multiplies or divides by the same number.",
     senses: { rule: "rule", rules: "rule", difference: "difference-subtract" },
     terms: ["additive-rule", "multiplicative-rule"],
     method: [
@@ -26,7 +26,7 @@ const entries: Entry[] = [
       "Choose the words. “Increased by” and “decreased by” are additive. “Multiplied by” and “divided by” are multiplicative.",
     ],
     watch:
-      "Do not take the first $y$, or the gap between two $y$ values, as the rule's number. Test the number on a pair.",
+      "The first $y$, or the gap between two $y$ values, is the rule's number only in some tables. Test the number on a pair before you trust it.",
     principle:
       "In the table with $x$ = 3, 5, 7, 9 and $y$ = 27, 45, 63, 81, every $y$ is 9 times its $x$. So the rule is $y=9x$, which means $y=9\\times x$. A table follows a rule like $y=x+n$, $y=x-n$, $y=n\\times x$ or $y=x\\div n$ when it works for every pair. One pair can fit several rules. But two rules of these kinds that do not always give the same output cannot both fit three pairs with different $x$ values. So a rule that fits all the pairs is the rule.",
     example: {

@@ -57,7 +57,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     noLink: ["leaves"],
     terms: ["prime-number", "factor-number"],
     method: [
-      "For a prime question, look for a small factor: 2 for an even number, 3 when the digits add to a multiple of 3, 5 for a last digit of 0 or 5, then 7. For numbers less than 121 that is enough. For bigger numbers, keep trying 11, 13 and so on.",
+      "For a prime question, look for a small factor other than 1 and the number itself: 2 for an even number, 3 when the digits add to a multiple of 3, 5 for a last digit of 0 or 5, then 7. For numbers less than 121 that is enough. For bigger numbers, keep trying 11, 13 and so on.",
       "For a factor question, divide the number by each choice. Keep it only when the division leaves nothing over.",
       "Throw out any choice bigger than the number: a factor of a number more than 0 is never bigger than the number.",
       selectStep,
@@ -1022,7 +1022,8 @@ export const mcasGapLessons: Lesson[] = [
         "To describe $8\\times(24+2)$, name the group first: “the sum of 24 and 2”. Then say what 8 does to it: “8 times as large as the sum of 24 and 2”.",
       ]),
       formal("Size of a product", [
-        "For an amount $a$ more than 0: $a\\times g$ is more than $a$ when $g$ is more than 1, equal to $a$ when $g$ is 1, and less than $a$ when $g$ is between 0 and 1.",
+        "Take an amount $a$ more than 0. Then $a\\times g$ is more than $a$ when $g$ is more than 1, and equal to $a$ when $g$ is 1.",
+        "It is less than $a$ when $g$ is between 0 and 1.",
         "Parentheses group a sum as one amount, so $n\\times(a+b)$ is $n$ times the whole sum. It equals $n\\times a+n\\times b$. Multiplying only $a$, as in $n\\times a+b$, usually gives a different number.",
       ]),
     ],

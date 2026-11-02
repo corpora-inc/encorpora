@@ -232,8 +232,8 @@ export const ratioRateLessons: Lesson[] = [
   },
   {
     id: "double-number-line-missing",
-    senses: { third: "third", unit: "unit" },
-    noLink: ["change", "changes", "scale"],
+    senses: { third: "third", unit: "unit", scale: "scale-axis" },
+    noLink: ["change", "changes"],
     title: "Read a double number line",
     summary:
       "A number line is a line with evenly spaced marks for numbers. A double number line is two number lines, one above the other, for two amounts that grow together, such as miles and hours. Marks that line up go together. Divide both amounts to find the amount for 1 unit. Then multiply to find any other matching pair.",
@@ -520,11 +520,11 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
       "Compare unit prices, not total prices. The cheaper box may just hold less.",
   },
   "ratio-table-missing": {
+    senses: { part: "part" },
     noLink: ["changes", "factor"],
     goal: "Find the missing number in a table of equivalent ratios.",
     intuition:
       "A ratio compares two amounts, such as 2 cups of flour for every 3 cups of sugar. Equivalent ratios keep that comparison at a bigger or smaller size. Each column of the table is the simplest ratio times its own multiplier. The simplest ratio uses the smallest whole numbers (the numbers 0, 1, 2, 3 and so on) that keep the same comparison.",
-    senses: { part: "part" },
     terms: ["equivalent-ratios", "simplest-ratio"],
     method: [
       "Find the simplest ratio. Divide both numbers in a full column by the largest number that divides both evenly.",
@@ -535,11 +535,11 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
       "Multiply both rows by the same number. Adding the same number usually changes the ratio.",
   },
   "double-number-line-missing": {
+    senses: { unit: "unit" },
     noLink: ["change", "changes", "scale"],
     goal: "Find a missing value on a double number line.",
     intuition:
       "A double number line is two number lines, one above the other, for two amounts that grow together. Marks that line up go together. The unit rate is the amount that goes with exactly 1 unit of the other amount.",
-    senses: { unit: "unit" },
     terms: ["double-number-line"],
     method: [
       "Read a complete pair: a mark and the mark directly across from it.",
@@ -550,10 +550,10 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
       "Change both lines by the same multiplier, the number you multiply by. Adding the same amount to both usually changes how the amounts compare.",
   },
   "fraction-unit-rate": {
+    senses: { part: "part", unit: "unit", units: "unit" },
     goal: "Find a unit rate when the amounts are fractions.",
     intuition:
       "A unit rate is the amount that goes with exactly 1 unit. Divide the amount by the number of units, even when both are fractions. To divide by a fraction (not 0), multiply by its reciprocal: the fraction with its top and bottom numbers swapped.",
-    senses: { part: "part", unit: "unit", units: "unit" },
     terms: ["unit-rate", "reciprocal"],
     method: [
       "Divide the amount by the number of units.",

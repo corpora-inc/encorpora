@@ -12,7 +12,7 @@ const entries: FormatLessonEntry[] = [
       "Use the amounts for several months to decide.",
     ],
     intuition:
-      "An expense is money spent on something. Many expenses come every month. A fixed expense is set at the same amount every month, like rent. Rent is money paid to live in a home. A variable expense depends on how much you use or buy, like food or electricity, so it changes from month to month. The tables in these problems show a few months. Here, an expense with the same amount every month is a fixed expense, and one whose amount differs is a variable expense.",
+      "An expense is money spent on something. Many expenses come every month. A fixed expense is set at the same amount every month, like rent. Rent is money paid to live in a home. A variable expense depends on how much you use or buy, like food or electricity, so it changes from month to month. The tables in these problems show a few months. An expense with the same amount in every month counts as fixed. An expense whose amount changes counts as variable.",
     terms: ["fixed-cost", "variable-cost"],
     method: [
       "Look at the amounts for one expense across all the months.",
@@ -308,7 +308,7 @@ const entries: FormatLessonEntry[] = [
       "Move from the origin by the other number: right for the first number, up for the second. A negative number means left or down.",
     ],
     watch:
-      "A second number of 0 puts the point on the $x$-axis, not the $y$-axis: $(7,0)$ is on the $x$-axis.",
+      "A second number of 0 puts the point on the $x$-axis: $(7,0)$ is on the $x$-axis. Only the origin, $(0,0)$, is on both axes.",
     principle:
       "$(7,0)$ is on the $x$-axis, 7 units right of the origin. $(0,4)$ is on the $y$-axis, 4 units up. With letters, $(a,0)$ is on the $x$-axis and $(0,b)$ is on the $y$-axis. The distance from the origin is the other number without its sign, so $(-3,0)$ is 3 units left.",
     example: {
