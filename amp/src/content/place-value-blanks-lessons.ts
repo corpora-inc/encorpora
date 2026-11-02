@@ -121,7 +121,7 @@ const entries: Entry[] = [
       "Carry correctly when a digit that rounds up is 9.",
     ],
     intuition:
-      "The decimal point sits just right of the ones place. The first place after the point is the tenths place: one whole cut into 10 equal parts. The next is the hundredths place, 100 equal parts, and then the thousandths place, 1,000 equal parts. To round to the nearest tenth means to find the closest number with just one digit after the point. 6.274 is between 6.2 and 6.3, and it is closer to 6.3. To decide, look at the hundredths digit. If it is 5 or more, round up: add 1 to the tenths digit. If it is 4 or less, keep the tenths digit. Then drop the digits after it. To round to the nearest hundredth, look at the thousandths digit instead. When a 9 rounds up, it becomes 0 and adds 1 to the digit on its left: 4.396 to the nearest hundredth is 4.40.",
+      "A decimal is a number with a decimal point, a dot that sits just right of the ones place. The first place after the point is the tenths place. A tenth is one of 10 equal parts of a whole. The next is the hundredths place: a hundredth is one of 100 equal parts. Then comes the thousandths place: a thousandth is one of 1,000 equal parts. To round to the nearest tenth means to find the closest number with just one digit after the point. 6.274 is between 6.2 and 6.3, and it is closer to 6.3. To decide, look at the hundredths digit. If it is 5 or more, round up: add 1 to the tenths digit. If it is 4 or less, keep the tenths digit. Then drop the digits after it. To round to the nearest hundredth, look at the thousandths digit instead. When a 9 rounds up, it becomes 0 and adds 1 to the digit on its left: 4.396 to the nearest hundredth is 4.40.",
     terms: ["tenth", "hundredth"],
     method: [
       "Name the place you round to. Look at the digit just to its right.",
@@ -265,7 +265,7 @@ const entries: Entry[] = [
       "Write a decimal as a sum of these values, skipping digits that are 0.",
     ],
     intuition:
-      "The decimal point sits just right of the ones place. The first place after the point is the tenths place. One tenth, written 0.1 or $\\frac{1}{10}$, is one of 10 equal parts of 1. The next place is the hundredths place. One hundredth, written 0.01 or $\\frac{1}{100}$, is one of 100 equal parts of 1. So a 4 in the tenths place is worth 4 tenths, 0.4. A 4 in the hundredths place is worth 4 hundredths, 0.04. Left of the point, the places are ones, tens, hundreds and thousands. Writing 3,205.4 as 3,000 + 200 + 5 + 0.4 adds up what each digit is worth. This is called expanded form. Skip any digit that is 0, because it is worth nothing.",
+      "A decimal is a number with a decimal point, a dot that sits just right of the ones place. The first place after the point is the tenths place. One tenth, written 0.1 or $\\frac{1}{10}$, is one of 10 equal parts of 1. The next place is the hundredths place. One hundredth, written 0.01 or $\\frac{1}{100}$, is one of 100 equal parts of 1. So a 4 in the tenths place is worth 4 tenths, 0.4. A 4 in the hundredths place is worth 4 hundredths, 0.04. Left of the point, the places are ones, tens, hundreds and thousands. Writing 3,205.4 as 3,000 + 200 + 5 + 0.4 adds up what each digit is worth. This is called expanded form. Skip any digit that is 0, because it is worth nothing.",
     terms: [
       [
         "place",
@@ -321,7 +321,7 @@ const entries: Entry[] = [
       "See that a number written as a sum can equal a number written with digits.",
     ],
     intuition:
-      "We show a comparison with a sign. The sign < means is less than, > means is greater than, and = means is equal to, the same amount. The open side of < or > faces the greater number. To compare two whole numbers, first count their digits. The number with more digits is greater. If they have the same number of digits, compare from the left, the biggest place. The first place where the digits differ decides. A number can be written as a sum of its parts: 3,000 + 400 + 80 + 2 is the same number as 3,482. Writing it with digits, like 3,482, is called standard form. Add the parts before you compare.",
+      "We show a comparison with a sign. The sign < means is less than, > means is greater than, and = means is equal to, the same amount. The open side of < or > faces the greater number. A whole number is one of the numbers 0, 1, 2, 3 and so on. To compare two whole numbers, first count their digits. The number with more digits is greater. If they have the same number of digits, compare from the left, the biggest place. The first place where the digits differ decides. A number can be written as a sum of its parts: 3,000 + 400 + 80 + 2 is the same number as 3,482. Writing it with digits, like 3,482, is called standard form. Add the parts before you compare.",
     terms: ["less-than", "greater-than", "equal-sign"],
     method: [
       "Write both numbers with digits, adding the parts of any sum.",
@@ -361,13 +361,13 @@ const entries: Entry[] = [
     noLink: ["third"],
     goal: "A number has the same digit in two places. Find how many times as much the digit is worth in one place as in the other.",
     summary:
-      "The same digit, other than 0, is worth more when it sits farther left. Each step left makes it worth 10 times as much. So count the steps between the two places.",
+      "The same digit, other than 0, is worth more when it sits farther left. Each step left makes it worth 10 times as much, which means 10 groups of the old value. So count the steps between the two places.",
     objectives: [
       "Find what a digit is worth in each of two places.",
       "Tell how many times as much one value is as the other from the number of steps between the places.",
     ],
     intuition:
-      "Each place is worth 10 times the place on its right. So a digit, other than 0, is worth 10 times as much each time it moves one place left. In 380,286 the left 8 is in the ten thousands place, so it is worth 80,000. The right 8 is in the tens place, so it is worth 80. From tens to ten thousands is 3 steps: tens to hundreds, hundreds to thousands, thousands to ten thousands. Each step multiplies by 10, so 3 steps multiply by 10 × 10 × 10 = 1,000. So 80,000 is 1,000 times as much as 80, which means 80 × 1,000 = 80,000. We can write 10 × 10 × 10 as $10^{3}$, read “10 to the third power.” The small 3 counts how many 10s are multiplied.",
+      "Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. So a digit, other than 0, is worth 10 times as much each time it moves one place left. In 380,286 the left 8 is in the ten thousands place, so it is worth 80,000. The right 8 is in the tens place, so it is worth 80. From tens to ten thousands is 3 steps: tens to hundreds, hundreds to thousands, thousands to ten thousands. Each step multiplies by 10, so 3 steps multiply by 10 × 10 × 10 = 1,000. So 80,000 is 1,000 times as much as 80, which means 80 × 1,000 = 80,000. We can write 10 × 10 × 10 as $10^{3}$, read “10 to the third power.” The small 3 counts how many 10s are multiplied.",
     terms: [
       [
         "place-value",

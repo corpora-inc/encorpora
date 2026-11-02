@@ -168,7 +168,7 @@ const specs: Spec[] = [
     noLink: ["part", "square"],
     figure: true,
     intuition: [
-      t`A graph has two number lines that meet at a square corner. Each number line is called an axis. The horizontal axis goes across, and it might count weeks. The vertical axis goes up, and it might show a plant's height. The point where they meet is called the origin. Both numbers there are 0, so we write it $(0, 0)$.`,
+      t`A graph has two number lines that meet at a square corner. Each number line is called an axis. The horizontal axis goes across, and it might count weeks. The vertical axis goes up, and it might show a plant's height, how tall it is. The point where they meet is called the origin. Both numbers there are 0, so we write it $(0, 0)$.`,
       t`A point stands for two numbers written in order, like $(4, 6)$. This is called an ordered pair. Start at the origin. Go across the first number, 4. Then go up the second number, 6. This graph shows only the upper-right part, where both numbers are 0 or more. Inside it, where both numbers are more than 0, is the first quadrant. A point with a 0 sits on an axis.`,
       t`The labels on the axes tell what each number means. On a graph of weeks and plant height, the point $(4, 6)$ means that after 4 weeks the plant is 6 centimeters tall.`,
     ],

@@ -134,7 +134,7 @@ export const numberSenseLessons: Lesson[] = [
     id: "number-line-moves",
     title: "Add and subtract with hops",
     summary:
-      "A number line shows numbers in order. The numbers are evenly spaced. A hop is one move along the line. A hop to the right adds. A hop to the left subtracts.",
+      "A number line is a line with numbers marked in order. The numbers are evenly spaced. A hop is one move along the line. A hop to the right adds. A hop to the left subtracts.",
     templateIds: ["number-line-hops", "number-line-missing-hop"],
     senses: { difference: "difference-subtract" },
     objectives: [
@@ -153,7 +153,7 @@ export const numberSenseLessons: Lesson[] = [
       {
         title: "Hop the tens, then the ones",
         paragraphs: [
-          "Every step of 1 on the line is the same length. Hopping back means hopping left.",
+          "Every step of 1 on the line is the same length. Hopping back means hopping left. In 46, the 4 is the tens digit: it tells how many tens.",
           "Look at the picture. To find 46 − 23, hop back 20 to 26. Then hop back 3 to 23.",
           "Two short hops are easier than counting back 23 ones.",
         ],
@@ -274,7 +274,7 @@ export const numberSenseLessons: Lesson[] = [
         stage: "intuition",
         title: "Make every place ten times larger",
         paragraphs: [
-          "In 47, the 7 means 7 ones. In 470, the 7 means 7 tens, which is 10 times as much.",
+          "In 47, the 7 means 7 ones. In 470, the 7 means 7 tens, which is 10 times as much. “10 times as much” means 10 groups of that amount: 7 tens is 10 groups of 7 ones.",
           "Multiplying by 10 makes every digit worth 10 times as much. So every digit moves one place left.",
         ],
       },
@@ -365,7 +365,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
     goal: "Start at a number, hop by tens, then hop by ones. Find where you land.",
     noLink: ["whole"],
     intuition:
-      "A number line shows numbers in order, evenly spaced. Bigger numbers are to the right. A hop to the right adds. A hop back, to the left, subtracts. Hop the tens first, then the ones. Hopping back 20 from 46 lands on 26: only the tens digit changes.",
+      "A number line is a line with numbers marked in order, evenly spaced. Bigger numbers are to the right. A hop to the right adds. A hop back, to the left, subtracts. Hop the tens first, then the ones. In 46, the tens digit is 4: it tells how many tens. Hopping back 20 from 46 lands on 26, so only the tens digit changes.",
     method: [
       "Start on the first number. Do not count it as a step.",
       "Hop the tens first. Forward means add, and back means subtract.",
@@ -378,7 +378,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
     goal: "Given the two ends of a hop, find its length.",
     senses: { difference: "difference-subtract" },
     intuition:
-      "A number line shows numbers in order, evenly spaced. The length of a hop is how many steps of 1 it covers. It is the bigger number minus the smaller one. To find it, count up from the smaller number in easy pieces: to the next ten, then by tens, then the ones left over. Add the pieces.",
+      "A number line is a line with numbers marked in order, evenly spaced. The length of a hop is how many steps of 1 it covers. It is the bigger number minus the smaller one. To find it, count up from the smaller number in easy pieces: to the next ten, then by tens, then the ones left over. Add the pieces.",
     method: [
       "Count up from the smaller number to the next ten. If it already ends in 0, skip this.",
       "Count by tens as far as you can without passing the bigger number. Then count the ones left.",
@@ -425,7 +425,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
   "multiply-power-of-ten": {
     goal: "Given a number times 10, 100 or 1,000, find the product.",
     intuition:
-      "Each place is worth 10 times the place on its right. Multiplying by 10 makes every digit worth 10 times as much, so every digit moves one place left. 100 is 10 × 10, two factors of 10, so it moves digits two places. 1,000 is 10 × 10 × 10, three factors of 10, so it moves them three places. A factor is a number being multiplied. The decimal point stays where it is. Empty places before the point fill with 0. The answer to a multiplication is called the product.",
+      "Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. Multiplying by 10 makes every digit worth 10 times as much, so every digit moves one place left. 100 is 10 × 10, two factors of 10, so it moves digits two places. 1,000 is 10 × 10 × 10, three factors of 10, so it moves them three places. A factor is a number being multiplied. The decimal point stays where it is. Empty places before the point fill with 0. The answer to a multiplication is called the product.",
     terms: ["power-of-10"],
     senses: {
       factor: "factor-number",
@@ -441,7 +441,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
   "divide-power-of-ten": {
     goal: "Given a whole number divided by 10, 100 or 1,000, find the quotient.",
     intuition:
-      "Each place is worth one tenth of the place on its left. Dividing by 10 makes every digit worth one tenth as much, so every digit moves one place right. 100 is 10 × 10, two factors of 10, so dividing by 100 moves digits two places right. A factor is a number being multiplied. Digits that move past the ones place go into the tenths, hundredths and thousandths places, after the decimal point. The answer to a division is called the quotient.",
+      "Each place is worth one tenth of the place on its left. A tenth is one of 10 equal parts. Dividing by 10 makes every digit worth one tenth as much, so every digit moves one place right. 100 is 10 × 10, two factors of 10, so dividing by 100 moves digits two places right. A factor is a number being multiplied. Digits that move past the ones place go into the tenths, hundredths and thousandths places, after the decimal point. The answer to a division is called the quotient.",
     terms: ["power-of-10"],
     senses: { factor: "factor-number", factors: "factor-number" },
     method: [
@@ -454,7 +454,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
   "digit-value-ratio": {
     goal: "Given a number with one digit in two places, compare the two values.",
     intuition:
-      "Each place is worth 10 times the place on its right. So a digit is worth 10 times as much for each place it moves left. In 35,932 the first 3 is in the ten thousands place, worth 30,000. The second 3 is in the tens place, worth 30. The places are 3 steps apart, so the first is worth 10 × 10 × 10 = 1,000 times as much. How many times as much one value is as another is called their ratio.",
+      "Each place is worth 10 times the place on its right. “10 times as much” means 10 groups of that amount. So a digit is worth 10 times as much for each place it moves left. In 35,932 the first 3 is in the ten thousands place, worth 30,000. The second 3 is in the tens place, worth 30. The places are 3 steps apart, so the first is worth 10 × 10 × 10 = 1,000 times as much. How many times as much one value is as another is called their ratio.",
     method: [
       "Name the place of each copy of the digit, and count the steps between them.",
       "Each step left multiplies the value by 10. Multiply one 10 for each step.",

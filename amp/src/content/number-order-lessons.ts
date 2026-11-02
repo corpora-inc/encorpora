@@ -7,7 +7,7 @@ export const numberOrderMethods: Record<string, ProblemMethod> = {
     goal: "Choose the whole number that is greater than a lower number and less than an upper number.",
     noLink: ["side", "faces"],
     intuition:
-      "The sign < means is less than, and > means is greater than. The open side faces the greater number. The letter $n$ stands for the number you are looking for. $24{,}350<n<24{,}820$ says two things at once: 24,350 is less than $n$, and $n$ is less than 24,820. So $n$ is between them. The smaller number is called the lower bound, and the bigger one is the upper bound. A number equal to a bound does not fit, because a number is not less than itself. To compare two whole numbers, first count their digits: more digits means greater. If they have the same number of digits, read from the left. The first place where the digits differ decides which number is greater.",
+      "A whole number is one of the numbers 0, 1, 2, 3 and so on. The sign < means is less than, and > means is greater than. The open side faces the greater number. The letter $n$ stands for the number you are looking for. $24{,}350<n<24{,}820$ says two things at once: 24,350 is less than $n$, and $n$ is less than 24,820. So $n$ is between them. The smaller number is called the lower bound, and the bigger one is the upper bound. A number equal to a bound does not fit, because a number is not less than itself. To compare two whole numbers, first count their digits: more digits means greater. If they have the same number of digits, read from the left. The first place where the digits differ decides which number is greater.",
     terms: [
       [
         "greater-than",
@@ -30,7 +30,7 @@ export const numberOrderMethods: Record<string, ProblemMethod> = {
     goal: "Choose the true comparison of whole numbers of five to nine digits that share their first digits.",
     noLink: ["side", "faces", "change", "third"],
     intuition:
-      "The sign > means is greater than, < means is less than, and = means is equal to. The open side of > or < faces the greater number. A statement is true when it says what really is so. Big numbers have more places. From the right they are ones, tens, hundreds, thousands, ten thousands, hundred thousands, millions, ten millions and hundred millions. To compare two whole numbers, first count their digits. More digits means a greater number. With the same number of digits, line up the places and read from the left. Skip the places that match. The first place where the digits differ decides: the number with the bigger digit there is greater. The digits after that place cannot change the answer.",
+      "A whole number is one of the numbers 0, 1, 2, 3 and so on. The sign > means is greater than, < means is less than, and = means is equal to. The open side of > or < faces the greater number. A statement is true when it says what really is so. Big numbers have more places. From the right they are ones, tens, hundreds, thousands, ten thousands, hundred thousands, millions, ten millions and hundred millions. To compare two whole numbers, first count their digits. More digits means a greater number. With the same number of digits, line up the places and read from the left. Skip the places that match. The first place where the digits differ decides: the number with the bigger digit there is greater. The digits after that place cannot change the answer.",
     terms: ["place-value", "greater-than"],
     method: [
       "Count the digits first. More digits means a greater number.",
@@ -63,7 +63,7 @@ export const numberOrderLessons = [
     ],
     openingTitle: "Two comparisons at once",
     opening: [
-      "The sign < means is less than, and > means is greater than. The open side faces the greater number. The letter $n$ stands for the number we want.",
+      "A whole number is one of the numbers 0, 1, 2, 3 and so on. The sign < means is less than, and > means is greater than. The open side faces the greater number. The letter $n$ stands for the number we want.",
       "$24{,}350<n<24{,}820$ is two comparisons joined: 24,350 is less than $n$, and $n$ is less than 24,820. So $n$ is between them. The smaller number is called the lower bound and the bigger one the upper bound.",
       "To compare numbers with many digits, line up the places and read from the left. 24,600 and 24,820 both start with 24. Then the hundreds digits are 6 and 8, so 24,600 is less than 24,820.",
     ],
@@ -98,7 +98,7 @@ export const numberOrderLessons = [
     id: "true-comparison-statement-lesson",
     title: "Comparing and ordering large numbers",
     summary:
-      "To compare two numbers means to find which is greater (bigger) or less (smaller). For whole numbers with five to nine digits, line up the places and read from the left. The first place where the digits differ decides. You can order three numbers the same way.",
+      "To compare two numbers means to find which is greater (bigger) or less (smaller). A whole number is one of the numbers 0, 1, 2, 3 and so on. For whole numbers with five to nine digits, line up the places and read from the left. The first place where the digits differ decides. You can order three numbers the same way.",
     templateIds: ["true-comparison-statement"],
     noLink: ["side", "faces", "change"],
     objectives: [

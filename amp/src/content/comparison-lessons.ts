@@ -222,8 +222,8 @@ export const comparisonLessons: Lesson[] = [
         stage: "intuition",
         title: "The same digit can name different amounts",
         paragraphs: [
-          "The 3 in 30 means 3 tens. The 3 in 300 means 3 hundreds. Moving one place left makes a digit worth 10 times as much.",
-          "10 ones make a ten, 10 tens make a hundred, and 10 hundreds make a thousand. The pattern keeps going: 10 thousands make a ten thousand, and 10 ten thousands make a hundred thousand.",
+          "The 3 in 30 means 3 tens. The 3 in 300 means 3 hundreds. Moving one place left makes a digit worth 10 times as much. “10 times as much” means 10 groups of that amount: 3 hundreds is 10 groups of 3 tens.",
+          "10 ones make a ten, 10 tens make a hundred, and 10 hundreds make a thousand. This keeps going: 10 thousands make a ten thousand, and 10 ten thousands make a hundred thousand.",
         ],
       },
       {
@@ -238,7 +238,7 @@ export const comparisonLessons: Lesson[] = [
         title: "Compare large numbers",
         paragraphs: [
           "To compare two numbers means to find which is greater (bigger) or less (smaller). The sign > means is greater than, and < means is less than.",
-          "First count the digits. A whole number with more digits is greater. Every five-digit number is less than 100,000, the smallest six-digit number.",
+          "A whole number is one of the numbers 0, 1, 2, 3 and so on. First count the digits. A whole number with more digits is greater. Every five-digit number is less than 100,000, the smallest six-digit number.",
           "If the numbers have the same number of digits, compare from the left. The first place where the digits differ decides. The places to its right can never make up one more of that place.",
         ],
       },
@@ -379,7 +379,7 @@ export const comparisonMethods: Record<string, ProblemMethod> = {
   "compare-multidigit": {
     goal: "Given two numbers up to 999,999, name the greater or the lesser.",
     intuition:
-      "To compare two numbers means to find which is greater (bigger) and which is less (smaller). The sign > means is greater than, and < means is less than. First count the digits. A whole number with more digits is greater. If both have the same number of digits, line up the places and compare from the left, the biggest place. The first place where the digits differ decides, because the places to its right can never make up one more of that place.",
+      "A whole number is one of the numbers 0, 1, 2, 3 and so on. To compare two numbers means to find which is greater (bigger) and which is less (smaller). The sign > means is greater than, and < means is less than. First count the digits. A whole number with more digits is greater. If both have the same number of digits, line up the places and compare from the left, the biggest place. The first place where the digits differ decides, because the places to its right can never make up one more of that place.",
     terms: placeTerms,
     method: [
       "Count the digits. More digits means a greater number.",

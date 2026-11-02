@@ -20,7 +20,7 @@ const entries: Entry[] = [
       "Use that place to order three numbers and match each number to its item.",
     ],
     intuition:
-      "A digit is one of the symbols 0 to 9. Its place tells what it is worth. In 45,120 the 4 is in the ten thousands place, so it is worth 40,000. The 5 is in the thousands place, so it is worth 5,000. When numbers have the same number of digits, compare them from the left, the biggest place. Skip the places where the digits match. The first place where they differ decides. The digits to its right cannot change the order, because together they are worth less than one more of that place. So 41,987 is less than 42,310, even though 987 is more than 310. To order three numbers, find the smallest, the middle one and the greatest. Then fill the spots in the order the question asks.",
+      "A whole number is one of the numbers 0, 1, 2, 3 and so on. A digit is one of the symbols 0 to 9. Its place tells what it is worth. In 45,120 the 4 is in the ten thousands place, so it is worth 40,000. The 5 is in the thousands place, so it is worth 5,000. When numbers have the same number of digits, compare them from the left, the biggest place. Skip the places where the digits match. The first place where they differ decides. The digits to its right cannot change the order, because together they are worth less than one more of that place. So 41,987 is less than 42,310, even though 987 is more than 310. To order three numbers, find the smallest, the middle one and the greatest. Then fill the spots in the order the question asks.",
     terms: [
       "place-value",
       [

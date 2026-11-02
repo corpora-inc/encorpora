@@ -5,7 +5,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "divisibility-rule-check": {
     goal: "Choose the number that is divisible by a given number, or the hidden digit that makes a number divisible.",
     intuition:
-      "A digit is one of the symbols 0 to 9 we use to write numbers. A number is divisible by another when dividing leaves no remainder, nothing left over. 12 is divisible by 4, because 12 ÷ 4 = 3 with nothing left over. A divisibility rule is a quick check that looks at a few digits instead of dividing the whole number. Some rules use the digit sum: add up all the digits. For 4,512 the digit sum is 4 + 5 + 1 + 2 = 12. The box ▢ stands for a hidden digit.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A whole number is one of the numbers 0, 1, 2, 3 and so on. When you divide, the amount left over is called the remainder. A number is divisible by another when dividing leaves no remainder. 12 is divisible by 4, because 12 ÷ 4 = 3 with nothing left over. A divisibility rule is a quick check that looks at a few digits instead of dividing the whole number. Some rules use the digit sum: add up all the digits. For 4,512 the digit sum is 4 + 5 + 1 + 2 = 12. The box ▢ stands for a hidden digit.",
     terms: [
       "divisible-by",
       [
@@ -27,7 +27,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "prime-composite-sort": {
     goal: "Given four whole numbers, choose the prime one, the composite one, or the one that is neither.",
     intuition:
-      "A factor of a number divides it with nothing left over. The factors of 6 are 1, 2, 3 and 6. A factor pair is two factors that multiply to make the number, like 2 × 3 = 6. A prime number has exactly two factors, 1 and itself: 7 is prime. A composite number has more than two factors: 6 is composite. The number 1 has only one factor, itself, so it is neither prime nor composite.",
+      "A whole number is one of the numbers 0, 1, 2, 3 and so on. A factor of a number is a number that divides it with nothing left over. The factors of 6 are 1, 2, 3 and 6. A factor pair is two factors that multiply to make the number, like 2 × 3 = 6. A prime number has exactly two factors, 1 and itself: 7 is prime. A composite number has more than two factors: 6 is composite. The number 1 has only one factor, itself, so it is neither prime nor composite.",
     terms: ["prime-number", "composite-number", "factor-pair"],
     senses: { factor: "factor-number", "more than": "more-than" },
     method: [
@@ -41,7 +41,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "prime-factorization-exponents": {
     goal: "Choose the prime factorization of a composite number, written with exponents for factors that repeat.",
     intuition:
-      "A factor is a number you multiply to make another number: 2 × 6 = 12, so 2 and 6 are factors of 12. A prime number has exactly two factors, 1 and itself, like 2, 3, 5 and 7. A composite number has more than two factors. Every composite number can be written as primes multiplied together. That is its prime factorization: 12 = 2 × 2 × 3. A factor tree finds it. Split the number into two factors, then split any factor that is not prime, until every branch ends in a prime. A repeated prime can be written with an exponent: 2 × 2 × 2 is $2^3$, read “2 to the third power.” The small 3 is the exponent. It counts how many 2s are multiplied.",
+      "A whole number is one of the numbers 0, 1, 2, 3 and so on. A factor is a number you multiply to make another number: 2 × 6 = 12, so 2 and 6 are factors of 12. The answer to a multiplication is called the product. A prime number has exactly two factors, 1 and itself, like 2, 3, 5 and 7. A composite number has more than two factors. Every composite number can be written as primes multiplied together. That is its prime factorization: 12 = 2 × 2 × 3. A factor tree finds it. Split the number into two factors, then split any factor that is not prime, until every branch ends in a prime. A repeated prime can be written with an exponent: 2 × 2 × 2 is $2^3$, read “2 to the third power.” The small 3 is the exponent. It counts how many 2s are multiplied.",
     terms: ["prime-factorization", "exponent", "factor-tree"],
     senses: {
       factor: "factor-number",
@@ -62,7 +62,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "prime-factorization-value": {
     goal: "Evaluate a prime factorization with exponents, find the greatest prime factor of a number, or count the primes in its factorization.",
     intuition:
-      "A prime number has exactly two factors, 1 and itself, like 2, 3, 5 and 7. A number's prime factorization writes it as primes multiplied together: 12 = 2 × 2 × 3. A repeated prime can be written with an exponent: $2^3$, read “2 to the third power,” means 2 × 2 × 2 = 8. The small 3 is the exponent. It counts how many 2s are multiplied. To evaluate a factorization means to multiply it out and find the number. A prime factor of a number is a prime that divides it with nothing left over.",
+      "A whole number is one of the numbers 0, 1, 2, 3 and so on. A factor of a number is a number that divides it with nothing left over. The answer to a multiplication is called the product. A prime number has exactly two factors, 1 and itself, like 2, 3, 5 and 7. A number's prime factorization writes it as primes multiplied together: 12 = 2 × 2 × 3. A repeated prime can be written with an exponent: $2^3$, read “2 to the third power,” means 2 × 2 × 2 = 8. The small 3 is the exponent. It counts how many 2s are multiplied. To evaluate a factorization means to multiply it out and find the number. A prime factor of a number is a prime that divides it with nothing left over.",
     terms: [
       [
         "prime-number",
@@ -83,7 +83,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "decimal-money-change": {
     goal: "Given prices and an amount paid in dollars and cents, find the change, the total, the amount still needed, or an unknown cost.",
     intuition:
-      "1 dollar is 100 cents. We write 3 dollars and 45 cents as 3.45 dollars. The dot is called the decimal point. The two digits after it are the cents. Change is the money you get back. It is the amount you paid minus the cost. The total is all the prices added together.",
+      "A cent is the smallest amount of US money, and 1 dollar is 100 cents. We write 3 dollars and 45 cents as 3.45 dollars. The dot is called the decimal point. A digit is one of the symbols 0 to 9, and the two digits after the point are the cents. Change is the money you get back. It is the amount you paid minus the cost. The total is all the prices added together.",
     terms: ["change-money", "decimal-point"],
     senses: { change: "change-money", difference: "difference-subtract" },
     method: [
@@ -97,7 +97,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "fewest-coins-change": {
     goal: "Find the fewest bills and coins that make an amount of change.",
     intuition:
-      "Change is the money you get back after you pay. A 1-dollar bill is 100 cents. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. To use the fewest pieces, use big pieces first. Take the biggest piece that fits. Then do it again with what is left.",
+      "Change is the money you get back after you pay. A coin is a round metal piece of money, and a cent is the smallest amount of US money. A 1-dollar bill is 100 cents. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. To use the fewest pieces, use big pieces first. Take the biggest piece that fits. Then do it again with what is left.",
     terms: ["coin"],
     senses: { change: "change-money" },
     noLink: ["quarter", "quarters", "one quarter"],
@@ -112,7 +112,7 @@ export const k8StateNumberMethods: Record<string, ProblemMethod> = {
   "compare-money-sets": {
     goal: "Read three drawn sets of bills and coins and choose the one worth the most, the least, or an exact amount.",
     intuition:
-      "A set is a group of bills and coins. Its value is how much money it is worth. A 1-dollar bill is 100 cents. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. The value depends on which pieces a set has, not how many. Two quarters, 50 cents, are worth more than five pennies, 5 cents.",
+      "A set is a group of bills and coins. A coin is a round metal piece of money, and a cent is the smallest amount of US money. Its value is how much money it is worth. A 1-dollar bill is 100 cents. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. The value depends on which pieces a set has, not how many. Two quarters, 50 cents, are worth more than five pennies, 5 cents.",
     terms: [
       [
         "dollar",
@@ -277,7 +277,7 @@ export const k8StateNumberLessons: Lesson[] = [
     id: "divisibility-rules",
     title: "Divisibility rules",
     summary:
-      "A number is divisible by another when dividing leaves no remainder, nothing left over. 12 is divisible by 4, because 12 ÷ 4 = 3 exactly. Quick checks on a few digits tell you this for 2, 3, 4, 5, 6, 9 and 10 without dividing.",
+      "When you divide, the amount left over is called the remainder. “Divisible by 4” means dividing by 4 leaves no remainder. 12 is divisible by 4, because 12 ÷ 4 = 3 exactly. Quick checks on a few digits tell you this for 2, 3, 4, 5, 6, 9 and 10 without dividing.",
     templateIds: ["divisibility-rule-check"],
     noLink: ["rule", "rules"],
     senses: { multiple: "multiple", multiples: "multiple" },
@@ -336,7 +336,7 @@ export const k8StateNumberLessons: Lesson[] = [
     id: "prime-composite-factorization",
     title: "Prime numbers and prime factorization",
     summary:
-      "A factor of a number divides it with nothing left over. A prime number has exactly two factors, 1 and itself. Every other number bigger than 1 can be built by multiplying primes. A factor tree finds those primes.",
+      "A factor of a number is a number that divides it with nothing left over. A prime number has exactly two factors, 1 and itself. Every other whole number bigger than 1 can be built by multiplying primes. A factor tree is a drawing that finds those primes.",
     templateIds: [
       "prime-composite-sort",
       "prime-factorization-exponents",
@@ -404,7 +404,7 @@ export const k8StateNumberLessons: Lesson[] = [
     id: "decimal-money-change",
     title: "Change and cost in dollars and cents",
     summary:
-      "1 dollar is 100 cents. We write 3 dollars and 45 cents as 3.45 dollars. Change is the money you get back when you pay. It is the amount you paid minus the cost.",
+      "A cent is the smallest amount of US money, and 1 dollar is 100 cents. We write 3 dollars and 45 cents as 3.45 dollars. Change is the money you get back when you pay. It is the amount you paid minus the cost.",
     templateIds: ["decimal-money-change", "fewest-coins-change"],
     senses: { change: "change-money" },
     noLink: ["quarter", "quarters"],
@@ -417,7 +417,7 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "intuition",
         title: "Dollars and cents are one decimal number",
         paragraphs: [
-          "In 3.45 dollars, the dot is called the decimal point. The number before it is the dollars. The two digits after it are the cents.",
+          "In 3.45 dollars, the dot is called the decimal point. The number before it is the dollars. A digit is one of the symbols 0 to 9, and the two digits after the point are the cents. A coin is a round metal piece of money.",
           "Change is the money you get back. It is the amount paid minus the cost.",
           "You can find change by counting up. Start at the cost. Count up to the next whole dollar. Then count up to the amount paid. What you counted is the change.",
         ],
@@ -466,7 +466,7 @@ export const k8StateNumberLessons: Lesson[] = [
     id: "compare-money-sets",
     title: "Compare sets of bills and coins",
     summary:
-      "A set is a group of bills and coins. Its value is how much money it is worth. Find each set's value. Then compare the values.",
+      "A set is a group of bills and coins. A coin is a round metal piece of money, and a cent is the smallest amount. Its value is how much money a set is worth. Find each set's value. Then compare the values.",
     templateIds: ["compare-money-sets"],
     noLink: ["quarter", "quarters"],
     objectives: [
@@ -480,7 +480,7 @@ export const k8StateNumberLessons: Lesson[] = [
         paragraphs: [
           "A 1-dollar bill is 100 cents. A quarter is 25 cents. A dime is 10 cents. A nickel is 5 cents. A penny is 1 cent.",
           "Count what each piece is worth, not how many pieces there are. A set with many pennies can be worth less than a set with a few quarters.",
-          "We write 1 dollar and 23 cents as 1.23 dollars. The dot is called the decimal point. The two digits after it are the cents.",
+          "We write 1 dollar and 23 cents as 1.23 dollars. The dot is called the decimal point. A digit is one of the symbols 0 to 9, and the two digits after the point are the cents.",
         ],
       },
     ],
@@ -587,7 +587,7 @@ export const k8StateNumberLessons: Lesson[] = [
     id: "customary-mixed-units",
     title: "Mixed customary measures",
     summary:
-      "A mixed measure uses two units together, like 3 ft 8 in: 3 feet and 8 inches. You can write it in one unit, or add and subtract two of them. You regroup with the unit fact, like 12 inches in a foot, not with 10.",
+      "A mixed measure is a measure with two units together, like 3 ft 8 in: 3 feet and 8 inches. You can write it in one unit, or add and subtract two of them. You regroup with the unit fact, like 12 inches in a foot, not with 10.",
     templateIds: ["customary-mixed-units"],
     senses: {
       unit: "unit",
@@ -603,7 +603,7 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "intuition",
         title: "Two units in one measure",
         paragraphs: [
-          "A unit is a fixed amount we measure with, like a foot or an inch. A mixed measure uses two units together. 3 ft 8 in means 3 feet plus 8 more inches. The short forms are ft for feet, in for inches, lb for pounds and oz for ounces.",
+          "A unit is a fixed amount we measure with, like a foot or an inch. A mixed measure is a measure that uses two units together. 3 ft 8 in means 3 feet plus 8 more inches. The short forms are ft for feet, in for inches, lb for pounds and oz for ounces.",
           "The unit fact links the two units: 1 foot is 12 inches. So 3 feet is 36 inches, and 3 ft 8 in is 36 + 8 = 44 inches.",
           "Adding and subtracting work like regrouping in place value, where 10 ones make a ten. To regroup a measure means to trade 1 big unit for small units, or small units for 1 big unit. Use the unit fact: 12 inches for a foot, 16 ounces for a pound, 4 quarts for a gallon, 8 fluid ounces for a cup, 3 feet for a yard.",
         ],
@@ -651,7 +651,7 @@ export const k8StateNumberLessons: Lesson[] = [
     id: "compatible-number-estimate",
     title: "Estimate with compatible and front-end numbers",
     summary:
-      "An estimate is a close answer that is quick to find. Compatible numbers are close numbers that are easy to divide or multiply in your head. Front-end estimation adds only the first digit of each number.",
+      "An estimate is a close answer that is quick to find. Compatible numbers are close numbers that are easy to divide or multiply in your head. Front-end estimation means adding only the first digit of each number.",
     templateIds: ["compatible-number-estimate"],
     senses: {
       multiple: "multiple",
