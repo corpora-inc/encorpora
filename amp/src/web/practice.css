@@ -186,6 +186,14 @@ nav button {
 .problem-content .question:focus {
   outline: none;
 }
+/* This prompt introduces a separate table after its question. Keep the table
+   centered on its own row instead of appending it to the last prose line. */
+.problem-content[data-template="quadratic-from-data"]
+  .question
+  > .math:has(.mtable) {
+  display: block;
+  margin-top: var(--space-2);
+}
 /* Cases and matrices cannot wrap between their columns. Keep their prompts
    readable inside the narrow phone stage, including its scrollbar gutters. */
 @media (max-width: 380px) {
