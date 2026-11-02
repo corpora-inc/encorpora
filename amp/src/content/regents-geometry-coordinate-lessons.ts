@@ -74,11 +74,11 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A circle with center $(h,k)$ and radius $r$ has the equation $(x-h)^2+(y-k)^2=r^2$. The radius is the distance from the center to the circle, and $(x-h)^2$ means $(x-h)$ times itself. Multiplying out the squares hides the center and radius. Completing the square undoes that. It rewrites $x^2-6x$ as $(x-3)^2-9$ by adding, and taking away, the square of half the middle number.",
+      "A circle with center $(h,k)$ and radius $r$ has the equation $(x-h)^2+(y-k)^2=r^2$. The radius is the distance from the center to the circle, and $(x-h)^2$ means $(x-h)$ times itself. Multiplying out the squares hides the center and radius. Completing the square undoes that. It rewrites $x^2-6x$ as $(x-3)^2-9$ by adding, and taking away, the square of half the number in front of $x$.",
     terms: ["general-form", "completing-the-square"],
     method: [
       "If $x^2$ and $y^2$ share a number in front (a coefficient) other than 1, divide every term by it.",
-      "Move the lone number to the right side, and group the $x$ terms and the $y$ terms. Take half of each middle number, square it, and add it to both sides.",
+      "Move the lone number to the right side, and group the $x$ terms and the $y$ terms. Take half of the number in front of $x$, square it, and add it to both sides. Do the same for $y$.",
       "Write $(x-h)^2+(y-k)^2=r^2$. The center is $(h,k)$, and the radius is the square root of the right side.",
     ],
     watch:
@@ -89,7 +89,7 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A line is fixed by its slope and one point. Slope is steepness: the change in $y$ divided by the change in $x$ between two points. Parallel lines are lines that never meet, and they have the same slope. Perpendicular lines are lines that meet at a right angle, a square corner. When neither is vertical or horizontal, their slopes are opposite reciprocals: flip the fraction and change the sign, so $\\frac32$ pairs with $-\\frac23$. Point-slope form, $y-y_1=m(x-x_1)$, uses a slope $m$ and a point $(x_1,y_1)$.",
+      "A line is fixed by its slope and one point. Slope is steepness: the change in $y$ divided by the change in $x$ between two points. Parallel lines are lines that never meet, and they have the same slope. Perpendicular lines are lines that meet at a right angle, a square corner. When neither is vertical or horizontal, their slopes are opposite reciprocals: flip the fraction and change the sign, so $\\frac32$ pairs with $-\\frac23$. Point-slope form, $y-y_1=m(x-x_1)$, uses a slope $m$ and a known point $(x_1,y_1)$; the small 1 just marks that point.",
     terms: ["point-slope-form", "negative-reciprocal"],
     method: [
       "Find the slope of the given line: change in $y$ divided by change in $x$.",
@@ -125,7 +125,7 @@ export const regentsGeometryCoordinateMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A dilation about the origin, the point $(0,0)$, multiplies every point's coordinates by the scale factor $k$. A line that misses the origin is sent to a parallel line, with the same slope. Its $y$-intercept point $(0,b)$, where it crosses the $y$-axis, goes to $(0,kb)$. A line through the origin stays where it is.",
+      "A line written $y=mx+b$ has slope $m$, its steepness, and crosses the $y$-axis at $(0,b)$. A dilation about the origin, the point $(0,0)$, multiplies every point's coordinates by the scale factor $k$. A line that misses the origin is sent to a parallel line, with the same slope. Its $y$-intercept point $(0,b)$, where it crosses the $y$-axis, goes to $(0,kb)$. A line through the origin stays where it is.",
     terms: ["scale-factor", "image-transformation"],
     method: [
       "Pick a point on the line that is easy to scale, such as the $y$-intercept $(0,b)$.",
@@ -141,7 +141,7 @@ export const regentsGeometryCoordinatePrinciples: Record<string, string> = {
   "geo-segment-partition-point":
     "The point $P$ on $\\overline{AB}$ with $AP:PB=a:b$ is $\\frac{a}{a+b}$ of the way from $A$ to $B$. Each coordinate of $P$ is the coordinate of $A$ plus $\\frac{a}{a+b}$ times the change from $A$ to $B$.",
   "geo-circle-general-form":
-    "Completing the square in $x^2+y^2+Dx+Ey+F=0$ gives $(x+\\frac D2)^2+(y+\\frac E2)^2=\\frac{D^2+E^2}{4}-F$. When the right side is positive, this is a circle with center $(-\\frac D2,-\\frac E2)$, and its radius is the square root of the right side.",
+    "For numbers $D$, $E$ and $F$, completing the square in $x^2+y^2+Dx+Ey+F=0$ gives $(x+\\frac D2)^2+(y+\\frac E2)^2=\\frac{D^2+E^2}{4}-F$. When the right side is positive, this is a circle with center $(-\\frac D2,-\\frac E2)$, and its radius is the square root of the right side.",
   "geo-line-point-slope-choice":
     "Two different lines that are not vertical are parallel exactly when their slopes are equal. They are perpendicular exactly when their slopes multiply to $-1$. The line through $(x_1,y_1)$ with slope $m$ is $y-y_1=m(x-x_1)$.",
   "geo-line-pair-relationship":
@@ -180,7 +180,7 @@ export const regentsGeometryCoordinateLessons = [
       methodTitle: "Changes, fraction, add",
       method: [
         "Find the change in each coordinate from the first endpoint to the second.",
-        "Multiply each change by $\\frac{a}{a+b}$ and add it to the first endpoint.",
+        "For a ratio $a:b$, multiply each change by $\\frac{a}{a+b}$ and add it to the first endpoint.",
       ],
       formalTitle: "The section formula",
       formal: [
@@ -228,13 +228,13 @@ export const regentsGeometryCoordinateLessons = [
       methodTitle: "Divide, group, complete, read",
       method: [
         "Divide every term by the shared number in front of $x^2$ and $y^2$ if it is not 1.",
-        "Add the square of half the middle number to both sides, for $x$ and for $y$.",
+        "Take half the number in front of $x$, square it, and add it to both sides. Do the same for $y$.",
         "Read $h$ and $k$ with the opposite signs from the parentheses, and take the square root of the right side.",
       ],
       formalTitle: "Why the signs flip",
       formal: [
-        "$(x-h)^2=x^2-2hx+h^2$, so a middle term of $-2hx$ comes from a center at $x=h$. That is why the signs flip.",
-        "For $x^2+y^2+Dx+Ey+F=0$, completing both squares leaves $r^2=h^2+k^2-F$ on the right, where $h=-\\frac D2$ and $k=-\\frac E2$. It must be positive for a circle to exist.",
+        "$(x-h)^2=x^2-2hx+h^2$, so an $x$ term of $-2hx$ comes from a center at $x=h$. That is why the signs flip.",
+        "For numbers $D$, $E$ and $F$ in $x^2+y^2+Dx+Ey+F=0$, completing both squares leaves $r^2=h^2+k^2-F$ on the right, where $h=-\\frac D2$ and $k=-\\frac E2$. It must be positive for a circle to exist.",
       ],
       pitfalls: [
         "The center's signs are opposite to those inside the parentheses.",
@@ -252,7 +252,7 @@ export const regentsGeometryCoordinateLessons = [
       id: "regents-geometry-lines-and-dilations",
       title: "Parallel, perpendicular and dilated lines",
       summary:
-        "Slope measures how steep a line is. Parallel lines, which never meet, have the same slope. Perpendicular lines, which meet at a square corner, have slopes that multiply to $-1$, as long as neither line is vertical. A dilation about the origin keeps a line's slope and multiplies its $y$-intercept by the scale factor.",
+        "Slope measures how steep a line is. Parallel lines, which never meet, have the same slope. Perpendicular lines, which meet at a square corner, have slopes that multiply to $-1$, as long as neither line is vertical or horizontal. A dilation about the origin keeps a line's slope and multiplies its $y$-intercept by the scale factor.",
       templateIds: [
         "geo-line-point-slope-choice",
         "geo-line-pair-relationship",
@@ -281,7 +281,7 @@ export const regentsGeometryCoordinateLessons = [
       },
       methodTitle: "Find the slope, relate it, use the point",
       method: [
-        "Find the slope from two points, or solve a standard-form equation for $y$.",
+        "Find the slope from two points, or solve a standard-form equation, $Ax+By=C$, for $y$.",
         "Use the same slope for a parallel line, and the opposite reciprocal for a perpendicular line. A horizontal line is a flat one, with slope 0. It is perpendicular to a vertical line, which has no slope.",
         "For a dilation about the origin, multiply the $y$-intercept by the scale factor and keep the slope.",
       ],

@@ -159,9 +159,9 @@ export const regentsGeometrySimilarityPrinciples: Record<string, string> = {
   "geo-equal-legs-radical":
     "In a right triangle with legs $a$ and $a$, the hypotenuse is $c=\\sqrt{a^2+a^2}=a\\sqrt{2}$. All such triangles are similar. So if a hypotenuse is $c$, each leg is $\\frac{c}{\\sqrt{2}}=\\frac{c\\sqrt{2}}{2}$.",
   "geo-elevation-depression":
-    "In a right triangle with acute angle $\\theta$ and horizontal leg $d$, the vertical leg across from $\\theta$ is $d\\tan\\theta$. With an angle of elevation $\\alpha$ and an angle of depression $\\beta$ from the same point, the total height is $d(\\tan\\alpha+\\tan\\beta)$.",
+    "In a right triangle with acute angle $\\theta$ (under $90^\\circ$) and horizontal leg $d$, the vertical leg across from $\\theta$ is $d\\tan\\theta$. With an angle of elevation $\\alpha$ and an angle of depression $\\beta$ (the Greek letters alpha and beta) from the same point, the total height is $d(\\tan\\alpha+\\tan\\beta)$.",
   "geo-density-rank":
-    "Population density is $\\frac{\\text{population}}{\\text{area}}$. Ordering regions by density means ordering these quotients, and that order can differ from the order of the populations or of the areas.",
+    "Population density is $\\frac{\\text{population}}{\\text{area}}$. Ordering regions by density means ordering these quotients, the results of the divisions, and that order can differ from the order of the populations or of the areas.",
 };
 
 export const regentsGeometrySimilarityLessons = [
@@ -227,7 +227,7 @@ export const regentsGeometrySimilarityLessons = [
       openingTitle: "Parallel lines make equal angles",
       opening: [
         "Parallel lines run the same way and never meet. When a segment is parallel to one side of a triangle, the angles it makes with the other two sides equal the matching angles of the big triangle. The small and big triangles also share the angle at the top. So they have the same angles and are similar.",
-        "Similar triangles have their sides in the same ratio. Every side of the big triangle is the scale factor times its partner in the small one. Congruent triangles are the same size as well as the same shape, and similar triangles need not be.",
+        "Similar triangles have their sides in the same ratio. Every side of the big triangle is the same number, called the scale factor, times its partner in the small one. Congruent triangles are the same size as well as the same shape, and similar triangles need not be.",
         "The perimeter of a triangle is the distance around it, its three sides added together.",
       ],
       example: {
@@ -267,7 +267,7 @@ export const regentsGeometrySimilarityLessons = [
       id: "regents-geometry-equal-legs-radical",
       title: "Similar triangles with equal legs",
       summary:
-        "A right triangle with two equal legs, the sides that form the square corner, always has the same shape. So its longest side, the hypotenuse, is always the same multiple of a leg. That multiple is $\\sqrt{2}$, the number that times itself makes 2, about 1.41. A leg of 9 gives a hypotenuse of $9\\sqrt{2}$.",
+        "A right triangle with two equal legs, the sides that form the square corner, always has the same shape. So its longest side, the hypotenuse, is always the same multiple of a leg. That multiple is $\\sqrt{2}$, the positive number that times itself makes 2, about 1.41. A leg of 9 gives a hypotenuse of $9\\sqrt{2}$.",
       templateIds: ["geo-equal-legs-radical"],
       objectives: [
         "Use the Pythagorean theorem to relate equal legs and the hypotenuse.",
@@ -276,7 +276,7 @@ export const regentsGeometrySimilarityLessons = [
       openingTitle: "One shape, one ratio",
       opening: [
         "In a right triangle, the two sides that form the right angle are the legs, and the side across from it is the hypotenuse. The Pythagorean theorem is the rule $a^2+b^2=c^2$, where $a$ and $b$ are the legs and $c$ is the hypotenuse. Here $a^2$ means $a\\times a$.",
-        "If the two legs are equal, each sharp angle is $45^\\circ$. Every such triangle has the same shape, so the hypotenuse divided by a leg is the same number in all of them. That number is $\\sqrt{2}$. A square root is a number that times itself gives a given number, and $\\sqrt{2}$ is the positive one for 2.",
+        "If the two legs are equal, the two angles other than the right angle are each $45^\\circ$. Every such triangle has the same shape, so the hypotenuse divided by a leg is the same number in all of them. That number is $\\sqrt{2}$. A square root is a number that times itself gives a given number, and $\\sqrt{2}$ is the positive one for 2.",
         "Similar triangles are scaled copies of each other, so a similar triangle also has equal legs. So you can find its sides from this one ratio.",
       ],
       example: {
@@ -297,7 +297,7 @@ export const regentsGeometrySimilarityLessons = [
       ],
       formalTitle: "The 45-45-90 ratio",
       formal: [
-        "For legs $a$ and $a$, $c^2=a^2+a^2=2a^2$, so $c=a\\sqrt{2}$. Dividing both sides by $\\sqrt{2}$ gives $a=\\frac{c}{\\sqrt{2}}=\\frac{c\\sqrt{2}}{2}$.",
+        "For legs $a$ and $a$, $c^2=a^2+a^2=2a^2$, so $c=a\\sqrt{2}$. Dividing both sides by $\\sqrt{2}$ gives $a=\\frac{c}{\\sqrt{2}}$. Multiplying the top and bottom by $\\sqrt{2}$, which does not change the value, gives $\\frac{c\\sqrt{2}}{2}$, because $\\sqrt2\\times\\sqrt2=2$.",
       ],
       pitfalls: [
         "The factor $\\sqrt{3}$ belongs to a triangle with angles of $30^\\circ$, $60^\\circ$ and $90^\\circ$, not to equal legs.",

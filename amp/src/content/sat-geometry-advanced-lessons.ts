@@ -221,7 +221,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         title: "The statement is a matching list",
         paragraphs: [
           "Two triangles are called similar when they have the same shape. Angles that match up are called corresponding angles, and they are equal. Every side divided by its matching side gives one common number. In $\\triangle ABC\\sim\\triangle EFD$ the first letters match, the second letters match and the third letters match: $A$ with $E$, $B$ with $F$, $C$ with $D$. The order of letters carries the whole pairing, not the position in a picture.",
-          "A scale factor describes lengths only. If $\\triangle EFD$ has sides twice as long, its angles are still equal to the corresponding angles of $\\triangle ABC$.",
+          "A scale factor, the number every length is multiplied by, describes lengths only. If $\\triangle EFD$ has sides twice as long, its angles are still equal to the corresponding angles of $\\triangle ABC$.",
         ],
       },
     ],
@@ -240,7 +240,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         stage: "method",
         title: "Crossing segments",
         paragraphs: [
-          "When segments $AB$ and $CD$ cross at $E$, the angles $\\angle AEC$ and $\\angle BED$ are vertical angles, so they are equal. If $AC\\parallel BD$, the alternate interior angles at $A$ and $B$ are equal too. Two equal angle pairs make $\\triangle AEC\\sim\\triangle BED$ with $A\\leftrightarrow B$, $E\\leftrightarrow E$ and $C\\leftrightarrow D$.",
+          "When segments $AB$ and $CD$ cross at $E$, the angles $\\angle AEC$ and $\\angle BED$ are vertical angles, so they are equal. If $AC\\parallel BD$, the alternate interior angles at $A$ and $B$, which sit between the parallel segments on opposite sides of $AB$, are equal too. Two equal angle pairs make $\\triangle AEC\\sim\\triangle BED$, matching $A$ with $B$, $E$ with itself, and $C$ with $D$.",
           "Then $\\frac{AE}{BE}=\\frac{CE}{DE}=\\frac{AC}{BD}$. Put the unknown in one ratio, cross-multiply and solve. For $AE=6$, $BE=9$ and $CE=10$ the equation $\\frac{6}{9}=\\frac{10}{DE}$ gives $DE=15$.",
         ],
       },

@@ -178,7 +178,7 @@ export const similarityTrigLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "For $s>0$, a 45°-45°-90° triangle has sides $s$, $s$, $s\\sqrt2$; a 30°-60°-90° triangle has sides $s$, $s\\sqrt3$, $2s$, with $s$ opposite 30°.",
-          "For a chosen acute angle $A$ in a right triangle, $\\sin A$ is opposite ÷ hypotenuse, $\\cos A$ is adjacent ÷ hypotenuse, and $\\tan A$ is opposite ÷ adjacent.",
+          "For a chosen acute angle $A$ in a right triangle, an angle under $90^\\circ$, $\\sin A$ is opposite ÷ hypotenuse, $\\cos A$ is adjacent ÷ hypotenuse, and $\\tan A$ is opposite ÷ adjacent.",
           "The acute angles of a right triangle are complementary, and the side opposite one is adjacent to the other, so $\\sin A = \\cos(90° - A)$.",
         ],
       },
@@ -240,8 +240,8 @@ export const similarityTrigMethods: Record<string, ProblemMethod> = {
     terms: terms.special,
     method: [
       "Name the given side: a leg, the hypotenuse, the shorter leg or the longer leg.",
-      "Find $s$ from it: divide by √2, √3 or 2 as the pattern says.",
-      "Build the asked side from $s$, and rationalize if it has a square root in a denominator.",
+      "Find $s$ from it: divide by $\\sqrt2$, $\\sqrt3$ or 2 as the pattern says.",
+      "Build the asked side from $s$. If a square root is left on the bottom of a fraction, multiply the top and bottom by that root to clear it.",
     ],
     watch:
       "In a 30°-60°-90° triangle the shorter leg is opposite 30°, not 60°.",
@@ -284,7 +284,7 @@ export const similarityTrigPrinciples: Record<string, string> = {
   "special-right-triangle":
     "For $s>0$, a 45°-45°-90° triangle has sides $s$, $s$, $s\\sqrt2$; a 30°-60°-90° triangle has sides $s$, $s\\sqrt3$, $2s$, with $s$ opposite 30°.",
   "trig-ratio":
-    "For a chosen acute angle $A$ in a right triangle, $\\sin A$ is opposite ÷ hypotenuse, $\\cos A$ is adjacent ÷ hypotenuse, and $\\tan A$ is opposite ÷ adjacent.",
+    "For a chosen acute angle $A$ in a right triangle, an angle under $90^\\circ$, $\\sin A$ is opposite ÷ hypotenuse, $\\cos A$ is adjacent ÷ hypotenuse, and $\\tan A$ is opposite ÷ adjacent.",
   "complementary-trig":
     "The acute angles of a right triangle are complementary, and the side opposite one is adjacent to the other, so $\\sin A = \\cos(90° - A)$.",
 };

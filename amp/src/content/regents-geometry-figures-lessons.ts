@@ -417,7 +417,7 @@ export const regentsGeometryFiguresLessons = [
       methodTitle: "Cross out what every parallelogram has",
       method: [
         "Remove the conditions that all parallelograms have.",
-        "Look for equal neighboring sides or perpendicular diagonals for a rhombus.",
+        "Look for equal neighboring sides, or perpendicular diagonals (meeting at right angles), for a rhombus.",
         "Look for a right angle or equal diagonals for a rectangle.",
       ],
       formalTitle: "Characterizations",
