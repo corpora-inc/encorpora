@@ -46,6 +46,18 @@ const search = (page: Page) =>
   page.getByRole("searchbox", { name: "Search lessons" });
 const summary = (page: Page) =>
   page.locator("section.lesson-index [role=status]").first();
+async function queryReady(page: Page, query: string) {
+  await page.waitForURL((url) =>
+    query ? url.searchParams.get("q") === query : !url.searchParams.has("q"),
+  );
+  // Search results use a deferred value, so the input/URL can be ahead of
+  // the committed result list. Wait for that query's summary, not elapsed time.
+  await summary(page)
+    .filter({
+      hasText: query ? `“${query}”` : /^\d+ lessons? · \d+ problem types?$/,
+    })
+    .waitFor();
+}
 const visibleRows = (page: Page) =>
   page
     .locator("[data-lesson-id], [data-template]")
@@ -86,9 +98,7 @@ try {
       for (const state of ["all", "query"] as const) {
         if (state === "query") {
           await search(page).fill("fraction");
-          await page.waitForURL(
-            (url) => url.searchParams.get("q") === "fraction",
-          );
+          await queryReady(page, "fraction");
           await settle(page, 300);
         }
         const found = await probe(page);
@@ -159,8 +169,10 @@ try {
     );
     await page.waitForURL((url) => url.searchParams.get("q") === "pythagorean");
     await search(page).fill("slope");
-    await page.waitForURL((url) => url.searchParams.get("q") === "slope");
-    await settle(page, 200);
+    await queryReady(page, "slope");
+    // The first search lazily loads glossary terms. Include that result set
+    // before capturing the count that a reload must restore.
+    await page.getByRole("list", { name: "Math words" }).waitFor();
     const sloped = await visibleRows(page);
     check(sloped > 0 && sloped < all, `"slope" narrows the list (${sloped})`);
     check(
@@ -169,7 +181,8 @@ try {
     );
     await page.reload();
     await search(page).waitFor();
-    await settle(page, 300);
+    await queryReady(page, "slope");
+    await page.getByRole("list", { name: "Math words" }).waitFor();
     check(
       (await search(page).inputValue()) === "slope",
       "refresh keeps the query",
@@ -208,15 +221,14 @@ try {
     );
     // Escape and the clear control empty the field and the URL.
     await search(page).press("Escape");
-    await page.waitForURL((url) => !url.searchParams.has("q"));
-    await settle(page, 300);
+    await queryReady(page, "");
     const afterEscape = await visibleRows(page);
     check(
       afterEscape === all,
       `Escape shows everything again (${afterEscape} of ${all})`,
     );
     await search(page).fill("zzzq");
-    await settle(page, 200);
+    await queryReady(page, "zzzq");
     check(
       /Nothing matches “zzzq”/.test(await summary(page).innerText()),
       "an empty result says so and what to try",
