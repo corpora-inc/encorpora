@@ -30,8 +30,12 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
       "Subtract the flat fee before dividing, and divide by the extra hours only. For 1 unit every 8 days, multiply the change by 8. Do not divide.",
   },
   "fee-rule-choice": {
-    noLink: ["rule"],
-    senses: { change: "change", part: "part", terms: "term-expression" },
+    senses: {
+      change: "change",
+      part: "part",
+      terms: "term-expression",
+      rule: "rule",
+    },
     goal: "Choose the equation for a flat fee that covers the first hours plus a rate for each extra hour, grouped or multiplied out.",
     intuition:
       "The charge is the flat fee plus the rate times the extra hours. If $h$ is the hours booked, the extra hours are $h$ minus the hours the flat fee covers. Parentheses are the curved brackets ( ). A number written right next to them multiplies what is inside: $9(h - 2)$ means 9 times $(h - 2)$.",

@@ -409,10 +409,10 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       "Answer what is asked: $x$, or the angle's measure after substituting $x$.",
   },
   "triangle-angle-sum": {
-    noLink: ["sides", "side", "unit"],
+    noLink: ["side", "unit"],
     goal: "Find an unknown angle of a triangle, or the value of $x$, using the fact that a triangle's three angles add to 180°.",
     terms: ["interior-angle"],
-    senses: { degrees: "degree-angle" },
+    senses: { degrees: "degree-angle", sides: "side" },
     intuition:
       "A triangle has three straight sides and three corners. The angle inside each corner is an interior angle. Angles are measured in degrees, the unit for turns, written °. In every triangle, the three interior angles add to 180°, a straight line's worth of turn.",
     method: [
@@ -541,7 +541,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       "A vertical slice of a pyramid, parallel to a base edge, that misses the apex (the tip) is a trapezoid: a four-sided shape with one pair of parallel sides.",
   },
   "cross-section-area": {
-    noLink: ["sides", "square", "center", "whole", "vertex", "side"],
+    noLink: ["square", "center", "whole", "vertex", "side"],
     goal: "Find the area of a slice of a prism or pyramid from its dimensions.",
     intuition:
       "A plane is a flat surface that goes on forever. A cross-section is the flat shape where a plane slices a solid, a shape that takes up space. A rectangular prism is a box. A cut parallel to one of its faces (running the same way, never meeting it) makes a copy of that face. Area measures the flat space the cut face covers.",
@@ -553,6 +553,7 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
       faces: "face-solid",
       base: "base-shape",
       edge: "edge",
+      sides: "side",
     },
     method: [
       "Identify the face the slice copies, or its shape and dimensions.",

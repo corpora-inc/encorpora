@@ -120,8 +120,8 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
         "For $y = \\frac{k}{x}$ (inverse variation), $k$ is the product $xy$ instead.",
       ],
     ],
-    senses: satSenses,
-    noLink: satNoLink,
+    senses: { ...satSenses, rule: "rule" },
+    noLink: satNoLink.filter((w) => !["rule"].includes(w)),
     method: [
       "Decide which kind it is from the words, or from a table. The same $\\frac{y}{x}$ in every row means direct. The same $xy$ in every row means inverse.",
       "Use one known pair to find $k$: $k = \\frac{y}{x}$ for direct, $k = xy$ for inverse.",
@@ -136,8 +136,8 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
     intuition:
       "A rate is an amount per unit of time. A painter who finishes a fence in 4 hours paints $\\frac{1}{4}$ of it each hour. Rates working together add, and a rate working against another subtracts. Times for sharing one job do not combine like that, so change them into rates or totals first. The concentration of a mixture is the amount of pure substance divided by the total amount.",
     terms: ["rate", "concentration", "average-speed"],
-    senses: satSenses,
-    noLink: satNoLink,
+    senses: { ...satSenses, average: "mean-average" },
+    noLink: satNoLink.filter((w) => !["average"].includes(w)),
     method: [
       "Name what is measured. Write each given as an amount per unit of time, or as an amount of the pure substance.",
       "Combine. Add rates working together and subtract a rate working against. For a mixture, add the amounts of pure substance. For a trip, add the distances and add the times.",
@@ -168,8 +168,8 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
     intuition:
       "A rule like $y = ax^2 + bx + c$, with $a \\ne 0$, is called a quadratic. It has three unknown numbers, so it usually takes three facts that fit together to fix it. Its graph is a U-shaped curve called a parabola. A zero is an $x$-value where $y = 0$. Two zeros $p$ and $q$ give the form $y = a(x - p)(x - q)$. The vertex is the turning point; a vertex $(h, k)$ gives $y = a(x - h)^2 + k$. One more point, other than the zeros or the vertex, then fixes $a$, which sets how steep and which way up the curve is.",
     terms: ["zero-of-a-function", "vertex-parabola", "second-difference"],
-    senses: satSenses,
-    noLink: satNoLink,
+    senses: { ...satSenses, rule: "rule", opposite: "opposite-number" },
+    noLink: satNoLink.filter((w) => !["opposite", "rule"].includes(w)),
     method: [
       "Choose the form that fits the facts: $y = a(x - p)(x - q)$ for zeros $p$ and $q$, $y = a(x - h)^2 + k$ for vertex $(h, k)$, or $y = ax^2 + bx + c$ for a table or points.",
       "For factored form (the form $a(x - p)(x - q)$) or vertex form (the form $a(x - h)^2 + k$), put the extra point into it and solve for $a$. For a table with equal steps $h$, use $a = \\frac{\\text{second difference}}{2h^2}$.",
@@ -203,8 +203,8 @@ export const satAlgebraStructureLessons: Lesson[] = [
     summary:
       "The values of $x$ that make an equation true are called its solutions. The equation $x^2 - 5x + 6 = 0$ has solutions 2 and 3. Their sum is 5 and their product (the result of multiplying) is 6. The sum is the opposite of the $-5$ in front of $x$, and the product is the 6 at the end. When the number in front of $x^2$ is 1 and the solutions are on the number line, that always happens (a repeated solution counts twice). With other numbers you divide by it first, so you can still find the sum and product without solving.",
     templateIds: ["quadratic-root-relations"],
-    senses: satSenses,
-    noLink: satNoLink,
+    senses: { ...satSenses, opposite: "opposite-number" },
+    noLink: satNoLink.filter((w) => !["opposite"].includes(w)),
     objectives: [
       "Find the sum and product of the solutions from the coefficients $a$, $b$ and $c$.",
       "Rewrite an expression in the solutions, such as $p^2 + q^2$, using only their sum and product.",
@@ -329,8 +329,8 @@ export const satAlgebraStructureLessons: Lesson[] = [
     summary:
       "If you earn 15 dollars an hour, 2 hours pays 30 and 4 hours pays 60. Pay divided by hours is always 15. That is called direct variation. On a 60-mile trip, going 30 miles per hour takes 2 hours and going 60 takes 1. Speed times time is always 60. That is called inverse variation. In both, one fixed number describes the whole relationship.",
     templateIds: ["variation-constant"],
-    senses: satSenses,
-    noLink: satNoLink,
+    senses: { ...satSenses, rule: "rule" },
+    noLink: satNoLink.filter((w) => !["rule"].includes(w)),
     objectives: [
       "Find the constant of variation, the fixed number, from one pair of values.",
       "Predict a value, choose an equation, or find how much one quantity is multiplied by.",
@@ -392,8 +392,8 @@ export const satAlgebraStructureLessons: Lesson[] = [
     summary:
       "If Ana paints a fence in 4 hours, she paints a quarter of it each hour. An amount per hour like that is called a rate. When two people work together, their rates add. When one thing works against another, like a drain against a tap, its rate subtracts. Times cannot simply be averaged, so change them into rates or totals first.",
     templateIds: ["rate-combination-model"],
-    senses: satSenses,
-    noLink: satNoLink,
+    senses: { ...satSenses, average: "mean-average" },
+    noLink: satNoLink.filter((w) => !["average"].includes(w)),
     objectives: [
       "Add and subtract rates to find a shared time or an overall time.",
       "Find the concentration of a mixture by weighting each part by its volume, and find an unknown amount.",
@@ -521,8 +521,8 @@ export const satAlgebraStructureLessons: Lesson[] = [
     summary:
       "The graph of a rule with an $x^2$ part is a U-shaped curve called a parabola. Its equation has three unknown numbers, so it usually takes three facts that fit together to fix it. For example, knowing where it crosses the $x$-axis gives the equation's shape. One more point, not on the $x$-axis, then fixes how steep the curve is and which way up it opens.",
     templateIds: ["quadratic-from-data"],
-    senses: satSenses,
-    noLink: satNoLink,
+    senses: { ...satSenses, rule: "rule", opposite: "opposite-number" },
+    noLink: satNoLink.filter((w) => !["opposite", "rule"].includes(w)),
     objectives: [
       "Choose factored, vertex or standard form to match the facts you are given.",
       "Use one extra point to find the number $a$ in front of $x^2$.",

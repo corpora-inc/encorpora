@@ -617,8 +617,12 @@ export const baseLessons: Lesson[] = [
     title: "Mean as a fair share",
     summary:
       "The mean is what each group would get if the total were shared equally. Picture several bags holding different numbers of marbles. Add all the marbles together. Then split that total into as many equal shares as there are bags. One share is the mean.",
-    senses: { mean: "mean-average", "arithmetic mean": "mean-average" },
-    noLink: ["units", "model", "part"],
+    senses: {
+      mean: "mean-average",
+      "arithmetic mean": "mean-average",
+      model: "model",
+    },
+    noLink: ["units", "part"],
     templateIds: ["mean-data"],
     objectives: [
       "Compute an arithmetic mean.",
@@ -676,8 +680,9 @@ export const baseLessons: Lesson[] = [
       square: "square-number",
       squared: "square-number",
       vertex: "vertex-parabola",
+      rule: "rule",
     },
-    noLink: ["multiple", "rule", "face", "more than", "part", "side"],
+    noLink: ["multiple", "face", "more than", "part", "side"],
     templateIds: ["quadratic-vertex"],
     objectives: [
       "Interpret a positive multiple of a square.",
