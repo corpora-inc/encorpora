@@ -135,7 +135,7 @@ export const patternFunctionLessons: Lesson[] = [
     senses: { term: "term-sequence", rule: "rule", multiple: "multiple" },
     noLink: ["change", "changes", "mean", "means", "whole"],
     objectives: [
-      "Notice features that every term of a pattern shares, such as being odd, being in the times table of a number, or ending in the same digit.",
+      "Notice features that every term of a pattern shares, such as being odd, being a multiple of a number, or ending in the same digit.",
       "Explain why the feature keeps going, using what the rule does to odd and even numbers or to multiples.",
     ],
     sections: [
@@ -162,7 +162,7 @@ export const patternFunctionLessons: Lesson[] = [
       {
         title: "Multiples and last digits",
         paragraphs: [
-          "A multiple of 3 is a number in the 3 times table: 3, 6, 9, 12 and so on. It is made of whole groups of 3.",
+          "A multiple of 3 is a number made of whole groups of 3, like 6 = 2 × 3 or 33 = 11 × 3.",
           "The pattern 6, 15, 24, 33 starts at 6 = 3 × 2, two groups of 3. Each step adds 9 = 3 × 3, three more groups of 3. So every term is made of whole groups of 3: every term is a multiple of 3. In the same way, if the start and the step are both multiples of one number, every term is too.",
           "The terms are not multiples of 9. Split 6 into nines: there are none, and 6 is left over. Adding 9 adds one whole nine, so every term has 6 left over. For example, 15 is one 9 and 6 more.",
           "A digit is one of the symbols 0 to 9. In 37, the 3 means 3 tens and the 7 means 7 ones. Adding 40 adds 4 tens and no ones, so the ones digit stays 7.",
@@ -540,7 +540,7 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
   "rule-pattern-feature": {
     goal: "Find a feature that every term of a pattern made by a rule shares.",
     intuition:
-      "A number pattern is a list of numbers made by a rule, like “add 4.” Each number in it is called a term. The amount added each time is called the step. An even number can be split into pairs with none left over. An odd number splits into pairs with one left over. A multiple of a number is made of whole groups of it: a multiple of 3 is in the 3 times table, like 12 = 4 × 3. A digit is one of the symbols 0 to 9. The last digit is the ones digit, like the 7 in 37. The three dots … mean a pattern keeps going.",
+      "A number pattern is a list of numbers made by a rule, like “add 4.” Each number in it is called a term. The amount added each time is called the step. An even number can be split into pairs with none left over. An odd number splits into pairs with one left over. A multiple of a number is made of whole groups of it: a multiple of 3 is made of groups of 3, like 12 = 4 × 3. A digit is one of the symbols 0 to 9. The last digit is the ones digit, like the 7 in 37. The three dots … mean a pattern keeps going.",
     terms: ["even-number", "odd-number"],
     senses: { term: "term-sequence", rule: "rule", multiple: "multiple" },
     noLink: ["change", "changes", "mean", "means", "whole"],

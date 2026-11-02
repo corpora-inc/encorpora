@@ -383,7 +383,7 @@ export const multiplyDivideMethods: Record<string, ProblemMethod> = {
     method: [
       "Split the bigger factor by place value: 357 = 300 + 50 + 7.",
       "Multiply each part by the one-digit number. Each answer is a partial product.",
-      "The parts make the whole number, so add the partial products.",
+      "The parts make 357, so add the partial products.",
     ],
     watch:
       "Multiply what each digit is worth, not the digit alone: the 5 in 357 means 50.",
@@ -426,7 +426,7 @@ export const multiplyDivideMethods: Record<string, ProblemMethod> = {
     senses: divideSenses,
     noLink: divideNoLink,
     method: [
-      "First try 1,000 groups. If that is too many, try hundreds of groups, such as 600 groups of 3.",
+      "Start with the biggest groups that fit: hundreds of groups, such as 600 groups of 3, then tens, then ones.",
       "Take those groups away. Keep going with what is left, using smaller groups.",
       "Add the partial quotients to get the quotient. Check by multiplying it by the divisor.",
     ],

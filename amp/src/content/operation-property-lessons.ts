@@ -76,7 +76,7 @@ export const operationPropertyLessons = [
     formalTitle: "The four properties",
     formal: [
       "Letters can stand for numbers. In each rule below, a letter stands for the same number every time it appears. For all numbers $a$, $b$ and $c$: $a+0=a$, $a\\times1=a$, $a+b=b+a$, $a\\times b=b\\times a$, $(a+b)+c=a+(b+c)$, $(a\\times b)\\times c=a\\times(b\\times c)$ and $a\\times(b+c)=a\\times b+a\\times c$.",
-      "Subtraction and division do not follow the commutative or associative property. Taking 2 from 5 leaves 3, but taking 5 from 2 does not. The sign $\\ne$ means “is not equal to.” In $(8-4)-2$, first $8-4=4$, then $4-2=2$. In $8-(4-2)$, first $4-2=2$, then $8-2=6$. So $(8-4)-2\\ne8-(4-2)$.",
+      "Subtraction and division do not follow the commutative or associative property. 5 − 2 = 3, but 2 − 5 is not 3. The sign $\\ne$ means “is not equal to.” In $(8-4)-2$, first $8-4=4$, then $4-2=2$. In $8-(4-2)$, first $4-2=2$, then $8-2=6$. So $(8-4)-2\\ne8-(4-2)$.",
     ],
     pitfalls: [
       "Moving parentheses is associative. Swapping order is commutative. If the order of the numbers changes, it is not associative.",

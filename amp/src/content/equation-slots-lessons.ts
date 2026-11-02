@@ -154,7 +154,7 @@ const entries: FormatLessonEntry[] = [
     id: "array-division-slots",
     title: "Divide with an array",
     summary:
-      "An array has the same number in every row. Total ÷ number of rows gives the number in each row. Total ÷ number in each row gives the rows.",
+      "An array has the same number in every row. Total ÷ rows gives the number in each row. Total ÷ number in each row gives the number of rows.",
     objectives: [
       "Find the total of an array from its number of rows and the number in each row.",
       "Write the division that finds the number of rows or the number in each row.",
