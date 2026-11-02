@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import QRCode from "qrcode";
 import { brand } from "../brand";
 import { LessonIllustration } from "../content/LessonIllustration";
-import { PrintMathText } from "../content/PrintMathText";
+import { PrintMathProse, PrintMathText } from "../content/PrintMathText";
 import { printMathCss } from "../content/print-fonts";
 import {
   PrintExerciseBody,
@@ -964,7 +964,12 @@ function documentHtml(options: {
         <body>
           <div
             dangerouslySetInnerHTML={{
-              __html: renderToStaticMarkup(options.body),
+              // Fractions in running text print text-style (PrintMathProse).
+              __html: renderToStaticMarkup(
+                <PrintMathProse.Provider value={true}>
+                  {options.body}
+                </PrintMathProse.Provider>,
+              ),
             }}
           />
           <script dangerouslySetInnerHTML={{ __html: workbookLayoutScript }} />
@@ -1096,7 +1101,7 @@ const workbookCss = `
 --body:11pt;--prompt:11.5pt;--small:9pt;--h-section:17pt;--h-card:15pt;--num:0.27in;--gutter:0.4in;--gap:0.3in;--radius:7px;--soft:30;--display-weight:560;
 --work-answer:0.48in;--work-standard:1.2in;--work-roomy:2.4in;--answer-w:1.15in;--answer-h:0.4in;
 --grid:0.25in;--grid-line:color-mix(in srgb,var(--color-figure-grid) 80%,transparent);
-font-family:"WB Reading",Arial,Helvetica,sans-serif;font-size:var(--body);line-height:1.45;color:var(--ink);font-variant-numeric:lining-nums}
+font-family:"WB Reading",Arial,Helvetica,sans-serif;font-size:var(--body);line-height:1.5;color:var(--ink);font-variant-numeric:lining-nums}
 .wb--early{--body:14pt;--prompt:15pt;--small:10.5pt;--h-section:23pt;--h-card:19pt;--num:0.38in;--gutter:0.52in;--gap:0.34in;--radius:14px;--soft:100;--display-weight:640;
 --work-answer:0.66in;--work-standard:1.35in;--work-roomy:2.6in;--answer-w:1.35in;--answer-h:0.56in;font-family:"WB Early","WB Reading",Arial,sans-serif;line-height:1.4}
 .wb--elementary{--body:12pt;--prompt:12.5pt;--small:9.5pt;--h-section:19pt;--h-card:16pt;--num:0.3in;--gutter:0.44in;--radius:10px;--soft:100;--display-weight:600;--work-answer:0.54in;--work-standard:1.25in}
@@ -1174,7 +1179,7 @@ body{margin:0}
 /* Problems. */
 .wb-row{display:flex;gap:var(--gap);border-bottom:1px solid var(--rule);break-inside:avoid}
 .wb .wb-item{position:relative;flex:1 1 0;min-width:0;display:flex;flex-direction:column;margin:0;padding:0.11in 0 0.12in var(--gutter);border-bottom:none;break-inside:avoid}
-.wb .wb-item>h2{font-size:var(--prompt);font-weight:400;line-height:1.42;margin:0 0 4px;min-height:var(--num)}
+.wb .wb-item>h2{font-size:var(--prompt);font-weight:400;line-height:1.55;margin:0 0 4px;min-height:var(--num)}
 .wb-num{position:absolute;left:0;top:0.1in;display:inline-grid;place-items:center;min-width:var(--num);height:var(--num);padding:0 3px;box-sizing:border-box;border-radius:calc(var(--radius) * 0.75);background:var(--section);color:var(--color-on-primary);font-family:"WB Reading",Arial,sans-serif;font-weight:800;font-size:calc(var(--num) * 0.5);line-height:1;font-variant-numeric:tabular-nums}
 .wb--early .wb-num{border-radius:50%;font-size:calc(var(--num) * 0.48)}
 .wb--high .wb-num{background:none;color:var(--accent);border:1.5px solid var(--accent)}
@@ -1273,6 +1278,10 @@ background-image:${gridLines};background-size:var(--grid) var(--grid);background
 .wb-try-label .wb-lesson-label{display:inline;margin-right:6px}
 .wb-flow>[data-optional]{display:none}
 
+/* Fractions in running text: text-style, a little larger than KaTeX's
+   default, with no extra padding, so lines stay evenly spaced. */
+.wb .print-math.print-math--prose,.wb .print-math-punctuation:has(.print-math--prose){padding:0}
+.wb .print-math--prose .katex{font-size:1.25em}
 /* Answer key and results pages. */
 .wb-page-title{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:6px;margin:0 0 0.14in;border-bottom:2.5px solid var(--accent)}
 .wb-page-title h2{margin:0;font-size:21pt;line-height:1.1;color:var(--accent);font-family:"WB Display",Georgia,serif}

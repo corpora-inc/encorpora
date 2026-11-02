@@ -63,25 +63,41 @@ function PrintFigureChoice({
   );
 }
 /** A worked list can replace repeated choices only when it quotes every label in order. */
+// A stacked fraction needs room above and below inside its border.
 const printBox = {
   display: "inline-block",
   minWidth: "40px",
   minHeight: "1.5em",
   margin: "0 4px",
-  padding: "0 6px",
+  padding: "0.2em 6px",
+  boxSizing: "border-box",
   border: "1.5px solid #18332f",
   borderRadius: "6px",
   textAlign: "center",
   verticalAlign: "middle",
   lineHeight: 1.5,
 } as const;
+// Cards in a row share one size: the row is a grid of equal columns that
+// stretch to the tallest card, and a stacked fraction gets room above and
+// below inside its border.
+const printCardRow = {
+  display: "inline-grid",
+  gridAutoFlow: "column",
+  gridAutoColumns: "1fr",
+  gap: "8px",
+  margin: "2px 8px",
+  verticalAlign: "middle",
+} as const;
 const printCard = {
-  display: "inline-block",
-  margin: "2px 4px",
-  padding: "0 10px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minWidth: "2.2em",
+  padding: "0.3em 10px",
   border: "1px solid #6f8a85",
   borderRadius: "6px",
-  lineHeight: 1.6,
+  lineHeight: 1.4,
+  boxSizing: "border-box",
 } as const;
 /** A multi-part item on paper: the sentence, table or slots with a box per
  * option, or an equation with empty boxes over its cards. Solutions tick the
@@ -173,10 +189,7 @@ function PrintMultiPart({
         {!answer && (
           <p className="print-tray" style={{ textAlign: "center" }}>
             {rows.map((row, r) => (
-              <span
-                key={r}
-                style={{ display: "inline-block", margin: "0 8px" }}
-              >
+              <span key={r} className="print-card-row" style={printCardRow}>
                 {row.options.map((o) => (
                   <span key={o.id} className="print-card" style={printCard}>
                     <PrintMathText text={o.label} />
