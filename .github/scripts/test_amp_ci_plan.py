@@ -169,9 +169,17 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
     detection = next(s['run'] for s in deep['changes']['steps'] if s.get('id') == 'paths')
     assert 'amp_ci_plan.py --full --github' in detection
     assert 'git diff --no-renames' in detection
-    for step in deep['amp-browser']['steps']:
-        if step.get('run') in ('npm run test:ui', 'npm run test:family-ui', 'npm run test:contrast'):
-            assert 'amp_plan).browser' in step['if']
+    browser = deep['amp-browser']
+    assert browser['strategy']['fail-fast'] is False
+    assert browser['strategy']['matrix']['lane'] == "${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('[\"ui\", \"family\", \"contrast\"]') || fromJSON('[\"selected\"]') }}"
+    commands = {step['run']: step for step in browser['steps'] if 'run' in step}
+    for command, lane in [('npm run test:ui', 'ui'), ('npm run test:family-ui', 'family'),
+                          ('npm run test:contrast', 'contrast'),
+                          ('node scripts/run-ci-tests.mjs browser', 'selected')]:
+        assert commands[command]['if'] == f"matrix.lane == '{lane}'"
+    assert commands['npm run test:native-session']['if'] == "needs.changes.outputs.native == 'true' && (matrix.lane == 'ui' || matrix.lane == 'selected')"
+    contrast_report = next(step for step in browser['steps'] if step.get('name') == 'Preserve the contrast sweep report')
+    assert contrast_report['if'] == "always() && matrix.lane == 'contrast'"
 
 
 def test_pending_main_runtime_validation_cannot_be_displaced_by_a_later_doc_commit():

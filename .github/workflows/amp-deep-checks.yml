@@ -75,7 +75,11 @@ jobs:
           fi
 
   amp-browser:
-    name: amp-browser
+    name: amp-browser (${{ matrix.lane }})
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: ${{ fromJSON(needs.changes.outputs.amp_plan).browser && fromJSON('["ui", "family", "contrast"]') || fromJSON('["selected"]') }}
     timeout-minutes: 60
     needs: changes
     if: needs.changes.outputs.browser == 'true'
@@ -149,17 +153,17 @@ jobs:
       - name: Install PDF inspection tools and the Android UI font
         run: sudo apt-get install -y poppler-utils fonts-roboto && fc-match system-ui && fc-match sans-serif
       - name: Selected browser entrypoints
-        if: ${{ !fromJSON(needs.changes.outputs.amp_plan).browser }}
+        if: matrix.lane == 'selected'
         run: node scripts/run-ci-tests.mjs browser
-      - if: fromJSON(needs.changes.outputs.amp_plan).browser
+      - if: matrix.lane == 'ui'
         run: npm run test:ui
-      - if: fromJSON(needs.changes.outputs.amp_plan).browser
+      - if: matrix.lane == 'family'
         run: npm run test:family-ui
       # Zero contrast violations: every route and state, light and dark, 390 and 1280.
-      - if: fromJSON(needs.changes.outputs.amp_plan).browser
+      - if: matrix.lane == 'contrast'
         run: npm run test:contrast
       - name: Preserve the contrast sweep report
-        if: always()
+        if: always() && matrix.lane == 'contrast'
         uses: actions/upload-artifact@v4
         with:
           name: amp-contrast-${{ github.run_attempt }}
@@ -167,9 +171,9 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
       - uses: dtolnay/rust-toolchain@1.93.0
-        if: needs.changes.outputs.native == 'true'
+        if: needs.changes.outputs.native == 'true' && (matrix.lane == 'ui' || matrix.lane == 'selected')
       - run: npm run test:native-session
-        if: needs.changes.outputs.native == 'true'
+        if: needs.changes.outputs.native == 'true' && (matrix.lane == 'ui' || matrix.lane == 'selected')
       - name: Remove this job's PostgreSQL container
         if: ${{ always() && steps.ci-postgres.outputs.container_id != '' }}
         shell: bash
