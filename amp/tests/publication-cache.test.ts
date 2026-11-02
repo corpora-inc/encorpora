@@ -275,3 +275,62 @@ test("a precomputed hash that does not match the rendered HTML fails the build",
     /not deterministic: a-lesson/,
   );
 });
+
+test("a stale local entry falls back to a verified seed entry", async () => {
+  const seed = await dir();
+  await buildPublications({
+    documents: [doc("x", "<p>H2</p>")],
+    output: seed,
+    renderer: "r1",
+    render: fakeRenderer().render,
+  });
+  const output = await dir();
+  await buildPublications({
+    documents: [doc("x", "<p>H1</p>")],
+    output,
+    renderer: "r1",
+    render: fakeRenderer().render,
+  });
+  const next = fakeRenderer();
+  const result = await buildPublications({
+    documents: [doc("x", "<p>H2</p>")],
+    output,
+    seeds: [seed],
+    renderer: "r1",
+    render: next.render,
+  });
+  assert.equal(next.calls.length, 0, "the seed's matching PDFs are used");
+  assert.equal(result.reused, 1);
+  assert.match(
+    await readFile(join(output, "x-lesson-A4.pdf"), "utf8"),
+    /<p>H2<\/p>/,
+  );
+});
+
+test("an invalid concurrency is refused instead of rendering nothing", async () => {
+  await assert.rejects(
+    buildPublications({
+      documents: [doc("a")],
+      output: await dir(),
+      renderer: "r1",
+      render: fakeRenderer().render,
+      concurrency: Number.NaN,
+    }),
+    /positive integer/,
+  );
+});
+
+test("the renderer fingerprint changes with installed OS packages (system fonts)", async () => {
+  const root = await dir();
+  const a = await rendererFingerprint(
+    root,
+    ["package-lock.json"],
+    "fonts-liberation=1:2.1.5-1",
+  );
+  const b = await rendererFingerprint(
+    root,
+    ["package-lock.json"],
+    "fonts-liberation=1:2.1.5-2",
+  );
+  assert.notEqual(a, b);
+});

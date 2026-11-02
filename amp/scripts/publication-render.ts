@@ -31,7 +31,9 @@ export function publicationRenderer(): {
       }
     },
     async close() {
-      await (await browser)?.close();
+      // A failed launch already failed the render; do not mask that error.
+      const open = await browser?.catch(() => null);
+      await open?.close();
     },
   };
 }

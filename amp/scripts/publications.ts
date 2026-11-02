@@ -1,7 +1,11 @@
 import { availableParallelism } from "node:os";
 import { fileURLToPath } from "node:url";
 import { Worker } from "node:worker_threads";
-import { buildPublications, rendererFingerprint } from "./publication-cache";
+import {
+  buildPublications,
+  priorEntries,
+  rendererFingerprint,
+} from "./publication-cache";
 import { publicationDocuments } from "./publication-documents";
 import { publicationRenderer } from "./publication-render";
 
@@ -19,12 +23,11 @@ const writeHtml = !args.includes("--no-html");
 const seeds = args.flatMap((arg, i) =>
   arg === "--seed" && args[i + 1] ? [args[i + 1]!] : [],
 );
-const concurrency = Math.max(
-  1,
-  Number(
-    process.env.AMP_PDF_CONCURRENCY ?? Math.min(4, availableParallelism()),
-  ),
+const concurrency = Number(
+  process.env.AMP_PDF_CONCURRENCY ?? Math.min(4, availableParallelism()),
 );
+if (!Number.isInteger(concurrency) || concurrency < 1)
+  throw new Error("AMP_PDF_CONCURRENCY must be a positive integer");
 const root = fileURLToPath(new URL("../", import.meta.url));
 const output = fileURLToPath(
   new URL("../artifacts/publications/", import.meta.url),
@@ -56,16 +59,22 @@ async function hashInWorkers(count: number, threads: number) {
       });
     }),
   );
-  if (hashes.length !== count || hashes.some((h) => !h))
-    throw new Error("Hash workers did not cover every document");
+  for (let i = 0; i < count; i++)
+    if (!hashes[i])
+      throw new Error("Hash workers did not cover every document");
   return hashes;
 }
 
-const renderer = publicationRenderer();
+const printer = publicationRenderer();
 const started = Date.now();
 try {
+  const renderer = await rendererFingerprint(root);
+  // Hashing costs a minute; skip it when nothing could be reused anyway
+  // (forced, or no prior build by this renderer: everything renders).
+  const reusable =
+    !force && (await priorEntries(output, seeds, renderer)).size > 0;
   const htmlSha256s =
-    !writeHtml && !force && concurrency > 1
+    !writeHtml && reusable && concurrency > 1
       ? await hashInWorkers(documents.length, concurrency)
       : undefined;
   const hashedSeconds = Math.round((Date.now() - started) / 1000);
@@ -77,12 +86,12 @@ try {
     concurrency,
     writeHtml,
     htmlSha256s,
-    renderer: await rendererFingerprint(root),
-    render: renderer.render,
+    renderer,
+    render: printer.render,
   });
   console.log(
     `Built ${publications.length} PDFs from ${documents.length / 3} shared lesson sources (${rendered} re-rendered, ${reused} documents reused, concurrency ${concurrency}, hashed in ${hashedSeconds}s, ${Math.round((Date.now() - started) / 1000)}s).`,
   );
 } finally {
-  await renderer.close();
+  await printer.close();
 }

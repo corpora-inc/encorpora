@@ -1,10 +1,12 @@
 /** Incremental publication PDFs, keyed by content.
  *
- * A PDF is a pure function of its print HTML and the renderer (Chromium,
- * system fonts, Node, the print options). Fonts and styles are embedded in the
- * HTML, so each document is reused when the SHA-256 of its HTML matches a
- * prior build made by the same renderer, and its PDF bytes still match the
- * recorded hash. Prior builds are the local output directory (development and
+ * A PDF is a pure function of its print HTML and the renderer: Chromium, the
+ * system fonts the page CSS names (Arial, Georgia, sans-serif map to installed
+ * Debian fonts), FreeType/HarfBuzz, Node and the print options. Styles and
+ * the KaTeX math fonts are embedded in the HTML; the rest is the renderer
+ * fingerprint, which includes the installed OS packages. Each document is
+ * reused when the SHA-256 of its HTML matches a prior build made by the same
+ * renderer, and its PDF bytes still match the recorded hash. Prior builds are the local output directory (development and
  * the Docker cache mount) and any seed directories (CI: the previous release
  * image's publications), so a content change re-renders only the documents it
  * changes. A renderer change re-renders everything. */
@@ -18,6 +20,7 @@ import {
   writeFile,
 } from "node:fs/promises";
 import { join } from "node:path";
+import { execFileSync } from "node:child_process";
 
 export type PublicationEntry = {
   lessonId: string;
@@ -46,13 +49,31 @@ export type RenderPdfs = (
 const sha256 = (data: string | Buffer) =>
   createHash("sha256").update(data).digest("hex");
 
+/** Installed OS packages and versions (Debian), sorted; empty elsewhere.
+ * System fonts, fontconfig, FreeType and HarfBuzz come from apt unpinned. */
+export function installedPackages(): string {
+  try {
+    return execFileSync("dpkg-query", ["-W", "-f=${Package}=${Version}\n"], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    })
+      .split("\n")
+      .filter(Boolean)
+      .sort()
+      .join("\n");
+  } catch {
+    return "";
+  }
+}
+
 /** Everything besides the HTML that can change a PDF's bytes. */
 export async function rendererFingerprint(
   root: string,
   files = ["package-lock.json", "Dockerfile", "scripts/publication-render.ts"],
+  packages = installedPackages(),
 ): Promise<string> {
   const hash = createHash("sha256").update(
-    `${process.platform}/${process.arch}/${process.version}\0`,
+    `${process.platform}/${process.arch}/${process.version}\0${packages}\0`,
   );
   for (const file of files) {
     const bytes = await readFile(join(root, file)).catch(() => null);
@@ -64,16 +85,17 @@ export async function rendererFingerprint(
 
 type Prior = { entry: PublicationEntry; directory: string };
 
-/** Prior entries made by this renderer, by filename. The output directory
- * wins over seeds. Manifests without a renderer and HTML hashes (built before
- * content keys) are never trusted: one full render replaces them. */
-async function priorEntries(
+/** Prior entries made by this renderer, by filename: every candidate, the
+ * output directory first, then the seeds in order. Manifests without a
+ * renderer and HTML hashes (built before content keys) are never trusted:
+ * one full render replaces them. */
+export async function priorEntries(
   output: string,
   seeds: readonly string[],
   renderer: string,
-): Promise<Map<string, Prior>> {
-  const prior = new Map<string, Prior>();
-  for (const directory of [...seeds].reverse().concat(output)) {
+): Promise<Map<string, Prior[]>> {
+  const prior = new Map<string, Prior[]>();
+  for (const directory of [output, ...seeds]) {
     const raw = await readFile(join(directory, "manifest.json"), "utf8").catch(
       () => null,
     );
@@ -86,17 +108,28 @@ async function priorEntries(
     }
     if (manifest.renderer !== renderer) continue;
     for (const entry of manifest.publications ?? [])
-      if (entry.htmlSha256) prior.set(entry.filename, { entry, directory });
+      if (entry.htmlSha256)
+        prior.set(entry.filename, [
+          ...(prior.get(entry.filename) ?? []),
+          { entry, directory },
+        ]);
   }
   return prior;
 }
 
-async function verifiedPdf(prior: Prior | undefined, htmlSha256: string) {
-  if (!prior || prior.entry.htmlSha256 !== htmlSha256) return null;
-  const pdf = await readFile(join(prior.directory, prior.entry.filename)).catch(
-    () => null,
-  );
-  return pdf && sha256(pdf) === prior.entry.sha256 ? pdf : null;
+/** The first candidate made from this HTML whose bytes still verify. */
+async function verifiedPdf(
+  candidates: readonly Prior[] | undefined,
+  htmlSha256: string,
+): Promise<Prior | null> {
+  for (const prior of candidates ?? []) {
+    if (prior.entry.htmlSha256 !== htmlSha256) continue;
+    const pdf = await readFile(
+      join(prior.directory, prior.entry.filename),
+    ).catch(() => null);
+    if (pdf && sha256(pdf) === prior.entry.sha256) return prior;
+  }
+  return null;
 }
 
 export async function buildPublications(options: {
@@ -122,10 +155,12 @@ export async function buildPublications(options: {
   const writeHtml = options.writeHtml ?? true;
   if (options.htmlSha256s && options.htmlSha256s.length !== documents.length)
     throw new Error("One HTML hash per document is required");
-  const concurrency = Math.max(1, Math.floor(options.concurrency ?? 1));
+  const concurrency = options.concurrency ?? 1;
+  if (!Number.isInteger(concurrency) || concurrency < 1)
+    throw new Error(`Concurrency must be a positive integer: ${concurrency}`);
   await mkdir(output, { recursive: true });
   const prior = options.force
-    ? new Map<string, Prior>()
+    ? new Map<string, Prior[]>()
     : await priorEntries(output, options.seeds ?? [], renderer);
   const results: PublicationEntry[][] = new Array(documents.length);
   const expected = new Set(["manifest.json"]);
@@ -152,8 +187,9 @@ export async function buildPublications(options: {
     if (writeHtml) await writeFile(join(output, htmlName), html!);
     if (kept.every(Boolean)) {
       results[index] = await Promise.all(
-        filenames.map(async (filename) => {
-          const { entry, directory } = prior.get(filename)!;
+        kept.map(async (found, i) => {
+          const filename = filenames[i]!;
+          const { entry, directory } = found!;
           if (directory !== output)
             await copyFile(join(directory, filename), join(output, filename));
           return { ...entry, htmlSha256 };
