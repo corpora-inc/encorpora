@@ -333,9 +333,10 @@ function oneStepCase(r: Random): Case {
         ? `${show(total, mode)} ÷ ${p} = ${total.n}/${total.d * p}${q(total.n, total.d * p).d === total.d * p ? "" : ` = ${show(x, mode)}`}`
         : `${show(total, mode)} ÷ ${p} = ${show(x, mode)}`;
     explanation.push(
+      `To solve means to find the value of $${v}$ that makes both sides equal.`,
       `${p}${v} means ${p} × ${v}. Division undoes multiplication, so divide both sides by ${p}. Splitting two equal amounts into ${p} equal parts keeps the parts equal, so the sides stay equal.`,
       `${v} = ${quotient}.`,
-      `Check: ${p} × ${show(x, mode)} = ${show(total, mode)}.`,
+      `Check: ${p} × ${show(x, mode)} = ${show(total, mode)}. The solution is $${v} = ${show(x, mode)}$.`,
     );
     hint = `${p}${v} means ${p} × ${v}. Divide both sides by ${p}.`;
   } else {
@@ -696,9 +697,10 @@ function twoStepCase(r: Random): Case {
       : `${term(p, v, mode)} ${signed(c, mode)} = ${show(right, mode)}`;
     const moved = sub(right, c);
     explanation.push(
+      `To solve, undo the steps done to $${v}$ in reverse order: first the ${c.n > 0 ? "adding" : "subtracting"}, then the multiplying. Do the same to both sides, so they stay equal.`,
       `${c.n > 0 ? `Subtract ${show(c, mode)} from` : `Add ${show(q(-c.n, c.d), mode)} to`} both sides to undo the ${c.n > 0 ? "addition" : "subtraction"}: ${term(p, v, mode)} = ${show(right, mode)} ${c.n > 0 ? "−" : "+"} ${show(q(Math.abs(c.n), c.d), mode)} = ${show(moved, mode)}.`,
       `${term(p, v, mode)} means ${operand(p, mode)} × ${v}. Divide both sides by ${show(p, mode)}: ${v} = ${show(moved, mode)} ÷ ${operand(p, mode)} = ${show(x, mode)}.`,
-      `Check: ${operand(p, mode)} × ${operand(x, mode)} ${signed(c, mode)} = ${show(mul(p, x), mode)} ${signed(c, mode)} = ${show(right, mode)}.`,
+      `Check: ${operand(p, mode)} × ${operand(x, mode)} ${signed(c, mode)} = ${show(mul(p, x), mode)} ${signed(c, mode)} = ${show(right, mode)}. The solution is $${v} = ${show(x, mode)}$.`,
     );
     hint = `Undo the ${c.n > 0 ? "addition" : "subtraction"} first by ${c.n > 0 ? "subtracting" : "adding"} ${show(q(Math.abs(c.n), c.d), mode)} on both sides; then divide both sides by ${show(p, mode)}.`;
     tags.push(
@@ -1232,8 +1234,9 @@ function contextCase(r: Random): Case {
     label: "Choose the inequality",
     candidates,
     explanation: [
+      `An inequality uses a sign such as $<$ (less than), $>$ (greater than), $\\le$ (at most) or $\\ge$ (at least) to describe many values at once.`,
       `The condition “${cond.quote(c)}” describes values ${words[op]} ${int(c)}. On a number line they lie ${pointsRight(op) ? "to the right of" : "to the left of"} ${int(c)}, and ${int(c)} itself is ${inclusive(op) ? "allowed" : "not allowed"}.`,
-      `So ${v} ${op} ${int(c)}.`,
+      `So the inequality is $${v} ${({ "<": "<", ">": ">", "≤": "\\le", "≥": "\\ge" } as Record<string, string>)[op] ?? op} ${int(c)}$.`,
     ],
     hint: `The condition is “${cond.quote(c)}”. Does it allow values greater or less than ${int(c)}, and does it allow ${int(c)} itself?`,
     tags: [cond.key, `operator:${op}`, c < 0 ? "negative" : "nonnegative"],
