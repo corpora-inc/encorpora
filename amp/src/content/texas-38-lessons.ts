@@ -3,67 +3,89 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const texas38Methods: Record<string, ProblemMethod> = {
   "times-as-many-comparison": {
-    goal: "Read and write a multiplication as a comparison: how many times as many one amount is as another.",
+    goal: "Write a times-as-many comparison as a multiplication, and find how many times as many one amount is as another.",
     intuition:
-      'Compare two amounts by asking how many equal copies of the smaller amount make the larger one. That number goes in front of "times as many".',
+      '"6 times as many as 4" means 6 equal groups of 4. Picture 4 stamps, then 6 rows of 4 stamps. That is $6\\times4=24$ stamps. The sign $\\times$ means times, or groups of. The amount after "as" is the one you copy. The number before "times as many" says how many copies.',
+    senses: { "more than": "more-than" },
     terms: ["times-as-many", "more-than"],
     method: [
-      'Name the amount being compared with: the one after "as". It is the amount that gets copied.',
-      'The number before "times as many" is how many copies. Multiply it by the amount being copied.',
-      "To compare two counts, divide the greater by the smaller. The result is the number of times as many.",
+      'Find the amount after "as". It is the amount that gets copied.',
+      'The number before "times as many" says how many copies. Multiply it by the amount being copied: 6 times as many as 4 is $6\\times4$.',
+      "To compare two counts, divide the bigger count by the smaller one. Dividing asks how many copies of the smaller fit in the bigger: $20\\div5=4$, because $4\\times5=20$.",
     ],
     watch:
-      '"4 more" and "4 times as many" are different. A comparison by adding uses the difference; a comparison by multiplying uses equal groups.',
+      '"4 more than 5" adds: $5+4=9$. "4 times as many as 5" makes 4 copies: $4\\times5=20$. Read which one the sentence says.',
   },
   "situation-pair-table": {
-    goal: "Use a real-world relationship to complete a table of number pairs, going forward, going backward or finding the rate.",
+    goal: "Use a real-life rule to fill in a table of number pairs: go forward, go backward or find the rate.",
     intuition:
-      "A table of pairs lists matching amounts. When every row follows the same rule, one row tells you the rule, and the rule fills in the rest.",
+      'A table of pairs lists amounts that go together, such as boxes and the pencils in them. Each row is one pair. A rule is a step that turns the first number into the second, like "times 6" or "add 6". The same rule works for every row. The story tells you which kind of rule it is. Then one row shows its number, and the rule fills in the rest.',
+    senses: { rule: "rule", difference: "difference-subtract" },
     terms: [
       [
         "ordered-pair",
-        "Here, two numbers that go together, such as 3 boxes and 24 pencils.",
+        "Here, two numbers that go together, such as 3 boxes and 18 pencils.",
       ],
       "rule",
     ],
     method: [
-      "Read the situation: is each row made by multiplying (equal groups) or adding (a fixed gap)?",
-      "Check the rule on a row you can see. For equal groups, divide the second number by the first.",
-      "Apply the rule forward to find an output, or undo it (divide, or subtract the gap) to find an input.",
+      "Read the story. Is each second number equal groups of the first (multiply), or the first plus a fixed gap (add)? A fixed gap is the same difference in every row, like being 6 years older.",
+      "Test the rule on a row you can see. For equal groups, divide the second number by the first, using a row whose first number is not 0. The answer is how many go with 1. For a gap, subtract the first number from the second.",
+      "Use the rule forward to find a second number. Undo it to go backward: divide to undo a times, and subtract to undo an add.",
     ],
     watch:
-      "A fixed gap adds the same amount in every row; equal groups multiply. Tripling the number of boxes triples the pencils, but a 3-year age gap does not triple an age.",
+      "A fixed gap adds the same amount in every row. Equal groups multiply. Triple the boxes and you triple the pencils. But if Ella is 6 years older than Gia, Ella's age does not triple when Gia's does: she is always just 6 years older.",
   },
   "story-equation-choice": {
     goal: "Choose the equation, with a letter for the unknown, that matches a one-step or two-step story within 1,000.",
     intuition:
-      "An equation tells the story in numbers. Decide which amount is the whole, which amounts are parts, and what happens to the amounts, then write that with a letter for what you do not know.",
+      "An equation is a number sentence with an equals sign. The sign $=$ means both sides are the same amount. A letter such as $n$ stands for the number you do not know yet, called the unknown. Read the story. Find the total and the parts that make it. Then write what happens, using numbers and the letter.",
+    senses: {
+      change: "change",
+      part: "part",
+      whole: "whole",
+      side: "side-of-equation",
+    },
+    noLink: ["leaves", "mean"],
     terms: ["unknown", "equation"],
     method: [
-      "Find the total and the parts. Getting more joins amounts; giving away takes one away from the total.",
-      "Write the changes in the order they happen, with the unknown where the story hides it.",
-      "Check the equation by reading it back as the story. If the unknown is the start, begin the equation with $n$.",
+      "Find the total and the parts. Getting more joins parts into a total, so add. Giving some away takes a part from the total, so subtract.",
+      "Write each change in the order it happens. Put the letter where the story hides the number. If the start is hidden, begin the equation with $n$.",
+      "Check: read the equation back as the story. Each number should mean the same thing in both.",
     ],
     watch:
-      "Equations such as $a+b=n$ and $n-b=a$ describe the same story. Do not choose one just because the numbers appear in the same order as in the story.",
+      "$190+n=347$ and $347-190=n$ tell the same story. Do not pick an equation just because its numbers come in the same order as in the story.",
   },
   "strip-diagram-equation": {
     goal: "Read a strip diagram of a multistep story and choose the equation with a letter that fits it.",
     intuition:
-      "A strip diagram shows parts and the whole as bars of matching length. Each bar becomes a number, a product or a letter in the equation.",
+      "A strip diagram shows a story with bars. The long bar is the whole, the total amount. The shorter bars are its parts. Together the parts are as long as the whole. Equal bars stand for equal amounts. Each bar becomes a number or a letter in the equation, and equal bars together become a multiplication.",
+    senses: { part: "part", whole: "whole", product: "product-multiply" },
+    noLink: ["leaves", "mean"],
     terms: ["strip-diagram", "equal-parts"],
     method: [
-      "Name the whole and each part. Write repeated equal parts as one product.",
-      "Combine the parts with the operation the diagram shows: parts add to the whole.",
-      "If a part is removed first, group it with parentheses before sharing the rest equally.",
+      "Name the whole and each part. Several equal bars, like 3 bars of $n$, can be written as one multiplication: $3\\times n$ means $n+n+n$.",
+      "The parts add up to the whole. So the whole equals the sum of the parts, the parts added together.",
+      "The sign $\\div$ means divide, or share equally. If a part is taken away before the rest is shared equally, put the taking away in parentheses ( ), which mean do this first: $(27-6)\\div3=n$.",
     ],
     watch:
-      "Order matters in a multistep equation: $(T-c)\\div a$ takes away first and then shares, while $T-c\\div a$ shares first.",
+      "Order matters. $(27-6)\\div3$ takes away 6 first and then shares: $21\\div3=7$. $27-6\\div3$ shares the 6 first: $27-2=25$.",
   },
   "division-area-model": {
     goal: "Read a division as an area model: partial quotients, the equation with an unknown side, and the quotient.",
     intuition:
-      "A rectangle's area is its height times its width. If the area and the height are known, dividing the area by the height gives the width.",
+      "Area is the number of unit squares that cover a shape. A unit square is a square with sides 1 unit long. A rectangle's area is its height times its width. So if you know the area and the height, divide the area by the height to find the width. The answer to a division is called the quotient. A big area can be split into easy parts. Each part's width is a partial quotient, one piece of the answer.",
+    senses: {
+      part: "part",
+      parts: "part",
+      side: "side",
+      sides: "side",
+      square: "square-shape",
+      squares: "square-shape",
+      unit: "unit",
+      units: "unit",
+      whole: "whole",
+    },
     terms: [
       "area-model",
       [
@@ -72,51 +94,71 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write the height times the unknown width as the area: $\\text{height}\\times w=\\text{area}$.",
-      "Divide each part's area by the height. Each answer is one partial quotient.",
-      "Add the partial quotients. The sum is the quotient and the full width.",
+      "Write the height times the unknown width as the area: $\\text{height}\\times w=\\text{area}$. The letter $w$ stands for the width.",
+      "Divide each part's area by the height. Each answer is that part's width, a partial quotient.",
+      "Add the partial quotients. Their total is the quotient and the whole width. Check: the quotient times the height gives back the whole area.",
     ],
     watch:
-      "Divide every part by the height. Adding the areas gives back the dividend, and a part that is not divided stays too large.",
+      "Divide every part by the height. Adding the areas only gives back the number being divided, and a part that is not divided stays too large.",
   },
   "fraction-benchmark-reasonable": {
     goal: "Use the benchmarks 0, 1/4, 1/2, 3/4 and 1 to estimate sums and differences and judge reasonable answers.",
     intuition:
-      "A benchmark is an easy fraction to compare with. Replace each fraction by the nearest benchmark and the sum or difference becomes easy to find.",
+      "A fraction such as $\\tfrac{3}{12}$ names equal parts of one whole. The bottom number, the denominator, says how many equal parts make the whole. The top number, the numerator, says how many parts we have. A benchmark is an easy fraction to compare with: 0, $\\tfrac14$, $\\tfrac12$, $\\tfrac34$ or 1. Swap each fraction for its nearest benchmark. Then the sum (the answer to an add) or the difference (the answer to a subtract) is easy to find. That gives an estimate, a number close to the exact answer.",
+    senses: {
+      "more than": "more-than",
+      difference: "difference-subtract",
+      part: "part",
+      parts: "part",
+      whole: "whole",
+    },
     terms: ["benchmark-fraction", "estimate"],
     method: [
-      "Write each fraction as a decimal, or compare it with $\\tfrac12$ first. Choose the nearest benchmark.",
-      "Add or subtract the benchmarks.",
-      "Compare an exact or proposed answer with the estimate. If it is far away, it is not reasonable.",
+      "Compare each fraction with $\\tfrac12$ first. Half of 12 is 6, so $\\tfrac{6}{12}=\\tfrac12$, and $\\tfrac{5}{12}$ is a little less. Choose the nearest benchmark.",
+      "Add or subtract the benchmarks. That is your estimate.",
+      "Compare the exact or given answer with the estimate. If it is close, it is reasonable. If it is far off, look for a mistake.",
     ],
     watch:
-      "Fractions with the same denominator add by the numerators only. If the proposed answer has a larger denominator, check it against the benchmarks.",
+      "When the denominators match, add only the numerators: $\\tfrac{5}{12}+\\tfrac{6}{12}=\\tfrac{11}{12}$. The denominator stays 12. An answer such as $\\tfrac{11}{24}$ is far from the estimate of 1, so it is not reasonable.",
   },
   "unit-relative-size": {
     goal: "Compare the sizes of customary and metric units and decide which measurement has the greater number.",
     intuition:
-      "A larger unit covers more, so fewer of them are needed. The same amount measured in a smaller unit gives a greater number.",
+      "A unit is the amount you count by when you measure, like a centimeter, a foot or a cup. A bigger unit covers more, so you need fewer of them. The same amount measured in a smaller unit gives a greater number.",
+    senses: { unit: "unit", units: "unit", "more than": "more-than" },
     terms: ["unit"],
     method: [
-      "Picture a real object for each unit and decide which is bigger.",
-      "For the same amount, a smaller unit gives a greater number of units.",
-      "To order units, put the smallest first and compare each next unit with the one before.",
+      "Picture a real object for each unit and decide which is bigger. A foot is about as long as a ruler. A yard is about as long as a baseball bat.",
+      "For the same amount, a smaller unit gives a greater number. 1 meter is 100 centimeters.",
+      "To order units, find the smallest first. Then compare each next unit with the one before it.",
     ],
     watch:
-      "The name of a unit does not show its size. A kilometer is not shorter than a meter because its name is longer; picture each one.",
+      "The name of a unit does not show its size. A kilometer is not shorter than a meter because its name is longer. Picture each one.",
   },
   "decimal-area-model": {
     goal: "Model a decimal product on a hundredths square and a decimal quotient as the missing side of a rectangle.",
     intuition:
-      "A 10 by 10 square is 1 whole, so each small square is one hundredth. A rectangle that is tenths tall and tenths wide covers hundredths of the whole.",
+      "Look at the big square. It is 1 whole, cut into 10 rows of 10 small squares. Each small square is one hundredth, 0.01. Each row is one tenth, 0.1. A rectangle 4 tenths tall and 3 tenths wide covers $4\\times3=12$ small squares. That is 12 hundredths, so $0.4\\times0.3=0.12$.",
+    senses: {
+      product: "product-multiply",
+      square: "square-shape",
+      squares: "square-shape",
+      side: "side",
+      sides: "side",
+      part: "part",
+      whole: "whole",
+      model: "model",
+      unit: "unit",
+      units: "unit",
+    },
     terms: ["tenth", "hundredth"],
     method: [
-      "For a product, count the rows and columns of the shaded rectangle and multiply the counts, then write the total as hundredths.",
-      "For a quotient, write the area as tenths or hundredths and share that count equally across the width.",
-      "Check a quotient by multiplying: width times height equals the area.",
+      "For a product, the answer to a times, count the rows and columns of the shaded rectangle. Multiply the counts. Write the total as hundredths.",
+      "For a quotient, the answer to a divide, write the area as tenths or hundredths. Share that count equally across the width. Keep the unit: 24 tenths shared by 8 is 3 tenths.",
+      "Check a quotient by multiplying: the width times the height should equal the area.",
     ],
     watch:
-      "$0.4\\times0.6$ is $0.24$, not $2.4$ and not $0.024$. Tenths times tenths are hundredths, so the product has two decimal places.",
+      "$0.4\\times0.6$ is $0.24$, not $2.4$ and not $0.024$. Tenths times tenths make hundredths, so count the answer in hundredths: 24 hundredths is 0.24.",
   },
   "number-set-venn": {
     goal: "Place numbers in rings of natural numbers, whole numbers, integers and rational numbers, and judge “every … is a …” statements.",
@@ -250,15 +292,17 @@ export const texas38Methods: Record<string, ProblemMethod> = {
   "categorical-summary": {
     goal: "Find the mode, a relative frequency as a percent, and a category count from a percent bar.",
     intuition:
-      "Categorical data sorts items into categories. The mode is the most common category; a relative frequency is a category's share of all the items.",
+      "Categorical data puts things into groups called categories, like Cat, Fish and Bird. The count for a category is called its frequency. The mode is the category with the greatest count. A relative frequency is a category's share of all the items: its count divided by the total. A percent means out of 100, so 25% means 25 out of every 100.",
+    senses: { mode: "mode-statistics", part: "part", whole: "whole" },
+    noLink: ["sorts"],
     terms: ["mode-statistics", "relative-frequency"],
     method: [
-      "For the mode, compare the counts and choose the category with the greatest one.",
-      "For a relative frequency, divide the count by the total and multiply by 100.",
-      "For a count from a percent bar, take that percent of the total.",
+      "For the mode, compare the counts. Choose the category with the greatest count.",
+      "For a relative frequency, divide the category's count by the total. Multiply by 100 to write it as a percent: $2\\div25=0.08$, which is 8%.",
+      "For a count from a percent bar, take that percent of the total: 35% of 80 is $0.35\\times80=28$.",
     ],
     watch:
-      "The mode is a category, not a count. The first category listed is not the mode unless it has the greatest count.",
+      "The mode is a category, like Fish, not a count, like 15. The first category listed is not the mode unless it has the greatest count.",
   },
   "check-register-balance": {
     goal: "Find a running balance or a missing amount in a check register with deposits, checks, transfers and fees.",
@@ -365,21 +409,21 @@ export const texas38Methods: Record<string, ProblemMethod> = {
 
 export const texas38Principles: Record<string, string> = {
   "times-as-many-comparison":
-    'For positive whole numbers $a$ and $b$, the statement "$a$ has $k$ times as many as $b$" means $a=k\\times b$. When $b$ divides $a$, the number of times is $k=a\\div b$. Comparison by difference, $a-b$, is a different statement.',
+    'Hugo has 4 stamps and Ava has 6 times as many, so Ava has $6\\times4=24$ stamps. With letters, for whole numbers $a$, $b$ and $k$, "$a$ is $k$ times as many as $b$" means $a=k\\times b$. If $b$ is not 0, then $k=a\\div b$. "$a$ is $k$ more than $b$" is different: it means $a=b+k$.',
   "situation-pair-table":
-    "A relationship in which each output is $p$ times its input has pairs $(x,px)$, so the output is found by multiplication and the input by division. A fixed gap $g$ has pairs $(x,x+g)$, found by adding and by subtracting $g$.",
+    "If each box holds 6 pencils, 8 boxes hold $8\\times6=48$ pencils, and 30 pencils fill $30\\div6=5$ boxes. If Ella is 6 years older than Gia, Ella's age is Gia's age plus 6, and Gia's age is Ella's age minus 6. Write a pair as (first number, second number). With letters, equal groups of $p$ give pairs $(x, p\\times x)$, and a fixed gap $g$ gives pairs $(x, x+g)$.",
   "story-equation-choice":
-    "A joining story with parts $a$ and $b$ and total $c$ is represented by $a+b=c$ and by $c-b=a$. Whichever amount is unknown can be written as a letter, and an equation is correct when the story's reading of it is true.",
+    "If 190 and some more make 347, then $190+n=347$, and also $347-190=n$. Both tell the same story. With letters, parts $a$ and $b$ that join to make a total $c$ give $a+b=c$ and $c-b=a$. Any one of the amounts can be the unknown letter. An equation is right when reading it back tells the story.",
   "strip-diagram-equation":
-    "A strip diagram expresses a whole as the sum of its parts, and $k$ equal parts of size $p$ as $k\\times p$. Subtracting a part first and then sharing equally into $k$ parts is $(T-c)\\div k$, with the subtraction grouped.",
+    "A strip diagram shows a whole as its parts added together. Three equal parts of size $n$ make $3\\times n$. Taking 6 from 27 first, then sharing the rest into 3 equal parts, is $(27-6)\\div3$. The parentheses show what to do first. With letters, $k$ equal parts of size $p$ make $k\\times p$, and taking $c$ from a whole $T$ before sharing into $k$ parts is $(T-c)\\div k$.",
   "division-area-model":
-    "If a rectangle has height $h$ and width $w$, its area is $hw$. If the area splits into parts $A_1,A_2,\\ldots$, the width splits into $A_1/h,A_2/h,\\ldots$, and $\\dfrac{A_1+A_2+\\cdots}{h}=\\dfrac{A_1}{h}+\\dfrac{A_2}{h}+\\cdots$.",
+    "A rectangle 8 units tall with area $5{,}600+400+16$ square units has width $5{,}600\\div8+400\\div8+16\\div8=700+50+2=752$. Dividing each part and adding gives the same answer as $6{,}016\\div8=752$. With letters, a rectangle of height $h$ and width $w$ has area $h\\times w$. If the area splits into parts $A_1$, $A_2$ and $A_3$, the width is $A_1\\div h+A_2\\div h+A_3\\div h$. The small numbers 1, 2 and 3 only label the parts, and $h$ is not 0.",
   "fraction-benchmark-reasonable":
-    "If each fraction is within $\\tfrac18$ of a benchmark, the sum or difference of the benchmarks is within $\\tfrac14$ of the exact value. For fractions with a common denominator $d$, $\\tfrac ad+\\tfrac cd=\\tfrac{a+c}{d}$, not $\\tfrac{a+c}{2d}$.",
+    "$\\tfrac{5}{12}$ is near $\\tfrac12$, and $\\tfrac{6}{12}$ is $\\tfrac12$. So $\\tfrac{5}{12}+\\tfrac{6}{12}$ is about $\\tfrac12+\\tfrac12=1$, and the exact sum $\\tfrac{11}{12}$ is close. If each of two fractions is no more than $\\tfrac18$ from its benchmark, the estimate is no more than $\\tfrac14$ from the exact answer. With letters, fractions with the same denominator $d$ add like this: $\\tfrac ad+\\tfrac cd=\\tfrac{a+c}{d}$, not $\\tfrac{a+c}{2d}$.",
   "unit-relative-size":
-    "If one unit is larger than another, an amount measured in the larger unit has a smaller number: when $1\\text{ large}=k\\text{ small}$ with $k>1$, an amount of $n$ large units is $kn$ small units.",
+    "1 meter is 100 centimeters, so 2 meters is $2\\times100=200$ centimeters. The smaller unit gives the greater number. With letters, if 1 big unit is $k$ small units, with $k$ more than 1, then $n$ big units are $k\\times n$ small units. When $n$ is more than 0, $k\\times n$ is more than $n$.",
   "decimal-area-model":
-    "A square of side 1 has area 1. A rectangle $\\frac{a}{10}$ tall and $\\frac{b}{10}$ wide has area $\\frac{ab}{100}$. If the area $A$ and one side $d$ are known, the other side is $A\\div d$, since $d\\times(A\\div d)=A$.",
+    "A square with sides 1 unit long has area 1. A rectangle 4 tenths tall and 6 tenths wide covers $4\\times6=24$ hundredths, so $0.4\\times0.6=0.24$. With letters, a rectangle $\\frac{a}{10}$ tall and $\\frac{b}{10}$ wide has area $\\frac{a\\times b}{100}$. If the area $A$ and one side $d$ are known, the other side is $A\\div d$, because $d\\times(A\\div d)=A$. Here $d$ is not 0.",
   "number-set-venn":
     "Write $\\mathbb N$, $\\mathbb W$, $\\mathbb Z$ and $\\mathbb Q$ for the natural numbers, whole numbers, integers and rational numbers. Each is a subset of the next (every member of one is in the next): $\\mathbb N\\subset\\mathbb W\\subset\\mathbb Z\\subset\\mathbb Q$. An integer $n$ is rational because $n=n/1$. A number such as $12/4$ is named by its simplified value, so it is placed in the smallest set holding that value (it also belongs to every larger set).",
   "reciprocal-division-choice":
@@ -397,7 +441,7 @@ export const texas38Principles: Record<string, string> = {
   "rational-area-volume-equation":
     "Area of a triangle $=\\tfrac12bh$ (base $b$, height $h$); area of a rectangle $=lw$ (length $l$, width $w$); volume of a rectangular prism $=lwh$. These equations hold for fraction lengths too, and an unknown measure is found by dividing, which undoes multiplying.",
   "categorical-summary":
-    "For categorical data the mode is the category with the greatest frequency. The relative frequency of a category is its frequency divided by the total, and $p\\%$ of a total $N$ is $\\tfrac{p}{100}N$.",
+    "In a pet table with 25 students, Fish has the greatest count, 15, so Fish is the mode. Cat has 2 of the 25, so its relative frequency is $2\\div25=0.08$, or 8%. With letters, a category with count $c$ in a total $N$ has relative frequency $c\\div N$. As a percent it is $100\\times c\\div N$. And $p\\%$ of a total $N$ is $\\tfrac{p}{100}\\times N$.",
   "check-register-balance":
     "If the balance before an entry is $B$ dollars and the entry is $x$ dollars, the new balance is $B+x$ for a deposit and $B-x$ for a payment. So the change in balance across an entry is its amount with a sign: plus for money in, minus for money out.",
   "lifetime-income-salary":
@@ -420,19 +464,22 @@ export const texas38Lessons: Lesson[] = [
     id: "times-as-many",
     title: "Times as many",
     summary:
-      '"Times as many" compares two amounts with equal groups. $3\\times24$ is $3$ times as many as $24$.',
+      'If Ana has 24 stickers and Ben has 3 times as many, Ben has 3 groups of 24. That is $3\\times24=72$ stickers. The sign $\\times$ means times, or groups of. "Times as many" compares two amounts with equal groups. "3 more" is different: it adds 3.',
+    senses: { "more than": "more-than", product: "product-multiply" },
     templateIds: ["times-as-many-comparison"],
     objectives: [
-      "Say what a product such as $3\\times24$ means as a comparison.",
-      "Write the product for a times-as-many sentence and find how many times as many one count is as another.",
+      "Say what a multiplication such as $3\\times24$ means as a comparison.",
+      "Write the multiplication for a times-as-many sentence.",
+      "Find how many times as many one count is as another by dividing.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Equal copies of the amount you compare with",
         paragraphs: [
-          "Ana has 24 stickers. If Ben has 3 times as many, Ben has 3 equal groups of 24. That is $3\\times24=72$ stickers.",
-          'This is a different comparison from "3 more", which adds 3 to 24. "Times as many" counts how many equal copies of the smaller amount make the larger amount.',
+          "Ana has 24 stickers. Ben has 3 times as many. Picture Ana's pile of 24. Ben has 3 piles just like it.",
+          "That is 3 groups of 24: $3\\times24=72$ stickers.",
+          '"3 more than 24" is different. It adds 3: $24+3=27$. "Times as many" makes copies. "More than" adds on.',
         ],
       },
     ],
@@ -440,8 +487,9 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         'Ava has 5 shells and Ben has 20 shells. Write a sentence that compares them with "times as many".',
       steps: [
-        "Ask how many groups of 5 make 20: $20\\div5=4$, because $4\\times5=20$.",
-        "Ben's amount is 4 copies of Ava's amount.",
+        "Ask how many groups of 5 make 20. Dividing answers that: $20\\div5=4$, because $4\\times5=20$.",
+        "So Ben's 20 shells are 4 copies of Ava's 5 shells.",
+        'Put the copied amount, Ava\'s, after "as": Ben has 4 times as many as Ava.',
       ],
       answer: "Ben has 4 times as many shells as Ava.",
     },
@@ -450,42 +498,47 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Which amount is copied",
         paragraphs: [
-          'The amount after "as many ... as" is the one that is copied. The number before "times" says how many copies.',
-          "To compare two counts, divide the larger by the smaller. The quotient is the number of times as many.",
+          'The amount after "as" is the one that is copied. In "Ben has 4 times as many as Ava", Ava\'s amount is copied.',
+          'The number before "times" says how many copies. Multiply to find the bigger amount: $4\\times5=20$.',
+          "To compare two counts, divide the bigger count by the smaller. The answer, called the quotient, is the number of times as many.",
         ],
       },
       {
         stage: "formal",
         title: "Multiplication and division",
         paragraphs: [
-          '"$a$ is $k$ times as many as $b$" means $a=k\\times b$. Dividing both sides by $b$ gives $k=a\\div b$.',
+          '"$a$ is $k$ times as many as $b$" means $a=k\\times b$. Here $a$, $b$ and $k$ stand for whole numbers, and $b$ is not 0.',
+          "Then $k=a\\div b$. For example, $20=4\\times5$, so $4=20\\div5$.",
         ],
       },
     ],
     pitfalls: [
-      '"4 times as many" is not "4 more". Subtracting finds how many more, not how many times.',
-      "Say which amount is larger. Reversing the names reverses the comparison.",
+      '"4 times as many" is not "4 more". Subtracting tells how many more. Dividing tells how many times as many.',
+      'Say which amount is bigger. "Ben has 4 times as many as Ava" is true here, but "Ava has 4 times as many as Ben" is not.',
     ],
     parentGuide:
-      "Use two piles of objects. Ask how many groups of the small pile fit in the large pile, and say the sentence aloud.",
+      "Use two piles of objects, such as 3 buttons and 12 buttons. Ask how many piles of 3 fit in the pile of 12. Then say the sentence aloud: 12 is 4 times as many as 3.",
   }),
   lesson({
     id: "situation-tables",
     title: "Tables of number pairs from a situation",
     summary:
-      "A table lists matching amounts. The situation gives the rule, and the rule fills the table in.",
+      'A table of pairs lists amounts that go together, like boxes and the pencils in them. Each row is one pair. A rule is a step that turns the first number into the second, such as "times 6". The story tells you the rule, and the rule fills in the table.',
+    senses: { rule: "rule", rules: "rule", difference: "difference-subtract" },
     templateIds: ["situation-pair-table"],
     objectives: [
-      "Find the rule from a situation and a row of a table.",
-      "Complete a table forward and backward, and find the rate in one row.",
+      "Find the rule from a story and one row of a table.",
+      "Fill in a table forward and backward.",
+      "Find the rate: the second number that goes with 1 of the first.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "One rule for every row",
         paragraphs: [
-          "Each box holds 6 pencils. One box has 6 pencils, 2 boxes have 12 and 3 boxes have 18. Each row of the table is a pair: the number of boxes and the number of pencils.",
-          "The same rule works for every row: multiply the number of boxes by 6.",
+          "Each box holds 6 pencils. 1 box has 6 pencils, 2 boxes have 12, and 3 boxes have 18.",
+          "Each row of the table is a pair: a number of boxes and the number of pencils that goes with it.",
+          "The same rule works for every row: multiply the number of boxes by 6. Check one row: $3\\times6=18$.",
         ],
       },
     ],
@@ -493,8 +546,8 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "Each box holds 6 pencils. The table shows 1 box has 6 pencils, 2 boxes have 12 and 3 boxes have 18. How many pencils are in 8 boxes?",
       steps: [
-        "Check the rule on a row: $3\\times6=18$.",
-        "Use it for 8 boxes: $8\\times6=48$.",
+        "Check the rule on a row you can see: 3 boxes of 6 pencils is $3\\times6=18$. It matches the table.",
+        "Use the same rule for 8 boxes: $8\\times6=48$.",
       ],
       answer: "48 pencils",
     },
@@ -503,42 +556,55 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Forward, backward and a gap",
         paragraphs: [
-          "Forward: apply the rule to the input. Backward: undo the rule, so divide for equal groups. If the situation is a fixed gap, such as 7 years older, add the gap to go forward and subtract it to go back.",
-          "The rate is the output for one input. Divide any row's output by its input to find it.",
+          "Forward means you know the first number. Use the rule on it.",
+          "Backward means you know the second number. Undo the rule. For equal groups, divide: 30 pencils fill $30\\div6=5$ boxes.",
+          "Some stories have a fixed gap instead, such as Ella is 6 years older than Gia. Add the gap to go forward. Subtract it to go back.",
+          "For equal groups, the rate is the second number for 1 of the first, like 6 pencils for 1 box. Divide a row's second number by its first to find it: $18\\div3=6$. Use a row whose first number is not 0.",
         ],
       },
       {
         stage: "formal",
         title: "Two kinds of rule",
         paragraphs: [
-          "Equal groups give pairs $(x,px)$. A fixed gap gives pairs $(x,x+g)$.",
+          "Write a pair as (first number, second number). Equal groups of $p$ give pairs $(x, p\\times x)$, where $x$ is any first number.",
+          "A fixed gap $g$ gives pairs $(x, x+g)$. For Ella and Gia, $g$ is 6, so $(3, 9)$ and $(8, 14)$ fit.",
         ],
       },
     ],
     pitfalls: [
-      "Do not add a rate where a fixed amount is the rule: ages differ by the same amount, not the same ratio.",
-      "Check the rule on at least one visible row before using it.",
+      "Do not multiply when the rule is a fixed gap. Two ages always differ by the same amount, so add or subtract that amount.",
+      "Check the rule on at least one row you can see before you use it.",
     ],
     parentGuide:
-      "Make a table from a real situation, such as the cost of several snacks, and have the learner predict a row you have not written.",
+      "Make a table from a real situation, such as the cost of several snacks at the same price. Ask the learner to predict a row you have not written.",
   }),
   lesson({
     id: "story-equations-strips",
     title: "Equations and strip diagrams for stories",
     summary:
-      "An equation with a letter for the unknown, or a strip diagram, shows how the amounts in a story fit together.",
+      "An equation is a number sentence with an equals sign. The sign $=$ means both sides are the same amount. A letter such as $n$ stands for the number you do not know yet. A strip diagram draws a story as bars: a long bar for the whole and shorter bars for its parts. Both show how the amounts in a story fit together.",
+    senses: {
+      part: "part",
+      parts: "part",
+      whole: "whole",
+      side: "side-of-equation",
+      sides: "side-of-equation",
+    },
+    noLink: ["mean"],
     templateIds: ["story-equation-choice", "strip-diagram-equation"],
     objectives: [
-      "Choose an equation with a letter that matches a one-step or two-step story.",
-      "Read a strip diagram and choose the equation, including repeated equal parts and parts removed before sharing.",
+      "Choose an equation, with a letter for the unknown, that matches a one-step or two-step story.",
+      "Read a strip diagram and choose its equation, including equal parts and a part taken away before sharing.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Say the story in numbers",
         paragraphs: [
-          "Ana has 346 stickers and gets 128 more. The total is the unknown, $n$. Getting more joins amounts, so $346+128=n$.",
-          "A strip diagram draws the same story: a bar for the whole and bars for the parts, which together match the whole. Equal bars become one product.",
+          "Ana has 346 stickers and gets 128 more. We do not know the total yet, so we call it $n$.",
+          "Getting more joins two parts into a total, so add: $346+128=n$.",
+          "A strip diagram draws the same story. The long bar is the whole, the total. The shorter bars are the parts. Together the parts are as long as the whole.",
+          "Equal bars stand for equal amounts. 4 bars of 6 make $6+6+6+6=24$. The times sign $\\times$ is a short way to write equal groups: $4\\times6$ means 4 groups of 6.",
         ],
       },
     ],
@@ -546,8 +612,9 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "Dev packs 4 bags with 6 marbles each and adds 3 loose marbles. A strip diagram shows 4 bars of 6 and one bar of 3 under a bar $n$. Write the equation.",
       steps: [
-        "The 4 equal bars of 6 make $4\\times6$.",
-        "The loose marbles are one more part, so they are added.",
+        "The 4 equal bars of 6 are 4 groups of 6, so write $4\\times6$.",
+        "The 3 loose marbles are one more part, so add them: $4\\times6+3$.",
+        "The parts together make the whole bar, $n$. So the whole $n$ equals the parts: multiply first, then add, to get $24+3=27$ marbles.",
       ],
       answer: "$n=4\\times6+3$",
     },
@@ -556,42 +623,58 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Total, parts and order",
         paragraphs: [
-          "Decide which amount is the total and which are parts. If the unknown is the start, write $n$ first: $n-b=c$ for giving away, $n+b=c$ for getting more.",
-          "When a part is removed before sharing, write the removal in parentheses: $(T-c)\\div a=n$.",
+          "Decide which amount is the total and which amounts are parts.",
+          "If the start is unknown, write $n$ first. Mia had some cards, gave away 20 and has 50 left: $n-20=50$. If instead she got 20 more and now has 50: $n+20=50$.",
+          "The sign $\\div$ means divide, or share equally: $21\\div3=7$ shares 21 into 3 equal parts of 7.",
+          "Dev had 27 stickers, set 6 aside and shared the rest equally among 3 friends. Each friend gets $n$. The taking away happens before the sharing, so put it in parentheses ( ), which mean do this first: $(27-6)\\div3=n$.",
         ],
       },
       {
         stage: "formal",
         title: "Equivalent equations",
         paragraphs: [
-          "$a+b=n$ and $n-b=a$ have the same solution, so either represents a joining story. An equation is correct when reading it back gives the story.",
+          "$346+128=n$ and $n-128=346$ give the same answer for $n$: 474. So both match the joining story.",
+          "Equations with the same answer are called equivalent. An equation is correct when reading it back tells the story.",
         ],
       },
     ],
     pitfalls: [
       "Do not choose an equation by the order of the numbers in the story. Read what happens to the unknown.",
-      "Equal bars are multiplied. Adding $4+6$ does not count 4 bars of 6.",
+      "Count equal bars with a times: 4 bars of 6 is $4\\times6$, the same as $6+6+6+6$. Do not write $4+6$.",
     ],
     parentGuide:
-      "Ask the learner to make up a story for an equation such as $n-120=340$ and say what $n$ stands for.",
+      "Ask the learner to make up a story for an equation such as $n-120=340$ and to say what $n$ stands for.",
   }),
   lesson({
     id: "division-area-models",
     title: "Division as an area model",
     summary:
-      "A rectangle's area is height times width, so dividing the area by the height gives the width.",
+      "Area is how many unit squares cover a shape. A rectangle's area is its height times its width. So if you know the area and the height, divide the area by the height to find the width. The answer to a division is called the quotient. In an area model, a rectangle split into parts, divide each part and add the widths.",
+    senses: {
+      part: "part",
+      parts: "part",
+      unit: "unit",
+      units: "unit",
+      whole: "whole",
+      square: "square-shape",
+      squares: "square-shape",
+      side: "side",
+      sides: "side",
+    },
     templateIds: ["division-area-model"],
     objectives: [
       "Write an area equation with an unknown width for a division.",
-      "Find the quotient by dividing each part of the area by the height and adding.",
+      "Find the quotient by dividing each part of the area by the height, then adding.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "The quotient is a missing side",
         paragraphs: [
-          "A rectangle is 4 units tall and has an area of 1,248 square units. Its width $w$ satisfies $4\\times w=1{,}248$. Finding $w$ is the division $1{,}248\\div4$.",
-          "Split the area into easy parts, such as 800, 400 and 48. Each part's width is its area divided by 4. The widths add to the whole width.",
+          "A unit square is a square with sides 1 unit long. A rectangle 4 units tall with an area of 1,248 square units is covered by 1,248 unit squares.",
+          "Its width $w$ makes $4\\times w=1{,}248$ true. The letter $w$ stands for the width we do not know yet. Finding $w$ is the division $1{,}248\\div4$.",
+          "1,248 is hard to divide in one go. Split it into easy parts: 800, 400 and 48. Each part is a smaller rectangle, still 4 units tall.",
+          "Each part's width is its area divided by 4. The part widths add up to the whole width.",
         ],
       },
     ],
@@ -599,8 +682,9 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "A rectangle 4 units tall has an area of 1,248, split into 800, 400 and 48. Find the quotient.",
       steps: [
-        "$800\\div4=200$, $400\\div4=100$ and $48\\div4=12$.",
-        "$200+100+12=312$.",
+        "Divide each part by the height, 4: $800\\div4=200$, $400\\div4=100$ and $48\\div4=12$. Each answer is one part's width.",
+        "Add the part widths to get the whole width: $200+100+12=312$.",
+        "Check by multiplying: $312\\times4=1{,}248$, the whole area.",
       ],
       answer: "$1{,}248\\div4=312$",
     },
@@ -609,29 +693,40 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Divide every part",
         paragraphs: [
-          "Divide each part by the height, not just the first. Add the widths for the quotient. Check by multiplying the quotient by the height.",
+          "Divide every part by the height, not just the first one. Each answer is called a partial quotient, one piece of the quotient.",
+          "Add the partial quotients to get the quotient. Check by multiplying the quotient by the height.",
         ],
       },
       {
         stage: "formal",
         title: "Why the parts add",
         paragraphs: [
-          "$\\dfrac{A_1+A_2+A_3}{h}=\\dfrac{A_1}{h}+\\dfrac{A_2}{h}+\\dfrac{A_3}{h}$, because dividing by $h$ distributes over a sum.",
+          "Dividing a total by 4 gives the same answer as dividing each part by 4 and adding: $1{,}248\\div4=800\\div4+400\\div4+48\\div4$.",
+          "With letters, for a height $h$ that is not 0: $(A_1+A_2+A_3)\\div h=A_1\\div h+A_2\\div h+A_3\\div h$. The small numbers 1, 2 and 3 only label the three parts.",
         ],
       },
     ],
     pitfalls: [
-      "Adding the areas gives back the dividend, not the quotient.",
+      "Adding the areas gives back the number being divided, called the dividend, not the quotient.",
       "Watch the place value of each width: $400\\div4$ is 100, not 10.",
     ],
     parentGuide:
-      "Draw a rectangle on paper, label its height, and have the learner split the area into parts that divide easily.",
+      "Draw a rectangle on paper and label its height. Have the learner split the area into parts that divide easily.",
   }),
   lesson({
     id: "fraction-benchmarks",
     title: "Benchmarks for fraction sums and differences",
     summary:
-      "Compare each fraction with 0, $\\tfrac14$, $\\tfrac12$, $\\tfrac34$ and 1 to estimate an answer and check that it is reasonable.",
+      "A fraction such as $\\tfrac{5}{12}$ names equal parts of a whole. A benchmark is an easy fraction to compare with: 0, $\\tfrac14$, $\\tfrac12$, $\\tfrac34$ or 1. Swap each fraction for its nearest benchmark, then add or subtract. That gives an estimate, a number close to the exact answer. An answer far from the estimate likely has a mistake.",
+    senses: {
+      part: "part",
+      parts: "part",
+      whole: "whole",
+      difference: "difference-subtract",
+      differences: "difference-subtract",
+      fourths: "fourth",
+    },
+    noLink: ["change"],
     templateIds: ["fraction-benchmark-reasonable"],
     objectives: [
       "Choose the benchmark nearest a fraction.",
@@ -642,7 +737,9 @@ export const texas38Lessons: Lesson[] = [
         stage: "intuition",
         title: "Round to easy fractions",
         paragraphs: [
-          "A benchmark is an easy fraction to compare with: $0$, $\\tfrac14$, $\\tfrac12$, $\\tfrac34$ and $1$. Each fraction is closest to one of them. $\\tfrac{5}{12}$ is a little less than $\\tfrac12$, so its nearest benchmark is $\\tfrac12$.",
+          "A fraction has two numbers. The bottom number, the denominator, says how many equal parts make one whole. The top number, the numerator, says how many of those parts we have.",
+          "A benchmark is an easy fraction to compare with: 0, $\\tfrac14$, $\\tfrac12$, $\\tfrac34$ and 1.",
+          "Half of 12 is 6, so $\\tfrac{6}{12}$ is the same as $\\tfrac12$. $\\tfrac{5}{12}$ is one twelfth less, so its nearest benchmark is $\\tfrac12$ too.",
         ],
       },
     ],
@@ -650,8 +747,9 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "A student says $\\tfrac{5}{12}+\\tfrac{6}{12}=\\tfrac{11}{24}$. Is that reasonable?",
       steps: [
-        "$\\tfrac{5}{12}$ is near $\\tfrac12$ and $\\tfrac{6}{12}$ equals $\\tfrac12$, so the sum is about $1$.",
-        "$\\tfrac{11}{24}$ is less than $\\tfrac12$, which is far from $1$.",
+        "$\\tfrac{5}{12}$ is near $\\tfrac12$, and $\\tfrac{6}{12}$ is exactly $\\tfrac12$. So the sum is about $\\tfrac12+\\tfrac12=1$.",
+        "$\\tfrac{11}{24}$ is less than $\\tfrac12$, because half of 24 is 12. That is far from 1.",
+        "So the answer is not reasonable. Both fractions count twelfths, so the sum counts twelfths too: 5 twelfths and 6 twelfths make 11 twelfths.",
       ],
       answer:
         "Not reasonable. Fractions with the same denominator add by their numerators: $\\tfrac{11}{12}$.",
@@ -661,29 +759,33 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Estimate, then compare",
         paragraphs: [
-          "Replace each fraction by its nearest benchmark and add or subtract. An exact or proposed answer should be close to the estimate; if not, look for a mistake.",
+          "Swap each fraction for its nearest benchmark. Then add or subtract the benchmarks.",
+          "A sum is the answer to an add, and a difference is the answer to a subtract. The exact or given answer should be close to the estimate. If it is not, look for a mistake.",
         ],
       },
       {
         stage: "formal",
         title: "Like denominators",
         paragraphs: [
-          "$\\dfrac ad+\\dfrac cd=\\dfrac{a+c}{d}$. The denominator names the size of the parts, so it does not change when parts are counted together.",
+          "Fractions with the same denominator have like denominators. Add them by adding the numerators: $\\tfrac{5}{12}+\\tfrac{6}{12}=\\tfrac{11}{12}$.",
+          "With letters, $\\dfrac ad+\\dfrac cd=\\dfrac{a+c}{d}$, where $d$ is not 0. The denominator names the size of the parts. Counting parts together does not change their size.",
         ],
       },
     ],
     pitfalls: [
-      "Do not add denominators. Two halves are not four fourths of a different size.",
-      "A fraction exactly halfway between two benchmarks needs a closer look at which direction you round.",
+      "Do not add the denominators. $\\tfrac12+\\tfrac12$ is 1 whole, not $\\tfrac24$.",
+      "A fraction exactly halfway between two benchmarks, like $\\tfrac38$, is just as close to both. Use the other fractions in the problem to choose.",
     ],
     parentGuide:
-      "Pick two fractions with the same denominator and have the learner estimate their sum on a number line before calculating.",
+      "Pick two fractions with the same denominator. Have the learner estimate their sum on a number line before working it out.",
   }),
   lesson({
     id: "unit-sizes",
     title: "How big is a unit?",
     summary:
-      "A larger unit covers more, so measuring the same amount takes fewer of them.",
+      "A unit is the amount you count by when you measure, such as a meter or a cup. A bigger unit covers more, so measuring the same amount takes fewer of them. A smaller unit takes more of them, so its number is greater.",
+    senses: { unit: "unit", units: "unit", "more than": "more-than" },
+    noLink: ["mean"],
     templateIds: ["unit-relative-size"],
     objectives: [
       "Order customary and metric units by size.",
@@ -694,8 +796,9 @@ export const texas38Lessons: Lesson[] = [
         stage: "intuition",
         title: "Big unit, small number",
         paragraphs: [
-          "A meter is much longer than a centimeter. A ribbon that is 2 meters long is 200 centimeters long. The smaller unit needs a greater number to cover the same length.",
-          "Customary units follow the same idea: it takes more cups than gallons to fill a tub.",
+          "A meter is about as high as a door knob. A centimeter is about as wide as a fingertip. A meter is 100 centimeters.",
+          "A ribbon 2 meters long is 200 centimeters long. The smaller unit needs a greater number to cover the same length.",
+          "Customary units, like cups and gallons, work the same way. It takes more cups than gallons to fill a tub.",
         ],
       },
     ],
@@ -703,8 +806,9 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "A pitcher holds 2 quarts. Is the number greater in quarts or in cups?",
       steps: [
-        "A cup is smaller than a quart, since it takes 4 cups to fill 1 quart.",
-        "So 2 quarts is 8 cups, and the measurement in cups has the greater number.",
+        "A cup is smaller than a quart: it takes 4 cups to fill 1 quart.",
+        "So 2 quarts is $2\\times4=8$ cups.",
+        "8 is greater than 2, so the measurement in cups has the greater number.",
       ],
       answer: "The measurement in cups",
     },
@@ -713,29 +817,41 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Picture each unit",
         paragraphs: [
-          "Picture an object for each unit to decide which is larger: a centimeter is a fingertip width, a meter is about a door knob's height, a kilometer is a short walk.",
+          "Picture an object for each unit to decide which is bigger. A centimeter is about a fingertip's width. A meter is about a door knob's height. A kilometer is a short walk.",
         ],
       },
       {
         stage: "formal",
         title: "Counts and sizes",
         paragraphs: [
-          "If $1$ large unit equals $k$ small units with $k>1$, then $n$ large units equal $kn$ small units, so the number of small units is greater.",
+          "Say 1 big unit is $k$ small units, and $k$ is more than 1. Then $n$ big units are $k\\times n$ small units. For 2 quarts, $k$ is 4 and $n$ is 2, so that is 8 cups.",
+          "When $n$ is more than 0, $k\\times n$ is more than $n$. So the number of small units is greater.",
         ],
       },
     ],
     pitfalls: [
-      "A long name does not mean a large unit.",
-      "A meter and a yard are close in size; a meter is slightly longer.",
+      "A long name does not mean a big unit.",
+      "A meter and a yard are close in size. A meter is a little longer.",
     ],
     parentGuide:
-      "Measure the same table with a ruler in inches and in centimeters and talk about why the numbers differ.",
+      "Measure the same table with a ruler in inches and in centimeters. Talk about why the numbers differ.",
   }),
   lesson({
     id: "decimal-area-models",
     title: "Decimal products and quotients with area",
     summary:
-      "On a 10 by 10 square of 1 whole, a tenths-by-tenths rectangle covers hundredths. Area also gives the missing side of a quotient.",
+      "Look at a big square cut into 10 rows of 10 small squares. The big square is 1 whole, so each small square is one hundredth, 0.01. A rectangle 4 tenths tall and 6 tenths wide covers $4\\times6=24$ small squares, so $0.4\\times0.6=0.24$. Area also helps you divide: a missing side is the area divided by the side you know.",
+    senses: {
+      product: "product-multiply",
+      square: "square-shape",
+      squares: "square-shape",
+      side: "side",
+      unit: "unit",
+      whole: "whole",
+      part: "part",
+      parts: "part",
+    },
+    noLink: ["change"],
     templateIds: ["decimal-area-model"],
     objectives: [
       "Find a decimal product from a shaded rectangle on a hundredths square.",
@@ -746,7 +862,10 @@ export const texas38Lessons: Lesson[] = [
         stage: "intuition",
         title: "A tenth of a tenth",
         paragraphs: [
-          "Cut a square into 10 rows and 10 columns. Each small square is one hundredth of the whole. A shaded rectangle that is 4 rows tall and 6 columns wide covers $4\\times6=24$ small squares, so $0.4\\times0.6=0.24$.",
+          "A tenth is one of 10 equal parts of a whole, written 0.1. A hundredth is one of 100 equal parts, written 0.01.",
+          "Cut a square into 10 rows and 10 columns. Each row is one tenth of the square. Each small square is one hundredth.",
+          "Shade a rectangle 4 rows tall and 6 columns wide. It covers $4\\times6=24$ small squares, which is 24 hundredths. So $0.4\\times0.6=0.24$.",
+          "A tenth of a tenth is a hundredth. That is why tenths times tenths give hundredths.",
         ],
       },
     ],
@@ -754,8 +873,9 @@ export const texas38Lessons: Lesson[] = [
       prompt:
         "An area model shows a rectangle with area 2.4 and width 8. Find its height.",
       steps: [
-        "$2.4$ is 24 tenths. Share 24 tenths across 8 columns: $24\\div8=3$ tenths.",
-        "That is $0.3$. Check: $8\\times0.3=2.4$.",
+        "Write the area in tenths: $2.4$ is 24 tenths.",
+        "Share 24 tenths equally across 8 columns: $24\\div8=3$ tenths. Keep the unit, tenths.",
+        "3 tenths is $0.3$. Check by multiplying: $8\\times0.3=2.4$, the area.",
       ],
       answer: "0.3",
     },
@@ -764,23 +884,25 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Count, then name the unit",
         paragraphs: [
-          "For a product, multiply the counts of rows and columns, then name the result in hundredths. For a quotient, change the area to tenths or hundredths, divide the count by the width, and keep the same unit.",
+          "For a product, the answer to a times, multiply the number of rows by the number of columns. Then name the result in hundredths.",
+          "For a quotient, the answer to a divide, change the area to tenths or hundredths. Divide that count by the width, and keep the same unit.",
         ],
       },
       {
         stage: "formal",
         title: "Place value of a product",
         paragraphs: [
-          "$\\dfrac{a}{10}\\times\\dfrac{b}{10}=\\dfrac{ab}{100}$, so a product of two tenths has two decimal places.",
+          "4 tenths times 6 tenths is 24 hundredths: $\\dfrac{4}{10}\\times\\dfrac{6}{10}=\\dfrac{24}{100}$.",
+          "With letters, $\\dfrac{a}{10}\\times\\dfrac{b}{10}=\\dfrac{a\\times b}{100}$. So tenths times tenths always give a number of hundredths.",
         ],
       },
     ],
     pitfalls: [
-      "$0.4\\times0.6$ is not $2.4$. The product is smaller than either factor because both are less than 1.",
+      "$0.4\\times0.6$ is not $2.4$. Both numbers are less than 1, so the answer is smaller than either one.",
       "Keep the unit when dividing: 24 tenths divided by 8 is 3 tenths, not 3.",
     ],
     parentGuide:
-      "Draw a 10 by 10 square on grid paper and have the learner shade a rectangle for a product such as $0.5\\times0.7$.",
+      "Draw a 10 by 10 square on grid paper. Have the learner shade a rectangle for a product such as $0.5\\times0.7$.",
   }),
   lesson({
     id: "nested-number-sets",
@@ -1140,7 +1262,8 @@ export const texas38Lessons: Lesson[] = [
     id: "categorical-summaries",
     title: "Summarizing categorical data",
     summary:
-      "The mode is the most common category, and a relative frequency is a category's share of the total.",
+      "Categorical data puts things into groups called categories, like favorite foods. The mode is the category with the greatest count. A relative frequency is a category's share of the total: its count divided by the total. As a percent, it says how many out of every 100.",
+    senses: { mode: "mode-statistics", whole: "whole", part: "part" },
     templateIds: ["categorical-summary"],
     objectives: [
       "Find the mode from a frequency table.",
@@ -1151,15 +1274,21 @@ export const texas38Lessons: Lesson[] = [
         stage: "intuition",
         title: "Most common and share of the whole",
         paragraphs: [
-          "A frequency table counts how many items fall in each category. The category with the greatest count is the mode.",
-          "A relative frequency compares a count with the total. If 5 of 20 students chose soup, the relative frequency of soup is $\\tfrac{5}{20}=25\\%$.",
+          "A frequency table lists each category and how many items fall in it. That count is called the frequency.",
+          "The category with the greatest count is the mode.",
+          "A relative frequency compares a count with the total. If 5 of 20 students chose soup, soup's share is 5 out of 20, or $\\tfrac{5}{20}$.",
+          "A percent means out of 100. 5 out of 20 is the same share as 25 out of 100. So the relative frequency of soup is 25%.",
         ],
       },
     ],
     workedExample: {
       prompt:
         "A percent bar shows 80 students: pizza 40%, tacos 35%, soup 25%. How many chose tacos?",
-      steps: ["Tacos is 35% of 80.", "$0.35\\times80=28$."],
+      steps: [
+        "A percent bar is one bar split into parts by percent. The tacos part is 35% of the 80 students.",
+        "35% means 35 out of 100, or 0.35. So multiply: $0.35\\times80=28$.",
+        "Check: $28\\div80=0.35$, which is 35%.",
+      ],
       answer: "28 students",
     },
     closingSections: [
@@ -1167,14 +1296,16 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Three tasks",
         paragraphs: [
-          "Mode: compare the counts. Relative frequency: count $\\div$ total, then $\\times100$. Count from a percent bar: percent $\\times$ total.",
+          "Mode: compare the counts and pick the category with the greatest count.",
+          "Relative frequency: divide the count by the total. Multiply by 100 to write it as a percent.",
+          "Count from a percent bar: write the percent as a decimal and multiply it by the total.",
         ],
       },
       {
         stage: "formal",
         title: "Definitions",
         paragraphs: [
-          "The relative frequency of a category with count $c$ in a total $N$ is $c/N$. As a percent it is $100c/N$.",
+          "The relative frequency of a category with count $c$ in a total $N$ is $c\\div N$. As a percent it is $100\\times c\\div N$. Here $N$ is not 0.",
         ],
       },
     ],
@@ -1183,7 +1314,7 @@ export const texas38Lessons: Lesson[] = [
       "The first category listed is not the mode unless it has the greatest count.",
     ],
     parentGuide:
-      "Survey the family about favorite foods and make a table of counts.",
+      "Survey the family about favorite foods and make a table of counts. Ask which food is the mode.",
   }),
   lesson({
     id: "check-registers",

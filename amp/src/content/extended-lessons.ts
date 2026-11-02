@@ -5,33 +5,35 @@ export const extendedLessons: Lesson[] = [
     id: "digit-value",
     title: "A digit gets its value from its place",
     summary:
-      "Ten ones make a ten, and ten tens make a hundred; each place holds a different-sized bundle.",
+      "A digit is one of the symbols 0 to 9. Its place in a number tells how much it is worth. Ten ones make a ten, and ten tens make a hundred. In 352, the 3 means 3 hundreds. The 5 means 5 tens, which is 50. The 2 means 2 ones.",
+    noLink: ["mean"],
     templateIds: ["place-value-digit"],
     objectives: [
-      "Identify ones, tens and hundreds.",
-      "Distinguish a digit from the value it represents.",
+      "Name the ones, tens and hundreds places.",
+      "Tell a digit apart from the value it stands for.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Build larger bundles",
         paragraphs: [
-          "Ten ones make one ten, and ten tens make one hundred.",
-          "In 352, the three counts hundreds, the five counts tens, and the two counts ones. Each digit gets its value from its place.",
+          "Ten ones make one ten. Ten tens make one hundred.",
+          "Look at 352. The 3 counts hundreds. The 5 counts tens. The 2 counts ones.",
+          "Each digit gets its value from its place. Its value is how much it is worth.",
         ],
       },
       {
         title: "Groups of ten",
         paragraphs: [
-          "Ten ones form one ten. Ten tens form one hundred. In 352, the digits name three hundreds, five tens and two ones.",
-          "Moving one place left multiplies a digit’s represented value by ten. The symbol 5 can represent five, fifty or five hundred depending on its position.",
+          "Picture sticks. Tie 10 single sticks together to make a bundle of ten. Then 10 bundles of ten make one hundred.",
+          "Each place to the left is worth ten times as much. So a 5 can mean five, fifty or five hundred. It depends on its place.",
         ],
       },
       {
         title: "Expand the number",
         paragraphs: [
-          "Write 352 as 300 + 50 + 2. Expanded form makes each digit’s contribution visible.",
-          "When asked for the value of the tens digit, answer fifty, not five. Five names the digit; fifty names its value in this number.",
+          "Write 352 as $300+50+2$. This is called expanded form. It shows what each digit is worth.",
+          "The tens digit of 352 is 5. Its value is fifty, not five. Five names the digit. Fifty is what it is worth here.",
         ],
       },
     ],
@@ -40,30 +42,44 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Base-ten expansion",
         paragraphs: [
-          "A whole number is the sum of each digit times its place value. Every place is ten times the place to its right, so regrouping ten lower units as one higher unit preserves the number.",
+          "A whole number is the sum of each digit times its place value. The place value is what one in that place is worth: 1, 10, 100 and so on.",
+          "Each place is worth ten times the place to its right. So trading ten of one place for one of the next place keeps the number the same.",
         ],
       },
     ],
     workedExample: {
       prompt: "What value does the tens digit represent in 352?",
-      steps: ["The tens digit is 5.", "Five tens equal 5 × 10 = 50."],
+      steps: [
+        "The tens place is second from the right. In 352, the tens digit is 5.",
+        "Each ten is worth 10, so five tens are $5\\times10=50$.",
+      ],
       answer: "50",
     },
     pitfalls: [
-      "The digit and its value are different quantities.",
-      "Read positions from the right for whole numbers.",
+      "A digit and its value are different. In 352 the digit 5 is worth 50.",
+      "Find the places from the right: ones, then tens, then hundreds.",
     ],
     parentGuide:
-      "Use bundles of ten sticks and single sticks. Ask the learner to build fifty-two and explain why the 5 represents fifty.",
+      "Use bundles of ten sticks and single sticks. Ask the learner to build fifty-two and explain why the 5 means fifty.",
   },
   {
     id: "adding-decimals",
     title: "Add matching decimal places",
     summary:
-      "Add tenths to tenths and hundredths to hundredths, just as you add ones to ones.",
+      "A decimal uses a point to show parts of one whole. The first place after the point is tenths, and the second is hundredths. Add tenths to tenths and hundredths to hundredths, just as you add ones to ones. Line up the decimal points so matching places line up. If a place adds up to 10 or more, carry 1 to the place on its left.",
+    senses: {
+      part: "part",
+      parts: "part",
+      whole: "whole",
+      "more than": "more-than",
+      squares: "square-shape",
+      units: "unit",
+      unit: "unit",
+    },
+    noLink: ["change"],
     templateIds: ["decimal-addition"],
     objectives: [
-      "Align decimal places.",
+      "Line up decimal places to add.",
       "Regroup hundredths into tenths when adding.",
     ],
     sections: [
@@ -71,22 +87,23 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Join matching parts",
         paragraphs: [
-          "One and two tenths plus three tenths is one and five tenths.",
-          "Adding tenths to tenths works just like adding ones to ones. Keep the decimal places lined up so the parts you join are the same size.",
+          "A tenth is one of 10 equal parts of a whole. A hundredth is one of 100 equal parts.",
+          "One and two tenths plus three tenths is one and five tenths: $1.2+0.3=1.5$.",
+          "Adding tenths to tenths works just like adding ones to ones. Line up the decimal points so the parts you join are the same size.",
         ],
       },
       {
         title: "Name the units",
         paragraphs: [
-          "A hundredth is one of one hundred equal parts of a whole. The number 1.25 is 125 hundredths. The number 0.60 is sixty hundredths.",
-          "Trailing zeros after a decimal do not change the amount: 0.6 = 0.60. They can help line up corresponding places.",
+          "The number 1.25 is 125 hundredths. The number 0.60 is 60 hundredths.",
+          "Zeros at the end, after the decimal point, do not change the amount: $0.6=0.60$. They can help line up the places.",
         ],
       },
       {
         title: "Add and regroup",
         paragraphs: [
-          "Add hundredths to hundredths and tenths to tenths. Ten hundredths regroup into one tenth, just as ten ones regroup into one ten.",
-          "Estimate before calculating. Adding 1.25 and 0.60 should give a result between one and two.",
+          "Add hundredths to hundredths and tenths to tenths. Ten hundredths make one tenth, just as ten ones make one ten. Trading them like this is called regrouping, or carrying.",
+          "Estimate first. An estimate is a quick answer that is close. 1.25 is a bit more than 1, and 0.60 is a bit more than half. So the sum should be between 1 and 2.",
         ],
       },
     ],
@@ -95,57 +112,66 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Like decimal units",
         paragraphs: [
-          "Adding or subtracting decimals combines counts of the same place-value units. Align decimal points to align ones, tenths, hundredths, and so on; zeros may be appended to the right of a decimal's final fractional digit without changing its value.",
+          "Adding decimals joins counts of the same place-value units: ones with ones, tenths with tenths, hundredths with hundredths.",
+          "Lining up the decimal points lines up those places. Zeros can be written after the last digit to the right of the point without changing the value.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 1.25 + 0.60?",
       steps: [
-        "Rename the numbers as 125 hundredths and 60 hundredths.",
-        "125 + 60 = 185 hundredths.",
-        "185 hundredths = 1.85.",
+        "Write both numbers in hundredths, the smallest place used: 1.25 is 125 hundredths, and 0.60 is 60 hundredths.",
+        "Add the counts like whole numbers: $125+60=185$ hundredths.",
+        "185 hundredths is 1 whole and 85 hundredths, which is 1.85. It is between 1 and 2, as estimated.",
       ],
       answer: "1.85",
     },
     pitfalls: [
-      "Align decimal points rather than the last written digits.",
-      "Regrouping does not change the total value.",
+      "Line up the decimal points, not the last digits.",
+      "Regrouping does not change the total amount.",
     ],
     parentGuide:
-      "Use a hundred-square grid as one whole. Represent each addend and combine the shaded amounts.",
+      "Use a hundred-square grid as one whole. Shade each number being added, then count the shaded squares together.",
   },
   {
     id: "comparing-fractions",
     title: "Compare pieces with the same unit",
     summary:
-      "Rename fractions with the same denominator, the bottom number that sets piece size. Then compare how many pieces each has.",
+      "A fraction like $\\tfrac34$ names equal pieces of one whole. The bottom number, the denominator, tells how many pieces make the whole. The top number, the numerator, tells how many pieces you have. To rename a fraction means to write the same amount another way. Rename both fractions with the same denominator, called a common denominator. Then the pieces are the same size, and more pieces means more.",
+    senses: {
+      whole: "whole",
+      wholes: "whole",
+      fourths: "fourth",
+      rename: "rename",
+      "more than": "more-than",
+    },
     templateIds: ["compare-fractions"],
     objectives: [
       "Find a common denominator.",
-      "Compare fractions without relying only on denominator size.",
+      "Compare fractions without looking only at the size of the denominator.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Use pieces of one size",
         paragraphs: [
-          "One half and three fourths can be compared by cutting the half into fourths.",
-          "Then two fourths are beside three fourths, and the larger amount is clear. The whole must be the same size for both.",
+          "Compare $\\tfrac12$ and $\\tfrac34$ of the same pizza. Cut the half into 2 equal pieces. Now it is $\\tfrac24$, two fourths.",
+          "Two fourths sit next to three fourths, and three fourths is more. Both wholes must be the same size.",
         ],
       },
       {
         title: "Use the same whole",
         paragraphs: [
-          "Fractions can be compared as numbers using one shared unit whole. For pictures, make sure the wholes have equal size.",
-          "A larger denominator means smaller individual pieces, but the numerator also matters. Comparing both numerators and denominators separately is unreliable.",
+          "Compare fractions of the same whole, or of wholes the same size. In a picture, check that the wholes match.",
+          "A bigger denominator means smaller pieces: $\\tfrac18$ is less than $\\tfrac15$. But the numerator matters too. Do not compare the numerators and the denominators on their own.",
         ],
       },
       {
         title: "Rename and compare",
         paragraphs: [
-          "Rewrite 2/3 and 3/4 in twelfths. They become 8/12 and 9/12. Nine equal pieces are more than eight equal pieces.",
-          "For positive denominators, cross products compare the same common-denominator numerators. This is a shortcut for a meaningful renaming step.",
+          "Write $\\tfrac23$ and $\\tfrac34$ in twelfths. Multiply the top and bottom of $\\tfrac23$ by 4 to get $\\tfrac{8}{12}$. Multiply the top and bottom of $\\tfrac34$ by 3 to get $\\tfrac{9}{12}$.",
+          "Multiplying the top and bottom by the same number cuts each piece smaller and takes more of them. So the amount stays the same.",
+          "Now the pieces match. Nine twelfths is more than eight twelfths, so $\\tfrac34$ is larger.",
         ],
       },
     ],
@@ -154,53 +180,68 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Compare a common whole",
         paragraphs: [
-          "For fractions of the same-sized whole with positive denominators, equivalent fractions can rename both amounts with a common denominator. Then the larger numerator names the larger amount because the pieces have equal size.",
+          "Fractions that name the same amount are called equivalent fractions, like $\\tfrac23$ and $\\tfrac{8}{12}$.",
+          "To compare fractions of the same whole, rename both with a common denominator. Then the larger numerator means the larger amount, because the pieces are the same size.",
         ],
       },
     ],
     workedExample: {
       prompt: "Which is larger: 2/3 or 3/4?",
-      steps: ["2/3 = 8/12 and 3/4 = 9/12.", "9/12 is larger, so choose 3/4."],
+      steps: [
+        "Multiply the two denominators to get a common denominator: $3\\times4=12$. Then $\\tfrac23=\\tfrac{8}{12}$ and $\\tfrac34=\\tfrac{9}{12}$.",
+        "The pieces are now the same size. 9 is more than 8, so $\\tfrac{9}{12}$ is larger. Choose $\\tfrac34$.",
+      ],
       answer: "3/4",
     },
     pitfalls: [
       "A bigger denominator alone does not make a bigger fraction.",
-      "Equivalent fractions are equal, not larger or smaller.",
+      "Equivalent fractions are equal. Neither one is larger.",
     ],
     parentGuide:
-      "Draw two equal-length fraction strips, partition both into twelfths, and compare the shaded lengths.",
+      "Draw two strips of the same length. Split both into twelfths, and compare the shaded lengths.",
   },
   {
     id: "multiplying-fractions",
     title: "A fraction of a fraction",
-    summary: "Multiplying by a fraction can find part of another amount.",
+    summary:
+      "A fraction like $\\tfrac34$ names equal pieces of a whole. The top number, the numerator, counts the pieces. The bottom number, the denominator, tells how many pieces make the whole. $\\tfrac12\\times\\tfrac34$ means $\\tfrac12$ of $\\tfrac34$: a part of a part. Multiply the numerators, then the denominators. To simplify, divide the top and bottom by the same number. A number that divides both is called a common factor.",
+    senses: {
+      part: "part",
+      parts: "part",
+      whole: "whole",
+      fourths: "fourth",
+      product: "product-multiply",
+      factor: "factor-number",
+      "more than": "more-than",
+      eighths: "eighth",
+    },
     templateIds: ["multiply-fractions"],
     objectives: [
-      "Interpret a fraction product with an area model.",
-      "Multiply and simplify fractions.",
+      "Show a fraction times a fraction with an area model, a rectangle cut both ways.",
+      "Multiply fractions and simplify the answer.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Take a part of a part",
         paragraphs: [
-          "To find one half of three fourths, divide those three fourths into two equal shares and take one share.",
-          "A picture of a whole rectangle cut both ways shows three of eight small parts selected.",
-          "In a fraction, the top number counts the parts (numerator) and the bottom number names their size (denominator).",
+          "To find one half of three fourths, split the three fourths into two equal shares. Then take one share.",
+          "Picture a rectangle that is one whole. Cut it into fourths one way and halves the other way. The whole now has 8 small equal parts.",
+          "Shade 3 fourths, then take half of that shading. It covers 3 of the 8 small parts: $\\tfrac38$.",
         ],
       },
       {
         title: "Take part of an amount",
         paragraphs: [
-          "One half of three fourths means split three fourths into two equal portions and take one. The result is three eighths.",
-          "On one rectangle, mark fourths in one direction and halves in the other. The overlap covers three of eight equal small regions.",
+          "One half of three fourths means split three fourths into two equal parts and take one. The answer is three eighths.",
+          "On one rectangle, shade fourths in one direction and halves in the other. Where the two shadings overlap, they cover 3 of 8 equal small parts.",
         ],
       },
       {
         title: "Multiply the counts",
         paragraphs: [
-          "Multiply numerators to count selected overlapping regions. Multiply denominators to count all equal regions in the whole.",
-          "Multiplying positive proper fractions makes a smaller positive amount than either factor. That is sensible because you are taking only part of an amount.",
+          "Multiply the numerators to count the small parts you take: $1\\times3=3$. Multiply the denominators to count all the small parts in the whole: $2\\times4=8$.",
+          "When both fractions are more than 0 and less than 1, the answer is smaller than either one. That makes sense, because you take only part of an amount.",
         ],
       },
     ],
@@ -209,25 +250,26 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "A fraction of a fraction",
         paragraphs: [
-          "For fractions with nonzero denominators, taking $a/b$ of $c/d$ gives $ac/bd$. The product counts selected small parts after each of the original $d$ parts is split into $b$ equal parts.",
+          "With letters, $\\tfrac{a}{b}$ of $\\tfrac{c}{d}$ is $\\tfrac{a\\times c}{b\\times d}$. Here $b$ and $d$ are not 0.",
+          "Each of the $d$ pieces is split into $b$ smaller pieces. So the whole has $b\\times d$ small pieces, and you take $a\\times c$ of them.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 1/2 × 3/4?",
       steps: [
-        "Multiply numerators: 1 × 3 = 3.",
-        "Multiply denominators: 2 × 4 = 8.",
-        "The product is 3/8.",
+        "$\\tfrac12\\times\\tfrac34$ means $\\tfrac12$ of $\\tfrac34$. Multiply the numerators to count the parts you take: $1\\times3=3$.",
+        "Multiply the denominators to count the equal parts in the whole: $2\\times4=8$.",
+        "So the product, the answer to the times, is $\\tfrac38$. No number except 1 divides both 3 and 8, so it is already simplified.",
       ],
       answer: "3/8",
     },
     pitfalls: [
-      "Multiplication does not always make a number larger.",
-      "A common denominator is not required before multiplying.",
+      "Multiplying does not always make a number bigger.",
+      "You do not need a common denominator to multiply fractions.",
     ],
     parentGuide:
-      "Use a rectangular grid to show one half in one direction and three fourths in the other; discuss the overlap.",
+      "Use a rectangle on grid paper. Shade one half one way and three fourths the other way. Talk about the overlap.",
   },
   {
     id: "dividing-fractions",
@@ -875,33 +917,45 @@ export const extendedLessons: Lesson[] = [
     id: "multiplying-decimals",
     title: "Multiply decimal-sized parts",
     summary:
-      "Multiply the counts, then name the smaller place-value unit of the product.",
+      "A decimal uses a point to show parts of one whole. 1.2 is 12 tenths, and 0.3 is 3 tenths. The numbers you multiply are called factors. Multiply the counts like whole numbers: $12\\times3=36$. Then name the piece size: tenths times tenths make hundredths, so $1.2\\times0.3=0.36$. The answer has as many decimal places, digits after the point, as both factors together.",
+    senses: {
+      part: "part",
+      parts: "part",
+      whole: "whole",
+      product: "product-multiply",
+      factor: "factor-number",
+      factors: "factor-number",
+      "more than": "more-than",
+      side: "side",
+    },
     templateIds: ["decimal-multiplication"],
     objectives: [
-      "Interpret tenths times tenths as hundredths.",
-      "Estimate the size of a decimal product.",
+      "Explain why tenths times tenths make hundredths.",
+      "Estimate the size of a decimal product, the answer to a times.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Watch the size of the pieces",
         paragraphs: [
+          "A tenth is one of 10 equal parts of a whole. A hundredth is one of 100 equal parts.",
           "Twelve tenths times three tenths makes thirty-six hundredths.",
-          "The whole-number fact 12 times 3 gives the count, but the pieces in the product are hundredths, not ones.",
+          "The fact $12\\times3=36$ gives the count. But the pieces in the answer are hundredths, not ones.",
         ],
       },
       {
         title: "Use fractions to see the units",
         paragraphs: [
-          "The number 1.2 is twelve tenths and 0.3 is three tenths. Their product is thirty-six hundredths because (12/10)(3/10) = 36/100.",
-          "Multiplying the integer counts gives thirty-six. The denominators determine that the result is 0.36, not 3.6 or 36.",
+          "1.2 is twelve tenths, $\\tfrac{12}{10}$. 0.3 is three tenths, $\\tfrac{3}{10}$.",
+          "Their product, the answer to the times, is $\\tfrac{12}{10}\\times\\tfrac{3}{10}=\\tfrac{36}{100}$: thirty-six hundredths.",
+          "Multiplying the whole-number counts gives 36. The bottom numbers, the denominators, show that the answer is 0.36, not 3.6 or 36.",
         ],
       },
       {
         title: "Estimate before placing the decimal",
         paragraphs: [
-          "Three tenths of 1.2 is less than 1.2 and close to three tenths. This estimate supports a product of 0.36.",
-          "A factor between zero and one reduces a positive amount. Multiplication need not increase it.",
+          "Three tenths of 1.2 is less than 1.2. It is a little more than three tenths. That fits an answer of 0.36.",
+          "Multiplying by a number between 0 and 1 makes a positive amount smaller. Multiplying does not always make a number bigger.",
         ],
       },
     ],
@@ -910,57 +964,62 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Place units multiply",
         paragraphs: [
-          "A decimal with $p$ digits after its point counts units of size $10^{-p}$. Multiplying it by a decimal with $q$ such digits makes units of size $10^{-(p+q)}$; multiply their whole-number counts and locate the product's decimal point accordingly.",
+          "A decimal with 1 digit after the point counts tenths. One with 2 digits after the point counts hundredths.",
+          "Multiply the whole-number counts. The answer then has as many digits after the point as both factors together: 1 place and 1 place give 2 places, so $1.2\\times0.3=0.36$.",
+          "With letters, a number with $p$ digits after the point times a number with $q$ digits after the point has $p+q$ digits after the point. Count any zeros at the end before you drop them: $0.5\\times0.2=0.10=0.1$.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 1.2 × 0.3?",
       steps: [
-        "Write (12/10) × (3/10).",
-        "Multiply to get 36/100.",
-        "36/100 = 0.36.",
+        "Write each decimal as a fraction: $\\tfrac{12}{10}\\times\\tfrac{3}{10}$.",
+        "Multiply the tops and the bottoms: $\\tfrac{12\\times3}{10\\times10}=\\tfrac{36}{100}$. Tenths times tenths make hundredths.",
+        "36 hundredths is 0.36. The estimate said a little more than 0.3, so this fits.",
       ],
       answer: "0.36",
     },
     pitfalls: [
-      "Explain decimal placement using place value rather than guessing.",
-      "A decimal product can be smaller than both whole-number counts used to compute it.",
+      "Place the decimal point using place value, not by guessing.",
+      "The product can be smaller than a number you multiplied: 0.36 is less than 1.2.",
     ],
     parentGuide:
-      "Use a hundredths grid or a rectangle with decimal side lengths to connect the product to area.",
+      "Use a hundredths grid, or a rectangle with decimal side lengths, to connect the product to area.",
   },
   {
     id: "expression-order",
     title: "Read the structure of an expression",
     summary:
-      "Grouping tells which calculations to finish before combining their results.",
+      "An expression is numbers and signs, like $+$ and $\\times$, that stand for one number. Parentheses ( ) group a part to work out first. The order of operations is the shared rule for what comes next: parentheses first, then powers, then multiply and divide, then add and subtract. A power, like $3^{2}=3\\times3$, multiplies a number by itself.",
+    senses: { part: "part" },
+    noLink: ["rule", "whole"],
     templateIds: ["operation-order"],
     objectives: [
-      "Evaluate grouped quantities first.",
-      "Complete multiplication before addition outside the group.",
+      "Work out the group inside parentheses first.",
+      "Multiply before adding outside the group.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Finish the inside group first",
         paragraphs: [
-          "In a calculation with parentheses, the expression inside them names one amount.",
-          "Find that amount before using it in the rest of the calculation, then follow the agreed order for the remaining operations.",
+          "Parentheses ( ) hold a small calculation. Its answer is one amount.",
+          "Find that amount first. Then use it in the rest of the calculation.",
+          "After that, follow the shared order: multiply and divide, then add and subtract.",
         ],
       },
       {
         title: "Parentheses name one quantity",
         paragraphs: [
-          "In 5 + (2 + 3) × 4, the group (2 + 3) is one quantity: five. Replace the group with its value before proceeding.",
-          "The expression becomes 5 + 5 × 4. The initial five is outside the multiplied group.",
+          "In $5+(2+3)\\times4$, the group $(2+3)$ is one amount: 5. Replace the group with its value.",
+          "The expression becomes $5+5\\times4$. The first 5 is outside the group, so it stays as it is.",
         ],
       },
       {
         title: "Follow the remaining structure",
         paragraphs: [
-          "Multiplication takes precedence over addition, so calculate 5 × 4 = 20 and then add the initial five.",
-          "Operations of equal precedence are evaluated left to right. These examples focus on parentheses, multiplication and addition.",
+          "Multiply before you add. So work out $5\\times4=20$, then add the first 5.",
+          "When two steps have the same rank, like a times and a divide, work from left to right.",
         ],
       },
     ],
@@ -969,24 +1028,25 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "An agreed order gives one value",
         paragraphs: [
-          "An expression is evaluated by completing grouped operations first, then powers, then multiplication and division from left to right, then addition and subtraction from left to right. Equivalent regrouping may change the order only when the operations' properties justify it.",
+          "This shared order is called the order of operations. Everyone uses it, so an expression has just one value.",
+          "First work out groups. Then powers. Then multiply and divide, from left to right. Then add and subtract, from left to right.",
         ],
       },
     ],
     workedExample: {
       prompt: "Evaluate 5 + (2 + 3) × 4.",
       steps: [
-        "Parentheses: 2 + 3 = 5.",
-        "Multiply: 5 × 4 = 20.",
-        "Add: 5 + 20 = 25.",
+        "Parentheses first: $2+3=5$. Now the expression is $5+5\\times4$.",
+        "Multiply before adding: $5\\times4=20$. Now it is $5+20$.",
+        "Add last: $5+20=25$.",
       ],
       answer: "25",
     },
     pitfalls: [
-      "Do not simply calculate every operation from left to right.",
-      "Only terms inside the parentheses belong to that group.",
+      "Do not just work every step from left to right. $2+3\\times4$ is 14, not 20.",
+      "Only the numbers inside the parentheses belong to that group.",
     ],
     parentGuide:
-      "Have the learner rewrite one complete line after each step, carrying every unchanged term along.",
+      "Have the learner rewrite the whole line after each step, carrying along every part that has not changed yet.",
   },
 ];
