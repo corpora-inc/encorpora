@@ -293,7 +293,9 @@ export const patternTerm = chainFamily({
       explanation: [
         `To find a pattern's rule, subtract each term from the next. The changes between terms are ${diffs.map(signed).join(", ")}.`,
         m.step === 0
-          ? `The change is the same every time, ${signed(diffs[0]!)}, so keep adding ${signed(diffs[0]!)}.`
+          ? diffs[0]! < 0
+            ? `Each number is ${-diffs[0]!} less than the one before, so keep subtracting ${-diffs[0]!}.`
+            : `Each number is ${diffs[0]!} more than the one before, so keep adding ${diffs[0]!}.`
           : `Each change is 1 ${m.step > 0 ? "more" : "less"} than the one before, so the next changes are ${tail.map((v, i) => signed(v - full[m.list.length - 1 + i]!)).join(", ")}.`,
         `Continuing: ${tail.join(", ")}. The ${m.ask === "next" ? "next" : "seventh"} number is ${m.answer}.`,
       ],
