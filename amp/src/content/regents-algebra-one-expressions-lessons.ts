@@ -77,7 +77,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
         "Since 1 mile and 5280 feet are the same distance, the fraction $\\frac{5280\\ \\text{feet}}{1\\ \\text{mile}}$ equals 1. A fraction like this is called a conversion factor. Multiplying by it changes the unit but not the amount. When the same unit appears once on top of a fraction and once on the bottom, the two cancel, just like a number that appears on top and bottom. The units left over are the answer's unit.",
       terms: ["conversion-factor", "rate"],
       senses: r1Senses,
-      noLink: r1NoLink,
+      noLink: r1NoLink.filter((w) => !["unit", "units"].includes(w)),
       method: [
         "Write the starting rate and each conversion factor as fractions, with their units.",
         "Cancel a unit that appears on the top of one fraction and the bottom of another.",
@@ -122,7 +122,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
         "A perfect square is something times itself: $(x + 3)^2 = (x + 3)(x + 3) = x^2 + 6x + 9$. So $x^2 + bx$ becomes a perfect square when you add half of $b$, squared: $\\left(\\frac{b}{2}\\right)^2$. For $x^2 + 6x$, half of 6 is 3 and $3^2 = 9$. An equation has two sides: the parts left and right of the equals sign. Adding a number other than 0 to only one side would make the sides unequal, so add it to both sides.",
       terms: ["perfect-square-trinomial", "completing-the-square"],
       senses: r1Senses,
-      noLink: r1NoLink,
+      noLink: r1NoLink.filter((w) => !["changes"].includes(w)),
       method: [
         "Move the number with no $x$ to the right side.",
         "Add $\\left(\\frac{b}{2}\\right)^2$, half the $x$ coefficient squared, to both sides.",

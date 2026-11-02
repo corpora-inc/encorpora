@@ -141,7 +141,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the fact that makes a parallelogram a rhombus or a rectangle, or find a trapezoid angle from expressions.",
     intuition:
       "Parallel means running the same direction without ever meeting. A parallelogram is a quadrilateral, a four-sided shape, with two pairs of parallel sides. A rhombus is a parallelogram with four equal sides. A rectangle is a parallelogram with four right angles, the square corners of 90°. Perpendicular means meeting at a right angle. A diagonal is a segment joining opposite corners. To bisect means to cut into two equal halves. Every parallelogram has equal opposite sides and equal opposite angles, and its diagonals bisect each other. To prove a fact means to show it must be true. Because every parallelogram has these facts, they prove nothing special. A trapezoid is a four-sided shape with exactly one pair of parallel sides. Its other two sides are called legs. The two angles along one leg add to 180°, because the leg crosses two parallel lines.",
-    senses: { side: "side", sides: "side", square: "square-shape" },
+    senses: { sides: "side", square: "square-shape" },
     noLink: ["opposite"],
     terms: ["supplementary", "trapezoid"],
     method: [
@@ -214,7 +214,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
       side: "side",
       sides: "side",
       degree: "degree-angle",
-      base: "base-shape",
+      base: "base-flat-shape",
       unit: "unit",
     },
     noLink: ["opposite", "mode"],

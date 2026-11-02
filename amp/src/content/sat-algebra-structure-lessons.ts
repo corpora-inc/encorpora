@@ -137,7 +137,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
       "A rate is an amount per unit of time. A painter who finishes a fence in 4 hours paints $\\frac{1}{4}$ of it each hour. Rates working together add, and a rate working against another subtracts. Times for sharing one job do not combine like that, so change them into rates or totals first. The concentration of a mixture is the amount of pure substance divided by the total amount.",
     terms: ["rate", "concentration", "average-speed"],
     senses: { ...satSenses, average: "mean-average" },
-    noLink: satNoLink.filter((w) => !["average"].includes(w)),
+    noLink: satNoLink.filter((w) => !["average", "unit"].includes(w)),
     method: [
       "Name what is measured. Write each given as an amount per unit of time, or as an amount of the pure substance.",
       "Combine. Add rates working together and subtract a rate working against. For a mixture, add the amounts of pure substance. For a trip, add the distances and add the times.",
@@ -153,7 +153,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
       "The absolute value $|E|$ is how far $E$ is from 0, so it is never negative: $|-3| = 3$. The sign $<$ means less than and $>$ means greater than. So $|E| < 7$ means $E$ is less than 7 away from 0, between $-7$ and $7$. And $|E| > 7$ means $E$ is more than 7 away: below $-7$ or above $7$. A compound inequality joins two conditions. “And” means both are true. “Or” means at least one is true.",
     terms: ["absolute-value", "compound-inequality"],
     senses: satSenses,
-    noLink: satNoLink,
+    noLink: satNoLink.filter((w) => !["more than"].includes(w)),
     method: [
       "For $|E| < c$ with $c > 0$, write $-c < E < c$. For $|E| > c$, write $E < -c$ or $E > c$.",
       "Solve every part the same way. Flip the inequality sign, which means turn $<$ into $>$ or $>$ into $<$, whenever you multiply or divide by a negative number.",
@@ -168,8 +168,8 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
     intuition:
       "A rule like $y = ax^2 + bx + c$, with $a \\ne 0$, is called a quadratic. It has three unknown numbers, so it usually takes three facts that fit together to fix it. Its graph is a U-shaped curve called a parabola. A zero is an $x$-value where $y = 0$. Two zeros $p$ and $q$ give the form $y = a(x - p)(x - q)$. The vertex is the turning point; a vertex $(h, k)$ gives $y = a(x - h)^2 + k$. One more point, other than the zeros or the vertex, then fixes $a$, which sets how steep and which way up the curve is.",
     terms: ["zero-of-a-function", "vertex-parabola", "second-difference"],
-    senses: { ...satSenses, rule: "rule", opposite: "opposite-number" },
-    noLink: satNoLink.filter((w) => !["opposite", "rule"].includes(w)),
+    senses: { ...satSenses, rule: "rule" },
+    noLink: satNoLink.filter((w) => !["rule", "change"].includes(w)),
     method: [
       "Choose the form that fits the facts: $y = a(x - p)(x - q)$ for zeros $p$ and $q$, $y = a(x - h)^2 + k$ for vertex $(h, k)$, or $y = ax^2 + bx + c$ for a table or points.",
       "For factored form (the form $a(x - p)(x - q)$) or vertex form (the form $a(x - h)^2 + k$), put the extra point into it and solve for $a$. For a table with equal steps $h$, use $a = \\frac{\\text{second difference}}{2h^2}$.",

@@ -239,15 +239,7 @@ const entries: WorkEntry[] = [
       product: "product-multiply",
       squared: "square-number",
     },
-    noLink: [
-      "factor",
-      "factors",
-      "opposite",
-      "part",
-      "parts",
-      "rule",
-      "leaves",
-    ],
+    noLink: ["opposite", "part", "parts", "rule", "leaves"],
   },
 ];
 

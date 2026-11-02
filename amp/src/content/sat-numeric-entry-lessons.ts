@@ -157,7 +157,6 @@ const entries: Entry[] = [
       term: "term-expression",
       terms: "term-expression",
     },
-    noLink: ["factor", "factors"],
     title: "Enter a quadratic solution",
     goal: "Factor the quadratic, set each factor to 0, then choose the solution described: the greater, the positive or the only one.",
     summary:

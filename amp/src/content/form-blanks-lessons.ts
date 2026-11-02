@@ -136,7 +136,7 @@ const entries: FormatLessonEntry[] = [
     ],
     parentGuide:
       "Try a value on each side of the boundary in the original inequality to see which side is true.",
-    senses: { side: "side-of-equation", term: "term-expression", rule: "rule" },
+    senses: { side: "side-of-equation", term: "term-expression" },
     noLink: ["change", "changes", "part"],
   },
   {
@@ -237,7 +237,7 @@ const entries: FormatLessonEntry[] = [
     parentGuide:
       "Work out the amount after one year and compare it with the starting amount to see the percent change.",
     senses: { base: "base-exponent", model: "model" },
-    noLink: ["change", "period", "population", "changes"],
+    noLink: ["period", "population", "changes"],
   },
   {
     id: "circle-estimate-blanks",

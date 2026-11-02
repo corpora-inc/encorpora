@@ -81,7 +81,7 @@ export const systemLineChoiceMethods: Record<string, ProblemMethod> = {
   "table-standard-form": {
     goal: "Write a line from a table with uneven or fraction inputs in standard form, or shift its rule up or down.",
     senses: tableSenses,
-    noLink,
+    noLink: noLink.filter((w) => !["change", "changes"].includes(w)),
     intuition:
       "A table lists inputs $x$ and the outputs $y$ that go with them. For a line, the change in $y$ divided by the change in $x$ between two columns is called the slope. That is true however far apart the inputs are. If the inputs jump unevenly, read the real change in $x$. Standard form writes a line as $Ax + By = C$, with integers (whole numbers or their negatives) and both letters on the left.",
     terms: [

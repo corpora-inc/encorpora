@@ -73,7 +73,7 @@ export const regentsAlgebraOneLinearMethods: Record<string, ProblemMethod> = {
   "point-slope-two-points": {
     goal: "Find the slope from two points, then write the line as $y - y_1 = m(x - x_1)$ using one of the points.",
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["change"].includes(w)),
     intuition:
       "A point is written $(x, y)$: across, then up. The slope $m$ of a line is its steepness: the change in $y$ divided by the change in $x$ between two points. The form $y - y_1 = m(x - x_1)$ is called point-slope form. Here $(x_1, y_1)$ is one known point; the small 1 just marks it.",
     terms: ["slope", "point-slope-form"],

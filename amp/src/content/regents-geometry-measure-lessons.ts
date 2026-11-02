@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
@@ -68,7 +69,7 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
   },
   "geo-ring-area": {
     goal: "Find the area between two circles with the same center by subtracting the inner circle from the outer circle.",
-    senses: GEO_SENSES,
+    senses: sensesWithout(GEO_SENSES, "edge", "side"),
     noLink: GEO_NOLINK,
     intuition:
       "A ring is the flat region between two circles with the same center. A walkway around a round pool is a ring: the big circle with the pool cut out. A circle's area is $\\pi r^2$, where $r$ is its radius, the distance from the center to the circle. The big circle's radius is the pool's radius plus the walkway's width, because the walkway reaches out the same distance on every side.",
@@ -90,7 +91,7 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
   "geo-sphere-diameter": {
     goal: "Solve the sphere volume formula backward for the radius, then report the radius or the diameter.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["factor", "square"].includes(w)),
     intuition:
       "A sphere is a ball shape. Its radius $r$ is the distance from its center to its surface, and its diameter is twice that. The volume formula $V=\\frac43\\pi r^3$ turns a radius into a volume, where $r^3$ means $r\\times r\\times r$. To go backward, undo each step in reverse order. Divide by $\\frac43\\pi$, then take the cube root: the number that, used three times as a factor, gives the result.",
     terms: ["cube-root", "diameter"],
@@ -119,7 +120,7 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
   },
   "geo-sas-triangle-area": {
     goal: "Use two sides and the angle between them to find the area, including for an obtuse angle.",
-    senses: GEO_SENSES,
+    senses: { ...GEO_SENSES, base: "base-flat-shape" },
     noLink: GEO_NOLINK,
     intuition:
       "A triangle's area is half its base times its height, where the height is measured straight up from the base, at a right angle (a square corner). Suppose you know two sides, $a$ and $b$, and the angle $C$ between them. Then the height to side $a$ is $b\\sin C$: side $b$ times the sine of the angle, a number a calculator gives. When $C$ is acute (under $90^\\circ$), the height and side $b$ form a right triangle with side $b$ as its longest side. Sine is the side opposite $C$ divided by that longest side, so the height is $b\\sin C$. When $C$ is obtuse (over $90^\\circ$), the height falls outside the triangle and the right triangle uses the angle $180^\\circ-C$. Its sine equals $\\sin C$, so the height is still $b\\sin C$. So the area is $\\frac12ab\\sin C$, and no separate height is needed.",
@@ -134,7 +135,7 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
   },
   "geo-isosceles-trig": {
     goal: "Split an isosceles triangle into two right triangles and use trigonometry to find a perimeter or a base angle.",
-    senses: GEO_SENSES,
+    senses: { ...GEO_SENSES, base: "base-flat-shape" },
     noLink: GEO_NOLINK,
     intuition:
       "An isosceles triangle has two equal sides. They meet at the apex, and the angle there is the apex angle. The third side is the base. The altitude is the line from the apex straight down to the base, meeting it at a right angle, a square corner. It splits the triangle into two matching right triangles. It halves the apex angle and halves the base. In each right triangle, the altitude and half the base are the legs, and an equal side is the hypotenuse. Tangent is the ratio of the leg across from an angle to the leg beside it.",
@@ -157,7 +158,7 @@ export const regentsGeometryMeasureMethods: Record<string, ProblemMethod> = {
   "geo-volume-context": {
     goal: "Turn dimensions into a decimal volume, then apply a density or load size and round appropriately.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["square"].includes(w)),
     intuition:
       "Volume is how much space a solid fills. It is counted in cubic units, the cubes 1 unit long, wide and tall, such as cubic feet. A prism has two matching flat ends joined by flat sides. A pyramid narrows from a flat base to a point, and a cone does the same from a circle. Density is weight or mass per unit of volume, such as pounds per cubic foot. So multiply the volume by the density to get the weight. A load size is how much one trip carries, so divide the volume by it to count the trips. The units decide which to do: pounds per cubic foot times cubic feet gives pounds.",
     terms: ["density", "composite-figure"],

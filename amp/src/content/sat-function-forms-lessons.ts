@@ -7,6 +7,8 @@ const entry =
 
 type Entry = {
   id: string;
+  /** Shared noLink words its template's hints use mathematically ("the factor 7"). */
+  linked?: string[];
   title: string;
   /** The practice task, when the summary is longer than a goal line. */
   goal?: string;
@@ -28,6 +30,7 @@ type Entry = {
 const entries: Entry[] = [
   {
     id: "sat-entry-fn-linear-notation",
+    linked: ["factor", "rule"],
     title: "Linear functions in function notation",
     goal: "Read $f(a)$ as the output for input $a$: put $a$ in to find it, or set $f(x)$ equal to a value and solve for the input.",
     summary:
@@ -77,6 +80,7 @@ const entries: Entry[] = [
   },
   {
     id: "sat-fn-line-equation-choice",
+    linked: ["change"],
     title: "Choose a line's equation from its slope and a point",
     goal: "Choose the equation $y = mx + b$ of a line from its slope $m$ and one point on it.",
     summary:
@@ -175,6 +179,7 @@ const entries: Entry[] = [
   },
   {
     id: "sat-fn-exponential-choice",
+    linked: ["change"],
     title: "Choose an exponential model",
     goal: "Choose an exponential model: find the number the amount is multiplied by each time, then write start times that number to a power.",
     summary:
@@ -227,6 +232,7 @@ const entries: Entry[] = [
   },
   {
     id: "sat-entry-fn-exponential",
+    linked: ["factor"],
     title: "Enter an exponential value",
     goal: "Undo repeated multiplying by dividing, or find the growth factor with a root, then use it once more.",
     summary:
@@ -277,6 +283,7 @@ const entries: Entry[] = [
   },
   {
     id: "sat-entry-fn-related-value",
+    linked: ["factor"],
     title: "Enter the value of a related expression",
     goal: "Find the value of an expression like $3x + 4y$ by spotting it inside the equation, without solving for each letter.",
     summary:
@@ -369,7 +376,7 @@ const noLink = [
 const stripFormat = (e: Entry): ProblemMethod => ({
   goal: e.goal ?? e.summary,
   senses,
-  noLink,
+  noLink: noLink.filter((w) => !(e.linked ?? []).includes(w)),
   intuition: e.intuition,
   terms: e.terms,
   method: e.method,

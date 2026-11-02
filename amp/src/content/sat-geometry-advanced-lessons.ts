@@ -1,3 +1,4 @@
+import { sensesWithout } from "../glossary/senses";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -84,7 +85,10 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
   "angle-chase-chain": {
     goal: "Combine vertical angles, a triangle angle sum and angles made by parallel lines to find one angle.",
     senses: GEO_SENSES,
-    noLink: [...GEO_NOLINK, "corresponding angle"],
+    noLink: [
+      ...GEO_NOLINK.filter((w) => !["more than"].includes(w)),
+      "corresponding angle",
+    ],
     intuition:
       "Each angle fact gives one angle from another. Vertical angles are the angles across from each other at a crossing, and they are equal. Angles along a straight line add to $180^\\circ$. Parallel lines are lines that never meet. When a line crosses two of them, it makes angles at two crossings. Corresponding angles are the angles in matching spots at the two crossings, and they are equal. Its same-side interior angles, between the parallel lines on one side of the crossing line, add to $180^\\circ$. The angles of a triangle add to $180^\\circ$. A chain uses several of these in a row.",
     terms: ["same-side-interior-angles", "corresponding-angles"],
@@ -98,8 +102,8 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
   },
   "angle-claim-reasoning": {
     goal: "Decide which angle measure is possible, how two angles compare, or which expression cannot be an angle sum.",
-    senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    senses: sensesWithout(GEO_SENSES, "side"),
+    noLink: GEO_NOLINK.filter((w) => !["more than"].includes(w)),
     intuition:
       "Some angle questions have a set of possible values rather than one answer. Every angle of a triangle is more than $0^\\circ$, and the three add to $180^\\circ$. So each angle is less than $180^\\circ$ minus any other angle. Two crossing lines make at most two sizes of angle: a given angle and its supplement, the angle that adds with it to $180^\\circ$.",
     terms: ["supplementary"],
@@ -145,7 +149,9 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
   "radical-side-entry": {
     goal: "Find a hypotenuse in simplest radical form and report its radicand or coefficient, or find a leg of a decimal right triangle.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter(
+      (w) => !["factor", "root", "square", "squares"].includes(w),
+    ),
     intuition:
       "In a right triangle, the two sides that form the square corner are the legs, and the longest side is the hypotenuse. The Pythagorean theorem is the rule $a^2+b^2=c^2$, where $c$ is the hypotenuse. It often gives a hypotenuse that is not a whole number, written with a root sign. Simplest radical form is the way of writing a root as $m\\sqrt{n}$, with the largest perfect square, a whole number times itself, taken out: $\\sqrt{72}=\\sqrt{36\\cdot2}=6\\sqrt2$.",
     terms: ["radicand", "simplest-radical-form"],
@@ -160,7 +166,7 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
   "special-triangle-in-figure": {
     goal: "Recognize a 45-45-90 or 30-60-90 triangle in a figure and use its side ratios.",
     senses: GEO_SENSES,
-    noLink: GEO_NOLINK,
+    noLink: GEO_NOLINK.filter((w) => !["opposite side"].includes(w)),
     intuition:
       "Two kinds of right triangle have fixed side ratios. A triangle with angles $45^\\circ$, $45^\\circ$ and $90^\\circ$ has equal legs, and its longest side is a leg times $\\sqrt{2}$. A triangle with angles $30^\\circ$, $60^\\circ$ and $90^\\circ$ has legs in the ratio $1:\\sqrt{3}$, and its longest side is twice the shorter leg. A square cut along a diagonal makes the first kind. An equilateral triangle, with three equal sides, cut by its altitude (the segment from a corner that meets the opposite side at a right angle) makes the second.",
     terms: [

@@ -148,7 +148,7 @@ const specs: SelectContentSpec[] = [
       "Does not assess drawing lines, naming lines, or lines that cross at other angles.",
     facet: "lines-symmetry.lines-angles",
     senses: { quarter: "fourth" },
-    noLink: ["edge", "opposite", "square"],
+    noLink: ["edge", "opposite"],
   },
   {
     id: "angle-kind-select",

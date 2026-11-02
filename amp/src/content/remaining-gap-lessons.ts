@@ -31,7 +31,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "A model is an equation that stands for a real situation. A variable is a letter for a quantity that can vary, measured in a unit such as hours or dollars. The quantity you choose is the independent quantity. The quantity that results from it is the dependent quantity. A rate, such as 6 dollars per hour, says how much the dependent quantity changes for each one unit of the independent quantity.",
     senses: { model: "model", unit: "unit" },
-    noLink: ["change", "changes", "sort", "leaves"],
+    noLink: ["changes", "sort", "leaves"],
     terms: ["independent-variable", "dependent-variable", "rate"],
     method: [
       "Find the quantity the model predicts. It responds to the other one, so it is the dependent quantity.",

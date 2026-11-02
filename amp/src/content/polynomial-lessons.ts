@@ -88,7 +88,7 @@ export const polynomialMethods: Record<string, ProblemMethod> = {
     intuition: `${intuitionBase} A minus sign in front of a bracket subtracts everything inside it. So it changes the sign of every term inside: $-(x^2 - 3x + 2) = -x^2 + 3x - 2$. The opposite of a number is the same size with the other sign.`,
     terms,
     senses,
-    noLink,
+    noLink: noLink.filter((w) => !["opposite"].includes(w)),
     method: [
       "Rewrite the subtraction as adding the opposite of the second polynomial.",
       "Change the sign of every term in the second polynomial, including its constant (the number with no $x$).",
