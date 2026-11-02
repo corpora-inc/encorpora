@@ -132,12 +132,11 @@ try {
       process.stdout.write(`${Math.min(start + chunk, pass.list.length)} `);
     }
   // Results-page labels: every printable problem type's label in the
-  // narrowest results tile: four columns on A4, the narrowest paper. (The
-  // densities after it pad tiles less, and printing smaller keeps the line
-  // breaks.)
+  // narrowest results tile: four columns on Letter. (The densities after it
+  // pad tiles less, and printing smaller keeps the line breaks.)
   const labelPage = await browser.newPage();
   await labelPage.setContent(
-    resultsProofHtml([largestResultsSpec(7)], { level: 7, paper: "a4" }),
+    resultsProofHtml([largestResultsSpec(7)], { level: 7, paper: "letter" }),
     { waitUntil: "load" },
   );
   await waitForWorkbookLayout(labelPage);

@@ -1,6 +1,6 @@
 # Workbooks
 
-A workbook is a printable document of about 30, 45 or 60 minutes of work, chosen for one learner from their practice evidence. Parents print as many or as few as they like: every roll is a different workbook at the learner's level, and they never run out. Parents can mix and match areas, the level and whether a lesson is included. The layout and structure are the same at every level; only the problems change. Issue [#1776](https://github.com/corpora-inc/encorpora/issues/1776) tracks the feature. Parent entry points stay off until release: `workbooksEnabled` in `src/web/features/workbooks/config.ts` is the one switch. The routes work by URL either way.
+A workbook is a printable document of about 30, 45 or 60 minutes of work, chosen for one learner from their practice evidence. Parents print as many or as few as they like: every roll is a different workbook at the learner's level, and they never run out. Parents can mix and match areas, the level and whether a lesson is included. The layout and structure are the same at every level; only the problems change. Issue [#1776](https://github.com/corpora-inc/encorpora/issues/1776) tracks the feature. Parents reach workbooks from Family → Learners; `workbooksEnabled` in `src/web/features/workbooks/config.ts` switches those entry points off again if needed. The routes work by URL either way.
 
 ## Structure
 
@@ -74,7 +74,7 @@ A stored spec never changes when evidence changes later; the next number is comp
 
 Results come back from paper through `/learners/:id/workbooks/:workbookId/results`. The QR code on a workbook's results page links there; parents can also reach it with "Enter results" on the workbook or in history, or by typing the printed code in history.
 
-Rows on the printed results page and on the screen are named by the problem type's authored title (`resultLabel`, `src/workbook/result-labels.ts`). A title longer than two lines in the narrowest results tile (four columns on A4) uses a short authored label from that file; `npm run workbook:audit` measures every label.
+Rows on the printed results page and on the screen are named by the problem type's authored title (`resultLabel`, `src/workbook/result-labels.ts`). A title longer than two lines in the narrowest results tile (four columns on Letter) uses a short authored label from that file; `npm run workbook:audit` measures every label.
 
 The screen has one row per problem.
 - **Typed answers.** Numbers and fractions can be typed, and printed choices picked by letter. The app's exact grader checks them (`gradeAnswer`), and they count as independent attempts.
@@ -100,7 +100,7 @@ The weights are in [adaptive evidence](adaptive-evidence.md).
 
 - `/learners/:id/workbooks/:date` (today): length, paper size, level and today's idea as segmented controls, areas as one row of chips that scrolls sideways (so loading them never moves anything), Download and Roll another. Changing a level, area or today's idea rolls a new workbook with that choice. Length, paper, number and choices live in the URL (`?minutes=&paper=&number=&areas=&lean=&lesson=off`), so Back, reload and shared links restore the screen. A stored workbook keeps its own choices, and the URL follows them. Opening it makes today's first workbook, from the starting estimate when the learner has no answers yet. Other dates list that day's workbooks.
 - `/learners/:id/workbooks`: every workbook, newest first, each downloadable again.
-- Family → Learners shows "Make a workbook" and "Past workbooks" when `workbooksEnabled` is on and the learner can practice.
+- Family → Learners shows "Make a workbook" and "Past workbooks" when the learner can practice (and `workbooksEnabled` is on).
 
 `npm run test:workbooks-ui` runs the real routes (in memory) in Chromium at 320, 390, 768 and 1280 px, light and dark: overflow, touch targets, controls that never move while workbooks load, change, fail or download, Back and reload, and the unlicensed state. Screenshots: `docs/reviews/workbooks/`.
 

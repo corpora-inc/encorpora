@@ -23,9 +23,18 @@ function renderEntry(props: Parameters<typeof WorkbookEntry>[0]) {
   return render(<RouterProvider router={router} />);
 }
 
-test("entry points stay hidden until the release flag is turned on", () => {
-  expect(workbooksEnabled).toBe(false);
-  const { container } = render(<WorkbookEntry learner={learner} />);
+test("daily workbooks are released: the entry shows by default", async () => {
+  expect(workbooksEnabled).toBe(true);
+  renderEntry({ learner });
+  expect(
+    await screen.findByRole("link", { name: "Download today's workbook" }),
+  ).toBeTruthy();
+});
+
+test("with the release flag off, the entry stays hidden", () => {
+  const { container } = render(
+    <WorkbookEntry learner={learner} enabled={false} />,
+  );
   expect(container.innerHTML).toBe("");
 });
 
