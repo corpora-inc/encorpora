@@ -1,3 +1,4 @@
+import { count as plural } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -92,8 +93,6 @@ function pick<T>(r: Random, items: readonly T[], count: number): T[] {
   }
   return pool.slice(0, count);
 }
-const plural = (n: number, one: string, many = `${one}s`) =>
-  `${n} ${n === 1 ? one : many}`;
 
 const shapeNames: Record<ShapeKind, [string, string]> = {
   circle: ["circle", "circles"],

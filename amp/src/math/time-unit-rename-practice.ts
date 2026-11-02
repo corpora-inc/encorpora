@@ -112,8 +112,9 @@ export const timeUnitRenameFamily = chainFamily({
         answer: String(total),
         hint: `There are 60 minutes in each hour. Rename the ${n} ${n === 1 ? "hour" : "hours"} as minutes first, then add the ${m.extra} minutes.`,
         explanation: [
+          `The question asks for minutes, so write the hours as minutes too. Then everything is in one unit.`,
           `One hour is 60 minutes, so ${n} ${n === 1 ? "hour is" : "hours are"} $${n}\\times60=${60 * n}$ minutes.`,
-          `Add the extra minutes: $${60 * n}+${m.extra}=${total}$.`,
+          `The movie also lasts ${m.extra} more minutes, so add them: $${60 * n}+${m.extra}=${total}$.`,
           `The movie is ${total} minutes long.`,
         ],
         label: "Answer (minutes)",
@@ -127,6 +128,7 @@ export const timeUnitRenameFamily = chainFamily({
         hint: `There are ${p.per} ${p.small} in 1 ${p.bigOne}. You have ${n} ${p.big}, which is ${n} groups of ${p.per}.`,
         explanation: [
           `Each ${p.bigOne} is ${p.per} ${p.small}.`,
+          `${p.small[0]!.toUpperCase()}${p.small.slice(1)} are the smaller unit, so there are more of them. Multiply.`,
           `${n} ${p.big} is ${n} groups of ${p.per}: $${n}\\times${p.per}=${total}$.`,
           `${n} ${p.big} is ${total} ${p.small}.`,
         ],
@@ -139,7 +141,8 @@ export const timeUnitRenameFamily = chainFamily({
       answer: String(n),
       hint: `There are ${p.per} ${p.small} in 1 ${p.bigOne}. Find how many groups of ${p.per} fit into ${total}.`,
       explanation: [
-        `Each ${p.bigOne} is ${p.per} ${p.small}, so the number of ${p.big} is the number of groups of ${p.per} in ${total}.`,
+        `Each ${p.bigOne} is ${p.per} ${p.small}.`,
+        `${p.big[0]!.toUpperCase()}${p.big.slice(1)} are the bigger unit, so there are fewer of them. Count the groups of ${p.per} in ${total} by dividing.`,
         `$${total}\\div${p.per}=${n}$, because $${n}\\times${p.per}=${total}$.`,
         `${total} ${p.small} is ${n} ${p.big}.`,
       ],

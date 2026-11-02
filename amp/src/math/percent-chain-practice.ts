@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import {
@@ -184,7 +185,7 @@ const percentChain = chainFamily({
       return numberSurface({
         prompt: `A club's fee rose ${first}% in the first year. In the second year the new fee rose ${second}%. The fee after two years equals the original fee times one number. What is that number? Enter it as a decimal.`,
         answer: total,
-        hint: `Each increase multiplies the current amount by 1 plus its rate as a decimal. Start with the first year: a ${first}% rise multiplies by ${factor(first)}.`,
+        hint: `Each increase multiplies the current amount by 1 plus its rate as a decimal. Start with the first year: ${article(first)} ${first}% rise multiplies by ${factor(first)}.`,
         explanation: [
           `A rise of ${first}% keeps the whole fee and adds ${first}% of it. That is 100% + ${first}%, so it multiplies the fee by $${factor(first)}$.`,
           `The second rise of ${second}% is taken of the new fee, so it multiplies the new fee by $${factor(second)}$.`,

@@ -1,3 +1,4 @@
+import { article } from "../../agreement";
 import { z } from "zod";
 import { base, num as zNum } from "../base";
 import { registerComponent, type Prim } from "../layout";
@@ -269,6 +270,6 @@ registerComponent("solid", {
     const n = s.base.points.length;
     return s.type === "prism"
       ? `A solid with ${n + 2} flat faces: two ${n}-sided ends and ${n} rectangular sides. Hidden edges are dashed.`
-      : `A solid with a ${n}-sided base and ${n} triangular faces meeting at a point. Hidden edges are dashed.`;
+      : `A solid with ${article(n)} ${n}-sided base and ${n} triangular faces meeting at a point. Hidden edges are dashed.`;
   },
 });

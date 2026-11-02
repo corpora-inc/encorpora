@@ -119,6 +119,38 @@ def review_circle_fixtures():
               'explanation': ['A diameter is twice the radius. Divide by 2: $r = 10 \\div 2 = 5$ cm.', 'Square the radius: $5 \\times 5 = 25$.',
                               'Replace $\\pi$ with 3.14: $A \\approx 3.14 \\times 25 = 78.5$ square centimeters.']}
     require(check_approximate_problem(worked) == Fraction('78.5'), 'Approximate worked fixture mismatch')
+    summarized = copy.deepcopy(worked)
+    summarized['explanation'].append('The area is about 78.5 square centimeters.')
+    require(check_approximate_problem(summarized) == Fraction('78.5'),
+            'An accurate verbal area may follow the calculation')
+    for extra in (
+        r'Another calculation: $A \approx 3.14 \times 25 = 79$.',
+        r'Another calculation: $A \approx 3.14 \times 24 = 78.5$.',
+        r'Another calculation: $A \approx 3.14 \times 25 = 78.5$.',
+        r'Another calculation: $A \approx 3.14 \times 25 = 78.5 + 1$.',
+        r'Another calculation: $A \approx 3.14 \times 25 = -78.5$.',
+        r'Another calculation: $A \approx 3.14 \times 25 = 78.5e1$.',
+        r'Another calculation: $A \approx 3.14 \times 25 = 78.5',
+        'The area is about 79 square centimeters.',
+        'The area is about -78.5 square centimeters.',
+        'The area is about 78.5e1 square centimeters.',
+        'The area is about 78.5 centimeters.',
+    ):
+        altered = copy.deepcopy(summarized)
+        altered['explanation'].append(extra)
+        try:
+            check_approximate_problem(altered)
+        except ValueError:
+            continue
+        raise ValueError('A correct earlier area claim masked a corrupted or duplicate later claim')
+    missing_product = copy.deepcopy(summarized)
+    missing_product['explanation'].pop(2)
+    try:
+        check_approximate_problem(missing_product)
+    except ValueError:
+        pass
+    else:
+        raise ValueError('A verbal area cannot replace the checked calculation')
     for change in (lambda w: w.__setitem__('answer', '79'), lambda w: w['explanation'].__setitem__(1, 'Square the radius: $5 \\times 5 = 24$.'),
                    lambda w: w['explanation'].__setitem__(2, 'Replace $\\pi$ with 3.14: $A \\approx 3.14 \\times 25 = 78$ square centimeters.'),
                    lambda w: w['public'].__setitem__('answer', '78.5'), lambda w: w.__setitem__('hint', ' ')):
@@ -219,9 +251,21 @@ def check_approximate_problem(problem):
     squares = re.findall(r'\$(\d+) \\times (\d+) = (\d+)\$', ' '.join(steps))
     require(squares and all(int(a) == int(b) == radius and int(a) * int(b) == int(c) for a, b, c in squares),
             'False radius square in an approximate area')
-    products = re.findall(r'\$A \\approx 3\.14 \\times (\d+) = ([\d.]+)\$', steps[-1])
-    require(len(products) == 1 and int(products[0][0]) == radius * radius and Fraction(products[0][1]) == answer,
-            'False 3.14 product in an approximate area')
+    products = []
+    for step in steps:
+        require(step.count('$') % 2 == 0, 'Unbalanced approximate-area math delimiters')
+        for math in re.findall(r'\$([^$]+)\$', step):
+            if re.search(r'\bA\s*\\approx', math) or re.search(r'3\.14\s*\\times', math):
+                product = re.fullmatch(r'A \\approx 3\.14 \\times (\d+) = (\d+(?:\.\d+)?)', math)
+                require(product is not None, 'Malformed 3.14 product in an approximate area')
+                require(int(product[1]) == radius * radius and Fraction(product[2]) == answer,
+                        'False 3.14 product in an approximate area')
+                products.append(product)
+        if re.search(r'\barea is about\b', step):
+            verbal = re.fullmatch(r'The area is about (\d+(?:\.\d+)?) square centimeters\.', step)
+            require(verbal is not None and Fraction(verbal[1]) == answer,
+                    'False verbal quantity or units in an approximate area')
+    require(len(products) == 1, 'Missing or duplicate 3.14 product in an approximate area')
     return answer
 
 
@@ -456,7 +500,14 @@ def review_circle_content():
             if 'Use 3.14' in problem['public']['prompt']:
                 # The pi-3-14 surface of the area family: numeric, decimal, not a coefficient.
                 require(template == 'circle-area-coefficient', 'Only the area family uses 3.14')
-                check_approximate_problem(problem); approximate += 1
+                try:
+                    check_approximate_problem(problem)
+                except ValueError as error:
+                    public = problem['public']
+                    raise ValueError(f'Approximate circle {template} seed={public["seed"]!r} '
+                                     f'prompt={public["prompt"]!r}: {error}; '
+                                     f'explanation={problem["explanation"]!r}') from error
+                approximate += 1
                 continue
             parsed, answer = check_problem(problem); values[template].append((*parsed[1:], answer))
         elif record['kind'] == 'circle-measurement-worksheet':

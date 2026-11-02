@@ -2588,6 +2588,23 @@ const families: Family[] = [
   coordinateProofFamily,
   measurementFamily,
 ];
+/** Plain openings for families whose variants start straight in on the
+ * computation; the idea and its terms come first (issue #1781). */
+const OPENERS: Record<string, string> = {
+  "inscribed-polygon-reasoning":
+    "An inscribed polygon has every corner on a circle. A central angle has its vertex at the circle's center, and a full turn is $360^\\circ$.",
+  "triangle-circle-centers":
+    "A polygon is inscribed in a circle when every corner lies on the circle. A circle is inscribed in a polygon when it touches every side from inside.",
+  "tangent-circle-computation":
+    "A tangent is a line that touches a circle at exactly one point, the point of tangency.",
+  "circle-dilation-scaling":
+    "A dilation resizes a figure: every length is multiplied by the scale factor. The image of a circle is another circle.",
+  "coordinate-quadrilateral-claims":
+    "A vector such as $\\langle 2,1\\rangle$ is a move: 2 across and 1 up. Equal vectors on opposite sides make those sides parallel and equal. A dot product of 0 means a right angle.",
+  "measurement-formula-justifications":
+    "A formula is justified when each part of it comes from a fact already known, such as a shape cut into simpler pieces.",
+};
+
 export const proofConstructionTemplates: readonly TemplateMetadata[] =
   families.map((f) => ({
     ...f.meta,
@@ -2624,7 +2641,9 @@ export function proofConstructionCase(id: string, seed: string) {
         { label: v.correct, correct: true as const },
         ...chosen.map(([label, feedback]) => ({ label, feedback })),
       ],
-      explanation: v.explanation,
+      explanation: OPENERS[id]
+        ? [OPENERS[id], ...v.explanation]
+        : v.explanation,
       hint: v.hint,
       tags: [v.tag],
       ...(v.scene ? { scene: v.scene } : {}),

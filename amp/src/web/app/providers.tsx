@@ -3,16 +3,37 @@ import { NativeGate } from "../NativeGate";
 import { nativeRuntime } from "../native-runtime";
 import { Toast } from "../ui/Toast";
 import { AppError } from "../lib/AppError";
+import { clearInitialConsentChallenge } from "../consent-entry";
+import {
+  clearOwnedPurchaseReturn,
+  clearPurchaseReturn,
+} from "../purchase-return";
 import { clearOnboardingDraft } from "../features/onboarding/state";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
 import { onSessionChanged, type AuthSession } from "../auth";
 import { meKey, meOptions, queryClient, sessionOptions } from "../lib/query";
-export function Providers({ children }: { children: ReactNode }) {
-  const session = <SessionProviders>{children}</SessionProviders>;
+export function Providers({
+  children,
+  onAccountExit,
+}: {
+  children: ReactNode;
+  onAccountExit?: () => void;
+}) {
+  const session = (
+    <SessionProviders onAccountExit={onAccountExit}>
+      {children}
+    </SessionProviders>
+  );
   return nativeRuntime ? <NativeGate>{session}</NativeGate> : session;
 }
-function SessionProviders({ children }: { children: ReactNode }) {
+function SessionProviders({
+  children,
+  onAccountExit,
+}: {
+  children: ReactNode;
+  onAccountExit?: () => void;
+}) {
   const [error, setError] = useState("");
   const [identityVersion, setIdentityVersion] = useState(0);
   useEffect(() => {
@@ -47,6 +68,14 @@ function SessionProviders({ children }: { children: ReactNode }) {
         setAnalyticsSession(session);
         setError("");
         const previous = queryClient.getQueryData(sessionOptions.queryKey);
+        if (
+          !session ||
+          (previous?.accountId && previous.accountId !== session.accountId)
+        ) {
+          clearInitialConsentChallenge();
+          clearOwnedPurchaseReturn();
+          clearPurchaseReturn();
+        }
         if (previous?.accountId !== session?.accountId) {
           clearOnboardingDraft();
           setIdentityVersion((version) => version + 1);
@@ -58,6 +87,8 @@ function SessionProviders({ children }: { children: ReactNode }) {
         }
         void queryClient.cancelQueries({ queryKey: sessionOptions.queryKey });
         queryClient.setQueryData(sessionOptions.queryKey, session);
+        if (previous?.accountId && previous.accountId !== session?.accountId)
+          onAccountExit?.();
         if (session) {
           if (nativeRuntime)
             void queryClient.invalidateQueries({
@@ -80,7 +111,7 @@ function SessionProviders({ children }: { children: ReactNode }) {
       generation++;
       unsubscribe();
     };
-  }, []);
+  }, [onAccountExit]);
   return (
     <QueryClientProvider client={queryClient}>
       <Fragment key={identityVersion}>{children}</Fragment>

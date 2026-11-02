@@ -1,3 +1,4 @@
+import { count } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { numberLine } from "./scene/author";
 import { defineAxis } from "./variation/axes";
@@ -335,16 +336,18 @@ interface ChanceModel {
   correct: number;
   total: number;
 }
+/** "1 purple marble, 7 green marbles and 1 blue marble": each count names
+ * its own noun, so every count agrees with it. */
 const describe = (m: ChanceModel, c: Candidate) =>
-  m.device === "bag"
-    ? c.counts
-        .map((v, i) => `${v} ${m.colorsUsed[i]}`)
-        .join(", ")
-        .replace(/, ([^,]*)$/, " and $1") + " marbles"
-    : c.counts
-        .map((v, i) => `${v} ${m.colorsUsed[i]}`)
-        .join(", ")
-        .replace(/, ([^,]*)$/, " and $1") + " sections";
+  c.counts
+    .map((v, i) =>
+      count(
+        v,
+        `${m.colorsUsed[i]} ${m.device === "bag" ? "marble" : "section"}`,
+      ),
+    )
+    .join(", ")
+    .replace(/, ([^,]*)$/, " and $1");
 export const equalChance = chainFamily({
   template: equalChanceTemplate,
   axes: chanceAxes,

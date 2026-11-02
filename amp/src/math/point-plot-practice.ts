@@ -261,6 +261,7 @@ function plotPoints(seed: string): GeneratedProblem {
     grading: { mode: "exact" },
     hint: `A reflection across the $x$-axis keeps the horizontal position of $${name}$, $x = ${signed(p[0])}$, and lands the same distance from the axis on the other side. Decide which coordinate changes sign for each reflection.`,
     explanation: [
+      `A reflection is a flip over a line, like a mirror image. The image is the same distance from the line, on the other side.`,
       `A reflection across the $x$-axis keeps $x = ${signed(p[0])}$ and changes the sign of $y$: ${pointTex(p)} becomes ${pointTex(overX)}.`,
       `A reflection across the $y$-axis keeps $y = ${signed(p[1])}$ and changes the sign of $x$: ${pointTex(p)} becomes ${pointTex(overY)}.`,
       "Each image is the same distance from the mirror axis as the original point, on the opposite side.",
@@ -692,7 +693,8 @@ function placeTransformedImage(seed: string): GeneratedProblem {
       grading: { mode: "exact" },
       hint: motionHint(motion, names[0]!, vertices[0]!),
       explanation: [
-        `The coordinate rule is ${motionRule(motion)}.`,
+        `A transformation moves every point of a figure by the same rule; each moved point is its image, named with a prime mark ($${names[0]}'$).`,
+        `For this ${motionWords(motion).replace(/^(rotated|reflected|translated)/, (w) => ({ rotated: "rotation", reflected: "reflection", translated: "translation" })[w as "rotated"])}, the coordinate rule is ${motionRule(motion)}: apply it to each vertex.`,
         ...vertices.map(
           (p, i) =>
             `${pointTex(p, names[i])} maps to ${pointTex(image[i]!, primes[i])}.`,

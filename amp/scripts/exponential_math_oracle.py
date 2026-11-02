@@ -255,7 +255,7 @@ def model_value(prompt, public):
         value = start * (1 + pct) ** years
         require(value.denominator == 1, 'Whole result')
         return value
-    m = re.search(r'takes a (\d+) mg dose.*halves every (\d+) hours.*after (\d+) hours', prompt)
+    m = re.search(r'takes an? (\d+) mg dose.*halves every (\d+) hours.*after (\d+) hours', prompt)
     if m:
         dose, half, hours = int(m[1]), int(m[2]), int(m[3])
         require(hours % half == 0, 'Whole number of halvings')

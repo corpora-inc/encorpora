@@ -3,6 +3,8 @@ import { useLocation, useSearch } from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { useLearnerStore } from "../../learner-store";
 import { trialSessionOptions } from "../trial/api";
+import { nativeRuntime } from "../../native-runtime";
+import { useFamilyCache } from "../../lib/family-cache";
 
 /** Resolve presentation identity without loading progress or assessment evidence. */
 export function useCurriculumScope() {
@@ -11,10 +13,27 @@ export function useCurriculumScope() {
   const session = useQuery(sessionOptions);
   const me = useQuery({
     ...meOptions(session.data ?? { accountId: "", token: "" }),
-    enabled: !!session.data,
+    enabled: !nativeRuntime && !!session.data,
   });
-  const trial = useQuery(trialSessionOptions);
+  const trial = useQuery({ ...trialSessionOptions, enabled: !nativeRuntime });
+  const nativeFamily = useFamilyCache(
+    nativeRuntime ? (session.data?.accountId ?? null) : null,
+  );
   const selected = useLearnerStore((s) => s.learnerId);
+  if (nativeRuntime) {
+    // The Rust session owns native requests. Reuse the family snapshot loaded
+    // through that bridge, including LegacyApp's first-learner fallback.
+    const learners = nativeFamily?.learners.filter((l) => !l.deletedAt) ?? [];
+    const learner = learners.find((l) => l.id === selected) ?? learners[0];
+    const ready =
+      !!session.data && !!learner && !session.isPending && !session.error;
+    return {
+      scope: ready
+        ? `account:${session.data!.accountId}:${learner!.id}`
+        : "pending",
+      ready,
+    };
+  }
   return resolveCurriculumScope({
     pathname: location.pathname,
     trialContext: search.context === "trial",

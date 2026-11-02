@@ -1,3 +1,4 @@
+import { article, count } from "./agreement";
 import { act, f, graph, lessonStep, polyArea, step } from "./scene/author";
 import type { Scene } from "./scene/spec";
 
@@ -138,12 +139,12 @@ export function completeSquareTiles(b: number, walkthrough = true): Scene {
               act.appear("t.down.1"),
             ),
             step(
-              `The shape is a square missing its corner, a ${Math.abs(h)}-by-${Math.abs(h)} block of unit tiles.`,
+              `The shape is a square missing its corner, ${article(Math.abs(h))} ${Math.abs(h)}-by-${Math.abs(h)} block of unit tiles.`,
               act.appear("t.region.1.1"),
               act.highlight("t.region.1.1"),
             ),
             lessonStep(
-              `Add the ${h * h} unit tiles: x² ${b < 0 ? "−" : "+"} ${Math.abs(b)}x + ${h * h} = (x ${h < 0 ? "−" : "+"} ${Math.abs(h)})².`,
+              `Add the ${count(h * h, "unit tile")}: x² ${b < 0 ? "−" : "+"} ${Math.abs(b)}x + ${h * h} = (x ${h < 0 ? "−" : "+"} ${Math.abs(h)})².`,
               act.fill("t.region.1.1", "empty"),
               act.highlight("t.region.1.1"),
             ),
