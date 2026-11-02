@@ -366,7 +366,14 @@ export function composeWorkbook(options: {
         printedLesson.get(lessonOf.get(t.id)!.id) ?? 0;
       const started = (t: TemplateMetadata) =>
         (evidence.get(t.skillId)?.attempts ?? 0) > 0 ? 0 : 1;
+      // Whole grades from the target: one bucket inside the first band, so
+      // the focus rotates there; nearer first when the band widens.
+      const distance = (t: TemplateMetadata) =>
+        Math.floor(
+          Math.abs(gradeOf.get(t.id)! - levelOf(strandOf(t)) - shift + 0.1),
+        );
       return (
+        distance(a) - distance(b) ||
         taught(a) - taught(b) ||
         started(a) - started(b) ||
         rank(a.id) - rank(b.id)

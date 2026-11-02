@@ -117,15 +117,14 @@ async function compose(
 ) {
   const recent = await tx.recentAttempts();
   const frontier = await tx.frontier(now);
-  if (input.choices?.areas.length) {
-    const offered = new Set(workbookAreas(frontier));
-    const unknown = input.choices.areas.filter((a) => !offered.has(a));
-    if (unknown.length)
-      throw new ApiError(
-        400,
-        "Those areas have no problems near this level. Choose from the areas shown.",
-      );
-  }
+  // An area no longer near the learner's level (an old link, a learner who
+  // moved on) is left out rather than refused; none left is mixed. The
+  // stored choices say what was used, and the screen follows them.
+  const offered = new Set(workbookAreas(frontier));
+  const choices = input.choices && {
+    ...input.choices,
+    areas: input.choices.areas.filter((a) => offered.has(a)),
+  };
   return composeWorkbook({
     templates,
     skills,
@@ -136,7 +135,7 @@ async function compose(
     history: (await tx.workbooks(undefined, WORKBOOK_HISTORY)).map(
       (w) => w.spec,
     ),
-    choices: input.choices,
+    choices,
     date: input.date,
     number: input.number,
     minutes: input.minutes,
