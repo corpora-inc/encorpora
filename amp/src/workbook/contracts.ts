@@ -84,6 +84,8 @@ export const workbookResultRowSchema = z.object({
   n: z.number().int(),
   section: z.enum(workbookSectionKinds),
   skillId: z.string(),
+  /** The problem type's authored title, as printed on the results page. */
+  label: z.string().optional(),
   prompt: z.string(),
   /** Type the answer, pick the printed letter, or mark only. */
   entry: z.enum(["number", "choice", "mark"]),

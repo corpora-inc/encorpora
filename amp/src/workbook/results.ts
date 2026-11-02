@@ -11,6 +11,7 @@ import {
   type SavedProblem,
 } from "../server/repository.js";
 import type { SectionKind } from "./compose.js";
+import { resultLabel } from "./result-labels.js";
 import type { WorkbookRecord } from "./contracts.js";
 import type { GeneratedProblem } from "../math/contracts.js";
 
@@ -58,6 +59,8 @@ export interface ResultRow {
   n: number;
   section: SectionKind;
   skillId: string;
+  /** The problem type's authored title, as printed on the results page. */
+  label: string;
   prompt: string;
   /** How the parent enters the result: type the answer, pick the printed
    * letter, or mark only. */
@@ -90,6 +93,7 @@ export async function resultRows(
       n,
       section,
       skillId: item.skillId,
+      label: resultLabel(item.templateId),
       prompt: problem.public.prompt,
       entry: !answerable(problem)
         ? "mark"
