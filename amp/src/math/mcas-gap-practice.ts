@@ -2330,11 +2330,11 @@ function circleRadiusDistance(r: Random): Single {
       ],
       [
         rad * 2 * rad,
-        `${rad * 2 * rad} multiplies the radius and the circumference. A distance from the center is the radius.`,
+        `${rad * 2 * rad} is the radius times ${2 * rad}, the number in front of $\\pi$. A distance from the center is just the radius, so stop after finding $r$.`,
       ],
       [
         rad + 2,
-        `${rad + 2} cm is not related to the circumference $2\\pi r$ by any rule. Solve $2\\pi r=${2 * rad}\\pi$ for $r$.`,
+        `${rad + 2} cm does not fit the circumference: $2\\pi\\times${rad + 2}=${2 * rad + 4}\\pi$, not $${2 * rad}\\pi$. Solve $2\\pi r=${2 * rad}\\pi$ for $r$.`,
       ],
     ]),
     model: { rad },
@@ -2433,8 +2433,10 @@ function slopeSignDescription(r: Random): Single {
     Zero: "The output does not change, so the change in output is 0 and the slope is $0$.",
   };
   const feedback: Record<string, string> = {
-    Negative: "The quantities do not move in opposite directions here.",
-    Positive: "The quantities do not move in the same direction here.",
+    Negative:
+      "A negative slope means one quantity goes up while the other goes down. These quantities do not move in opposite directions.",
+    Positive:
+      "A positive slope means both quantities go up together or down together. These quantities do not move in the same direction.",
     Zero: "The output does change as the input changes, so the slope is not 0.",
     Depends:
       "The slope depends only on how the output changes as the input changes, not on the starting value.",

@@ -803,3 +803,23 @@ test("every new template is bound to one reference lesson, a method and a worked
     assert.ok(lesson.method.length >= 3, id);
   }
 });
+
+test("fraction-coefficient equations show every coefficient in lowest terms", () => {
+  const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
+  const shown = ofVariant("staar-multistep-equations", "fraction-coefficients");
+  assert.ok(shown.length > 20);
+  for (const c of shown)
+    for (const [, p, m] of c.problem.public.prompt.matchAll(
+      /\\frac\{(\d+)\}\{(\d+)\}/g,
+    ))
+      assert.equal(
+        gcd(Number(p), Number(m)),
+        1,
+        `${c.problem.public.prompt} shows an unsimplified coefficient`,
+      );
+});
+
+test("card counts of 1 take a singular verb", () => {
+  for (const c of ofVariant("staar-experiment-probability", "with-replacement"))
+    assert.doesNotMatch(c.problem.public.prompt, /\b1 of the cards are\b/);
+});
