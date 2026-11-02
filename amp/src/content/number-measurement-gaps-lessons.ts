@@ -84,7 +84,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Choose the operation from what the story asks. The total of equal groups: multiply. How many in each group, or how many groups: divide. Putting amounts together: add.",
+      "Choose the operation from what the story asks. The total of equal groups: multiply. How many in each group, or how many groups: divide. Putting amounts together: add. How many more: subtract.",
       "Round each number the way the question says, for example to the nearest ten.",
       "Do the operation with the rounded numbers.",
       "To check an answer, compare it with the estimate. If it is close, it is reasonable. If it is far off, look for a mistake in the place value or the operation.",
@@ -373,7 +373,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Close is useful",
         paragraphs: [
-          "You will round to the nearest ten and multiply. Rounding to the nearest ten gives the closest number that ends in 0. So 48 rounds to 50, and 19 rounds to 20.",
+          "You will round as the question asks, to the nearest ten, hundred or whole number, and then add, subtract, multiply or divide. Rounding to the nearest ten gives the closest number that ends in 0. So 48 rounds to 50, and 19 rounds to 20.",
           "48 × 19 is hard to work out in your head. 50 × 20 is easy: 5 tens times 2 tens is 10 hundreds, or 1,000. So 48 × 19 is about 1,000.",
           "An estimate cannot check every digit. But it can catch an answer of the wrong size. 9,120 is about ten times too big to be 48 × 19.",
         ],
@@ -395,7 +395,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "method",
         title: "Operation, rounding, comparison",
         paragraphs: [
-          "First choose the operation from what the story asks. To find the total of equal groups, multiply. To find how many are in each group, or how many groups, divide. To put amounts together, add.",
+          "First choose the operation from what the story asks. To find the total of equal groups, multiply. To find how many are in each group, or how many groups, divide. To put amounts together, add. To find how many more, subtract.",
           "Then round every number the way the question says. Work out the answer with the rounded numbers.",
           "To judge an answer, compare its size with the estimate. A product, the answer to a times, that is ten times too big or too small has a mistake. Often a digit is in the wrong place, or the wrong operation was used. Close does not mean exact. A close answer is reasonable, but it could still have a small mistake.",
         ],

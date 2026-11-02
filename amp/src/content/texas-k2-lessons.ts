@@ -63,9 +63,10 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
       "A dime is smaller than a nickel, but it is worth more: 10¢, not 5¢. Name a coin by its value, not its size. Write ¢ after the number.",
   },
   "solid-bottom-face-shape": {
+    noLink: ["lines"],
     goal: "Given a solid standing on a table, name the flat shape of the face that touches the table.",
     intuition:
-      "A solid is a shape you can hold, like a box, a can or a ball. A face is a flat side of a solid. When a solid with flat faces stands on a table, one face touches the table. That face is the bottom face. A side of a flat shape is one of the straight lines around it. A corner is where two sides meet. A square corner looks like the corner of a page.",
+      "A solid is a shape you can hold, like a box, a can or a ball. A face is a flat surface of a solid. When a solid with flat faces stands on a table, one face touches the table. That face is the bottom face. A side of a flat shape is one of the straight lines around it. A corner is where two sides meet. A square corner looks like the corner of a page.",
     senses: {
       solid: "solid-shape",
       face: "face-solid",
@@ -185,6 +186,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
       "Do not count the labeled tick as a jump. Count the jumps between ticks, and use the step that the labels show.",
   },
   "open-number-line-to-1000": {
+    noLink: ["lines"],
     goal: "On a number line with only three labels, find the point at a given number or read the number at a marked point, up to 1,000.",
     intuition:
       "A number line is a line with numbers in order. Bigger numbers are to the right. Tick marks are the short lines where the numbers sit, the same distance apart. Labeled means a tick has its number written. Here only three ticks are labeled. A jump is a move from one tick to the next. Each jump to the right adds the same amount, called the step. The step can be 10, 50 or 100.",
@@ -230,6 +232,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
       "Name the parts by how many equal parts fill one whole, not by how many are shaded. Count only the shaded parts for the amount.",
   },
   "decompose-flat-shape": {
+    noLink: ["lines", "line"],
     goal: "Given a square or rectangle cut into equal parts, say how many parts there are and name the shape of the parts.",
     intuition:
       "To decompose a shape means to cut it into smaller shapes. Look at the picture and count the parts the cuts make. A side is one of the straight lines around a shape. A corner is where two sides meet. Count the sides and corners of one part to name it.",
@@ -295,7 +298,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
       "Do not swap the hands. The short hand shows the hour and the long hand shows the minutes. Minutes less than 10 need a 0 in front: 4:07.",
   },
   "tally-and-t-chart": {
-    noLink: ["part", "jump"],
+    noLink: ["part", "jump", "line", "lines"],
     goal: "Read a tally chart to find a count, a difference or a total, and choose the T-chart that organizes a list of answers.",
     intuition:
       "A tally mark is a short line you draw for each thing you count. Every fifth mark goes across the four before it. That makes a group of 5. A tally chart shows the tally marks for each choice. The T-chart has two columns, lists that go down, split by a line. One column names each choice. The other shows its count.",
@@ -327,7 +330,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
     method: [
       "Ask what the question is about. Is it pay for work or a gift? Buying or keeping? Putting money in or taking it out? Making or buying?",
       "For savings over time, add the money saved each week, once for every week. Then add any money saved before.",
-      "For the cost to make an item, find the cost of each kind of part. The sign × means times: 3 × 4¢ is 3 groups of 4¢, so 4 + 4 + 4 = 12¢. Then add the costs of all the parts.",
+      "For the cost to make an item, find the cost of each kind of part. The sign × means times: $3 \\times 4$¢ is 3 groups of 4¢, so 4 + 4 + 4 = 12¢. Then add the costs of all the parts.",
     ],
     watch:
       "A deposit makes the balance go up, and a withdrawal makes it go down. A shop owner who makes the goods is the producer. The person who buys them is the consumer.",
@@ -338,7 +341,7 @@ export const texasK2Principles: Record<string, string> = {
   "coin-name-and-cent-value":
     "A penny is worth 1 cent, written 1¢. A nickel is worth 5 cents, written 5¢. A dime is worth 10 cents, written 10¢. A quarter is worth 25 cents, written 25¢. The cent sign ¢ goes after the number.",
   "solid-bottom-face-shape":
-    "A face of a solid is a flat side. A cube, shaped like a toy block, has 6 square faces. A box can have rectangle faces. A can, called a cylinder, and a cone each have a circle face to stand on. A pyramid can stand on a square face or a triangle face. A triangular prism, shaped like a tent, has a triangle face at each end.",
+    "A face of a solid is a flat surface. A cube, shaped like a toy block, has 6 square faces. A box can have rectangle faces. A can, called a cylinder, and a cone each have a circle face to stand on. A pyramid can stand on a square face or a triangle face. A triangular prism, shaped like a tent, has a triangle face at each end.",
   "measurable-attribute-choice":
     "An attribute is something about an object, like its color or its weight. Length, capacity and weight are three attributes you can measure with a unit. A question about how long, how much it holds or how heavy asks about one of them.",
   "dot-group-compared-to-number":
@@ -417,9 +420,10 @@ export const texasK2Lessons: Lesson[] = [
   }),
   lesson({
     id: "solid-bottom-face-shape",
+    noLink: ["lines"],
     title: "The shape of a solid's bottom face",
     summary:
-      "A solid is a shape you can hold, like a box, a can or a ball. A face is a flat side of a solid. A ball has no faces, but a box has 6. A solid with faces can stand on one of them. That bottom face touches the table. To name it, see if it is round, or count its straight sides.",
+      "A solid is a shape you can hold, like a box, a can or a ball. A face is a flat surface of a solid. A ball has no faces, but a box has 6. A solid with faces can stand on one of them. That bottom face touches the table. To name it, see if it is round, or count its straight sides.",
     senses: {
       solid: "solid-shape",
       face: "face-solid",
@@ -433,7 +437,7 @@ export const texasK2Lessons: Lesson[] = [
     ],
     intuitionTitle: "A solid has flat faces",
     intuition: [
-      "Hold a box. Its top, bottom and sides are flat. Each flat side is a face.",
+      "Hold a box. Its top, bottom and other surfaces are flat. Each flat surface is a face.",
       "Stand the box on a table. The face on the table is the bottom face. Trace around it with a pencil. The drawing is a flat shape.",
       "A side of a flat shape is one of the straight lines around it. A corner is where two sides meet. A square corner looks like the corner of a page.",
     ],
@@ -701,6 +705,7 @@ export const texasK2Lessons: Lesson[] = [
   }),
   lesson({
     id: "open-number-line-to-1000",
+    noLink: ["lines"],
     title: "Open number lines to 1,000",
     summary:
       "A number line is a line with numbers in order. Bigger numbers are to the right. Tick marks are the short lines where the numbers sit. They are the same distance apart. Only three ticks are labeled, which means their number is written. The step is how much each tick adds to the one before it. Find the step. Then count from a labeled tick to the point.",
@@ -803,6 +808,7 @@ export const texasK2Lessons: Lesson[] = [
   }),
   lesson({
     id: "decompose-flat-shape",
+    noLink: ["lines", "line"],
     title: "Cut a shape into parts",
     summary:
       "To decompose a shape means to cut it into smaller shapes. Count the parts the cut makes. Then pick one part. Count its sides, the straight lines around it, to name its shape.",
@@ -986,7 +992,7 @@ export const texasK2Lessons: Lesson[] = [
   }),
   lesson({
     id: "tally-and-t-chart",
-    noLink: ["part"],
+    noLink: ["part", "line", "lines"],
     title: "Tally charts and T-charts",
     summary:
       "A tally mark is a line you draw for each thing you count. Every fifth mark crosses the other four to make a group of 5. A tally chart shows the marks for each choice. The T-chart is a chart with two columns. One names each choice, and one shows how many chose it.",
@@ -1061,7 +1067,7 @@ export const texasK2Lessons: Lesson[] = [
     method: [
       "Ask what the question is about. Is it pay for work or a gift? Buying or keeping? Putting money in or taking it out? Making or buying?",
       "For savings, add what is saved each week, once for every week. Then add any money saved before.",
-      "For the cost to make an item, find the cost of each kind of part. The sign × means times: 3 × 4¢ is 3 groups of 4¢, which is 12¢. Then add the costs of all the parts.",
+      "For the cost to make an item, find the cost of each kind of part. The sign × means times: $3 \\times 4$¢ is 3 groups of 4¢, which is 12¢. Then add the costs of all the parts.",
     ],
     formalTitle: "Money words and amounts",
     formal: [

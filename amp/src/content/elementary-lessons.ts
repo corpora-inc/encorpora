@@ -527,7 +527,7 @@ export const elementaryLessons: Lesson[] = [
         title: "Tens and ones",
         paragraphs: [
           "A two-digit number is its tens and its ones put together: 34 is 30 + 4.",
-          "Adding or taking away whole tens changes the tens digit. The ones digit stays the same, as long as no trade is needed.",
+          "Adding or taking away whole tens never changes the ones digit.",
           "10 ones are worth the same as 1 ten, so trading them never changes the number.",
         ],
       },
@@ -550,7 +550,7 @@ export const elementaryLessons: Lesson[] = [
   },
   {
     id: "hundreds-and-exchanges",
-    noLink: ["change", "changes"],
+    noLink: ["change", "changes", "make a ten"],
     title: "Hundreds, tens, and ones",
     summary:
       "A one is a single small cube. A ten is a rod of 10 cubes. A hundred is a flat of 10 rods, which is 100 cubes. A digit is one of the symbols 0 to 9. In 264, the 2 means 2 hundreds, the 6 means 6 tens and the 4 means 4 ones. Expanded form shows what each digit is worth: 264 = 200 + 60 + 4. You can trade 10 ones for 1 ten, or 10 tens for 1 hundred. A trade never changes the number.",
@@ -626,7 +626,7 @@ export const elementaryLessons: Lesson[] = [
   },
   {
     id: "three-digit-regrouping",
-    noLink: ["change", "changes"],
+    noLink: ["change", "changes", "line"],
     title: "Exchange to add and subtract",
     summary:
       "A digit is one of the symbols 0 to 9. Each digit sits in a place: ones, tens or hundreds. A ten is 10 ones, and a hundred is 10 tens. Add or subtract one place at a time, starting with the ones. When a place gets 10 or more, trade 10 of them for 1 of the next place to the left. When a place has too few to take away from, trade 1 from the next place for 10. A trade never changes the number.",
