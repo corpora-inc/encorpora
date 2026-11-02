@@ -21,6 +21,7 @@ const GEO_SENSES = {
   "opposite leg": "opposite-side-angle",
   multiple: "multiple",
   "one third": "third",
+  "opposite side": "opposite-side-angle",
 } as const;
 const GEO_NOLINK = [
   "opposite",
@@ -44,7 +45,6 @@ const GEO_NOLINK = [
   "terms",
   "scale",
   "prime",
-  "opposite side",
   "mode",
   "key",
   "cubes",

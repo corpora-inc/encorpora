@@ -23,6 +23,7 @@ const GEO_SENSES = {
   squaring: "square-number",
   multiple: "multiple",
   "one third": "third",
+  "opposite side": "opposite-side-angle",
 } as const;
 const GEO_NOLINK = [
   "opposite",
@@ -46,14 +47,13 @@ const GEO_NOLINK = [
   "terms",
   "scale",
   "prime",
-  "opposite side",
   "mode",
 ];
 
 export const regentsGeometrySimilarityMethods: Record<string, ProblemMethod> = {
   "geo-altitude-ratio": {
     goal: "Write a sine, cosine or tangent of an angle using the sides of the smaller right triangle made by an altitude.",
-    senses: GEO_SENSES,
+    senses: { ...GEO_SENSES, tangent: "tangent-trig" },
     noLink: GEO_NOLINK,
     intuition:
       "A right triangle has one square corner, a right angle, and its longest side is the hypotenuse. An altitude is a segment from a corner that meets the side across from it at a right angle. The altitude from the right angle to the hypotenuse splits the triangle into two smaller right triangles. Each one shares a sharp angle with the whole triangle. So that angle's sine (opposite over hypotenuse), cosine (adjacent over hypotenuse) or tangent (opposite over adjacent) can be read in the small triangle, from its own sides.",

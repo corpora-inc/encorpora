@@ -178,11 +178,11 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A plane is a flat surface that goes on forever. A cross section is the flat shape where a plane cuts through a solid. A face is a flat surface of a solid, like one side of a box. Each flat face of a prism, cylinder or cone can add at most one straight side to the cut, and a curved surface can add a curve. So the faces of the solid limit which shapes are possible.",
+      "A plane is a flat surface that goes on forever. A cross section is the flat shape where a plane cuts through a solid. A face is a flat surface of a solid, like one side of a box. Each flat face can add at most one straight side to the cut. A curved surface can add a curve, and it can also add straight sides: a cut straight down a cylinder gives two straight sides along its length, and a cut through a cone's tip gives two straight sides meeting there. So the surfaces of the solid limit which shapes are possible.",
     terms: ["cross-section", "face-solid"],
     method: [
       "List the flat faces and curved surfaces of the solid.",
-      "Count the most sides a cut could have: at most one side per flat face.",
+      "For a solid with only flat faces, such as a prism, a cut has at most one side per face. For a cylinder or cone, also count the straight sides its curved surface can give.",
       "Reject a shape with a curve for a solid with only flat faces, or with straight sides the surfaces cannot give.",
     ],
     watch:

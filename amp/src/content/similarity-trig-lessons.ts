@@ -20,6 +20,7 @@ const GEO_SENSES = {
   tangent: "tangent-trig",
   multiple: "multiple",
   "one third": "third",
+  "opposite side": "opposite-side-angle",
 } as const;
 const GEO_NOLINK = [
   "opposite",
@@ -43,7 +44,6 @@ const GEO_NOLINK = [
   "terms",
   "scale",
   "prime",
-  "opposite side",
 ];
 
 export const similarityTrigLessons: Lesson[] = [
@@ -221,7 +221,7 @@ export const similarityTrigMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "Two triangles are called similar when they have the same shape: one is a resized copy of the other. Every side of one is the same number, the scale factor, times its matching side in the other. Two pairs of equal angles are enough to make triangles similar, because the third angles then match too. A perimeter, the distance around, grows by the scale factor. An area grows by the scale factor times itself.",
+      "Two triangles are called similar when they have the same shape: one is a resized copy of the other. Every side of one is the same number, the scale factor, times its matching side in the other. Two pairs of equal angles are enough to make triangles similar, because the third angles then match too. A perimeter, the distance around, is multiplied by the scale factor. An area is multiplied by the scale factor times itself.",
     terms: terms.similar,
     method: [
       "Match the sides by the order of the names, or by the equal angles.",

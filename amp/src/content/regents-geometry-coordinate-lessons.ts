@@ -293,7 +293,7 @@ export const regentsGeometryCoordinateLessons = [
       pitfalls: [
         "Do not stop at the reciprocal. Change the sign too.",
         "Equal slopes and equal intercepts mean the same line, not two parallel lines.",
-        "A dilation about the origin multiplies the intercept by the scale factor, unless the intercept is 0.",
+        "A dilation about the origin multiplies the $y$-intercept by the scale factor; it does not leave it unchanged.",
       ],
       parentGuide:
         "Have your learner test a perpendicular slope by checking that the two slopes multiply to $-1$.",
