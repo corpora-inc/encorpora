@@ -143,7 +143,7 @@ export const assessmentGapLessons: Lesson[] = [
       mean: "mean-average",
       parameter: "parameter",
     },
-    noLink: ["side", "range", "whole", "part"],
+    noLink: ["side", "sides", "range", "whole", "part"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Build a symmetric interval from an estimate and its margin of error.",
