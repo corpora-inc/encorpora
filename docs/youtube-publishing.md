@@ -33,6 +33,8 @@ daily workflow, start with the [AMP media pipeline](amp-media-pipeline.md).
   after the video becomes public, then verify it from a viewer's page.
 - Generated narration uses only Madeline Brousseaux
   (`XescS24CsOySAkKrLAO3`) or Paul (`J3Ei0Lj6fAobhIqY5ySH`), selected by exact ID.
+  Coach Champ, the cheetah host of the grade speedruns, speaks only as Coach Cap
+  (`SYXbTJsLE7zmSjr1DchT`); it is a character voice, not a narrator preset.
   Keep natural tutoring audio when it belongs to the recording.
 - Target **one video every four hours** and **two Community posts per day**.
   Use one calendar, prepare a buffer, and skip weak material. These are AMP's
@@ -374,6 +376,47 @@ the browser-verified Studio settings; the uploader cannot independently certify
 controls the Data API does not expose. Its tests reject immediate publication,
 early release, missing checks, and invalid voice IDs. Do not create an ad hoc
 publisher that bypasses this contract.
+
+## Release clerk: the channel runs on a clock
+
+`amp/scripts/youtube_clerk.py` is the only routine publisher. launchd runs
+`youtube_clerk.py tick` every 30 minutes on the production machine. Producers
+(agents or people) never schedule videos themselves: they put a finished
+package in the private queue, and the clerk does the rest.
+
+A package is a folder in `$AMP_YOUTUBE_QUEUE` holding `package.json` (`id`,
+`lane`, `plan`, `playlistIds`, `tags`, optional `captions`, and either an
+`upload` manifest for the uploader or the `videoId` of an existing private
+upload) plus its media. On each tick the clerk does the next due step:
+
+1. Upload private through `publish-lesson-youtube.py`, then set tags, playlists
+   and captions.
+2. Review what the API can prove: processing, general audience, likes,
+   embedding, license, the planned AI-disclosure value, playlist membership,
+   captions, and that every link in the description and CTA loads.
+3. Schedule natively in the next compliant slot from `youtube_policy.py`:
+   the 12-hour hold, four-hour spacing, six per rolling 24 hours, related
+   editions 24 hours apart, and product offers (lane `ad`) 24 hours apart.
+4. At release, post the CTA comment once. Pinning has no API; the daily
+   browser pass pins it.
+
+Studio-only settings start from channel defaults: comments on for everyone,
+Basic moderation, visible likes, and subscription notifications (Settings →
+Upload defaults and Community moderation). A browser check of those defaults is
+recorded in `channel-defaults.json` in the clerk's state directory. Without a
+receipt from the last 30 days the clerk holds every release. API uploads do not
+inherit the moderation default, so the daily browser pass bulk-edits new uploads
+to Comments On / Basic (Content → select → Edit → Comments). The same pass pins
+CTAs, checks the restrictions column for copyright claims, and adds end screens
+and Shorts related videos. None of those blocks a release.
+
+**The hold is the veto window.** Skylar does not approve routine releases.
+`youtube_clerk.py veto <package>` (or a `VETO` file in the package) stops a
+release and removes a pending schedule. Everything else goes live in its slot.
+`youtube_clerk.py status` and `clerk-status.md` show the calendar, the queue,
+and why anything is held. The clerk spends at most
+`AMP_YOUTUBE_CLERK_BUDGET` (default 6,000) Data API units a day and leaves the
+rest of the quota to other tools.
 
 ## Weekly learning loop
 

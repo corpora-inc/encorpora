@@ -7,7 +7,8 @@ TIMEZONE = ZoneInfo("America/New_York")
 MAX_RELEASES_PER_24_HOURS = 6
 MIN_RELEASE_GAP = timedelta(hours=4)
 RELEASE_HOURS = (0, 4, 8, 12, 16, 20)
-VOICES = {"XescS24CsOySAkKrLAO3", "J3Ei0Lj6fAobhIqY5ySH"}
+# Madeline and Paul narrate lessons and ads; Coach Cap is Coach Champ's character voice.
+VOICES = {"XescS24CsOySAkKrLAO3", "J3Ei0Lj6fAobhIqY5ySH", "SYXbTJsLE7zmSjr1DchT"}
 CHECKS = {
     "audience", "commentsOn", "everyoneCanComment", "basicModeration",
     "likesVisible", "notifySubscribers", "captions", "thumbnail", "playlist",
