@@ -197,6 +197,28 @@ try {
     await first.click();
     await page.waitForURL(`**/lessons/${encodeURIComponent(id!)}`);
     await page.locator(".lesson-reader").waitFor();
+    // The lesson reads at the shared rhythm (lesson-reading.css): body copy
+    // at a line height of at least 1.6, within the page's width.
+    const reading = await page.evaluate(() => {
+      const prose = [
+        ...document.querySelectorAll<HTMLElement>(
+          ".reference-lesson p, .reference-lesson li",
+        ),
+      ];
+      return {
+        tight: prose.filter((el) => {
+          const style = getComputedStyle(el);
+          return (
+            parseFloat(style.lineHeight) / parseFloat(style.fontSize) < 1.595
+          );
+        }).length,
+        overflow:
+          document.documentElement.scrollWidth -
+          document.documentElement.clientWidth,
+      };
+    });
+    check(reading.tight === 0, `${reading.tight} lesson lines are tight`);
+    check(reading.overflow <= 1, `the lesson overflows by ${reading.overflow}`);
     await page.getByRole("button", { name: "← All lessons" }).click();
     await page.waitForURL((url) => url.searchParams.get("q") === "slope");
     await settle(page, 300);
