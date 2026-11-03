@@ -185,6 +185,8 @@ async function paceApi(page: import("playwright").Page) {
   });
 }
 const rows: unknown[] = [];
+// Figure sweeps enter supported lesson URLs. The dedicated lesson-library
+// verifier retains catalog navigation, search, filtering, and return journeys.
 try {
   // Data figures on a phone-emulated page (mobile viewport, touch, 3x).
   {
@@ -220,16 +222,20 @@ try {
       for (const seed of dataFixtures(id)) {
         shown = generateProblem(id, seed).public;
         await phone.setViewportSize(DATA_PHONES[DATA_PHONES.length - 1]!);
-        await startTopic(phone, id);
+        console.log(
+          `[graphical:${browserName}] phone lesson ${id} seed=${seed}`,
+        );
+        await startTopic(phone, id, { entry: "lesson-url" });
         await phone.locator(".problem-content svg").first().waitFor();
         for (const size of [...DATA_PHONES, PHONE_LANDSCAPE]) {
+          const label = `${id} ${seed} ${size.width}×${size.height}`;
+          console.log(`[graphical:${browserName}] phone figure ${label}`);
           await phone.setViewportSize(size);
           await phone.waitForFunction(
             () =>
               !!document.querySelector(".compact-answer-action") ===
               matchMedia("(max-width: 650px) and (max-height: 640px)").matches,
           );
-          const label = `${id} ${seed} ${size.width}×${size.height}`;
           if (isPhoneLandscape(size)) {
             await assertPhoneLandscapeSmoke(phone, label);
             continue;
@@ -304,13 +310,16 @@ try {
       await route.fulfill({ response, json: body });
     });
     for (const id of DATA_TEMPLATES) {
-      shown = generateProblem(id, dataFixtures(id)[0]!).public;
+      const seed = dataFixtures(id)[0]!;
+      shown = generateProblem(id, seed).public;
       await wide.setViewportSize(DATA_WIDE[0]!);
-      await startTopic(wide, id);
+      console.log(`[graphical:${browserName}] wide lesson ${id} seed=${seed}`);
+      await startTopic(wide, id, { entry: "lesson-url" });
       await wide.locator(".problem-content svg").first().waitFor();
       for (const size of DATA_WIDE) {
-        await wide.setViewportSize(size);
         const label = `${id} ${size.width}×${size.height}`;
+        console.log(`[graphical:${browserName}] wide figure ${label}`);
+        await wide.setViewportSize(size);
         const scale = await figureTextScale(wide);
         rows.push({ id: `data-wide ${id}`, ...size, ...scale });
         assertFigureTextScale(scale, label, FIGURE_TEXT_MAX_PX);
@@ -426,7 +435,10 @@ try {
   });
   for (fixture of fixtures) {
     const id = fixture.problem.templateId;
-    await startTopic(page, id);
+    console.log(
+      `[graphical:${browserName}] boundary lesson ${fixture.name} template=${id}`,
+    );
+    await startTopic(page, id, { entry: "lesson-url" });
     await page.locator(".problem-content svg").waitFor();
     for (const size of [
       { width: 320, height: 568 },
@@ -435,6 +447,9 @@ try {
       ...TABLETS,
       { width: 844, height: 390 },
     ]) {
+      console.log(
+        `[graphical:${browserName}] boundary viewport ${fixture.name} ${size.width}×${size.height}`,
+      );
       await page.setViewportSize(size);
       await page.waitForFunction(
         () =>
@@ -551,6 +566,7 @@ try {
     )
       continue;
     for (const kind of ["lesson", "workbook", "solutions"] as const) {
+      console.log(`[graphical:${browserName}] print ${lesson.id} ${kind}`);
       await printPage.setContent(publicationHtml(lesson, kind));
       // Coordinate planes, clocks and number lines (#1177) and bar charts now
       // draw through the scene renderer; they are the same printed graphs
