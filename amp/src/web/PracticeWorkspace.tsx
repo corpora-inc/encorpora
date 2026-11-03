@@ -204,6 +204,8 @@ type Props = {
   mastered?: string | null;
   /** Progress and optional one-problem branches; Next remains adaptive. */
   answerFeedback?: ReactNode;
+  /** A compact offer in the feedback sheet, just before Next. */
+  feedbackAside?: ReactNode;
   /** Leaves a chosen skill for adaptive mixed practice. Present only while
    * practice is focused on one skill, so the action always succeeds. */
   returnToMixed?: () => void;
@@ -1452,6 +1454,7 @@ export function PracticeWorkspace(props: Props) {
             ) : (
               feedbackDetails()
             )}
+            {props.feedbackAside}
             <div className="next-row">
               {props.returnToMixed && (
                 <button

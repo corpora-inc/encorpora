@@ -11,6 +11,8 @@ import {
   type Repository,
 } from "../server/repository.js";
 import { isTrialAccount } from "../server/trials.js";
+import type { TrialProgress } from "../server/trial-progress.js";
+import { trialWorkbookAllowance } from "../learning/trial-workbooks.js";
 import { strandEstimate, type Frontier } from "../learning/frontier.js";
 import { templateGrade } from "../server/mixed-practice.js";
 import {
@@ -66,6 +68,36 @@ export function workbookSummary(record: WorkbookRecord): WorkbookSummary {
       kind: s.kind,
       problems: s.items.length,
       title: s.lessonId ? (lessonTitle.get(s.lessonId) ?? null) : null,
+    })),
+  };
+}
+
+/** A trial's free workbooks: the allowance, and the ones made, oldest
+ * first (the first made is workbook 1). `pdf`: whether downloads are PDFs. */
+export async function trialWorkbooks(
+  tx: LearnerTransaction,
+  progress: TrialProgress,
+  pdf: boolean,
+) {
+  const made = (await tx.workbooks()).sort(
+    (a, b) =>
+      a.createdAt.localeCompare(b.createdAt) ||
+      a.date.localeCompare(b.date) ||
+      a.number - b.number ||
+      a.minutes - b.minutes,
+  );
+  return {
+    ...trialWorkbookAllowance(
+      progress.totals.answered,
+      made.length,
+      progress.free,
+    ),
+    pdf,
+    items: made.map(({ id, date, number, paper }) => ({
+      id,
+      date,
+      number,
+      paper,
     })),
   };
 }
@@ -173,20 +205,48 @@ export function registerWorkbookRoutes(
   const workbookParams = learnerParams
     .extend({ workbookId: z.string().uuid() })
     .strict();
-  /** Workbooks are part of a paid learner's practice; a free trial has none. */
+  /** Workbooks are part of a paid learner's practice. A live free trial
+   * (its token reaches only its own learner) earns a few as it goes:
+   * `trialWorkbookAllowance`. */
   async function account(request: Parameters<Authenticator>[0]) {
     const accountId = await options.parent(request);
-    if (isTrialAccount(accountId))
-      throw new ApiError(403, "Create an account to print workbooks");
-    return accountId;
+    return { accountId, trial: isTrialAccount(accountId) };
   }
-  async function access(tx: LearnerTransaction) {
+  /** A parent's learner needs an active license; a trial learner needs a
+   * live trial (the transaction also refuses an ended one). */
+  async function access(
+    tx: LearnerTransaction,
+    trial: boolean,
+  ): Promise<TrialProgress | null> {
+    if (trial) {
+      const progress = await tx.trialProgress();
+      if (!progress) throw new ApiError(401, "This free trial has ended");
+      return progress;
+    }
     if (!options.development && !(await tx.hasAccess()))
       throw new ApiError(403, "An active student license is required");
+    return null;
+  }
+  /** Results become learning evidence, which a trial collects only by
+   * answering in the app; the screens never offer it to a trial. */
+  function parentOnly(trial: boolean) {
+    if (trial)
+      throw new ApiError(
+        403,
+        "Save this learner to an account to enter workbook results.",
+      );
+  }
+  /** The name on the cover. A trial learner has none, so its cover keeps
+   * the line to write one, as samples do. */
+  async function nameOf(accountId: string, learnerId: string, trial: boolean) {
+    if (trial) return undefined;
+    return (await options.repository.list(accountId)).find(
+      (l) => l.id === learnerId,
+    )?.name;
   }
 
   app.get("/api/v1/learners/:learnerId/workbooks", async (request) => {
-    const accountId = await account(request);
+    const { accountId, trial } = await account(request);
     const { learnerId } = learnerParams.parse(request.params);
     const { date, code } = z
       .object({
@@ -204,7 +264,7 @@ export function registerWorkbookRoutes(
       .strict()
       .parse(request.query);
     return options.repository.transaction(accountId, learnerId, async (tx) => {
-      await access(tx);
+      await access(tx, trial);
       const found = code ? await tx.workbookByCode(code) : undefined;
       return {
         workbooks: code
@@ -220,10 +280,10 @@ export function registerWorkbookRoutes(
 
   /** The areas a parent can choose for this learner. */
   app.get("/api/v1/learners/:learnerId/workbooks/areas", async (request) => {
-    const accountId = await account(request);
+    const { accountId, trial } = await account(request);
     const { learnerId } = learnerParams.parse(request.params);
     return options.repository.transaction(accountId, learnerId, async (tx) => {
-      await access(tx);
+      await access(tx, trial);
       return {
         areas: workbookAreas(await tx.frontier(now())).map((id) => ({
           id,
@@ -236,7 +296,7 @@ export function registerWorkbookRoutes(
   /** Same date, number and length: the same workbook, stored the first time.
    * No number: the next one for that date ("Roll another"). */
   app.post("/api/v1/learners/:learnerId/workbooks", async (request, reply) => {
-    const accountId = await account(request);
+    const { accountId, trial } = await account(request);
     const { learnerId } = learnerParams.parse(request.params);
     const input = workbookRequestSchema.parse(request.body);
     const at = now();
@@ -244,7 +304,7 @@ export function registerWorkbookRoutes(
       accountId,
       learnerId,
       async (tx) => {
-        await access(tx);
+        const progress = await access(tx, trial);
         const sameDay = await tx.workbooks(input.date);
         const number =
           input.number ?? Math.max(0, ...sameDay.map((w) => w.number)) + 1;
@@ -265,6 +325,22 @@ export function registerWorkbookRoutes(
             400,
             "Workbooks can be made for today only. Open today's workbook instead.",
           );
+        // A trial makes only the workbooks it has earned. The learner row is
+        // locked for this transaction, so concurrent requests count in turn.
+        if (progress) {
+          const allowance = trialWorkbookAllowance(
+            progress.totals.answered,
+            (await tx.workbooks()).length,
+            progress.free,
+          );
+          if (allowance.available <= 0)
+            throw new ApiError(
+              403,
+              allowance.nextAt
+                ? `The next free workbook unlocks at ${allowance.nextAt} problems.`
+                : "All free workbooks are made. Choose a plan to print more.",
+            );
+        }
         const spec = await compose(
           tx,
           learnerId,
@@ -297,13 +373,14 @@ export function registerWorkbookRoutes(
   app.get(
     "/api/v1/learners/:learnerId/workbooks/:workbookId/results",
     async (request) => {
-      const accountId = await account(request);
+      const { accountId, trial } = await account(request);
+      parentOnly(trial);
       const { learnerId, workbookId } = workbookParams.parse(request.params);
       return options.repository.transaction(
         accountId,
         learnerId,
         async (tx) => {
-          await access(tx);
+          await access(tx, trial);
           const record = await tx.workbook(workbookId);
           if (!record) throw new ApiError(404, "Workbook not found");
           if (!workbookIsCurrent(record.spec))
@@ -321,7 +398,8 @@ export function registerWorkbookRoutes(
   app.post(
     "/api/v1/learners/:learnerId/workbooks/:workbookId/results",
     async (request, reply) => {
-      const accountId = await account(request);
+      const { accountId, trial } = await account(request);
+      parentOnly(trial);
       const { learnerId, workbookId } = workbookParams.parse(request.params);
       const { entries } = z
         .object({
@@ -352,7 +430,7 @@ export function registerWorkbookRoutes(
           accountId,
           learnerId,
           async (tx) => {
-            await access(tx);
+            await access(tx, trial);
             const record = await tx.workbook(workbookId);
             if (!record) throw new ApiError(404, "Workbook not found");
             if (!workbookIsCurrent(record.spec))
@@ -386,20 +464,18 @@ export function registerWorkbookRoutes(
   app.get(
     "/api/v1/learners/:learnerId/workbooks/:workbookId/document",
     async (request, reply) => {
-      const accountId = await account(request);
+      const { accountId, trial } = await account(request);
       const { learnerId, workbookId } = workbookParams.parse(request.params);
       const { paper } = z
         .object({ paper: z.enum(workbookPapers).optional() })
         .strict()
         .parse(request.query);
-      const learnerName = (await options.repository.list(accountId)).find(
-        (l) => l.id === learnerId,
-      )?.name;
+      const learnerName = await nameOf(accountId, learnerId, trial);
       const record = await options.repository.transaction(
         accountId,
         learnerId,
         async (tx) => {
-          await access(tx);
+          await access(tx, trial);
           const found = await tx.workbook(workbookId);
           if (!found) throw new ApiError(404, "Workbook not found");
           return found;
@@ -412,7 +488,7 @@ export function registerWorkbookRoutes(
         skillTitle,
         learnerName,
         paper: paper ?? record.paper,
-        results: results(record, learnerId),
+        results: trial ? undefined : results(record, learnerId),
       });
       return reply
         .type("text/html; charset=utf-8")
@@ -430,20 +506,18 @@ export function registerWorkbookRoutes(
   app.get(
     "/api/v1/learners/:learnerId/workbooks/:workbookId/pdf",
     async (request, reply) => {
-      const accountId = await account(request);
+      const { accountId, trial } = await account(request);
       const { learnerId, workbookId } = workbookParams.parse(request.params);
       const query = z
         .object({ format: z.enum(["Letter", "A4"]).optional() })
         .strict()
         .parse(request.query);
-      const learnerName = (await options.repository.list(accountId)).find(
-        (l) => l.id === learnerId,
-      )?.name;
+      const learnerName = await nameOf(accountId, learnerId, trial);
       const page = await options.repository.transaction(
         accountId,
         learnerId,
         async (tx) => {
-          await access(tx);
+          await access(tx, trial);
           const record = await tx.workbook(workbookId);
           if (!record) throw new ApiError(404, "Workbook not found");
           if (!workbookIsCurrent(record.spec))
@@ -455,7 +529,7 @@ export function registerWorkbookRoutes(
             skillTitle,
             learnerName,
             paper: format === "A4" ? "a4" : "letter",
-            results: results(record, learnerId),
+            results: trial ? undefined : results(record, learnerId),
           });
           return { record, html, format, footer: workbookFooter(record.spec) };
         },

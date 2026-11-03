@@ -10,7 +10,7 @@ import {
 } from "../learning/practice-policy.js";
 import fp from "fastify-plugin";
 import { registerBookRoutes } from "../books/routes.js";
-import { registerWorkbookRoutes } from "../workbook/routes.js";
+import { registerWorkbookRoutes, trialWorkbooks } from "../workbook/routes.js";
 import { workbookTemplateIds } from "../workbook/results.js";
 import type { WorkbookRenderer } from "../workbook/pdf.js";
 import { readFile } from "node:fs/promises";
@@ -473,6 +473,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
           current: await tx.frontier(),
         },
         trend: await tx.frontierTrend(),
+        workbooks: await trialWorkbooks(
+          tx,
+          progress,
+          !!options.workbookRenderer,
+        ),
       };
     });
   });

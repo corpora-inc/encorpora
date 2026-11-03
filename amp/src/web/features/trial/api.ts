@@ -30,6 +30,13 @@ import {
   type ProblemFlagInput,
 } from "../../../feedback/problem-flags";
 import type { ReportResult } from "../../ProblemFlag";
+import {
+  workbookPapers,
+  workbookSummarySchema,
+  type WorkbookPaper,
+} from "../../../workbook/contracts";
+import { downloadTrialWorkbook, workbookPath } from "../workbooks/api";
+import { defaultWorkbookChoices, localDate } from "../workbooks/model";
 
 /** The free trial is anonymous: a random device token, a nameless learner
  * and a birth year. Nothing here identifies a child or links an account. */
@@ -47,6 +54,25 @@ const frontierSchema = z.object({
   strandPriorSd: z.number().finite().positive().optional(),
 });
 export type TrialFrontier = z.infer<typeof frontierSchema>;
+/** The free workbooks: earned one per 20 problems, the ones made (oldest
+ * first), and whether downloads are PDFs (learning/trial-workbooks.ts). */
+const trialWorkbooksSchema = z.object({
+  total: z.number().int(),
+  earned: z.number().int(),
+  made: z.number().int(),
+  available: z.number().int(),
+  nextAt: z.number().int().nullable(),
+  pdf: z.boolean(),
+  items: z.array(
+    z.object({
+      id: z.string(),
+      date: z.string(),
+      number: z.number().int(),
+      paper: z.enum(workbookPapers),
+    }),
+  ),
+});
+export type TrialWorkbooks = z.infer<typeof trialWorkbooksSchema>;
 export const progressSchema = z.object({
   phase: z.enum(["placement", "practice", "complete"]),
   free: z.number().int(),
@@ -73,6 +99,7 @@ export const progressSchema = z.object({
       }),
     )
     .default([]),
+  workbooks: trialWorkbooksSchema.optional(),
 });
 export type TrialProgress = z.infer<typeof progressSchema>;
 const batchSchema = z
@@ -361,4 +388,90 @@ export function forgetTrial() {
   clearStoredTrial();
   queryClient.removeQueries({ queryKey: ["trial"] });
   queryClient.setQueryData(trialSessionOptions.queryKey, null);
+}
+
+/** The next workbook being made, kept until the server answers, so a retry
+ * after a lost response asks for the same date and number and gets the
+ * stored workbook back instead of using another free one. */
+const making = new Map<string, { date: string; number: number }>();
+
+/** Makes the next free workbook the trial has earned (mixed areas, at
+ * level, with today's idea, 30 minutes). The screens offer this only while
+ * one is available; the server refuses anything beyond it. */
+export async function makeTrialWorkbook(
+  session: TrialSession,
+  paper: WorkbookPaper,
+) {
+  let target = making.get(session.learnerId);
+  if (!target) {
+    const { workbooks } = await queryClient.fetchQuery({
+      ...progressOptions(session),
+      staleTime: 0,
+    });
+    const date = localDate();
+    const today = (workbooks?.items ?? []).filter((w) => w.date === date);
+    target = {
+      date,
+      number: Math.max(0, ...today.map((w) => w.number)) + 1,
+    };
+    making.set(session.learnerId, target);
+  }
+  try {
+    const made = await request(
+      workbookPath(session.learnerId),
+      workbookSummarySchema,
+      {
+        trial: session.token,
+        body: {
+          ...target,
+          minutes: 30,
+          paper,
+          choices: defaultWorkbookChoices,
+        },
+      },
+    );
+    making.delete(session.learnerId);
+    return made;
+  } catch (error) {
+    // Only a lost or failed delivery retries the same workbook.
+    if (
+      !(error instanceof AppError) ||
+      !["network", "unavailable"].includes(error.kind)
+    )
+      making.delete(session.learnerId);
+    throw error;
+  } finally {
+    // Only the free run's totals change; the open feedback keeps its data.
+    void queryClient.invalidateQueries({
+      queryKey: progressOptions(session).queryKey,
+    });
+  }
+}
+
+/** Downloads one of the trial's own workbooks: the PDF when the server
+ * renders them, otherwise the printable document. */
+export async function downloadAssessmentWorkbook(
+  session: TrialSession,
+  workbook: { id: string; date: string; number: number },
+  paper: WorkbookPaper,
+) {
+  const cached = queryClient.getQueryData(
+    progressOptions(session).queryKey,
+  )?.workbooks;
+  const pdf =
+    cached?.pdf ??
+    (
+      await queryClient.fetchQuery({
+        ...progressOptions(session),
+        staleTime: 0,
+      })
+    ).workbooks?.pdf ??
+    false;
+  await downloadTrialWorkbook(
+    session.token,
+    session.learnerId,
+    workbook,
+    paper,
+    pdf,
+  );
 }
