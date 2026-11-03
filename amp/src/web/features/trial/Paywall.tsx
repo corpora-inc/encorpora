@@ -198,7 +198,9 @@ function PlansView({
             .filter((program) =>
               programId
                 ? program.id === programId
-                : program.id === "ar-efa" || program.id === "az-esa",
+                : program.id === "ar-efa" ||
+                  program.id === "az-esa" ||
+                  program.id === "nh-efa",
             )
             .map((program) => (
               <Link
@@ -219,7 +221,9 @@ function PlansView({
         <ParentFeedbackForm
           context="plans"
           program={
-            programId === "ar-efa" || programId === "az-esa"
+            programId === "ar-efa" ||
+            programId === "az-esa" ||
+            programId === "nh-efa"
               ? programId
               : undefined
           }

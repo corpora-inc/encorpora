@@ -230,6 +230,8 @@ test("enabled invoice forms link to the correct program without an email request
       assert.equal(actions.length, 2);
       for (const action of actions) assert.equal(action[1], `https://amp.example.invalid/invoice/${slug}`);
       assert.ok(html.includes("Create your invoice"));
+      const programId = {AR:"ar-efa", AZ:"az-esa", NH:"nh-efa"}[state];
+      assert.ok(html.includes(`https://amp.example.invalid/try?program=${programId}`));
       assert.ok(!html.includes("No AMP account required"));
     } finally { await rm(dir, { recursive: true, force: true }); }
   }

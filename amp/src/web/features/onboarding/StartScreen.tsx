@@ -9,6 +9,7 @@ import { LoadingScreen, RouteError } from "../../ui/LoadingScreen";
 import { PageFrame } from "../../ui/PageFrame";
 import {
   isFundedReturn,
+  fundedPrograms,
   continuationSearch,
   rememberFundedPurchase,
   forgetFundedPurchase,
@@ -76,8 +77,7 @@ function SignedInStart({ session }: { session: AuthSession }) {
                 search: {
                   ...search,
                   return: undefined,
-                  program:
-                    search.return === "arkansas-efa" ? "ar-efa" : undefined,
+                  program: fundedPrograms[search.return].id,
                 },
               });
             } else

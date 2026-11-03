@@ -34,7 +34,14 @@ const cookie = (token: string, seconds: number) =>
   `${ACQUISITION_COOKIE}=${token}; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=${Math.max(0, Math.floor(seconds))}`;
 const captureSchema = z.strictObject({
   sourcePath: z
-    .enum(["/", "/sign-up", "/amp/", "/esa/arkansas-efa/", "/esa/arizona-esa/"])
+    .enum([
+      "/",
+      "/sign-up",
+      "/amp/",
+      "/esa/arkansas-efa/",
+      "/esa/arizona-esa/",
+      "/esa/new-hampshire-efa/",
+    ])
     .optional(),
   clicks: z
     .array(clickEvidenceSchema)

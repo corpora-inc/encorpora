@@ -197,3 +197,34 @@ test("a shared-state card retains its identity without inventing a funding progr
     return: "free-practice",
   });
 });
+
+test("NH free practice retains its program and attribution through authentication", () => {
+  const nh = {
+    return: "free-practice",
+    program: "nh-efa",
+    utm_campaign: "nh-efa-launch",
+    utm_source: "google",
+    utm_medium: "cpc",
+    utm_content: "nh-efa-adaptive-v1",
+  };
+  expect(continuationSearch(nh)).toEqual(nh);
+  expect(continuationUrl(nh)).toBe(
+    "/try?utm_campaign=nh-efa-launch&utm_source=google&utm_medium=cpc&utm_content=nh-efa-adaptive-v1&program=nh-efa&return=free-practice",
+  );
+  expect(
+    fundedAttribution(nh, { programId: "nh-efa", jurisdiction: "NH" }),
+  ).toEqual({
+    campaign: "nh-efa-launch",
+    source: "google",
+    medium: "cpc",
+    creative: "nh-efa-adaptive-v1",
+  });
+  expect(
+    fundedAttribution(nh, { programId: "ar-efa", jurisdiction: "AR" }),
+  ).toBeUndefined();
+  vi.stubGlobal("navigator", { globalPrivacyControl: true });
+  expect(continuationSearch(nh)).toEqual({
+    return: "free-practice",
+    program: "nh-efa",
+  });
+});

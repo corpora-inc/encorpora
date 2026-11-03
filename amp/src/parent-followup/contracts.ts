@@ -9,7 +9,7 @@ export const signupEntrySchema = z.enum([
   "openai-math-plans",
 ]);
 export const signupIntentSchema = z.strictObject({
-  program: z.enum(["ar-efa", "az-esa"]).optional(),
+  program: z.enum(["ar-efa", "az-esa", "nh-efa"]).optional(),
   campaign: fundedCampaignSchema.optional(),
   newsletter: z.boolean(),
   analytics: gaSignupContextSchema.optional(),

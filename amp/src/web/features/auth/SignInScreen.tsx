@@ -506,7 +506,13 @@ export function SignInScreen() {
             {carry.program && (
               <p className={styles.funding}>
                 Approved{" "}
-                {carry.program === "ar-efa" ? "Arkansas EFA" : "Arizona ESA"}{" "}
+                {
+                  {
+                    "ar-efa": "Arkansas EFA",
+                    "az-esa": "Arizona ESA",
+                    "nh-efa": "New Hampshire EFA",
+                  }[carry.program]
+                }{" "}
                 vendor.
               </p>
             )}

@@ -135,6 +135,44 @@ test(
         ).rows,
         [{ campaign: "az-esa-launch", creative: "az-esa-math", count: "1" }],
       );
+      const nh = {
+        ...payload,
+        state: "NH",
+        program: "new-hampshire-efa",
+        campaign: "nh-efa-launch",
+        creative: "nh-efa-adaptive-v1",
+      };
+      assert.equal(
+        (
+          await app.inject({
+            method: "POST",
+            url: "/api/v1/campaign-events",
+            headers: { origin: "https://example.test" },
+            payload: nh,
+          })
+        ).statusCode,
+        202,
+      );
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT campaign,creative,count FROM amp_campaign_creative_daily WHERE campaign='nh-efa-launch'",
+          )
+        ).rows,
+        [
+          {
+            campaign: "nh-efa-launch",
+            creative: "nh-efa-adaptive-v1",
+            count: "1",
+          },
+        ],
+      );
+      await assert.rejects(
+        pool.query(
+          "UPDATE amp_campaign_daily SET state='AZ' WHERE campaign='nh-efa-launch'",
+        ),
+        /amp_campaign_daily_program_campaign_check/,
+      );
       await assert.rejects(
         pool.query(
           "UPDATE amp_campaign_daily SET state='AR' WHERE campaign='az-esa-launch'",

@@ -58,7 +58,7 @@ const labels = z.object({
 export type CampaignSearch = Partial<z.infer<typeof labels>>;
 export type FundedSearch = CampaignSearch & {
   return?: "security" | "access" | "free-practice" | FundedProgramSlug;
-  program?: "ar-efa" | "az-esa";
+  program?: "ar-efa" | "az-esa" | "nh-efa";
   entry?: "openai-math-path" | "openai-math-plans";
 };
 
@@ -89,7 +89,9 @@ export function continuationSearch(
     !measurementOptOut()
       ? { entry: signupEntrySchema.parse(search.entry) }
       : {}),
-    ...(search.program === "ar-efa" || search.program === "az-esa"
+    ...(search.program === "ar-efa" ||
+    search.program === "az-esa" ||
+    search.program === "nh-efa"
       ? { program: search.program }
       : {}),
     ...(search.return === "security" ||

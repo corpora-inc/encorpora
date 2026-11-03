@@ -55,7 +55,7 @@ async function post(path: string, body: unknown) {
  * creates nothing until the passkey is verified. */
 export async function signUpWithPasskey(
   email: string,
-  freePractice?: { program?: "ar-efa" | "az-esa" },
+  freePractice?: { program?: "ar-efa" | "az-esa" | "nh-efa" },
   startedAt = performance.now(),
 ): Promise<PasskeySignUpResult> {
   const options = await post("/passkey-signup/options", { email });

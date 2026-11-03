@@ -47,7 +47,7 @@ test(
           [id, `${id}@example.com`, verified],
         );
         const token = await createSignupIntent(pool, {
-          program: "ar-efa",
+          program: "nh-efa",
           newsletter,
           notice: signupNotice,
         });
@@ -91,7 +91,7 @@ test(
         calls[1],
         "ambiguous delivery retries exact bytes and identity",
       );
-      assert.match(calls[0]!.text, /Arkansas EFA/);
+      assert.match(calls[0]!.text, /New Hampshire EFA/);
       assert.match(calls[0]!.text, /return=free-practice/);
       assert.equal(
         await deliverParentFollowup(pool, config, async () =>
@@ -103,7 +103,7 @@ test(
         "UPDATE amp_parent_followup_outbox SET accepted_at=now()-interval '25 hours' WHERE user_id='parent' AND stage='welcome'",
       );
       await deliverParentFollowup(pool, config, async (mail) => {
-        assert.match(mail.subject, /Arkansas EFA/);
+        assert.match(mail.subject, /New Hampshire EFA/);
         return { accepted: "reminder" };
       });
       assert.equal(

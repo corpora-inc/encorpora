@@ -20,6 +20,7 @@ export const adClickSourceSchema = z.enum([
   "https://amp.corpora.inc/sign-up",
   "https://corpora.inc/amp/",
   "https://corpora.inc/esa/arizona-esa/",
+  "https://corpora.inc/esa/new-hampshire-efa/",
 ]);
 const tokenSchema = z.string().regex(/^[a-f0-9]{64}$/);
 const digest = (v: string) => createHash("sha256").update(v).digest("hex");

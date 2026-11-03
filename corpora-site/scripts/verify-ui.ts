@@ -123,7 +123,7 @@ try {
       ],
       funding: [fundingFixture, { ...fundingFixture, state: "AR", kind: "classwallet-direct-pay",
         page: { ...fundingFixture.page, slug: "arkansas-efa",
-          presentation: { ...fundingFixture.page.presentation, invoiceForm: "arkansas-efa" } } }, { ...fundingFixture, state: "AZ", kind: "classwallet-direct-pay", page: { ...fundingFixture.page, slug: "arizona-esa", presentation: { ...fundingFixture.page.presentation, invoiceForm: "arizona-esa" } } }],
+          presentation: { ...fundingFixture.page.presentation, invoiceForm: "arkansas-efa" } } }, { ...fundingFixture, state: "AZ", kind: "classwallet-direct-pay", page: { ...fundingFixture.page, slug: "arizona-esa", presentation: { ...fundingFixture.page.presentation, invoiceForm: "arizona-esa" } } }, { ...fundingFixture, state: "NH", program: "New Hampshire EFA", kind: "classwallet-direct-pay", page: { ...fundingFixture.page, slug: "new-hampshire-efa", presentation: { ...fundingFixture.page.presentation, invoiceForm: "new-hampshire-efa" } } }],
     }),
     "artifacts/production",
   );
@@ -183,14 +183,14 @@ try {
       fullPage: true,
     });
   }
-  for (const slug of ["arkansas-efa", "arizona-esa"]) for (const width of [320, 390, 768, 1280]) {
+  for (const slug of ["arkansas-efa", "arizona-esa", "new-hampshire-efa"]) for (const width of [320, 390, 768, 1280]) {
     await fixturePage.setViewportSize({ width, height: 900 });
     await fixturePage.goto(production.url + `/esa/${slug}/`);
     const proof = fixturePage.locator(".funding-product-proof");
     await proof.getByText("See what your child gets.", { exact: true }).waitFor();
     const assessment = new URL((await proof.getByRole("link", { name: "Start your free assessment" }).getAttribute("href"))!);
     assert.equal(assessment.pathname, "/try");
-    assert.equal(assessment.searchParams.get("program"), slug === "arkansas-efa" ? "ar-efa" : "az-esa");
+    assert.equal(assessment.searchParams.get("program"), slug === "arkansas-efa" ? "ar-efa" : slug === "arizona-esa" ? "az-esa" : "nh-efa");
     await proof.locator(".solution summary").focus();
     await fixturePage.keyboard.press("Enter");
     assert.equal(await proof.locator(".solution[open]").count(), 1);

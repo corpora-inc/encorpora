@@ -743,6 +743,13 @@ try {
             .getAttribute("href")
         )?.startsWith("/invoice/arizona-esa"),
       );
+      assert.ok(
+        (
+          await page
+            .getByRole("link", { name: "Use New Hampshire EFA funds" })
+            .getAttribute("href")
+        )?.startsWith("/invoice/new-hampshire-efa"),
+      );
       const annual = page.getByRole("radio", { name: /Annual/ }),
         monthly = page.getByRole("radio", { name: /Monthly/ });
       assert.match((await annual.textContent()) ?? "", /\$499\.00 per year/);

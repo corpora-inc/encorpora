@@ -50,7 +50,7 @@ const searchSchema = z
       .optional()
       .catch(undefined),
     entry: signupEntrySchema.optional().catch(undefined),
-    program: z.enum(["ar-efa", "az-esa"]).optional().catch(undefined),
+    program: z.enum(["ar-efa", "az-esa", "nh-efa"]).optional().catch(undefined),
     token: z.string().max(2048).optional(),
     error: z.string().max(200).optional(),
     topic: z.string().max(100).optional().catch(undefined),
@@ -114,7 +114,9 @@ const root = createRootRoute({
           utm_content: undefined,
           ...campaignSearch(result),
           program:
-            result.program === "ar-efa" || result.program === "az-esa"
+            result.program === "ar-efa" ||
+            result.program === "az-esa" ||
+            result.program === "nh-efa"
               ? result.program
               : undefined,
         };
