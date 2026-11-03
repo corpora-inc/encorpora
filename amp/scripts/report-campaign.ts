@@ -30,7 +30,7 @@ try {
     `SELECT v.utm_campaign AS campaign,v.utm_source AS source,v.utm_medium AS medium,
     e.event,count(*)::int AS events FROM amp_funnel_events e
     JOIN amp_funnel_visitors v ON v.visitor_id=e.visitor_id
-    WHERE v.utm_campaign IN ('ar-efa-launch','az-esa-launch') AND e.occurred_on >= (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date - $1::int
+    WHERE v.utm_campaign IN ('ar-efa-launch','az-esa-launch','nh-efa-launch') AND e.occurred_on >= (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date - $1::int
     AND e.event IN ('try_click','placement_done','purchase')
     GROUP BY v.utm_campaign,v.utm_source,v.utm_medium,e.event ORDER BY 1,2,3,4`,
     [days - 1],
@@ -41,6 +41,17 @@ try {
   const arkansasCash = await arkansasCashSummary(pool, days);
   const arizonaOrders = await fundedOrderSummary(pool, days, "az-esa-launch");
   const arizonaCash = await fundedCashSummary(pool, days, "az-esa-launch");
+  const newHampshireCohort = await fundedCohortSummary(
+    pool,
+    days,
+    "nh-efa-launch",
+  );
+  const newHampshireOrders = await fundedOrderSummary(
+    pool,
+    days,
+    "nh-efa-launch",
+  );
+  const newHampshireCash = await fundedCashSummary(pool, days, "nh-efa-launch");
   const creatives = await pool.query(
     `SELECT day,campaign,source,medium,creative,action,count FROM amp_campaign_creative_daily
      WHERE day >= (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date - $1::int
@@ -63,6 +74,8 @@ try {
             "Verified ESA settlements and completed refunds linked to retained Arkansas funding requests, grouped by UTC evidence date, currency and optional fixed campaign labels. Amounts are exact integer strings in the currency minor unit. Null labels mean unattributed; null creative does not infer an ad. Net cash is gross minus completed refunds, not profit or recognized revenue. Never sum different currencies. No ad-platform export.",
           arizonaCash:
             "Same cash definitions as arkansasCash, restricted to retained offers with programId az-esa and jurisdiction AZ.",
+          newHampshireCash:
+            "Same cash definitions as arkansasCash, restricted to retained offers with programId nh-efa and jurisdiction NH.",
           activity:
             "Daily page loads and link clicks, not unique people. Reloads and bots can count.",
           invoice_click:
@@ -70,7 +83,7 @@ try {
           funnel:
             "Existing AMP first-touch campaign events. Purchase means a server-verified Stripe purchase, not an ESA/ClassWallet order. No cross-domain visitor join; campaign totals only. Existing visitors may retain an earlier campaign.",
           fundedCampaign:
-            "Historical server-verified transitions for Arkansas and Arizona requests with fixed labels supplied at creation. Request preparation uses its creation date; order/refund events use their evidence date in UTC. Each action counts once per request. Labels are self-reported campaign context, not independently verified ad clicks or proof of causal lift. No ad-platform export.",
+            "Historical server-verified transitions for Arkansas, Arizona and New Hampshire requests with fixed labels supplied at creation. Request preparation uses its creation date; order/refund events use their evidence date in UTC. Each action counts once per request. Labels are self-reported campaign context, not independently verified ad clicks or proof of causal lift. No ad-platform export.",
           creatives:
             "Optional breakdown of activity and fundedCampaign by fixed authored creative label. These counts are subsets of the coarse totals, not additional conversions. Unknown or absent creatives are omitted, not inferred. No creative attribution is added to learner or assessment events.",
         },
@@ -78,10 +91,13 @@ try {
           "Cash reporting follows settlement/refund evidence dates, regardless of request creation or import date. Refunds for older payments can make a period negative. Pending refunds, approvals and license activation are excluded. Processor fees, ad spend and unlinked payments are excluded; this is not an account reconciliation or return-on-ad-spend calculation.",
           "State order totals are current states for retained funding requests created in the report window, not purchases attributed to an ad. Expired unconverted requests are deleted, so request counts are not historical lead totals.",
           "Cohort observation is limited to retained invoices and online practice records. Expired unconverted invoices and erased learning history are not reconstructible. It does not prove learning outcomes, unique parent conversion, causal attribution, offline use or an ordered visitor funnel. A state-page visitor is not a verified scholarship participant.",
-          "Retained offers establish state classification: ar-efa/AR for Arkansas and az-esa/AZ for Arizona. Unlinked commerce imports and email-only invoices are excluded.",
+          "Retained offers establish state classification: ar-efa/AR for Arkansas, az-esa/AZ for Arizona and nh-efa/NH for New Hampshire. Unlinked commerce imports and email-only invoices are excluded.",
           "Prepared request records include submitted and cancelled records. Approved, settled, issued and refunded totals overlap; they are not additive sales.",
           "Funded campaign counts include only requests created with attribution. Existing requests are not backfilled. Count of settled orders is gross; refund_completed is distinct, not revenue or net sales. Requests and payments may occur in different report windows.",
         ],
+        newHampshireCohort,
+        newHampshireOrders,
+        newHampshireCash,
         arizonaCohort,
         arkansasCohort,
         arizonaOrders,

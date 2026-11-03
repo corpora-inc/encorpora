@@ -1,7 +1,16 @@
 import { z } from "zod";
 
-export const CAMPAIGN_NAMES = ["ar-efa-launch", "az-esa-launch"] as const;
+export const CAMPAIGN_NAMES = [
+  "ar-efa-launch",
+  "az-esa-launch",
+  "nh-efa-launch",
+] as const;
 export const CAMPAIGN_PROGRAMS = {
+  "nh-efa-launch": {
+    state: "NH",
+    program: "new-hampshire-efa",
+    programId: "nh-efa",
+  },
   "ar-efa-launch": {
     state: "AR",
     program: "arkansas-efa",
@@ -184,11 +193,12 @@ export const CAMPAIGN_CREATIVES = [
   "ar-product-planning-search-v1",
   "az-product-adaptive-search-v1",
   "az-product-planning-search-v1",
+  "nh-efa-adaptive-v1",
 ] as const;
 export const campaignEventSchema = z
   .strictObject({
-    state: z.enum(["AR", "AZ"]),
-    program: z.enum(["arkansas-efa", "arizona-esa"]),
+    state: z.enum(["AR", "AZ", "NH"]),
+    program: z.enum(["arkansas-efa", "arizona-esa", "new-hampshire-efa"]),
     campaign: z.enum(["none", ...CAMPAIGN_NAMES]),
     source: z.enum(CAMPAIGN_SOURCES),
     medium: z.enum(CAMPAIGN_MEDIA),
@@ -201,13 +211,11 @@ export const campaignEventSchema = z
   )
   .refine((e) => {
     const program =
-      CAMPAIGN_PROGRAMS[
-        e.campaign === "none"
-          ? e.state === "AR"
-            ? "ar-efa-launch"
-            : "az-esa-launch"
-          : e.campaign
-      ];
-    return e.state === program.state && e.program === program.program;
+      e.campaign === "none"
+        ? Object.values(CAMPAIGN_PROGRAMS).find(
+            (program) => program.state === e.state,
+          )
+        : CAMPAIGN_PROGRAMS[e.campaign];
+    return e.state === program?.state && e.program === program.program;
   }, "Campaign, state and program must match");
 export type CampaignEvent = z.infer<typeof campaignEventSchema>;

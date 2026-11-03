@@ -92,86 +92,101 @@ async function campaignCounts(pool: Pool) {
     )
   ).rows;
 }
-test(
-  "funded campaign uses evidence UTC dates and rolls back an invalid provisioning bundle",
-  enabled,
-  () =>
-    fixture(async (pool) => {
-      const repo = new FundingPurchaseRepository(pool, [arkansasOffer]);
-      const midnight = new Date();
-      midnight.setUTCHours(0, 0, 0, 0);
-      const createdAt = new Date(midnight.getTime() - 2 * 86400000);
-      const evidenceAt = new Date(midnight.getTime() - 86400000).toISOString();
-      const request = await repo.create(
-        "owner",
-        { ...create(), campaignAttribution },
-        createdAt,
-      );
-      const input = bundle(request.id);
-      for (const event of input.events) event.occurredAt = evidenceAt;
-      const first = input.events[0]!;
-      assert.equal(first.type, "order.created");
-      if (first.type !== "order.created") throw new Error("Invalid fixture");
-      first.order.license.startsAt = evidenceAt;
-      first.order.license.endsAt = annualTermEnd(evidenceAt);
-      input.events.splice(2, 0, {
-        id: randomUUID(),
-        orderId: first.orderId,
-        channel: "esa",
-        channelReference: first.channelReference,
-        type: "order.settled",
-        occurredAt: evidenceAt,
-        amountMinor: first.order.amountMinor,
-        currency: "USD",
-        evidence: "verified-fixture-settlement",
-      });
-      const invalid = {
-        ...input,
-        events: [
-          input.events[0]!,
-          input.events[1]!,
-          input.events[2]!,
-          input.events[4]!,
-          input.events[3]!,
-        ],
-      };
-      await assert.rejects(
-        provisionFundingRequest(pool, invalid, [arkansasOffer]),
-      );
-      assert.equal(
-        (await pool.query("SELECT count(*)::int n FROM amp_commerce_orders"))
-          .rows[0].n,
-        0,
-      );
-      assert.equal(
-        (
+for (const [program, trackedOffer, labels] of [
+  ["AR", arkansasOffer, campaignAttribution],
+  [
+    "NH",
+    { ...offer, programId: "nh-efa", jurisdiction: "NH" },
+    {
+      campaign: "nh-efa-launch",
+      source: "google",
+      medium: "cpc",
+      creative: "nh-efa-adaptive-v1",
+    },
+  ],
+] as const)
+  test(
+    `${program} campaign uses evidence UTC dates and rolls back an invalid provisioning bundle`,
+    enabled,
+    () =>
+      fixture(async (pool) => {
+        const repo = new FundingPurchaseRepository(pool, [trackedOffer]);
+        const midnight = new Date();
+        midnight.setUTCHours(0, 0, 0, 0);
+        const createdAt = new Date(midnight.getTime() - 2 * 86400000);
+        const evidenceAt = new Date(
+          midnight.getTime() - 86400000,
+        ).toISOString();
+        const request = await repo.create(
+          "owner",
+          { ...create(), campaignAttribution: labels },
+          createdAt,
+        );
+        const input = bundle(request.id);
+        for (const event of input.events) event.occurredAt = evidenceAt;
+        const first = input.events[0]!;
+        assert.equal(first.type, "order.created");
+        if (first.type !== "order.created") throw new Error("Invalid fixture");
+        first.order.license.startsAt = evidenceAt;
+        first.order.license.endsAt = annualTermEnd(evidenceAt);
+        input.events.splice(2, 0, {
+          id: randomUUID(),
+          orderId: first.orderId,
+          channel: "esa",
+          channelReference: first.channelReference,
+          type: "order.settled",
+          occurredAt: evidenceAt,
+          amountMinor: first.order.amountMinor,
+          currency: "USD",
+          evidence: "verified-fixture-settlement",
+        });
+        const invalid = {
+          ...input,
+          events: [
+            input.events[0]!,
+            input.events[1]!,
+            input.events[2]!,
+            input.events[4]!,
+            input.events[3]!,
+          ],
+        };
+        await assert.rejects(
+          provisionFundingRequest(pool, invalid, [trackedOffer]),
+        );
+        assert.equal(
+          (await pool.query("SELECT count(*)::int n FROM amp_commerce_orders"))
+            .rows[0].n,
+          0,
+        );
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT count(*)::int n FROM amp_funded_activation_outbox",
+            )
+          ).rows[0].n,
+          0,
+        );
+        assert.deepEqual(await campaignCounts(pool), [
+          { action: "request_prepared", count: 1 },
+        ]);
+        await provisionFundingRequest(pool, input, [trackedOffer]);
+        await provisionFundingRequest(pool, input, [trackedOffer]);
+        const rows = (
           await pool.query(
-            "SELECT count(*)::int n FROM amp_funded_activation_outbox",
+            "SELECT day::text,action,count::int FROM amp_funded_campaign_daily ORDER BY action",
           )
-        ).rows[0].n,
-        0,
-      );
-      assert.deepEqual(await campaignCounts(pool), [
-        { action: "request_prepared", count: 1 },
-      ]);
-      await provisionFundingRequest(pool, input, [arkansasOffer]);
-      await provisionFundingRequest(pool, input, [arkansasOffer]);
-      const rows = (
-        await pool.query(
-          "SELECT day::text,action,count::int FROM amp_funded_campaign_daily ORDER BY action",
-        )
-      ).rows;
-      assert.deepEqual(rows, [
-        { day: evidenceAt.slice(0, 10), action: "order_created", count: 1 },
-        { day: evidenceAt.slice(0, 10), action: "order_settled", count: 1 },
-        {
-          day: createdAt.toISOString().slice(0, 10),
-          action: "request_prepared",
-          count: 1,
-        },
-      ]);
-    }),
-);
+        ).rows;
+        assert.deepEqual(rows, [
+          { day: evidenceAt.slice(0, 10), action: "order_created", count: 1 },
+          { day: evidenceAt.slice(0, 10), action: "order_settled", count: 1 },
+          {
+            day: createdAt.toISOString().slice(0, 10),
+            action: "request_prepared",
+            count: 1,
+          },
+        ]);
+      }),
+  );
 function bundle(requestId: string) {
   const id = randomUUID(),
     at = new Date().toISOString();

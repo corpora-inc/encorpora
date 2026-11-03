@@ -313,7 +313,9 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
       <SupportHelp
         context="invoice"
         program={
-          program?.id === "ar-efa" || program?.id === "az-esa"
+          program?.id === "ar-efa" ||
+          program?.id === "az-esa" ||
+          program?.id === "nh-efa"
             ? program.id
             : undefined
         }

@@ -35,7 +35,13 @@ export function followupMail(
             short: "Arizona ESA",
             path: "arizona-esa",
           }
-        : null;
+        : input.program === "nh-efa"
+          ? {
+              name: "New Hampshire Education Freedom Account",
+              short: "New Hampshire EFA",
+              path: "new-hampshire-efa",
+            }
+          : null;
   const trial = new URL("/sign-in", config.origin);
   trial.searchParams.set("return", "free-practice");
   if (input.program) trial.searchParams.set("program", input.program);

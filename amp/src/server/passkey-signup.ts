@@ -117,7 +117,7 @@ export function passkeySignup(config: {
           body: z.object({
             response: z.object({ id: z.string().min(1).max(1024) }).loose(),
             freePractice: z.boolean().optional(),
-            program: z.enum(["ar-efa", "az-esa"]).optional(),
+            program: z.enum(["ar-efa", "az-esa", "nh-efa"]).optional(),
           }),
         },
         async (ctx) => {

@@ -33,6 +33,7 @@ const payload = {
 };
 
 for (const [campaign, creative, source = "google"] of [
+  ["nh-efa-launch", "nh-efa-adaptive-v1"],
   ["ar-efa-launch", "efa-math"],
   ["az-esa-launch", "efa-math"],
   ["ar-efa-launch", "ar-premium-efa-v1"],
@@ -144,7 +145,9 @@ for (const [campaign, creative, source = "google"] of [
         const sourcePath =
           campaign === "ar-efa-launch"
             ? "/esa/arkansas-efa/"
-            : "/esa/arizona-esa/";
+            : campaign === "nh-efa-launch"
+              ? "/esa/new-hampshire-efa/"
+              : "/esa/arizona-esa/";
         const capturePayload = {
           ...payload,
           sourcePath,

@@ -70,7 +70,8 @@ export async function recordFundedCampaignEvent(
   const result = await client.query(
     `SELECT id,campaign_attribution,campaign_counted FROM amp_funding_requests
      WHERE order_id=$1 AND ((offer_snapshot->>'programId'='ar-efa' AND offer_snapshot->>'jurisdiction'='AR')
-       OR (offer_snapshot->>'programId'='az-esa' AND offer_snapshot->>'jurisdiction'='AZ'))
+       OR (offer_snapshot->>'programId'='az-esa' AND offer_snapshot->>'jurisdiction'='AZ')
+       OR (offer_snapshot->>'programId'='nh-efa' AND offer_snapshot->>'jurisdiction'='NH'))
        AND campaign_attribution IS NOT NULL FOR UPDATE`,
     [event.orderId],
   );

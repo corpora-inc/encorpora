@@ -1,3 +1,4 @@
+import { CAMPAIGN_NAMES } from "../src/analytics/campaign.js";
 import { readFile, stat, writeFile, mkdir, rename } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { randomUUID } from "node:crypto";
@@ -58,7 +59,7 @@ try {
     { newest: 0, notes: false },
   );
   const fulfillment = [];
-  for (const campaign of ["ar-efa-launch", "az-esa-launch"] as const)
+  for (const campaign of CAMPAIGN_NAMES)
     fulfillment.push(await fundedCohortSummary(pool, days, campaign));
   const feedback = (
     await pool.query<{

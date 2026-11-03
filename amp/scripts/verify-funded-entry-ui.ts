@@ -304,10 +304,29 @@ try {
         const entryCampaign =
           entry.slug === "arizona-esa"
             ? campaign.replace("ar-efa-launch", "az-esa-launch")
-            : campaign;
+            : entry.slug === "new-hampshire-efa"
+              ? "utm_source=google&utm_medium=cpc&utm_campaign=nh-efa-launch&utm_content=nh-efa-adaptive-v1"
+              : campaign;
         const state = fresh(entry.offer),
           faults: string[] = [];
         await serve(page, state, faults);
+        if (entry.slug === "new-hampshire-efa") {
+          await page.goto(
+            `${origin}/sign-up?return=free-practice&program=nh-efa&${entryCampaign}`,
+          );
+          await page.getByText("Approved New Hampshire EFA vendor.").waitFor();
+          await page.reload();
+          await page.getByText("Approved New Hampshire EFA vendor.").waitFor();
+          assert.equal(
+            new URL(page.url()).searchParams.get("program"),
+            "nh-efa",
+          );
+          assert.equal(
+            new URL(page.url()).searchParams.get("utm_campaign"),
+            "nh-efa-launch",
+          );
+          await capture(page, `free-signup-nh-${width}-${theme}`);
+        }
         await page.goto(
           `${origin}/purchase/${entry.slug}?${entryCampaign}&email=must-not-forward`,
         );
@@ -402,7 +421,10 @@ try {
         await page
           .getByRole("heading", { name: entry.offer.programName, exact: true })
           .waitFor();
-        assert.ok(page.url().includes("utm_source=facebook"));
+        assert.equal(
+          new URL(page.url()).searchParams.get("utm_source"),
+          new URLSearchParams(entryCampaign).get("utm_source"),
+        );
         assert.equal(state.adopted, adopting);
         await page
           .getByRole("button", { name: /^Program and product:/ })
@@ -443,7 +465,12 @@ try {
         assert.deepEqual(
           state.payloads[1]!.campaignAttribution,
           entry.slug === "new-hampshire-efa"
-            ? undefined
+            ? {
+                campaign: "nh-efa-launch",
+                source: "google",
+                medium: "cpc",
+                creative: "nh-efa-adaptive-v1",
+              }
             : {
                 campaign:
                   entry.slug === "arizona-esa"

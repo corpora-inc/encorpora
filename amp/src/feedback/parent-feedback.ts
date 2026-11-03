@@ -4,6 +4,6 @@ export const parentFeedbackSchema = z.strictObject({
   requestId: z.uuid(),
   adult: z.literal(true),
   context: z.enum(["general", "plans", "invoice", "purchase"]),
-  program: z.enum(["ar-efa", "az-esa"]).optional(),
+  program: z.enum(["ar-efa", "az-esa", "nh-efa"]).optional(),
   message: z.string().trim().min(1).max(2000),
 });

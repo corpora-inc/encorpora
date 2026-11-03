@@ -222,6 +222,7 @@ test("funded v5 vocabulary is exactly fifty fixed labels and preserves previous 
     values(sql),
     CAMPAIGN_CREATIVES.filter(
       (label) =>
+        label !== "nh-efa-adaptive-v1" &&
         !/^a[rz]-(product-(adaptive|planning)-search-v1|product-in-action|staircase-)/.test(
           label,
         ),
@@ -272,7 +273,9 @@ test("product-led creative labels preserve the existing database vocabulary", ()
   ]);
   assert.deepEqual(values("0059-product-search-creative-labels.sql"), [
     ...CAMPAIGN_CREATIVES.filter(
-      (label) => !/^a[rz]-(product-in-action|staircase-)/.test(label),
+      (label) =>
+        label !== "nh-efa-adaptive-v1" &&
+        !/^a[rz]-(product-in-action|staircase-)/.test(label),
     ),
   ]);
 });
@@ -286,7 +289,10 @@ test("signup creative labels match the database and retain historical labels", (
   const values = [...constraint.matchAll(/'([a-z0-9-]+)'/g)].map(
     (match) => match[1],
   );
-  assert.deepEqual(values, [...CAMPAIGN_CREATIVES]);
+  assert.deepEqual(
+    values,
+    CAMPAIGN_CREATIVES.filter((label) => label !== "nh-efa-adaptive-v1"),
+  );
   const prior = readFileSync(
     new URL(
       "../migrations/0059-product-search-creative-labels.sql",
@@ -296,4 +302,40 @@ test("signup creative labels match the database and retain historical labels", (
   );
   for (const [, value] of prior.matchAll(/'([a-z0-9-]+)'/g))
     assert.ok((values as readonly string[]).includes(value));
+});
+
+test("NH campaign labels match the migrated creative constraint and reject cross-state attribution", () => {
+  const sql = readFileSync(
+    new URL("../migrations/0081-nh-campaign.sql", import.meta.url),
+    "utf8",
+  );
+  const constraint = sql.split("CHECK (creative IN (")[1]!.split("));")[0]!;
+  assert.deepEqual(
+    [...constraint.matchAll(/'([a-z0-9-]+)'/g)].map((match) => match[1]),
+    [...CAMPAIGN_CREATIVES],
+  );
+  const nh = {
+    ...payload,
+    state: "NH",
+    program: "new-hampshire-efa",
+    campaign: "nh-efa-launch",
+    creative: "nh-efa-adaptive-v1",
+  };
+  assert.ok(campaignEventSchema.safeParse(nh).success);
+  assert.ok(
+    campaignEventSchema.safeParse({
+      ...nh,
+      campaign: "none",
+      creative: undefined,
+    }).success,
+  );
+  for (const mismatch of [
+    { state: "AZ" },
+    { program: "arkansas-efa" },
+    { campaign: "ar-efa-launch" },
+  ])
+    assert.equal(
+      campaignEventSchema.safeParse({ ...nh, ...mismatch }).success,
+      false,
+    );
 });
