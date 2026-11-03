@@ -418,6 +418,12 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       state: "paid",
       ready: (p) => p.locator(".family-tabs").waitFor(),
     },
+    {
+      id: "workbooks",
+      path: `/learners/${f.paid.jordan.id}/workbooks`,
+      state: "paid",
+      ready: heading(/^Workbooks$/),
+    },
     { id: "purchase", path: "/purchase", state: "paid" },
     { id: "birth-year", path: "/profile/birth-year", state: "paid" },
   ];

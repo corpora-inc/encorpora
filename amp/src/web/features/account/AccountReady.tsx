@@ -39,7 +39,10 @@ export function AccountReady() {
         </div>
         <h1>Your account is ready</h1>
         {account?.account.email && (
-          <p className={styles.email}>Signed in as {account.account.email}</p>
+          <p className={styles.email}>
+            Signed in as{" "}
+            <span className={styles.address}>{account.account.email}</span>
+          </p>
         )}
         {me.isPending ? (
           <p role="status">Checking your next step…</p>

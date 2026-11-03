@@ -419,50 +419,52 @@ export function ProgressWorkspace({
                 Go
               </button>
             </header>
-            {snapshot && (
-              <div className="progress-controls">
-                <label>
-                  <span className="sr-only">Math area</span>
-                  <Select
-                    aria-label="Math area"
-                    value={view.strand}
-                    onValueChange={(e) =>
-                      setView({ ...view, strand: e, page: 0 })
-                    }
-                  >
-                    <option value="">Every math area</option>
-                    {areas.map((area) => (
-                      <option key={area} value={area}>
-                        {areaName(area)}
-                      </option>
-                    ))}
-                  </Select>
-                </label>
-                <div
-                  className="progress-filters"
-                  aria-label="Practice evidence"
+            {/* The controls hold their place, hidden and inert, until the
+                history arrives, so the cards never drop in under them. */}
+            <div
+              className="progress-controls"
+              data-placeholder={snapshot ? undefined : ""}
+              inert={!snapshot}
+              aria-hidden={snapshot ? undefined : true}
+            >
+              <label>
+                <span className="sr-only">Math area</span>
+                <Select
+                  aria-label="Math area"
+                  value={view.strand}
+                  onValueChange={(e) =>
+                    setView({ ...view, strand: e, page: 0 })
+                  }
                 >
-                  {(
-                    [
-                      ["practiced", "Practiced"],
-                      [
-                        "review",
-                        `Review${review.length ? ` · ${review.length}` : ""}`,
-                      ],
-                      ["explore", "Explore"],
-                    ] as const
-                  ).map(([filter, label]) => (
-                    <button
-                      key={filter}
-                      aria-pressed={view.filter === filter}
-                      onClick={() => setView({ ...view, filter, page: 0 })}
-                    >
-                      {label}
-                    </button>
+                  <option value="">Every math area</option>
+                  {areas.map((area) => (
+                    <option key={area} value={area}>
+                      {areaName(area)}
+                    </option>
                   ))}
-                </div>
+                </Select>
+              </label>
+              <div className="progress-filters" aria-label="Practice evidence">
+                {(
+                  [
+                    ["practiced", "Practiced"],
+                    [
+                      "review",
+                      `Review${review.length ? ` · ${review.length}` : ""}`,
+                    ],
+                    ["explore", "Explore"],
+                  ] as const
+                ).map(([filter, label]) => (
+                  <button
+                    key={filter}
+                    aria-pressed={view.filter === filter}
+                    onClick={() => setView({ ...view, filter, page: 0 })}
+                  >
+                    {label}
+                  </button>
+                ))}
               </div>
-            )}
+            </div>
             <div className="progress-card-stage" ref={list}>
               {!snapshot ? (
                 <div className="progress-empty">
