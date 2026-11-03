@@ -16,6 +16,9 @@
   padding: 0 var(--space-4);
   gap: 0;
   flex-wrap: nowrap;
+  /* The menu and the wordmark read as one unit at the start of the bar; the
+     legacy `header` rule would push the wordmark to the far edge. */
+  justify-content: flex-start;
   border-bottom: 1px solid var(--color-border);
 }
 .brand {
@@ -122,9 +125,11 @@
   min-width: 0;
   width: 100%;
 }
+/* The wordmark keeps the bar's inset around its hover fill; the margin
+   tucks that inset into the gap after the menu. */
 .cardBrandRow .cardBrand {
-  margin: 0;
-  padding: 0;
+  margin: 0 0 0 calc(-1 * var(--space-1));
+  padding: 0 var(--space-2);
   min-width: var(--target-size);
   width: auto;
   font-size: 20px;

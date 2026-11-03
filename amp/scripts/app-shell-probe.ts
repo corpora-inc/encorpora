@@ -346,3 +346,74 @@ export async function focusWalk(page: Page, steps = 24) {
   }
   return { order, problems: [...new Set(problems)] };
 }
+
+/**
+ * Hovers every visible control and reports any whose filled or hover
+ * background hugs its label: less than `min` px between the label's ink and
+ * the background's left or right edge. A hover fill that touches the words
+ * reads as a mistake; every button keeps an even inset around its label.
+ */
+export async function hoverHugs(page: Page, min = 6, limit = 80) {
+  await page.evaluate("globalThis.__name ??= (f) => f");
+  const count = await page.evaluate((max) => {
+    const scope =
+      document.querySelector("dialog:modal, [role=dialog][data-state=open]") ??
+      document.body;
+    let n = 0;
+    for (const el of scope.querySelectorAll<HTMLElement>(
+      "button,a[href],summary,[role=tab],[role=option],[role=radio],[role=menuitem]",
+    )) {
+      el.removeAttribute("data-hug");
+      if (n >= max || el.closest("[hidden],[inert],[aria-hidden='true']"))
+        continue;
+      if (!el.checkVisibility?.({ visibilityProperty: true })) continue;
+      const r = el.getBoundingClientRect();
+      if (r.width < 2 || r.top < 0 || r.bottom > innerHeight) continue;
+      if (!(el.textContent ?? "").trim()) continue;
+      el.setAttribute("data-hug", String(n++));
+    }
+    return n;
+  }, limit);
+  const hugs: string[] = [];
+  for (let i = 0; i < count; i++) {
+    const target = page.locator(`[data-hug="${i}"]`);
+    // Inline links in prose underline on hover; they draw no fill.
+    await target.hover({ timeout: 1500, force: true }).catch(() => undefined);
+    const found = await target
+      .evaluate((el, inset) => {
+        const style = getComputedStyle(el);
+        const filled = (c: string) =>
+          !/^(transparent|rgba\(\d+, \d+, \d+, 0\))$/.test(c);
+        if (!filled(style.backgroundColor) && style.borderStyle === "none")
+          return null;
+        if (
+          !filled(style.backgroundColor) &&
+          parseFloat(style.borderWidth) === 0
+        )
+          return null;
+        const box = el.getBoundingClientRect();
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        let left = Infinity,
+          right = -Infinity;
+        for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+          if (!(node.textContent ?? "").trim()) continue;
+          const range = document.createRange();
+          range.selectNodeContents(node);
+          for (const r of range.getClientRects()) {
+            if (r.width < 1) continue;
+            left = Math.min(left, r.left);
+            right = Math.max(right, r.right);
+          }
+        }
+        if (!Number.isFinite(left)) return null;
+        const gap = Math.min(left - box.left, box.right - right);
+        if (gap >= inset) return null;
+        const name = (el.textContent ?? "").trim().replace(/\s+/g, " ");
+        return `<${el.tagName.toLowerCase()}> "${name.slice(0, 40)}" ${Math.round(gap)}px`;
+      }, min)
+      .catch(() => null);
+    if (found) hugs.push(found);
+  }
+  await page.mouse.move(0, 0);
+  return [...new Set(hugs)];
+}

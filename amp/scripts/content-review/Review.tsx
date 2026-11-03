@@ -8,6 +8,7 @@ import { ProblemLesson } from "../../src/web/ProblemLesson";
 import "../../src/web/style.css";
 import "../../src/web/theme.css";
 import "katex/dist/katex.min.css";
+import "../../src/web/lesson-reading.css";
 import "./review.css";
 
 const featured = [

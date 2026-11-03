@@ -1263,9 +1263,11 @@
     > .pathways-phone-summary {
     display: none;
   }
+  /* Pinned to the row's end: when a priority notice hides the count, the
+     picker stays where the finger left it. */
   .pathways .pathways-status .pathways-learner {
     flex: none;
-    margin: 0;
+    margin: 0 0 0 auto;
   }
   .pathways .pathways-status .pathways-learner > span {
     display: none;

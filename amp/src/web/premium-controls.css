@@ -19,6 +19,18 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/* The same drawn chevron as the kit's pickers (ui/Listbox, ui/Menu): a
+   glyph sits on the text baseline, below the label's optical centre. */
+.premium-select-chevron {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .premium-select:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 3px;
@@ -45,8 +57,19 @@
   margin-bottom: 12px;
 }
 .premium-options-heading button {
+  display: grid;
+  place-items: center;
   min-width: 44px;
   min-height: 44px;
+  padding: 0;
+}
+.premium-options-heading svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
 }
 .premium-options [role="listbox"] {
   display: grid;

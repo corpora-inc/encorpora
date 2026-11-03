@@ -1201,13 +1201,17 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     loadedFrontier?.birthYear === learner?.birthYear
       ? (loadedFrontier?.map ?? null)
       : null;
-  const homeStrands = Object.keys(strandNames).filter((strand) =>
-    catalog?.skills.some(
-      (skill) =>
-        skill.strand === strand &&
-        catalog.templates.some((t) => t.skillId === skill.id),
-    ),
-  );
+  // Every area holds its row while the catalog loads, so the level map
+  // never grows under the learner's eyes once it arrives.
+  const homeStrands = catalog
+    ? Object.keys(strandNames).filter((strand) =>
+        catalog.skills.some(
+          (skill) =>
+            skill.strand === strand &&
+            catalog.templates.some((t) => t.skillId === skill.id),
+        ),
+      )
+    : Object.keys(strandNames);
   useEffect(() => {
     if (!learner || tab !== "practice" || !exploring) return;
     const id = learner.id;

@@ -348,19 +348,23 @@ export function InventoryScreen() {
           );
         })
       )}
-      <details className={styles.explainer}>
-        <summary>How XP, illumination and strength work</summary>
-        <p>
-          Each correct answer without help earns 1 XP and 0.5 illumination, up
-          to 10 illumination per skill. XP keeps accumulating. Illumination
-          matches your pathways map.
-        </p>
-        <p>
-          Strength reflects recorded practice; it can change when you need
-          review. Earned XP stays. Grade labels describe the skill’s curriculum
-          level; your estimated level is shown separately.
-        </p>
-      </details>
+      {/* Follows the skills once they load, rather than sliding down from
+          under the loading line. */}
+      {!busy && (
+        <details className={styles.explainer}>
+          <summary>How XP, illumination and strength work</summary>
+          <p>
+            Each correct answer without help earns 1 XP and 0.5 illumination, up
+            to 10 illumination per skill. XP keeps accumulating. Illumination
+            matches your pathways map.
+          </p>
+          <p>
+            Strength reflects recorded practice; it can change when you need
+            review. Earned XP stays. Grade labels describe the skill’s
+            curriculum level; your estimated level is shown separately.
+          </p>
+        </details>
+      )}
     </main>
   );
 }

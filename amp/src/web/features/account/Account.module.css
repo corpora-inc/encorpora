@@ -49,8 +49,14 @@
   line-height: 1.15;
 }
 .email {
-  overflow-wrap: anywhere;
   font-weight: 600;
+}
+/* An address moves to its own line whole rather than breaking at a
+   hyphen; only an address wider than the card breaks inside. */
+.address {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 .actions {
   display: grid;

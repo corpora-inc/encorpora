@@ -52,6 +52,9 @@
   min-width: 44px;
   white-space: nowrap;
 }
+.progress-controls[data-placeholder] {
+  visibility: hidden;
+}
 .progress-controls {
   display: flex;
   flex: none;

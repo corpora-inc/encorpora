@@ -1,7 +1,7 @@
+/* The same column and top spacing as the other Family sections. */
 .account-security {
-  max-width: 44rem;
-  margin: 0 auto;
-  padding: 12px 4px;
+  margin: 0;
+  padding: 8px 0;
 }
 .account-security h2 {
   margin: 0 0 8px;
@@ -167,4 +167,9 @@
 .shell .family-center:has([data-security-tab]) .family-heading h1 {
   font-size: 1.2rem;
   margin: 0;
+}
+
+/* Placeholder rows hold the closed panels' height while settings load. */
+.security-loading .security-panel {
+  height: 76px;
 }

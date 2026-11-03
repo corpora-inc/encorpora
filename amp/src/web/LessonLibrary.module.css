@@ -49,7 +49,7 @@
   color: var(--color-on-surface-raised);
 }
 .search:focus-within {
-  outline: 2px solid var(--color-focus-ring);
+  outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 .search > svg {
@@ -75,8 +75,13 @@
   background: transparent;
   box-shadow: none;
   color: inherit;
-  /* 16px keeps phones from zooming into the field. */
+  /* 16px keeps phones from zooming into the field. Regular weight, as
+     typed text is in every field; the label's weight is not inherited. */
   font-size: 16px;
+  font-weight: 400;
+  /* A placeholder longer than a narrow phone's field ends in an ellipsis,
+     never a clipped word. */
+  text-overflow: ellipsis;
 }
 .bar .search .input:not([type="radio"]):focus {
   outline: none;
