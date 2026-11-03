@@ -125,10 +125,11 @@ const vite = await createServer({
       configureServer(vite) {
         vite.middlewares.use("/glossary-review", async (_req, res) => {
           res.setHeader("Content-Type", "text/html");
+          // This standalone fixture has no site icon; avoid an implicit favicon request.
           res.end(
             await vite.transformIndexHtml(
               "/glossary-review",
-              '<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Glossary review</title></head><body><div id="root"></div><script type="module" src="/glossary-review-entry.tsx"></script></body></html>',
+              '<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>Glossary review</title></head><body><div id="root"></div><script type="module" src="/glossary-review-entry.tsx"></script></body></html>',
             ),
           );
         });
@@ -238,6 +239,18 @@ async function assertTargets(page: Page, label: string) {
   assert.deepEqual(small, [], `${label}: targets under 44 px`);
 }
 
+/** Wait for the sheet and drill-down motion to leave the rendered animation set.
+ * WebKit can report an animation finished before its final geometry is committed. */
+const settledCard = (page: Page) =>
+  page.waitForFunction(
+    () => {
+      const card = document.querySelector(".term-dialog[open] .term-card");
+      return card && card.getAnimations({ subtree: true }).length === 0;
+    },
+    undefined,
+    { timeout: 2000 },
+  );
+
 async function assertCard(page: Page, label: string, width: number) {
   const card = await page.evaluate(() => {
     const panel = document.querySelector(".term-dialog[open] .term-card")!;
@@ -346,7 +359,7 @@ async function assertMoreList(
   await more.click();
   const dialog = page.locator(".term-dialog[open]");
   await dialog.getByRole("heading", { name: "Key words" }).waitFor();
-  await page.waitForTimeout(350); // let the sheet finish rising
+  await settledCard(page);
   const listed = await dialog
     .locator(".term-card-list .key-word")
     .evaluateAll((els) => els.map((el) => (el as HTMLElement).dataset.termId));
@@ -383,7 +396,10 @@ try {
             const errors: string[] = [];
             page.on("pageerror", (e) => errors.push(e.message));
             page.on("console", (m) => {
-              if (m.type() === "error") errors.push(m.text());
+              if (m.type() === "error") {
+                const source = m.location();
+                errors.push(`${m.text()} (${source.url}:${source.lineNumber})`);
+              }
             });
             await page.addInitScript(() => {
               const w = window as unknown as { cls: number };
@@ -435,7 +451,7 @@ try {
             await origin.click();
             const dialog = page.locator(".term-dialog[open]");
             await dialog.waitFor();
-            await page.waitForTimeout(350); // let the opening motion finish
+            await settledCard(page);
             const heading = dialog.getByRole("heading", { level: 2 });
             const title = await heading.innerText();
             assert.ok(
@@ -471,7 +487,7 @@ try {
               await dialog
                 .getByRole("button", { name: `Back to ${title}` })
                 .waitFor();
-              await page.waitForTimeout(300);
+              await settledCard(page);
               assert.notEqual(await heading.innerText(), title);
               assert.deepEqual(await dialog.boundingBox(), dialogBox);
               assert.equal(
@@ -485,7 +501,7 @@ try {
               await dialog
                 .getByRole("button", { name: `Back to ${title}` })
                 .click();
-              await page.waitForTimeout(300);
+              await settledCard(page);
               assert.equal(await heading.innerText(), title);
               assert.equal(
                 await page.evaluate(
@@ -538,7 +554,7 @@ try {
             if (width === 390 && mode === "lesson") {
               await origin.click();
               await dialog.waitFor();
-              await page.waitForTimeout(350);
+              await settledCard(page);
               const grab = (await dialog
                 .locator(".term-card-grab")
                 .boundingBox())!;
