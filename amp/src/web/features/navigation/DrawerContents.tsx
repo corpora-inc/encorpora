@@ -312,7 +312,7 @@ export default function DrawerContents({
         </div>
       </nav>
       {practiceControls}
-      <CurriculumDetailsControl />
+      <CurriculumDetailsControl variant="row" />
       <FeedbackPreferences />
       {view.session.data && (
         <div className={styles.signOut}>

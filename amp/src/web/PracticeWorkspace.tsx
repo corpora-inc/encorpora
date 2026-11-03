@@ -1074,15 +1074,6 @@ export function PracticeWorkspace(props: Props) {
             Hint
           </button>
         )}
-        {outcome && props.returnToMixed && (
-          <button
-            className="text-button"
-            disabled={busy || pending}
-            onClick={props.returnToMixed}
-          >
-            Mixed practice
-          </button>
-        )}
         {outcome?.skipped && props.easier && (
           <button
             className="text-button"
@@ -1461,15 +1452,26 @@ export function PracticeWorkspace(props: Props) {
             ) : (
               feedbackDetails()
             )}
-            <button
-              className="next-action"
-              ref={continueButton}
-              onClick={() => {
-                if (!busy) advance();
-              }}
-            >
-              Next <span aria-hidden="true">→</span>
-            </button>
+            <div className="next-row">
+              {props.returnToMixed && (
+                <button
+                  className="mixed-action"
+                  disabled={busy || pending}
+                  onClick={props.returnToMixed}
+                >
+                  Mixed practice
+                </button>
+              )}
+              <button
+                className="next-action"
+                ref={continueButton}
+                onClick={() => {
+                  if (!busy) advance();
+                }}
+              >
+                Next <span aria-hidden="true">→</span>
+              </button>
+            </div>
             {tools(true)}
           </div>
         )}
