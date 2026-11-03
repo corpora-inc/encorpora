@@ -423,6 +423,12 @@
     max-height: calc(100dvh - 88px);
     overflow: auto;
   }
+  /* The sheet itself scrolls here, so the explanation keeps its full height
+     instead of shrinking to a clipped sliver between head and progress. */
+  .feedback > .feedback-steps,
+  .feedback > .feedback-head {
+    flex-shrink: 0;
+  }
 }
 
 /* ── Tall portrait tablets ───────────────────────────────────────────────── */

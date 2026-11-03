@@ -1602,7 +1602,7 @@ export function PracticeWorkspace(props: Props) {
                   }
                 />
               )}
-              <button onClick={() => setPanel(null)}>
+              <button className="lesson-return" onClick={() => setPanel(null)}>
                 Back to the problem
               </button>
             </>

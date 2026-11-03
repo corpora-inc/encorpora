@@ -542,7 +542,7 @@ header {
 .lesson-practice {
   width: 100%;
   min-height: 48px;
-  margin-top: var(--space);
+  margin-top: 0;
 }
 
 /* Home: Go, birth year */
