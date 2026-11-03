@@ -17,8 +17,9 @@ import { secureChromium } from "../browser-security.mjs";
  *
  * Synthetic data only: no database, no account, no network beyond loopback.
  */
-import { assertProblemReachable } from "./ui-viewports";
+import { assertProblemReachable, problemInView } from "./ui-viewports";
 import AxeBuilder from "@axe-core/playwright";
+import assert from "node:assert/strict";
 import { appendFile, mkdir, writeFile } from "node:fs/promises";
 import { createServer } from "vite";
 import {
@@ -58,6 +59,7 @@ export const CASES = [
   ["choice", "hierarchy-statement"],
   ["choice-table", "quadratic-from-data"],
   ["choice-radical", "trig-equation-solutions"],
+  ["choice-randomization", "randomization-test-decision"],
   ["choice-scene", "first-quadrant-locate"],
   ["choice-clocks", "clock-minute-match"],
   ["multi-select", "fact-equation-truth-select"],
@@ -92,6 +94,7 @@ const VERIFY = [
   "choice-scene",
   "choice-table",
   "choice-radical",
+  "choice-randomization",
   "multi-select-figure",
   "parts-inline",
   "parts-cards",
@@ -238,6 +241,7 @@ async function mockApi(context: BrowserContext, templateId: string) {
       const firstSeeds: Record<string, string> = {
         "quadratic-from-data": "independent-68",
         "trig-equation-solutions": "95d3e70d-9422-4921-b88f-0407b2bb0fad",
+        "randomization-test-decision": "tablet-independent-5",
       };
       const problem = generateProblemFor(
         state.templateId,
@@ -599,6 +603,20 @@ async function runCase(
       .waitFor({ timeout: 60_000 });
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(400);
+    if (label === "choice-randomization") {
+      const id = await page
+        .locator(".problem-content")
+        .getAttribute("data-problem-id");
+      const rendered = api.problems.get(id ?? "")?.public;
+      assert.equal(rendered?.templateId, "randomization-test-decision");
+      assert.equal(rendered?.seed, "tablet-independent-5");
+      if (width >= 768)
+        assert.deepEqual(
+          await problemInView(page),
+          [],
+          `${label} ${width}×${height}: the complete study and chart fit`,
+        );
+    }
     if (label === "choice-table" || label === "choice-radical") {
       // Match the hosted Chromium gutter on overlay-scrollbar hosts. WebKit
       // does not reserve custom scrollbar space until overflow, so use its
@@ -924,6 +942,18 @@ try {
           jobs.push(() => runCase(browser, name, c, size, theme, "account"));
         jobs.push(() => runCase(browser, name, CASES[0], size, theme, "trial"));
       }
+    // The default matrix must exercise this study's narrow landscape column.
+    // Explicit viewport filters already describe their own requested coverage.
+    const studyCase = cases.find(([label]) => label === "choice-randomization");
+    if (
+      studyCase &&
+      !process.env.AUDIT_SIZES &&
+      !sizes.some(([w, h]) => w === 1024 && h === 768)
+    )
+      for (const theme of themes)
+        jobs.push(() =>
+          runCase(browser, name, studyCase, [1024, 768], theme, "account"),
+        );
     let next = 0;
     await Promise.all(
       Array.from({ length: workers }, async () => {

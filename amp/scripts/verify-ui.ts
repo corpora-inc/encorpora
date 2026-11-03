@@ -86,6 +86,30 @@ const repository = new PostgresRepository(url, { development: true });
 const account = "development-household";
 const learner = await repository.create(account, "Browser verification", 2016);
 const learnerIds = [learner.id];
+
+async function preserveFailure(page: Page, directory: string, detail: string) {
+  try {
+    await within(
+      captureUiFailure(page, directory, detail, async (id) => {
+        // pg supports query_timeout at runtime; the installed QueryConfig
+        // declarations omit that option. Keep it on the submitted config.
+        const query = {
+          text: "SELECT content->'public' AS problem FROM amp_instances WHERE id=$1 AND learner_id=ANY($2::text[])",
+          values: [id, learnerIds],
+          query_timeout: 1_000,
+        };
+        const result = await repository.pool.query(query);
+        return result.rows[0]?.problem;
+      }),
+      "failure diagnostics",
+      5_000,
+    );
+  } catch {
+    console.error(
+      "UI failure diagnostics could not finish; preserving the original failure.",
+    );
+  }
+}
 const app = buildApp({
   repository,
   authenticate: developmentAuth(),
@@ -682,6 +706,13 @@ try {
                 ...(tabletScrolls.get(key) ?? []),
                 `${template.id}: ${why[0]}`,
               ]);
+              // The aggregate runs after later problems replace this one.
+              // Preserve the actual failing seed, viewport and stage now.
+              await preserveFailure(
+                page,
+                `${failureDirectory}/tablet-${template.id}-${size.width}x${size.height}`,
+                `${phase}: ${why.join("; ")}`,
+              );
               if (isTabletLandscape(size))
                 await page.screenshot({
                   path: new URL(
@@ -1036,32 +1067,7 @@ try {
 } catch (error) {
   console.error(`UI review failed during ${phase}`);
   if (diagnosticPage) {
-    try {
-      await within(
-        captureUiFailure(
-          diagnosticPage,
-          failureDirectory,
-          phase,
-          async (id) => {
-            // pg supports query_timeout at runtime; the installed QueryConfig
-            // declarations omit that option. Keep it on the submitted config.
-            const query = {
-              text: "SELECT content->'public' AS problem FROM amp_instances WHERE id=$1 AND learner_id=ANY($2::text[])",
-              values: [id, learnerIds],
-              query_timeout: 1_000,
-            };
-            const result = await repository.pool.query(query);
-            return result.rows[0]?.problem;
-          },
-        ),
-        "failure diagnostics",
-        5_000,
-      );
-    } catch {
-      console.error(
-        "UI failure diagnostics could not finish; preserving the original failure.",
-      );
-    }
+    await preserveFailure(diagnosticPage, failureDirectory, phase);
   }
   throw error;
 } finally {
