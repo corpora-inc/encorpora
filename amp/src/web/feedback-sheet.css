@@ -459,13 +459,38 @@
   /* The column's full height: the result reads at the top, the worked
      explanation fills the middle (scrolling when long) between two hairlines,
      and the skill, its connections, Next and the tools hold one place at the
-     foot from problem to problem. */
+     foot from problem to problem. The hairlines belong to the neighbours, so
+     the explanation can fade its own edges: a long one scrolls softly under
+     them instead of being cut mid-line. The fades cover only its padding, so
+     a short explanation never fades. */
+  .practice-surface > .feedback {
+    --feedback-hairline: color-mix(
+      in srgb,
+      var(--color-on-surface) 10%,
+      transparent
+    );
+  }
+  .practice-surface > .feedback > .feedback-head:has(+ .feedback-steps) {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--feedback-hairline);
+  }
   .practice-surface > .feedback > .feedback-steps {
     flex: 1 1 auto;
+    /* Cancels the sheet's gap on both sides: the hairlines bound it. */
+    margin-block: -10px;
     padding-block: var(--space-3);
-    border-block: 1px solid
-      color-mix(in srgb, var(--color-on-surface) 10%, transparent);
     font-size: 16px;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-on-surface) var(--space-3),
+      var(--color-on-surface) calc(100% - var(--space-3)),
+      transparent
+    );
+  }
+  .practice-surface > .feedback > .feedback-steps + * {
+    padding-top: 10px;
+    border-top: 1px solid var(--feedback-hairline);
   }
   .practice-surface > .feedback > [data-answer-feedback] {
     margin-top: auto;
