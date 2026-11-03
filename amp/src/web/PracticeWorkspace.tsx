@@ -204,6 +204,9 @@ type Props = {
   mastered?: string | null;
   /** Progress and optional one-problem branches; Next remains adaptive. */
   answerFeedback?: ReactNode;
+  /** Leaves a chosen skill for adaptive mixed practice. Present only while
+   * practice is focused on one skill, so the action always succeeds. */
+  returnToMixed?: () => void;
   /** Sends "Report a problem" once this problem resolves. Absent: no flag. */
   reportProblem?: (body: ProblemFlagInput) => Promise<ReportResult>;
   /** The report offers its optional note (see `noteAllowed`). */
@@ -354,6 +357,9 @@ export function PracticeWorkspace(props: Props) {
   const editorInDock = sideBySide && (!!work || !!figures);
   const deferSteps =
     editorInDock || ((!!plot || !!parts || !!figures || !!work) && !sideBySide);
+  // Side by side, the sheet has the answer column's full height, so the
+  // worked explanation is part of every result rather than a "See why" away.
+  const fullColumn = sideBySide && !editorInDock;
   useEffect(() => {
     const media = matchMedia(answerLayoutQuery);
     const changed = () => setCompact(media.matches);
@@ -1027,8 +1033,7 @@ export function PracticeWorkspace(props: Props) {
             )}
           </span>
         </div>
-        {!editorInDock && progressFeedback()}
-        {((!outcome.correct && !deferSteps) || (showWhy && !editorInDock)) && (
+        {stepsInline && (
           <Glossary payload={outcome} texts={outcome.explanation}>
             <ol
               className="feedback-steps"
@@ -1044,6 +1049,7 @@ export function PracticeWorkspace(props: Props) {
             </ol>
           </Glossary>
         )}
+        {!editorInDock && progressFeedback()}
       </>
     );
   }
@@ -1051,8 +1057,7 @@ export function PracticeWorkspace(props: Props) {
     return (
       <div className="practice-tools">
         {outcome ? (
-          (outcome.correct || deferSteps) &&
-          (!showWhy || editorInDock) && (
+          !stepsInline && (
             <button className="text-button" onClick={() => setShowWhy(true)}>
               See why
             </button>
@@ -1067,6 +1072,15 @@ export function PracticeWorkspace(props: Props) {
             }}
           >
             Hint
+          </button>
+        )}
+        {outcome && props.returnToMixed && (
+          <button
+            className="text-button"
+            disabled={busy || pending}
+            onClick={props.returnToMixed}
+          >
+            Mixed practice
           </button>
         )}
         {outcome?.skipped && props.easier && (
@@ -1148,6 +1162,14 @@ export function PracticeWorkspace(props: Props) {
           ? "with the lesson"
           : "with a hint or lesson";
   const skipped = !!outcome?.skipped;
+  /** The worked explanation shows in the sheet itself: a miss explains
+   * itself unless its answer is marked in the problem, a full answer column
+   * always has room, and "See why" adds it anywhere else. Beside an editor,
+   * See why opens a panel instead. */
+  const stepsInline =
+    !!outcome &&
+    !editorInDock &&
+    ((!outcome.correct && !deferSteps) || showWhy || fullColumn);
   const longAnswer =
     !!outcome &&
     !outcome.correct &&

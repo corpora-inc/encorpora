@@ -1,5 +1,6 @@
 import { PracticeControls } from "../features/practice/PracticeControls";
 import {
+  practiceSettingsOptions,
   usePracticeAdjustment,
   type PracticeIntent,
 } from "../features/practice/practice-settings";
@@ -256,6 +257,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     identity: accountId ?? "guest",
     learnerId: learner?.id ?? "",
     token: token ?? undefined,
+  });
+  // Loaded with practice, so a focused skill's "Mixed practice" action is
+  // already known when the first answer's feedback opens.
+  const practiceSettings = useQuery({
+    ...practiceSettingsOptions(adjustments.scope),
+    enabled: !!learner && !nativeRuntime,
   });
   // Remember a tab's return URL, not a second copy of its screen/filter state.
   const progressReturn = useRef({ identity: "", href: "/progress" });
@@ -1636,6 +1643,14 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             }
             exit={() => setExploring(true)}
             exitHref="/"
+            returnToMixed={
+              practiceSettings.data?.focusSkillId && !nativeRuntime
+                ? () =>
+                    void action(() =>
+                      adjustPractice({ kind: "focus", skillId: null }),
+                    )
+                : undefined
+            }
             key={problem.id}
             problem={problem}
             meta={meta}
