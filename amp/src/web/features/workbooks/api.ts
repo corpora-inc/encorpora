@@ -92,10 +92,44 @@ export function anotherWorkbook(
 /** Saves the workbook in the chosen paper size: the PDF when the server
  * renders them, otherwise (or when rendering is unavailable right now) the
  * printable document, which prints from the browser. */
-export async function downloadWorkbook(
+export function downloadWorkbook(
   session: AuthSession,
   learnerId: string,
-  workbook: WorkbookSummary,
+  workbook: Pick<WorkbookSummary, "id" | "date" | "number">,
+  paper: WorkbookPaper,
+  pdf: boolean,
+) {
+  return downloadWorkbookFile(
+    `Bearer ${session.token}`,
+    learnerId,
+    workbook,
+    paper,
+    pdf,
+  );
+}
+
+/** The same download for a free assessment's own workbook, with its trial
+ * token (and the owner's sign-in cookie, as every trial request). */
+export function downloadTrialWorkbook(
+  trialToken: string,
+  learnerId: string,
+  workbook: Pick<WorkbookSummary, "id" | "date" | "number">,
+  paper: WorkbookPaper,
+  pdf: boolean,
+) {
+  return downloadWorkbookFile(
+    `Trial ${trialToken}`,
+    learnerId,
+    workbook,
+    paper,
+    pdf,
+  );
+}
+
+async function downloadWorkbookFile(
+  authorization: string,
+  learnerId: string,
+  workbook: Pick<WorkbookSummary, "id" | "date" | "number">,
   paper: WorkbookPaper,
   pdf: boolean,
 ) {
@@ -103,7 +137,7 @@ export async function downloadWorkbook(
   const fetchFile = async (path: string) => {
     try {
       return await fetch(`${base}/${path}`, {
-        headers: { Authorization: `Bearer ${session.token}` },
+        headers: { Authorization: authorization },
       });
     } catch {
       const error = new AppError(

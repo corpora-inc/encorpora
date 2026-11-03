@@ -257,7 +257,7 @@ test("new workbooks are for today; stored ones of any date stay available", asyn
   }
 });
 
-test("workbooks require the learner's parent, a license and a full account", async () => {
+test("workbooks require the learner's parent and a license; a trial reaches only its own learner", async () => {
   const unlicensed = app(memoryRepository({ access: false }).repository, false);
   const denied = await unlicensed.inject({
     method: "POST",
@@ -279,11 +279,13 @@ test("workbooks require the learner's parent, a license and a full account", asy
     headers,
   });
   assert.equal(wrongLearner.statusCode, 404);
+  // A free trial's workbooks (tests/trial-workbooks.integration.ts) never
+  // reach a parent's learner.
   const trial = await server.inject({
     url,
     headers: { authorization: "Bearer trial:abc" },
   });
-  assert.equal(trial.statusCode, 403);
+  assert.equal(trial.statusCode, 404);
 });
 
 test("the PDF is rendered from the stored workbook for each request and never stored", async () => {

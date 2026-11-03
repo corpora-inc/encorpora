@@ -19,6 +19,8 @@ import {
 } from "./api";
 import { track, trackSessionStart } from "./analytics";
 import { FreeMeter } from "./FreeMeter";
+import { TrialWorkbooks } from "./TrialWorkbooks";
+import { nativeRuntime } from "../../native-runtime";
 import { trialEvidenceOptions } from "../pathways/queries";
 import { ShareAssessment } from "./ShareAssessment";
 import { isEnded, TrialEnded, TrialFailure, TrialSkeleton } from "./TrialFrame";
@@ -119,6 +121,9 @@ function MapView({ session }: { session: TrialSession }) {
         <div className={styles.meterRow}>
           <FreeMeter answered={p.totals.answered} free={p.free} />
         </div>
+        {p.workbooks && !nativeRuntime && (
+          <TrialWorkbooks session={session} status={p.workbooks} />
+        )}
         <div className={styles.actions}>
           {left > 0 ? (
             <>

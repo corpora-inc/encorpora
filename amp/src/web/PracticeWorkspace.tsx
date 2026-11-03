@@ -204,6 +204,8 @@ type Props = {
   mastered?: string | null;
   /** Progress and optional one-problem branches; Next remains adaptive. */
   answerFeedback?: ReactNode;
+  /** A compact offer in the feedback sheet, just before Next. */
+  feedbackAside?: ReactNode;
   /** Sends "Report a problem" once this problem resolves. Absent: no flag. */
   reportProblem?: (body: ProblemFlagInput) => Promise<ReportResult>;
   /** The report offers its optional note (see `noteAllowed`). */
@@ -1439,6 +1441,7 @@ export function PracticeWorkspace(props: Props) {
             ) : (
               feedbackDetails()
             )}
+            {props.feedbackAside}
             <button
               className="next-action"
               ref={continueButton}

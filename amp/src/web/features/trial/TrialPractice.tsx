@@ -46,6 +46,8 @@ import { levelCheckDue } from "../../../learning/level-check";
 import { LevelCheck } from "./LevelCheck";
 import { approximateAge } from "./level-copy";
 import { strandOrder } from "./strands";
+import { unlockedTrialWorkbook } from "../../../learning/trial-workbooks";
+import { AssessmentWorkbookOffer } from "./AssessmentWorkbookOffer";
 
 /** `/try/practice`: placement, then adaptive practice, full screen. The
  * existing workspace, planner, lessons and hints; only the meter is new. */
@@ -276,6 +278,12 @@ function Practice({ session }: { session: TrialSession }) {
   const skill = catalog.data?.skills.find((s) => s.id === problem.skillId);
   const placing = answered < limits.placement;
   const placed = answered === limits.placement;
+  // The answer that crosses 20, 40, … problems unlocks a free workbook; the
+  // offer is part of its feedback from the first paint.
+  const unlocked =
+    outcome && !nativeRuntime
+      ? unlockedTrialWorkbook(answered, limits.free)
+      : null;
   return (
     <div className="shell app-shell practice-shell immersive">
       {check && (
@@ -342,6 +350,15 @@ function Practice({ session }: { session: TrialSession }) {
                       })
                   : undefined
               }
+            />
+          )
+        }
+        feedbackAside={
+          unlocked !== null && (
+            <AssessmentWorkbookOffer
+              key={unlocked}
+              session={session}
+              slot={unlocked}
             />
           )
         }

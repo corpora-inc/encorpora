@@ -1,0 +1,183 @@
+/* Free workbooks in the assessment: the compact offer in the answer
+   feedback and the stamps beside the free meter. Every state keeps the same
+   geometry; a failure shows in the fixed toast. */
+.glyph {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linejoin: round;
+}
+
+/* The offer in the answer feedback. */
+.offer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  text-align: left;
+  font-size: var(--text-label);
+  line-height: 1.3;
+}
+.offerMark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.offerText {
+  display: grid;
+  min-width: 0;
+}
+.offerText > span {
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+}
+.offerMark[data-done] {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-weight: 700;
+}
+/* One width for both labels, so Preparing… never moves the text beside
+   it. */
+.offerAction {
+  width: 6.75em;
+  min-height: var(--target-size);
+  padding-inline: var(--space-2);
+  font-size: 15px;
+  white-space: nowrap;
+}
+@media (max-width: 380px) {
+  .offer {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .offerMark {
+    display: none;
+  }
+}
+
+/* The stamps beside the free meter. */
+.strip {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+/* On phones the strip is part of the page card, not a card inside it, so
+   five full-size stamps fit at 320 px. */
+@media (max-width: 420px) {
+  .strip {
+    padding: var(--space-4) 0 0;
+    border-width: 1px 0 0;
+    border-radius: 0;
+    background: transparent;
+  }
+}
+.stripHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.stripTitle {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+.stripTitle h2 {
+  margin: 0;
+  font-family: inherit;
+  font-size: var(--text-body);
+  font-weight: 700;
+  line-height: 1.3;
+}
+.stripTitle p {
+  margin: var(--space-1) 0 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  line-height: 1.4;
+}
+.paper {
+  flex: 0 0 168px;
+}
+.stripBody {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+.stamps {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(44px, var(--target-size));
+  gap: clamp(6px, 2vw, var(--space-2));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.stamp {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  font: inherit;
+  font-size: var(--text-small);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.made {
+  border: 2px solid var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: 18px;
+  cursor: pointer;
+}
+.made:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.made:disabled {
+  cursor: default;
+}
+.ready {
+  border: 2px solid var(--color-primary);
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.locked {
+  border: 2px dashed var(--color-border-strong);
+  background: transparent;
+  color: var(--color-muted-text);
+}
+.next {
+  display: flex;
+  flex: 1 1 200px;
+  align-items: center;
+  min-height: var(--target-size);
+}
+.nextAction {
+  width: 100%;
+  white-space: nowrap;
+}
+.nextNote {
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+}
