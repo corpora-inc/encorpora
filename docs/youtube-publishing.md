@@ -400,13 +400,15 @@ upload) plus its media. On each tick the clerk does the next due step:
 4. At release, post the CTA comment once. Pinning has no API; the daily
    browser pass pins it.
 
-Studio-only settings come from channel defaults: comments on for everyone,
-Basic moderation, visible likes, and subscription notifications. A browser
-check of those defaults is recorded in `channel-defaults.json` in the clerk's
-state directory. Without a receipt from the last 30 days the clerk holds
-every release. The daily browser pass also pins CTAs, checks the Studio
-restrictions column for copyright claims, and adds end screens and Shorts
-related videos. None of those blocks a release.
+Studio-only settings start from channel defaults: comments on for everyone,
+Basic moderation, visible likes, and subscription notifications (Settings →
+Upload defaults and Community moderation). A browser check of those defaults is
+recorded in `channel-defaults.json` in the clerk's state directory. Without a
+receipt from the last 30 days the clerk holds every release. API uploads do not
+inherit the moderation default, so the daily browser pass bulk-edits new uploads
+to Comments On / Basic (Content → select → Edit → Comments). The same pass pins
+CTAs, checks the restrictions column for copyright claims, and adds end screens
+and Shorts related videos. None of those blocks a release.
 
 **The hold is the veto window.** Skylar does not approve routine releases.
 `youtube_clerk.py veto <package>` (or a `VETO` file in the package) stops a
