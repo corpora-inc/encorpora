@@ -125,10 +125,11 @@ const vite = await createServer({
       configureServer(vite) {
         vite.middlewares.use("/glossary-review", async (_req, res) => {
           res.setHeader("Content-Type", "text/html");
+          // This standalone fixture has no site icon; avoid an implicit favicon request.
           res.end(
             await vite.transformIndexHtml(
               "/glossary-review",
-              '<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Glossary review</title></head><body><div id="root"></div><script type="module" src="/glossary-review-entry.tsx"></script></body></html>',
+              '<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>Glossary review</title></head><body><div id="root"></div><script type="module" src="/glossary-review-entry.tsx"></script></body></html>',
             ),
           );
         });
@@ -383,7 +384,10 @@ try {
             const errors: string[] = [];
             page.on("pageerror", (e) => errors.push(e.message));
             page.on("console", (m) => {
-              if (m.type() === "error") errors.push(m.text());
+              if (m.type() === "error") {
+                const source = m.location();
+                errors.push(`${m.text()} (${source.url}:${source.lineNumber})`);
+              }
             });
             await page.addInitScript(() => {
               const w = window as unknown as { cls: number };
