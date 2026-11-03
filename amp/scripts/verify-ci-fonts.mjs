@@ -14,11 +14,15 @@ try {
   const results = [];
   for (const family of [
     "system-ui",
-    "sans-serif",
     '-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif',
     'system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif',
     "monospace",
     "serif",
+    "Arial",
+    "sans-serif",
+    "Arial, Helvetica, sans-serif",
+    "Georgia, serif",
+    '"Iowan Old Style", "Palatino Linotype", Georgia, serif',
   ]) {
     for (const weight of [400, 700]) {
       await page.setContent("<p id='sample'>Find the mean of these numbers: 7, 9, 22, 23, 8.</p>");
@@ -33,10 +37,19 @@ try {
       const { nodeId } = await cdp.send("DOM.querySelector", { nodeId: root.nodeId, selector: "#sample" });
       const { fonts } = await cdp.send("CSS.getPlatformFontsForNode", { nodeId });
       assert.ok(fonts.length > 0 && fonts.every((font) => font.glyphCount > 0));
-      if (family === "monospace" || family === "serif") {
-        assert.ok(fonts.every((font) => font.familyName !== expected), `UI override must preserve ${family}`);
-      } else {
+      if (family.includes("system-ui")) {
         assert.ok(fonts.every((font) => font.familyName === expected), `${family}/${weight} renders in ${JSON.stringify(fonts)}, expected ${expected}`);
+      } else {
+        assert.ok(fonts.every((font) => font.familyName !== expected), `UI override must preserve ${family}/${weight}: ${JSON.stringify(fonts)}`);
+        // Named display/Arial stacks must retain the same fallback as their
+        // available reference face, even when DejaVu appears later in the list.
+        const reference = family.includes("Iowan") ? "Georgia, serif"
+          : family === "sans-serif" || family === "Arial, Helvetica, sans-serif" ? "Arial" : null;
+        if (reference) {
+          const prior = results.find((result) => result.family === reference && result.weight === weight);
+          assert.ok(prior, `Missing reference ${reference}/${weight}`);
+          assert.deepEqual(fonts.map((font) => font.postScriptName).sort(), prior.fonts.map((font) => font.postScriptName).sort(), `${family}/${weight} must preserve ${reference}`);
+        }
       }
       results.push({ family, weight, fonts });
     }
