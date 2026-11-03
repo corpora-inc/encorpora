@@ -156,9 +156,7 @@ export function AnswerFeedback({
           close={() => setDirection(null)}
           returnFocus={trigger.current}
         >
-          <p className={styles.intro}>
-            Choose a skill to practice. Return to mixed practice from the menu.
-          </p>
+          <p className={styles.intro}>Choose a skill to practice.</p>
           {!shown && (
             <button
               type="button"

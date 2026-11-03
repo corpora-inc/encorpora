@@ -91,10 +91,18 @@ export function CurriculumDetailsProvider({
   );
 }
 export const useCurriculumDetails = () => useContext(Details);
-export function CurriculumDetailsControl() {
+/** `row` sets it as a settings row in the navigation drawer, on the inset
+ * its neighbours use; elsewhere it is a quiet control in the page flow. */
+export function CurriculumDetailsControl({
+  variant,
+}: { variant?: "row" } = {}) {
   const { shown, ready, setShown } = useCurriculumDetails();
   return (
-    <label className={styles.control}>
+    <label
+      className={
+        variant === "row" ? `${styles.control} ${styles.row}` : styles.control
+      }
+    >
       <span className={styles.copy}>
         <span>Show grade numbers</span>
         <small>For this learner on this device.</small>
