@@ -1,0 +1,312 @@
+/* Lesson reading rhythm: the short lesson (ProblemLesson) in the practice
+   panel, on its own lesson page and in pathways, and the full lesson
+   (ReferenceLesson) in the library reader. Loaded last in the global cascade
+   (app/styles.ts), so these rules set the reading surface over the
+   structural and theme defaults.
+
+   One rhythm everywhere: body copy at 1.65, a measure of about 70
+   characters, 32 px between the lesson's parts, 16 px inside them and 12 px
+   between steps. Printed lessons and publications keep their own type: every
+   full-lesson rule here is screen only. */
+
+.problem-lesson {
+  --lesson-leading: 1.65;
+  /* About 70 characters of body text. */
+  --lesson-measure: 36em;
+  /* Between the lesson's parts, and between a heading or a callout and what
+     follows it. */
+  --lesson-part-gap: var(--space-6);
+  --lesson-block-gap: var(--space-4);
+  --lesson-step-gap: var(--space-3);
+  gap: var(--lesson-part-gap);
+  /* One reading column; a wide lesson page keeps its lines comfortable. */
+  max-inline-size: 42rem;
+  font-size: var(--text-body);
+  line-height: var(--lesson-leading);
+}
+.problem-lesson :is(p, li, dd) {
+  max-inline-size: var(--lesson-measure);
+}
+/* Part labels: a quiet eyebrow with room beneath it. */
+.problem-lesson h3 {
+  margin: 0 0 var(--space-3);
+  line-height: 1.3;
+}
+.problem-lesson .key-words h3 {
+  margin-bottom: var(--space-3);
+}
+.problem-lesson .lesson-goal {
+  font-size: 18px;
+  line-height: var(--lesson-leading);
+}
+
+/* Numbered steps hang in their own column: tabular, in the accent ink. */
+.problem-lesson ol {
+  padding-inline-start: 1.75em;
+}
+.problem-lesson ol > li {
+  padding-inline-start: 0.25em;
+}
+.problem-lesson ol > li::marker {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.problem-lesson li + li {
+  margin-top: var(--lesson-step-gap);
+}
+
+/* The worked example: a framed page with its question, choices, model,
+   steps and answer each in their own band. */
+.problem-lesson .lesson-example {
+  padding: var(--space-5);
+}
+.problem-lesson .lesson-example-prompt {
+  margin: 0 0 var(--lesson-block-gap);
+  line-height: var(--lesson-leading);
+}
+/* The example's choices (A to D), then its numbered steps. */
+.problem-lesson .lesson-example > ol[type="A"] {
+  margin: 0 0 var(--lesson-block-gap);
+}
+.problem-lesson .lesson-example > ol[type="A"] > li + li {
+  margin-top: var(--space-2);
+}
+.problem-lesson .lesson-example > ol:not([type]) {
+  margin-top: var(--lesson-block-gap);
+}
+.problem-lesson .lesson-example .figure {
+  margin-block: var(--lesson-block-gap);
+}
+.problem-lesson .lesson-example .scene-player {
+  margin-block: var(--lesson-block-gap);
+}
+.problem-lesson .lesson-example-answer {
+  max-inline-size: none;
+  margin: var(--lesson-block-gap) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  line-height: var(--lesson-leading);
+}
+.problem-lesson .lesson-example-parts {
+  gap: var(--space-3);
+  margin-bottom: var(--lesson-block-gap);
+}
+.problem-lesson .lesson-example-blanks {
+  gap: var(--space-2);
+}
+.problem-lesson .lesson-example-shared {
+  line-height: var(--lesson-leading);
+}
+
+/* Callouts: the label, then the copy at full reading leading. */
+.problem-lesson .lesson-watch,
+.problem-lesson .lesson-principle {
+  padding: var(--space-4) var(--space-5);
+  font-size: inherit;
+  line-height: var(--lesson-leading);
+}
+.problem-lesson .lesson-watch {
+  max-inline-size: none;
+}
+.problem-lesson .lesson-watch strong {
+  margin-bottom: var(--space-1);
+  line-height: 1.3;
+}
+.problem-lesson .lesson-principle {
+  max-inline-size: none;
+  margin-bottom: var(--space-5);
+}
+
+/* Definitions: one table-like list. The term column is as wide as the
+   longest term (wrapping between words past 12 em), every meaning starts on
+   the same line, and a hairline separates entries. A narrow panel stacks
+   each term over its meaning. */
+.problem-lesson .lesson-formal {
+  container: lesson-formal / inline-size;
+}
+.problem-lesson .lesson-terms {
+  display: grid;
+  grid-template-columns: fit-content(12em) minmax(0, 1fr);
+  column-gap: var(--space-5);
+  row-gap: 0;
+  margin: 0;
+}
+.problem-lesson .lesson-terms > div {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  gap: 0 var(--space-5);
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+.problem-lesson .lesson-terms > div:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+.problem-lesson .lesson-terms > div:last-child {
+  padding-bottom: 0;
+}
+.problem-lesson .lesson-terms dt {
+  font-weight: 700;
+  line-height: var(--lesson-leading);
+  overflow-wrap: normal;
+  hyphens: manual;
+}
+.problem-lesson .lesson-terms dd {
+  margin: 0;
+  color: var(--color-on-surface);
+  line-height: var(--lesson-leading);
+}
+@container lesson-formal (max-width: 30rem) {
+  .problem-lesson .lesson-terms {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .problem-lesson .lesson-terms > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-1);
+  }
+}
+
+/* Typeset fractions and roots in running text keep clear of the lines above
+   and below them; the margin belongs to the formula's own box, so plain
+   lines keep their height. */
+.problem-lesson :is(p, li, dd) .math .base:has(.mfrac, .sqrt) {
+  margin-block: 0.2em;
+}
+
+/* The lesson's action (back to the problem, or practice this) lines up
+   with the reading column, a part's distance below it. */
+.problem-lesson + :is(.lesson-return, .lesson-practice) {
+  max-inline-size: 42rem;
+  margin-top: var(--space-6);
+}
+
+/* Narrow panels: the frame and callouts give the text more of the width. */
+@media (max-width: 520px) {
+  .problem-lesson {
+    --lesson-part-gap: 28px;
+  }
+  .problem-lesson .lesson-example {
+    padding: var(--space-4);
+  }
+  .problem-lesson .lesson-watch,
+  .problem-lesson .lesson-principle {
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+/* The narrowest phones: steps hang closer and the example frame gives its
+   text the width. */
+@media (max-width: 380px) {
+  .problem-lesson .lesson-example {
+    padding: var(--space-4) var(--space-3);
+  }
+  .problem-lesson ol {
+    padding-inline-start: 1.5em;
+  }
+  .problem-lesson ol > li {
+    padding-inline-start: 0.15em;
+  }
+}
+
+/* The full lesson in the library reader. */
+@media screen {
+  .reference-lesson {
+    --lesson-leading: 1.7;
+    --lesson-measure: 36em;
+    font-size: var(--text-body);
+    line-height: var(--lesson-leading);
+  }
+  .reference-lesson :is(p, li) {
+    max-inline-size: var(--lesson-measure);
+  }
+  .reference-lesson p {
+    margin: 0 0 var(--space-4);
+  }
+  .reference-lesson .summary {
+    font-size: 18px;
+  }
+  /* Parts of the lesson are 40 px apart; topics inside a part 28 px. */
+  .reference-lesson > :is(section, aside) {
+    margin-top: var(--space-6);
+  }
+  .reference-lesson > [data-lesson-stage] > section,
+  .reference-lesson > [data-lesson-stage] > .representation {
+    margin-top: 28px;
+  }
+  .reference-lesson h3 {
+    margin: 0 0 var(--space-4);
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  .reference-lesson h4 {
+    margin: 0 0 var(--space-3);
+    font-size: 17px;
+    line-height: 1.4;
+  }
+  .reference-lesson ol,
+  .reference-lesson ul {
+    margin: 0 0 var(--space-4);
+    padding-inline-start: 1.75em;
+  }
+  .reference-lesson li + li {
+    margin-top: var(--space-3);
+  }
+  .reference-lesson ol > li::marker {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .reference-lesson ul > li::marker {
+    color: var(--color-primary);
+  }
+  .reference-lesson .worked-example {
+    margin: var(--space-6) 0 0;
+    padding: var(--space-5) var(--space-6);
+  }
+  .reference-lesson .worked-example > h3 {
+    margin-bottom: var(--space-4);
+  }
+  .reference-lesson .worked-example ol {
+    margin-top: var(--space-4);
+  }
+  /* The reader's own step padding (LegacyApp) already spaces each step. */
+  .lesson-reader .reference-lesson .worked-example li + li {
+    margin-top: var(--space-1);
+  }
+  .reference-lesson .worked-example .figure {
+    margin-block: var(--space-4);
+  }
+  .reference-lesson .worked-answer {
+    max-inline-size: none;
+    margin: var(--space-4) 0 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border-strong);
+  }
+  /* Guidance for the adult reads as an aside, set apart from the lesson. */
+  .reference-lesson .lesson-partner {
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-control);
+    background: var(--color-secondary);
+    color: var(--color-on-secondary);
+  }
+  .reference-lesson .lesson-partner h3 {
+    margin-bottom: var(--space-2);
+    font-size: 17px;
+  }
+  .reference-lesson .lesson-partner p {
+    margin: 0;
+  }
+  .reference-lesson table {
+    margin-block: var(--space-4);
+  }
+}
+@media screen and (max-width: 520px) {
+  .reference-lesson .worked-example {
+    padding: var(--space-4);
+  }
+  .reference-lesson h3 {
+    font-size: 20px;
+  }
+}
