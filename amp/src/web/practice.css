@@ -365,7 +365,11 @@ nav button {
     transform: scale(1.05);
   }
 }
+/* One inset for a panel's title and its content, so the title and the first
+   line of text share an edge. Full-screen on a tablet, it centres a 42rem
+   reading column (the lesson's, lesson-reading.css) in the panel. */
 .practice-dialog {
+  --dialog-inset: var(--space-5);
   width: min(640px, calc(100% - 32px));
   max-height: min(85dvh, 820px);
   padding: 0;
@@ -394,7 +398,8 @@ nav button {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 16px 16px 16px 24px;
+  padding: 16px max(16px, calc(var(--dialog-inset) - 8px)) 16px
+    var(--dialog-inset);
   flex: none;
   border-bottom: 1px solid var(--color-border);
 }
@@ -422,7 +427,7 @@ nav button {
   color: var(--color-on-primary);
 }
 .dialog-content {
-  padding: 22px 28px 28px;
+  padding: 22px var(--dialog-inset) 28px;
   overflow: auto;
   overscroll-behavior: contain;
   min-height: 0;
@@ -570,15 +575,18 @@ nav button {
     min-height: 40px;
     font-size: 18px;
   }
+  .practice-dialog {
+    --dialog-inset: var(--space-4);
+  }
   .dialog-heading {
-    padding: 12px 12px 12px 18px;
+    padding: 12px 12px 12px var(--dialog-inset);
     gap: 8px;
   }
   .dialog-heading h2 {
     font-size: 24px;
   }
   .dialog-content {
-    padding: 18px 22px 22px;
+    padding: 18px var(--dialog-inset) 22px;
   }
 }
 @media (max-height: 620px) and (min-width: 651px) {
@@ -1139,4 +1147,12 @@ nav button {
 /* The answer error floats above the answer controls, not the whole dock. */
 .answer-controls {
   position: relative;
+}
+
+/* Full-screen panels on tablets (theme.css makes them so up to 840px):
+   title and content share a centred 42rem column. */
+@media (min-width: 651px) and (max-width: 840px) {
+  .practice-dialog {
+    --dialog-inset: max(var(--space-5), calc((100% - 42rem) / 2));
+  }
 }
