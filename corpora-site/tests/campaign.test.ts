@@ -78,3 +78,13 @@ test("Arizona activity uses its own labels and rejects Arkansas substitution", (
  assert.equal(new URL(result.anchor.href).searchParams.get('utm_content'),label);
  }
  });
+
+
+test("NH campaign retains its labels in public trial links and respects privacy", () => {
+  const search = "?utm_source=google&utm_medium=cpc&utm_campaign=nh-efa-launch&utm_content=nh-efa-adaptive-v1";
+  const result = run({}, search, "new-hampshire-efa");
+  assert.deepEqual(JSON.parse(result.sent[0].options.body), {state:"NH", program:"new-hampshire-efa", campaign:"nh-efa-launch", source:"google", medium:"cpc", creative:"nh-efa-adaptive-v1", action:"landing_view"});
+  assert.equal(new URL(result.anchor.href).searchParams.get("utm_campaign"), "nh-efa-launch");
+  assert.equal(run({globalPrivacyControl:true}, search, "new-hampshire-efa").sent.length, 0);
+  assert.equal(JSON.parse(run({}, search.replace("nh-efa-launch", "ar-efa-launch"), "new-hampshire-efa").sent[0].options.body).campaign, "none");
+});

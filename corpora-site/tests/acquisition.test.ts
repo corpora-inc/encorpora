@@ -73,7 +73,7 @@ test('production overview includes capture while previews and sample pages do no
   const {join}=await import('node:path');
   const dir=await mkdtemp(join(tmpdir(),'amp-overview-acquisition-'));
   const {guidedFundingFixture}=await import('./funding-fixture.js');
-  const funding=['arkansas-efa','arizona-esa'].map(slug=>({...guidedFundingFixture,state:slug==='arkansas-efa'?'AR':'AZ',page:{...guidedFundingFixture.page,slug}}));
+  const funding=['arkansas-efa','arizona-esa','new-hampshire-efa'].map(slug=>({...guidedFundingFixture,state:slug==='arkansas-efa'?'AR':slug==='arizona-esa'?'AZ':'NH',page:{...guidedFundingFixture.page,slug}}));
   const config=configSchema.parse({funding,mode:'production',siteUrl:'https://site.example.invalid',appUrl:'https://app.example.invalid',supportEmail:'support@example.invalid',legalReviewed:true,operator:{legalName:'Synthetic operator',postalAddress:'Synthetic address',telephone:'Synthetic telephone'},privacy:{placementBasis:'Synthetic basis',retention:'Synthetic retention',providers:[{name:'Synthetic provider',purpose:'Synthetic purpose',retention:'Synthetic retention'}]}});
   try{
     await buildSite(config,dir);
@@ -82,7 +82,7 @@ test('production overview includes capture while previews and sample pages do no
     assert.ok(!overview.includes('data-campaign-endpoint'));
     assert.ok(overview.includes('data-engagement-endpoint="https://app.example.invalid/api/v1/site-events"'));
     assert.ok((await readFile(join(dir,'assets/engagement.js'),'utf8')).length>0);
-    for(const slug of ['arkansas-efa','arizona-esa']){
+    for(const slug of ['arkansas-efa','arizona-esa','new-hampshire-efa']){
       const page=await readFile(join(dir,`esa/${slug}/index.html`),'utf8');
       assert.ok(page.includes('data-acquisition-endpoint="https://app.example.invalid/api/v1/advertising/acquisition"'));
       assert.ok(page.includes('data-campaign-endpoint="https://app.example.invalid/api/v1/campaign-events"'));
@@ -120,3 +120,15 @@ test('Arizona and overview clicks retain Arizona identity and respect opt-out',(
  assert.deepEqual(JSON.parse(run(query,{globalPrivacyControl:true},path).sent[0].options.body),{optOut:true});
  }
  });
+
+
+test("NH landing capture retains fixed labels and removes click identifiers under opt-out", () => {
+  const search = "?gclid=NH_Synthetic&utm_source=google&utm_medium=cpc&utm_campaign=nh-efa-launch&utm_content=nh-efa-adaptive-v1";
+  const result = run(search, {}, "/esa/new-hampshire-efa/");
+  const body = JSON.parse(result.sent[0].options.body);
+  assert.equal(body.sourcePath, "/esa/new-hampshire-efa/");
+  assert.equal(body.labels.campaign, "nh-efa-launch");
+  assert.equal(body.labels.creative, "nh-efa-adaptive-v1");
+  assert.ok(!result.replaced[0].includes("gclid"));
+  assert.deepEqual(JSON.parse(run(search, {globalPrivacyControl:true}, "/esa/new-hampshire-efa/").sent[0].options.body), {optOut:true});
+});

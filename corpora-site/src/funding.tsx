@@ -78,9 +78,9 @@ export function FundingPage({
   if (!page) throw new Error("Funding page content is missing");
   const presentation = page.presentation;
   const directPay = !!presentation && funding.kind === "classwallet-direct-pay";
-  const showProduct = directPay && ["arkansas-efa", "arizona-esa"].includes(page.slug);
+  const showProduct = directPay && ["arkansas-efa", "arizona-esa", "new-hampshire-efa"].includes(page.slug);
   const trialHref = appUrl
-    ? new URL(page.slug === "arkansas-efa" ? "/try?program=ar-efa" : page.slug === "arizona-esa" ? "/try?program=az-esa" : "/try", appUrl).href
+    ? new URL(page.slug === "arkansas-efa" ? "/try?program=ar-efa" : page.slug === "arizona-esa" ? "/try?program=az-esa" : page.slug === "new-hampshire-efa" ? "/try?program=nh-efa" : "/try", appUrl).href
     : "/amp/";
   // Funded purchase requests support twelve-month licenses. Personal monthly
   // pricing does not establish a monthly offer through the funding program.
