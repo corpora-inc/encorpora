@@ -239,6 +239,18 @@ async function assertTargets(page: Page, label: string) {
   assert.deepEqual(small, [], `${label}: targets under 44 px`);
 }
 
+/** Wait for the sheet and drill-down motion to leave the rendered animation set.
+ * WebKit can report an animation finished before its final geometry is committed. */
+const settledCard = (page: Page) =>
+  page.waitForFunction(
+    () => {
+      const card = document.querySelector(".term-dialog[open] .term-card");
+      return card && card.getAnimations({ subtree: true }).length === 0;
+    },
+    undefined,
+    { timeout: 2000 },
+  );
+
 async function assertCard(page: Page, label: string, width: number) {
   const card = await page.evaluate(() => {
     const panel = document.querySelector(".term-dialog[open] .term-card")!;
@@ -347,7 +359,7 @@ async function assertMoreList(
   await more.click();
   const dialog = page.locator(".term-dialog[open]");
   await dialog.getByRole("heading", { name: "Key words" }).waitFor();
-  await page.waitForTimeout(350); // let the sheet finish rising
+  await settledCard(page);
   const listed = await dialog
     .locator(".term-card-list .key-word")
     .evaluateAll((els) => els.map((el) => (el as HTMLElement).dataset.termId));
@@ -439,7 +451,7 @@ try {
             await origin.click();
             const dialog = page.locator(".term-dialog[open]");
             await dialog.waitFor();
-            await page.waitForTimeout(350); // let the opening motion finish
+            await settledCard(page);
             const heading = dialog.getByRole("heading", { level: 2 });
             const title = await heading.innerText();
             assert.ok(
@@ -475,7 +487,7 @@ try {
               await dialog
                 .getByRole("button", { name: `Back to ${title}` })
                 .waitFor();
-              await page.waitForTimeout(300);
+              await settledCard(page);
               assert.notEqual(await heading.innerText(), title);
               assert.deepEqual(await dialog.boundingBox(), dialogBox);
               assert.equal(
@@ -489,7 +501,7 @@ try {
               await dialog
                 .getByRole("button", { name: `Back to ${title}` })
                 .click();
-              await page.waitForTimeout(300);
+              await settledCard(page);
               assert.equal(await heading.innerText(), title);
               assert.equal(
                 await page.evaluate(
@@ -542,7 +554,7 @@ try {
             if (width === 390 && mode === "lesson") {
               await origin.click();
               await dialog.waitFor();
-              await page.waitForTimeout(350);
+              await settledCard(page);
               const grab = (await dialog
                 .locator(".term-card-grab")
                 .boundingBox())!;
