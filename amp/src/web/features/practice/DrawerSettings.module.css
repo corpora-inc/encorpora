@@ -1,0 +1,104 @@
+/* Settings sections in the navigation drawer (Practice, Answer feedback).
+   They share the drawer's own system (features/navigation/Navigation.module.css):
+   an 11px uppercase heading over rows that start at the same inset, actions
+   drawn as full-width rows with an icon, and toggles as a label beside its
+   checkbox. Hover fills the whole row, so a highlight never hugs the words. */
+.section {
+  margin: var(--space-2) 0 0;
+  padding: var(--space-3) 0 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  min-width: 0;
+}
+.section legend {
+  float: left;
+  width: 100%;
+  margin: 0 0 var(--space-1);
+  padding: 0 var(--space-2);
+  color: var(--color-muted-text);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.section legend + * {
+  clear: left;
+}
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--target-size);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-control);
+  color: var(--color-on-surface-raised);
+  font-size: var(--text-label);
+  font-weight: 600;
+  cursor: pointer;
+}
+.action {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: var(--target-size);
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--space-3) var(--space-2);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-on-surface-raised);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 650;
+  line-height: 1.35;
+  text-align: start;
+  cursor: pointer;
+}
+.action:hover:not(:disabled) {
+  background: var(--color-surface-sunken);
+  filter: none;
+}
+.action:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+.action:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.action svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.note {
+  margin: 0 0 var(--space-2);
+  padding: 0 var(--space-2);
+  color: var(--color-muted-text);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.error {
+  margin: var(--space-1) 0 var(--space-2);
+  padding: 0 var(--space-2);
+  color: var(--color-danger-accent);
+  font-size: var(--text-small);
+}
+.error button {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 650;
+  text-decoration: underline;
+}

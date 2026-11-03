@@ -15,7 +15,7 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { chromium as rawChromium, webkit, type Page } from "playwright";
 const chromium = secureChromium(rawChromium);
-import { probe, settle } from "./app-shell-probe";
+import { hoverHugs, probe, settle, shellRecord } from "./app-shell-probe";
 import { shellScenarios, startShellFixture } from "./app-shell-fixture";
 
 const argument = (name: string) => {
@@ -112,6 +112,21 @@ async function verifyShell() {
           `${tag}: targets under 44px ${found.smallTargets.join("; ")}`,
         );
         check(!errors.length, `${tag}: page errors ${errors.join("; ")}`);
+        // No hover or filled background hugs its label (a quiet button
+        // whose inline padding was zeroed). Chromium only: hover is the
+        // same CSS in both engines.
+        if (
+          engine === "chromium" &&
+          theme === "light" &&
+          (viewport.width === 390 || viewport.width === 1280)
+        ) {
+          const hugs = await hoverHugs(page, 8);
+          check(!hugs.length, `${tag}: fill hugs its label ${hugs.join("; ")}`);
+        }
+        // Nothing moved while the screen loaded (Chromium reports layout
+        // shift; WebKit's recorder has no entries).
+        const { cls } = await shellRecord(page);
+        check(cls <= 0.01, `${tag}: layout shift ${cls} while loading`);
         if (shots && (viewport.width === 390 || viewport.width === 1280))
           await page.screenshot({
             path: `${shots}/${scenario.id}-${viewport.width}-${theme}.png`,
@@ -211,6 +226,10 @@ async function verifyShell() {
     check(
       go && signIn && signIn.height >= 56,
       `landing: sign-in action is ${signIn?.height}px tall`,
+    );
+    check(
+      go && signIn && Math.abs(go.height - signIn.height) <= 1,
+      `landing: actions are ${go?.height}px and ${signIn?.height}px tall`,
     );
     const card = await box(page, "section.welcome");
     const intro = await box(page, ".intro");
@@ -389,6 +408,63 @@ async function verifyShell() {
         .map(({ text }) => text);
     });
     check(!cut.length, `pathway-skill ${width}: callouts cut off: ${cut}`);
+    await context.close();
+  }
+
+  // 9. Premium finish (docs/reviews/app-shell-premium).
+  for (const theme of ["light", "dark"] as const) {
+    // A picker's chevron is drawn, centred on its label, not a text glyph
+    // sitting on the baseline.
+    const { page, context } = await open(
+      "progress",
+      { width: 390, height: 844 },
+      theme,
+    );
+    const offset = await page.evaluate(() => {
+      const trigger = document.querySelector(
+        ".progress-controls .premium-select",
+      )!;
+      const label = trigger.querySelector("span")!.getBoundingClientRect();
+      const chevron = trigger.querySelector("svg")?.getBoundingClientRect();
+      return chevron
+        ? Math.abs(
+            label.top + label.height / 2 - (chevron.top + chevron.height / 2),
+          )
+        : 99;
+    });
+    check(
+      offset <= 1,
+      `progress ${theme}: picker chevron is ${offset}px off centre`,
+    );
+    await context.close();
+  }
+  for (const id of ["account-ready", "workbooks"]) {
+    // The branded bar keeps the wordmark beside the menu.
+    const { page, context } = await open(
+      id,
+      { width: 390, height: 844 },
+      "light",
+    );
+    const trigger = await box(page, "[data-navigation-trigger]");
+    const brand = await box(page, 'a[aria-label$="home"]');
+    check(
+      trigger && brand && brand.x - (trigger.x + trigger.width) < 24,
+      `${id} 390: wordmark is ${trigger && brand ? Math.round(brand.x - trigger.x - trigger.width) : "?"}px from the menu`,
+    );
+    if (id === "account-ready") {
+      // An address moves to its own line whole, never split at a hyphen.
+      const lines = await page.evaluate(() => {
+        const range = document.createRange();
+        const address = [...document.querySelectorAll("p span")].find((e) =>
+          e.textContent?.includes("@"),
+        )!;
+        range.selectNodeContents(address);
+        return new Set(
+          [...range.getClientRects()].map((r) => Math.round(r.top)),
+        ).size;
+      });
+      check(lines === 1, `account-ready 390: the address spans ${lines} lines`);
+    }
     await context.close();
   }
 }

@@ -106,10 +106,8 @@
   .practice-surface > .answer-dock .choice-option {
     flex-basis: 100%;
   }
-  /* Absolutely placed in the answer column's grid area: the sheet covers the
-     column it replaces, whatever the answer form's height. Both lines are
-     explicit; an auto end line would mean the card's padding edge. */
-  .practice-surface > .feedback,
+  /* Absolutely placed in the answer column's grid area (as the feedback
+     sheet is, feedback-sheet.css): it covers the column it replaces. */
   .practice-surface > .calculator {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -118,19 +116,6 @@
     bottom: 0;
     width: auto;
     margin: 0;
-  }
-  /* The sheet's rounded corners would show the rule beside it. */
-  .practice-surface:has(> .feedback) > .answer-dock {
-    border-left-color: transparent;
-  }
-  /* The sheet is as tall as what it says, anchored at the column's foot
-     where Next has always been, instead of spreading its result and Next
-     to the column's two ends. Growing (See why) moves its top edge only. */
-  .practice-surface > .feedback {
-    top: auto;
-    min-height: 0;
-    max-height: 100%;
-    overflow: hidden;
   }
   /* The column is narrower than a stacked prompt line; one step smaller reads
      at the same distance and wraps less. */
@@ -161,44 +146,6 @@
       max-height: min(520px, var(--figure-cap-height, 520px));
     }
   }
-  .practice-surface:has(> .editor-dock) > .feedback {
-    top: auto;
-    height: 184px;
-    min-height: 0;
-    max-height: 184px;
-    overflow: auto;
-    gap: 6px;
-    padding: 10px;
-  }
-  .practice-surface:has(> .editor-dock) > .feedback .feedback-head {
-    flex-direction: row;
-    text-align: left;
-    margin-block: 0;
-  }
-  .practice-surface:has(> .editor-dock) > .feedback .feedback-title {
-    align-items: flex-start;
-  }
-  .practice-surface:has(> .editor-dock) > .feedback .result-mark {
-    width: 30px;
-    min-width: 30px;
-    height: 30px;
-    font-size: 20px;
-  }
-  .editor-dock ~ .feedback > .feedback-details {
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow: auto;
-    overscroll-behavior: contain;
-    scrollbar-gutter: stable;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-  .editor-dock ~ .feedback > .feedback-details > *,
-  .editor-dock ~ .feedback > .next-action,
-  .editor-dock ~ .feedback > .practice-tools {
-    flex: none;
-  }
 }
 
 /* Tall portrait tablets (iPad Pro, 900 px and wider screens on end): the
@@ -212,8 +159,5 @@
   }
   .answer-dock {
     width: min(100%, 680px);
-  }
-  .feedback {
-    width: min(calc(100% - 24px), 680px);
   }
 }

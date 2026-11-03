@@ -19,7 +19,17 @@ import styles from "./Navigation.module.css";
 function NavIcon({
   kind,
 }: {
-  kind: "learn" | "level" | "map" | "inventory" | "settings" | "plans" | "out";
+  kind:
+    | "learn"
+    | "level"
+    | "map"
+    | "inventory"
+    | "settings"
+    | "learners"
+    | "calendar"
+    | "add"
+    | "plans"
+    | "out";
 }) {
   const paths = {
     learn: "m9 5 10 7-10 7V5Z",
@@ -27,6 +37,10 @@ function NavIcon({
     map: "m5 17 7-10 7 10M5 17h14M12 7v10",
     inventory: "M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z",
     settings: "M4 7h16M4 17h16M9 4v6m6 4v6",
+    learners:
+      "M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-6 9a6 6 0 0 1 12 0m1-9a3 3 0 1 0 0-6m2 15a5 5 0 0 0-3.5-4.8",
+    calendar: "M5 6h14v14H5V6Zm0 4h14M9 3v4m6-4v4",
+    add: "M10 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-6 9a6 6 0 0 1 9.5-4.9M18 14v6m-3-3h6",
     plans: "M5 5h14v15H5V5Zm4-2h6v4H9V3Zm0 9h6m-6 4h4",
     out: "M10 4H5v16h5m4-13 5 5-5 5m-5-5h10",
   };
@@ -261,7 +275,7 @@ export default function DrawerContents({
           "learn",
         )}
         <div className={styles.group}>
-          <h2>Your progress</h2>
+          <h2>Progress</h2>
           {nav(
             trialMode || !learner ? "/try/map" : "/",
             "Your progress",
@@ -298,12 +312,12 @@ export default function DrawerContents({
           {view.session.data &&
             nav("/family/security", "Account settings", "settings")}
           {view.session.data &&
-            nav("/family/learners", "Manage learners", "settings")}
+            nav("/family/learners", "Manage learners", "learners")}
           {learner?.birthYear != null &&
-            nav("/profile/birth-year", "Change birth year", "settings")}
+            nav("/profile/birth-year", "Change birth year", "calendar")}
           {account &&
             ["active", "development"].includes(account.family.consent.status) &&
-            nav("/start/name", "Add learner", "settings")}
+            nav("/start/name", "Add learner", "add")}
           {nav(
             learner?.entitlement.active ? "/family/access" : "/try/plans",
             learner?.entitlement.active ? "Learning access" : "See plans",
@@ -312,7 +326,7 @@ export default function DrawerContents({
         </div>
       </nav>
       {practiceControls}
-      <CurriculumDetailsControl />
+      <CurriculumDetailsControl variant="row" />
       <FeedbackPreferences />
       {view.session.data && (
         <div className={styles.signOut}>

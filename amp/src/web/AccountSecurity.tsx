@@ -90,8 +90,12 @@ export function AccountSecurity() {
     </div>
   );
   function acceptSummary(data: Summary) {
+    // One clock reading for both, so the first frame already states whether
+    // the sign-in is fresh; the line never swaps (and reflows) a frame later.
+    const at = performance.now();
     setSummary(data);
-    setFreshUntil(performance.now() + data.freshForMs);
+    setNow(at);
+    setFreshUntil(at + data.freshForMs);
   }
   async function refresh() {
     acceptSummary(await security<Summary>("summary"));
@@ -171,9 +175,21 @@ export function AccountSecurity() {
         Sign-in &amp; security
       </h2>
       {!summary && feedback}
-      {!summary ? (
+      {!summary && !error ? (
+        // The settings' own shape, held while they load, so nothing below
+        // the heading moves when they arrive.
+        <div className="security-loading" aria-busy="true">
+          <p className="security-email">&nbsp;</p>
+          <p className="security-fresh">&nbsp;</p>
+          <div className="security-panels">
+            {[0, 1, 2, 3].map((i) => (
+              <div className="security-panel" key={i} />
+            ))}
+          </div>
+        </div>
+      ) : !summary ? (
         <button disabled={busy} onClick={() => void run(async () => {})}>
-          Load security settings
+          Try again
         </button>
       ) : (
         <>

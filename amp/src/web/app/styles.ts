@@ -17,6 +17,7 @@ import "../book-reader.css";
 import "../early-number-reader.css";
 import "katex/dist/katex.min.css";
 import "../theme.css";
+import "../feedback-sheet.css";
 import "../premium-controls.css";
 import "../app-shell.css";
 import "../problem-flag.css";
@@ -26,3 +27,5 @@ import "../figure-choice.css";
 import "../structured-work.css";
 import "../practice-tablet.css";
 import "../lesson-video.css";
+// Lesson reading rhythm sets the reading surface over everything above.
+import "../lesson-reading.css";

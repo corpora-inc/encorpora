@@ -324,7 +324,7 @@ try {
         await page
           .getByRole("button", { name: "Learner", exact: true })
           .textContent(),
-        "Jordan⌄",
+        "Jordan",
       );
       await page.goto(`${origin}/family/learners`);
       await page

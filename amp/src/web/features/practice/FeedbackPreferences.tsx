@@ -3,15 +3,15 @@ import {
   prepareFeedbackSound,
   useFeedbackPreferences,
 } from "./feedback-preferences";
-import styles from "./FeedbackPreferences.module.css";
+import settings from "./DrawerSettings.module.css";
 
 export function FeedbackPreferences() {
   const preferences = useFeedbackPreferences();
   const haptics = typeof navigator.vibrate === "function";
   return (
-    <fieldset className={styles.preferences}>
+    <fieldset className={settings.section}>
       <legend>Answer feedback</legend>
-      <label>
+      <label className={settings.toggle}>
         <span>Sound</span>
         <CheckboxControl
           checked={preferences.sound}
@@ -22,7 +22,7 @@ export function FeedbackPreferences() {
         />
       </label>
       {haptics && (
-        <label>
+        <label className={settings.toggle}>
           <span>Haptics</span>
           <CheckboxControl
             checked={preferences.haptics}

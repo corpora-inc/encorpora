@@ -1,5 +1,6 @@
 import { PracticeControls } from "../features/practice/PracticeControls";
 import {
+  practiceSettingsOptions,
   usePracticeAdjustment,
   type PracticeIntent,
 } from "../features/practice/practice-settings";
@@ -256,6 +257,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     identity: accountId ?? "guest",
     learnerId: learner?.id ?? "",
     token: token ?? undefined,
+  });
+  // Loaded with practice, so a focused skill's "Mixed practice" action is
+  // already known when the first answer's feedback opens.
+  const practiceSettings = useQuery({
+    ...practiceSettingsOptions(adjustments.scope),
+    enabled: !!learner && !nativeRuntime,
   });
   // Remember a tab's return URL, not a second copy of its screen/filter state.
   const progressReturn = useRef({ identity: "", href: "/progress" });
@@ -1194,13 +1201,17 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     loadedFrontier?.birthYear === learner?.birthYear
       ? (loadedFrontier?.map ?? null)
       : null;
-  const homeStrands = Object.keys(strandNames).filter((strand) =>
-    catalog?.skills.some(
-      (skill) =>
-        skill.strand === strand &&
-        catalog.templates.some((t) => t.skillId === skill.id),
-    ),
-  );
+  // Every area holds its row while the catalog loads, so the level map
+  // never grows under the learner's eyes once it arrives.
+  const homeStrands = catalog
+    ? Object.keys(strandNames).filter((strand) =>
+        catalog.skills.some(
+          (skill) =>
+            skill.strand === strand &&
+            catalog.templates.some((t) => t.skillId === skill.id),
+        ),
+      )
+    : Object.keys(strandNames);
   useEffect(() => {
     if (!learner || tab !== "practice" || !exploring) return;
     const id = learner.id;
@@ -1636,6 +1647,14 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             }
             exit={() => setExploring(true)}
             exitHref="/"
+            returnToMixed={
+              practiceSettings.data?.focusSkillId && !nativeRuntime
+                ? () =>
+                    void action(() =>
+                      adjustPractice({ kind: "focus", skillId: null }),
+                    )
+                : undefined
+            }
             key={problem.id}
             problem={problem}
             meta={meta}

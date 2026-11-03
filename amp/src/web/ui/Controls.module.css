@@ -60,6 +60,20 @@
   background: var(--color-secondary);
   filter: none;
 }
+/* A quiet action's fill appears only on hover, so its inset is easy to lose:
+   a feature rule that zeroes it (`padding-inline: 0` to line the words up)
+   leaves the hover fill hugging the label. Two classes outrank any single
+   feature selector, so the inset always holds. To line the label up with
+   its column, use `align="start"`, which moves the fill into the gutter
+   instead. */
+.button.quiet {
+  padding-inline: var(--space-4);
+}
+.button.quiet.alignStart {
+  justify-content: flex-start;
+  text-align: start;
+  margin-inline-start: calc(-1 * var(--space-4));
+}
 .primary:disabled,
 .secondary:disabled,
 .quiet:disabled {

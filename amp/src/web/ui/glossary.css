@@ -24,7 +24,11 @@
   text-decoration-color: var(--color-primary);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.24em;
-  white-space: nowrap;
+  /* A term is one unit on its line. Only a term wider than its whole column
+     (a long name in a narrow panel) wraps, between its own words, rather
+     than overflowing; its last word keeps the "?". */
+  max-inline-size: 100%;
+  white-space: normal;
   cursor: pointer;
   transition: background var(--motion-fast) ease;
 }
@@ -49,6 +53,9 @@
 .glossary-term:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
+}
+.glossary-term-end {
+  white-space: nowrap;
 }
 /* A small badge set above the x-height. Inline-flex at the baseline with a
    relative offset: it moves visually, never the line. */

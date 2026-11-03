@@ -79,7 +79,8 @@ export function ChooseHowToPay(props: Props) {
           <h1 id="choose-pay-title" tabIndex={-1} ref={heading}>
             Choose your AMP plan
           </h1>
-          {props.learnerName && <p className="pay-for">{props.learnerName}</p>}
+          {/* The learner's line holds its place while the family loads. */}
+          <p className="pay-for">{props.learnerName}</p>
           <p>
             Adaptive practice from counting to SAT, a short lesson for every
             type of problem, and printable worksheets with full solutions.

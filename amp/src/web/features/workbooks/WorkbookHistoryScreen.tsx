@@ -51,6 +51,16 @@ function History({
       <CodeEntry session={session} learnerId={learner.id} />
       {history.data && !history.data.workbooks.length ? (
         <p className={styles.empty}>Workbooks you make appear here.</p>
+      ) : !history.data && !history.error ? (
+        // While the list loads, hold the empty line's place: an empty list
+        // then changes nothing, and saved workbooks extend the page below.
+        <p
+          className={styles.empty}
+          aria-hidden="true"
+          style={{ visibility: "hidden" }}
+        >
+          Workbooks you make appear here.
+        </p>
       ) : (
         <WorkbookList
           session={session}
