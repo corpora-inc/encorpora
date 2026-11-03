@@ -88,6 +88,7 @@ Generated narration uses exactly one approved ElevenLabs voice:
 
 - Madeline Brousseaux, Southern alto: `XescS24CsOySAkKrLAO3`.
 - Paul, Southern, Reassuring, Calm: `J3Ei0Lj6fAobhIqY5ySH`.
+- Coach Cap, only as Coach Champ in the grade speedruns: `SYXbTJsLE7zmSjr1DchT`.
 
 Resolve by ID, preserve the script, model, voice ID, and audio hash, and validate
 before rendering. Old examples suggesting other voices are not approved AMP

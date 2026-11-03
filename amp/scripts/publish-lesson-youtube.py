@@ -9,15 +9,15 @@ import hashlib
 import json
 import os
 import fcntl
+import time
 from datetime import datetime, timezone
-from youtube_policy import POLICY_VERSION, validate_plan, validate_review, release_time, timestamp, calendar_event
+from youtube_policy import POLICY_VERSION, VOICES, validate_plan, validate_review, release_time, timestamp, calendar_event
 from pathlib import Path
 import urllib.parse
 import urllib.request
 import urllib.error
 API = 'https://www.googleapis.com/youtube/v3'
 UPLOAD = 'https://www.googleapis.com/upload/youtube/v3'
-VOICES = {'XescS24CsOySAkKrLAO3', 'J3Ei0Lj6fAobhIqY5ySH'}
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -153,7 +153,11 @@ def execute(args):
             receipt['publishAt'] = status['publishAt']
             receipt['pinAction'] = {'status': 'pending-publication', 'text': plan['pinnedComment']}
             (state / (video_id + '.json')).write_text(json.dumps(receipt, indent=2) + '\n')
-    result = request('GET', API + '/videos?part=status,contentDetails&id=' + video_id)['items'][0]
+    for attempt in range(4):  # reads right after a write can be stale
+        result = request('GET', API + '/videos?part=status,contentDetails&id=' + video_id)['items'][0]
+        if not args.schedule or result['status'].get('publishAt'):
+            break
+        time.sleep(4 * (attempt + 1))
     if result['status'].get('selfDeclaredMadeForKids') is not False:
         raise ValueError('Audience readback differs from the reviewed general-audience plan')
     if args.schedule and (result['status']['privacyStatus'] != 'private' or timestamp(result['status']['publishAt']) != chosen):
