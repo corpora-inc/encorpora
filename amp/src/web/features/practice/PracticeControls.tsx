@@ -9,6 +9,7 @@ import {
   type PracticeScope,
 } from "./practice-settings";
 import styles from "./PracticeControls.module.css";
+import settings from "./DrawerSettings.module.css";
 
 /** Lives only in the navigation sheet; the open problem gains no extra copy. */
 export function PracticeControls({
@@ -49,21 +50,20 @@ export function PracticeControls({
   }
   const disabled = busy || saving || !state.data;
   return (
-    <fieldset className={styles.controls} disabled={busy || saving}>
+    <fieldset className={settings.section} disabled={busy || saving}>
       <legend>Practice</legend>
       {state.isError ? (
-        <p role="alert">
+        <p className={settings.error} role="alert">
           Practice settings could not load.{" "}
           <button type="button" onClick={() => void state.refetch()}>
             Retry
           </button>
         </p>
       ) : (
-        <label>
+        <label className={settings.toggle}>
           <span>Working together</span>
           <CheckboxControl
             disabled={disabled}
-
             checked={state.data?.workingTogether ?? false}
             onChange={(e) =>
               void save({
@@ -76,30 +76,46 @@ export function PracticeControls({
         </label>
       )}
       {state.data?.workingTogether && (
-        <p className={styles.note}>
+        <p className={settings.note}>
           Helped answers count as practice, not independent assessment.
         </p>
       )}
       {state.data?.focusSkillId && (
-        <Button
+        <button
+          type="button"
+          className={settings.action}
           disabled={disabled}
-          variant="quiet"
           onClick={() => void save({ kind: "focus", skillId: null })}
         >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 7h3.2c2.1 0 3.3 1 4.6 3.2l2.4 3.6c1.3 2.2 2.5 3.2 4.6 3.2H21" />
+            <path d="M3 17h3.2c1.2 0 2.1-.3 2.9-1" />
+            <path d="M14.9 8c.8-.7 1.7-1 2.9-1H21" />
+            <path d="m18 4 3 3-3 3M18 14l3 3-3 3" />
+          </svg>
           Return to mixed practice
-        </Button>
+        </button>
       )}
-      <Button
+      <button
+        type="button"
+        className={settings.action}
         disabled={disabled}
-        variant="quiet"
         onClick={() => {
           setError("");
           setConfirm(true);
         }}
       >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3L4 9.4" />
+          <path d="M4 4.5v4.9h4.9" />
+        </svg>
         Reset practice level
-      </Button>
-      {!confirm && error && <p role="alert">{error}</p>}
+      </button>
+      {!confirm && error && (
+        <p className={settings.error} role="alert">
+          {error}
+        </p>
+      )}
       <Dialog
         aboveNavigation
         open={confirm}

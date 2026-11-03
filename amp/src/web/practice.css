@@ -251,14 +251,6 @@ nav button {
   margin-left: 8px;
   font-size: 12px;
 }
-.result-mark {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--color-warning-accent);
-}
-.result-mark.correct {
-  color: var(--color-success-accent);
-}
 .answer-dock label {
   font-size: 12px;
   margin: 0 0 5px;
@@ -434,21 +426,6 @@ nav button {
 }
 .dialog-content .hint {
   margin: 0 0 24px;
-}
-.solution-prompt {
-  color: var(--color-muted-text);
-  font-size: 15px;
-}
-.solution-answer {
-  font-size: 22px;
-  color: var(--color-on-surface);
-}
-.solution-panel ol {
-  padding-left: 24px;
-}
-.solution-panel li {
-  padding-left: 4px;
-  margin-bottom: 16px;
 }
 .workspace-lesson h3 {
   margin-top: 24px;

@@ -1,5 +1,6 @@
 import { PracticeControls } from "../practice/PracticeControls";
 import {
+  practiceSettingsOptions,
   usePracticeAdjustment,
   type PracticeIntent,
 } from "../practice/practice-settings";
@@ -100,6 +101,12 @@ function Practice({ session }: { session: TrialSession }) {
     identity: "trial",
     learnerId: session.learnerId,
     trial: session.token,
+  });
+  // Loaded with practice, so a focused skill's "Mixed practice" action is
+  // already known when the first answer's feedback opens.
+  const practiceSettings = useQuery({
+    ...practiceSettingsOptions(adjustments.scope),
+    enabled: !nativeRuntime,
   });
   const upcoming = useRef<Promise<Next> | null>(null);
   // An answer whose response was lost retries with the same request id, so
@@ -344,6 +351,16 @@ function Practice({ session }: { session: TrialSession }) {
               }
             />
           )
+        }
+        returnToMixed={
+          practiceSettings.data?.focusSkillId &&
+          !nativeRuntime &&
+          answered !== null &&
+          limits &&
+          answered < limits.free
+            ? () =>
+                void run(() => adjustPractice({ kind: "focus", skillId: null }))
+            : undefined
         }
         hint={hintText}
         hintCue={hintCue}

@@ -292,13 +292,38 @@ try {
         await page.screenshot({
           path: `${output}/${mode}-${width}-${theme}-correct.png`,
         });
-        await page
-          .getByRole("button", { name: "See why", exact: true })
-          .click();
+        // Side by side, the sheet fills the answer column and explains every
+        // result; stacked, a correct answer's explanation is a tap away.
+        const why = page.getByRole("button", { name: "See why", exact: true });
+        if (width >= 900) {
+          assert.equal(await why.count(), 0, `${mode} ${width}: no See why`);
+          await page.locator(".feedback-steps").waitFor();
+          const column = await page
+            .locator(".practice-surface")
+            .evaluate((surface) => {
+              const sheet = surface.querySelector(".feedback")!;
+              const dock = surface.querySelector(".answer-dock")!;
+              const a = sheet.getBoundingClientRect();
+              const b = dock.getBoundingClientRect();
+              return { sheet: a.toJSON(), dock: b.toJSON() };
+            });
+          assert(
+            Math.abs(column.sheet.top - column.dock.top) <= 1 &&
+              Math.abs(column.sheet.bottom - column.dock.bottom) <= 1,
+            `${mode} ${width}: the sheet fills the answer column: ${JSON.stringify(column)}`,
+          );
+        } else await why.click();
         const explainedNext = await next.boundingBox();
         assert(
           explainedNext && box && Math.abs(explainedNext.y - box.y) <= 2,
           `${mode} ${width}: See why must not move Next`,
+        );
+        assert.equal(
+          await page
+            .getByRole("button", { name: "Mixed practice", exact: true })
+            .count(),
+          0,
+          "Mixed practice is offered only while practice is focused",
         );
         await page
           .getByRole("button", { name: "Leads to", exact: false })
@@ -383,6 +408,29 @@ try {
         assert(
           incorrectNext && box && Math.abs(incorrectNext.y - box.y) <= 2,
           `${mode} ${width}: correct and incorrect Next must share a position`,
+        );
+        // Focused on one skill, the feedback offers the way back beside Next,
+        // on one line and inside the sheet at every width.
+        const mixed = page.getByRole("button", {
+          name: "Mixed practice",
+          exact: true,
+        });
+        const mixedBox = await mixed.boundingBox();
+        const sheetBox = await page.locator(".feedback").boundingBox();
+        assert(
+          mixedBox &&
+            sheetBox &&
+            incorrectNext &&
+            Math.abs(mixedBox.y - incorrectNext.y) <= 1 &&
+            mixedBox.height >= 44 &&
+            mixedBox.x >= sheetBox.x &&
+            incorrectNext.x + incorrectNext.width <=
+              sheetBox.x + sheetBox.width,
+          `${mode} ${width}: Mixed practice sits beside Next`,
+        );
+        assert(
+          await mixed.evaluate((el) => el.scrollWidth <= el.clientWidth),
+          `${mode} ${width}: Mixed practice keeps its label on one line`,
         );
         const selectedTemplate = templates.find(
           (t) => t.skillId === practice.focusSkillId,

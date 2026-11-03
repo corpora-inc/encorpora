@@ -1,0 +1,513 @@
+/* ── The answer feedback sheet ──────────────────────────────────────────────
+   The one owner of the practice result: what PracticeWorkspace renders as
+   `.feedback` (head, worked explanation, skill progress, Next and the tools)
+   and the navigation error that overlays it. Loaded right after theme.css.
+
+   Anatomy, top to bottom, in every layout:
+     head        result mark, the answer or "Correct", one quiet line
+     steps       the worked explanation (scrolls when long)
+     progress    skill, XP, strength, Builds on / Leads to (AnswerFeedback)
+     next row    [Mixed practice] Next →
+     tools       See why · Lesson · Try easier · flag
+
+   Stacked (phones, portrait tablets), the sheet rises over the answer dock it
+   replaces, sized to what it says; the problem above never moves. Side by
+   side (landscape tablets and desktops), it fills the answer column. */
+
+/* ── Surface ─────────────────────────────────────────────────────────────── */
+.feedback {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(calc(100% - 24px), 620px);
+  /* Sized to what it says, anchored at the bottom where Check was: Next
+     stays in the thumb zone and no empty band opens above it when the dock
+     it replaces was taller (multi-select, keypad). */
+  min-height: 0;
+  max-height: max(min(72%, 440px), var(--dock-height, 0px));
+  margin: 0 auto;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  box-shadow: 0 -8px 40px var(--color-shadow);
+  color: var(--color-on-surface);
+  animation: feedback-sheet-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes feedback-sheet-in {
+  from {
+    transform: translateY(24px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .feedback {
+    animation: none;
+  }
+}
+/* Surfaces come from the status tokens, so both themes keep AA text
+   contrast: ink on the soft fill, the accent only on the mark and border. */
+.feedback.correct {
+  background: var(--color-success);
+  border-color: color-mix(
+    in srgb,
+    var(--color-success-accent) 35%,
+    var(--color-border)
+  );
+}
+.feedback.incorrect {
+  background: var(--color-danger);
+  border-color: color-mix(
+    in srgb,
+    var(--color-danger-accent) 35%,
+    var(--color-border)
+  );
+}
+/* A skip is neutral: the answer on a plain surface, no red and no mark of
+   a miss. */
+.feedback.skipped {
+  background: var(--color-surface-raised);
+  border-color: var(--color-border-strong);
+}
+
+/* A correct answer draws one calm wave across the top of the sheet. */
+.feedback-wave {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  width: calc(100% - 32px);
+  height: 18px;
+  pointer-events: none;
+  fill: none;
+  stroke: var(--color-success-accent);
+  stroke-width: 1.4;
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .feedback-wave {
+    animation: feedback-wave-fade 800ms ease-out both;
+  }
+  .feedback-wave path {
+    stroke-dasharray: 1;
+    animation: feedback-wave-draw 650ms ease-out both;
+  }
+}
+@keyframes feedback-wave-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes feedback-wave-fade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  30%,
+  65% {
+    opacity: 0.65;
+  }
+}
+
+/* ── Head: mark and result ───────────────────────────────────────────────── */
+.feedback-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.result-mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: var(--color-surface-raised);
+  font-size: 15px;
+  font-weight: 700;
+}
+.feedback.correct .result-mark {
+  background: var(--color-success-accent);
+}
+.feedback.incorrect .result-mark {
+  background: var(--color-danger-accent);
+}
+.feedback.skipped .result-mark {
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-border-strong);
+}
+.feedback-title {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.feedback-title small {
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-muted-text);
+}
+.solution-answer {
+  font-size: 22px;
+}
+/* A statement, selection or worked lines: body size, so a long answer never
+   pushes progress, connections and Next out of the sheet. */
+.feedback-title .solution-answer[data-long] {
+  font-size: 17px;
+  line-height: 1.35;
+}
+.feedback-title .solution-answer[data-long] strong {
+  font-weight: 600;
+}
+/* The longest answers (every value of skipped work) scroll inside the head;
+   progress, Next and the tools below keep their full size. */
+.feedback-head:has(.solution-answer[data-long]) {
+  /* Top-aligned, so an answer taller than the head starts at its first line. */
+  align-items: flex-start;
+  flex: 0 1 auto;
+  min-height: 4.5em;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.solution-rows {
+  margin: var(--space-1) 0 0;
+  padding-left: var(--space-5);
+  font-size: 16px;
+  font-weight: 500;
+}
+.solution-rows li + li {
+  margin-top: var(--space-1);
+}
+/* A correct answer with nothing more to read centres its result in the
+   answer area it replaced; Next stays at the bottom. */
+.feedback.correct:not(:has(.feedback-steps)) .feedback-head {
+  flex-direction: column;
+  gap: 10px;
+  margin-block: auto;
+  text-align: center;
+}
+.feedback.correct:not(:has(.feedback-steps)) .result-mark {
+  width: 52px;
+  min-width: 52px;
+  height: 52px;
+  font-size: 26px;
+}
+.feedback.correct:not(:has(.feedback-steps)) .feedback-title {
+  align-items: center;
+  font-size: 22px;
+}
+.feedback.correct:not(:has(.feedback-steps)) .feedback-title small {
+  font-size: var(--text-label);
+}
+/* With its skill and connections, the result is a heading row instead. */
+.feedback.correct:has([data-answer-feedback]) .feedback-head {
+  flex: none;
+  flex-direction: row;
+  gap: var(--space-3);
+  margin-block: 0;
+  text-align: left;
+}
+.feedback.correct:has([data-answer-feedback]) .result-mark {
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  font-size: 18px;
+}
+.feedback.correct:has([data-answer-feedback]) .feedback-title {
+  align-items: flex-start;
+  font-size: 20px;
+}
+
+/* ── Steps: the worked explanation ───────────────────────────────────────── */
+.feedback-steps {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  margin: 0;
+  padding: 0 0 0 26px;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.feedback-steps li {
+  margin: 0;
+  padding-left: var(--space-1);
+}
+.feedback-steps li + li {
+  margin-top: var(--space-3);
+}
+.feedback-steps li::marker {
+  color: var(--color-muted-text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Progress: a mastery moment (AnswerFeedback styles its own block) ────── */
+.mastery-moment {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-control);
+  background: var(--color-success);
+  color: var(--color-on-surface);
+  font-size: var(--text-label);
+  line-height: 1.3;
+}
+.mastery-moment > span:last-child {
+  display: grid;
+}
+.mastery-moment span span {
+  color: var(--color-muted-text);
+}
+.mastery-mark {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--color-success-accent);
+  color: var(--color-surface-raised);
+  font-size: 16px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mastery-mark {
+    animation: mastery-pop 600ms cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  }
+}
+
+/* ── Next row ────────────────────────────────────────────────────────────── */
+/* Next stays in the thumb zone at the bottom of the answer area. While
+   practice is focused on one skill, "Mixed practice" sits beside it: Next
+   continues the skill, the quieter action returns to the adaptive mix. */
+.next-row {
+  flex: none;
+  display: flex;
+  gap: var(--space-2);
+  margin-top: auto;
+}
+.feedback.correct:not(:has(.feedback-steps)):not(:has([data-answer-feedback]))
+  .next-row {
+  margin-top: 0;
+}
+.next-action,
+.mixed-action {
+  height: 52px;
+  border-radius: var(--radius-control);
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.next-action {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.mixed-action {
+  flex: 0 1 auto;
+  min-width: 0;
+  padding-inline: var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font-size: 15px;
+  font-weight: 650;
+}
+@media (hover: hover) {
+  .mixed-action:hover:not(:disabled) {
+    background: var(--color-secondary);
+    color: var(--color-on-secondary);
+  }
+}
+
+/* ── Tools ───────────────────────────────────────────────────────────────── */
+.feedback .practice-tools {
+  justify-content: center;
+  margin-top: -4px;
+}
+.feedback .practice-tools button {
+  min-width: 112px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: var(--radius-control);
+  font-size: var(--text-label);
+  /* A tool is one line: "Try easier" never breaks into two. */
+  white-space: nowrap;
+}
+
+/* ── Navigation error: a fixed overlay, nothing moves ────────────────────── */
+.feedback-navigation-error {
+  position: fixed;
+  z-index: 30;
+  top: calc(env(safe-area-inset-top, 0px) + 64px);
+  left: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 620px;
+  margin-inline: auto;
+  padding: var(--space-3);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  border: 1px solid var(--color-danger-accent);
+  border-radius: var(--radius-control);
+  box-shadow: 0 4px 16px var(--color-shadow);
+}
+.feedback-navigation-error button {
+  flex: none;
+  min-width: var(--target-size);
+  min-height: var(--target-size);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+
+/* ── Phones ──────────────────────────────────────────────────────────────── */
+@media (max-width: 650px) {
+  .feedback {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+    padding: var(--space-3);
+  }
+  /* Practice is full screen: the sheet meets the screen's edges. */
+  .shell.immersive .feedback {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: max(78%, var(--dock-height, 0px));
+    padding: var(--space-4) var(--space-4)
+      calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+    border-width: 1px 0 0;
+    border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+  }
+  /* Quiet actions share the row evenly instead of overflowing 320 px. */
+  .shell.immersive .feedback .practice-tools button {
+    flex: 0 1 112px;
+    min-width: 0;
+    padding-inline: var(--space-2);
+  }
+}
+/* A skipped answer adds Try easier: four tools on the narrowest phones keep
+   one line each beside the 44 px flag. */
+@media (max-width: 360px) {
+  .shell.immersive .feedback .practice-tools button {
+    padding-inline: var(--space-1);
+    font-size: var(--text-small);
+  }
+  .mixed-action {
+    padding-inline: var(--space-3);
+    font-size: var(--text-label);
+  }
+}
+/* Short screens keep feedback below the practice toolbar, including phones
+   whose edge-to-edge sheet otherwise overrides the height limits. */
+@media (max-height: 500px) {
+  .feedback,
+  .shell.immersive .feedback {
+    position: fixed;
+    min-height: 0;
+    max-height: calc(100dvh - 88px);
+    overflow: auto;
+  }
+  /* The sheet itself scrolls here, so the explanation keeps its full height
+     instead of shrinking to a clipped sliver between head and progress. */
+  .feedback > .feedback-steps,
+  .feedback > .feedback-head {
+    flex-shrink: 0;
+  }
+}
+
+/* ── Tall portrait tablets ───────────────────────────────────────────────── */
+@media (orientation: portrait) and (min-width: 760px) and (min-height: 1100px) {
+  .feedback {
+    width: min(calc(100% - 24px), 680px);
+  }
+}
+
+/* ── Side by side: the answer column ─────────────────────────────────────── */
+@media (orientation: landscape) and (min-width: 900px) and (min-height: 500px) {
+  /* Absolutely placed in the answer column's grid area: the sheet covers the
+     column it replaces, whatever the answer form's height. Both lines are
+     explicit; an auto end line would mean the card's padding edge. */
+  .practice-surface > .feedback {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    inset: 0;
+    width: auto;
+    max-height: none;
+    margin: 0;
+    overflow: hidden;
+  }
+  /* The sheet's rounded corners would show the rule beside it. */
+  .practice-surface:has(> .feedback) > .answer-dock {
+    border-left-color: transparent;
+  }
+  /* The column's full height: the result reads at the top, the worked
+     explanation fills the middle (scrolling when long) between two hairlines,
+     and the skill, its connections, Next and the tools hold one place at the
+     foot from problem to problem. */
+  .practice-surface > .feedback > .feedback-steps {
+    flex: 1 1 auto;
+    padding-block: var(--space-3);
+    border-block: 1px solid
+      color-mix(in srgb, var(--color-on-surface) 10%, transparent);
+    font-size: 16px;
+  }
+  .practice-surface > .feedback > [data-answer-feedback] {
+    margin-top: auto;
+  }
+
+  /* Beside a work or figure editor, the sheet keeps the editor's footer
+     height; its details scroll and Next stays put. */
+  .practice-surface:has(> .editor-dock) > .feedback {
+    top: auto;
+    height: 184px;
+    max-height: 184px;
+    overflow: auto;
+    gap: 6px;
+    padding: 10px;
+  }
+  .practice-surface:has(> .editor-dock) > .feedback .feedback-head {
+    flex-direction: row;
+    text-align: left;
+    margin-block: 0;
+  }
+  .practice-surface:has(> .editor-dock) > .feedback .feedback-title {
+    align-items: flex-start;
+  }
+  .practice-surface:has(> .editor-dock) > .feedback .result-mark {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+  .editor-dock ~ .feedback > .feedback-details {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .editor-dock ~ .feedback > .feedback-details > *,
+  .editor-dock ~ .feedback > .next-row,
+  .editor-dock ~ .feedback > .practice-tools {
+    flex: none;
+  }
+}
