@@ -50,6 +50,7 @@ const always = [
   // Stored workbooks reprint from (template, version, seed): any generator
   // change can break them, and no import edge points at these tests.
   "version-gated-axes",
+  "version-gated-fractions",
   "workbook",
 ];
 // Catalog-wide sweeps (slow). Opt in with --content; CI always runs them.
