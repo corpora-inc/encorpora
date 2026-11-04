@@ -457,7 +457,7 @@ export const placeValueBlanksFacetMappings: readonly FacetMapping[] = [
     facetId: "large-place-value.digit-value-and-comparison",
     extent: "partial",
     rationale:
-      "Write a five-digit number as a sum by choosing the value, or the digit times its place, of each nonzero digit, with or without a zero digit and with place-shift distractors. Does not assess numbers over five digits, reading expanded form aloud, or writing the sum by dragging.",
+      "Write a whole number as a sum by choosing the value, or the digit times its place, of each nonzero digit, with or without a zero digit and with place-shift distractors. The usual number has five digits. Other draws use six digits, seven digits, or up to ten digits. Does not assess reading expanded form aloud or writing the sum by dragging.",
   },
   {
     templateId: "expanded-decimal-slots",
@@ -471,7 +471,7 @@ export const placeValueBlanksFacetMappings: readonly FacetMapping[] = [
     facetId: "large-place-value.digit-value-and-comparison",
     extent: "partial",
     rationale:
-      "Choose less than, equal to or greater than for two comparisons of whole numbers of three to five digits, one pair equal in standard and expanded form and one pair that differs at a leading place with misleading trailing digits. Does not assess comparing three numbers, decimals or words for numbers.",
+      "Choose less than, equal to, or greater than for two comparisons of whole numbers. The usual pairs have three to five digits. Other draws use six digits, one million, or up to ten digits. One pair is equal in standard and expanded form, and one pair differs at a leading place with misleading trailing digits. Does not assess comparing three numbers, decimals, or words for numbers.",
   },
   {
     templateId: "digit-value-blanks",

@@ -3141,12 +3141,32 @@ for (const [skillId, suffix, description] of [
   [
     "large-place-value",
     "rounding-large",
-    "Round five- and six-digit whole numbers to the nearest hundred, thousand or ten thousand.",
+    "Round whole numbers through 999,999 to the nearest ten, hundred, thousand, ten thousand or hundred thousand, including numbers through 10,000.",
+  ],
+  [
+    "large-place-value",
+    "ten-times",
+    "Compare the values of one digit in two places of a whole number. Each place to the left is worth ten times as much.",
+  ],
+  [
+    "large-place-value",
+    "digit-shift",
+    "Find the value of a digit after it shifts one place left or right, and multiply a whole number by 10 or 100.",
+  ],
+  [
+    "large-place-value",
+    "number-names",
+    "Match a whole number up to 1,000,000 with its number name, in either direction.",
+  ],
+  [
+    "large-place-value",
+    "scaled-line",
+    "Read or locate a whole number on a number line counted by 1,000, 10,000 or 100,000.",
   ],
   [
     "powers-of-ten",
     "shift-by-powers",
-    "Multiply or divide by 10, 100 or 1,000 written plainly or as powers of ten, and compare one digit's values in two places.",
+    "Multiply or divide by 10, 100 or 1,000 written plainly or as powers of ten.",
   ],
 ])
   skills

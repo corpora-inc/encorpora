@@ -304,14 +304,14 @@ const courses: readonly TexasCourse[] = [
       [
         "g3-large-place-value",
         ["2.A", "2.B"],
-        ["large-place-value", "hundreds-place-value", "powers-of-ten"],
+        ["large-place-value", "hundreds-place-value"],
         [
           "multidigit-digit-value",
           "expanded-form-missing",
           "digit-value-ratio",
         ],
         "Read a digit's value or its ratio to a neighboring place",
-        "Digit values in multidigit numbers, three-digit expanded form and the ten-times relationship between neighboring places. Ranges to 100,000 are not certified and the attached skills are Grade 2, 4 and 5. Expanded notation for five-digit numbers and written descriptions are not assessed.",
+        "Digit values in multidigit numbers, three-digit expanded form and the ten-times relationship between neighboring places. digit-value-ratio is the grade 4 large-place-value skill. Ranges to 100,000 are not certified and the attached skills are Grade 2 and 4. Expanded notation for five-digit numbers and written descriptions are not assessed.",
       ],
       [
         "g3-rounding",
@@ -864,23 +864,30 @@ const courses: readonly TexasCourse[] = [
       [
         "g4-place-value-decimal",
         ["2.A", "2.B"],
-        ["powers-of-ten", "large-place-value", "decimal-place-value"],
+        ["large-place-value", "decimal-place-value"],
         [
           "digit-value-ratio",
+          "place-shift-value",
+          "number-name-numeral",
           "multidigit-digit-value",
           "decimal-digit-value",
           "expanded-decimal",
         ],
-        "Read a digit's value or its ratio to a neighboring place",
-        "Digit values in whole numbers and decimals and the ten-times relationship; the range through 1,000,000,000 is not certified and the ratio and decimal templates belong to Grade 5 skills. Writing expanded notation is not assessed.",
+        "Read a digit's value, a shift, or a number name",
+        "digit-value-ratio compares the same digit in two places. place-shift-value shifts a digit one place or multiplies by 10 or 100. number-name-numeral matches a number name and a numeral up to 1,000,000. All three are the grade 4 large-place-value skill. Decimal digit value and expanded form belong to the grade 5 decimal-place-value skill. The range through 1,000,000,000 is not certified on these items.",
       ],
       [
         "g4-compare-whole",
         ["2.C"],
         ["large-place-value", "compare-three-digit"],
-        ["compare-multidigit", "three-digit-symbol"],
-        "Compare large whole numbers",
-        "Choose the greater or lesser multidigit number; symbols appear only for three-digit numbers. Ordering a set and numbers to a billion are not certified.",
+        [
+          "compare-symbol-blanks",
+          "order-whole-numbers-slots",
+          "compare-multidigit",
+          "three-digit-symbol",
+        ],
+        "Compare or order large whole numbers",
+        "compare-symbol-blanks records the symbol. The usual pairs are three to five digits; other draws use six digits, one million, or up to ten digits, and the longest of those passes 1,000,000,000. order-whole-numbers-slots orders three, four, or five five-digit numbers. compare-multidigit asks which number is greater, up to 999,999. three-digit-symbol records a symbol for three-digit numbers. Numbers through 1,000,000,000 are not certified on every item.",
       ],
       [
         "g4-round-whole",
@@ -888,7 +895,7 @@ const courses: readonly TexasCourse[] = [
         ["large-place-value"],
         ["round-large"],
         "Round a large whole number",
-        "Rounds to a stated place such as ten thousand. Places through the hundred thousands are not individually certified.",
+        "Rounds five- and six-digit numbers to the ten, hundred, thousand, ten thousand or hundred thousand. Numbers through 10,000 are included. Billions are not a rounding item.",
       ],
       [
         "g4-decimal-models",

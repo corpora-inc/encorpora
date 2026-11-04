@@ -52,7 +52,7 @@ export const staar2024Grade4 = defineLedger(
       status: "partial",
       templateIds: ["digit-value-ratio"],
       limitations:
-        "STAAR interaction: hot spot, 2 points. digit-value-ratio finds the factor between two places of one number; selecting the matching numbers from a set by hot spot has no response protocol.",
+        "STAAR interaction: hot spot, 2 points. digit-value-ratio is the grade 4 large-place-value skill and finds the factor between two places of one whole number; selecting the matching numbers from a set by hot spot has no response protocol.",
     },
     {
       item: { number: "3", page: "rationale PDF p.3" },

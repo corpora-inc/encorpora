@@ -8,7 +8,10 @@ NUMBER_SENSE = frozenset({
     'round-to-hundred', 'round-large', 'multiply-power-of-ten',
     'divide-power-of-ten', 'digit-value-ratio',
 })
-PLACE_UNITS = {'ten': 10, 'hundred': 100, 'thousand': 1000, 'ten thousand': 10000}
+PLACE_UNITS = {
+    'ten': 10, 'hundred': 100, 'thousand': 1000,
+    'ten thousand': 10000, 'hundred thousand': 100000,
+}
 POWERS = {'10': 10, '100': 100, '1,000': 1000, '10¹': 10, '10²': 100, '10³': 1000}
 
 
@@ -107,13 +110,24 @@ def solve_number_sense(public):
         require(sorted(m['at'] for m in line['marks']) == sorted([a, b]), 'Both ends are marked')
         return abs(b - a)
     if name in ('round-to-ten', 'round-to-hundred', 'round-large'):
-        m = re.fullmatch(r'Round ([\d,]+) to the nearest (ten thousand|ten|hundred|thousand)\.', prompt)
+        m = re.fullmatch(
+            r'Round ([\d,]+) to the nearest (hundred thousand|ten thousand|thousand|hundred|ten)\.',
+            prompt,
+        )
         require(m is not None, f'Unexpected rounding prompt {prompt!r}')
         n, unit = whole(m[1]), PLACE_UNITS[m[2]]
-        expected_unit = {'round-to-ten': (10,), 'round-to-hundred': (100,), 'round-large': (100, 1000, 10000)}[name]
+        expected_unit = {
+            'round-to-ten': (10,),
+            'round-to-hundred': (100,),
+            'round-large': (10, 100, 1000, 10000, 100000),
+        }[name]
         require(unit in expected_unit, 'Wrong rounding place for the family')
         if name == 'round-large':
-            require(10000 <= n <= 999999, 'Large rounding uses five or six digits')
+            require(1000 <= n <= 999999 or n == 10000, 'Large rounding stays within 1,000,000')
+            if unit == 100000:
+                require(100000 <= n <= 999999, 'Hundred-thousand rounding uses six digits')
+            if n < 10000:
+                require(unit in (10, 100, 1000), 'Numbers through 10,000 round to ten, hundred or thousand')
         else:
             require(10 <= n <= 999, 'Grade 3 rounding stays below 1,000')
         return round_half_up(n, unit)
@@ -210,7 +224,7 @@ class NumberSenseCorpus:
         required = {
             'round-to-ten': {'halfway', 'already-round', 'carries'},
             'round-to-hundred': {'halfway', 'already-round', 'carries', 'no-double-rounding'},
-            'round-large': {'halfway', 'carries', 'no-double-rounding', 'unit-100', 'unit-1000', 'unit-10000'},
+            'round-large': {'halfway', 'carries', 'no-double-rounding', 'unit-10', 'unit-100', 'unit-1000', 'unit-10000', 'unit-100000'},
             'count-sequence-missing': {'tens', 'ones', 'crosses-ten'},
             'multiply-power-of-ten': {'decimal', 'whole', 'exponent', 'plain'},
             'divide-power-of-ten': {'decimal', 'whole', 'exponent', 'plain'},

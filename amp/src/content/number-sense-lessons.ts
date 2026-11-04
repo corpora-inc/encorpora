@@ -260,14 +260,10 @@ export const numberSenseLessons: Lesson[] = [
     title: "Multiply and divide by powers of ten",
     summary:
       "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number. In a whole number, the places from the right are ones, tens, hundreds, thousands and so on. In a decimal, the ones place is just left of the decimal point. Each place is worth 10 times the place on its right. So multiplying by 10 moves every digit one place left, and dividing by 10 moves every digit one place right. 10, 100 and 1,000 are called powers of ten, because each is made by multiplying 10s.",
-    templateIds: [
-      "multiply-power-of-ten",
-      "divide-power-of-ten",
-      "digit-value-ratio",
-    ],
+    templateIds: ["multiply-power-of-ten", "divide-power-of-ten"],
     objectives: [
       "Multiply and divide whole numbers and decimals by 10, 100 and 1,000.",
-      "Explain how the same digit's value changes from one place to another.",
+      "Count the zeros in 10, 100 or 1,000 and move every digit that many places.",
     ],
     sections: [
       {

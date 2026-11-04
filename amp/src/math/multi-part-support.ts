@@ -210,11 +210,21 @@ export function defineGenerate(
       }
     if (!problem)
       throw new Error(`${templateId}: no instance for ${seed} (${last})`);
+    // A silent legacy value is the surface stored before that axis existed.
+    // Leaving it out keeps the old variant id. A newer value is appended.
+    const recorded: Record<string, string> = {};
+    const tokens: string[] = [];
+    for (const [key, value] of Object.entries(axes)) {
+      const axis = entry.axes[key];
+      if (axis?.silentLegacy && value === axis.legacy) continue;
+      recorded[key] = value;
+      tokens.push(value);
+    }
     return {
       ...problem,
       variant: {
-        id: Object.values(axes).join("-"),
-        axes: axisRecord(axes as Record<string, string>),
+        id: tokens.join("-"),
+        axes: axisRecord(recorded),
       },
     };
   };

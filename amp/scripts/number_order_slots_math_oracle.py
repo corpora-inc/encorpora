@@ -69,7 +69,7 @@ def solve_detail(public):
     template = public["templateId"]
     descending = read_direction(public["prompt"])
     items = read_items(public)
-    require(len(items) in ((3,) if template != "order-rationals-slots" else (4, 5)), f"Count of {template}")
+    require(len(items) in ((3, 4, 5) if template == "order-whole-numbers-slots" else (3,) if template != "order-rationals-slots" else (4, 5)), f"Count of {template}")
     values = [v for _, v in items]
     require(len(set(values)) == len(values), "Tied values")
     if template == "order-whole-numbers-slots":

@@ -6,6 +6,17 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { hasHave, isAre } from "./agreement";
+import { defineAxis } from "./variation/axes";
+import { generateWithAxes, omitLegacyVariant } from "./variation/legacy";
+
+/** Digit length for `multidigit-digit-value`. `as-drawn` keeps four to six digits. */
+export const digitMagnitudeAxes = {
+  magnitude: defineAxis(
+    "magnitude",
+    ["as-drawn", "six", "million", "billions"] as const,
+    { legacy: "as-drawn", weights: [8, 4, 2, 1] },
+  ),
+} as const;
 
 type Random = (low: number, high: number) => number;
 const definitions = [
@@ -270,6 +281,20 @@ export function generateComparisonProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (templateId !== "multidigit-digit-value")
+    return comparisonProblem(templateId, seed, "as-drawn");
+  return omitLegacyVariant(
+    generateWithAxes(templateId, seed, digitMagnitudeAxes, (values) =>
+      comparisonProblem(templateId, seed, values.magnitude),
+    ),
+  );
+}
+
+function comparisonProblem(
+  templateId: string,
+  seed: string,
+  magnitude: (typeof digitMagnitudeAxes.magnitude.values)[number],
+): GeneratedProblem {
   const meta = comparisonTemplates.find((t) => t.id === templateId);
   if (!meta) throw new Error(`Unknown comparison template: ${templateId}`);
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
@@ -429,7 +454,62 @@ export function generateComparisonProblem(
       break;
     }
     case "multidigit-digit-value": {
-      const length = r(4, 6);
+      const drawnLength = r(4, 6);
+      const longPlaces = [
+        "ones",
+        "tens",
+        "hundreds",
+        "thousands",
+        "ten thousands",
+        "hundred thousands",
+        "millions",
+        "ten millions",
+        "hundred millions",
+        "billions",
+      ];
+      if (magnitude !== "as-drawn") {
+        const exactMillion = magnitude === "million" && r(0, 4) === 0;
+        const length = exactMillion
+          ? 7
+          : magnitude === "six"
+            ? 6
+            : magnitude === "million"
+              ? 7
+              : r(9, 10);
+        let digits: number[];
+        let place: number;
+        let digit: number;
+        if (exactMillion) {
+          digits = [1, 0, 0, 0, 0, 0, 0];
+          place = 6;
+          digit = 1;
+        } else {
+          place = r(1, length - 1);
+          digit = r(1, 9);
+          digits = [];
+          for (let p = length - 1; p >= 0; p--) {
+            if (p === place) digits.push(digit);
+            else {
+              let d = r(p === length - 1 ? 1 : 0, 8);
+              if (d >= digit) d++;
+              digits.push(d);
+            }
+          }
+        }
+        const n = Number(digits.join(""));
+        const value = digit * 10 ** place;
+        prompt = `What is the value of the digit ${digit} in ${formatWhole(n)}?`;
+        answer = String(value);
+        hint = `Read the places of ${formatWhole(n)} from the right until you reach the ${digit}. Its value is ${digit} of that place.`;
+        explanation = [
+          `Read the places from the right: ${longPlaces.slice(0, length).join(", ")}.`,
+          `The ${digit} is in the ${longPlaces[place]} place.`,
+          `A digit's value is the digit times the value of its place: ${digit} × ${formatWhole(10 ** place)} = ${formatWhole(value)}.`,
+          `The digit ${digit} in ${formatWhole(n)} has the value ${formatWhole(value)}.`,
+        ];
+        break;
+      }
+      const length = drawnLength;
       const place = r(1, length - 1),
         digit = r(1, 9);
       const digits: number[] = [];

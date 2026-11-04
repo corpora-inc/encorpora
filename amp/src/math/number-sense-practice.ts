@@ -7,6 +7,8 @@ import type {
 import { formatWhole } from "./comparison-practice";
 import { act, lessonStep, numberLine, scene, step } from "./scene/author";
 import type { Element, Scene } from "./scene/spec";
+import { defineAxis } from "./variation/axes";
+import { generateWithAxes, omitLegacyVariant } from "./variation/legacy";
 
 /** A window of the hundred chart as a scene: numbered squares, one left
  * empty and shaded. The empty square carries no value. */
@@ -113,7 +115,7 @@ const definitions = [
     "Round large numbers",
     "large-place-value",
     "3–5",
-    "Round a whole number up to 999,999 to the nearest hundred, thousand or ten thousand.",
+    "Round a whole number to the nearest ten, hundred, thousand, ten thousand, or hundred thousand. The usual draw is a five- or six-digit number to the hundred, thousand, or ten thousand.",
   ],
   [
     "multiply-power-of-ten",
@@ -132,7 +134,7 @@ const definitions = [
   [
     "digit-value-ratio",
     "Ten times the place to its right",
-    "powers-of-ten",
+    "large-place-value",
     "3–5",
     "Compare the values of the same digit in two places of a whole number.",
   ],
@@ -224,9 +226,33 @@ function roundingSteps(n: number, unit: number, name: string): string[] {
   ];
 }
 
+/** Rounding place for `round-large`. `as-drawn` is the pre-axis draw. */
+export const roundLargeAxes = {
+  place: defineAxis(
+    "place",
+    ["as-drawn", "ten", "hundred-thousand", "within-10000"] as const,
+    { legacy: "as-drawn", weights: [6, 2, 2, 2] },
+  ),
+} as const;
+type RoundPlace = (typeof roundLargeAxes.place.values)[number];
+
 export function generateNumberSenseProblem(
   templateId: string,
   seed: string,
+): GeneratedProblem {
+  if (templateId !== "round-large")
+    return numberSenseProblem(templateId, seed, "as-drawn");
+  return omitLegacyVariant(
+    generateWithAxes(templateId, seed, roundLargeAxes, (values) =>
+      numberSenseProblem(templateId, seed, values.place),
+    ),
+  );
+}
+
+function numberSenseProblem(
+  templateId: string,
+  seed: string,
+  placeAxis: RoundPlace,
 ): GeneratedProblem {
   const meta = numberSenseTemplates.find((t) => t.id === templateId);
   if (!meta) throw new Error(`Unknown number-sense template: ${templateId}`);
@@ -499,10 +525,38 @@ export function generateNumberSenseProblem(
       break;
     }
     case "round-large": {
-      const place = r(2, 4),
-        unit = 10 ** place,
+      // These three draws stay in this order so the legacy place reproduces
+      // the pre-axis problem. A later place only changes which of them is used.
+      const drawnPlace = r(2, 4),
         kind = r(0, 5),
-        length = r(5, 6),
+        drawnLength = r(5, 6);
+      if (placeAxis === "within-10000") {
+        const place = r(1, 3),
+          unit = 10 ** place;
+        const n =
+          kind === 0
+            ? r(1, 9) * 1000 + unit / 2
+            : kind === 1
+              ? 10_000
+              : kind === 2
+                ? r(1, 9) * 1000 + 9 * (unit / 10) + r(unit / 2, unit - 1)
+                : r(1000, 9999);
+        const bounded = Math.min(10_000, Math.max(1000, n));
+        const name = singularPlace[place]!;
+        prompt = `Round ${formatWhole(bounded)} to the nearest ${name}.`;
+        answer = String(roundTo(bounded, unit));
+        hint = `In ${formatWhole(bounded)}, look at the ${placeName[place - 1]} digit, ${Math.floor(bounded / 10 ** (place - 1)) % 10}: 5 or more rounds up; less rounds down.`;
+        explanation = roundingSteps(bounded, unit, name);
+        break;
+      }
+      const place =
+          placeAxis === "ten"
+            ? 1
+            : placeAxis === "hundred-thousand"
+              ? 5
+              : drawnPlace,
+        unit = 10 ** place,
+        length = place === 5 ? 6 : drawnLength,
         lowest = 10 ** (length - 1),
         highest = 10 ** length - 1;
       const top =

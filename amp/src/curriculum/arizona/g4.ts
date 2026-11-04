@@ -144,9 +144,9 @@ export const arizonaG4Rows: readonly ArizonaRow[] = [
     "printed p.8",
     "A digit in one place is ten times what it represents one place to the right.",
     `${wholeCap} The neighboring place to the right only. Essential standard.`,
-    ["multidigit-digit-value", "digit-value-ratio"],
-    ["large-place-value", "powers-of-ten"],
-    "multidigit-digit-value names one digit's value. Other-grade link: digit-value-ratio is skill powers-of-ten, grade 5, and is not served as grade 4 practice. Sampled ratios use 10, 100, or 1,000, so they are not limited to the neighboring place.",
+    ["multidigit-digit-value", "digit-value-ratio", "place-shift-value"],
+    ["large-place-value"],
+    "multidigit-digit-value names one digit's value. digit-value-ratio is the grade 4 large-place-value skill. Its ratios use 10, 100, or 1,000, so they are not limited to the neighboring place. place-shift-value shifts a digit one place left or right and multiplies a whole number by 10 or 100. A shift to the left is outside this standard.",
   ),
   related(
     "4.NBT.A.2",
@@ -155,12 +155,13 @@ export const arizonaG4Rows: readonly ArizonaRow[] = [
     wholeCap,
     [
       "place-value-forms-select",
+      "number-name-numeral",
       "expanded-whole-slots",
       "compare-symbol-blanks",
       "compare-multidigit",
     ],
     ["large-place-value"],
-    "Expanded form and a word-form comparison are selected, not a dedicated number-name item. compare-symbol-blanks records the symbol; 30 sampled seeds were three- to five-digit numbers. compare-multidigit asks which number is greater and reaches 999,999. true-comparison-statement is not linked because it uses up to nine digits, past this domain.",
+    "number-name-numeral matches a whole number up to 1,000,000 with its number name, in either direction. place-value-forms-select chooses an expanded sum or a word-form comparison. expanded-whole-slots writes one expanded sum. The usual number has five digits; other draws use six digits, seven digits, or up to ten digits. compare-symbol-blanks records the symbol. The usual pairs are three to five digits; other draws use six digits, one million, or up to ten digits. compare-multidigit asks which number is greater and reaches 999,999. true-comparison-statement is not linked because it uses up to nine digits, past this domain.",
   ),
   related(
     "4.NBT.A.3",
@@ -169,7 +170,7 @@ export const arizonaG4Rows: readonly ArizonaRow[] = [
     wholeCap,
     ["round-large"],
     ["large-place-value"],
-    "Sampled items round to the nearest hundred, thousand, or ten thousand, for numbers up to 999,999. The nearest ten and the nearest hundred-thousand were not reached.",
+    "round-large rounds to the nearest ten, hundred, thousand, ten thousand, or hundred thousand. The usual numbers have five or six digits and round to the hundred, thousand, or ten thousand. Other draws use the nearest ten, the nearest hundred thousand, or a number from 1,000 to 10,000. A rounded answer can be 1,000,000.",
   ),
   related(
     "4.NBT.B.4",

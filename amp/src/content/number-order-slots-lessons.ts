@@ -175,7 +175,7 @@ export const numberOrderSlotsFacetMappings: readonly FacetMapping[] = [
     facetId: "large-place-value.digit-value-and-comparison",
     extent: "partial",
     rationale:
-      "Order three five-digit whole numbers whose first difference is in the ten thousands, thousands or hundreds place, least first or greatest first, by choosing the item for each position, with smaller trailing digits in the greater number. Does not assess numbers of other lengths, comparing a number with its expanded form, or ordering by dragging.",
+      "Order three, four, or five five-digit whole numbers whose first difference is in the ten thousands, thousands, or hundreds place, least first or greatest first, by choosing the item for each position, with smaller trailing digits in the greater number. Does not assess numbers of other lengths, comparing a number with its expanded form, or ordering by dragging.",
   },
   {
     templateId: "order-fractions-slots",
