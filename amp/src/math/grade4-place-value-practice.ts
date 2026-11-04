@@ -136,13 +136,10 @@ function shiftDraft(r: Random, side: "left" | "right"): ShiftBuilt | null {
   const found = shiftable(r, side);
   if (!found) return null;
   const { n, digit, place, next, value, oldValue } = found;
-  const placeWrongs = [
-    place,
-    next === 0 ? 2 : 0,
-    side === "left" ? next + 1 : place + 1,
-  ]
-    .filter((p) => p !== next && p >= 0 && p < PLACES.length)
-    .map((p) => PLACES[p]!);
+  const placeWrongs = PLACES.filter((name) => name !== PLACES[next]).slice(
+    0,
+    3,
+  );
   const valueWrongs = distinctNumbers(value, [
     oldValue,
     value * 10,
@@ -150,7 +147,7 @@ function shiftDraft(r: Random, side: "left" | "right"): ShiftBuilt | null {
     oldValue + digit,
     value * 100,
   ]);
-  if (new Set(placeWrongs).size < 2 || valueWrongs.length < 3) return null;
+  if (placeWrongs.length < 3 || valueWrongs.length < 3) return null;
   const slots: Slot[] = [
     {
       id: "place",

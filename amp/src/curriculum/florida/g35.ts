@@ -1010,7 +1010,7 @@ export const floridaG35Rows: readonly FloridaRow[] = [
     "related",
     ["round-to-ten", "round-to-hundred", "round-large"],
     ["round-whole-numbers", "large-place-value"],
-    "Rounds to ten (below 1,000), hundred and thousand. round-large also uses numbers up to 999,999, beyond 10,000, and nearest-ten rounding of four-digit numbers is not confirmed.",
+    "round-large rounds five- and six-digit numbers to the hundred, thousand or ten thousand, and also reaches the nearest ten, the nearest hundred thousand, and numbers from 1,000 to 10,000. round-to-ten and round-to-hundred stay below 1,000.",
     "",
     "",
   ],

@@ -101,16 +101,20 @@ export const wholeAxes = {
     "hundreds",
   ] as const),
   order: orderAxis,
+  count: defineAxis("count", ["three", "four", "five"] as const, {
+    legacy: "three",
+    weights: [2, 2, 3],
+  }),
 } as const;
 const PLACE_INDEX = { "ten-thousands": 0, thousands: 1, hundreds: 2 } as const;
 
-function wholeNumbers(r: Random, place: keyof typeof PLACE_INDEX) {
+function wholeNumbers(r: Random, place: keyof typeof PLACE_INDEX, count = 3) {
   const at = PLACE_INDEX[place];
   const prefix = Array.from({ length: at }, (_, i) =>
     i === 0 ? r(1, 8) : r(0, 9),
   );
   const digits = shuffle(r, [1, 2, 3, 4, 5, 6, 7, 8, 9])
-    .slice(0, 3)
+    .slice(0, count)
     .sort((a, b) => a - b);
   const values = digits.map((d) => {
     const rest = Array.from({ length: 4 - at }, () => r(0, 9));
@@ -118,8 +122,14 @@ function wholeNumbers(r: Random, place: keyof typeof PLACE_INDEX) {
   });
   // The least number should end in larger digits than the greatest, so that
   // reading from the right gives the wrong order.
-  need(values[0]! % 1000 > values[2]! % 1000 || at === 2, "a trailing trap");
-  need(new Set(values).size === 3, "three different numbers");
+  need(
+    values[0]! % 1000 > values[count - 1]! % 1000 || at === 2,
+    count === 3 ? "a trailing trap" : "a trailing trap",
+  );
+  need(
+    new Set(values).size === count,
+    count === 3 ? "three different numbers" : "different numbers",
+  );
   return values;
 }
 
@@ -264,9 +274,13 @@ export const numberOrderSlotsGenerate = defineGenerate(
   {
     "order-whole-numbers-slots": entry(wholeAxes, ({ meta, seed, r, axes }) => {
       const place = axes["first-difference"];
-      const values = wholeNumbers(r, place);
-      const names = shuffle(r, [...VENUES]).slice(0, 3);
-      const shown = shuffle(r, [0, 1, 2]).map((k, i) => ({
+      const count = axes.count === "five" ? 5 : axes.count === "four" ? 4 : 3;
+      const values = wholeNumbers(r, place, count);
+      const names = shuffle(r, [...VENUES]).slice(0, count);
+      const shown = shuffle(
+        r,
+        Array.from({ length: count }, (_, i) => i),
+      ).map((k, i) => ({
         name: names[i]!,
         value: values[k]!,
       }));
@@ -278,11 +292,11 @@ export const numberOrderSlotsGenerate = defineGenerate(
       const placeName = place.replace("-", " ");
       const prefix = String(ascending[0]!.value).slice(0, at);
       return multiPartProblem(meta, seed, r, {
-        prompt: `Three stadiums hold crowds of different sizes: ${shown.map((v) => `${v.name} holds ${grouped(v.value)} people`).join("; ")}. Put the stadiums in order ${direction(axes.order, "the smallest capacity", "the greatest capacity")}.`,
+        prompt: `${count === 5 ? "Five" : count === 4 ? "Four" : "Three"} stadiums hold crowds of different sizes: ${shown.map((v) => `${v.name} holds ${grouped(v.value)} people`).join("; ")}. Put the stadiums in order ${direction(axes.order, "the smallest capacity", "the greatest capacity")}.`,
         layout: "slots",
         label: "Choose the stadium for each position",
         slots: slotsFor(
-          positionLabels(3, axes.order),
+          positionLabels(count, axes.order),
           ordered.map((v) => v.name),
           shown.map((v) => v.name),
           "capacity",
@@ -290,7 +304,7 @@ export const numberOrderSlotsGenerate = defineGenerate(
         hint: `Write ${grouped(shown[0]!.value)} and ${grouped(shown[1]!.value)} one above the other and compare their digits from the left. The first place where the digits differ decides which number is greater.`,
         explanation: [
           prefix
-            ? `All three numbers begin with ${prefix}, so compare the digits in the ${placeName} place.`
+            ? `All ${count === 5 ? "five" : count === 4 ? "four" : "three"} numbers begin with ${prefix}, so compare the digits in the ${placeName} place.`
             : `Compare the digits in the ${placeName} place, the leftmost place.`,
           `The ${placeName} digits are ${list(digitsAt)}, so from smallest to greatest the capacities are ${ascending.map((v) => grouped(v.value)).join(" < ")}.`,
           `${axes.order === "least-first" ? "Smallest to greatest" : "Greatest to smallest"}: ${ordered.map((v) => v.name).join(", ")}.`,

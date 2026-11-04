@@ -281,6 +281,79 @@ function labelValue(label: string, wordsPrompt: boolean): number | null {
   return parseNameSafe(label);
 }
 
+test("rounding, ordering and comparison reach the grade-4 ranges", () => {
+  const places = new Set<string>();
+  let millionRound = false;
+  let carry = false;
+  for (let i = 0; i < 300; i++) {
+    const problem = generateProblem("round-large", `round-${i}`);
+    const match = problem.public.prompt.match(
+      /^Round ([\d,]+) to the nearest (.+)\.$/,
+    )!;
+    const n = num(match[1]!);
+    const place = match[2]!;
+    places.add(place);
+    const unit =
+      place === "ten"
+        ? 10
+        : place === "hundred"
+          ? 100
+          : place === "thousand"
+            ? 1000
+            : place === "ten thousand"
+              ? 10_000
+              : 100_000;
+    const remainder = n % unit;
+    const expected =
+      remainder * 2 >= unit ? n - remainder + unit : n - remainder;
+    assert.equal(Number(problem.answer), expected);
+    if (Number(problem.answer) === 1_000_000) millionRound = true;
+    if (Math.floor(n / unit) % 10 === 9 && expected > n) carry = true;
+  }
+  assert.deepEqual([...places].sort(), [
+    "hundred",
+    "hundred thousand",
+    "ten",
+    "ten thousand",
+    "thousand",
+  ]);
+  assert.ok(millionRound, "a rounding answer is 1,000,000");
+  assert.ok(carry, "a string of 9s carries");
+
+  let five = 0;
+  let shared = 0;
+  for (let i = 0; i < 200; i++) {
+    const problem = generateProblem("order-whole-numbers-slots", `order-${i}`);
+    const crowds = [
+      ...problem.public.prompt.matchAll(/holds ([\d,]+) people/g),
+    ].map((m) => num(m[1]!));
+    if (crowds.length === 5) {
+      five++;
+      const heads = crowds.map((value) => String(value).slice(0, 2));
+      if (new Set(heads).size === 1) shared++;
+    }
+  }
+  assert.ok(five > 0, "five-number orders");
+  assert.ok(shared > 0, "five numbers share leading digits");
+
+  let exactMillion = 0;
+  let billions = 0;
+  for (let i = 0; i < 240; i++) {
+    const problem = generateProblem("compare-symbol-blanks", `cmp-${i}`);
+    const text = JSON.stringify(problem.public.response);
+    if (text.includes("1,000,000")) exactMillion++;
+    if (/[0-9],[0-9]{3},[0-9]{3},[0-9]{3}/.test(text)) billions++;
+    const digit = generateProblem("multidigit-digit-value", `dig-${i}`);
+    const shown = digit.public.prompt.match(/in ([\d,]+)\?/)![1]!;
+    const digits = shown.replaceAll(",", "");
+    assert.ok(digits.length >= 4 && digits.length <= 10);
+    if (digits.length >= 9) billions++;
+    if (shown === "1,000,000") exactMillion++;
+  }
+  assert.ok(exactMillion > 0, "1,000,000 is reachable");
+  assert.ok(billions > 0, "billions are reachable");
+});
+
 test("large number lines are read and located from the tick spacing", () => {
   const steps = new Set<number>();
   const directions = new Set<string>();

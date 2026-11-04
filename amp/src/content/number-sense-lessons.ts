@@ -263,6 +263,7 @@ export const numberSenseLessons: Lesson[] = [
     templateIds: ["multiply-power-of-ten", "divide-power-of-ten"],
     objectives: [
       "Multiply and divide whole numbers and decimals by 10, 100 and 1,000.",
+      "Count the zeros in 10, 100 or 1,000 and move every digit that many places.",
     ],
     sections: [
       {

@@ -890,7 +890,7 @@ const courses: readonly TexasCourse[] = [
         ["large-place-value"],
         ["round-large"],
         "Round a large whole number",
-        "Rounds to a stated place such as ten thousand. Places through the hundred thousands are not individually certified.",
+        "Rounds five- and six-digit numbers to the ten, hundred, thousand, ten thousand or hundred thousand. Numbers through 10,000 are included. Billions are not a rounding item.",
       ],
       [
         "g4-decimal-models",

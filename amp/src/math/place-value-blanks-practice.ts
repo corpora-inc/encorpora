@@ -109,8 +109,15 @@ const PLACES = [
   "thousands",
   "ten thousands",
   "hundred thousands",
+  "millions",
+  "ten millions",
+  "hundred millions",
+  "billions",
 ] as const;
-const VALUE_OF = [1, 10, 100, 1000, 10000, 100000];
+const VALUE_OF = [
+  1, 10, 100, 1000, 10000, 100000, 1_000_000, 10_000_000, 100_000_000,
+  1_000_000_000,
+];
 const digitsOf = (n: number) => String(n).split("").map(Number);
 /** The thousands separator in TeX: 40{,}382. */
 const texGrouped = (n: number) => grouped(n).replaceAll(",", "{,}");
@@ -151,6 +158,14 @@ export const expandedAxes = {
   "term-form": defineAxis("term-form", ["value", "digit-times-place"] as const),
   zeros: defineAxis("zeros", ["no-zero", "has-zero"] as const),
 } as const;
+export const expandedWholeAxes = {
+  ...expandedAxes,
+  magnitude: defineAxis(
+    "magnitude",
+    ["five", "six", "seven", "billions"] as const,
+    { legacy: "five", weights: [8, 4, 2, 1] },
+  ),
+} as const;
 const timesTex = (digit: number, value: number) =>
   `$${digit}\\times ${texGrouped(value / digit)}$`;
 
@@ -161,6 +176,11 @@ export const compareSymbolAxes = {
     "three-and-four-digit",
     "four-and-five-digit",
   ] as const),
+  magnitude: defineAxis(
+    "magnitude",
+    ["as-drawn", "six-digit", "million", "billions"] as const,
+    { legacy: "as-drawn", weights: [8, 4, 2, 1] },
+  ),
 } as const;
 const SYMBOLS = ["$<$", "$=$", "$>$"] as const;
 const symbolFor = (a: number, b: number) =>
@@ -415,66 +435,94 @@ export const placeValueBlanksGenerate = defineGenerate(
       });
     }),
 
-    "expanded-whole-slots": entry(expandedAxes, ({ meta, seed, r, axes }) => {
-      const digits =
-        axes.zeros === "has-zero"
-          ? (() => {
-              const d = [r(1, 9), r(0, 9), r(1, 9), r(1, 9), r(1, 9)];
-              d[r(1, 3)] = 0;
-              return d;
-            })()
-          : Array.from({ length: 5 }, () => r(1, 9));
-      const n = Number(digits.join(""));
-      const parts = digits
-        .map((d, i) => ({ d, value: d * 10 ** (4 - i), place: 4 - i }))
-        .filter((p) => p.d !== 0);
-      need(parts.length >= 3, "three nonzero digits");
-      const label = (p: { d: number; value: number }) =>
-        axes["term-form"] === "value"
-          ? grouped(p.value)
-          : timesTex(p.d, p.value);
-      const wrongFor = (p: { d: number; value: number; place: number }) => {
-        const other = digits.filter((d) => d !== p.d && d !== 0);
-        return [
-          { d: p.d, value: p.value * 10 },
-          { d: p.d, value: p.value / 10 },
-          ...(p.place < 4 ? [{ d: p.d, value: p.value * 100 }] : []),
-          ...other.slice(0, 2).map((d) => ({ d, value: d * 10 ** p.place })),
-        ]
-          .filter(
-            (q) =>
-              Number.isInteger(q.value) && q.value >= 1 && q.value / q.d >= 1,
-          )
-          .map(label);
-      };
-      const slots: Slot[] = parts.map((p, i) => ({
-        id: `t${i + 1}`,
-        label: `Part ${i + 1} of the sum`,
-        correct: label(p),
-        wrong: wrongFor(p),
-      }));
-      const eq = axes["term-form"] === "value" ? "+" : "+";
-      const built = inlineSentence([
-        `$${texGrouped(n)}=$ `,
-        ...slots.flatMap((s, i) => (i ? [` $${eq}$ `, s] : [s])),
-      ]);
-      return multiPartProblem(meta, seed, r, {
-        prompt: `Write ${textGrouped(n)} as a sum of the values of its digits. Choose each part of the sum, from the greatest place to the least.`,
-        layout: "inline",
-        label: "Choose each part of the sum",
-        slots: built.slots,
-        sentence: built.sentence,
-        hint: `The leftmost digit of ${textGrouped(n)} is ${digits[0]}. Count how many places it is from the right end to find what that digit is worth, then do the same for the next digit that is not 0.`,
-        explanation: [
-          `Each digit is worth the digit times its place value. ${axes.zeros === "has-zero" ? "A digit 0 adds nothing, so it has no part in the sum. " : ""}`.trim(),
-          ...parts.map(
-            (p) =>
-              `The digit ${p.d} is in the ${PLACES[p.place]} place, so its part is $${axes["term-form"] === "value" ? texGrouped(p.value) : `${p.d}\\times ${texGrouped(p.value / p.d)} = ${texGrouped(p.value)}`}$.`,
-          ),
-          `The sum is $${parts.map((p) => texGrouped(p.value)).join("+")}=${texGrouped(n)}$.`,
-        ],
-      });
-    }),
+    "expanded-whole-slots": entry(
+      expandedWholeAxes,
+      ({ meta, seed, r, axes }) => {
+        const digits =
+          axes.magnitude !== "five"
+            ? (() => {
+                const length =
+                  axes.magnitude === "six"
+                    ? 6
+                    : axes.magnitude === "seven"
+                      ? 7
+                      : r(9, 10);
+                // A multi-part item holds at most six blanks, so a longer
+                // number keeps at most six nonzero digits.
+                const room = Math.min(6, length);
+                const nonzero =
+                  axes.zeros === "has-zero" || length > 6
+                    ? r(4, room - 1)
+                    : room;
+                const d = Array.from({ length }, () => 0);
+                d[0] = r(1, 9);
+                const spots = shuffle(
+                  r,
+                  Array.from({ length: length - 1 }, (_, i) => i + 1),
+                ).slice(0, nonzero - 1);
+                for (const spot of spots) d[spot] = r(1, 9);
+                return d;
+              })()
+            : axes.zeros === "has-zero"
+              ? (() => {
+                  const d = [r(1, 9), r(0, 9), r(1, 9), r(1, 9), r(1, 9)];
+                  d[r(1, 3)] = 0;
+                  return d;
+                })()
+              : Array.from({ length: 5 }, () => r(1, 9));
+        const span = digits.length - 1;
+        const n = Number(digits.join(""));
+        const parts = digits
+          .map((d, i) => ({ d, value: d * 10 ** (span - i), place: span - i }))
+          .filter((p) => p.d !== 0);
+        need(parts.length >= 3, "three nonzero digits");
+        const label = (p: { d: number; value: number }) =>
+          axes["term-form"] === "value"
+            ? grouped(p.value)
+            : timesTex(p.d, p.value);
+        const wrongFor = (p: { d: number; value: number; place: number }) => {
+          const other = digits.filter((d) => d !== p.d && d !== 0);
+          return [
+            { d: p.d, value: p.value * 10 },
+            { d: p.d, value: p.value / 10 },
+            ...(p.place < 4 ? [{ d: p.d, value: p.value * 100 }] : []),
+            ...other.slice(0, 2).map((d) => ({ d, value: d * 10 ** p.place })),
+          ]
+            .filter(
+              (q) =>
+                Number.isInteger(q.value) && q.value >= 1 && q.value / q.d >= 1,
+            )
+            .map(label);
+        };
+        const slots: Slot[] = parts.map((p, i) => ({
+          id: `t${i + 1}`,
+          label: `Part ${i + 1} of the sum`,
+          correct: label(p),
+          wrong: wrongFor(p),
+        }));
+        const eq = axes["term-form"] === "value" ? "+" : "+";
+        const built = inlineSentence([
+          `$${texGrouped(n)}=$ `,
+          ...slots.flatMap((s, i) => (i ? [` $${eq}$ `, s] : [s])),
+        ]);
+        return multiPartProblem(meta, seed, r, {
+          prompt: `Write ${textGrouped(n)} as a sum of the values of its digits. Choose each part of the sum, from the greatest place to the least.`,
+          layout: "inline",
+          label: "Choose each part of the sum",
+          slots: built.slots,
+          sentence: built.sentence,
+          hint: `The leftmost digit of ${textGrouped(n)} is ${digits[0]}. Count how many places it is from the right end to find what that digit is worth, then do the same for the next digit that is not 0.`,
+          explanation: [
+            `Each digit is worth the digit times its place value. ${axes.zeros === "has-zero" ? "A digit 0 adds nothing, so it has no part in the sum. " : ""}`.trim(),
+            ...parts.map(
+              (p) =>
+                `The digit ${p.d} is in the ${PLACES[p.place]} place, so its part is $${axes["term-form"] === "value" ? texGrouped(p.value) : `${p.d}\\times ${texGrouped(p.value / p.d)} = ${texGrouped(p.value)}`}$.`,
+            ),
+            `The sum is $${parts.map((p) => texGrouped(p.value)).join("+")}=${texGrouped(n)}$.`,
+          ],
+        });
+      },
+    ),
 
     "expanded-decimal-slots": entry(expandedAxes, ({ meta, seed, r, axes }) => {
       // thousands, hundreds, tens, ones, tenths, hundredths digits.
@@ -556,10 +604,26 @@ export const placeValueBlanksGenerate = defineGenerate(
     "compare-symbol-blanks": entry(
       compareSymbolAxes,
       ({ meta, seed, r, axes }) => {
+        const wide =
+          axes.magnitude === "six-digit"
+            ? [6, 6]
+            : axes.magnitude === "million"
+              ? [6, 7]
+              : axes.magnitude === "billions"
+                ? [r(8, 9), r(9, 10)]
+                : null;
         const [small, big] =
-          axes.sizes === "three-and-four-digit" ? [3, 4] : [4, 5];
+          wide ?? (axes.sizes === "three-and-four-digit" ? [3, 4] : [4, 5]);
         const make = (digits: number, equal: boolean) => {
-          const base = r(10 ** (digits - 1) + 1, 10 ** digits - 1);
+          // A span past 2^32 never returns from the unbiased draw.
+          const base =
+            digits >= 10
+              ? Number(
+                  Array.from({ length: digits }, (_, i) =>
+                    i === 0 || i === digits - 1 ? r(1, 9) : r(0, 9),
+                  ).join(""),
+                )
+              : r(10 ** (digits - 1) + 1, 10 ** digits - 1);
           need(
             base % 10 !== 0 && String(base).length === digits,
             "a base number",
@@ -598,6 +662,14 @@ export const placeValueBlanksGenerate = defineGenerate(
         const sizes = [small, big];
         const equalAt = axes["equal-pair"] === "first" ? 0 : 1;
         const rows = sizes.map((d, i) => make(d, i === equalAt));
+        if (axes.magnitude === "million") {
+          const row = rows[equalAt === 0 ? 1 : 0]!;
+          row.a = 1_000_000;
+          row.left = textGrouped(1_000_000);
+          if (row.b === 1_000_000) row.b = 999_999;
+          row.right = textGrouped(row.b);
+          row.expanded = false;
+        }
         const slots: Slot[] = rows.map((row, i) => ({
           id: `c${i + 1}`,
           label: `The symbol for the ${i ? "second" : "first"} comparison`,
@@ -694,7 +766,7 @@ export const placeValueBlanksAxes = {
   "round-place-blanks": roundPlaceAxes,
   "round-decimal-blanks": roundDecimalAxes,
   "round-addends-sum": roundAddendsAxes,
-  "expanded-whole-slots": expandedAxes,
+  "expanded-whole-slots": expandedWholeAxes,
   "expanded-decimal-slots": expandedAxes,
   "compare-symbol-blanks": compareSymbolAxes,
   "digit-value-blanks": digitValueAxes,

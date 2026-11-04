@@ -3141,7 +3141,7 @@ for (const [skillId, suffix, description] of [
   [
     "large-place-value",
     "rounding-large",
-    "Round five- and six-digit whole numbers to the nearest hundred, thousand or ten thousand.",
+    "Round whole numbers through 999,999 to the nearest ten, hundred, thousand, ten thousand or hundred thousand, including numbers through 10,000.",
   ],
   [
     "large-place-value",

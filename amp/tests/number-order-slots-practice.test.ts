@@ -31,7 +31,7 @@ test("stadiums are listed in the order the prompt asks, read from the numbers in
         /([A-Z][A-Za-z ]+?) holds ([\d,]+) people/g,
       ),
     ].map((m) => ({ name: m[1]!, value: Number(m[2]!.replaceAll(",", "")) }));
-    assert.equal(crowds.length, 3);
+    assert.ok(crowds.length >= 3 && crowds.length <= 5);
     const sorted = [...crowds].sort((a, b) => a.value - b.value);
     if (!leastFirst(problem.public.prompt)) sorted.reverse();
     assert.deepEqual(

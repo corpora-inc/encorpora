@@ -155,15 +155,12 @@ test("digit-value-ratio is grade-4 place value, and grade 5 keeps four powers-of
     "large-place-value",
   );
   const kept = templates.filter((t) => t.skillId === "powers-of-ten");
-  assert.deepEqual(
-    kept.map((t) => t.id).sort(),
-    [
-      "digit-value-blanks",
-      "divide-power-of-ten",
-      "fl-decimal-by-tenth-hundredth",
-      "multiply-power-of-ten",
-    ],
-  );
+  assert.deepEqual(kept.map((t) => t.id).sort(), [
+    "digit-value-blanks",
+    "divide-power-of-ten",
+    "fl-decimal-by-tenth-hundredth",
+    "multiply-power-of-ten",
+  ]);
   for (const template of kept) {
     const grade = templateGrade(template, nodes);
     assert.ok(grade >= 5 && grade < 6, `${template.id} grade ${grade}`);

@@ -81,7 +81,7 @@ def solve_comparison(public):
         m = re.fullmatch(r'What is the value of the digit (\d) in ([\d,]+)\?', prompt)
         require(m is not None, f'Unexpected digit prompt {prompt!r}')
         digits = str(whole(m[2]))
-        require(4 <= len(digits) <= 6 and digits.count(m[1]) == 1 and m[1] != '0', 'Digit must be nonzero and appear once')
+        require(4 <= len(digits) <= 10 and digits.count(m[1]) == 1 and m[1] != '0', 'Digit must be nonzero and appear once')
         place = len(digits) - 1 - digits.index(m[1])
         return int(m[1]) * 10 ** place
     if name == 'compare-multidigit':

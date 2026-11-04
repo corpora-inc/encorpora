@@ -43,6 +43,7 @@ test("rounding follows round-half-up, including carries and halfway values", () 
     hundred: 100,
     thousand: 1000,
     "ten thousand": 10000,
+    "hundred thousand": 100000,
   };
   const tags = new Set<string>();
   for (const id of ["round-to-ten", "round-to-hundred", "round-large"])
