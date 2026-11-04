@@ -3,6 +3,7 @@ import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import { lineTable, scene } from "./scene/author";
 import type { Element } from "./scene/spec";
 import { defineAxis } from "./variation/axes";
+import { differentWhole, sameWholeComparePrompt } from "./story-kit/fractions";
 import {
   defineGenerate,
   entry,
@@ -288,9 +289,16 @@ const BOOK_TYPES = [
 /* ---------- comparing fractions ---------- */
 export const compareReasonAxes = {
   basis: defineAxis("basis", ["same-numerator", "same-denominator"] as const),
+  // `same` is the stored surface. Leaving it out of the variant keeps the
+  // old id (`same-numerator` or `same-denominator`) on that draw.
   whole: defineAxis("whole", ["same", "different"] as const, {
     weights: [2, 1],
     needs: { different: "scenes-v1" },
+    silentLegacy: true,
+  }),
+  setting: defineAxis("setting", ["plain", "applied"] as const, {
+    weights: [1, 2],
+    silentLegacy: true,
   }),
 } as const;
 const REASONS = {
@@ -875,6 +883,7 @@ export const statementBlanksGenerate = defineGenerate(
       compareReasonAxes,
       ({ meta, seed, r, axes }) => {
         if (axes.whole === "different") {
+          const thing = differentWhole(r);
           const d1 = r(2, 8);
           const n1 = r(1, d1 - 1);
           const d2 = r(2, 8);
@@ -907,7 +916,7 @@ export const statementBlanksGenerate = defineGenerate(
               type: "text",
               id: "small-label",
               at: [3, -0.7],
-              text: "small cracker",
+              text: thing.small,
               font: "sans",
               size: "sm",
             },
@@ -915,7 +924,7 @@ export const statementBlanksGenerate = defineGenerate(
               type: "text",
               id: "large-label",
               at: [6, 4.6],
-              text: "large cracker",
+              text: thing.large,
               font: "sans",
               size: "sm",
             },
@@ -929,8 +938,8 @@ export const statementBlanksGenerate = defineGenerate(
               wrong: [
                 `$${frac(n1, d1)}$`,
                 `$${frac(n2, d2)}$`,
-                "the small cracker is greater",
-                "the large cracker is greater",
+                `the ${thing.small} is greater`,
+                `the ${thing.large} is greater`,
               ],
             } as Slot,
             " because ",
@@ -947,7 +956,7 @@ export const statementBlanksGenerate = defineGenerate(
             ".",
           ]);
           return multiPartProblem(meta, seed, r, {
-            prompt: `The small cracker and the large cracker are different sizes. Compare $${frac(n1, d1)}$ of the small cracker with $${frac(n2, d2)}$ of the large cracker. Complete the sentence.`,
+            prompt: `The ${thing.small} and the ${thing.large} are different sizes. Compare $${frac(n1, d1)}$ of the ${thing.small} with $${frac(n2, d2)}$ of the ${thing.large}. Complete the sentence.`,
             layout: "inline",
             label: "Choose the fraction and the reason",
             slots: built.slots,
@@ -955,14 +964,14 @@ export const statementBlanksGenerate = defineGenerate(
             figure: {
               kind: "scene",
               scene: scene(...elements).build({
-                title: "Two crackers of different lengths",
-                note: "The large cracker is longer than the small cracker.",
+                title: `Two ${thing.pair} of different lengths`,
+                note: `The ${thing.large} is longer than the ${thing.small}.`,
               }),
             },
-            hint: `The small cracker is cut into ${d1} equal pieces and ${n1} of them ${isAre(n1)} shaded. The large cracker is cut into ${d2} equal pieces and ${n2} of them ${isAre(n2)} shaded. The two crackers have different lengths.`,
+            hint: `The ${thing.small} is cut into ${d1} equal pieces and ${n1} of them ${isAre(n1)} shaded. The ${thing.large} is cut into ${d2} equal pieces and ${n2} of them ${isAre(n2)} shaded. The two ${thing.pair} have different lengths.`,
             explanation: [
-              `$${frac(n1, d1)}$ names parts of the small cracker. $${frac(n2, d2)}$ names parts of the large cracker.`,
-              `The crackers are different sizes, so the fractions name parts of different amounts.`,
+              `$${frac(n1, d1)}$ names parts of the ${thing.small}. $${frac(n2, d2)}$ names parts of the ${thing.large}.`,
+              `The ${thing.pair} are different sizes, so the fractions name parts of different amounts.`,
               `You cannot tell which amount is greater from the fractions alone.`,
             ],
           });
@@ -1007,8 +1016,12 @@ export const statementBlanksGenerate = defineGenerate(
           } as Slot,
           ".",
         ]);
+        const bare = `Compare ${tex(first)} and ${tex(second)}. Complete the sentence.`;
         return multiPartProblem(meta, seed, r, {
-          prompt: `Compare ${tex(first)} and ${tex(second)}. Complete the sentence.`,
+          prompt:
+            axes.setting === "applied"
+              ? sameWholeComparePrompt(r, tex(first), tex(second))
+              : bare,
           layout: "inline",
           label: "Choose the fraction and the reason",
           slots: built.slots,

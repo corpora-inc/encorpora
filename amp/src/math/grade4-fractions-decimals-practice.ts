@@ -21,6 +21,7 @@ import {
 } from "./multi-part-support";
 import { numberLine } from "./scene/author";
 import { serializeSelection } from "./selection-response";
+import { learnerName } from "./story-kit/fractions";
 
 /** Grade-4 denominators. 16 is the light Florida extra. */
 const DENOM_ROWS: readonly (readonly [number, number])[] = [
@@ -209,11 +210,11 @@ function decompositions(seed: string): GeneratedProblem {
   const r = random(template.id, seed);
   const above = r(0, 4) < 2;
   const denominator = above
-    ? [2, 3, 4][r(0, 2)]!
+    ? [2, 3, 4, 6][r(0, 3)]!
     : [4, 5, 6, 8, 10, 12][r(0, 5)]!;
   const numerator = above
-    ? r(denominator + 1, 6)
-    : r(3, Math.min(denominator - 1, 6));
+    ? r(denominator + 1, Math.min(denominator + 3, 8))
+    : r(3, Math.min(denominator - 1, 8));
   const keyed = [
     sumLabel(
       Array.from({ length: numerator }, () => 1),
@@ -255,8 +256,22 @@ function decompositions(seed: string): GeneratedProblem {
   );
   const wholes = Math.ceil(numerator / denominator);
   const target = targetText(numerator, denominator);
+  const name = learnerName(r);
+  const frames = above
+    ? [
+        `The strips show ${target}, more than one whole. Which sums of denominator ${denominator} match that shade? Choose ${keyed.length}.`,
+        `${name} joins pieces of size 1/${denominator} to make ${target}. Which sums equal that amount? Choose ${keyed.length}.`,
+        `Two ribbons together make ${target}. Which sums of ${denominator}ths equal that length? Choose ${keyed.length}.`,
+        `${target} is shaded on the strips. Which sums with denominator ${denominator} equal it? Choose ${keyed.length}.`,
+      ]
+    : [
+        `The strips show ${target}. Which sums of pieces with denominator ${denominator} match that shade? Choose ${keyed.length}.`,
+        `${name} shades ${target} of a granola bar cut into ${denominator} equal pieces. Which sums equal that shade? Choose ${keyed.length}.`,
+        `A ribbon is ${target} of a foot, in pieces of 1/${denominator} foot. Which sums equal that length? Choose ${keyed.length}.`,
+        `${target} of a pizza is left, in slices of 1/${denominator}. Which sums equal that amount? Choose ${keyed.length}.`,
+      ];
   return problem(template, seed, {
-    prompt: `Which sums equal ${target}? The pieces in each sum use the denominator ${denominator}. Choose ${keyed.length}.`,
+    prompt: frames[r(0, frames.length - 1)]!,
     response: {
       kind: "multi-select",
       label: "Choose every matching sum",
@@ -264,11 +279,11 @@ function decompositions(seed: string): GeneratedProblem {
       options,
     },
     answer,
-    hint: `Add the top numbers in each sum. They must match the shaded count on the strips for ${target}. The denominator is ${denominator}.`,
+    hint: `Add the numerators in each sum. A match totals ${numerator}, and every piece in a match has denominator ${denominator}.`,
     explanation: [
-      `Each sum uses the denominator ${denominator}.`,
       `The shaded amount is ${count(numerator, "piece")} of size 1/${denominator}${wholes > 1 ? ", which is more than 1 whole" : ""}.`,
-      `A sum matches when its top numbers add to ${numerator}. One matching sum is only copies of 1/${denominator}.`,
+      `Fractions with the same denominator add by their numerators. A sum equals the shade when those numerators add to ${numerator}.`,
+      `A sum that uses a different denominator, or whose numerators add to something else, does not match.`,
     ],
     figure: {
       kind: "fraction-strips",
@@ -300,48 +315,97 @@ function mixedSum(seed: string): GeneratedProblem {
     first = r(1, denominator - 2);
     second = r(1, denominator - first - 1);
   }
-  const answer = rational(
-    (firstWhole + secondWhole) * denominator + first + second,
-    denominator,
-  );
+  const totalPieces = (firstWhole + secondWhole) * denominator + first + second;
+  const answer = rational(totalPieces, denominator);
+  const wholeSum = Math.floor(totalPieces / denominator);
+  const rest = totalPieces % denominator;
+  const mixedText =
+    rest === 0
+      ? String(wholeSum)
+      : wholeSum === 0
+        ? `${rest}/${denominator}`
+        : `${wholeSum} ${rest}/${denominator}`;
+  const name = learnerName(r);
+  const frames = [
+    `${name} cuts one ribbon ${firstWhole} ${first}/${denominator} feet long and another ${secondWhole} ${second}/${denominator} feet long. How long are they together? Give a fraction or a whole number.`,
+    `${name} hikes ${firstWhole} ${first}/${denominator} miles, then ${secondWhole} ${second}/${denominator} miles more. How far is that in all? Give a fraction or a whole number.`,
+    `A recipe uses ${firstWhole} ${first}/${denominator} cups of flour and ${secondWhole} ${second}/${denominator} cups of oats. How many cups is that together? Give a fraction or a whole number.`,
+    `${name} practices piano for ${firstWhole} ${first}/${denominator} hours and soccer for ${secondWhole} ${second}/${denominator} hours. How long is that in all? Give a fraction or a whole number.`,
+    `${name} pours ${firstWhole} ${first}/${denominator} liters of water, then ${secondWhole} ${second}/${denominator} liters more. How much water is that? Give a fraction or a whole number.`,
+    `One board is ${firstWhole} ${first}/${denominator} feet. Another is ${secondWhole} ${second}/${denominator} feet. How long are the boards together? Give a fraction or a whole number.`,
+  ];
   return problem(template, seed, {
-    prompt: `Find ${firstWhole} ${first}/${denominator} + ${secondWhole} ${second}/${denominator}. Give a fraction or whole number.`,
+    prompt: frames[r(0, frames.length - 1)]!,
     response: { kind: "fraction", label: "Sum" },
     answer,
     hint: `Add the whole numbers ${firstWhole} and ${secondWhole}. Then add ${first}/${denominator} and ${second}/${denominator}. If those fraction parts add to ${denominator} or more, trade ${count(denominator, "part")} for 1 whole.`,
     explanation: [
-      `Add the whole numbers first: ${firstWhole} and ${secondWhole}.`,
-      `The fraction parts are ${first}/${denominator} and ${second}/${denominator}.`,
+      `Add the whole numbers first: ${firstWhole} + ${secondWhole} = ${firstWhole + secondWhole}.`,
+      `The fraction parts are ${first}/${denominator} and ${second}/${denominator}. Add the numerators: ${first} + ${second} = ${first + second}.`,
       first + second >= denominator
-        ? `Those parts make ${count(first + second, "piece")}, and ${count(denominator, "piece")} make 1 whole, so the sum regroups.`
-        : `Those parts make ${count(first + second, "piece")}, which is less than 1 whole, so the sum does not regroup.`,
-      `The sum is ${answer}.`,
+        ? `${first + second} is at least ${denominator}, so trade ${Math.floor((first + second) / denominator)} whole. That leaves ${(first + second) % denominator}/${denominator}.`
+        : `${first + second} is less than ${denominator}, so the fraction part does not make another whole.`,
+      `The sum is ${mixedText}. The answer box takes a fraction or a whole number in simplest form, which is ${answer}.`,
     ],
   });
 }
 
-/** FR-3. Join two fractions of one stated whole. The sum is always greater than 1. */
+/** FR-3. Add two like fractions in a situation where those fractions are natural. */
 function sumStory(seed: string): GeneratedProblem {
   const template = byId.get("like-fraction-sum-story")!;
   const r = random(template.id, seed);
-  const denominator = weightedDenom(r);
-  const first = r(1, denominator);
-  const second = r(Math.max(1, denominator - first + 1), denominator);
+  const pools = [
+    [2, 4, 8],
+    [3, 6, 12],
+    [5, 10],
+    [4, 8, 16],
+    [10, 100],
+  ] as const;
+  const pool = pools[r(0, pools.length - 1)]!;
+  const denominator = pool[r(0, pool.length - 1)]!;
+  const first = r(1, denominator - 1);
+  const second = r(1, denominator - 1);
   const answer = rational(first + second, denominator);
-  const prompts = [
-    `Maya walks ${first}/${denominator} of a meter along a path, then ${second}/${denominator} of a meter farther on the same path. The two lengths are parts of the same path. How much of the path does she walk in all?`,
-    `You pour ${first}/${denominator} of a liter into a jug, then ${second}/${denominator} of a liter more into the same jug. Both amounts are parts of that one jug. How much water is in the jug?`,
-    `A chore takes ${first}/${denominator} of an hour, then another part of the same chore takes ${second}/${denominator} of an hour. Both times are parts of the same chore. How long do the two parts take together?`,
-  ];
+  const name = learnerName(r);
+  const over = first + second > denominator;
+  const small = denominator <= 12;
+  const frames = over
+    ? [
+        `${name} walks ${first}/${denominator} of a mile, then ${second}/${denominator} of a mile farther. How far does ${name} walk in all?`,
+        `${name} uses ${first}/${denominator} of a liter of paint, then ${second}/${denominator} of a liter more. How much paint is that in all?`,
+        `${name} practices ${first}/${denominator} of an hour, then ${second}/${denominator} of an hour more. How long is practice in all?`,
+        `One piece of ribbon is ${first}/${denominator} of a foot. Another is ${second}/${denominator} of a foot. How long are they together?`,
+        `${name} pours ${first}/${denominator} of a liter, then ${second}/${denominator} of a liter more, into a bucket. How much water is that?`,
+        `${name} runs ${first}/${denominator} of a lap, then ${second}/${denominator} of a lap. How many laps is that?`,
+      ]
+    : small
+      ? [
+          `${name} eats ${first}/${denominator} of a pizza. A friend eats ${second}/${denominator} of the same pizza. How much of the pizza did they eat together?`,
+          `${name} reads ${first}/${denominator} of a chapter, then ${second}/${denominator} of that chapter. How much of the chapter is that?`,
+          `${name} plants flowers in ${first}/${denominator} of a garden bed and herbs in ${second}/${denominator} of the same bed. How much of the bed is planted?`,
+          `A recipe needs ${first}/${denominator} of a cup of sugar and ${second}/${denominator} of a cup of flour. How many cups is that together?`,
+          `${name} paints ${first}/${denominator} of a poster in the morning and ${second}/${denominator} of it after school. How much of the poster is painted?`,
+          `${name} drinks ${first}/${denominator} of a liter of juice, then ${second}/${denominator} of a liter more. How much juice is that?`,
+        ]
+      : [
+          `${name} pours ${first}/${denominator} of a liter of water, then ${second}/${denominator} of a liter more. How much water is that?`,
+          `${name} uses ${first}/${denominator} of a meter of ribbon, then ${second}/${denominator} of a meter more. How much ribbon is that?`,
+          `${name} walks ${first}/${denominator} of a mile, then ${second}/${denominator} of a mile more. How far is that?`,
+          `A science tray holds ${first}/${denominator} of a liter, and ${name} adds ${second}/${denominator} of a liter. How much is in the tray?`,
+        ];
   return problem(template, seed, {
-    prompt: prompts[r(0, 2)]!,
+    prompt: frames[r(0, frames.length - 1)]!,
     response: { kind: "fraction", label: "Amount in all" },
     answer,
-    hint: `Add the numerators ${first} and ${second}. Both fractions use the denominator ${denominator}. The two parts are of the same whole.`,
+    hint: `The denominators match, so add the numerators ${first} and ${second}. The denominator stays ${denominator}.`,
     explanation: [
-      `Both fractions name parts of the same whole, and both use the denominator ${denominator}.`,
-      `The numerators ${first} and ${second} make ${count(first + second, "part")}.`,
-      `Together they make ${answer}.`,
+      `Both fractions use the denominator ${denominator}, so they count pieces of the same size.`,
+      `Add the numerators: ${first} + ${second} = ${first + second}. The denominator stays ${denominator}.`,
+      first + second === denominator
+        ? `That is exactly 1 whole, so the sum is ${answer}.`
+        : first + second > denominator
+          ? `${first + second}/${denominator} is more than 1 whole. In simplest form, the sum is ${answer}.`
+          : `That is ${first + second}/${denominator}. In simplest form, the sum is ${answer}.`,
     ],
   });
 }
@@ -381,7 +445,7 @@ function unitMultiple(seed: string): GeneratedProblem {
     `$${frac(unitCopies, denominator)}=$ `,
     {
       id: "copies",
-      label: "How many copies of the unit fraction",
+      label: "How many unit fractions in the first fraction",
       correct: String(unitCopies),
       wrong: copyWrongs,
     },
@@ -391,14 +455,20 @@ function unitMultiple(seed: string): GeneratedProblem {
       : `$${copies}\\times${frac(group, denominator)}=$ `,
     {
       id: "pieces",
-      label: "How many pieces in the product",
+      label: "How many unit fractions in the product",
       correct: String(product),
       wrong: pieceWrongs,
     },
     ` $\\times${frac(1, denominator)}$`,
   ]);
   return multiPartProblem(template, seed, r, {
-    prompt: `Fill in both boxes. The pieces are of size $\\frac{1}{${denominator}}$.`,
+    prompt: [
+      `${learnerName(r)} cuts ribbon into pieces of size $\\frac{1}{${denominator}}$ of a foot. Fill in both boxes.`,
+      `${learnerName(r)} shares a pizza cut into pieces of size $\\frac{1}{${denominator}}$. Fill in both boxes.`,
+      `Each paint dab is $\\frac{1}{${denominator}}$ of a liter. Fill in both boxes.`,
+      `A garden row is split into pieces of size $\\frac{1}{${denominator}}$. Fill in both boxes.`,
+      `The strips show pieces of size $\\frac{1}{${denominator}}$. Fill in both boxes.`,
+    ][r(0, 4)]!,
     layout: "inline",
     label: "Fill in both boxes",
     slots: built.slots,
@@ -463,7 +533,13 @@ function numberLineNames(seed: string): GeneratedProblem {
     label: card.label,
   }));
   return problem(template, seed, {
-    prompt: `Point $P$ is marked on the line. Each whole is split into ${base} equal steps. Which fractions name $P$? Choose 3.`,
+    prompt: [
+      `${learnerName(r)} marks point $P$ on a trail line. Each mile is ${base} equal steps. Which fractions name $P$? Choose 3.`,
+      `The fuel mark $P$ sits on a line split into ${base} equal steps per whole. Which fractions name $P$? Choose 3.`,
+      `A ribbon is measured on a line with ${base} equal steps in each foot. Point $P$ is marked. Which fractions name $P$? Choose 3.`,
+      `${learnerName(r)} finds point $P$ on a ruler. Each inch has ${base} equal steps. Which fractions name $P$? Choose 3.`,
+      `Point $P$ is a stop on a number line. Each whole has ${base} equal steps. Which fractions name $P$? Choose 3.`,
+    ][r(0, 4)]!,
     response: {
       kind: "multi-select",
       label: "Choose every fraction that names the point",
@@ -479,9 +555,9 @@ function numberLineNames(seed: string): GeneratedProblem {
       ? `Count the steps from 0 to $P$, past 1. Each whole has ${base} equal steps. A fraction names $P$ when its steps match, even if the denominator changes.`
       : `Count the steps from 0 to $P$. Each whole has ${base} equal steps. A fraction names $P$ when its steps match, even if the denominator changes.`,
     explanation: [
-      `Point $P$ is ${count(steps, "step")} from 0, and each whole has ${base} equal steps.`,
-      `A fraction names $P$ when its numerator counts the same steps after the denominator changes.`,
-      `The three names use three denominators.`,
+      `Point $P$ is ${count(steps, "step")} from 0, and each whole has ${base} equal steps, so $P$ is at ${steps}/${base}.`,
+      `Multiply the numerator and the denominator by the same number to rename that point. The value stays the same.`,
+      `Three of the fractions name that same point. The others count a different number of steps.`,
     ],
     figure: {
       kind: "rational-line",
@@ -578,15 +654,22 @@ function fractionSymbols(seed: string): GeneratedProblem {
   const [c, d] = pairs[0]!.right;
   const [e, f] = pairs[1]!.left;
   const [g, h] = pairs[1]!.right;
+  const name = learnerName(r);
+  const prompts = [
+    `Each fraction names parts of the same whole. Choose the symbol that makes each comparison true.`,
+    `${name} compares two pairs of fractions of the same whole. Choose the symbol that makes each comparison true.`,
+    `The fractions are parts of one pizza, then parts of one ribbon. Choose the symbol that makes each comparison true.`,
+    `Same-size wholes: choose the symbol that makes each comparison true.`,
+    `${name} looks at two pairs. Choose <, =, or > for each pair.`,
+  ];
   return multiPartProblem(template, seed, r, {
-    prompt:
-      "Each fraction names parts of the same whole. Choose the symbol that makes each comparison true.",
+    prompt: prompts[r(0, prompts.length - 1)]!,
     layout: "cards",
     reuse: true,
     label: "Put a symbol card in each box",
     slots: built.slots,
     sentence: built.sentence,
-    hint: `Rename $\\frac{${a}}{${b}}$ and $\\frac{${c}}{${d}}$, and $\\frac{${e}}{${f}}$ and $\\frac{${g}}{${h}}$, so each pair shares one denominator. Then compare the top numbers.`,
+    hint: `Find a common denominator for $\\frac{${a}}{${b}}$ and $\\frac{${c}}{${d}}$, and for $\\frac{${e}}{${f}}$ and $\\frac{${g}}{${h}}$. Then compare the numerators.`,
     explanation: pairs.map((pair) => {
       const multiple = lcm(pair.left[1], pair.right[1]);
       const leftTop = pair.left[0] * (multiple / pair.left[1]);
@@ -631,8 +714,18 @@ function decimalSymbols(seed: string): GeneratedProblem {
     slots[1]!,
     ` ${rows[1]![1]}`,
   ]);
+  const name = learnerName(r);
+  const [a0, b0] = rows[0]!;
+  const [a1, b1] = rows[1]!;
+  const prompts = [
+    `${name} compares prices of ${a0} dollars and ${b0} dollars, then ${a1} dollars and ${b1} dollars. Choose the symbol that makes each comparison true.`,
+    `Two ribbons are ${a0} meters and ${b0} meters. Two more are ${a1} meters and ${b1} meters. Choose the symbol that makes each comparison true.`,
+    `Race times: ${a0} seconds and ${b0} seconds, then ${a1} seconds and ${b1} seconds. Choose the symbol that makes each comparison true.`,
+    `Juice bottles hold ${a0} liters and ${b0} liters, then ${a1} liters and ${b1} liters. Choose the symbol that makes each comparison true.`,
+    `Seedlings are ${a0} meters and ${b0} meters tall, then ${a1} meters and ${b1} meters. Choose the symbol that makes each comparison true.`,
+  ];
   return multiPartProblem(template, seed, r, {
-    prompt: "Choose the symbol that makes each comparison true.",
+    prompt: prompts[r(0, prompts.length - 1)]!,
     layout: "cards",
     reuse: true,
     label: "Put a symbol card in each box",
@@ -640,8 +733,13 @@ function decimalSymbols(seed: string): GeneratedProblem {
     sentence: built.sentence,
     hint: `Line up ${rows[0]![0]} and ${rows[0]![1]}, and ${rows[1]![0]} and ${rows[1]![1]}, by the decimal point. A zero at the end of a decimal does not change its value. Then compare tenths, then hundredths.`,
     explanation: rows.map(([left, right]) => {
-      const words = comparisonWords(asHundredths(left), asHundredths(right));
-      return `${left} and ${right} are ${words}.`;
+      const leftValue = asHundredths(left);
+      const rightValue = asHundredths(right);
+      if (leftValue === rightValue)
+        return `${left} and ${right} name the same amount. A zero written at the end of a decimal does not change its value, so the symbol is =.`;
+      const [greater, lesser] =
+        leftValue > rightValue ? [left, right] : [right, left];
+      return `Line the decimals up at the decimal point and compare tenths, then hundredths. ${greater} is greater than ${lesser}.`;
     }),
   });
 }
@@ -655,7 +753,7 @@ function locate(seed: string): GeneratedProblem {
   const template = byId.get("decimal-fraction-locate")!;
   const r = random(template.id, seed);
   const letters = ["A", "B", "C", "D"] as const;
-  const tenths = r(0, 1) === 0;
+  const tenths = r(0, 2) === 0;
   const hundredths = (n: number) => Number((n / 100).toFixed(2));
   let min: number;
   let max: number;
@@ -679,8 +777,14 @@ function locate(seed: string): GeneratedProblem {
       targetOffset + 1,
       targetOffset + 2,
     ];
-    prompt = `Which point is at $\\frac{${targetOffset}}{10}$?`;
-    hint = `Start at 0. Each step is one tenth. Count ${targetOffset} steps to reach ${targetOffset}/10.`;
+    const fractionText = `$\\frac{${targetOffset}}{10}$`;
+    prompt = [
+      `Which point is at ${fractionText}?`,
+      `Which letter marks ${fractionText} on the line?`,
+      `${learnerName(r)} looks for ${fractionText} on the line. Which point is there?`,
+      `The line counts tenths. Which point is at ${fractionText}?`,
+    ][r(0, 3)]!;
+    hint = `The left end is 0. Each step is one tenth. Count ${targetOffset} steps to reach ${targetOffset}/10.`;
     explanationValue = `$\\frac{${targetOffset}}{10}$`;
   } else {
     windowStart = r(0, 18) * 10;
@@ -695,8 +799,14 @@ function locate(seed: string): GeneratedProblem {
       targetOffset + 2,
     ];
     const target = hundredths(windowStart + targetOffset);
-    prompt = `Which point is at ${target.toFixed(2)}?`;
-    hint = `Start at ${plainDecimal(min)}. Each step is one hundredth. Count ${targetOffset} steps to reach ${target.toFixed(2)}.`;
+    const decimalText = target.toFixed(2);
+    prompt = [
+      `Which point is at ${decimalText}?`,
+      `Which letter marks ${decimalText} on the line?`,
+      `A beaker is marked from ${plainDecimal(min)} liters to ${plainDecimal(max)} liters. Which point is at ${decimalText}?`,
+      `The line is a close-up from ${plainDecimal(min)} to ${plainDecimal(max)}. Which point is at ${decimalText}?`,
+    ][r(0, 3)]!;
+    hint = `The left end is ${plainDecimal(min)}. Each step is one hundredth. Count ${targetOffset} steps to reach ${decimalText}.`;
     explanationValue = target.toFixed(2);
   }
   const order = shuffle(r, offsets);
@@ -718,8 +828,8 @@ function locate(seed: string): GeneratedProblem {
     options,
     hint,
     explanation: [
-      `Only the ends of the line are numbered.`,
-      `Count ${count(targetOffset, "step")} from the left end.`,
+      `Only the ends of the line are numbered. The left end is ${tenths ? "0" : plainDecimal(min)}.`,
+      `Each step is one ${tenths ? "tenth" : "hundredth"}. Count ${count(targetOffset, "step")} from that left end.`,
       `Point $${correctLetter}$ is at ${explanationValue}.`,
     ],
     label: "Choose the point",
@@ -748,7 +858,7 @@ function placeValue(seed: string): GeneratedProblem {
   const template = byId.get("decimal-place-value-hundredths")!;
   const r = random(template.id, seed);
   const ones = r(1, 9);
-  const zeroTenths = r(0, 4) < 3;
+  const zeroTenths = r(0, 9) < 5;
   let tenths: number;
   if (zeroTenths) tenths = 0;
   else {
@@ -796,8 +906,15 @@ function placeValue(seed: string): GeneratedProblem {
     },
     ".",
   ]);
+  const name = learnerName(r);
+  const prompts = [
+    `In ${shown}, name the digit ${asked.digit}. Complete the sentence.`,
+    `${name} sees the number ${shown}. The digit to look at is ${asked.digit}. Complete the sentence.`,
+    `A length is ${shown} meters. What place and value does the digit ${asked.digit} have? Complete the sentence.`,
+    `The price is ${shown} dollars. Complete the sentence about the digit ${asked.digit}.`,
+  ];
   return multiPartProblem(template, seed, r, {
-    prompt: `Complete the sentence about ${shown}.`,
+    prompt: prompts[r(0, prompts.length - 1)]!,
     layout: "inline",
     label: "Complete the sentence",
     slots: built.slots,

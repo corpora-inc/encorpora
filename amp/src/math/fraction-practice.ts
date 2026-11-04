@@ -7,11 +7,41 @@ import type {
 } from "./contracts.js";
 import { isAre, count } from "./agreement.js";
 import { axisRecord, chooseAxes, defineAxis } from "./variation/axes.js";
+import {
+  groupsStory,
+  likeDifferenceStory,
+  mixedDifferenceStory,
+  multiplierStory,
+  renameStory,
+} from "./story-kit/fractions.js";
 
 /** Grade-4 denominator range. Legacy keeps the old 2, 3, 4, 6, 8 draw. */
 export const fractionDenominatorAxes = {
   denominator: defineAxis("denominator", ["legacy", "expanded"] as const),
 } as const;
+/**
+ * Story wording. `plain` is the stored sentence. On the stored number draw,
+ * plain stays common enough that replay still hits it. A new number draw
+ * (expanded denominators, or the identity-multiplier surface) is always a story.
+ */
+export const fractionStoryOftenAxes = {
+  setting: defineAxis("setting", ["plain", "applied"] as const, {
+    weights: [2, 3],
+    silentLegacy: true,
+  }),
+} as const;
+export const fractionStorySometimesAxes = {
+  setting: defineAxis("setting", ["plain", "applied"] as const, {
+    weights: [2, 1],
+    silentLegacy: true,
+  }),
+} as const;
+const STORY_IDS = new Set([
+  "like-fraction-difference",
+  "mixed-fraction-difference",
+  "whole-times-fraction",
+  "equivalent-numerator",
+]);
 /** Numerator rename, or the same rename written as multiplying by n/n. */
 export const equivalentNumeratorAxes = {
   denominator: defineAxis("denominator", ["legacy", "expanded"] as const),
@@ -185,6 +215,26 @@ export function generateFractionPracticeProblem(
       : chooseAxes(templateId, seed, fractionDenominatorAxes)
     : undefined;
   const expanded = denomAxes?.denominator === "expanded";
+  const numeratorSurface =
+    templateId !== "equivalent-numerator" ||
+    !denomAxes ||
+    !("surface" in denomAxes) ||
+    denomAxes.surface === "numerator";
+  const storedSurface =
+    templateId === "equivalent-numerator"
+      ? !expanded && numeratorSurface
+      : !expanded;
+  const applied =
+    STORY_IDS.has(templateId) &&
+    (storedSurface
+      ? chooseAxes(
+          templateId,
+          seed,
+          templateId === "equivalent-numerator"
+            ? fractionStorySometimesAxes
+            : fractionStoryOftenAxes,
+        ).setting === "applied"
+      : true);
   // The legacy draw stays the first content draw. Expanded denominators,
   // including 16 and 100, replace it. Equivalent-numerator draws its pair later.
   const d = !expanded
@@ -299,7 +349,9 @@ export function generateFractionPracticeProblem(
       kind = "number";
       if (multiplier) {
         label = "The number in both boxes";
-        prompt = `${a}/${b} × □/□ = ${a * k}/${b * k}. What number goes in both boxes?`;
+        prompt = applied
+          ? multiplierStory(r, a, b, k)
+          : `${a}/${b} × □/□ = ${a * k}/${b * k}. What number goes in both boxes?`;
         answer = `${k}`;
         hint = `How many times does ${b} fit into ${b * k}? That count fills both boxes.`;
         explanation = [
@@ -310,7 +362,9 @@ export function generateFractionPracticeProblem(
         ];
       } else {
         label = "Missing numerator";
-        prompt = `Rename ${a}/${b} as ?/${b * k}. What is the missing numerator?`;
+        prompt = applied
+          ? renameStory(r, a, b, k)
+          : `Rename ${a}/${b} as ?/${b * k}. What is the missing numerator?`;
         answer = `${a * k}`;
         hint = `How many times ${b} is ${b * k}? Each 1/${b} piece splits into that many smaller pieces, so multiply ${a} by the same number.`;
         explanation = [
@@ -364,19 +418,23 @@ export function generateFractionPracticeProblem(
       break;
     }
     case "like-fraction-difference": {
-      const a = r(1, 2 * d),
-        b = r(1, a);
-      prompt = `A cord is ${a}/${d} meter long. You remove ${b}/${d} meter. How many meters remain?`;
-      label = "Meters remaining";
+      const a = applied ? r(2, 2 * d) : r(1, 2 * d);
+      const b = applied ? r(1, a - 1) : r(1, a);
+      const scene = applied ? likeDifferenceStory(r, a, b, d) : undefined;
+      prompt = scene
+        ? scene.prompt
+        : `A cord is ${a}/${d} meter long. You remove ${b}/${d} meter. How many meters remain?`;
+      label = scene ? `${scene.object} left` : "Meters remaining";
       answer = fraction(a - b, d);
-      hint = `${a}/${d} and ${b}/${d} meter count the same size of piece. Take ${b} pieces away from ${a} pieces.`;
+      const piece = scene ? scene.unit : "meter";
+      hint = `${a}/${d} and ${b}/${d} count the same size of piece. Take ${b} pieces away from ${a} pieces.`;
       explanation = [
-        `Both lengths have bottom number ${d}, so both count pieces of size 1/${d} meter.`,
-        `Taking away ${b}/${d} meter takes away ${count(b, "piece")} from the ${a}.`,
-        `${a} − ${b} = ${a - b}, so ${count(a - b, "piece")} of 1/${d} meter ${a - b === 1 ? "remains" : "remain"}.`,
+        `Both amounts have bottom number ${d}, so both count pieces of size 1/${d} ${piece}.`,
+        `Taking away ${b}/${d} takes away ${count(b, "piece")} from the ${a}.`,
+        `${a} − ${b} = ${a - b}, so ${count(a - b, "piece")} of 1/${d} ${piece} ${a - b === 1 ? "remains" : "remain"}.`,
         a === b
-          ? `You removed the whole cord, so 0 meters remain.`
-          : `That is ${simplified(a - b, d)} ${unitAfter(answer, "meter")}, so ${answer} ${unitAfter(answer, "meter")} of cord ${answer === "1" || unitAfter(answer, "meter") === "meter" ? "remains" : "remain"}.`,
+          ? `You removed the whole amount, so 0 remains.`
+          : `That is ${simplified(a - b, d)} ${unitAfter(answer, piece)}.`,
       ];
       break;
     }
@@ -433,7 +491,12 @@ export function generateFractionPracticeProblem(
         other = r(1, whole - 1),
         a = r(1, mixedD - 2),
         b = r(a + 1, mixedD - 1);
-      prompt = `Find ${whole} ${a}/${mixedD} − ${other} ${b}/${mixedD}. Give a fraction or whole number.`;
+      const story = applied
+        ? mixedDifferenceStory(r, whole, a, mixedD, other, b)
+        : undefined;
+      prompt = story
+        ? story.prompt
+        : `Find ${whole} ${a}/${mixedD} − ${other} ${b}/${mixedD}. Give a fraction or whole number.`;
       answer = fraction((whole - other) * mixedD + a - b, mixedD);
       hint = `${a}/${mixedD} is less than ${b}/${mixedD}, so first rename one whole of ${whole} ${a}/${mixedD} as ${mixedD}/${mixedD}: it becomes ${whole - 1} ${mixedD + a}/${mixedD}.`;
       explanation = [
@@ -441,7 +504,10 @@ export function generateFractionPracticeProblem(
         `${a}/${mixedD} is less than ${b}/${mixedD}, so there are not enough pieces to take ${b} away.`,
         `Trade one whole for ${mixedD}/${mixedD}, which is the same amount: ${whole} ${a}/${mixedD} becomes ${whole - 1} ${mixedD + a}/${mixedD}.`,
         `Fraction parts: ${mixedD + a}/${mixedD} − ${b}/${mixedD} = ${mixedD + a - b}/${mixedD}. Whole parts: ${whole - 1} − ${other} = ${whole - 1 - other}.`,
-        `Together that is ${whole - 1 - other === 0 ? `${mixedD + a - b}/${mixedD}` : `${whole - 1 - other} ${mixedD + a - b}/${mixedD}`}. As one fraction in simplest form, the difference is ${answer}.`,
+        `Together that is ${whole - 1 - other === 0 ? `${mixedD + a - b}/${mixedD}` : `${whole - 1 - other} ${mixedD + a - b}/${mixedD}`}.`,
+        whole - 1 - other === 0
+          ? `Simplify that fraction. The difference is ${answer}.`
+          : `${whole - 1 - other} wholes are ${(whole - 1 - other) * mixedD}/${mixedD}. Add the fraction part: ${(whole - 1 - other) * mixedD} + ${mixedD + a - b} = ${(whole - 1 - other) * mixedD + mixedD + a - b}. In simplest form, the difference is ${answer}.`,
       ];
       break;
     }
@@ -501,23 +567,33 @@ export function generateFractionPracticeProblem(
     case "whole-times-fraction": {
       const n = r(1, d - 1),
         groups = r(2, 5);
-      prompt = `Each of ${groups} containers holds ${n}/${d} liter. How many liters do they hold altogether?`;
-      label = "Total liters";
+      const scene = applied ? groupsStory(r, groups, n, d) : undefined;
+      const unit = scene?.unit ?? "liter";
+      const noun = scene?.noun ?? "containers";
+      prompt = scene
+        ? scene.prompt
+        : `Each of ${groups} containers holds ${n}/${d} liter. How many liters do they hold altogether?`;
+      label = `Total ${unit}s`;
       answer = fraction(groups * n, d);
       if (d <= 12)
         figure = {
           kind: "fraction-strips",
           parts: d,
           wholes: 1,
-          unit: "one liter",
-          rows: [{ selected: n, label: "one container" }],
+          unit: scene ? `one ${unit}` : "one liter",
+          rows: [
+            {
+              selected: n,
+              label: scene ? `one of the ${noun}` : "one container",
+            },
+          ],
         };
-      hint = `${groups} containers of ${n}/${d} liter is ${groups} groups of ${n} pieces, each piece 1/${d} liter. Count all the pieces.`;
+      hint = `${groups} ${noun} of ${n}/${d} ${unit} is ${groups} groups of ${count(n, "piece")}, each piece 1/${d} ${unit}. Count all the pieces, then simplify.`;
       explanation = [
-        `Each container holds ${n}/${d} liter: ${count(n, "piece")} of size 1/${d} liter.`,
-        `${groups} containers make ${groups} equal groups of ${n} pieces, so multiply: ${groups} × ${n} = ${groups * n} pieces.`,
-        `${groups * n} pieces of 1/${d} liter make ${simplified(groups * n, d)} ${unitAfter(answer, "liter")}.`,
-        `Altogether the containers hold ${answer} ${unitAfter(answer, "liter")}.`,
+        `Each one holds ${n}/${d} ${unit}: ${count(n, "piece")} of size 1/${d} ${unit}.`,
+        `${groups} ${noun} make ${groups} equal groups of ${n} pieces, so multiply: ${groups} × ${n} = ${groups * n} pieces.`,
+        `${groups * n} pieces of 1/${d} ${unit} make ${simplified(groups * n, d)} ${unitAfter(answer, unit)}.`,
+        `Altogether that is ${answer} ${unitAfter(answer, unit)}.`,
       ];
       break;
     }
@@ -636,18 +712,24 @@ export function generateFractionPracticeProblem(
   ) {
     const surface =
       denomAxes.surface === "multiplier" ? "multiplier" : "numerator";
-    if (expanded || surface === "multiplier")
+    if (expanded || surface === "multiplier" || applied)
       variant = {
-        id: `${expanded ? "expanded" : "legacy"}-${surface}`,
+        id: `${expanded ? "expanded" : "legacy"}-${surface}${applied ? "-applied" : ""}`,
         axes: axisRecord({
           denominator: expanded ? "expanded" : "legacy",
           surface,
+          ...(applied ? { setting: "applied" } : {}),
         }),
       };
-  } else if (expanded)
+  } else if (expanded || applied)
     variant = {
-      id: "expanded",
-      axes: axisRecord({ denominator: "expanded" }),
+      id: [expanded ? "expanded" : "", applied ? "applied" : ""]
+        .filter(Boolean)
+        .join("-"),
+      axes: axisRecord({
+        ...(expanded ? { denominator: "expanded" } : {}),
+        ...(applied ? { setting: "applied" } : {}),
+      }),
     };
   return {
     ...(variant ? { variant } : {}),

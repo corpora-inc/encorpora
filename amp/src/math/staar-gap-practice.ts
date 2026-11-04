@@ -1329,10 +1329,22 @@ function randomHundredths(r: Random): Dec[] {
   throw new Error("No decimal set found");
 }
 
+const ORDER_SCENES: readonly (readonly [string, string, string])[] = [
+  ["Maya measured four ribbons.", "The lengths are", "meters"],
+  ["Four bottles of juice sit on the table.", "The amounts are", "liters"],
+  ["Four seedlings grew in the garden.", "The heights are", "meters"],
+  ["Four snacks have these prices.", "The prices are", "dollars"],
+  ["Four puppies are on the scale.", "The weights are", "kilograms"],
+  ["Four runners' times are posted.", "The times are", "seconds"],
+  ["Four trails are marked on the map.", "The lengths are", "miles"],
+  ["Four pitchers of water are filled.", "The amounts are", "liters"],
+];
+
 function orderHundredths(r: Random): Built {
   const items = randomHundredths(r);
   const sorted = items.slice().sort((a, b) => a.v - b.v);
   const text = (d: Dec) => dec(d.v, 2);
+  const scene = ORDER_SCENES[r(0, ORDER_SCENES.length - 1)]!;
   if (r(0, 1) === 0) {
     const ascending = r(0, 1) === 1;
     const ordered = ascending ? sorted : sorted.slice().reverse();
@@ -1371,7 +1383,7 @@ function orderHundredths(r: Random): Built {
     ].filter((c) => key(c.list) !== key(ordered));
     return {
       variant: ascending ? "list-ascending" : "list-descending",
-      prompt: `Which list shows the numbers ${items.map((d) => text(d)).join(", ")} in order from ${ascending ? "least to greatest" : "greatest to least"}?`,
+      prompt: `${scene[0]} Which list shows the numbers ${items.map((d) => text(d)).join(", ")} in order from ${ascending ? "least to greatest" : "greatest to least"}?`,
       answer: "",
       hint: `Write each number with two decimal places, such as ${text(items[0]!)} as ${fixed(items[0]!.v, 2)}. Then compare the tenths digits first, then the hundredths.`,
       explanation: [
@@ -1392,11 +1404,10 @@ function orderHundredths(r: Random): Built {
   const position = r(1, 2) === 1 ? 2 : 3;
   const word = ["", "first", "second", "third", "fourth"][position]!;
   const target = sorted[position - 1]!;
-  const unit = pick(r, ["kilograms", "liters", "meters", "miles"]);
   return {
     variant: "kth",
     selects: true,
-    prompt: `Four measurements are ${items.map((d) => `${text(d)}`).join(", ")} ${unit}. When they are ordered from least to greatest, which is ${word}?`,
+    prompt: `${scene[0]} ${scene[1]} ${items.map((d) => text(d)).join(", ")} ${scene[2]}. When they are ordered from least to greatest, which is ${word}?`,
     answer: "",
     hint: `Write each measurement with two decimal places, such as ${text(items[0]!)} as ${fixed(items[0]!.v, 2)}, then compare tenths first. Put them in order from least to greatest and count to the ${word}.`,
     explanation: [

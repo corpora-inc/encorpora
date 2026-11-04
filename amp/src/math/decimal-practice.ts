@@ -9,10 +9,18 @@ import type {
 import { sweepChoose, sweepVariant } from "./number-domain-axes";
 import { axisRecord, chooseAxes, defineAxis } from "./variation/axes";
 import { decimal, fixed } from "./decimal-models";
+import { learnerName } from "./story-kit/fractions";
 
 /** Below one is the legacy surface. Above one reaches 2 3/10 = 2.30. */
 export const tenthsMagnitudeAxes = {
   magnitude: defineAxis("magnitude", ["below-one", "above-one"] as const),
+} as const;
+/** Story lead-in. Plain keeps the stored equation. Above one is always a story. */
+export const tenthsStoryAxes = {
+  setting: defineAxis("setting", ["plain", "applied"] as const, {
+    weights: [1, 2],
+    silentLegacy: true,
+  }),
 } as const;
 
 // id | title | skill | grade band | description
@@ -247,6 +255,32 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         seed,
         tenthsMagnitudeAxes,
       ).magnitude;
+      const applied =
+        magnitude === "above-one" ||
+        chooseAxes(templateId, seed, tenthsStoryAxes).setting === "applied";
+      const dress = (equation: string) => {
+        if (!applied) return equation;
+        const name = learnerName(r);
+        const lead = [
+          `${name} counts dimes and pennies, which are tenths and hundredths of a dollar.`,
+          `${name} measures in tenths and hundredths of a meter.`,
+          `${name} pours tenths and hundredths of a liter.`,
+          `${name} times a race in tenths and hundredths of a second.`,
+        ][r(0, 3)]!;
+        return `${lead} ${equation}`;
+      };
+      const storyVariant = (above: boolean): ProblemVariant | undefined =>
+        above
+          ? {
+              id: "above-one",
+              axes: axisRecord({
+                magnitude: "above-one",
+                setting: "applied",
+              }),
+            }
+          : applied
+            ? { id: "applied", axes: axisRecord({ setting: "applied" }) }
+            : undefined;
       if (magnitude === "above-one") {
         let w = r(1, 4);
         let a = r(1, 9);
@@ -258,10 +292,7 @@ function draft(templateId: string, r: Random, seed: string): Draft {
           b = 0;
           form = 1;
         }
-        const variant: ProblemVariant = {
-          id: "above-one",
-          axes: axisRecord({ magnitude: "above-one" }),
-        };
+        const variant = storyVariant(true)!;
         const renamed = `${a} × 10 = ${a * 10} hundredths`;
         const showcase =
           w === 2 && a === 3 && b === 0
@@ -269,7 +300,9 @@ function draft(templateId: string, r: Random, seed: string): Draft {
             : `${w} ${a}/10 = ${w} ${a * 10}/100 = ${w}.${a}0.`;
         if (form === 0)
           return {
-            prompt: `${w} ${a}/10 = ${w} □/100. What number belongs in the box?`,
+            prompt: dress(
+              `${w} ${a}/10 = ${w} □/100. What number belongs in the box?`,
+            ),
             hint: `${w} ${a}/10 is ${count(w, "whole")} and ${count(a, "tenth")}. Each tenth is 10 hundredths. How many hundredths is the fraction part?`,
             explanation: [
               `${w} ${a}/10 is ${count(w, "whole")} and ${a}/10.`,
@@ -284,7 +317,9 @@ function draft(templateId: string, r: Random, seed: string): Draft {
           };
         if (form === 1)
           return {
-            prompt: `What is ${w} ${a}/10 + ${b}/100 written as a decimal?`,
+            prompt: dress(
+              `What is ${w} ${a}/10 + ${b}/100 written as a decimal?`,
+            ),
             hint: `Rename ${a}/10 as hundredths, then add the ${count(b, "hundredth")}. The ${count(w, "whole")} stay${w === 1 ? "s" : ""} in front of the decimal point.`,
             explanation: [
               `${w} ${a}/10 + ${b}/100 is ${count(w, "whole")} plus ${a}/10 plus ${b}/100.`,
@@ -298,7 +333,9 @@ function draft(templateId: string, r: Random, seed: string): Draft {
             variant,
           };
         return {
-          prompt: `${w}.${a}0 = ${w} □/100. What number belongs in the box?`,
+          prompt: dress(
+            `${w}.${a}0 = ${w} □/100. What number belongs in the box?`,
+          ),
           hint: `${w}.${a}0 is ${count(w, "whole")} and ${count(a, "tenth")}. Each tenth is 10 hundredths. How many hundredths is the fraction part?`,
           explanation: [
             `${w}.${a}0 is ${count(w, "whole")} and ${a}/10.`,
@@ -317,7 +354,10 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         form = r(0, 2);
       if (form === 0)
         return {
-          prompt: `${a}/10 + ${b}/100 = □/100. What number belongs in the box?`,
+          prompt: dress(
+            `${a}/10 + ${b}/100 = □/100. What number belongs in the box?`,
+          ),
+          ...(storyVariant(false) ? { variant: storyVariant(false) } : {}),
           hint: `${a}/10 is ${count(a, "tenth", "tenths")}, and each tenth is ten hundredths. Rename ${a}/10 in hundredths, then add the ${b}/100.`,
           explanation: [
             `To add by counting pieces, the pieces must be the same size, so first write the tenths as hundredths.`,
@@ -331,7 +371,8 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         };
       if (form === 1)
         return {
-          prompt: `0.${a} = □/100. What number belongs in the box?`,
+          prompt: dress(`0.${a} = □/100. What number belongs in the box?`),
+          ...(storyVariant(false) ? { variant: storyVariant(false) } : {}),
           hint: `0.${a} is ${a} ${a === 1 ? "tenth" : "tenths"}, and each tenth is ten hundredths. How many hundredths is that?`,
           explanation: [
             `The first place after the decimal point counts tenths, so 0.${a} is ${count(a, "tenth", "tenths")}: ${a}/10.`,
@@ -343,7 +384,8 @@ function draft(templateId: string, r: Random, seed: string): Draft {
           label: "Number",
         };
       return {
-        prompt: `What is ${a}/10 + ${b}/100 written as a decimal?`,
+        prompt: dress(`What is ${a}/10 + ${b}/100 written as a decimal?`),
+        ...(storyVariant(false) ? { variant: storyVariant(false) } : {}),
         hint: `The first place after the decimal point counts tenths and the second counts hundredths. Which digit goes in each place for ${a}/10 + ${b}/100?`,
         explanation: [
           `In a decimal, the first place after the point counts tenths and the second counts hundredths.`,
