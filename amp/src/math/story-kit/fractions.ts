@@ -1,6 +1,13 @@
 // Grade-4 fraction contexts. Numbers stay in the caller's model; this file
 // only chooses a realistic object, unit, and sentence. Money is never written
 // with "$" (that character opens TeX). Names come from ./names.
+//
+// A denominator is used only with a unit that is really divided that way:
+// hours in halves, thirds, quarters, sixths and twelfths; rulers in halves,
+// quarters, eighths and sixteenths; hundredths for cents, centimeters,
+// hundredths of a second, and hundredths of a liter. Amount stories receive
+// fractions already in simplest form. Equivalence and piece-models may show
+// the unsimplified count of pieces.
 
 import { storyName } from "./names.js";
 
@@ -11,191 +18,502 @@ export const learnerName = (r: Random): string => storyName((n) => r(0, n - 1));
 const pick = <T>(r: Random, items: readonly T[]): T =>
   items[r(0, items.length - 1)]!;
 
-/** "3/8 of a foot", "1 foot", or "5/4 feet". */
+export const gcd = (a: number, b: number): number => {
+  let x = Math.abs(a);
+  let y = Math.abs(b);
+  while (y) [x, y] = [y, x % y];
+  return x || 1;
+};
+
+/** Denominators that are real divisions of that unit. */
+export const UNIT_DENOMS = {
+  hour: [2, 3, 4, 6, 12],
+  inch: [2, 4, 8, 16],
+  foot: [2, 3, 4, 6, 8, 12, 16],
+  cup: [2, 3, 4, 8],
+  mile: [2, 4, 5, 8, 10],
+  meter: [2, 4, 5, 10, 100],
+  liter: [2, 4, 5, 8, 10, 100],
+  dollar: [2, 4, 10, 100],
+  second: [10, 100],
+  pizza: [2, 3, 4, 6, 8, 12],
+  chapter: [2, 4, 5, 10],
+  garden: [2, 3, 4, 5, 6, 8, 10, 12],
+  poster: [2, 3, 4, 6, 8, 12],
+  bar: [2, 3, 4, 6, 8],
+} as const;
+
+export const denomFits = (
+  denominator: number,
+  unit: keyof typeof UNIT_DENOMS,
+): boolean => (UNIT_DENOMS[unit] as readonly number[]).includes(denominator);
+
+/** "1/2 liter", "3/4 of an inch", "1 foot", or "3/2 miles". */
 export function fractionAmount(
   numerator: number,
   denominator: number,
   unit: string,
   article = "a",
 ): string {
+  const many = unit === "foot" ? "feet" : `${unit}s`;
   if (numerator === denominator) return `1 ${unit}`;
-  if (numerator < denominator)
-    return `${numerator}/${denominator} of ${article} ${unit}`;
-  return `${numerator}/${denominator} ${unit}s`;
+  if (unit === "hour" || unit === "inch") {
+    if (numerator < denominator)
+      return `${numerator}/${denominator} of ${article} ${unit}`;
+    return `${numerator}/${denominator} ${many}`;
+  }
+  if (numerator < denominator) return `${numerator}/${denominator} ${unit}`;
+  return `${numerator}/${denominator} ${many}`;
 }
 
-type Scene = {
+/** Cents equal to n/d of a dollar, when that division is exact. */
+export function centWords(
+  numerator: number,
+  denominator: number,
+): string | null {
+  if (![2, 4, 10, 100].includes(denominator)) return null;
+  if ((numerator * 100) % denominator !== 0) return null;
+  const cents = (numerator * 100) / denominator;
+  return `${cents} cent${cents === 1 ? "" : "s"}`;
+}
+
+const inRange = (
+  numerator: number,
+  denominator: number,
+  min: number,
+  max: number,
+) => {
+  const value = numerator / denominator;
+  return value >= min - 1e-9 && value <= max + 1e-9;
+};
+
+/** Positive numerators below `limit` that are already in simplest form. */
+const simplest = (denominator: number, limit: number): number[] => {
+  const out: number[] = [];
+  for (let n = 1; n < limit; n++) if (gcd(n, denominator) === 1) out.push(n);
+  return out;
+};
+
+type DiffScene = {
   object: string;
   unit: string;
   article?: string;
-  fits: (denominator: number) => boolean;
-  prompt: (name: string, a: number, b: number, d: number) => string;
+  denoms: readonly number[];
+  min: number;
+  max: number;
+  prompt: (who: string, a: number, b: number, d: number) => string;
 };
 
-const inch = (d: number) => [2, 4, 8, 16].includes(d);
-const foot = (d: number) => [2, 3, 4, 6, 8, 12].includes(d);
-const cup = (d: number) => [2, 3, 4, 8].includes(d);
-const hour = (d: number) => [2, 3, 4, 6, 12].includes(d);
-const mile = (d: number) => [2, 4, 5, 8, 10].includes(d);
-const meter = (d: number) => [2, 4, 5, 10, 100].includes(d);
-const liter = (d: number) => [2, 4, 5, 8, 10, 100].includes(d);
+const diffScenes: readonly DiffScene[] = [
+  {
+    object: "ribbon",
+    unit: "foot",
+    denoms: UNIT_DENOMS.foot,
+    min: 0.25,
+    max: 6,
+    prompt: (who, a, b, d) =>
+      `${who} has a ribbon ${fractionAmount(a, d, "foot")} long and cuts off ${fractionAmount(b, d, "foot")}. How much ribbon is left?`,
+  },
+  {
+    object: "wood",
+    unit: "inch",
+    article: "an",
+    denoms: UNIT_DENOMS.inch,
+    min: 0.5,
+    max: 8,
+    prompt: (who, a, b, d) =>
+      `${who} has a wood shim ${fractionAmount(a, d, "inch", "an")} thick and sands off ${fractionAmount(b, d, "inch", "an")}. How much of the shim is left?`,
+  },
+  {
+    object: "bead",
+    unit: "inch",
+    article: "an",
+    denoms: UNIT_DENOMS.inch,
+    min: 1 / 16,
+    max: 0.5,
+    prompt: (who, a, b, d) =>
+      `${who} lines up seed beads that start ${fractionAmount(a, d, "inch", "an")} wide and covers ${fractionAmount(b, d, "inch", "an")} with thread. How much of that width still shows?`,
+  },
+  {
+    object: "rope",
+    unit: "meter",
+    denoms: [2, 4, 5, 10],
+    min: 0.4,
+    max: 1,
+    prompt: (who, a, b, d) =>
+      `${who} unrolls ${fractionAmount(a, d, "meter")} of rope and coils ${fractionAmount(b, d, "meter")} back up. How much rope stays out?`,
+  },
+  {
+    object: "tape",
+    unit: "meter",
+    denoms: [10, 100],
+    min: 0.02,
+    max: 1.5,
+    prompt: (who, a, b, d) =>
+      `${who} has ${fractionAmount(a, d, "meter")} of tape and uses ${fractionAmount(b, d, "meter")} on a label. How much tape is left?`,
+  },
+  {
+    object: "juice",
+    unit: "liter",
+    denoms: [2, 4, 5, 8, 10],
+    min: 0.125,
+    max: 2,
+    prompt: (who, a, b, d) =>
+      `${who} has ${fractionAmount(a, d, "liter")} of juice and drinks ${fractionAmount(b, d, "liter")}. How much juice is left?`,
+  },
+  {
+    object: "water",
+    unit: "liter",
+    denoms: [10, 100],
+    min: 0.01,
+    max: 0.5,
+    prompt: (who, a, b, d) =>
+      `${who} measures ${fractionAmount(a, d, "liter")} of water into a cup and pours out ${fractionAmount(b, d, "liter")}. How much water is left in the cup?`,
+  },
+  {
+    object: "practice",
+    unit: "hour",
+    article: "an",
+    denoms: UNIT_DENOMS.hour,
+    min: 1 / 6,
+    max: 2,
+    prompt: (who, a, b, d) =>
+      `${who} planned ${fractionAmount(a, d, "hour", "an")} of piano and has practiced ${fractionAmount(b, d, "hour", "an")}. How much practice time is left?`,
+  },
+  {
+    object: "trail",
+    unit: "mile",
+    denoms: UNIT_DENOMS.mile,
+    min: 0.1,
+    max: 1,
+    prompt: (who, a, b, d) =>
+      `A trail is ${fractionAmount(a, d, "mile")} long. ${who} has walked ${fractionAmount(b, d, "mile")}. How much of the trail is left?`,
+  },
+  {
+    object: "flour",
+    unit: "cup",
+    denoms: UNIT_DENOMS.cup,
+    min: 0.125,
+    max: 1,
+    prompt: (who, a, b, d) =>
+      `${who} has ${fractionAmount(a, d, "cup")} of flour and uses ${fractionAmount(b, d, "cup")}. How much flour is left?`,
+  },
+  {
+    object: "garden",
+    unit: "meter",
+    denoms: [2, 4, 5, 10],
+    min: 0.5,
+    max: 1,
+    prompt: (who, a, b, d) =>
+      `${who} is edging a garden bed ${fractionAmount(a, d, "meter")} long and has placed ${fractionAmount(b, d, "meter")}. How much of the bed is still bare?`,
+  },
+  {
+    object: "paint",
+    unit: "liter",
+    denoms: [2, 4, 8],
+    min: 0.25,
+    max: 4,
+    prompt: (who, a, b, d) =>
+      `${who} opens a can with ${fractionAmount(a, d, "liter")} of paint and uses ${fractionAmount(b, d, "liter")}. How much paint is left in the can?`,
+  },
+  {
+    object: "chocolate",
+    unit: "bar",
+    denoms: UNIT_DENOMS.bar,
+    min: 0,
+    max: 1,
+    prompt: (who, a, b, d) =>
+      `${who} has ${a}/${d} of a bar of chocolate cut into ${d} equal pieces and eats ${b}/${d} of the bar. How much of the bar is left?`,
+  },
+];
 
-/** Subtraction of like fractions. Both amounts stay in the prompt as n/d. */
+const diffPairs = (scene: DiffScene, d: number): [number, number][] => {
+  const pairs: [number, number][] = [];
+  for (const a of simplest(d, d * 2)) {
+    if (!inRange(a, d, scene.min, scene.max)) continue;
+    if (scene.object === "chocolate" && a >= d) continue;
+    for (const b of simplest(d, a)) pairs.push([a, b]);
+  }
+  // Proper fractions are how the amount is said. Halves are the exception:
+  // 3/2 and 1/2 is the only simplest pair, and the sentence adds "and a half".
+  const proper = pairs.filter(([a]) => a < d);
+  return proper.length ? proper : pairs;
+};
+
+/** Subtraction of like fractions. Both amounts stay in the prompt as n/d, in simplest form. */
 export function likeDifferenceStory(
   r: Random,
-  a: number,
-  b: number,
   d: number,
-): { prompt: string; object: string; unit: string } {
+): { a: number; b: number; prompt: string; object: string; unit: string } {
   const name = learnerName(r);
-  const scenes: Scene[] = [
-    {
-      object: "ribbon",
-      unit: "foot",
-      fits: foot,
-      prompt: (who, left, cut, den) =>
-        `${who} has a ribbon ${left}/${den} of a foot long and cuts off ${cut}/${den} of a foot. How much ribbon is left?`,
-    },
-    {
-      object: "wood",
-      unit: "inch",
-      article: "an",
-      fits: inch,
-      prompt: (who, left, cut, den) =>
-        `${who} has a strip of wood ${left}/${den} of an inch long and saws off ${cut}/${den} of an inch. How much wood is left?`,
-    },
-    {
-      object: "rope",
-      unit: "meter",
-      fits: meter,
-      prompt: (who, left, cut, den) =>
-        `${who} unrolls ${left}/${den} of a meter of rope and coils ${cut}/${den} of a meter back up. How much rope stays out?`,
-    },
-    {
-      object: "juice",
-      unit: "liter",
-      fits: liter,
-      prompt: (who, left, cut, den) =>
-        `${who} has ${left}/${den} of a liter of juice and drinks ${cut}/${den} of a liter. How much juice is left?`,
-    },
-    {
-      object: "practice",
-      unit: "hour",
-      article: "an",
-      fits: hour,
-      prompt: (who, left, cut, den) =>
-        `${who} planned ${left}/${den} of an hour of piano and has practiced ${cut}/${den} of an hour. How much practice time is left?`,
-    },
-    {
-      object: "trail",
-      unit: "mile",
-      fits: mile,
-      prompt: (who, left, cut, den) =>
-        `A trail is ${left}/${den} of a mile long. ${who} has walked ${cut}/${den} of a mile. How much of the trail is left?`,
-    },
-    {
-      object: "recipe",
-      unit: "cup",
-      fits: cup,
-      prompt: (who, left, cut, den) =>
-        `${who} has ${left}/${den} of a cup of flour and uses ${cut}/${den} of a cup. How much flour is left?`,
-    },
-    {
-      object: "garden",
-      unit: "meter",
-      fits: meter,
-      prompt: (who, left, cut, den) =>
-        `${who} is edging a garden bed ${left}/${den} of a meter long and has placed ${cut}/${den} of a meter. How much bed is still bare?`,
-    },
-    {
-      object: "paint",
-      unit: "liter",
-      fits: liter,
-      prompt: (who, left, cut, den) =>
-        `${who} opens ${left}/${den} of a liter of paint and uses ${cut}/${den} of a liter. How much paint is left?`,
-    },
-    {
-      object: "chocolate",
-      unit: "bar",
-      fits: (den) => [2, 3, 4, 6, 8].includes(den) && a < den && b < a,
-      prompt: (who, left, cut, den) =>
-        `${who} has ${left}/${den} of a bar of chocolate and eats ${cut}/${den} of a bar. How much of the bar is left?`,
-    },
-    {
-      object: "string",
-      unit: "meter",
-      fits: () => true,
-      prompt: (who, left, cut, den) =>
-        `${who} has a string ${left}/${den} of a meter long and cuts off ${cut}/${den} of a meter. How much string is left?`,
-    },
-  ];
-  const fitting = scenes.filter((scene) => scene.fits(d));
-  const scene = pick(r, fitting.length ? fitting : scenes.slice(0, 1));
+  const fitting = diffScenes.filter(
+    (scene) => scene.denoms.includes(d) && diffPairs(scene, d).length > 0,
+  );
+  if (!fitting.length) throw new Error(`No like-difference scene for /${d}`);
+  const scene = pick(r, fitting);
+  const [a, b] = pick(r, diffPairs(scene, d));
+  const said = scene.prompt(name, a, b, d);
+  const prompt =
+    a === 3 && d === 2 ? said.replace("3/2", "3/2, one and a half,") : said;
   return {
-    prompt: scene.prompt(name, a, b, d),
+    a,
+    b,
+    prompt,
     object: scene.object,
     unit: scene.unit,
   };
 }
 
-/** Mixed-number subtraction. Digit order stays whole, numerator, denominator, twice. */
+type MixedScene = {
+  object: string;
+  unit: string;
+  denoms: readonly number[];
+  prompt: (
+    who: string,
+    whole: number,
+    a: number,
+    d: number,
+    other: number,
+    b: number,
+  ) => string;
+};
+
+const mixedScenes: readonly MixedScene[] = [
+  {
+    object: "board",
+    unit: "feet",
+    denoms: UNIT_DENOMS.foot,
+    prompt: (who, whole, a, d, other, b) =>
+      `${who}'s board is ${whole} ${a}/${d} feet long. ${who} cuts off ${other} ${b}/${d} feet. How much board is left?`,
+  },
+  {
+    object: "rope",
+    unit: "meters",
+    denoms: UNIT_DENOMS.meter,
+    prompt: (who, whole, a, d, other, b) =>
+      `${who}'s rope is ${whole} ${a}/${d} meters long. ${who} cuts off ${other} ${b}/${d} meters. How much rope is left?`,
+  },
+  {
+    object: "hike",
+    unit: "miles",
+    denoms: UNIT_DENOMS.mile,
+    prompt: (who, whole, a, d, other, b) =>
+      `${who}'s hike is ${whole} ${a}/${d} miles. ${who} has walked ${other} ${b}/${d} miles. How much of the hike is left?`,
+  },
+  {
+    object: "recipe",
+    unit: "cups",
+    denoms: UNIT_DENOMS.cup,
+    prompt: (who, whole, a, d, other, b) =>
+      `A recipe needs ${whole} ${a}/${d} cups of oats. ${who} has poured ${other} ${b}/${d} cups. How many cups are still needed?`,
+  },
+  {
+    object: "practice",
+    unit: "hours",
+    denoms: UNIT_DENOMS.hour,
+    prompt: (who, whole, a, d, other, b) =>
+      `${who} plans ${whole} ${a}/${d} hours of practice. ${who} has practiced ${other} ${b}/${d} hours. How much time is left?`,
+  },
+  {
+    object: "path",
+    unit: "meters",
+    denoms: [2, 4, 5, 10],
+    prompt: (who, whole, a, d, other, b) =>
+      `${who}'s garden path is ${whole} ${a}/${d} meters long. ${who} has paved ${other} ${b}/${d} meters. How much path is left?`,
+  },
+  {
+    object: "ribbon",
+    unit: "feet",
+    denoms: UNIT_DENOMS.foot,
+    prompt: (who, whole, a, d, other, b) =>
+      `${who} has ${whole} ${a}/${d} feet of ribbon and uses ${other} ${b}/${d} feet on a gift. How much ribbon is left?`,
+  },
+  {
+    object: "juice",
+    unit: "liters",
+    denoms: UNIT_DENOMS.liter,
+    prompt: (who, whole, a, d, other, b) =>
+      `${who} mixes ${whole} ${a}/${d} liters of juice and pours out ${other} ${b}/${d} liters. How much juice is left?`,
+  },
+];
+
+/** Mixed-number subtraction. Fraction parts are in simplest form and need a regroup. */
 export function mixedDifferenceStory(
   r: Random,
   whole: number,
-  a: number,
-  d: number,
   other: number,
-  b: number,
-): { prompt: string; object: string; unit: string } {
+  d: number,
+): {
+  a: number;
+  b: number;
+  prompt: string;
+  object: string;
+  unit: string;
+} {
   const name = learnerName(r);
-  const scenes: {
-    object: string;
-    unit: string;
-    prompt: string;
-  }[] = [
-    {
-      object: "board",
-      unit: "feet",
-      prompt: `${name}'s board is ${whole} ${a}/${d} feet long. ${name} cuts off ${other} ${b}/${d} feet. How much board is left?`,
-    },
-    {
-      object: "rope",
-      unit: "meters",
-      prompt: `${name}'s rope is ${whole} ${a}/${d} meters long. ${name} cuts off ${other} ${b}/${d} meters. How much rope is left?`,
-    },
-    {
-      object: "hike",
-      unit: "miles",
-      prompt: `${name}'s hike is ${whole} ${a}/${d} miles. ${name} has walked ${other} ${b}/${d} miles. How much of the hike is left?`,
-    },
-    {
-      object: "recipe",
-      unit: "cups",
-      prompt: `A recipe needs ${whole} ${a}/${d} cups of oats. ${name} has poured ${other} ${b}/${d} cups. How many cups are still needed?`,
-    },
-    {
-      object: "practice",
-      unit: "hours",
-      prompt: `${name} plans ${whole} ${a}/${d} hours of practice. ${name} has practiced ${other} ${b}/${d} hours. How much time is left?`,
-    },
-    {
-      object: "path",
-      unit: "meters",
-      prompt: `${name}'s garden path is ${whole} ${a}/${d} meters long. ${name} has paved ${other} ${b}/${d} meters. How much path is left?`,
-    },
-    {
-      object: "ribbon",
-      unit: "feet",
-      prompt: `${name} has ${whole} ${a}/${d} feet of ribbon and uses ${other} ${b}/${d} feet on a gift. How much ribbon is left?`,
-    },
-    {
-      object: "juice",
-      unit: "liters",
-      prompt: `${name} mixes ${whole} ${a}/${d} liters of juice and pours out ${other} ${b}/${d} liters. How much juice is left?`,
-    },
-  ];
-  return pick(r, scenes);
+  const pairs: [number, number][] = [];
+  for (const a of simplest(d, d))
+    for (const b of simplest(d, d)) if (a < b) pairs.push([a, b]);
+  if (!pairs.length) throw new Error(`No regrouping pair for /${d}`);
+  const fitting = mixedScenes.filter((scene) => scene.denoms.includes(d));
+  if (!fitting.length) throw new Error(`No mixed-difference scene for /${d}`);
+  const scene = pick(r, fitting);
+  const [a, b] = pick(r, pairs);
+  return {
+    a,
+    b,
+    prompt: scene.prompt(name, whole, a, d, other, b),
+    object: scene.object,
+    unit: scene.unit,
+  };
 }
+
+type GroupScene = {
+  unit: string;
+  noun: string;
+  denoms: readonly number[];
+  min: number;
+  max: number;
+  prompt: (who: string, groups: number, bit: string) => string;
+};
+
+const groupScenes: readonly GroupScene[] = [
+  {
+    unit: "liter",
+    noun: "bottles",
+    denoms: [2, 4, 5, 8, 10],
+    min: 0.2,
+    max: 2,
+    prompt: (who, groups, bit) =>
+      `${who} fills ${groups} bottles, and each bottle holds ${bit}. How many liters do the bottles hold altogether?`,
+  },
+  {
+    unit: "liter",
+    noun: "jars",
+    denoms: [2, 4, 8],
+    min: 0.125,
+    max: 0.75,
+    prompt: (who, groups, bit) =>
+      `Each jar of jam holds ${bit}. ${who} lines up ${groups} jars. How many liters of jam is that?`,
+  },
+  {
+    unit: "liter",
+    noun: "cans",
+    denoms: [2, 4, 8, 10],
+    min: 0.25,
+    max: 4,
+    prompt: (who, groups, bit) =>
+      `Each can of paint holds ${bit}. ${who} buys ${groups} cans. How many liters of paint is that?`,
+  },
+  {
+    unit: "liter",
+    noun: "cups",
+    denoms: [10, 100],
+    min: 0.01,
+    max: 0.2,
+    prompt: (who, groups, bit) =>
+      `Each medicine cup holds ${bit} of water. ${who} fills ${groups} cups. How many liters of water is that?`,
+  },
+  {
+    unit: "cup",
+    noun: "batches",
+    denoms: UNIT_DENOMS.cup,
+    min: 0.125,
+    max: 2,
+    prompt: (who, groups, bit) =>
+      `One batch of pancakes uses ${bit} of milk. ${who} makes ${groups} batches. How many cups of milk is that?`,
+  },
+  {
+    unit: "mile",
+    noun: "laps",
+    denoms: [2, 4, 8],
+    min: 0.125,
+    max: 0.5,
+    prompt: (who, groups, bit) =>
+      `Each lap ${who} runs is ${bit}. ${who} runs ${groups} laps. How many miles is that?`,
+  },
+  {
+    unit: "mile",
+    noun: "blocks",
+    denoms: [5, 10],
+    min: 0.1,
+    max: 0.4,
+    prompt: (who, groups, bit) =>
+      `Each block ${who} walks is ${bit}. ${who} walks ${groups} blocks. How many miles is that?`,
+  },
+  {
+    unit: "hour",
+    noun: "sessions",
+    denoms: UNIT_DENOMS.hour,
+    min: 1 / 4,
+    max: 2,
+    prompt: (who, groups, bit) =>
+      `Each practice session lasts ${bit}. ${who} goes to ${groups} sessions. How many hours is that?`,
+  },
+  {
+    unit: "hour",
+    noun: "drills",
+    denoms: UNIT_DENOMS.hour,
+    min: 1 / 12,
+    max: 1 / 4,
+    prompt: (who, groups, bit) =>
+      `Each piano drill lasts ${bit}. ${who} does ${groups} drills. How many hours is that?`,
+  },
+  {
+    unit: "foot",
+    noun: "pieces",
+    denoms: UNIT_DENOMS.foot,
+    min: 0.25,
+    max: 3,
+    prompt: (who, groups, bit) =>
+      `${who} cuts ${groups} pieces of ribbon, each ${bit} long. How many feet of ribbon is that?`,
+  },
+  {
+    unit: "foot",
+    noun: "stickers",
+    denoms: [6, 12],
+    min: 1 / 12,
+    max: 0.25,
+    prompt: (who, groups, bit) =>
+      `Each sticker is ${bit} long. ${who} cuts ${groups} stickers. How many feet of sticker is that?`,
+  },
+  {
+    unit: "inch",
+    noun: "beads",
+    denoms: UNIT_DENOMS.inch,
+    min: 1 / 16,
+    max: 1 / 8,
+    prompt: (who, groups, bit) =>
+      `Each seed bead is ${bit} wide. ${who} lines up ${groups} beads. How many inches is that?`,
+  },
+  {
+    unit: "inch",
+    noun: "beads",
+    denoms: UNIT_DENOMS.inch,
+    min: 1 / 8,
+    max: 1 / 2,
+    prompt: (who, groups, bit) =>
+      `Each pony bead is ${bit} wide. ${who} lines up ${groups} beads. How many inches is that?`,
+  },
+  {
+    unit: "liter",
+    noun: "beds",
+    denoms: [2, 4, 5, 8, 10],
+    min: 0.25,
+    max: 4,
+    prompt: (who, groups, bit) =>
+      `Each flower bed gets ${bit} of water. ${who} waters ${groups} beds. How many liters of water is that?`,
+  },
+  {
+    unit: "meter",
+    noun: "strips",
+    denoms: [2, 4, 5, 10, 100],
+    min: 0.05,
+    max: 2,
+    prompt: (who, groups, bit) =>
+      `Each strip of tape is ${bit} long. ${who} cuts ${groups} strips. How many meters of tape is that?`,
+  },
+];
 
 export function groupsStory(
   r: Random,
@@ -204,52 +522,25 @@ export function groupsStory(
   d: number,
 ): { prompt: string; unit: string; noun: string } {
   const name = learnerName(r);
-  const bit = (unit: string, article = "a") =>
-    fractionAmount(n, d, unit, article);
-  const scenes: { prompt: string; unit: string; noun: string }[] = [
-    {
-      unit: "liter",
-      noun: "bottles",
-      prompt: `${name} fills ${groups} bottles, and each bottle holds ${bit("liter")}. How many liters do the bottles hold altogether?`,
-    },
-    {
-      unit: "cup",
-      noun: "batches",
-      prompt: `One batch of pancakes uses ${bit("cup")} of milk. ${name} makes ${groups} batches. How many cups of milk is that?`,
-    },
-    {
-      unit: "liter",
-      noun: "tubes",
-      prompt: `Each tube of paint holds ${bit("liter")}. ${name} buys ${groups} tubes. How many liters of paint is that?`,
-    },
-    {
-      unit: "mile",
-      noun: "laps",
-      prompt: `Each lap ${name} runs is ${bit("mile")}. ${name} runs ${groups} laps. How many miles is that?`,
-    },
-    {
-      unit: "liter",
-      noun: "beds",
-      prompt: `Each flower bed gets ${bit("liter")} of water. ${name} waters ${groups} beds. How many liters of water is that?`,
-    },
-    {
-      unit: "hour",
-      noun: "sessions",
-      prompt: `Each practice session lasts ${bit("hour", "an")}. ${name} goes to ${groups} sessions. How many hours is that?`,
-    },
-    {
-      unit: "foot",
-      noun: "pieces",
-      prompt: `${name} cuts ${groups} pieces of ribbon, each ${bit("foot")} long. How many feet of ribbon is that?`,
-    },
-    {
-      unit: "liter",
-      noun: "jars",
-      prompt: `Each jar of jam holds ${bit("liter")}. ${name} lines up ${groups} jars. How many liters of jam is that?`,
-    },
-  ];
-  return pick(r, scenes);
+  const fitting = groupScenes.filter(
+    (scene) => scene.denoms.includes(d) && inRange(n, d, scene.min, scene.max),
+  );
+  if (!fitting.length)
+    throw new Error(`No groups scene for ${groups} × ${n}/${d}`);
+  const scene = pick(r, fitting);
+  const article = scene.unit === "inch" || scene.unit === "hour" ? "an" : "a";
+  const bit = fractionAmount(n, d, scene.unit, article);
+  const money = scene.unit === "dollar" ? centWords(n, d) : null;
+  const said = money ? `${bit} (${money})` : bit;
+  return {
+    prompt: scene.prompt(name, groups, said),
+    unit: scene.unit,
+    noun: scene.noun,
+  };
 }
+
+const endsWith = (lead: string, equation: string) =>
+  lead ? `${lead} ${equation}` : equation;
 
 export function renameStory(
   r: Random,
@@ -259,13 +550,23 @@ export function renameStory(
 ): string {
   const name = learnerName(r);
   const target = b * k;
+  const equation = `Rename ${a}/${b} as ?/${target}. What is the missing numerator?`;
+  const ruler = [2, 4, 8, 16].includes(b) && [2, 4, 8, 16].includes(target);
+  const grid = target === 100;
+  const pieces = (UNIT_DENOMS.bar as readonly number[]).includes(b) && k <= 4;
   const frames = [
-    `${name} measures ${a}/${b} inch. A finer ruler uses ${target} lines per inch. Rename ${a}/${b} as ?/${target}. What is the missing numerator?`,
-    `The shaded part of the bar is ${a}/${b}. Cut each piece into ${k} equal smaller pieces. Rename ${a}/${b} as ?/${target}. What is the missing numerator?`,
-    `${name} has ${a}/${b} of a pizza and slices each piece into ${k} smaller bites. Rename ${a}/${b} as ?/${target}. What is the missing numerator?`,
-    `A recipe uses ${a}/${b} cup. The cup is also marked in pieces of 1/${target} cup. Rename ${a}/${b} as ?/${target}. What is the missing numerator?`,
-  ];
-  return pick(r, frames);
+    ruler
+      ? `${name} reads ${a}/${b} inch on a ruler marked in ${target}ths of an inch.`
+      : "",
+    grid
+      ? `A meter is marked in centimeters. ${a}/${b} meter is counted in hundredths of a meter.`
+      : "",
+    pieces
+      ? `${name} cuts each of the ${b} equal pieces of a chocolate bar into ${k} smaller bites.`
+      : "",
+    `Each 1/${b} piece is cut into ${k} equal smaller pieces.`,
+  ].filter(Boolean);
+  return endsWith(pick(r, frames), equation);
 }
 
 export function multiplierStory(
@@ -276,38 +577,78 @@ export function multiplierStory(
 ): string {
   const name = learnerName(r);
   const equation = `${a}/${b} × □/□ = ${a * k}/${b * k}. What number goes in both boxes?`;
-  const frames =
-    k >= 10
-      ? [
-          `A 100-square grid shows ${a}/${b} shaded. Each square is one hundredth. ${equation}`,
-          `${name} shades ${a}/${b} of a hundred-square grid. ${equation}`,
-          `The same part of a hundred-square grid, counted in smaller squares: ${equation}`,
-          `${name} renames ${a}/${b} of a meter on a centimeter grid. ${equation}`,
-        ]
-      : [
-          `${name} cuts each shaded piece of a chocolate bar into ${k} equal bites. ${equation}`,
-          `${name} splits each 1/${b} of a licorice stick into ${k} equal bites. ${equation}`,
-          `A ruler line at ${a}/${b} inch is read in smaller lines. ${equation}`,
-          `The same length of ribbon, counted in smaller pieces: ${equation}`,
-        ];
-  return pick(r, frames);
+  const ruler = [2, 4, 8, 16].includes(b) && [2, 4, 8, 16].includes(b * k);
+  const grid = b * k === 100 || k >= 10;
+  const pieces = (UNIT_DENOMS.bar as readonly number[]).includes(b) && k <= 6;
+  const frames = grid
+    ? [
+        `A hundred-square grid shows ${a}/${b} shaded. Each small square is one hundredth.`,
+        `${name} shades ${a}/${b} of a hundred-square grid.`,
+        `The same part of a meter stick, counted in centimeters.`,
+      ]
+    : [
+        ruler
+          ? `A ruler mark at ${a}/${b} inch is read again in smaller inch marks.`
+          : "",
+        pieces
+          ? `${name} cuts each shaded piece of a chocolate bar into ${k} equal bites.`
+          : "",
+        `Each 1/${b} piece is split into ${k} equal smaller pieces.`,
+      ].filter(Boolean);
+  return endsWith(pick(r, frames), equation);
 }
 
-/** Same-size wholes. Fractions stay in TeX so the comparison sentence can follow. */
+const texParts = (label: string): { n: number; d: number } => {
+  const found = label.match(/\\frac\{(\d+)\}\{(\d+)\}/);
+  if (!found) throw new Error(`No fraction in ${label}`);
+  return { n: Number(found[1]), d: Number(found[2]) };
+};
+
+/** Same-size wholes. Fractions stay as written so the comparison sentence matches. */
 export function sameWholeComparePrompt(
   r: Random,
   first: string,
   second: string,
 ): string {
+  const left = texParts(first);
+  const right = texParts(second);
+  const denoms = [left.d, right.d];
+  const both = (unit: keyof typeof UNIT_DENOMS) =>
+    denoms.every((d) => denomFits(d, unit));
+  const cut = (part: { n: number; d: number }) =>
+    gcd(part.n, part.d) === 1 ? "" : ` cut into ${part.d} equal pieces`;
   const [name, other] = [learnerName(r), learnerName(r)];
-  const frames = [
-    `${name} ate ${first} of a granola bar. ${other} ate ${second} of a matching granola bar. Complete the sentence.`,
-    `${name} ran ${first} of a lap. ${other} ran ${second} of a lap on the same track. Complete the sentence.`,
-    `${name} read ${first} of a chapter. ${other} read ${second} of the same chapter length. Complete the sentence.`,
-    `${name} used ${first} of a cup of milk. ${other} used ${second} of a cup. Complete the sentence.`,
-    `${name} painted ${first} of a poster. ${other} painted ${second} of a poster the same size. Complete the sentence.`,
-    `${name} walked ${first} of a mile. ${other} walked ${second} of a mile on the same path. Complete the sentence.`,
-  ];
+  const frames: string[] = [];
+  if (both("bar") && left.d <= 8 && right.d <= 8)
+    frames.push(
+      `${name} ate ${first} of a granola bar${cut(left)}. ${other} ate ${second} of a matching granola bar${cut(right)}. Complete the sentence.`,
+    );
+  if (both("cup"))
+    frames.push(
+      `${name} used ${first} cup of milk. ${other} used ${second} cup. Complete the sentence.`,
+    );
+  if (both("hour"))
+    frames.push(
+      `${name} practiced for ${first} of an hour. ${other} practiced for ${second} of an hour. Complete the sentence.`,
+    );
+  if (both("mile"))
+    frames.push(
+      `${name} walked ${first} mile. ${other} walked ${second} mile on the same path. Complete the sentence.`,
+    );
+  if (both("chapter"))
+    frames.push(
+      `${name} read ${first} of a chapter. ${other} read ${second} of a chapter the same length. Complete the sentence.`,
+    );
+  if (both("pizza"))
+    frames.push(
+      `${name} ate ${first} of a pizza${cut(left)}. ${other} ate ${second} of a same-size pizza${cut(right)}. Complete the sentence.`,
+    );
+  if (both("meter"))
+    frames.push(
+      `${name} used ${first} meter of ribbon. ${other} used ${second} meter of ribbon from the same roll. Complete the sentence.`,
+    );
+  if (!frames.length)
+    return `Compare ${first} and ${second}. They are parts of one same-size whole. Complete the sentence.`;
   return pick(r, frames);
 }
 
@@ -322,7 +663,7 @@ const DIFFERENT_WHOLES: readonly DifferentWhole[] = [
   { small: "small pizza", large: "large pizza", pair: "pizzas" },
   { small: "short ribbon", large: "long ribbon", pair: "ribbons" },
   { small: "small cake", large: "large cake", pair: "cakes" },
-  { small: "fun-size bar", large: "king-size bar", pair: "chocolate bars" },
+  { small: "fun size bar", large: "king size bar", pair: "chocolate bars" },
   { small: "short trail", large: "long trail", pair: "trails" },
   { small: "small sandwich", large: "large sandwich", pair: "sandwiches" },
   { small: "small poster", large: "large poster", pair: "posters" },

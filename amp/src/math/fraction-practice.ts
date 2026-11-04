@@ -5,7 +5,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
-import { isAre, count } from "./agreement.js";
+import { isAre, count, plural } from "./agreement.js";
 import { axisRecord, chooseAxes, defineAxis } from "./variation/axes.js";
 import {
   groupsStory,
@@ -182,12 +182,11 @@ function random(id: string, seed: string) {
 }
 const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
 /** A unit after a fraction or whole: singular for amounts of at most 1. */
-const unitPlural: Record<string, string> = { foot: "feet" };
 const unitAfter = (value: string, one: string) => {
   const [n, d = "1"] = value.split("/");
   const size = Math.abs(Number(n));
   if (size > 0 && size <= Number(d)) return one;
-  return unitPlural[one] ?? `${one}s`;
+  return plural(one);
 };
 /** "8/4 = 2", or just "3/4" when the fraction is already simplest. */
 const simplified = (n: number, d: number) => {
@@ -420,9 +419,9 @@ export function generateFractionPracticeProblem(
       break;
     }
     case "like-fraction-difference": {
-      const a = applied ? (d === 2 ? 2 : r(2, d - 1)) : r(1, 2 * d);
-      const b = applied ? r(1, Math.max(1, a - 1)) : r(1, a);
-      const scene = applied ? likeDifferenceStory(r, a, b, d) : undefined;
+      const scene = applied ? likeDifferenceStory(r, d) : undefined;
+      const a = scene ? scene.a : r(1, 2 * d);
+      const b = scene ? scene.b : r(1, a);
       prompt = scene
         ? scene.prompt
         : `A cord is ${a}/${d} meter long. You remove ${b}/${d} meter. How many meters remain?`;
@@ -490,12 +489,12 @@ export function generateFractionPracticeProblem(
     case "mixed-fraction-difference": {
       const mixedD = expanded ? d : choose([3, 4, 6, 8]),
         whole = r(2, 4),
-        other = r(1, whole - 1),
-        a = r(1, mixedD - 2),
-        b = r(a + 1, mixedD - 1);
+        other = r(1, whole - 1);
       const story = applied
-        ? mixedDifferenceStory(r, whole, a, mixedD, other, b)
+        ? mixedDifferenceStory(r, whole, other, mixedD)
         : undefined;
+      const a = story ? story.a : r(1, mixedD - 2);
+      const b = story ? story.b : r(a + 1, mixedD - 1);
       prompt = story
         ? story.prompt
         : `Find ${whole} ${a}/${mixedD} − ${other} ${b}/${mixedD}. Give a fraction or whole number.`;
@@ -567,20 +566,32 @@ export function generateFractionPracticeProblem(
       break;
     }
     case "whole-times-fraction": {
-      const n = r(1, d - 1),
-        groups = r(2, 5);
-      const scene = applied ? groupsStory(r, groups, n, d) : undefined;
+      let n0 = r(1, d - 1);
+      const groups = r(2, 5);
+      // Stories say the amount the way people do. 2/4 liter is 1/2 liter.
+      // A hundredth that reduces to an unnatural denominator (1/50, 1/25, 1/20)
+      // is redrawn so the story can stay in a real unit.
+      const natural = new Set([2, 3, 4, 5, 6, 8, 10, 12, 16, 100]);
+      if (applied) {
+        for (let guard = 0; guard < 40 && !natural.has(d / gcd(n0, d)); guard++)
+          n0 = r(1, d - 1);
+        if (!natural.has(d / gcd(n0, d))) n0 = 1;
+      }
+      const g = applied ? gcd(n0, d) : 1;
+      const n = n0 / g;
+      const den = d / g;
+      const scene = applied ? groupsStory(r, groups, n, den) : undefined;
       const unit = scene?.unit ?? "liter";
       const noun = scene?.noun ?? "containers";
       prompt = scene
         ? scene.prompt
-        : `Each of ${groups} containers holds ${n}/${d} liter. How many liters do they hold altogether?`;
-      label = `Total ${unit}s`;
-      answer = fraction(groups * n, d);
-      if (d <= 12)
+        : `Each of ${groups} containers holds ${n}/${den} liter. How many liters do they hold altogether?`;
+      label = `Total ${plural(unit)}`;
+      answer = fraction(groups * n, den);
+      if (den <= 12)
         figure = {
           kind: "fraction-strips",
-          parts: d,
+          parts: den,
           wholes: 1,
           unit: scene ? `one ${unit}` : "one liter",
           rows: [
@@ -590,11 +601,11 @@ export function generateFractionPracticeProblem(
             },
           ],
         };
-      hint = `${groups} ${noun} of ${n}/${d} ${unit} is ${groups} groups of ${count(n, "piece")}, each piece 1/${d} ${unit}. Count all the pieces, then simplify.`;
+      hint = `${groups} ${noun} of ${n}/${den} ${unit} is ${groups} groups of ${count(n, "piece")}, each piece 1/${den} ${unit}. Count all the pieces, then simplify.`;
       explanation = [
-        `Each one holds ${n}/${d} ${unit}: ${count(n, "piece")} of size 1/${d} ${unit}.`,
+        `Each one holds ${n}/${den} ${unit}: ${count(n, "piece")} of size 1/${den} ${unit}.`,
         `${groups} ${noun} make ${groups} equal groups of ${n} pieces, so multiply: ${groups} × ${n} = ${groups * n} pieces.`,
-        `${groups * n} pieces of 1/${d} ${unit} make ${simplified(groups * n, d)} ${unitAfter(answer, unit)}.`,
+        `${groups * n} pieces of 1/${den} ${unit} make ${simplified(groups * n, den)} ${unitAfter(answer, unit)}.`,
         `Altogether that is ${answer} ${unitAfter(answer, unit)}.`,
       ];
       break;

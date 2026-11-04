@@ -141,7 +141,7 @@ def solve_fraction_practice(public):
         strip(whole*d, d, 'one whole')
         return whole*d
     if name == 'equivalent-numerator':
-        multiplied = re.fullmatch(r'(\d+)/(\d+) × □/□ = (\d+)/(\d+)\. What number goes in both boxes\?', prompt)
+        multiplied = re.search(r'(\d+)/(\d+) × □/□ = (\d+)/(\d+)\. What number goes in both boxes\?$', prompt)
         if multiplied:
             a, b, ak, bk = map(int, multiplied.groups())
             require(a and b and ak % a == 0 and bk % b == 0 and ak // a == bk // b, 'The multiplier is not the same on both parts')
@@ -150,7 +150,9 @@ def solve_fraction_practice(public):
             else:
                 strip(ak, bk, 'one whole')
             return ak // a
-        n, d, target = match(r'Rename (\d+)/(\d+) as \?/(\d+)\. What is the missing numerator\?', prompt)
+        renamed = re.search(r'Rename (\d+)/(\d+) as \?/(\d+)\. What is the missing numerator\?$', prompt)
+        require(renamed is not None, 'Unrecognized fraction prompt: ' + prompt)
+        n, d, target = map(int, renamed.groups())
         result = Fraction(n, d)*target
         require(result.denominator == 1, 'Nonintegral target numerator')
         maybe_strip(result.numerator, target, 'one whole')
@@ -163,7 +165,14 @@ def solve_fraction_practice(public):
         require(d == target_d, 'Unlike units in like-unit task')
         return Fraction(total, d)-Fraction(n, d)
     if name == 'like-fraction-difference':
-        a, d, b, other_d = match(r'A cord is (\d+)/(\d+) meter long\. You remove (\d+)/(\d+) meter\. How many meters remain\?', prompt)
+        legacy = re.fullmatch(r'A cord is (\d+)/(\d+) meter long\. You remove (\d+)/(\d+) meter\. How many meters remain\?', prompt)
+        if legacy:
+            a, d, b, other_d = map(int, legacy.groups())
+        else:
+            found = re.findall(r'(\d+)/(\d+)', prompt)
+            require(len(found) >= 2, 'Unrecognized fraction prompt: ' + prompt)
+            a, d = map(int, found[0])
+            b, other_d = map(int, found[1])
         require(d == other_d and a >= b, 'Invalid like-unit subtraction')
         return Fraction(a-b, d)
     if name == 'mixed-to-improper-numerator':
@@ -177,7 +186,14 @@ def solve_fraction_practice(public):
         maybe_strip(n, d, 'one whole')
         return n//d if name == 'improper-whole-part' else Fraction(n % d, d)
     if name == 'mixed-fraction-difference':
-        w, n, d, v, a, b = match(r'Find (\d+) (\d+)/(\d+) − (\d+) (\d+)/(\d+)\. Give a fraction or whole number\.', prompt)
+        legacy = re.fullmatch(r'Find (\d+) (\d+)/(\d+) − (\d+) (\d+)/(\d+)\. Give a fraction or whole number\.', prompt)
+        if legacy:
+            w, n, d, v, a, b = map(int, legacy.groups())
+        else:
+            found = re.findall(r'(\d+) (\d+)/(\d+)', prompt)
+            require(len(found) == 2, 'Unrecognized fraction prompt: ' + prompt)
+            w, n, d = map(int, found[0])
+            v, a, b = map(int, found[1])
         require(d == b and 0 < n < a < d and w > v, 'Expected canonical mixed numbers requiring regrouping')
         return w + Fraction(n, d) - v - Fraction(a, b)
     if name == 'unlike-fraction-difference':
@@ -190,8 +206,20 @@ def solve_fraction_practice(public):
         require([p['label'] for p in diagram['points']] == ['A', 'B'], 'Missing distance markers')
         return abs(Fraction(diagram['points'][1]['numerator']-diagram['points'][0]['numerator'], d))
     if name == 'whole-times-fraction':
-        count, n, d = match(r'Each of (\d+) container(?:s)? holds (\d+)/(\d+) liter\. How many liters do they hold altogether\?', prompt)
-        maybe_strip(n, d, 'one liter')
+        legacy = re.fullmatch(r'Each of (\d+) container(?:s)? holds (\d+)/(\d+) liter\. How many liters do they hold altogether\?', prompt)
+        if legacy:
+            count, n, d = map(int, legacy.groups())
+            maybe_strip(n, d, 'one liter')
+            return count*Fraction(n, d)
+        frac = re.search(r'(\d+)/(\d+)', prompt)
+        groups = re.search(r'(\d+) (bottles|jars|cans|cups|batches|laps|blocks|sessions|drills|pieces|tabs|stickers|beads|beds|strips)\b', prompt)
+        require(frac is not None and groups is not None, 'Unrecognized fraction prompt: ' + prompt)
+        n, d = int(frac[1]), int(frac[2])
+        count = int(groups[1])
+        if diagram is None:
+            require(d > 12, 'A strip is required when the denominator fits the figure')
+        else:
+            require(diagram['kind'] == 'fraction-strips' and diagram['parts'] == d and diagram['rows'][0]['selected'] == n and diagram['wholes'] == 1, 'Strip contradicts question')
         return count*Fraction(n, d)
     if name == 'whole-sharing-fraction':
         total, count = match(r'Share (\d+) liter(?:s)? equally among (\d+) people\. How many liters does each person receive\?', prompt)
