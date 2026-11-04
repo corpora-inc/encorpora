@@ -16,6 +16,7 @@ import { selectFamily, selectModel, selectTemplate, st } from "./select-kit.js";
 import { posed, pick, random, shuffle, type Rand } from "./shape-practice.js";
 import type { Pt } from "./shape-figures.js";
 import type { Random } from "./variation/axes.js";
+import { protractorPrompt, storyNameFor } from "./story-kit/geometry.js";
 
 /**
  * Grade-4 geometry practice (GE-1, GE-2, GE-3, GE-6, GE-7, GE-8, and
@@ -323,10 +324,11 @@ function protractorRay(r: Rand, seed: string): GeneratedProblem {
   ];
   const scale = right ? "inner" : "outer";
   const correct = rays.find((ray) => ray.dir === correctDir)!;
+  const who = storyNameFor(seed, "protractor-name");
   return finish("protractor-ray-choice", seed, r, {
-    prompt: `Ray $BA$ lies on the baseline. Which other ray makes a $${k}^\\circ$ angle with ray $BA$?`,
+    prompt: protractorPrompt(seed, k),
     answer: "",
-    hint: `Ray $BA$ is on the ${right ? "right" : "left"}, where the ${scale} scale reads 0. Follow that scale to $${k}^\\circ$.`,
+    hint: `${who} reads the scale that starts at 0 on ray $BA$. That ray is on the ${right ? "right" : "left"}, so use the ${scale} scale. Follow it to $${k}^\\circ$.`,
     explanation: [
       `The ${scale} scale is the row that reads 0 on ray $BA$.`,
       `The other row reads ${180 - k} on the ray that is really at $${k}^\\circ$, so that row is the wrong scale here.`,

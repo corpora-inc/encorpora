@@ -115,12 +115,10 @@ def ray_degrees(to):
 
 def protractor_measure(public):
     prompt = public['prompt']
-    found = re.fullmatch(
-        r'Ray \$BA\$ lies on the baseline\. Which other ray makes a \$(\d+)\^\\circ\$ angle with ray \$BA\$\?',
-        prompt,
-    )
-    require(found is not None, 'Protractor wording')
-    k = int(found.group(1))
+    require('ray $BA$' in prompt or 'Ray $BA$' in prompt, 'Protractor wording')
+    degrees = re.findall(r'\$(\d+)\^\\circ\$', prompt)
+    require(len(degrees) == 1, 'Protractor wording')
+    k = int(degrees[0])
     require(5 <= k <= 175 and k % 5 == 0 and k != 90, f'{k} is not a grade-4 protractor target')
     items = elements(public)
     tool = one(items, 'protractor')

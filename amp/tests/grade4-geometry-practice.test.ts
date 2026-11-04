@@ -316,11 +316,13 @@ function equationHolds(label: string, unknown: number): boolean {
 }
 
 function protractorAnswer(problem: GeneratedProblem): string {
-  const found = problem.public.prompt.match(
-    /^Ray \$BA\$ lies on the baseline\. Which other ray makes a \$(\d+)\^\\circ\$ angle with ray \$BA\$\?$/,
+  const prompt = problem.public.prompt;
+  assert.match(prompt, /ray \$BA\$/i);
+  const degrees = [...prompt.matchAll(/\$(\d+)\^\\circ\$/g)].map((m) =>
+    Number(m[1]),
   );
-  assert.ok(found);
-  const k = Number(found![1]);
+  assert.equal(degrees.length, 1);
+  const k = degrees[0]!;
   assert.ok(k >= 5 && k <= 175 && k % 5 === 0 && k !== 90);
   const items = sceneOf(problem);
   const tool = one(items, "protractor");
