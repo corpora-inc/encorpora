@@ -4,6 +4,9 @@ import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
 import { problemLesson } from "../src/content/problem-lessons";
 import { templateArchetypes } from "../src/curriculum/template-archetypes";
 import { actualFacetMappings } from "../src/content/facet-mappings";
+import { layoutScene } from "../src/math/scene";
+import type { Element } from "../src/math/scene/spec";
+import type { GeneratedProblem } from "../src/math/contracts";
 
 const ids = [
   "multiply-two-digit",
@@ -25,7 +28,23 @@ const factorsOf = (n: number) => {
 };
 
 const nums = (text: string) =>
-  [...text.matchAll(/\d+/g)].map((m) => Number(m[0]));
+  [...text.matchAll(/\d[\d,]*/g)].map((m) => Number(m[0].replace(/,/g, "")));
+const bareThousands = /(?<![\d,])\d{4,}(?!\d)/;
+const learnerText = (problem: GeneratedProblem) => {
+  const chunks = [problem.public.prompt, problem.hint, ...problem.explanation];
+  if (problem.choiceFeedback)
+    chunks.push(...Object.values(problem.choiceFeedback));
+  const response = problem.public.response;
+  if (response.kind === "choice" || response.kind === "multi-select")
+    chunks.push(...response.options.map((option) => option.label));
+  if (response.kind === "multi-part-choice") {
+    for (const blank of response.blanks)
+      chunks.push(...blank.options.map((option) => option.label));
+    for (const part of response.sentence ?? [])
+      if ("text" in part) chunks.push(part.text);
+  }
+  return chunks.join("\n");
+};
 
 test("grade-4 operation types are registered once", () => {
   for (const id of ids) {
@@ -53,6 +72,7 @@ test("two hundred seeds match an independent calculation", () => {
       assert.deepEqual(problem, generateProblem(id, `g4:${seed}`));
       assert.ok(gradeAnswer(problem, problem.answer), id);
       const prompt = problem.public.prompt;
+      assert.equal(bareThousands.test(learnerText(problem)), false, id);
       seen[id].add(problem.variant?.id ?? "");
       if (id === "multiply-two-digit") {
         const [a, b] = nums(prompt);
@@ -75,10 +95,59 @@ test("two hundred seeds match an independent calculation", () => {
         const step = Number(prompt.match(/step (\d+)\?/)![1]);
         assert.ok(step >= 5);
         assert.equal(Number(problem.answer), start! + (step! - 1) * add!);
-        const figure = JSON.stringify(problem.public.figure);
-        for (const shown of [1, 2, 3])
-          assert.match(figure, new RegExp(`"${start! + (shown - 1) * add!}"`));
-        assert.equal(figure.includes(`"${problem.answer}"`), false);
+        const figure = problem.public.figure;
+        assert.equal(figure?.kind, "scene");
+        if (figure?.kind !== "scene") continue;
+        assert.ok((figure.scene.width ?? 360) <= 720);
+        assert.ok((figure.scene.maxHeight ?? 320) <= 720);
+        assert.equal(
+          figure.scene.elements.some((element) => element.type === "lineTable"),
+          false,
+        );
+        for (const shown of [1, 2, 3]) {
+          const rows: Element[] = figure.scene.elements.filter(
+            (element) =>
+              element.type === "array" &&
+              Boolean(element.id?.startsWith(`s${shown}r`)),
+          );
+          assert.equal(rows.length, shown);
+          let count = 0;
+          for (const row of rows) {
+            if (row.type !== "array") continue;
+            assert.equal(row.rows, 1);
+            assert.ok(row.columns <= 20);
+            const index = Number(row.id?.slice(`s${shown}r`.length));
+            assert.equal(row.columns, index === 0 ? start : add);
+            count += row.columns;
+          }
+          assert.equal(count, start! + (shown - 1) * add!);
+        }
+        assert.equal(
+          figure.scene.elements.some(
+            (element) =>
+              element.type === "array" && /^s[4-9]/.test(element.id ?? ""),
+          ),
+          false,
+        );
+        const layout = layoutScene(figure.scene);
+        assert.deepEqual(layout.dropped, []);
+        const tiles = layout.items.filter((item) => item.k === "rect");
+        const labels = layout.items.filter((item) => item.k === "text");
+        assert.equal(
+          tiles.length,
+          start! + (start! + add!) + (start! + 2 * add!),
+        );
+        assert.equal(labels.length, 3);
+        for (const label of labels)
+          for (const tile of tiles)
+            assert.equal(
+              label.box.x0 < tile.x + tile.w &&
+                tile.x < label.box.x1 &&
+                label.box.y0 < tile.y + tile.h &&
+                tile.y < label.box.y1,
+              false,
+              label.plain,
+            );
       } else if (id === "quotient-remainder-one-digit") {
         const [dividend, divisor] = nums(prompt);
         assert.ok(

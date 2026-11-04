@@ -1565,26 +1565,26 @@ function betweenEstimate(r: Random): Built {
   const correct = `between ${q} and ${q + 1}`;
   return {
     variant: "between",
-    prompt: `${dividend} ÷ ${d} is between which two whole numbers?`,
+    prompt: `${commas(dividend)} ÷ ${commas(d)} is between which two whole numbers?`,
     answer: "",
-    hint: `Find how many times ${d} fits in ${dividend}, then one more than that. The quotient is greater than the first number and less than the second. Compute both bounds.`,
+    hint: `Find how many times ${commas(d)} fits in ${commas(dividend)}, then one more than that. The quotient is greater than the first number and less than the second. Compute both bounds.`,
     explanation: [
-      `${d} × ${q} = ${d * q}, and ${dividend} − ${d * q} = ${rem}.`,
-      `${rem} is greater than 0 and smaller than ${d}, so ${dividend} ÷ ${d} is greater than ${q} and less than ${q + 1}.`,
-      `The quotient is between ${q} and ${q + 1}.`,
+      `${commas(d)} × ${commas(q)} = ${commas(d * q)}, and ${commas(dividend)} − ${commas(d * q)} = ${commas(rem)}.`,
+      `${commas(rem)} is greater than 0 and smaller than ${commas(d)}, so ${commas(dividend)} ÷ ${commas(d)} is greater than ${commas(q)} and less than ${commas(q + 1)}.`,
+      `The quotient is between ${commas(q)} and ${commas(q + 1)}.`,
     ],
     choices: choicesFrom(correct, [
       {
         label: `between ${q - 1} and ${q}`,
-        feedback: `${d} × ${q} = ${d * q}, which is still less than ${dividend}. The quotient is greater than ${q}.`,
+        feedback: `${commas(d)} × ${commas(q)} = ${commas(d * q)}, which is still less than ${commas(dividend)}. The quotient is greater than ${commas(q)}.`,
       },
       {
         label: `between ${q + 1} and ${q + 2}`,
-        feedback: `${d} × ${q + 1} = ${d * (q + 1)}, which is already greater than ${dividend}.`,
+        feedback: `${commas(d)} × ${commas(q + 1)} = ${commas(d * (q + 1))}, which is already greater than ${commas(dividend)}.`,
       },
       {
         label: `between ${q} and ${q + 2}`,
-        feedback: `The next whole number after ${q} is ${q + 1}, not ${q + 2}.`,
+        feedback: `The next whole number after ${commas(q)} is ${commas(q + 1)}, not ${commas(q + 2)}.`,
       },
     ]),
   };

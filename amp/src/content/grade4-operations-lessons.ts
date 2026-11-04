@@ -238,10 +238,10 @@ const entries: FormatLessonEntry[] = [
     noLink: ["step", "steps"],
     method: [
       "Read the starting number of tiles and how many tiles are added each step.",
-      "Check that the table matches the rule for steps 1, 2 and 3.",
+      "Check that the drawn steps match the rule for steps 1, 2 and 3.",
       "For a later step, add the same amount once for each step after the first.",
     ],
-    watch: "Do not try to count a step that is not in the table. Use the rule.",
+    watch: "Do not try to count a step that is not drawn. Use the rule.",
     principle:
       "If step 1 has $a$ tiles and each next step adds $d$ tiles, step $n$ has $a + (n - 1) d$ tiles.",
     example: {
@@ -256,7 +256,7 @@ const entries: FormatLessonEntry[] = [
     },
     methodTitle: "Start, then add once per later step",
     methodText: [
-      "The table is a check. Step 2 should be the start plus one add, and step 3 the start plus two adds.",
+      "The figure is a check. Step 2 should be the start plus one add, and step 3 the start plus two adds.",
       "Step $n$ is the start plus $(n - 1)$ adds.",
     ],
     formal:

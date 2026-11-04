@@ -28,6 +28,12 @@ def num(text):
     return int(text.replace(',', ''))
 
 
+def whole_grouped(text):
+    require(re.fullmatch(r'\d{1,3}(,\d{3})*', text) is not None, f'Badly written number {text!r}')
+    require(len(text) < 4 or ',' in text, f'Missing thousands separator in {text!r}')
+    return int(text.replace(',', ''))
+
+
 def labels(public):
     response = public['response']
     require(response['kind'] == 'choice', 'Choice response expected')
@@ -434,9 +440,9 @@ def front_end(n):
 def solve_compatible(public):
     options = labels(public)
     t = public['prompt']
-    bounds = re.fullmatch(r'(\d+) ÷ (\d+) is between which two whole numbers\?', t)
+    bounds = re.fullmatch(r'([\d,]+) ÷ ([\d,]+) is between which two whole numbers\?', t)
     if bounds:
-        dividend, divisor = int(bounds[1]), int(bounds[2])
+        dividend, divisor = whole_grouped(bounds[1]), whole_grouped(bounds[2])
         require(10 <= divisor <= 99, 'Two-digit divisor')
         quotient, remainder = divmod(dividend, divisor)
         require(remainder != 0, 'The quotient is not a whole number')

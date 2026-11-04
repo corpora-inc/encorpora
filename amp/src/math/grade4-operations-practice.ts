@@ -6,11 +6,13 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { serializeSelection } from "./selection-response";
-import { lineTable } from "./scene/author";
+import { array, scene } from "./scene/author";
+import type { Element } from "./scene/spec";
 import { defineAxis } from "./variation/axes";
 import {
   defineGenerate,
   entry,
+  grouped,
   inlineSentence,
   multiPartCapability,
   multiPartProblem,
@@ -232,13 +234,13 @@ function multiplyTwoDigit(
   }
   const product = a * b;
   return numberProblem(meta, seed, {
-    prompt: `What is ${a} × ${b}?`,
+    prompt: `What is ${grouped(a)} × ${grouped(b)}?`,
     answer: product,
     label: "Product",
-    hint: `Multiply ${a} by ${b}. There is no area model to read.`,
+    hint: `Multiply ${grouped(a)} by ${grouped(b)}. There is no area model to read.`,
     explanation: [
-      `${a} × ${b} means ${a} groups of ${b}.`,
-      `The product is ${product}.`,
+      `${grouped(a)} × ${grouped(b)} means ${grouped(a)} groups of ${grouped(b)}.`,
+      `The product is ${grouped(product)}.`,
     ],
     variant: digits,
     axes: { "factor-digits": digits },
@@ -300,27 +302,53 @@ const TILE_RULES = [
   { start: 1, add: 4 },
 ] as const;
 
+/** Steps 1–3 as tile figures. The bottom row is the start. Each later step
+ * adds one row of `add` unit squares on top, so step n has
+ * start + (n − 1) · add tiles. Array rows and columns stay within 20. */
+function tileFigure(start: number, add: number) {
+  const slot = Math.max(start, add);
+  const gap = 2;
+  const parts: (Element | { element(): Element })[] = [];
+  for (let step = 1; step <= 3; step++) {
+    const x0 = (step - 1) * (slot + gap);
+    parts.push({
+      type: "text",
+      id: `label${step}`,
+      at: [x0, step],
+      text: `Step ${step}`,
+      font: "sans",
+      bold: true,
+      align: [-1, 1],
+      offset: [0, -8],
+    });
+    for (let row = 0; row < step; row++) {
+      const columns = row === 0 ? start : add;
+      parts.push(array(1, columns, { at: [x0, row] }).id(`s${step}r${row}`));
+    }
+  }
+  return {
+    kind: "scene" as const,
+    scene: scene(...parts).build({
+      title: "Steps 1, 2 and 3",
+      note: `Three tile figures, left to right. Each figure's bottom row has ${countNoun(start, "unit square")}. Each later step adds a row of ${countNoun(add, "unit square")} on top. Steps after 3 are not drawn.`,
+      width: 640,
+      maxHeight: 420,
+    }),
+  };
+}
+
 function growingShape(meta: TemplateMetadata, seed: string): GeneratedProblem {
   const r = random(meta.id, seed);
   const rule = pick(r, TILE_RULES);
   const step = r(5, 8);
   const tiles = (n: number) => rule.start + (n - 1) * rule.add;
   const answer = tiles(step);
-  const rows = [
-    ["Step", "1", "2", "3"],
-    ["Tiles", String(tiles(1)), String(tiles(2)), String(tiles(3))],
-  ];
   return numberProblem(meta, seed, {
-    prompt: `A tile pattern starts with ${countNoun(rule.start, "tile")}. Each next step adds ${countNoun(rule.add, "tile")}. The table shows steps 1, 2 and 3. How many tiles are in step ${step}?`,
+    prompt: `A tile pattern starts with ${countNoun(rule.start, "tile")}. Each next step adds ${countNoun(rule.add, "tile")}. The figure shows steps 1, 2 and 3. How many tiles are in step ${step}?`,
     answer,
     label: "Tiles",
-    figure: {
-      kind: "scene",
-      scene: lineTable(rows, { header: "row" }).scene({
-        title: "Tiles in the first three steps",
-      }),
-    },
-    hint: `Step 1 has ${countNoun(rule.start, "tile")}. Each later step adds ${rule.add}. Step ${step} is ${step - 1} adds after the start. Do not count step ${step} from the table. It is not drawn.`,
+    figure: tileFigure(rule.start, rule.add),
+    hint: `Step 1 has ${countNoun(rule.start, "tile")}. Each later step adds ${rule.add}. Step ${step} is ${step - 1} adds after the start. The figure stops at step 3, so do not count step ${step} from it.`,
     explanation: [
       `The rule is: start at ${rule.start}, then add ${rule.add} for each new step.`,
       `Step ${step} has had the start plus ${step - 1} adds: ${rule.start} + ${step - 1} × ${rule.add}.`,
@@ -451,16 +479,16 @@ const quotientGenerate = defineGenerate(
             `/${d} of the divisor.`,
           ]);
           return multiPartProblem(meta, seed, r, {
-            prompt: `Divide ${dividend} by ${d}. Give the quotient and the remainder as a fraction of the divisor.`,
+            prompt: `Divide ${grouped(dividend)} by ${grouped(d)}. Give the quotient and the remainder as a fraction of the divisor.`,
             layout: "inline",
             label: "Choose the quotient and the numerator",
             slots: built.slots,
             sentence: built.sentence,
-            hint: `${d} goes into ${dividend} a whole number of times, with a remainder smaller than ${d}. The fraction is that remainder over ${d}.`,
+            hint: `${grouped(d)} goes into ${grouped(dividend)} a whole number of times, with a remainder smaller than ${grouped(d)}. The fraction is that remainder over ${grouped(d)}.`,
             explanation: [
-              `${d} × ${q} = ${d * q}, and ${dividend} − ${d * q} = ${rem}.`,
-              `The remainder ${rem} is smaller than the divisor ${d}, so the fraction of the divisor is ${rem}/${d}.`,
-              `${dividend} ÷ ${d} = ${q} and ${rem}/${d}.`,
+              `${grouped(d)} × ${grouped(q)} = ${grouped(d * q)}, and ${grouped(dividend)} − ${grouped(d * q)} = ${grouped(rem)}.`,
+              `The remainder ${grouped(rem)} is smaller than the divisor ${grouped(d)}, so the fraction of the divisor is ${rem}/${d}.`,
+              `${grouped(dividend)} ÷ ${grouped(d)} = ${grouped(q)} and ${rem}/${d}.`,
             ],
           });
         }
@@ -472,16 +500,16 @@ const quotientGenerate = defineGenerate(
           ".",
         ]);
         return multiPartProblem(meta, seed, r, {
-          prompt: `Divide ${dividend} by ${d}. Give the quotient and the remainder.`,
+          prompt: `Divide ${grouped(dividend)} by ${grouped(d)}. Give the quotient and the remainder.`,
           layout: "inline",
           label: "Choose the quotient and the remainder",
           slots: built.slots,
           sentence: built.sentence,
-          hint: `Find how many times ${d} fits in ${dividend}. The remainder is what is left, and it is smaller than ${d}.`,
+          hint: `Find how many times ${grouped(d)} fits in ${grouped(dividend)}. The remainder is what is left, and it is smaller than ${grouped(d)}.`,
           explanation: [
-            `${d} × ${q} = ${d * q}.`,
-            `${dividend} − ${d * q} = ${rem}, and ${rem} is smaller than ${d}.`,
-            `The quotient is ${q} and the remainder is ${rem}.`,
+            `${grouped(d)} × ${grouped(q)} = ${grouped(d * q)}.`,
+            `${grouped(dividend)} − ${grouped(d * q)} = ${grouped(rem)}, and ${grouped(rem)} is smaller than ${grouped(d)}.`,
+            `The quotient is ${grouped(q)} and the remainder is ${grouped(rem)}.`,
           ],
         });
       },

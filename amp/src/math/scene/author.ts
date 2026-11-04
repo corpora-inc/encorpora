@@ -409,6 +409,8 @@ export const array = (
     shape?: "square" | "dot";
     splitAfterRow?: number;
     splitAfterColumn?: number;
+    /** Math-unit offset, so several arrays can share one scene. */
+    at?: [number, number];
   } = {},
 ) => new Simple({ type: "array", rows, columns, ...options });
 export const tenFrame = (...counts: number[]) =>

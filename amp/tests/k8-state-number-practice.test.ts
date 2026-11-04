@@ -447,12 +447,23 @@ test("estimates match independent checks", () => {
   for (let seed = 0; seed < 400; seed++) {
     let p = generateProblem("compatible-number-estimate", `s${seed}`);
     let prompt = p.public.prompt;
-    const between = /^(\d+) ÷ (\d+) is between which two whole numbers\?$/.exec(
-      prompt,
-    );
+    const between =
+      /^([\d,]+) ÷ ([\d,]+) is between which two whole numbers\?$/.exec(prompt);
     if (between) {
-      const dividend = Number(between[1]);
-      const divisor = Number(between[2]);
+      const dividend = num(between[1]!);
+      const divisor = num(between[2]!);
+      assert.equal(
+        /(?<![\d,])\d{4,}(?!\d)/.test(
+          [
+            prompt,
+            p.hint,
+            ...p.explanation,
+            ...labels(p),
+            ...Object.values(p.choiceFeedback ?? {}),
+          ].join("\n"),
+        ),
+        false,
+      );
       const q = Math.floor(dividend / divisor);
       assert.ok(divisor >= 10 && divisor <= 99);
       assert.ok(dividend % divisor !== 0);

@@ -32,36 +32,55 @@ def factors_of(n):
     return sorted(out)
 
 
+NUM = r"(\d{1,3}(?:,\d{3})*)"
+
+
+def whole(text):
+    require(re.fullmatch(r"\d{1,3}(,\d{3})*", text) is not None, f"Badly written number {text!r}")
+    require(len(text) < 4 or "," in text, f"Missing thousands separator in {text!r}")
+    return int(text.replace(",", ""))
+
+
 def solve(public):
     template = public["templateId"]
     require(template in SUPPORTED, "Wrong family")
     prompt = public["prompt"]
     if template == "multiply-two-digit":
-        a, b = (int(v) for v in re.fullmatch(r"What is (\d+) × (\d+)\?", prompt).groups())
+        a, b = (whole(v) for v in re.fullmatch(rf"What is {NUM} × {NUM}\?", prompt).groups())
         require(12 <= b <= 999 and 11 <= a <= 999, "Factor size")
         return str(a * b)
     if template == "facts-to-twelve":
         if "×" in prompt:
-            a, b = (int(v) for v in re.fullmatch(r"What is (\d+) × (\d+)\?", prompt).groups())
+            a, b = (whole(v) for v in re.fullmatch(rf"What is {NUM} × {NUM}\?", prompt).groups())
             require(a in (11, 12) or b in (11, 12), "An 11 or 12 factor")
             return str(a * b)
-        dividend, teen = (int(v) for v in re.fullmatch(r"What is (\d+) ÷ (\d+)\?", prompt).groups())
+        dividend, teen = (whole(v) for v in re.fullmatch(rf"What is {NUM} ÷ {NUM}\?", prompt).groups())
         require(teen in (11, 12) and dividend % teen == 0, "Division by 11 or 12")
         return str(dividend // teen)
     if template == "growing-shape-pattern":
         start, add, step = (int(v) for v in re.fullmatch(
             r"A tile pattern starts with (\d+) tiles?\. Each next step adds (\d+) tiles?\. "
-            r"The table shows steps 1, 2 and 3\. How many tiles are in step (\d+)\?",
+            r"The figure shows steps 1, 2 and 3\. How many tiles are in step (\d+)\?",
             prompt,
         ).groups())
         require(step >= 5, "The asked step is not drawn")
-        rows = public["figure"]["scene"]["elements"][0]["rows"]
-        shown = [int(v) for v in rows[1][1:]]
-        require(shown == [start + i * add for i in range(3)], "The table matches the rule")
+        elements = public["figure"]["scene"]["elements"]
+        require(not any(e.get("type") == "lineTable" for e in elements), "Tiles, not a count table")
+        for shown in (1, 2, 3):
+            rows = [e for e in elements if e.get("type") == "array" and str(e.get("id", "")).startswith(f"s{shown}r")]
+            require(len(rows) == shown, "One tile row for each drawn step")
+            total = 0
+            for row in rows:
+                require(row["rows"] == 1 and 1 <= row["columns"] <= 20, "Array stays within the renderer cap")
+                index = int(str(row["id"])[len(f"s{shown}r"):])
+                require(row["columns"] == (start if index == 0 else add), "The row length follows the rule")
+                total += row["columns"]
+            require(total == start + (shown - 1) * add, "Drawn tiles follow the rule")
+        require(not any(str(e.get("id", "")).startswith(f"s{step}") for e in elements), "The asked step is not drawn")
         return str(start + (step - 1) * add)
     if template == "quotient-remainder-one-digit":
-        dividend, divisor = (int(v) for v in re.search(
-            r"Divide (\d+) by (\d+)", prompt).groups())
+        dividend, divisor = (whole(v) for v in re.search(
+            rf"Divide {NUM} by {NUM}", prompt).groups())
         require(100 <= dividend <= 9999 and 2 <= divisor <= 9, "Grade-4 division size")
         quotient, rem = divmod(dividend, divisor)
         require(0 < rem < divisor, "A nonzero remainder smaller than the divisor")
@@ -110,8 +129,15 @@ def self_test():
     require(solve(fact) == "11", "132 ÷ 12")
     grow = {
         "templateId": "growing-shape-pattern",
-        "prompt": "A tile pattern starts with 3 tiles. Each next step adds 2 tiles. The table shows steps 1, 2 and 3. How many tiles are in step 5?",
-        "figure": {"scene": {"elements": [{"rows": [["Step", "1", "2", "3"], ["Tiles", "3", "5", "7"]]}]}},
+        "prompt": "A tile pattern starts with 3 tiles. Each next step adds 2 tiles. The figure shows steps 1, 2 and 3. How many tiles are in step 5?",
+        "figure": {"scene": {"elements": [
+            {"type": "array", "id": "s1r0", "rows": 1, "columns": 3},
+            {"type": "array", "id": "s2r0", "rows": 1, "columns": 3},
+            {"type": "array", "id": "s2r1", "rows": 1, "columns": 2},
+            {"type": "array", "id": "s3r0", "rows": 1, "columns": 3},
+            {"type": "array", "id": "s3r1", "rows": 1, "columns": 2},
+            {"type": "array", "id": "s3r2", "rows": 1, "columns": 2},
+        ]}},
     }
     require(solve(grow) == "11", "step 5")
     factors = {

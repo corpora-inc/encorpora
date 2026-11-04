@@ -972,11 +972,12 @@ const courses: readonly TexasCourse[] = [
         [
           "area-model-product",
           "multiply-by-one-digit",
+          "multiply-two-digit",
           "tens-contribution",
           "multiply-multidigit",
         ],
         "Multiply with an area model or an algorithm",
-        "Area-model and partial-product items and numeric products. Perfect squares through 15 by 15 and strategy choice are not certified.",
+        "Area-model and partial-product items and numeric products. multiply-two-digit is a bare product of two two-digit numbers, with a rarer three-digit by two-digit product and the squares from 11 squared through 15 squared. An array of those squares is not certified. Strategy choice is not certified. Other-grade link: multiply-multidigit is skill multidigit-products, grade 5, and is not served as grade 4 practice.",
       ],
       [
         "g4-divide-whole",
@@ -990,6 +991,7 @@ const courses: readonly TexasCourse[] = [
         [
           "divide-by-one-digit",
           "division-remainder",
+          "quotient-remainder-one-digit",
           "division-remainder-story",
           "seats-needed",
           "full-kits",
@@ -997,15 +999,19 @@ const courses: readonly TexasCourse[] = [
           "multiplication-division-story",
         ],
         "Divide and interpret a remainder",
-        "Numeric division by one digit, remainders and stories where a remainder changes the answer. Fluency and two-step multiplication and division mixtures are not certified.",
+        "divide-by-one-digit is exact. division-remainder asks only for the remainder. quotient-remainder-one-digit asks for both, for a dividend from 100 to 9,999 and a one-digit divisor. full-kits, seats-needed and kit-leftovers use totals through 55 or, less often, through 9,999. Fluency and two-step multiplication and division mixtures are not certified.",
       ],
       [
         "g4-estimate-whole",
         ["4.G"],
         ["large-place-value", "multistep-whole-stories"],
-        ["round-large", "estimate-reasonableness"],
+        [
+          "round-large",
+          "estimate-reasonableness",
+          "compatible-number-estimate",
+        ],
         "Round or estimate a whole-number solution",
-        "Rounds numbers to estimate a result and checks reasonableness. Compatible numbers and estimates to the nearest 1,000 are not certified.",
+        "round-large rounds to a stated place. estimate-reasonableness gives one best estimate. compatible-number-estimate changes a number to a compatible number, estimates a sum from its front digits, or asks which two whole numbers a quotient lies between. That between form uses a two-digit divisor. Estimates that must land on the nearest 1,000 are not certified.",
       ],
       [
         "g4-rule-patterns",
@@ -1013,7 +1019,7 @@ const courses: readonly TexasCourse[] = [
         ["rule-patterns"],
         ["rule-pattern-term", "rule-pattern-feature"],
         "Extend a pattern from its rule",
-        "Finds a term or a guaranteed feature of a rule-based pattern. Input-output tables and expressions relating value to position are not assessed.",
+        "Finds a term or a guaranteed feature of a rule-based pattern. Input-output tables and expressions relating value to position are not assessed. growing-shape-pattern is a tile figure and is not linked, because this expectation is a number pattern.",
       ],
       [
         "g4-rectangle-formulas",
