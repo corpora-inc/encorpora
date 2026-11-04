@@ -9,7 +9,11 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
-import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes.js";
+import {
+  isSweepId,
+  recordedSweepVariant,
+  sweepChoose,
+} from "./number-domain-axes.js";
 export const equalGroupsTemplates: readonly TemplateMetadata[] =
   equalGroupsDefinitions.map(({ id, title, skillId, grade, description }) => ({
     id,
@@ -438,6 +442,9 @@ export function generateEqualGroupsProblem(
     default:
       throw new Error(`Unimplemented template: ${templateId}`);
   }
+  const variant = axes
+    ? recordedSweepVariant(templateId, "comparison", axes)
+    : undefined;
   return {
     public: {
       id: createHash("sha256")
@@ -455,6 +462,6 @@ export function generateEqualGroupsProblem(
     hint,
     ...(hintCue ? { hintCue } : {}),
     explanation,
-    ...(axes ? { variant: sweepVariant("comparison", axes) } : {}),
+    ...(variant ? { variant } : {}),
   };
 }

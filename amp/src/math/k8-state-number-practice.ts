@@ -6,7 +6,11 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { random, type Random } from "./distribution-practice";
-import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
+import {
+  isSweepId,
+  recordedSweepVariant,
+  sweepChoose,
+} from "./number-domain-axes";
 
 /* State-specific number sense, money, estimation and customary measurement
  * (TEKS, Florida B.E.S.T. and Virginia SOL requirements beyond the common
@@ -1955,11 +1959,12 @@ export function k8StateNumberCase(templateId: string, seed: string) {
     }
     if (leaks(draft)) continue;
     const problem = toProblem(meta, seed, r, draft);
+    const variant = axes
+      ? recordedSweepVariant(templateId, draft.variant, axes)
+      : undefined;
     return {
       variant: draft.variant,
-      problem: axes
-        ? { ...problem, variant: sweepVariant(draft.variant, axes) }
-        : problem,
+      problem: variant ? { ...problem, variant } : problem,
     };
   }
   throw new Error("Could not generate a problem without leaking the answer");

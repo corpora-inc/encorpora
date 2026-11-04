@@ -193,41 +193,59 @@ export const sweepAxes = {
     }),
   },
   /** Multiplicative comparison: the larger amount is unknown (legacy) or the
-   * smaller amount is unknown. */
+   * smaller amount is unknown. The legacy value is silent so a stored
+   * instance keeps the variant id it had before this axis existed. */
   "comparison-amount": {
-    unknown: axisFor("unknown", ["larger", "smaller"], "larger"),
+    unknown: {
+      ...axisFor("unknown", ["larger", "smaller"], "larger"),
+      silentLegacy: true,
+    },
   },
-  /** Remainder stories: totals at most 55 (legacy) or up to 9,999. */
+  /** Remainder stories: totals at most 55 (legacy) or up to 9,999.
+   * The legacy value is silent so a stored instance keeps its old variant id. */
   "full-kits": {
-    "number-domain": axisFor(
-      "number-domain",
-      ["within-55", "up-to-9999"],
-      "within-55",
-      undefined,
-      [3, 1],
-    ),
+    "number-domain": {
+      ...axisFor(
+        "number-domain",
+        ["within-55", "up-to-9999"],
+        "within-55",
+        undefined,
+        [3, 1],
+      ),
+      silentLegacy: true,
+    },
   },
   "seats-needed": {
-    "number-domain": axisFor(
-      "number-domain",
-      ["within-55", "up-to-9999"],
-      "within-55",
-      undefined,
-      [3, 1],
-    ),
+    "number-domain": {
+      ...axisFor(
+        "number-domain",
+        ["within-55", "up-to-9999"],
+        "within-55",
+        undefined,
+        [3, 1],
+      ),
+      silentLegacy: true,
+    },
   },
   "kit-leftovers": {
-    "number-domain": axisFor(
-      "number-domain",
-      ["within-55", "up-to-9999"],
-      "within-55",
-      undefined,
-      [3, 1],
-    ),
+    "number-domain": {
+      ...axisFor(
+        "number-domain",
+        ["within-55", "up-to-9999"],
+        "within-55",
+        undefined,
+        [3, 1],
+      ),
+      silentLegacy: true,
+    },
   },
-  /** A point estimate (legacy) or the two whole numbers a quotient lies between. */
+  /** A point estimate (legacy) or the two whole numbers a quotient lies between.
+   * The legacy value is silent so a stored instance keeps its old variant id. */
   "compatible-number-estimate": {
-    bounds: axisFor("bounds", ["point", "between"], "point", undefined, [4, 1]),
+    bounds: {
+      ...axisFor("bounds", ["point", "between"], "point", undefined, [4, 1]),
+      silentLegacy: true,
+    },
   },
 } as const satisfies Record<string, AxisSet>;
 
@@ -267,6 +285,34 @@ export const sweepVariant = (
   id: string,
   axes: Readonly<Record<string, string>>,
 ): ProblemVariant => ({ id, axes: axisRecord(axes) });
+
+/**
+ * Variant saved on a sweep instance.
+ *
+ * A silent legacy axis value is omitted, matching `silentLegacy` in
+ * `defineGenerate`. These families stored no variant before the axis
+ * existed, so when every axis is that legacy value the instance still has
+ * no variant. A newer value is recorded under the family's variant label.
+ */
+export function recordedSweepVariant(
+  templateId: string,
+  id: string,
+  axes: Readonly<Record<string, string>>,
+): ProblemVariant | undefined {
+  const spec = isSweepId(templateId)
+    ? (sweepAxes[templateId] as Readonly<
+        Record<string, { legacy: string; silentLegacy?: boolean }>
+      >)
+    : undefined;
+  const recorded: Record<string, string> = {};
+  for (const [key, value] of Object.entries(axes)) {
+    const axis = spec?.[key];
+    if (axis?.silentLegacy && value === axis.legacy) continue;
+    recorded[key] = value;
+  }
+  if (Object.keys(recorded).length === 0) return undefined;
+  return sweepVariant(id, recorded);
+}
 
 /** Exact decimal text of n/d when it terminates within six places. */
 export function exactDecimal(n: number, d: number): string {
