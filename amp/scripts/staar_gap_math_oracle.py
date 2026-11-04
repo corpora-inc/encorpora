@@ -277,17 +277,17 @@ def listing(text):
 def solve_order_decimals(public):
     prompt = plain(public['prompt'])
     options = options_of(public)
-    match = re.fullmatch(r'Which list shows the numbers (.+?) in order from (least to greatest|greatest to least)\?', prompt)
+    match = re.search(r'Which list shows the numbers (.+?) in order from (least to greatest|greatest to least)\?$', prompt)
     if match:
         items = [value_of(t) for t in re.split(r',\s*', match[1])]
         require(len(set(items)) == len(items), 'Numbers to order must be distinct')
         expected = sorted(items, reverse=match[2].startswith('greatest'))
         return only(options, lambda o: [value_of(t) for t in listing(o['label'])] == expected, 'Ordered list')
-    match = re.fullmatch(r'Four measurements are (.+?) [a-z]+\. When they are ordered from least to greatest, which is (second|third)\?', prompt)
+    match = re.search(r'When they are ordered from least to greatest, which is (second|third)\?$', prompt)
     require(match is not None, 'Unknown ordering prompt')
-    items = [num(t) for t in re.split(r',\s*', match[1])]
+    items = [num(t) for t in re.findall(r'\d+\.\d+', prompt)]
     require(len(items) == 4 and len(set(items)) == 4, 'Four distinct measurements required')
-    expected = sorted(items)[{'second': 1, 'third': 2}[match[2]]]
+    expected = sorted(items)[{'second': 1, 'third': 2}[match[1]]]
     return pick_by_value(options, expected)
 
 

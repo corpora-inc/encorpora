@@ -1329,22 +1329,81 @@ function randomHundredths(r: Random): Dec[] {
   throw new Error("No decimal set found");
 }
 
-const ORDER_SCENES: readonly (readonly [string, string, string])[] = [
-  ["Maya measured four ribbons.", "The lengths are", "meters"],
-  ["Four bottles of juice sit on the table.", "The amounts are", "liters"],
-  ["Four seedlings grew in the garden.", "The heights are", "meters"],
-  ["Four snacks have these prices.", "The prices are", "dollars"],
-  ["Four puppies are on the scale.", "The weights are", "kilograms"],
-  ["Four runners' times are posted.", "The times are", "seconds"],
-  ["Four trails are marked on the map.", "The lengths are", "miles"],
-  ["Four pitchers of water are filled.", "The amounts are", "liters"],
+const joinAnd = (items: string[]) =>
+  items.length < 2
+    ? (items[0] ?? "")
+    : `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
+
+type HundredthScene = {
+  fits: (min: number, max: number) => boolean;
+  /** Names what is measured. No decimal points, so the question can hold the only copy of each number. */
+  lead: (items: Dec[]) => string;
+  /** One sentence that states each measurement once, with two decimal places. */
+  amounts: (items: Dec[], nums: string[]) => string;
+};
+
+const HUNDREDTH_SCENES: readonly HundredthScene[] = [
+  {
+    fits: () => true,
+    lead: (items) =>
+      `Four school-store snacks cost ${joinAnd(items.map((d) => `${d.v} cent${d.v === 1 ? "" : "s"}`))}.`,
+    amounts: (items, nums) =>
+      `Four school-store snack prices are ${nums.join(", ")} dollars. In cents, those prices are ${items.map((d) => d.v).join(", ")}.`,
+  },
+  {
+    fits: (min, max) => min >= 0.25 && max <= 0.99,
+    lead: () =>
+      "Four pitchers are filled with water. The amount in each pitcher is measured in liters.",
+    amounts: (_items, nums) =>
+      `The liters of water in four pitchers are ${nums.join(", ")} liters.`,
+  },
+  {
+    fits: () => true,
+    lead: () =>
+      "Four lab cups hold water. The amount in each cup is measured in liters.",
+    amounts: (_items, nums) =>
+      `The liters of water in four lab cups are ${nums.join(", ")} liters.`,
+  },
+  {
+    fits: (min, max) => min >= 0.15 && max <= 0.95,
+    lead: () => "Four ribbons are measured in meters.",
+    amounts: (_items, nums) =>
+      `The lengths of four ribbons are ${nums.join(", ")} meters.`,
+  },
+  {
+    fits: (min, max) => min >= 0.05 && max <= 0.45,
+    lead: () => "Four seedlings are measured in meters.",
+    amounts: (_items, nums) =>
+      `The heights of four seedlings are ${nums.join(", ")} meters.`,
+  },
+  {
+    fits: (min, max) => min >= 0.1 && max <= 0.55,
+    lead: () => "Four video-game reactions are measured in seconds.",
+    amounts: (_items, nums) =>
+      `The video-game reaction times are ${nums.join(", ")} seconds.`,
+  },
+  {
+    fits: (min, max) => min >= 0.1 && max <= 0.4,
+    lead: () => "Four apples are weighed in kilograms.",
+    amounts: (_items, nums) =>
+      `The weights of four apples are ${nums.join(", ")} kilograms.`,
+  },
 ];
+
+function hundredthScene(r: Random, items: Dec[]): HundredthScene {
+  const values = items.map((d) => d.v / 100);
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const fitting = HUNDREDTH_SCENES.filter((scene) => scene.fits(min, max));
+  return fitting[r(0, fitting.length - 1)]!;
+}
 
 function orderHundredths(r: Random): Built {
   const items = randomHundredths(r);
   const sorted = items.slice().sort((a, b) => a.v - b.v);
   const text = (d: Dec) => dec(d.v, 2);
-  const scene = ORDER_SCENES[r(0, ORDER_SCENES.length - 1)]!;
+  const scene = hundredthScene(r, items);
+  const nums = items.map((d) => fixed(d.v, 2));
   if (r(0, 1) === 0) {
     const ascending = r(0, 1) === 1;
     const ordered = ascending ? sorted : sorted.slice().reverse();
@@ -1383,7 +1442,7 @@ function orderHundredths(r: Random): Built {
     ].filter((c) => key(c.list) !== key(ordered));
     return {
       variant: ascending ? "list-ascending" : "list-descending",
-      prompt: `${scene[0]} Which list shows the numbers ${items.map((d) => text(d)).join(", ")} in order from ${ascending ? "least to greatest" : "greatest to least"}?`,
+      prompt: `${scene.lead(items)} Which list shows the numbers ${nums.join(", ")} in order from ${ascending ? "least to greatest" : "greatest to least"}?`,
       answer: "",
       hint: `Write each number with two decimal places, such as ${text(items[0]!)} as ${fixed(items[0]!.v, 2)}. Then compare the tenths digits first, then the hundredths.`,
       explanation: [
@@ -1407,7 +1466,7 @@ function orderHundredths(r: Random): Built {
   return {
     variant: "kth",
     selects: true,
-    prompt: `${scene[0]} ${scene[1]} ${items.map((d) => text(d)).join(", ")} ${scene[2]}. When they are ordered from least to greatest, which is ${word}?`,
+    prompt: `${scene.amounts(items, nums)} When they are ordered from least to greatest, which is ${word}?`,
     answer: "",
     hint: `Write each measurement with two decimal places, such as ${text(items[0]!)} as ${fixed(items[0]!.v, 2)}, then compare tenths first. Put them in order from least to greatest and count to the ${word}.`,
     explanation: [
