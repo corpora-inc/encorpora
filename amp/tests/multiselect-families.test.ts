@@ -194,6 +194,35 @@ function perpendicularSides(pts: readonly (readonly [number, number])[]) {
       if (Math.abs(dot(v[i]!, v[j]!)) < eps) return true;
   return false;
 }
+/** Interior angles, orientation-corrected. Duplicated from the generator's rule. */
+function interiorsOf(pts: readonly (readonly [number, number])[]): number[] {
+  const n = pts.length;
+  let area = 0;
+  for (let i = 0; i < n; i++) {
+    const q = pts[(i + 1) % n]!;
+    area += pts[i]![0]! * q[1]! - q[0]! * pts[i]![1]!;
+  }
+  const orient = area >= 0 ? 1 : -1;
+  const out: number[] = [];
+  for (let i = 0; i < n; i++) {
+    const a = pts[(i + n - 1) % n]!;
+    const b = pts[i]!;
+    const c = pts[(i + 1) % n]!;
+    const ix = b[0]! - a[0]!;
+    const iy = b[1]! - a[1]!;
+    const ox = c[0]! - b[0]!;
+    const oy = c[1]! - b[1]!;
+    const turn = Math.atan2(orient * (ix * oy - iy * ox), ix * ox + iy * oy);
+    out.push(180 - (turn * 180) / Math.PI);
+  }
+  return out;
+}
+function polygonRight(pts: readonly (readonly [number, number])[]) {
+  return interiorsOf(pts).some((a) => Math.abs(a - 90) <= 0.5);
+}
+function polygonObtuse(pts: readonly (readonly [number, number])[]) {
+  return interiorsOf(pts).some((a) => a > 98 && a < 172);
+}
 const decimalToScaled = (text: string, places: number): bigint => {
   const [w, f = ""] = strip(text).split(".");
   return BigInt(w! + f.padEnd(places, "0").slice(0, places));
@@ -421,7 +450,10 @@ const oracles: Record<string, Oracle> = {
       { type: "polygon" }
     >;
     const pts = poly.points as [number, number][];
-    return /parallel/.test(p.public.prompt)
+    const prompt = p.public.prompt;
+    if (prompt.includes("obtuse angle")) return polygonObtuse(pts);
+    if (prompt.includes("no right angle")) return !polygonRight(pts);
+    return /parallel/.test(prompt)
       ? parallelSides(pts)
       : perpendicularSides(pts);
   },
@@ -719,7 +751,12 @@ test("the number of true statements varies, and every variant is reached", () =>
     "function-pair-select": ["4-points", "5-points"],
     "root-approximation-select": ["tenths-line"],
     "dot-plot-statement-select": ["short-scale", "medium-scale", "long-scale"],
-    "shape-sides-select": ["parallel-sides", "perpendicular-sides"],
+    "shape-sides-select": [
+      "parallel-sides",
+      "perpendicular-sides",
+      "obtuse-angle",
+      "no-right-angle",
+    ],
     "polygon-sides-select": ["four-sides", "more-sides"],
     "line-pair-select": ["parallel-pair", "perpendicular-pair"],
     "angle-kind-select": ["acute-angles", "right-angles", "obtuse-angles"],

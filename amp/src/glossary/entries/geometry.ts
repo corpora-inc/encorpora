@@ -1320,6 +1320,15 @@ export const geometryEntries: GlossaryEntry[] = [
     noLink: ["side", "image"],
   },
   {
+    id: "reflex-angle",
+    term: "reflex angle",
+    forms: ["reflex angle", "reflex angles", "reflex"],
+    plain: "An angle wider than a straight angle, past 180° and short of 360°.",
+    example: "A 270° angle is wider than a straight angle.",
+    uses: ["angle", "straight-angle"],
+    band: "4",
+  },
+  {
     id: "reflexive-property",
     term: "reflexive property",
     forms: ["reflexive property"],

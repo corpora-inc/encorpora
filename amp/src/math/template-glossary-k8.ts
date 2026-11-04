@@ -17,9 +17,21 @@ export const k8TemplateGlossary: Record<
     noLink: ["mean", "units"],
   },
   "add-within-20": { noLink: ["change"] },
+  "adjacent-angle-equation": {
+    senses: { degree: "degree-angle", degrees: "degree-angle" },
+    noLink: ["part", "whole", "side"],
+  },
   "adjacent-angles": {
     senses: { parts: "part", whole: "whole" },
     noLink: ["side"],
+  },
+  "angle-benchmark-estimate": {
+    senses: {
+      degree: "degree-angle",
+      degrees: "degree-angle",
+      square: "square-shape",
+    },
+    noLink: ["change"],
   },
   "angle-classify": { senses: { square: "square-shape" } },
   "angle-equation": { noLink: ["opposite"] },
@@ -62,6 +74,10 @@ export const k8TemplateGlossary: Record<
   "composite-face-prism-surface-area": { noLink: ["opposite", "square"] },
   "composite-face-prism-volume": { noLink: ["opposite"] },
   "composite-prism-volume": { senses: { solid: "solid-shape" } },
+  "composite-rectangle-measure": {
+    senses: { square: "square-shape", squares: "square-shape" },
+    noLink: ["part", "side", "sides"],
+  },
   "compound-event-simulation": { senses: { event: "event" } },
   "congruent-figure-pair": { senses: { scale: "scale" } },
   "congruent-fourths-pair": { senses: { "one fourth": "fourth" } },
@@ -244,12 +260,20 @@ export const k8TemplateGlossary: Record<
   "prime-factorization-value": { senses: { base: "base-exponent" } },
   "prism-missing-edge": { senses: { edge: "edge" } },
   "prism-volume-edges": { senses: { cubes: "cube", edge: "edge" } },
+  "protractor-ray-choice": {
+    senses: { degrees: "degree-angle", scale: "measuring-scale" },
+    noLink: ["part"],
+  },
   "protractor-reading": {
     senses: { degrees: "degree-angle", scale: "measuring-scale" },
   },
   "purchase-change": { noLink: ["more than"] },
   "pythagorean-converse": {
     senses: { side: "side", sides: "side" },
+  },
+  "quadrilateral-attributes": {
+    senses: { side: "side", sides: "side", square: "square-shape" },
+    noLink: ["sort"],
   },
   "quadrilateral-names": {
     senses: { "more than": "more-than" },
@@ -266,6 +290,13 @@ export const k8TemplateGlossary: Record<
   "rectangle-existence-choice": {
     senses: { side: "side", sides: "side" },
     noLink: ["square"],
+  },
+  "rectangle-formula-select": {
+    senses: {
+      sides: "side",
+      square: "square-shape",
+      squares: "square-shape",
+    },
   },
   "rectangle-missing-area-side": {
     senses: { side: "side", squares: "square-shape" },
@@ -355,6 +386,10 @@ export const k8TemplateGlossary: Record<
   "triangle-conditions": { noLink: ["parts"] },
   "triangle-exterior-angle": { senses: { side: "side" } },
   "triangle-side-test": { senses: { side: "side" } },
+  "triangle-sides-angles-blanks": {
+    senses: { side: "side", sides: "side", square: "square-shape" },
+    noLink: ["sort"],
+  },
   "triangle-third-side": { senses: { sides: "side" } },
   "triangle-uniqueness": { senses: { "more than": "more-than" } },
   "turn-degrees": {
