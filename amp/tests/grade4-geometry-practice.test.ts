@@ -6,6 +6,7 @@ import {
   type GeneratedProblem,
 } from "../src/math/contracts";
 import { generateProblem, templates } from "../src/math/engine";
+import { layoutScene, type Drawn } from "../src/math/scene";
 import { angleClassifyAxes } from "../src/math/angle-practice";
 import { shapeSidesAxes } from "../src/math/multiselect-figure-practice";
 import { chooseAxes, isLegacy } from "../src/math/variation/axes";
@@ -582,6 +583,60 @@ function independent(problem: GeneratedProblem): string {
       throw new Error(problem.public.templateId);
   }
 }
+
+/** Same ink trim as scripts/scene-problems.ts, on the layout's em box. */
+function labelHits(items: Drawn[]) {
+  const labels = items.flatMap((d) => (d.k === "text" ? [d] : []));
+  const ink = (d: (typeof labels)[number]) => {
+    const h = d.box.y1 - d.box.y0;
+    return {
+      x0: d.box.x0 + 1,
+      x1: d.box.x1 - 1,
+      y0: d.box.y0 + h * 0.22,
+      y1: d.box.y0 + h * 0.86,
+    };
+  };
+  const hits: string[] = [];
+  for (let i = 0; i < labels.length; i++)
+    for (let j = i + 1; j < labels.length; j++) {
+      const a = ink(labels[i]!),
+        b = ink(labels[j]!);
+      if (a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1)
+        hits.push(`${labels[i]!.plain}/${labels[j]!.plain}`);
+    }
+  return hits;
+}
+
+test("protractor rays stay readable at phone and tablet widths", () => {
+  for (let i = 0; i < 40; i++) {
+    const problem = generateProblem("protractor-ray-choice", `scene-${i}`);
+    const figure = problem.public.figure;
+    assert.equal(figure?.kind, "scene");
+    if (figure?.kind !== "scene") continue;
+    for (const width of [288, 340]) {
+      const laid = layoutScene({ ...figure.scene, width });
+      const hits = labelHits(laid.items);
+      assert.deepEqual(hits, [], `scene-${i} at ${width}: ${hits.join(", ")}`);
+      const degrees = laid.items.flatMap((d) =>
+        d.k === "text" && d.data?.scale === "inner" ? [Number(d.plain)] : [],
+      );
+      assert.ok(degrees.includes(0) && degrees.includes(180), `${width}`);
+      // 155° is read from 150, or from 140 and 160 when the 20° grid fits.
+      assert.ok(
+        degrees.includes(150) ||
+          (degrees.includes(140) && degrees.includes(160)),
+        `scene-${i} at ${width}: ${degrees.join(",")}`,
+      );
+      assert.equal(
+        laid.items.filter((d) => /\.tick\.\d+$/.test(d.id)).length,
+        181,
+      );
+    }
+    const phone = layoutScene({ ...figure.scene, width: 288 });
+    if (i === 0 || i === 2)
+      assert.ok(phone.scale >= 115, `scene-${i} scale ${phone.scale}`);
+  }
+});
 
 test("grade-4 geometry templates sit on the grade-4 skills", () => {
   for (const [id, skillId] of Object.entries(SKILLS)) {

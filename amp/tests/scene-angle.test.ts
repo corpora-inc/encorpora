@@ -1,7 +1,26 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { angle, protractor } from "../src/math/scene/author";
-import { describeScene, layoutScene } from "../src/math/scene";
+import { describeScene, layoutScene, type Drawn } from "../src/math/scene";
+
+function labelHits(items: Drawn[]) {
+  const labels = items.flatMap((d) => (d.k === "text" ? [d] : []));
+  const box = (d: (typeof labels)[number]) => ({
+    x0: d.x - 1,
+    y0: d.y - d.t.ascent * 0.82,
+    x1: d.x + d.t.width + 1,
+    y1: d.y + d.t.descent * 0.6,
+  });
+  const hits: string[] = [];
+  for (let i = 0; i < labels.length; i++)
+    for (let j = i + 1; j < labels.length; j++) {
+      const a = box(labels[i]!),
+        b = box(labels[j]!);
+      if (a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1)
+        hits.push(`${labels[i]!.id}/${labels[j]!.id}`);
+    }
+  return hits;
+}
 
 const texts = (scene: ReturnType<typeof layoutScene>) =>
   scene.items.flatMap((d) => (d.k === "text" ? [d] : []));
@@ -17,9 +36,30 @@ test("a protractor draws both scales, every degree tick and its rays", () => {
     outer.map((t) => t.plain).sort((a, b) => +a - +b),
     inner.map((t) => t.plain).sort((a, b) => +a - +b),
   );
-  // The outer number at a direction is 180 minus the inner number there.
+  // A full-size protractor keeps every 20° number on both scales.
+  assert.equal(outer.length, 10);
+  assert.equal(inner.length, 10);
   for (const t of outer) assert.equal(Number(t.data!.value) % 20, 0);
   assert.match(describeScene(scene, false), /Ray BA lies on 0 at the left/);
+});
+
+test("a phone-width protractor thins its scales instead of colliding", () => {
+  const l = layoutScene(
+    protractor([0, 155], ["A", "B", "C"]).scene({
+      width: 288,
+      maxHeight: 280,
+    }),
+  );
+  const labels = texts(l).filter((t) => t.data?.scale);
+  const values = [...new Set(labels.map((t) => Number(t.data!.value)))].sort(
+    (a, b) => a - b,
+  );
+  // 150 stays, so the 155° ray is one medium tick past a labeled mark.
+  assert.deepEqual(values, [0, 30, 60, 90, 120, 150, 180]);
+  assert.equal(l.items.filter((d) => /\.tick\.\d+$/.test(d.id)).length, 181);
+  assert.deepEqual(labelHits(l.items), []);
+  // The tool fills the phone width; labels did not shrink it away.
+  assert.ok(l.scale >= 120, `scale ${l.scale}`);
 });
 
 test("an angle mark's measure comes from its rays and is masked when derived", () => {

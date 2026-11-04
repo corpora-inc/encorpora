@@ -96,7 +96,7 @@ const vite = await createServer({
           res.end(
             await server.transformIndexHtml(
               "/scene-problems",
-              `<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:var(--color-surface)"><div id="root"></div><script type="module" src="/scene-problems-entry.tsx"></script></body></html>`,
+              `<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"></head><body style="margin:0;background:var(--color-surface)"><div id="root"></div><script type="module" src="/scene-problems-entry.tsx"></script></body></html>`,
             ),
           );
         });

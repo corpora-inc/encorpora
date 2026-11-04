@@ -224,6 +224,35 @@ function finish(
   };
 }
 
+/** The protractor's own rays end here. Choice rays stop on that circle so
+ * their letters, not a longer ray, are what stick out past the tool. */
+const PROTRACTOR_RAY = 1.06;
+/** Offsets from a ray tip, in screen pixels (y down), sitting outside the
+ * degree numbers. Layout keeps the clear spot that grows the figure least. */
+function rayLetterPlace(deg: number): [number, number, 0, 0][] {
+  const t = (deg * Math.PI) / 180;
+  const ux = Math.cos(t);
+  const uy = -Math.sin(t);
+  const px = -uy;
+  const py = ux;
+  const spot = (out: number, side: number): [number, number, 0, 0] => [
+    Math.round(ux * out + px * side),
+    Math.round(uy * out + py * side),
+    0,
+    0,
+  ];
+  return [
+    spot(20, 0),
+    spot(34, 0),
+    spot(16, 18),
+    spot(16, -18),
+    spot(28, 24),
+    spot(28, -24),
+    spot(12, 34),
+    spot(12, -34),
+  ];
+}
+
 /** Whole degrees 5, 10, …, 175 except 90, where the wrong scale lands on the
  * same ray as the right scale. Multiples of 5 keep the rays on protractor marks. */
 const PROTRACTOR_DEGREES = Array.from(
@@ -263,12 +292,16 @@ function protractorRay(r: Rand, seed: string): GeneratedProblem {
       .element(),
     ...extras.flatMap((ray): Element[] => {
       const t = (ray.dir * Math.PI) / 180;
+      const tip: [number, number] = [
+        PROTRACTOR_RAY * Math.cos(t),
+        PROTRACTOR_RAY * Math.sin(t),
+      ];
       return [
         {
           type: "segment",
           id: `ray${ray.letter}`,
           from: [0, 0],
-          to: [1.15 * Math.cos(t), 1.15 * Math.sin(t)],
+          to: tip,
           stroke: "ink",
           width: 2,
           arrow: "end",
@@ -276,13 +309,14 @@ function protractorRay(r: Rand, seed: string): GeneratedProblem {
         {
           type: "text",
           id: `name${ray.letter}`,
-          at: [1.25 * Math.cos(t), 1.25 * Math.sin(t)],
+          at: tip,
           text: ray.letter,
           font: "sans",
           size: "md",
           bold: true,
           halo: true,
-          align: [0, 0] as const,
+          align: [0, 0],
+          place: rayLetterPlace(ray.dir),
         },
       ];
     }),
