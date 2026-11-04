@@ -98,21 +98,29 @@ def target_amount(text, denominator):
 
 def decompositions(public):
     prompt = untex(public["prompt"])
-    found = re.fullmatch(
-        r"Which sums equal (.+?)\? The pieces in each sum use the denominator (\d+)\. Choose (\d+)\.",
-        prompt,
-    )
-    require(found is not None, "Decomposition prompt")
-    denominator = int(found[2])
-    numerator = target_amount(found[1], denominator)
-    require(int(found[3]) >= 2, "Choose count")
+    den = re.search(r"denominator (\d+)", prompt)
+    choose = re.search(r"Choose (\d+)\.", prompt)
+    require(den is not None and choose is not None, "Decomposition prompt")
+    denominator = int(den[1])
+    mixed = re.search(r"(\d+)\\frac\{(\d+)\}\{(\d+)\}", prompt)
+    bare = re.search(r"\\frac\{(\d+)\}\{(\d+)\}", prompt)
+    if mixed:
+        token = mixed[0]
+    elif bare:
+        token = bare[0]
+    else:
+        whole = re.search(r"\b(\d+)\b", prompt)
+        require(whole is not None, "Decomposition target")
+        token = whole[1]
+    numerator = target_amount(token, denominator)
+    require(int(choose[1]) >= 2, "Choose count")
     figure = public.get("figure")
     require(figure and figure.get("kind") == "fraction-strips", "Strip figure")
     require(figure["parts"] == denominator and figure["unit"] == "one whole", "Strip unit")
     require(figure["rows"][0]["selected"] == numerator, "Strip shading")
     require(figure["wholes"] == -(-numerator // denominator), "Strip wholes")
     _, options = selection_of(public)
-    require(options and public["response"]["selectionCount"] == int(found[3]), "Choose count matches")
+    require(options and public["response"]["selectionCount"] == int(choose[1]), "Choose count matches")
     flags = []
     for option in options:
         parts = fractions_in(option["label"])
@@ -141,12 +149,11 @@ def plain_fractions(text):
 
 def mixed_sum(public):
     prompt = plain_fractions(public["prompt"])
-    found = re.fullmatch(
-        r"Find (\d+) (\d+)/(\d+) \+ (\d+) (\d+)/(\d+)\. Give a fraction or whole number\.",
-        prompt,
-    )
-    require(found is not None, "Mixed sum prompt")
-    w1, a, d, w2, b, d2 = map(int, found.groups())
+    found = re.findall(r"(\d+) (\d+)/(\d+)", prompt)
+    require(len(found) == 2, "Mixed sum prompt")
+    require(re.search(r"fraction or (?:a )?whole number", prompt), "Mixed sum asks for a fraction")
+    w1, a, d = map(int, found[0])
+    w2, b, d2 = map(int, found[1])
     require(d == d2 and d in GRADE4_DENOMS and 0 < a < d and 0 < b < d, "Mixed sum parts")
     require(public["response"]["kind"] == "fraction", "Fraction response")
     require(public.get("figure") is None, "No figure")
@@ -155,15 +162,11 @@ def mixed_sum(public):
 
 def sum_story(public):
     prompt = plain_fractions(public["prompt"])
-    patterns = [
-        r"Maya walks (\d+)/(\d+) of a meter along a path, then (\d+)/(\d+) of a meter farther on the same path\. The two lengths are parts of the same path\. How much of the path does she walk in all\?",
-        r"You pour (\d+)/(\d+) of a liter into a jug, then (\d+)/(\d+) of a liter more into the same jug\. Both amounts are parts of that one jug\. How much water is in the jug\?",
-        r"A chore takes (\d+)/(\d+) of an hour, then another part of the same chore takes (\d+)/(\d+) of an hour\. Both times are parts of the same chore\. How long do the two parts take together\?",
-    ]
-    found = next((re.fullmatch(p, prompt) for p in patterns if re.fullmatch(p, prompt)), None)
-    require(found is not None, "Join story prompt")
-    a, d, b, d2 = map(int, found.groups())
-    require(d == d2 and d in GRADE4_DENOMS and 0 < a <= d and 0 < b <= d and a + b > d, "Sum above 1")
+    found = re.findall(r"(\d+)/(\d+)", prompt)
+    require(len(found) == 2, "Join story prompt")
+    a, d = map(int, found[0])
+    b, d2 = map(int, found[1])
+    require(d == d2 and d in GRADE4_DENOMS and 0 < a < d and 0 < b < d, "Like addends")
     require(public["response"]["kind"] == "fraction" and public.get("figure") is None, "Story response")
     return rational(a + b, d)
 
@@ -202,8 +205,8 @@ def unit_multiple(public):
 
 def number_line_names(public):
     prompt = untex(public["prompt"])
-    found = re.fullmatch(
-        r"Point P is marked on the line\. Each whole is split into (\d+) equal steps\. Which fractions name P\? Choose 3\.",
+    found = re.search(
+        r"Each whole (?:is split into|has) (\d+) equal (?:steps|parts)\. Which fractions name P\? Choose 3\.",
         prompt,
     )
     require(found is not None, "Number-line prompt")
@@ -301,8 +304,8 @@ def decimal_symbols(public):
 
 def locate(public):
     prompt = untex(public["prompt"])
-    tenths = re.fullmatch(r"Which point is at \\frac\{(\d+)\}\{10\}\?", prompt)
-    hundredths = re.fullmatch(r"Which point is at (\d+\.\d{2})\?", prompt)
+    tenths = re.fullmatch(r"(?:Which point is at|Which letter marks) \\frac\{(\d+)\}\{10\}\?", prompt)
+    hundredths = re.fullmatch(r"(?:Which point is at|Which letter marks) (\d+\.\d{2})\?", prompt)
     require((tenths is None) != (hundredths is None), "Locate prompt")
     response = public["response"]
     require(response.get("kind") == "choice", "Choice response")
@@ -334,9 +337,9 @@ def locate(public):
 
 def place_value(public):
     prompt = untex(public["prompt"])
-    shown = re.fullmatch(r"Complete the sentence about (\d\.\d\d)\.", prompt)
-    require(shown is not None, "Hundredths number")
-    number = shown[1]
+    shown = re.findall(r"(\d\.\d\d)", prompt)
+    require(len(shown) == 1 and "Complete the sentence" in prompt, "Hundredths number")
+    number = shown[0]
     _, blanks = response_of(public, "inline", ["place", "value"])
     sentence = untex(sentence_of(public["response"]))
     digit = re.fullmatch(

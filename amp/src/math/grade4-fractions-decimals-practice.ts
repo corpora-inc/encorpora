@@ -21,7 +21,7 @@ import {
 } from "./multi-part-support";
 import { numberLine } from "./scene/author";
 import { serializeSelection } from "./selection-response";
-import { learnerName } from "./story-kit/fractions";
+import { centWords, denomFits, learnerName } from "./story-kit/fractions";
 
 /** Grade-4 denominators. 16 is the light Florida extra. */
 const DENOM_ROWS: readonly (readonly [number, number])[] = [
@@ -256,20 +256,12 @@ function decompositions(seed: string): GeneratedProblem {
   );
   const wholes = Math.ceil(numerator / denominator);
   const target = targetText(numerator, denominator);
-  const name = learnerName(r);
-  const frames = above
-    ? [
-        `The strips show ${target}, more than one whole. Which sums of denominator ${denominator} match that shade? Choose ${keyed.length}.`,
-        `${name} joins pieces of size 1/${denominator} to make ${target}. Which sums equal that amount? Choose ${keyed.length}.`,
-        `Two ribbons together make ${target}. Which sums with denominator ${denominator} equal that length? Choose ${keyed.length}.`,
-        `${target} is shaded on the strips. Which sums with denominator ${denominator} equal it? Choose ${keyed.length}.`,
-      ]
-    : [
-        `The strips show ${target}. Which sums of pieces with denominator ${denominator} match that shade? Choose ${keyed.length}.`,
-        `${name} shades ${target} of a chocolate bar cut into ${denominator} equal pieces. Which sums equal that shade? Choose ${keyed.length}.`,
-        `A licorice stick is ${target} of a foot, in pieces of 1/${denominator} foot. Which sums equal that length? Choose ${keyed.length}.`,
-        `${target} of a chocolate bar is left, in pieces of 1/${denominator}. Which sums equal that amount? Choose ${keyed.length}.`,
-      ];
+  const frames = [
+    `The strips show ${target} shaded. Which sums of pieces with denominator ${denominator} equal that shade? Choose ${keyed.length}.`,
+    `The shaded amount on the strips is ${target}. Which sums with denominator ${denominator} name that same shade? Choose ${keyed.length}.`,
+    `${target} is shaded on strips split into ${denominator} equal parts. Which sums with denominator ${denominator} equal that shade? Choose ${keyed.length}.`,
+    `Count the shade on the strips: ${target}. Which sums with denominator ${denominator} match it? Choose ${keyed.length}.`,
+  ];
   return problem(template, seed, {
     prompt: frames[r(0, frames.length - 1)]!,
     response: {
@@ -279,7 +271,7 @@ function decompositions(seed: string): GeneratedProblem {
       options,
     },
     answer,
-    hint: `The shaded amount is ${numerator} pieces of size 1/${denominator}. Add the numerators. A match uses denominator ${denominator} and totals ${numerator}.`,
+    hint: `The strips show ${target}, which is ${count(numerator, "piece")} of size 1/${denominator}. Add the numerators. A match uses denominator ${denominator} and totals ${numerator}.`,
     explanation: [
       `The shaded amount is ${count(numerator, "piece")} of size 1/${denominator}${wholes > 1 ? ", which is more than 1 whole" : ""}.`,
       `Fractions with the same denominator add by their numerators. A sum equals the shade when those numerators add to ${numerator}.`,
@@ -302,19 +294,19 @@ function mixedSum(seed: string): GeneratedProblem {
   const denominator = weightedDenom(r);
   const firstWhole = r(1, 3);
   const secondWhole = r(1, 3);
-  const regroup = denominator === 2 || r(0, 9) < 7;
-  let first: number;
-  let second: number;
-  if (denominator === 2) {
-    first = 1;
-    second = 1;
-  } else if (regroup) {
-    first = r(1, denominator - 1);
-    second = r(Math.max(1, denominator - first), denominator - 1);
-  } else {
-    first = r(1, denominator - 2);
-    second = r(1, denominator - first - 1);
-  }
+  const tops: number[] = [];
+  for (let n = 1; n < denominator; n++)
+    if (gcd(n, denominator) === 1) tops.push(n);
+  const wantRegroup = denominator === 2 || r(0, 9) < 7;
+  const first = tops[r(0, tops.length - 1)]!;
+  const regroupers = tops.filter((n) => first + n >= denominator);
+  const steadys = tops.filter((n) => first + n < denominator);
+  const second =
+    wantRegroup && regroupers.length
+      ? regroupers[r(0, regroupers.length - 1)]!
+      : steadys.length
+        ? steadys[r(0, steadys.length - 1)]!
+        : regroupers[r(0, regroupers.length - 1)]!;
   const totalPieces = (firstWhole + secondWhole) * denominator + first + second;
   const answer = rational(totalPieces, denominator);
   const wholeSum = Math.floor(totalPieces / denominator);
@@ -326,14 +318,45 @@ function mixedSum(seed: string): GeneratedProblem {
         ? `${rest}/${denominator}`
         : `${wholeSum} ${rest}/${denominator}`;
   const name = learnerName(r);
-  const frames = [
-    `${name} cuts one ribbon ${firstWhole} ${first}/${denominator} feet long and another ${secondWhole} ${second}/${denominator} feet long. How long are they together? Give a fraction or a whole number.`,
-    `${name} hikes ${firstWhole} ${first}/${denominator} miles, then ${secondWhole} ${second}/${denominator} miles more. How far is that in all? Give a fraction or a whole number.`,
-    `A recipe uses ${firstWhole} ${first}/${denominator} cups of flour and ${secondWhole} ${second}/${denominator} cups of oats. How many cups is that together? Give a fraction or a whole number.`,
-    `${name} practices piano for ${firstWhole} ${first}/${denominator} hours and soccer for ${secondWhole} ${second}/${denominator} hours. How long is that in all? Give a fraction or a whole number.`,
-    `${name} pours ${firstWhole} ${first}/${denominator} liters of water, then ${secondWhole} ${second}/${denominator} liters more. How much water is that? Give a fraction or a whole number.`,
-    `One board is ${firstWhole} ${first}/${denominator} feet. Another is ${secondWhole} ${second}/${denominator} feet. How long are the boards together? Give a fraction or a whole number.`,
-  ];
+  const left = `${firstWhole} ${first}/${denominator}`;
+  const right = `${secondWhole} ${second}/${denominator}`;
+  const ask = "Give a fraction or a whole number.";
+  const money = (whole: number, part: number) => {
+    const cents = centWords(part, denominator);
+    const dollars = whole === 1 ? "1 dollar" : `${whole} dollars`;
+    return cents ? ` (${dollars} and ${cents})` : "";
+  };
+  const frames: string[] = [];
+  if (denomFits(denominator, "foot"))
+    frames.push(
+      `${name} cuts one board ${left} feet long and another ${right} feet long. How long are the boards together? ${ask}`,
+      `${name} has ${left} feet of ribbon and adds ${right} feet more. How many feet of ribbon is that altogether? ${ask}`,
+    );
+  if (denomFits(denominator, "hour"))
+    frames.push(
+      `${name} practices piano for ${left} hours and soccer for ${right} hours. How long is that in all? ${ask}`,
+    );
+  if (denomFits(denominator, "mile"))
+    frames.push(
+      `${name} hikes ${left} miles, then ${right} miles more. How far is that in all? ${ask}`,
+    );
+  if (denomFits(denominator, "cup"))
+    frames.push(
+      `A recipe uses ${left} cups of flour and ${right} cups of oats. How many cups is that together? ${ask}`,
+    );
+  if (denomFits(denominator, "liter"))
+    frames.push(
+      `${name} pours ${left} liters of water into a jug, then ${right} liters more. How much water is in the jug? ${ask}`,
+    );
+  if (denomFits(denominator, "meter"))
+    frames.push(
+      `${name} uses ${left} meters of string, then ${right} meters more. How many meters of string is that? ${ask}`,
+    );
+  if (denomFits(denominator, "dollar"))
+    frames.push(
+      `${name} saves ${left} dollars${money(firstWhole, first)} and ${right} dollars${money(secondWhole, second)}. How many dollars is that altogether? ${ask}`,
+    );
+  if (!frames.length) throw new Error(`No mixed-sum unit for /${denominator}`);
   return problem(template, seed, {
     prompt: frames[r(0, frames.length - 1)]!,
     response: { kind: "fraction", label: "Sum" },
@@ -354,47 +377,96 @@ function mixedSum(seed: string): GeneratedProblem {
 function sumStory(seed: string): GeneratedProblem {
   const template = byId.get("like-fraction-sum-story")!;
   const r = random(template.id, seed);
-  const pools = [
-    [2, 4, 8],
-    [3, 6, 12],
-    [5, 10],
-    [4, 8, 16],
-    [10, 100],
-  ] as const;
-  const pool = pools[r(0, pools.length - 1)]!;
-  const denominator = pool[r(0, pool.length - 1)]!;
-  const first = r(1, denominator - 1);
-  const second = r(1, denominator - 1);
-  const answer = rational(first + second, denominator);
   const name = learnerName(r);
-  const over = first + second > denominator;
-  const small = denominator <= 12;
-  const frames = over
-    ? [
-        `${name} walks ${first}/${denominator} of a mile, then ${second}/${denominator} of a mile farther. How far does ${name} walk in all?`,
-        `${name} uses ${first}/${denominator} of a liter of paint, then ${second}/${denominator} of a liter more. How much paint is that in all?`,
-        `${name} practices ${first}/${denominator} of an hour, then ${second}/${denominator} of an hour more. How long is practice in all?`,
-        `One piece of ribbon is ${first}/${denominator} of a foot. Another is ${second}/${denominator} of a foot. How long are they together?`,
-        `${name} pours ${first}/${denominator} of a liter, then ${second}/${denominator} of a liter more, into a bucket. How much water is that?`,
-        `${name} runs ${first}/${denominator} of a lap, then ${second}/${denominator} of a lap. How many laps is that?`,
-      ]
-    : small
-      ? [
-          `${name} eats ${first}/${denominator} of a pizza. A friend eats ${second}/${denominator} of the same pizza. How much of the pizza did they eat together?`,
-          `${name} reads ${first}/${denominator} of a chapter, then ${second}/${denominator} of that chapter. How much of the chapter is that?`,
-          `${name} plants flowers in ${first}/${denominator} of a garden bed and herbs in ${second}/${denominator} of the same bed. How much of the bed is planted?`,
-          `A recipe needs ${first}/${denominator} of a cup of sugar and ${second}/${denominator} of a cup of flour. How many cups is that together?`,
-          `${name} paints ${first}/${denominator} of a poster in the morning and ${second}/${denominator} of it after school. How much of the poster is painted?`,
-          `${name} drinks ${first}/${denominator} of a liter of juice, then ${second}/${denominator} of a liter more. How much juice is that?`,
-        ]
-      : [
-          `${name} pours ${first}/${denominator} of a liter of water, then ${second}/${denominator} of a liter more. How much water is that?`,
-          `${name} uses ${first}/${denominator} of a meter of ribbon, then ${second}/${denominator} of a meter more. How much ribbon is that?`,
-          `${name} walks ${first}/${denominator} of a mile, then ${second}/${denominator} of a mile more. How far is that?`,
-          `A science tray holds ${first}/${denominator} of a liter, and ${name} adds ${second}/${denominator} of a liter. How much is in the tray?`,
-        ];
+  const wantOver = r(0, 1) === 1;
+  const contexts: {
+    denoms: readonly number[];
+    build: (a: number, b: number, d: number) => string;
+  }[] = [
+    {
+      denoms: [2, 3, 4, 6, 8, 12],
+      build: (a, b, d) =>
+        a + b > d
+          ? `${name} eats ${a}/${d} of one pizza. A friend eats ${b}/${d} of another pizza the same size. How much pizza did they eat together?`
+          : `${name} eats ${a}/${d} of a pizza. A friend eats ${b}/${d} of the same pizza. How much of the pizza did they eat together?`,
+    },
+    {
+      denoms: [2, 4, 5, 10],
+      build: (a, b, d) =>
+        a + b > d
+          ? `${name} reads ${a}/${d} of one chapter, then ${b}/${d} of another chapter the same length. How many chapters is that together?`
+          : `${name} reads ${a}/${d} of a chapter, then ${b}/${d} more of that same chapter. How much of the chapter is that?`,
+    },
+    {
+      denoms: [2, 3, 4, 5, 6, 8, 10, 12],
+      build: (a, b, d) =>
+        a + b > d
+          ? `${name} plants flowers in ${a}/${d} of one garden bed and herbs in ${b}/${d} of another bed the same size. How many garden beds is that together?`
+          : `${name} plants flowers in ${a}/${d} of a garden bed and herbs in ${b}/${d} of the same bed. How much of the bed is planted?`,
+    },
+    {
+      denoms: [2, 3, 4, 6, 8, 12],
+      build: (a, b, d) =>
+        a + b > d
+          ? `${name} paints ${a}/${d} of one poster in the morning and ${b}/${d} of another poster the same size after school. How many posters is that together?`
+          : `${name} paints ${a}/${d} of a poster in the morning and ${b}/${d} of that same poster after school. How much of the poster is painted?`,
+    },
+    {
+      denoms: [2, 4, 5, 8, 10],
+      build: (a, b, d) =>
+        `${name} walks ${a}/${d} mile, then ${b}/${d} mile farther on the same path. How far is that in all?`,
+    },
+    {
+      denoms: [2, 3, 4, 6, 12],
+      build: (a, b, d) =>
+        `${name} practices piano for ${a}/${d} of an hour, then ${b}/${d} of an hour more. How long is practice in all?`,
+    },
+    {
+      denoms: [2, 4, 5, 8, 10, 100],
+      build: (a, b, d) =>
+        (a + b) / d <= 0.5
+          ? `${name} measures ${a}/${d} liter of water into a lab cup, then ${b}/${d} liter more. How much water is in the cup?`
+          : `${name} pours ${a}/${d} liter of water into a jug, then ${b}/${d} liter more. How much water is in the jug?`,
+    },
+    {
+      denoms: [2, 4, 5, 10, 100],
+      build: (a, b, d) =>
+        a / d < 0.1 || b / d < 0.1
+          ? `${name} cuts ${a}/${d} meter of tape, then ${b}/${d} meter more. How much tape is that?`
+          : `${name} uses ${a}/${d} meter of ribbon, then ${b}/${d} meter more. How much ribbon is that?`,
+    },
+    {
+      denoms: [2, 3, 4, 8],
+      build: (a, b, d) =>
+        `A recipe needs ${a}/${d} cup of milk and ${b}/${d} cup of flour. How many cups is that together?`,
+    },
+    {
+      denoms: [2, 3, 4, 6, 8, 12, 16],
+      build: (a, b, d) =>
+        `One piece of ribbon is ${a}/${d} of a foot. Another piece is ${b}/${d} of a foot. Placed end to end, how long are they together?`,
+    },
+  ];
+  const context = contexts[r(0, contexts.length - 1)]!;
+  const denominator = context.denoms[r(0, context.denoms.length - 1)]!;
+  const tops: number[] = [];
+  for (let n = 1; n < denominator; n++)
+    if (gcd(n, denominator) === 1) tops.push(n);
+  const pairs: [number, number][] = [];
+  const every: [number, number][] = [];
+  for (const a of tops)
+    for (const b of tops) {
+      every.push([a, b]);
+      if (wantOver ? a + b > denominator : a + b <= denominator)
+        pairs.push([a, b]);
+    }
+  const chosen = (pairs.length ? pairs : every)[
+    r(0, (pairs.length ? pairs : every).length - 1)
+  ]!;
+  const first = chosen[0];
+  const second = chosen[1];
+  const answer = rational(first + second, denominator);
   return problem(template, seed, {
-    prompt: frames[r(0, frames.length - 1)]!,
+    prompt: context.build(first, second, denominator),
     response: { kind: "fraction", label: "Amount in all" },
     answer,
     hint: `The denominators match, so add the numerators ${first} and ${second}. The denominator stays ${denominator}.`,
@@ -463,10 +535,10 @@ function unitMultiple(seed: string): GeneratedProblem {
   ]);
   return multiPartProblem(template, seed, r, {
     prompt: [
-      `The strips show pieces of size $\\frac{1}{${denominator}}$. How many of those pieces are in each line? Fill in both boxes.`,
-      `Each piece on the strips is $\\frac{1}{${denominator}}$ of the whole. Fill in both boxes.`,
-      `Count the $\\frac{1}{${denominator}}$ pieces in the fraction, then in the product. Fill in both boxes.`,
-      `Two lines use pieces of size $\\frac{1}{${denominator}}$. Fill in both boxes.`,
+      `The strips show pieces of size $\\frac{1}{${denominator}}$. How many of those pieces are in the fraction, and how many are in the product?`,
+      `Each piece on the strips is $\\frac{1}{${denominator}}$ of one whole. Count the pieces in each line.`,
+      `Line 1 is a fraction made of $\\frac{1}{${denominator}}$ pieces. Line 2 multiplies those pieces. Fill in both counts.`,
+      `The strips are split into ${denominator} equal pieces. How many pieces does each line use?`,
     ][r(0, 3)]!,
     layout: "inline",
     label: "Fill in both boxes",
@@ -533,12 +605,10 @@ function numberLineNames(seed: string): GeneratedProblem {
   }));
   return problem(template, seed, {
     prompt: [
-      `${learnerName(r)} marks point $P$ on a trail line. Each mile is ${base} equal steps. Which fractions name $P$? Choose 3.`,
-      `The fuel mark $P$ sits on a line split into ${base} equal steps per whole. Which fractions name $P$? Choose 3.`,
-      `A ribbon is measured on a line with ${base} equal steps in each foot. Point $P$ is marked. Which fractions name $P$? Choose 3.`,
-      `${learnerName(r)} finds point $P$ on a ruler. Each inch has ${base} equal steps. Which fractions name $P$? Choose 3.`,
-      `Point $P$ is a stop on a number line. Each whole has ${base} equal steps. Which fractions name $P$? Choose 3.`,
-    ][r(0, 4)]!,
+      `Point $P$ is marked on the number line. Each whole is split into ${base} equal parts. Which fractions name $P$? Choose 3.`,
+      `Point $P$ is marked on the number line. Each whole has ${base} equal parts. Which fractions name $P$? Choose 3.`,
+      `Point $P$ is marked on the line. Each whole is split into ${base} equal steps. Which fractions name $P$? Choose 3.`,
+    ][r(0, 2)]!,
     response: {
       kind: "multi-select",
       label: "Choose every fraction that names the point",
@@ -653,14 +723,30 @@ function fractionSymbols(seed: string): GeneratedProblem {
   const [c, d] = pairs[0]!.right;
   const [e, f] = pairs[1]!.left;
   const [g, h] = pairs[1]!.right;
-  const name = learnerName(r);
+  const denoms = [b, d, f, h];
+  const every = (unit: Parameters<typeof denomFits>[1]) =>
+    denoms.every((den) => denomFits(den, unit));
   const prompts = [
-    `Each fraction names parts of the same whole. Choose the symbol that makes each comparison true.`,
-    `${name} compares two pairs of fractions of the same whole. Choose the symbol that makes each comparison true.`,
-    `The fractions are parts of one pizza, then parts of one ribbon. Choose the symbol that makes each comparison true.`,
-    `Same-size wholes: choose the symbol that makes each comparison true.`,
-    `${name} looks at two pairs. Choose <, =, or > for each pair.`,
+    `Choose <, =, or > for each pair. Both fractions in a pair are parts of one same-size whole.`,
+    `Each pair compares two fractions of the same whole. Choose the symbol that makes each comparison true.`,
+    `Put <, =, or > between the fractions in each pair. A pair uses one same-size whole.`,
   ];
+  if (every("cup"))
+    prompts.push(
+      `Two recipes measure milk in cups. Choose <, =, or > for each pair of amounts.`,
+    );
+  if (every("hour"))
+    prompts.push(
+      `Two practice times are fractions of an hour. Choose <, =, or > for each pair.`,
+    );
+  if (every("mile"))
+    prompts.push(
+      `Two walks are fractions of a mile on the same path. Choose <, =, or > for each pair.`,
+    );
+  if (every("pizza"))
+    prompts.push(
+      `Two same-size pizzas are sliced into these fractions. Choose <, =, or > for each pair.`,
+    );
   return multiPartProblem(template, seed, r, {
     prompt: prompts[r(0, prompts.length - 1)]!,
     layout: "cards",
@@ -678,6 +764,260 @@ function fractionSymbols(seed: string): GeneratedProblem {
       return `Over the common denominator ${multiple}, the top numbers are ${leftTop} and ${rightTop}. ${leftTop} is ${comparisonWords(leftTop, rightTop)} ${rightTop}, so the first fraction is ${comparisonWords(leftTop, rightTop)} the second.`;
     }),
   });
+}
+
+type DecimalThing = {
+  name: string;
+  unit: string;
+  verb: string;
+  attr: string;
+  article: string;
+  min: number;
+  max: number;
+};
+
+const DECIMAL_THINGS: readonly DecimalThing[] = [
+  {
+    name: "notebook",
+    unit: "centimeters",
+    verb: "is",
+    attr: "thick",
+    article: "A",
+    min: 0.2,
+    max: 0.8,
+  },
+  {
+    name: "folder",
+    unit: "centimeters",
+    verb: "is",
+    attr: "thick",
+    article: "A",
+    min: 0.1,
+    max: 0.6,
+  },
+  {
+    name: "playing card",
+    unit: "centimeters",
+    verb: "is",
+    attr: "thick",
+    article: "A",
+    min: 0.02,
+    max: 0.12,
+  },
+  {
+    name: "sheet of paper",
+    unit: "centimeters",
+    verb: "is",
+    attr: "thick",
+    article: "A",
+    min: 0.005,
+    max: 0.03,
+  },
+  {
+    name: "coin",
+    unit: "centimeters",
+    verb: "is",
+    attr: "thick",
+    article: "A",
+    min: 0.08,
+    max: 0.3,
+  },
+  {
+    name: "eraser",
+    unit: "centimeters",
+    verb: "is",
+    attr: "thick",
+    article: "An",
+    min: 0.4,
+    max: 1,
+  },
+  {
+    name: "ribbon",
+    unit: "meters",
+    verb: "is",
+    attr: "long",
+    article: "A",
+    min: 0.15,
+    max: 0.9,
+  },
+  {
+    name: "shoelace",
+    unit: "meters",
+    verb: "is",
+    attr: "long",
+    article: "A",
+    min: 0.3,
+    max: 0.9,
+  },
+  {
+    name: "seedling",
+    unit: "meters",
+    verb: "is",
+    attr: "tall",
+    article: "A",
+    min: 0.05,
+    max: 0.4,
+  },
+  {
+    name: "pencil",
+    unit: "meters",
+    verb: "is",
+    attr: "long",
+    article: "A",
+    min: 0.12,
+    max: 0.22,
+  },
+  {
+    name: "bookmark",
+    unit: "meters",
+    verb: "is",
+    attr: "long",
+    article: "A",
+    min: 0.1,
+    max: 0.25,
+  },
+  {
+    name: "glass",
+    unit: "liters",
+    verb: "holds",
+    attr: "",
+    article: "A",
+    min: 0.15,
+    max: 0.4,
+  },
+  {
+    name: "water bottle",
+    unit: "liters",
+    verb: "holds",
+    attr: "",
+    article: "A",
+    min: 0.3,
+    max: 1,
+  },
+  {
+    name: "soup bowl",
+    unit: "liters",
+    verb: "holds",
+    attr: "",
+    article: "A",
+    min: 0.2,
+    max: 0.5,
+  },
+  {
+    name: "measuring spoon",
+    unit: "liters",
+    verb: "holds",
+    attr: "",
+    article: "A",
+    min: 0.005,
+    max: 0.02,
+  },
+  {
+    name: "video-game reaction",
+    unit: "seconds",
+    verb: "takes",
+    attr: "",
+    article: "A",
+    min: 0.1,
+    max: 0.5,
+  },
+  {
+    name: "piece of string",
+    unit: "meters",
+    verb: "is",
+    attr: "long",
+    article: "A",
+    min: 0.01,
+    max: 0.99,
+  },
+  {
+    name: "scrap of tape",
+    unit: "meters",
+    verb: "is",
+    attr: "long",
+    article: "A",
+    min: 0.01,
+    max: 0.99,
+  },
+  {
+    name: "lab cup of water",
+    unit: "liters",
+    verb: "holds",
+    attr: "",
+    article: "A",
+    min: 0.01,
+    max: 0.99,
+  },
+  {
+    name: "beaker of water",
+    unit: "liters",
+    verb: "holds",
+    attr: "",
+    article: "A",
+    min: 0.01,
+    max: 0.99,
+  },
+];
+
+const decimalValue = (text: string) => Number(text);
+
+function thingSentence(thing: DecimalThing, value: string): string {
+  const tail = thing.attr ? ` ${thing.attr}` : "";
+  return `${thing.article} ${thing.name} ${thing.verb} ${value} ${thing.unit}${tail}.`;
+}
+
+function pairGroups(left: string, right: string): DecimalThing[][] {
+  const a = decimalValue(left);
+  const b = decimalValue(right);
+  const fits = DECIMAL_THINGS.filter(
+    (thing) =>
+      a >= thing.min && a <= thing.max && b >= thing.min && b <= thing.max,
+  );
+  const byUnit = new Map<string, DecimalThing[]>();
+  for (const thing of fits) {
+    const group = byUnit.get(thing.unit) ?? [];
+    group.push(thing);
+    byUnit.set(thing.unit, group);
+  }
+  return [...byUnit.values()]
+    .filter((group) => group.length >= 2)
+    .sort((x, y) => {
+      const span = (group: DecimalThing[]) =>
+        Math.min(...group.map((thing) => thing.max - thing.min));
+      return span(x) - span(y);
+    });
+}
+
+/** Two sentences per pair. Both objects in a pair measure the same unit. */
+function decimalPairPrompt(
+  r: Random,
+  first: [string, string],
+  second: [string, string],
+): string {
+  const groups = pairGroups(first[0], first[1]);
+  const more = pairGroups(second[0], second[1]);
+  if (!groups.length || !more.length)
+    throw new Error("Decimal comparison needs two objects of one unit");
+  const pool = groups[r(0, groups.length - 1)]!;
+  const left = pool[r(0, pool.length - 1)]!;
+  const right = pool.find((thing) => thing.name !== left.name) ?? pool[0]!;
+  const used = new Set([left.name, right.name]);
+  const fresh = more.filter((group) =>
+    group.some((thing) => !used.has(thing.name)),
+  );
+  const other = (fresh.length ? fresh : more)[
+    r(0, (fresh.length ? fresh : more).length - 1)
+  ]!;
+  const third =
+    other.find((thing) => !used.has(thing.name)) ??
+    other.find((thing) => thing.name !== right.name) ??
+    other[0]!;
+  const fourth = other.find((thing) => thing.name !== third.name) ?? other[0]!;
+  return [
+    `First pair: ${thingSentence(left, first[0])} ${thingSentence(right, first[1])}`,
+    `Second pair: ${thingSentence(third, second[0])} ${thingSentence(fourth, second[1])}`,
+    "Choose <, =, or > for each pair.",
+  ].join(" ");
 }
 
 function asHundredths(text: string): number {
@@ -713,18 +1053,10 @@ function decimalSymbols(seed: string): GeneratedProblem {
     slots[1]!,
     ` ${rows[1]![1]}`,
   ]);
-  const name = learnerName(r);
   const [a0, b0] = rows[0]!;
   const [a1, b1] = rows[1]!;
-  const prompts = [
-    `Two ropes are ${a0} meters and ${b0} meters. Two more are ${a1} meters and ${b1} meters. Choose the symbol for each pair.`,
-    `${name} compares seedlings ${a0} meters tall and ${b0} meters tall, then ${a1} meters and ${b1} meters. Choose the symbol for each pair.`,
-    `Two bottles hold ${a0} liters and ${b0} liters. Two more hold ${a1} liters and ${b1} liters. Choose the symbol for each pair.`,
-    `Reaction times are ${a0} seconds and ${b0} seconds, then ${a1} seconds and ${b1} seconds. Choose the symbol for each pair.`,
-    `Two notebooks are ${a0} centimeters thick and ${b0} centimeters thick, then ${a1} centimeters and ${b1} centimeters. Choose the symbol for each pair.`,
-  ];
   return multiPartProblem(template, seed, r, {
-    prompt: prompts[r(0, prompts.length - 1)]!,
+    prompt: decimalPairPrompt(r, [a0, b0], [a1, b1]),
     layout: "cards",
     reuse: true,
     label: "Put a symbol card in each box",
@@ -773,12 +1105,8 @@ function locate(seed: string): GeneratedProblem {
     offsets = [start, start + 4, start + 8, start + 12];
     targetOffset = offsets[r(0, 3)]!;
     const fractionText = `$\\frac{${targetOffset}}{10}$`;
-    prompt = [
-      `Which point is at ${fractionText}?`,
-      `Which letter marks ${fractionText} on the line?`,
-      `The line counts tenths from 0 to 2. Which point is at ${fractionText}?`,
-      `Find the point at ${fractionText}.`,
-    ][r(0, 3)]!;
+    const ask = r(0, 1) === 0 ? "Which point is at" : "Which letter marks";
+    prompt = `${ask} ${fractionText}?`;
     hint = `The left end is 0. Each step is one tenth. Count ${count(targetOffset, "step")} to reach ${targetOffset}/10.`;
     explanationValue = `$\\frac{${targetOffset}}{10}$`;
   } else {
@@ -790,12 +1118,8 @@ function locate(seed: string): GeneratedProblem {
     step = 0.01;
     const target = hundredths(windowStart + targetOffset);
     const decimalText = target.toFixed(2);
-    prompt = [
-      `Which point is at ${decimalText}?`,
-      `Which letter marks ${decimalText} on the line?`,
-      `The line is a close-up from ${plainDecimal(min)} to ${plainDecimal(max)}. Which point is at ${decimalText}?`,
-      `Find the point at ${decimalText}.`,
-    ][r(0, 3)]!;
+    const ask = r(0, 1) === 0 ? "Which point is at" : "Which letter marks";
+    prompt = `${ask} ${decimalText}?`;
     hint = `The left end is ${plainDecimal(min)}. Each step is one hundredth. Count ${count(targetOffset, "step")} to reach ${decimalText}.`;
     explanationValue = target.toFixed(2);
   }
@@ -896,12 +1220,13 @@ function placeValue(seed: string): GeneratedProblem {
     },
     ".",
   ]);
-  const name = learnerName(r);
   const prompts = [
-    `In ${shown}, name the digit ${asked.digit}. Complete the sentence.`,
-    `${name} sees the number ${shown}. The digit to look at is ${asked.digit}. Complete the sentence.`,
-    `A length is ${shown} meters. Name the place and the value of the digit ${asked.digit}. Complete the sentence.`,
-    `The price is ${shown} dollars. Complete the sentence about the digit ${asked.digit}.`,
+    `Complete the sentence about the digit ${asked.digit} in ${shown}.`,
+    ones >= 6
+      ? `A race time is ${shown} seconds. Complete the sentence about the digit ${asked.digit}.`
+      : `A stopwatch shows ${shown} seconds. Complete the sentence about the digit ${asked.digit}.`,
+    `A board is ${shown} meters long. Complete the sentence about the digit ${asked.digit}.`,
+    `A sticker costs ${shown} dollars. Complete the sentence about the digit ${asked.digit}.`,
   ];
   return multiPartProblem(template, seed, r, {
     prompt: prompts[r(0, prompts.length - 1)]!,
