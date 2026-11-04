@@ -448,7 +448,7 @@ test("estimates match independent checks", () => {
     let p = generateProblem("compatible-number-estimate", `s${seed}`);
     let prompt = p.public.prompt;
     const between =
-      /^([\d,]+) ÷ ([\d,]+) is between which two whole numbers\?$/.exec(prompt);
+      /([\d,]+) ÷ ([\d,]+) is between which two whole numbers\?/.exec(prompt);
     if (between) {
       const dividend = num(between[1]!);
       const divisor = num(between[2]!);

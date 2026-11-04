@@ -11,6 +11,7 @@ import {
   recordedSweepVariant,
   sweepChoose,
 } from "./number-domain-axes";
+import { estimateLead } from "./story-kit/operations";
 
 /* State-specific number sense, money, estimation and customary measurement
  * (TEKS, Florida B.E.S.T. and Virginia SOL requirements beyond the common
@@ -1956,6 +1957,14 @@ export function k8StateNumberCase(templateId: string, seed: string) {
       if (error instanceof Error && error.message.startsWith("Need three"))
         continue;
       throw error;
+    }
+    if (
+      templateId === "compatible-number-estimate" &&
+      axes?.cast5 &&
+      axes.cast5 !== "classic"
+    ) {
+      const lead = estimateLead[axes.cast5];
+      draft = { ...draft, prompt: `${lead} ${draft.prompt}` };
     }
     if (leaks(draft)) continue;
     const problem = toProblem(meta, seed, r, draft);

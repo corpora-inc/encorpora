@@ -7,6 +7,7 @@ import {
   type AxisValues,
 } from "./variation/axes";
 import type { FigureCapability, ProblemVariant } from "./contracts";
+import { operationStoryValues } from "./story-kit/operations";
 
 /**
  * Number-domain and surface axes for grade K-8 families whose released-item
@@ -30,6 +31,22 @@ const axisFor = <const V extends string>(
     ...(needs ? { needs } : {}),
     ...(weights ? { weights } : {}),
   });
+
+/** Story surface. The classic value is silent so a stored instance keeps its
+ * variant id. Weights are tuned so book samples vary and the legacy surface
+ * still appears often enough to replay. */
+const storyWeight = (classic: number) =>
+  [classic, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] as const;
+const storyAxis = (id: string, classicWeight: number) => ({
+  ...axisFor(
+    id,
+    operationStoryValues,
+    "classic",
+    undefined,
+    storyWeight(classicWeight),
+  ),
+  silentLegacy: true as const,
+});
 
 export const sweepAxes = {
   /** Scale a ratio: the target quantity is a whole multiple of the ratio's
@@ -95,6 +112,7 @@ export const sweepAxes = {
       undefined,
       [9, 1],
     ),
+    telling21: storyAxis("telling21", 8),
   },
   /** Equivalent expressions: integer coefficients (legacy) or a fractional
    * factor distributed over a binomial. */
@@ -200,9 +218,11 @@ export const sweepAxes = {
       ...axisFor("unknown", ["larger", "smaller"], "larger"),
       silentLegacy: true,
     },
+    frame18: storyAxis("frame18", 11),
   },
   /** Remainder stories: totals at most 55 (legacy) or up to 9,999.
-   * The legacy value is silent so a stored instance keeps its old variant id. */
+   * The legacy value is silent so a stored instance keeps its old variant id.
+   * A second silent axis dresses the same model in a real situation. */
   "full-kits": {
     "number-domain": {
       ...axisFor(
@@ -214,6 +234,7 @@ export const sweepAxes = {
       ),
       silentLegacy: true,
     },
+    story27: storyAxis("story27", 4),
   },
   "seats-needed": {
     "number-domain": {
@@ -226,6 +247,7 @@ export const sweepAxes = {
       ),
       silentLegacy: true,
     },
+    telling25: storyAxis("telling25", 4),
   },
   "kit-leftovers": {
     "number-domain": {
@@ -238,6 +260,7 @@ export const sweepAxes = {
       ),
       silentLegacy: true,
     },
+    scene25: storyAxis("scene25", 5),
   },
   /** A point estimate (legacy) or the two whole numbers a quotient lies between.
    * The legacy value is silent so a stored instance keeps its old variant id. */
@@ -246,6 +269,7 @@ export const sweepAxes = {
       ...axisFor("bounds", ["point", "between"], "point", undefined, [4, 1]),
       silentLegacy: true,
     },
+    cast5: storyAxis("cast5", 4),
   },
 } as const satisfies Record<string, AxisSet>;
 

@@ -5,7 +5,12 @@ import {
   type Draft,
   type Random,
 } from "./distribution-practice";
-import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
+import {
+  isSweepId,
+  recordedSweepVariant,
+  sweepChoose,
+  sweepVariant,
+} from "./number-domain-axes";
 
 /**
  * Round-2 problem types inside existing number, expression, area, estimation,
@@ -943,13 +948,112 @@ const noFive = (r: Random, lo: number, hi: number) => {
 /** Two-digit numbers within 2 of a multiple of ten, so rounded products stay close. */
 const nearTen = (r: Random) => r(2, 9) * 10 + pick(r, [1, 2, 8, 9]);
 
+const told = (axes?: Record<string, string>) => {
+  const value = axes?.telling21;
+  return value && value !== "classic" ? value : undefined;
+};
+
+/** Same rounding task, in a situation. The phrase "N word with N" stays so the
+ * equal-groups reading is unchanged. */
+function dressedProduct(
+  telling: string,
+  a: number,
+  b: number,
+): { prompt: string; noun: string } {
+  const line: Record<string, readonly [string, string]> = {
+    sports: [
+      `The coach sets out ${a} bins with ${b} balls in each bin`,
+      "balls",
+    ],
+    pets: [
+      `The shelter fills ${a} bowls with ${b} treats in each bowl`,
+      "treats",
+    ],
+    cooking: [
+      `A baker fills ${a} tins with ${b} muffins in each tin`,
+      "muffins",
+    ],
+    garden: [
+      `The club plants ${a} rows with ${b} seedlings in each row`,
+      "seedlings",
+    ],
+    reading: [
+      `The library packs ${a} bins with ${b} books in each bin`,
+      "books",
+    ],
+    saving: [
+      `The class stacks ${a} packs with ${b} tickets in each pack`,
+      "tickets",
+    ],
+    cards: [`Maya sorts ${a} piles with ${b} cards in each pile`, "cards"],
+    travel: [
+      `The crew loads ${a} crates with ${b} bottles in each crate`,
+      "bottles",
+    ],
+    science: [
+      `The lab lines up ${a} trays with ${b} slides in each tray`,
+      "slides",
+    ],
+    music: [
+      `The band sets ${a} stands with ${b} sheets in each stand`,
+      "sheets",
+    ],
+    school: [
+      `A teacher fills ${a} cups with ${b} pencils in each cup`,
+      "pencils",
+    ],
+  };
+  const [lead, noun] = line[telling] ?? line.school!;
+  return {
+    noun,
+    prompt: `${lead}. Round each number to the nearest ten. Which is the best estimate of the total number of ${noun}?`,
+  };
+}
+
+function dressedTwoStep(
+  telling: string,
+  t1: number,
+  n1: number,
+  t2: number,
+  n2: number,
+): string {
+  const line: Record<string, string> = {
+    sports: `The coach sets out ${t1} bins with ${n1} balls and ${t2} crates with ${n2} cones`,
+    pets: `The shelter fills ${t1} bowls with ${n1} treats and ${t2} bins with ${n2} toys`,
+    cooking: `A baker fills ${t1} tins with ${n1} muffins and ${t2} trays with ${n2} rolls`,
+    garden: `The club plants ${t1} rows with ${n1} seedlings and ${t2} rows with ${n2} bulbs`,
+    reading: `The library packs ${t1} bins with ${n1} books and ${t2} boxes with ${n2} magazines`,
+    saving: `The class stacks ${t1} packs with ${n1} tickets and ${t2} envelopes with ${n2} stamps`,
+    cards: `Maya sorts ${t1} piles with ${n1} cards and ${t2} packs with ${n2} sleeves`,
+    travel: `The crew loads ${t1} crates with ${n1} bottles and ${t2} coolers with ${n2} snacks`,
+    science: `The lab lines up ${t1} trays with ${n1} slides and ${t2} boxes with ${n2} samples`,
+    music: `The band sets ${t1} stands with ${n1} sheets and ${t2} folders with ${n2} parts`,
+    school: `A teacher fills ${t1} cups with ${n1} pencils and ${t2} boxes with ${n2} erasers`,
+  };
+  return `${line[telling]}. Round the number in each group to the nearest ten. Which is the best estimate of the total?`;
+}
+
+const VERDICT_WHO: Record<string, string> = {
+  sports: "Jamal",
+  pets: "Lena",
+  cooking: "Rosa",
+  garden: "Noah",
+  reading: "Sofia",
+  saving: "Elena",
+  cards: "Ravi",
+  travel: "Chloe",
+  science: "Diego",
+  music: "Jonah",
+  school: "Leila",
+};
+
 /** Estimate how many more one decimal quantity is than another by rounding
  * each to the nearest whole number. */
 function decimalDifferenceEstimate(r: Random): Built {
   const story = pick(r, [
-    ["jar", "milliliters", "holds"],
-    ["bottle", "milliliters", "holds"],
-    ["pitcher", "milliliters", "holds"],
+    ["package", "grams", "weighs"],
+    ["ribbon", "centimeters", "is"],
+    ["trail", "meters", "is"],
   ] as const);
   const tenths = () => pick(r, [1, 2, 3, 4, 6, 7, 8, 9]);
   const whole = r(300, 980);
@@ -1015,15 +1119,19 @@ function estimateReasonableness(
     const ra = round10(a);
     const rb = round10(b);
     const est = ra * rb;
+    const dressed = told(axes);
+    const productScene = dressed ? dressedProduct(dressed, a, b) : undefined;
     return {
       variant,
-      prompt: `${story[0]} ${a} ${story[1]} ${b} ${story[2]}. Round each number to the nearest ten. Which is the best estimate of the total number of ${story[3]}?`,
+      prompt:
+        productScene?.prompt ??
+        `${story[0]} ${a} ${story[1]} ${b} ${story[2]}. Round each number to the nearest ten. Which is the best estimate of the total number of ${story[3]}?`,
       answer: "",
       hint: `Round ${a} and ${b} to the nearest ten first. Then decide whether the story joins equal groups, which calls for multiplication, or adds amounts.`,
       explanation: [
         `${a} rounds to ${ra} and ${b} rounds to ${rb}.`,
         `Equal groups call for multiplication: ${ra} × ${rb} = ${commas(est)}.`,
-        `The best estimate is about ${commas(est)} ${story[3]}.`,
+        `The best estimate is about ${commas(est)} ${productScene?.noun ?? story[3]}.`,
       ],
       choices: choicesFrom(r, commas(est), [
         {
@@ -1060,17 +1168,22 @@ function estimateReasonableness(
         : Math.round(exact / 10);
     const yes = `Reasonable. Rounding gives ${ra} × ${rb} = ${commas(est)}, which is close to ${commas(claim)}.`;
     const no = `Not reasonable. Rounding gives ${ra} × ${rb} = ${commas(est)}, so the answer should be near ${commas(est)}, not ${commas(claim)}.`;
+    const who = told(axes);
     return {
       variant,
-      prompt: `Kai calculated ${a} × ${b} = ${commas(claim)}. Use rounding to the nearest ten to decide whether this answer is reasonable. Which statement is correct?`,
+      prompt: who
+        ? `${VERDICT_WHO[who] ?? "Kai"} calculated ${a} × ${b} = ${commas(claim)}. Use rounding to the nearest ten to decide whether this answer is reasonable. Which statement is correct?`
+        : `Kai calculated ${a} × ${b} = ${commas(claim)}. Use rounding to the nearest ten to decide whether this answer is reasonable. Which statement is correct?`,
       answer: "",
-      hint: `Round ${a} and ${b} to the nearest ten, multiply the rounded numbers, and compare that estimate with Kai's answer. An estimate cannot show the exact digits, but it can show whether the size is right.`,
+      hint: who
+        ? `Round ${a} and ${b} to the nearest ten, multiply the rounded numbers, and compare that estimate with ${VERDICT_WHO[who] ?? "Kai"}'s answer. An estimate cannot show the exact digits, but it can show whether the size is right.`
+        : `Round ${a} and ${b} to the nearest ten, multiply the rounded numbers, and compare that estimate with Kai's answer. An estimate cannot show the exact digits, but it can show whether the size is right.`,
       explanation: [
         `${a} rounds to ${ra} and ${b} rounds to ${rb}.`,
         `${ra} × ${rb} = ${commas(est)}.`,
         reasonable
-          ? `Kai's answer ${commas(claim)} is close to ${commas(est)}, so it is reasonable.`
-          : `Kai's answer ${commas(claim)} is far from ${commas(est)}, so it is not reasonable.`,
+          ? `${VERDICT_WHO[who ?? ""] ?? "Kai"}'s answer ${commas(claim)} is close to ${commas(est)}, so it is reasonable.`
+          : `${VERDICT_WHO[who ?? ""] ?? "Kai"}'s answer ${commas(claim)} is far from ${commas(est)}, so it is not reasonable.`,
       ],
       choices: choicesFrom(r, reasonable ? yes : no, [
         {
@@ -1101,15 +1214,24 @@ function estimateReasonableness(
     const e1 = t1 * round10(n1);
     const e2 = t2 * round10(n2);
     const est = e1 + e2;
+    const stepScene = told(axes);
     return {
       variant,
-      prompt: `A bakery fills ${t1} trays with ${n1} rolls each in the morning and ${t2} trays with ${n2} rolls each in the afternoon. Round the number on each tray to the nearest ten. Which is the best estimate of the total number of rolls?`,
+      prompt: stepScene
+        ? dressedTwoStep(stepScene, t1, n1, t2, n2)
+        : `A bakery fills ${t1} trays with ${n1} rolls each in the morning and ${t2} trays with ${n2} rolls each in the afternoon. Round the number on each tray to the nearest ten. Which is the best estimate of the total number of rolls?`,
       answer: "",
       hint: `Estimate the ${t1} morning trays and the ${t2} afternoon trays separately: round ${n1} and ${n2} to the nearest ten, multiply by the trays, then combine the two estimates.`,
       explanation: [
-        `Morning: ${t1} × ${round10(n1)} = ${commas(e1)}.`,
-        `Afternoon: ${t2} × ${round10(n2)} = ${commas(e2)}.`,
-        `Together: ${commas(e1)} + ${commas(e2)} = ${commas(est)} rolls.`,
+        stepScene
+          ? `First group: ${t1} × ${round10(n1)} = ${commas(e1)}.`
+          : `Morning: ${t1} × ${round10(n1)} = ${commas(e1)}.`,
+        stepScene
+          ? `Second group: ${t2} × ${round10(n2)} = ${commas(e2)}.`
+          : `Afternoon: ${t2} × ${round10(n2)} = ${commas(e2)}.`,
+        stepScene
+          ? `Together: ${commas(e1)} + ${commas(e2)} = ${commas(est)}.`
+          : `Together: ${commas(e1)} + ${commas(e2)} = ${commas(est)} rolls.`,
       ],
       choices: choicesFrom(r, commas(est), [
         {
@@ -1142,15 +1264,37 @@ function estimateReasonableness(
   while (n % 100 < 10 || (n % 100 > 40 && n % 100 < 60) || n % 100 > 90);
   const rn = round100(n);
   const est = rn / seats;
+  const ride = told(axes);
+  const rideLine: Record<string, string> = {
+    sports: `${n} players ride to a game in vans that each seat ${b}`,
+    pets: `${n} puppies travel to new homes in cars that each seat ${b}`,
+    cooking: `${n} muffin boxes go to the fair in carts that each hold ${b}`,
+    garden: `${n} seedlings go to the sale in trays that each hold ${b}`,
+    reading: `${n} books go to the book fair in bins that each hold ${b}`,
+    saving: `${n} ticket rolls go to the booths in tubs that each hold ${b}`,
+    cards: `${n} card decks go to the tournament in boxes that each hold ${b}`,
+    travel: `${n} campers ride to the lake in vans that each seat ${b}`,
+    science: `${n} rock samples go to the museum in crates that each hold ${b}`,
+    music: `${n} music stands go to the concert in carts that each hold ${b}`,
+    school: `${n} students ride to a museum in vans that each seat ${b}`,
+  };
   return {
     variant: "quotient",
-    prompt: `${n} students ride to a game on buses that each seat ${b}. Round ${n} to the nearest hundred and ${b} to the nearest ten. Which is the best estimate of the number of buses needed?`,
+    prompt: ride
+      ? `${rideLine[ride]}. Round ${n} to the nearest hundred and ${b} to the nearest ten. Which is the best estimate of how many are needed?`
+      : `${n} students ride to a game on buses that each seat ${b}. Round ${n} to the nearest hundred and ${b} to the nearest ten. Which is the best estimate of the number of buses needed?`,
     answer: "",
-    hint: `Round ${n} and ${b} as asked. The rounded numbers divide evenly, because the story shares students equally among buses, so divide.`,
+    hint: ride
+      ? `Round ${n} and ${b} as asked. The rounded numbers divide evenly, because the story shares the items into equal groups, so divide.`
+      : `Round ${n} and ${b} as asked. The rounded numbers divide evenly, because the story shares students equally among buses, so divide.`,
     explanation: [
       `${n} rounds to ${rn}, and ${b} rounds to ${seats}.`,
-      `Share the students among the buses: ${rn} ÷ ${seats} = ${est}.`,
-      `The best estimate is about ${est} buses.`,
+      ride
+        ? `Share them into equal groups: ${rn} ÷ ${seats} = ${est}.`
+        : `Share the students among the buses: ${rn} ÷ ${seats} = ${est}.`,
+      ride
+        ? `The best estimate is about ${est}.`
+        : `The best estimate is about ${est} buses.`,
     ],
     choices: choicesFrom(r, String(est), [
       {
@@ -1159,18 +1303,21 @@ function estimateReasonableness(
       },
       {
         label: String(rn - seats),
-        feedback:
-          "The story shares students among buses, which is division, not subtraction.",
+        feedback: ride
+          ? "The story shares a total into equal groups, which is division, not subtraction."
+          : "The story shares students among buses, which is division, not subtraction.",
       },
       {
         label: String(rn + seats),
-        feedback:
-          "The story shares students among buses, which is division, not addition.",
+        feedback: ride
+          ? "The story shares a total into equal groups, which is division, not addition."
+          : "The story shares students among buses, which is division, not addition.",
       },
       {
         label: String(rn * seats),
-        feedback:
-          "Seats and students are related by dividing: each bus holds a part of the students.",
+        feedback: ride
+          ? "Equal groups call for division: the total is shared by the size of one group."
+          : "Seats and students are related by dividing: each bus holds a part of the students.",
       },
     ]),
   };
@@ -1445,7 +1592,14 @@ export function numberMeasurementGapCase(templateId: string, seed: string) {
     return {
       variant: draft.variant,
       problem: axes
-        ? { ...problem, variant: sweepVariant(draft.variant, axes) }
+        ? {
+            ...problem,
+            variant:
+              templateId === "estimate-reasonableness"
+                ? (recordedSweepVariant(templateId, draft.variant, axes) ??
+                  sweepVariant(draft.variant, axes))
+                : sweepVariant(draft.variant, axes),
+          }
         : problem,
     };
   }

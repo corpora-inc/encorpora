@@ -6,6 +6,8 @@ import type {
 } from "./contracts";
 import { random, type Random } from "./distribution-practice";
 import { scene, table } from "./scene/author";
+import { operationStoryValues, timesCast } from "./story-kit/operations";
+import { chooseAxes, defineAxis } from "./variation/axes";
 import type { Scene } from "./scene/spec";
 
 /* Texas grades 3-8 requirements that existing skills did not yet practise:
@@ -516,20 +518,34 @@ const THINGS = [
   "beads",
 ];
 
-function timesAsManyComparison(r: Random): Built {
+const timesStoryAxis = {
+  story19: defineAxis("story19", operationStoryValues, {
+    legacy: "classic",
+    weights: [6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    silentLegacy: true,
+  }),
+};
+
+function timesAsManyComparison(r: Random, telling = "classic"): Built {
   const variant = pick(r, [
     "expression-to-sentence",
     "sentence-to-expression",
     "compare-counts",
   ]);
-  const [a, b] = twoNames(r);
-  const thing = pick(r, THINGS);
+  const [rawA, rawB] = twoNames(r);
+  const rawThing = pick(r, THINGS);
+  const cast = telling === "classic" ? undefined : timesCast[telling];
+  const a = cast?.a ?? rawA;
+  const b = cast?.b ?? rawB;
+  const thing = cast?.thing ?? rawThing;
   const k = variant === "expression-to-sentence" ? r(3, 9) : r(2, 9);
   if (variant === "expression-to-sentence") {
     const base = r(2, 25);
     return {
       variant,
-      prompt: `${a} has ${base} ${thing}. The product ${k} × ${base} is the number of ${thing} that ${b} has. Which sentence compares the two amounts?`,
+      prompt: cast
+        ? `${a} ${cast.verb} ${base} ${thing}. The product ${k} × ${base} is the number of ${thing} that ${b} ${cast.verb}. Which sentence compares the two amounts?`
+        : `${a} has ${base} ${thing}. The product ${k} × ${base} is the number of ${thing} that ${b} has. Which sentence compares the two amounts?`,
       hint: `In ${k} × ${base}, the ${base} is ${a}'s amount and the ${k} says how many copies of it ${b} has. Say that with "times as many".`,
       explanation: [
         `${a} has ${base} ${thing}, and ${b} has ${k} × ${base}.`,
@@ -560,7 +576,9 @@ function timesAsManyComparison(r: Random): Built {
     if (base === 2 && k === 2) base = 3;
     return {
       variant,
-      prompt: `${a} has ${base} ${thing}. ${b} has ${k} times as many ${thing} as ${a}. Which expression gives the number of ${thing} ${b} has?`,
+      prompt: cast
+        ? `${a} ${cast.verb} ${base} ${thing}. ${b} ${cast.verb} ${k} times as many ${thing} as ${a}. Which expression gives the number of ${thing} ${b} ${cast.verb}?`
+        : `${a} has ${base} ${thing}. ${b} has ${k} times as many ${thing} as ${a}. Which expression gives the number of ${thing} ${b} has?`,
       hint: `"${k} times as many" means ${k} equal copies of ${a}'s ${base}. Which operation joins equal copies?`,
       explanation: [
         `${b} has ${k} times as many as ${a}, so ${b} has ${k} copies of ${base}.`,
@@ -595,7 +613,9 @@ function timesAsManyComparison(r: Random): Built {
   const big = k * s;
   return {
     variant,
-    prompt: `${a} has ${s} ${thing}. ${b} has ${big} ${thing}. Which sentence compares the amounts correctly with "times as many"?`,
+    prompt: cast
+      ? `${a} ${cast.verb} ${s} ${thing}. ${b} ${cast.verb} ${big} ${thing}. Which sentence compares the amounts correctly with "times as many"?`
+      : `${a} has ${s} ${thing}. ${b} has ${big} ${thing}. Which sentence compares the amounts correctly with "times as many"?`,
     hint: `Ask how many groups of ${a}'s ${s} ${thing} fit in ${b}'s ${big}. That number goes in front of "times as many".`,
     explanation: [
       `"Times as many" asks how many groups of ${a}'s ${s} make ${b}'s ${big}.`,
@@ -3675,17 +3695,31 @@ export function texas38Case(templateId: string, seed: string) {
   const build = builders[templateId];
   if (!meta || !build) throw new Error(`Unknown template ${templateId}`);
   const r = random(meta.id, seed);
+  const telling =
+    templateId === "times-as-many-comparison"
+      ? chooseAxes(templateId, seed, timesStoryAxis).story19
+      : "classic";
   for (let attempt = 0; attempt < 120; attempt++) {
     let draft: Built;
     try {
-      draft = build(r);
+      draft =
+        templateId === "times-as-many-comparison"
+          ? timesAsManyComparison(r, telling)
+          : build(r);
     } catch (error) {
       if (error instanceof Error && error.message.startsWith("Need three"))
         continue;
       throw error;
     }
     if (leaks(draft)) continue;
-    return { variant: draft.variant, problem: toProblem(meta, seed, r, draft) };
+    const problem = toProblem(meta, seed, r, draft);
+    return {
+      variant: draft.variant,
+      problem:
+        templateId === "times-as-many-comparison" && telling !== "classic"
+          ? { ...problem, variant: { id: telling, axes: { story19: telling } } }
+          : problem,
+    };
   }
   throw new Error("Could not generate a problem without leaking the answer");
 }

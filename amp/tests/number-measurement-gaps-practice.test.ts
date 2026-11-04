@@ -259,25 +259,22 @@ test("estimates follow the stated rounding rule", () => {
       );
       assert.ok(correct.includes(`= ${est.toLocaleString("en-US")}`));
     } else if (variant === "decimal-difference") {
-      const m =
-        /holds (\d+\.\d) milliliters and another holds (\d+\.\d) milliliters/.exec(
-          p,
-        )!;
+      const m = /(\d+\.\d)[^0-9]+(\d+\.\d)/.exec(p)!;
       assert.equal(
         num(correct),
         Math.round(Number(m[1])) - Math.round(Number(m[2])),
       );
     } else if (variant === "two-step") {
-      const m =
-        /fills (\d+) trays with (\d+) rolls each .* and (\d+) trays with (\d+) rolls/.exec(
-          p,
-        )!;
+      const m = /(\d+) \w+ with (\d+).+ and (\d+) \w+ with (\d+)/.exec(p)!;
       assert.equal(
         num(correct),
         Number(m[1]) * r10(Number(m[2])) + Number(m[3]) * r10(Number(m[4])),
       );
     } else {
-      const m = /^(\d+) students .* seat (\d+)\./.exec(p)!;
+      const m =
+        /Round ([\d,]+) to the nearest hundred and ([\d,]+) to the nearest ten/.exec(
+          p,
+        )!;
       assert.equal(
         num(correct),
         (Math.round(Number(m[1]) / 100) * 100) / r10(Number(m[2])),

@@ -28,23 +28,41 @@ const golden = JSON.parse(
   ),
 ) as Record<string, { digest: string; variantId: string | null }[]>;
 
-const legacyAxis: Record<string, readonly [string, string]> = {
-  "comparison-amount": ["unknown", "larger"],
-  "full-kits": ["number-domain", "within-55"],
-  "seats-needed": ["number-domain", "within-55"],
-  "kit-leftovers": ["number-domain", "within-55"],
-  "compatible-number-estimate": ["bounds", "point"],
-  "estimate-reasonableness": ["operation", "total-product-quotient"],
+const legacyAxis: Record<string, readonly (readonly [string, string])[]> = {
+  "comparison-amount": [
+    ["unknown", "larger"],
+    ["frame18", "classic"],
+  ],
+  "full-kits": [
+    ["number-domain", "within-55"],
+    ["story27", "classic"],
+  ],
+  "seats-needed": [
+    ["number-domain", "within-55"],
+    ["telling25", "classic"],
+  ],
+  "kit-leftovers": [
+    ["number-domain", "within-55"],
+    ["scene25", "classic"],
+  ],
+  "compatible-number-estimate": [
+    ["bounds", "point"],
+    ["cast5", "classic"],
+  ],
+  "estimate-reasonableness": [
+    ["operation", "total-product-quotient"],
+    ["telling21", "classic"],
+  ],
 };
 
 const onLegacy = (
   id: string,
   problem: ReturnType<typeof generateProblem>,
-): boolean => {
-  const [key, legacy] = legacyAxis[id]!;
-  const value = problem.variant?.axes?.[key];
-  return value == null || value === legacy;
-};
+): boolean =>
+  legacyAxis[id]!.every(([key, legacy]) => {
+    const value = problem.variant?.axes?.[key];
+    return value == null || value === legacy;
+  });
 
 const digestOf = (problem: ReturnType<typeof generateProblem>): string =>
   createHash("sha256").update(JSON.stringify(problem)).digest("hex");
@@ -59,9 +77,13 @@ test("stored operation instances replay byte-identical on the legacy axis value"
       const now = generateProblem(id, seed);
       assert.deepEqual(generateProblem(id, seed), now, `${id} ${seed}`);
       if (!onLegacy(id, now)) {
-        const [key, legacyValue] = legacyAxis[id]!;
-        assert.notEqual(now.variant?.axes?.[key], undefined, `${id} ${seed}`);
-        assert.notEqual(now.variant?.axes?.[key], legacyValue, `${id} ${seed}`);
+        assert.ok(
+          legacyAxis[id]!.some(([key, legacyValue]) => {
+            const value = now.variant?.axes?.[key];
+            return value != null && value !== legacyValue;
+          }),
+          `${id} ${seed}`,
+        );
         return;
       }
       // A weight change can move a seed onto the legacy surface. That seed's
