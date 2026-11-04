@@ -169,7 +169,7 @@ function shiftDraft(r: Random, side: "left" | "right"): ShiftBuilt | null {
     layout: "slots",
     label: "Choose the new place and the new value",
     slots,
-    hint: `One place to the ${direction} changes the value by a factor of 10. The digit is worth ${times} as it is now.`,
+    hint: `In ${g(n)}, the digit ${digit} is worth ${g(oldValue)}. One place to the ${direction} makes ${g(oldValue)} worth ${times}.`,
     explanation: [
       `The digit ${digit} is worth ${g(oldValue)}, so it is in the ${PLACES[place]} place: ${digit} × ${g(10 ** place)} = ${g(oldValue)}.`,
       side === "left"
@@ -219,7 +219,7 @@ function productDraft(r: Random, factor: 10 | 100): ShiftBuilt | null {
     layout: "slots" as const,
     label: "Choose the product and the shift",
     slots,
-    hint: `Multiplying by ${factor} makes every digit worth ${factor} times as much. Count the zeros in ${factor}: each zero is one place to the left.`,
+    hint: `Multiplying ${g(n)} by ${factor} makes every digit worth ${factor} times as much. Count the zeros in ${factor}: each zero is one place to the left.`,
     explanation: [
       `${factor} is ${factor === 10 ? "10, one zero" : "10 × 10, two zeros"}. Each zero moves every digit one place to the left.`,
       `So the digits of ${g(n)} move ${moved} to the left.`,
@@ -431,27 +431,27 @@ function lineDraft(r: Random): Draft | null {
         label: g(x),
         feedback:
           Math.abs(x - value) === step
-            ? `${g(x)} is one tick ${x > value ? "past" : "before"} point P. Each tick is ${g(step)}.`
-            : `${g(x)} is not the tick at P. Start at ${g(near)} and count the ticks by ${g(step)}.`,
+            ? `${g(x)} is one tick ${x > value ? "past" : "before"} point $P$. Each tick is ${g(step)}.`
+            : `${g(x)} is not the tick at $P$. Start at ${g(near)} and count the ticks by ${g(step)}.`,
       })),
     );
     if (!choices) return null;
     const ticks = Math.abs(value - near) / step;
     return {
-      prompt: "Which number is at point P on the number line?",
+      prompt: "Which number is at point $P$ on the number line?",
       figure: {
         kind: "scene",
         scene: lineScene(line, [{ at: value, label: "P" }]),
       } satisfies SemanticFigure,
       answer: "",
-      hint: `The labeled tick nearest P is ${g(near)}. Count the tick marks from there. Each tick is ${g(step)}.`,
+      hint: `The labeled tick nearest $P$ is ${g(near)}. Count the tick marks from there. Each tick is ${g(step)}.`,
       explanation: [
         `The ticks are ${g(step)} apart.`,
-        `Point P is ${ticks} ${ticks === 1 ? "tick" : "ticks"} to the ${value > near ? "right" : "left"} of ${g(near)}.`,
+        `Point $P$ is ${ticks} ${ticks === 1 ? "tick" : "ticks"} to the ${value > near ? "right" : "left"} of ${g(near)}.`,
         value > near
           ? `${g(near)} + ${ticks} × ${g(step)} = ${g(value)}.`
           : `${g(near)} − ${ticks} × ${g(step)} = ${g(value)}.`,
-        `Point P is at ${g(value)}.`,
+        `Point $P$ is at ${g(value)}.`,
       ],
       choices,
     };
@@ -460,19 +460,20 @@ function lineDraft(r: Random): Draft | null {
   const value = chosen[0]!;
   const order = shuffle(r, [...chosen]);
   const letters = ["A", "B", "C", "D"];
-  const correct = letters[order.indexOf(value)]!;
+  const mathLetter = (letter: string) => `$${letter}$`;
+  const correct = mathLetter(letters[order.indexOf(value)]!);
   const near = line.labels.reduce((a, b) =>
     Math.abs(b - value) < Math.abs(a - value) ? b : a,
   );
   const choices = fourChoices(
     correct,
     letters
-      .filter((letter) => letter !== correct)
+      .filter((letter) => mathLetter(letter) !== correct)
       .map((letter) => {
         const at = order[letters.indexOf(letter)]!;
         return {
-          label: letter,
-          feedback: `${letter} is at ${g(at)}. Count from ${g(near)} by ${g(step)} to find ${g(value)}.`,
+          label: mathLetter(letter),
+          feedback: `Point ${mathLetter(letter)} is at ${g(at)}. Count from ${g(near)} by ${g(step)} to find ${g(value)}.`,
         };
       }),
   );

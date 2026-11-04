@@ -390,9 +390,9 @@ test("large number lines are read and located from the tick spacing", () => {
     } else {
       directions.add("locate");
       const wanted = num(problem.public.prompt.match(/at ([\d,]+)/)![1]!);
-      const keyed = response.options.find(
-        (o) => o.id === problem.answer,
-      )!.label;
+      const keyed = response.options
+        .find((o) => o.id === problem.answer)!
+        .label.replaceAll("$", "");
       const mark = marks.find((item) => item.label === keyed);
       assert.equal(mark?.at, wanted);
       assert.equal((line.labels as number[]).includes(wanted), false);

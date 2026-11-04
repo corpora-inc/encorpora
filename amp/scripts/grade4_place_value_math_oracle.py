@@ -203,7 +203,7 @@ def solve_line(public):
     require(wanted not in line["labels"], "The answer tick is labeled")
     marks = [mark for mark in line["marks"] if mark["at"] == wanted]
     require(len(marks) == 1, "One mark at the number")
-    hits = [option["id"] for option in options if option["label"] == marks[0]["label"]]
+    hits = [option["id"] for option in options if option["label"].replace("$", "") == marks[0]["label"]]
     require(len(hits) == 1, "Locate key")
     return hits[0]
 
