@@ -35,6 +35,12 @@ def factors_of(n):
 NUM = r"(\d{1,3}(?:,\d{3})*)"
 
 
+def first_two(prompt):
+    found = re.findall(NUM, prompt)
+    require(len(found) >= 2, "Two public numbers")
+    return whole(found[0]), whole(found[1])
+
+
 def whole(text):
     require(re.fullmatch(r"\d{1,3}(,\d{3})*", text) is not None, f"Badly written number {text!r}")
     require(len(text) < 4 or "," in text, f"Missing thousands separator in {text!r}")
@@ -46,23 +52,20 @@ def solve(public):
     require(template in SUPPORTED, "Wrong family")
     prompt = public["prompt"]
     if template == "multiply-two-digit":
-        a, b = (whole(v) for v in re.fullmatch(rf"What is {NUM} × {NUM}\?", prompt).groups())
+        a, b = first_two(prompt)
         require(12 <= b <= 999 and 11 <= a <= 999, "Factor size")
         return str(a * b)
     if template == "facts-to-twelve":
+        a, b = first_two(prompt)
         if "×" in prompt:
-            a, b = (whole(v) for v in re.fullmatch(rf"What is {NUM} × {NUM}\?", prompt).groups())
             require(a in (11, 12) or b in (11, 12), "An 11 or 12 factor")
             return str(a * b)
-        dividend, teen = (whole(v) for v in re.fullmatch(rf"What is {NUM} ÷ {NUM}\?", prompt).groups())
-        require(teen in (11, 12) and dividend % teen == 0, "Division by 11 or 12")
-        return str(dividend // teen)
+        require(b in (11, 12) and a % b == 0, "Division by 11 or 12")
+        return str(a // b)
     if template == "growing-shape-pattern":
-        start, add, step = (int(v) for v in re.fullmatch(
-            r"A tile pattern starts with (\d+) tiles?\. Each next step adds (\d+) tiles?\. "
-            r"The figure shows steps 1, 2 and 3\. How many tiles are in step (\d+)\?",
-            prompt,
-        ).groups())
+        start = int(re.search(r"starts with (\d+)", prompt).group(1))
+        add = int(re.search(r"adds (\d+)", prompt).group(1))
+        step = int(re.search(r"step (\d+)\?", prompt).group(1))
         require(step >= 5, "The asked step is not drawn")
         elements = public["figure"]["scene"]["elements"]
         require(not any(e.get("type") == "lineTable" for e in elements), "Tiles, not a count table")
@@ -79,8 +82,7 @@ def solve(public):
         require(not any(str(e.get("id", "")).startswith(f"s{step}") for e in elements), "The asked step is not drawn")
         return str(start + (step - 1) * add)
     if template == "quotient-remainder-one-digit":
-        dividend, divisor = (whole(v) for v in re.search(
-            rf"Divide {NUM} by {NUM}", prompt).groups())
+        dividend, divisor = first_two(prompt)
         require(100 <= dividend <= 9999 and 2 <= divisor <= 9, "Grade-4 division size")
         quotient, rem = divmod(dividend, divisor)
         require(0 < rem < divisor, "A nonzero remainder smaller than the divisor")
@@ -94,7 +96,7 @@ def solve(public):
             picks["r"] = pick(blanks["r"], N(rem))
         return compact(picks)
     if template == "factor-pairs-select":
-        n = int(re.search(r"factor of (\d+)", prompt).group(1))
+        n = int(re.search(r"factors? of (\d+)", prompt).group(1))
         require(2 <= n <= 144, "Factor range")
         factors = set(factors_of(n))
         options = public["response"]["options"]
@@ -103,7 +105,7 @@ def solve(public):
         require(sorted(int(o["label"].replace(",", "")) for o in options if o["id"] in keyed) == sorted(factors),
                 "Every factor is offered")
         return json.dumps(sorted(keyed), separators=(",", ":"))
-    d = int(re.search(r"multiple of (\d+)", prompt).group(1))
+    d = int(re.search(r"multiples? of (\d+)", prompt).group(1))
     require(2 <= d <= 9, "One-digit divisor")
     options = public["response"]["options"]
     require(len({o["label"] for o in options}) == len(options), "Distinct choices")
