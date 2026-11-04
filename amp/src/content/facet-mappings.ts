@@ -46,6 +46,7 @@ import { realNumberFacetMappings } from "./real-number-coverage";
 import { radicalFacetMappings } from "./radical-coverage";
 import { comparisonFacetMappings } from "./comparison-coverage";
 import { numberSenseFacetMappings } from "./number-sense-coverage";
+import { grade4PlaceValueFacetMappings } from "./grade4-place-value-lessons";
 import { multiplyDivideFacetMappings } from "./multiply-divide-coverage";
 import { addSubtractFacetMappings } from "./add-subtract-coverage";
 import { factsFacetMappings } from "./facts-coverage";
@@ -2105,6 +2106,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Choose the number that belongs in a region of nested whole numbers, integers and rational numbers, the number outside a set, or the region a misplaced quotient belongs to, with the sets described in words. Does not assess a drawn Venn diagram, irrational numbers or the dropdown response format.",
   },
   ...numberSenseFacetMappings,
+  ...grade4PlaceValueFacetMappings,
   ...multiplyDivideFacetMappings,
   ...addSubtractFacetMappings,
   ...factsFacetMappings,

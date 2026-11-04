@@ -867,12 +867,14 @@ const courses: readonly TexasCourse[] = [
         ["large-place-value", "decimal-place-value"],
         [
           "digit-value-ratio",
+          "place-shift-value",
+          "number-name-numeral",
           "multidigit-digit-value",
           "decimal-digit-value",
           "expanded-decimal",
         ],
-        "Read a digit's value or its ratio to a neighboring place",
-        "digit-value-ratio compares the same digit in two places of a whole number on the grade 4 large-place-value skill. multidigit-digit-value names one digit's value. Decimal digit value and expanded form belong to the grade 5 decimal-place-value skill. The range through 1,000,000,000 is not certified. Writing expanded notation is not assessed.",
+        "Read a digit's value, a shift, or a number name",
+        "digit-value-ratio compares the same digit in two places. place-shift-value shifts a digit one place or multiplies by 10 or 100. number-name-numeral matches a number name and a numeral up to 1,000,000. All three are the grade 4 large-place-value skill. Decimal digit value and expanded form belong to the grade 5 decimal-place-value skill. The range through 1,000,000,000 is not certified on these items.",
       ],
       [
         "g4-compare-whole",
