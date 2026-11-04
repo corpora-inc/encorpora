@@ -5,7 +5,13 @@ import {
   type Draft,
   type Random,
 } from "./distribution-practice";
-import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
+import {
+  isSweepId,
+  recordedSweepVariant,
+  sweepChoose,
+  sweepVariant,
+} from "./number-domain-axes";
+import { versionGatedAxes } from "./variation/axes";
 
 /**
  * Round-2 problem types inside existing number, expression, area, estimation,
@@ -55,7 +61,8 @@ export const numberMeasurementGapTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "estimate-reasonableness",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Estimate and check reasonableness",
     skillId: "multistep-whole-stories",
     gradeBand: "3–5",
@@ -943,14 +950,113 @@ const noFive = (r: Random, lo: number, hi: number) => {
 /** Two-digit numbers within 2 of a multiple of ten, so rounded products stay close. */
 const nearTen = (r: Random) => r(2, 9) * 10 + pick(r, [1, 2, 8, 9]);
 
+const told = (axes?: Record<string, string>) => {
+  const value = axes?.telling21;
+  return value && value !== "classic" ? value : undefined;
+};
+
+/** Same rounding task, in a situation. The phrase "N word with N" stays so the
+ * equal-groups reading is unchanged. */
+function dressedProduct(
+  telling: string,
+  a: number,
+  b: number,
+): { prompt: string; noun: string } {
+  const line: Record<string, readonly [string, string]> = {
+    sports: [
+      `The coach sets out ${a} bins with ${b} balls in each bin`,
+      "balls",
+    ],
+    pets: [
+      `The shelter fills ${a} bags with ${b} treats in each bag`,
+      "treats",
+    ],
+    cooking: [
+      `A bakery packs ${a} boxes with ${b} cookies in each box`,
+      "cookies",
+    ],
+    garden: [
+      `The club plants ${a} rows with ${b} seedlings in each row`,
+      "seedlings",
+    ],
+    reading: [
+      `The library packs ${a} bins with ${b} books in each bin`,
+      "books",
+    ],
+    saving: [
+      `The class stacks ${a} packs with ${b} tickets in each pack`,
+      "tickets",
+    ],
+    cards: [`Maya sorts ${a} piles with ${b} cards in each pile`, "cards"],
+    travel: [
+      `The crew loads ${a} crates with ${b} bottles in each crate`,
+      "bottles",
+    ],
+    science: [
+      `The science class fills ${a} jars with ${b} beads in each jar`,
+      "beads",
+    ],
+    music: [
+      `The band fills ${a} folders with ${b} pages in each folder`,
+      "pages",
+    ],
+    school: [
+      `A teacher fills ${a} boxes with ${b} pencils in each box`,
+      "pencils",
+    ],
+  };
+  const [lead, noun] = line[telling] ?? line.school!;
+  return {
+    noun,
+    prompt: `${lead}. Round each number to the nearest ten. Which is the best estimate of the total number of ${noun}?`,
+  };
+}
+
+/** Two groups of the same kind of thing. The total is one count. */
+function dressedTwoStep(
+  telling: string,
+  t1: number,
+  n1: number,
+  t2: number,
+  n2: number,
+): string {
+  const line: Record<string, string> = {
+    sports: `The coach sets out ${t1} bins with ${n1} balls each and ${t2} bins with ${n2} balls each`,
+    pets: `The shelter fills ${t1} bags with ${n1} treats each and ${t2} bags with ${n2} treats each`,
+    cooking: `A bakery packs ${t1} boxes with ${n1} cookies each and ${t2} boxes with ${n2} cookies each`,
+    garden: `The club plants ${t1} rows with ${n1} seedlings each and ${t2} rows with ${n2} seedlings each`,
+    reading: `The library packs ${t1} bins with ${n1} books each and ${t2} bins with ${n2} books each`,
+    saving: `The class stacks ${t1} packs with ${n1} tickets each and ${t2} packs with ${n2} tickets each`,
+    cards: `Maya sorts ${t1} piles with ${n1} cards each and ${t2} piles with ${n2} cards each`,
+    travel: `The crew loads ${t1} crates with ${n1} bottles each and ${t2} crates with ${n2} bottles each`,
+    science: `The science class fills ${t1} jars with ${n1} beads each and ${t2} jars with ${n2} beads each`,
+    music: `The band fills ${t1} folders with ${n1} pages each and ${t2} folders with ${n2} pages each`,
+    school: `A teacher fills ${t1} boxes with ${n1} pencils each and ${t2} boxes with ${n2} pencils each`,
+  };
+  return `${line[telling]}. Round the number in each group to the nearest ten. Which is the best estimate of the total?`;
+}
+
 /** Estimate how many more one decimal quantity is than another by rounding
  * each to the nearest whole number. */
 function decimalDifferenceEstimate(r: Random): Built {
-  const story = pick(r, [
-    ["jar", "milliliters", "holds"],
-    ["bottle", "milliliters", "holds"],
-    ["pitcher", "milliliters", "holds"],
-  ] as const);
+  // Version 1 forces `measure` to milliliters: jar, bottle, and pitcher.
+  // The current version keeps the mixed units on every draw. The axis is not
+  // recorded, so a stored variant id stays the operation token.
+  const storedMeasure = versionGatedAxes().some(
+    (axis) => axis.id === "measure",
+  );
+  const stories: readonly (readonly [string, string, string])[] = storedMeasure
+    ? [
+        ["jar", "milliliters", "holds"],
+        ["bottle", "milliliters", "holds"],
+        ["pitcher", "milliliters", "holds"],
+      ]
+    : [
+        ["package", "grams", "weighs"],
+        ["ribbon", "centimeters", "is"],
+        ["bottle", "milliliters", "holds"],
+      ];
+  const story = pick(r, stories);
   const tenths = () => pick(r, [1, 2, 3, 4, 6, 7, 8, 9]);
   const whole = r(300, 980);
   const lessWhole = r(100, whole - 60);
@@ -1015,15 +1121,19 @@ function estimateReasonableness(
     const ra = round10(a);
     const rb = round10(b);
     const est = ra * rb;
+    const dressed = told(axes);
+    const productScene = dressed ? dressedProduct(dressed, a, b) : undefined;
     return {
       variant,
-      prompt: `${story[0]} ${a} ${story[1]} ${b} ${story[2]}. Round each number to the nearest ten. Which is the best estimate of the total number of ${story[3]}?`,
+      prompt:
+        productScene?.prompt ??
+        `${story[0]} ${a} ${story[1]} ${b} ${story[2]}. Round each number to the nearest ten. Which is the best estimate of the total number of ${story[3]}?`,
       answer: "",
       hint: `Round ${a} and ${b} to the nearest ten first. Then decide whether the story joins equal groups, which calls for multiplication, or adds amounts.`,
       explanation: [
         `${a} rounds to ${ra} and ${b} rounds to ${rb}.`,
         `Equal groups call for multiplication: ${ra} × ${rb} = ${commas(est)}.`,
-        `The best estimate is about ${commas(est)} ${story[3]}.`,
+        `The best estimate is about ${commas(est)} ${productScene?.noun ?? story[3]}.`,
       ],
       choices: choicesFrom(r, commas(est), [
         {
@@ -1060,17 +1170,35 @@ function estimateReasonableness(
         : Math.round(exact / 10);
     const yes = `Reasonable. Rounding gives ${ra} × ${rb} = ${commas(est)}, which is close to ${commas(claim)}.`;
     const no = `Not reasonable. Rounding gives ${ra} × ${rb} = ${commas(est)}, so the answer should be near ${commas(est)}, not ${commas(claim)}.`;
+    const who = told(axes);
+    const counted: Record<string, string> = {
+      sports: `The coach set out ${a} bins with ${b} balls in each bin and counted ${commas(claim)} balls.`,
+      pets: `The shelter filled ${a} bags with ${b} treats in each bag and counted ${commas(claim)} treats.`,
+      cooking: `The bakery packed ${a} boxes with ${b} cookies in each box and counted ${commas(claim)} cookies.`,
+      garden: `The club planted ${a} rows with ${b} seedlings in each row and counted ${commas(claim)} seedlings.`,
+      reading: `The library packed ${a} bins with ${b} books in each bin and counted ${commas(claim)} books.`,
+      saving: `The class stacked ${a} packs with ${b} tickets in each pack and counted ${commas(claim)} tickets.`,
+      cards: `Maya sorted ${a} piles with ${b} cards in each pile and counted ${commas(claim)} cards.`,
+      travel: `The crew loaded ${a} crates with ${b} bottles in each crate and counted ${commas(claim)} bottles.`,
+      science: `The science class filled ${a} jars with ${b} beads in each jar and counted ${commas(claim)} beads.`,
+      music: `The band filled ${a} folders with ${b} pages in each folder and counted ${commas(claim)} pages.`,
+      school: `The teacher filled ${a} boxes with ${b} pencils in each box and counted ${commas(claim)} pencils.`,
+    };
     return {
       variant,
-      prompt: `Kai calculated ${a} × ${b} = ${commas(claim)}. Use rounding to the nearest ten to decide whether this answer is reasonable. Which statement is correct?`,
+      prompt: who
+        ? `${counted[who]} Use rounding to the nearest ten to decide whether this answer is reasonable. Which statement is correct?`
+        : `Kai calculated ${a} × ${b} = ${commas(claim)}. Use rounding to the nearest ten to decide whether this answer is reasonable. Which statement is correct?`,
       answer: "",
-      hint: `Round ${a} and ${b} to the nearest ten, multiply the rounded numbers, and compare that estimate with Kai's answer. An estimate cannot show the exact digits, but it can show whether the size is right.`,
+      hint: who
+        ? `Round ${a} and ${b} to the nearest ten, multiply the rounded numbers, and compare that estimate with the counted total. An estimate cannot show the exact digits, but it can show whether the size is right.`
+        : `Round ${a} and ${b} to the nearest ten, multiply the rounded numbers, and compare that estimate with Kai's answer. An estimate cannot show the exact digits, but it can show whether the size is right.`,
       explanation: [
         `${a} rounds to ${ra} and ${b} rounds to ${rb}.`,
         `${ra} × ${rb} = ${commas(est)}.`,
         reasonable
-          ? `Kai's answer ${commas(claim)} is close to ${commas(est)}, so it is reasonable.`
-          : `Kai's answer ${commas(claim)} is far from ${commas(est)}, so it is not reasonable.`,
+          ? `${who ? "That count" : "Kai's answer"} ${commas(claim)} is close to ${commas(est)}, so it is reasonable.`
+          : `${who ? "That count" : "Kai's answer"} ${commas(claim)} is far from ${commas(est)}, so it is not reasonable.`,
       ],
       choices: choicesFrom(r, reasonable ? yes : no, [
         {
@@ -1101,35 +1229,51 @@ function estimateReasonableness(
     const e1 = t1 * round10(n1);
     const e2 = t2 * round10(n2);
     const est = e1 + e2;
+    const stepScene = told(axes);
     return {
       variant,
-      prompt: `A bakery fills ${t1} trays with ${n1} rolls each in the morning and ${t2} trays with ${n2} rolls each in the afternoon. Round the number on each tray to the nearest ten. Which is the best estimate of the total number of rolls?`,
+      prompt: stepScene
+        ? dressedTwoStep(stepScene, t1, n1, t2, n2)
+        : `A bakery fills ${t1} trays with ${n1} rolls each in the morning and ${t2} trays with ${n2} rolls each in the afternoon. Round the number on each tray to the nearest ten. Which is the best estimate of the total number of rolls?`,
       answer: "",
-      hint: `Estimate the ${t1} morning trays and the ${t2} afternoon trays separately: round ${n1} and ${n2} to the nearest ten, multiply by the trays, then combine the two estimates.`,
+      hint: stepScene
+        ? `Estimate each group separately: round ${n1} and ${n2} to the nearest ten, multiply by ${t1} and by ${t2}, then add the two estimates.`
+        : `Estimate the ${t1} morning trays and the ${t2} afternoon trays separately: round ${n1} and ${n2} to the nearest ten, multiply by the trays, then combine the two estimates.`,
       explanation: [
-        `Morning: ${t1} × ${round10(n1)} = ${commas(e1)}.`,
-        `Afternoon: ${t2} × ${round10(n2)} = ${commas(e2)}.`,
-        `Together: ${commas(e1)} + ${commas(e2)} = ${commas(est)} rolls.`,
+        stepScene
+          ? `First group: ${t1} × ${round10(n1)} = ${commas(e1)}.`
+          : `Morning: ${t1} × ${round10(n1)} = ${commas(e1)}.`,
+        stepScene
+          ? `Second group: ${t2} × ${round10(n2)} = ${commas(e2)}.`
+          : `Afternoon: ${t2} × ${round10(n2)} = ${commas(e2)}.`,
+        stepScene
+          ? `Together: ${commas(e1)} + ${commas(e2)} = ${commas(est)}.`
+          : `Together: ${commas(e1)} + ${commas(e2)} = ${commas(est)} rolls.`,
       ],
       choices: choicesFrom(r, commas(est), [
         {
           label: commas(e1),
-          feedback:
-            "That is only the morning rolls. The afternoon rolls are part of the total too.",
+          feedback: stepScene
+            ? "That is only the first group. The second group is part of the total too."
+            : "That is only the morning rolls. The afternoon rolls are part of the total too.",
         },
         {
           label: commas(e1 + t2 + round10(n2)),
-          feedback: `The afternoon rolls are ${t2} trays of ${round10(n2)}, so multiply before adding.`,
+          feedback: stepScene
+            ? `The second group is ${t2} groups of ${round10(n2)}, so multiply before adding.`
+            : `The afternoon rolls are ${t2} trays of ${round10(n2)}, so multiply before adding.`,
         },
         {
           label: commas((t1 + t2) * (round10(n1) + round10(n2))),
-          feedback:
-            "Multiply each time period's trays by its own rolls per tray, then add. Do not add the factors first.",
+          feedback: stepScene
+            ? "Multiply each group's count by its own size, then add. Do not add the factors first."
+            : "Multiply each time period's trays by its own rolls per tray, then add. Do not add the factors first.",
         },
         {
           label: commas(round10(n1) + round10(n2)),
-          feedback:
-            "That adds the rolls on one tray from each period but ignores how many trays there are.",
+          feedback: stepScene
+            ? "That adds the size of one group from each set but ignores how many groups there are."
+            : "That adds the rolls on one tray from each period but ignores how many trays there are.",
         },
       ]),
     };
@@ -1142,15 +1286,37 @@ function estimateReasonableness(
   while (n % 100 < 10 || (n % 100 > 40 && n % 100 < 60) || n % 100 > 90);
   const rn = round100(n);
   const est = rn / seats;
+  const ride = told(axes);
+  const rideLine: Record<string, string> = {
+    sports: `${n} players ride to a game in vans that each seat ${b}`,
+    pets: `${n} puppies travel to new homes in cars that each seat ${b}`,
+    cooking: `${n} muffin boxes go to the fair in carts that each hold ${b}`,
+    garden: `${n} seedlings go to the sale in trays that each hold ${b}`,
+    reading: `${n} books go to the book fair in bins that each hold ${b}`,
+    saving: `${n} ticket rolls go to the booths in tubs that each hold ${b}`,
+    cards: `${n} card decks go to the tournament in boxes that each hold ${b}`,
+    travel: `${n} campers ride to the lake in vans that each seat ${b}`,
+    science: `${n} rock samples go to the museum in crates that each hold ${b}`,
+    music: `${n} music stands go to the concert in carts that each hold ${b}`,
+    school: `${n} students ride to a museum in vans that each seat ${b}`,
+  };
   return {
     variant: "quotient",
-    prompt: `${n} students ride to a game on buses that each seat ${b}. Round ${n} to the nearest hundred and ${b} to the nearest ten. Which is the best estimate of the number of buses needed?`,
+    prompt: ride
+      ? `${rideLine[ride]}. Round ${n} to the nearest hundred and ${b} to the nearest ten. Which is the best estimate of how many are needed?`
+      : `${n} students ride to a game on buses that each seat ${b}. Round ${n} to the nearest hundred and ${b} to the nearest ten. Which is the best estimate of the number of buses needed?`,
     answer: "",
-    hint: `Round ${n} and ${b} as asked. The rounded numbers divide evenly, because the story shares students equally among buses, so divide.`,
+    hint: ride
+      ? `Round ${n} and ${b} as asked. The rounded numbers divide evenly, because the story shares the items into equal groups, so divide.`
+      : `Round ${n} and ${b} as asked. The rounded numbers divide evenly, because the story shares students equally among buses, so divide.`,
     explanation: [
       `${n} rounds to ${rn}, and ${b} rounds to ${seats}.`,
-      `Share the students among the buses: ${rn} ÷ ${seats} = ${est}.`,
-      `The best estimate is about ${est} buses.`,
+      ride
+        ? `Share them into equal groups: ${rn} ÷ ${seats} = ${est}.`
+        : `Share the students among the buses: ${rn} ÷ ${seats} = ${est}.`,
+      ride
+        ? `The best estimate is about ${est}.`
+        : `The best estimate is about ${est} buses.`,
     ],
     choices: choicesFrom(r, String(est), [
       {
@@ -1159,18 +1325,21 @@ function estimateReasonableness(
       },
       {
         label: String(rn - seats),
-        feedback:
-          "The story shares students among buses, which is division, not subtraction.",
+        feedback: ride
+          ? "The story shares a total into equal groups, which is division, not subtraction."
+          : "The story shares students among buses, which is division, not subtraction.",
       },
       {
         label: String(rn + seats),
-        feedback:
-          "The story shares students among buses, which is division, not addition.",
+        feedback: ride
+          ? "The story shares a total into equal groups, which is division, not addition."
+          : "The story shares students among buses, which is division, not addition.",
       },
       {
         label: String(rn * seats),
-        feedback:
-          "Seats and students are related by dividing: each bus holds a part of the students.",
+        feedback: ride
+          ? "Equal groups call for division: the total is shared by the size of one group."
+          : "Seats and students are related by dividing: each bus holds a part of the students.",
       },
     ]),
   };
@@ -1442,11 +1611,15 @@ export function numberMeasurementGapCase(templateId: string, seed: string) {
       ...draft,
       explanation: [...(OPENERS[meta.id] ?? []), ...draft.explanation],
     });
+    const variant = axes
+      ? templateId === "estimate-reasonableness"
+        ? (recordedSweepVariant(templateId, draft.variant, axes) ??
+          sweepVariant(draft.variant, axes))
+        : sweepVariant(draft.variant, axes)
+      : undefined;
     return {
       variant: draft.variant,
-      problem: axes
-        ? { ...problem, variant: sweepVariant(draft.variant, axes) }
-        : problem,
+      problem: variant ? { ...problem, variant } : problem,
     };
   }
   throw new Error("Could not generate a problem without leaking the answer");

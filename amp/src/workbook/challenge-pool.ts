@@ -80,7 +80,7 @@ export const challengePool: ReadonlySet<string> = new Set<string>([
   "order-whole-numbers-slots",
   "rectangle-chain-blanks",
   "rule-table-fill-slots",
-  "times-as-many-blanks",
+  "times-as-many-counts",
   "angle-kind-select",
   "line-pair-select",
   "shape-sides-select",

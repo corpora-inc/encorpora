@@ -56,6 +56,12 @@ const frozen = [
     0.05,
     "0c8d0a27b562e77a85cadde421b5b183c57b846093de3549f379e80b9df97bba",
   ],
+  [
+    "times-as-many-blanks",
+    4,
+    1 / 9,
+    "31841c7d4d02a435e936d7af7ebcb25c710faf54e623050fa87fcf31d20ee5d3",
+  ],
 ] as const;
 
 test("retired v1 families replay unchanged and keep their original evidence metadata", () => {
@@ -172,6 +178,76 @@ test("digit-value-ratio is grade-4 place value, and grade 5 keeps four powers-of
     facets.map((m) => m.facetId),
     ["large-place-value.ten-times"],
   );
+});
+
+test("times-as-many comparison, two-digit quotients and prime powers sit on the skills that teach them", () => {
+  const expected = [
+    ["times-as-many-comparison", "multiplicative-comparison", 4.3],
+    ["mcas-true-quotient-equations", "multidigit-quotients", 5.3],
+    ["prime-factorization-exponents", "integer-powers", 6.4],
+    ["prime-factorization-value", "integer-powers", 6.45],
+  ] as const;
+  const grade3Stories = templates.filter(
+    (t) => t.skillId === "multiplicative-stories",
+  );
+  assert.equal(grade3Stories.length, 5);
+  assert.ok(
+    grade3Stories.every((t) => templateGrade(t, nodes) < 4),
+    "grade 3 multiplicative stories stay in grade 3",
+  );
+  assert.ok(
+    templates.some(
+      (t) =>
+        t.id === "prime-composite-sort" && t.skillId === "factors-multiples",
+    ),
+  );
+  assert.ok(
+    templates.some(
+      (t) =>
+        t.id === "mcas-prime-factor-select" &&
+        t.skillId === "factors-multiples",
+    ),
+  );
+  const grade4PrimeLesson = lessons.find(
+    (l) => l.id === "prime-composite-factorization",
+  );
+  assert.deepEqual(grade4PrimeLesson?.templateIds, ["prime-composite-sort"]);
+  assert.equal(
+    /exponent/i.test(
+      [
+        grade4PrimeLesson?.summary,
+        ...(grade4PrimeLesson?.sections.flatMap((s) => s.paragraphs) ?? []),
+        ...(grade4PrimeLesson?.closingSections?.flatMap((s) => s.paragraphs) ??
+          []),
+      ].join(" "),
+    ),
+    false,
+  );
+  for (const [id, skillId, grade] of expected) {
+    const template = templates.find((t) => t.id === id)!;
+    assert.equal(template.skillId, skillId);
+    assert.equal(templateGrade(template, nodes), grade);
+    const problem = generateProblem(id, "moved-skill");
+    assert.equal(problem.public.skillId, skillId);
+    assert.equal(problem.public.templateId, id);
+    publicProblemSchema.parse(problem.public);
+    assert.ok(gradeAnswer(problem, problem.answer), `${id} still grades`);
+    const again = generateProblem(id, "moved-skill");
+    assert.equal(again.public.prompt, problem.public.prompt);
+    assert.equal(again.answer, problem.answer);
+    assert.ok(objectiveForSkill(skillId), skillId);
+    const facets = actualFacetMappings.filter((m) => m.templateId === id);
+    assert.deepEqual(
+      facets.map((m) => m.facetId),
+      [`${skillId}.core`],
+    );
+  }
+  const stories = answerPathways("multiplicative-stories", skills, templates);
+  assert.ok(stories.leadsTo.some((s) => s.id === "multiplicative-comparison"));
+  const division = answerPathways("whole-division", skills, templates);
+  assert.ok(division.leadsTo.some((s) => s.id === "multidigit-quotients"));
+  const factors = answerPathways("factors-multiples", skills, templates);
+  assert.ok(factors.leadsTo.some((s) => s.id === "integer-powers"));
 });
 
 test("Missing Factor navigation offers an unknown factor, and equality has connected next steps", () => {

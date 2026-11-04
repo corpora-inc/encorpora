@@ -54,6 +54,38 @@ const isLegacy = (id: SweepId, axes: Record<string, string>) =>
   Object.entries(sweepAxes[id]).every(
     ([key, axis]) => axes[key] === axis.legacy,
   );
+/** Axis values the instance actually drew. A silent legacy value is absent
+ * from the saved variant, so it is filled back in as that legacy value. */
+const surfaceAxes = (
+  id: SweepId,
+  problem: GeneratedProblem,
+  where: string,
+): Record<string, string> => {
+  const recorded = problem.variant?.axes ?? {};
+  const spec = sweepAxes[id] as Record<
+    string,
+    { legacy: string; silentLegacy?: boolean }
+  >;
+  for (const key of Object.keys(recorded))
+    assert.ok(key in spec, `${id} ${where} unknown axis ${key}`);
+  const axes: Record<string, string> = {};
+  for (const [key, axis] of Object.entries(spec)) {
+    const value = recorded[key];
+    if (value == null) {
+      assert.equal(axis.silentLegacy, true, `${id} ${where} omits ${key}`);
+      axes[key] = axis.legacy;
+      continue;
+    }
+    if (axis.silentLegacy)
+      assert.notEqual(
+        value,
+        axis.legacy,
+        `${id} ${where} stores silent legacy ${key}`,
+      );
+    axes[key] = value;
+  }
+  return axes;
+};
 const seeds = (n: number, prefix: string) =>
   Array.from({ length: n }, (_, i) => `${prefix}:${i}`);
 
@@ -66,12 +98,7 @@ test("legacy axis values reproduce the pre-axis output exactly", () => {
     let legacy = 0;
     golden[id]!.forEach((expected, i) => {
       const problem = generateProblem(id, `legacy:${i}`);
-      const axes = problem.variant?.axes;
-      assert.ok(axes, `${id} legacy:${i} records its axis values`);
-      assert.deepEqual(
-        Object.keys(axes).sort(),
-        Object.keys(sweepAxes[id]).sort(),
-      );
+      const axes = surfaceAxes(id, problem, `legacy:${i}`);
       if (!isLegacy(id, axes)) return;
       legacy++;
       assert.equal(digest(problem), expected, `${id} legacy:${i}`);
@@ -85,7 +112,10 @@ test("printed editions build on legacy surfaces for every seed", () => {
     for (const id of ids)
       golden[id]!.forEach((expected, i) => {
         const problem = generateProblem(id, `legacy:${i}`);
-        assert.ok(isLegacy(id, problem.variant!.axes!), `${id} legacy:${i}`);
+        assert.ok(
+          isLegacy(id, surfaceAxes(id, problem, `legacy:${i}`)),
+          `${id} legacy:${i}`,
+        );
         assert.equal(digest(problem), expected, `${id} legacy:${i}`);
       });
   });
@@ -98,7 +128,7 @@ test("every axis value is reachable and every instance is valid, deterministic a
       const problem = generateProblem(id, seed);
       generatedProblemSchema.parse(problem);
       assert.deepEqual(problem, generateProblem(id, seed), `${id} ${seed}`);
-      const axes = problem.variant!.axes!;
+      const axes = problem.variant?.axes ?? {};
       for (const [key, value] of Object.entries(axes))
         (reached[key] ??= new Set()).add(value);
       const response = problem.public.response;
@@ -149,12 +179,20 @@ test("every axis value is reachable and every instance is valid, deterministic a
       }
       assert.ok(problem.explanation.length >= 2, `${id} ${seed}`);
     }
-    for (const [key, axis] of Object.entries(sweepAxes[id]))
+    for (const [key, axis] of Object.entries(sweepAxes[id])) {
+      const want = (
+        axis.silentLegacy
+          ? axis.values.filter((value: string) => value !== axis.legacy)
+          : axis.values
+      )
+        .map(String)
+        .sort();
       assert.deepEqual(
         [...(reached[key] ?? [])].sort(),
-        [...axis.values].sort(),
+        want,
         `${id} reaches every ${key} value`,
       );
+    }
   }
 });
 

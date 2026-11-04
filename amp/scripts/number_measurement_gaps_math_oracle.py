@@ -397,8 +397,11 @@ def solve_estimate(public):
     require(public.get('figure') is None, 'Unexpected figure')
     prompt = clean(public['prompt'])
     kai = re.fullmatch(r'Kai calculated (\d+) × (\d+) = ([\d,]+)\. Use rounding to the nearest ten to decide whether this answer is reasonable\. Which statement is correct\?', prompt)
-    if kai:
-        x, y, claimed = int(kai[1]), int(kai[2]), count(kai[3])
+    counted = re.fullmatch(r'.+ (\d+) [a-z]+ with (\d+) [a-z]+ in each [a-z]+ and counted ([\d,]+) [a-z]+\. Use rounding to the nearest ten to decide whether this answer is reasonable\. Which statement is correct\?', prompt)
+    told = kai or counted
+    if told:
+        claim_text = told[3]
+        x, y, claimed = int(told[1]), int(told[2]), count(claim_text)
         a, b = round_half_up(x, 10), round_half_up(y, 10)
         estimate = int(a * b)
         ratio = Fraction(claimed, estimate)
@@ -421,10 +424,10 @@ def solve_estimate(public):
                 require(says_ok or count(verdict[6]) == count(verdict[4]), 'Not-reasonable text must repeat the estimate')
                 flags.append(says_ok == reasonable and shown == (a, b, estimate) and tail == claimed)
             else:
-                require(label in ('Cannot tell without finding the exact product of %d and %d.' % (x, y), 'Reasonable, because %s is a whole number.' % kai[3]), f'Unrecognised statement {label!r}')
+                require(label in ('Cannot tell without finding the exact product of %d and %d.' % (x, y), 'Reasonable, because %s is a whole number.' % claim_text), f'Unrecognised statement {label!r}')
                 flags.append(False)
         return single(options, flags, 'Missing or ambiguous verdict')
-    decimals = re.fullmatch(r'One [a-z]+ holds (\d+\.\d) milliliters and another holds (\d+\.\d) milliliters\. Round each amount to the nearest whole number\. Which is the best estimate of how many more milliliters the first [a-z]+ holds\?', prompt)
+    decimals = re.fullmatch(r'One [a-z]+ (?:holds|weighs|is) (\d+\.\d) [a-z]+ and another (?:holds|weighs|is) (\d+\.\d) [a-z]+\. Round each amount to the nearest whole number\. Which is the best estimate of how many more [a-z]+ the first [a-z]+ (?:holds|weighs|is)\?', prompt)
     if decimals:
         first, second = Fraction(decimals[1]), Fraction(decimals[2])
         require(first > second and first - second >= 50, 'The first amount is clearly the larger')
@@ -435,15 +438,19 @@ def solve_estimate(public):
         require(len(set(values)) == 4, 'Duplicate numeric choices')
         return single(options, [v == estimate for v in values], 'Missing or ambiguous best estimate')
     amounts = []
-    buses = re.fullmatch(r'(\d+) students ride to a game on buses that each seat (\d+)\. Round \1 to the nearest hundred and \2 to the nearest ten\. Which is the best estimate of the number of buses needed\?', prompt)
+    buses = re.fullmatch(r'(\d+) (?:[a-z]+ )+(?:seat|hold) (\d+)\. Round \1 to the nearest hundred and \2 to the nearest ten\. Which is the best estimate of .+\?', prompt)
     trays = re.fullmatch(r'A bakery fills (\d+) trays with (\d+) rolls each in the morning and (\d+) trays with (\d+) rolls each in the afternoon\. Round the number on each tray to the nearest ten\. Which is the best estimate of the total number of rolls\?', prompt)
-    groups = re.fullmatch(r'A [a-z]+ [a-z]+ (\d+) [a-z]+ with (\d+) [a-z]+ (?:on|in) each [a-z]+\. Round each number to the nearest ten\. Which is the best estimate of the total number of [a-z]+\?', prompt)
+    two = re.fullmatch(r'.+ (\d+) [a-z]+ with (\d+) [a-z]+ each and (\d+) [a-z]+ with (\d+) [a-z]+ each\. Round the number in each group to the nearest ten\. Which is the best estimate of the total\?', prompt)
+    groups = re.fullmatch(r'.+ (\d+) [a-z]+ with (\d+) [a-z]+ (?:on|in) each [a-z]+\. Round each number to the nearest ten\. Which is the best estimate of the total number of [a-z]+\?', prompt)
     if buses:
         quotient = Fraction(round_half_up(int(buses[1]), 100), round_half_up(int(buses[2]), 10))
         require(quotient.denominator == 1, 'Rounded quotient must be a whole number of buses')
         estimate = quotient
     elif trays:
         n1, p1, n2, p2 = (int(g) for g in trays.groups())
+        estimate = n1 * round_half_up(p1, 10) + n2 * round_half_up(p2, 10)
+    elif two:
+        n1, p1, n2, p2 = (int(g) for g in two.groups())
         estimate = n1 * round_half_up(p1, 10) + n2 * round_half_up(p2, 10)
     else:
         require(groups is not None, 'Estimation prompt not recognised')
@@ -606,6 +613,8 @@ def self_test():
                [r'$2x + 4$', r'$2x + 8$', r'$4 + 2x$', r'$\frac{1}{2}\cdot 4x + \frac{1}{2}\cdot 8$'], 1),
         choice('estimate-reasonableness', 'One pitcher holds 583.9 milliliters and another holds 131.2 milliliters. Round each amount to the nearest whole number. Which is the best estimate of how many more milliliters the first pitcher holds?',
                ['453', '452', '715', '4530'], 0),
+        choice('estimate-reasonableness', 'The band sets 9 folders with 34 sheets each and 7 folders with 16 sheets each. Round the number in each group to the nearest ten. Which is the best estimate of the total?',
+               ['410', '270', '50', '1,150'], 0),
     ]
     rejected = 0
 
@@ -670,6 +679,7 @@ def self_test():
     mutated(12, lambda p: p['response']['options'][1].update(label='6'), 'duplicate numeric choice')
     mutated(12, lambda p: p.update(prompt=p['prompt'].replace('48', '58')), 'changed given')
     mutated(13, lambda p: p.update(prompt=p['prompt'].replace('57', '67')), 'changed given')
+    mutated(27, lambda p: p.update(prompt=p['prompt'].replace(' each', '')), 'two groups of different things')
     mutated(14, lambda p: p['response']['options'][0].update(label='3500'), 'duplicate numeric choice')
     mutated(15, lambda p: p.update(prompt=p['prompt'].replace('18 kilometers', '19 kilometers')), 'non-whole result')
     mutated(16, lambda p: p.update(prompt=p['prompt'].replace('25 centimeters', '35 centimeters')), 'tiles do not fit')

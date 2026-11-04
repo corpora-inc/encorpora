@@ -313,7 +313,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   },
   {
     templateId: "times-as-many-comparison",
-    facetId: "multiplicative-stories.core",
+    facetId: "multiplicative-comparison.core",
     extent: "partial",
     rationale:
       "Choose the times-as-many sentence for a product such as 3 \u00d7 24, the expression for a times-as-many sentence, and the correct sentence comparing two counts, each with a plausible additive or reversed alternative. Does not assess writing the sentence, fractional comparisons or division word problems.",
@@ -530,14 +530,14 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   },
   {
     templateId: "prime-factorization-exponents",
-    facetId: "factors-multiples.core",
+    facetId: "integer-powers.core",
     extent: "partial",
     rationale:
       "Choose the complete prime factorization, written with exponents, of a composite number to 144, directly or from the first split of a factor tree. Does not assess drawing a factor tree, numbers above 144 or using factorizations for GCF and LCM.",
   },
   {
     templateId: "prime-factorization-value",
-    facetId: "factors-multiples.core",
+    facetId: "integer-powers.core",
     extent: "partial",
     rationale:
       "Enter the value of a prime factorization with exponents, the greatest prime factor of a number to 100, or the count of prime factors with repeats. Does not assess writing a factorization or numbers above 100.",
@@ -2169,7 +2169,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   },
   {
     templateId: "mcas-true-quotient-equations",
-    facetId: "whole-division.core",
+    facetId: "multidigit-quotients.core",
     extent: "partial",
     rationale:
       "Judge stated quotients of three- or four-digit dividends and two-digit divisors, including a zero digit in the quotient, written with the result on either side, as a select-all list or as true-or-false pairs. Does not assess remainders, decimals or division by hand.",

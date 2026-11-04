@@ -6,6 +6,8 @@ import type {
 } from "./contracts";
 import { random, type Random } from "./distribution-practice";
 import { scene, table } from "./scene/author";
+import { operationStoryValues, timesCast } from "./story-kit/operations";
+import { chooseAxes, defineAxis } from "./variation/axes";
 import type { Scene } from "./scene/spec";
 
 /* Texas grades 3-8 requirements that existing skills did not yet practise:
@@ -46,7 +48,10 @@ const metadata = (
   description: string,
 ): TemplateMetadata => ({
   id,
-  version: 1,
+  version: id === "times-as-many-comparison" ? 2 : 1,
+  ...(id === "times-as-many-comparison"
+    ? { reprintsFrom: 1, previousSkillId: "multiplicative-stories" }
+    : {}),
   title,
   skillId,
   gradeBand,
@@ -62,7 +67,7 @@ export const texas38Templates: readonly TemplateMetadata[] = [
   metadata(
     "times-as-many-comparison",
     "Read and write times as many",
-    "multiplicative-stories",
+    "multiplicative-comparison",
     "3–5",
     0.3,
     "choice",
@@ -516,41 +521,71 @@ const THINGS = [
   "beads",
 ];
 
-function timesAsManyComparison(r: Random): Built {
+const timesStoryAxis = {
+  story19: defineAxis("story19", operationStoryValues, {
+    legacy: "classic",
+    weights: [6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    silentLegacy: true,
+    since: 2,
+  }),
+};
+
+function timesAsManyComparison(r: Random, telling = "classic"): Built {
   const variant = pick(r, [
     "expression-to-sentence",
     "sentence-to-expression",
     "compare-counts",
   ]);
-  const [a, b] = twoNames(r);
-  const thing = pick(r, THINGS);
+  const [rawA, rawB] = twoNames(r);
+  const rawThing = pick(r, THINGS);
+  const cast = telling === "classic" ? undefined : timesCast[telling];
+  const a = cast?.a ?? rawA;
+  const b = cast?.b ?? rawB;
+  const thing = cast?.thing ?? rawThing;
+  const did = (who: string, rest: string) =>
+    cast ? `${who} ${cast.verb} ${rest}` : `${who} has ${rest}`;
   const k = variant === "expression-to-sentence" ? r(3, 9) : r(2, 9);
   if (variant === "expression-to-sentence") {
     const base = r(2, 25);
     return {
       variant,
-      prompt: `${a} has ${base} ${thing}. The product ${k} × ${base} is the number of ${thing} that ${b} has. Which sentence compares the two amounts?`,
-      hint: `In ${k} × ${base}, the ${base} is ${a}'s amount and the ${k} says how many copies of it ${b} has. Say that with "times as many".`,
-      explanation: [
-        `${a} has ${base} ${thing}, and ${b} has ${k} × ${base}.`,
-        `${k} × ${base} means ${k} equal groups of ${base}, so ${b} has ${k} times as many ${thing} as ${a}.`,
-      ],
-      choices: choicesFrom(`${b} has ${k} times as many ${thing} as ${a}.`, [
+      prompt: cast
+        ? `${a} ${cast.verb} ${base} ${thing}. ${b} ${cast.verb} ${k} × ${base} ${thing}. Which sentence compares the two amounts?`
+        : `${a} has ${base} ${thing}. The product ${k} × ${base} is the number of ${thing} that ${b} has. Which sentence compares the two amounts?`,
+      hint: cast
+        ? `${k} × ${base} means ${k} copies of the ${base} ${thing} ${a} ${cast.verb}. Say that with "times as many".`
+        : `In ${k} × ${base}, the ${base} is ${a}'s amount and the ${k} says how many copies of it ${b} has. Say that with "times as many".`,
+      explanation: cast
+        ? [
+            `${a} ${cast.verb} ${base} ${thing}, and ${b} ${cast.verb} ${k} × ${base} ${thing}.`,
+            `${k} × ${base} means ${k} equal groups of ${base}, so ${b} ${cast.verb} ${k} times as many ${thing} as ${a}.`,
+          ]
+        : [
+            `${a} has ${base} ${thing}, and ${b} has ${k} × ${base}.`,
+            `${k} × ${base} means ${k} equal groups of ${base}, so ${b} has ${k} times as many ${thing} as ${a}.`,
+          ],
+      choices: choicesFrom(did(b, `${k} times as many ${thing} as ${a}.`), [
         {
-          label: `${b} has ${k} more ${thing} than ${a}.`,
+          label: did(b, `${k} more ${thing} than ${a}.`),
           feedback: `"${k} more" is addition, ${base} + ${k}. A product means ${k} equal copies of ${a}'s ${base}.`,
         },
         {
-          label: `${a} has ${k} times as many ${thing} as ${b}.`,
-          feedback: `The product ${k} × ${base} is ${b}'s amount, and it is ${k} copies of ${a}'s amount, so ${b} has the greater number.`,
+          label: did(a, `${k} times as many ${thing} as ${b}.`),
+          feedback: cast
+            ? `${k} × ${base} is what ${b} ${cast.verb}, and it is ${k} copies of what ${a} ${cast.verb}, so ${b} ${cast.verb} the greater number.`
+            : `The product ${k} × ${base} is ${b}'s amount, and it is ${k} copies of ${a}'s amount, so ${b} has the greater number.`,
         },
         {
-          label: `${b} has ${base} more ${thing} than ${a}.`,
-          feedback: `The expression is a product. It does not say ${b} has ${base} more.`,
+          label: did(b, `${base} more ${thing} than ${a}.`),
+          feedback: cast
+            ? `The expression is a product. It does not say ${b} ${cast.verb} ${base} more.`
+            : `The expression is a product. It does not say ${b} has ${base} more.`,
         },
         {
-          label: `${b} has ${base} times as many ${thing} as ${a}.`,
-          feedback: `${a} has ${base} ${thing}. The number of copies is ${k}, so it is ${k} times as many, not ${base} times as many.`,
+          label: did(b, `${base} times as many ${thing} as ${a}.`),
+          feedback: cast
+            ? `${a} ${cast.verb} ${base} ${thing}. The number of copies is ${k}, so it is ${k} times as many, not ${base} times as many.`
+            : `${a} has ${base} ${thing}. The number of copies is ${k}, so it is ${k} times as many, not ${base} times as many.`,
         },
       ]),
     };
@@ -560,12 +595,19 @@ function timesAsManyComparison(r: Random): Built {
     if (base === 2 && k === 2) base = 3;
     return {
       variant,
-      prompt: `${a} has ${base} ${thing}. ${b} has ${k} times as many ${thing} as ${a}. Which expression gives the number of ${thing} ${b} has?`,
+      prompt: cast
+        ? `${a} ${cast.verb} ${base} ${thing}. ${b} ${cast.verb} ${k} times as many ${thing} as ${a}. Which expression gives the number of ${thing} ${b} ${cast.verb}?`
+        : `${a} has ${base} ${thing}. ${b} has ${k} times as many ${thing} as ${a}. Which expression gives the number of ${thing} ${b} has?`,
       hint: `"${k} times as many" means ${k} equal copies of ${a}'s ${base}. Which operation joins equal copies?`,
-      explanation: [
-        `${b} has ${k} times as many as ${a}, so ${b} has ${k} copies of ${base}.`,
-        `${k} copies of ${base} is ${k} × ${base} = ${k * base}.`,
-      ],
+      explanation: cast
+        ? [
+            `${b} ${cast.verb} ${k} times as many as ${a}, so ${b} ${cast.verb} ${k} copies of ${base}.`,
+            `${k} copies of ${base} is ${k} × ${base} = ${k * base}.`,
+          ]
+        : [
+            `${b} has ${k} times as many as ${a}, so ${b} has ${k} copies of ${base}.`,
+            `${k} copies of ${base} is ${k} × ${base} = ${k * base}.`,
+          ],
       choices: choicesFrom(`${k} × ${base}`, [
         {
           label: `${k} + ${base}`,
@@ -595,29 +637,39 @@ function timesAsManyComparison(r: Random): Built {
   const big = k * s;
   return {
     variant,
-    prompt: `${a} has ${s} ${thing}. ${b} has ${big} ${thing}. Which sentence compares the amounts correctly with "times as many"?`,
+    prompt: cast
+      ? `${a} ${cast.verb} ${s} ${thing}. ${b} ${cast.verb} ${big} ${thing}. Which sentence compares the amounts correctly with "times as many"?`
+      : `${a} has ${s} ${thing}. ${b} has ${big} ${thing}. Which sentence compares the amounts correctly with "times as many"?`,
     hint: `Ask how many groups of ${a}'s ${s} ${thing} fit in ${b}'s ${big}. That number goes in front of "times as many".`,
     explanation: [
       `"Times as many" asks how many groups of ${a}'s ${s} make ${b}'s ${big}.`,
       `${big} ÷ ${s} = ${k}, because ${k} × ${s} = ${big}.`,
-      `So ${b} has ${k} times as many ${thing} as ${a}.`,
+      cast
+        ? `So ${b} ${cast.verb} ${k} times as many ${thing} as ${a}.`
+        : `So ${b} has ${k} times as many ${thing} as ${a}.`,
     ],
-    choices: choicesFrom(`${b} has ${k} times as many ${thing} as ${a}.`, [
+    choices: choicesFrom(did(b, `${k} times as many ${thing} as ${a}.`), [
       {
-        label: `${a} has ${k} times as many ${thing} as ${b}.`,
-        feedback: `${a} has fewer. The greater amount, ${b}'s, is the one that is "times as many".`,
+        label: did(a, `${k} times as many ${thing} as ${b}.`),
+        feedback: cast
+          ? `${a} ${cast.verb} fewer. The greater amount, ${b}'s, is the one that is "times as many".`
+          : `${a} has fewer. The greater amount, ${b}'s, is the one that is "times as many".`,
       },
       {
-        label: `${b} has ${big - s} times as many ${thing} as ${a}.`,
-        feedback: `${big - s} is how many more ${b} has. "Times as many" counts equal groups: ${big} ÷ ${s}.`,
+        label: did(b, `${big - s} times as many ${thing} as ${a}.`),
+        feedback: cast
+          ? `${big - s} is how many more ${b} ${cast.verb}. "Times as many" counts equal groups: ${big} ÷ ${s}.`
+          : `${big - s} is how many more ${b} has. "Times as many" counts equal groups: ${big} ÷ ${s}.`,
       },
       {
-        label: `${b} has ${s} times as many ${thing} as ${a}.`,
+        label: did(b, `${s} times as many ${thing} as ${a}.`),
         feedback: `${s} is ${a}'s amount. The number of times is how many ${s}s make ${big}.`,
       },
       {
-        label: `${b} has ${k} more ${thing} than ${a}.`,
-        feedback: `${b} has ${big - s} more, not ${k} more. ${k} is how many groups of ${s} make ${big}, so it goes with "times as many".`,
+        label: did(b, `${k} more ${thing} than ${a}.`),
+        feedback: cast
+          ? `${b} ${cast.verb} ${big - s} more, not ${k} more. ${k} is how many groups of ${s} make ${big}, so it goes with "times as many".`
+          : `${b} has ${big - s} more, not ${k} more. ${k} is how many groups of ${s} make ${big}, so it goes with "times as many".`,
       },
     ]),
   };
@@ -3675,17 +3727,31 @@ export function texas38Case(templateId: string, seed: string) {
   const build = builders[templateId];
   if (!meta || !build) throw new Error(`Unknown template ${templateId}`);
   const r = random(meta.id, seed);
+  const telling =
+    templateId === "times-as-many-comparison"
+      ? chooseAxes(templateId, seed, timesStoryAxis).story19
+      : "classic";
   for (let attempt = 0; attempt < 120; attempt++) {
     let draft: Built;
     try {
-      draft = build(r);
+      draft =
+        templateId === "times-as-many-comparison"
+          ? timesAsManyComparison(r, telling)
+          : build(r);
     } catch (error) {
       if (error instanceof Error && error.message.startsWith("Need three"))
         continue;
       throw error;
     }
     if (leaks(draft)) continue;
-    return { variant: draft.variant, problem: toProblem(meta, seed, r, draft) };
+    const problem = toProblem(meta, seed, r, draft);
+    return {
+      variant: draft.variant,
+      problem:
+        templateId === "times-as-many-comparison" && telling !== "classic"
+          ? { ...problem, variant: { id: telling, axes: { story19: telling } } }
+          : problem,
+    };
   }
   throw new Error("Could not generate a problem without leaking the answer");
 }

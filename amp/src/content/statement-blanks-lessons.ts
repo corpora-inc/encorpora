@@ -334,34 +334,34 @@ const entries: FormatLessonEntry[] = [
       "Plot a few points with a 0 together. Describe each one as “on the … axis, … units from the origin”.",
   },
   {
-    id: "times-as-many-blanks",
+    id: "times-as-many-counts",
     title: "Times as many",
     summary:
-      "One count is 3 times as many as another when it is 3 groups of that count. A bigger count is more likely to be picked.",
+      "One count is 3 times as many as another when it is 3 groups of that count.",
     noLink: ["third"],
     objectives: [
       "Find how many times as many one count is as another by dividing.",
-      "Compare how likely two kinds are to be picked from their counts, such as more than twice as likely.",
+      "Complete a times-as-many sentence from a table of three counts.",
     ],
     intuition:
-      "“3 times as many” compares by multiplying. With 24 cups and 8 mugs, 24 is 3 groups of 8, so there are 3 times as many cups as mugs. Divide to find it: $24\\div8=3$. “How many more” is different. It subtracts: 24 is 16 more than 8. Now pick one thing at random, without looking. A kind with a bigger count is more likely to be picked. “More than twice as likely” means its count is more than 2 times the other count.",
+      "“3 times as many” compares by multiplying. With 24 cups and 8 mugs, 24 is 3 groups of 8, so there are 3 times as many cups as mugs. Divide to find it: $24\\div8=3$. “How many more” is different. It subtracts: 24 is 16 more than 8.",
     senses: { "more than": "more-than" },
     terms: [
       "times-as-many",
       [
         "times-as-many",
-        "More than twice as likely: its count is more than 2 times the other count.",
+        "3 times as many means 3 equal groups of the smaller count.",
       ],
     ],
     method: [
       "Divide the greater count by the smaller count. If the answer is a whole number, the greater count is that many times as many: $36\\div12=3$, so 3 times as many.",
-      "For how likely, double the smaller count, which means times 2. Check whether the greater count is more than that.",
+      "Check the third count. It is not a whole number of times either of the others.",
       "Fill in the sentence with the right things in the right places. The greater count goes first.",
     ],
     watch:
       "Divide the greater count by the smaller one, and do not subtract. 24 is 16 more than 8, but 3 times as many.",
     principle:
-      "With 36 mugs and 12 cups, $36\\div12=3$, so there are 3 times as many mugs as cups. With letters, $a$ is $k$ times as many as $b$ when $a=k\\times b$, so $k=a\\div b$. When one item is picked at random from all of them, a kind with twice the count has twice the chance. So kind $A$ is more than twice as likely as kind $B$ exactly when $A$'s count is more than 2 times $B$'s count.",
+      "With 36 mugs and 12 cups, $36\\div12=3$, so there are 3 times as many mugs as cups. With letters, $a$ is $k$ times as many as $b$ when $a=k\\times b$, so $k=a\\div b$.",
     example: {
       prompt:
         "A table shows 12 cups, 36 mugs and 7 bottles. Complete: there are __ times as many __ as __.",
@@ -374,10 +374,10 @@ const entries: FormatLessonEntry[] = [
     methodTitle: "Divide to compare",
     methodText: [
       "Check by multiplying: $3\\times12=36$.",
-      "To compare how likely, you only need the counts, because both kinds are picked from the same total.",
+      "The sentence names the greater count first.",
     ],
     formal:
-      "Times as many compares by multiplying: $k=a\\div b$. How many more compares by subtracting: $a-b$. When every item is equally likely to be picked, a kind with $k$ times the count has $k$ times the chance.",
+      "Times as many compares by multiplying: $k=a\\div b$. How many more compares by subtracting: $a-b$.",
     pitfalls: [
       "Do not subtract to find “times as many”.",
       "Do not put the things in the wrong order. The greater count goes first.",
@@ -534,9 +534,9 @@ export const statementBlanksFacetMappings: readonly FacetMapping[] = [
     "Complete a statement about a first-quadrant point with one coordinate 0: its axis, the zero coordinate, the number of units and the direction. Does not assess points off the axes, negative coordinates, or plotting.",
   ),
   partial(
-    "times-as-many-blanks",
+    "times-as-many-counts",
     "multiplicative-comparison.core",
-    "From a table of three counts, complete a times-as-many sentence or a more-than-twice-as-likely sentence with exactly one valid pair. Does not assess additive comparison, comparisons with fractions, or tally marks.",
+    "From a table of three counts, complete a times-as-many sentence with exactly one whole-number pair. Does not assess additive comparison, probability, comparisons with fractions, or tally marks.",
   ),
   partial(
     "compare-fractions-reason-blanks",

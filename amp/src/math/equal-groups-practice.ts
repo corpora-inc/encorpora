@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
-import { count, isAre } from "./agreement.js";
+import { count, isAre, plural } from "./agreement.js";
+import { grouped } from "./multi-part-support.js";
 import { partialProducts, partialProductsHint } from "./scene/explanations.js";
 import type { Step } from "./scene/timeline.js";
 import { equalGroupsDefinitions } from "../content/equal-groups-definitions.js";
@@ -8,13 +9,32 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
+import {
+  isSweepId,
+  recordedSweepVariant,
+  sweepChoose,
+} from "./number-domain-axes.js";
+import {
+  comparisonAsk,
+  comparisonCast,
+  comparisonSmallAsk,
+  groupQuestion,
+  realisticGroup,
+} from "./story-kit/operations.js";
+const reprintsFromV1 = new Set([
+  "comparison-amount",
+  "full-kits",
+  "kit-leftovers",
+  "seats-needed",
+]);
 export const equalGroupsTemplates: readonly TemplateMetadata[] =
   equalGroupsDefinitions.map(({ id, title, skillId, grade, description }) => ({
     id,
     title,
     skillId,
     description,
-    version: 1,
+    version: reprintsFromV1.has(id) ? 2 : 1,
+    ...(reprintsFromV1.has(id) ? { reprintsFrom: 1 } : {}),
     gradeBand: grade === "2" ? "K–2" : "3–5",
   }));
 function random(id: string, seed: string) {
@@ -43,6 +63,9 @@ export function generateEqualGroupsProblem(
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(templateId, seed);
+  const axes = isSweepId(templateId)
+    ? (sweepChoose(templateId, seed) as Readonly<Record<string, string>>)
+    : undefined;
   let prompt = "",
     answer = 0,
     label = "Number",
@@ -50,49 +73,115 @@ export function generateEqualGroupsProblem(
     explanation: string[] = [],
     figure: SemanticFigure | undefined,
     hintCue: Step[] | undefined;
-  const grouped = (
+  const counters = (
     total: number,
     groupSize: number,
     unit: string,
   ): SemanticFigure => ({ kind: "grouped-counters", total, groupSize, unit });
+  const shown = (n: number) => grouped(n);
+  const counted = (n: number, noun: string) =>
+    `${shown(n)} ${n === 1 ? noun : plural(noun)}`;
+  const article = (phrase: string) =>
+    /^[aeiou]/i.test(phrase) ? `an ${phrase}` : `a ${phrase}`;
   switch (templateId) {
     case "full-kits":
     case "seats-needed":
     case "kit-leftovers": {
-      const size = r(2, 8),
-        complete = r(1, 6),
-        left = r(0, size - 1),
-        total = size * complete + left;
+      const large = axes?.["number-domain"] === "up-to-9999";
+      const size = large ? r(2, 9) : r(2, 8);
+      const left = large ? r(0, size - 1) : 0;
+      const complete = large
+        ? r(100, Math.floor((9999 - left) / size))
+        : r(1, 6);
+      const remainder = large ? left : r(0, size - 1);
+      const total = size * complete + remainder;
+      const tellingKey =
+        templateId === "full-kits"
+          ? "story27"
+          : templateId === "seats-needed"
+            ? "telling25"
+            : "scene25";
+      const telling = axes?.[tellingKey] ?? "classic";
+      const scene =
+        large || telling !== "classic"
+          ? realisticGroup(size, telling, large)
+          : undefined;
       if (templateId === "seats-needed") {
-        prompt = `${total} visitors need rides. Each van seats ${size} visitors. What is the fewest vans needed?`;
-        answer = complete + (left > 0 ? 1 : 0);
-        label = "Vans needed";
-        figure = grouped(total, size, "visitors");
-        hint = `How many groups of ${size} fit in ${total}? If anyone is left over, they still need a van.`;
-        explanation = [
-          `Each van is one group of ${size} seats. Find how many groups of ${size} fit in ${total}.`,
-          `${count(complete, "full van")} ${complete === 1 ? "seats" : "seat"} ${complete} × ${size} = ${size * complete} visitors.`,
-          left
-            ? `${count(left, "visitor")} still ${left === 1 ? "needs a seat" : "need seats"}. No one can be left behind, so one more van is needed, even though it is not full.`
-            : `No visitors are left over, so no extra van is needed.`,
-          `The fewest vans needed is ${answer}.`,
-        ];
-      } else {
-        prompt = `You have ${total} beads. Each full kit needs exactly ${size} beads. ${templateId === "full-kits" ? "How many full kits can you make?" : "After making as many full kits as possible, how many beads are left?"}`;
-        answer = templateId === "full-kits" ? complete : left;
+        answer = complete + (remainder > 0 ? 1 : 0);
+        if (!scene) {
+          prompt = `${shown(total)} visitors need rides. Each van seats ${shown(size)} visitors. What is the fewest vans needed?`;
+          label = "Vans needed";
+          figure = large ? undefined : counters(total, size, "visitors");
+          hint = `How many groups of ${shown(size)} fit in ${shown(total)}? If anyone is left over, they still need a van.`;
+          explanation = [
+            `Each van is one group of ${shown(size)} seats. Find how many groups of ${shown(size)} fit in ${shown(total)}.`,
+            `${counted(complete, "full van")} ${complete === 1 ? "seats" : "seat"} ${shown(complete)} × ${shown(size)} = ${shown(size * complete)} visitors.`,
+            remainder
+              ? `${counted(remainder, "visitor")} still ${remainder === 1 ? "needs a seat" : "need seats"}. No one can be left behind, so one more van is needed, even though it is not full.`
+              : `No visitors are left over, so no extra van is needed.`,
+            `The fewest vans needed is ${shown(answer)}.`,
+          ];
+        } else {
+          prompt = groupQuestion(
+            scene,
+            shown(total),
+            shown(size),
+            large,
+            "seats",
+          );
+          label = `${scene.groups[0]!.toUpperCase()}${scene.groups.slice(1)} needed`;
+          figure = large ? undefined : counters(total, size, scene.unit);
+          hint = `How many groups of ${shown(size)} fit in ${shown(total)}? If any ${scene.unit} are left over, they still need ${article(scene.group)}.`;
+          explanation = [
+            `Each ${scene.group} holds ${shown(size)} ${scene.unit}. Find how many groups of ${shown(size)} fit in ${shown(total)}.`,
+            `${counted(complete, `full ${scene.group}`)} ${complete === 1 ? "holds" : "hold"} ${shown(complete)} × ${shown(size)} = ${shown(size * complete)} ${scene.unit}.`,
+            remainder
+              ? `${counted(remainder, scene.one)} still ${remainder === 1 ? "needs a place" : "need places"}. One more ${scene.group} is needed so nothing is left out.`
+              : `Nothing is left over, so no extra ${scene.group} is needed.`,
+            `The fewest ${scene.groups} needed is ${shown(answer)}.`,
+          ];
+        }
+      } else if (!scene) {
+        prompt = `You have ${shown(total)} beads. Each full kit needs exactly ${shown(size)} beads. ${templateId === "full-kits" ? "How many full kits can you make?" : "After making as many full kits as possible, how many beads are left?"}`;
+        answer = templateId === "full-kits" ? complete : remainder;
         label = templateId === "full-kits" ? "Full kits" : "Beads left";
-        figure = grouped(total, size, "beads");
+        figure = large ? undefined : counters(total, size, "beads");
         hint =
           templateId === "full-kits"
-            ? `How many groups of exactly ${size} beads can you make from ${total}? A partly filled kit does not count.`
-            : `Make as many groups of ${size} from the ${total} beads as you can. The beads that cannot fill another group are left.`;
+            ? `How many groups of exactly ${shown(size)} beads can you make from ${shown(total)}? A partly filled kit does not count.`
+            : `Make as many groups of ${shown(size)} from the ${shown(total)} beads as you can. The beads that cannot fill another group are left.`;
         explanation = [
-          `Each kit is one group of exactly ${size} beads. Find how many groups of ${size} fit in ${total}.`,
-          `${count(complete, "kit")} ${complete === 1 ? "uses" : "use"} ${complete} × ${size} = ${complete * size} beads.`,
-          `That leaves ${total} − ${complete * size} = ${left}. ${left === 0 ? "No beads are left." : `${left} is fewer than ${size}, so ${left === 1 ? "it cannot" : "they cannot"} fill another kit.`}`,
+          `Each kit is one group of exactly ${shown(size)} beads. Find how many groups of ${shown(size)} fit in ${shown(total)}.`,
+          `${counted(complete, "kit")} ${complete === 1 ? "uses" : "use"} ${shown(complete)} × ${shown(size)} = ${shown(complete * size)} beads.`,
+          `That leaves ${shown(total)} − ${shown(complete * size)} = ${shown(remainder)}. ${remainder === 0 ? "No beads are left." : `${shown(remainder)} is fewer than ${shown(size)}, so ${remainder === 1 ? "it cannot" : "they cannot"} fill another kit.`}`,
           templateId === "full-kits"
-            ? `A kit that is only partly filled does not count. You can make ${count(complete, "full kit")}.`
-            : `The beads that cannot fill a kit are left over: ${count(left, "bead")}.`,
+            ? `A kit that is only partly filled does not count. You can make ${counted(complete, "full kit")}.`
+            : `The beads that cannot fill a kit are left over: ${counted(remainder, "bead")}.`,
+        ];
+      } else {
+        const full = templateId === "full-kits";
+        answer = full ? complete : remainder;
+        prompt = groupQuestion(
+          scene,
+          shown(total),
+          shown(size),
+          large,
+          full ? "full" : "left",
+        );
+        label = full
+          ? `Full ${scene.groups}`
+          : `${scene.unit[0]!.toUpperCase()}${scene.unit.slice(1)} left`;
+        figure = large ? undefined : counters(total, size, scene.unit);
+        hint = full
+          ? `How many groups of exactly ${shown(size)} ${scene.unit} fit in ${shown(total)}? A partly filled ${scene.group} does not count.`
+          : `Fill as many ${scene.groups} of ${shown(size)} as you can. The ${scene.unit} that cannot fill another ${scene.group} are left.`;
+        explanation = [
+          `Each ${scene.group} holds exactly ${shown(size)} ${scene.unit}. Find how many groups of ${shown(size)} fit in ${shown(total)}.`,
+          `${counted(complete, scene.group)} ${complete === 1 ? "uses" : "use"} ${shown(complete)} × ${shown(size)} = ${shown(complete * size)} ${scene.unit}.`,
+          `That leaves ${shown(total)} − ${shown(complete * size)} = ${shown(remainder)}. ${remainder === 0 ? `No ${scene.unit} are left.` : `${shown(remainder)} is fewer than ${shown(size)}, so ${remainder === 1 ? "it cannot" : "they cannot"} fill another ${scene.group}.`}`,
+          full
+            ? `A partly filled ${scene.group} does not count. You can fill ${counted(complete, `full ${scene.group}`)}.`
+            : `What cannot fill ${article(scene.group)} is left over: ${counted(remainder, scene.one)}.`,
         ];
       }
       break;
@@ -150,7 +239,7 @@ export function generateEqualGroupsProblem(
     }
     case "pairing-leftover": {
       const total = r(1, 20);
-      figure = grouped(total, 2, "counters");
+      figure = counters(total, 2, "counters");
       if (total > 16) figure = undefined;
       prompt = `Put ${total} counters into pairs. How many counters will be left without a partner?`;
       answer = total % 2;
@@ -169,7 +258,7 @@ export function generateEqualGroupsProblem(
     case "equal-tray-total": {
       const trays = r(2, 8),
         each = r(2, 8);
-      figure = grouped(trays * each, each, "counters");
+      figure = counters(trays * each, each, "counters");
       prompt = `There are ${trays} trays with ${each} counters on each tray. How many counters are there altogether?`;
       answer = trays * each;
       label = "Counters altogether";
@@ -279,14 +368,57 @@ export function generateEqualGroupsProblem(
     }
     case "comparison-amount":
     case "comparison-factor": {
+      const castName = axes?.frame18;
+      const cast =
+        castName && castName !== "classic"
+          ? comparisonCast[castName]
+          : undefined;
+      if (templateId === "comparison-amount" && axes?.unknown === "smaller") {
+        const factor = r(2, 9);
+        let small = r(2, 100);
+        if (small === factor) small = small === 100 ? 2 : small + 1;
+        const large = small * factor;
+        if (!cast) {
+          prompt = `Sam has ${shown(large)} tokens. Sam has ${shown(factor)} times as many tokens as Mia. How many tokens does Mia have?`;
+          label = "Mia's tokens";
+          hint = `${shown(large)} is ${shown(factor)} times Mia's tokens. Divide ${shown(large)} by ${shown(factor)}. Do not subtract ${shown(factor)}.`;
+          explanation = [
+            `"${shown(factor)} times as many" means ${shown(factor)} copies of Mia's amount make Sam's ${shown(large)}, not ${shown(factor)} more.`,
+            `So ${shown(factor)} × Mia's tokens = ${shown(large)}.`,
+            `Divide: ${shown(large)} ÷ ${shown(factor)} = ${shown(small)}, because ${shown(factor)} × ${shown(small)} = ${shown(large)}.`,
+            `Mia has ${shown(small)} tokens. Taking away ${shown(factor)} from ${shown(large)} is the additive mistake.`,
+          ];
+        } else {
+          prompt =
+            large > 80
+              ? comparisonSmallAsk(cast, shown(large), shown(factor))
+              : `${cast.b} has ${shown(large)} ${cast.noun}. ${cast.b} has ${shown(factor)} times as many ${cast.noun} as ${cast.a}. How many ${cast.noun} does ${cast.a} have?`;
+          label = `${cast.a}'s ${cast.noun}`;
+          hint = `${shown(large)} is ${shown(factor)} times ${cast.a}'s ${cast.noun}. Divide ${shown(large)} by ${shown(factor)}. Do not subtract ${shown(factor)}.`;
+          explanation = [
+            `"${shown(factor)} times as many" means ${shown(factor)} copies of ${cast.a}'s amount make the ${shown(large)} ${cast.noun}, not ${shown(factor)} more.`,
+            `So ${shown(factor)} × ${cast.a}'s ${cast.noun} = ${shown(large)}.`,
+            `Divide: ${shown(large)} ÷ ${shown(factor)} = ${shown(small)}, because ${shown(factor)} × ${shown(small)} = ${shown(large)}.`,
+            `${cast.a} has ${shown(small)} ${cast.noun}. Taking away ${shown(factor)} from ${shown(large)} is the additive mistake.`,
+          ];
+        }
+        answer = small;
+        break;
+      }
       const small = r(2, 9),
         factor = r(2, 6),
         large = small * factor;
       if (templateId === "comparison-amount") {
-        prompt = `Mia has ${small} tokens. Sam has ${factor} times as many tokens as Mia. How many tokens does Sam have?`;
+        if (!cast) {
+          prompt = `Mia has ${shown(small)} tokens. Sam has ${shown(factor)} times as many tokens as Mia. How many tokens does Sam have?`;
+          label = "Sam's tokens";
+          hint = `${shown(factor)} times as many as ${shown(small)} means ${shown(factor)} copies of ${shown(small)}, not ${shown(small)} + ${shown(factor)}.`;
+        } else {
+          prompt = comparisonAsk(cast, shown(small), shown(factor));
+          label = `${cast.b}'s ${cast.noun}`;
+          hint = `${shown(factor)} times as many as ${shown(small)} means ${shown(factor)} copies of ${shown(small)}, not ${shown(small)} + ${shown(factor)}.`;
+        }
         answer = large;
-        label = "Sam's tokens";
-        hint = `${factor} times as many as ${small} means ${factor} copies of ${small}, not ${small} + ${factor}.`;
       } else {
         prompt = `Mia has ${small} tokens. Sam has ${large} tokens. Sam has how many times as many tokens as Mia?`;
         answer = factor;
@@ -301,12 +433,19 @@ export function generateEqualGroupsProblem(
       }
       explanation =
         templateId === "comparison-amount"
-          ? [
-              `"${factor} times as many" means ${factor} copies of Mia's amount, not ${factor} more.`,
-              `Mia has ${small}, so Sam has ${factor} groups of ${small}: ${factor} × ${small}.`,
-              `${factor} × ${small} = ${large}.`,
-              `Sam has ${large} tokens.`,
-            ]
+          ? cast
+            ? [
+                `"${shown(factor)} times as many" means ${shown(factor)} copies of ${cast.a}'s amount, not ${shown(factor)} more.`,
+                `${cast.a} has ${shown(small)}, so ${cast.b} has ${shown(factor)} groups of ${shown(small)}: ${shown(factor)} × ${shown(small)}.`,
+                `${shown(factor)} × ${shown(small)} = ${shown(large)}.`,
+                `${cast.b} has ${shown(large)} ${cast.noun}.`,
+              ]
+            : [
+                `"${shown(factor)} times as many" means ${shown(factor)} copies of Mia's amount, not ${shown(factor)} more.`,
+                `Mia has ${shown(small)}, so Sam has ${shown(factor)} groups of ${shown(small)}: ${shown(factor)} × ${shown(small)}.`,
+                `${shown(factor)} × ${shown(small)} = ${shown(large)}.`,
+                `Sam has ${shown(large)} tokens.`,
+              ]
           : [
               `"How many times as many" asks how many copies of Mia's amount make Sam's amount.`,
               `So find how many groups of ${small} make ${large}: ${small} × □ = ${large}.`,
@@ -409,6 +548,9 @@ export function generateEqualGroupsProblem(
     default:
       throw new Error(`Unimplemented template: ${templateId}`);
   }
+  const variant = axes
+    ? recordedSweepVariant(templateId, "comparison", axes)
+    : undefined;
   return {
     public: {
       id: createHash("sha256")
@@ -426,5 +568,6 @@ export function generateEqualGroupsProblem(
     hint,
     ...(hintCue ? { hintCue } : {}),
     explanation,
+    ...(variant ? { variant } : {}),
   };
 }

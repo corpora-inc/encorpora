@@ -3,8 +3,10 @@ import { count } from "../../agreement";
 import { base, fill } from "../base";
 import { registerComponent, type Prim } from "../layout";
 import type { Point } from "../spec";
+import { atSchema, shifted } from "./shapes";
 
-/** Rows × columns of unit squares or dots, optionally split into regions. */
+/** Rows × columns of unit squares or dots, optionally split into regions.
+ * `at` places several arrays in one scene without overlapping. */
 export const arraySchema = z
   .object({
     ...base,
@@ -15,6 +17,8 @@ export const arraySchema = z
     splitAfterRow: z.number().int().min(1).optional(),
     splitAfterColumn: z.number().int().min(1).optional(),
     regionLabels: z.boolean().optional(),
+    /** Math-unit offset, to place several arrays in one scene. */
+    at: atSchema.optional(),
   })
   .strict()
   .refine(
@@ -105,7 +109,7 @@ registerComponent("array", {
         width: 3,
       });
     }
-    return prims;
+    return shifted(prims, c.at);
   },
   describe(c) {
     const unit = c.shape === "dot" ? "dot" : "unit square";

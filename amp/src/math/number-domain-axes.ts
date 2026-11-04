@@ -3,10 +3,12 @@ import {
   chooseAxes,
   defineAxis,
   legacyAxes,
+  versionGatedAxes,
   type AxisSet,
   type AxisValues,
 } from "./variation/axes";
 import type { FigureCapability, ProblemVariant } from "./contracts";
+import { operationStoryValues } from "./story-kit/operations";
 
 /**
  * Number-domain and surface axes for grade K-8 families whose released-item
@@ -23,7 +25,28 @@ const axisFor = <const V extends string>(
   values: readonly V[],
   legacy: NoInfer<V>,
   needs?: Partial<Record<NoInfer<V>, FigureCapability>>,
-) => defineAxis(id, values, { legacy, ...(needs ? { needs } : {}) });
+  weights?: readonly number[],
+) =>
+  defineAxis(id, values, {
+    legacy,
+    ...(needs ? { needs } : {}),
+    ...(weights ? { weights } : {}),
+  });
+
+/** Story surface. The classic value is silent so a stored instance keeps its
+ * variant id. Weights are tuned so book samples vary and the legacy surface
+ * still appears often enough to replay. */
+const storyWeight = (classic: number) =>
+  [classic, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] as const;
+/** A story dressing added in template version 2. Below that version the axis
+ * stays on `classic`, the sentence the stored page used. */
+const storyAxis = (id: string, classicWeight: number) =>
+  defineAxis(id, operationStoryValues, {
+    legacy: "classic",
+    weights: storyWeight(classicWeight),
+    silentLegacy: true,
+    since: 2,
+  });
 
 export const sweepAxes = {
   /** Scale a ratio: the target quantity is a whole multiple of the ratio's
@@ -79,13 +102,17 @@ export const sweepAxes = {
     ),
   },
   /** Estimation by rounding: totals, products and quotients (legacy) or the
-   * difference of two decimals. */
+   * difference of two decimals. Tenths of a milliliter stay reachable but
+   * rare: that surface is grade-5 rounding. */
   "estimate-reasonableness": {
     operation: axisFor(
       "operation",
       ["total-product-quotient", "decimal-difference"],
       "total-product-quotient",
+      undefined,
+      [9, 1],
     ),
+    telling21: storyAxis("telling21", 8),
   },
   /** Equivalent expressions: integer coefficients (legacy) or a fractional
    * factor distributed over a binomial. */
@@ -183,6 +210,72 @@ export const sweepAxes = {
       "inch-ruler": "scenes-v2",
     }),
   },
+  /** Multiplicative comparison: the larger amount is unknown (legacy) or the
+   * smaller amount is unknown. The legacy value is silent so a stored
+   * instance keeps the variant id it had before this axis existed. */
+  "comparison-amount": {
+    unknown: {
+      ...axisFor("unknown", ["larger", "smaller"], "larger"),
+      silentLegacy: true,
+      since: 2,
+    },
+    frame18: storyAxis("frame18", 11),
+  },
+  /** Remainder stories: totals at most 55 (legacy) or up to 9,999.
+   * The legacy value is silent so a stored instance keeps its old variant id.
+   * A second silent axis dresses the same model in a real situation. */
+  "full-kits": {
+    "number-domain": {
+      ...axisFor(
+        "number-domain",
+        ["within-55", "up-to-9999"],
+        "within-55",
+        undefined,
+        [3, 1],
+      ),
+      silentLegacy: true,
+      since: 2,
+    },
+    story27: storyAxis("story27", 4),
+  },
+  "seats-needed": {
+    "number-domain": {
+      ...axisFor(
+        "number-domain",
+        ["within-55", "up-to-9999"],
+        "within-55",
+        undefined,
+        [3, 1],
+      ),
+      silentLegacy: true,
+      since: 2,
+    },
+    telling25: storyAxis("telling25", 4),
+  },
+  "kit-leftovers": {
+    "number-domain": {
+      ...axisFor(
+        "number-domain",
+        ["within-55", "up-to-9999"],
+        "within-55",
+        undefined,
+        [3, 1],
+      ),
+      silentLegacy: true,
+      since: 2,
+    },
+    scene25: storyAxis("scene25", 5),
+  },
+  /** A point estimate (legacy) or the two whole numbers a quotient lies between.
+   * The legacy value is silent so a stored instance keeps its old variant id. */
+  "compatible-number-estimate": {
+    bounds: {
+      ...axisFor("bounds", ["point", "between"], "point", undefined, [4, 1]),
+      silentLegacy: true,
+      since: 2,
+    },
+    cast5: storyAxis("cast5", 4),
+  },
 } as const satisfies Record<string, AxisSet>;
 
 export type SweepId = keyof typeof sweepAxes;
@@ -205,22 +298,84 @@ export function withLegacySurfaces<T>(build: () => T): T {
   }
 }
 
+/**
+ * `estimate-reasonableness` changed the weights of an axis that already
+ * existed. Stored version 1 still draws that axis with equal weights. The
+ * story axis, new in version 2, is forced to classic below that version, and
+ * that force is the signal to use the old weights. At version 2 the draw
+ * keeps the rare decimal-difference weights.
+ */
+/** Decimal-difference containers. Not part of `sweepAxes`: version 2 always
+ * uses the mixed list, and recording the draw would put the stored list back
+ * into some current problems. Version 1 forces `milliliters` (jar, bottle,
+ * pitcher) on this axis's own stream. */
+const estimateMeasure = defineAxis(
+  "measure",
+  ["milliliters", "mixed"] as const,
+  { legacy: "milliliters", silentLegacy: true, since: 2 },
+);
+
+function estimateAxes(seed: string): AxisSet {
+  const spec = sweepAxes["estimate-reasonableness"];
+  chooseAxes("estimate-reasonableness", seed, {
+    telling21: spec.telling21,
+    measure: estimateMeasure,
+  });
+  const stored = versionGatedAxes().some((axis) => axis.id === "telling21");
+  if (!stored) return spec;
+  return {
+    ...spec,
+    operation: defineAxis(
+      "operation",
+      ["total-product-quotient", "decimal-difference"] as const,
+      { legacy: "total-product-quotient" },
+    ),
+  };
+}
+
 /** Axis values for one instance, from the axes' own streams (or all legacy
  * inside `withLegacySurfaces`). */
-export const sweepChoose = <K extends SweepId>(id: K, seed: string) =>
-  (legacyOnly
-    ? legacyAxes(sweepAxes[id] as AxisSet)
-    : chooseAxes(
-        id,
-        seed,
-        sweepAxes[id] as AxisSet,
-      )) as unknown as SweepAxes<K>;
+export const sweepChoose = <K extends SweepId>(id: K, seed: string) => {
+  if (legacyOnly) return legacyAxes(sweepAxes[id] as AxisSet) as SweepAxes<K>;
+  const spec = (
+    id === "estimate-reasonableness" ? estimateAxes(seed) : sweepAxes[id]
+  ) as AxisSet;
+  return chooseAxes(id, seed, spec) as unknown as SweepAxes<K>;
+};
 
 /** The private variant record: the family's label and the axis values. */
 export const sweepVariant = (
   id: string,
   axes: Readonly<Record<string, string>>,
 ): ProblemVariant => ({ id, axes: axisRecord(axes) });
+
+/**
+ * Variant saved on a sweep instance.
+ *
+ * A silent legacy axis value is omitted, matching `silentLegacy` in
+ * `defineGenerate`. These families stored no variant before the axis
+ * existed, so when every axis is that legacy value the instance still has
+ * no variant. A newer value is recorded under the family's variant label.
+ */
+export function recordedSweepVariant(
+  templateId: string,
+  id: string,
+  axes: Readonly<Record<string, string>>,
+): ProblemVariant | undefined {
+  const spec = isSweepId(templateId)
+    ? (sweepAxes[templateId] as Readonly<
+        Record<string, { legacy: string; silentLegacy?: boolean }>
+      >)
+    : undefined;
+  const recorded: Record<string, string> = {};
+  for (const [key, value] of Object.entries(axes)) {
+    const axis = spec?.[key];
+    if (axis?.silentLegacy && value === axis.legacy) continue;
+    recorded[key] = value;
+  }
+  if (Object.keys(recorded).length === 0) return undefined;
+  return sweepVariant(id, recorded);
+}
 
 /** Exact decimal text of n/d when it terminates within six places. */
 export function exactDecimal(n: number, d: number): string {

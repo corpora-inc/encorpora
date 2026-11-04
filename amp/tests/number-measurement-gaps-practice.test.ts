@@ -246,7 +246,11 @@ test("estimates follow the stated rounding rule", () => {
       const m = /(\d+) \w+ with (\d+)/.exec(p)!;
       assert.equal(num(correct), r10(Number(m[1])) * r10(Number(m[2])));
     } else if (variant === "verdict") {
-      const m = /(\d+) × (\d+) = ([\d,]+)\./.exec(p)!;
+      const m =
+        /(\d+) × (\d+) = ([\d,]+)\./.exec(p) ??
+        /(\d+) [a-z]+ with (\d+) [a-z]+ in each [a-z]+ and counted ([\d,]+)/.exec(
+          p,
+        )!;
       const exact = Number(m[1]) * Number(m[2]);
       const claim = num(m[3]!);
       const est = r10(Number(m[1])) * r10(Number(m[2]));
@@ -259,25 +263,34 @@ test("estimates follow the stated rounding rule", () => {
       );
       assert.ok(correct.includes(`= ${est.toLocaleString("en-US")}`));
     } else if (variant === "decimal-difference") {
-      const m =
-        /holds (\d+\.\d) milliliters and another holds (\d+\.\d) milliliters/.exec(
-          p,
-        )!;
+      const m = /(\d+\.\d)[^0-9]+(\d+\.\d)/.exec(p)!;
       assert.equal(
         num(correct),
         Math.round(Number(m[1])) - Math.round(Number(m[2])),
       );
     } else if (variant === "two-step") {
-      const m =
-        /fills (\d+) trays with (\d+) rolls each .* and (\d+) trays with (\d+) rolls/.exec(
-          p,
-        )!;
+      const m = /(\d+) \w+ with (\d+).+ and (\d+) \w+ with (\d+)/.exec(p)!;
       assert.equal(
         num(correct),
         Number(m[1]) * r10(Number(m[2])) + Number(m[3]) * r10(Number(m[4])),
       );
+      if (p.includes(" each and ")) {
+        const items = [...p.matchAll(/with \d+ ([a-z]+) each/g)].map(
+          (hit) => hit[1],
+        );
+        const holders = [...p.matchAll(/(\d+) ([a-z]+) with/g)].map(
+          (hit) => hit[2],
+        );
+        assert.equal(items.length, 2, p);
+        assert.equal(holders.length, 2, p);
+        assert.equal(items[0], items[1], p);
+        assert.equal(holders[0], holders[1], p);
+      }
     } else {
-      const m = /^(\d+) students .* seat (\d+)\./.exec(p)!;
+      const m =
+        /Round ([\d,]+) to the nearest hundred and ([\d,]+) to the nearest ten/.exec(
+          p,
+        )!;
       assert.equal(
         num(correct),
         (Math.round(Number(m[1]) / 100) * 100) / r10(Number(m[2])),

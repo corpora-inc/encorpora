@@ -614,9 +614,10 @@ const legacyMethods: Record<string, ProblemMethod> = {
     goal: "Given one amount and “$n$ times as many,” find the other amount.",
     method: [
       "“$n$ times as many” means $n$ copies of the amount.",
-      "Multiply the amount by $n$: 4 times as many as 9 is 4 × 9.",
+      "When the smaller amount is known, multiply it by $n$: 4 times as many as 9 is 4 × 9.",
+      "When the larger amount is known, divide it by $n$: 36 is 4 times as many as 36 ÷ 4.",
     ],
-    watch: "Do not add $n$. 4 times as many as 9 is 36, not 13.",
+    watch: "Do not add or subtract $n$. 4 times as many as 9 is 36, not 13.",
   },
   "comparison-factor": {
     intuition:

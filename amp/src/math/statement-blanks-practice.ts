@@ -2,11 +2,13 @@ import { isAre } from "./agreement";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import { lineTable, scene } from "./scene/author";
 import type { Element } from "./scene/spec";
-import { defineAxis } from "./variation/axes";
+import { storyName } from "./story-kit/names";
+import { defineAxis, type AxisSet } from "./variation/axes";
 import { differentWhole, sameWholeComparePrompt } from "./story-kit/fractions";
 import {
   defineGenerate,
   entry,
+  type Generator,
   frac,
   inlineSentence,
   multiPartCapability,
@@ -95,7 +97,7 @@ export const statementBlanksTemplates: readonly TemplateMetadata[] = [
       "Complete a statement about a point with one coordinate 0: the axis it lies on, which coordinate is 0, how many units to move from the origin and in which direction.",
   },
   {
-    id: "times-as-many-blanks",
+    id: "times-as-many-counts",
     version: 1,
     title: "Compare counts with times as many",
     skillId: "multiplicative-comparison",
@@ -103,7 +105,7 @@ export const statementBlanksTemplates: readonly TemplateMetadata[] = [
     ...multiPartCapability,
     ...tables,
     description:
-      "From a table of three counts, complete a sentence saying how many times as many of one item there are as another, or which item is more than twice as likely as which.",
+      "From a table of three counts, complete a sentence saying how many times as many of one item there are as another.",
   },
   {
     id: "compare-fractions-reason-blanks",
@@ -127,6 +129,19 @@ export const statementBlanksTemplates: readonly TemplateMetadata[] = [
       "From a bank of four signed decimals and fractions, choose the one number that makes each of two inequalities true; each inequality has exactly one solution in the bank.",
   },
 ];
+
+/** v1 of times-as-many-blanks, including the probability sentence. Not selectable. */
+export const historicalTimesAsManyTemplate: TemplateMetadata = {
+  id: "times-as-many-blanks",
+  version: 1,
+  title: "Compare counts with times as many",
+  skillId: "multiplicative-comparison",
+  gradeBand: "3–5",
+  ...multiPartCapability,
+  ...tables,
+  description:
+    "From a table of three counts, complete a sentence saying how many times as many of one item there are as another, or which item is more than twice as likely as which.",
+};
 
 const tableFigure = (rows: string[][], title: string): SemanticFigure => ({
   kind: "scene",
@@ -274,8 +289,13 @@ export const pointOnAxisAxes = {
 } as const;
 
 /* ---------- times as many ---------- */
-export const timesAsManyAxes = {
+/** Retired v1: counts, and a probability sentence. Replay only. */
+export const timesAsManyV1Axes = {
   form: defineAxis("form", ["count-times", "more-than-twice"] as const),
+} as const;
+/** v2: the counts sentence only. */
+export const timesAsManyAxes = {
+  form: defineAxis("form", ["count-times"] as const),
 } as const;
 const ITEM_SETS = [
   ["cups", "mugs", "bottles"],
@@ -339,7 +359,7 @@ export const statementBlanksAxes = {
   "gross-net-sentence": grossNetAxes,
   "coordinate-terms-slots": coordinateTermAxes,
   "point-on-axis-sentence": pointOnAxisAxes,
-  "times-as-many-blanks": timesAsManyAxes,
+  "times-as-many-counts": timesAsManyAxes,
   "compare-fractions-reason-blanks": compareReasonAxes,
   "inequality-number-blanks": inequalityNumberAxes,
 } as const;
@@ -357,8 +377,304 @@ function tableSlots(
   }));
 }
 
+const COUNT_SCENES = [
+  {
+    items: ["soccer balls", "basketballs", "footballs"],
+    place: "gym closet",
+    kind: "balls",
+  },
+  {
+    items: ["tulips", "daisies", "roses"],
+    place: "garden bed",
+    kind: "flowers",
+  },
+  {
+    items: ["red cars", "blue cars", "green cars"],
+    place: "toy bin",
+    kind: "cars",
+  },
+  {
+    items: ["chocolate cookies", "sugar cookies", "oatmeal cookies"],
+    place: "bake-sale table",
+    kind: "cookies",
+  },
+  {
+    items: ["fiction books", "poetry books", "science books"],
+    place: "library cart",
+    kind: "books",
+  },
+  {
+    items: ["dogs", "cats", "rabbits"],
+    place: "shelter desk",
+    kind: "animals",
+  },
+  { items: ["apples", "oranges", "pears"], place: "fruit bowl", kind: "fruit" },
+  {
+    items: ["pencils", "erasers", "rulers"],
+    place: "art shelf",
+    kind: "supplies",
+  },
+  {
+    items: ["baseball cards", "stamps", "stickers"],
+    place: "collection box",
+    kind: "collectibles",
+  },
+  {
+    items: ["goldfish", "guppies", "tetras"],
+    place: "fish tank",
+    kind: "fish",
+  },
+  {
+    items: ["cupcakes", "muffins", "brownies"],
+    place: "kitchen counter",
+    kind: "treats",
+  },
+  {
+    items: ["marbles", "beads", "buttons"],
+    place: "craft box",
+    kind: "pieces",
+  },
+] as const;
+
+/** v2 counts sentence: many real tallies. The retired blanks family keeps
+ * `buildTimesAsMany`, including its probability sentence. */
+const buildTimesAsManyCounts: Generator<AxisSet> = ({ meta, seed, r }) => {
+  const scene = pick(r, COUNT_SCENES);
+  const name = storyName((n) => r(0, n - 1));
+  const names = shuffle(r, [...scene.items]);
+  const k = r(2, 6);
+  const small = r(2, 9);
+  const counts = [small, small * k, 0];
+  counts[2] = r(2, 40);
+  need(!counts.slice(0, 2).includes(counts[2]!), "three different counts");
+  need(
+    counts[2]! % small !== 0 &&
+      (small * k) % counts[2]! !== 0 &&
+      counts[2]! % (small * k) !== 0,
+    "one whole-number comparison",
+  );
+  const pairs = names.flatMap((a, i) =>
+    names.flatMap((b, j) =>
+      i !== j && counts[i]! % counts[j]! === 0 && counts[i]! / counts[j]! >= 2
+        ? [[a, b]]
+        : [],
+    ),
+  );
+  need(pairs.length === 1, "one pair of items");
+  const [bigName, smallName] = pairs[0]!;
+  const shuffled = shuffle(
+    r,
+    names.map((n, i) => ({ n, c: counts[i]! })),
+  );
+  const frame = r(0, 3);
+  const lead =
+    frame === 0
+      ? `${name} counted the ${scene.kind} from the ${scene.place}. Complete the sentence.`
+      : frame === 1
+        ? `The table is ${name}'s tally of the ${scene.kind}. Complete the sentence.`
+        : frame === 2
+          ? `${name} made a tally of the ${scene.kind}. Use the table to complete the sentence.`
+          : `Look at the ${scene.kind} ${name} sorted from the ${scene.place}. Complete the sentence.`;
+  const sentenceStart =
+    frame === 1
+      ? [
+          "The count of ",
+          {
+            id: "big",
+            label: "Item with the greater count",
+            correct: bigName!,
+            fixed: shuffled.map((x) => x.n),
+          } as Slot,
+          " is ",
+          slotOf(
+            "k",
+            "Times as many",
+            k,
+            [k + 1, k - 1, small * k - small, small, 2].filter((x) => x >= 2),
+          ),
+          " times the count of ",
+          {
+            id: "small",
+            label: "Item with the smaller count",
+            correct: smallName!,
+            fixed: shuffled.map((x) => x.n),
+          } as Slot,
+          ".",
+        ]
+      : [
+          "There are ",
+          slotOf(
+            "k",
+            "Times as many",
+            k,
+            [k + 1, k - 1, small * k - small, small, 2].filter((x) => x >= 2),
+          ),
+          " times as many ",
+          {
+            id: "big",
+            label: "Item with the greater count",
+            correct: bigName!,
+            fixed: shuffled.map((x) => x.n),
+          } as Slot,
+          " as ",
+          {
+            id: "small",
+            label: "Item with the smaller count",
+            correct: smallName!,
+            fixed: shuffled.map((x) => x.n),
+          } as Slot,
+          ".",
+        ];
+  const built = inlineSentence(sentenceStart);
+  return multiPartProblem(meta, seed, r, {
+    prompt: lead,
+    layout: "inline",
+    label: "Choose a number or an item for each gap",
+    slots: built.slots,
+    sentence: built.sentence,
+    figure: tableFigure(
+      [
+        ["Item", ...shuffled.map((x) => x.n)],
+        ["Count", ...shuffled.map((x) => String(x.c))],
+      ],
+      `${name}'s ${scene.kind}`,
+    ),
+    hint: `The counts are ${shuffled.map((x) => x.c).join(", ")}. Divide a larger count by a smaller one. Keep the pair that divides evenly. The other count will not.`,
+    explanation: [
+      `Divide the greater count by the smaller one. $${small * k}\\div ${small}=${k}$, because $${k}\\times ${small}=${small * k}$.`,
+      `So there are ${k} times as many ${bigName} as ${smallName}.`,
+      `The other count, ${counts[2]}, does not divide evenly by either of those counts.`,
+    ],
+  });
+};
+
+const buildTimesAsMany: Generator<AxisSet> = ({ meta, seed, r, axes }) => {
+  if (axes.form === "count-times") {
+    const names = shuffle(r, [...pick(r, ITEM_SETS)]);
+    const k = r(2, 6);
+    const small = r(2, 9);
+    const counts = [small, small * k, 0];
+    counts[2] = r(2, 40);
+    need(!counts.slice(0, 2).includes(counts[2]!), "three different counts");
+    need(
+      counts[2]! % small !== 0 &&
+        (small * k) % counts[2]! !== 0 &&
+        counts[2]! % (small * k) !== 0 &&
+        (small * k) % counts[2]! !== 0,
+      "one whole-number comparison",
+    );
+    const pairs = names.flatMap((a, i) =>
+      names.flatMap((b, j) =>
+        i !== j && counts[i]! % counts[j]! === 0 && counts[i]! / counts[j]! >= 2
+          ? [[a, b]]
+          : [],
+      ),
+    );
+    need(pairs.length === 1, "one pair of items");
+    const [bigName, smallName] = pairs[0]!;
+    const shuffled = shuffle(
+      r,
+      names.map((n, i) => ({ n, c: counts[i]! })),
+    );
+    const built = inlineSentence([
+      "There are ",
+      slotOf(
+        "k",
+        "How many times as many",
+        k,
+        [k + 1, k - 1, small * k - small, small, 2].filter((x) => x >= 2),
+      ),
+      " times as many ",
+      {
+        id: "big",
+        label: "The item there are more of",
+        correct: bigName!,
+        fixed: shuffled.map((x) => x.n),
+      } as Slot,
+      " as ",
+      {
+        id: "small",
+        label: "The item there are fewer of",
+        correct: smallName!,
+        fixed: shuffled.map((x) => x.n),
+      } as Slot,
+      ".",
+    ]);
+    return multiPartProblem(meta, seed, r, {
+      prompt:
+        "The table shows how many of each item a class collected. Complete the sentence.",
+      layout: "inline",
+      label: "Choose a number or an item for each gap",
+      slots: built.slots,
+      sentence: built.sentence,
+      figure: tableFigure(
+        [
+          ["Item", ...shuffled.map((x) => x.n)],
+          ["Count", ...shuffled.map((x) => String(x.c))],
+        ],
+        "Counts of three items",
+      ),
+      hint: `Look for a count that is a whole number of times another count. Try dividing the greater counts, such as ${Math.max(...counts)}, by the lesser ones.`,
+      explanation: [
+        `$${small * k}\\div ${small}=${k}$, so the count of ${bigName} is ${k} times the count of ${smallName}.`,
+        `The third count, ${counts[2]}, is not a whole number of times either of the others.`,
+      ],
+    });
+  }
+  const names = shuffle(r, [...pick(r, BOOK_TYPES)]);
+  let counts: number[] = [];
+  let pair: [number, number] | null = null;
+  for (let attempt = 0; attempt < 200 && !pair; attempt++) {
+    counts = names.map(() => r(6, 40));
+    if (new Set(counts).size !== 3) continue;
+    const hits: [number, number][] = [];
+    counts.forEach((a, i) =>
+      counts.forEach((b, j) => i !== j && a > 2 * b && hits.push([i, j])),
+    );
+    if (hits.length === 1) pair = hits[0]!;
+  }
+  need(pair !== null, "one pair more than twice as likely");
+  const [bi, si] = pair!;
+  const total = counts.reduce((s, c) => s + c, 0);
+  const built = inlineSentence([
+    {
+      id: "more",
+      label: "The type that is more likely",
+      correct: names[bi]!,
+      fixed: names,
+    } as Slot,
+    " books are more than twice as likely to be chosen as ",
+    {
+      id: "less",
+      label: "The type that is less likely",
+      correct: names[si]!,
+      fixed: names,
+    } as Slot,
+    " books.",
+  ]);
+  return multiPartProblem(meta, seed, r, {
+    prompt: `A shelf has ${total} books, and one book is chosen at random. The table shows how many books there are of each type. Complete the sentence.`,
+    layout: "inline",
+    label: "Choose a book type for each gap",
+    slots: built.slots,
+    sentence: built.sentence,
+    figure: tableFigure(
+      [
+        ["Type", ...names],
+        ["Books", ...counts.map(String)],
+      ],
+      "Books of each type",
+    ),
+    hint: `Of the ${total} books, a type is more than twice as likely as another when its count is more than double the other count. Double ${Math.min(...counts)}, the least count, and compare it with the other counts.`,
+    explanation: [
+      `The chance of a type is proportional to its count, so compare counts: ${names.map((n, i) => `${n} ${counts[i]}`).join(", ")}.`,
+      `${counts[bi]} is more than $2\\times ${counts[si]}=${2 * counts[si]!}$, and no other pair of counts has this property.`,
+    ],
+  });
+};
+
 export const statementBlanksGenerate = defineGenerate(
-  statementBlanksTemplates,
+  [...statementBlanksTemplates, historicalTimesAsManyTemplate],
   {
     "fixed-variable-expense-table": entry(
       expenseAxes,
@@ -749,138 +1065,8 @@ export const statementBlanksGenerate = defineGenerate(
       },
     ),
 
-    "times-as-many-blanks": entry(
-      timesAsManyAxes,
-      ({ meta, seed, r, axes }) => {
-        if (axes.form === "count-times") {
-          const names = shuffle(r, [...pick(r, ITEM_SETS)]);
-          const k = r(2, 6);
-          const small = r(2, 9);
-          const counts = [small, small * k, 0];
-          counts[2] = r(2, 40);
-          need(
-            !counts.slice(0, 2).includes(counts[2]!),
-            "three different counts",
-          );
-          need(
-            counts[2]! % small !== 0 &&
-              (small * k) % counts[2]! !== 0 &&
-              counts[2]! % (small * k) !== 0 &&
-              (small * k) % counts[2]! !== 0,
-            "one whole-number comparison",
-          );
-          const pairs = names.flatMap((a, i) =>
-            names.flatMap((b, j) =>
-              i !== j &&
-              counts[i]! % counts[j]! === 0 &&
-              counts[i]! / counts[j]! >= 2
-                ? [[a, b]]
-                : [],
-            ),
-          );
-          need(pairs.length === 1, "one pair of items");
-          const [bigName, smallName] = pairs[0]!;
-          const shuffled = shuffle(
-            r,
-            names.map((n, i) => ({ n, c: counts[i]! })),
-          );
-          const built = inlineSentence([
-            "There are ",
-            slotOf(
-              "k",
-              "How many times as many",
-              k,
-              [k + 1, k - 1, small * k - small, small, 2].filter((x) => x >= 2),
-            ),
-            " times as many ",
-            {
-              id: "big",
-              label: "The item there are more of",
-              correct: bigName!,
-              fixed: shuffled.map((x) => x.n),
-            } as Slot,
-            " as ",
-            {
-              id: "small",
-              label: "The item there are fewer of",
-              correct: smallName!,
-              fixed: shuffled.map((x) => x.n),
-            } as Slot,
-            ".",
-          ]);
-          return multiPartProblem(meta, seed, r, {
-            prompt:
-              "The table shows how many of each item a class collected. Complete the sentence.",
-            layout: "inline",
-            label: "Choose a number or an item for each gap",
-            slots: built.slots,
-            sentence: built.sentence,
-            figure: tableFigure(
-              [
-                ["Item", ...shuffled.map((x) => x.n)],
-                ["Count", ...shuffled.map((x) => String(x.c))],
-              ],
-              "Counts of three items",
-            ),
-            hint: `Look for a count that is a whole number of times another count. Try dividing the greater counts, such as ${Math.max(...counts)}, by the lesser ones.`,
-            explanation: [
-              `$${small * k}\\div ${small}=${k}$, so the count of ${bigName} is ${k} times the count of ${smallName}.`,
-              `The third count, ${counts[2]}, is not a whole number of times either of the others.`,
-            ],
-          });
-        }
-        const names = shuffle(r, [...pick(r, BOOK_TYPES)]);
-        let counts: number[] = [];
-        let pair: [number, number] | null = null;
-        for (let attempt = 0; attempt < 200 && !pair; attempt++) {
-          counts = names.map(() => r(6, 40));
-          if (new Set(counts).size !== 3) continue;
-          const hits: [number, number][] = [];
-          counts.forEach((a, i) =>
-            counts.forEach((b, j) => i !== j && a > 2 * b && hits.push([i, j])),
-          );
-          if (hits.length === 1) pair = hits[0]!;
-        }
-        need(pair !== null, "one pair more than twice as likely");
-        const [bi, si] = pair!;
-        const total = counts.reduce((s, c) => s + c, 0);
-        const built = inlineSentence([
-          {
-            id: "more",
-            label: "The type that is more likely",
-            correct: names[bi]!,
-            fixed: names,
-          } as Slot,
-          " books are more than twice as likely to be chosen as ",
-          {
-            id: "less",
-            label: "The type that is less likely",
-            correct: names[si]!,
-            fixed: names,
-          } as Slot,
-          " books.",
-        ]);
-        return multiPartProblem(meta, seed, r, {
-          prompt: `A shelf has ${total} books, and one book is chosen at random. The table shows how many books there are of each type. Complete the sentence.`,
-          layout: "inline",
-          label: "Choose a book type for each gap",
-          slots: built.slots,
-          sentence: built.sentence,
-          figure: tableFigure(
-            [
-              ["Type", ...names],
-              ["Books", ...counts.map(String)],
-            ],
-            "Books of each type",
-          ),
-          hint: `Of the ${total} books, a type is more than twice as likely as another when its count is more than double the other count. Double ${Math.min(...counts)}, the least count, and compare it with the other counts.`,
-          explanation: [
-            `The chance of a type is proportional to its count, so compare counts: ${names.map((n, i) => `${n} ${counts[i]}`).join(", ")}.`,
-            `${counts[bi]} is more than $2\\times ${counts[si]}=${2 * counts[si]!}$, and no other pair of counts has this property.`,
-          ],
-        });
-      },
-    ),
+    "times-as-many-counts": entry(timesAsManyAxes, buildTimesAsManyCounts),
+    "times-as-many-blanks": entry(timesAsManyV1Axes, buildTimesAsMany),
 
     "compare-fractions-reason-blanks": entry(
       compareReasonAxes,

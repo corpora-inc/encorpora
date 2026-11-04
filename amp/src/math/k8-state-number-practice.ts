@@ -6,6 +6,12 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { random, type Random } from "./distribution-practice";
+import {
+  isSweepId,
+  recordedSweepVariant,
+  sweepChoose,
+} from "./number-domain-axes";
+import { compatibleStory } from "./story-kit/operations";
 
 /* State-specific number sense, money, estimation and customary measurement
  * (TEKS, Florida B.E.S.T. and Virginia SOL requirements beyond the common
@@ -28,6 +34,12 @@ type Draft = {
 };
 type Built = Draft & { variant: string };
 
+/** Templates whose stored version 1 must keep the previous skill or wording. */
+const reprintsFromV1: Readonly<Record<string, { previousSkillId?: string }>> = {
+  "prime-factorization-exponents": { previousSkillId: "factors-multiples" },
+  "prime-factorization-value": { previousSkillId: "factors-multiples" },
+  "compatible-number-estimate": {},
+};
 const metadata = (
   id: string,
   title: string,
@@ -38,7 +50,8 @@ const metadata = (
   description: string,
 ): TemplateMetadata => ({
   id,
-  version: 1,
+  version: id in reprintsFromV1 ? 2 : 1,
+  ...(id in reprintsFromV1 ? { reprintsFrom: 1, ...reprintsFromV1[id] } : {}),
   title,
   skillId,
   gradeBand,
@@ -71,8 +84,8 @@ export const k8StateNumberTemplates: readonly TemplateMetadata[] = [
   metadata(
     "prime-factorization-exponents",
     "Write a prime factorization",
-    "factors-multiples",
-    "3–5",
+    "integer-powers",
+    "6–8",
     0.4,
     true,
     "Choose the complete prime factorization of a composite number to 144, written with exponents for repeated factors, including from the first split of a factor tree.",
@@ -80,8 +93,8 @@ export const k8StateNumberTemplates: readonly TemplateMetadata[] = [
   metadata(
     "prime-factorization-value",
     "Use a prime factorization",
-    "factors-multiples",
-    "3–5",
+    "integer-powers",
+    "6–8",
     0.45,
     false,
     "Evaluate a prime factorization written with exponents, count the prime factors of a number, or find its greatest prime factor.",
@@ -1556,6 +1569,39 @@ function customaryUnitChoice(r: Random): Built {
 const nearestMultiple = (x: number, step: number) =>
   Math.round(x / step) * step;
 
+function betweenEstimate(r: Random): Built {
+  const d = r(12, 99);
+  const q = r(4, 80);
+  const rem = r(1, d - 1);
+  const dividend = q * d + rem;
+  const correct = `between ${q} and ${q + 1}`;
+  return {
+    variant: "between",
+    prompt: `${commas(dividend)} ÷ ${commas(d)} is between which two whole numbers?`,
+    answer: "",
+    hint: `Find how many times ${commas(d)} fits in ${commas(dividend)}, then one more than that. The quotient is greater than the first number and less than the second. Compute both bounds.`,
+    explanation: [
+      `${commas(d)} × ${commas(q)} = ${commas(d * q)}, and ${commas(dividend)} − ${commas(d * q)} = ${commas(rem)}.`,
+      `${commas(rem)} is greater than 0 and smaller than ${commas(d)}, so ${commas(dividend)} ÷ ${commas(d)} is greater than ${commas(q)} and less than ${commas(q + 1)}.`,
+      `The quotient is between ${commas(q)} and ${commas(q + 1)}.`,
+    ],
+    choices: choicesFrom(correct, [
+      {
+        label: `between ${q - 1} and ${q}`,
+        feedback: `${commas(d)} × ${commas(q)} = ${commas(d * q)}, which is still less than ${commas(dividend)}. The quotient is greater than ${commas(q)}.`,
+      },
+      {
+        label: `between ${q + 1} and ${q + 2}`,
+        feedback: `${commas(d)} × ${commas(q + 1)} = ${commas(d * (q + 1))}, which is already greater than ${commas(dividend)}.`,
+      },
+      {
+        label: `between ${q} and ${q + 2}`,
+        feedback: `The next whole number after ${commas(q)} is ${commas(q + 1)}, not ${commas(q + 2)}.`,
+      },
+    ]),
+  };
+}
+
 function compatibleNumberEstimate(r: Random): Built {
   const variant = pick(r, [
     "divide",
@@ -1903,17 +1949,39 @@ export function k8StateNumberCase(templateId: string, seed: string) {
   const build = builders[templateId];
   if (!meta || !build) throw new Error(`Unknown template ${templateId}`);
   const r = random(meta.id, seed);
+  const axes = isSweepId(templateId)
+    ? (sweepChoose(templateId, seed) as Readonly<Record<string, string>>)
+    : undefined;
   for (let attempt = 0; attempt < 80; attempt++) {
     let draft: Built;
     try {
-      draft = build(r);
+      draft =
+        templateId === "compatible-number-estimate" &&
+        axes?.bounds === "between"
+          ? betweenEstimate(r)
+          : build(r);
     } catch (error) {
       if (error instanceof Error && error.message.startsWith("Need three"))
         continue;
       throw error;
     }
+    if (
+      templateId === "compatible-number-estimate" &&
+      axes?.cast5 &&
+      axes.cast5 !== "classic"
+    ) {
+      const told = compatibleStory(axes.cast5, draft.prompt);
+      if (told) draft = { ...draft, prompt: told };
+    }
     if (leaks(draft)) continue;
-    return { variant: draft.variant, problem: toProblem(meta, seed, r, draft) };
+    const problem = toProblem(meta, seed, r, draft);
+    const variant = axes
+      ? recordedSweepVariant(templateId, draft.variant, axes)
+      : undefined;
+    return {
+      variant: draft.variant,
+      problem: variant ? { ...problem, variant } : problem,
+    };
   }
   throw new Error("Could not generate a problem without leaking the answer");
 }

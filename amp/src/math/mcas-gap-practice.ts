@@ -134,11 +134,16 @@ export const mcasGapTemplates: readonly TemplateMetadata[] = [
   meta(
     "mcas-true-quotient-equations",
     "Judge quotients with a two-digit divisor",
-    "whole-division",
-    "6–8",
+    "multidigit-quotients",
+    "3–5",
     0.3,
     "Judge division equations whose dividends have three or four digits and whose divisors have two digits, as a select-all list or as true-or-false pairs.",
-    multi,
+    {
+      ...multi,
+      version: 2,
+      reprintsFrom: 1,
+      previousSkillId: "whole-division",
+    },
   ),
   meta(
     "mcas-cube-prism-statements",

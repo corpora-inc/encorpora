@@ -809,7 +809,7 @@ const legacyTemplateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "mcas-true-product-equations": ["equation.truth", "whole.multiply-one-digit"],
   "mcas-prism-range-select": ["measure.volume"],
   "mcas-ratio-statements-select": ["ratio.write-simplify"],
-  "mcas-true-quotient-equations": ["equation.truth", "whole.divide-one-digit"],
+  "mcas-true-quotient-equations": ["equation.truth", "whole.divide-two-digit"],
   "mcas-cube-prism-statements": ["measure.fraction-volume"],
   "mcas-statistical-question-select": ["study.statistical-question"],
   "mcas-fraction-rate-select": ["ratio.proportion"],

@@ -28,6 +28,12 @@ def num(text):
     return int(text.replace(',', ''))
 
 
+def whole_grouped(text):
+    require(re.fullmatch(r'\d{1,3}(,\d{3})*', text) is not None, f'Badly written number {text!r}')
+    require(len(text) < 4 or ',' in text, f'Missing thousands separator in {text!r}')
+    return int(text.replace(',', ''))
+
+
 def labels(public):
     response = public['response']
     require(response['kind'] == 'choice', 'Choice response expected')
@@ -434,19 +440,38 @@ def front_end(n):
 def solve_compatible(public):
     options = labels(public)
     t = public['prompt']
-    m = re.fullmatch(r'Estimate (\d+) × (\d+) with compatible numbers\. Change \1 to the closest multiple of (\d+), then multiply by \2\.', t)
-    if m:
-        expected = nearest_multiple(int(m[1]), int(m[3])) * int(m[2])
-    else:
-        m = re.fullmatch(r'Estimate (\d+) ÷ (\d+) with compatible numbers\. Change \1 to the closest multiple of (\d+), then divide by \2\.', t)
-        if m:
-            rounded = nearest_multiple(int(m[1]), int(m[3]))
-            require(rounded % int(m[2]) == 0, 'Compatible number must divide evenly')
-            expected = Fraction(rounded, int(m[2]))
+    bounds = re.fullmatch(r'([\d,]+) ÷ ([\d,]+) is between which two whole numbers\?', t)
+    if bounds:
+        dividend, divisor = whole_grouped(bounds[1]), whole_grouped(bounds[2])
+        require(10 <= divisor <= 99, 'Two-digit divisor')
+        quotient, remainder = divmod(dividend, divisor)
+        require(remainder != 0, 'The quotient is not a whole number')
+        correct = f'between {quotient} and {quotient + 1}'
+        return pick(options, [o['label'] == correct for o in options], 'bounds')
+    patterns = (
+        r'Estimate (\d+) × (\d+) with compatible numbers\. Change \1 to the closest multiple of (\d+), then multiply by \2\.',
+        r'Estimate (\d+) ÷ (\d+) with compatible numbers\. Change \1 to the closest multiple of (\d+), then divide by \2\.',
+        r'Use front-end estimation to estimate ([\d, +]+)\. Add only the first digit of each number, keeping its place value\.',
+    )
+    found = [(re.search(pattern, t), pattern) for pattern in patterns]
+    matched = [(m, pattern) for m, pattern in found if m]
+    require(len(matched) == 1, 'Unrecognized estimation prompt')
+    m, pattern = matched[0]
+    prefix = t[:m.start()].strip()
+    if prefix:
+        if 'front-end' in pattern:
+            for piece in m[1].split(' + '):
+                require(piece in prefix, 'The story must use every added count')
         else:
-            m = re.fullmatch(r'Use front-end estimation to estimate ([\d, +]+)\. Add only the first digit of each number, keeping its place value\.', t)
-            require(m is not None, 'Unrecognized estimation prompt')
-            expected = sum(front_end(num(x)) for x in m[1].split(' + '))
+            require(m[1] in prefix and m[2] in prefix, 'The story must use the numbers being estimated')
+    if '×' in pattern:
+        expected = nearest_multiple(int(m[1]), int(m[3])) * int(m[2])
+    elif '÷' in pattern:
+        rounded = nearest_multiple(int(m[1]), int(m[3]))
+        require(rounded % int(m[2]) == 0, 'Compatible number must divide evenly')
+        expected = Fraction(rounded, int(m[2]))
+    else:
+        expected = sum(front_end(num(x)) for x in m[1].split(' + '))
     values = [option_value(o['label']) for o in options]
     require(len(set(values)) == len(values), 'Duplicate estimates')
     return pick(options, [v == expected for v in values], 'compatible estimate')

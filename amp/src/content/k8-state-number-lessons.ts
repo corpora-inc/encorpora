@@ -340,31 +340,90 @@ export const k8StateNumberLessons: Lesson[] = [
   },
   {
     id: "prime-composite-factorization",
-    title: "Prime numbers and prime factorization",
+    title: "Prime and composite numbers",
     summary:
-      "A factor of a number is a number that divides it with nothing left over. A prime number has exactly two factors, 1 and itself. Every other whole number bigger than 1 can be built by multiplying primes. A factor tree is a drawing that finds those primes.",
-    templateIds: [
-      "prime-composite-sort",
-      "prime-factorization-exponents",
-      "prime-factorization-value",
-    ],
+      "A factor of a number is a number that divides it with nothing left over. A prime number has exactly two factors, 1 and itself. A composite number is a whole number bigger than 1 with more than two factors. The number 1 is neither.",
+    templateIds: ["prime-composite-sort"],
     senses: {
       factor: "factor-number",
       product: "product-multiply",
+      "more than": "more-than",
     },
     objectives: [
       "Decide whether a whole number up to 144 is prime, composite or neither.",
-      "Build a factor tree and write the prime factorization with exponents.",
+      "Use factor pairs to tell a prime from a composite.",
+    ],
+    sections: [
+      {
+        stage: "intuition",
+        title: "Exactly two factors, or more",
+        paragraphs: [
+          "A factor of a number divides it with nothing left over. The factors of 12 are 1, 2, 3, 4, 6 and 12. Two factors that multiply to make the number are a factor pair, like 3 × 4 = 12.",
+          "A prime number has exactly two factors, 1 and itself: 2, 3, 5, 7, 11 and 13 are prime. A composite number is a whole number bigger than 1 with more than two factors, like 12.",
+          "The number 1 has only one factor, itself, so it is neither prime nor composite.",
+        ],
+      },
+    ],
+    workedExample: {
+      prompt: "Is 91 prime, composite or neither?",
+      steps: [
+        "91 is bigger than 1, so it is prime or composite. Look for a factor pair other than 1 and 91.",
+        "91 is odd, so 2 does not divide it. Its digits add to $9+1=10$, which is not divisible by 3, so 3 does not divide it. It does not end in 0 or 5, so 5 does not divide it.",
+        "Try 7: $91=7\\times13$. Both 7 and 13 are bigger than 1, so 91 has more than two factors.",
+      ],
+      answer: "91 is composite.",
+    },
+    closingSections: [
+      {
+        stage: "method",
+        title: "Test by looking for another factor pair",
+        paragraphs: [
+          "To test a whole number from 2 to 144, look for a factor pair other than 1 and itself. Try dividing by the primes 2, 3, 5, 7 and 11 that are smaller than the number.",
+          "If one divides with nothing left over, the number is composite. If none does, it is prime. 91 looks prime, but $91=7\\times13$.",
+          "The number 1 is neither prime nor composite.",
+        ],
+      },
+      {
+        stage: "formal",
+        title: "You can stop at a prime times itself",
+        paragraphs: [
+          "To test whether a number is prime, try the primes in order. You can stop once a prime times itself is bigger than the number.",
+          "Suppose the number has a factor pair with both factors bigger than 1. The smaller factor times itself is no bigger than the number. That factor is a prime, or a prime divides it, so testing the primes finds one before you stop.",
+        ],
+      },
+    ],
+    pitfalls: [
+      "An odd number is not always prime. 51, 57, 87, 91 and 119 each have a factor pair.",
+      "1 is neither prime nor composite.",
+    ],
+    parentGuide:
+      "Ask the learner whether 1, 29 and 91 are prime, composite or neither, and to show a factor pair for the composite.",
+  },
+  {
+    id: "prime-factorization-powers",
+    title: "Prime factorization with exponents",
+    summary:
+      "Every whole number bigger than 1 can be written as primes multiplied together. A repeated prime can be written with an exponent: the small raised number counts how many times that prime is multiplied.",
+    templateIds: ["prime-factorization-exponents", "prime-factorization-value"],
+    senses: {
+      factor: "factor-number",
+      product: "product-multiply",
+      base: "base-exponent",
+      "more than": "more-than",
+    },
+    noLink: ["third"],
+    objectives: [
+      "Write the prime factorization of a composite number with exponents for repeated factors.",
       "Evaluate a factorization and find its greatest prime factor and number of prime factors.",
     ],
     sections: [
       {
         stage: "intuition",
-        title: "Primes are the building blocks",
+        title: "Primes multiplied together",
         paragraphs: [
-          "A factor of a number divides it with nothing left over. The factors of 12 are 1, 2, 3, 4, 6 and 12. Two factors that multiply to make the number are a factor pair, like 3 × 4 = 12.",
-          "A prime number has exactly two factors, 1 and itself: 2, 3, 5, 7, 11 and 13 are prime. A composite number is a whole number bigger than 1 with more than two factors, like 12. The number 1 has only one factor, so it is neither prime nor composite.",
-          "Every composite number can be written as primes multiplied together. This is called its prime factorization. A factor tree finds it. Split the number into two factors. Then split any factor that is not prime, until every branch ends in a prime.",
+          "A factor is a number you multiply to make another number. A prime number has exactly two factors, 1 and itself. A composite number can be written as primes multiplied together. That product is its prime factorization: $12=2\\times2\\times3$.",
+          "A factor tree finds it. Split the number into two factors, then split any factor that is not prime, until every branch ends in a prime.",
+          "A repeated prime can be written with an exponent. $2\\times2\\times2$ is $2^3$, read “2 to the third power.” The small 3 is the exponent. It counts how many 2s are multiplied. The big 2 is the base.",
         ],
       },
     ],
@@ -382,11 +441,11 @@ export const k8StateNumberLessons: Lesson[] = [
     closingSections: [
       {
         stage: "method",
-        title: "Test for primes, then count the repeats",
+        title: "Count the repeats, then multiply them out",
         paragraphs: [
-          "To test a whole number from 2 to 144, look for a factor pair other than 1 and itself. Try dividing by the primes 2, 3, 5, 7 and 11 that are smaller than the number. If one divides with nothing left over, the number is composite. If none does, it is prime. 91 looks prime, but $91=7\\times13$.",
-          "To write a factorization, list the primes from least to greatest. Count how many times each appears, and write the count as a small raised number called an exponent. $2^3$, read “2 to the third power,” means $2\\times2\\times2$, not $2\\times3$. A prime that appears once gets no exponent.",
-          "Reading a factorization: $2^3\\times3^2=8\\times9=72$. It has $3+2=5$ prime factors counting repeats, and its greatest prime factor is 3.",
+          "List the primes from least to greatest. Count how many times each appears, and write the count as an exponent. A prime that appears once gets no exponent. $2^3$ means $2\\times2\\times2$, not $2\\times3$.",
+          "To evaluate a factorization, work out each power first, then multiply. $2^3\\times3^2=8\\times9=72$.",
+          "Counting repeats, $2^3\\times3^2$ has $3+2=5$ prime factors. Its greatest prime factor is the biggest prime in it, 3.",
         ],
       },
       {
@@ -394,17 +453,17 @@ export const k8StateNumberLessons: Lesson[] = [
         title: "Every tree ends the same way",
         paragraphs: [
           "Every whole number bigger than 1 is a prime or a product of primes. Whatever factor tree you draw, you end with the same primes, each the same number of times. Only the order can change.",
-          "To test whether a number is prime, try the primes in order. You can stop once a prime times itself is bigger than the number. Suppose the number has a factor pair with both factors bigger than 1. The smaller factor times itself is no bigger than the number. That factor is a prime, or a prime divides it, so testing the primes finds one before you stop.",
+          "Writing each repeated prime with an exponent, from the least prime to the greatest, gives one answer: $72=2^3\\times3^2$.",
         ],
       },
     ],
     pitfalls: [
       "$4\\times9$ splits 36 correctly, but it is not a prime factorization. Keep splitting until every factor is prime.",
       "An exponent counts repeated factors: $2^3=8$, not 6.",
-      "1 is neither prime nor composite.",
+      "When you count prime factors, a repeated prime is counted every time it appears.",
     ],
     parentGuide:
-      "Ask the learner to draw two different factor trees for 36 and show they end in the same primes.",
+      "Ask the learner to draw two different factor trees for 36 and show they end in the same primes, written as $2^2\\times3^2$.",
   },
   {
     id: "decimal-money-change",

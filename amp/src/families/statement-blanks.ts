@@ -37,7 +37,7 @@ export const family = {
       "coordinate.plane-point",
     ],
     "point-on-axis-sentence": ["coordinate.first-quadrant"],
-    "times-as-many-blanks": [
+    "times-as-many-counts": [
       "whole.multiplicative-comparison",
       "data.frequency-table-read",
     ],

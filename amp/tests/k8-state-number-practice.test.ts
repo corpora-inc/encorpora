@@ -50,6 +50,7 @@ const VARIANTS: Record<string, string[]> = {
     "multiply-five",
     "multiply-25",
     "front-end",
+    "between",
   ],
   "benchmark-percent-estimate": ["tip", "sales-tax", "discount", "sale-price"],
 };
@@ -383,12 +384,21 @@ test("mixed measures are checked in the smaller unit", () => {
     const m = /(\d+) (ft|yd|lb|gal|cups?) (\d+) (in|ft|oz|qt|fl oz)/.exec(s)!;
     return { big: Number(m[1]), small: Number(m[3]), bigUnit: m[2]! };
   };
-  const per: Record<string, number> = { ft: 12, yd: 3, lb: 16, gal: 4, cup: 8, cups: 8 };
+  const per: Record<string, number> = {
+    ft: 12,
+    yd: 3,
+    lb: 16,
+    gal: 4,
+    cup: 8,
+    cups: 8,
+  };
   for (let seed = 0; seed < 400; seed++) {
     const p = generateProblem("customary-mixed-units", `s${seed}`);
     const prompt = p.public.prompt;
     const mixed = [
-      ...prompt.matchAll(/(\d+ (?:ft|yd|lb|gal|cups?) \d+ (?:in|ft|oz|qt|fl oz))/g),
+      ...prompt.matchAll(
+        /(\d+ (?:ft|yd|lb|gal|cups?) \d+ (?:in|ft|oz|qt|fl oz))/g,
+      ),
     ].map((x) => pair(x[1]!));
     const k = per[mixed[0]?.bigUnit ?? ""] ?? 0;
     const choices = labels(p);
@@ -437,6 +447,29 @@ test("estimates match independent checks", () => {
   for (let seed = 0; seed < 400; seed++) {
     let p = generateProblem("compatible-number-estimate", `s${seed}`);
     let prompt = p.public.prompt;
+    const between =
+      /([\d,]+) ÷ ([\d,]+) is between which two whole numbers\?/.exec(prompt);
+    if (between) {
+      const dividend = num(between[1]!);
+      const divisor = num(between[2]!);
+      assert.equal(
+        /(?<![\d,])\d{4,}(?!\d)/.test(
+          [
+            prompt,
+            p.hint,
+            ...p.explanation,
+            ...labels(p),
+            ...Object.values(p.choiceFeedback ?? {}),
+          ].join("\n"),
+        ),
+        false,
+      );
+      const q = Math.floor(dividend / divisor);
+      assert.ok(divisor >= 10 && divisor <= 99);
+      assert.ok(dividend % divisor !== 0);
+      assert.equal(correctLabel(p), `between ${q} and ${q + 1}`);
+      continue;
+    }
     const c = num(correctLabel(p));
     let m = /Estimate (\d+) ÷ (\d+) .*multiple of (\d+)/.exec(prompt);
     if (m) {

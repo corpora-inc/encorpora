@@ -3,6 +3,7 @@ import { historicalFloridaGapTemplates } from "./florida-gaps-practice";
 import { historicalTrueEquationTemplate } from "./operation-sentence-practice";
 import { historicalEqualFactorTemplate } from "./multiselect-number-practice";
 import { historicalMcasEquationTemplate } from "./mcas-gap-practice";
+import { historicalTimesAsManyTemplate } from "./statement-blanks-practice";
 import type { TemplateMetadata } from "./contracts";
 
 /** Saved instances retain their original content, skill and difficulty metadata.
@@ -13,6 +14,7 @@ export const historicalTemplates: readonly TemplateMetadata[] = [
   historicalTrueEquationTemplate,
   historicalEqualFactorTemplate,
   historicalMcasEquationTemplate,
+  historicalTimesAsManyTemplate,
 ];
 
 /** A current lesson for a retired family; this does not rewrite its evidence. */
@@ -23,4 +25,5 @@ export const templateReplacements: Readonly<Record<string, string>> = {
   "true-equation-choice": "whole-number-equality-choice",
   "equal-factor-equations-select": "equal-factor-truth-select",
   "mcas-true-fact-equations": "fact-equation-truth-select",
+  "times-as-many-blanks": "times-as-many-counts",
 };

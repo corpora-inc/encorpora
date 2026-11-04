@@ -19,10 +19,25 @@ def require(condition, message):
         raise ValueError(message)
 
 
+NUMBER = r'(\d{1,3}(?:,\d{3})*)'
+
+
+def whole(text):
+    require(re.fullmatch(r'\d{1,3}(,\d{3})*', text) is not None, f'Badly written number {text!r}')
+    require(len(text) < 4 or ',' in text, f'Missing thousands separator in {text!r}')
+    return int(text.replace(',', ''))
+
+
 def counts(pattern, prompt):
     match = re.fullmatch(tolerant(pattern), prompt)
     require(match is not None, 'Ambiguous or unsupported equal-groups wording')
     return tuple(int(value) for value in match.groups())
+
+
+def numbers(pattern, prompt):
+    match = re.fullmatch(tolerant(pattern), prompt)
+    require(match is not None, 'Ambiguous or unsupported equal-groups wording')
+    return tuple(whole(value) for value in match.groups())
 
 
 def grouped(figure, total, size, unit):
@@ -75,17 +90,41 @@ def solve_equal_groups(public):
     require(template in diagram_families or template == 'tens-contribution' or figure is None,
             'Unexpected diagram for a text-only story')
     if template in {'full-kits', 'kit-leftovers'}:
-        question = (r'How many full kits can you make\?' if template == 'full-kits' else
-                    r'After making as many full kits as possible, how many beads are left\?')
-        total, size = counts(r'You have ([0-9]+) beads\. Each full kit needs exactly ([0-9]+) beads\. ' + question, prompt)
-        require(total > 0 and size > 1, 'Invalid kit counts')
-        grouped(figure, total, size, 'beads')
+        classic = (r'How many full kits can you make\?' if template == 'full-kits' else
+                   r'After making as many full kits as possible, how many beads are left\?')
+        bead = re.fullmatch(tolerant(
+            r'You have ' + NUMBER + r' beads\. Each full kit needs exactly ' + NUMBER + r' beads\. ' + classic), prompt)
+        if bead:
+            total, size = (whole(value) for value in bead.groups())
+            unit = 'beads'
+        else:
+            found = re.findall(NUMBER, prompt)
+            require(len(found) == 2, 'A kit story states the total and the group size')
+            total, size = (whole(value) for value in found)
+            unit = figure['unit'] if figure else None
+        require(total > 0 and size > 1 and total <= 9999, 'Invalid kit counts')
+        if figure is None:
+            require(total > 64, 'A small kit story shows its groups')
+        else:
+            grouped(figure, total, size, unit)
         quotient, remainder = divmod(total, size)
         return quotient if template == 'full-kits' else remainder
     if template == 'seats-needed':
-        total, seats = counts(r'([0-9]+) visitors need rides\. Each van seats ([0-9]+) visitors\. What is the fewest vans needed\?', prompt)
-        require(total > 0 and seats > 1, 'Visitors and van capacity must be positive')
-        grouped(figure, total, seats, 'visitors')
+        van = re.fullmatch(tolerant(
+            NUMBER + r' visitors need rides\. Each van seats ' + NUMBER + r' visitors\. What is the fewest vans needed\?'), prompt)
+        if van:
+            total, seats = (whole(value) for value in van.groups())
+            unit = 'visitors'
+        else:
+            found = re.findall(NUMBER, prompt)
+            require(len(found) == 2, 'A seating story states the total and the group size')
+            total, seats = (whole(value) for value in found)
+            unit = figure['unit'] if figure else None
+        require(total > 0 and seats > 1 and total <= 9999, 'Visitors and van capacity must be positive')
+        if figure is None:
+            require(total > 64, 'A small van story shows its groups')
+        else:
+            grouped(figure, total, seats, unit)
         # Count capacity until everyone is seated; validate minimality independently.
         vans = 0
         while vans * seats < total:
@@ -143,9 +182,38 @@ def solve_equal_groups(public):
         require(min(crates, bags, balls) > 0, 'Nested groups must be nonempty')
         return sum(sum(balls for _ in range(bags)) for _ in range(crates))
     if template == 'comparison-amount':
-        smaller, multiplier = counts(r'Mia has ([0-9]+) tokens\. Sam has ([0-9]+) times as many tokens as Mia\. How many tokens does Sam have\?', prompt)
-        require(smaller > 0 and multiplier >= 2, 'Multiplicative comparison scope')
-        return sum(smaller for _ in range(multiplier))
+        smaller_unknown = re.fullmatch(tolerant(
+            r'Sam has ([0-9]+) tokens\. Sam has ([0-9]+) times as many tokens as Mia\. How many tokens does Mia have\?'), prompt)
+        if smaller_unknown:
+            larger, multiplier = (int(value) for value in smaller_unknown.groups())
+            require(2 <= multiplier <= 9 and 2 <= larger <= 1000 and larger % multiplier == 0,
+                    'Smaller-amount comparison stays within 1,000')
+            answer = whole_division(larger, multiplier)
+            require(2 <= answer <= 100, 'The unknown smaller amount is from 2 to 100')
+            return answer
+        larger_known = re.fullmatch(tolerant(
+            r'Mia has ([0-9]+) tokens\. Sam has ([0-9]+) times as many tokens as Mia\. How many tokens does Sam have\?'), prompt)
+        if larger_known:
+            smaller, multiplier = (int(value) for value in larger_known.groups())
+            require(smaller > 0 and multiplier >= 2, 'Multiplicative comparison scope')
+            return sum(smaller for _ in range(multiplier))
+        found = [int(value.replace(',', '')) for value in re.findall(NUMBER, prompt)]
+        require(len(found) == 2 and 'times as many' in prompt, 'A times-as-many story states two numbers')
+        amount, multiplier = found
+        require(2 <= multiplier <= 9, 'The multiplier is a counting number from 2 to 9')
+        same_holder = re.search(
+            r'(\w+) has [\d,]+\b.+\1 has \d+ times as many', prompt)
+        if (
+            prompt.startswith('A collection has')
+            or same_holder
+            or re.search(r'That is \d+ times as many', prompt)
+        ):
+            require(amount % multiplier == 0, 'The larger amount is a whole number of copies')
+            answer = whole_division(amount, multiplier)
+            require(2 <= answer <= 100, 'The unknown smaller amount is from 2 to 100')
+            return answer
+        require(amount > 0, 'Multiplicative comparison scope')
+        return sum(amount for _ in range(multiplier))
     if template == 'comparison-factor':
         smaller, larger = counts(r'Mia has ([0-9]+) tokens\. Sam has ([0-9]+) tokens\. Sam has how many times as many tokens as Mia\?', prompt)
         require(0 < smaller < larger, 'Comparison requires a positive reference quantity')

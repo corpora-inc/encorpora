@@ -248,6 +248,7 @@ whole-multiplication|polynomial-arithmetic|extension|The area model that splits 
 area-perimeter-models|expression-structure|extension|Writing the area of a rectangle as length times width extends to binomial sides, whose area is a product of sums.|binomial-area-product
 perimeter|variable-expressions|application|Adding side lengths gives a perimeter. With a letter for an unknown side, the same sum is an expression you can evaluate.|substitute-linear-expression
 multiplicative-comparison|ratios|extension|Saying one amount is a number of times another compares two quantities by multiplication, which is a ratio.|ratio-missing
+factors-multiples|integer-powers|extension|A prime that repeats in a factorization can be written as a power. The exponent counts how many times that prime is multiplied.|prime-factorization-exponents
 scaled-graphs|distribution-plots|extension|Reading a scaled graph means using the axis scale. Histograms also need their scale to read frequencies.|histogram-read
 elapsed-time|unit-rates|application|A rate such as miles per hour divides a quantity by elapsed time.|unit-rate
 mass-volume|unit-conversion|related|Measuring mass and volume uses metric units. Renaming one metric unit as another multiplies or divides by ten, one hundred or one thousand.|metric-length-rename

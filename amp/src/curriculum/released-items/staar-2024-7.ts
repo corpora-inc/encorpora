@@ -111,10 +111,10 @@ export const staar2024Grade7 = defineLedger(
       ],
       demand:
         "Drag book types into a statement about which type is more than twice as likely as another",
-      status: "covered",
-      templateIds: ["times-as-many-blanks", "comparison-factor"],
+      status: "partial",
+      templateIds: ["times-as-many-counts", "comparison-factor"],
       limitations:
-        "times-as-many-blanks completes a times-as-many sentence or a more-than-twice-as-likely sentence from a table of three counts. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
+        "The released item drags book types into a more-than-twice-as-likely sentence. times-as-many-counts completes a times-as-many sentence from a table of three counts and does not ask which type is more likely. The retired times-as-many-blanks family still replays that probability sentence. Each blank takes one choice from its own list.",
     },
     {
       item: { number: "7", page: "rationale PDF p.7" },

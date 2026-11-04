@@ -342,6 +342,7 @@ import {
   generateGrade4MeasurementMoneyProblem,
 } from "./grade4-measurement-money-practice";
 import { texas38Templates, generateTexas38Problem } from "./texas-38-practice";
+import { statementBlanksGenerate } from "./statement-blanks-practice";
 import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
@@ -1025,6 +1026,8 @@ function generateRawProblem(
     return historicalEqualFactorFamily.generate(seed).problem;
   if (templateId === "mcas-true-fact-equations")
     return generateMcasGapProblem(templateId, seed);
+  if (templateId === "times-as-many-blanks")
+    return statementBlanksGenerate(templateId, seed);
   const familyGenerate = familyRegistry.generators.get(templateId);
   if (familyGenerate) return familyGenerate(templateId, seed);
   if (areaVolumeTemplates.some((t) => t.id === templateId))
