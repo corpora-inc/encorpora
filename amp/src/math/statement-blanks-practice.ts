@@ -539,7 +539,7 @@ const buildTimesAsManyCounts: Generator<AxisSet> = ({ meta, seed, r }) => {
       ],
       `${name}'s ${scene.kind}`,
     ),
-    hint: "Find the two counts where the greater one divides evenly by the smaller one. The third count will not. That quotient is how many times as many.",
+    hint: `The counts are ${shuffled.map((x) => x.c).join(", ")}. Divide a larger count by a smaller one. Keep the pair that divides evenly. The other count will not.`,
     explanation: [
       `Divide the greater count by the smaller one. $${small * k}\\div ${small}=${k}$, because $${k}\\times ${small}=${small * k}$.`,
       `So there are ${k} times as many ${bigName} as ${smallName}.`,
