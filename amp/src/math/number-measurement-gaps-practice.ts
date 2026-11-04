@@ -966,7 +966,7 @@ function dressedProduct(
       "balls",
     ],
     pets: [
-      `The shelter fills ${a} bags with ${b} dog treats in each bag`,
+      `The shelter fills ${a} bags with ${b} treats in each bag`,
       "treats",
     ],
     cooking: [
@@ -995,7 +995,7 @@ function dressedProduct(
       "beads",
     ],
     music: [
-      `The band fills ${a} folders with ${b} pages of music in each folder`,
+      `The band fills ${a} folders with ${b} pages in each folder`,
       "pages",
     ],
     school: [
@@ -1020,7 +1020,7 @@ function dressedTwoStep(
 ): string {
   const line: Record<string, string> = {
     sports: `The coach sets out ${t1} bins with ${n1} balls each and ${t2} bins with ${n2} balls each`,
-    pets: `The shelter fills ${t1} bags with ${n1} dog treats each and ${t2} bags with ${n2} dog treats each`,
+    pets: `The shelter fills ${t1} bags with ${n1} treats each and ${t2} bags with ${n2} treats each`,
     cooking: `A bakery packs ${t1} boxes with ${n1} cookies each and ${t2} boxes with ${n2} cookies each`,
     garden: `The club plants ${t1} rows with ${n1} seedlings each and ${t2} rows with ${n2} seedlings each`,
     reading: `The library packs ${t1} bins with ${n1} books each and ${t2} bins with ${n2} books each`,
@@ -1028,7 +1028,7 @@ function dressedTwoStep(
     cards: `Maya sorts ${t1} piles with ${n1} cards each and ${t2} piles with ${n2} cards each`,
     travel: `The crew loads ${t1} crates with ${n1} bottles each and ${t2} crates with ${n2} bottles each`,
     science: `The science class fills ${t1} jars with ${n1} beads each and ${t2} jars with ${n2} beads each`,
-    music: `The band fills ${t1} folders with ${n1} pages of music each and ${t2} folders with ${n2} pages of music each`,
+    music: `The band fills ${t1} folders with ${n1} pages each and ${t2} folders with ${n2} pages each`,
     school: `A teacher fills ${t1} boxes with ${n1} pencils each and ${t2} boxes with ${n2} pencils each`,
   };
   return `${line[telling]}. Round the number in each group to the nearest ten. Which is the best estimate of the total?`;
@@ -1158,7 +1158,7 @@ function estimateReasonableness(
     const who = told(axes);
     const counted: Record<string, string> = {
       sports: `The coach set out ${a} bins with ${b} balls in each bin and counted ${commas(claim)} balls.`,
-      pets: `The shelter filled ${a} bags with ${b} dog treats in each bag and counted ${commas(claim)} treats.`,
+      pets: `The shelter filled ${a} bags with ${b} treats in each bag and counted ${commas(claim)} treats.`,
       cooking: `The bakery packed ${a} boxes with ${b} cookies in each box and counted ${commas(claim)} cookies.`,
       garden: `The club planted ${a} rows with ${b} seedlings in each row and counted ${commas(claim)} seedlings.`,
       reading: `The library packed ${a} bins with ${b} books in each bin and counted ${commas(claim)} books.`,
@@ -1166,7 +1166,7 @@ function estimateReasonableness(
       cards: `Maya sorted ${a} piles with ${b} cards in each pile and counted ${commas(claim)} cards.`,
       travel: `The crew loaded ${a} crates with ${b} bottles in each crate and counted ${commas(claim)} bottles.`,
       science: `The science class filled ${a} jars with ${b} beads in each jar and counted ${commas(claim)} beads.`,
-      music: `The band filled ${a} folders with ${b} pages of music in each folder and counted ${commas(claim)} pages.`,
+      music: `The band filled ${a} folders with ${b} pages in each folder and counted ${commas(claim)} pages.`,
       school: `The teacher filled ${a} boxes with ${b} pencils in each box and counted ${commas(claim)} pencils.`,
     };
     return {
