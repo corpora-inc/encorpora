@@ -143,6 +143,15 @@ def solve_equal_groups(public):
         require(min(crates, bags, balls) > 0, 'Nested groups must be nonempty')
         return sum(sum(balls for _ in range(bags)) for _ in range(crates))
     if template == 'comparison-amount':
+        smaller_unknown = re.fullmatch(tolerant(
+            r'Sam has ([0-9]+) tokens\. Sam has ([0-9]+) times as many tokens as Mia\. How many tokens does Mia have\?'), prompt)
+        if smaller_unknown:
+            larger, multiplier = (int(value) for value in smaller_unknown.groups())
+            require(2 <= multiplier <= 9 and 2 <= larger <= 1000 and larger % multiplier == 0,
+                    'Smaller-amount comparison stays within 1,000')
+            answer = whole_division(larger, multiplier)
+            require(2 <= answer <= 100, 'The unknown smaller amount is from 2 to 100')
+            return answer
         smaller, multiplier = counts(r'Mia has ([0-9]+) tokens\. Sam has ([0-9]+) times as many tokens as Mia\. How many tokens does Sam have\?', prompt)
         require(smaller > 0 and multiplier >= 2, 'Multiplicative comparison scope')
         return sum(smaller for _ in range(multiplier))

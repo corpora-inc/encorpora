@@ -192,6 +192,11 @@ export const sweepAxes = {
       "inch-ruler": "scenes-v2",
     }),
   },
+  /** Multiplicative comparison: the larger amount is unknown (legacy) or the
+   * smaller amount is unknown. */
+  "comparison-amount": {
+    unknown: axisFor("unknown", ["larger", "smaller"], "larger"),
+  },
 } as const satisfies Record<string, AxisSet>;
 
 export type SweepId = keyof typeof sweepAxes;

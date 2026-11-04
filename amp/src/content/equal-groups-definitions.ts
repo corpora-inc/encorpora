@@ -41,7 +41,8 @@ const domains: Record<string, string> = {
   "nested-bag-total": "2–4 crates, 2–4 bags per crate, and 2–6 balls per bag.",
   "zero-one-groups":
     "One factor is zero or one; the other is 2–9, with either factor position possible.",
-  "comparison-amount": "Reference quantity 2–9 and multiplicative factor 2–6.",
+  "comparison-amount":
+    "Legacy surface: reference quantity 2–9 and factor 2–6, larger amount unknown. Smaller-amount-unknown surface: factor 2–9 and answer 2–100, with every number at most 1,000.",
   "comparison-factor":
     "Reference quantity 2–9 and unknown multiplicative factor 2–6.",
   "delivery-then-use":

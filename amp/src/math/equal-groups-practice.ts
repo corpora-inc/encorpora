@@ -8,6 +8,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
+import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes.js";
 export const equalGroupsTemplates: readonly TemplateMetadata[] =
   equalGroupsDefinitions.map(({ id, title, skillId, grade, description }) => ({
     id,
@@ -43,6 +44,9 @@ export function generateEqualGroupsProblem(
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(templateId, seed);
+  const axes = isSweepId(templateId)
+    ? sweepChoose(templateId, seed)
+    : undefined;
   let prompt = "",
     answer = 0,
     label = "Number",
@@ -279,6 +283,23 @@ export function generateEqualGroupsProblem(
     }
     case "comparison-amount":
     case "comparison-factor": {
+      if (templateId === "comparison-amount" && axes?.unknown === "smaller") {
+        const factor = r(2, 9);
+        let small = r(2, 100);
+        if (small === factor) small = small === 100 ? 2 : small + 1;
+        const large = small * factor;
+        prompt = `Sam has ${large} tokens. Sam has ${factor} times as many tokens as Mia. How many tokens does Mia have?`;
+        answer = small;
+        label = "Mia's tokens";
+        hint = `${large} is ${factor} times Mia's tokens. Divide ${large} by ${factor}. Do not subtract ${factor}.`;
+        explanation = [
+          `"${factor} times as many" means ${factor} copies of Mia's amount make Sam's ${large}, not ${factor} more.`,
+          `So ${factor} × Mia's tokens = ${large}.`,
+          `Divide: ${large} ÷ ${factor} = ${small}, because ${factor} × ${small} = ${large}.`,
+          `Mia has ${small} tokens. Taking away ${factor} from ${large} is the additive mistake.`,
+        ];
+        break;
+      }
       const small = r(2, 9),
         factor = r(2, 6),
         large = small * factor;
@@ -426,5 +447,6 @@ export function generateEqualGroupsProblem(
     hint,
     ...(hintCue ? { hintCue } : {}),
     explanation,
+    ...(axes ? { variant: sweepVariant("comparison", axes) } : {}),
   };
 }
