@@ -966,12 +966,12 @@ function dressedProduct(
       "balls",
     ],
     pets: [
-      `The shelter fills ${a} bowls with ${b} treats in each bowl`,
+      `The shelter fills ${a} bags with ${b} dog treats in each bag`,
       "treats",
     ],
     cooking: [
-      `A baker fills ${a} tins with ${b} muffins in each tin`,
-      "muffins",
+      `A bakery packs ${a} boxes with ${b} cookies in each box`,
+      "cookies",
     ],
     garden: [
       `The club plants ${a} rows with ${b} seedlings in each row`,
@@ -991,15 +991,15 @@ function dressedProduct(
       "bottles",
     ],
     science: [
-      `The lab lines up ${a} trays with ${b} slides in each tray`,
-      "slides",
+      `The science class fills ${a} jars with ${b} beads in each jar`,
+      "beads",
     ],
     music: [
-      `The band sets ${a} stands with ${b} sheets in each stand`,
-      "sheets",
+      `The band fills ${a} folders with ${b} pages of music in each folder`,
+      "pages",
     ],
     school: [
-      `A teacher fills ${a} cups with ${b} pencils in each cup`,
+      `A teacher fills ${a} boxes with ${b} pencils in each box`,
       "pencils",
     ],
   };
@@ -1020,15 +1020,15 @@ function dressedTwoStep(
 ): string {
   const line: Record<string, string> = {
     sports: `The coach sets out ${t1} bins with ${n1} balls each and ${t2} bins with ${n2} balls each`,
-    pets: `The shelter fills ${t1} bowls with ${n1} treats each and ${t2} bowls with ${n2} treats each`,
-    cooking: `A baker fills ${t1} tins with ${n1} muffins each and ${t2} tins with ${n2} muffins each`,
+    pets: `The shelter fills ${t1} bags with ${n1} dog treats each and ${t2} bags with ${n2} dog treats each`,
+    cooking: `A bakery packs ${t1} boxes with ${n1} cookies each and ${t2} boxes with ${n2} cookies each`,
     garden: `The club plants ${t1} rows with ${n1} seedlings each and ${t2} rows with ${n2} seedlings each`,
     reading: `The library packs ${t1} bins with ${n1} books each and ${t2} bins with ${n2} books each`,
     saving: `The class stacks ${t1} packs with ${n1} tickets each and ${t2} packs with ${n2} tickets each`,
     cards: `Maya sorts ${t1} piles with ${n1} cards each and ${t2} piles with ${n2} cards each`,
     travel: `The crew loads ${t1} crates with ${n1} bottles each and ${t2} crates with ${n2} bottles each`,
-    science: `The lab lines up ${t1} trays with ${n1} slides each and ${t2} trays with ${n2} slides each`,
-    music: `The band sets ${t1} folders with ${n1} sheets each and ${t2} folders with ${n2} sheets each`,
+    science: `The science class fills ${t1} jars with ${n1} beads each and ${t2} jars with ${n2} beads each`,
+    music: `The band fills ${t1} folders with ${n1} pages of music each and ${t2} folders with ${n2} pages of music each`,
     school: `A teacher fills ${t1} boxes with ${n1} pencils each and ${t2} boxes with ${n2} pencils each`,
   };
   return `${line[telling]}. Round the number in each group to the nearest ten. Which is the best estimate of the total?`;
@@ -1158,15 +1158,15 @@ function estimateReasonableness(
     const who = told(axes);
     const counted: Record<string, string> = {
       sports: `The coach set out ${a} bins with ${b} balls in each bin and counted ${commas(claim)} balls.`,
-      pets: `The shelter filled ${a} bowls with ${b} treats in each bowl and counted ${commas(claim)} treats.`,
-      cooking: `The baker filled ${a} tins with ${b} muffins in each tin and counted ${commas(claim)} muffins.`,
+      pets: `The shelter filled ${a} bags with ${b} dog treats in each bag and counted ${commas(claim)} treats.`,
+      cooking: `The bakery packed ${a} boxes with ${b} cookies in each box and counted ${commas(claim)} cookies.`,
       garden: `The club planted ${a} rows with ${b} seedlings in each row and counted ${commas(claim)} seedlings.`,
       reading: `The library packed ${a} bins with ${b} books in each bin and counted ${commas(claim)} books.`,
       saving: `The class stacked ${a} packs with ${b} tickets in each pack and counted ${commas(claim)} tickets.`,
       cards: `Maya sorted ${a} piles with ${b} cards in each pile and counted ${commas(claim)} cards.`,
       travel: `The crew loaded ${a} crates with ${b} bottles in each crate and counted ${commas(claim)} bottles.`,
-      science: `The lab lined up ${a} trays with ${b} slides in each tray and counted ${commas(claim)} slides.`,
-      music: `The band set out ${a} stands with ${b} sheets in each stand and counted ${commas(claim)} sheets.`,
+      science: `The science class filled ${a} jars with ${b} beads in each jar and counted ${commas(claim)} beads.`,
+      music: `The band filled ${a} folders with ${b} pages of music in each folder and counted ${commas(claim)} pages.`,
       school: `The teacher filled ${a} boxes with ${b} pencils in each box and counted ${commas(claim)} pencils.`,
     };
     return {
