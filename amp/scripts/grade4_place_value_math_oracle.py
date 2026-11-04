@@ -121,10 +121,15 @@ def option_id(blank, label):
 def solve_shift(public):
     prompt = public["prompt"]
     blanks = public["response"]["blanks"]
-    shift = SHIFT.fullmatch(prompt)
+    shift = re.search(
+        r"digit (\d).{0,40}?is worth ([\d,]+)\..{0,80}?to the (left|right).{0,40}?(10 times as much|one tenth as much)",
+        prompt,
+    )
     if shift:
-        digit, old, side, phrase = int(shift[2]), whole(shift[3]), shift[4], shift[5]
-        require(whole(shift[1]) <= 1_000_000, "Number above 1,000,000")
+        shown = re.search(r"\d{1,3}(?:,\d{3})+|\d{3,}", prompt)
+        require(shown is not None, "Missing number")
+        digit, old, side, phrase = int(shift[1]), whole(shift[2]), shift[3], shift[4]
+        require(whole(shown[0]) <= 1_000_000, "Number above 1,000,000")
         require(old % digit == 0 and digit > 0, "Digit value")
         power = old // digit
         require(power in [10 ** p for p in range(7)], "Place value")
@@ -143,9 +148,16 @@ def solve_shift(public):
             "place": option_id(blanks[0], PLACES[nxt]),
             "value": option_id(blanks[1], grouped(value) if value >= 1000 else str(value)),
         }, separators=(",", ":"))
-    product = PRODUCT.fullmatch(prompt)
-    require(product is not None, f"Prompt {prompt!r}")
-    n, factor = whole(product[1]), int(product[2])
+    product = re.search(r"([\d,]+) × (100|10)\b", prompt)
+    if product is None:
+        product = re.search(r"Multiplying ([\d,]+) by (100|10)\b", prompt)
+    if product is None:
+        by = re.search(r"by (100|10)\b", prompt)
+        shown = re.search(r"\d{1,3}(?:,\d{3})+", prompt)
+        require(by is not None and shown is not None, f"Prompt {prompt!r}")
+        n, factor = whole(shown[0]), int(by[1])
+    else:
+        n, factor = whole(product[1]), int(product[2])
     require(factor in (10, 100) and n * factor <= 1_000_000, "Product range")
     moved = "one place" if factor == 10 else "two places"
     require([b["id"] for b in blanks] == ["product", "places"], "Product blanks")
@@ -159,15 +171,17 @@ def solve_shift(public):
 def solve_name(public):
     prompt = public["prompt"]
     options = public["response"]["options"]
-    words = WORDS.fullmatch(prompt)
-    if words:
-        value = parse_name(words[1])
+    quoted = re.search(r"“([^”]+)”", prompt)
+    named = re.search(r"number name: (.+)\?", prompt)
+    numeral = re.search(r"\d{1,3}(?:,\d{3})+", prompt)
+    if numeral and re.search(r"name|words", prompt, re.I) and not quoted:
+        value = whole(numeral[0])
+        label = number_name(value)
+    elif quoted or named:
+        value = parse_name((quoted or named)[1])
         label = grouped(value) if value >= 1000 else str(value)
     else:
-        numeral = NUMERAL.fullmatch(prompt)
-        require(numeral is not None, f"Prompt {prompt!r}")
-        value = whole(numeral[1])
-        label = number_name(value)
+        require(False, f"Prompt {prompt!r}")
     require(1 <= value <= 1_000_000, "Out of range")
     hits = [option["id"] for option in options if option["label"] == label]
     require(len(hits) == 1, f"Name key {label!r}")
@@ -188,7 +202,7 @@ def solve_line(public):
     prompt = public["prompt"]
     options = public["response"]["options"]
     line = line_of(public)
-    if READ.fullmatch(prompt):
+    if re.search(r"point \$P\$|Point \$P\$", prompt):
         marks = line["marks"]
         require(len(marks) == 1 and marks[0]["label"] == "P", "Point P")
         value = marks[0]["at"]
@@ -197,7 +211,7 @@ def solve_line(public):
         hits = [option["id"] for option in options if option["label"] == label]
         require(len(hits) == 1, "Read key")
         return hits[0]
-    locate = LOCATE.fullmatch(prompt)
+    locate = re.search(r"([\d,]{4,})", prompt)
     require(locate is not None, f"Prompt {prompt!r}")
     wanted = whole(locate[1])
     require(wanted not in line["labels"], "The answer tick is labeled")

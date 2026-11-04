@@ -14,6 +14,9 @@ import {
   multiPartProblem,
   type Slot,
 } from "./multi-part-support";
+import { countContext } from "./story-kit/place-value";
+import { defineAxis, surfaceStream } from "./variation/axes";
+import { generateWithAxes, omitLegacyVariant } from "./variation/legacy";
 
 /** Grade-4 place-value practice that the earlier families do not ask:
  * a digit shifted left or right, a number name matched with its numeral,
@@ -66,6 +69,29 @@ const PLACES = [
 ] as const;
 
 const g = (n: number) => grouped(n);
+
+/** Wording only. `bare` is the sentence stored before this axis. */
+const wording = ["bare", "ask", "move", "story"] as const;
+type Wording = (typeof wording)[number];
+const wordingAxis = (weights: readonly number[]) =>
+  defineAxis("surface", wording, {
+    legacy: "bare",
+    weights,
+    silentLegacy: true,
+  });
+export const placeShiftAxes = {
+  surface: wordingAxis([3, 5, 5, 5]),
+} as const;
+export const numberNameAxes = {
+  surface: wordingAxis([3, 5, 5, 5]),
+} as const;
+export const largeNumberLineAxes = {
+  surface: wordingAxis([1, 5, 5, 6]),
+} as const;
+
+function storyLine(templateId: string, seed: string, n: number): string {
+  return countContext(g(n), n, surfaceStream(templateId, `${seed}:story`));
+}
 
 function wholeNumberName(n: number): string {
   if (n === 1_000_000) return "one million";
@@ -132,7 +158,13 @@ type ShiftBuilt = {
   explanation: string[];
 };
 
-function shiftDraft(r: Random, side: "left" | "right"): ShiftBuilt | null {
+function shiftDraft(
+  r: Random,
+  side: "left" | "right",
+  surface: Wording,
+  templateId: string,
+  seed: string,
+): ShiftBuilt | null {
   const found = shiftable(r, side);
   if (!found) return null;
   const { n, digit, place, next, value, oldValue } = found;
@@ -164,8 +196,17 @@ function shiftDraft(r: Random, side: "left" | "right"): ShiftBuilt | null {
   ];
   const direction = side === "left" ? "left" : "right";
   const times = side === "left" ? "10 times as much" : "one tenth as much";
+  const bare = `In ${g(n)}, the digit ${digit} is worth ${g(oldValue)}. It shifts one place to the ${direction}, so it is worth ${times}. Choose its new place and its new value.`;
+  const prompt =
+    surface === "bare"
+      ? bare
+      : surface === "ask"
+        ? `In ${g(n)}, the digit ${digit} is worth ${g(oldValue)}. If it moves one place to the ${direction}, it is worth ${times}. Choose its new place and its new value.`
+        : surface === "move"
+          ? `The digit ${digit} in ${g(n)} is worth ${g(oldValue)}. Moving it one place to the ${direction} makes it worth ${times}. Choose its new place and its new value.`
+          : `${storyLine(templateId, seed, n)}. The digit ${digit} is worth ${g(oldValue)}. One place to the ${direction} makes it worth ${times}. Choose its new place and its new value.`;
   return {
-    prompt: `In ${g(n)}, the digit ${digit} is worth ${g(oldValue)}. It shifts one place to the ${direction}, so it is worth ${times}. Choose its new place and its new value.`,
+    prompt,
     layout: "slots",
     label: "Choose the new place and the new value",
     slots,
@@ -180,7 +221,13 @@ function shiftDraft(r: Random, side: "left" | "right"): ShiftBuilt | null {
   };
 }
 
-function productDraft(r: Random, factor: 10 | 100): ShiftBuilt | null {
+function productDraft(
+  r: Random,
+  factor: 10 | 100,
+  surface: Wording,
+  templateId: string,
+  seed: string,
+): ShiftBuilt | null {
   const exact = r(0, 9) === 0;
   const cap = Math.floor(1_000_000 / factor);
   const n = exact ? 1_000_000 / factor : r(12, cap);
@@ -214,8 +261,17 @@ function productDraft(r: Random, factor: 10 | 100): ShiftBuilt | null {
       max: 4,
     },
   ];
+  const bare = `${g(n)} × ${factor} shifts every digit to the left. Choose the product and how many places the digits move.`;
+  const prompt =
+    surface === "bare"
+      ? bare
+      : surface === "ask"
+        ? `Multiplying ${g(n)} by ${factor} shifts every digit to the left. Choose the product and how many places the digits move.`
+        : surface === "move"
+          ? `${g(n)} × ${factor} moves every digit to the left. How many places do the digits move, and what is the product?`
+          : `${storyLine(templateId, seed, n)}. Multiplying that number by ${factor} shifts every digit to the left. Choose the product and how many places the digits move.`;
   return {
-    prompt: `${g(n)} × ${factor} shifts every digit to the left. Choose the product and how many places the digits move.`,
+    prompt,
     layout: "slots" as const,
     label: "Choose the product and the shift",
     slots,
@@ -228,12 +284,17 @@ function productDraft(r: Random, factor: 10 | 100): ShiftBuilt | null {
   };
 }
 
-function placeShift(r: Random): ShiftBuilt | null {
+function placeShift(
+  r: Random,
+  surface: Wording,
+  templateId: string,
+  seed: string,
+): ShiftBuilt | null {
   const kind = r(0, 3);
-  if (kind === 0) return shiftDraft(r, "left");
-  if (kind === 1) return shiftDraft(r, "right");
-  if (kind === 2) return productDraft(r, 10);
-  return productDraft(r, 100);
+  if (kind === 0) return shiftDraft(r, "left", surface, templateId, seed);
+  if (kind === 1) return shiftDraft(r, "right", surface, templateId, seed);
+  if (kind === 2) return productDraft(r, 10, surface, templateId, seed);
+  return productDraft(r, 100, surface, templateId, seed);
 }
 
 type Choice = { label: string; correct?: true; feedback: string };
@@ -277,7 +338,12 @@ function swapThousands(n: number): number | null {
   return swapped !== n ? swapped : null;
 }
 
-function nameDraft(r: Random): Draft | null {
+function nameDraft(
+  r: Random,
+  surface: Wording,
+  templateId: string,
+  seed: string,
+): Draft | null {
   const toWords = r(0, 1) === 0;
   let n: number;
   if (r(0, 24) === 0) n = 1_000_000;
@@ -328,8 +394,16 @@ function nameDraft(r: Random): Draft | null {
       })),
     );
     if (!choices) return null;
+    const namePrompt =
+      surface === "bare"
+        ? `Which number name matches ${numeral}?`
+        : surface === "ask"
+          ? `How do you write ${numeral} in words?`
+          : surface === "move"
+            ? `Which words name the number ${numeral}?`
+            : `${storyLine(templateId, seed, n)}. Which number name matches ${numeral}?`;
     return {
-      prompt: `Which number name matches ${numeral}?`,
+      prompt: namePrompt,
       answer: "",
       hint: `Say ${numeral} in two parts. The digits before the comma are thousands. The last three digits are the rest.`,
       explanation: [
@@ -350,8 +424,20 @@ function nameDraft(r: Random): Draft | null {
     })),
   );
   if (!choices) return null;
+  const numeralPrompt =
+    surface === "bare"
+      ? `Which numeral matches this number name: ${name}?`
+      : surface === "ask"
+        ? `Which digits show “${name}”?`
+        : surface === "move"
+          ? `Choose the numeral for “${name}”.`
+          : n >= 100_000
+            ? `A census form uses the name “${name}”. Which numeral matches that name?`
+            : n >= 20_000
+              ? `A coach read the season total as “${name}”. Which numeral matches that name?`
+              : `A librarian wrote “${name}” for the books in one school library. Which numeral matches that name?`;
   return {
-    prompt: `Which numeral matches this number name: ${name}?`,
+    prompt: numeralPrompt,
     answer: "",
     hint: `The word thousand splits the name into two groups of digits. Write the thousands group, then the rest, and keep a zero for any place the name skips.`,
     explanation: [
@@ -385,7 +471,13 @@ const LINES: LineSpec[] = [
   },
 ];
 
-function lineScene(line: LineSpec, marks: { at: number; label: string }[]) {
+function lineScene(
+  line: LineSpec,
+  marks: { at: number; label: string }[],
+  title = "Number line",
+  unit = "",
+) {
+  const apart = unit ? `${g(line.step)} ${unit}` : g(line.step);
   return numberLine({
     id: "nl",
     min: line.min,
@@ -394,14 +486,106 @@ function lineScene(line: LineSpec, marks: { at: number; label: string }[]) {
     labels: line.labels,
     marks,
   }).scene({
-    title: "Number line",
-    note: `Tick marks are ${g(line.step)} apart. The labeled ticks are ${line.labels.map(g).join(", ")}.`,
+    title,
+    note: `Tick marks are ${apart} apart. The labeled ticks are ${line.labels.map(g).join(", ")}.`,
     width: 360,
   });
 }
 
-function lineDraft(r: Random): Draft | null {
+/** A unit that fits the scale of the line, for a non-bare surface. */
+function lineContext(
+  line: LineSpec,
+  which: number,
+): {
+  title: string;
+  unit: string;
+  read: string;
+  locate: (value: string) => string;
+} {
+  const scenes = [
+    {
+      max: 40_000,
+      title: "Books in a school library",
+      unit: "books",
+      blurb: "The number line shows books in a school library.",
+    },
+    {
+      max: 80_000,
+      title: "People in a small town",
+      unit: "people",
+      blurb: "The number line shows how many people live in a small town.",
+    },
+    {
+      max: 120_000,
+      title: "Miles a truck drove",
+      unit: "miles",
+      blurb: "The number line shows miles a delivery truck drove this year.",
+    },
+    {
+      max: 80_000,
+      title: "Steps on field day",
+      unit: "steps",
+      blurb: "The number line shows steps a class counted on field day.",
+    },
+    {
+      min: 80_000,
+      max: 400_000,
+      title: "People in nearby towns",
+      unit: "people",
+      blurb: "The number line shows how many people live in nearby towns.",
+    },
+    {
+      min: 100_000,
+      title: "People in nearby cities",
+      unit: "people",
+      blurb: "The number line shows how many people live in nearby cities.",
+    },
+    {
+      min: 150_000,
+      title: "Steps counted this year",
+      unit: "steps",
+      blurb:
+        "The number line shows steps students counted altogether this year.",
+    },
+    {
+      max: 200_000,
+      title: "Points in a tournament",
+      unit: "points",
+      blurb: "The number line shows points scored in a tournament.",
+    },
+    {
+      min: 200_000,
+      title: "Points scored this season",
+      unit: "points",
+      blurb: "The number line shows points scored over a whole season.",
+    },
+  ];
+  const fit = scenes.filter(
+    (scene) =>
+      line.max <= (scene.max ?? Infinity) && line.max >= (scene.min ?? 0),
+  );
+  const scene = (fit.length ? fit : scenes)[
+    which % (fit.length || scenes.length)
+  ]!;
+  return {
+    title: scene.title,
+    unit: scene.unit,
+    read: `${scene.blurb} Which number is at point $P$?`,
+    locate: (value: string) => `${scene.blurb} Which point is at ${value}?`,
+  };
+}
+
+function lineDraft(
+  r: Random,
+  surface: Wording,
+  templateId: string,
+  seed: string,
+): Draft | null {
   const line = LINES[r(0, LINES.length - 1)]!;
+  const told =
+    surface === "bare"
+      ? null
+      : lineContext(line, surfaceStream(templateId, `${seed}:line`)(0, 4));
   const open: number[] = [];
   for (let v = line.min + line.step; v < line.max; v += line.step)
     if (!line.labels.includes(v)) open.push(v);
@@ -437,11 +621,24 @@ function lineDraft(r: Random): Draft | null {
     );
     if (!choices) return null;
     const ticks = Math.abs(value - near) / step;
+    const readPrompt =
+      surface === "bare"
+        ? "Which number is at point $P$ on the number line?"
+        : surface === "ask"
+          ? `${told!.title}. What number does point $P$ show?`
+          : surface === "move"
+            ? `Point $P$ marks a count of ${told!.unit}. Which number is it?`
+            : told!.read;
     return {
-      prompt: "Which number is at point $P$ on the number line?",
+      prompt: readPrompt,
       figure: {
         kind: "scene",
-        scene: lineScene(line, [{ at: value, label: "P" }]),
+        scene: lineScene(
+          line,
+          [{ at: value, label: "P" }],
+          told?.title,
+          told?.unit,
+        ),
       } satisfies SemanticFigure,
       answer: "",
       hint: `The labeled tick nearest $P$ is ${g(near)}. Count the tick marks from there. Each tick is ${g(step)}.`,
@@ -478,13 +675,23 @@ function lineDraft(r: Random): Draft | null {
       }),
   );
   if (!choices) return null;
+  const locatePrompt =
+    surface === "bare"
+      ? `Which point is at ${g(value)} on the number line?`
+      : surface === "ask"
+        ? `${told!.title}. Which letter marks ${g(value)}?`
+        : surface === "move"
+          ? `Find the point at ${g(value)} ${told!.unit}.`
+          : told!.locate(g(value));
   return {
-    prompt: `Which point is at ${g(value)} on the number line?`,
+    prompt: locatePrompt,
     figure: {
       kind: "scene",
       scene: lineScene(
         line,
         order.map((at, i) => ({ at, label: letters[i]! })),
+        told?.title,
+        told?.unit,
       ),
     } satisfies SemanticFigure,
     answer: "",
@@ -525,29 +732,45 @@ export function generateGrade4PlaceValueProblem(
     throw new Error("Seed must contain 1–128 characters");
   const r = random(templateId, seed);
   if (templateId === "place-shift-value") {
-    for (let attempt = 0; attempt < 40; attempt++) {
-      const draw = attempt ? random(templateId, `${seed}#${attempt}`) : r;
-      const built = placeShift(draw);
-      if (!built) continue;
-      const problem = multiPartProblem(meta, seed, draw, built);
-      const response = problem.public.response;
-      if (response.kind !== "multi-part-choice") continue;
-      const key = JSON.parse(problem.answer) as Record<string, string>;
-      const valueBlank = response.blanks.find(
-        (blank) => blank.id === "value" || blank.id === "product",
-      );
-      const shown = valueBlank?.options.find(
-        (option) => option.id === key[valueBlank.id],
-      )?.label;
-      const visible = `${problem.public.prompt}\n${problem.hint}`;
-      if (shown && showsNumber(visible, shown)) continue;
-      return problem;
-    }
-    throw new Error(`${templateId}: no instance for ${seed}`);
+    return omitLegacyVariant(
+      generateWithAxes(templateId, seed, placeShiftAxes, (values) => {
+        for (let attempt = 0; attempt < 40; attempt++) {
+          const draw = attempt ? random(templateId, `${seed}#${attempt}`) : r;
+          const built = placeShift(draw, values.surface, templateId, seed);
+          if (!built) continue;
+          const problem = multiPartProblem(meta, seed, draw, built);
+          const response = problem.public.response;
+          if (response.kind !== "multi-part-choice") continue;
+          const key = JSON.parse(problem.answer) as Record<string, string>;
+          const valueBlank = response.blanks.find(
+            (blank) => blank.id === "value" || blank.id === "product",
+          );
+          const shown = valueBlank?.options.find(
+            (option) => option.id === key[valueBlank.id],
+          )?.label;
+          const visible = `${problem.public.prompt}\n${problem.hint}`;
+          if (shown && showsNumber(visible, shown)) continue;
+          return problem;
+        }
+        throw new Error(`${templateId}: no instance for ${seed}`);
+      }),
+    );
   }
   if (templateId === "number-name-numeral")
-    return buildChoice(meta, seed, r, () => nameDraft(r));
+    return omitLegacyVariant(
+      generateWithAxes(templateId, seed, numberNameAxes, (values) =>
+        buildChoice(meta, seed, r, () =>
+          nameDraft(r, values.surface, templateId, seed),
+        ),
+      ),
+    );
   if (templateId === "large-number-line-point")
-    return buildChoice(meta, seed, r, () => lineDraft(r));
+    return omitLegacyVariant(
+      generateWithAxes(templateId, seed, largeNumberLineAxes, (values) =>
+        buildChoice(meta, seed, r, () =>
+          lineDraft(r, values.surface, templateId, seed),
+        ),
+      ),
+    );
   throw new Error(`Unknown template ${templateId}`);
 }
