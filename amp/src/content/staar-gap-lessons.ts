@@ -148,11 +148,11 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     senses: { "more than": "more-than", parts: "part", part: "part" },
     goal: "Order four decimals that have different numbers of places, or find the decimal in a given position.",
     intuition:
-      "A decimal uses a point to show parts of one. The first digit after the point is tenths, then hundredths, then thousandths. A decimal with more digits is not always greater. To compare, give every number the same number of digits after the point by writing zeros on the right. Those zeros do not change the value. Then compare place by place from the left.",
+      "A decimal uses a point to show parts of one. The first digit after the point is tenths, then hundredths, then thousandths when a third digit is shown. A decimal with more digits is not always greater. To compare hundredths, give every number two digits after the point by writing zeros on the right. Those zeros do not change the value. Then compare place by place from the left.",
     terms: ["place-value"],
     method: [
-      "Write every number with the same number of digits after the point, using zeros on the right: 0.2 becomes 0.200.",
-      "Compare the tenths digits first. If they match, compare the hundredths, then the thousandths.",
+      "Write every number with two digits after the point for hundredths, or three when a number shows thousandths: 0.5 becomes 0.50, and 0.2 becomes 0.200 only when a third digit is shown.",
+      "Compare the tenths digits first. If they match, compare the hundredths. Use the thousandths only when a number shows a third digit.",
       "Put the numbers in the order asked: least to greatest, or greatest to least.",
       "For a position such as third, count along that order.",
     ],
@@ -403,7 +403,7 @@ export const staarGapPrinciples: Record<string, string> = {
   "staar-rate-equation-choice":
     "At 1.5 pounds per day, 120 days use $1.5\\times120=180$ pounds. With letters, at a steady rate $k$ for each unit, $x$ units give $y=k\\times x$. If $D$ units give a total $T$, the rate is $k=T\\div D$, where $D$ is not 0.",
   "staar-order-decimals":
-    "$0.5=0.500$ and $0.45=0.450$. Compare from the left: 5 tenths is more than 4 tenths, so $0.5>0.45$. The sign $>$ means “is greater than”. Writing the same number of places and comparing from the left works for any two decimals that are not negative.",
+    "For hundredths, two places are enough: $0.5=0.50$. $0.5=0.500$ and $0.45=0.450$ when a third digit is shown. Compare from the left: 5 tenths is more than 4 tenths, so $0.5>0.45$. The sign $>$ means “is greater than”. Writing the same number of places and comparing from the left works for any two decimals that are not negative.",
   "staar-order-mixed-forms":
     "Numbers are ordered by where they sit on the number line: farther left is less. Fractions, percents and roots can be compared by their decimals. $\\sqrt{7}$ is between 2 and 3, because $2\\times2=4$, $3\\times3=9$, and 7 is between 4 and 9. The square root sign means the root that is not negative. In general, if a number is between $3\\times3=9$ and $4\\times4=16$, its square root is between 3 and 4. The same works for any two whole numbers next to each other.",
   "staar-decimal-operations":

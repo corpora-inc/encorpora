@@ -280,7 +280,23 @@ def times_as_many(public):
 
 def compare_fractions(public):
     _, blanks = response_of(public, "inline", ["bigger", "why"])
-    (a, b), (c, d) = (re.findall(r"\\frac\{(\d+)\}\{(\d+)\}", untex(public["prompt"]))[i] for i in (0, 1))
+    prompt = untex(public["prompt"])
+    if prompt.startswith("The small cracker and the large cracker are different sizes."):
+        figure = public.get("figure")
+        require(figure and figure.get("kind") == "scene", "Cracker scene")
+        widths = {}
+        for el in figure["scene"]["elements"]:
+            if el.get("type") != "rect":
+                continue
+            y = el["at"][1]
+            widths[y] = widths.get(y, 0) + float(el["size"][0])
+        rows = list(widths.values())
+        require(len(rows) >= 2 and max(rows) - min(rows) > 1, "The two wholes differ in length")
+        return {
+            "bigger": pick(blanks["bigger"], T("you cannot tell which is greater")),
+            "why": pick(blanks["why"], T("can't tell from the fractions")),
+        }
+    (a, b), (c, d) = (re.findall(r"\\frac\{(\d+)\}\{(\d+)\}", prompt)[i] for i in (0, 1))
     n1, d1, n2, d2 = int(a), int(b), int(c), int(d)
     require(F(n1, d1) != F(n2, d2), "The fractions are equal")
     first_bigger = F(n1, d1) > F(n2, d2)
@@ -407,6 +423,17 @@ def fixtures():
                               [("k", "How many times as many", ["4", "5", "6", "2"]), ("big", "The item there are more of", ["mugs", "cups", "bottles"]),
                                ("small", "The item there are fewer of", ["mugs", "cups", "bottles"])],
                               {"k": "a", "big": "a", "small": "c"}, counts_figure(["mugs", "cups", "bottles"], [24, 11, 6])),
+        "crackers": inline(
+            "compare-fractions-reason-blanks",
+            "The small cracker and the large cracker are different sizes. Compare $\\frac{1}{2}$ of the small cracker with $\\frac{1}{2}$ of the large cracker. Complete the sentence.",
+            ["", ("b", "bigger"), " because ", ("b", "why"), "."],
+            [("bigger", "What the fractions tell you", ["$\\frac{1}{2}$", "you cannot tell which is greater", "the small cracker is greater", "the large cracker is greater"]),
+             ("why", "The reason", ["it has more pieces of the same size", "can't tell from the fractions", "the pieces are larger when the denominator is smaller", "a greater denominator makes a greater fraction"])],
+            {"bigger": "b", "why": "b"},
+            {"kind": "scene", "scene": {"v": 1, "title": "Two crackers of different lengths", "elements": [
+                {"type": "rect", "at": [0, 0], "size": [6, 1.2]},
+                {"type": "rect", "at": [0, 3], "size": [12, 1.2]},
+            ]}}),
         "fractions": inline("compare-fractions-reason-blanks", "Compare $\\frac{4}{9}$ and $\\frac{4}{6}$. Complete the sentence.",
                             [("b", "bigger"), " is the greater fraction because ", ("b", "why"), "."],
                             [("bigger", "The greater fraction", ["$\\frac{4}{9}$", "$\\frac{4}{6}$"]),

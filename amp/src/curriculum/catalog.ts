@@ -3318,3 +3318,49 @@ for (const [skillId, suffix, description] of [
       description: description!,
       status: "implemented",
     });
+
+for (const [skillId, suffix, description] of [
+  [
+    "like-fraction-addition",
+    "decompose-and-story",
+    "Decompose a fraction into sums with the same denominator, including a sum of unit fractions, and add two fractions of one whole in a length, volume, or time story.",
+  ],
+  [
+    "mixed-numbers",
+    "add-subtract",
+    "Add and subtract mixed numbers that share a denominator, including sums and differences that regroup.",
+  ],
+  [
+    "fraction-times-whole",
+    "unit-multiple",
+    "Write a fraction as copies of a unit fraction and a product of a whole number and a fraction as copies of that unit fraction.",
+  ],
+  [
+    "fraction-equivalence",
+    "number-line-and-identity",
+    "Name one point with equivalent fractions in at least three denominators on a number line, and build equivalent fractions by multiplying the numerator and the denominator by the same whole number.",
+  ],
+  [
+    "fraction-comparison",
+    "symbols",
+    "Record fraction comparisons with greater than, equal to, or less than, including a common denominator, and state when two fractions of different wholes cannot be compared.",
+  ],
+  [
+    "compare-decimals",
+    "symbols",
+    "Record decimal comparisons to hundredths with greater than, equal to, or less than, including a trailing zero that does not change the value.",
+  ],
+  [
+    "decimal-fractions",
+    "locate-and-place",
+    "Locate a fraction or a decimal on a number line, name the place and the value of one digit in a decimal that stops at hundredths, and rename tenths as hundredths including amounts above one.",
+  ],
+] as const) {
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}

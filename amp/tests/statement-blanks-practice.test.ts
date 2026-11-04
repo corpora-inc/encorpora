@@ -173,9 +173,13 @@ test("pay, coordinates and counts follow the givens", () => {
 test("fraction reasons and inequality numbers are decided by the values", () => {
   for (const seed of seeds("frac")) {
     const { prompt, chosen } = view("compare-fractions-reason-blanks", seed);
-    const [f1, f2] = [...prompt.matchAll(/\\frac\{(\d+)\}\{(\d+)\}/g)].map(
-      (m) => [Number(m[1]), Number(m[2])] as const,
-    );
+    const matches = [...prompt.matchAll(/\\frac\{(\d+)\}\{(\d+)\}/g)];
+    if (chosen.why === "can't tell from the fractions") {
+      assert.equal(chosen.bigger, "you cannot tell which is greater");
+      assert.ok(matches.length >= 2);
+      continue;
+    }
+    const [f1, f2] = matches.map((m) => [Number(m[1]), Number(m[2])] as const);
     const greater = f1![0] * f2![1] > f2![0] * f1![1] ? f1! : f2!;
     assert.deepEqual(ratio(chosen.bigger!), [greater[0], greater[1]]);
     const sameNumerator = f1![0] === f2![0];

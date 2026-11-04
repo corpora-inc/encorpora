@@ -7,7 +7,13 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { sweepChoose, sweepVariant } from "./number-domain-axes";
+import { axisRecord, chooseAxes, defineAxis } from "./variation/axes";
 import { decimal, fixed } from "./decimal-models";
+
+/** Below one is the legacy surface. Above one reaches 2 3/10 = 2.30. */
+export const tenthsMagnitudeAxes = {
+  magnitude: defineAxis("magnitude", ["below-one", "above-one"] as const),
+} as const;
 
 // id | title | skill | grade band | description
 const rows = `
@@ -236,6 +242,76 @@ function draft(templateId: string, r: Random, seed: string): Draft {
       };
     }
     case "tenths-as-hundredths": {
+      const magnitude = chooseAxes(
+        templateId,
+        seed,
+        tenthsMagnitudeAxes,
+      ).magnitude;
+      if (magnitude === "above-one") {
+        let w = r(1, 4);
+        let a = r(1, 9);
+        let form = r(0, 2);
+        let b = form === 1 ? r(0, 9) : 0;
+        if (r(0, 11) === 0) {
+          w = 2;
+          a = 3;
+          b = 0;
+          form = 1;
+        }
+        const variant: ProblemVariant = {
+          id: "above-one",
+          axes: axisRecord({ magnitude: "above-one" }),
+        };
+        const renamed = `${a} × 10 = ${a * 10} hundredths`;
+        const showcase =
+          w === 2 && a === 3 && b === 0
+            ? "2 3/10 = 2 30/100 = 2.30."
+            : `${w} ${a}/10 = ${w} ${a * 10}/100 = ${w}.${a}0.`;
+        if (form === 0)
+          return {
+            prompt: `${w} ${a}/10 = ${w} □/100. What number belongs in the box?`,
+            hint: `${w} ${a}/10 is ${count(w, "whole")} and ${count(a, "tenth")}. Each tenth is 10 hundredths. How many hundredths is the fraction part?`,
+            explanation: [
+              `${w} ${a}/10 is ${count(w, "whole")} and ${a}/10.`,
+              `One tenth is 10 hundredths, because cutting a tenth into 10 equal parts makes hundredths.`,
+              renamed + ".",
+              showcase,
+              `The number in the box is ${a * 10}.`,
+            ],
+            answer: `${a * 10}`,
+            label: "Number",
+            variant,
+          };
+        if (form === 1)
+          return {
+            prompt: `What is ${w} ${a}/10 + ${b}/100 written as a decimal?`,
+            hint: `Rename ${a}/10 as hundredths, then add the ${count(b, "hundredth")}. The ${count(w, "whole")} stay${w === 1 ? "s" : ""} in front of the decimal point.`,
+            explanation: [
+              `${w} ${a}/10 + ${b}/100 is ${count(w, "whole")} plus ${a}/10 plus ${b}/100.`,
+              renamed + ".",
+              `Add the hundredths: ${a * 10}/100 + ${b}/100 = ${a * 10 + b}/100.`,
+              showcase,
+              `As a decimal, that is ${w}.${a}${b}.`,
+            ],
+            answer: `${w}.${a}${b}`,
+            label: "Decimal",
+            variant,
+          };
+        return {
+          prompt: `${w}.${a}0 = ${w} □/100. What number belongs in the box?`,
+          hint: `${w}.${a}0 is ${count(w, "whole")} and ${count(a, "tenth")}. Each tenth is 10 hundredths. How many hundredths is the fraction part?`,
+          explanation: [
+            `${w}.${a}0 is ${count(w, "whole")} and ${a}/10.`,
+            `One tenth is 10 hundredths, because cutting a tenth into 10 equal parts makes hundredths.`,
+            renamed + ".",
+            showcase,
+            `The number in the box is ${a * 10}.`,
+          ],
+          answer: `${a * 10}`,
+          label: "Number",
+          variant,
+        };
+      }
       const a = r(1, 9),
         b = r(1, 9),
         form = r(0, 2);

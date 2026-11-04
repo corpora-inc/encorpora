@@ -1,5 +1,7 @@
+import { isAre } from "./agreement";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
-import { lineTable } from "./scene/author";
+import { lineTable, scene } from "./scene/author";
+import type { Element } from "./scene/spec";
 import { defineAxis } from "./variation/axes";
 import {
   defineGenerate,
@@ -110,7 +112,7 @@ export const statementBlanksTemplates: readonly TemplateMetadata[] = [
     gradeBand: "3–5",
     ...multiPartCapability,
     description:
-      "Choose the greater of two fractions with the same numerator or the same denominator and the reason that makes it greater.",
+      "Choose the greater of two fractions with the same numerator or the same denominator and the reason that makes it greater, or tell that the fractions cannot be compared when the wholes are different sizes.",
   },
   {
     id: "inequality-number-blanks",
@@ -286,6 +288,10 @@ const BOOK_TYPES = [
 /* ---------- comparing fractions ---------- */
 export const compareReasonAxes = {
   basis: defineAxis("basis", ["same-numerator", "same-denominator"] as const),
+  whole: defineAxis("whole", ["same", "different"] as const, {
+    weights: [2, 1],
+    needs: { different: "scenes-v1" },
+  }),
 } as const;
 const REASONS = {
   "same-numerator": {
@@ -868,6 +874,99 @@ export const statementBlanksGenerate = defineGenerate(
     "compare-fractions-reason-blanks": entry(
       compareReasonAxes,
       ({ meta, seed, r, axes }) => {
+        if (axes.whole === "different") {
+          const d1 = r(2, 8);
+          const n1 = r(1, d1 - 1);
+          const d2 = r(2, 8);
+          const n2 = r(1, d2 - 1);
+          const bar = (
+            prefix: string,
+            parts: number,
+            shaded: number,
+            y: number,
+            width: number,
+          ) => {
+            const piece = width / parts;
+            const els: Element[] = [];
+            for (let i = 0; i < parts; i++)
+              els.push({
+                type: "rect",
+                id: `${prefix}-${i}`,
+                at: [i * piece, y],
+                size: [piece, 1.2],
+                fill: i < shaded ? "accent-fill" : "paper",
+                stroke: i < shaded ? "accent" : "ink",
+                width: 2,
+              });
+            return els;
+          };
+          const elements: Element[] = [
+            ...bar("small", d1, n1, 0, 6),
+            ...bar("large", d2, n2, 3, 12),
+            {
+              type: "text",
+              id: "small-label",
+              at: [3, -0.7],
+              text: "small cracker",
+              font: "sans",
+              size: "sm",
+            },
+            {
+              type: "text",
+              id: "large-label",
+              at: [6, 4.6],
+              text: "large cracker",
+              font: "sans",
+              size: "sm",
+            },
+          ];
+          const built = inlineSentence([
+            "",
+            {
+              id: "bigger",
+              label: "What the fractions tell you",
+              correct: "you cannot tell which is greater",
+              wrong: [
+                `$${frac(n1, d1)}$`,
+                `$${frac(n2, d2)}$`,
+                "the small cracker is greater",
+                "the large cracker is greater",
+              ],
+            } as Slot,
+            " because ",
+            {
+              id: "why",
+              label: "The reason",
+              correct: "can't tell from the fractions",
+              wrong: [
+                "the pieces are larger when the denominator is smaller",
+                "it has more pieces of the same size",
+                "a greater denominator makes a greater fraction",
+              ],
+            } as Slot,
+            ".",
+          ]);
+          return multiPartProblem(meta, seed, r, {
+            prompt: `The small cracker and the large cracker are different sizes. Compare $${frac(n1, d1)}$ of the small cracker with $${frac(n2, d2)}$ of the large cracker. Complete the sentence.`,
+            layout: "inline",
+            label: "Choose the fraction and the reason",
+            slots: built.slots,
+            sentence: built.sentence,
+            figure: {
+              kind: "scene",
+              scene: scene(...elements).build({
+                title: "Two crackers of different lengths",
+                note: "The large cracker is longer than the small cracker.",
+              }),
+            },
+            hint: `The small cracker is cut into ${d1} equal pieces and ${n1} of them ${isAre(n1)} shaded. The large cracker is cut into ${d2} equal pieces and ${n2} of them ${isAre(n2)} shaded. The two crackers have different lengths.`,
+            explanation: [
+              `$${frac(n1, d1)}$ names parts of the small cracker. $${frac(n2, d2)}$ names parts of the large cracker.`,
+              `The crackers are different sizes, so the fractions name parts of different amounts.`,
+              `You cannot tell which amount is greater from the fractions alone.`,
+            ],
+          });
+        }
         const same = axes.basis === "same-numerator";
         let first: [number, number];
         let second: [number, number];

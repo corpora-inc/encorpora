@@ -65,6 +65,21 @@ def solve_decimal(public):
         require(1 <= figure['shaded'] <= 99, 'Shaded hundredths')
         return Fraction(figure['shaded'], 100)
     if template == 'tenths-as-hundredths':
+        above = re.fullmatch(r'(\d+) (\d+)/10 = (\d+) □/100\. What number belongs in the box\?', prompt)
+        if above:
+            whole, tenths, shown = map(int, above.groups())
+            require(whole == shown and 1 <= tenths <= 9, 'Mixed tenth rename')
+            return tenths * 10
+        above = re.fullmatch(r'What is (\d+) (\d+)/10 \+ (\d+)/100 written as a decimal\?', prompt)
+        if above:
+            whole, tenths, hundredths = map(int, above.groups())
+            require(1 <= tenths <= 9 and 0 <= hundredths <= 9, 'Mixed tenth sum')
+            return Fraction(whole) + Fraction(tenths, 10) + Fraction(hundredths, 100)
+        above = re.fullmatch(r'(\d+)\.(\d)0 = (\d+) □/100\. What number belongs in the box\?', prompt)
+        if above:
+            whole, tenths, shown = int(above[1]), int(above[2]), int(above[3])
+            require(whole == shown and 1 <= tenths <= 9, 'Mixed decimal rename')
+            return tenths * 10
         found = re.fullmatch(r'(\d)/10 \+ (\d)/100 = □/100\. What number belongs in the box\?', prompt)
         if found:
             return (Fraction(int(found[1]), 10) + Fraction(int(found[2]), 100)) * 100
@@ -162,6 +177,9 @@ def review_decimal_fixtures():
         ({'templateId': 'decimal-grid-read', 'prompt': 'The large square is one whole, cut into 100 equal squares. What decimal names the shaded part?',
           'figure': {'kind': 'decimal-grid', 'unit': 'hundredths', 'shaded': 47}}, Fraction(47, 100)),
         ({'templateId': 'tenths-as-hundredths', 'prompt': '3/10 + 5/100 = □/100. What number belongs in the box?'}, 35),
+        ({'templateId': 'tenths-as-hundredths', 'prompt': '2 3/10 = 2 □/100. What number belongs in the box?'}, 30),
+        ({'templateId': 'tenths-as-hundredths', 'prompt': 'What is 2 3/10 + 0/100 written as a decimal?'}, Fraction(23, 10)),
+        ({'templateId': 'tenths-as-hundredths', 'prompt': '2.30 = 2 □/100. What number belongs in the box?'}, 30),
         ({'templateId': 'decimal-line-point', 'prompt': 'What decimal is at point P?',
           'figure': {'kind': 'decimal-line', 'denominator': 100, 'start': 230, 'point': 7}}, Fraction(237, 100)),
         ({'templateId': 'compare-decimals-hundredths', 'prompt': 'Which is greater: 0.45 or 0.5? Enter that decimal.',
