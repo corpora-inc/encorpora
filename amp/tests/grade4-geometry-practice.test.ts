@@ -494,8 +494,13 @@ function compositeAnswer(problem: GeneratedProblem): string {
   const asksPerimeter = prompt.includes("perimeter");
   const asksArea = /\barea\b/.test(prompt);
   assert.equal(asksPerimeter, !asksArea);
-  const noun = figure.unit === "cm" ? "centimeters" : "meters";
-  assert.ok(prompt.includes(noun));
+  const nouns: Record<string, string> = {
+    cm: "centimeters",
+    m: "meters",
+    ft: "feet",
+    in: "inches",
+  };
+  assert.ok(prompt.includes(nouns[figure.unit]!), figure.unit);
   const value = asksPerimeter
     ? figure.sides.reduce((sum, side) => sum + side!, 0)
     : signed;
@@ -715,7 +720,7 @@ test("grade-4 geometry answers match the figure over 200 seeds", () => {
     "trapezoid",
   ]);
   assert.ok(perimeters >= 0.4 * SEEDS, `perimeter seeds ${perimeters}`);
-  assert.deepEqual([...units].sort(), ["cm", "m"]);
+  assert.deepEqual([...units].sort(), ["cm", "ft", "in", "m"]);
   assert.deepEqual([...formulaKinds].sort(), ["area", "perimeter"]);
 });
 

@@ -20,11 +20,14 @@ import {
   adjacentPrompt,
   benchmarkPrompt,
   protractorPrompt,
+  areaWord,
+  compositeJob,
   quadrilateralPrompt,
   spreadPick,
   storyNameFor,
   triangleFocus,
   trianglePrompt,
+  unitWord,
 } from "./story-kit/geometry.js";
 
 /**
@@ -736,12 +739,14 @@ function quadrilateralAttributes(r: Rand, seed: string): GeneratedProblem {
 }
 
 function compositeRectangle(r: Rand, seed: string): GeneratedProblem {
-  const W = r(6, 12);
-  const H = r(6, 12);
+  const job = compositeJob(seed);
+  const name = storyNameFor(seed, "composite-name");
+  const W = r(job.w[0], job.w[1]);
+  const H = r(job.h[0], job.h[1]);
   const w1 = r(2, W - 2);
   const h1 = r(2, H - 2);
-  const unit = pick(r, ["cm", "m"] as const);
-  const perimeter = r(0, 2) !== 0;
+  const unit = job.unit;
+  const perimeter = job.measure === "perimeter";
   const vertices: [number, number][] = [
     [0, 0],
     [W, 0],
@@ -751,8 +756,8 @@ function compositeRectangle(r: Rand, seed: string): GeneratedProblem {
     [0, H],
   ];
   const sides = [W, h1, W - w1, H - h1, w1, H];
-  const noun = unit === "cm" ? "centimeters" : "meters";
-  const areaNoun = unit === "cm" ? "square centimeters" : "square meters";
+  const noun = unitWord(unit, 2);
+  const areaNoun = areaWord(unit, 2);
   const bottom = W * h1;
   const top = w1 * (H - h1);
   const area = bottom + top;
@@ -770,25 +775,21 @@ function compositeRectangle(r: Rand, seed: string): GeneratedProblem {
     guides: [],
     rightAngles: [0, 1, 4, 5],
   };
+  const asked = perimeter ? noun : areaNoun;
+  const frame = spreadPick(seed, `composite-frame-${job.id}`, job.frames);
   return finish("composite-rectangle-measure", seed, r, {
-    prompt: perimeter
-      ? `A dashed line splits this figure into two rectangles. Every outer side is labeled in ${noun}, and the marked corners are right angles. The dashed line is inside the figure. What is the perimeter, in ${noun}?`
-      : `A dashed line splits this figure into two rectangles. Every outer side is labeled in ${noun}, and the marked corners are right angles. What is the area, in ${areaNoun}?`,
+    prompt: frame(name, asked),
     answer: String(perimeter ? around : area),
-    label: perimeter
-      ? unit === "cm"
-        ? "Centimeters"
-        : "Meters"
-      : areaNoun[0]!.toUpperCase() + areaNoun.slice(1),
+    label: asked[0]!.toUpperCase() + asked.slice(1),
     hint: perimeter
-      ? `The bottom side is ${W} ${noun} and the left side is ${H} ${noun}. The dashed line is inside the figure, so it is not part of the perimeter. Add every outer side once.`
-      : `The bottom side is ${W} ${noun} and the left side is ${H} ${noun}. Split the figure along the dashed line into two rectangles, find each area, and add. The dashed line is not an outer side.`,
+      ? `The dashed line is inside, so leave it out of the perimeter. Add every outer side once. The bottom side is ${W} ${noun} and the left side is ${H} ${noun}.`
+      : `${name} can split the figure along the dashed line into two rectangles. Multiply each length by its width, then add. The bottom side is ${W} ${noun} and the left side is ${H} ${noun}.`,
     explanation: perimeter
       ? [
           `The dashed line is inside the figure, so leave it out of the perimeter.`,
           `The outer sides are ${sides.join(", ")} ${noun}.`,
-          `Add them: ${sides.join(" + ")} = ${around}.`,
-          `The opposite way: the figure is as wide as the bottom, ${W}, and as tall as the left side, ${H}, so the perimeter is $2 \\times (${W} + ${H}) = ${around}$.`,
+          `Add each outer side once: ${sides.join(" + ")} = ${around}.`,
+          `A check: the figure is as wide as the bottom, ${W} ${noun}, and as tall as the left side, ${H} ${noun}, so the perimeter is also $2 \\times (${W} + ${H}) = ${around}$.`,
         ]
       : [
           `The dashed line splits the figure into two rectangles that do not share any squares.`,
