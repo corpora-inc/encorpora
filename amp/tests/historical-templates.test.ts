@@ -56,6 +56,12 @@ const frozen = [
     0.05,
     "0c8d0a27b562e77a85cadde421b5b183c57b846093de3549f379e80b9df97bba",
   ],
+  [
+    "times-as-many-blanks",
+    4,
+    1 / 9,
+    "31841c7d4d02a435e936d7af7ebcb25c710faf54e623050fa87fcf31d20ee5d3",
+  ],
 ] as const;
 
 test("retired v1 families replay unchanged and keep their original evidence metadata", () => {

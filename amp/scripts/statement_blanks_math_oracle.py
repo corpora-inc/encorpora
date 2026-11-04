@@ -21,7 +21,8 @@ from multipart_oracle_support import (
 SUPPORTED = frozenset({
     "fixed-variable-expense-table", "pythagorean-sort-table", "congruence-claims-table",
     "equivalent-expressions-table", "gross-net-sentence", "coordinate-terms-slots",
-    "point-on-axis-sentence", "times-as-many-blanks", "compare-fractions-reason-blanks",
+    "point-on-axis-sentence", "times-as-many-counts", "times-as-many-blanks",
+    "compare-fractions-reason-blanks",
     "inequality-number-blanks",
 })
 REVIEW_RETURNS_ANSWER = True
@@ -331,6 +332,7 @@ SOLVERS = {
     "gross-net-sentence": gross_net,
     "coordinate-terms-slots": coordinate_terms,
     "point-on-axis-sentence": point_on_axis,
+    "times-as-many-counts": times_as_many,
     "times-as-many-blanks": times_as_many,
     "compare-fractions-reason-blanks": compare_fractions,
     "inequality-number-blanks": inequality_numbers,
@@ -418,7 +420,7 @@ def fixtures():
                                   [("b", "more"), " books are more than twice as likely to be chosen as ", ("b", "less"), " books."],
                                   [("more", "The type that is more likely", ["mystery", "science", "poetry"]), ("less", "The type that is less likely", ["mystery", "science", "poetry"])],
                                   {"more": "b", "less": "a"}, counts_figure(["mystery", "science", "poetry"], [12, 30, 23])),
-        "count-times": inline("times-as-many-blanks", "The table shows how many of each item a class collected. Complete the sentence.",
+        "count-times": inline("times-as-many-counts", "The table shows how many of each item a class collected. Complete the sentence.",
                               ["There are ", ("b", "k"), " times as many ", ("b", "big"), " as ", ("b", "small"), "."],
                               [("k", "How many times as many", ["4", "5", "6", "2"]), ("big", "The item there are more of", ["mugs", "cups", "bottles"]),
                                ("small", "The item there are fewer of", ["mugs", "cups", "bottles"])],

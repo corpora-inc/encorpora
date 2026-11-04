@@ -156,17 +156,13 @@ test("pay, coordinates and counts follow the givens", () => {
     assert.equal(chosen.dir, b === 0 ? "right" : "up");
   }
   for (const seed of seeds("times")) {
-    const { prompt, rows, chosen } = view("times-as-many-blanks", seed);
+    const { prompt, rows, chosen } = view("times-as-many-counts", seed);
+    assert.equal(/likely/.test(prompt), false);
     const names = rows![0]!.slice(1);
     const counts = rows![1]!.slice(1).map(Number);
     const count = (n: string) => counts[names.indexOf(n)]!;
-    if ("k" in chosen) {
-      assert.equal(count(chosen.big!), num(chosen.k!) * count(chosen.small!));
-      assert.ok(num(chosen.k!) >= 2);
-    } else {
-      assert.ok(count(chosen.more!) > 2 * count(chosen.less!));
-    }
-    void prompt;
+    assert.equal(count(chosen.big!), num(chosen.k!) * count(chosen.small!));
+    assert.ok(num(chosen.k!) >= 2);
   }
 });
 

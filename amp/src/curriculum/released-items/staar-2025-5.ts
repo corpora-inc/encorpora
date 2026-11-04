@@ -60,12 +60,12 @@ export const staarGrade5 = defineLedger(
         "Compare tally counts of cups, mugs and bottles as times-as-many, completing two dropdown blanks",
       status: "partial",
       templateIds: [
-        "times-as-many-blanks",
+        "times-as-many-counts",
         "comparison-factor",
         "scaled-picture-graph",
       ],
       limitations:
-        "STAAR interaction: inline choice, 1 point. times-as-many-blanks completes the times-as-many sentence from a table of numeric counts; reading the counts from tally marks is not practiced.",
+        "STAAR interaction: inline choice, 1 point. times-as-many-counts completes the times-as-many sentence from a table of numeric counts; reading the counts from tally marks is not practiced.",
     },
     {
       item: {
