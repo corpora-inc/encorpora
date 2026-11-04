@@ -7,6 +7,7 @@ import {
 } from "../src/math/contracts";
 import { generateProblem, templates } from "../src/math/engine";
 import { dotPlotArithmeticFamily } from "../src/math/line-graph-read-practice";
+import { generateLinePlotProblem } from "../src/math/line-plot-practice";
 
 const SEEDS = 240;
 const EXTRA = new Set([3, 5, 6, 10, 12]);
@@ -594,7 +595,11 @@ test("legacy dot-plot and fourths-eighths line plots replay", () => {
   const seen = new Set<number>();
   let eighths = 0;
   for (const row of fixture["fraction-plot-difference"]!) {
-    const problem = generateProblem("fraction-plot-difference", row.seed);
+    const problem = generateLinePlotProblem(
+      "fraction-plot-difference",
+      row.seed,
+      { setting: "plain" },
+    );
     const denom = problem.variant?.axes?.denominator;
     if (problem.public.figure?.kind === "line-plot")
       seen.add(problem.public.figure.denominator);

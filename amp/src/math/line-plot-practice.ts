@@ -6,6 +6,7 @@ import type {
 } from "./contracts.js";
 import { MAX_STACK, mixedText, stackHeights } from "./data-display-models.js";
 import { axisRecord, chooseAxes, defineAxis } from "./variation/axes.js";
+import { storyNames } from "./story-kit/names.js";
 
 /** Line plots of measurements, from whole units to fraction operations (grades 2–5). */
 const charts = { requiredFigureCapability: "data-displays-v1" } as const;
@@ -109,6 +110,11 @@ const plotDenomAxis = {
     ] as const,
     { legacy: "fourths-eighths", weights: [12, 2, 2, 2, 2, 1] },
   ),
+  /** Plain keeps the original sentence. Vivid is a varied measurement story. */
+  setting: defineAxis("setting", ["plain", "vivid"] as const, {
+    legacy: "plain",
+    weights: [1, 11],
+  }),
 };
 const EXTRA_DENOM = {
   thirds: 3,
@@ -199,6 +205,33 @@ const lengthContexts = [
   { item: "ribbon", items: "ribbons" },
   { item: "feather", items: "feathers" },
 ] as const;
+/** Inch objects a ruler can measure from about 1 to 6 inches. */
+const VIVID_INCH = [
+  { item: "crayon", items: "crayons", why: "for a still-life drawing" },
+  { item: "pencil stub", items: "pencil stubs", why: "from the pencil cup" },
+  { item: "earthworm", items: "earthworms", why: "during a garden dig" },
+  { item: "leaf", items: "leaves", why: "on the nature walk" },
+  { item: "ribbon", items: "ribbons", why: "for bookmarks" },
+  { item: "feather", items: "feathers", why: "found on the playground" },
+  { item: "seedling", items: "seedlings", why: "in the garden bed" },
+  { item: "screw", items: "screws", why: "from the hardware jar" },
+  { item: "chalk piece", items: "chalk pieces", why: "in the art tray" },
+  { item: "paper strip", items: "paper strips", why: "for a collage" },
+  { item: "twig", items: "twigs", why: "for a nest model" },
+  { item: "carrot stick", items: "carrot sticks", why: "for snack bags" },
+] as const;
+function vividInchIntro(index: number, precise: string): string {
+  const tale = VIVID_INCH[index]!;
+  const name = storyNames[index % storyNames.length]!;
+  const near = `to the nearest ${precise} inch`;
+  const frames = [
+    `${name} measured ${tale.items} ${tale.why} ${near}. The line plot shows those lengths.`,
+    `The line plot shows the ${tale.items} ${name} measured ${near} ${tale.why}.`,
+    `Each mark is one ${tale.item} ${name} measured ${near} ${tale.why}.`,
+    `${name} lined up ${tale.items} ${tale.why} and measured each one ${near}. The line plot shows the lengths.`,
+  ];
+  return frames[index % frames.length]!;
+}
 const units = {
   in: { one: "inch", many: "inches" },
   cm: { one: "centimeter", many: "centimeters" },
@@ -362,12 +395,74 @@ function fractionPlot(r: Random): Draft {
   );
 }
 
+function vividExtraStory(
+  d: keyof typeof EXTRA_STORY,
+  values: readonly number[],
+): (typeof EXTRA_STORY)[keyof typeof EXTRA_STORY] {
+  const name = storyNames[values[0]! % storyNames.length]!;
+  if (d === 3)
+    return {
+      one: "cup",
+      many: "cups",
+      item: "bowl",
+      items: "bowls",
+      precision: "third of a cup",
+      noun: "amount",
+      pair: "greatest and least",
+      intro: `${name} filled bowls with rice for a class lunch, measuring each bowl to the nearest third of a cup. The line plot shows those amounts.`,
+    };
+  if (d === 5)
+    return {
+      one: "liter",
+      many: "liters",
+      item: "bottle",
+      items: "bottles",
+      precision: "fifth of a liter",
+      noun: "amount",
+      pair: "greatest and least",
+      intro: `${name} measured the water in each science bottle to the nearest fifth of a liter. The line plot shows those amounts.`,
+    };
+  if (d === 6)
+    return {
+      one: "foot",
+      many: "feet",
+      item: "board",
+      items: "boards",
+      precision: "sixth of a foot",
+      noun: "length",
+      pair: "longest and shortest",
+      intro: `${name} measured boards for a birdhouse to the nearest sixth of a foot. The line plot shows those lengths.`,
+    };
+  if (d === 10)
+    return {
+      one: "meter",
+      many: "meters",
+      item: "plant",
+      items: "plants",
+      precision: "tenth of a meter",
+      noun: "height",
+      pair: "longest and shortest",
+      intro: `${name} measured bean plants to the nearest tenth of a meter. The line plot shows those heights.`,
+    };
+  return {
+    one: "foot",
+    many: "feet",
+    item: "strip",
+    items: "strips",
+    precision: "twelfth of a foot",
+    noun: "length",
+    pair: "longest and shortest",
+    intro: `${name} measured wood strips for a picture frame to the nearest twelfth of a foot. The line plot shows those lengths.`,
+  };
+}
 function extraDifference(
   r: Random,
   d: keyof typeof EXTRA_STORY,
   values: number[],
+  setting: "plain" | "vivid",
 ): Draft {
-  const story = EXTRA_STORY[d];
+  const story =
+    setting === "vivid" ? vividExtraStory(d, values) : EXTRA_STORY[d];
   const figure: SemanticFigure = {
     kind: "line-plot",
     denominator: d,
@@ -425,9 +520,12 @@ function extraDifference(
     figure,
     answer: rational(total, d),
     fraction: true,
-    hint: `Count the marks above ${mixedText(v, d)}. Add that amount once for each mark, or multiply.`,
+    hint:
+      setting === "vivid"
+        ? `Count the marks at ${mixedText(v, d)}. Add that amount once for each mark, or multiply.`
+        : `Count the marks above ${mixedText(v, d)}. Add that amount once for each mark, or multiply.`,
     explanation: [
-      `Each mark (×) is one ${story.item}. The marks above ${mixedText(v, d)} show the ${story.items} of that ${story.noun}.`,
+      `Each mark (×) is one ${story.item}. The marks ${setting === "vivid" ? "at" : "above"} ${mixedText(v, d)} show the ${story.items} of that ${story.noun}.`,
       `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} above ${mixedText(v, d)} = ${f(v)}.`,
       `Add that amount once for each mark. That is the same as multiplying: ${n} × ${f(v)} = ${result(total, d, story.one, story.many)}.`,
       `Their total ${story.noun} is ${measure2(total, d, story.one, story.many)}.`,
@@ -435,8 +533,19 @@ function extraDifference(
   };
 }
 
-function plotDifference(r: Random, denomAxis: string): Draft {
-  const context = lengthContexts[r(0, lengthContexts.length - 1)]!;
+function plotDifference(
+  r: Random,
+  denomAxis: string,
+  setting: "plain" | "vivid",
+): Draft {
+  const picked = r(
+    0,
+    (setting === "vivid" ? VIVID_INCH.length : lengthContexts.length) - 1,
+  );
+  const vivid = setting === "vivid" ? VIVID_INCH[picked] : undefined;
+  const context = vivid
+    ? { item: vivid.item, items: vivid.items }
+    : lengthContexts[picked]!;
   // The legacy value draws the denominator first, exactly as before this axis.
   // A cast would hide "fourths-eighths", so the legacy denominator would type as unreachable.
   const extra =
@@ -448,7 +557,7 @@ function plotDifference(r: Random, denomAxis: string): Draft {
     start = extra ? 0 : first * d,
     end = extra ? (d === 5 || d === 10 ? 10 : 12) : start + 8;
   const values = sample(r, r(6, 12), Math.max(start, 1), end);
-  if (extra) return extraDifference(r, extra, values);
+  if (extra) return extraDifference(r, extra, values, setting);
   const figure: SemanticFigure = {
     kind: "line-plot",
     denominator: d,
@@ -458,7 +567,11 @@ function plotDifference(r: Random, denomAxis: string): Draft {
     mark: "x",
     unit: "inches",
   };
-  const intro = `The line plot shows the lengths of some ${context.items}, measured to the nearest ${extra ? `${EXTRA_WORD[d as keyof typeof EXTRA_WORD]} of an` : d === 8 ? "eighth" : "quarter"} inch.`;
+  const precise = d === 8 ? "eighth" : "quarter";
+  const intro = vivid
+    ? vividInchIntro(picked, precise)
+    : `The line plot shows the lengths of some ${context.items}, measured to the nearest ${precise} inch.`;
+  const flip = !!vivid && picked % 2 === 0;
   const sorted = [...values].sort((a, b) => a - b);
   const longest = sorted.at(-1)!,
     shortest = sorted[0]!;
@@ -468,7 +581,9 @@ function plotDifference(r: Random, denomAxis: string): Draft {
   const question = r(0, 2);
   if (question === 0)
     return {
-      prompt: `${intro} What is the difference in length between the longest and shortest ${context.item}, in inches?`,
+      prompt: flip
+        ? `${intro} How much longer is the longest ${context.item} than the shortest, in inches?`
+        : `${intro} What is the difference in length between the longest and shortest ${context.item}, in inches?`,
       figure,
       answer: rational(longest - shortest, d),
       fraction: true,
@@ -482,7 +597,9 @@ function plotDifference(r: Random, denomAxis: string): Draft {
     };
   if (question === 1)
     return {
-      prompt: `${intro} What is the combined length of the longest and shortest ${context.item}, in inches?`,
+      prompt: flip
+        ? `${intro} Place the longest and shortest ${context.item} end to end. How many inches long are they together?`
+        : `${intro} What is the combined length of the longest and shortest ${context.item}, in inches?`,
       figure,
       answer: rational(longest + shortest, d),
       fraction: true,
@@ -501,13 +618,17 @@ function plotDifference(r: Random, denomAxis: string): Draft {
     : [...heights][0]!;
   const total = v * n;
   return {
-    prompt: `${intro} What is the total length of all the ${context.items} that are ${measure(v, d, "inch", "inches")} long, in inches?`,
+    prompt: flip
+      ? `${intro} ${storyNames[picked % storyNames.length]} lines up every ${context.item} that is ${measure(v, d, "inch", "inches")} long. How many inches long is that line?`
+      : `${intro} What is the total length of all the ${context.items} that are ${measure(v, d, "inch", "inches")} long, in inches?`,
     figure,
     answer: rational(total, d),
     fraction: true,
-    hint: `Count the marks above ${mixedText(v, d)}. Add that length once for each mark, or multiply.`,
+    hint: vivid
+      ? `Count the marks at ${mixedText(v, d)}. Add that length once for each mark, or multiply.`
+      : `Count the marks above ${mixedText(v, d)}. Add that length once for each mark, or multiply.`,
     explanation: [
-      `Each mark (×) is one ${context.item}. The marks above ${mixedText(v, d)} show the ${context.items} of that length.`,
+      `Each mark (×) is one ${context.item}. The marks ${vivid ? "at" : "above"} ${mixedText(v, d)} show the ${context.items} of that length.`,
       `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} above ${mixedText(v, d)} = ${f(v)}.`,
       `Add that length once for each mark. That is the same as multiplying: ${n} × ${f(v)} = ${result(total, d, "inch", "inches")}.`,
       `Their total length is ${measure2(total, d, "inch", "inches")}.`,
@@ -553,6 +674,10 @@ function equalShare(r: Random): Draft {
 export function generateLinePlotProblem(
   templateId: string,
   seed: string,
+  force: {
+    denominator?: (typeof plotDenomAxis)["denominator"]["values"][number];
+    setting?: "plain" | "vivid";
+  } = {},
 ): GeneratedProblem {
   const meta = linePlotTemplates.find((t) => t.id === templateId);
   if (!meta) throw new Error(`Unknown line-plot template ${templateId}`);
@@ -561,7 +686,7 @@ export function generateLinePlotProblem(
   const r = random(templateId, seed);
   const denom =
     templateId === "fraction-plot-difference"
-      ? chooseAxes(templateId, seed, plotDenomAxis)
+      ? { ...chooseAxes(templateId, seed, plotDenomAxis), ...force }
       : undefined;
   const draft =
     templateId === "line-plot-whole"
@@ -569,7 +694,7 @@ export function generateLinePlotProblem(
       : templateId === "fraction-line-plot"
         ? fractionPlot(r)
         : templateId === "fraction-plot-difference"
-          ? plotDifference(r, denom!.denominator)
+          ? plotDifference(r, denom!.denominator, denom!.setting)
           : equalShare(r);
   return {
     public: {
@@ -593,7 +718,15 @@ export function generateLinePlotProblem(
     explanation: draft.explanation,
     hint: draft.hint,
     ...(denom
-      ? { variant: { id: denom.denominator, axes: axisRecord(denom) } }
+      ? {
+          variant: {
+            id:
+              denom.setting === "plain"
+                ? denom.denominator
+                : `${denom.denominator}-vivid`,
+            axes: axisRecord(denom),
+          },
+        }
       : {}),
   };
 }
