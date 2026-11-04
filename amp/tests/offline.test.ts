@@ -78,6 +78,8 @@ test("capabilities are explicit; request bodies cannot claim evidence or trusted
     ),
     measurement.filter((t) => !t.requiredResponseCapability),
   );
+  // A measurement figure can still need a response format this client did
+  // not declare. rectangle-formula-select needs multi-select.
   assert.deepEqual(
     supportedOfflineTemplates(
       {
@@ -87,7 +89,11 @@ test("capabilities are explicit; request bodies cannot claim evidence or trusted
       },
       measurement,
     ),
-    measurement,
+    measurement.filter(
+      (t) =>
+        !t.requiredResponseCapability ||
+        t.requiredResponseCapability === "single-choice-v1",
+    ),
   );
   assert.deepEqual(supportedOfflineTemplates(legacy, [choice, visual, early]), [
     early,

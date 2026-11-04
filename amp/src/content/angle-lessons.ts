@@ -127,7 +127,7 @@ export const angleLessons: Lesson[] = [
       {
         title: "Kinds of angles and lines",
         paragraphs: [
-          "Hold a square corner up to an angle. An acute angle is an angle narrower than the square corner. A right angle matches it exactly, 90°. An obtuse angle is an angle wider than a square corner but not yet a straight line. A straight angle is an angle whose two rays make one straight line, 180°.",
+          "Hold a square corner up to an angle. An acute angle is an angle narrower than the square corner. A right angle matches it exactly, 90°. An obtuse angle is an angle wider than a square corner but not yet a straight line. A straight angle is an angle whose two rays make one straight line, 180°. A reflex angle is wider than a straight line. Its arc goes the long way around, past the straight line, and stops before a full trip around.",
           "A triangle is a flat shape with 3 straight sides and 3 angles. It is named by its largest angle. If one angle is a right angle, it is a right triangle. If one angle is obtuse, it is an obtuse triangle. If all three are acute, it is an acute triangle.",
           "Parallel lines never meet, like train tracks. Perpendicular lines cross at a right angle, like two edges of a page that meet at a corner.",
           "A dot grid is a grid of evenly spaced dots. On a dot grid, describe a line by its step: how far across for how far up or down. Turning a step a quarter turn swaps the two numbers and flips up and down. So 2 across and 1 up turns into 1 across and 2 down. Lines with those two steps are perpendicular.",
@@ -288,15 +288,16 @@ export const angleMethods: Record<string, ProblemMethod> = {
       "Divide 360 by the number of equal angles, not by the number shaded.",
   },
   "angle-classify": {
-    goal: "Sort an angle as acute, right, obtuse or straight.",
+    goal: "Sort an angle as acute, right, obtuse, straight, or reflex.",
     intuition: `${angleOpening} A right angle is a square corner, like the corner of a page. It measures 90 degrees, where 360 degrees make a full turn. Other angles are named by comparing them with a right angle.`,
     senses: { vertex: "vertex", degree: "degree-angle" },
     noLink: ["change", "opposite", "sort"],
-    terms: terms.lines,
+    terms: [...terms.lines, "reflex-angle"],
     method: [
       "Compare the opening with a square corner.",
       "An acute angle is an angle narrower than a square corner. A right angle matches it exactly.",
       "An obtuse angle is an angle wider than a square corner but not yet straight. A straight angle is an angle whose rays make one straight line.",
+      "A reflex angle is wider than a straight line. The arc goes the long way around.",
     ],
     watch:
       "How long the rays are drawn does not change the angle. Only the opening matters.",
@@ -383,7 +384,7 @@ export const anglePrinciples: Record<string, string> = {
   "turn-degrees":
     "A full turn is 360°. To find a shaded angle, divide 360° by the number of equal angles, then multiply by the number shaded.",
   "angle-classify":
-    "Angles are sorted by comparing them with a right angle, 90°: acute is less, obtuse is more but less than 180°, and straight is exactly 180°.",
+    "Angles are sorted by comparing them with a right angle, 90°: acute is less, obtuse is more but less than 180°, straight is exactly 180°, and a reflex angle is wider than a straight angle.",
   "line-ray-segment":
     "A line goes on forever both ways. A ray starts at an endpoint and goes on forever one way. A segment stops at two endpoints.",
   "line-relationship":

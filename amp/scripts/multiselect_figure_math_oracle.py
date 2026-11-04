@@ -67,10 +67,50 @@ def side_pair(points, kind):
     return found
 
 
+def interiors(points):
+    """Interior angles in degrees, corrected so a mirrored copy keeps the shape's own interior."""
+    pts = [tuple(p) for p in points]
+    n = len(pts)
+    area = sum(pts[i][0] * pts[(i + 1) % n][1] - pts[(i + 1) % n][0] * pts[i][1] for i in range(n))
+    orient = 1 if area >= 0 else -1
+    out = []
+    for i in range(n):
+        a, b, c = pts[(i + n - 1) % n], pts[i], pts[(i + 1) % n]
+        ix, iy = b[0] - a[0], b[1] - a[1]
+        ox, oy = c[0] - b[0], c[1] - b[1]
+        turn = math.atan2(orient * (ix * oy - iy * ox), ix * ox + iy * oy)
+        out.append(180 - math.degrees(turn))
+    return out
+
+
+def angle_property(points):
+    """(obtuse, right) from interior angles. A corner too close to 90° or 180° is refused."""
+    angles = interiors(points)
+    for measure in angles:
+        from_right = abs(measure - 90)
+        require(not (0.5 < from_right < 8), f'Corner {measure:.2f}° is too close to a right angle')
+        require(abs(measure - 180) >= 8, f'Corner {measure:.2f}° is too close to a straight line')
+        require(0 < measure < 360, 'Interior angle out of range')
+    obtuse = any(98 < measure < 172 for measure in angles)
+    right = any(abs(measure - 90) <= 0.5 for measure in angles)
+    return obtuse, right
+
+
 def shape_sides(public):
-    kind = kind_asked(public['prompt'], ['parallel sides', 'perpendicular sides'])
+    prompt = public['prompt']
+    if 'obtuse angle' in prompt or 'no right angle' in prompt:
+        require(('obtuse angle' in prompt) != ('no right angle' in prompt), 'One angle property')
+        want_obtuse = 'obtuse angle' in prompt
+        shapes = lettered(elements(public))
+        out = []
+        for letter in option_letters(public, 'Shape'):
+            obtuse, right = angle_property(polygon_of(shapes[letter]))
+            # A reflex interior is wider than a straight line, so it is not obtuse.
+            out.append(obtuse if want_obtuse else not right)
+        return out
+    kind = kind_asked(prompt, ['parallel sides', 'perpendicular sides'])
     kind = kind.split()[0]
-    require(f'at least one pair of {kind} sides' in public['prompt'], 'Prompt wording')
+    require(f'at least one pair of {kind} sides' in prompt, 'Prompt wording')
     shapes = lettered(elements(public))
     return [side_pair(polygon_of(shapes[letter]), kind) for letter in option_letters(public, 'Shape')]
 
@@ -381,6 +421,14 @@ def self_test():
                  letters('Plot', 4), 2, 'Choose 2 plots', _labelled(
                      [{'type': 'text', 'text': '1 | 2 5'}, {'type': 'text', 'text': '2 | 3 7'}], [{'type': 'text', 'text': '1 | 5 2'}, {'type': 'text', 'text': '2 | 7 3'}],
                      [{'type': 'text', 'text': '1 | 2 5'}, {'type': 'text', 'text': '2 | 3 8'}], [{'type': 'text', 'text': '1 | 2'}, {'type': 'text', 'text': '2 | 3 5 7'}])), '["option-a","option-b"]'),
+        (_public('shape-sides-select', 'A right angle is a square corner. Select the 2 shapes that have at least one obtuse angle.',
+                 letters('Shape', 4), 2, 'Choose 2 shapes', _labelled(
+                     [_poly([(0, 0), (4, 0), (2, 3)])], [_poly([(0, 0), (4, 0), (4, 2), (0, 2)])],
+                     [_poly([(0, 0), (4, 0), (5, 2), (1, 2)])], [_poly([(0, 0), (4, 0), (-1, 2)])])), '["option-c","option-d"]'),
+        (_public('shape-sides-select', 'Select the 3 shapes that have no right angle.',
+                 letters('Shape', 4), 3, 'Choose 3 shapes', _labelled(
+                     [_poly([(0, 0), (4, 0), (2, 3)])], [_poly([(0, 0), (4, 0), (4, 2), (0, 2)])],
+                     [_poly([(0, 0), (4, 0), (5, 2), (1, 2)])], [_poly([(0, 0), (4, 0), (-1, 2)])])), '["option-a","option-c","option-d"]'),
     ]
     for public, expected in cases:
         labels = [o['label'] for o in public['response']['options']]
@@ -394,6 +442,8 @@ def self_test():
         return kit.tamper(by[template], change)
     # drawings within a few degrees of the property are ambiguous and refused
     kit.must_fail(solve, edit('shape-sides-select', lambda p: p['figure']['scene']['elements'][2]['points'][2].__setitem__(1, 2.2)))
+    obtuse = next(c[0] for c in cases if 'at least one obtuse angle' in c[0]['prompt'])
+    kit.must_fail(solve, kit.tamper(obtuse, lambda p: p['figure']['scene']['elements'][2]['points'][2].__setitem__(0, 4.15)))
     kit.must_fail(solve, edit('line-pair-select', lambda p: p['figure']['scene']['elements'][4]['to'].__setitem__(1, 4.1)))
     kit.must_fail(solve, edit('angle-kind-select', lambda p: p['figure']['scene']['elements'][0]['points'].__setitem__(2, (-0.04, 1))))
     kit.must_fail(solve, edit('symmetry-lines-select', lambda p: p['figure']['scene']['elements'][1]['from'].__setitem__(0, 1.05)))

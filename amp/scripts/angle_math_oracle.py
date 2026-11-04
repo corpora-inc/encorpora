@@ -139,11 +139,22 @@ def solve_angle(public):
         # Count the shaded parts, then use 360 degrees in a full turn.
         return round(round(parts) * 360 / len(spokes))
     if family == 'angle-classify':
-        require(prompt == 'What kind of angle is this?', 'Classify wording')
+        require('what kind of angle' in prompt.lower(), 'Classify wording')
+        require(re.search(r'\d', prompt) is None, 'The prompt does not state a measure')
         (g,) = [e for e in el.values() if e['type'] == 'angle']
-        m = span(*g['rays'])
-        kind = 'right' if abs(m - 90) < TOL else 'straight' if abs(m - 180) < TOL else 'acute' if m < 90 else 'obtuse'
-        require(kind in ('right', 'straight') or abs(m - 90) >= 15, 'An acute or obtuse angle is plainly so')
+        clockwise = any(m.get('clockwise') for m in (g.get('marks') or []))
+        ccw = span(*g['rays'])
+        if clockwise:
+            # The drawn arc is the long way around: the reflex opening.
+            m = (360 - ccw) % 360
+            require(195 < m < 345, 'A reflex angle is plainly past a straight line and short of a full turn')
+            require(abs(m - round(m)) < TOL and round(m) % 5 == 0, 'A reflex measure lands on a 5° mark')
+            kind = 'reflex'
+        else:
+            m = ccw
+            require(m <= 180 + TOL, 'An angle without the long arc stays within a half turn')
+            kind = 'right' if abs(m - 90) < TOL else 'straight' if abs(m - 180) < TOL else 'acute' if m < 90 else 'obtuse'
+            require(kind in ('right', 'straight') or abs(m - 90) >= 15, 'An acute or obtuse angle is plainly so')
         return only(public, lambda label: label == kind)
     if family == 'line-ray-segment':
         require(prompt == 'Which name matches this figure?', 'Figure wording')
@@ -263,7 +274,21 @@ def review_angle_fixtures():
     lines = {'templateId': 'line-relationship', 'prompt': 'How are these two lines related?', 'response': opts('parallel', 'perpendicular', 'neither'),
              'figure': scene(*[{'type': 'point', 'id': k, 'at': at} for k, at in (('on0a', [1, 1]), ('on0b', [3, 2]), ('on1a', [3, 1]), ('on1b', [2, 3]))])}
     require(solve_angle(lines) == 'option-b', '(2, 1) and (-1, 2) are perpendicular')
-    return 9
+    reflex = {'templateId': 'angle-classify', 'prompt': 'What kind of angle is this?',
+              'response': opts('acute', 'obtuse', 'straight', 'reflex'),
+              'figure': scene({'type': 'angle', 'rays': [10, 50], 'marks': [{'from': 0, 'to': 1, 'clockwise': True}]})}
+    require(solve_angle(reflex) == 'option-d', 'The long arc from 10° to 50° is 320°, a reflex angle')
+    ordinary = {'templateId': 'angle-classify', 'prompt': 'What kind of angle is this?',
+                'response': opts('acute', 'right', 'obtuse', 'straight'),
+                'figure': scene({'type': 'angle', 'rays': [0, 40], 'marks': [{'from': 0, 'to': 1}]})}
+    require(solve_angle(ordinary) == 'option-a', '40° with no long arc is acute')
+    wide = copy.deepcopy(ordinary)
+    wide['figure']['scene']['elements'][0]['rays'] = [0, 200]
+    require(rejects(wide), 'A 200° opening without the long-arc mark is rejected')
+    short_reflex = copy.deepcopy(reflex)
+    short_reflex['figure']['scene']['elements'][0]['rays'] = [0, 170]
+    require(rejects(short_reflex), 'A clockwise 190° opening is not plainly reflex')
+    return 11
 
 
 def review_angle_problem(problem):

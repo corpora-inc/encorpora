@@ -21,8 +21,9 @@ import {
   st,
 } from "./select-kit";
 import type { Element } from "./scene/spec";
-import type { Random } from "./variation/axes";
+import { defineAxis, type Random } from "./variation/axes";
 import type { Statement } from "./variation/statement-set";
+import { shapeStory, spreadPick } from "./story-kit/geometry.js";
 
 /**
  * Select-every-figure families. Each draws lettered figures from exact
@@ -221,15 +222,194 @@ const shapeLibrary: readonly ShapeDef[] = (
 export const shapeRelationTemplate = selectTemplate({
   figure: "scenes-v1",
   id: "shape-sides-select",
-  title: "Select the shapes with parallel or perpendicular sides",
+  title: "Select shapes by their sides or angles",
   skillId: "lines-symmetry",
   gradeBand: "3–5",
   difficultyOffset: 0.2,
   description:
-    "Select every drawn polygon that has at least one pair of parallel sides or at least one pair of perpendicular sides, among triangles, quadrilaterals and larger polygons turned in any direction.",
+    "Select every drawn polygon that has a pair of parallel sides, a pair of perpendicular sides, an obtuse angle, or no right angle, among triangles, quadrilaterals and larger polygons turned in any direction.",
 });
 
-function shapeRelation(r: Random) {
+/** Legacy values keep the parallel/perpendicular surface and its old prompt. */
+export const shapeSidesAxes = {
+  "angle-property": defineAxis(
+    "angle-property",
+    ["sides", "obtuse", "no-right"] as const,
+    { legacy: "sides" },
+  ),
+  voice: defineAxis("voice", ["plain", "story"] as const, {
+    legacy: "plain",
+    silentLegacy: true,
+    weights: [3, 1],
+  }),
+  /** Classic keeps the stored question. The other values are bare frames. */
+  wording: defineAxis(
+    "wording",
+    ["classic", "which", "find", "choose"] as const,
+    {
+      legacy: "classic",
+      silentLegacy: true,
+      weights: [1, 2, 2, 2],
+    },
+  ),
+};
+
+/** Set by the generator wrapper so a story can use the seed without drawing. */
+let shapeSeed = "";
+
+/** Interior angles in degrees. A mirrored copy still reports the shape's own interior. */
+function interiorsOf(pts: readonly Pt[]): number[] {
+  const n = pts.length;
+  let area = 0;
+  for (let i = 0; i < n; i++) {
+    const q = pts[(i + 1) % n]!;
+    area += pts[i]![0] * q[1] - q[0] * pts[i]![1];
+  }
+  const orient = area >= 0 ? 1 : -1;
+  const out: number[] = [];
+  for (let i = 0; i < n; i++) {
+    const a = pts[(i + n - 1) % n]!;
+    const b = pts[i]!;
+    const c = pts[(i + 1) % n]!;
+    const ix = b[0] - a[0];
+    const iy = b[1] - a[1];
+    const ox = c[0] - b[0];
+    const oy = c[1] - b[1];
+    const turn = Math.atan2(orient * (ix * oy - iy * ox), ix * ox + iy * oy);
+    out.push(180 - (turn * 180) / Math.PI);
+  }
+  return out;
+}
+
+/** Null when a corner is too close to a right angle or a straight line to call. */
+function angleFacts(
+  pts: readonly Pt[],
+): { obtuse: boolean; right: boolean } | null {
+  const angles = interiorsOf(pts);
+  for (const measure of angles) {
+    const fromRight = Math.abs(measure - 90);
+    if (fromRight > 0.5 && fromRight < 8) return null;
+    if (Math.abs(measure - 180) < 8) return null;
+    if (!(measure > 0 && measure < 360)) return null;
+  }
+  return {
+    obtuse: angles.some((measure) => measure > 98 && measure < 172),
+    right: angles.some((measure) => Math.abs(measure - 90) <= 0.5),
+  };
+}
+
+function shapeByAngle(
+  r: Random,
+  property: "obtuse" | "no-right",
+  voice = "plain",
+) {
+  const holds = (facts: { obtuse: boolean; right: boolean }) =>
+    property === "obtuse" ? facts.obtuse : !facts.right;
+  const clear = shapeLibrary.flatMap((shape) => {
+    const facts = angleFacts(shape.pts);
+    return facts ? [{ shape, facts }] : [];
+  });
+  const total = 6;
+  const k = r(2, 4);
+  const yes = shuffled(
+    r,
+    clear.filter((item) => holds(item.facts)),
+  );
+  const no = shuffled(
+    r,
+    clear.filter((item) => !holds(item.facts)),
+  );
+  if (yes.length < k || no.length < total - k)
+    throw new Error("Need three retry: shapes");
+  const chosen = shuffled(r, [...yes.slice(0, k), ...no.slice(0, total - k)]);
+  const panels: PanelSpec[] = [];
+  const pool: Statement[] = [];
+  chosen.forEach((item, i) => {
+    const pts = transform(item.shape.pts, r(0, 3), r(0, 1) === 1);
+    const drawn = angleFacts(pts);
+    if (!drawn || holds(drawn) !== holds(item.facts))
+      throw new Error("Need three retry: shapes");
+    const ok = holds(drawn);
+    const name = item.shape.name;
+    panels.push({ letter: L[i]!, elements: [poly(pts)] });
+    pool.push(
+      st(
+        shapeWord(L[i]!),
+        ok,
+        property === "obtuse"
+          ? ok
+            ? `Shape $${L[i]}$ is ${article(name)} ${name} with at least one obtuse angle.`
+            : `Shape $${L[i]}$ is ${article(name)} ${name}; it has no obtuse angle.`
+          : ok
+            ? `Shape $${L[i]}$ is ${article(name)} ${name} with no right angle.`
+            : `Shape $${L[i]}$ is ${article(name)} ${name}; it has a right angle.`,
+      ),
+    );
+  });
+  const scene = panelScene({
+    title: "Six lettered polygons",
+    panels,
+    columns: 3,
+    cell: [7.4, 7.8],
+  });
+  const plainAsk =
+    property === "obtuse"
+      ? (n: number) =>
+          `Select the ${n} ${n === 1 ? "shape" : "shapes"} that have at least one obtuse angle.`
+      : (n: number) =>
+          `Select the ${n} ${n === 1 ? "shape" : "shapes"} that have no right angle.`;
+  const ask = spreadPick(
+    shapeSeed,
+    `shape-ask-${property}`,
+    property === "obtuse"
+      ? [
+          plainAsk,
+          (n: number) => `Which ${n} shapes have at least one obtuse angle?`,
+          (n: number) => `Find the ${n} shapes with at least one obtuse angle.`,
+          (n: number) =>
+            `Choose the ${n} shapes that show at least one obtuse angle.`,
+          (n: number) =>
+            `Which ${n} shapes have at least one obtuse angle, a corner wider than a square corner?`,
+        ]
+      : [
+          plainAsk,
+          (n: number) => `Which ${n} shapes have no right angle?`,
+          (n: number) => `Find the ${n} shapes with no right angle.`,
+          (n: number) => `Choose the ${n} shapes that show no right angle.`,
+          (n: number) =>
+            `Which ${n} shapes have no square corner? Those shapes have no right angle.`,
+        ],
+  );
+  const story = voice === "story" ? shapeStory(shapeSeed, property) : "";
+  return selectModel({
+    variant: property === "obtuse" ? "obtuse-angle" : "no-right-angle",
+    pool,
+    total: pool.length,
+    k: pool.filter((item) => item.holds).length,
+    ordered: true,
+    context:
+      voice === "story"
+        ? story
+        : property === "obtuse"
+          ? "An obtuse angle is wider than a square corner and not yet a straight line."
+          : "A right angle is a square corner.",
+    ask,
+    one: "shape",
+    hint: (shown) =>
+      property === "obtuse"
+        ? voice === "story"
+          ? `The question asks for ${numberOfTrue(shown)} shapes. An obtuse angle is wider than a square corner and less than a straight line. Look at the widest corner of each shape.`
+          : `The question asks for ${numberOfTrue(shown)} shapes. An obtuse angle is wider than a square corner and not yet a straight line. An angle that bends back past a straight line is not obtuse.`
+        : `The question asks for ${numberOfTrue(shown)} shapes. A right angle is a square corner. Check every corner of each shape.`,
+    figure: { kind: "scene", scene },
+  });
+}
+
+function shapeRelation(r: Random, axes: Record<string, string> = {}) {
+  const property = axes["angle-property"] ?? "sides";
+  const voice = axes.voice ?? "plain";
+  if (property === "obtuse" || property === "no-right")
+    return shapeByAngle(r, property, voice);
   const variant = pick(r, ["parallel", "perpendicular"] as const);
   const has = variant === "parallel" ? hasParallelSides : hasPerpendicularSides;
   const total = 6;
@@ -273,17 +453,48 @@ function shapeRelation(r: Random) {
     variant === "parallel"
       ? "at least one pair of parallel sides"
       : "at least one pair of perpendicular sides";
+  const wording = axes.wording ?? "classic";
+  const plainAsk =
+    wording === "which"
+      ? (n: number) => `Which ${n} shapes have ${phrase}?`
+      : wording === "find"
+        ? (n: number) => `Find the ${n} shapes with ${phrase}.`
+        : wording === "choose"
+          ? (n: number) => `Choose the ${n} shapes that show ${phrase}.`
+          : (n: number) => `Select the ${n} shapes that have ${phrase}.`;
+  const ask =
+    voice === "story"
+      ? spreadPick(shapeSeed, "shape-ask", [
+          plainAsk,
+          (n: number) => `Which ${n} shapes have ${phrase}?`,
+          (n: number) => `Find the ${n} shapes with ${phrase}.`,
+          (n: number) => `Choose the ${n} shapes that show ${phrase}.`,
+        ])
+      : plainAsk;
+  const bareContext =
+    wording === "classic"
+      ? variant === "parallel"
+        ? "Parallel sides are always the same distance apart and never meet."
+        : "Perpendicular sides meet at a right angle, like the corner of a sheet of paper, or would meet that way if they were extended."
+      : wording === "which"
+        ? variant === "parallel"
+          ? "Parallel sides stay the same distance apart and never meet."
+          : "Perpendicular sides meet in a square corner."
+        : wording === "find"
+          ? variant === "parallel"
+            ? "Parallel sides point the same way and never meet."
+            : "Perpendicular sides meet like the corner of a page."
+          : variant === "parallel"
+            ? "Parallel sides keep the same distance apart."
+            : "Perpendicular sides meet the way two edges of a page do.";
   return selectModel({
     variant: `${variant}-sides`,
     pool,
     total: pool.length,
     k: pool.filter((p) => p.holds).length,
     ordered: true,
-    context:
-      variant === "parallel"
-        ? "Parallel sides are always the same distance apart and never meet."
-        : "Perpendicular sides meet at a right angle, like the corner of a sheet of paper, or would meet that way if they were extended.",
-    ask: (n) => `Select the ${n} shapes that have ${phrase}.`,
+    context: voice === "story" ? shapeStory(shapeSeed, variant) : bareContext,
+    ask,
     one: "shape",
     hint: (shown) =>
       variant === "parallel"
@@ -1433,7 +1644,11 @@ function stemLeafMatch(r: Random) {
 /* ------------------------------------------------------------ registry */
 
 const families = {
-  "shape-sides-select": selectFamily(shapeRelationTemplate, shapeRelation),
+  "shape-sides-select": selectFamily(
+    shapeRelationTemplate,
+    shapeRelation,
+    shapeSidesAxes,
+  ),
   "polygon-sides-select": selectFamily(polygonSidesTemplate, polygonSides),
   "line-pair-select": selectFamily(linePairTemplate, linePair),
   "angle-kind-select": selectFamily(angleKindTemplate, angleKind),
@@ -1463,10 +1678,20 @@ export const multiselectFigureGenerate = dispatch(
   Object.fromEntries(
     Object.entries(families).map(([id, f]) => [
       id,
-      (seed: string): GeneratedProblem =>
-        (
+      (seed: string): GeneratedProblem => {
+        if (id === "shape-sides-select") shapeSeed = seed;
+        const problem = (
           f as { generate: (s: string) => { problem: GeneratedProblem } }
-        ).generate(seed).problem,
+        ).generate(seed).problem;
+        if (
+          id !== "shape-sides-select" ||
+          problem.variant?.axes?.voice !== "plain"
+        )
+          return problem;
+        const axes = { ...problem.variant.axes };
+        delete axes.voice;
+        return { ...problem, variant: { ...problem.variant, axes } };
+      },
     ]),
   ),
 );

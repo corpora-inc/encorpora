@@ -6,16 +6,16 @@ const specs: SelectContentSpec[] = [
     skillId: "lines-symmetry",
     title: "Parallel and perpendicular sides of shapes",
     summary:
-      "Some shapes have parallel sides, which never meet. Some have perpendicular sides, which meet at a square corner, or would if you made them longer. In this lesson you pick every drawn shape that has the kind of sides the question asks for.",
-    goal: "Select the drawn polygons that have at least one pair of parallel sides, or at least one pair of perpendicular sides.",
+      "Some shapes have parallel sides, which never meet. Some have perpendicular sides, which meet at a square corner, or would if you made them longer. Some have an obtuse angle, wider than a square corner. Some have no right angle at all. In this lesson you pick every drawn shape that has what the question asks for.",
+    goal: "Select shapes with parallel sides, perpendicular sides, an obtuse angle, or no right angle.",
     intuition:
       "A polygon is a flat, closed shape with straight sides. Two sides are parallel when they point the same way and stay the same distance apart, so they never meet. Two sides are perpendicular when they meet at a right angle: a square corner, like the corner of a sheet of paper. Sides that do not touch are perpendicular too if they would make a square corner when made longer.",
     more: "A rectangle has both. Its opposite sides, the ones across from each other, are parallel. Sides that meet at a corner are perpendicular. A trapezoid has one pair of parallel sides. A triangle can have a right angle, but it never has a pair of parallel sides.",
-    terms: ["parallel", "perpendicular", "right-angle"],
+    terms: ["parallel", "perpendicular", "right-angle", "obtuse-angle"],
     steps: [
       "Look at one shape at a time. Go around its sides.",
       "For parallel sides, look for two sides that point the same way and never meet.",
-      "For perpendicular sides, look for a square corner where two sides meet. Also check sides that do not touch: would they make a square corner if you made them longer?",
+      "For perpendicular sides, look for a square corner, including sides that would meet at one if you made them longer. For an obtuse angle, look for a corner wider than a square corner. For no right angle, check that no corner is a square corner.",
       "Select the shapes that have what the question asks for. Check that you chose as many as the question asks.",
     ],
     watch:
@@ -44,7 +44,7 @@ const specs: SelectContentSpec[] = [
     parentGuide:
       "Use the corner of a sheet of paper to test for square corners in shapes around your home.",
     assessed:
-      "Selecting the two to four shapes of six that have a pair of parallel sides, or a pair of perpendicular sides, among triangles, quadrilaterals, a pentagon, a hexagon, an octagon, and L and arrow shapes drawn in any of eight orientations. Each side relationship is computed from the drawn coordinates.",
+      "Selecting the two to four shapes of six that have a pair of parallel sides, a pair of perpendicular sides, an obtuse angle, or no right angle, among triangles, quadrilaterals, a pentagon, a hexagon, an octagon, and L and arrow shapes drawn in any of eight orientations. Each property is computed from the drawn coordinates.",
     notAssessed:
       "Does not assess naming shapes, measuring angles, or drawing parallel or perpendicular lines.",
     facet: "lines-symmetry.lines-angles",

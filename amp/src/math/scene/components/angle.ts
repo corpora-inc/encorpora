@@ -2,6 +2,7 @@ import { z } from "zod";
 import { base, color, num as zNum } from "../base";
 import { registerComponent, type Prim } from "../layout";
 import type { Point } from "../spec";
+import { typeset } from "../type";
 
 const direction = zNum.min(-720).max(720);
 const pointName = z.string().regex(/^[A-Z]$/);
@@ -76,13 +77,30 @@ const at = (deg: number, r: number): Point => {
   const t = (deg * Math.PI) / 180;
   return [Math.cos(t) * r, Math.sin(t) * r];
 };
+/** Inner numbers are bold and sit on the smaller radius. "100" beside "120"
+ * is the pair that meets first. A 20° grid keeps a gap at a full-size
+ * protractor; a phone-width one drops to 30°, which still labels 150 so a
+ * ray a few degrees off it can be read from the ticks. */
+const INNER_LABEL_R = 0.625;
+function scaleStep(pixelsPerUnit: number): 20 | 30 {
+  const pair =
+    typeset("100", "sans", "sm", true).width +
+    typeset("120", "sans", "sm", true).width;
+  const sep =
+    Math.abs(
+      Math.cos((100 * Math.PI) / 180) - Math.cos((120 * Math.PI) / 180),
+    ) *
+    INNER_LABEL_R *
+    pixelsPerUnit;
+  return sep >= pair / 2 ? 20 : 30;
+}
 /** Counterclockwise turn from direction a to direction b, in [0, 360). */
 export const turn = (a: number, b: number) => (((b - a) % 360) + 360) % 360;
 const degrees = (n: number) => `${Math.round(n * 1e6) / 1e6}°`;
 
 registerComponent("protractor", {
   maxScale: () => 150,
-  compile(c) {
+  compile(c, ctx) {
     const prims: Prim[] = [
       {
         type: "arc",
@@ -113,7 +131,11 @@ registerComponent("protractor", {
         stroke: "ink",
         width: d % 10 === 0 ? 1.4 : 1,
       });
-    for (let d = 0; d <= 180; d += 20) {
+    const step = scaleStep(ctx.s);
+    // On the wider grid the inner numbers move in, so "30" does not sit on
+    // the outer "150" where the two rows pass near the baseline.
+    const innerR = step === 30 ? 0.52 : INNER_LABEL_R;
+    for (let d = 0; d <= 180; d += step) {
       // 0 and 180 sit just above the baseline, as on a real protractor.
       const lift = d === 0 ? 6 : d === 180 ? -6 : 0;
       prims.push({
@@ -129,7 +151,7 @@ registerComponent("protractor", {
       prims.push({
         type: "text",
         id: `inner.${d}`,
-        at: at(d + lift * 1.4, 0.625),
+        at: at(d + lift * 1.4, innerR),
         text: String(d),
         font: "sans",
         size: "sm",

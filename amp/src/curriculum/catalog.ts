@@ -1687,6 +1687,36 @@ for (const [skillId, facets] of [
     });
 }
 
+// Grade 4 angle benchmarks and composite rectangle formulas.
+for (const [skillId, facets] of [
+  [
+    "angle-measure",
+    [
+      [
+        "benchmarks",
+        "Estimate an angle by the benchmark it is nearest: 30°, 45°, 60°, 90° or 180°.",
+      ],
+    ],
+  ],
+  [
+    "area-perimeter-models",
+    [
+      [
+        "composite-formulas",
+        "Find the area or perimeter of a rectangle or a figure made of rectangles, and choose the formulas that match.",
+      ],
+    ],
+  ],
+] as const) {
+  const skill = skills.find((s) => s.id === skillId)!;
+  for (const [suffix, description] of facets)
+    skill.facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+}
+
 // Exponential growth, geometric sequences and series, and logarithms.
 for (const [skillId, facets] of [
   [
