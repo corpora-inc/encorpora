@@ -1010,6 +1010,7 @@ function dressedProduct(
   };
 }
 
+/** Two groups of the same kind of thing. The total is one count. */
 function dressedTwoStep(
   telling: string,
   t1: number,
@@ -1018,17 +1019,17 @@ function dressedTwoStep(
   n2: number,
 ): string {
   const line: Record<string, string> = {
-    sports: `The coach sets out ${t1} bins with ${n1} balls and ${t2} crates with ${n2} cones`,
-    pets: `The shelter fills ${t1} bowls with ${n1} treats and ${t2} bins with ${n2} toys`,
-    cooking: `A baker fills ${t1} tins with ${n1} muffins and ${t2} trays with ${n2} rolls`,
-    garden: `The club plants ${t1} rows with ${n1} seedlings and ${t2} rows with ${n2} bulbs`,
-    reading: `The library packs ${t1} bins with ${n1} books and ${t2} boxes with ${n2} magazines`,
-    saving: `The class stacks ${t1} packs with ${n1} tickets and ${t2} envelopes with ${n2} stamps`,
-    cards: `Maya sorts ${t1} piles with ${n1} cards and ${t2} packs with ${n2} sleeves`,
-    travel: `The crew loads ${t1} crates with ${n1} bottles and ${t2} coolers with ${n2} snacks`,
-    science: `The lab lines up ${t1} trays with ${n1} slides and ${t2} boxes with ${n2} samples`,
-    music: `The band sets ${t1} stands with ${n1} sheets and ${t2} folders with ${n2} pages`,
-    school: `A teacher fills ${t1} cups with ${n1} pencils and ${t2} boxes with ${n2} erasers`,
+    sports: `The coach sets out ${t1} bins with ${n1} balls each and ${t2} bins with ${n2} balls each`,
+    pets: `The shelter fills ${t1} bowls with ${n1} treats each and ${t2} bowls with ${n2} treats each`,
+    cooking: `A baker fills ${t1} tins with ${n1} muffins each and ${t2} tins with ${n2} muffins each`,
+    garden: `The club plants ${t1} rows with ${n1} seedlings each and ${t2} rows with ${n2} seedlings each`,
+    reading: `The library packs ${t1} bins with ${n1} books each and ${t2} bins with ${n2} books each`,
+    saving: `The class stacks ${t1} packs with ${n1} tickets each and ${t2} packs with ${n2} tickets each`,
+    cards: `Maya sorts ${t1} piles with ${n1} cards each and ${t2} piles with ${n2} cards each`,
+    travel: `The crew loads ${t1} crates with ${n1} bottles each and ${t2} crates with ${n2} bottles each`,
+    science: `The lab lines up ${t1} trays with ${n1} slides each and ${t2} trays with ${n2} slides each`,
+    music: `The band sets ${t1} folders with ${n1} sheets each and ${t2} folders with ${n2} sheets each`,
+    school: `A teacher fills ${t1} boxes with ${n1} pencils each and ${t2} boxes with ${n2} pencils each`,
   };
   return `${line[telling]}. Round the number in each group to the nearest ten. Which is the best estimate of the total?`;
 }

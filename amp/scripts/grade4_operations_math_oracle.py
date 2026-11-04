@@ -132,11 +132,15 @@ def review_problem(problem):
 def self_test():
     product = {"templateId": "multiply-two-digit", "prompt": "What is 12 × 13?"}
     require(solve(product) == "156", "12 × 13")
+    farm = {"templateId": "multiply-two-digit", "prompt": "The farm plants 40 rows with 24 plants in each row. How many plants is that?"}
+    require(solve(farm) == "960", "farm rows")
+    novel = {"templateId": "multiply-two-digit", "prompt": "The novel has 120 pages with 28 lines on each page. How many lines is that?"}
+    require(solve(novel) == "3360", "novel lines")
     fact = {"templateId": "facts-to-twelve", "prompt": "What is 132 ÷ 12?"}
     require(solve(fact) == "11", "132 ÷ 12")
     grow = {
         "templateId": "growing-shape-pattern",
-        "prompt": "A tile pattern starts with 3 tiles. Each next step adds 2 tiles. The figure shows steps 1, 2 and 3. How many tiles are in step 5?",
+        "prompt": "Ava is stacking books for the book fair. The pattern starts with 3 books. Each next step adds 2 books. The figure shows steps 1, 2 and 3. How many books are in step 5?",
         "figure": {"scene": {"elements": [
             {"type": "array", "id": "s1r0", "rows": 1, "columns": 3},
             {"type": "array", "id": "s2r0", "rows": 1, "columns": 3},
@@ -168,7 +172,7 @@ def self_test():
         ]},
     }
     require(solve(multiples) == '["option-a","option-c"]', "multiples of 4")
-    return {"fixtures": 5}
+    return {"fixtures": 7}
 
 
 if __name__ == "__main__":

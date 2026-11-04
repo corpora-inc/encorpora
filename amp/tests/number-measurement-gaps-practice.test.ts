@@ -274,6 +274,18 @@ test("estimates follow the stated rounding rule", () => {
         num(correct),
         Number(m[1]) * r10(Number(m[2])) + Number(m[3]) * r10(Number(m[4])),
       );
+      if (p.includes(" each and ")) {
+        const items = [...p.matchAll(/with \d+ ([a-z]+) each/g)].map(
+          (hit) => hit[1],
+        );
+        const holders = [...p.matchAll(/(\d+) ([a-z]+) with/g)].map(
+          (hit) => hit[2],
+        );
+        assert.equal(items.length, 2, p);
+        assert.equal(holders.length, 2, p);
+        assert.equal(items[0], items[1], p);
+        assert.equal(holders[0], holders[1], p);
+      }
     } else {
       const m =
         /Round ([\d,]+) to the nearest hundred and ([\d,]+) to the nearest ten/.exec(

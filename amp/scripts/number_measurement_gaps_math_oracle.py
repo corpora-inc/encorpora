@@ -440,7 +440,7 @@ def solve_estimate(public):
     amounts = []
     buses = re.fullmatch(r'(\d+) (?:[a-z]+ )+(?:seat|hold) (\d+)\. Round \1 to the nearest hundred and \2 to the nearest ten\. Which is the best estimate of .+\?', prompt)
     trays = re.fullmatch(r'A bakery fills (\d+) trays with (\d+) rolls each in the morning and (\d+) trays with (\d+) rolls each in the afternoon\. Round the number on each tray to the nearest ten\. Which is the best estimate of the total number of rolls\?', prompt)
-    two = re.fullmatch(r'.+ (\d+) [a-z]+ with (\d+) [a-z]+ and (\d+) [a-z]+ with (\d+) [a-z]+\. Round the number in each group to the nearest ten\. Which is the best estimate of the total\?', prompt)
+    two = re.fullmatch(r'.+ (\d+) [a-z]+ with (\d+) [a-z]+ each and (\d+) [a-z]+ with (\d+) [a-z]+ each\. Round the number in each group to the nearest ten\. Which is the best estimate of the total\?', prompt)
     groups = re.fullmatch(r'.+ (\d+) [a-z]+ with (\d+) [a-z]+ (?:on|in) each [a-z]+\. Round each number to the nearest ten\. Which is the best estimate of the total number of [a-z]+\?', prompt)
     if buses:
         quotient = Fraction(round_half_up(int(buses[1]), 100), round_half_up(int(buses[2]), 10))
@@ -613,6 +613,8 @@ def self_test():
                [r'$2x + 4$', r'$2x + 8$', r'$4 + 2x$', r'$\frac{1}{2}\cdot 4x + \frac{1}{2}\cdot 8$'], 1),
         choice('estimate-reasonableness', 'One pitcher holds 583.9 milliliters and another holds 131.2 milliliters. Round each amount to the nearest whole number. Which is the best estimate of how many more milliliters the first pitcher holds?',
                ['453', '452', '715', '4530'], 0),
+        choice('estimate-reasonableness', 'The band sets 9 folders with 34 sheets each and 7 folders with 16 sheets each. Round the number in each group to the nearest ten. Which is the best estimate of the total?',
+               ['410', '270', '50', '1,150'], 0),
     ]
     rejected = 0
 
@@ -677,6 +679,7 @@ def self_test():
     mutated(12, lambda p: p['response']['options'][1].update(label='6'), 'duplicate numeric choice')
     mutated(12, lambda p: p.update(prompt=p['prompt'].replace('48', '58')), 'changed given')
     mutated(13, lambda p: p.update(prompt=p['prompt'].replace('57', '67')), 'changed given')
+    mutated(27, lambda p: p.update(prompt=p['prompt'].replace(' each', '')), 'two groups of different things')
     mutated(14, lambda p: p['response']['options'][0].update(label='3500'), 'duplicate numeric choice')
     mutated(15, lambda p: p.update(prompt=p['prompt'].replace('18 kilometers', '19 kilometers')), 'non-whole result')
     mutated(16, lambda p: p.update(prompt=p['prompt'].replace('25 centimeters', '35 centimeters')), 'tiles do not fit')

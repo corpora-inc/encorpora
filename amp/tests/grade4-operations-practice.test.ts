@@ -242,6 +242,171 @@ test("facts through 12 use a different prompt on every book seed", () => {
   assert.ok(teams.length <= 1);
 });
 
+const BARE_PRODUCT =
+  /^(?:What is \d[\d,]* × \d[\d,]*\?|Find the product of \d[\d,]* and \d[\d,]*\.|Multiply \d[\d,]* by \d[\d,]*\.)$/;
+
+/** Group count, then the number in each group. Both ends are inclusive. */
+const PRODUCT_STORIES: {
+  pattern: RegExp;
+  groups: [number, number];
+  each: [number, number];
+}[] = [
+  {
+    pattern: /^The stadium has (\d[\d,]*) rows with (\d[\d,]*) seats /,
+    groups: [20, 99],
+    each: [10, 40],
+  },
+  {
+    pattern: /^The theater has (\d[\d,]*) rows with (\d[\d,]*) seats /,
+    groups: [10, 40],
+    each: [12, 30],
+  },
+  {
+    pattern: /^The orchard has (\d[\d,]*) rows with (\d[\d,]*) trees /,
+    groups: [10, 60],
+    each: [10, 40],
+  },
+  {
+    pattern: /^The school sends (\d[\d,]*) buses with (\d[\d,]*) riders /,
+    groups: [10, 30],
+    each: [30, 60],
+  },
+  {
+    pattern: /^The food drive packs (\d[\d,]*) boxes with (\d[\d,]*) cans /,
+    groups: [10, 99],
+    each: [12, 24],
+  },
+  {
+    pattern: /^The farm plants (\d[\d,]*) rows with (\d[\d,]*) plants /,
+    groups: [20, 99],
+    each: [20, 80],
+  },
+  {
+    pattern: /^The farm plants (\d[\d,]*) rows with (\d[\d,]*) corn plants /,
+    groups: [100, 240],
+    each: [24, 60],
+  },
+  {
+    pattern: /^The book has (\d[\d,]*) pages with (\d[\d,]*) lines /,
+    groups: [20, 96],
+    each: [16, 32],
+  },
+  {
+    pattern: /^The novel has (\d[\d,]*) pages with (\d[\d,]*) lines /,
+    groups: [100, 240],
+    each: [22, 36],
+  },
+  {
+    pattern: /^A page of the book has (\d[\d,]*) lines with (\d[\d,]*) words /,
+    groups: [12, 32],
+    each: [8, 12],
+  },
+  {
+    pattern: /^The factory packs (\d[\d,]*) cases with (\d[\d,]*) bottles /,
+    groups: [100, 480],
+    each: [12, 24],
+  },
+  {
+    pattern: /^The class bakes (\d[\d,]*) trays with (\d[\d,]*) cookies /,
+    groups: [12, 18],
+    each: [12, 24],
+  },
+  {
+    pattern: /^The class plants (\d[\d,]*) rows with (\d[\d,]*) seedlings /,
+    groups: [12, 16],
+    each: [8, 12],
+  },
+  {
+    pattern: /^[A-Z][a-z]+ fills (\d[\d,]*) pages with (\d[\d,]*) stamps /,
+    groups: [12, 20],
+    each: [12, 16],
+  },
+  {
+    pattern: /^The school orders (\d[\d,]*) boxes with (\d[\d,]*) crayons /,
+    groups: [12, 40],
+    each: [12, 24],
+  },
+  {
+    pattern: /^The school orders (\d[\d,]*) cartons with (\d[\d,]*) notebooks /,
+    groups: [12, 24],
+    each: [10, 20],
+  },
+  {
+    pattern:
+      /^The school gym sets out (\d[\d,]*) bins with (\d[\d,]*) tennis balls /,
+    groups: [12, 16],
+    each: [12, 18],
+  },
+  {
+    pattern: /^The shop sets out (\d[\d,]*) packs with (\d[\d,]*) cards /,
+    groups: [12, 24],
+    each: [10, 12],
+  },
+  {
+    pattern: /^The farm packs (\d[\d,]*) cartons with (\d[\d,]*) eggs /,
+    groups: [12, 48],
+    each: [12, 12],
+  },
+];
+
+test("two-digit stories are used only when both factors fit", () => {
+  let bare = 0;
+  let stories = 0;
+  for (let i = 0; i < 400; i++) {
+    const prompt = generateProblem("multiply-two-digit", `fit-${i}`).public
+      .prompt;
+    if (BARE_PRODUCT.test(prompt)) {
+      bare++;
+      continue;
+    }
+    const story = PRODUCT_STORIES.find((item) => item.pattern.test(prompt));
+    assert.ok(story, prompt);
+    const match = story!.pattern.exec(prompt)!;
+    const groups = Number(match[1]!.replace(/,/g, ""));
+    const each = Number(match[2]!.replace(/,/g, ""));
+    assert.ok(groups >= story!.groups[0] && groups <= story!.groups[1], prompt);
+    assert.ok(each >= story!.each[0] && each <= story!.each[1], prompt);
+    stories++;
+  }
+  assert.ok(bare > stories, `${bare} bare, ${stories} stories`);
+  assert.ok(stories >= 15, `${stories} stories`);
+});
+
+test("twelve growing-shape seeds use eight or more contexts", () => {
+  const titles = Array.from({ length: 12 }, (_, i) => {
+    const figure = generateProblem("growing-shape-pattern", `book-${i}`).public
+      .figure;
+    assert.equal(figure?.kind, "scene");
+    if (figure?.kind !== "scene") return "";
+    return figure.scene.title ?? "";
+  });
+  assert.ok(new Set(titles).size >= 8, titles.join("\n"));
+  const frames = new Set(
+    Array.from({ length: 12 }, (_, i) => {
+      const prompt = generateProblem("growing-shape-pattern", `book-${i}`)
+        .public.prompt;
+      if (prompt.includes("Each next step adds")) return "each-next";
+      if (prompt.includes("Each new step adds")) return "each-new";
+      if (prompt.includes("and each next step adds")) return "and-each-next";
+      if (prompt.includes("After step 1, each step adds")) return "after-step";
+      return prompt;
+    }),
+  );
+  assert.equal(frames.size, 4, [...frames].join("\n"));
+  const byTitle = new Map<string, Set<string>>();
+  for (let i = 0; i < 80; i++) {
+    const problem = generateProblem("growing-shape-pattern", `name-${i}`);
+    const figure = problem.public.figure;
+    assert.equal(figure?.kind, "scene");
+    if (figure?.kind !== "scene") continue;
+    const title = figure.scene.title ?? "";
+    const name = problem.public.prompt.split(" ")[0] ?? "";
+    if (!byTitle.has(title)) byTitle.set(title, new Set());
+    byTitle.get(title)!.add(name);
+  }
+  assert.ok([...byTitle.values()].some((names) => names.size >= 2));
+});
+
 test("one-digit quotients use a container that can hold that many", () => {
   const bad =
     /coolers that hold|players into teams|bin holds exactly|shelves that hold|cups of|inches of ribbon|magazines into bundles/;

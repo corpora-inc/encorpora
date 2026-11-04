@@ -241,26 +241,152 @@ function productSteps(a: number, b: number): string[] {
   ];
 }
 
+function bareProduct(r: Random, A: string, B: string): string {
+  const frame = r(0, 2);
+  if (frame === 0) return `What is ${A} × ${B}?`;
+  if (frame === 1) return `Find the product of ${A} and ${B}.`;
+  return `Multiply ${A} by ${B}.`;
+}
+
+/** Group count is the first factor, because the explanation splits the
+ * second factor. A story is used only when both factors sit in that
+ * situation's range. The bare drill stays the usual case. */
+const MULTIPLY_STORIES: readonly {
+  groups: readonly [number, number];
+  each: readonly [number, number];
+  tell: (groups: string, each: string, name: string) => string;
+}[] = [
+  {
+    groups: [20, 99],
+    each: [10, 40],
+    tell: (A, B) =>
+      `The stadium has ${A} rows with ${B} seats in each row. How many seats is that?`,
+  },
+  {
+    groups: [10, 40],
+    each: [12, 30],
+    tell: (A, B) =>
+      `The theater has ${A} rows with ${B} seats in each row. How many seats is that?`,
+  },
+  {
+    groups: [10, 60],
+    each: [10, 40],
+    tell: (A, B) =>
+      `The orchard has ${A} rows with ${B} trees in each row. How many trees is that?`,
+  },
+  {
+    groups: [10, 30],
+    each: [30, 60],
+    tell: (A, B) =>
+      `The school sends ${A} buses with ${B} riders on each bus. How many riders is that?`,
+  },
+  {
+    groups: [10, 99],
+    each: [12, 24],
+    tell: (A, B) =>
+      `The food drive packs ${A} boxes with ${B} cans in each box. How many cans is that?`,
+  },
+  {
+    groups: [20, 99],
+    each: [20, 80],
+    tell: (A, B) =>
+      `The farm plants ${A} rows with ${B} plants in each row. How many plants is that?`,
+  },
+  {
+    groups: [100, 240],
+    each: [24, 60],
+    tell: (A, B) =>
+      `The farm plants ${A} rows with ${B} corn plants in each row. How many corn plants is that?`,
+  },
+  {
+    groups: [20, 96],
+    each: [16, 32],
+    tell: (A, B) =>
+      `The book has ${A} pages with ${B} lines on each page. How many lines is that?`,
+  },
+  {
+    groups: [100, 240],
+    each: [22, 36],
+    tell: (A, B) =>
+      `The novel has ${A} pages with ${B} lines on each page. How many lines is that?`,
+  },
+  {
+    groups: [12, 32],
+    each: [8, 12],
+    tell: (A, B) =>
+      `A page of the book has ${A} lines with ${B} words on each line. How many words are on that page?`,
+  },
+  {
+    groups: [100, 480],
+    each: [12, 24],
+    tell: (A, B) =>
+      `The factory packs ${A} cases with ${B} bottles in each case. How many bottles is that?`,
+  },
+  {
+    groups: [12, 18],
+    each: [12, 24],
+    tell: (A, B) =>
+      `The class bakes ${A} trays with ${B} cookies on each tray. How many cookies is that?`,
+  },
+  {
+    groups: [12, 16],
+    each: [8, 12],
+    tell: (A, B) =>
+      `The class plants ${A} rows with ${B} seedlings in each row. How many seedlings is that?`,
+  },
+  {
+    groups: [12, 20],
+    each: [12, 16],
+    tell: (A, B, name) =>
+      `${name} fills ${A} pages with ${B} stamps on each page. How many stamps is that?`,
+  },
+  {
+    groups: [12, 40],
+    each: [12, 24],
+    tell: (A, B) =>
+      `The school orders ${A} boxes with ${B} crayons in each box. How many crayons is that?`,
+  },
+  {
+    groups: [12, 24],
+    each: [10, 20],
+    tell: (A, B) =>
+      `The school orders ${A} cartons with ${B} notebooks in each carton. How many notebooks is that?`,
+  },
+  {
+    groups: [12, 16],
+    each: [12, 18],
+    tell: (A, B) =>
+      `The school gym sets out ${A} bins with ${B} tennis balls in each bin. How many tennis balls is that?`,
+  },
+  {
+    groups: [12, 24],
+    each: [10, 12],
+    tell: (A, B) =>
+      `The shop sets out ${A} packs with ${B} cards in each pack. How many cards is that?`,
+  },
+  {
+    groups: [12, 48],
+    each: [12, 12],
+    tell: (A, B) =>
+      `The farm packs ${A} cartons with ${B} eggs in each carton. How many eggs is that?`,
+  },
+];
+
 function multiplyPrompt(r: Random, a: number, b: number): string {
   const A = grouped(a);
   const B = grouped(b);
-  if (r(0, 2) !== 0) {
-    const frame = r(0, 2);
-    if (frame === 0) return `What is ${A} × ${B}?`;
-    if (frame === 1) return `Find the product of ${A} and ${B}.`;
-    return `Multiply ${A} by ${B}.`;
-  }
+  // Two of every three draws stay a bare product, as before.
+  if (r(0, 2) !== 0) return bareProduct(r, A, B);
+  const fitting = MULTIPLY_STORIES.filter(
+    (story) =>
+      a >= story.groups[0] &&
+      a <= story.groups[1] &&
+      b >= story.each[0] &&
+      b <= story.each[1],
+  );
+  if (fitting.length === 0) return bareProduct(r, A, B);
   const name = storyName((n) => r(0, n - 1));
-  return pick(r, [
-    `${name} packs ${A} boxes with ${B} crayons in each box. How many crayons is that?`,
-    `${name} bakes ${A} trays with ${B} cookies on each tray. How many cookies is that?`,
-    `${name} plants ${A} rows with ${B} seedlings in each row. How many seedlings is that?`,
-    `The gym sets out ${A} bins with ${B} tennis balls in each bin. How many tennis balls is that?`,
-    `${name} buys ${A} packs with ${B} trading cards in each pack. How many cards is that?`,
-    `A school orders ${A} cartons with ${B} notebooks in each carton. How many notebooks is that?`,
-    `${name} fills ${A} pages with ${B} stamps on each page. How many stamps is that?`,
-    `The team plays ${A} games and scores ${B} points in each game. How many points is that?`,
-  ]);
+  return pick(r, fitting).tell(A, B, name);
 }
 
 function multiplyTwoDigit(
@@ -455,87 +581,138 @@ const TILE_RULES = [
 ] as const;
 
 /** A growing figure whose step-1 row is the start and each later step adds
- * one row. Step n has start + (n − 1) · add pieces. */
+ * one row. Step n has start + (n − 1) · add pieces.
+ * The name is chosen apart from the context, so one situation is not locked
+ * to one child. */
 const GROWTHS = [
   {
     noun: "tile",
     title: "Garden path, steps 1 to 3",
-    lead: "Jamal is laying a garden path.",
+    doing: "is laying a garden path",
     piece: "garden tile",
   },
   {
     noun: "block",
     title: "Block staircase, steps 1 to 3",
-    lead: "Priya is building a block staircase.",
+    doing: "is building a block staircase",
     piece: "stair block",
   },
   {
     noun: "cup",
     title: "Stacked cups, steps 1 to 3",
-    lead: "The cafe is stacking cups for a picnic.",
+    doing: "is stacking cups for a picnic",
     piece: "stacked cup",
   },
   {
     noun: "chair",
     title: "Chairs by the tables, steps 1 to 3",
-    lead: "The class is setting chairs along a row of tables.",
+    doing: "is setting chairs along a row of tables",
     piece: "chair",
   },
   {
     noun: "bead",
     title: "Bead rows, steps 1 to 3",
-    lead: "Lena is stringing beads in a growing pattern.",
+    doing: "is stringing beads for a bracelet",
     piece: "bead",
   },
   {
     noun: "seedling",
     title: "Seedling rows, steps 1 to 3",
-    lead: "Omar is planting seedlings in a growing bed.",
+    doing: "is planting seedlings in a garden bed",
     piece: "seedling",
   },
   {
     noun: "stamp",
     title: "Stamp rows, steps 1 to 3",
-    lead: "Nia is arranging stamps in a growing display.",
+    doing: "is arranging stamps on a display page",
     piece: "stamp",
   },
   {
     noun: "card",
     title: "Card rows, steps 1 to 3",
-    lead: "Theo is laying cards in a growing pattern.",
+    doing: "is laying cards out for a game",
     piece: "card",
-  },
-  {
-    noun: "tile",
-    title: "Garden path, steps 1 to 3",
-    lead: "Jamal is laying a garden path.",
-    piece: "garden tile",
   },
   {
     noun: "shell",
     title: "Shell rows, steps 1 to 3",
-    lead: "Ava is lining up shells from the beach.",
+    doing: "is lining up shells from the beach",
     piece: "shell",
   },
   {
     noun: "flower",
     title: "Flower rows, steps 1 to 3",
-    lead: "Noah is planting a growing row of flowers.",
+    doing: "is planting flowers along the fence",
     piece: "flower",
   },
   {
     noun: "book",
     title: "Book stacks, steps 1 to 3",
-    lead: "Sofia is stacking books for the book fair.",
+    doing: "is stacking books for the book fair",
     piece: "book",
   },
   {
     noun: "board",
     title: "Porch boards, steps 1 to 3",
-    lead: "A builder is adding boards to a porch step.",
+    doing: "is adding boards to a porch step",
     piece: "board",
   },
+  {
+    noun: "brick",
+    title: "Brick steps, steps 1 to 3",
+    doing: "is stacking bricks to build a step",
+    piece: "brick",
+  },
+  {
+    noun: "post",
+    title: "Fence posts, steps 1 to 3",
+    doing: "is setting posts for a garden fence",
+    piece: "fence post",
+  },
+  {
+    noun: "sticker",
+    title: "Sticker rows, steps 1 to 3",
+    doing: "is putting stickers in rows on a page",
+    piece: "sticker",
+  },
+  {
+    noun: "bottle",
+    title: "Water bottles, steps 1 to 3",
+    doing: "is lining up water bottles for the class trip",
+    piece: "water bottle",
+  },
+  {
+    noun: "photo",
+    title: "Photo rows, steps 1 to 3",
+    doing: "is arranging photos on a board",
+    piece: "photo",
+  },
+  {
+    noun: "crayon",
+    title: "Crayon rows, steps 1 to 3",
+    doing: "is setting crayons in rows for an art project",
+    piece: "crayon",
+  },
+  {
+    noun: "stone",
+    title: "Stepping stones, steps 1 to 3",
+    doing: "is laying stepping stones on a path",
+    piece: "stepping stone",
+  },
+  {
+    noun: "flag",
+    title: "Fair flags, steps 1 to 3",
+    doing: "is hanging flags for the school fair",
+    piece: "flag",
+  },
 ] as const;
+
+function seedMod(salt: string, seed: string, count: number): number {
+  return (
+    createHash("sha256").update(`${salt}\0${seed}`).digest().readUInt32BE(0) %
+    count
+  );
+}
 
 function tileFigure(
   start: number,
@@ -576,17 +753,28 @@ function tileFigure(
 function growingShape(meta: TemplateMetadata, seed: string): GeneratedProblem {
   const r = random(meta.id, seed);
   const rule = pick(r, TILE_RULES);
-  const growth = pick(r, GROWTHS);
+  const growth =
+    GROWTHS[seedMod("growing-shape-context", seed, GROWTHS.length)]!;
   const step = r(5, 8);
+  const name = storyName((n) => r(0, n - 1));
   const tiles = (n: number) => rule.start + (n - 1) * rule.add;
   const answer = tiles(step);
   const noun = growth.noun;
+  const start = countNoun(rule.start, noun);
+  const added = countNoun(rule.add, noun);
+  const many = plural(noun);
+  const frames = [
+    `${name} ${growth.doing}. The pattern starts with ${start}. Each next step adds ${added}. The figure shows steps 1, 2 and 3. How many ${many} are in step ${step}?`,
+    `${name} ${growth.doing}. Look at the figure for steps 1, 2 and 3. The pattern starts with ${start}. Each new step adds ${added}. How many ${many} are in step ${step}?`,
+    `The figure shows steps 1, 2 and 3. ${name} ${growth.doing}. The pattern starts with ${start}, and each next step adds ${added}. How many ${many} are in step ${step}?`,
+    `${name} ${growth.doing}. Steps 1, 2 and 3 are drawn. The pattern starts with ${start}. After step 1, each step adds ${added}. How many ${many} are in step ${step}?`,
+  ];
   return numberProblem(meta, seed, {
-    prompt: `${growth.lead} The pattern starts with ${countNoun(rule.start, noun)}. Each next step adds ${countNoun(rule.add, noun)}. The figure shows steps 1, 2 and 3. How many ${plural(noun)} are in step ${step}?`,
+    prompt: frames[seedMod("g4-growth-frame", seed, frames.length)]!,
     answer,
     label: plural(noun)[0]!.toUpperCase() + plural(noun).slice(1),
     figure: tileFigure(rule.start, rule.add, growth),
-    hint: `Step 1 has ${countNoun(rule.start, noun)}. To reach step ${step}, add ${countNoun(rule.add, noun)} once for each later step. That is ${step - 1} adds. The figure stops at step 3, so do not count step ${step} from it.`,
+    hint: `Step 1 has ${countNoun(rule.start, noun)}. To reach step ${step}, add ${countNoun(rule.add, noun)} once for each of the ${step - 1} later steps. The drawing stops at step 3, so find step ${step} from the rule.`,
     explanation: [
       `The rule is: start at ${rule.start}, then add ${rule.add} for each new step.`,
       `Step ${step} is the start plus ${step - 1} adds: ${rule.start} + ${step - 1} × ${rule.add}.`,
