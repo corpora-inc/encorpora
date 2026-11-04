@@ -1938,7 +1938,7 @@ export function k8StateNumberCase(templateId: string, seed: string) {
   if (!meta || !build) throw new Error(`Unknown template ${templateId}`);
   const r = random(meta.id, seed);
   const axes = isSweepId(templateId)
-    ? sweepChoose(templateId, seed)
+    ? (sweepChoose(templateId, seed) as Readonly<Record<string, string>>)
     : undefined;
   for (let attempt = 0; attempt < 80; attempt++) {
     let draft: Built;

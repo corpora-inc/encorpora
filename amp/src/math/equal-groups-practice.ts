@@ -45,7 +45,7 @@ export function generateEqualGroupsProblem(
     throw new Error("Seed must contain 1–128 characters");
   const r = random(templateId, seed);
   const axes = isSweepId(templateId)
-    ? sweepChoose(templateId, seed)
+    ? (sweepChoose(templateId, seed) as Readonly<Record<string, string>>)
     : undefined;
   let prompt = "",
     answer = 0,
