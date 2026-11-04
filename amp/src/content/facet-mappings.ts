@@ -62,6 +62,7 @@ import { linearSystemFacetMappings } from "./linear-system-coverage";
 import { rightTriangleFacetMappings } from "./right-triangle-coverage";
 import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 import { familyRegistry } from "../families/registry";
+import { grade4MeasurementMoneyFacetMappings } from "./grade4-measurement-money-lessons";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
@@ -2369,6 +2370,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     rationale:
       "Decide similarity by AA from two stated angles of each triangle, name the vertex correspondence, find a missing angle, and choose the matching proportion of sides. Does not assess the proof that AA follows from similarity transformations or other similarity criteria.",
   },
+  ...grade4MeasurementMoneyFacetMappings,
   // Frozen legacy entries above; families append from src/families/.
   ...familyRegistry.facetMappings,
 ];
