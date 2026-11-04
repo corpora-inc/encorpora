@@ -9,7 +9,6 @@ import type {
 import { sweepChoose, sweepVariant } from "./number-domain-axes";
 import { axisRecord, chooseAxes, defineAxis } from "./variation/axes";
 import { decimal, fixed } from "./decimal-models";
-import { learnerName } from "./story-kit/fractions";
 
 /** Below one is the legacy surface. Above one reaches 2 3/10 = 2.30. */
 export const tenthsMagnitudeAxes = {
@@ -260,13 +259,14 @@ function draft(templateId: string, r: Random, seed: string): Draft {
         chooseAxes(templateId, seed, tenthsStoryAxes).setting === "applied";
       const dress = (equation: string) => {
         if (!applied) return equation;
-        const name = learnerName(r);
+        // A race time is a decimal on a stopwatch, not a mixed number.
+        if (/^\d+\.\d/.test(equation))
+          return `A stopwatch shows seconds down to the hundredth. Each tenth of a second is 10 hundredths of a second. ${equation}`;
         const lead = [
-          `${name} counts dimes and pennies, which are tenths and hundredths of a dollar.`,
-          `${name} measures in tenths and hundredths of a meter.`,
-          `${name} pours tenths and hundredths of a liter.`,
-          `${name} times a race in tenths and hundredths of a second.`,
-        ][r(0, 3)]!;
+          `A board's length is written in meters. Each tenth of a meter is 10 centimeters.`,
+          `Water is measured in liters. Each tenth of a liter is 10 hundredths of a liter.`,
+          `The amount is in dollars. Each tenth of a dollar is 10 cents.`,
+        ][r(0, 2)]!;
         return `${lead} ${equation}`;
       };
       const storyVariant = (above: boolean): ProblemVariant | undefined =>

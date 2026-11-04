@@ -65,28 +65,30 @@ def solve_decimal(public):
         require(1 <= figure['shaded'] <= 99, 'Shaded hundredths')
         return Fraction(figure['shaded'], 100)
     if template == 'tenths-as-hundredths':
-        above = re.fullmatch(r'(\d+) (\d+)/10 = (\d+) □/100\. What number belongs in the box\?', prompt)
+        above = re.search(r'(\d+) (\d+)/10 = (\d+) □/100\. What number belongs in the box\?$', prompt)
         if above:
             whole, tenths, shown = map(int, above.groups())
             require(whole == shown and 1 <= tenths <= 9, 'Mixed tenth rename')
             return tenths * 10
-        above = re.fullmatch(r'What is (\d+) (\d+)/10 \+ (\d+)/100 written as a decimal\?', prompt)
+        above = re.search(r'What is (\d+) (\d+)/10 \+ (\d+)/100 written as a decimal\?$', prompt)
         if above:
             whole, tenths, hundredths = map(int, above.groups())
             require(1 <= tenths <= 9 and 0 <= hundredths <= 9, 'Mixed tenth sum')
             return Fraction(whole) + Fraction(tenths, 10) + Fraction(hundredths, 100)
-        above = re.fullmatch(r'(\d+)\.(\d)0 = (\d+) □/100\. What number belongs in the box\?', prompt)
+        above = re.search(r'(\d+)\.(\d)0 = (\d+) □/100\. What number belongs in the box\?$', prompt)
         if above:
             whole, tenths, shown = int(above[1]), int(above[2]), int(above[3])
             require(whole == shown and 1 <= tenths <= 9, 'Mixed decimal rename')
             return tenths * 10
-        found = re.fullmatch(r'(\d)/10 \+ (\d)/100 = □/100\. What number belongs in the box\?', prompt)
+        found = re.search(r'(\d)/10 \+ (\d)/100 = □/100\. What number belongs in the box\?$', prompt)
         if found:
             return (Fraction(int(found[1]), 10) + Fraction(int(found[2]), 100)) * 100
-        found = re.fullmatch(r'(0\.\d) = □/100\. What number belongs in the box\?', prompt)
+        found = re.search(r'(0\.\d) = □/100\. What number belongs in the box\?$', prompt)
         if found:
             return value(found[1]) * 100
-        a, b = match(r'What is (\d)/10 \+ (\d)/100 written as a decimal\?', prompt)
+        decimal_sum = re.search(r'What is (\d)/10 \+ (\d)/100 written as a decimal\?$', prompt)
+        require(decimal_sum is not None, 'Unrecognized tenths prompt: ' + prompt)
+        a, b = decimal_sum[1], decimal_sum[2]
         return Fraction(int(a), 10) + Fraction(int(b), 100)
     if template == 'decimal-line-point':
         require(prompt == 'What decimal is at point P?', 'Number-line wording')
