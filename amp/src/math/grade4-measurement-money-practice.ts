@@ -8,7 +8,9 @@ import type {
 import { random, rational, type Random } from "./distribution-practice";
 import {
   clockTimePresent,
+  conversionStory,
   elapsedStory,
+  renameStory,
 } from "./grade4-measurement-money-voice";
 import { multiPartProblem, type Slot } from "./multi-part-support";
 import { table } from "./scene/author";
@@ -49,7 +51,11 @@ export const measurementNarrativeAxes = {
   }),
 } as const;
 
-const STORY_READY = new Set(["elapsed-time-intervals"]);
+const STORY_READY = new Set([
+  "elapsed-time-intervals",
+  "conversion-table-slots",
+  "unit-rename-larger",
+]);
 
 export function measurementNarrative(
   templateId: string,
@@ -501,14 +507,38 @@ function conversion(meta: TemplateMetadata, seed: string, r: Random): Built {
   ];
   const largeOne = oneOf(pair.large);
   const smallOne = oneOf(pair.small);
-  const prompt = `The table matches ${pair.large} with ${pair.small}. The first row shows ${counted(large0, largeOne)}. Fill in the two blanks.`;
+  const shown = counted(large0, largeOne);
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? conversionStory(meta.id, seed, {
+          large: pair.large,
+          small: pair.small,
+          factor: pair.factor,
+          large0,
+          large1,
+          large2,
+          small0: small[0]!,
+          small1: small[1]!,
+          small2: small[2]!,
+          shown,
+        })
+      : null;
+  if (told) {
+    slots[0]!.wrong = told.wrongLarge;
+    slots[1]!.wrong = told.wrongSmall;
+  }
+  const prompt =
+    told?.prompt ??
+    `The table matches ${pair.large} with ${pair.small}. The first row shows ${shown}. Fill in the two blanks.`;
   const problem = multiPartProblem(meta, seed, r, {
     prompt,
     layout: "slots",
     label: "Fill the blanks",
     slots,
     figure,
-    hint: `The first row shows ${counted(large0, largeOne)}. Each row uses the same match between ${pair.large} and ${pair.small}.`,
+    hint:
+      told?.hint ??
+      `The first row shows ${shown}. Each row uses the same match between ${pair.large} and ${pair.small}.`,
     explanation: [
       `The first row shows ${counted(large0, largeOne)} and ${counted(small[0]!, smallOne)}, so 1 ${largeOne} is ${counted(pair.factor, smallOne)}.`,
       `Row 2 shows ${counted(small[1]!, smallOne)}. Divide by ${commas(pair.factor)}: ${counted(large1, largeOne)}.`,
@@ -559,17 +589,31 @@ function renameLarger(meta: TemplateMetadata, seed: string, r: Random): Built {
   const input = pair.factor * result;
   // The noun is the plural of the larger unit. The answer is the number alone.
   const noun = count(2, pair.large).replace(/^\d+ /, "");
+  const inputText = counted(input, pair.small);
+  const resultText = counted(result, pair.large);
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? renameStory(meta.id, seed, {
+          small: pair.small,
+          large: pair.large,
+          factor: pair.factor,
+          inputText,
+          resultText,
+        })
+      : null;
   return {
     variant: `${market}-${pair.small}-${pair.large}`,
     problem: toProblem(meta, seed, r, {
-      prompt: `${counted(input, pair.small)} is how many ${noun}?`,
+      prompt: told?.prompt ?? `${inputText} is how many ${noun}?`,
       answer: String(result),
       responseLabel: `Number of ${noun}`,
-      hint: `1 ${pair.large} is ${counted(pair.factor, pair.small)}. Divide ${commas(input)} by ${commas(pair.factor)}.`,
+      hint:
+        told?.hint ??
+        `1 ${pair.large} is ${counted(pair.factor, pair.small)}. Divide ${commas(input)} by ${commas(pair.factor)}.`,
       explanation: [
         `1 ${pair.large} is ${counted(pair.factor, pair.small)}.`,
         `${commas(input)} ÷ ${commas(pair.factor)} = ${result}.`,
-        `${counted(input, pair.small)} is ${counted(result, pair.large)}.`,
+        told?.closing ?? `${inputText} is ${resultText}.`,
       ],
     }),
   };

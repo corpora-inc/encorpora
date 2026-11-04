@@ -1,5 +1,11 @@
 import { count, isAre } from "./agreement";
 import { storyName } from "./story-kit/names";
+import {
+  lengthJobs,
+  liquidJobs,
+  timeJobs,
+  weightJobs,
+} from "./story-kit/measurement";
 import { surfaceStream, type Random } from "./variation/axes";
 
 /** Story surfaces for grade-4 measurement and money.
@@ -162,4 +168,165 @@ export function elapsedStory(
       ? `The clock shows ${start} Add ${hm(d1!)}. If the minutes reach 60, cross into the next hour.`
       : `The clock shows ${start} Add ${hm(d1!)}, then add ${hm(d2)}. If the minutes reach 60, cross into the next hour.`;
   return { prompt, hint, explanation };
+}
+
+/* ------------------------------------------------------------------ */
+/* Conversion table and smaller-to-larger rename                       */
+/* ------------------------------------------------------------------ */
+
+const commas = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+function distinctWrongs(correct: number, pool: number[]): string[] {
+  const seen = new Set([String(correct)]);
+  const out: string[] = [];
+  for (const n of pool) {
+    if (!Number.isInteger(n) || n <= 0 || n > 100_000) continue;
+    const label = String(n);
+    if (seen.has(label)) continue;
+    seen.add(label);
+    out.push(label);
+    if (out.length === 3) return out;
+  }
+  throw new Error("Need three distinct wrong table values");
+}
+
+const jobsFor = (large: string): readonly string[] =>
+  large === "feet"
+    ? lengthJobs
+    : large === "kilograms"
+      ? weightJobs
+      : large === "hours"
+        ? timeJobs
+        : liquidJobs;
+
+export function conversionStory(
+  templateId: string,
+  seed: string,
+  model: {
+    large: string;
+    small: string;
+    factor: number;
+    large0: number;
+    large1: number;
+    large2: number;
+    small0: number;
+    small1: number;
+    small2: number;
+    shown: string;
+  },
+): { prompt: string; hint: string; wrongLarge: string[]; wrongSmall: string[] } {
+  const r = stream(templateId, seed);
+  const name = storyName((n) => r(0, n - 1));
+  const job = pick(r, jobsFor(model.large));
+  const core = `matches ${model.large} with ${model.small}. The first row shows ${model.shown}.`;
+  const frame = r(0, 3);
+  const doing =
+    model.large === "hours"
+      ? "timing"
+      : model.large === "kilograms"
+        ? "weighing"
+        : model.large === "liters"
+          ? "pouring"
+          : "measuring";
+  const prompt =
+    frame === 0
+      ? `${name} is ${doing} ${job}. The table ${core} Fill in the two blanks.`
+      : frame === 1
+        ? `${name} keeps a chart for ${job}. It ${core} Complete the two blanks.`
+        : frame === 2
+          ? `Look at ${name}'s table for ${job}. The table ${core} Which numbers fill the blanks?`
+          : `${name}'s notebook ${core} The chart is for ${job}. Fill in the two blanks.`;
+  const hint = `${name} can read the rule from the first row. Divide to fill the ${model.large}. Multiply to fill the ${model.small}.`;
+  const wrongLarge = distinctWrongs(model.large1, [
+    model.small1,
+    model.large1 * 10,
+    model.large1 * 100,
+    model.large0,
+    model.large2,
+    model.large1 + 1,
+    Math.max(1, Math.round(model.small1 / 10)),
+  ]);
+  const wrongSmall = distinctWrongs(model.small2, [
+    model.large2,
+    model.large2 * 10,
+    model.large2 * 100,
+    model.small0,
+    model.small1,
+    model.large2 * model.factor + model.large2,
+    Math.max(1, model.small2 - model.factor),
+  ]);
+  return { prompt, hint, wrongLarge, wrongSmall };
+}
+
+const RENAME_OBJECTS: Record<string, readonly string[]> = {
+  "inch|foot": ["ribbon", "picture frame", "toy-car track", "poster", "jump rope", "shelf"],
+  "foot|yard": ["garden fence", "hallway", "fabric", "sideline", "kite string", "room"],
+  "ounce|pound": ["dog food", "flour", "apples", "clay", "potatoes", "rice"],
+  "cup|quart": ["lemonade", "soup", "juice", "paint", "milk", "punch"],
+  "quart|gallon": ["lemonade", "paint", "milk", "soup", "punch", "flower water"],
+  "minute|hour": ["soccer practice", "movie", "hike", "rehearsal", "reading", "piano practice"],
+  "centimeter|meter": ["ribbon", "garden row", "classroom rug", "paper chain", "model bridge", "jump rope"],
+  "millimeter|centimeter": ["beetle trail", "bead strand", "leaf", "paper-clip chain", "science card", "crayon line"],
+  "gram|kilogram": ["clay", "apples", "dog food", "flour", "rocks", "pumpkin seeds"],
+  "meter|kilometer": ["trail", "race", "bike path", "walk to school", "parade", "paper route"],
+  "milliliter|liter": ["juice", "paint", "soup", "lemonade", "milk", "flower water"],
+};
+
+export function renameStory(
+  templateId: string,
+  seed: string,
+  model: {
+    small: string;
+    large: string;
+    factor: number;
+    inputText: string;
+    resultText: string;
+  },
+): { prompt: string; hint: string; closing: string } {
+  const r = stream(templateId, seed);
+  const name = storyName((n) => r(0, n - 1));
+  const object = pick(
+    r,
+    RENAME_OBJECTS[`${model.small}|${model.large}`] ?? ["measure"],
+  );
+  const frame = r(0, 3);
+  const amount = model.inputText;
+  const noun = model.resultText.replace(/^\d[\d,]* /, "");
+  const kind =
+    model.small === "minute"
+      ? "time"
+      : model.small === "ounce" || model.small === "gram"
+        ? "weight"
+        : model.small === "cup" ||
+            model.small === "quart" ||
+            model.small === "milliliter"
+          ? "liquid"
+          : "length";
+  const prompt =
+    kind === "time"
+      ? frame % 2 === 0
+        ? `${name}'s ${object} takes ${amount}. How many ${noun} is that?`
+        : `The schedule lists ${amount} for the ${object}. How many ${noun} should ${name} write down?`
+      : kind === "weight"
+        ? frame % 2 === 0
+          ? `${name} weighs the ${object} at ${amount}. How many ${noun} is that?`
+          : `${name} buys ${amount} of ${object}. How many ${noun} is that?`
+        : kind === "liquid"
+          ? frame % 2 === 0
+            ? `${name} fills a pitcher of ${object} with ${amount}. How many ${noun} is that?`
+            : `${name} pours ${amount} of ${object}. How many ${noun} is that?`
+          : frame === 0
+            ? `${name} measured the ${object}: ${amount}. How many ${noun} is that?`
+            : frame === 1
+              ? `${name} checks the ${object}. It is ${amount} long. How many ${noun} is that?`
+              : frame === 2
+                ? `${name} needs ${amount} for the ${object}. How many ${noun} is that?`
+                : `A note in ${name}'s notebook says ${amount} for the ${object}. How many ${noun} should ${name} record?`;
+  const factorText = count(model.factor, model.small).replace(
+    /^\d+/,
+    commas(model.factor),
+  );
+  const hint = `1 ${model.large} is ${factorText}. How many groups of ${commas(model.factor)} fit in that measure?`;
+  const closing = `${name} records ${model.resultText}.`;
+  return { prompt, hint, closing };
 }

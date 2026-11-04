@@ -376,10 +376,16 @@ test("conversion tables fill both columns from the first row", () => {
   for (let i = 0; i < 200; i++) {
     const { problem } = served("conversion-table-slots", `mm-table-${i}`);
     const match =
-      /^The table matches (\w+) with (\w+)\. The first row shows (\d+) (feet|kilograms|hours|liters)\. Fill in the two blanks\.$/.exec(
+      /matches (\w+) with (\w+)\. The first row shows (\d+) (feet|kilograms|hours|liters)/.exec(
         problem.public.prompt,
       );
-    assert.ok(match);
+    assert.ok(match, problem.public.prompt);
+    if (problem.variant == null)
+      assert.match(
+        problem.public.prompt,
+        /^The table matches \w+ with \w+\. The first row shows \d+ (?:feet|kilograms|hours|liters)\. Fill in the two blanks\.$/,
+      );
+    else assert.ok(storyNames.some((name) => problem.public.prompt.includes(name)));
     const large = match[1]!;
     const small = match[2]!;
     const shown = Number(match[3]);
@@ -438,10 +444,20 @@ test("smaller units rename to a whole number of a larger unit", () => {
   const florida = new Set<string>();
   for (let i = 0; i < 800; i++) {
     const { variant, problem } = served("unit-rename-larger", `mm-rename-${i}`);
-    const match = /^([\d,]+) (\w+) is how many (\w+)\?$/.exec(
+    const legacy = /^([\d,]+) (\w+) is how many (\w+)\?$/.exec(
       problem.public.prompt,
     );
+    const amountMatch = /([\d,]+) (\w+)\b/.exec(problem.public.prompt);
+    const howMany = /[Hh]ow many (\w+)\b/.exec(problem.public.prompt);
+    const match = legacy ?? (amountMatch && howMany
+      ? [problem.public.prompt, amountMatch[1], amountMatch[2], howMany[1]]
+      : null);
     assert.ok(match, problem.public.prompt);
+    if (problem.variant == null) assert.ok(legacy);
+    else {
+      assert.equal(legacy, null);
+      assert.ok(storyNames.some((name) => problem.public.prompt.includes(name)));
+    }
     const amount = Number(match[1]!.replaceAll(",", ""));
     if (amount >= 1000) assert.match(match[1]!, /,/);
     const prose = [

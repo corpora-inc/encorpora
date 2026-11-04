@@ -327,9 +327,9 @@ def cell_number(value):
 
 def solve_table(public):
     text = field(public, 'prompt')
-    match = re.fullmatch(
-        r'The table matches (\w+) with (\w+)\. The first row shows (\d+) '
-        r'(feet|kilograms|hours|liters)\. Fill in the two blanks\.',
+    match = re.search(
+        r'matches (\w+) with (\w+)\. The first row shows (\d+) '
+        r'(feet|kilograms|hours|liters)',
         text,
     )
     require(match is not None, 'Unrecognized conversion table')
@@ -380,11 +380,19 @@ def solve_table(public):
 
 
 def solve_rename(public):
-    match = re.fullmatch(
-        r'([\d,]+) (\w+) is how many (\w+)\?',
-        field(public, 'prompt'),
-    )
-    require(match is not None, 'Unrecognized rename prompt')
+    text = field(public, 'prompt')
+    match = re.fullmatch(r'([\d,]+) (\w+) is how many (\w+)\?', text)
+    if match is None:
+        amount_match = re.search(
+            r'([\d,]+) (inches|feet|ounces|cups|quarts|minutes|centimeters|millimeters|grams|meters|milliliters)\b',
+            text,
+        )
+        how = re.search(
+            r'[Hh]ow many (feet|yards|pounds|quarts|gallons|hours|meters|centimeters|kilograms|kilometers|liters)\b',
+            text,
+        )
+        require(amount_match is not None and how is not None, 'Unrecognized rename prompt')
+        match = (text, amount_match[1], amount_match[2], how[1])
     amount = int(match[1].replace(',', ''))
     if amount >= 1000:
         require(',' in match[1], 'A thousands amount has no separator')
