@@ -886,8 +886,18 @@ export const statementBlanksGenerate = defineGenerate(
           const thing = differentWhole(r);
           const d1 = r(2, 8);
           const n1 = r(1, d1 - 1);
-          const d2 = r(2, 8);
-          const n2 = r(1, d2 - 1);
+          let d2 = r(2, 8);
+          let n2 = r(1, d2 - 1);
+          // The two fraction choices must not be the same amount, or the
+          // cards collapse into one meaning.
+          for (let guard = 0; guard < 20 && n1 * d2 === n2 * d1; guard++) {
+            d2 = r(2, 8);
+            n2 = r(1, d2 - 1);
+          }
+          if (n1 * d2 === n2 * d1) {
+            d2 = d2 === 8 ? 3 : d2 + 1;
+            n2 = 1;
+          }
           const bar = (
             prefix: string,
             parts: number,
@@ -956,7 +966,7 @@ export const statementBlanksGenerate = defineGenerate(
             ".",
           ]);
           return multiPartProblem(meta, seed, r, {
-            prompt: `The ${thing.small} and the ${thing.large} are different sizes. Compare $${frac(n1, d1)}$ of the ${thing.small} with $${frac(n2, d2)}$ of the ${thing.large}. Complete the sentence.`,
+            prompt: `The ${thing.small} and the ${thing.large} are different sizes. One is a bigger whole than the other, so compare $${frac(n1, d1)}$ of the ${thing.small} with $${frac(n2, d2)}$ of the ${thing.large}. Complete the sentence.`,
             layout: "inline",
             label: "Choose the fraction and the reason",
             slots: built.slots,

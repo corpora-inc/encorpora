@@ -281,7 +281,7 @@ def times_as_many(public):
 def compare_fractions(public):
     _, blanks = response_of(public, "inline", ["bigger", "why"])
     prompt = untex(public["prompt"])
-    if prompt.startswith("The small cracker and the large cracker are different sizes."):
+    if "different sizes" in prompt:
         figure = public.get("figure")
         require(figure and figure.get("kind") == "scene", "Cracker scene")
         widths = {}
