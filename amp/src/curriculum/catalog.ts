@@ -389,6 +389,7 @@ mixed-numbers|4|fractions|Compose decompose and operate on mixed numbers with li
 fraction-times-whole|4|fractions|Multiply a fraction by a whole number|multiplication-meaning,unit-fractions|4.NF.B.4
 decimal-fractions|4|decimals|Connect tenths hundredths fractions and decimal notation|fraction-equivalence|4.NF.C.5,4.NF.C.6
 compare-decimals|4|decimals|Compare decimals through hundredths|decimal-fractions|4.NF.C.7
+decimal-money-operations|4|decimals|Add subtract multiply and divide decimal money and make change|decimal-fractions,whole-add-subtract|4.MD.A.2
 unit-conversion|4|measurement|Convert larger measurement units to smaller units|whole-multiplication|4.MD.A.1,4.MD.A.2
 area-perimeter-models|4|geometry|Use rectangle area and perimeter formulas in context|rectangle-area,perimeter|4.MD.A.3
 angle-measure|4|geometry|Measure angles and find sums of adjacent angles|polygon-properties|4.MD.C.5,4.MD.C.6,4.MD.C.7
@@ -2757,6 +2758,28 @@ for (const [skillId, suffix, description] of [
     "decimal-algorithms",
     "multidigit-decimal-operations",
     "Add, subtract, multiply and divide multidigit decimals with terminating results.",
+  ],
+])
+  skills
+    .find((s) => s.id === skillId)!
+    .facets.push({
+      id: `${skillId}.${suffix}`,
+      description,
+      status: "implemented",
+    });
+
+// Grade-4 measurement intervals and decimal money. Only the new templates
+// map here. Older unit-conversion types stay on unit-conversion.core.
+for (const [skillId, suffix, description] of [
+  [
+    "unit-conversion",
+    "tables-intervals",
+    "Complete conversion tables, rename a smaller unit as a larger unit, find elapsed time that crosses an hour, read a fraction on a measurement scale, and choose a measuring tool.",
+  ],
+  [
+    "decimal-money-operations",
+    "operations",
+    "Add and subtract decimals through hundredths, solve decimal money stories including change and the fewest coins, and write a bill and coins as a decimal.",
   ],
 ])
   skills

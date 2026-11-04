@@ -232,6 +232,8 @@ mental-tens-hundreds|powers-of-ten|extension|Shifting a value by ten or one hund
 counting-arithmetic|number-line-arithmetic|extension|Counting on and back is the same as hopping forward and back along a number line.|number-line-hops
 addition-facts|multiplication-meaning|application|Repeated addition of equal groups gives a multiplication total, so fluent sums make equal-group totals easier.|equal-tray-total
 money-values|decimal-arithmetic|application|Dollars and cents are hundredths of a dollar. Adding money is adding decimals aligned by place.|decimal-addition
+money-values|decimal-money-operations|application|Counting coins and bills gives a total in dollars and cents, which is a decimal through hundredths.|money-model-decimal
+decimal-money-operations|decimal-arithmetic|extension|Adding and subtracting money through hundredths is the same place-value alignment used for other decimals.|decimal-sum-difference
 missing-factor|one-step-equations|extension|An unknown factor in a fact is a one-step equation. A letter can stand for the unknown number.|one-step-equation
 fraction-model|decimal-fractions|related|A tenths or hundredths grid is a fraction model whose whole is divided into ten or one hundred equal parts.|decimal-grid-read
 compare-fractions|fraction-comparison|extension|Comparing fractions with the same denominator or numerator extends to unlike fractions by renaming them as equivalent fractions.|compare-unlike-fractions

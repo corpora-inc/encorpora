@@ -20,7 +20,7 @@ multiplication-division|6|6|arrays,multiplication-meaning,multiplication-facts,d
 arithmetic-modeling|5|5|addition-stories,two-step-stories,multiplicative-stories,multi-operation-stories,multiplicative-comparison,multistep-whole-stories,rational-stories,financial-literacy-elementary
 fraction-meaning|6|6|halves-and-quarters,thirds-and-partitions,unit-fractions,fraction-model,fractions-number-line,equivalent-fractions,compare-fractions,partition-area,fraction-equivalence,fraction-comparison,mixed-numbers,fraction-as-division
 fraction-operations|6|6|like-fraction-addition,fraction-times-whole,fraction-addition,fraction-multiplication,unit-fraction-division,fraction-division,complex-fractions
-decimals|6|6|decimal-fractions,compare-decimals,decimal-place-value,decimal-arithmetic,decimal-algorithms
+decimals|6|6|decimal-fractions,compare-decimals,decimal-money-operations,decimal-place-value,decimal-arithmetic,decimal-algorithms
 number-structure|3|3|factors-multiples,gcf-lcm,irrational-numbers,approximate-roots,scientific-notation,number-system-closure
 signed-numbers|5|5|signed-numbers,absolute-value,signed-addition,signed-multiplication
 measurement|4|4|compare-attributes,measure-equal-units,ruler-measurement,mass-volume,unit-conversion,measurement-conversions,units-and-precision

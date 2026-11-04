@@ -81,6 +81,7 @@ import { financeIncomeLessons } from "./finance-income-lessons";
 import { texasHsLessons } from "./texas-hs-lessons";
 import { k8StateNumberLessons } from "./k8-state-number-lessons";
 import { grade4PlaceValueLessons } from "./grade4-place-value-lessons";
+import { grade4MeasurementMoneyLessons } from "./grade4-measurement-money-lessons";
 import { texas38Lessons } from "./texas-38-lessons";
 import { satNumericEntryLessons } from "./sat-numeric-entry-lessons";
 import { satFunctionFormsLessons } from "./sat-function-forms-lessons";
@@ -811,6 +812,7 @@ export const lessons: readonly Lesson[] = [
   ...texasHsLessons,
   ...k8StateNumberLessons,
   ...grade4PlaceValueLessons,
+  ...grade4MeasurementMoneyLessons,
   ...texas38Lessons,
   ...satNumericEntryLessons,
   ...satFunctionFormsLessons,
