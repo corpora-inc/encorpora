@@ -398,7 +398,7 @@ function fractionPlot(r: Random): Draft {
 function vividExtraStory(
   d: keyof typeof EXTRA_STORY,
   values: readonly number[],
-): (typeof EXTRA_STORY)[keyof typeof EXTRA_STORY] {
+) {
   const name = storyNames[values[0]! % storyNames.length]!;
   if (d === 3)
     return {

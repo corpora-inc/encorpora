@@ -705,7 +705,7 @@ const castContexts: DotContext[] = [
     fractional: true,
     hundredths: true,
     missing: (n, grand) =>
-      `NAME biked ${grand} in all ${n + 1} days. How many miles did NAME bike on day ${n + 1}?`,
+      `The plot shows those ${n} days. NAME biked ${grand} in all ${n + 1} days. How many miles did NAME bike on day ${n + 1}?`,
     total: (n) => `How many miles did NAME bike in all ${n} days?`,
   },
   {
@@ -815,7 +815,6 @@ const castContexts: DotContext[] = [
     one: "inch",
     entity: "day",
     fractional: true,
-    hundredths: true,
     missing: (n, grand) =>
       `The gauge collected ${grand} in all ${n + 1} days. How many inches fell on day ${n + 1}?`,
     total: (n) => `How many inches of rain fell in all ${n} days?`,

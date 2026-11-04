@@ -172,11 +172,7 @@ function lengthOpen(
     return `Using a ruler, ${name} measured ${counted} ${place} to the ${precise} ${purpose}.`;
   return `${name} measured ${counted} ${place} to the ${precise} ${purpose}.`;
 }
-function rulerNote(d: number): string {
-  if (d === 2) return "";
-  const marks = d === 8 ? "eighths" : "quarters";
-  return ` The list uses the ruler's ${marks}, the same denominator as each mark.`;
-}
+
 function centerOpen(
   frame: number,
   name: string,
@@ -365,7 +361,7 @@ function buildSlots(
     blank: true,
   });
   return multiPartProblem(meta, seed, r, {
-    prompt: `${open} The number line has no marks yet. The lengths, in inches, are: ${listed}.${rulerNote(d)} ${questions[r(0, questions.length - 1)]}`,
+    prompt: `${open} The number line has no marks yet. The lengths, in inches, are: ${listed}. ${questions[r(0, questions.length - 1)]}`,
     layout: "table",
     label: `How many ${tale.items}?`,
     rowHeader: "Length",
@@ -546,7 +542,7 @@ function dataMatch(
   ];
   const sampleTimes = sampleCount === 1 ? "once" : `${sampleCount} times`;
   return problemOf(meta, seed, r, {
-    prompt: `${open} The lengths, in inches, are: ${listed}.${rulerNote(d)} ${questions[r(0, questions.length - 1)]} Each graph is a line plot.`,
+    prompt: `${open} The lengths, in inches, are: ${listed}. ${questions[r(0, questions.length - 1)]} Each graph is a line plot.`,
     label: "Choose the graph",
     noun: "Graph",
     correct,
@@ -882,8 +878,8 @@ function frequencyTable(
   const many = tale.many;
   const compareAsk = [
     `How many more ${many} are in the first two intervals together than in the last interval?`,
-    `How many more ${many} are in the two lowest intervals together than in the highest interval?`,
-    `How many more ${many} fall in the first two intervals together than in the last one?`,
+    `How many more ${many} do the first two intervals together hold than the last interval?`,
+    `How many more ${many} are in the first two intervals combined than in the last interval?`,
   ][r(0, 2)]!;
   const options: ChoiceOption[] = [
     { label: count(diff, noun), correct: true as const },
@@ -904,7 +900,7 @@ function frequencyTable(
   const surface = choiceSurface(r, {
     prompt: `${tale.lead(who)} The intervals show ${tale.measured}. ${rows} Each interval includes both of its end values. ${compareAsk}`,
     options,
-    hint: `Add the counts of the first two intervals, then subtract the count of the last interval. Each interval includes both end values, so the first interval runs from 0 to ${width - 1}.`,
+    hint: `The first interval, from 0 to ${width - 1}, has ${count(counts[0]!, noun, many)}. Add the next interval's count to that, then subtract the last interval.`,
     explanation: [
       `The first interval ends at ${width - 1}, so both end values belong in it. The count is how many ${many} fall in that interval, not the size of the interval.`,
       `The first two intervals together hold ${count(firstTwo, noun, many)}.`,
@@ -953,8 +949,7 @@ function scaledBarGrade4(
     `How many more ${context.unit} are in ${a} and ${b} together than in ${c}?`,
     `How many fewer ${context.unit} does ${c} have than ${a} and ${b} together?`,
     `${a} and ${b} together have how many more ${context.unit} than ${c}?`,
-    `What is the difference between ${a} and ${b} together and ${c}, in ${context.unit}?`,
-  ][r(0, 3)]!;
+  ][r(0, 2)]!;
   const scaleLine = [
     `Each line on the side counts as ${step} on this graph.`,
     `Each mark on the side stands for ${step}.`,

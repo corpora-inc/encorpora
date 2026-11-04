@@ -172,7 +172,7 @@ export const frequencyTales = [
     many: "students",
     measured: "stickers earned in the reading challenge",
     each: "how many stickers one student earned",
-    widths: [5, 10, 25, 50],
+    widths: [5, 10, 25],
     lead: (name: string) =>
       `${name} counted the stickers each student earned in the reading challenge.`,
   },
@@ -283,7 +283,7 @@ export const barTales = [
     unit: "cans",
     one: "can",
     steps: [50, 100],
-    lead: "Four towns collected cans for recycling week.",
+    lead: "Four neighborhoods collected cans for recycling week.",
   },
 ] as const;
 

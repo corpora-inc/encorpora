@@ -158,9 +158,11 @@ test("dot-plot-arithmetic: the keyed answer follows from the plotted dots", () =
     );
     const id = p.variant!.id;
     const hundredths = id.startsWith("hundredths-");
-    const ask = hundredths
-      ? id.slice("hundredths-".length)
-      : id.replace(/^(whole|mixed)-/, "");
+    const ask = (
+      hundredths
+        ? id.slice("hundredths-".length)
+        : id.replace(/^(whole|mixed)-/, "")
+    ).replace(/-cast$/, "");
     const sum = values.reduce((s, v) => add(s, v), q(0));
     const sorted = [...values].sort((a, b) => a[0] * b[1] - b[0] * a[1]);
     const prompt = p.public.prompt;
@@ -169,12 +171,15 @@ test("dot-plot-arithmetic: the keyed answer follows from the plotted dots", () =
     else if (ask === "range") expected = sub(sorted.at(-1)!, sorted[0]!);
     else {
       const stated = prompt.match(
-        /(?:\$([^$]+)\$|(\d+(?:\.\d+)?)) (?:miles|points|feet|pounds)/,
+        /(?:\$([^$]+)\$|(\d+(?:\.\d+)?)) (?:miles|points|feet|pounds|inches|books|baskets|fish|laps|tickets)/,
       )!;
       const grand = fraction(stated[1] ? `$${stated[1]}$` : stated[2]!);
       expected = sub(grand, sum);
     }
-    const text = label(p).replace(/ (miles?|points?|feet|foot|pounds?)$/, "");
+    const text = label(p).replace(
+      / (miles?|points?|feet|foot|pounds?|inches?|inch|books?|baskets?|fish|laps?|tickets?)$/,
+      "",
+    );
     assert.ok(eq(fraction(text), expected), `${p.public.seed} ${ask}`);
     // Counting multiplicity matters in every plot.
     assert.ok(new Set(values.map((v) => v.join("/"))).size < values.length);

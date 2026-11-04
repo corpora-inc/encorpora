@@ -396,11 +396,8 @@ test("frequency-table-grade4 builds intervals and compares them", () => {
       interprets++;
       assert.match(prompt, /How many more/);
       assert.doesNotMatch(prompt, /The numbers are:/);
-      assert.match(
-        problem.hint,
-        /^Add the counts of the first two intervals, then subtract the count of the last interval/,
-      );
-      assert.match(problem.hint, /both end values/);
+      assert.match(problem.hint, /first interval/);
+      assert.match(problem.hint, /subtract the last interval/);
       const rows = [...prompt.matchAll(row)].map((m) => Number(m[3]));
       assert.equal(rows.length, 4);
       const diff = rows[0]! + rows[1]! - rows[3]!;
