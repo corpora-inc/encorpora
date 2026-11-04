@@ -246,7 +246,11 @@ test("estimates follow the stated rounding rule", () => {
       const m = /(\d+) \w+ with (\d+)/.exec(p)!;
       assert.equal(num(correct), r10(Number(m[1])) * r10(Number(m[2])));
     } else if (variant === "verdict") {
-      const m = /(\d+) × (\d+) = ([\d,]+)\./.exec(p)!;
+      const m =
+        /(\d+) × (\d+) = ([\d,]+)\./.exec(p) ??
+        /(\d+) [a-z]+ with (\d+) [a-z]+ in each [a-z]+ and counted ([\d,]+)/.exec(
+          p,
+        )!;
       const exact = Number(m[1]) * Number(m[2]);
       const claim = num(m[3]!);
       const est = r10(Number(m[1])) * r10(Number(m[2]));

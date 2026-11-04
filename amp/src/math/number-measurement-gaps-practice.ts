@@ -1027,25 +1027,11 @@ function dressedTwoStep(
     cards: `Maya sorts ${t1} piles with ${n1} cards and ${t2} packs with ${n2} sleeves`,
     travel: `The crew loads ${t1} crates with ${n1} bottles and ${t2} coolers with ${n2} snacks`,
     science: `The lab lines up ${t1} trays with ${n1} slides and ${t2} boxes with ${n2} samples`,
-    music: `The band sets ${t1} stands with ${n1} sheets and ${t2} folders with ${n2} parts`,
+    music: `The band sets ${t1} stands with ${n1} sheets and ${t2} folders with ${n2} pages`,
     school: `A teacher fills ${t1} cups with ${n1} pencils and ${t2} boxes with ${n2} erasers`,
   };
   return `${line[telling]}. Round the number in each group to the nearest ten. Which is the best estimate of the total?`;
 }
-
-const VERDICT_WHO: Record<string, string> = {
-  sports: "Jamal",
-  pets: "Lena",
-  cooking: "Rosa",
-  garden: "Noah",
-  reading: "Sofia",
-  saving: "Elena",
-  cards: "Ravi",
-  travel: "Chloe",
-  science: "Diego",
-  music: "Jonah",
-  school: "Leila",
-};
 
 /** Estimate how many more one decimal quantity is than another by rounding
  * each to the nearest whole number. */
@@ -1053,7 +1039,7 @@ function decimalDifferenceEstimate(r: Random): Built {
   const story = pick(r, [
     ["package", "grams", "weighs"],
     ["ribbon", "centimeters", "is"],
-    ["trail", "meters", "is"],
+    ["bottle", "milliliters", "holds"],
   ] as const);
   const tenths = () => pick(r, [1, 2, 3, 4, 6, 7, 8, 9]);
   const whole = r(300, 980);
@@ -1169,21 +1155,34 @@ function estimateReasonableness(
     const yes = `Reasonable. Rounding gives ${ra} × ${rb} = ${commas(est)}, which is close to ${commas(claim)}.`;
     const no = `Not reasonable. Rounding gives ${ra} × ${rb} = ${commas(est)}, so the answer should be near ${commas(est)}, not ${commas(claim)}.`;
     const who = told(axes);
+    const counted: Record<string, string> = {
+      sports: `The coach set out ${a} bins with ${b} balls in each bin and counted ${commas(claim)} balls.`,
+      pets: `The shelter filled ${a} bowls with ${b} treats in each bowl and counted ${commas(claim)} treats.`,
+      cooking: `The baker filled ${a} tins with ${b} muffins in each tin and counted ${commas(claim)} muffins.`,
+      garden: `The club planted ${a} rows with ${b} seedlings in each row and counted ${commas(claim)} seedlings.`,
+      reading: `The library packed ${a} bins with ${b} books in each bin and counted ${commas(claim)} books.`,
+      saving: `The class stacked ${a} packs with ${b} tickets in each pack and counted ${commas(claim)} tickets.`,
+      cards: `Maya sorted ${a} piles with ${b} cards in each pile and counted ${commas(claim)} cards.`,
+      travel: `The crew loaded ${a} crates with ${b} bottles in each crate and counted ${commas(claim)} bottles.`,
+      science: `The lab lined up ${a} trays with ${b} slides in each tray and counted ${commas(claim)} slides.`,
+      music: `The band set out ${a} stands with ${b} sheets in each stand and counted ${commas(claim)} sheets.`,
+      school: `The teacher filled ${a} boxes with ${b} pencils in each box and counted ${commas(claim)} pencils.`,
+    };
     return {
       variant,
       prompt: who
-        ? `${VERDICT_WHO[who] ?? "Kai"} calculated ${a} × ${b} = ${commas(claim)}. Use rounding to the nearest ten to decide whether this answer is reasonable. Which statement is correct?`
+        ? `${counted[who]} Use rounding to the nearest ten to decide whether this answer is reasonable. Which statement is correct?`
         : `Kai calculated ${a} × ${b} = ${commas(claim)}. Use rounding to the nearest ten to decide whether this answer is reasonable. Which statement is correct?`,
       answer: "",
       hint: who
-        ? `Round ${a} and ${b} to the nearest ten, multiply the rounded numbers, and compare that estimate with ${VERDICT_WHO[who] ?? "Kai"}'s answer. An estimate cannot show the exact digits, but it can show whether the size is right.`
+        ? `Round ${a} and ${b} to the nearest ten, multiply the rounded numbers, and compare that estimate with the counted total. An estimate cannot show the exact digits, but it can show whether the size is right.`
         : `Round ${a} and ${b} to the nearest ten, multiply the rounded numbers, and compare that estimate with Kai's answer. An estimate cannot show the exact digits, but it can show whether the size is right.`,
       explanation: [
         `${a} rounds to ${ra} and ${b} rounds to ${rb}.`,
         `${ra} × ${rb} = ${commas(est)}.`,
         reasonable
-          ? `${VERDICT_WHO[who ?? ""] ?? "Kai"}'s answer ${commas(claim)} is close to ${commas(est)}, so it is reasonable.`
-          : `${VERDICT_WHO[who ?? ""] ?? "Kai"}'s answer ${commas(claim)} is far from ${commas(est)}, so it is not reasonable.`,
+          ? `${who ? "That count" : "Kai's answer"} ${commas(claim)} is close to ${commas(est)}, so it is reasonable.`
+          : `${who ? "That count" : "Kai's answer"} ${commas(claim)} is far from ${commas(est)}, so it is not reasonable.`,
       ],
       choices: choicesFrom(r, reasonable ? yes : no, [
         {
@@ -1238,22 +1237,27 @@ function estimateReasonableness(
       choices: choicesFrom(r, commas(est), [
         {
           label: commas(e1),
-          feedback:
-            "That is only the morning rolls. The afternoon rolls are part of the total too.",
+          feedback: stepScene
+            ? "That is only the first group. The second group is part of the total too."
+            : "That is only the morning rolls. The afternoon rolls are part of the total too.",
         },
         {
           label: commas(e1 + t2 + round10(n2)),
-          feedback: `The afternoon rolls are ${t2} trays of ${round10(n2)}, so multiply before adding.`,
+          feedback: stepScene
+            ? `The second group is ${t2} groups of ${round10(n2)}, so multiply before adding.`
+            : `The afternoon rolls are ${t2} trays of ${round10(n2)}, so multiply before adding.`,
         },
         {
           label: commas((t1 + t2) * (round10(n1) + round10(n2))),
-          feedback:
-            "Multiply each time period's trays by its own rolls per tray, then add. Do not add the factors first.",
+          feedback: stepScene
+            ? "Multiply each group's count by its own size, then add. Do not add the factors first."
+            : "Multiply each time period's trays by its own rolls per tray, then add. Do not add the factors first.",
         },
         {
           label: commas(round10(n1) + round10(n2)),
-          feedback:
-            "That adds the rolls on one tray from each period but ignores how many trays there are.",
+          feedback: stepScene
+            ? "That adds the size of one group from each set but ignores how many groups there are."
+            : "That adds the rolls on one tray from each period but ignores how many trays there are.",
         },
       ]),
     };
