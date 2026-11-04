@@ -7,7 +7,8 @@ import type {
 import { formatWhole } from "./comparison-practice";
 import { act, lessonStep, numberLine, scene, step } from "./scene/author";
 import type { Element, Scene } from "./scene/spec";
-import { defineAxis } from "./variation/axes";
+import { countContext } from "./story-kit/place-value";
+import { defineAxis, surfaceStream } from "./variation/axes";
 import { generateWithAxes, omitLegacyVariant } from "./variation/legacy";
 
 /** A window of the hundred chart as a scene: numbered squares, one left
@@ -233,26 +234,119 @@ export const roundLargeAxes = {
     ["as-drawn", "ten", "hundred-thousand", "within-10000"] as const,
     { legacy: "as-drawn", weights: [6, 2, 2, 2] },
   ),
+  /** Wording only. `bare` is the stored sentence. */
+  surface: defineAxis("surface", ["bare", "ask", "closest", "story"] as const, {
+    legacy: "bare",
+    weights: [2, 3, 7, 8],
+    silentLegacy: true,
+  }),
 } as const;
 type RoundPlace = (typeof roundLargeAxes.place.values)[number];
+type RoundSurface = (typeof roundLargeAxes.surface.values)[number];
+
+/** Sentence frame for `digit-value-ratio`. `bare` is the stored sentence. */
+export const digitRatioAxes = {
+  surface: defineAxis(
+    "surface",
+    ["bare", "ask", "places", "look", "story"] as const,
+    { legacy: "bare", weights: [1, 4, 4, 4, 6], silentLegacy: true },
+  ),
+} as const;
+type RatioSurface = (typeof digitRatioAxes.surface.values)[number];
+
+const placePlural: Record<string, string> = {
+  ten: "tens",
+  hundred: "hundreds",
+  thousand: "thousands",
+  "ten thousand": "ten thousands",
+  "hundred thousand": "hundred thousands",
+};
+
+/** A multiple of `unit` is already rounded. Nudge it on a new surface only,
+ * using the surface stream so the content draw stays put. */
+function offMultiple(
+  templateId: string,
+  seed: string,
+  n: number,
+  unit: number,
+): number {
+  if (n % unit !== 0) return n;
+  const r = surfaceStream(templateId, seed);
+  const offset = r(1, Math.min(9, unit - 1));
+  const down = n - offset;
+  if (down >= 1000 && String(down).length === String(n).length) return down;
+  const up = n + offset;
+  if (up <= 1_000_000 && String(up).length === String(n).length) return up;
+  return down >= 1000 ? down : up;
+}
+
+function roundWording(
+  templateId: string,
+  seed: string,
+  surface: RoundSurface,
+  n: number,
+  unit: number,
+  name: string,
+  lookPlace: string,
+): { n: number; prompt: string; hint: string } {
+  const value = surface === "bare" ? n : offMultiple(templateId, seed, n, unit);
+  const shown = formatWhole(value);
+  const digit = Math.floor(value / (unit / 10)) % 10;
+  const bareHint = `In ${shown}, look at the ${lookPlace} digit, ${digit}: 5 or more rounds up; less rounds down.`;
+  if (surface === "bare")
+    return {
+      n: value,
+      prompt: `Round ${shown} to the nearest ${name}.`,
+      hint: bareHint,
+    };
+  const hint =
+    digit === 5
+      ? `In ${shown}, the ${lookPlace} digit is 5, halfway to the next ${name}. A halfway number rounds up.`
+      : `In ${shown}, look at the ${lookPlace} digit, ${digit}. A digit of 5 or more rounds up. A smaller digit rounds down.`;
+  if (surface === "ask")
+    return {
+      n: value,
+      prompt: `What is ${shown} rounded to the nearest ${name}?`,
+      hint,
+    };
+  if (surface === "closest")
+    return {
+      n: value,
+      prompt: `Which whole number of ${placePlural[name]} is closest to ${shown}?`,
+      hint,
+    };
+  const r = surfaceStream(templateId, `${seed}:story`);
+  return {
+    n: value,
+    prompt: `${countContext(shown, value, r, name === "ten")}. Round that number to the nearest ${name}.`,
+    hint,
+  };
+}
 
 export function generateNumberSenseProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
-  if (templateId !== "round-large")
-    return numberSenseProblem(templateId, seed, "as-drawn");
-  return omitLegacyVariant(
-    generateWithAxes(templateId, seed, roundLargeAxes, (values) =>
-      numberSenseProblem(templateId, seed, values.place),
-    ),
-  );
+  if (templateId === "round-large")
+    return omitLegacyVariant(
+      generateWithAxes(templateId, seed, roundLargeAxes, (values) =>
+        numberSenseProblem(templateId, seed, values.place, values.surface),
+      ),
+    );
+  if (templateId === "digit-value-ratio")
+    return omitLegacyVariant(
+      generateWithAxes(templateId, seed, digitRatioAxes, (values) =>
+        numberSenseProblem(templateId, seed, "as-drawn", values.surface),
+      ),
+    );
+  return numberSenseProblem(templateId, seed, "as-drawn", "bare");
 }
 
 function numberSenseProblem(
   templateId: string,
   seed: string,
   placeAxis: RoundPlace,
+  surface: RoundSurface | RatioSurface = "bare",
 ): GeneratedProblem {
   const meta = numberSenseTemplates.find((t) => t.id === templateId);
   if (!meta) throw new Error(`Unknown number-sense template: ${templateId}`);
@@ -543,10 +637,19 @@ function numberSenseProblem(
                 : r(1000, 9999);
         const bounded = Math.min(10_000, Math.max(1000, n));
         const name = singularPlace[place]!;
-        prompt = `Round ${formatWhole(bounded)} to the nearest ${name}.`;
-        answer = String(roundTo(bounded, unit));
-        hint = `In ${formatWhole(bounded)}, look at the ${placeName[place - 1]} digit, ${Math.floor(bounded / 10 ** (place - 1)) % 10}: 5 or more rounds up; less rounds down.`;
-        explanation = roundingSteps(bounded, unit, name);
+        const worded = roundWording(
+          templateId,
+          seed,
+          surface as RoundSurface,
+          bounded,
+          unit,
+          name,
+          placeName[place - 1]!,
+        );
+        prompt = worded.prompt;
+        answer = String(roundTo(worded.n, unit));
+        hint = worded.hint;
+        explanation = roundingSteps(worded.n, unit, name);
         break;
       }
       const place =
@@ -575,10 +678,19 @@ function numberSenseProblem(
           r(unit / 2, unit - 1);
       else n = top + r(0, unit - 1);
       const name = singularPlace[place]!;
-      prompt = `Round ${formatWhole(n)} to the nearest ${name}.`;
-      answer = String(roundTo(n, unit));
-      hint = `In ${formatWhole(n)}, look at the ${placeName[place - 1]} digit, ${Math.floor(n / 10 ** (place - 1)) % 10}: 5 or more rounds up; less rounds down.`;
-      explanation = roundingSteps(n, unit, name);
+      const worded = roundWording(
+        templateId,
+        seed,
+        surface as RoundSurface,
+        n,
+        unit,
+        name,
+        placeName[place - 1]!,
+      );
+      prompt = worded.prompt;
+      answer = String(roundTo(worded.n, unit));
+      hint = worded.hint;
+      explanation = roundingSteps(worded.n, unit, name);
       break;
     }
     case "multiply-power-of-ten": {
@@ -652,19 +764,42 @@ function numberSenseProblem(
         }
       }
       const n = Number(digits.join(""));
-      prompt = `In ${formatWhole(n)}, the first ${digit} is worth how many times as much as the second ${digit}?`;
+      const shown = formatWhole(n);
       const ratio = 10 ** (high - low);
+      const frame = surface as RatioSurface;
+      const steps = Array(high - low)
+        .fill("10")
+        .join(" × ");
+      if (frame === "bare")
+        prompt = `In ${shown}, the first ${digit} is worth how many times as much as the second ${digit}?`;
+      else if (frame === "ask")
+        prompt = `Compare the two digits that are ${digit} in ${shown}. How many times as much is the first ${digit} worth?`;
+      else if (frame === "places")
+        prompt = `In ${shown}, the ${digit} in the ${placeName[high]} place is worth how many times as much as the ${digit} in the ${placeName[low]} place?`;
+      else if (frame === "look")
+        prompt = `Look at ${shown}. The first ${digit} is worth how many times the second ${digit}?`;
+      else {
+        const r = surfaceStream(templateId, `${seed}:story`);
+        const ctx = countContext(shown, n, r);
+        const endings = [
+          `The first ${digit} is worth how many times as much as the second ${digit}?`,
+          `How many times as much is the first ${digit} worth, compared with the second?`,
+          `Compare the two digits that are ${digit}. How many times as much is the left-hand ${digit} worth?`,
+        ];
+        prompt = `${ctx}. ${endings[r(0, endings.length - 1)]}`;
+      }
       answer = String(ratio);
-      hint = `Name the place of each ${digit} in ${formatWhole(n)}. Each place is worth ten times the place to its right.`;
+      hint =
+        frame === "bare"
+          ? `Name the place of each ${digit} in ${shown}. Each place is worth ten times the place to its right.`
+          : `Name the place of each ${digit} in ${shown}. Count the steps from the right-hand ${digit} to the left-hand ${digit}. Each step multiplies by 10.`;
       explanation = [
         `The first ${digit} is in the ${placeName[high]} place: ${formatWhole(digit * 10 ** high)}. The second is in the ${placeName[low]} place: ${formatWhole(digit * 10 ** low)}.`,
         high - low === 1
           ? "The places are next to each other, so the first is worth 10 times as much."
-          : `The places are ${high - low} apart, and each place is worth 10 times the one to its right. So the first is worth ${Array(
-              high - low,
-            )
-              .fill("10")
-              .join(" × ")} = ${formatWhole(ratio)} times as much.`,
+          : frame === "bare"
+            ? `The places are ${high - low} apart, and each place is worth 10 times the one to its right. So the first is worth ${steps} = ${formatWhole(ratio)} times as much.`
+            : `From the ${placeName[low]} place to the ${placeName[high]} place is ${high - low} steps. Each step to the left multiplies by 10, so ${steps} = ${formatWhole(ratio)}.`,
         `Check: ${formatWhole(digit * 10 ** low)} × ${formatWhole(ratio)} = ${formatWhole(digit * 10 ** high)}. The first ${digit} is worth ${formatWhole(ratio)} times as much as the second.`,
       ];
       break;

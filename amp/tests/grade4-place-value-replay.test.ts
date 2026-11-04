@@ -29,12 +29,18 @@ const onLegacy = (
   id: string,
   problem: ReturnType<typeof generateProblem>,
 ): boolean => {
-  if (id === "digit-value-ratio") return true;
+  if (id === "digit-value-ratio") return problem.variant == null;
   if (id === "round-large" || id === "multidigit-digit-value")
     return problem.variant == null;
   if (id === "order-whole-numbers-slots")
-    return problem.variant?.axes?.count == null;
-  return problem.variant?.axes?.magnitude == null;
+    return (
+      problem.variant?.axes?.count == null &&
+      problem.variant?.axes?.setting == null
+    );
+  return (
+    problem.variant?.axes?.magnitude == null &&
+    problem.variant?.axes?.surface == null
+  );
 };
 
 const digestOf = (
@@ -75,7 +81,18 @@ test("stored place-value instances replay byte-identical on the legacy axis valu
       assert.equal(digestOf(id, now), row.digest, `${id} ${seed}`);
     });
     assert.ok(
-      legacy >= (id === "digit-value-ratio" ? 200 : 40),
+      // A new wording axis shares the seed with an older axis, so the
+      // fully stored surface (every axis legacy) is a smaller slice.
+      // Each of those seeds is still checked byte for byte above.
+      legacy >=
+        ({
+          "round-large": 15,
+          "digit-value-ratio": 8,
+          "order-whole-numbers-slots": 2,
+          "compare-symbol-blanks": 8,
+          "expanded-whole-slots": 8,
+          "multidigit-digit-value": 8,
+        }[id] ?? 40),
       `${id} reaches its stored surface (${legacy})`,
     );
   }
