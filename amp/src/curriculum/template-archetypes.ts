@@ -487,6 +487,7 @@ const legacyTemplateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "prism-volume-edges": ["measure.volume"],
   "probability-missing-count": ["probability.inverse"],
   "product-of-powers-exponent": ["expression.exponent-rules"],
+  "profit-cost-breakeven": ["money.budget", "finance.fixed-variable-expense"],
   "proportional-graph": ["function.graph-context"],
   "proportional-match-table": [
     "function.proportional-identify",

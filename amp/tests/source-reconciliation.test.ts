@@ -8,6 +8,21 @@ import {
 } from "../src/curriculum/texas-grade5";
 import { floridaBands, floridaInventories } from "../src/curriculum/florida";
 import {
+  georgiaG4ExpectedIds,
+  georgiaG4Rows,
+} from "../src/curriculum/georgia/g4";
+import { georgiaInventories } from "../src/curriculum/georgia";
+import {
+  arkansasG4ExpectedIds,
+  arkansasG4Rows,
+} from "../src/curriculum/arkansas/g4";
+import { arkansasInventories } from "../src/curriculum/arkansas";
+import {
+  arizonaG4ExpectedIds,
+  arizonaG4Rows,
+} from "../src/curriculum/arizona/g4";
+import { arizonaInventories } from "../src/curriculum/arizona";
+import {
   reconcileSources,
   type SourceInventory,
 } from "../src/curriculum/source-reconciliation";
@@ -54,8 +69,8 @@ test("Texas identifier inventory preserves unreviewed components and reuses exis
     report.targets.find((t) => t.id === "US.TX")!.sourceInventory,
     "partial",
   );
-  assert.equal(report.summary.pendingTargetInventories, 53);
-  assert.equal(report.summary.partialTargetInventories, 2);
+  assert.equal(report.summary.pendingTargetInventories, 50);
+  assert.equal(report.summary.partialTargetInventories, 5);
   assert.equal(report.summary.incompleteTargetInventories, 55);
   assert.equal(report.targetComplete, false);
   assert.match(renderGapLedger(report), /stem-and-leaf-interpretation/);
@@ -270,8 +285,8 @@ test("Texas K-8 and high-school inventories report honest aggregate counts", () 
   });
   assert.deepEqual(band(texasGrades35Inventories), {
     requirements: 140,
-    relatedPractice: 94,
-    missingOnly: 17,
+    relatedPractice: 100,
+    missingOnly: 11,
     unreviewed: 29,
   });
   assert.deepEqual(band(texasGrades68Inventories), {
@@ -389,4 +404,94 @@ test("invalid Texas task links cannot establish reconciliation", () => {
     i.expectedRequirementIds = i.expectedRequirementIds.slice(1);
   });
   assert.equal(audit(base).valid, true);
+});
+
+test("Georgia, Arkansas and Arizona grade-4 inventories are exact and never claim coverage", () => {
+  const report = buildGapLedger();
+  assert.equal(report.valid, true, report.errors.join("\n"));
+  const gradeOf = new Map(skills.map((s) => [s.id, s.gradeBand]));
+  const cases = [
+    {
+      targetId: "US.GA",
+      inventories: georgiaInventories,
+      expectedIds: georgiaG4ExpectedIds,
+      rows: georgiaG4Rows,
+      counts: [31, 30, 0, 0, 1],
+      sha256:
+        "3f131db0f244ae74b10be5bb7d4e731844164599dbd3b042bb8aad4fc8ffe3fc",
+    },
+    {
+      targetId: "US.AR",
+      inventories: arkansasInventories,
+      expectedIds: arkansasG4ExpectedIds,
+      rows: arkansasG4Rows,
+      counts: [34, 34, 0, 0, 0],
+      sha256:
+        "b6dae5fb0fcf0fafafe3eebb940f5b91a9b66550fe4000c0ad00b9475bcdcc3f",
+    },
+    {
+      targetId: "US.AZ",
+      inventories: arizonaInventories,
+      expectedIds: arizonaG4ExpectedIds,
+      rows: arizonaG4Rows,
+      counts: [37, 29, 0, 0, 8],
+      sha256:
+        "7c77dd1c0fdac5382a5d4a84166b115f0e6f515e8ddb73cc11208f2b2713b6f1",
+    },
+  ] as const;
+  for (const item of cases) {
+    assert.equal(item.inventories.length, 1, item.targetId);
+    const inventory = item.inventories[0]!;
+    assert.equal(inventory.targetId, item.targetId);
+    assert.equal(inventory.sources[0]!.sha256, item.sha256);
+    assert.equal(inventory.sources[0]!.retrievedAt, "2026-11-04");
+    assert.match(inventory.sources[0]!.url, /^https:\/\//);
+    const slice = report.sourceReconciliation.slices.find(
+      (s) => s.id === inventory.id,
+    )!;
+    const [n, partial, missing, unreviewed, cross] = item.counts;
+    assert.deepEqual(
+      slice.requirements.map((r) => r.id),
+      [...item.expectedIds],
+      item.targetId,
+    );
+    assert.equal(slice.requirements.length, n);
+    assert.equal(slice.summary.partiallyReconciled, partial);
+    assert.equal(slice.summary.missing, missing);
+    assert.equal(slice.summary.unreviewed, unreviewed);
+    assert.equal(slice.summary.crossCutting, cross);
+    assert.equal(slice.identifierInventoryComplete, true);
+    assert.equal(slice.statewideComplete, false);
+    assert.equal(slice.componentReconciliationComplete, false);
+    assert.equal(slice.valid, true);
+    assert.ok(slice.requirements.every((r) => !r.coverageComplete));
+    assert.ok(
+      slice.requirements
+        .filter((r) => r.reconciliation === "cross-cutting")
+        .every((r) => r.taskIds.length === 0 && r.crossCutting),
+    );
+    assert.ok(item.rows.every((r) => r[2].length <= 400));
+    assert.equal(
+      report.targets.find((t) => t.id === item.targetId)!.sourceInventory,
+      "partial",
+    );
+    for (const task of slice.tasks) {
+      const otherGrade = task.skillIds.some((id) => gradeOf.get(id) !== "4");
+      if (otherGrade)
+        assert.match(
+          task.limitations,
+          /not served as grade 4 practice/,
+          task.id,
+        );
+    }
+    const linked = new Set(slice.tasks.flatMap((t) => t.templateIds));
+    for (const id of linked)
+      for (const seed of ["state-g4-a", "state-g4-b"]) {
+        const problem = generateProblem(id, seed);
+        assert.ok(problem.public.prompt.trim().length > 0, `${id} ${seed}`);
+        assert.ok(problem.answer.trim().length > 0, `${id} ${seed}`);
+      }
+  }
+  assert.equal(report.summary.pendingTargetInventories, 50);
+  assert.equal(report.summary.partialTargetInventories, 5);
 });
