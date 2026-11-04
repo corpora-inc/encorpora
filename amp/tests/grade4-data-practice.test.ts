@@ -494,7 +494,8 @@ test("scaled-bar-grade4 is a two-step reading", () => {
 
 test("hundredths dot plots recompute from the marks", () => {
   const asks = ["total", "range", "missing-value"] as const;
-  const amount = /^(\d+)(?:\.(\d{2}))? (mile|miles|foot|feet|pound|pounds)$/;
+  const amount =
+    /^(\d+)(?:\.(\d{2}))? (mile|miles|foot|feet|pound|pounds|inch|inches|book|books|basket|baskets|fish|lap|laps|ticket|tickets)$/;
   const unitsOf = (label: string) => {
     const match = label.match(amount);
     assert.ok(match, label);
@@ -514,7 +515,10 @@ test("hundredths dot plots recompute from the marks", () => {
       const element = dotOf(problem);
       assert.equal(element.denominator, 100);
       assert.equal(element.decimalPlaces, 2);
-      assert.ok(["miles", "feet", "pounds"].includes(element.unit ?? ""));
+      assert.ok(
+        ["miles", "feet", "pounds", "inches"].includes(element.unit ?? ""),
+        element.unit,
+      );
       const { ticks } = ticksFrom(element);
       assert.ok(ticks.length >= 3);
       assert.ok(new Set(ticks).size >= 3);
@@ -524,21 +528,20 @@ test("hundredths dot plots recompute from the marks", () => {
       const label = choiceOf(problem).keyed.label;
       const prompt = problem.public.prompt;
       if (ask === "total") {
-        assert.match(
-          prompt,
-          /How many miles did Maya walk in all \d+ days\?|What is the total length of all \d+ ribbons, in feet\?|What is the total weight of all \d+ bags, in pounds\?/,
-        );
+        assert.match(prompt, /in all \d+|total (?:length|weight|height)/);
         assert.equal(unitsOf(label), sum);
       } else if (ask === "range") {
         assert.match(prompt, /difference between the greatest and the least/);
         assert.equal(unitsOf(label), Math.max(...ticks) - Math.min(...ticks));
       } else {
+        const unitWord = "mile|miles|foot|feet|pound|pounds|inch|inches";
         const grand =
           prompt.match(
-            /Maya walked (\d+(?:\.\d{2})? miles?) in all \d+ days/,
+            new RegExp(`(\\d+(?:\\.\\d{2})? (?:${unitWord})) in all`),
           ) ??
-          prompt.match(/total length of (\d+(?:\.\d{2})? (?:foot|feet))\./) ??
-          prompt.match(/bags weigh (\d+(?:\.\d{2})? pounds?) together/);
+          prompt.match(/total length of (\d+(?:\.\d{2})? (?:foot|feet))/) ??
+          prompt.match(/weigh (\d+(?:\.\d{2})? pounds?) together/) ??
+          prompt.match(/total height of (\d+(?:\.\d{2})? inches)/);
         assert.ok(grand, prompt);
         assert.equal(unitsOf(label), unitsOf(grand![1]!) - sum);
       }
@@ -576,6 +579,7 @@ test("legacy dot-plot and fourths-eighths line plots replay", () => {
   for (const row of fixture["dot-plot-arithmetic"]!) {
     const problem = dotPlotArithmeticFamily.generate(row.seed, {
       "data-domain": "current",
+      story: "classic",
     }).problem;
     assert.deepEqual(content(problem), {
       prompt: row.prompt,
