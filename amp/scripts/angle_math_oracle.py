@@ -139,7 +139,8 @@ def solve_angle(public):
         # Count the shaded parts, then use 360 degrees in a full turn.
         return round(round(parts) * 360 / len(spokes))
     if family == 'angle-classify':
-        require(prompt == 'What kind of angle is this?', 'Classify wording')
+        require('what kind of angle' in prompt.lower(), 'Classify wording')
+        require(re.search(r'\d', prompt) is None, 'The prompt does not state a measure')
         (g,) = [e for e in el.values() if e['type'] == 'angle']
         clockwise = any(m.get('clockwise') for m in (g.get('marks') or []))
         ccw = span(*g['rays'])

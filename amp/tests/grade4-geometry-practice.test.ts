@@ -729,17 +729,26 @@ function angleKind(problem: GeneratedProblem): string {
   const angle = one(sceneOf(problem), "angle");
   const clockwise = (angle.marks ?? []).some((mark) => mark.clockwise);
   const ccw = span(angle.rays[0]!, angle.rays[1]!);
+  const setting = problem.variant?.axes?.setting;
   if (clockwise) {
     const measure = (360 - ccw) % 360;
     assert.ok(measure > 195 && measure < 345);
     assert.ok(Math.abs(measure - Math.round(measure)) < 1e-6);
     assert.equal(Math.round(measure) % 5, 0);
-    assert.equal(problem.variant?.id, "reflex");
     assert.equal(problem.variant?.axes?.reflex, "reflex");
+    assert.equal(
+      problem.variant?.id,
+      setting == null ? "reflex" : "reflex-story",
+    );
     return "reflex";
   }
   assert.ok(ccw <= 180 + 1e-6);
-  assert.equal(problem.variant, undefined);
+  if (setting == null) assert.equal(problem.variant, undefined);
+  else {
+    assert.equal(setting, "story");
+    assert.equal(problem.variant?.id, "story");
+    assert.equal(problem.variant?.axes?.reflex, undefined);
+  }
   const kind =
     Math.abs(ccw - 90) < 1e-6
       ? "right"
@@ -760,10 +769,8 @@ test("reflex angles keep the ordinary angle-classify surface byte for byte", () 
   const kinds = new Set<string>();
   for (let i = 0; i < 30; i++) {
     const seed = `legacy-${i}`;
-    const ordinary = isLegacy(
-      angleClassifyAxes,
-      chooseAxes("angle-classify", seed, angleClassifyAxes),
-    );
+    const axes = chooseAxes("angle-classify", seed, angleClassifyAxes);
+    const ordinary = axes.reflex === "ordinary" && axes.setting === "bare";
     const problem = generateProblem("angle-classify", seed);
     const digest = hashOf(problem);
     const kind = angleKind(problem);
@@ -776,20 +783,17 @@ test("reflex angles keep the ordinary angle-classify surface byte for byte", () 
     } else {
       changed++;
       assert.notEqual(digest, ANGLE_LEGACY[i], seed);
-      assert.equal(kind, "reflex");
+      if (axes.reflex === "reflex") assert.equal(kind, "reflex");
+      else assert.notEqual(kind, "reflex");
     }
   }
   for (let i = 30; changed === 0 && i < 200; i++) {
     const seed = `legacy-${i}`;
-    if (
-      isLegacy(
-        angleClassifyAxes,
-        chooseAxes("angle-classify", seed, angleClassifyAxes),
-      )
-    )
-      continue;
+    const axes = chooseAxes("angle-classify", seed, angleClassifyAxes);
+    if (axes.reflex === "ordinary" && axes.setting === "bare") continue;
     const problem = generateProblem("angle-classify", seed);
-    assert.equal(angleKind(problem), "reflex");
+    if (axes.reflex === "reflex") assert.equal(angleKind(problem), "reflex");
+    else assert.notEqual(angleKind(problem), "reflex");
     changed++;
   }
   for (let i = 0; i < SEEDS; i++) {

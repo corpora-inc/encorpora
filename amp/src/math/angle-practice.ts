@@ -11,6 +11,7 @@ import { angle, protractor, scene } from "./scene/author.js";
 import type { Element } from "./scene/spec.js";
 import { pick, random, shuffle, type Rand } from "./shape-practice.js";
 import { chooseAxes, defineAxis } from "./variation/axes.js";
+import { classifyPrompt } from "./story-kit/geometry.js";
 
 const definitions: [string, string, string, string, boolean][] = [
   [
@@ -77,13 +78,30 @@ const definitions: [string, string, string, string, boolean][] = [
     true,
   ],
 ];
-/** Ordinary keeps the pre-axis drawing. Reflex is the long arc, past a straight line. */
+/** Ordinary keeps the pre-axis drawing. Reflex is the long arc, past a straight line.
+ * `setting` adds a real opening around that drawing. Bare keeps the stored prompt. */
 export const angleClassifyAxes = {
   reflex: defineAxis("reflex", ["ordinary", "reflex"] as const, {
     legacy: "ordinary",
     weights: [4, 1],
   }),
+  setting: defineAxis("setting", ["bare", "story"] as const, {
+    legacy: "bare",
+    silentLegacy: true,
+    weights: [1, 16],
+  }),
 };
+
+const ANGLE_KINDS = ["acute", "right", "obtuse", "straight"] as const;
+
+function spreadAngleKind(seed: string): (typeof ANGLE_KINDS)[number] {
+  const tail = /(\d+)\D*$/.exec(seed);
+  if (tail) return ANGLE_KINDS[Number(tail[1]) % 4]!;
+  return ANGLE_KINDS[
+    createHash("sha256").update(`angle-kind:${seed}`).digest().readUInt32BE(0) %
+      4
+  ]!;
+}
 
 export const angleTemplates: readonly TemplateMetadata[] = definitions.map(
   ([id, title, skillId, description, choice]) => ({
@@ -752,10 +770,19 @@ export function generateAngleProblem(
                 },
         );
         keepOrder = true;
-        variant = { id: "reflex", axes: { reflex: "reflex" } };
+        if (axis.setting === "story") {
+          prompt = classifyPrompt(seed, true);
+          variant = {
+            id: "reflex-story",
+            axes: { reflex: "reflex", setting: "story" },
+          };
+        } else {
+          variant = { id: "reflex", axes: { reflex: "reflex" } };
+        }
         break;
       }
-      const kind = pick(r, ["acute", "right", "obtuse", "straight"] as const);
+      const kindPick = pick(r, ANGLE_KINDS);
+      const kind = axis.setting === "story" ? spreadAngleKind(seed) : kindPick;
       const m =
         kind === "acute"
           ? 5 * r(5, 14)
@@ -795,6 +822,11 @@ export function generateAngleProblem(
             },
       );
       keepOrder = true;
+      if (axis.setting === "story") {
+        prompt = classifyPrompt(seed, false);
+        hint = `Put the corner of a page on the vertex. One ray points ${heading(d0)}. Compare the other ray with that square corner.`;
+        variant = { id: "story", axes: { setting: "story" } };
+      }
       break;
     }
     case "line-ray-segment": {
