@@ -155,6 +155,6 @@ export const lineGraphReadFacetMappings: FacetMapping[] = [
     facetId: "fraction-plot-arithmetic.core",
     extent: "partial",
     rationale:
-      "Find the total, the greatest minus the least or a missing value from a dot plot of whole-number or mixed-number measurements in halves or fourths. Does not assess making a dot plot, fractions with denominators other than 2 and 4, or operations other than addition and subtraction.",
+      "Find the total, the greatest minus the least or a missing value from a dot plot of whole-number or mixed-number measurements in halves or fourths, and, less often, of measurements in hundredths. Does not assess making a dot plot, fractions with denominators other than 2 and 4 on the mixed surface, or operations other than addition and subtraction.",
   },
 ];

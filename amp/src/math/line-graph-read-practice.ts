@@ -13,6 +13,7 @@ import { graph } from "./scene/author";
 import type { Scene } from "./scene/spec";
 import { sceneSchema } from "./scene/spec";
 import type { Surface } from "./variation/compose";
+import { storyName } from "./story-kit/names";
 
 /**
  * Reading data displays as a learner meets them on tests:
@@ -48,7 +49,7 @@ export const dotPlotArithmeticTemplate: TemplateMetadata = {
   gradeBand: "3–5",
   difficultyOffset: 0,
   description:
-    "From a dot plot or line plot of whole-number or mixed-number measurements, find the total, the greatest minus the least, or a missing value when the total is given.",
+    "From a dot plot of whole-number, mixed-number, or hundredths measurements, find the total, the greatest minus the least, or a missing value when the total is given.",
   ...choiceCap,
 };
 
@@ -643,6 +644,18 @@ interface DotContext {
   missing: (count: number, grand: string) => string;
   /** The question for the total of the plotted values. */
   total: (count: number) => string;
+  /** Hundredths are natural for this measurement (a scale or a gauge). */
+  hundredths?: boolean;
+  /** Display-unit bounds. Omitted stories keep 2–9 (whole) or 1–5 (mixed). */
+  whole?: readonly [number, number];
+  mixed?: readonly [number, number];
+  /** Low end of a hundredths window, in hundredths. The axis is 0.10 wide. */
+  gauge?: readonly [number, number];
+}
+/** Two draws, so one sticky residue cannot pin every seed to the first story. */
+function spreadPick<T>(r: Random, items: readonly T[]): T {
+  const n = items.length;
+  return items[(r(0, n - 1) + r(0, n * n - 1)) % n]!;
 }
 const dotContexts: DotContext[] = [
   {
@@ -690,9 +703,238 @@ const dotContexts: DotContext[] = [
     total: (n) => `What is the total weight of all ${n} bags, in pounds?`,
   },
 ];
+/** New story surface. "NAME" is replaced after the measurements are drawn,
+ * so the classic contexts keep the old random stream. */
+const castContexts: DotContext[] = [
+  {
+    intro: (n) =>
+      `The dot plot shows the weight, in pounds, of each of ${n} pumpkins NAME picked.`,
+    unit: "pounds",
+    one: "pound",
+    entity: "pumpkin",
+    fractional: true,
+    whole: [3, 9],
+    mixed: [2, 5],
+    missing: (n, grand) =>
+      `All ${n + 1} pumpkins weigh ${grand} together. What is the weight of pumpkin ${n + 1}, in pounds?`,
+    total: (n) => `What is the total weight of all ${n} pumpkins, in pounds?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows the weight, in pounds, of each of ${n} kittens NAME weighed at the shelter.`,
+    unit: "pounds",
+    one: "pound",
+    entity: "kitten",
+    fractional: true,
+    whole: [2, 5],
+    mixed: [1, 4],
+    missing: (n, grand) =>
+      `All ${n + 1} kittens weigh ${grand} together. What is the weight of kitten ${n + 1}, in pounds?`,
+    total: (n) => `What is the total weight of all ${n} kittens, in pounds?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows the rainfall, in inches, on each of ${n} days NAME checked the rain gauge.`,
+    unit: "inches",
+    one: "inch",
+    entity: "day",
+    fractional: true,
+    hundredths: true,
+    whole: [1, 3],
+    mixed: [1, 2],
+    gauge: [10, 80],
+    missing: (n, grand) =>
+      `The gauge collected ${grand} in all ${n + 1} days. How many inches fell on day ${n + 1}?`,
+    total: (n) => `How many inches of rain fell in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many minutes NAME spent reading on each of ${n} days.`,
+    unit: "minutes",
+    one: "minute",
+    entity: "day",
+    fractional: false,
+    whole: [4, 9],
+    missing: (n, grand) =>
+      `NAME read for ${grand} in all ${n + 1} days. How many minutes did NAME read on day ${n + 1}?`,
+    total: (n) => `How many minutes did NAME read in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many liters of water NAME drank on each of ${n} days.`,
+    unit: "liters",
+    one: "liter",
+    entity: "day",
+    fractional: true,
+    hundredths: true,
+    whole: [1, 3],
+    mixed: [1, 3],
+    missing: (n, grand) =>
+      `NAME drank ${grand} in all ${n + 1} days. How many liters did NAME drink on day ${n + 1}?`,
+    total: (n) => `How many liters of water did NAME drink in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many miles NAME walked on each of ${n} days.`,
+    unit: "miles",
+    one: "mile",
+    entity: "day",
+    fractional: true,
+    hundredths: true,
+    whole: [1, 5],
+    mixed: [1, 4],
+    missing: (n, grand) =>
+      `NAME walked ${grand} in all ${n + 1} days. How many miles did NAME walk on day ${n + 1}?`,
+    total: (n) => `How many miles did NAME walk in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many laps NAME swam on each of ${n} days.`,
+    unit: "laps",
+    one: "lap",
+    entity: "day",
+    fractional: false,
+    whole: [2, 8],
+    missing: (n, grand) =>
+      `NAME swam ${grand} in all ${n + 1} days. How many laps did NAME swim on day ${n + 1}?`,
+    total: (n) => `How many laps did NAME swim in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many miles NAME biked on each of ${n} days.`,
+    unit: "miles",
+    one: "mile",
+    entity: "day",
+    fractional: true,
+    hundredths: true,
+    missing: (n, grand) =>
+      `NAME biked ${grand} in all ${n + 1} days. How many miles did NAME bike on day ${n + 1}?`,
+    total: (n) => `How many miles did NAME bike in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many books NAME finished in each of ${n} weeks.`,
+    unit: "books",
+    one: "book",
+    entity: "week",
+    fractional: false,
+    missing: (n, grand) =>
+      `NAME finished ${grand} in all ${n + 1} weeks. How many books did NAME finish in week ${n + 1}?`,
+    total: (n) => `How many books did NAME finish in all ${n} weeks?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many baskets NAME made in each of ${n} practices.`,
+    unit: "baskets",
+    one: "basket",
+    entity: "practice",
+    fractional: false,
+    missing: (n, grand) =>
+      `NAME made ${grand} in all ${n + 1} practices. How many baskets did NAME make in practice ${n + 1}?`,
+    total: (n) => `How many baskets did NAME make in all ${n} practices?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many fish NAME caught on each of ${n} trips.`,
+    unit: "fish",
+    one: "fish",
+    entity: "trip",
+    fractional: false,
+    missing: (n, grand) =>
+      `NAME caught ${grand} in all ${n + 1} trips. How many fish did NAME catch on trip ${n + 1}?`,
+    total: (n) => `How many fish did NAME catch in all ${n} trips?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows the length, in feet, of each of ${n} jump ropes NAME measured.`,
+    unit: "feet",
+    one: "foot",
+    entity: "rope",
+    fractional: false,
+    whole: [6, 9],
+    missing: (n, grand) =>
+      `All ${n + 1} jump ropes have a total length of ${grand}. What is the length of rope ${n + 1}, in feet?`,
+    total: (n) => `What is the total length of all ${n} jump ropes, in feet?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows the height, in inches, of each of ${n} bean seedlings NAME measured.`,
+    unit: "inches",
+    one: "inch",
+    entity: "seedling",
+    fractional: true,
+    missing: (n, grand) =>
+      `All ${n + 1} seedlings have a total height of ${grand}. What is the height of seedling ${n + 1}, in inches?`,
+    total: (n) => `What is the total height of all ${n} seedlings, in inches?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many tickets NAME sold on each of ${n} days.`,
+    unit: "tickets",
+    one: "ticket",
+    entity: "day",
+    fractional: false,
+    missing: (n, grand) =>
+      `NAME sold ${grand} in all ${n + 1} days. How many tickets did NAME sell on day ${n + 1}?`,
+    total: (n) => `How many tickets did NAME sell in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows the length, in inches, of each of ${n} carrots NAME cut for snack bags.`,
+    unit: "inches",
+    one: "inch",
+    entity: "carrot",
+    fractional: true,
+    missing: (n, grand) =>
+      `All ${n + 1} carrots have a total length of ${grand}. What is the length of carrot ${n + 1}, in inches?`,
+    total: (n) => `What is the total length of all ${n} carrots, in inches?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows the weight, in pounds, of each of ${n} watermelons NAME weighed.`,
+    unit: "pounds",
+    one: "pound",
+    entity: "watermelon",
+    fractional: true,
+    missing: (n, grand) =>
+      `All ${n + 1} watermelons weigh ${grand} together. What is the weight of watermelon ${n + 1}, in pounds?`,
+    total: (n) =>
+      `What is the total weight of all ${n} watermelons, in pounds?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many inches of new snow fell on each of ${n} days NAME measured.`,
+    unit: "inches",
+    one: "inch",
+    entity: "day",
+    fractional: true,
+    missing: (n, grand) =>
+      `The snowfall was ${grand} in all ${n + 1} days. How many inches fell on day ${n + 1}?`,
+    total: (n) => `How many inches of snow fell in all ${n} days?`,
+  },
+];
+function bindName(ctx: DotContext, name: string): DotContext {
+  const fill = (text: string) => text.replaceAll("NAME", name);
+  return {
+    ...ctx,
+    intro: (n) => fill(ctx.intro(n)),
+    missing: (n, grand) => fill(ctx.missing(n, grand)),
+    total: (n) => fill(ctx.total(n)),
+  };
+}
 const dotAxes = {
   values: defineAxis("values", ["whole", "mixed"] as const),
   ask: defineAxis("ask", ["total", "range", "missing-value"] as const),
+  /** Hundredths measurements. The legacy value keeps the whole and mixed plots. */
+  "data-domain": defineAxis("data-domain", ["current", "hundredths"] as const, {
+    legacy: "current",
+    weights: [4, 1],
+  }),
+  /** Classic keeps the original four contexts. Cast is the varied story surface. */
+  story: defineAxis("story", ["classic", "cast"] as const, {
+    legacy: "classic",
+    weights: [1, 11],
+  }),
 };
 interface DotModel {
   values: "whole" | "mixed";
@@ -705,15 +947,110 @@ interface DotModel {
   /** Total of one more value, for missing-value (in units of 1/d). */
   grand: number;
   hidden: number;
+  /** Hundredths data. The legacy model leaves this false and ignores the window. */
+  decimal: boolean;
+  /** Classic reproduces the original contexts. Cast is a varied story. */
+  story: "classic" | "cast";
+  /** Axis ends in the same units as `units` (hundredths when decimal). */
+  axisMin: number;
+  axisMax: number;
 }
-function dotModel(
+function hundredthsDot(
+  r: Random,
+  ask: DotModel["ask"],
+  story: DotModel["story"],
+): DotModel {
+  const pool =
+    story === "cast"
+      ? castContexts.filter((c) => c.fractional && c.hundredths)
+      : dotContexts.filter((c) => c.fractional);
+  let ctx = story === "cast" ? spreadPick(r, pool) : pick(r, pool);
+  // Eleven ticks, so (max − min) × 100 = 10, inside the 24-tick scene limit.
+  const gauge = story === "cast" ? (ctx.gauge ?? [40, 240]) : [40, 240];
+  const axisMin = r(gauge[0], gauge[1]);
+  const axisMax = axisMin + 10;
+  const count = r(5, 7);
+  const units: number[] = [];
+  for (let i = 0; i < count; i++) units.push(r(axisMin, axisMax));
+  if (units.every((u) => u % 100 === 0)) throw new Error("Need three retries");
+  if (new Set(units).size === units.length)
+    throw new Error("Need three retries");
+  if (new Set(units).size < 3) throw new Error("Need three retries");
+  const hidden = r(axisMin, axisMax);
+  const total = units.reduce((s, v) => s + v, 0);
+  if (story === "cast")
+    ctx = bindName(
+      ctx,
+      storyName((n) => r(0, n - 1)),
+    );
+  return {
+    values: "mixed",
+    ask,
+    ctx,
+    d: 100,
+    units,
+    count,
+    grand: total + hidden,
+    hidden,
+    decimal: true,
+    axisMin,
+    axisMax,
+    story,
+  };
+}
+function castDot(
   r: Random,
   a: { values: DotModel["values"]; ask: DotModel["ask"] },
 ): DotModel {
-  const ctx = pick(
-    r,
-    dotContexts.filter((c) => a.values === "whole" || c.fractional),
-  );
+  const pool = castContexts.filter((c) => a.values === "whole" || c.fractional);
+  const chosen = spreadPick(r, pool);
+  const d = a.values === "whole" ? 1 : pick(r, [2, 4]);
+  const count = r(5, 7);
+  const [loU, hiU] =
+    a.values === "whole" ? (chosen.whole ?? [2, 9]) : (chosen.mixed ?? [1, 5]);
+  const lo = Math.round(loU * d),
+    hi = Math.round(hiU * d);
+  const units: number[] = [];
+  for (let i = 0; i < count; i++) units.push(r(lo, hi));
+  if (a.values === "mixed" && units.every((u) => u % d === 0))
+    throw new Error("Need three retries");
+  if (new Set(units).size === units.length)
+    throw new Error("Need three retries");
+  if (new Set(units).size < 3) throw new Error("Need three retries");
+  const hidden = r(lo, hi);
+  const total = units.reduce((s, v) => s + v, 0);
+  return {
+    values: a.values,
+    ask: a.ask,
+    ctx: bindName(
+      chosen,
+      storyName((n) => r(0, n - 1)),
+    ),
+    d,
+    units,
+    count,
+    grand: total + hidden,
+    hidden,
+    decimal: false,
+    axisMin: 0,
+    axisMax: 0,
+    story: "cast",
+  };
+}
+function dotModel(
+  r: Random,
+  a: {
+    values: DotModel["values"];
+    ask: DotModel["ask"];
+    "data-domain": "current" | "hundredths";
+    story: "classic" | "cast";
+  },
+): DotModel {
+  if (a["data-domain"] === "hundredths")
+    return hundredthsDot(r, a.ask, a.story);
+  if (a.story === "cast") return castDot(r, a);
+  const pool = dotContexts.filter((c) => a.values === "whole" || c.fractional);
+  let ctx = pick(r, pool);
   const d = a.values === "whole" ? 1 : pick(r, [2, 4]);
   const count = r(5, 7);
   const lo = d * (a.values === "whole" ? 2 : 1),
@@ -739,6 +1076,10 @@ function dotModel(
     count,
     grand: total + hidden,
     hidden,
+    decimal: false,
+    axisMin: 0,
+    axisMax: 0,
+    story: a.story,
   };
 }
 const g2 = (x: number, y: number): number => (y ? g2(y, x % y) : x);
@@ -756,12 +1097,156 @@ const val = (units: number, d: number) =>
 const withUnit = (units: number, d: number, c: DotContext) =>
   `${val(units, d)} ${units <= d ? c.one : c.unit}`;
 
+/** Hundredths as text: 40 → "0.40", 100 → "1", 125 → "1.25". */
+const decAmount = (units: number) => {
+  const abs = Math.abs(units);
+  const whole = Math.floor(abs / 100);
+  const frac = abs % 100;
+  const body =
+    frac === 0 ? String(whole) : `${whole}.${String(frac).padStart(2, "0")}`;
+  return units < 0 ? `-${body}` : body;
+};
+const decWith = (units: number, c: DotContext) =>
+  `${decAmount(units)} ${Math.abs(units) <= 100 ? c.one : c.unit}`;
+
+function renderHundredths(m: DotModel, r: Random): Surface | null {
+  const { ctx, units } = m;
+  const total = units.reduce((s, v) => s + v, 0);
+  const hi = Math.max(...units),
+    lo = Math.min(...units);
+  const distinct = [...new Set(units)];
+  const scene = sceneSchema.parse({
+    v: 1,
+    title: "Dot plot of the measurements",
+    maxHeight: 720,
+    elements: [
+      {
+        type: "dotPlot",
+        id: "plot",
+        min: m.axisMin / 100,
+        max: m.axisMax / 100,
+        denominator: 100,
+        decimalPlaces: 2,
+        mark: "dot",
+        groups: [{ values: units.map((u) => u / 100) }],
+        unit: ctx.unit,
+      },
+    ],
+  });
+  let answer: number;
+  let wrong: [number, string][];
+  let prompt: string;
+  let hint: string;
+  let explanation: string[];
+  const listed = units
+    .slice()
+    .sort((x, y) => x - y)
+    .map((u) => decAmount(u))
+    .join(", ");
+  if (m.ask === "total") {
+    answer = total;
+    const once = distinct.reduce((s, v) => s + v, 0);
+    wrong = [
+      [
+        once,
+        "It adds each different value once. Every dot is a separate measurement, so a value with two dots is added twice.",
+      ],
+      [total - lo, "It leaves out one dot. Count every dot in the plot."],
+      [
+        total + hi,
+        "It counts one dot too many. Each dot is added exactly once.",
+      ],
+      [units.length * 100, "That is the number of dots, not their total."],
+    ];
+    prompt = `${ctx.intro(m.count)} ${ctx.total(m.count)}`;
+    hint = `The plot has ${m.count} dots. Each dot is one measurement, so a value with two dots counts twice. Add the value of every dot.`;
+    explanation = [
+      `In a dot plot, each dot is one measurement, placed above its value. Two dots above a value mean it happened twice.`,
+      `Read every dot, repeats included: ${listed}.`,
+      `"In all" means add every dot's value: all ${m.count} values add to ${decAmount(total)}.`,
+      `The total is ${decWith(total, ctx)}.`,
+    ];
+  } else if (m.ask === "range") {
+    answer = hi - lo;
+    wrong = [
+      [
+        hi,
+        "It stops at the greatest value. The range subtracts the least value from it.",
+      ],
+      [
+        hi + lo,
+        "It adds the greatest and least values. The range is their difference.",
+      ],
+      [lo, "That is the least value, not the difference."],
+      [
+        hi - lo + 1,
+        "It is one hundredth too many. Subtract the least value from the greatest exactly.",
+      ],
+    ];
+    prompt = `${ctx.intro(m.count)} What is the difference between the greatest and the least value, in ${ctx.unit}?`;
+    hint = `The plot has ${m.count} dots on a scale marked in hundredths. Find the dot farthest to the right and the dot farthest to the left, then subtract.`;
+    explanation = [
+      `In a dot plot, each dot is one measurement. The rightmost dot is the greatest value and the leftmost is the least.`,
+      `The greatest value is ${decAmount(hi)} and the least is ${decAmount(lo)}.`,
+      `The difference is what you get by subtracting: ${decAmount(hi)} − ${decAmount(lo)} = ${decAmount(hi - lo)}.`,
+      `The difference is ${decWith(hi - lo, ctx)}.`,
+    ];
+  } else {
+    answer = m.hidden;
+    const grand = m.grand;
+    wrong = [
+      [total, "That is the total of the dots shown, not the missing value."],
+      [grand, "That is the given total, not the missing value."],
+      [
+        grand - total + 1,
+        "It is one hundredth more than the difference. Add the shown dots again, counting each repeated value every time, then subtract that sum from the total.",
+      ],
+      [
+        grand - total - 1,
+        "It is one hundredth less than the difference. Add the shown dots again, counting each repeated value every time, then subtract that sum from the total.",
+      ],
+    ];
+    prompt = `${ctx.intro(m.count)} ${ctx.missing(m.count, decWith(grand, ctx))}`;
+    hint =
+      m.story === "cast"
+        ? `Add the ${m.count} dots shown on the plot, counting a repeated value every time. Subtract that sum from the total to find the missing ${ctx.entity}.`
+        : `Add the values of the ${m.count} dots, counting repeated values each time. The missing value is the total ${decAmount(grand)} minus that sum.`;
+    explanation = [
+      `The given total is the dots shown plus the missing value. So the missing value is the total minus the dots shown.`,
+      `Read every dot, repeats included: ${listed}. They add to ${decAmount(total)}.`,
+      `Subtract: ${decAmount(grand)} − ${decAmount(total)} = ${decAmount(m.hidden)}.`,
+      `The missing value is ${decWith(m.hidden, ctx)}.`,
+    ];
+  }
+  const seen = new Set([answer]);
+  const options: ChoiceOption[] = [
+    { label: decWith(answer, ctx), correct: true },
+  ];
+  for (const [v, feedback] of shuffle(r, wrong)) {
+    if (v <= 0 || seen.has(v)) continue;
+    seen.add(v);
+    options.push({ label: decWith(v, ctx), feedback });
+  }
+  const s = choiceSurface(r, {
+    prompt,
+    options,
+    hint,
+    explanation,
+    label: "Choose the answer",
+  });
+  return s && { ...s, figure: { kind: "scene" as const, scene } };
+}
+
 export const dotPlotArithmeticFamily = chainFamily({
   template: dotPlotArithmeticTemplate,
   axes: dotAxes,
   model: dotModel,
-  variant: (m) => `${m.values}-${m.ask}`,
+  variant: (m) => {
+    const base = m.decimal ? `hundredths-${m.ask}` : `${m.values}-${m.ask}`;
+    return m.story === "cast" ? `${base}-cast` : base;
+  },
   render: (m, _ax, r) => {
+    if (m.decimal) return renderHundredths(m, r);
     const { ctx, d, units } = m;
     const total = units.reduce((s, v) => s + v, 0);
     const hi = Math.max(...units),
@@ -858,7 +1343,10 @@ export const dotPlotArithmeticFamily = chainFamily({
         ],
       ];
       prompt = `${ctx.intro(m.count)} ${ctx.missing(m.count, withUnit(grand, d, ctx))}`;
-      hint = `Add the values of the ${m.count} dots, counting repeated values each time. The missing value is the total ${val(grand, d)} minus that sum.`;
+      hint =
+        m.story === "cast"
+          ? `Add the ${m.count} dots shown on the plot, counting a repeated value every time. Subtract that sum from the total to find the missing ${ctx.entity}.`
+          : `Add the values of the ${m.count} dots, counting repeated values each time. The missing value is the total ${val(grand, d)} minus that sum.`;
       explanation = [
         `The given total is the dots shown plus the missing value. So the missing value is the total minus the dots shown.`,
         `Read every dot, repeats included: ${listed}. They add to ${val(total, d)}.`,

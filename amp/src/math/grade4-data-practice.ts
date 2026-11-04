@@ -1,0 +1,1012 @@
+import { createHash } from "node:crypto";
+import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import { count, plural } from "./agreement";
+import { random, shuffle, type Random } from "./distribution-practice";
+import { storyName } from "./story-kit/names";
+import {
+  barTales,
+  frequencyTales,
+  lengthMeasures,
+  type BarTale,
+  type FrequencyTale,
+  type LengthMeasure,
+} from "./story-kit/data";
+import {
+  choiceSurface,
+  dispatch,
+  numberSurface,
+  type ChoiceOption,
+} from "./chain-kit";
+import { grouped, multiPartProblem } from "./multi-part-support";
+import { CARD, problemOf, type Candidate } from "./figure-choice-practice";
+import { sceneSchema, type Scene } from "./scene/spec";
+import { dotTickLabel } from "./scene/components/dot-plot";
+import { halfStep } from "./data-display-models";
+import type { Surface } from "./variation/compose";
+
+/** Inch rulers are marked in halves, quarters, and eighths. Nine eighths,
+ * six fourths, four halves. */
+const INCH_DENOMS = [
+  8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2,
+] as const;
+
+const PRECISION: Record<number, string> = {
+  2: "nearest half inch",
+  4: "nearest quarter inch",
+  8: "nearest eighth inch",
+};
+
+/** Learner-facing whole numbers. The numeric answer stays ungrouped,
+ * because the grader accepts digits only. */
+const shown = (n: number) => (n >= 1000 ? grouped(n) : String(n));
+const counted = (n: number, noun: string) =>
+  `${shown(n)} ${n === 1 ? noun : plural(noun)}`;
+
+const lineSenses = {
+  mode: "mode-statistics",
+  modes: "mode-statistics",
+  median: "median",
+  medians: "median",
+  range: "range-statistics",
+  ranges: "range-statistics",
+};
+const tableSenses = {
+  frequency: "frequency",
+  frequencies: "frequency",
+  interval: "interval",
+  intervals: "interval",
+};
+const barSenses = { scale: "scale-axis", scales: "scale-axis" };
+
+const scenes = { requiredFigureCapability: "scenes-v1" as const };
+const plotSkill = "fraction-plot-arithmetic";
+const barSkill = "frequency-bar-graphs";
+
+export const grade4DataTemplates: readonly TemplateMetadata[] = [
+  {
+    id: "line-plot-build-slots",
+    version: 1,
+    title: "Build a line plot from a list",
+    skillId: plotSkill,
+    gradeBand: "3–5",
+    requiredResponseCapability: "multi-part-choice-v1",
+    ...scenes,
+    description:
+      "Count how many listed lengths belong at each mark of a blank line plot. Lengths are halves, fourths, or eighths of an inch, from 1 to 4 inches. One mark is empty and one length repeats.",
+  },
+  {
+    id: "line-plot-data-match",
+    version: 1,
+    title: "Choose the line plot for a list",
+    skillId: plotSkill,
+    gradeBand: "3–5",
+    requiredResponseCapability: "figure-choice-v1",
+    ...scenes,
+    description:
+      "Choose the line plot whose marks match a list of lengths. The other graphs move one mark by one tick, move one mark farther, or leave one length out.",
+  },
+  {
+    id: "line-plot-center-range",
+    version: 1,
+    title: "Mode, median or range from a line plot",
+    skillId: plotSkill,
+    gradeBand: "3–5",
+    requiredResponseCapability: "single-choice-v1",
+    ...scenes,
+    description:
+      "Find the mode, the median or the range of an odd number of lengths shown on a line plot of halves, fourths or eighths.",
+    glossarySenses: lineSenses,
+  },
+  {
+    id: "frequency-table-grade4",
+    version: 1,
+    title: "Frequency tables with wide intervals",
+    skillId: barSkill,
+    gradeBand: "3–5",
+    requiredResponseCapability: "single-choice-v1",
+    description:
+      "Sort a list into four equal intervals of 5, 10, 25, 50 or 100, or find how many more are in the first two intervals together than in the last.",
+    glossarySenses: tableSenses,
+  },
+  {
+    id: "scaled-bar-grade4",
+    version: 1,
+    title: "Two-step questions from a scaled bar graph",
+    skillId: barSkill,
+    gradeBand: "3–5",
+    requiredFigureCapability: "data-displays-v1",
+    description:
+      "Read a bar graph whose side scale counts by 5, 10, 25, 50 or 100, and find how many more are in two categories together than in a third.",
+    glossarySenses: barSenses,
+  },
+];
+
+const metaOf = (id: string) => grade4DataTemplates.find((t) => t.id === id)!;
+
+function tickLabel(tick: number, d: number): string {
+  return dotTickLabel(tick / d, d, { fixedLabels: true });
+}
+function inchLabel(tick: number, d: number): string {
+  // A fraction up to one whole stays singular. A length of 0 is not generated.
+  const unit = tick > d ? "inches" : "inch";
+  return `${tickLabel(tick, d)} ${unit}`;
+}
+/** First tick of a window of `nTicks` marks, on a whole inch from 1 to 4. */
+function inchOrigin(r: Random, d: number, nTicks: number): number {
+  const width = nTicks - 1;
+  const origins: number[] = [];
+  for (let inch = 1; inch * d + width <= 4 * d; inch++) origins.push(inch * d);
+  if (!origins.length) throw new Error("Need a window inside 1 to 4 inches");
+  return origins[r(0, origins.length - 1)]!;
+}
+function matchAxis(d: number): { minTick: number; maxTick: number } {
+  if (d === 8) return { minTick: 8, maxTick: 16 };
+  if (d === 4) return { minTick: 4, maxTick: 12 };
+  return { minTick: 2, maxTick: 8 };
+}
+const precision = (d: number) => PRECISION[d] ?? "nearest inch";
+
+function pickName(r: Random): string {
+  return storyName((n) => r(0, n - 1));
+}
+function lengthStory(r: Random): { name: string; tale: LengthMeasure } {
+  return {
+    name: pickName(r),
+    tale: lengthMeasures[r(0, lengthMeasures.length - 1)]!,
+  };
+}
+/** Four openings. The count phrase already includes the noun. */
+function lengthOpen(
+  frame: number,
+  name: string,
+  tale: LengthMeasure,
+  counted: string,
+  precise: string,
+): string {
+  const { place, purpose } = tale;
+  if (frame === 1)
+    return `${purpose[0]!.toUpperCase()}${purpose.slice(1)}, ${name} measured ${counted} ${place} to the ${precise}.`;
+  if (frame === 2)
+    return `${name} measured each of the ${counted} ${place} to the ${precise} ${purpose}.`;
+  if (frame === 3)
+    return `Using a ruler, ${name} measured ${counted} ${place} to the ${precise} ${purpose}.`;
+  return `${name} measured ${counted} ${place} to the ${precise} ${purpose}.`;
+}
+
+function centerOpen(
+  frame: number,
+  name: string,
+  tale: LengthMeasure,
+  precise: string,
+): string {
+  const { item, items, place, purpose } = tale;
+  if (frame === 1)
+    return `${name} measured ${items} ${place} to the ${precise}. The line plot shows those lengths.`;
+  if (frame === 2)
+    return `Each mark is one ${item} ${name} measured to the ${precise} ${purpose}.`;
+  if (frame === 3)
+    return `Look at the line plot of the ${items} ${name} measured to the ${precise} ${place}.`;
+  return `The line plot shows the ${items} ${name} measured to the ${precise} ${purpose}.`;
+}
+function frequencyStory(r: Random, width: number): FrequencyTale {
+  const fits = frequencyTales.filter((tale) =>
+    (tale.widths as readonly number[]).includes(width),
+  );
+  if (!fits.length) throw new Error("Need a frequency story");
+  return fits[r(0, fits.length - 1)]!;
+}
+function barStory(r: Random, step: number): BarTale {
+  const fits = barTales.filter((tale) =>
+    (tale.steps as readonly number[]).includes(step),
+  );
+  if (!fits.length) throw new Error("Need a bar story");
+  return fits[r(0, fits.length - 1)]!;
+}
+
+function generateOne(
+  meta: TemplateMetadata,
+  seed: string,
+  build: (r: Random) => GeneratedProblem,
+): GeneratedProblem {
+  if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
+    throw new Error("Seed must contain 1–128 characters");
+  let last: Error | undefined;
+  for (let attempt = 0; attempt < 60; attempt++) {
+    try {
+      return build(random(meta.id, `${seed}#${attempt}`));
+    } catch (error) {
+      if (!(error instanceof Error) || !error.message.startsWith("Need"))
+        throw error;
+      last = error;
+    }
+  }
+  throw last ?? new Error(`Need a ${meta.id} problem`);
+}
+
+function finish(
+  meta: TemplateMetadata,
+  seed: string,
+  surface: Surface,
+): GeneratedProblem {
+  return {
+    public: {
+      id: hashId(meta.id, seed),
+      templateId: meta.id,
+      templateVersion: 1,
+      seed,
+      prompt: surface.prompt,
+      skillId: meta.skillId,
+      response: surface.response,
+      ...(surface.figure ? { figure: surface.figure } : {}),
+    },
+    answer: surface.answer,
+    explanation: surface.explanation,
+    hint: surface.hint,
+    ...(surface.choiceFeedback
+      ? { choiceFeedback: surface.choiceFeedback }
+      : {}),
+  };
+}
+
+function hashId(id: string, seed: string): string {
+  return createHash("sha256")
+    .update(JSON.stringify([id, 1, seed]))
+    .digest("hex");
+}
+
+function dotScene(opts: {
+  title?: string;
+  width?: number;
+  maxHeight: number;
+  minTick: number;
+  maxTick: number;
+  d: number;
+  ticks: readonly number[];
+  blank?: boolean;
+}): Scene {
+  const values = opts.blank
+    ? []
+    : opts.ticks.map((t) => t / opts.d).sort((a, b) => a - b);
+  return sceneSchema.parse({
+    v: 1,
+    ...(opts.title ? { title: opts.title } : {}),
+    ...(opts.width ? { width: opts.width } : {}),
+    maxHeight: opts.maxHeight,
+    elements: [
+      {
+        type: "dotPlot",
+        id: "plot",
+        min: opts.minTick / opts.d,
+        max: opts.maxTick / opts.d,
+        denominator: opts.d,
+        mark: "x",
+        fixedLabels: true,
+        ...(opts.blank ? { blank: true } : {}),
+        groups: [{ values }],
+        unit: "inches",
+      },
+    ],
+  });
+}
+
+/** Counts on 4–6 ticks: one empty tick, one count of at least 2, sum at least 8, each count at most 4. */
+function buildCounts(r: Random, nTicks: number): number[] {
+  const counts = Array.from({ length: nTicks }, () => r(0, 4));
+  const zeros = () => counts.filter((c) => c === 0).length;
+  if (!counts.includes(0)) counts[r(0, nTicks - 1)] = 0;
+  if (!counts.some((c) => c >= 2)) {
+    if (zeros() >= 2) counts[counts.indexOf(0)] = 2;
+    else {
+      const i = counts.findIndex((c) => c > 0 && c < 4);
+      if (i < 0) throw new Error("Need a cell that can reach 2");
+      counts[i] = 2;
+    }
+  }
+  let guard = 0;
+  while (counts.reduce((a, b) => a + b, 0) < 8) {
+    if (++guard > 40) throw new Error("Need a longer list");
+    const room = counts.findIndex((c) => c > 0 && c < 4);
+    if (room >= 0) {
+      counts[room]!++;
+      continue;
+    }
+    if (zeros() >= 2) {
+      const z = counts.indexOf(0);
+      counts[z] = counts[z]! + 1;
+      continue;
+    }
+    throw new Error("Need room to grow the list and keep one empty mark");
+  }
+  if (!counts.includes(0) || !counts.some((c) => c >= 2))
+    throw new Error("Need an empty mark and a repeated length");
+  if (counts.some((c) => c > 4)) throw new Error("Need counts at most 4");
+  return counts;
+}
+
+function buildSlots(
+  meta: TemplateMetadata,
+  seed: string,
+  r: Random,
+): GeneratedProblem {
+  const d = INCH_DENOMS[r(0, INCH_DENOMS.length - 1)]!;
+  const nTicks = r(4, 6);
+  const counts = buildCounts(r, nTicks);
+  const origin = inchOrigin(r, d, nTicks);
+  const listedTicks: number[] = [];
+  counts.forEach((c, i) => {
+    for (let k = 0; k < c; k++) listedTicks.push(origin + i);
+  });
+  const shownList = shuffle(r, [...listedTicks]);
+  const listed = shownList.map((t) => tickLabel(t, d)).join(", ");
+  const total = listedTicks.length;
+  const sample = shownList[0]!;
+  const { name, tale } = lengthStory(r);
+  const precise = precision(d);
+  const countedItems = count(total, tale.item, tale.items);
+  const open = lengthOpen(r(0, 3), name, tale, countedItems, precise);
+  const questions = [
+    `How many ${tale.items} belong at each mark?`,
+    `How many ${tale.items} go at each mark?`,
+    `Write how many ${tale.items} have each length.`,
+    `Fill in how many ${tale.items} match each mark.`,
+  ];
+  const scene = dotScene({
+    title: `Lengths of the ${tale.items}`,
+    width: 640,
+    maxHeight: 720,
+    minTick: origin,
+    maxTick: origin + nTicks - 1,
+    d,
+    ticks: [],
+    blank: true,
+  });
+  return multiPartProblem(meta, seed, r, {
+    prompt: `${open} The line plot is blank. The lengths, in inches, are: ${listed}. ${questions[r(0, questions.length - 1)]}`,
+    layout: "table",
+    label: `How many ${tale.items}?`,
+    rowHeader: "Length",
+    slots: counts.map((c, i) => ({
+      id: `t${i}`,
+      label: tickLabel(origin + i, d),
+      correct: String(c),
+      fixed: ["0", "1", "2", "3", "4"],
+    })),
+    figure: { kind: "scene", scene },
+    hint: `Count the listed lengths. There are ${countedItems} in all. One listed length is ${inchLabel(sample, d)}. Match each mark to how many times that length is written, including a mark that is not in the list.`,
+    explanation: counts.map((c, i) => {
+      const label = inchLabel(origin + i, d);
+      if (c === 0) return `${label} is not in the list, so that mark gets 0.`;
+      if (c === 1)
+        return `${label} is written once in the list, so that mark gets 1.`;
+      return `${label} is written ${c} times in the list, so that mark gets ${c}.`;
+    }),
+  });
+}
+
+function multiset(ticks: readonly number[]): string {
+  return [...ticks].sort((a, b) => a - b).join(",");
+}
+/** How far the second distractor moves one mark. Halves move by one whole unit, because half a unit is already one tick. */
+function halfDelta(d: number): number {
+  if (d === 2) return 2;
+  return d / 2;
+}
+function shiftWords(d: number): string {
+  if (d === 2) return "one whole unit";
+  return "half an inch";
+}
+function describe(
+  ticks: readonly number[],
+  d: number,
+  minTick: number,
+  maxTick: number,
+): string {
+  const parts: string[] = [];
+  for (let t = minTick; t <= maxTick; t++) {
+    const c = ticks.filter((x) => x === t).length;
+    parts.push(`${tickLabel(t, d)} has ${c}`);
+  }
+  const body =
+    parts.length < 2
+      ? parts[0]!
+      : `${parts.slice(0, -1).join(", ")}, and ${parts.at(-1)}`;
+  return `Marks: ${body}.`;
+}
+function moved(
+  ticks: readonly number[],
+  delta: number,
+  minTick: number,
+  maxTick: number,
+  blocked: Set<string>,
+  r: Random,
+): number[] {
+  const order = shuffle(
+    r,
+    ticks.map((_, i) => i),
+  );
+  for (const i of order) {
+    for (const sign of shuffle(r, [1, -1])) {
+      const next = ticks[i]! + sign * delta;
+      if (next < minTick || next > maxTick) continue;
+      const copy = ticks.slice();
+      copy[i] = next;
+      if (copy.filter((t) => t === next).length > 4) continue;
+      const key = multiset(copy);
+      if (key === multiset(ticks) || blocked.has(key)) continue;
+      return copy;
+    }
+  }
+  throw new Error("Need a different graph");
+}
+function dropped(
+  ticks: readonly number[],
+  blocked: Set<string>,
+  r: Random,
+): number[] {
+  for (const i of shuffle(
+    r,
+    ticks.map((_, index) => index),
+  )) {
+    const copy = ticks.filter((_, j) => j !== i);
+    const key = multiset(copy);
+    if (!blocked.has(key)) return copy;
+  }
+  throw new Error("Need a graph that leaves out one mark");
+}
+
+function dataMatch(
+  meta: TemplateMetadata,
+  seed: string,
+  r: Random,
+): GeneratedProblem {
+  const d = INCH_DENOMS[r(0, INCH_DENOMS.length - 1)]!;
+  const { minTick, maxTick } = matchAxis(d);
+  const pool = Array.from(
+    { length: maxTick - minTick + 1 },
+    (_, i) => minTick + i,
+  );
+  const chosen = shuffle(r, [...pool]).slice(0, 3);
+  const ticks = [chosen[0]!, chosen[0]!, chosen[1]!, chosen[2]!];
+  const n = r(6, 10);
+  while (ticks.length < n) {
+    const used = new Map<number, number>();
+    for (const t of ticks) used.set(t, (used.get(t) ?? 0) + 1);
+    const growable = [...used.entries()]
+      .filter(([, c]) => c < 4)
+      .map(([t]) => t);
+    const fresh = pool.filter((t) => !used.has(t));
+    const options = [...growable, ...fresh];
+    if (!options.length) throw new Error("Need room for another length");
+    ticks.push(options[r(0, options.length - 1)]!);
+  }
+  if (new Set(ticks).size < 3) throw new Error("Need three different lengths");
+  const blocked = new Set<string>([multiset(ticks)]);
+  const one = moved(ticks, 1, minTick, maxTick, blocked, r);
+  blocked.add(multiset(one));
+  const half = moved(ticks, halfDelta(d), minTick, maxTick, blocked, r);
+  blocked.add(multiset(half));
+  const gone = dropped(ticks, blocked, r);
+  const groups = [ticks, one, half, gone];
+  if (new Set(groups.map(multiset)).size !== 4)
+    throw new Error("Need four different graphs");
+  const sceneOf = (group: number[]) =>
+    dotScene({
+      width: CARD.width,
+      maxHeight: CARD.maxHeight,
+      minTick,
+      maxTick,
+      d,
+      ticks: group,
+    });
+  const textOf = (group: number[]) => describe(group, d, minTick, maxTick);
+  const texts = groups.map(textOf);
+  if (
+    texts.some((text) => text.length < 10 || text.length > 240) ||
+    new Set(texts).size !== 4
+  )
+    throw new Error("Need descriptions that fit");
+  const shownList = shuffle(r, [...ticks]);
+  const listed = shownList.map((t) => tickLabel(t, d)).join(", ");
+  const sample = shownList[0]!;
+  const sampleCount = ticks.filter((t) => t === sample).length;
+  const { name, tale } = lengthStory(r);
+  const precise = precision(d);
+  const countedItems = count(n, tale.item, tale.items);
+  const open = lengthOpen(r(0, 3), name, tale, countedItems, precise);
+  const questions = [
+    "Which line plot shows this list?",
+    `Which line plot matches ${name}'s measurements?`,
+    `Which line plot has one mark for each ${tale.item}?`,
+    `Which line plot shows the ${tale.items}?`,
+  ];
+  const correct: Candidate = {
+    description: texts[0]!,
+    scene: sceneOf(ticks),
+  };
+  const distractors: Candidate[] = [
+    {
+      description: texts[1]!,
+      scene: sceneOf(one),
+      feedback: () => "This graph moves one mark by one tick.",
+    },
+    {
+      description: texts[2]!,
+      scene: sceneOf(half),
+      feedback: () => `This graph moves one mark by ${shiftWords(d)}.`,
+    },
+    {
+      description: texts[3]!,
+      scene: sceneOf(gone),
+      feedback: () => "This graph leaves out one mark.",
+    },
+  ];
+  const sampleTimes = sampleCount === 1 ? "once" : `${sampleCount} times`;
+  return problemOf(meta, seed, r, {
+    prompt: `${open} The lengths, in inches, are: ${listed}. ${questions[r(0, questions.length - 1)]}`,
+    label: "Choose the graph",
+    noun: "Graph",
+    correct,
+    distractors,
+    hint: `Match the list. There are ${countedItems}, measured to the ${precise}. Count how many times one length appears, then find the line plot with that many marks at that length. Check a second length before you choose.`,
+    explanation: (graph) => [
+      `The list has ${countedItems}. Each ${tale.item} needs one mark at its length.`,
+      `${inchLabel(sample, d)} is written ${sampleTimes}, so the matching plot has ${count(sampleCount, "mark")} there.`,
+      `A graph that moves one mark by one tick, moves one mark by ${shiftWords(d)}, or leaves one ${tale.item} out does not match the list.`,
+      `${graph} has one mark for each listed ${tale.item}.`,
+    ],
+    walkthrough: correct.scene,
+  });
+}
+
+type Ask = "mode" | "median" | "range";
+type Situation = "none" | "one" | "several";
+
+function modeLabel(freq: Map<number, number>, d: number): string {
+  const present = [...freq.entries()];
+  const maxF = Math.max(...present.map(([, c]) => c));
+  const modes = present
+    .filter(([, c]) => c === maxF)
+    .map(([t]) => t)
+    .sort((a, b) => a - b);
+  const least = Math.min(...present.map(([, c]) => c));
+  if (least === maxF) return "no mode";
+  if (modes.length === 1) return inchLabel(modes[0]!, d);
+  if (modes.length === 2)
+    return `${inchLabel(modes[0]!, d)} and ${inchLabel(modes[1]!, d)}`;
+  throw new Error("Need one mode or two modes");
+}
+
+function centerRange(
+  meta: TemplateMetadata,
+  seed: string,
+  r: Random,
+): GeneratedProblem {
+  const d = [2, 4, 8][r(0, 2)]!;
+  const pool =
+    d === 8
+      ? [8, 9, 10, 11, 12, 13, 14, 15, 16]
+      : d === 4
+        ? [4, 5, 6, 7, 8, 9, 10, 11, 12]
+        : [2, 3, 4, 5, 6, 7, 8];
+  const ask: Ask = (["mode", "median", "range"] as const)[r(0, 2)]!;
+  const situation: Situation = (["none", "one", "several"] as const)[r(0, 2)]!;
+  const take = (k: number) => shuffle(r, [...pool]).slice(0, k);
+  let ticks: number[];
+  if (situation === "none") ticks = take(5);
+  else if (situation === "one") {
+    const [a, b, c, e] = take(4);
+    ticks = [a!, a!, a!, b!, b!, c!, e!];
+  } else {
+    const [a, b, c] = take(3);
+    ticks = [a!, a!, a!, b!, b!, b!, c!];
+  }
+  const freq = new Map<number, number>();
+  for (const t of ticks) freq.set(t, (freq.get(t) ?? 0) + 1);
+  const lo = Math.min(...ticks);
+  const hi = Math.max(...ticks);
+  if (lo < 1) throw new Error("Need lengths above 0");
+  const sorted = [...ticks].sort((a, b) => a - b);
+  const medianTick = sorted[(sorted.length - 1) / 2]!;
+  const rangeTicks = hi - lo;
+  const correct =
+    ask === "mode"
+      ? modeLabel(freq, d)
+      : ask === "median"
+        ? inchLabel(medianTick, d)
+        : inchLabel(rangeTicks, d);
+  const focus =
+    ask === "mode"
+      ? [...freq.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0]![0]
+      : ask === "median"
+        ? medianTick
+        : rangeTicks;
+  const wrongs: ChoiceOption[] = [];
+  const seen = new Set<string>([correct]);
+  const add = (label: string, feedback: string) => {
+    if (seen.has(label)) return;
+    seen.add(label);
+    wrongs.push({ label, feedback });
+  };
+  if (ask === "mode" && correct !== "no mode")
+    add(
+      "no mode",
+      situation === "several"
+        ? "Two lengths appear most often. That is two modes, not the absence of a mode."
+        : "One length appears more often than the others, so there is a mode.",
+    );
+  for (const [t, c] of freq)
+    if (c === Math.max(...freq.values()))
+      add(
+        inchLabel(t, d),
+        ask !== "mode"
+          ? "That is a length that appears most often. This question asks for something else."
+          : situation === "several"
+            ? "That is only one of the lengths that appear most often."
+            : "Every length appears equally often, so that length is not a single mode.",
+      );
+  add(
+    inchLabel(hi, d),
+    "That is the greatest length, not the answer to this question.",
+  );
+  add(
+    inchLabel(lo, d),
+    "That is the least length, not the answer to this question.",
+  );
+  add(
+    inchLabel(rangeTicks, d),
+    "That is the greatest length minus the least length.",
+  );
+  add(
+    inchLabel(medianTick, d),
+    "That is the middle length, not the answer to this question.",
+  );
+  if (focus > 0)
+    add(
+      inchLabel(focus - 1, d),
+      "That length is one mark away from the length this question asks for.",
+    );
+  add(
+    inchLabel(focus + 1, d),
+    "That length is one mark away from the length this question asks for.",
+  );
+  if (wrongs.length < 3) throw new Error("Need three different wrong answers");
+  const { name, tale } = lengthStory(r);
+  const precise = precision(d);
+  const question =
+    ask === "mode"
+      ? situation === "one"
+        ? ["What is the mode?", "Which length is the mode?"][r(0, 1)]!
+        : situation === "several"
+          ? "What are the modes?"
+          : "What is the mode?"
+      : ask === "median"
+        ? [
+            "What is the median length?",
+            "What is the median of these lengths?",
+          ][r(0, 1)]!
+        : ["What is the range?", "What is the range of these lengths?"][
+            r(0, 1)
+          ]!;
+  const task =
+    ask === "mode"
+      ? situation === "several"
+        ? "Find every length that appears most often. More than one length can be a mode."
+        : situation === "none"
+          ? "Find the length that appears most often. If every length appears equally often, there is not a single mode."
+          : "Find the length that appears most often."
+      : ask === "median"
+        ? "Order the lengths from least to greatest and take the middle one."
+        : "Subtract the least length from the greatest length.";
+  const ordered = sorted.map((t) => tickLabel(t, d)).join(", ");
+  const piece = d === 8 ? "eighths" : d === 4 ? "fourths" : "halves";
+  const modeCounts = [...freq.entries()]
+    .filter(([, c]) => c === Math.max(...freq.values()))
+    .sort((a, b) => a[0] - b[0]);
+  const explanation =
+    ask === "mode" && correct === "no mode"
+      ? [
+          "Count the marks at each length.",
+          "Every length has 1 mark, so no length appears more often than the others.",
+          "There is not a single mode.",
+        ]
+      : ask === "mode"
+        ? [
+            "Count the marks at each length. The mode is the length with the most marks.",
+            modeCounts.length === 1
+              ? `${inchLabel(modeCounts[0]![0], d)} has ${count(modeCounts[0]![1], "mark")}. Every other length has fewer. The mode is ${correct}.`
+              : `${inchLabel(modeCounts[0]![0], d)} and ${inchLabel(modeCounts[1]![0], d)} each have ${count(modeCounts[0]![1], "mark")}. No other length has more. The modes are ${correct}.`,
+          ]
+        : ask === "median"
+          ? [
+              `Order the ${count(ticks.length, tale.item, tale.items)} from least to greatest: ${ordered}.`,
+              `There are ${ticks.length} lengths, so the middle one is number ${(ticks.length + 1) / 2}.`,
+              `The median length is ${correct}.`,
+            ]
+          : [
+              `The greatest length is ${inchLabel(hi, d)} and the least is ${inchLabel(lo, d)}.`,
+              `Write both in ${piece} and subtract: ${hi} ${hi === 1 ? piece.slice(0, -1) : piece} minus ${lo} ${lo === 1 ? piece.slice(0, -1) : piece} is ${rangeTicks} ${rangeTicks === 1 ? piece.slice(0, -1) : piece}.`,
+              `The range is ${correct}.`,
+            ];
+  const surface = choiceSurface(r, {
+    prompt: `${centerOpen(r(0, 3), name, tale, precise)} ${question}`,
+    options: [
+      { label: correct, correct: true as const },
+      ...wrongs.slice(0, 3),
+    ],
+    hint: `Read the marks. The plot shows ${count(ticks.length, tale.item, tale.items)}, measured to the ${precise}. ${task}`,
+    explanation,
+    label: "Choose the answer",
+  });
+  if (!surface) throw new Error("Need three different wrong answers");
+  let axisMin = Math.floor(lo / d) * d;
+  let axisMax = Math.ceil(hi / d) * d;
+  if (axisMax === axisMin) {
+    if (axisMin > d) axisMin -= d;
+    else axisMax += d;
+  }
+  const scene = dotScene({
+    title: `Lengths of the ${tale.items}`,
+    width: 640,
+    maxHeight: 720,
+    minTick: axisMin,
+    maxTick: axisMax,
+    d,
+    ticks,
+  });
+  return finish(meta, seed, {
+    ...surface,
+    figure: { kind: "scene", scene },
+  });
+}
+
+const WIDTHS = [5, 10, 25, 50, 100] as const;
+const DASH = "\u2013";
+
+function tableLine(
+  bounds: readonly (readonly [number, number])[],
+  counts: readonly number[],
+  noun: string,
+): string {
+  return bounds
+    .map(([a, b], i) => `${a}${DASH}${b}: ${count(counts[i]!, noun)}`)
+    .join("; ");
+}
+
+function frequencyTable(
+  meta: TemplateMetadata,
+  seed: string,
+  r: Random,
+): GeneratedProblem {
+  const width = WIDTHS[r(0, WIDTHS.length - 1)]!;
+  const tale = frequencyStory(r, width);
+  const noun = tale.one;
+  const who = pickName(r);
+  let counts: number[] = [];
+  for (let guard = 0; guard < 40; guard++) {
+    counts = [r(4, 9), r(4, 9), r(4, 9), r(4, 9)];
+    const sum = counts.reduce((a, b) => a + b, 0);
+    if (sum >= 24 && sum <= 36 && counts[0]! + counts[1]! > counts[3]!) break;
+    counts = [];
+  }
+  if (!counts.length) throw new Error("Need counts that fit the intervals");
+  const bounds = [0, 1, 2, 3].map(
+    (i) => [i * width, (i + 1) * width - 1] as [number, number],
+  );
+  const shifted: [number, number][] = [
+    [0, width],
+    [width + 1, 2 * width - 1],
+    [2 * width, 3 * width - 1],
+    [3 * width, 4 * width - 1],
+  ];
+  const values: number[] = [];
+  bounds.forEach(([lo, hi], i) => {
+    values.push(lo, hi);
+    for (let k = 0; k < counts[i]! - 2; k++) values.push(r(lo, hi));
+  });
+  shuffle(r, values);
+  const build = r(0, 1) === 0;
+  if (build) {
+    const correct = tableLine(bounds, counts, noun);
+    const texts = new Set<string>([correct]);
+    const wrongs: ChoiceOption[] = [];
+    const add = (label: string, feedback: string) => {
+      if (texts.has(label) || label.length > 120) return false;
+      texts.add(label);
+      wrongs.push({ label, feedback });
+      return true;
+    };
+    add(
+      tableLine(shifted, counts, noun),
+      "The end values of the intervals are shifted. Each interval includes both ends and does not share an end with the next.",
+    );
+    for (let i = 0; i < 4 && wrongs.length < 3; i++) {
+      for (let j = 0; j < 4 && wrongs.length < 3; j++) {
+        if (i === j) continue;
+        const next = counts.slice();
+        next[i] = counts[i]! + 1;
+        next[j] = counts[j]! - 1;
+        if (next[j]! < 1) continue;
+        add(
+          tableLine(bounds, next, noun),
+          "Two of the counts are off by 1. Count each interval again, including both end values.",
+        );
+      }
+    }
+    for (let i = 0; i < 4 && wrongs.length < 3; i++) {
+      for (let j = i + 1; j < 4 && wrongs.length < 3; j++) {
+        if (counts[i] === counts[j]) continue;
+        const next = counts.slice();
+        next[i] = counts[j]!;
+        next[j] = counts[i]!;
+        add(
+          tableLine(bounds, next, noun),
+          "Two counts are swapped. Match each count to its own interval.",
+        );
+      }
+    }
+    if (wrongs.length < 3) throw new Error("Need three different tables");
+    const n = values.length;
+    const buildAsk = [
+      "Which table matches the list?",
+      "Which frequency table groups these numbers correctly?",
+      "Which table has the right count in each interval?",
+    ][r(0, 2)]!;
+    const unitWord = plural(tale.unit);
+    const bands = `0${DASH}${width - 1}, ${width}${DASH}${2 * width - 1}, and so on`;
+    const surface = choiceSurface(r, {
+      prompt: `${tale.lead(who)} There are ${count(n, noun, tale.many)}. Group the ${unitWord} into intervals of ${width} ${unitWord}: ${bands}. The numbers are: ${values.join(", ")}. ${buildAsk}`,
+      options: [
+        { label: correct, correct: true as const },
+        ...wrongs.slice(0, 3),
+      ],
+      hint: `Sort the numbers into intervals of ${width} ${unitWord}. There are ${count(n, noun, tale.many)}. Each interval includes both end values. Count how many listed numbers fall in each interval.`,
+      explanation: [
+        `Each interval covers ${width} ${unitWord}, starts at 0, and includes both end values, so 0 belongs in the first interval.`,
+        `The first interval is 0 to ${width - 1}. It holds ${count(counts[0]!, noun, tale.many)}.`,
+        `The other intervals hold ${count(counts[1]!, noun, tale.many)}, ${count(counts[2]!, noun, tale.many)} and ${count(counts[3]!, noun, tale.many)}.`,
+        "The matching table is the one with those counts.",
+      ],
+      label: "Choose the answer",
+    });
+    if (!surface) throw new Error("Need three different tables");
+    return finish(meta, seed, surface);
+  }
+  const firstTwo = counts[0]! + counts[1]!;
+  const last = counts[3]!;
+  const diff = firstTwo - last;
+  const rows = bounds
+    .map(([a, b], i) => `${a}${DASH}${b} has ${count(counts[i]!, noun)}.`)
+    .join(" ");
+  const many = tale.many;
+  const compareAsk = [
+    `How many more ${many} are in the first two intervals together than in the last interval?`,
+    `How many more ${many} do the first two intervals together have than the last interval?`,
+    `How many more ${many} are in the first two intervals combined than in the last interval?`,
+  ][r(0, 2)]!;
+  const options: ChoiceOption[] = [
+    { label: count(diff, noun), correct: true as const },
+    {
+      label: count(firstTwo, noun),
+      feedback:
+        "That is the first two intervals added, without subtracting the last interval.",
+    },
+    {
+      label: count(firstTwo + last, noun),
+      feedback: "That adds the last interval instead of subtracting it.",
+    },
+    {
+      label: count(diff + 1, noun),
+      feedback: "That is one more than the difference.",
+    },
+  ];
+  const surface = choiceSurface(r, {
+    prompt: `${tale.lead(who)} ${rows} Each interval includes both of its end values. ${compareAsk}`,
+    options,
+    hint: `The first interval, from 0 to ${width - 1}, has ${count(counts[0]!, noun, many)}. Add the next interval's count to that, then subtract the last interval.`,
+    explanation: [
+      `The first interval ends at ${width - 1}, so both end values belong in it. The count is how many ${many} fall in that interval, not the size of the interval.`,
+      `The first two intervals together hold ${count(firstTwo, noun, many)}.`,
+      `The last interval holds ${count(last, noun, many)}.`,
+      `Subtract: ${firstTwo} − ${last} = ${diff}.`,
+      `The difference is ${count(diff, noun, many)}.`,
+    ],
+    label: "Choose the answer",
+  });
+  if (!surface) throw new Error("Need three different differences");
+  return finish(meta, seed, surface);
+}
+
+const BAR_STEPS = [5, 10, 25, 50, 100] as const;
+
+function scaledBarGrade4(
+  meta: TemplateMetadata,
+  seed: string,
+  r: Random,
+): GeneratedProblem {
+  const step = BAR_STEPS[r(0, BAR_STEPS.length - 1)]!;
+  const lines = r(4, 10);
+  const max = step * lines;
+  const grain = halfStep(step);
+  const slots = max / grain;
+  const context = barStory(r, step);
+  const heights = shuffle(
+    r,
+    Array.from({ length: slots }, (_, i) => (i + 1) * grain),
+  ).slice(0, 4);
+  if (new Set(heights).size < 4) throw new Error("Need four bar heights");
+  const labels = [...context.labels];
+  const trio = shuffle(r, [0, 1, 2, 3]).slice(0, 3);
+  const ranked = [...trio].sort((a, b) => heights[b]! - heights[a]!);
+  const high = ranked[0]!;
+  const mid = ranked[1]!;
+  const low = ranked[2]!;
+  const diff = heights[high]! + heights[mid]! - heights[low]!;
+  if (diff <= 0) throw new Error("Need a positive difference");
+  const pair = shuffle(r, [high, mid]);
+  const a = labels[pair[0]!]!;
+  const b = labels[pair[1]!]!;
+  const c = labels[low]!;
+  const sum = heights[pair[0]!]! + heights[pair[1]!]!;
+  const ask = [
+    `How many more ${context.unit} are in ${a} and ${b} together than in ${c}?`,
+    `How many fewer ${context.unit} does ${c} have than ${a} and ${b} together?`,
+    `${a} and ${b} together have how many more ${context.unit} than ${c}?`,
+  ][r(0, 2)]!;
+  const scaleLine = [
+    `Each line on the side counts as ${step} ${context.unit}.`,
+    `Each mark on the side stands for ${step} ${context.unit}.`,
+    `The scale counts by ${step} ${context.unit}.`,
+  ][r(0, 2)]!;
+  const halfway = heights.some((h) => h % step !== 0);
+  const surface = numberSurface({
+    prompt: `${context.lead} ${ask} ${scaleLine}`,
+    answer: String(diff),
+    hint: `Read the bar graph scale. Each line counts as ${step}. Read the bars for ${a}, ${b} and ${c}. Add the first two readings, then subtract the third.`,
+    explanation: [
+      halfway
+        ? `The scale counts by ${step}. A bar between two lines is the halfway value, ${step / 2} more than the line below it.`
+        : `The scale counts by ${step}. Read each bar against that scale.`,
+      labels
+        .map(
+          (label, i) => `${label} shows ${counted(heights[i]!, context.one)}`,
+        )
+        .join(", ") + ".",
+      `${a} and ${b} together are ${shown(heights[pair[0]!]!)} + ${shown(heights[pair[1]!]!)} = ${shown(sum)}.`,
+      `Subtract ${c}: ${shown(sum)} − ${shown(heights[low]!)} = ${shown(diff)}.`,
+      `The difference is ${counted(diff, context.one)}.`,
+    ],
+  });
+  return finish(meta, seed, {
+    ...surface,
+    figure: {
+      kind: "scaled-bar-graph",
+      categories: labels.map((label, i) => ({ label, value: heights[i]! })),
+      step,
+      max,
+      unit: context.unit,
+    },
+  });
+}
+
+export const generateGrade4DataProblem = dispatch(grade4DataTemplates, {
+  "line-plot-build-slots": (seed) =>
+    generateOne(metaOf("line-plot-build-slots"), seed, (r) =>
+      buildSlots(metaOf("line-plot-build-slots"), seed, r),
+    ),
+  "line-plot-data-match": (seed) =>
+    generateOne(metaOf("line-plot-data-match"), seed, (r) =>
+      dataMatch(metaOf("line-plot-data-match"), seed, r),
+    ),
+  "line-plot-center-range": (seed) =>
+    generateOne(metaOf("line-plot-center-range"), seed, (r) =>
+      centerRange(metaOf("line-plot-center-range"), seed, r),
+    ),
+  "frequency-table-grade4": (seed) =>
+    generateOne(metaOf("frequency-table-grade4"), seed, (r) =>
+      frequencyTable(metaOf("frequency-table-grade4"), seed, r),
+    ),
+  "scaled-bar-grade4": (seed) =>
+    generateOne(metaOf("scaled-bar-grade4"), seed, (r) =>
+      scaledBarGrade4(metaOf("scaled-bar-grade4"), seed, r),
+    ),
+});

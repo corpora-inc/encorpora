@@ -56,7 +56,7 @@ trigonometry|3|2|radians-unit-circle,trigonometric-graphs,inverse-trigonometry,t
 complex-numbers|2|1|complex-numbers,complex-plane,complex-conjugates,complex-distance,complex-factorization,fundamental-theorem-algebra
 vectors-matrices|1|1|vectors,matrices,vector-modeling,matrix-data,matrix-properties,matrix-inverses,matrix-transformations,matrix-systems
 advanced-models|1|1|parametric-models,polar-coordinates,model-validation,binomial-theorem
-data-displays|4|4|sort-and-count,categorical-data,line-plots,picture-bar-graphs,scaled-graphs,fraction-line-plots,fraction-plot-arithmetic,fraction-plot-computation,distribution-plots
+data-displays|4|4|sort-and-count,categorical-data,line-plots,picture-bar-graphs,scaled-graphs,fraction-line-plots,fraction-plot-arithmetic,fraction-plot-computation,distribution-plots,frequency-bar-graphs
 statistics|4|4|statistical-questions,statistics-mean,mean-median,variability,signed-data-summaries,compare-distributions,normal-distributions,statistical-summary-comparison
 bivariate-data|4|4|scatterplots,two-way-tables,residuals-correlation,categorical-association,regression-interpretation
 statistical-inference|3|3|sampling,study-design,statistical-inference,simulation-model-checks,sampling-margin-error,randomization-tests,statistical-report-critique,causal-claims
