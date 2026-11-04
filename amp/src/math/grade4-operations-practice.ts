@@ -342,9 +342,11 @@ function factsPrompt(
     ]);
   }
   if (!applied) {
-    const frame = r(0, 2);
-    if (frame === 0) return `What is ${product} ÷ ${teen}?`;
+    const who = storyName((n) => r(0, n - 1));
+    const frame = r(0, 3);
+    if (frame === 0) return `${who} asks: what is ${product} ÷ ${teen}?`;
     if (frame === 1) return `${product} divided by ${teen} is how many?`;
+    if (frame === 2) return `${who} writes ${product} ÷ ${teen}. What is the quotient?`;
     return `${product} split into equal groups of ${teen} makes how many groups?`;
   }
   return pick(r, [
@@ -459,6 +461,36 @@ const GROWTHS = [
     lead: "Theo is laying cards in a growing pattern.",
     piece: "card",
   },
+  {
+    noun: "tile",
+    title: "Garden path, steps 1 to 3",
+    lead: "Jamal is laying a garden path.",
+    piece: "garden tile",
+  },
+  {
+    noun: "shell",
+    title: "Shell rows, steps 1 to 3",
+    lead: "Ava is lining up shells from the beach.",
+    piece: "shell",
+  },
+  {
+    noun: "flower",
+    title: "Flower rows, steps 1 to 3",
+    lead: "Noah is planting a growing row of flowers.",
+    piece: "flower",
+  },
+  {
+    noun: "book",
+    title: "Book stacks, steps 1 to 3",
+    lead: "Sofia is stacking books for the book fair.",
+    piece: "book",
+  },
+  {
+    noun: "board",
+    title: "Porch boards, steps 1 to 3",
+    lead: "A builder is adding boards to a porch step.",
+    piece: "board",
+  },
 ] as const;
 
 function tileFigure(
@@ -537,9 +569,9 @@ function factorPrompt(r: Random, n: number): string {
   const name = storyName((n) => r(0, n - 1));
   const frame = r(0, 5);
   if (frame === 0)
-    return `Select every factor of ${n}. A factor divides ${n} with nothing left over. Together, the factors make every factor pair.`;
+    return `${name} lists the factors of ${n}. Select every factor of ${n}. A factor divides ${n} with nothing left over.`;
   if (frame === 1)
-    return `Which of these numbers are factors of ${n}? Keep a number only when it divides ${n} with nothing left over.`;
+    return `${name} checks a list for factors of ${n}. Which of these numbers divide ${n} with nothing left over?`;
   if (frame === 2)
     return `Which of these numbers go into ${n} with no remainder? Select every factor of ${n}.`;
   if (frame === 3)
@@ -708,6 +740,14 @@ const quotientGenerate = defineGenerate(
           (n) => n !== rem && n >= 0 && n < d + 2,
         );
         const story = quotientStory(r, grouped(dividend), grouped(d));
+        const tail =
+          axes.form === "fraction"
+            ? "Give the quotient and the remainder as a fraction of the divisor."
+            : pick(r, [
+                "Give the quotient and the remainder.",
+                "How many full groups are there, and what is the remainder?",
+                "What is the quotient, and what is left over?",
+              ]);
         if (axes.form === "fraction") {
           const built = inlineSentence([
             "The quotient is ",
@@ -717,7 +757,7 @@ const quotientGenerate = defineGenerate(
             `/${d} of the divisor.`,
           ]);
           return multiPartProblem(meta, seed, r, {
-            prompt: `${story} Give the quotient and the remainder as a fraction of the divisor.`,
+            prompt: `${story} ${tail}`,
             layout: "inline",
             label: "Choose the quotient and the numerator",
             slots: built.slots,
@@ -739,7 +779,7 @@ const quotientGenerate = defineGenerate(
           ".",
         ]);
         return multiPartProblem(meta, seed, r, {
-          prompt: `${story} Give the quotient and the remainder.`,
+          prompt: `${story} ${tail}`,
           layout: "inline",
           label: "Choose the quotient and the remainder",
           slots: built.slots,

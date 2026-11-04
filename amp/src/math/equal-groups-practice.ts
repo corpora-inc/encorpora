@@ -15,6 +15,7 @@ import {
   sweepChoose,
 } from "./number-domain-axes.js";
 import {
+  comparisonAsk,
   comparisonCast,
   groupIntro,
   groupScenes,
@@ -366,7 +367,10 @@ export function generateEqualGroupsProblem(
             `Mia has ${shown(small)} tokens. Taking away ${shown(factor)} from ${shown(large)} is the additive mistake.`,
           ];
         } else {
-          prompt = `${cast.b} has ${shown(large)} ${cast.noun}. ${cast.b} has ${shown(factor)} times as many ${cast.noun} as ${cast.a}. How many ${cast.noun} does ${cast.a} have?`;
+          prompt =
+            large > 80
+              ? `A collection has ${shown(large)} ${cast.noun}. That is ${shown(factor)} times as many ${cast.noun} as ${cast.a} has. How many ${cast.noun} does ${cast.a} have?`
+              : `${cast.b} has ${shown(large)} ${cast.noun}. ${cast.b} has ${shown(factor)} times as many ${cast.noun} as ${cast.a}. How many ${cast.noun} does ${cast.a} have?`;
           label = `${cast.a}'s ${cast.noun}`;
           hint = `${shown(large)} is ${shown(factor)} times ${cast.a}'s ${cast.noun}. Divide ${shown(large)} by ${shown(factor)}. Do not subtract ${shown(factor)}.`;
           explanation = [
@@ -388,7 +392,7 @@ export function generateEqualGroupsProblem(
           label = "Sam's tokens";
           hint = `${shown(factor)} times as many as ${shown(small)} means ${shown(factor)} copies of ${shown(small)}, not ${shown(small)} + ${shown(factor)}.`;
         } else {
-          prompt = `${cast.a} has ${shown(small)} ${cast.noun}. ${cast.b} has ${shown(factor)} times as many ${cast.noun} as ${cast.a}. How many ${cast.noun} does ${cast.b} have?`;
+          prompt = comparisonAsk(cast, shown(small), shown(factor));
           label = `${cast.b}'s ${cast.noun}`;
           hint = `${shown(factor)} times as many as ${shown(small)} means ${shown(factor)} copies of ${shown(small)}, not ${shown(small)} + ${shown(factor)}.`;
         }

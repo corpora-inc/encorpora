@@ -466,13 +466,15 @@ const buildTimesAsManyCounts: Generator<AxisSet> = ({ meta, seed, r }) => {
     r,
     names.map((n, i) => ({ n, c: counts[i]! })),
   );
-  const frame = r(0, 2);
+  const frame = r(0, 3);
   const lead =
     frame === 0
-      ? `${name} counted the ${scene.kind} in the ${scene.place}. Complete the sentence.`
+      ? `${name} counted the ${scene.kind} from the ${scene.place}. Complete the sentence.`
       : frame === 1
-        ? `The table shows what ${name} sorted in the ${scene.place}. Complete the sentence.`
-        : `${name} made a tally of the ${scene.kind}. Use the table to complete the sentence.`;
+        ? `The table is ${name}'s tally of the ${scene.kind}. Complete the sentence.`
+        : frame === 2
+          ? `${name} made a tally of the ${scene.kind}. Use the table to complete the sentence.`
+          : `Look at the ${scene.kind} ${name} sorted from the ${scene.place}. Complete the sentence.`;
   const sentenceStart =
     frame === 1
       ? [

@@ -108,6 +108,36 @@ const holder = (scene: GroupScene, large: boolean): string => {
   return place[scene.unit] ?? "The warehouse has";
 };
 
+/** Larger-unknown comparison, with a verb that fits the noun. */
+export function comparisonAsk(
+  cast: { a: string; b: string; noun: string },
+  small: string,
+  factor: string,
+): string {
+  const { a, b, noun } = cast;
+  if (noun === "points")
+    return `${a} scored ${small} points. ${b} scored ${factor} times as many points. How many points did ${b} score?`;
+  if (noun === "pages")
+    return `${a} read ${small} pages. ${b} read ${factor} times as many pages. How many pages did ${b} read?`;
+  if (noun === "dollars")
+    return `${a} saved ${small} dollars. ${b} saved ${factor} times as many dollars. How many dollars did ${b} save?`;
+  if (noun === "cookies")
+    return `${a} baked ${small} cookies. ${b} baked ${factor} times as many cookies. How many cookies did ${b} bake?`;
+  if (noun === "tulips")
+    return `${a} planted ${small} tulips. ${b} planted ${factor} times as many tulips. How many tulips did ${b} plant?`;
+  if (noun === "blocks")
+    return `${a} walked ${small} blocks. ${b} walked ${factor} times as many blocks. How many blocks did ${b} walk?`;
+  if (noun === "songs")
+    return `${a} learned ${small} songs. ${b} learned ${factor} times as many songs. How many songs did ${b} learn?`;
+  if (noun === "ants")
+    return `${a} counted ${small} ants. ${b} counted ${factor} times as many ants. How many ants did ${b} count?`;
+  if (noun === "fish")
+    return `${a} has ${small} fish. ${b} has ${factor} times as many fish. How many fish does ${b} have?`;
+  if (noun === "cards")
+    return `${a} collected ${small} cards. ${b} collected ${factor} times as many cards. How many cards does ${b} have?`;
+  return `${a} has ${small} ${noun}. ${b} has ${factor} times as many ${noun} as ${a}. How many ${noun} does ${b} have?`;
+}
+
 export function groupIntro(
   scene: GroupScene,
   total: string,
@@ -119,17 +149,17 @@ export function groupIntro(
 
 /** A short lead that adds no digits, so an estimate's core sentence still parses. */
 export const estimateLead: Record<string, string> = {
-  sports: "The coach wants a quick guess.",
-  pets: "The shelter is planning supplies.",
-  cooking: "The baker wants a quick guess.",
-  garden: "The garden club wants a quick guess.",
-  reading: "The librarian wants a quick guess.",
-  saving: "The class wants a quick guess of the money.",
-  cards: "The card club wants a quick guess.",
-  travel: "The family wants a quick guess.",
-  science: "The lab wants a quick guess.",
-  music: "The band wants a quick guess.",
-  school: "The teacher wants a quick guess.",
+  sports: "The coach checks the equipment order before practice.",
+  pets: "The shelter is about to order more supplies.",
+  cooking: "The baker plans the morning bake.",
+  garden: "The garden club plans a planting day.",
+  reading: "The librarian plans the book carts.",
+  saving: "The class plans how far the fundraiser money will go.",
+  cards: "The card club plans packs for the tournament.",
+  travel: "The family plans the drive.",
+  science: "The lab plans trays for the fair.",
+  music: "The band plans folders for the concert.",
+  school: "The teacher plans cups of pencils for the tables.",
 };
 
 export const timesCast: Record<
