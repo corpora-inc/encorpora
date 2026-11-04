@@ -12,13 +12,16 @@ import { decimal, fixed } from "./decimal-models";
 
 /** Below one is the legacy surface. Above one reaches 2 3/10 = 2.30. */
 export const tenthsMagnitudeAxes = {
-  magnitude: defineAxis("magnitude", ["below-one", "above-one"] as const),
+  magnitude: defineAxis("magnitude", ["below-one", "above-one"] as const, {
+    since: 2,
+  }),
 } as const;
 /** Story lead-in. Plain keeps the stored equation. Above one is always a story. */
 export const tenthsStoryAxes = {
   setting: defineAxis("setting", ["plain", "applied"] as const, {
     weights: [1, 2],
     silentLegacy: true,
+    since: 2,
   }),
 } as const;
 
@@ -53,7 +56,8 @@ const definitions = rows
 export const decimalTemplates: readonly TemplateMetadata[] = definitions.map(
   ({ id, title, skillId, gradeBand, description }) => ({
     id,
-    version: 1,
+    version: id === "tenths-as-hundredths" ? 2 : 1,
+    ...(id === "tenths-as-hundredths" ? { reprintsFrom: 1 } : {}),
     title,
     skillId,
     gradeBand,
