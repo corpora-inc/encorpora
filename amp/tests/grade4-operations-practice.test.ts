@@ -81,7 +81,12 @@ test("two hundred seeds match an independent calculation", () => {
         assert.equal(/area model|rows of/.test(prompt), false);
       } else if (id === "facts-to-twelve") {
         const [a, b] = nums(prompt);
-        if (prompt.includes("×")) {
+        if (
+          prompt.includes("×") ||
+          prompt.includes(" in each ") ||
+          prompt.includes(" a week for ") ||
+          prompt.includes(" on each ")
+        ) {
           assert.ok(a === 11 || a === 12 || b === 11 || b === 12);
           assert.equal(Number(problem.answer), a! * b!);
         } else {
@@ -223,4 +228,26 @@ test("two hundred seeds match an independent calculation", () => {
   assert.ok(seen["factor-pairs-select"].has("to-100"));
   assert.ok(seen["factor-pairs-select"].has("to-144"));
   assert.ok([...seen["quotient-remainder-one-digit"]].length >= 1);
+});
+
+test("facts through 12 use a different prompt on every book seed", () => {
+  const prompts = Array.from(
+    { length: 12 },
+    (_, i) => generateProblem("facts-to-twelve", `book-${i}`).public.prompt,
+  );
+  assert.equal(new Set(prompts).size, prompts.length, prompts.join("\n"));
+  const teams = prompts.filter((prompt) =>
+    prompt.includes("players form equal teams"),
+  );
+  assert.ok(teams.length <= 1);
+});
+
+test("one-digit quotients use a container that can hold that many", () => {
+  const bad =
+    /coolers that hold|players into teams|bin holds exactly|shelves that hold|cups of|inches of ribbon|magazines into bundles/;
+  for (let i = 0; i < 40; i++) {
+    const prompt = generateProblem("quotient-remainder-one-digit", `book-${i}`)
+      .public.prompt;
+    assert.equal(bad.test(prompt), false, prompt);
+  }
 });

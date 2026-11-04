@@ -315,47 +315,90 @@ function twelveProductSteps(teen: number, other: number): string[] {
   ];
 }
 
-/** The dividend is the first number and 11 or 12 is the second, so a prompt
- * never leads with the divisor. Applied items are about one third. */
+/** The two factors, or the dividend then 11 or 12, are the first numbers.
+ * Bare facts are the majority. Each applied sentence is its own frame, so
+ * the same fact is not asked twice in the same words. */
+/** Frame choice is the seed, not the fact draw, so two seeds that land on
+ * the same 11 or 12 fact still ask it in different words. */
+function factsFrame(seed: string, count: number): number {
+  return (
+    createHash("sha256")
+      .update(`facts-to-twelve-frame\0${seed}`)
+      .digest()
+      .readUInt32BE(0) % count
+  );
+}
+
 function factsPrompt(
   r: Random,
+  seed: string,
   teen: number,
   other: number,
   multiply: boolean,
 ): string {
   const product = teen * other;
   const applied = r(0, 2) === 0;
-  const name = applied ? storyName((n) => r(0, n - 1)) : "";
-  if (multiply) {
-    if (!applied) {
-      const frame = r(0, 2);
-      if (frame === 0) return `What is ${teen} × ${other}?`;
-      if (frame === 1) return `Find the product ${teen} × ${other}.`;
-      return `Multiply ${teen} × ${other}.`;
-    }
-    return pick(r, [
-      `${name} buys ${teen} packs with ${other} stickers in each pack. How many stickers is ${teen} × ${other} in all?`,
-      `A carton holds ${teen} eggs. ${name} needs ${other} cartons. How many eggs is ${teen} × ${other} in all?`,
-      `${name} sets ${teen} rows with ${other} chairs in each row. How many chairs is ${teen} × ${other} in all?`,
-      `${name} saves ${teen} dollars a week for ${other} weeks. How many dollars does ${name} save? Use ${teen} × ${other}.`,
-      `Each shelf holds ${other} books. ${name} fills ${teen} shelves. How many books is ${teen} × ${other} in all?`,
-    ]);
-  }
   if (!applied) {
-    const who = storyName((n) => r(0, n - 1));
-    const frame = r(0, 3);
-    if (frame === 0) return `What is ${product} ÷ ${teen}?`;
-    if (frame === 1) return `${product} divided by ${teen} is how many?`;
-    if (frame === 2)
-      return `${who} shares ${product} cards equally among ${teen} friends. How many cards does each friend get?`;
-    return `${product} players form equal teams of ${teen}. How many teams is that?`;
+    if (multiply)
+      return [
+        `What is ${teen} × ${other}?`,
+        `Find the product ${teen} × ${other}.`,
+        `Multiply ${teen} × ${other}.`,
+        `${teen} × ${other} equals what?`,
+        `What is the product ${teen} × ${other}?`,
+        `Write the product ${teen} × ${other}.`,
+      ][factsFrame(seed, 6)]!;
+    return [
+      `What is ${product} ÷ ${teen}?`,
+      `${product} divided by ${teen} is how many?`,
+      `Find the quotient ${product} ÷ ${teen}.`,
+      `${product} ÷ ${teen} equals what?`,
+      `What quotient does ${product} ÷ ${teen} give?`,
+      `What is the quotient of ${product} and ${teen}?`,
+    ][factsFrame(seed, 6)]!;
   }
-  return pick(r, [
+  const name = storyName((n) => r(0, n - 1));
+  if (multiply) {
+    const frames = [
+      `${name} buys ${teen} packs with ${other} stickers in each pack. How many stickers does ${name} have?`,
+      `${name} sets ${teen} rows with ${other} chairs in each row. How many chairs is that?`,
+      `${name} saves ${teen} dollars a week for ${other} weeks. How many dollars does ${name} save?`,
+      `${name} coaches ${teen} teams with ${other} players on each team. How many players is that?`,
+      `${name} fills ${teen} pages with ${other} stamps on each page. How many stamps is that?`,
+    ];
+    if (other === 6 || other === 12)
+      frames.push(
+        `${name} fills ${teen} cartons with ${other} eggs in each carton. How many eggs is that?`,
+      );
+    if (other === 8)
+      frames.push(
+        `${name} packs ${teen} boxes with ${other} crayons in each box. How many crayons is that?`,
+      );
+    if (other === 4)
+      frames.push(
+        `${name} puts ${other} photos on each of ${teen} album pages. How many photos is that?`,
+      );
+    if (other >= 6)
+      frames.push(
+        `${name} strings ${teen} strands with ${other} beads on each strand. How many beads is that?`,
+      );
+    return frames[factsFrame(seed, frames.length)]!;
+  }
+  const frames = [
     `${name} shares ${product} cards equally among ${teen} friends. How many cards does each friend get?`,
-    `${product} eggs go into cartons of ${teen}. How many cartons is that?`,
-    `${name} has ${product} dollars to spend on tickets that cost ${teen} dollars each. How many tickets can ${name} buy?`,
-    `${product} players form equal teams of ${teen}. How many teams is that?`,
-  ]);
+    `${name} reads ${product} pages over ${teen} days. How many pages does ${name} read each day?`,
+    `${name}'s family drives ${product} miles over ${teen} weeks. How many miles is that each week?`,
+    `${name} has ${product} dollars for tickets that cost ${teen} dollars each. How many tickets can ${name} buy?`,
+    `${product} beads are shared equally onto ${teen} strands. How many beads are on one strand?`,
+    teen === 11
+      ? `${product} players form equal soccer teams of ${teen}. How many teams is that?`
+      : `${product} stickers go on sheets of ${teen}. How many sheets is that?`,
+  ];
+  if (teen === 12)
+    frames.push(
+      `${product} eggs go into cartons of ${teen}. How many cartons is that?`,
+    );
+  return frames[factsFrame(seed, frames.length)]!;
 }
 
 function factsToTwelve(meta: TemplateMetadata, seed: string): GeneratedProblem {
@@ -367,7 +410,7 @@ function factsToTwelve(meta: TemplateMetadata, seed: string): GeneratedProblem {
   if (operation === "multiply") {
     const product = teen * other;
     return numberProblem(meta, seed, {
-      prompt: factsPrompt(r, teen, other, true),
+      prompt: factsPrompt(r, seed, teen, other, true),
       answer: product,
       label: "Product",
       hint: `Split ${teen} into 10 and ${teen - 10}. Multiply each part by ${other}, then add.`,
@@ -378,7 +421,7 @@ function factsToTwelve(meta: TemplateMetadata, seed: string): GeneratedProblem {
   }
   const dividend = teen * other;
   return numberProblem(meta, seed, {
-    prompt: factsPrompt(r, teen, other, false),
+    prompt: factsPrompt(r, seed, teen, other, false),
     answer: other,
     label: "Quotient",
     hint: `${dividend} ÷ ${teen} asks how many groups of ${teen} make ${dividend}. Think of the multiplication fact that uses ${teen}.`,
@@ -694,23 +737,136 @@ function multiplesSelect(
   });
 }
 
-/** Dividend first, then the one-digit divisor, so no other number leads. */
-function quotientStory(r: Random, dividend: string, divisor: string): string {
-  const name = storyName((n) => r(0, n - 1));
-  return pick(r, [
-    `Divide ${dividend} by ${divisor}.`,
-    `${name} packs ${dividend} books onto shelves that hold ${divisor} books each.`,
-    `${name} splits ${dividend} players into teams of ${divisor}.`,
-    `A bakery packs ${dividend} cookies into boxes of ${divisor}.`,
-    `${name} cuts ${dividend} inches of ribbon into pieces of ${divisor} inches.`,
-    `A warehouse stacks ${dividend} eggs into cartons of ${divisor}.`,
-    `The card shop bundles ${dividend} cards into packs of ${divisor}.`,
-    `${name} sorts ${dividend} pencils into cups of ${divisor}.`,
-    `${name} loads ${dividend} juice boxes into coolers that hold ${divisor} each.`,
-    `A library ties ${dividend} magazines into bundles of ${divisor}.`,
-    `${name} plants ${dividend} seeds in rows of ${divisor}.`,
-    `The band shares ${dividend} sheets of music into folders of ${divisor}.`,
-  ]);
+/** A container whose size is the divisor, at a place that really holds
+ * hundreds or thousands. The dividend is the first number and the divisor
+ * is the second. A bare division is the fraction form, and one of the
+ * whole-number forms. */
+const quotientScenes: Record<
+  number,
+  { lead: (n: string, d: string) => string; ask: string }[]
+> = {
+  2: [
+    {
+      lead: (n, d) =>
+        `The uniform room has ${n} socks to bundle into pairs of ${d}.`,
+      ask: "How many full pairs can be made, and how many socks are left over?",
+    },
+    {
+      lead: (n, d) => `The delivery vans drove ${n} miles over ${d} weeks.`,
+      ask: "How many miles belong to each week, and how many miles are left over?",
+    },
+  ],
+  3: [
+    {
+      lead: (n, d) =>
+        `The sporting-goods warehouse has ${n} tennis balls to pack into cans of ${d}.`,
+      ask: "How many full cans can be filled, and how many tennis balls are left over?",
+    },
+    {
+      lead: (n, d) =>
+        `The grocery warehouse has ${n} juice boxes to pack into packs of ${d}.`,
+      ask: "How many full packs can be filled, and how many juice boxes are left over?",
+    },
+  ],
+  4: [
+    {
+      lead: (n, d) =>
+        `The photo studio has ${n} photos to put on album pages of ${d}.`,
+      ask: "How many full album pages can be filled, and how many photos are left over?",
+    },
+    {
+      lead: (n, d) => `The delivery vans drove ${n} miles over ${d} weeks.`,
+      ask: "How many miles belong to each week, and how many miles are left over?",
+    },
+  ],
+  5: [
+    {
+      lead: (n, d) =>
+        `The ticket office has ${n} tickets to put into books of ${d}.`,
+      ask: "How many full books can be filled, and how many tickets are left over?",
+    },
+    {
+      lead: (n, d) =>
+        `The garden center has ${n} seeds to put into packets of ${d}.`,
+      ask: "How many full packets can be filled, and how many seeds are left over?",
+    },
+  ],
+  6: [
+    {
+      lead: (n, d) =>
+        `The packing plant has ${n} eggs to put into cartons of ${d}.`,
+      ask: "How many full cartons can be filled, and how many eggs are left over?",
+    },
+    {
+      lead: (n, d) =>
+        `The bottling plant has ${n} bottles to pack into packs of ${d}.`,
+      ask: "How many full packs can be filled, and how many bottles are left over?",
+    },
+  ],
+  7: [
+    {
+      lead: (n, d) => `The fourth grade logged ${n} pages over ${d} days.`,
+      ask: "How many pages belong to each day, and how many pages are left over?",
+    },
+    {
+      lead: (n, d) =>
+        `The bead supplier has ${n} beads to string into strands of ${d}.`,
+      ask: "How many full strands can be strung, and how many beads are left over?",
+    },
+  ],
+  8: [
+    {
+      lead: (n, d) =>
+        `The sticker factory has ${n} stickers to put on sheets of ${d}.`,
+      ask: "How many full sheets can be filled, and how many stickers are left over?",
+    },
+    {
+      lead: (n, d) =>
+        `The supply warehouse has ${n} crayons to pack into boxes of ${d}.`,
+      ask: "How many full boxes can be filled, and how many crayons are left over?",
+    },
+  ],
+  9: [
+    {
+      lead: (n, d) =>
+        `The bead supplier has ${n} beads to string into strands of ${d}.`,
+      ask: "How many full strands can be strung, and how many beads are left over?",
+    },
+    {
+      lead: (n, d) => `The bakery has ${n} muffins to pack into boxes of ${d}.`,
+      ask: "How many full boxes can be filled, and how many muffins are left over?",
+    },
+  ],
+};
+
+function quotientPrompt(
+  r: Random,
+  dividend: string,
+  divisor: string,
+  fraction: boolean,
+): string {
+  if (r(0, 7) === 0)
+    return fraction
+      ? `Divide ${dividend} by ${divisor}. Give the quotient and the remainder as a fraction of the divisor.`
+      : `Divide ${dividend} by ${divisor}. Give the quotient and the remainder.`;
+  const d = Number(divisor.replace(/,/g, ""));
+  const scene = pick(r, quotientScenes[d]!);
+  const lead = scene.lead(dividend, divisor);
+  if (fraction) {
+    if (lead.startsWith("Divide "))
+      return `${lead} Give the quotient and the remainder as a fraction of the divisor.`;
+    const packed = scene.ask.match(
+      /^How many full (.+) can be (?:filled|made|strung), and how many /,
+    );
+    if (packed) {
+      const groups = packed[1]!;
+      const one = groups === "boxes" ? "box" : groups.replace(/s$/, "");
+      const article = /^[aeiou]/i.test(one) ? "an" : "a";
+      return `${lead} How many full ${groups} can be filled, and what fraction of ${article} ${one} is left?`;
+    }
+    return `${lead} Give the quotient and the remainder as a fraction of the divisor.`;
+  }
+  return `${lead} ${scene.ask}`;
 }
 
 const quotientGenerate = defineGenerate(
@@ -740,15 +896,12 @@ const quotientGenerate = defineGenerate(
         const rWrong = [0, d - rem, rem + 1, d].filter(
           (n) => n !== rem && n >= 0 && n < d + 2,
         );
-        const story = quotientStory(r, grouped(dividend), grouped(d));
-        const tail =
-          axes.form === "fraction"
-            ? "Give the quotient and the remainder as a fraction of the divisor."
-            : pick(r, [
-                "Give the quotient and the remainder.",
-                "How many full groups are there, and what is the remainder?",
-                "What is the quotient, and what is left over?",
-              ]);
+        const story = quotientPrompt(
+          r,
+          grouped(dividend),
+          grouped(d),
+          axes.form === "fraction",
+        );
         if (axes.form === "fraction") {
           const built = inlineSentence([
             "The quotient is ",
@@ -758,7 +911,7 @@ const quotientGenerate = defineGenerate(
             `/${d} of the divisor.`,
           ]);
           return multiPartProblem(meta, seed, r, {
-            prompt: `${story} ${tail}`,
+            prompt: story,
             layout: "inline",
             label: "Choose the quotient and the numerator",
             slots: built.slots,
@@ -780,7 +933,7 @@ const quotientGenerate = defineGenerate(
           ".",
         ]);
         return multiPartProblem(meta, seed, r, {
-          prompt: `${story} ${tail}`,
+          prompt: story,
           layout: "inline",
           label: "Choose the quotient and the remainder",
           slots: built.slots,

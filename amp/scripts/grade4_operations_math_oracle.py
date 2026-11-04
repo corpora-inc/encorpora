@@ -57,7 +57,12 @@ def solve(public):
         return str(a * b)
     if template == "facts-to-twelve":
         a, b = first_two(prompt)
-        if "×" in prompt:
+        if (
+            "×" in prompt
+            or " in each " in prompt
+            or " a week for " in prompt
+            or " on each " in prompt
+        ):
             require(a in (11, 12) or b in (11, 12), "An 11 or 12 factor")
             return str(a * b)
         require(b in (11, 12) and a % b == 0, "Division by 11 or 12")
