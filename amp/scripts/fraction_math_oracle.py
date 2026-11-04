@@ -212,7 +212,7 @@ def solve_fraction_practice(public):
             maybe_strip(n, d, 'one liter')
             return count*Fraction(n, d)
         frac = re.search(r'(\d+)/(\d+)', prompt)
-        groups = re.search(r'(\d+) (bottles|jars|cans|cups|batches|laps|blocks|sessions|drills|pieces|tabs|stickers|beads|beds|strips)\b', prompt)
+        groups = re.search(r'(\d+) (bottles|jars|cans|cups|batches|laps|blocks|sessions|drills|pieces|scoops|stickers|beads|beds|strips)\b', prompt)
         require(frac is not None and groups is not None, 'Unrecognized fraction prompt: ' + prompt)
         n, d = int(frac[1]), int(frac[2])
         count = int(groups[1])

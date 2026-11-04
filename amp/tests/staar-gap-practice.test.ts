@@ -405,10 +405,10 @@ test("ordering families sort correctly in the stated direction", () => {
   for (const c of ofVariant("staar-order-decimals", "list-ascending").concat(
     ofVariant("staar-order-decimals", "list-descending"),
   )) {
-    const given = /numbers ([\d., ]+) in order/
-      .exec(c.problem.public.prompt)![1]!
-      .split(", ")
-      .map(Number);
+    const given = (c.problem.public.prompt.match(/\d+\.\d+/g) ?? []).map(
+      Number,
+    );
+    assert.equal(given.length, 4, c.problem.public.prompt);
     const listed = strip(correctLabel(c)).split(",\\ ").map(Number);
     assert.deepEqual(
       [...listed].sort((x, y) => x - y),
@@ -423,10 +423,8 @@ test("ordering families sort correctly in the stated direction", () => {
   }
   for (const c of ofVariant("staar-order-decimals", "kth")) {
     const prompt = c.problem.public.prompt;
-    const given = /are ([\d., ]+) \w+\./
-      .exec(prompt)![1]!
-      .split(", ")
-      .map(Number);
+    const given = (prompt.match(/\d+\.\d+/g) ?? []).map(Number);
+    assert.equal(given.length, 4, prompt);
     const word = /which is (\w+)\?/.exec(prompt)![1]!;
     const position = { second: 2, third: 3 }[word as "second"]!;
     assert.equal(

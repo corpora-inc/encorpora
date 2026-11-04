@@ -112,17 +112,17 @@ const diffScenes: readonly DiffScene[] = [
     min: 0.25,
     max: 6,
     prompt: (who, a, b, d) =>
-      `${who} has a ribbon ${fractionAmount(a, d, "foot")} long and cuts off ${fractionAmount(b, d, "foot")}. How much ribbon is left?`,
+      `${who} has a ribbon ${fractionAmount(a, d, "foot")} long. ${who} cuts off ${fractionAmount(b, d, "foot")}. How much ribbon is left?`,
   },
   {
     object: "wood",
     unit: "inch",
     article: "an",
     denoms: UNIT_DENOMS.inch,
-    min: 0.5,
+    min: 0.125,
     max: 8,
     prompt: (who, a, b, d) =>
-      `${who} has a wood shim ${fractionAmount(a, d, "inch", "an")} thick and sands off ${fractionAmount(b, d, "inch", "an")}. How much of the shim is left?`,
+      `${who} has a wood shim ${fractionAmount(a, d, "inch", "an")} thick. ${who} sands off ${fractionAmount(b, d, "inch", "an")}. How much of the shim is left?`,
   },
   {
     object: "bead",
@@ -130,9 +130,9 @@ const diffScenes: readonly DiffScene[] = [
     article: "an",
     denoms: UNIT_DENOMS.inch,
     min: 1 / 16,
-    max: 0.5,
+    max: 1 / 8,
     prompt: (who, a, b, d) =>
-      `${who} lines up seed beads that start ${fractionAmount(a, d, "inch", "an")} wide and covers ${fractionAmount(b, d, "inch", "an")} with thread. How much of that width still shows?`,
+      `${who} lines up seed beads that measure ${fractionAmount(a, d, "inch", "an")} long. ${who} takes off beads that measure ${fractionAmount(b, d, "inch", "an")}. How long is the row now?`,
   },
   {
     object: "rope",
@@ -141,7 +141,7 @@ const diffScenes: readonly DiffScene[] = [
     min: 0.4,
     max: 1,
     prompt: (who, a, b, d) =>
-      `${who} unrolls ${fractionAmount(a, d, "meter")} of rope and coils ${fractionAmount(b, d, "meter")} back up. How much rope stays out?`,
+      `${who} unrolls ${fractionAmount(a, d, "meter")} of rope. ${who} coils ${fractionAmount(b, d, "meter")} back up. How much rope stays out?`,
   },
   {
     object: "tape",
@@ -150,7 +150,7 @@ const diffScenes: readonly DiffScene[] = [
     min: 0.02,
     max: 1.5,
     prompt: (who, a, b, d) =>
-      `${who} has ${fractionAmount(a, d, "meter")} of tape and uses ${fractionAmount(b, d, "meter")} on a label. How much tape is left?`,
+      `${who} has ${fractionAmount(a, d, "meter")} of tape. ${who} uses ${fractionAmount(b, d, "meter")} on a label. How much tape is left?`,
   },
   {
     object: "juice",
@@ -159,7 +159,7 @@ const diffScenes: readonly DiffScene[] = [
     min: 0.125,
     max: 2,
     prompt: (who, a, b, d) =>
-      `${who} has ${fractionAmount(a, d, "liter")} of juice and drinks ${fractionAmount(b, d, "liter")}. How much juice is left?`,
+      `${who} has ${fractionAmount(a, d, "liter")} of juice. ${who} drinks ${fractionAmount(b, d, "liter")}. How much juice is left?`,
   },
   {
     object: "water",
@@ -168,7 +168,7 @@ const diffScenes: readonly DiffScene[] = [
     min: 0.01,
     max: 0.5,
     prompt: (who, a, b, d) =>
-      `${who} measures ${fractionAmount(a, d, "liter")} of water into a cup and pours out ${fractionAmount(b, d, "liter")}. How much water is left in the cup?`,
+      `${who} measures ${fractionAmount(a, d, "liter")} of water into a cup. ${who} pours out ${fractionAmount(b, d, "liter")}. How much water is left in the cup?`,
   },
   {
     object: "practice",
@@ -178,7 +178,7 @@ const diffScenes: readonly DiffScene[] = [
     min: 1 / 6,
     max: 2,
     prompt: (who, a, b, d) =>
-      `${who} planned ${fractionAmount(a, d, "hour", "an")} of piano and has practiced ${fractionAmount(b, d, "hour", "an")}. How much practice time is left?`,
+      `${who} planned ${fractionAmount(a, d, "hour", "an")} of piano. ${who} has practiced ${fractionAmount(b, d, "hour", "an")}. How much practice time is left?`,
   },
   {
     object: "trail",
@@ -196,7 +196,7 @@ const diffScenes: readonly DiffScene[] = [
     min: 0.125,
     max: 1,
     prompt: (who, a, b, d) =>
-      `${who} has ${fractionAmount(a, d, "cup")} of flour and uses ${fractionAmount(b, d, "cup")}. How much flour is left?`,
+      `${who} has ${fractionAmount(a, d, "cup")} of flour. ${who} uses ${fractionAmount(b, d, "cup")}. How much flour is left?`,
   },
   {
     object: "garden",
@@ -205,7 +205,7 @@ const diffScenes: readonly DiffScene[] = [
     min: 0.5,
     max: 1,
     prompt: (who, a, b, d) =>
-      `${who} is edging a garden bed ${fractionAmount(a, d, "meter")} long and has placed ${fractionAmount(b, d, "meter")}. How much of the bed is still bare?`,
+      `${who} is edging a garden bed ${fractionAmount(a, d, "meter")} long. ${who} has placed ${fractionAmount(b, d, "meter")}. How much of the bed is still bare?`,
   },
   {
     object: "paint",
@@ -214,7 +214,7 @@ const diffScenes: readonly DiffScene[] = [
     min: 0.25,
     max: 4,
     prompt: (who, a, b, d) =>
-      `${who} opens a can with ${fractionAmount(a, d, "liter")} of paint and uses ${fractionAmount(b, d, "liter")}. How much paint is left in the can?`,
+      `${who} opens a can with ${fractionAmount(a, d, "liter")} of paint. ${who} uses ${fractionAmount(b, d, "liter")}. How much paint is left in the can?`,
   },
   {
     object: "chocolate",
@@ -223,7 +223,7 @@ const diffScenes: readonly DiffScene[] = [
     min: 0,
     max: 1,
     prompt: (who, a, b, d) =>
-      `${who} has ${a}/${d} of a bar of chocolate cut into ${d} equal pieces and eats ${b}/${d} of the bar. How much of the bar is left?`,
+      `${who} has ${a}/${d} of a chocolate bar left. ${who} eats ${b}/${d} of the bar. How much of the bar is left now?`,
   },
 ];
 
@@ -430,7 +430,7 @@ const groupScenes: readonly GroupScene[] = [
     min: 0.125,
     max: 0.5,
     prompt: (who, groups, bit) =>
-      `Each lap ${who} runs is ${bit}. ${who} runs ${groups} laps. How many miles is that?`,
+      `Each lap ${who} runs is ${bit}. ${who} runs ${groups} laps. How far are the ${groups} laps together?`,
   },
   {
     unit: "mile",
@@ -466,16 +466,25 @@ const groupScenes: readonly GroupScene[] = [
     min: 0.25,
     max: 3,
     prompt: (who, groups, bit) =>
-      `${who} cuts ${groups} pieces of ribbon, each ${bit} long. How many feet of ribbon is that?`,
+      `${who} cuts ${groups} pieces of ribbon, each ${bit} long. How long are the ${groups} pieces together?`,
   },
   {
     unit: "foot",
-    noun: "stickers",
+    noun: "strips",
     denoms: [6, 12],
     min: 1 / 12,
     max: 0.25,
     prompt: (who, groups, bit) =>
-      `Each sticker is ${bit} long. ${who} cuts ${groups} stickers. How many feet of sticker is that?`,
+      `${who} cuts ${groups} strips of tape, each ${bit} long. How long are the ${groups} strips together?`,
+  },
+  {
+    unit: "cup",
+    noun: "scoops",
+    denoms: UNIT_DENOMS.cup,
+    min: 0.125,
+    max: 0.5,
+    prompt: (who, groups, bit) =>
+      `Each scoop of flour is ${bit}. ${who} adds ${groups} scoops. How much flour is that altogether?`,
   },
   {
     unit: "inch",
@@ -484,7 +493,7 @@ const groupScenes: readonly GroupScene[] = [
     min: 1 / 16,
     max: 1 / 8,
     prompt: (who, groups, bit) =>
-      `Each seed bead is ${bit} wide. ${who} lines up ${groups} beads. How many inches is that?`,
+      `Each seed bead is ${bit} wide. ${who} lines up ${groups} beads. How long is the row of beads?`,
   },
   {
     unit: "inch",
@@ -493,7 +502,7 @@ const groupScenes: readonly GroupScene[] = [
     min: 1 / 8,
     max: 1 / 2,
     prompt: (who, groups, bit) =>
-      `Each pony bead is ${bit} wide. ${who} lines up ${groups} beads. How many inches is that?`,
+      `Each pony bead is ${bit} wide. ${who} lines up ${groups} beads. How long is the row of beads?`,
   },
   {
     unit: "liter",
@@ -511,7 +520,7 @@ const groupScenes: readonly GroupScene[] = [
     min: 0.05,
     max: 2,
     prompt: (who, groups, bit) =>
-      `Each strip of tape is ${bit} long. ${who} cuts ${groups} strips. How many meters of tape is that?`,
+      `${who} cuts ${groups} strips of tape, each ${bit} long. How long are the ${groups} strips together?`,
   },
 ];
 
@@ -542,6 +551,16 @@ export function groupsStory(
 const endsWith = (lead: string, equation: string) =>
   lead ? `${lead} ${equation}` : equation;
 
+/** Wholes a child actually cuts into a few equal pieces. */
+const SPLIT_WHOLES = [
+  "pizza",
+  "granola bar",
+  "sandwich",
+  "tortilla",
+  "licorice rope",
+  "sheet of paper",
+] as const;
+
 export function renameStory(
   r: Random,
   a: number,
@@ -554,17 +573,19 @@ export function renameStory(
   const ruler = [2, 4, 8, 16].includes(b) && [2, 4, 8, 16].includes(target);
   const grid = target === 100;
   const pieces = (UNIT_DENOMS.bar as readonly number[]).includes(b) && k <= 4;
+  const whole = pick(r, SPLIT_WHOLES);
   const frames = [
     ruler
       ? `${name} reads ${a}/${b} inch on a ruler marked in ${target}ths of an inch.`
       : "",
     grid
-      ? `A meter is marked in centimeters. ${a}/${b} meter is counted in hundredths of a meter.`
+      ? `A meter is marked in centimeters. ${name} counts ${a}/${b} meter in hundredths of a meter.`
       : "",
     pieces
       ? `${name} cuts each of the ${b} equal pieces of a chocolate bar into ${k} smaller bites.`
       : "",
-    `Each 1/${b} piece is cut into ${k} equal smaller pieces.`,
+    `${name} has ${a}/${b} of a ${whole}. ${name} cuts each 1/${b} piece into ${k} equal smaller pieces.`,
+    `${name} shades ${a}/${b} of a ${whole}, then splits each shaded piece into ${k} equal smaller pieces.`,
   ].filter(Boolean);
   return endsWith(pick(r, frames), equation);
 }
@@ -584,16 +605,20 @@ export function multiplierStory(
     ? [
         `A hundred-square grid shows ${a}/${b} shaded. Each small square is one hundredth.`,
         `${name} shades ${a}/${b} of a hundred-square grid.`,
-        `The same part of a meter stick, counted in centimeters.`,
+        `${name} counts ${a}/${b} of a meter stick in centimeters.`,
+        `${name} marks ${a}/${b} meter, then counts those parts as centimeters.`,
       ]
     : [
         ruler
-          ? `A ruler mark at ${a}/${b} inch is read again in smaller inch marks.`
+          ? `${name} reads ${a}/${b} inch on a ruler, then reads that mark in smaller inch parts.`
           : "",
         pieces
           ? `${name} cuts each shaded piece of a chocolate bar into ${k} equal bites.`
           : "",
-        `Each 1/${b} piece is split into ${k} equal smaller pieces.`,
+        ...SPLIT_WHOLES.map(
+          (whole) =>
+            `${name} has ${a}/${b} of a ${whole}. ${name} cuts each piece into ${k} equal smaller pieces.`,
+        ),
       ].filter(Boolean);
   return endsWith(pick(r, frames), equation);
 }

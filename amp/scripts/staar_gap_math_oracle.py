@@ -283,6 +283,12 @@ def solve_order_decimals(public):
         require(len(set(items)) == len(items), 'Numbers to order must be distinct')
         expected = sorted(items, reverse=match[2].startswith('greatest'))
         return only(options, lambda o: [value_of(t) for t in listing(o['label'])] == expected, 'Ordered list')
+    match = re.search(r'Order the (?:prices|amounts|lengths|heights|times|weights) from (least to greatest|greatest to least)\.$', prompt)
+    if match:
+        items = [num(t) for t in re.findall(r'\d+\.\d+', prompt)]
+        require(len(items) == 4 and len(set(items)) == 4, 'Four distinct amounts required')
+        expected = sorted(items, reverse=match[1].startswith('greatest'))
+        return only(options, lambda o: [value_of(t) for t in listing(o['label'])] == expected, 'Ordered list')
     match = re.search(r'When they are ordered from least to greatest, which is (second|third)\?$', prompt)
     require(match is not None, 'Unknown ordering prompt')
     items = [num(t) for t in re.findall(r'\d+\.\d+', prompt)]
@@ -702,6 +708,7 @@ def self_test():
         (choice_public('staar-rate-equation-choice', 'A truck uses 60 gallons of fuel over 150 hours at a steady rate. Let $g$ be the gallons of fuel used in $h$ hours. Which equation gives $g$ in terms of $h$?', ['$g=h+0.4$', '$g=150h$', '$g=0.4h$', '$g=\\frac{5}{2}h$']), 2),
         (choice_public('staar-order-decimals', 'Four measurements are 0.9, 0.94, 0.51, 0.76 kilograms. When they are ordered from least to greatest, which is second?', ['0.9', '0.76', '0.94', '0.51']), 1),
         (choice_public('staar-order-decimals', 'Which list shows the numbers 0.7, 0.51, 0.99, 0.068 in order from greatest to least?', ['$0.7,\\ 0.99,\\ 0.51,\\ 0.068$', '$0.99,\\ 0.068,\\ 0.51,\\ 0.7$', '$0.99,\\ 0.7,\\ 0.51,\\ 0.068$', '$0.99,\\ 0.51,\\ 0.7,\\ 0.068$']), 2),
+        (choice_public('staar-order-decimals', 'Four pitchers hold 0.80, 0.40, 0.51, and 0.63 liters of water. Order the amounts from least to greatest.', ['$0.80,\\ 0.51,\\ 0.63,\\ 0.40$', '$0.40,\\ 0.51,\\ 0.63,\\ 0.80$', '$0.63,\\ 0.51,\\ 0.40,\\ 0.80$', '$0.40,\\ 0.63,\\ 0.51,\\ 0.80$']), 1),
         (choice_public('staar-order-mixed-forms', 'Which comparison is true?', ['$-\\sqrt{5}>-2.32$', '$\\sqrt{5}<0.5$', '$\\sqrt{6}>\\sqrt{10}$', '$-\\sqrt{7}>-0.5$']), 0),
         (choice_public('staar-order-mixed-forms', 'Which list shows the numbers $\\sqrt{6}$, $205\\%$, $3.12$, $\\frac{13}{8}$ in order from least to greatest?',
                        ['$\\frac{13}{8},\\ 205\\%,\\ 3.12,\\ \\sqrt{6}$', '$205\\%,\\ \\frac{13}{8},\\ \\sqrt{6},\\ 3.12$', '$\\frac{13}{8},\\ 205\\%,\\ \\sqrt{6},\\ 3.12$', '$\\frac{13}{8},\\ \\sqrt{6},\\ 3.12,\\ 205\\%$']), 2),

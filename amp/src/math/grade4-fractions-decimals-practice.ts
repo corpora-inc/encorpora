@@ -21,7 +21,7 @@ import {
 } from "./multi-part-support";
 import { numberLine } from "./scene/author";
 import { serializeSelection } from "./selection-response";
-import { centWords, denomFits, learnerName } from "./story-kit/fractions";
+import { denomFits, learnerName } from "./story-kit/fractions";
 
 /** Grade-4 denominators. 16 is the light Florida extra. */
 const DENOM_ROWS: readonly (readonly [number, number])[] = [
@@ -321,11 +321,6 @@ function mixedSum(seed: string): GeneratedProblem {
   const left = `${firstWhole} ${first}/${denominator}`;
   const right = `${secondWhole} ${second}/${denominator}`;
   const ask = "Give a fraction or a whole number.";
-  const money = (whole: number, part: number) => {
-    const cents = centWords(part, denominator);
-    const dollars = whole === 1 ? "1 dollar" : `${whole} dollars`;
-    return cents ? ` (${dollars} and ${cents})` : "";
-  };
   const frames: string[] = [];
   if (denomFits(denominator, "foot"))
     frames.push(
@@ -347,14 +342,13 @@ function mixedSum(seed: string): GeneratedProblem {
   if (denomFits(denominator, "liter"))
     frames.push(
       `${name} pours ${left} liters of water into a jug, then ${right} liters more. How much water is in the jug? ${ask}`,
+      `${name} pours ${left} liters of juice into a pitcher, then ${right} liters more. How much juice is in the pitcher? ${ask}`,
     );
   if (denomFits(denominator, "meter"))
     frames.push(
       `${name} uses ${left} meters of string, then ${right} meters more. How many meters of string is that? ${ask}`,
-    );
-  if (denomFits(denominator, "dollar"))
-    frames.push(
-      `${name} saves ${left} dollars${money(firstWhole, first)} and ${right} dollars${money(secondWhole, second)}. How many dollars is that altogether? ${ask}`,
+      `${name} cuts one ribbon ${left} meters long and another ${right} meters long. How long are the ribbons together? ${ask}`,
+      `${name} walks ${left} meters along a path, then ${right} meters more. How far is that in all? ${ask}`,
     );
   if (!frames.length) throw new Error(`No mixed-sum unit for /${denominator}`);
   return problem(template, seed, {
@@ -819,8 +813,8 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     verb: "is",
     attr: "thick",
     article: "A",
-    min: 0.08,
-    max: 0.3,
+    min: 0.12,
+    max: 0.2,
   },
   {
     name: "eraser",
@@ -846,8 +840,8 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     verb: "is",
     attr: "long",
     article: "A",
-    min: 0.3,
-    max: 0.9,
+    min: 0.35,
+    max: 0.65,
   },
   {
     name: "seedling",
@@ -927,35 +921,107 @@ const DECIMAL_THINGS: readonly DecimalThing[] = [
     verb: "is",
     attr: "long",
     article: "A",
-    min: 0.01,
-    max: 0.99,
+    min: 0.15,
+    max: 0.7,
   },
   {
-    name: "scrap of tape",
+    name: "piece of yarn",
     unit: "meters",
     verb: "is",
     attr: "long",
     article: "A",
     min: 0.01,
+    max: 0.2,
+  },
+  {
+    name: "strip of tape",
+    unit: "meters",
+    verb: "is",
+    attr: "long",
+    article: "A",
+    min: 0.01,
+    max: 0.15,
+  },
+  {
+    name: "rope",
+    unit: "meters",
+    verb: "is",
+    attr: "long",
+    article: "A",
+    min: 0.4,
     max: 0.99,
   },
   {
-    name: "lab cup of water",
+    name: "strap",
+    unit: "meters",
+    verb: "is",
+    attr: "long",
+    article: "A",
+    min: 0.45,
+    max: 0.99,
+  },
+  {
+    name: "belt",
+    unit: "meters",
+    verb: "is",
+    attr: "long",
+    article: "A",
+    min: 0.55,
+    max: 0.95,
+  },
+  {
+    name: "measuring cup",
+    unit: "liters",
+    verb: "contains",
+    attr: "",
+    article: "A",
+    min: 0.01,
+    max: 0.25,
+  },
+  {
+    name: "small jar",
+    unit: "liters",
+    verb: "contains",
+    attr: "",
+    article: "A",
+    min: 0.01,
+    max: 0.3,
+  },
+  {
+    name: "paper cup",
     unit: "liters",
     verb: "holds",
     attr: "",
     article: "A",
-    min: 0.01,
-    max: 0.99,
+    min: 0.09,
+    max: 0.18,
   },
   {
-    name: "beaker of water",
+    name: "yogurt cup",
     unit: "liters",
     verb: "holds",
     attr: "",
     article: "A",
-    min: 0.01,
-    max: 0.99,
+    min: 0.1,
+    max: 0.18,
+  },
+  {
+    name: "mug",
+    unit: "liters",
+    verb: "holds",
+    attr: "",
+    article: "A",
+    min: 0.25,
+    max: 0.4,
+  },
+  {
+    name: "jug",
+    unit: "liters",
+    verb: "holds",
+    attr: "",
+    article: "A",
+    min: 0.5,
+    max: 1,
   },
 ];
 
@@ -973,13 +1039,14 @@ function pairGroups(left: string, right: string): DecimalThing[][] {
     (thing) =>
       a >= thing.min && a <= thing.max && b >= thing.min && b <= thing.max,
   );
-  const byUnit = new Map<string, DecimalThing[]>();
+  const byKind = new Map<string, DecimalThing[]>();
   for (const thing of fits) {
-    const group = byUnit.get(thing.unit) ?? [];
+    const key = `${thing.unit}|${thing.verb}|${thing.attr}`;
+    const group = byKind.get(key) ?? [];
     group.push(thing);
-    byUnit.set(thing.unit, group);
+    byKind.set(key, group);
   }
-  return [...byUnit.values()]
+  return [...byKind.values()]
     .filter((group) => group.length >= 2)
     .sort((x, y) => {
       const span = (group: DecimalThing[]) =>
@@ -1002,9 +1069,9 @@ function decimalPairPrompt(
   const left = pool[r(0, pool.length - 1)]!;
   const right = pool.find((thing) => thing.name !== left.name) ?? pool[0]!;
   const used = new Set([left.name, right.name]);
-  const fresh = more.filter((group) =>
-    group.some((thing) => !used.has(thing.name)),
-  );
+  const unusedCount = (group: DecimalThing[]) =>
+    group.filter((thing) => !used.has(thing.name)).length;
+  const fresh = more.filter((group) => unusedCount(group) >= 2);
   const other = (fresh.length ? fresh : more)[
     r(0, (fresh.length ? fresh : more).length - 1)
   ]!;
@@ -1012,7 +1079,10 @@ function decimalPairPrompt(
     other.find((thing) => !used.has(thing.name)) ??
     other.find((thing) => thing.name !== right.name) ??
     other[0]!;
-  const fourth = other.find((thing) => thing.name !== third.name) ?? other[0]!;
+  const fourth =
+    other.find((thing) => thing.name !== third.name && !used.has(thing.name)) ??
+    other.find((thing) => thing.name !== third.name) ??
+    other[0]!;
   return [
     `First pair: ${thingSentence(left, first[0])} ${thingSentence(right, first[1])}`,
     `Second pair: ${thingSentence(third, second[0])} ${thingSentence(fourth, second[1])}`,

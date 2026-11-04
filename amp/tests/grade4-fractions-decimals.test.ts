@@ -344,6 +344,11 @@ test("fraction decompositions, mixed sums and join stories", () => {
     const b = Number(mixed[1]![2]);
     assert.equal(mixed[0]![3], mixed[1]![3]);
     assert.equal(
+      /\bdollars?\b/.test(sum.public.prompt),
+      false,
+      sum.public.prompt,
+    );
+    assert.equal(
       sum.answer,
       reduce((Number(mixed[0]![1]) + Number(mixed[1]![1])) * d + a + b, d),
     );
@@ -656,7 +661,9 @@ test("different wholes, decimal location, place value, tenths above one, and hun
       assert.match(order.hint, /three decimal places/);
       assert.equal(order.variant, undefined);
     }
-    const listed = order.public.prompt.includes("Which list");
+    const listed =
+      order.public.prompt.includes("Which list") ||
+      /Order the [a-z]+ from /.test(order.public.prompt);
     if (listed) {
       const descending = order.public.prompt.includes("greatest to least");
       const expected = descending ? [...sorted].reverse() : sorted;
@@ -676,6 +683,44 @@ test("different wholes, decimal location, place value, tenths above one, and hun
   assert.ok(showcase >= 1, "2.30");
   assert.ok(hundredthsOrder >= 250, `hundredths order ${hundredthsOrder}`);
   assert.ok(thousandthsOrder >= 40, `thousandths order ${thousandthsOrder}`);
+});
+
+test("book samples stay distinct and use the repaired sentences", () => {
+  const equivalent = Array.from(
+    { length: 12 },
+    (_, i) =>
+      generateProblem("equivalent-numerator", `book-${i}`).public.prompt,
+  );
+  const distinct = new Set(equivalent).size;
+  assert.ok(
+    distinct >= 10,
+    `${distinct} distinct equivalent-numerator prompts\n${equivalent.join("\n")}`,
+  );
+  for (const seed of seeds(80, "repair")) {
+    const difference = generateProblem("like-fraction-difference", seed);
+    if (difference.public.prompt.includes("chocolate")) {
+      assert.match(
+        difference.public.prompt,
+        /has \d+\/\d+ of a chocolate bar left\. \w+ eats \d+\/\d+ of the bar\. How much of the bar is left now\?/,
+      );
+      assert.doesNotMatch(difference.public.prompt, /cut into/);
+    }
+    const times = generateProblem("whole-times-fraction", seed);
+    assert.doesNotMatch(times.public.prompt, /sticker/i);
+    const decimals = generateProblem("compare-decimals-symbol-blanks", seed);
+    assert.doesNotMatch(
+      decimals.public.prompt,
+      /scrap of tape|lab cup|beaker/i,
+    );
+    const order = generateProblem("staar-order-decimals", seed);
+    if (order.public.prompt.includes("pitchers")) {
+      assert.match(
+        order.public.prompt,
+        /Four pitchers hold \d+\.\d\d, \d+\.\d\d, \d+\.\d\d, and \d+\.\d\d liters of water\./,
+      );
+      assert.doesNotMatch(order.public.prompt, /Which list|measured in liters/);
+    }
+  }
 });
 
 const replay = JSON.parse(

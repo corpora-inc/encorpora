@@ -1336,57 +1336,60 @@ const joinAnd = (items: string[]) =>
 
 type HundredthScene = {
   fits: (min: number, max: number) => boolean;
-  /** Names what is measured. No decimal points, so the question can hold the only copy of each number. */
-  lead: (items: Dec[]) => string;
-  /** One sentence that states each measurement once, with two decimal places. */
-  amounts: (items: Dec[], nums: string[]) => string;
+  /** Used only when no tighter scene fits the amounts. */
+  fallback?: boolean;
+  /** Names the four amounts, then asks for the list in this direction. */
+  list: (nums: string[], ascending: boolean) => string;
+  /** One sentence that names each amount, for the "which place" question. */
+  named: (nums: string[]) => string;
 };
+
+const orderWord = (ascending: boolean) =>
+  ascending ? "least to greatest" : "greatest to least";
 
 const HUNDREDTH_SCENES: readonly HundredthScene[] = [
   {
     fits: () => true,
-    lead: (items) =>
-      `Four school-store snacks cost ${joinAnd(items.map((d) => `${d.v} cent${d.v === 1 ? "" : "s"}`))}.`,
-    amounts: (items, nums) =>
-      `Four school-store snack prices are ${nums.join(", ")} dollars. In cents, those prices are ${items.map((d) => d.v).join(", ")}.`,
+    fallback: true,
+    list: (nums, ascending) =>
+      `Four pieces of string are ${joinAnd(nums)} meters long. Order the lengths from ${orderWord(ascending)}.`,
+    named: (nums) => `Four pieces of string are ${joinAnd(nums)} meters long.`,
   },
   {
-    fits: (min, max) => min >= 0.25 && max <= 0.99,
-    lead: () =>
-      "Four pitchers are filled with water. The amount in each pitcher is measured in liters.",
-    amounts: (_items, nums) =>
-      `The liters of water in four pitchers are ${nums.join(", ")} liters.`,
+    fits: (min, max) => min >= 0.4 && max <= 0.99,
+    list: (nums, ascending) =>
+      `Four school-store snacks cost ${joinAnd(nums)} dollars. Order the prices from ${orderWord(ascending)}.`,
+    named: (nums) => `Four school-store snacks cost ${joinAnd(nums)} dollars.`,
   },
   {
-    fits: () => true,
-    lead: () =>
-      "Four lab cups hold water. The amount in each cup is measured in liters.",
-    amounts: (_items, nums) =>
-      `The liters of water in four lab cups are ${nums.join(", ")} liters.`,
+    fits: (min, max) => min >= 0.4 && max <= 0.99,
+    list: (nums, ascending) =>
+      `Four pitchers hold ${joinAnd(nums)} liters of water. Order the amounts from ${orderWord(ascending)}.`,
+    named: (nums) => `Four pitchers hold ${joinAnd(nums)} liters of water.`,
   },
   {
-    fits: (min, max) => min >= 0.15 && max <= 0.95,
-    lead: () => "Four ribbons are measured in meters.",
-    amounts: (_items, nums) =>
-      `The lengths of four ribbons are ${nums.join(", ")} meters.`,
+    fits: (min, max) => min >= 0.2 && max <= 0.9,
+    list: (nums, ascending) =>
+      `Four ribbons are ${joinAnd(nums)} meters long. Order the lengths from ${orderWord(ascending)}.`,
+    named: (nums) => `Four ribbons are ${joinAnd(nums)} meters long.`,
   },
   {
-    fits: (min, max) => min >= 0.05 && max <= 0.45,
-    lead: () => "Four seedlings are measured in meters.",
-    amounts: (_items, nums) =>
-      `The heights of four seedlings are ${nums.join(", ")} meters.`,
+    fits: (min, max) => min >= 0.05 && max <= 0.4,
+    list: (nums, ascending) =>
+      `Four seedlings are ${joinAnd(nums)} meters tall. Order the heights from ${orderWord(ascending)}.`,
+    named: (nums) => `Four seedlings are ${joinAnd(nums)} meters tall.`,
   },
   {
-    fits: (min, max) => min >= 0.1 && max <= 0.55,
-    lead: () => "Four video-game reactions are measured in seconds.",
-    amounts: (_items, nums) =>
-      `The video-game reaction times are ${nums.join(", ")} seconds.`,
+    fits: (min, max) => min >= 0.15 && max <= 0.5,
+    list: (nums, ascending) =>
+      `Four video-game reactions take ${joinAnd(nums)} seconds. Order the times from ${orderWord(ascending)}.`,
+    named: (nums) => `Four video-game reactions take ${joinAnd(nums)} seconds.`,
   },
   {
-    fits: (min, max) => min >= 0.1 && max <= 0.4,
-    lead: () => "Four apples are weighed in kilograms.",
-    amounts: (_items, nums) =>
-      `The weights of four apples are ${nums.join(", ")} kilograms.`,
+    fits: (min, max) => min >= 0.12 && max <= 0.3,
+    list: (nums, ascending) =>
+      `Four apples weigh ${joinAnd(nums)} kilograms. Order the weights from ${orderWord(ascending)}.`,
+    named: (nums) => `Four apples weigh ${joinAnd(nums)} kilograms.`,
   },
 ];
 
@@ -1395,7 +1398,9 @@ function hundredthScene(r: Random, items: Dec[]): HundredthScene {
   const min = Math.min(...values);
   const max = Math.max(...values);
   const fitting = HUNDREDTH_SCENES.filter((scene) => scene.fits(min, max));
-  return fitting[r(0, fitting.length - 1)]!;
+  const specific = fitting.filter((scene) => !scene.fallback);
+  const pool = specific.length ? specific : fitting;
+  return pool[r(0, pool.length - 1)]!;
 }
 
 function orderHundredths(r: Random): Built {
@@ -1442,7 +1447,7 @@ function orderHundredths(r: Random): Built {
     ].filter((c) => key(c.list) !== key(ordered));
     return {
       variant: ascending ? "list-ascending" : "list-descending",
-      prompt: `${scene.lead(items)} Which list shows the numbers ${nums.join(", ")} in order from ${ascending ? "least to greatest" : "greatest to least"}?`,
+      prompt: scene.list(nums, ascending),
       answer: "",
       hint: `Write each number with two decimal places, such as ${text(items[0]!)} as ${fixed(items[0]!.v, 2)}. Then compare the tenths digits first, then the hundredths.`,
       explanation: [
@@ -1466,7 +1471,7 @@ function orderHundredths(r: Random): Built {
   return {
     variant: "kth",
     selects: true,
-    prompt: `${scene.amounts(items, nums)} When they are ordered from least to greatest, which is ${word}?`,
+    prompt: `${scene.named(nums)} When they are ordered from least to greatest, which is ${word}?`,
     answer: "",
     hint: `Write each measurement with two decimal places, such as ${text(items[0]!)} as ${fixed(items[0]!.v, 2)}, then compare tenths first. Put them in order from least to greatest and count to the ${word}.`,
     explanation: [
