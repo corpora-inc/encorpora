@@ -363,7 +363,7 @@ function protractorAnswer(problem: GeneratedProblem): string {
 
 function adjacentAnswer(problem: GeneratedProblem): string {
   const found = problem.public.prompt.match(
-    /^Angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ measures (\d+)°\. The measure of angle \$([A-Z]{3})\$ is \$x\$ degrees\. Which equation is true\?$/,
+    /Angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ measures (\d+)°\. The measure of angle \$([A-Z]{3})\$ is \$x\$ degrees\./,
   );
   assert.ok(found);
   const wholeName = found![1]!;

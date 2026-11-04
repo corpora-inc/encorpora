@@ -16,7 +16,11 @@ import { selectFamily, selectModel, selectTemplate, st } from "./select-kit.js";
 import { posed, pick, random, shuffle, type Rand } from "./shape-practice.js";
 import type { Pt } from "./shape-figures.js";
 import type { Random } from "./variation/axes.js";
-import { protractorPrompt, storyNameFor } from "./story-kit/geometry.js";
+import {
+  adjacentPrompt,
+  protractorPrompt,
+  storyNameFor,
+} from "./story-kit/geometry.js";
 
 /**
  * Grade-4 geometry practice (GE-1, GE-2, GE-3, GE-6, GE-7, GE-8, and
@@ -382,12 +386,20 @@ function adjacentEquation(r: Rand, seed: string): GeneratedProblem {
   const key = difference
     ? `$${whole} - ${known} = x$`
     : `$x + ${known} = ${whole}$`;
+  const who = storyNameFor(seed, "adjacent-name");
   return finish("adjacent-angle-equation", seed, r, {
-    prompt: `Angle $${A}${B}${D}$ measures ${whole}°. Angle ${knownName} measures ${known}°. The measure of angle ${missingName} is $x$ degrees. Which equation is true?`,
+    prompt: adjacentPrompt(
+      seed,
+      `${A}${B}${D}`,
+      knownName.replaceAll("$", ""),
+      missingName.replaceAll("$", ""),
+      whole,
+      known,
+    ),
     answer: "",
-    hint: `The two angles fill the ${whole}° angle and do not overlap. The known part is ${known}°. Write an equation for $x$ that uses both of those numbers.`,
+    hint: `${who} has two angles that fill the ${whole}° angle and do not overlap. The known part is ${known}°. Write an equation for $x$ that uses both of those numbers.`,
     explanation: [
-      `Angles ${knownName} and ${missingName} sit side by side and do not overlap, so together they make the ${whole}° angle.`,
+      `${who} split one angle into two parts that sit side by side and do not overlap, so together they make the ${whole}° angle.`,
       difference
         ? `The whole minus the known part is the unknown: $${whole} - ${known} = x$.`
         : `The unknown plus the known part is the whole: $x + ${known} = ${whole}$.`,

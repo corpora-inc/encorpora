@@ -222,9 +222,9 @@ def equation_holds(label, unknown):
 
 def adjacent_equation(public):
     prompt = public['prompt']
-    found = re.fullmatch(
+    found = re.search(
         r'Angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ measures (\d+)°\. '
-        r'The measure of angle \$([A-Z]{3})\$ is \$x\$ degrees\. Which equation is true\?',
+        r'The measure of angle \$([A-Z]{3})\$ is \$x\$ degrees\.',
         prompt,
     )
     require(found is not None, 'Adjacent-angle wording')
