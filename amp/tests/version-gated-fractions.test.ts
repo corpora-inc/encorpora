@@ -39,7 +39,7 @@ test("generateProblem at version 1 reprints the stored fraction problem", () => 
   for (const id of bumped) {
     const meta = templates.find((t) => t.id === id);
     assert.ok(meta, id);
-    assert.equal(meta.version, 2, id);
+    assert.ok(meta.version >= 2, id);
     assert.equal(meta.reprintsFrom, 1, id);
     const rows: string[] = [];
     for (let i = 0; i < 200; i++) {
@@ -57,4 +57,19 @@ test("generateProblem at version 1 reprints the stored fraction problem", () => 
       `${id}: version 1 no longer reprints the stored problems`,
     );
   }
+});
+
+test("grade-4 decimal ordering draws hundredths only from version 3; versions 1 and 2 reprint as stored", () => {
+  const threePlaces = /\d\.\d{3}(?!\d)/;
+  let v2Thousandths = 0;
+  for (let i = 0; i < 400; i++) {
+    const seed = `retire:${i}`;
+    const current = generateProblem("staar-order-decimals", seed);
+    assert.doesNotMatch(current.public.prompt, threePlaces, seed);
+    assert.equal(current.variant?.axes?.places ?? "hundredths", "hundredths", seed);
+    const v2 = generateProblem("staar-order-decimals", seed, 2);
+    if (threePlaces.test(v2.public.prompt)) v2Thousandths++;
+  }
+  // Version 2 still drew thousandths about 1 time in 5; a stored v2 workbook reprints it.
+  assert.ok(v2Thousandths > 40, `${v2Thousandths}`);
 });
