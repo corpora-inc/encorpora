@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
-import { count as countNoun } from "./agreement";
+import { count as countNoun, plural } from "./agreement";
+import { storyName } from "./story-kit/names";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -212,6 +213,56 @@ const quotientAxes = {
   }),
 };
 
+/** Avoid already-rounded factors. A multiple of 10 is a trivial partial product. */
+function uneven(r: Random, lo: number, hi: number): number {
+  let n = r(lo, hi);
+  for (let guard = 0; n % 10 === 0 && guard < 12; guard++) n = r(lo, hi);
+  return n;
+}
+
+function productSteps(a: number, b: number): string[] {
+  const tens = Math.floor(b / 10) * 10;
+  const ones = b % 10;
+  const A = grouped(a);
+  const B = grouped(b);
+  if (ones === 0) {
+    const tensDigit = tens / 10;
+    return [
+      `${A} × ${B} means ${A} groups of ${B}.`,
+      `${B} is ${tensDigit} tens, so first find ${A} × ${tensDigit} = ${grouped(a * tensDigit)}.`,
+      `That is ${grouped(a * tensDigit)} tens, which is ${grouped(a * b)}.`,
+    ];
+  }
+  return [
+    `${A} × ${B} means ${A} groups of ${B}.`,
+    `Break ${B} into ${grouped(tens)} + ${ones}. Multiply ${A} by each part.`,
+    `${A} × ${grouped(tens)} = ${grouped(a * tens)}, and ${A} × ${ones} = ${grouped(a * ones)}.`,
+    `Add the partial products: ${grouped(a * tens)} + ${grouped(a * ones)} = ${grouped(a * b)}.`,
+  ];
+}
+
+function multiplyPrompt(r: Random, a: number, b: number): string {
+  const A = grouped(a);
+  const B = grouped(b);
+  if (r(0, 2) !== 0) {
+    const frame = r(0, 2);
+    if (frame === 0) return `What is ${A} × ${B}?`;
+    if (frame === 1) return `Find the product of ${A} and ${B}.`;
+    return `Multiply ${A} by ${B}.`;
+  }
+  const name = storyName((n) => r(0, n - 1));
+  return pick(r, [
+    `${name} packs ${A} boxes with ${B} crayons in each box. How many crayons is that?`,
+    `${name} bakes ${A} trays with ${B} cookies on each tray. How many cookies is that?`,
+    `${name} plants ${A} rows with ${B} seedlings in each row. How many seedlings is that?`,
+    `The gym sets out ${A} bins with ${B} tennis balls in each bin. How many tennis balls is that?`,
+    `${name} buys ${A} packs with ${B} trading cards in each pack. How many cards is that?`,
+    `A school orders ${A} cartons with ${B} notebooks in each carton. How many notebooks is that?`,
+    `${name} fills ${A} pages with ${B} stamps on each page. How many stamps is that?`,
+    `The team plays ${A} games and scores ${B} points in each game. How many points is that?`,
+  ]);
+}
+
 function multiplyTwoDigit(
   meta: TemplateMetadata,
   seed: string,
@@ -226,22 +277,19 @@ function multiplyTwoDigit(
   if (digits === "square") {
     a = b = r(11, 15);
   } else if (digits === "3x2") {
-    a = r(100, 999);
-    b = r(12, 99);
+    a = uneven(r, 100, 999);
+    b = uneven(r, 12, 99);
   } else {
-    a = r(12, 99);
-    b = r(12, 99);
+    a = uneven(r, 12, 99);
+    b = uneven(r, 12, 99);
   }
   const product = a * b;
   return numberProblem(meta, seed, {
-    prompt: `What is ${grouped(a)} × ${grouped(b)}?`,
+    prompt: multiplyPrompt(r, a, b),
     answer: product,
     label: "Product",
-    hint: `Multiply ${grouped(a)} by ${grouped(b)}. There is no area model to read.`,
-    explanation: [
-      `${grouped(a)} × ${grouped(b)} means ${grouped(a)} groups of ${grouped(b)}.`,
-      `The product is ${grouped(product)}.`,
-    ],
+    hint: `Break ${grouped(b)} into tens and ones. Multiply ${grouped(a)} by each part, then add those partial products.`,
+    explanation: productSteps(a, b),
     variant: digits,
     axes: { "factor-digits": digits },
   });
@@ -257,6 +305,56 @@ function weighted(r: Random, weights: readonly number[]) {
   return weights.length - 1;
 }
 
+function twelveProductSteps(teen: number, other: number): string[] {
+  const tens = 10 * other;
+  const extra = (teen - 10) * other;
+  return [
+    `Split ${teen} into 10 + ${teen - 10}, then multiply each part by ${other}.`,
+    `10 × ${other} = ${tens}, and ${teen - 10} × ${other} = ${extra}.`,
+    `Add the parts: ${tens} + ${extra} = ${teen * other}.`,
+  ];
+}
+
+/** The dividend is the first number and 11 or 12 is the second, so a prompt
+ * never leads with the divisor. Applied items are about one third. */
+function factsPrompt(
+  r: Random,
+  teen: number,
+  other: number,
+  multiply: boolean,
+): string {
+  const product = teen * other;
+  const applied = r(0, 2) === 0;
+  const name = applied ? storyName((n) => r(0, n - 1)) : "";
+  if (multiply) {
+    if (!applied) {
+      const frame = r(0, 2);
+      if (frame === 0) return `What is ${teen} × ${other}?`;
+      if (frame === 1) return `Find the product ${teen} × ${other}.`;
+      return `Multiply ${teen} × ${other}.`;
+    }
+    return pick(r, [
+      `${name} buys ${teen} packs with ${other} stickers in each pack. How many stickers is ${teen} × ${other}?`,
+      `A carton holds ${teen} eggs. ${name} needs ${other} cartons. How many eggs is ${teen} × ${other}?`,
+      `${name} sets ${teen} rows with ${other} chairs in each row. How many chairs is ${teen} × ${other}?`,
+      `${name} saves ${teen} dollars a week for ${other} weeks. How many dollars is ${teen} × ${other}?`,
+      `Each shelf holds ${other} books. ${name} fills ${teen} shelves. How many books is ${teen} × ${other}?`,
+    ]);
+  }
+  if (!applied) {
+    const frame = r(0, 2);
+    if (frame === 0) return `What is ${product} ÷ ${teen}?`;
+    if (frame === 1) return `${product} divided by ${teen} is how many?`;
+    return `${product} split into equal groups of ${teen} makes how many groups?`;
+  }
+  return pick(r, [
+    `${name} shares ${product} cards equally among ${teen} friends. How many cards does each friend get?`,
+    `${product} eggs go into cartons of ${teen}. How many cartons is that?`,
+    `${name} has ${product} dollars to spend on tickets that cost ${teen} dollars each. How many tickets can ${name} buy?`,
+    `${product} players form equal teams of ${teen}. How many teams is that?`,
+  ]);
+}
+
 function factsToTwelve(meta: TemplateMetadata, seed: string): GeneratedProblem {
   const r = random(meta.id, seed);
   const operation = r(0, 1) === 0 ? "multiply" : "divide";
@@ -266,25 +364,23 @@ function factsToTwelve(meta: TemplateMetadata, seed: string): GeneratedProblem {
   if (operation === "multiply") {
     const product = teen * other;
     return numberProblem(meta, seed, {
-      prompt: `What is ${teen} × ${other}?`,
+      prompt: factsPrompt(r, teen, other, true),
       answer: product,
       label: "Product",
-      hint: `${teen} × ${other} is ${teen} groups of ${other}.`,
-      explanation: [
-        `${teen} groups of ${other} is ${teen} × ${other}.`,
-        `The product is ${product}.`,
-      ],
+      hint: `Split ${teen} into 10 and ${teen - 10}. Multiply each part by ${other}, then add.`,
+      explanation: twelveProductSteps(teen, other),
       variant: "multiply",
       axes: { operation: "multiply" },
     });
   }
   const dividend = teen * other;
   return numberProblem(meta, seed, {
-    prompt: `What is ${dividend} ÷ ${teen}?`,
+    prompt: factsPrompt(r, teen, other, false),
     answer: other,
     label: "Quotient",
-    hint: `${dividend} ÷ ${teen} asks how many groups of ${teen} make ${dividend}.`,
+    hint: `${dividend} ÷ ${teen} asks how many groups of ${teen} make ${dividend}. Think of the multiplication fact that uses ${teen}.`,
     explanation: [
+      `Dividing by ${teen} undoes multiplying by ${teen}.`,
       `${teen} × ${other} = ${dividend}, so ${dividend} ÷ ${teen} = ${other}.`,
       `The quotient is ${other}.`,
     ],
@@ -300,12 +396,76 @@ const TILE_RULES = [
   { start: 2, add: 5 },
   { start: 6, add: 2 },
   { start: 1, add: 4 },
+  { start: 4, add: 2 },
+  { start: 3, add: 5 },
+  { start: 5, add: 3 },
+  { start: 2, add: 3 },
+  { start: 6, add: 3 },
+  { start: 4, add: 5 },
+  { start: 3, add: 4 },
+  { start: 5, add: 2 },
+  { start: 2, add: 4 },
+  { start: 6, add: 4 },
 ] as const;
 
-/** Steps 1–3 as tile figures. The bottom row is the start. Each later step
- * adds one row of `add` unit squares on top, so step n has
- * start + (n − 1) · add tiles. Array rows and columns stay within 20. */
-function tileFigure(start: number, add: number) {
+/** A growing figure whose step-1 row is the start and each later step adds
+ * one row. Step n has start + (n − 1) · add pieces. */
+const GROWTHS = [
+  {
+    noun: "tile",
+    title: "Garden path, steps 1 to 3",
+    lead: "Jamal is laying a garden path.",
+    piece: "garden tile",
+  },
+  {
+    noun: "block",
+    title: "Block staircase, steps 1 to 3",
+    lead: "Priya is building a block staircase.",
+    piece: "stair block",
+  },
+  {
+    noun: "cup",
+    title: "Stacked cups, steps 1 to 3",
+    lead: "The cafe is stacking cups for a picnic.",
+    piece: "stacked cup",
+  },
+  {
+    noun: "chair",
+    title: "Chairs by the tables, steps 1 to 3",
+    lead: "The class is setting chairs along a row of tables.",
+    piece: "chair",
+  },
+  {
+    noun: "bead",
+    title: "Bead rows, steps 1 to 3",
+    lead: "Lena is stringing beads in a growing pattern.",
+    piece: "bead",
+  },
+  {
+    noun: "seedling",
+    title: "Seedling rows, steps 1 to 3",
+    lead: "Omar is planting seedlings in a growing bed.",
+    piece: "seedling",
+  },
+  {
+    noun: "stamp",
+    title: "Stamp rows, steps 1 to 3",
+    lead: "Nia is arranging stamps in a growing display.",
+    piece: "stamp",
+  },
+  {
+    noun: "card",
+    title: "Card rows, steps 1 to 3",
+    lead: "Theo is laying cards in a growing pattern.",
+    piece: "card",
+  },
+] as const;
+
+function tileFigure(
+  start: number,
+  add: number,
+  growth: (typeof GROWTHS)[number],
+) {
   const slot = Math.max(start, add);
   const gap = 2;
   const parts: (Element | { element(): Element })[] = [];
@@ -329,8 +489,8 @@ function tileFigure(start: number, add: number) {
   return {
     kind: "scene" as const,
     scene: scene(...parts).build({
-      title: "Steps 1, 2 and 3",
-      note: `Three tile figures, left to right. Each figure's bottom row has ${countNoun(start, "unit square")}. Each later step adds a row of ${countNoun(add, "unit square")} on top. Steps after 3 are not drawn.`,
+      title: growth.title,
+      note: `Three ${growth.piece} figures, left to right. Each figure's bottom row has ${countNoun(start, "unit square")}. Each later step adds a row of ${countNoun(add, "unit square")} on top. Steps after 3 are not drawn.`,
       width: 640,
       maxHeight: 420,
     }),
@@ -340,20 +500,22 @@ function tileFigure(start: number, add: number) {
 function growingShape(meta: TemplateMetadata, seed: string): GeneratedProblem {
   const r = random(meta.id, seed);
   const rule = pick(r, TILE_RULES);
+  const growth = pick(r, GROWTHS);
   const step = r(5, 8);
   const tiles = (n: number) => rule.start + (n - 1) * rule.add;
   const answer = tiles(step);
+  const noun = growth.noun;
   return numberProblem(meta, seed, {
-    prompt: `A tile pattern starts with ${countNoun(rule.start, "tile")}. Each next step adds ${countNoun(rule.add, "tile")}. The figure shows steps 1, 2 and 3. How many tiles are in step ${step}?`,
+    prompt: `${growth.lead} The pattern starts with ${countNoun(rule.start, noun)}. Each next step adds ${countNoun(rule.add, noun)}. The figure shows steps 1, 2 and 3. How many ${plural(noun)} are in step ${step}?`,
     answer,
-    label: "Tiles",
-    figure: tileFigure(rule.start, rule.add),
-    hint: `Step 1 has ${countNoun(rule.start, "tile")}. Each later step adds ${rule.add}. Step ${step} is ${step - 1} adds after the start. The figure stops at step 3, so do not count step ${step} from it.`,
+    label: plural(noun)[0]!.toUpperCase() + plural(noun).slice(1),
+    figure: tileFigure(rule.start, rule.add, growth),
+    hint: `Step 1 has ${countNoun(rule.start, noun)}. To reach step ${step}, add ${countNoun(rule.add, noun)} once for each later step. That is ${step - 1} adds. The figure stops at step 3, so do not count step ${step} from it.`,
     explanation: [
       `The rule is: start at ${rule.start}, then add ${rule.add} for each new step.`,
-      `Step ${step} has had the start plus ${step - 1} adds: ${rule.start} + ${step - 1} × ${rule.add}.`,
+      `Step ${step} is the start plus ${step - 1} adds: ${rule.start} + ${step - 1} × ${rule.add}.`,
       `${rule.start} + ${(step - 1) * rule.add} = ${answer}.`,
-      `Step ${step} has ${countNoun(answer, "tile")}.`,
+      `Step ${step} has ${countNoun(answer, noun)}.`,
     ],
     variant: "add-rule",
     axes: { rule: "add" },
@@ -371,11 +533,42 @@ for (let n = 2; n <= 144; n++) {
   if (n <= 100) SHORT_FACTORS["to-100"].push(n);
 }
 
+function factorPrompt(r: Random, n: number): string {
+  const name = storyName((n) => r(0, n - 1));
+  const frame = r(0, 5);
+  if (frame === 0)
+    return `Select every factor of ${n}. A factor divides ${n} with nothing left over. Together, the factors make every factor pair.`;
+  if (frame === 1)
+    return `Which of these numbers are factors of ${n}? Keep a number only when it divides ${n} with nothing left over.`;
+  if (frame === 2)
+    return `Which of these numbers go into ${n} with no remainder? Select every factor of ${n}.`;
+  if (frame === 3)
+    return `${name} has ${n} stickers to split into equal piles with none left over. Which of these numbers of stickers could be in each pile? Select every factor of ${n}.`;
+  if (frame === 4)
+    return `${name} is setting ${n} chairs in equal rows with no chair left over. Which of these numbers of chairs could be in each row? Select every factor of ${n}.`;
+  return `${name} has ${n} tiles and wants a rectangle that uses every tile. Which of these side lengths work? Select every factor of ${n}.`;
+}
+
+function factorHint(n: number, prime: boolean): string {
+  if (prime)
+    return `A prime has no factor strictly between 1 and itself. Check that no counting number from 2 up to the number before ${n} divides it.`;
+  if (n % 2 === 0)
+    return `Factors come in pairs. If 2 divides ${n}, then ${n} ÷ 2 is a factor too. Also try 3 and 5, and keep both numbers in each pair.`;
+  if (n % 5 === 0)
+    return `Factors come in pairs. ${n} ends in 0 or 5, so 5 is worth trying. If 5 divides ${n}, then ${n} ÷ 5 is a factor too.`;
+  return `Factors come in pairs. Try 3, then 5. When a number divides ${n}, the partner ${n} divided by that number is a factor too.`;
+}
+
 function factorPairs(meta: TemplateMetadata, seed: string): GeneratedProblem {
   const r = random(meta.id, seed);
   const range = r(0, 4) === 0 ? "to-144" : "to-100";
-  const n = pick(r, SHORT_FACTORS[range]);
-  const factors = factorsOf(n);
+  let n = pick(r, SHORT_FACTORS[range]);
+  let factors = factorsOf(n);
+  // Primes are a real case, but they should not dominate the set.
+  if (factors.length === 2 && r(0, 2) !== 0) {
+    n = pick(r, SHORT_FACTORS[range]);
+    factors = factorsOf(n);
+  }
   const distractors = [...new Set([n + 1, n - 1, factors[1]! + 1])].filter(
     (d) => d > 0 && !factors.includes(d),
   );
@@ -388,20 +581,32 @@ function factorPairs(meta: TemplateMetadata, seed: string): GeneratedProblem {
   ];
   const ordered = shuffle(r, shown);
   return selectProblem(meta, seed, {
-    prompt: `Select every factor of ${n}. A factor divides ${n} with nothing left over. Together, the factors make every factor pair.`,
-    hint: `Try the counting numbers from 1 up to ${n}. Keep a number when ${n} divided by it leaves no remainder.`,
+    prompt: factorPrompt(r, n),
+    hint: factorHint(n, factors.length === 2),
     explanation: [
       `The factors of ${n} are ${factors.join(", ")}.`,
       factors.length === 2
         ? `${n} is prime: its only factors are 1 and itself, so its only factor pair is 1 × ${n}.`
-        : factors.some((f) => f * f === n)
-          ? `${n} is a square, so one factor pair uses the same factor twice.`
-          : `Each factor pairs with ${n} divided by that factor.`,
+        : `List the pairs. Each factor partners with ${n} divided by that factor${factors.some((f) => f * f === n) ? `, and one pair uses the same factor twice because ${n} is a square` : ""}.`,
     ],
     options: ordered,
     variant: range,
     axes: { range },
   });
+}
+
+function multipleHint(d: number): string {
+  if (d === 2)
+    return "Multiples of 2 are even. Check the last digit: it must be 0, 2, 4, 6, or 8. A number one away from a multiple is not a multiple.";
+  if (d === 5)
+    return "Multiples of 5 end in 0 or 5. A number one away from a multiple is not a multiple.";
+  if (d === 3 || d === 9)
+    return `Add the digits. If that sum is a multiple of ${d}, the number is too. A number one away from a multiple is not a multiple.`;
+  if (d === 4)
+    return "For 4, look at the last two digits. If those make a multiple of 4, the whole number is too. A number one away from a multiple is not a multiple.";
+  if (d === 6)
+    return "A multiple of 6 is a multiple of both 2 and 3. Check that it is even, then add the digits to check for 3.";
+  return `Divide each number by ${d}. A multiple leaves no remainder. A number one away from a multiple is not a multiple.`;
 }
 
 function multiplesSelect(
@@ -430,17 +635,49 @@ function multiplesSelect(
     ...multiples.map((n) => ({ label: String(n), correct: true })),
     ...shownMisses.map((n) => ({ label: String(n), correct: false })),
   ]);
+  const name = storyName((n) => r(0, n - 1));
+  const frame = r(0, 4);
+  const prompt =
+    frame === 0
+      ? `Select every multiple of ${d}. A multiple of ${d} is ${d} times a whole number.`
+      : frame === 1
+        ? `Which of these numbers are multiples of ${d}? A multiple is ${d} times a whole number.`
+        : frame === 2
+          ? `${name} is counting by ${d}s. Which of these numbers would ${name} say? Select every multiple of ${d}.`
+          : frame === 3
+            ? `Packs come in sets of ${d}. Which of these counts are full sets with nothing left over? Select every multiple of ${d}.`
+            : `A light blinks every ${d} seconds. Which of these times, in seconds, are blinks? Select every multiple of ${d}.`;
   return selectProblem(meta, seed, {
-    prompt: `Select every multiple of ${d}. A multiple of ${d} is ${d} times a whole number.`,
-    hint: `Divide each number by ${d}. A multiple leaves no remainder. A number one away from a multiple is not a multiple.`,
+    prompt,
+    hint: multipleHint(d),
     explanation: [
+      `A multiple of ${d} is ${d} times a whole number, so dividing by ${d} leaves no remainder.`,
       `The multiples of ${d} in the list are ${multiples.join(", ")}.`,
-      `Each of those is ${d} times a whole number. The other numbers are 1 away from a multiple, so they leave a remainder.`,
+      `The other numbers are 1 away from a multiple, so each leaves a remainder.`,
     ],
     options,
     variant: `of-${d}`,
     axes: { divisor: String(d) },
   });
+}
+
+/** Dividend first, then the one-digit divisor, so no other number leads. */
+function quotientStory(r: Random, dividend: string, divisor: string): string {
+  const name = storyName((n) => r(0, n - 1));
+  return pick(r, [
+    `Divide ${dividend} by ${divisor}.`,
+    `${name} packs ${dividend} books onto shelves that hold ${divisor} books each.`,
+    `${name} splits ${dividend} players into teams of ${divisor}.`,
+    `A bakery packs ${dividend} cookies into boxes of ${divisor}.`,
+    `${name} cuts ${dividend} inches of ribbon into pieces of ${divisor} inches.`,
+    `A warehouse stacks ${dividend} eggs into cartons of ${divisor}.`,
+    `The card shop bundles ${dividend} cards into packs of ${divisor}.`,
+    `${name} sorts ${dividend} pencils into cups of ${divisor}.`,
+    `${name} loads ${dividend} juice boxes into coolers that hold ${divisor} each.`,
+    `A library ties ${dividend} magazines into bundles of ${divisor}.`,
+    `${name} plants ${dividend} seeds in rows of ${divisor}.`,
+    `The band shares ${dividend} sheets of music into folders of ${divisor}.`,
+  ]);
 }
 
 const quotientGenerate = defineGenerate(
@@ -470,6 +707,7 @@ const quotientGenerate = defineGenerate(
         const rWrong = [0, d - rem, rem + 1, d].filter(
           (n) => n !== rem && n >= 0 && n < d + 2,
         );
+        const story = quotientStory(r, grouped(dividend), grouped(d));
         if (axes.form === "fraction") {
           const built = inlineSentence([
             "The quotient is ",
@@ -479,13 +717,14 @@ const quotientGenerate = defineGenerate(
             `/${d} of the divisor.`,
           ]);
           return multiPartProblem(meta, seed, r, {
-            prompt: `Divide ${grouped(dividend)} by ${grouped(d)}. Give the quotient and the remainder as a fraction of the divisor.`,
+            prompt: `${story} Give the quotient and the remainder as a fraction of the divisor.`,
             layout: "inline",
             label: "Choose the quotient and the numerator",
             slots: built.slots,
             sentence: built.sentence,
             hint: `${grouped(d)} goes into ${grouped(dividend)} a whole number of times, with a remainder smaller than ${grouped(d)}. The fraction is that remainder over ${grouped(d)}.`,
             explanation: [
+              `Find how many times ${grouped(d)} fits in ${grouped(dividend)}, then what is left.`,
               `${grouped(d)} × ${grouped(q)} = ${grouped(d * q)}, and ${grouped(dividend)} − ${grouped(d * q)} = ${grouped(rem)}.`,
               `The remainder ${grouped(rem)} is smaller than the divisor ${grouped(d)}, so the fraction of the divisor is ${rem}/${d}.`,
               `${grouped(dividend)} ÷ ${grouped(d)} = ${grouped(q)} and ${rem}/${d}.`,
@@ -500,13 +739,14 @@ const quotientGenerate = defineGenerate(
           ".",
         ]);
         return multiPartProblem(meta, seed, r, {
-          prompt: `Divide ${grouped(dividend)} by ${grouped(d)}. Give the quotient and the remainder.`,
+          prompt: `${story} Give the quotient and the remainder.`,
           layout: "inline",
           label: "Choose the quotient and the remainder",
           slots: built.slots,
           sentence: built.sentence,
           hint: `Find how many times ${grouped(d)} fits in ${grouped(dividend)}. The remainder is what is left, and it is smaller than ${grouped(d)}.`,
           explanation: [
+            `Find how many times ${grouped(d)} fits in ${grouped(dividend)}, then what is left.`,
             `${grouped(d)} × ${grouped(q)} = ${grouped(d * q)}.`,
             `${grouped(dividend)} − ${grouped(d * q)} = ${grouped(rem)}, and ${grouped(rem)} is smaller than ${grouped(d)}.`,
             `The quotient is ${grouped(q)} and the remainder is ${grouped(rem)}.`,
