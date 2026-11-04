@@ -85,10 +85,32 @@ RENAME_FACTOR = {
 }
 TOOL_PHRASES = (
     ('length of a book', 'ruler'),
+    ('length of the gift ribbon', 'ruler'),
+    ('height of the sunflower', 'ruler'),
+    ('width of the picture frame', 'ruler'),
+    ('length of the toy car', 'ruler'),
+    ('space on the bookshelf', 'ruler'),
+    ('length of the kite string', 'ruler'),
     ('compare the mass of a rock with known masses', 'balance'),
+    ('mass of a pinecone', 'balance'),
+    ('mass of a feather', 'balance'),
+    ('mass of a rock sample', 'balance'),
+    ('mass of a clay lump', 'balance'),
     ('temperature of the room', 'thermometer'),
+    ('temperature of the soup', 'thermometer'),
+    ('temperature outside before soccer', 'thermometer'),
+    ('temperature of the fish tank', 'thermometer'),
+    ('temperature of the classroom', 'thermometer'),
     ('juice in a pitcher', 'measuring cup'),
+    ('milk for the pancakes', 'measuring cup'),
+    ('water for the lemonade', 'measuring cup'),
+    ('juice for the picnic', 'measuring cup'),
+    ('paint for the mural', 'measuring cup'),
     ('weight of a person in pounds', 'scale'),
+    ('weight of the puppy in pounds', 'scale'),
+    ('weight of the pumpkin in pounds', 'scale'),
+    ("your weight in pounds at the doctor's office", 'scale'),
+    ('weight of the apples in pounds', 'scale'),
 )
 MONEY_CENTS = {
     'five': 500,
@@ -250,6 +272,10 @@ def require_realistic(cost, paid, quarters):
     require(coin_count(change) < coin_count(best), 'Quarters do not make the change simpler')
 
 
+def time_present(text, label):
+    return re.search(r'(?<!\d)' + re.escape(label), text) is not None
+
+
 def activity_ok(name, phrase, verb):
     key = name.casefold()
     require(key in VERB, f'Unknown activity {name}')
@@ -262,6 +288,8 @@ def solve_elapsed(public):
     require('The art takes' not in text, 'Unnatural activity name')
     two = TWO.fullmatch(text)
     one = ONE.fullmatch(text)
+    if two is None and one is None:
+        return solve_elapsed_story(public, text)
     require((two is None) != (one is None), 'Unrecognized elapsed-time prompt')
     match = two or one
     period = match[2]
@@ -280,7 +308,29 @@ def solve_elapsed(public):
     require(0 <= end < 20 * 60, 'End time leaves the grade-4 day')
     require(end // 60 != start // 60, 'Interval does not cross an hour')
     label = format_time(end)
-    require(label not in text, 'End time is written in the prompt')
+    require(not time_present(text, label), 'End time is written in the prompt')
+    return choice_id(public, label)
+
+
+def solve_elapsed_story(public, text):
+    clocks = re.findall(r'(?<!\d)(\d{1,2}):(\d{2}) ([ap])\.m\.', text)
+    require(len(clocks) == 1, 'Unrecognized elapsed-time prompt')
+    hour, minute, meridian = clocks[0]
+    durations = re.findall(r'\d+ hours?(?: \d+ minutes?)?|\d+ minutes?', text)
+    require(len(durations) in (1, 2), 'Need one or two durations')
+    figure = field(public, 'figure')
+    require(field(figure, 'kind') == 'clock', 'Clock expected')
+    require(
+        int(hour) == field(figure, 'hour') and int(minute) == field(figure, 'minute'),
+        'Clock does not match the written start',
+    )
+    period = 'morning' if meridian == 'a' else 'afternoon'
+    start = start_minutes(period, field(figure, 'hour'), field(figure, 'minute'))
+    end = start + sum(parse_duration(part) for part in durations)
+    require(0 <= end < 20 * 60, 'End time leaves the grade-4 day')
+    require(end // 60 != start // 60, 'Interval does not cross an hour')
+    label = format_time(end)
+    require(not time_present(text, label), 'End time is written in the prompt')
     return choice_id(public, label)
 
 
@@ -299,9 +349,9 @@ def cell_number(value):
 
 def solve_table(public):
     text = field(public, 'prompt')
-    match = re.fullmatch(
-        r'The table matches (\w+) with (\w+)\. The first row shows (\d+) '
-        r'(feet|kilograms|hours|liters)\. Fill in the two blanks\.',
+    match = re.search(
+        r'matches (\w+) with (\w+)\. The first row shows (\d+) '
+        r'(feet|kilograms|hours|liters)',
         text,
     )
     require(match is not None, 'Unrecognized conversion table')
@@ -352,11 +402,19 @@ def solve_table(public):
 
 
 def solve_rename(public):
-    match = re.fullmatch(
-        r'([\d,]+) (\w+) is how many (\w+)\?',
-        field(public, 'prompt'),
-    )
-    require(match is not None, 'Unrecognized rename prompt')
+    text = field(public, 'prompt')
+    match = re.fullmatch(r'([\d,]+) (\w+) is how many (\w+)\?', text)
+    if match is None:
+        amount_match = re.search(
+            r'([\d,]+) (inches|feet|ounces|cups|quarts|minutes|centimeters|millimeters|grams|meters|milliliters)\b',
+            text,
+        )
+        how = re.search(
+            r'[Hh]ow many (feet|yards|pounds|quarts|gallons|hours|meters|centimeters|kilograms|kilometers|liters)\b',
+            text,
+        )
+        require(amount_match is not None and how is not None, 'Unrecognized rename prompt')
+        match = (text, amount_match[1], amount_match[2], how[1])
     amount = int(match[1].replace(',', ''))
     if amount >= 1000:
         require(',' in match[1], 'A thousands amount has no separator')
@@ -369,10 +427,9 @@ def solve_rename(public):
 
 def solve_line(public):
     text = field(public, 'prompt')
-    require(
-        text == 'How far is the walk from $A$ to $B$, in miles?',
-        'Unrecognized measurement line',
-    )
+    if text != 'How far is the walk from $A$ to $B$, in miles?':
+        require('$A$' in text and '$B$' in text, 'Unrecognized measurement line')
+        require(re.search(r'\bmiles?\b', text) is not None, 'Unrecognized measurement line')
     require('equal steps' not in text, 'The prompt states the scale')
     require(re.search(r'\d', text) is None, 'The prompt states a number the question does not use')
     figure = field(public, 'figure')
@@ -401,12 +458,23 @@ def solve_tool(public):
 
 
 def solve_decimal(public):
-    match = re.fullmatch(
-        r'What is \$(\d+\.\d{1,2}) ([+-]) (\d+\.\d{1,2})\$\?',
-        field(public, 'prompt'),
-    )
-    require(match is not None, 'Unrecognized decimal operation')
-    left, op, right = cents_of(match[1]), match[2], cents_of(match[3])
+    text = field(public, 'prompt')
+    match = re.search(r'\$(\d+\.\d{1,2}) ([+-]) (\d+\.\d{1,2})\$', text)
+    if match:
+        left, op, right = cents_of(match[1]), match[2], cents_of(match[3])
+    else:
+        nums = re.findall(r'\d+\.\d{1,2}', text)
+        if len(nums) == 2:
+            left, right = cents_of(nums[0]), cents_of(nums[1])
+        else:
+            spoken = re.findall(AMOUNT, text)
+            require(len(spoken) == 2, 'Unrecognized decimal operation')
+            left, right = parse_spoken(spoken[0]), parse_spoken(spoken[1])
+        if re.search(r'how much longer|how much is left', text, re.I):
+            op = '-'
+        else:
+            require(re.search(r'total', text, re.I), 'Unrecognized decimal operation')
+            op = '+'
     value = left + right if op == '+' else left - right
     require(value >= 0, 'Decimal result is negative')
     return dollars_of(value)
@@ -462,23 +530,61 @@ def solve_money(public):
         r'What is the fewest number of coins that make that amount\?',
         text,
     )
-    require(fewest is not None, 'Unrecognized money story')
-    amount = parse_spoken(fewest[1])
-    require(amount < 100, 'Fewest coins stay under one dollar')
-    return str(coin_count(amount))
+    if fewest is not None:
+        amount = parse_spoken(fewest[1])
+        require(amount < 100, 'Fewest coins stay under one dollar')
+        return str(coin_count(amount))
+    if 'split' in text:
+        price = re.search(rf'costs ({AMOUNT})', text)
+        items = re.search(r'(\d+) (markers|stickers|erasers|pencils|juice boxes)', text)
+        friends = re.search(r'(\d+) friends', text)
+        require(price is not None and items is not None and friends is not None, text)
+        total = int(items[1]) * parse_spoken(price[1])
+        require(total % int(friends[1]) == 0, 'The share is not exact cents')
+        return dollars_of(total // int(friends[1]))
+    if 'fewest' in text:
+        amounts = re.findall(AMOUNT, text)
+        require(len(amounts) == 1, text)
+        amount = parse_spoken(amounts[0])
+        require(amount < 100, 'Fewest coins stay under one dollar')
+        return str(coin_count(amount))
+    pay = re.search(r'pays? with (.+?)\.', text)
+    if pay is not None and 'change' in text:
+        cost_match = re.search(rf'costs ({AMOUNT})', text)
+        count_match = re.search(r'(\d+) (stickers|pencils|tickets|cookies)', text)
+        require(cost_match is not None, text)
+        paid, quarters = parse_tender(pay[1])
+        price = parse_spoken(cost_match[1])
+        cost = int(count_match[1]) * price if count_match else price
+        require_realistic(cost, paid, quarters)
+        return dollars_of(paid - cost)
+    costs = re.findall(rf'costs ({AMOUNT})', text)
+    require(len(costs) == 2 and 'total' in text, 'Unrecognized money story')
+    left, right = parse_spoken(costs[0]), parse_spoken(costs[1])
+    require(left % 100 != 0 and right % 100 != 0, 'A price is a whole dollar')
+    return dollars_of(left + right)
 
 
 def solve_model(public):
-    match = re.fullmatch(
-        r'Set A shows (.+)\. Set B shows the coins\. How much money is there in all\?' + ENTER,
-        field(public, 'prompt'),
+    text = field(public, 'prompt')
+    phrase = next(
+        (
+            candidate
+            for candidate in (
+                'a 5-dollar bill',
+                '3 one-dollar bills',
+                '2 one-dollar bills',
+                'a 1-dollar bill',
+            )
+            if candidate in text
+        ),
+        None,
     )
-    require(match is not None, 'Unrecognized money model')
+    require(phrase is not None, 'Unrecognized money model')
     figure = field(public, 'figure')
     require(field(figure, 'kind') == 'money-sets', 'Money sets expected')
     sets = {s.get('label'): s.get('items') for s in field(figure, 'sets')}
     require(set(sets) == {'A', 'B'}, 'Need sets A and B')
-    phrase = match[1]
     bills = sets['A']
     if phrase == 'a 5-dollar bill':
         require(bills == ['five'], 'Set A is not one five-dollar bill')

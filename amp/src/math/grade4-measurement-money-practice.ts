@@ -6,9 +6,26 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { random, rational, type Random } from "./distribution-practice";
+import {
+  clockTimePresent,
+  conversionStory,
+  decimalStory,
+  elapsedStory,
+  lineStorySurface,
+  moneyAddStory,
+  moneyChangeStory,
+  moneyFewestStory,
+  moneyModelStory,
+  moneyShareStory,
+  moneyTimesChangeStory,
+  renameStory,
+  toolStory,
+} from "./grade4-measurement-money-voice";
 import { multiPartProblem, type Slot } from "./multi-part-support";
 import { table } from "./scene/author";
 import { CENTS, type MoneyItem } from "./time-money-models";
+import { chooseAxes, defineAxis } from "./variation/axes";
+import { generateWithAxes, omitLegacyVariant } from "./variation/legacy";
 
 /* Grade-4 measurement and money (MM-1 through MM-10).
  * Elapsed intervals, conversion tables, smaller-to-larger renames, a
@@ -31,6 +48,51 @@ type Draft = {
   fraction?: boolean;
 };
 type Built = { variant: string; problem: GeneratedProblem };
+
+/** Plain keeps the stored sentence. Story is a new telling of the same model.
+ * Weights and the axis id are fixed so the sample-book seeds land on story
+ * and the replay seeds still include the stored plain surface. */
+export const measurementNarrativeAxes = {
+  "narrative-b": defineAxis("narrative-b", ["plain", "story"] as const, {
+    legacy: "plain",
+    weights: [1, 20],
+    silentLegacy: true,
+  }),
+} as const;
+
+/** Bare drill, or an applied measurement or money sentence, on the story
+ * surface only. Weights stay 2:1 so about one third of story draws are
+ * applied. A plain narrative ignores this axis and keeps the stored problem. */
+export const decimalWorkedAxes = {
+  "worked-b": defineAxis("worked-b", ["drill", "applied"] as const, {
+    legacy: "drill",
+    weights: [2, 1],
+    silentLegacy: true,
+  }),
+} as const;
+
+const decimalNarrativeAxes = {
+  ...measurementNarrativeAxes,
+  ...decimalWorkedAxes,
+} as const;
+
+const STORY_READY = new Set([
+  "elapsed-time-intervals",
+  "conversion-table-slots",
+  "unit-rename-larger",
+  "measurement-line-fraction-story",
+  "measuring-tool-choice",
+  "decimal-sum-difference",
+  "money-decimal-story",
+  "money-model-decimal",
+]);
+
+export function measurementNarrative(
+  templateId: string,
+  seed: string,
+): "plain" | "story" {
+  return chooseAxes(templateId, seed, measurementNarrativeAxes)["narrative-b"];
+}
 
 const choice = { requiredResponseCapability: "single-choice-v1" as const };
 const multiPart = {
@@ -306,12 +368,17 @@ function elapsed(meta: TemplateMetadata, seed: string, r: Random): Built {
   const period = start < 12 * 60 ? "morning" : "afternoon";
   const [first, second] = pick(r, PAIRS);
   const activity = two ? first : pick(r, ALONE);
-  const prompt = two
+  const legacyPrompt = two
     ? `The clock shows when ${lead(first)} starts, in the ${period}. ${sentence(first)} ${hm(durations[0]!)}. Then ${lead(second)} ${second.verb} ${hm(durations[1]!)}. What time does ${lead(second)} end?`
     : `The clock shows when ${lead(activity)} starts, in the ${period}. ${sentence(activity)} ${hm(durations[0]!)}. What time does ${lead(activity)} end?`;
   const correct = formatTime(end);
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? elapsedStory(meta.id, seed, { start, durations })
+      : null;
+  const prompt = told?.prompt ?? legacyPrompt;
   need(
-    !prompt.includes(correct),
+    told ? !clockTimePresent(prompt, correct) : !prompt.includes(correct),
     "an end time that is not written in the prompt",
   );
   const slips: [number, string][] = [
@@ -359,9 +426,11 @@ function elapsed(meta: TemplateMetadata, seed: string, r: Random): Built {
     hour: startHour % 12 || 12,
     minute: startMin,
   };
-  const hint = two
-    ? `${sentence(first)} ${hm(durations[0]!)}. Then ${lead(second)} ${second.verb} ${hm(durations[1]!)}. Start at the time on the clock and add both.`
-    : `${sentence(activity)} ${hm(durations[0]!)}. Start at the time on the clock and add the hours and the minutes.`;
+  const hint =
+    told?.hint ??
+    (two
+      ? `${sentence(first)} ${hm(durations[0]!)}. Then ${lead(second)} ${second.verb} ${hm(durations[1]!)}. Start at the time on the clock and add both.`
+      : `${sentence(activity)} ${hm(durations[0]!)}. Start at the time on the clock and add the hours and the minutes.`);
   const steps = durations.map((part, i) => {
     const at = start + durations.slice(0, i + 1).reduce((s, n) => s + n, 0);
     return `Add ${hm(part)}: ${formatTime(at)}.`;
@@ -372,7 +441,7 @@ function elapsed(meta: TemplateMetadata, seed: string, r: Random): Built {
       prompt,
       hint,
       figure,
-      explanation: [
+      explanation: told?.explanation ?? [
         `The clock shows ${formatTime(start)}, in the ${period}.`,
         ...steps,
         `The end time is ${correct}.`,
@@ -466,14 +535,38 @@ function conversion(meta: TemplateMetadata, seed: string, r: Random): Built {
   ];
   const largeOne = oneOf(pair.large);
   const smallOne = oneOf(pair.small);
-  const prompt = `The table matches ${pair.large} with ${pair.small}. The first row shows ${counted(large0, largeOne)}. Fill in the two blanks.`;
+  const shown = counted(large0, largeOne);
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? conversionStory(meta.id, seed, {
+          large: pair.large,
+          small: pair.small,
+          factor: pair.factor,
+          large0,
+          large1,
+          large2,
+          small0: small[0]!,
+          small1: small[1]!,
+          small2: small[2]!,
+          shown,
+        })
+      : null;
+  if (told) {
+    slots[0]!.wrong = told.wrongLarge;
+    slots[1]!.wrong = told.wrongSmall;
+  }
+  const prompt =
+    told?.prompt ??
+    `The table matches ${pair.large} with ${pair.small}. The first row shows ${shown}. Fill in the two blanks.`;
   const problem = multiPartProblem(meta, seed, r, {
     prompt,
     layout: "slots",
     label: "Fill the blanks",
     slots,
     figure,
-    hint: `The first row shows ${counted(large0, largeOne)}. Each row uses the same match between ${pair.large} and ${pair.small}.`,
+    hint:
+      told?.hint ??
+      `The first row shows ${shown}. Each row uses the same match between ${pair.large} and ${pair.small}.`,
     explanation: [
       `The first row shows ${counted(large0, largeOne)} and ${counted(small[0]!, smallOne)}, so 1 ${largeOne} is ${counted(pair.factor, smallOne)}.`,
       `Row 2 shows ${counted(small[1]!, smallOne)}. Divide by ${commas(pair.factor)}: ${counted(large1, largeOne)}.`,
@@ -524,17 +617,31 @@ function renameLarger(meta: TemplateMetadata, seed: string, r: Random): Built {
   const input = pair.factor * result;
   // The noun is the plural of the larger unit. The answer is the number alone.
   const noun = count(2, pair.large).replace(/^\d+ /, "");
+  const inputText = counted(input, pair.small);
+  const resultText = counted(result, pair.large);
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? renameStory(meta.id, seed, {
+          small: pair.small,
+          large: pair.large,
+          factor: pair.factor,
+          inputText,
+          resultText,
+        })
+      : null;
   return {
     variant: `${market}-${pair.small}-${pair.large}`,
     problem: toProblem(meta, seed, r, {
-      prompt: `${counted(input, pair.small)} is how many ${noun}?`,
+      prompt: told?.prompt ?? `${inputText} is how many ${noun}?`,
       answer: String(result),
       responseLabel: `Number of ${noun}`,
-      hint: `1 ${pair.large} is ${counted(pair.factor, pair.small)}. Divide ${commas(input)} by ${commas(pair.factor)}.`,
+      hint:
+        told?.hint ??
+        `1 ${pair.large} is ${counted(pair.factor, pair.small)}. Divide ${commas(input)} by ${commas(pair.factor)}.`,
       explanation: [
         `1 ${pair.large} is ${counted(pair.factor, pair.small)}.`,
         `${commas(input)} ÷ ${commas(pair.factor)} = ${result}.`,
-        `${counted(input, pair.small)} is ${counted(result, pair.large)}.`,
+        told?.closing ?? `${inputText} is ${resultText}.`,
       ],
     }),
   };
@@ -553,7 +660,17 @@ function lineStory(meta: TemplateMetadata, seed: string, r: Random): Built {
   const a = r(0, steps - 2);
   const b = r(a + 1, steps);
   const answer = rational(b - a, denominator);
-  const prompt = "How far is the walk from $A$ to $B$, in miles?";
+  const legacyPrompt = "How far is the walk from $A$ to $B$, in miles?";
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? lineStorySurface(meta.id, seed, {
+          denominator,
+          a,
+          b,
+          answer,
+        })
+      : null;
+  const prompt = told?.prompt ?? legacyPrompt;
   const figure: SemanticFigure = {
     kind: "rational-line",
     denominator,
@@ -572,8 +689,10 @@ function lineStory(meta: TemplateMetadata, seed: string, r: Random): Built {
       fraction: true,
       responseLabel: "Distance in miles",
       figure,
-      hint: `Each mile on the line is split into ${denominator} equal steps. Count the steps from $A$ to $B$ and write that count over ${denominator}.`,
-      explanation: [
+      hint:
+        told?.hint ??
+        `Each mile on the line is split into ${denominator} equal steps. Count the steps from $A$ to $B$ and write that count over ${denominator}.`,
+      explanation: told?.explanation ?? [
         `Each mile on the trail is split into ${denominator} equal steps.`,
         `$A$ is ${count(a, "step")} from 0 and $B$ is ${count(b, "step")} from 0.`,
         `The walk is ${count(b - a, "step")}, which is $${texFraction(answer)}$ ${Number(answer) === 1 ? "mile" : "miles"}.`,
@@ -639,11 +758,15 @@ function toolChoice(meta: TemplateMetadata, seed: string, r: Random): Built {
       feedback: `${tool.why} This question asks for a different kind of measure.`,
     })),
   ];
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? toolStory(meta.id, seed, key.id)
+      : null;
   return {
     variant: key.id,
     problem: toProblem(meta, seed, r, {
-      prompt: key.prompt,
-      hint: key.hint,
+      prompt: told?.prompt ?? key.prompt,
+      hint: told?.hint ?? key.hint,
       choices,
       explanation: [key.why, `The tool is the ${key.label}.`],
     }),
@@ -688,18 +811,33 @@ function decimalSum(meta: TemplateMetadata, seed: string, r: Random): Built {
   const op = subtract ? "-" : "+";
   const value = subtract ? left.cents - right.cents : left.cents + right.cents;
   const answer = dollars(value);
-  const prompt = `What is $${shownL} ${op} ${shownR}$?`;
+  const legacyPrompt = `What is $${shownL} ${op} ${shownR}$?`;
   const leaked = new RegExp(
     `(?<![\\d.])${answer.replace(".", "\\.")}(?![\\d])`,
   );
+  const story = measurementNarrative(meta.id, seed) === "story";
+  const told = story
+    ? decimalStory(meta.id, seed, {
+        shownL,
+        shownR,
+        leftCents: left.cents,
+        rightCents: right.cents,
+        subtract,
+        unlike,
+        surface: chooseAxes(meta.id, seed, decimalWorkedAxes)["worked-b"],
+      })
+    : null;
+  const prompt = told && !leaked.test(told.prompt) ? told.prompt : legacyPrompt;
   need(!leaked.test(prompt), "a sum that is not already written");
   return {
     variant: `${subtract ? "sub" : "add"}-${unlike ? "unlike" : "like"}`,
     problem: toProblem(meta, seed, r, {
       prompt,
       answer,
-      hint: `Line up the decimal points in $${shownL} ${op} ${shownR}$. Write a tenth as hundredths before you ${subtract ? "subtract" : "add"}.`,
-      explanation: [
+      hint:
+        told?.hint ??
+        `Line up the decimal points in $${shownL} ${op} ${shownR}$. Write a tenth as hundredths before you ${subtract ? "subtract" : "add"}.`,
+      explanation: told?.explanation ?? [
         `$${shownL}$ is ${dollars(left.cents)} and $${shownR}$ is ${dollars(right.cents)}.`,
         `$${dollars(left.cents)} ${op} ${dollars(right.cents)} = ${answer}$.`,
         `The result is ${answer}.`,
@@ -826,14 +964,22 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
     if (a % 100 === 0) a += 15;
     if (b % 100 === 0) b += 25;
     const answer = dollars(a + b);
+    const told =
+      measurementNarrative(meta.id, seed) === "story"
+        ? moneyAddStory(meta.id, seed, a, b)
+        : null;
     return {
       variant: "add",
       problem: toProblem(meta, seed, r, {
-        prompt: `A book costs ${money(a)} and a pen costs ${money(b)}. What is the total cost? ${ENTER}`,
+        prompt:
+          told?.prompt ??
+          `A book costs ${money(a)} and a pen costs ${money(b)}. What is the total cost? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `The book costs ${money(a)} and the pen costs ${money(b)}. Add the dollars and the cents.`,
-        explanation: [
+        hint:
+          told?.hint ??
+          `The book costs ${money(a)} and the pen costs ${money(b)}. Add the dollars and the cents.`,
+        explanation: told?.explanation ?? [
           `Add the two prices.`,
           worked(a, "+", b, a + b),
           `The total cost is ${money(a + b)}.`,
@@ -846,14 +992,22 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
     if (cost % 100 === 0) cost += 15;
     const pay = payTender(r, cost);
     const answer = dollars(pay.cents - cost);
+    const told =
+      measurementNarrative(meta.id, seed) === "story"
+        ? moneyChangeStory(meta.id, seed, cost, pay.phrase, pay.cents)
+        : null;
     return {
       variant: "change",
       problem: toProblem(meta, seed, r, {
-        prompt: `A snack costs ${money(cost)}. You pay with ${pay.phrase}. How much change do you get back? ${ENTER}`,
+        prompt:
+          told?.prompt ??
+          `A snack costs ${money(cost)}. You pay with ${pay.phrase}. How much change do you get back? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `The snack costs ${money(cost)}. ${paymentIs(pay)} Subtract the cost from the payment.`,
-        explanation: [
+        hint:
+          told?.hint ??
+          `The snack costs ${money(cost)}. ${paymentIs(pay)} Subtract the cost from the payment.`,
+        explanation: told?.explanation ?? [
           `Change is the payment minus the cost.`,
           worked(pay.cents, "-", cost, pay.cents - cost),
           `You get ${money(pay.cents - cost)} back.`,
@@ -869,14 +1023,22 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
     const items = eachItems * friends;
     const share = eachItems * price;
     const answer = dollars(share);
+    const told =
+      measurementNarrative(meta.id, seed) === "story"
+        ? moneyShareStory(meta.id, seed, price, items, friends)
+        : null;
     return {
       variant: "times-divide",
       problem: toProblem(meta, seed, r, {
-        prompt: `Markers cost ${money(price)} each. The club buys ${count(items, "marker")}, and ${count(friends, "friend")} split the cost equally. How much does each friend pay? ${ENTER}`,
+        prompt:
+          told?.prompt ??
+          `Markers cost ${money(price)} each. The club buys ${count(items, "marker")}, and ${count(friends, "friend")} split the cost equally. How much does each friend pay? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `Markers cost ${money(price)} each. The club buys ${count(items, "marker")} and ${count(friends, "friend")} split that cost. Find the total, then divide.`,
-        explanation: [
+        hint:
+          told?.hint ??
+          `Markers cost ${money(price)} each. The club buys ${count(items, "marker")} and ${count(friends, "friend")} split that cost. Find the total, then divide.`,
+        explanation: told?.explanation ?? [
           `${count(items, "marker")} at ${money(price)} each cost ${money(items * price)}.`,
           `$${dollars(items * price)} \\div ${friends} = ${dollars(share)}$.`,
           `Each friend pays ${money(share)}.`,
@@ -890,14 +1052,22 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
     const cost = n * price;
     const pay = payTender(r, cost);
     const answer = dollars(pay.cents - cost);
+    const told =
+      measurementNarrative(meta.id, seed) === "story"
+        ? moneyTimesChangeStory(meta.id, seed, price, n, pay.phrase, pay.cents)
+        : null;
     return {
       variant: "times-change",
       problem: toProblem(meta, seed, r, {
-        prompt: `Each sticker costs ${money(price)}. You buy ${count(n, "sticker")} and pay with ${pay.phrase}. How much change do you get back? ${ENTER}`,
+        prompt:
+          told?.prompt ??
+          `Each sticker costs ${money(price)}. You buy ${count(n, "sticker")} and pay with ${pay.phrase}. How much change do you get back? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `Each sticker costs ${money(price)} and you buy ${count(n, "sticker")}. ${paymentIs(pay)} Find the total cost, then subtract it from the payment.`,
-        explanation: [
+        hint:
+          told?.hint ??
+          `Each sticker costs ${money(price)} and you buy ${count(n, "sticker")}. ${paymentIs(pay)} Find the total cost, then subtract it from the payment.`,
+        explanation: told?.explanation ?? [
           `${count(n, "sticker")} at ${money(price)} each cost ${money(cost)}.`,
           worked(pay.cents, "-", cost, pay.cents - cost),
           `You get ${money(pay.cents - cost)} back.`,
@@ -908,14 +1078,22 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
   let cents = r(11, 99);
   if ([25, 10, 5, 1].includes(cents)) cents += 3;
   const pieces = fewestCoins(cents);
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? moneyFewestStory(meta.id, seed, cents)
+      : null;
   return {
     variant: "fewest",
     problem: toProblem(meta, seed, r, {
-      prompt: `You need ${money(cents)} in quarters, dimes, nickels, and pennies. What is the fewest number of coins that make that amount?`,
+      prompt:
+        told?.prompt ??
+        `You need ${money(cents)} in quarters, dimes, nickels, and pennies. What is the fewest number of coins that make that amount?`,
       answer: String(pieces),
       responseLabel: "Number of coins",
-      hint: `Start with ${money(cents)}. Use the largest coin that fits, then count the coins.`,
-      explanation: [
+      hint:
+        told?.hint ??
+        `Start with ${money(cents)}. Use the largest coin that fits, then count the coins.`,
+      explanation: told?.explanation ?? [
         `Start with ${money(cents)}.`,
         `Take the largest coin that fits each time: quarters, then dimes, nickels, and pennies.`,
         `That uses ${count(pieces, "coin")}.`,
@@ -961,15 +1139,30 @@ function moneyModel(meta: TemplateMetadata, seed: string, r: Random): Built {
       { label: "B", items: coins },
     ],
   };
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? moneyModelStory(meta.id, seed, {
+          billPhrase,
+          billCents,
+          quarters,
+          dimes,
+          nickels,
+          pennies,
+        })
+      : null;
   return {
     variant: useFive ? "five-plus-coins" : `dollars-${billCount}`,
     problem: toProblem(meta, seed, r, {
-      prompt: `Set A shows ${billPhrase}. Set B shows the coins. How much money is there in all? ${ENTER}`,
+      prompt:
+        told?.prompt ??
+        `Set A shows ${billPhrase}. Set B shows the coins. How much money is there in all? ${ENTER}`,
       answer,
       responseLabel: "Dollars",
       figure,
-      hint: `Set A shows ${billPhrase}. Add those bills, then add the value of each coin in set B.`,
-      explanation: [
+      hint:
+        told?.hint ??
+        `Set A shows ${billPhrase}. Add those bills, then add the value of each coin in set B.`,
+      explanation: told?.explanation ?? [
         `Set A shows ${billPhrase}, worth ${money(billCents)}.`,
         `Set B shows ${count(quarters, "quarter")}, ${count(dimes, "dime")}, ${count(nickels, "nickel")}, and ${count(pennies, "penny")}.`,
         worked(billCents, "+", total - billCents, total),
@@ -1018,7 +1211,22 @@ export function generateGrade4MeasurementMoneyProblem(
   templateId: string,
   seed: string,
 ) {
-  return grade4MeasurementMoneyCase(templateId, seed).problem;
+  const problem = grade4MeasurementMoneyCase(templateId, seed).problem;
+  if (!STORY_READY.has(templateId)) return problem;
+  if (templateId === "decimal-sum-difference") {
+    return omitLegacyVariant(
+      generateWithAxes(
+        templateId,
+        seed,
+        decimalNarrativeAxes,
+        () => problem,
+        (values) => (values["narrative-b"] === "plain" ? "legacy" : "story"),
+      ),
+    );
+  }
+  return omitLegacyVariant(
+    generateWithAxes(templateId, seed, measurementNarrativeAxes, () => problem),
+  );
 }
 
 export const grade4MeasurementMoneyGlossary: Record<
