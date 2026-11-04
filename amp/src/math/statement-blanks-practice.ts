@@ -2,6 +2,7 @@ import { isAre } from "./agreement";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import { lineTable, scene } from "./scene/author";
 import type { Element } from "./scene/spec";
+import { storyName } from "./story-kit/names";
 import { defineAxis, type AxisSet } from "./variation/axes";
 import { differentWhole, sameWholeComparePrompt } from "./story-kit/fractions";
 import {
@@ -375,6 +376,175 @@ function tableSlots(
     fixed: columns,
   }));
 }
+
+const COUNT_SCENES = [
+  {
+    items: ["soccer balls", "basketballs", "footballs"],
+    place: "gym closet",
+    kind: "balls",
+  },
+  {
+    items: ["tulips", "daisies", "roses"],
+    place: "garden bed",
+    kind: "flowers",
+  },
+  {
+    items: ["red cars", "blue cars", "green cars"],
+    place: "toy bin",
+    kind: "cars",
+  },
+  {
+    items: ["chocolate cookies", "sugar cookies", "oatmeal cookies"],
+    place: "bake-sale table",
+    kind: "cookies",
+  },
+  {
+    items: ["fiction books", "poetry books", "science books"],
+    place: "library cart",
+    kind: "books",
+  },
+  {
+    items: ["dogs", "cats", "rabbits"],
+    place: "shelter desk",
+    kind: "animals",
+  },
+  { items: ["apples", "oranges", "pears"], place: "fruit bowl", kind: "fruit" },
+  {
+    items: ["pencils", "erasers", "rulers"],
+    place: "art shelf",
+    kind: "supplies",
+  },
+  {
+    items: ["baseball cards", "stamps", "stickers"],
+    place: "collection box",
+    kind: "collectibles",
+  },
+  {
+    items: ["goldfish", "guppies", "tetras"],
+    place: "fish tank",
+    kind: "fish",
+  },
+  {
+    items: ["cupcakes", "muffins", "brownies"],
+    place: "kitchen counter",
+    kind: "treats",
+  },
+  {
+    items: ["marbles", "beads", "buttons"],
+    place: "craft box",
+    kind: "pieces",
+  },
+] as const;
+
+/** v2 counts sentence: many real tallies. The retired blanks family keeps
+ * `buildTimesAsMany`, including its probability sentence. */
+const buildTimesAsManyCounts: Generator<AxisSet> = ({ meta, seed, r }) => {
+  const scene = pick(r, COUNT_SCENES);
+  const name = storyName((n) => r(0, n - 1));
+  const names = shuffle(r, [...scene.items]);
+  const k = r(2, 6);
+  const small = r(2, 9);
+  const counts = [small, small * k, 0];
+  counts[2] = r(2, 40);
+  need(!counts.slice(0, 2).includes(counts[2]!), "three different counts");
+  need(
+    counts[2]! % small !== 0 &&
+      (small * k) % counts[2]! !== 0 &&
+      counts[2]! % (small * k) !== 0,
+    "one whole-number comparison",
+  );
+  const pairs = names.flatMap((a, i) =>
+    names.flatMap((b, j) =>
+      i !== j && counts[i]! % counts[j]! === 0 && counts[i]! / counts[j]! >= 2
+        ? [[a, b]]
+        : [],
+    ),
+  );
+  need(pairs.length === 1, "one pair of items");
+  const [bigName, smallName] = pairs[0]!;
+  const shuffled = shuffle(
+    r,
+    names.map((n, i) => ({ n, c: counts[i]! })),
+  );
+  const frame = r(0, 2);
+  const lead =
+    frame === 0
+      ? `${name} counted the ${scene.kind} in the ${scene.place}. Complete the sentence.`
+      : frame === 1
+        ? `The table shows what ${name} sorted in the ${scene.place}. Complete the sentence.`
+        : `${name} made a tally of the ${scene.kind}. Use the table to complete the sentence.`;
+  const sentenceStart =
+    frame === 1
+      ? [
+          "The count of ",
+          {
+            id: "big",
+            label: "Item with the greater count",
+            correct: bigName!,
+            fixed: shuffled.map((x) => x.n),
+          } as Slot,
+          " is ",
+          slotOf(
+            "k",
+            "Times as many",
+            k,
+            [k + 1, k - 1, small * k - small, small, 2].filter((x) => x >= 2),
+          ),
+          " times the count of ",
+          {
+            id: "small",
+            label: "Item with the smaller count",
+            correct: smallName!,
+            fixed: shuffled.map((x) => x.n),
+          } as Slot,
+          ".",
+        ]
+      : [
+          "There are ",
+          slotOf(
+            "k",
+            "Times as many",
+            k,
+            [k + 1, k - 1, small * k - small, small, 2].filter((x) => x >= 2),
+          ),
+          " times as many ",
+          {
+            id: "big",
+            label: "Item with the greater count",
+            correct: bigName!,
+            fixed: shuffled.map((x) => x.n),
+          } as Slot,
+          " as ",
+          {
+            id: "small",
+            label: "Item with the smaller count",
+            correct: smallName!,
+            fixed: shuffled.map((x) => x.n),
+          } as Slot,
+          ".",
+        ];
+  const built = inlineSentence(sentenceStart);
+  return multiPartProblem(meta, seed, r, {
+    prompt: lead,
+    layout: "inline",
+    label: "Choose a number or an item for each gap",
+    slots: built.slots,
+    sentence: built.sentence,
+    figure: tableFigure(
+      [
+        ["Item", ...shuffled.map((x) => x.n)],
+        ["Count", ...shuffled.map((x) => String(x.c))],
+      ],
+      `${name}'s ${scene.kind}`,
+    ),
+    hint: "Find the two counts where the greater one divides evenly by the smaller one. The third count will not. That quotient is how many times as many.",
+    explanation: [
+      `Divide the greater count by the smaller one. $${small * k}\\div ${small}=${k}$, because $${k}\\times ${small}=${small * k}$.`,
+      `So there are ${k} times as many ${bigName} as ${smallName}.`,
+      `The other count, ${counts[2]}, does not divide evenly by either of those counts.`,
+    ],
+  });
+};
 
 const buildTimesAsMany: Generator<AxisSet> = ({ meta, seed, r, axes }) => {
   if (axes.form === "count-times") {
@@ -893,7 +1063,7 @@ export const statementBlanksGenerate = defineGenerate(
       },
     ),
 
-    "times-as-many-counts": entry(timesAsManyAxes, buildTimesAsMany),
+    "times-as-many-counts": entry(timesAsManyAxes, buildTimesAsManyCounts),
     "times-as-many-blanks": entry(timesAsManyV1Axes, buildTimesAsMany),
 
     "compare-fractions-reason-blanks": entry(
