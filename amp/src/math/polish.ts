@@ -15,6 +15,8 @@ export const keptAfterOne: readonly string[] = [
   "less",
   "this",
   "bus",
+  // "tennis" ends in s and is not a plural ("1 tennis ball").
+  "tennis",
   "makes",
   "leaves",
   // Verbs that follow a bare 1 ("adding 1 moves 1 right", "the key 1 means

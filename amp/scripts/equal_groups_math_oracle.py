@@ -203,7 +203,11 @@ def solve_equal_groups(public):
         require(2 <= multiplier <= 9, 'The multiplier is a counting number from 2 to 9')
         same_holder = re.search(
             r'(\w+) has [\d,]+\b.+\1 has \d+ times as many', prompt)
-        if prompt.startswith('A collection has') or same_holder:
+        if (
+            prompt.startswith('A collection has')
+            or same_holder
+            or re.search(r'That is \d+ times as many', prompt)
+        ):
             require(amount % multiplier == 0, 'The larger amount is a whole number of copies')
             answer = whole_division(amount, multiplier)
             require(2 <= answer <= 100, 'The unknown smaller amount is from 2 to 100')

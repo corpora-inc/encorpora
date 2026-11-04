@@ -448,19 +448,30 @@ def solve_compatible(public):
         require(remainder != 0, 'The quotient is not a whole number')
         correct = f'between {quotient} and {quotient + 1}'
         return pick(options, [o['label'] == correct for o in options], 'bounds')
-    m = re.fullmatch(r'Estimate (\d+) × (\d+) with compatible numbers\. Change \1 to the closest multiple of (\d+), then multiply by \2\.', t)
-    if m:
-        expected = nearest_multiple(int(m[1]), int(m[3])) * int(m[2])
-    else:
-        m = re.fullmatch(r'Estimate (\d+) ÷ (\d+) with compatible numbers\. Change \1 to the closest multiple of (\d+), then divide by \2\.', t)
-        if m:
-            rounded = nearest_multiple(int(m[1]), int(m[3]))
-            require(rounded % int(m[2]) == 0, 'Compatible number must divide evenly')
-            expected = Fraction(rounded, int(m[2]))
+    patterns = (
+        r'Estimate (\d+) × (\d+) with compatible numbers\. Change \1 to the closest multiple of (\d+), then multiply by \2\.',
+        r'Estimate (\d+) ÷ (\d+) with compatible numbers\. Change \1 to the closest multiple of (\d+), then divide by \2\.',
+        r'Use front-end estimation to estimate ([\d, +]+)\. Add only the first digit of each number, keeping its place value\.',
+    )
+    found = [(re.search(pattern, t), pattern) for pattern in patterns]
+    matched = [(m, pattern) for m, pattern in found if m]
+    require(len(matched) == 1, 'Unrecognized estimation prompt')
+    m, pattern = matched[0]
+    prefix = t[:m.start()].strip()
+    if prefix:
+        if 'front-end' in pattern:
+            for piece in m[1].split(' + '):
+                require(piece in prefix, 'The story must use every added count')
         else:
-            m = re.fullmatch(r'Use front-end estimation to estimate ([\d, +]+)\. Add only the first digit of each number, keeping its place value\.', t)
-            require(m is not None, 'Unrecognized estimation prompt')
-            expected = sum(front_end(num(x)) for x in m[1].split(' + '))
+            require(m[1] in prefix and m[2] in prefix, 'The story must use the numbers being estimated')
+    if '×' in pattern:
+        expected = nearest_multiple(int(m[1]), int(m[3])) * int(m[2])
+    elif '÷' in pattern:
+        rounded = nearest_multiple(int(m[1]), int(m[3]))
+        require(rounded % int(m[2]) == 0, 'Compatible number must divide evenly')
+        expected = Fraction(rounded, int(m[2]))
+    else:
+        expected = sum(front_end(num(x)) for x in m[1].split(' + '))
     values = [option_value(o['label']) for o in options]
     require(len(set(values)) == len(values), 'Duplicate estimates')
     return pick(options, [v == expected for v in values], 'compatible estimate')

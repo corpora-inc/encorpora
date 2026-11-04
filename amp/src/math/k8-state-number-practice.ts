@@ -11,7 +11,7 @@ import {
   recordedSweepVariant,
   sweepChoose,
 } from "./number-domain-axes";
-import { estimateLead } from "./story-kit/operations";
+import { compatibleStory } from "./story-kit/operations";
 
 /* State-specific number sense, money, estimation and customary measurement
  * (TEKS, Florida B.E.S.T. and Virginia SOL requirements beyond the common
@@ -1963,8 +1963,8 @@ export function k8StateNumberCase(templateId: string, seed: string) {
       axes?.cast5 &&
       axes.cast5 !== "classic"
     ) {
-      const lead = estimateLead[axes.cast5];
-      draft = { ...draft, prompt: `${lead} ${draft.prompt}` };
+      const told = compatibleStory(axes.cast5, draft.prompt);
+      if (told) draft = { ...draft, prompt: told };
     }
     if (leaks(draft)) continue;
     const problem = toProblem(meta, seed, r, draft);

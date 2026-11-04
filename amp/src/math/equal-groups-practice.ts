@@ -17,8 +17,9 @@ import {
 import {
   comparisonAsk,
   comparisonCast,
+  comparisonSmallAsk,
   groupQuestion,
-  groupScenes,
+  realisticGroup,
 } from "./story-kit/operations.js";
 export const equalGroupsTemplates: readonly TemplateMetadata[] =
   equalGroupsDefinitions.map(({ id, title, skillId, grade, description }) => ({
@@ -73,6 +74,8 @@ export function generateEqualGroupsProblem(
   const shown = (n: number) => grouped(n);
   const counted = (n: number, noun: string) =>
     `${shown(n)} ${n === 1 ? noun : plural(noun)}`;
+  const article = (phrase: string) =>
+    /^[aeiou]/i.test(phrase) ? `an ${phrase}` : `a ${phrase}`;
   switch (templateId) {
     case "full-kits":
     case "seats-needed":
@@ -92,7 +95,10 @@ export function generateEqualGroupsProblem(
             ? "telling25"
             : "scene25";
       const telling = axes?.[tellingKey] ?? "classic";
-      const scene = telling === "classic" ? undefined : groupScenes[telling];
+      const scene =
+        large || telling !== "classic"
+          ? realisticGroup(size, telling, large)
+          : undefined;
       if (templateId === "seats-needed") {
         answer = complete + (remainder > 0 ? 1 : 0);
         if (!scene) {
@@ -118,7 +124,7 @@ export function generateEqualGroupsProblem(
           );
           label = `${scene.groups[0]!.toUpperCase()}${scene.groups.slice(1)} needed`;
           figure = large ? undefined : counters(total, size, scene.unit);
-          hint = `How many groups of ${shown(size)} fit in ${shown(total)}? If any ${scene.unit} are left over, they still need a ${scene.group}.`;
+          hint = `How many groups of ${shown(size)} fit in ${shown(total)}? If any ${scene.unit} are left over, they still need ${article(scene.group)}.`;
           explanation = [
             `Each ${scene.group} holds ${shown(size)} ${scene.unit}. Find how many groups of ${shown(size)} fit in ${shown(total)}.`,
             `${counted(complete, `full ${scene.group}`)} ${complete === 1 ? "holds" : "hold"} ${shown(complete)} × ${shown(size)} = ${shown(size * complete)} ${scene.unit}.`,
@@ -168,7 +174,7 @@ export function generateEqualGroupsProblem(
           `That leaves ${shown(total)} − ${shown(complete * size)} = ${shown(remainder)}. ${remainder === 0 ? `No ${scene.unit} are left.` : `${shown(remainder)} is fewer than ${shown(size)}, so ${remainder === 1 ? "it cannot" : "they cannot"} fill another ${scene.group}.`}`,
           full
             ? `A partly filled ${scene.group} does not count. You can fill ${counted(complete, `full ${scene.group}`)}.`
-            : `What cannot fill a ${scene.group} is left over: ${counted(remainder, scene.one)}.`,
+            : `What cannot fill ${article(scene.group)} is left over: ${counted(remainder, scene.one)}.`,
         ];
       }
       break;
@@ -378,7 +384,7 @@ export function generateEqualGroupsProblem(
         } else {
           prompt =
             large > 80
-              ? `A collection has ${shown(large)} ${cast.noun}. That is ${shown(factor)} times as many ${cast.noun} as ${cast.a} has. How many ${cast.noun} does ${cast.a} have?`
+              ? comparisonSmallAsk(cast, shown(large), shown(factor))
               : `${cast.b} has ${shown(large)} ${cast.noun}. ${cast.b} has ${shown(factor)} times as many ${cast.noun} as ${cast.a}. How many ${cast.noun} does ${cast.a} have?`;
           label = `${cast.a}'s ${cast.noun}`;
           hint = `${shown(large)} is ${shown(factor)} times ${cast.a}'s ${cast.noun}. Divide ${shown(large)} by ${shown(factor)}. Do not subtract ${shown(factor)}.`;
