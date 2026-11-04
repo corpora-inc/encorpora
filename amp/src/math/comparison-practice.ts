@@ -15,13 +15,14 @@ export const digitMagnitudeAxes = {
   magnitude: defineAxis(
     "magnitude",
     ["as-drawn", "six", "million", "billions"] as const,
-    { legacy: "as-drawn", weights: [8, 4, 2, 1] },
+    { legacy: "as-drawn", weights: [8, 4, 2, 1], since: 2 },
   ),
   /** Wording only. `bare` is the stored sentence. */
   surface: defineAxis("surface", ["bare", "ask", "worth", "story"] as const, {
     legacy: "bare",
     weights: [3, 5, 5, 6],
     silentLegacy: true,
+    since: 2,
   }),
 } as const;
 type DigitSurface = (typeof digitMagnitudeAxes.surface.values)[number];
@@ -97,7 +98,8 @@ export const comparisonTemplates: readonly TemplateMetadata[] = definitions.map(
     skillId,
     gradeBand,
     description,
-    version: 1,
+    version: id === "multidigit-digit-value" ? 2 : 1,
+    ...(id === "multidigit-digit-value" ? { reprintsFrom: 1 } : {}),
     ...(choiceIds.has(id)
       ? { requiredResponseCapability: "single-choice-v1" as const }
       : {}),

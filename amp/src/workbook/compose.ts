@@ -672,6 +672,8 @@ export function workbookCode(spec: WorkbookSpec): string {
 /** Regenerate a workbook's problems from its spec. */
 export function workbookProblems(spec: WorkbookSpec): GeneratedProblem[] {
   return spec.sections.flatMap((s) =>
-    s.items.map((i) => generateProblem(i.templateId, i.seed)),
+    s.items.map((i) =>
+      generateProblem(i.templateId, i.seed, i.templateVersion),
+    ),
   );
 }

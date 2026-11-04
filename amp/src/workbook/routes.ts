@@ -39,14 +39,17 @@ import { RendererUnavailable, type WorkbookRenderer } from "./pdf.js";
 const DAY = 86_400_000;
 const staleWorkbook =
   "Some problems in this workbook have been updated since it was made. Make today's workbook instead.";
-const templateVersion = new Map(templates.map((t) => [t.id, t.version]));
-/** Problems regenerate from template and seed, so a workbook reprints
- * exactly only while every template is still at the version it named. */
+const templateById = new Map(templates.map((t) => [t.id, t]));
+/** Problems regenerate from template, version and seed. A workbook reprints
+ * while every stored version is one that template can still produce.
+ * `reprintsFrom` is the oldest such version; it defaults to the current one. */
 export function workbookIsCurrent(spec: WorkbookRecord["spec"]): boolean {
   return spec.sections.every((s) =>
-    s.items.every(
-      (i) => templateVersion.get(i.templateId) === i.templateVersion,
-    ),
+    s.items.every((i) => {
+      const meta = templateById.get(i.templateId);
+      if (!meta) return false;
+      return i.templateVersion >= (meta.reprintsFrom ?? meta.version);
+    }),
   );
 }
 const skillTitle = (id: string) => skills.find((s) => s.id === id)?.title ?? id;

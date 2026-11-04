@@ -15,7 +15,11 @@ import { withTemplateGlossary } from "./template-glossary";
 import { historicalTrueEquationChoice } from "./operation-sentence-practice";
 import { historicalEqualFactorFamily } from "./multiselect-number-practice";
 import { sceneCapabilitiesIn } from "./scene/capability";
-import { withClientFigures } from "./variation/axes";
+import {
+  versionGatedAxes,
+  withClientFigures,
+  withTemplateVersion,
+} from "./variation/axes";
 import { gradePointPlot, normalizePointPlot } from "./point-plot";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
 import {
@@ -829,11 +833,53 @@ function subtractWithinTwentyHint(a: number, b: number): string {
     ? `First take away ${ones} to reach 10. Then take away the rest of the ${b}.`
     : `${a} is 10 and ${ones}. Take ${b} from the ${ones} ones; the ten stays.`;
 }
+const templateById = new Map(templates.map((t) => [t.id, t]));
+/** Drop axes this version did not have, when a generator recorded the forced
+ * legacy value. A variant whose id is only those values goes too: the stored
+ * problem had no variant. Axes that already existed stay. */
+function stripVersionGatedAxes(problem: GeneratedProblem): GeneratedProblem {
+  const gated = versionGatedAxes();
+  if (!gated.length || !problem.variant?.axes) return problem;
+  const ids = new Set(gated.map((axis) => axis.id));
+  const values = new Set(gated.map((axis) => axis.value));
+  const axes = Object.fromEntries(
+    Object.entries(problem.variant.axes).filter(([key]) => !ids.has(key)),
+  );
+  if (
+    Object.keys(axes).length === 0 &&
+    (problem.variant.id === "legacy" || values.has(problem.variant.id))
+  ) {
+    const { variant: _variant, ...rest } = problem;
+    return rest;
+  }
+  if (Object.keys(axes).length === Object.keys(problem.variant.axes).length)
+    return problem;
+  return { ...problem, variant: { ...problem.variant, axes } };
+}
 export function generateProblem(
   templateId: string,
   seed: string,
+  version?: number,
 ): GeneratedProblem {
-  return polishProblem(generateRawProblem(templateId, seed));
+  const meta = templateById.get(templateId);
+  const at = version ?? meta?.version;
+  const run = () => {
+    const problem = stripVersionGatedAxes(
+      polishProblem(generateRawProblem(templateId, seed)),
+    );
+    if (
+      !meta?.previousSkillId ||
+      at == null ||
+      at >= meta.version ||
+      problem.public.skillId === meta.previousSkillId
+    )
+      return problem;
+    return {
+      ...problem,
+      public: { ...problem.public, skillId: meta.previousSkillId },
+    };
+  };
+  return at == null ? run() : withTemplateVersion(at, run);
 }
 /**
  * Generate a problem a client can draw. Figure-surface axes fall back to
@@ -847,6 +893,7 @@ export function generateProblemFor(
   templateId: string,
   seed: string,
   figureCapabilities: readonly string[],
+  version?: number,
 ): GeneratedProblem {
   const fits = (problem: GeneratedProblem) =>
     // The public problem, and what reaches the client beside it: the hint
@@ -857,11 +904,11 @@ export function generateProblemFor(
       problem.walkthrough,
     ]).every((needs) => figureCapabilities.includes(needs));
   const problem = withClientFigures(figureCapabilities, () =>
-    generateProblem(templateId, seed),
+    generateProblem(templateId, seed, version),
   );
   if (fits(problem)) return problem;
   const legacy = withClientFigures(figureCapabilities, () =>
-    withLegacySurfaces(() => generateProblem(templateId, seed)),
+    withLegacySurfaces(() => generateProblem(templateId, seed, version)),
   );
   if (fits(legacy)) return legacy;
   throw new Error(

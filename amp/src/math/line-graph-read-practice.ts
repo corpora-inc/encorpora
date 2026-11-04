@@ -43,7 +43,8 @@ export const lineGraphReaderTemplate: TemplateMetadata = {
 };
 export const dotPlotArithmeticTemplate: TemplateMetadata = {
   id: "dot-plot-arithmetic",
-  version: 1,
+  version: 2,
+  reprintsFrom: 1,
   title: "Total and range from a dot plot",
   skillId: "fraction-plot-arithmetic",
   gradeBand: "3–5",
@@ -929,11 +930,13 @@ const dotAxes = {
   "data-domain": defineAxis("data-domain", ["current", "hundredths"] as const, {
     legacy: "current",
     weights: [4, 1],
+    since: 2,
   }),
   /** Classic keeps the original four contexts. Cast is the varied story surface. */
   story: defineAxis("story", ["classic", "cast"] as const, {
     legacy: "classic",
     weights: [1, 11],
+    since: 2,
   }),
 };
 interface DotModel {

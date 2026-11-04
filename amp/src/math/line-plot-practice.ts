@@ -33,7 +33,8 @@ export const linePlotTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "fraction-plot-difference",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     ...charts,
     title: "Add and subtract from a line plot",
     skillId: "fraction-plot-arithmetic",
@@ -108,12 +109,13 @@ const plotDenomAxis = {
       "tenths",
       "twelfths",
     ] as const,
-    { legacy: "fourths-eighths", weights: [12, 2, 2, 2, 2, 1] },
+    { legacy: "fourths-eighths", weights: [12, 2, 2, 2, 2, 1], since: 2 },
   ),
   /** Plain keeps the original sentence. Vivid is a varied measurement story. */
   setting: defineAxis("setting", ["plain", "vivid"] as const, {
     legacy: "plain",
     weights: [1, 11],
+    since: 2,
   }),
 };
 const EXTRA_DENOM = {

@@ -47,6 +47,10 @@ const always = [
   "selection-policy",
   "source-reconciliation",
   "template-glossary",
+  // Stored workbooks reprint from (template, version, seed): any generator
+  // change can break them, and no import edge points at these tests.
+  "version-gated-axes",
+  "workbook",
 ];
 // Catalog-wide sweeps (slow). Opt in with --content; CI always runs them.
 const content = [

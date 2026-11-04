@@ -41,7 +41,7 @@ The selection windows stay the same, so a roll is varied but never off level. Ov
 
 ## Determinism
 
-`composeWorkbook` (`src/workbook/compose.ts`) returns a `WorkbookSpec` that names every problem by template, version and seed. The seed derives from learner key, date, workbook number and choices. With the same evidence and history, the same inputs compose the same workbook, and a stored spec always reprints the same pages. "Roll another" (the next number) is new. `workbookCode` is a short hash of the spec, printed on every page so results can be entered against exactly those problems.
+`composeWorkbook` (`src/workbook/compose.ts`) returns a `WorkbookSpec` that names every problem by template, version and seed. The seed derives from learner key, date, workbook number and choices. With the same evidence and history, the same inputs compose the same workbook. A stored spec reprints the same pages: each problem is generated again at the template version the spec stored. A template may set `reprintsFrom` to the oldest version its generator still reproduces exactly, so an axis added in a later version can stay on the value the old pages used. Until a template sets `reprintsFrom`, that oldest version is its current version. "Roll another" (the next number) is new. `workbookCode` is a short hash of the spec, printed on every page so results can be entered against exactly those problems.
 
 ## Rendering
 
@@ -66,7 +66,7 @@ The routes (`src/workbook/routes.ts`) require the learner's parent with consent 
 | `GET /api/v1/learners/:id/workbooks/areas` | The areas a parent can choose for this learner, in curriculum order, with their names |
 | `GET /api/v1/learners/:id/workbooks[?date=]` | History, newest first, as summaries (sections, problem counts, estimated minutes, choices, code), and `pdf`: whether downloads are PDFs. Without a configured renderer the screens download the printable document instead |
 | `GET /api/v1/learners/:id/workbooks/:workbookId/pdf[?format=Letter\|A4]` | The workbook PDF, rendered by the [render service](deployment.md#workbook-render-service) for each request. PDFs are never stored; only the spec is. A renderer that is down answers a logged 503, "Your workbook is being prepared; try again in a minute.", and the screen downloads the printable document instead. 410 as below |
-| `GET /api/v1/learners/:id/workbooks/:workbookId/document[?paper=]` | The printable workbook as one HTML document. 410 when a template has changed version since the workbook was made, because its problems would no longer reprint exactly |
+| `GET /api/v1/learners/:id/workbooks/:workbookId/document[?paper=]` | The printable workbook as one HTML document. 410 when a stored problem's template version is older than that template can reprint (`reprintsFrom`), because those pages would no longer match |
 
 A stored spec never changes when evidence changes later; the next number is composed from the new evidence. `workbookCode` hashes the spec with sorted keys, because JSONB storage reorders them.
 

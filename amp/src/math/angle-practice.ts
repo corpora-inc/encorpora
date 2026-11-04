@@ -84,11 +84,13 @@ export const angleClassifyAxes = {
   reflex: defineAxis("reflex", ["ordinary", "reflex"] as const, {
     legacy: "ordinary",
     weights: [4, 1],
+    since: 2,
   }),
   setting: defineAxis("setting", ["bare", "story"] as const, {
     legacy: "bare",
     silentLegacy: true,
     weights: [1, 16],
+    since: 2,
   }),
 };
 
@@ -109,7 +111,8 @@ export const angleTemplates: readonly TemplateMetadata[] = definitions.map(
     title,
     skillId,
     description,
-    version: 1,
+    version: id === "angle-classify" ? 2 : 1,
+    ...(id === "angle-classify" ? { reprintsFrom: 1 } : {}),
     gradeBand: "3–5",
     requiredFigureCapability: "scenes-v1",
     ...(choice

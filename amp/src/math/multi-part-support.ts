@@ -149,7 +149,10 @@ export function multiPartProblem(
   return {
     public: {
       id: createHash("sha256")
-        .update(JSON.stringify([meta.id, meta.version, seed]))
+        // A version that still reprints the previous bytes keeps the stored id.
+        .update(
+          JSON.stringify([meta.id, meta.reprintsFrom ?? meta.version, seed]),
+        )
         .digest("hex"),
       templateId: meta.id,
       templateVersion: 1,
