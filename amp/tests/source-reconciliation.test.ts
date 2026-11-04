@@ -285,9 +285,9 @@ test("Texas K-8 and high-school inventories report honest aggregate counts", () 
   });
   assert.deepEqual(band(texasGrades35Inventories), {
     requirements: 140,
-    relatedPractice: 100,
+    relatedPractice: 101,
     missingOnly: 11,
-    unreviewed: 29,
+    unreviewed: 28,
   });
   assert.deepEqual(band(texasGrades68Inventories), {
     requirements: 143,
