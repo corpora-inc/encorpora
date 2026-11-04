@@ -351,7 +351,7 @@ const legacyPrinciples: Record<string, string> = {
     "Fractions on the number line: a/b is the point a intervals of length 1/b to the right of 0.",
   "fraction-whole-as-parts": "A whole number as a fraction: n = (n × b)/b.",
   "equivalent-numerator":
-    "Fundamental property of fractions: a/b = (a × k)/(b × k) for any nonzero $k$.",
+    "Fundamental property of fractions: a/b = (a × k)/(b × k) for any nonzero $k$. The fraction $k/k$ equals 1, so multiplying by $k/k$ keeps the amount.",
   "equivalent-denominator":
     "Fundamental property of fractions: a/b = (a ÷ k)/(b ÷ k) when $k$ divides both $a$ and $b$.",
   "fraction-equivalence-choice":

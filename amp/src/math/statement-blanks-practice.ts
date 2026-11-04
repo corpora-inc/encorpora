@@ -1,6 +1,9 @@
+import { isAre } from "./agreement";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
-import { lineTable } from "./scene/author";
+import { lineTable, scene } from "./scene/author";
+import type { Element } from "./scene/spec";
 import { defineAxis } from "./variation/axes";
+import { differentWhole, sameWholeComparePrompt } from "./story-kit/fractions";
 import {
   defineGenerate,
   entry,
@@ -104,13 +107,14 @@ export const statementBlanksTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "compare-fractions-reason-blanks",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Compare two fractions and say why",
     skillId: "fraction-comparison",
     gradeBand: "3–5",
     ...multiPartCapability,
     description:
-      "Choose the greater of two fractions with the same numerator or the same denominator and the reason that makes it greater.",
+      "Choose the greater of two fractions with the same numerator or the same denominator and the reason that makes it greater, or tell that the fractions cannot be compared when the wholes are different sizes.",
   },
   {
     id: "inequality-number-blanks",
@@ -286,6 +290,19 @@ const BOOK_TYPES = [
 /* ---------- comparing fractions ---------- */
 export const compareReasonAxes = {
   basis: defineAxis("basis", ["same-numerator", "same-denominator"] as const),
+  // `same` is the stored surface. Leaving it out of the variant keeps the
+  // old id (`same-numerator` or `same-denominator`) on that draw.
+  whole: defineAxis("whole", ["same", "different"] as const, {
+    weights: [2, 1],
+    needs: { different: "scenes-v1" },
+    silentLegacy: true,
+    since: 2,
+  }),
+  setting: defineAxis("setting", ["plain", "applied"] as const, {
+    weights: [1, 2],
+    silentLegacy: true,
+    since: 2,
+  }),
 } as const;
 const REASONS = {
   "same-numerator": {
@@ -868,6 +885,110 @@ export const statementBlanksGenerate = defineGenerate(
     "compare-fractions-reason-blanks": entry(
       compareReasonAxes,
       ({ meta, seed, r, axes }) => {
+        if (axes.whole === "different") {
+          const thing = differentWhole(r);
+          const d1 = r(2, 8);
+          const n1 = r(1, d1 - 1);
+          let d2 = r(2, 8);
+          let n2 = r(1, d2 - 1);
+          // The two fraction choices must not be the same amount, or the
+          // cards collapse into one meaning.
+          for (let guard = 0; guard < 20 && n1 * d2 === n2 * d1; guard++) {
+            d2 = r(2, 8);
+            n2 = r(1, d2 - 1);
+          }
+          if (n1 * d2 === n2 * d1) {
+            d2 = d2 === 8 ? 3 : d2 + 1;
+            n2 = 1;
+          }
+          const bar = (
+            prefix: string,
+            parts: number,
+            shaded: number,
+            y: number,
+            width: number,
+          ) => {
+            const piece = width / parts;
+            const els: Element[] = [];
+            for (let i = 0; i < parts; i++)
+              els.push({
+                type: "rect",
+                id: `${prefix}-${i}`,
+                at: [i * piece, y],
+                size: [piece, 1.2],
+                fill: i < shaded ? "accent-fill" : "paper",
+                stroke: i < shaded ? "accent" : "ink",
+                width: 2,
+              });
+            return els;
+          };
+          const elements: Element[] = [
+            ...bar("small", d1, n1, 0, 6),
+            ...bar("large", d2, n2, 3, 12),
+            {
+              type: "text",
+              id: "small-label",
+              at: [3, -0.7],
+              text: thing.small,
+              font: "sans",
+              size: "sm",
+            },
+            {
+              type: "text",
+              id: "large-label",
+              at: [6, 4.6],
+              text: thing.large,
+              font: "sans",
+              size: "sm",
+            },
+          ];
+          const built = inlineSentence([
+            "",
+            {
+              id: "bigger",
+              label: "What the fractions tell you",
+              correct: "you cannot tell which is greater",
+              wrong: [
+                `$${frac(n1, d1)}$`,
+                `$${frac(n2, d2)}$`,
+                `the ${thing.small} is greater`,
+                `the ${thing.large} is greater`,
+              ],
+            } as Slot,
+            " because ",
+            {
+              id: "why",
+              label: "The reason",
+              correct: "can't tell from the fractions",
+              wrong: [
+                "the pieces are larger when the denominator is smaller",
+                "it has more pieces of the same size",
+                "a greater denominator makes a greater fraction",
+              ],
+            } as Slot,
+            ".",
+          ]);
+          return multiPartProblem(meta, seed, r, {
+            prompt: `The ${thing.small} and the ${thing.large} are different sizes. One is a bigger whole than the other, so compare $${frac(n1, d1)}$ of the ${thing.small} with $${frac(n2, d2)}$ of the ${thing.large}. Complete the sentence.`,
+            layout: "inline",
+            label: "Choose the fraction and the reason",
+            slots: built.slots,
+            sentence: built.sentence,
+            figure: {
+              kind: "scene",
+              scene: scene(...elements).build({
+                title: `Two ${thing.pair} of different lengths`,
+                note: `The ${thing.large} is longer than the ${thing.small}.`,
+              }),
+            },
+            hint: `The ${thing.small} is cut into ${d1} equal pieces and ${n1} of them ${isAre(n1)} shaded. The ${thing.large} is cut into ${d2} equal pieces and ${n2} of them ${isAre(n2)} shaded. The two ${thing.pair} have different lengths.`,
+            explanation: [
+              `$${frac(n1, d1)}$ names parts of the ${thing.small}. $${frac(n2, d2)}$ names parts of the ${thing.large}.`,
+              `The ${thing.pair} are different sizes, so the fractions name parts of different amounts.`,
+              `You cannot tell which amount is greater from the fractions alone.`,
+            ],
+          });
+        }
         const same = axes.basis === "same-numerator";
         let first: [number, number];
         let second: [number, number];
@@ -908,8 +1029,12 @@ export const statementBlanksGenerate = defineGenerate(
           } as Slot,
           ".",
         ]);
+        const bare = `Compare ${tex(first)} and ${tex(second)}. Complete the sentence.`;
         return multiPartProblem(meta, seed, r, {
-          prompt: `Compare ${tex(first)} and ${tex(second)}. Complete the sentence.`,
+          prompt:
+            axes.setting === "applied"
+              ? sameWholeComparePrompt(r, tex(first), tex(second))
+              : bare,
           layout: "inline",
           label: "Choose the fraction and the reason",
           slots: built.slots,

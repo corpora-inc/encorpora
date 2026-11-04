@@ -1,5 +1,6 @@
 import { isAre, article } from "./agreement";
 import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
+import { axisRecord, chooseAxes, defineAxis } from "./variation/axes";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import { MAX_STACK, stackHeights } from "./data-display-models.js";
 import { table } from "./scene/author";
@@ -10,6 +11,15 @@ import {
   type Draft,
   type Random,
 } from "./distribution-practice";
+
+/** Thousandths is the legacy surface. Hundredths is the grade-4 default. */
+export const orderDecimalAxes = {
+  places: defineAxis("places", ["thousandths", "hundredths"] as const, {
+    legacy: "thousandths",
+    weights: [1, 4],
+    since: 2,
+  }),
+} as const;
 
 /**
  * Round-2 problem types for Texas STAAR released items whose task is not yet
@@ -107,7 +117,7 @@ export const staarGapTemplates: readonly TemplateMetadata[] = [
     "3–5",
     0.2,
     "Choose the list of four decimals in order, or the decimal in a stated position when four decimals with different numbers of places are ordered.",
-    choice,
+    { ...choice, version: 2, reprintsFrom: 1 },
   ),
   meta(
     "staar-order-mixed-forms",
@@ -1298,7 +1308,195 @@ function randomDecimals(r: Random): Dec[] {
   throw new Error("No decimal set found");
 }
 
-function orderDecimals(r: Random): Built {
+/** Hundredths only: at most two places, values less than 1. */
+function randomHundredths(r: Random): Dec[] {
+  for (let guard = 0; guard < 400; guard++) {
+    const items: Dec[] = [];
+    while (items.length < 4) {
+      const places = r(1, 2);
+      const unit = 10 ** (2 - places);
+      const digits = r(1, 10 ** places - 1);
+      if (digits % 10 === 0) continue;
+      const v = digits * unit;
+      if (v >= 100 || items.some((x) => x.v === v)) continue;
+      items.push({ v, places });
+    }
+    const trap = items.some((x) =>
+      items.some((y) => x.places > y.places && x.v < y.v),
+    );
+    const mixed = new Set(items.map((x) => x.places)).size >= 2;
+    if (trap && mixed) return items;
+  }
+  throw new Error("No decimal set found");
+}
+
+const joinAnd = (items: string[]) =>
+  items.length < 2
+    ? (items[0] ?? "")
+    : `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
+
+type HundredthScene = {
+  fits: (min: number, max: number) => boolean;
+  /** Used only when no tighter scene fits the amounts. */
+  fallback?: boolean;
+  /** Names the four amounts, then asks for the list in this direction. */
+  list: (nums: string[], ascending: boolean) => string;
+  /** One sentence that names each amount, for the "which place" question. */
+  named: (nums: string[]) => string;
+};
+
+const orderWord = (ascending: boolean) =>
+  ascending ? "least to greatest" : "greatest to least";
+
+const HUNDREDTH_SCENES: readonly HundredthScene[] = [
+  {
+    fits: () => true,
+    fallback: true,
+    list: (nums, ascending) =>
+      `Four pieces of string are ${joinAnd(nums)} meters long. Order the lengths from ${orderWord(ascending)}.`,
+    named: (nums) => `Four pieces of string are ${joinAnd(nums)} meters long.`,
+  },
+  {
+    fits: (min, max) => min >= 0.4 && max <= 0.99,
+    list: (nums, ascending) =>
+      `Four school-store snacks cost ${joinAnd(nums)} dollars. Order the prices from ${orderWord(ascending)}.`,
+    named: (nums) => `Four school-store snacks cost ${joinAnd(nums)} dollars.`,
+  },
+  {
+    fits: (min, max) => min >= 0.4 && max <= 0.99,
+    list: (nums, ascending) =>
+      `Four pitchers hold ${joinAnd(nums)} liters of water. Order the amounts from ${orderWord(ascending)}.`,
+    named: (nums) => `Four pitchers hold ${joinAnd(nums)} liters of water.`,
+  },
+  {
+    fits: (min, max) => min >= 0.2 && max <= 0.9,
+    list: (nums, ascending) =>
+      `Four ribbons are ${joinAnd(nums)} meters long. Order the lengths from ${orderWord(ascending)}.`,
+    named: (nums) => `Four ribbons are ${joinAnd(nums)} meters long.`,
+  },
+  {
+    fits: (min, max) => min >= 0.05 && max <= 0.4,
+    list: (nums, ascending) =>
+      `Four seedlings are ${joinAnd(nums)} meters tall. Order the heights from ${orderWord(ascending)}.`,
+    named: (nums) => `Four seedlings are ${joinAnd(nums)} meters tall.`,
+  },
+  {
+    fits: (min, max) => min >= 0.15 && max <= 0.5,
+    list: (nums, ascending) =>
+      `Four video-game reactions take ${joinAnd(nums)} seconds. Order the times from ${orderWord(ascending)}.`,
+    named: (nums) => `Four video-game reactions take ${joinAnd(nums)} seconds.`,
+  },
+  {
+    fits: (min, max) => min >= 0.12 && max <= 0.3,
+    list: (nums, ascending) =>
+      `Four apples weigh ${joinAnd(nums)} kilograms. Order the weights from ${orderWord(ascending)}.`,
+    named: (nums) => `Four apples weigh ${joinAnd(nums)} kilograms.`,
+  },
+];
+
+function hundredthScene(r: Random, items: Dec[]): HundredthScene {
+  const values = items.map((d) => d.v / 100);
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const fitting = HUNDREDTH_SCENES.filter((scene) => scene.fits(min, max));
+  const specific = fitting.filter((scene) => !scene.fallback);
+  const pool = specific.length ? specific : fitting;
+  return pool[r(0, pool.length - 1)]!;
+}
+
+function orderHundredths(r: Random): Built {
+  const items = randomHundredths(r);
+  const sorted = items.slice().sort((a, b) => a.v - b.v);
+  const text = (d: Dec) => dec(d.v, 2);
+  const scene = hundredthScene(r, items);
+  const nums = items.map((d) => fixed(d.v, 2));
+  if (r(0, 1) === 0) {
+    const ascending = r(0, 1) === 1;
+    const ordered = ascending ? sorted : sorted.slice().reverse();
+    const byDigits = items
+      .slice()
+      .sort(
+        (a, b) => Number(text(a).split(".")[1]) - Number(text(b).split(".")[1]),
+      );
+    const byDigitsOrdered = ascending ? byDigits : byDigits.slice().reverse();
+    const key = (list: Dec[]) => list.map(text).join(",");
+    const candidates: { list: Dec[]; feedback: string }[] = [
+      {
+        list: ordered.slice().reverse(),
+        feedback: `This is the opposite order. The question asks for ${ascending ? "least to greatest" : "greatest to least"}.`,
+      },
+      {
+        list: byDigitsOrdered,
+        feedback:
+          "This compares the digits after the decimal point as whole numbers, so a longer decimal looks larger. Compare place by place from the tenths instead.",
+      },
+      {
+        list: swapAt(ordered, 0),
+        feedback:
+          "The first two numbers are out of order. Compare their tenths digits.",
+      },
+      {
+        list: swapAt(ordered, 1),
+        feedback:
+          "The middle two numbers are out of order. Compare place by place.",
+      },
+      {
+        list: swapAt(ordered, 2),
+        feedback:
+          "The last two numbers are out of order. Compare place by place.",
+      },
+    ].filter((c) => key(c.list) !== key(ordered));
+    return {
+      variant: ascending ? "list-ascending" : "list-descending",
+      prompt: scene.list(nums, ascending),
+      answer: "",
+      hint: `Write each number with two decimal places, such as ${text(items[0]!)} as ${fixed(items[0]!.v, 2)}. Then compare the tenths digits first, then the hundredths.`,
+      explanation: [
+        `Give every number two decimal places, so each has the same places to compare. Zeros added at the right end do not change a value: ${items.map((d) => fixed(d.v, 2)).join(", ")}.`,
+        `Compare from the left, because the tenths place is worth the most: the tenths digit decides first, and ties go to the hundredths.`,
+        `${ascending ? "Least to greatest" : "Greatest to least"}: ${ordered.map((d) => fixed(d.v, 2)).join(", ")}, which is ${ordered.map(text).join(", ")}.`,
+      ],
+      choices: choicesFrom(
+        r,
+        listLabel(ordered.map(text)),
+        candidates.map((c) => ({
+          label: listLabel(c.list.map(text)),
+          feedback: c.feedback,
+        })),
+      ),
+    };
+  }
+  const position = r(1, 2) === 1 ? 2 : 3;
+  const word = ["", "first", "second", "third", "fourth"][position]!;
+  const target = sorted[position - 1]!;
+  return {
+    variant: "kth",
+    selects: true,
+    prompt: `${scene.named(nums)} When they are ordered from least to greatest, which is ${word}?`,
+    answer: "",
+    hint: `Write each measurement with two decimal places, such as ${text(items[0]!)} as ${fixed(items[0]!.v, 2)}, then compare tenths first. Put them in order from least to greatest and count to the ${word}.`,
+    explanation: [
+      `With two decimal places: ${items.map((d) => fixed(d.v, 2)).join(", ")}.`,
+      `Least to greatest: ${sorted.map((d) => fixed(d.v, 2)).join(", ")}.`,
+      `The ${word} is ${text(target)}.`,
+    ],
+    choices: [
+      { label: text(target), correct: true as const },
+      ...items
+        .filter((d) => d !== target)
+        .map((d) => {
+          const place = sorted.indexOf(d) + 1;
+          return {
+            label: text(d),
+            feedback: `This is number ${place} from least, not ${position}. Compare the tenths first, then the hundredths.`,
+          };
+        }),
+    ],
+  };
+}
+
+function orderDecimals(r: Random, axes?: Record<string, string>): Built {
+  if (axes?.places === "hundredths") return orderHundredths(r);
   const items = randomDecimals(r);
   const sorted = items.slice().sort((a, b) => a.v - b.v);
   const text = (d: Dec) => dec(d.v, 3);
@@ -2924,13 +3122,17 @@ export function staarGapCase(templateId: string, seed: string) {
   const build = builders[templateId];
   if (!template || !build) throw new Error(`Unknown template ${templateId}`);
   const r = random(template.id, seed);
-  const axes = isSweepId(templateId)
+  const sweep = isSweepId(templateId)
     ? sweepChoose(templateId, seed)
     : undefined;
+  const places =
+    templateId === "staar-order-decimals"
+      ? chooseAxes(templateId, seed, orderDecimalAxes)
+      : undefined;
   for (let attempt = 0; attempt < 80; attempt++) {
     let draft: Built;
     try {
-      draft = build(r, axes);
+      draft = build(r, places ?? sweep);
     } catch (error) {
       if (error instanceof Error && error.message.startsWith("Need three"))
         continue;
@@ -2938,12 +3140,17 @@ export function staarGapCase(templateId: string, seed: string) {
       throw error;
     }
     if (leaks(draft, draft.selects)) continue;
+    const attached = sweep
+      ? sweepVariant(draft.variant, sweep)
+      : places?.places === "hundredths"
+        ? { id: draft.variant, axes: axisRecord(places) }
+        : undefined;
     return {
       variant: draft.variant,
       model: draft.model,
       problem: {
         ...assemble(template, seed, r, draft),
-        ...(axes ? { variant: sweepVariant(draft.variant, axes) } : {}),
+        ...(attached ? { variant: attached } : {}),
       },
     };
   }

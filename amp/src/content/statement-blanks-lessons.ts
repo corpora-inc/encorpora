@@ -409,6 +409,7 @@ const entries: FormatLessonEntry[] = [
       "Check which numbers match: the denominators or the numerators.",
       "Same denominator: the greater numerator makes the greater fraction. Same numerator, not 0: the smaller denominator makes the greater fraction.",
       "Give the reason in words about the number of pieces or the size of the pieces.",
+      "If the two wholes are different sizes, you cannot tell which fraction is greater from the fractions alone.",
     ],
     watch:
       "With the same numerator, do not choose the bigger denominator. More cuts make smaller pieces.",
@@ -433,6 +434,7 @@ const entries: FormatLessonEntry[] = [
     pitfalls: [
       "Do not say a greater denominator means a greater fraction.",
       "Do not give “the numerators are different” as the reason when they are the same.",
+      "Do not compare fractions of different-sized wholes. The fractions name parts of different amounts.",
     ],
     parentGuide:
       "Fold two strips of paper into sixths and eighths. Compare five parts of each.",
@@ -539,7 +541,7 @@ export const statementBlanksFacetMappings: readonly FacetMapping[] = [
   partial(
     "compare-fractions-reason-blanks",
     "fraction-comparison.core",
-    "Choose the greater of two fractions with the same numerator or the same denominator and the reason from a bank. Does not assess unlike fractions, benchmark reasoning, or explaining in the learner's words.",
+    "Choose the greater of two fractions that share a numerator or a denominator and the reason, or recognize that fractions of different-sized wholes cannot be compared from the fractions alone. Does not assess benchmark reasoning or a free-text explanation.",
   ),
   partial(
     "inequality-number-blanks",

@@ -965,6 +965,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
     method: [
       "Find what the denominator was multiplied by.",
       "Multiply the numerator by the same number.",
+      "The number in both boxes is the same. That number over itself is 1, and multiplying by 1 keeps the amount.",
     ],
     watch:
       "Multiply the numerator by the same number as the denominator; adding the same number changes the amount.",

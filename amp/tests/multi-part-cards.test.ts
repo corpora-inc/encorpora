@@ -121,6 +121,8 @@ test("equations are built from cards in every equation-building family", () => {
     "array-division-slots",
     "booth-equation-slots",
     "budget-inequality-slots",
+    "compare-decimals-symbol-blanks",
+    "compare-fractions-symbol-blanks",
     "compare-symbol-blanks",
     "conversion-proportion-blanks",
     "cylinder-volume-slots",

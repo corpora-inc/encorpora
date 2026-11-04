@@ -397,13 +397,14 @@ export const decimalMethods: Record<string, ProblemMethod> = {
     watch: "4 shaded hundredths is 0.04, not 0.4.",
   },
   "tenths-as-hundredths": {
-    goal: "Rename tenths as hundredths and add tenths to hundredths.",
+    goal: "Rename tenths as hundredths, including amounts above one, and add tenths to hundredths.",
     senses: decimalSenses,
     terms: placeTerms,
     method: [
       "Renaming means writing an amount another way without changing it. Rename each tenth as 10 hundredths: 3/10 = 30/100.",
       "Add hundredths to hundredths.",
       "As a decimal, the tenths go in the first place after the point and the hundredths in the second.",
+      "The same rename works above one: 2 3/10 is 2 wholes and 30 hundredths, written 2.30.",
     ],
     watch: "3/10 + 5/100 is 35/100, not 8/100.",
   },
@@ -541,7 +542,7 @@ export const decimalPrinciples: Record<string, string> = {
   "decimal-grid-read":
     "One tenth is 10 hundredths. So a decimal with digits only in the tenths and hundredths places can be read as tenths and hundredths, or as hundredths alone.",
   "tenths-as-hundredths":
-    "Cutting each tenth into 10 equal parts renames tenths as hundredths without changing the amount.",
+    "Cutting each tenth into 10 equal parts renames tenths as hundredths without changing the amount. The same rename works for a mixed number: $2\\frac{3}{10}=2\\frac{30}{100}=2.30$.",
   "decimal-line-point":
     "Equal intervals between two labeled points are all the same size: the distance divided by the number of intervals.",
   "compare-decimals-hundredths":
