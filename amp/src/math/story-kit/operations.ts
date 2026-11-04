@@ -50,8 +50,8 @@ export const groupScenes: Record<string, GroupScene> = {
   sports: {
     unit: "softballs",
     one: "softball",
-    group: "can",
-    groups: "cans",
+    group: "bag",
+    groups: "bags",
   },
   pets: { unit: "treats", one: "treat", group: "bowl", groups: "bowls" },
   cooking: { unit: "eggs", one: "egg", group: "carton", groups: "cartons" },
@@ -72,7 +72,7 @@ export const groupScenes: Record<string, GroupScene> = {
   },
   science: { unit: "slides", one: "slide", group: "box", groups: "boxes" },
   music: { unit: "sheets", one: "sheet", group: "folder", groups: "folders" },
-  school: { unit: "pencils", one: "pencil", group: "cup", groups: "cups" },
+  school: { unit: "pencils", one: "pencil", group: "box", groups: "boxes" },
 };
 
 const holder = (scene: GroupScene, large: boolean): string => {
@@ -139,7 +139,7 @@ export function comparisonAsk(
 }
 
 const GROUP_ORDER = [
-  "can",
+  "bag",
   "bowl",
   "carton",
   "pot",
