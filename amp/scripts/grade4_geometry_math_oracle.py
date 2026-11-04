@@ -299,10 +299,7 @@ def blank_answer(public, picks):
 
 
 def triangle_blanks(public):
-    require(
-        public['prompt'] == 'The triangle is marked with tick marks for equal sides and a square for a right angle. Fill in the two blanks.',
-        'Triangle wording',
-    )
+    require('tick marks' in public['prompt'].lower(), 'Triangle wording')
     sides, angles = triangle_classes(shape_points(public))
     return blank_answer(public, {'sides': sides, 'angles': angles})
 

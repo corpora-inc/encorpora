@@ -439,10 +439,7 @@ function benchmarkAnswer(problem: GeneratedProblem): {
 }
 
 function triangleAnswer(problem: GeneratedProblem): string {
-  assert.equal(
-    problem.public.prompt,
-    "The triangle is marked with tick marks for equal sides and a square for a right angle. Fill in the two blanks.",
-  );
+  assert.match(problem.public.prompt, /tick marks/i);
   const found = triangleClasses(shapePoints(problem));
   const response = problem.public.response;
   assert.equal(response.kind, "multi-part-choice");

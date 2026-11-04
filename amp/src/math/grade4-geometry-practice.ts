@@ -20,7 +20,10 @@ import {
   adjacentPrompt,
   benchmarkPrompt,
   protractorPrompt,
+  spreadPick,
   storyNameFor,
+  triangleFocus,
+  trianglePrompt,
 } from "./story-kit/geometry.js";
 
 /**
@@ -579,8 +582,8 @@ function classesOf(pts: readonly Pt[]): {
 }
 
 function triangleBlanks(r: Rand, seed: string): GeneratedProblem {
-  const built = pick(r, TRIANGLES);
-  const shape = posed(built.points, pick(r, TURNS));
+  const built = spreadPick(seed, "triangle-shape", TRIANGLES);
+  const shape = posed(built.points, pick(r, TURNS), pick(r, [0.85, 1, 1.15]));
   if (shape.type !== "polygon") throw new Error("triangle: expected a polygon");
   const points = shape.points;
   const found = classesOf(points);
@@ -612,9 +615,6 @@ function triangleBlanks(r: Rand, seed: string): GeneratedProblem {
       { text: "." },
     ],
   };
-  const lengths = sideLengths(points)
-    .map((n) => (Math.round(n * 10) / 10).toFixed(1))
-    .join(", ");
   const sideWhy = {
     equilateral: "all 3 sides are equal",
     isosceles: "exactly 2 sides are equal",
@@ -625,18 +625,22 @@ function triangleBlanks(r: Rand, seed: string): GeneratedProblem {
     obtuse: "the largest corner is wider than a square corner",
     acute: "every corner is narrower than a square corner",
   }[found.angles];
+  const focus = triangleFocus(seed);
+  const closing =
+    found.sides === "equilateral"
+      ? "In this lesson, isosceles means exactly 2 equal sides, so an equilateral triangle is named equilateral."
+      : `Name the sides and the angles separately. This ${focus.object} is ${found.sides} by its sides and ${found.angles} by its angles.`;
   return finish("triangle-sides-angles-blanks", seed, r, {
-    prompt:
-      "The triangle is marked with tick marks for equal sides and a square for a right angle. Fill in the two blanks.",
+    prompt: trianglePrompt(seed),
     answer: serializeMultiPart(response, {
       sides: sideOptions.find((o) => o.label === found.sides)!.id,
       angles: angleOptions.find((o) => o.label === found.angles)!.id,
     }),
-    hint: `The side lengths, rounded to the nearest tenth, are ${lengths}. Count how many match. Then compare the largest corner with the corner of a page.`,
+    hint: `On the ${focus.object}, matching tick marks mean those sides are equal. Count how many sides share a mark. A small square means a right angle. Compare the largest corner with the corner of a page.`,
     explanation: [
-      `Tick marks show equal sides. Here ${sideWhy}, so by its sides the triangle is ${found.sides}.`,
+      `Tick marks show equal sides. On this ${focus.object}, ${sideWhy}, so by its sides the triangle is ${found.sides}.`,
       `A square mark shows a right angle. Here ${angleWhy}, so by its angles the triangle is ${found.angles}.`,
-      `In this lesson, isosceles means exactly 2 equal sides, so an equilateral triangle is named equilateral.`,
+      closing,
     ],
     figure: geometryScene({
       kind: "plane-shapes",

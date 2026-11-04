@@ -132,9 +132,15 @@ const triangleObjects = [
   "nacho",
 ] as const;
 
+export function triangleFocus(seed: string): { name: string; object: string } {
+  return {
+    name: storyNameFor(seed, "triangle-name"),
+    object: spreadPick(seed, "triangle-object", triangleObjects),
+  };
+}
+
 export function trianglePrompt(seed: string): string {
-  const name = storyNameFor(seed, "triangle-name");
-  const object = spreadPick(seed, "triangle-object", triangleObjects);
+  const { name, object } = triangleFocus(seed);
   const frames = [
     `${name} built a ${object}. The triangle is marked with tick marks for equal sides and a square for a right angle. Fill in the two blanks.`,
     `Look at the tick marks on ${name}'s ${object}. A square mark means a right angle. Name the triangle by its sides and by its angles.`,
