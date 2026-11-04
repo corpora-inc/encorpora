@@ -823,7 +823,7 @@ export function generateAngleProblem(
       );
       keepOrder = true;
       if (axis.setting === "story") {
-        prompt = classifyPrompt(seed, false);
+        prompt = classifyPrompt(seed, false, kind);
         hint = `Put the corner of a page on the vertex. One ray points ${heading(d0)}. Compare the other ray with that square corner.`;
         variant = { id: "story", axes: { setting: "story" } };
       }

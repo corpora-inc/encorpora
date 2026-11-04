@@ -362,10 +362,16 @@ function protractorAnswer(problem: GeneratedProblem): string {
 }
 
 function adjacentAnswer(problem: GeneratedProblem): string {
-  const found = problem.public.prompt.match(
+  const patterns = [
     /Angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ measures (\d+)°\. The measure of angle \$([A-Z]{3})\$ is \$x\$ degrees\./,
-  );
-  assert.ok(found);
+    /The whole angle \$([A-Z]{3})\$ is (\d+)°\. The known part \$([A-Z]{3})\$ is (\d+)°\. Angle \$([A-Z]{3})\$ is \$x\$ degrees\./,
+    /Angle \$([A-Z]{3})\$ measures (\d+)°\. Inside it, angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ is \$x\$ degrees\./,
+    /Start from angle \$([A-Z]{3})\$, which measures (\d+)°\. Angle \$([A-Z]{3})\$ measures (\d+)°\. The measure of angle \$([A-Z]{3})\$ is \$x\$ degrees\./,
+  ];
+  const found = patterns
+    .map((pattern) => problem.public.prompt.match(pattern))
+    .find((match) => match);
+  assert.ok(found, problem.public.prompt);
   const wholeName = found![1]!;
   const whole = Number(found![2]);
   const knownName = found![3]!;

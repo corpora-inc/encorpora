@@ -222,11 +222,13 @@ def equation_holds(label, unknown):
 
 def adjacent_equation(public):
     prompt = public['prompt']
-    found = re.search(
-        r'Angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ measures (\d+)°\. '
-        r'The measure of angle \$([A-Z]{3})\$ is \$x\$ degrees\.',
-        prompt,
-    )
+    patterns = [
+        r'Angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ measures (\d+)°\. The measure of angle \$([A-Z]{3})\$ is \$x\$ degrees\.',
+        r'The whole angle \$([A-Z]{3})\$ is (\d+)°\. The known part \$([A-Z]{3})\$ is (\d+)°\. Angle \$([A-Z]{3})\$ is \$x\$ degrees\.',
+        r'Angle \$([A-Z]{3})\$ measures (\d+)°\. Inside it, angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ is \$x\$ degrees\.',
+        r'Start from angle \$([A-Z]{3})\$, which measures (\d+)°\. Angle \$([A-Z]{3})\$ measures (\d+)°\. The measure of angle \$([A-Z]{3})\$ is \$x\$ degrees\.',
+    ]
+    found = next((re.search(pattern, prompt) for pattern in patterns if re.search(pattern, prompt)), None)
     require(found is not None, 'Adjacent-angle wording')
     whole_name, whole, known_name, known, missing_name = found.group(1), int(found.group(2)), found.group(3), int(found.group(4)), found.group(5)
     require(known_name != missing_name and whole_name not in (known_name, missing_name), 'Three distinct angles')

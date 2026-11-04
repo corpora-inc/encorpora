@@ -24,6 +24,7 @@ import {
   compositeJob,
   formulaAsk,
   formulaScene,
+  quadrilateralFocus,
   quadrilateralPrompt,
   spreadPick,
   storyNameFor,
@@ -456,7 +457,7 @@ function benchmarkEstimate(r: Rand, seed: string): GeneratedProblem {
   const words = shown.map((b) => `${b} degrees`).join(", ");
   const farther = shown.filter((b) => b !== keyed);
   return finish("angle-benchmark-estimate", seed, r, {
-    prompt: benchmarkPrompt(seed),
+    prompt: benchmarkPrompt(seed, keyed),
     answer: "",
     hint: `The choices are ${words}. Pick the benchmark this opening is nearest, within 10 degrees.`,
     explanation: [
@@ -704,9 +705,9 @@ function quadrilateralAttributes(r: Rand, seed: string): GeneratedProblem {
   const equal = Math.max(...lengths) / Math.min(...lengths) < 1.02;
   const pairWords = pairs === 1 ? "1 pair" : `${pairs} pairs`;
   return finish("quadrilateral-attributes", seed, r, {
-    prompt: quadrilateralPrompt(seed),
+    prompt: quadrilateralPrompt(seed, kind),
     answer: "",
-    hint: "Count the pairs of matching arrows. Check the corners for right-angle marks. Check whether the tick marks show all four sides equal. Then pick the most exact name.",
+    hint: `${quadrilateralFocus(seed, kind).name} should count the matching arrows on the ${quadrilateralFocus(seed, kind).object}, then the right-angle marks, then whether the tick marks show equal sides.`,
     explanation: [
       `Matching arrows show parallel sides. This shape has ${pairWords} of parallel sides.`,
       rights === 4
@@ -791,7 +792,7 @@ function compositeRectangle(r: Rand, seed: string): GeneratedProblem {
           `The dashed line is inside the figure, so leave it out of the perimeter.`,
           `The outer sides are ${sides.join(", ")} ${noun}.`,
           `Add each outer side once: ${sides.join(" + ")} = ${around}.`,
-          `A check: the figure is as wide as the bottom, ${W} ${noun}, and as tall as the left side, ${H} ${noun}, so the perimeter is also $2 \\times (${W} + ${H}) = ${around}$.`,
+          `The dashed line is not one of those sides, so leave it out of the sum.`,
         ]
       : [
           `The dashed line splits the figure into two rectangles that do not share any squares.`,
