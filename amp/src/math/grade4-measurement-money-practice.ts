@@ -60,6 +60,22 @@ export const measurementNarrativeAxes = {
   }),
 } as const;
 
+/** Bare drill, or an applied measurement or money sentence, on the story
+ * surface only. Weights stay 2:1 so about one third of story draws are
+ * applied. A plain narrative ignores this axis and keeps the stored problem. */
+export const decimalWorkedAxes = {
+  "worked-b": defineAxis("worked-b", ["drill", "applied"] as const, {
+    legacy: "drill",
+    weights: [2, 1],
+    silentLegacy: true,
+  }),
+} as const;
+
+const decimalNarrativeAxes = {
+  ...measurementNarrativeAxes,
+  ...decimalWorkedAxes,
+} as const;
+
 const STORY_READY = new Set([
   "elapsed-time-intervals",
   "conversion-table-slots",
@@ -799,17 +815,18 @@ function decimalSum(meta: TemplateMetadata, seed: string, r: Random): Built {
   const leaked = new RegExp(
     `(?<![\\d.])${answer.replace(".", "\\.")}(?![\\d])`,
   );
-  const told =
-    measurementNarrative(meta.id, seed) === "story"
-      ? decimalStory(meta.id, seed, {
-          shownL,
-          shownR,
-          leftCents: left.cents,
-          rightCents: right.cents,
-          subtract,
-          unlike,
-        })
-      : null;
+  const story = measurementNarrative(meta.id, seed) === "story";
+  const told = story
+    ? decimalStory(meta.id, seed, {
+        shownL,
+        shownR,
+        leftCents: left.cents,
+        rightCents: right.cents,
+        subtract,
+        unlike,
+        surface: chooseAxes(meta.id, seed, decimalWorkedAxes)["worked-b"],
+      })
+    : null;
   const prompt = told && !leaked.test(told.prompt) ? told.prompt : legacyPrompt;
   need(!leaked.test(prompt), "a sum that is not already written");
   return {
@@ -1196,6 +1213,17 @@ export function generateGrade4MeasurementMoneyProblem(
 ) {
   const problem = grade4MeasurementMoneyCase(templateId, seed).problem;
   if (!STORY_READY.has(templateId)) return problem;
+  if (templateId === "decimal-sum-difference") {
+    return omitLegacyVariant(
+      generateWithAxes(
+        templateId,
+        seed,
+        decimalNarrativeAxes,
+        () => problem,
+        (values) => (values["narrative-b"] === "plain" ? "legacy" : "story"),
+      ),
+    );
+  }
   return omitLegacyVariant(
     generateWithAxes(templateId, seed, measurementNarrativeAxes, () => problem),
   );

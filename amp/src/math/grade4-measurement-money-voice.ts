@@ -1,11 +1,5 @@
 import { count, isAre } from "./agreement";
 import { storyName } from "./story-kit/names";
-import {
-  lengthJobs,
-  liquidJobs,
-  timeJobs,
-  weightJobs,
-} from "./story-kit/measurement";
 import { surfaceStream, type Random } from "./variation/axes";
 
 /** Story surfaces for grade-4 measurement and money.
@@ -54,33 +48,34 @@ function stream(templateId: string, seed: string): Random {
 
 type Act = string;
 
-/** Two camp blocks. Each can honestly last from about 10 minutes to 2 hours. */
+/** Verb phrases that take "for" plus a duration. Each block can last
+ * from about 10 minutes to 2 hours. */
 const TWO_BLOCKS: readonly (readonly [Act, Act])[] = [
-  ["basketball", "swimming"],
-  ["painting", "clay modeling"],
-  ["piano practice", "choir"],
-  ["the museum visit", "the planetarium show"],
-  ["coding club", "robotics"],
-  ["reading", "a board game"],
-  ["the nature hike", "bird watching"],
-  ["art class", "a gallery walk"],
-  ["the spelling game", "the math game"],
-  ["dance practice", "the music block"],
+  ["plays basketball", "swims"],
+  ["paints", "works with clay"],
+  ["practices piano", "sings with the choir"],
+  ["walks through the museum", "watches the planetarium show"],
+  ["codes", "builds a robot"],
+  ["reads", "plays a board game"],
+  ["hikes the nature trail", "watches birds"],
+  ["draws in art class", "walks the gallery"],
+  ["plays the spelling game", "plays the math game"],
+  ["practices dance", "plays music"],
 ];
 
 const ONE_BLOCKS: readonly Act[] = [
-  "the hike to the overlook",
-  "soccer practice",
-  "the video game",
-  "the movie",
-  "piano practice",
-  "art class",
-  "the bike ride",
-  "science club",
-  "dance practice",
-  "the library visit",
-  "the drive to the park",
-  "rehearsal",
+  "hikes to the overlook",
+  "practices soccer",
+  "plays a video game",
+  "watches a movie",
+  "practices piano",
+  "works in art class",
+  "rides a bike",
+  "meets with science club",
+  "practices dance",
+  "visits the library",
+  "rides to the park",
+  "rehearses the play",
 ];
 
 function addMinutes(from: number, minutes: number): string[] {
@@ -127,30 +122,27 @@ export function elapsedStory(
   const [d1, d2] = model.durations;
   const frame = spread(seed, 4);
   let prompt: string;
-  let focus: string;
   if (d2 === undefined) {
     const act = ONE_BLOCKS[spread(seed, ONE_BLOCKS.length)]!;
-    focus = act;
-    const lasts = `${cap(act)} lasts ${hm(d1!)}.`;
+    const spent = `${name} ${act} for ${hm(d1!)}`;
     if (frame === 0)
-      prompt = `${name} starts ${act} at ${start} ${lasts} What time does ${act} end?`;
+      prompt = `${name} starts at ${start} ${name} ${act} for ${hm(d1!)}. What time does ${name} finish?`;
     else if (frame === 1)
-      prompt = `At ${start} ${name} begins ${act}. It lasts ${hm(d1!)}. What time is ${name} done?`;
+      prompt = `At ${start} ${spent}. What time is ${name} done?`;
     else if (frame === 2)
-      prompt = `${cap(act)} for ${name} starts at ${start} It takes ${hm(d1!)}. What time does it end?`;
+      prompt = `The clock shows ${start} Starting then, ${spent}. What time does ${name} stop?`;
     else
-      prompt = `The clock shows ${start} ${name} starts ${act} then. ${lasts} What time does ${name} finish?`;
+      prompt = `${name} begins at ${start} For the next ${hm(d1!)}, ${name} ${act}. What time is ${name} finished?`;
   } else {
     const [first, second] = TWO_BLOCKS[spread(seed, TWO_BLOCKS.length)]!;
-    focus = second;
     if (frame === 0)
-      prompt = `${name} starts ${first} at ${start} ${cap(first)} lasts ${hm(d1!)}. Then ${second} takes ${hm(d2)}. What time does ${second} end?`;
+      prompt = `${name} starts at ${start} ${name} ${first} for ${hm(d1!)}, then ${second} for ${hm(d2)}. What time is ${name} finished?`;
     else if (frame === 1)
-      prompt = `At ${start} ${name} begins ${first}. After ${hm(d1!)}, ${name} spends ${hm(d2)} on ${second}. What time is ${name} finished?`;
+      prompt = `At ${start} ${name} ${first} for ${hm(d1!)}. Then ${name} ${second} for ${hm(d2)}. What time is ${name} done?`;
     else if (frame === 2)
-      prompt = `${name}'s camp block starts at ${start} with ${first} for ${hm(d1!)}. Next is ${second}, and that takes ${hm(d2)}. When does ${second} finish?`;
+      prompt = `The clock shows ${start} Starting then, ${name} ${first} for ${hm(d1!)} and then ${second} for ${hm(d2)}. What time does ${name} finish?`;
     else
-      prompt = `The clock shows ${start} That is when ${name} begins ${first}, which runs for ${hm(d1!)}. ${cap(second)} comes next for ${hm(d2)}. What time does ${name} finish ${second}?`;
+      prompt = `${name} begins at ${start} First ${name} ${first} for ${hm(d1!)}. Next ${name} ${second} for ${hm(d2)}. What time is ${name} finished?`;
   }
   const explanation: string[] = [`The clock shows ${start}`];
   let at = model.start;
@@ -160,7 +152,7 @@ export function elapsedStory(
   }
   explanation.push(
     d2 === undefined
-      ? `${cap(focus)} ends at ${formatClock(at)}`
+      ? `${name} finishes at ${formatClock(at)}`
       : `Both parts are done at ${formatClock(at)}`,
   );
   const hint =
@@ -190,14 +182,63 @@ function distinctWrongs(correct: number, pool: number[]): string[] {
   throw new Error("Need three distinct wrong table values");
 }
 
-const jobsFor = (large: string): readonly string[] =>
-  large === "feet"
-    ? lengthJobs
-    : large === "kilograms"
-      ? weightJobs
-      : large === "hours"
-        ? timeJobs
-        : liquidJobs;
+/** A reason someone needs this conversion table. The figure is that table. */
+const TABLE_REASONS: Record<string, readonly ((name: string) => string)[]> = {
+  feet: [
+    (name) =>
+      `${name} is cutting boards for a bookshelf. The plan is in feet, and the tape measure shows inches.`,
+    (name) =>
+      `${name} is marking a garden bed. The plan says feet, and the tape measure shows inches.`,
+    (name) =>
+      `${name} is cutting ribbon for a costume. The pattern says feet, and the tape shows inches.`,
+    (name) =>
+      `${name} is cutting a runner for the hall. The plan says feet, and the tape measure shows inches.`,
+    (name) =>
+      `${name} is laying out a dog run. The sketch is in feet, and the tape measure shows inches.`,
+    (name) =>
+      `${name} is cutting a banner for the play. The plan says feet, and the tape shows inches.`,
+  ],
+  kilograms: [
+    (name) =>
+      `${name} helps the vet record the puppies' weights. The chart uses kilograms, and the scale shows grams.`,
+    (name) =>
+      `${name} is baking bread for a party. The recipe lists kilograms of flour, and the kitchen scale shows grams.`,
+    (name) =>
+      `${name} is scooping dog food. The bag says kilograms, and the feeding chart uses grams.`,
+    (name) =>
+      `${name} is labeling rocks for science. The class chart uses kilograms, and the balance shows grams.`,
+    (name) =>
+      `${name} is weighing apples for the bake sale. The order says kilograms, and the scale shows grams.`,
+  ],
+  hours: [
+    (name) =>
+      `${name}'s coach is turning hours of practice into minutes for the season log.`,
+    (name) =>
+      `${name} is writing the rehearsal schedule. The plan says hours, and the clock counts minutes.`,
+    (name) =>
+      `${name} is planning a hike. The trail guide says hours, and the watch counts minutes.`,
+    (name) =>
+      `${name} is filling a reading log. The goal is in hours, and the timer shows minutes.`,
+    (name) =>
+      `${name} is timing a chess tournament. The round list says hours, and the clock counts minutes.`,
+    (name) =>
+      `${name} is planning the talent-show setup. The schedule says hours, and the crew needs minutes.`,
+  ],
+  liters: [
+    (name) =>
+      `${name} is making punch for a class party. The recipe lists liters, and the measuring cup is marked in milliliters.`,
+    (name) =>
+      `${name} is cooking soup for the family. The pot recipe uses liters, and the cup shows milliliters.`,
+    (name) =>
+      `${name} is mixing lemonade for the picnic. The card says liters, and the jug lines are milliliters.`,
+    (name) =>
+      `${name} is filling the fish tank from the care guide. The guide lists liters, and the bucket is marked in milliliters.`,
+    (name) =>
+      `${name} is mixing paint for a mural. The color recipe lists liters, and the cup is marked in milliliters.`,
+    (name) =>
+      `${name} is filling water bottles for soccer. The jug says liters, and the bottle lines are milliliters.`,
+  ],
+};
 
 export function conversionStory(
   templateId: string,
@@ -222,26 +263,22 @@ export function conversionStory(
 } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const jobs = jobsFor(model.large);
-  const job = jobs[spread(seed, jobs.length)]!;
-  const core = `matches ${model.large} with ${model.small}. The first row shows ${model.shown}.`;
-  const frame = spread(seed, 4);
-  const doing =
-    model.large === "hours"
-      ? "timing"
-      : model.large === "kilograms"
-        ? "weighing"
-        : model.large === "liters"
-          ? "pouring"
-          : "measuring";
-  const prompt =
+  const reasons = TABLE_REASONS[model.large] ?? TABLE_REASONS.liters!;
+  const reason =
+    reasons[
+      (spread(seed, 97) + model.large0 * 5 + model.large1 * 3) % reasons.length
+    ]!(name);
+  const rule = `The table matches ${model.large} with ${model.small}. The first row shows ${model.shown}.`;
+  const frame = (spread(seed, 4) + model.large1) % 4;
+  const ask =
     frame === 0
-      ? `${name} is ${doing} ${job}. The table ${core} Fill in the two blanks.`
+      ? `Which numbers does ${name} write in the two blanks?`
       : frame === 1
-        ? `${name} keeps a chart for ${job}. It ${core} Complete the two blanks.`
+        ? `What should ${name} put in the two blanks?`
         : frame === 2
-          ? `Look at ${name}'s table for ${job}. The table ${core} Which numbers fill the blanks?`
-          : `${name}'s notebook ${core} The chart is for ${job}. Fill in the two blanks.`;
+          ? `Fill in the two numbers ${name} still needs.`
+          : `Which numbers complete ${name}'s chart?`;
+  const prompt = `${reason} ${rule} ${ask}`;
   const hint = `The first row shows ${model.shown}. Divide to fill the ${model.large}. Multiply to fill the ${model.small}.`;
   const wrongLarge = distinctWrongs(model.large1, [
     model.small1,
@@ -264,82 +301,111 @@ export function conversionStory(
   return { prompt, hint, wrongLarge, wrongSmall };
 }
 
-const RENAME_OBJECTS: Record<string, readonly string[]> = {
+type RenameFit = { min: number; max: number; object: string };
+
+/** Ranges are the smaller-unit amount the generator can actually draw.
+ * Every possible amount hits at least one object. */
+const RENAME_FITS: Record<string, readonly RenameFit[]> = {
   "inch|foot": [
-    "ribbon",
-    "picture frame",
-    "toy-car track",
-    "poster",
-    "jump rope",
-    "shelf",
+    { min: 24, max: 60, object: "picture frame" },
+    { min: 24, max: 48, object: "poster" },
+    { min: 36, max: 132, object: "toy-car track" },
+    { min: 84, max: 132, object: "jump rope" },
+    { min: 24, max: 96, object: "shelf" },
+    { min: 24, max: 132, object: "ribbon for the class play" },
   ],
   "foot|yard": [
-    "garden fence",
-    "hallway",
-    "fabric",
-    "sideline",
-    "kite string",
-    "room",
+    { min: 6, max: 24, object: "garden fence" },
+    { min: 12, max: 45, object: "driveway" },
+    { min: 15, max: 45, object: "kite string" },
+    { min: 20, max: 45, object: "school hallway" },
+    { min: 8, max: 20, object: "classroom wall" },
+    { min: 6, max: 45, object: "garden path" },
   ],
-  "ounce|pound": ["dog food", "flour", "apples", "clay", "potatoes", "rice"],
-  "cup|quart": ["lemonade", "soup", "juice", "paint", "milk", "punch"],
+  "ounce|pound": [
+    { min: 32, max: 160, object: "bag of apples" },
+    { min: 32, max: 160, object: "bag of dog food" },
+    { min: 32, max: 80, object: "bag of flour" },
+    { min: 32, max: 160, object: "bag of potatoes" },
+    { min: 32, max: 80, object: "bag of rice" },
+    { min: 48, max: 160, object: "bucket of clay" },
+  ],
+  "cup|quart": [
+    { min: 8, max: 12, object: "pitcher of lemonade" },
+    { min: 8, max: 16, object: "pot of soup" },
+    { min: 16, max: 48, object: "punch for the party" },
+    { min: 20, max: 48, object: "cooler of juice" },
+    { min: 8, max: 16, object: "milk for breakfast" },
+    { min: 8, max: 12, object: "paint for a small shelf" },
+  ],
   "quart|gallon": [
-    "lemonade",
-    "paint",
-    "milk",
-    "soup",
-    "punch",
-    "flower water",
+    { min: 16, max: 32, object: "cooler of lemonade" },
+    { min: 8, max: 12, object: "can of paint for the bedroom" },
+    { min: 8, max: 12, object: "pot of soup" },
+    { min: 24, max: 32, object: "soup for the fundraiser" },
+    { min: 8, max: 12, object: "milk for the week" },
+    { min: 24, max: 32, object: "punch for the team party" },
   ],
   "minute|hour": [
-    "soccer practice",
-    "movie",
-    "hike",
-    "rehearsal",
-    "reading",
-    "piano practice",
+    { min: 120, max: 120, object: "soccer practice" },
+    { min: 180, max: 480, object: "soccer tournament" },
+    { min: 120, max: 180, object: "movie" },
+    { min: 240, max: 480, object: "movie marathon" },
+    { min: 120, max: 360, object: "hike" },
+    { min: 120, max: 240, object: "rehearsal" },
+    { min: 120, max: 480, object: "read-a-thon" },
+    { min: 120, max: 120, object: "piano practice" },
   ],
   "centimeter|meter": [
-    "ribbon",
-    "garden row",
-    "classroom rug",
-    "paper chain",
-    "model bridge",
-    "jump rope",
+    { min: 200, max: 500, object: "jump rope" },
+    { min: 200, max: 1200, object: "garden row" },
+    { min: 200, max: 600, object: "classroom rug" },
+    { min: 200, max: 1200, object: "paper chain" },
+    { min: 200, max: 250, object: "model bridge" },
+    { min: 400, max: 1200, object: "hallway" },
   ],
   "millimeter|centimeter": [
-    "beetle trail",
-    "bead strand",
-    "leaf",
-    "paper-clip chain",
-    "science card",
-    "crayon line",
+    { min: 20, max: 150, object: "beetle path" },
+    { min: 50, max: 200, object: "bead strand" },
+    { min: 40, max: 180, object: "leaf" },
+    { min: 30, max: 200, object: "paper-clip chain" },
+    { min: 80, max: 160, object: "science card" },
+    { min: 20, max: 200, object: "crayon line" },
   ],
   "gram|kilogram": [
-    "clay",
-    "apples",
-    "dog food",
-    "flour",
-    "rocks",
-    "pumpkin seeds",
+    { min: 2000, max: 9000, object: "bag of apples" },
+    { min: 2000, max: 9000, object: "bag of dog food" },
+    { min: 2000, max: 5000, object: "bag of flour" },
+    { min: 2000, max: 5000, object: "art clay" },
+    { min: 2000, max: 9000, object: "bucket of rocks" },
   ],
   "meter|kilometer": [
-    "trail",
-    "race",
-    "bike path",
-    "walk to school",
-    "parade",
-    "paper route",
+    { min: 2000, max: 9000, object: "bike path" },
+    { min: 2000, max: 9000, object: "hiking trail" },
+    { min: 2000, max: 5000, object: "race course" },
+    { min: 2000, max: 3000, object: "walk to school" },
+    { min: 2000, max: 4000, object: "parade route" },
+    { min: 2000, max: 6000, object: "paper route" },
+    { min: 4000, max: 9000, object: "charity walk" },
   ],
   "milliliter|liter": [
-    "juice",
-    "paint",
-    "soup",
-    "lemonade",
-    "milk",
-    "flower water",
+    { min: 2000, max: 3000, object: "pitcher of juice" },
+    { min: 2000, max: 4000, object: "can of paint" },
+    { min: 2000, max: 6000, object: "pot of soup" },
+    { min: 4000, max: 6000, object: "cooler of lemonade" },
+    { min: 2000, max: 6000, object: "milk for the week" },
+    { min: 2000, max: 2000, object: "watering can for the flowers" },
+    { min: 4000, max: 6000, object: "bucket of water for the flowers" },
   ],
 };
+
+function fittingObject(seed: string, key: string, input: number): string {
+  const pool = (RENAME_FITS[key] ?? []).filter(
+    (item) => input >= item.min && input <= item.max,
+  );
+  if (!pool.length) throw new Error(`Need an object that fits ${key} ${input}`);
+  return pool[spread(seed, pool.length)]!.object;
+}
 
 export function renameStory(
   templateId: string,
@@ -354,12 +420,10 @@ export function renameStory(
 ): { prompt: string; hint: string; closing: string } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const objects = RENAME_OBJECTS[`${model.small}|${model.large}`] ?? [
-    "measure",
-  ];
-  const object = objects[spread(seed, objects.length)]!;
-  const frame = spread(seed, 4);
   const amount = model.inputText;
+  const input = Number(amount.match(/^[\d,]+/)![0]!.replaceAll(",", ""));
+  const object = fittingObject(seed, `${model.small}|${model.large}`, input);
+  const frame = r(0, 3);
   const noun = model.resultText.replace(/^\d[\d,]* /, "");
   const kind =
     model.small === "minute"
@@ -371,26 +435,30 @@ export function renameStory(
             model.small === "milliliter"
           ? "liquid"
           : "length";
+  const ask =
+    frame % 2 === 0
+      ? `How many ${noun} is that?`
+      : `How many ${noun} should ${name} write down?`;
   const prompt =
     kind === "time"
-      ? frame % 2 === 0
-        ? `${name}'s ${object} takes ${amount}. How many ${noun} is that?`
-        : `The schedule lists ${amount} for the ${object}. How many ${noun} should ${name} write down?`
+      ? frame < 2
+        ? `${name}'s ${object} lasts ${amount}. ${ask}`
+        : `${name} reads the schedule: ${amount} for the ${object}. ${ask}`
       : kind === "weight"
-        ? frame % 2 === 0
-          ? `${name} weighs the ${object} at ${amount}. How many ${noun} is that?`
-          : `${name} buys ${amount} of ${object}. How many ${noun} is that?`
+        ? frame < 2
+          ? `${name} weighs the ${object} at ${amount}. ${ask}`
+          : `${name} reads ${amount} on the scale for the ${object}. ${ask}`
         : kind === "liquid"
-          ? frame % 2 === 0
-            ? `${name} fills a pitcher of ${object} with ${amount}. How many ${noun} is that?`
-            : `${name} pours ${amount} of ${object}. How many ${noun} is that?`
+          ? frame < 2
+            ? `${name} checks the ${object}. It has ${amount} in it. ${ask}`
+            : `${name} reads a recipe that uses ${amount} for the ${object}. ${ask}`
           : frame === 0
-            ? `${name} measured the ${object}: ${amount}. How many ${noun} is that?`
+            ? `${name} measures the ${object} at ${amount}. ${ask}`
             : frame === 1
-              ? `${name} checks the ${object}. It is ${amount} long. How many ${noun} is that?`
+              ? `${name} checks the ${object}. It is ${amount} long. ${ask}`
               : frame === 2
-                ? `${name} needs ${amount} for the ${object}. How many ${noun} is that?`
-                : `${name} lays the ${object} out at ${amount}. How many ${noun} is that?`;
+                ? `${name} puts a tape on the ${object} and reads ${amount}. ${ask}`
+                : `${name} finds that the ${object} is ${amount} long. ${ask}`;
   const factorText = count(model.factor, model.small).replace(
     /^\d+/,
     commas(model.factor),
@@ -413,9 +481,9 @@ const MILE_PLACES: readonly { verb: string; noun: string }[] = [
   { verb: "runs the cross-country course", noun: "cross-country course" },
   { verb: "hikes the nature trail", noun: "nature trail" },
   { verb: "follows the parade route", noun: "parade route" },
-  { verb: "races on the track", noun: "race track" },
-  { verb: "plans the field trip", noun: "field trip" },
-  { verb: "measures the canal path", noun: "canal path" },
+  { verb: "walks the canal path", noun: "canal path" },
+  { verb: "walks the field-trip route", noun: "field-trip route" },
+  { verb: "rides the greenway", noun: "greenway" },
 ];
 
 export function lineStorySurface(
@@ -426,15 +494,15 @@ export function lineStorySurface(
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
   const place = MILE_PLACES[spread(seed, MILE_PLACES.length)]!;
-  const frame = spread(seed, 4);
+  const frame = (model.a + model.b + model.denominator) % 4;
   const prompt =
     frame === 0
       ? `${name} ${place.verb}. How far is it from $A$ to $B$, in miles?`
       : frame === 1
-        ? `${name} looks at the ${place.noun}. $A$ and $B$ are two marks. What is the distance from $A$ to $B$, in miles?`
+        ? `${name} looks at a map of the ${place.noun}. How far is $A$ from $B$, in miles?`
         : frame === 2
-          ? `${name} is on the ${place.noun}. How many miles is the trip from $A$ to $B$?`
-          : `${name} checks a mile map of the ${place.noun}. How far is $A$ from $B$?`;
+          ? `${name} is on the ${place.noun}. $A$ and $B$ are two marks. How many miles is it from $A$ to $B$?`
+          : `${name} follows the ${place.noun} from $A$ to $B$. What is the distance, in miles?`;
   const steps = model.b - model.a;
   const shared = gcd(steps, model.denominator);
   const tex = model.answer.includes("/")
@@ -661,6 +729,135 @@ function decimalMethod(
   return lines;
 }
 
+const DECIMAL_BUYS = [
+  ["book", "pen"],
+  ["smoothie", "muffin"],
+  ["poster", "cap"],
+  ["plant", "pot"],
+] as const;
+
+/** A length in meters that a child actually meets. Bands stay inside the
+ * generator's hundredths (about 0.11 through 15). */
+function lengthThing(cents: number): { name: string; band: string } {
+  const meters = cents / 100;
+  if (meters < 0.2) return { name: "crayon", band: "small" };
+  if (meters < 0.4) return { name: "notebook", band: "small" };
+  if (meters < 0.8) return { name: "backpack", band: "pack" };
+  if (meters < 1.2) return { name: "baseball bat", band: "bat" };
+  if (meters < 2) return { name: "desk", band: "desk" };
+  if (meters <= 5) return { name: "jump rope", band: "rope" };
+  if (meters <= 12) return { name: "hallway", band: "hall" };
+  return { name: "driveway", band: "drive" };
+}
+
+function decimalApplied(
+  seed: string,
+  name: string,
+  model: {
+    shownL: string;
+    shownR: string;
+    leftCents: number;
+    rightCents: number;
+    subtract: boolean;
+  },
+): { prompt: string; closing: string } | null {
+  const kinds = ["money", "race", "rain", "length"] as const;
+  const preferred = kinds[spread(seed, kinds.length)]!;
+  const order = [
+    preferred,
+    ...(["rain", "length", "race", "money"] as const).filter(
+      (kind) => kind !== preferred,
+    ),
+  ];
+  for (const kind of order) {
+    const built = decimalKind(seed, name, model, kind);
+    if (built) return built;
+  }
+  return null;
+}
+
+function decimalKind(
+  seed: string,
+  name: string,
+  model: {
+    shownL: string;
+    shownR: string;
+    leftCents: number;
+    rightCents: number;
+    subtract: boolean;
+  },
+  kind: "money" | "race" | "rain" | "length",
+): { prompt: string; closing: string } | null {
+  const { shownL, shownR, leftCents, rightCents, subtract } = model;
+  const value = subtract ? leftCents - rightCents : leftCents + rightCents;
+  const shownValue = dollarsOf(value);
+  if (kind === "money") {
+    const [bought, extra] = DECIMAL_BUYS[spread(seed, DECIMAL_BUYS.length)]!;
+    const frame = spread(`${seed}m`, 2);
+    if (subtract) {
+      const prompt =
+        frame === 0
+          ? `${name} has ${moneyWords(leftCents)} and spends ${moneyWords(rightCents)} on a ${bought}. How much is left, in dollars and cents?`
+          : `${name} had ${moneyWords(leftCents)} and paid ${moneyWords(rightCents)} for a ${bought}. How much is left, in dollars and cents?`;
+      return { prompt, closing: `That leaves ${moneyWords(value)}.` };
+    }
+    const prompt =
+      frame === 0
+        ? `${name} buys a ${bought} that costs ${moneyWords(leftCents)} and a ${extra} that costs ${moneyWords(rightCents)}. What is the total cost, in dollars and cents?`
+        : `A ${bought} costs ${moneyWords(leftCents)} and a ${extra} costs ${moneyWords(rightCents)}. What is the total cost, in dollars and cents?`;
+    return { prompt, closing: `The total cost is ${moneyWords(value)}.` };
+  }
+  if (kind === "race") {
+    if (
+      leftCents < 800 ||
+      rightCents < 800 ||
+      leftCents > 1500 ||
+      rightCents > 1500
+    )
+      return null;
+    if (subtract) {
+      return {
+        prompt: `${name}'s heat takes ${shownL} seconds and a classmate's heat takes ${shownR} seconds. How much longer is ${name}'s heat?`,
+        closing: `${name}'s heat is ${shownValue} seconds longer.`,
+      };
+    }
+    return {
+      prompt: `${name}'s relay has two legs. The first leg takes ${shownL} seconds and the second leg takes ${shownR} seconds. What is the total time, in seconds?`,
+      closing: `The total time is ${shownValue} seconds.`,
+    };
+  }
+  if (kind === "rain") {
+    if (subtract) return null;
+    const months = [
+      ["March", "April"],
+      ["September", "October"],
+      ["January", "February"],
+      ["June", "July"],
+    ] as const;
+    const [earlier, later] = months[spread(seed, months.length)]!;
+    return {
+      prompt: `${name} checks the rain gauge. Rain in ${earlier} came to ${shownL} inches and rain in ${later} came to ${shownR} inches. What is the total rainfall, in inches?`,
+      closing: `The total rainfall is ${shownValue} inches.`,
+    };
+  }
+  const big = lengthThing(leftCents);
+  const small = lengthThing(rightCents);
+  if (big.band !== small.band) return null;
+  if (!subtract && (big.band === "hall" || big.band === "drive")) return null;
+  if (subtract) {
+    const prompt = `One ${big.name} is ${shownL} meters and the other is ${shownR} meters. How much longer is the first ${big.name}?`;
+    return {
+      prompt,
+      closing: `The difference is ${shownValue} meters.`,
+    };
+  }
+  const verb = big.band === "rope" ? "lays" : "lines up";
+  return {
+    prompt: `${name} ${verb} a ${big.name} that is ${shownL} meters with a ${small.name} that is ${shownR} meters. What is the total length, in meters?`,
+    closing: `The total length is ${shownValue} meters.`,
+  };
+}
+
 export function decimalStory(
   templateId: string,
   seed: string,
@@ -671,6 +868,8 @@ export function decimalStory(
     rightCents: number;
     subtract: boolean;
     unlike: boolean;
+    /** Story draws only. Drill is the bare exercise; applied is the measurement or money surface. */
+    surface: "drill" | "applied";
   },
 ): { prompt: string; hint: string; explanation: string[] } {
   const r = stream(templateId, seed);
@@ -681,38 +880,22 @@ export function decimalStory(
     `Line up the decimal points and compute $${model.shownL} ${op} ${model.shownR}$.`,
     `What is the result of $${model.shownL} ${op} ${model.shownR}$?`,
   ];
-  const purchases = [
-    ["book", "pen"],
-    ["smoothie", "muffin"],
-    ["poster", "cap"],
-    ["plant", "pot"],
-  ] as const;
-  const [bought, extra] = purchases[spread(seed, purchases.length)]!;
-  const applied = model.subtract
-    ? [
-        `${name} has ${moneyWords(model.leftCents)} and spends ${moneyWords(model.rightCents)} on a ${bought}. How much is left, in dollars and cents?`,
-        `${name} had ${moneyWords(model.leftCents)} and paid ${moneyWords(model.rightCents)} for a ${bought}. How much is left, in dollars and cents?`,
-      ]
-    : [
-        `${name} buys a ${bought} that costs ${moneyWords(model.leftCents)} and a ${extra} that costs ${moneyWords(model.rightCents)}. What is the total cost, in dollars and cents?`,
-        `A ${bought} costs ${moneyWords(model.leftCents)} and a ${extra} costs ${moneyWords(model.rightCents)}. What is the total cost, in dollars and cents?`,
-      ];
-  const appliedPick = spread(seed, 3) === 0;
-  const prompt = appliedPick
-    ? applied[spread(`${seed}a`, applied.length)]!
-    : bare[spread(seed, bare.length)]!;
+  const applied =
+    model.surface === "applied" ? decimalApplied(seed, name, model) : null;
+  const prompt = applied?.prompt ?? bare[spread(seed, bare.length)]!;
   const hint = model.unlike
     ? `Line up the decimal points in $${model.shownL} ${op} ${model.shownR}$. Write the tenth as hundredths before you ${model.subtract ? "subtract" : "add"}.`
     : `Line up the decimal points in $${model.shownL} ${op} ${model.shownR}$. Work from the hundredths place.`;
+  const method = decimalMethod(
+    model.leftCents,
+    model.rightCents,
+    model.subtract,
+    model.unlike,
+  );
   return {
     prompt,
     hint,
-    explanation: decimalMethod(
-      model.leftCents,
-      model.rightCents,
-      model.subtract,
-      model.unlike,
-    ),
+    explanation: applied ? [...method, applied.closing] : method,
   };
 }
 
@@ -728,7 +911,7 @@ const GOODS = ["marker", "sticker", "eraser", "pencil", "juice box"] as const;
 const COSTS = [
   "lemonade",
   "museum ticket",
-  "bus fare",
+  "bus ticket",
   "toy car",
   "sandwich",
   "plant",
@@ -798,7 +981,7 @@ export function moneyChangeStory(
   const frame = spread(seed, 2);
   const prompt =
     frame === 0
-      ? `${name} buys ${item} that costs ${moneyWords(cost)}. ${name} pays with ${payPhrase}. How much change does ${name} get back? ${ENTER}`
+      ? `${name} buys a ${item} that costs ${moneyWords(cost)}. ${name} pays with ${payPhrase}. How much change does ${name} get back? ${ENTER}`
       : `A ${item} costs ${moneyWords(cost)}. You pay with ${payPhrase}. How much change do you get back? ${ENTER}`;
   return {
     prompt,
@@ -869,6 +1052,22 @@ export function moneyTimesChangeStory(
   };
 }
 
+const COIN_BUYS: readonly { min: number; max: number; item: string }[] = [
+  { min: 11, max: 40, item: "a pencil" },
+  { min: 11, max: 35, item: "an eraser" },
+  { min: 11, max: 50, item: "a piece of candy" },
+  { min: 25, max: 50, item: "a gumball" },
+  { min: 25, max: 75, item: "a cup of lemonade" },
+  { min: 25, max: 75, item: "a bouncy ball" },
+  { min: 25, max: 50, item: "a bookmark" },
+  { min: 25, max: 75, item: "a sticker" },
+  { min: 25, max: 99, item: "a cookie" },
+  { min: 40, max: 99, item: "a postcard" },
+  { min: 50, max: 99, item: "the bus fare" },
+  { min: 50, max: 99, item: "a bottle of water" },
+  { min: 60, max: 99, item: "juice from the machine" },
+];
+
 export function moneyFewestStory(
   templateId: string,
   seed: string,
@@ -876,20 +1075,22 @@ export function moneyFewestStory(
 ): { prompt: string; hint: string; explanation: string[] } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const frame = spread(seed, 6);
+  const buys = COIN_BUYS.filter(
+    (item) => cents >= item.min && cents <= item.max,
+  );
+  const item = (buys.length ? buys : COIN_BUYS)[
+    spread(seed, buys.length || COIN_BUYS.length)
+  ]!.item;
+  const frame = r(0, 3);
   const amount = moneyWords(cents);
   const prompt =
     frame === 0
-      ? `The vending machine takes coins for juice that costs ${amount}. What is the fewest number of coins that pay for the juice?`
+      ? `${name} sees that ${item} costs ${amount}. What is the fewest number of coins that pay for it?`
       : frame === 1
-        ? `${name}'s lemonade costs ${amount}. What is the fewest number of coins that pay for one cup?`
+        ? `${name} pays ${amount} for ${item} with the fewest coins. How many coins is that?`
         : frame === 2
-          ? `${name} wants ${amount} from the piggy bank, using the fewest coins. How many coins is that?`
-          : frame === 3
-            ? `The sticker machine needs ${amount} in coins. What is the fewest number of coins that make that amount?`
-            : frame === 4
-              ? `The arcade game costs ${amount}. What is the fewest number of coins that pay for one game?`
-              : `${name} counts out ${amount} for the bus fare, using the fewest coins. How many coins is that?`;
+          ? `${name} needs ${amount} in coins for ${item}. What is the fewest number of coins?`
+          : `${name} counts out ${amount} for ${item}, using the fewest coins. How many coins is that?`;
   return {
     prompt,
     hint: `Start with ${amount}. Take the largest coin that is not more than what is left: quarters, then dimes, nickels, and pennies.`,
@@ -911,20 +1112,31 @@ export function moneyModelStory(
 ): { prompt: string; hint: string; explanation: string[] } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const frame = spread(seed, 6);
+  const places = [
+    "piggy bank",
+    "coin purse from the garage sale",
+    "envelope from the tooth fairy",
+    "lemonade-stand cash box",
+    "jacket pocket",
+    "field-trip envelope",
+    "bake-sale box",
+    "allowance jar",
+    "birthday envelope",
+    "car-wash tip jar",
+    "savings pouch",
+    "class-store drawer",
+  ] as const;
+  const place = places[spread(seed, places.length)]!;
+  const frame = spread(seed, 4);
   const bills = model.billPhrase;
   const prompt =
     frame === 0
-      ? `${name}'s piggy bank has ${bills} and the coins shown. How much money is in the bank? ${ENTER}`
+      ? `${name}'s ${place} has ${bills} and the coins shown. How much money is in it? ${ENTER}`
       : frame === 1
-        ? `${name} counts the lemonade-stand money: ${bills}, plus the coins in the cup. How much money is there in all? ${ENTER}`
+        ? `${name} counts the money in the ${place}: ${bills}, plus the coins. What is the total? ${ENTER}`
         : frame === 2
-          ? `${name} opens the register drawer. It has ${bills} and these coins. What is the total? ${ENTER}`
-          : frame === 3
-            ? `${name} found ${bills} and the coins beside them. How much money is that altogether? ${ENTER}`
-            : frame === 4
-              ? `${name}'s allowance jar has ${bills} and the coins shown. How much money is in the jar? ${ENTER}`
-              : `${name} counts the bake-sale box: ${bills}, plus the coins in the cup. How much money is there in all? ${ENTER}`;
+          ? `${name} opens the ${place}. It has ${bills} and these coins. How much is there in all? ${ENTER}`
+          : `${name} lays out the money from the ${place}: ${bills} and the coins shown. How much is that altogether? ${ENTER}`;
   const coinCents =
     model.quarters * 25 + model.dimes * 10 + model.nickels * 5 + model.pennies;
   const bits = [
@@ -947,7 +1159,7 @@ export function moneyModelStory(
     explanation: [
       `The bills are worth ${moneyWords(model.billCents)}.`,
       `${cap(joinList(bits))}.`,
-      `The coins are ${
+      `The coins add up to ${
         coinCents < 100 || coinCents % 100 === 0
           ? moneyWords(coinCents)
           : `${count(Math.floor(coinCents / 100), "dollar")} and ${count(coinCents % 100, "cent")}`
