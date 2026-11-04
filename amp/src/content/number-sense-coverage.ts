@@ -52,7 +52,7 @@ export const numberSenseFacetMappings: readonly FacetMapping[] = [
   ],
   [
     "digit-value-ratio",
-    "powers-of-ten.shift-by-powers",
+    "large-place-value.ten-times",
     "One nonzero digit in two places one to three apart in a four- to six-digit number.",
   ],
 ].map(([templateId, facetId, scope]) => ({

@@ -211,7 +211,11 @@ export const comparisonLessons: Lesson[] = [
     title: "Place value to hundred thousands",
     summary:
       "A digit is one of the symbols 0 to 9 we use to write numbers. A digit's place is its spot in the number, and the place tells what the digit is worth. In 372,946 the 7 is worth 70,000. Knowing this, you can read numbers up to 999,999 and compare them: tell which is bigger, which is smaller, or if they are the same.",
-    templateIds: ["multidigit-digit-value", "compare-multidigit"],
+    templateIds: [
+      "multidigit-digit-value",
+      "compare-multidigit",
+      "digit-value-ratio",
+    ],
     noLink: ["change"],
     objectives: [
       "Name the value of any digit in a number up to 999,999.",

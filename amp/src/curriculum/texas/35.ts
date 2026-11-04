@@ -304,14 +304,14 @@ const courses: readonly TexasCourse[] = [
       [
         "g3-large-place-value",
         ["2.A", "2.B"],
-        ["large-place-value", "hundreds-place-value", "powers-of-ten"],
+        ["large-place-value", "hundreds-place-value"],
         [
           "multidigit-digit-value",
           "expanded-form-missing",
           "digit-value-ratio",
         ],
         "Read a digit's value or its ratio to a neighboring place",
-        "Digit values in multidigit numbers, three-digit expanded form and the ten-times relationship between neighboring places. Ranges to 100,000 are not certified and the attached skills are Grade 2, 4 and 5. Expanded notation for five-digit numbers and written descriptions are not assessed.",
+        "Digit values in multidigit numbers, three-digit expanded form and the ten-times relationship between neighboring places. digit-value-ratio is the grade 4 large-place-value skill. Ranges to 100,000 are not certified and the attached skills are Grade 2 and 4. Expanded notation for five-digit numbers and written descriptions are not assessed.",
       ],
       [
         "g3-rounding",
@@ -864,7 +864,7 @@ const courses: readonly TexasCourse[] = [
       [
         "g4-place-value-decimal",
         ["2.A", "2.B"],
-        ["powers-of-ten", "large-place-value", "decimal-place-value"],
+        ["large-place-value", "decimal-place-value"],
         [
           "digit-value-ratio",
           "multidigit-digit-value",
@@ -872,7 +872,7 @@ const courses: readonly TexasCourse[] = [
           "expanded-decimal",
         ],
         "Read a digit's value or its ratio to a neighboring place",
-        "Digit values in whole numbers and decimals and the ten-times relationship; the range through 1,000,000,000 is not certified and the ratio and decimal templates belong to Grade 5 skills. Writing expanded notation is not assessed.",
+        "digit-value-ratio compares the same digit in two places of a whole number on the grade 4 large-place-value skill. multidigit-digit-value names one digit's value. Decimal digit value and expanded form belong to the grade 5 decimal-place-value skill. The range through 1,000,000,000 is not certified. Writing expanded notation is not assessed.",
       ],
       [
         "g4-compare-whole",

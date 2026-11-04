@@ -132,7 +132,7 @@ const definitions = [
   [
     "digit-value-ratio",
     "Ten times the place to its right",
-    "powers-of-ten",
+    "large-place-value",
     "3–5",
     "Compare the values of the same digit in two places of a whole number.",
   ],

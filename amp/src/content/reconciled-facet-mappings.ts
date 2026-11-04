@@ -2144,13 +2144,6 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
       "Give the zeros of a polynomial written in factored form. Does not assess zeros of a polynomial not in factored form.",
   },
   {
-    templateId: "digit-value-ratio",
-    facetId: "powers-of-ten.core",
-    extent: "partial",
-    rationale:
-      "Compare the values of the same digit in two places as a power-of-ten ratio. Does not assess decimal places.",
-  },
-  {
     templateId: "divide-power-of-ten",
     facetId: "powers-of-ten.core",
     extent: "partial",

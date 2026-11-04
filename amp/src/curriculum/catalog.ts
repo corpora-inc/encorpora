@@ -3144,9 +3144,14 @@ for (const [skillId, suffix, description] of [
     "Round five- and six-digit whole numbers to the nearest hundred, thousand or ten thousand.",
   ],
   [
+    "large-place-value",
+    "ten-times",
+    "Compare the values of one digit in two places of a whole number. Each place to the left is worth ten times as much.",
+  ],
+  [
     "powers-of-ten",
     "shift-by-powers",
-    "Multiply or divide by 10, 100 or 1,000 written plainly or as powers of ten, and compare one digit's values in two places.",
+    "Multiply or divide by 10, 100 or 1,000 written plainly or as powers of ten.",
   ],
 ])
   skills

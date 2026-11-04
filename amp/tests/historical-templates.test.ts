@@ -146,6 +146,37 @@ test("equation truth has grade-appropriate equality skills, facets and the exist
   }
 });
 
+test("digit-value-ratio is grade-4 place value, and grade 5 keeps four powers-of-ten types", () => {
+  const moved = templates.find((t) => t.id === "digit-value-ratio")!;
+  assert.equal(moved.skillId, "large-place-value");
+  assert.equal(templateGrade(moved, nodes), 4);
+  assert.equal(
+    generateProblem("digit-value-ratio", "place-move").public.skillId,
+    "large-place-value",
+  );
+  const kept = templates.filter((t) => t.skillId === "powers-of-ten");
+  assert.deepEqual(
+    kept.map((t) => t.id).sort(),
+    [
+      "digit-value-blanks",
+      "divide-power-of-ten",
+      "fl-decimal-by-tenth-hundredth",
+      "multiply-power-of-ten",
+    ],
+  );
+  for (const template of kept) {
+    const grade = templateGrade(template, nodes);
+    assert.ok(grade >= 5 && grade < 6, `${template.id} grade ${grade}`);
+  }
+  const facets = actualFacetMappings.filter(
+    (m) => m.templateId === "digit-value-ratio",
+  );
+  assert.deepEqual(
+    facets.map((m) => m.facetId),
+    ["large-place-value.ten-times"],
+  );
+});
+
 test("Missing Factor navigation offers an unknown factor, and equality has connected next steps", () => {
   const route = answerPathways(
     "one-step-equations",
