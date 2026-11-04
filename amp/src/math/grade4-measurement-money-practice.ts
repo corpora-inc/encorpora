@@ -6,9 +6,15 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { random, rational, type Random } from "./distribution-practice";
+import {
+  clockTimePresent,
+  elapsedStory,
+} from "./grade4-measurement-money-voice";
 import { multiPartProblem, type Slot } from "./multi-part-support";
 import { table } from "./scene/author";
 import { CENTS, type MoneyItem } from "./time-money-models";
+import { chooseAxes, defineAxis } from "./variation/axes";
+import { generateWithAxes, omitLegacyVariant } from "./variation/legacy";
 
 /* Grade-4 measurement and money (MM-1 through MM-10).
  * Elapsed intervals, conversion tables, smaller-to-larger renames, a
@@ -31,6 +37,26 @@ type Draft = {
   fraction?: boolean;
 };
 type Built = { variant: string; problem: GeneratedProblem };
+
+/** Plain keeps the stored sentence. Story is a new telling of the same model.
+ * Weights and the axis id are fixed so the sample-book seeds land on story
+ * and the replay seeds still include the stored plain surface. */
+export const measurementNarrativeAxes = {
+  "narrative-b": defineAxis("narrative-b", ["plain", "story"] as const, {
+    legacy: "plain",
+    weights: [1, 20],
+    silentLegacy: true,
+  }),
+} as const;
+
+const STORY_READY = new Set(["elapsed-time-intervals"]);
+
+export function measurementNarrative(
+  templateId: string,
+  seed: string,
+): "plain" | "story" {
+  return chooseAxes(templateId, seed, measurementNarrativeAxes)["narrative-b"];
+}
 
 const choice = { requiredResponseCapability: "single-choice-v1" as const };
 const multiPart = {
@@ -306,12 +332,19 @@ function elapsed(meta: TemplateMetadata, seed: string, r: Random): Built {
   const period = start < 12 * 60 ? "morning" : "afternoon";
   const [first, second] = pick(r, PAIRS);
   const activity = two ? first : pick(r, ALONE);
-  const prompt = two
+  const legacyPrompt = two
     ? `The clock shows when ${lead(first)} starts, in the ${period}. ${sentence(first)} ${hm(durations[0]!)}. Then ${lead(second)} ${second.verb} ${hm(durations[1]!)}. What time does ${lead(second)} end?`
     : `The clock shows when ${lead(activity)} starts, in the ${period}. ${sentence(activity)} ${hm(durations[0]!)}. What time does ${lead(activity)} end?`;
   const correct = formatTime(end);
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? elapsedStory(meta.id, seed, { start, durations })
+      : null;
+  const prompt = told?.prompt ?? legacyPrompt;
   need(
-    !prompt.includes(correct),
+    told
+      ? !clockTimePresent(prompt, correct)
+      : !prompt.includes(correct),
     "an end time that is not written in the prompt",
   );
   const slips: [number, string][] = [
@@ -359,9 +392,11 @@ function elapsed(meta: TemplateMetadata, seed: string, r: Random): Built {
     hour: startHour % 12 || 12,
     minute: startMin,
   };
-  const hint = two
-    ? `${sentence(first)} ${hm(durations[0]!)}. Then ${lead(second)} ${second.verb} ${hm(durations[1]!)}. Start at the time on the clock and add both.`
-    : `${sentence(activity)} ${hm(durations[0]!)}. Start at the time on the clock and add the hours and the minutes.`;
+  const hint =
+    told?.hint ??
+    (two
+      ? `${sentence(first)} ${hm(durations[0]!)}. Then ${lead(second)} ${second.verb} ${hm(durations[1]!)}. Start at the time on the clock and add both.`
+      : `${sentence(activity)} ${hm(durations[0]!)}. Start at the time on the clock and add the hours and the minutes.`);
   const steps = durations.map((part, i) => {
     const at = start + durations.slice(0, i + 1).reduce((s, n) => s + n, 0);
     return `Add ${hm(part)}: ${formatTime(at)}.`;
@@ -372,7 +407,7 @@ function elapsed(meta: TemplateMetadata, seed: string, r: Random): Built {
       prompt,
       hint,
       figure,
-      explanation: [
+      explanation: told?.explanation ?? [
         `The clock shows ${formatTime(start)}, in the ${period}.`,
         ...steps,
         `The end time is ${correct}.`,
@@ -1018,7 +1053,11 @@ export function generateGrade4MeasurementMoneyProblem(
   templateId: string,
   seed: string,
 ) {
-  return grade4MeasurementMoneyCase(templateId, seed).problem;
+  const problem = grade4MeasurementMoneyCase(templateId, seed).problem;
+  if (!STORY_READY.has(templateId)) return problem;
+  return omitLegacyVariant(
+    generateWithAxes(templateId, seed, measurementNarrativeAxes, () => problem),
+  );
 }
 
 export const grade4MeasurementMoneyGlossary: Record<

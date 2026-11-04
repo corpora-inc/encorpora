@@ -9,6 +9,8 @@ import {
   grade4MeasurementMoneyCase,
   grade4MeasurementMoneyTemplates,
 } from "../src/math/grade4-measurement-money-practice";
+import { clockTimePresent } from "../src/math/grade4-measurement-money-voice";
+import { storyNames } from "../src/math/story-kit/names";
 
 const IDS = grade4MeasurementMoneyTemplates.map((t) => t.id);
 const LINE_DENOMS = new Set([2, 3, 4, 5, 6, 8, 10, 12]);
@@ -283,15 +285,14 @@ test("decimal money is one grade-4 skill on the decimals budget", () => {
   }
 });
 
-test("elapsed time crosses an hour and is read from the clock", () => {
-  let noon = 0;
-  let two = 0;
-  for (let i = 0; i < 200; i++) {
-    const { problem } = served("elapsed-time-intervals", `mm-elapsed-${i}`);
-    const text = problem.public.prompt;
-    assert.equal(/\bThe art takes\b/.test(text), false);
-    const twoMatch = elapsedTwo.exec(text);
-    const oneMatch = elapsedOne.exec(text);
+function readElapsed(text: string): {
+  durations: number[];
+  period: "morning" | "afternoon";
+  written: { hour: number; minute: number } | null;
+} {
+  const twoMatch = elapsedTwo.exec(text);
+  const oneMatch = elapsedOne.exec(text);
+  if (twoMatch || oneMatch) {
     assert.equal(Boolean(twoMatch), !oneMatch);
     const match = (twoMatch ?? oneMatch)!;
     const name = match[1]!.toLowerCase();
@@ -303,10 +304,47 @@ test("elapsed time crosses an hour and is read from the clock", () => {
     }
     const durations = [durationOf(twoMatch ? twoMatch[5]! : oneMatch![5]!)];
     if (twoMatch) durations.push(durationOf(twoMatch[8]!));
+    return {
+      durations,
+      period: match[2] === "afternoon" ? "afternoon" : "morning",
+      written: null,
+    };
+  }
+  const time = /(?<!\d)(\d{1,2}):(\d{2}) ([ap])\.m\./.exec(text);
+  assert.ok(time, text);
+  const found = [
+    ...text.matchAll(/(\d+) hours?(?: (\d+) minutes?)?|(\d+) minutes?/g),
+  ];
+  assert.ok(found.length === 1 || found.length === 2, text);
+  assert.ok(storyNames.some((name) => text.includes(name)), text);
+  return {
+    durations: found.map((part) => durationOf(part[0])),
+    period: time[3] === "a" ? "morning" : "afternoon",
+    written: { hour: Number(time[1]), minute: Number(time[2]) },
+  };
+}
+
+test("elapsed time crosses an hour and is read from the clock", () => {
+  let noon = 0;
+  let two = 0;
+  for (let i = 0; i < 200; i++) {
+    const { problem } = served("elapsed-time-intervals", `mm-elapsed-${i}`);
+    const text = problem.public.prompt;
+    assert.equal(/\bThe art takes\b/.test(text), false);
+    if (problem.variant != null) {
+      const prose = [text, problem.hint, ...problem.explanation].join("\n");
+      assert.equal(prose.includes(".."), false, prose);
+    }
+    const read = readElapsed(text);
     const figure = problem.public.figure;
     assert.ok(figure && figure.kind === "clock");
     if (!figure || figure.kind !== "clock") throw new Error("clock");
-    const period = match[2]!;
+    if (read.written) {
+      assert.equal(figure.hour, read.written.hour);
+      assert.equal(figure.minute, read.written.minute);
+      assert.equal(problem.variant?.id, "story");
+    } else assert.equal(problem.variant ?? null, null);
+    const period = read.period;
     assert.notEqual(period === "morning" && figure.hour === 12, true);
     const hour24 =
       period === "morning"
@@ -315,18 +353,19 @@ test("elapsed time crosses an hour and is read from the clock", () => {
           ? 12
           : figure.hour + 12;
     const start = hour24 * 60 + figure.minute;
-    const end = start + durations.reduce((sum, part) => sum + part, 0);
+    const end = start + read.durations.reduce((sum, part) => sum + part, 0);
     assert.ok(end < 20 * 60);
     assert.notEqual(Math.floor(end / 60), Math.floor(start / 60));
     if (start < 12 * 60 && end >= 12 * 60) noon++;
-    if (twoMatch) two++;
+    if (read.durations.length === 2) two++;
     const label = formatTime(end);
-    assert.equal(text.includes(label), false);
+    assert.equal(clockTimePresent(text, label), false);
     const options = choice(problem);
     const hits = options.filter((o) => o.label === label);
     assert.equal(hits.length, 1);
     assert.equal(problem.answer, hits[0]!.id);
     assert.equal(new Set(options.map((o) => o.label)).size, options.length);
+    assert.match(problem.explanation.join(" "), new RegExp(label.replaceAll(".", "\\.")));
   }
   assert.ok(noon >= 40, `noon ${noon}`);
   assert.ok(two >= 40 && two <= 160, `two-step ${two}`);

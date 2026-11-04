@@ -250,6 +250,10 @@ def require_realistic(cost, paid, quarters):
     require(coin_count(change) < coin_count(best), 'Quarters do not make the change simpler')
 
 
+def time_present(text, label):
+    return re.search(r'(?<!\d)' + re.escape(label), text) is not None
+
+
 def activity_ok(name, phrase, verb):
     key = name.casefold()
     require(key in VERB, f'Unknown activity {name}')
@@ -262,6 +266,8 @@ def solve_elapsed(public):
     require('The art takes' not in text, 'Unnatural activity name')
     two = TWO.fullmatch(text)
     one = ONE.fullmatch(text)
+    if two is None and one is None:
+        return solve_elapsed_story(public, text)
     require((two is None) != (one is None), 'Unrecognized elapsed-time prompt')
     match = two or one
     period = match[2]
@@ -280,7 +286,29 @@ def solve_elapsed(public):
     require(0 <= end < 20 * 60, 'End time leaves the grade-4 day')
     require(end // 60 != start // 60, 'Interval does not cross an hour')
     label = format_time(end)
-    require(label not in text, 'End time is written in the prompt')
+    require(not time_present(text, label), 'End time is written in the prompt')
+    return choice_id(public, label)
+
+
+def solve_elapsed_story(public, text):
+    clocks = re.findall(r'(?<!\d)(\d{1,2}):(\d{2}) ([ap])\.m\.', text)
+    require(len(clocks) == 1, 'Unrecognized elapsed-time prompt')
+    hour, minute, meridian = clocks[0]
+    durations = re.findall(r'\d+ hours?(?: \d+ minutes?)?|\d+ minutes?', text)
+    require(len(durations) in (1, 2), 'Need one or two durations')
+    figure = field(public, 'figure')
+    require(field(figure, 'kind') == 'clock', 'Clock expected')
+    require(
+        int(hour) == field(figure, 'hour') and int(minute) == field(figure, 'minute'),
+        'Clock does not match the written start',
+    )
+    period = 'morning' if meridian == 'a' else 'afternoon'
+    start = start_minutes(period, field(figure, 'hour'), field(figure, 'minute'))
+    end = start + sum(parse_duration(part) for part in durations)
+    require(0 <= end < 20 * 60, 'End time leaves the grade-4 day')
+    require(end // 60 != start // 60, 'Interval does not cross an hour')
+    label = format_time(end)
+    require(not time_present(text, label), 'End time is written in the prompt')
     return choice_id(public, label)
 
 
