@@ -280,9 +280,9 @@ export const staar2024Grade4 = defineLedger(
       demand:
         "Find the profit from reselling a chair after paying for the chair and the paint",
       status: "partial",
-      templateIds: ["budget-category-balance"],
+      templateIds: ["budget-category-balance", "profit-cost-breakeven"],
       limitations:
-        "budget-category-balance subtracts listed expenses from income; the profit from a sale after buying and repairing an item is not practiced.",
+        "budget-category-balance subtracts listed expenses from income. profit-cost-breakeven, on the grade 5 financial-literacy-elementary skill, finds profit or loss, a cost, or a break-even count from a selling price and fixed and variable costs in whole dollars, and also asks which cost is variable. It does not use a resale story about buying a chair and paint, and it is not served as grade 4 practice.",
     },
     {
       item: { number: "22", page: "rationale PDF p.23" },

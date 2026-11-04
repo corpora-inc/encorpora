@@ -5,6 +5,9 @@ import {
 } from "./source-reconciliation";
 import { texasInventories } from "./texas";
 import { floridaInventories } from "./florida";
+import { georgiaInventories } from "./georgia";
+import { arkansasInventories } from "./arkansas";
+import { arizonaInventories } from "./arizona";
 import { buildReleasedItemLedger } from "./released-items";
 import type { SourceLedger } from "./released-items/types";
 import {
@@ -178,7 +181,13 @@ export function buildGapLedger(input: GapLedgerInput = {}) {
     input.sourceInventories ??
       (input.skills || input.templates || input.standards
         ? []
-        : [...texasInventories, ...floridaInventories]),
+        : [
+            ...texasInventories,
+            ...floridaInventories,
+            ...georgiaInventories,
+            ...arkansasInventories,
+            ...arizonaInventories,
+          ]),
     nodes,
     input.templates ?? registeredTemplates,
     coverageTargets.map((target) => target.id),
