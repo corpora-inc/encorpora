@@ -22,6 +22,8 @@ import {
   protractorPrompt,
   areaWord,
   compositeJob,
+  formulaAsk,
+  formulaScene,
   quadrilateralPrompt,
   spreadPick,
   storyNameFor,
@@ -801,24 +803,37 @@ function compositeRectangle(r: Rand, seed: string): GeneratedProblem {
   });
 }
 
+let rectangleSeed = "";
+
 const rectangleFormula = selectFamily(
   metaOf("rectangle-formula-select"),
   (r) => {
+    const seed = rectangleSeed;
+    const scene = formulaScene(seed);
+    const name = storyNameFor(seed, "formula-name");
+    const unitName = scene.unit === "cm" ? "centimeters" : "meters";
     let length = 3;
     let width = 3;
     let ready = false;
-    for (let attempt = 0; attempt < 30; attempt++) {
-      length = r(3, 12);
-      width = r(3, 12);
+    for (let attempt = 0; attempt < 40; attempt++) {
+      length = r(scene.length[0], scene.length[1]);
+      width = r(scene.width[0], scene.width[1]);
       const area = length * width;
       const around = 2 * (length + width);
-      if (area !== around && area !== length + width) {
+      const ratio = length / width;
+      if (
+        length !== width &&
+        area !== around &&
+        area !== length + width &&
+        ratio <= 3 &&
+        ratio >= 1 / 3
+      ) {
         ready = true;
         break;
       }
     }
     if (!ready) throw new Error("Need three retry: dimensions");
-    const kind = r(0, 1) === 0 ? "perimeter" : "area";
+    const kind = scene.measure;
     const around = 2 * (length + width);
     const area = length * width;
     const perimeterPool = [
@@ -876,25 +891,38 @@ const rectangleFormula = selectFamily(
       ),
     ];
     const pool = kind === "perimeter" ? perimeterPool : areaPool;
+    const lead =
+      kind === "perimeter"
+        ? [
+            "The perimeter is the walk around all four sides.",
+            `The length is ${length} ${unitName} and the width is ${width} ${unitName}, as labeled.`,
+            "Adding the four sides, adding twice the length and twice the width, and doubling the sum of the length and the width are the same walk.",
+          ]
+        : [
+            "The area is the squares inside.",
+            `The length is ${length} ${unitName} and the width is ${width} ${unitName}, as labeled.`,
+            "Length times width counts those squares, and so does width times length. Adding or doubling the sides walks around the outside.",
+          ];
     return selectModel({
       variant: kind,
       pool,
       total: pool.length,
       k: pool.filter((item) => item.holds).length,
       ordered: true,
-      context:
-        "The length $l$ is the horizontal side and the width $w$ is the vertical side.",
-      ask: (n) =>
-        `Select the ${n} ${n === 1 ? "expression" : "expressions"} that equal the ${kind}.`,
+      context: scene.lead(name),
+      ask: (n) => formulaAsk(seed, n, kind),
       one: "expression",
+      lead,
       hint: (shown) => {
         const n = shown.filter((item) => item.holds).length;
-        return `The question asks for ${n} expressions. The length is ${length} centimeters and the width is ${width} centimeters. The perimeter is the walk around all four sides. The area is the squares inside.`;
+        return kind === "perimeter"
+          ? `The question asks for ${n} expressions. Walk around all four sides. The length and the width are labeled in ${unitName}.`
+          : `The question asks for ${n} expressions. Count the squares inside. The length and the width are labeled in ${unitName}.`;
       },
       figure: {
         kind: "measure-rectangle",
-        width: { value: length, unit: "cm" },
-        height: { value: width, unit: "cm" },
+        width: { value: length, unit: scene.unit },
+        height: { value: width, unit: scene.unit },
       },
     });
   },
@@ -921,6 +949,7 @@ export function generateGrade4Geometry(
     case "composite-rectangle-measure":
       return compositeRectangle(r, seed);
     case "rectangle-formula-select":
+      rectangleSeed = seed;
       return rectangleFormula.generate(seed).problem;
     default:
       throw new Error(`Unknown grade-4 geometry template ${templateId}`);

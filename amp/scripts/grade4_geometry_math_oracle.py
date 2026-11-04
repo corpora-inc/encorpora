@@ -365,7 +365,9 @@ def formula_truths(public):
     require(figure['kind'] == 'measure-rectangle', 'Measure rectangle')
     length = figure['width']['value']
     width = figure['height']['value']
-    require(figure['width']['unit'] == 'cm' and figure['height']['unit'] == 'cm', 'Centimeter labels')
+    unit = figure['width']['unit']
+    require(unit == figure['height']['unit'] and unit in ('cm', 'm'), 'Length unit')
+    require(length != width, 'The rectangle is not a square')
     area = length * width
     around = 2 * (length + width)
     require(area != around and area != length + width, 'Area and perimeter must not share a number')

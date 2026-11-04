@@ -516,8 +516,9 @@ function formulaAnswer(problem: GeneratedProblem): string {
   assert.ok(figure.width && figure.height);
   const length = figure.width.value;
   const width = figure.height.value;
-  assert.equal(figure.width.unit, "cm");
-  assert.equal(figure.height.unit, "cm");
+  assert.ok(figure.width.unit === "cm" || figure.width.unit === "m");
+  assert.equal(figure.width.unit, figure.height.unit);
+  assert.notEqual(length, width);
   const area = length * width;
   const around = 2 * (length + width);
   assert.notEqual(area, around);
