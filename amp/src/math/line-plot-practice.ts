@@ -598,7 +598,7 @@ function plotDifference(
   if (question === 1)
     return {
       prompt: flip
-        ? `${intro} Place the longest and shortest ${context.item} end to end. How many inches long are they together?`
+        ? `${intro} How many inches long are the longest and shortest ${context.item} placed end to end?`
         : `${intro} What is the combined length of the longest and shortest ${context.item}, in inches?`,
       figure,
       answer: rational(longest + shortest, d),
@@ -619,7 +619,7 @@ function plotDifference(
   const total = v * n;
   return {
     prompt: flip
-      ? `${intro} ${storyNames[picked % storyNames.length]} lines up every ${context.item} that is ${measure(v, d, "inch", "inches")} long. How many inches long is that line?`
+      ? `${intro} How many inches long is a line of every ${context.item} that is ${measure(v, d, "inch", "inches")} long?`
       : `${intro} What is the total length of all the ${context.items} that are ${measure(v, d, "inch", "inches")} long, in inches?`,
     figure,
     answer: rational(total, d),
@@ -629,7 +629,7 @@ function plotDifference(
       : `Count the marks above ${mixedText(v, d)}. Add that length once for each mark, or multiply.`,
     explanation: [
       `Each mark (×) is one ${context.item}. The marks ${vivid ? "at" : "above"} ${mixedText(v, d)} show the ${context.items} of that length.`,
-      `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} above ${mixedText(v, d)} = ${f(v)}.`,
+      `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} ${vivid ? "at" : "above"} ${mixedText(v, d)} = ${f(v)}.`,
       `Add that length once for each mark. That is the same as multiplying: ${n} × ${f(v)} = ${result(total, d, "inch", "inches")}.`,
       `Their total length is ${measure2(total, d, "inch", "inches")}.`,
     ],

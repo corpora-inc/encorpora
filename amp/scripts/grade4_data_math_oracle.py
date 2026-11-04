@@ -34,7 +34,16 @@ TABLE_ROW = re.compile(rf"(\d+){DASH}(\d+) has (\d+)")
 BAR_MORE = re.compile(
     r"How many more (\w+) are in (\w+) and (\w+) together than in (\w+)\?"
 )
-BAR_STEP = re.compile(r"Each line on the side counts as (\d+) ")
+BAR_FEWER = re.compile(
+    r"How many fewer (\w+) does (\w+) have than (\w+) and (\w+) together\?"
+)
+BAR_TOGETHER = re.compile(
+    r"(\w+) and (\w+) together have how many more (\w+) than (\w+)\?"
+)
+BAR_DIFFERENCE = re.compile(
+    r"What is the difference between (\w+) and (\w+) together and (\w+), in (\w+)\?"
+)
+BAR_STEP = re.compile(r"(?:counts as|stands for|counts by) (\d+)")
 
 
 def require(condition, message):
@@ -152,14 +161,17 @@ def mode_label(ticks, d):
 
 def solve_center(public):
     prompt = public["prompt"]
-    if prompt.endswith("What is the mode?"):
-        ask = "mode"
-    elif prompt.endswith("What is the median length?"):
-        ask = "median"
-    elif prompt.endswith("What is the range?"):
-        ask = "range"
-    else:
-        raise ValueError(f"Unrecognized question: {prompt}")
+    hits = [
+        name
+        for name, pattern in (
+            ("mode", r"\bmodes?\b"),
+            ("median", r"\bmedian\b"),
+            ("range", r"\brange\b"),
+        )
+        if re.search(pattern, prompt)
+    ]
+    require(len(hits) == 1, f"Unrecognized question: {prompt}")
+    ask = hits[0]
     d, ticks = ticks_of(plot_element(public["figure"]["scene"]))
     require(len(ticks) % 2 == 1, "Median is defined here only for an odd count")
     if ask == "mode":
@@ -213,10 +225,22 @@ def solve_frequency(public):
 
 def solve_bar(public):
     prompt = public["prompt"]
-    more = BAR_MORE.search(prompt)
     step_match = BAR_STEP.search(prompt)
-    require(more is not None and step_match is not None, "Unrecognized bar question")
-    _unit, a, b, c = more.groups()
+    require(step_match is not None, "Unrecognized bar scale")
+    more = BAR_MORE.search(prompt)
+    fewer = BAR_FEWER.search(prompt)
+    together = BAR_TOGETHER.search(prompt)
+    difference = BAR_DIFFERENCE.search(prompt)
+    if more:
+        _unit, a, b, c = more.groups()
+    elif fewer:
+        _unit, c, a, b = fewer.groups()
+    elif together:
+        a, b, _unit, c = together.groups()
+    elif difference:
+        a, b, c, _unit = difference.groups()
+    else:
+        require(False, "Unrecognized bar question")
     figure = public["figure"]
     require(figure["kind"] == "scaled-bar-graph", "Scaled bar graph required")
     values = {cat["label"]: cat["value"] for cat in figure["categories"]}

@@ -236,7 +236,38 @@ def review_graph(problem):
 # --------------------------------------------------------------------- dot plot
 DOT_HEADER = re.compile(r'The dot plot shows (?:the (?:length|weight), in (feet|pounds), of each of (\d+) (?:ribbons|bags of apples)|'
                         r'how many (miles) Maya walked on each of (\d+) days|how many (points) a team scored in each of its first (\d+) games)\. (.*)')
-UNITS = {'feet': 'foot', 'pounds': 'pound', 'miles': 'mile', 'points': 'point'}
+UNITS = {
+    'feet': 'foot', 'pounds': 'pound', 'miles': 'mile', 'points': 'point',
+    'inches': 'inch', 'books': 'book', 'baskets': 'basket', 'fish': 'fish',
+    'laps': 'lap', 'tickets': 'ticket',
+}
+
+
+def dot_parts(prompt):
+    require(prompt.startswith('The dot plot shows '), f'Unrecognized wording: {prompt}')
+    head, sep, question = prompt.partition('. ')
+    require(sep, f'Unrecognized wording: {prompt}')
+    count_m = re.search(r'each of (?:its first )?(\d+)', head)
+    require(count_m is not None, f'Unrecognized wording: {prompt}')
+    if m := re.search(r'\bin (feet|pounds|inches)\b', head):
+        unit = m[1]
+    elif 'how many miles' in head:
+        unit = 'miles'
+    elif 'how many books' in head:
+        unit = 'books'
+    elif 'how many baskets' in head:
+        unit = 'baskets'
+    elif 'how many fish' in head:
+        unit = 'fish'
+    elif 'how many laps' in head:
+        unit = 'laps'
+    elif 'how many tickets' in head:
+        unit = 'tickets'
+    elif 'how many points' in head:
+        unit = 'points'
+    else:
+        require(False, f'Unrecognized wording: {prompt}')
+    return unit, int(count_m[1]), question
 
 
 def parse_amount(text):
@@ -271,41 +302,37 @@ def dots_of(public, count):
     denominator = plot.get('denominator', 1)
     values = [F(str(v)) for v in plot['groups'][0]['values']]
     require(all((v * denominator).denominator == 1 for v in values), 'A dot lies between the drawn ticks')
-    require(all(plot['min'] <= v <= plot['max'] for v in values), 'A dot lies outside the drawn axis')
+    # Compare exact decimals. A JSON float is not the same number as its decimal text.
+    lo, hi = F(str(plot['min'])), F(str(plot['max']))
+    require(all(lo <= v <= hi for v in values), 'A dot lies outside the drawn axis')
     require(len(values) == count, f'The plot shows {len(values)} dots, the prompt says {count}')
     return values
 
 
 def solve_dots(public):
-    m = DOT_HEADER.fullmatch(public['prompt'])
-    require(m is not None, f'Unrecognized wording: {public["prompt"]}')
-    g = m.groups()
-    unit, count = next((g[i], int(g[i + 1])) for i in (0, 2, 4) if g[i] is not None)
-    if unit == 'feet' or unit == 'pounds':
-        pass
-    question = g[6]
+    unit, count, question = dot_parts(public['prompt'])
     options = options_of(public)
-    total_q = re.fullmatch(r'(?:How many miles did Maya walk in all \d+ days|What is the total (?:length|weight) of all \d+ (?:ribbons|bags), in (?:feet|pounds)|How many points did the team score in all \d+ games)\?', question)
-    if total_q:
-        value = sum(dots_of(public, count), F(0))
+    amount = r'(\$[^$]+\$|\d+(?:\.\d+)?)'
+    missing = (
+        re.search(rf'(?:in all|in its first) (\d+) [a-z]+\. How many .+ (?:day|week|practice|trip|game) (\d+)\?', question)
+        or re.search(rf'All (\d+) .+\. What is the (?:weight|length|height) of \w+ (\d+)', question)
+    )
+    if missing:
+        number, item = int(missing[1]), int(missing[2])
+        require(number == count + 1 and item == number, 'The missing item must be the one after the plotted ones')
+        total_m = re.search(rf'{amount} (?:miles|books|baskets|fish|laps|tickets|points|pounds|feet|inches)', question)
+        require(total_m is not None, f'Unrecognized question: {question}')
+        value = parse_amount(total_m[1]) - sum(dots_of(public, count), F(0))
+        require(value > 0, 'The missing value must be positive')
     elif re.fullmatch(r'What is the difference between the greatest and the least value, in [a-z]+\?', question):
         require(question.endswith(f'in {unit}?'), 'Unit in the question')
         values = dots_of(public, count)
         value = max(values) - min(values)
         require(value > 0, 'Range must be positive')
+    elif re.search(r'in all \d+|What is the total ', question):
+        value = sum(dots_of(public, count), F(0))
     else:
-        m2 = (re.fullmatch(r'All (\d+) (?:ribbons have a total length of|bags weigh) (\$[^$]+\$|\d+(?:\.\d+)?) (?:feet|pounds)(?: together)?\. What is the (?:length of ribbon|weight of bag) (\d+), in (?:feet|pounds)\?', question)
-              or re.fullmatch(r'Maya walked (\$[^$]+\$|\d+(?:\.\d+)?) miles in all (\d+) days\. How many miles did she walk on day (\d+)\?', question)
-              or re.fullmatch(r'The team scored (\d+) points in its first (\d+) games\. How many points did it score in game (\d+)\?', question))
-        require(m2 is not None, f'Unrecognized question: {question}')
-        a, b, c = m2.groups()
-        if 'Maya' in question or 'team' in question:
-            total, number = parse_amount(a), int(b)
-        else:
-            number, total = int(a), parse_amount(b)
-        require(number == count + 1 and int(c) == number and int(c) == count + 1, 'The missing item must be the one after the plotted ones')
-        value = total - sum(dots_of(public, count), F(0))
-        require(value > 0, 'The missing value must be positive')
+        require(False, f'Unrecognized question: {question}')
     values = {o['id']: amount_with_unit(o['label'], unit) for o in options}
     require(len(set(values.values())) == 4, 'Choices must be distinct')
     return only(options, lambda o: values[o['id']] == value, f'{value}')

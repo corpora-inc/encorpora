@@ -328,14 +328,17 @@ NEAREST = {
     'tenth of an inch': 10, 'twelfth of an inch': 12,
     'third of a cup': 3, 'fifth of a mile': 5, 'sixth of a foot': 6,
     'tenth of a mile': 10, 'twelfth of a foot': 12,
+    'fifth of a liter': 5, 'tenth of a meter': 10,
 }
 PRECISION = (
     'centimeter|inch|half inch|quarter inch|eighth inch|'
     'third of an inch|fifth of an inch|sixth of an inch|tenth of an inch|twelfth of an inch|'
-    'third of a cup|fifth of a mile|sixth of a foot|tenth of a mile|twelfth of a foot'
+    'third of a cup|fifth of a mile|sixth of a foot|tenth of a mile|twelfth of a foot|'
+    'fifth of a liter|tenth of a meter'
 )
-PLOT_UNIT = 'inches|miles|feet|cups'
-PLOT_ONE = 'inch|inches|mile|miles|foot|feet|cup|cups'
+PLOT_UNIT = 'inches|miles|feet|cups|liters|meters'
+PLOT_ONE = 'inch|inches|mile|miles|foot|feet|cup|cups|liter|liters|meter|meters'
+ITEM = r'(?:\w+(?: \w+)?)'
 
 
 def _amount(text):
@@ -373,11 +376,19 @@ def solve_line_plot(public):
         return Fraction(len(data))
     if re.fullmatch(r'How many (?:inches|centimeters) longer is the longest \w+ than the shortest\?', question):
         return max(data) - min(data)
-    if re.fullmatch(rf'What is the difference in (?:length|distance|amount) between the (?:longest and shortest|greatest and least) \w+, in (?:{PLOT_UNIT})\?', question):
+    if re.fullmatch(rf'How much longer is the longest {ITEM} than the shortest, in inches\?', question):
         return max(data) - min(data)
-    if re.fullmatch(rf'What is the combined (?:length|distance|amount) of the (?:longest and shortest|greatest and least) \w+, in (?:{PLOT_UNIT})\?', question):
+    if re.fullmatch(rf'What is the difference in (?:length|distance|amount|height) between the (?:longest and shortest|greatest and least) {ITEM}, in (?:{PLOT_UNIT})\?', question):
+        return max(data) - min(data)
+    if re.fullmatch(rf'How many inches long are the longest and shortest {ITEM} placed end to end\?', question):
         return max(data) + min(data)
-    if (m := re.fullmatch(rf'What is the total (?:length|distance|amount) of all the \w+ that are ' + amount + rf' (?:{PLOT_ONE})(?: long)?, in (?:{PLOT_UNIT})\?', question)):
+    if re.fullmatch(rf'What is the combined (?:length|distance|amount|height) of the (?:longest and shortest|greatest and least) {ITEM}, in (?:{PLOT_UNIT})\?', question):
+        return max(data) + min(data)
+    if (m := re.fullmatch(rf'How many inches long is a line of every {ITEM} that is ' + amount + r' (?:inch|inches) long\?', question)):
+        v = _amount(m[1])
+        require(v in data, 'Asked length is not plotted')
+        return v * data.count(v)
+    if (m := re.fullmatch(rf'What is the total (?:length|distance|amount|height) of all the {ITEM} that are ' + amount + rf' (?:{PLOT_ONE})(?: long)?, in (?:{PLOT_UNIT})\?', question)):
         v = _amount(m[1])
         require(v in data, 'Asked length is not plotted')
         return v * data.count(v)
