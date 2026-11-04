@@ -46,8 +46,9 @@ export function TrialWorkbooks({
         <div className={styles.stripTitle}>
           <h2 id={heading}>Free workbooks</h2>
           <p>
-            One for every {TRIAL_WORKBOOK_EVERY} problems, made for this
-            learner.
+            Start with an age-based workbook to print. Answer problems to adapt
+            future workbooks to this learner’s progress. One more unlocks every{" "}
+            {TRIAL_WORKBOOK_EVERY} problems, up to five in all.
           </p>
         </div>
         <div className={styles.paper}>
@@ -67,7 +68,7 @@ export function TrialWorkbooks({
         <ol className={styles.stamps} aria-label="Free workbooks">
           {slots.map((index) => {
             const item = status.items[index];
-            const at = (index + 1) * TRIAL_WORKBOOK_EVERY;
+            const at = index * TRIAL_WORKBOOK_EVERY;
             const key = `made:${item?.id ?? index}`;
             if (item)
               return (
@@ -96,7 +97,7 @@ export function TrialWorkbooks({
                   }
                   role="img"
                 >
-                  {at}
+                  {at === 0 ? "1" : at}
                 </span>
               </li>
             );

@@ -1,5 +1,5 @@
-/** Free workbooks during the free assessment: one for every
- * `TRIAL_WORKBOOK_EVERY` problems used, up to `TRIAL_WORKBOOKS_MAX`.
+/** Free workbooks: the first at the age-based starting point, then one more
+ * every `TRIAL_WORKBOOK_EVERY` problems used, up to `TRIAL_WORKBOOKS_MAX`.
  * "Used" is the free meter's count (answers, and skips while
  * `SKIP_USES_FREE_PROBLEM` holds), so the meter and the unlocks agree. The
  * server enforces the count when a workbook is made; the screens read it to
@@ -25,18 +25,18 @@ export function trialWorkbookAllowance(
 ): TrialWorkbookAllowance {
   const total = Math.min(
     TRIAL_WORKBOOKS_MAX,
-    Math.floor(Math.max(0, free) / TRIAL_WORKBOOK_EVERY),
+    free > 0 ? 1 + Math.floor(free / TRIAL_WORKBOOK_EVERY) : 0,
   );
   const earned = Math.min(
     total,
-    Math.floor(Math.max(0, used) / TRIAL_WORKBOOK_EVERY),
+    1 + Math.floor(Math.max(0, used) / TRIAL_WORKBOOK_EVERY),
   );
   return {
     total,
     earned,
     made,
     available: Math.max(0, earned - made),
-    nextAt: earned < total ? (earned + 1) * TRIAL_WORKBOOK_EVERY : null,
+    nextAt: earned < total ? earned * TRIAL_WORKBOOK_EVERY : null,
   };
 }
 
@@ -47,6 +47,6 @@ export function unlockedTrialWorkbook(
   free: number,
 ): number | null {
   if (used <= 0 || used % TRIAL_WORKBOOK_EVERY !== 0) return null;
-  const slot = used / TRIAL_WORKBOOK_EVERY;
+  const slot = 1 + used / TRIAL_WORKBOOK_EVERY;
   return slot <= trialWorkbookAllowance(used, 0, free).total ? slot : null;
 }

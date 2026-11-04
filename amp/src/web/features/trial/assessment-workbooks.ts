@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import type { WorkbookPaper } from "../../../workbook/contracts";
@@ -66,14 +66,23 @@ type Item = { id: string; date: string; number: number };
 export function useAssessmentWorkbook(session: TrialSession) {
   const paper = useWorkbookPaper((state) => state.paper);
   const [busy, setBusy] = useState<string | null>(null);
+  // A workbook already created must survive a failed document download,
+  // even if refreshing the progress summary also fails.
+  const retryTargets = useRef(new Map<string, Item>());
   const [message, setMessage] = useState("");
   async function print(key: string, workbook?: Item): Promise<Item | null> {
     if (busy) return null;
     setBusy(key);
     setMessage("");
     try {
-      const target = workbook ?? (await makeTrialWorkbook(session, paper));
+      const identity = `${session.learnerId}:${key}`;
+      const target =
+        workbook ??
+        retryTargets.current.get(identity) ??
+        (await makeTrialWorkbook(session, paper));
+      retryTargets.current.set(identity, target);
       await downloadAssessmentWorkbook(session, target, paper);
+      retryTargets.current.delete(identity);
       return target;
     } catch (error) {
       if (!(error instanceof AppError))

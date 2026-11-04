@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Button } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
+import { Toast } from "../../ui/Toast";
+import { nativeRuntime } from "../../native-runtime";
+import type { TrialSession, TrialWorkbooks } from "./api";
+import { useAssessmentWorkbook } from "./assessment-workbooks";
 import styles from "./Trial.module.css";
 
 import {
@@ -22,7 +26,15 @@ export function useTrialWelcome(learnerId: string) {
   };
 }
 
-export function TrialWelcome({ onContinue }: { onContinue: () => void }) {
+export function TrialWelcome({
+  onContinue,
+  session,
+  workbooks,
+}: {
+  onContinue: () => void;
+  session: TrialSession;
+  workbooks?: TrialWorkbooks;
+}) {
   return (
     <Dialog
       open
@@ -32,12 +44,17 @@ export function TrialWelcome({ onContinue }: { onContinue: () => void }) {
       }}
     >
       <p>
-        Try a few problems. Right answers make them harder; mistakes make them
-        easier.
+        Start with a few problems. AMP uses the learner’s age as a starting
+        point, then adjusts the levels and problems as they answer.
       </p>
       <p>
         <strong>Skip</strong> shows the answer without changing your level.
       </p>
+      {!nativeRuntime &&
+        workbooks &&
+        (workbooks.available > 0 || workbooks.items.length > 0) && (
+          <FirstWorkbook session={session} workbooks={workbooks} />
+        )}
       <Button
         variant="primary"
         className={styles.welcomeStart}
@@ -46,5 +63,45 @@ export function TrialWelcome({ onContinue }: { onContinue: () => void }) {
         Start practicing
       </Button>
     </Dialog>
+  );
+}
+
+/** Keep the introduction open after downloading, with the same workbook on retries. */
+function FirstWorkbook({
+  session,
+  workbooks,
+}: {
+  session: TrialSession;
+  workbooks: TrialWorkbooks;
+}) {
+  const { busy, message, clear, print } = useAssessmentWorkbook(session);
+  const [downloaded, setDownloaded] = useState<Pick<
+    TrialWorkbooks["items"][number],
+    "id" | "date" | "number"
+  > | null>(null);
+  return (
+    <>
+      <p>
+        Prefer paper? Download an age-based workbook and print it if you like.
+        Future workbooks adapt as the learner answers more problems.
+      </p>
+      <Button
+        variant="secondary"
+        className={styles.welcomeStart}
+        disabled={!!busy}
+        aria-busy={!!busy}
+        onClick={async () => {
+          const item = await print("first", downloaded ?? workbooks.items[0]);
+          if (item) setDownloaded(item);
+        }}
+      >
+        {busy
+          ? "Preparing…"
+          : downloaded
+            ? "Download workbook again"
+            : "Download free workbook"}
+      </Button>
+      <Toast message={message} onDismiss={clear} />
+    </>
   );
 }
