@@ -103,16 +103,107 @@ const cellNumber = (value: number | string | null) => {
   assert.match(value, /^\d{1,3}(,\d{3})*$/);
   return Number(value.replaceAll(",", ""));
 };
-const realisticPay = (cents: number) => {
+/** Same handfuls the generator may hand over. Keep this list aligned with it. */
+const WHOLE_PAYMENTS = new Set([
+  100, 200, 500, 600, 700, 1000, 1100, 1200, 1500, 2000, 2100, 2500, 3000,
+]);
+const spoken = (cents: number) => {
   const whole = Math.floor(cents / 100);
   const extra = cents % 100;
-  const stacks = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 20]);
-  const withQuarters = new Set([1, 2, 5, 6, 10, 15, 20]);
-  if (!stacks.has(whole)) return false;
-  if (extra === 0) return true;
-  return (
-    (extra === 25 || extra === 50 || extra === 75) && withQuarters.has(whole)
+  if (whole === 0) return extra === 1 ? "1 cent" : `${extra} cents`;
+  if (extra === 0) return whole === 1 ? "1 dollar" : `${whole} dollars`;
+  return `${dollarsOf(cents)} dollars`;
+};
+const parseSpoken = (text: string) => {
+  const decimal = /^(\d+)\.(\d{2}) dollars$/.exec(text);
+  if (decimal) {
+    const whole = Number(decimal[1]);
+    const frac = Number(decimal[2]);
+    assert.ok(whole > 0 && frac !== 0, text);
+    return whole * 100 + frac;
+  }
+  const dollars = /^(\d+) dollars?$/.exec(text);
+  if (dollars) {
+    const n = Number(dollars[1]);
+    assert.equal(text, n === 1 ? "1 dollar" : `${n} dollars`);
+    return n * 100;
+  }
+  const cents = /^(\d+) cents?$/.exec(text);
+  assert.ok(cents, text);
+  const n = Number(cents![1]);
+  assert.ok(n > 0 && n < 100, text);
+  assert.equal(text, n === 1 ? "1 cent" : `${n} cents`);
+  return n;
+};
+const parseBills = (phrase: string) => {
+  if (phrase === "two 1-dollar bills") return [1, 1];
+  const two = /^a (\d+)-dollar bill and two 1-dollar bills$/.exec(phrase);
+  if (two) return [Number(two[1]), 1, 1];
+  const pair = /^a (\d+)-dollar bill and a (\d+)-dollar bill$/.exec(phrase);
+  if (pair) return [Number(pair[1]), Number(pair[2])];
+  const one = /^a (\d+)-dollar bill$/.exec(phrase);
+  assert.ok(one, phrase);
+  return [Number(one![1])];
+};
+const parseTender = (phrase: string) => {
+  let billsPhrase = phrase;
+  let quarters = 0;
+  const quarter = /^(.*) and (a quarter|\d+ quarters)$/.exec(phrase);
+  if (quarter) {
+    billsPhrase = quarter[1]!;
+    quarters =
+      quarter[2] === "a quarter" ? 1 : Number(quarter[2]!.split(" ")[0]);
+    assert.ok(quarters === 1 || quarters === 2 || quarters === 3, phrase);
+  }
+  const bills = parseBills(billsPhrase);
+  assert.ok(
+    bills.every((bill) => [1, 5, 10, 20].includes(bill)),
+    phrase,
   );
+  return {
+    cents: bills.reduce((sum, bill) => sum + bill, 0) * 100 + quarters * 25,
+    quarters,
+    bills,
+  };
+};
+const nextBill = (cost: number) => {
+  const bill = [100, 500, 1000, 2000].find((value) => value > cost);
+  assert.ok(bill, String(cost));
+  return bill!;
+};
+const bestWholeChange = (cost: number) => {
+  const ceiling = nextBill(cost);
+  const options = [...WHOLE_PAYMENTS].filter(
+    (pay) => pay > cost && pay <= ceiling,
+  );
+  assert.ok(options.length > 0, String(cost));
+  return Math.min(...options.map((pay) => pay - cost));
+};
+/** A currency `$` sits in front of a number. An operation inside `$…$` is TeX. */
+const currencySign = (text: string) =>
+  [...text.matchAll(/\$([^$]+)\$/g)].some(
+    (match) => /^\d/.test(match[1]!) && !/[+\-−÷×*=<>]/.test(match[1]!),
+  ) || /\$\d/.test(text.replace(/\$[^$]+\$/g, ""));
+const assertMoneyWords = (text: string) => {
+  assert.equal(currencySign(text), false, text);
+  assert.equal(/\b0\.\d{2} dollars\b/.test(text), false, text);
+  assert.equal(/\b\d+\.00 dollars\b/.test(text), false, text);
+};
+const assertTender = (phrase: string, cost: number) => {
+  const pay = parseTender(phrase);
+  assert.ok(pay.cents > cost, phrase);
+  assert.ok(pay.cents <= nextBill(cost), phrase);
+  if (pay.quarters === 0) {
+    assert.equal(WHOLE_PAYMENTS.has(pay.cents), true, phrase);
+    return pay;
+  }
+  const base = pay.cents - pay.quarters * 25;
+  assert.ok(base <= cost, phrase);
+  const change = pay.cents - cost;
+  const best = bestWholeChange(cost);
+  assert.ok(change < best, phrase);
+  assert.ok(fewest(change) < fewest(best), phrase);
+  return pay;
 };
 const durationOf = (text: string) => {
   const hours = /^(\d+) hours?(?: (\d+) minutes?)?$/.exec(text);
@@ -434,68 +525,76 @@ test("decimal sums and differences stay in hundredths", () => {
 test("money stories cover change, the four operations and the fewest coins", () => {
   const surfaces = new Map<string, number>();
   const enter = String.raw` Enter the amount in dollars and cents, such as 2\.35\.`;
+  const amount = String.raw`(\d+\.\d{2} dollars|\d+ dollars?|\d+ cents?)`;
   let wholePay = 0;
   let quarterPay = 0;
   for (let i = 0; i < 200; i++) {
     const { problem } = served("money-decimal-story", `mm-money-${i}`);
     const text = problem.public.prompt;
     const prose = [text, problem.hint, ...problem.explanation].join("\n");
-    assert.equal(/\d+\.\d\d dollars/.test(prose), false, prose);
+    assertMoneyWords(prose);
     let answer = "";
     let surface = "";
     const add = new RegExp(
-      String.raw`^A book costs \$(\d+\.\d\d) and a pen costs \$(\d+\.\d\d)\. What is the total cost\?${enter}$`,
+      String.raw`^A book costs ${amount} and a pen costs ${amount}\. What is the total cost\?${enter}$`,
     ).exec(text);
     const change = new RegExp(
-      String.raw`^A snack costs \$(\d+\.\d\d)\. You pay \$(\d+\.\d\d)\. How much change do you get back\?${enter}$`,
+      String.raw`^A snack costs ${amount}\. You pay with (.+)\. How much change do you get back\?${enter}$`,
     ).exec(text);
     const shared = new RegExp(
-      String.raw`^Markers cost \$(\d+\.\d\d) each\. The club buys (\d+) markers, and (\d+) friends split the cost equally\. How much does each friend pay\?${enter}$`,
+      String.raw`^Markers cost ${amount} each\. The club buys (\d+) markers, and (\d+) friends split the cost equally\. How much does each friend pay\?${enter}$`,
     ).exec(text);
     const stickers = new RegExp(
-      String.raw`^Each sticker costs \$(\d+\.\d\d)\. You buy (\d+) stickers and pay \$(\d+\.\d\d)\. How much change do you get back\?${enter}$`,
+      String.raw`^Each sticker costs ${amount}\. You buy (\d+) stickers and pay with (.+)\. How much change do you get back\?${enter}$`,
     ).exec(text);
-    const coins =
-      /^You need \$(\d+\.\d\d) in quarters, dimes, nickels, and pennies\. What is the fewest number of coins that make that amount\?$/.exec(
-        text,
-      );
+    const coins = new RegExp(
+      String.raw`^You need ${amount} in quarters, dimes, nickels, and pennies\. What is the fewest number of coins that make that amount\?$`,
+    ).exec(text);
     const matched = [add, change, shared, stickers, coins].filter(Boolean);
     assert.equal(matched.length, 1, text);
     if (add) {
       surface = "add";
-      assert.notEqual(add[1]!.endsWith("00"), true);
-      assert.notEqual(add[2]!.endsWith("00"), true);
-      answer = dollarsOf(centsOf(add[1]!) + centsOf(add[2]!));
+      const left = parseSpoken(add[1]!);
+      const right = parseSpoken(add[2]!);
+      assert.notEqual(left % 100, 0);
+      assert.notEqual(right % 100, 0);
+      answer = dollarsOf(left + right);
+      assert.match(
+        problem.explanation.join("\n"),
+        new RegExp(spoken(left + right).replaceAll(".", "\\.")),
+      );
     } else if (change) {
       surface = "change";
-      const paid = centsOf(change[2]!);
-      const cost = centsOf(change[1]!);
-      assert.equal(realisticPay(paid), true, change[2]);
-      assert.ok(paid > cost);
-      if (paid % 100 === 0) wholePay++;
+      const cost = parseSpoken(change[1]!);
+      const pay = assertTender(change[2]!, cost);
+      if (pay.quarters === 0) wholePay++;
       else quarterPay++;
-      answer = dollarsOf(paid - cost);
+      answer = dollarsOf(pay.cents - cost);
+      assert.match(
+        problem.explanation.join("\n"),
+        new RegExp(spoken(pay.cents - cost).replaceAll(".", "\\.")),
+      );
     } else if (shared) {
       surface = "times-divide";
-      const price = centsOf(shared[1]!);
+      const price = parseSpoken(shared[1]!);
       const items = Number(shared[2]);
       const friends = Number(shared[3]);
       assert.equal((items * price) % friends, 0);
       answer = dollarsOf((items * price) / friends);
     } else if (stickers) {
       surface = "times-change";
-      const cost = Number(stickers[2]) * centsOf(stickers[1]!);
-      const paid = centsOf(stickers[3]!);
-      assert.equal(realisticPay(paid), true, stickers[3]);
-      assert.ok(paid > cost);
-      if (paid % 100 === 0) wholePay++;
+      const price = parseSpoken(stickers[1]!);
+      const count = Number(stickers[2]);
+      const cost = count * price;
+      const pay = assertTender(stickers[3]!, cost);
+      if (pay.quarters === 0) wholePay++;
       else quarterPay++;
-      answer = dollarsOf(paid - cost);
+      answer = dollarsOf(pay.cents - cost);
     } else {
       surface = "fewest";
-      const amount = centsOf(coins![1]!);
-      assert.ok(amount > 0 && amount < 100);
-      answer = String(fewest(amount));
+      const coinsAmount = parseSpoken(coins![1]!);
+      assert.ok(coinsAmount > 0 && coinsAmount < 100);
+      answer = String(fewest(coinsAmount));
     }
     surfaces.set(surface, (surfaces.get(surface) ?? 0) + 1);
     assert.equal(problem.answer, answer);
@@ -531,13 +630,8 @@ test("bills and ten mixed coins total a decimal in dollars", () => {
       /^Set A shows (.+)\. Set B shows the coins\. How much money is there in all\? Enter the amount in dollars and cents, such as 2\.35\.$/.exec(
         problem.public.prompt,
       );
-    assert.equal(
-      /\d+\.\d\d dollars/.test(
-        [problem.public.prompt, problem.hint, ...problem.explanation].join(
-          "\n",
-        ),
-      ),
-      false,
+    assertMoneyWords(
+      [problem.public.prompt, problem.hint, ...problem.explanation].join("\n"),
     );
     assert.ok(match);
     const figure = problem.public.figure;
@@ -546,14 +640,19 @@ test("bills and ten mixed coins total a decimal in dollars", () => {
     const sets = new Map(figure.sets.map((s) => [s.label, s.items]));
     assert.deepEqual([...sets.keys()].sort(), ["A", "B"]);
     const bills = sets.get("A")!;
-    if (match[1] === "1 five-dollar bill") {
+    if (match[1] === "a 5-dollar bill") {
       assert.deepEqual(bills, ["five"]);
       assert.equal(variant, "five-plus-coins");
       five++;
+    } else if (match[1] === "a 1-dollar bill") {
+      assert.deepEqual(bills, ["dollar"]);
+      assert.equal(variant, "dollars-1");
+      dollars.add(1);
     } else {
-      const counted = /^(\d+) one-dollar bills?$/.exec(match[1]!);
-      assert.ok(counted);
-      const count = Number(counted[1]);
+      const counted = /^(\d+) one-dollar bills$/.exec(match[1]!);
+      assert.ok(counted, match[1]);
+      const count = Number(counted![1]);
+      assert.ok(count >= 2);
       assert.deepEqual(
         bills,
         Array.from({ length: count }, () => "dollar"),
@@ -570,6 +669,10 @@ test("bills and ten mixed coins total a decimal in dollars", () => {
       0,
     );
     assert.equal(problem.answer, dollarsOf(total));
+    assert.match(
+      problem.explanation.join("\n"),
+      new RegExp(spoken(total).replaceAll(".", "\\.")),
+    );
     assert.equal(problem.public.response.kind, "number");
   }
   assert.ok(five >= 15, `five ${five}`);

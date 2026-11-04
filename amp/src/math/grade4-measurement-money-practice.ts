@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { count } from "./agreement";
+import { article, count } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -138,8 +138,16 @@ function places(cents: number, digits: 1 | 2): string {
   return digits === 1 ? `${whole}.${frac[0]}` : `${whole}.${frac}`;
 }
 const dollars = (cents: number) => places(cents, 2);
-/** A money amount as a learner reads it. The number field still expects `6.85`. */
-const money = (cents: number) => `$${dollars(cents)}`;
+/** Learner-facing money. `$` is TeX, so amounts are words:
+ *  685 is "6.85 dollars", 100 is "1 dollar", 25 is "25 cents".
+ *  The number field still expects `6.85`. */
+function money(cents: number): string {
+  const whole = Math.floor(cents / 100);
+  const extra = cents % 100;
+  if (whole === 0) return count(extra, "cent");
+  if (extra === 0) return count(whole, "dollar");
+  return `${dollars(cents)} dollars`;
+}
 const ENTER = "Enter the amount in dollars and cents, such as 2.35.";
 const commas = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 const counted = (n: number, noun: string) =>
@@ -714,17 +722,101 @@ function fewestCoins(cents: number): number {
   return pieces;
 }
 
-/** Whole bills a person would hand over, plus up to three quarters on a common stack. */
-const PAYMENTS = [
-  100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1500, 2000,
-  125, 150, 175, 225, 250, 275, 525, 550, 575, 625, 650, 675, 1025, 1050, 1075,
-  1525, 1550, 1575, 2025, 2050, 2075,
+/** A payment is one or more bills of 1, 5, 10 or 20 dollars, and sometimes
+ * quarters on a bill that does not cover by itself. */
+type Tender = { cents: number; phrase: string; quarters: number };
+
+const namedBill = (dollars: number) =>
+  `${article(dollars)} ${dollars}-dollar bill`;
+const oneBill = namedBill(1);
+const fiveBill = namedBill(5);
+const tenBill = namedBill(10);
+const twentyBill = namedBill(20);
+const twoOnes = "two 1-dollar bills";
+
+/** Whole-bill handfuls. Each total is at most the next single bill. */
+const WHOLE_TENDERS: readonly Tender[] = [
+  { cents: 100, phrase: oneBill, quarters: 0 },
+  { cents: 200, phrase: twoOnes, quarters: 0 },
+  { cents: 500, phrase: fiveBill, quarters: 0 },
+  { cents: 600, phrase: `${fiveBill} and ${oneBill}`, quarters: 0 },
+  { cents: 700, phrase: `${fiveBill} and ${twoOnes}`, quarters: 0 },
+  { cents: 1000, phrase: tenBill, quarters: 0 },
+  { cents: 1100, phrase: `${tenBill} and ${oneBill}`, quarters: 0 },
+  { cents: 1200, phrase: `${tenBill} and ${twoOnes}`, quarters: 0 },
+  { cents: 1500, phrase: `${tenBill} and ${fiveBill}`, quarters: 0 },
+  { cents: 2000, phrase: twentyBill, quarters: 0 },
+  { cents: 2100, phrase: `${twentyBill} and ${oneBill}`, quarters: 0 },
+  { cents: 2500, phrase: `${twentyBill} and ${fiveBill}`, quarters: 0 },
+  { cents: 3000, phrase: `${twentyBill} and ${tenBill}`, quarters: 0 },
 ];
-function payAmount(r: Random, cost: number): number {
-  const options = PAYMENTS.filter((pay) => pay > cost);
-  need(options.length > 0, "a payment above the cost");
-  return pick(r, options);
+
+/** Bills that can take 1–3 quarters when the bills alone fall short. */
+const QUARTER_BASES: readonly { cents: number; phrase: string }[] = [
+  { cents: 100, phrase: oneBill },
+  { cents: 200, phrase: twoOnes },
+  { cents: 500, phrase: fiveBill },
+  { cents: 600, phrase: `${fiveBill} and ${oneBill}` },
+  { cents: 1000, phrase: tenBill },
+  { cents: 1500, phrase: `${tenBill} and ${fiveBill}` },
+  { cents: 2000, phrase: twentyBill },
+];
+
+function nextBill(cost: number): number {
+  const bill = [100, 500, 1000, 2000].find((value) => value > cost);
+  need(bill !== undefined, "a bill above the cost");
+  return bill!;
 }
+
+function wholeTenders(cost: number): Tender[] {
+  const ceiling = nextBill(cost);
+  return WHOLE_TENDERS.filter(
+    (tender) => tender.cents > cost && tender.cents <= ceiling,
+  );
+}
+
+/** Quarters only when they leave less change, in fewer coins, than any whole-bill payment. */
+function quarterTenders(cost: number): Tender[] {
+  const whole = wholeTenders(cost);
+  need(whole.length > 0, "a bill above the cost");
+  const bestChange = Math.min(...whole.map((tender) => tender.cents - cost));
+  const bestCoins = fewestCoins(bestChange);
+  const ceiling = nextBill(cost);
+  const out: Tender[] = [];
+  for (const base of QUARTER_BASES) {
+    if (base.cents > cost) continue;
+    for (const quarters of [1, 2, 3]) {
+      const paid = base.cents + quarters * 25;
+      if (paid <= cost || paid > ceiling) continue;
+      const change = paid - cost;
+      if (change >= bestChange || fewestCoins(change) >= bestCoins) continue;
+      const coins = quarters === 1 ? "a quarter" : count(quarters, "quarter");
+      out.push({
+        cents: paid,
+        phrase: `${base.phrase} and ${coins}`,
+        quarters,
+      });
+    }
+  }
+  return out;
+}
+
+function payTender(r: Random, cost: number): Tender {
+  const whole = wholeTenders(cost);
+  need(whole.length > 0, "a bill above the cost");
+  const withQuarters = quarterTenders(cost);
+  if (withQuarters.length > 0 && r(0, 1) === 0) return pick(r, withQuarters);
+  return pick(r, whole);
+}
+
+function paymentIs(pay: Tender): string {
+  const named = `${pay.phrase[0]!.toUpperCase()}${pay.phrase.slice(1)}`;
+  const plural = pay.phrase.startsWith("two") || pay.phrase.includes(" and ");
+  return `${named} ${plural ? "are" : "is"} ${money(pay.cents)}.`;
+}
+
+const worked = (left: number, op: string, right: number, value: number) =>
+  `$${dollars(left)} ${op} ${dollars(right)} = ${dollars(value)}$.`;
 
 function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
   const roll = r(0, 9);
@@ -742,7 +834,8 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
         responseLabel: "Dollars",
         hint: `The book costs ${money(a)} and the pen costs ${money(b)}. Add the dollars and the cents.`,
         explanation: [
-          `${money(a)} + ${money(b)} = ${money(a + b)}.`,
+          `Add the two prices.`,
+          worked(a, "+", b, a + b),
           `The total cost is ${money(a + b)}.`,
         ],
       }),
@@ -751,19 +844,19 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
   if (roll <= 3) {
     let cost = r(155, 840);
     if (cost % 100 === 0) cost += 15;
-    const pay = payAmount(r, cost);
-    const answer = dollars(pay - cost);
+    const pay = payTender(r, cost);
+    const answer = dollars(pay.cents - cost);
     return {
       variant: "change",
       problem: toProblem(meta, seed, r, {
-        prompt: `A snack costs ${money(cost)}. You pay ${money(pay)}. How much change do you get back? ${ENTER}`,
+        prompt: `A snack costs ${money(cost)}. You pay with ${pay.phrase}. How much change do you get back? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `The snack costs ${money(cost)} and you pay ${money(pay)}. Subtract the cost from the payment.`,
+        hint: `The snack costs ${money(cost)}. ${paymentIs(pay)} Subtract the cost from the payment.`,
         explanation: [
           `Change is the payment minus the cost.`,
-          `${money(pay)} - ${money(cost)} = ${money(pay - cost)}.`,
-          `You get ${money(pay - cost)} back.`,
+          worked(pay.cents, "-", cost, pay.cents - cost),
+          `You get ${money(pay.cents - cost)} back.`,
         ],
       }),
     };
@@ -785,7 +878,7 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
         hint: `Markers cost ${money(price)} each. The club buys ${count(items, "marker")} and ${count(friends, "friend")} split that cost. Find the total, then divide.`,
         explanation: [
           `${count(items, "marker")} at ${money(price)} each cost ${money(items * price)}.`,
-          `${money(items * price)} ÷ ${friends} = ${money(share)}.`,
+          `$${dollars(items * price)} \\div ${friends} = ${dollars(share)}$.`,
           `Each friend pays ${money(share)}.`,
         ],
       }),
@@ -795,19 +888,19 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
     const n = r(2, 8);
     const price = r(15, 95);
     const cost = n * price;
-    const pay = payAmount(r, cost);
-    const answer = dollars(pay - cost);
+    const pay = payTender(r, cost);
+    const answer = dollars(pay.cents - cost);
     return {
       variant: "times-change",
       problem: toProblem(meta, seed, r, {
-        prompt: `Each sticker costs ${money(price)}. You buy ${count(n, "sticker")} and pay ${money(pay)}. How much change do you get back? ${ENTER}`,
+        prompt: `Each sticker costs ${money(price)}. You buy ${count(n, "sticker")} and pay with ${pay.phrase}. How much change do you get back? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `Each sticker costs ${money(price)} and you buy ${count(n, "sticker")}. First find the total cost, then subtract it from ${money(pay)}.`,
+        hint: `Each sticker costs ${money(price)} and you buy ${count(n, "sticker")}. ${paymentIs(pay)} Find the total cost, then subtract it from the payment.`,
         explanation: [
           `${count(n, "sticker")} at ${money(price)} each cost ${money(cost)}.`,
-          `${money(pay)} - ${money(cost)} = ${money(pay - cost)}.`,
-          `You get ${money(pay - cost)} back.`,
+          worked(pay.cents, "-", cost, pay.cents - cost),
+          `You get ${money(pay.cents - cost)} back.`,
         ],
       }),
     };
@@ -821,9 +914,9 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
       prompt: `You need ${money(cents)} in quarters, dimes, nickels, and pennies. What is the fewest number of coins that make that amount?`,
       answer: String(pieces),
       responseLabel: "Number of coins",
-      hint: `${money(cents)} is ${count(cents, "cent")}. Use the largest coin that fits, then count the coins.`,
+      hint: `Start with ${money(cents)}. Use the largest coin that fits, then count the coins.`,
       explanation: [
-        `${money(cents)} is ${count(cents, "cent")}.`,
+        `Start with ${money(cents)}.`,
         `Take the largest coin that fits each time: quarters, then dimes, nickels, and pennies.`,
         `That uses ${count(pieces, "coin")}.`,
       ],
@@ -854,11 +947,12 @@ function moneyModel(meta: TemplateMetadata, seed: string, r: Random): Built {
     ...Array.from({ length: pennies }, () => "penny" as const),
   ];
   const billPhrase = useFive
-    ? "1 five-dollar bill"
-    : count(billCount, "one-dollar bill");
-  const total =
-    bills.reduce((sum, item) => sum + CENTS[item], 0) +
-    coins.reduce((sum, item) => sum + CENTS[item], 0);
+    ? fiveBill
+    : billCount === 1
+      ? oneBill
+      : count(billCount, "one-dollar bill");
+  const billCents = bills.reduce((sum, item) => sum + CENTS[item], 0);
+  const total = billCents + coins.reduce((sum, item) => sum + CENTS[item], 0);
   const answer = dollars(total);
   const figure: SemanticFigure = {
     kind: "money-sets",
@@ -876,8 +970,9 @@ function moneyModel(meta: TemplateMetadata, seed: string, r: Random): Built {
       figure,
       hint: `Set A shows ${billPhrase}. Add those bills, then add the value of each coin in set B.`,
       explanation: [
-        `Set A shows ${billPhrase}, worth ${money(bills.reduce((sum, item) => sum + CENTS[item], 0))}.`,
+        `Set A shows ${billPhrase}, worth ${money(billCents)}.`,
         `Set B shows ${count(quarters, "quarter")}, ${count(dimes, "dime")}, ${count(nickels, "nickel")}, and ${count(pennies, "penny")}.`,
+        worked(billCents, "+", total - billCents, total),
         `The total is ${money(total)}.`,
       ],
     }),

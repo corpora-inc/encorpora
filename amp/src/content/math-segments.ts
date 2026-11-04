@@ -42,18 +42,6 @@ function mathyWord(word: string) {
   return words.every((w) => w === "log");
 }
 
-/** A `$…$` span that is really two prices, not a formula. `$3.33 and a pen
- * costs $4.58` would otherwise typeset the words between the signs. */
-function currencyCapture(formula: string): boolean {
-  // A TeX command or brace is a formula, even when letter names sit inside it.
-  if (/\\[A-Za-z]+|\\[,;:! ]|[\^_]?\{/.test(formula)) return false;
-  if (/^\s|\s$/.test(formula)) return true;
-  if (/^\d[\d,.]*(?:[-–—,]|\)\()$/.test(formula)) return true;
-  return /[A-Za-z]{3,}\s+[A-Za-z]{2,}|[A-Za-z]{2,}\s+[A-Za-z]{3,}/.test(
-    formula,
-  );
-}
-
 export function segments(text: string): Segment[] {
   const out: Segment[] = [];
   const push = (value: string, math: boolean) => {
@@ -62,24 +50,8 @@ export function segments(text: string): Segment[] {
     if (last && last.math === math && !math) last.text += value;
     else out.push({ text: value, math });
   };
-  // Explicit TeX first. A currency sign does not open a formula when the
-  // closer is the next price.
-  const explicit = /\$([^$\n]+)\$/g;
-  const parts: string[] = [];
-  let previous = 0;
-  let match: RegExpExecArray | null;
-  while ((match = explicit.exec(text))) {
-    const formula = match[1]!;
-    if (currencyCapture(formula)) {
-      explicit.lastIndex = match.index + 1;
-      continue;
-    }
-    parts.push(text.slice(previous, match.index));
-    parts.push(match[0]);
-    previous = match.index + match[0].length;
-  }
-  parts.push(text.slice(previous));
-  parts.forEach((part) => {
+  // Explicit TeX first.
+  text.split(/(\$[^$]+\$)/).forEach((part) => {
     if (part.startsWith("$") && part.endsWith("$") && part.length > 2) {
       const formula = part.slice(1, -1);
       const pairs = formulaClauses(formula);

@@ -58,8 +58,12 @@ ONE = re.compile(
     re.IGNORECASE,
 )
 ENTER = r' Enter the amount in dollars and cents, such as 2\.35\.'
-PAY_STACKS = frozenset({1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 20})
-QUARTER_STACKS = frozenset({1, 2, 5, 6, 10, 15, 20})
+AMOUNT = r'(?:\d+\.\d{2} dollars|\d+ dollars?|\d+ cents?)'
+# Same handfuls the generator may hand over. Keep this list aligned with it.
+WHOLE_PAYMENTS = frozenset({
+    100, 200, 500, 600, 700, 1000, 1100, 1200, 1500, 2000, 2100, 2500, 3000,
+})
+BILL_VALUES = frozenset({1, 5, 10, 20})
 TABLE_FACTOR = {
     ('feet', 'inches'): 12,
     ('kilograms', 'grams'): 1000,
@@ -159,23 +163,91 @@ def dollars_of(cents):
     return f'{cents // 100}.{cents % 100:02d}'
 
 
-def realistic_payment(cents):
-    whole, extra = divmod(cents, 100)
-    if whole not in PAY_STACKS:
-        return False
-    if extra == 0:
-        return True
-    return extra in (25, 50, 75) and whole in QUARTER_STACKS
-
-
-def fewest_coins(cents):
-    require(0 < cents < 100, 'Fewest coins stay under one dollar')
+def coin_count(cents):
+    require(isinstance(cents, int) and cents > 0, 'No coins to count')
     best = [0] + [10 ** 9] * cents
     for coin in (1, 5, 10, 25):
         for amount in range(coin, cents + 1):
             best[amount] = min(best[amount], best[amount - coin] + 1)
     require(best[cents] < 10 ** 9, 'No coin combination')
     return best[cents]
+
+
+def parse_spoken(text):
+    decimal = re.fullmatch(r'(\d+)\.(\d{2}) dollars', text)
+    if decimal:
+        whole, frac = int(decimal[1]), int(decimal[2])
+        require(whole > 0 and frac != 0, 'A mixed amount is written in dollars and cents')
+        return whole * 100 + frac
+    whole = re.fullmatch(r'(\d+) dollars?', text)
+    if whole:
+        n = int(whole[1])
+        require(n > 0, 'Zero dollars')
+        require(text == ('1 dollar' if n == 1 else f'{n} dollars'), 'Dollar agreement')
+        return n * 100
+    cents = re.fullmatch(r'(\d+) cents?', text)
+    require(cents is not None, f'Bad amount {text!r}')
+    n = int(cents[1])
+    require(0 < n < 100, 'Cents are a part of a dollar')
+    require(text == ('1 cent' if n == 1 else f'{n} cents'), 'Cent agreement')
+    return n
+
+
+def parse_bills(phrase):
+    if phrase == 'two 1-dollar bills':
+        return [1, 1]
+    two = re.fullmatch(r'a (\d+)-dollar bill and two 1-dollar bills', phrase)
+    if two:
+        return [int(two[1]), 1, 1]
+    pair = re.fullmatch(r'a (\d+)-dollar bill and a (\d+)-dollar bill', phrase)
+    if pair:
+        return [int(pair[1]), int(pair[2])]
+    one = re.fullmatch(r'a (\d+)-dollar bill', phrase)
+    require(one is not None, f'The payment is not whole bills: {phrase!r}')
+    return [int(one[1])]
+
+
+def parse_tender(phrase):
+    quarters = 0
+    quarter = re.fullmatch(r'(.*) and (a quarter|\d+ quarters)', phrase)
+    if quarter:
+        phrase = quarter[1]
+        if quarter[2] == 'a quarter':
+            quarters = 1
+        else:
+            quarters = int(quarter[2].split()[0])
+            require(quarters in (2, 3), 'Quarters are one, two or three')
+    bills = parse_bills(phrase)
+    require(all(bill in BILL_VALUES for bill in bills), 'A bill is 1, 5, 10 or 20 dollars')
+    return sum(bills) * 100 + quarters * 25, quarters
+
+
+def next_bill(cost):
+    for bill in (100, 500, 1000, 2000):
+        if bill > cost:
+            return bill
+    raise ValueError('No bill covers the cost')
+
+
+def best_whole_change(cost):
+    ceiling = next_bill(cost)
+    options = [pay - cost for pay in WHOLE_PAYMENTS if cost < pay <= ceiling]
+    require(options, 'No whole-bill payment covers the cost')
+    return min(options)
+
+
+def require_realistic(cost, paid, quarters):
+    require(paid > cost, 'The payment does not cover the cost')
+    require(paid <= next_bill(cost), 'The payment is a larger bill than the cost needs')
+    if quarters == 0:
+        require(paid in WHOLE_PAYMENTS, 'The bills are not a handful a person would use')
+        return
+    base = paid - quarters * 25
+    require(base <= cost, 'Quarters on a payment that already covers add change')
+    change = paid - cost
+    best = best_whole_change(cost)
+    require(change < best, 'Quarters do not make the change smaller')
+    require(coin_count(change) < coin_count(best), 'Quarters do not make the change simpler')
 
 
 def activity_ok(name, phrase, verb):
@@ -342,55 +414,58 @@ def solve_decimal(public):
 
 def solve_money(public):
     text = field(public, 'prompt')
-    require(re.search(r'\d+\.\d\d dollars', text) is None, 'An amount is not written as money')
+    require('$' not in text, 'A currency sign is TeX, not money')
     add = re.fullmatch(
-        r'A book costs \$(\d+\.\d\d) and a pen costs \$(\d+\.\d\d)\. '
+        rf'A book costs ({AMOUNT}) and a pen costs ({AMOUNT})\. '
         r'What is the total cost\?' + ENTER,
         text,
     )
     if add:
-        require(not add[1].endswith('00') and not add[2].endswith('00'), 'A price is a whole dollar')
-        return dollars_of(cents_of(add[1]) + cents_of(add[2]))
+        left, right = parse_spoken(add[1]), parse_spoken(add[2])
+        require(left % 100 != 0 and right % 100 != 0, 'A price is a whole dollar')
+        return dollars_of(left + right)
     change = re.fullmatch(
-        r'A snack costs \$(\d+\.\d\d)\. You pay \$(\d+\.\d\d)\. '
+        rf'A snack costs ({AMOUNT})\. You pay with (.+)\. '
         r'How much change do you get back\?' + ENTER,
         text,
     )
     if change:
-        paid, cost = cents_of(change[2]), cents_of(change[1])
-        require(realistic_payment(paid), 'The payment is not a bill a person would hand over')
-        require(paid > cost, 'The payment does not cover the cost')
+        cost = parse_spoken(change[1])
+        paid, quarters = parse_tender(change[2])
+        require_realistic(cost, paid, quarters)
         return dollars_of(paid - cost)
     shared = re.fullmatch(
-        r'Markers cost \$(\d+\.\d\d) each\. The club buys (\d+) markers, and '
-        r'(\d+) friends split the cost equally\. How much does each friend pay\?' + ENTER,
+        rf'Markers cost ({AMOUNT}) each\. The club buys (\d+) markers, and '
+        rf'(\d+) friends split the cost equally\. How much does each friend pay\?' + ENTER,
         text,
     )
     if shared:
-        price, items, friends = cents_of(shared[1]), int(shared[2]), int(shared[3])
+        price, items, friends = parse_spoken(shared[1]), int(shared[2]), int(shared[3])
         require(items >= 2 and friends >= 2, 'Need more than one marker and friend')
         total = items * price
         require(total % friends == 0, 'The share is not exact cents')
         return dollars_of(total // friends)
     stickers = re.fullmatch(
-        r'Each sticker costs \$(\d+\.\d\d)\. You buy (\d+) stickers and pay '
-        r'\$(\d+\.\d\d)\. How much change do you get back\?' + ENTER,
+        rf'Each sticker costs ({AMOUNT})\. You buy (\d+) stickers and pay with '
+        r'(.+)\. How much change do you get back\?' + ENTER,
         text,
     )
     if stickers:
-        price, count, paid = cents_of(stickers[1]), int(stickers[2]), cents_of(stickers[3])
+        price, count = parse_spoken(stickers[1]), int(stickers[2])
         require(count >= 2, 'Need more than one sticker')
-        require(realistic_payment(paid), 'The payment is not a bill a person would hand over')
+        paid, quarters = parse_tender(stickers[3])
         cost = count * price
-        require(paid > cost, 'The payment does not cover the stickers')
+        require_realistic(cost, paid, quarters)
         return dollars_of(paid - cost)
     fewest = re.fullmatch(
-        r'You need \$(\d+\.\d\d) in quarters, dimes, nickels, and pennies\. '
+        rf'You need ({AMOUNT}) in quarters, dimes, nickels, and pennies\. '
         r'What is the fewest number of coins that make that amount\?',
         text,
     )
     require(fewest is not None, 'Unrecognized money story')
-    return str(fewest_coins(cents_of(fewest[1])))
+    amount = parse_spoken(fewest[1])
+    require(amount < 100, 'Fewest coins stay under one dollar')
+    return str(coin_count(amount))
 
 
 def solve_model(public):
@@ -405,11 +480,13 @@ def solve_model(public):
     require(set(sets) == {'A', 'B'}, 'Need sets A and B')
     phrase = match[1]
     bills = sets['A']
-    if phrase == '1 five-dollar bill':
+    if phrase == 'a 5-dollar bill':
         require(bills == ['five'], 'Set A is not one five-dollar bill')
+    elif phrase == 'a 1-dollar bill':
+        require(bills == ['dollar'], 'Set A is not one one-dollar bill')
     else:
-        counted = re.fullmatch(r'(\d+) one-dollar bills?', phrase)
-        require(counted is not None, 'Unrecognized bill phrase')
+        counted = re.fullmatch(r'(\d+) one-dollar bills', phrase)
+        require(counted is not None and int(counted[1]) >= 2, 'Unrecognized bill phrase')
         require(bills == ['dollar'] * int(counted[1]), 'Set A does not match the bill phrase')
     coins = sets['B']
     require(isinstance(coins, list) and len(coins) == 10, 'Set B is not ten coins')
@@ -568,32 +645,42 @@ def self_test():
         _number('decimal-sum-difference', 'What is $1.25 + 2.40$?', '3.65'),
         _number(
             'money-decimal-story',
-            'A book costs $1.25 and a pen costs $2.40. What is the total cost? Enter the amount in dollars and cents, such as 2.35.',
+            'A book costs 1.25 dollars and a pen costs 2.40 dollars. What is the total cost? Enter the amount in dollars and cents, such as 2.35.',
             '3.65',
         ),
         _number(
             'money-decimal-story',
-            'A snack costs $1.55. You pay $5.00. How much change do you get back? Enter the amount in dollars and cents, such as 2.35.',
-            '3.45',
+            'A snack costs 3.05 dollars. You pay with a 5-dollar bill. How much change do you get back? Enter the amount in dollars and cents, such as 2.35.',
+            '1.95',
         ),
         _number(
             'money-decimal-story',
-            'Markers cost $0.23 each. The club buys 6 markers, and 3 friends split the cost equally. How much does each friend pay? Enter the amount in dollars and cents, such as 2.35.',
+            'A snack costs 5.50 dollars. You pay with a 5-dollar bill and a 1-dollar bill. How much change do you get back? Enter the amount in dollars and cents, such as 2.35.',
+            '0.50',
+        ),
+        _number(
+            'money-decimal-story',
+            'Markers cost 23 cents each. The club buys 6 markers, and 3 friends split the cost equally. How much does each friend pay? Enter the amount in dollars and cents, such as 2.35.',
             '0.46',
         ),
         _number(
             'money-decimal-story',
-            'Each sticker costs $0.25. You buy 2 stickers and pay $1.25. How much change do you get back? Enter the amount in dollars and cents, such as 2.35.',
-            '0.75',
+            'Each sticker costs 25 cents. You buy 2 stickers and pay with a 1-dollar bill. How much change do you get back? Enter the amount in dollars and cents, such as 2.35.',
+            '0.50',
         ),
         _number(
             'money-decimal-story',
-            'You need $0.41 in quarters, dimes, nickels, and pennies. What is the fewest number of coins that make that amount?',
+            'A snack costs 5.40 dollars. You pay with a 5-dollar bill and 2 quarters. How much change do you get back? Enter the amount in dollars and cents, such as 2.35.',
+            '0.10',
+        ),
+        _number(
+            'money-decimal-story',
+            'You need 41 cents in quarters, dimes, nickels, and pennies. What is the fewest number of coins that make that amount?',
             '4',
         ),
         _number(
             'money-model-decimal',
-            'Set A shows 1 five-dollar bill. Set B shows the coins. How much money is there in all? Enter the amount in dollars and cents, such as 2.35.',
+            'Set A shows a 5-dollar bill. Set B shows the coins. How much money is there in all? Enter the amount in dollars and cents, such as 2.35.',
             '6.91',
             {
                 'kind': 'money-sets',
@@ -636,8 +723,25 @@ def self_test():
     reject(_number('unit-rename-larger', '50 inches is how many feet?', '4'))
     reject(_number(
         'money-decimal-story',
-        'A snack costs $1.55. You pay $7.54. How much change do you get back? Enter the amount in dollars and cents, such as 2.35.',
-        '5.99',
+        'A snack costs 3.05 dollars. You pay 7.54 dollars. How much change do you get back? Enter the amount in dollars and cents, such as 2.35.',
+        '4.49',
+    ))
+    reject(_number(
+        'money-decimal-story',
+        'A snack costs 5.90 dollars. You pay with a 5-dollar bill and a 1-dollar bill and a quarter. How much change do you get back? Enter the amount in dollars and cents, such as 2.35.',
+        '0.35',
+    ))
+    reject(_number(
+        'money-model-decimal',
+        'Set A shows 1 five-dollar bill. Set B shows the coins. How much money is there in all? Enter the amount in dollars and cents, such as 2.35.',
+        '6.91',
+        {
+            'kind': 'money-sets',
+            'sets': [
+                {'label': 'A', 'items': ['five']},
+                {'label': 'B', 'items': ['quarter'] * 7 + ['dime', 'nickel', 'penny']},
+            ],
+        },
     ))
     reject(_choice(
         'measuring-tool-choice',
