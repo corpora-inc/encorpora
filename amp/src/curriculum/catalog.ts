@@ -678,6 +678,11 @@ export const skills: Skill[] = outline
     };
   });
 
+// A state extra with no CCSS code keeps the standards column empty, the same
+// convention as whole-number-equality and multiplication-division-equality.
+// frequency-bar-graphs is grade-4 frequency tables and scaled bar graphs
+// (Arkansas 4.DA.1 and the Florida and Texas data rows). CCSS 4.MD.B.4 is
+// line plots, and it stays on fraction-plot-arithmetic.
 // These narrow assessments do not complete the broad Pythagorean skill.
 const pythagoreanSkill = skills.find(
   (skill) => skill.id === "pythagorean-theorem",

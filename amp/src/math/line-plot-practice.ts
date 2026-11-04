@@ -38,7 +38,7 @@ export const linePlotTemplates: readonly TemplateMetadata[] = [
     skillId: "fraction-plot-arithmetic",
     gradeBand: "3–5",
     description:
-      "Add or subtract like fractions read from a line plot. Most plots use fourths or eighths; thirds, fifths, sixths, tenths and twelfths appear less often.",
+      "Add or subtract like fractions read from a line plot. Most plots use fourths or eighths of an inch. Less often, a plot uses thirds of a cup, fifths or tenths of a mile, or sixths or twelfths of a foot.",
   },
   {
     id: "fraction-plot-equal-share",
@@ -123,6 +123,65 @@ const EXTRA_WORD = {
   6: "sixth",
   10: "tenth",
   12: "twelfth",
+} as const;
+/** Other grade-4 denominators, each in a unit where that fraction is ordinary.
+ * Inch rulers stay on halves, quarters, and eighths. */
+const EXTRA_STORY = {
+  3: {
+    one: "cup",
+    many: "cups",
+    item: "serving",
+    items: "servings",
+    precision: "third of a cup",
+    noun: "amount",
+    pair: "greatest and least",
+    intro:
+      "The line plot shows the amount of rice in some servings, measured to the nearest third of a cup.",
+  },
+  5: {
+    one: "mile",
+    many: "miles",
+    item: "walk",
+    items: "walks",
+    precision: "fifth of a mile",
+    noun: "distance",
+    pair: "longest and shortest",
+    intro:
+      "The line plot shows how far some students walked on a trail, measured to the nearest fifth of a mile.",
+  },
+  6: {
+    one: "foot",
+    many: "feet",
+    item: "board",
+    items: "boards",
+    precision: "sixth of a foot",
+    noun: "length",
+    pair: "longest and shortest",
+    intro:
+      "The line plot shows the lengths of some boards, measured to the nearest sixth of a foot.",
+  },
+  10: {
+    one: "mile",
+    many: "miles",
+    item: "walk",
+    items: "walks",
+    precision: "tenth of a mile",
+    noun: "distance",
+    pair: "longest and shortest",
+    intro:
+      "The line plot shows how far some students walked on a trail, measured to the nearest tenth of a mile.",
+  },
+  12: {
+    one: "foot",
+    many: "feet",
+    item: "board",
+    items: "boards",
+    precision: "twelfth of a foot",
+    noun: "length",
+    pair: "longest and shortest",
+    intro:
+      "The line plot shows the lengths of some boards, measured to the nearest twelfth of a foot.",
+  },
 } as const;
 /** "16/8 = 2 inches": the value in parts, its simplest form, and an agreeing unit. */
 const result = (v: number, d: number, one: string, many: string) =>
@@ -303,6 +362,79 @@ function fractionPlot(r: Random): Draft {
   );
 }
 
+function extraDifference(
+  r: Random,
+  d: keyof typeof EXTRA_STORY,
+  values: number[],
+): Draft {
+  const story = EXTRA_STORY[d];
+  const figure: SemanticFigure = {
+    kind: "line-plot",
+    denominator: d,
+    start: 0,
+    end: d === 5 || d === 10 ? 10 : 12,
+    values,
+    mark: "x",
+    unit: story.many,
+  };
+  const sorted = [...values].sort((a, b) => a - b);
+  const longest = sorted.at(-1)!,
+    shortest = sorted[0]!;
+  const f = (v: number) => `${v}/${d}`;
+  const piece = parts(d);
+  const lead = `The rightmost mark is the ${story.pair.startsWith("greatest") ? "greatest" : "longest"} ${story.item} and the leftmost is the ${story.pair.startsWith("greatest") ? "least" : "shortest"}. Write both in ${piece}, so the pieces are the same size.`;
+  const read = `The ${story.pair.startsWith("greatest") ? "greatest" : "longest"} is ${mixedText(longest, d)} = ${f(longest)} ${longest > d ? story.many : story.one}; the ${story.pair.startsWith("greatest") ? "least" : "shortest"} is ${mixedText(shortest, d)} = ${f(shortest)} ${shortest > d ? story.many : story.one}.`;
+  const held = story.noun === "amount" ? "" : " long";
+  const question = r(0, 2);
+  if (question === 0)
+    return {
+      prompt: `${story.intro} What is the difference in ${story.noun} between the ${story.pair} ${story.item}, in ${story.many}?`,
+      figure,
+      answer: rational(longest - shortest, d),
+      fraction: true,
+      hint: `Write both amounts as ${piece}. Subtract the numerators; the size of the parts stays ${piece}.`,
+      explanation: [
+        lead,
+        read,
+        `The difference is what is left after subtracting. With same-size pieces, subtract the top numbers: ${f(longest)} − ${f(shortest)} = ${result(longest - shortest, d, story.one, story.many)}.`,
+        `The difference in ${story.noun} is ${measure2(longest - shortest, d, story.one, story.many)}.`,
+      ],
+    };
+  if (question === 1)
+    return {
+      prompt: `${story.intro} What is the combined ${story.noun} of the ${story.pair} ${story.item}, in ${story.many}?`,
+      figure,
+      answer: rational(longest + shortest, d),
+      fraction: true,
+      hint: `Write both amounts as ${piece} and add the numerators. The parts are still ${piece}.`,
+      explanation: [
+        lead,
+        read,
+        `Combined means added together. With same-size pieces, add the top numbers: ${f(longest)} + ${f(shortest)} = ${result(longest + shortest, d, story.one, story.many)}.`,
+        `The combined ${story.noun} is ${measure2(longest + shortest, d, story.one, story.many)}.`,
+      ],
+    };
+  const heights = stackHeights(values);
+  const stacked = [...heights].filter(([, c]) => c > 1);
+  const [v, n] = stacked.length
+    ? stacked[r(0, stacked.length - 1)]!
+    : [...heights][0]!;
+  const total = v * n;
+  return {
+    prompt: `${story.intro} What is the total ${story.noun} of all the ${story.items} that are ${measure(v, d, story.one, story.many)}${held}, in ${story.many}?`,
+    figure,
+    answer: rational(total, d),
+    fraction: true,
+    hint: `Count the marks above ${mixedText(v, d)}. Add that amount once for each mark, or multiply.`,
+    explanation: [
+      `Each mark (×) is one ${story.item}. The marks above ${mixedText(v, d)} show the ${story.items} of that ${story.noun}.`,
+      `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} above ${mixedText(v, d)} = ${f(v)}.`,
+      `Add that amount once for each mark. That is the same as multiplying: ${n} × ${f(v)} = ${result(total, d, story.one, story.many)}.`,
+      `Their total ${story.noun} is ${measure2(total, d, story.one, story.many)}.`,
+    ],
+  };
+}
+
 function plotDifference(r: Random, denomAxis: string): Draft {
   const context = lengthContexts[r(0, lengthContexts.length - 1)]!;
   // The legacy value draws the denominator first, exactly as before this axis.
@@ -316,6 +448,7 @@ function plotDifference(r: Random, denomAxis: string): Draft {
     start = extra ? 0 : first * d,
     end = extra ? (d === 5 || d === 10 ? 10 : 12) : start + 8;
   const values = sample(r, r(6, 12), Math.max(start, 1), end);
+  if (extra) return extraDifference(r, extra, values);
   const figure: SemanticFigure = {
     kind: "line-plot",
     denominator: d,

@@ -340,9 +340,13 @@ export const arizonaG4Rows: readonly ArizonaRow[] = [
     "printed p.11",
     "Make a line plot of measurements in halves, fourths, or eighths, and add or subtract fractions from the plot.",
     "Unit fractions 1/2, 1/4, and 1/8. Essential standard.",
-    ["fraction-plot-difference", "dot-plot-arithmetic"],
+    [
+      "line-plot-build-slots",
+      "fraction-plot-difference",
+      "line-plot-center-range",
+    ],
     ["fraction-plot-arithmetic"],
-    "Both items read a finished plot. fraction-plot-difference uses fourths or eighths. Building the plot is not in the catalog. Halves as the only unit are not certified.",
+    "line-plot-build-slots makes the plot from a list in halves, fourths, or eighths of an inch, from 1 to 4 inches. fraction-plot-difference adds or subtracts like fractions from a finished plot in fourths or eighths of an inch. Halves as the only unit on that item are not certified. The same item sometimes uses thirds of a cup, fifths or tenths of a mile, or sixths or twelfths of a foot, which this standard does not require. Freehand drawing is not generated.",
   ),
   related(
     "4.MD.C.5",

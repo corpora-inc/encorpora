@@ -134,7 +134,10 @@ test("line-plot-build-slots counts the list onto a blank plot", () => {
     assert.equal(element.unit, "inches");
     const d = element.denominator!;
     denoms.add(d);
+    assert.ok(element.min >= 1 && Number.isInteger(element.min));
+    assert.ok(element.max <= 4 && element.max > element.min);
     const listed = lengthList(problem.public.prompt);
+    for (const token of listed) assert.ok(parseLength(token, d) >= d, token);
     const key: Record<string, string> = {};
     const counts: number[] = [];
     for (const blank of response.blanks) {
@@ -157,10 +160,9 @@ test("line-plot-build-slots counts the list onto a blank plot", () => {
   }
   assert.equal(empty, SEEDS);
   assert.equal(repeated, SEEDS);
-  assert.ok(denoms.has(8), [...denoms].join(","));
-  assert.ok(
-    [...denoms].some((d) => EXTRA.has(d)),
-    [...denoms].join(","),
+  assert.deepEqual(
+    [...denoms].sort((a, b) => a - b),
+    [2, 4, 8],
   );
 });
 
@@ -180,6 +182,8 @@ test("line-plot-data-match distractors move or drop one mark", () => {
     });
     const d = scenes[0]!.d;
     denoms.add(d);
+    assert.ok([2, 4, 8].includes(d));
+    for (const token of listed) assert.ok(parseLength(token, d) >= d, token);
     const wanted = listed
       .map((token) => parseLength(token, d))
       .sort((a, b) => a - b);
@@ -228,10 +232,9 @@ test("line-plot-data-match distractors move or drop one mark", () => {
     void maxTick;
   }
   assert.deepEqual([...kinds].sort(), ["drop", "half", "one"]);
-  assert.ok(denoms.has(8));
-  assert.ok(
-    [...denoms].some((d) => EXTRA.has(d)),
-    [...denoms].join(","),
+  assert.deepEqual(
+    [...denoms].sort((a, b) => a - b),
+    [2, 4, 8],
   );
 });
 
@@ -256,7 +259,11 @@ test("line-plot-center-range covers mode, median and range", () => {
     denoms.add(d);
     sizes.add(ticks.length);
     assert.ok(ticks.length % 2 === 1);
-    assert.ok(Math.min(...ticks) > 0);
+    assert.ok(Math.min(...ticks) >= d);
+    assert.ok(Math.max(...ticks) <= 4 * d);
+    const labels = choiceOf(problem).response.options.map((o) => o.label);
+    if (!problem.public.prompt.endsWith("What is the mode?"))
+      assert.ok(!labels.includes("no mode"), problem.public.prompt);
     const freq = new Map<number, number>();
     for (const tick of ticks) freq.set(tick, (freq.get(tick) ?? 0) + 1);
     const heights = [...freq.values()];
@@ -434,6 +441,8 @@ test("scaled-bar-grade4 is a two-step reading", () => {
       values.get(names[0]!)! + values.get(names[1]!)! - values.get(names[2]!)!;
     assert.equal(problem.answer, String(diff));
     assert.ok(diff > 0);
+    for (const line of [...problem.explanation, problem.hint])
+      assert.doesNotMatch(line, /(?<![\d,])\d{4,}(?!\d)/);
     if (problem.answer !== String(step))
       assert.doesNotMatch(
         prompt,
@@ -572,11 +581,17 @@ test("legacy dot-plot and fourths-eighths line plots replay", () => {
     assert.ok(denom);
     if (problem.public.figure?.kind === "line-plot") {
       seen.add(problem.public.figure.denominator);
-      if (denom === "fourths-eighths")
+      assert.ok(problem.public.figure.values.every((v) => v > 0));
+      if (denom === "fourths-eighths") {
+        assert.equal(problem.public.figure.unit, "inches");
         assert.ok(
           problem.public.figure.denominator === 4 ||
             problem.public.figure.denominator === 8,
         );
+      } else {
+        assert.notEqual(problem.public.figure.unit, "inches");
+        assert.doesNotMatch(problem.public.prompt, /inch/);
+      }
     }
   }
   assert.ok(

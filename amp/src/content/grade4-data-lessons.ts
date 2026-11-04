@@ -333,7 +333,7 @@ export const grade4DataFacetMappings: FacetMapping[] = [
     facetId: "fraction-plot-arithmetic.build-match-center",
     extent: "partial",
     rationale:
-      "Count listed lengths at each mark of a blank line plot, including an empty mark and a repeated length. Most lists use halves, fourths or eighths; thirds, fifths, sixths, tenths and twelfths appear less often. Does not assess collecting the measurements, denominator 100, or a plot that is already marked.",
+      "Count listed lengths at each mark of a blank line plot, including an empty mark and a repeated length. Lengths are halves, fourths, or eighths of an inch, from 1 to 4 inches. Does not assess collecting the measurements, denominator 100, or a plot that is already marked.",
   },
   {
     templateId: "line-plot-data-match",

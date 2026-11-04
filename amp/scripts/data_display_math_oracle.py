@@ -326,7 +326,16 @@ NEAREST = {
     'centimeter': 1, 'inch': 1, 'half inch': 2, 'quarter inch': 4, 'eighth inch': 8,
     'third of an inch': 3, 'fifth of an inch': 5, 'sixth of an inch': 6,
     'tenth of an inch': 10, 'twelfth of an inch': 12,
+    'third of a cup': 3, 'fifth of a mile': 5, 'sixth of a foot': 6,
+    'tenth of a mile': 10, 'twelfth of a foot': 12,
 }
+PRECISION = (
+    'centimeter|inch|half inch|quarter inch|eighth inch|'
+    'third of an inch|fifth of an inch|sixth of an inch|tenth of an inch|twelfth of an inch|'
+    'third of a cup|fifth of a mile|sixth of a foot|tenth of a mile|twelfth of a foot'
+)
+PLOT_UNIT = 'inches|miles|feet|cups'
+PLOT_ONE = 'inch|inches|mile|miles|foot|feet|cup|cups'
 
 
 def _amount(text):
@@ -348,10 +357,7 @@ def solve_line_plot(public):
     require(all(Fraction(figure['start'], d) <= x <= Fraction(figure['end'], d) for x in data), 'Mark off the axis')
     require(max(data.count(x) for x in data) <= 7, 'Stack leaves the plot')
     amount = r'(\d+ \d+/\d+|\d+/\d+|\d+)'
-    m = re.search(
-        r'measured to the nearest (centimeter|inch|half inch|quarter inch|eighth inch|third of an inch|fifth of an inch|sixth of an inch|tenth of an inch|twelfth of an inch)\.',
-        prompt,
-    )
+    m = re.search(rf'measured to the nearest ({PRECISION})\.', prompt)
     if m:
         require(NEAREST[m[1]] == d, 'Stated precision contradicts the plot')
     if 'shared equally' in prompt:
@@ -367,11 +373,11 @@ def solve_line_plot(public):
         return Fraction(len(data))
     if re.fullmatch(r'How many (?:inches|centimeters) longer is the longest \w+ than the shortest\?', question):
         return max(data) - min(data)
-    if re.fullmatch(r'What is the difference in length between the longest and shortest \w+, in inches\?', question):
+    if re.fullmatch(rf'What is the difference in (?:length|distance|amount) between the (?:longest and shortest|greatest and least) \w+, in (?:{PLOT_UNIT})\?', question):
         return max(data) - min(data)
-    if re.fullmatch(r'What is the combined length of the longest and shortest \w+, in inches\?', question):
+    if re.fullmatch(rf'What is the combined (?:length|distance|amount) of the (?:longest and shortest|greatest and least) \w+, in (?:{PLOT_UNIT})\?', question):
         return max(data) + min(data)
-    if (m := re.fullmatch(r'What is the total length of all the \w+ that are ' + amount + r' (?:inch|inches) long, in inches\?', question)):
+    if (m := re.fullmatch(rf'What is the total (?:length|distance|amount) of all the \w+ that are ' + amount + rf' (?:{PLOT_ONE})(?: long)?, in (?:{PLOT_UNIT})\?', question)):
         v = _amount(m[1])
         require(v in data, 'Asked length is not plotted')
         return v * data.count(v)
@@ -449,6 +455,11 @@ def review_data_display_fixtures():
     lp = lambda prompt: solve_data_display({'templateId': 'fraction-plot-difference', 'figure': plot, 'prompt': prompt})
     require(lp('Some ribbons, measured to the nearest quarter inch. What is the difference in length between the longest and shortest ribbon, in inches?') == '7/4', 'line-plot difference fixture')
     require(lp('Ribbons. What is the total length of all the ribbons that are 1 1/4 inches long, in inches?') == '5/2', 'line-plot total fixture')
+    miles = {'kind': 'line-plot', 'denominator': 5, 'start': 0, 'end': 10, 'mark': 'x', 'unit': 'miles',
+             'values': [1, 2, 2, 6, 10]}
+    mp = lambda prompt: solve_data_display({'templateId': 'fraction-plot-difference', 'figure': miles, 'prompt': prompt})
+    require(mp('Students walked on a trail, measured to the nearest fifth of a mile. What is the difference in distance between the longest and shortest walk, in miles?') == '9/5', 'mile difference fixture')
+    require(mp('Trail. What is the total distance of all the walks that are 2/5 mile long, in miles?') == '4/5', 'mile total fixture')
     try:
         lp('Ribbons, measured to the nearest eighth inch. How many ribbons were measured?')
         raise RuntimeError

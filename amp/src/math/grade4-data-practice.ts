@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
-import { count } from "./agreement";
+import { count, plural } from "./agreement";
 import { random, shuffle, type Random } from "./distribution-practice";
 import {
   choiceSurface,
@@ -8,29 +8,30 @@ import {
   numberSurface,
   type ChoiceOption,
 } from "./chain-kit";
-import { multiPartProblem } from "./multi-part-support";
+import { grouped, multiPartProblem } from "./multi-part-support";
 import { CARD, problemOf, type Candidate } from "./figure-choice-practice";
 import { sceneSchema, type Scene } from "./scene/spec";
 import { dotTickLabel } from "./scene/components/dot-plot";
 import { halfStep } from "./data-display-models";
 import type { Surface } from "./variation/compose";
 
-/** Nine eighths, six fourths, four halves, then one each of the other
- * grade-4 denominators. 100 does not fit a line plot. */
-const DENOM_BAG = [
-  8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 3, 5, 6, 10, 12,
+/** Inch rulers are marked in halves, quarters, and eighths. Nine eighths,
+ * six fourths, four halves. */
+const INCH_DENOMS = [
+  8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2,
 ] as const;
 
 const PRECISION: Record<number, string> = {
   2: "nearest half inch",
-  3: "nearest third of an inch",
   4: "nearest quarter inch",
-  5: "nearest fifth of an inch",
-  6: "nearest sixth of an inch",
   8: "nearest eighth inch",
-  10: "nearest tenth of an inch",
-  12: "nearest twelfth of an inch",
 };
+
+/** Learner-facing whole numbers. The numeric answer stays ungrouped,
+ * because the grader accepts digits only. */
+const shown = (n: number) => (n >= 1000 ? grouped(n) : String(n));
+const counted = (n: number, noun: string) =>
+  `${shown(n)} ${n === 1 ? noun : plural(noun)}`;
 
 const lineSenses = {
   mode: "mode-statistics",
@@ -62,7 +63,7 @@ export const grade4DataTemplates: readonly TemplateMetadata[] = [
     requiredResponseCapability: "multi-part-choice-v1",
     ...scenes,
     description:
-      "Count how many listed lengths belong at each mark of a blank line plot. Most lists use halves, fourths or eighths. Thirds, fifths, sixths, tenths and twelfths appear less often. One mark is empty and one length repeats.",
+      "Count how many listed lengths belong at each mark of a blank line plot. Lengths are halves, fourths, or eighths of an inch, from 1 to 4 inches. One mark is empty and one length repeats.",
   },
   {
     id: "line-plot-data-match",
@@ -117,9 +118,22 @@ function tickLabel(tick: number, d: number): string {
   return dotTickLabel(tick / d, d, { fixedLabels: true });
 }
 function inchLabel(tick: number, d: number): string {
-  // 0 takes the plural ("0 inches"). A fraction up to one whole stays singular.
-  const unit = tick === 0 || tick > d ? "inches" : "inch";
+  // A fraction up to one whole stays singular. A length of 0 is not generated.
+  const unit = tick > d ? "inches" : "inch";
   return `${tickLabel(tick, d)} ${unit}`;
+}
+/** First tick of a window of `nTicks` marks, on a whole inch from 1 to 4. */
+function inchOrigin(r: Random, d: number, nTicks: number): number {
+  const width = nTicks - 1;
+  const origins: number[] = [];
+  for (let inch = 1; inch * d + width <= 4 * d; inch++) origins.push(inch * d);
+  if (!origins.length) throw new Error("Need a window inside 1 to 4 inches");
+  return origins[r(0, origins.length - 1)]!;
+}
+function matchAxis(d: number): { minTick: number; maxTick: number } {
+  if (d === 8) return { minTick: 8, maxTick: 16 };
+  if (d === 4) return { minTick: 4, maxTick: 12 };
+  return { minTick: 2, maxTick: 8 };
 }
 const precision = (d: number) => PRECISION[d] ?? "nearest inch";
 
@@ -248,12 +262,13 @@ function buildSlots(
   seed: string,
   r: Random,
 ): GeneratedProblem {
-  const d = DENOM_BAG[r(0, DENOM_BAG.length - 1)]!;
+  const d = INCH_DENOMS[r(0, INCH_DENOMS.length - 1)]!;
   const nTicks = r(4, 6);
   const counts = buildCounts(r, nTicks);
+  const origin = inchOrigin(r, d, nTicks);
   const listedTicks: number[] = [];
   counts.forEach((c, i) => {
-    for (let k = 0; k < c; k++) listedTicks.push(i);
+    for (let k = 0; k < c; k++) listedTicks.push(origin + i);
   });
   const shown = shuffle(r, [...listedTicks]);
   const listed = shown.map((t) => tickLabel(t, d)).join(", ");
@@ -263,8 +278,8 @@ function buildSlots(
     title: "Line plot with no marks yet",
     width: 640,
     maxHeight: 720,
-    minTick: 0,
-    maxTick: nTicks - 1,
+    minTick: origin,
+    maxTick: origin + nTicks - 1,
     d,
     ticks: [],
     blank: true,
@@ -276,7 +291,7 @@ function buildSlots(
     rowHeader: "Length",
     slots: counts.map((c, i) => ({
       id: `t${i}`,
-      label: tickLabel(i, d),
+      label: tickLabel(origin + i, d),
       correct: String(c),
       fixed: ["0", "1", "2", "3", "4"],
     })),
@@ -284,7 +299,7 @@ function buildSlots(
     hint: `Count the listed lengths. There are ${count(total, "length")} in all. One listed length is ${inchLabel(sample, d)}. Choose the count of listed lengths at each mark.`,
     explanation: counts.map(
       (c, i) =>
-        `The mark at ${inchLabel(i, d)} matches ${count(c, "length")} from the list.`,
+        `The mark at ${inchLabel(origin + i, d)} matches ${count(c, "length")} from the list.`,
     ),
   });
 }
@@ -292,27 +307,23 @@ function buildSlots(
 function multiset(ticks: readonly number[]): string {
   return [...ticks].sort((a, b) => a - b).join(",");
 }
-function maxTickFor(d: number): number {
-  return d >= 8 ? d : d * 2;
-}
 /** How far the second distractor moves one mark. Halves move by one whole unit, because half a unit is already one tick. */
 function halfDelta(d: number): number {
   if (d === 2) return 2;
-  if (d % 2 === 1) return Math.max(2, Math.round(d / 2));
   return d / 2;
 }
 function shiftWords(d: number): string {
   if (d === 2) return "one whole unit";
-  if (d % 2 === 1) return "two or more ticks";
   return "half an inch";
 }
 function describe(
   ticks: readonly number[],
   d: number,
+  minTick: number,
   maxTick: number,
 ): string {
   const parts: string[] = [];
-  for (let t = 0; t <= maxTick; t++) {
+  for (let t = minTick; t <= maxTick; t++) {
     const c = ticks.filter((x) => x === t).length;
     parts.push(`${tickLabel(t, d)} has ${c}`);
   }
@@ -325,6 +336,7 @@ function describe(
 function moved(
   ticks: readonly number[],
   delta: number,
+  minTick: number,
   maxTick: number,
   blocked: Set<string>,
   r: Random,
@@ -336,7 +348,7 @@ function moved(
   for (const i of order) {
     for (const sign of shuffle(r, [1, -1])) {
       const next = ticks[i]! + sign * delta;
-      if (next < 0 || next > maxTick) continue;
+      if (next < minTick || next > maxTick) continue;
       const copy = ticks.slice();
       copy[i] = next;
       if (copy.filter((t) => t === next).length > 4) continue;
@@ -368,9 +380,12 @@ function dataMatch(
   seed: string,
   r: Random,
 ): GeneratedProblem {
-  const d = DENOM_BAG[r(0, DENOM_BAG.length - 1)]!;
-  const maxTick = maxTickFor(d);
-  const pool = Array.from({ length: maxTick + 1 }, (_, i) => i);
+  const d = INCH_DENOMS[r(0, INCH_DENOMS.length - 1)]!;
+  const { minTick, maxTick } = matchAxis(d);
+  const pool = Array.from(
+    { length: maxTick - minTick + 1 },
+    (_, i) => minTick + i,
+  );
   const chosen = shuffle(r, [...pool]).slice(0, 3);
   const ticks = [chosen[0]!, chosen[0]!, chosen[1]!, chosen[2]!];
   const n = r(6, 10);
@@ -387,9 +402,9 @@ function dataMatch(
   }
   if (new Set(ticks).size < 3) throw new Error("Need three different lengths");
   const blocked = new Set<string>([multiset(ticks)]);
-  const one = moved(ticks, 1, maxTick, blocked, r);
+  const one = moved(ticks, 1, minTick, maxTick, blocked, r);
   blocked.add(multiset(one));
-  const half = moved(ticks, halfDelta(d), maxTick, blocked, r);
+  const half = moved(ticks, halfDelta(d), minTick, maxTick, blocked, r);
   blocked.add(multiset(half));
   const gone = dropped(ticks, blocked, r);
   const groups = [ticks, one, half, gone];
@@ -399,12 +414,12 @@ function dataMatch(
     dotScene({
       width: CARD.width,
       maxHeight: CARD.maxHeight,
-      minTick: 0,
+      minTick,
       maxTick,
       d,
       ticks: group,
     });
-  const textOf = (group: number[]) => describe(group, d, maxTick);
+  const textOf = (group: number[]) => describe(group, d, minTick, maxTick);
   const texts = groups.map(textOf);
   if (
     texts.some((text) => text.length < 10 || text.length > 240) ||
@@ -475,7 +490,12 @@ function centerRange(
   r: Random,
 ): GeneratedProblem {
   const d = [2, 4, 8][r(0, 2)]!;
-  const pool = d === 8 ? [1, 2, 3, 4, 5, 6, 7, 8] : [1, 2, 3, 4, 5];
+  const pool =
+    d === 8
+      ? [8, 9, 10, 11, 12, 13, 14, 15, 16]
+      : d === 4
+        ? [4, 5, 6, 7, 8, 9, 10, 11, 12]
+        : [2, 3, 4, 5, 6, 7, 8];
   const ask: Ask = (["mode", "median", "range"] as const)[r(0, 2)]!;
   const situation: Situation = (["none", "one", "several"] as const)[r(0, 2)]!;
   const take = (k: number) => shuffle(r, [...pool]).slice(0, k);
@@ -515,15 +535,22 @@ function centerRange(
     seen.add(label);
     wrongs.push({ label, feedback });
   };
-  add(
-    "no mode",
-    "That would mean every length appears the same number of times.",
-  );
+  if (ask === "mode" && correct !== "no mode")
+    add(
+      "no mode",
+      situation === "several"
+        ? "Two lengths appear most often. That is two modes, not the absence of a mode."
+        : "One length appears more often than the others, so there is a mode.",
+    );
   for (const [t, c] of freq)
     if (c === Math.max(...freq.values()))
       add(
         inchLabel(t, d),
-        "That is only one of the lengths that appear most often.",
+        ask !== "mode"
+          ? "That is a length that appears most often. This question asks for something else."
+          : situation === "several"
+            ? "That is only one of the lengths that appear most often."
+            : "Every length appears equally often, so that length is not a single mode.",
       );
   add(
     inchLabel(hi, d),
@@ -587,12 +614,18 @@ function centerRange(
     label: "Choose the answer",
   });
   if (!surface) throw new Error("Need three different wrong answers");
+  let axisMin = Math.floor(lo / d) * d;
+  let axisMax = Math.ceil(hi / d) * d;
+  if (axisMax === axisMin) {
+    if (axisMin > d) axisMin -= d;
+    else axisMax += d;
+  }
   const scene = dotScene({
     title: "Line plot of the lengths",
     width: 640,
     maxHeight: 720,
-    minTick: lo,
-    maxTick: hi,
+    minTick: axisMin,
+    maxTick: axisMax,
     d,
     ticks,
   });
@@ -798,11 +831,13 @@ function scaledBarGrade4(
     explanation: [
       `The scale counts by ${step}. Read each bar against that scale.`,
       labels
-        .map((label, i) => `${label} shows ${count(heights[i]!, context.one)}`)
+        .map(
+          (label, i) => `${label} shows ${counted(heights[i]!, context.one)}`,
+        )
         .join(", ") + ".",
-      `${a} and ${b} together are ${heights[pair[0]!]!} + ${heights[pair[1]!]!} = ${sum}.`,
-      `Subtract ${c}: ${sum} − ${heights[low]!} = ${diff}.`,
-      `The difference is ${count(diff, context.one)}.`,
+      `${a} and ${b} together are ${shown(heights[pair[0]!]!)} + ${shown(heights[pair[1]!]!)} = ${shown(sum)}.`,
+      `Subtract ${c}: ${shown(sum)} − ${shown(heights[low]!)} = ${shown(diff)}.`,
+      `The difference is ${counted(diff, context.one)}.`,
     ],
   });
   return finish(meta, seed, {
