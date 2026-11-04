@@ -280,7 +280,13 @@ function Practice({ session }: { session: TrialSession }) {
     return <PracticeSkeleton error={error} retry={first} />;
 
   if (answered === 0 && welcome.pending)
-    return <TrialWelcome onContinue={welcome.dismiss} />;
+    return (
+      <TrialWelcome
+        onContinue={welcome.dismiss}
+        session={session}
+        workbooks={limits.workbooks}
+      />
+    );
 
   const skill = catalog.data?.skills.find((s) => s.id === problem.skillId);
   const placing = answered < limits.placement;

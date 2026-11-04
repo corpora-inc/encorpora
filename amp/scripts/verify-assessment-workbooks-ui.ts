@@ -266,8 +266,20 @@ try {
     for (const [width, height] of viewports) {
       const tag = `${width}x${height}-${theme}`;
 
-      // The answer that reaches 20 problems offers the first workbook.
+      // Download the immediate workbook first; answer 20 offers the second.
       const trial = await trialWith(19);
+      const firstWorkbook = await app.inject({
+        method: "POST",
+        url: `/api/v1/learners/${trial.learnerId}/workbooks`,
+        headers: { authorization: `Trial ${trial.token}` },
+        payload: {
+          date: new Date().toLocaleDateString("en-CA"),
+          minutes: 30,
+          paper: "letter",
+          number: 1,
+        },
+      });
+      assert.equal(firstWorkbook.statusCode, 201, firstWorkbook.body);
       const { context, page, faults } = await open(
         theme,
         width,
@@ -319,7 +331,7 @@ try {
         release();
       }
       const { name, html } = await file;
-      assert.match(name, /^amp-workbook-\d{4}-\d{2}-\d{2}-1\.html$/);
+      assert.match(name, /^amp-workbook-\d{4}-\d{2}-\d{2}-2\.html$/);
       assert.match(html, /data-compose/);
       assert.doesNotMatch(html, /Workbook for Trial/);
       await offer.locator("[data-done]").waitFor({ state: "attached" });
@@ -333,7 +345,7 @@ try {
             headers: { authorization: `Trial ${trial.token}` },
           })
         ).json().workbooks.made,
-        1,
+        2,
       );
 
       // Placement ends at 20: Next opens the map, where the workbook waits
@@ -351,7 +363,7 @@ try {
         await strip
           .getByRole("img", { name: /unlocks at \d+ problems/ })
           .count(),
-        4,
+        3,
       );
       for (const radio of await strip.getByRole("radio").all())
         await target(radio, `${tag} paper`);

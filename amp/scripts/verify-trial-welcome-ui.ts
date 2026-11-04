@@ -150,6 +150,77 @@ try {
             animations: "disabled",
             path: `${dir}/${engine.name()}-${width}-${colorScheme}-intro.png`,
           });
+          const workbook = intro.getByRole("button", {
+            name: "Download free workbook",
+          });
+          await workbook.waitFor();
+          const workbookBox = await workbook.boundingBox();
+          assert.ok(workbookBox && workbookBox.height >= 44);
+          // A created workbook survives both a failed download and a failed
+          // progress refresh. Retrying must not ask to create workbook 2.
+          if (
+            engine.name() === "chromium" &&
+            width === 390 &&
+            colorScheme === "light"
+          ) {
+            let failedRefreshes = 0;
+            await page.route("**/workbooks", async (route) => {
+              if (route.request().method() === "POST") {
+                await page.route("**/trial-progress", async (refresh) => {
+                  failedRefreshes++;
+                  await refresh.fulfill({
+                    status: 503,
+                    json: { error: "Unavailable" },
+                  });
+                });
+              }
+              await route.continue();
+            });
+            await page.route("**/workbooks/*/document*", (route) =>
+              route.fulfill({ status: 503, json: { error: "Unavailable" } }),
+            );
+            await workbook.click();
+            await page
+              .getByRole("alert")
+              .filter({ hasText: /workbook.*download/ })
+              .waitFor();
+            assert.ok(
+              failedRefreshes > 0,
+              "progress refresh failure was exercised",
+            );
+            await page.unroute("**/workbooks");
+            await page.unroute("**/workbooks/*/document*");
+          }
+          const [download] = await Promise.all([
+            page.waitForEvent("download"),
+            workbook.click(),
+          ]);
+          assert.ok(
+            await download.path(),
+            "age-based workbook downloads before any answer",
+          );
+          await intro
+            .getByRole("button", { name: "Download workbook again" })
+            .waitFor();
+          const [repeat] = await Promise.all([
+            page.waitForEvent("download"),
+            intro
+              .getByRole("button", { name: "Download workbook again" })
+              .click(),
+          ]);
+          assert.equal(
+            repeat.suggestedFilename(),
+            download.suggestedFilename(),
+          );
+          await page.unroute("**/trial-progress");
+          const workbookCount = await repo.pool.query(
+            "SELECT count(*)::int AS n FROM amp_workbooks w JOIN amp_trials t ON t.learner_id=w.learner_id WHERE t.owner_account_id='welcome-fixture'",
+          );
+          assert.equal(
+            workbookCount.rows[0].n,
+            1,
+            "repeat download uses the same workbook",
+          );
           await intro.getByRole("button", { name: "Start practicing" }).click();
           await page.locator("#problem-prompt").waitFor();
           // The real product renders while the telemetry collector is blocked.

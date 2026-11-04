@@ -13,7 +13,7 @@ import { purgeExpiredTrials } from "../src/server/trials.js";
  * own learner, never enters results, and after adoption the learner follows
  * the license rules. Expired trials take their workbooks with them. */
 test(
-  "a free assessment earns one workbook per 20 problems, at most five, for its own learner only",
+  "a free assessment offers an immediate workbook then earns more, for its own learner only",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -120,27 +120,17 @@ test(
           payload: { date: today, minutes: 30, paper: "a4", ...payload },
         });
 
-      // Nothing is earned before 20 problems; the server names the unlock.
+      // An age-based workbook is available before answering any problems.
       assert.deepEqual(await status(), {
         total: 5,
-        earned: 0,
+        earned: 1,
         made: 0,
-        available: 0,
+        available: 1,
         nextAt: 20,
         pdf: true,
         items: [],
       });
-      const early = await make({ number: 1 });
-      assert.equal(early.statusCode, 403);
-      assert.equal(
-        early.json().error,
-        "The next free workbook unlocks at 20 problems.",
-      );
-      await answer(19);
-      assert.equal((await make({ number: 1 })).statusCode, 403);
-      await answer(1);
-
-      // Twenty problems: one workbook, made once, reprinted unchanged.
+      // Zero answers: one workbook, made once, reprinted unchanged.
       assert.equal((await status()).available, 1);
       const first = await make({ number: 1 });
       assert.equal(first.statusCode, 201, first.body);
@@ -148,10 +138,10 @@ test(
       assert.equal(again.statusCode, 200, "the same workbook comes back");
       assert.equal(again.json().id, first.json().id);
       const beyond = await make({ number: 2 });
-      assert.equal(beyond.statusCode, 403, "no second workbook at 20");
+      assert.equal(beyond.statusCode, 403, "no second workbook before 20");
       assert.equal(
         beyond.json().error,
-        "The next free workbook unlocks at 40 problems.",
+        "The next free workbook unlocks at 20 problems.",
       );
       assert.equal((await make()).statusCode, 403, "Roll another refused");
       const one = await status();
@@ -206,7 +196,7 @@ test(
             [trial.learnerId],
           )
         ).rows[0].n,
-        20,
+        0,
         "no paper evidence was recorded",
       );
 
@@ -245,8 +235,11 @@ test(
       });
       assert.equal(stranger.statusCode, 401, "another owner's session");
 
-      // Forty: one more. Two requests at once make exactly one.
-      await answer(20);
+      // Nineteen answers do not earn another; twenty do. Concurrent requests
+      // can consume only the one additional workbook.
+      await answer(19);
+      assert.equal((await make()).statusCode, 403);
+      await answer(1);
       const race = await Promise.all([
         make({ number: 2 }),
         make({ number: 3 }),
@@ -258,7 +251,7 @@ test(
       );
 
       // A hundred: five in all, never a sixth.
-      await answer(60);
+      await answer(80);
       assert.equal(used, 100);
       const full = await status();
       assert.equal(full.earned, 5);
