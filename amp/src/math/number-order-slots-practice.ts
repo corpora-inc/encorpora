@@ -58,6 +58,8 @@ const orderAxis = defineAxis("order", [
   "greatest-first",
 ] as const);
 
+const COUNT_WORD = ["", "", "", "Three", "Four", "Five"] as const;
+
 const POSITIONS = {
   "least-first": [
     "Least",
@@ -106,6 +108,151 @@ export const wholeAxes = {
     weights: [2, 2, 3],
     silentLegacy: true,
   }),
+  /** What the numbers count. `stadium` is the stored sentence. */
+  setting: defineAxis(
+    "setting",
+    [
+      "stadium",
+      "towns",
+      "books",
+      "points",
+      "steps",
+      "miles",
+      "tickets",
+      "trails",
+    ] as const,
+    {
+      legacy: "stadium",
+      weights: [1, 1, 1, 3, 1, 1, 1, 1],
+      silentLegacy: true,
+    },
+  ),
+} as const;
+const SETTING_POOLS: Record<
+  Exclude<(typeof wholeAxes.setting.values)[number], "stadium">,
+  readonly string[]
+> = {
+  towns: [
+    "Maple Glen",
+    "Cedar Bay",
+    "Oak Ridge",
+    "Pine Hollow",
+    "Elm Fork",
+    "Birch Landing",
+  ],
+  books: [
+    "Maple Library",
+    "Cedar Library",
+    "Oak Library",
+    "Pine Library",
+    "Elm Library",
+    "Birch Library",
+  ],
+  points: ["Ava", "Jamal", "Priya", "Mateo", "Leila", "Hiro"],
+  steps: ["Elena", "Noah", "Amara", "Diego", "Nia", "Theo"],
+  miles: [
+    "North Route",
+    "East Route",
+    "South Route",
+    "West Route",
+    "Lake Route",
+    "Hill Route",
+  ],
+  tickets: [
+    "Spring Concert",
+    "Fall Fair",
+    "Winter Play",
+    "Summer Fest",
+    "Field Day",
+    "Art Night",
+  ],
+  trails: [
+    "Ridge Trail",
+    "Lake Trail",
+    "Canyon Trail",
+    "Meadow Trail",
+    "Harbor Trail",
+    "Summit Trail",
+  ],
+};
+const SETTING_COPY = {
+  towns: {
+    intro: "towns reported their populations",
+    verb: "has",
+    unit: "people",
+    group: "towns",
+    who: "town",
+    what: "population",
+    small: "the smallest population",
+    large: "the greatest population",
+    noun: "populations",
+  },
+  books: {
+    intro: "libraries counted their books",
+    verb: "has",
+    unit: "books",
+    group: "libraries",
+    who: "library",
+    what: "collection",
+    small: "the fewest books",
+    large: "the most books",
+    noun: "collections",
+  },
+  points: {
+    intro: "players compared game scores",
+    verb: "scored",
+    unit: "points",
+    group: "players",
+    who: "player",
+    what: "score",
+    small: "the lowest score",
+    large: "the highest score",
+    noun: "scores",
+  },
+  steps: {
+    intro: "classmates checked step counters for the month",
+    verb: "walked",
+    unit: "steps",
+    group: "walkers",
+    who: "walker",
+    what: "total",
+    small: "the fewest steps",
+    large: "the most steps",
+    noun: "totals",
+  },
+  miles: {
+    intro: "delivery routes logged miles this year",
+    verb: "logged",
+    unit: "miles",
+    group: "routes",
+    who: "route",
+    what: "distance",
+    small: "the shortest distance",
+    large: "the longest distance",
+    noun: "distances",
+  },
+  tickets: {
+    intro: "shows sold tickets",
+    verb: "sold",
+    unit: "tickets",
+    group: "shows",
+    who: "show",
+    what: "sales",
+    small: "the fewest tickets",
+    large: "the most tickets",
+    noun: "sales",
+  },
+  trails: {
+    intro: "hiking trails were measured",
+    verb: "is",
+    unit: "feet",
+    group: "trails",
+    who: "trail",
+    what: "length",
+    small: "the shortest length",
+    large: "the longest length",
+    noun: "lengths",
+  },
 } as const;
 const PLACE_INDEX = { "ten-thousands": 0, thousands: 1, hundreds: 2 } as const;
 
@@ -277,7 +424,12 @@ export const numberOrderSlotsGenerate = defineGenerate(
       const place = axes["first-difference"];
       const count = axes.count === "five" ? 5 : axes.count === "four" ? 4 : 3;
       const values = wholeNumbers(r, place, count);
-      const names = shuffle(r, [...VENUES]).slice(0, count);
+      const names = shuffle(
+        r,
+        axes.setting === "stadium"
+          ? [...VENUES]
+          : [...SETTING_POOLS[axes.setting]],
+      ).slice(0, count);
       const shown = shuffle(
         r,
         Array.from({ length: count }, (_, i) => i),
@@ -292,23 +444,48 @@ export const numberOrderSlotsGenerate = defineGenerate(
       const digitsAt = ascending.map((v) => String(v.value)[at]!);
       const placeName = place.replace("-", " ");
       const prefix = String(ascending[0]!.value).slice(0, at);
+      const countWord = COUNT_WORD[count]!;
+      const countLower = countWord.toLowerCase();
+      const chain = ascending.map((v) => grouped(v.value)).join(" < ");
+      const orderLine = `${axes.order === "least-first" ? "Smallest to greatest" : "Greatest to smallest"}: ${ordered.map((v) => v.name).join(", ")}.`;
+      const shared = prefix
+        ? `All ${countLower} numbers begin with ${prefix}, so compare the digits in the ${placeName} place.`
+        : `Compare the digits in the ${placeName} place, the leftmost place.`;
+      const hint = `Write ${grouped(shown[0]!.value)} and ${grouped(shown[1]!.value)} one above the other and compare their digits from the left. The first place where the digits differ decides which number is greater.`;
+      if (axes.setting === "stadium")
+        return multiPartProblem(meta, seed, r, {
+          prompt: `${countWord} stadiums hold crowds of different sizes: ${shown.map((v) => `${v.name} holds ${grouped(v.value)} people`).join("; ")}. Put the stadiums in order ${direction(axes.order, "the smallest capacity", "the greatest capacity")}.`,
+          layout: "slots",
+          label: "Choose the stadium for each position",
+          slots: slotsFor(
+            positionLabels(count, axes.order),
+            ordered.map((v) => v.name),
+            shown.map((v) => v.name),
+            "capacity",
+          ),
+          hint,
+          explanation: [
+            shared,
+            `The ${placeName} digits are ${list(digitsAt)}, so from smallest to greatest the capacities are ${chain}.`,
+            orderLine,
+          ],
+        });
+      const copy = SETTING_COPY[axes.setting];
       return multiPartProblem(meta, seed, r, {
-        prompt: `${count === 5 ? "Five" : count === 4 ? "Four" : "Three"} stadiums hold crowds of different sizes: ${shown.map((v) => `${v.name} holds ${grouped(v.value)} people`).join("; ")}. Put the stadiums in order ${direction(axes.order, "the smallest capacity", "the greatest capacity")}.`,
+        prompt: `${countWord} ${copy.intro}: ${shown.map((v) => `${v.name} ${copy.verb} ${grouped(v.value)} ${copy.unit}`).join("; ")}. Put the ${copy.group} in order ${direction(axes.order, copy.small, copy.large)}.`,
         layout: "slots",
-        label: "Choose the stadium for each position",
+        label: `Choose the ${copy.who} for each position`,
         slots: slotsFor(
           positionLabels(count, axes.order),
           ordered.map((v) => v.name),
           shown.map((v) => v.name),
-          "capacity",
+          copy.what,
         ),
-        hint: `Write ${grouped(shown[0]!.value)} and ${grouped(shown[1]!.value)} one above the other and compare their digits from the left. The first place where the digits differ decides which number is greater.`,
+        hint,
         explanation: [
-          prefix
-            ? `All ${count === 5 ? "five" : count === 4 ? "four" : "three"} numbers begin with ${prefix}, so compare the digits in the ${placeName} place.`
-            : `Compare the digits in the ${placeName} place, the leftmost place.`,
-          `The ${placeName} digits are ${list(digitsAt)}, so from smallest to greatest the capacities are ${ascending.map((v) => grouped(v.value)).join(" < ")}.`,
-          `${axes.order === "least-first" ? "Smallest to greatest" : "Greatest to smallest"}: ${ordered.map((v) => v.name).join(", ")}.`,
+          shared,
+          `The ${placeName} digits are ${list(digitsAt)}, so from smallest to greatest the ${copy.noun} are ${chain}.`,
+          orderLine,
         ],
       });
     }),

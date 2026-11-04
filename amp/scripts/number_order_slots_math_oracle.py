@@ -19,7 +19,10 @@ from multi_part_choice_math_oracle import common_response, compact, require  # n
 
 SUPPORTED = frozenset({"order-whole-numbers-slots", "order-fractions-slots", "order-rationals-slots"})
 TEX_NUMBER = re.compile(r"\$(-?)(?:(\d+(?:\.\d+)?)|\\frac\{(\d+)\}\{(\d+)\})\$")
-DIRECTION = re.compile(r"in order from (?:the )?(greatest|least|smallest)(?: \w+)? to (?:the )?(greatest|least|smallest)")
+DIRECTION = re.compile(
+    r"in order from (?:the )?(greatest|most|highest|longest|least|smallest|fewest|lowest|shortest)(?: \w+)? to (?:the )?(greatest|most|highest|longest|least|smallest|fewest|lowest|shortest)"
+)
+DESCENDING = {"greatest", "most", "highest", "longest"}
 
 
 def tex_value(text):
@@ -43,8 +46,8 @@ def read_direction(prompt):
     match = DIRECTION.search(prompt)
     require(match is not None, f"No ordering direction in {prompt!r}")
     first, last = match.groups()
-    require((first == "greatest") != (last == "greatest") and "greatest" in (first, last), "Direction must run between greatest and least")
-    return first == "greatest"
+    require((first in DESCENDING) != (last in DESCENDING), "Direction must run between greatest and least")
+    return first in DESCENDING
 
 
 def read_items(public):
@@ -54,7 +57,10 @@ def read_items(public):
         body = prompt.split(": ", 1)[1].rsplit(". Put", 1)[0]
         items = []
         for clause in body.split("; "):
-            match = re.fullmatch(r"([A-Z][A-Za-z ]+?) holds (\d{1,3}(?:,\d{3})+|\d+) people", clause)
+            match = re.fullmatch(
+                r"([A-Z][A-Za-z ]+?) (?:holds|has|scored|walked|logged|sold|is) (\d{1,3}(?:,\d{3})+|\d+) (?:people|books|points|steps|miles|tickets|feet)",
+                clause,
+            )
             require(match is not None, f"Unreadable clause {clause!r}")
             digits = match[2]
             require("," not in digits or re.fullmatch(r"\d{1,3}(,\d{3})+", digits), "Digit grouping")
@@ -74,11 +80,27 @@ def solve_detail(public):
     require(len(set(values)) == len(values), "Tied values")
     if template == "order-whole-numbers-slots":
         require(len({n for n, _ in items}) == len(items), "Repeated name")
-    blanks = common_response(public["response"], "slots", {
-        "order-whole-numbers-slots": "Choose the stadium for each position",
-        "order-fractions-slots": "Choose the fraction for each position",
-        "order-rationals-slots": "Choose the number for each position"}[template])
-    noun = {"order-whole-numbers-slots": "capacity", "order-fractions-slots": "fraction", "order-rationals-slots": "number"}[template]
+    whole_labels = {
+        "Choose the stadium for each position": "capacity",
+        "Choose the town for each position": "population",
+        "Choose the library for each position": "collection",
+        "Choose the player for each position": "score",
+        "Choose the walker for each position": "total",
+        "Choose the route for each position": "distance",
+        "Choose the show for each position": "sales",
+        "Choose the trail for each position": "length",
+    }
+    if template == "order-whole-numbers-slots":
+        require(public["response"].get("label") in whole_labels, "Order label")
+        label = public["response"]["label"]
+        noun = whole_labels[label]
+    else:
+        label = {
+            "order-fractions-slots": "Choose the fraction for each position",
+            "order-rationals-slots": "Choose the number for each position",
+        }[template]
+        noun = {"order-fractions-slots": "fraction", "order-rationals-slots": "number"}[template]
+    blanks = common_response(public["response"], "slots", label)
     require([b["label"] for b in blanks] == labels_for(len(items), descending, noun), "Position labels disagree with the prompt")
     require([b["id"] for b in blanks] == [f"p{i + 1}" for i in range(len(items))], "Blank ids")
     ranked = sorted(items, key=lambda it: it[1], reverse=descending)
