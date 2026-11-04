@@ -23,7 +23,13 @@ const axisFor = <const V extends string>(
   values: readonly V[],
   legacy: NoInfer<V>,
   needs?: Partial<Record<NoInfer<V>, FigureCapability>>,
-) => defineAxis(id, values, { legacy, ...(needs ? { needs } : {}) });
+  weights?: readonly number[],
+) =>
+  defineAxis(id, values, {
+    legacy,
+    ...(needs ? { needs } : {}),
+    ...(weights ? { weights } : {}),
+  });
 
 export const sweepAxes = {
   /** Scale a ratio: the target quantity is a whole multiple of the ratio's
@@ -79,12 +85,15 @@ export const sweepAxes = {
     ),
   },
   /** Estimation by rounding: totals, products and quotients (legacy) or the
-   * difference of two decimals. */
+   * difference of two decimals. Tenths of a milliliter stay reachable but
+   * rare: that surface is grade-5 rounding. */
   "estimate-reasonableness": {
     operation: axisFor(
       "operation",
       ["total-product-quotient", "decimal-difference"],
       "total-product-quotient",
+      undefined,
+      [9, 1],
     ),
   },
   /** Equivalent expressions: integer coefficients (legacy) or a fractional
