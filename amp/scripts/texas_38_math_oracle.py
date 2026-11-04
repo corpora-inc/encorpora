@@ -166,37 +166,45 @@ def same_number(answer, expected):
 
 
 # ---------- 1 times-as-many-comparison ----------
+VERB = r'(?:has|baked|collected|learned|saved|gathered|counted|scored|planted|read)'
+
+
 def solve_times_as_many(public):
     p = public['prompt']
-    m = re.fullmatch(r'(\w+) has (\d+) (\w+)\. (\w+) has (\d+) times as many \3 as \1\. Which expression gives the number of \3 \4 has\?', p)
+    m = re.fullmatch(rf'(\w+) ({VERB}) (\d+) (\w+)\. (\w+) \2 (\d+) times as many \4 as \1\. Which expression gives the number of \4 \5 \2\?', p)
     if m:
-        a, k = int(m[2]), int(m[5])
+        a, k = int(m[3]), int(m[6])
         opts = options_of(public)
         vals = [evaluate(o['label']) for o in opts]
         require(len(set(vals)) == 4, 'Expressions share a value (not mathematically distinct)')
         return only([o['id'] for o, v in zip(opts, vals) if v == a * k and '×' in o['label']], 'Product expression')
-    m = re.fullmatch(r'(\w+) has (\d+) (\w+)\. (\w+) has (\d+) \3\. Which sentence compares the amounts correctly with "times as many"\?', p)
+    m = re.fullmatch(rf'(\w+) ({VERB}) (\d+) (\w+)\. (\w+) \2 (\d+) \4\. Which sentence compares the amounts correctly with "times as many"\?', p)
     if m:
-        small, big = (m[1], m[4]) if int(m[2]) < int(m[5]) else (m[4], m[1])
-        lo, hi = sorted((int(m[2]), int(m[5])))
+        small, big = (m[1], m[5]) if int(m[3]) < int(m[6]) else (m[5], m[1])
+        lo, hi = sorted((int(m[3]), int(m[6])))
         require(hi % lo == 0, 'Ratio is not whole')
         opts = options_of(public)
-        good = [o['id'] for o in opts if re.fullmatch(rf'{big} has {hi // lo} times as many {m[3]} as {small}\.', o['label'])]
+        good = [o['id'] for o in opts if re.fullmatch(rf'{big} {m[2]} {hi // lo} times as many {m[4]} as {small}\.', o['label'])]
         return only(good, 'Times-as-many sentence')
     m = re.fullmatch(r'(\w+) has (\d+) (\w+)\. The product (\d+) × (\d+) is the number of \3 that (\w+) has\. Which sentence compares the two amounts\?', p)
-    require(m is not None, 'Unreadable times-as-many prompt')
-    owner, a, noun, k, a2, other = m[1], int(m[2]), m[3], int(m[4]), int(m[5]), m[6]
-    require(a == a2, 'Product does not use the stated amount')
+    natural = None if m else re.fullmatch(rf'(\w+) ({VERB}) (\d+) (\w+)\. (\w+) \2 (\d+) × (\d+) \4\. Which sentence compares the two amounts\?', p)
+    require(m is not None or natural is not None, 'Unreadable times-as-many prompt')
+    if m:
+        owner, base, noun, k, base2, other, verb = m[1], int(m[2]), m[3], int(m[4]), int(m[5]), m[6], 'has'
+        require(base == base2, 'Product does not use the stated amount')
+    else:
+        owner, verb, base, noun, other, k, base2 = natural[1], natural[2], int(natural[3]), natural[4], natural[5], int(natural[6]), int(natural[7])
+        require(base == base2, 'Product does not use the stated amount')
     opts = options_of(public)
 
     def true_statement(label):
-        t = re.fullmatch(rf'(\w+) has (\d+) times as many {noun} as (\w+)\.', label)
+        t = re.fullmatch(rf'(\w+) {verb} (\d+) times as many {noun} as (\w+)\.', label)
         if t:
             return t[1] == other and t[3] == owner and int(t[2]) == k
-        t = re.fullmatch(rf'(\w+) has (\d+) more {noun} than (\w+)\.', label)
+        t = re.fullmatch(rf'(\w+) {verb} (\d+) more {noun} than (\w+)\.', label)
         if t:
             who, n, ref = t[1], int(t[2]), t[3]
-            return (who, ref) == (other, owner) and n == a * k - a
+            return (who, ref) == (other, owner) and n == base * k - base
         raise ValueError(f'Unknown sentence: {label}')
     return only([o['id'] for o in opts if true_statement(o['label'])], 'Comparison sentence')
 
