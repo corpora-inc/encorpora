@@ -71,8 +71,8 @@ export const k8StateNumberTemplates: readonly TemplateMetadata[] = [
   metadata(
     "prime-factorization-exponents",
     "Write a prime factorization",
-    "factors-multiples",
-    "3–5",
+    "integer-powers",
+    "6–8",
     0.4,
     true,
     "Choose the complete prime factorization of a composite number to 144, written with exponents for repeated factors, including from the first split of a factor tree.",
@@ -80,8 +80,8 @@ export const k8StateNumberTemplates: readonly TemplateMetadata[] = [
   metadata(
     "prime-factorization-value",
     "Use a prime factorization",
-    "factors-multiples",
-    "3–5",
+    "integer-powers",
+    "6–8",
     0.45,
     false,
     "Evaluate a prime factorization written with exponents, count the prime factors of a number, or find its greatest prime factor.",

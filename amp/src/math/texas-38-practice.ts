@@ -62,7 +62,7 @@ export const texas38Templates: readonly TemplateMetadata[] = [
   metadata(
     "times-as-many-comparison",
     "Read and write times as many",
-    "multiplicative-stories",
+    "multiplicative-comparison",
     "3–5",
     0.3,
     "choice",
