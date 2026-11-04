@@ -903,7 +903,7 @@ const castContexts: DotContext[] = [
   },
   {
     intro: (n) =>
-      `The dot plot shows the depth of the snow, in inches, on each of ${n} days NAME measured.`,
+      `The dot plot shows how many inches of new snow fell on each of ${n} days NAME measured.`,
     unit: "inches",
     one: "inch",
     entity: "day",

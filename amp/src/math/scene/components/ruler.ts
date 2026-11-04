@@ -243,7 +243,7 @@ registerComponent("ruler", {
     const at = (k: number) =>
       k % r.parts === 0
         ? `the ${k / r.parts} mark`
-        : `${k % r.parts} small marks past ${Math.floor(k / r.parts)}`;
+        : `${k % r.parts} small ${k % r.parts === 1 ? "mark" : "marks"} past ${Math.floor(k / r.parts)}`;
     return `${ruler} ${what} lies along it from ${at(r.object.from)} to ${at(r.object.to)}.`;
   },
 });
