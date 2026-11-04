@@ -14,7 +14,12 @@ import { surfaceStream, type Random } from "./variation/axes";
  * is untouched. */
 
 const cap = (text: string) => text[0]!.toUpperCase() + text.slice(1);
-const pick = <T>(r: Random, xs: readonly T[]): T => xs[r(0, xs.length - 1)]!;
+/** Spread sentence frames across numbered seeds such as book-0…book-11. */
+const spread = (seed: string, count: number): number => {
+  const parts = seed.match(/\d+/g);
+  if (!parts?.length || count < 1) return 0;
+  return Number(parts[parts.length - 1]) % count;
+};
 
 export function formatClock(mins: number): string {
   const t = ((mins % 1440) + 1440) % 1440;
@@ -120,11 +125,11 @@ export function elapsedStory(
   const name = storyName((n) => r(0, n - 1));
   const start = formatClock(model.start);
   const [d1, d2] = model.durations;
-  const frame = r(0, 3);
+  const frame = spread(seed, 4);
   let prompt: string;
   let focus: string;
   if (d2 === undefined) {
-    const act = pick(r, ONE_BLOCKS);
+    const act = ONE_BLOCKS[spread(seed, ONE_BLOCKS.length)]!;
     focus = act;
     const lasts = `${cap(act)} lasts ${hm(d1!)}.`;
     if (frame === 0)
@@ -136,7 +141,7 @@ export function elapsedStory(
     else
       prompt = `The clock shows ${start} ${name} starts ${act} then. ${lasts} What time does ${name} finish?`;
   } else {
-    const [first, second] = pick(r, TWO_BLOCKS);
+    const [first, second] = TWO_BLOCKS[spread(seed, TWO_BLOCKS.length)]!;
     focus = second;
     if (frame === 0)
       prompt = `${name} starts ${first} at ${start} ${cap(first)} lasts ${hm(d1!)}. Then ${second} takes ${hm(d2)}. What time does ${second} end?`;
@@ -217,9 +222,10 @@ export function conversionStory(
 } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const job = pick(r, jobsFor(model.large));
+  const jobs = jobsFor(model.large);
+  const job = jobs[spread(seed, jobs.length)]!;
   const core = `matches ${model.large} with ${model.small}. The first row shows ${model.shown}.`;
-  const frame = r(0, 3);
+  const frame = spread(seed, 4);
   const doing =
     model.large === "hours"
       ? "timing"
@@ -348,11 +354,11 @@ export function renameStory(
 ): { prompt: string; hint: string; closing: string } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const object = pick(
-    r,
-    RENAME_OBJECTS[`${model.small}|${model.large}`] ?? ["measure"],
-  );
-  const frame = r(0, 3);
+  const objects = RENAME_OBJECTS[`${model.small}|${model.large}`] ?? [
+    "measure",
+  ];
+  const object = objects[spread(seed, objects.length)]!;
+  const frame = spread(seed, 4);
   const amount = model.inputText;
   const noun = model.resultText.replace(/^\d[\d,]* /, "");
   const kind =
@@ -419,8 +425,8 @@ export function lineStorySurface(
 ): { prompt: string; hint: string; explanation: string[] } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const place = pick(r, MILE_PLACES);
-  const frame = r(0, 3);
+  const place = MILE_PLACES[spread(seed, MILE_PLACES.length)]!;
+  const frame = spread(seed, 4);
   const prompt =
     frame === 0
       ? `${name} ${place.verb}. How far is it from $A$ to $B$, in miles?`
@@ -546,8 +552,9 @@ export function toolStory(
 ): { prompt: string; hint: string } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const situation = pick(r, toolSituations[toolId]!);
-  const frame = r(0, 3);
+  const situations = toolSituations[toolId]!;
+  const situation = situations[spread(seed, situations.length)]!;
+  const frame = spread(seed, 4);
   const ask = situation.ask;
   const prompt =
     frame === 0
@@ -674,12 +681,13 @@ export function decimalStory(
     `Line up the decimal points and compute $${model.shownL} ${op} ${model.shownR}$.`,
     `What is the result of $${model.shownL} ${op} ${model.shownR}$?`,
   ];
-  const [bought, extra] = pick(r, [
+  const purchases = [
     ["book", "pen"],
     ["smoothie", "muffin"],
     ["poster", "cap"],
     ["plant", "pot"],
-  ] as const);
+  ] as const;
+  const [bought, extra] = purchases[spread(seed, purchases.length)]!;
   const applied = model.subtract
     ? [
         `${name} has ${moneyWords(model.leftCents)} and spends ${moneyWords(model.rightCents)} on a ${bought}. How much is left, in dollars and cents?`,
@@ -689,8 +697,10 @@ export function decimalStory(
         `${name} buys a ${bought} that costs ${moneyWords(model.leftCents)} and a ${extra} that costs ${moneyWords(model.rightCents)}. What is the total cost, in dollars and cents?`,
         `A ${bought} costs ${moneyWords(model.leftCents)} and a ${extra} costs ${moneyWords(model.rightCents)}. What is the total cost, in dollars and cents?`,
       ];
-  const appliedPick = r(0, 2) === 0;
-  const prompt = appliedPick ? pick(r, applied) : pick(r, bare);
+  const appliedPick = spread(seed, 3) === 0;
+  const prompt = appliedPick
+    ? applied[spread(`${seed}a`, applied.length)]!
+    : bare[spread(seed, bare.length)]!;
   const hint = model.unlike
     ? `Line up the decimal points in $${model.shownL} ${op} ${model.shownR}$. Write the tenth as hundredths before you ${model.subtract ? "subtract" : "add"}.`
     : `Line up the decimal points in $${model.shownL} ${op} ${model.shownR}$. Work from the hundredths place.`;
@@ -758,8 +768,8 @@ export function moneyAddStory(
 ): { prompt: string; hint: string; explanation: string[] } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const [first, second] = pick(r, PRICE_PAIRS);
-  const frame = r(0, 1);
+  const [first, second] = PRICE_PAIRS[spread(seed, PRICE_PAIRS.length)]!;
+  const frame = spread(seed, 2);
   const prompt =
     frame === 0
       ? `${name} buys a ${first} that costs ${moneyWords(a)} and a ${second} that costs ${moneyWords(b)}. What is the total cost? ${ENTER}`
@@ -784,8 +794,8 @@ export function moneyChangeStory(
 ): { prompt: string; hint: string; explanation: string[] } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const item = pick(r, COSTS);
-  const frame = r(0, 1);
+  const item = COSTS[spread(seed, COSTS.length)]!;
+  const frame = spread(seed, 2);
   const prompt =
     frame === 0
       ? `${name} buys ${item} that costs ${moneyWords(cost)}. ${name} pays with ${payPhrase}. How much change does ${name} get back? ${ENTER}`
@@ -810,9 +820,9 @@ export function moneyShareStory(
 ): { prompt: string; hint: string; explanation: string[] } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const item = pick(r, GOODS);
+  const item = GOODS[spread(seed, GOODS.length)]!;
   const one = item;
-  const frame = r(0, 1);
+  const frame = spread(seed, 2);
   const prompt =
     frame === 0
       ? `${count(friends, "friend")} buy ${count(items, item)} together. Each ${one} costs ${moneyWords(price)}. They split the cost equally. How much does each friend pay? ${ENTER}`
@@ -840,8 +850,9 @@ export function moneyTimesChangeStory(
 ): { prompt: string; hint: string; explanation: string[] } {
   const r = stream(templateId, seed);
   const name = storyName((nItems) => r(0, nItems - 1));
-  const item = pick(r, ["sticker", "pencil", "ticket", "cookie"] as const);
-  const frame = r(0, 1);
+  const goods = ["sticker", "pencil", "ticket", "cookie"] as const;
+  const item = goods[spread(seed, goods.length)]!;
+  const frame = spread(seed, 2);
   const prompt =
     frame === 0
       ? `${name} buys ${count(n, item)}. Each ${item} costs ${moneyWords(price)}. ${name} pays with ${payPhrase}. How much change does ${name} get back? ${ENTER}`
@@ -865,7 +876,7 @@ export function moneyFewestStory(
 ): { prompt: string; hint: string; explanation: string[] } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const frame = r(0, 5);
+  const frame = spread(seed, 6);
   const amount = moneyWords(cents);
   const prompt =
     frame === 0
@@ -900,7 +911,7 @@ export function moneyModelStory(
 ): { prompt: string; hint: string; explanation: string[] } {
   const r = stream(templateId, seed);
   const name = storyName((n) => r(0, n - 1));
-  const frame = r(0, 5);
+  const frame = spread(seed, 6);
   const bills = model.billPhrase;
   const prompt =
     frame === 0
