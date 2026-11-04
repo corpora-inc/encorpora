@@ -54,7 +54,7 @@ const frontierSchema = z.object({
   strandPriorSd: z.number().finite().positive().optional(),
 });
 export type TrialFrontier = z.infer<typeof frontierSchema>;
-/** The free workbooks: earned one per 20 problems, the ones made (oldest
+/** The free workbooks: one immediately, then every 20 problems; those made (oldest
  * first), and whether downloads are PDFs (learning/trial-workbooks.ts). */
 const trialWorkbooksSchema = z.object({
   total: z.number().int(),

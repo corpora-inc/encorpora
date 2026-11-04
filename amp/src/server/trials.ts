@@ -10,7 +10,7 @@ export const TRIAL_PREFIX = "trial:";
 export const DEFAULT_FREE_PROBLEMS = 100;
 /** Placement answers that open the free run; the rest is adaptive practice. */
 export const PLACEMENT_PROBLEMS = PLACEMENT_ATTEMPTS;
-/** Free workbooks: one for every 20 problems used, up to five. The rule is
+/** Free workbooks: one immediately, then every 20 problems, up to five. The rule is
  * shared with the screens, so it lives with the other learning rules. */
 export {
   TRIAL_WORKBOOK_EVERY,
