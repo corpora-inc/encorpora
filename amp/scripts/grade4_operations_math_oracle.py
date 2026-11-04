@@ -79,6 +79,7 @@ def solve(public):
         require(2 <= n <= 144, "Factor range")
         factors = set(factors_of(n))
         options = public["response"]["options"]
+        require(len({o["label"] for o in options}) == len(options), "Distinct choices")
         keyed = [o["id"] for o in options if int(o["label"].replace(",", "")) in factors]
         require(sorted(int(o["label"].replace(",", "")) for o in options if o["id"] in keyed) == sorted(factors),
                 "Every factor is offered")
@@ -86,6 +87,7 @@ def solve(public):
     d = int(re.search(r"multiple of (\d+)", prompt).group(1))
     require(2 <= d <= 9, "One-digit divisor")
     options = public["response"]["options"]
+    require(len({o["label"] for o in options}) == len(options), "Distinct choices")
     keyed = []
     for option in options:
         value = int(option["label"])

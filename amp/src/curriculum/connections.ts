@@ -247,9 +247,7 @@ rectangle-area|whole-multiplication|extension|Splitting a rectangle into parts s
 whole-multiplication|polynomial-arithmetic|extension|The area model that splits 23 × 14 into partial products also multiplies (x + 3)(x + 4) term by term.|polynomial-multiplication
 area-perimeter-models|expression-structure|extension|Writing the area of a rectangle as length times width extends to binomial sides, whose area is a product of sums.|binomial-area-product
 perimeter|variable-expressions|application|Adding side lengths gives a perimeter. With a letter for an unknown side, the same sum is an expression you can evaluate.|substitute-linear-expression
-multiplicative-stories|multiplicative-comparison|extension|Equal groups of a count are the same idea as saying one amount is that many times the other. The multiplication states the comparison.|times-as-many-comparison
 multiplicative-comparison|ratios|extension|Saying one amount is a number of times another compares two quantities by multiplication, which is a ratio.|ratio-missing
-whole-division|multidigit-quotients|extension|Judging an exact quotient with a one-digit divisor extends to judging a quotient whose divisor has two digits.|mcas-true-quotient-equations
 factors-multiples|integer-powers|extension|A prime that repeats in a factorization can be written as a power. The exponent counts how many times that prime is multiplied.|prime-factorization-exponents
 scaled-graphs|distribution-plots|extension|Reading a scaled graph means using the axis scale. Histograms also need their scale to read frequencies.|histogram-read
 elapsed-time|unit-rates|application|A rate such as miles per hour divides a quantity by elapsed time.|unit-rate

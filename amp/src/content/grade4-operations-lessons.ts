@@ -6,7 +6,7 @@ const entries: FormatLessonEntry[] = [
     id: "multiply-two-digit",
     title: "Multiply larger whole numbers",
     summary:
-      "A product is the answer when you multiply. Two two-digit numbers, a three-digit number times a two-digit number, and the squares from 11 squared to 15 squared all use the same multiplication.",
+      "Multiply two whole numbers with no area model, including a three-digit factor and squares from 11 to 15.",
     objectives: [
       "Multiply two two-digit whole numbers with no model shown.",
       "Multiply a three-digit number by a two-digit number, and find 11 squared through 15 squared.",
@@ -50,7 +50,7 @@ const entries: FormatLessonEntry[] = [
     id: "quotient-remainder-one-digit",
     title: "Quotient and remainder",
     summary:
-      "The quotient is how many times the divisor fits. The remainder is what is left, and it is smaller than the divisor. That remainder is also a fraction of the divisor.",
+      "The quotient is how many times the divisor fits. The remainder is what is left, and it is a fraction of the divisor.",
     objectives: [
       "Give the quotient and the remainder for a one-digit divisor.",
       "Write the remainder as a fraction of the divisor.",
@@ -95,7 +95,7 @@ const entries: FormatLessonEntry[] = [
     id: "factor-pairs-select",
     title: "Every factor",
     summary:
-      "A factor of a number divides it with nothing left over. The factors come in pairs that multiply to the number. A prime has only the pair 1 and itself. A square has a pair that uses the same factor twice.",
+      "Select every factor. Factors come in pairs that multiply to the number. A prime has only 1 and itself. A square uses one factor twice.",
     objectives: [
       "Select every factor of a whole number through 100, including primes and squares.",
       "Do the same for a number through 144.",
@@ -227,7 +227,7 @@ const entries: FormatLessonEntry[] = [
     id: "growing-shape-pattern",
     title: "A pattern that grows by a rule",
     summary:
-      "A growing pattern starts with some tiles and adds the same number of tiles at every step. The table shows the first three steps. A later step is found from the rule, not by counting a picture of that step.",
+      "A pattern adds the same number of tiles each step. Steps 1 to 3 are shown. Find a later step from the rule, not by counting it.",
     objectives: [
       "Read an add rule for a tile pattern.",
       "Find the number of tiles in a step that is not drawn.",

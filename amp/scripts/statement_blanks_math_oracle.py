@@ -21,7 +21,7 @@ from multipart_oracle_support import (
 SUPPORTED = frozenset({
     "fixed-variable-expense-table", "pythagorean-sort-table", "congruence-claims-table",
     "equivalent-expressions-table", "gross-net-sentence", "coordinate-terms-slots",
-    "point-on-axis-sentence", "times-as-many-counts", "times-as-many-blanks",
+    "point-on-axis-sentence", "times-as-many-counts",
     "compare-fractions-reason-blanks",
     "inequality-number-blanks",
 })
@@ -333,7 +333,6 @@ SOLVERS = {
     "coordinate-terms-slots": coordinate_terms,
     "point-on-axis-sentence": point_on_axis,
     "times-as-many-counts": times_as_many,
-    "times-as-many-blanks": times_as_many,
     "compare-fractions-reason-blanks": compare_fractions,
     "inequality-number-blanks": inequality_numbers,
 }
@@ -416,10 +415,6 @@ def fixtures():
                         [("axis", "The axis the point lies on", ["$x$-axis", "$y$-axis"]), ("which", "The coordinate that is 0", ["first", "second"]),
                          ("units", "The number of units to move", ["6", "4", "5", "0"]), ("dir", "The direction to move", ["right", "up"])],
                         {"axis": "b", "which": "a", "units": "c", "dir": "b"}),
-        "more-than-twice": inline("times-as-many-blanks", "A shelf has 65 books, and one book is chosen at random. The table shows how many books there are of each type. Complete the sentence.",
-                                  [("b", "more"), " books are more than twice as likely to be chosen as ", ("b", "less"), " books."],
-                                  [("more", "The type that is more likely", ["mystery", "science", "poetry"]), ("less", "The type that is less likely", ["mystery", "science", "poetry"])],
-                                  {"more": "b", "less": "a"}, counts_figure(["mystery", "science", "poetry"], [12, 30, 23])),
         "count-times": inline("times-as-many-counts", "The table shows how many of each item a class collected. Complete the sentence.",
                               ["There are ", ("b", "k"), " times as many ", ("b", "big"), " as ", ("b", "small"), "."],
                               [("k", "How many times as many", ["4", "5", "6", "2"]), ("big", "The item there are more of", ["mugs", "cups", "bottles"]),
@@ -487,9 +482,9 @@ def self_test():
     bad = copy.deepcopy(cases["bank"])
     bad["public"]["response"]["sentence"][3] = {"text": " $>-2$."}
     rejected += expect_rejected(review_problem, bad, "no bank number is above the bound")
-    bad = copy.deepcopy(cases["more-than-twice"])
+    bad = copy.deepcopy(cases["count-times"])
     bad["public"]["figure"]["scene"]["elements"][0]["rows"][1][1] = "16"
-    rejected += expect_rejected(review_problem, bad, "counts no longer add up")
+    rejected += expect_rejected(review_problem, bad, "no whole-number times-as-many pair")
     bad = copy.deepcopy(cases["fixed-amounts"])
     bad["public"]["response"]["blanks"][1]["label"] = "Internet service: Jan 56, Feb 57, Mar 56"
     rejected += expect_rejected(review_problem, bad, "amounts contradict the answer")

@@ -383,12 +383,23 @@ function multiplesSelect(
   const d = r(2, 9);
   const ks = shuffle(r, [2, 3, 4, 5, 6, 7, 8, 9]).slice(0, 3);
   const multiples = ks.map((k) => d * k);
-  const misses = [multiples[0]! + 1, multiples[1]! - 1].filter(
-    (m) => m > 0 && m % d !== 0,
-  );
+  // Two copies of the same miss happen when the divisor is 2 and the first
+  // two multipliers are consecutive: 2k+1 and 2(k+1)-1 are the same number.
+  const misses = [
+    ...new Set([
+      multiples[0]! + 1,
+      multiples[1]! - 1,
+      multiples[2]! + 1,
+      multiples[2]! - 1,
+    ]),
+  ].filter((m) => m > 0 && m % d !== 0);
+  const shownMisses = misses.slice(0, 2);
+  if (shownMisses.length < 2) {
+    throw new Error(`Need two misses for multiples of ${d}`);
+  }
   const options = shuffle(r, [
     ...multiples.map((n) => ({ label: String(n), correct: true })),
-    ...misses.slice(0, 2).map((n) => ({ label: String(n), correct: false })),
+    ...shownMisses.map((n) => ({ label: String(n), correct: false })),
   ]);
   return selectProblem(meta, seed, {
     prompt: `Select every multiple of ${d}. A multiple of ${d} is ${d} times a whole number.`,

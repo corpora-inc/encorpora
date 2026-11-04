@@ -117,12 +117,20 @@ test("two hundred seeds match an independent calculation", () => {
           .sort((a, b) => a - b);
         assert.deepEqual(selected, factorsOf(n));
         assert.ok(response.options.some((o) => !keyed.has(o.id)));
+        assert.equal(
+          new Set(response.options.map((o) => o.label)).size,
+          response.options.length,
+        );
       } else {
         const d = nums(prompt)[0]!;
         const response = problem.public.response;
         assert.equal(response.kind, "multi-select");
         if (response.kind !== "multi-select") continue;
         const keyed = new Set(JSON.parse(problem.answer) as string[]);
+        assert.equal(
+          new Set(response.options.map((o) => o.label)).size,
+          response.options.length,
+        );
         for (const option of response.options) {
           const value = Number(option.label);
           const multiple = value % d === 0;
