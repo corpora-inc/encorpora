@@ -107,7 +107,8 @@ export const statementBlanksTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "compare-fractions-reason-blanks",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Compare two fractions and say why",
     skillId: "fraction-comparison",
     gradeBand: "3–5",
@@ -295,10 +296,12 @@ export const compareReasonAxes = {
     weights: [2, 1],
     needs: { different: "scenes-v1" },
     silentLegacy: true,
+    since: 2,
   }),
   setting: defineAxis("setting", ["plain", "applied"] as const, {
     weights: [1, 2],
     silentLegacy: true,
+    since: 2,
   }),
 } as const;
 const REASONS = {
