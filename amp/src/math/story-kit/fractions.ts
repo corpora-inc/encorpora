@@ -275,12 +275,21 @@ export function multiplierStory(
   k: number,
 ): string {
   const name = learnerName(r);
-  const frames = [
-    `${name} cuts each piece into ${k} equal smaller pieces. ${a}/${b} × □/□ = ${a * k}/${b * k}. What number goes in both boxes?`,
-    `To rename ${a}/${b} without changing the amount, multiply by 1. ${a}/${b} × □/□ = ${a * k}/${b * k}. What number goes in both boxes?`,
-    `${name} splits each 1/${b} of a chocolate bar into ${k} equal bites. ${a}/${b} × □/□ = ${a * k}/${b * k}. What number goes in both boxes?`,
-    `The same length of ribbon, counted in smaller pieces: ${a}/${b} × □/□ = ${a * k}/${b * k}. What number goes in both boxes?`,
-  ];
+  const equation = `${a}/${b} × □/□ = ${a * k}/${b * k}. What number goes in both boxes?`;
+  const frames =
+    k >= 10
+      ? [
+          `A 100-square grid shows ${a}/${b} shaded. Each square is one hundredth. ${equation}`,
+          `${name} shades ${a}/${b} of a hundred-square grid. ${equation}`,
+          `The same part of a hundred-square grid, counted in smaller squares: ${equation}`,
+          `${name} renames ${a}/${b} of a meter on a centimeter grid. ${equation}`,
+        ]
+      : [
+          `${name} cuts each shaded piece of a chocolate bar into ${k} equal bites. ${equation}`,
+          `${name} splits each 1/${b} of a licorice stick into ${k} equal bites. ${equation}`,
+          `A ruler mark at ${a}/${b} inch is read in smaller marks. ${equation}`,
+          `The same length of ribbon, counted in smaller pieces: ${equation}`,
+        ];
   return pick(r, frames);
 }
 

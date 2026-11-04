@@ -91,6 +91,10 @@ const vite = await createServer({
         if (id === "/scene-problems-entry.tsx") return entry;
       },
       configureServer(server) {
+        server.middlewares.use("/favicon.ico", (_req, res) => {
+          res.statusCode = 204;
+          res.end();
+        });
         server.middlewares.use("/scene-problems", async (_req, res) => {
           res.setHeader("Content-Type", "text/html");
           res.end(

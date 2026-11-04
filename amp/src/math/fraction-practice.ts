@@ -182,10 +182,12 @@ function random(id: string, seed: string) {
 }
 const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
 /** A unit after a fraction or whole: singular for amounts of at most 1. */
+const unitPlural: Record<string, string> = { foot: "feet" };
 const unitAfter = (value: string, one: string) => {
   const [n, d = "1"] = value.split("/");
   const size = Math.abs(Number(n));
-  return size > 0 && size <= Number(d) ? one : `${one}s`;
+  if (size > 0 && size <= Number(d)) return one;
+  return unitPlural[one] ?? `${one}s`;
 };
 /** "8/4 = 2", or just "3/4" when the fraction is already simplest. */
 const simplified = (n: number, d: number) => {
@@ -418,8 +420,8 @@ export function generateFractionPracticeProblem(
       break;
     }
     case "like-fraction-difference": {
-      const a = applied ? r(2, 2 * d) : r(1, 2 * d);
-      const b = applied ? r(1, a - 1) : r(1, a);
+      const a = applied ? (d === 2 ? 2 : r(2, d - 1)) : r(1, 2 * d);
+      const b = applied ? r(1, Math.max(1, a - 1)) : r(1, a);
       const scene = applied ? likeDifferenceStory(r, a, b, d) : undefined;
       prompt = scene
         ? scene.prompt

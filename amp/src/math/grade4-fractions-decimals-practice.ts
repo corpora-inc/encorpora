@@ -266,9 +266,9 @@ function decompositions(seed: string): GeneratedProblem {
       ]
     : [
         `The strips show ${target}. Which sums of pieces with denominator ${denominator} match that shade? Choose ${keyed.length}.`,
-        `${name} shades ${target} of a granola bar cut into ${denominator} equal pieces. Which sums equal that shade? Choose ${keyed.length}.`,
-        `A ribbon is ${target} of a foot, in pieces of 1/${denominator} foot. Which sums equal that length? Choose ${keyed.length}.`,
-        `${target} of a pizza is left, in slices of 1/${denominator}. Which sums equal that amount? Choose ${keyed.length}.`,
+        `${name} shades ${target} of a chocolate bar cut into ${denominator} equal pieces. Which sums equal that shade? Choose ${keyed.length}.`,
+        `A licorice stick is ${target} of a foot, in pieces of 1/${denominator} foot. Which sums equal that length? Choose ${keyed.length}.`,
+        `${target} of a chocolate bar is left, in pieces of 1/${denominator}. Which sums equal that amount? Choose ${keyed.length}.`,
       ];
   return problem(template, seed, {
     prompt: frames[r(0, frames.length - 1)]!,
@@ -463,12 +463,11 @@ function unitMultiple(seed: string): GeneratedProblem {
   ]);
   return multiPartProblem(template, seed, r, {
     prompt: [
-      `${learnerName(r)} cuts ribbon into pieces of size $\\frac{1}{${denominator}}$ of a foot. Fill in both boxes.`,
-      `${learnerName(r)} shares a pizza cut into pieces of size $\\frac{1}{${denominator}}$. Fill in both boxes.`,
-      `Each paint dab is $\\frac{1}{${denominator}}$ of a liter. Fill in both boxes.`,
-      `A garden row is split into pieces of size $\\frac{1}{${denominator}}$. Fill in both boxes.`,
-      `The strips show pieces of size $\\frac{1}{${denominator}}$. Fill in both boxes.`,
-    ][r(0, 4)]!,
+      `The strips show pieces of size $\\frac{1}{${denominator}}$. How many of those pieces are in each line? Fill in both boxes.`,
+      `Each piece on the strips is $\\frac{1}{${denominator}}$ of the whole. Fill in both boxes.`,
+      `Count the $\\frac{1}{${denominator}}$ pieces in the fraction, then in the product. Fill in both boxes.`,
+      `Two lines use pieces of size $\\frac{1}{${denominator}}$. Fill in both boxes.`,
+    ][r(0, 3)]!,
     layout: "inline",
     label: "Fill in both boxes",
     slots: built.slots,
@@ -718,11 +717,11 @@ function decimalSymbols(seed: string): GeneratedProblem {
   const [a0, b0] = rows[0]!;
   const [a1, b1] = rows[1]!;
   const prompts = [
-    `${name} compares prices of ${a0} dollars and ${b0} dollars, then ${a1} dollars and ${b1} dollars. Choose the symbol that makes each comparison true.`,
-    `Two ribbons are ${a0} meters and ${b0} meters. Two more are ${a1} meters and ${b1} meters. Choose the symbol that makes each comparison true.`,
-    `Race times: ${a0} seconds and ${b0} seconds, then ${a1} seconds and ${b1} seconds. Choose the symbol that makes each comparison true.`,
-    `Juice bottles hold ${a0} liters and ${b0} liters, then ${a1} liters and ${b1} liters. Choose the symbol that makes each comparison true.`,
-    `Seedlings are ${a0} meters and ${b0} meters tall, then ${a1} meters and ${b1} meters. Choose the symbol that makes each comparison true.`,
+    `Two ropes are ${a0} meters and ${b0} meters. Two more are ${a1} meters and ${b1} meters. Choose the symbol for each pair.`,
+    `${name} compares seedlings ${a0} meters tall and ${b0} meters tall, then ${a1} meters and ${b1} meters. Choose the symbol for each pair.`,
+    `Two bottles hold ${a0} liters and ${b0} liters. Two more hold ${a1} liters and ${b1} liters. Choose the symbol for each pair.`,
+    `Reaction times are ${a0} seconds and ${b0} seconds, then ${a1} seconds and ${b1} seconds. Choose the symbol for each pair.`,
+    `Two notebooks are ${a0} centimeters thick and ${b0} centimeters thick, then ${a1} centimeters and ${b1} centimeters. Choose the symbol for each pair.`,
   ];
   return multiPartProblem(template, seed, r, {
     prompt: prompts[r(0, prompts.length - 1)]!,
@@ -770,13 +769,9 @@ function locate(seed: string): GeneratedProblem {
     max = 2;
     step = 0.1;
     denominator = 10;
-    targetOffset = r(2, 17);
-    offsets = [
-      targetOffset - 1,
-      targetOffset,
-      targetOffset + 1,
-      targetOffset + 2,
-    ];
+    const start = [1, 3, 5][r(0, 2)]!;
+    offsets = [start, start + 4, start + 8, start + 12];
+    targetOffset = offsets[r(0, 3)]!;
     const fractionText = `$\\frac{${targetOffset}}{10}$`;
     prompt = [
       `Which point is at ${fractionText}?`,
@@ -788,16 +783,11 @@ function locate(seed: string): GeneratedProblem {
     explanationValue = `$\\frac{${targetOffset}}{10}$`;
   } else {
     windowStart = r(0, 18) * 10;
-    targetOffset = r(2, 7);
+    offsets = [1, 4, 7, 9];
+    targetOffset = offsets[r(0, 3)]!;
     min = hundredths(windowStart);
     max = hundredths(windowStart + 10);
     step = 0.01;
-    offsets = [
-      targetOffset - 1,
-      targetOffset,
-      targetOffset + 1,
-      targetOffset + 2,
-    ];
     const target = hundredths(windowStart + targetOffset);
     const decimalText = target.toFixed(2);
     prompt = [
