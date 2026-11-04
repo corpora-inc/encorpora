@@ -66,6 +66,8 @@ export function Select({
           <span id={`${id}-value`}>{selected?.props.children ?? "Choose"}</span>
           <svg
             viewBox="0 0 12 12"
+            width="12"
+            height="12"
             aria-hidden="true"
             className="premium-select-chevron"
           >
@@ -86,7 +88,12 @@ export function Select({
               <strong>{label}</strong>
             </Dialog.Title>
             <button type="button" onClick={close} aria-label="Close options">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
                 <path d="M6 6l12 12M18 6 6 18" />
               </svg>
             </button>
