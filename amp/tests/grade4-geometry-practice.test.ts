@@ -367,6 +367,9 @@ function adjacentAnswer(problem: GeneratedProblem): string {
     /The whole angle \$([A-Z]{3})\$ is (\d+)°\. The known part \$([A-Z]{3})\$ is (\d+)°\. Angle \$([A-Z]{3})\$ is \$x\$ degrees\./,
     /Angle \$([A-Z]{3})\$ measures (\d+)°\. Inside it, angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ is \$x\$ degrees\./,
     /Start from angle \$([A-Z]{3})\$, which measures (\d+)°\. Angle \$([A-Z]{3})\$ measures (\d+)°\. The measure of angle \$([A-Z]{3})\$ is \$x\$ degrees\./,
+    /Angle \$([A-Z]{3})\$ measures (\d+)°\. Inside it, the adjacent angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ is \$x\$ degrees\./,
+    /Two adjacent angles make angle \$([A-Z]{3})\$, which measures (\d+)°\. Angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ is \$x\$ degrees\./,
+    /(?:The ramp rises from the floor at|The ladder meets the ground at|The door opens from the wall at|The gate opens from the fence at|The roof rises from the top of the wall at|The pizza slice opens at) angle \$([A-Z]{3})\$, which measures (\d+)°\. (?:The brace|The strut|One cut) splits it into angle \$([A-Z]{3})\$ of (\d+)° and angle \$([A-Z]{3})\$ of \$x\$ degrees\./,
   ];
   const found = patterns
     .map((pattern) => problem.public.prompt.match(pattern))
@@ -900,7 +903,10 @@ test("shape angle properties keep the parallel and perpendicular surface", () =>
   for (let i = 0; i < 30; i++) {
     const seed = `legacy-${i}`;
     const axes = chooseAxes("shape-sides-select", seed, shapeSidesAxes);
-    const sides = axes["angle-property"] === "sides" && axes.voice === "plain";
+    const sides =
+      axes["angle-property"] === "sides" &&
+      axes.voice === "plain" &&
+      (axes.wording ?? "classic") === "classic";
     const problem = generateProblem("shape-sides-select", seed);
     const digest = hashOf(problem);
     check(problem);

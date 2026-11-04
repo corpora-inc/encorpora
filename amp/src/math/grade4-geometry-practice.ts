@@ -19,16 +19,15 @@ import type { Random } from "./variation/axes.js";
 import {
   adjacentPrompt,
   benchmarkPrompt,
+  protractorHint,
   protractorPrompt,
   areaWord,
   compositeJob,
   formulaAsk,
   formulaScene,
-  quadrilateralFocus,
   quadrilateralPrompt,
   spreadPick,
   storyNameFor,
-  triangleFocus,
   trianglePrompt,
   unitWord,
 } from "./story-kit/geometry.js";
@@ -339,11 +338,10 @@ function protractorRay(r: Rand, seed: string): GeneratedProblem {
   ];
   const scale = right ? "inner" : "outer";
   const correct = rays.find((ray) => ray.dir === correctDir)!;
-  const who = storyNameFor(seed, "protractor-name");
   return finish("protractor-ray-choice", seed, r, {
     prompt: protractorPrompt(seed, k),
     answer: "",
-    hint: `${who} reads the scale that starts at 0 on ray $BA$. That ray is on the ${right ? "right" : "left"}, so use the ${scale} scale. Follow it to $${k}^\\circ$.`,
+    hint: protractorHint(seed, k, right),
     explanation: [
       `The ${scale} scale is the row that reads 0 on ray $BA$.`,
       `The other row reads ${180 - k} on the ray that is really at $${k}^\\circ$, so that row is the wrong scale here.`,
@@ -397,7 +395,6 @@ function adjacentEquation(r: Rand, seed: string): GeneratedProblem {
   const key = difference
     ? `$${whole} - ${known} = x$`
     : `$x + ${known} = ${whole}$`;
-  const who = storyNameFor(seed, "adjacent-name");
   return finish("adjacent-angle-equation", seed, r, {
     prompt: adjacentPrompt(
       seed,
@@ -408,9 +405,9 @@ function adjacentEquation(r: Rand, seed: string): GeneratedProblem {
       known,
     ),
     answer: "",
-    hint: `${who} has two angles that fill the ${whole}° angle and do not overlap. The known part is ${known}°. Write an equation for $x$ that uses both of those numbers.`,
+    hint: `The two parts sit side by side and fill the ${whole}° angle. The known part is ${known}°. Write an equation for $x$ that uses both of those numbers.`,
     explanation: [
-      `${who} split one angle into two parts that sit side by side and do not overlap, so together they make the ${whole}° angle.`,
+      `The two parts sit side by side and do not overlap, so together they make the ${whole}° angle.`,
       difference
         ? `The whole minus the known part is the unknown: $${whole} - ${known} = x$.`
         : `The unknown plus the known part is the whole: $x + ${known} = ${whole}$.`,
@@ -457,9 +454,16 @@ function benchmarkEstimate(r: Rand, seed: string): GeneratedProblem {
   const words = shown.map((b) => `${b} degrees`).join(", ");
   const farther = shown.filter((b) => b !== keyed);
   return finish("angle-benchmark-estimate", seed, r, {
-    prompt: benchmarkPrompt(seed, keyed),
+    prompt: benchmarkPrompt(seed, measure),
     answer: "",
-    hint: `The choices are ${words}. Pick the benchmark this opening is nearest, within 10 degrees.`,
+    hint:
+      measure < 75
+        ? "The opening is narrower than a square corner. Compare it with the benchmarks that are also narrower."
+        : measure <= 100
+          ? "Compare the opening with a square corner. Pick the nearest benchmark."
+          : measure < 160
+            ? "The opening is wider than a square corner and not yet a straight line. Pick the nearest benchmark."
+            : "Compare the opening with a straight line. Pick the nearest benchmark.",
     explanation: [
       `The choices are ${words}.`,
       `Compare the opening with each choice. It is nearest $${keyed}^\\circ$, and it is within 10° of that benchmark.`,
@@ -632,20 +636,19 @@ function triangleBlanks(r: Rand, seed: string): GeneratedProblem {
     obtuse: "the largest corner is wider than a square corner",
     acute: "every corner is narrower than a square corner",
   }[found.angles];
-  const focus = triangleFocus(seed);
   const closing =
     found.sides === "equilateral"
       ? "In this lesson, isosceles means exactly 2 equal sides, so an equilateral triangle is named equilateral."
-      : `Name the sides and the angles separately. This ${focus.object} is ${found.sides} by its sides and ${found.angles} by its angles.`;
+      : `Name the sides and the angles separately. This triangle is ${found.sides} by its sides and ${found.angles} by its angles.`;
   return finish("triangle-sides-angles-blanks", seed, r, {
     prompt: trianglePrompt(seed),
     answer: serializeMultiPart(response, {
       sides: sideOptions.find((o) => o.label === found.sides)!.id,
       angles: angleOptions.find((o) => o.label === found.angles)!.id,
     }),
-    hint: `On the ${focus.object}, matching tick marks mean those sides are equal. Count how many sides share a mark. A small square means a right angle. Compare the largest corner with the corner of a page.`,
+    hint: "Matching tick marks mean those sides are equal. Count how many sides share a mark. A small square means a right angle. Compare the largest corner with the corner of a page.",
     explanation: [
-      `Tick marks show equal sides. On this ${focus.object}, ${sideWhy}, so by its sides the triangle is ${found.sides}.`,
+      `Tick marks show equal sides. Here ${sideWhy}, so by its sides the triangle is ${found.sides}.`,
       `A square mark shows a right angle. Here ${angleWhy}, so by its angles the triangle is ${found.angles}.`,
       closing,
     ],
@@ -705,9 +708,9 @@ function quadrilateralAttributes(r: Rand, seed: string): GeneratedProblem {
   const equal = Math.max(...lengths) / Math.min(...lengths) < 1.02;
   const pairWords = pairs === 1 ? "1 pair" : `${pairs} pairs`;
   return finish("quadrilateral-attributes", seed, r, {
-    prompt: quadrilateralPrompt(seed, kind),
+    prompt: quadrilateralPrompt(seed),
     answer: "",
-    hint: `${quadrilateralFocus(seed, kind).name} should count the matching arrows on the ${quadrilateralFocus(seed, kind).object}, then the right-angle marks, then whether the tick marks show equal sides.`,
+    hint: "Count the matching arrows, then the right-angle marks, then whether the tick marks show equal sides. Give the most exact name.",
     explanation: [
       `Matching arrows show parallel sides. This shape has ${pairWords} of parallel sides.`,
       rights === 4

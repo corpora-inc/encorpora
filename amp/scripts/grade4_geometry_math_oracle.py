@@ -227,6 +227,9 @@ def adjacent_equation(public):
         r'The whole angle \$([A-Z]{3})\$ is (\d+)°\. The known part \$([A-Z]{3})\$ is (\d+)°\. Angle \$([A-Z]{3})\$ is \$x\$ degrees\.',
         r'Angle \$([A-Z]{3})\$ measures (\d+)°\. Inside it, angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ is \$x\$ degrees\.',
         r'Start from angle \$([A-Z]{3})\$, which measures (\d+)°\. Angle \$([A-Z]{3})\$ measures (\d+)°\. The measure of angle \$([A-Z]{3})\$ is \$x\$ degrees\.',
+        r'Angle \$([A-Z]{3})\$ measures (\d+)°\. Inside it, the adjacent angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ is \$x\$ degrees\.',
+        r'Two adjacent angles make angle \$([A-Z]{3})\$, which measures (\d+)°\. Angle \$([A-Z]{3})\$ measures (\d+)°\. Angle \$([A-Z]{3})\$ is \$x\$ degrees\.',
+        r'(?:The ramp rises from the floor at|The ladder meets the ground at|The door opens from the wall at|The gate opens from the fence at|The roof rises from the top of the wall at|The pizza slice opens at) angle \$([A-Z]{3})\$, which measures (\d+)°\. (?:The brace|The strut|One cut) splits it into angle \$([A-Z]{3})\$ of (\d+)° and angle \$([A-Z]{3})\$ of \$x\$ degrees\.',
     ]
     found = next((re.search(pattern, prompt) for pattern in patterns if re.search(pattern, prompt)), None)
     require(found is not None, 'Adjacent-angle wording')
@@ -472,6 +475,9 @@ def self_test():
     difference = copy.deepcopy(adjacent)
     difference['response']['options'][0]['label'] = '$120 - 40 = x$'
     require(solve(difference) == 'option-a', '120 - 40 = x')
+    story = copy.deepcopy(adjacent)
+    story['prompt'] = 'The door opens from the wall at angle $ABD$, which measures 120°. The brace splits it into angle $CBD$ of 40° and angle $ABC$ of $x$ degrees. Which equation finds $x$?'
+    require(solve(story) == 'option-a', 'A door story still names the drawn angles')
     both_true = copy.deepcopy(adjacent)
     both_true['response']['options'][3]['label'] = '$120 - 40 = x$'
     _must_fail(both_true)
@@ -563,7 +569,7 @@ def self_test():
     same['figure']['width']['value'] = 4
     same['figure']['height']['value'] = 4
     _must_fail(same)
-    return 16
+    return 17
 
 
 if __name__ == '__main__':
