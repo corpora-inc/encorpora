@@ -60,7 +60,12 @@ test("each comparison answer follows from the displayed numbers", () => {
     }
   for (let i = 0; i < 300; i++) {
     const p = generateProblem("multidigit-digit-value", `cmp-${i}`);
-    const [digit, n] = numbersIn(p.public.prompt) as [number, number];
+    const digit = Number(p.public.prompt.match(/digit (\d)/)![1]);
+    const n = Number(
+      (p.public.prompt.match(/\d{1,3}(?:,\d{3})+/g) ?? [])
+        .find((token) => token.replaceAll(",", "").includes(String(digit)))!
+        .replaceAll(",", ""),
+    );
     const text = String(n);
     assert.equal(text.split(String(digit)).length, 2, "digit appears once");
     assert.equal(

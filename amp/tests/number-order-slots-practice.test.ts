@@ -16,7 +16,8 @@ function keyed(id: string, seed: string) {
     })),
   };
 }
-const leastFirst = (prompt: string) => /from (the smallest|least)/.test(prompt);
+const leastFirst = (prompt: string) =>
+  /from (?:the )?(?:smallest|least|fewest|lowest|shortest)\b/.test(prompt);
 const numeric = (tex: string) => {
   const frac = tex.match(/^\$(-?)\\frac\{(\d+)\}\{(\d+)\}\$$/);
   if (frac) return (frac[1] ? -1 : 1) * (Number(frac[2]) / Number(frac[3]));
@@ -28,7 +29,7 @@ test("stadiums are listed in the order the prompt asks, read from the numbers in
     const { problem, slots } = keyed("order-whole-numbers-slots", `w:${i}`);
     const crowds = [
       ...problem.public.prompt.matchAll(
-        /([A-Z][A-Za-z ]+?) holds ([\d,]+) people/g,
+        /([A-Z][A-Za-z ]+?) (?:holds|has|scored|walked|logged|sold|is) ([\d,]+) (?:people|books|points|steps|miles|tickets|feet)/g,
       ),
     ].map((m) => ({ name: m[1]!, value: Number(m[2]!.replaceAll(",", "")) }));
     assert.ok(crowds.length >= 3 && crowds.length <= 5);

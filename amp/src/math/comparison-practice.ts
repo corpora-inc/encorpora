@@ -6,7 +6,8 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { hasHave, isAre } from "./agreement";
-import { defineAxis } from "./variation/axes";
+import { countContext } from "./story-kit/place-value";
+import { defineAxis, surfaceStream } from "./variation/axes";
 import { generateWithAxes, omitLegacyVariant } from "./variation/legacy";
 
 /** Digit length for `multidigit-digit-value`. `as-drawn` keeps four to six digits. */
@@ -16,7 +17,14 @@ export const digitMagnitudeAxes = {
     ["as-drawn", "six", "million", "billions"] as const,
     { legacy: "as-drawn", weights: [8, 4, 2, 1] },
   ),
+  /** Wording only. `bare` is the stored sentence. */
+  surface: defineAxis("surface", ["bare", "ask", "worth", "story"] as const, {
+    legacy: "bare",
+    weights: [3, 5, 5, 6],
+    silentLegacy: true,
+  }),
 } as const;
+type DigitSurface = (typeof digitMagnitudeAxes.surface.values)[number];
 
 type Random = (low: number, high: number) => number;
 const definitions = [
@@ -285,15 +293,35 @@ export function generateComparisonProblem(
     return comparisonProblem(templateId, seed, "as-drawn");
   return omitLegacyVariant(
     generateWithAxes(templateId, seed, digitMagnitudeAxes, (values) =>
-      comparisonProblem(templateId, seed, values.magnitude),
+      comparisonProblem(templateId, seed, values.magnitude, values.surface),
     ),
   );
+}
+
+function digitPrompt(
+  templateId: string,
+  seed: string,
+  surface: DigitSurface,
+  digit: number,
+  n: number,
+): string {
+  const shown = formatWhole(n);
+  if (surface === "ask")
+    return digit === 1
+      ? `What is the value of the digit 1 in ${shown}?`
+      : `What value does the digit ${digit} have in ${shown}?`;
+  if (surface === "worth")
+    return `The digit ${digit} in ${shown} stands for how much?`;
+  if (surface === "story")
+    return `${countContext(shown, n, surfaceStream(templateId, `${seed}:story`))}. What is the value of the digit ${digit} in that number?`;
+  return `What is the value of the digit ${digit} in ${shown}?`;
 }
 
 function comparisonProblem(
   templateId: string,
   seed: string,
   magnitude: (typeof digitMagnitudeAxes.magnitude.values)[number],
+  surface: DigitSurface = "bare",
 ): GeneratedProblem {
   const meta = comparisonTemplates.find((t) => t.id === templateId);
   if (!meta) throw new Error(`Unknown comparison template: ${templateId}`);
@@ -498,7 +526,7 @@ function comparisonProblem(
         }
         const n = Number(digits.join(""));
         const value = digit * 10 ** place;
-        prompt = `What is the value of the digit ${digit} in ${formatWhole(n)}?`;
+        prompt = digitPrompt(templateId, seed, surface, digit, n);
         answer = String(value);
         hint = `Read the places of ${formatWhole(n)} from the right until you reach the ${digit}. Its value is ${digit} of that place.`;
         explanation = [
@@ -522,7 +550,7 @@ function comparisonProblem(
         }
       }
       const n = Number(digits.join(""));
-      prompt = `What is the value of the digit ${digit} in ${formatWhole(n)}?`;
+      prompt = digitPrompt(templateId, seed, surface, digit, n);
       const value = digit * placeValues[place]!;
       answer = String(value);
       hint = `Read the places of ${formatWhole(n)} from the right (ones, tens, hundreds, …) until you reach the ${digit}. Its value is ${digit} of that place.`;

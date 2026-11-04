@@ -20,6 +20,27 @@ const numbersIn = (prompt: string) =>
 const sample = (id: string, count = 300) =>
   Array.from({ length: count }, (_, i) => generateProblem(id, `ns-${i}`));
 
+/** Number and place name from every round-large sentence frame. */
+function roundOf(prompt: string): { n: number; place: string } {
+  const place = "hundred thousand|ten thousand|thousand|hundred|ten";
+  let m = new RegExp(`^Round ([\\d,]+) to the nearest (${place})\\.$`).exec(
+    prompt,
+  );
+  if (m) return { n: Number(m[1]!.replaceAll(",", "")), place: m[2]! };
+  m = new RegExp(`([\\d,]+) rounded to the nearest (${place})\\?$`).exec(
+    prompt,
+  );
+  if (m) return { n: Number(m[1]!.replaceAll(",", "")), place: m[2]! };
+  m = new RegExp(`to the nearest (${place})\\?$`).exec(prompt);
+  const shown = prompt.match(/\d{1,3}(?:,\d{3})+/);
+  if (m && shown)
+    return { n: Number(shown[0].replaceAll(",", "")), place: m[1]! };
+  m = new RegExp(`to the nearest (${place})\\.$`).exec(prompt);
+  if (m && shown)
+    return { n: Number(shown[0].replaceAll(",", "")), place: m[1]! };
+  throw new Error(prompt);
+}
+
 test("number-sense families are deterministic, valid and gradeable", () => {
   for (const id of ids)
     for (const problem of sample(id)) {
@@ -48,9 +69,14 @@ test("rounding follows round-half-up, including carries and halfway values", () 
   const tags = new Set<string>();
   for (const id of ["round-to-ten", "round-to-hundred", "round-large"])
     for (const p of sample(id)) {
-      const m = /^Round ([\d,]+) to the nearest (.+)\.$/.exec(p.public.prompt)!;
-      const n = Number(m[1]!.replaceAll(",", "")),
-        unit = units[m[2]!]!;
+      assert.equal(
+        /whole number of .+ is closest/.test(p.public.prompt),
+        false,
+        p.public.prompt,
+      );
+      const parsed = roundOf(p.public.prompt);
+      const n = parsed.n,
+        unit = units[parsed.place]!;
       const remainder = n % unit;
       const expected =
         remainder * 2 >= unit ? n - remainder + unit : n - remainder;

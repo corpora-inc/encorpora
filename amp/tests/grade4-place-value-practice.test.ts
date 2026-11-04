@@ -22,6 +22,24 @@ const PLACES = [
   "millions",
 ];
 const num = (text: string) => Number(text.replaceAll(",", ""));
+/** Number and rounding place from every round-large sentence frame. */
+function roundAsked(prompt: string): { n: number; place: string } {
+  const place = "hundred thousand|ten thousand|thousand|hundred|ten";
+  let m = new RegExp(`^Round ([\\d,]+) to the nearest (${place})\\.$`).exec(
+    prompt,
+  );
+  if (m) return { n: num(m[1]!), place: m[2]! };
+  m = new RegExp(`([\\d,]+) rounded to the nearest (${place})\\?$`).exec(
+    prompt,
+  );
+  if (m) return { n: num(m[1]!), place: m[2]! };
+  m = new RegExp(`to the nearest (${place})\\?$`).exec(prompt);
+  const shown = prompt.match(/\d{1,3}(?:,\d{3})+/);
+  if (m && shown) return { n: num(shown[0]), place: m[1]! };
+  m = new RegExp(`to the nearest (${place})\\.$`).exec(prompt);
+  if (m && shown) return { n: num(shown[0]), place: m[1]! };
+  throw new Error(prompt);
+}
 const ids = [
   "place-shift-value",
   "number-name-numeral",
@@ -161,17 +179,20 @@ test("a shifted digit and a product with 10 or 100 match the places", () => {
     assert.equal(gradeAnswer(problem, problem.answer), true);
     const labels = keyedLabels(problem);
     const prompt = problem.public.prompt;
+    assert.equal(/has [\d,]+ people/.test(prompt), false, prompt);
+    assert.equal(/Multiplying that number by/.test(prompt), false, prompt);
     const shift = prompt.match(
-      /^In ([\d,]+), the digit (\d) is worth ([\d,]+)\. It shifts one place to the (left|right), so it is worth (10 times as much|one tenth as much)\. Choose its new place and its new value\.$/,
+      /digit (\d)[\s\S]{0,40}?is worth ([\d,]+)[\s\S]*?to the (left|right)/,
     );
-    const product = prompt.match(
-      /^([\d,]+) × (10|100) shifts every digit to the left\. Choose the product and how many places the digits move\.$/,
-    );
-    if (shift) {
-      const n = num(shift[1]!);
-      const digit = Number(shift[2]);
-      const oldValue = num(shift[3]!);
-      const side = shift[4]!;
+    const shiftNumber = prompt.match(/\d{1,3}(?:,\d{3})+|\d{3,}/);
+    const productTimes = prompt.match(/([\d,]+) × (100|10)\b/);
+    const productBy = prompt.match(/Multiplying ([\d,]+) by (100|10)\b/);
+    const productStory = /Multiplying that number by (100|10)\b/.exec(prompt);
+    if (shift && shiftNumber) {
+      const n = num(shiftNumber[0]);
+      const digit = Number(shift[1]);
+      const oldValue = num(shift[2]!);
+      const side = shift[3]!;
       assert.ok(n <= 1_000_000);
       assert.equal(oldValue % digit, 0);
       const place = Math.round(Math.log10(oldValue / digit));
@@ -181,9 +202,13 @@ test("a shifted digit and a product with 10 or 100 match the places", () => {
       assert.equal(num(labels.value!), digit * 10 ** next);
       assert.ok(num(labels.value!) <= 1_000_000);
       seen.add(side === "left" ? "shift-left" : "shift-right");
-    } else if (product) {
-      const n = num(product[1]!);
-      const factor = Number(product[2]);
+    } else if (productTimes || productBy || productStory) {
+      const n = num(
+        (productTimes ?? productBy)?.[1] ?? shiftNumber?.[0] ?? "0",
+      );
+      const factor = Number(
+        (productTimes ?? productBy)?.[2] ?? productStory?.[1],
+      );
       assert.equal(num(labels.product!), n * factor);
       assert.ok(n * factor <= 1_000_000);
       assert.equal(labels.places, factor === 10 ? "one place" : "two places");
@@ -221,19 +246,21 @@ test("number names and numerals name the same whole number up to 1,000,000", () 
     assert.equal(response.kind, "choice");
     if (response.kind !== "choice") continue;
     const keyed = response.options.find((o) => o.id === problem.answer)!.label;
-    const wordsToNumeral = problem.public.prompt.match(
-      /^Which numeral matches this number name: (.+)\?$/,
-    );
-    const numeralToWords = problem.public.prompt.match(
-      /^Which number name matches ([\d,]+)\?$/,
-    );
+    const quoted = problem.public.prompt.match(/“([^”]+)”/);
+    const named = problem.public.prompt.match(/number name: (.+)\?$/);
+    const shownNumeral = problem.public.prompt.match(/\d{1,3}(?:,\d{3})+/);
+    const wordsToNumeral =
+      !shownNumeral && (quoted || named)
+        ? [quoted?.[0] ?? named?.[0], quoted?.[1] ?? named?.[1]]
+        : null;
+    const numeralToWords = shownNumeral;
     let value: number;
     if (wordsToNumeral) {
       value = parseName(wordsToNumeral[1]!);
       assert.equal(num(keyed), value);
       seen.add("words-to-numeral");
     } else if (numeralToWords) {
-      value = num(numeralToWords[1]!);
+      value = num(numeralToWords[0]);
       assert.equal(keyed, numberName(value));
       seen.add("numeral-to-words");
     } else {
@@ -287,11 +314,14 @@ test("rounding, ordering and comparison reach the grade-4 ranges", () => {
   let carry = false;
   for (let i = 0; i < 300; i++) {
     const problem = generateProblem("round-large", `round-${i}`);
-    const match = problem.public.prompt.match(
-      /^Round ([\d,]+) to the nearest (.+)\.$/,
-    )!;
-    const n = num(match[1]!);
-    const place = match[2]!;
+    assert.equal(
+      /whole number of .+ is closest/.test(problem.public.prompt),
+      false,
+      problem.public.prompt,
+    );
+    const match = roundAsked(problem.public.prompt);
+    const n = match.n;
+    const place = match.place;
     places.add(place);
     const unit =
       place === "ten"
@@ -325,7 +355,9 @@ test("rounding, ordering and comparison reach the grade-4 ranges", () => {
   for (let i = 0; i < 200; i++) {
     const problem = generateProblem("order-whole-numbers-slots", `order-${i}`);
     const crowds = [
-      ...problem.public.prompt.matchAll(/holds ([\d,]+) people/g),
+      ...problem.public.prompt.matchAll(
+        /(?:holds|has|scored|walked|logged|sold|is) ([\d,]+) (?:people|books|points|steps|miles|tickets|feet)/g,
+      ),
     ].map((m) => num(m[1]!));
     if (crowds.length === 5) {
       five++;
@@ -344,7 +376,7 @@ test("rounding, ordering and comparison reach the grade-4 ranges", () => {
     if (text.includes("1,000,000")) exactMillion++;
     if (/[0-9],[0-9]{3},[0-9]{3},[0-9]{3}/.test(text)) billions++;
     const digit = generateProblem("multidigit-digit-value", `dig-${i}`);
-    const shown = digit.public.prompt.match(/in ([\d,]+)\?/)![1]!;
+    const shown = digit.public.prompt.match(/\d{1,3}(?:,\d{3})+/)![0];
     const digits = shown.replaceAll(",", "");
     assert.ok(digits.length >= 4 && digits.length <= 10);
     if (digits.length >= 9) billions++;
@@ -375,7 +407,11 @@ test("large number lines are read and located from the tick spacing", () => {
     steps.add(line.step!);
     const marks = line.marks ?? [];
     const spoken = describeScene(scene);
-    if (problem.public.prompt.startsWith("Which number")) {
+    assert.doesNotMatch(
+      problem.public.prompt,
+      /^(?:Books in a school library|People in a small town|Miles a truck drove|Steps on field day|People in nearby towns|People in nearby cities|Steps counted this year|Points in a tournament|Points scored this season)\./,
+    );
+    if (/point \$P\$|Point \$P\$/.test(problem.public.prompt)) {
       directions.add("read");
       assert.equal(marks.length, 1);
       assert.equal(marks[0]!.label, "P");
@@ -389,7 +425,7 @@ test("large number lines are read and located from the tick spacing", () => {
         assert.notEqual(label, value);
     } else {
       directions.add("locate");
-      const wanted = num(problem.public.prompt.match(/at ([\d,]+)/)![1]!);
+      const wanted = num(problem.public.prompt.match(/([\d,]{4,})/)![1]!);
       const keyed = response.options
         .find((o) => o.id === problem.answer)!
         .label.replaceAll("$", "");

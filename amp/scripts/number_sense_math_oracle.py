@@ -39,6 +39,93 @@ def round_half_up(n, unit):
     return below + unit if 2 * (n % unit) >= unit else below
 
 
+_PLACE = (
+    'hundred thousands|ten thousands|hundred thousand|ten thousand|'
+    'thousands|thousand|hundreds|hundred|tens|ten'
+)
+_PLACE_SINGULAR = {
+    'tens': 'ten', 'hundreds': 'hundred', 'thousands': 'thousand',
+    'ten thousands': 'ten thousand', 'hundred thousands': 'hundred thousand',
+}
+
+
+def parse_round_prompt(prompt):
+    """(number, unit) from any round-large sentence frame."""
+    m = re.search(rf'Round ([\d,]+) to the nearest ({_PLACE})\.', prompt)
+    if m and m[2] in PLACE_UNITS:
+        return whole(m[1]), PLACE_UNITS[m[2]]
+    m = re.search(rf'([\d,]+) rounded to the nearest ({_PLACE})\b', prompt)
+    if m and m[2] in PLACE_UNITS:
+        return whole(m[1]), PLACE_UNITS[m[2]]
+    m = re.search(rf'to the nearest ({_PLACE})\?', prompt)
+    n = re.search(r'\d{1,3}(?:,\d{3})+', prompt)
+    if m and n:
+        name = m[1] if m[1] in PLACE_UNITS else _PLACE_SINGULAR.get(m[1])
+        if name:
+            return whole(n[0]), PLACE_UNITS[name]
+    m = re.search(rf'to the nearest ({_PLACE})\.', prompt)
+    n = re.search(r'\d{1,3}(?:,\d{3})+', prompt)
+    if m and n:
+        name = m[1] if m[1] in PLACE_UNITS else _PLACE_SINGULAR.get(m[1])
+        if name:
+            return whole(n[0]), PLACE_UNITS[name]
+    return None
+
+
+def parse_ratio_prompt(prompt):
+    """(grouped number, digit) for a ten-times comparison of one digit."""
+    m = re.search(
+        r'In ([\d,]+), the first (\d) is worth how many times as much as the second (\d)\?',
+        prompt,
+    )
+    if m:
+        return m[1], m[2], m[3]
+    m = re.search(
+        r'two (\d)s in ([\d,]+)\. How many times as much is the first (\d) worth\?',
+        prompt,
+    )
+    if m:
+        return m[2], m[1], m[3]
+    m = re.search(
+        r'In ([\d,]+), the (\d) in the [a-z ]+? place is worth how many times as much as the (\d) in the [a-z ]+? place\?',
+        prompt,
+    )
+    if m:
+        return m[1], m[2], m[3]
+    m = re.search(
+        r'Look at ([\d,]+)\. The first (\d) is worth how many times the second (\d)\?',
+        prompt,
+    )
+    if m:
+        return m[1], m[2], m[3]
+    m = re.search(
+        r'The first (\d) is worth how many times as much as the second (\d)\?',
+        prompt,
+    )
+    n = re.search(r'\d{1,3}(?:,\d{3})+', prompt)
+    if m and n:
+        return n[0], m[1], m[2]
+    m = re.search(
+        r'two digits that are (\d) in ([\d,]+)\. How many times as much is the first (\d) worth\?',
+        prompt,
+    )
+    if m:
+        return m[2], m[1], m[3]
+    m = re.search(
+        r'How many times as much is the first (\d) worth, compared with the second\?',
+        prompt,
+    )
+    if m and n:
+        return n[0], m[1], m[1]
+    m = re.search(
+        r'two digits that are (\d)\. How many times as much is the left-hand (\d) worth\?',
+        prompt,
+    )
+    if m and n:
+        return n[0], m[1], m[2]
+    return None
+
+
 def number_line(figure):
     require(figure and figure['kind'] == 'scene', 'Missing number line')
     lines = [e for e in figure['scene']['elements'] if e['type'] == 'numberLine']
@@ -110,12 +197,9 @@ def solve_number_sense(public):
         require(sorted(m['at'] for m in line['marks']) == sorted([a, b]), 'Both ends are marked')
         return abs(b - a)
     if name in ('round-to-ten', 'round-to-hundred', 'round-large'):
-        m = re.fullmatch(
-            r'Round ([\d,]+) to the nearest (hundred thousand|ten thousand|thousand|hundred|ten)\.',
-            prompt,
-        )
-        require(m is not None, f'Unexpected rounding prompt {prompt!r}')
-        n, unit = whole(m[1]), PLACE_UNITS[m[2]]
+        parsed = parse_round_prompt(prompt)
+        require(parsed is not None, f'Unexpected rounding prompt {prompt!r}')
+        n, unit = parsed
         expected_unit = {
             'round-to-ten': (10,),
             'round-to-hundred': (100,),
@@ -140,11 +224,11 @@ def solve_number_sense(public):
         require((result * 1000).denominator == 1, 'Result beyond thousandths')
         return result
     if name == 'digit-value-ratio':
-        m = re.fullmatch(r'In ([\d,]+), the first (\d) is worth how many times as much as the second (\d)\?', prompt)
-        require(m is not None and m[2] == m[3], f'Unexpected ratio prompt {prompt!r}')
-        digits = str(whole(m[1]))
-        positions = [i for i, d in enumerate(digits) if d == m[2]]
-        require(len(positions) == 2 and m[2] != '0', 'The digit appears exactly twice')
+        parsed = parse_ratio_prompt(prompt)
+        require(parsed is not None and parsed[1] == parsed[2], f'Unexpected ratio prompt {prompt!r}')
+        digits = str(whole(parsed[0]))
+        positions = [i for i, d in enumerate(digits) if d == parsed[1]]
+        require(len(positions) == 2 and parsed[1] != '0', 'The digit appears exactly twice')
         return 10 ** (positions[1] - positions[0])
     raise ValueError(f'No number-sense solver for {name}')
 
@@ -190,8 +274,7 @@ class NumberSenseCorpus:
         name, prompt = public['templateId'], public['prompt']
         tags = self.seen.setdefault(name, set())
         if name.startswith('round'):
-            m = re.search(r'Round ([\d,]+) to the nearest (.+)\.', prompt)
-            n, unit = whole(m[1]), PLACE_UNITS[m[2]]
+            n, unit = parse_round_prompt(prompt)
             if 2 * (n % unit) == unit:
                 tags.add('halfway')
             if n % unit == 0:
