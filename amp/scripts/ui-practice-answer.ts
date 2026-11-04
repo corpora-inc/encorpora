@@ -35,7 +35,13 @@ export function trackPracticeProblems(page: Page) {
     } catch (error) {
       // Closing a page or navigating away cancels a prefetched batch body.
       // A malformed successful response on an active page remains a failure.
-      if (!page.isClosed() && !response.request().failure()) throw error;
+      const gone =
+        page.isClosed() ||
+        !!response.request().failure() ||
+        /navigated away|No resource with given identifier|Target page, context or browser has been closed/.test(
+          String(error),
+        );
+      if (!gone) throw error;
     }
   });
   return served;
