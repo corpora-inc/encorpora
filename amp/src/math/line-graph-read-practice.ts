@@ -646,6 +646,16 @@ interface DotContext {
   total: (count: number) => string;
   /** Hundredths are natural for this measurement (a scale or a gauge). */
   hundredths?: boolean;
+  /** Display-unit bounds. Omitted stories keep 2–9 (whole) or 1–5 (mixed). */
+  whole?: readonly [number, number];
+  mixed?: readonly [number, number];
+  /** Low end of a hundredths window, in hundredths. The axis is 0.10 wide. */
+  gauge?: readonly [number, number];
+}
+/** Two draws, so one sticky residue cannot pin every seed to the first story. */
+function spreadPick<T>(r: Random, items: readonly T[]): T {
+  const n = items.length;
+  return items[(r(0, n - 1) + r(0, n * n - 1)) % n]!;
 }
 const dotContexts: DotContext[] = [
   {
@@ -698,6 +708,99 @@ const dotContexts: DotContext[] = [
 const castContexts: DotContext[] = [
   {
     intro: (n) =>
+      `The dot plot shows the weight, in pounds, of each of ${n} pumpkins NAME picked.`,
+    unit: "pounds",
+    one: "pound",
+    entity: "pumpkin",
+    fractional: true,
+    whole: [3, 9],
+    mixed: [2, 5],
+    missing: (n, grand) =>
+      `All ${n + 1} pumpkins weigh ${grand} together. What is the weight of pumpkin ${n + 1}, in pounds?`,
+    total: (n) => `What is the total weight of all ${n} pumpkins, in pounds?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows the weight, in pounds, of each of ${n} kittens NAME weighed at the shelter.`,
+    unit: "pounds",
+    one: "pound",
+    entity: "kitten",
+    fractional: true,
+    whole: [2, 5],
+    mixed: [1, 4],
+    missing: (n, grand) =>
+      `All ${n + 1} kittens weigh ${grand} together. What is the weight of kitten ${n + 1}, in pounds?`,
+    total: (n) => `What is the total weight of all ${n} kittens, in pounds?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows the rainfall, in inches, on each of ${n} days NAME checked the rain gauge.`,
+    unit: "inches",
+    one: "inch",
+    entity: "day",
+    fractional: true,
+    hundredths: true,
+    whole: [1, 3],
+    mixed: [1, 2],
+    gauge: [10, 80],
+    missing: (n, grand) =>
+      `The gauge collected ${grand} in all ${n + 1} days. How many inches fell on day ${n + 1}?`,
+    total: (n) => `How many inches of rain fell in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many minutes NAME spent reading on each of ${n} days.`,
+    unit: "minutes",
+    one: "minute",
+    entity: "day",
+    fractional: false,
+    whole: [4, 9],
+    missing: (n, grand) =>
+      `NAME read for ${grand} in all ${n + 1} days. How many minutes did NAME read on day ${n + 1}?`,
+    total: (n) => `How many minutes did NAME read in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many liters of water NAME drank on each of ${n} days.`,
+    unit: "liters",
+    one: "liter",
+    entity: "day",
+    fractional: true,
+    hundredths: true,
+    whole: [1, 3],
+    mixed: [1, 3],
+    missing: (n, grand) =>
+      `NAME drank ${grand} in all ${n + 1} days. How many liters did NAME drink on day ${n + 1}?`,
+    total: (n) => `How many liters of water did NAME drink in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many miles NAME walked on each of ${n} days.`,
+    unit: "miles",
+    one: "mile",
+    entity: "day",
+    fractional: true,
+    hundredths: true,
+    whole: [1, 5],
+    mixed: [1, 4],
+    missing: (n, grand) =>
+      `NAME walked ${grand} in all ${n + 1} days. How many miles did NAME walk on day ${n + 1}?`,
+    total: (n) => `How many miles did NAME walk in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows how many laps NAME swam on each of ${n} days.`,
+    unit: "laps",
+    one: "lap",
+    entity: "day",
+    fractional: false,
+    whole: [2, 8],
+    missing: (n, grand) =>
+      `NAME swam ${grand} in all ${n + 1} days. How many laps did NAME swim on day ${n + 1}?`,
+    total: (n) => `How many laps did NAME swim in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
       `The dot plot shows how many miles NAME biked on each of ${n} days.`,
     unit: "miles",
     one: "mile",
@@ -743,22 +846,12 @@ const castContexts: DotContext[] = [
   },
   {
     intro: (n) =>
-      `The dot plot shows the weight, in pounds, of each of ${n} pumpkins NAME picked.`,
-    unit: "pounds",
-    one: "pound",
-    entity: "pumpkin",
-    fractional: true,
-    missing: (n, grand) =>
-      `All ${n + 1} pumpkins weigh ${grand} together. What is the weight of pumpkin ${n + 1}, in pounds?`,
-    total: (n) => `What is the total weight of all ${n} pumpkins, in pounds?`,
-  },
-  {
-    intro: (n) =>
       `The dot plot shows the length, in feet, of each of ${n} jump ropes NAME measured.`,
     unit: "feet",
     one: "foot",
     entity: "rope",
-    fractional: true,
+    fractional: false,
+    whole: [6, 9],
     missing: (n, grand) =>
       `All ${n + 1} jump ropes have a total length of ${grand}. What is the length of rope ${n + 1}, in feet?`,
     total: (n) => `What is the total length of all ${n} jump ropes, in feet?`,
@@ -776,28 +869,6 @@ const castContexts: DotContext[] = [
   },
   {
     intro: (n) =>
-      `The dot plot shows the weight, in pounds, of each of ${n} kittens NAME weighed at the shelter.`,
-    unit: "pounds",
-    one: "pound",
-    entity: "kitten",
-    fractional: true,
-    missing: (n, grand) =>
-      `All ${n + 1} kittens weigh ${grand} together. What is the weight of kitten ${n + 1}, in pounds?`,
-    total: (n) => `What is the total weight of all ${n} kittens, in pounds?`,
-  },
-  {
-    intro: (n) =>
-      `The dot plot shows how many laps NAME swam on each of ${n} days.`,
-    unit: "laps",
-    one: "lap",
-    entity: "day",
-    fractional: false,
-    missing: (n, grand) =>
-      `NAME swam ${grand} in all ${n + 1} days. How many laps did NAME swim on day ${n + 1}?`,
-    total: (n) => `How many laps did NAME swim in all ${n} days?`,
-  },
-  {
-    intro: (n) =>
       `The dot plot shows how many tickets NAME sold on each of ${n} days.`,
     unit: "tickets",
     one: "ticket",
@@ -806,18 +877,6 @@ const castContexts: DotContext[] = [
     missing: (n, grand) =>
       `NAME sold ${grand} in all ${n + 1} days. How many tickets did NAME sell on day ${n + 1}?`,
     total: (n) => `How many tickets did NAME sell in all ${n} days?`,
-  },
-  {
-    intro: (n) =>
-      `The dot plot shows the rainfall, in inches, on each of ${n} days NAME checked the rain gauge.`,
-    unit: "inches",
-    one: "inch",
-    entity: "day",
-    fractional: true,
-    hundredths: true,
-    missing: (n, grand) =>
-      `The gauge collected ${grand} in all ${n + 1} days. How many inches fell on day ${n + 1}?`,
-    total: (n) => `How many inches of rain fell in all ${n} days?`,
   },
   {
     intro: (n) =>
@@ -905,9 +964,10 @@ function hundredthsDot(
     story === "cast"
       ? castContexts.filter((c) => c.fractional && c.hundredths)
       : dotContexts.filter((c) => c.fractional);
-  let ctx = pick(r, pool);
+  let ctx = story === "cast" ? spreadPick(r, pool) : pick(r, pool);
   // Eleven ticks, so (max − min) × 100 = 10, inside the 24-tick scene limit.
-  const axisMin = r(40, 240);
+  const gauge = story === "cast" ? (ctx.gauge ?? [40, 240]) : [40, 240];
+  const axisMin = r(gauge[0], gauge[1]);
   const axisMax = axisMin + 10;
   const count = r(5, 7);
   const units: number[] = [];
@@ -938,6 +998,45 @@ function hundredthsDot(
     story,
   };
 }
+function castDot(
+  r: Random,
+  a: { values: DotModel["values"]; ask: DotModel["ask"] },
+): DotModel {
+  const pool = castContexts.filter((c) => a.values === "whole" || c.fractional);
+  const chosen = spreadPick(r, pool);
+  const d = a.values === "whole" ? 1 : pick(r, [2, 4]);
+  const count = r(5, 7);
+  const [loU, hiU] =
+    a.values === "whole" ? (chosen.whole ?? [2, 9]) : (chosen.mixed ?? [1, 5]);
+  const lo = Math.round(loU * d),
+    hi = Math.round(hiU * d);
+  const units: number[] = [];
+  for (let i = 0; i < count; i++) units.push(r(lo, hi));
+  if (a.values === "mixed" && units.every((u) => u % d === 0))
+    throw new Error("Need three retries");
+  if (new Set(units).size === units.length)
+    throw new Error("Need three retries");
+  if (new Set(units).size < 3) throw new Error("Need three retries");
+  const hidden = r(lo, hi);
+  const total = units.reduce((s, v) => s + v, 0);
+  return {
+    values: a.values,
+    ask: a.ask,
+    ctx: bindName(
+      chosen,
+      storyName((n) => r(0, n - 1)),
+    ),
+    d,
+    units,
+    count,
+    grand: total + hidden,
+    hidden,
+    decimal: false,
+    axisMin: 0,
+    axisMax: 0,
+    story: "cast",
+  };
+}
 function dotModel(
   r: Random,
   a: {
@@ -949,9 +1048,8 @@ function dotModel(
 ): DotModel {
   if (a["data-domain"] === "hundredths")
     return hundredthsDot(r, a.ask, a.story);
-  const pool = (a.story === "cast" ? castContexts : dotContexts).filter(
-    (c) => a.values === "whole" || c.fractional,
-  );
+  if (a.story === "cast") return castDot(r, a);
+  const pool = dotContexts.filter((c) => a.values === "whole" || c.fractional);
   let ctx = pick(r, pool);
   const d = a.values === "whole" ? 1 : pick(r, [2, 4]);
   const count = r(5, 7);
@@ -969,11 +1067,6 @@ function dotModel(
   if (new Set(units).size < 3) throw new Error("Need three retries");
   const hidden = r(lo, hi);
   const total = units.reduce((s, v) => s + v, 0);
-  if (a.story === "cast")
-    ctx = bindName(
-      ctx,
-      storyName((n) => r(0, n - 1)),
-    );
   return {
     values: a.values,
     ask: a.ask,

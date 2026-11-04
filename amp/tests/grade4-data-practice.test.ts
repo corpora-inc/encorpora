@@ -494,7 +494,7 @@ test("scaled-bar-grade4 is a two-step reading", () => {
 test("hundredths dot plots recompute from the marks", () => {
   const asks = ["total", "range", "missing-value"] as const;
   const amount =
-    /^(\d+)(?:\.(\d{2}))? (mile|miles|foot|feet|pound|pounds|inch|inches|book|books|basket|baskets|fish|lap|laps|ticket|tickets)$/;
+    /^(\d+)(?:\.(\d{2}))? (mile|miles|foot|feet|pound|pounds|inch|inches|liter|liters|book|books|basket|baskets|fish|lap|laps|ticket|tickets)$/;
   const unitsOf = (label: string) => {
     const match = label.match(amount);
     assert.ok(match, label);
@@ -515,7 +515,9 @@ test("hundredths dot plots recompute from the marks", () => {
       assert.equal(element.denominator, 100);
       assert.equal(element.decimalPlaces, 2);
       assert.ok(
-        ["miles", "feet", "pounds", "inches"].includes(element.unit ?? ""),
+        ["miles", "feet", "pounds", "inches", "liters"].includes(
+          element.unit ?? "",
+        ),
         element.unit,
       );
       const { ticks } = ticksFrom(element);
@@ -533,7 +535,8 @@ test("hundredths dot plots recompute from the marks", () => {
         assert.match(prompt, /difference between the greatest and the least/);
         assert.equal(unitsOf(label), Math.max(...ticks) - Math.min(...ticks));
       } else {
-        const unitWord = "mile|miles|foot|feet|pound|pounds|inch|inches";
+        const unitWord =
+          "mile|miles|foot|feet|pound|pounds|inch|inches|liter|liters";
         const grand =
           prompt.match(
             new RegExp(`(\\d+(?:\\.\\d{2})? (?:${unitWord})) in all`),
@@ -665,4 +668,37 @@ test("fraction-plot-difference book seeds use many contexts", () => {
     assert.match(prompt, /plan|marks are|diagram|pattern|drawing|kit/, prompt);
   }
   assert.ok(foot > 0);
+});
+
+test("fraction-plot-difference cup amounts fit the container", () => {
+  let cups = 0;
+  for (let i = 0; i < 80; i++) {
+    const problem = generateProblem("fraction-plot-difference", `cup-${i}`);
+    const figure = problem.public.figure;
+    if (figure?.kind !== "line-plot" || figure.unit !== "cups") continue;
+    cups++;
+    const prompt = problem.public.prompt;
+    const amounts = figure.values.map((v) => v / figure.denominator);
+    const within = (lo: number, hi: number) =>
+      amounts.every((v) => v >= lo - 1e-9 && v <= hi + 1e-9);
+    if (/\bpitchers?\b/.test(prompt)) assert.ok(within(4, 8), prompt);
+    else if (/\bpots?\b/.test(prompt)) assert.ok(within(6, 10), prompt);
+    else if (/mug|glass|yogurt/.test(prompt))
+      assert.ok(within(1 / 3, 5 / 3), prompt);
+    else if (/chili|soup/.test(prompt)) assert.ok(within(2 / 3, 5 / 3), prompt);
+    else if (/rice|flour|oatmeal/.test(prompt)) assert.ok(within(1, 3), prompt);
+    else assert.fail(prompt);
+  }
+  assert.ok(cups > 0);
+});
+
+test("dot-plot-arithmetic book seeds use many contexts", () => {
+  const keys = new Set<string>();
+  for (let i = 0; i < 12; i++) {
+    let prompt = generateProblem("dot-plot-arithmetic", `book-${i}`).public
+      .prompt;
+    for (const name of storyNames) prompt = prompt.replaceAll(name, "NAME");
+    keys.add(prompt.split(". ")[0]!);
+  }
+  assert.ok(keys.size >= 6, `${keys.size}\n${[...keys].join("\n")}`);
 });

@@ -131,13 +131,13 @@ const EXTRA_STORY = {
   3: {
     one: "cup",
     many: "cups",
-    item: "serving",
-    items: "servings",
+    item: "bowl",
+    items: "bowls",
     precision: "third of a cup",
     noun: "amount",
     pair: "greatest and least",
     intro:
-      "The line plot shows the amount of rice in some servings, measured to the nearest third of a cup.",
+      "The line plot shows the amount of rice in some bowls, measured to the nearest third of a cup.",
   },
   5: {
     one: "mile",
@@ -184,6 +184,8 @@ const EXTRA_STORY = {
       "The dollhouse plan lists lengths in feet, and the small marks are twelfths of a foot. The line plot shows the lengths of some wall pieces, measured to the nearest twelfth of a foot.",
   },
 } as const;
+/** Inclusive numerator bounds and axis ends, in units of 1/d. */
+type Band = { lo: number; hi: number; start: number; end: number };
 type ExtraVivid = {
   one: string;
   many: string;
@@ -194,8 +196,20 @@ type ExtraVivid = {
   pair: "greatest and least" | "longest and shortest";
   /** A context the 12-seed sample can tell apart from the others. */
   key: string;
+  /** When set, plotted amounts stay inside this container. */
+  band?: Band;
   vivid: (name: string) => string;
 };
+/** A mug or glass holds about 1/3 to 1 2/3 cups. The axis runs to 2 cups. */
+const mugBand: Band = { lo: 1, hi: 5, start: 0, end: 6 };
+/** A recipe bowl of flour or rice holds about 1 to 3 cups. */
+const bowlBand: Band = { lo: 3, hi: 9, start: 0, end: 9 };
+/** A soup or chili bowl holds about 2/3 to 1 2/3 cups. */
+const soupBand: Band = { lo: 2, hi: 5, start: 0, end: 6 };
+/** A small pitcher holds about 4 to 8 cups. */
+const pitcherBand: Band = { lo: 12, hi: 24, start: 12, end: 24 };
+/** A pot on the stove holds about 6 to 10 cups. */
+const potBand: Band = { lo: 18, hi: 30, start: 18, end: 30 };
 const cup = {
   one: "cup",
   many: "cups",
@@ -240,6 +254,7 @@ const EXTRA_VIVID: Record<keyof typeof EXTRA_STORY, readonly ExtraVivid[]> = {
       item: "bowl",
       items: "bowls",
       key: "rice",
+      band: bowlBand,
       vivid: (name) =>
         `${name} filled bowls with rice for a class lunch. Each bowl was measured to the nearest third of a cup. The line plot shows those amounts.`,
     },
@@ -248,22 +263,25 @@ const EXTRA_VIVID: Record<keyof typeof EXTRA_STORY, readonly ExtraVivid[]> = {
       item: "bowl",
       items: "bowls",
       key: "oatmeal",
+      band: { lo: 3, hi: 6, start: 0, end: 6 },
       vivid: (name) =>
         `${name} served oatmeal at breakfast. Each bowl was measured to the nearest third of a cup. The line plot shows those amounts.`,
     },
     {
       ...cup,
-      item: "scoop",
-      items: "scoops",
+      item: "bowl",
+      items: "bowls",
       key: "flour",
+      band: bowlBand,
       vivid: (name) =>
-        `${name} scooped flour for pancake batter. Each scoop was measured to the nearest third of a cup. The line plot shows those amounts.`,
+        `${name} filled bowls with flour for pancake batter. Each bowl was measured to the nearest third of a cup. The line plot shows those amounts.`,
     },
     {
       ...cup,
       item: "mug",
       items: "mugs",
       key: "cocoa",
+      band: mugBand,
       vivid: (name) =>
         `${name} poured hot cocoa for the class. Each mug was measured to the nearest third of a cup. The line plot shows those amounts.`,
     },
@@ -272,6 +290,7 @@ const EXTRA_VIVID: Record<keyof typeof EXTRA_STORY, readonly ExtraVivid[]> = {
       item: "glass",
       items: "glasses",
       key: "lemonade",
+      band: mugBand,
       vivid: (name) =>
         `${name} mixed lemonade for the picnic. Each glass was measured to the nearest third of a cup. The line plot shows those amounts.`,
     },
@@ -280,24 +299,63 @@ const EXTRA_VIVID: Record<keyof typeof EXTRA_STORY, readonly ExtraVivid[]> = {
       item: "serving",
       items: "servings",
       key: "yogurt",
+      band: mugBand,
       vivid: (name) =>
         `${name} portioned yogurt for smoothies. Each serving was measured to the nearest third of a cup. The line plot shows those amounts.`,
     },
     {
       ...cup,
-      item: "serving",
-      items: "servings",
+      item: "bowl",
+      items: "bowls",
       key: "chili",
+      band: soupBand,
       vivid: (name) =>
-        `${name} measured beans for chili. Each serving was measured to the nearest third of a cup. The line plot shows those amounts.`,
+        `${name} ladled chili into bowls. Each bowl was measured to the nearest third of a cup. The line plot shows those amounts.`,
     },
     {
       ...cup,
       item: "bowl",
       items: "bowls",
       key: "soup",
+      band: soupBand,
       vivid: (name) =>
         `${name} ladled soup for the potluck. Each bowl was measured to the nearest third of a cup. The line plot shows those amounts.`,
+    },
+    {
+      ...cup,
+      item: "pitcher",
+      items: "pitchers",
+      key: "lemonade-pitcher",
+      band: pitcherBand,
+      vivid: (name) =>
+        `${name} filled pitchers with lemonade for the picnic. Each pitcher was measured to the nearest third of a cup. The line plot shows those amounts.`,
+    },
+    {
+      ...cup,
+      item: "pitcher",
+      items: "pitchers",
+      key: "juice-pitcher",
+      band: pitcherBand,
+      vivid: (name) =>
+        `${name} poured juice into pitchers for snack time. Each pitcher was measured to the nearest third of a cup. The line plot shows those amounts.`,
+    },
+    {
+      ...cup,
+      item: "pot",
+      items: "pots",
+      key: "soup-pot",
+      band: potBand,
+      vivid: (name) =>
+        `${name} simmered soup in pots for the potluck. Each pot was measured to the nearest third of a cup. The line plot shows those amounts.`,
+    },
+    {
+      ...cup,
+      item: "pot",
+      items: "pots",
+      key: "cocoa-pot",
+      band: potBand,
+      vivid: (name) =>
+        `${name} warmed cocoa in pots for the class party. Each pot was measured to the nearest third of a cup. The line plot shows those amounts.`,
     },
   ],
   5: [
@@ -694,28 +752,75 @@ function fractionPlot(r: Random): Draft {
   );
 }
 
-function vividExtraStory(
+function plainBand(d: number): Band {
+  if (d === 3) return bowlBand;
+  const end = d === 5 || d === 10 ? 10 : 12;
+  return { lo: 1, hi: end, start: 0, end };
+}
+/** Draw marks inside one container's range. The shared `sample` stays on the inch path. */
+function sampleBand(r: Random, band: Band): number[] {
+  const width = band.hi - band.lo + 1;
+  const countHi = Math.min(12, Math.max(6, width * 2));
+  for (let attempt = 0; attempt < 40; attempt++) {
+    const count = r(6, countHi);
+    const values = Array.from({ length: count }, () => r(band.lo, band.hi));
+    const tallest = Math.max(...stackHeights(values).values());
+    if (tallest <= MAX_STACK && new Set(values).size >= 3) return values;
+  }
+  const mid = Math.min(band.hi, band.lo + 1);
+  const high = Math.min(band.hi, band.lo + 2);
+  return [band.lo, band.lo, mid, mid, high, band.hi];
+}
+type ToldStory = {
+  one: string;
+  many: string;
+  item: string;
+  items: string;
+  noun: "amount" | "distance" | "length";
+  pair: "greatest and least" | "longest and shortest";
+  intro: string;
+  name?: string;
+};
+function rangedExtra(
+  r: Random,
   d: keyof typeof EXTRA_STORY,
-  values: readonly number[],
-) {
+  setting: "plain" | "vivid",
+): Draft {
+  const axis = plainBand(d);
+  if (setting === "plain")
+    return extraDifference(
+      r,
+      d,
+      sampleBand(r, axis),
+      "plain",
+      EXTRA_STORY[d],
+      axis,
+    );
   const pool = EXTRA_VIVID[d];
-  const mix = values.reduce(
-    (sum, value, index) => sum + value * (index + 3),
-    d * 17,
+  const tale =
+    pool[
+      (r(0, pool.length - 1) + r(0, pool.length * pool.length - 1)) %
+        pool.length
+    ]!;
+  const name = storyNames[r(0, storyNames.length - 1)]!;
+  const band = tale.band ?? axis;
+  return extraDifference(
+    r,
+    d,
+    sampleBand(r, band),
+    "vivid",
+    {
+      one: tale.one,
+      many: tale.many,
+      item: tale.item,
+      items: tale.items,
+      noun: tale.noun,
+      pair: tale.pair,
+      intro: tale.vivid(name),
+      name,
+    },
+    band,
   );
-  const tale = pool[mix % pool.length]!;
-  const name = storyNames[mix % storyNames.length]!;
-  return {
-    one: tale.one,
-    many: tale.many,
-    item: tale.item,
-    items: tale.items,
-    precision: tale.precision,
-    noun: tale.noun,
-    pair: tale.pair,
-    intro: tale.vivid(name),
-    name,
-  };
 }
 /** A reason to add the two extreme amounts, in the situation's own words. */
 function combinedAsk(story: {
@@ -739,14 +844,14 @@ function extraDifference(
   d: keyof typeof EXTRA_STORY,
   values: number[],
   setting: "plain" | "vivid",
+  story: ToldStory,
+  span: Band,
 ): Draft {
-  const story =
-    setting === "vivid" ? vividExtraStory(d, values) : EXTRA_STORY[d];
   const figure: SemanticFigure = {
     kind: "line-plot",
     denominator: d,
-    start: 0,
-    end: d === 5 || d === 10 ? 10 : 12,
+    start: span.start,
+    end: span.end,
     values,
     mark: "x",
     unit: story.many,
@@ -825,6 +930,13 @@ function plotDifference(
   denomAxis: string,
   setting: "plain" | "vivid",
 ): Draft {
+  // Cups, miles, and feet draw their own ranges. The inch path below is the
+  // legacy surface: its first random call is still the object index.
+  const extra =
+    denomAxis in EXTRA_DENOM
+      ? EXTRA_DENOM[denomAxis as keyof typeof EXTRA_DENOM]
+      : undefined;
+  if (extra) return rangedExtra(r, extra, setting);
   const picked = r(
     0,
     (setting === "vivid" ? VIVID_INCH.length : lengthContexts.length) - 1,
@@ -833,18 +945,11 @@ function plotDifference(
   const context = vivid
     ? { item: vivid.item, items: vivid.items }
     : lengthContexts[picked]!;
-  // The legacy value draws the denominator first, exactly as before this axis.
-  // A cast would hide "fourths-eighths", so the legacy denominator would type as unreachable.
-  const extra =
-    denomAxis in EXTRA_DENOM
-      ? EXTRA_DENOM[denomAxis as keyof typeof EXTRA_DENOM]
-      : undefined;
-  const d = extra ?? (r(0, 1) ? 8 : 4);
-  const first = extra ? 0 : r(0, d === 8 ? 2 : 3),
-    start = extra ? 0 : first * d,
-    end = extra ? (d === 5 || d === 10 ? 10 : 12) : start + 8;
+  const d = r(0, 1) ? 8 : 4;
+  const first = r(0, d === 8 ? 2 : 3),
+    start = first * d,
+    end = start + 8;
   const values = sample(r, r(6, 12), Math.max(start, 1), end);
-  if (extra) return extraDifference(r, extra, values, setting);
   const figure: SemanticFigure = {
     kind: "line-plot",
     denominator: d,

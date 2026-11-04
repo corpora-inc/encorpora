@@ -239,7 +239,7 @@ DOT_HEADER = re.compile(r'The dot plot shows (?:the (?:length|weight), in (feet|
 UNITS = {
     'feet': 'foot', 'pounds': 'pound', 'miles': 'mile', 'points': 'point',
     'inches': 'inch', 'books': 'book', 'baskets': 'basket', 'fish': 'fish',
-    'laps': 'lap', 'tickets': 'ticket',
+    'laps': 'lap', 'tickets': 'ticket', 'minutes': 'minute', 'liters': 'liter',
 }
 
 
@@ -263,6 +263,10 @@ def dot_parts(prompt):
         unit = 'laps'
     elif 'how many tickets' in head:
         unit = 'tickets'
+    elif 'how many minutes' in head:
+        unit = 'minutes'
+    elif 'how many liters' in head:
+        unit = 'liters'
     elif 'how many points' in head:
         unit = 'points'
     else:
@@ -320,7 +324,7 @@ def solve_dots(public):
     if missing:
         number, item = int(missing[1]), int(missing[2])
         require(number == count + 1 and item == number, 'The missing item must be the one after the plotted ones')
-        total_m = re.search(rf'{amount} (?:miles|books|baskets|fish|laps|tickets|points|pounds|feet|inches)', question)
+        total_m = re.search(rf'{amount} (?:miles|books|baskets|fish|laps|tickets|points|pounds|feet|inches|minutes|liters)', question)
         require(total_m is not None, f'Unrecognized question: {question}')
         value = parse_amount(total_m[1]) - sum(dots_of(public, count), F(0))
         require(value > 0, 'The missing value must be positive')

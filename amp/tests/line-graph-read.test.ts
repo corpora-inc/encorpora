@@ -171,13 +171,13 @@ test("dot-plot-arithmetic: the keyed answer follows from the plotted dots", () =
     else if (ask === "range") expected = sub(sorted.at(-1)!, sorted[0]!);
     else {
       const stated = prompt.match(
-        /(?:\$([^$]+)\$|(\d+(?:\.\d+)?)) (?:miles|points|feet|pounds|inches|books|baskets|fish|laps|tickets)/,
+        /(?:\$([^$]+)\$|(\d+(?:\.\d+)?)) (?:miles|points|feet|pounds|inches|books|baskets|fish|laps|tickets|minutes|liters)/,
       )!;
       const grand = fraction(stated[1] ? `$${stated[1]}$` : stated[2]!);
       expected = sub(grand, sum);
     }
     const text = label(p).replace(
-      / (miles?|points?|feet|foot|pounds?|inches?|inch|books?|baskets?|fish|laps?|tickets?)$/,
+      / (miles?|points?|feet|foot|pounds?|inches?|inch|books?|baskets?|fish|laps?|tickets?|minutes?|liters?)$/,
       "",
     );
     assert.ok(eq(fraction(text), expected), `${p.public.seed} ${ask}`);
