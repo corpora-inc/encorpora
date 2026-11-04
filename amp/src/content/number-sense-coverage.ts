@@ -38,7 +38,7 @@ export const numberSenseFacetMappings: readonly FacetMapping[] = [
   [
     "round-large",
     "large-place-value.rounding-large",
-    "Five- and six-digit numbers rounded to the hundred, thousand or ten thousand, including halfway values, values just below halfway and carries.",
+    "Whole numbers rounded to the nearest ten, hundred, thousand, ten thousand, or hundred thousand, including five- and six-digit numbers, numbers from 1,000 to 10,000, halfway values, values just below halfway, and carries.",
   ],
   [
     "multiply-power-of-ten",

@@ -33,6 +33,10 @@ export interface Axis<V extends string = string> {
    * declares (a drawn circle graph where the legacy surface shows a table).
    * For a client without it, the axis shows its legacy value instead. */
   readonly needs?: Readonly<Partial<Record<V, FigureCapability>>>;
+  /** A draw of `legacy` is left out of the saved variant id and axes record,
+   * so a problem stored before this axis existed keeps that variant id.
+   * A newer value is recorded. */
+  readonly silentLegacy?: boolean;
 }
 export type AxisSet = Readonly<Record<string, Axis>>;
 export type AxisValues<A extends AxisSet> = {
@@ -51,6 +55,7 @@ export function defineAxis<const V extends string>(
     legacy?: NoInfer<V>;
     weights?: readonly number[];
     needs?: Partial<Record<NoInfer<V>, FigureCapability>>;
+    silentLegacy?: boolean;
   } = {},
 ): Axis<V> {
   if (!axisIdPattern.test(id)) throw new Error(`Bad axis id ${id}`);
@@ -78,6 +83,7 @@ export function defineAxis<const V extends string>(
     legacy,
     ...(weights ? { weights } : {}),
     ...(needs ? { needs } : {}),
+    ...(options.silentLegacy ? { silentLegacy: true } : {}),
   };
 }
 

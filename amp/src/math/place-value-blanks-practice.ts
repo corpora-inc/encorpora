@@ -68,7 +68,7 @@ export const placeValueBlanksTemplates: readonly TemplateMetadata[] = [
     gradeBand: "3–5",
     ...multiPartCapability,
     description:
-      "Write a five-digit number as a sum by choosing the value of each nonzero digit, either as the value itself or as the digit times its place; distractors put the digit in the wrong place.",
+      "Write a whole number as a sum by choosing the value of each nonzero digit, either as the value itself or as the digit times its place. The usual number has five digits. Other draws use six digits, seven digits, or up to ten digits.",
   },
   {
     id: "expanded-decimal-slots",
@@ -88,7 +88,7 @@ export const placeValueBlanksTemplates: readonly TemplateMetadata[] = [
     gradeBand: "3–5",
     ...multiPartCapability,
     description:
-      "Choose less than, equal to or greater than for two comparisons of whole numbers, one of them an equal pair written two ways, with a larger number that has smaller trailing digits.",
+      "Choose less than, equal to, or greater than for two comparisons of whole numbers, one of them an equal pair written two ways. The usual pairs have three to five digits. Other draws use six digits, one million, or up to ten digits.",
   },
   {
     id: "digit-value-blanks",
@@ -163,7 +163,7 @@ export const expandedWholeAxes = {
   magnitude: defineAxis(
     "magnitude",
     ["five", "six", "seven", "billions"] as const,
-    { legacy: "five", weights: [8, 4, 2, 1] },
+    { legacy: "five", weights: [8, 4, 2, 1], silentLegacy: true },
   ),
 } as const;
 const timesTex = (digit: number, value: number) =>
@@ -179,7 +179,7 @@ export const compareSymbolAxes = {
   magnitude: defineAxis(
     "magnitude",
     ["as-drawn", "six-digit", "million", "billions"] as const,
-    { legacy: "as-drawn", weights: [8, 4, 2, 1] },
+    { legacy: "as-drawn", weights: [8, 4, 2, 1], silentLegacy: true },
   ),
 } as const;
 const SYMBOLS = ["$<$", "$=$", "$>$"] as const;

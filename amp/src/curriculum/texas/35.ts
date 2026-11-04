@@ -880,9 +880,14 @@ const courses: readonly TexasCourse[] = [
         "g4-compare-whole",
         ["2.C"],
         ["large-place-value", "compare-three-digit"],
-        ["compare-multidigit", "three-digit-symbol"],
-        "Compare large whole numbers",
-        "Choose the greater or lesser multidigit number; symbols appear only for three-digit numbers. Ordering a set and numbers to a billion are not certified.",
+        [
+          "compare-symbol-blanks",
+          "order-whole-numbers-slots",
+          "compare-multidigit",
+          "three-digit-symbol",
+        ],
+        "Compare or order large whole numbers",
+        "compare-symbol-blanks records the symbol. The usual pairs are three to five digits; other draws use six digits, one million, or up to ten digits, and the longest of those passes 1,000,000,000. order-whole-numbers-slots orders three, four, or five five-digit numbers. compare-multidigit asks which number is greater, up to 999,999. three-digit-symbol records a symbol for three-digit numbers. Numbers through 1,000,000,000 are not certified on every item.",
       ],
       [
         "g4-round-whole",

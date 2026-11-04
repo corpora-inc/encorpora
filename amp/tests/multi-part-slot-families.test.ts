@@ -86,12 +86,22 @@ test("problems are deterministic, valid and reach every axis value", () => {
           `${id} ${seed}: placeholder`,
         );
       }
-      for (const [axis, { values }] of Object.entries(axes))
+      for (const [axis, spec] of Object.entries(axes)) {
+        // A silent legacy value is omitted from the saved variant, so the
+        // pre-axis id stays intact. The other values of that axis still appear.
+        const want = (
+          spec.silentLegacy
+            ? spec.values.filter((value) => value !== spec.legacy)
+            : spec.values
+        )
+          .map(String)
+          .sort();
         assert.deepEqual(
           [...(reached.get(axis) ?? [])].sort(),
-          [...values].sort(),
+          want,
           `${id}: ${axis}`,
         );
+      }
       assert.ok(
         prompts.size >= 30,
         `${id}: only ${prompts.size} distinct problems`,

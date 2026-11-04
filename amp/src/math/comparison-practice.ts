@@ -7,7 +7,7 @@ import type {
 } from "./contracts";
 import { hasHave, isAre } from "./agreement";
 import { defineAxis } from "./variation/axes";
-import { generateWithAxes } from "./variation/legacy";
+import { generateWithAxes, omitLegacyVariant } from "./variation/legacy";
 
 /** Digit length for `multidigit-digit-value`. `as-drawn` keeps four to six digits. */
 export const digitMagnitudeAxes = {
@@ -283,8 +283,10 @@ export function generateComparisonProblem(
 ): GeneratedProblem {
   if (templateId !== "multidigit-digit-value")
     return comparisonProblem(templateId, seed, "as-drawn");
-  return generateWithAxes(templateId, seed, digitMagnitudeAxes, (values) =>
-    comparisonProblem(templateId, seed, values.magnitude),
+  return omitLegacyVariant(
+    generateWithAxes(templateId, seed, digitMagnitudeAxes, (values) =>
+      comparisonProblem(templateId, seed, values.magnitude),
+    ),
   );
 }
 

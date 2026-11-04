@@ -38,3 +38,11 @@ export function generateWithAxes<A extends AxisSet>(
           .slice(0, 64));
   return { ...problem, variant: { id, axes: axisRecord(values) } };
 }
+
+/** A family that stored no variant before its axis existed keeps that shape
+ * when every axis is the legacy value. A newer value still records its token. */
+export function omitLegacyVariant(problem: GeneratedProblem): GeneratedProblem {
+  if (problem.variant?.id !== "legacy") return problem;
+  const { variant: _variant, ...rest } = problem;
+  return rest;
+}

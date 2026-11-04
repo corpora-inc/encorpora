@@ -29,7 +29,7 @@ export const numberOrderSlotsTemplates: readonly TemplateMetadata[] = [
     gradeBand: "3–5",
     ...multiPartCapability,
     description:
-      "Compare three five-digit numbers from the left, where the first difference can sit in the ten-thousands, thousands or hundreds place, and choose the item for the smallest, middle and greatest position in either order.",
+      "Order three, four, or five five-digit numbers from the left, where the first difference can sit in the ten-thousands, thousands, or hundreds place, and choose the item for each position in either order.",
   },
   {
     id: "order-fractions-slots",
@@ -104,6 +104,7 @@ export const wholeAxes = {
   count: defineAxis("count", ["three", "four", "five"] as const, {
     legacy: "three",
     weights: [2, 2, 3],
+    silentLegacy: true,
   }),
 } as const;
 const PLACE_INDEX = { "ten-thousands": 0, thousands: 1, hundreds: 2 } as const;

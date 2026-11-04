@@ -8,7 +8,7 @@ import { formatWhole } from "./comparison-practice";
 import { act, lessonStep, numberLine, scene, step } from "./scene/author";
 import type { Element, Scene } from "./scene/spec";
 import { defineAxis } from "./variation/axes";
-import { generateWithAxes } from "./variation/legacy";
+import { generateWithAxes, omitLegacyVariant } from "./variation/legacy";
 
 /** A window of the hundred chart as a scene: numbered squares, one left
  * empty and shaded. The empty square carries no value. */
@@ -115,7 +115,7 @@ const definitions = [
     "Round large numbers",
     "large-place-value",
     "3–5",
-    "Round a whole number up to 999,999 to the nearest hundred, thousand or ten thousand.",
+    "Round a whole number to the nearest ten, hundred, thousand, ten thousand, or hundred thousand. The usual draw is a five- or six-digit number to the hundred, thousand, or ten thousand.",
   ],
   [
     "multiply-power-of-ten",
@@ -242,8 +242,10 @@ export function generateNumberSenseProblem(
 ): GeneratedProblem {
   if (templateId !== "round-large")
     return numberSenseProblem(templateId, seed, "as-drawn");
-  return generateWithAxes(templateId, seed, roundLargeAxes, (values) =>
-    numberSenseProblem(templateId, seed, values.place),
+  return omitLegacyVariant(
+    generateWithAxes(templateId, seed, roundLargeAxes, (values) =>
+      numberSenseProblem(templateId, seed, values.place),
+    ),
   );
 }
 
