@@ -893,26 +893,25 @@ test("shape angle properties keep the parallel and perpendicular surface", () =>
   };
   for (let i = 0; i < 30; i++) {
     const seed = `legacy-${i}`;
-    const sides = isLegacy(
-      shapeSidesAxes,
-      chooseAxes("shape-sides-select", seed, shapeSidesAxes),
-    );
+    const axes = chooseAxes("shape-sides-select", seed, shapeSidesAxes);
+    const sides = axes["angle-property"] === "sides" && axes.voice === "plain";
     const problem = generateProblem("shape-sides-select", seed);
     const digest = hashOf(problem);
     check(problem);
+    const angleAsk =
+      problem.public.prompt.includes("obtuse angle") ||
+      problem.public.prompt.includes("no right angle");
     if (sides) {
       legacy++;
       assert.equal(digest, SHAPE_LEGACY[i], seed);
       assert.equal(problem.variant?.axes?.["angle-property"], "sides");
-      assert.equal(problem.public.prompt.includes("obtuse angle"), false);
-      assert.equal(problem.public.prompt.includes("no right angle"), false);
+      assert.equal(problem.variant?.axes?.voice, undefined);
+      assert.equal(angleAsk, false);
     } else {
       changed++;
       assert.notEqual(digest, SHAPE_LEGACY[i], seed);
-      assert.ok(
-        problem.public.prompt.includes("obtuse angle") ||
-          problem.public.prompt.includes("no right angle"),
-      );
+      if (axes["angle-property"] === "sides") assert.equal(angleAsk, false);
+      else assert.equal(angleAsk, true);
     }
   }
   for (let i = 30; changed === 0 && i < 200; i++) {
