@@ -38,7 +38,7 @@ const protractorPlaces = [
   { id: "gate", thing: "a garden gate", along: "the fence" },
   { id: "easel", thing: "an art easel", along: "the floor" },
   { id: "wheelchair", thing: "a wheelchair ramp", along: "the sidewalk" },
-  { id: "clock", thing: "the clock hands", along: "the line to 12" },
+  { id: "laptop", thing: "an open laptop", along: "the keyboard" },
 ] as const;
 
 export function protractorPrompt(seed: string, k: number): string {
@@ -47,9 +47,9 @@ export function protractorPrompt(seed: string, k: number): string {
   const angle = deg(k);
   const frames = [
     `${name} measures ${place.thing} with a protractor. Ray $BA$ lies along ${place.along}. Which other ray makes a ${angle} angle with ray $BA$?`,
-    `The protractor sits on ${place.thing}. Ray $BA$ lies along ${place.along}. Which ray is ${angle} from ray $BA$?`,
+    `${name} sets the protractor on ${place.thing}. Ray $BA$ lies along ${place.along}. Which ray is ${angle} from ray $BA$?`,
     `${name} checks ${place.thing}. Follow the protractor from ray $BA$. Which ray shows ${angle}?`,
-    `Look at the protractor on ${place.thing}. Ray $BA$ lies along ${place.along}. Find the ray that opens ${angle} from ray $BA$.`,
+    `${name} looks at the protractor on ${place.thing}. Ray $BA$ lies along ${place.along}. Find the ray that opens ${angle} from ray $BA$.`,
   ];
   return spreadPick(seed, "protractor-frame", frames);
 }
@@ -79,7 +79,12 @@ export function adjacentPrompt(
 ): string {
   const name = storyNameFor(seed, "adjacent-name");
   const scene = spreadPick(seed, "adjacent-scene", adjacentScenes);
-  const core = `Angle $${wholeName}$ measures ${whole}°. Angle $${knownName}$ measures ${known}°. The measure of angle $${missingName}$ is $x$ degrees.`;
+  const cores = [
+    `Angle $${wholeName}$ measures ${whole}°. Angle $${knownName}$ measures ${known}°. The measure of angle $${missingName}$ is $x$ degrees.`,
+    `The whole angle $${wholeName}$ is ${whole}°. The known part $${knownName}$ is ${known}°. Angle $${missingName}$ is $x$ degrees.`,
+    `Angle $${wholeName}$ measures ${whole}°. Inside it, angle $${knownName}$ measures ${known}°. Angle $${missingName}$ is $x$ degrees.`,
+    `Start from angle $${wholeName}$, which measures ${whole}°. Angle $${knownName}$ measures ${known}°. The measure of angle $${missingName}$ is $x$ degrees.`,
+  ];
   const questions = [
     "Which equation is true?",
     "Which equation finds $x$?",
@@ -87,27 +92,41 @@ export function adjacentPrompt(
     "Choose the equation that is true.",
   ];
   const question = spreadPick(seed, "adjacent-question", questions);
-  return `${name} ${scene}. ${core} ${question}`;
+  return `${name} ${scene}. ${spreadPick(seed, "adjacent-core", cores)} ${question}`;
 }
 
-const benchmarkScenes = [
-  (name: string) => `${name} opens a door.`,
+const narrowScenes = [
   (name: string) => `${name} looks at a skateboard ramp.`,
   (name: string) => `${name} holds one slice of pizza.`,
   (name: string) => `${name} opens a pair of scissors.`,
   (name: string) => `${name} leans a ladder against a wall.`,
   (name: string) => `${name} flies a kite.`,
-  (name: string) => `The hands on ${name}'s clock form an opening.`,
-  (name: string) => `${name} props a window open.`,
+  (name: string) => `The hands on ${name}'s clock are apart.`,
   (name: string) => `${name} sets a ramp for a toy car.`,
-  (name: string) => `${name} opens a garden gate.`,
-  (name: string) => `${name} bends a pipe cleaner.`,
   (name: string) => `${name} turns a skateboard.`,
 ] as const;
+const squareScenes = [
+  (name: string) => `${name} opens a door.`,
+  (name: string) => `${name} opens a book.`,
+  (name: string) => `${name} props a window open.`,
+  (name: string) => `${name} opens a laptop.`,
+  (name: string) => `${name} opens a garden gate.`,
+  (name: string) => `${name} sets up an art easel.`,
+] as const;
+const flatScenes = [
+  (name: string) => `${name} opens a book.`,
+  (name: string) => `${name} swings a door.`,
+  (name: string) => `${name} opens a laptop.`,
+  (name: string) => `${name} holds both arms out from the shoulders.`,
+  (name: string) => `${name} looks along a garden path.`,
+  (name: string) => `${name} unfolds a map.`,
+] as const;
 
-export function benchmarkPrompt(seed: string): string {
+export function benchmarkPrompt(seed: string, nearest: number): string {
   const name = storyNameFor(seed, "benchmark-name");
-  const scene = spreadPick(seed, "benchmark-scene", benchmarkScenes)(name);
+  const pool =
+    nearest === 180 ? flatScenes : nearest === 90 ? squareScenes : narrowScenes;
+  const scene = spreadPick(seed, "benchmark-scene", pool)(name);
   const questions = [
     "Which benchmark is this angle nearest?",
     "Which benchmark is closest to this opening?",
@@ -119,17 +138,17 @@ export function benchmarkPrompt(seed: string): string {
 
 const triangleObjects = [
   "birdhouse roof",
-  "sandwich",
+  "shelf bracket",
   "sail",
   "kite panel",
   "bridge support",
-  "pennant",
-  "tortilla chip",
+  "road sign",
+  "floor tile",
   "paper airplane wing",
   "garden flag",
-  "scarf corner",
+  "set square",
   "ramp brace",
-  "nacho",
+  "warning sign",
 ] as const;
 
 export function triangleFocus(seed: string): { name: string; object: string } {
@@ -142,32 +161,35 @@ export function triangleFocus(seed: string): { name: string; object: string } {
 export function trianglePrompt(seed: string): string {
   const { name, object } = triangleFocus(seed);
   const frames = [
-    `${name} built a ${object}. The triangle is marked with tick marks for equal sides and a square for a right angle. Fill in the two blanks.`,
-    `Look at the tick marks on ${name}'s ${object}. A square mark means a right angle. Name the triangle by its sides and by its angles.`,
-    `${name} cut a triangular ${object}. Tick marks show equal sides, and a square shows a right angle. Fill in both blanks.`,
-    `The tick marks on this ${object} show which sides match. ${name} also checks for a square right-angle mark. How should the two blanks be filled?`,
+    `${name} built a ${object}. Tick marks show equal sides. A square mark shows a right angle when one is there. Fill in the two blanks.`,
+    `Look at the tick marks on ${name}'s ${object}. Check whether any corner has a square right-angle mark. Name the triangle by its sides and by its angles.`,
+    `${name} cut a triangular ${object}. Tick marks show equal sides. Look for a square mark before you name the angles. Fill in both blanks.`,
+    `The tick marks on this ${object} show which sides match. ${name} checks the corners for a square right-angle mark. How should the two blanks be filled?`,
   ];
   return spreadPick(seed, "triangle-frame", frames);
 }
 
-const quadObjects = [
-  "sign",
-  "floor tile",
-  "badge",
-  "tray",
-  "cloth patch",
-  "place mat",
-  "index card",
-  "window",
-  "sticker",
-  "flag",
-  "name tag",
-  "garden bed",
-] as const;
+const quadObjects: Record<string, readonly string[]> = {
+  square: ["floor tile", "coaster", "stamp", "cracker"],
+  rectangle: ["window", "sign", "book cover", "place mat"],
+  rhombus: ["kite panel", "diamond patch", "folded note", "cloth patch"],
+  parallelogram: ["slanted roof shingle", "folded card", "ramp side", "badge"],
+  trapezoid: ["lampshade panel", "garden bed", "bag flap", "bridge side"],
+};
 
-export function quadrilateralPrompt(seed: string): string {
-  const name = storyNameFor(seed, "quad-name");
-  const object = spreadPick(seed, "quad-object", quadObjects);
+export function quadrilateralFocus(
+  seed: string,
+  kind: string,
+): { name: string; object: string } {
+  const objects = quadObjects[kind] ?? quadObjects.rectangle!;
+  return {
+    name: storyNameFor(seed, "quad-name"),
+    object: spreadPick(seed, "quad-object", objects),
+  };
+}
+
+export function quadrilateralPrompt(seed: string, kind: string): string {
+  const { name, object } = quadrilateralFocus(seed, kind);
   const frames = [
     `${name} painted a ${object} this shape. What is the most exact name for this quadrilateral?`,
     `Look at the marks on ${name}'s ${object}. What is the most exact name for this quadrilateral?`,
@@ -320,16 +342,16 @@ export const compositeJobs: readonly CompositeJob[] = [
     ],
   },
   {
-    id: "desk",
+    id: "cutting-mat",
     measure: "area",
     unit: "cm",
     w: [20, 32],
     h: [14, 24],
     frames: [
       (name, noun) =>
-        `${name} is covering an L-shaped desk with a mat. The dashed line splits the desktop into two rectangles. What is the area, in ${noun}?`,
+        `${name} is cutting an L-shaped cutting mat. The dashed line splits the mat into two rectangles. What is the area, in ${noun}?`,
       (name, noun) =>
-        `The desk top is an L. ${name} splits it along the dashed line to find how much mat to cut. What is the area, in ${noun}?`,
+        `The cutting mat is an L. ${name} splits it along the dashed line to see how much material to use. What is the area, in ${noun}?`,
     ],
   },
   {
@@ -346,16 +368,16 @@ export const compositeJobs: readonly CompositeJob[] = [
     ],
   },
   {
-    id: "mural",
+    id: "poster-board",
     measure: "area",
     unit: "cm",
     w: [28, 36],
     h: [18, 28],
     frames: [
       (name, noun) =>
-        `${name} is painting an L-shaped mural board. The dashed line splits the board into two rectangles. What is the area, in ${noun}?`,
+        `${name} is painting an L-shaped poster board. The dashed line splits the board into two rectangles. What is the area, in ${noun}?`,
       (name, noun) =>
-        `The mural board is an L made of two rectangles. ${name} wants the painted surface. What is the area, in ${noun}?`,
+        `How much of the L-shaped poster board will ${name} paint? The dashed line splits it into two rectangles. What is the area, in ${noun}?`,
     ],
   },
 ];
@@ -511,32 +533,63 @@ export function formulaAsk(
   return spreadPick(seed, "formula-ask", frames);
 }
 
-const classifyScenes = [
-  (name: string) =>
-    `${name} opens a door. What kind of angle does the door make with the wall?`,
-  (name: string) =>
-    `${name} looks at a skateboard ramp. What kind of angle does the ramp make with the ground?`,
-  (name: string) =>
-    `The hands on ${name}'s clock form this opening. What kind of angle is it?`,
-  (name: string) =>
-    `${name} opens a pair of scissors. What kind of angle is between the blades?`,
-  (name: string) =>
-    `${name} looks at the tip of a pizza slice. What kind of angle is it?`,
-  (name: string) =>
-    `${name} leans a ladder on a wall. What kind of angle does the ladder make with the ground?`,
-  (name: string) =>
-    `${name} flies a kite. What kind of angle does the string make with the ground?`,
-  (name: string) =>
-    `${name} props a window open. What kind of angle does it make with the sill?`,
-  (name: string) =>
-    `${name} sets a ramp for a toy car. What kind of angle does the ramp make with the floor?`,
-  (name: string) =>
-    `${name} bends a pipe cleaner. What kind of angle is at the bend?`,
-  (name: string) =>
-    `${name} opens a book. What kind of angle do the covers make?`,
-  (name: string) =>
-    `${name} turns a skateboard. What kind of angle is the turn?`,
-] as const;
+const classifyByKind: Record<string, readonly ((name: string) => string)[]> = {
+  acute: [
+    (name) =>
+      `${name} looks at a skateboard ramp. What kind of angle does the ramp make with the ground?`,
+    (name) =>
+      `${name} opens a pair of scissors. What kind of angle is between the blades?`,
+    (name) =>
+      `${name} looks at the tip of a pizza slice. What kind of angle is it?`,
+    (name) =>
+      `${name} leans a ladder on a wall. What kind of angle does the ladder make with the ground?`,
+    (name) =>
+      `${name} flies a kite. What kind of angle does the string make with the ground?`,
+    (name) =>
+      `The hands on ${name}'s clock are apart. What kind of angle do they make?`,
+    (name) =>
+      `${name} sets a ramp for a toy car. What kind of angle does the ramp make with the floor?`,
+    (name) => `${name} turns a skateboard. What kind of angle is the turn?`,
+  ],
+  right: [
+    (name) =>
+      `${name} opens a door. What kind of angle does the door make with the wall?`,
+    (name) => `${name} opens a book. What kind of angle do the covers make?`,
+    (name) =>
+      `${name} props a window open. What kind of angle does it make with the sill?`,
+    (name) =>
+      `${name} opens a laptop. What kind of angle does the screen make with the keyboard?`,
+    (name) =>
+      `${name} opens a garden gate. What kind of angle does the gate make with the fence?`,
+    (name) =>
+      `${name} stands a bookshelf against the wall. What kind of angle does the side make with the floor?`,
+  ],
+  obtuse: [
+    (name) =>
+      `${name} opens a door. What kind of angle does the door make with the wall?`,
+    (name) => `${name} opens a book. What kind of angle do the covers make?`,
+    (name) =>
+      `${name} opens a pair of scissors. What kind of angle is between the blades?`,
+    (name) =>
+      `${name} opens a laptop. What kind of angle does the screen make with the keyboard?`,
+    (name) =>
+      `${name} swings a garden gate. What kind of angle does the gate make with the fence?`,
+    (name) =>
+      `${name} props a window open. What kind of angle does it make with the sill?`,
+  ],
+  straight: [
+    (name) => `${name} opens a book. What kind of angle do the covers make?`,
+    (name) =>
+      `${name} swings a door. What kind of angle does the door make with the wall?`,
+    (name) =>
+      `${name} opens a laptop. What kind of angle does the screen make with the keyboard?`,
+    (name) =>
+      `${name} holds both arms out from the shoulders. What kind of angle do the arms make?`,
+    (name) => `${name} unfolds a map. What kind of angle does the fold make?`,
+    (name) =>
+      `${name} looks along a garden path. What kind of angle does the path make where it continues?`,
+  ],
+};
 
 const reflexLines = [
   "The arc goes the long way past a straight line. What kind of angle is this?",
@@ -545,11 +598,18 @@ const reflexLines = [
   "The mark takes the long way around. What kind of angle is it?",
 ] as const;
 
-/** Story surface for angle-classify. The bare axis value keeps the old prompt. */
-export function classifyPrompt(seed: string, reflex: boolean): string {
+/** Story surface for angle-classify. The bare axis value keeps the old prompt.
+ * The scene fits the kind: a ramp is not called straight, and a flat book is
+ * not called a bend. */
+export function classifyPrompt(
+  seed: string,
+  reflex: boolean,
+  kind = "acute",
+): string {
   if (reflex) return spreadPick(seed, "classify-reflex", reflexLines);
   const name = storyNameFor(seed, "classify-name");
-  return spreadPick(seed, "classify-scene", classifyScenes)(name);
+  const pool = classifyByKind[kind] ?? classifyByKind.acute!;
+  return spreadPick(seed, "classify-scene", pool)(name);
 }
 
 export const shapeStories = [
@@ -564,7 +624,7 @@ export const shapeStories = [
   (name: string) => `${name} is cutting felt for a banner.`,
   (name: string) => `${name} is matching cards in a shape game.`,
   (name: string) => `${name} is designing a playground mural.`,
-  (name: string) => `${name} is packing crackers that come in these shapes.`,
+  (name: string) => `${name} is cutting fabric for a quilt.`,
 ] as const;
 
 export function shapeStory(seed: string): string {
