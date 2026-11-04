@@ -3,6 +3,7 @@ import {
   chooseAxes,
   defineAxis,
   legacyAxes,
+  versionGatedAxes,
   type AxisSet,
   type AxisValues,
 } from "./variation/axes";
@@ -37,16 +38,15 @@ const axisFor = <const V extends string>(
  * still appears often enough to replay. */
 const storyWeight = (classic: number) =>
   [classic, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] as const;
-const storyAxis = (id: string, classicWeight: number) => ({
-  ...axisFor(
-    id,
-    operationStoryValues,
-    "classic",
-    undefined,
-    storyWeight(classicWeight),
-  ),
-  silentLegacy: true as const,
-});
+/** A story dressing added in template version 2. Below that version the axis
+ * stays on `classic`, the sentence the stored page used. */
+const storyAxis = (id: string, classicWeight: number) =>
+  defineAxis(id, operationStoryValues, {
+    legacy: "classic",
+    weights: storyWeight(classicWeight),
+    silentLegacy: true,
+    since: 2,
+  });
 
 export const sweepAxes = {
   /** Scale a ratio: the target quantity is a whole multiple of the ratio's
@@ -217,6 +217,7 @@ export const sweepAxes = {
     unknown: {
       ...axisFor("unknown", ["larger", "smaller"], "larger"),
       silentLegacy: true,
+      since: 2,
     },
     frame18: storyAxis("frame18", 11),
   },
@@ -233,6 +234,7 @@ export const sweepAxes = {
         [3, 1],
       ),
       silentLegacy: true,
+      since: 2,
     },
     story27: storyAxis("story27", 4),
   },
@@ -246,6 +248,7 @@ export const sweepAxes = {
         [3, 1],
       ),
       silentLegacy: true,
+      since: 2,
     },
     telling25: storyAxis("telling25", 4),
   },
@@ -259,6 +262,7 @@ export const sweepAxes = {
         [3, 1],
       ),
       silentLegacy: true,
+      since: 2,
     },
     scene25: storyAxis("scene25", 5),
   },
@@ -268,6 +272,7 @@ export const sweepAxes = {
     bounds: {
       ...axisFor("bounds", ["point", "between"], "point", undefined, [4, 1]),
       silentLegacy: true,
+      since: 2,
     },
     cast5: storyAxis("cast5", 4),
   },
@@ -293,16 +298,50 @@ export function withLegacySurfaces<T>(build: () => T): T {
   }
 }
 
+/**
+ * `estimate-reasonableness` changed the weights of an axis that already
+ * existed. Stored version 1 still draws that axis with equal weights. The
+ * story axis, new in version 2, is forced to classic below that version, and
+ * that force is the signal to use the old weights. At version 2 the draw
+ * keeps the rare decimal-difference weights.
+ */
+/** Decimal-difference containers. Not part of `sweepAxes`: version 2 always
+ * uses the mixed list, and recording the draw would put the stored list back
+ * into some current problems. Version 1 forces `milliliters` (jar, bottle,
+ * pitcher) on this axis's own stream. */
+const estimateMeasure = defineAxis(
+  "measure",
+  ["milliliters", "mixed"] as const,
+  { legacy: "milliliters", silentLegacy: true, since: 2 },
+);
+
+function estimateAxes(seed: string): AxisSet {
+  const spec = sweepAxes["estimate-reasonableness"];
+  chooseAxes("estimate-reasonableness", seed, {
+    telling21: spec.telling21,
+    measure: estimateMeasure,
+  });
+  const stored = versionGatedAxes().some((axis) => axis.id === "telling21");
+  if (!stored) return spec;
+  return {
+    ...spec,
+    operation: defineAxis(
+      "operation",
+      ["total-product-quotient", "decimal-difference"] as const,
+      { legacy: "total-product-quotient" },
+    ),
+  };
+}
+
 /** Axis values for one instance, from the axes' own streams (or all legacy
  * inside `withLegacySurfaces`). */
-export const sweepChoose = <K extends SweepId>(id: K, seed: string) =>
-  (legacyOnly
-    ? legacyAxes(sweepAxes[id] as AxisSet)
-    : chooseAxes(
-        id,
-        seed,
-        sweepAxes[id] as AxisSet,
-      )) as unknown as SweepAxes<K>;
+export const sweepChoose = <K extends SweepId>(id: K, seed: string) => {
+  if (legacyOnly) return legacyAxes(sweepAxes[id] as AxisSet) as SweepAxes<K>;
+  const spec = (
+    id === "estimate-reasonableness" ? estimateAxes(seed) : sweepAxes[id]
+  ) as AxisSet;
+  return chooseAxes(id, seed, spec) as unknown as SweepAxes<K>;
+};
 
 /** The private variant record: the family's label and the axis values. */
 export const sweepVariant = (

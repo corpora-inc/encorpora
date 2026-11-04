@@ -21,13 +21,20 @@ import {
   groupQuestion,
   realisticGroup,
 } from "./story-kit/operations.js";
+const reprintsFromV1 = new Set([
+  "comparison-amount",
+  "full-kits",
+  "kit-leftovers",
+  "seats-needed",
+]);
 export const equalGroupsTemplates: readonly TemplateMetadata[] =
   equalGroupsDefinitions.map(({ id, title, skillId, grade, description }) => ({
     id,
     title,
     skillId,
     description,
-    version: 1,
+    version: reprintsFromV1.has(id) ? 2 : 1,
+    ...(reprintsFromV1.has(id) ? { reprintsFrom: 1 } : {}),
     gradeBand: grade === "2" ? "K–2" : "3–5",
   }));
 function random(id: string, seed: string) {

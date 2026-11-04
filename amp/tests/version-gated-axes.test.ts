@@ -14,9 +14,9 @@ import type { WorkbookSpec } from "../src/workbook/compose";
 
 /**
  * Digests of the full problem JSON.
- * `version-gate-legacy.json` is 0646acf0a,
- * the commit before today's axis additions, two hundred seeds per bumped
- * template (`gate-legacy:0` …).
+ * `version-gate-legacy.json` is two hundred seeds per bumped template
+ * (`gate-legacy:0` …): the original rows are 0646acf0a (before that day's
+ * axis additions), and the operation rows are main after #1985, at version 1.
  */
 const legacyGolden = JSON.parse(
   readFileSync(
@@ -28,15 +28,37 @@ const legacyGolden = JSON.parse(
 const bumped = [
   "angle-classify",
   "compare-symbol-blanks",
+  "comparison-amount",
+  "compatible-number-estimate",
   "digit-value-ratio",
   "dot-plot-arithmetic",
+  "estimate-reasonableness",
   "expanded-whole-slots",
   "fraction-plot-difference",
+  "full-kits",
+  "kit-leftovers",
+  "mcas-true-quotient-equations",
   "multidigit-digit-value",
   "order-whole-numbers-slots",
+  "prime-factorization-exponents",
+  "prime-factorization-value",
   "round-large",
+  "seats-needed",
   "shape-sides-select",
+  "times-as-many-comparison",
 ] as const;
+
+/** Skill id below `version`, then the skill id at the current version. */
+const skillMoves: Readonly<Record<string, readonly [string, string]>> = {
+  "digit-value-ratio": ["powers-of-ten", "large-place-value"],
+  "mcas-true-quotient-equations": ["whole-division", "multidigit-quotients"],
+  "prime-factorization-exponents": ["factors-multiples", "integer-powers"],
+  "prime-factorization-value": ["factors-multiples", "integer-powers"],
+  "times-as-many-comparison": [
+    "multiplicative-stories",
+    "multiplicative-comparison",
+  ],
+};
 
 const digest = (value: unknown) =>
   createHash("sha256").update(JSON.stringify(value)).digest("hex");
@@ -119,10 +141,12 @@ test("generateProblem at the stored version reprints the pre-axis problem", () =
       );
     }
   }
-  const oldSkill = generateProblem("digit-value-ratio", "gate-legacy:0", 1);
-  const newSkill = generateProblem("digit-value-ratio", "gate-legacy:0");
-  assert.equal(oldSkill.public.skillId, "powers-of-ten");
-  assert.equal(newSkill.public.skillId, "large-place-value");
+  for (const [id, [previous, current]] of Object.entries(skillMoves)) {
+    const oldSkill = generateProblem(id, "gate-legacy:0", 1);
+    const newSkill = generateProblem(id, "gate-legacy:0");
+    assert.equal(oldSkill.public.skillId, previous, id);
+    assert.equal(newSkill.public.skillId, current, id);
+  }
 });
 
 test("a workbook reprints from reprintsFrom and refuses an older version", () => {

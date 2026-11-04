@@ -34,6 +34,12 @@ type Draft = {
 };
 type Built = Draft & { variant: string };
 
+/** Templates whose stored version 1 must keep the previous skill or wording. */
+const reprintsFromV1: Readonly<Record<string, { previousSkillId?: string }>> = {
+  "prime-factorization-exponents": { previousSkillId: "factors-multiples" },
+  "prime-factorization-value": { previousSkillId: "factors-multiples" },
+  "compatible-number-estimate": {},
+};
 const metadata = (
   id: string,
   title: string,
@@ -44,7 +50,8 @@ const metadata = (
   description: string,
 ): TemplateMetadata => ({
   id,
-  version: 1,
+  version: id in reprintsFromV1 ? 2 : 1,
+  ...(id in reprintsFromV1 ? { reprintsFrom: 1, ...reprintsFromV1[id] } : {}),
   title,
   skillId,
   gradeBand,

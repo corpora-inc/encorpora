@@ -48,7 +48,10 @@ const metadata = (
   description: string,
 ): TemplateMetadata => ({
   id,
-  version: 1,
+  version: id === "times-as-many-comparison" ? 2 : 1,
+  ...(id === "times-as-many-comparison"
+    ? { reprintsFrom: 1, previousSkillId: "multiplicative-stories" }
+    : {}),
   title,
   skillId,
   gradeBand,
@@ -523,6 +526,7 @@ const timesStoryAxis = {
     legacy: "classic",
     weights: [6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     silentLegacy: true,
+    since: 2,
   }),
 };
 

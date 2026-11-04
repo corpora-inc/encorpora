@@ -11,6 +11,7 @@ import {
   sweepChoose,
   sweepVariant,
 } from "./number-domain-axes";
+import { versionGatedAxes } from "./variation/axes";
 
 /**
  * Round-2 problem types inside existing number, expression, area, estimation,
@@ -60,7 +61,8 @@ export const numberMeasurementGapTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "estimate-reasonableness",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Estimate and check reasonableness",
     skillId: "multistep-whole-stories",
     gradeBand: "3–5",
@@ -1037,11 +1039,24 @@ function dressedTwoStep(
 /** Estimate how many more one decimal quantity is than another by rounding
  * each to the nearest whole number. */
 function decimalDifferenceEstimate(r: Random): Built {
-  const story = pick(r, [
-    ["package", "grams", "weighs"],
-    ["ribbon", "centimeters", "is"],
-    ["bottle", "milliliters", "holds"],
-  ] as const);
+  // Version 1 forces `measure` to milliliters: jar, bottle, and pitcher.
+  // The current version keeps the mixed units on every draw. The axis is not
+  // recorded, so a stored variant id stays the operation token.
+  const storedMeasure = versionGatedAxes().some(
+    (axis) => axis.id === "measure",
+  );
+  const stories: readonly (readonly [string, string, string])[] = storedMeasure
+    ? [
+        ["jar", "milliliters", "holds"],
+        ["bottle", "milliliters", "holds"],
+        ["pitcher", "milliliters", "holds"],
+      ]
+    : [
+        ["package", "grams", "weighs"],
+        ["ribbon", "centimeters", "is"],
+        ["bottle", "milliliters", "holds"],
+      ];
+  const story = pick(r, stories);
   const tenths = () => pick(r, [1, 2, 3, 4, 6, 7, 8, 9]);
   const whole = r(300, 980);
   const lessWhole = r(100, whole - 60);
@@ -1596,18 +1611,15 @@ export function numberMeasurementGapCase(templateId: string, seed: string) {
       ...draft,
       explanation: [...(OPENERS[meta.id] ?? []), ...draft.explanation],
     });
+    const variant = axes
+      ? templateId === "estimate-reasonableness"
+        ? (recordedSweepVariant(templateId, draft.variant, axes) ??
+          sweepVariant(draft.variant, axes))
+        : sweepVariant(draft.variant, axes)
+      : undefined;
     return {
       variant: draft.variant,
-      problem: axes
-        ? {
-            ...problem,
-            variant:
-              templateId === "estimate-reasonableness"
-                ? (recordedSweepVariant(templateId, draft.variant, axes) ??
-                  sweepVariant(draft.variant, axes))
-                : sweepVariant(draft.variant, axes),
-          }
-        : problem,
+      problem: variant ? { ...problem, variant } : problem,
     };
   }
   throw new Error("Could not generate a problem without leaking the answer");
