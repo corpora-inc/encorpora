@@ -258,12 +258,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     learnerId: learner?.id ?? "",
     token: token ?? undefined,
   });
-  // Loaded with practice (and only there), so a focused skill's "Mixed
-  // practice" action is already known when the first answer's feedback opens.
-  const practiceSettings = useQuery({
-    ...practiceSettingsOptions(adjustments.scope),
-    enabled: !!learner && !nativeRuntime && tab === "practice",
-  });
   // Remember a tab's return URL, not a second copy of its screen/filter state.
   const progressReturn = useRef({ identity: "", href: "/progress" });
   useLayoutEffect(() => {
@@ -326,6 +320,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     [queue, setQueue] = useState<HintedProblem[]>([]),
     [lesson, setLesson] = useState<Lesson | null>(null),
     [lessonSearch, setLessonSearch] = useState("");
+  // Loaded with the first practice problem (and only then), so a focused
+  // skill's "Mixed practice" action is already known when that problem's
+  // feedback opens.
+  const practiceSettings = useQuery({
+    ...practiceSettingsOptions(adjustments.scope),
+    enabled: !!learner && !nativeRuntime && tab === "practice" && !!problem,
+  });
   const [books, setBooks] = useState<BookSummary[]>([]);
   const [loadedBook, setReadingBook] = useState<{
     book: FractionBook;
@@ -1842,7 +1843,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                   void action(() => openReferenceLesson(reference, null));
                 }}
               />
-              {!new URLSearchParams(route.location.search).has("topic") &&
+              {/* Below the index, so it appears with the catalog rather than
+                  being pushed down when the index fills in. */}
+              {catalog &&
+                !new URLSearchParams(route.location.search).has("topic") &&
                 !new URLSearchParams(route.location.search).get("q") && (
                   <>
                     <section className="book-list" aria-label="Printable books">

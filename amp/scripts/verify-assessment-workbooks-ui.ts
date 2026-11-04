@@ -412,6 +412,9 @@ try {
     await target(make, `${tag} make`);
     await shoot(page, `map-ready-${tag}`);
     const action = strip.locator("[class*=nextAction]");
+    // The strip follows the map's actions, at the fold on a phone: bring it
+    // into view first, so the click's own scroll is not counted as movement.
+    await make.scrollIntoViewIfNeeded();
     const before = await boxes([strip, action]);
     const asked = page.waitForRequest((request) =>
       request.url().includes("/document?paper=a4"),

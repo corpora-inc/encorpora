@@ -121,9 +121,6 @@ function MapView({ session }: { session: TrialSession }) {
         <div className={styles.meterRow}>
           <FreeMeter answered={p.totals.answered} free={p.free} />
         </div>
-        {p.workbooks && !nativeRuntime && (
-          <TrialWorkbooks session={session} status={p.workbooks} />
-        )}
         <div className={styles.actions}>
           {left > 0 ? (
             <>
@@ -150,7 +147,11 @@ function MapView({ session }: { session: TrialSession }) {
             </Link>
           )}
         </div>
-        {/* The next step sits above the fold; the map is the evidence. */}
+        {/* The next step sits above the fold; the free workbooks and the map
+            follow it. */}
+        {p.workbooks && !nativeRuntime && (
+          <TrialWorkbooks session={session} status={p.workbooks} />
+        )}
         <FrontierMap
           name="the learner"
           birthYear={session.birthYear}

@@ -540,7 +540,12 @@ export function FamilyCenter({
               <section
                 className={`family-section family-focused-section ${!family.learners.length || adding ? "family-setup-section" : ""}`}
               >
-                <h2 tabIndex={-1}>
+                {/* Access repeats its selected tab's name, so its heading is for
+                    screen readers; the license fits a 320 px screen. */}
+                <h2
+                  tabIndex={-1}
+                  className={section === "access" ? "sr-only" : undefined}
+                >
                   {section === "learners"
                     ? "Who’s learning?"
                     : "Learning access"}
