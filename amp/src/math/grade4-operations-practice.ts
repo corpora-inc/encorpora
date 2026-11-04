@@ -334,11 +334,11 @@ function factsPrompt(
       return `Multiply ${teen} × ${other}.`;
     }
     return pick(r, [
-      `${name} buys ${teen} packs with ${other} stickers in each pack. How many stickers is ${teen} × ${other}?`,
-      `A carton holds ${teen} eggs. ${name} needs ${other} cartons. How many eggs is ${teen} × ${other}?`,
-      `${name} sets ${teen} rows with ${other} chairs in each row. How many chairs is ${teen} × ${other}?`,
-      `${name} saves ${teen} dollars a week for ${other} weeks. How many dollars is ${teen} × ${other}?`,
-      `Each shelf holds ${other} books. ${name} fills ${teen} shelves. How many books is ${teen} × ${other}?`,
+      `${name} buys ${teen} packs with ${other} stickers in each pack. How many stickers is ${teen} × ${other} in all?`,
+      `A carton holds ${teen} eggs. ${name} needs ${other} cartons. How many eggs is ${teen} × ${other} in all?`,
+      `${name} sets ${teen} rows with ${other} chairs in each row. How many chairs is ${teen} × ${other} in all?`,
+      `${name} saves ${teen} dollars a week for ${other} weeks. How many dollars is ${teen} × ${other} in all?`,
+      `Each shelf holds ${other} books. ${name} fills ${teen} shelves. How many books is ${teen} × ${other} in all?`,
     ]);
   }
   if (!applied) {
@@ -346,7 +346,8 @@ function factsPrompt(
     const frame = r(0, 3);
     if (frame === 0) return `${who} asks: what is ${product} ÷ ${teen}?`;
     if (frame === 1) return `${product} divided by ${teen} is how many?`;
-    if (frame === 2) return `${who} writes ${product} ÷ ${teen}. What is the quotient?`;
+    if (frame === 2)
+      return `${who} writes ${product} ÷ ${teen}. What is the quotient?`;
     return `${product} split into equal groups of ${teen} makes how many groups?`;
   }
   return pick(r, [

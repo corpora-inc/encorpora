@@ -1221,7 +1221,9 @@ function estimateReasonableness(
         ? dressedTwoStep(stepScene, t1, n1, t2, n2)
         : `A bakery fills ${t1} trays with ${n1} rolls each in the morning and ${t2} trays with ${n2} rolls each in the afternoon. Round the number on each tray to the nearest ten. Which is the best estimate of the total number of rolls?`,
       answer: "",
-      hint: `Estimate the ${t1} morning trays and the ${t2} afternoon trays separately: round ${n1} and ${n2} to the nearest ten, multiply by the trays, then combine the two estimates.`,
+      hint: stepScene
+        ? `Estimate each group separately: round ${n1} and ${n2} to the nearest ten, multiply by ${t1} and by ${t2}, then add the two estimates.`
+        : `Estimate the ${t1} morning trays and the ${t2} afternoon trays separately: round ${n1} and ${n2} to the nearest ten, multiply by the trays, then combine the two estimates.`,
       explanation: [
         stepScene
           ? `First group: ${t1} × ${round10(n1)} = ${commas(e1)}.`

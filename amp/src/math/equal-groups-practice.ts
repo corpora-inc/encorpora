@@ -17,7 +17,7 @@ import {
 import {
   comparisonAsk,
   comparisonCast,
-  groupIntro,
+  groupQuestion,
   groupScenes,
 } from "./story-kit/operations.js";
 export const equalGroupsTemplates: readonly TemplateMetadata[] =
@@ -109,7 +109,13 @@ export function generateEqualGroupsProblem(
             `The fewest vans needed is ${shown(answer)}.`,
           ];
         } else {
-          prompt = `${groupIntro(scene, shown(total), shown(size), large)} What is the fewest ${scene.groups} needed to hold them all?`;
+          prompt = groupQuestion(
+            scene,
+            shown(total),
+            shown(size),
+            large,
+            "seats",
+          );
           label = `${scene.groups[0]!.toUpperCase()}${scene.groups.slice(1)} needed`;
           figure = large ? undefined : counters(total, size, scene.unit);
           hint = `How many groups of ${shown(size)} fit in ${shown(total)}? If any ${scene.unit} are left over, they still need a ${scene.group}.`;
@@ -142,10 +148,13 @@ export function generateEqualGroupsProblem(
       } else {
         const full = templateId === "full-kits";
         answer = full ? complete : remainder;
-        const intro = groupIntro(scene, shown(total), shown(size), large);
-        prompt = full
-          ? `${intro} How many full ${scene.groups} can be filled?`
-          : `${intro} After filling as many ${scene.groups} as possible, how many ${scene.unit} are left?`;
+        prompt = groupQuestion(
+          scene,
+          shown(total),
+          shown(size),
+          large,
+          full ? "full" : "left",
+        );
         label = full
           ? `Full ${scene.groups}`
           : `${scene.unit[0]!.toUpperCase()}${scene.unit.slice(1)} left`;
@@ -374,7 +383,7 @@ export function generateEqualGroupsProblem(
           label = `${cast.a}'s ${cast.noun}`;
           hint = `${shown(large)} is ${shown(factor)} times ${cast.a}'s ${cast.noun}. Divide ${shown(large)} by ${shown(factor)}. Do not subtract ${shown(factor)}.`;
           explanation = [
-            `"${shown(factor)} times as many" means ${shown(factor)} copies of ${cast.a}'s amount make ${cast.b}'s ${shown(large)}, not ${shown(factor)} more.`,
+            `"${shown(factor)} times as many" means ${shown(factor)} copies of ${cast.a}'s amount make the ${shown(large)} ${cast.noun}, not ${shown(factor)} more.`,
             `So ${shown(factor)} × ${cast.a}'s ${cast.noun} = ${shown(large)}.`,
             `Divide: ${shown(large)} ÷ ${shown(factor)} = ${shown(small)}, because ${shown(factor)} × ${shown(small)} = ${shown(large)}.`,
             `${cast.a} has ${shown(small)} ${cast.noun}. Taking away ${shown(factor)} from ${shown(large)} is the additive mistake.`,

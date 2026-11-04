@@ -48,8 +48,8 @@ export type GroupScene = {
 /** Situations whose size (2–9) and total (up to 9,999) both stay believable. */
 export const groupScenes: Record<string, GroupScene> = {
   sports: {
-    unit: "tennis balls",
-    one: "tennis ball",
+    unit: "softballs",
+    one: "softball",
     group: "can",
     groups: "cans",
   },
@@ -78,7 +78,7 @@ export const groupScenes: Record<string, GroupScene> = {
 const holder = (scene: GroupScene, large: boolean): string => {
   if (!large) {
     const who: Record<string, string> = {
-      "tennis balls": "The coach has",
+      softballs: "The coach has",
       treats: "Lena has",
       eggs: "The kitchen has",
       seeds: "Noah has",
@@ -93,7 +93,7 @@ const holder = (scene: GroupScene, large: boolean): string => {
     return who[scene.unit] ?? "The class has";
   }
   const place: Record<string, string> = {
-    "tennis balls": "The tournament desk has",
+    softballs: "The tournament desk has",
     treats: "The shelter storeroom has",
     eggs: "A packing plant has",
     seeds: "The garden center has",
@@ -136,6 +136,58 @@ export function comparisonAsk(
   if (noun === "cards")
     return `${a} collected ${small} cards. ${b} collected ${factor} times as many cards. How many cards does ${b} have?`;
   return `${a} has ${small} ${noun}. ${b} has ${factor} times as many ${noun} as ${a}. How many ${noun} does ${b} have?`;
+}
+
+const GROUP_ORDER = [
+  "can",
+  "bowl",
+  "carton",
+  "pot",
+  "bin",
+  "sheet",
+  "pack",
+  "bundle",
+  "box",
+  "folder",
+  "cup",
+];
+
+/** Four question frames, chosen from the container so a set of scenes does not
+ * share one sentence. */
+export function groupQuestion(
+  scene: GroupScene,
+  total: string,
+  size: string,
+  large: boolean,
+  ask: "full" | "left" | "seats",
+): string {
+  const intro = groupIntro(scene, total, size, large);
+  const frame = GROUP_ORDER.indexOf(scene.group) % 4;
+  if (ask === "seats") {
+    const question = [
+      `What is the fewest ${scene.groups} needed to hold them all?`,
+      `How many ${scene.groups} are needed so nothing is left out?`,
+      `What is the smallest number of ${scene.groups} that can hold every ${scene.one}?`,
+      `How many ${scene.groups} should be ready so every ${scene.one} has a place?`,
+    ][frame]!;
+    return `${intro} ${question}`;
+  }
+  if (ask === "left") {
+    const question = [
+      `After filling as many ${scene.groups} as possible, how many ${scene.unit} are left?`,
+      `How many ${scene.unit} are left over?`,
+      `How many ${scene.unit} do not fit in a full ${scene.group}?`,
+      `What is left after the full ${scene.groups} are filled?`,
+    ][frame]!;
+    return `${intro} ${question}`;
+  }
+  const question = [
+    `How many full ${scene.groups} can be filled?`,
+    `How many complete ${scene.groups} can be packed?`,
+    `What is the greatest number of full ${scene.groups}?`,
+    `How many ${scene.groups} can be finished?`,
+  ][frame]!;
+  return `${intro} ${question}`;
 }
 
 export function groupIntro(
