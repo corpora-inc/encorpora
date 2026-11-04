@@ -6,7 +6,12 @@ import type {
   TemplateMetadata,
 } from "./contracts.js";
 import { isAre, count, plural } from "./agreement.js";
-import { axisRecord, chooseAxes, defineAxis } from "./variation/axes.js";
+import {
+  axisRecord,
+  chooseAxes,
+  defineAxis,
+  versionGatedAxes,
+} from "./variation/axes.js";
 import {
   groupsStory,
   likeDifferenceStory,
@@ -17,7 +22,9 @@ import {
 
 /** Grade-4 denominator range. Legacy keeps the old 2, 3, 4, 6, 8 draw. */
 export const fractionDenominatorAxes = {
-  denominator: defineAxis("denominator", ["legacy", "expanded"] as const),
+  denominator: defineAxis("denominator", ["legacy", "expanded"] as const, {
+    since: 2,
+  }),
 } as const;
 /**
  * Story wording. `plain` is the stored sentence. On the stored number draw,
@@ -28,12 +35,27 @@ export const fractionStoryOftenAxes = {
   setting: defineAxis("setting", ["plain", "applied"] as const, {
     weights: [2, 3],
     silentLegacy: true,
+    since: 2,
   }),
 } as const;
 export const fractionStorySometimesAxes = {
   setting: defineAxis("setting", ["plain", "applied"] as const, {
     weights: [2, 1],
     silentLegacy: true,
+    since: 2,
+  }),
+} as const;
+/**
+ * Sentences revised on the stored number draw. `stored` is what version 1
+ * printed. Below version 2 the axis is forced there. At the current version
+ * the revised sentences stay on every draw, so this branch's wording holds.
+ * The draw is silent and on its own stream: variant ids do not move.
+ */
+export const fractionCopyAxes = {
+  copy: defineAxis("copy", ["stored", "current"] as const, {
+    legacy: "stored",
+    silentLegacy: true,
+    since: 2,
   }),
 } as const;
 const STORY_IDS = new Set([
@@ -44,9 +66,30 @@ const STORY_IDS = new Set([
 ]);
 /** Numerator rename, or the same rename written as multiplying by n/n. */
 export const equivalentNumeratorAxes = {
-  denominator: defineAxis("denominator", ["legacy", "expanded"] as const),
-  surface: defineAxis("surface", ["numerator", "multiplier"] as const),
+  denominator: defineAxis("denominator", ["legacy", "expanded"] as const, {
+    since: 2,
+  }),
+  surface: defineAxis("surface", ["numerator", "multiplier"] as const, {
+    since: 2,
+  }),
 } as const;
+/** Templates whose stored version-1 problem this generator still reprints. */
+const REPRINT_V1 = new Set([
+  "equivalent-numerator",
+  "like-fraction-missing-part",
+  "like-fraction-difference",
+  "mixed-to-improper-numerator",
+  "improper-whole-part",
+  "improper-fractional-part",
+  "mixed-fraction-difference",
+  "whole-times-fraction",
+]);
+/** Plain-path sentences changed, so version 1 runs the stored wording. */
+const COPY_IDS = new Set([
+  "like-fraction-difference",
+  "mixed-fraction-difference",
+  "whole-times-fraction",
+]);
 const DENOM_AXIS_IDS = new Set([
   "like-fraction-missing-part",
   "like-fraction-difference",
@@ -161,7 +204,8 @@ export const fractionPracticeTemplates: readonly TemplateMetadata[] =
       title,
       skillId,
       description,
-      version: 1,
+      version: REPRINT_V1.has(id) ? 2 : 1,
+      ...(REPRINT_V1.has(id) ? { reprintsFrom: 1 } : {}),
       gradeBand: grade === "6" ? "6–8" : "3–5",
     }),
   );
@@ -236,6 +280,10 @@ export function generateFractionPracticeProblem(
             : fractionStoryOftenAxes,
         ).setting === "applied"
       : true);
+  const storedCopy =
+    COPY_IDS.has(templateId) &&
+    chooseAxes(templateId, seed, fractionCopyAxes).copy === "stored" &&
+    versionGatedAxes().some((axis) => axis.id === "copy");
   // The legacy draw stays the first content draw. Expanded denominators,
   // including 16 and 100, replace it. Equivalent-numerator draws its pair later.
   const d = !expanded
@@ -419,6 +467,23 @@ export function generateFractionPracticeProblem(
       break;
     }
     case "like-fraction-difference": {
+      if (storedCopy) {
+        const a = r(1, 2 * d),
+          b = r(1, a);
+        prompt = `A cord is ${a}/${d} meter long. You remove ${b}/${d} meter. How many meters remain?`;
+        label = "Meters remaining";
+        answer = fraction(a - b, d);
+        hint = `${a}/${d} and ${b}/${d} meter count the same size of piece. Take ${b} pieces away from ${a} pieces.`;
+        explanation = [
+          `Both lengths have bottom number ${d}, so both count pieces of size 1/${d} meter.`,
+          `Taking away ${b}/${d} meter takes away ${count(b, "piece")} from the ${a}.`,
+          `${a} − ${b} = ${a - b}, so ${count(a - b, "piece")} of 1/${d} meter ${a - b === 1 ? "remains" : "remain"}.`,
+          a === b
+            ? `You removed the whole cord, so 0 meters remain.`
+            : `That is ${simplified(a - b, d)} ${unitAfter(answer, "meter")}, so ${answer} ${unitAfter(answer, "meter")} of cord ${answer === "1" || unitAfter(answer, "meter") === "meter" ? "remains" : "remain"}.`,
+        ];
+        break;
+      }
       const scene = applied ? likeDifferenceStory(r, d) : undefined;
       const a = scene ? scene.a : r(1, 2 * d);
       const b = scene ? scene.b : r(1, a);
@@ -487,6 +552,24 @@ export function generateFractionPracticeProblem(
       break;
     }
     case "mixed-fraction-difference": {
+      if (storedCopy) {
+        const mixedD = choose([3, 4, 6, 8]),
+          whole = r(2, 4),
+          other = r(1, whole - 1),
+          a = r(1, mixedD - 2),
+          b = r(a + 1, mixedD - 1);
+        prompt = `Find ${whole} ${a}/${mixedD} − ${other} ${b}/${mixedD}. Give a fraction or whole number.`;
+        answer = fraction((whole - other) * mixedD + a - b, mixedD);
+        hint = `${a}/${mixedD} is less than ${b}/${mixedD}, so first rename one whole of ${whole} ${a}/${mixedD} as ${mixedD}/${mixedD}: it becomes ${whole - 1} ${mixedD + a}/${mixedD}.`;
+        explanation = [
+          `Subtract the fraction parts and the whole parts separately.`,
+          `${a}/${mixedD} is less than ${b}/${mixedD}, so there are not enough pieces to take ${b} away.`,
+          `Trade one whole for ${mixedD}/${mixedD}, which is the same amount: ${whole} ${a}/${mixedD} becomes ${whole - 1} ${mixedD + a}/${mixedD}.`,
+          `Fraction parts: ${mixedD + a}/${mixedD} − ${b}/${mixedD} = ${mixedD + a - b}/${mixedD}. Whole parts: ${whole - 1} − ${other} = ${whole - 1 - other}.`,
+          `Together that is ${whole - 1 - other === 0 ? `${mixedD + a - b}/${mixedD}` : `${whole - 1 - other} ${mixedD + a - b}/${mixedD}`}. As one fraction in simplest form, the difference is ${answer}.`,
+        ];
+        break;
+      }
       const mixedD = expanded ? d : choose([3, 4, 6, 8]),
         whole = r(2, 4),
         other = r(1, whole - 1);
@@ -566,6 +649,28 @@ export function generateFractionPracticeProblem(
       break;
     }
     case "whole-times-fraction": {
+      if (storedCopy) {
+        const n = r(1, d - 1),
+          groups = r(2, 5);
+        prompt = `Each of ${groups} containers holds ${n}/${d} liter. How many liters do they hold altogether?`;
+        label = "Total liters";
+        answer = fraction(groups * n, d);
+        figure = {
+          kind: "fraction-strips",
+          parts: d,
+          wholes: 1,
+          unit: "one liter",
+          rows: [{ selected: n, label: "one container" }],
+        };
+        hint = `${groups} containers of ${n}/${d} liter is ${groups} groups of ${n} pieces, each piece 1/${d} liter. Count all the pieces.`;
+        explanation = [
+          `Each container holds ${n}/${d} liter: ${count(n, "piece")} of size 1/${d} liter.`,
+          `${groups} containers make ${groups} equal groups of ${n} pieces, so multiply: ${groups} × ${n} = ${groups * n} pieces.`,
+          `${groups * n} pieces of 1/${d} liter make ${simplified(groups * n, d)} ${unitAfter(answer, "liter")}.`,
+          `Altogether the containers hold ${answer} ${unitAfter(answer, "liter")}.`,
+        ];
+        break;
+      }
       let n0 = r(1, d - 1);
       const groups = r(2, 5);
       // Stories say the amount the way people do. 2/4 liter is 1/2 liter.
