@@ -219,28 +219,33 @@ const shapeLibrary: readonly ShapeDef[] = (
 
 /* ------------------------------------------- sides: parallel or perpendicular */
 
-export const shapeRelationTemplate = selectTemplate({
-  figure: "scenes-v1",
-  id: "shape-sides-select",
-  title: "Select shapes by their sides or angles",
-  skillId: "lines-symmetry",
-  gradeBand: "3–5",
-  difficultyOffset: 0.2,
-  description:
-    "Select every drawn polygon that has a pair of parallel sides, a pair of perpendicular sides, an obtuse angle, or no right angle, among triangles, quadrilaterals and larger polygons turned in any direction.",
-});
+export const shapeRelationTemplate = {
+  ...selectTemplate({
+    figure: "scenes-v1",
+    id: "shape-sides-select",
+    title: "Select shapes by their sides or angles",
+    skillId: "lines-symmetry",
+    gradeBand: "3–5",
+    difficultyOffset: 0.2,
+    description:
+      "Select every drawn polygon that has a pair of parallel sides, a pair of perpendicular sides, an obtuse angle, or no right angle, among triangles, quadrilaterals and larger polygons turned in any direction.",
+  }),
+  version: 2,
+  reprintsFrom: 1,
+};
 
 /** Legacy values keep the parallel/perpendicular surface and its old prompt. */
 export const shapeSidesAxes = {
   "angle-property": defineAxis(
     "angle-property",
     ["sides", "obtuse", "no-right"] as const,
-    { legacy: "sides" },
+    { legacy: "sides", since: 2 },
   ),
   voice: defineAxis("voice", ["plain", "story"] as const, {
     legacy: "plain",
     silentLegacy: true,
     weights: [3, 1],
+    since: 2,
   }),
   /** Classic keeps the stored question. The other values are bare frames. */
   wording: defineAxis(
@@ -250,6 +255,7 @@ export const shapeSidesAxes = {
       legacy: "classic",
       silentLegacy: true,
       weights: [1, 2, 2, 2],
+      since: 2,
     },
   ),
 };

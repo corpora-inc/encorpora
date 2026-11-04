@@ -37,6 +37,9 @@ export interface Axis<V extends string = string> {
    * so a problem stored before this axis existed keeps that variant id.
    * A newer value is recorded. */
   readonly silentLegacy?: boolean;
+  /** Template version that introduced this axis. Below it, generation forces
+   * `legacy` (including a silent legacy). Unset axes draw as they do today. */
+  readonly since?: number;
 }
 export type AxisSet = Readonly<Record<string, Axis>>;
 export type AxisValues<A extends AxisSet> = {
@@ -56,6 +59,7 @@ export function defineAxis<const V extends string>(
     weights?: readonly number[];
     needs?: Partial<Record<NoInfer<V>, FigureCapability>>;
     silentLegacy?: boolean;
+    since?: number;
   } = {},
 ): Axis<V> {
   if (!axisIdPattern.test(id)) throw new Error(`Bad axis id ${id}`);
@@ -77,6 +81,11 @@ export function defineAxis<const V extends string>(
   const needs = options.needs;
   if (needs && Object.hasOwn(needs, legacy))
     throw new Error(`Axis ${id}: the legacy value must draw for every client`);
+  if (
+    options.since != null &&
+    (!Number.isInteger(options.since) || options.since < 1)
+  )
+    throw new Error(`Axis ${id} since must be a positive integer`);
   return {
     id,
     values,
@@ -84,6 +93,7 @@ export function defineAxis<const V extends string>(
     ...(weights ? { weights } : {}),
     ...(needs ? { needs } : {}),
     ...(options.silentLegacy ? { silentLegacy: true } : {}),
+    ...(options.since != null ? { since: options.since } : {}),
   };
 }
 
@@ -104,10 +114,37 @@ export function restrictAxis<V extends string, W extends V>(
       legacy ??
       (values.includes(axis.legacy as W) ? (axis.legacy as W) : values[0]!),
     ...(Object.keys(needs).length ? { needs } : {}),
+    ...(axis.since != null ? { since: axis.since } : {}),
   });
 }
 
 let clientFigures: readonly string[] | null = null;
+/** Version passed to `generateProblem`, while a problem is being built. */
+let templateVersion: number | null = null;
+/** Axes forced to legacy because the generation version is below `since`. */
+let versionGated: { id: string; value: string }[] | null = null;
+/**
+ * Generate at one template version. `chooseAxes` forces an axis with `since`
+ * above this version to its legacy value. Synchronous only, re-entrant, and
+ * restored on the way out. Outside it, axes draw exactly as they do today.
+ */
+export function withTemplateVersion<T>(version: number, fn: () => T): T {
+  const previousVersion = templateVersion;
+  const previousGated = versionGated;
+  templateVersion = version;
+  versionGated = [];
+  try {
+    return fn();
+  } finally {
+    templateVersion = previousVersion;
+    versionGated = previousGated;
+  }
+}
+/** Axes this generation forced to legacy because of `since`. Empty outside
+ * `withTemplateVersion`. */
+export function versionGatedAxes(): readonly { id: string; value: string }[] {
+  return versionGated ?? [];
+}
 /**
  * Generate for one client: inside `build`, an axis value whose figure needs
  * a capability outside `figureCapabilities` is replaced by the axis's legacy
@@ -183,8 +220,16 @@ export function chooseAxes<A extends AxisSet>(
   return Object.fromEntries(
     Object.entries(axes).map(([key, axis]) => {
       // The draw happens even when it is replaced, so a client's capabilities
-      // never shift another axis's stream.
+      // or a version gate never shift another axis's stream.
       const value = draw(stream([templateId, 1, seed, "axis", axis.id]), axis);
+      if (
+        axis.since != null &&
+        templateVersion != null &&
+        templateVersion < axis.since
+      ) {
+        versionGated?.push({ id: axis.id, value: axis.legacy });
+        return [key, axis.legacy];
+      }
       return [key, clientDrawsValue(axis, value) ? value : axis.legacy];
     }),
   ) as AxisValues<A>;

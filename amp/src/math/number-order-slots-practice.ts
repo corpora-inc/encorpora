@@ -23,7 +23,8 @@ import {
 export const numberOrderSlotsTemplates: readonly TemplateMetadata[] = [
   {
     id: "order-whole-numbers-slots",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Order whole numbers into places",
     skillId: "large-place-value",
     gradeBand: "3–5",
@@ -107,6 +108,7 @@ export const wholeAxes = {
     legacy: "three",
     weights: [2, 2, 3],
     silentLegacy: true,
+    since: 2,
   }),
   /** What the numbers count. `stadium` is the stored sentence. */
   setting: defineAxis(
@@ -125,6 +127,7 @@ export const wholeAxes = {
       legacy: "stadium",
       weights: [1, 1, 1, 3, 1, 1, 1, 1],
       silentLegacy: true,
+      since: 2,
     },
   ),
 } as const;

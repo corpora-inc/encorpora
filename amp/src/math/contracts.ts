@@ -298,7 +298,14 @@ export interface TemplateMetadata {
   /** Absent for the original number/fraction protocol. */
   requiredResponseCapability?: ResponseCapability;
   id: string;
-  version: 1;
+  /** Catalog version. A stored workbook names this on each problem. */
+  version: number;
+  /** Oldest version this generator still reproduces exactly. Defaults to
+   * `version`. A stored version below it cannot be reprinted. */
+  reprintsFrom?: number;
+  /** Skill id to stamp when generating below `version`, after `skillId` moved.
+   * Generators stamp the current skill; `generateProblem` restores this one. */
+  previousSkillId?: string;
   title: string;
   skillId: string;
   gradeBand: "K–2" | "3–5" | "6–8" | "9–12";
@@ -340,7 +347,7 @@ export interface ProblemHint extends GlossaryPayload {
 export interface PublicProblem {
   id: string;
   templateId: string;
-  templateVersion: 1;
+  templateVersion: number;
   seed: string;
   prompt: string;
   skillId: string;

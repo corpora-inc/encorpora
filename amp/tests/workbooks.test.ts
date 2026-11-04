@@ -383,6 +383,31 @@ test("a renderer that is down or missing answers 503 with a next step, and is lo
   }
 });
 
+test("a stored version below reprintsFrom is not reprinted", async () => {
+  const { repository, rows } = memoryRepository();
+  const server = app(repository);
+  const made = (
+    await server.inject({
+      method: "POST",
+      url,
+      headers,
+      payload: { date: today, minutes: 30, paper: "letter" },
+    })
+  ).json();
+  const item = rows[0]!.spec.sections[0]!.items[0]!;
+  item.templateId = "round-large";
+  item.templateVersion = 1;
+  const reprinted = await server.inject({
+    url: `${url}/${made.id}/pdf`,
+    headers,
+  });
+  assert.equal(reprinted.statusCode, 200);
+  item.templateVersion = 0;
+  const pdf = await server.inject({ url: `${url}/${made.id}/pdf`, headers });
+  assert.equal(pdf.statusCode, 410);
+  assert.match(pdf.json().error, /Make today's workbook/);
+});
+
 test("a workbook whose templates changed version is not reprinted as if unchanged", async () => {
   const { repository, rows } = memoryRepository();
   const server = app(repository);

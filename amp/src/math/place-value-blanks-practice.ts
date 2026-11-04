@@ -63,7 +63,8 @@ export const placeValueBlanksTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "expanded-whole-slots",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Build a number from its place values",
     skillId: "large-place-value",
     gradeBand: "3–5",
@@ -83,7 +84,8 @@ export const placeValueBlanksTemplates: readonly TemplateMetadata[] = [
   },
   {
     id: "compare-symbol-blanks",
-    version: 1,
+    version: 2,
+    reprintsFrom: 1,
     title: "Choose the symbol for two comparisons",
     skillId: "large-place-value",
     gradeBand: "3–5",
@@ -164,13 +166,14 @@ export const expandedWholeAxes = {
   magnitude: defineAxis(
     "magnitude",
     ["five", "six", "seven", "billions"] as const,
-    { legacy: "five", weights: [8, 4, 2, 1], silentLegacy: true },
+    { legacy: "five", weights: [8, 4, 2, 1], silentLegacy: true, since: 2 },
   ),
   /** Wording only. `bare` is the stored sentence. */
   surface: defineAxis("surface", ["bare", "break", "parts", "story"] as const, {
     legacy: "bare",
     weights: [2, 5, 5, 6],
     silentLegacy: true,
+    since: 2,
   }),
 } as const;
 const timesTex = (digit: number, value: number) =>
@@ -186,13 +189,14 @@ export const compareSymbolAxes = {
   magnitude: defineAxis(
     "magnitude",
     ["as-drawn", "six-digit", "million", "billions"] as const,
-    { legacy: "as-drawn", weights: [8, 4, 2, 1], silentLegacy: true },
+    { legacy: "as-drawn", weights: [8, 4, 2, 1], silentLegacy: true, since: 2 },
   ),
   /** Wording only. `bare` is the stored sentence. */
   surface: defineAxis("surface", ["bare", "which", "pairs", "story"] as const, {
     legacy: "bare",
     weights: [3, 5, 5, 5],
     silentLegacy: true,
+    since: 2,
   }),
 } as const;
 const SYMBOLS = ["$<$", "$=$", "$>$"] as const;

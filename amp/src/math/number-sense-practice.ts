@@ -147,7 +147,11 @@ export const numberSenseTemplates: readonly TemplateMetadata[] =
     skillId,
     gradeBand,
     description,
-    version: 1,
+    version: id === "round-large" || id === "digit-value-ratio" ? 2 : 1,
+    ...(id === "round-large" || id === "digit-value-ratio"
+      ? { reprintsFrom: 1 }
+      : {}),
+    ...(id === "digit-value-ratio" ? { previousSkillId: "powers-of-ten" } : {}),
     ...(sceneTemplates.has(id)
       ? { requiredFigureCapability: "scenes-v1" as const }
       : {}),
@@ -232,13 +236,14 @@ export const roundLargeAxes = {
   place: defineAxis(
     "place",
     ["as-drawn", "ten", "hundred-thousand", "within-10000"] as const,
-    { legacy: "as-drawn", weights: [6, 2, 2, 2] },
+    { legacy: "as-drawn", weights: [6, 2, 2, 2], since: 2 },
   ),
   /** Wording only. `bare` is the stored sentence. */
   surface: defineAxis("surface", ["bare", "ask", "closest", "story"] as const, {
     legacy: "bare",
     weights: [2, 3, 7, 8],
     silentLegacy: true,
+    since: 2,
   }),
 } as const;
 type RoundPlace = (typeof roundLargeAxes.place.values)[number];
@@ -249,7 +254,7 @@ export const digitRatioAxes = {
   surface: defineAxis(
     "surface",
     ["bare", "ask", "places", "look", "story"] as const,
-    { legacy: "bare", weights: [1, 4, 4, 4, 6], silentLegacy: true },
+    { legacy: "bare", weights: [1, 4, 4, 4, 6], silentLegacy: true, since: 2 },
   ),
 } as const;
 type RatioSurface = (typeof digitRatioAxes.surface.values)[number];

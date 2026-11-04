@@ -50,7 +50,11 @@ function numbered(record: WorkbookRecord) {
       n: ++n,
       section: section.kind as SectionKind,
       item,
-      problem: generateProblem(item.templateId, item.seed),
+      problem: generateProblem(
+        item.templateId,
+        item.seed,
+        item.templateVersion,
+      ),
     })),
   );
 }
