@@ -322,7 +322,11 @@ def _mentioned(question, labels):
     return [label for _, label in found]
 
 
-NEAREST = {'centimeter': 1, 'inch': 1, 'half inch': 2, 'quarter inch': 4, 'eighth inch': 8}
+NEAREST = {
+    'centimeter': 1, 'inch': 1, 'half inch': 2, 'quarter inch': 4, 'eighth inch': 8,
+    'third of an inch': 3, 'fifth of an inch': 5, 'sixth of an inch': 6,
+    'tenth of an inch': 10, 'twelfth of an inch': 12,
+}
 
 
 def _amount(text):
@@ -344,7 +348,10 @@ def solve_line_plot(public):
     require(all(Fraction(figure['start'], d) <= x <= Fraction(figure['end'], d) for x in data), 'Mark off the axis')
     require(max(data.count(x) for x in data) <= 7, 'Stack leaves the plot')
     amount = r'(\d+ \d+/\d+|\d+/\d+|\d+)'
-    m = re.search(r'measured to the nearest (centimeter|inch|half inch|quarter inch|eighth inch)\.', prompt)
+    m = re.search(
+        r'measured to the nearest (centimeter|inch|half inch|quarter inch|eighth inch|third of an inch|fifth of an inch|sixth of an inch|tenth of an inch|twelfth of an inch)\.',
+        prompt,
+    )
     if m:
         require(NEAREST[m[1]] == d, 'Stated precision contradicts the plot')
     if 'shared equally' in prompt:

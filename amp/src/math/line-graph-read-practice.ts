@@ -48,7 +48,7 @@ export const dotPlotArithmeticTemplate: TemplateMetadata = {
   gradeBand: "3–5",
   difficultyOffset: 0,
   description:
-    "From a dot plot or line plot of whole-number or mixed-number measurements, find the total, the greatest minus the least, or a missing value when the total is given.",
+    "From a dot plot of whole-number, mixed-number, or hundredths measurements, find the total, the greatest minus the least, or a missing value when the total is given.",
   ...choiceCap,
 };
 
@@ -693,6 +693,11 @@ const dotContexts: DotContext[] = [
 const dotAxes = {
   values: defineAxis("values", ["whole", "mixed"] as const),
   ask: defineAxis("ask", ["total", "range", "missing-value"] as const),
+  /** Hundredths measurements. The legacy value keeps the whole and mixed plots. */
+  "data-domain": defineAxis("data-domain", ["current", "hundredths"] as const, {
+    legacy: "current",
+    weights: [4, 1],
+  }),
 };
 interface DotModel {
   values: "whole" | "mixed";
@@ -705,11 +710,52 @@ interface DotModel {
   /** Total of one more value, for missing-value (in units of 1/d). */
   grand: number;
   hidden: number;
+  /** Hundredths data. The legacy model leaves this false and ignores the window. */
+  decimal: boolean;
+  /** Axis ends in the same units as `units` (hundredths when decimal). */
+  axisMin: number;
+  axisMax: number;
+}
+function hundredthsDot(r: Random, ask: DotModel["ask"]): DotModel {
+  const ctx = pick(
+    r,
+    dotContexts.filter((c) => c.fractional),
+  );
+  // Eleven ticks, so (max − min) × 100 = 10, inside the 24-tick scene limit.
+  const axisMin = r(40, 240);
+  const axisMax = axisMin + 10;
+  const count = r(5, 7);
+  const units: number[] = [];
+  for (let i = 0; i < count; i++) units.push(r(axisMin, axisMax));
+  if (units.every((u) => u % 100 === 0)) throw new Error("Need three retries");
+  if (new Set(units).size === units.length)
+    throw new Error("Need three retries");
+  if (new Set(units).size < 3) throw new Error("Need three retries");
+  const hidden = r(axisMin, axisMax);
+  const total = units.reduce((s, v) => s + v, 0);
+  return {
+    values: "mixed",
+    ask,
+    ctx,
+    d: 100,
+    units,
+    count,
+    grand: total + hidden,
+    hidden,
+    decimal: true,
+    axisMin,
+    axisMax,
+  };
 }
 function dotModel(
   r: Random,
-  a: { values: DotModel["values"]; ask: DotModel["ask"] },
+  a: {
+    values: DotModel["values"];
+    ask: DotModel["ask"];
+    "data-domain": "current" | "hundredths";
+  },
 ): DotModel {
+  if (a["data-domain"] === "hundredths") return hundredthsDot(r, a.ask);
   const ctx = pick(
     r,
     dotContexts.filter((c) => a.values === "whole" || c.fractional),
@@ -739,6 +785,9 @@ function dotModel(
     count,
     grand: total + hidden,
     hidden,
+    decimal: false,
+    axisMin: 0,
+    axisMax: 0,
   };
 }
 const g2 = (x: number, y: number): number => (y ? g2(y, x % y) : x);
@@ -756,12 +805,150 @@ const val = (units: number, d: number) =>
 const withUnit = (units: number, d: number, c: DotContext) =>
   `${val(units, d)} ${units <= d ? c.one : c.unit}`;
 
+/** Hundredths as text: 40 → "0.40", 100 → "1", 125 → "1.25". */
+const decAmount = (units: number) => {
+  const abs = Math.abs(units);
+  const whole = Math.floor(abs / 100);
+  const frac = abs % 100;
+  const body =
+    frac === 0 ? String(whole) : `${whole}.${String(frac).padStart(2, "0")}`;
+  return units < 0 ? `-${body}` : body;
+};
+const decWith = (units: number, c: DotContext) =>
+  `${decAmount(units)} ${Math.abs(units) <= 100 ? c.one : c.unit}`;
+
+function renderHundredths(m: DotModel, r: Random): Surface | null {
+  const { ctx, units } = m;
+  const total = units.reduce((s, v) => s + v, 0);
+  const hi = Math.max(...units),
+    lo = Math.min(...units);
+  const distinct = [...new Set(units)];
+  const scene = sceneSchema.parse({
+    v: 1,
+    title: "Dot plot of the measurements",
+    maxHeight: 720,
+    elements: [
+      {
+        type: "dotPlot",
+        id: "plot",
+        min: m.axisMin / 100,
+        max: m.axisMax / 100,
+        denominator: 100,
+        decimalPlaces: 2,
+        mark: "dot",
+        groups: [{ values: units.map((u) => u / 100) }],
+        unit: ctx.unit,
+      },
+    ],
+  });
+  let answer: number;
+  let wrong: [number, string][];
+  let prompt: string;
+  let hint: string;
+  let explanation: string[];
+  const listed = units
+    .slice()
+    .sort((x, y) => x - y)
+    .map((u) => decAmount(u))
+    .join(", ");
+  if (m.ask === "total") {
+    answer = total;
+    const once = distinct.reduce((s, v) => s + v, 0);
+    wrong = [
+      [
+        once,
+        "It adds each different value once. Every dot is a separate measurement, so a value with two dots is added twice.",
+      ],
+      [total - lo, "It leaves out one dot. Count every dot in the plot."],
+      [
+        total + hi,
+        "It counts one dot too many. Each dot is added exactly once.",
+      ],
+      [units.length * 100, "That is the number of dots, not their total."],
+    ];
+    prompt = `${ctx.intro(m.count)} ${ctx.total(m.count)}`;
+    hint = `The plot has ${m.count} dots. Each dot is one measurement, so a value with two dots counts twice. Add the value of every dot.`;
+    explanation = [
+      `In a dot plot, each dot is one measurement, placed above its value. Two dots above a value mean it happened twice.`,
+      `Read every dot, repeats included: ${listed}.`,
+      `"In all" means add every dot's value: all ${m.count} values add to ${decAmount(total)}.`,
+      `The total is ${decWith(total, ctx)}.`,
+    ];
+  } else if (m.ask === "range") {
+    answer = hi - lo;
+    wrong = [
+      [
+        hi,
+        "It stops at the greatest value. The range subtracts the least value from it.",
+      ],
+      [
+        hi + lo,
+        "It adds the greatest and least values. The range is their difference.",
+      ],
+      [lo, "That is the least value, not the difference."],
+      [
+        hi - lo + 1,
+        "It is one hundredth too many. Subtract the least value from the greatest exactly.",
+      ],
+    ];
+    prompt = `${ctx.intro(m.count)} What is the difference between the greatest and the least value, in ${ctx.unit}?`;
+    hint = `The plot has ${m.count} dots on a scale marked in hundredths. Find the dot farthest to the right and the dot farthest to the left, then subtract.`;
+    explanation = [
+      `In a dot plot, each dot is one measurement. The rightmost dot is the greatest value and the leftmost is the least.`,
+      `The greatest value is ${decAmount(hi)} and the least is ${decAmount(lo)}.`,
+      `The difference is what you get by subtracting: ${decAmount(hi)} − ${decAmount(lo)} = ${decAmount(hi - lo)}.`,
+      `The difference is ${decWith(hi - lo, ctx)}.`,
+    ];
+  } else {
+    answer = m.hidden;
+    const grand = m.grand;
+    wrong = [
+      [total, "That is the total of the dots shown, not the missing value."],
+      [grand, "That is the given total, not the missing value."],
+      [
+        grand - total + 1,
+        "It is one hundredth more than the difference. Add the shown dots again, counting each repeated value every time, then subtract that sum from the total.",
+      ],
+      [
+        grand - total - 1,
+        "It is one hundredth less than the difference. Add the shown dots again, counting each repeated value every time, then subtract that sum from the total.",
+      ],
+    ];
+    prompt = `${ctx.intro(m.count)} ${ctx.missing(m.count, decWith(grand, ctx))}`;
+    hint = `Add the values of the ${m.count} dots, counting repeated values each time. The missing value is the total ${decAmount(grand)} minus that sum.`;
+    explanation = [
+      `The given total is the dots shown plus the missing value. So the missing value is the total minus the dots shown.`,
+      `Read every dot, repeats included: ${listed}. They add to ${decAmount(total)}.`,
+      `Subtract: ${decAmount(grand)} − ${decAmount(total)} = ${decAmount(m.hidden)}.`,
+      `The missing value is ${decWith(m.hidden, ctx)}.`,
+    ];
+  }
+  const seen = new Set([answer]);
+  const options: ChoiceOption[] = [
+    { label: decWith(answer, ctx), correct: true },
+  ];
+  for (const [v, feedback] of shuffle(r, wrong)) {
+    if (v <= 0 || seen.has(v)) continue;
+    seen.add(v);
+    options.push({ label: decWith(v, ctx), feedback });
+  }
+  const s = choiceSurface(r, {
+    prompt,
+    options,
+    hint,
+    explanation,
+    label: "Choose the answer",
+  });
+  return s && { ...s, figure: { kind: "scene" as const, scene } };
+}
+
 export const dotPlotArithmeticFamily = chainFamily({
   template: dotPlotArithmeticTemplate,
   axes: dotAxes,
   model: dotModel,
-  variant: (m) => `${m.values}-${m.ask}`,
+  variant: (m) => (m.decimal ? `hundredths-${m.ask}` : `${m.values}-${m.ask}`),
   render: (m, _ax, r) => {
+    if (m.decimal) return renderHundredths(m, r);
     const { ctx, d, units } = m;
     const total = units.reduce((s, v) => s + v, 0);
     const hi = Math.max(...units),

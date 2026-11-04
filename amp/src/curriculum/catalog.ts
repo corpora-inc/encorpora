@@ -553,6 +553,7 @@ model-validation|precalculus|modeling|Compare model predictions to evidence and 
 counting-arithmetic|1|operations|Connect counting forward and backward to addition and subtraction|count-to-100,addition-within-20|1.OA.C.5
 mental-tens-hundreds|2|operations|Mentally add or subtract ten or one hundred within one thousand|hundreds-place-value|2.NBT.B.8
 fraction-plot-arithmetic|4|data|Solve addition and subtraction questions from fractional measurement plots|fraction-line-plots,like-fraction-addition|4.MD.B.4
+frequency-bar-graphs|4|data|Build frequency tables and answer multi-step questions from frequency tables and scaled bar graphs|picture-bar-graphs,scaled-graphs|
 measurement-conversions|5|measurement|Convert measurements within one system in multistep problems|unit-conversion,decimal-arithmetic|5.MD.A.1
 fraction-plot-computation|5|data|Use fraction operations to solve problems from measurement line plots|fraction-plot-arithmetic,fraction-addition|5.MD.B.2
 complex-conjugates|precalculus|number|Use conjugates to compute complex quotients and moduli|complex-numbers|
@@ -2934,6 +2935,16 @@ for (const [skillId, suffix, description] of [
     "fraction-plot-arithmetic",
     "like-fraction-plot-operations",
     "Add and subtract like-fraction lengths read from a line plot.",
+  ],
+  [
+    "fraction-plot-arithmetic",
+    "build-match-center",
+    "Build a fractional line plot from a list, choose the plot that matches a list, and find the mode, median or range.",
+  ],
+  [
+    "frequency-bar-graphs",
+    "tables-and-scaled-bars",
+    "Build a frequency table with intervals of 5, 10, 25, 50 or 100, and answer a two-step question from a frequency table or a scaled bar graph.",
   ],
   [
     "fraction-plot-computation",

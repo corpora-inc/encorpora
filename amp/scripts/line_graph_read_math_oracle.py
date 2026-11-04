@@ -240,7 +240,7 @@ UNITS = {'feet': 'foot', 'pounds': 'pound', 'miles': 'mile', 'points': 'point'}
 
 
 def parse_amount(text):
-    """A number, mixed number or fraction (typeset or plain) as an exact Fraction."""
+    """A number, decimal, mixed number or fraction (typeset or plain) as an exact Fraction."""
     t = text.strip('$ ')
     m = re.fullmatch(r'(\d+)\\frac\{(\d+)\}\{(\d+)\}', t)
     if m:
@@ -248,12 +248,14 @@ def parse_amount(text):
     m = re.fullmatch(r'\\frac\{(\d+)\}\{(\d+)\}', t)
     if m:
         return F(int(m[1]), int(m[2]))
+    if re.fullmatch(r'\d+\.\d+', t):
+        return F(t)
     require(re.fullmatch(r'\d+', t) is not None, f'Not an amount: {text}')
     return F(int(t))
 
 
 def amount_with_unit(label, unit):
-    m = re.fullmatch(r'(\$[^$]+\$|\d+) ([a-z]+)', label)
+    m = re.fullmatch(r'(\$[^$]+\$|\d+(?:\.\d+)?) ([a-z]+)', label)
     require(m is not None, f'Not a measure: {label}')
     value = parse_amount(m[1])
     expected = UNITS[unit] if value <= 1 else unit
@@ -292,8 +294,8 @@ def solve_dots(public):
         value = max(values) - min(values)
         require(value > 0, 'Range must be positive')
     else:
-        m2 = (re.fullmatch(r'All (\d+) (?:ribbons have a total length of|bags weigh) (\$[^$]+\$|\d+) (?:feet|pounds)(?: together)?\. What is the (?:length of ribbon|weight of bag) (\d+), in (?:feet|pounds)\?', question)
-              or re.fullmatch(r'Maya walked (\$[^$]+\$|\d+) miles in all (\d+) days\. How many miles did she walk on day (\d+)\?', question)
+        m2 = (re.fullmatch(r'All (\d+) (?:ribbons have a total length of|bags weigh) (\$[^$]+\$|\d+(?:\.\d+)?) (?:feet|pounds)(?: together)?\. What is the (?:length of ribbon|weight of bag) (\d+), in (?:feet|pounds)\?', question)
+              or re.fullmatch(r'Maya walked (\$[^$]+\$|\d+(?:\.\d+)?) miles in all (\d+) days\. How many miles did she walk on day (\d+)\?', question)
               or re.fullmatch(r'The team scored (\d+) points in its first (\d+) games\. How many points did it score in game (\d+)\?', question))
         require(m2 is not None, f'Unrecognized question: {question}')
         a, b, c = m2.groups()
@@ -380,6 +382,9 @@ def self_test():
            ['7 miles', '$16\\frac{1}{2}$ miles', '12 miles', '$17\\frac{1}{2}$ miles'], 'option-d', dots([4, 2, 1.5, 1, 4, 3.5, 1.5], 2, 6)),
         mk('dot-plot-arithmetic', 'The dot plot shows the length, in feet, of each of 7 ribbons. All 8 ribbons have a total length of 22 feet. What is the length of ribbon 8, in feet?',
            ['5 feet', '17 feet', '$5\\frac{1}{2}$ feet', '$4\\frac{1}{2}$ feet'], 'option-a', dots([3, 2, 2, 4, 1, 3, 2], None, 10)),
+        mk('dot-plot-arithmetic', 'The dot plot shows the length, in feet, of each of 5 ribbons. What is the total length of all 5 ribbons, in feet?',
+           ['6.20 feet', '5.20 feet', '1.24 feet', '5 feet'], 'option-a',
+           {'kind': 'scene', 'scene': {'v': 1, 'elements': [{'id': 'plot', 'type': 'dotPlot', 'min': 1.2, 'max': 1.3, 'denominator': 100, 'decimalPlaces': 2, 'mark': 'dot', 'groups': [{'values': [1.2, 1.25, 1.25, 1.22, 1.28]}], 'unit': 'feet'}]}}),
     ]
     count = 0
 

@@ -137,6 +137,9 @@ test("line-graph-reader: every ask is reachable and hints vary", () => {
 });
 
 const fraction = (s: string): Q => {
+  const plain = s.replaceAll("$", "");
+  const dec = plain.match(/^(\d+)\.(\d+)$/);
+  if (dec) return q(Number(dec[1] + dec[2]), 10 ** dec[2].length);
   const m = s.match(/^\$?(?:(\d+))?\\frac\{(\d+)\}\{(\d+)\}\$?$/);
   if (m) return add(q(Number(m[1] ?? 0)), q(Number(m[2]), Number(m[3])));
   const mixed = s.match(/^\$(\d+)\\frac\{(\d+)\}\{(\d+)\}\$$/);
@@ -153,7 +156,11 @@ test("dot-plot-arithmetic: the keyed answer follows from the plotted dots", () =
     const values: Q[] = g.groups[0].values.map((v: number) =>
       q(Math.round(v * d), d),
     );
-    const ask = p.variant!.id.replace(/^(whole|mixed)-/, "");
+    const id = p.variant!.id;
+    const hundredths = id.startsWith("hundredths-");
+    const ask = hundredths
+      ? id.slice("hundredths-".length)
+      : id.replace(/^(whole|mixed)-/, "");
     const sum = values.reduce((s, v) => add(s, v), q(0));
     const sorted = [...values].sort((a, b) => a[0] * b[1] - b[0] * a[1]);
     const prompt = p.public.prompt;
@@ -162,7 +169,7 @@ test("dot-plot-arithmetic: the keyed answer follows from the plotted dots", () =
     else if (ask === "range") expected = sub(sorted.at(-1)!, sorted[0]!);
     else {
       const stated = prompt.match(
-        /(?:\$([^$]+)\$|(\d+)) (?:miles|points|feet|pounds)/,
+        /(?:\$([^$]+)\$|(\d+(?:\.\d+)?)) (?:miles|points|feet|pounds)/,
       )!;
       const grand = fraction(stated[1] ? `$${stated[1]}$` : stated[2]!);
       expected = sub(grand, sum);
@@ -171,7 +178,10 @@ test("dot-plot-arithmetic: the keyed answer follows from the plotted dots", () =
     assert.ok(eq(fraction(text), expected), `${p.public.seed} ${ask}`);
     // Counting multiplicity matters in every plot.
     assert.ok(new Set(values.map((v) => v.join("/"))).size < values.length);
-    if (p.variant!.id.startsWith("mixed"))
+    if (hundredths) {
+      assert.equal(d, 100);
+      assert.ok(values.some((v) => v[1] !== 1));
+    } else if (id.startsWith("mixed"))
       assert.ok(values.some((v) => v[1] !== 1));
     else assert.ok(values.every((v) => v[1] === 1));
   }
@@ -182,5 +192,7 @@ test("dot-plot-arithmetic: whole and mixed values reach every question", () => {
   for (const v of ["whole", "mixed"])
     for (const a of ["total", "range", "missing-value"])
       assert.ok(seen.has(`${v}-${a}`), `${v}-${a}`);
+  for (const a of ["total", "range", "missing-value"])
+    assert.ok(seen.has(`hundredths-${a}`), `hundredths-${a}`);
   void mul;
 });

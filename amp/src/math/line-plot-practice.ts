@@ -5,6 +5,7 @@ import type {
   TemplateMetadata,
 } from "./contracts.js";
 import { MAX_STACK, mixedText, stackHeights } from "./data-display-models.js";
+import { axisRecord, chooseAxes, defineAxis } from "./variation/axes.js";
 
 /** Line plots of measurements, from whole units to fraction operations (grades 2–5). */
 const charts = { requiredFigureCapability: "data-displays-v1" } as const;
@@ -37,7 +38,7 @@ export const linePlotTemplates: readonly TemplateMetadata[] = [
     skillId: "fraction-plot-arithmetic",
     gradeBand: "3–5",
     description:
-      "Add or subtract like fractions read from a fourths or eighths line plot.",
+      "Add or subtract like fractions read from a line plot. Most plots use fourths or eighths; thirds, fifths, sixths, tenths and twelfths appear less often.",
   },
   {
     id: "fraction-plot-equal-share",
@@ -83,7 +84,46 @@ const both = (v: number, d: number) => {
 };
 
 const parts = (d: number) =>
-  ({ 2: "halves", 4: "fourths", 8: "eighths" })[d] ?? `${d}ths`;
+  ({
+    2: "halves",
+    3: "thirds",
+    4: "fourths",
+    5: "fifths",
+    6: "sixths",
+    8: "eighths",
+    10: "tenths",
+    12: "twelfths",
+  })[d] ?? `${d}ths`;
+/** Grade-4 denominators besides fourths and eighths, at a lower weight.
+ * 100 does not fit a line plot: the axis allows at most 12 steps. */
+const plotDenomAxis = {
+  denominator: defineAxis(
+    "denominator",
+    [
+      "fourths-eighths",
+      "thirds",
+      "fifths",
+      "sixths",
+      "tenths",
+      "twelfths",
+    ] as const,
+    { legacy: "fourths-eighths", weights: [12, 2, 2, 2, 2, 1] },
+  ),
+};
+const EXTRA_DENOM = {
+  thirds: 3,
+  fifths: 5,
+  sixths: 6,
+  tenths: 10,
+  twelfths: 12,
+} as const;
+const EXTRA_WORD = {
+  3: "third",
+  5: "fifth",
+  6: "sixth",
+  10: "tenth",
+  12: "twelfth",
+} as const;
 /** "16/8 = 2 inches": the value in parts, its simplest form, and an agreeing unit. */
 const result = (v: number, d: number, one: string, many: string) =>
   `${v}/${d}${rational(v, d) !== `${v}/${d}` ? ` = ${both(v, d)}` : ""} ${v <= d ? one : many}`;
@@ -263,12 +303,18 @@ function fractionPlot(r: Random): Draft {
   );
 }
 
-function plotDifference(r: Random): Draft {
+function plotDifference(r: Random, denomAxis: string): Draft {
   const context = lengthContexts[r(0, lengthContexts.length - 1)]!;
-  const d = r(0, 1) ? 8 : 4;
-  const first = r(0, d === 8 ? 2 : 3),
-    start = first * d,
-    end = start + 8;
+  // The legacy value draws the denominator first, exactly as before this axis.
+  // A cast would hide "fourths-eighths", so the legacy denominator would type as unreachable.
+  const extra =
+    denomAxis in EXTRA_DENOM
+      ? EXTRA_DENOM[denomAxis as keyof typeof EXTRA_DENOM]
+      : undefined;
+  const d = extra ?? (r(0, 1) ? 8 : 4);
+  const first = extra ? 0 : r(0, d === 8 ? 2 : 3),
+    start = extra ? 0 : first * d,
+    end = extra ? (d === 5 || d === 10 ? 10 : 12) : start + 8;
   const values = sample(r, r(6, 12), Math.max(start, 1), end);
   const figure: SemanticFigure = {
     kind: "line-plot",
@@ -279,7 +325,7 @@ function plotDifference(r: Random): Draft {
     mark: "x",
     unit: "inches",
   };
-  const intro = `The line plot shows the lengths of some ${context.items}, measured to the nearest ${d === 8 ? "eighth" : "quarter"} inch.`;
+  const intro = `The line plot shows the lengths of some ${context.items}, measured to the nearest ${extra ? `${EXTRA_WORD[d as keyof typeof EXTRA_WORD]} of an` : d === 8 ? "eighth" : "quarter"} inch.`;
   const sorted = [...values].sort((a, b) => a - b);
   const longest = sorted.at(-1)!,
     shortest = sorted[0]!;
@@ -380,13 +426,17 @@ export function generateLinePlotProblem(
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(templateId, seed);
+  const denom =
+    templateId === "fraction-plot-difference"
+      ? chooseAxes(templateId, seed, plotDenomAxis)
+      : undefined;
   const draft =
     templateId === "line-plot-whole"
       ? wholePlot(r)
       : templateId === "fraction-line-plot"
         ? fractionPlot(r)
         : templateId === "fraction-plot-difference"
-          ? plotDifference(r)
+          ? plotDifference(r, denom!.denominator)
           : equalShare(r);
   return {
     public: {
@@ -409,5 +459,8 @@ export function generateLinePlotProblem(
     answer: draft.answer,
     explanation: draft.explanation,
     hint: draft.hint,
+    ...(denom
+      ? { variant: { id: denom.denominator, axes: axisRecord(denom) } }
+      : {}),
   };
 }

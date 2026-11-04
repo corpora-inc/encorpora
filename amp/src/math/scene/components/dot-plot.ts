@@ -13,7 +13,7 @@ import {
   tallest,
   unitLabel,
 } from "./data-scale";
-import { spoken } from "./format";
+import { num as numeral, spoken } from "./format";
 
 const groupLabel = z.string().min(1).max(16);
 /** A line plot or dot plot: one mark per value, stacked over a number line;
@@ -24,21 +24,27 @@ export const dotPlotSchema = z
     type: z.literal("dotPlot"),
     min: coord,
     max: coord,
-    /** Ticks every 1/denominator, labeled as mixed numbers. */
-    denominator: z.number().int().min(1).max(16).optional(),
+    /** Ticks every 1/denominator. 100 labels a hundredths plot. */
+    denominator: z.number().int().min(1).max(100).optional(),
     mark: z.enum(["x", "dot"]).optional(),
     groups: z
       .array(
         z
           .object({
             label: groupLabel.optional(),
-            values: z.array(coord).min(1).max(40),
+            values: z.array(coord).max(40),
           })
           .strict(),
       )
       .min(1)
       .max(2),
     unit: z.string().min(1).max(24).optional(),
+    /** Draw the scale with no marks, so the learner supplies the counts. */
+    blank: z.boolean().optional(),
+    /** Keep the denominator in tick labels, so 2/8 stays 2/8. */
+    fixedLabels: z.boolean().optional(),
+    /** Label ticks as decimals with this many places, instead of mixed numbers. */
+    decimalPlaces: z.number().int().min(1).max(3).optional(),
     /** Vertical guides at a value (a pivot, a mean), optionally with the
      * horizontal distance from each mark of that group to it. */
     references: z
@@ -93,7 +99,15 @@ export const dotPlotSchema = z
         g.values.every((v) => on(v) && v >= p.min && v <= p.max),
       )
     );
-  }, "Values sit on ticks inside the scale");
+  }, "Values sit on ticks inside the scale")
+  .refine(
+    (p) =>
+      (p.blank
+        ? p.groups.every((g) => g.values.length === 0)
+        : p.groups.every((g) => g.values.length >= 1)) &&
+      !(p.decimalPlaces !== undefined && p.fixedLabels === true),
+    "A blank plot has no marks, a drawn plot has at least one, and decimal labels are not also fixed fractions",
+  );
 
 export type DotPlot = z.infer<typeof dotPlotSchema>;
 
@@ -114,6 +128,20 @@ export function fiveNumbers(values: readonly number[]) {
     max: v[n - 1]!,
   };
 }
+/** A tick label: mixed numbers by default, unreduced fractions, or decimals. */
+export function dotTickLabel(
+  v: number,
+  d: number,
+  p: { fixedLabels?: boolean; decimalPlaces?: number },
+) {
+  if (p.decimalPlaces) return v.toFixed(p.decimalPlaces);
+  if (!p.fixedLabels) return mixed(v, d);
+  const n = Math.round(v * d),
+    whole = Math.floor(n / d),
+    rest = n - whole * d;
+  if (!rest) return numeral(whole);
+  return `${whole ? `${whole} ` : ""}${rest}/${d}`;
+}
 const BAND = 56,
   BRICKS = 22,
   REF = 20;
@@ -123,7 +151,7 @@ registerComponent("dotPlot", {
   compile(p, { s }) {
     const d = p.denominator ?? 1,
       kind = p.mark ?? "dot";
-    const text = (v: number) => mixed(v, d);
+    const text = (v: number) => dotTickLabel(v, d, p);
     const list = scaleTicks(p.min, p.max, 1 / d, s, text).map((t) => ({
       ...t,
       // Whole numbers are the major ticks on a fraction scale.
