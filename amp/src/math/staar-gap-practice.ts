@@ -12,12 +12,15 @@ import {
   type Random,
 } from "./distribution-practice";
 
-/** Thousandths is the legacy surface. Hundredths is the grade-4 default. */
+/** Thousandths is the legacy surface, out of grade-4 scope (TEKS 4.2F,
+ * CCSS 4.NF.C.7 stop at hundredths). Versions 1–2 reprint it; from version 3
+ * new problems are always hundredths. */
 export const orderDecimalAxes = {
   places: defineAxis("places", ["thousandths", "hundredths"] as const, {
     legacy: "thousandths",
     weights: [1, 4],
     since: 2,
+    legacyRetiredSince: 3,
   }),
 } as const;
 
@@ -117,7 +120,7 @@ export const staarGapTemplates: readonly TemplateMetadata[] = [
     "3–5",
     0.2,
     "Choose the list of four decimals in order, or the decimal in a stated position when four decimals with different numbers of places are ordered.",
-    { ...choice, version: 2, reprintsFrom: 1 },
+    { ...choice, version: 3, reprintsFrom: 1 },
   ),
   meta(
     "staar-order-mixed-forms",

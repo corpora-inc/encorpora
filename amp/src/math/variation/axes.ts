@@ -40,6 +40,11 @@ export interface Axis<V extends string = string> {
   /** Template version that introduced this axis. Below it, generation forces
    * `legacy` (including a silent legacy). Unset axes draw as they do today. */
   readonly since?: number;
+  /** Template version from which the legacy value is no longer drawn: its
+   * weight counts as 0 at that version and later (including the current one).
+   * Older versions still draw it as they did, and `since` gating still forces
+   * it below `since`. For a stored surface that is out of scope today. */
+  readonly legacyRetiredSince?: number;
 }
 export type AxisSet = Readonly<Record<string, Axis>>;
 export type AxisValues<A extends AxisSet> = {
@@ -60,6 +65,7 @@ export function defineAxis<const V extends string>(
     needs?: Partial<Record<NoInfer<V>, FigureCapability>>;
     silentLegacy?: boolean;
     since?: number;
+    legacyRetiredSince?: number;
   } = {},
 ): Axis<V> {
   if (!axisIdPattern.test(id)) throw new Error(`Bad axis id ${id}`);
@@ -86,6 +92,17 @@ export function defineAxis<const V extends string>(
     (!Number.isInteger(options.since) || options.since < 1)
   )
     throw new Error(`Axis ${id} since must be a positive integer`);
+  const retired = options.legacyRetiredSince;
+  if (
+    retired != null &&
+    (!Number.isInteger(retired) ||
+      retired < 2 ||
+      values.length < 2 ||
+      (options.since != null && retired <= options.since))
+  )
+    throw new Error(
+      `Axis ${id} legacyRetiredSince must be an integer above since, with another value to draw`,
+    );
   return {
     id,
     values,
@@ -94,6 +111,7 @@ export function defineAxis<const V extends string>(
     ...(needs ? { needs } : {}),
     ...(options.silentLegacy ? { silentLegacy: true } : {}),
     ...(options.since != null ? { since: options.since } : {}),
+    ...(retired != null ? { legacyRetiredSince: retired } : {}),
   };
 }
 
@@ -194,7 +212,13 @@ export const surfaceStream = (templateId: string, seed: string): Random =>
   stream([templateId, 1, seed, "surface"]);
 
 function draw<V extends string>(r: Random, axis: Axis<V>): V {
-  const weights = axis.weights ?? axis.values.map(() => 1);
+  const base = axis.weights ?? axis.values.map(() => 1);
+  const retired =
+    axis.legacyRetiredSince != null &&
+    (templateVersion == null || templateVersion >= axis.legacyRetiredSince);
+  const weights = retired
+    ? base.map((w, i) => (axis.values[i] === axis.legacy ? 0 : w))
+    : base;
   let n = r(0, weights.reduce((a, b) => a + b, 0) - 1);
   for (const [i, w] of weights.entries()) {
     if (n < w) return axis.values[i]!;
