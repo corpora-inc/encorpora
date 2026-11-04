@@ -181,6 +181,35 @@ const diffScenes: readonly DiffScene[] = [
       `${who} planned ${fractionAmount(a, d, "hour", "an")} of piano. ${who} has practiced ${fractionAmount(b, d, "hour", "an")}. How much practice time is left?`,
   },
   {
+    object: "reading",
+    unit: "hour",
+    article: "an",
+    denoms: UNIT_DENOMS.hour,
+    min: 1 / 6,
+    max: 2,
+    prompt: (who, a, b, d) =>
+      `${who} set aside ${fractionAmount(a, d, "hour", "an")} for reading. ${who} has read for ${fractionAmount(b, d, "hour", "an")}. How much reading time is left?`,
+  },
+  {
+    object: "movie",
+    unit: "hour",
+    article: "an",
+    denoms: UNIT_DENOMS.hour,
+    min: 2 / 3,
+    max: 2,
+    prompt: (who, a, b, d) =>
+      `A movie lasts ${fractionAmount(a, d, "hour", "an")}. ${who} has watched ${fractionAmount(b, d, "hour", "an")}. How much of the movie is left?`,
+  },
+  {
+    object: "milk",
+    unit: "cup",
+    denoms: UNIT_DENOMS.cup,
+    min: 0.125,
+    max: 1,
+    prompt: (who, a, b, d) =>
+      `${who} has ${fractionAmount(a, d, "cup")} of milk and pours ${fractionAmount(b, d, "cup")} into the pancake batter. How much milk is left?`,
+  },
+  {
     object: "trail",
     unit: "mile",
     denoms: UNIT_DENOMS.mile,
