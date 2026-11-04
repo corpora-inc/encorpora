@@ -1,3 +1,5 @@
+import { grade4MeasurementMoneyGlossary } from "./grade4-measurement-money-practice";
+
 /** Which glossary entry each ambiguous word means in a K–2, 3–5 or 6–8
  * template's generated hints and explanations, and which words are ordinary
  * prose there ("leaves 1 over", "the ones digit changes", the "open side" of
@@ -377,4 +379,5 @@ export const k8TemplateGlossary: Record<
   "whole-number-equality-choice": { senses: { sides: "side-of-equation" } },
   "whole-pack-ribbon-choice": { noLink: ["whole"] },
   "whole-sharing-fraction": { senses: { part: "part", parts: "part" } },
+  ...grade4MeasurementMoneyGlossary,
 };

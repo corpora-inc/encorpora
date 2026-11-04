@@ -875,6 +875,18 @@ const legacyTemplateArchetypes: Readonly<Record<string, readonly string[]>> = {
     "probability.compound-event",
   ],
   "staar-number-sets": ["number.number-classification"],
+  "elapsed-time-intervals": ["time.elapsed"],
+  "conversion-table-slots": ["measure.mixed-units", "time.rename-units"],
+  "unit-rename-larger": [
+    "measure.metric-length",
+    "measure.customary-units",
+    "time.rename-units",
+  ],
+  "measurement-line-fraction-story": ["fractions.add-subtract-like"],
+  "measuring-tool-choice": ["measure.model-choice"],
+  "decimal-sum-difference": ["decimal.add-subtract"],
+  "money-decimal-story": ["money.change", "money.fewest-coins"],
+  "money-model-decimal": ["money.count-coins"],
 };
 /** Frozen legacy entries, then families from src/families/. */
 export const templateArchetypes: Readonly<Record<string, readonly string[]>> =

@@ -70,6 +70,7 @@ import { financeIncomeMethods } from "./finance-income-lessons";
 import { texasHsMethods } from "./texas-hs-lessons";
 import { k8StateNumberMethods } from "./k8-state-number-lessons";
 import { grade4PlaceValueMethods } from "./grade4-place-value-lessons";
+import { grade4MeasurementMoneyMethods } from "./grade4-measurement-money-lessons";
 import { texas38Methods } from "./texas-38-lessons";
 import { satNumericEntryMethods } from "./sat-numeric-entry-lessons";
 import { satFunctionFormsMethods } from "./sat-function-forms-lessons";
@@ -129,6 +130,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
   ...texasHsMethods,
   ...k8StateNumberMethods,
   ...grade4PlaceValueMethods,
+  ...grade4MeasurementMoneyMethods,
   ...texas38Methods,
   ...satNumericEntryMethods,
   ...satFunctionFormsMethods,

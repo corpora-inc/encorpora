@@ -70,6 +70,7 @@ import { financeIncomePrinciples } from "./finance-income-lessons";
 import { texasHsPrinciples } from "./texas-hs-lessons";
 import { k8StateNumberPrinciples } from "./k8-state-number-lessons";
 import { grade4PlaceValuePrinciples } from "./grade4-place-value-lessons";
+import { grade4MeasurementMoneyPrinciples } from "./grade4-measurement-money-lessons";
 import { texas38Principles } from "./texas-38-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
 import { satFunctionFormsPrinciples } from "./sat-function-forms-lessons";
@@ -125,6 +126,7 @@ const legacyPrinciples: Record<string, string> = {
   ...texasHsPrinciples,
   ...k8StateNumberPrinciples,
   ...grade4PlaceValuePrinciples,
+  ...grade4MeasurementMoneyPrinciples,
   ...texas38Principles,
   ...satNumericEntryPrinciples,
   ...satFunctionFormsPrinciples,
