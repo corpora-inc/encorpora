@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { count as countNoun } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -310,7 +311,7 @@ function growingShape(meta: TemplateMetadata, seed: string): GeneratedProblem {
     ["Tiles", String(tiles(1)), String(tiles(2)), String(tiles(3))],
   ];
   return numberProblem(meta, seed, {
-    prompt: `A tile pattern starts with ${rule.start} tiles. Each next step adds ${rule.add} tiles. The table shows steps 1, 2 and 3. How many tiles are in step ${step}?`,
+    prompt: `A tile pattern starts with ${countNoun(rule.start, "tile")}. Each next step adds ${countNoun(rule.add, "tile")}. The table shows steps 1, 2 and 3. How many tiles are in step ${step}?`,
     answer,
     label: "Tiles",
     figure: {
@@ -319,12 +320,12 @@ function growingShape(meta: TemplateMetadata, seed: string): GeneratedProblem {
         title: "Tiles in the first three steps",
       }),
     },
-    hint: `Step 1 has ${rule.start} tiles. Each later step adds ${rule.add}. Step ${step} is ${step - 1} adds after the start. Do not count step ${step} from the table. It is not drawn.`,
+    hint: `Step 1 has ${countNoun(rule.start, "tile")}. Each later step adds ${rule.add}. Step ${step} is ${step - 1} adds after the start. Do not count step ${step} from the table. It is not drawn.`,
     explanation: [
       `The rule is: start at ${rule.start}, then add ${rule.add} for each new step.`,
       `Step ${step} has had the start plus ${step - 1} adds: ${rule.start} + ${step - 1} × ${rule.add}.`,
       `${rule.start} + ${(step - 1) * rule.add} = ${answer}.`,
-      `Step ${step} has ${answer} tiles.`,
+      `Step ${step} has ${countNoun(answer, "tile")}.`,
     ],
     variant: "add-rule",
     axes: { rule: "add" },

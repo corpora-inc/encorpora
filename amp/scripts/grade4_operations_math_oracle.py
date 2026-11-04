@@ -50,7 +50,7 @@ def solve(public):
         return str(dividend // teen)
     if template == "growing-shape-pattern":
         start, add, step = (int(v) for v in re.fullmatch(
-            r"A tile pattern starts with (\d+) tiles\. Each next step adds (\d+) tiles\. "
+            r"A tile pattern starts with (\d+) tiles?\. Each next step adds (\d+) tiles?\. "
             r"The table shows steps 1, 2 and 3\. How many tiles are in step (\d+)\?",
             prompt,
         ).groups())
