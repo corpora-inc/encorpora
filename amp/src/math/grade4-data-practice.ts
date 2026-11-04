@@ -347,7 +347,7 @@ function buildSlots(
   const questions = [
     `How many ${tale.items} belong at each mark?`,
     `How many ${tale.items} go at each mark?`,
-    `What count of ${tale.items} belongs at each mark?`,
+    `Write how many ${tale.items} have each length.`,
     `Fill in how many ${tale.items} match each mark.`,
   ];
   const scene = dotScene({
@@ -361,7 +361,7 @@ function buildSlots(
     blank: true,
   });
   return multiPartProblem(meta, seed, r, {
-    prompt: `${open} The number line has no marks yet. The lengths, in inches, are: ${listed}. ${questions[r(0, questions.length - 1)]}`,
+    prompt: `${open} The line plot is blank. The lengths, in inches, are: ${listed}. ${questions[r(0, questions.length - 1)]}`,
     layout: "table",
     label: `How many ${tale.items}?`,
     rowHeader: "Length",
@@ -515,9 +515,9 @@ function dataMatch(
   const open = lengthOpen(r(0, 3), name, tale, countedItems, precise);
   const questions = [
     "Which line plot shows this list?",
-    `Which graph matches ${name}'s measurements?`,
+    `Which line plot matches ${name}'s measurements?`,
     `Which line plot has one mark for each ${tale.item}?`,
-    `Which of these line plots shows the ${tale.items}?`,
+    `Which line plot shows the ${tale.items}?`,
   ];
   const correct: Candidate = {
     description: texts[0]!,
@@ -542,7 +542,7 @@ function dataMatch(
   ];
   const sampleTimes = sampleCount === 1 ? "once" : `${sampleCount} times`;
   return problemOf(meta, seed, r, {
-    prompt: `${open} The lengths, in inches, are: ${listed}. ${questions[r(0, questions.length - 1)]} Each graph is a line plot.`,
+    prompt: `${open} The lengths, in inches, are: ${listed}. ${questions[r(0, questions.length - 1)]}`,
     label: "Choose the graph",
     noun: "Graph",
     correct,
@@ -851,15 +851,17 @@ function frequencyTable(
       "Which frequency table groups these numbers correctly?",
       "Which table has the right count in each interval?",
     ][r(0, 2)]!;
+    const unitWord = plural(tale.unit);
+    const bands = `0${DASH}${width - 1}, ${width}${DASH}${2 * width - 1}, and so on`;
     const surface = choiceSurface(r, {
-      prompt: `${tale.lead(who)} Each number is ${tale.each}. Sort the numbers into intervals. There are ${count(n, noun, tale.many)}. The intervals are ${width} units wide, starting at 0. The numbers are: ${values.join(", ")}. ${buildAsk}`,
+      prompt: `${tale.lead(who)} There are ${count(n, noun, tale.many)}. Group the ${unitWord} into intervals of ${width} ${unitWord}: ${bands}. The numbers are: ${values.join(", ")}. ${buildAsk}`,
       options: [
         { label: correct, correct: true as const },
         ...wrongs.slice(0, 3),
       ],
-      hint: `Sort the numbers into intervals. There are ${count(n, noun, tale.many)}. Each interval is ${width} units wide, and it includes both end values. Count how many listed numbers fall in each interval.`,
+      hint: `Sort the numbers into intervals of ${width} ${unitWord}. There are ${count(n, noun, tale.many)}. Each interval includes both end values. Count how many listed numbers fall in each interval.`,
       explanation: [
-        `The intervals are ${width} units wide and start at 0. Each interval includes both end values, so 0 belongs in the first interval.`,
+        `Each interval covers ${width} ${unitWord}, starts at 0, and includes both end values, so 0 belongs in the first interval.`,
         `The first interval is 0 to ${width - 1}. It holds ${count(counts[0]!, noun, tale.many)}.`,
         `The other intervals hold ${count(counts[1]!, noun, tale.many)}, ${count(counts[2]!, noun, tale.many)} and ${count(counts[3]!, noun, tale.many)}.`,
         "The matching table is the one with those counts.",
@@ -878,7 +880,7 @@ function frequencyTable(
   const many = tale.many;
   const compareAsk = [
     `How many more ${many} are in the first two intervals together than in the last interval?`,
-    `How many more ${many} do the first two intervals together hold than the last interval?`,
+    `How many more ${many} do the first two intervals together have than the last interval?`,
     `How many more ${many} are in the first two intervals combined than in the last interval?`,
   ][r(0, 2)]!;
   const options: ChoiceOption[] = [
@@ -898,7 +900,7 @@ function frequencyTable(
     },
   ];
   const surface = choiceSurface(r, {
-    prompt: `${tale.lead(who)} The intervals show ${tale.measured}. ${rows} Each interval includes both of its end values. ${compareAsk}`,
+    prompt: `${tale.lead(who)} ${rows} Each interval includes both of its end values. ${compareAsk}`,
     options,
     hint: `The first interval, from 0 to ${width - 1}, has ${count(counts[0]!, noun, many)}. Add the next interval's count to that, then subtract the last interval.`,
     explanation: [
@@ -914,7 +916,7 @@ function frequencyTable(
   return finish(meta, seed, surface);
 }
 
-const BAR_STEPS = [5, 10, 10, 25, 25, 50, 50, 50, 100, 100, 100] as const;
+const BAR_STEPS = [5, 10, 25, 50, 100] as const;
 
 function scaledBarGrade4(
   meta: TemplateMetadata,
@@ -951,13 +953,13 @@ function scaledBarGrade4(
     `${a} and ${b} together have how many more ${context.unit} than ${c}?`,
   ][r(0, 2)]!;
   const scaleLine = [
-    `Each line on the side counts as ${step} on this graph.`,
-    `Each mark on the side stands for ${step}.`,
-    `The scale counts by ${step}.`,
+    `Each line on the side counts as ${step} ${context.unit}.`,
+    `Each mark on the side stands for ${step} ${context.unit}.`,
+    `The scale counts by ${step} ${context.unit}.`,
   ][r(0, 2)]!;
   const halfway = heights.some((h) => h % step !== 0);
   const surface = numberSurface({
-    prompt: `${context.lead} The bar graph shows ${context.unit}. ${ask} ${scaleLine}`,
+    prompt: `${context.lead} ${ask} ${scaleLine}`,
     answer: String(diff),
     hint: `Read the bar graph scale. Each line counts as ${step}. Read the bars for ${a}, ${b} and ${c}. Add the first two readings, then subtract the third.`,
     explanation: [

@@ -705,7 +705,7 @@ const castContexts: DotContext[] = [
     fractional: true,
     hundredths: true,
     missing: (n, grand) =>
-      `The plot shows those ${n} days. NAME biked ${grand} in all ${n + 1} days. How many miles did NAME bike on day ${n + 1}?`,
+      `NAME biked ${grand} in all ${n + 1} days. How many miles did NAME bike on day ${n + 1}?`,
     total: (n) => `How many miles did NAME bike in all ${n} days?`,
   },
   {
@@ -781,7 +781,6 @@ const castContexts: DotContext[] = [
     one: "pound",
     entity: "kitten",
     fractional: true,
-    hundredths: true,
     missing: (n, grand) =>
       `All ${n + 1} kittens weigh ${grand} together. What is the weight of kitten ${n + 1}, in pounds?`,
     total: (n) => `What is the total weight of all ${n} kittens, in pounds?`,
@@ -792,7 +791,7 @@ const castContexts: DotContext[] = [
     unit: "laps",
     one: "lap",
     entity: "day",
-    fractional: true,
+    fractional: false,
     missing: (n, grand) =>
       `NAME swam ${grand} in all ${n + 1} days. How many laps did NAME swim on day ${n + 1}?`,
     total: (n) => `How many laps did NAME swim in all ${n} days?`,
@@ -815,9 +814,44 @@ const castContexts: DotContext[] = [
     one: "inch",
     entity: "day",
     fractional: true,
+    hundredths: true,
     missing: (n, grand) =>
       `The gauge collected ${grand} in all ${n + 1} days. How many inches fell on day ${n + 1}?`,
     total: (n) => `How many inches of rain fell in all ${n} days?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows the length, in inches, of each of ${n} carrots NAME cut for snack bags.`,
+    unit: "inches",
+    one: "inch",
+    entity: "carrot",
+    fractional: true,
+    missing: (n, grand) =>
+      `All ${n + 1} carrots have a total length of ${grand}. What is the length of carrot ${n + 1}, in inches?`,
+    total: (n) => `What is the total length of all ${n} carrots, in inches?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows the weight, in pounds, of each of ${n} watermelons NAME weighed.`,
+    unit: "pounds",
+    one: "pound",
+    entity: "watermelon",
+    fractional: true,
+    missing: (n, grand) =>
+      `All ${n + 1} watermelons weigh ${grand} together. What is the weight of watermelon ${n + 1}, in pounds?`,
+    total: (n) =>
+      `What is the total weight of all ${n} watermelons, in pounds?`,
+  },
+  {
+    intro: (n) =>
+      `The dot plot shows the depth of the snow, in inches, on each of ${n} days NAME measured.`,
+    unit: "inches",
+    one: "inch",
+    entity: "day",
+    fractional: true,
+    missing: (n, grand) =>
+      `The snowfall was ${grand} in all ${n + 1} days. How many inches fell on day ${n + 1}?`,
+    total: (n) => `How many inches of snow fell in all ${n} days?`,
   },
 ];
 function bindName(ctx: DotContext, name: string): DotContext {

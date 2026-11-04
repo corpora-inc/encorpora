@@ -382,9 +382,23 @@ def solve_line_plot(public):
         return max(data) - min(data)
     if re.fullmatch(rf'How many inches long are the longest and shortest {ITEM} placed end to end\?', question):
         return max(data) + min(data)
+    if re.fullmatch(rf'If \w+ places the longest and the shortest {ITEM} end to end, how long is that row, in (?:inches|feet)\?', question):
+        return max(data) + min(data)
+    if re.fullmatch(rf'If \w+ pours the fullest {ITEM} and the smallest {ITEM} together, how many cups is that\?', question):
+        return max(data) + min(data)
+    if re.fullmatch(rf'If \w+ goes on the longest {ITEM} and the shortest {ITEM}, how many miles is that altogether\?', question):
+        return max(data) + min(data)
     if re.fullmatch(rf'What is the combined (?:length|distance|amount|height) of the (?:longest and shortest|greatest and least) {ITEM}, in (?:{PLOT_UNIT})\?', question):
         return max(data) + min(data)
     if (m := re.fullmatch(rf'How many inches long is a line of every {ITEM} that is ' + amount + r' (?:inch|inches) long\?', question)):
+        v = _amount(m[1])
+        require(v in data, 'Asked length is not plotted')
+        return v * data.count(v)
+    if (m := re.fullmatch(r'If \w+ lays all the (\d+)-inch ' + ITEM + r' end to end, how long is the row, in inches\?', question)):
+        v = Fraction(int(m[1]))
+        require(v in data, 'Asked length is not plotted')
+        return v * data.count(v)
+    if (m := re.fullmatch(r'If \w+ lays all the ' + ITEM + r' that are ' + amount + r' (?:inch|inches) long end to end, how long is the row, in inches\?', question)):
         v = _amount(m[1])
         require(v in data, 'Asked length is not plotted')
         return v * data.count(v)
@@ -466,6 +480,9 @@ def review_data_display_fixtures():
     lp = lambda prompt: solve_data_display({'templateId': 'fraction-plot-difference', 'figure': plot, 'prompt': prompt})
     require(lp('Some ribbons, measured to the nearest quarter inch. What is the difference in length between the longest and shortest ribbon, in inches?') == '7/4', 'line-plot difference fixture')
     require(lp('Ribbons. What is the total length of all the ribbons that are 1 1/4 inches long, in inches?') == '5/2', 'line-plot total fixture')
+    require(lp('Seedlings in the garden. If Gia lays all the 3-inch seedlings end to end, how long is the row, in inches?') == '3', 'row of whole seedlings')
+    require(lp('Seedlings. If Gia lays all the seedlings that are 1 1/4 inches long end to end, how long is the row, in inches?') == '5/2', 'row of fractional seedlings')
+    require(lp('Twigs. If Kai places the longest and the shortest twig end to end, how long is that row, in inches?') == '17/4', 'end-to-end row')
     miles = {'kind': 'line-plot', 'denominator': 5, 'start': 0, 'end': 10, 'mark': 'x', 'unit': 'miles',
              'values': [1, 2, 2, 6, 10]}
     mp = lambda prompt: solve_data_display({'templateId': 'fraction-plot-difference', 'figure': miles, 'prompt': prompt})

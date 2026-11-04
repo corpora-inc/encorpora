@@ -123,15 +123,10 @@ const EXTRA_DENOM = {
   tenths: 10,
   twelfths: 12,
 } as const;
-const EXTRA_WORD = {
-  3: "third",
-  5: "fifth",
-  6: "sixth",
-  10: "tenth",
-  12: "twelfth",
-} as const;
 /** Other grade-4 denominators, each in a unit where that fraction is ordinary.
- * Inch rulers stay on halves, quarters, and eighths. */
+ * Inch rulers stay on halves, quarters, and eighths.
+ * Plain is the stable sentence. Sixths and twelfths of a foot say why that
+ * mark is the one on the plan. */
 const EXTRA_STORY = {
   3: {
     one: "cup",
@@ -164,7 +159,7 @@ const EXTRA_STORY = {
     noun: "length",
     pair: "longest and shortest",
     intro:
-      "The line plot shows the lengths of some boards, measured to the nearest sixth of a foot.",
+      "The bookshelf plan spaces every shelf a sixth of a foot apart. The line plot shows the lengths of some boards, measured to the nearest sixth of a foot.",
   },
   10: {
     one: "mile",
@@ -180,15 +175,316 @@ const EXTRA_STORY = {
   12: {
     one: "foot",
     many: "feet",
-    item: "board",
-    items: "boards",
+    item: "piece",
+    items: "pieces",
     precision: "twelfth of a foot",
     noun: "length",
     pair: "longest and shortest",
     intro:
-      "The line plot shows the lengths of some boards, measured to the nearest twelfth of a foot.",
+      "The dollhouse plan lists lengths in feet, and the small marks are twelfths of a foot. The line plot shows the lengths of some wall pieces, measured to the nearest twelfth of a foot.",
   },
 } as const;
+type ExtraVivid = {
+  one: string;
+  many: string;
+  item: string;
+  items: string;
+  precision: string;
+  noun: "amount" | "distance" | "length";
+  pair: "greatest and least" | "longest and shortest";
+  /** A context the 12-seed sample can tell apart from the others. */
+  key: string;
+  vivid: (name: string) => string;
+};
+const cup = {
+  one: "cup",
+  many: "cups",
+  precision: "third of a cup",
+  noun: "amount",
+  pair: "greatest and least",
+} as const;
+const mile5 = {
+  one: "mile",
+  many: "miles",
+  precision: "fifth of a mile",
+  noun: "distance",
+  pair: "longest and shortest",
+} as const;
+const mile10 = {
+  one: "mile",
+  many: "miles",
+  precision: "tenth of a mile",
+  noun: "distance",
+  pair: "longest and shortest",
+} as const;
+const foot6 = {
+  one: "foot",
+  many: "feet",
+  precision: "sixth of a foot",
+  noun: "length",
+  pair: "longest and shortest",
+} as const;
+const foot12 = {
+  one: "foot",
+  many: "feet",
+  precision: "twelfth of a foot",
+  noun: "length",
+  pair: "longest and shortest",
+} as const;
+/** Several recipes, walks, and runs, so one denominator is not one sentence.
+ * Sixths and twelfths of a foot only appear with the reason for that mark. */
+const EXTRA_VIVID: Record<keyof typeof EXTRA_STORY, readonly ExtraVivid[]> = {
+  3: [
+    {
+      ...cup,
+      item: "bowl",
+      items: "bowls",
+      key: "rice",
+      vivid: (name) =>
+        `${name} filled bowls with rice for a class lunch. Each bowl was measured to the nearest third of a cup. The line plot shows those amounts.`,
+    },
+    {
+      ...cup,
+      item: "bowl",
+      items: "bowls",
+      key: "oatmeal",
+      vivid: (name) =>
+        `${name} served oatmeal at breakfast. Each bowl was measured to the nearest third of a cup. The line plot shows those amounts.`,
+    },
+    {
+      ...cup,
+      item: "scoop",
+      items: "scoops",
+      key: "flour",
+      vivid: (name) =>
+        `${name} scooped flour for pancake batter. Each scoop was measured to the nearest third of a cup. The line plot shows those amounts.`,
+    },
+    {
+      ...cup,
+      item: "mug",
+      items: "mugs",
+      key: "cocoa",
+      vivid: (name) =>
+        `${name} poured hot cocoa for the class. Each mug was measured to the nearest third of a cup. The line plot shows those amounts.`,
+    },
+    {
+      ...cup,
+      item: "glass",
+      items: "glasses",
+      key: "lemonade",
+      vivid: (name) =>
+        `${name} mixed lemonade for the picnic. Each glass was measured to the nearest third of a cup. The line plot shows those amounts.`,
+    },
+    {
+      ...cup,
+      item: "serving",
+      items: "servings",
+      key: "yogurt",
+      vivid: (name) =>
+        `${name} portioned yogurt for smoothies. Each serving was measured to the nearest third of a cup. The line plot shows those amounts.`,
+    },
+    {
+      ...cup,
+      item: "serving",
+      items: "servings",
+      key: "chili",
+      vivid: (name) =>
+        `${name} measured beans for chili. Each serving was measured to the nearest third of a cup. The line plot shows those amounts.`,
+    },
+    {
+      ...cup,
+      item: "bowl",
+      items: "bowls",
+      key: "soup",
+      vivid: (name) =>
+        `${name} ladled soup for the potluck. Each bowl was measured to the nearest third of a cup. The line plot shows those amounts.`,
+    },
+  ],
+  5: [
+    {
+      ...mile5,
+      item: "walk",
+      items: "walks",
+      key: "park-walk",
+      vivid: (name) =>
+        `${name} walked laps around the park. Each walk was measured to the nearest fifth of a mile. The line plot shows those distances.`,
+    },
+    {
+      ...mile5,
+      item: "run",
+      items: "runs",
+      key: "practice-run",
+      vivid: (name) =>
+        `${name} ran at after-school practice. Each run was measured to the nearest fifth of a mile. The line plot shows those distances.`,
+    },
+    {
+      ...mile5,
+      item: "walk",
+      items: "walks",
+      key: "school-walk",
+      vivid: (name) =>
+        `${name} tried different paths to school. Each walk was measured to the nearest fifth of a mile. The line plot shows those distances.`,
+    },
+    {
+      ...mile5,
+      item: "hike",
+      items: "hikes",
+      key: "hike",
+      vivid: (name) =>
+        `${name} logged short hikes with the club. Each hike was measured to the nearest fifth of a mile. The line plot shows those distances.`,
+    },
+    {
+      ...mile5,
+      item: "jog",
+      items: "jogs",
+      key: "jog",
+      vivid: (name) =>
+        `${name} jogged around the neighborhood. Each jog was measured to the nearest fifth of a mile. The line plot shows those distances.`,
+    },
+    {
+      ...mile5,
+      item: "walk",
+      items: "walks",
+      key: "dog-walk",
+      vivid: (name) =>
+        `${name} walked the dogs on several routes. Each walk was measured to the nearest fifth of a mile. The line plot shows those distances.`,
+    },
+  ],
+  6: [
+    {
+      ...foot6,
+      item: "board",
+      items: "boards",
+      key: "shelves",
+      vivid: (name) =>
+        `${name} cut boards for shelves. The plan spaces every shelf a sixth of a foot apart, so each board was measured to the nearest sixth of a foot. The line plot shows those lengths.`,
+    },
+    {
+      ...foot6,
+      item: "stake",
+      items: "stakes",
+      key: "trellis",
+      vivid: (name) =>
+        `${name} cut stakes for a garden trellis. The drawing is marked in feet, and the small marks are sixths of a foot, so each stake was measured to the nearest sixth of a foot. The line plot shows those lengths.`,
+    },
+    {
+      ...foot6,
+      item: "board",
+      items: "boards",
+      key: "puppet-stage",
+      vivid: (name) =>
+        `${name} cut boards for a puppet stage. The diagram uses feet, with a mark at every sixth of a foot so the curtains line up. Each board was measured to the nearest sixth of a foot. The line plot shows those lengths.`,
+    },
+    {
+      ...foot6,
+      item: "rail",
+      items: "rails",
+      key: "fence",
+      vivid: (name) =>
+        `${name} cut rails for a fence. The plan puts a rail every sixth of a foot, so each rail was measured to the nearest sixth of a foot. The line plot shows those lengths.`,
+    },
+    {
+      ...foot6,
+      item: "board",
+      items: "boards",
+      key: "step-stool",
+      vivid: (name) =>
+        `${name} cut boards for step stools. The plan is marked in sixths of a foot, so each board was measured to the nearest sixth of a foot. The line plot shows those lengths.`,
+    },
+  ],
+  10: [
+    {
+      ...mile10,
+      item: "walk",
+      items: "walks",
+      key: "library-walk",
+      vivid: (name) =>
+        `${name} walked to the library on different days. Each walk was measured to the nearest tenth of a mile. The line plot shows those distances.`,
+    },
+    {
+      ...mile10,
+      item: "run",
+      items: "runs",
+      key: "course-run",
+      vivid: (name) =>
+        `${name} ran a course marked in tenths of a mile. Each run was measured to the nearest tenth of a mile. The line plot shows those distances.`,
+    },
+    {
+      ...mile10,
+      item: "leg",
+      items: "legs",
+      key: "fun-run",
+      vivid: (name) =>
+        `${name} joined the fun run. Each leg was measured to the nearest tenth of a mile. The line plot shows those distances.`,
+    },
+    {
+      ...mile10,
+      item: "run",
+      items: "runs",
+      key: "track-run",
+      vivid: (name) =>
+        `${name} timed practice runs on the track path. Each run was measured to the nearest tenth of a mile. The line plot shows those distances.`,
+    },
+    {
+      ...mile10,
+      item: "walk",
+      items: "walks",
+      key: "family-walk",
+      vivid: (name) =>
+        `${name} walked with the family on Saturday routes. Each walk was measured to the nearest tenth of a mile. The line plot shows those distances.`,
+    },
+    {
+      ...mile10,
+      item: "trip",
+      items: "trips",
+      key: "errand",
+      vivid: (name) =>
+        `${name} ran errands on foot. Each trip was measured to the nearest tenth of a mile. The line plot shows those distances.`,
+    },
+  ],
+  12: [
+    {
+      ...foot12,
+      item: "piece",
+      items: "pieces",
+      key: "dollhouse",
+      vivid: (name) =>
+        `${name} cut wall pieces for a dollhouse. The plan lists every length in feet, and the small marks are twelfths of a foot. Each piece was measured to the nearest twelfth of a foot. The line plot shows those lengths.`,
+    },
+    {
+      ...foot12,
+      item: "strip",
+      items: "strips",
+      key: "picture-frame",
+      vivid: (name) =>
+        `${name} cut wood strips for a picture frame. The kit is sized in feet, and the marks between the foot numbers are twelfths. Each strip was measured to the nearest twelfth of a foot. The line plot shows those lengths.`,
+    },
+    {
+      ...foot12,
+      item: "board",
+      items: "boards",
+      key: "birdhouse",
+      vivid: (name) =>
+        `${name} cut boards for a birdhouse. The pattern is printed in feet, and the small marks are twelfths of a foot. Each board was measured to the nearest twelfth of a foot. The line plot shows those lengths.`,
+    },
+    {
+      ...foot12,
+      item: "beam",
+      items: "beams",
+      key: "model-bridge",
+      vivid: (name) =>
+        `${name} cut beams for a model bridge. The plan is drawn in feet, with twelfths of a foot between the whole-foot marks. Each beam was measured to the nearest twelfth of a foot. The line plot shows those lengths.`,
+    },
+    {
+      ...foot12,
+      item: "spar",
+      items: "spars",
+      key: "kite",
+      vivid: (name) =>
+        `${name} cut spars for a kite. The plan gives lengths in feet, and each small mark is a twelfth of a foot. Each spar was measured to the nearest twelfth of a foot. The line plot shows those lengths.`,
+    },
+  ],
+};
 /** "16/8 = 2 inches": the value in parts, its simplest form, and an agreeing unit. */
 const result = (v: number, d: number, one: string, many: string) =>
   `${v}/${d}${rational(v, d) !== `${v}/${d}` ? ` = ${both(v, d)}` : ""} ${v <= d ? one : many}`;
@@ -220,7 +516,10 @@ const VIVID_INCH = [
   { item: "twig", items: "twigs", why: "for a nest model" },
   { item: "carrot stick", items: "carrot sticks", why: "for snack bags" },
 ] as const;
-function vividInchIntro(index: number, precise: string): string {
+function vividInchIntro(
+  index: number,
+  precise: string,
+): { text: string; name: string } {
   const tale = VIVID_INCH[index]!;
   const name = storyNames[index % storyNames.length]!;
   const near = `to the nearest ${precise} inch`;
@@ -230,7 +529,7 @@ function vividInchIntro(index: number, precise: string): string {
     `Each mark is one ${tale.item} ${name} measured ${near} ${tale.why}.`,
     `${name} lined up ${tale.items} ${tale.why} and measured each one ${near}. The line plot shows the lengths.`,
   ];
-  return frames[index % frames.length]!;
+  return { text: frames[index % frames.length]!, name };
 }
 const units = {
   in: { one: "inch", many: "inches" },
@@ -399,61 +698,41 @@ function vividExtraStory(
   d: keyof typeof EXTRA_STORY,
   values: readonly number[],
 ) {
-  const name = storyNames[values[0]! % storyNames.length]!;
-  if (d === 3)
-    return {
-      one: "cup",
-      many: "cups",
-      item: "bowl",
-      items: "bowls",
-      precision: "third of a cup",
-      noun: "amount",
-      pair: "greatest and least",
-      intro: `${name} filled bowls with rice for a class lunch, measuring each bowl to the nearest third of a cup. The line plot shows those amounts.`,
-    };
-  if (d === 5)
-    return {
-      one: "liter",
-      many: "liters",
-      item: "bottle",
-      items: "bottles",
-      precision: "fifth of a liter",
-      noun: "amount",
-      pair: "greatest and least",
-      intro: `${name} measured the water in each science bottle to the nearest fifth of a liter. The line plot shows those amounts.`,
-    };
-  if (d === 6)
-    return {
-      one: "foot",
-      many: "feet",
-      item: "board",
-      items: "boards",
-      precision: "sixth of a foot",
-      noun: "length",
-      pair: "longest and shortest",
-      intro: `${name} measured boards for a birdhouse to the nearest sixth of a foot. The line plot shows those lengths.`,
-    };
-  if (d === 10)
-    return {
-      one: "meter",
-      many: "meters",
-      item: "plant",
-      items: "plants",
-      precision: "tenth of a meter",
-      noun: "height",
-      pair: "longest and shortest",
-      intro: `${name} measured bean plants to the nearest tenth of a meter. The line plot shows those heights.`,
-    };
+  const pool = EXTRA_VIVID[d];
+  const mix = values.reduce(
+    (sum, value, index) => sum + value * (index + 3),
+    d * 17,
+  );
+  const tale = pool[mix % pool.length]!;
+  const name = storyNames[mix % storyNames.length]!;
   return {
-    one: "foot",
-    many: "feet",
-    item: "strip",
-    items: "strips",
-    precision: "twelfth of a foot",
-    noun: "length",
-    pair: "longest and shortest",
-    intro: `${name} measured wood strips for a picture frame to the nearest twelfth of a foot. The line plot shows those lengths.`,
+    one: tale.one,
+    many: tale.many,
+    item: tale.item,
+    items: tale.items,
+    precision: tale.precision,
+    noun: tale.noun,
+    pair: tale.pair,
+    intro: tale.vivid(name),
+    name,
   };
+}
+/** A reason to add the two extreme amounts, in the situation's own words. */
+function combinedAsk(story: {
+  noun: string;
+  pair: string;
+  item: string;
+  many: string;
+  name?: string;
+}): string {
+  const name = story.name;
+  if (!name)
+    return `What is the combined ${story.noun} of the ${story.pair} ${story.item}, in ${story.many}?`;
+  if (story.noun === "amount")
+    return `If ${name} pours the fullest ${story.item} and the smallest ${story.item} together, how many ${story.many} is that?`;
+  if (story.noun === "distance")
+    return `If ${name} goes on the longest ${story.item} and the shortest ${story.item}, how many ${story.many} is that altogether?`;
+  return `If ${name} places the longest and the shortest ${story.item} end to end, how long is that row, in ${story.many}?`;
 }
 function extraDifference(
   r: Random,
@@ -497,7 +776,7 @@ function extraDifference(
     };
   if (question === 1)
     return {
-      prompt: `${story.intro} What is the combined ${story.noun} of the ${story.pair} ${story.item}, in ${story.many}?`,
+      prompt: `${story.intro} ${combinedAsk(story)}`,
       figure,
       answer: rational(longest + shortest, d),
       fraction: true,
@@ -526,13 +805,21 @@ function extraDifference(
         : `Count the marks above ${mixedText(v, d)}. Add that amount once for each mark, or multiply.`,
     explanation: [
       `Each mark (×) is one ${story.item}. The marks ${setting === "vivid" ? "at" : "above"} ${mixedText(v, d)} show the ${story.items} of that ${story.noun}.`,
-      `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} above ${mixedText(v, d)} = ${f(v)}.`,
+      `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} at ${mixedText(v, d)}. Each one is ${f(v)}.`,
       `Add that amount once for each mark. That is the same as multiplying: ${n} × ${f(v)} = ${result(total, d, story.one, story.many)}.`,
       `Their total ${story.noun} is ${measure2(total, d, story.one, story.many)}.`,
     ],
   };
 }
 
+/** A real use of the repeated length: lay those objects in one row. */
+function rowOf(name: string, items: string, v: number, d: number): string {
+  if (v % d === 0) {
+    const inches = v / d;
+    return `If ${name} lays all the ${inches}-inch ${items} end to end, how long is the row, in inches?`;
+  }
+  return `If ${name} lays all the ${items} that are ${measure(v, d, "inch", "inches")} long end to end, how long is the row, in inches?`;
+}
 function plotDifference(
   r: Random,
   denomAxis: string,
@@ -568,10 +855,12 @@ function plotDifference(
     unit: "inches",
   };
   const precise = d === 8 ? "eighth" : "quarter";
-  const intro = vivid
-    ? vividInchIntro(picked, precise)
+  const told = vivid ? vividInchIntro(picked, precise) : undefined;
+  const intro = told
+    ? told.text
     : `The line plot shows the lengths of some ${context.items}, measured to the nearest ${precise} inch.`;
   const flip = !!vivid && picked % 2 === 0;
+  const who = told?.name ?? "";
   const sorted = [...values].sort((a, b) => a - b);
   const longest = sorted.at(-1)!,
     shortest = sorted[0]!;
@@ -597,8 +886,8 @@ function plotDifference(
     };
   if (question === 1)
     return {
-      prompt: flip
-        ? `${intro} How many inches long are the longest and shortest ${context.item} placed end to end?`
+      prompt: told
+        ? `${intro} If ${who} places the longest and the shortest ${context.item} end to end, how long is that row, in inches?`
         : `${intro} What is the combined length of the longest and shortest ${context.item}, in inches?`,
       figure,
       answer: rational(longest + shortest, d),
@@ -618,8 +907,8 @@ function plotDifference(
     : [...heights][0]!;
   const total = v * n;
   return {
-    prompt: flip
-      ? `${intro} How many inches long is a line of every ${context.item} that is ${measure(v, d, "inch", "inches")} long?`
+    prompt: told
+      ? `${intro} ${rowOf(who, context.items, v, d)}`
       : `${intro} What is the total length of all the ${context.items} that are ${measure(v, d, "inch", "inches")} long, in inches?`,
     figure,
     answer: rational(total, d),
@@ -629,7 +918,9 @@ function plotDifference(
       : `Count the marks above ${mixedText(v, d)}. Add that length once for each mark, or multiply.`,
     explanation: [
       `Each mark (×) is one ${context.item}. The marks ${vivid ? "at" : "above"} ${mixedText(v, d)} show the ${context.items} of that length.`,
-      `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} ${vivid ? "at" : "above"} ${mixedText(v, d)} = ${f(v)}.`,
+      vivid
+        ? `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} at ${mixedText(v, d)}. Each one is ${f(v)}.`
+        : `There ${n === 1 ? "is 1 mark" : `are ${n} marks`} above ${mixedText(v, d)} = ${f(v)}.`,
       `Add that length once for each mark. That is the same as multiplying: ${n} × ${f(v)} = ${result(total, d, "inch", "inches")}.`,
       `Their total length is ${measure2(total, d, "inch", "inches")}.`,
     ],

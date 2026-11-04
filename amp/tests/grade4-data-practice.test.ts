@@ -8,6 +8,7 @@ import {
 import { generateProblem, templates } from "../src/math/engine";
 import { dotPlotArithmeticFamily } from "../src/math/line-graph-read-practice";
 import { generateLinePlotProblem } from "../src/math/line-plot-practice";
+import { storyNames } from "../src/math/story-kit/names";
 
 const SEEDS = 240;
 const EXTRA = new Set([3, 5, 6, 10, 12]);
@@ -333,6 +334,8 @@ test("frequency-table-grade4 builds intervals and compares them", () => {
     const problem = load("frequency-table-grade4", `g4-${i}`);
     const { response, keyed } = choiceOf(problem);
     const prompt = problem.public.prompt;
+    assert.doesNotMatch(prompt, /\bunits\b/);
+    assert.doesNotMatch(problem.hint, /\bunits\b/);
     if (prompt.includes("The numbers are:")) {
       builds++;
       assert.doesNotMatch(prompt, /How many more/);
@@ -341,9 +344,7 @@ test("frequency-table-grade4 builds intervals and compares them", () => {
       assert.ok(list);
       const numbers = list![1]!.split(", ").map(Number);
       assert.ok(numbers.includes(0));
-      const width = Number(
-        prompt.match(/The intervals are (\d+) units wide/)![1],
-      );
+      const width = Number(prompt.match(/intervals of (\d+) /)![1]);
       assert.ok(WIDTHS.includes(width));
       widths.add(width);
       assert.match(prompt, new RegExp(`There are ${numbers.length} `));
@@ -642,4 +643,26 @@ test("legacy dot-plot and fourths-eighths line plots replay", () => {
     [...seen].join(","),
   );
   assert.ok(seen.has(8));
+});
+
+test("fraction-plot-difference book seeds use many contexts", () => {
+  const keys = new Set<string>();
+  for (let i = 0; i < 12; i++) {
+    const prompt = generateProblem("fraction-plot-difference", `book-${i}`)
+      .public.prompt;
+    assert.doesNotMatch(prompt, /line of every/);
+    let key = prompt.split(". ").slice(0, -1).join(". ");
+    for (const name of storyNames) key = key.replaceAll(name, "NAME");
+    keys.add(key);
+  }
+  assert.ok(keys.size >= 8, `${keys.size} contexts`);
+  let foot = 0;
+  for (let i = 0; i < SEEDS; i++) {
+    const prompt = generateProblem("fraction-plot-difference", `foot-${i}`)
+      .public.prompt;
+    if (!/sixth of a foot|twelfth of a foot/.test(prompt)) continue;
+    foot++;
+    assert.match(prompt, /plan|marks are|diagram|pattern|drawing|kit/, prompt);
+  }
+  assert.ok(foot > 0);
 });

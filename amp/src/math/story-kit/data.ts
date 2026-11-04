@@ -89,6 +89,7 @@ export const frequencyTales = [
   {
     one: "student",
     many: "students",
+    unit: "page",
     measured: "pages read this month",
     each: "how many pages one student read this month",
     widths: [10, 25, 50, 100],
@@ -98,6 +99,7 @@ export const frequencyTales = [
   {
     one: "player",
     many: "players",
+    unit: "point",
     measured: "points scored this season",
     each: "how many points one player scored this season",
     widths: [10, 25, 50],
@@ -107,6 +109,7 @@ export const frequencyTales = [
   {
     one: "student",
     many: "students",
+    unit: "minute",
     measured: "minutes of piano practice this week",
     each: "how many minutes one student practiced piano this week",
     widths: [5, 10, 25],
@@ -116,6 +119,7 @@ export const frequencyTales = [
   {
     one: "runner",
     many: "runners",
+    unit: "lap",
     measured: "laps run at practice",
     each: "how many laps one runner finished at practice",
     widths: [5, 10],
@@ -125,6 +129,7 @@ export const frequencyTales = [
   {
     one: "class",
     many: "classes",
+    unit: "can",
     measured: "cans collected for the food drive",
     each: "how many cans one class collected",
     widths: [10, 25, 50, 100],
@@ -134,6 +139,7 @@ export const frequencyTales = [
   {
     one: "student",
     many: "students",
+    unit: "point",
     measured: "points on the quiz",
     each: "how many points one student scored on the quiz",
     widths: [5, 10],
@@ -143,6 +149,7 @@ export const frequencyTales = [
   {
     one: "student",
     many: "students",
+    unit: "minute",
     measured: "minutes spent reading last night",
     each: "how many minutes one student read last night",
     widths: [5, 10, 25],
@@ -152,6 +159,7 @@ export const frequencyTales = [
   {
     one: "gardener",
     many: "gardeners",
+    unit: "plant",
     measured: "plants sold at the garden sale",
     each: "how many plants one gardener sold",
     widths: [5, 10, 25],
@@ -161,6 +169,7 @@ export const frequencyTales = [
   {
     one: "rider",
     many: "riders",
+    unit: "mile",
     measured: "miles biked this month",
     each: "how many miles one rider biked this month",
     widths: [10, 25],
@@ -170,6 +179,7 @@ export const frequencyTales = [
   {
     one: "student",
     many: "students",
+    unit: "sticker",
     measured: "stickers earned in the reading challenge",
     each: "how many stickers one student earned",
     widths: [5, 10, 25],
@@ -179,6 +189,7 @@ export const frequencyTales = [
   {
     one: "baker",
     many: "bakers",
+    unit: "cookie",
     measured: "cookies brought to the bake sale",
     each: "how many cookies one baker brought",
     widths: [10, 25],
@@ -188,11 +199,42 @@ export const frequencyTales = [
   {
     one: "player",
     many: "players",
+    unit: "basket",
     measured: "baskets made at camp",
     each: "how many baskets one player made at camp",
     widths: [5, 10],
     lead: (name: string) =>
       `${name} recorded how many baskets each player made at basketball camp.`,
+  },
+  {
+    one: "student",
+    many: "students",
+    unit: "dollar",
+    measured: "dollars saved for the class trip",
+    each: "how many dollars one student had saved",
+    widths: [10, 25, 50, 100],
+    lead: (name: string) =>
+      `${name} listed how many dollars each student had in a savings jar.`,
+  },
+  {
+    one: "student",
+    many: "students",
+    unit: "jump",
+    measured: "jumps in the rope contest",
+    each: "how many jumps one student made",
+    widths: [25, 50, 100],
+    lead: (name: string) =>
+      `${name} counted how many jumps each student made in the rope contest.`,
+  },
+  {
+    one: "player",
+    many: "players",
+    unit: "minute",
+    measured: "minutes played this season",
+    each: "how many minutes one player was in the game",
+    widths: [25, 50, 100],
+    lead: (name: string) =>
+      `${name} recorded how many minutes each player played during the whole season.`,
   },
 ] as const;
 
@@ -219,7 +261,7 @@ export const barTales = [
     labels: ["Red", "Blue", "Gold", "Green"],
     unit: "cans",
     one: "can",
-    steps: [10, 25, 50, 100],
+    steps: [10, 25],
     lead: "Four teams collected cans for the food drive.",
   },
   {
@@ -233,7 +275,7 @@ export const barTales = [
     labels: ["North", "South", "East", "West"],
     unit: "stickers",
     one: "sticker",
-    steps: [5, 10, 25, 50],
+    steps: [5, 10],
     lead: "Four teams earned stickers during the reading challenge.",
   },
   {
@@ -279,11 +321,39 @@ export const barTales = [
     lead: "The garden club counted plants in four herb beds.",
   },
   {
-    labels: ["Ada", "Boone", "Clay", "Davis"],
+    labels: ["Harbor", "Marina", "Dock", "Pier"],
     unit: "cans",
     one: "can",
-    steps: [50, 100],
+    steps: [100],
     lead: "Four neighborhoods collected cans for recycling week.",
+  },
+  {
+    labels: ["Adams", "Baker", "Clark", "Diaz"],
+    unit: "dollars",
+    one: "dollar",
+    steps: [50, 100],
+    lead: "Four classes counted the dollars they raised for the field trip.",
+  },
+  {
+    labels: ["Sharks", "Dolphins", "Otters", "Rays"],
+    unit: "laps",
+    one: "lap",
+    steps: [10, 25, 50],
+    lead: "Four squads counted laps at the swim meet.",
+  },
+  {
+    labels: ["Creek", "Brook", "Falls", "Shore"],
+    unit: "bottles",
+    one: "bottle",
+    steps: [50, 100],
+    lead: "Four teams collected bottles at the bottle drive.",
+  },
+  {
+    labels: ["News", "Poetry", "Math", "Garden"],
+    unit: "minutes",
+    one: "minute",
+    steps: [25],
+    lead: "Four clubs recorded minutes spent reading this month.",
   },
 ] as const;
 
