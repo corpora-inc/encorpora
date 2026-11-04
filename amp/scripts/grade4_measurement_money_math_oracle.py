@@ -29,16 +29,37 @@ CHOICE_REVIEW = frozenset({
 })
 
 LINE_DENOMS = frozenset({2, 3, 4, 5, 6, 8, 10, 12})
+NAME = (
+    r'art class|sharing time|reading session|cleanup time|'
+    r'soccer practice|stretching|hike|snack break'
+)
 DUR = r'(?:\d+ hours?(?: \d+ minutes?)?|\d+ minutes?)'
+VERB = {
+    'art class': 'lasts',
+    'sharing time': 'takes',
+    'reading session': 'lasts',
+    'cleanup time': 'takes',
+    'soccer practice': 'lasts',
+    'stretching': 'takes',
+    'hike': 'lasts',
+    'snack break': 'takes',
+}
 TWO = re.compile(
-    r'The clock shows when the (\w+) starts, in the (morning|afternoon)\. '
-    r'The \1 takes (' + DUR + r')\. Then the (\w+) takes (' + DUR + r')\. '
-    r'What time does the \4 end\?'
+    rf'^The clock shows when (?:the )?({NAME}) starts, in the (morning|afternoon)\. '
+    rf'((?:The )?(?:{NAME})) (lasts|takes) ({DUR})\. '
+    rf'Then (?:the )?({NAME}) (lasts|takes) ({DUR})\. '
+    rf'What time does (?:the )?({NAME}) end\?$',
+    re.IGNORECASE,
 )
 ONE = re.compile(
-    r'The clock shows when the (\w+) starts, in the (morning|afternoon)\. '
-    r'The \1 lasts (' + DUR + r')\. What time does the \1 end\?'
+    rf'^The clock shows when (?:the )?({NAME}) starts, in the (morning|afternoon)\. '
+    rf'((?:The )?(?:{NAME})) (lasts|takes) ({DUR})\. '
+    rf'What time does (?:the )?({NAME}) end\?$',
+    re.IGNORECASE,
 )
+ENTER = r' Enter the amount in dollars and cents, such as 2\.35\.'
+PAY_STACKS = frozenset({1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 20})
+QUARTER_STACKS = frozenset({1, 2, 5, 6, 10, 15, 20})
 TABLE_FACTOR = {
     ('feet', 'inches'): 12,
     ('kilograms', 'grams'): 1000,
@@ -138,6 +159,15 @@ def dollars_of(cents):
     return f'{cents // 100}.{cents % 100:02d}'
 
 
+def realistic_payment(cents):
+    whole, extra = divmod(cents, 100)
+    if whole not in PAY_STACKS:
+        return False
+    if extra == 0:
+        return True
+    return extra in (25, 50, 75) and whole in QUARTER_STACKS
+
+
 def fewest_coins(cents):
     require(0 < cents < 100, 'Fewest coins stay under one dollar')
     best = [0] + [10 ** 9] * cents
@@ -148,16 +178,29 @@ def fewest_coins(cents):
     return best[cents]
 
 
+def activity_ok(name, phrase, verb):
+    key = name.casefold()
+    require(key in VERB, f'Unknown activity {name}')
+    require(phrase.casefold().endswith(key), 'The sentence names a different activity')
+    require(verb.casefold() == VERB[key], f'Unnatural verb for {name}')
+
+
 def solve_elapsed(public):
     text = field(public, 'prompt')
+    require('The art takes' not in text, 'Unnatural activity name')
     two = TWO.fullmatch(text)
     one = ONE.fullmatch(text)
     require((two is None) != (one is None), 'Unrecognized elapsed-time prompt')
     match = two or one
     period = match[2]
-    durations = [parse_duration(match[3])]
+    activity_ok(match[1], match[3], match[4])
+    durations = [parse_duration(match[5])]
     if two:
-        durations.append(parse_duration(match[5]))
+        activity_ok(match[6], match[6], match[7])
+        require(match[9].casefold() == match[6].casefold(), 'The question names a different activity')
+        durations.append(parse_duration(match[8]))
+    else:
+        require(match[6].casefold() == match[1].casefold(), 'The question names a different activity')
     figure = field(public, 'figure')
     require(field(figure, 'kind') == 'clock', 'Clock expected')
     start = start_minutes(period, field(figure, 'hour'), field(figure, 'minute'))
@@ -167,6 +210,19 @@ def solve_elapsed(public):
     label = format_time(end)
     require(label not in text, 'End time is written in the prompt')
     return choice_id(public, label)
+
+
+def cell_number(value):
+    if isinstance(value, bool):
+        raise ValueError('Bad table cell')
+    if isinstance(value, int):
+        return value
+    if isinstance(value, str) and re.fullmatch(r'\d{1,3}(?:,\d{3})*', value):
+        number = int(value.replace(',', ''))
+        if number >= 1000:
+            require(value == f'{number:,}', 'A thousands amount has no separator')
+        return number
+    raise ValueError(f'Bad table cell {value!r}')
 
 
 def solve_table(public):
@@ -190,7 +246,10 @@ def solve_table(public):
     rows = field(table, 'rows')
     require(len(rows) == 3, 'Need three rows')
     first = rows[0]['cells']
-    require(first[0] == shown and first[1] == shown * factor, 'First row breaks the rule')
+    require(
+        cell_number(first[0]) == shown and cell_number(first[1]) == shown * factor,
+        'First row breaks the rule',
+    )
     response = field(public, 'response')
     require(field(response, 'kind') == 'multi-part-choice', 'Multi-part response expected')
     key = {}
@@ -202,12 +261,13 @@ def solve_table(public):
         require(row_number in (2, 3), 'Only rows 2 and 3 are blank')
         cells = rows[row_number - 1]['cells']
         if word == large:
-            require(cells[0] is None and isinstance(cells[1], int), 'Large cell is not the blank')
-            require(cells[1] % factor == 0, 'Smaller unit does not divide')
-            expected = cells[1] // factor
+            require(cells[0] is None, 'Large cell is not the blank')
+            smaller = cell_number(cells[1])
+            require(smaller % factor == 0, 'Smaller unit does not divide')
+            expected = smaller // factor
         elif word == small:
-            require(cells[1] is None and isinstance(cells[0], int), 'Small cell is not the blank')
-            expected = cells[0] * factor
+            require(cells[1] is None, 'Small cell is not the blank')
+            expected = cell_number(cells[0]) * factor
         else:
             raise ValueError(f'Blank names {word}, not a column')
         shown_label = f'{expected:,}'
@@ -220,9 +280,15 @@ def solve_table(public):
 
 
 def solve_rename(public):
-    match = re.fullmatch(r'Write (\d+) (\w+) in (\w+)\.', field(public, 'prompt'))
+    match = re.fullmatch(
+        r'([\d,]+) (\w+) is how many (\w+)\?',
+        field(public, 'prompt'),
+    )
     require(match is not None, 'Unrecognized rename prompt')
-    amount, small, large = int(match[1]), match[2], match[3]
+    amount = int(match[1].replace(',', ''))
+    if amount >= 1000:
+        require(',' in match[1], 'A thousands amount has no separator')
+    small, large = match[2], match[3]
     factor = RENAME_FACTOR.get((small, large))
     require(factor is not None, f'Unknown rename {small} to {large}')
     require(amount % factor == 0 and amount // factor >= 1, 'Result is not a whole number of the larger unit')
@@ -231,13 +297,12 @@ def solve_rename(public):
 
 def solve_line(public):
     text = field(public, 'prompt')
-    match = re.fullmatch(
-        r'A class of (\d+) students? walks from \$A\$ to \$B\$ on the trail\. '
-        r'How far is the walk, in miles\?',
-        text,
+    require(
+        text == 'How far is the walk from $A$ to $B$, in miles?',
+        'Unrecognized measurement line',
     )
-    require(match is not None, 'Unrecognized measurement line')
     require('equal steps' not in text, 'The prompt states the scale')
+    require(re.search(r'\d', text) is None, 'The prompt states a number the question does not use')
     figure = field(public, 'figure')
     require(field(figure, 'kind') == 'rational-line', 'Number line expected')
     denominator = field(figure, 'denominator')
@@ -277,27 +342,28 @@ def solve_decimal(public):
 
 def solve_money(public):
     text = field(public, 'prompt')
+    require(re.search(r'\d+\.\d\d dollars', text) is None, 'An amount is not written as money')
     add = re.fullmatch(
-        r'A book costs (\d+\.\d\d) dollars and a pen costs (\d+\.\d\d) dollars\. '
-        r'What is the total cost in dollars\?',
+        r'A book costs \$(\d+\.\d\d) and a pen costs \$(\d+\.\d\d)\. '
+        r'What is the total cost\?' + ENTER,
         text,
     )
     if add:
         require(not add[1].endswith('00') and not add[2].endswith('00'), 'A price is a whole dollar')
         return dollars_of(cents_of(add[1]) + cents_of(add[2]))
     change = re.fullmatch(
-        r'A snack costs (\d+\.\d\d) dollars\. You pay (\d+\.\d\d) dollars\. '
-        r'How many dollars do you get back\?',
+        r'A snack costs \$(\d+\.\d\d)\. You pay \$(\d+\.\d\d)\. '
+        r'How much change do you get back\?' + ENTER,
         text,
     )
     if change:
-        require(not change[2].endswith('00'), 'The payment is a whole dollar')
         paid, cost = cents_of(change[2]), cents_of(change[1])
+        require(realistic_payment(paid), 'The payment is not a bill a person would hand over')
         require(paid > cost, 'The payment does not cover the cost')
         return dollars_of(paid - cost)
     shared = re.fullmatch(
-        r'Markers cost (\d+\.\d\d) dollars each\. The club buys (\d+) markers and '
-        r'(\d+) friends split the cost equally\. How many dollars does each friend pay\?',
+        r'Markers cost \$(\d+\.\d\d) each\. The club buys (\d+) markers, and '
+        r'(\d+) friends split the cost equally\. How much does each friend pay\?' + ENTER,
         text,
     )
     if shared:
@@ -307,19 +373,20 @@ def solve_money(public):
         require(total % friends == 0, 'The share is not exact cents')
         return dollars_of(total // friends)
     stickers = re.fullmatch(
-        r'Each sticker costs (\d+\.\d\d) dollars\. You buy (\d+) stickers and pay '
-        r'(\d+\.\d\d) dollars\. How many dollars do you get back\?',
+        r'Each sticker costs \$(\d+\.\d\d)\. You buy (\d+) stickers and pay '
+        r'\$(\d+\.\d\d)\. How much change do you get back\?' + ENTER,
         text,
     )
     if stickers:
         price, count, paid = cents_of(stickers[1]), int(stickers[2]), cents_of(stickers[3])
         require(count >= 2, 'Need more than one sticker')
+        require(realistic_payment(paid), 'The payment is not a bill a person would hand over')
         cost = count * price
         require(paid > cost, 'The payment does not cover the stickers')
         return dollars_of(paid - cost)
     fewest = re.fullmatch(
-        r'You need (\d+\.\d\d) dollars using quarters, dimes, nickels and pennies\. '
-        r'Use as few coins as you can\. How many coins is that\?',
+        r'You need \$(\d+\.\d\d) in quarters, dimes, nickels, and pennies\. '
+        r'What is the fewest number of coins that make that amount\?',
         text,
     )
     require(fewest is not None, 'Unrecognized money story')
@@ -328,7 +395,7 @@ def solve_money(public):
 
 def solve_model(public):
     match = re.fullmatch(
-        r'Set A starts with (.+)\. Set B adds the coins\. What is the total in dollars\?',
+        r'Set A shows (.+)\. Set B shows the coins\. How much money is there in all\?' + ENTER,
         field(public, 'prompt'),
     )
     require(match is not None, 'Unrecognized money model')
@@ -414,21 +481,21 @@ def self_test():
     good = [
         _choice(
             'elapsed-time-intervals',
-            'The clock shows when the hike starts, in the morning. The hike takes 1 hour 10 minutes. Then the snack takes 20 minutes. What time does the snack end?',
+            'The clock shows when the hike starts, in the morning. The hike lasts 1 hour 10 minutes. Then snack break takes 20 minutes. What time does snack break end?',
             ['10:50 a.m.', '11:10 a.m.', '12:10 p.m.', '10:10 a.m.'],
             1,
             clock(9, 40),
         ),
         _choice(
             'elapsed-time-intervals',
-            'The clock shows when the practice starts, in the afternoon. The practice lasts 1 hour 25 minutes. What time does the practice end?',
+            'The clock shows when soccer practice starts, in the afternoon. Soccer practice lasts 1 hour 25 minutes. What time does soccer practice end?',
             ['2:05 p.m.', '3:05 p.m.', '4:05 p.m.', '1:05 p.m.'],
             1,
             clock(1, 40),
         ),
         _choice(
             'elapsed-time-intervals',
-            'The clock shows when the reading starts, in the morning. The reading lasts 1 hour 15 minutes. What time does the reading end?',
+            'The clock shows when the reading session starts, in the morning. The reading session lasts 1 hour 15 minutes. What time does the reading session end?',
             ['11:35 a.m.', '12:35 p.m.', '1:35 p.m.', '10:35 a.m.'],
             1,
             clock(11, 20),
@@ -477,10 +544,11 @@ def self_test():
             },
             'answer': '{"r2large":"a","r3small":"a"}',
         },
-        _number('unit-rename-larger', 'Write 48 inches in feet.', '4'),
+        _number('unit-rename-larger', '48 inches is how many feet?', '4'),
+        _number('unit-rename-larger', '6,000 meters is how many kilometers?', '6'),
         _number(
             'measurement-line-fraction-story',
-            'A class of 24 students walks from $A$ to $B$ on the trail. How far is the walk, in miles?',
+            'How far is the walk from $A$ to $B$, in miles?',
             '5/4',
             {
                 'kind': 'rational-line',
@@ -500,32 +568,32 @@ def self_test():
         _number('decimal-sum-difference', 'What is $1.25 + 2.40$?', '3.65'),
         _number(
             'money-decimal-story',
-            'A book costs 1.25 dollars and a pen costs 2.40 dollars. What is the total cost in dollars?',
+            'A book costs $1.25 and a pen costs $2.40. What is the total cost? Enter the amount in dollars and cents, such as 2.35.',
             '3.65',
         ),
         _number(
             'money-decimal-story',
-            'A snack costs 1.55 dollars. You pay 2.40 dollars. How many dollars do you get back?',
-            '0.85',
+            'A snack costs $1.55. You pay $5.00. How much change do you get back? Enter the amount in dollars and cents, such as 2.35.',
+            '3.45',
         ),
         _number(
             'money-decimal-story',
-            'Markers cost 0.23 dollars each. The club buys 6 markers and 3 friends split the cost equally. How many dollars does each friend pay?',
+            'Markers cost $0.23 each. The club buys 6 markers, and 3 friends split the cost equally. How much does each friend pay? Enter the amount in dollars and cents, such as 2.35.',
             '0.46',
         ),
         _number(
             'money-decimal-story',
-            'Each sticker costs 0.25 dollars. You buy 2 stickers and pay 1.25 dollars. How many dollars do you get back?',
+            'Each sticker costs $0.25. You buy 2 stickers and pay $1.25. How much change do you get back? Enter the amount in dollars and cents, such as 2.35.',
             '0.75',
         ),
         _number(
             'money-decimal-story',
-            'You need 0.41 dollars using quarters, dimes, nickels and pennies. Use as few coins as you can. How many coins is that?',
+            'You need $0.41 in quarters, dimes, nickels, and pennies. What is the fewest number of coins that make that amount?',
             '4',
         ),
         _number(
             'money-model-decimal',
-            'Set A starts with 1 five-dollar bill. Set B adds the coins. What is the total in dollars?',
+            'Set A shows 1 five-dollar bill. Set B shows the coins. How much money is there in all? Enter the amount in dollars and cents, such as 2.35.',
             '6.91',
             {
                 'kind': 'money-sets',
@@ -560,12 +628,17 @@ def self_test():
         reject(bad)
     reject(_choice(
         'elapsed-time-intervals',
-        'The clock shows when the art starts, in the morning. The art lasts 20 minutes. What time does the art end?',
+        'The clock shows when art class starts, in the morning. Art class lasts 20 minutes. What time does art class end?',
         ['9:30 a.m.', '10:30 a.m.', '8:30 a.m.', '9:50 a.m.'],
         0,
         clock(9, 10),
     ))
-    reject(_number('unit-rename-larger', 'Write 50 inches in feet.', '4'))
+    reject(_number('unit-rename-larger', '50 inches is how many feet?', '4'))
+    reject(_number(
+        'money-decimal-story',
+        'A snack costs $1.55. You pay $7.54. How much change do you get back? Enter the amount in dollars and cents, such as 2.35.',
+        '5.99',
+    ))
     reject(_choice(
         'measuring-tool-choice',
         'Which tool should you use to measure the length of a book?',

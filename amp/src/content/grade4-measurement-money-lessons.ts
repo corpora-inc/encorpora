@@ -117,7 +117,7 @@ export const grade4MeasurementMoneyMethods: Record<string, ProblemMethod> = {
   "money-decimal-story": {
     goal: "Add prices, make change, multiply or divide a cents price, or count the fewest coins.",
     intuition:
-      "A dollar is 100 cents. We write 3 dollars and 40 cents as 3.40 dollars. Change is the money you get back: the amount you paid minus the cost. For the fewest coins, take the largest coin that fits, then do it again with what is left. A quarter is 25 cents, a dime is 10, a nickel is 5 and a penny is 1.",
+      "A dollar is 100 cents. We write 3 dollars and 40 cents as 3.40. Change is the money you get back: the amount you paid minus the cost. A payment is a whole bill, or a bill plus quarters. For the fewest coins, take the largest coin that fits, then do it again with what is left. A quarter is 25 cents, a dime is 10, a nickel is 5 and a penny is 1.",
     terms: ["change-money", "coin", "decimal-point"],
     senses: {
       change: "change-money",
@@ -138,9 +138,9 @@ export const grade4MeasurementMoneyMethods: Record<string, ProblemMethod> = {
       "Change is payment minus cost, not cost minus payment. The fewest coins is not the same as the number of cents.",
   },
   "money-model-decimal": {
-    goal: "Total a starting bill and ten mixed coins, then write the amount in dollars and cents.",
+    goal: "Total the bills in one set and the ten coins in the other, then write the amount in dollars and cents.",
     intuition:
-      "A coin is a metal piece of money. A five-dollar bill is 5 dollars, and a one-dollar bill is 1 dollar. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. 100 cents is 1 dollar. The total in dollars uses two digits after the decimal point.",
+      "A coin is a metal piece of money. A five-dollar bill is 5 dollars, and a one-dollar bill is 1 dollar. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents and a penny is 1 cent. 100 cents is 1 dollar. The total is written 6.85.",
     terms: ["coin", "decimal-point"],
     senses: {
       coin: "coin",
@@ -314,7 +314,7 @@ export const grade4MeasurementMoneyLessons: Lesson[] = [
     noLink: ["quarter", "quarters"],
     objectives: [
       "Add and subtract decimals through hundredths, lining up the decimal points.",
-      "Solve a money story: a total, change from a payment with cents, an equal share, or the fewest coins.",
+      "Solve a money story: a total, change from a whole bill or a bill plus quarters, an equal share, or the fewest coins.",
       "Write a bill plus mixed coins as dollars and cents.",
     ],
     sections: [
@@ -323,7 +323,7 @@ export const grade4MeasurementMoneyLessons: Lesson[] = [
         title: "Hundredths are cents",
         paragraphs: [
           "A decimal point separates the ones from the tenths. The second digit after the point is hundredths. One tenth is ten hundredths, so 3.4 is 3.40. Line the points up before you add or subtract.",
-          "A dollar is 100 cents. 3.40 dollars is 340 cents, and 1.27 dollars is 127 cents. Change is the payment minus the cost. For the fewest coins under a dollar, take quarters first, then dimes, nickels and pennies.",
+          "A dollar is 100 cents. 3.40 is 340 cents, and 1.27 is 127 cents. Change is the payment minus the cost. For the fewest coins under a dollar, take quarters first, then dimes, nickels and pennies.",
         ],
       },
     ],
@@ -332,7 +332,7 @@ export const grade4MeasurementMoneyLessons: Lesson[] = [
       steps: [
         "Write 3.4 as 3.40 so both numbers show hundredths. 3.40 is 340 cents and 1.27 is 127 cents.",
         "Subtract: $340 - 127 = 213$. That is 213 cents.",
-        "213 cents is 2 dollars and 13 cents, which is 2.13 dollars.",
+        "213 cents is 2 dollars and 13 cents, which is written 2.13.",
       ],
       answer: "$2.13$",
     },
@@ -352,7 +352,7 @@ export const grade4MeasurementMoneyLessons: Lesson[] = [
       "The number of coins is not the number of cents. 41 cents can be 4 coins.",
     ],
     parentGuide:
-      "Ask the learner to subtract 1.27 dollars from 3.40 dollars in cents, then to make 41 cents with the fewest coins.",
+      "Ask the learner to subtract 1.27 from 3.40 in cents, then to make 41 cents with the fewest coins.",
   },
 ];
 
@@ -404,13 +404,13 @@ export const grade4MeasurementMoneyFacetMappings = [
     facetId: "decimal-money-operations.operations",
     extent: "partial" as const,
     rationale:
-      "Adds prices, makes change from a payment that includes cents, multiplies or divides a cents price in two steps, or counts the fewest coins under one dollar.",
+      "Adds prices, makes change from a whole bill or a bill plus quarters, multiplies or divides a cents price in two steps, or counts the fewest coins under one dollar.",
   },
   {
     templateId: "money-model-decimal",
     facetId: "decimal-money-operations.operations",
     extent: "partial" as const,
     rationale:
-      "Totals one starting bill and exactly ten mixed coins of all four denominations, written as dollars and cents. Does not ask for the fewest coins.",
+      "Totals the bills in one set and exactly ten mixed coins of all four denominations in the other, written as dollars and cents. Does not ask for the fewest coins.",
   },
 ];

@@ -76,6 +76,44 @@ const formatTime = (mins: number) => {
   const h12 = h24 % 12 === 0 ? 12 : h24 % 12;
   return `${h12}:${String(minute).padStart(2, "0")} ${h24 < 12 ? "a.m." : "p.m."}`;
 };
+const ACTIVITY =
+  "art class|sharing time|reading session|cleanup time|soccer practice|stretching|hike|snack break";
+const DUR = String.raw`(?:\d+ hours?(?: \d+ minutes?)?|\d+ minutes?)`;
+const VERB: Record<string, string> = {
+  "art class": "lasts",
+  "sharing time": "takes",
+  "reading session": "lasts",
+  "cleanup time": "takes",
+  "soccer practice": "lasts",
+  stretching: "takes",
+  hike: "lasts",
+  "snack break": "takes",
+};
+const elapsedTwo = new RegExp(
+  String.raw`^The clock shows when (?:the )?(${ACTIVITY}) starts, in the (morning|afternoon)\. ((?:The )?(?:${ACTIVITY})) (lasts|takes) (${DUR})\. Then (?:the )?(${ACTIVITY}) (lasts|takes) (${DUR})\. What time does (?:the )?\6 end\?$`,
+  "i",
+);
+const elapsedOne = new RegExp(
+  String.raw`^The clock shows when (?:the )?(${ACTIVITY}) starts, in the (morning|afternoon)\. ((?:The )?(?:${ACTIVITY})) (lasts|takes) (${DUR})\. What time does (?:the )?\1 end\?$`,
+  "i",
+);
+const cellNumber = (value: number | string | null) => {
+  if (value === null) throw new Error("blank cell");
+  if (typeof value === "number") return value;
+  assert.match(value, /^\d{1,3}(,\d{3})*$/);
+  return Number(value.replaceAll(",", ""));
+};
+const realisticPay = (cents: number) => {
+  const whole = Math.floor(cents / 100);
+  const extra = cents % 100;
+  const stacks = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 20]);
+  const withQuarters = new Set([1, 2, 5, 6, 10, 15, 20]);
+  if (!stacks.has(whole)) return false;
+  if (extra === 0) return true;
+  return (
+    (extra === 25 || extra === 50 || extra === 75) && withQuarters.has(whole)
+  );
+};
 const durationOf = (text: string) => {
   const hours = /^(\d+) hours?(?: (\d+) minutes?)?$/.exec(text);
   if (hours) return Number(hours[1]) * 60 + (hours[2] ? Number(hours[2]) : 0);
@@ -160,18 +198,20 @@ test("elapsed time crosses an hour and is read from the clock", () => {
   for (let i = 0; i < 200; i++) {
     const { problem } = served("elapsed-time-intervals", `mm-elapsed-${i}`);
     const text = problem.public.prompt;
-    const twoMatch =
-      /^The clock shows when the (\w+) starts, in the (morning|afternoon)\. The \1 takes (.+)\. Then the (\w+) takes (.+)\. What time does the \4 end\?$/.exec(
-        text,
-      );
-    const oneMatch =
-      /^The clock shows when the (\w+) starts, in the (morning|afternoon)\. The \1 lasts (.+)\. What time does the \1 end\?$/.exec(
-        text,
-      );
+    assert.equal(/\bThe art takes\b/.test(text), false);
+    const twoMatch = elapsedTwo.exec(text);
+    const oneMatch = elapsedOne.exec(text);
     assert.equal(Boolean(twoMatch), !oneMatch);
     const match = (twoMatch ?? oneMatch)!;
-    const durations = [durationOf(match[3]!)];
-    if (twoMatch) durations.push(durationOf(twoMatch[5]!));
+    const name = match[1]!.toLowerCase();
+    assert.equal(match[3]!.toLowerCase().endsWith(name), true);
+    assert.equal(match[4]!.toLowerCase(), VERB[name]);
+    if (twoMatch) {
+      const second = twoMatch[6]!.toLowerCase();
+      assert.equal(twoMatch[7]!.toLowerCase(), VERB[second]);
+    }
+    const durations = [durationOf(twoMatch ? twoMatch[5]! : oneMatch![5]!)];
+    if (twoMatch) durations.push(durationOf(twoMatch[8]!));
     const figure = problem.public.figure;
     assert.ok(figure && figure.kind === "clock");
     if (!figure || figure.kind !== "clock") throw new Error("clock");
@@ -226,8 +266,10 @@ test("conversion tables fill both columns from the first row", () => {
     assert.deepEqual(table.columns, [large, small]);
     const rows = table.rows;
     assert.equal(rows.length, 3);
-    assert.equal(rows[0]!.cells[0], shown);
-    assert.equal(rows[0]!.cells[1], shown * factor!);
+    assert.equal(cellNumber(rows[0]!.cells[0] ?? null), shown);
+    assert.equal(cellNumber(rows[0]!.cells[1] ?? null), shown * factor!);
+    if (shown * factor! >= 1000)
+      assert.equal(rows[0]!.cells[1], grouped(shown * factor!));
     const response = problem.public.response;
     assert.equal(response.kind, "multi-part-choice");
     if (response.kind !== "multi-part-choice") throw new Error("parts");
@@ -241,12 +283,13 @@ test("conversion tables fill both columns from the first row", () => {
       let expected = 0;
       if (word === large) {
         assert.equal(row.cells[0], null);
-        assert.equal(Number(row.cells[1]) % factor!, 0);
-        expected = Number(row.cells[1]) / factor!;
+        const smaller = cellNumber(row.cells[1] ?? null);
+        assert.equal(smaller % factor!, 0);
+        expected = smaller / factor!;
       } else {
         assert.equal(word, small);
         assert.equal(row.cells[1], null);
-        expected = Number(row.cells[0]) * factor!;
+        expected = cellNumber(row.cells[0] ?? null) * factor!;
       }
       const shownLabel = grouped(expected);
       const hits = blank.options.filter((o) => o.label === shownLabel);
@@ -265,9 +308,18 @@ test("smaller units rename to a whole number of a larger unit", () => {
   const florida = new Set<string>();
   for (let i = 0; i < 800; i++) {
     const { variant, problem } = served("unit-rename-larger", `mm-rename-${i}`);
-    const match = /^Write (\d+) (\w+) in (\w+)\.$/.exec(problem.public.prompt);
-    assert.ok(match);
-    const amount = Number(match[1]);
+    const match = /^([\d,]+) (\w+) is how many (\w+)\?$/.exec(
+      problem.public.prompt,
+    );
+    assert.ok(match, problem.public.prompt);
+    const amount = Number(match[1]!.replaceAll(",", ""));
+    if (amount >= 1000) assert.match(match[1]!, /,/);
+    const prose = [
+      problem.public.prompt,
+      problem.hint,
+      ...problem.explanation,
+    ].join("\n");
+    assert.equal(/(?<![\d,])\d{4,}(?!\d)/.test(prose), false, prose);
     const pair = `${match[2]}|${match[3]}`;
     const factor = RENAME_FACTOR[pair];
     assert.ok(factor, pair);
@@ -299,10 +351,9 @@ test("a measurement line is read as a grade-4 fraction", () => {
       `mm-line-${i}`,
     );
     const text = problem.public.prompt;
-    assert.match(
-      text,
-      /^A class of \d+ students walks from \$A\$ to \$B\$ on the trail\. How far is the walk, in miles\?$/,
-    );
+    assert.equal(text, "How far is the walk from $A$ to $B$, in miles?");
+    assert.equal(/\d/.test(text), false);
+    assert.equal(text.includes("student"), false);
     assert.equal(text.includes("equal steps"), false);
     const figure = problem.public.figure;
     assert.ok(figure && figure.kind === "rational-line");
@@ -382,29 +433,30 @@ test("decimal sums and differences stay in hundredths", () => {
 
 test("money stories cover change, the four operations and the fewest coins", () => {
   const surfaces = new Map<string, number>();
+  const enter = String.raw` Enter the amount in dollars and cents, such as 2\.35\.`;
+  let wholePay = 0;
+  let quarterPay = 0;
   for (let i = 0; i < 200; i++) {
     const { problem } = served("money-decimal-story", `mm-money-${i}`);
     const text = problem.public.prompt;
+    const prose = [text, problem.hint, ...problem.explanation].join("\n");
+    assert.equal(/\d+\.\d\d dollars/.test(prose), false, prose);
     let answer = "";
     let surface = "";
-    const add =
-      /^A book costs (\d+\.\d\d) dollars and a pen costs (\d+\.\d\d) dollars\. What is the total cost in dollars\?$/.exec(
-        text,
-      );
-    const change =
-      /^A snack costs (\d+\.\d\d) dollars\. You pay (\d+\.\d\d) dollars\. How many dollars do you get back\?$/.exec(
-        text,
-      );
-    const shared =
-      /^Markers cost (\d+\.\d\d) dollars each\. The club buys (\d+) markers and (\d+) friends split the cost equally\. How many dollars does each friend pay\?$/.exec(
-        text,
-      );
-    const stickers =
-      /^Each sticker costs (\d+\.\d\d) dollars\. You buy (\d+) stickers and pay (\d+\.\d\d) dollars\. How many dollars do you get back\?$/.exec(
-        text,
-      );
+    const add = new RegExp(
+      String.raw`^A book costs \$(\d+\.\d\d) and a pen costs \$(\d+\.\d\d)\. What is the total cost\?${enter}$`,
+    ).exec(text);
+    const change = new RegExp(
+      String.raw`^A snack costs \$(\d+\.\d\d)\. You pay \$(\d+\.\d\d)\. How much change do you get back\?${enter}$`,
+    ).exec(text);
+    const shared = new RegExp(
+      String.raw`^Markers cost \$(\d+\.\d\d) each\. The club buys (\d+) markers, and (\d+) friends split the cost equally\. How much does each friend pay\?${enter}$`,
+    ).exec(text);
+    const stickers = new RegExp(
+      String.raw`^Each sticker costs \$(\d+\.\d\d)\. You buy (\d+) stickers and pay \$(\d+\.\d\d)\. How much change do you get back\?${enter}$`,
+    ).exec(text);
     const coins =
-      /^You need (\d+\.\d\d) dollars using quarters, dimes, nickels and pennies\. Use as few coins as you can\. How many coins is that\?$/.exec(
+      /^You need \$(\d+\.\d\d) in quarters, dimes, nickels, and pennies\. What is the fewest number of coins that make that amount\?$/.exec(
         text,
       );
     const matched = [add, change, shared, stickers, coins].filter(Boolean);
@@ -416,10 +468,12 @@ test("money stories cover change, the four operations and the fewest coins", () 
       answer = dollarsOf(centsOf(add[1]!) + centsOf(add[2]!));
     } else if (change) {
       surface = "change";
-      assert.notEqual(change[2]!.endsWith("00"), true);
       const paid = centsOf(change[2]!);
       const cost = centsOf(change[1]!);
+      assert.equal(realisticPay(paid), true, change[2]);
       assert.ok(paid > cost);
+      if (paid % 100 === 0) wholePay++;
+      else quarterPay++;
       answer = dollarsOf(paid - cost);
     } else if (shared) {
       surface = "times-divide";
@@ -432,7 +486,10 @@ test("money stories cover change, the four operations and the fewest coins", () 
       surface = "times-change";
       const cost = Number(stickers[2]) * centsOf(stickers[1]!);
       const paid = centsOf(stickers[3]!);
+      assert.equal(realisticPay(paid), true, stickers[3]);
       assert.ok(paid > cost);
+      if (paid % 100 === 0) wholePay++;
+      else quarterPay++;
       answer = dollarsOf(paid - cost);
     } else {
       surface = "fewest";
@@ -461,6 +518,8 @@ test("money stories cover change, the four operations and the fewest coins", () 
     (surfaces.get("fewest") ?? 0) >= 25,
     `fewest ${surfaces.get("fewest")}`,
   );
+  assert.ok(wholePay >= 5, `whole-bill payments ${wholePay}`);
+  assert.ok(quarterPay >= 5, `bill-and-quarter payments ${quarterPay}`);
 });
 
 test("bills and ten mixed coins total a decimal in dollars", () => {
@@ -469,9 +528,17 @@ test("bills and ten mixed coins total a decimal in dollars", () => {
   for (let i = 0; i < 200; i++) {
     const { variant, problem } = served("money-model-decimal", `mm-model-${i}`);
     const match =
-      /^Set A starts with (.+)\. Set B adds the coins\. What is the total in dollars\?$/.exec(
+      /^Set A shows (.+)\. Set B shows the coins\. How much money is there in all\? Enter the amount in dollars and cents, such as 2\.35\.$/.exec(
         problem.public.prompt,
       );
+    assert.equal(
+      /\d+\.\d\d dollars/.test(
+        [problem.public.prompt, problem.hint, ...problem.explanation].join(
+          "\n",
+        ),
+      ),
+      false,
+    );
     assert.ok(match);
     const figure = problem.public.figure;
     assert.ok(figure && figure.kind === "money-sets");

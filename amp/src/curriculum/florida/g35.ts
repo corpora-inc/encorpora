@@ -982,7 +982,7 @@ export const floridaG35Rows: readonly FloridaRow[] = [
       "multi-operation-stories",
       "decimal-money-operations",
     ],
-    "money-decimal-story adds and subtracts dollars and cents, makes change from a payment that includes cents, multiplies or divides a cents price, and counts the fewest coins under one dollar. money-model-decimal writes bills and ten mixed coins as a decimal. purchase-change is still whole dollars, and decimal-addition is grade 5.",
+    "money-decimal-story adds and subtracts dollars and cents, makes change from a whole bill or a bill plus quarters, multiplies or divides a cents price, and counts the fewest coins under one dollar. money-model-decimal totals the bills in one set and ten mixed coins in the other. purchase-change is still whole dollars, and decimal-addition is grade 5.",
     "",
     "",
   ],

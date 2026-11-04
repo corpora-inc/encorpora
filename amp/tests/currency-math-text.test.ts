@@ -23,11 +23,24 @@ function currencySpans(text: string) {
     );
 }
 
-test("the detector catches prose captured between two currency amounts", () => {
-  assert.deepEqual(currencySpans("A pen costs $3 and a book costs $5."), [
-    "3 and a book costs ",
-  ]);
+test("two currency amounts stay prose and a real equation stays mathematics", () => {
+  assert.deepEqual(currencySpans("A pen costs $3 and a book costs $5."), []);
+  assert.deepEqual(
+    currencySpans("A book costs $3.33 and a pen costs $4.58."),
+    [],
+  );
+  assert.deepEqual(currencySpans("$3.33 + $4.58 = $7.91."), []);
   assert.deepEqual(currencySpans("So $4 + 4 = 8$ vertices."), []);
+  const math = segments("What is $3.4 - 1.27$?").filter((s) => s.math);
+  assert.deepEqual(
+    math.map((s) => s.text),
+    ["3.4 - 1.27"],
+  );
+  assert.equal(
+    segments("$\\triangle ABC\\sim\\triangle EFD$").filter((s) => s.math)
+      .length,
+    1,
+  );
 });
 
 test("no generated prompt, hint, choice or explanation pairs a currency $ into TeX", () => {

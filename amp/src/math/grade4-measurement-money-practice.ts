@@ -107,14 +107,14 @@ export const grade4MeasurementMoneyTemplates: readonly TemplateMetadata[] = [
     "Decimal money stories",
     "decimal-money-operations",
     0.5,
-    "Add or subtract dollars and cents, make change from a payment that includes cents, multiply or divide a cents price in two steps, or find the fewest coins.",
+    "Add or subtract dollars and cents, make change from a whole bill or a bill plus quarters, multiply or divide a cents price in two steps, or find the fewest coins.",
   ),
   metadata(
     "money-model-decimal",
     "Bills and coins as a decimal",
     "decimal-money-operations",
     0.35,
-    "Total a starting bill and a set of ten mixed coins, and write the amount in dollars and cents.",
+    "Total the bills in one set and ten mixed coins in the other, and write the amount in dollars and cents.",
   ),
 ];
 
@@ -138,6 +138,18 @@ function places(cents: number, digits: 1 | 2): string {
   return digits === 1 ? `${whole}.${frac[0]}` : `${whole}.${frac}`;
 }
 const dollars = (cents: number) => places(cents, 2);
+/** A money amount as a learner reads it. The number field still expects `6.85`. */
+const money = (cents: number) => `$${dollars(cents)}`;
+const ENTER = "Enter the amount in dollars and cents, such as 2.35.";
+const commas = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+const counted = (n: number, noun: string) =>
+  count(n, noun).replace(/^\d+/, commas(n));
+const oneOf = (plural: string) =>
+  plural === "feet"
+    ? "foot"
+    : plural === "inches"
+      ? "inch"
+      : plural.replace(/s$/, "");
 const texFraction = (answer: string) => {
   const [n, d] = answer.split("/");
   return d ? `\\frac{${n}}{${d}}` : answer;
@@ -213,15 +225,36 @@ function formatTime(mins: number): string {
 }
 const hourOf = (mins: number) => Math.floor(mins / 60);
 
+type Activity = { name: string; verb: "lasts" | "takes"; the?: boolean };
+const lead = (activity: Activity) =>
+  activity.the ? `the ${activity.name}` : activity.name;
+const sentence = (activity: Activity) => {
+  const text = `${lead(activity)} ${activity.verb}`;
+  return text[0]!.toUpperCase() + text.slice(1);
+};
+const PAIRS: readonly (readonly [Activity, Activity])[] = [
+  [
+    { name: "art class", verb: "lasts" },
+    { name: "sharing time", verb: "takes" },
+  ],
+  [
+    { name: "reading session", verb: "lasts", the: true },
+    { name: "cleanup time", verb: "takes" },
+  ],
+  [
+    { name: "soccer practice", verb: "lasts" },
+    { name: "stretching", verb: "takes" },
+  ],
+  [
+    { name: "hike", verb: "lasts", the: true },
+    { name: "snack break", verb: "takes" },
+  ],
+];
+const ALONE: readonly Activity[] = PAIRS.map((pair) => pair[0]);
+
 function elapsed(meta: TemplateMetadata, seed: string, r: Random): Built {
   const two = r(0, 1) === 0;
   const noon = r(0, 9) < 3;
-  const pairs = [
-    ["hike", "snack"],
-    ["practice", "stretch"],
-    ["reading", "cleanup"],
-    ["art", "sharing"],
-  ] as const;
   let startHour = 8;
   let startMin = 0;
   let durations: number[] = [];
@@ -263,11 +296,11 @@ function elapsed(meta: TemplateMetadata, seed: string, r: Random): Built {
   )
     throw new Error("Need a usable interval");
   const period = start < 12 * 60 ? "morning" : "afternoon";
-  const [first, second] = pick(r, pairs);
-  const name = two ? first : pick(r, ["hike", "practice", "reading", "art"]);
+  const [first, second] = pick(r, PAIRS);
+  const activity = two ? first : pick(r, ALONE);
   const prompt = two
-    ? `The clock shows when the ${name} starts, in the ${period}. The ${name} takes ${hm(durations[0]!)}. Then the ${second} takes ${hm(durations[1]!)}. What time does the ${second} end?`
-    : `The clock shows when the ${name} starts, in the ${period}. The ${name} lasts ${hm(durations[0]!)}. What time does the ${name} end?`;
+    ? `The clock shows when ${lead(first)} starts, in the ${period}. ${sentence(first)} ${hm(durations[0]!)}. Then ${lead(second)} ${second.verb} ${hm(durations[1]!)}. What time does ${lead(second)} end?`
+    : `The clock shows when ${lead(activity)} starts, in the ${period}. ${sentence(activity)} ${hm(durations[0]!)}. What time does ${lead(activity)} end?`;
   const correct = formatTime(end);
   need(
     !prompt.includes(correct),
@@ -319,8 +352,8 @@ function elapsed(meta: TemplateMetadata, seed: string, r: Random): Built {
     minute: startMin,
   };
   const hint = two
-    ? `The ${name} takes ${hm(durations[0]!)} and the ${second} takes ${hm(durations[1]!)}. Start at the time on the clock and add both.`
-    : `The ${name} lasts ${hm(durations[0]!)}. Start at the time on the clock and add the hours and the minutes.`;
+    ? `${sentence(first)} ${hm(durations[0]!)}. Then ${lead(second)} ${second.verb} ${hm(durations[1]!)}. Start at the time on the clock and add both.`
+    : `${sentence(activity)} ${hm(durations[0]!)}. Start at the time on the clock and add the hours and the minutes.`;
   const steps = durations.map((part, i) => {
     const at = start + durations.slice(0, i + 1).reduce((s, n) => s + n, 0);
     return `Add ${hm(part)}: ${formatTime(at)}.`;
@@ -391,9 +424,9 @@ function conversion(meta: TemplateMetadata, seed: string, r: Random): Built {
       columns: [pair.large, pair.small],
       corner: "Row",
       rows: [
-        { label: "1", cells: [large0, small[0]!] },
-        { label: "2", cells: [null, small[1]!] },
-        { label: "3", cells: [large2, null] },
+        { label: "1", cells: [commas(large0), commas(small[0]!)] },
+        { label: "2", cells: [null, commas(small[1]!)] },
+        { label: "3", cells: [commas(large2), null] },
       ],
     }).scene(),
   };
@@ -423,18 +456,20 @@ function conversion(meta: TemplateMetadata, seed: string, r: Random): Built {
       ]),
     },
   ];
-  const prompt = `The table matches ${pair.large} with ${pair.small}. The first row shows ${count(large0, pair.large === "feet" ? "foot" : pair.large.replace(/s$/, ""))}. Fill in the two blanks.`;
+  const largeOne = oneOf(pair.large);
+  const smallOne = oneOf(pair.small);
+  const prompt = `The table matches ${pair.large} with ${pair.small}. The first row shows ${counted(large0, largeOne)}. Fill in the two blanks.`;
   const problem = multiPartProblem(meta, seed, r, {
     prompt,
     layout: "slots",
     label: "Fill the blanks",
     slots,
     figure,
-    hint: `The first row shows ${large0}. Each row uses the same match between ${pair.large} and ${pair.small}.`,
+    hint: `The first row shows ${counted(large0, largeOne)}. Each row uses the same match between ${pair.large} and ${pair.small}.`,
     explanation: [
-      `The first row shows ${large0} ${pair.large} and ${small[0]} ${pair.small}, so 1 of the larger unit is ${pair.factor} of the smaller unit.`,
-      `Row 2 shows ${small[1]} ${pair.small}. Divide by ${pair.factor}: ${large1} ${pair.large}.`,
-      `Row 3 shows ${large2} ${pair.large}. Multiply by ${pair.factor}: ${small[2]} ${pair.small}.`,
+      `The first row shows ${counted(large0, largeOne)} and ${counted(small[0]!, smallOne)}, so 1 ${largeOne} is ${counted(pair.factor, smallOne)}.`,
+      `Row 2 shows ${counted(small[1]!, smallOne)}. Divide by ${commas(pair.factor)}: ${counted(large1, largeOne)}.`,
+      `Row 3 shows ${counted(large2, largeOne)}. Multiply by ${commas(pair.factor)}: ${counted(small[2]!, smallOne)}.`,
     ],
   });
   return { variant: pair.large, problem };
@@ -484,14 +519,14 @@ function renameLarger(meta: TemplateMetadata, seed: string, r: Random): Built {
   return {
     variant: `${market}-${pair.small}-${pair.large}`,
     problem: toProblem(meta, seed, r, {
-      prompt: `Write ${count(input, pair.small)} in ${noun}.`,
+      prompt: `${counted(input, pair.small)} is how many ${noun}?`,
       answer: String(result),
       responseLabel: `Number of ${noun}`,
-      hint: `There are ${count(pair.factor, pair.small)} in 1 ${pair.large}. Divide ${input} by ${pair.factor}.`,
+      hint: `1 ${pair.large} is ${counted(pair.factor, pair.small)}. Divide ${commas(input)} by ${commas(pair.factor)}.`,
       explanation: [
-        `1 ${pair.large} is ${count(pair.factor, pair.small)}.`,
-        `${input} ÷ ${pair.factor} = ${result}.`,
-        `${count(input, pair.small)} is ${count(result, pair.large)}.`,
+        `1 ${pair.large} is ${counted(pair.factor, pair.small)}.`,
+        `${commas(input)} ÷ ${commas(pair.factor)} = ${result}.`,
+        `${counted(input, pair.small)} is ${counted(result, pair.large)}.`,
       ],
     }),
   };
@@ -510,15 +545,7 @@ function lineStory(meta: TemplateMetadata, seed: string, r: Random): Built {
   const a = r(0, steps - 2);
   const b = r(a + 1, steps);
   const answer = rational(b - a, denominator);
-  let students = 20 + r(0, 8);
-  while (
-    students === a ||
-    students === b ||
-    students === b - a ||
-    students === Number(answer)
-  )
-    students++;
-  const prompt = `A class of ${count(students, "student")} walks from $A$ to $B$ on the trail. How far is the walk, in miles?`;
+  const prompt = "How far is the walk from $A$ to $B$, in miles?";
   const figure: SemanticFigure = {
     kind: "rational-line",
     denominator,
@@ -537,7 +564,7 @@ function lineStory(meta: TemplateMetadata, seed: string, r: Random): Built {
       fraction: true,
       responseLabel: "Distance in miles",
       figure,
-      hint: `The class has ${students} students. Count the equal steps from $A$ to $B$, then write that count over the steps in one mile.`,
+      hint: `Each mile on the line is split into ${denominator} equal steps. Count the steps from $A$ to $B$ and write that count over ${denominator}.`,
       explanation: [
         `Each mile on the trail is split into ${denominator} equal steps.`,
         `$A$ is ${count(a, "step")} from 0 and $B$ is ${count(b, "step")} from 0.`,
@@ -687,6 +714,18 @@ function fewestCoins(cents: number): number {
   return pieces;
 }
 
+/** Whole bills a person would hand over, plus up to three quarters on a common stack. */
+const PAYMENTS = [
+  100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1500, 2000,
+  125, 150, 175, 225, 250, 275, 525, 550, 575, 625, 650, 675, 1025, 1050, 1075,
+  1525, 1550, 1575, 2025, 2050, 2075,
+];
+function payAmount(r: Random, cost: number): number {
+  const options = PAYMENTS.filter((pay) => pay > cost);
+  need(options.length > 0, "a payment above the cost");
+  return pick(r, options);
+}
+
 function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
   const roll = r(0, 9);
   if (roll <= 1) {
@@ -698,13 +737,13 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
     return {
       variant: "add",
       problem: toProblem(meta, seed, r, {
-        prompt: `A book costs ${dollars(a)} dollars and a pen costs ${dollars(b)} dollars. What is the total cost in dollars?`,
+        prompt: `A book costs ${money(a)} and a pen costs ${money(b)}. What is the total cost? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `The book costs ${dollars(a)} dollars and the pen costs ${dollars(b)} dollars. Add the dollars and the cents.`,
+        hint: `The book costs ${money(a)} and the pen costs ${money(b)}. Add the dollars and the cents.`,
         explanation: [
-          `$${dollars(a)} + ${dollars(b)} = ${answer}$.`,
-          `The total cost is ${answer} dollars.`,
+          `${money(a)} + ${money(b)} = ${money(a + b)}.`,
+          `The total cost is ${money(a + b)}.`,
         ],
       }),
     };
@@ -712,20 +751,19 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
   if (roll <= 3) {
     let cost = r(155, 840);
     if (cost % 100 === 0) cost += 15;
-    let pay = cost + r(35, 360);
-    if (pay % 100 === 0) pay += 25;
+    const pay = payAmount(r, cost);
     const answer = dollars(pay - cost);
     return {
       variant: "change",
       problem: toProblem(meta, seed, r, {
-        prompt: `A snack costs ${dollars(cost)} dollars. You pay ${dollars(pay)} dollars. How many dollars do you get back?`,
+        prompt: `A snack costs ${money(cost)}. You pay ${money(pay)}. How much change do you get back? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `The snack costs ${dollars(cost)} dollars and you pay ${dollars(pay)} dollars. Subtract the cost from the payment.`,
+        hint: `The snack costs ${money(cost)} and you pay ${money(pay)}. Subtract the cost from the payment.`,
         explanation: [
           `Change is the payment minus the cost.`,
-          `$${dollars(pay)} - ${dollars(cost)} = ${answer}$.`,
-          `You get ${answer} dollars back.`,
+          `${money(pay)} - ${money(cost)} = ${money(pay - cost)}.`,
+          `You get ${money(pay - cost)} back.`,
         ],
       }),
     };
@@ -741,14 +779,14 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
     return {
       variant: "times-divide",
       problem: toProblem(meta, seed, r, {
-        prompt: `Markers cost ${dollars(price)} dollars each. The club buys ${count(items, "marker")} and ${count(friends, "friend")} split the cost equally. How many dollars does each friend pay?`,
+        prompt: `Markers cost ${money(price)} each. The club buys ${count(items, "marker")}, and ${count(friends, "friend")} split the cost equally. How much does each friend pay? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `Markers cost ${dollars(price)} dollars each. The club buys ${items} and ${friends} friends split that cost. Find the total, then divide.`,
+        hint: `Markers cost ${money(price)} each. The club buys ${count(items, "marker")} and ${count(friends, "friend")} split that cost. Find the total, then divide.`,
         explanation: [
-          `${items} markers at ${dollars(price)} dollars each cost ${dollars(items * price)} dollars.`,
-          `$${dollars(items * price)} \\div ${friends} = ${answer}$.`,
-          `Each friend pays ${answer} dollars.`,
+          `${count(items, "marker")} at ${money(price)} each cost ${money(items * price)}.`,
+          `${money(items * price)} ÷ ${friends} = ${money(share)}.`,
+          `Each friend pays ${money(share)}.`,
         ],
       }),
     };
@@ -757,20 +795,19 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
     const n = r(2, 8);
     const price = r(15, 95);
     const cost = n * price;
-    let pay = cost + r(25, 250);
-    if (pay % 100 === 0) pay += 25;
+    const pay = payAmount(r, cost);
     const answer = dollars(pay - cost);
     return {
       variant: "times-change",
       problem: toProblem(meta, seed, r, {
-        prompt: `Each sticker costs ${dollars(price)} dollars. You buy ${count(n, "sticker")} and pay ${dollars(pay)} dollars. How many dollars do you get back?`,
+        prompt: `Each sticker costs ${money(price)}. You buy ${count(n, "sticker")} and pay ${money(pay)}. How much change do you get back? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `Each sticker costs ${dollars(price)} dollars and you buy ${n}. First find the total cost, then subtract it from ${dollars(pay)} dollars.`,
+        hint: `Each sticker costs ${money(price)} and you buy ${count(n, "sticker")}. First find the total cost, then subtract it from ${money(pay)}.`,
         explanation: [
-          `${n} stickers at ${dollars(price)} dollars each cost ${dollars(cost)} dollars.`,
-          `$${dollars(pay)} - ${dollars(cost)} = ${answer}$.`,
-          `You get ${answer} dollars back.`,
+          `${count(n, "sticker")} at ${money(price)} each cost ${money(cost)}.`,
+          `${money(pay)} - ${money(cost)} = ${money(pay - cost)}.`,
+          `You get ${money(pay - cost)} back.`,
         ],
       }),
     };
@@ -781,13 +818,13 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
   return {
     variant: "fewest",
     problem: toProblem(meta, seed, r, {
-      prompt: `You need ${dollars(cents)} dollars using quarters, dimes, nickels and pennies. Use as few coins as you can. How many coins is that?`,
+      prompt: `You need ${money(cents)} in quarters, dimes, nickels, and pennies. What is the fewest number of coins that make that amount?`,
       answer: String(pieces),
       responseLabel: "Number of coins",
-      hint: `${dollars(cents)} dollars is ${cents} cents. Use the largest coin that fits, then count the coins.`,
+      hint: `${money(cents)} is ${count(cents, "cent")}. Use the largest coin that fits, then count the coins.`,
       explanation: [
-        `${dollars(cents)} dollars is ${cents} cents.`,
-        `Take the largest coin that fits each time: quarters, then dimes, nickels and pennies.`,
+        `${money(cents)} is ${count(cents, "cent")}.`,
+        `Take the largest coin that fits each time: quarters, then dimes, nickels, and pennies.`,
         `That uses ${count(pieces, "coin")}.`,
       ],
     }),
@@ -833,15 +870,15 @@ function moneyModel(meta: TemplateMetadata, seed: string, r: Random): Built {
   return {
     variant: useFive ? "five-plus-coins" : `dollars-${billCount}`,
     problem: toProblem(meta, seed, r, {
-      prompt: `Set A starts with ${billPhrase}. Set B adds the coins. What is the total in dollars?`,
+      prompt: `Set A shows ${billPhrase}. Set B shows the coins. How much money is there in all? ${ENTER}`,
       answer,
       responseLabel: "Dollars",
       figure,
-      hint: `Set A starts with ${billPhrase}. Add the value of each coin in set B, then write the total in dollars.`,
+      hint: `Set A shows ${billPhrase}. Add those bills, then add the value of each coin in set B.`,
       explanation: [
-        `Set A is worth ${dollars(bills.reduce((sum, item) => sum + CENTS[item], 0))} dollars.`,
-        `Set B has ${count(quarters, "quarter")}, ${count(dimes, "dime")}, ${count(nickels, "nickel")} and ${count(pennies, "penny")}.`,
-        `The total is ${answer} dollars.`,
+        `Set A shows ${billPhrase}, worth ${money(bills.reduce((sum, item) => sum + CENTS[item], 0))}.`,
+        `Set B shows ${count(quarters, "quarter")}, ${count(dimes, "dime")}, ${count(nickels, "nickel")}, and ${count(pennies, "penny")}.`,
+        `The total is ${money(total)}.`,
       ],
     }),
   };
