@@ -544,20 +544,20 @@ export const toolSituations: Record<
   ],
   balance: [
     {
-      marker: "mass of a pinecone with known masses",
-      ask: "the mass of a pinecone with known masses",
+      marker: "mass of a pinecone",
+      ask: "the mass of a pinecone",
     },
     {
-      marker: "mass of a feather with known masses",
-      ask: "the mass of a feather with known masses",
+      marker: "mass of a feather",
+      ask: "the mass of a feather",
     },
     {
-      marker: "mass of a rock sample with known masses",
-      ask: "the mass of a rock sample with known masses",
+      marker: "mass of a rock sample",
+      ask: "the mass of a rock sample",
     },
     {
-      marker: "mass of a clay lump with known masses",
-      ask: "the mass of a clay lump with known masses",
+      marker: "mass of a clay lump",
+      ask: "the mass of a clay lump",
     },
   ],
   thermometer: [
@@ -591,8 +591,8 @@ export const toolSituations: Record<
       ask: "the weight of the pumpkin in pounds",
     },
     {
-      marker: "weight at the doctor's office in pounds",
-      ask: "the weight at the doctor's office in pounds",
+      marker: "your weight in pounds at the doctor's office",
+      ask: "your weight in pounds at the doctor's office",
     },
     {
       marker: "weight of the apples in pounds",

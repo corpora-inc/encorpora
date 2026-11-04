@@ -92,10 +92,10 @@ TOOL_PHRASES = (
     ('space on the bookshelf', 'ruler'),
     ('length of the kite string', 'ruler'),
     ('compare the mass of a rock with known masses', 'balance'),
-    ('mass of a pinecone with known masses', 'balance'),
-    ('mass of a feather with known masses', 'balance'),
-    ('mass of a rock sample with known masses', 'balance'),
-    ('mass of a clay lump with known masses', 'balance'),
+    ('mass of a pinecone', 'balance'),
+    ('mass of a feather', 'balance'),
+    ('mass of a rock sample', 'balance'),
+    ('mass of a clay lump', 'balance'),
     ('temperature of the room', 'thermometer'),
     ('temperature of the soup', 'thermometer'),
     ('temperature outside before soccer', 'thermometer'),
@@ -109,7 +109,7 @@ TOOL_PHRASES = (
     ('weight of a person in pounds', 'scale'),
     ('weight of the puppy in pounds', 'scale'),
     ('weight of the pumpkin in pounds', 'scale'),
-    ("weight at the doctor's office in pounds", 'scale'),
+    ("your weight in pounds at the doctor's office", 'scale'),
     ('weight of the apples in pounds', 'scale'),
 )
 MONEY_CENTS = {
