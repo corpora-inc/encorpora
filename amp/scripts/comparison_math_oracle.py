@@ -78,12 +78,13 @@ def solve_comparison(public):
         require(labels == [f'{a} < {b}', f'{a} = {b}', f'{a} > {b}'], 'Unexpected statements')
         return option_for(public, f'{a} {symbol(a, b)} {b}')
     if name == 'multidigit-digit-value':
-        m = re.fullmatch(r'What is the value of the digit (\d) in ([\d,]+)\?', prompt)
-        require(m is not None, f'Unexpected digit prompt {prompt!r}')
-        digits = str(whole(m[2]))
-        require(4 <= len(digits) <= 10 and digits.count(m[1]) == 1 and m[1] != '0', 'Digit must be nonzero and appear once')
-        place = len(digits) - 1 - digits.index(m[1])
-        return int(m[1]) * 10 ** place
+        digit_m = re.search(r'digit (\d)', prompt)
+        number_m = re.search(r'\d{1,3}(?:,\d{3})+', prompt)
+        require(digit_m is not None and number_m is not None, f'Unexpected digit prompt {prompt!r}')
+        digits = str(whole(number_m[0]))
+        require(4 <= len(digits) <= 10 and digits.count(digit_m[1]) == 1 and digit_m[1] != '0', 'Digit must be nonzero and appear once')
+        place = len(digits) - 1 - digits.index(digit_m[1])
+        return int(digit_m[1]) * 10 ** place
     if name == 'compare-multidigit':
         pick, a, b = which(prompt)
         require(1000 <= a <= 999999 and 1000 <= b <= 999999, 'Outside four to six digits')

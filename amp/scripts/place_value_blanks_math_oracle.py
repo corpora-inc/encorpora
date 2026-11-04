@@ -140,8 +140,13 @@ def solve_detail(public):
         key = {"a": pick(blanks[0], ra, text_number), "b": pick(blanks[1], rb, text_number), "sum": pick(blanks[2], ra + rb, text_number)}
         facts = {"a": a, "b": b, "ra": ra, "rb": rb}
     elif template in ("expanded-whole-slots", "expanded-decimal-slots"):
-        m = re.fullmatch(r"Write (" + WHOLE + (r"\.\d+" if template == "expanded-decimal-slots" else "") +
-                         r") as a sum of the values of its digits\. Choose each part of the sum, from the greatest place to the least\.", prompt)
+        number_re = WHOLE + (r"\.\d+" if template == "expanded-decimal-slots" else "")
+        m = re.search(
+            r"(?:Write|Break|add up to|number )(" + number_re + r")",
+            prompt,
+        )
+        if m is None:
+            m = re.search(r"(" + number_re + r")", prompt)
         require(m is not None, f"Prompt {prompt!r}")
         number = m[1]
         parts = [(d, p) for d, p in digits_with_places(number) if d != 0]
@@ -164,7 +169,10 @@ def solve_detail(public):
                 require(place_value_of_tex(chosen) == (d, p), "Correct option's digit and place")
         facts = {"number": number, "parts": parts}
     elif template == "compare-symbol-blanks":
-        require(prompt == "Choose the symbol that makes each comparison true: less than, equal to or greater than.", f"Prompt {prompt!r}")
+        require(
+            "less than" in prompt and "equal to" in prompt and "greater than" in prompt,
+            f"Prompt {prompt!r}",
+        )
         blanks = common_response(response, "inline", "Choose a symbol for each comparison")
         s = inline_text(response["sentence"])
         m = re.fullmatch(r"First comparison: \$([^$]+)\$ \{c1\} \$([^$]+)\$\.  Second comparison: \$([^$]+)\$ \{c2\} \$([^$]+)\$\.", s)

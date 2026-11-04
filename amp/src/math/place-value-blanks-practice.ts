@@ -1,5 +1,6 @@
 import type { TemplateMetadata } from "./contracts";
-import { defineAxis } from "./variation/axes";
+import { countContext } from "./story-kit/place-value";
+import { defineAxis, surfaceStream } from "./variation/axes";
 import {
   defineGenerate,
   entry,
@@ -165,6 +166,12 @@ export const expandedWholeAxes = {
     ["five", "six", "seven", "billions"] as const,
     { legacy: "five", weights: [8, 4, 2, 1], silentLegacy: true },
   ),
+  /** Wording only. `bare` is the stored sentence. */
+  surface: defineAxis("surface", ["bare", "break", "parts", "story"] as const, {
+    legacy: "bare",
+    weights: [2, 5, 5, 6],
+    silentLegacy: true,
+  }),
 } as const;
 const timesTex = (digit: number, value: number) =>
   `$${digit}\\times ${texGrouped(value / digit)}$`;
@@ -181,6 +188,12 @@ export const compareSymbolAxes = {
     ["as-drawn", "six-digit", "million", "billions"] as const,
     { legacy: "as-drawn", weights: [8, 4, 2, 1], silentLegacy: true },
   ),
+  /** Wording only. `bare` is the stored sentence. */
+  surface: defineAxis("surface", ["bare", "which", "pairs", "story"] as const, {
+    legacy: "bare",
+    weights: [3, 5, 5, 5],
+    silentLegacy: true,
+  }),
 } as const;
 const SYMBOLS = ["$<$", "$=$", "$>$"] as const;
 const symbolFor = (a: number, b: number) =>
@@ -505,8 +518,21 @@ export const placeValueBlanksGenerate = defineGenerate(
           `$${texGrouped(n)}=$ `,
           ...slots.flatMap((s, i) => (i ? [` $${eq}$ `, s] : [s])),
         ]);
+        const skip =
+          axes.zeros === "has-zero" && axes.surface !== "bare"
+            ? " Skip a digit that is 0."
+            : "";
+        const shown = textGrouped(n);
+        const prompt =
+          axes.surface === "bare"
+            ? `Write ${shown} as a sum of the values of its digits. Choose each part of the sum, from the greatest place to the least.`
+            : axes.surface === "break"
+              ? `Break ${shown} into the values of its digits. Choose each part of the sum, from the greatest place to the least.${skip}`
+              : axes.surface === "parts"
+                ? `Choose the place-value parts that add up to ${shown}, from the greatest place to the least.${skip}`
+                : `${countContext(shown, n, surfaceStream(meta.id, `${seed}:story`))}. Write that number as a sum of the values of its digits. Choose each part, from the greatest place to the least.${skip}`;
         return multiPartProblem(meta, seed, r, {
-          prompt: `Write ${textGrouped(n)} as a sum of the values of its digits. Choose each part of the sum, from the greatest place to the least.`,
+          prompt,
           layout: "inline",
           label: "Choose each part of the sum",
           slots: built.slots,
@@ -683,15 +709,42 @@ export const placeValueBlanksGenerate = defineGenerate(
           slots[1]!,
           ` $${rows[1]!.right.replaceAll(",", "{,}").replaceAll(" + ", "+")}$`,
         ]);
+        const largeCounts = Math.max(rows[0]!.a, rows[1]!.a) >= 100_000;
+        const stories = largeCounts
+          ? [
+              "A census office is comparing two population counts.",
+              "A delivery fleet is comparing two mileage totals.",
+              "A state library is comparing two book counts.",
+              "Two cities are comparing how many people live there.",
+              "A school district is comparing step totals for the year.",
+            ]
+          : [
+              "A coach is comparing two pairs of season point totals.",
+              "A librarian is comparing two pairs of book counts.",
+              "A class is comparing two pairs of step counts.",
+              "A map shows two pairs of driving distances in miles.",
+              "Two towns are comparing how many people live there.",
+            ];
+        const prompt =
+          axes.surface === "bare"
+            ? "Choose the symbol that makes each comparison true: less than, equal to or greater than."
+            : axes.surface === "which"
+              ? "Which symbol makes each comparison true: less than, equal to, or greater than?"
+              : axes.surface === "pairs"
+                ? "Compare each pair. Choose less than, equal to, or greater than."
+                : `${stories[rows[0]!.a % stories.length]} Choose the symbol that makes each comparison true: less than, equal to, or greater than.`;
+        const hint =
+          axes.surface === "bare"
+            ? `In the pair with ${rows[0]!.left}, compare the digits from the left and stop at the first place that differs. If one number is written as a sum, add its parts first.`
+            : "One pair may be written as a sum. Add those parts first. For two numerals, line the digits up from the left and stop at the first place that differs.";
         return multiPartProblem(meta, seed, r, {
-          prompt:
-            "Choose the symbol that makes each comparison true: less than, equal to or greater than.",
+          prompt,
           layout: "cards",
           reuse: true,
           label: "Put a symbol card in each box",
           slots: built.slots,
           sentence: built.sentence,
-          hint: `In the pair with ${rows[0]!.left}, compare the digits from the left and stop at the first place that differs. If one number is written as a sum, add its parts first.`,
+          hint,
           explanation: rows.map((row, i) =>
             row.expanded
               ? `Comparison ${i + 1}: ${row.right} is ${grouped(row.b)}, the same number as ${row.left}, so the symbol is equal to.`
