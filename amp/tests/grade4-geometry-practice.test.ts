@@ -455,10 +455,8 @@ function triangleAnswer(problem: GeneratedProblem): string {
 }
 
 function quadrilateralAnswer(problem: GeneratedProblem): string {
-  assert.equal(
-    problem.public.prompt,
-    "What is the most exact name for this quadrilateral?",
-  );
+  assert.match(problem.public.prompt, /most exact name/);
+  assert.match(problem.public.prompt, /quadrilateral/);
   const name = quadName(shapePoints(problem));
   assert.equal(problem.public.prompt.toLowerCase().includes(name), false);
   return optionId(problem, name);

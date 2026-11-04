@@ -325,7 +325,7 @@ def quad_name(points):
 
 
 def quadrilateral_attributes(public):
-    require(public['prompt'] == 'What is the most exact name for this quadrilateral?', 'Quadrilateral wording')
+    require('most exact name' in public['prompt'] and 'quadrilateral' in public['prompt'], 'Quadrilateral wording')
     return option_id(public, quad_name(shape_points(public)))
 
 

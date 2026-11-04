@@ -20,6 +20,7 @@ import {
   adjacentPrompt,
   benchmarkPrompt,
   protractorPrompt,
+  quadrilateralPrompt,
   spreadPick,
   storyNameFor,
   triangleFocus,
@@ -676,7 +677,7 @@ function classifyQuad(pts: readonly Pt[]): QuadName | null {
 }
 
 function quadrilateralAttributes(r: Rand, seed: string): GeneratedProblem {
-  const kind = pick(r, [
+  const kind = spreadPick(seed, "quad-kind", [
     "square",
     "rectangle",
     "rhombus",
@@ -698,9 +699,9 @@ function quadrilateralAttributes(r: Rand, seed: string): GeneratedProblem {
   const equal = Math.max(...lengths) / Math.min(...lengths) < 1.02;
   const pairWords = pairs === 1 ? "1 pair" : `${pairs} pairs`;
   return finish("quadrilateral-attributes", seed, r, {
-    prompt: "What is the most exact name for this quadrilateral?",
+    prompt: quadrilateralPrompt(seed),
     answer: "",
-    hint: `The choices are ${[kind, ...QUAD_WRONG[kind]].join(", ")}. Count the pairs of matching arrows, the square corners, and the tick marks, then pick the most exact name.`,
+    hint: "Count the pairs of matching arrows. Check the corners for right-angle marks. Check whether the tick marks show all four sides equal. Then pick the most exact name.",
     explanation: [
       `Matching arrows show parallel sides. This shape has ${pairWords} of parallel sides.`,
       rights === 4
