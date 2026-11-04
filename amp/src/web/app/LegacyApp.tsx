@@ -258,11 +258,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     learnerId: learner?.id ?? "",
     token: token ?? undefined,
   });
-  // Loaded with practice, so a focused skill's "Mixed practice" action is
-  // already known when the first answer's feedback opens.
+  // Loaded with practice (and only there), so a focused skill's "Mixed
+  // practice" action is already known when the first answer's feedback opens.
   const practiceSettings = useQuery({
     ...practiceSettingsOptions(adjustments.scope),
-    enabled: !!learner && !nativeRuntime,
+    enabled: !!learner && !nativeRuntime && tab === "practice",
   });
   // Remember a tab's return URL, not a second copy of its screen/filter state.
   const progressReturn = useRef({ identity: "", href: "/progress" });

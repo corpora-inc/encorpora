@@ -1,5 +1,6 @@
 import { secureChromium } from "../browser-security.mjs";
 import { fixtureMe } from "./me-fixture";
+import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { chromium as rawChromium, webkit, type Page } from "playwright";
@@ -93,6 +94,9 @@ async function fixturePage(family: (token: string) => FamilySummary) {
       });
     }
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
+    // Practice preloads its settings (for "Mixed practice" in feedback).
+    if (path.endsWith("/practice-state") && route.request().method() === "GET")
+      return route.fulfill({ json: defaultPracticeSettings() });
     if (path.endsWith("/progress"))
       return route.fulfill({
         json: { asOf: "2026-01-01T00:00:00Z", skills: [] },
