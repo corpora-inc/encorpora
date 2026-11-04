@@ -245,9 +245,11 @@ test("line-plot-center-range covers mode, median and range", () => {
   const sizes = new Set<number>();
   for (let i = 0; i < SEEDS; i++) {
     const problem = load("line-plot-center-range", `g4-${i}`);
-    assert.match(
+    assert.match(problem.public.prompt, /nearest (half|quarter|eighth) inch/);
+    assert.match(problem.public.prompt, /\b(modes?|median|range)\b/);
+    assert.doesNotMatch(
       problem.public.prompt,
-      /^The line plot shows lengths measured to the nearest .+\. What is the (mode\?|median length\?|range\?)$/,
+      /^The line plot shows lengths measured to the nearest/,
     );
     assert.doesNotMatch(
       problem.public.prompt,
@@ -262,7 +264,8 @@ test("line-plot-center-range covers mode, median and range", () => {
     assert.ok(Math.min(...ticks) >= d);
     assert.ok(Math.max(...ticks) <= 4 * d);
     const labels = choiceOf(problem).response.options.map((o) => o.label);
-    if (!problem.public.prompt.endsWith("What is the mode?"))
+    const aboutMode = /\bmodes?\b/.test(problem.public.prompt);
+    if (!aboutMode)
       assert.ok(!labels.includes("no mode"), problem.public.prompt);
     const freq = new Map<number, number>();
     for (const tick of ticks) freq.set(tick, (freq.get(tick) ?? 0) + 1);
@@ -278,9 +281,15 @@ test("line-plot-center-range covers mode, median and range", () => {
           : "";
     assert.ok(situation, `seed g4-${i}`);
     situations.add(situation);
-    const ask = problem.public.prompt.endsWith("What is the mode?")
+    const asksInPrompt = [
+      aboutMode,
+      /\bmedian\b/.test(problem.public.prompt),
+      /\brange\b/.test(problem.public.prompt),
+    ].filter(Boolean);
+    assert.equal(asksInPrompt.length, 1, problem.public.prompt);
+    const ask = aboutMode
       ? "mode"
-      : problem.public.prompt.endsWith("What is the median length?")
+      : /\bmedian\b/.test(problem.public.prompt)
         ? "median"
         : "range";
     asks.add(ask);
@@ -386,7 +395,11 @@ test("frequency-table-grade4 builds intervals and compares them", () => {
       interprets++;
       assert.match(prompt, /How many more/);
       assert.doesNotMatch(prompt, /The numbers are:/);
-      assert.match(problem.hint, /^Use both ends of the first interval/);
+      assert.match(
+        problem.hint,
+        /^Add the counts of the first two intervals, then subtract the count of the last interval/,
+      );
+      assert.match(problem.hint, /both end values/);
       const rows = [...prompt.matchAll(row)].map((m) => Number(m[3]));
       assert.equal(rows.length, 4);
       const diff = rows[0]! + rows[1]! - rows[3]!;
@@ -408,19 +421,43 @@ test("scaled-bar-grade4 is a two-step reading", () => {
   const steps = new Set<number>();
   const more =
     /How many more (\w+) are in (\w+) and (\w+) together than in (\w+)\?/;
-  const scale = /Each line on the side counts as (\d+) /;
+  const fewer =
+    /How many fewer (\w+) does (\w+) have than (\w+) and (\w+) together\?/;
+  const together =
+    /(\w+) and (\w+) together have how many more (\w+) than (\w+)\?/;
+  const difference =
+    /What is the difference between (\w+) and (\w+) together and (\w+), in (\w+)\?/;
+  const scale = /(?:counts as|stands for|counts by) (\d+)/;
   for (let i = 0; i < SEEDS; i++) {
     const problem = load("scaled-bar-grade4", `g4-${i}`);
     assert.equal(problem.public.response.kind, "number");
     assert.equal(problem.choiceFeedback, undefined);
     assert.match(problem.hint, /^Read the bar graph scale/);
     const prompt = problem.public.prompt;
-    const question = prompt.match(more);
     const stepMatch = prompt.match(scale);
-    assert.ok(question && stepMatch, prompt);
-    const unit = question![1]!;
-    const names = [question![2]!, question![3]!, question![4]!];
+    const moreMatch = prompt.match(more);
+    const fewerMatch = prompt.match(fewer);
+    const togetherMatch = prompt.match(together);
+    const differenceMatch = prompt.match(difference);
+    assert.ok(stepMatch, prompt);
     const step = Number(stepMatch![1]);
+    let unit: string;
+    let names: string[];
+    if (moreMatch) {
+      unit = moreMatch[1]!;
+      names = [moreMatch[2]!, moreMatch[3]!, moreMatch[4]!];
+    } else if (fewerMatch) {
+      unit = fewerMatch[1]!;
+      names = [fewerMatch[3]!, fewerMatch[4]!, fewerMatch[2]!];
+    } else if (togetherMatch) {
+      unit = togetherMatch[3]!;
+      names = [togetherMatch[1]!, togetherMatch[2]!, togetherMatch[4]!];
+    } else if (differenceMatch) {
+      unit = differenceMatch[4]!;
+      names = [differenceMatch[1]!, differenceMatch[2]!, differenceMatch[3]!];
+    } else {
+      assert.fail(prompt);
+    }
     assert.ok(STEPS.includes(step));
     steps.add(step);
     assert.equal(problem.public.figure?.kind, "scaled-bar-graph");
