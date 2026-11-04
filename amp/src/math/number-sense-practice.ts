@@ -793,7 +793,7 @@ function numberSenseProblem(
       hint =
         frame === "bare"
           ? `Name the place of each ${digit} in ${shown}. Each place is worth ten times the place to its right.`
-          : `Name the place of each ${digit} in ${shown}. Count the steps from the right-hand ${digit} to the left-hand ${digit}. Each step multiplies by 10.`;
+          : `Name the place of each ${digit} in ${shown}. Count the places from the right-hand ${digit} to the left-hand ${digit}. Each place to the left is worth ten times the place to its right.`;
       explanation = [
         `The first ${digit} is in the ${placeName[high]} place: ${formatWhole(digit * 10 ** high)}. The second is in the ${placeName[low]} place: ${formatWhole(digit * 10 ** low)}.`,
         high - low === 1

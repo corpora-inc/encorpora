@@ -307,7 +307,9 @@ function digitPrompt(
 ): string {
   const shown = formatWhole(n);
   if (surface === "ask")
-    return `What value does the digit ${digit} have in ${shown}?`;
+    return digit === 1
+      ? `What is the value of the digit 1 in ${shown}?`
+      : `What value does the digit ${digit} have in ${shown}?`;
   if (surface === "worth")
     return `The digit ${digit} in ${shown} stands for how much?`;
   if (surface === "story")
