@@ -611,3 +611,13 @@ test("compound-event answers agree with direct counting and comparison", () => {
   }
   assert.ok(sims > 50);
 });
+
+test("pattern pairs always have three distinct wrong options, even when matching terms are equal", () => {
+  // gate-legacy:5 draws the pair (12, 12), whose swapped order is the answer itself.
+  for (let i = 0; i < 4000; i++) {
+    const seed = i < 200 ? `gate-legacy:${i}` : `pair:${i}`;
+    const problem = generateProblem("pattern-pair-relationship", seed);
+    const labels = (problem.public.response as { options?: { label: string }[] }).options?.map((o) => o.label) ?? [];
+    if (labels.length) assert.equal(new Set(labels).size, labels.length, seed);
+  }
+});

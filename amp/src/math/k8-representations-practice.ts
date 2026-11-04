@@ -977,6 +977,12 @@ function patternPairRelationship(r: Random): Built {
           pair(n * da, n * db),
           "Each pattern begins at its starting number, not at 0, so the start is part of each term.",
         ],
+        // Reached only when an earlier option repeats, such as a swapped pair
+        // whose two terms are equal. Appended last so no existing draw changes.
+        [
+          pair(A[n - 2]!, B[n - 2]!),
+          `That is the ${ordinal(n - 1)} pair. The starting numbers are the 1st terms, so count them.`,
+        ],
       ]),
       explanation: [
         `Each pattern starts at its first number and adds the same amount each time. List the terms in order.`,
