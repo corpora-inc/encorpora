@@ -132,7 +132,7 @@ export function elapsedStory(
     else if (frame === 1)
       prompt = `At ${start} ${name} begins ${act}. It lasts ${hm(d1!)}. What time is ${name} done?`;
     else if (frame === 2)
-      prompt = `${name} is busy with ${act} starting at ${start} It takes ${hm(d1!)}. What time does it end?`;
+      prompt = `${cap(act)} for ${name} starts at ${start} It takes ${hm(d1!)}. What time does it end?`;
     else
       prompt = `The clock shows ${start} ${name} starts ${act} then. ${lasts} What time does ${name} finish?`;
   } else {
@@ -236,7 +236,7 @@ export function conversionStory(
         : frame === 2
           ? `Look at ${name}'s table for ${job}. The table ${core} Which numbers fill the blanks?`
           : `${name}'s notebook ${core} The chart is for ${job}. Fill in the two blanks.`;
-  const hint = `${name} can read the rule from the first row. Divide to fill the ${model.large}. Multiply to fill the ${model.small}.`;
+  const hint = `The first row shows ${model.shown}. Divide to fill the ${model.large}. Multiply to fill the ${model.small}.`;
   const wrongLarge = distinctWrongs(model.large1, [
     model.small1,
     model.large1 * 10,
@@ -384,12 +384,13 @@ export function renameStory(
               ? `${name} checks the ${object}. It is ${amount} long. How many ${noun} is that?`
               : frame === 2
                 ? `${name} needs ${amount} for the ${object}. How many ${noun} is that?`
-                : `A note in ${name}'s notebook says ${amount} for the ${object}. How many ${noun} should ${name} record?`;
+                : `${name} lays the ${object} out at ${amount}. How many ${noun} is that?`;
   const factorText = count(model.factor, model.small).replace(
     /^\d+/,
     commas(model.factor),
   );
-  const hint = `1 ${model.large} is ${factorText}. How many groups of ${commas(model.factor)} fit in that measure?`;
+  const given = amount.match(/^[\d,]+/)![0]!;
+  const hint = `${amount} is the measure. 1 ${model.large} is ${factorText}. How many groups of ${commas(model.factor)} fit in ${given}?`;
   const closing = `${name} records ${model.resultText}.`;
   return { prompt, hint, closing };
 }
@@ -406,8 +407,8 @@ const MILE_PLACES: readonly { verb: string; noun: string }[] = [
   { verb: "runs the cross-country course", noun: "cross-country course" },
   { verb: "hikes the nature trail", noun: "nature trail" },
   { verb: "follows the parade route", noun: "parade route" },
-  { verb: "races on the track map", noun: "track map" },
-  { verb: "reads the field-trip map", noun: "field-trip map" },
+  { verb: "races on the track", noun: "race track" },
+  { verb: "plans the field trip", noun: "field trip" },
   { verb: "measures the canal path", noun: "canal path" },
 ];
 
@@ -427,7 +428,7 @@ export function lineStorySurface(
         ? `${name} looks at the ${place.noun}. $A$ and $B$ are two marks. What is the distance from $A$ to $B$, in miles?`
         : frame === 2
           ? `${name} is on the ${place.noun}. How many miles is the trip from $A$ to $B$?`
-          : `${name} uses a map of the ${place.noun}, marked in miles. How far is $A$ from $B$?`;
+          : `${name} checks a mile map of the ${place.noun}. How far is $A$ from $B$?`;
   const steps = model.b - model.a;
   const shared = gcd(steps, model.denominator);
   const tex = model.answer.includes("/")
@@ -628,14 +629,17 @@ function decimalMethod(
       if (top[i]! >= bot[i]!) continue;
       let j = i + 1;
       while (top[j] === 0) j++;
-      borrows.push(
-        j === i + 1
-          ? `The ${PLACES[i]} digit ${top[i]} is smaller than ${bot[i]}, so regroup from the ${PLACES[j]}.`
-          : `The ${PLACES[i]} digit ${top[i]} is smaller than ${bot[i]}, so regroup from the ${PLACES[j]}. The places between become 9.`,
-      );
+      const original = top[i]!;
+      const chain = [`take 1 from the ${PLACES[j]}`];
       top[j]!--;
-      for (let k = j - 1; k > i; k--) top[k] = 9;
-      top[i]! += 10;
+      for (let k = j - 1; k > i; k--) {
+        top[k] = 9;
+        chain.push(`the ${PLACES[k]} become 9`);
+      }
+      top[i] = original + 10;
+      borrows.push(
+        `${cap(PLACES[i]!)}: ${original} is smaller than ${bot[i]}. Regroup: ${chain.join(", ")}, so the ${PLACES[i]} become ${top[i]}.`,
+      );
     }
     lines.push(
       borrows.length
@@ -670,14 +674,20 @@ export function decimalStory(
     `Line up the decimal points and compute $${model.shownL} ${op} ${model.shownR}$.`,
     `What is the result of $${model.shownL} ${op} ${model.shownR}$?`,
   ];
+  const [bought, extra] = pick(r, [
+    ["book", "pen"],
+    ["smoothie", "muffin"],
+    ["poster", "cap"],
+    ["plant", "pot"],
+  ] as const);
   const applied = model.subtract
     ? [
-        `The red ribbon is ${model.shownL} centimeters long. The blue ribbon is ${model.shownR} centimeters long. How much longer is the red ribbon?`,
-        `${name} has ${moneyWords(model.leftCents)} and spends ${moneyWords(model.rightCents)}. How much is left, in dollars and cents?`,
+        `${name} has ${moneyWords(model.leftCents)} and spends ${moneyWords(model.rightCents)} on a ${bought}. How much is left, in dollars and cents?`,
+        `${name} had ${moneyWords(model.leftCents)} and paid ${moneyWords(model.rightCents)} for a ${bought}. How much is left, in dollars and cents?`,
       ]
     : [
-        `One ribbon is ${model.shownL} centimeters and the other is ${model.shownR} centimeters. What is the total length in centimeters?`,
-        `A notebook costs ${moneyWords(model.leftCents)} and a pen costs ${moneyWords(model.rightCents)}. What is the total cost, in dollars and cents?`,
+        `${name} buys a ${bought} that costs ${moneyWords(model.leftCents)} and a ${extra} that costs ${moneyWords(model.rightCents)}. What is the total cost, in dollars and cents?`,
+        `A ${bought} costs ${moneyWords(model.leftCents)} and a ${extra} costs ${moneyWords(model.rightCents)}. What is the total cost, in dollars and cents?`,
       ];
   const appliedPick = r(0, 2) === 0;
   const prompt = appliedPick ? pick(r, applied) : pick(r, bare);
@@ -737,7 +747,7 @@ function fewestBreakdown(cents: number): string {
     pieces += n;
     left -= n * value;
   }
-  return `${cap(joinList(parts))} make ${moneyWords(cents)}. That is ${count(pieces, "coin")}.`;
+  return `That is ${count(pieces, "coin")}: ${joinList(parts)}.`;
 }
 
 export function moneyAddStory(
@@ -894,7 +904,7 @@ export function moneyModelStory(
   const bills = model.billPhrase;
   const prompt =
     frame === 0
-      ? `${name}'s piggy bank has ${bills} and the coins shown with them. How much money is in the bank? ${ENTER}`
+      ? `${name}'s piggy bank has ${bills} and the coins shown. How much money is in the bank? ${ENTER}`
       : frame === 1
         ? `${name} counts the lemonade-stand money: ${bills}, plus the coins in the cup. How much money is there in all? ${ENTER}`
         : frame === 2
@@ -902,7 +912,7 @@ export function moneyModelStory(
           : frame === 3
             ? `${name} found ${bills} and the coins beside them. How much money is that altogether? ${ENTER}`
             : frame === 4
-              ? `${name}'s allowance jar has ${bills} and the coins shown with them. How much money is in the jar? ${ENTER}`
+              ? `${name}'s allowance jar has ${bills} and the coins shown. How much money is in the jar? ${ENTER}`
               : `${name} counts the bake-sale box: ${bills}, plus the coins in the cup. How much money is there in all? ${ENTER}`;
   const coinCents =
     model.quarters * 25 + model.dimes * 10 + model.nickels * 5 + model.pennies;
@@ -922,11 +932,15 @@ export function moneyModelStory(
   ].filter(Boolean);
   return {
     prompt,
-    hint: "Start with the bills. Then count the quarters, the dimes, the nickels, and the pennies.",
+    hint: `Start with ${bills}. Then count the quarters, the dimes, the nickels, and the pennies.`,
     explanation: [
       `The bills are worth ${moneyWords(model.billCents)}.`,
       `${cap(joinList(bits))}.`,
-      `The coins are ${moneyWords(coinCents)}.`,
+      `The coins are ${
+        coinCents < 100 || coinCents % 100 === 0
+          ? moneyWords(coinCents)
+          : `${count(Math.floor(coinCents / 100), "dollar")} and ${count(coinCents % 100, "cent")}`
+      }.`,
       `The total is ${moneyWords(model.billCents + coinCents)}.`,
     ],
   };
