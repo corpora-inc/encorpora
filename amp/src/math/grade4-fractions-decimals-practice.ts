@@ -261,7 +261,7 @@ function decompositions(seed: string): GeneratedProblem {
     ? [
         `The strips show ${target}, more than one whole. Which sums of denominator ${denominator} match that shade? Choose ${keyed.length}.`,
         `${name} joins pieces of size 1/${denominator} to make ${target}. Which sums equal that amount? Choose ${keyed.length}.`,
-        `Two ribbons together make ${target}. Which sums of ${denominator}ths equal that length? Choose ${keyed.length}.`,
+        `Two ribbons together make ${target}. Which sums with denominator ${denominator} equal that length? Choose ${keyed.length}.`,
         `${target} is shaded on the strips. Which sums with denominator ${denominator} equal it? Choose ${keyed.length}.`,
       ]
     : [
@@ -279,7 +279,7 @@ function decompositions(seed: string): GeneratedProblem {
       options,
     },
     answer,
-    hint: `Add the numerators in each sum. A match totals ${numerator}, and every piece in a match has denominator ${denominator}.`,
+    hint: `The shaded amount is ${numerator} pieces of size 1/${denominator}. Add the numerators. A match uses denominator ${denominator} and totals ${numerator}.`,
     explanation: [
       `The shaded amount is ${count(numerator, "piece")} of size 1/${denominator}${wholes > 1 ? ", which is more than 1 whole" : ""}.`,
       `Fractions with the same denominator add by their numerators. A sum equals the shade when those numerators add to ${numerator}.`,
@@ -776,10 +776,10 @@ function locate(seed: string): GeneratedProblem {
     prompt = [
       `Which point is at ${fractionText}?`,
       `Which letter marks ${fractionText} on the line?`,
-      `${learnerName(r)} looks for ${fractionText} on the line. Which point is there?`,
-      `The line counts tenths. Which point is at ${fractionText}?`,
+      `The line counts tenths from 0 to 2. Which point is at ${fractionText}?`,
+      `Find the point at ${fractionText}.`,
     ][r(0, 3)]!;
-    hint = `The left end is 0. Each step is one tenth. Count ${targetOffset} steps to reach ${targetOffset}/10.`;
+    hint = `The left end is 0. Each step is one tenth. Count ${count(targetOffset, "step")} to reach ${targetOffset}/10.`;
     explanationValue = `$\\frac{${targetOffset}}{10}$`;
   } else {
     windowStart = r(0, 18) * 10;
@@ -793,10 +793,10 @@ function locate(seed: string): GeneratedProblem {
     prompt = [
       `Which point is at ${decimalText}?`,
       `Which letter marks ${decimalText} on the line?`,
-      `A beaker is marked from ${plainDecimal(min)} liters to ${plainDecimal(max)} liters. Which point is at ${decimalText}?`,
       `The line is a close-up from ${plainDecimal(min)} to ${plainDecimal(max)}. Which point is at ${decimalText}?`,
+      `Find the point at ${decimalText}.`,
     ][r(0, 3)]!;
-    hint = `The left end is ${plainDecimal(min)}. Each step is one hundredth. Count ${targetOffset} steps to reach ${decimalText}.`;
+    hint = `The left end is ${plainDecimal(min)}. Each step is one hundredth. Count ${count(targetOffset, "step")} to reach ${decimalText}.`;
     explanationValue = target.toFixed(2);
   }
   const order = shuffle(r, offsets);
@@ -835,7 +835,7 @@ function locate(seed: string): GeneratedProblem {
     marks,
   }).scene({
     title: "Four points on a number line",
-    note: "Only the ends of the line are numbered. Count the tick marks from an end to a letter.",
+    note: "Only the ends of the line are numbered. Count the ticks from an end to a letter.",
   });
   return problem(template, seed, {
     ...surface,
@@ -900,7 +900,7 @@ function placeValue(seed: string): GeneratedProblem {
   const prompts = [
     `In ${shown}, name the digit ${asked.digit}. Complete the sentence.`,
     `${name} sees the number ${shown}. The digit to look at is ${asked.digit}. Complete the sentence.`,
-    `A length is ${shown} meters. What place and value does the digit ${asked.digit} have? Complete the sentence.`,
+    `A length is ${shown} meters. Name the place and the value of the digit ${asked.digit}. Complete the sentence.`,
     `The price is ${shown} dollars. Complete the sentence about the digit ${asked.digit}.`,
   ];
   return multiPartProblem(template, seed, r, {

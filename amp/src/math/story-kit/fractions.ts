@@ -260,7 +260,7 @@ export function renameStory(
   const name = learnerName(r);
   const target = b * k;
   const frames = [
-    `${name} measures ${a}/${b} inch. A finer ruler uses ${target} marks per inch. Rename ${a}/${b} as ?/${target}. What is the missing numerator?`,
+    `${name} measures ${a}/${b} inch. A finer ruler uses ${target} lines per inch. Rename ${a}/${b} as ?/${target}. What is the missing numerator?`,
     `The shaded part of the bar is ${a}/${b}. Cut each piece into ${k} equal smaller pieces. Rename ${a}/${b} as ?/${target}. What is the missing numerator?`,
     `${name} has ${a}/${b} of a pizza and slices each piece into ${k} smaller bites. Rename ${a}/${b} as ?/${target}. What is the missing numerator?`,
     `A recipe uses ${a}/${b} cup. The cup is also marked in pieces of 1/${target} cup. Rename ${a}/${b} as ?/${target}. What is the missing numerator?`,
@@ -287,7 +287,7 @@ export function multiplierStory(
       : [
           `${name} cuts each shaded piece of a chocolate bar into ${k} equal bites. ${equation}`,
           `${name} splits each 1/${b} of a licorice stick into ${k} equal bites. ${equation}`,
-          `A ruler mark at ${a}/${b} inch is read in smaller marks. ${equation}`,
+          `A ruler line at ${a}/${b} inch is read in smaller lines. ${equation}`,
           `The same length of ribbon, counted in smaller pieces: ${equation}`,
         ];
   return pick(r, frames);
