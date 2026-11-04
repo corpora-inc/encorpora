@@ -18,6 +18,7 @@ export { family as fractionChoice } from "./fraction-choice";
 export { family as grade4Geometry } from "./grade4-geometry";
 export { family as grade4Data } from "./grade4-data";
 export { family as grade4FractionsDecimals } from "./grade4-fractions-decimals";
+export { family as grade4Operations } from "./grade4-operations";
 export { family as interceptPoint } from "./intercept-point";
 export { family as likelihood } from "./likelihood";
 export { family as lineFromPointSteps } from "./line-from-point-steps";
