@@ -99,6 +99,7 @@
     "test:core": "node scripts/test-suite.mjs core",
     "test:content": "node scripts/test-suite.mjs content",
     "test:inventory": "node scripts/test-suite.mjs inventory",
+    "test:related": "node scripts/test-related.mjs",
     "coverage:report": "tsx scripts/coverage-report.ts",
     "coverage:items": "tsx scripts/coverage-items.ts",
     "families:index": "tsx scripts/gen-family-index.ts",
