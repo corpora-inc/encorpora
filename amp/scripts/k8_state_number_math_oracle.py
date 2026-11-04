@@ -434,6 +434,14 @@ def front_end(n):
 def solve_compatible(public):
     options = labels(public)
     t = public['prompt']
+    bounds = re.fullmatch(r'(\d+) ÷ (\d+) is between which two whole numbers\?', t)
+    if bounds:
+        dividend, divisor = int(bounds[1]), int(bounds[2])
+        require(10 <= divisor <= 99, 'Two-digit divisor')
+        quotient, remainder = divmod(dividend, divisor)
+        require(remainder != 0, 'The quotient is not a whole number')
+        correct = f'between {quotient} and {quotient + 1}'
+        return pick(options, [o['label'] == correct for o in options], 'bounds')
     m = re.fullmatch(r'Estimate (\d+) × (\d+) with compatible numbers\. Change \1 to the closest multiple of (\d+), then multiply by \2\.', t)
     if m:
         expected = nearest_multiple(int(m[1]), int(m[3])) * int(m[2])

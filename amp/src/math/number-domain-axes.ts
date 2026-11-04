@@ -197,6 +197,38 @@ export const sweepAxes = {
   "comparison-amount": {
     unknown: axisFor("unknown", ["larger", "smaller"], "larger"),
   },
+  /** Remainder stories: totals at most 55 (legacy) or up to 9,999. */
+  "full-kits": {
+    "number-domain": axisFor(
+      "number-domain",
+      ["within-55", "up-to-9999"],
+      "within-55",
+      undefined,
+      [3, 1],
+    ),
+  },
+  "seats-needed": {
+    "number-domain": axisFor(
+      "number-domain",
+      ["within-55", "up-to-9999"],
+      "within-55",
+      undefined,
+      [3, 1],
+    ),
+  },
+  "kit-leftovers": {
+    "number-domain": axisFor(
+      "number-domain",
+      ["within-55", "up-to-9999"],
+      "within-55",
+      undefined,
+      [3, 1],
+    ),
+  },
+  /** A point estimate (legacy) or the two whole numbers a quotient lies between. */
+  "compatible-number-estimate": {
+    bounds: axisFor("bounds", ["point", "between"], "point", undefined, [4, 1]),
+  },
 } as const satisfies Record<string, AxisSet>;
 
 export type SweepId = keyof typeof sweepAxes;

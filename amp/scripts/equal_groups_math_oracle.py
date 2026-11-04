@@ -78,14 +78,20 @@ def solve_equal_groups(public):
         question = (r'How many full kits can you make\?' if template == 'full-kits' else
                     r'After making as many full kits as possible, how many beads are left\?')
         total, size = counts(r'You have ([0-9]+) beads\. Each full kit needs exactly ([0-9]+) beads\. ' + question, prompt)
-        require(total > 0 and size > 1, 'Invalid kit counts')
-        grouped(figure, total, size, 'beads')
+        require(total > 0 and size > 1 and total <= 9999, 'Invalid kit counts')
+        if figure is None:
+            require(total > 64, 'A small kit story shows its groups')
+        else:
+            grouped(figure, total, size, 'beads')
         quotient, remainder = divmod(total, size)
         return quotient if template == 'full-kits' else remainder
     if template == 'seats-needed':
         total, seats = counts(r'([0-9]+) visitors need rides\. Each van seats ([0-9]+) visitors\. What is the fewest vans needed\?', prompt)
-        require(total > 0 and seats > 1, 'Visitors and van capacity must be positive')
-        grouped(figure, total, seats, 'visitors')
+        require(total > 0 and seats > 1 and total <= 9999, 'Visitors and van capacity must be positive')
+        if figure is None:
+            require(total > 64, 'A small van story shows its groups')
+        else:
+            grouped(figure, total, seats, 'visitors')
         # Count capacity until everyone is seated; validate minimality independently.
         vans = 0
         while vans * seats < total:

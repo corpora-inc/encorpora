@@ -6,6 +6,7 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { random, type Random } from "./distribution-practice";
+import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
 
 /* State-specific number sense, money, estimation and customary measurement
  * (TEKS, Florida B.E.S.T. and Virginia SOL requirements beyond the common
@@ -1556,6 +1557,39 @@ function customaryUnitChoice(r: Random): Built {
 const nearestMultiple = (x: number, step: number) =>
   Math.round(x / step) * step;
 
+function betweenEstimate(r: Random): Built {
+  const d = r(12, 99);
+  const q = r(4, 80);
+  const rem = r(1, d - 1);
+  const dividend = q * d + rem;
+  const correct = `between ${q} and ${q + 1}`;
+  return {
+    variant: "between",
+    prompt: `${dividend} ÷ ${d} is between which two whole numbers?`,
+    answer: "",
+    hint: `Find how many times ${d} fits in ${dividend}, then one more than that. The quotient is greater than the first number and less than the second. Compute both bounds.`,
+    explanation: [
+      `${d} × ${q} = ${d * q}, and ${dividend} − ${d * q} = ${rem}.`,
+      `${rem} is greater than 0 and smaller than ${d}, so ${dividend} ÷ ${d} is greater than ${q} and less than ${q + 1}.`,
+      `The quotient is between ${q} and ${q + 1}.`,
+    ],
+    choices: choicesFrom(correct, [
+      {
+        label: `between ${q - 1} and ${q}`,
+        feedback: `${d} × ${q} = ${d * q}, which is still less than ${dividend}. The quotient is greater than ${q}.`,
+      },
+      {
+        label: `between ${q + 1} and ${q + 2}`,
+        feedback: `${d} × ${q + 1} = ${d * (q + 1)}, which is already greater than ${dividend}.`,
+      },
+      {
+        label: `between ${q} and ${q + 2}`,
+        feedback: `The next whole number after ${q} is ${q + 1}, not ${q + 2}.`,
+      },
+    ]),
+  };
+}
+
 function compatibleNumberEstimate(r: Random): Built {
   const variant = pick(r, [
     "divide",
@@ -1903,17 +1937,30 @@ export function k8StateNumberCase(templateId: string, seed: string) {
   const build = builders[templateId];
   if (!meta || !build) throw new Error(`Unknown template ${templateId}`);
   const r = random(meta.id, seed);
+  const axes = isSweepId(templateId)
+    ? sweepChoose(templateId, seed)
+    : undefined;
   for (let attempt = 0; attempt < 80; attempt++) {
     let draft: Built;
     try {
-      draft = build(r);
+      draft =
+        templateId === "compatible-number-estimate" &&
+        axes?.bounds === "between"
+          ? betweenEstimate(r)
+          : build(r);
     } catch (error) {
       if (error instanceof Error && error.message.startsWith("Need three"))
         continue;
       throw error;
     }
     if (leaks(draft)) continue;
-    return { variant: draft.variant, problem: toProblem(meta, seed, r, draft) };
+    const problem = toProblem(meta, seed, r, draft);
+    return {
+      variant: draft.variant,
+      problem: axes
+        ? { ...problem, variant: sweepVariant(draft.variant, axes) }
+        : problem,
+    };
   }
   throw new Error("Could not generate a problem without leaking the answer");
 }

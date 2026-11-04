@@ -63,29 +63,33 @@ export function generateEqualGroupsProblem(
     case "full-kits":
     case "seats-needed":
     case "kit-leftovers": {
-      const size = r(2, 8),
-        complete = r(1, 6),
-        left = r(0, size - 1),
-        total = size * complete + left;
+      const large = axes?.["number-domain"] === "up-to-9999";
+      const size = large ? r(2, 9) : r(2, 8);
+      const left = large ? r(0, size - 1) : 0;
+      const complete = large
+        ? r(100, Math.floor((9999 - left) / size))
+        : r(1, 6);
+      const remainder = large ? left : r(0, size - 1);
+      const total = size * complete + remainder;
       if (templateId === "seats-needed") {
         prompt = `${total} visitors need rides. Each van seats ${size} visitors. What is the fewest vans needed?`;
-        answer = complete + (left > 0 ? 1 : 0);
+        answer = complete + (remainder > 0 ? 1 : 0);
         label = "Vans needed";
-        figure = grouped(total, size, "visitors");
+        figure = large ? undefined : grouped(total, size, "visitors");
         hint = `How many groups of ${size} fit in ${total}? If anyone is left over, they still need a van.`;
         explanation = [
           `Each van is one group of ${size} seats. Find how many groups of ${size} fit in ${total}.`,
           `${count(complete, "full van")} ${complete === 1 ? "seats" : "seat"} ${complete} × ${size} = ${size * complete} visitors.`,
-          left
-            ? `${count(left, "visitor")} still ${left === 1 ? "needs a seat" : "need seats"}. No one can be left behind, so one more van is needed, even though it is not full.`
+          remainder
+            ? `${count(remainder, "visitor")} still ${remainder === 1 ? "needs a seat" : "need seats"}. No one can be left behind, so one more van is needed, even though it is not full.`
             : `No visitors are left over, so no extra van is needed.`,
           `The fewest vans needed is ${answer}.`,
         ];
       } else {
         prompt = `You have ${total} beads. Each full kit needs exactly ${size} beads. ${templateId === "full-kits" ? "How many full kits can you make?" : "After making as many full kits as possible, how many beads are left?"}`;
-        answer = templateId === "full-kits" ? complete : left;
+        answer = templateId === "full-kits" ? complete : remainder;
         label = templateId === "full-kits" ? "Full kits" : "Beads left";
-        figure = grouped(total, size, "beads");
+        figure = large ? undefined : grouped(total, size, "beads");
         hint =
           templateId === "full-kits"
             ? `How many groups of exactly ${size} beads can you make from ${total}? A partly filled kit does not count.`
@@ -93,10 +97,10 @@ export function generateEqualGroupsProblem(
         explanation = [
           `Each kit is one group of exactly ${size} beads. Find how many groups of ${size} fit in ${total}.`,
           `${count(complete, "kit")} ${complete === 1 ? "uses" : "use"} ${complete} × ${size} = ${complete * size} beads.`,
-          `That leaves ${total} − ${complete * size} = ${left}. ${left === 0 ? "No beads are left." : `${left} is fewer than ${size}, so ${left === 1 ? "it cannot" : "they cannot"} fill another kit.`}`,
+          `That leaves ${total} − ${complete * size} = ${remainder}. ${remainder === 0 ? "No beads are left." : `${remainder} is fewer than ${size}, so ${remainder === 1 ? "it cannot" : "they cannot"} fill another kit.`}`,
           templateId === "full-kits"
             ? `A kit that is only partly filled does not count. You can make ${count(complete, "full kit")}.`
-            : `The beads that cannot fill a kit are left over: ${count(left, "bead")}.`,
+            : `The beads that cannot fill a kit are left over: ${count(remainder, "bead")}.`,
         ];
       }
       break;
