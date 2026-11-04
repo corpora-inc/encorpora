@@ -33,20 +33,10 @@ function roundAsked(prompt: string): { n: number; place: string } {
     prompt,
   );
   if (m) return { n: num(m[1]!), place: m[2]! };
-  const plural: Record<string, string> = {
-    tens: "ten",
-    hundreds: "hundred",
-    thousands: "thousand",
-    "ten thousands": "ten thousand",
-    "hundred thousands": "hundred thousand",
-  };
-  m =
-    /whole number of (hundred thousands|ten thousands|thousands|hundreds|tens) is closest to ([\d,]+)\?$/.exec(
-      prompt,
-    );
-  if (m) return { n: num(m[2]!), place: plural[m[1]!]! };
-  m = new RegExp(`to the nearest (${place})\\.$`).exec(prompt);
+  m = new RegExp(`to the nearest (${place})\\?$`).exec(prompt);
   const shown = prompt.match(/\d{1,3}(?:,\d{3})+/);
+  if (m && shown) return { n: num(shown[0]), place: m[1]! };
+  m = new RegExp(`to the nearest (${place})\\.$`).exec(prompt);
   if (m && shown) return { n: num(shown[0]), place: m[1]! };
   throw new Error(prompt);
 }
@@ -189,6 +179,8 @@ test("a shifted digit and a product with 10 or 100 match the places", () => {
     assert.equal(gradeAnswer(problem, problem.answer), true);
     const labels = keyedLabels(problem);
     const prompt = problem.public.prompt;
+    assert.equal(/has [\d,]+ people/.test(prompt), false, prompt);
+    assert.equal(/Multiplying that number by/.test(prompt), false, prompt);
     const shift = prompt.match(
       /digit (\d)[\s\S]{0,40}?is worth ([\d,]+)[\s\S]*?to the (left|right)/,
     );
@@ -322,6 +314,11 @@ test("rounding, ordering and comparison reach the grade-4 ranges", () => {
   let carry = false;
   for (let i = 0; i < 300; i++) {
     const problem = generateProblem("round-large", `round-${i}`);
+    assert.equal(
+      /whole number of .+ is closest/.test(problem.public.prompt),
+      false,
+      problem.public.prompt,
+    );
     const match = roundAsked(problem.public.prompt);
     const n = match.n;
     const place = match.place;
@@ -410,6 +407,10 @@ test("large number lines are read and located from the tick spacing", () => {
     steps.add(line.step!);
     const marks = line.marks ?? [];
     const spoken = describeScene(scene);
+    assert.doesNotMatch(
+      problem.public.prompt,
+      /^(?:Books in a school library|People in a small town|Miles a truck drove|Steps on field day|People in nearby towns|People in nearby cities|Steps counted this year|Points in a tournament|Points scored this season)\./,
+    );
     if (/point \$P\$|Point \$P\$/.test(problem.public.prompt)) {
       directions.add("read");
       assert.equal(marks.length, 1);

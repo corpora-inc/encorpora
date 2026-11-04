@@ -57,9 +57,12 @@ def parse_round_prompt(prompt):
     m = re.search(rf'([\d,]+) rounded to the nearest ({_PLACE})\b', prompt)
     if m and m[2] in PLACE_UNITS:
         return whole(m[1]), PLACE_UNITS[m[2]]
-    m = re.search(rf'whole number of ({_PLACE}) is closest to ([\d,]+)', prompt)
-    if m and m[1] in _PLACE_SINGULAR:
-        return whole(m[2]), PLACE_UNITS[_PLACE_SINGULAR[m[1]]]
+    m = re.search(rf'to the nearest ({_PLACE})\?', prompt)
+    n = re.search(r'\d{1,3}(?:,\d{3})+', prompt)
+    if m and n:
+        name = m[1] if m[1] in PLACE_UNITS else _PLACE_SINGULAR.get(m[1])
+        if name:
+            return whole(n[0]), PLACE_UNITS[name]
     m = re.search(rf'to the nearest ({_PLACE})\.', prompt)
     n = re.search(r'\d{1,3}(?:,\d{3})+', prompt)
     if m and n:
@@ -100,6 +103,24 @@ def parse_ratio_prompt(prompt):
         prompt,
     )
     n = re.search(r'\d{1,3}(?:,\d{3})+', prompt)
+    if m and n:
+        return n[0], m[1], m[2]
+    m = re.search(
+        r'two digits that are (\d) in ([\d,]+)\. How many times as much is the first (\d) worth\?',
+        prompt,
+    )
+    if m:
+        return m[2], m[1], m[3]
+    m = re.search(
+        r'How many times as much is the first (\d) worth, compared with the second\?',
+        prompt,
+    )
+    if m and n:
+        return n[0], m[1], m[1]
+    m = re.search(
+        r'two digits that are (\d)\. How many times as much is the left-hand (\d) worth\?',
+        prompt,
+    )
     if m and n:
         return n[0], m[1], m[2]
     return None

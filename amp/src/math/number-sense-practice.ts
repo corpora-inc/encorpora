@@ -254,14 +254,6 @@ export const digitRatioAxes = {
 } as const;
 type RatioSurface = (typeof digitRatioAxes.surface.values)[number];
 
-const placePlural: Record<string, string> = {
-  ten: "tens",
-  hundred: "hundreds",
-  thousand: "thousands",
-  "ten thousand": "ten thousands",
-  "hundred thousand": "hundred thousands",
-};
-
 /** A multiple of `unit` is already rounded. Nudge it on a new surface only,
  * using the surface stream so the content draw stays put. */
 function offMultiple(
@@ -309,12 +301,21 @@ function roundWording(
       prompt: `What is ${shown} rounded to the nearest ${name}?`,
       hint,
     };
-  if (surface === "closest")
+  if (surface === "closest") {
+    const story = surfaceStream(templateId, `${seed}:closest`);
+    const sentence = countContext(shown, value, story, name === "ten");
+    const noun =
+      ["seats", "books", "people", "points", "steps", "miles", "feet"].find(
+        (word) => sentence.includes(word),
+      ) ?? null;
     return {
       n: value,
-      prompt: `Which whole number of ${placePlural[name]} is closest to ${shown}?`,
+      prompt: noun
+        ? `${sentence}. About how many ${noun}, to the nearest ${name}?`
+        : `Round ${shown} to the nearest ${name}.`,
       hint,
     };
+  }
   const r = surfaceStream(templateId, `${seed}:story`);
   return {
     n: value,

@@ -103,6 +103,81 @@ function placesMoved(factor: 10 | 100): string {
   return factor === 10 ? "one place" : "two places";
 }
 
+/**
+ * A real ×10 or ×100: equal groups whose total is the product.
+ * A digit that merely changes place stays a bare prompt. Shifting a
+ * town's population is not something anyone does.
+ */
+function productGroups(
+  templateId: string,
+  seed: string,
+  n: number,
+  factor: 10 | 100,
+): { lead: string; noun: string } | null {
+  const count = g(n);
+  const options: { lead: string; noun: string }[] = [];
+  const add = (ok: boolean, lead: string, noun: string) => {
+    if (ok) options.push({ lead, noun });
+  };
+  // Only groups a child could actually count. A bigger factor stays a bare
+  // multiplication: shifting a page count or a town's population is not a job.
+  if (factor === 10) {
+    add(
+      n >= 12 && n <= 1_500,
+      `There are 10 boxes of ${count} crayons each`,
+      "crayons",
+    );
+    add(
+      n >= 100 && n <= 3_000,
+      `A pack holds 10 puzzles of ${count} pieces each`,
+      "pieces",
+    );
+    add(
+      n >= 40 && n <= 5_000,
+      `There are 10 rolls of ${count} tickets each`,
+      "tickets",
+    );
+    add(n >= 50 && n <= 8_000, `Ten jars hold ${count} beads each`, "beads");
+    add(
+      n >= 1_000 && n <= 100_000,
+      `Ten students each walked ${count} steps this month`,
+      "steps",
+    );
+  } else {
+    add(
+      n >= 40 && n <= 8_000,
+      `There are 100 rolls of ${count} tickets each`,
+      "tickets",
+    );
+    add(
+      n >= 12 && n <= 400,
+      `A school orders 100 boxes of ${count} crayons each`,
+      "crayons",
+    );
+    add(
+      n >= 100 && n <= 2_000,
+      `The art room has 100 puzzles of ${count} pieces each`,
+      "pieces",
+    );
+    add(
+      n >= 50 && n <= 5_000,
+      `One hundred jars hold ${count} beads each`,
+      "beads",
+    );
+    add(
+      n >= 500 && n <= 20_000,
+      `One hundred students each walked ${count} steps`,
+      "steps",
+    );
+  }
+  if (!options.length) return null;
+  const which = surfaceStream(templateId, `${seed}:story`)(
+    0,
+    options.length - 1,
+  );
+  return options[which]!;
+}
+
 /** A digit in `n` that can move `side` and stay a whole number at most 1,000,000. */
 function shiftable(r: Random, side: "left" | "right") {
   const length = r(3, 6);
@@ -204,7 +279,7 @@ function shiftDraft(
         ? `In ${g(n)}, the digit ${digit} is worth ${g(oldValue)}. If it moves one place to the ${direction}, it is worth ${times}. Choose its new place and its new value.`
         : surface === "move"
           ? `The digit ${digit} in ${g(n)} is worth ${g(oldValue)}. Moving it one place to the ${direction} makes it worth ${times}. Choose its new place and its new value.`
-          : `${storyLine(templateId, seed, n)}. The digit ${digit} is worth ${g(oldValue)}. One place to the ${direction} makes it worth ${times}. Choose its new place and its new value.`;
+          : `In ${g(n)}, the digit ${digit} in the ${PLACES[place]} place is worth ${g(oldValue)}. One place to the ${direction} makes it worth ${times}. Choose its new place and its new value.`;
   return {
     prompt,
     layout: "slots",
@@ -262,6 +337,8 @@ function productDraft(
     },
   ];
   const bare = `${g(n)} × ${factor} shifts every digit to the left. Choose the product and how many places the digits move.`;
+  const groups =
+    surface === "story" ? productGroups(templateId, seed, n, factor) : null;
   const prompt =
     surface === "bare"
       ? bare
@@ -269,7 +346,9 @@ function productDraft(
         ? `Multiplying ${g(n)} by ${factor} shifts every digit to the left. Choose the product and how many places the digits move.`
         : surface === "move"
           ? `${g(n)} × ${factor} moves every digit to the left. How many places do the digits move, and what is the product?`
-          : `${storyLine(templateId, seed, n)}. Multiplying that number by ${factor} shifts every digit to the left. Choose the product and how many places the digits move.`;
+          : groups
+            ? `${groups.lead}. How many ${groups.noun} is that altogether? ${bare}`
+            : bare;
   return {
     prompt,
     layout: "slots" as const,
@@ -499,6 +578,7 @@ function lineContext(
 ): {
   title: string;
   unit: string;
+  blurb: string;
   read: string;
   locate: (value: string) => string;
 } {
@@ -570,6 +650,7 @@ function lineContext(
   return {
     title: scene.title,
     unit: scene.unit,
+    blurb: scene.blurb,
     read: `${scene.blurb} Which number is at point $P$?`,
     locate: (value: string) => `${scene.blurb} Which point is at ${value}?`,
   };
@@ -625,7 +706,7 @@ function lineDraft(
       surface === "bare"
         ? "Which number is at point $P$ on the number line?"
         : surface === "ask"
-          ? `${told!.title}. What number does point $P$ show?`
+          ? `${told!.blurb} What number does point $P$ show?`
           : surface === "move"
             ? `Point $P$ marks a count of ${told!.unit}. Which number is it?`
             : told!.read;
@@ -679,9 +760,9 @@ function lineDraft(
     surface === "bare"
       ? `Which point is at ${g(value)} on the number line?`
       : surface === "ask"
-        ? `${told!.title}. Which letter marks ${g(value)}?`
+        ? `${told!.blurb} Which letter marks ${g(value)}?`
         : surface === "move"
-          ? `Find the point at ${g(value)} ${told!.unit}.`
+          ? `${told!.blurb} Find the point at ${g(value)}.`
           : told!.locate(g(value));
   return {
     prompt: locatePrompt,

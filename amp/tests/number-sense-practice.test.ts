@@ -31,20 +31,13 @@ function roundOf(prompt: string): { n: number; place: string } {
     prompt,
   );
   if (m) return { n: Number(m[1]!.replaceAll(",", "")), place: m[2]! };
-  const plural: Record<string, string> = {
-    tens: "ten",
-    hundreds: "hundred",
-    thousands: "thousand",
-    "ten thousands": "ten thousand",
-    "hundred thousands": "hundred thousand",
-  };
-  m = new RegExp(
-    "whole number of (hundred thousands|ten thousands|thousands|hundreds|tens) is closest to ([\\d,]+)\\?$",
-  ).exec(prompt);
-  if (m) return { n: Number(m[2]!.replaceAll(",", "")), place: plural[m[1]!]! };
+  m = new RegExp(`to the nearest (${place})\\?$`).exec(prompt);
+  const shown = prompt.match(/\d{1,3}(?:,\d{3})+/);
+  if (m && shown)
+    return { n: Number(shown[0].replaceAll(",", "")), place: m[1]! };
   m = new RegExp(`to the nearest (${place})\\.$`).exec(prompt);
-  const num = prompt.match(/\d{1,3}(?:,\d{3})+/);
-  if (m && num) return { n: Number(num[0].replaceAll(",", "")), place: m[1]! };
+  if (m && shown)
+    return { n: Number(shown[0].replaceAll(",", "")), place: m[1]! };
   throw new Error(prompt);
 }
 
@@ -76,6 +69,11 @@ test("rounding follows round-half-up, including carries and halfway values", () 
   const tags = new Set<string>();
   for (const id of ["round-to-ten", "round-to-hundred", "round-large"])
     for (const p of sample(id)) {
+      assert.equal(
+        /whole number of .+ is closest/.test(p.public.prompt),
+        false,
+        p.public.prompt,
+      );
       const parsed = roundOf(p.public.prompt);
       const n = parsed.n,
         unit = units[parsed.place]!;
