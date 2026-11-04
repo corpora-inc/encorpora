@@ -413,7 +413,7 @@ function benchmarkAnswer(problem: GeneratedProblem): {
   nearest: number;
   gap: number;
 } {
-  assert.equal(problem.public.prompt, "Which benchmark is this angle nearest?");
+  assert.match(problem.public.prompt, /benchmark/i);
   assert.equal(/\d/.test(problem.public.prompt), false);
   const angle = one(sceneOf(problem), "angle");
   assert.equal(angle.rays.length, 2);

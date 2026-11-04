@@ -18,6 +18,7 @@ import type { Pt } from "./shape-figures.js";
 import type { Random } from "./variation/axes.js";
 import {
   adjacentPrompt,
+  benchmarkPrompt,
   protractorPrompt,
   storyNameFor,
 } from "./story-kit/geometry.js";
@@ -444,14 +445,15 @@ function benchmarkEstimate(r: Rand, seed: string): GeneratedProblem {
   const omitted = others[r(0, others.length - 1)]!;
   const shown = BENCHMARKS.filter((b) => b !== omitted);
   const words = shown.map((b) => `${b} degrees`).join(", ");
+  const farther = shown.filter((b) => b !== keyed);
   return finish("angle-benchmark-estimate", seed, r, {
-    prompt: "Which benchmark is this angle nearest?",
+    prompt: benchmarkPrompt(seed),
     answer: "",
     hint: `The choices are ${words}. Pick the benchmark this opening is nearest, within 10 degrees.`,
     explanation: [
-      `The benchmarks are 30°, 45°, 60°, 90° and 180°.`,
-      `This opening is nearest $${keyed}^\\circ$, and it is within 10° of that benchmark.`,
-      `It is more than 10° from each of the other benchmarks, so the nearest one is clear.`,
+      `The choices are ${words}.`,
+      `Compare the opening with each choice. It is nearest $${keyed}^\\circ$, and it is within 10° of that benchmark.`,
+      `It is more than 10° from ${farther.map((b) => `${b}°`).join(", ")}, so the nearest choice is clear.`,
       `The nearest benchmark is $${keyed}^\\circ$.`,
     ],
     figure: {

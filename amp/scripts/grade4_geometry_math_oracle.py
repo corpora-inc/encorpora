@@ -257,7 +257,8 @@ def adjacent_equation(public):
 
 
 def benchmark_estimate(public):
-    require(public['prompt'] == 'Which benchmark is this angle nearest?', 'Benchmark wording')
+    require('benchmark' in public['prompt'].lower(), 'Benchmark wording')
+    require(re.search(r'\d', public['prompt']) is None, 'The prompt does not state a degree')
     g = one(elements(public), 'angle')
     require(len(g['rays']) == 2, 'One angle')
     marks = g.get('marks') or []
