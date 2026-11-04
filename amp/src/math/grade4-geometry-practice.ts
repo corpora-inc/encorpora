@@ -592,6 +592,112 @@ function classesOf(pts: readonly Pt[]): {
   return { sides, angles: kind };
 }
 
+/** Marks as `markPrims` draws them. The hint names those marks and does not
+ * name the side class, the angle class, or the quadrilateral. */
+const MARK_COUNT = ["no", "one", "two", "three", "four"] as const;
+function markCount(n: number): string {
+  return MARK_COUNT[n] ?? String(n);
+}
+function edgeLength(pts: readonly Pt[], i: number): number {
+  const a = pts[i]!;
+  const b = pts[(i + 1) % pts.length]!;
+  return Math.hypot(b[0] - a[0], b[1] - a[1]);
+}
+function edgeDir(pts: readonly Pt[], i: number): Pt {
+  const a = pts[i]!;
+  const b = pts[(i + 1) % pts.length]!;
+  const length = edgeLength(pts, i);
+  return [(b[0] - a[0]) / length, (b[1] - a[1]) / length];
+}
+function drawnTickCounts(pts: readonly Pt[]): number[] {
+  const n = pts.length;
+  const group = Array<number>(n).fill(0);
+  let groups = 0;
+  for (let i = 0; i < n; i++) {
+    if (group[i]) continue;
+    const length = edgeLength(pts, i);
+    const same: number[] = [];
+    for (let j = 0; j < n; j++) {
+      if (group[j]) continue;
+      if (Math.abs(edgeLength(pts, j) - length) <= 1e-3 * length) same.push(j);
+    }
+    if (same.length < 2) continue;
+    groups++;
+    for (const j of same) group[j] = groups;
+  }
+  return group;
+}
+function drawnRightAngles(pts: readonly Pt[]): number {
+  const n = pts.length;
+  let count = 0;
+  for (let i = 0; i < n; i++) {
+    const incoming = edgeDir(pts, (i + n - 1) % n);
+    const outgoing = edgeDir(pts, i);
+    const dot = -incoming[0] * outgoing[0] + -incoming[1] * outgoing[1];
+    if (Math.abs(dot) <= 1e-3) count++;
+  }
+  return count;
+}
+/** Parallel pairs that receive matching arrows. Adjacent sides that wrap
+ * from the last vertex back to the first are not a pair. */
+function drawnArrowPairs(pts: readonly Pt[]): number {
+  const n = pts.length;
+  let pairs = 0;
+  for (let i = 0; i < n; i++)
+    for (let j = i + 2; j < n; j++) {
+      if (i === 0 && j === n - 1) continue;
+      const p = edgeDir(pts, i);
+      const q = edgeDir(pts, j);
+      if (Math.abs(p[0] * q[1] - p[1] * q[0]) > 1e-3) continue;
+      pairs++;
+    }
+  return pairs;
+}
+function sideMarkSentence(ticks: readonly number[]): string {
+  const buckets = new Map<number, number>();
+  for (const ticksOnSide of ticks)
+    if (ticksOnSide > 0)
+      buckets.set(ticksOnSide, (buckets.get(ticksOnSide) ?? 0) + 1);
+  if (buckets.size === 0) return "No side has a tick mark.";
+  const parts = [...buckets.entries()]
+    .sort((a, b) => a[0] - b[0])
+    .map(([marks, sides]) => {
+      const tick =
+        marks === 1 ? "one tick mark" : `${markCount(marks)} tick marks`;
+      if (sides === ticks.length)
+        return `All ${markCount(sides)} sides have ${tick} each`;
+      if (sides === 1) return `One side has ${tick}`;
+      return `${markCount(sides)} sides have ${tick} each`;
+    });
+  const [first, ...rest] = parts;
+  const head = first!.charAt(0).toUpperCase() + first!.slice(1);
+  if (rest.length === 0) return `${head}.`;
+  return `${head}, and ${rest.join(", and ")}.`;
+}
+function triangleFigureHint(pts: readonly Pt[]): string {
+  const sides = sideMarkSentence(drawnTickCounts(pts)).replace(/\.$/, "");
+  const squares = drawnRightAngles(pts);
+  if (squares === 1) return `${sides}, and one corner has a square mark.`;
+  if (squares > 1)
+    return `${sides}, and ${markCount(squares)} corners have a square mark.`;
+  return `${sides}. No corner has a square mark. Compare the widest corner with the corner of a page.`;
+}
+function cornerMarkSentence(squares: number, corners: number): string {
+  if (squares === 0) return "No corner has a right-angle mark.";
+  if (squares === corners) return "Every corner has a right-angle mark.";
+  if (squares === 1) return "One corner has a right-angle mark.";
+  const word = markCount(squares);
+  return `${word.charAt(0).toUpperCase()}${word.slice(1)} corners have a right-angle mark.`;
+}
+function quadrilateralFigureHint(pts: readonly Pt[]): string {
+  const pairs = drawnArrowPairs(pts);
+  const arrows =
+    pairs === 1
+      ? "This shape has one pair of sides with matching arrow marks."
+      : `This shape has ${markCount(pairs)} pairs of sides with matching arrow marks.`;
+  return `${arrows} ${sideMarkSentence(drawnTickCounts(pts))} ${cornerMarkSentence(drawnRightAngles(pts), pts.length)}`;
+}
+
 function triangleBlanks(r: Rand, seed: string): GeneratedProblem {
   const built = spreadPick(seed, "triangle-shape", TRIANGLES);
   const shape = posed(built.points, pick(r, TURNS), pick(r, [0.85, 1, 1.15]));
@@ -646,7 +752,7 @@ function triangleBlanks(r: Rand, seed: string): GeneratedProblem {
       sides: sideOptions.find((o) => o.label === found.sides)!.id,
       angles: angleOptions.find((o) => o.label === found.angles)!.id,
     }),
-    hint: "Matching tick marks mean those sides are equal. Count how many sides share a mark. A small square means a right angle. Compare the largest corner with the corner of a page.",
+    hint: triangleFigureHint(points),
     explanation: [
       `Tick marks show equal sides. Here ${sideWhy}, so by its sides the triangle is ${found.sides}.`,
       `A square mark shows a right angle. Here ${angleWhy}, so by its angles the triangle is ${found.angles}.`,
@@ -710,7 +816,7 @@ function quadrilateralAttributes(r: Rand, seed: string): GeneratedProblem {
   return finish("quadrilateral-attributes", seed, r, {
     prompt: quadrilateralPrompt(seed),
     answer: "",
-    hint: "Count the matching arrows, then the right-angle marks, then whether the tick marks show equal sides. Give the most exact name.",
+    hint: quadrilateralFigureHint(points),
     explanation: [
       `Matching arrows show parallel sides. This shape has ${pairWords} of parallel sides.`,
       rights === 4
