@@ -85,10 +85,32 @@ RENAME_FACTOR = {
 }
 TOOL_PHRASES = (
     ('length of a book', 'ruler'),
+    ('length of the gift ribbon', 'ruler'),
+    ('height of the sunflower', 'ruler'),
+    ('width of the picture frame', 'ruler'),
+    ('length of the toy car', 'ruler'),
+    ('space on the bookshelf', 'ruler'),
+    ('length of the kite string', 'ruler'),
     ('compare the mass of a rock with known masses', 'balance'),
+    ('mass of a pinecone with known masses', 'balance'),
+    ('mass of a feather with known masses', 'balance'),
+    ('mass of a rock sample with known masses', 'balance'),
+    ('mass of a clay lump with known masses', 'balance'),
     ('temperature of the room', 'thermometer'),
+    ('temperature of the soup', 'thermometer'),
+    ('temperature outside before soccer', 'thermometer'),
+    ('temperature of the fish tank', 'thermometer'),
+    ('temperature of the classroom', 'thermometer'),
     ('juice in a pitcher', 'measuring cup'),
+    ('milk for the pancakes', 'measuring cup'),
+    ('water for the lemonade', 'measuring cup'),
+    ('juice for the picnic', 'measuring cup'),
+    ('paint for the mural', 'measuring cup'),
     ('weight of a person in pounds', 'scale'),
+    ('weight of the puppy in pounds', 'scale'),
+    ('weight of the pumpkin in pounds', 'scale'),
+    ("weight at the doctor's office in pounds", 'scale'),
+    ('weight of the apples in pounds', 'scale'),
 )
 MONEY_CENTS = {
     'five': 500,
@@ -405,10 +427,9 @@ def solve_rename(public):
 
 def solve_line(public):
     text = field(public, 'prompt')
-    require(
-        text == 'How far is the walk from $A$ to $B$, in miles?',
-        'Unrecognized measurement line',
-    )
+    if text != 'How far is the walk from $A$ to $B$, in miles?':
+        require('$A$' in text and '$B$' in text, 'Unrecognized measurement line')
+        require(re.search(r'\bmiles?\b', text) is not None, 'Unrecognized measurement line')
     require('equal steps' not in text, 'The prompt states the scale')
     require(re.search(r'\d', text) is None, 'The prompt states a number the question does not use')
     figure = field(public, 'figure')

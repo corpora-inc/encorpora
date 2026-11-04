@@ -10,7 +10,9 @@ import {
   clockTimePresent,
   conversionStory,
   elapsedStory,
+  lineStorySurface,
   renameStory,
+  toolStory,
 } from "./grade4-measurement-money-voice";
 import { multiPartProblem, type Slot } from "./multi-part-support";
 import { table } from "./scene/author";
@@ -55,6 +57,8 @@ const STORY_READY = new Set([
   "elapsed-time-intervals",
   "conversion-table-slots",
   "unit-rename-larger",
+  "measurement-line-fraction-story",
+  "measuring-tool-choice",
 ]);
 
 export function measurementNarrative(
@@ -632,7 +636,17 @@ function lineStory(meta: TemplateMetadata, seed: string, r: Random): Built {
   const a = r(0, steps - 2);
   const b = r(a + 1, steps);
   const answer = rational(b - a, denominator);
-  const prompt = "How far is the walk from $A$ to $B$, in miles?";
+  const legacyPrompt = "How far is the walk from $A$ to $B$, in miles?";
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? lineStorySurface(meta.id, seed, {
+          denominator,
+          a,
+          b,
+          answer,
+        })
+      : null;
+  const prompt = told?.prompt ?? legacyPrompt;
   const figure: SemanticFigure = {
     kind: "rational-line",
     denominator,
@@ -651,8 +665,10 @@ function lineStory(meta: TemplateMetadata, seed: string, r: Random): Built {
       fraction: true,
       responseLabel: "Distance in miles",
       figure,
-      hint: `Each mile on the line is split into ${denominator} equal steps. Count the steps from $A$ to $B$ and write that count over ${denominator}.`,
-      explanation: [
+      hint:
+        told?.hint ??
+        `Each mile on the line is split into ${denominator} equal steps. Count the steps from $A$ to $B$ and write that count over ${denominator}.`,
+      explanation: told?.explanation ?? [
         `Each mile on the trail is split into ${denominator} equal steps.`,
         `$A$ is ${count(a, "step")} from 0 and $B$ is ${count(b, "step")} from 0.`,
         `The walk is ${count(b - a, "step")}, which is $${texFraction(answer)}$ ${Number(answer) === 1 ? "mile" : "miles"}.`,
@@ -718,11 +734,15 @@ function toolChoice(meta: TemplateMetadata, seed: string, r: Random): Built {
       feedback: `${tool.why} This question asks for a different kind of measure.`,
     })),
   ];
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? toolStory(meta.id, seed, key.id)
+      : null;
   return {
     variant: key.id,
     problem: toProblem(meta, seed, r, {
-      prompt: key.prompt,
-      hint: key.hint,
+      prompt: told?.prompt ?? key.prompt,
+      hint: told?.hint ?? key.hint,
       choices,
       explanation: [key.why, `The tool is the ${key.label}.`],
     }),

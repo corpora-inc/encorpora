@@ -330,3 +330,134 @@ export function renameStory(
   const closing = `${name} records ${model.resultText}.`;
   return { prompt, hint, closing };
 }
+
+/* ------------------------------------------------------------------ */
+/* Measurement line and tool choice                                    */
+/* ------------------------------------------------------------------ */
+
+const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : Math.abs(a));
+
+const MILE_PLACES: readonly { verb: string; noun: string }[] = [
+  { verb: "walks the park trail", noun: "park trail" },
+  { verb: "rides the bike path", noun: "bike path" },
+  { verb: "runs the cross-country course", noun: "cross-country course" },
+  { verb: "hikes the nature trail", noun: "nature trail" },
+  { verb: "follows the parade route", noun: "parade route" },
+  { verb: "races on the track map", noun: "track map" },
+  { verb: "reads the field-trip map", noun: "field-trip map" },
+  { verb: "measures the canal path", noun: "canal path" },
+];
+
+export function lineStorySurface(
+  templateId: string,
+  seed: string,
+  model: { denominator: number; a: number; b: number; answer: string },
+): { prompt: string; hint: string; explanation: string[] } {
+  const r = stream(templateId, seed);
+  const name = storyName((n) => r(0, n - 1));
+  const place = pick(r, MILE_PLACES);
+  const frame = r(0, 3);
+  const prompt =
+    frame === 0
+      ? `${name} ${place.verb}. How far is it from $A$ to $B$, in miles?`
+      : frame === 1
+        ? `${name} looks at the ${place.noun}. $A$ and $B$ are two marks. What is the distance from $A$ to $B$, in miles?`
+        : frame === 2
+          ? `${name} is on the ${place.noun}. How many miles is the trip from $A$ to $B$?`
+          : `${name} uses a map of the ${place.noun}, marked in miles. How far is $A$ from $B$?`;
+  const steps = model.b - model.a;
+  const shared = gcd(steps, model.denominator);
+  const tex = model.answer.includes("/")
+    ? `\\frac{${model.answer.split("/")[0]}}{${model.answer.split("/")[1]}}`
+    : model.answer;
+  const unit = model.answer === "1" ? "mile" : "miles";
+  const explanation = [
+    `Each mile on the line is split into ${count(model.denominator, "equal step")}.`,
+    `$A$ is ${count(model.a, "step")} from 0 and $B$ is ${count(model.b, "step")} from 0.`,
+    `The trip is the steps between them: ${count(steps, "step")}.`,
+    shared === 1
+      ? `Write ${steps} over ${model.denominator}. The distance is $${tex}$ ${unit}.`
+      : `${steps} over ${model.denominator} shares a factor of ${shared}, so it simplifies to $${tex}$ ${unit}.`,
+  ];
+  const hint = `Each mile is split into ${count(model.denominator, "equal step")}. Count the steps from $A$ to $B$. Simplify the fraction if the two numbers share a factor.`;
+  return { prompt, hint, explanation };
+}
+
+export const toolSituations: Record<
+  string,
+  readonly { marker: string; ask: string }[]
+> = {
+  ruler: [
+    { marker: "length of the gift ribbon", ask: "the length of the gift ribbon" },
+    { marker: "height of the sunflower", ask: "the height of the sunflower" },
+    { marker: "width of the picture frame", ask: "the width of the picture frame" },
+    { marker: "length of the toy car", ask: "the length of the toy car" },
+    { marker: "space on the bookshelf", ask: "the space on the bookshelf" },
+    { marker: "length of the kite string", ask: "the length of the kite string" },
+  ],
+  balance: [
+    {
+      marker: "mass of a pinecone with known masses",
+      ask: "the mass of a pinecone with known masses",
+    },
+    {
+      marker: "mass of a feather with known masses",
+      ask: "the mass of a feather with known masses",
+    },
+    {
+      marker: "mass of a rock sample with known masses",
+      ask: "the mass of a rock sample with known masses",
+    },
+    {
+      marker: "mass of a clay lump with known masses",
+      ask: "the mass of a clay lump with known masses",
+    },
+  ],
+  thermometer: [
+    { marker: "temperature of the soup", ask: "the temperature of the soup" },
+    { marker: "temperature outside before soccer", ask: "the temperature outside before soccer" },
+    { marker: "temperature of the fish tank", ask: "the temperature of the fish tank" },
+    { marker: "temperature of the classroom", ask: "the temperature of the classroom" },
+  ],
+  cup: [
+    { marker: "milk for the pancakes", ask: "the milk for the pancakes" },
+    { marker: "water for the lemonade", ask: "the water for the lemonade" },
+    { marker: "juice for the picnic", ask: "the juice for the picnic" },
+    { marker: "paint for the mural", ask: "the paint for the mural" },
+  ],
+  scale: [
+    { marker: "weight of the puppy in pounds", ask: "the weight of the puppy in pounds" },
+    { marker: "weight of the pumpkin in pounds", ask: "the weight of the pumpkin in pounds" },
+    { marker: "weight at the doctor's office in pounds", ask: "the weight at the doctor's office in pounds" },
+    { marker: "weight of the apples in pounds", ask: "the weight of the apples in pounds" },
+  ],
+};
+
+const TOOL_HINT: Record<string, string> = {
+  ruler: "The question asks for a length. Choose the tool that measures length.",
+  balance: "Known masses sit on one side. Choose the tool that compares a mass with those masses.",
+  thermometer: "The question asks about temperature. Choose the tool that measures temperature.",
+  cup: "The question asks about a liquid. Choose the tool that measures liquid.",
+  scale: "The question asks for pounds. Choose the tool that shows weight as a number.",
+};
+
+export function toolStory(
+  templateId: string,
+  seed: string,
+  toolId: string,
+): { prompt: string; hint: string } {
+  const r = stream(templateId, seed);
+  const name = storyName((n) => r(0, n - 1));
+  const situation = pick(r, toolSituations[toolId]!);
+  const frame = r(0, 3);
+  const ask = situation.ask;
+  const prompt =
+    frame === 0
+      ? `Which tool should you use to measure ${ask}?`
+      : frame === 1
+        ? `${name} wants to measure ${ask}. Which tool should ${name} pick?`
+        : frame === 2
+          ? `What is the best tool for measuring ${ask}?`
+          : `${name} is measuring ${ask}. Which tool measures that?`;
+  return { prompt, hint: TOOL_HINT[toolId]! };
+}

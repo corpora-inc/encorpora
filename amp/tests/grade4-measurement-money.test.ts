@@ -9,7 +9,10 @@ import {
   grade4MeasurementMoneyCase,
   grade4MeasurementMoneyTemplates,
 } from "../src/math/grade4-measurement-money-practice";
-import { clockTimePresent } from "../src/math/grade4-measurement-money-voice";
+import {
+  clockTimePresent,
+  toolSituations,
+} from "../src/math/grade4-measurement-money-voice";
 import { storyNames } from "../src/math/story-kit/names";
 
 const IDS = grade4MeasurementMoneyTemplates.map((t) => t.id);
@@ -38,12 +41,28 @@ const EXCLUDED = new Set([
   "meters|kilometers",
   "milliliters|liters",
 ]);
+const TOOL_LABEL: Record<string, string> = {
+  ruler: "ruler",
+  balance: "balance",
+  thermometer: "thermometer",
+  cup: "measuring cup",
+  scale: "scale",
+};
 const TOOLS: [RegExp, string][] = [
   [/length of a book/, "ruler"],
   [/compare the mass of a rock with known masses/, "balance"],
   [/temperature of the room/, "thermometer"],
   [/juice in a pitcher/, "measuring cup"],
   [/weight of a person in pounds/, "scale"],
+  ...Object.entries(toolSituations).flatMap(([id, list]) =>
+    list.map(
+      (item) =>
+        [
+          new RegExp(item.marker.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+          TOOL_LABEL[id]!,
+        ] as [RegExp, string],
+    ),
+  ),
 ];
 const MONEY: Record<string, number> = {
   five: 500,
@@ -497,7 +516,13 @@ test("a measurement line is read as a grade-4 fraction", () => {
       `mm-line-${i}`,
     );
     const text = problem.public.prompt;
-    assert.equal(text, "How far is the walk from $A$ to $B$, in miles?");
+    if (problem.variant == null)
+      assert.equal(text, "How far is the walk from $A$ to $B$, in miles?");
+    else {
+      assert.ok(text.includes("$A$") && text.includes("$B$"), text);
+      assert.match(text, /\bmiles?\b/);
+      assert.ok(storyNames.some((name) => text.includes(name)), text);
+    }
     assert.equal(/\d/.test(text), false);
     assert.equal(text.includes("student"), false);
     assert.equal(text.includes("equal steps"), false);
@@ -540,7 +565,10 @@ test("each measuring question has one tool", () => {
     assert.equal(new Set(options.map((o) => o.label)).size, 4);
     assert.equal(problem.public.prompt.match(/\d/), null);
   }
-  assert.deepEqual([...seen].sort(), TOOLS.map(([, tool]) => tool).sort());
+  assert.deepEqual(
+    [...seen].sort(),
+    [...new Set(TOOLS.map(([, tool]) => tool))].sort(),
+  );
 });
 
 test("decimal sums and differences stay in hundredths", () => {
