@@ -67,6 +67,26 @@ export function countContext(
     );
   if (n >= 5_000 && n <= 100_000)
     options.push(() => `A hiking trail is ${grouped} feet long`);
+  if (n >= 1_000 && n <= 40_000)
+    options.push(() => `A bakery sold ${grouped} cupcakes this year`);
+  if (n >= 3_000 && n <= 90_000)
+    options.push(() => `The zoo had ${grouped} visitors in July`);
+  if (n >= 1_000 && n <= 30_000)
+    options.push(
+      () => `A beach cleanup crew picked up ${grouped} bottle caps this summer`,
+    );
+  if (n >= 2_000 && n <= 50_000)
+    options.push(
+      () => `The city marathon had ${grouped} runners cross the finish line`,
+    );
+  if (n >= 1_000 && n <= 60_000)
+    options.push(() => `The food bank packed ${grouped} meals this spring`);
+  if (n >= 10_000 && n <= 400_000)
+    options.push(
+      () => `The science museum welcomed ${grouped} visitors last year`,
+    );
+  if (n >= 1_500 && n <= 25_000)
+    options.push(() => `The school library lent ${grouped} books this year`);
   if (!options.length) options.push(() => `The count is ${grouped}`);
   return options[n % options.length]!();
 }
