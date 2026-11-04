@@ -458,12 +458,23 @@ def solve_tool(public):
 
 
 def solve_decimal(public):
-    match = re.fullmatch(
-        r'What is \$(\d+\.\d{1,2}) ([+-]) (\d+\.\d{1,2})\$\?',
-        field(public, 'prompt'),
-    )
-    require(match is not None, 'Unrecognized decimal operation')
-    left, op, right = cents_of(match[1]), match[2], cents_of(match[3])
+    text = field(public, 'prompt')
+    match = re.search(r'\$(\d+\.\d{1,2}) ([+-]) (\d+\.\d{1,2})\$', text)
+    if match:
+        left, op, right = cents_of(match[1]), match[2], cents_of(match[3])
+    else:
+        nums = re.findall(r'\d+\.\d{1,2}', text)
+        if len(nums) == 2:
+            left, right = cents_of(nums[0]), cents_of(nums[1])
+        else:
+            spoken = re.findall(AMOUNT, text)
+            require(len(spoken) == 2, 'Unrecognized decimal operation')
+            left, right = parse_spoken(spoken[0]), parse_spoken(spoken[1])
+        if re.search(r'how much longer|how much is left', text, re.I):
+            op = '-'
+        else:
+            require(re.search(r'total', text, re.I), 'Unrecognized decimal operation')
+            op = '+'
     value = left + right if op == '+' else left - right
     require(value >= 0, 'Decimal result is negative')
     return dollars_of(value)
@@ -519,23 +530,61 @@ def solve_money(public):
         r'What is the fewest number of coins that make that amount\?',
         text,
     )
-    require(fewest is not None, 'Unrecognized money story')
-    amount = parse_spoken(fewest[1])
-    require(amount < 100, 'Fewest coins stay under one dollar')
-    return str(coin_count(amount))
+    if fewest is not None:
+        amount = parse_spoken(fewest[1])
+        require(amount < 100, 'Fewest coins stay under one dollar')
+        return str(coin_count(amount))
+    if 'split' in text:
+        price = re.search(rf'costs ({AMOUNT})', text)
+        items = re.search(r'(\d+) (markers|stickers|erasers|pencils|juice boxes)', text)
+        friends = re.search(r'(\d+) friends', text)
+        require(price is not None and items is not None and friends is not None, text)
+        total = int(items[1]) * parse_spoken(price[1])
+        require(total % int(friends[1]) == 0, 'The share is not exact cents')
+        return dollars_of(total // int(friends[1]))
+    if 'fewest' in text:
+        amounts = re.findall(AMOUNT, text)
+        require(len(amounts) == 1, text)
+        amount = parse_spoken(amounts[0])
+        require(amount < 100, 'Fewest coins stay under one dollar')
+        return str(coin_count(amount))
+    pay = re.search(r'pays? with (.+?)\.', text)
+    if pay is not None and 'change' in text:
+        cost_match = re.search(rf'costs ({AMOUNT})', text)
+        count_match = re.search(r'(\d+) (stickers|pencils|tickets|cookies)', text)
+        require(cost_match is not None, text)
+        paid, quarters = parse_tender(pay[1])
+        price = parse_spoken(cost_match[1])
+        cost = int(count_match[1]) * price if count_match else price
+        require_realistic(cost, paid, quarters)
+        return dollars_of(paid - cost)
+    costs = re.findall(rf'costs ({AMOUNT})', text)
+    require(len(costs) == 2 and 'total' in text, 'Unrecognized money story')
+    left, right = parse_spoken(costs[0]), parse_spoken(costs[1])
+    require(left % 100 != 0 and right % 100 != 0, 'A price is a whole dollar')
+    return dollars_of(left + right)
 
 
 def solve_model(public):
-    match = re.fullmatch(
-        r'Set A shows (.+)\. Set B shows the coins\. How much money is there in all\?' + ENTER,
-        field(public, 'prompt'),
+    text = field(public, 'prompt')
+    phrase = next(
+        (
+            candidate
+            for candidate in (
+                'a 5-dollar bill',
+                '3 one-dollar bills',
+                '2 one-dollar bills',
+                'a 1-dollar bill',
+            )
+            if candidate in text
+        ),
+        None,
     )
-    require(match is not None, 'Unrecognized money model')
+    require(phrase is not None, 'Unrecognized money model')
     figure = field(public, 'figure')
     require(field(figure, 'kind') == 'money-sets', 'Money sets expected')
     sets = {s.get('label'): s.get('items') for s in field(figure, 'sets')}
     require(set(sets) == {'A', 'B'}, 'Need sets A and B')
-    phrase = match[1]
     bills = sets['A']
     if phrase == 'a 5-dollar bill':
         require(bills == ['five'], 'Set A is not one five-dollar bill')

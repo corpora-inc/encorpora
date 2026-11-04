@@ -9,8 +9,15 @@ import { random, rational, type Random } from "./distribution-practice";
 import {
   clockTimePresent,
   conversionStory,
+  decimalStory,
   elapsedStory,
   lineStorySurface,
+  moneyAddStory,
+  moneyChangeStory,
+  moneyFewestStory,
+  moneyModelStory,
+  moneyShareStory,
+  moneyTimesChangeStory,
   renameStory,
   toolStory,
 } from "./grade4-measurement-money-voice";
@@ -59,6 +66,9 @@ const STORY_READY = new Set([
   "unit-rename-larger",
   "measurement-line-fraction-story",
   "measuring-tool-choice",
+  "decimal-sum-difference",
+  "money-decimal-story",
+  "money-model-decimal",
 ]);
 
 export function measurementNarrative(
@@ -352,9 +362,7 @@ function elapsed(meta: TemplateMetadata, seed: string, r: Random): Built {
       : null;
   const prompt = told?.prompt ?? legacyPrompt;
   need(
-    told
-      ? !clockTimePresent(prompt, correct)
-      : !prompt.includes(correct),
+    told ? !clockTimePresent(prompt, correct) : !prompt.includes(correct),
     "an end time that is not written in the prompt",
   );
   const slips: [number, string][] = [
@@ -787,18 +795,32 @@ function decimalSum(meta: TemplateMetadata, seed: string, r: Random): Built {
   const op = subtract ? "-" : "+";
   const value = subtract ? left.cents - right.cents : left.cents + right.cents;
   const answer = dollars(value);
-  const prompt = `What is $${shownL} ${op} ${shownR}$?`;
+  const legacyPrompt = `What is $${shownL} ${op} ${shownR}$?`;
   const leaked = new RegExp(
     `(?<![\\d.])${answer.replace(".", "\\.")}(?![\\d])`,
   );
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? decimalStory(meta.id, seed, {
+          shownL,
+          shownR,
+          leftCents: left.cents,
+          rightCents: right.cents,
+          subtract,
+          unlike,
+        })
+      : null;
+  const prompt = told && !leaked.test(told.prompt) ? told.prompt : legacyPrompt;
   need(!leaked.test(prompt), "a sum that is not already written");
   return {
     variant: `${subtract ? "sub" : "add"}-${unlike ? "unlike" : "like"}`,
     problem: toProblem(meta, seed, r, {
       prompt,
       answer,
-      hint: `Line up the decimal points in $${shownL} ${op} ${shownR}$. Write a tenth as hundredths before you ${subtract ? "subtract" : "add"}.`,
-      explanation: [
+      hint:
+        told?.hint ??
+        `Line up the decimal points in $${shownL} ${op} ${shownR}$. Write a tenth as hundredths before you ${subtract ? "subtract" : "add"}.`,
+      explanation: told?.explanation ?? [
         `$${shownL}$ is ${dollars(left.cents)} and $${shownR}$ is ${dollars(right.cents)}.`,
         `$${dollars(left.cents)} ${op} ${dollars(right.cents)} = ${answer}$.`,
         `The result is ${answer}.`,
@@ -925,14 +947,22 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
     if (a % 100 === 0) a += 15;
     if (b % 100 === 0) b += 25;
     const answer = dollars(a + b);
+    const told =
+      measurementNarrative(meta.id, seed) === "story"
+        ? moneyAddStory(meta.id, seed, a, b)
+        : null;
     return {
       variant: "add",
       problem: toProblem(meta, seed, r, {
-        prompt: `A book costs ${money(a)} and a pen costs ${money(b)}. What is the total cost? ${ENTER}`,
+        prompt:
+          told?.prompt ??
+          `A book costs ${money(a)} and a pen costs ${money(b)}. What is the total cost? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `The book costs ${money(a)} and the pen costs ${money(b)}. Add the dollars and the cents.`,
-        explanation: [
+        hint:
+          told?.hint ??
+          `The book costs ${money(a)} and the pen costs ${money(b)}. Add the dollars and the cents.`,
+        explanation: told?.explanation ?? [
           `Add the two prices.`,
           worked(a, "+", b, a + b),
           `The total cost is ${money(a + b)}.`,
@@ -945,14 +975,22 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
     if (cost % 100 === 0) cost += 15;
     const pay = payTender(r, cost);
     const answer = dollars(pay.cents - cost);
+    const told =
+      measurementNarrative(meta.id, seed) === "story"
+        ? moneyChangeStory(meta.id, seed, cost, pay.phrase, pay.cents)
+        : null;
     return {
       variant: "change",
       problem: toProblem(meta, seed, r, {
-        prompt: `A snack costs ${money(cost)}. You pay with ${pay.phrase}. How much change do you get back? ${ENTER}`,
+        prompt:
+          told?.prompt ??
+          `A snack costs ${money(cost)}. You pay with ${pay.phrase}. How much change do you get back? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `The snack costs ${money(cost)}. ${paymentIs(pay)} Subtract the cost from the payment.`,
-        explanation: [
+        hint:
+          told?.hint ??
+          `The snack costs ${money(cost)}. ${paymentIs(pay)} Subtract the cost from the payment.`,
+        explanation: told?.explanation ?? [
           `Change is the payment minus the cost.`,
           worked(pay.cents, "-", cost, pay.cents - cost),
           `You get ${money(pay.cents - cost)} back.`,
@@ -968,14 +1006,22 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
     const items = eachItems * friends;
     const share = eachItems * price;
     const answer = dollars(share);
+    const told =
+      measurementNarrative(meta.id, seed) === "story"
+        ? moneyShareStory(meta.id, seed, price, items, friends)
+        : null;
     return {
       variant: "times-divide",
       problem: toProblem(meta, seed, r, {
-        prompt: `Markers cost ${money(price)} each. The club buys ${count(items, "marker")}, and ${count(friends, "friend")} split the cost equally. How much does each friend pay? ${ENTER}`,
+        prompt:
+          told?.prompt ??
+          `Markers cost ${money(price)} each. The club buys ${count(items, "marker")}, and ${count(friends, "friend")} split the cost equally. How much does each friend pay? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `Markers cost ${money(price)} each. The club buys ${count(items, "marker")} and ${count(friends, "friend")} split that cost. Find the total, then divide.`,
-        explanation: [
+        hint:
+          told?.hint ??
+          `Markers cost ${money(price)} each. The club buys ${count(items, "marker")} and ${count(friends, "friend")} split that cost. Find the total, then divide.`,
+        explanation: told?.explanation ?? [
           `${count(items, "marker")} at ${money(price)} each cost ${money(items * price)}.`,
           `$${dollars(items * price)} \\div ${friends} = ${dollars(share)}$.`,
           `Each friend pays ${money(share)}.`,
@@ -989,14 +1035,22 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
     const cost = n * price;
     const pay = payTender(r, cost);
     const answer = dollars(pay.cents - cost);
+    const told =
+      measurementNarrative(meta.id, seed) === "story"
+        ? moneyTimesChangeStory(meta.id, seed, price, n, pay.phrase, pay.cents)
+        : null;
     return {
       variant: "times-change",
       problem: toProblem(meta, seed, r, {
-        prompt: `Each sticker costs ${money(price)}. You buy ${count(n, "sticker")} and pay with ${pay.phrase}. How much change do you get back? ${ENTER}`,
+        prompt:
+          told?.prompt ??
+          `Each sticker costs ${money(price)}. You buy ${count(n, "sticker")} and pay with ${pay.phrase}. How much change do you get back? ${ENTER}`,
         answer,
         responseLabel: "Dollars",
-        hint: `Each sticker costs ${money(price)} and you buy ${count(n, "sticker")}. ${paymentIs(pay)} Find the total cost, then subtract it from the payment.`,
-        explanation: [
+        hint:
+          told?.hint ??
+          `Each sticker costs ${money(price)} and you buy ${count(n, "sticker")}. ${paymentIs(pay)} Find the total cost, then subtract it from the payment.`,
+        explanation: told?.explanation ?? [
           `${count(n, "sticker")} at ${money(price)} each cost ${money(cost)}.`,
           worked(pay.cents, "-", cost, pay.cents - cost),
           `You get ${money(pay.cents - cost)} back.`,
@@ -1007,14 +1061,22 @@ function moneyStory(meta: TemplateMetadata, seed: string, r: Random): Built {
   let cents = r(11, 99);
   if ([25, 10, 5, 1].includes(cents)) cents += 3;
   const pieces = fewestCoins(cents);
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? moneyFewestStory(meta.id, seed, cents)
+      : null;
   return {
     variant: "fewest",
     problem: toProblem(meta, seed, r, {
-      prompt: `You need ${money(cents)} in quarters, dimes, nickels, and pennies. What is the fewest number of coins that make that amount?`,
+      prompt:
+        told?.prompt ??
+        `You need ${money(cents)} in quarters, dimes, nickels, and pennies. What is the fewest number of coins that make that amount?`,
       answer: String(pieces),
       responseLabel: "Number of coins",
-      hint: `Start with ${money(cents)}. Use the largest coin that fits, then count the coins.`,
-      explanation: [
+      hint:
+        told?.hint ??
+        `Start with ${money(cents)}. Use the largest coin that fits, then count the coins.`,
+      explanation: told?.explanation ?? [
         `Start with ${money(cents)}.`,
         `Take the largest coin that fits each time: quarters, then dimes, nickels, and pennies.`,
         `That uses ${count(pieces, "coin")}.`,
@@ -1060,15 +1122,30 @@ function moneyModel(meta: TemplateMetadata, seed: string, r: Random): Built {
       { label: "B", items: coins },
     ],
   };
+  const told =
+    measurementNarrative(meta.id, seed) === "story"
+      ? moneyModelStory(meta.id, seed, {
+          billPhrase,
+          billCents,
+          quarters,
+          dimes,
+          nickels,
+          pennies,
+        })
+      : null;
   return {
     variant: useFive ? "five-plus-coins" : `dollars-${billCount}`,
     problem: toProblem(meta, seed, r, {
-      prompt: `Set A shows ${billPhrase}. Set B shows the coins. How much money is there in all? ${ENTER}`,
+      prompt:
+        told?.prompt ??
+        `Set A shows ${billPhrase}. Set B shows the coins. How much money is there in all? ${ENTER}`,
       answer,
       responseLabel: "Dollars",
       figure,
-      hint: `Set A shows ${billPhrase}. Add those bills, then add the value of each coin in set B.`,
-      explanation: [
+      hint:
+        told?.hint ??
+        `Set A shows ${billPhrase}. Add those bills, then add the value of each coin in set B.`,
+      explanation: told?.explanation ?? [
         `Set A shows ${billPhrase}, worth ${money(billCents)}.`,
         `Set B shows ${count(quarters, "quarter")}, ${count(dimes, "dime")}, ${count(nickels, "nickel")}, and ${count(pennies, "penny")}.`,
         worked(billCents, "+", total - billCents, total),

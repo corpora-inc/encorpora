@@ -335,7 +335,10 @@ function readElapsed(text: string): {
     ...text.matchAll(/(\d+) hours?(?: (\d+) minutes?)?|(\d+) minutes?/g),
   ];
   assert.ok(found.length === 1 || found.length === 2, text);
-  assert.ok(storyNames.some((name) => text.includes(name)), text);
+  assert.ok(
+    storyNames.some((name) => text.includes(name)),
+    text,
+  );
   return {
     durations: found.map((part) => durationOf(part[0])),
     period: time[3] === "a" ? "morning" : "afternoon",
@@ -384,7 +387,10 @@ test("elapsed time crosses an hour and is read from the clock", () => {
     assert.equal(hits.length, 1);
     assert.equal(problem.answer, hits[0]!.id);
     assert.equal(new Set(options.map((o) => o.label)).size, options.length);
-    assert.match(problem.explanation.join(" "), new RegExp(label.replaceAll(".", "\\.")));
+    assert.match(
+      problem.explanation.join(" "),
+      new RegExp(label.replaceAll(".", "\\.")),
+    );
   }
   assert.ok(noon >= 40, `noon ${noon}`);
   assert.ok(two >= 40 && two <= 160, `two-step ${two}`);
@@ -404,7 +410,10 @@ test("conversion tables fill both columns from the first row", () => {
         problem.public.prompt,
         /^The table matches \w+ with \w+\. The first row shows \d+ (?:feet|kilograms|hours|liters)\. Fill in the two blanks\.$/,
       );
-    else assert.ok(storyNames.some((name) => problem.public.prompt.includes(name)));
+    else
+      assert.ok(
+        storyNames.some((name) => problem.public.prompt.includes(name)),
+      );
     const large = match[1]!;
     const small = match[2]!;
     const shown = Number(match[3]);
@@ -468,14 +477,18 @@ test("smaller units rename to a whole number of a larger unit", () => {
     );
     const amountMatch = /([\d,]+) (\w+)\b/.exec(problem.public.prompt);
     const howMany = /[Hh]ow many (\w+)\b/.exec(problem.public.prompt);
-    const match = legacy ?? (amountMatch && howMany
-      ? [problem.public.prompt, amountMatch[1], amountMatch[2], howMany[1]]
-      : null);
+    const match =
+      legacy ??
+      (amountMatch && howMany
+        ? [problem.public.prompt, amountMatch[1], amountMatch[2], howMany[1]]
+        : null);
     assert.ok(match, problem.public.prompt);
     if (problem.variant == null) assert.ok(legacy);
     else {
       assert.equal(legacy, null);
-      assert.ok(storyNames.some((name) => problem.public.prompt.includes(name)));
+      assert.ok(
+        storyNames.some((name) => problem.public.prompt.includes(name)),
+      );
     }
     const amount = Number(match[1]!.replaceAll(",", ""));
     if (amount >= 1000) assert.match(match[1]!, /,/);
@@ -521,7 +534,10 @@ test("a measurement line is read as a grade-4 fraction", () => {
     else {
       assert.ok(text.includes("$A$") && text.includes("$B$"), text);
       assert.match(text, /\bmiles?\b/);
-      assert.ok(storyNames.some((name) => text.includes(name)), text);
+      assert.ok(
+        storyNames.some((name) => text.includes(name)),
+        text,
+      );
     }
     assert.equal(/\d/.test(text), false);
     assert.equal(text.includes("student"), false);
@@ -576,13 +592,44 @@ test("decimal sums and differences stay in hundredths", () => {
   let unlike = 0;
   for (let i = 0; i < 200; i++) {
     const { problem } = served("decimal-sum-difference", `mm-decimal-${i}`);
-    const match = /^What is \$(\d+\.\d{1,2}) ([+-]) (\d+\.\d{1,2})\$\?$/.exec(
-      problem.public.prompt,
+    const text = problem.public.prompt;
+    const legacy = /^What is \$(\d+\.\d{1,2}) ([+-]) (\d+\.\d{1,2})\$\?$/.exec(
+      text,
     );
-    assert.ok(match, problem.public.prompt);
-    const left = match[1]!;
-    const op = match[2]!;
-    const right = match[3]!;
+    const tex = /\$(\d+\.\d{1,2}) ([+-]) (\d+\.\d{1,2})\$/.exec(text);
+    let left: string;
+    let op: string;
+    let right: string;
+    if (problem.variant == null) {
+      assert.ok(legacy, text);
+      left = legacy![1]!;
+      op = legacy![2]!;
+      right = legacy![3]!;
+    } else if (tex) {
+      left = tex[1]!;
+      op = tex[2]!;
+      right = tex[3]!;
+    } else {
+      const nums = [...text.matchAll(/(\d+\.\d{1,2})/g)].map(
+        (part) => part[1]!,
+      );
+      const spoken = [
+        ...text.matchAll(/(\d+\.\d{2} dollars|\d+ dollars?|\d+ cents?)/g),
+      ].map((part) => part[1]!);
+      if (/how much longer|how much is left/i.test(text)) op = "-";
+      else {
+        assert.match(text, /total/i);
+        op = "+";
+      }
+      if (nums.length === 2) {
+        left = nums[0]!;
+        right = nums[1]!;
+      } else {
+        assert.equal(spoken.length, 2, text);
+        left = dollarsOf(parseSpoken(spoken[0]!));
+        right = dollarsOf(parseSpoken(spoken[1]!));
+      }
+    }
     const value =
       op === "+"
         ? centsOf(left) + centsOf(right)
@@ -592,7 +639,7 @@ test("decimal sums and differences stay in hundredths", () => {
     assert.equal(problem.answer, answer);
     assert.equal(
       new RegExp(`(?<![\\d.])${answer.replace(".", "\\.")}(?![\\d])`).test(
-        problem.public.prompt,
+        text,
       ),
       false,
     );
@@ -612,8 +659,9 @@ test("money stories cover change, the four operations and the fewest coins", () 
   let wholePay = 0;
   let quarterPay = 0;
   for (let i = 0; i < 200; i++) {
-    const { problem } = served("money-decimal-story", `mm-money-${i}`);
+    const { variant, problem } = served("money-decimal-story", `mm-money-${i}`);
     const text = problem.public.prompt;
+    const plain = problem.variant == null;
     const prose = [text, problem.hint, ...problem.explanation].join("\n");
     assertMoneyWords(prose);
     let answer = "";
@@ -633,6 +681,68 @@ test("money stories cover change, the four operations and the fewest coins", () 
     const coins = new RegExp(
       String.raw`^You need ${amount} in quarters, dimes, nickels, and pennies\. What is the fewest number of coins that make that amount\?$`,
     ).exec(text);
+    if (!plain) {
+      if (variant === "add") {
+        const costs = [
+          ...text.matchAll(
+            /costs (\d+\.\d{2} dollars|\d+ dollars?|\d+ cents?)/g,
+          ),
+        ];
+        assert.equal(costs.length, 2, text);
+        const left = parseSpoken(costs[0]![1]!);
+        const right = parseSpoken(costs[1]![1]!);
+        assert.notEqual(left % 100, 0);
+        assert.notEqual(right % 100, 0);
+        answer = dollarsOf(left + right);
+        surface = "add";
+      } else if (variant === "change" || variant === "times-change") {
+        const costMatch =
+          /costs (\d+\.\d{2} dollars|\d+ dollars?|\d+ cents?)/.exec(text);
+        const payMatch = /pays? with (.+?)\./.exec(text);
+        assert.ok(costMatch && payMatch, text);
+        const price = parseSpoken(costMatch![1]!);
+        const countMatch = /(\d+) (stickers|pencils|tickets|cookies)/.exec(
+          text,
+        );
+        const cost =
+          variant === "times-change" ? Number(countMatch?.[1]) * price : price;
+        assert.ok(variant === "change" || countMatch, text);
+        const pay = assertTender(payMatch![1]!, cost);
+        if (pay.quarters === 0) wholePay++;
+        else quarterPay++;
+        answer = dollarsOf(pay.cents - cost);
+        surface = variant;
+      } else if (variant === "times-divide") {
+        const priceMatch =
+          /costs (\d+\.\d{2} dollars|\d+ dollars?|\d+ cents?)/.exec(text);
+        const itemMatch =
+          /(\d+) (markers|stickers|erasers|pencils|juice boxes)/.exec(text);
+        const friendMatch = /(\d+) friends/.exec(text);
+        assert.ok(priceMatch && itemMatch && friendMatch, text);
+        assert.match(text, /split/);
+        const price = parseSpoken(priceMatch![1]!);
+        const items = Number(itemMatch![1]);
+        const friends = Number(friendMatch![1]);
+        assert.equal((items * price) % friends, 0);
+        answer = dollarsOf((items * price) / friends);
+        surface = "times-divide";
+      } else {
+        assert.equal(variant, "fewest");
+        assert.match(text, /fewest/);
+        const amounts = [
+          ...text.matchAll(/(\d+\.\d{2} dollars|\d+ dollars?|\d+ cents?)/g),
+        ];
+        assert.equal(amounts.length, 1, text);
+        const coinsAmount = parseSpoken(amounts[0]![1]!);
+        assert.ok(coinsAmount > 0 && coinsAmount < 100);
+        answer = String(fewest(coinsAmount));
+        surface = "fewest";
+      }
+      surfaces.set(surface, (surfaces.get(surface) ?? 0) + 1);
+      assert.equal(problem.answer, answer);
+      assert.equal(problem.public.response.kind, "number");
+      continue;
+    }
     const matched = [add, change, shared, stickers, coins].filter(Boolean);
     assert.equal(matched.length, 1, text);
     if (add) {
@@ -709,31 +819,41 @@ test("bills and ten mixed coins total a decimal in dollars", () => {
   const dollars = new Set<number>();
   for (let i = 0; i < 200; i++) {
     const { variant, problem } = served("money-model-decimal", `mm-model-${i}`);
-    const match =
+    const plainModel =
       /^Set A shows (.+)\. Set B shows the coins\. How much money is there in all\? Enter the amount in dollars and cents, such as 2\.35\.$/.exec(
         problem.public.prompt,
       );
+    const billPhrase =
+      plainModel?.[1] ??
+      [
+        "a 5-dollar bill",
+        "3 one-dollar bills",
+        "2 one-dollar bills",
+        "a 1-dollar bill",
+      ].find((phrase) => problem.public.prompt.includes(phrase));
     assertMoneyWords(
       [problem.public.prompt, problem.hint, ...problem.explanation].join("\n"),
     );
-    assert.ok(match);
+    assert.ok(billPhrase, problem.public.prompt);
+    if (problem.variant == null) assert.ok(plainModel);
+    else assert.equal(problem.public.prompt.includes("Set A shows"), false);
     const figure = problem.public.figure;
     assert.ok(figure && figure.kind === "money-sets");
     if (!figure || figure.kind !== "money-sets") throw new Error("money");
     const sets = new Map(figure.sets.map((s) => [s.label, s.items]));
     assert.deepEqual([...sets.keys()].sort(), ["A", "B"]);
     const bills = sets.get("A")!;
-    if (match[1] === "a 5-dollar bill") {
+    if (billPhrase === "a 5-dollar bill") {
       assert.deepEqual(bills, ["five"]);
       assert.equal(variant, "five-plus-coins");
       five++;
-    } else if (match[1] === "a 1-dollar bill") {
+    } else if (billPhrase === "a 1-dollar bill") {
       assert.deepEqual(bills, ["dollar"]);
       assert.equal(variant, "dollars-1");
       dollars.add(1);
     } else {
-      const counted = /^(\d+) one-dollar bills$/.exec(match[1]!);
-      assert.ok(counted, match[1]);
+      const counted = /^(\d+) one-dollar bills$/.exec(billPhrase!);
+      assert.ok(counted, billPhrase);
       const count = Number(counted![1]);
       assert.ok(count >= 2);
       assert.deepEqual(
