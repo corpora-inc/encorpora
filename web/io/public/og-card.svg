@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="900" cy="315" r="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0b1f55" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#000924" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#000924"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g transform="translate(900 315)">
+    <path d="M0 -205 L177.5 -102.5 L177.5 102.5 L0 205 L-177.5 102.5 L-177.5 -102.5 Z" fill="none" stroke="#e8eee7" stroke-width="32" stroke-linejoin="miter"/>
+    <circle r="12" fill="#e8eee7"/>
+    <circle cx="-76" r="6.5" fill="#1f4fbf"/>
+    <circle cx="76" r="6.5" fill="#1f4fbf"/>
+  </g>
+  <text x="80" y="120" font-family="KaTeX_SansSerif" font-weight="bold" font-size="30" letter-spacing="1" fill="#e8eee7">Encorpora</text>
+  <text x="80" y="300" font-family="KaTeX_SansSerif" font-weight="bold" font-size="92" letter-spacing="-3" fill="#ffffff">Pure Learning</text>
+  <text x="80" y="370" font-family="KaTeX_SansSerif" font-size="36" fill="#aab6cf">Focused books and apps.</text>
+  <path d="M80 492H168" stroke="#4d7cf0" stroke-width="3" stroke-linecap="round"/>
+  <text x="80" y="540" font-family="KaTeX_SansSerif" font-size="26" fill="#aab6cf">encorpora.io</text>
+</svg>
