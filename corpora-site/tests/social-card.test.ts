@@ -4,7 +4,10 @@ import test from "node:test";
 import React, { renderToStaticMarkup } from "../src/react.js";
 import { configSchema } from "../src/config.js";
 import { Page, routesFor } from "../src/pages.js";
+import { fileURLToPath } from "node:url";
+import { Resvg } from "@resvg/resvg-js";
 import {
+  ruleY,
   cardHeight,
   cardSpec,
   cardSvg,
@@ -127,4 +130,29 @@ test("characters the card fonts lack fail the build instead of rendering boxes",
       ),
     /no glyph/,
   );
+});
+
+test("headings of every length stay clear of the rule above the address", () => {
+  const fontFiles = ["Main-Regular", "Main-Italic"].map((name) =>
+    fileURLToPath(
+      new URL(`../../amp/node_modules/katex/dist/fonts/KaTeX_${name}.ttf`, import.meta.url),
+    ),
+  );
+  const headings = [
+    "Get help with AMP.",
+    "Practice with a reason for every step.",
+    // Production New Hampshire guide headline: four lines at full size used
+    // to run into the rule.
+    "Use your New Hampshire EFA funds for AMP Math",
+    "Use your Arizona Empowerment Scholarship Account for adaptive mathematics practice, lessons and printable worksheets for every learner in the family",
+  ];
+  for (const heading of headings) {
+    const svg = cardSvg({ ...cardSpec("/try/", config), heading }, tokens);
+    const text = svg.match(/<text[^>]*font-family="KaTeX_Main"[\s\S]*?<\/text>/g)!.join("");
+    const box = new Resvg(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="${cardWidth}" height="${cardHeight}">${text}</svg>`,
+      { font: { fontFiles, loadSystemFonts: false, defaultFontFamily: "KaTeX_Main" } },
+    ).getBBox()!;
+    assert.ok(box.y + box.height <= ruleY - 20, `${heading}: ink ends at ${box.y + box.height}`);
+  }
 });
