@@ -101,6 +101,7 @@
     "test:inventory": "node scripts/test-suite.mjs inventory",
     "test:related": "node scripts/test-related.mjs",
     "coverage:report": "tsx scripts/coverage-report.ts",
+    "coverage:grade4": "tsx scripts/grade4-coverage.ts",
     "coverage:items": "tsx scripts/coverage-items.ts",
     "families:index": "tsx scripts/gen-family-index.ts",
     "test:pathways-ui": "tsx scripts/verify-pathways-ui.ts",
