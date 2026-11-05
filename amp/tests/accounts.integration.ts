@@ -106,8 +106,37 @@ test(
       assert.equal(
         anonymousTrial.statusCode,
         401,
-        "assessment requires a parent account",
+        "without an explicit visitor request the assessment needs a parent account",
       );
+      // A visitor may start one unowned trial problem without an account;
+      // anything beyond the first problem asks them to sign in.
+      const visitorTrial = await hosted.inject({
+        method: "POST",
+        url: "/api/v1/trials",
+        payload: { birthYear: 2016, anonymous: true },
+      });
+      assert.equal(visitorTrial.statusCode, 201, visitorTrial.body);
+      const visitorAuth = {
+        authorization: `Trial ${visitorTrial.json().token}`,
+      };
+      assert.equal(
+        (
+          await hosted.inject({
+            method: "GET",
+            url: "/api/v1/session",
+            headers: visitorAuth,
+          })
+        ).statusCode,
+        401,
+      );
+      const visitorSkip = await hosted.inject({
+        method: "POST",
+        url: `/api/v1/learners/${visitorTrial.json().learnerId}/skips`,
+        headers: visitorAuth,
+        payload: { problemId: "none" },
+      });
+      assert.equal(visitorSkip.statusCode, 401);
+      assert.equal(visitorSkip.json().error, "sign_in_to_continue");
       const parentTrial = await hosted.inject({
         method: "POST",
         url: "/api/v1/trials",

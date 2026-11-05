@@ -37,9 +37,12 @@ export async function learningConsentActive(
   accountId: string,
   development = false,
 ): Promise<boolean> {
-  // Trial learners use a separate namespace and expire after 14 days.
-  // A parent owns the trial for cross-device resume; adopting its answers
-  // into a named family learner requires the regular consent checks.
+  // Trial learners use a separate namespace, hold only a birth year and
+  // their practice, and expire after 14 days unless saved. In hosted mode a
+  // visitor without an account may answer one problem on an unowned trial;
+  // signing in claims it, and the owning parent resumes it on any device.
+  // Adopting its answers into a named family learner requires the regular
+  // consent checks.
   if (accountId.startsWith("trial:")) return true;
   const result = await client.query(
     "SELECT withdrawn_at,verification_method,evidence_reference FROM amp_parent_consents WHERE account_id=$1",
