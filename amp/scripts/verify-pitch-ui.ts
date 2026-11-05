@@ -35,10 +35,15 @@ const engines =
 const widths = (argument("widths") ?? "320,390,768,1280")
   .split(",")
   .map(Number);
-const shots = argument("shots") ?? "artifacts/pitch";
+// `--no-media`: the page as production shows it before media is supplied.
+const noMedia = process.argv.includes("--no-media");
+if (noMedia) process.env.VITE_AMP_PITCH_FIXTURE = "off";
+const shots =
+  argument("shots") ??
+  (noMedia ? "artifacts/pitch-no-media" : "artifacts/pitch");
 await mkdir(shots, { recursive: true });
 
-const port = 4418;
+const port = noMedia ? 4419 : 4418;
 const origin = `http://127.0.0.1:${port}`;
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
 // The session comes from this script (`/api/__pitch/session`), so a sign-up
@@ -50,7 +55,9 @@ export function notifyAccountSessionChanged(s){if(s!==undefined)for(const l of l
 export async function signIn(){}export async function signOut(){}
 export async function authConfig(){return {mode:'accounts',passwords:true,parentFollowup:true,providers:[]};}`;
 const vite = await createServer({
-  cacheDir: "node_modules/.vite-pitch",
+  cacheDir: noMedia
+    ? "node_modules/.vite-pitch-text"
+    : "node_modules/.vite-pitch",
   logLevel: "error",
   plugins: [
     {
@@ -310,6 +317,36 @@ async function viewports(browser: Browser, engine: string) {
         // Labels never break mid-word: each line ends between words.
         const before = await layout(page);
         await page.screenshot({ path: `${shots}/${tag}.png`, fullPage: true });
+        if (noMedia) {
+          // No media: no player, and no empty hero column at any width.
+          const hero = await page.evaluate(() => {
+            const node = document.querySelector("[data-hero]")!;
+            return {
+              mode: node.getAttribute("data-hero"),
+              tracks:
+                getComputedStyle(node).gridTemplateColumns.split(" ").length,
+              figures: node.querySelectorAll("figure, video").length,
+              width: node.getBoundingClientRect().width,
+              widest: Math.max(
+                ...[...node.children].map(
+                  (child) => child.getBoundingClientRect().width,
+                ),
+              ),
+            };
+          });
+          assert.equal(hero.mode, "text", `${tag}: text hero`);
+          assert.equal(hero.figures, 0, `${tag}: no player`);
+          assert.equal(hero.tracks, 1, `${tag}: one hero column`);
+          assert.ok(
+            hero.widest >= hero.width - 1,
+            `${tag}: no empty hero track (${JSON.stringify(hero)})`,
+          );
+          await page.waitForTimeout(500);
+          assert.deepEqual(await layout(page), before, `${tag}: no shift`);
+          assert.deepEqual(errors, [], `${tag}: no page errors`);
+          await context.close();
+          continue;
+        }
         // Tap to play: the movie loads into the reserved box.
         await page.getByRole("button", { name: /^Play .*with sound$/ }).click();
         await page.waitForFunction(
@@ -572,12 +609,14 @@ try {
     ).launch();
     try {
       await viewports(browser, engine);
-      await journeys(browser, engine);
+      if (!noMedia) await journeys(browser, engine);
     } finally {
       await browser.close();
     }
     console.log(
-      `PASS ${engine}: pitch at ${widths.join("/")} px, light and dark, card and funded; video plays in place; every action reaches a working screen`,
+      noMedia
+        ? `PASS ${engine}: pitch without media at ${widths.join("/")} px, light and dark: one text column, no player, no empty track, no shift`
+        : `PASS ${engine}: pitch at ${widths.join("/")} px, light and dark, card and funded; video plays in place; every action reaches a working screen`,
     );
   }
 } finally {

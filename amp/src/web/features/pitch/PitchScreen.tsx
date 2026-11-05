@@ -91,7 +91,11 @@ export function PitchScreen() {
         </Link>
       </header>
       <main className={styles.main}>
-        <section className={styles.hero} aria-labelledby="pitch-title">
+        <section
+          className={`${styles.hero} ${pitchVideo ? styles.withFilm : ""}`}
+          aria-labelledby="pitch-title"
+          data-hero={pitchVideo ? "film" : "text"}
+        >
           <div className={styles.copy}>
             <h1 id="pitch-title" className={styles.title}>
               Math that adapts to every answer.
