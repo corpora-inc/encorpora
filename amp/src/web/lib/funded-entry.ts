@@ -12,6 +12,10 @@ import {
   CAMPAIGN_CREATIVES,
 } from "../../analytics/campaign";
 
+/** `refundNote`: the refund line beside this program's Buy. Arizona refunds
+ * the purchase as received, to the child's ESA, never "full": the payment
+ * platform's fee may not be refundable (https://www.azleg.gov/ars/15/02402.htm;
+ * https://classwallet.my.site.com/classwallet/s/article/AZ-ESA-Refund-Overpayments-Incorrect-Payments). */
 export const fundedPrograms = {
   "arkansas-efa": {
     slug: "arkansas-efa",
@@ -19,6 +23,7 @@ export const fundedPrograms = {
     id: "ar-efa",
     jurisdiction: "AR",
     name: "Arkansas EFA",
+    refundNote: "30-day full refund",
     helpUrl: "https://corpora.inc/esa/arkansas-efa/",
   },
   "new-hampshire-efa": {
@@ -27,6 +32,7 @@ export const fundedPrograms = {
     id: "nh-efa",
     jurisdiction: "NH",
     name: "New Hampshire EFA",
+    refundNote: "30-day full refund",
     helpUrl: "https://corpora.inc/esa/new-hampshire-efa/",
   },
   "arizona-esa": {
@@ -35,6 +41,7 @@ export const fundedPrograms = {
     id: "az-esa",
     jurisdiction: "AZ",
     name: "Arizona ESA",
+    refundNote: "30-day refund to your child’s ESA",
     helpUrl: "https://corpora.inc/esa/arizona-esa/",
   },
 } as const;
