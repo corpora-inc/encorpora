@@ -77,6 +77,7 @@ const errors: string[] = [],
   requests: string[] = [];
 try {
   const context = await browser.newContext();
+  await context.addInitScript("globalThis.__name ??= (f) => f");
   await context.addInitScript(
     `localStorage.setItem('amp.trial','synthetic-drawer-trial'); localStorage.setItem('amp.learner', JSON.stringify({state:{learnerId:'jordan'},version:1})); navigator.sendBeacon = function(){ return true; };`,
   );
@@ -178,6 +179,25 @@ try {
           trialRemaining: 58,
         },
       });
+    if (path.endsWith("/attempts")) {
+      const problem = generateProblem(template, "navigation-layout");
+      const attempt = route.request().postDataJSON();
+      return route.fulfill({
+        json: {
+          id: "navigation-attempt",
+          requestId: attempt.requestId,
+          problemId: attempt.problemId,
+          skillId: problem.public.skillId,
+          templateId: problem.public.templateId,
+          response: attempt.response,
+          correct: attempt.response === problem.answer,
+          assisted: false,
+          createdAt: "2026-10-23T12:00:00Z",
+          answer: problem.answer,
+          explanation: problem.explanation,
+        },
+      });
+    }
     if (path === "/api/auth/sign-out") {
       if (failSignOut)
         return route.fulfill({
@@ -235,6 +255,133 @@ try {
       );
     }
   }
+  // Pixels of the focus ring painted outside each edge of the focused control.
+  // An outline takes no part in hit testing, so only a screenshot can see it.
+  async function paintedRing() {
+    const screenshot = (await page.screenshot()).toString("base64");
+    return page.evaluate(async (png) => {
+      const canvas = document.createElement("canvas");
+      const pen = canvas.getContext("2d", { willReadFrequently: true })!;
+      const control = document.activeElement!;
+      canvas.width = canvas.height = 1;
+      pen.fillStyle = getComputedStyle(control).outlineColor;
+      pen.fillRect(0, 0, 1, 1);
+      const ring = [...pen.getImageData(0, 0, 1, 1).data];
+      const image = await createImageBitmap(
+        new Blob([Uint8Array.from(atob(png), (c) => c.charCodeAt(0))], {
+          type: "image/png",
+        }),
+      );
+      canvas.width = image.width;
+      canvas.height = image.height;
+      pen.drawImage(image, 0, 0);
+      const { data, width } = pen.getImageData(0, 0, image.width, image.height);
+      const r = control.getBoundingClientRect();
+      const centerX = Math.floor(r.left + r.width / 2);
+      const centerY = Math.floor(r.top + r.height / 2);
+      const count = (x: number, y: number, dx: number, dy: number) =>
+        Array.from({ length: 8 }).filter((_, step) => {
+          const at = ((y + dy * step) * width + x + dx * step) * 4;
+          return [0, 1, 2].every(
+            (c) => Math.abs(data[at + c]! - ring[c]!) <= 8,
+          );
+        }).length;
+      return {
+        top: count(centerX, Math.floor(r.top) - 1, 0, -1),
+        right: count(Math.ceil(r.right), centerY, 1, 0),
+        bottom: count(centerX, Math.ceil(r.bottom), 0, 1),
+        left: count(Math.floor(r.left) - 1, centerY, -1, 0),
+      };
+    }, screenshot);
+  }
+  const wholeRing = { top: 3, right: 3, bottom: 3, left: 3 };
+  async function assertFocusRingWhole(label: string) {
+    assert(
+      await page.evaluate(() =>
+        document.activeElement!.matches(":focus-visible"),
+      ),
+      `${label}: keyboard focus is showing`,
+    );
+    assert.deepEqual(await paintedRing(), wholeRing, `${label}: focus ring`);
+  }
+  // The toolbar paints above the stage below it, so focus rings stay whole,
+  // and below everything that overlays practice.
+  for (const theme of ["light", "dark"] as const)
+    for (const [width, height] of [
+      [320, 568],
+      [390, 844],
+      [768, 1024],
+      [1280, 900],
+    ]) {
+      const label = `toolbar ${theme} ${width}`;
+      await page.setViewportSize({ width, height });
+      await page.emulateMedia({ colorScheme: theme });
+      template = "exponential-model-value";
+      await page.goto(`${origin}/try/practice`);
+      await page.locator(".problem-stage .question").waitFor();
+      await trigger.waitFor();
+      const layout = () =>
+        page
+          .locator(".workspace-toolbar, .problem-stage")
+          .evaluateAll((els) =>
+            els.map((el) => el.getBoundingClientRect().toJSON()),
+          );
+      const before = await layout();
+      // WebKit's Tab skips buttons by default, so focus each control directly.
+      await page.getByRole("button", { name: "Calculator" }).focus();
+      await assertFocusRingWhole(`${label} calculator`);
+      await trigger.focus();
+      await assertFocusRingWhole(`${label} menu`);
+      await page.screenshot({
+        path: `${output}/practice-focus-${theme}-${width}.png`,
+      });
+      assert.deepEqual(await layout(), before, `${label}: focus moved layout`);
+      const clip = (await trigger.boundingBox())!;
+      await page.keyboard.press("Enter");
+      await drawer.waitFor();
+      await drawer.evaluate(async (el) => {
+        await Promise.all(el.getAnimations().map((a) => a.finished));
+      });
+      const toolbar = page.locator(".workspace-toolbar");
+      const covered = await page.screenshot({ clip });
+      await toolbar.evaluate((el) => (el.style.visibility = "hidden"));
+      assert(
+        covered.equals(await page.screenshot({ clip })),
+        `${label}: the menu paints over the toolbar`,
+      );
+      await toolbar.evaluate((el) => (el.style.visibility = ""));
+      await page.keyboard.press("Escape");
+      await drawer.waitFor({ state: "detached" });
+      await page.waitForFunction(() =>
+        document.activeElement?.matches("[data-navigation-trigger]"),
+      );
+      await assertFocusRingWhole(`${label} after Escape`);
+      const compact = page.locator(".compact-answer-action");
+      if (await compact.isVisible()) await compact.click();
+      const answer = page.locator("#answer:visible");
+      await answer.fill(generateProblem(template, "navigation-layout").answer);
+      await answer.press("Enter");
+      const sheet = page.getByRole("region", { name: "Answer feedback" });
+      await sheet.waitFor();
+      // No layout raises the sheet this far; pinned over the toolbar, it wins.
+      assert(
+        await sheet.evaluate(async (el) => {
+          await Promise.all(el.getAnimations().map((a) => a.finished));
+          el.style.cssText +=
+            "position:fixed;inset:0;width:auto;max-width:none;max-height:none;margin:0";
+          const menu = document
+            .querySelector("[data-navigation-trigger]")!
+            .getBoundingClientRect();
+          return el.contains(
+            document.elementFromPoint(
+              menu.left + menu.width / 2,
+              menu.top + menu.height / 2,
+            ),
+          );
+        }),
+        `${label}: the feedback sheet paints over the toolbar`,
+      );
+    }
   for (const theme of ["light", "dark"] as const)
     for (const [width, height] of [
       [320, 568],
@@ -886,7 +1033,7 @@ try {
     "navigation does not initiate purchases",
   );
   console.log(
-    `Navigation and inventory (${engine}): responsive practice/drawer/inventory, identity, context, switching, search, refresh, recovery, keyboard focus and logout errors passed.`,
+    `Navigation and inventory (${engine}): responsive practice/drawer/inventory, identity, context, switching, search, refresh, recovery, keyboard focus, toolbar stacking and logout errors passed.`,
   );
 } finally {
   await browser.close();
