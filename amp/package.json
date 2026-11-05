@@ -62,7 +62,7 @@
     "test:navigation-ui": "tsx scripts/verify-navigation-ui.ts",
     "test:account-controls-ui": "tsx scripts/verify-account-controls-ui.ts",
     "test:acquisition-ui": "tsx scripts/verify-acquisition-ui.ts",
-    "test:pitch-ui": "tsx scripts/verify-pitch-ui.ts",
+    "test:pitch-ui": "tsx scripts/verify-pitch-ui.ts && tsx scripts/verify-pitch-ui.ts --no-media",
     "test:social-ui": "tsx scripts/verify-social-sign-in-ui.ts",
     "test:passkey-ui": "tsx scripts/verify-passkey-sign-up-ui.ts",
     "test:book-ui": "tsx scripts/verify-book-ui.ts",

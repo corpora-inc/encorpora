@@ -75,7 +75,7 @@ export function BuyOptions({
         </Link>
         <p className={styles.buyTerms}>
           {formatPrice(fundedOffer.totalMinor)} for{" "}
-          {fundedOffer.termMonths ?? 12} months · 30-day full refund
+          {fundedOffer.termMonths ?? 12} months · {program.refundNote}
         </p>
         {fundedOffer.statusLabel && (
           <p className={styles.trust} data-funding-status>

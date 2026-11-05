@@ -51,8 +51,13 @@ export const pitchFixture: PitchVideo = {
   ],
 };
 
+/** Development serves the fixture unless `VITE_AMP_PITCH_FIXTURE=off`, which
+ * shows the page as production does without media. */
 export const pitchVideo: PitchVideo | null =
-  production ?? (import.meta.env.DEV ? pitchFixture : null);
+  production ??
+  (import.meta.env.DEV && import.meta.env.VITE_AMP_PITCH_FIXTURE !== "off"
+    ? pitchFixture
+    : null);
 
 /** The smallest playable source at least as wide as the rendered player,
  * else the widest playable one. Null when this browser can play none. */
