@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import {
   Link,
   useNavigate,
@@ -7,47 +6,40 @@ import {
 } from "@tanstack/react-router";
 import { rememberConsentChallenge } from "../../consent-entry";
 import { takeConsentChallenge } from "../../consent-link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { brand } from "../../../brand";
 import { LandingView } from "../../lib/LandingView";
 import { track, trackOnce } from "../../lib/analytics";
-import { queryClient } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
 import { SUPPORT_EMAIL } from "../support/SupportHelp";
-import { invoiceOffersOptions } from "../funding/invoice-offers";
-import { pricesOptions } from "../trial/api";
-import { BuyOptions, formatPrice, REFUND_POLICY_URL } from "./BuyOptions";
+import {
+  BuyOptions,
+  formatPrice,
+  GUARANTEE_FOOTNOTE,
+  loadBuyData,
+  REFUND_POLICY_URL,
+  underPerDay,
+  useBuyData,
+} from "./BuyOptions";
 import { PitchVideo } from "./PitchVideo";
-import { pitchCarry, pitchProgram, pitchTarget } from "./targets";
+import { pitchCarry, pitchTarget } from "./targets";
 import { pitchVideo } from "./video";
 import styles from "./Pitch.module.css";
 
 /** Data the pitch renders with, loaded before it mounts so it paints once,
- * complete. A failed price stays a failure the screen shows in place. */
-export function loadPitch(search: Record<string, unknown>) {
-  const program = pitchProgram(search.program);
-  return Promise.all([
-    queryClient.ensureQueryData(pricesOptions).catch(() => undefined),
-    program
-      ? queryClient
-          .ensureQueryData(invoiceOffersOptions(program.id))
-          .catch(() => undefined)
-      : undefined,
-  ]);
-}
+ * complete. */
+export const loadPitch = loadBuyData;
 
-/** `/` for a signed-out web visitor: what AMP is, what it costs, and the
- * three ways in. Buy leads; trying a problem and a free workbook follow. */
+/** `/` for a signed-out web visitor: what AMP does for a child, what it
+ * costs, and the two ways in. Buy leads; the free trial follows. */
 export function PitchScreen() {
   const search = useSearch({ strict: false }) as Record<string, unknown>;
   const navigate = useNavigate();
   const router = useRouter();
-  const program = pitchProgram(search.program);
-  const prices = useQuery(pricesOptions);
-  const funded = useQuery({
-    ...invoiceOffersOptions(program?.id ?? ""),
-    enabled: !!program,
-  });
+  const data = useBuyData(search);
+  const { program, fundedOffer, offers } = data;
+  // One plan choice for both Buy controls on the page.
+  const [interval, setPlan] = useState<"year" | "month">("year");
   useEffect(
     () =>
       trackOnce("pitch", "pitch_view", program ? { program: program.id } : {}),
@@ -65,15 +57,40 @@ export function PitchScreen() {
     window.addEventListener("hashchange", receive);
     return () => window.removeEventListener("hashchange", receive);
   }, []);
-  const cardOffers = prices.data?.available ? prices.data.offers : [];
-  const fundedOffer = funded.data?.offers[0];
-  const annual = cardOffers.find((offer) => offer.interval === "year");
-  const monthly = cardOffers.find((offer) => offer.interval === "month");
-  const priceFailed = !!prices.error && (!program || !fundedOffer);
-  const retry = () => {
-    void prices.refetch();
-    if (program) void funded.refetch();
-  };
+  const annual = offers.find((offer) => offer.interval === "year");
+  const monthly = offers.find((offer) => offer.interval === "month");
+  const funded = program && fundedOffer ? { program, fundedOffer } : null;
+  // The guarantee is universal; the footnote covers how refunds travel and
+  // the programs that allow none. A program refunding the purchase as
+  // received (not the platform's fee) is promised "your purchase".
+  const guaranteed = offers.length > 0 || !!funded;
+  const amount =
+    funded?.fundedOffer.refundPolicy === "purchase-to-account"
+      ? "your purchase"
+      : "every cent";
+  const tryFree = (
+    <Button
+      variant="secondary"
+      className={styles.tryButton}
+      onClick={() => {
+        track("try_click");
+        void navigate(pitchTarget("try", search));
+      }}
+    >
+      Try it free
+    </Button>
+  );
+  const buy = (variant: "full" | "button") =>
+    data.failed ? null : (
+      <BuyOptions
+        data={data}
+        search={search}
+        from="pitch"
+        variant={variant}
+        interval={interval}
+        onInterval={setPlan}
+      />
+    );
   return (
     <div className={styles.page} data-pitch="">
       <LandingView />
@@ -98,11 +115,12 @@ export function PitchScreen() {
         >
           <div className={styles.copy}>
             <h1 id="pitch-title" className={styles.title}>
-              Math that adapts to every answer.
+              See how far your child can go in math.
             </h1>
             <p className={styles.lede}>
-              AMP finds your child’s level, then chooses each next problem.
-              Explanations, lessons and printable workbooks are built in.
+              AMP is a complete math curriculum, from counting to precalculus,
+              that moves at your child’s pace: ahead as fast as they’re ready,
+              back to fill every gap. Thirty minutes a day, nothing to plan.
             </p>
           </div>
           {pitchVideo && (
@@ -111,96 +129,123 @@ export function PitchScreen() {
             </div>
           )}
           <div className={styles.actions}>
-            {priceFailed ? (
+            {data.failed ? (
               <div className={styles.priceError} role="alert">
                 <p>Prices didn’t load. Check your connection and try again.</p>
-                <Button variant="secondary" onClick={retry}>
+                <Button variant="secondary" onClick={data.retry}>
                   Try again
                 </Button>
               </div>
             ) : (
-              <BuyOptions
-                program={program}
-                fundedOffer={fundedOffer}
-                offers={cardOffers}
-                search={search}
-              />
+              buy("full")
             )}
-            <div className={styles.secondary}>
-              <Button
-                variant="secondary"
-                onClick={() => {
-                  track("try_click");
-                  void navigate(pitchTarget("try", search));
-                }}
-              >
-                Try a problem
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={() => {
-                  track("workbook_click");
-                  void navigate(pitchTarget("workbook", search));
-                }}
-              >
-                Get a free workbook
-              </Button>
+            <div className={styles.free}>
+              {tryFree}
+              <p className={styles.note}>
+                Free assessment, adaptive practice and printable workbooks. No
+                credit card.
+              </p>
             </div>
           </div>
         </section>
-        <section className={styles.details} aria-labelledby="pitch-includes">
-          <h2 id="pitch-includes">What you get</h2>
+        <section className={styles.details} aria-labelledby="pitch-why">
+          <h2 id="pitch-why">Why children move faster with AMP</h2>
           <ul className={styles.includes}>
             <li>
-              <strong>Adaptive practice</strong>
+              <strong>No waiting for the class.</strong>
               <span>
-                Each answer sets the next problem, from counting through
-                precalculus.
+                Every area of math moves at your child’s pace, not the school
+                calendar’s. Ready children can cover years of material, not just
+                one.
               </span>
             </li>
             <li>
-              <strong>Explanations and lessons on demand</strong>
-              <span>A hint and a lesson for every kind of problem.</span>
+              <strong>No gap left behind.</strong>
+              <span>
+                When an idea is shaky, AMP steps back to what it builds on,
+                explains it plainly, and brings it back until it sticks.
+              </span>
             </li>
             <li>
-              <strong>Printable workbooks at your child’s level</strong>
-              <span>Paper practice made from where your child is now.</span>
+              <strong>Nothing to plan.</strong>
+              <span>
+                Your child presses Next. AMP builds the best next problem every
+                time, and prints workbooks made from where they are.
+              </span>
             </li>
           </ul>
         </section>
-        {(annual || monthly || fundedOffer) && (
+        <section className={styles.details} aria-labelledby="pitch-year">
+          <h2 id="pitch-year">Everything in one year</h2>
+          <ul className={styles.checklist}>
+            <li>Unlimited adaptive practice, counting through precalculus</li>
+            <li>
+              A hint, a lesson and a step‑by‑step explanation for every problem
+            </li>
+            <li>Unlimited printable workbooks, made for your child</li>
+            <li>Progress you can see on phone, tablet and computer</li>
+          </ul>
+        </section>
+        {(annual || monthly || funded) && (
           <section className={styles.details} aria-labelledby="pitch-price">
             <h2 id="pitch-price">Price</h2>
-            <ul className={styles.prices}>
-              {annual && (
-                <li>
-                  Annual: <strong>{formatPrice(annual.amountMinor)}</strong> per
-                  year
-                </li>
-              )}
-              {monthly && (
-                <li>
-                  Monthly: <strong>{formatPrice(monthly.amountMinor)}</strong>{" "}
-                  per month
-                </li>
-              )}
-              {program && fundedOffer && (
-                <li>
-                  {program.name}:{" "}
-                  <strong>{formatPrice(fundedOffer.totalMinor)}</strong> for{" "}
-                  {fundedOffer.termMonths ?? 12} months, invoiced
-                </li>
-              )}
-            </ul>
-            <p className={styles.refund}>
-              One learner per plan. Ask within 30 days of payment and the whole
-              payment is refunded.{" "}
+            {(annual || monthly) && (
+              <p className={styles.priceLine}>
+                {annual && (
+                  <>
+                    <strong>{formatPrice(annual.amountMinor)} a year</strong>,
+                    under {underPerDay(annual.amountMinor)} a day.
+                  </>
+                )}
+                {annual && monthly && " "}
+                {monthly &&
+                  (annual ? (
+                    <>
+                      Or <strong>{formatPrice(monthly.amountMinor)}</strong> a
+                      month.
+                    </>
+                  ) : (
+                    <>
+                      <strong>
+                        {formatPrice(monthly.amountMinor)} a month
+                      </strong>
+                      .
+                    </>
+                  ))}
+              </p>
+            )}
+            {funded && (
+              <p className={styles.priceLine}>
+                {funded.program.name}:{" "}
+                <strong>{formatPrice(funded.fundedOffer.totalMinor)}</strong>{" "}
+                for {funded.fundedOffer.termMonths ?? 12} months, paid from your{" "}
+                {funded.program.fund} balance.
+              </p>
+            )}
+          </section>
+        )}
+        {guaranteed && (
+          <section
+            className={`${styles.details} ${styles.guarantee}`}
+            aria-labelledby="pitch-guarantee"
+            data-guarantee=""
+          >
+            <h2 id="pitch-guarantee">Give it 30 days.</h2>
+            <p>
+              You’ll be amazed how far your child can go. If AMP isn’t right for
+              your child, tell us within 30 days and we’ll refund {amount}. No
+              questions asked.*{" "}
               <a href={REFUND_POLICY_URL} className={styles.inlineLink}>
                 Refund policy
               </a>
             </p>
+            <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>
           </section>
         )}
+        <section className={styles.closing} aria-label="Get started">
+          {buy("button")}
+          {tryFree}
+        </section>
       </main>
       <footer className={styles.footer}>
         <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>

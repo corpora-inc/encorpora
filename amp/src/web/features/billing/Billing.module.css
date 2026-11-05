@@ -17,6 +17,8 @@
 }
 .terms {
   margin: 0;
+  text-wrap: balance;
+  text-wrap: pretty;
   color: var(--color-muted-text);
   font-size: var(--text-small);
   line-height: 1.45;

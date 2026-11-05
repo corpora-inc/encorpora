@@ -25,7 +25,7 @@ export function pitchCarry(search: Record<string, unknown>): FundedSearch {
 /** Where each pitch action goes. Every destination can succeed signed out:
  * the funded invoice needs no account; the rest sign up first. */
 export function pitchTarget(
-  action: "funded" | "card" | "try" | "workbook",
+  action: "funded" | "card" | "try",
   search: Record<string, unknown>,
 ) {
   const carry = pitchCarry(search);
@@ -48,7 +48,5 @@ export function pitchTarget(
       return signUp("pitch-buy", false);
     case "try":
       return signUp("pitch-try", true);
-    case "workbook":
-      return signUp("pitch-workbook", true);
   }
 }

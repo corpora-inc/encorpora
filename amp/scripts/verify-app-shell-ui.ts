@@ -208,8 +208,8 @@ async function verifyShell() {
       await context.close();
     }
 
-  // 4. Landing (the signed-out pitch, verify-pitch-ui): the two free paths
-  //    share one size and the wordmark stays on one line.
+  // 4. Landing (the signed-out pitch, verify-pitch-ui): both "Try it free"
+  //    controls are full targets of one size.
   {
     const { page, context } = await open(
       "landing",
@@ -217,17 +217,13 @@ async function verifyShell() {
       "light",
     );
     const sizes = await page.evaluate(() =>
-      ["Try a problem", "Get a free workbook"].map((name) => {
-        const button = [...document.querySelectorAll("button")].find(
-          (b) => b.textContent === name,
-        );
-        return button ? button.getBoundingClientRect().height : 0;
-      }),
+      [...document.querySelectorAll("button")]
+        .filter((b) => b.textContent === "Try it free")
+        .map((b) => b.getBoundingClientRect().height),
     );
     check(
-      sizes.every((height) => height >= 44) &&
-        Math.abs(sizes[0]! - sizes[1]!) <= 1,
-      `landing: free paths are ${sizes.join("px and ")}px tall`,
+      sizes.length === 2 && sizes.every((height) => height >= 44),
+      `landing: Try it free controls are ${sizes.join("px and ")}px tall`,
     );
     await context.close();
   }

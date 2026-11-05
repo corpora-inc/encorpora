@@ -20,6 +20,14 @@ export async function loadFundingOffers(
     .max(200)
     .parse(JSON.parse(await readFile(path, "utf8")));
   availableOffers(offers, new Date());
+  // Transitional: an offer must state its refund policy. Until every offer
+  // file does, the pitch and invoice make no program-specific refund promise
+  // for it, and the operator is told here.
+  for (const offer of offers)
+    if (!offer.refundPolicy)
+      console.warn(
+        `Funding offer ${offer.id} has no refundPolicy; add full-to-account, purchase-to-account or none (see docs/funded-purchases.md).`,
+      );
   for (const offer of offers) {
     if (fundingPrograms.get(offer.programId) !== offer.jurisdiction)
       throw new Error(

@@ -299,7 +299,7 @@ try {
         if (!authenticated) {
           await practice
             .getByRole("heading", {
-              name: "Math that adapts as you answer.",
+              name: "Try AMP free",
               exact: true,
             })
             .waitFor();
@@ -480,7 +480,8 @@ try {
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
   await page.waitForURL(`${origin}/`, { waitUntil: "load" });
   await page
-    .getByRole("button", { name: "Try a problem", exact: true })
+    .getByRole("button", { name: "Try it free", exact: true })
+    .first()
     .waitFor();
   assert(notifications >= 1, "successful sign-out broadcasts account change");
   assert.equal(signedIn, false);

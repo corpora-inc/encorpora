@@ -241,6 +241,9 @@ try {
           }
           if (path.includes("/events") || path.includes("/engagement"))
             return route.fulfill({ status: 204, body: "" });
+          // The trial loads Buy's prices with the route.
+          if (path === "/api/v1/billing/prices")
+            return route.fulfill({ json: { available: false, offers: [] } });
           console.warn("Unmocked fixture route", path);
           return route.fulfill({
             status: 404,

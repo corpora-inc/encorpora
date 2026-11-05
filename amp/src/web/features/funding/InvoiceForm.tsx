@@ -16,7 +16,7 @@ import { fundedPrograms, type FundedProgramSlug } from "../../lib/funded-entry";
 import { Button, buttonClass } from "../../ui/Button";
 import { TextField } from "../../ui/TextField";
 import styles from "./InvoiceForm.module.css";
-import { invoiceOffersOptions } from "./invoice-offers";
+import { invoiceOffersOptions, offerRefunds } from "./invoice-offers";
 const responseSchema = z.object({
   invoiceId: z.string().uuid(),
   totalMinor: z.number().int().positive(),
@@ -180,6 +180,17 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                 onChange={(event) => setStudent(event.target.value)}
                 disabled={busy}
               />
+              {/* The point of sale discloses this program's refund terms
+                  (https://corpora.inc/legal/refund/), including a program
+                  that allows none; an offer that has not stated its terms
+                  gets the line true for every program. */}
+              <p className={styles.notice} data-refund-terms>
+                {offer.refundPolicy === "none"
+                  ? `${program.name} doesn’t allow refunds or cancellations, so the money‑back guarantee can’t apply to this purchase.`
+                  : offerRefunds(offer) && offer.refundSummary
+                    ? offer.refundSummary
+                    : `Paid through ${program.name}, so its refund rules apply.`}
+              </p>
               <Button type="submit" variant="primary" disabled={busy}>
                 {busy ? "Preparing invoice…" : "Create invoice PDF"}
               </Button>

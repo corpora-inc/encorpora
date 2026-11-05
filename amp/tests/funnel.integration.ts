@@ -383,8 +383,9 @@ test(
           props: { referrer: "search", device: "desktop" },
         },
         { event: "pitch_view" },
-        { event: "workbook_click" },
         { event: "try_click" },
+        { event: "invite_view", props: { at: "map" } },
+        { event: "buy_click", props: { path: "funded", from: "invite" } },
         { event: "paywall_view", props: { reason: "choice" } },
         { event: "paywall_dismiss", props: { reason: "price" } },
         { event: "checkout_return", props: { outcome: "cancel" } },
@@ -454,7 +455,16 @@ test(
       assert.equal(pitch("video_progress:100").visitors, 0);
       assert.equal(pitch("buy_click:card").fromPitch, 0.5);
       assert.equal(pitch("buy_click:funded").visitors, 0);
-      assert.equal(pitch("workbook_click").visitors, 1);
+      const trial = (name: string) =>
+        report.trialBuy.find((s) => s.step === name)!;
+      assert.equal(trial("try_click").visitors, 2);
+      assert.equal(trial("invite_view:map").fromTrial, 0.5);
+      assert.equal(trial("trial_buy_click:funded").visitors, 1);
+      assert.equal(
+        pitch("buy_click:funded").visitors,
+        0,
+        "a trial Buy is not a pitch Buy",
+      );
       assert.equal(pitch("purchase").visitors, 1);
       assert.deepEqual(
         report.breakdowns.source.map((r) => [r.key, r.visitors, r.purchased]),

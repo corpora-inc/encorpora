@@ -279,7 +279,7 @@ try {
       referer: "https://mail.google.com/",
     },
   );
-  await page.getByRole("button", { name: "Try a problem" }).click();
+  await page.getByRole("button", { name: "Try it free" }).first().click();
   await page.waitForURL(
     (url) =>
       url.pathname === "/sign-up" &&
@@ -356,7 +356,7 @@ try {
     `${origin}/?utm_source=launch&utm_medium=email&utm_campaign=fall`,
     { referer: "https://www.google.com/" },
   );
-  await other.getByRole("button", { name: "Try a problem" }).click();
+  await other.getByRole("button", { name: "Try it free" }).first().click();
   await milestones(other, [
     ["placement_answer", { index: 0 }],
     ["paywall_view", { reason: "choice" }],

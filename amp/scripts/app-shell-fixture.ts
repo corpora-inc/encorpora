@@ -289,7 +289,7 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "landing",
       path: "/",
       state: "guest",
-      ready: heading(/Math that adapts to every answer/),
+      ready: heading(/See how far your child can go in math/),
     },
     {
       id: "sign-in",

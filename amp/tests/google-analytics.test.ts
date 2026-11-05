@@ -237,6 +237,38 @@ test("pitch actions map to GA's recommended names with only allowed parameters",
     name: "buy_click",
     params: { payment_route: "card", program: "ar-efa" },
   });
+  // Buy inside the free trial says where it was pressed; still never a checkout.
+  assert.deepEqual(
+    googleEvent("buy_click", { path: "funded", from: "invite" }, funded),
+    {
+      name: "buy_click",
+      params: {
+        payment_route: "ar-efa",
+        from: "trial-invite",
+        program: "ar-efa",
+      },
+    },
+  );
+  assert.deepEqual(
+    googleEvent("buy_click", { path: "card", from: "chrome" }, card),
+    {
+      name: "buy_click",
+      params: { payment_route: "card", from: "trial-toolbar" },
+    },
+  );
+  assert.deepEqual(
+    googleEvent(
+      "buy_click",
+      { path: "card", from: "parent@example.test" },
+      card,
+    ),
+    { name: "buy_click", params: { payment_route: "card" } },
+  );
+  assert.deepEqual(googleEvent("invite_view", { at: "map" }, card), {
+    name: "invite_view",
+    params: { invite_at: "map" },
+  });
+  assert.equal(googleEvent("invite_view", { at: "paywall" }, card), undefined);
   assert.deepEqual(googleEvent("try_click", undefined, funded), {
     name: "try_click",
     params: { program: "ar-efa" },

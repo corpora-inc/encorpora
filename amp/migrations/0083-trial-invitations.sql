@@ -1,0 +1,4 @@
+-- Free-trial invitations to buy: where one appeared. buy_click gains an
+-- optional place (props only, no schema change).
+ALTER TABLE amp_funnel_events DROP CONSTRAINT amp_funnel_events_event_check;
+ALTER TABLE amp_funnel_events ADD CONSTRAINT amp_funnel_events_event_check CHECK (event IN ('landing_view','try_click','placement_answer','placement_done','map_view','practice_answer','practice_skip','lesson_open','hint_use','mastery','email_saved','session_start','paywall_view','paywall_dismiss','plan_view','plan_select','checkout_start','checkout_return','purchase','learner_added','paid_practice_first','refund_requested','refund','level_check_view','purchase_attempt','purchase_action','trial_problem_view','auth_failure','page_view','problem_rendered','learning_request','client_error','account_session','auth_request','pitch_view','video_play','video_progress','buy_click','workbook_click','invite_view'));

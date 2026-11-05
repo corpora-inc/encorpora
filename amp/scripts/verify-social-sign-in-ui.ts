@@ -291,9 +291,7 @@ try {
       });
       const page = await context.newPage();
       await page.goto(`${origin}/sign-up?return=free-practice&program=az-esa`);
-      await page
-        .getByRole("heading", { name: "Math that adapts as you answer." })
-        .waitFor();
+      await page.getByRole("heading", { name: "Try AMP free" }).waitFor();
       // Opt-in is a single quiet line, never a checkbox to decide on.
       assert.equal(await page.getByRole("checkbox").count(), 0);
       assert.match(
