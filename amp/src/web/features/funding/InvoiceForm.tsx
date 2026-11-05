@@ -186,7 +186,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                   gets the line true for every program. */}
               <p className={styles.notice} data-refund-terms>
                 {offer.refundPolicy === "none"
-                  ? `${program.name} doesn’t allow refunds or cancellations, so the money-back guarantee can’t apply to this purchase.`
+                  ? `${program.name} doesn’t allow refunds or cancellations, so the money‑back guarantee can’t apply to this purchase.`
                   : offerRefunds(offer) && offer.refundSummary
                     ? offer.refundSummary
                     : `Paid through ${program.name}, so its refund rules apply.`}

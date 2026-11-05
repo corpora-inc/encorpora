@@ -180,7 +180,7 @@ export function PitchScreen() {
           <ul className={styles.checklist}>
             <li>Unlimited adaptive practice, counting through precalculus</li>
             <li>
-              A hint, a lesson and a step-by-step explanation for every problem
+              A hint, a lesson and a step‑by‑step explanation for every problem
             </li>
             <li>Unlimited printable workbooks, made for your child</li>
             <li>Progress you can see on phone, tablet and computer</li>

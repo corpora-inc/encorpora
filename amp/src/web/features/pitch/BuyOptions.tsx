@@ -21,9 +21,11 @@ import styles from "./Pitch.module.css";
 export const REFUND_POLICY_URL = "https://corpora.inc/legal/refund/";
 /** The guarantee, the same on every route that carries it; the asterisk
  * points to `GUARANTEE_FOOTNOTE` (https://corpora.inc/legal/refund/). */
-export const RISK_FREE = "Risk-free: 30-day money-back guarantee*";
+// Non-breaking hyphens (U+2011): "Risk‑free" never splits across lines.
+export const RISK_FREE = "Risk‑free: 30‑day money‑back guarantee*";
+export const RISK_FREE_SHORT = "Risk‑free for 30 days*";
 export const GUARANTEE_FOOTNOTE =
-  "*Refunds go back the way you paid: to your card, or to your child’s education-fund account. A few education programs don’t allow refunds; if yours is one, we’ll tell you before you pay.";
+  "*Refunds go back the way you paid: to your card, or to your child’s education‑fund account. A few education programs don’t allow refunds; if yours is one, we’ll tell you before you pay.";
 
 /** Whole dollars read "$499"; an amount with cents keeps them ("$49.50"). */
 export function formatPrice(minor: number) {
@@ -168,7 +170,10 @@ export function BuyOptions({
           , paid from your {program.fund} balance
           {/* A program that does not refund (or has not said) shows the
               price only; the page's footnote covers the exception. */}
-          {offerRefunds(fundedOffer) ? ` · ${RISK_FREE}` : "."}
+          .
+          {offerRefunds(fundedOffer) && (
+            <span className={styles.guaranteeLine}>{RISK_FREE}</span>
+          )}
         </p>
         {fundedOffer.statusLabel && (
           <p className={styles.trust} data-funding-status>
@@ -206,8 +211,8 @@ export function BuyOptions({
       {button}
       <p className={styles.buyTerms} data-buy-terms>
         {offer.formattedAmount}{" "}
-        {offer.interval === "year" ? "for the year" : "a month"}
-        {` · ${RISK_FREE}`}
+        {offer.interval === "year" ? "for the year" : "a month"}.
+        <span className={styles.guaranteeLine}>{RISK_FREE}</span>
       </p>
     </div>
   );

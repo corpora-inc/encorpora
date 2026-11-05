@@ -21,6 +21,7 @@ import { trialLimits } from "../src/server/trials";
 import { consentFixture } from "../tests/parent-consent.fixture";
 import { migrate } from "./migrate";
 import { answerOne, trackPracticeProblems } from "./ui-practice-answer";
+import { guaranteeProblems, RISK_FREE } from "./ui-copy-checks";
 
 /**
  * From the pitch into the free trial and back to Buy, against the real
@@ -406,6 +407,13 @@ async function journey(browser: Browser, engine: string) {
   const earned = page.locator('[data-trial-invitation="workbook"]');
   await earned.waitFor();
   await earned.getByRole("button", { name: "Buy AMP" }).waitFor();
+  // The short promise keeps its asterisk and its footnote, in the feedback too.
+  await earned.getByText("Risk\u2011free for 30 days*").waitFor();
+  assert.deepEqual(
+    await guaranteeProblems(page, '[data-trial-invitation="workbook"]'),
+    [],
+    `${engine}: earned-workbook guarantee copy`,
+  );
   await page.locator("[data-workbook-offer]").waitFor();
   await targets(page, '[data-trial-invitation="workbook"]', `${engine} earned`);
   await noOverflow(page, `${engine} earned`);
@@ -497,7 +505,18 @@ async function viewports(
       await card
         .getByRole("heading", { name: "Ready for the full year?" })
         .waitFor();
-      await card.getByText("Risk-free: 30-day money-back guarantee*").waitFor();
+      await card.getByText(RISK_FREE).waitFor();
+      assert.deepEqual(
+        await guaranteeProblems(page, '[data-trial-invitation="map"]'),
+        [],
+        `${tag}: map guarantee copy`,
+      );
+      // The invitation is the map's one Buy: no "See plans" beside it.
+      assert.equal(
+        await page.getByRole("link", { name: "See plans" }).count(),
+        0,
+        `${tag}: one purchase action on the map`,
+      );
       await card.getByText(/^\*Refunds go back the way you paid/).waitFor();
       await card.locator("[data-trial-workbooks]").waitFor();
       await targets(page, '[data-trial-invitation="map"]', `${tag} card`);
@@ -546,7 +565,7 @@ async function buyJourneys(
   await page.goto(`${origin}/try/map?program=ar-efa&${campaign}`);
   await card.waitFor();
   // An offer that has not stated its refund policy: no promise beside Buy.
-  assert.equal(await card.getByText(/Risk-free/).count(), 0);
+  assert.equal(await card.getByText(/Risk\u2011free/).count(), 0);
   // The first-party queue sends within two seconds.
   await page.waitForTimeout(2500);
   await context.close();

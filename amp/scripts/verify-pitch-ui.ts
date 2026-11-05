@@ -10,6 +10,7 @@ import {
 } from "playwright";
 import { createServer } from "vite";
 import { signupNotice } from "../src/parent-followup/contracts";
+import { guaranteeProblems, orphanLines, RISK_FREE } from "./ui-copy-checks";
 import { retentionNotice } from "../src/family/contracts";
 import { noticeDigest } from "../src/parent-consent/crypto";
 import { consentFixture } from "../tests/parent-consent.fixture";
@@ -287,9 +288,21 @@ async function viewports(browser: Browser, engine: string) {
         assert.equal(
           await page.locator("[data-buy-terms]").first().innerText(),
           program
-            ? "$499 for the year, paid from your EFA balance · Risk-free: 30-day money-back guarantee*"
-            : "$499 for the year · Risk-free: 30-day money-back guarantee*",
+            ? `$499 for the year, paid from your EFA balance.\n${RISK_FREE}`
+            : `$499 for the year.\n${RISK_FREE}`,
           `${tag}: the guarantee beside Buy`,
+        );
+        // No guarantee word splits at a hyphen; every promise has its
+        // asterisk and footnote; no body or fine-print line is one lone word.
+        assert.deepEqual(
+          await guaranteeProblems(page, "[data-pitch]"),
+          [],
+          `${tag}: guarantee copy`,
+        );
+        assert.deepEqual(
+          await orphanLines(page, "[data-pitch] main"),
+          [],
+          `${tag}: no single-word last line`,
         );
         if (program)
           assert.equal(

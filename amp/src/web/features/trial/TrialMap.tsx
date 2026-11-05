@@ -20,7 +20,7 @@ import {
 import { track, trackSessionStart } from "./analytics";
 import { FreeMeter } from "./FreeMeter";
 import { TrialWorkbooks } from "./TrialWorkbooks";
-import { TrialInvitation } from "./TrialBuy";
+import { TrialInvitation, useTrialBuyOffered } from "./TrialBuy";
 import { nativeRuntime } from "../../native-runtime";
 import { trialEvidenceOptions } from "../pathways/queries";
 import { ShareAssessment } from "./ShareAssessment";
@@ -49,6 +49,7 @@ function MapView({ session }: { session: TrialSession }) {
   const progress = useQuery(progressOptions(session));
   const catalog = useQuery(catalogOptions);
   const evidence = useQuery(trialEvidenceOptions(session));
+  const offered = useTrialBuyOffered();
   const shareMap = useMemo(
     () =>
       catalog.data && evidence.data
@@ -99,6 +100,7 @@ function MapView({ session }: { session: TrialSession }) {
     ),
   );
   const left = p.remaining;
+  const invited = offered && !nativeRuntime && p.phase !== "placement";
   return (
     <PageFrame centered>
       <section className={`${frameCard} ${styles.panel}`}>
@@ -130,13 +132,16 @@ function MapView({ session }: { session: TrialSession }) {
                   ? "Continue placement"
                   : "Keep practicing"}
               </Link>
-              <Link
-                to="/try/plans"
-                search={{ reason: "choice" }}
-                className={buttonClass("secondary")}
-              >
-                See plans
-              </Link>
+              {/* The invitation below sells the year; one Buy is enough. */}
+              {!invited && (
+                <Link
+                  to="/try/plans"
+                  search={{ reason: "choice" }}
+                  className={buttonClass("secondary")}
+                >
+                  See plans
+                </Link>
+              )}
             </>
           ) : (
             <Link

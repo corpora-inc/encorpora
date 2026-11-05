@@ -108,6 +108,7 @@
   max-width: 34em;
   font-size: 18px;
   line-height: 1.55;
+  text-wrap: balance;
   text-wrap: pretty;
   color: var(--color-muted-text);
 }
@@ -253,6 +254,23 @@
   width: 100%;
   min-height: 56px;
   font-size: var(--text-body);
+}
+/* Body and fine print end on two words or more, never a lone orphan. */
+.buyTerms,
+.note,
+.includes span,
+.priceLine,
+.guarantee p,
+.checklist li,
+.trust {
+  text-wrap: balance;
+  text-wrap: pretty;
+}
+/* The guarantee on its own line, so the phrase never splits. */
+.guaranteeLine {
+  display: block;
+  font-weight: 650;
+  color: var(--color-on-surface);
 }
 .buyTerms {
   margin: 0;

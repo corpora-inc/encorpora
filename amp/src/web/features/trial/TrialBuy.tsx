@@ -7,6 +7,7 @@ import {
   BuyOptions,
   GUARANTEE_FOOTNOTE,
   RISK_FREE,
+  RISK_FREE_SHORT,
   useBuyData,
 } from "../pitch/BuyOptions";
 import { offerRefunds } from "../funding/invoice-offers";
@@ -29,6 +30,12 @@ function useTrialBuy() {
   const available =
     !!(data.program && data.fundedOffer) || !!data.offers.length;
   return session.data && !purchased && available ? { data, search } : null;
+}
+
+/** Whether the trial offers Buy here (the map's invitation replaces its
+ * "See plans"). */
+export function useTrialBuyOffered() {
+  return !!useTrialBuy();
 }
 
 /** The trial toolbar's Buy: one compact control, present from the first
@@ -96,8 +103,7 @@ export function TrialInvitation({
             Unlimited practice and workbooks, as far as your child can go.
             {guaranteed && (
               <span className={styles.risk}>
-                {" "}
-                {at === "map" ? RISK_FREE : "Risk-free for 30 days."}
+                {at === "map" ? RISK_FREE : RISK_FREE_SHORT}
               </span>
             )}
           </p>
@@ -111,9 +117,8 @@ export function TrialInvitation({
           label={at === "workbook" ? "Buy AMP" : undefined}
         />
       </div>
-      {guaranteed && at === "map" && (
-        <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>
-      )}
+      {/* The promise never appears without its footnote. */}
+      {guaranteed && <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>}
       {children}
     </section>
   );

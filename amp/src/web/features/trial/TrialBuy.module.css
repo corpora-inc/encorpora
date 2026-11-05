@@ -54,16 +54,22 @@
 }
 .text p {
   margin: 0;
+  text-wrap: balance;
+  text-wrap: pretty;
   font-size: var(--text-body);
   line-height: 1.5;
   color: var(--color-muted-text);
 }
+/* The guarantee on its own line, so the phrase never splits. */
 .risk {
+  display: block;
   font-weight: 650;
   color: var(--color-on-surface-raised);
 }
 .footnote {
   margin: 0;
+  text-wrap: balance;
+  text-wrap: pretty;
   font-size: var(--text-small);
   line-height: 1.45;
   color: var(--color-muted-text);
