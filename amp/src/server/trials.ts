@@ -19,6 +19,21 @@ export {
 } from "../learning/trial-workbooks";
 /** Unadopted trials and their answers are deleted after this. */
 export const TRIAL_DAYS = RETENTION.unsavedTrialDays;
+/** Hosted mode: problems a visitor without a parent session may be served
+ * and answer on an unowned trial. Anything further needs a sign-in, which
+ * claims the trial (with its answer) into the parent's account. */
+export const ANONYMOUS_FREE_PROBLEMS = 1;
+/** The 401 error for a request a visitor without a parent session may not
+ * make. The web client answers it with the sign-in-to-save prompt. */
+export const SIGN_IN_TO_CONTINUE = "sign_in_to_continue";
+/** What `POST /trials/current` did with the device's trial token.
+ * - `claimed`: the unowned trial was moved into this account just now.
+ * - `owned`: the token already names this account's live trial.
+ * - `kept-existing`: the account already had a live trial, which is
+ *   returned; the token's unowned trial is left alone and expires.
+ * - `unavailable`: the token names no live trial this account can claim
+ *   (expired, saved, unknown or another account's). */
+export type TrialClaim = "claimed" | "owned" | "kept-existing" | "unavailable";
 
 export type TrialLimits = { free: number; placement: number };
 /** Placement is the first fifth of the allowance, capped at twenty, so a
