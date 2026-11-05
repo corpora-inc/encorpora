@@ -24,10 +24,10 @@ export function renderSupplierPacket(
       <div className="panel">
         <h2>One learner. A focused learning path.</h2>
         <p>
-          Learners practice selected skills, review explanations and open
-          related reading. A parent can review recent independent and assisted
-          attempts. Varied problems connect calculations to explanations and
-          related reading.
+          Learners practice skills chosen for their level, review explanations
+          and open related reading. A parent can review recent independent and
+          assisted attempts. Varied problems connect calculations to
+          explanations and related reading.
         </p>
       </div>
       <h2>Proposed MyScholarShop offering</h2>
@@ -40,7 +40,8 @@ export function renderSupplierPacket(
       <p className="note">
         This is a product-review draft, not a funded offer. It provides no live
         teacher, school enrollment, accredited credit or guaranteed test score.
-        The catalog covers selected skills, not a complete K–12 course.
+        AMP is adaptive mathematics from counting through precalculus, with
+        lessons, printable workbooks and progress tracking.
       </p>
     </>,
     ...Array.from(

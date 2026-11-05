@@ -21,6 +21,8 @@ test("pages encode configured content and keep scripts first-party", () => {
   assert.ok(html.includes("&lt;img"));
   assert.ok(!html.includes("<img"));
   assert.ok(html.includes("Draft for counsel review"));
+  assert.ok(html.includes("a particular learning result, grade placement or test"));
+  assert.ok(!html.includes("complete grade-level coverage"));
   assert.ok(html.includes('name="robots" content="noindex, nofollow"'));
   assert.ok(!html.includes("<script"));
 });

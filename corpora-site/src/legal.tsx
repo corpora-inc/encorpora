@@ -79,10 +79,10 @@ export function Legal({
               skills listed in its coverage description
             </a>
             . Placement is an estimate from a limited set of answers, not a
-            diagnosis, accredited qualification, or guaranteed score. We do not
-            promise complete grade-level coverage or a particular rate of
-            progress. Internet access and a supported modern browser are
-            required for the web service.
+            diagnosis, accredited qualification, or guaranteed score. We don’t
+            guarantee a particular learning result, grade placement or test
+            score. Internet access and a supported modern browser are required
+            for the web service.
           </p>
           <h2>Responsible use</h2>
           <p>
