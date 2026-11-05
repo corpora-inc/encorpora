@@ -308,6 +308,9 @@ async function mockApi(context: BrowserContext, templateId: string) {
       });
     if (path.includes("/events") || path.includes("/engagement"))
       return route.fulfill({ status: 204, body: "" });
+    // The trial loads Buy's prices with the route (verify-trial-invitations-ui).
+    if (path === "/api/v1/billing/prices")
+      return json({ available: false, offers: [] });
     console.warn(`unmocked ${route.request().method()} ${path}`);
     return route.fulfill({ status: 404, json: { error: "Synthetic route" } });
   });
