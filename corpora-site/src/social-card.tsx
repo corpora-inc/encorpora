@@ -31,6 +31,17 @@ const fonts = [
   ),
 );
 const serif = "KaTeX_Main";
+// Vertical layout of the text column. The heading's inked bottom (baseline
+// plus descenders) must stay clear of the rule above the address.
+const headingTop = 262;
+export const ruleY = 538;
+export const headingBottom = ruleY - 32;
+const lineGap = 1.12;
+const descent = 0.25;
+/** Inked bottom of an n-line heading at this size. */
+function headingInkBottom(size: number, lines: number) {
+  return headingTop + size * 0.82 + (lines - 1) * size * lineGap + size * descent;
+}
 const sans = "KaTeX_SansSerif";
 const resvgOptions = {
   font: { fontFiles: fonts, loadSystemFonts: false, defaultFontFamily: sans },
@@ -187,7 +198,7 @@ function wrap(
 }
 
 /** Largest heading size whose wrapped lines fit the text column. */
-function fitHeading(spec: CardSpec, maxWidth: number, maxHeight: number) {
+function fitHeading(spec: CardSpec, maxWidth: number) {
   const words: Word[] = [
     ...spec.heading.split(/\s+/).map((text) => ({ text, italic: false })),
     ...(spec.emphasis ?? "")
@@ -210,14 +221,16 @@ function fitHeading(spec: CardSpec, maxWidth: number, maxHeight: number) {
     const lines = layout(size);
     if (
       !lines.some((line) => tooWide(line, size)) &&
-      lines.length * size * 1.12 <= maxHeight
+      headingInkBottom(size, lines.length) <= headingBottom
     )
       return { size, lines };
   }
   // Configured headlines are free text. Keep the build working and end the
   // last visible line with an ellipsis; the page itself shows the full text.
   const size = minimum;
-  const lines = layout(size).slice(0, Math.floor(maxHeight / (size * 1.12)));
+  let fit = 1;
+  while (headingInkBottom(size, fit + 1) <= headingBottom) fit++;
+  const lines = layout(size).slice(0, fit);
   const last = lines[lines.length - 1]!;
   last.push({ text: "…", italic: last[last.length - 1]!.italic });
   while (last.length > 1 && tooWide(last, size)) last.splice(-2, 1);
@@ -228,9 +241,9 @@ function fitHeading(spec: CardSpec, maxWidth: number, maxHeight: number) {
 }
 
 function headingSvg(spec: CardSpec, ink: string, emphasis: string) {
-  const top = 262;
-  const { size, lines } = fitHeading(spec, 540, 300);
-  const lineHeight = size * 1.12;
+  const top = headingTop;
+  const { size, lines } = fitHeading(spec, 540);
+  const lineHeight = size * lineGap;
   return lines
     .map((line, index) => {
       const spans = line
@@ -404,7 +417,7 @@ export function cardSvg(spec: CardSpec, tokens: Map<string, string>, siteUrl?: s
   <text x="72" y="118" font-family="${sans}" font-weight="bold" font-size="44" letter-spacing="-3" fill="${t("--color-on-surface")}">corpora<tspan fill="${t("--color-primary")}">.</tspan></text>
   ${labelSvg(spec.label, t)}
   ${headingSvg(spec, t("--color-on-surface"), t("--color-primary"))}
-  <path d="M72 538H160" stroke="${t("--color-primary")}" stroke-width="3" stroke-linecap="round"/>
+  <path d="M72 ${ruleY}H160" stroke="${t("--color-primary")}" stroke-width="3" stroke-linecap="round"/>
   <text x="72" y="576" font-family="${sans}" font-size="22" fill="${t("--color-muted-text")}">${escape(address)}</text>
   <rect x="${panel.x}" y="${panel.y}" width="${panel.w}" height="${panel.h}" rx="28" fill="${t("--color-surface-raised")}" stroke="${t("--color-border")}" stroke-width="1.5" filter="url(#lift)"/>
   ${art}
