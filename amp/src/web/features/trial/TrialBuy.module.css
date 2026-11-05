@@ -66,6 +66,27 @@
   font-weight: 650;
   color: var(--color-on-surface-raised);
 }
+/* A 44 px target around the asterisk that does not grow the line. */
+.asterisk {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: var(--target-size);
+  min-height: var(--target-size);
+  /* The target extends right of the mark, so the asterisk sits on the
+     word it qualifies and the line keeps its height. */
+  margin: calc(var(--target-size) / -2 + 0.5em)
+    calc(var(--target-size) * -1 + 0.6em) calc(var(--target-size) / -2 + 0.5em)
+    0;
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+.asterisk:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -6px;
+  border-radius: var(--radius-control);
+}
 .footnote {
   margin: 0;
   text-wrap: balance;

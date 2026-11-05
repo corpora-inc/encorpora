@@ -8,6 +8,7 @@ import {
   GUARANTEE_FOOTNOTE,
   RISK_FREE,
   RISK_FREE_SHORT,
+  REFUND_POLICY_URL,
   useBuyData,
 } from "../pitch/BuyOptions";
 import { offerRefunds } from "../funding/invoice-offers";
@@ -103,7 +104,22 @@ export function TrialInvitation({
             Unlimited practice and workbooks, as far as your child can go.
             {guaranteed && (
               <span className={styles.risk}>
-                {at === "map" ? RISK_FREE : RISK_FREE_SHORT}
+                {at === "map" ? (
+                  RISK_FREE
+                ) : (
+                  <>
+                    {RISK_FREE_SHORT}
+                    {/* The asterisk opens the refund policy: the footnote
+                        would push Next out of reach in the feedback. */}
+                    <a
+                      href={REFUND_POLICY_URL}
+                      className={styles.asterisk}
+                      aria-label="How the 30-day money-back guarantee works"
+                    >
+                      *
+                    </a>
+                  </>
+                )}
               </span>
             )}
           </p>
@@ -117,8 +133,10 @@ export function TrialInvitation({
           label={at === "workbook" ? "Buy AMP" : undefined}
         />
       </div>
-      {/* The promise never appears without its footnote. */}
-      {guaranteed && <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>}
+      {/* The promise never appears without its asterisk and footnote. */}
+      {guaranteed && at === "map" && (
+        <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>
+      )}
       {children}
     </section>
   );

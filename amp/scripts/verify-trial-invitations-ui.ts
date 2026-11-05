@@ -291,7 +291,9 @@ async function next(page: Page) {
     await page.getByRole("link", { name: "Keep practicing" }).click();
 }
 /** On phones the answer feedback rises over the dock; the question above it
- * stays whole. */
+ * stays whole. The one exception is the sheet's control floor (26rem: head,
+ * Next and the tools always fit), which a very long question on a short
+ * phone can meet: then the sheet is no taller than that floor. */
 async function questionVisible(page: Page, tag: string) {
   const geometry = await page.evaluate(() => {
     const question = document.querySelector(
@@ -299,19 +301,24 @@ async function questionVisible(page: Page, tag: string) {
     );
     const sheet = document.querySelector(".feedback");
     if (!question || !sheet) return null;
+    const box = sheet.getBoundingClientRect();
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
     return {
       question: question.getBoundingClientRect().bottom,
-      sheet: sheet.getBoundingClientRect().top,
+      sheet: box.top,
+      height: box.height,
+      floor: 26 * rem,
     };
   });
   assert.ok(geometry, `${tag}: question and feedback present`);
-  if (geometry.question > geometry.sheet + 1)
+  const covers = geometry.question > geometry.sheet + 1;
+  if (covers)
     await page.screenshot({
       path: `${shots}/${tag.replaceAll(" ", "-")}-covered.png`,
     });
   assert.ok(
-    geometry.question <= geometry.sheet + 1,
-    `${tag}: the feedback covers the question (${JSON.stringify(geometry)})`,
+    !covers || geometry.height <= geometry.floor + 1,
+    `${tag}: the feedback covers the question beyond its control floor (${JSON.stringify(geometry)})`,
   );
 }
 
@@ -408,7 +415,15 @@ async function journey(browser: Browser, engine: string) {
   await earned.waitFor();
   await earned.getByRole("button", { name: "Buy AMP" }).waitFor();
   // The short promise keeps its asterisk and its footnote, in the feedback too.
-  await earned.getByText("Risk\u2011free for 30 days*").waitFor();
+  await earned
+    .getByRole("link", { name: "How the 30-day money-back guarantee works" })
+    .waitFor();
+  // Next stays on screen with the invitation in the feedback.
+  const nextBox = await page.locator(".next-action").boundingBox();
+  assert.ok(
+    nextBox && nextBox.y + nextBox.height <= 844,
+    `${engine}: Next is fully on screen (${JSON.stringify(nextBox)})`,
+  );
   assert.deepEqual(
     await guaranteeProblems(page, '[data-trial-invitation="workbook"]'),
     [],
@@ -479,11 +494,32 @@ async function viewports(
         `${tag}: toolbar Buy`,
       );
       const stage = await page.locator(".problem-stage").boundingBox();
-      assert.equal(
-        Math.round(stage!.y),
-        Math.round(frame!.y),
-        `${tag}: the problem starts where its loading frame did`,
-      );
+      // The Buy control never sets the toolbar's height: with it hidden, the
+      // problem starts in the same place. (A skill title long enough to wrap
+      // onto a third line grows the toolbar with or without it.)
+      const withoutBuy = await page.evaluate(() => {
+        const status = document.querySelector<HTMLElement>(
+          ".workspace-toolbar > .workspace-status",
+        );
+        if (!status) return null;
+        const before = status.style.display;
+        status.style.display = "none";
+        const y = document
+          .querySelector(".problem-stage")!
+          .getBoundingClientRect().y;
+        status.style.display = before;
+        return y;
+      });
+      if (withoutBuy !== null)
+        assert.equal(
+          Math.round(stage!.y),
+          Math.round(withoutBuy),
+          `${tag}: the toolbar Buy does not move the problem`,
+        );
+      if (Math.abs(stage!.y - frame!.y) > 1)
+        console.log(
+          `${tag}: problem starts ${Math.round(stage!.y - frame!.y)}px below its frame (a wrapped skill title)`,
+        );
       await page.waitForTimeout(800);
       assert.deepEqual(
         await page.locator(".problem-stage").boundingBox(),

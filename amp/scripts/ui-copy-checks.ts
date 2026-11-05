@@ -16,10 +16,26 @@ export async function guaranteeProblems(page: Page, scope: string) {
     const promises = text.match(/Risk‑free[^*.\n]*\*?/g) ?? [];
     for (const promise of promises)
       if (!promise.endsWith("*")) problems.push(`no asterisk: "${promise}"`);
+    // The asterisk explains itself: the footnote on the page, or a link to
+    // the refund policy with a full touch target.
+    const linked = [...document.querySelectorAll(scope)].flatMap((node) =>
+      [...node.querySelectorAll('a[href*="/legal/refund"]')].filter(
+        (a) => a.textContent === "*",
+      ),
+    );
+    for (const a of linked) {
+      const box = a.getBoundingClientRect();
+      if (box.width < 44 || box.height < 44)
+        problems.push(`asterisk link is ${box.width}x${box.height}`);
+    }
     if (/No questions asked\.(?!\*)/.test(text))
       problems.push("the guarantee block has no asterisk");
-    if (promises.length && !text.includes("*Refunds go back the way you paid"))
-      problems.push("a promise without its footnote");
+    if (
+      promises.length &&
+      !text.includes("*Refunds go back the way you paid") &&
+      !linked.length
+    )
+      problems.push("a promise without its footnote or policy link");
     return problems;
   }, scope);
 }
