@@ -90,7 +90,11 @@ nav button {
   padding: 12px 28px 16px;
   box-shadow: 0 5px 24px var(--color-shadow);
 }
+/* Stacked above the positioned stage below it, whose background would otherwise
+   hide the bottom of a focus ring. Every overlay on practice stacks higher. */
 .workspace-toolbar {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
