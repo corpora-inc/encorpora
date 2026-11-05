@@ -4,6 +4,7 @@ import type { SiteConfig } from "./config.js";
 import { Page, routesFor } from "./pages.js";
 import { build as bundle } from "esbuild";
 import { product } from "./product.js";
+import { parseTokens, renderCard } from "./social-card.js";
 export async function buildSite(config: SiteConfig, output: string = "dist") {
   const routes = routesFor(config);
   await rm(output, { recursive: true, force: true });
@@ -36,13 +37,25 @@ export async function buildSite(config: SiteConfig, output: string = "dist") {
   await bundle({entryPoints:["src/engagement-client.ts"],bundle:true,format:"iife",platform:"browser",target:"es2022",minify:true,outfile:`${output}/assets/engagement.js`});
   await cp("src/campaign-client.js", `${output}/assets/campaign.js`);
   await cp("src/acquisition-client.js", `${output}/assets/acquisition.js`);
+  // Every page gets its own share card, named by content hash so a changed
+  // card is never served from a social network's stale image cache.
+  await mkdir(`${output}/assets/social`, { recursive: true });
+  const themeTokens = parseTokens(theme);
   for (const route of routes) {
+    const card = renderCard(route, config, themeTokens);
+    await writeFile(`${output}/assets/social/${card.name}`, card.png);
     const dir = `${output}${route}`;
     await mkdir(dir, { recursive: true });
     await writeFile(
       `${dir}index.html`,
       "<!doctype html>" +
-        renderToStaticMarkup(<Page route={route} config={config} />),
+        renderToStaticMarkup(
+          <Page
+            route={route}
+            config={config}
+            socialImage={{ path: `/assets/social/${card.name}`, alt: card.alt }}
+          />,
+        ),
     );
   }
   await writeFile(

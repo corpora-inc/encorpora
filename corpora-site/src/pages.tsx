@@ -9,6 +9,8 @@ import {
   samples,
   sampleLesson,
 } from "./product.js";
+import { pageCopy } from "./page-copy.js";
+import { cardHeight, cardWidth } from "./social-card.js";
 import { Contact, Legal, legalTitles, type LegalPage } from "./legal.js";
 import { formatPrice, type SiteConfig } from "./config.js";
 import {
@@ -247,12 +249,12 @@ function Home({ config }: { config: SiteConfig }) {
       <section className="hero">
         <div className="hero-copy">
           <p className="eyebrow">
-            <span className="dot" /> AMP Mathematics
+            <span className="dot" /> {pageCopy["/"].label}
           </p>
           <h1>
-            Math practice
+            {pageCopy["/"].heading}
             <br />
-            <em>that adapts.</em>
+            <em>{pageCopy["/"].emphasis}</em>
           </h1>
           <p className="lead">
             Math practice that follows what your learner understands. Find a
@@ -341,8 +343,8 @@ function Amp({ config }: { config: SiteConfig }) {
   return (
     <>
       <Intro
-        label="AMP Mathematics"
-        heading="Practice with a reason for every step."
+        label={pageCopy["/amp/"].label}
+        heading={pageCopy["/amp/"].heading}
       >
         <p className="lead">
           Placement estimates a starting point. Mixed practice responds to the
@@ -394,8 +396,8 @@ function Esa({ config }: { config: SiteConfig }) {
   return (
     <>
       <Intro
-        label="Education funds"
-        heading="Explore education funding and savings."
+        label={pageCopy["/esa/"].label}
+        heading={pageCopy["/esa/"].heading}
       >
         <p className="lead">
           An education savings account (ESA) or scholarship may pay through a
@@ -528,7 +530,7 @@ const faq = [
 function Parents({ config }: { config: SiteConfig }) {
   return (
     <>
-      <Intro label="For parents" heading="Know what you’re choosing." />
+      <Intro label={pageCopy["/parents/"].label} heading={pageCopy["/parents/"].heading} />
       <section className="faq">
         {faq.map(([q, a]) => (
           <details key={q}>
@@ -560,8 +562,8 @@ function Schools({ config }: { config: SiteConfig }) {
   return (
     <>
       <Intro
-        label="Schools · Districts · Private schools"
-        heading="Review AMP for your school."
+        label={pageCopy["/schools/"].label}
+        heading={pageCopy["/schools/"].heading}
       >
         <p className="lead">
           A digital mathematics curriculum built around adaptive mixed practice,
@@ -659,8 +661,8 @@ function Printable() {
   return (
     <>
       <Intro
-        label="AMP · Printable sample"
-        heading="Three problems. Space to think."
+        label={pageCopy["/samples/"].label}
+        heading={pageCopy["/samples/"].heading}
       >
         <p>
           Work on paper, then use the separate solution key. These are samples
@@ -710,7 +712,16 @@ function Printable() {
     </>
   );
 }
-export function Page({ route, config }: { route: string; config: SiteConfig }) {
+export type SocialImage = { path: string; alt: string };
+export function Page({
+  route,
+  config,
+  socialImage,
+}: {
+  route: string;
+  config: SiteConfig;
+  socialImage?: SocialImage;
+}) {
   const funding = fundingForPath(route, config);
   const structuredData = funding && fundingStructuredData(funding, config);
   const description =
@@ -728,7 +739,7 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
   else if (route === "/support/")
     content = (
       <>
-        <Intro label="Corpora support" heading="Get help with AMP.">
+        <Intro label={pageCopy["/support/"].label} heading={pageCopy["/support/"].heading}>
           <p className="lead">
             For access, billing, a problem in the mathematics, or an
             accessibility barrier: <Contact config={config} />
@@ -768,7 +779,7 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
   else if (route === "/try/")
     content = (
       <>
-        <Intro label="Try AMP" heading="Start with free practice.">
+        <Intro label={pageCopy["/try/"].label} heading={pageCopy["/try/"].heading}>
           <p className="lead">
             Create your free parent account, choose the learner’s birth year,
             and try adaptive practice. No payment card needed.
@@ -813,17 +824,32 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
         {config.siteUrl && (
           <link rel="canonical" href={new URL(route, config.siteUrl).href} />
         )}
-        {funding && (
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Corpora" />
+        <meta property="og:title" content={title(route, config)} />
+        <meta property="og:description" content={description} />
+        {config.siteUrl && (
+          <meta property="og:url" content={new URL(route, config.siteUrl).href} />
+        )}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title(route, config)} />
+        <meta name="twitter:description" content={description} />
+        {/* Crawlers need an absolute image URL, so previews without a site origin omit it. */}
+        {config.siteUrl && socialImage && (
           <>
-            <meta property="og:type" content="website" />
-            <meta property="og:title" content={title(route, config)} />
-            <meta property="og:description" content={description} />
-            {config.siteUrl && (
-              <meta
-                property="og:url"
-                content={new URL(route, config.siteUrl).href}
-              />
-            )}
+            <meta
+              property="og:image"
+              content={new URL(socialImage.path, config.siteUrl).href}
+            />
+            <meta property="og:image:type" content="image/png" />
+            <meta property="og:image:width" content={String(cardWidth)} />
+            <meta property="og:image:height" content={String(cardHeight)} />
+            <meta property="og:image:alt" content={socialImage.alt} />
+            <meta
+              name="twitter:image"
+              content={new URL(socialImage.path, config.siteUrl).href}
+            />
+            <meta name="twitter:image:alt" content={socialImage.alt} />
           </>
         )}
         {structuredData && (
