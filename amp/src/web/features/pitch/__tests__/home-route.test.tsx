@@ -223,3 +223,12 @@ test("a signed-in parent at / keeps the app", async () => {
   ).toBeNull();
   expect(analytics.screenOf("/")).toBe("home");
 });
+
+test("Arizona ESA's Buy never promises a full refund", async () => {
+  await open("/?program=az-esa");
+  await screen.findAllByRole("link", { name: "Buy with Arizona ESA funds" });
+  expect(
+    screen.getByText("$499 for the year, paid from your ESA balance."),
+  ).toBeTruthy();
+  expect(screen.queryByText(/full refund/)).toBeNull();
+});

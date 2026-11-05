@@ -63,7 +63,6 @@ import {
   TRIAL_PREFIX,
   trialLimits,
   trialTokenHash,
-  type TrialClaim,
   type TrialLimits,
 } from "./trials";
 import type { Pool, PoolClient } from "pg";
@@ -162,9 +161,6 @@ export interface LearnerTransaction {
   saveSkip(problem: SavedProblem): Promise<void>;
   /** This session's skips, oldest first, for the planner's variety. */
   recentSkips(): Promise<PracticeSkip[]>;
-  /** Problems served to this learner, answered, skipped or open, oldest
-   * first; at most `limit`. */
-  servedProblems(limit: number): Promise<SavedProblem[]>;
   hasAccess(): Promise<boolean>;
   /** Answers left in an anonymous trial, or null for a parent's learner. */
   trialRemaining(): Promise<number | null>;
@@ -198,14 +194,6 @@ export interface LearnerTransaction {
   /** Workbooks made in the last day, whose problems mixed practice holds back. */
   recentWorkbooks(): Promise<WorkbookRecord[]>;
 }
-/** An account-owned trial as the device resumes it; `token` is the trial
- * id, used with the parent's session. */
-export type TrialResume = {
-  token: string;
-  learnerId: string;
-  birthYear: number;
-  expiresAt: string;
-};
 export interface Repository {
   /** The anonymous free-trial allowance and its placement length. */
   readonly limits?: TrialLimits;
@@ -230,13 +218,12 @@ export interface Repository {
   currentTrial?(
     owner: string,
     legacyToken?: string,
-  ): Promise<TrialResume | null>;
-  /** The owner's live trial, after claiming the device's unowned trial
-   * token when the owner has none; `claim` reports what the token did. */
-  resumeTrial?(
-    owner: string,
-    token?: string,
-  ): Promise<{ trial: TrialResume | null; claim?: TrialClaim }>;
+  ): Promise<{
+    token: string;
+    learnerId: string;
+    birthYear: number;
+    expiresAt: string;
+  } | null>;
   /** The synthetic account for a live trial token, or null. */
   trialAccount(token: string, owner?: string): Promise<string | null>;
   /** Moves a trial learner, with all answers, into a parent's account. */
@@ -419,12 +406,6 @@ export class PostgresRepository implements Repository {
     };
   }
   async currentTrial(owner: string, legacyToken?: string) {
-    return (await this.resumeTrial(owner, legacyToken)).trial;
-  }
-  async resumeTrial(
-    owner: string,
-    token?: string,
-  ): Promise<{ trial: TrialResume | null; claim?: TrialClaim }> {
     const client = await this.pool.connect();
     try {
       await client.query("BEGIN");
@@ -432,58 +413,31 @@ export class PostgresRepository implements Repository {
         "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
         [owner],
       );
-      const live = await client.query(
+      let result = await client.query(
         `SELECT t.id,t.learner_id,t.expires_at,l.birth_year FROM amp_trials t
          JOIN amp_learners l ON l.id=t.learner_id
          WHERE owner_account_id=$1 AND adopted_at IS NULL AND expires_at>now()`,
         [owner],
       );
-      let row = live.rows[0];
-      let claim: TrialClaim | undefined;
-      if (token) {
-        // The token a device holds: an unowned trial's random token, or this
-        // account's trial id once claimed.
-        const named = await client.query(
-          `SELECT id,owner_account_id AS owner FROM amp_trials
-           WHERE (token_hash=$1 OR (id::text=$2 AND owner_account_id=$3))
-           AND adopted_at IS NULL AND expires_at>now() FOR UPDATE`,
-          [trialTokenHash(token), token, owner],
+      if (!result.rowCount && legacyToken) {
+        result = await client.query(
+          `UPDATE amp_trials SET owner_account_id=$1 WHERE token_hash=$2
+           AND owner_account_id IS NULL AND adopted_at IS NULL AND expires_at>now()
+           RETURNING id,learner_id,expires_at,
+           (SELECT birth_year FROM amp_learners WHERE id=learner_id) AS birth_year`,
+          [owner, trialTokenHash(legacyToken)],
         );
-        const target = named.rows[0] as
-          { id: string; owner: string | null } | undefined;
-        if (row)
-          // One live trial per account: a returning parent keeps theirs, and
-          // an unowned trial is never merged into it.
-          claim =
-            target?.id === row.id
-              ? "owned"
-              : target && target.owner === null
-                ? "kept-existing"
-                : "unavailable";
-        else if (target && target.owner === null) {
-          const claimed = await client.query(
-            `UPDATE amp_trials SET owner_account_id=$1 WHERE id=$2
-             AND owner_account_id IS NULL AND adopted_at IS NULL AND expires_at>now()
-             RETURNING id,learner_id,expires_at,
-             (SELECT birth_year FROM amp_learners WHERE id=learner_id) AS birth_year`,
-            [owner, target.id],
-          );
-          row = claimed.rows[0];
-          claim = row ? "claimed" : "unavailable";
-        } else claim = "unavailable";
       }
       await client.query("COMMIT");
-      return {
-        trial: row
-          ? {
-              token: row.id,
-              learnerId: row.learner_id,
-              birthYear: row.birth_year,
-              expiresAt: row.expires_at.toISOString(),
-            }
-          : null,
-        ...(claim ? { claim } : {}),
-      };
+      const row = result.rows[0];
+      return row
+        ? {
+            token: row.id,
+            learnerId: row.learner_id,
+            birthYear: row.birth_year,
+            expiresAt: row.expires_at.toISOString(),
+          }
+        : null;
     } catch (error) {
       await client.query("ROLLBACK");
       throw error;
@@ -844,13 +798,6 @@ export class PgTransaction implements LearnerTransaction {
       [this.learnerId, settings.epoch],
     );
     return (result.rows as PracticeSkip[]).reverse();
-  }
-  async servedProblems(limit: number) {
-    const result = await this.db.query(
-      "SELECT content FROM amp_instances WHERE learner_id=$1 ORDER BY created_at,id LIMIT $2",
-      [this.learnerId, limit],
-    );
-    return result.rows.map((row) => row.content as SavedProblem);
   }
   async masteredSkills() {
     return masteredSkills(await this.skillEvidence());

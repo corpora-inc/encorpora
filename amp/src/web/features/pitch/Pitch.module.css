@@ -111,8 +111,13 @@
   text-wrap: pretty;
   color: var(--color-muted-text);
 }
+/* Without production media the hero is one column, as wide as its text:
+   no empty video track. The two-column layout returns with the video. */
+.hero:not(.withFilm) {
+  max-width: 46rem;
+}
 @media (min-width: 960px) {
-  .hero {
+  .hero.withFilm {
     /* The video is the centerpiece: about 58% of the row. */
     grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
     grid-template-areas: "copy film" "actions film";
