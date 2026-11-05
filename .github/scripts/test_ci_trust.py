@@ -1,6 +1,8 @@
 """Security controls for trust activation, host selection and daemon isolation."""
+import contextlib
 import importlib.util
 import io
+import json
 import os
 from pathlib import Path
 import re
@@ -154,7 +156,7 @@ class BootstrapTests(unittest.TestCase):
 
     def test_daemon_requires_twelve_explicit_certificate_failures_and_valid_control(self):
         pulls = []
-        def run(args):
+        def run(args, **kwargs):
             if 'pull' in args:
                 pulls.append(args[-1])
                 if 'registry.k8s.io' not in args[-1]:
@@ -174,26 +176,197 @@ class BootstrapTests(unittest.TestCase):
                            "invalid character '<'", 'HTTP 500: x509: no valid chains built',
                            'tls: failed to verify certificate: x509: no valid chains built: 1 candidate chains with invalid policies',
                            'tls: failed to verify certificate: x509: no valid chains built; unrelated error'):
-            def run(args):
+            def run(args, **kwargs):
                 if 'pull' in args and diagnostic is not None:
                     raise subprocess.CalledProcessError(1, args, stderr=diagnostic)
                 return SimpleNamespace(stdout='')
             with self.subTest(diagnostic=diagnostic), \
                  patch.object(trust.shutil, 'which', return_value='/usr/bin/docker'), \
+                 patch.object(trust.time, 'sleep'), contextlib.redirect_stderr(io.StringIO()), \
                  patch.object(trust, 'run', side_effect=run):
                 with self.assertRaises(RuntimeError):
                     trust.refresh_docker()
 
     def test_daemon_valid_control_failure_is_not_a_success(self):
-        def run(args):
+        def run(args, **kwargs):
             if 'pull' in args:
                 raise subprocess.CalledProcessError(1, args, stderr=
                     'tls: failed to verify certificate: x509: no valid chains built')
             return SimpleNamespace(stdout='')
         with patch.object(trust.shutil, 'which', return_value='/usr/bin/docker'), \
+             patch.object(trust.time, 'sleep'), contextlib.redirect_stderr(io.StringIO()), \
              patch.object(trust, 'run', side_effect=run):
             with self.assertRaises(subprocess.CalledProcessError):
                 trust.refresh_docker()
+
+
+class DockerRetryTests(unittest.TestCase):
+    """Daemon errors below were captured from Docker 29 against stub registries."""
+    FIRST, SECOND = trust.HOSTS[:2]
+    REJECTED = ('Error response from daemon: Get "https://h/v2/": tls: failed to verify certificate: '
+                'x509: no valid chains built\n')
+    TRANSPORT = ('Error response from daemon: Get "https://h/v2/": net/http: TLS handshake timeout',
+                 'Error response from daemon: Get "https://h/v2/": EOF',
+                 'Error response from daemon: Get "https://h/v2/": net/http: request canceled while waiting '
+                 'for connection (Client.Timeout exceeded while awaiting headers)',
+                 'Error response from daemon: Get "https://h/v2/": read tcp 1.2.3.4:5->6.7.8.9:443: read: '
+                 'connection reset by peer',
+                 'Error response from daemon: Get "https://h/v2/": dial tcp: lookup h: no such host',
+                 'Cannot connect to the Docker daemon at unix:///var/run/docker.sock.',
+                 '')
+    # Each one needs a finished TLS handshake. The real incident hosts answer every
+    # path with 200 text/plain, so their acceptance looks like the first, not exit 0.
+    HTTP_ANSWERS = ('Error response from daemon: unsupported manifest media type and no default available: text/plain',
+                    'Error response from daemon: received unexpected HTTP status: 503 Service Unavailable',
+                    'Error response from daemon: unknown: Your client successfully connected to the site.',
+                    'Error response from daemon: unauthorized: Your client successfully connected to the site.',
+                    'Error response from daemon: failed to resolve reference "h/x:unused": unexpected status '
+                    'from HEAD request to https://h/v2/x/manifests/unused: 503 Service Unavailable')
+
+    def refresh(self, script=None):
+        """Run the probe. A script maps a pull to outcomes: None exits 0, text fails."""
+        self.pulls, self.sleeps, self.timeouts = [], [], []
+        remaining = {target: list(outcomes) for target, outcomes in (script or {}).items()}
+        def run(args, **kwargs):
+            if 'pull' not in args:
+                return SimpleNamespace(stdout='')
+            target = args[-1].removesuffix('/corpora-ca-check:unused')
+            self.pulls.append(target)
+            self.timeouts.append(kwargs.get('timeout'))
+            if remaining.get(target):
+                outcome = remaining[target].pop(0)
+            else:
+                outcome = None if target == trust.VALID_CONTROL else self.REJECTED
+            if isinstance(outcome, Exception):
+                raise outcome
+            if outcome is not None:
+                raise subprocess.CalledProcessError(1, args, stderr=outcome)
+            return SimpleNamespace(stdout='')
+        log = io.StringIO()
+        try:
+            with patch.object(trust.shutil, 'which', return_value='/usr/bin/docker'), \
+                 patch.object(trust.time, 'sleep', side_effect=self.sleeps.append), \
+                 contextlib.redirect_stderr(log), patch.object(trust, 'run', side_effect=run):
+                return trust.refresh_docker()
+        finally:
+            self.log = log.getvalue()
+
+    def test_clean_probe_never_retries_or_logs(self):
+        result = self.refresh()
+        self.assertEqual(self.pulls, [*trust.HOSTS, trust.VALID_CONTROL])
+        self.assertEqual((self.sleeps, self.log), ([], ''))
+        self.assertEqual(result['incident_certificate_rejections'], 12)
+
+    def test_accepted_endpoint_fails_immediately(self):
+        with self.assertRaisesRegex(RuntimeError, 'Docker accepted an incident test endpoint'):
+            self.refresh({self.FIRST: [None]})
+        self.assertEqual((self.pulls, self.sleeps), ([self.FIRST], []))
+
+    def test_acceptance_after_an_inconclusive_attempt_still_fails_immediately(self):
+        with self.assertRaisesRegex(RuntimeError, 'Docker accepted an incident test endpoint'):
+            self.refresh({self.FIRST: [self.TRANSPORT[0], None]})
+        self.assertEqual((self.pulls, self.sleeps), ([self.FIRST] * 2, [5]))
+
+    def test_http_level_answers_prove_the_handshake_and_fail_without_retry(self):
+        for answer in self.HTTP_ANSWERS:
+            with self.subTest(answer=answer):
+                with self.assertRaisesRegex(RuntimeError, 'accepted or inconclusive'):
+                    self.refresh({self.FIRST: [answer, self.REJECTED]})
+                self.assertEqual((self.pulls, self.sleeps), ([self.FIRST], []))
+                self.assertEqual(json.loads(self.log)['attempt'], 1)
+
+    def test_http_level_answer_after_an_inconclusive_attempt_cannot_be_retried_away(self):
+        with self.assertRaisesRegex(RuntimeError, 'accepted or inconclusive'):
+            self.refresh({self.FIRST: [self.TRANSPORT[0], self.HTTP_ANSWERS[0], self.REJECTED]})
+        self.assertEqual((self.pulls, self.sleeps), ([self.FIRST] * 2, [5]))
+
+    def test_inconclusive_attempts_then_rejection_pass_after_backoff(self):
+        timeout = subprocess.TimeoutExpired(['docker'], 20)
+        for failure in (*self.TRANSPORT, timeout):
+            with self.subTest(failure=failure):
+                result = self.refresh({self.FIRST: [failure, failure]})
+                self.assertEqual(self.pulls, [self.FIRST] * 3 + trust.HOSTS[1:] + [trust.VALID_CONTROL])
+                self.assertEqual(self.sleeps, [5, 15])
+                self.assertEqual(result['incident_certificate_rejections'], 12)
+                self.assertTrue(result['valid_control'])
+
+    def test_always_inconclusive_host_fails_at_the_bound_and_stops_the_probe(self):
+        for failure in (self.TRANSPORT[0], subprocess.TimeoutExpired(['docker'], 20)):
+            with self.subTest(failure=failure):
+                with self.assertRaisesRegex(RuntimeError, '^Docker incident path is accepted or inconclusive$'):
+                    self.refresh({self.FIRST: [failure] * 9})
+                self.assertEqual((self.pulls, self.sleeps), ([self.FIRST] * 3, [5, 15]))
+                self.assertEqual([json.loads(line)['attempt'] for line in self.log.splitlines()], [1, 2, 3])
+
+    def test_retry_budget_is_shared_across_hosts(self):
+        script = {host: [self.TRANSPORT[0]] for host in trust.HOSTS}
+        with self.assertRaisesRegex(RuntimeError, 'accepted or inconclusive'):
+            self.refresh(script)
+        self.assertEqual(self.sleeps, [5] * trust.INCIDENT_RETRY_BUDGET)
+        self.assertEqual(self.pulls.count(trust.HOSTS[trust.INCIDENT_RETRY_BUDGET]), 1)
+        self.assertNotIn(trust.HOSTS[trust.INCIDENT_RETRY_BUDGET + 1], self.pulls)
+
+    def test_retries_cannot_outlast_a_ten_minute_job(self):
+        # Worst passing path: the budget's longest backoffs, then every pull at its cap.
+        timeout = subprocess.TimeoutExpired(['docker'], 20)
+        script = {host: [timeout, timeout] for host in trust.HOSTS[:3]}
+        script[trust.VALID_CONTROL] = [timeout, timeout]
+        self.assertTrue(self.refresh(script)['valid_control'])
+        self.assertEqual(len(self.pulls), 12 + trust.INCIDENT_RETRY_BUDGET + 3)
+        self.assertLess(sum(self.timeouts) + sum(self.sleeps), 600)
+
+    def test_pull_timeouts_reach_the_command_and_other_commands_keep_the_default(self):
+        self.refresh()
+        self.assertEqual(self.timeouts, [trust.INCIDENT_PULL_TIMEOUT] * 12 + [trust.CONTROL_PULL_TIMEOUT])
+        self.assertGreater(trust.INCIDENT_PULL_TIMEOUT, 15)
+        with patch.object(trust.subprocess, 'run') as execute:
+            trust.run(['x'])
+            self.assertEqual(execute.call_args.kwargs['timeout'], 60)
+            trust.run(['x'], timeout=20)
+            self.assertEqual(execute.call_args.kwargs['timeout'], 20)
+
+    def test_valid_control_is_retried_and_still_fails_after_the_bound(self):
+        failure = 'Error response from daemon: Get "https://registry.k8s.io/v2/": EOF'
+        result = self.refresh({trust.VALID_CONTROL: [failure, subprocess.TimeoutExpired(['docker'], 30)]})
+        self.assertTrue(result['valid_control'])
+        self.assertEqual(self.sleeps, [5, 15])
+        self.assertEqual(self.pulls.count(trust.VALID_CONTROL), 3)
+        with self.assertRaises(subprocess.CalledProcessError):
+            self.refresh({trust.VALID_CONTROL: [failure] * 9})
+        self.assertEqual(self.pulls.count(trust.VALID_CONTROL), 3)
+        with self.assertRaises(subprocess.TimeoutExpired):
+            self.refresh({trust.VALID_CONTROL: [subprocess.TimeoutExpired(['docker'], 30)] * 9})
+
+    def test_diagnostic_is_one_bounded_line_without_workflow_commands(self):
+        hostile = ('Error response from daemon: Get "https://h/v2/": x\n::add-mask::secret\r\n'
+                   '##[set-output name=a]b\n' + 'y' * 500)
+        with self.assertRaises(RuntimeError):
+            self.refresh({self.FIRST: [hostile] * 3})
+        lines = self.log.splitlines()
+        self.assertEqual(len(lines), 3)
+        entry = json.loads(lines[0])
+        self.assertEqual((entry['docker_pull'], entry['attempt'], entry['error']), (self.FIRST, 1, 'CalledProcessError'))
+        self.assertLessEqual(len(entry['stderr']), 200)
+        self.assertNotIn('##[', self.log)
+        self.assertTrue(all(line.startswith('{') for line in lines))
+
+    def test_timeout_bytes_are_decoded_for_the_diagnostic(self):
+        failure = subprocess.TimeoutExpired(['docker'], 20, stderr=b'partial \xff output')
+        with self.assertRaises(RuntimeError):
+            self.refresh({self.FIRST: [failure] * 3})
+        self.assertIn('partial', json.loads(self.log.splitlines()[0])['stderr'])
+
+    def test_failure_report_names_the_failed_linux_command_only(self):
+        failure = subprocess.CalledProcessError(1, ['sudo', '-n', '/bin/systemctl', 'restart', 'docker'],
+                                                output='', stderr='unit failed\n::add-mask::x')
+        with patch.object(trust.sys, 'platform', 'linux'):
+            report = trust.failure_report(failure)
+            self.assertEqual(report['error'], 'CalledProcessError')
+            self.assertEqual(report['command'], 'sudo -n /bin/systemctl restart docker')
+            self.assertEqual(report['output'], 'unit failed ::add-mask::x')
+            self.assertEqual(trust.failure_report(RuntimeError('plain')), {'ok': False, 'error': 'plain'})
+        with patch.object(trust.sys, 'platform', 'win32'):
+            self.assertEqual(trust.failure_report(failure), {'ok': False, 'error': 'CalledProcessError'})
 
 
 class DistributionPermissionsTests(unittest.TestCase):

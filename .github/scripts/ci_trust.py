@@ -17,6 +17,7 @@ import stat
 import subprocess
 import sys
 import tempfile
+import time
 import types
 import urllib.request
 
@@ -34,6 +35,16 @@ BLOCKED = {
 HOSTS = [f'{kind}-{variant}-{prefix}emudhra.we-have-a-problem.com'
          for kind in ('dv', 'ov', 'ev') for variant in ('g3b', 'g3c')
          for prefix in ('', 'aaa-')]
+VALID_CONTROL = 'registry.k8s.io/pause:3.10'
+# A pull gets three attempts, 5 s then 15 s apart. The incident timeout sits above
+# Docker's own 15 s registry limit so its diagnostic arrives before the kill. The
+# shared budget stops a degraded network retrying through all twelve hosts.
+PULL_BACKOFF_SECONDS = (5, 15)
+INCIDENT_PULL_TIMEOUT = 20
+INCIDENT_RETRY_BUDGET = 6
+CONTROL_PULL_TIMEOUT = 30
+# Go's form for a request that failed before any HTTP response: Get "url": cause
+TRANSPORT_FAILURE = re.compile(r'\b(?:get|head) "https://[^"]+": ')
 
 
 def require(condition, message):
@@ -125,8 +136,8 @@ def harden_distribution_sources(share, sources, allow_hardening):
     return {'source_objects_checked': len(records), 'source_permissions_hardened': changed}
 
 
-def run(arguments, **kwargs):
-    return subprocess.run(arguments, capture_output=True, text=True, timeout=60, check=True,
+def run(arguments, timeout=60, **kwargs):
+    return subprocess.run(arguments, capture_output=True, text=True, timeout=timeout, check=True,
                           env={'PATH': '/usr/sbin:/usr/bin:/sbin:/bin', 'LANG': 'C'}, **kwargs)
 
 
@@ -208,6 +219,74 @@ def repair_linux_store():
 
 
 
+def log_line(text):
+    """Keep untrusted command output on one bounded line of the public log."""
+    # Docker echoes registry response bodies. Dropping line breaks and '##[' stops
+    # a remote host issuing a workflow command; '::' only works at a line start.
+    return re.sub(r'''[^\w .,:;/'"()=@%+<>-]+''', ' ', text, flags=re.ASCII).strip()[:200]
+
+
+def command_output(error):
+    output = error.stderr or error.stdout or ''
+    # TimeoutExpired keeps raw bytes even in text mode.
+    return log_line(output.decode('utf-8', 'replace') if isinstance(output, bytes) else output)
+
+
+def report_pull_failure(target, attempt, error):
+    # Stdout stays reserved for the single JSON result.
+    print(json.dumps({'docker_pull': target, 'attempt': attempt, 'error': type(error).__name__,
+                      'stderr': command_output(error)}), file=sys.stderr, flush=True)
+
+
+def require_incident_rejections(args):
+    """Require an explicit certificate rejection from Docker for every host.
+
+    Exit 0 and HTTP-level answers fail at once. Only a failure that reached no
+    verdict is retried, and a host passes only on an explicit rejection.
+    """
+    retries = INCIDENT_RETRY_BUDGET
+    for host in HOSTS:
+        for attempt, delay in enumerate((*PULL_BACKOFF_SECONDS, None), 1):
+            try:
+                run(args + ['pull', host + '/corpora-ca-check:unused'], timeout=INCIDENT_PULL_TIMEOUT)
+            except subprocess.TimeoutExpired as error:
+                failure, retryable = error, True
+            except subprocess.CalledProcessError as error:
+                diagnostic = (error.stderr or '').strip().lower()
+                # Go 1.26.10 / 1.27.3 also reject distrusted intermediate keys
+                # after chain construction. Accept only the bare rejection;
+                # policy/usage failures append details and are inconclusive.
+                if ('certificate signed by unknown authority' in diagnostic or
+                        diagnostic.endswith('tls: failed to verify certificate: '
+                                            'x509: no valid chains built')):
+                    break
+                # A daemon error without Go's transport form is an HTTP-level answer,
+                # 5xx included, or an unknown failure. An answer means TLS finished and
+                # the daemon trusted that chain. These hosts are DNS round robin, so a
+                # retry could reach another backend and erase the evidence.
+                failure, retryable = error, ('error response from daemon:' not in diagnostic or
+                                             TRANSPORT_FAILURE.search(diagnostic))
+            else:
+                raise RuntimeError('Docker accepted an incident test endpoint')
+            report_pull_failure(host, attempt, failure)
+            require(retryable and delay is not None and retries > 0,
+                    'Docker incident path is accepted or inconclusive')
+            retries -= 1
+            time.sleep(delay)
+
+
+def pull_valid_control(args):
+    for attempt, delay in enumerate((*PULL_BACKOFF_SECONDS, None), 1):
+        try:
+            run(args + ['pull', VALID_CONTROL], timeout=CONTROL_PULL_TIMEOUT)
+            return
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
+            report_pull_failure(VALID_CONTROL, attempt, error)
+            if delay is None:
+                raise
+            time.sleep(delay)
+
+
 def refresh_docker():
     docker = shutil.which('docker')
     if not docker:
@@ -219,22 +298,8 @@ def refresh_docker():
                 'start job services after trust bootstrap; preserve existing containers')
         run(['sudo', '-n', '/bin/systemctl', 'restart', 'docker'])
         require(not run(args + ['ps', '-aq']).stdout.strip(), 'unexpected containers after daemon refresh')
-        for host in HOSTS:
-            try:
-                run(args + ['pull', host + '/corpora-ca-check:unused'])
-            except subprocess.CalledProcessError as error:
-                diagnostic = (error.stderr or '').strip().lower()
-                # Go 1.26.10 / 1.27.3 also reject distrusted intermediate keys
-                # after chain construction. Accept only the bare rejection;
-                # policy/usage failures append details and are inconclusive.
-                rejected = ('certificate signed by unknown authority' in diagnostic or
-                            diagnostic.endswith('tls: failed to verify certificate: '
-                                                'x509: no valid chains built'))
-                require(rejected,
-                        'Docker incident path is accepted or inconclusive')
-            else:
-                raise RuntimeError('Docker accepted an incident test endpoint')
-        run(args + ['pull', 'registry.k8s.io/pause:3.10'])
+        require_incident_rejections(args)
+        pull_valid_control(args)
     return {'available': True, 'incident_certificate_rejections': len(HOSTS), 'valid_control': True}
 
 
@@ -330,6 +395,14 @@ def bootstrap(clients_only=False, source_commit=None):
             'scope': 'job clients only; host/bootstrap unverified' if clients_only else 'subsequent job clients; initial runner downloads unverified'}
 
 
+def failure_report(error):
+    report = {'ok': False, 'error': str(error) if isinstance(error, RuntimeError) else type(error).__name__}
+    # Windows inventories stay internal, so only Linux commands add their output.
+    if sys.platform == 'linux' and isinstance(error, (subprocess.CalledProcessError, subprocess.TimeoutExpired)):
+        report.update(command=log_line(' '.join(map(str, error.cmd))), output=command_output(error))
+    return report
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
@@ -340,5 +413,5 @@ if __name__ == '__main__':
     try:
         print(json.dumps(repair_linux_store() if options.repair_linux_store else bootstrap(options.clients_only, options.source_commit), sort_keys=True))
     except (RuntimeError, OSError, ValueError, subprocess.SubprocessError) as error:
-        print(json.dumps({'ok': False, 'error': str(error) if isinstance(error, RuntimeError) else type(error).__name__}))
+        print(json.dumps(failure_report(error)))
         raise SystemExit(1)
