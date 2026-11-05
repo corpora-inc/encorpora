@@ -114,15 +114,34 @@ const same =
  * each may carry. Anything else in the first-party props is dropped. A click
  * is never a purchase: Buy is `buy_click`, never `purchase` or `begin_checkout`.
  * Video names follow GA4's recommended `video_*` events. */
+const buyPlaces = {
+  pitch: "pitch",
+  chrome: "trial-toolbar",
+  invite: "trial-invite",
+} as const;
 const forwarded: Readonly<Record<string, Forward>> = {
   try_click: same("try_click"),
   workbook_click: same("workbook_click"),
-  buy_click: ({ path }, program) =>
-    path === "card"
-      ? { name: "buy_click", params: { payment_route: "card" } }
+  buy_click: ({ path, from }, program) => {
+    // Where Buy was pressed: the pitch, or the free trial's toolbar or an
+    // invitation. Still a click, never a checkout or a purchase.
+    const place: Record<string, string> =
+      typeof from === "string" && Object.hasOwn(buyPlaces, from)
+        ? { from: buyPlaces[from as keyof typeof buyPlaces] }
+        : {};
+    return path === "card"
+      ? { name: "buy_click", params: { payment_route: "card", ...place } }
       : path === "funded"
-        ? { name: "buy_click", params: { payment_route: program ?? "funded" } }
-        : undefined,
+        ? {
+            name: "buy_click",
+            params: { payment_route: program ?? "funded", ...place },
+          }
+        : undefined;
+  },
+  invite_view: ({ at }) =>
+    at === "map" || at === "workbook"
+      ? { name: "invite_view", params: { invite_at: at } }
+      : undefined,
   video_play: same("video_start"),
   video_progress: ({ percent }) =>
     percent === 100

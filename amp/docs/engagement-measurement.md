@@ -160,9 +160,10 @@ The first-party collector forwards a fixed list of actions to GA (`forwarded` in
 | `buy_click` funded | `buy_click` | `payment_route` = the program id (`ar-efa`, `az-esa`, `nh-efa`), or `funded` if the URL names none |
 | `try_click` | `try_click` | none |
 | `workbook_click` | `workbook_click` | none |
+| `invite_view` (free trial) | `invite_view` | `invite_at` = `map` or `workbook` |
 | `pitch_view` | not sent | GA's `page_view` with the pitch title records it |
 
-Video events count each quarter once per tab. `buy_click` is a click on Buy, not a checkout or a purchase; it is never sent as `begin_checkout` or `purchase`.
+A `buy_click` pressed inside the free trial also carries `from` = `trial-toolbar` or `trial-invite` (`pitch` on the pitch). Video events count each quarter once per tab. `buy_click` is a click on Buy, not a checkout or a purchase; it is never sent as `begin_checkout` or `purchase`.
 
 ### GA4 admin checklist
 
@@ -172,8 +173,10 @@ Registering parameters is an operator step in the GA4 property; deploying the co
    - “Payment route”, event parameter `payment_route`
    - “Funded program”, event parameter `program`
    - “Video percent”, event parameter `video_percent` (a dimension: its values are the fixed quarters)
+   - “Buy place”, event parameter `from`
+   - “Invitation”, event parameter `invite_at`
 2. Admin → Data streams → the web stream → Enhanced measurement stays **off**.
-3. After a day of traffic, confirm in Admin → Data display → Events that `video_start`, `video_progress`, `video_complete`, `buy_click`, `try_click` and `workbook_click` appear. `buy_click` may be a GA key event for reporting. Never import it, or any other click, into Google Ads as a purchase conversion.
+3. After a day of traffic, confirm in Admin → Data display → Events that `video_start`, `video_progress`, `video_complete`, `buy_click`, `try_click`, `workbook_click` and `invite_view` appear. `buy_click` may be a GA key event for reporting. Never import it, or any other click, into Google Ads as a purchase conversion.
 4. In Reports → Pages and screens, use the page title to separate the pitch, each funded-program pitch and each sign-up intent. Use Explore with “Funded program” and “Payment route” for Buy clicks by program.
 
 `npm run test:google-analytics-ui` runs the real Google tag in Chromium and intercepts every collection request. It checks public SPA transitions, duplicate suppression, sanitized payloads, learning-route exclusion and GPC. It also drives the app's collector with the pitch's calls and checks the pitch and sign-up titles, the events and parameters above, the signed-in home exclusion, and that GPC and staff browsers never load the tag. No synthetic collection events are sent to Google by the test.
