@@ -181,6 +181,9 @@ async function serve(page: Page, faults: string[]) {
       return route.fulfill({
         json: { available: true, offer: offers[0], offers },
       });
+    // The signed-out pitch at `/` prices its plans before it paints.
+    if (path === "/billing/prices")
+      return route.fulfill({ json: { available: true, offers } });
     if (path === "/billing/enrollment") {
       if (phase === "processing") phase = "paid";
       return route.fulfill({
@@ -276,7 +279,7 @@ try {
       referer: "https://mail.google.com/",
     },
   );
-  await page.getByRole("button", { name: "Try free" }).click();
+  await page.getByRole("button", { name: "Try a problem" }).click();
   await page.waitForURL(
     (url) =>
       url.pathname === "/sign-up" &&
@@ -353,7 +356,7 @@ try {
     `${origin}/?utm_source=launch&utm_medium=email&utm_campaign=fall`,
     { referer: "https://www.google.com/" },
   );
-  await other.getByRole("button", { name: "Try free" }).click();
+  await other.getByRole("button", { name: "Try a problem" }).click();
   await milestones(other, [
     ["placement_answer", { index: 0 }],
     ["paywall_view", { reason: "choice" }],

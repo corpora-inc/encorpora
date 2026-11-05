@@ -285,6 +285,7 @@ function Practice({ session }: { session: TrialSession }) {
         onContinue={welcome.dismiss}
         session={session}
         workbooks={limits.workbooks}
+        workbookFirst={search.entry === "pitch-workbook"}
       />
     );
 

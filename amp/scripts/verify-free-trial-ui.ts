@@ -494,23 +494,23 @@ try {
       const state = fresh();
       await serve(page, state, faults);
 
-      // Visitor: invite one problem and disclose the free allowance.
+      // Visitor: the parent pitch offers a free problem (verify-pitch-ui
+      // covers the pitch itself).
       await page.goto(`${origin}/`);
-      const tryFree = page.getByRole("button", { name: "Try free" });
+      const tryFree = page.getByRole("button", { name: "Try a problem" });
       await tryFree.waitFor();
       await page
-        .getByRole("heading", { name: "Try one math problem." })
-        .waitFor();
-      await page
-        .getByText(`Your free trial includes up to ${FREE} problems`, {
-          exact: false,
-        })
+        .getByRole("heading", { name: "Math that adapts to every answer." })
         .waitFor();
       await fits(page, `${tag} welcome`);
       if (audit) await axe(page, "welcome");
       await shoot(page, "welcome", tag);
       await tryFree.click();
-      await page.waitForURL("**/sign-up?return=free-practice");
+      await page.waitForURL(
+        (url) =>
+          url.pathname === "/sign-up" &&
+          url.searchParams.get("return") === "free-practice",
+      );
       await page
         .getByRole("heading", { name: "Math that adapts as you answer." })
         .waitFor();
@@ -925,7 +925,13 @@ try {
         colorScheme: theme,
       });
       await visitor.addInitScript({ content: watch });
-      await coldLoad(visitor, "/", "Try free", `visitor-${tag}`, fresh());
+      await coldLoad(
+        visitor,
+        "/",
+        "Math that adapts to every answer.",
+        `visitor-${tag}`,
+        fresh(),
+      );
       await coldLoad(
         visitor,
         "/try",

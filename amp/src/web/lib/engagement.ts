@@ -1,16 +1,19 @@
-import { EngagementClock, screenForPath } from "../../analytics/engagement";
+import { EngagementClock } from "../../analytics/engagement";
 import {
   analyticsAllowed,
   onAnalyticsScopeChanging,
   analyticsSessionId,
   trackPageView,
+  screenOf,
   flush,
   initializeAnalyticsContext,
   track,
 } from "./analytics";
 
-/** One document session; SPA transitions are ordered pages within it. */
-export function startEngagement() {
+/** One document session; SPA transitions are ordered pages within it.
+ * `awaitRoute`: the first page starts at the router's first navigation, once
+ * the screen it shows (for example the pitch or the app at `/`) is known. */
+export function startEngagement({ awaitRoute = false } = {}) {
   if (!analyticsAllowed())
     return { navigate: (_path: string) => {}, stop: () => {} };
   initializeAnalyticsContext();
@@ -18,6 +21,7 @@ export function startEngagement() {
   let ordinal = -1;
   let pageId = "";
   let path = "";
+  let screen: ReturnType<typeof screenOf> = "other";
   let day = "";
   let stopped = false;
   let sentVisible = -1,
@@ -37,7 +41,7 @@ export function startEngagement() {
       sessionId,
       pageId,
       ordinal,
-      screen: screenForPath(path),
+      screen,
       activeMs,
       visibleMs,
     });
@@ -45,9 +49,15 @@ export function startEngagement() {
   function navigate(next: string) {
     const clean = next.split(/[?#]/)[0];
     const today = new Date().toISOString().slice(0, 10);
-    if (stopped || (path === clean && today === day)) return;
+    // The same path can show another screen (`/`: the pitch, then the app).
+    if (
+      stopped ||
+      (path === clean && today === day && screenOf(clean) === screen)
+    )
+      return;
     snapshot();
     path = clean;
+    screen = screenOf(clean);
     trackPageView(clean);
     day = today;
     pageId = crypto.randomUUID();
@@ -86,7 +96,7 @@ export function startEngagement() {
   window.addEventListener("blur", change);
   window.addEventListener("pagehide", change);
   document.addEventListener("visibilitychange", change);
-  navigate(location.pathname);
+  if (!awaitRoute) navigate(location.pathname);
   return {
     navigate,
     stop() {

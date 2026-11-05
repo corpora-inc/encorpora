@@ -1,7 +1,11 @@
 import { measureAuth } from "../../lib/auth-measurement";
 import { track as trackAuth, googleSignupContext } from "../../lib/analytics";
 import { entryCapture } from "../../lib/openai-acquisition";
-import { signupNotice } from "../../../parent-followup/contracts";
+import {
+  isPitchEntry,
+  signupNotice,
+  type PitchEntry,
+} from "../../../parent-followup/contracts";
 import styles from "./Auth.module.css";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Button } from "../../ui/Button";
@@ -40,6 +44,21 @@ const titles: Record<Step, string> = {
   reset: "Choose a new password",
   "check-email": "Check your email",
   "two-factor": "Enter your code",
+};
+/** Arriving from the pitch, account creation names what the parent chose.
+ * Trying a problem keeps the free-practice heading. */
+const pitchCreate: Partial<
+  Record<PitchEntry, { title: string; detail: string }>
+> = {
+  "pitch-workbook": {
+    title: "Get your free workbook",
+    detail:
+      "Next, choose the learner’s birth year. The workbook starts at that level.",
+  },
+  "pitch-buy": {
+    title: "Create your account to buy",
+    detail: "Next, choose annual or monthly and pay securely with Stripe.",
+  },
 };
 
 /** Account sign-in with URL-backed steps and account-scoped session refresh. */
@@ -160,7 +179,13 @@ export function SignInScreen() {
   }
   const carry = continuationSearch(routeLocation.search);
   const freeEntry = carry.return === "free-practice";
-  const parentEntry = freeEntry && step === "create";
+  const pitchEntry = isPitchEntry(carry.entry) ? carry.entry : undefined;
+  // Every pitch path is a parent signup, so it records the same intent.
+  const signupEntry = freeEntry || !!pitchEntry;
+  const pitchCopy =
+    step === "create" && pitchEntry ? pitchCreate[pitchEntry] : undefined;
+  const buying = pitchEntry === "pitch-buy" && !freeEntry;
+  const parentEntry = signupEntry && step === "create";
   const primaryProviders =
     parentEntry && providers.some((p) => p !== "github")
       ? providers.filter((p) => p !== "github")
@@ -258,7 +283,7 @@ export function SignInScreen() {
     };
   }, [pending, handoffReady]);
   async function prepareFreeSignup() {
-    if (!freeEntry || !followupEnabled) return;
+    if (!signupEntry || !followupEnabled) return;
     await measureAuth("prepare", async () => {
       await Promise.race([
         entryCapture,
@@ -286,7 +311,11 @@ export function SignInScreen() {
     });
   }
   const returnTo = continuationUrl(carry, "/");
-  const newUserReturn = continuationUrl(carry, "/account/ready");
+  // A parent who chose Buy continues to the plan's checkout, not a pause.
+  const newUserReturn = continuationUrl(
+    carry,
+    buying ? "/start" : "/account/ready",
+  );
   const done = async () => {
     const session = await measureAuth("session", accessSession);
     if (!session) throw new Error("Sign-in didn’t finish. Please try again.");
@@ -310,7 +339,9 @@ export function SignInScreen() {
               : isFundedReturn(carry.return)
                 ? fundedPrograms[carry.return].path
                 : step === "create"
-                  ? "/account/ready"
+                  ? buying
+                    ? "/start"
+                    : "/account/ready"
                   : "/",
         search: carry,
         replace: true,
@@ -495,9 +526,18 @@ export function SignInScreen() {
       >
         <FrameBrand />
         <h2>
-          {parentEntry ? "Math that adapts as you answer." : titles[step]}
+          {pitchCopy
+            ? pitchCopy.title
+            : parentEntry
+              ? "Math that adapts as you answer."
+              : titles[step]}
         </h2>
-        {freeEntry && showProviders && (
+        {pitchCopy && (
+          <div className={styles.pitch} data-pitch-signup={pitchEntry}>
+            <p>{pitchCopy.detail}</p>
+          </div>
+        )}
+        {freeEntry && showProviders && !pitchCopy && (
           <div className={styles.pitch} data-free-parent-signup>
             <p>
               Try a few questions and watch AMP find your level. Free to try, no
@@ -750,7 +790,7 @@ export function SignInScreen() {
             </button>
           )}
         </div>
-        {freeEntry && showProviders && followupEnabled && (
+        {signupEntry && showProviders && followupEnabled && (
           <p className={styles.fineprint} data-signup-email-notice>
             We’ll email you about AMP. Unsubscribe anytime.{" "}
             <a href="https://corpora.inc/legal/privacy/">Privacy</a>

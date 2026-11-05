@@ -480,10 +480,7 @@ try {
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
   await page.waitForURL(`${origin}/`, { waitUntil: "load" });
   await page
-    .getByRole("button", {
-      name: /Try free|Continue free practice/,
-      exact: true,
-    })
+    .getByRole("button", { name: "Try a problem", exact: true })
     .waitFor();
   assert(notifications >= 1, "successful sign-out broadcasts account change");
   assert.equal(signedIn, false);

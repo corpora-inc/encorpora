@@ -50,6 +50,11 @@ export const FUNNEL_EVENTS = [
   "client_error",
   "account_session",
   "auth_request",
+  "pitch_view",
+  "video_play",
+  "video_progress",
+  "buy_click",
+  "workbook_click",
 ] as const;
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
 
@@ -102,6 +107,10 @@ export const REFUND_REASONS = [
   "other",
 ] as const;
 export const PLAN_INTERVALS = ["year", "month"] as const;
+export const PITCH_PROGRAMS = ["ar-efa", "az-esa", "nh-efa"] as const;
+/** Quartiles of the pitch video reached, each recorded once per tab. */
+export const VIDEO_QUARTILES = [25, 50, 75, 100] as const;
+export const BUY_PATHS = ["funded", "card"] as const;
 
 const index = z.number().int().min(0).max(100_000);
 const none = z.strictObject({});
@@ -174,6 +183,14 @@ export const funnelPropsSchemas = {
   site_action: siteActionSchema,
   landing_view: entryContextSchema,
   try_click: none,
+  /** The signed-out parent pitch at `/`, with the funded program it names. */
+  pitch_view: z.strictObject({ program: z.enum(PITCH_PROGRAMS).optional() }),
+  video_play: none,
+  video_progress: z.strictObject({
+    percent: z.literal(VIDEO_QUARTILES),
+  }),
+  buy_click: z.strictObject({ path: z.enum(BUY_PATHS) }),
+  workbook_click: none,
   trial_problem_view: none,
   auth_failure: z.strictObject({
     method: z.enum(["passkey", "social"]),

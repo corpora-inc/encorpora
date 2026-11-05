@@ -9,9 +9,14 @@ import {
   Outlet,
   redirect,
   retainSearchParams,
+  useLoaderData,
   useRouter,
 } from "@tanstack/react-router";
 import { z } from "zod";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import type { AuthSession } from "../auth";
+import { setPitchShown } from "../lib/analytics";
 import { CurriculumDetailsProvider } from "../features/curriculum/CurriculumDetails";
 import { nativeRuntime } from "../native-runtime";
 import {
@@ -135,6 +140,35 @@ const root = createRootRoute({
   pendingMs: 600_000,
 });
 const legacy = lazyRouteComponent(() => import("./LegacyApp"), "LegacyApp");
+const pitch = lazyRouteComponent(
+  () => import("../features/pitch/PitchScreen"),
+  "PitchScreen",
+);
+/** A signed-out web visitor at `/` meets the parent pitch. A consent email
+ * or a payment return opened signed out keeps the app's sign-in prompt,
+ * which resumes it. */
+function showsPitch(session: AuthSession | null | undefined) {
+  return (
+    !nativeRuntime &&
+    session === null &&
+    !hasInitialConsentChallenge() &&
+    !hasPurchaseReturn(window.location.search)
+  );
+}
+/** `/`: the pitch or the app, as the route resolved it. When the session
+ * changes here, the route runs again (redirecting as needed) before the
+ * screen changes, so a remount never shows the other screen half-loaded. */
+function HomeScreen() {
+  const session = useQuery(sessionOptions);
+  const router = useRouter();
+  const resolved = useLoaderData({ from: "/" }).pitch;
+  const shown = showsPitch(session.data);
+  useEffect(() => {
+    if (shown !== resolved) void router.invalidate();
+  }, [shown, resolved]);
+  const Screen = resolved ? pitch : legacy;
+  return <Screen />;
+}
 const auth = lazyRouteComponent(
   () => import("../features/auth/SignInScreen"),
   "SignInScreen",
@@ -214,7 +248,18 @@ const tryPlans = createRoute({
 const home = createRoute({
   getParentRoute: () => root,
   path: "/",
-  component: legacy,
+  component: HomeScreen,
+  loaderDeps: ({ search }) => ({ program: search.program }),
+  loader: async ({ deps }) => {
+    const shown = showsPitch(queryClient.getQueryData(sessionOptions.queryKey));
+    setPitchShown(shown);
+    if (!shown) await legacy.preload?.();
+    else {
+      const { loadPitch } = await import("../features/pitch/PitchScreen");
+      await loadPitch(deps);
+    }
+    return { pitch: shown };
+  },
   beforeLoad: async ({ search: rawSearch, location }) => {
     const search = searchSchema.parse(rawSearch);
     if ("sign-in" in search)

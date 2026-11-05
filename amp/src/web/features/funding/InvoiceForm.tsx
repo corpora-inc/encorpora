@@ -16,15 +16,7 @@ import { fundedPrograms, type FundedProgramSlug } from "../../lib/funded-entry";
 import { Button, buttonClass } from "../../ui/Button";
 import { TextField } from "../../ui/TextField";
 import styles from "./InvoiceForm.module.css";
-const offerSchema = z.object({
-  id: z.string(),
-  revision: z.string(),
-  programName: z.string(),
-  productTitle: z.string(),
-  totalMinor: z.number(),
-  currency: z.literal("USD"),
-  instructions: z.string(),
-});
+import { invoiceOffersOptions } from "./invoice-offers";
 const responseSchema = z.object({
   invoiceId: z.string().uuid(),
   totalMinor: z.number().int().positive(),
@@ -65,13 +57,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
   const [pdfUrl, setPdfUrl] = useState("");
   const retry = useRef<{ payload: string; key: string } | null>(null);
   const offers = useQuery({
-    queryKey: ["public-invoice-offers", program?.id],
-    queryFn: ({ signal }) =>
-      request(
-        `/funding/invoice-offers?program=${program.id}`,
-        z.object({ offers: z.array(offerSchema) }),
-        { signal },
-      ),
+    ...invoiceOffersOptions(program?.id ?? ""),
     enabled: !!program,
   });
   const offer = offers.data?.offers[0];

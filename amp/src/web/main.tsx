@@ -1,6 +1,5 @@
 import { errorDetails } from "../analytics/error-details";
-import { track } from "./lib/analytics";
-import { screenForPath } from "../analytics/engagement";
+import { screenOf, track } from "./lib/analytics";
 import "./consent-entry";
 import { createRoot } from "react-dom/client";
 import { RouterView } from "./app/RouterView";
@@ -13,7 +12,7 @@ import { watchForNewRelease } from "./lib/app-recovery";
 import { trackSessionStart, trackGooglePage } from "./lib/analytics";
 // After consent-entry has removed any private fragment from the URL.
 captureOpenAIEntry();
-const engagement = startEngagement();
+const engagement = startEngagement({ awaitRoute: true });
 router.subscribe("onResolved", () => {
   engagement.navigate(router.state.location.pathname);
   trackGooglePage();
@@ -27,14 +26,14 @@ createRoot(document.getElementById("root")!, {
       ...errorDetails(error, undefined, location.origin),
       kind: "render",
       boundary: "caught",
-      screen: screenForPath(location.pathname),
+      screen: screenOf(location.pathname),
     }),
   onUncaughtError: (error) =>
     track("client_error", {
       ...errorDetails(error, undefined, location.origin),
       kind: "render",
       boundary: "uncaught",
-      screen: screenForPath(location.pathname),
+      screen: screenOf(location.pathname),
     }),
 }).render(
   <Providers

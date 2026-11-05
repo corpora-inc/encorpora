@@ -149,7 +149,9 @@ try {
       );
       const [issued] = await Promise.all([
         batch,
-        page.getByRole("button", { name: "Practice this", exact: true }).click(),
+        page
+          .getByRole("button", { name: "Practice this", exact: true })
+          .click(),
       ]);
       assert.equal(issued.status(), 200);
       assert.ok(
@@ -409,7 +411,9 @@ try {
         );
         const [correctIssued] = await Promise.all([
           correctBatch,
-          page.getByRole("button", { name: "Practice this", exact: true }).click(),
+          page
+            .getByRole("button", { name: "Practice this", exact: true })
+            .click(),
         ]);
         assert.equal(
           (await correctIssued.json()).problems[0]?.id,
@@ -440,7 +444,9 @@ try {
         );
         const [skippedIssued] = await Promise.all([
           skippedBatch,
-          page.getByRole("button", { name: "Practice this", exact: true }).click(),
+          page
+            .getByRole("button", { name: "Practice this", exact: true })
+            .click(),
         ]);
         assert.equal(
           (await skippedIssued.json()).problems[0]?.id,
@@ -530,7 +536,9 @@ try {
     );
     const [graphIssued] = await Promise.all([
       graphBatch,
-      graphPage.getByRole("button", { name: "Practice this", exact: true }).click(),
+      graphPage
+        .getByRole("button", { name: "Practice this", exact: true })
+        .click(),
     ]);
     assert.equal(graphIssued.status(), 200);
     assert.equal(

@@ -1,4 +1,8 @@
-import { signupEntrySchema } from "../../parent-followup/contracts";
+import {
+  isPitchEntry,
+  signupEntrySchema,
+  type SignupIntent,
+} from "../../parent-followup/contracts";
 import { z } from "zod";
 import {
   CAMPAIGN_NAMES,
@@ -59,7 +63,7 @@ export type CampaignSearch = Partial<z.infer<typeof labels>>;
 export type FundedSearch = CampaignSearch & {
   return?: "security" | "access" | "free-practice" | FundedProgramSlug;
   program?: "ar-efa" | "az-esa" | "nh-efa";
-  entry?: "openai-math-path" | "openai-math-plans";
+  entry?: SignupIntent["entry"];
 };
 
 export function measurementOptOut() {
@@ -85,8 +89,10 @@ export function continuationSearch(
 ): FundedSearch {
   return {
     ...campaignSearch(search),
-    ...(signupEntrySchema.safeParse(search.entry).success &&
-    !measurementOptOut()
+    // An ad entry label is measurement; a pitch choice is where the parent
+    // asked to go, so it survives a privacy preference.
+    ...(isPitchEntry(search.entry) ||
+    (signupEntrySchema.safeParse(search.entry).success && !measurementOptOut())
       ? { entry: signupEntrySchema.parse(search.entry) }
       : {}),
     ...(search.program === "ar-efa" ||

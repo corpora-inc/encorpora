@@ -5,6 +5,7 @@ import { MARKETING_SCREENS } from "./site-actions.js";
 export const SCREENS = [
   ...MARKETING_SCREENS,
   "home",
+  "pitch",
   "pathways",
   "assessment",
   "practice",

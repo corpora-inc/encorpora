@@ -126,9 +126,9 @@ try {
   const email = `parent-${Date.now()}@example.com`;
   const password = "a long enough passphrase";
 
-  // Create an account from the welcome page.
+  // Create an account from the signed-out pitch.
   await page.goto(`${origin}/`);
-  await page.getByRole("button", { name: "Parent sign in" }).click();
+  await page.getByRole("link", { name: "Sign in", exact: true }).click();
   await page.getByRole("heading", { name: "Sign in" }).waitFor();
   await page.getByRole("button", { name: "Create an account" }).click();
   await page.getByRole("heading", { name: "Create your account" }).waitFor();
@@ -150,7 +150,7 @@ try {
   // Sign out, then back in; a wrong password is reported in place.
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("button", { name: "Sign out" }).click();
-  await page.getByRole("button", { name: "Try free" }).waitFor();
+  await page.getByRole("button", { name: "Try a problem" }).waitFor();
   await page.goto(`${origin}/?sign-in`);
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password").fill("not the password");
@@ -164,7 +164,7 @@ try {
   // Forgotten password: the emailed link sets a new one.
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("button", { name: "Sign out" }).click();
-  await page.getByRole("button", { name: "Try free" }).waitFor();
+  await page.getByRole("button", { name: "Try a problem" }).waitFor();
   await page.goto(`${origin}/?sign-in`);
   await page.getByRole("button", { name: "Forgot password?" }).click();
   await page.getByLabel("Email").fill(email);
@@ -312,7 +312,7 @@ try {
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
   // Sign-out redirects asynchronously; finish it before starting another navigation.
-  await page.getByRole("button", { name: "Try free" }).waitFor();
+  await page.getByRole("button", { name: "Try a problem" }).waitFor();
   await page.goto(`${origin}/?sign-in`);
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
   await signedIn(page, email);
