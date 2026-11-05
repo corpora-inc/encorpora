@@ -24,6 +24,8 @@ The preview server listens only on loopback and chooses an available port. Build
 
 `src/product.tsx` imports AMP's deterministic problem generator, lesson content, figure components, and mathematical typesetting. These execute at build time. Samples deliberately include their solutions; they are public worked examples, not live assessment payloads. No grading engine or active assessment secrets are shipped as browser code.
 
+Each page also gets a 1200 × 630 share card at `/assets/social/<page>-<hash>.png`, rendered at build time by `src/social-card.tsx` with resvg, the AMP theme tokens and KaTeX's fonts. Cards repeat the page's eyebrow and heading from `src/page-copy.ts` beside a real AMP problem (or the state outline on funding guides). Open Graph and Twitter image tags need an absolute URL, so they appear only when `siteUrl` is configured. A character the card fonts cannot draw fails the build; overlong configured headlines shrink and then end in an ellipsis.
+
 The build extracts the `:root` token block from `amp/src/web/ui/tokens.css` and copies local KaTeX assets. `coverage.json` and the coverage section are computed from the AMP curriculum and content audit. A mapped or cataloged skill does not imply full standards coverage, reviewed efficacy, or a published course. CI rebuilds the site when `corpora-site/` or its imported AMP source and dependency files change and reports through the existing `ci-gate` aggregate.
 
 ## Public presentation configuration
