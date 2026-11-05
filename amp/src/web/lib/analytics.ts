@@ -21,6 +21,18 @@ import type { TrafficKind } from "../../analytics/engagement";
 import { nativeRuntime } from "../native-runtime";
 import { createGoogleAnalytics } from "../../analytics/google-analytics";
 
+let pitchShown = false;
+/** Set by the `/` route before it resolves: a signed-out web visitor there
+ * sees the parent pitch, which is its own engagement screen. */
+export function setPitchShown(shown: boolean) {
+  pitchShown = shown;
+}
+/** The engagement category for a path as this tab shows it. */
+export function screenOf(path: string): ReturnType<typeof screenForPath> {
+  const screen = screenForPath(path);
+  return screen === "home" && pitchShown ? "pitch" : screen;
+}
+
 let google: ReturnType<typeof createGoogleAnalytics> | undefined;
 export function googleSignupContext() {
   return google?.signupContext();
@@ -183,7 +195,7 @@ export function trackPageView(path: string) {
   } as const;
   const clean = path.split(/[?#]/)[0];
   track("page_view", {
-    screen: screenForPath(clean),
+    screen: screenOf(clean),
     page:
       pages[clean as keyof typeof pages] ??
       (clean.startsWith("/invoice/") ? "invoice" : "other"),
@@ -388,14 +400,14 @@ function listen(): void {
     track("client_error", {
       ...errorDetails(event.error, event, location.origin),
       kind: "error",
-      screen: screenForPath(location.pathname),
+      screen: screenOf(location.pathname),
     }),
   );
   window.addEventListener("unhandledrejection", (event) =>
     track("client_error", {
       ...errorDetails(event.reason, undefined, location.origin),
       kind: "unhandled_rejection",
-      screen: screenForPath(location.pathname),
+      screen: screenOf(location.pathname),
     }),
   );
 }
@@ -456,4 +468,5 @@ export function resetAnalyticsForTests(): void {
   nextSendAt = 0;
   identity = undefined;
   entryContext = undefined;
+  pitchShown = false;
 }

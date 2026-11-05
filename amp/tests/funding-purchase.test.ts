@@ -220,3 +220,20 @@ test("funded notifications preserve the account sender display name and reject m
   ])
     assert.throws(() => fundedNotificationSender(value));
 });
+
+test("an offer's public status label is published only when configured", () => {
+  assert.equal(presentOffer(offer).statusLabel, undefined);
+  const labelled = fundingOfferSchema.parse({
+    ...offer,
+    statusLabel: "Approved EFA vendor · ClassWallet DirectPay",
+  });
+  assert.equal(
+    presentOffer(labelled).statusLabel,
+    "Approved EFA vendor · ClassWallet DirectPay",
+  );
+  assert.equal(
+    fundingOfferSchema.safeParse({ ...offer, statusLabel: "x".repeat(101) })
+      .success,
+    false,
+  );
+});

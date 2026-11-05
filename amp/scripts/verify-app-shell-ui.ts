@@ -208,34 +208,26 @@ async function verifyShell() {
       await context.close();
     }
 
-  // 4. Landing: the brand sits beside the menu; both actions share a size.
+  // 4. Landing (the signed-out pitch, verify-pitch-ui): the two free paths
+  //    share one size and the wordmark stays on one line.
   {
     const { page, context } = await open(
       "landing",
       { width: 1280, height: 800 },
       "light",
     );
-    const trigger = await box(page, "[data-navigation-trigger]");
-    const brand = await box(page, "header .brand");
-    check(
-      trigger && brand && brand.x - (trigger.x + trigger.width) < 32,
-      `landing 1280: brand is ${brand && trigger ? Math.round(brand.x - trigger.x - trigger.width) : "?"}px from the menu`,
-    );
-    const go = await box(page, ".welcome .go-button");
-    const signIn = await box(page, ".welcome .go-button + .secondary");
-    check(
-      go && signIn && signIn.height >= 56,
-      `landing: sign-in action is ${signIn?.height}px tall`,
+    const sizes = await page.evaluate(() =>
+      ["Try a problem", "Get a free workbook"].map((name) => {
+        const button = [...document.querySelectorAll("button")].find(
+          (b) => b.textContent === name,
+        );
+        return button ? button.getBoundingClientRect().height : 0;
+      }),
     );
     check(
-      go && signIn && Math.abs(go.height - signIn.height) <= 1,
-      `landing: actions are ${go?.height}px and ${signIn?.height}px tall`,
-    );
-    const card = await box(page, "section.welcome");
-    const intro = await box(page, ".intro");
-    check(
-      card && intro && Math.abs(card.x - intro.x) <= 1,
-      "landing: card and hero share their left edge",
+      sizes.every((height) => height >= 44) &&
+        Math.abs(sizes[0]! - sizes[1]!) <= 1,
+      `landing: free paths are ${sizes.join("px and ")}px tall`,
     );
     await context.close();
   }

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Navigate, useNavigate } from "@tanstack/react-router";
+import { Navigate, useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   CAMPAIGN_NAMES,
@@ -56,6 +56,8 @@ export function TryStart() {
 
 function BirthYear() {
   const navigate = useNavigate();
+  // From the pitch's free workbook: the same step, named for that choice.
+  const workbook = useSearch({ strict: false }).entry === "pitch-workbook";
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   useEffect(() => {
@@ -77,8 +79,12 @@ function BirthYear() {
           ),
         }}
         name="the learner"
-        title="See how AMP adapts"
-        description="Choose the birth year of the person who will be learning. This sets the starting level."
+        title={workbook ? "Your free workbook" : "See how AMP adapts"}
+        description={
+          workbook
+            ? "Choose the birth year of the person who will be learning. The workbook starts at that level."
+            : "Choose the birth year of the person who will be learning. This sets the starting level."
+        }
         birthYear={null}
         busy={busy}
         saveBirthYear={(year) => {

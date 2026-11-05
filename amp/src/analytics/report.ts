@@ -20,6 +20,28 @@ export const FUNNEL_STEPS = [
   "paid_practice_first",
 ] as const satisfies readonly FunnelEvent[];
 
+/** The signed-out pitch at `/`, then each way in. Buy splits by route; the
+ * rest are counted against everyone who saw the pitch. */
+export const PITCH_STEPS = [
+  "pitch_view",
+  "video_play",
+  "video_progress:50",
+  "video_progress:100",
+  "buy_click:funded",
+  "buy_click:card",
+  "try_click",
+  "workbook_click",
+  "account_session",
+  "checkout_start",
+  "purchase",
+] as const;
+export type PitchStep = {
+  step: (typeof PITCH_STEPS)[number];
+  visitors: number;
+  /** Share of pitch viewers who also reached this step. */
+  fromPitch: number | null;
+};
+
 export type FunnelStep = {
   event: (typeof FUNNEL_STEPS)[number];
   visitors: number;
@@ -41,6 +63,7 @@ export type FunnelReport = {
   to: string;
   visitors: number;
   steps: FunnelStep[];
+  pitch: PitchStep[];
   unattributedPurchases: number;
   breakdowns: Record<
     "source" | "device" | "ageBand" | "gradeBand",
@@ -86,9 +109,13 @@ export async function funnelReport(
     `SELECT count(*)::int AS visitors FROM amp_funnel_visitors v WHERE ${cohort}`,
   );
   // Per visitor, the funnel steps reached; only counts leave this function.
+  // Pitch steps carry their one distinguishing prop (`buy_click:card`).
   const paths = (
     await q<{ events: string[] }>(
-      `SELECT array_agg(DISTINCT e.event) AS events
+      `SELECT array_agg(DISTINCT CASE
+           WHEN e.event='buy_click' THEN 'buy_click:'||(e.props->>'path')
+           WHEN e.event='video_progress' THEN 'video_progress:'||(e.props->>'percent')
+           ELSE e.event END) AS events
        FROM amp_funnel_events e JOIN amp_funnel_visitors v USING(visitor_id)
        WHERE ${cohort} AND (e.event<>'checkout_return' OR e.props->>'outcome'='success')
        GROUP BY e.visitor_id`,
@@ -117,6 +144,12 @@ export async function funnelReport(
       dropOff: previous - continued,
     };
   });
+  const pitchViewers = reachedCount("pitch_view");
+  const pitch: PitchStep[] = PITCH_STEPS.map((step) => ({
+    step,
+    visitors: reachedCount("pitch_view", step),
+    fromPitch: ratio(reachedCount("pitch_view", step), pitchViewers),
+  }));
   const [{ unattributed }] = await q<{ unattributed: number }>(
     `SELECT count(*)::int AS unattributed FROM amp_funnel_events
      WHERE event='purchase' AND visitor_id IS NULL AND occurred_on>=$1 AND occurred_on<$2`,
@@ -204,6 +237,7 @@ export async function funnelReport(
     to: range[1],
     visitors,
     steps,
+    pitch,
     unattributedPurchases: unattributed,
     breakdowns,
     daysToPurchase: {
@@ -266,6 +300,14 @@ export function formatFunnelReport(report: FunnelReport): string {
       ]),
     ),
   ];
+  if (report.pitch[0]?.visitors)
+    out.push(
+      "",
+      table(
+        ["Pitch step", "Visitors", "From pitch"],
+        report.pitch.map((s) => [s.step, s.visitors, percent(s.fromPitch)]),
+      ),
+    );
   if (report.unattributedPurchases)
     out.push(
       `Unattributed verified purchases: ${report.unattributedPurchases}`,

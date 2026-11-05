@@ -117,7 +117,9 @@ try {
         );
         const [response] = await Promise.all([
           batchPromise,
-          page.getByRole("button", { name: "Practice this", exact: true }).click(),
+          page
+            .getByRole("button", { name: "Practice this", exact: true })
+            .click(),
         ]);
         return response;
       })().catch(async (error) => {

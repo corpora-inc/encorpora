@@ -335,3 +335,52 @@ test(
     }
   },
 );
+
+test(
+  "each pitch path records its signup entry",
+  { skip: !process.env.AMP_TEST_DATABASE_URL },
+  async () => {
+    const url = process.env.AMP_TEST_DATABASE_URL!;
+    const schema = `followup_${randomUUID().replaceAll("-", "")}`;
+    const admin = new Pool({ connectionString: url, max: 1 });
+    const scoped = new URL(url);
+    scoped.searchParams.set("options", `-c search_path=${schema}`);
+    const pool = new Pool({ connectionString: scoped.href, max: 2 });
+    try {
+      await admin.query(`CREATE SCHEMA ${schema}`);
+      await migrate(scoped.href);
+      for (const entry of [
+        "pitch-try",
+        "pitch-workbook",
+        "pitch-buy",
+      ] as const) {
+        await pool.query(
+          'INSERT INTO amp_auth_users(id,name,email,"emailVerified","createdAt") VALUES ($1,\'Parent\',$2,true,now())',
+          [entry, `${entry}@example.com`],
+        );
+        const token = await createSignupIntent(pool, {
+          newsletter: true,
+          notice: signupNotice,
+          entry,
+        });
+        await completeSignup(pool, `amp.parent-signup=${token}`, entry);
+      }
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT user_id,entry_label FROM amp_parent_followups ORDER BY user_id",
+          )
+        ).rows,
+        [
+          { user_id: "pitch-buy", entry_label: "pitch-buy" },
+          { user_id: "pitch-try", entry_label: "pitch-try" },
+          { user_id: "pitch-workbook", entry_label: "pitch-workbook" },
+        ],
+      );
+    } finally {
+      await pool.end();
+      await admin.query(`DROP SCHEMA ${schema} CASCADE`);
+      await admin.end();
+    }
+  },
+);

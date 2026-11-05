@@ -358,6 +358,11 @@ test(
           event: "landing_view",
           props: { utmSource: "fall", referrer: "email", device: "phone" },
         },
+        { event: "pitch_view", props: { program: "ar-efa" } },
+        { event: "video_play" },
+        { event: "video_progress", props: { percent: 25 } },
+        { event: "video_progress", props: { percent: 50 } },
+        { event: "buy_click", props: { path: "card" } },
         { event: "session_start", props: { daysSinceFirstVisit: 0 } },
         { event: "try_click" },
         { event: "placement_answer", props: { index: 0 } },
@@ -377,6 +382,8 @@ test(
           event: "landing_view",
           props: { referrer: "search", device: "desktop" },
         },
+        { event: "pitch_view" },
+        { event: "workbook_click" },
         { event: "try_click" },
         { event: "paywall_view", props: { reason: "choice" } },
         { event: "paywall_dismiss", props: { reason: "price" } },
@@ -440,6 +447,15 @@ test(
       assert.equal(step("purchase").visitors, 1);
       assert.equal(step("purchase").fromFirst, 0.5);
       assert.equal(step("placement_answer").dropOff, 1);
+      const pitch = (name: string) =>
+        report.pitch.find((s) => s.step === name)!;
+      assert.equal(pitch("pitch_view").visitors, 2);
+      assert.equal(pitch("video_progress:50").visitors, 1);
+      assert.equal(pitch("video_progress:100").visitors, 0);
+      assert.equal(pitch("buy_click:card").fromPitch, 0.5);
+      assert.equal(pitch("buy_click:funded").visitors, 0);
+      assert.equal(pitch("workbook_click").visitors, 1);
+      assert.equal(pitch("purchase").visitors, 1);
       assert.deepEqual(
         report.breakdowns.source.map((r) => [r.key, r.visitors, r.purchased]),
         [
@@ -466,6 +482,7 @@ test(
       assert.equal(report.refunds.fullRefunds, 1);
       const text = formatFunnelReport(report);
       assert.match(text, /purchase\s+1\s+/);
+      assert.match(text, /buy_click:card\s+1\s+50\.0%/);
       assert.equal(text.includes(buyer), false, "aggregates only");
     }),
 );

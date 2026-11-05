@@ -22,7 +22,29 @@ test("the transport contains the fixed milestones and separate engagement and ma
     Object.keys(funnelPropsSchemas).sort(),
     [...FUNNEL_EVENTS, "page_engagement", "site_action"].sort(),
   );
-  assert.equal(FUNNEL_EVENTS.length, 34);
+  assert.equal(FUNNEL_EVENTS.length, 39);
+});
+
+test("pitch events carry only their fixed choices", () => {
+  assert.ok(
+    batch([
+      { event: "pitch_view", at: 1 },
+      { event: "pitch_view", at: 2, props: { program: "az-esa" } },
+      { event: "video_play", at: 3 },
+      { event: "video_progress", at: 4, props: { percent: 75 } },
+      { event: "buy_click", at: 5, props: { path: "funded" } },
+      { event: "buy_click", at: 6, props: { path: "card" } },
+      { event: "workbook_click", at: 7 },
+    ]).success,
+  );
+  for (const bad of [
+    { event: "pitch_view", at: 1, props: { program: "tx-esa" } },
+    { event: "video_progress", at: 1, props: { percent: 30 } },
+    { event: "video_progress", at: 1 },
+    { event: "buy_click", at: 1, props: { path: "paypal" } },
+    { event: "workbook_click", at: 1, props: { grade: "3" } },
+  ])
+    assert.equal(batch([bad]).success, false, JSON.stringify(bad));
 });
 
 test("accepts known events with valid props", () => {

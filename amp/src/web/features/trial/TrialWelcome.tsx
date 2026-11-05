@@ -30,11 +30,41 @@ export function TrialWelcome({
   onContinue,
   session,
   workbooks,
+  workbookFirst = false,
 }: {
   onContinue: () => void;
   session: TrialSession;
   workbooks?: TrialWorkbooks;
+  /** The parent came for the free workbook: it leads, practice follows. */
+  workbookFirst?: boolean;
 }) {
+  const offered =
+    !nativeRuntime &&
+    !!workbooks &&
+    (workbooks.available > 0 || workbooks.items.length > 0);
+  if (offered && workbookFirst)
+    return (
+      <Dialog
+        open
+        title="Your free workbook"
+        onOpenChange={(open) => {
+          if (!open) onContinue();
+        }}
+      >
+        <p>
+          Made for the learner’s age. Download it and print it if you like.
+          Future workbooks adapt as the learner answers problems here.
+        </p>
+        <FirstWorkbook session={session} workbooks={workbooks!} lead />
+        <Button
+          variant="secondary"
+          className={styles.welcomeStart}
+          onClick={onContinue}
+        >
+          Start practicing
+        </Button>
+      </Dialog>
+    );
   return (
     <Dialog
       open
@@ -50,11 +80,7 @@ export function TrialWelcome({
       <p>
         <strong>Skip</strong> shows the answer without changing your level.
       </p>
-      {!nativeRuntime &&
-        workbooks &&
-        (workbooks.available > 0 || workbooks.items.length > 0) && (
-          <FirstWorkbook session={session} workbooks={workbooks} />
-        )}
+      {offered && <FirstWorkbook session={session} workbooks={workbooks!} />}
       <Button
         variant="primary"
         className={styles.welcomeStart}
@@ -70,9 +96,12 @@ export function TrialWelcome({
 function FirstWorkbook({
   session,
   workbooks,
+  lead = false,
 }: {
   session: TrialSession;
   workbooks: TrialWorkbooks;
+  /** The dialog's main action: primary and focused when it opens. */
+  lead?: boolean;
 }) {
   const { busy, message, clear, print } = useAssessmentWorkbook(session);
   const [downloaded, setDownloaded] = useState<Pick<
@@ -81,12 +110,15 @@ function FirstWorkbook({
   > | null>(null);
   return (
     <>
-      <p>
-        Prefer paper? Download an age-based workbook and print it if you like.
-        Future workbooks adapt as the learner answers more problems.
-      </p>
+      {!lead && (
+        <p>
+          Prefer paper? Download an age-based workbook and print it if you like.
+          Future workbooks adapt as the learner answers more problems.
+        </p>
+      )}
       <Button
-        variant="secondary"
+        variant={lead ? "primary" : "secondary"}
+        autoFocus={lead}
         className={styles.welcomeStart}
         disabled={!!busy}
         aria-busy={!!busy}
