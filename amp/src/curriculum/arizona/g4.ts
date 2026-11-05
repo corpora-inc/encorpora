@@ -74,7 +74,7 @@ export const arizonaG4ExpectedIds: readonly string[] = [
 const wholeCap =
   "Whole numbers less than or equal to 1,000,000, from the domain note.";
 const fracCap =
-  "Denominators 2, 3, 4, 5, 6, 8, 10, 12, and 100, from the domain note. Denominators 5, 10, 12, and 100 are not certified on the linked grade-4 fraction items.";
+  "Denominators 2, 3, 4, 5, 6, 8, 10, 12, and 100, from the domain note.";
 
 export const arizonaG4Rows: readonly ArizonaRow[] = [
   related(
@@ -86,9 +86,10 @@ export const arizonaG4Rows: readonly ArizonaRow[] = [
       "comparison-amount",
       "comparison-factor",
       "mcas-comparison-equations-select",
+      "times-as-many-comparison",
     ],
     ["multiplicative-comparison"],
-    "The linked items use 'times as many' wording. The equal-groups reading in the printed example is not what those items ask. comparison-amount finds the larger amount, or the smaller amount when that is the unknown. The multiplier stays at most 9.",
+    "times-as-many-comparison matches a times-as-many sentence to the product, and a product to the sentence. The other choices are more-than sentences. The printed equal-groups reading, 35 as 5 groups of 7, is still not what the items ask. comparison-amount finds the larger amount, or the smaller amount when that is the unknown. The multiplier stays at most 9.",
   ),
   related(
     "4.OA.A.2",
@@ -99,9 +100,10 @@ export const arizonaG4Rows: readonly ArizonaRow[] = [
       "comparison-amount",
       "comparison-factor",
       "mcas-comparison-equations-select",
+      "times-as-many-comparison",
     ],
     ["multiplicative-comparison"],
-    "comparison-amount finds the larger amount, or the smaller amount. The multiplier is at most 9 and the smaller amount is at most 100, so the product stays under 1,000. mcas-comparison-equations-select includes a 'more than' equation among the choices. An unknown the learner writes, and the full Table 2 situation list, are not assessed.",
+    "comparison-amount finds the larger amount, or the smaller amount. The multiplier is at most 9 and the smaller amount is at most 100, so the product stays under 1,000. mcas-comparison-equations-select includes a 'more than' equation among the choices. times-as-many-comparison rejects a more-than sentence for the same counts. An unknown the learner writes, and the full Table 2 situation list, are not assessed.",
   ),
   related(
     "4.OA.A.3",
@@ -225,9 +227,10 @@ export const arizonaG4Rows: readonly ArizonaRow[] = [
       "equivalent-denominator",
       "fraction-equivalence-choice",
       "equivalent-fractions-select",
+      "equivalent-fractions-number-line",
     ],
     ["fraction-equivalence"],
-    "Items scale both parts or select an equal fraction from strips or numbers. A number-line model and a written explanation of the part size are not generated.",
+    "Items scale both parts or select an equal fraction from strips or numbers. equivalent-fractions-number-line chooses three names for one marked point. The line uses 2, 3, 4, or 5 equal parts, the names can use 5, 10, 12, or 100, and some points are past 1. A written explanation of the part size is not generated.",
   ),
   related(
     "4.NF.A.2",
@@ -238,9 +241,10 @@ export const arizonaG4Rows: readonly ArizonaRow[] = [
       "compare-unlike-fractions",
       "order-fractions-slots",
       "fraction-choice-compare",
+      "compare-fractions-symbol-blanks",
     ],
     ["fraction-comparison"],
-    "Items ask for the greater fraction or an order. order-fractions-slots can use one half as a benchmark. Recording a symbol, a written justification, and two different-size wholes are not assessed.",
+    "compare-fractions-symbol-blanks records <, =, or > for two pairs of the same whole, and about half the seeds include an equal pair. order-fractions-slots can use one half as a benchmark. A written justification, and two different-size wholes, are not assessed.",
   ),
   related(
     "4.NF.B.3",
@@ -251,19 +255,25 @@ export const arizonaG4Rows: readonly ArizonaRow[] = [
       "like-fraction-missing-part",
       "like-fraction-difference",
       "mixed-fraction-difference",
-      "fraction-unit-count",
+      "fraction-decompositions-select",
+      "mixed-fraction-sum",
+      "like-fraction-sum-story",
     ],
-    ["like-fraction-addition", "mixed-numbers", "unit-fractions"],
-    "One missing addend, like-fraction subtraction, and mixed-number subtraction are assessed. Other-grade link: fraction-unit-count is skill unit-fractions, grade 3, and is not served as grade 4 practice. Several decompositions, a mixed-number sum, and an addition story are not in the catalog.",
+    ["like-fraction-addition", "mixed-numbers"],
+    "fraction-decompositions-select chooses several sums for one shaded amount, including a sum made only of unit fractions. mixed-fraction-sum adds two mixed numbers with one denominator, and the checked answer is in simplest form. like-fraction-sum-story adds two fractions of one whole. Subtraction and one missing addend remain. A model the learner draws is not generated.",
   ),
   related(
     "4.NF.B.4",
     "printed p.9",
     "See a/b as a copies of 1/b, use that to multiply a whole number by a fraction, and solve a story.",
     `${fracCap} Parts a through c stay on this one row. Whether the 'between two whole numbers' example stayed in part c was not confirmed from a second extract.`,
-    ["whole-times-fraction", "fraction-of-set"],
+    [
+      "whole-times-fraction",
+      "fraction-of-set",
+      "unit-fraction-multiple-blanks",
+    ],
     ["fraction-times-whole"],
-    "Both items compute a product. The unit-fraction equations a times 1/b and n times a/b as a count of 1/b are not asked. A 'between which two whole numbers' question is not certified.",
+    "whole-times-fraction and fraction-of-set compute a product. unit-fraction-multiple-blanks fills a/b as copies of 1/b, and fills the product as copies of that same unit fraction. The product is sometimes written fraction-first. Its denominators are 3, 4, 5, 6, 8, 10, and 12, so 2 and 100 are not on that item. A 'between which two whole numbers' question is not certified.",
   ),
   related(
     "4.NF.C.5",
@@ -279,18 +289,23 @@ export const arizonaG4Rows: readonly ArizonaRow[] = [
     "printed p.10",
     "Write a fraction with denominator 10 or 100 as a decimal, and locate that decimal on a number line.",
     "Tenths and hundredths. Locating the point is required, not only an example. Essential standard.",
-    ["tenths-as-hundredths", "decimal-grid-read", "decimal-line-point"],
+    [
+      "tenths-as-hundredths",
+      "decimal-grid-read",
+      "decimal-line-point",
+      "decimal-fraction-locate",
+    ],
     ["decimal-fractions"],
-    "Renames and reads a shaded grid or a labeled point. Choosing which point is a named decimal is not in the catalog. decimal-line-point reads a point that is already marked.",
+    "Renames and reads a shaded grid or a labeled point. decimal-fraction-locate chooses the letter at a named tenth, written as a fraction with denominator 10, or at a named hundredth, including values above 1. decimal-line-point reads a point that is already marked.",
   ),
   related(
     "4.NF.C.7",
     "printed p.10",
     "Compare two decimals to hundredths, only when they name the same whole, and record the symbol.",
     "Hundredths. A visual justification is not required.",
-    ["compare-decimals-hundredths"],
+    ["compare-decimals-hundredths", "compare-decimals-symbol-blanks"],
     ["compare-decimals"],
-    "The item asks for the greater or lesser decimal. It does not record a symbol. staar-order-decimals is not linked: it orders thousandths, which is past this standard, even though its skill is grade 4.",
+    "compare-decimals-hundredths asks for the greater or lesser decimal. compare-decimals-symbol-blanks records <, =, or > for two pairs to hundredths, and one pair is a trailing zero such as 0.8 and 0.80. staar-order-decimals is not linked: it orders thousandths, which is past this standard, even though its skill is grade 4.",
   ),
   related(
     "4.MD.A.1",

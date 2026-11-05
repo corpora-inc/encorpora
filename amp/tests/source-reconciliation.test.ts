@@ -86,6 +86,9 @@ test("Florida B.E.S.T. inventory counts benchmarks honestly and never claims cov
   assert.equal(slices.length, 5);
   // Independent counts from the July 2025 PDF: K-2 75, 3-5 109, 6-8 114,
   // Algebra 1 / Geometry / Algebra 2 / Precalculus 181, MTR 7.
+  // Grade 4 was rechecked on 2026-11-04. The new fraction, decimal, and
+  // comparison links sit on benchmarks that were already related, so the
+  // 3-5 totals are unchanged. The five missing rows are still grades 3 and 5.
   const expected = [
     [75, 66, 9, 0, 0],
     [109, 104, 5, 0, 0],
@@ -283,6 +286,9 @@ test("Texas K-8 and high-school inventories report honest aggregate counts", () 
     missingOnly: 29,
     unreviewed: 13,
   });
+  // Grade 4 was rechecked on 2026-11-04. New templates were added to tasks
+  // that were already related. Drawing an angle and the three open-ended
+  // financial expectations stay unreviewed, so this band's totals are unchanged.
   assert.deepEqual(band(texasGrades35Inventories), {
     requirements: 140,
     relatedPractice: 102,
