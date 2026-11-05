@@ -45,12 +45,7 @@ import {
 import type { Authenticator } from "./auth";
 import { planMixedPractice } from "./mixed-practice";
 import { SKIP_USES_FREE_PROBLEM } from "../learning/skip";
-import {
-  ANONYMOUS_FREE_PROBLEMS,
-  isTrialAccount,
-  SIGN_IN_TO_CONTINUE,
-  trialLimits,
-} from "./trials";
+import { isTrialAccount, trialLimits } from "./trials";
 import {
   hasProblemLesson,
   lessonGlossaryContext,
@@ -122,13 +117,6 @@ export function redactUrl(url: string) {
       parsed.searchParams.set(key, "[redacted]");
   return path + (parsed.search ? decodeURIComponent(parsed.search) : "");
 }
-
-/** An authenticator's refusal for a request without a parent session. */
-const isSignedOut = (error: unknown) =>
-  !!error &&
-  typeof error === "object" &&
-  "statusCode" in error &&
-  error.statusCode === 401;
 
 /** Requests per minute per credential, or per address when anonymous. */
 export const GLOBAL_RATE_LIMIT = 600;
@@ -252,61 +240,29 @@ function routes(app: FastifyInstance, options: AppOptions) {
       .code(500)
       .send({ error: "Unable to complete the request. Please try again." });
   });
-  // Free practice is the device trial capability plus, in hosted mode, the
-  // owning parent's session. Without a session a visitor may use only an
-  // unowned trial, and only through `visitor` routes: one problem served and
-  // answered (ANONYMOUS_FREE_PROBLEMS) plus reads of that learner. Family,
-  // billing, consent and export routes are registered with the parent
-  // authenticator alone, so a trial token can never reach them.
-  async function learningAccess(
-    request: Parameters<Authenticator>[0],
-  ): Promise<{ account: string; anonymous: boolean }> {
+  // Free practice requires a parent session plus the device trial capability. Family, billing,
+  // consent and export routes are registered with the parent authenticator
+  // alone, so a trial token can never reach them.
+  async function learningAccount(request: Parameters<Authenticator>[0]) {
     const trial = request.headers.authorization?.match(
       /^Trial ([A-Za-z0-9_-]{20,100})$/,
     )?.[1];
-    if (!trial)
-      return { account: await options.authenticate(request), anonymous: false };
-    if (options.development) {
-      const account = await options.repository.trialAccount(trial);
-      if (!account) throw new ApiError(401, "This free trial has ended");
-      return { account, anonymous: false };
-    }
-    let owner: string | undefined;
-    let signedOut: unknown;
-    try {
-      owner = await options.authenticate(request);
-    } catch (error) {
-      if (!isSignedOut(error)) throw error;
-      signedOut = error;
-    }
+    if (!trial) return options.authenticate(request);
+    const owner = !options.development
+      ? await options.authenticate(request)
+      : undefined;
     const account = await options.repository.trialAccount(trial, owner);
-    // A signed-out token that names no unowned trial (an account's trial id,
-    // or a claimed, saved or expired token) reports the sign-in as before.
-    if (!account)
-      throw signedOut ?? new ApiError(401, "This free trial has ended");
-    return { account, anonymous: owner === undefined };
+    if (!account) throw new ApiError(401, "This free trial has ended");
+    return account;
   }
-  async function consented(account: string) {
+  async function parent(request: Parameters<Authenticator>[0]) {
+    const account = await learningAccount(request);
     if (!options.development && !(await options.repository.hasConsent(account)))
       throw new ApiError(
         403,
         "Verified parent consent is required. Open Family → Privacy → Learning consent to review enrollment.",
       );
     return account;
-  }
-  /** A parent's learning request; a visitor without a session is asked to
-   * sign in. */
-  async function parent(request: Parameters<Authenticator>[0]) {
-    const { account, anonymous } = await learningAccess(request);
-    if (anonymous) throw new ApiError(401, SIGN_IN_TO_CONTINUE);
-    return consented(account);
-  }
-  /** A request a visitor without a session may also make; `anonymous` marks
-   * that visitor so the route can apply the one-problem limit. */
-  async function visitor(request: Parameters<Authenticator>[0]) {
-    const access = await learningAccess(request);
-    await consented(access.account);
-    return access;
   }
   // `commit` and `builtAt` name the running release (null in a local build).
   const build = buildInfo();
@@ -348,7 +304,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     return sendPublicJson(request, reply, catalogCache);
   });
   app.get("/api/v1/learners", async (request) => ({
-    learners: await options.repository.list((await visitor(request)).account),
+    learners: await options.repository.list(await parent(request)),
   }));
   app.post("/api/v1/learners", async (request, reply) => {
     const account = await parent(request);
@@ -366,7 +322,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
       .send(await options.repository.create(account, name, birthYear));
   });
   app.get("/api/v1/learners/:learnerId/progress", async (request) => {
-    const { account } = await visitor(request);
+    const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const { skill } = z
       .object({ skill: z.string().min(1).max(100).optional() })
@@ -381,7 +337,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     }));
   });
   app.get("/api/v1/learners/:learnerId/frontier", async (request) => {
-    const { account } = await visitor(request);
+    const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     return options.repository.transaction(account, learnerId, async (tx) => {
       // Estimates, uncertainty and evidence counts per strand.
@@ -401,7 +357,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     });
   });
   app.get("/api/v1/learners/:learnerId/starting-point", async (request) => {
-    const { account } = await visitor(request);
+    const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     return options.repository.transaction(account, learnerId, async (tx) => {
       const { band, policyVersion } = await tx.startingPoint();
@@ -425,22 +381,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
     "/api/v1/trials",
     { config: { rateLimit: { max: 20, timeWindow: "1 hour" } } },
     async (request, reply) => {
-      // Hosted: a parent's session owns the trial. Without one, only an
-      // explicit `anonymous: true` starts an unowned trial (birth year only)
-      // for the one problem a visitor may answer before signing in.
-      let account: string | null = null;
-      if (!options.development)
-        try {
-          account = await options.authenticate(request);
-        } catch (error) {
-          const body = request.body as { anonymous?: unknown } | null;
-          if (!isSignedOut(error) || body?.anonymous !== true) throw error;
-        }
+      const account = !options.development
+        ? await options.authenticate(request)
+        : null;
       const { birthYear } = z
-        .object({
-          birthYear: birthYearSchema,
-          anonymous: z.literal(true).optional(),
-        })
+        .object({ birthYear: birthYearSchema })
         .strict()
         .parse(request.body);
       const trial = await options.repository.createTrial(
@@ -468,21 +413,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
       })
       .strict()
       .parse(request.body ?? {});
-    const resumed = (await options.repository.resumeTrial?.(owner, token)) ?? {
-      trial: null,
+    return {
+      trial: (await options.repository.currentTrial?.(owner, token)) ?? null,
     };
-    // A claimed visitor trial is this parent's assessment start.
-    if (
-      resumed.claim === "claimed" &&
-      resumed.trial &&
-      options.repository instanceof PostgresRepository
-    )
-      await recordParentAssessmentStart(
-        options.repository.pool,
-        owner,
-        resumed.trial.birthYear,
-      ).catch(() => console.warn("Parent assessment entry was not recorded"));
-    return resumed;
   });
   app.post("/api/v1/trials/adopt", async (request) => {
     const account = await options.authenticate(request);
@@ -496,7 +429,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     return options.repository.adoptTrial(account, token, name);
   });
   app.get("/api/v1/learners/:learnerId/practice-state", async (request) => {
-    const { account } = await visitor(request);
+    const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     return options.repository.transaction(account, learnerId, (tx) =>
       tx.practiceSettings(),
@@ -526,7 +459,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
    * after practice, and the overall level over the run. Only an anonymous
    * trial has one. */
   app.get("/api/v1/learners/:learnerId/trial-progress", async (request) => {
-    const { account } = await visitor(request);
+    const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     return options.repository.transaction(account, learnerId, async (tx) => {
       const progress = await tx.trialProgress();
@@ -558,7 +491,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     });
   });
   app.post("/api/v1/learners/:learnerId/batches", async (request) => {
-    const { account, anonymous } = await visitor(request);
+    const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const input = z
       .object({
@@ -583,45 +516,6 @@ function routes(app: FastifyInstance, options: AppOptions) {
         if (trialRemaining <= 0) throw new ApiError(402, "trial-complete");
       } else if (!options.development && !(await tx.hasAccess()))
         throw new ApiError(403, "An active student license is required");
-      // A visitor without a session is served ANONYMOUS_FREE_PROBLEMS in
-      // all, never prefetched. Asking again (a reload) returns the open
-      // one; once it is answered or skipped, practice continues after
-      // sign-in.
-      let visitorAllowance = Infinity;
-      if (anonymous) {
-        const served = await tx.servedProblems(ANONYMOUS_FREE_PROBLEMS);
-        visitorAllowance = ANONYMOUS_FREE_PROBLEMS - served.length;
-        if (visitorAllowance <= 0) {
-          const open: SavedProblem[] = [];
-          for (const problem of served)
-            if (
-              !problem.skipped &&
-              !(await tx.attemptByProblem(problem.public.id))
-            )
-              open.push(problem);
-          if (!open.length) throw new ApiError(401, SIGN_IN_TO_CONTINUE);
-          return {
-            problems: open.map((problem) => problem.public),
-            hints: Object.fromEntries(
-              open.map((problem) => [problem.public.id, hintSupport(problem)]),
-            ),
-            trialRemaining,
-            selection: open.map((problem) => {
-              const served = problem.selection as
-                { reason?: string; strand?: string } | undefined;
-              return {
-                problemId: problem.public.id,
-                reason: served?.reason ?? "adaptive",
-                strand: served?.strand ?? "math",
-              };
-            }),
-            lesson:
-              lessons.find((l) =>
-                l.templateIds.includes(open[0].public.templateId),
-              ) ?? null,
-          };
-        }
-      }
       const focused = input.templateId
         ? templates.find((t) => t.id === input.templateId)
         : undefined;
@@ -638,11 +532,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
           400,
           "This problem needs an updated app. Refresh the page to try it.",
         );
-      const count = Math.min(
-        input.count,
-        trialRemaining ?? Infinity,
-        visitorAllowance,
-      );
+      const count =
+        trialRemaining === null
+          ? input.count
+          : Math.min(input.count, trialRemaining);
       const satMathFocus = await tx.satMathFocus();
       const practice = await tx.practiceSettings();
       const focusedPool = practice.focusSkillId
@@ -837,7 +730,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     });
   });
   app.post("/api/v1/learners/:learnerId/hints", async (request) => {
-    const { account } = await visitor(request);
+    const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const { problemId } = z
       .object({ problemId: z.string().max(160) })
@@ -852,7 +745,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     });
   });
   app.post("/api/v1/learners/:learnerId/lesson-support", async (request) => {
-    const { account } = await visitor(request);
+    const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const { problemId } = z
       .object({ problemId: z.string().min(1).max(160) })
@@ -881,7 +774,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     });
   });
   app.post("/api/v1/learners/:learnerId/attempts", async (request) => {
-    const { account, anonymous } = await visitor(request);
+    const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
     const input = attemptSchema.parse(request.body);
     return options.repository.transaction(account, learnerId, async (tx) => {
@@ -934,14 +827,6 @@ function routes(app: FastifyInstance, options: AppOptions) {
           );
         return withGlossary(duplicate);
       }
-      // A visitor without a session answers ANONYMOUS_FREE_PROBLEMS; a
-      // retry of that answer is returned above.
-      if (
-        anonymous &&
-        ((await tx.trialProgress())?.totals.answered ?? Infinity) >=
-          ANONYMOUS_FREE_PROBLEMS
-      )
-        throw new ApiError(401, SIGN_IN_TO_CONTINUE);
       // Problems fetched in advance cannot extend a trial's allowance.
       const trialRemaining = await tx.trialRemaining();
       if (trialRemaining !== null && trialRemaining <= 0)

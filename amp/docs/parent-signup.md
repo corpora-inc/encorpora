@@ -1,21 +1,6 @@
 # Parent signup and assessment emails
 
-A parent may answer one assessment problem without an account. Continuing past it (the second problem, Skip, workbooks, plans) needs a free AMP account, and signing in saves that first answer into the account's trial. Google, Microsoft, GitHub and Apple appear when configured; passkey and email options provide alternatives. No payment is required. The assessment asks for a starting birth year, then opens adaptive practice with the configured free allowance (100 problems by default).
-
-## One problem before signup
-
-In hosted mode, `POST /api/v1/trials` with `{"birthYear": 2016, "anonymous": true}` and no session starts an unowned trial: a random device token, a nameless learner and the birth year, nothing else. Without `"anonymous": true` a request with no session is refused with 401, as before. With a session the trial is the account's, whatever the body says. Creation shares the 20-per-hour limit for each client address.
-
-The device sends `Authorization: Trial <token>` with no session. It may read its learner (`GET …/trial-progress`, `…/practice-state`, `…/progress`, `…/frontier`, `…/starting-point`, `GET /learners`), ask for hints and the problem lesson, request batches and answer. The server serves `ANONYMOUS_FREE_PROBLEMS` (one) problem in all, whatever `count` asks for; asking again returns the same open problem, and an answer retry returns the stored answer. Every other request, including the next batch or answer, Skip, practice changes, workbooks, publications, the paywall record and problem reports, answers `401 {"error":"sign_in_to_continue"}`. A token that names no unowned live trial answers 401 `Sign in to continue`.
-
-After sign-in, `POST /api/v1/trials/current` with `{"token": "<device token>"}` returns `{trial, claim}`:
-
-- `claimed`: the visitor trial now belongs to the account. `trial.token` is its id; use it with the session. Practice continues at problem 2 with the first answer counted.
-- `owned`: the token already names the account's live trial (a reload).
-- `kept-existing`: the account already had a live trial, which is returned. The visitor trial is not merged and expires unsaved.
-- `unavailable`: expired, saved, unknown or another account's token. `trial` is the account's live trial or `null`.
-
-Without a token, the response is `{trial}` as before. After a claim the visitor token no longer works without that account's session. Unclaimed visitor trials and their answer are deleted 14 days after they start.
+Parents create a free AMP account before the assessment. Google, Microsoft, GitHub and Apple appear when configured; passkey and email options provide alternatives. No payment is required. The next screen asks for a starting birth year, then opens adaptive practice with the configured free allowance (100 problems by default).
 
 Use `/sign-up?return=free-practice&program=ar-efa` for Arkansas ads and `program=az-esa` for Arizona. The signup page explains the free assessment, funding availability and email follow-up. Authentication preserves validated campaign labels and the funding program. Device practice resumes after signup; saving progress to a learner profile uses the parent-consent and adoption flow.
 
