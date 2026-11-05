@@ -39,7 +39,9 @@ export function googleSignupContext() {
 }
 export function trackGooglePage(): void {
   if (nativeRuntime || (!analyticsAllowed() && !google)) return;
-  (google ??= createGoogleAnalytics()).navigate();
+  (google ??= createGoogleAnalytics({
+    home: () => (pitchShown ? "pitch" : "app"),
+  })).navigate();
 }
 
 /** First-party journey collection. A bounded tab queue survives reloads;
@@ -269,7 +271,8 @@ export function track<E extends ClientEvent>(
         : {}),
     });
     persist();
-    google?.event(event);
+    // GA receives only its fixed actions and their allowed props.
+    google?.event(event, parsed.data);
     listen();
     if (buffer.length >= MAX_EVENTS_PER_BATCH) flush();
     else timer ??= setTimeout(flush, flushDelayMs);

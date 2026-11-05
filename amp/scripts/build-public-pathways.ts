@@ -17,10 +17,10 @@ import {
 
 const origin = "https://amp.corpora.inc";
 const destination = new URL("../dist/", import.meta.url);
-const shell = (
-  await readFile(new URL("index.html", destination), "utf8")
-).replace(
-  /\n<!--amp-(?:assessment|product)-social-start-->[\s\S]*?<!--amp-(?:assessment|product)-social-end-->\n/g,
+const built = await readFile(new URL("index.html", destination), "utf8");
+// Skill pages carry their own social tags, never the homepage's.
+const shell = built.replace(
+  /\n[ \t]*<!--amp-(?:assessment|product)-social-start-->[\s\S]*?<!--amp-(?:assessment|product)-social-end-->[ \t]*(?=\n)/g,
   "",
 );
 const byId = new Map(skills.map((skill) => [skill.id, skill]));
@@ -118,10 +118,13 @@ function titleLines(title: string) {
 }
 
 function cardSvg(skill?: (typeof skills)[number], product = false) {
+  // The product card shares the pitch: its headline and what AMP is.
   const title = product
-    ? "Math that adapts to you"
+    ? "Math that adapts to every answer"
     : (skill?.title ?? "Explore math skills");
-  const lines = product ? ["Math that adapts", "to you"] : titleLines(title);
+  const lines = product
+    ? ["Math that adapts", "to every answer"]
+    : titleLines(title);
   const grade = "ADAPTIVE MATH PATHWAYS";
   const titleY = lines.length > 1 ? 260 : 290;
   if (
@@ -158,7 +161,7 @@ function cardSvg(skill?: (typeof skills)[number], product = false) {
     <text x="190" y="80" fill="#c8eee7" font-family="KaTeX_SansSerif" font-size="24">${product ? "AMP" : "AMP PATHWAYS"}</text>
     <text x="64" y="180" fill="#8ce8df" font-family="KaTeX_SansSerif" font-size="22">${escapeHtml(grade)}</text>
     ${lines.map((line, index) => `<text x="64" y="${titleY + index * 63}" fill="#f0f8f6" font-family="KaTeX_SansSerif" font-size="52">${escapeHtml(line)}</text>`).join("")}
-    <text x="64" y="492" fill="#bfd7d5" font-family="KaTeX_SansSerif" font-size="25">${product ? "Practice, lessons &amp; worksheets" : "Explore the skill map"}</text>
+    <text x="64" y="492" fill="#bfd7d5" font-family="KaTeX_SansSerif" font-size="25">${product ? "A complete math curriculum" : "Explore the skill map"}</text>
     <text x="64" y="550" fill="#8ce8df" font-family="KaTeX_SansSerif" font-size="22">amp.corpora.inc${product ? "" : "/pathways"}</text>
     <g clip-path="url(#map)">${mapEdges}${closeConnections}${mapNodes}
       ${selected ? `<circle cx="${selected.x.toFixed(1)}" cy="${selected.y.toFixed(1)}" r="21" fill="none" stroke="#c5fff2" stroke-opacity=".65" stroke-width="2"/><circle cx="${selected.x.toFixed(1)}" cy="${selected.y.toFixed(1)}" r="9" fill="#a1f0e4"/>` : ""}
@@ -328,35 +331,41 @@ await writeFile(
     cardUrls.get("map")!,
   ),
 );
-// The homepage and SPA fallback describe the product. Campaign-specific hooks
-// belong in explicitly targeted content, not the default social preview.
+// The homepage and SPA fallback describe the pitch. `index.html` owns the
+// preview text; this adds the generated card. Campaign-specific hooks belong in
+// explicitly targeted content, not the default social preview.
 const productImage = origin + cardUrls.get("product")!;
-const productTitle = "Adaptive Math Pathways — Math that adapts to you";
-const productDescription =
-  "Explore math at your own pace with adaptive practice, clear lessons, and printable worksheets. Start with a free assessment.";
 const productImageAlt =
-  "Adaptive Math Pathways: Math that adapts to you. Practice, lessons and worksheets, with a connected map of math skills.";
+  "AMP, Adaptive Math Pathways: math that adapts to every answer. A complete math curriculum, with a connected map of math skills.";
+const productBlock =
+  /(<!--amp-product-social-start-->)([\s\S]*?)(\n[ \t]*<!--amp-product-social-end-->)/.exec(
+    built,
+  );
+if (!productBlock || !productBlock[2].includes('property="og:title"'))
+  throw new Error("index.html has no product social block");
+const imageTags = [
+  `<meta property="og:image" content="${productImage}" />`,
+  `<meta property="og:image:width" content="1200" />`,
+  `<meta property="og:image:height" content="630" />`,
+  `<meta property="og:image:alt" content="${escapeHtml(productImageAlt)}" />`,
+  `<meta name="twitter:image" content="${productImage}" />`,
+  `<meta name="twitter:image:alt" content="${escapeHtml(productImageAlt)}" />`,
+]
+  .map((tag) => `\n    ${tag}`)
+  .join("");
 await writeFile(
   new URL("index.html", destination),
-  shell.replace(
-    "</head>",
-    `
-<!--amp-product-social-start-->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="${escapeHtml(productTitle)}" />
-  <meta property="og:description" content="${escapeHtml(productDescription)}" />
-  <meta property="og:url" content="${origin}/" />
-  <meta property="og:image" content="${productImage}" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="${escapeHtml(productImageAlt)}" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="${escapeHtml(productTitle)}" />
-  <meta name="twitter:description" content="${escapeHtml(productDescription)}" />
-  <meta name="twitter:image" content="${productImage}" />
-  <meta name="twitter:image:alt" content="${escapeHtml(productImageAlt)}" />
-<!--amp-product-social-end-->
-</head>`,
+  built.replace(
+    productBlock[0],
+    // A rebuild of the same output replaces, never repeats, the image tags.
+    () =>
+      productBlock[1] +
+      productBlock[2].replace(
+        /\n[ \t]*<meta (?:property="og:image|name="twitter:image)[^>]*>/g,
+        "",
+      ) +
+      imageTags +
+      productBlock[3],
   ),
 );
 const urls = ["/pathways", ...skills.map((skill) => skillUrl(skill.id))];

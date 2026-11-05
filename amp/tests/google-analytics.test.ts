@@ -1,10 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  googleEvent,
   googlePage,
+  googleProgram,
   sameGoogleVisit,
   googlePageTitle,
 } from "../src/analytics/google-analytics.js";
+import { FUNNEL_EVENTS } from "../src/analytics/events.js";
 
 test("public page titles distinguish the journey without private URL data", () => {
   assert.equal(
@@ -144,4 +147,140 @@ test("GA covers parent, school and actual legal marketing routes", () => {
       googlePage(`https://corpora.inc${path}/?email=private@example.test`),
       `https://corpora.inc${path}`,
     );
+});
+
+test("the pitch, its funded-program variants and sign-up intents have distinct GA titles", () => {
+  const pitch = "https://amp.corpora.inc/";
+  assert.equal(
+    googlePageTitle(`${pitch}?utm_source=google&gclid=Valid_Click_123`),
+    "AMP: Adaptive Math Pathways, a complete math curriculum",
+  );
+  assert.equal(
+    googlePageTitle(`${pitch}?program=ar-efa&utm_campaign=ar-efa-launch`),
+    "AMP: Adaptive Math Pathways for Arkansas EFA families",
+  );
+  assert.equal(
+    googlePageTitle(`${pitch}?program=tx-esa`),
+    "AMP: Adaptive Math Pathways, a complete math curriculum",
+  );
+  assert.equal(
+    googlePageTitle(
+      "https://amp.corpora.inc/sign-up?entry=pitch-try&return=free-practice&email=private@example.test",
+    ),
+    "Try AMP Free | AMP",
+  );
+  assert.equal(
+    googlePageTitle("https://amp.corpora.inc/sign-up?entry=pitch-buy"),
+    "Create Your Account to Buy | AMP",
+  );
+  // The URL GA keeps still carries no program, entry or private value.
+  assert.equal(
+    googlePage(
+      "https://amp.corpora.inc/sign-up?entry=pitch-try&return=free-practice&program=ar-efa&email=private@example.test",
+    ),
+    "https://amp.corpora.inc/sign-up",
+  );
+});
+
+test("the signed-in home at / is a learning screen GA never sees", () => {
+  assert.equal(googlePage("https://amp.corpora.inc/", "app"), undefined);
+  assert.equal(googlePageTitle("https://amp.corpora.inc/", "app"), undefined);
+  // Other public routes do not depend on what / shows.
+  assert.equal(
+    googlePage("https://amp.corpora.inc/plans", "app"),
+    "https://amp.corpora.inc/plans",
+  );
+});
+
+test("only a listed program on an AMP URL becomes the program parameter", () => {
+  assert.equal(
+    googleProgram("https://amp.corpora.inc/?program=az-esa"),
+    "az-esa",
+  );
+  assert.equal(
+    googleProgram("https://amp.corpora.inc/?program=tx-esa"),
+    undefined,
+  );
+  assert.equal(
+    googleProgram("https://amp.corpora.inc/?program=AZ-ESA"),
+    undefined,
+  );
+  assert.equal(googleProgram("https://corpora.inc/?program=az-esa"), undefined);
+  assert.equal(googleProgram("not a url"), undefined);
+});
+
+test("pitch actions map to GA's recommended names with only allowed parameters", () => {
+  const card = "https://amp.corpora.inc/?utm_source=google";
+  const funded = "https://amp.corpora.inc/?program=ar-efa";
+  assert.deepEqual(googleEvent("video_play", {}, card), {
+    name: "video_start",
+    params: {},
+  });
+  for (const percent of [25, 50, 75])
+    assert.deepEqual(googleEvent("video_progress", { percent }, card), {
+      name: "video_progress",
+      params: { video_percent: percent },
+    });
+  assert.deepEqual(googleEvent("video_progress", { percent: 100 }, card), {
+    name: "video_complete",
+    params: { video_percent: 100 },
+  });
+  assert.deepEqual(googleEvent("buy_click", { path: "card" }, card), {
+    name: "buy_click",
+    params: { payment_route: "card" },
+  });
+  assert.deepEqual(googleEvent("buy_click", { path: "funded" }, funded), {
+    name: "buy_click",
+    params: { payment_route: "ar-efa", program: "ar-efa" },
+  });
+  assert.deepEqual(googleEvent("buy_click", { path: "card" }, funded), {
+    name: "buy_click",
+    params: { payment_route: "card", program: "ar-efa" },
+  });
+  assert.deepEqual(googleEvent("try_click", undefined, funded), {
+    name: "try_click",
+    params: { program: "ar-efa" },
+  });
+  assert.deepEqual(googleEvent("workbook_click", {}, card), {
+    name: "workbook_click",
+    params: {},
+  });
+});
+
+test("GA drops unlisted actions, out-of-range values and extra props", () => {
+  const page = "https://amp.corpora.inc/?program=nh-efa";
+  for (const [action, props] of [
+    ["video_progress", { percent: 33 }],
+    ["video_progress", { percent: "50" }],
+    ["video_progress", {}],
+    ["buy_click", { path: "parent@example.test" }],
+    ["buy_click", {}],
+  ] as const)
+    assert.equal(googleEvent(action, props, page), undefined, action);
+  // A click is never a purchase, and learning or account events never leave.
+  for (const action of FUNNEL_EVENTS.filter(
+    (name) =>
+      ![
+        "try_click",
+        "workbook_click",
+        "buy_click",
+        "video_play",
+        "video_progress",
+        "plan_view",
+        "plan_select",
+        "checkout_start",
+        "checkout_return",
+      ].includes(name),
+  ))
+    assert.equal(googleEvent(action, {}, page), undefined, action);
+  const leaky = googleEvent(
+    "buy_click",
+    { path: "card", email: "parent@example.test", learner: "private" },
+    "https://amp.corpora.inc/?program=nh-efa&email=parent%40example.test",
+  );
+  assert.deepEqual(leaky, {
+    name: "buy_click",
+    params: { payment_route: "card", program: "nh-efa" },
+  });
+  assert.equal(googleEvent("checkout_start", {}, page)?.name, "begin_checkout");
 });
