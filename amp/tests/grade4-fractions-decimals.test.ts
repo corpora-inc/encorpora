@@ -126,6 +126,15 @@ const NEW_IDS = [
   "decimal-place-value-hundredths",
 ] as const;
 
+/** #1988 retired thousandths from new decimal-ordering problems (version 3:
+ * grade 4 stops at hundredths). Its stored surface is now reached only by
+ * reprinting at version 2, so the frozen-surface checks generate it there. */
+const STORED_ORDER_VERSION = 2;
+const atStoredVersion = (id: string, seed: string) =>
+  id === "staar-order-decimals"
+    ? generateProblem(id, seed, STORED_ORDER_VERSION)
+    : generateProblem(id, seed);
+
 test("legacy fraction and decimal surfaces stay byte-identical", () => {
   assert.deepEqual(
     Object.keys(golden).sort(),
@@ -147,7 +156,7 @@ test("legacy fraction and decimal surfaces stay byte-identical", () => {
     assert.equal(hashes.length, 200, id);
     let legacy = 0;
     hashes.forEach((expected, i) => {
-      const problem = generateProblem(id, `legacy:${i}`);
+      const problem = atStoredVersion(id, `legacy:${i}`);
       const axes = problem.variant?.axes;
       // The golden file freezes the surface from before these axes. Only that
       // legacy value must match. A new axis value is a different problem, and
@@ -166,7 +175,8 @@ test("legacy fraction and decimal surfaces stay byte-identical", () => {
           assert.equal(problem.variant, undefined, `${id} legacy:${i}`);
       }
     });
-    // staar-order-decimals weights thousandths 1 of 5, so 200 seeds land near 30.
+    // Version 2 of staar-order-decimals weights thousandths 1 of 5, so 200
+    // seeds land near 30.
     assert.ok(legacy >= 30, `${id} reaches its legacy surface (${legacy})`);
   }
 });
@@ -657,9 +667,9 @@ test("different wholes, decimal location, place value, tenths above one, and hun
       hundredthsOrder++;
       assert.equal(order.variant?.axes?.places, "hundredths");
     } else {
+      // New problems never draw thousandths (out of grade-4 scope); stored
+      // version-2 problems still reprint them (version-gated-fractions.test).
       thousandthsOrder++;
-      assert.match(order.hint, /three decimal places/);
-      assert.equal(order.variant, undefined);
     }
     const listed =
       order.public.prompt.includes("Which list") ||
@@ -682,7 +692,7 @@ test("different wholes, decimal location, place value, tenths above one, and hun
   assert.ok(zeroTenths >= 160, `zero tenths ${zeroTenths}`);
   assert.ok(showcase >= 1, "2.30");
   assert.ok(hundredthsOrder >= 250, `hundredths order ${hundredthsOrder}`);
-  assert.ok(thousandthsOrder >= 40, `thousandths order ${thousandthsOrder}`);
+  assert.equal(thousandthsOrder, 0, "new decimal ordering stays in hundredths");
 });
 
 test("book samples stay distinct and use the repaired sentences", () => {
@@ -743,7 +753,7 @@ test("origin/main seeds keep the stored surface and variant id", () => {
     assert.ok(rows.length >= 40, id);
     let legacy = 0;
     rows.forEach((row, i) => {
-      const now = generateProblem(id, `replay:${i}`);
+      const now = atStoredVersion(id, `replay:${i}`);
       if (!storedSurface(id, now)) {
         if (id === "compare-fractions-reason-blanks")
           assert.notEqual(now.variant?.id, row.variantId);
