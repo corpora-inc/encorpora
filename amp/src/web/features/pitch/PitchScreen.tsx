@@ -142,9 +142,6 @@ export function PitchScreen() {
                 Get a free workbook
               </Button>
             </div>
-            <p className={styles.note}>
-              Both start with a free parent account.
-            </p>
           </div>
         </section>
         <section className={styles.details} aria-labelledby="pitch-includes">
@@ -170,33 +167,27 @@ export function PitchScreen() {
         {(annual || monthly || fundedOffer) && (
           <section className={styles.details} aria-labelledby="pitch-price">
             <h2 id="pitch-price">Price</h2>
-            <dl className={styles.prices}>
+            <ul className={styles.prices}>
               {annual && (
-                <div>
-                  <dt>Annual</dt>
-                  <dd>
-                    <span>{annual.formattedAmount}</span> per year
-                  </dd>
-                </div>
+                <li>
+                  Annual: <strong>{formatPrice(annual.amountMinor)}</strong> per
+                  year
+                </li>
               )}
               {monthly && (
-                <div>
-                  <dt>Monthly</dt>
-                  <dd>
-                    <span>{monthly.formattedAmount}</span> per month
-                  </dd>
-                </div>
+                <li>
+                  Monthly: <strong>{formatPrice(monthly.amountMinor)}</strong>{" "}
+                  per month
+                </li>
               )}
               {program && fundedOffer && (
-                <div>
-                  <dt>{program.name} funds</dt>
-                  <dd>
-                    <span>{formatPrice(fundedOffer.totalMinor)}</span> for{" "}
-                    {fundedOffer.termMonths ?? 12} months
-                  </dd>
-                </div>
+                <li>
+                  {program.name}:{" "}
+                  <strong>{formatPrice(fundedOffer.totalMinor)}</strong> for{" "}
+                  {fundedOffer.termMonths ?? 12} months, invoiced
+                </li>
               )}
-            </dl>
+            </ul>
             <p className={styles.refund}>
               One learner per plan. Ask within 30 days of payment and the whole
               payment is refunded.{" "}

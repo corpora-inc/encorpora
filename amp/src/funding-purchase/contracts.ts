@@ -47,6 +47,10 @@ export const fundingOfferSchema = z
     creditAgreementReference: text.optional(),
     destinationUrl: https,
     instructions: text,
+    /** The one public status line for this program, exactly as the parent
+     * site shows it (corpora-site `presentation.statusLabel`), e.g. its vendor
+     * status and payment route. Absent: nothing is claimed. */
+    statusLabel: text.max(100).optional(),
     documentPolicy: z.enum([
       "opaque-student-reference-accepted",
       "named-student-invoice",

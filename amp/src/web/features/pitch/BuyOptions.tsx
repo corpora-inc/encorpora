@@ -13,8 +13,17 @@ import styles from "./Pitch.module.css";
 
 export const REFUND_POLICY_URL = "https://corpora.inc/legal/refund/";
 
-/** Written like the card plans' server-formatted amounts ("$499.00"). */
-export const formatPrice = formatUsd;
+/** Whole dollars read "$499"; an amount with cents keeps them ("$49.50"). */
+export function formatPrice(minor: number) {
+  return minor % 100 === 0
+    ? new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }).format(minor / 100)
+    : formatUsd(minor);
+}
 
 /**
  * Buy, offered only through a route that can succeed now. With a funded
@@ -37,8 +46,13 @@ export function BuyOptions({
 }) {
   const navigate = useNavigate();
   const [interval, choose] = useState<"year" | "month">("year");
+  // The pitch writes whole-dollar plans as "$499", like the saving badge.
+  const plans = offers.map((entry) => ({
+    ...entry,
+    formattedAmount: formatPrice(entry.amountMinor),
+  }));
   const offer =
-    offers.find((entry) => entry.interval === interval) ?? offers[0] ?? null;
+    plans.find((entry) => entry.interval === interval) ?? plans[0] ?? null;
   function buyByCard(chosen: "year" | "month") {
     track("buy_click", { path: "card" });
     if (signedIn) {
@@ -63,6 +77,12 @@ export function BuyOptions({
           {formatPrice(fundedOffer.totalMinor)} for{" "}
           {fundedOffer.termMonths ?? 12} months · 30-day full refund
         </p>
+        {fundedOffer.statusLabel && (
+          <p className={styles.trust} data-funding-status>
+            <span aria-hidden="true">✓ </span>
+            {fundedOffer.statusLabel}
+          </p>
+        )}
         {offers.length > 0 && (
           <Button
             variant="quiet"
@@ -77,7 +97,7 @@ export function BuyOptions({
   if (!offer) return null;
   return (
     <div className={styles.buy} data-buy="card">
-      <PlanChoice offers={offers} interval={offer.interval} onChange={choose} />
+      <PlanChoice offers={plans} interval={offer.interval} onChange={choose} />
       <Button
         variant="primary"
         className={styles.buyButton}

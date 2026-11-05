@@ -94,6 +94,8 @@ const fundedOffer = {
   currency: "USD",
   instructions: "Attach the invoice to your request.",
   termMonths: 12,
+  // Synthetic: the verifier proves a configured label is shown, not its text.
+  statusLabel: "Fixture status label",
 };
 const policy = {
   ...consentFixture,
@@ -267,6 +269,27 @@ async function viewports(browser: Browser, engine: string) {
           ? page.getByRole("link", { name: "Buy with Arkansas EFA funds" })
           : page.getByRole("button", { name: "Buy AMP" });
         await buy.waitFor();
+        if (program)
+          assert.equal(
+            await page.locator("[data-funding-status]").innerText(),
+            "✓ Fixture status label",
+            `${tag}: the configured status label`,
+          );
+        assert.deepEqual(
+          await page.evaluate(
+            () =>
+              [...document.querySelectorAll("[data-pitch] *")]
+                .filter(
+                  (node) =>
+                    node.childElementCount === 0 &&
+                    /\$\d+\.00/.test(node.textContent ?? ""),
+                )
+                .map((node) => node.outerHTML)
+                .join(" ") || null,
+          ),
+          null,
+          `${tag}: whole dollars`,
+        );
         await noOverflow(page, tag);
         // Every control is a 44 px target; inline text links are exempt.
         const small = await page.evaluate(() =>

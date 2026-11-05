@@ -97,7 +97,7 @@
   margin: 0;
   font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   font-weight: 400;
-  font-size: clamp(34px, 4.2vw + 18px, 58px);
+  font-size: clamp(34px, 3.6vw + 16px, 54px);
   line-height: 1.08;
   letter-spacing: -0.025em;
   text-wrap: balance;
@@ -113,7 +113,8 @@
 }
 @media (min-width: 960px) {
   .hero {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    /* The video is the centerpiece: about 58% of the row. */
+    grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
     grid-template-areas: "copy film" "actions film";
     grid-template-rows: auto 1fr;
     column-gap: 56px;
@@ -248,8 +249,7 @@
   min-height: 56px;
   font-size: var(--text-body);
 }
-.buyTerms,
-.note {
+.buyTerms {
   margin: 0;
   font-size: var(--text-label);
   line-height: 1.45;
@@ -324,28 +324,25 @@
 }
 .prices {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: var(--space-4);
-  margin: 0;
-}
-.prices div {
-  display: grid;
   gap: var(--space-1);
-}
-.prices dt {
-  font-size: var(--text-label);
-  color: var(--color-muted-text);
-}
-.prices dd {
   margin: 0;
-  font-size: var(--text-label);
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-body);
+  line-height: 1.5;
   color: var(--color-muted-text);
 }
-.prices dd span {
-  font-size: var(--text-price);
+.prices strong {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   color: var(--color-on-surface);
+}
+.trust {
+  margin: 0;
+  font-size: var(--text-label);
+  font-weight: 650;
+  line-height: 1.45;
+  color: var(--color-on-success);
 }
 .refund {
   margin: 0;

@@ -125,9 +125,12 @@ test("a signed-out visitor at / sees the pitch, with ad context kept", async () 
     "/invoice/arkansas-efa?utm_campaign=ar-efa-launch&utm_source=google&utm_medium=cpc&program=ar-efa",
   );
   expect(
-    screen.getByText("$499.00 for 12 months · 30-day full refund"),
+    screen.getByText("$499 for 12 months · 30-day full refund"),
   ).toBeTruthy();
+  // No status line is configured for this offer, so none is claimed.
   expect(screen.queryByText(/approved/i)).toBeNull();
+  expect(document.querySelector("[data-funding-status]")).toBeNull();
+  expect(screen.queryByText(/\.00/)).toBeNull();
   // The free workbook goes through the free-parent sign-up with its intent.
   await act(async () =>
     fireEvent.click(

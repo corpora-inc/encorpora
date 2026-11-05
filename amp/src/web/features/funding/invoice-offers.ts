@@ -13,6 +13,8 @@ export const invoiceOfferSchema = z.object({
   currency: z.literal("USD"),
   instructions: z.string(),
   termMonths: z.number().int().positive().optional(),
+  /** The program's public status line, when configured (never inferred). */
+  statusLabel: z.string().min(1).max(100).optional(),
 });
 export type InvoiceOffer = z.infer<typeof invoiceOfferSchema>;
 
