@@ -369,16 +369,16 @@
   align-items: center;
   gap: 0 var(--space-5);
   box-sizing: border-box;
-  width: min(100%, 1180px);
+  /* The rule spans the content column, like the section rules above it. */
+  width: min(100% - 2 * var(--space-4), 1180px - 2 * var(--space-4));
   margin: 0 auto;
-  padding: var(--space-3) max(var(--space-4), env(safe-area-inset-right))
-    max(var(--space-5), env(safe-area-inset-bottom))
-    max(var(--space-4), env(safe-area-inset-left));
+  padding: var(--space-3) 0 max(var(--space-5), env(safe-area-inset-bottom));
   border-top: 1px solid var(--color-border);
 }
 .footer a {
   display: inline-flex;
   align-items: center;
+  min-width: var(--target-size);
   min-height: var(--target-size);
   color: var(--color-primary);
   font-size: var(--text-label);

@@ -277,7 +277,10 @@ async function viewports(browser: Browser, engine: string) {
                 getComputedStyle(node).display !== "none",
             )
             .map((node) => [node.textContent, node.getBoundingClientRect()])
-            .filter(([, box]) => (box as DOMRect).height < 44)
+            .filter(
+              ([, box]) =>
+                (box as DOMRect).height < 44 || (box as DOMRect).width < 44,
+            )
             .map(([text]) => text),
         );
         assert.deepEqual(small, [], `${tag}: 44px targets`);
