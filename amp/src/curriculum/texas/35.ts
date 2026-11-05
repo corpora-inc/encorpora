@@ -977,10 +977,10 @@ const courses: readonly TexasCourse[] = [
       [
         "g4-powers-ten",
         ["4.B"],
-        ["powers-of-ten"],
-        ["multiply-power-of-ten"],
+        ["powers-of-ten", "large-place-value"],
+        ["multiply-power-of-ten", "place-shift-value"],
         "Multiply by 10, 100 or 1,000",
-        "Numeric products; the attached skill is Grade 5 and properties of operations are not assessed.",
+        "place-shift-value multiplies a whole number by 10 or 100, and it also shifts a digit one place. It is the grade 4 large-place-value skill. multiply-power-of-ten belongs to the grade 5 powers-of-ten skill and is not served as grade 4 practice. It includes 1,000. Properties of operations are not assessed.",
       ],
       [
         "g4-multiply-whole",
