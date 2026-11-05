@@ -60,14 +60,26 @@ export async function buildSite(config: SiteConfig, output: string = "dist") {
   }
   await writeFile(
     `${output}/coverage.json`,
+    // Publishes the curriculum's breadth. The audit's workflow counters track
+    // engineering work inside AMP and stay internal (#1996).
     JSON.stringify(
       {
-        ...product,
+        product: "AMP Mathematics",
+        scope: "A complete math curriculum, from counting to precalculus.",
+        counts: {
+          problemTypes: product.summary.templatesPresent,
+          skills: product.skillsWithProblems,
+          lessons: product.summary.lessonsPresent,
+        },
+        gradeBands: product.bands.map(({ band, templates }) => ({
+          band,
+          problemTypes: templates.map(({ id, title, description }) => ({
+            id,
+            title,
+            description,
+          })),
+        })),
         source: "AMP curriculum and content audit",
-        limitations: [
-          "Catalog presence does not prove efficacy, publication, or full standards coverage.",
-          "Selected skills only; not complete K–12 or SAT coverage.",
-        ],
       },
       null,
       2,

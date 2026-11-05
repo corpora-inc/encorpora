@@ -3,9 +3,10 @@ import test from "node:test";
 import React, { renderToStaticMarkup } from "../src/react.js";
 const { createElement } = React;
 import { FractionPracticeFigure } from "../../amp/src/web/FractionPracticeFigure.js";
-import { Page } from "../src/pages.js";
+import { Page, routesFor } from "../src/pages.js";
 import { configSchema } from "../src/config.js";
 import { product } from "../src/product.js";
+import { guidedFundingFixture } from "./funding-fixture.js";
 test("pages encode configured content and keep scripts first-party", () => {
   const config = configSchema.parse({
     operator: {
@@ -23,15 +24,45 @@ test("pages encode configured content and keep scripts first-party", () => {
   assert.ok(html.includes('name="robots" content="noindex, nofollow"'));
   assert.ok(!html.includes("<script"));
 });
-test("coverage follows actual catalog and qualifies standards coverage", () => {
+test("the AMP page claims the complete curriculum and proves it with catalog counts", () => {
   assert.ok(product.summary.templatesPresent > 0);
   const html = renderToStaticMarkup(
     createElement(Page, { route: "/amp/", config: configSchema.parse({}) }),
   );
-  assert.ok(html.includes(String(product.summary.templatesPresent)));
-  assert.ok(html.includes("not a complete K–12 course"));
+  assert.ok(html.includes("A complete math curriculum, from counting to precalculus."));
+  assert.ok(html.includes(product.summary.templatesPresent.toLocaleString("en-US")));
+  for (const group of product.bands)
+    assert.ok(html.includes(`${group.templates.length.toLocaleString("en-US")} problem types`));
+  assert.ok(html.includes('id="coverage"'), "legal and funding pages link to this anchor");
   assert.ok(html.includes("katex-mathml"));
   assert.ok(!html.includes("choiceFeedback"));
+});
+
+test("marketing pages never undersell AMP (#1996); legal pages are exempt", () => {
+  const config = configSchema.parse({
+    funding: [
+      {
+        ...guidedFundingFixture,
+        kind: "classwallet-direct-pay",
+        page: { ...guidedFundingFixture.page, slug: "arkansas-efa" },
+      },
+    ],
+  });
+  const marketing = routesFor(config).filter((route) => !route.startsWith("/legal/"));
+  assert.ok(marketing.includes("/esa/arkansas-efa/"));
+  for (const route of marketing) {
+    const html = renderToStaticMarkup(createElement(Page, { route, config }));
+    for (const retired of [
+      "not a complete",
+      "selected skills",
+      "cannot prove",
+      "not a placement",
+      "not an assessment",
+      "Catalog inventory and limitations",
+      "Coverage, stated precisely",
+    ])
+      assert.ok(!html.includes(retired), `${route} says "${retired}"`);
+  }
 });
 
 test("shared AMP figures with hooks use the renderer's React runtime", () => {

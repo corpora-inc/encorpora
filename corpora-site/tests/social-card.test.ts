@@ -140,7 +140,7 @@ test("headings of every length stay clear of the rule above the address", () => 
   );
   const headings = [
     "Get help with AMP.",
-    "Practice with a reason for every step.",
+    "A complete math curriculum, from counting to precalculus.",
     // Production New Hampshire guide headline: four lines at full size used
     // to run into the rule.
     "Use your New Hampshire EFA funds for AMP Math",

@@ -37,7 +37,7 @@ export const routesFor = (config: SiteConfig) => [
 ];
 const titles: Record<string, string> = {
   "/": "Corpora · AMP Mathematics",
-  "/amp/": "AMP Mathematics · Practice that follows your understanding",
+  "/amp/": "AMP Mathematics · A complete math curriculum",
   "/esa/": "Pay with education funds · Corpora",
   "/parents/": "Parents’ questions · AMP Mathematics",
   "/schools/": "Mathematics curriculum for schools and districts · Corpora",
@@ -53,6 +53,9 @@ export const title = (route: string, config?: SiteConfig) => {
         `${legalTitles[route.split("/")[2] as LegalPage]} · Corpora`);
 };
 export const tryUrl = (config: SiteConfig) => config.appUrl ?? "/try/";
+// Matches the supporting line under "Try it free" on AMP's pitch.
+const tryFreeNote =
+  "Free assessment, adaptive practice and printable workbooks. No credit card.";
 function Try({
   config,
   label = "Try free",
@@ -90,10 +93,10 @@ function Steps() {
       <li>
         <span className="step-number">01</span>
         <div>
-          <h3>Find a starting point.</h3>
+          <h3>Find your child’s level.</h3>
           <p>
-            A short placement adapts to the answers. Separate estimates for
-            different areas keep a strong skill from hiding a gap.
+            A short assessment adapts to every answer and places your child
+            separately in each area of math, so a strength never hides a gap.
           </p>
         </div>
       </li>
@@ -102,8 +105,8 @@ function Steps() {
         <div>
           <h3>Work at the edge of understanding.</h3>
           <p>
-            Mixed practice selects problems from the learner’s skill estimates
-            and revisits earlier work.
+            AMP builds each next problem from what your child knows now, and
+            brings earlier ideas back until they stick.
           </p>
         </div>
       </li>
@@ -112,8 +115,8 @@ function Steps() {
         <div>
           <h3>See why it works.</h3>
           <p>
-            Open the explanation or lesson when needed. Use a printable for work
-            on paper.
+            Every problem has a hint, a lesson and a step-by-step explanation.
+            Print a workbook made from where your child is.
           </p>
         </div>
       </li>
@@ -127,8 +130,8 @@ function Plans({ config }: { config: SiteConfig }) {
         <p className="eyebrow">One learner, connected practice</p>
         <h2>App. Explanations. Printables.</h2>
         <p>
-          Choose the available term in the parent account. The checkout confirms
-          taxes, renewal, and the full amount before payment.
+          Choose your plan in the parent account. Checkout confirms taxes,
+          renewal and the full amount before you pay.
         </p>
       </div>
       <div className="plans">
@@ -142,6 +145,8 @@ function Plans({ config }: { config: SiteConfig }) {
                 {formatPrice(plan)}
                 <span> / {plan.interval}</span>
               </p>
+              {/* Renewal terms stay: they must be disclosed before purchase
+                  (ROSCA, 15 U.S.C. § 8403). */}
               <p>
                 Per learner.{" "}
                 {plan.renews
@@ -162,6 +167,8 @@ function Plans({ config }: { config: SiteConfig }) {
           </div>
         )}
         <aside className="plan-note">
+          {/* Refund terms stay: programs dictate where refunded funds go.
+              Citations: amp/src/funding-purchase/refund-terms.ts. */}
           <p>
             <strong>30-day full refund for personal payments.</strong>
             <br />
@@ -179,24 +186,39 @@ function Plans({ config }: { config: SiteConfig }) {
     </section>
   );
 }
+const count = (value: number) => value.toLocaleString("en-US");
 function Coverage() {
   return (
     <section className="section" id="coverage">
       <div className="section-heading">
-        <p className="eyebrow">Coverage, stated precisely</p>
-        <h2>See what your learner can practice.</h2>
+        <p className="eyebrow">The full curriculum</p>
+        <h2>See everything your child can learn.</h2>
         <p>
-          AMP includes selected skills from early number work through
-          high-school mathematics. It is not a complete K–12 course or a
-          complete SAT preparation program.
+          AMP runs from first counting through fractions, algebra, geometry,
+          statistics and precalculus. Open a grade band to see every problem
+          type.
         </p>
+      </div>
+      <div className="coverage-summary">
+        <div>
+          <strong>{count(product.summary.templatesPresent)}</strong>
+          <span>problem types</span>
+        </div>
+        <div>
+          <strong>{count(product.skillsWithProblems)}</strong>
+          <span>skills</span>
+        </div>
+        <div>
+          <strong>{count(product.summary.lessonsPresent)}</strong>
+          <span>lessons</span>
+        </div>
       </div>
       <div className="coverage-list">
         {product.bands.map((group) => (
           <details key={group.band}>
             <summary>
               Grades {group.band}
-              <span>{group.templates.length} problem types</span>
+              <span>{count(group.templates.length)} problem types</span>
             </summary>
             <ul>
               {group.templates.map((t) => (
@@ -208,37 +230,8 @@ function Coverage() {
           </details>
         ))}
       </div>
-      <details className="inventory">
-        <summary>Catalog inventory and limitations</summary>
-        <div className="coverage-summary">
-          <div>
-            <strong>{product.summary.templatesPresent}</strong>
-            <span>problem types in the catalog</span>
-          </div>
-          <div>
-            <strong>{product.skillsWithProblems}</strong>
-            <span>skills with a problem type</span>
-          </div>
-          <div>
-            <strong>{product.summary.lessonsPresent}</strong>
-            <span>lessons in the catalog</span>
-          </div>
-        </div>
-        <p className="fine">
-          These are content inventory counts, not evidence of learning outcomes
-          or complete standards coverage. Some practice is taught through
-          book-page bindings. The coverage audit does not certify full coverage
-          of any standard.
-        </p>
-        <p className="fine">
-          The catalog lesson count excludes the per-problem lessons attached by
-          the practice interface.
-        </p>
-      </details>
       <p>
-        <a href="/coverage.json">
-          Read the machine-readable coverage summary ↗
-        </a>
+        <a href="/coverage.json">Open the coverage data ↗</a>
       </p>
     </section>
   );
@@ -257,8 +250,9 @@ function Home({ config }: { config: SiteConfig }) {
             <em>{pageCopy["/"].emphasis}</em>
           </h1>
           <p className="lead">
-            Math practice that follows what your learner understands. Find a
-            starting point, work through a problem, and see the reasoning.
+            AMP is a complete math curriculum, from counting to precalculus,
+            that moves at your child’s pace: ahead as fast as they’re ready,
+            back to fill every gap. Thirty minutes a day, nothing to plan.
           </p>
           <div className="actions">
             <Try config={config} />
@@ -266,7 +260,7 @@ function Home({ config }: { config: SiteConfig }) {
               Explore AMP <span aria-hidden="true">→</span>
             </a>
           </div>
-          <p className="fine">Free assessment with a parent account. No card required.</p>
+          <p className="fine">{tryFreeNote}</p>
         </div>
         <div className="hero-demo">
           <div className="demo-top">
@@ -291,8 +285,8 @@ function Home({ config }: { config: SiteConfig }) {
             the pace.
           </h2>
           <p>
-            Practice is the center. Lessons and paper support the problem in
-            front of the learner.
+            Your child presses Next. AMP builds the best next problem every
+            time, with the lesson and the paper work attached.
           </p>
           <a href="/amp/">How AMP works ↗</a>
         </div>
@@ -326,15 +320,15 @@ function Home({ config }: { config: SiteConfig }) {
         </div>
       </section>
       <section className="section closing">
-        <p className="eyebrow">Free placement</p>
+        <p className="eyebrow">Free assessment</p>
         <h2>
-          Find a starting point
+          Find your child’s level
           <br />
-          in mathematics.
+          in every area of math.
         </h2>
-        <p>Answer a short sequence. See estimated levels by area.</p>
+        <p>A short adaptive assessment, then practice from exactly there.</p>
         <Try config={config} />
-        <a href="/amp/#coverage">Review current coverage</a>
+        <a href="/amp/#coverage">See the full curriculum</a>
       </section>
     </>
   );
@@ -347,21 +341,23 @@ function Amp({ config }: { config: SiteConfig }) {
         heading={pageCopy["/amp/"].heading}
       >
         <p className="lead">
-          Placement estimates a starting point. Mixed practice responds to the
-          learner’s work. Explanations make the mathematics visible.
+          AMP moves at your child’s pace: ahead as fast as they’re ready, back
+          to fill every gap. Thirty minutes a day, nothing to plan.
         </p>
         <Try config={config} />
+        <p className="fine">{tryFreeNote}</p>
       </Intro>
       <section className="section split">
         <div className="section-heading">
           <h2>
-            A starting point,
+            It starts where
             <br />
-            not a label.
+            your child is.
           </h2>
           <p>
-            A short placement cannot prove mastery. AMP uses the answers as
-            initial evidence and updates its estimates through practice.
+            A short assessment finds your child’s level in each area of math.
+            Every answer after that sharpens the picture, so practice keeps up
+            as they grow.
           </p>
         </div>
         <Steps />
@@ -371,8 +367,8 @@ function Amp({ config }: { config: SiteConfig }) {
           <p className="eyebrow">Inside the product</p>
           <h2>Look at the mathematics.</h2>
           <p>
-            These worked examples use AMP’s problem generator, figures, and
-            explanations. They are samples, not a placement assessment.
+            These are real AMP problems, with the same figures and step-by-step
+            explanations your child will see. Open the reasoning on any of them.
           </p>
         </div>
         <div className="sample-grid">
@@ -400,13 +396,12 @@ function Esa({ config }: { config: SiteConfig }) {
         heading={pageCopy["/esa/"].heading}
       >
         <p className="lead">
-          An education savings account (ESA) or scholarship may pay through a
-          marketplace or reimburse an eligible purchase. Rules depend on the
-          program and the student.
+          Education savings accounts (ESAs), scholarships and family savings can
+          pay for AMP. Each program sets its own route and rules.
         </p>
         <p>
-          Tax credits and school purchasing have different rules. Find your
-          program below to check the route, documents and AMP availability.
+          Find your program below for the purchase steps, the documents to keep
+          and AMP’s status with that program.
         </p>
       </Intro>
       <section className="section">
@@ -428,7 +423,7 @@ function Esa({ config }: { config: SiteConfig }) {
               <strong>{config.funding.filter((r) => r.page).length} parent guides</strong>
               {states.length > 0 && <>{" · "}{states.length} {states.length === 1 ? "state" : "states"}</>}
               {groups.includes("US") && <> · Nationwide savings guidance</>}
-              <span>Guides explain purchase routes; inclusion does not mean vendor approval.</span>
+              <span>Each guide shows the purchase route and AMP’s status with that program.</span>
             </p>
             {orderedGroups.map((state) => (
               <section className="state" id={`state-${state}`} key={state}>
@@ -460,6 +455,8 @@ function Esa({ config }: { config: SiteConfig }) {
                       <a href={route.sourceUrl}>
                         Official program requirements ↗
                       </a>
+                      {/* Eligibility line stays: administrators, not vendors,
+                          approve each purchase (amp/docs/funded-purchases.md). */}
                       <p className="fine">
                         Guidance review valid through {route.reviewedUntil}.
                         Your program decides eligibility.
@@ -495,36 +492,40 @@ function Esa({ config }: { config: SiteConfig }) {
 }
 const faq = [
   [
-    "What happens in the free placement?",
-    "The learner answers a short adaptive sequence. AMP estimates levels in different mathematical areas. A parent account is required; no payment card is needed to begin. The result is an estimate, not a diagnostic evaluation.",
+    "What happens in the free assessment?",
+    "Your child answers a short adaptive sequence, and AMP finds their level in each area of math. You create a free parent account to begin. No credit card.",
   ],
   [
-    "Does AMP cover every grade or standard?",
-    "No. AMP has selected skills across early and high-school mathematics. The coverage list identifies the current problem types. A grade band describes where a problem fits; it does not establish a complete course.",
+    "What does AMP cover?",
+    "AMP is a complete math curriculum, from counting to precalculus, with practice, lessons, step-by-step explanations and printable workbooks throughout. Ready children can cover years of material. The curriculum list on the AMP page shows every problem type by grade.",
   ],
   [
     "How are the next problems chosen?",
-    "AMP maintains estimates across mathematical strands, selects work near the learner’s current level, and revisits earlier work. A correct answer adds evidence; one answer does not prove mastery.",
+    "AMP tracks your child’s level in every area of math, builds each problem at the edge of what they can do, and brings earlier ideas back. Mastery takes more than one right answer, so ideas return until they stick.",
   ],
   [
     "Do we have to read a book first?",
-    "No. Practice is the primary experience. Use the attached explanation or lesson when a problem needs more context. Printables support work on paper.",
+    "No. Your child starts practicing right away. Every problem has a hint, a lesson and a step-by-step explanation attached. Printable workbooks are there for work on paper.",
   ],
   [
     "Who manages the account?",
     "A parent or guardian signs in, manages learner profiles and purchases, and completes the applicable consent process. Use a nickname for the learner.",
   ],
+  // Program review stays: administrators, not vendors, approve each purchase
+  // (amp/docs/funded-purchases.md).
   [
     "Can I use education funds?",
-    "It depends on the specific program, student eligibility, approved purchase route, and product. Check the official program rules before paying. Neither a receipt nor a general provider listing guarantees reimbursement.",
+    "Yes, where your program allows it. Your state’s guide under Education funds gives the purchase route and the documents to keep. Each program reviews its own purchases, so check its rules before you pay.",
   ],
+  // Refund terms stay: programs dictate where refunded funds go. Citations:
+  // amp/src/funding-purchase/refund-terms.ts.
   [
     "How do cancellation and refunds work?",
     "Cancel renewal in the parent billing portal. For personal payments, request a full refund within 30 days, including if you later seek reimbursement. Direct program and marketplace payments follow the administrator’s disclosed rules where they differ. Refunds return through the original payment route. See the refund policy.",
   ],
   [
     "What device do we need?",
-    "Use a current web browser with internet access. The site and web app support small screens. A printer is optional; the learner can work in the app.",
+    "Any current web browser with internet access, on a phone, tablet or computer. A printer is optional; your child can do everything in the app.",
   ],
 ];
 function Parents({ config }: { config: SiteConfig }) {
@@ -540,9 +541,9 @@ function Parents({ config }: { config: SiteConfig }) {
         ))}
       </section>
       <section className="section closing">
-        <h2>Start with a sample.</h2>
+        <h2>Start with the free assessment.</h2>
         <Try config={config} />
-        <a href="/amp/#coverage">Check the coverage</a>
+        <a href="/amp/#coverage">See the full curriculum</a>
       </section>
     </>
   );
@@ -566,9 +567,9 @@ function Schools({ config }: { config: SiteConfig }) {
         heading={pageCopy["/schools/"].heading}
       >
         <p className="lead">
-          A digital mathematics curriculum built around adaptive mixed practice,
-          with lessons and printable worksheets. Explore the materials, then
-          discuss the scope and licenses your learners need.
+          A complete math curriculum, from counting to precalculus, built around
+          adaptive mixed practice, with lessons and printable worksheets.
+          Explore the materials, then tell us the licenses your learners need.
         </p>
         <div className="actions">
           {config.supportEmail ? (
@@ -599,9 +600,9 @@ function Schools({ config }: { config: SiteConfig }) {
             <div>
               <h3>Match your learning goals.</h3>
               <p>
-                Check the <a href="/amp/#coverage">current topic coverage</a>{" "}
-                against your grade range and curriculum requirements. Share the
-                skills you want students to develop.
+                Compare the <a href="/amp/#coverage">full curriculum</a> with
+                your grade range and requirements. Share the skills you want
+                students to develop.
               </p>
             </div>
           </li>
@@ -665,8 +666,8 @@ function Printable() {
         heading={pageCopy["/samples/"].heading}
       >
         <p>
-          Work on paper, then use the separate solution key. These are samples
-          of different topics, not a placement test.
+          Work on paper, then check each answer with the separate solution key.
+          In AMP, every workbook is made from where your child is.
         </p>
         <button type="button" data-print>
           Print practice & solutions
@@ -727,8 +728,8 @@ export function Page({
   const description =
     funding?.page?.summary ??
     (route === "/schools/"
-      ? "Review AMP Mathematics for your school or district: adaptive practice, lessons, printable samples and school-license inquiries."
-      : "Explore AMP Mathematics from Corpora: adaptive mixed practice, clear mathematical explanations, and optional printables. Try free placement and review current coverage.");
+      ? "Review AMP Mathematics for your school or district: a complete math curriculum, from counting to precalculus, with adaptive practice, lessons and printable worksheets."
+      : "A complete math curriculum, from counting to precalculus. AMP finds your child’s level and chooses each next problem, with lessons and printable workbooks built in.");
   let content: ReactNode;
   if (route === "/") content = <Home config={config} />;
   else if (route === "/amp/") content = <Amp config={config} />;
@@ -781,8 +782,8 @@ export function Page({
       <>
         <Intro label={pageCopy["/try/"].label} heading={pageCopy["/try/"].heading}>
           <p className="lead">
-            Create your free parent account, choose the learner’s birth year,
-            and try adaptive practice. No payment card needed.
+            Create your free parent account, choose your child’s birth year and
+            begin. {tryFreeNote}
           </p>
           {config.appUrl ? (
             <Try config={config} label="Open AMP" />

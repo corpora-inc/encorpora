@@ -82,6 +82,22 @@ test("build emits linked program HTML, canonical metadata, safe structured data 
   }
 });
 
+test("coverage.json publishes the curriculum's breadth, not internal audit counters", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "corpora-coverage-"));
+  try {
+    await buildSite(configSchema.parse({}), dir);
+    const raw = await readFile(join(dir, "coverage.json"), "utf8");
+    const coverage = JSON.parse(raw);
+    assert.equal(coverage.scope, "A complete math curriculum, from counting to precalculus.");
+    assert.ok(coverage.counts.problemTypes > 0);
+    assert.deepEqual(coverage.gradeBands.map((b: { band: string }) => b.band), ["K–2", "3–5", "6–8", "9–12"]);
+    for (const retired of ["limitations", "fullyCovered", "verifiedSkills", "publishedArtifacts"])
+      assert.ok(!raw.includes(retired), retired);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
 test("nationwide guides render without inflating state counts, including a nationwide-only directory", async () => {
   const dir = await mkdtemp(join(tmpdir(), "corpora-national-funding-"));
   const national = {
