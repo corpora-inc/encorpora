@@ -58,7 +58,7 @@ The selection windows stay the same, so a roll is varied but never off level. Ov
 
 `amp_workbooks` (migration 0077) stores one row per learner, date, number and length: the spec, its code and the parent's paper size. Rows are learning data. They appear in the family export, are deleted with the learner's learning data, and cascade when a learner row is removed.
 
-The routes (`src/workbook/routes.ts`) require the learner's parent with consent and an active license, as practice does. A live free trial reaches its own learner's workbooks with its trial token, within its allowance (below); it never enters results.
+The routes (`src/workbook/routes.ts`) require the learner's parent with consent and an active license, as practice does. A live free trial reaches its own learner's workbooks with its trial token and, in hosted mode, the owning parent's session, within its allowance (below); it never enters results. A visitor without an account is asked to sign in (`401 sign_in_to_continue`).
 
 | Route | Result |
 | --- | --- |
