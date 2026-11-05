@@ -19,6 +19,12 @@ const https = z
     const u = new URL(v);
     return u.protocol === "https:" && !u.username && !u.password;
   });
+export const REFUND_POLICIES = [
+  "full-to-account",
+  "purchase-to-account",
+  "none",
+] as const;
+export type RefundPolicy = (typeof REFUND_POLICIES)[number];
 /** Private deployment configuration. Research status alone never enables an offer. */
 export const fundingOfferSchema = z
   .strictObject({
@@ -51,9 +57,16 @@ export const fundingOfferSchema = z
      * site shows it (corpora-site `presentation.statusLabel`), e.g. its vendor
      * status and payment route. Absent: nothing is claimed. */
     statusLabel: text.max(100).optional(),
-    /** This program's refund terms in one public line, shown where the parent
-     * pays (the invoice form). Absent: a generic line that is true for every
-     * program ("its refund rules apply"). Never a guarantee we do not give. */
+    /** Whether this program lets us honour the 30-day money-back
+     * guarantee (https://corpora.inc/legal/refund/): the full amount back to
+     * the child's program account, the purchase as received (a payment
+     * platform's fee may not return), or no refunds at all. Researched terms
+     * and sources: `researchedRefundTerms` in refund-terms.ts. Optional for
+     * one release so existing offer files still load (with a warning); then
+     * required. */
+    refundPolicy: z.enum(REFUND_POLICIES).optional(),
+    /** That policy in one public line at the point of sale (the invoice
+     * form). Required with a refund. */
     refundSummary: text.max(200).optional(),
     documentPolicy: z.enum([
       "opaque-student-reference-accepted",
@@ -92,6 +105,10 @@ export const fundingOfferSchema = z
   .refine(
     (v) => Date.parse(v.validFrom) < Date.parse(v.validUntil),
     "Offer validity must increase",
+  )
+  .refine(
+    (v) => !v.refundPolicy || v.refundPolicy === "none" || !!v.refundSummary,
+    "A program that refunds states its refund terms (refundSummary)",
   );
 export type FundingOffer = z.infer<typeof fundingOfferSchema>;
 /** Supplied by the parent for a program invoice, never inferred from a nickname. */

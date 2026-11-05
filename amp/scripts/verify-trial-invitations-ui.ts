@@ -53,8 +53,9 @@ const widths = (argument("widths") ?? "320,390,768,1280")
 const shots = argument("shots") ?? "artifacts/trial-invitations";
 await mkdir(shots, { recursive: true });
 
-// 22 free problems: placement, then the workbook earned at 20 still fits.
-const FREE = 22;
+// 40 free problems: placement, the workbook earned at 20, and a wrong
+// answer on each phone viewport.
+const FREE = 40;
 const { placement: PLACEMENT } = trialLimits(FREE);
 await migrate(url);
 const repository = new PostgresRepository(url, {
@@ -303,6 +304,10 @@ async function questionVisible(page: Page, tag: string) {
     };
   });
   assert.ok(geometry, `${tag}: question and feedback present`);
+  if (geometry.question > geometry.sheet + 1)
+    await page.screenshot({
+      path: `${shots}/${tag.replaceAll(" ", "-")}-covered.png`,
+    });
   assert.ok(
     geometry.question <= geometry.sheet + 1,
     `${tag}: the feedback covers the question (${JSON.stringify(geometry)})`,
@@ -381,10 +386,14 @@ async function journey(browser: Browser, engine: string) {
       });
       throw failure;
     }
-    if (answered === 1) {
-      await questionVisible(page, `${engine} 390 feedback`);
+    // Right and wrong answers alike leave the question whole on a phone.
+    await questionVisible(page, `${engine} 390 feedback ${answered}`);
+    if (answered === 1)
       await page.screenshot({ path: `${shots}/${engine}-feedback-390.png` });
-    }
+    if (answered === 3)
+      await page.screenshot({
+        path: `${shots}/${engine}-feedback-wrong-390.png`,
+      });
     if (answered === 20) break;
     try {
       await next(page);
@@ -423,6 +432,7 @@ async function viewports(
       await serve(context);
       const page = await context.newPage();
       page.setDefaultTimeout(20_000);
+      trackPracticeProblems(page);
       const errors: string[] = [];
       page.on("pageerror", (error) => errors.push(error.message));
       if (process.env.TRIAL_DEBUG)
@@ -444,30 +454,51 @@ async function viewports(
           await page.screenshot({ path: `${shots}/${tag}-failed.png` });
           throw failure;
         });
-      const control = page.locator("[data-trial-buy]");
-      if (process.env.TRIAL_DEBUG) {
-        console.log("DEBUG at first paint", await control.count());
-        await page.waitForTimeout(3000);
-        console.log("DEBUG later", await control.count(), page.url());
+      // The loading frame and the problem share one toolbar row: the Buy
+      // control arrives with the problem without moving it.
+      // The frame's stage, read once it is attached (it is replaced in place).
+      let frame: { x: number; y: number } | null = null;
+      while (!frame) {
+        await page.locator(".problem-stage").waitFor();
+        frame = await page.locator(".problem-stage").boundingBox();
       }
-      assert.equal(await control.count(), 1, `${tag}: toolbar Buy`);
-      const before = await page.locator(".problem-stage").boundingBox();
+      await page.locator(".problem-content[data-problem-id]").waitFor();
+      // Below 360 px the toolbar keeps the skill title; Buy is in the
+      // invitations instead.
+      assert.equal(
+        await page.locator("[data-trial-buy]").isVisible(),
+        width >= 360,
+        `${tag}: toolbar Buy`,
+      );
+      const stage = await page.locator(".problem-stage").boundingBox();
+      assert.equal(
+        Math.round(stage!.y),
+        Math.round(frame!.y),
+        `${tag}: the problem starts where its loading frame did`,
+      );
       await page.waitForTimeout(800);
       assert.deepEqual(
         await page.locator(".problem-stage").boundingBox(),
-        before,
-        `${tag}: the toolbar Buy never moves the problem`,
+        stage,
+        `${tag}: nothing moves once the problem shows`,
       );
-      await targets(page, "[data-trial-buy]", `${tag} toolbar`);
+      if (width >= 360)
+        await targets(page, "[data-trial-buy]", `${tag} toolbar`);
       await noOverflow(page, `${tag} practice`);
       await page.screenshot({ path: `${shots}/${tag}-practice.png` });
+      if (width <= 650) {
+        await answerOne(page, false);
+        await questionVisible(page, `${tag} wrong-answer feedback`);
+        await page.screenshot({ path: `${shots}/${tag}-feedback.png` });
+      }
       await page.goto(`${origin}/try/map`);
       const card = page.locator('[data-trial-invitation="map"]');
       await card.waitFor();
       await card
         .getByRole("heading", { name: "Ready for the full year?" })
         .waitFor();
-      await card.getByText("Risk-free for 30 days.").waitFor();
+      await card.getByText("Risk-free: 30-day money-back guarantee*").waitFor();
+      await card.getByText(/^\*Refunds go back the way you paid/).waitFor();
       await card.locator("[data-trial-workbooks]").waitFor();
       await targets(page, '[data-trial-invitation="map"]', `${tag} card`);
       await noOverflow(page, `${tag} map`);
@@ -506,9 +537,7 @@ async function buyJourneys(
     `${engine}: campaign kept`,
   );
   await page
-    .getByText(
-      "Paid through Arkansas EFA, so its refund rules apply. The 30-day money-back guarantee covers card payments.",
-    )
+    .getByText("Paid through Arkansas EFA, so its refund rules apply.")
     .waitFor();
   await page.screenshot({
     path: `${shots}/${engine}-trial-funded-invoice.png`,
@@ -516,7 +545,8 @@ async function buyJourneys(
   // On a funded page the invitation never promises a refund.
   await page.goto(`${origin}/try/map?program=ar-efa&${campaign}`);
   await card.waitFor();
-  assert.equal(await card.getByText("Risk-free for 30 days.").count(), 0);
+  // An offer that has not stated its refund policy: no promise beside Buy.
+  assert.equal(await card.getByText(/Risk-free/).count(), 0);
   // The first-party queue sends within two seconds.
   await page.waitForTimeout(2500);
   await context.close();

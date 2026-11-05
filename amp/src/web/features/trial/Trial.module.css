@@ -463,3 +463,9 @@
   width: 100%;
   margin-top: var(--space-4);
 }
+
+/* The practice loading frame holds the menu button's place in the toolbar. */
+.toolbarSlot {
+  width: var(--target-size);
+  height: var(--target-size);
+}

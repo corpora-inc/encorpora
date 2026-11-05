@@ -12,7 +12,7 @@
 .panel h1 {
   font-size: clamp(1.5rem, 5vw, 2rem);
   line-height: 1.15;
-  letter-spacing: -.02em;
+  letter-spacing: -0.02em;
   margin: 0.3rem 0 1rem;
 }
 .eyebrow {

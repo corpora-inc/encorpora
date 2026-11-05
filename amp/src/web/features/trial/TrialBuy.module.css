@@ -14,6 +14,13 @@
     display: none;
   }
 }
+/* The narrowest phones keep the toolbar for the skill title; Buy waits in
+   the map's and each earned workbook's invitation. */
+@media (max-width: 359px) {
+  .control {
+    display: none;
+  }
+}
 .invitation {
   display: grid;
   gap: var(--space-4);
@@ -54,6 +61,12 @@
 .risk {
   font-weight: 650;
   color: var(--color-on-surface-raised);
+}
+.footnote {
+  margin: 0;
+  font-size: var(--text-small);
+  line-height: 1.45;
+  color: var(--color-muted-text);
 }
 .offer > :last-child {
   flex: 0 1 auto;

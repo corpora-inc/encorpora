@@ -2,9 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { useSearch } from "@tanstack/react-router";
 import { useEffect, useId, type ReactNode } from "react";
 import { trackOnce } from "../../lib/analytics";
-import { routeGuarantee } from "../../lib/funded-entry";
 import { meOptions, sessionOptions } from "../../lib/query";
-import { BuyOptions, useBuyData } from "../pitch/BuyOptions";
+import {
+  BuyOptions,
+  GUARANTEE_FOOTNOTE,
+  RISK_FREE,
+  useBuyData,
+} from "../pitch/BuyOptions";
+import { offerRefunds } from "../funding/invoice-offers";
 import styles from "./TrialBuy.module.css";
 
 /** Buy inside the free trial, for a signed-in parent who has not bought:
@@ -74,10 +79,10 @@ export function TrialInvitation({
     if (shown) trackOnce(`invite-${at}-${occasion}`, "invite_view", { at });
   }, [shown, at, occasion]);
   if (!buy) return <>{children}</>;
-  // "Risk-free" wherever the route Buy takes carries the guarantee.
-  const guaranteed = !!routeGuarantee(
-    buy.data.program && buy.data.fundedOffer ? buy.data.program : undefined,
-  );
+  // The guarantee wherever this Buy's route carries it: the card, or a
+  // program whose offer refunds.
+  const funded = !!(buy.data.program && buy.data.fundedOffer);
+  const guaranteed = !funded || offerRefunds(buy.data.fundedOffer);
   return (
     <section
       className={`${styles.invitation} ${at === "workbook" ? styles.compact : ""}`}
@@ -90,7 +95,10 @@ export function TrialInvitation({
           <p>
             Unlimited practice and workbooks, as far as your child can go.
             {guaranteed && (
-              <span className={styles.risk}> Risk-free for 30 days.</span>
+              <span className={styles.risk}>
+                {" "}
+                {at === "map" ? RISK_FREE : "Risk-free for 30 days."}
+              </span>
             )}
           </p>
         </div>
@@ -103,6 +111,9 @@ export function TrialInvitation({
           label={at === "workbook" ? "Buy AMP" : undefined}
         />
       </div>
+      {guaranteed && at === "map" && (
+        <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>
+      )}
       {children}
     </section>
   );

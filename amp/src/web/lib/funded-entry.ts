@@ -12,14 +12,8 @@ import {
   CAMPAIGN_CREATIVES,
 } from "../../analytics/campaign";
 
-/**
- * `fund`: what the program's account is called ("your EFA balance").
- * `guarantee`: the 30-day money-back guarantee on this payment route: where
- * a refund goes and whether it is the full amount. `refundSummary`: the same
- * promise in one line at the point of sale. Policy:
- * https://corpora.inc/legal/refund/. A program without `guarantee` (any
- * future program until it is configured) follows its own refund rules.
- */
+/** `fund`: what the program's account is called ("your EFA balance").
+ * Refund terms come from each program's offer (`refundPolicy`). */
 export const fundedPrograms = {
   "arkansas-efa": {
     slug: "arkansas-efa",
@@ -28,11 +22,6 @@ export const fundedPrograms = {
     jurisdiction: "AR",
     name: "Arkansas EFA",
     fund: "EFA",
-    // Refunds go to the child's EFA through ClassWallet, never to the account
-    // holder: 6 CAR § 35-107(i)(1); ClassWallet, "Refund Overpayments".
-    guarantee: { to: "your child’s EFA", full: true },
-    refundSummary:
-      "Ask within 30 days of payment, for any reason, and we refund the full amount to your child’s EFA account through ClassWallet.",
     helpUrl: "https://corpora.inc/esa/arkansas-efa/",
   },
   "new-hampshire-efa": {
@@ -42,11 +31,6 @@ export const fundedPrograms = {
     jurisdiction: "NH",
     name: "New Hampshire EFA",
     fund: "EFA",
-    // Refunds go to the child's EFA wallet in ClassWallet, issued within 30
-    // days: Children's Scholarship Fund New Hampshire, policy PRO-06.
-    guarantee: { to: "your child’s EFA", full: true },
-    refundSummary:
-      "Ask within 30 days of payment, for any reason, and we refund the full amount to your child’s EFA wallet in ClassWallet.",
     helpUrl: "https://corpora.inc/esa/new-hampshire-efa/",
   },
   "arizona-esa": {
@@ -56,30 +40,9 @@ export const fundedPrograms = {
     jurisdiction: "AZ",
     name: "Arizona ESA",
     fund: "ESA",
-    // ESA money may not be refunded to the parent or student
-    // (https://www.azleg.gov/ars/15/02402.htm, A.R.S. § 15-2402(J)); refunds
-    // go by check to the Arizona Department of Education for the child's ESA
-    // (ADE "Refund of ESA Award" form). The amount is the purchase as
-    // received: the platform's fee may not come back, so never "full".
-    guarantee: { to: "your child’s ESA", full: false },
-    refundSummary:
-      "Ask within 30 days of payment, for any reason, and we refund your purchase to your child’s ESA through the Arizona Department of Education.",
     helpUrl: "https://corpora.inc/esa/arizona-esa/",
   },
 } as const;
-/** Where a refund under the 30-day money-back guarantee goes, and whether
- * it is the whole payment. */
-export type RefundGuarantee = { readonly to: string; readonly full: boolean };
-/** Card payments: refunded in full to the card (https://corpora.inc/legal/refund/). */
-export const cardGuarantee: RefundGuarantee = { to: "your card", full: true };
-/** The guarantee on a payment route: card (no program), or a funded
- * program. A program that does not configure one is not covered. */
-export function routeGuarantee(program?: {
-  guarantee?: RefundGuarantee;
-}): RefundGuarantee | null {
-  if (!program) return cardGuarantee;
-  return program.guarantee ?? null;
-}
 export type FundedProgramSlug = keyof typeof fundedPrograms;
 export type FundedProgram = (typeof fundedPrograms)[FundedProgramSlug];
 export type FundedPath = FundedProgram["path"];

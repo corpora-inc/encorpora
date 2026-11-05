@@ -12,6 +12,11 @@ import {
 import { renderFundingQuote } from "../src/funding-purchase/quote.js";
 import { annualTermEnd } from "../src/funding-purchase/provision.js";
 import { testFundingOffer as offer } from "./funding-purchase.fixture.js";
+import { researchedRefundTerms } from "../src/funding-purchase/refund-terms.js";
+import { loadFundingOffers } from "../src/funding-purchase/config.js";
+import { mkdtemp, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 const request: FundingRequest = {
   id: "quote-id",
   accountId: "private-account",
@@ -238,17 +243,45 @@ test("an offer's public status label is published only when configured", () => {
   );
 });
 
-test("an offer's refund summary is public, bounded and optional", () => {
-  assert.equal(presentOffer(offer).refundSummary, undefined);
-  const summary = "Refunds follow the program's rules.";
+test("an offer's refund policy and summary are public; a refund states its terms", () => {
+  assert.equal(presentOffer(offer).refundPolicy, undefined);
+  for (const [programId, terms] of Object.entries(researchedRefundTerms)) {
+    const parsed = fundingOfferSchema.parse({ ...offer, programId, ...terms });
+    assert.equal(presentOffer(parsed).refundPolicy, terms.refundPolicy);
+    assert.equal(presentOffer(parsed).refundSummary, terms.refundSummary);
+  }
   assert.equal(
-    presentOffer(fundingOfferSchema.parse({ ...offer, refundSummary: summary }))
-      .refundSummary,
-    summary,
+    fundingOfferSchema.safeParse({ ...offer, refundPolicy: "full-to-account" })
+      .success,
+    false,
+    "a refund without its stated terms",
+  );
+  assert.ok(
+    fundingOfferSchema.safeParse({ ...offer, refundPolicy: "none" }).success,
   );
   assert.equal(
-    fundingOfferSchema.safeParse({ ...offer, refundSummary: "x".repeat(201) })
+    fundingOfferSchema.safeParse({ ...offer, refundPolicy: "store-credit" })
       .success,
     false,
   );
+  assert.equal(
+    fundingOfferSchema.safeParse({
+      ...offer,
+      refundPolicy: "none",
+      refundSummary: "x".repeat(201),
+    }).success,
+    false,
+  );
+});
+
+test("an offer file without refund policies still loads, with a warning", async (t) => {
+  const directory = await mkdtemp(join(tmpdir(), "amp-offers-"));
+  const path = join(directory, "offers.json");
+  await writeFile(path, JSON.stringify([offer]));
+  const warnings: string[] = [];
+  t.mock.method(console, "warn", (message: string) => warnings.push(message));
+  const loaded = await loadFundingOffers(path);
+  assert.equal(loaded.length, 1);
+  assert.equal(loaded[0]!.refundPolicy, undefined);
+  assert.match(warnings.join("\n"), /has no refundPolicy/);
 });

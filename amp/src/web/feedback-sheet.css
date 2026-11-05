@@ -383,12 +383,19 @@
     padding: var(--space-3);
   }
   /* Practice is full screen: the sheet meets the screen's edges. */
+  /* The sheet rises over the figure but stops below the question's words
+     (`--question-room`, measured with the dock), so the question stays
+     whole; a long explanation scrolls inside the sheet. Never smaller than
+     the dock it replaces, so its top edge never jumps. */
   .shell.immersive .feedback {
     left: 0;
     right: 0;
     bottom: 0;
     width: 100%;
-    max-height: max(78%, var(--dock-height, 0px));
+    max-height: max(
+      var(--dock-height, 0px),
+      min(78%, var(--question-room, 78%))
+    );
     padding: var(--space-4) var(--space-4)
       calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
     border-width: 1px 0 0;

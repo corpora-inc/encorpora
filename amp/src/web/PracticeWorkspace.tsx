@@ -462,15 +462,27 @@ export function PracticeWorkspace(props: Props) {
     const area = dock.current;
     const host = surface.current;
     if (!area || !host || typeof ResizeObserver === "undefined") return;
-    const measure = () =>
+    // `--question-room`: the space below the question, so a phone's sheet
+    // can rise over the figure but never over the question's words.
+    const measure = () => {
+      const bottom = host.getBoundingClientRect().bottom;
       host.style.setProperty(
         "--dock-height",
-        `${Math.ceil(host.getBoundingClientRect().bottom - area.getBoundingClientRect().top)}px`,
+        `${Math.ceil(bottom - area.getBoundingClientRect().top)}px`,
       );
+      const question = host.querySelector(".problem-stage .question");
+      if (question)
+        host.style.setProperty(
+          "--question-room",
+          `${Math.floor(bottom - question.getBoundingClientRect().bottom - 8)}px`,
+        );
+    };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(area);
     observer.observe(host);
+    const question = host.querySelector(".problem-stage .question");
+    if (question) observer.observe(question);
     return () => observer.disconnect();
   }, []);
   // Stacked, the feedback sheet can rise above the dock it replaces. The

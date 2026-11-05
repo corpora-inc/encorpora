@@ -13,6 +13,7 @@ import type { AuthSession } from "../../../auth";
 const state = vi.hoisted(() => ({
   session: null as AuthSession | null,
   posts: [] as { url: string; body: unknown }[],
+  refundPolicy: undefined as string | undefined,
 }));
 vi.mock("../../../auth", () => ({
   accessSession: vi.fn(async () => state.session),
@@ -60,6 +61,12 @@ function respond(url: string, init?: RequestInit) {
                 revision: "r1",
                 programName: "Arkansas EFA",
                 productTitle: "AMP",
+                ...(state.refundPolicy
+                  ? {
+                      refundPolicy: state.refundPolicy,
+                      refundSummary: "Refund terms.",
+                    }
+                  : {}),
                 totalMinor: 49900,
                 currency: "USD",
                 instructions: "Attach the invoice.",
@@ -79,6 +86,7 @@ beforeEach(() => {
   sessionStorage.clear();
   state.session = null;
   state.posts = [];
+  state.refundPolicy = undefined;
   vi.stubGlobal("matchMedia", (query: string) => ({
     matches: false,
     media: query,
@@ -116,32 +124,38 @@ test("a signed-out visitor at / sees the pitch, with ad context kept", async () 
   );
   expect(
     await screen.findByRole("heading", {
-      name: "Math that adapts to every answer.",
+      name: "See how far your child can go in math.",
     }),
   ).toBeTruthy();
   expect(analytics.screenOf("/")).toBe("pitch");
-  const buy = screen.getByRole("link", { name: "Buy with Arkansas EFA funds" });
-  expect(buy.getAttribute("href")).toBe(
+  const [buy] = screen.getAllByRole("link", {
+    name: "Buy with Arkansas EFA funds",
+  });
+  expect(buy!.getAttribute("href")).toBe(
     "/invoice/arkansas-efa?utm_campaign=ar-efa-launch&utm_source=google&utm_medium=cpc&program=ar-efa",
   );
+  // An offer that has not stated its refund policy: the price only.
   expect(
-    screen.getByText("$499 for 12 months · 30-day full refund"),
+    screen.getByText("$499 for the year, paid from your EFA balance."),
   ).toBeTruthy();
   // No status line is configured for this offer, so none is claimed.
   expect(screen.queryByText(/approved/i)).toBeNull();
   expect(document.querySelector("[data-funding-status]")).toBeNull();
   expect(screen.queryByText(/\.00/)).toBeNull();
-  // The free workbook goes through the free-parent sign-up with its intent.
+  // The guarantee and its one footnote, on every page.
+  expect(
+    screen.getByRole("heading", { name: "Give it 30 days." }),
+  ).toBeTruthy();
+  expect(screen.getByText(/^\*Refunds go back the way you paid/)).toBeTruthy();
+  // Try it free goes through the free-parent sign-up with its intent.
   await act(async () =>
-    fireEvent.click(
-      screen.getByRole("button", { name: "Get a free workbook" }),
-    ),
+    fireEvent.click(screen.getAllByRole("button", { name: "Try it free" })[0]!),
   );
   await screen.findByRole("heading", { name: "Sign-up screen" });
   expect(router.state.location.pathname).toBe("/sign-up");
   expect(router.state.location.search).toMatchObject({
     return: "free-practice",
-    entry: "pitch-workbook",
+    entry: "pitch-try",
     program: "ar-efa",
     utm_campaign: "ar-efa-launch",
   });
@@ -151,15 +165,46 @@ test("a signed-out visitor at / sees the pitch, with ad context kept", async () 
     .flatMap((post) => (post.body as { events: { event: string }[] }).events)
     .map((event) => event.event);
   expect(events).toEqual(
-    expect.arrayContaining(["landing_view", "pitch_view", "workbook_click"]),
+    expect.arrayContaining(["landing_view", "pitch_view", "try_click"]),
   );
+});
+
+test("a refunding program's Buy carries the guarantee; the block names the amount", async () => {
+  state.refundPolicy = "full-to-account";
+  await open("/?program=ar-efa");
+  await screen.findAllByRole("link", { name: "Buy with Arkansas EFA funds" });
+  expect(
+    screen.getByText(
+      "$499 for the year, paid from your EFA balance · Risk-free: 30-day money-back guarantee*",
+    ),
+  ).toBeTruthy();
+  expect(screen.getByText(/we’ll refund every cent/)).toBeTruthy();
+});
+
+test("a program refunding the purchase as received is promised your purchase", async () => {
+  state.refundPolicy = "purchase-to-account";
+  await open("/?program=az-esa");
+  await screen.findAllByRole("link", { name: "Buy with Arizona ESA funds" });
+  expect(screen.getByText(/we’ll refund your purchase/)).toBeTruthy();
+  expect(screen.queryByText(/every cent|full refund/)).toBeNull();
+});
+
+test("a program that allows no refunds shows its price only beside Buy", async () => {
+  state.refundPolicy = "none";
+  await open("/?program=nh-efa");
+  await screen.findAllByRole("link", {
+    name: "Buy with New Hampshire EFA funds",
+  });
+  expect(
+    screen.getByText("$499 for the year, paid from your EFA balance."),
+  ).toBeTruthy();
 });
 
 test("without a program, Buy is the card plan and continues to checkout after sign-up", async () => {
   const { router } = await open("/");
-  const buy = await screen.findByRole("button", { name: "Buy AMP" });
+  const [buy] = await screen.findAllByRole("button", { name: "Buy AMP" });
   fireEvent.click(screen.getByRole("radio", { name: /Monthly/ }));
-  await act(async () => fireEvent.click(buy));
+  await act(async () => fireEvent.click(buy!));
   await screen.findByRole("heading", { name: "Sign-up screen" });
   expect(router.state.location.search).toMatchObject({ entry: "pitch-buy" });
   expect(router.state.location.search).not.toHaveProperty("return");
@@ -173,6 +218,8 @@ test("a signed-in parent at / keeps the app", async () => {
   expect(
     await screen.findByRole("heading", { name: "Signed-in app" }),
   ).toBeTruthy();
-  expect(screen.queryByText("Math that adapts to every answer.")).toBeNull();
+  expect(
+    screen.queryByText("See how far your child can go in math."),
+  ).toBeNull();
   expect(analytics.screenOf("/")).toBe("home");
 });

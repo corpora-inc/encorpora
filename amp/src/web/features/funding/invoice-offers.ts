@@ -15,7 +15,12 @@ export const invoiceOfferSchema = z.object({
   termMonths: z.number().int().positive().optional(),
   /** The program's public status line, when configured (never inferred). */
   statusLabel: z.string().min(1).max(100).optional(),
-  /** The program's own refund terms in one public line, when configured. */
+  /** Whether the 30-day money-back guarantee can apply (`none`: it can't);
+   * absent until every offer file states it. */
+  refundPolicy: z
+    .enum(["full-to-account", "purchase-to-account", "none"])
+    .optional(),
+  /** The program's refund terms in one public line. */
   refundSummary: z.string().min(1).max(200).optional(),
 });
 export type InvoiceOffer = z.infer<typeof invoiceOfferSchema>;
@@ -31,3 +36,11 @@ export const invoiceOffersOptions = (programId: string) =>
       ),
     staleTime: 5 * 60_000,
   });
+
+/** Whether this offer's program refunds under the money-back guarantee. */
+export function offerRefunds(offer?: InvoiceOffer) {
+  return (
+    offer?.refundPolicy === "full-to-account" ||
+    offer?.refundPolicy === "purchase-to-account"
+  );
+}

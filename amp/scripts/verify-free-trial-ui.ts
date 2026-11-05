@@ -500,7 +500,7 @@ try {
       const tryFree = page.getByRole("button", { name: "Try it free" }).first();
       await tryFree.waitFor();
       await page
-        .getByRole("heading", { name: "Math that adapts to every answer." })
+        .getByRole("heading", { name: "See how far your child can go in math." })
         .waitFor();
       await fits(page, `${tag} welcome`);
       if (audit) await axe(page, "welcome");
@@ -926,7 +926,7 @@ try {
       await coldLoad(
         visitor,
         "/",
-        "Math that adapts to every answer.",
+        "See how far your child can go in math.",
         `visitor-${tag}`,
         fresh(),
       );

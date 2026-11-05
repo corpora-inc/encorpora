@@ -96,6 +96,8 @@ const fundedOffer = {
   termMonths: 12,
   // Synthetic: the verifier proves a configured label is shown, not its text.
   statusLabel: "Fixture status label",
+  refundPolicy: "full-to-account",
+  refundSummary: "Fixture refund terms.",
 };
 const policy = {
   ...consentFixture,
@@ -262,13 +264,26 @@ async function viewports(browser: Browser, engine: string) {
           });
         await page.goto(`${origin}/${query}`);
         await page
-          .getByRole("heading", { name: "Math that adapts to every answer." })
+          .getByRole("heading", {
+            name: "See how far your child can go in math.",
+          })
           .waitFor();
         await page.evaluate(() => document.fonts.ready);
         const buy = program
-          ? page.getByRole("link", { name: "Buy with Arkansas EFA funds" })
-          : page.getByRole("button", { name: "Buy AMP" });
+          ? page
+              .getByRole("link", { name: "Buy with Arkansas EFA funds" })
+              .first()
+          : page.getByRole("button", { name: "Buy AMP" }).first();
         await buy.waitFor();
+        await page.getByRole("heading", { name: "Give it 30 days." }).waitFor();
+        await page.getByText(/^\*Refunds go back the way you paid/).waitFor();
+        assert.equal(
+          await page.locator("[data-buy-terms]").first().innerText(),
+          program
+            ? "$499 for the year, paid from your EFA balance · Risk-free: 30-day money-back guarantee*"
+            : "$499 for the year · Risk-free: 30-day money-back guarantee*",
+          `${tag}: the guarantee beside Buy`,
+        );
         if (program)
           assert.equal(
             await page.locator("[data-funding-status]").innerText(),
@@ -403,7 +418,7 @@ async function journeys(browser: Browser, engine: string) {
       url: "/",
       act: async (page) => {
         await page.getByRole("radio", { name: /Monthly/ }).click();
-        await page.getByRole("button", { name: "Buy AMP" }).click();
+        await page.getByRole("button", { name: "Buy AMP" }).first().click();
       },
       signUpHeading: "Create your account to buy",
       entry: "pitch-buy",
@@ -435,27 +450,13 @@ async function journeys(browser: Browser, engine: string) {
       name: "try",
       url: `/?program=ar-efa&${campaign}`,
       act: (page) =>
-        page.getByRole("button", { name: "Try a problem" }).click(),
-      signUpHeading: "Math that adapts as you answer.",
+        page.getByRole("button", { name: "Try it free" }).first().click(),
+      signUpHeading: "Try AMP free",
       entry: "pitch-try",
       landing: async (page) => {
         await page.waitForURL("**/try?**");
         await page
           .getByRole("heading", { name: "See how AMP adapts" })
-          .waitFor();
-      },
-    },
-    {
-      name: "workbook",
-      url: "/",
-      act: (page) =>
-        page.getByRole("button", { name: "Get a free workbook" }).click(),
-      signUpHeading: "Get your free workbook",
-      entry: "pitch-workbook",
-      landing: async (page) => {
-        await page.waitForURL("**/try?**");
-        await page
-          .getByRole("heading", { name: "Your free workbook" })
           .waitFor();
       },
     },
@@ -517,10 +518,13 @@ async function journeys(browser: Browser, engine: string) {
     await page.goto(`${origin}/?program=ar-efa&${campaign}`);
     await page
       .getByRole("link", { name: "Buy with Arkansas EFA funds" })
+      .first()
       .click();
     await page.waitForURL("**/invoice/arkansas-efa?**");
     await page.getByLabel("Parent or guardian email").waitFor();
     await page.getByRole("button", { name: "Create invoice PDF" }).waitFor();
+    // The point of sale states the program's refund terms.
+    await page.getByText("Fixture refund terms.").waitFor();
     assert.equal(
       new URL(page.url()).searchParams.get("utm_campaign"),
       "ar-efa-launch",
@@ -530,6 +534,7 @@ async function journeys(browser: Browser, engine: string) {
     await page.goBack();
     await page
       .getByRole("link", { name: "Buy with Arkansas EFA funds" })
+      .first()
       .waitFor();
     await context.close();
   }
@@ -556,10 +561,10 @@ async function journeys(browser: Browser, engine: string) {
       await page.getByRole("button", { name: "Buy AMP" }).count(),
       0,
     );
-    await page.getByRole("button", { name: "Try a problem" }).waitFor();
+    await page.getByRole("button", { name: "Try it free" }).first().waitFor();
     api.pricesFail = false;
     await page.getByRole("button", { name: "Try again" }).click();
-    await page.getByRole("button", { name: "Buy AMP" }).waitFor();
+    await page.getByRole("button", { name: "Buy AMP" }).first().waitFor();
     await noOverflow(page, `${engine} price retry`);
     await context.close();
   }

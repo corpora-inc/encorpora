@@ -6,6 +6,7 @@ import {
 } from "../practice/practice-settings";
 import { TrialWelcome, useTrialWelcome } from "./TrialWelcome";
 import { TrialBuyControl, TrialInvitation } from "./TrialBuy";
+import styles from "./Trial.module.css";
 import { AnswerFeedback } from "../practice/AnswerFeedback";
 import { answerProgress } from "./api";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
@@ -566,7 +567,17 @@ function PracticeSkeleton({
         aria-label="Math practice"
       >
         <section className="practice-surface">
-          <div className="workspace-toolbar" />
+          {/* The menu's place, so the toolbar is its final height and the
+              problem appears where this frame's stage begins. */}
+          <div className="workspace-toolbar">
+            {!nativeRuntime && (
+              <span
+                className={styles.toolbarSlot}
+                data-navigation-trigger=""
+                aria-hidden="true"
+              />
+            )}
+          </div>
           <div className="problem-stage">
             {error && (
               <p className="answer-error" role="alert">

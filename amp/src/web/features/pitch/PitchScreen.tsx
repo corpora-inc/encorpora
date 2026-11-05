@@ -15,12 +15,12 @@ import { SUPPORT_EMAIL } from "../support/SupportHelp";
 import {
   BuyOptions,
   formatPrice,
+  GUARANTEE_FOOTNOTE,
   loadBuyData,
   REFUND_POLICY_URL,
   underPerDay,
   useBuyData,
 } from "./BuyOptions";
-import { routeGuarantee } from "../../lib/funded-entry";
 import { PitchVideo } from "./PitchVideo";
 import { pitchCarry, pitchTarget } from "./targets";
 import { pitchVideo } from "./video";
@@ -60,13 +60,14 @@ export function PitchScreen() {
   const annual = offers.find((offer) => offer.interval === "year");
   const monthly = offers.find((offer) => offer.interval === "month");
   const funded = program && fundedOffer ? { program, fundedOffer } : null;
-  // The guarantee block speaks for the route this page sells: the funded
-  // program when it has a live offer, else the card. A program that does not
-  // carry the guarantee still shows it for its card option, saying so.
-  const fundedGuarantee = funded ? routeGuarantee(funded.program) : null;
-  const guarantee = funded ? fundedGuarantee : routeGuarantee();
-  const guaranteed = !!guarantee || (!!funded && offers.length > 0);
-  const amount = guarantee && !guarantee.full ? "your purchase" : "every cent";
+  // The guarantee is universal; the footnote covers how refunds travel and
+  // the programs that allow none. A program refunding the purchase as
+  // received (not the platform's fee) is promised "your purchase".
+  const guaranteed = offers.length > 0 || !!funded;
+  const amount =
+    funded?.fundedOffer.refundPolicy === "purchase-to-account"
+      ? "your purchase"
+      : "every cent";
   const tryFree = (
     <Button
       variant="secondary"
@@ -113,9 +114,9 @@ export function PitchScreen() {
               See how far your child can go in math.
             </h1>
             <p className={styles.lede}>
-              AMP is math from counting to precalculus that moves at your
-              child’s pace: ahead as fast as they’re ready, back to fill every
-              gap. Thirty minutes a day, nothing to plan.
+              AMP is a complete math curriculum, from counting to precalculus,
+              that moves at your child’s pace: ahead as fast as they’re ready,
+              back to fill every gap. Thirty minutes a day, nothing to plan.
             </p>
           </div>
           {pitchVideo && (
@@ -234,11 +235,7 @@ export function PitchScreen() {
                 Refund policy
               </a>
             </p>
-            <p className={styles.footnote}>
-              {funded && !fundedGuarantee
-                ? `*The money-back guarantee covers card payments. ${funded.program.name} purchases follow its refund rules.`
-                : "*Card payments are refunded to your card. Education-fund purchases are refunded to your child’s program account, as program rules require."}
-            </p>
+            <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>
           </section>
         )}
         <section className={styles.closing} aria-label="Get started">

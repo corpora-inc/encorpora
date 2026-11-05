@@ -4,13 +4,14 @@ import { useState, type ReactNode } from "react";
 import type { AnnualOffer } from "../../../billing/stripe/purchase-contracts";
 import { track } from "../../lib/analytics";
 import { queryClient } from "../../lib/query";
-import { routeGuarantee, type FundedProgram } from "../../lib/funded-entry";
+import type { FundedProgram } from "../../lib/funded-entry";
 import { rememberPlanChoice } from "../../lib/pending-trial";
 import { Button, buttonClass, type ButtonVariant } from "../../ui/Button";
 import { PlanChoice } from "../billing";
 import { formatUsd } from "../billing/payment-url";
 import {
   invoiceOffersOptions,
+  offerRefunds,
   type InvoiceOffer,
 } from "../funding/invoice-offers";
 import { pricesOptions } from "../trial/api";
@@ -18,7 +19,11 @@ import { pitchProgram, pitchTarget } from "./targets";
 import styles from "./Pitch.module.css";
 
 export const REFUND_POLICY_URL = "https://corpora.inc/legal/refund/";
-export const RISK_FREE = "Risk-free: 30-day full refund, no questions asked";
+/** The guarantee, the same on every route that carries it; the asterisk
+ * points to `GUARANTEE_FOOTNOTE` (https://corpora.inc/legal/refund/). */
+export const RISK_FREE = "Risk-free: 30-day money-back guarantee*";
+export const GUARANTEE_FOOTNOTE =
+  "*Refunds go back the way you paid: to your card, or to your child’s education-fund account. A few education programs don’t allow refunds; if yours is one, we’ll tell you before you pay.";
 
 /** Whole dollars read "$499"; an amount with cents keeps them ("$49.50"). */
 export function formatPrice(minor: number) {
@@ -141,7 +146,6 @@ export function BuyOptions({
     void navigate(pitchTarget("card", search));
   }
   if (program && fundedOffer) {
-    const fundedGuarantee = routeGuarantee(program);
     const link = (
       <Link
         className={buttonClass(buttonVariant, className)}
@@ -156,15 +160,15 @@ export function BuyOptions({
     return (
       <div className={styles.buy} data-buy="funded">
         {link}
-        <p className={styles.buyTerms}>
+        <p className={styles.buyTerms} data-buy-terms>
           {formatPrice(fundedOffer.totalMinor)} for{" "}
           {(fundedOffer.termMonths ?? 12) === 12
             ? "the year"
             : `${fundedOffer.termMonths} months`}
           , paid from your {program.fund} balance
-          {fundedGuarantee
-            ? ` · Risk-free: 30-day refund to ${fundedGuarantee.to}`
-            : "."}
+          {/* A program that does not refund (or has not said) shows the
+              price only; the page's footnote covers the exception. */}
+          {offerRefunds(fundedOffer) ? ` · ${RISK_FREE}` : "."}
         </p>
         {fundedOffer.statusLabel && (
           <p className={styles.trust} data-funding-status>
@@ -200,10 +204,10 @@ export function BuyOptions({
     <div className={styles.buy} data-buy="card">
       <PlanChoice offers={plans} interval={offer.interval} onChange={choose} />
       {button}
-      <p className={styles.buyTerms}>
+      <p className={styles.buyTerms} data-buy-terms>
         {offer.formattedAmount}{" "}
         {offer.interval === "year" ? "for the year" : "a month"}
-        {routeGuarantee() && ` · ${RISK_FREE}`}
+        {` · ${RISK_FREE}`}
       </p>
     </div>
   );
