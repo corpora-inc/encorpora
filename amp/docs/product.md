@@ -20,7 +20,7 @@ A problem's semantic structure determines the rendered figure and the grading re
 
 The production queue assigns bounded authoring tasks and separate review work. Shared contract changes are coordinated before dependent workers adopt them. New renderers must include semantic validation, accessibility, mathematical tests, and device/print evidence. Agents may generate candidate material; source presence does not establish quality or publication.
 
-Release useful improvements continuously. Publish complete-curriculum claims only after the coverage gates support them. Complete working vertical slices include instruction, practice, feedback, remediation, parent reporting, and printable material. The development preview is an integration environment for those slices.
+Release useful improvements continuously. Marketing describes AMP as a complete math curriculum from counting to precalculus (#1996); coverage gates find gaps to close in the product and do not qualify marketing copy. Complete working vertical slices include instruction, practice, feedback, remediation, parent reporting, and printable material. The development preview is an integration environment for those slices.
 
 ## Distribution and business
 

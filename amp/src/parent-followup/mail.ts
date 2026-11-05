@@ -56,7 +56,7 @@ export function followupMail(
   const paragraphs = welcome
     ? [
         "Your free AMP account is ready.",
-        "AMP — Adaptive Math Pathways — finds the right level and chooses the next lesson as you answer. Try up to 100 free problems, with explanations when you need them. No payment card required.",
+        "AMP — Adaptive Math Pathways — is a complete math curriculum, from counting to precalculus. It finds the right level and chooses the next lesson as you answer. Try up to 100 free problems, with explanations when you need them. No payment card required.",
         `Continue free practice:\n${trial.href}`,
         "Sign in on any device to continue. Free practice is saved for 14 days from when you start.",
         ...(program
@@ -67,9 +67,9 @@ export function followupMail(
       ]
     : [
         program
-          ? `Put your ${program.short} funds toward a math program that plans the next lesson for you.`
+          ? `Put your ${program.short} funds toward a complete math curriculum that plans the next lesson for you.`
           : "Ready for another look at AMP?",
-        "Catch up, get ahead, or add focused practice alongside school. AMP adapts question by question, so you can spend time learning instead of deciding what to work on next.",
+        "Catch up or get ahead, from counting to precalculus. AMP adapts question by question, so you can spend time learning instead of deciding what to work on next.",
         `Continue free practice:\n${trial.href}`,
         ...(program
           ? [

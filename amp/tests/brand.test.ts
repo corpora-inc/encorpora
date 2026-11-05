@@ -24,10 +24,13 @@ test("the statement descriptor satisfies Stripe's rules", () => {
   assert.match(d, /^[\x20-\x7e]+$/, "Latin characters only");
 });
 
-test("descriptions are one plain sentence set, no grade range", () => {
+test("descriptions claim the complete curriculum (#1996)", () => {
   for (const text of [brand.description, brand.checkout.description]) {
     assert.ok(text.length <= 300);
-    assert.doesNotMatch(text, /grade|K-12|high school|precalculus/i);
+    assert.match(
+      text,
+      /^A complete math curriculum, from counting to precalculus/,
+    );
   }
 });
 

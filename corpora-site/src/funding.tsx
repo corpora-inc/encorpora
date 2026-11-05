@@ -149,6 +149,9 @@ export function FundingPage({
             </p>
           )}
           <h1>{presentation?.headline ?? funding.program}</h1>
+          {/* Stays: distinguishes Corpora, an independent vendor, from the
+              program it sells through, so this page cannot read as the
+              program's own or a government notice. */}
           {showProduct && (
             <p className="fine">
               AMP (Adaptive Math Pathways) is a product of Corpora Inc, an independent
@@ -156,7 +159,7 @@ export function FundingPage({
             </p>
           )}
           {showProduct && (
-            <p className="lead">Math that finds your level and chooses what to practice next, so you don’t have to plan every lesson.</p>
+            <p className="lead">AMP is a complete math curriculum, from counting to precalculus. It finds your child’s level and chooses each next problem, so there is nothing to plan.</p>
           )}
           {!directPay && <p className="lead">{page.summary}</p>}
           {directPay && fundedPlans.length > 0 && (
@@ -168,6 +171,7 @@ export function FundingPage({
                   </li>
                 ))}
               </ul>
+              {/* Stays: funded licenses are fixed-term, the term a program reviews (amp/docs/funded-purchases.md). */}
               <p className="fine">Per learner. Fixed access dates. No automatic renewal.</p>
             </div>
           )}
@@ -211,7 +215,7 @@ export function FundingPage({
           <div className="section-heading">
             <p className="eyebrow">Try the math before you buy</p>
             <h2 id="funding-product-proof">See what your child gets.</h2>
-            <p>Start with up to 100 free problems. AMP estimates a starting level, then adjusts practice as you answer. Your path shows what to work on next.</p>
+            <p>Start with up to 100 free problems. AMP finds your child’s level in each area of math, then adjusts practice with every answer. Your path shows what comes next.</p>
             <p>Open the reasoning on this real AMP problem. Explore a lesson or printable sample, then try the assessment with your child.</p>
             <div className="funding-actions">
               <a className="button" href={trialHref} data-campaign-action={appUrl ? "try" : undefined}>
@@ -223,13 +227,13 @@ export function FundingPage({
               {appUrl && <li><a href={new URL("/pathways", appUrl).href}>Explore the live curriculum map ↗</a></li>}
               <li><a href="/#sample-lesson">Read a lesson excerpt →</a></li>
               <li><a href="/samples/">View printable practice →</a></li>
-              <li><a href="/amp/#coverage">See current curriculum coverage →</a></li>
+              <li><a href="/amp/#coverage">See the full curriculum →</a></li>
             </ul>
             {supportEmail && <p>Need help choosing or paying? <a href={`mailto:${supportEmail}`}>{supportEmail}</a>.</p>}
           </div>
           <div className="hero-demo">
             <Sample heading="h3" />
-            <p className="demo-caption">An actual AMP problem and explanation. This sample is not an assessment result.</p>
+            <p className="demo-caption">A real AMP problem with its explanation.</p>
           </div>
         </section>
       )}
@@ -243,7 +247,7 @@ export function FundingPage({
           </a>
           <div className="funding-product-links">
             <a href="/amp/#examples">Explore the mathematics</a>
-            <a href="/amp/#coverage">See current coverage</a>
+            <a href="/amp/#coverage">See the full curriculum</a>
             <a href="/legal/refund/">Read the refund policy</a>
           </div>
         </aside>
@@ -310,6 +314,8 @@ export function FundingPage({
                 </li>
               ))}
             </ul>
+            {/* Stays: administrators, not vendors, approve each purchase
+                (amp/docs/funded-purchases.md). */}
             <p className="fine">
               Program administrators decide purchase eligibility. Check their
               current rules before paying. This guide’s next review is due by{" "}

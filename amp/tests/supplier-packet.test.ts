@@ -150,7 +150,11 @@ test("registered catalog is unpriced and neutral CSV protects spreadsheet cells"
   assert.match(catalogCsv(modified), /"'=HYPERLINK\(""evil""\)"/);
   const html = renderSupplierPacket(modified, [], "2026-10-17");
   assert.ok(!html.includes("restricted-record"));
-  assert.match(html, /not a complete K–12/);
+  assert.match(
+    html,
+    /adaptive mathematics from counting through precalculus, with lessons, printable workbooks and progress tracking/,
+  );
+  assert.doesNotMatch(html, /selected skills|not a complete/);
 });
 test("publication evidence cannot omit current source entries or substitute edition", async () => {
   const dir = await mkdtemp(join(tmpdir(), "amp-packet-"));

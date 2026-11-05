@@ -158,6 +158,10 @@ button:hover {
 .skip:focus {
   transform: none;
 }
+.hero h1,
+.section-heading h2 {
+  text-wrap: balance;
+}
 .hero {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
@@ -401,6 +405,9 @@ button:hover {
 }
 .page-intro .lead {
   max-width: 700px;
+}
+.page-intro .button + .fine {
+  margin-top: 14px;
 }
 .sample-grid {
   display: grid;
@@ -979,16 +986,6 @@ footer > .fine {
   }
 }
 
-.inventory {
-  margin: 24px 0;
-  padding: 18px 0;
-  border-top: 1px solid var(--line);
-}
-.inventory summary {
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
 
 .breadcrumbs {
   margin-top: 28px;

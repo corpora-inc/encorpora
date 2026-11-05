@@ -15,7 +15,7 @@
   {
     "id": "amp",
     "title": "AMP Mathematics",
-    "description": "Adaptive math practice. AMP finds each learner's level and moves them forward, with a hint and a lesson for every problem type and printable worksheets with solutions.",
+    "description": "A complete math curriculum, from counting to precalculus. AMP finds each learner's level and moves them forward, with a hint and a lesson for every problem type and printable worksheets with solutions.",
     "icon": "/logos/amp-logo.webp",
     "featured": true,
     "action": "Open",
