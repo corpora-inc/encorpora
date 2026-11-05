@@ -237,3 +237,18 @@ test("an offer's public status label is published only when configured", () => {
     false,
   );
 });
+
+test("an offer's refund summary is public, bounded and optional", () => {
+  assert.equal(presentOffer(offer).refundSummary, undefined);
+  const summary = "Refunds follow the program's rules.";
+  assert.equal(
+    presentOffer(fundingOfferSchema.parse({ ...offer, refundSummary: summary }))
+      .refundSummary,
+    summary,
+  );
+  assert.equal(
+    fundingOfferSchema.safeParse({ ...offer, refundSummary: "x".repeat(201) })
+      .success,
+    false,
+  );
+});

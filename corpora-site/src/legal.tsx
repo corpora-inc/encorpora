@@ -533,9 +533,30 @@ export function Legal({
             refunds and applicable consumer rights continue to apply; processing
             times vary.
           </p>
+          <h2>Arizona ESA purchases</h2>
+          <p>
+            For Arizona ESA purchases, request a refund of your purchase within
+            30 days of payment; no reason is required. Arizona law does not
+            allow ESA money to be refunded to a parent or student, so we return
+            the amount we received by check to the Arizona Department of
+            Education for your child’s ESA. Payment-platform fees may not be
+            refundable. We follow ClassWallet and Arizona Department of
+            Education refund instructions. Required program refunds and
+            applicable consumer rights continue to apply; processing times vary.
+          </p>
+          <h2>New Hampshire EFA purchases</h2>
+          <p>
+            For New Hampshire EFA purchases paid through ClassWallet, request a
+            full refund within 30 days of payment; no reason is required. The
+            full amount returns to your child’s EFA wallet in ClassWallet, not
+            to you personally, and is issued within 30 days, as the program
+            requires. We follow ClassWallet and program refund instructions.
+            Required program refunds and applicable consumer rights continue to
+            apply; processing times vary.
+          </p>
           <h2>Program and marketplace payments</h2>
           <p>
-            For purchases paid directly through an education program or
+            For purchases paid directly through any other education program or
             marketplace, the administrator’s refund and cancellation rules
             disclosed for that purchase take precedence over our 30-day policy
             where they differ. A change-of-mind refund may not be available.

@@ -51,6 +51,10 @@ export const fundingOfferSchema = z
      * site shows it (corpora-site `presentation.statusLabel`), e.g. its vendor
      * status and payment route. Absent: nothing is claimed. */
     statusLabel: text.max(100).optional(),
+    /** This program's refund terms in one public line, shown where the parent
+     * pays (the invoice form). Absent: a generic line that is true for every
+     * program ("its refund rules apply"). Never a guarantee we do not give. */
+    refundSummary: text.max(200).optional(),
     documentPolicy: z.enum([
       "opaque-student-reference-accepted",
       "named-student-invoice",

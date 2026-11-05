@@ -5,6 +5,7 @@ import {
   type PracticeIntent,
 } from "../practice/practice-settings";
 import { TrialWelcome, useTrialWelcome } from "./TrialWelcome";
+import { TrialBuyControl, TrialInvitation } from "./TrialBuy";
 import { AnswerFeedback } from "../practice/AnswerFeedback";
 import { answerProgress } from "./api";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
@@ -367,13 +368,16 @@ function Practice({ session }: { session: TrialSession }) {
             />
           )
         }
+        status={nativeRuntime ? undefined : <TrialBuyControl />}
         feedbackAside={
           unlocked !== null && (
-            <AssessmentWorkbookOffer
+            <TrialInvitation
               key={unlocked}
-              session={session}
-              slot={unlocked}
-            />
+              at="workbook"
+              occasion={`${session.learnerId}:${unlocked}`}
+            >
+              <AssessmentWorkbookOffer session={session} slot={unlocked} />
+            </TrialInvitation>
           )
         }
         returnToMixed={

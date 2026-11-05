@@ -180,6 +180,15 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                 onChange={(event) => setStudent(event.target.value)}
                 disabled={busy}
               />
+              {/* At the point of sale, this program's refund terms
+                  (https://corpora.inc/legal/refund/); a program without
+                  configured terms gets the line true for every program. */}
+              <p className={styles.notice} data-refund-terms>
+                {offer.refundSummary ??
+                  ("refundSummary" in program
+                    ? program.refundSummary
+                    : `Paid through ${(program as { name: string }).name}, so its refund rules apply. The 30-day money-back guarantee covers card payments.`)}
+              </p>
               <Button type="submit" variant="primary" disabled={busy}>
                 {busy ? "Preparing invoice…" : "Create invoice PDF"}
               </Button>

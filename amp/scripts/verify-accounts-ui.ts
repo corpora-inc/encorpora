@@ -150,7 +150,7 @@ try {
   // Sign out, then back in; a wrong password is reported in place.
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("button", { name: "Sign out" }).click();
-  await page.getByRole("button", { name: "Try a problem" }).waitFor();
+  await page.getByRole("button", { name: "Try it free" }).first().waitFor();
   await page.goto(`${origin}/?sign-in`);
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password").fill("not the password");
@@ -164,7 +164,7 @@ try {
   // Forgotten password: the emailed link sets a new one.
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("button", { name: "Sign out" }).click();
-  await page.getByRole("button", { name: "Try a problem" }).waitFor();
+  await page.getByRole("button", { name: "Try it free" }).first().waitFor();
   await page.goto(`${origin}/?sign-in`);
   await page.getByRole("button", { name: "Forgot password?" }).click();
   await page.getByLabel("Email").fill(email);
@@ -312,7 +312,7 @@ try {
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
   // Sign-out redirects asynchronously; finish it before starting another navigation.
-  await page.getByRole("button", { name: "Try a problem" }).waitFor();
+  await page.getByRole("button", { name: "Try it free" }).first().waitFor();
   await page.goto(`${origin}/?sign-in`);
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
   await signedIn(page, email);

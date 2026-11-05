@@ -19,7 +19,7 @@ test("a funded program's Buy is its no-account invoice, with the campaign kept",
     });
 });
 
-test("card Buy signs up for the purchase; the free paths sign up for free practice", () => {
+test("card Buy signs up for the purchase; Try it free signs up for free practice", () => {
   const search = { ...campaign, program: "nh-efa", gclid: "click" };
   expect(pitchTarget("card", search)).toEqual({
     to: "/sign-up",
@@ -34,9 +34,9 @@ test("card Buy signs up for the purchase; the free paths sign up for free practi
       return: "free-practice",
     },
   });
-  expect(pitchTarget("workbook", {})).toEqual({
+  expect(pitchTarget("try", {})).toEqual({
     to: "/sign-up",
-    search: { entry: "pitch-workbook", return: "free-practice" },
+    search: { entry: "pitch-try", return: "free-practice" },
   });
 });
 

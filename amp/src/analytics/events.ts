@@ -55,6 +55,7 @@ export const FUNNEL_EVENTS = [
   "video_progress",
   "buy_click",
   "workbook_click",
+  "invite_view",
 ] as const;
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
 
@@ -111,6 +112,11 @@ export const PITCH_PROGRAMS = ["ar-efa", "az-esa", "nh-efa"] as const;
 /** Quartiles of the pitch video reached, each recorded once per tab. */
 export const VIDEO_QUARTILES = [25, 50, 75, 100] as const;
 export const BUY_PATHS = ["funded", "card"] as const;
+/** Where a Buy control sits: the signed-out pitch, the free trial's toolbar,
+ * or a trial invitation card. */
+export const BUY_PLACES = ["pitch", "chrome", "invite"] as const;
+/** Where a free-trial invitation to buy appeared. */
+export const INVITE_PLACES = ["map", "workbook"] as const;
 
 const index = z.number().int().min(0).max(100_000);
 const none = z.strictObject({});
@@ -189,7 +195,11 @@ export const funnelPropsSchemas = {
   video_progress: z.strictObject({
     percent: z.literal(VIDEO_QUARTILES),
   }),
-  buy_click: z.strictObject({ path: z.enum(BUY_PATHS) }),
+  buy_click: z.strictObject({
+    path: z.enum(BUY_PATHS),
+    from: z.enum(BUY_PLACES).optional(),
+  }),
+  invite_view: z.strictObject({ at: z.enum(INVITE_PLACES) }),
   workbook_click: none,
   trial_problem_view: none,
   auth_failure: z.strictObject({

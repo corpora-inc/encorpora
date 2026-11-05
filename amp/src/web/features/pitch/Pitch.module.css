@@ -259,10 +259,23 @@
   justify-self: start;
   margin-inline-start: calc(-1 * var(--space-4));
 }
-.secondary {
+/* The free trial: one secondary action and what it includes. */
+.free {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: var(--space-3);
+  gap: var(--space-2);
+}
+.tryButton {
+  width: 100%;
+}
+.note {
+  margin: 0;
+  font-size: var(--text-label);
+  line-height: 1.45;
+  color: var(--color-muted-text);
+}
+/* One control where space is tight: the trial toolbar and invitations. */
+.buyCompactButton {
+  white-space: nowrap;
 }
 .priceError {
   display: grid;
@@ -322,20 +335,66 @@
   line-height: 1.5;
   color: var(--color-muted-text);
 }
-.prices {
+.checklist {
   display: grid;
-  gap: var(--space-1);
+  gap: var(--space-3);
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.checklist li {
+  position: relative;
+  padding-left: calc(var(--space-5) + var(--space-1));
   font-size: var(--text-body);
   line-height: 1.5;
+  color: var(--color-on-surface);
+}
+/* A drawn check, so the mark needs no font glyph and no color literal. */
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.35em;
+  width: 7px;
+  height: 12px;
+  border: solid var(--color-success-accent);
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+.priceLine {
+  margin: 0;
+  max-width: 40em;
+  font-size: var(--text-body);
+  line-height: 1.55;
   color: var(--color-muted-text);
 }
-.prices strong {
+.priceLine strong {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   color: var(--color-on-surface);
+}
+.guarantee p {
+  margin: 0;
+  max-width: 40em;
+  font-size: var(--text-body);
+  line-height: 1.55;
+  color: var(--color-muted-text);
+}
+.guarantee p.footnote {
+  font-size: var(--text-label);
+  line-height: 1.45;
+}
+.closing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-3);
+  width: min(100%, var(--width-form));
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+.closing > * {
+  width: 100%;
+  min-height: 56px;
 }
 .trust {
   margin: 0;
@@ -343,13 +402,6 @@
   font-weight: 650;
   line-height: 1.45;
   color: var(--color-on-success);
-}
-.refund {
-  margin: 0;
-  max-width: 42em;
-  font-size: var(--text-label);
-  line-height: 1.5;
-  color: var(--color-muted-text);
 }
 @media (min-width: 768px) {
   .includes {

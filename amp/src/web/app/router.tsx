@@ -227,16 +227,24 @@ const tryStart = createRoute({
   beforeLoad: beforeTrial,
   component: trial("TryStart"),
 });
+/** Trial screens show Buy from their first paint: its prices load first. */
+async function loadTrialBuy({ location }: { location: { search: unknown } }) {
+  if (nativeRuntime) return;
+  const { loadBuyData } = await import("../features/pitch/BuyOptions");
+  await loadBuyData(location.search as Record<string, unknown>);
+}
 const tryPractice = createRoute({
   getParentRoute: () => root,
   path: "/try/practice",
   beforeLoad: beforeTrial,
+  loader: loadTrialBuy,
   component: trial("TrialPractice"),
 });
 const tryMap = createRoute({
   getParentRoute: () => root,
   path: "/try/map",
   beforeLoad: beforeTrial,
+  loader: loadTrialBuy,
   component: trial("TrialMap"),
 });
 const tryPlans = createRoute({

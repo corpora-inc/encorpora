@@ -15,6 +15,8 @@ export const invoiceOfferSchema = z.object({
   termMonths: z.number().int().positive().optional(),
   /** The program's public status line, when configured (never inferred). */
   statusLabel: z.string().min(1).max(100).optional(),
+  /** The program's own refund terms in one public line, when configured. */
+  refundSummary: z.string().min(1).max(200).optional(),
 });
 export type InvoiceOffer = z.infer<typeof invoiceOfferSchema>;
 

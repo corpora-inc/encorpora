@@ -46,7 +46,7 @@ const titles: Record<Step, string> = {
   "two-factor": "Enter your code",
 };
 /** Arriving from the pitch, account creation names what the parent chose.
- * Trying a problem keeps the free-practice heading. */
+ * Trying it free keeps the free-practice heading, "Try AMP free". */
 const pitchCreate: Partial<
   Record<PitchEntry, { title: string; detail: string }>
 > = {
@@ -529,7 +529,7 @@ export function SignInScreen() {
           {pitchCopy
             ? pitchCopy.title
             : parentEntry
-              ? "Math that adapts as you answer."
+              ? "Try AMP free"
               : titles[step]}
         </h2>
         {pitchCopy && (
@@ -540,8 +540,8 @@ export function SignInScreen() {
         {freeEntry && showProviders && !pitchCopy && (
           <div className={styles.pitch} data-free-parent-signup>
             <p>
-              Try a few questions and watch AMP find your level. Free to try, no
-              card required.
+              Your child moves forward in the free assessment, with adaptive
+              practice and printable workbooks. No credit card, no obligation.
             </p>
             {carry.program && (
               <p className={styles.funding}>

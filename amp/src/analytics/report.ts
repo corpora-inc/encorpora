@@ -30,11 +30,27 @@ export const PITCH_STEPS = [
   "buy_click:funded",
   "buy_click:card",
   "try_click",
-  "workbook_click",
   "account_session",
   "checkout_start",
   "purchase",
 ] as const;
+/** In the free trial (from its start, `try_click`): each invitation to buy
+ * and Buy from the trial's toolbar or an invitation. */
+export const TRIAL_BUY_STEPS = [
+  "try_click",
+  "invite_view:map",
+  "invite_view:workbook",
+  "trial_buy_click:card",
+  "trial_buy_click:funded",
+  "checkout_start",
+  "purchase",
+] as const;
+export type TrialBuyStep = {
+  step: (typeof TRIAL_BUY_STEPS)[number];
+  visitors: number;
+  /** Share of trial starters who also reached this step. */
+  fromTrial: number | null;
+};
 export type PitchStep = {
   step: (typeof PITCH_STEPS)[number];
   visitors: number;
@@ -64,6 +80,7 @@ export type FunnelReport = {
   visitors: number;
   steps: FunnelStep[];
   pitch: PitchStep[];
+  trialBuy: TrialBuyStep[];
   unattributedPurchases: number;
   breakdowns: Record<
     "source" | "device" | "ageBand" | "gradeBand",
@@ -113,7 +130,10 @@ export async function funnelReport(
   const paths = (
     await q<{ events: string[] }>(
       `SELECT array_agg(DISTINCT CASE
+           WHEN e.event='buy_click' AND e.props->>'from' IN ('chrome','invite')
+             THEN 'trial_buy_click:'||(e.props->>'path')
            WHEN e.event='buy_click' THEN 'buy_click:'||(e.props->>'path')
+           WHEN e.event='invite_view' THEN 'invite_view:'||(e.props->>'at')
            WHEN e.event='video_progress' THEN 'video_progress:'||(e.props->>'percent')
            ELSE e.event END) AS events
        FROM amp_funnel_events e JOIN amp_funnel_visitors v USING(visitor_id)
@@ -149,6 +169,12 @@ export async function funnelReport(
     step,
     visitors: reachedCount("pitch_view", step),
     fromPitch: ratio(reachedCount("pitch_view", step), pitchViewers),
+  }));
+  const trialStarters = reachedCount("try_click");
+  const trialBuy: TrialBuyStep[] = TRIAL_BUY_STEPS.map((step) => ({
+    step,
+    visitors: reachedCount("try_click", step),
+    fromTrial: ratio(reachedCount("try_click", step), trialStarters),
   }));
   const [{ unattributed }] = await q<{ unattributed: number }>(
     `SELECT count(*)::int AS unattributed FROM amp_funnel_events
@@ -238,6 +264,7 @@ export async function funnelReport(
     visitors,
     steps,
     pitch,
+    trialBuy,
     unattributedPurchases: unattributed,
     breakdowns,
     daysToPurchase: {
@@ -306,6 +333,14 @@ export function formatFunnelReport(report: FunnelReport): string {
       table(
         ["Pitch step", "Visitors", "From pitch"],
         report.pitch.map((s) => [s.step, s.visitors, percent(s.fromPitch)]),
+      ),
+    );
+  if (report.trialBuy[0]?.visitors)
+    out.push(
+      "",
+      table(
+        ["Trial buy step", "Visitors", "From trial start"],
+        report.trialBuy.map((s) => [s.step, s.visitors, percent(s.fromTrial)]),
       ),
     );
   if (report.unattributedPurchases)

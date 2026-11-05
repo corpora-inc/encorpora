@@ -20,6 +20,7 @@ import {
 import { track, trackSessionStart } from "./analytics";
 import { FreeMeter } from "./FreeMeter";
 import { TrialWorkbooks } from "./TrialWorkbooks";
+import { TrialInvitation } from "./TrialBuy";
 import { nativeRuntime } from "../../native-runtime";
 import { trialEvidenceOptions } from "../pathways/queries";
 import { ShareAssessment } from "./ShareAssessment";
@@ -149,9 +150,19 @@ function MapView({ session }: { session: TrialSession }) {
         </div>
         {/* The next step sits above the fold; the free workbooks and the map
             follow it. */}
-        {p.workbooks && !nativeRuntime && (
-          <TrialWorkbooks session={session} status={p.workbooks} />
-        )}
+        {/* After placement: the invitation to buy, with the free workbooks. */}
+        {!nativeRuntime &&
+          (p.phase !== "placement" ? (
+            <TrialInvitation at="map" occasion={session.learnerId}>
+              {p.workbooks && (
+                <TrialWorkbooks session={session} status={p.workbooks} />
+              )}
+            </TrialInvitation>
+          ) : (
+            p.workbooks && (
+              <TrialWorkbooks session={session} status={p.workbooks} />
+            )
+          ))}
         <FrontierMap
           name="the learner"
           birthYear={session.birthYear}

@@ -2018,6 +2018,15 @@ html[data-input="pointer"] :focus-visible {
     column-gap: 10px;
     padding-block: 4px;
   }
+  /* A toolbar status (the free trial's Buy) keeps the one row, so the
+     problem below sits where the loading frame put it. */
+  .shell.immersive
+    .workspace-toolbar:has([data-navigation-trigger]):has(
+      > .workspace-status
+    ) {
+    grid-template-columns: var(--target-size) minmax(0, 1fr) auto 44px;
+    grid-template-areas: "navigation topic status calculator";
+  }
   .workspace-toolbar > [data-navigation-trigger] {
     grid-area: navigation;
   }

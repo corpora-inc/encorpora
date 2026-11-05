@@ -497,7 +497,7 @@ try {
       // Visitor: the parent pitch offers a free problem (verify-pitch-ui
       // covers the pitch itself).
       await page.goto(`${origin}/`);
-      const tryFree = page.getByRole("button", { name: "Try a problem" });
+      const tryFree = page.getByRole("button", { name: "Try it free" }).first();
       await tryFree.waitFor();
       await page
         .getByRole("heading", { name: "Math that adapts to every answer." })
@@ -511,9 +511,7 @@ try {
           url.pathname === "/sign-up" &&
           url.searchParams.get("return") === "free-practice",
       );
-      await page
-        .getByRole("heading", { name: "Math that adapts as you answer." })
-        .waitFor();
+      await page.getByRole("heading", { name: "Try AMP free" }).waitFor();
       // Identity-provider behavior is verified in verify-social-sign-in-ui.
       await page.evaluate(() => localStorage.setItem("fixture.parent", "1"));
       await page.goto(`${origin}/try`);
@@ -935,7 +933,7 @@ try {
       await coldLoad(
         visitor,
         "/try",
-        "Math that adapts as you answer.",
+        "Try AMP free",
         `direct-try-${tag}`,
         fresh(),
       );
