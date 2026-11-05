@@ -139,11 +139,44 @@ The production marketing and parent purchase pages also send page views and a fi
 
 Page titles use fixed public route labels, such as “Create Your Account | AMP” and “Arizona ESA | AMP”, from `src/analytics/page-titles.ts`. They never read arbitrary document titles or account data. Use the page-path dimension to distinguish older visits recorded with the generic title; new labels do not rewrite historical events. Browser titles for private app screens are separate from GA eligibility.
 
+The same table sets the document title, so a public route's browser title is exactly the `page_title` GA receives. The signed-out pitch at `/` is “AMP: Adaptive Math Pathways, a complete math curriculum”. When its link names a listed funded program (`?program=ar-efa`, `az-esa` or `nh-efa`), the title names that program, for example “AMP: Adaptive Math Pathways for Arkansas EFA families”; any other value reads as the plain pitch. `/sign-up` is titled by the pitch choice in `?entry=` (“Try AMP Free”, “Get Your Free Workbook”, “Create Your Account to Buy”), else by `?return=free-practice` (“Try AMP Free”), else “Create Your Account”. Page locations still drop `program`, `entry` and `return`; the title and the `program` parameter carry them. The signed-in home at `/` is a learning screen: GA does not load there, and a document that reaches it stops sending, like assessment and practice routes.
+
+`index.html` carries the plain pitch's title, description, Open Graph and Twitter card tags. The production build adds the generated 1200×630 share card (`scripts/build-public-pathways.ts`). The router rewrites the title, description, social text and canonical link for each route (`src/web/app/route-head.ts`). Public routes get a canonical URL of the path alone, without campaign, click or program parameters; private routes get none. The static file has no canonical link because it is served for every route.
+
 Keep Enhanced Measurement disabled in the GA4 web stream. The application explicitly sends one page view per public route transition; enabling automatic history, form, search or click measurement would bypass that event selection and could duplicate page views. Only approved public paths, validated campaign labels and Google Ads click IDs are retained in page locations. Referrers are reduced to origins. No learner, account, invoice, form or answer data is exported. After a loaded tag encounters assessment, practice, lessons or account pages, it stays disabled for the rest of that document. A fresh public document can resume collection. This prevents Google’s automatic engagement timer from attributing time spent learning to a later purchase screen. First-party reports continue across that boundary.
 
 Use GA4 Traffic acquisition, Pages and screens, and Realtime for standard visitor reports. Use AMP engagement and funded-journey reports to inspect learning progression and authoritative payment outcomes. A `begin_checkout` event or a checkout return is not a purchase. Do not import these actions as primary Google Ads purchase conversions or add a second primary conversion for purchases already exported by the server.
 
-`npm run test:google-analytics-ui` runs the real Google tag in Chromium and intercepts every collection request. It checks public SPA transitions, duplicate suppression, sanitized payloads, learning-route exclusion and GPC. No synthetic collection events are sent to Google by the test.
+### Pitch events
+
+The first-party collector forwards a fixed list of actions to GA (`forwarded` in `src/analytics/google-analytics.ts`). Each GA event carries only the parameters below, rebuilt from validated values; other first-party props are dropped. Every forwarded event and page view on a URL with a listed `program` also carries `program`. The same Do Not Track, Global Privacy Control, staff-browser, WebDriver, native-app and learning-route exclusions apply.
+
+| First-party event | GA event | Parameters |
+| --- | --- | --- |
+| `video_play` | `video_start` | none |
+| `video_progress` 25, 50, 75 | `video_progress` | `video_percent` |
+| `video_progress` 100 | `video_complete` | `video_percent` = 100 |
+| `buy_click` card | `buy_click` | `payment_route` = `card` |
+| `buy_click` funded | `buy_click` | `payment_route` = the program id (`ar-efa`, `az-esa`, `nh-efa`), or `funded` if the URL names none |
+| `try_click` | `try_click` | none |
+| `workbook_click` | `workbook_click` | none |
+| `pitch_view` | not sent | GA's `page_view` with the pitch title records it |
+
+Video events count each quarter once per tab. `buy_click` is a click on Buy, not a checkout or a purchase; it is never sent as `begin_checkout` or `purchase`.
+
+### GA4 admin checklist
+
+Registering parameters is an operator step in the GA4 property; deploying the code does not do it. Custom dimensions apply only from registration onward.
+
+1. Admin → Data display → Custom definitions → Create custom dimension, scope **Event**, for each of:
+   - “Payment route”, event parameter `payment_route`
+   - “Funded program”, event parameter `program`
+   - “Video percent”, event parameter `video_percent` (a dimension: its values are the fixed quarters)
+2. Admin → Data streams → the web stream → Enhanced measurement stays **off**.
+3. After a day of traffic, confirm in Admin → Data display → Events that `video_start`, `video_progress`, `video_complete`, `buy_click`, `try_click` and `workbook_click` appear. `buy_click` may be a GA key event for reporting. Never import it, or any other click, into Google Ads as a purchase conversion.
+4. In Reports → Pages and screens, use the page title to separate the pitch, each funded-program pitch and each sign-up intent. Use Explore with “Funded program” and “Payment route” for Buy clicks by program.
+
+`npm run test:google-analytics-ui` runs the real Google tag in Chromium and intercepts every collection request. It checks public SPA transitions, duplicate suppression, sanitized payloads, learning-route exclusion and GPC. It also drives the app's collector with the pitch's calls and checks the pitch and sign-up titles, the events and parameters above, the signed-in home exclusion, and that GPC and staff browsers never load the tag. No synthetic collection events are sent to Google by the test.
 
 
 ### Purchase attempts and errors

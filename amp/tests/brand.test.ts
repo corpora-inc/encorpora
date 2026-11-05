@@ -31,11 +31,12 @@ test("descriptions are one plain sentence set, no grade range", () => {
   }
 });
 
-test("index.html carries the brand title and description", () => {
+// index.html carries the pitch's head (tests/route-head.test.ts); its title
+// still leads with the brand.
+test("index.html's title names the brand", () => {
   const html = read("../index.html");
-  assert.ok(html.includes(`<title>${brandTitle}</title>`));
-  const meta = /<meta\s+name="description"\s+content="([^"]*)"/.exec(html);
-  assert.equal(meta?.[1], brand.description);
+  const title = /<title>([^<]*)<\/title>/.exec(html)?.[1] ?? "";
+  assert.ok(title.startsWith(`${brand.name}: ${brand.expansion}`), title);
 });
 
 test("the encorpora.io manifest names AMP from the brand", () => {

@@ -1281,11 +1281,21 @@ try {
   assert.equal(await guest.title(), "Explore Math Skills | AMP Pathways");
   await guest.locator(".pathways-brand").click();
   await guest.waitForURL(origin + "/");
+  // Signed out, / is the pitch: its own title and a single, parameter-free canonical.
   await guest.waitForFunction(
-    () => document.title === "AMP · Adaptive Math Pathways",
+    () =>
+      document.title ===
+      "AMP: Adaptive Math Pathways, a complete math curriculum",
   );
-  assert.equal(await guest.title(), "AMP · Adaptive Math Pathways");
-  assert.equal(await guest.locator('link[rel="canonical"]').count(), 0);
+  assert.equal(
+    await guest.title(),
+    "AMP: Adaptive Math Pathways, a complete math curriculum",
+  );
+  assert.equal(await guest.locator('link[rel="canonical"]').count(), 1);
+  assert.equal(
+    await guest.locator('link[rel="canonical"]').getAttribute("href"),
+    "https://amp.corpora.inc/",
+  );
   await noOverflow(guest);
   await guest.close();
 

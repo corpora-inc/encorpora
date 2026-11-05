@@ -128,10 +128,17 @@ try {
   assert.match(skillTitle, /Count to 20/);
   await map.locator(".pathways-brand").click();
   await map.waitForURL("http://127.0.0.1:4394/");
+  // Signed out, / is the pitch, with one parameter-free canonical.
   await map.waitForFunction(
-    () => document.title === "AMP · Adaptive Math Pathways",
+    () =>
+      document.title ===
+      "AMP: Adaptive Math Pathways, a complete math curriculum",
   );
-  assert.equal(await map.locator('link[rel="canonical"]').count(), 0);
+  assert.equal(await map.locator('link[rel="canonical"]').count(), 1);
+  assert.equal(
+    await map.locator('link[rel="canonical"]').getAttribute("href"),
+    "https://amp.corpora.inc/",
+  );
   await map.goBack();
   await map.waitForFunction(
     (expected) => document.title === expected,

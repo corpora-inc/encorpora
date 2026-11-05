@@ -3,68 +3,31 @@ import type { MapSkill } from "./model";
 
 /** Public map metadata is derived only from the catalog, never visitor state. */
 const publicOrigin = "https://amp.corpora.inc";
-const defaultTitle = "AMP · Adaptive Math Pathways";
-const defaultDescription =
-  "Adaptive math practice. AMP finds each learner's level and moves them forward, with a hint and a lesson for every problem type and printable worksheets with solutions.";
 
 export function usePathwaysMetadata(skill?: MapSkill, unknownSkill = false) {
   const original = useRef<{
-    title: string;
-    description: HTMLMetaElement | null;
-    descriptionContent: string | null;
-    canonical: HTMLLinkElement | null;
-    canonicalHref: string | null;
     robots: HTMLMetaElement | null;
     robotsContent: string | null;
   } | null>(null);
 
   useEffect(() => {
-    const description = document.querySelector<HTMLMetaElement>(
-      'meta[name="description"]',
-    );
-    const canonical = document.querySelector<HTMLLinkElement>(
-      'link[rel="canonical"]',
-    );
-    const staticPathwaysPage = canonical?.hasAttribute("data-pathways-static");
-    const staticSocialTags = document.querySelectorAll<HTMLMetaElement>(
-      "meta[data-pathways-static]",
-    );
     const robots = document.querySelector<HTMLMetaElement>(
       'meta[name="robots"]',
     );
     original.current = {
-      title: staticPathwaysPage ? defaultTitle : document.title,
-      description,
-      descriptionContent: staticPathwaysPage
-        ? defaultDescription
-        : (description?.getAttribute("content") ?? null),
-      canonical: staticPathwaysPage ? null : canonical,
-      canonicalHref: staticPathwaysPage
-        ? null
-        : (canonical?.getAttribute("href") ?? null),
       robots,
       robotsContent: robots?.getAttribute("content") ?? null,
     };
     return () => {
       const saved = original.current;
       if (!saved) return;
-      document.title = saved.title;
-      const currentDescription = document.querySelector<HTMLMetaElement>(
-        'meta[name="description"]',
-      );
-      if (saved.description) {
-        if (saved.descriptionContent === null)
-          saved.description.removeAttribute("content");
-        else saved.description.content = saved.descriptionContent;
-      } else currentDescription?.remove();
-      const currentCanonical = document.querySelector<HTMLLinkElement>(
-        'link[rel="canonical"]',
-      );
-      if (saved.canonical) {
-        if (saved.canonicalHref === null)
-          saved.canonical.removeAttribute("href");
-        else saved.canonical.href = saved.canonicalHref;
-      } else currentCanonical?.remove();
+      // The router writes the next route's title, description, canonical and
+      // social text (src/web/app/route-head.ts), possibly before this cleanup
+      // runs while the next screen loads. Undo only what belongs to the map:
+      // prerendered skill-page tags and the unknown-skill robots rule.
+      document
+        .querySelectorAll("[data-pathways-static]")
+        .forEach((tag) => tag.remove());
       const currentRobots = document.querySelector<HTMLMetaElement>(
         'meta[name="robots"]',
       );
@@ -73,7 +36,6 @@ export function usePathwaysMetadata(skill?: MapSkill, unknownSkill = false) {
           saved.robots.removeAttribute("content");
         else saved.robots.content = saved.robotsContent;
       } else currentRobots?.remove();
-      staticSocialTags.forEach((tag) => tag.remove());
       original.current = null;
     };
   }, []);
@@ -110,12 +72,19 @@ export function usePathwaysMetadata(skill?: MapSkill, unknownSkill = false) {
       ["og:description", description.content],
       ["og:url", canonical.href],
     ] as const;
+    // Prerendered skill pages carry their own tags; the app shell carries the
+    // router's. Keep whichever are present in step with this screen.
     for (const [property, content] of social)
       document
-        .querySelector<HTMLMetaElement>(
-          `meta[property="${property}"][data-pathways-static]`,
-        )
-        ?.setAttribute("content", content);
+        .querySelectorAll<HTMLMetaElement>(`meta[property="${property}"]`)
+        .forEach((tag) => tag.setAttribute("content", content));
+    for (const [name, content] of [
+      ["twitter:title", document.title],
+      ["twitter:description", description.content],
+    ] as const)
+      document
+        .querySelectorAll<HTMLMetaElement>(`meta[name="${name}"]`)
+        .forEach((tag) => tag.setAttribute("content", content));
     let robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
     if (unknownSkill) {
       if (!robots) {
