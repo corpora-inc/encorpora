@@ -581,14 +581,14 @@ try {
       const facebook = dialog.getByRole("link", { name: "Share on Facebook" });
       assert.equal(
         new URL((await facebook.getAttribute("href"))!).searchParams.get("u"),
-        "https://amp.corpora.inc/try",
+        "https://amp.corpora.inc/",
       );
       await dialog.getByRole("link", { name: "Save map image" }).waitFor();
       await dialog
         .getByRole("button", { name: "Copy link", exact: true })
         .click();
       await page.waitForFunction(
-        () => (window as any).copiedShareText === "https://amp.corpora.inc/try",
+        () => (window as any).copiedShareText === "https://amp.corpora.inc/",
       );
       assert.equal(
         await page.evaluate(

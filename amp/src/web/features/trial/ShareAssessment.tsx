@@ -12,7 +12,7 @@ export function assessmentShare(level: string) {
     text: level
       ? `My current math estimate on AMP: ${level}. Try the assessment and explore your pathways.`
       : "Explore connected math skills with Adaptive Math Pathways. Try the assessment and find what to practice next.",
-    url: "https://amp.corpora.inc/try",
+    url: "https://amp.corpora.inc/",
   };
 }
 
