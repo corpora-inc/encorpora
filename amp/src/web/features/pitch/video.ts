@@ -1,3 +1,7 @@
+// Served from this origin and preloaded by the home document, so the first
+// thing a parent sees doesn't wait on a second connection or the main bundle.
+import squarePoster from "./posters/pitch-poster-square.webp";
+import widePoster from "./posters/pitch-poster-wide.webp";
 import {
   FILM_MIXES,
   VIDEO_SECONDS,
@@ -69,7 +73,7 @@ export const pitchFilm: PitchVideo = {
   aspect: 16 / 9,
   durationSeconds: 163.6,
   poster: {
-    url: `${filmRoot}/amp-explainer-poster.jpg`,
+    url: widePoster,
     alt: "A workbook made for a learner named Nora, on a pile of different workbooks",
   },
   sources: wideSources("a"),
@@ -77,7 +81,7 @@ export const pitchFilm: PitchVideo = {
   phone: {
     aspect: 1,
     poster: {
-      url: `${filmRoot}/amp-explainer-square-poster.jpg`,
+      url: squarePoster,
       alt: "A workbook made for a learner named Nora, on a pile of different workbooks",
     },
     sources: squareSources("a"),

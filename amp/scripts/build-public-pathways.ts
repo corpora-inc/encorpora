@@ -368,14 +368,14 @@ await writeFile(
       productBlock[3],
   ),
 );
-const urls = ["/pathways", ...skills.map((skill) => skillUrl(skill.id))];
+const urls = ["/", "/pathways", ...skills.map((skill) => skillUrl(skill.id))];
 await writeFile(
   new URL("sitemap.xml", destination),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((path) => `  <url><loc>${escapeHtml(origin + path)}</loc></url>`).join("\n")}\n</urlset>\n`,
 );
 await writeFile(
   new URL("robots.txt", destination),
-  `User-agent: *\nAllow: /pathways\nSitemap: ${origin}/sitemap.xml\n`,
+  `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`,
 );
 const privateBuild = new URL("../artifacts/", import.meta.url);
 await mkdir(privateBuild, { recursive: true });

@@ -1,0 +1,20 @@
+{
+  "name": "AMP · Adaptive Math Pathways",
+  "short_name": "AMP",
+  "description": "A complete math curriculum, from counting to precalculus.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#f7f6f0",
+  "theme_color": "#f7f6f0",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

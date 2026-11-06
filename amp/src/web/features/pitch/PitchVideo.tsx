@@ -158,7 +158,7 @@ export function PitchVideo({ video }: { video: Video }) {
             type="button"
             className={styles.play}
             onClick={start}
-            aria-label={`Play ${video.title}, ${duration}, with sound`}
+            aria-label={`Play video ${duration}: ${video.title}, with sound`}
           >
             <span className={styles.playMark} aria-hidden="true">
               <svg viewBox="0 0 24 24">

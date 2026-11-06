@@ -56,7 +56,7 @@ test("a phone gets the square film in its kept mix", () => {
   media.matches = true;
   render(<PitchVideo video={pitchFilm} />);
   expect(ratio()).toBe(1);
-  expect(player().poster).toBe(pitchFilm.phone!.poster.url);
+  expect(player().getAttribute("poster")).toBe(pitchFilm.phone!.poster.url);
   tapPlay();
   expect(player().src).toMatch(/\/amp-explainer-square-\d+-b\.mp4$/);
 });
@@ -64,7 +64,7 @@ test("a phone gets the square film in its kept mix", () => {
 test("a larger screen gets the wide film", () => {
   render(<PitchVideo video={pitchFilm} />);
   expect(ratio()).toBeCloseTo(16 / 9);
-  expect(player().poster).toBe(pitchFilm.poster.url);
+  expect(player().getAttribute("poster")).toBe(pitchFilm.poster.url);
   tapPlay();
   expect(player().src).toMatch(/\/amp-explainer-\d+-b\.mp4$/);
 });
