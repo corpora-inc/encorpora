@@ -1,5 +1,5 @@
 // End-to-end smoke test of the AMP cinema pipeline (python3 -m cinema) on
-// synthetic lavfi clips at quarter resolution: centered cards, ducked mix,
+// synthetic lavfi clips at quarter resolution: centered cards, constant music,
 // four formats, QC receipts, and the pixel-level safe-zone gate.
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -21,7 +21,7 @@ function bassLevel(file, start, seconds) {
   return Number(/mean_volume: (-?[\d.]+) dB/.exec(r.stderr)[1]);
 }
 
-test("renders every format with centered text, ducked music and passing QC", async () => {
+test("renders every format with centered text, unducked music and passing QC", async () => {
   const dir = await mkdtemp(join(tmpdir(), "amp-cinema-"));
   try {
     ff("-f", "lavfi", "-i", "testsrc2=s=640x360:r=24:d=4", "-pix_fmt", "yuv420p", join(dir, "a-wide.mp4"));
@@ -58,10 +58,10 @@ test("renders every format with centered text, ducked music and passing QC", asy
     }
     const cards = JSON.parse(await readFile(join(out, "smoke", "cards", "portrait-cards.json"), "utf8"));
     assert.ok(cards.inkBoxes["portrait-card-0"]);
-    // Ducking: the music band drops while the voice speaks (1.0-2.6 s).
+    // Default mix: the music bed does not drop while the voice speaks (1.0-2.6 s).
     const mix = join(out, "smoke", "mix.m4a");
-    const ducked = bassLevel(mix, 1.4, 1.0), open = bassLevel(mix, 3.1, 0.9);
-    assert.ok(open - ducked >= 4, `music only ${open - ducked} dB lower under the voice`);
+    const underVoice = bassLevel(mix, 1.4, 1.0), open = bassLevel(mix, 3.1, 0.9);
+    assert.ok(open - underVoice < 4, `bed dropped ${open - underVoice} dB under the voice`);
     // Unchanged inputs reuse every artifact; changed encoder settings refuse to overwrite.
     const again = render();
     assert.equal(again.status, 0, again.stderr);
