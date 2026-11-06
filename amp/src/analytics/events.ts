@@ -56,6 +56,9 @@ export const FUNNEL_EVENTS = [
   "buy_click",
   "workbook_click",
   "invite_view",
+  "video_seconds",
+  "first_interaction",
+  "pitch_buy_seen",
 ] as const;
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
 
@@ -111,6 +114,10 @@ export const PLAN_INTERVALS = ["year", "month"] as const;
 export const PITCH_PROGRAMS = ["ar-efa", "az-esa", "nh-efa"] as const;
 /** Quartiles of the pitch video reached, each recorded once per tab. */
 export const VIDEO_QUARTILES = [25, 50, 75, 100] as const;
+/** Early watch marks: the quartiles of a long film are too coarse for the first
+ * seconds, where most viewers decide. */
+export const VIDEO_SECONDS = [3, 10, 20, 30] as const;
+export const INTERACTION_KINDS = ["pointer", "key", "scroll"] as const;
 /** The music mixes of the pitch film. Each browser hears one, for a live test. */
 export const FILM_MIXES = ["a", "b", "c"] as const;
 export type FilmMix = (typeof FILM_MIXES)[number];
@@ -199,6 +206,14 @@ export const funnelPropsSchemas = {
     percent: z.literal(VIDEO_QUARTILES),
     mix: z.enum(FILM_MIXES).optional(),
   }),
+  video_seconds: z.strictObject({
+    seconds: z.literal(VIDEO_SECONDS),
+    mix: z.enum(FILM_MIXES).optional(),
+  }),
+  /** The first real input on the pitch: only its kind, never its contents. */
+  first_interaction: z.strictObject({ kind: z.enum(INTERACTION_KINDS) }),
+  /** The pitch's main Buy control came into view. */
+  pitch_buy_seen: none,
   buy_click: z.strictObject({
     path: z.enum(BUY_PATHS),
     from: z.enum(BUY_PLACES).optional(),

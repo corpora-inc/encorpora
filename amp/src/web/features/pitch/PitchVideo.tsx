@@ -7,6 +7,7 @@ import {
   formatDuration,
   phoneVideoQuery,
   reachedQuartiles,
+  reachedSeconds,
   type PitchVideo as Video,
   type PitchVideoFraming,
 } from "./video";
@@ -31,6 +32,7 @@ export function PitchVideo({ video }: { video: Video }) {
   const label = useId();
   const element = useRef<HTMLVideoElement>(null);
   const reported = useRef(new Set<number>());
+  const reportedSeconds = useRef(new Set<number>());
   const [source, setSource] = useState<string | null>(null);
   const [error, setError] = useState("");
   useLoggedError(error);
@@ -104,6 +106,16 @@ export function PitchVideo({ video }: { video: Video }) {
           onPlay={() => trackOnce("pitch-video-play", "video_play", measured)}
           onTimeUpdate={(event) => {
             const node = event.currentTarget;
+            for (const seconds of reachedSeconds(
+              node.currentTime,
+              reportedSeconds.current,
+            )) {
+              reportedSeconds.current.add(seconds);
+              trackOnce(`pitch-video-${seconds}s`, "video_seconds", {
+                seconds,
+                ...measured,
+              });
+            }
             const total = Number.isFinite(node.duration)
               ? node.duration
               : video.durationSeconds;

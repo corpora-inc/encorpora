@@ -1,4 +1,8 @@
-import { FILM_MIXES, type FilmMix } from "../../../analytics/events";
+import {
+  FILM_MIXES,
+  VIDEO_SECONDS,
+  type FilmMix,
+} from "../../../analytics/events";
 
 /**
  * The pitch video: one typed manifest. Production is the explainer film, in
@@ -164,6 +168,14 @@ export function chooseSource(
 export function formatDuration(seconds: number) {
   const whole = Math.max(0, Math.round(seconds));
   return `${Math.floor(whole / 60)}:${String(whole % 60).padStart(2, "0")}`;
+}
+
+/** Early watch marks reached at this playback time and not yet reported. */
+export function reachedSeconds(
+  seconds: number,
+  reported: ReadonlySet<number>,
+): (3 | 10 | 20 | 30)[] {
+  return VIDEO_SECONDS.filter((mark) => !reported.has(mark) && seconds >= mark);
 }
 
 /** Quartiles reached at this playback fraction and not yet reported. */

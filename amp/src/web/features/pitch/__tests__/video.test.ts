@@ -7,6 +7,7 @@ import {
   pitchFixture,
   pitchVideo,
   reachedQuartiles,
+  reachedSeconds,
 } from "../video";
 
 const sources = [
@@ -32,6 +33,15 @@ test("progress quartiles are reported once each", () => {
   seen.add(25).add(50);
   expect(reachedQuartiles(0.6, seen)).toEqual([]);
   expect(reachedQuartiles(0.995, seen)).toEqual([75, 100]);
+});
+
+test("early watch marks are reported once each", () => {
+  const seen = new Set<number>();
+  expect(reachedSeconds(2.9, seen)).toEqual([]);
+  expect(reachedSeconds(10.2, seen)).toEqual([3, 10]);
+  seen.add(3).add(10);
+  expect(reachedSeconds(12, seen)).toEqual([]);
+  expect(reachedSeconds(31, seen)).toEqual([20, 30]);
 });
 
 test("durations read as minutes and seconds", () => {

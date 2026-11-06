@@ -22,7 +22,7 @@ test("the transport contains the fixed milestones and separate engagement and ma
     Object.keys(funnelPropsSchemas).sort(),
     [...FUNNEL_EVENTS, "page_engagement", "site_action"].sort(),
   );
-  assert.equal(FUNNEL_EVENTS.length, 40);
+  assert.equal(FUNNEL_EVENTS.length, 43);
 });
 
 test("pitch events carry only their fixed choices", () => {
@@ -39,6 +39,10 @@ test("pitch events carry only their fixed choices", () => {
       { event: "workbook_click", at: 7 },
       { event: "buy_click", at: 8, props: { path: "card", from: "chrome" } },
       { event: "invite_view", at: 9, props: { at: "workbook" } },
+      { event: "video_seconds", at: 10, props: { seconds: 3 } },
+      { event: "video_seconds", at: 11, props: { seconds: 30, mix: "c" } },
+      { event: "first_interaction", at: 12, props: { kind: "pointer" } },
+      { event: "pitch_buy_seen", at: 13 },
     ]).success,
   );
   for (const bad of [
@@ -51,6 +55,11 @@ test("pitch events carry only their fixed choices", () => {
     { event: "workbook_click", at: 1, props: { grade: "3" } },
     { event: "buy_click", at: 1, props: { path: "card", from: "email" } },
     { event: "invite_view", at: 1, props: { at: "paywall" } },
+    { event: "video_seconds", at: 1, props: { seconds: 7 } },
+    { event: "video_seconds", at: 1, props: { seconds: 3, mix: "z" } },
+    { event: "first_interaction", at: 1, props: { kind: "typed text" } },
+    { event: "first_interaction", at: 1 },
+    { event: "pitch_buy_seen", at: 1, props: { top: 700 } },
   ])
     assert.equal(batch([bad]).success, false, JSON.stringify(bad));
 });
