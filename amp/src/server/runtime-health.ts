@@ -2,6 +2,7 @@ import { monitorEventLoopDelay, PerformanceObserver } from "node:perf_hooks";
 import type { FastifyBaseLogger, FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import { generateProblem, templates } from "../math/engine.js";
+import { workbookWorker } from "../workbook/off-thread.js";
 import { hintSupport } from "./app.js";
 
 /** A frozen event loop delays every request and can fail the readiness probe. */
@@ -79,7 +80,8 @@ export function registerDatabaseHealth(
 /**
  * Does the work the first parent after a deploy would otherwise wait for, before
  * this process accepts traffic: the public catalog, the glossary lexicon behind
- * every hint, the problem generators, and a database connection. A failure only
+ * every hint, the problem generators, a database connection and the workbook
+ * worker. A failure only
  * costs that speed, so it is logged and startup continues.
  */
 export async function warmServer(
@@ -93,6 +95,7 @@ export async function warmServer(
     for (let index = 0; index < templates.length; index += step)
       hintSupport(generateProblem(templates[index]!.id, `warm-up-${index}`));
     await pool.query("SELECT 1");
+    await workbookWorker(app.log).warm();
     app.log.info(
       { ms: Math.round(performance.now() - started) },
       "server warmed",

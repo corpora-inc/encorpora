@@ -142,3 +142,4 @@ corpan/infra/asset-urls.json
 corpan/infra/codes/seed.local.json
 **/seed.local.json
 amp/src/server/main.mjs
+amp/src/workbook/compute-worker.mjs
