@@ -104,7 +104,8 @@ const fundedOffer = {
   instructions: "Attach the invoice to your request.",
   termMonths: 12,
   // Synthetic: the verifier proves a configured label is shown, not its text.
-  statusLabel: "Fixture status label",
+  // As long as the live labels, so the layout is tested at their length.
+  statusLabel: "Fixture status label, as long as a real one",
   refundPolicy: "full-to-account",
   refundSummary: "Fixture refund terms.",
 };
@@ -308,7 +309,7 @@ async function viewports(browser: Browser, engine: string) {
         if (program)
           assert.equal(
             await page.locator("[data-funding-status]").innerText(),
-            "✓ Fixture status label",
+            "✓ Fixture status label, as long as a real one",
             `${tag}: the configured status label`,
           );
         assert.deepEqual(
@@ -513,6 +514,7 @@ async function fit(browser: Browser, engine: string) {
           buyTerms: "[data-actions] [data-buy-terms]",
           tryFree: "[data-actions] button[class*=tryButton]",
           note: "[data-actions] p[class*=note]",
+          status: "[data-actions] [data-funding-status]",
           guaranteeEnd: "[data-guarantee] > :last-child",
           purchaseEnd: "[data-guarantee] + * > :last-child",
         },
@@ -525,6 +527,11 @@ async function fit(browser: Browser, engine: string) {
       );
       near(box.actions.width, box.hero.width, "actions span the hero");
       if (width >= 481) {
+        if (program)
+          assert.ok(
+            box.status!.height <= 24,
+            `${tag}: the funded status stays on one line (${box.status!.height})`,
+          );
         near(box.buy.top, box.tryFree.top, "Buy and Try on one line");
         near(box.buy.height, box.tryFree.height, "Buy and Try one height");
         near(box.buyTerms!.top, box.note!.top, "fine print on one line");

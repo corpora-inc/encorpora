@@ -194,6 +194,7 @@
   }
   .actions .cardInstead {
     grid-area: card;
+    align-self: start;
   }
   .actions .priceError {
     grid-area: error;
@@ -205,6 +206,17 @@
   }
   .actions .note {
     grid-area: note;
+  }
+}
+/* A funded program's status stays on one line, so it takes the full width
+   until half the width is enough. */
+@media (min-width: 481px) and (max-width: 699.98px) {
+  .actions[data-actions="funded"] {
+    grid-template-areas:
+      "buy try"
+      "buyterms note"
+      "trust trust"
+      "card card";
   }
 }
 /* Tablets: the headline and the lede share a row above the full-width film. */
@@ -260,11 +272,8 @@
   .hero.withFilm .actions[data-actions="funded"] {
     grid-template-areas:
       "buy buy buy . try"
-      "buyterms . trust . note"
-      "buyterms . card . note";
-  }
-  .hero.withFilm .actions .trust {
-    align-self: start;
+      "buyterms . card . note"
+      "trust . card . note";
   }
   .hero.withFilm .actions[data-actions="error"] {
     grid-template-areas:
