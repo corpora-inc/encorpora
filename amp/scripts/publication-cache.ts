@@ -66,6 +66,51 @@ export function installedPackages(): string {
   }
 }
 
+/**
+ * The Dockerfile text PDF rendering can depend on: what precedes the first FROM,
+ * and `target` with every stage it reaches through FROM, COPY --from or a mount.
+ * Other stages (the API, web and render images) can't change a PDF, so editing
+ * them keeps the cache. Comments are ignored. A file with no `target` stage is
+ * returned whole, so an unexpected shape misses the cache instead of reusing it.
+ */
+export function renderStages(dockerfile: string, target = "pdf-build") {
+  const lines = dockerfile.split("\n").filter((line) => !/^\s*#/.test(line));
+  const stages = new Map<string, string>();
+  let preamble = "";
+  let current: string[] | null = null;
+  const close = (name: string | undefined, body: string[]) => {
+    if (name) stages.set(name, body.join("\n"));
+    else preamble = body.join("\n");
+  };
+  let name: string | undefined;
+  for (const line of lines) {
+    const from = /^\s*FROM\s+\S+(?:\s+AS\s+([\w.-]+))?/i.exec(line);
+    if (from) {
+      close(name, current ?? []);
+      name = from[1] ?? `(unnamed ${stages.size})`;
+      current = [];
+    }
+    (current ??= []).push(line);
+  }
+  close(name, current ?? []);
+  if (!stages.has(target)) return dockerfile;
+  const included = new Set([target]);
+  const scan = [preamble, stages.get(target)!];
+  while (scan.length) {
+    for (const token of scan.pop()!.split(/[^\w.-]+/))
+      if (stages.has(token) && !included.has(token)) {
+        included.add(token);
+        scan.push(stages.get(token)!);
+      }
+  }
+  return [
+    preamble,
+    ...[...stages]
+      .filter(([stage]) => included.has(stage))
+      .map(([, body]) => body),
+  ].join("\n");
+}
+
 /** Everything besides the HTML that can change a PDF's bytes. */
 export async function rendererFingerprint(
   root: string,
@@ -81,7 +126,11 @@ export async function rendererFingerprint(
     `${process.platform}/${process.arch}/${process.version}\0${packages}\0`,
   );
   for (const file of files) {
-    const bytes = await readFile(join(root, file)).catch(() => null);
+    const raw = await readFile(join(root, file)).catch(() => null);
+    const bytes =
+      raw && file === "Dockerfile"
+        ? Buffer.from(renderStages(raw.toString("utf8")))
+        : raw;
     hash.update(`${file}\0${bytes?.length ?? -1}\0`);
     if (bytes) hash.update(bytes);
   }
