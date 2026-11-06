@@ -5,8 +5,10 @@ import {
   browserFilmMix,
   chooseSource,
   formatDuration,
+  phoneVideoQuery,
   reachedQuartiles,
   type PitchVideo as Video,
+  type PitchVideoFraming,
 } from "./video";
 import styles from "./Pitch.module.css";
 
@@ -22,7 +24,8 @@ function localStorageOrNull() {
  * The pitch video in a box reserved at the media's aspect ratio, so nothing
  * moves when the poster, the movie or an error arrives. The poster is a
  * button: one tap plays with sound, with its captions on. Native controls take over
- * once it plays. Nothing but the poster loads before that tap.
+ * once it plays. Nothing but the poster loads before that tap. A phone gets the
+ * phone framing; the framing follows the screen until the tap, then stays.
  */
 export function PitchVideo({ video }: { video: Video }) {
   const label = useId();
@@ -36,11 +39,24 @@ export function PitchVideo({ video }: { video: Video }) {
   );
   const measured = mix ? { mix } : {};
   const duration = formatDuration(video.durationSeconds);
+  const hasPhone = !!video.phone;
+  const [onPhone, setOnPhone] = useState(
+    () => hasPhone && matchMedia(phoneVideoQuery).matches,
+  );
+  useEffect(() => {
+    if (!hasPhone) return;
+    const media = matchMedia(phoneVideoQuery);
+    const update = () => setOnPhone(media.matches);
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, [hasPhone]);
+  const [held, setHeld] = useState<PitchVideoFraming | null>(null);
+  const framing = held ?? (onPhone ? video.phone : undefined) ?? video;
 
   function start() {
     const box = element.current?.parentElement?.getBoundingClientRect();
     const chosen = chooseSource(
-      (mix && video.mixes?.[mix]) || video.sources,
+      (mix && framing.mixes?.[mix]) || framing.sources,
       Math.ceil((box?.width ?? 640) * (window.devicePixelRatio || 1)),
       (type) => !!element.current?.canPlayType(type),
     );
@@ -49,6 +65,7 @@ export function PitchVideo({ video }: { video: Video }) {
       return;
     }
     setError("");
+    setHeld(framing);
     setSource(chosen.url);
   }
   // The source is set by the tap, so play() runs inside its user activation.
@@ -71,7 +88,7 @@ export function PitchVideo({ video }: { video: Video }) {
     <figure className={styles.video} aria-labelledby={label}>
       <div
         className={styles.stage}
-        style={{ aspectRatio: String(video.aspect) }}
+        style={{ aspectRatio: String(framing.aspect) }}
       >
         <video
           ref={element}
@@ -80,7 +97,7 @@ export function PitchVideo({ video }: { video: Video }) {
           playsInline
           preload="none"
           crossOrigin="anonymous"
-          poster={video.poster.url}
+          poster={framing.poster.url}
           src={source ?? undefined}
           aria-labelledby={label}
           tabIndex={source ? 0 : -1}
