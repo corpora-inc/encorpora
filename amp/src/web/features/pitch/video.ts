@@ -13,32 +13,45 @@ export type PitchVideoSource = {
   /** Encoded frame width in pixels. */
   width: number;
 };
-export type PitchVideo = {
-  title: string;
+/** One framing of the video: its box, poster and files. */
+export type PitchVideoFraming = {
   /** Width over height of every source and the poster. */
   aspect: number;
-  durationSeconds: number;
   poster: { url: string; alt: string };
-  /** Absent when the words are part of the picture, as in the film. */
-  captions?: { url: string; language: string; label: string };
   sources: readonly PitchVideoSource[];
   /** The same picture in several mixes: a browser plays one mix's sources. */
   mixes?: Readonly<Record<FilmMix, readonly PitchVideoSource[]>>;
 };
+export type PitchVideo = PitchVideoFraming & {
+  title: string;
+  durationSeconds: number;
+  /** Absent when the words are part of the picture, as in the film. */
+  captions?: { url: string; language: string; label: string };
+  /** The same film recomposed for a phone. */
+  phone?: PitchVideoFraming;
+};
+/** Screens that get the phone framing: the practice screen's phone width. */
+export const phoneVideoQuery = "(max-width: 650px)";
 
 const filmRoot = "https://d38iwc9748jekz.cloudfront.net/amp/pitch/explainer/v1";
-const filmSources = (mix: FilmMix): readonly PitchVideoSource[] =>
-  (
-    [
-      [854, "avc1.64001F"],
-      [1280, "avc1.640028"],
-      [1920, "avc1.640032"],
-    ] as const
-  ).map(([width, codec]) => ({
-    url: `${filmRoot}/amp-explainer-${width}-${mix}.mp4`,
-    type: `video/mp4; codecs="${codec}, mp4a.40.2"`,
-    width,
-  }));
+const filmSources =
+  (name: string, ladder: readonly (readonly [number, string])[]) =>
+  (mix: FilmMix): readonly PitchVideoSource[] =>
+    ladder.map(([width, codec]) => ({
+      url: `${filmRoot}/${name}-${width}-${mix}.mp4`,
+      type: `video/mp4; codecs="${codec}, mp4a.40.2"`,
+      width,
+    }));
+const wideSources = filmSources("amp-explainer", [
+  [854, "avc1.64001F"],
+  [1280, "avc1.640028"],
+  [1920, "avc1.640032"],
+]);
+const squareSources = filmSources("amp-explainer-square", [
+  [540, "avc1.64001F"],
+  [720, "avc1.64001F"],
+  [1080, "avc1.640028"],
+]);
 export const pitchFilm: PitchVideo = {
   title: "How AMP works",
   aspect: 16 / 9,
@@ -47,8 +60,21 @@ export const pitchFilm: PitchVideo = {
     url: `${filmRoot}/amp-explainer-poster.jpg`,
     alt: "A workbook made for a learner named Nora, on a pile of different workbooks",
   },
-  sources: filmSources("a"),
-  mixes: { a: filmSources("a"), b: filmSources("b"), c: filmSources("c") },
+  sources: wideSources("a"),
+  mixes: { a: wideSources("a"), b: wideSources("b"), c: wideSources("c") },
+  phone: {
+    aspect: 1,
+    poster: {
+      url: `${filmRoot}/amp-explainer-square-poster.jpg`,
+      alt: "A workbook made for a learner named Nora, on a pile of different workbooks",
+    },
+    sources: squareSources("a"),
+    mixes: {
+      a: squareSources("a"),
+      b: squareSources("b"),
+      c: squareSources("c"),
+    },
+  },
 };
 
 const fixtureRoot = "/__amp-fixtures/pitch";
