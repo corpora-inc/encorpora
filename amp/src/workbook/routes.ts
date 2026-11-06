@@ -16,7 +16,6 @@ import { trialWorkbookAllowance } from "../learning/trial-workbooks.js";
 import { strandEstimate, type Frontier } from "../learning/frontier.js";
 import { templateGrade } from "../server/mixed-practice.js";
 import {
-  composeWorkbook,
   printable,
   specChoices,
   WORKBOOK_HISTORY,
@@ -32,7 +31,8 @@ import {
   type WorkbookRecord,
   type WorkbookSummary,
 } from "./contracts.js";
-import { workbookFooter, workbookHtml } from "./render.js";
+import { workbookWorker } from "./off-thread.js";
+import { workbookFooter } from "./render.js";
 import { PaperEntryError, recordPaperResults, resultRows } from "./results.js";
 import { RendererUnavailable, type WorkbookRenderer } from "./pdf.js";
 
@@ -160,10 +160,7 @@ async function compose(
     ...input.choices,
     areas: input.choices.areas.filter((a) => offered.has(a)),
   };
-  return composeWorkbook({
-    templates,
-    skills,
-    lessons,
+  return workbookWorker().compose({
     frontier,
     evidence: await tx.skillEvidence(),
     recentTemplateIds: recent.map((a) => a.templateId),
@@ -486,9 +483,8 @@ export function registerWorkbookRoutes(
       );
       if (!workbookIsCurrent(record.spec))
         throw new ApiError(410, staleWorkbook);
-      const html = workbookHtml(record.spec, {
-        lessons,
-        skillTitle,
+      const html = await workbookWorker(app.log).html({
+        spec: record.spec,
         learnerName,
         paper: paper ?? record.paper,
         results: trial ? undefined : results(record, learnerId),
@@ -527,9 +523,8 @@ export function registerWorkbookRoutes(
             throw new ApiError(410, staleWorkbook);
           const format =
             query.format ?? (record.paper === "a4" ? "A4" : "Letter");
-          const html = workbookHtml(record.spec, {
-            lessons,
-            skillTitle,
+          const html = await workbookWorker(app.log).html({
+            spec: record.spec,
             learnerName,
             paper: format === "A4" ? "a4" : "letter",
             results: trial ? undefined : results(record, learnerId),
