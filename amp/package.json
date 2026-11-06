@@ -41,6 +41,7 @@
     "test:contrast": "tsx scripts/verify-contrast.ts --strict",
     "build": "npm run lint:controls && npm run tsc && vite build && npm run build:public-pathways",
     "build:public-pathways": "tsx scripts/build-public-pathways.ts && tsx scripts/build-site-icons.ts && tsx scripts/build-home-document.ts",
+    "build:server": "esbuild src/server/main.ts --bundle --platform=node --format=esm --target=node22 --packages=external --outfile=src/server/main.mjs --log-level=warning",
     "audit": "tsx scripts/audit.ts",
     "publications": "tsx scripts/publications.ts",
     "commerce:import": "tsx scripts/commerce-event.ts",

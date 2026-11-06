@@ -4,6 +4,7 @@ import type { SiteConfig } from "./config.js";
 import { Page, routesFor } from "./pages.js";
 import { build as bundle } from "esbuild";
 import { product } from "./product.js";
+import { writeIcons } from "./icons.js";
 import { parseTokens, renderCard } from "./social-card.js";
 export async function buildSite(config: SiteConfig, output: string = "dist") {
   const routes = routesFor(config);
@@ -29,10 +30,7 @@ export async function buildSite(config: SiteConfig, output: string = "dist") {
     `${output}/assets/print.js`,
     'document.querySelector("[data-print]")?.addEventListener("click",()=>window.print());\n',
   );
-  await writeFile(
-    `${output}/favicon.svg`,
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#1f5f55"/><path d="M43 21a17 17 0 1 0 0 22" fill="none" stroke="#fffefa" stroke-width="7"/><circle cx="48" cy="48" r="4" fill="#fffefa"/></svg>',
-  );
+  await writeIcons(output, config);
   await cp("src/invoice-client.js", `${output}/assets/invoice.js`);
   await bundle({entryPoints:["src/engagement-client.ts"],bundle:true,format:"iife",platform:"browser",target:"es2022",minify:true,outfile:`${output}/assets/engagement.js`});
   await cp("src/campaign-client.js", `${output}/assets/campaign.js`);

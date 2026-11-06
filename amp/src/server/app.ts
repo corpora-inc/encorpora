@@ -81,6 +81,7 @@ import {
   sendPublicJson,
   type PublicJson,
 } from "./public-content-cache";
+import { logSlowRequests } from "./slow-requests.js";
 const idSchema = z.string().uuid();
 const paramsSchema = z.object({ learnerId: idSchema });
 const birthYearSchema = z.number().int().min(1900).max(2100);
@@ -177,6 +178,7 @@ export function buildApp(options: AppOptions) {
   });
   // Apply this before the rate limiter so even an early 429 cannot be cached.
   // Only the two successful public-content routes override it.
+  logSlowRequests(app);
   app.addHook("onRequest", async (_request, reply) => {
     reply.header("Cache-Control", "no-store");
     reply.header("X-Content-Type-Options", "nosniff");

@@ -31,13 +31,13 @@ test("invalid database budgets fail closed without echoing configuration", () =>
     });
 });
 
-test("hosted API and production jobs default to 3 unless explicitly configured", () => {
+test("hosted API and production jobs default to 6 unless explicitly configured", () => {
   for (const env of [
     { NODE_ENV: "production" },
     { AMP_AUTH_MODE: "accounts" },
     { AMP_AUTH_MODE: "oidc" },
   ]) {
-    assert.equal(databasePoolMax(env), 3);
+    assert.equal(databasePoolMax(env), 6);
     assert.equal(databasePoolMax({ ...env, AMP_DATABASE_POOL_MAX: "2" }), 2);
     assert.equal(databasePoolMax({ ...env, AMP_DATABASE_POOL_MAX: "8" }), 8);
     assert.throws(() => databasePoolMax({ ...env, AMP_DATABASE_POOL_MAX: "" }));
