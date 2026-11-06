@@ -30,8 +30,10 @@ export type PitchVideo = PitchVideoFraming & {
   /** The same film recomposed for a phone. */
   phone?: PitchVideoFraming;
 };
-/** Screens that get the phone framing: the practice screen's phone width. */
-export const phoneVideoQuery = "(max-width: 650px)";
+/** Screens that get the phone framing. Wider than this, the square film would
+ * fill the whole screen, so the wide film plays. Matches the pitch's first
+ * layout step in `Pitch.module.css`. */
+export const phoneVideoQuery = "(max-width: 480px)";
 
 const filmRoot = "https://d38iwc9748jekz.cloudfront.net/amp/pitch/explainer/v1";
 const filmSources =

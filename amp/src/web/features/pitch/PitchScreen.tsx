@@ -80,6 +80,14 @@ export function PitchScreen() {
       Try it free
     </Button>
   );
+  // Which buy layout the hero's actions take; `BuyOptions` decides the same way.
+  const offered = data.failed
+    ? "error"
+    : funded
+      ? "funded"
+      : offers.length > 0
+        ? "card"
+        : "free";
   const buy = (variant: "full" | "button") =>
     data.failed ? null : (
       <BuyOptions
@@ -128,7 +136,7 @@ export function PitchScreen() {
               <PitchVideo video={pitchVideo} />
             </div>
           )}
-          <div className={styles.actions}>
+          <div className={styles.actions} data-actions={offered}>
             {data.failed ? (
               <div className={styles.priceError} role="alert">
                 <p>Prices didn’t load. Check your connection and try again.</p>
@@ -186,66 +194,71 @@ export function PitchScreen() {
             <li>Progress you can see on phone, tablet and computer</li>
           </ul>
         </section>
-        {(annual || monthly || funded) && (
-          <section className={styles.details} aria-labelledby="pitch-price">
-            <h2 id="pitch-price">Price</h2>
-            {(annual || monthly) && (
-              <p className={styles.priceLine}>
-                {annual && (
-                  <>
-                    <strong>{formatPrice(annual.amountMinor)} a year</strong>,
-                    under {underPerDay(annual.amountMinor)} a day.
-                  </>
-                )}
-                {annual && monthly && " "}
-                {monthly &&
-                  (annual ? (
+        <div className={styles.offer} data-offer={offered}>
+          {(annual || monthly || funded) && (
+            <section
+              className={`${styles.details} ${styles.price}`}
+              aria-labelledby="pitch-price"
+            >
+              <h2 id="pitch-price">Price</h2>
+              {(annual || monthly) && (
+                <p className={styles.priceLine}>
+                  {annual && (
                     <>
-                      Or <strong>{formatPrice(monthly.amountMinor)}</strong> a
-                      month.
+                      <strong>{formatPrice(annual.amountMinor)} a year</strong>,
+                      under {underPerDay(annual.amountMinor)} a day.
                     </>
-                  ) : (
-                    <>
-                      <strong>
-                        {formatPrice(monthly.amountMinor)} a month
-                      </strong>
-                      .
-                    </>
-                  ))}
+                  )}
+                  {annual && monthly && " "}
+                  {monthly &&
+                    (annual ? (
+                      <>
+                        Or <strong>{formatPrice(monthly.amountMinor)}</strong> a
+                        month.
+                      </>
+                    ) : (
+                      <>
+                        <strong>
+                          {formatPrice(monthly.amountMinor)} a month
+                        </strong>
+                        .
+                      </>
+                    ))}
+                </p>
+              )}
+              {funded && (
+                <p className={styles.priceLine}>
+                  {funded.program.name}:{" "}
+                  <strong>{formatPrice(funded.fundedOffer.totalMinor)}</strong>{" "}
+                  for {funded.fundedOffer.termMonths ?? 12} months, paid from
+                  your {funded.program.fund} balance.
+                </p>
+              )}
+            </section>
+          )}
+          {guaranteed && (
+            <section
+              className={`${styles.details} ${styles.guarantee}`}
+              aria-labelledby="pitch-guarantee"
+              data-guarantee=""
+            >
+              <h2 id="pitch-guarantee">Give it 30 days.</h2>
+              <p>
+                You’ll be amazed how far your child can go. If AMP isn’t right
+                for your child, tell us within 30 days and we’ll refund {amount}
+                . No questions asked.*{" "}
+                <a href={REFUND_POLICY_URL} className={styles.inlineLink}>
+                  Refund policy
+                </a>
               </p>
-            )}
-            {funded && (
-              <p className={styles.priceLine}>
-                {funded.program.name}:{" "}
-                <strong>{formatPrice(funded.fundedOffer.totalMinor)}</strong>{" "}
-                for {funded.fundedOffer.termMonths ?? 12} months, paid from your{" "}
-                {funded.program.fund} balance.
-              </p>
-            )}
+              <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>
+            </section>
+          )}
+          <section className={styles.closing} aria-label="Get started">
+            {buy("button")}
+            {tryFree}
           </section>
-        )}
-        {guaranteed && (
-          <section
-            className={`${styles.details} ${styles.guarantee}`}
-            aria-labelledby="pitch-guarantee"
-            data-guarantee=""
-          >
-            <h2 id="pitch-guarantee">Give it 30 days.</h2>
-            <p>
-              You’ll be amazed how far your child can go. If AMP isn’t right for
-              your child, tell us within 30 days and we’ll refund {amount}. No
-              questions asked.*{" "}
-              <a href={REFUND_POLICY_URL} className={styles.inlineLink}>
-                Refund policy
-              </a>
-            </p>
-            <p className={styles.footnote}>{GUARANTEE_FOOTNOTE}</p>
-          </section>
-        )}
-        <section className={styles.closing} aria-label="Get started">
-          {buy("button")}
-          {tryFree}
-        </section>
+        </div>
       </main>
       <footer className={styles.footer}>
         <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
