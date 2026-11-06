@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
 import { buttonClass } from "./Button";
 import { AppError } from "../lib/AppError";
+import { WAVE_PATH } from "./Loading";
 
 // Reuse the bootstrap animation's document-timeline start time. Every React
 // instance then joins the running wave instead of restarting it on navigation.
@@ -9,6 +10,15 @@ const waveStart =
     ? 0
     : (document.querySelector(".app-loading-wave")?.getAnimations?.()[0]
         ?.startTime ?? 0);
+
+let arrivalTimer: ReturnType<typeof setTimeout> | undefined;
+/** The wave just left: what replaces it fades in, once (`ui/loading.css`). */
+function markArrival() {
+  const root = document.documentElement;
+  root.setAttribute("data-arriving", "");
+  clearTimeout(arrivalTimer);
+  arrivalTimer = setTimeout(() => root.removeAttribute("data-arriving"), 320);
+}
 
 /**
  * Match the centered first paint in index.html while the destination resolves.
@@ -20,11 +30,14 @@ export function LoadingScreen({
   retry,
   busy = false,
   recovery,
+  overlay = false,
 }: {
   error?: string;
   retry?: () => void;
   busy?: boolean;
   recovery?: ReactNode;
+  /** Over a frame that has already painted, keeping its surface. */
+  overlay?: boolean;
 }) {
   const wave = useRef<SVGPathElement>(null);
   useLayoutEffect(() => {
@@ -36,11 +49,14 @@ export function LoadingScreen({
     sync();
     const motion = matchMedia("(prefers-reduced-motion: no-preference)");
     motion.addEventListener("change", sync);
-    return () => motion.removeEventListener("change", sync);
+    return () => {
+      motion.removeEventListener("change", sync);
+      markArrival();
+    };
   }, [error]);
   return (
     <div
-      className="app-loading"
+      className={`app-loading ${overlay ? "app-loading-overlay" : ""}`}
       role={error ? undefined : "status"}
       aria-label={error ? undefined : "Loading AMP"}
       aria-busy={!error}
@@ -51,11 +67,7 @@ export function LoadingScreen({
           viewBox="0 0 44 28"
           aria-hidden="true"
         >
-          <path
-            ref={wave}
-            className="app-loading-wave"
-            d="M-23 14C-19 0-15 0-11 14S-3 28 1 14S9 0 13 14S21 28 25 14S33 0 37 14S45 28 49 14S57 0 61 14S69 28 73 14"
-          />
+          <path ref={wave} className="app-loading-wave" d={WAVE_PATH} />
         </svg>
         {error && (
           <main className="app-loading-body">

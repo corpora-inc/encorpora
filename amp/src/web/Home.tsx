@@ -41,7 +41,12 @@ export function Home(props: Props) {
           <h1>{props.name}</h1>
           {shown && <HomeLevel frontier={f} />}
         </div>
-        <button className="go-button" disabled={props.busy} onClick={props.go}>
+        <button
+          className="go-button"
+          disabled={props.busy}
+          aria-busy={props.busy}
+          onClick={props.go}
+        >
           {props.resuming ? "Continue" : "Go"}
         </button>
       </section>

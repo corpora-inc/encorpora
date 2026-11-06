@@ -18,6 +18,7 @@ import type {
 } from "../family/contracts.js";
 import "./family-center.css";
 import { nativeRuntime } from "./native-runtime";
+import { Loading } from "./ui/Loading";
 interface Props {
   token: string;
   onSectionChange?: (section: FamilySection) => void;
@@ -497,7 +498,7 @@ export function FamilyCenter({
         )}
         {!family ? (
           <div aria-busy="true">
-            <p>Loading family details…</p>
+            <Loading>Loading family details…</Loading>
             {error && (
               <button onClick={() => void action(refresh)}>Try again</button>
             )}

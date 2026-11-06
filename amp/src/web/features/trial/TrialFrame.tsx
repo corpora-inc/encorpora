@@ -29,7 +29,7 @@ export function TrialSkeleton({
         aria-label="Loading free practice"
       >
         {centered && <FrameBrand expanded />}
-        <div className={styles.skeleton}>
+        <div className={`${styles.skeleton} amp-skeleton`}>
           <span style={{ width: "40%", height: 14 }} />
           <span style={{ width: "75%", height: 34 }} />
           <span style={{ height: wide ? 260 : 220 }} />

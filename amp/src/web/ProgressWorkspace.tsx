@@ -15,6 +15,7 @@ import type { TemplateMetadata } from "../math/contracts";
 import type { Lesson } from "../content/lessons";
 import type { BookSummary } from "../books/catalog";
 import "./progress-workspace.css";
+import { Wave } from "./ui/Loading";
 
 export type ProgressView = {
   filter: "practiced" | "review" | "explore";
@@ -469,7 +470,7 @@ export function ProgressWorkspace({
               {!snapshot ? (
                 <div className="progress-empty">
                   <div className="progress-path" aria-hidden="true">
-                    · · ·
+                    {loading ? <Wave /> : "· · ·"}
                   </div>
                   <h2>
                     {loading

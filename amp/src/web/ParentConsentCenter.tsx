@@ -8,6 +8,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import type { ConsentView } from "../parent-consent/contracts.js";
 import type { ConsentChallenge } from "./consent-link.js";
 import "./parent-consent.css";
+import { Loading } from "./ui/Loading";
 export function ParentConsentCenter({
   token,
   identity,
@@ -226,7 +227,7 @@ export function ParentConsentCenter({
             </button>
           </div>
         )}
-        {!view && !error && <p role="status">Loading privacy details…</p>}
+        {!view && !error && <Loading>Loading privacy details…</Loading>}
         {view && !view.available && !view.consentActive && (
           <>
             <h2>Enrollment is unavailable</h2>

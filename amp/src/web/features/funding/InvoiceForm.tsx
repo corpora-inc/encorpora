@@ -191,7 +191,12 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                     ? offer.refundSummary
                     : `Paid through ${program.name}, so its refund rules apply.`}
               </p>
-              <Button type="submit" variant="primary" disabled={busy}>
+              <Button
+                type="submit"
+                variant="primary"
+                disabled={busy}
+                aria-busy={busy}
+              >
                 {busy ? "Preparing invoice…" : "Create invoice PDF"}
               </Button>
               <p className={styles.feedback} role="alert">

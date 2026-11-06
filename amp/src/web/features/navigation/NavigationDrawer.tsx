@@ -8,6 +8,7 @@ import {
 } from "react";
 import { NavigationSheet } from "../../ui/NavigationSheet";
 import { nativeRuntime } from "../../native-runtime";
+import { Loading } from "../../ui/Loading";
 const DrawerContents = lazy(() => import("./DrawerContents"));
 
 /** The trigger stays light; account/progress data loads when the drawer opens. */
@@ -23,7 +24,7 @@ export function NavigationDrawer({
   return (
     <NavigationSheet open={open} onOpenChange={setOpen} triggerRef={triggerRef}>
       <MenuRecovery>
-        <Suspense fallback={<p role="status">Loading your menu…</p>}>
+        <Suspense fallback={<Loading>Loading your menu…</Loading>}>
           <DrawerContents
             close={() => setOpen(false)}
             practiceControls={practiceControls?.(() => setOpen(false))}

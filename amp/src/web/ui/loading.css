@@ -1,0 +1,195 @@
+/* Every wait on the server looks alive, and looks the same.
+   - A whole screen: the first-paint wave (`LoadingScreen`).
+   - Inside a screen: the small wave beside its label (`Loading`).
+   - A pressed button: `aria-busy` swaps its label for the moving wave.
+   - A reserved block: `amp-skeleton` gives its children a soft moving shine.
+   Each one waits a moment before showing, so a fast response flashes nothing,
+   and each holds its space, so nothing moves. Reduced motion keeps the shapes
+   and drops the movement. */
+.amp-wave {
+  flex: none;
+  width: 36px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  overflow: hidden;
+  mask-image: var(--wave-edge);
+}
+.amp-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  color: var(--color-muted-text);
+  font-size: var(--text-label);
+  line-height: 1.45;
+}
+.amp-loading-inline {
+  display: inline-flex;
+  gap: var(--space-2);
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+}
+.amp-loading-inline .amp-wave {
+  width: 28px;
+  height: 18px;
+}
+
+/* Full screen over a frame: the first-paint wave, in the same place, on
+   whatever surface the frame already painted. */
+.app-loading.app-loading-overlay {
+  position: fixed;
+  inset: 0;
+  min-height: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+/* A pressed button keeps its size and its color; the wave takes the label's
+   place. The text stays for assistive technology. */
+:where(button[aria-busy="true"], a[aria-busy="true"]) {
+  position: relative;
+}
+button[aria-busy="true"],
+a[aria-busy="true"] {
+  cursor: progress;
+  -webkit-text-fill-color: transparent;
+  transition: -webkit-text-fill-color 80ms linear 140ms;
+}
+button[aria-busy="true"]:disabled {
+  opacity: 1;
+}
+button[aria-busy="true"] > *,
+a[aria-busy="true"] > * {
+  opacity: 0;
+  transition: opacity 80ms linear 140ms;
+}
+button[aria-busy="true"]::after,
+a[aria-busy="true"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 56px;
+  max-width: 80%;
+  height: 12px;
+  margin: auto;
+  background: currentColor;
+  -webkit-text-fill-color: currentColor;
+  -webkit-mask-image: var(--wave-mask), var(--wave-edge);
+  mask-image: var(--wave-mask), var(--wave-edge);
+  -webkit-mask-size:
+    24px 12px,
+    100% 100%;
+  mask-size:
+    24px 12px,
+    100% 100%;
+  -webkit-mask-repeat: repeat-x, no-repeat;
+  mask-repeat: repeat-x, no-repeat;
+  -webkit-mask-position:
+    0 50%,
+    0 0;
+  mask-position:
+    0 50%,
+    0 0;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  animation: amp-appear 120ms linear 140ms both;
+}
+/* A submit control greys out when it has nothing to send; while it is sending
+   it stays the live action. */
+.choice-submit[aria-busy="true"]:disabled,
+.answer-action[aria-busy="true"]:disabled {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.amp-skeleton.amp-skeleton > span,
+.security-loading .security-panel,
+.frontier-map[aria-busy="true"] .frontier-track {
+  background-image: linear-gradient(
+    100deg,
+    transparent 30%,
+    var(--skeleton-shine) 50%,
+    transparent 70%
+  );
+  background-repeat: no-repeat;
+  background-size: 250% 100%;
+}
+.amp-skeleton.amp-skeleton > span {
+  --skeleton-shine: color-mix(
+    in srgb,
+    var(--color-surface-raised) 72%,
+    transparent
+  );
+  background-color: var(--color-surface-sunken);
+}
+.security-loading .security-panel {
+  --skeleton-shine: var(--color-surface-sunken);
+}
+.frontier-map[aria-busy="true"] .frontier-track {
+  --skeleton-shine: var(--color-surface-raised);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .amp-wave path {
+    animation: amp-loading-wave 1.8s linear infinite;
+  }
+  .amp-loading {
+    animation: amp-appear 200ms ease-out 160ms both;
+  }
+  button[aria-busy="true"]::after,
+  a[aria-busy="true"]::after {
+    animation:
+      amp-appear 120ms linear 140ms both,
+      amp-wave-flow 1.1s linear infinite;
+  }
+  .amp-skeleton.amp-skeleton > span,
+  .security-loading .security-panel,
+  .frontier-map[aria-busy="true"] .frontier-track {
+    animation: amp-shine 1.7s ease-in-out infinite;
+  }
+  .amp-skeleton.amp-skeleton > span:nth-child(2),
+  .security-loading .security-panel:nth-child(2) {
+    animation-delay: 90ms;
+  }
+  .amp-skeleton.amp-skeleton > span:nth-child(3),
+  .security-loading .security-panel:nth-child(3) {
+    animation-delay: 180ms;
+  }
+  .amp-skeleton.amp-skeleton > span:nth-child(4),
+  .security-loading .security-panel:nth-child(4) {
+    animation-delay: 270ms;
+  }
+  /* What was being fetched arrives softly as the full-screen wave leaves.
+     While another wave is still up, there is nothing to arrive yet. */
+  html[data-arriving] #root:not(:has(.app-loading[aria-busy="true"])) {
+    animation: amp-appear 260ms ease-out both;
+  }
+}
+@keyframes amp-appear {
+  from {
+    opacity: 0;
+  }
+}
+/* One full wavelength per loop, so its endpoints join without a jump. */
+@keyframes amp-wave-flow {
+  to {
+    -webkit-mask-position:
+      -24px 50%,
+      0 0;
+    mask-position:
+      -24px 50%,
+      0 0;
+  }
+}
+@keyframes amp-shine {
+  from {
+    background-position: 130% 0;
+  }
+  to {
+    background-position: -30% 0;
+  }
+}

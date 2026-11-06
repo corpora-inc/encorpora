@@ -8,6 +8,7 @@ import { ProblemLesson } from "../../ProblemLesson";
 import "../../practice.css";
 import "../../scene/scene-player.css";
 import "katex/dist/katex.min.css";
+import { Loading } from "../../ui/Loading";
 export default function SkillLesson({
   templateId,
   onBack,
@@ -40,7 +41,7 @@ export default function SkillLesson({
     return (
       <LessonFailure onBack={onBack} retry={() => void lesson.refetch()} />
     );
-  if (!lesson.data) return <p role="status">Loading lesson…</p>;
+  if (!lesson.data) return <Loading>Loading lesson…</Loading>;
   return (
     <>
       <h2>{lesson.data.lesson.title}</h2>

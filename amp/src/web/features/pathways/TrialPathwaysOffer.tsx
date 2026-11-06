@@ -13,6 +13,7 @@ import {
 } from "./model";
 import styles from "./TrialPathwaysOffer.module.css";
 import { storedTrial } from "../../lib/pending-trial";
+import { Loading } from "../../ui/Loading";
 
 const empty: Evidence[] = [];
 /** A read-only view of the saved device trial. Account learner selection never enters it. */
@@ -57,13 +58,15 @@ export function TrialPathwaysOffer({
         <div className={styles.caption}>
           <span className={styles.kicker}>Your pathways</span>
           <strong>
-            {loading
-              ? "Loading your map…"
-              : failed
-                ? "Your map is unavailable"
-                : lit
-                  ? `${lit} ${lit === 1 ? "skill" : "skills"} illuminated`
-                  : "Room to explore"}
+            {loading ? (
+              <Loading inline>Loading your map…</Loading>
+            ) : failed ? (
+              "Your map is unavailable"
+            ) : lit ? (
+              `${lit} ${lit === 1 ? "skill" : "skills"} illuminated`
+            ) : (
+              "Room to explore"
+            )}
           </strong>
           <span>
             {failed

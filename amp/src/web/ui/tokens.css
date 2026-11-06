@@ -338,6 +338,15 @@
   --space-4: 16px;
   --space-5: 24px;
   --space-6: 32px;
+  /* One seamless wavelength of the AMP wave, for a wait inside a control. */
+  --wave-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cpath d='M0 6C4 .67 8 .67 12 6S20 11.33 24 6' fill='none' stroke='%23000' stroke-width='1.8'/%3E%3C/svg%3E");
+  --wave-edge: linear-gradient(
+    90deg,
+    transparent,
+    #000 14%,
+    #000 86%,
+    transparent
+  );
   --radius-control: 12px;
   --radius-panel: 20px;
   --target-size: 48px;

@@ -14,6 +14,7 @@ import { PlanOptions } from "./PlanOptions";
 import { paymentUrl } from "./features/billing/payment-url";
 import { FocusDialog } from "./PracticeWorkspace";
 import { analyticsVisitorHeaders } from "./lib/analytics";
+import { Loading } from "./ui/Loading";
 export interface AnnualPurchaseProps {
   token: string;
   preferredInterval?: "year" | "month";
@@ -470,7 +471,7 @@ function PurchasePanel({
               <p>Return to Family to create a learner.</p>
             </>
           ) : (
-            <p role="status">Loading payment plans…</p>
+            <Loading>Loading payment plans…</Loading>
           )}
           {offer && canPurchase && !consentActive && (
             <p>Recorded parent consent is required before purchase.</p>
