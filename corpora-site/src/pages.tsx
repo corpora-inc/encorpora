@@ -20,6 +20,7 @@ import {
   fundingPath,
   fundingStructuredData,
 } from "./funding.js";
+import { darkSurface, lightSurface, siteStructuredData } from "./icons.js";
 export const routes = [
   "/",
   "/amp/",
@@ -45,12 +46,46 @@ const titles: Record<string, string> = {
   "/try/": "Try AMP Mathematics",
   "/samples/": "AMP · Printable practice sample",
 };
+/** What a search result says about each page, in the page's own words. */
+const descriptions: Record<string, string> = {
+  "/": "A complete math curriculum, from counting to precalculus. AMP finds your child’s level and chooses each next problem, with lessons and printable workbooks.",
+  "/amp/":
+    "AMP moves at your child’s pace, from counting to precalculus: ahead as fast as they’re ready, back to fill every gap. Thirty minutes a day, nothing to plan.",
+  "/esa/":
+    "Education savings accounts (ESAs), scholarships and family savings can pay for AMP. See each program’s route and rules.",
+  "/parents/":
+    "What the free assessment involves, what AMP covers, how problems are chosen, education funds, cancellation and refunds, and the devices you need.",
+  "/schools/":
+    "Review AMP Mathematics for your school or district: a complete math curriculum, from counting to precalculus, with adaptive practice, lessons and printable worksheets.",
+  "/support/":
+    "Get help with AMP: access, billing, a problem in the mathematics, or an accessibility barrier.",
+  "/try/":
+    "Create your free parent account, choose your child’s birth year and begin. Free assessment, adaptive practice and printable workbooks. No credit card.",
+  "/samples/":
+    "Three AMP practice problems to print and work on paper, with a separate solution key.",
+  "/legal/terms/": "The terms of use for AMP and Corpora.",
+  "/legal/privacy/": "How Corpora handles privacy and children’s data in AMP.",
+  "/legal/refund/":
+    "AMP’s refund policy: the 30-day money-back guarantee, and how refunds work for education-fund purchases.",
+  "/legal/accessibility/":
+    "Corpora’s accessibility statement for AMP, and how to report a barrier.",
+};
 export const title = (route: string, config?: SiteConfig) => {
   const funding = config && fundingForPath(route, config);
-  return funding
-    ? `${funding.program} and AMP Mathematics · Corpora`
-    : (titles[route] ??
-        `${legalTitles[route.split("/")[2] as LegalPage]} · Corpora`);
+  if (funding) {
+    // Search results cut titles at about 60 characters: drop words, not meaning.
+    const full = `${funding.program} and AMP Mathematics · Corpora`;
+    const shorter = `${funding.program} and AMP`;
+    return full.length <= 60
+      ? full
+      : shorter.length <= 60
+        ? shorter
+        : funding.program;
+  }
+  return (
+    titles[route] ??
+    `${legalTitles[route.split("/")[2] as LegalPage]} · Corpora`
+  );
 };
 export const tryUrl = (config: SiteConfig) => config.appUrl ?? "/try/";
 // Matches the supporting line under "Try it free" on AMP's pitch.
@@ -724,12 +759,13 @@ export function Page({
   socialImage?: SocialImage;
 }) {
   const funding = fundingForPath(route, config);
-  const structuredData = funding && fundingStructuredData(funding, config);
+  const structuredData = funding
+    ? fundingStructuredData(funding, config)
+    : route === "/"
+      ? siteStructuredData(config)
+      : undefined;
   const description =
-    funding?.page?.summary ??
-    (route === "/schools/"
-      ? "Review AMP Mathematics for your school or district: a complete math curriculum, from counting to precalculus, with adaptive practice, lessons and printable worksheets."
-      : "A complete math curriculum, from counting to precalculus. AMP finds your child’s level and chooses each next problem, with lessons and printable workbooks built in.");
+    funding?.page?.summary ?? descriptions[route] ?? descriptions["/"]!;
   let content: ReactNode;
   if (route === "/") content = <Home config={config} />;
   else if (route === "/amp/") content = <Amp config={config} />;
@@ -817,7 +853,16 @@ export function Page({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{title(route, config)}</title>
         <meta name="description" content={description} />
-        <meta name="theme-color" content="#f7f6f0" />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: light)"
+          content={lightSurface}
+        />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+          content={darkSurface}
+        />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         {config.mode === "preview" && (
           <meta name="robots" content="noindex, nofollow" />
@@ -865,7 +910,10 @@ export function Page({
           />
         )}
         {config.mode === "production" && config.appUrl && <script src="/assets/engagement.js" data-engagement-endpoint={new URL("/api/v1/site-events", config.appUrl).href} defer />}
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         <link rel="stylesheet" href="/assets/site.css" />
         <link rel="stylesheet" href="/assets/katex.min.css" />
         {fundingForPath(route, config)?.page?.presentation?.invoiceForm && <script src="/assets/invoice.js" defer />}
