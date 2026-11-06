@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
   buildPublications,
+  renderStages,
   rendererFingerprint,
   type PublicationDocument,
 } from "../scripts/publication-cache";
@@ -333,4 +334,85 @@ test("the renderer fingerprint changes with installed OS packages (system fonts)
     "fonts-liberation=1:2.1.5-2",
   );
   assert.notEqual(a, b);
+});
+
+const dockerfile = `# syntax=docker/dockerfile:1.7
+ARG PDF_SEED=pdf-seed-none
+FROM node:22 AS node-base
+RUN apt-get install fonts
+FROM node-base AS dependencies
+RUN npm ci
+FROM dependencies AS build
+RUN npx vite build
+FROM node-base AS pdf-seed-none
+RUN mkdir -p /app/artifacts
+FROM \${PDF_SEED} AS pdf-seed
+FROM node-base AS chrome
+RUN install chromium
+FROM chrome AS pdf-build
+# PDFs are reused per document.
+COPY --from=dependencies /app/node_modules ./node_modules
+RUN --mount=type=bind,from=pdf-seed,source=/app/artifacts,target=/pdf-seed render
+FROM node-base AS api
+COPY --from=build /app/src ./src
+CMD ["node", "main.mjs"]
+FROM nginx AS web
+COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+`;
+
+test("editing a stage rendering can't reach keeps the renderer fingerprint", () => {
+  const key = renderStages(dockerfile);
+  for (const [before, after] of [
+    ['CMD ["node", "main.mjs"]', 'CMD ["node", "--flag", "main.mjs"]'],
+    ["docker/nginx.conf /etc", "docker/other.conf /etc"],
+    ["RUN npx vite build", "RUN npx vite build && npm run other"],
+    ["# PDFs are reused per document.", "# A different comment."],
+  ] as const) {
+    assert.ok(dockerfile.includes(before), before);
+    assert.equal(renderStages(dockerfile.replace(before, after)), key, before);
+  }
+});
+
+test("editing anything rendering can reach changes the renderer fingerprint", () => {
+  const key = renderStages(dockerfile);
+  for (const [before, after] of [
+    ["ARG PDF_SEED=pdf-seed-none", "ARG PDF_SEED=other"],
+    ["RUN apt-get install fonts", "RUN apt-get install other-fonts"],
+    ["RUN npm ci", "RUN npm install"],
+    ["RUN mkdir -p /app/artifacts", "RUN mkdir -p /app/other"],
+    ["RUN install chromium", "RUN install chromium-beta"],
+    ["render\n", "render --flag\n"],
+  ] as const) {
+    assert.ok(dockerfile.includes(before), before);
+    assert.notEqual(
+      renderStages(dockerfile.replace(before, after)),
+      key,
+      before,
+    );
+  }
+});
+
+test("a Dockerfile without the render stage is hashed whole", () => {
+  const other = 'FROM node:22 AS api\nCMD ["node"]\n';
+  assert.equal(renderStages(other), other);
+});
+
+test("the real Dockerfile's render stages leave out the images PDFs can't affect", async () => {
+  const text = await readFile(
+    new URL("../Dockerfile", import.meta.url),
+    "utf8",
+  );
+  const key = renderStages(text);
+  for (const stage of [
+    "node-base",
+    "dependencies",
+    "chrome",
+    "pdf-seed-none",
+    "pdf-seed",
+    "pdf-build",
+  ])
+    assert.match(key, new RegExp(`AS ${stage}\\b`), stage);
+  for (const stage of ["build", "render-build", "render", "api"])
+    assert.doesNotMatch(key, new RegExp(`AS ${stage}\\b`), stage);
+  assert.doesNotMatch(key, /nginx/);
 });
