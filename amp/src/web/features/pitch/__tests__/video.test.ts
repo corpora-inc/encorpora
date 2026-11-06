@@ -60,7 +60,7 @@ test("the film offers the same sizes in every mix, from the CDN", () => {
   for (const [mix, sources] of Object.entries(mixes))
     for (const source of sources)
       expect(source.url).toMatch(
-        new RegExp(`^https://[^/]+/amp/pitch/explainer/v1/.+-${mix}\\.mp4$`),
+        new RegExp(`^https://[^/]+/amp/pitch/explainer/v2/.+-${mix}\\.mp4$`),
       );
   // The words are burned into the picture; a track would show them twice.
   expect(pitchFilm.captions).toBeUndefined();

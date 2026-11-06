@@ -35,21 +35,27 @@ export type PitchVideo = PitchVideoFraming & {
  * layout step in `Pitch.module.css`. */
 export const phoneVideoQuery = "(max-width: 480px)";
 
-const filmRoot = "https://d38iwc9748jekz.cloudfront.net/amp/pitch/explainer/v1";
+/** CDN files are immutable, so a new cut of a film gets a new directory. */
+const filmCdn = "https://d38iwc9748jekz.cloudfront.net/amp/pitch/explainer";
+const filmRoot = `${filmCdn}/v1`;
 const filmSources =
-  (name: string, ladder: readonly (readonly [number, string])[]) =>
+  (
+    root: string,
+    name: string,
+    ladder: readonly (readonly [number, string])[],
+  ) =>
   (mix: FilmMix): readonly PitchVideoSource[] =>
     ladder.map(([width, codec]) => ({
-      url: `${filmRoot}/${name}-${width}-${mix}.mp4`,
+      url: `${root}/${name}-${width}-${mix}.mp4`,
       type: `video/mp4; codecs="${codec}, mp4a.40.2"`,
       width,
     }));
-const wideSources = filmSources("amp-explainer", [
+const wideSources = filmSources(`${filmCdn}/v2`, "amp-explainer", [
   [854, "avc1.64001F"],
   [1280, "avc1.640028"],
   [1920, "avc1.640032"],
 ]);
-const squareSources = filmSources("amp-explainer-square", [
+const squareSources = filmSources(filmRoot, "amp-explainer-square", [
   [540, "avc1.64001F"],
   [720, "avc1.64001F"],
   [1080, "avc1.640028"],
