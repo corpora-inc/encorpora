@@ -1,3 +1,9 @@
+import { serverPoolOptions } from "./database.js";
+import {
+  registerDatabaseHealth,
+  warmServer,
+  watchRuntimeHealth,
+} from "./runtime-health.js";
 import { registerParentFollowupRoutes } from "../parent-followup/routes.js";
 import { followupConfiguration } from "../parent-followup/mail.js";
 import { registerAccessGiftRoutes } from "../access-grants/routes.js";
@@ -71,6 +77,7 @@ if (!development && process.env.AMP_HOSTED_PILOT_READY !== "true")
     "Hosted pilot requires configured consent, privacy, support and identity flows; see deployment documentation",
   );
 const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
+  pool: serverPoolOptions,
   development,
   freeProblems: freeProblemsSetting(process.env.AMP_FREE_PROBLEMS),
 });
@@ -212,4 +219,9 @@ for (const signal of ["SIGINT", "SIGTERM"])
   process.once(signal, () => {
     void app.close();
   });
+registerDatabaseHealth(app, repository.pool);
+const stopWatching = watchRuntimeHealth(app.log);
+app.addHook("onClose", async () => stopWatching());
+// Warm before listening: readiness passes only once the first parent is fast.
+await warmServer(app, repository.pool);
 await app.listen({ host, port: Number(process.env.AMP_PORT ?? 4311) });

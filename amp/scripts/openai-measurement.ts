@@ -7,6 +7,7 @@ import {
   openaiDestinationKey,
   openaiMeasurementBatch,
 } from "../src/advertising/openai-delivery.js";
+import { failureShape } from "../src/server/failure-shape.js";
 async function main() {
   const operation = process.argv[2] ?? "report",
     limit = Number(process.argv[3] ?? 20);
@@ -85,9 +86,10 @@ async function main() {
     await pool.end();
   }
 }
-main().catch(() => {
+main().catch((error: unknown) => {
   console.error(
     "OpenAI purchase measurement failed. Inspect private configuration and database health; no credentials or event payloads were logged.",
+    failureShape(error),
   );
   process.exitCode = 1;
 });

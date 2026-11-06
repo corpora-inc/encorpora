@@ -35,7 +35,11 @@ export type ShellState = "guest" | "new" | "trial" | "paid";
 type StorageState = Awaited<ReturnType<BrowserContext["storageState"]>>;
 
 function startApi(url: string, origin: string, apiPort: number) {
-  const child = spawn("npx", ["tsx", "src/server/main.ts"], {
+  // `AMP_FIXTURE_COMPILED_API=1` runs what production runs (`npm run build:server`).
+  const [command, ...args] = process.env.AMP_FIXTURE_COMPILED_API
+    ? ["node", "--no-flush-bytecode", "src/server/main.mjs"]
+    : ["npx", "tsx", "src/server/main.ts"];
+  const child = spawn(command!, args, {
     env: {
       ...process.env,
       AMP_DATABASE_URL: url,
