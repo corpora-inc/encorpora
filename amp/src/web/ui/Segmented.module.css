@@ -6,12 +6,16 @@
   border-radius: calc(var(--radius-control) + var(--space-1));
   background: var(--color-surface-sunken);
 }
+/* A large segment wraps: name and badge on one line, detail under them. */
 .segment {
-  display: grid;
-  gap: var(--space-1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  gap: var(--space-1) var(--space-2);
   min-width: 0;
-  min-height: calc(var(--target-size) + var(--space-5));
-  padding: var(--space-3);
+  min-height: calc(var(--target-size) + var(--space-3));
+  padding: var(--space-2) var(--space-3);
   border: 2px solid transparent;
   border-radius: var(--radius-control);
   background: transparent;
@@ -39,12 +43,15 @@
 .label {
   font-weight: 700;
   font-size: var(--text-body);
+  line-height: 1.25;
   white-space: nowrap;
 }
+/* No taller than the name beside it, so names line up across a group whether
+   or not a badge wraps. */
 .badge {
-  justify-self: start;
-  margin-top: var(--space-1);
+  order: 1;
   padding: 2px var(--space-2);
+  line-height: 1.25;
   border-radius: 999px;
   background: var(--color-success);
   color: var(--color-on-surface);
@@ -56,12 +63,33 @@
   visibility: hidden;
 }
 .detail {
+  order: 2;
+  flex: 0 0 100%;
   color: var(--color-muted-text);
   font-size: var(--text-label);
+  line-height: 1.25;
   font-variant-numeric: tabular-nums;
 }
 .detail > * {
   white-space: nowrap;
+}
+
+/* With room for it, one row per segment: name and badge at the start, detail
+   at the end, so a wide segment is never mostly empty. */
+.group:not(.compact) {
+  container-type: inline-size;
+}
+@container (min-width: 620px) {
+  .group:not(.compact) .segment {
+    flex-wrap: nowrap;
+    align-content: center;
+    min-height: calc(var(--target-size) + var(--space-2));
+    padding-block: var(--space-2);
+  }
+  .group:not(.compact) .detail {
+    flex: none;
+    margin-inline-start: auto;
+  }
 }
 
 /* Compact: equal cells, content centred, the same inner padding in every
@@ -70,6 +98,7 @@
   gap: var(--space-1);
 }
 .compact .segment {
+  display: grid;
   justify-items: center;
   align-content: center;
   gap: 2px;
@@ -77,10 +106,17 @@
   padding: var(--space-2) var(--space-3);
   text-align: center;
 }
+.compact .badge {
+  order: 0;
+  margin-top: var(--space-1);
+}
 .compact .label {
   font-size: clamp(15px, 4.2vw, 16px);
+  line-height: inherit;
 }
 .compact .detail {
+  order: 0;
   font-size: clamp(13px, 3.6vw, 14px);
+  line-height: inherit;
   white-space: nowrap;
 }

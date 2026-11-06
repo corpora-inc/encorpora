@@ -19,7 +19,8 @@ import { consentFixture } from "../tests/parent-consent.fixture";
  * The signed-out parent pitch at `/` against a synthetic API, in Chromium and
  * WebKit at 320/390/768/1280 px, light and dark, with and without a funded
  * program: no horizontal overflow, 44 px targets, nothing moves while the
- * video loads and plays, and every action reaches a screen that can succeed.
+ * video loads and plays, no blank pockets from 320 px to 2560 px, and every
+ * action reaches a screen that can succeed.
  * Sign-up records the parent follow-up intent for every pitch path.
  *
  *     npx tsx scripts/verify-pitch-ui.ts [--engine chromium|webkit|all]
@@ -449,6 +450,125 @@ async function viewports(browser: Browser, engine: string) {
       }
 }
 
+/**
+ * No blank pockets at any size. The buy actions span the hero; their controls
+ * share a height and their fine print starts on one line; on wide screens every
+ * edge sits on the film's edges and the words run the film's height; Buy is on
+ * the first screen from tablet up; the two lower columns end together.
+ */
+async function fit(browser: Browser, engine: string) {
+  const sizes = [
+    [320, 568],
+    [390, 844],
+    [430, 932],
+    [481, 800],
+    [605, 685],
+    [700, 900],
+    [768, 1024],
+    [909, 1041],
+    [959, 900],
+    [960, 800],
+    [1004, 1019],
+    [1024, 768],
+    [1280, 800],
+    [1366, 768],
+    [1552, 1027],
+    [1920, 1080],
+    [2560, 1440],
+  ] as const;
+  for (const program of [null, "ar-efa"] as const) {
+    const context = await browser.newContext();
+    const page = await context.newPage();
+    await serve(page, {
+      signedIn: false,
+      intents: [],
+      events: [],
+      pricesFail: false,
+    });
+    await page.goto(`${origin}/${program ? `?program=${program}` : ""}`);
+    await page.locator("[data-buy]").waitFor();
+    for (const [width, height] of sizes) {
+      await page.setViewportSize({ width, height });
+      await page.evaluate(() => document.fonts.ready);
+      const tag = `${engine}-${program ?? "card"}-${width}x${height} fit`;
+      await noOverflow(page, tag);
+      const box = await page.evaluate(
+        (selectors) =>
+          Object.fromEntries(
+            Object.entries(selectors).map(([name, selector]) => {
+              const found = document.querySelector(selector);
+              return [
+                name,
+                found ? found.getBoundingClientRect().toJSON() : null,
+              ];
+            }),
+          ) as Record<keyof typeof selectors, DOMRect | null>,
+        {
+          hero: "[data-hero]",
+          actions: "[data-actions]",
+          copy: "[data-hero] > :first-child",
+          film: "[data-pitch] figure",
+          plan: "[data-actions] [role=radiogroup]",
+          buy: "[data-actions] [data-buy] a, [data-actions] [data-buy] button:not([role=radio])",
+          buyTerms: "[data-actions] [data-buy-terms]",
+          tryFree: "[data-actions] button[class*=tryButton]",
+          note: "[data-actions] p[class*=note]",
+          guaranteeEnd: "[data-guarantee] > :last-child",
+          purchaseEnd: "[data-guarantee] + * > :last-child",
+        },
+      );
+      const near = (a: number, b: number, what: string, within = 1) =>
+        assert.ok(Math.abs(a - b) <= within, `${tag}: ${what} (${a}, ${b})`);
+      assert.ok(
+        box.hero && box.actions && box.buy && box.tryFree && box.film,
+        tag,
+      );
+      near(box.actions.width, box.hero.width, "actions span the hero");
+      if (width >= 481) {
+        near(box.buy.top, box.tryFree.top, "Buy and Try on one line");
+        near(box.buy.height, box.tryFree.height, "Buy and Try one height");
+        near(box.buyTerms!.top, box.note!.top, "fine print on one line");
+      }
+      if (width >= 960) {
+        near(box.tryFree.right, box.film.right, "Try ends on the film's edge");
+        near(box.copy!.top, box.film.top, "words start at the film's top", 8);
+        near(box.copy!.bottom, box.film.bottom, "words end at its bottom", 8);
+        near(
+          box.actions.top,
+          Math.max(box.copy!.bottom, box.film.bottom) + 24,
+          "the band sits right under the film",
+        );
+        if (program) {
+          near(box.buy.left, box.copy!.left, "Buy starts on the words' edge");
+        } else {
+          near(box.buy.left, box.film.left, "Buy starts on the film's edge");
+          near(box.plan!.top, box.buy.top, "the band shares one top");
+          near(box.plan!.height, box.buy.height, "the band shares one height");
+          near(
+            box.plan!.right,
+            box.copy!.right,
+            "plan ends on the words' edge",
+          );
+        }
+      }
+      // A tablet in portrait and every laptop: Buy without scrolling.
+      if (width >= 960 || (width >= 700 && height > width))
+        assert.ok(
+          box.buy.bottom <= height,
+          `${tag}: Buy on the first screen (${box.buy.bottom})`,
+        );
+      if (width >= 768)
+        near(
+          box.guaranteeEnd!.bottom,
+          box.purchaseEnd!.bottom,
+          "the lower columns end together",
+          program ? 72 : 48,
+        );
+    }
+    await context.close();
+  }
+}
+
 /** Each action lands on a screen that can succeed, and sign-up records the
  * same parent follow-up intent free practice always has. */
 async function journeys(browser: Browser, engine: string) {
@@ -627,7 +747,10 @@ try {
     ).launch();
     try {
       await viewports(browser, engine);
-      if (!noMedia) await journeys(browser, engine);
+      if (!noMedia) {
+        await fit(browser, engine);
+        await journeys(browser, engine);
+      }
     } finally {
       await browser.close();
     }

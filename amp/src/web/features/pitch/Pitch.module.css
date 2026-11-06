@@ -1,7 +1,13 @@
 /* The signed-out parent pitch at `/`. One column on phones; on wide screens
-   the video sits beside the words and the buy actions. Every async part
-   (poster, movie, error) lives in a box reserved at its final size. */
+   the words sit beside the video with the buy band under both, every edge on
+   one shared split. Every async part (poster, movie, error) lives in a box
+   reserved at its final size. */
 .page {
+  --pitch-width: 1180px;
+  --pitch-gutter: var(--space-5);
+  /* The copy column. The hero, the buy band and the sections below all use
+     it, so their edges stay on the same vertical lines. */
+  --pitch-split: calc((100% - var(--pitch-gutter)) * 0.42);
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   min-height: 100dvh;
@@ -15,8 +21,10 @@
   justify-content: space-between;
   gap: var(--space-3);
   box-sizing: border-box;
-  width: min(100%, 1180px);
+  width: min(100%, var(--pitch-width));
   height: calc(var(--target-size) + var(--space-4));
+  /* Over the legacy element rule, which sets 80 px on phones. */
+  min-height: 0;
   margin-inline: auto;
   padding: 0 max(var(--space-4), env(safe-area-inset-right)) 0
     max(var(--space-4), env(safe-area-inset-left));
@@ -59,24 +67,27 @@
     display: none;
   }
 }
+/* The word, not its hover fill, ends on the content edge. */
 .signIn {
   flex: none;
+  margin-inline-end: calc(-1 * var(--space-4));
+  border-inline-end-width: 0;
 }
 .main {
   box-sizing: border-box;
   display: grid;
   align-content: start;
-  gap: 56px;
-  width: min(100%, 1180px);
+  gap: 40px;
+  width: min(100%, var(--pitch-width));
   margin-inline: auto;
-  padding: var(--space-4) max(var(--space-4), env(safe-area-inset-right))
-    var(--space-6) max(var(--space-4), env(safe-area-inset-left));
+  padding: var(--space-2) max(var(--space-4), env(safe-area-inset-right))
+    var(--space-5) max(var(--space-4), env(safe-area-inset-left));
 }
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-areas: "copy" "film" "actions";
-  gap: var(--space-5);
+  gap: var(--space-4);
 }
 .copy {
   grid-area: copy;
@@ -85,19 +96,13 @@
 }
 .film {
   grid-area: film;
-}
-.actions {
-  grid-area: actions;
-  display: grid;
-  align-content: start;
-  gap: var(--space-4);
-  width: min(100%, var(--width-form));
+  min-width: 0;
 }
 .title {
   margin: 0;
   font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   font-weight: 400;
-  font-size: clamp(34px, 3.6vw + 16px, 54px);
+  font-size: clamp(34px, 3.6vw + 16px, 60px);
   line-height: 1.08;
   letter-spacing: -0.025em;
   text-wrap: balance;
@@ -105,7 +110,6 @@
 }
 .lede {
   margin: 0;
-  max-width: 34em;
   font-size: 18px;
   line-height: 1.55;
   text-wrap: balance;
@@ -117,18 +121,176 @@
 .hero:not(.withFilm) {
   max-width: 46rem;
 }
+
+/* The buy actions fill the width at every size; their buttons take the plan
+   control's corner radius, so the band reads as one piece. On a phone they stack in
+   reading order. From 481 px they lay out on one grid, so controls share a
+   height and the fine print under them starts on one line. */
+.actions {
+  grid-area: actions;
+  display: grid;
+  gap: var(--space-4);
+}
+.actions .buyButton,
+.actions .tryButton {
+  border-radius: calc(var(--radius-control) + var(--space-1));
+}
+@media (min-width: 481px) {
+  .hero {
+    gap: var(--space-5);
+  }
+  .actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2) var(--space-3);
+  }
+  .actions[data-actions="card"] {
+    grid-template-areas:
+      "plan plan"
+      "planterms planterms"
+      "buy try"
+      "buyterms note";
+  }
+  .actions[data-actions="funded"] {
+    grid-template-areas:
+      "buy try"
+      "buyterms note"
+      "trust card";
+  }
+  .actions[data-actions="error"] {
+    grid-template-areas:
+      "error try"
+      "error note";
+  }
+  .actions[data-actions="free"] {
+    grid-template-areas:
+      "try try"
+      "note note";
+  }
+  .actions .buy,
+  .actions .free,
+  .actions [data-buy="card"] > :first-child {
+    display: contents;
+  }
+  .actions [data-buy="card"] > :first-child > :first-child {
+    grid-area: plan;
+  }
+  .actions [data-buy="card"] > :first-child > :last-child {
+    grid-area: planterms;
+    margin-bottom: var(--space-2);
+    font-size: var(--text-label);
+  }
+  .actions .buyButton {
+    grid-area: buy;
+  }
+  .actions .buyTerms {
+    grid-area: buyterms;
+  }
+  .actions .extras {
+    display: contents;
+  }
+  .actions .trust {
+    grid-area: trust;
+    align-self: center;
+  }
+  .actions .cardInstead {
+    grid-area: card;
+  }
+  .actions .priceError {
+    grid-area: error;
+  }
+  .actions .tryButton {
+    grid-area: try;
+    min-height: 56px;
+    font-size: var(--text-body);
+  }
+  .actions .note {
+    grid-area: note;
+  }
+}
+/* Tablets: the headline and the lede share a row above the full-width film. */
+@media (min-width: 700px) and (max-width: 959.98px) {
+  .withFilm .copy {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    column-gap: var(--space-5);
+    align-items: center;
+  }
+}
 @media (min-width: 960px) {
-  .hero.withFilm {
-    /* The video is the centerpiece: about 58% of the row. */
-    grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
-    grid-template-areas: "copy film" "actions film";
-    grid-template-rows: auto 1fr;
-    column-gap: 56px;
-    row-gap: var(--space-5);
-    align-items: start;
+  .page {
+    --pitch-gutter: clamp(var(--space-6), 4vw, 56px);
   }
   .main {
-    padding-top: var(--space-6);
+    gap: 48px;
+    padding-top: var(--space-3);
+  }
+  /* The words grow with the film beside them. */
+  .withFilm .title {
+    font-size: clamp(46px, 5.5vw - 6px, 60px);
+  }
+  .withFilm .lede {
+    font-size: clamp(17px, 1.6vw, 20px);
+  }
+  /* The words run the film's full height: headline at its top edge, lede at
+     its bottom edge. */
+  .hero.withFilm {
+    grid-template-columns: var(--pitch-split) minmax(0, 1fr);
+    grid-template-areas:
+      "copy film"
+      "actions actions";
+    column-gap: var(--pitch-gutter);
+    align-items: center;
+  }
+  .hero.withFilm .copy {
+    align-self: stretch;
+    align-content: space-between;
+  }
+  /* The band under them: the plan under the words; Buy and Try split the
+     film's width, with their outer edges on the film's edges. */
+  .hero.withFilm .actions {
+    grid-template-columns:
+      var(--pitch-split) var(--pitch-gutter) minmax(0, 1fr) var(--space-3)
+      minmax(0, 1fr);
+    column-gap: 0;
+  }
+  .hero.withFilm .actions[data-actions="card"] {
+    grid-template-areas:
+      "plan . buy . try"
+      "planterms . buyterms . note";
+  }
+  .hero.withFilm .actions[data-actions="funded"] {
+    grid-template-areas:
+      "buy buy buy . try"
+      "buyterms . trust . note"
+      "buyterms . card . note";
+  }
+  .hero.withFilm .actions .trust {
+    align-self: start;
+  }
+  .hero.withFilm .actions[data-actions="error"] {
+    grid-template-areas:
+      "error error error . try"
+      "error error error . note";
+  }
+  .hero.withFilm .actions[data-actions="free"] {
+    grid-template-areas:
+      "try try try try try"
+      "note note note note note";
+  }
+  .hero.withFilm .actions [data-buy="card"] > :first-child > :last-child {
+    margin-bottom: 0;
+  }
+}
+/* Large displays: the whole page grows with the screen, so it never sits in
+   a small column between wide margins. */
+@media (min-width: 1640px) {
+  .page {
+    --pitch-width: clamp(1180px, 72vw, 1400px);
+  }
+  .withFilm .title {
+    font-size: clamp(60px, 3.66vw, 72px);
+  }
+  .withFilm .lede {
+    font-size: clamp(20px, 1.15vw, 22px);
   }
 }
 
@@ -266,10 +428,11 @@
   text-wrap: balance;
   text-wrap: pretty;
 }
-/* The guarantee on its own line, so the phrase never splits. */
+/* The guarantee on its own line; if the column is narrow it wraps evenly. */
 .guaranteeLine {
   display: block;
   font-weight: 650;
+  text-wrap: balance;
   color: var(--color-on-surface);
 }
 .buyTerms {
@@ -281,6 +444,13 @@
 .cardInstead {
   justify-self: start;
   margin-inline-start: calc(-1 * var(--space-4));
+  border-inline-start-width: 0;
+}
+/* What a funded Buy adds: the program's status and the way to pay by card. */
+.extras {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-1);
 }
 /* The free trial: one secondary action and what it includes. */
 .free {
@@ -320,9 +490,47 @@
   text-underline-offset: 3px;
 }
 
-/* What you get, and the price */
+/* The price, the guarantee and the two actions. On a phone they read in that
+   order. On wider screens the guarantee sits beside the other two, so neither
+   column ends in empty space: the price at the top, the actions on the
+   guarantee's last line, and the page finishing on Buy at its bottom corner. */
+.offer {
+  display: grid;
+  gap: 40px;
+}
+@media (min-width: 768px) {
+  .offer[data-offer="card"],
+  .offer[data-offer="funded"] {
+    grid-template-areas:
+      "guarantee price"
+      "guarantee closing";
+    grid-template-columns: minmax(0, 1fr) var(--pitch-split);
+    grid-template-rows: auto 1fr;
+    gap: var(--space-5) var(--pitch-gutter);
+  }
+  /* A funded price has more to say, so it takes half. */
+  .offer[data-offer="funded"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .offer .price {
+    grid-area: price;
+  }
+  .offer .guarantee {
+    grid-area: guarantee;
+  }
+  .offer .closing {
+    grid-area: closing;
+    align-self: end;
+  }
+  .offer[data-offer="card"] .closing,
+  .offer[data-offer="funded"] .closing {
+    padding-top: 0;
+    border-top: 0;
+  }
+}
 .details {
   display: grid;
+  align-content: start;
   gap: var(--space-4);
   padding-top: var(--space-5);
   border-top: 1px solid var(--color-border);
@@ -376,7 +584,7 @@
 .checklist li::before {
   content: "";
   position: absolute;
-  left: 2px;
+  left: 4px;
   top: 0.35em;
   width: 7px;
   height: 12px;
@@ -386,7 +594,6 @@
 }
 .priceLine {
   margin: 0;
-  max-width: 40em;
   font-size: var(--text-body);
   line-height: 1.55;
   color: var(--color-muted-text);
@@ -398,7 +605,6 @@
 }
 .guarantee p {
   margin: 0;
-  max-width: 40em;
   font-size: var(--text-body);
   line-height: 1.55;
   color: var(--color-muted-text);
@@ -407,17 +613,21 @@
   font-size: var(--text-label);
   line-height: 1.45;
 }
+/* Side by side where both labels fit whole, otherwise one above the other. */
 .closing {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-3);
-  width: min(100%, var(--width-form));
   padding-top: var(--space-5);
   border-top: 1px solid var(--color-border);
 }
 .closing > * {
-  width: 100%;
+  flex: 1 1 160px;
   min-height: 56px;
+}
+/* Buy's longer funded label sets its own width; Try takes what's left. */
+.offer[data-offer="funded"] .closing > * {
+  flex-basis: 140px;
 }
 .trust {
   margin: 0;
@@ -431,6 +641,10 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-5);
   }
+  .checklist {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--pitch-gutter);
+  }
 }
 .footer {
   display: flex;
@@ -442,7 +656,10 @@
   gap: 0 var(--space-5);
   box-sizing: border-box;
   /* The rule spans the content column, like the section rules above it. */
-  width: min(100% - 2 * var(--space-4), 1180px - 2 * var(--space-4));
+  width: min(
+    100% - 2 * var(--space-4),
+    var(--pitch-width) - 2 * var(--space-4)
+  );
   margin: 0 auto;
   padding: var(--space-3) 0 max(var(--space-5), env(safe-area-inset-bottom));
   border-top: 1px solid var(--color-border);

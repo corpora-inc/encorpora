@@ -176,20 +176,24 @@ export function BuyOptions({
             <span className={styles.guaranteeLine}>{RISK_FREE}</span>
           )}
         </p>
-        {fundedOffer.statusLabel && (
-          <p className={styles.trust} data-funding-status>
-            <span aria-hidden="true">✓ </span>
-            {fundedOffer.statusLabel}
-          </p>
-        )}
-        {offers.length > 0 && (
-          <Button
-            variant="quiet"
-            className={styles.cardInstead}
-            onClick={() => buyByCard("year")}
-          >
-            Pay by card instead
-          </Button>
+        {(fundedOffer.statusLabel || offers.length > 0) && (
+          <div className={styles.extras}>
+            {fundedOffer.statusLabel && (
+              <p className={styles.trust} data-funding-status>
+                <span aria-hidden="true">✓ </span>
+                {fundedOffer.statusLabel}
+              </p>
+            )}
+            {offers.length > 0 && (
+              <Button
+                variant="quiet"
+                className={styles.cardInstead}
+                onClick={() => buyByCard("year")}
+              >
+                Pay by card instead
+              </Button>
+            )}
+          </div>
         )}
       </div>
     );
