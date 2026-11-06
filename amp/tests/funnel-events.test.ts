@@ -32,6 +32,8 @@ test("pitch events carry only their fixed choices", () => {
       { event: "pitch_view", at: 2, props: { program: "az-esa" } },
       { event: "video_play", at: 3 },
       { event: "video_progress", at: 4, props: { percent: 75 } },
+      { event: "video_play", at: 3, props: { mix: "b" } },
+      { event: "video_progress", at: 4, props: { percent: 75, mix: "b" } },
       { event: "buy_click", at: 5, props: { path: "funded" } },
       { event: "buy_click", at: 6, props: { path: "card" } },
       { event: "workbook_click", at: 7 },
@@ -42,6 +44,8 @@ test("pitch events carry only their fixed choices", () => {
   for (const bad of [
     { event: "pitch_view", at: 1, props: { program: "tx-esa" } },
     { event: "video_progress", at: 1, props: { percent: 30 } },
+    { event: "video_play", at: 1, props: { mix: "z" } },
+    { event: "video_progress", at: 1, props: { percent: 25, mix: "z" } },
     { event: "video_progress", at: 1 },
     { event: "buy_click", at: 1, props: { path: "paypal" } },
     { event: "workbook_click", at: 1, props: { grade: "3" } },

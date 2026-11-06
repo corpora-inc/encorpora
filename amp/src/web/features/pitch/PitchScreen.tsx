@@ -142,8 +142,8 @@ export function PitchScreen() {
             <div className={styles.free}>
               {tryFree}
               <p className={styles.note}>
-                Free assessment, adaptive practice and printable workbooks. No
-                credit card.
+                Free assessment, adaptive practice and printable workbooks.
+                No&nbsp;credit&nbsp;card.
               </p>
             </div>
           </div>

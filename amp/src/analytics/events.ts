@@ -111,6 +111,9 @@ export const PLAN_INTERVALS = ["year", "month"] as const;
 export const PITCH_PROGRAMS = ["ar-efa", "az-esa", "nh-efa"] as const;
 /** Quartiles of the pitch video reached, each recorded once per tab. */
 export const VIDEO_QUARTILES = [25, 50, 75, 100] as const;
+/** The music mixes of the pitch film. Each browser hears one, for a live test. */
+export const FILM_MIXES = ["a", "b", "c"] as const;
+export type FilmMix = (typeof FILM_MIXES)[number];
 export const BUY_PATHS = ["funded", "card"] as const;
 /** Where a Buy control sits: the signed-out pitch, the free trial's toolbar,
  * or a trial invitation card. */
@@ -191,9 +194,10 @@ export const funnelPropsSchemas = {
   try_click: none,
   /** The signed-out parent pitch at `/`, with the funded program it names. */
   pitch_view: z.strictObject({ program: z.enum(PITCH_PROGRAMS).optional() }),
-  video_play: none,
+  video_play: z.strictObject({ mix: z.enum(FILM_MIXES).optional() }),
   video_progress: z.strictObject({
     percent: z.literal(VIDEO_QUARTILES),
+    mix: z.enum(FILM_MIXES).optional(),
   }),
   buy_click: z.strictObject({
     path: z.enum(BUY_PATHS),
