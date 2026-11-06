@@ -6,7 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { rememberConsentChallenge } from "../../consent-entry";
 import { takeConsentChallenge } from "../../consent-link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { brand } from "../../../brand";
 import { LandingView } from "../../lib/LandingView";
 import { track, trackOnce } from "../../lib/analytics";
@@ -23,6 +23,7 @@ import {
 } from "./BuyOptions";
 import { PitchVideo } from "./PitchVideo";
 import { pitchCarry, pitchTarget } from "./targets";
+import { usePitchAttention } from "./usePitchAttention";
 import { pitchVideo } from "./video";
 import styles from "./Pitch.module.css";
 
@@ -88,6 +89,8 @@ export function PitchScreen() {
       : offers.length > 0
         ? "card"
         : "free";
+  const actions = useRef<HTMLDivElement>(null);
+  usePitchAttention(actions, `.${styles.buyButton}`, offered);
   const buy = (variant: "full" | "button") =>
     data.failed ? null : (
       <BuyOptions
@@ -136,7 +139,7 @@ export function PitchScreen() {
               <PitchVideo video={pitchVideo} />
             </div>
           )}
-          <div className={styles.actions} data-actions={offered}>
+          <div ref={actions} className={styles.actions} data-actions={offered}>
             {data.failed ? (
               <div className={styles.priceError} role="alert">
                 <p>Prices didn’t load. Check your connection and try again.</p>

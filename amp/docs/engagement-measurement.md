@@ -58,6 +58,14 @@ abandonment. An invoice-form click is not an invoice, and an invoice is not a
 paid purchase. Page counters are stored separately from milestone events in
 `amp_engagement_pages`, avoiding heartbeat inflation in event funnels.
 
+## The acquisition flow
+
+`npm run report:flow -- --days 7` follows browsers that loaded the parent pitch at `/`: landed, stayed, how far they watched, what they chose and where they stopped, overall and by first-touch source and medium, device, mix and creative. `--since 2026-11-06T16:16:00Z` limits it to browsers that landed after a time, so a report can start at a change. `--json` prints the same data.
+
+A browser counts as **stayed** after 3 seconds of visible time, a video play, or a real tap or key. Scanners and link previews load pages and follow links without staying, so they stay in the Landed count and out of every later step. **TooFast** counts Buy or Try clicks within 1 second with no input. These are thresholds, not proof: a person who leaves within 3 seconds and a scanner look alike. Visible time can also undercount if a browser leaves before its last snapshot arrives. Each step counts browsers, not people, and source is first touch.
+
+The pitch adds three fixed events, each sent at most once per tab session through the normal queue: `video_seconds` (3, 10, 20 and 30 seconds of the film, since the quartiles are about 41 seconds apart), `first_interaction` (the kind of the first real input: pointer, key or scroll, never its contents) and `pitch_buy_seen` (half of the main Buy control came into view). None is forwarded to Google Analytics. Their listeners and observer are removed after they fire, so they add no ongoing work to the page.
+
 ## Separate tests from customer activity
 
 Automated browsers declaring `navigator.webdriver` are marked `automated`.

@@ -53,6 +53,7 @@
     "report:visitor": "tsx scripts/report-visitor-journey.ts",
     "report:engagement": "tsx scripts/report-engagement.ts",
     "report:funnel": "tsx scripts/report-funnel.ts",
+    "report:flow": "tsx scripts/report-flow.ts",
     "report:insights": "tsx scripts/insights-report.ts",
     "billing:worker": "tsx scripts/stripe-worker.ts",
     "infra": "tsx scripts/external-config.ts",
