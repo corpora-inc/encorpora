@@ -80,7 +80,7 @@ test("the film offers the same sizes in every mix, from the CDN", () => {
 test("the phone framing is the same film, square, in every mix", () => {
   const phone = pitchFilm.phone!;
   expect(phone.aspect).toBe(1);
-  expect(phone.poster.url).toMatch(/\/amp-explainer-square-poster\.jpg$/);
+  expect(phone.poster.url).toMatch(/pitch-poster-square/);
   for (const [mix, sources] of Object.entries(phone.mixes!)) {
     expect(sources.map((source) => source.width)).toEqual([540, 720, 1080]);
     for (const source of sources)

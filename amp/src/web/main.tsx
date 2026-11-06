@@ -1,3 +1,4 @@
+import "./lib/zod-config";
 import { errorDetails } from "../analytics/error-details";
 import { screenOf, track } from "./lib/analytics";
 import "./consent-entry";
