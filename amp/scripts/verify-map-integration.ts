@@ -155,7 +155,7 @@ try {
   const shared = await page.evaluate(() => (window as any).sharedMap);
   assert.equal(shared.type, "image/png");
   assert(shared.size > 10_000);
-  assert.equal(shared.url, "https://amp.corpora.inc/try");
+  assert.equal(shared.url, "https://amp.corpora.inc/");
   assert(!JSON.stringify(shared).includes(token));
   assert(!JSON.stringify(shared).includes(trial.learnerId));
   const imageBytes = await image.evaluate(async (el) => {
