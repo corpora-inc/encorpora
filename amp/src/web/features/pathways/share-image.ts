@@ -69,7 +69,7 @@ export async function mapShareImage(
   ctx.fillText("Explore your pathways.", 56, 510);
   ctx.fillStyle = accent;
   ctx.font = "500 17px system-ui, sans-serif";
-  ctx.fillText("amp.corpora.inc/try", 56, 574);
+  ctx.fillText("amp.corpora.inc", 56, 574);
   const points = layout(skills),
     byId = new Map(points.map((p) => [p.skill.id, p])),
     stats = new Map(evidence.map((e) => [e.skillId, e]));

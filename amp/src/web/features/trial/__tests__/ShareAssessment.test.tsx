@@ -70,7 +70,7 @@ test("Copy link writes exactly one clean public URL, without image paths or resu
   fireEvent.click(screen.getByRole("button", { name: "Copy link" }));
   await waitFor(() =>
     expect(writeText).toHaveBeenCalledExactlyOnceWith(
-      "https://amp.corpora.inc/try",
+      "https://amp.corpora.inc/",
     ),
   );
   expect(screen.getByRole("status").textContent).toBe("Link copied.");
@@ -101,7 +101,7 @@ test("clipboard denial keeps selectable text in the panel, and closing returns f
     name: "Copy this link",
   })) as HTMLTextAreaElement;
   expect(field.readOnly).toBe(true);
-  expect(field.value).toBe("https://amp.corpora.inc/try");
+  expect(field.value).toBe("https://amp.corpora.inc/");
   fireEvent.click(screen.getByRole("button", { name: "Close" }));
   await waitFor(() => expect(document.activeElement).toBe(trigger));
 });
