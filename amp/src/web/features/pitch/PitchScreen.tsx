@@ -111,7 +111,7 @@ export function PitchScreen() {
           className={styles.brand}
           aria-label={`${brand.name} ${brand.expansion}, home`}
         >
-          <span className={styles.wordmark}>{brand.name}</span>
+          <span className={styles.wordmark}>{brand.name}</span>{" "}
           <span className={styles.expansion}>{brand.expansion}</span>
         </Link>
         <Link
