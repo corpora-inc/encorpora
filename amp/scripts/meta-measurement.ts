@@ -7,6 +7,7 @@ import { metaMeasurementCredentials } from "../src/advertising/meta-credentials.
 import { readPrivateMeasurementJson } from "../src/advertising/google-credentials.js";
 import { createDatabasePool } from "../src/server/database.js";
 import { providerSignupBatch } from "../src/advertising/provider-signups.js";
+import { failureShape } from "../src/server/failure-shape.js";
 
 // Counts only: never print email, browser context, payloads, IDs or credentials.
 async function main() {
@@ -86,9 +87,10 @@ async function main() {
     await pool.end();
   }
 }
-main().catch(() => {
+main().catch((error: unknown) => {
   console.error(
     "Meta measurement command failed; inspect private configuration and database health. No payload or credential details were logged.",
+    failureShape(error),
   );
   process.exitCode = 1;
 });

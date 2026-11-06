@@ -5,6 +5,7 @@ import {
 } from "../src/analytics/ga-signups.js";
 import { readPrivateMeasurementJson } from "../src/advertising/google-credentials.js";
 import { createDatabasePool } from "../src/server/database.js";
+import { failureShape } from "../src/server/failure-shape.js";
 
 async function main() {
   const operation = process.argv[2] ?? "report";
@@ -36,9 +37,10 @@ async function main() {
     await pool.end();
   }
 }
-main().catch(() => {
+main().catch((error: unknown) => {
   console.error(
     "GA signup command failed; inspect private configuration and database health. No payload or credential details logged.",
+    failureShape(error),
   );
   process.exitCode = 1;
 });

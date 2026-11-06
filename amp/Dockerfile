@@ -32,7 +32,7 @@ ARG VITE_AMP_CLIENT_ID=""
 ARG VITE_AMP_SCOPES=""
 ARG VITE_AMP_RESOURCE=""
 # Type checking is CI's job; the image only bundles.
-RUN npx vite build && npm run build:public-pathways
+RUN npx vite build && npm run build:public-pathways && npm run build:server
 # The release this image is: the full source commit and the UTC build time,
 # passed by the deploy pipeline (public; see src/server/build-info.ts).
 # Declared after the bundle, so a new commit reuses every layer above. The web
@@ -119,7 +119,11 @@ USER 65532:65532
 # Verify default delivery paths and access guards as the actual runtime user.
 RUN --network=none node_modules/.bin/tsx scripts/verify-pdf-delivery.ts
 EXPOSE 8080
-CMD ["node_modules/.bin/tsx", "src/server/main.ts"]
+# The compiled server: no TypeScript compiling in production. It stays in
+# src/server so the source's relative paths (artifacts, styles) still resolve.
+# Bytecode is kept, so a server that has been quiet doesn't recompile its code
+# for the next parent.
+CMD ["node", "--no-flush-bytecode", "src/server/main.mjs"]
 
 # 1.27 is end of life and misses the October 2026 stable fixes (1.30.6).
 FROM nginxinc/nginx-unprivileged:1.30.6-alpine@sha256:f5116ed4606f3eb015dd4a8e28cb9b351476dc0ad4bc6e9f93b19cec130cdf03 AS web

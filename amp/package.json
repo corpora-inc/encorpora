@@ -39,6 +39,7 @@
     "lint:colors": "tsx scripts/check-color-literals.ts --strict",
     "test:contrast": "tsx scripts/verify-contrast.ts --strict",
     "build": "npm run lint:controls && npm run tsc && vite build && npm run build:public-pathways",
+    "build:server": "esbuild src/server/main.ts --bundle --platform=node --format=esm --target=node22 --packages=external --outfile=src/server/main.mjs --log-level=warning",
     "build:public-pathways": "tsx scripts/build-public-pathways.ts",
     "audit": "tsx scripts/audit.ts",
     "publications": "tsx scripts/publications.ts",

@@ -8,6 +8,7 @@ import {
   readPrivateMeasurementJson,
 } from "../src/advertising/google-credentials.js";
 import { createDatabasePool } from "../src/server/database.js";
+import { failureShape } from "../src/server/failure-shape.js";
 
 // No event payloads, email, source IDs, tokens or receipt IDs in stdout/stderr.
 async function main() {
@@ -95,9 +96,10 @@ async function main() {
     await pool.end();
   }
 }
-main().catch(() => {
+main().catch((error: unknown) => {
   console.error(
     "Google measurement command failed; inspect private configuration and database health. No payload or credential details were logged.",
+    failureShape(error),
   );
   process.exitCode = 1;
 });

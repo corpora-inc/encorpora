@@ -1,3 +1,4 @@
+import type { PoolConfig } from "pg";
 import type { GlossaryCard, GlossaryLexicon } from "../glossary/types";
 import {
   defaultPracticeSettings,
@@ -237,9 +238,11 @@ export class PostgresRepository implements Repository {
       development?: boolean;
       /** Free problems per anonymous trial (`AMP_FREE_PROBLEMS`). */
       freeProblems?: number;
+      /** Pool settings for the long-running server (`serverPoolOptions`). */
+      pool?: Omit<PoolConfig, "max" | "connectionString">;
     } = {},
   ) {
-    this.pool = createDatabasePool({ connectionString });
+    this.pool = createDatabasePool({ connectionString, ...options.pool });
     this.limits = trialLimits(options.freeProblems);
   }
   readonly limits: TrialLimits;
