@@ -359,9 +359,9 @@ test(
           props: { utmSource: "fall", referrer: "email", device: "phone" },
         },
         { event: "pitch_view", props: { program: "ar-efa" } },
-        { event: "video_play" },
-        { event: "video_progress", props: { percent: 25 } },
-        { event: "video_progress", props: { percent: 50 } },
+        { event: "video_play", props: { mix: "b" } },
+        { event: "video_progress", props: { percent: 25, mix: "b" } },
+        { event: "video_progress", props: { percent: 50, mix: "b" } },
         { event: "buy_click", props: { path: "card" } },
         { event: "session_start", props: { daysSinceFirstVisit: 0 } },
         { event: "try_click" },
@@ -455,6 +455,17 @@ test(
       assert.equal(pitch("video_progress:100").visitors, 0);
       assert.equal(pitch("buy_click:card").fromPitch, 0.5);
       assert.equal(pitch("buy_click:funded").visitors, 0);
+      const mix = (name: string) =>
+        report.filmMixes.find((m) => m.mix === name)!;
+      assert.equal(mix("a").played, 0);
+      assert.equal(mix("a").signupRate, null);
+      assert.equal(mix("b").song, "Rising Up");
+      assert.equal(mix("b").played, 1);
+      assert.equal(mix("b").watchedHalf, 1);
+      assert.equal(mix("b").finished, 0);
+      assert.equal(mix("b").triedFree, 1);
+      assert.equal(mix("b").buyClicks, 1);
+      assert.equal(mix("b").purchased, 1);
       const trial = (name: string) =>
         report.trialBuy.find((s) => s.step === name)!;
       assert.equal(trial("try_click").visitors, 2);

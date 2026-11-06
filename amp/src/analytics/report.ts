@@ -1,5 +1,5 @@
 import type { Pool } from "pg";
-import type { FunnelEvent } from "./events.js";
+import { FILM_MIXES, type FilmMix, type FunnelEvent } from "./events.js";
 import { funnelDay } from "./repository.js";
 
 /** The ordered path from first visit to paid practice. */
@@ -34,6 +34,26 @@ export const PITCH_STEPS = [
   "checkout_start",
   "purchase",
 ] as const;
+/** The film's live music test: what each mix's listeners went on to do. Only a
+ * browser that pressed play heard a mix, so that is the base for every rate. */
+const FILM_MIX_SONGS: Record<FilmMix, string> = {
+  a: "Let the Light In",
+  b: "Rising Up",
+  c: "Modus Operandi",
+};
+export type FilmMixResult = {
+  mix: FilmMix;
+  song: string;
+  played: number;
+  watchedHalf: number;
+  finished: number;
+  triedFree: number;
+  signedUp: number;
+  buyClicks: number;
+  purchased: number;
+  /** Share of those who played this mix who signed up. */
+  signupRate: number | null;
+};
 /** In the free trial (from its start, `try_click`): each invitation to buy
  * and Buy from the trial's toolbar or an invitation. */
 export const TRIAL_BUY_STEPS = [
@@ -80,6 +100,7 @@ export type FunnelReport = {
   visitors: number;
   steps: FunnelStep[];
   pitch: PitchStep[];
+  filmMixes: FilmMixResult[];
   trialBuy: TrialBuyStep[];
   unattributedPurchases: number;
   breakdowns: Record<
@@ -127,20 +148,20 @@ export async function funnelReport(
   );
   // Per visitor, the funnel steps reached; only counts leave this function.
   // Pitch steps carry their one distinguishing prop (`buy_click:card`).
-  const paths = (
-    await q<{ events: string[] }>(
-      `SELECT array_agg(DISTINCT CASE
+  const visitorPaths = await q<{ events: string[]; mixes: string[] | null }>(
+    `SELECT array_agg(DISTINCT CASE
            WHEN e.event='buy_click' AND e.props->>'from' IN ('chrome','invite')
              THEN 'trial_buy_click:'||(e.props->>'path')
            WHEN e.event='buy_click' THEN 'buy_click:'||(e.props->>'path')
            WHEN e.event='invite_view' THEN 'invite_view:'||(e.props->>'at')
            WHEN e.event='video_progress' THEN 'video_progress:'||(e.props->>'percent')
-           ELSE e.event END) AS events
+           ELSE e.event END) AS events,
+         array_agg(DISTINCT e.props->>'mix') FILTER (WHERE e.event='video_play' AND e.props ? 'mix') AS mixes
        FROM amp_funnel_events e JOIN amp_funnel_visitors v USING(visitor_id)
        WHERE ${cohort} AND (e.event<>'checkout_return' OR e.props->>'outcome'='success')
        GROUP BY e.visitor_id`,
-    )
-  ).map((r) => new Set(r.events));
+  );
+  const paths = visitorPaths.map((r) => new Set(r.events));
   const reachedCount = (...events: string[]) =>
     paths.filter((path) => events.every((e) => path.has(e))).length;
   const first = reachedCount(FUNNEL_STEPS[0]);
@@ -162,6 +183,31 @@ export async function funnelReport(
       fromPrevious: ratio(continued, previous),
       fromFirst: ratio(count, first),
       dropOff: previous - continued,
+    };
+  });
+  // A browser that cleared its storage can hear two mixes; it counts for neither.
+  const filmMixes: FilmMixResult[] = FILM_MIXES.map((mix) => {
+    const heard = visitorPaths
+      .filter((r) => r.mixes?.length === 1 && r.mixes[0] === mix)
+      .map((r) => new Set(r.events));
+    const did = (...events: string[]) =>
+      heard.filter((path) => events.some((e) => path.has(e))).length;
+    return {
+      mix,
+      song: FILM_MIX_SONGS[mix],
+      played: heard.length,
+      watchedHalf: did("video_progress:50"),
+      finished: did("video_progress:100"),
+      triedFree: did("try_click"),
+      signedUp: did("account_session"),
+      buyClicks: did(
+        "buy_click:card",
+        "buy_click:funded",
+        "trial_buy_click:card",
+        "trial_buy_click:funded",
+      ),
+      purchased: did("purchase"),
+      signupRate: ratio(did("account_session"), heard.length),
     };
   });
   const pitchViewers = reachedCount("pitch_view");
@@ -264,6 +310,7 @@ export async function funnelReport(
     visitors,
     steps,
     pitch,
+    filmMixes,
     trialBuy,
     unattributedPurchases: unattributed,
     breakdowns,
@@ -333,6 +380,34 @@ export function formatFunnelReport(report: FunnelReport): string {
       table(
         ["Pitch step", "Visitors", "From pitch"],
         report.pitch.map((s) => [s.step, s.visitors, percent(s.fromPitch)]),
+      ),
+    );
+  if (report.filmMixes.some((m) => m.played))
+    out.push(
+      "",
+      table(
+        [
+          "Film mix",
+          "Played",
+          "Half",
+          "Finished",
+          "Tried free",
+          "Signed up",
+          "Sign-up rate",
+          "Buy clicks",
+          "Bought",
+        ],
+        report.filmMixes.map((m) => [
+          `${m.mix}: ${m.song}`,
+          m.played,
+          m.watchedHalf,
+          m.finished,
+          m.triedFree,
+          m.signedUp,
+          percent(m.signupRate),
+          m.buyClicks,
+          m.purchased,
+        ]),
       ),
     );
   if (report.trialBuy[0]?.visitors)

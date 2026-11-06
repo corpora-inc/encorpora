@@ -221,6 +221,15 @@ test("pitch actions map to GA's recommended names with only allowed parameters",
       name: "video_progress",
       params: { video_percent: percent },
     });
+  // The mix is measured first-party; GA receives only the fixed parameters.
+  assert.deepEqual(
+    googleEvent("video_play", { mix: "b" }, card),
+    googleEvent("video_play", {}, card),
+  );
+  assert.deepEqual(
+    googleEvent("video_progress", { percent: 50, mix: "b" }, card),
+    googleEvent("video_progress", { percent: 50 }, card),
+  );
   assert.deepEqual(googleEvent("video_progress", { percent: 100 }, card), {
     name: "video_complete",
     params: { video_percent: 100 },

@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { trackOnce } from "../../lib/analytics";
 import { useLoggedError } from "../../feedback";
 import {
+  browserFilmMix,
   chooseSource,
   formatDuration,
   reachedQuartiles,
@@ -9,10 +10,18 @@ import {
 } from "./video";
 import styles from "./Pitch.module.css";
 
+function localStorageOrNull() {
+  try {
+    return window.localStorage;
+  } catch {
+    return null;
+  }
+}
+
 /**
  * The pitch video in a box reserved at the media's aspect ratio, so nothing
  * moves when the poster, the movie or an error arrives. The poster is a
- * button: one tap plays with sound, captions on. Native controls take over
+ * button: one tap plays with sound, with its captions on. Native controls take over
  * once it plays. Nothing but the poster loads before that tap.
  */
 export function PitchVideo({ video }: { video: Video }) {
@@ -22,12 +31,16 @@ export function PitchVideo({ video }: { video: Video }) {
   const [source, setSource] = useState<string | null>(null);
   const [error, setError] = useState("");
   useLoggedError(error);
+  const [mix] = useState(() =>
+    video.mixes ? browserFilmMix(localStorageOrNull()) : undefined,
+  );
+  const measured = mix ? { mix } : {};
   const duration = formatDuration(video.durationSeconds);
 
   function start() {
     const box = element.current?.parentElement?.getBoundingClientRect();
     const chosen = chooseSource(
-      video.sources,
+      (mix && video.mixes?.[mix]) || video.sources,
       Math.ceil((box?.width ?? 640) * (window.devicePixelRatio || 1)),
       (type) => !!element.current?.canPlayType(type),
     );
@@ -71,7 +84,7 @@ export function PitchVideo({ video }: { video: Video }) {
           src={source ?? undefined}
           aria-labelledby={label}
           tabIndex={source ? 0 : -1}
-          onPlay={() => trackOnce("pitch-video-play", "video_play", {})}
+          onPlay={() => trackOnce("pitch-video-play", "video_play", measured)}
           onTimeUpdate={(event) => {
             const node = event.currentTarget;
             const total = Number.isFinite(node.duration)
@@ -85,25 +98,31 @@ export function PitchVideo({ video }: { video: Video }) {
               reported.current.add(percent);
               trackOnce(`pitch-video-${percent}`, "video_progress", {
                 percent,
+                ...measured,
               });
             }
           }}
           onEnded={() => {
             if (reported.current.has(100)) return;
             reported.current.add(100);
-            trackOnce("pitch-video-100", "video_progress", { percent: 100 });
+            trackOnce("pitch-video-100", "video_progress", {
+              percent: 100,
+              ...measured,
+            });
           }}
           onError={() => {
             if (source) setError("The video couldn’t load. Try again.");
           }}
         >
-          <track
-            default
-            kind="captions"
-            src={video.captions.url}
-            srcLang={video.captions.language}
-            label={video.captions.label}
-          />
+          {video.captions && (
+            <track
+              default
+              kind="captions"
+              src={video.captions.url}
+              srcLang={video.captions.language}
+              label={video.captions.label}
+            />
+          )}
         </video>
         {!source && (
           <button
