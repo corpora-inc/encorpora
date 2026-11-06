@@ -360,16 +360,6 @@
   border-radius: var(--radius-control);
   background: var(--color-surface-sunken);
 }
-@media (prefers-reduced-motion: no-preference) {
-  .skeleton span {
-    animation: pulse 1.4s ease-in-out infinite;
-  }
-}
-@keyframes pulse {
-  50% {
-    opacity: 0.55;
-  }
-}
 
 /* The first choice fits within the viewport; long/zoomed content may still scroll. */
 .introContainer {

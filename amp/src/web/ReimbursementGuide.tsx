@@ -6,6 +6,7 @@ import {
 } from "../billing/evidence/reimbursement.js";
 import { stateNames } from "./us-states";
 import "./reimbursement.css";
+import { Loading } from "./ui/Loading";
 export function useReimbursementPrograms(token: string) {
   const [programs, setPrograms] = useState<ReimbursementProgram[] | null>(null);
   useEffect(() => {
@@ -57,7 +58,7 @@ export function ReimbursementGuide({
         before paying.
       </p>
       {programs === null ? (
-        <p aria-busy="true">Loading reimbursement guidance…</p>
+        <Loading>Loading reimbursement guidance…</Loading>
       ) : !states.length ? (
         <p>
           Ask your program about its reimbursement rules. Download your receipt

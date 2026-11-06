@@ -633,6 +633,7 @@ export function SignInScreen() {
               }
               type="submit"
               disabled={busy || !!pending}
+              aria-busy={busy}
             >
               Create account with a passkey
             </Button>
@@ -698,6 +699,7 @@ export function SignInScreen() {
                 variant="primary"
                 type="submit"
                 disabled={busy || !!pending}
+                aria-busy={busy}
               >
                 {
                   {

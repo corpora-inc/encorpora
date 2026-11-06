@@ -748,6 +748,7 @@ export function StructuredWorkAnswer({
   onChange,
   locked,
   busy,
+  sending,
   resolved,
   submit,
 }: {
@@ -756,6 +757,8 @@ export function StructuredWorkAnswer({
   onChange: (value: string) => void;
   locked: boolean;
   busy: boolean;
+  /** An answer is on its way, so Check shows the wave. */
+  sending: boolean;
   resolved: boolean;
   submit: () => void;
 }) {
@@ -796,7 +799,7 @@ export function StructuredWorkAnswer({
           className="choice-submit work-check"
           type="submit"
           disabled={busy || resolved || !complete}
-          aria-busy={busy}
+          aria-busy={sending}
         >
           Check
         </button>

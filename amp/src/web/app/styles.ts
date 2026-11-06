@@ -29,3 +29,5 @@ import "../practice-tablet.css";
 import "../lesson-video.css";
 // Lesson reading rhythm sets the reading surface over everything above.
 import "../lesson-reading.css";
+// After everything it sits on: the one treatment for a wait on the server.
+import "../ui/loading.css";

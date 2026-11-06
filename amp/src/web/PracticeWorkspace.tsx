@@ -66,6 +66,7 @@ import {
   prepareFeedbackSound,
   playCorrectFeedback,
 } from "./features/practice/feedback-preferences";
+import { Loading } from "./ui/Loading";
 type ReportSheet = typeof import("./ReportProblemSheet");
 /** The report sheet uses the UI kit's stylesheets, so it loads in the
  * browser on demand (this module also loads under Node). */
@@ -328,6 +329,11 @@ export function PracticeWorkspace(props: Props) {
   const [panel, setPanel] = useState<"hint" | "lesson" | null>(null);
   const [entering, setEntering] = useState(false);
   const [lessonLoading, setLessonLoading] = useState(false);
+  // Which control is waiting: only the one that was pressed shows the wave.
+  const [skipping, setSkipping] = useState(false);
+  useEffect(() => {
+    if (!busy) setSkipping(false);
+  }, [busy]);
   const lessonRequest = useRef(0);
   function advance() {
     lessonRequest.current++;
@@ -549,6 +555,8 @@ export function PracticeWorkspace(props: Props) {
     };
   }, [outcome?.id, sideBySide]);
   const locked = busy || pending || !!outcome;
+  // Check shows the wave for an answer on its way, not for a skip or a hint.
+  const sending = busy && !skipping && !(panel === "hint" && !hint);
   // AMP's keypad is always present for typed answers; touch devices never
   // raise the system keyboard, and a physical keyboard still types.
   const keypad = !choice && !plot && !parts && !figures && !work;
@@ -610,6 +618,7 @@ export function PracticeWorkspace(props: Props) {
           onChange={setResponse}
           locked={locked}
           busy={busy}
+          sending={sending}
           resolved={!!outcome}
           submit={submitAnswer}
         />
@@ -622,6 +631,7 @@ export function PracticeWorkspace(props: Props) {
           onChange={setResponse}
           locked={locked}
           busy={busy}
+          sending={sending}
           resolved={!!outcome}
           submit={props.submit}
         />
@@ -634,6 +644,7 @@ export function PracticeWorkspace(props: Props) {
           onChange={setResponse}
           locked={locked}
           busy={busy}
+          sending={sending}
           resolved={!!outcome}
           submit={submitAnswer}
         />
@@ -644,6 +655,7 @@ export function PracticeWorkspace(props: Props) {
           response={problem.response}
           value={outcome ? outcome.response : response}
           busy={busy}
+          sending={sending}
           resolved={!!outcome}
           submit={props.submit}
         />
@@ -716,7 +728,7 @@ export function PracticeWorkspace(props: Props) {
             className="choice-submit"
             type="submit"
             disabled={busy || (!outcome && !complete)}
-            aria-busy={busy}
+            aria-busy={sending}
           >
             Check
           </button>
@@ -766,7 +778,7 @@ export function PracticeWorkspace(props: Props) {
             className="choice-submit"
             type="submit"
             disabled={busy || (!outcome && !response)}
-            aria-busy={busy}
+            aria-busy={sending}
           >
             {/* One label always. A lost connection is explained beside the field,
                 and Check resends the same answer. */}
@@ -822,7 +834,7 @@ export function PracticeWorkspace(props: Props) {
               className="answer-action"
               type="submit"
               disabled={busy || (!outcome && !response.trim())}
-              aria-busy={busy}
+              aria-busy={sending}
             >
               {/* One label always. A lost connection is explained beside the field,
                 and Check resends the same answer. */}
@@ -1101,8 +1113,12 @@ export function PracticeWorkspace(props: Props) {
           <button
             className="text-button skip-action"
             disabled={busy}
+            aria-busy={busy && skipping}
             aria-label="Skip this problem and see its answer"
-            onClick={() => props.skip?.()}
+            onClick={() => {
+              setSkipping(true);
+              props.skip?.();
+            }}
           >
             Skip
           </button>
@@ -1110,6 +1126,7 @@ export function PracticeWorkspace(props: Props) {
         <button
           className="text-button"
           disabled={lessonLoading}
+          aria-busy={lessonLoading}
           onClick={async (event) => {
             lessonTrigger.current = event.currentTarget;
             const requestedProblem = problem.id;
@@ -1480,6 +1497,7 @@ export function PracticeWorkspace(props: Props) {
               <button
                 className="next-action"
                 ref={continueButton}
+                aria-busy={busy}
                 onClick={() => {
                   if (!busy) advance();
                 }}
@@ -1600,7 +1618,7 @@ export function PracticeWorkspace(props: Props) {
                   {hint ? (
                     <MathText text={hint} />
                   ) : busy ? (
-                    "Finding your hint…"
+                    <Loading inline>Finding your hint…</Loading>
                   ) : (
                     "Your hint could not be loaded. Close this panel and try again."
                   )}

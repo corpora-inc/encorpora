@@ -55,6 +55,7 @@ const SkillLesson = lazy(() => import("./SkillLesson"));
 import { trialEvidenceOptions } from "./queries";
 import { usePathwaysMetadata } from "./usePathwaysMetadata";
 import "./pathways.css";
+import { Loading } from "../../ui/Loading";
 const emptyEvidence: Evidence[] = [];
 const bandOptions: ListboxOption[] = [
   { value: "", label: "All grades & courses" },
@@ -80,11 +81,13 @@ function GuestMap() {
       actionLabel="Start free assessment"
       guestMode
       notice={
-        trial.isError
-          ? "Your assessment could not be loaded. Retry to see your progress."
-          : trial.isPending
-            ? "Loading your assessment…"
-            : "Explore the curriculum. Start a free assessment to illuminate your skills."
+        trial.isError ? (
+          "Your assessment could not be loaded. Retry to see your progress."
+        ) : trial.isPending ? (
+          <Loading inline>Loading your assessment…</Loading>
+        ) : (
+          "Explore the curriculum. Start a free assessment to illuminate your skills."
+        )
       }
       noticeImportant={trial.isError || trial.isPending}
       controls={
@@ -115,15 +118,17 @@ function TrialAtlas({ session }: { session: TrialSession }) {
       }
       frontier={trial.data?.frontier.current}
       notice={
-        progress.isError
-          ? "Progress could not be loaded. Retry to see your illumination."
-          : trial.isError
-            ? "Your assessment status could not be loaded. Retry to continue."
-            : progress.isPending
-              ? "Loading earned skills…"
-              : trial.data?.remaining === 0
-                ? "Your free practice lit up this map. Explore your skills and lessons, or choose a plan for more adaptive practice."
-                : "Your free assessment and practice are lighting up this map."
+        progress.isError ? (
+          "Progress could not be loaded. Retry to see your illumination."
+        ) : trial.isError ? (
+          "Your assessment status could not be loaded. Retry to continue."
+        ) : progress.isPending ? (
+          <Loading inline>Loading earned skills…</Loading>
+        ) : trial.data?.remaining === 0 ? (
+          "Your free practice lit up this map. Explore your skills and lessons, or choose a plan for more adaptive practice."
+        ) : (
+          "Your free assessment and practice are lighting up this map."
+        )
       }
       controls={
         progress.isError || trial.isError ? (
@@ -178,23 +183,25 @@ function LearnerMap({ session }: { session: AuthSession }) {
       ["active", "development"].includes(me.data.family.consent.status) &&
       me.data.family.learners.find((l) => l.id === learner.id)?.canPractice
     );
-  const notice = me.isPending
-    ? "Loading learners…"
-    : me.isError
-      ? "Learners could not be loaded. Retry to view progress."
-      : savedTrial.isError && me.data?.signedIn && learners.length === 0
-        ? "Your assessment could not be loaded. Retry to see your progress."
-        : savedTrial.isPending && me.data?.signedIn && learners.length === 0
-          ? "Loading your assessment…"
-          : me.data?.signedIn && learners.length === 0
-            ? "Add a learner to see earned skills."
-            : !learner
-              ? "Choose a learner to see earned skills."
-              : progress.isPending
-                ? "Loading earned skills…"
-                : progress.isError
-                  ? "Progress could not be loaded. The map shows the curriculum without earned skills."
-                  : `${learner.name} · Crystals grow with independent successes. Bright crystals show strong recorded practice.`;
+  const notice = me.isPending ? (
+    <Loading inline>Loading learners…</Loading>
+  ) : me.isError ? (
+    "Learners could not be loaded. Retry to view progress."
+  ) : savedTrial.isError && me.data?.signedIn && learners.length === 0 ? (
+    "Your assessment could not be loaded. Retry to see your progress."
+  ) : savedTrial.isPending && me.data?.signedIn && learners.length === 0 ? (
+    <Loading inline>Loading your assessment…</Loading>
+  ) : me.data?.signedIn && learners.length === 0 ? (
+    "Add a learner to see earned skills."
+  ) : !learner ? (
+    "Choose a learner to see earned skills."
+  ) : progress.isPending ? (
+    <Loading inline>Loading earned skills…</Loading>
+  ) : progress.isError ? (
+    "Progress could not be loaded. The map shows the curriculum without earned skills."
+  ) : (
+    `${learner.name} · Crystals grow with independent successes. Bright crystals show strong recorded practice.`
+  );
   if (me.data && !me.data.signedIn) return <GuestMap />;
   if (savedTrial.data && me.data?.signedIn && learners.length === 0)
     return <TrialAtlas session={savedTrial.data} />;
@@ -279,7 +286,7 @@ export function MapView({
 }: {
   evidence: Evidence[];
   start: "/try" | "/practice" | "/start" | "/try/practice" | "/try/plans";
-  notice: string;
+  notice: ReactNode;
   canPractice?: boolean;
   controls?: ReactNode;
   frontier?: Frontier;
@@ -506,7 +513,7 @@ export function MapView({
           <button onClick={() => void catalog.refetch()}>Retry map</button>
         </div>
       ) : !skills ? (
-        <p role="status">Loading the curriculum…</p>
+        <Loading>Loading the curriculum…</Loading>
       ) : (
         <>
           <div className="pathways-workspace">
@@ -787,7 +794,7 @@ export function MapView({
         )}
         {lesson && (
           <LessonBoundary key={lesson} onBack={() => setLesson(null)}>
-            <Suspense fallback={<p role="status">Loading lesson…</p>}>
+            <Suspense fallback={<Loading>Loading lesson…</Loading>}>
               <SkillLesson templateId={lesson} onBack={() => setLesson(null)} />
             </Suspense>
           </LessonBoundary>

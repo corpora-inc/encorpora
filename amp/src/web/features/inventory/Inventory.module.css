@@ -272,6 +272,9 @@
   border-radius: var(--radius-panel);
   color: var(--color-muted-text);
 }
+.empty > :global(.amp-loading) {
+  justify-content: center;
+}
 .emptyGem {
   display: block;
   font-size: 44px;

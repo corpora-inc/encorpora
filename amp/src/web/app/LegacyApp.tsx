@@ -101,6 +101,7 @@ import { ChooseHowToPay } from "../ChooseHowToPay";
 import { chosenPlan, storedTrial } from "../lib/pending-trial";
 import type { Me } from "../../account/contracts";
 import { LoadingScreen } from "../ui/LoadingScreen";
+import { Loading } from "../ui/Loading";
 import { Menu, MenuItem } from "../ui/Menu";
 import { LandingView } from "../lib/LandingView";
 import { useLearnerStore } from "../learner-store";
@@ -1257,9 +1258,22 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       (tab === "practice" || tab === "library"));
   usePracticeViewport((!!learner || familyOpen) && !flowPage);
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
+  // `/practice` before its problem arrives: the wave from sign-in keeps moving,
+  // never the overview behind it. A failure falls through to the overview,
+  // which shows it and offers Go.
+  const fetchingProblem =
+    route.parts[0] === "practice" &&
+    !problem &&
+    !!learner &&
+    learner.birthYear != null &&
+    learningAllowed &&
+    !changingBirthYear &&
+    !error &&
+    !loadFailed;
   if (
     firstRunHome ||
     leavingHome.current ||
+    fetchingProblem ||
     // The welcome states the configured free allowance: paint it once.
     (!token && !nativeRuntime && !catalog && !error && !loadFailed) ||
     (starting && token && !familySummary) ||
@@ -1548,9 +1562,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       ) : !familySummary ? (
         <section className="card welcome" aria-busy={busy}>
           <h2>
-            {error || loadFailed
-              ? "Let’s reconnect."
-              : "Getting your family ready…"}
+            {error || loadFailed ? (
+              "Let’s reconnect."
+            ) : (
+              <Loading inline>Getting your family ready…</Loading>
+            )}
           </h2>
           {(error || loadFailed) && (
             <button onClick={() => void action(loadFamily)}>Try again</button>
@@ -1625,7 +1641,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         />
       ) : route.parts[0] === "books" ? (
         <main className="library-main" aria-busy={!error}>
-          <h1>Opening your book…</h1>
+          <h1>
+            <Loading inline>Opening your book…</Loading>
+          </h1>
           <button onClick={() => navigate("/lessons")}>Back to lessons</button>
         </main>
       ) : tab === "practice" ? (

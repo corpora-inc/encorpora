@@ -18,6 +18,7 @@ import type {
   PublicFundingRequest,
 } from "../funding-purchase/contracts.js";
 import "./funding-purchase.css";
+import { Loading } from "./ui/Loading";
 interface Props {
   token: string;
   identity: string;
@@ -409,7 +410,7 @@ export function FundingPurchaseCenter({
         </p>
         <Toast message={error} onDismiss={() => setError("")} />
         {loading ? (
-          <p role="status">Loading purchase options…</p>
+          <Loading>Loading purchase options…</Loading>
         ) : selected && !request ? (
           <p>
             This request is not in the current list. Refresh its status or

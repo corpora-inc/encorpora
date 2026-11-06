@@ -126,7 +126,7 @@ export function WorkbookList({
         </ul>
       ) : (
         !query.error && (
-          <div className={styles.skeleton} aria-hidden="true">
+          <div className={`${styles.skeleton} amp-skeleton`} aria-hidden="true">
             <span />
             <span />
             <span />

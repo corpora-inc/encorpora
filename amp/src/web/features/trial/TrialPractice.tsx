@@ -51,6 +51,7 @@ import { approximateAge } from "./level-copy";
 import { strandOrder } from "./strands";
 import { unlockedTrialWorkbook } from "../../../learning/trial-workbooks";
 import { AssessmentWorkbookOffer } from "./AssessmentWorkbookOffer";
+import { LoadingScreen } from "../../ui/LoadingScreen";
 
 /** `/try/practice`: placement, then adaptive practice, full screen. The
  * existing workspace, planner, lessons and hints; only the meter is new. */
@@ -549,8 +550,9 @@ function Practice({ session }: { session: TrialSession }) {
   );
 }
 
-/** The workspace's frame while the first problem loads: nothing moves when
- * it arrives. A failure shows inline with a retry. */
+/** The workspace's frame while the first problem loads, with the wave from
+ * sign-in still moving over it: nothing moves when the problem arrives. A
+ * failure shows inline with a retry. */
 function PracticeSkeleton({
   error = "",
   retry,
@@ -592,6 +594,7 @@ function PracticeSkeleton({
           </div>
         </section>
       </main>
+      {!error && <LoadingScreen overlay />}
     </div>
   );
 }

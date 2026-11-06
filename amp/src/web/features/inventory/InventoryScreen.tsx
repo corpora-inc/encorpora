@@ -20,6 +20,7 @@ import { gradeName } from "../../Home";
 import { buttonClass } from "../../ui/Button";
 import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import styles from "./Inventory.module.css";
+import { Loading } from "../../ui/Loading";
 
 type Filter = "tried" | "illuminated" | "strong" | "all";
 const filters: { id: Filter; label: string }[] = [
@@ -248,8 +249,8 @@ export function InventoryScreen() {
           </button>
         </section>
       ) : busy ? (
-        <div className={styles.empty} role="status">
-          Loading your skills…
+        <div className={styles.empty}>
+          <Loading>Loading your skills…</Loading>
         </div>
       ) : !visible.length ? (
         <section className={styles.empty}>

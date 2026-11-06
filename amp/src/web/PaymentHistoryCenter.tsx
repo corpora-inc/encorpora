@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./payment-history.css";
 import { ReceiptDetails } from "./ReceiptDetails.js";
 import { receiptRequestSchema } from "../billing/evidence/reimbursement.js";
+import { Loading } from "./ui/Loading";
 export interface PaymentSummary {
   id: string;
   learnerReference: string;
@@ -339,11 +340,11 @@ export function PaymentHistoryCenter({
               checkout attempts are not receipts.
             </p>
             {records === null ? (
-              <p role="status">
-                {busy
-                  ? "Loading payment records…"
-                  : "Refresh to load payment records."}
-              </p>
+              busy ? (
+                <Loading>Loading payment records…</Loading>
+              ) : (
+                <p role="status">Refresh to load payment records.</p>
+              )
             ) : !records.length ? (
               <div className="payment-empty">
                 <h2>No supported payment records</h2>

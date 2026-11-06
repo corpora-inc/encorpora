@@ -32,3 +32,5 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 ### Web application boundaries
 
 Follow [the web architecture](docs/architecture/web-app.md). New auth and onboarding screens live in `src/web/features/`; typed TanStack routes and providers live in `src/web/app/`. `main.tsx` only bootstraps providers and the router. TanStack Query owns the account-scoped `/me` resource, including its Family projection; zustand owns selection and memory-only form drafts. Server mutations invalidate that canonical resource. Shared accessible controls and theme tokens live in `src/web/ui/`. The legacy host bridges Family, billing, trial, lessons and practice until their feature migrations; do not add new screens to it.
+
+- **A wait on the server always moves, and looks the same everywhere** (`src/web/ui/loading.css`). A whole screen uses `LoadingScreen`; a wait inside a screen uses `Loading` from `ui/Loading.tsx`, never plain "Loading…" text; a pressed button sets `aria-busy` on that button only, which swaps its label for the moving wave; a reserved block adds the `amp-skeleton` class. `scripts/verify-loading-ui.ts` fails on a blank, still wait.

@@ -5,6 +5,7 @@ import type { PublicFundingOffer } from "../funding-purchase/contracts.js";
 import { ReimbursementGuide } from "./ReimbursementGuide";
 import { PlanOptions } from "./PlanOptions";
 import { stateNames } from "./us-states";
+import { Loading } from "./ui/Loading";
 
 type Props = {
   token: string;
@@ -89,9 +90,7 @@ export function ChooseHowToPay(props: Props) {
         <section className="pay-option" aria-labelledby="pay-card">
           <h2 id="pay-card">Card</h2>
           {card === undefined ? (
-            <p aria-busy="true" className="pay-muted">
-              Loading…
-            </p>
+            <Loading className="pay-muted">Loading…</Loading>
           ) : card ? (
             <>
               <PlanOptions
@@ -117,9 +116,7 @@ export function ChooseHowToPay(props: Props) {
         <section className="pay-option" aria-labelledby="pay-funds">
           <h2 id="pay-funds">ESA or education funds</h2>
           {funds === undefined ? (
-            <p aria-busy="true" className="pay-muted">
-              Loading…
-            </p>
+            <Loading className="pay-muted">Loading…</Loading>
           ) : states.length ? (
             <>
               <label>

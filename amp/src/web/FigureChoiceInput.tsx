@@ -157,12 +157,15 @@ export function FigureChoiceAnswer({
   response,
   value,
   busy,
+  sending,
   resolved,
   submit,
 }: {
   response: FigureChoiceResponse;
   value: string;
   busy: boolean;
+  /** An answer is on its way, so Check shows the wave. */
+  sending: boolean;
   /** The problem has an outcome; Check is replaced by the feedback sheet. */
   resolved: boolean;
   submit: () => void;
@@ -186,7 +189,7 @@ export function FigureChoiceAnswer({
         className="choice-submit figure-choice-check"
         type="submit"
         disabled={busy || resolved || !letter}
-        aria-busy={busy}
+        aria-busy={sending}
       >
         Check
       </button>
