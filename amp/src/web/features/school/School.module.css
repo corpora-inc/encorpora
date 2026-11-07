@@ -298,9 +298,6 @@ button.copy[data-done="copied"] {
 .inviteCard > :first-child {
   padding-inline: 0;
 }
-.chooser > a:last-child {
-  justify-self: start;
-}
 .chooserList {
   display: grid;
   gap: var(--space-2);

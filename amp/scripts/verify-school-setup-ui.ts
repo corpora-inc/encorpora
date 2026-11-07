@@ -1,13 +1,17 @@
 /**
  * The school's first run in a real browser, on the real API in accounts mode and
- * a real database: a new person signs up, walks every setup step, imports a CSV
- * of 24 students, sees them, invites a teacher, and that teacher accepts in a
- * second browser and lands on /school. Chromium first, then WebKit at 390 and
- * 1280. Then geometry for every screen at 320, 390, 768 and 1280, light and
- * dark, and failed requests that must move nothing.
+ * a real database: we issue a school (`school-admin` create-school), its new
+ * admin opens the setup link, signs up, finds the school step answered, walks
+ * every other step with nothing in the step list moving, imports a CSV of 24
+ * students, sees them, invites a teacher, and that teacher accepts in a second
+ * browser and lands on /school. Chromium first, then WebKit at 390 and 1280.
+ * Then geometry for every screen at 320, 390, 768 and 1280, light and dark, and
+ * failed requests that must move nothing.
  *
  * Screenshots go to docs/reviews/school-setup/ at 1280 and 390, and to
  * artifacts/school-setup/ at the other widths.
+ *
+ *     AMP_TEST_DATABASE_URL=... npx tsx scripts/verify-school-setup-ui.ts [--port 4398]
  */
 import { secureChromium } from "../browser-security.mjs";
 import assert from "node:assert/strict";
@@ -25,6 +29,7 @@ import {
 } from "playwright";
 import { createServer } from "vite";
 import { registerFamilyRoutes } from "../src/family/routes";
+import { SchoolRepository } from "../src/schools/repository";
 import { registerSchoolRoutes } from "../src/schools/routes";
 import {
   accountsAuth,
@@ -44,11 +49,14 @@ import {
   shiftRecorder,
 } from "./app-shell-probe";
 import { migrate } from "./migrate";
+import { schoolAdmin } from "./school-admin";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 
 const chromium = secureChromium(rawChromium);
-const webPort = 4398;
-const apiPort = 4399;
+const portArgument = process.argv.indexOf("--port");
+const webPort =
+  portArgument >= 0 ? Number(process.argv[portArgument + 1]) : 4398;
+const apiPort = webPort + 1;
 const origin = `http://127.0.0.1:${webPort}`;
 const committed = "docs/reviews/school-setup";
 const scratch = "artifacts/school-setup";
@@ -84,6 +92,13 @@ console.info = (...args: unknown[]) => {
   if (match) confirmations.push(match[1]!);
   else if (!line.startsWith("[accounts]")) info(...args);
 };
+const services = {
+  secret: accounts.config.secret,
+  origin,
+  mail: async (to: string, subject: string, text: string, link: string) => {
+    mail.push({ to, subject, text, url: link });
+  },
+};
 const app = buildApp({ repository, authenticate, publicUrl: origin });
 await registerAccountRoutes(app, accounts, authenticate);
 await registerFamilyRoutes(app, { pool: repository.pool, authenticate });
@@ -91,11 +106,7 @@ await registerSchoolRoutes(app, {
   pool: repository.pool,
   authenticate,
   services: {
-    secret: accounts.config.secret,
-    origin,
-    mail: async (to, subject, text, link) => {
-      mail.push({ to, subject, text, url: link });
-    },
+    ...services,
     signIn: {
       google: "synthetic-google-client.apps.example",
       microsoft: "00000000-1111-2222-3333-444444444444",
@@ -184,6 +195,38 @@ async function shot(page: Page, name: string, width: number, theme: string) {
   });
 }
 const pause = (page: Page) => settle(page, 120);
+const schools = new SchoolRepository(repository.pool);
+const day = (offset: number) =>
+  new Date(Date.now() + offset * 86_400_000).toISOString().slice(0, 10);
+/** What an operator runs once a school has a contract, or a pilot. */
+const issue = (name: string, adminEmail: string) =>
+  schoolAdmin(
+    schools,
+    "create-school",
+    {
+      name,
+      adminEmail,
+      seats: 30,
+      startsOn: day(-1),
+      endsOn: day(300),
+      reference: "Pilot",
+    },
+    services,
+  ) as Promise<{ orgId: string; setupUrl: string }>;
+/** The setup link's token and proof, as the admin's browser sends them. */
+const linkParts = (setupUrl: string) => {
+  const [token, proof] = setupUrl.split("#")[1]!.split(".");
+  return { token, proof };
+};
+/** Where each step of the list on the left sits. An answer arriving under a
+ * step must move nothing. */
+const ledgerRows = (page: Page) =>
+  page.locator("aside ol > li").evaluateAll((rows) =>
+    rows.map((row) => {
+      const box = row.getBoundingClientRect();
+      return [Math.round(box.top), Math.round(box.height)];
+    }),
+  );
 /** What a failed run was looking at. */
 const last: { page: Page | null } = { page: null };
 
@@ -238,26 +281,75 @@ async function journey(
   page.on("pageerror", (error) => errors.push(error.message));
   last.page = page;
   const email = `head-${randomUUID().slice(0, 8)}@alder.example`;
-  // Signed out: through the existing sign-in and straight back.
+  // Nobody starts a school alone: `/school/new` without an invitation is the
+  // page that says how a school starts.
   await page.goto(`${origin}/school/new`);
-  await page.waitForURL(/\/sign-up\?/);
+  await page.waitForURL(`${origin}/schools`);
+  await heading(page, /complete math curriculum/);
+  // We issue the school; its admin opens the link, signed out.
+  const issued = await issue("Alder Street School", email);
+  const setupMail = mail.find((entry) => entry.url === issued.setupUrl);
   check(
-    `${label} sign-up carries the way back`,
-    new URL(page.url()).searchParams.get("next") === "/school/new",
-    page.url(),
+    `${label} the setup link is mailed, worded for a school`,
+    setupMail?.to === email &&
+      /Alder Street School is ready/.test(setupMail.subject) &&
+      !/parent/i.test(setupMail.text),
+    setupMail,
   );
-  await page.getByText("Setting up your school continues").waitFor();
+  await page.goto(issued.setupUrl);
+  await heading(page, "Set up Alder Street School");
+  await shot(page, "invite-setup-signed-out", width, theme);
+  await page.getByRole("link", { name: "Create an account" }).click();
+  await page.waitForURL(/\/sign-up/);
+  await page.getByText("Your invitation continues").waitFor();
   await shot(page, "sign-up-school", width, theme);
   await signUp(page, email);
-  await heading(page, "Where will you use AMP?");
-  check(`${label} back on setup`, page.url().includes("/school/new"));
+  await heading(page, "Set up Alder Street School");
+  await page.getByLabel(/Your name/).fill("Grace Okafor");
+  await page.getByRole("button", { name: "Start setup" }).click();
+  // The school step is answered: setup opens at the calendar.
+  await heading(page, "When does your school year run?");
+  check(
+    `${label} setup opens at the calendar`,
+    page.url().includes(`org=${issued.orgId}`) &&
+      page.url().includes("step=calendar"),
+    page.url(),
+  );
   const confirmed = confirmations.filter((to) => to === email).length;
-  check(`${label} one confirmation mail for a new head`, confirmed === 1, {
-    confirmed,
-  });
+  check(
+    `${label} the setup link confirms the head's address`,
+    confirmed === 0,
+    { confirmed },
+  );
+  const wide = width >= 1024;
+  const rows = wide ? await ledgerRows(page) : [];
+  if (wide) {
+    const ledger = await page.locator("aside ol > li").allInnerTexts();
+    check(
+      `${label} the school step shows its answer`,
+      /School\s+Alder Street School/.test(ledger[0] ?? ""),
+      ledger,
+    );
+    check(
+      `${label} every step has its line before it's answered`,
+      /When the year runs/.test(ledger[1] ?? "") &&
+        /What students see/.test(ledger[2] ?? "") &&
+        /Read and accept/.test(ledger[3] ?? ""),
+      ledger,
+    );
+  }
+  // The school step stays editable: its name, who it's for, the time zone.
+  await page.getByRole("link", { name: "Back" }).click();
+  await heading(page, "Where will you use AMP?");
+  check(
+    `${label} the name is filled in`,
+    (await page.getByLabel("School name").inputValue()) ===
+      "Alder Street School",
+  );
   await shot(page, "setup-1-school", width, theme);
   // A missing name is said next to the field, and moves nothing.
   const next = page.getByRole("button", { name: "Continue" });
+  await page.getByLabel("School name").fill("");
   const before = await next.boundingBox();
   await next.click();
   await page.getByText("Enter a name.").waitFor();
@@ -271,6 +363,12 @@ async function journey(
   await next.click();
   await heading(page, "When does your school year run?");
   check(`${label} step in the URL`, page.url().includes("step=calendar"));
+  if (wide)
+    check(
+      `${label} the step list holds still`,
+      JSON.stringify(await ledgerRows(page)) === JSON.stringify(rows),
+      { rows, now: await ledgerRows(page) },
+    );
   await page.getByRole("radio", { name: "Trimesters" }).click();
   await page.getByText("Trimester 3").waitFor();
   await shot(page, "setup-2-calendar", width, theme);
@@ -318,6 +416,19 @@ async function journey(
   await page.getByRole("radio", { name: "Trimesters" }).click();
   await page.getByRole("button", { name: "Continue" }).click();
   await heading(page, "What should students see?");
+  if (wide) {
+    check(
+      `${label} the calendar's answer arrives in place`,
+      JSON.stringify(await ledgerRows(page)) === JSON.stringify(rows),
+      { rows, now: await ledgerRows(page) },
+    );
+    check(
+      `${label} the calendar's answer`,
+      /trimesters/.test(
+        (await page.locator("aside ol > li").nth(1).innerText()) ?? "",
+      ),
+    );
+  }
   await page.getByRole("radio", { name: /Levels visible/ }).click();
   await shot(page, "setup-3-experience", width, theme);
   await page.reload();
@@ -325,6 +436,12 @@ async function journey(
   await page.getByRole("radio", { name: /Levels visible/ }).click();
   await page.getByRole("button", { name: "Continue" }).click();
   await heading(page, "Accept the data agreement");
+  if (wide)
+    check(
+      `${label} the experience's answer arrives in place`,
+      JSON.stringify(await ledgerRows(page)) === JSON.stringify(rows),
+      { rows, now: await ledgerRows(page) },
+    );
   await shot(page, "setup-4-agreement", width, theme);
   await page.getByRole("button", { name: "Read the agreement" }).click();
   const sheet = page.getByRole("dialog");
@@ -344,6 +461,13 @@ async function journey(
   await page.getByLabel("Your title").fill("Head of School");
   await page.getByRole("button", { name: "Accept" }).click();
   await heading(page, "Add your students");
+  if (wide)
+    check(
+      `${label} the agreement's answer arrives in place`,
+      JSON.stringify(await ledgerRows(page)) === JSON.stringify(rows),
+      { rows, now: await ledgerRows(page) },
+    );
+  await page.getByText("30 seats are ready through").waitFor();
   await shot(page, "setup-5-students", width, theme);
   await page.reload();
   await heading(page, "Add your students");
@@ -539,7 +663,7 @@ async function journey(
   check(`${label} no uncaught errors`, errors.length === 0, errors);
   const state = await context.storageState();
   await context.close();
-  return { orgId, state };
+  return { orgId: issued.orgId, state };
 }
 
 /** A lone teacher: a class to land on, and the school collapsed around it. */
@@ -556,11 +680,21 @@ async function loneTeacher(
   const page = await context.newPage();
   last.page = page;
   page.setDefaultTimeout(30_000);
-  await page.goto(`${origin}/school/new`);
-  await page.waitForURL(/\/sign-up\?/);
-  await signUp(page, `solo-${randomUUID().slice(0, 8)}@birch.example`);
+  const email = `solo-${randomUUID().slice(0, 8)}@birch.example`;
+  const issued = await issue("Ms. Vega’s Class", email);
+  await page.goto(issued.setupUrl);
+  await heading(page, "Set up Ms. Vega’s Class");
+  await page.getByRole("link", { name: "Create an account" }).click();
+  await page.waitForURL(/\/sign-up/);
+  await signUp(page, email);
+  await heading(page, "Set up Ms. Vega’s Class");
+  await page.getByLabel(/Your name/).fill("Ines Vega");
+  await page.getByRole("button", { name: "Start setup" }).click();
+  await heading(page, "When does your school year run?");
+  // One teacher and one class: said on the school step.
+  await page.getByRole("link", { name: "Back" }).click();
   await heading(page, "Where will you use AMP?");
-  await page.getByLabel("School name").fill("Ms. Vega’s Class");
+  await page.getByRole("radio", { name: /Just my class/ }).click();
   await page.getByRole("button", { name: "Continue" }).click();
   await heading(page, "When does your school year run?");
   await page.getByRole("button", { name: "Decide later" }).click();
@@ -611,8 +745,8 @@ async function loneTeacher(
   await context.close();
 }
 
-/** A parent who also works at two schools: the family app, a way to the school
- * in its drawer, and a chooser, since there are several. */
+/** A parent who also works at two schools: the family app, the place switcher
+ * in its drawer, and a chooser at `/school`, since there are several. */
 async function teacherWhoIsAParent(browser: Browser, width: number) {
   const label = `parent ${width}`;
   const context = await browser.newContext({
@@ -638,15 +772,23 @@ async function teacherWhoIsAParent(browser: Browser, width: number) {
     "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'pilot',$1,'active',now()-interval '1 day',now()+interval '300 days')",
     [`fixture-${jordan.id}`, jordan.id],
   );
+  const email = (
+    await repository.pool.query(
+      "SELECT email FROM amp_auth_users WHERE id=$1",
+      [account.slice(4)],
+    )
+  ).rows[0].email as string;
   for (const name of ["Alder Street School", "Birch Road School"]) {
-    const created = await context.request.post(
-      `${origin}/api/v1/school/setup`,
+    const issued = await issue(name, email);
+    const accepted = await context.request.post(
+      `${origin}/api/v1/school/invites/accept`,
       {
-        data: { name, shape: "school", timezone: "America/New_York" },
+        data: { ...linkParts(issued.setupUrl), name: "Fixture Signer" },
         headers: { Origin: origin },
       },
     );
-    const org = (await created.json()).org.id as string;
+    assert.ok(accepted.ok());
+    const org = issued.orgId;
     const finish = await context.request.post(
       `${origin}/api/v1/school/orgs/${org}/setup/agreement`,
       {
@@ -670,10 +812,27 @@ async function teacherWhoIsAParent(browser: Browser, width: number) {
   );
   check(`${label} a parent keeps what a parent has`, !suppressed.rowCount);
   await page.goto(`${origin}/`);
-  await page.locator("[data-navigation-trigger]").click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
   const drawer = page.getByRole("dialog");
   await drawer.waitFor();
-  await drawer.getByRole("link", { name: "School" }).click();
+  await drawer
+    .getByRole("button", { name: "Family and practice: switch place" })
+    .click();
+  const places = await page
+    .getByRole("menu")
+    .getByRole("menuitem")
+    .allInnerTexts();
+  check(
+    `${label} the switcher lists the family and both schools`,
+    places.length === 3 &&
+      /Jordan/.test(places[0]!) &&
+      /Alder Street School\s+Admin/.test(places[1]!) &&
+      /Birch Road School\s+Admin/.test(places[2]!),
+    places,
+  );
+  await page.keyboard.press("Escape");
+  await page.getByRole("menu").waitFor({ state: "detached" });
+  await page.goto(`${origin}/school`);
   await heading(page, "Your schools");
   await settle(page, 300);
   await shot(page, "chooser", width, "light");
@@ -687,7 +846,9 @@ async function teacherWhoIsAParent(browser: Browser, width: number) {
   // An admin of a whole school opens on its overview.
   await page.getByRole("link", { name: /Birch Road School/ }).click();
   await page.waitForURL(/\/school\/[0-9a-f-]{36}$/);
-  await page.getByText(/students practiced this week|Add your students/).waitFor();
+  await page
+    .getByText(/students practiced this week|Add your students/)
+    .waitFor();
   await context.close();
 }
 
@@ -967,22 +1128,20 @@ try {
       const context = await browser.newContext();
       const page = await context.newPage();
       page.setDefaultTimeout(30_000);
-      await page.goto(`${origin}/school/new`);
-      await page.waitForURL(/\/sign-up\?/);
-      await signUp(page, `pending-${randomUUID().slice(0, 8)}@cedar.example`);
-      await heading(page, "Where will you use AMP?");
-      const created = await context.request.post(
-        `${origin}/api/v1/school/setup`,
+      const pendingEmail = `pending-${randomUUID().slice(0, 8)}@cedar.example`;
+      const pending = await issue("Cedar Lane School", pendingEmail);
+      await page.goto(`${origin}/sign-up`);
+      await signUp(page, pendingEmail);
+      await page.waitForURL(/\/account\/ready|\/try|\/start/);
+      const accepted = await context.request.post(
+        `${origin}/api/v1/school/invites/accept`,
         {
-          data: {
-            name: "Cedar Lane School",
-            shape: "school",
-            timezone: "America/New_York",
-          },
+          data: { ...linkParts(pending.setupUrl), name: "Fixture Signer" },
           headers: { Origin: origin },
         },
       );
-      const pendingOrg = (await created.json()).org.id as string;
+      assert.ok(accepted.ok());
+      const pendingOrg = pending.orgId;
       const base = `${origin}/api/v1/school/orgs/${pendingOrg}`;
       await context.request.post(`${base}/calendar`, {
         data: {

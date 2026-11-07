@@ -55,16 +55,18 @@
   transform: rotate(180deg);
 }
 
-/* Absorbs the tap that closes the menu so it never presses what lies beneath. */
+/* Absorbs the tap that closes the menu so it never presses what lies beneath.
+   A menu opens over the sheet or drawer it was opened from (1000 to 1101), and
+   under toasts and confirmations (1200). */
 .shield {
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: 1149;
   pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
 }
 .content {
-  z-index: 1000;
+  z-index: 1150;
   box-sizing: border-box;
   min-width: 200px;
   max-width: var(--radix-dropdown-menu-content-available-width);

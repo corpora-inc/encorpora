@@ -1,7 +1,8 @@
 /**
  * A synthetic school world for demos, the launch journey and the capture rig,
- * built through the real code paths: guided setup and the data agreement
- * through the API, a CSV roster through the real source and reconciler in
+ * built through the real code paths: a school issued by `school-admin`
+ * create-school, its admin's invitation accepted, guided setup and the data
+ * agreement through the API, a CSV roster through the real source and reconciler in
  * chunks, invitations accepted, seats from a license, and a hero class whose
  * students answer real problems through the real practice API. Older weeks for
  * everyone else are backfilled into the rollups by SQL, as the org fixture does.
@@ -22,6 +23,7 @@ import { registerUnavailableBilling } from "../src/billing/stripe/routes";
 import { registerFamilyRoutes } from "../src/family/routes";
 import { AGREEMENT_VERSION } from "../src/schools/agreement";
 import { SchoolRepository } from "../src/schools/repository";
+import { schoolAdmin } from "./school-admin";
 import { registerSchoolRoutes } from "../src/schools/routes";
 import { csvRows, guessMapping, readTable } from "../src/schools/sources/csv";
 import { courseBandsFor } from "../src/schools/sources/rows";
@@ -54,6 +56,7 @@ export const ACCOUNTS = {
   teacher: "demo-teacher",
 } as const;
 const LOOPBACK = ["127.0.0.1", "::1", "::ffff:127.0.0.1"];
+type SchoolAdminServices = NonNullable<Parameters<typeof schoolAdmin>[3]>;
 const DAY = 86_400_000;
 
 /** Development authentication, loopback-only like `developmentAuth`, with the
@@ -71,6 +74,8 @@ export function demoAuth(): Authenticator {
 
 export type DemoServer = ClassWorld & {
   origin: string;
+  /** Invitation keys and mail, as `school-admin` create-school takes them. */
+  services: SchoolAdminServices;
   webPort: number;
   apiPort: number;
   schema: string;
@@ -121,15 +126,18 @@ export async function startDemoServer(options: {
   const renderer = options.renderer === undefined ? localRenderer() : null;
   const api = buildApp({ repository: learning, authenticate });
   await registerFamilyRoutes(api, { pool: db, authenticate });
+  const services: SchoolAdminServices = {
+    secret: `synthetic-school-demo-${randomUUID()}`,
+    origin,
+    mail: async (to, subject, _text, link) => {
+      mail.push({ to, subject, url: link });
+    },
+  };
   await registerSchoolRoutes(api, {
     pool: db,
     authenticate,
     services: {
-      secret: `synthetic-school-demo-${randomUUID()}`,
-      origin,
-      mail: async (to, subject, _text, link) => {
-        mail.push({ to, subject, url: link });
-      },
+      ...services,
       signIn: {
         google: "000000000000-demo.apps.googleusercontent.com",
         microsoft: "00000000-0000-4000-8000-00000000d3e0",
@@ -163,6 +171,7 @@ export async function startDemoServer(options: {
     db,
     learning,
     schools,
+    services,
     api: base,
     origin,
     webPort: options.webPort,
@@ -712,8 +721,45 @@ async function signIns(
   return (share.link as { url: string }).url;
 }
 
-/** A head's school: setup through the API, a license, the agreement, the
- * roster through the reconciler, invitations accepted. */
+/** A school we issued, its admin's invitation accepted, then setup through the
+ * API; the agreement, roster and invitations follow. */
+export async function issueSchool(
+  server: DemoServer,
+  account: string,
+  input: {
+    name: string;
+    seats: number;
+    reference: string;
+    timezone?: string;
+    /** The admin's name, as they type it accepting. */
+    signer: string;
+  },
+) {
+  const issued = (await schoolAdmin(
+    server.schools,
+    "create-school",
+    {
+      name: input.name,
+      adminEmail: `${account}@demo.example`,
+      seats: input.seats,
+      startsOn: iso(Date.now() - DAY),
+      endsOn: iso(Date.now() + 300 * DAY),
+      reference: input.reference,
+      ...(input.timezone ? { timezone: input.timezone } : {}),
+    },
+    server.services,
+  )) as { orgId: string; setupUrl: string };
+  // The admin's own link, opened by the admin: not one for `acceptInvites`.
+  const sent = server.mail.findIndex((entry) => entry.url === issued.setupUrl);
+  if (sent >= 0) server.mail.splice(sent, 1);
+  const [token, proof] = issued.setupUrl.split("#")[1]!.split(".");
+  await server.as(account, "POST", "invites/accept", {
+    token,
+    proof,
+    name: input.signer,
+  });
+  return issued.orgId;
+}
 async function setupSchool(
   server: DemoServer,
   name: string,
@@ -721,9 +767,18 @@ async function setupSchool(
   account: string,
   timezone: string,
   signer: [string, string],
+  license: { seats: number; reference: string },
 ) {
   const year = yearDates();
-  const { org } = await server.as(account, "POST", "setup", {
+  const org = {
+    id: await issueSchool(server, account, {
+      name,
+      timezone,
+      signer: signer[0],
+      ...license,
+    }),
+  };
+  await server.as(account, "POST", `orgs/${org.id}/setup/school`, {
     name,
     shape,
     timezone,
@@ -775,6 +830,7 @@ export async function buildDemo(
       ACCOUNTS.teacher,
       timezone,
       ["Grace Okafor", "Teacher"],
+      { seats: 30, reference: "Pilot" },
     );
     schoolId = setup.orgId;
     yearDaysAgo = setup.year.daysAgo;
@@ -807,17 +863,12 @@ export async function buildDemo(
       ACCOUNTS.head,
       timezone,
       ["Ruth Adeyemi", "Head of School"],
+      // Licensing is a privileged agent's job: six short, so six wait.
+      { seats: 994, reference: "Purchase order 2026-114" },
     );
     schoolId = setup.orgId;
     yearDaysAgo = setup.year.daysAgo;
     yearStart = setup.year.startsOn;
-    // Licensing is a privileged agent's job: six short, so six wait.
-    await server.schools.issueLicense({
-      orgId: schoolId,
-      seats: 994,
-      endsAt: yearAhead(),
-      reference: "Purchase order 2026-114",
-    });
     await acceptAgreement(server, ACCOUNTS.head, schoolId, setup.signer);
     const plan = planSchool(
       schoolName,

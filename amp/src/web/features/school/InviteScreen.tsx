@@ -10,6 +10,7 @@ import { Button, buttonClass } from "../../ui/Button";
 import { TextField } from "../../ui/TextField";
 import { Toast } from "../../ui/Toast";
 import { useAuthDraft } from "../auth/draft";
+import { SUPPORT_EMAIL } from "../support/SupportHelp";
 import { refreshSchool, school } from "./api";
 import { roleNames } from "./parts";
 import {
@@ -73,7 +74,7 @@ export function InviteScreen() {
     setBusy(true);
     setError("");
     try {
-      await school.acceptInvite(session, {
+      const joined = await school.acceptInvite(session, {
         token: parsed.token,
         ...(parsed.proof ? { proof: parsed.proof } : {}),
         name: name.trim(),
@@ -81,7 +82,18 @@ export function InviteScreen() {
       forgetInvite();
       await refreshSchool(session);
       await client.invalidateQueries({ queryKey: ["school-invite"] });
-      await navigate({ to: "/school" as never, replace: true });
+      // A new school's admin carries on into its setup, the school step done.
+      await navigate(
+        joined.setup && joined.orgId
+          ? ({
+              to: "/school/new",
+              search: { org: joined.orgId, step: "calendar" },
+              replace: true,
+            } as never)
+          : joined.orgId
+            ? ({ to: `/school/${joined.orgId}`, replace: true } as never)
+            : ({ to: "/school", replace: true } as never),
+      );
     } catch (failure) {
       setError(
         failure instanceof AppError
@@ -117,8 +129,13 @@ export function InviteScreen() {
                 : "This invitation was ended"}
           </h1>
           <p>
-            Ask {view.orgName}’s admin for a new link
-            {view.status === "used" ? ", or sign in if it was yours." : "."}
+            {!view.setup
+              ? `Ask ${view.orgName}’s admin for a new link${view.status === "used" ? ", or sign in if it was yours." : "."}`
+              : view.status !== "used"
+                ? `Email ${SUPPORT_EMAIL} and we’ll send a new link.`
+                : session
+                  ? "If it was yours, setup carries on from your schools."
+                  : "Sign in with the account that opened it to carry on with setup."}
           </p>
           <Link to={"/school" as never} className={buttonClass("secondary")}>
             Open your schools
@@ -132,9 +149,13 @@ export function InviteScreen() {
             void accept();
           }}
         >
-          <h1>Join {view.orgName}</h1>
+          <h1>
+            {view.setup ? `Set up ${view.orgName}` : `Join ${view.orgName}`}
+          </h1>
           <p>
-            You’ve been invited as {roleWord(view.role)}.
+            {view.setup
+              ? "AMP for Schools is ready for your school, and you’re its admin."
+              : `You’ve been invited as ${roleWord(view.role)}.`}
             {email && view.email && email.toLowerCase() !== view.email ? (
               <>
                 {" "}
@@ -170,15 +191,20 @@ export function InviteScreen() {
             aria-busy={busy}
             disabled={busy}
           >
-            Join as {roleNames[view.role]?.toLowerCase()}
+            {view.setup
+              ? "Start setup"
+              : `Join as ${roleNames[view.role]?.toLowerCase()}`}
           </Button>
         </form>
       ) : (
         <>
-          <h1>Join {view.orgName}</h1>
+          <h1>
+            {view.setup ? `Set up ${view.orgName}` : `Join ${view.orgName}`}
+          </h1>
           <p>
-            You’ve been invited as {roleWord(view.role)}. Create an account or
-            sign in to accept.
+            {view.setup
+              ? "AMP for Schools is ready for your school, and you’re its admin. Create an account or sign in to set it up."
+              : `You’ve been invited as ${roleWord(view.role)}. Create an account or sign in to accept.`}
           </p>
           <div className={styles.inviteActions}>
             <Link

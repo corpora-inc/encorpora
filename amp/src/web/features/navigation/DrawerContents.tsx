@@ -10,6 +10,7 @@ import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { gradeName } from "../../Home";
 import { ChoicePicker, type ListboxOption } from "../../ui/Listbox";
 import { SignedInEmail } from "./SignedInEmail";
+import { PlaceSwitcher, placeEntries } from "./PlaceSwitcher";
 import { clearInitialConsentChallenge } from "../../consent-entry";
 import {
   clearOwnedPurchaseReturn,
@@ -318,18 +319,25 @@ export default function DrawerContents({
               "See your class’s board",
             )}
         </div>
-        {!!account?.staffOf?.length && (
-          <div className={styles.group}>
-            <h2>School</h2>
-            {nav(
-              "/school",
-              "School",
-              "school",
-              account.staffOf.length === 1
-                ? account.staffOf[0]!.orgName
-                : `${account.staffOf.length} schools`,
-            )}
+        {account && placeEntries(account).length > 1 ? (
+          <div className={`${styles.group} ${styles.places}`}>
+            <h2>Your places</h2>
+            <PlaceSwitcher me={account} current="home" onNavigate={close} />
           </div>
+        ) : (
+          !!account?.staffOf?.length && (
+            <div className={styles.group}>
+              <h2>School</h2>
+              {nav(
+                "/school",
+                "School",
+                "school",
+                account.staffOf.length === 1
+                  ? account.staffOf[0]!.orgName
+                  : `${account.staffOf.length} schools`,
+              )}
+            </div>
+          )
         )}
         {!student && (
           <div className={styles.group}>

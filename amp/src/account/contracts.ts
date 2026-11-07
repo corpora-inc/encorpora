@@ -96,9 +96,14 @@ export const meSchema = z.discriminatedUnion("signedIn", [
           orgId: z.string(),
           orgName: z.string(),
           role: z.enum(["admin", "teacher", "aide", "viewer"]),
+          /** This admin hasn't finished the school's guided setup. */
+          setupPending: z.literal(true).optional(),
         }),
       )
       .optional(),
+    /** A free assessment in progress: the family side has something to open
+     * even before there's a learner. */
+    trial: z.literal(true).optional(),
     /** `try`: no purchase or consent yet, so the parent gets the anonymous
      * free trial; the plan opens when they choose to buy or reach the limit. */
     next: z.enum([

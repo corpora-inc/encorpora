@@ -89,7 +89,8 @@ export function SchoolFrame({
 }: {
   /** What this place is called, in the phone's bar: the class, usually. */
   title: string;
-  /** A control for choosing a school or district. */
+  /** Where this is, and the way to the person's other places. A lone
+   * teacher's class shows it only when they have somewhere else to go. */
   orgSwitcher?: ReactNode;
   sections: readonly SchoolNavSection[];
   activeNav?: string;
@@ -123,9 +124,7 @@ export function SchoolFrame({
       <header className={styles.bar}>
         <NavigationSheet open={drawer} onOpenChange={setDrawer}>
           <div className={styles.drawer} data-dense>
-            {!lone && orgSwitcher && (
-              <div className={styles.org}>{orgSwitcher}</div>
-            )}
+            {orgSwitcher && <div className={styles.org}>{orgSwitcher}</div>}
             <SchoolNav
               sections={navSections}
               active={navActive}
@@ -138,9 +137,7 @@ export function SchoolFrame({
       <aside className={styles.rail}>
         <div className={styles.railInner}>
           <Brand />
-          {!lone && orgSwitcher && (
-            <div className={styles.org}>{orgSwitcher}</div>
-          )}
+          {orgSwitcher && <div className={styles.org}>{orgSwitcher}</div>}
           <SchoolNav sections={navSections} active={navActive} />
           {account && <div className={styles.account}>{account}</div>}
         </div>

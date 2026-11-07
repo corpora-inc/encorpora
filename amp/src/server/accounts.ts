@@ -204,9 +204,18 @@ async function appleClientSecret(apple: NonNullable<AccountsConfig["apple"]>) {
     .sign(key);
 }
 
-export async function createAccounts(pool: Pool, config: AccountsConfig) {
+/** The account mail path: Resend when configured; outside production, the
+ * server log. Shared with operator scripts that send account mail. */
+export function accountMail(
+  config: Pick<AccountsConfig, "mail" | "production">,
+) {
   const mailer = config.mail && new Resend(config.mail.apiKey);
-  async function send(to: string, subject: string, text: string, url: string) {
+  return async function send(
+    to: string,
+    subject: string,
+    text: string,
+    url: string,
+  ) {
     if (mailer) {
       const { error } = await mailer.emails.send({
         from: config.mail!.from,
@@ -218,7 +227,11 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     } else if (!config.production) {
       console.info(`[accounts] email to ${to}: ${subject}\n${url}`);
     } else throw new Error("Email delivery is not configured");
-  }
+  };
+}
+
+export async function createAccounts(pool: Pool, config: AccountsConfig) {
+  const send = accountMail(config);
   const { origin, hostname } = new URL(config.baseURL);
   const twoFactorPlugin = twoFactor({
     issuer: brand.name,

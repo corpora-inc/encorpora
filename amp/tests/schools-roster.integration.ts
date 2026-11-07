@@ -6,7 +6,6 @@ import { migrate } from "../scripts/migrate.js";
 import { schoolAdmin } from "../scripts/school-admin.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
 import { AGREEMENT_VERSION } from "../src/schools/agreement.js";
-import { EVALUATION_DAYS, EVALUATION_SEATS } from "../src/schools/license.js";
 import { SchoolRepository } from "../src/schools/repository.js";
 import { applyRoster, planRoster } from "../src/schools/reconcile.js";
 import { registerSchoolRoutes, schoolRoutes } from "../src/schools/routes.js";
@@ -77,17 +76,20 @@ test(
     });
     const mail: { to: string; subject: string; text: string; url: string }[] =
       [];
+    const services = {
+      secret: "fixture-secret-fixture-secret-fixture-secret",
+      origin: "https://amp.example",
+      mail: async (to: string, subject: string, text: string, link: string) => {
+        mail.push({ to, subject, text, url: link });
+      },
+    };
     const app = buildApp({ repository: learning, authenticate });
     await registerFamilyRoutes(app, { pool: db, authenticate });
     await registerSchoolRoutes(app, {
       pool: db,
       authenticate,
       services: {
-        secret: "fixture-secret-fixture-secret-fixture-secret",
-        origin: "https://amp.example",
-        mail: async (to, subject, text, link) => {
-          mail.push({ to, subject, text, url: link });
-        },
+        ...services,
         signIn: { google: "google-client", microsoft: "ms-client" },
       },
     });
@@ -113,16 +115,73 @@ test(
       );
       return `amp|${id}`;
     };
-    /** Through setup's routes, as the first-run screens call them. */
-    async function setUp(account: string, name: string, shape = "school") {
-      const started = await post("/api/v1/school/setup", account, {
-        name,
-        shape,
-        timezone: "America/New_York",
+    const SEATS = 30;
+    const day = (offset: number) =>
+      new Date(Date.now() + offset * 86_400_000).toISOString().slice(0, 10);
+    type Issued = {
+      orgId: string;
+      licenseId: string;
+      adminPersonId: string;
+      created: boolean;
+      mailed: boolean;
+      setupUrl: string;
+    };
+    /** What an operator runs after a contract and invoice, or for a pilot. */
+    const issue = async (name: string, adminEmail: string, seats = SEATS) =>
+      (await schoolAdmin(
+        schools,
+        "create-school",
+        {
+          name,
+          adminEmail,
+          seats,
+          startsOn: day(-1),
+          endsOn: day(365),
+          reference: "Pilot",
+        },
+        services,
+      )) as Issued;
+    const linkParts = (url: string) => {
+      const [token, proof] = url.split("#")[1]!.split(".");
+      return { token: token!, proof: proof! };
+    };
+    /** The school issued to this account's address, its invitation accepted,
+     * then setup's routes, as the first-run screens call them. */
+    async function setUp(
+      account: string,
+      name: string,
+      shape = "school",
+      seats = SEATS,
+    ) {
+      const email = (
+        await db.query("SELECT email FROM amp_auth_users WHERE id=$1", [
+          account.slice(4),
+        ])
+      ).rows[0].email as string;
+      const issued = await issue(name, email, seats);
+      const accepted = await post("/api/v1/school/invites/accept", account, {
+        ...linkParts(issued.setupUrl),
+        name: "Grace Okafor",
       });
-      assert.equal(started.statusCode, 200, started.body);
-      const orgId = started.json().org.id as string;
+      assert.equal(accepted.statusCode, 200, accepted.body);
+      assert.deepEqual(accepted.json(), {
+        accepted: true,
+        orgId: issued.orgId,
+        setup: true,
+      });
+      const orgId = issued.orgId;
       const base = `/api/v1/school/orgs/${orgId}`;
+      if (shape === "class")
+        assert.equal(
+          (
+            await post(`${base}/setup/school`, account, {
+              name,
+              shape,
+              timezone: "America/New_York",
+            })
+          ).statusCode,
+          200,
+        );
       assert.equal(
         (
           await post(`${base}/calendar`, account, {
@@ -205,13 +264,18 @@ test(
       assert.equal(state.calendar.division, "semester");
       assert.equal(state.experience, "quiet");
       assert.equal(state.agreement.version, AGREEMENT_VERSION);
-      // A second submit of step one carries on with the same org.
-      const again = await post("/api/v1/school/setup", head, {
+      assert.deepEqual(state.license, {
+        seats: SEATS,
+        startsOn: day(-1),
+        endsOn: day(365),
+      });
+      // The school step came answered; the admin can still change it.
+      const renamed = await post(`${base}/setup/school`, head, {
         name: "Alder Street Academy",
         shape: "school",
         timezone: "America/New_York",
       });
-      assert.equal(again.json().org.id, orgId);
+      assert.equal(renamed.json().org.name, "Alder Street Academy");
       const sessions = (await get(`${base}/calendar`, head)).json().sessions;
       assert.deepEqual(sessions.map((s: { kind: string }) => s.kind).sort(), [
         "semester",
@@ -244,13 +308,17 @@ test(
         ).statusCode,
         409,
       );
-      // The license that setup started.
+      // The license we issued, through the last day in the school's zone.
       const license = (await get(`${base}/license`, head)).json();
-      assert.equal(license.seats, EVALUATION_SEATS);
-      assert.equal(license.license.evaluation, true);
-      const days =
-        (Date.parse(license.license.endsAt) - Date.now()) / 86_400_000;
-      assert.ok(Math.abs(days - EVALUATION_DAYS) < 1);
+      assert.equal(license.seats, SEATS);
+      assert.equal(license.license.reference, "Pilot");
+      assert.equal(license.license.evaluation, false);
+      assert.equal(
+        new Date(license.license.endsAt).toLocaleDateString("en-CA", {
+          timeZone: "America/New_York",
+        }),
+        day(366),
+      );
       const finished = await post(`${base}/setup/finish`, head, {
         className: "Grade 5 Math",
         names: ["Ana Ruiz", "Cher"],
@@ -272,6 +340,200 @@ test(
         { orgId, orgName: "Alder Street Academy", role: "admin" },
       ]);
     });
+
+    await t.test(
+      "a school exists once we issue it, with its admin's link",
+      async () => {
+        // Nobody can make one for themselves.
+        const visitor = await user("curious@linden.example");
+        assert.equal(
+          (
+            await post("/api/v1/school/setup", visitor, {
+              name: "Mine",
+              shape: "school",
+              timezone: "America/New_York",
+            })
+          ).statusCode,
+          404,
+        );
+        assert.deepEqual((await get("/api/v1/school/orgs", visitor)).json(), {
+          orgs: [],
+        });
+        const sent = mail.length;
+        const issued = await issue(
+          "Linden Park School",
+          "Head@Linden.Example",
+          120,
+        );
+        assert.equal(issued.created, true);
+        assert.equal(issued.mailed, true);
+        assert.match(
+          issued.setupUrl,
+          /^https:\/\/amp\.example\/school\/invite#[A-Za-z0-9_-]{43}\.[A-Za-z0-9_-]{43}$/,
+        );
+        const message = mail.at(-1)!;
+        assert.equal(mail.length, sent + 1);
+        assert.equal(message.to, "head@linden.example");
+        assert.equal(
+          message.subject,
+          "Linden Park School is ready on AMP for Schools",
+        );
+        assert.equal(message.url, issued.setupUrl);
+        assert.doesNotMatch(message.text + message.subject, /parent|\$/i);
+        const org = (
+          await db.query(
+            "SELECT kind,setup_pending,solo,parent_id,timezone FROM amp_orgs WHERE id=$1",
+            [issued.orgId],
+          )
+        ).rows[0];
+        assert.deepEqual(org, {
+          kind: "school",
+          setup_pending: true,
+          solo: false,
+          parent_id: null,
+          timezone: "America/New_York",
+        });
+        const license = (
+          await db.query(
+            "SELECT seats,reference,starts_at,ends_at FROM amp_school_licenses WHERE org_id=$1",
+            [issued.orgId],
+          )
+        ).rows;
+        assert.equal(license.length, 1);
+        assert.equal(license[0].seats, 120);
+        assert.equal(license[0].reference, "Pilot");
+        const local = (at: Date) =>
+          at.toLocaleString("en-CA", {
+            timeZone: "America/New_York",
+            hourCycle: "h23",
+          });
+        assert.equal(local(license[0].starts_at), `${day(-1)}, 00:00:00`);
+        assert.equal(local(license[0].ends_at), `${day(366)}, 00:00:00`);
+        // The link says what it's for before anyone signs in.
+        const { token, proof } = linkParts(issued.setupUrl);
+        const preview = await app.inject({
+          method: "POST",
+          url: "/api/v1/school/invites/lookup",
+          payload: { token },
+        });
+        assert.deepEqual(preview.json().invite, {
+          status: "open",
+          orgName: "Linden Park School",
+          role: "admin",
+          email: "head@linden.example",
+          setup: true,
+        });
+        // Running it again while setup waits is the same invitation, and nothing new.
+        const again = await issue(
+          "linden park school",
+          "head@linden.example",
+          120,
+        );
+        assert.equal(again.created, false);
+        assert.equal(again.orgId, issued.orgId);
+        assert.equal(again.licenseId, issued.licenseId);
+        assert.equal(again.setupUrl, issued.setupUrl);
+        assert.equal(
+          (
+            await db.query(
+              "SELECT count(*)::int AS n FROM amp_orgs WHERE lower(name)='linden park school'",
+            )
+          ).rows[0].n,
+          1,
+        );
+        // The admin accepts, with the account they sign up with, and lands in setup.
+        const head = await user("head@linden.example");
+        const accepted = await post("/api/v1/school/invites/accept", head, {
+          token,
+          proof,
+          name: "Ruth Adeyemi",
+        });
+        assert.deepEqual(accepted.json(), {
+          accepted: true,
+          orgId: issued.orgId,
+          setup: true,
+        });
+        assert.equal(
+          (
+            await db.query(
+              `SELECT "emailVerified" FROM amp_auth_users WHERE id=$1`,
+              [head.slice(4)],
+            )
+          ).rows[0].emailVerified,
+          true,
+        );
+        const state = (
+          await get(`/api/v1/school/orgs/${issued.orgId}/setup`, head)
+        ).json();
+        assert.equal(state.org.name, "Linden Park School");
+        assert.equal(state.org.setupPending, true);
+        assert.equal(state.calendar, null);
+        assert.deepEqual((await get("/api/v1/me", head)).json().staffOf, [
+          {
+            orgId: issued.orgId,
+            orgName: "Linden Park School",
+            role: "admin",
+            setupPending: true,
+          },
+        ]);
+        // Accepted, a new run makes a new school: the operator meant another.
+        assert.equal(
+          (await issue("Linden Park School", "head@linden.example")).created,
+          true,
+        );
+        // A license that has already ended starts nothing.
+        await assert.rejects(
+          schoolAdmin(
+            schools,
+            "create-school",
+            {
+              name: "Late School",
+              adminEmail: "late@linden.example",
+              seats: 10,
+              startsOn: day(-30),
+              endsOn: day(-2),
+              reference: "PO 1",
+            },
+            services,
+          ),
+          (error: { code?: string }) => error.code === "license_ended",
+        );
+        await assert.rejects(
+          schoolAdmin(
+            schools,
+            "create-school",
+            {
+              name: "Backwards School",
+              adminEmail: "back@linden.example",
+              seats: 10,
+              startsOn: day(30),
+              endsOn: day(2),
+              reference: "PO 2",
+            },
+            services,
+          ),
+        );
+        await assert.rejects(
+          schoolAdmin(schools, "create-school", {
+            name: "No Mail School",
+            adminEmail: "none@linden.example",
+            seats: 10,
+            startsOn: day(0),
+            endsOn: day(30),
+            reference: "PO 3",
+          }),
+          (error: { code?: string }) => error.code === "accounts_unconfigured",
+        );
+        assert.equal(
+          (
+            await db.query(
+              "SELECT count(*)::int AS n FROM amp_orgs WHERE name IN ('Late School','Backwards School','No Mail School')",
+            )
+          ).rows[0].n,
+          0,
+        );
+      },
+    );
 
     await t.test("just my class ends with a class to land on", async () => {
       const teacher = await user("solo@birch.example");
@@ -447,17 +709,14 @@ test(
     await t.test("seats run out; the rest wait, and get seated", async () => {
       const head = await user("head@elm.example");
       const { base } = await setUp(head, "Elm School");
-      const rows = fixtureRoster(EVALUATION_SEATS + 2, "e");
+      const rows = fixtureRoster(SEATS + 2, "e");
       const applied = await applyAll(base, head, rows);
-      assert.equal(
-        applied.filter((row) => row.seated).length,
-        EVALUATION_SEATS,
-      );
+      assert.equal(applied.filter((row) => row.seated).length, SEATS);
       assert.equal(applied.filter((row) => !row.seated).length, 2);
       const license = (await get(`${base}/license`, head)).json();
       assert.deepEqual(
         [license.seats, license.used, license.available, license.waiting],
-        [EVALUATION_SEATS, EVALUATION_SEATS, 0, 2],
+        [SEATS, SEATS, 0, 2],
       );
       const students = (await get(`${base}/students`, head)).json().students;
       assert.equal(
@@ -501,7 +760,7 @@ test(
       assert.equal(tombstone.family_name, null);
       assert.ok(tombstone.identifier, "the SIS mapping stays");
       const freed = (await get(`${base}/license`, head)).json();
-      assert.equal(freed.used, EVALUATION_SEATS - 1);
+      assert.equal(freed.used, SEATS - 1);
       assert.equal(freed.available, 1);
       // Importing someone removed brings them back as new, not as nothing.
       const removedRow = rows.find(
@@ -653,6 +912,7 @@ test(
         orgName: "Gum Tree School",
         role: "teacher",
         email: "teacher@gum.example",
+        setup: false,
       });
       // The mailed link proves the address at sign-up, so no second mail.
       const cookie = `amp.school-signup=${token}.${proof}`;
@@ -867,21 +1127,6 @@ test(
         ).rows[0].category,
         "internal",
       );
-    });
-
-    await t.test("one account can't set up schools without limit", async () => {
-      const busy = await user("busy@iris.example");
-      for (let index = 0; index < 5; index++) {
-        const { base } = await setUp(busy, `School ${index}`);
-        await post(`${base}/setup/finish`, busy, {});
-      }
-      const over = await post("/api/v1/school/setup", busy, {
-        name: "One more",
-        shape: "school",
-        timezone: "America/New_York",
-      });
-      assert.equal(over.statusCode, 409);
-      assert.equal(over.json().error, "setup_limit");
     });
 
     await t.test("every new route answers 404 across tenants", async () => {
