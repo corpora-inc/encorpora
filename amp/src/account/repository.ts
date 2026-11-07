@@ -2,6 +2,7 @@ import { availableGift } from "../access-grants/repository.js";
 import type { Pool } from "pg";
 import { meSchema, type SignedInMe } from "./contracts.js";
 import type { FamilyRepository } from "../family/repository.js";
+import { activeToday } from "../schools/principal.js";
 /** One authenticated account snapshot. No trial capability or child draft is stored here. */
 export async function accountSummary(
   pool: Pool,
@@ -78,6 +79,23 @@ export async function accountSummary(
       };
     });
   const gift = await availableGift(pool, accountId);
+  const staffOf = (
+    await pool
+      .query<{ orgId: string; orgName: string; role: string }>(
+        `SELECT DISTINCT ON (o.id) o.id AS "orgId",o.name AS "orgName",r.role
+       FROM amp_people p JOIN amp_org_roles r ON r.person_id=p.id AND r.role<>'student'
+       JOIN amp_orgs o ON o.id=r.org_id
+       WHERE p.account_id=$1 AND p.deleted_at IS NULL AND ${activeToday("r", "o")}
+       ORDER BY o.id,array_position(ARRAY['admin','teacher','aide','viewer'],r.role)`,
+        [accountId],
+      )
+      .catch((error: { code?: string }) => {
+        // Fixtures at an earlier migration boundary have no schools. No extra
+        // round trip on the path every parent's `/me` takes.
+        if (error.code === "42P01") return { rows: [] };
+        throw error;
+      })
+  ).rows;
   const value = {
     signedIn: true as const,
     account: {
@@ -96,6 +114,7 @@ export async function accountSummary(
     },
     learners,
     family,
+    ...(staffOf.length ? { staffOf } : {}),
     ...(gift ? { availableAccessGrant: gift } : {}),
     ...(unassigned
       ? {

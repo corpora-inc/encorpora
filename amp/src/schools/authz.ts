@@ -27,7 +27,15 @@ export type Actor = {
 export type SchoolTarget =
   | { kind: "self" }
   | { kind: "org"; orgId: string; path: string[] }
-  | { kind: "class"; classId: string; orgId: string; path: string[] };
+  | { kind: "class"; classId: string; orgId: string; path: string[] }
+  | {
+      kind: "person";
+      personId: string;
+      orgId: string;
+      path: string[];
+      /** Classes this student is enrolled in, for the teacher's rule. */
+      classIds: string[];
+    };
 
 /** Staff roles and staff enrollments in force today. A staff enrollment counts
  * only while the person still holds a staff role along the class's org path,
@@ -72,16 +80,29 @@ export async function loadActor(
   };
 }
 
-const VIEWER = new Set<SchoolAction>([
+/** What staff can do at the org they work at: open it, and list what's theirs. */
+const ORG_STAFF = new Set<SchoolAction>([
   "org.read",
   "classes.read",
   "students.read",
+  "calendar.read",
 ]);
-/** What staff can do at the org they work at: open it, and list what's theirs. */
-const ORG_STAFF = VIEWER;
+const VIEWER = new Set<SchoolAction>([
+  ...ORG_STAFF,
+  "staff.read",
+  "license.read",
+]);
 const AIDE_CLASS = new Set<SchoolAction>(["classes.read", "students.read"]);
-const TEACHER_CLASS = new Set<SchoolAction>([...AIDE_CLASS, "students.add"]);
-const SELF = new Set<SchoolAction>(["orgs.list"]);
+const TEACHER_CLASS = new Set<SchoolAction>([
+  ...AIDE_CLASS,
+  "students.add",
+  "classes.update",
+]);
+const SELF = new Set<SchoolAction>([
+  "orgs.list",
+  "setup.start",
+  "invites.accept",
+]);
 
 /** The only authorization rule for school routes. Admin covers descendants
  * along the path, viewer reads them, and teacher and aide cover the classes
@@ -103,6 +124,14 @@ export function can(
     return (
       (own.some((c) => c.role === "teacher") && TEACHER_CLASS.has(action)) ||
       (own.some((c) => c.role === "aide") && AIDE_CLASS.has(action))
+    );
+  }
+  if (target.kind === "person") {
+    const own = actor.classes.filter((c) =>
+      target.classIds.includes(c.classId),
+    );
+    return (
+      action === "students.update" && own.some((c) => c.role === "teacher")
     );
   }
   return (

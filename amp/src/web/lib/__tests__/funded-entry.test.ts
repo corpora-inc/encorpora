@@ -228,3 +228,26 @@ test("NH free practice retains its program and attribution through authenticatio
     program: "nh-efa",
   });
 });
+
+test("only a path inside staff screens survives a school sign-in", () => {
+  const next = "/school/new?org=abc-1&step=calendar";
+  expect(continuationSearch({ return: "school", next })).toEqual({
+    return: "school",
+    next,
+  });
+  expect(continuationUrl({ return: "school", next })).toBe(next);
+  for (const hostile of [
+    "https://example.com/school",
+    "//example.com",
+    "/school/../start",
+    "/school//example.com",
+    "/schoolhouse",
+    "/school\\example.com",
+    `/school/${"a".repeat(300)}`,
+    12,
+  ])
+    expect(continuationUrl({ return: "school", next: hostile })).toBe(
+      "/school",
+    );
+  expect(continuationSearch({ next })).toEqual({});
+});

@@ -1,0 +1,695 @@
+/* Staff screens around the kit. Sizes and colors are tokens; hierarchy comes
+   from type and space, not boxes. */
+.lost {
+  max-width: 640px;
+  min-height: 100dvh;
+  padding: var(--space-6) var(--space-5);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+}
+.pageHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  margin-bottom: var(--space-5);
+}
+/* A title wide enough that a shorter line under it can't pull the action up
+   beside it on a narrow screen, or push it down. */
+.pageTitle {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+.pageTitle p {
+  min-height: 1.45em;
+  margin-top: var(--space-1);
+  color: var(--color-muted-text);
+  font-variant-numeric: var(--numeric);
+}
+.pageAction {
+  display: flex;
+  gap: var(--space-2);
+}
+.toolbar {
+  margin-bottom: var(--space-4);
+}
+.note {
+  min-height: 1.45em;
+  font-size: var(--text-table);
+  line-height: 1.45;
+}
+.note[data-tone="error"] {
+  color: var(--color-danger-accent);
+}
+.note[data-tone="status"] {
+  color: var(--color-success-accent);
+}
+.field {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.fieldLabel {
+  font-size: var(--text-table);
+  font-weight: 600;
+}
+.fieldHelp {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  line-height: 1.4;
+}
+.quiet {
+  color: var(--color-muted-text);
+}
+.person {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 500;
+}
+.rowLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+.rowLink:hover {
+  text-decoration: underline;
+}
+.rowLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.emptyActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.inlineAction {
+  padding: 0;
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+/* Rail foot and org name. */
+button.accountTrigger {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding-inline: 0;
+  border: 0;
+  background: transparent;
+  justify-content: space-between;
+  white-space: normal;
+}
+button.accountTrigger:hover:not(:disabled) {
+  background: transparent;
+  text-decoration: underline;
+}
+.accountLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.classChecks legend {
+  padding: 0;
+}
+.studentCard {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+  width: 100%;
+  min-height: 56px;
+  padding: var(--space-2) 0;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+  box-shadow: inset 0 -1px 0 var(--color-border);
+  cursor: pointer;
+}
+.studentCard:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.studentCardText {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+.studentCardText strong {
+  font-weight: 600;
+}
+.studentCardText span {
+  color: var(--color-muted-text);
+  font-size: var(--text-table-small);
+  overflow-wrap: anywhere;
+}
+.orgName {
+  padding: var(--space-2) var(--space-3);
+  font-weight: 600;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+/* Sheets. */
+.sheetForm {
+  display: grid;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+}
+.sheetForm input,
+.sheetForm textarea,
+.invite input {
+  box-sizing: border-box;
+  width: 100%;
+  font-weight: 400;
+}
+.sheetForm label,
+.invite label {
+  font-size: var(--text-table);
+  font-weight: 600;
+}
+.sheetAction {
+  justify-self: start;
+  min-width: 148px;
+}
+.classChecks {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.classCheckList {
+  display: grid;
+  gap: var(--space-1);
+  max-height: 268px;
+  overflow: auto;
+}
+.dangerZone {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+.dangerZone h3 {
+  font-size: var(--text-dense);
+}
+.dangerZone p {
+  color: var(--color-muted-text);
+  line-height: 1.5;
+}
+.dangerZone > button {
+  justify-self: start;
+}
+.dangerActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+button.danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--target-size);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-danger-accent);
+  border-radius: var(--radius-control);
+  background: var(--color-danger);
+  color: var(--color-on-danger);
+  font: inherit;
+  font-weight: 650;
+  line-height: 1.25;
+  cursor: pointer;
+}
+button.danger:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-danger-accent);
+  color: var(--color-on-primary);
+}
+button.danger:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+/* Copy, in one size whatever it says. */
+button.copy {
+  position: relative;
+  display: inline-grid;
+  min-height: var(--target-size);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 650;
+  line-height: 1.25;
+  white-space: nowrap;
+  cursor: pointer;
+}
+button.copy:hover:not(:disabled) {
+  filter: none;
+  background: var(--color-secondary);
+}
+button.copy:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+button.copy[data-done="copied"] {
+  border-color: var(--color-success-accent);
+  background: var(--color-success);
+  color: var(--color-on-success);
+}
+.copySizer,
+.copyText {
+  grid-area: 1 / 1;
+  text-align: center;
+}
+.copySizer {
+  visibility: hidden;
+}
+
+/* Chooser and invitation: one card, centered in the page. */
+.chooser,
+.inviteCard {
+  display: grid;
+  gap: var(--space-5);
+  align-content: start;
+  box-sizing: border-box;
+  max-width: 520px;
+  min-height: 100dvh;
+  margin-inline: auto;
+  padding: clamp(var(--space-5), 9vh, 96px) var(--space-4) var(--space-6);
+  color: var(--color-on-surface);
+}
+.chooser > :first-child,
+.inviteCard > :first-child {
+  padding-inline: 0;
+}
+.chooser > a:last-child {
+  justify-self: start;
+}
+.chooserList {
+  display: grid;
+  gap: var(--space-2);
+}
+.chooserRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+  min-height: 64px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  text-decoration: none;
+}
+.chooserRow:hover {
+  border-color: var(--color-primary);
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.chooserRow:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.chooserName {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-2);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.chooserRole {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+}
+.inviteCard h1 {
+  font-size: clamp(30px, 7.8vw, 40px);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+.inviteCard p {
+  font-size: var(--text-body);
+  line-height: 1.5;
+  color: var(--color-muted-text);
+}
+.inviteWait {
+  min-height: 220px;
+}
+.inviteForm {
+  display: grid;
+  gap: var(--space-4);
+}
+.inviteForm label {
+  font-size: var(--text-table);
+  font-weight: 600;
+}
+.inviteForm input {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: var(--text-body);
+  font-weight: 400;
+}
+.inviteActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.inviteActions > * {
+  flex: 1 1 200px;
+}
+
+/* A class. */
+.classMeta {
+  display: grid;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+@media (min-width: 900px) {
+  .classMeta {
+    grid-template-columns: auto minmax(0, 460px);
+    justify-content: space-between;
+    align-items: start;
+  }
+}
+.joinCode {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: start;
+  gap: var(--space-1) var(--space-4);
+}
+.joinCode > span:first-child {
+  grid-column: 1 / -1;
+}
+.joinCode strong {
+  font-size: 32px;
+  font-weight: 650;
+  font-variant-numeric: var(--numeric);
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+}
+.classRoster {
+  display: grid;
+  gap: var(--space-4);
+}
+.rosterHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+/* A status in a stacked field keeps its own width. */
+.seatLine {
+  display: flex;
+}
+
+/* Staff. */
+.staffLayout {
+  display: grid;
+  gap: var(--space-6);
+}
+@media (min-width: 1100px) {
+  .staffLayout {
+    grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+.invite {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+}
+.inviteSend {
+  justify-self: start;
+}
+.staffList {
+  display: grid;
+}
+.staffRow {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-4);
+  box-shadow: inset 0 -1px 0 var(--color-border);
+}
+.staffRow:first-child {
+  padding-top: 0;
+}
+.staffWho {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-1) var(--space-3);
+  align-items: start;
+}
+.staffText {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+.staffText strong {
+  font-weight: 600;
+}
+.staffText span {
+  color: var(--color-muted-text);
+  font-size: var(--text-table);
+  overflow-wrap: anywhere;
+}
+.staffBadges {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+@media (min-width: 640px) {
+  .staffWho {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+  .staffBadges {
+    grid-column: 3;
+    justify-content: flex-end;
+  }
+}
+.staffClasses {
+  max-width: 56ch;
+}
+.staffActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-inline-start: 52px;
+}
+@media (max-width: 480px) {
+  .staffActions {
+    margin-inline-start: 0;
+  }
+}
+
+/* IT handoff. */
+.helpBody {
+  display: grid;
+  gap: var(--space-6);
+  max-width: 720px;
+}
+.helpLead {
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+.helpSection {
+  display: grid;
+  gap: var(--space-3);
+}
+.helpSection > a {
+  justify-self: start;
+}
+.helpSteps {
+  display: grid;
+  gap: var(--space-2);
+  padding-inline-start: var(--space-5);
+  list-style: decimal;
+  line-height: 1.5;
+}
+.helpSteps li {
+  padding-inline-start: var(--space-1);
+}
+.helpValue {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+}
+.helpValue > span:first-child {
+  grid-column: 1 / -1;
+}
+.helpValue code {
+  min-width: 0;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-small);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+  overflow-wrap: anywhere;
+}
+@media (max-width: 480px) {
+  .helpValue {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .helpValue > button {
+    justify-self: start;
+  }
+}
+
+/* Calendar. */
+.calendarBody {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 880px;
+}
+.calendarControl {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 480px;
+}
+.sessionList {
+  display: grid;
+}
+.sessionList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+  box-shadow: inset 0 -1px 0 var(--color-border);
+}
+.sessionList li > span {
+  display: grid;
+  gap: 1px;
+}
+.sessionList strong {
+  font-weight: 600;
+}
+/* The year, to scale. */
+.ribbon {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.ribbonBar {
+  display: flex;
+  height: 40px;
+  overflow: hidden;
+  border-radius: var(--radius-small);
+  background: var(--color-surface-sunken);
+}
+.ribbonPart {
+  display: block;
+  min-width: 0;
+  transition: width 220ms var(--ease-standard);
+}
+.ribbonPart[data-tone="a"] {
+  background: var(--color-primary);
+}
+.ribbonPart[data-tone="b"] {
+  background: var(--color-meter);
+  opacity: 0.55;
+}
+.ribbonTicks {
+  position: relative;
+  height: 16px;
+}
+.ribbonTick {
+  position: absolute;
+  top: 0;
+  color: var(--color-subtle-text);
+  font-size: var(--text-table-small);
+  line-height: 16px;
+}
+.ribbonList {
+  display: grid;
+  /* Room for four terms always: choosing fewer moves nothing below. */
+  min-height: calc(4 * 34px);
+  align-content: start;
+  margin-top: var(--space-2);
+}
+.ribbonList li {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 34px;
+  font-size: var(--text-table);
+}
+.ribbonSwatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+.ribbonSwatch[data-tone="a"] {
+  background: var(--color-primary);
+}
+.ribbonSwatch[data-tone="b"] {
+  background: var(--color-meter);
+  opacity: 0.55;
+}
+.ribbonName {
+  font-weight: 600;
+}
+.ribbonDates {
+  color: var(--color-muted-text);
+  font-variant-numeric: var(--numeric);
+  white-space: nowrap;
+}
+
+/* License. */
+.licenseBody {
+  display: grid;
+  gap: var(--space-6);
+}
+@media (min-width: 1000px) {
+  .licenseBody {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    align-items: start;
+  }
+}
+.licenseFacts {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 520px;
+}
+.waitingNote {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.seatRequest {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+}
+.seatRequest textarea {
+  box-sizing: border-box;
+  width: 100%;
+  font-weight: 400;
+}
+.seatRequest label {
+  font-size: var(--text-table);
+  font-weight: 600;
+}

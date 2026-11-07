@@ -66,9 +66,33 @@ const labels = z.object({
 });
 export type CampaignSearch = Partial<z.infer<typeof labels>>;
 export type FundedSearch = CampaignSearch & {
-  return?: "security" | "access" | "free-practice" | FundedProgramSlug;
+  return?:
+    | "security"
+    | "access"
+    | "free-practice"
+    | "school"
+    | "school-invite"
+    | FundedProgramSlug;
   program?: "ar-efa" | "az-esa" | "nh-efa";
   entry?: SignupIntent["entry"];
+  next?: string;
+};
+/** Only a path inside staff screens survives sign-in: never another site, and
+ * no protocol or `..` to climb out with. */
+export const safeSchoolPath = (value: unknown) =>
+  typeof value === "string" &&
+  value.length <= 300 &&
+  /^\/school(\/[\w-]+)*(\?[\w=&%-]*)?$/.test(value)
+    ? value
+    : undefined;
+/** An invitation being carried across sign-in on this device. Its token never
+ * goes in a query string, which a server or report could see. */
+const pendingInvite = () => {
+  try {
+    return localStorage.getItem("amp.school-invite");
+  } catch {
+    return null;
+  }
 };
 
 export function measurementOptOut() {
@@ -108,8 +132,13 @@ export function continuationSearch(
     ...(search.return === "security" ||
     search.return === "access" ||
     search.return === "free-practice" ||
+    search.return === "school" ||
+    search.return === "school-invite" ||
     isFundedReturn(search.return)
       ? { return: search.return }
+      : {}),
+    ...(search.return === "school" && safeSchoolPath(search.next)
+      ? { next: safeSchoolPath(search.next) }
       : {}),
   };
 }
@@ -119,6 +148,11 @@ export function continuationUrl(
   fallback = "/start",
 ) {
   const safe = continuationSearch(search);
+  if (safe.return === "school") return safe.next ?? "/school";
+  if (safe.return === "school-invite") {
+    const invite = pendingInvite();
+    return `/school/invite${invite ? `#${invite}` : ""}`;
+  }
   const path =
     safe.return === "free-practice"
       ? "/try"

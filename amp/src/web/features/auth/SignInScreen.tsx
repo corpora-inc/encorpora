@@ -185,6 +185,8 @@ export function SignInScreen() {
   const pitchCopy =
     step === "create" && pitchEntry ? pitchCreate[pitchEntry] : undefined;
   const buying = pitchEntry === "pitch-buy" && !freeEntry;
+  const schoolEntry =
+    carry.return === "school" || carry.return === "school-invite";
   const parentEntry = signupEntry && step === "create";
   const primaryProviders =
     parentEntry && providers.some((p) => p !== "github")
@@ -323,7 +325,9 @@ export function SignInScreen() {
     await continueAfterSignIn();
   };
   async function continueAfterSignIn() {
-    if (carry.return === "security")
+    if (schoolEntry)
+      await navigate({ href: continuationUrl(carry), replace: true });
+    else if (carry.return === "security")
       await navigate({
         to: "/$",
         params: { _splat: "family/security" },
@@ -419,9 +423,19 @@ export function SignInScreen() {
           callbackURL: newUserReturn,
         });
         fail(result);
-        // Where email must be confirmed first, no session is issued yet.
+        // Where email must be confirmed first, no session is issued yet. A
+        // mailed school invitation already confirmed this address, so sign in.
         if (result.data?.token) await done();
-        else go("check-email");
+        else if (result.data?.user.emailVerified) {
+          fail(
+            await accountClient.signIn.email({
+              callbackURL: returnTo,
+              email: email.trim(),
+              password,
+            }),
+          );
+          await done();
+        } else go("check-email");
       } else if (step === "forgot") {
         fail(
           await accountClient.requestPasswordReset({
@@ -535,6 +549,15 @@ export function SignInScreen() {
         {pitchCopy && (
           <div className={styles.pitch} data-pitch-signup={pitchEntry}>
             <p>{pitchCopy.detail}</p>
+          </div>
+        )}
+        {schoolEntry && showProviders && (
+          <div className={styles.pitch} data-school-signup>
+            <p>
+              {carry.return === "school-invite"
+                ? "Your invitation continues right after this."
+                : "Setting up your school continues right after this."}
+            </p>
           </div>
         )}
         {freeEntry && showProviders && !pitchCopy && (

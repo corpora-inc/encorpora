@@ -295,3 +295,38 @@ test("an email gift routes around checkout but never around verification or cons
     ),
   ).toBe("/start/verify-email");
 });
+
+const staffOf = [
+  { orgId: "school", orgName: "Alder Street School", role: "teacher" as const },
+];
+test("staff with no learners start at their school, not the parent trial", () => {
+  const staff = me({ staffOf, next: "try" });
+  expect(startDestination(staff, "/")).toBe("/school");
+  expect(startDestination(staff, "/start/plan")).toBe("/school");
+});
+test("staff can still buy for a family, and a parent who teaches stays a parent", () => {
+  const staff = me({ staffOf, next: "try" });
+  expect(startDestination(staff, "/start/plan", true)).toBeNull();
+  const learner = {
+    id: "jordan",
+    name: "Jordan",
+    birthYear: 2015,
+    entitlement: { active: true, plan: "annual", endsAt: null },
+  };
+  expect(
+    startDestination(
+      me({ staffOf, learners: [learner], next: "practice" }),
+      "/",
+    ),
+  ).toBe("/practice");
+  expect(
+    startDestination(
+      me({
+        staffOf,
+        next: "add-learner",
+        consent: { status: "active", method: "verified" },
+      }),
+      "/",
+    ),
+  ).toBe("/start/name");
+});

@@ -1,4 +1,5 @@
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import { randomBytes } from "node:crypto";
 import type { Pool } from "pg";
 import { z } from "zod";
 import type { Authenticator } from "../server/auth.js";
@@ -9,15 +10,22 @@ import {
   type Actor,
   type SchoolTarget,
 } from "./authz.js";
+import { activeToday } from "./principal.js";
 import { pageSchema, SchoolError, type SchoolAction } from "./contracts.js";
 import { SchoolRepository } from "./repository.js";
+import {
+  canList,
+  defineSetupRoutes,
+  registerInvitePreview,
+} from "./setup-routes.js";
 
 type TargetInput = { params: Record<string, string>; body: unknown };
 /** Which thing a request is about, before it is looked up. */
 type TargetRef =
   | { kind: "self" }
   | { kind: "org"; orgId: string }
-  | { kind: "class"; orgId: string; classId: string };
+  | { kind: "class"; orgId: string; classId: string }
+  | { kind: "person"; orgId: string; personId: string };
 type Loaded<R extends TargetRef> = Extract<SchoolTarget, { kind: R["kind"] }>;
 export type SchoolRouteContext<T extends SchoolTarget = SchoolTarget> = {
   request: FastifyRequest;
@@ -25,6 +33,23 @@ export type SchoolRouteContext<T extends SchoolTarget = SchoolTarget> = {
   actor: Actor;
   target: T;
   repository: SchoolRepository;
+  services: SchoolServices;
+};
+/** What school routes need from the server around them. */
+export type SchoolServices = {
+  /** Derives invitation links; never leaves the server. */
+  secret: string;
+  /** Where links in mail and on screen point. */
+  origin: string;
+  /** The account mail path. Absent: invitations rely on their copied link. */
+  mail?: (
+    to: string,
+    subject: string,
+    text: string,
+    url: string,
+  ) => Promise<void>;
+  /** Public OAuth client IDs, for the IT handoff page. */
+  signIn?: { google?: string; microsoft?: string };
 };
 export type SchoolRoute = {
   method: "GET" | "POST";
@@ -59,6 +84,30 @@ async function loadTarget(
 ): Promise<SchoolTarget | null> {
   if (ref.kind === "self") return ref;
   if (!isId(ref.orgId)) return null;
+  if (ref.kind === "person") {
+    if (!isId(ref.personId)) return null;
+    const found = (
+      await pool.query(
+        `SELECT r.org_id,o.path,
+           ARRAY(SELECT e.class_id FROM amp_enrollments e JOIN amp_classes c ON c.id=e.class_id JOIN amp_orgs eo ON eo.id=c.org_id
+             WHERE e.person_id=r.person_id AND e.role='student' AND c.archived_at IS NULL AND ${activeToday("e", "eo")}) AS class_ids
+         FROM amp_org_roles r JOIN amp_orgs o ON o.id=r.org_id
+         JOIN amp_people p ON p.id=r.person_id AND p.deleted_at IS NULL
+         WHERE r.person_id=$1 AND r.role='student' AND o.path @> ARRAY[$2]::uuid[] AND ${activeToday("r", "o")}
+         ORDER BY r.begin_on DESC LIMIT 1`,
+        [ref.personId, ref.orgId],
+      )
+    ).rows[0];
+    return found
+      ? {
+          kind: "person",
+          personId: ref.personId,
+          orgId: found.org_id,
+          path: found.path,
+          classIds: found.class_ids,
+        }
+      : null;
+  }
   if (ref.kind === "org") {
     const org = (
       await pool.query("SELECT path FROM amp_orgs WHERE id=$1", [ref.orgId])
@@ -83,7 +132,10 @@ async function loadTarget(
     : null;
 }
 /** Who to attribute a change to: the actor's person in this target's tenant. */
-function actorPerson(actor: Actor, target: { path: string[] }): string | null {
+export function actorPerson(
+  actor: Actor,
+  target: { path: string[] },
+): string | null {
   return (
     actor.roles.find((role) => target.path.includes(role.orgId))?.personId ??
     actor.classes.find((c) => target.path.includes(c.orgId))?.personId ??
@@ -97,9 +149,17 @@ const statusOf = (error: unknown) =>
 
 export async function registerSchoolRoutes(
   app: FastifyInstance,
-  options: { pool: Pool; authenticate: Authenticator },
+  options: {
+    pool: Pool;
+    authenticate: Authenticator;
+    services?: SchoolServices;
+  },
 ): Promise<void> {
   const repository = new SchoolRepository(options.pool);
+  const services: SchoolServices = options.services ?? {
+    secret: randomBytes(32).toString("hex"),
+    origin: "",
+  };
   app.register(async (scope) => {
     scope.addHook("onRequest", async (request, reply) => {
       reply.header("X-Request-Id", request.id);
@@ -135,6 +195,7 @@ export async function registerSchoolRoutes(
       );
       return reply.code(503).send({ error: "school_service_unavailable" });
     });
+    registerInvitePreview(scope, repository);
     for (const route of schoolRoutes)
       scope.route({
         method: route.method,
@@ -152,7 +213,14 @@ export async function registerSchoolRoutes(
           );
           if (!target || !can(actor, route.action, target))
             throw new SchoolError(404, "not_found");
-          return route.handler({ request, reply, actor, target, repository });
+          return route.handler({
+            request,
+            reply,
+            actor,
+            target,
+            repository,
+            services,
+          });
         },
       });
   });
@@ -179,9 +247,18 @@ defineSchoolRoute({
   url: "/api/v1/school/orgs/:org",
   action: "org.read",
   target: orgParam,
-  handler: async ({ actor, target, repository }) => ({
-    org: await repository.orgFor(actor.accountId, target.orgId),
-  }),
+  handler: async ({ actor, target, repository }) => {
+    const org = await repository.orgFor(actor.accountId, target.orgId);
+    return {
+      org: org && {
+        ...org,
+        can: canList({ actor, target }),
+        teaches: actor.classes
+          .filter((c) => c.role === "teacher" && c.path.includes(target.orgId))
+          .map((c) => c.classId),
+      },
+    };
+  },
 });
 defineSchoolRoute({
   method: "GET",
@@ -210,6 +287,10 @@ defineSchoolRoute({
         target.orgId,
         request.body,
         actorPerson(actor, target),
+        // Someone who teaches here teaches the class they just made.
+        actor.roles.find(
+          (role) => role.role === "teacher" && target.path.includes(role.orgId),
+        )?.personId,
       ),
     }),
 });
@@ -220,12 +301,14 @@ defineSchoolRoute({
   target: orgParam,
   handler: async ({ request, actor, target, repository }) => {
     const page = pageSchema.parse(request.query);
-    const students = await repository.students(
+    const rows = await repository.students(
       target.orgId,
       rosterScope(actor, target),
       page,
     );
-    return { students, nextOffset: nextOffset(students, page) };
+    const total = rows[0]?.total ?? 0;
+    const students = rows.map(({ total: _total, ...student }) => student);
+    return { students, total, nextOffset: nextOffset(rows, page) };
   },
 });
 defineSchoolRoute({
@@ -249,3 +332,4 @@ defineSchoolRoute({
       ),
     }),
 });
+defineSetupRoutes(defineSchoolRoute);

@@ -731,7 +731,13 @@ test(
           });
           const parent = `amp|parent-${randomUUID()}`;
 
-          const known = new Set(["org"]);
+          const known = new Set([
+            "org",
+            "class",
+            "student",
+            "person",
+            "session",
+          ]);
           assert.ok(schoolRoutes.length >= 6);
           for (const route of schoolRoutes) {
             const params = [...route.url.matchAll(/:(\w+)/g)].map((m) => m[1]!);
@@ -740,7 +746,9 @@ test(
                 known.has(param),
                 `The walk needs a fixture for :${param} (${route.url})`,
               );
-            const path = route.url.replace(":org", home.orgId);
+            const path = route.url
+              .replace(":org", home.orgId)
+              .replace(/:(class|student|person|session)/, randomUUID());
             const self =
               route.target({ params: { org: home.orgId }, body: {} }).kind ===
               "self";
@@ -754,7 +762,12 @@ test(
                   : {}),
               });
               if (self) {
-                assert.equal(response.statusCode, 200, route.url);
+                // The probe's body isn't a valid setup or acceptance.
+                assert.equal(
+                  response.statusCode,
+                  route.method === "GET" ? 200 : 400,
+                  route.url,
+                );
                 assert.equal(
                   response.body.includes(home.orgId),
                   false,
