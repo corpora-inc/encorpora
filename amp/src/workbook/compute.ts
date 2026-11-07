@@ -1,6 +1,7 @@
 import { lessons } from "../content/lessons.js";
 import { skills } from "../curriculum/catalog.js";
 import { templates } from "../math/engine.js";
+import { updateLearnerFrontier } from "../server/learner-frontier.js";
 import { composeWorkbook, type WorkbookSpec } from "./compose.js";
 import { workbookHtml, type WorkbookHtmlOptions } from "./render.js";
 
@@ -15,12 +16,13 @@ export type HtmlInput = { spec: WorkbookSpec } & Pick<
 
 const skillTitle = (id: string) => skills.find((s) => s.id === id)?.title ?? id;
 
-/** The CPU-heavy workbook steps, as plain data in and out, so they give the same
- * result on any thread. */
+/** The CPU-heavy steps, as plain data in and out, so they give the same result
+ * on any thread. */
 export const computeWorkbook = {
   compose: (input: ComposeInput): WorkbookSpec =>
     composeWorkbook({ ...input, templates, skills, lessons }),
   html: ({ spec, ...options }: HtmlInput): string =>
     workbookHtml(spec, { ...options, lessons, skillTitle }),
+  frontierState: updateLearnerFrontier,
 };
 export type WorkbookTask = keyof typeof computeWorkbook;

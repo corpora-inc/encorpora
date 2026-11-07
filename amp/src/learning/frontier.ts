@@ -92,15 +92,42 @@ export function initialLevel(options: {
 const GRID = Array.from({ length: 141 }, (_, i) => -1 + i / 10);
 /** Choice success includes chance guessing. Wrong-choice likelihood is the
  * typed-miss likelihood times a constant, so both carry the same evidence. */
-function responseModel(response: FrontierPolicy["response"]) {
+type ResponseCurve = {
+  success: Float64Array;
+  hit: Float64Array;
+  miss: Float64Array;
+};
+type ResponseModel = (grade: number, guess: number) => ResponseCurve;
+const responseModels = new WeakMap<FrontierPolicy["response"], ResponseModel>();
+function responseModel(response: FrontierPolicy["response"]): ResponseModel {
+  const known = responseModels.get(response);
+  if (known) return known;
   const { typedGuess, slip, discrimination, atLevelSuccess } = response;
   const offset =
     Math.log((atLevelSuccess - typedGuess) / (1 - slip - atLevelSuccess)) /
     discrimination;
-  return (theta: number, grade: number, guess: number) => {
-    const p = 1 / (1 + Math.exp(-discrimination * (theta - grade + offset)));
-    return guess + (1 - guess) * (typedGuess + (1 - typedGuess - slip) * p);
+  // A catalog has few grade and guess pairs, and every answer repeats one.
+  const curves = new Map<string, ResponseCurve>();
+  const model: ResponseModel = (grade, guess) => {
+    const key = `${grade}|${guess}`;
+    let curve = curves.get(key);
+    if (!curve) {
+      const success = Float64Array.from(GRID, (theta) => {
+        const p =
+          1 / (1 + Math.exp(-discrimination * (theta - grade + offset)));
+        return guess + (1 - guess) * (typedGuess + (1 - typedGuess - slip) * p);
+      });
+      curve = {
+        success,
+        hit: success.map((p) => Math.log(p)),
+        miss: success.map((p) => Math.log(1 - p)),
+      };
+      curves.set(key, curve);
+    }
+    return curve;
   };
+  responseModels.set(response, model);
+  return model;
 }
 function prior(mean: number, sd: number) {
   return GRID.map((theta) => -(((theta - mean) / sd) ** 2) / 2);
@@ -158,235 +185,416 @@ type Evidence = {
   at: number;
   weight: number;
 };
-function fold(
-  start: number[],
-  items: readonly Evidence[],
+export type FrontierFoldItem = Pick<
+  Evidence,
+  "grade" | "guess" | "success" | "assisted" | "at" | "weight"
+>;
+/** One estimate between answers: everything the next answer depends on. */
+export type FrontierFold = {
+  log: number[];
+  previous: number | null;
+  surprise: number;
+  uncertainty: number;
+  answered: number;
+  independent: number;
+};
+function startFold(log: number[]): FrontierFold {
+  return {
+    log,
+    previous: null,
+    surprise: 0,
+    uncertainty: 0,
+    answered: 0,
+    independent: 0,
+  };
+}
+function advanceFold(
+  state: FrontierFold,
+  item: FrontierFoldItem,
+  policy: FrontierPolicy,
+  drift: FrontierPolicy["overall"],
+  model: ResponseModel,
+  reportSurprises = false,
+) {
+  state.answered += 1;
+  if (item.success && !item.assisted && item.weight >= 1)
+    state.independent += 1;
+  const correct =
+    item.assisted && policy.assisted.treatAsFailure ? false : item.success;
+  const weight =
+    (item.assisted
+      ? correct
+        ? policy.assisted.correctWeight
+        : policy.assisted.incorrectWeight
+      : 1) * item.weight;
+  // Assisted success provides partial evidence, never independent mastery.
+  // An assisted miss can be neutral without losing the recorded attempt.
+  if (weight === 0) return;
+  const days =
+    state.previous === null
+      ? 0
+      : Math.min(
+          policy.maxDriftDays,
+          Math.max(0, (item.at - state.previous) / DAY),
+        );
+  const log = blur(
+    state.log,
+    (state.previous === null ? 0 : drift.perAnswer * weight) +
+      drift.perDay * days +
+      state.surprise,
+  );
+  state.previous = item.at;
+  const curve = model(item.grade, item.guess);
+  const top = Math.max(...log);
+  let total = 0;
+  let chance = 0;
+  for (let i = 0; i < log.length; i++) {
+    const w = Math.exp(log[i]! - top);
+    total += w;
+    chance += w * curve.success[i]!;
+  }
+  const expected = chance / total;
+  // This is reporting uncertainty, not extra likelihood weight for the
+  // next answer. A rare miss calls the summary into question without
+  // erasing the learner's established history.
+  if (reportSurprises) {
+    const u = policy.overallUncertainty;
+    state.uncertainty *= u.retentionPerAnswer ** weight;
+    const withoutChoiceGuess = (expected - item.guess) / (1 - item.guess);
+    if (!correct && withoutChoiceGuess > u.rareMissThreshold)
+      state.uncertainty = Math.min(
+        u.maxVariance,
+        state.uncertainty + u.rareMissVariance * weight,
+      );
+  }
+  state.surprise =
+    (correct ? 1 - expected : expected) > policy.surpriseThreshold
+      ? correct
+        ? drift.surpriseCorrect * weight
+        : drift.surpriseIncorrect * weight
+      : 0;
+  const evidence = correct ? curve.hit : curve.miss;
+  for (let i = 0; i < GRID.length; i++)
+    log[i] = log[i]! + weight * evidence[i]!;
+  state.log = log;
+}
+function finishFold(
+  state: FrontierFold,
   now: number,
   policy: FrontierPolicy,
   drift: FrontierPolicy["overall"],
-  success: ReturnType<typeof responseModel>,
-  reportSurprises = false,
 ): Estimate {
-  let log = start;
-  let previous: number | null = null;
-  let surprise = 0;
-  let uncertainty = 0;
-  for (const item of items) {
-    const correct =
-      item.assisted && policy.assisted.treatAsFailure ? false : item.success;
-    const weight =
-      (item.assisted
-        ? correct
-          ? policy.assisted.correctWeight
-          : policy.assisted.incorrectWeight
-        : 1) * item.weight;
-    // Assisted success provides partial evidence, never independent mastery.
-    // An assisted miss can be neutral without losing the recorded attempt.
-    if (weight === 0) continue;
-    const days =
-      previous === null
-        ? 0
-        : Math.min(
-            policy.maxDriftDays,
-            Math.max(0, (item.at - previous) / DAY),
-          );
-    log = blur(
-      log,
-      (previous === null ? 0 : drift.perAnswer * weight) +
-        drift.perDay * days +
-        surprise,
-    );
-    previous = item.at;
-    const top = Math.max(...log);
-    const weights = log.map((value) => Math.exp(value - top));
-    const total = weights.reduce((sum, w) => sum + w, 0);
-    const expected =
-      weights.reduce(
-        (sum, w, i) => sum + w * success(GRID[i]!, item.grade, item.guess),
-        0,
-      ) / total;
-    // This is reporting uncertainty, not extra likelihood weight for the
-    // next answer. A rare miss calls the summary into question without
-    // erasing the learner's established history.
-    if (reportSurprises) {
-      const u = policy.overallUncertainty;
-      uncertainty *= u.retentionPerAnswer ** weight;
-      const withoutChoiceGuess = (expected - item.guess) / (1 - item.guess);
-      if (!correct && withoutChoiceGuess > u.rareMissThreshold)
-        uncertainty = Math.min(
-          u.maxVariance,
-          uncertainty + u.rareMissVariance * weight,
+  const log =
+    state.previous === null
+      ? state.log
+      : blur(
+          state.log,
+          drift.perDay *
+            Math.min(
+              policy.maxDriftDays,
+              Math.max(0, (now - state.previous) / DAY),
+            ),
         );
-    }
-    surprise =
-      (correct ? 1 - expected : expected) > policy.surpriseThreshold
-        ? correct
-          ? drift.surpriseCorrect * weight
-          : drift.surpriseIncorrect * weight
-        : 0;
-    for (let i = 0; i < GRID.length; i++) {
-      const p = success(GRID[i]!, item.grade, item.guess);
-      log[i] = log[i]! + weight * Math.log(correct ? p : 1 - p);
-    }
-  }
-  if (previous !== null)
-    log = blur(
-      log,
-      drift.perDay *
-        Math.min(policy.maxDriftDays, Math.max(0, (now - previous) / DAY)),
-    );
-  return summarize(
-    log,
-    items.length,
-    items.filter((item) => item.success && !item.assisted && item.weight >= 1)
-      .length,
-    uncertainty,
-  );
+  return summarize(log, state.answered, state.independent, state.uncertainty);
 }
 
-/** Bayesian estimate of each strand's grade level from the attempt history,
- * allowing the level to change over time. Deterministic for a given history
- * and time. */
-export function estimateFrontier(options: {
-  start: number;
-  observations: readonly FrontierObservation[];
+export type FrontierCatalog = {
   gradeOf: (templateId: string) => number | undefined;
   strandOf: (templateId: string) => string;
   /** Chance that guessing answers the item correctly (`guessChance` in
    * math/guess-chance.ts). Required, so no caller silently scores a 1-in-3
    * pick as a typed answer. */
   guessOf: (templateId: string) => number;
-  now?: number;
-  /** Validated, immutable parameters for reproducible estimator comparisons. */
-  policy?: FrontierPolicy;
-}): Frontier {
-  const policy = options.policy ?? DEFAULT_FRONTIER_POLICY;
-  assertFrontierPolicy(policy);
-  const success = responseModel(policy.response);
-  const strandSuccess = responseModel(policy.strandResponse);
-  const evidence: Evidence[] = [];
-  options.observations.forEach((observation, index) => {
-    const grade = options.gradeOf(observation.templateId);
-    if (grade === undefined) return;
-    evidence.push({
-      templateId: observation.templateId,
-      grade,
-      guess: Math.min(
-        0.5,
-        Math.max(0, options.guessOf(observation.templateId)),
-      ),
-      strand: options.strandOf(observation.templateId),
-      success: observation.correct,
-      assisted: observation.assisted,
-      weight: Math.min(1, Math.max(0, observation.evidenceWeight ?? 1)),
-      at: observation.createdAt
-        ? Date.parse(observation.createdAt)
-        : index * 60000,
-    });
-  });
-  const now = options.now ?? evidence.at(-1)?.at ?? 0;
-  const overall = fold(
-    prior(options.start, policy.prior.overallSd),
-    evidence,
-    now,
+};
+function evidenceOf(
+  observation: FrontierObservation,
+  index: number,
+  catalog: FrontierCatalog,
+): Evidence | null {
+  const grade = catalog.gradeOf(observation.templateId);
+  if (grade === undefined) return null;
+  return {
+    templateId: observation.templateId,
+    grade,
+    guess: Math.min(0.5, Math.max(0, catalog.guessOf(observation.templateId))),
+    strand: catalog.strandOf(observation.templateId),
+    success: observation.correct,
+    assisted: observation.assisted,
+    weight: Math.min(1, Math.max(0, observation.evidenceWeight ?? 1)),
+    at: observation.createdAt
+      ? Date.parse(observation.createdAt)
+      : index * 60000,
+  };
+}
+
+/** What confirming a strand's band reads from its independent answers. A band
+ * selects answers by grade and result, then takes the most recent, so the
+ * most recent of each grade and result always contains them. */
+export type FrontierConfirmationBucket = {
+  grade: number;
+  success: boolean;
+  items: { templateId: string; at: number; order: number }[];
+};
+export type FrontierConfirmationState = {
+  seen: number;
+  /** Independent successes per grade, in the order grades first succeeded. */
+  successes: [grade: number, count: number][];
+  buckets: FrontierConfirmationBucket[];
+};
+/** A strand's fold starts from the learner's current pooled estimate, so it is
+ * replayed on each read until it has `freezeAfter` answers. By then the start
+ * no longer shows in the estimate, and the fold simply continues. */
+export type FrontierStrandState =
+  | { replay: FrontierFoldItem[]; fold?: undefined }
+  | { replay?: undefined; fold: FrontierFold };
+/** Everything an estimate depends on, in a size bounded by the catalog rather
+ * than by how many answers it has seen. */
+export type FrontierState = {
+  start: number;
+  observed: number;
+  lastAt: number | null;
+  overall: FrontierFold;
+  adaptive: FrontierFold;
+  strands: Record<string, FrontierStrandState>;
+  confirmation: Record<string, FrontierConfirmationState>;
+};
+
+export function createFrontierState(
+  start: number,
+  policy: FrontierPolicy = DEFAULT_FRONTIER_POLICY,
+): FrontierState {
+  return {
+    start,
+    observed: 0,
+    lastAt: null,
+    overall: startFold(prior(start, policy.prior.overallSd)),
+    adaptive: startFold(prior(start, policy.prior.overallSd)),
+    strands: {},
+    confirmation: {},
+  };
+}
+
+function strandPrior(pooled: Estimate, policy: FrontierPolicy) {
+  return prior(pooled.level, Math.max(policy.prior.strandSd, pooled.sd));
+}
+function replayStrand(
+  items: readonly FrontierFoldItem[],
+  pooled: Estimate,
+  policy: FrontierPolicy,
+) {
+  const model = responseModel(policy.strandResponse);
+  const fold = startFold(strandPrior(pooled, policy));
+  for (const item of items)
+    advanceFold(fold, item, policy, policy.strand, model);
+  return fold;
+}
+
+/** When a strand's replay may stop: see `startNoLongerShows`. */
+export type FrontierFreeze = {
+  from: number;
+  every: number;
+  atMost: number;
+  tolerance: number;
+};
+export const STRAND_FREEZE: FrontierFreeze = {
+  from: 40,
+  every: 10,
+  atMost: 400,
+  tolerance: 0.01,
+};
+/** Whether a strand's answers have outweighed where it started: its folds from
+ * the curriculum's two extremes must agree everywhere, tails included, because
+ * a later jump in level draws on the tails. Identical folds stay identical, so
+ * this also holds for every answer still to come. */
+function startNoLongerShows(
+  items: readonly FrontierFoldItem[],
+  policy: FrontierPolicy,
+  tolerance: number,
+) {
+  const estimate = (level: number) =>
+    ({ level, sd: policy.prior.strandSd }) as Estimate;
+  const low = replayStrand(items, estimate(0), policy);
+  const high = replayStrand(items, estimate(MAX_GRADE), policy);
+  if (low.surprise !== high.surprise) return false;
+  const lowTop = Math.max(...low.log);
+  const highTop = Math.max(...high.log);
+  return low.log.every(
+    (value, i) =>
+      Math.abs(value - lowTop - (high.log[i]! - highTop)) <= tolerance,
+  );
+}
+
+/** Folds one more answer in. Without `freeze`, every strand is replayed on each
+ * read, which matches estimating the whole history from nothing but grows with
+ * it. With `freeze`, a strand's fold continues on its own once its start no
+ * longer shows. */
+export function advanceFrontierState(
+  state: FrontierState,
+  observation: FrontierObservation,
+  catalog: FrontierCatalog,
+  policy: FrontierPolicy = DEFAULT_FRONTIER_POLICY,
+  freeze?: FrontierFreeze,
+) {
+  const item = evidenceOf(observation, state.observed++, catalog);
+  if (!item) return;
+  state.lastAt = item.at;
+  const strandModel = responseModel(policy.strandResponse);
+  advanceFold(
+    state.overall,
+    item,
     policy,
     policy.overall,
-    success,
+    responseModel(policy.response),
     true,
   );
+  advanceFold(state.adaptive, item, policy, policy.strand, strandModel);
+  const strand = (state.strands[item.strand] ??= { replay: [] });
+  if (strand.fold) {
+    advanceFold(strand.fold, item, policy, policy.strand, strandModel);
+  } else {
+    strand.replay.push({
+      grade: item.grade,
+      guess: item.guess,
+      success: item.success,
+      assisted: item.assisted,
+      at: item.at,
+      weight: item.weight,
+    });
+    const answers = strand.replay.length;
+    if (
+      freeze &&
+      answers >= freeze.from &&
+      (answers >= freeze.atMost ||
+        (answers % freeze.every === 0 &&
+          startNoLongerShows(strand.replay, policy, freeze.tolerance)))
+    )
+      state.strands[item.strand] = {
+        fold: replayStrand(
+          strand.replay,
+          finishFold(state.adaptive, item.at, policy, policy.strand),
+          policy,
+        ),
+      };
+  }
+  if (!policy.confirmation.enabled) return;
+  const confirmation = (state.confirmation[item.strand] ??= {
+    seen: 0,
+    successes: [],
+    buckets: [],
+  });
+  if (item.assisted || item.weight < 1) return;
+  if (item.success) {
+    const known = confirmation.successes.find(([g]) => g === item.grade);
+    if (known) known[1] += 1;
+    else confirmation.successes.push([item.grade, 1]);
+  }
+  let bucket = confirmation.buckets.find(
+    (b) => b.grade === item.grade && b.success === item.success,
+  );
+  if (!bucket) {
+    bucket = { grade: item.grade, success: item.success, items: [] };
+    confirmation.buckets.push(bucket);
+  }
+  bucket.items.push({
+    templateId: item.templateId,
+    at: item.at,
+    order: confirmation.seen++,
+  });
+  if (bucket.items.length > policy.confirmation.evidenceWindow)
+    bucket.items.shift();
+}
+
+function strandConfirmation(
+  state: FrontierConfirmationState,
+  start: number,
+  policy: FrontierPolicy,
+) {
+  const c = policy.confirmation;
+  const supports = (grade: number, spaced: boolean, foundation = false) => {
+    // Success on harder material supports a working band. A harder miss
+    // does not refute easier knowledge; foundation checks need direct work
+    // near that foundation, not inferred mastery from downstream answers.
+    const relevant = state.buckets
+      .filter(
+        (b) =>
+          b.grade >= grade - c.gradeTolerance &&
+          (foundation
+            ? b.grade <= grade + c.foundationReach
+            : b.success || b.grade <= grade + c.gradeTolerance),
+      )
+      .flatMap((b) => b.items.map((item) => ({ ...item, success: b.success })))
+      .sort((x, y) => x.order - y.order)
+      .slice(-c.evidenceWindow);
+    const successes = relevant.filter((e) => e.success);
+    const times = successes.map((e) => e.at).sort((a, b) => a - b);
+    const separated =
+      successes.length > 0 &&
+      times.at(-1)! - times[0]! >= c.separationHours * 3600000;
+    const varied =
+      new Set(successes.map((e) => e.templateId)).size >= c.distinctFamilies;
+    // Small catalogs can demonstrate a band through more separated
+    // retrievals of their one available family, without a permanent gate.
+    if (
+      successes.length < c.independentSuccesses ||
+      successes.length / relevant.length < c.minimumSuccessRate ||
+      (!varied &&
+        !(
+          separated &&
+          successes.length >=
+            c.independentSuccesses * c.singleFamilySuccessMultiplier
+        ))
+    )
+      return false;
+    return !spaced || separated;
+  };
+  const baseline = Math.min(MAX_GRADE, start + c.sameSessionRise);
+  // Provisional placement advances gradually within a session; spacing
+  // strengthens a demonstrated band without imposing a time or age gate.
+  const higherSuccesses = state.successes.reduce(
+    (sum, [grade, count]) =>
+      grade >= baseline - c.gradeTolerance ? sum + count : sum,
+    0,
+  );
+  const provisional =
+    baseline + Math.floor(higherSuccesses / c.provisionalSuccessesPerGrade);
+  let level = baseline;
+  for (const [grade] of state.successes)
+    if (grade > level && supports(grade, false))
+      level = Math.min(
+        MAX_GRADE,
+        Math.max(
+          level,
+          supports(grade, true) ? grade : Math.min(grade, provisional),
+        ),
+      );
+  return { level, foundationConfirmed: supports(start, true, true) };
+}
+
+/** The estimate at `now`. Reading changes nothing, so a state can be read at any
+ * time and advanced afterward. */
+export function readFrontierState(
+  state: FrontierState,
+  now: number,
+  policy: FrontierPolicy = DEFAULT_FRONTIER_POLICY,
+): Frontier {
+  const overall = finishFold(state.overall, now, policy, policy.overall);
   // Local selection retains its responsive evidence model. A steadier overall
   // readout must not hide a weak area or slow progress in a stronger one.
-  const adaptive = fold(
-    prior(options.start, policy.prior.overallSd),
-    evidence,
-    now,
-    policy,
-    policy.strand,
-    strandSuccess,
-  );
+  const adaptive = finishFold(state.adaptive, now, policy, policy.strand);
   const strands: Record<string, Estimate> = {};
-  for (const strand of new Set(evidence.map((item) => item.strand)))
-    strands[strand] = fold(
-      prior(adaptive.level, Math.max(policy.prior.strandSd, adaptive.sd)),
-      evidence.filter((item) => item.strand === strand),
+  for (const [name, strand] of Object.entries(state.strands))
+    strands[name] = finishFold(
+      strand.fold ?? replayStrand(strand.replay, adaptive, policy),
       now,
       policy,
       policy.strand,
-      strandSuccess,
     );
   const confirmation: NonNullable<Frontier["confirmation"]> = {};
-  if (policy.confirmation.enabled) {
-    const c = policy.confirmation;
-    for (const strand of new Set(evidence.map((item) => item.strand))) {
-      const independent = evidence.filter(
-        (e) => e.strand === strand && !e.assisted && e.weight >= 1,
-      );
-      const supports = (grade: number, spaced: boolean, foundation = false) => {
-        // Success on harder material supports a working band. A harder miss
-        // does not refute easier knowledge; foundation checks need direct work
-        // near that foundation, not inferred mastery from downstream answers.
-        const relevant = independent
-          .filter(
-            (e) =>
-              e.grade >= grade - c.gradeTolerance &&
-              (foundation
-                ? e.grade <= grade + c.foundationReach
-                : e.success || e.grade <= grade + c.gradeTolerance),
-          )
-          .slice(-c.evidenceWindow);
-        const successes = relevant.filter((e) => e.success);
-        const times = successes.map((e) => e.at).sort((a, b) => a - b);
-        const separated =
-          successes.length > 0 &&
-          times.at(-1)! - times[0]! >= c.separationHours * 3600000;
-        const varied =
-          new Set(successes.map((e) => e.templateId)).size >=
-          c.distinctFamilies;
-        // Small catalogs can demonstrate a band through more separated
-        // retrievals of their one available family, without a permanent gate.
-        if (
-          successes.length < c.independentSuccesses ||
-          successes.length / relevant.length < c.minimumSuccessRate ||
-          (!varied &&
-            !(
-              separated &&
-              successes.length >=
-                c.independentSuccesses * c.singleFamilySuccessMultiplier
-            ))
-        )
-          return false;
-        return !spaced || separated;
-      };
-      const baseline = Math.min(MAX_GRADE, options.start + c.sameSessionRise);
-      // Provisional placement advances gradually within a session; spacing
-      // strengthens a demonstrated band without imposing a time or age gate.
-      const higherSuccesses = independent.filter(
-        (e) => e.success && e.grade >= baseline - c.gradeTolerance,
-      );
-      const provisional =
-        baseline +
-        Math.floor(higherSuccesses.length / c.provisionalSuccessesPerGrade);
-      let level = baseline;
-      for (const grade of new Set(
-        independent.filter((e) => e.success).map((e) => e.grade),
-      ))
-        if (grade > level && supports(grade, false))
-          level = Math.min(
-            MAX_GRADE,
-            Math.max(
-              level,
-              supports(grade, true) ? grade : Math.min(grade, provisional),
-            ),
-          );
-
-      confirmation[strand] = {
-        level,
-        foundationConfirmed: supports(options.start, true, true),
-      };
-    }
-  }
+  if (policy.confirmation.enabled)
+    for (const [name, strand] of Object.entries(state.confirmation))
+      confirmation[name] = strandConfirmation(strand, state.start, policy);
   return {
-    expected: options.start,
+    expected: state.start,
     overall,
     adaptive,
     strands,
@@ -394,11 +602,61 @@ export function estimateFrontier(options: {
     ...(policy.confirmation.enabled
       ? {
           confirmation,
-          unconfirmedCeiling:
-            options.start + policy.confirmation.sameSessionRise,
+          unconfirmedCeiling: state.start + policy.confirmation.sameSessionRise,
         }
       : {}),
   };
+}
+
+/** Bayesian estimate of each strand's grade level from the attempt history,
+ * allowing the level to change over time. Deterministic for a given history
+ * and time. */
+export function estimateFrontier(
+  options: FrontierCatalog & {
+    start: number;
+    observations: readonly FrontierObservation[];
+    now?: number;
+    /** Validated, immutable parameters for reproducible estimator comparisons. */
+    policy?: FrontierPolicy;
+  },
+): Frontier {
+  const policy = options.policy ?? DEFAULT_FRONTIER_POLICY;
+  assertFrontierPolicy(policy);
+  const state = createFrontierState(options.start, policy);
+  for (const observation of options.observations)
+    advanceFrontierState(state, observation, options, policy);
+  return readFrontierState(state, options.now ?? state.lastAt ?? 0, policy);
+}
+
+/** The overall estimate after each of `counts` answers, as of `now`: the same
+ * numbers as estimating each prefix alone, from one pass over the history. */
+export function overallTrend(
+  options: FrontierCatalog & {
+    start: number;
+    observations: readonly FrontierObservation[];
+    now: number;
+  },
+  counts: readonly number[],
+  policy: FrontierPolicy = DEFAULT_FRONTIER_POLICY,
+) {
+  const model = responseModel(policy.response);
+  const fold = startFold(prior(options.start, policy.prior.overallSd));
+  const read = new Map<number, Estimate>();
+  const wanted = new Set(counts);
+  const note = (answered: number) => {
+    if (wanted.has(answered))
+      read.set(answered, finishFold(fold, options.now, policy, policy.overall));
+  };
+  note(0);
+  options.observations.forEach((observation, index) => {
+    const item = evidenceOf(observation, index, options);
+    if (item) advanceFold(fold, item, policy, policy.overall, model, true);
+    note(index + 1);
+  });
+  return counts.map((answered) => {
+    const { level, sd } = read.get(answered)!;
+    return { answered, level, sd };
+  });
 }
 
 /** A strand's estimate; untouched strands inherit the overall level with the

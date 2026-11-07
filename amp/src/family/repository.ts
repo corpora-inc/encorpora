@@ -350,6 +350,10 @@ export class FamilyRepository {
       await client.query("DELETE FROM amp_skill_evidence WHERE learner_id=$1", [
         row.id,
       ]);
+      await client.query(
+        "DELETE FROM amp_frontier_states WHERE learner_id=$1",
+        [row.id],
+      );
       // Workbooks name the learner's problems; a retained billing tombstone
       // keeps none of them.
       if (workbooks)
@@ -455,6 +459,10 @@ export class FamilyRepository {
         [
           "derived-skill-evidence",
           "SELECT jsonb_build_object('learnerId',e.learner_id,'evidence',e.state) AS value FROM amp_skill_evidence e JOIN amp_learners l ON l.id=e.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY e.learner_id,e.skill_id",
+        ],
+        [
+          "derived-level-estimate",
+          "SELECT jsonb_build_object('learnerId',s.learner_id,'updatedAt',s.updated_at,'state',s.state) AS value FROM amp_frontier_states s JOIN amp_learners l ON l.id=s.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY s.learner_id",
         ],
         [
           "license",

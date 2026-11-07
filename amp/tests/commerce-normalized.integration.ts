@@ -156,6 +156,7 @@ test(
       await pool.query(await sql("0006-commerce-orders.sql"));
       await pool.query(await sql("0008-skill-evidence.sql"));
       await pool.query(await sql("0010-starting-point.sql"));
+      await pool.query(await sql("0085-learner-frontier-state.sql"));
       assert.equal(
         (await pool.query("SELECT to_regclass('amp_commerce_ledger') AS old"))
           .rows[0].old,
@@ -272,6 +273,7 @@ test(
       await pool.query(await sql("0006-commerce-orders.sql"));
       await pool.query(await sql("0008-skill-evidence.sql"));
       await pool.query(await sql("0010-starting-point.sql"));
+      await pool.query(await sql("0085-learner-frontier-state.sql"));
       const a = order("a"),
         b = order("b", "normalized-other", "other-child");
       await applyCommerceEvent(pool, event(a, "order.created"));
@@ -346,6 +348,7 @@ test(
       await pool.query(await sql("0006-commerce-orders.sql"));
       await pool.query(await sql("0008-skill-evidence.sql"));
       await pool.query(await sql("0010-starting-point.sql"));
+      await pool.query(await sql("0085-learner-frontier-state.sql"));
       const blocker = await pool.connect();
       try {
         await blocker.query("BEGIN");
@@ -399,6 +402,7 @@ test(
       await pool.query(await sql("0006-commerce-orders.sql"));
       await pool.query(await sql("0008-skill-evidence.sql"));
       await pool.query(await sql("0010-starting-point.sql"));
+      await pool.query(await sql("0085-learner-frontier-state.sql"));
       const reconciliation = await pool.connect(),
         privacy = await pool.connect();
       let waiting: Promise<unknown> | undefined;
@@ -462,6 +466,7 @@ test(
       await pool.query(await sql("0006-commerce-orders.sql"));
       await pool.query(await sql("0008-skill-evidence.sql"));
       await pool.query(await sql("0010-starting-point.sql"));
+      await pool.query(await sql("0085-learner-frontier-state.sql"));
       const a = order("source-a"),
         b = { ...order("source-b"), externalOrderId: a.externalOrderId };
       const results = await Promise.allSettled(
@@ -532,6 +537,7 @@ test(
       await pool.query(await sql("0006-commerce-orders.sql"));
       await pool.query(await sql("0008-skill-evidence.sql"));
       await pool.query(await sql("0010-starting-point.sql"));
+      await pool.query(await sql("0085-learner-frontier-state.sql"));
       const invoice = await pool.connect(),
         replay = await pool.connect();
       let waiting: Promise<unknown> | undefined;
