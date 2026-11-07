@@ -27,7 +27,16 @@ export type Actor = {
 export type SchoolTarget =
   | { kind: "self" }
   | { kind: "org"; orgId: string; path: string[] }
-  | { kind: "class"; classId: string; orgId: string; path: string[] };
+  | { kind: "class"; classId: string; orgId: string; path: string[] }
+  /** A rostered student, reached through the org they attend and the classes
+   * they are in today. */
+  | {
+      kind: "student";
+      personId: string;
+      orgId: string;
+      path: string[];
+      classIds: string[];
+    };
 
 /** Staff roles and staff enrollments in force today. A staff enrollment counts
  * only while the person still holds a staff role along the class's org path,
@@ -98,8 +107,9 @@ export function can(
   if (roles.some((role) => role.role === "admin")) return true;
   if (VIEWER.has(action) && roles.some((role) => role.role === "viewer"))
     return true;
-  if (target.kind === "class") {
-    const own = actor.classes.filter((c) => c.classId === target.classId);
+  if (target.kind === "class" || target.kind === "student") {
+    const ids = target.kind === "class" ? [target.classId] : target.classIds;
+    const own = actor.classes.filter((c) => ids.includes(c.classId));
     return (
       (own.some((c) => c.role === "teacher") && TEACHER_CLASS.has(action)) ||
       (own.some((c) => c.role === "aide") && AIDE_CLASS.has(action))
