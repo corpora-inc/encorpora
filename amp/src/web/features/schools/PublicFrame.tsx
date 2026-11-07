@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { WaveMark } from "../../ui/NavigationSheet";
 import { buttonClass } from "../../ui/Button";
-import { SUPPORT_EMAIL } from "../support/SupportHelp";
+import { SiteFooter } from "../support/SiteFooter";
 import styles from "./PublicFrame.module.css";
 
 /** The school pages' header and footer. Every page offers the same few places:
@@ -45,13 +45,12 @@ export function PublicFrame({ children }: { children: ReactNode }) {
         </div>
       </header>
       {children}
-      <footer className={styles.footer}>
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+      <SiteFooter className={styles.footer}>
         <Link to="/schools/scope-and-sequence">Scope and sequence</Link>
         <Link to="/schools/trust">Student data</Link>
         <a href="https://corpora.inc/legal/privacy/">Privacy</a>
         <a href="https://corpora.inc/legal/terms/">Terms</a>
-      </footer>
+      </SiteFooter>
     </div>
   );
 }
