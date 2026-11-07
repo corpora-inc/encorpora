@@ -19,38 +19,39 @@ import {
 import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
 import { historicalTemplates } from "../math/historical-templates";
-import { guessChanceOf } from "../math/guess-chance";
 import {
   estimateFrontier,
   initialLevel,
+  overallTrend,
   type Frontier,
   type FrontierObservation,
 } from "../learning/frontier";
+import {
+  advanceLearnerFrontier,
+  applyStrandRestart,
+  CHECKPOINT_EVERY,
+  decodeLearnerFrontier,
+  encodeLearnerFrontier,
+  frontierCatalog,
+  isCurrentLearnerFrontier,
+  newLearnerFrontier,
+  OFF_THREAD_ANSWERS,
+  readLearnerFrontier,
+  type LearnerObservation,
+} from "./learner-frontier";
+import { workbookWorker } from "../workbook/off-thread";
 import { trendCounts, type TrendPoint } from "../learning/level-check";
-import { templateGrade } from "./mixed-practice";
 const templateById = new Map(
   [...templates, ...historicalTemplates].map((t) => [t.id, t]),
 );
 const skillById = new Map(skills.map((s) => [s.id, s]));
-/** The frontier from a starting level and answers, with the catalog's
- * grades, strands and guessing chances. */
+/** The frontier from a starting level and answers, replayed in full. */
 function frontierFrom(
   start: number,
   observations: readonly FrontierObservation[],
   now: number,
 ): Frontier {
-  return estimateFrontier({
-    start,
-    observations,
-    now,
-    gradeOf: (id) => {
-      const template = templateById.get(id);
-      return template && templateGrade(template, skillById);
-    },
-    strandOf: (id) =>
-      skillById.get(templateById.get(id)?.skillId ?? "")?.strand ?? id,
-    guessOf: guessChanceOf,
-  });
+  return estimateFrontier({ start, observations, now, ...frontierCatalog });
 }
 import {
   lockLearningAccount,
@@ -528,6 +529,8 @@ export class PostgresRepository implements Repository {
     }
   }
 }
+const observationColumns = `a.outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
+        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt",(outcome->>'evidenceWeight')::float8 AS "evidenceWeight", COALESCE((i.content->>'practiceRevision')::int,0) AS "practiceRevision"`;
 const workbookColumns = `id,to_char(workbook_date,'YYYY-MM-DD') AS date,number,minutes,paper,spec,code,created_at AS "createdAt"`;
 function workbookRow(row: Record<string, unknown>): WorkbookRecord {
   return {
@@ -629,54 +632,101 @@ export class PgTransaction implements LearnerTransaction {
     now = Date.now(),
     answers: number | null = null,
   ): Promise<Frontier> {
+    return answers === null
+      ? this.currentFrontier(now)
+      : this.frontierAtAnswer(now, answers);
+  }
+  /** The level now, from the stored state plus any answers since it was saved. */
+  private async currentFrontier(now: number): Promise<Frontier> {
+    const settings = await this.practiceSettings();
+    const key = {
+      epoch: settings.epoch,
+      start: await this.startingLevel(now),
+      strandStarts: settings.strandStarts,
+    };
+    const row = await this.db.query(
+      "SELECT state FROM amp_frontier_states WHERE learner_id=$1",
+      [this.learnerId],
+    );
+    const decoded = row.rows[0]
+      ? decodeLearnerFrontier(row.rows[0].state as string)
+      : null;
+    const stored =
+      decoded && isCurrentLearnerFrontier(decoded, key) ? decoded : null;
+    const history = await this.db.query(
+      `SELECT ${observationColumns},a.evidence_sequence::text AS sequence FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
+        WHERE a.learner_id=$1 AND COALESCE((i.content->>'practiceEpoch')::int,0)=$2 AND a.evidence_sequence>$3::bigint ORDER BY a.evidence_sequence`,
+      [this.learnerId, settings.epoch, stored?.sequence ?? "0"],
+    );
+    const observations = history.rows as LearnerObservation[];
+    let state;
+    if (observations.length > OFF_THREAD_ANSWERS) {
+      const updated = await workbookWorker().frontierState({
+        stored: stored ? encodeLearnerFrontier(stored) : null,
+        observations,
+        key,
+      });
+      state = decodeLearnerFrontier(updated)!;
+    } else {
+      state = advanceLearnerFrontier(
+        stored ?? newLearnerFrontier(key),
+        observations,
+      );
+    }
+    if (observations.length >= CHECKPOINT_EVERY)
+      await this.db.query(
+        "INSERT INTO amp_frontier_states(learner_id,state) VALUES($1,$2) ON CONFLICT(learner_id) DO UPDATE SET state=EXCLUDED.state,updated_at=now()",
+        [this.learnerId, encodeLearnerFrontier(state)],
+      );
+    return readLearnerFrontier(state, now);
+  }
+  /** The level as it was after a learner's first `answers` answers. */
+  private async frontierAtAnswer(now: number, answers: number) {
     const { start, observations, settings } = await this.frontierInputs(
       now,
       answers,
     );
     const frontier = frontierFrom(start, observations, now);
-    for (const [strand, reset] of Object.entries(settings.strandStarts)) {
-      const local = frontierFrom(
+    for (const [strand, reset] of Object.entries(settings.strandStarts))
+      applyStrandRestart(
+        frontier,
+        strand,
         reset.level,
-        observations.filter(
-          (o) =>
-            o.practiceRevision >= reset.revision &&
-            skillById.get(templateById.get(o.templateId)?.skillId ?? "")
-              ?.strand === strand,
+        frontierFrom(
+          reset.level,
+          observations.filter(
+            (o) =>
+              o.practiceRevision >= reset.revision &&
+              skillById.get(templateById.get(o.templateId)?.skillId ?? "")
+                ?.strand === strand,
+          ),
+          now,
         ),
-        now,
       );
-      frontier.strands[strand] = local.strands[strand] ?? local.overall;
-      if (frontier.confirmation)
-        frontier.confirmation[strand] = {
-          ...(local.confirmation?.[strand] ?? {
-            level: local.unconfirmedCeiling!,
-            foundationConfirmed: false,
-          }),
-          foundationLevel: reset.level,
-        };
-    }
     return frontier;
   }
-  /** The starting estimate from age and the answers in evidence order. */
-  private async frontierInputs(now: number, answers: number | null = null) {
+  private async startingLevel(now: number) {
     const learner = await this.db.query(
       "SELECT birth_year,starting_band FROM amp_learners WHERE id=$1",
       [this.learnerId],
     );
+    return initialLevel({
+      birthYear: learner.rows[0]?.birth_year,
+      band: learner.rows[0]?.starting_band,
+      now,
+    });
+  }
+  /** The starting estimate from age and the answers in evidence order. */
+  private async frontierInputs(now: number, answers: number | null = null) {
     const settings = await this.practiceSettings();
     const history = await this.db.query(
-      `SELECT a.outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
-        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt",(outcome->>'evidenceWeight')::float8 AS "evidenceWeight", COALESCE((i.content->>'practiceRevision')::int,0) AS "practiceRevision" FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
+      `SELECT ${observationColumns} FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
         WHERE a.learner_id=$1 AND COALESCE((i.content->>'practiceEpoch')::int,0)=$3 ORDER BY a.evidence_sequence LIMIT $2`,
       [this.learnerId, answers, settings.epoch],
     );
     return {
       settings,
-      start: initialLevel({
-        birthYear: learner.rows[0]?.birth_year,
-        band: learner.rows[0]?.starting_band,
-        now,
-      }),
+      start: await this.startingLevel(now),
       observations: history.rows as (FrontierObservation & {
         practiceRevision: number;
       })[],
@@ -685,14 +735,10 @@ export class PgTransaction implements LearnerTransaction {
   async frontierTrend(): Promise<TrendPoint[]> {
     const now = Date.now();
     const { start, observations } = await this.frontierInputs(now);
-    return trendCounts(observations.length).map((answered) => {
-      const { level, sd } = frontierFrom(
-        start,
-        observations.slice(0, answered),
-        now,
-      ).overall;
-      return { answered, level, sd };
-    });
+    return overallTrend(
+      { start, observations, now, ...frontierCatalog },
+      trendCounts(observations.length),
+    );
   }
   async recentAttempts() {
     const settings = await this.practiceSettings();

@@ -37,6 +37,7 @@ test(
         "0017-monthly-billing.sql",
         "0006-commerce-orders.sql",
         "0008-skill-evidence.sql",
+        "0085-learner-frontier-state.sql",
       ])
         await pool.query(
           await readFile(
