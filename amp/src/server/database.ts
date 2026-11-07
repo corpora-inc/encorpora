@@ -25,6 +25,19 @@ export const serverPoolOptions = {
   keepAlive: true,
 } satisfies PoolConfig;
 
+/** A connection can end at any time: a proxy restarting, a database failover.
+ * Node treats an `error` event nobody listens for as fatal, which would take
+ * down every request on the pod. So log it: a request using the connection gets
+ * the error itself, and the pool opens a new connection for the next one. */
+function logLostConnection(error: Error) {
+  console.error("database connection lost", error.message);
+}
+
 export function createDatabasePool(config: Omit<PoolConfig, "max">): Pool {
-  return new Pool({ ...config, max: databasePoolMax() });
+  const pool = new Pool({ ...config, max: databasePoolMax() });
+  // For connections sitting idle in the pool.
+  pool.on("error", logLostConnection);
+  // For connections checked out, between the queries of a transaction.
+  pool.on("connect", (client) => client.on("error", logLostConnection));
+  return pool;
 }
