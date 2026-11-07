@@ -45,7 +45,22 @@ const byId = new Map(
     template,
   ]),
 );
-const cache = new Map<string, number>();
+// The server build computes every family once and inlines the table here
+// (scripts/build-server.ts). Without it, as under tsx and in tests, each family
+// is computed on first use. Sampling a family takes up to 2 s of CPU, too long
+// to pay on a request thread.
+declare const __AMP_GUESS_CHANCES__:
+  | Readonly<Record<string, number>>
+  | undefined;
+const built =
+  typeof __AMP_GUESS_CHANCES__ === "undefined"
+    ? []
+    : Object.entries(__AMP_GUESS_CHANCES__);
+const cache = new Map<string, number>(built);
+
+/** Families whose guessing chance came from the build. Zero in a compiled
+ * server means requests are paying to compute them. */
+export const builtGuessChances = built.length;
 
 /** Uniform guessing among all permitted answers; multiple selections are sets.
  * Structured work needs its private rule to count valid orders and proofs
@@ -94,6 +109,15 @@ export function guessChance(
   }
   cache.set(template.id, chance);
   return chance;
+}
+
+/** Guessing chances for the build to inline: families answered by typing are
+ * always 0 and need no entry. */
+export function guessChanceTable(
+  families: Iterable<TemplateMetadata> = byId.values(),
+): Record<string, number> {
+  const answered = [...families].filter((t) => t.requiredResponseCapability);
+  return Object.fromEntries(answered.map((t) => [t.id, guessChance(t)]));
 }
 
 /** One instance's guessing chance, using its private rule where needed. */
